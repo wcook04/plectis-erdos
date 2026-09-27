@@ -1,4 +1,68 @@
 import Lean
+import Erdos249257.CertificateKernel
+import Erdos249257.GcdMomentCalculus
+import Erdos249257.LcmConeFlatness
+import Erdos249257.LcmDiagonalReduction
+import Erdos249257.TotientActualLcmOrbitSign
+import Erdos249257.TotientActualLcmTopEdgeStaircase
+import Erdos249257.TotientCarryKernelRigidity
+import Erdos249257.TotientTailCarryPeriod
+import Erdos249257.TotientTailPeriodKiller
+import ErdosProblems.Erdos249.PaperCompleteR20.DenominatorBounds
+import ErdosProblems.Erdos249.PaperCompleteR20.FiniteCarryCorrespondence
+import ErdosProblems.Erdos249.PaperCompleteR20.FiniteGridCorrespondence
+import ErdosProblems.Erdos249.PaperCompleteR20.FinitePrefixCountermodelEndpoint
+import ErdosProblems.Erdos249.PaperCompleteR20.LcmGridCorrespondence
+import ErdosProblems.Erdos249.PaperCompleteR20.RadicalDecomposition
+import ErdosProblems.Erdos249.PaperCompleteR20.SpecifiedTailPeriod
+import ErdosProblems.Erdos249.PaperCompleteR21.ActualLcmDiagonalConditions
+import ErdosProblems.Erdos249.PaperCompleteR21.ActualLcmSeparationAndSign
+import ErdosProblems.Erdos249.PaperCompleteR21.ActualLcmShortWindowArithmetic
+import ErdosProblems.Erdos249.PaperCompleteR21.AffineDivisorAnnihilation
+import ErdosProblems.Erdos249.PaperCompleteR21.BinaryDigitChangeDensity
+import ErdosProblems.Erdos249.PaperCompleteR21.CanonicalDyadicSectionRank
+import ErdosProblems.Erdos249.PaperCompleteR21.CarryDescriptionInformationLoss
+import ErdosProblems.Erdos249.PaperCompleteR21.CoprimeLatticeSumsAndLambert
+import ErdosProblems.Erdos249.PaperCompleteR21.DiagonalCertificateTableScales
+import ErdosProblems.Erdos249.PaperCompleteR21.DivisorChannelSplitAndSeamDoubling
+import ErdosProblems.Erdos249.PaperCompleteR21.DoublingOrbitTransferAndFullDepthPhase
+import ErdosProblems.Erdos249.PaperCompleteR21.DyadicSectionBasisAndRationalCarry
+import ErdosProblems.Erdos249.PaperCompleteR21.ExcludedCofactorEstimate
+import ErdosProblems.Erdos249.PaperCompleteR21.ExtremalOrderDirectedAndPulse
+import ErdosProblems.Erdos249.PaperCompleteR21.FareyGapDenominatorExclusion
+import ErdosProblems.Erdos249.PaperCompleteR21.FirstHarmonicBlockCriteria
+import ErdosProblems.Erdos249.PaperCompleteR21.FourLinearConstructionLimits
+import ErdosProblems.Erdos249.PaperCompleteR21.HarmonicGapAndFourTail
+import ErdosProblems.Erdos249.PaperCompleteR21.LacunaryFactorialBlockNorm
+import ErdosProblems.Erdos249.PaperCompleteR21.LambertSigmaRungAndNesterenko
+import ErdosProblems.Erdos249.PaperCompleteR21.LcmJumpPositionsAndCentralSlack
+import ErdosProblems.Erdos249.PaperCompleteR21.MersennePrimeSupportAnchors
+import ErdosProblems.Erdos249.PaperCompleteR21.MobiusMersenneLadderLogConcavity
+import ErdosProblems.Erdos249.PaperCompleteR21.NearIntegerIrrationalityCriterion
+import ErdosProblems.Erdos249.PaperCompleteR21.NumeratorPolynomialAndMersenneRemainder
+import ErdosProblems.Erdos249.PaperCompleteR21.PenultimateStaircaseAndRankCurvature
+import ErdosProblems.Erdos249.PaperCompleteR21.PeriodMultipleAndSecondDifference
+import ErdosProblems.Erdos249.PaperCompleteR21.PhaseEnergyAndForeignResidueProjection
+import ErdosProblems.Erdos249.PaperCompleteR21.PrimeJumpWitnessAndMersenneChannels
+import ErdosProblems.Erdos249.PaperCompleteR21.QZetaAnchor
+import ErdosProblems.Erdos249.PaperCompleteR21.RationalTailPeriodWitnesses
+import ErdosProblems.Erdos249.PaperCompleteR21.ScalarLocalisationAndInversePhaseGauge
+import ErdosProblems.Erdos249.PaperCompleteR21.ShortWindowSupplyAndSixteenShifts
+import ErdosProblems.Erdos249.PaperCompleteR21.SimultaneousShiftCertificateDepth
+import ErdosProblems.Erdos249.PaperCompleteR21.SquareBlockBinaryDilationCountermodel
+import ErdosProblems.Erdos249.PaperCompleteR21.SquaredMersenneDivisorIdentities
+import ErdosProblems.Erdos249.PaperCompleteR21.SternBrocotStoppingRecursion
+import ErdosProblems.Erdos249.PaperCompleteR21.TailCarryPeriodAndRankFloor
+import ErdosProblems.Erdos249.PaperCompleteR21.TopEdgeChainPaperBand
+import ErdosProblems.Erdos249.PaperCompleteR21.TopEdgeCorridorAndSeparation
+import ErdosProblems.Erdos249.PaperCompleteR21.TopEdgeStaircaseConditions
+import ErdosProblems.Erdos249.PaperCompleteR21.TwoAdicHalfPulseAndAccumulatedResidue
+import ErdosProblems.Erdos249.PaperCompleteR21.TwoAdicPulseBlockAndMobiusInversion
+import ErdosProblems.Erdos249.PaperCompleteR21.TwoAdicPulseCertificateFailure
+import ErdosProblems.Erdos249.PaperCompleteR8.FullKernelAssemblies
+import ErdosProblems.Erdos249.PaperCompleteR8.KernelRelationBasis
+import ErdosProblems.Erdos249.RankOneSharpFloor
+import ErdosProblems.Skip.LadderT67
 -- SPDX-FileCopyrightText: 2026 Will Cook
 -- SPDX-License-Identifier: Apache-2.0
 
@@ -1344,6 +1408,8 @@ structure FactorState where
   work : Nat := 0
   /-- Theorems added, in order. -/
   added : Array Name := #[]
+  /-- Per theorem added: each moved hypothesis and the claims that assume it. -/
+  placements : Array (Name × String × String) := #[]
 
 abbrev FactorM := StateRefT FactorState MetaM
 
@@ -1371,6 +1437,25 @@ def factorBudgeted {α : Type} (heartbeats : Nat) (x : FactorM α) : FactorM (Op
   withCurrHeartbeats <|
     withTheReader Core.Context (fun ctx => { ctx with maxHeartbeats := heartbeats * 1000 }) do
       tryCatchRuntimeEx (do return some (← x)) fun _ => return none
+
+/-- Whether a constant is a theorem. -/
+def isTheoremInfo : ConstantInfo → Bool
+  | .thmInfo _ => true
+  | _ => false
+
+/-- The name of the factoring of `name`: `name.factored` for a theorem of this library
+(or of the file being checked), and `ErdosProblems.ArgumentGraph.Factored.<name>` for
+one imported from another library, so that nothing is added in another library's
+namespace. -/
+def factoredName (name : Name) : MetaM Name := do
+  let env ← getEnv
+  match env.getModuleIdxFor? name with
+  | none => return name ++ `factored
+  | some idx =>
+    let module := env.header.moduleNames[idx.toNat]!
+    if (`ErdosProblems).isPrefixOf module || (`Erdos249257).isPrefixOf module then
+      return name ++ `factored
+    return `ErdosProblems.ArgumentGraph.Factored ++ name
 
 /-- The hypotheses of `mv` that `e` mentions. -/
 def movedIn (mv : Array FVarId) (e : Expr) : Array FVarId :=
@@ -1574,39 +1659,72 @@ def liftInnerAux : Nat → Placement FVarId → Expr → Expr → MetaM Expr
     | _, _ => return e
 end
 
-/-- The docstring of a factored theorem: where each moved hypothesis went, claims
-numbered from 1 in the order the conclusion states them. -/
+/-- Per guard of a placement, the first and last claim number below its node (claims
+numbered from `k` in the order the conclusion states them); and the next number. -/
+def Placement.claimSpans : Placement FVarId → Nat → Array (FVarId × Nat × Nat) × Nat
+  | .leaf g, k => (g.map fun h => (h, k, k), k + 1)
+  | .conj g l r, k =>
+      let (sl, k₁) := l.claimSpans k
+      let (sr, k₂) := r.claimSpans k₁
+      (g.map (fun h => (h, k, k₂ - 1)) ++ sl ++ sr, k₂)
+  | .ex g b, k =>
+      let (sb, k₁) := b.claimSpans k
+      (g.map (fun h => (h, k, k₁ - 1)) ++ sb, k₁)
+  | .pi g b, k =>
+      let (sb, k₁) := b.claimSpans k
+      (g.map (fun h => (h, k, k₁ - 1)) ++ sb, k₁)
+
+/-- Whether the factoring says more than the theorem without its unused hypotheses:
+some hypothesis it keeps is assumed by some claims and not by others. When every
+hypothesis a proof uses is still assumed by every claim, the factored statement is
+the original one with its premises moved inward, which says nothing new. -/
+def Placement.separates (p : Placement FVarId) (moved : Array FVarId) : Bool :=
+  let (spans, next) := p.claimSpans 1
+  moved.any fun h =>
+    let here := spans.filter (·.1 == h)
+    !here.isEmpty && here.foldl (fun n (_, a, b) => n + (b + 1 - a)) 0 < next - 1
+
+/-- The claims of a conclusion read along a placement, pretty-printed on one line
+(binders opened under their own names), in the order the conclusion states them. -/
+def leafClaimTexts : Nat → Placement FVarId → Expr → MetaM (Array String)
+  | 0, _, g => return #[flat (toString (← ppExpr g))]
+  | fuel + 1, p, g => do
+    match p, claimShape g with
+    | .conj _ l r, .conj a b => return (← leafClaimTexts fuel l a) ++ (← leafClaimTexts fuel r b)
+    | .pi _ b, .pi n d gb bi =>
+        withLocalDecl n bi d fun x => leafClaimTexts fuel b (gb.instantiate1 x)
+    | .ex _ b, .ex _ α pred =>
+        withLocalDecl (predicateBinder pred) .default α fun x => leafClaimTexts fuel b (predicateAt pred x)
+    | _, _ => return #[flat (toString (← ppExpr g))]
+where
+  flat (s : String) : String := " ".intercalate ((s.replace "\n" " ").splitOn " " |>.filter (· ≠ ""))
+
+/-- The docstring of a factored theorem, and per moved hypothesis where it went:
+claims are numbered from 1 in the order the conclusion states them. -/
 def factorDoc (name : Name) (xs : Array Expr) (moved : Array FVarId)
-    (inner : Placement FVarId) : MetaM String := do
-  let (spans, total) := claimSpans inner 1
+    (inner : Placement FVarId) (body : Expr) : MetaM (String × Array (String × String)) := do
+  let (spans, total) := inner.claimSpans 1
+  let texts ← leafClaimTexts spineFuel inner body
   let mut parts : Array String := #[]
+  let mut placed : Array (String × String) := #[]
   for h in moved do
     let some x := xs.find? (·.fvarId! == h) | continue
     let ty := toString (← ppExpr (← inferType x))
     let at_ := spans.filter (·.1 == h)
     if at_.isEmpty then
       parts := parts.push s!"`{ty}` is not used"
+      placed := placed.push (ty, "unused")
     else
       let where_ := at_.map fun (_, a, b) => if a == b then s!"claim {a}" else s!"claims {a}-{b}"
       parts := parts.push s!"`{ty}` is assumed by {", ".intercalate where_.toList}"
-  return s!"`{name}` with each hypothesis assumed only by the claims whose proofs use it \
+      let shown := at_.map fun (_, a, b) =>
+        if a == b then s!"claim {a}: {(texts[a - 1]?).getD ""}" else s!"claims {a}-{b}"
+      placed := placed.push (ty, "; ".intercalate shown.toList)
+  let doc := s!"`{name}` with each hypothesis assumed only by the claims whose proofs use it \
     (claims numbered 1 to {total - 1} as the conclusion states them): \
     {"; ".intercalate parts.toList}. The witnesses are those of the same proof. \
     Derived by `derive_factor`."
-where
-  /-- Per guard, the first and last claim number below its node; and the next number. -/
-  claimSpans : Placement FVarId → Nat → Array (FVarId × Nat × Nat) × Nat
-    | .leaf g, k => (g.map fun h => (h, k, k), k + 1)
-    | .conj g l r, k =>
-        let (sl, k₁) := claimSpans l k
-        let (sr, k₂) := claimSpans r k₁
-        (g.map (fun h => (h, k, k₂ - 1)) ++ sl ++ sr, k₂)
-    | .ex g b, k =>
-        let (sb, k₁) := claimSpans b k
-        (g.map (fun h => (h, k, k₁ - 1)) ++ sb, k₁)
-    | .pi g b, k =>
-        let (sb, k₁) := claimSpans b k
-        (g.map (fun h => (h, k, k₁ - 1)) ++ sb, k₁)
+  return (doc, placed)
 
 /-! ## Normalising the spine, and following a construction into the library -/
 
@@ -1661,8 +1779,12 @@ def normAppAux : Nat → Array FVarId → Expr → FactorM Expr
         ← normAux fuel mv args[3]!]
     if let some app ← matchMatcherApp? e (alsoCasesOn := true) then
       if isCasesOnRecursor (← getEnv) app.matcherName then return ← normCasesAux fuel mv app
-      -- a compiled `match` is an elimination by its definition
-      if let some u ← unfoldDefinition? e then return ← normAux fuel mv u.headBeta
+      -- a compiled `match` is an elimination by its definition (`unfoldDefinition?`
+      -- declines matchers, so the definition is instantiated here)
+      if let some (.defnInfo d) := (← getEnv).find? app.matcherName then
+        if d.levelParams.length == app.matcherLevels.size then
+          let value := d.value.instantiateLevelParams d.levelParams app.matcherLevels.toList
+          return ← normAux fuel mv (mkAppN value e.getAppArgs).headBeta
       return e
     -- a library theorem given a hypothesis being moved, proving a structured claim
     if !(movedIn mv e).isEmpty then
@@ -1697,7 +1819,7 @@ def substLibraryAux : Nat → Array FVarId → Expr → FactorM (Option Expr)
   | fuel + 1, mv, e => do
     let .const L us := e.getAppFn | return none
     let some info := (← getEnv).find? L | return none
-    unless info.isTheorem do return none
+    unless isTheoremInfo info do return none
     let args := e.getAppArgs
     let n ← forallTelescope info.type fun xs _ => return xs.size
     unless args.size == n do return none
@@ -1732,7 +1854,7 @@ def factorTheoremAux : Nat → Name → Bool → FactorM (Except String LibFacto
   | fuel + 1, name, requireDeep => do
     let info ← getConstInfo name
     let some value := info.value? | return .error "not a theorem with a proof term"
-    unless info.isTheorem do return .error "not a theorem"
+    unless isTheoremInfo info do return .error "not a theorem"
     forallTelescope info.type fun xs body => do
       let mut mv : Array FVarId := #[]
       for x in xs, i in [0:xs.size] do
@@ -1756,21 +1878,24 @@ def factorTheoremAux : Nat → Name → Bool → FactorM (Except String LibFacto
       if moved.isEmpty then
         return .error "every hypothesis its proof uses is needed before the conclusion's first claim"
       let inner := place.withGuards #[]
-      let deep := inner.hasInnerGuards
+      let deep := inner.separates moved
       if requireDeep && !deep then
-        return .error "it only leaves out hypotheses the proof never uses, which derive_idle adds"
+        return .error (if inner.hasInnerGuards
+          then "every hypothesis it moves is still assumed by every claim, which says nothing new"
+          else "it only leaves out hypotheses the proof never uses, which derive_idle adds")
       let keep := xs.filter fun x => !moved.contains x.fvarId!
       let type ← instantiateMVars (← mkForallFVars keep (← buildInnerAux spineFuel inner body))
       let proofBody ← factorInnerAux fuel mv inner body proof top
       let value ← instantiateMVars (← mkLambdaFVars keep proofBody)
       if type.hasFVar || type.hasMVar || value.hasFVar || value.hasMVar then
         return .error "the factored proof uses a hypothesis outside the claims that assume it"
-      let newName := name ++ `factored
-      let doc ← factorDoc name xs moved inner
+      let newName ← factoredName name
+      let (doc, placed) ← factorDoc name xs moved inner body
       match ← addChecked newName info.levelParams type value doc with
       | .error e => return .error s!"kernel rejected {newName}: {e}"
       | .ok () =>
-        modify fun s => { s with added := s.added.push newName }
+        let rows : Array (Name × String × String) := placed.map fun (h, w) => (newName, h, w)
+        modify fun s => { s with added := s.added.push newName, placements := s.placements ++ rows }
         let index : FVarId → Nat := fun h => (order.findIdx? (· == h)).getD 0
         let keepIdx := (Array.range xs.size).filter fun j => !moved.contains order[j]!
         return .ok { name := newName, keep := keepIdx, place := inner.map index, deep }
@@ -1871,7 +1996,7 @@ def factorInnerAux : Nat → Array FVarId → Placement FVarId → Expr → Expr
                 (← buildClaimAux spineFuel pr b) (← factorProofAux fuel mv pl a ea scope)
                 (← factorProofAux fuel mv pr b eb scope)
           | .pi _ pb, .pi n d gb bi =>
-              withLocalDecl n bi d fun x => do
+              return ← withLocalDecl n bi d fun x => do
                 let some ex ← applyAlts? app x (gb.instantiate1 x) | throwError "cannot apply an elimination"
                 let ex ← normAux fuel mv ex
                 mkLambdaFVars #[x] (← factorProofAux fuel mv pb (gb.instantiate1 x) ex scope)
@@ -1914,142 +2039,395 @@ syntax (name := deriveFactorCmd) "derive_factor " ident : command
     let name ← realizeGlobalConstNoOverloadWithInfo stx[1]
     let (r, s) ← (factorBudgeted factorBudget (factorTheorem name)).run {}
     -- library factorings derived on the way are theorems in their own right
+    let own ← factoredName name
     for n in s.added do
-      unless n == name ++ `factored do reportAdded n
+      unless n == own do reportAdded n
     match r with
     | some (.ok lf) => reportAdded lf.name
     | some (.error e) => reportFailure m!"derive_factor {name}: {e}"
     | none => reportFailure m!"derive_factor {name}: the budget ran out (unknown)"
+    -- one line per moved hypothesis, for the frontier's input map
+    for (n, h, w) in s.placements do
+      logInfo m!"placed {n} :: {h} :: {w}"
 
 end ErdosProblems.ArgumentGraph
 
+/-! Frontier probe for Erdos249. -/
 
-/-! Toy corpus for `derive_factor`: core Lean only. Each positive case is followed by
-an `example` stating the exact factored statement expected, so a wrong placement is a
-type error; negative cases must log a failure (strict mode is off for them). -/
+set_option maxHeartbeats 4000000
 
-namespace FactorToys
+run_cmd Lean.logInfo "@@COMMAND 2060"
+derive_idle ErdosProblems.Erdos249.PaperCompleteR20.short_lcm_window_nondivisor
+run_cmd Lean.logInfo "@@COMMAND 2062"
+derive_idle ErdosProblems.Erdos249.PaperCompleteR21.complementDenominator_dvd_scalar
+run_cmd Lean.logInfo "@@COMMAND 2064"
+derive_idle ErdosProblems.Erdos249.PaperCompleteR21.complementSummand_low_double_echo
+run_cmd Lean.logInfo "@@COMMAND 2066"
+derive_idle ErdosProblems.Erdos249.PaperCompleteR21.divisorChannels_sum_eq
+run_cmd Lean.logInfo "@@COMMAND 2068"
+derive_idle ErdosProblems.Erdos249.PaperCompleteR21.dvd_pow_sub_one_iff_orderOf_dvd
+run_cmd Lean.logInfo "@@COMMAND 2070"
+derive_idle ErdosProblems.Erdos249.PaperCompleteR21.extremal_order_curvature_neg
+run_cmd Lean.logInfo "@@COMMAND 2072"
+derive_idle ErdosProblems.Erdos249.PaperCompleteR21.extremal_order_curvature_pos
+run_cmd Lean.logInfo "@@COMMAND 2074"
+derive_idle ErdosProblems.Erdos249.PaperCompleteR21.inversePhaseGauge_locks_row_and_preserves_minor
+run_cmd Lean.logInfo "@@COMMAND 2076"
+derive_idle ErdosProblems.Erdos249.PaperCompleteR21.irrational_of_near_integer_base_powers
+run_cmd Lean.logInfo "@@COMMAND 2078"
+derive_idle ErdosProblems.Erdos249.PaperCompleteR21.paperNumerator_eval_two
+run_cmd Lean.logInfo "@@COMMAND 2080"
+derive_idle ErdosProblems.Erdos249.PaperCompleteR21.real_part_bound_of_norm_bound
+run_cmd Lean.logInfo "@@COMMAND 2082"
+derive_idle ErdosProblems.Erdos249.PaperCompleteR21.residueOffset_of_dvd
+run_cmd Lean.logInfo "@@COMMAND 2084"
+derive_idle ErdosProblems.Erdos249.PaperCompleteR21.twoAtom_strict_logConcave
+run_cmd Lean.logInfo "@@COMMAND 2086"
+derive_weakening Erdos249257.TotientTailPeriodKiller.irrational_totient_series_of_lcm_cone_nonintegrality_supply
+run_cmd Lean.logInfo "@@COMMAND 2088"
+derive_weakening Erdos249257.TotientTailPeriodKiller.irrational_totient_series_of_lcm_diagonal_nonintegrality_supply
+run_cmd Lean.logInfo "@@COMMAND 2090"
+derive_weakening Erdos249257.not_irrational_totientSeries_implies_mod_period_and_unbounded_rank
+run_cmd Lean.logInfo "@@COMMAND 2092"
+derive_frontier Erdos249257.not_irrational_totientSeries_implies_mod_period_and_unbounded_rank
+run_cmd Lean.logInfo "@@COMMAND 2094"
+derive_weakening ErdosProblems.Erdos249.PaperCompleteR20.finite_grid_supply_irrational
+run_cmd Lean.logInfo "@@COMMAND 2096"
+derive_weakening ErdosProblems.Erdos249.PaperCompleteR20.lcm_grid_flatness
+run_cmd Lean.logInfo "@@COMMAND 2098"
+derive_frontier ErdosProblems.Erdos249.PaperCompleteR20.lcm_grid_flatness
+run_cmd Lean.logInfo "@@COMMAND 2100"
+derive_frontier ErdosProblems.Erdos249.PaperCompleteR20.lcm_grid_flatness at Erdos249257.TotientTailPeriodKiller.eventual_period_of_not_irrational
+run_cmd Lean.logInfo "@@COMMAND 2102"
+derive_weakening ErdosProblems.Erdos249.PaperCompleteR20.lcm_grid_fractional_parts
+run_cmd Lean.logInfo "@@COMMAND 2104"
+derive_frontier ErdosProblems.Erdos249.PaperCompleteR20.lcm_grid_fractional_parts
+run_cmd Lean.logInfo "@@COMMAND 2106"
+derive_frontier ErdosProblems.Erdos249.PaperCompleteR20.lcm_grid_fractional_parts at Erdos249257.TotientTailPeriodKiller.rational_totient_series_forces_lcm_cone_flatness
+run_cmd Lean.logInfo "@@COMMAND 2108"
+derive_frontier ErdosProblems.Erdos249.PaperCompleteR20.lcm_grid_fractional_parts at Erdos249257.TotientTailPeriodKiller.eventual_period_of_not_irrational
+run_cmd Lean.logInfo "@@COMMAND 2110"
+derive_weakening ErdosProblems.Erdos249.PaperCompleteR21.exists_simultaneous_depth_of_irrational
+run_cmd Lean.logInfo "@@COMMAND 2112"
+derive_weakening ErdosProblems.Erdos249.PaperCompleteR21.irrational_of_accumulated_halfModulus_supply
+run_cmd Lean.logInfo "@@COMMAND 2114"
+derive_weakening ErdosProblems.Erdos249.PaperCompleteR21.irrational_of_diagonal_orbit_separation_supply
+run_cmd Lean.logInfo "@@COMMAND 2116"
+derive_weakening ErdosProblems.Erdos249.PaperCompleteR21.irrational_of_four_tail_supply
+run_cmd Lean.logInfo "@@COMMAND 2118"
+derive_weakening ErdosProblems.Erdos249.PaperCompleteR21.irrational_of_lower_escape_supply
+run_cmd Lean.logInfo "@@COMMAND 2120"
+derive_weakening ErdosProblems.Erdos249.PaperCompleteR21.irrational_of_modFour_pulse_supply
+run_cmd Lean.logInfo "@@COMMAND 2122"
+derive_weakening ErdosProblems.Erdos249.PaperCompleteR21.irrational_of_paperAdjacentSuffixMidbandSupply
+run_cmd Lean.logInfo "@@COMMAND 2124"
+derive_weakening ErdosProblems.Erdos249.PaperCompleteR21.irrational_of_short_window_diagonal_supply
+run_cmd Lean.logInfo "@@COMMAND 2126"
+derive_weakening ErdosProblems.Erdos249.PaperCompleteR21.irrational_qZeta_half_difference_of_linearIndependent
+run_cmd Lean.logInfo "@@COMMAND 2128"
+derive_weakening ErdosProblems.Erdos249.PaperCompleteR21.irrational_totientSeries_of_block_cosine_gap
+run_cmd Lean.logInfo "@@COMMAND 2130"
+derive_weakening ErdosProblems.Erdos249.PaperCompleteR21.irrational_totientSeries_of_digitChange_count
+run_cmd Lean.logInfo "@@COMMAND 2132"
+derive_weakening ErdosProblems.Erdos249.PaperCompleteR21.irrational_totientSeries_of_fareyGapExclusionUnbounded
+run_cmd Lean.logInfo "@@COMMAND 2134"
+derive_weakening ErdosProblems.Erdos249.PaperCompleteR21.irrational_totientSeries_of_quarterFarPhase_count
+run_cmd Lean.logInfo "@@COMMAND 2136"
+derive_weakening ErdosProblems.Erdos249.PaperCompleteR21.irrational_totientSeries_of_quarterFarPhase_proportion
+run_cmd Lean.logInfo "@@COMMAND 2138"
+derive_weakening ErdosProblems.Erdos249.PaperCompleteR21.lambert_id_rung_transcendental
+run_cmd Lean.logInfo "@@COMMAND 2140"
+derive_frontier ErdosProblems.Erdos249.PaperCompleteR21.lambert_id_rung_transcendental
+run_cmd Lean.logInfo "@@COMMAND 2142"
+derive_weakening ErdosProblems.Erdos249.PaperCompleteR21.paperAdjacentSuffixMidbandSupply_of_flexibleActualTopEdgeMagnitude
+run_cmd Lean.logInfo "@@COMMAND 2144"
+derive_weakening ErdosProblems.Erdos249.PaperCompleteR21.paperAdjacentSuffixMidbandSupply_of_oddGuardTopEdgeHalfWordBand
+run_cmd Lean.logInfo "@@COMMAND 2146"
+derive_weakening ErdosProblems.Erdos249.PaperCompleteR21.prop_badcof
+run_cmd Lean.logInfo "@@COMMAND 2148"
+derive_weakening ErdosProblems.Erdos249.PaperCompleteR21.rational_forces_four_tail_diagonals_integral
+run_cmd Lean.logInfo "@@COMMAND 2150"
+derive_frontier ErdosProblems.Erdos249.PaperCompleteR21.rational_forces_four_tail_diagonals_integral
+run_cmd Lean.logInfo "@@COMMAND 2152"
+derive_frontier ErdosProblems.Erdos249.PaperCompleteR21.rational_forces_four_tail_diagonals_integral at Erdos249257.TotientTailPeriodKiller.eventual_period_of_not_irrational
+run_cmd Lean.logInfo "@@COMMAND 2154"
+derive_weakening ErdosProblems.Erdos249.PaperCompleteR21.rational_forces_period_multiple_integrality
+run_cmd Lean.logInfo "@@COMMAND 2156"
+derive_frontier ErdosProblems.Erdos249.PaperCompleteR21.rational_forces_period_multiple_integrality
+run_cmd Lean.logInfo "@@COMMAND 2158"
+derive_weakening ErdosProblems.Erdos249.PaperCompleteR21.rational_forces_pulse_class_integrality
+run_cmd Lean.logInfo "@@COMMAND 2160"
+derive_frontier ErdosProblems.Erdos249.PaperCompleteR21.rational_forces_pulse_class_integrality
+run_cmd Lean.logInfo "@@COMMAND 2162"
+derive_weakening ErdosProblems.Erdos249.PaperCompleteR21.tail_diff_notMem_int_of_irrational
+run_cmd Lean.logInfo "@@COMMAND 2164"
+derive_weakening ErdosProblems.Erdos249.PaperCompleteR21.transcendental_sigma_series
+run_cmd Lean.logInfo "@@COMMAND 2166"
+derive_weakening ErdosProblems.Erdos249.PaperCompleteR21.exists_simultaneous_depth_succ_of_irrational
+run_cmd Lean.logInfo "@@COMMAND 2168"
+derive_frontier ErdosProblems.Erdos249.PaperCompleteR21.exists_simultaneous_depth_succ_of_irrational
+run_cmd Lean.logInfo "@@COMMAND 2170"
+derive_frontier ErdosProblems.Erdos249.PaperCompleteR21.prop_badcof
+run_cmd Lean.logInfo "@@COMMAND 2172"
+derive_frontier ErdosProblems.Erdos249.PaperCompleteR21.prop_badcof at ErdosProblems.Erdos249.PaperCompleteR21.ExcludedCofactor.eventually_card_excluded_le_of_upper
+run_cmd Lean.logInfo "@@COMMAND 2174"
+derive_frontier ErdosProblems.Erdos249.PaperCompleteR21.prop_badcof at ErdosProblems.Erdos249.PaperCompleteR21.ExcludedCofactor.eventually_card_primes_dyadic_le
+run_cmd Lean.logInfo "@@COMMAND 2176"
+derive_conjuncts ErdosProblems.Erdos249.PaperCompleteR21.lambert_id_rung_transcendental
+run_cmd Lean.logInfo "@@COMMAND 2178"
+derive_conjuncts ErdosProblems.Erdos249.PaperCompleteR21.prop_badcof
+run_cmd Lean.logInfo "@@COMMAND 2180"
+derive_conjuncts Erdos249257.not_irrational_totientSeries_implies_mod_period_and_unbounded_rank
+run_cmd Lean.logInfo "@@COMMAND 2182"
+derive_conjuncts Erdos249257.not_irrational_totientSeries_implies_unbounded_carryRank_unconditional
+run_cmd Lean.logInfo "@@COMMAND 2184"
+derive_conjuncts ErdosProblems.Erdos249.PaperCompleteR21.eventual_tail_period_of_not_irrational
+run_cmd Lean.logInfo "@@COMMAND 2186"
+derive_conjuncts ErdosProblems.Erdos249.PaperCompleteR21.rational_forces_four_tail_diagonals_integral
+run_cmd Lean.logInfo "@@COMMAND 2188"
+derive_conjuncts ErdosProblems.Erdos249.PaperCompleteR21.rational_forces_period_multiple_integrality
+run_cmd Lean.logInfo "@@COMMAND 2190"
+derive_conjuncts ErdosProblems.Erdos249.PaperCompleteR21.rational_forces_pulse_class_integrality
+run_cmd Lean.logInfo "@@COMMAND 2192"
+derive_conjuncts ErdosProblems.Erdos249.PaperCompleteR21.rationality_forces_mod_period_and_unbounded_rank
+run_cmd Lean.logInfo "@@COMMAND 2194"
+derive_conjuncts ErdosProblems.Erdos249.PaperCompleteR21.rationality_gives_mod_period_and_unbounded_rank
+run_cmd Lean.logInfo "@@COMMAND 2196"
+derive_factor Erdos249257.DiagonalFreshLossBridge.PowerTwoOddWindowAffine.actualLcm_integral_forces_topEdgeResidue
+run_cmd Lean.logInfo "@@COMMAND 2198"
+derive_factor Erdos249257.TotientTailPeriodKiller.eq_prime_pow_of_not_dvd_periodLcm
+run_cmd Lean.logInfo "@@COMMAND 2200"
+derive_factor Erdos249257.not_irrational_totientSeries_implies_mod_period_and_unbounded_rank
+run_cmd Lean.logInfo "@@COMMAND 2202"
+derive_factor Erdos249257.not_irrational_totientSeries_implies_unbounded_carryRank_unconditional
+run_cmd Lean.logInfo "@@COMMAND 2204"
+derive_factor Erdos249257.tsum_visible_coprime_pairs_ne_int_div_of_den_le_39819823323350687661677887437915526
+run_cmd Lean.logInfo "@@COMMAND 2206"
+derive_factor ErdosProblems.Erdos249.PaperCompleteR20.FinitePrefixCountermodel.exact_denominator
+run_cmd Lean.logInfo "@@COMMAND 2208"
+derive_factor ErdosProblems.Erdos249.PaperCompleteR20.clean_lcm_ray_factorisation
+run_cmd Lean.logInfo "@@COMMAND 2210"
+derive_factor ErdosProblems.Erdos249.PaperCompleteR20.finite_carry_true_orbit
+run_cmd Lean.logInfo "@@COMMAND 2212"
+derive_factor ErdosProblems.Erdos249.PaperCompleteR20.finite_grid_nonintegral_pair
+run_cmd Lean.logInfo "@@COMMAND 2214"
+derive_factor ErdosProblems.Erdos249.PaperCompleteR20.lcm_grid_flatness
+run_cmd Lean.logInfo "@@COMMAND 2216"
+derive_factor ErdosProblems.Erdos249.PaperCompleteR20.lcm_grid_fractional_parts
+run_cmd Lean.logInfo "@@COMMAND 2218"
+derive_factor ErdosProblems.Erdos249.PaperCompleteR20.radical_decomposition
+run_cmd Lean.logInfo "@@COMMAND 2220"
+derive_factor ErdosProblems.Erdos249.PaperCompleteR20.short_lcm_window_nondivisor
+run_cmd Lean.logInfo "@@COMMAND 2222"
+derive_factor ErdosProblems.Erdos249.PaperCompleteR20.specified_euler_tail_period
+run_cmd Lean.logInfo "@@COMMAND 2224"
+derive_factor ErdosProblems.Erdos249.PaperCompleteR20.upper_half_product_denominator_bounds
+run_cmd Lean.logInfo "@@COMMAND 2226"
+derive_factor ErdosProblems.Erdos249.PaperCompleteR21.SquareBlockBinary.not_approaches_int
+run_cmd Lean.logInfo "@@COMMAND 2228"
+derive_factor ErdosProblems.Erdos249.PaperCompleteR21.SquareBlockBinary.tail_mem_Icc
+run_cmd Lean.logInfo "@@COMMAND 2230"
+derive_factor ErdosProblems.Erdos249.PaperCompleteR21.SquareBlockBinary.upper_bound_needed_for_every_q
+run_cmd Lean.logInfo "@@COMMAND 2232"
+derive_factor ErdosProblems.Erdos249.PaperCompleteR21.actualLcm_corridor_pos
+run_cmd Lean.logInfo "@@COMMAND 2234"
+derive_factor ErdosProblems.Erdos249.PaperCompleteR21.actualLcm_integral_forces_topEdgeResidue_paper
+run_cmd Lean.logInfo "@@COMMAND 2236"
+derive_factor ErdosProblems.Erdos249.PaperCompleteR21.b6_adjugate_tail_cost_floor
+run_cmd Lean.logInfo "@@COMMAND 2238"
+derive_factor ErdosProblems.Erdos249.PaperCompleteR21.b6_mobiusMersenne_rung_estimates
+run_cmd Lean.logInfo "@@COMMAND 2240"
+derive_factor ErdosProblems.Erdos249.PaperCompleteR21.b6_synthetic_sequence_prescribed_differences
+run_cmd Lean.logInfo "@@COMMAND 2242"
+derive_factor ErdosProblems.Erdos249.PaperCompleteR21.balancedPulse_no_decoder_from_common_state
+run_cmd Lean.logInfo "@@COMMAND 2244"
+derive_factor ErdosProblems.Erdos249.PaperCompleteR21.block_real_part_bound_of_subset_form
+run_cmd Lean.logInfo "@@COMMAND 2246"
+derive_factor ErdosProblems.Erdos249.PaperCompleteR21.boundedOrder_witness_iff_orderOf_le
+run_cmd Lean.logInfo "@@COMMAND 2248"
+derive_factor ErdosProblems.Erdos249.PaperCompleteR21.bracket_of_two_sided_separation
+run_cmd Lean.logInfo "@@COMMAND 2250"
+derive_factor ErdosProblems.Erdos249.PaperCompleteR21.canonicalTotientKernelFamily_independent_card_and_span
+run_cmd Lean.logInfo "@@COMMAND 2252"
+derive_factor ErdosProblems.Erdos249.PaperCompleteR21.canonical_family_basis_through_level
+run_cmd Lean.logInfo "@@COMMAND 2254"
+derive_factor ErdosProblems.Erdos249.PaperCompleteR21.carryShift_dvd_iff_tailDiff_integral
+run_cmd Lean.logInfo "@@COMMAND 2256"
+derive_factor ErdosProblems.Erdos249.PaperCompleteR21.centeredLift_range
+run_cmd Lean.logInfo "@@COMMAND 2258"
+derive_factor ErdosProblems.Erdos249.PaperCompleteR21.complementSummand_low_double_echo
+run_cmd Lean.logInfo "@@COMMAND 2260"
+derive_factor ErdosProblems.Erdos249.PaperCompleteR21.coprimeLattice_gcd_layer_total
+run_cmd Lean.logInfo "@@COMMAND 2262"
+derive_factor ErdosProblems.Erdos249.PaperCompleteR21.coprimeLattice_gcd_layer_total_eq_one_iff
+run_cmd Lean.logInfo "@@COMMAND 2264"
+derive_factor ErdosProblems.Erdos249.PaperCompleteR21.coprimeLattice_halfOpen_sum
+run_cmd Lean.logInfo "@@COMMAND 2266"
+derive_factor ErdosProblems.Erdos249.PaperCompleteR21.coprimeLattice_lambert_identity
+run_cmd Lean.logInfo "@@COMMAND 2268"
+derive_factor ErdosProblems.Erdos249.PaperCompleteR21.coprimeLattice_lambert_rational
+run_cmd Lean.logInfo "@@COMMAND 2270"
+derive_factor ErdosProblems.Erdos249.PaperCompleteR21.coprimeLattice_positive_sum
+run_cmd Lean.logInfo "@@COMMAND 2272"
+derive_factor ErdosProblems.Erdos249.PaperCompleteR21.cyclotomic_layer_prime_order_decomposition_paper
+run_cmd Lean.logInfo "@@COMMAND 2274"
+derive_factor ErdosProblems.Erdos249.PaperCompleteR21.divisibility_mass
+run_cmd Lean.logInfo "@@COMMAND 2276"
+derive_factor ErdosProblems.Erdos249.PaperCompleteR21.divisorIndex_endpoint_behaviour
+run_cmd Lean.logInfo "@@COMMAND 2278"
+derive_factor ErdosProblems.Erdos249.PaperCompleteR21.eventual_integral_tailDiff_twoAdic_half_pulse
+run_cmd Lean.logInfo "@@COMMAND 2280"
+derive_factor ErdosProblems.Erdos249.PaperCompleteR21.eventual_orderConsumer_conclusions
+run_cmd Lean.logInfo "@@COMMAND 2282"
+derive_factor ErdosProblems.Erdos249.PaperCompleteR21.eventual_tail_period_of_not_irrational
+run_cmd Lean.logInfo "@@COMMAND 2284"
+derive_factor ErdosProblems.Erdos249.PaperCompleteR21.exists_certificate_of_first_harmonic_norm_bound
+run_cmd Lean.logInfo "@@COMMAND 2286"
+derive_factor ErdosProblems.Erdos249.PaperCompleteR21.exists_certificate_of_first_harmonic_real_bound
+run_cmd Lean.logInfo "@@COMMAND 2288"
+derive_factor ErdosProblems.Erdos249.PaperCompleteR21.exists_certifiedKill_of_block_norm_bound
+run_cmd Lean.logInfo "@@COMMAND 2290"
+derive_factor ErdosProblems.Erdos249.PaperCompleteR21.exists_certifiedKill_of_block_real_part_bound
+run_cmd Lean.logInfo "@@COMMAND 2292"
+derive_factor ErdosProblems.Erdos249.PaperCompleteR21.exists_certifiedKill_of_subset_real_part_bound
+run_cmd Lean.logInfo "@@COMMAND 2294"
+derive_factor ErdosProblems.Erdos249.PaperCompleteR21.exists_clean_cyclotomic_anchor_paper
+run_cmd Lean.logInfo "@@COMMAND 2296"
+derive_factor ErdosProblems.Erdos249.PaperCompleteR21.exists_diagonalKill_le_82_paper
+run_cmd Lean.logInfo "@@COMMAND 2298"
+derive_factor ErdosProblems.Erdos249.PaperCompleteR21.exists_diagonalKill_on_table
+run_cmd Lean.logInfo "@@COMMAND 2300"
+derive_factor ErdosProblems.Erdos249.PaperCompleteR21.exists_prime_integral_tailDiff_half_pulse
+run_cmd Lean.logInfo "@@COMMAND 2302"
+derive_factor ErdosProblems.Erdos249.PaperCompleteR21.exists_prime_totient_shift_four_mul_congr_two_mod_four
+run_cmd Lean.logInfo "@@COMMAND 2304"
+derive_factor ErdosProblems.Erdos249.PaperCompleteR21.exists_prime_twoAdic_half_pulse_window
+run_cmd Lean.logInfo "@@COMMAND 2306"
+derive_factor ErdosProblems.Erdos249.PaperCompleteR21.exists_prime_twoAdic_pulse_block
+run_cmd Lean.logInfo "@@COMMAND 2308"
+derive_factor ErdosProblems.Erdos249.PaperCompleteR21.exists_simultaneous_depth_of_irrational
+run_cmd Lean.logInfo "@@COMMAND 2310"
+derive_factor ErdosProblems.Erdos249.PaperCompleteR21.exists_simultaneous_depth_succ_of_irrational
+run_cmd Lean.logInfo "@@COMMAND 2312"
+derive_factor ErdosProblems.Erdos249.PaperCompleteR21.exists_upperHalf_channel_paper
+run_cmd Lean.logInfo "@@COMMAND 2314"
+derive_factor ErdosProblems.Erdos249.PaperCompleteR21.fixedRank_cleanWindow_structure
+run_cmd Lean.logInfo "@@COMMAND 2316"
+derive_factor ErdosProblems.Erdos249.PaperCompleteR21.fixed_precision_carry_completion
+run_cmd Lean.logInfo "@@COMMAND 2318"
+derive_factor ErdosProblems.Erdos249.PaperCompleteR21.forwardMultiple_spec
+run_cmd Lean.logInfo "@@COMMAND 2320"
+derive_factor ErdosProblems.Erdos249.PaperCompleteR21.integral_carry_strictly_between
+run_cmd Lean.logInfo "@@COMMAND 2322"
+derive_factor ErdosProblems.Erdos249.PaperCompleteR21.integral_tail_forces_upper_endpoint_residue
+run_cmd Lean.logInfo "@@COMMAND 2324"
+derive_factor ErdosProblems.Erdos249.PaperCompleteR21.inversePhaseGauge_locks_row_and_preserves_minor
+run_cmd Lean.logInfo "@@COMMAND 2326"
+derive_factor ErdosProblems.Erdos249.PaperCompleteR21.joint35_truncation_error
+run_cmd Lean.logInfo "@@COMMAND 2328"
+derive_factor ErdosProblems.Erdos249.PaperCompleteR21.lacCoef_bounds
+run_cmd Lean.logInfo "@@COMMAND 2330"
+derive_factor ErdosProblems.Erdos249.PaperCompleteR21.lambert_id_rung_transcendental
+run_cmd Lean.logInfo "@@COMMAND 2332"
+derive_factor ErdosProblems.Erdos249.PaperCompleteR21.lcmRay_divisor_clean_formula
+run_cmd Lean.logInfo "@@COMMAND 2334"
+derive_factor ErdosProblems.Erdos249.PaperCompleteR21.lcmRay_divisor_denominators_pos
+run_cmd Lean.logInfo "@@COMMAND 2336"
+derive_factor ErdosProblems.Erdos249.PaperCompleteR21.lcmRay_nondivisor_literal
+run_cmd Lean.logInfo "@@COMMAND 2338"
+derive_factor ErdosProblems.Erdos249.PaperCompleteR21.mersenneLayer_prime_divisor_order
+run_cmd Lean.logInfo "@@COMMAND 2340"
+derive_factor ErdosProblems.Erdos249.PaperCompleteR21.mersenneRemainder_identity_and_bound
+run_cmd Lean.logInfo "@@COMMAND 2342"
+derive_factor ErdosProblems.Erdos249.PaperCompleteR21.oddHalfCenteredLift_spec
+run_cmd Lean.logInfo "@@COMMAND 2344"
+derive_factor ErdosProblems.Erdos249.PaperCompleteR21.orderConsumer_finite_prime_escape
+run_cmd Lean.logInfo "@@COMMAND 2346"
+derive_factor ErdosProblems.Erdos249.PaperCompleteR21.orderConsumer_unbounded_prime_divisors
+run_cmd Lean.logInfo "@@COMMAND 2348"
+derive_factor ErdosProblems.Erdos249.PaperCompleteR21.pair_divisibility_mass
+run_cmd Lean.logInfo "@@COMMAND 2350"
+derive_factor ErdosProblems.Erdos249.PaperCompleteR21.penultimate_shortWindow_difference_eq_half
+run_cmd Lean.logInfo "@@COMMAND 2352"
+derive_factor ErdosProblems.Erdos249.PaperCompleteR21.periodLcm_strict_jump_at_prime_pred
+run_cmd Lean.logInfo "@@COMMAND 2354"
+derive_factor ErdosProblems.Erdos249.PaperCompleteR21.pointwise_completeness_supplies_some_depth
+run_cmd Lean.logInfo "@@COMMAND 2356"
+derive_factor ErdosProblems.Erdos249.PaperCompleteR21.prop_badcof
+run_cmd Lean.logInfo "@@COMMAND 2358"
+derive_factor ErdosProblems.Erdos249.PaperCompleteR21.pulse_delta_of_divisor_data
+run_cmd Lean.logInfo "@@COMMAND 2360"
+derive_factor ErdosProblems.Erdos249.PaperCompleteR21.rationalValue_integral_carry_and_rank_floor
+run_cmd Lean.logInfo "@@COMMAND 2362"
+derive_factor ErdosProblems.Erdos249.PaperCompleteR21.rational_forces_four_tail_diagonals_integral
+run_cmd Lean.logInfo "@@COMMAND 2364"
+derive_factor ErdosProblems.Erdos249.PaperCompleteR21.rational_forces_period_multiple_integrality
+run_cmd Lean.logInfo "@@COMMAND 2366"
+derive_factor ErdosProblems.Erdos249.PaperCompleteR21.rational_forces_pulse_class_integrality
+run_cmd Lean.logInfo "@@COMMAND 2368"
+derive_factor ErdosProblems.Erdos249.PaperCompleteR21.rational_tail_period_explicit_witnesses
+run_cmd Lean.logInfo "@@COMMAND 2370"
+derive_factor ErdosProblems.Erdos249.PaperCompleteR21.rationality_forces_mod_period_and_unbounded_rank
+run_cmd Lean.logInfo "@@COMMAND 2372"
+derive_factor ErdosProblems.Erdos249.PaperCompleteR21.rationality_gives_mod_period_and_unbounded_rank
+run_cmd Lean.logInfo "@@COMMAND 2374"
+derive_factor ErdosProblems.Erdos249.PaperCompleteR21.real_part_bound_of_norm_bound
+run_cmd Lean.logInfo "@@COMMAND 2376"
+derive_factor ErdosProblems.Erdos249.PaperCompleteR21.residueOffset_of_dvd
+run_cmd Lean.logInfo "@@COMMAND 2378"
+derive_factor ErdosProblems.Erdos249.PaperCompleteR21.retainedSections_basis_and_rank
+run_cmd Lean.logInfo "@@COMMAND 2380"
+derive_factor ErdosProblems.Erdos249.PaperCompleteR21.rough_integer_prime_count_and_totient_bound
+run_cmd Lean.logInfo "@@COMMAND 2382"
+derive_factor ErdosProblems.Erdos249.PaperCompleteR21.shortWindowSupply_single_witness_six_ninetyThree
+run_cmd Lean.logInfo "@@COMMAND 2384"
+derive_factor ErdosProblems.Erdos249.PaperCompleteR21.shortWindowSupply_through_six_paper
+run_cmd Lean.logInfo "@@COMMAND 2386"
+derive_factor ErdosProblems.Erdos249.PaperCompleteR21.short_window_diagonal_through_six
+run_cmd Lean.logInfo "@@COMMAND 2388"
+derive_factor ErdosProblems.Erdos249.PaperCompleteR21.temperedCarry_eq_scaledTail_and_shift
+run_cmd Lean.logInfo "@@COMMAND 2390"
+derive_factor ErdosProblems.Erdos249.PaperCompleteR21.totientDifference_doubling_seam
+run_cmd Lean.logInfo "@@COMMAND 2392"
+derive_factor ErdosProblems.Erdos249.PaperCompleteR21.totientTail_enclosure
+run_cmd Lean.logInfo "@@COMMAND 2394"
+derive_factor ErdosProblems.Erdos249.PaperCompleteR21.twoAdic_pulse_construction_never_certifies
+run_cmd Lean.logInfo "@@COMMAND 2396"
+derive_factor ErdosProblems.Erdos249.PaperCompleteR21.twoAdic_pulse_defining_congruence
+run_cmd Lean.logInfo "@@COMMAND 2398"
+derive_factor ErdosProblems.Erdos249.PaperCompleteR21.twoAdic_pulse_error_bound
+run_cmd Lean.logInfo "@@COMMAND 2400"
+derive_factor ErdosProblems.Erdos249.PaperCompleteR21.two_mul_totient_dvd_totient_second_difference
+run_cmd Lean.logInfo "@@COMMAND 2402"
+derive_factor ErdosProblems.Erdos249.PaperCompleteR21.unbounded_prime_divisors_of_escape_of_nontrivial
+run_cmd Lean.logInfo "@@COMMAND 2404"
+derive_factor ErdosProblems.Erdos249.PaperCompleteR21.upperHalfMersenneProduct_between_bounds
+run_cmd Lean.logInfo "@@COMMAND 2406"
+derive_factor ErdosProblems.Erdos249.PaperCompleteR21.upperHalfPrimes_member_bounds
+run_cmd Lean.logInfo "@@COMMAND 2408"
+derive_factor ErdosProblems.Erdos249.PaperCompleteR8.displayed_all_base_kernel
+run_cmd Lean.logInfo "@@COMMAND 2410"
+derive_factor ErdosProblems.Erdos249.PaperCompleteR8.displayed_integral_normal_form
+run_cmd Lean.logInfo "@@COMMAND 2412"
+derive_factor ErdosProblems.Erdos249.RankOneSubrankObstruction.rankOneSubrankQuotient_eq_one_five_iff
+run_cmd Lean.logInfo "@@COMMAND 2414"
+derive_factor ErdosProblems.Skip.LadderT67.exists_diagonalKill_le_82
+run_cmd Lean.logInfo "@@COMMAND 2416"
+derive_factor GcdMomentCalculus.tsum_pos_pair_both_dvd_half_eq_inv_mersenne_sq
 
-def P : Prop := ∀ n : Nat, n + 0 = n
-def Q : Prop := ∀ n : Nat, 0 + n = n
-def R : Prop := True
-def A (n : Nat) : Prop := n ≤ n + 1
-def B (n : Nat) : Prop := n + 0 = n
-def C (n : Nat) : Prop := 0 + n = n
+-- The statement hash of every theorem this file added, so the frontier can check
+-- that a published name still states what it stated.
+open Lean Elab Command in
+run_cmd do
+  let env ← getEnv
+  let mut out : Array String := #[]
+  for (n, ci) in env.constants.map₂.toList do
+    if let .thmInfo _ := ci then
+      if let .str _ last := n then
+        if last == "idle" || last == "factored" || last.startsWith "weakened_" || last.startsWith "frontier_"
+            || last.startsWith "part_" || last.startsWith "use_" then
+          let h := hash (toString (ErdosProblems.ArgumentGraph.normaliseBinders ci.type))
+          out := out.push s!"DERIVED	{n}	{String.ofList (Nat.toDigits 16 h.toNat)}"
+  IO.println ("
+".intercalate (out.qsort (· < ·)).toList)
 
-/-- Constructor-exposed. -/
-theorem toy1 (hP : P) (hQ : Q) : ∃ n : Nat, A n ∧ B n ∧ C n :=
-  ⟨3, Nat.le_succ 3, hP 3, hQ 3⟩
-
-/-- A lemma whose third claim alone uses its hypothesis. -/
-theorem lib2 (hQ : Q) (k : Nat) : ∃ n : Nat, A n ∧ C n ∧ k ≤ n + k := by
-  refine ⟨k, Nat.le_succ k, hQ k, Nat.le_add_left k k⟩
-
-/-- `obtain` from a lemma given a moved hypothesis, then `have` and `exact`. -/
-theorem toy2 (hP : P) (hQ : Q) (k : Nat) : ∃ n : Nat, A n ∧ B n ∧ C n ∧ k ≤ n + k := by
-  obtain ⟨n, ha, hc, hk⟩ := lib2 hQ k
-  have hb : B n := hP n
-  exact ⟨n, ha, hb, hc, hk⟩
-
-/-- The witness comes from a hypothesis, which stays; the other moves. -/
-theorem toy3 (h : ∃ n : Nat, A n) (hP : P) : ∃ n : Nat, A n ∧ B n := by
-  obtain ⟨n, hn⟩ := h
-  exact ⟨n, hn, hP n⟩
-
-/-- Nothing can move: the only hypothesis decides the witness. -/
-theorem toy4 (h : ∃ n : Nat, B n) : ∃ n : Nat, B n ∧ A n := by
-  obtain ⟨n, hn⟩ := h
-  exact ⟨n, hn, Nat.le_succ n⟩
-
-/-- A `∀` claim, a `have`, and an unused hypothesis. -/
-theorem toy5 (hP : P) (hQ : Q) (hR : R) : ∀ m : Nat, (∃ n : Nat, A n ∧ B (n + m)) ∧ C m := by
-  intro m
-  have hc : C m := hQ m
-  exact ⟨⟨m, Nat.le_succ m, hP (m + m)⟩, hc⟩
-
-/-- Library recursion through a `∀` and a nested existential (the shape of the #251
-countermodels): `libInterval` needs `P` only for its innermost claim. -/
-theorem libInterval (hε : 0 < 2) (hP : P) (K : Nat) :
-    ∃ s : Nat, K ≤ s ∧ ∀ r : Nat, r ≤ s → ∃ e : Nat, e ≤ r ∧ B e := by
-  refine ⟨K, Nat.le_refl K, ?_⟩
-  intro r hr
-  exact ⟨0, Nat.zero_le r, hP 0⟩
-
-theorem joint (hS : Q) (hP : P) (K : Nat) : ∃ e : Nat, ∃ s : Nat, e ≤ s ∧ C e ∧ B e := by
-  obtain ⟨s, hs, hfill⟩ := libInterval (by decide) hP K
-  obtain ⟨e, he, hb⟩ := hfill s (Nat.le_refl s)
-  have hc : C e := hS e
-  exact ⟨e, s, he, hc, hb⟩
-
-/-- The witness is chosen by cases on a proposition no moved hypothesis decides. -/
-theorem toy7 (hP : P) (k : Nat) : ∃ n : Nat, A n ∧ B n := by
-  rcases Nat.eq_zero_or_pos k with h | h
-  · exact ⟨0, Nat.le_succ 0, hP 0⟩
-  · exact ⟨k, Nat.le_succ k, hP k⟩
-
-/-- A term-mode `match`. -/
-theorem toy8 (hP : P) (h : ∃ n : Nat, A n) : ∃ n : Nat, A n ∧ B n :=
-  match h with
-  | ⟨n, hn⟩ => ⟨n, hn, hP n⟩
-
-/-- Separate existentials: each keeps its own witness. -/
-theorem toy9 (hP : P) : (∃ n : Nat, A n) ∧ (∃ n : Nat, B n) :=
-  ⟨⟨0, Nat.le_succ 0⟩, ⟨1, hP 1⟩⟩
-
-/-- Only an unused hypothesis: `derive_idle`'s case, not factoring. -/
-theorem toy10 (hR : R) (h : ∃ n : Nat, B n) : ∃ n : Nat, B n ∧ A n := by
-  obtain ⟨n, hn⟩ := h
-  exact ⟨n, hn, Nat.le_succ n⟩
-
-/-- The lemma is used through a hypothesis-dependent `have` whose value is then
-destructured. -/
-theorem toy11 (hP : P) (hQ : Q) (k : Nat) : ∃ n : Nat, C n ∧ B n := by
-  have hl := lib2 hQ k
-  obtain ⟨n, _, hc, _⟩ := hl
-  exact ⟨n, hc, hP n⟩
-
-derive_factor toy1
-example : ∃ n : Nat, A n ∧ (P → B n) ∧ (Q → C n) := toy1.factored
-
-derive_factor toy2
-example : ∀ k : Nat, ∃ n : Nat, A n ∧ (Q → C n) ∧ k ≤ n + k := lib2.factored
-example : ∀ k : Nat, ∃ n : Nat, A n ∧ (P → B n) ∧ (Q → C n) ∧ k ≤ n + k := toy2.factored
-
-derive_factor toy3
-example : (∃ n : Nat, A n) → ∃ n : Nat, A n ∧ (P → B n) := toy3.factored
-
-derive_factor toy4
-
-derive_factor toy5
-example : ∀ m : Nat, (∃ n : Nat, A n ∧ (P → B (n + m))) ∧ (Q → C m) := toy5.factored
-
-derive_factor joint
-example : ∀ K : Nat, ∃ s : Nat, K ≤ s ∧ ∀ r : Nat, r ≤ s → ∃ e : Nat, e ≤ r ∧ (P → B e) :=
-  libInterval.factored
-example : ∀ K : Nat, ∃ e : Nat, ∃ s : Nat, e ≤ s ∧ (Q → C e) ∧ (P → B e) := joint.factored
-
-derive_factor toy7
-example : ∀ k : Nat, ∃ n : Nat, A n ∧ (P → B n) := toy7.factored
-
-derive_factor toy8
-example : (∃ n : Nat, A n) → ∃ n : Nat, A n ∧ (P → B n) := toy8.factored
-
-derive_factor toy9
-example : (∃ n : Nat, A n) ∧ (∃ n : Nat, P → B n) := toy9.factored
-
-derive_factor toy10
-
-derive_factor toy11
-example : ∀ k : Nat, ∃ n : Nat, (Q → C n) ∧ (P → B n) := toy11.factored
-
--- Re-running a command whose theorem exists with the same statement adds nothing
-derive_factor toy1
-
-#print axioms toy1.factored
-#print axioms toy2.factored
-#print axioms joint.factored
-#print axioms toy7.factored
-#print axioms toy8.factored
-#print axioms toy11.factored
-
-end FactorToys
