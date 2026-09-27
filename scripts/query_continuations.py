@@ -29,6 +29,11 @@ the questions a researcher asks before spending effort on a statement:
     criticality KEY|THEOREM     what loses its witness chain without it
     transfer                    reductions where a theorem attributed to one problem
                                 supplies a statement attributed only to others
+    check-bundle KEY... [--target KEY]
+                                whether statements assumed together are jointly
+                                impossible, and whether they restate a target
+    cut TARGET --costs FILE     the cheapest set, within a pool of statements with
+                                costs, that supplies the target without a conflict
     diff OLD NEW                how the frontier moved between two graph files
     packet --problem N          a bounded Markdown research packet for one problem
 
@@ -53,6 +58,7 @@ from typing import Any
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "scripts"))
 
+import argument_graph_frontier as frontier_module  # noqa: E402
 import build_argument_continuations as builder  # noqa: E402
 
 DEFAULT_GRAPH = ROOT / "docs" / "argument_continuations_graph.json.gz"
@@ -82,6 +88,8 @@ def short(key: str) -> str:
 
 
 def resolve_key(graph: builder.Graph, token: str) -> str:
+    if token in graph.alias:  # the key of an unfolding merged into its named statement
+        token = graph.canon(token)
     if token in graph.statements:
         return token
     matches = [k for k in graph.statements if k.startswith(token)]
@@ -135,6 +143,14 @@ def refutation_view(graph: builder.Graph, key: str) -> dict[str, Any]:
         return {"kind": "kernel", "reading": record["reading"],
                 "refuted_by": producer if producer.startswith("tactic:") else theorem_card(graph, producer)}
     reaches = record["reaches"]
+    if record["kind"] == "derived_conflict":
+        return {"kind": "derived_conflict",
+                "note": "supplying this statement would supply the statement below together with the residuals "
+                        "of a recorded refutation of it",
+                "reaches": {"key": reaches, "type": graph.statements.get(reaches, {}).get("type"),
+                            "status": graph.status(reaches)},
+                "refuted_by": record.get("refuted_by"), "via": record["producers"],
+                "evidence_class": record.get("evidence_class")}
     return {"kind": "derived",
             "note": "supplying this statement would supply the refuted statement below",
             "reaches": {"key": reaches, "type": graph.statements.get(reaches, {}).get("type"),
@@ -180,10 +196,12 @@ def statement_view(graph: builder.Graph, payload: dict[str, Any], key: str, *, d
     view["leverage"] = {"count": len(gained),
                         "sample": [{"key": g, "type": graph.statements[g].get("type")} for g in sorted(gained)[:15]]}
     if depth == "full":
-        bundles, truncated = graph.bundles(key)
+        bundles, truncated, checks = graph.bundle_report(key)
         view["bundles"] = [[{"key": b, "type": graph.statements[b].get("type")} for b in bundle]
                            for bundle in bundles]
         view["bundles_truncated"] = truncated
+        if checks:
+            view["bundle_checks"] = [builder.joint_check_row(check) for check in checks]
     return view
 
 
@@ -228,7 +246,9 @@ def cmd_summary(graph: builder.Graph, payload: dict[str, Any], args: argparse.Na
         "open": len(graph.open),
         "refuted": sum(1 for r in graph.refuted.values() if r["kind"] == "kernel"),
         "refuted_derived": sum(1 for r in graph.refuted.values() if r["kind"] == "derived"),
+        "refuted_by_conflict": sum(1 for r in graph.refuted.values() if r["kind"] == "derived_conflict"),
         "supplied_and_refuted": len(graph.inconsistent),
+        "kernel_checked_compositions_supplying": len(graph.composition_uses),
         "reductions": len(graph.reductions),
         "disguise_classes": len(graph.disguise_classes()),
         "largest_disguise_class": max((len(c) for c in graph.disguise_classes()), default=0),
@@ -554,6 +574,30 @@ def cmd_next(graph: builder.Graph, payload: dict[str, Any], args: argparse.Names
     }
 
 
+def cmd_check_bundle(graph: builder.Graph, payload: dict[str, Any], args: argparse.Namespace) -> Any:
+    """Whether the given statements, assumed together, are jointly impossible
+    over the recorded edges, and whether they supply and restate a target."""
+    keys = [resolve_key(graph, k) for k in args.keys]
+    target = resolve_key(graph, args.target) if args.target else None
+    return graph.frontier().check(keys, target=target, max_work=args.max_work)
+
+
+def cmd_cut(graph: builder.Graph, payload: dict[str, Any], args: argparse.Namespace) -> Any:
+    """The cheapest set of statements from a pool with costs (a JSON object of
+    statement keys to integers or rational strings, at most 32) that supplies
+    the target without a recorded conflict; a statement is paid for once."""
+    target = resolve_key(graph, args.target)
+    raw = json.loads(args.costs.read_text(encoding="utf-8"))
+    if not isinstance(raw, dict):
+        raise SystemExit("--costs must hold a JSON object mapping statement keys to costs")
+    costs = {resolve_key(graph, k): v for k, v in raw.items()}
+    try:
+        return graph.frontier().cheapest_cut(target, costs, max_states=args.max_states, max_work=args.max_work,
+                                             exclude_equivalent=args.exclude_equivalent)
+    except ValueError as error:
+        raise SystemExit(str(error)) from error
+
+
 def cmd_near(graph: builder.Graph, payload: dict[str, Any], args: argparse.Namespace) -> Any:
     """Statements that share the most corpus objects with a proposed statement:
     the kernel facts to read before formulating a new lemma."""
@@ -858,12 +902,22 @@ def main(argv: list[str] | None = None) -> int:
     p = sub.add_parser("diff"); p.add_argument("old", type=Path); p.add_argument("new", type=Path)
     p.add_argument("--limit", type=int, default=30)
     p = sub.add_parser("packet"); p.add_argument("--problem", required=True); p.add_argument("--limit", type=int, default=12)
+    p = sub.add_parser("check-bundle"); p.add_argument("keys", nargs="+"); p.add_argument("--target")
+    p.add_argument("--max-work", type=int, default=frontier_module.CHECK_WORK_LIMIT,
+                   help="propagation steps before the answer reads unknown_budget")
+    p = sub.add_parser("cut"); p.add_argument("target")
+    p.add_argument("--costs", type=Path, required=True,
+                   help="JSON object: statement key (or unique prefix) -> integer or rational-string cost")
+    p.add_argument("--max-states", type=int, default=10_000)
+    p.add_argument("--max-work", type=int, default=5_000_000)
+    p.add_argument("--exclude-equivalent", action="store_true",
+                   help="skip sets the target implies member by member (restatements of the target)")
     args = parser.parse_args(argv)
     graph, payload = load(args.graph)
     handler = {"summary": cmd_summary, "problem": cmd_problem, "find": cmd_find, "statement": cmd_statement,
                "theorem": cmd_theorem, "why": cmd_why, "about": cmd_about, "near": cmd_near, "next": cmd_next,
                "barriers": cmd_barriers, "idle": cmd_idle, "weakenings": cmd_weakenings, "papers": cmd_papers,
-               "criticality": cmd_criticality,
+               "criticality": cmd_criticality, "check-bundle": cmd_check_bundle, "cut": cmd_cut,
                "transfer": cmd_transfer, "diff": cmd_diff, "packet": cmd_packet}[args.command]
     result = handler(graph, payload, args)
     if isinstance(result, str):

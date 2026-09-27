@@ -34,14 +34,22 @@ attribute a theorem to a problem; they never create an edge.
 * An ``idle`` row says a theorem's proof never uses some proposition binders
   and the kernel accepted the statement without them; it gives a reduction of
   the conclusion whose residuals omit those binders.
+* A kernel-checked ``composition`` row is a closed proof term of its
+  conclusion: it gives a reduction with no residuals (reading
+  ``checked_composition``), which depends on the theorems and statements it
+  composed. It is used last, so a witness chain stays the witness where one
+  exists.
 * ``S`` is *supplied* when some reduction has every residual supplied (least
   fixpoint). The witness reduction is recorded, so every supplied statement
   has a witness chain of corpus theorems joined by unification.
 * ``S`` is *refuted* when a corpus theorem proving ``¬S`` has every residual
   supplied or the battery proves ``¬S`` (a kernel refutation), or when
   supplying ``S`` would supply a refuted statement through recorded reductions
-  (a derived refutation, recorded with the refuted statement it reaches).
-  *Open* statements are the statements neither supplied nor refuted.
+  (a derived refutation, recorded with the refuted statement it reaches), or
+  when supplying ``S`` would supply a statement together with the residuals of
+  a recorded refutation of it (``derived_conflict``, recorded with that
+  statement and the refuting theorem). *Open* statements are the statements
+  neither supplied nor refuted.
 * After supplied residuals are removed, a reduction with one residual ``A``
   is an implication ``A ⇒ S``. A strongly connected component of that graph
   with two or more open statements is a *disguise class*: its members are
@@ -49,7 +57,11 @@ attribute a theorem to a problem; they never create an edge.
   of coordinates.
 * The *bundles* of an open statement are the minimal sets of open statements
   whose supply supplies it (AND over residuals, OR over reductions, subset
-  absorption, and a budget reported as ``truncated``).
+  absorption, and a budget reported as ``truncated``). Each bundle is then
+  checked as a whole (``argument_graph_frontier.py``): a bundle whose members
+  are jointly impossible through recorded edges is dropped and reported, and
+  a bundle the target implies member by member is labelled the target
+  restated (``joint_endpoint_equivalence``).
 * The *leverage* of an open statement ``A`` is the set of open statements that
   become supplied when ``A`` is added and the fixpoint is recomputed.
 
@@ -71,6 +83,11 @@ from collections import defaultdict
 from pathlib import Path
 from typing import Any, Iterable
 
+try:
+    from argument_graph_frontier import EVIDENCE as JOINT_EVIDENCE, Frontier
+except ImportError:  # imported as the package module scripts.build_argument_continuations
+    from scripts.argument_graph_frontier import EVIDENCE as JOINT_EVIDENCE, Frontier  # type: ignore
+
 ROOT = Path(__file__).resolve().parents[1]
 SCHEMA = "erdos249257-argument-continuations/2"
 GRAPH_SCHEMA = "erdos249257-argument-continuation-graph/2"
@@ -79,13 +96,22 @@ DEFAULT_GRAPH_OUTPUT = ROOT / "docs" / "argument_continuations_graph.json.gz"
 LEAN_TREE_FILE = "argument_continuations_lean_tree.txt"
 SOURCE_REVISION_FILE = "argument_continuations_source_revision.txt"
 PROBLEMS = ("68", "243", "249", "251", "257", "269", "1041", "1049")
+# Theorems the argument graph itself derived and the corpus then imported
+# (idle, weakened, use-site and frontier theorems generated into Lean): the
+# graph must never read its own findings back as corpus theorems.
+ARGUMENT_GRAPH_MODULE = "ErdosProblems.ArgumentGraph"
 BUNDLE_LIMIT = 24
 BUNDLE_SIZE_LIMIT = 4
 BUNDLE_DEPTH_LIMIT = 6
 BUNDLE_WORK_LIMIT = 4000
 BUNDLE_CONE_LIMIT = 4000
+# Joint checks of bundles: work units per check and per graph (a work unit is
+# one propagation step, so the results do not depend on the machine).
+BUNDLE_CHECK_WORK_LIMIT = 200_000
+BUNDLE_CHECK_TOTAL_WORK = 20_000_000
 REFUTATION_WORK_LIMIT = 2_000_000
 LIST_LIMIT = 40
+DEFAULT_ROOTS = frozenset({"Erdos249257", "ErdosProblems"})
 
 # Declaration-name tokens used only to attribute shared-library theorems
 # (namespace Erdos249257) to one of its two problems when no paper row
@@ -367,6 +393,21 @@ def existential_reason(found: dict[str, list[Any]]) -> str:
     return "; ".join(reasons)
 
 
+def is_argument_graph_module(module: str) -> bool:
+    """Whether a module holds theorems the argument graph derived itself."""
+    return module == ARGUMENT_GRAPH_MODULE or module.startswith(ARGUMENT_GRAPH_MODULE + ".")
+
+
+def composition_uses_of(theorem: str, hypotheses: Iterable[tuple[str, str]]) -> dict[str, Any]:
+    """What a kernel-checked composition's term uses: the composed theorem,
+    the producer it applied to each hypothesis, and those hypotheses. The
+    composition stops counting when any of them is withdrawn."""
+    pairs = sorted({(key, producer) for key, producer in hypotheses})
+    return {"producers": frozenset({theorem, *(p for _, p in pairs if p)}),
+            "statements": frozenset(k for k, _ in pairs),
+            "hypotheses": pairs}
+
+
 # --------------------------------------------------------------------------
 # Graph
 
@@ -390,6 +431,9 @@ class Graph:
         self.errors: list[dict[str, Any]] = []
         self.alias: dict[str, str] = {}
         self.compositions_checked: list[dict[str, Any]] = []
+        # reduction index of each kernel-checked composition -> what its term
+        # uses: {"producers", "statements", "hypotheses": [(key, producer)]}
+        self.composition_uses: dict[int, dict[str, Any]] = {}
         # refutation: (statement, producer, reading, residual keys)
         self.refutations: list[tuple[str, str, str, tuple[str, ...]]] = []
         # kernel-checked idle rows, each with what the graph made of it
@@ -399,13 +443,21 @@ class Graph:
         # proof uses of it), and each weakened theorem's derived name
         self.weakenings: list[dict[str, Any]] = []
         self.weakening_unchecked = 0
+        # kernel-checked weakening rows the builder refused (a consequence
+        # without a key, no consequence, no hypothesis key): each would have
+        # dropped an obligation without replacing it
+        self.weakenings_malformed: list[dict[str, Any]] = []
         self.synthetic: dict[str, str] = {}
         self._ingest(rows)
 
     def canon(self, key: str) -> str:
         """Representative of a statement's definitional-alias class."""
         root = key
+        seen: set[str] = set()
         while self.alias.get(root, root) != root:
+            if root in seen:
+                raise ValueError(f"cyclic statement aliases through {root!r}")
+            seen.add(root)
             root = self.alias[root]
         while self.alias.get(key, key) != root:
             self.alias[key], key = root, self.alias[key]
@@ -415,6 +467,10 @@ class Graph:
     def from_payload(cls, payload: dict[str, Any], *, include_idle: bool = True) -> "Graph":
         """Rebuild the graph from ``argument_continuations_graph.json.gz``."""
         graph = cls([], include_battery=True, include_idle=include_idle)
+        graph.alias = {str(k): str(v) for k, v in (payload.get("alias_keys") or {}).items()}
+        for key in list(graph.alias):
+            graph.canon(key)  # a cyclic alias payload fails here rather than looping later
+        graph.compositions_checked = [dict(row) for row in payload.get("compositions_checked", [])]
         graph.weakenings = [dict(entry) for entry in payload.get("weakenings", [])]
         graph.synthetic = {e["weakened"]: e["theorem"] for e in graph.weakenings if e.get("weakened")}
         graph.meta = {"schema": payload.get("schema")}
@@ -425,11 +481,15 @@ class Graph:
                 "consumers": set(row.get("consumers", [])), "conclusion_of": set(row.get("conclusion_of", [])),
                 "constants": set(row.get("constants", [])),
                 "aliases": set(row.get("aliases", [])),
+                **({"is_false": True} if row.get("is_false") is True else {}),
             }
         for row in payload.get("reductions", []):
             reading = row.get("reading", "conclusion")
             if reading == "idle" and not include_idle:
                 continue
+            if reading == "checked_composition":
+                graph.composition_uses[len(graph.reductions)] = composition_uses_of(
+                    row["producer"], [(k, p) for k, p in row.get("composed_from", [])])
             graph.reductions.append((row["statement"], row["producer"], reading, tuple(row.get("residuals", []))))
         for row in payload.get("theorems", []):
             graph.theorems[row["name"]] = {
@@ -479,9 +539,19 @@ class Graph:
                 if named != unfolded:
                     self.alias[unfolded] = named
         canon = self.canon
+        # The graph's own findings, generated into Lean under
+        # ARGUMENT_GRAPH_MODULE and imported with the coverage targets: left
+        # out, with every row that uses one as theorem or producer.
+        findings = {row["name"] for row in rows if row.get("record") == "theorem"
+                    and is_argument_graph_module(row.get("module") or "")}
+        findings |= {row["weakened"] for row in rows if row.get("record") == "weakening"
+                     and row.get("theorem") in findings and row.get("weakened")}
+        self.findings_skipped = {"theorems": sum(1 for row in rows if row.get("record") == "theorem"
+                                                 and row["name"] in findings), "rows": 0}
         # Theorems the export derived by weakening a hypothesis, by name.
         for row in rows:
-            if row.get("record") == "weakening" and row.get("kernel_checked") and row.get("weakened"):
+            if row.get("record") == "weakening" and row.get("kernel_checked") and row.get("weakened") \
+                    and row.get("theorem") not in findings:
                 self.synthetic[row["weakened"]] = row.get("theorem")
         derived = set(self.synthetic) if not self.include_weakening else set()
 
@@ -499,8 +569,17 @@ class Graph:
         binders_of: dict[str, list[dict[str, Any]]] = {}
         idle_rows: list[dict[str, Any]] = []
         weakening_rows: list[dict[str, Any]] = []
+        composition_rows: list[dict[str, Any]] = []
         for row in rows:
             record = row.get("record")
+            if findings and (
+                    (record == "theorem" and row.get("name") in findings)
+                    or (record in ("match", "refutation") and row.get("producer") in findings)
+                    or (record in ("idle", "weakening") and row.get("theorem") in findings)
+                    or (record == "composition" and (row.get("theorem") in findings or any(
+                        (h or {}).get("producer") in findings for h in row.get("hypotheses") or [])))):
+                self.findings_skipped["rows"] += 1
+                continue
             if record == "theorem":
                 name = row["name"]
                 binders = row.get("binders", [])
@@ -537,12 +616,21 @@ class Graph:
                         add_reduction(conclusion["key"], name, "theorem",
                                       [key for key, _ in found["residuals"]])
             elif record == "statement":
-                self._statement(row["key"], row.get("type"), row.get("origin", "statement"),
-                                row.get("constants", ()))
+                node = self._statement(row["key"], row.get("type"), row.get("origin", "statement"),
+                                       row.get("constants", ()))
+                if row.get("is_false") is True:
+                    node["is_false"] = True
             elif record == "unfold":
                 self._statement(row["unfolded"], row.get("type"), "unfolding", row.get("constants", ()))
-            elif record in ("match", "refutation", "composition") and row.get("producer", row.get("theorem")) in derived:
+            elif record in ("match", "refutation") and row.get("producer") in derived:
                 continue  # a weakened theorem, left out with the weakenings
+            elif record == "composition":
+                if row.get("theorem") in derived or any(
+                        (h or {}).get("producer") in derived for h in row.get("hypotheses") or []):
+                    continue  # composes a weakened theorem, left out with the weakenings
+                self.compositions_checked.append(row)
+                if row.get("kernel_checked") is True and row.get("conclusion"):
+                    composition_rows.append(row)
             elif record == "match":
                 status = row.get("status")
                 if status != "matched":
@@ -570,8 +658,6 @@ class Graph:
                 # accepted the proof: a residual-free reduction.
                 self._statement(row["statement"], None, "battery")
                 add_reduction(row["statement"], f"tactic:{row.get('tactic')}", "battery", ())
-            elif record == "composition":
-                self.compositions_checked.append(row)
             elif record == "refutation":
                 if row.get("status") != "matched":
                     self.budget_exhausted.append({
@@ -585,10 +671,15 @@ class Graph:
                     continue
                 for residual in residuals:
                     self._statement(residual["key"], residual.get("type"), "residual")
+                if canon(row["statement"]) not in self.statements:
+                    # a stream cut off before the statement row: keep the refuted statement addressable
+                    self._statement(row["statement"], None, "refutation")
                 self.refutations.append((canon(row["statement"]), row["producer"],
                                          row.get("reading", "conclusion"),
                                          tuple(sorted({canon(r["key"]) for r in residuals}))))
             elif record == "battery_refutation" and self.include_battery and row.get("kernel_checked"):
+                if canon(row["statement"]) not in self.statements:
+                    self._statement(row["statement"], None, "refutation")
                 self.refutations.append((canon(row["statement"]), f"tactic:{row.get('tactic')}", "battery", ()))
             elif record == "idle" and self.include_idle:
                 if row.get("kernel_checked"):
@@ -608,6 +699,20 @@ class Graph:
             self._ingest_idle(row, binders_of.get(row.get("theorem")), add_reduction)
         for row in weakening_rows:
             self._ingest_weakening(row, binders_of.get(row.get("theorem")), add_reduction)
+        # A kernel-checked composition is a closed proof term of its conclusion
+        # (the exporter instantiated every binder, so a conclusion that mentions
+        # a hypothesis becomes a statement of its own): a reduction without
+        # residuals, after all the others, that depends on what the term uses.
+        for row in composition_rows:
+            theorem = row.get("theorem") or "composition"
+            node = self._statement(row["conclusion"], row.get("type"), "checked_composition")
+            node["conclusion_of"].add(theorem)
+            used = [(canon(h["key"]), str(h.get("producer") or ""))
+                    for h in row.get("hypotheses") or [] if isinstance(h, dict) and h.get("key")]
+            before = len(self.reductions)
+            add_reduction(row["conclusion"], theorem, "checked_composition", ())
+            if len(self.reductions) > before:
+                self.composition_uses[before] = composition_uses_of(theorem, used)
         if not self.include_weakening:
             self.synthetic = {}
 
@@ -625,10 +730,24 @@ class Graph:
         synthetic = row.get("weakened") or None
         theorem = self.theorems.get(name)
         hypothesis = canon(row["hypothesis"]) if row.get("hypothesis") else None
+        # A row that would drop the hypothesis without naming every statement
+        # replacing it is refused: an obligation must never vanish.
+        raw = row.get("consequences")
+        refusal = None
+        if not isinstance(raw, list) or not raw:
+            refusal = "no consequence"
+        elif any(not isinstance(c, dict) or not c.get("key") for c in raw):
+            refusal = "a consequence without a statement key"
+        elif binders is not None:
+            binder = next((b for b in binders if b.get("i") == row.get("i")), None)
+            role, key, _, is_prop = binder_obligation(binder) if binder else (None, None, None, False)
+            if role != "residual" or not is_prop or (hypothesis is not None and canon(key) != hypothesis):
+                refusal = "binder i is not the closed hypothesis the row names"
+        if refusal:
+            self.weakenings_malformed.append({"theorem": name, "i": row.get("i"), "reason": refusal})
+            return
         consequences: list[dict[str, Any]] = []
-        for c in row.get("consequences", []) or []:
-            if not c.get("key"):
-                continue
+        for c in raw:
             node = self._statement(c["key"], c.get("type"), "consequence")
             if synthetic:
                 node["consumers"].add(synthetic)
@@ -649,9 +768,12 @@ class Graph:
             entry["reason"] = "no theorem row"
         else:
             remaining = obligations(b for b in binders if b.get("i") != row.get("i"))
-            residuals = sorted({canon(key) for key, _ in remaining["residuals"]} | {c["key"] for c in consequences})
+            others = sorted({canon(key) for key, _ in remaining["residuals"]})
+            residuals = sorted(set(others) | {c["key"] for c in consequences})
             entry["residuals"] = residuals
+            entry["other_obligations"] = others
             schematic = bool(remaining["schematic_props"] or remaining["schematic_witnesses"])
+            entry["schematic_obligations"] = schematic
             if not (theorem["conclusion_closed"] and theorem["conclusion_key"]):
                 entry["reason"] = "conclusion mentions a binder"
             elif schematic:
@@ -714,10 +836,15 @@ class Graph:
     def supply(self, extra: Iterable[str] = (), *, exclude_heads: frozenset[str] = frozenset(),
                exclude_producers: frozenset[str] = frozenset(),
                exclude_readings: frozenset[str] = frozenset()) -> tuple[set[str], dict[str, int]]:
+        uses = self.composition_uses
+
         def usable(index: int) -> bool:
             head, producer, reading, _ = self.reductions[index]
-            return (head not in exclude_heads and producer not in exclude_producers
-                    and reading not in exclude_readings)
+            if head in exclude_heads or producer in exclude_producers or reading in exclude_readings:
+                return False
+            used = uses.get(index)
+            # A composed term stops counting when anything it applied is withdrawn.
+            return not (used and (used["producers"] & exclude_producers or used["statements"] & exclude_heads))
 
         remaining = [len(residuals) for (_, _, _, residuals) in self.reductions]
         by_residual: dict[str, list[int]] = defaultdict(list)
@@ -729,10 +856,23 @@ class Graph:
         supplied: set[str] = set()
         witness: dict[str, int] = {}
         queue: list[str] = []
+
+        def settle() -> None:
+            while queue:
+                key = queue.pop()
+                for index in by_residual.get(key, ()):
+                    remaining[index] -= 1
+                    if remaining[index] == 0:
+                        head = self.reductions[index][0]
+                        if head not in supplied:
+                            supplied.add(head)
+                            witness[head] = index
+                            queue.append(head)
+
         for index, (head, _, _, residuals) in enumerate(self.reductions):
-            if not usable(index):
+            if residuals or index in uses or not usable(index):
                 continue
-            if not residuals and head not in supplied:
+            if head not in supplied:
                 supplied.add(head)
                 witness[head] = index
                 queue.append(head)
@@ -741,16 +881,16 @@ class Graph:
                 supplied.add(key)
                 witness[key] = -1
                 queue.append(key)
-        while queue:
-            key = queue.pop()
-            for index in by_residual.get(key, ()):
-                remaining[index] -= 1
-                if remaining[index] == 0:
-                    head = self.reductions[index][0]
-                    if head not in supplied:
-                        supplied.add(head)
-                        witness[head] = index
-                        queue.append(head)
+        settle()
+        # Checked compositions last: the supplied set is the same either way,
+        # and a witness chain stays the witness where one exists.
+        for index in sorted(uses):
+            head = self.reductions[index][0]
+            if head not in supplied and usable(index):
+                supplied.add(head)
+                witness[head] = index
+                queue.append(head)
+        settle()
         return supplied, witness
 
     # ------------------------------------------------------------------
@@ -873,9 +1013,21 @@ class Graph:
             for key, (producer, reading) in self.refuted_kernel.items()}
         for key, record in self.refuted_derived.items():
             self.refuted.setdefault(key, record)
+        # A statement whose supply would supply another statement together
+        # with the residuals of a recorded refutation of it is refuted as well
+        # (derived_conflict): the propagation above reaches only refutations
+        # whose residuals the graph already supplies. The joint-question index
+        # holds self.refuted itself, so it sees these refutations once they
+        # are added, and serves the bundle checks afterwards.
+        frontier = Frontier(self, supplied=self.supplied, refuted=self.refuted)
+        self.refuted_conflict, self.refutation_conflict_stats = frontier.refuted_alone(
+            k for k in self.statements if k not in self.supplied and k not in self.refuted)
+        for key, record in self.refuted_conflict.items():
+            self.refuted.setdefault(key, record)
         # A statement both supplied and refuted would mean the corpus proves a
         # contradiction (or that two different statements share a key).
         self.inconsistent = sorted(set(self.refuted) & self.supplied)
+        frontier.base_conflicts = list(self.inconsistent)
         self.open = {key for key in self.statements if key not in self.supplied and key not in self.refuted}
         self.vacuous_theorems = sorted(
             (name, key) for name, theorem in self.theorems.items()
@@ -901,8 +1053,10 @@ class Graph:
         for index, (_, _, _, left) in enumerate(self.reduced):
             for r in left:
                 self._by_residual_open[r].append(index)
-        for cache in ("_reduced_by_head", "_leverage_cache", "_class_closure"):
+        for cache in ("_reduced_by_head", "_leverage_cache", "_class_closure", "_frontier", "_bundle_cache",
+                      "_bundle_check_work"):
             self.__dict__.pop(cache, None)
+        self._frontier = frontier
         self._mark_idle_open()
 
     def _mark_idle_open(self) -> None:
@@ -915,8 +1069,17 @@ class Graph:
             supplied, _ = self.supply(exclude_readings=without)
             kernel = self._kernel_refutations(supplied)
             derived, _ = self._derived_refutations(supplied, kernel, exclude_readings=without)
+            refuted = {**{k: {"kind": "kernel", "producer": p, "reading": r} for k, (p, r) in kernel.items()},
+                       **derived}
+            dropped = {d["key"] for entry in self.idle for d in entry.get("dropped", [])
+                       if d.get("key") and d["key"] in self.statements
+                       and d["key"] not in supplied and d["key"] not in refuted}
+            conflict, _ = Frontier(self, supplied=supplied, refuted=refuted,
+                                   exclude_readings=without).refuted_alone(dropped)
+            derived = {**derived, **conflict}
         else:
-            supplied, kernel, derived = self.supplied, self.refuted_kernel, self.refuted_derived
+            supplied, kernel = self.supplied, self.refuted_kernel
+            derived = {**self.refuted_derived, **self.refuted_conflict}
         for entry in self.idle:
             entry["dropped_open_without_idle"] = sorted(
                 d["key"] for d in entry.get("dropped", [])
@@ -990,7 +1153,57 @@ class Graph:
     # ------------------------------------------------------------------
     # Bundles and leverage
 
+    def frontier(self) -> Frontier:
+        """The joint-question index over this analysed graph."""
+        index = self.__dict__.get("_frontier")
+        if index is None:
+            index = self._frontier = Frontier(self)
+        return index
+
     def bundles(self, key: str) -> tuple[list[list[str]], bool]:
+        """The bundles of ``key`` that are not jointly impossible, and whether a
+        limit pruned their enumeration (see ``bundle_report``)."""
+        kept, truncated, _ = self.bundle_report(key)
+        return kept, truncated
+
+    def bundle_report(self, key: str) -> tuple[list[list[str]], bool, list[dict[str, Any]]]:
+        """Each candidate bundle of ``key`` checked as a whole over the recorded
+        edges. A bundle whose members are jointly impossible (their closure
+        supplies a refuted statement or False) is dropped from the list; a
+        bundle the target implies member by member stays, labelled the target
+        restated (``joint_endpoint_equivalence``); a check that runs out of
+        work stays, labelled ``unknown_budget``. The third value holds the
+        check of every candidate that was dropped, is a restatement, or is
+        unknown, with witnesses. The work budget is shared by the graph's
+        checks and counted in propagation steps, so the answer does not depend
+        on the machine."""
+        cache = self.__dict__.setdefault("_bundle_cache", {})
+        if key in cache:
+            kept, truncated, checks = cache[key]
+            return [list(b) for b in kept], truncated, [dict(c) for c in checks]
+        candidates, truncated = self._candidate_bundles(key)
+        kept: list[list[str]] = []
+        checks: list[dict[str, Any]] = []
+        for bundle in candidates:
+            spent = self.__dict__.get("_bundle_check_work", 0)
+            left = BUNDLE_CHECK_TOTAL_WORK - spent
+            if left <= 0:
+                check = {"assumptions": bundle, "status": "unknown_budget", "endpoint_relation": "unknown_budget",
+                         "complete_for_recorded_edges": False, "evidence_class": JOINT_EVIDENCE,
+                         "satisfiability": "not_established",
+                         "reason": "the graph's budget for joint checks is spent"}
+            else:
+                check = self.frontier().check(bundle, target=key, max_work=min(BUNDLE_CHECK_WORK_LIMIT, left))
+                self._bundle_check_work = spent + check.get("work", 0)
+            if check["status"] != "refuted_jointly":
+                kept.append(bundle)
+            if (check["status"] != "no_recorded_conflict"
+                    or check.get("endpoint_relation") != "not_established_by_recorded_edges"):
+                checks.append(check)
+        cache[key] = (kept, truncated, checks)
+        return [list(b) for b in kept], truncated, [dict(c) for c in checks]
+
+    def _candidate_bundles(self, key: str) -> tuple[list[list[str]], bool]:
         """Minimal sets of open statements whose supply supplies ``key``.
 
         Routes through a refuted residual are dead and skipped. ``truncated``
@@ -1120,27 +1333,32 @@ class Graph:
             self._reduced_by_head = cached
         return cached
 
-    def leverage(self, key: str, limit: int = 100000) -> set[str]:
-        """Open statements supplied once ``key`` is supplied (memoised). The
-        members of a disguise class imply each other, so they share one
-        closure, computed once per class."""
+    def leverage(self, key: str, limit: int = 100000) -> frozenset[str]:
+        """Open statements supplied once ``key`` is supplied (memoised by the
+        statement and the step bound, and immutable, so no caller can change
+        what the next one reads). The members of a disguise class imply each
+        other, so they share one closure, computed once per class; a closure
+        the bound cut short is not shared, since it depends on where it
+        started."""
         cache = self.__dict__.setdefault("_leverage_cache", {})
-        if key in cache:
-            return cache[key]
+        token = (key, limit)
+        if token in cache:
+            return cache[token]
         component = self.component.get(key)
-        if component is not None and len(self.components[component]) >= 2:
-            closures = self.__dict__.setdefault("_class_closure", {})
-            if component not in closures:
-                closures[component] = self._leverage(key, limit) | {key}
-            result = closures[component] - {key}
+        closures = self.__dict__.setdefault("_class_closure", {})
+        if component is not None and len(self.components[component]) >= 2 and (component, limit) in closures:
+            result = closures[(component, limit)] - {key}
         else:
-            result = self._leverage(key, limit)
-        cache[key] = result
+            gained, complete = self._leverage(key, limit)
+            result = frozenset(gained)
+            if complete and component is not None and len(self.components[component]) >= 2:
+                closures[(component, limit)] = result | {key}
+        cache[token] = result
         return result
 
-    def _leverage(self, key: str, limit: int) -> set[str]:
+    def _leverage(self, key: str, limit: int) -> tuple[set[str], bool]:
         if key in self.supplied or key in self.refuted:
-            return set()
+            return set(), True
         remaining: dict[int, int] = {}
         gained = {key}
         queue = [key]
@@ -1160,15 +1378,20 @@ class Graph:
                         gained.add(head)
                         queue.append(head)
         gained.discard(key)
-        return gained
+        return gained, not queue
 
     def criticality(self, *, statement: str | None = None, producer: str | None = None) -> set[str]:
         """Supplied statements that lose every kernel witness chain when the
         given statement is no longer supplied, or the given theorem is
-        withdrawn: the answer to "what fails without it"."""
+        withdrawn: the answer to "what fails without it". Withdrawing a
+        theorem withdraws the theorems the export derived from its proof by
+        weakening, and every checked composition that applied either."""
+        producers: set[str] = set()
+        if producer:
+            producers = {producer} | {name for name, original in self.synthetic.items() if original == producer}
         supplied, _ = self.supply(
             exclude_heads=frozenset([statement]) if statement else frozenset(),
-            exclude_producers=frozenset([producer]) if producer else frozenset())
+            exclude_producers=frozenset(producers))
         lost = self.supplied - supplied
         if statement:
             lost.discard(statement)
@@ -1186,6 +1409,12 @@ class Graph:
         head, producer, reading, residuals = self.reductions[index]
         node["producer"] = producer
         node["reading"] = reading
+        used = self.composition_uses.get(index)
+        if used is not None:
+            # One kernel-checked term: the hypotheses it composed, and with what.
+            node["kernel_checked_composition"] = True
+            node["composed_from"] = [{"statement": k, "type": self.statements.get(k, {}).get("type"),
+                                      "producer": p} for k, p in used["hypotheses"]]
         if depth < limit:
             node["from"] = [self.proof_tree(r, depth + 1, limit) for r in residuals]
         elif residuals:
@@ -1243,9 +1472,13 @@ def kernel_status(graph: "Graph", name: str, *, after_idle: bool = False) -> str
 def compositions(graph: "Graph", papers: dict[str, list[dict[str, Any]]]) -> list[dict[str, Any]]:
     """Statements the graph supplies only by chaining a conditional theorem
     with statements the graph supplies otherwise. These are witness chains; a
-    row is a kernel-checked term only when ``kernel_checked_composition`` says
-    the exporter composed that theorem and the kernel accepted it."""
-    direct = {head for (head, _, _, residuals) in graph.reductions if not residuals}
+    row is a kernel-checked term when ``kernel_checked_composition`` says the
+    exporter composed that theorem and the kernel accepted it. A statement
+    only a checked composition supplies (its conclusion mentions a hypothesis,
+    so no reduction of the theorem reaches it) is listed with the hypotheses
+    the term composed."""
+    direct = {head for index, (head, _, _, residuals) in enumerate(graph.reductions)
+              if not residuals and index not in graph.composition_uses}
     checked = {(row.get("theorem"), graph.canon(row["conclusion"])) for row in graph.compositions_checked
                if row.get("kernel_checked") and row.get("conclusion")}
     out = []
@@ -1257,6 +1490,11 @@ def compositions(graph: "Graph", papers: dict[str, list[dict[str, Any]]]) -> lis
             continue
         head, producer, reading, residuals = graph.reductions[index]
         suppliers = []
+        used = graph.composition_uses.get(index)
+        if used is not None:
+            for residual, supplier in used["hypotheses"]:
+                suppliers.append({"statement": residual, "type": graph.statements.get(residual, {}).get("type"),
+                                  "supplied_by": supplier or None})
         for residual in residuals:
             w = graph.witness.get(residual, -1)
             suppliers.append({"statement": residual, "type": graph.statements.get(residual, {}).get("type"),
@@ -1272,6 +1510,21 @@ def compositions(graph: "Graph", papers: dict[str, list[dict[str, Any]]]) -> lis
         })
     out.sort(key=lambda row: (not row["paper_rows_of_conditional_theorem"], row["via"]))
     return out
+
+
+def joint_check_row(check: dict[str, Any]) -> dict[str, Any]:
+    """A joint check as the projection keeps it: the verdict, and the
+    witnesses of a conflict or of a restatement of the target."""
+    row = {k: check[k] for k in ("assumptions", "status", "endpoint_relation", "evidence_class",
+                                 "satisfiability", "reason") if k in check}
+    if check.get("conflicts"):
+        row["conflicts"] = check["conflicts"]
+    if check.get("endpoint_relation") == "joint_endpoint_equivalence":
+        row["implied_by_target"] = check.get("implied_by_target", [])
+        for key in ("target_witness", "reverse_witnesses"):
+            if key in check:
+                row[key] = check[key]
+    return row
 
 
 def audit_authored_layers(graph: "Graph", root: Path) -> dict[str, Any]:
@@ -1468,9 +1721,11 @@ def build(export_path: Path, root: Path = ROOT, *, lean_tree: str | None = None,
             gained = graph.leverage(key)
             card["leverage"] = len(gained)
             if with_bundles:
-                bundles, truncated = graph.bundles(key)
+                bundles, truncated, checks = graph.bundle_report(key)
                 card["bundles"] = bundles
                 card["bundles_truncated"] = truncated
+                if checks:
+                    card["bundle_checks"] = [joint_check_row(check) for check in checks]
         return card
 
     # Per-problem open sinks: open statements with at least one reduction into
@@ -1552,6 +1807,14 @@ def build(export_path: Path, root: Path = ROOT, *, lean_tree: str | None = None,
         gained_by_weakening = graph.supplied - without_weakening
     else:
         gained_by_weakening = set()
+    # What the checked compositions gain: statements no reduction but a
+    # kernel-checked composed term supplies (a conclusion that mentions a
+    # hypothesis becomes a closed statement once the term fixes it).
+    if graph.composition_uses:
+        without_compositions, _ = graph.supply(exclude_readings=frozenset({"checked_composition"}))
+        gained_by_composition = graph.supplied - without_compositions
+    else:
+        gained_by_composition = set()
 
     def weakening_row(entry: dict[str, Any]) -> dict[str, Any]:
         name = entry["theorem"]
@@ -1586,9 +1849,14 @@ def build(export_path: Path, root: Path = ROOT, *, lean_tree: str | None = None,
     consequence_keys = {c["key"] for e in graph.weakenings for c in e.get("consequences", [])}
     kernel_refuted = {k: v for k, v in graph.refuted.items() if v["kind"] == "kernel"}
     derived_refuted = {k: v for k, v in graph.refuted.items() if v["kind"] == "derived"}
+    conflict_refuted = {k: v for k, v in graph.refuted.items() if v["kind"] == "derived_conflict"}
     theorem_modules = {t["module"] for t in graph.theorems.values() if t.get("module")}
     summary = {
         "theorems": len(graph.theorems),
+        # the graph's own findings in Lean (ARGUMENT_GRAPH_MODULE), and the
+        # rows that used one: never read back as corpus theorems
+        "argument_graph_derived_theorems_skipped": graph.findings_skipped["theorems"],
+        "argument_graph_derived_rows_skipped": graph.findings_skipped["rows"],
         "theorem_modules": len(theorem_modules),
         "conditional_arguments": len(conditional),
         "closed_statements": len(graph.statements),
@@ -1610,11 +1878,15 @@ def build(export_path: Path, root: Path = ROOT, *, lean_tree: str | None = None,
                                          if producer.startswith("tactic:")),
         "refuted_statements": len(kernel_refuted),
         "refuted_statements_derived": len(derived_refuted),
+        "refuted_statements_by_conflict": len(conflict_refuted),
         "refutation_propagation_truncated": graph.refutation_truncated,
+        "refutation_conflict_checks": graph.refutation_conflict_stats["closures"],
+        "refutation_conflict_checks_unknown": graph.refutation_conflict_stats["incomplete"],
         "vacuous_theorems": len({name for name, _ in graph.vacuous_theorems}),
         "supplied_and_refuted": len(graph.inconsistent),
         "kernel_checked_compositions": sum(1 for row in graph.compositions_checked
                                            if row.get("kernel_checked")),
+        "statements_supplied_only_by_checked_compositions": len(gained_by_composition),
         "compositions": len(composed),
         "compositions_of_paper_cited_conditional_theorems": sum(
             1 for row in composed if row["paper_rows_of_conditional_theorem"]),
@@ -1625,6 +1897,7 @@ def build(export_path: Path, root: Path = ROOT, *, lean_tree: str | None = None,
         "weakened_theorems": len({e["theorem"] for e in graph.weakenings}),
         "weakenings_kernel_checked": len(graph.weakenings),
         "weakenings_unchecked": graph.weakening_unchecked,
+        "weakenings_refused_malformed": len(graph.weakenings_malformed),
         "weakenings_of_open_hypotheses": sum(1 for r in weakening_rows if r["hypothesis"]["status"] == "open"),
         "weakening_consequences": len(consequence_keys),
         "weakening_consequences_supplied": sum(1 for k in consequence_keys if k in graph.supplied),
@@ -1635,6 +1908,16 @@ def build(export_path: Path, root: Path = ROOT, *, lean_tree: str | None = None,
         "barriers_in_graph": sum(1 for e in barriers["entries"] if e["in_graph"]),
         "open_statements_constrained_by_barriers": len(barriers["constrains"]),
     }
+    # Joint checks of the bundles the projection lists (the sinks' bundles).
+    bundle_checks = [check for _, _, checks in graph.__dict__.get("_bundle_cache", {}).values() for check in checks]
+    summary.update({
+        "bundles_jointly_impossible": sum(1 for c in bundle_checks if c["status"] == "refuted_jointly"),
+        "bundles_restating_target": sum(1 for c in bundle_checks
+                                        if c.get("endpoint_relation") == "joint_endpoint_equivalence"),
+        "bundle_checks_unknown": sum(1 for c in bundle_checks if c["status"] == "unknown_budget"
+                                     or c.get("endpoint_relation") == "unknown_budget"),
+        "bundle_check_work": graph.__dict__.get("_bundle_check_work", 0),
+    })
     alarms = sentinel_alarms(graph)
     summary["sentinel_alarms"] = len(alarms)
     lean_tree = resolve_lean_tree(export_path, lean_tree)
@@ -1668,6 +1951,8 @@ def build(export_path: Path, root: Path = ROOT, *, lean_tree: str | None = None,
             reaches = record["reaches"]
             row.update({"reaches": reaches, "reaches_type": graph.statements.get(reaches, {}).get("type"),
                         "via": record["producers"]})
+            if record["kind"] == "derived_conflict":
+                row["reaches_refuted_by"] = record.get("refuted_by")
         return row
 
     projection = {
@@ -1683,24 +1968,33 @@ def build(export_path: Path, root: Path = ROOT, *, lean_tree: str | None = None,
             "supplied": "least fixpoint over reductions; every supplied statement has a witness chain of corpus "
                         "theorems joined by unification",
             "refuted": "kernel: a corpus theorem (or a kernel-checked battery proof) establishes the negation, with "
-                       "every residual supplied; derived: supplying the statement would supply a refuted one",
+                       "every residual supplied; derived: supplying the statement would supply a refuted one; "
+                       "derived_conflict: supplying the statement would supply another statement together with "
+                       "the residuals of a recorded refutation of it (reaches names that statement)",
             "open": "neither supplied nor refuted",
             "implication": "a reduction left with exactly one open residual",
             "disguise_class": "strongly connected component of implications with two or more open statements: "
                               "statements equivalent through recorded reductions",
             "bundle": "a minimal set of open statements whose supply supplies the statement; bundles_truncated "
-                      "says whether a limit pruned the enumeration",
+                      "says whether a limit pruned the enumeration. Each bundle is checked as a whole over the "
+                      "recorded edges (bundle_checks): one whose members are jointly impossible is dropped, one the "
+                      "target implies member by member is the target restated (joint_endpoint_equivalence), and a "
+                      "check that ran out of work reads unknown_budget; the evidence class is "
+                      "derivation_over_recorded_edges",
             "leverage": "number of open statements supplied once the statement is supplied",
             "sink": "an open statement with a reduction into it that implies nothing outside its own class",
             "composition": "a statement supplied only through a conditional theorem whose hypotheses other "
                            "reductions supply (a witness chain); kernel_checked_composition marks the ones the "
-                           "exporter composed and the kernel accepted",
+                           "exporter composed and the kernel accepted. A kernel-checked composition is a closed "
+                           "proof of its conclusion and supplies it (reading checked_composition), after every "
+                           "other reduction, and stops counting when a theorem or statement it composed is withdrawn",
             "idle": "a theorem whose proof never uses some proposition binders; the kernel accepted the stronger "
                     "statement without them",
             "weakening": "a theorem whose proof uses a closed hypothesis H only through use sites (L h, h.1, h a) "
                          "proving propositions C; the kernel accepted the theorem with H replaced by the C, and "
                          "H → C for each. uses_only lists the C; a reduction of each C to H (reading use_site) "
-                         "lets a refutation of C refute H",
+                         "lets a refutation of C refute H. A kernel-checked row whose consequences are missing or "
+                         "unkeyed, or whose binder is not the hypothesis it names, is refused (weakenings_refused)",
             "vacuous_theorem": "a conditional theorem with a refuted closed hypothesis: it can never be applied",
             "audit": "authored logical classes and open antecedents checked against the kernel graph",
         },
@@ -1717,16 +2011,32 @@ def build(export_path: Path, root: Path = ROOT, *, lean_tree: str | None = None,
             {"key": key, "type": graph.statements.get(key, {}).get("type")} for key in graph.inconsistent],
         "idle": idle_rows[:LIST_LIMIT * 3],
         "weakenings": weakening_rows[:LIST_LIMIT * 6],
+        "weakenings_refused": graph.weakenings_malformed[:LIST_LIMIT],
         "audit": audit,
         "sentinel_alarms": alarms,
     }
+
+    def reduction_row(index: int, head: str, producer: str, reading: str, residuals: tuple[str, ...]
+                      ) -> dict[str, Any]:
+        row: dict[str, Any] = {"statement": head, "producer": producer, "reading": reading,
+                               "residuals": list(residuals)}
+        used = graph.composition_uses.get(index)
+        if used is not None:
+            row["composed_from"] = [[k, p] for k, p in used["hypotheses"]]
+        return row
+
     graph_payload = {
         "schema": GRAPH_SCHEMA,
         "source": source,
+        # Keys of unfoldings merged into their named statement, so a key read
+        # from the export still resolves after the graph is reloaded.
+        "alias_keys": {k: graph.canon(k) for k in sorted(graph.alias)},
+        "compositions_checked": graph.compositions_checked,
         "statements": [
             {
                 "key": key,
                 "type": node.get("type"),
+                **({"is_false": True} if node.get("is_false") is True else {}),
                 "origins": sorted(node["origins"]),
                 "status": graph.status(key),
                 **({"refutation": graph.refuted[key]} if key in graph.refuted else {}),
@@ -1742,10 +2052,7 @@ def build(export_path: Path, root: Path = ROOT, *, lean_tree: str | None = None,
             }
             for key, node in sorted(graph.statements.items())
         ],
-        "reductions": [
-            {"statement": head, "producer": producer, "reading": reading, "residuals": list(residuals)}
-            for head, producer, reading, residuals in graph.reductions
-        ],
+        "reductions": [reduction_row(index, *reduction) for index, reduction in enumerate(graph.reductions)],
         "refutations": [
             {"statement": st, "producer": pr, "reading": rd, "residuals": list(rs)}
             for st, pr, rd, rs in graph.refutations],
@@ -1783,17 +2090,33 @@ SENTINELS = {
 
 
 def sentinel_alarms(graph: "Graph") -> list[dict[str, Any]]:
-    """Sentinel statements the graph reports as supplied or refuted, each with
-    the witness chain to inspect. Refuting False is not an alarm."""
+    """Statements whose status means the graph must be read before any number
+    is used, each with the witness chain to inspect: every statement the graph
+    both supplies and refutes, False supplied, and a registered open target
+    supplied or refuted. Refuting False is not an alarm. A contradiction is
+    never ``overridable``; an open target settled may be a solution, which a
+    person checks before the target leaves ``SENTINELS``."""
     alarms = []
+    for key in graph.inconsistent:
+        alarms.append({"key": key, "type": graph.statements.get(key, {}).get("type"),
+                       "status": "supplied_and_refuted", "overridable": False,
+                       "reason": "the graph supplies and refutes the same statement: a supply chain or a "
+                                 "refutation is unsound, or two statements share a key",
+                       "witness": graph.proof_tree(key, limit=3), "refutation": graph.refuted.get(key)})
+    contradictions = set(graph.inconsistent)
     for key, node in sorted(graph.statements.items()):
+        if key in contradictions:
+            continue
         texts = {node.get("type"), *node.get("aliases", ())}
-        hits = [text for text in texts if text in SENTINELS]
+        hits = sorted((text for text in texts if text in SENTINELS), key=lambda t: (t != "False", t))
+        if node.get("is_false") is True and "False" not in hits:
+            hits.insert(0, "False")
         if not hits:
             continue
         status = graph.status(key)
         if status == "supplied" or (status == "refuted" and hits != ["False"]):
-            alarm = {"key": key, "type": hits[0], "status": status, "reason": SENTINELS[hits[0]]}
+            alarm = {"key": key, "type": hits[0], "status": status, "reason": SENTINELS[hits[0]],
+                     "overridable": hits[0] != "False"}
             if status == "supplied":
                 alarm["witness"] = graph.proof_tree(key, limit=3)
             else:
@@ -1806,12 +2129,53 @@ TEX_MACROS_BEGIN = "% BEGIN generated_argument_graph_macros"
 TEX_MACROS_END = "% END generated_argument_graph_macros"
 
 
-def paper_macro_region(projection: dict[str, Any]) -> str:
+def census_refusal(projection: dict[str, Any], *, allow_open_target_alarms: bool = False) -> str | None:
+    """Why this projection may not fill a paper's corpus-wide totals, or None.
+    A contradiction alarm always refuses; an open-target alarm refuses unless
+    the caller acknowledges it; an export restricted by declaration-name
+    prefix, by other roots or to focused declarations is not the corpus. A
+    truncated export is allowed: the paper states every total as a lower
+    bound, and ``export_truncated`` stays in the summary."""
+    alarms = projection.get("sentinel_alarms") or []
+    hard = [a for a in alarms if a.get("overridable") is not True]
+    if hard:
+        return f"{len(hard)} contradiction alarm(s): read sentinel_alarms; no override exists"
+    if alarms and not allow_open_target_alarms:
+        return f"{len(alarms)} open-target alarm(s): read sentinel_alarms (--allow-sentinel-alarms acknowledges them)"
+    source = projection.get("source") or {}
+    config = source.get("export_config") or {}
+    if config.get("name_prefixes"):
+        return f"the export selected declarations by name prefix {config['name_prefixes']}: not the corpus"
+    roots = config.get("roots")
+    if roots is not None and set(roots) != DEFAULT_ROOTS:
+        return f"the export read roots {roots}, not {sorted(DEFAULT_ROOTS)}: not the corpus"
+    if config.get("focus_declarations"):
+        return "the export focused on selected declarations: not the corpus"
+    if (source.get("export_summary") or {}).get("global_corpus_census") is False:
+        return "the export assembled selected tasks only: not the corpus"
+    return None
+
+
+def paper_macro_region(projection: dict[str, Any], *, allow_open_target_alarms: bool = False) -> str:
     """LaTeX macros carrying the graph's measured totals into a paper, so no
-    number in the prose is typed by hand."""
+    number in the prose is typed by hand. Refuses (``ValueError``) whatever
+    ``census_refusal`` refuses, so no caller can bypass the alarm."""
+    refusal = census_refusal(projection, allow_open_target_alarms=allow_open_target_alarms)
+    if refusal:
+        raise ValueError(f"no paper macros: {refusal}")
+    lines = [TEX_MACROS_BEGIN]
+    for name, value in macro_values(projection).items():
+        rendered = f"{value:,}" if isinstance(value, int) else str(value)
+        lines.append(rf"\newcommand{{\{name}}}{{{rendered}}}")
+    lines.append(TEX_MACROS_END)
+    return "\n".join(lines)
+
+
+def macro_values(projection: dict[str, Any]) -> dict[str, Any]:
+    """The totals the paper macros carry, by macro name."""
     summary = projection["summary"]
     export = projection["source"].get("export_summary", {})
-    values = {
+    return {
         "AGTheorems": summary["theorems"],
         "AGModules": summary["theorem_modules"],
         "AGConditional": summary["conditional_arguments"],
@@ -1840,12 +2204,6 @@ def paper_macro_region(projection: dict[str, Any]) -> str:
         "AGWeakenedOpen": summary["weakenings_of_open_hypotheses"],
         "AGWeakeningGain": summary["statements_supplied_only_by_weakening"],
     }
-    lines = [TEX_MACROS_BEGIN]
-    for name, value in values.items():
-        rendered = f"{value:,}" if isinstance(value, int) else str(value)
-        lines.append(rf"\newcommand{{\{name}}}{{{rendered}}}")
-    lines.append(TEX_MACROS_END)
-    return "\n".join(lines)
 
 
 def replace_macro_region(text: str, region: str) -> str:
@@ -1881,21 +2239,29 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--paper", type=Path, action="append", default=[],
                         help="TeX file whose generated_argument_graph_macros region is rewritten")
     parser.add_argument("--allow-sentinel-alarms", action="store_true",
-                        help="write paper macros and exit 0 even when a sentinel statement is settled")
+                        help="acknowledge settled open targets (a solution, after a person checked it): write "
+                             "paper macros and exit 0; a contradiction (False supplied, or a statement supplied "
+                             "and refuted) is never acknowledged")
     args = parser.parse_args(argv)
     projection, graph_payload = build(args.export, args.root, lean_tree=args.lean_tree,
                                       source_revision=args.source_revision)
     write_outputs(projection, graph_payload, args.output, args.graph_output)
     alarms = projection["sentinel_alarms"]
-    if alarms and not args.allow_sentinel_alarms:
+    hard = [a for a in alarms if a.get("overridable") is not True]
+    if alarms and (hard or not args.allow_sentinel_alarms):
         # The outputs are written for inspection; no number reaches a paper.
         print(json.dumps({"sentinel_alarms": alarms}, indent=1, ensure_ascii=False)[:20000], file=sys.stderr)
-        print(f"ALARM: {len(alarms)} sentinel statement(s) settled; inspect the witness chains before "
-              "using this graph (see sentinel_alarms in the projection)", file=sys.stderr)
+        print(f"ALARM: {len(alarms)} sentinel statement(s) settled, {len(hard)} of them contradictions; inspect "
+              "the witness chains before using this graph (see sentinel_alarms in the projection)", file=sys.stderr)
         return 3
     for paper in args.paper:
+        refusal = census_refusal(projection, allow_open_target_alarms=args.allow_sentinel_alarms)
+        if refusal:
+            print(f"no paper macros written: {refusal}", file=sys.stderr)
+            return 2
         text = paper.read_text(encoding="utf-8")
-        paper.write_text(replace_macro_region(text, paper_macro_region(projection)), encoding="utf-8")
+        paper.write_text(replace_macro_region(text, paper_macro_region(
+            projection, allow_open_target_alarms=args.allow_sentinel_alarms)), encoding="utf-8")
     summary = projection["summary"]
     print(json.dumps({"output": str(args.output), "graph_output": str(args.graph_output), **summary}, indent=1))
     return 0
