@@ -228,6 +228,44 @@ target alone, and it records nothing about whether the target implies that
 member. A declaration name given to `theorem` or `criticality` may be a
 suffix of the full name when exactly one theorem ends with it.
 
+## The argument frontier: findings as library theorems
+
+The graph's findings about a proof live in an export stream. The module
+[`ErdosProblems.ArgumentGraph.Derive`](../lean/ErdosProblems/ArgumentGraph/Derive.lean)
+rebuilds them inside the library, so a paper, the ledger or another proof can
+cite them by name. Its three commands read a theorem's proof term and add, after
+a kernel check:
+
+* `derive_idle T`: `T.idle`, the statement of `T` without the hypotheses its
+  proof never uses;
+* `derive_weakening T`: for each hypothesis `h : H` the proof uses only inside
+  use sites, `T.weakened_i` (the statement with `H` replaced by the
+  propositions `C₁ … Cₖ` those sites prove) and `T.use_i_j : H → Cⱼ`;
+* `derive_frontier T`: `T.frontier_i`, which follows the weakenings through
+  the theorems the proof applies `h` to. When a use site is `L … h …` and the
+  proof of `L` uses that hypothesis only through consequences of its own, the
+  site is replaced by `L.weakened_p` applied to proofs of those consequences,
+  recursively, and each consequence where the chain stops becomes one
+  hypothesis, assumed once however many branches need it.
+  `derive_frontier T at L` stops at the use sites of `L`.
+
+For the excluded-cofactor estimate of #249, `prop_badcof` assumes the prime
+number theorem, and its proof uses it only through a chain that ends at the
+dyadic prime count `eventually_card_primes_dyadic_le`. `derive_frontier
+prop_badcof at eventually_card_primes_dyadic_le` states `prop_badcof` with the
+prime number theorem replaced by that count, and the kernel checks the
+statement with a proof assembled from the weakenings along the chain.
+
+[`scripts/build_argument_frontier.py`](../scripts/build_argument_frontier.py)
+writes the commands for every theorem a paper cites, one module per problem
+under `lean/ErdosProblems/ArgumentGraph/Derived/`, with
+`argumentGraph.strict` set so that a derivation the export reported and the
+library cannot rebuild fails the build. It lists each derived theorem, with the
+paper rows of its source theorem, in `docs/argument_frontier.json`. A derived
+theorem restates what its source proof already proves; it is new only as a
+statement, and whether a paper should state the stronger form is the author's
+decision.
+
 ## Checking a new statement without a local build
 
 A corpus build needs several gigabytes. A research session without one can

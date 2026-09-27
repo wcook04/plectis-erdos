@@ -83,9 +83,12 @@ def lean_ident(name: str) -> str:
 
 
 def weakening_index(graph: dict[str, Any]) -> dict[str, list[dict[str, Any]]]:
+    """The graph's weakenings by theorem. The builder keeps only the rows the
+    export marked kernel-checked, so every row here is one; a row that still
+    carries ``kernel_checked: false`` (an older payload) is skipped."""
     out: dict[str, list[dict[str, Any]]] = defaultdict(list)
     for row in graph.get("weakenings", []) or []:
-        if row.get("kernel_checked"):
+        if row.get("kernel_checked", True) and row.get("theorem"):
             out[row["theorem"]].append(row)
     return out
 
