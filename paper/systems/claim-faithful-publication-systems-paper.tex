@@ -550,11 +550,13 @@ nonconcentration clause and the prime number theorem only by
 $P_n\sim n\log n$
 (\repolink{lean/ErdosProblems/ArgumentGraph/Results/Erdos251.lean}{ArgumentGraph/Results/Erdos251.lean}).
 \AFFactored{} cited theorems have a factoring, and deriving them factored
-\AFFactoredLibrary{} lemmas beneath them. The generator carries every command
-it has published into each new plan, and it stops when a probe shows that one
-no longer adds its theorem or that a published name now states something else;
-a later export with a smaller search budget or another use-site rule cannot
-remove a theorem a paper cites.
+\AFFactoredLibrary{} lemmas beneath them. A probe credits a command only with
+the theorem it names: a factoring refused after it derived lemma factorings on
+the way is not counted. The generator carries every command it has published
+into each new plan and checks every name those commands declared, and it stops
+when a probe shows that a published name is no longer added or now states
+something else; a later export with a smaller search budget or another use-site
+rule cannot remove a theorem a paper cites.
 
 \paragraph{Research with the graph.} A research session on a problem opens a
 bounded packet built from the graph
