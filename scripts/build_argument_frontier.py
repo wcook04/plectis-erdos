@@ -157,12 +157,14 @@ def plan(graph: dict[str, Any], papers: dict[str, list[dict[str, Any]]]) -> dict
                              "dropped": [d.get("type") for d in row.get("dropped", [])],
                              "statement": row.get("type"), "papers": papers[name],
                              "source": theorem.get("source")})
-    # A paper-cited theorem with an open hypothesis and a conjunctive conclusion
-    # may prove some conjuncts without it. The export does not record which, so
-    # these commands run outside strict mode and the build log says which split.
+    # A paper-cited theorem with an open hypothesis whose conclusion is a
+    # conjunction or an equivalence may prove some of its claims without it. The
+    # export does not record which, so these commands run outside strict mode and
+    # the build log says which split.
     for name in sorted(papers):
         theorem = theorems.get(name)
-        if not theorem or " ∧ " not in (theorem.get("conclusion_type") or ""):
+        conclusion = (theorem or {}).get("conclusion_type") or ""
+        if not theorem or (" ∧ " not in conclusion and " ↔ " not in conclusion):
             continue
         if not any((statements.get(k) or {}).get("status") == "open" for k in theorem.get("hypotheses", []) or []):
             continue

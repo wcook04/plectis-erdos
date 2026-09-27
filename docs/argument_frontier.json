@@ -500,6 +500,36 @@
    },
    {
     "operation": "conjuncts_candidate",
+    "theorem": "ErdosProblems.Erdos243.PaperCompleteR21.StandingOrbit.Rdelta_bddAbove_iff_amp",
+    "papers": [
+     {
+      "row": "erdos243-reciprocal-tail-reasoning-surface#long243:res:recordamplified",
+      "label": "long243:res:recordamplified",
+      "paper": "erdos243-reciprocal-tail-reasoning-surface",
+      "side": "long",
+      "lean_status": "exact",
+      "source": "paper/reasoning-parts/erdos243/core.tex:1935"
+     }
+    ],
+    "source": null
+   },
+   {
+    "operation": "conjuncts_candidate",
+    "theorem": "ErdosProblems.Erdos243.PaperCompleteR21.StandingOrbit.amp_bddAbove_iff_sylvester",
+    "papers": [
+     {
+      "row": "erdos243-reciprocal-tail-reasoning-surface#long243:res:recordamplified",
+      "label": "long243:res:recordamplified",
+      "paper": "erdos243-reciprocal-tail-reasoning-surface",
+      "side": "long",
+      "lean_status": "exact",
+      "source": "paper/reasoning-parts/erdos243/core.tex:1935"
+     }
+    ],
+    "source": null
+   },
+   {
+    "operation": "conjuncts_candidate",
     "theorem": "ErdosProblems.Erdos243.PaperCompleteR21.StandingOrbit.coprimeMultiplier_cofinal",
     "papers": [
      {
@@ -545,7 +575,37 @@
    },
    {
     "operation": "conjuncts_candidate",
+    "theorem": "ErdosProblems.Erdos243.PaperCompleteR21.StandingOrbit.energySqrt_summable_iff",
+    "papers": [
+     {
+      "row": "erdos243-reciprocal-tail-reasoning-surface#long243:res:energycriterion",
+      "label": "long243:res:energycriterion",
+      "paper": "erdos243-reciprocal-tail-reasoning-surface",
+      "side": "long",
+      "lean_status": "exact",
+      "source": "paper/reasoning-parts/erdos243/core.tex:2146"
+     }
+    ],
+    "source": null
+   },
+   {
+    "operation": "conjuncts_candidate",
     "theorem": "ErdosProblems.Erdos243.PaperCompleteR21.StandingOrbit.energy_criterion",
+    "papers": [
+     {
+      "row": "erdos243-reciprocal-tail-reasoning-surface#long243:res:energycriterion",
+      "label": "long243:res:energycriterion",
+      "paper": "erdos243-reciprocal-tail-reasoning-surface",
+      "side": "long",
+      "lean_status": "exact",
+      "source": "paper/reasoning-parts/erdos243/core.tex:2146"
+     }
+    ],
+    "source": null
+   },
+   {
+    "operation": "conjuncts_candidate",
+    "theorem": "ErdosProblems.Erdos243.PaperCompleteR21.StandingOrbit.energy_summable_iff",
     "papers": [
      {
       "row": "erdos243-reciprocal-tail-reasoning-surface#long243:res:energycriterion",
@@ -644,6 +704,21 @@
       "side": "long",
       "lean_status": "exact",
       "source": "paper/reasoning-parts/erdos243/core.tex:1935"
+     }
+    ],
+    "source": null
+   },
+   {
+    "operation": "conjuncts_candidate",
+    "theorem": "ErdosProblems.Erdos243.PaperCompleteR21.StandingOrbit.unitRecordIncrement_criterion",
+    "papers": [
+     {
+      "row": "erdos243-reciprocal-tail-reasoning-surface#long243:res:unitrecord",
+      "label": "long243:res:unitrecord",
+      "paper": "erdos243-reciprocal-tail-reasoning-surface",
+      "side": "long",
+      "lean_status": "exact",
+      "source": "paper/reasoning-parts/erdos243/core.tex:2058"
      }
     ],
     "source": null
@@ -1542,6 +1617,21 @@
    {
     "operation": "conjuncts_candidate",
     "theorem": "ErdosProblems.Erdos257.PaperCompleteR21.paper_compatible_finite_row_conditions",
+    "papers": [
+     {
+      "row": "erdos257-mersenne-reasoning-surface#record:257bm-c3",
+      "label": "record:257bm-c3",
+      "paper": "erdos257-mersenne-reasoning-surface",
+      "side": "long",
+      "lean_status": "exact",
+      "source": "paper/reasoning-parts/erdos257/a257_front.tex:3785"
+     }
+    ],
+    "source": null
+   },
+   {
+    "operation": "conjuncts_candidate",
+    "theorem": "ErdosProblems.Erdos257.PaperCompleteR21.paper_compatible_rows_agree_with_limit",
     "papers": [
      {
       "row": "erdos257-mersenne-reasoning-surface#record:257bm-c3",

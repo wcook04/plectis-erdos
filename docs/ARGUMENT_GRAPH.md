@@ -372,10 +372,13 @@ kernel check:
   theorem `S` proves (exactly, or after instantiating some of its binders by
   unification); when every one is discharged, `T`'s hypothesis is gone and the
   theorem is named `…_supplied`;
-* `derive_conjuncts T`: when `T` concludes `A₁ ∧ … ∧ Aₙ` and its proof builds
-  the conjunction part by part, `T.part_k` states `Aₖ` with only the
-  hypotheses the proof of that part uses. A paper result stated modulo a named
-  input may so have parts that hold without it.
+* `derive_conjuncts T`: when `T` concludes `A₁ ∧ … ∧ Aₙ` (or `A ↔ B`, whose
+  claims are `A → B` and `B → A`), `T.part_k` states the `k`-th claim with only
+  the hypotheses its proof uses. That proof is the projection of `T`'s proof
+  onto the claim, reduced (beta, `let`, a projection of a constructor,
+  definitions such as `id`; never a theorem), so a proof that builds the claims
+  separately, directly or under `have`, `show` or `let`, splits. A paper result
+  stated modulo a named input may so have parts that hold without it.
 
 For the excluded-cofactor estimate of #249, `prop_badcof` assumes the prime
 number theorem, and its proof uses it only through a chain that ends at the

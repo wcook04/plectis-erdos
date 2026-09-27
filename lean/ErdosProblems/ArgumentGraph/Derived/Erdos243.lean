@@ -31,13 +31,18 @@ derive_idle ErdosProblems.Erdos243.PaperCompleteR21.unit_word_saturates_old_modu
 -- Derivations the export does not decide in advance: conjuncts a proof may establish
 -- without an open hypothesis, and frontiers with the consequences the graph records as
 -- proved by corpus theorems discharged. A command that adds nothing warns.
+set_option argumentGraph.strict false in derive_conjuncts ErdosProblems.Erdos243.PaperCompleteR21.StandingOrbit.Rdelta_bddAbove_iff_amp
+set_option argumentGraph.strict false in derive_conjuncts ErdosProblems.Erdos243.PaperCompleteR21.StandingOrbit.amp_bddAbove_iff_sylvester
 set_option argumentGraph.strict false in derive_conjuncts ErdosProblems.Erdos243.PaperCompleteR21.StandingOrbit.coprimeMultiplier_cofinal
 set_option argumentGraph.strict false in derive_conjuncts ErdosProblems.Erdos243.PaperCompleteR21.StandingOrbit.criticalRate
 set_option argumentGraph.strict false in derive_conjuncts ErdosProblems.Erdos243.PaperCompleteR21.StandingOrbit.criticalRate_counterexample
+set_option argumentGraph.strict false in derive_conjuncts ErdosProblems.Erdos243.PaperCompleteR21.StandingOrbit.energySqrt_summable_iff
 set_option argumentGraph.strict false in derive_conjuncts ErdosProblems.Erdos243.PaperCompleteR21.StandingOrbit.energy_criterion
+set_option argumentGraph.strict false in derive_conjuncts ErdosProblems.Erdos243.PaperCompleteR21.StandingOrbit.energy_summable_iff
 set_option argumentGraph.strict false in derive_conjuncts ErdosProblems.Erdos243.PaperCompleteR21.StandingOrbit.exists_late_energy_window
 set_option argumentGraph.strict false in derive_conjuncts ErdosProblems.Erdos243.PaperCompleteR21.StandingOrbit.largePrime_coprimeMultiplier
 set_option argumentGraph.strict false in derive_conjuncts ErdosProblems.Erdos243.PaperCompleteR21.StandingOrbit.oddPrimePower_supply
 set_option argumentGraph.strict false in derive_conjuncts ErdosProblems.Erdos243.PaperCompleteR21.StandingOrbit.oddPrimePower_supply_nat
 set_option argumentGraph.strict false in derive_conjuncts ErdosProblems.Erdos243.PaperCompleteR21.StandingOrbit.primeBlock_supply
 set_option argumentGraph.strict false in derive_conjuncts ErdosProblems.Erdos243.PaperCompleteR21.StandingOrbit.recordAmplified
+set_option argumentGraph.strict false in derive_conjuncts ErdosProblems.Erdos243.PaperCompleteR21.StandingOrbit.unitRecordIncrement_criterion
