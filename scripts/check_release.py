@@ -1187,14 +1187,18 @@ def proof_trust_candidate_bytes(data: bytes) -> bool:
         position += len(b"set_option")
 
 
-def proof_trust_violation_bytes(data: bytes) -> str | None:
-    """Decode only sources whose byte prefilter can contain a violation."""
+def proof_trust_violation_bytes(data: bytes, *, tooling: bool = False) -> str | None:
+    """Scan executable code; tooling may recurse but cannot bypass proof trust."""
 
     if not proof_trust_candidate_bytes(data):
         return None
-    text = data.decode("utf-8")
-    match = PROOF_TRUST_RE.search(lean_code_without_comments_and_strings(text))
-    return match.group(0).strip() if match else None
+    code = lean_code_without_comments_and_strings(data.decode("utf-8"))
+    for match in PROOF_TRUST_RE.finditer(code):
+        violation = match.group(0).strip()
+        if tooling and violation.split() == ["partial", "def"]:
+            continue
+        return violation
+    return None
 
 
 APPROVED_ROOT_FILES = {
@@ -1359,13 +1363,39 @@ def check_proof_trust() -> None:
         is None,
         "chunked lexer must preserve escaped-string exclusion",
     )
+    partial = b"partial def loop : Nat -> Nat := fun n => loop n\n"
+    check(proof_trust_violation_bytes(partial, tooling=True) is None,
+          "tooling may use partial def recursion")
+    check(proof_trust_violation_bytes(partial) == "partial def",
+          "mathematical declarations still reject partial def")
+    for forbidden in (
+        b"axiom bad : True\n", b"unsafe def bad : Nat := 1\n",
+        b"theorem bad : True := by sorry\n", b"theorem bad : True := by admit\n",
+        b"theorem bad : True := by native_decide\n",
+        b"theorem bad : True := by decide +native\n",
+        b"theorem bad : True := by decide (config := { native := true })\n",
+        b"partial opaque bad : Nat := 1\n", b"set_option maxHeartbeats 0\n",
+        b"set_option maxRecDepth 0\n",
+    ):
+        check(proof_trust_violation_bytes(partial + forbidden, tooling=True) is not None,
+              f"tooling partial definitions must not conceal {forbidden!r}")
+    check(proof_trust_violation_bytes(
+        partial + b'/- axiom ignored : True -/\ndef label := "sorry"\n', tooling=True
+    ) is None, "tooling trust scan keeps comment and string exclusions")
     examples_root = ROOT / "research" / "examples"
     if not examples_root.is_dir():
         examples_root = ROOT / "examples"
     example_sources = sorted(examples_root.rglob("*.lean")) if examples_root.is_dir() else []
-    lean_sources = library_source_paths(ROOT) + example_sources
+    # Declaration inventory is deliberately narrower than executable source.
+    # Scan every local Lean source even when it belongs to a tooling library.
+    # Only this named metaprogram root may contain partial def declarations.
+    tooling_root = ROOT / "lean" / "ArgumentGraphTools"
+    lean_sources = sorted(set(library_source_paths(ROOT) + example_sources)
+                          | set((ROOT / "lean").rglob("*.lean")))
     for lean in lean_sources:
-        violation = proof_trust_violation_bytes(read_bytes(lean))
+        violation = proof_trust_violation_bytes(
+            read_bytes(lean), tooling=lean.is_relative_to(tooling_root)
+        )
         check(violation is None,
               f"proof-trust violation in {lean.relative_to(ROOT)}: {violation or ''}")
 
