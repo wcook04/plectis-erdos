@@ -218,9 +218,17 @@ def combine_exports(streams: list[list[dict[str, Any]]]) -> list[dict[str, Any]]
     last = streams[-1]
     meta = {**last[0], "combined_exports": len(streams)}
     summaries = [next(r for r in rows if r.get("record") == "summary") for rows in streams]
-    summary = {**summaries[-1], "combined_exports": len(streams),
+    # A numeric field of the combined summary is the largest value any export
+    # recorded: for a count of work done (statements tried, searched) it is a
+    # lower bound on the combination, whose exact value no row records.
+    numeric = {key: max(s[key] for s in summaries if isinstance(s.get(key), (int, float))
+                        and not isinstance(s.get(key), bool))
+               for s in summaries for key in s
+               if isinstance(s.get(key), (int, float)) and not isinstance(s.get(key), bool)}
+    summary = {**summaries[-1], **numeric, "combined_exports": len(streams),
                "statements_searched_combined": sum(1 for r in combined if r.get("record") == "statement"),
-               "truncated": any(s.get("truncated") for s in summaries)}
+               "truncated": any(s.get("truncated") for s in summaries),
+               "combined_summaries": [{k: v for k, v in s.items() if k != "record"} for s in summaries]}
     return [meta, *combined, summary]
 
 

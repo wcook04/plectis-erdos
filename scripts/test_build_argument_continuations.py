@@ -609,6 +609,7 @@ class CombinedExports(unittest.TestCase):
             projection, payload = builder.build([a, b], Path(tmp))
         self.assertEqual(sum(1 for r in rows if r.get("record") == "theorem"), 2)
         self.assertEqual(rows[-1]["statements_searched_combined"], 3)
+        self.assertEqual(len(rows[-1]["combined_summaries"]), 2)
         graph = builder.Graph(rows)
         graph.analyse()
         self.assertIn("S1", graph.supplied)

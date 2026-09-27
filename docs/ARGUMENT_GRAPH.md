@@ -132,7 +132,9 @@ graph stale when `git rev-parse HEAD:lean` differs from it; uncommitted edits
 under `lean/` are not compared. Exports of the same Lean tree combine:
 repeating `--export` (the latest last) builds the graph from the union of
 their rows, since each row observes the same environment, and the graph's
-`source` lists every export combined. Exports of different trees are refused.
+`source` lists every export combined. A count in the combined summary is the
+largest any export recorded, so a count of work done (statements tried) is a
+lower bound. Exports of different trees are refused.
 A kernel-checked generalisation supplies its statement and is credited to the
 theorem it generalises.
 
