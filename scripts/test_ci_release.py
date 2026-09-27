@@ -33,6 +33,26 @@ class ReleaseParityTests(unittest.TestCase):
         self.assertTrue(release.workflow_errors(source.replace('  release-surfaces:', '  renamed:')))
         self.assertTrue(release.workflow_errors(source + '\n      - run: echo accidental-gate\n'))
 
+    def test_full_and_corpus_only_routes_keep_their_gates_after_failure(self):
+        import re
+        import test_lean_workflow_environment as workflow
+        source = (release.ROOT / '.github/workflows/lean.yml').read_text()
+        body = workflow.job_body(source, 'release-surfaces')
+        for label, expected in (
+            ('Cross-surface release checks (proof trust, claims, projections)', (True, False)),
+            ('Test public-artifact boundary', (True, True)),
+            ('Test problem papers for corpus-only changes', (False, True)),
+        ):
+            step = body.split('- name: ' + label + '\n', 1)[1].split('      - ', 1)[0]
+            condition = re.search(r'if: \$\{\{ (.*?) \}\}', step).group(1)
+            self.assertNotIn('continue-on-error:', step)
+            for corpus, wanted in zip(('false', 'true'), expected):
+                for cancelled in (False, True):
+                    values = {'cancelled()': cancelled,
+                              'needs.change_scope.outputs.erdos1041_corpus_only': corpus}
+                    self.assertEqual(workflow.evaluate_condition(condition, values), wanted and not cancelled)
+            self.assertIn('!cancelled()', condition, 'An earlier failure must not skip remaining gates')
+
     def test_real_failure_does_not_hide_other_failures_or_successes(self):
         with tempfile.TemporaryDirectory() as temp:
             root = Path(temp)
