@@ -1,0 +1,2288 @@
+import ErdosProblems.Erdos249.PaperCompleteR21.ExcludedCofactorEstimate
+import ErdosProblems.Erdos249.TypeBReturnV8.PeripheralFiniteBridge
+import Mathlib.Order.Filter.AtTopBot.Basic
+import Mathlib.Tactic.NormNum
+import Mathlib.Tactic.Positivity
+import Mathlib.Tactic.Linarith
+
+/-!
+# Erdős #249: the fibre means from the prime number theorem
+
+`dtw_of_fiberMean_and_centered` (`ErdosProblems.ArgumentGraph.Results.Erdos249`) derives
+`DTWPivotResidualDecorrelation` from two clauses: a uniform bound on the fibre means and the
+centred correlation. This module proves the first clause, `hmean`, from the prime number theorem
+(`fiberMean_le_of_primeNumberTheorem`): at the minimal depth `L = minimalDepth h 26 X`, with
+`s = 26` and `η = 1/1000`, for every `h ≥ 1` and all large `X`, every good base `N` has
+`‖pivotFiberMean h X L 26 m_N‖ ≤ 1/100`, where `m_N = pivotCofactor N L 26`.
+
+Input. The prime number theorem enters as the hypothesis
+`ErdosProblems.Erdos251.PaperR11.PrimeSource.PrimeNumberTheorem`, that is `p_n / (n log n) → 1`
+for the zero-based `n`-th prime `p_n = Nat.nth Nat.Prime n`. Nothing else is assumed.
+
+Proof. Fix `h ≥ 1` and a good base with cofactor `m`, so `0 < m ≤ ⌊√X⌋/2` and `φ(m) ≥ m/1000`.
+Put `t = L - 25`, `A = ⌈(X + t)/m⌉` and `B = ⌈(2X + t)/m⌉`.
+1. The fibre of `m` is the image of the primes `p` with `X + t ≤ mp < 2X + t`
+   (`image_pivotSupplierPrimes_eq_pivotFiber`), so the fibre mean is the mean of
+   `pivotPrimePhase h L 26 m p` over the primes of `[A, B)` (`pivotFiberMean_eq_sum_primes`,
+   `pivotSupplierPrimes_eq_filter_Ico`).
+2. That phase is `e(θ p - θ)` with `e(x) = exp(ix)` and `θ = π (2^h - 1) φ(m) / 2^(L - 26)`
+   (`pivotPrimeAngle_eq_affine`).
+3. For large `X` the minimal depth has `32X ≤ 2^L < 96X` (`minimalDepth_geometry`), so the phase
+   turns through between `2000` and `π 2^(h+22)` radians over `[A, B)`.
+4. Cut `[A, B)` into `K = 2^(h+35)` blocks of length `ℓ = ⌊(B - A)/K⌋` and fewer than `K`
+   remaining integers. Inside a block the phase moves by at most `θℓ ≤ π/2^13`, so the sum over
+   the primes of the blocks is `ν ∑_{k<K} e(θ(A + kℓ))`, with `ν = ℓ / log A`, up to `θℓ` per
+   prime and the errors in the block counts (`blocks_approx`). The geometric sum is at most
+   `π/(θℓ)` (`norm_geom_exp_le`).
+5. The prime number theorem in counting form, `π(x) log x = (1 + o(1)) x`
+   (`eventually_count_log_two_sided`), gives `|π(y) log A - y| ≤ δ A` uniformly for
+   `A ≤ y ≤ 4A` (`exists_count_log_discrepancy`). With `δ = 1/(8000 K)` every block holds
+   `ν (1 ± 1/1000)` primes.
+6. The mean is then at most `θℓ + 1/999 + π/(0.999 K θ ℓ) + 1/(0.999 ν)`, and
+   `θℓ ≤ 1/1000`, `K θ ℓ ≥ 1000`, `ν ≥ 1000` make this less than `1/100`
+   (`norm_mean_le_of_blocks`, `fiberMean_le_at`).
+-/
+
+open Filter Topology
+
+namespace ErdosProblems.Erdos249.PaperCompleteR21.FiberMean
+
+/-! ## Exponential sums over an evenly spread set of integers -/
+
+/-- `e(x) = exp(ix)` is `1`-Lipschitz: `‖e(x) - e(y)‖ ≤ |x - y|`. -/
+theorem norm_exp_sub_exp_le (x y : ℝ) :
+    ‖Complex.exp ((x : ℂ) * Complex.I) - Complex.exp ((y : ℂ) * Complex.I)‖ ≤ |x - y| := by
+  have h1 : Complex.exp ((x : ℂ) * Complex.I) - Complex.exp ((y : ℂ) * Complex.I)
+      = Complex.exp ((y : ℂ) * Complex.I) *
+          (Complex.exp (Complex.I * ((x - y : ℝ) : ℂ)) - 1) := by
+    rw [mul_sub, mul_one, ← Complex.exp_add]
+    have h2 : (y : ℂ) * Complex.I + Complex.I * ((x - y : ℝ) : ℂ) = (x : ℂ) * Complex.I := by
+      push_cast
+      ring
+    rw [h2]
+  rw [h1, norm_mul, Complex.norm_exp_ofReal_mul_I, one_mul]
+  have h3 := Real.norm_exp_I_mul_ofReal_sub_one_le (x := x - y)
+  rwa [Real.norm_eq_abs] at h3
+
+/-- One step of the block comparison: the error after `k + 1` blocks from the error after `k`
+blocks, the variation of the summand inside the new block, and the error in its count. -/
+theorem step_bound (SP SB G c : ℂ) (nP nB ν ε T K : ℝ)
+    (hc : ‖c‖ = 1)
+    (h1 : ‖SP - (ν : ℂ) * G‖ ≤ nP * T + K * (ε * ν))
+    (h2 : ‖SB - (nB : ℂ) * c‖ ≤ nB * T)
+    (h3 : |nB - ν| ≤ ε * ν) :
+    ‖SP + SB - (ν : ℂ) * (G + c)‖ ≤ (nP + nB) * T + (K + 1) * (ε * ν) := by
+  have key : SP + SB - (ν : ℂ) * (G + c)
+      = (SP - (ν : ℂ) * G) + (SB - (nB : ℂ) * c) + (((nB - ν : ℝ) : ℂ) * c) := by
+    push_cast
+    ring
+  have h4 : ‖((nB - ν : ℝ) : ℂ) * c‖ ≤ ε * ν := by
+    rw [norm_mul, hc, mul_one, Complex.norm_real, Real.norm_eq_abs]
+    exact h3
+  rw [key]
+  calc ‖(SP - (ν : ℂ) * G) + (SB - (nB : ℂ) * c) + (((nB - ν : ℝ) : ℂ) * c)‖
+      ≤ ‖SP - (ν : ℂ) * G‖ + ‖SB - (nB : ℂ) * c‖ + ‖((nB - ν : ℝ) : ℂ) * c‖ := norm_add₃_le
+    _ ≤ (nP * T + K * (ε * ν)) + nB * T + ε * ν := add_le_add (add_le_add h1 h2) h4
+    _ = (nP + nB) * T + (K + 1) * (ε * ν) := by ring
+
+/-- Inside one block `[q, q + ℓ)`, replacing each `F p` by `F q` costs at most `T` per element. -/
+theorem block_one {S : ℕ → Prop} [DecidablePred S] (F : ℕ → ℂ) (q ℓ : ℕ) {T : ℝ}
+    (hF : ∀ p : ℕ, q ≤ p → p < q + ℓ → ‖F p - F q‖ ≤ T) :
+    ‖∑ p ∈ (Finset.Ico q (q + ℓ)).filter S, F p
+        - ((((Finset.Ico q (q + ℓ)).filter S).card : ℝ) : ℂ) * F q‖
+      ≤ (((Finset.Ico q (q + ℓ)).filter S).card : ℝ) * T := by
+  have hconst : ((((Finset.Ico q (q + ℓ)).filter S).card : ℝ) : ℂ) * F q
+      = ∑ p ∈ (Finset.Ico q (q + ℓ)).filter S, F q := by
+    rw [Finset.sum_const, nsmul_eq_mul, Complex.ofReal_natCast]
+  rw [hconst, ← Finset.sum_sub_distrib]
+  calc ‖∑ p ∈ (Finset.Ico q (q + ℓ)).filter S, (F p - F q)‖
+      ≤ ∑ p ∈ (Finset.Ico q (q + ℓ)).filter S, ‖F p - F q‖ := norm_sum_le _ _
+    _ ≤ ∑ p ∈ (Finset.Ico q (q + ℓ)).filter S, T := by
+        apply Finset.sum_le_sum
+        intro p hp
+        obtain ⟨hp1, hp2⟩ := Finset.mem_Ico.mp (Finset.mem_filter.mp hp).1
+        exact hF p hp1 hp2
+    _ = (((Finset.Ico q (q + ℓ)).filter S).card : ℝ) * T := by
+        rw [Finset.sum_const, nsmul_eq_mul]
+
+/-- **Block comparison.** If each block `[a + kℓ, a + kℓ + ℓ)`, `k < K`, holds `ν` elements of `S`
+up to `εν`, and `F` moves by at most `T` inside a block, then the sum of `F` over
+`S ∩ [a, a + Kℓ)` is `ν ∑_{k<K} F (a + kℓ)` up to `#(S ∩ [a, a + Kℓ)) T + K ε ν`. -/
+theorem blocks_approx {S : ℕ → Prop} [DecidablePred S] (F : ℕ → ℂ) (a ℓ : ℕ) {T ν ε : ℝ}
+    (hF1 : ∀ p, ‖F p‖ = 1)
+    (hF : ∀ p q : ℕ, q ≤ p → p < q + ℓ → ‖F p - F q‖ ≤ T) :
+    ∀ K : ℕ, (∀ k < K,
+        |(((Finset.Ico (a + k * ℓ) (a + k * ℓ + ℓ)).filter S).card : ℝ) - ν| ≤ ε * ν) →
+      ‖∑ p ∈ (Finset.Ico a (a + K * ℓ)).filter S, F p
+          - (ν : ℂ) * ∑ k ∈ Finset.range K, F (a + k * ℓ)‖
+        ≤ (((Finset.Ico a (a + K * ℓ)).filter S).card : ℝ) * T + K * (ε * ν) := by
+  intro K
+  induction K with
+  | zero => intro _; simp
+  | succ K ih =>
+    intro hblock
+    have ih' := ih (fun k hk => hblock k (Nat.lt_succ_of_lt hk))
+    have hsplit : a + (K + 1) * ℓ = a + K * ℓ + ℓ := by ring
+    have hunion : (Finset.Ico a (a + (K + 1) * ℓ)).filter S =
+        (Finset.Ico a (a + K * ℓ)).filter S ∪
+          (Finset.Ico (a + K * ℓ) (a + K * ℓ + ℓ)).filter S := by
+      rw [hsplit, ← Finset.filter_union,
+        Finset.Ico_union_Ico_eq_Ico (Nat.le_add_right _ _) (Nat.le_add_right _ _)]
+    have hdisj : Disjoint ((Finset.Ico a (a + K * ℓ)).filter S)
+        ((Finset.Ico (a + K * ℓ) (a + K * ℓ + ℓ)).filter S) :=
+      Finset.disjoint_filter_filter (Finset.Ico_disjoint_Ico_consecutive _ _ _)
+    rw [hunion, Finset.sum_union hdisj, Finset.card_union_of_disjoint hdisj,
+      Finset.sum_range_succ]
+    have hstep := step_bound
+      (∑ p ∈ (Finset.Ico a (a + K * ℓ)).filter S, F p)
+      (∑ p ∈ (Finset.Ico (a + K * ℓ) (a + K * ℓ + ℓ)).filter S, F p)
+      (∑ k ∈ Finset.range K, F (a + k * ℓ)) (F (a + K * ℓ))
+      (((Finset.Ico a (a + K * ℓ)).filter S).card : ℝ)
+      (((Finset.Ico (a + K * ℓ) (a + K * ℓ + ℓ)).filter S).card : ℝ)
+      ν ε T K (hF1 _) ih'
+      (block_one F (a + K * ℓ) ℓ (fun p hp1 hp2 => hF p (a + K * ℓ) hp1 hp2))
+      (hblock K (Nat.lt_succ_self K))
+    push_cast
+    exact hstep
+
+/-- The block counts give `#(S ∩ [a, a + Kℓ)) ≥ K (1 - ε) ν`. -/
+theorem card_blocks_ge {S : ℕ → Prop} [DecidablePred S] (a ℓ : ℕ) {ν ε : ℝ} :
+    ∀ K : ℕ, (∀ k < K,
+        |(((Finset.Ico (a + k * ℓ) (a + k * ℓ + ℓ)).filter S).card : ℝ) - ν| ≤ ε * ν) →
+      (K : ℝ) * ((1 - ε) * ν) ≤ (((Finset.Ico a (a + K * ℓ)).filter S).card : ℝ) := by
+  intro K
+  induction K with
+  | zero => intro _; simp
+  | succ K ih =>
+    intro hblock
+    have ih' := ih (fun k hk => hblock k (Nat.lt_succ_of_lt hk))
+    have hsplit : a + (K + 1) * ℓ = a + K * ℓ + ℓ := by ring
+    have hunion : (Finset.Ico a (a + (K + 1) * ℓ)).filter S =
+        (Finset.Ico a (a + K * ℓ)).filter S ∪
+          (Finset.Ico (a + K * ℓ) (a + K * ℓ + ℓ)).filter S := by
+      rw [hsplit, ← Finset.filter_union,
+        Finset.Ico_union_Ico_eq_Ico (Nat.le_add_right _ _) (Nat.le_add_right _ _)]
+    have hdisj : Disjoint ((Finset.Ico a (a + K * ℓ)).filter S)
+        ((Finset.Ico (a + K * ℓ) (a + K * ℓ + ℓ)).filter S) :=
+      Finset.disjoint_filter_filter (Finset.Ico_disjoint_Ico_consecutive _ _ _)
+    rw [hunion, Finset.card_union_of_disjoint hdisj]
+    have hK := hblock K (Nat.lt_succ_self K)
+    rw [abs_le] at hK
+    push_cast
+    linarith [hK.1]
+
+/-- The sum over `S ∩ [a, b)` with `a + Kℓ ≤ b ≤ a + Kℓ + K`: the block comparison, plus at
+most `K` terms in `[a + Kℓ, b)`. -/
+theorem norm_sum_filter_le_aux {S : ℕ → Prop} [DecidablePred S] (F : ℕ → ℂ) {a b ℓ K : ℕ}
+    {T ν ε : ℝ} (hF1 : ∀ p, ‖F p‖ = 1)
+    (hF : ∀ p q : ℕ, q ≤ p → p < q + ℓ → ‖F p - F q‖ ≤ T)
+    (hab : a + K * ℓ ≤ b) (hb : b ≤ a + K * ℓ + K) (hν : 0 ≤ ν)
+    (hblock : ∀ k < K,
+      |(((Finset.Ico (a + k * ℓ) (a + k * ℓ + ℓ)).filter S).card : ℝ) - ν| ≤ ε * ν) :
+    ‖∑ p ∈ (Finset.Ico a b).filter S, F p‖ ≤
+      (((Finset.Ico a (a + K * ℓ)).filter S).card : ℝ) * T + K * (ε * ν)
+        + ν * ‖∑ k ∈ Finset.range K, F (a + k * ℓ)‖ + K := by
+  have hsplit : (Finset.Ico a b).filter S =
+      (Finset.Ico a (a + K * ℓ)).filter S ∪ (Finset.Ico (a + K * ℓ) b).filter S := by
+    rw [← Finset.filter_union, Finset.Ico_union_Ico_eq_Ico (Nat.le_add_right _ _) hab]
+  have hdisj : Disjoint ((Finset.Ico a (a + K * ℓ)).filter S)
+      ((Finset.Ico (a + K * ℓ) b).filter S) :=
+    Finset.disjoint_filter_filter (Finset.Ico_disjoint_Ico_consecutive _ _ _)
+  rw [hsplit, Finset.sum_union hdisj]
+  have hmain := blocks_approx (S := S) F a ℓ hF1 hF K hblock
+  have hrest : ‖∑ p ∈ (Finset.Ico (a + K * ℓ) b).filter S, F p‖ ≤ K := by
+    refine le_trans (norm_sum_le _ _) ?_
+    have hsum : ∑ p ∈ (Finset.Ico (a + K * ℓ) b).filter S, ‖F p‖
+        = (((Finset.Ico (a + K * ℓ) b).filter S).card : ℝ) := by
+      simp only [hF1, Finset.sum_const, nsmul_eq_mul, mul_one]
+    rw [hsum]
+    have hc : ((Finset.Ico (a + K * ℓ) b).filter S).card ≤ K := by
+      calc ((Finset.Ico (a + K * ℓ) b).filter S).card
+          ≤ (Finset.Ico (a + K * ℓ) b).card := Finset.card_filter_le _ _
+        _ = b - (a + K * ℓ) := Nat.card_Ico _ _
+        _ ≤ K := by omega
+    exact_mod_cast hc
+  have hG : ‖(ν : ℂ) * ∑ k ∈ Finset.range K, F (a + k * ℓ)‖
+      = ν * ‖∑ k ∈ Finset.range K, F (a + k * ℓ)‖ := by
+    rw [norm_mul, Complex.norm_real, Real.norm_eq_abs, abs_of_nonneg hν]
+  have h1 := norm_add_le (∑ p ∈ (Finset.Ico a (a + K * ℓ)).filter S, F p)
+    (∑ p ∈ (Finset.Ico (a + K * ℓ) b).filter S, F p)
+  have h2 := norm_sub_norm_le (∑ p ∈ (Finset.Ico a (a + K * ℓ)).filter S, F p)
+    ((ν : ℂ) * ∑ k ∈ Finset.range K, F (a + k * ℓ))
+  rw [hG] at h2
+  linarith
+
+/-- A geometric sum of `e(x)` with `0 < x ≤ π` has norm at most `π / x`, from
+`|e(x) - 1| = 2 sin (x/2)` and Jordan's inequality `sin t ≥ 2t/π` on `[0, π/2]`. -/
+theorem norm_geom_exp_le {x : ℝ} (K : ℕ) (h0 : 0 < x) (h1 : x ≤ Real.pi) :
+    ‖∑ k ∈ Finset.range K, Complex.exp ((x : ℂ) * Complex.I) ^ k‖ ≤ Real.pi / x := by
+  have hpi : 0 < Real.pi := Real.pi_pos
+  have hsin : 2 / Real.pi * (x / 2) ≤ Real.sin (x / 2) :=
+    Real.mul_le_sin (by linarith) (by linarith)
+  have hpos : 0 < 2 / Real.pi * (x / 2) := mul_pos (div_pos two_pos hpi) (half_pos h0)
+  have hwm1 : ‖Complex.exp ((x : ℂ) * Complex.I) - 1‖ = ‖2 * Real.sin (x / 2)‖ := by
+    have h := Complex.norm_exp_I_mul_ofReal_sub_one x
+    rwa [mul_comm Complex.I] at h
+  have hlow : 2 * (2 / Real.pi * (x / 2)) ≤ ‖Complex.exp ((x : ℂ) * Complex.I) - 1‖ := by
+    rw [hwm1, Real.norm_eq_abs,
+      abs_of_nonneg (show (0 : ℝ) ≤ 2 * Real.sin (x / 2) by linarith)]
+    linarith
+  have hne : Complex.exp ((x : ℂ) * Complex.I) ≠ 1 := by
+    intro h
+    rw [h, sub_self, norm_zero] at hlow
+    linarith
+  rw [geom_sum_eq hne, norm_div]
+  have hnum : ‖Complex.exp ((x : ℂ) * Complex.I) ^ K - 1‖ ≤ 2 := by
+    have e1 : ‖Complex.exp ((x : ℂ) * Complex.I) ^ K‖ = 1 := by
+      rw [norm_pow, Complex.norm_exp_ofReal_mul_I, one_pow]
+    have e2 := norm_sub_le (Complex.exp ((x : ℂ) * Complex.I) ^ K) 1
+    rw [e1, norm_one] at e2
+    linarith
+  have hden : 0 < ‖Complex.exp ((x : ℂ) * Complex.I) - 1‖ := by linarith
+  rw [div_le_div_iff₀ hden h0]
+  have hpi2 : Real.pi * (2 / Real.pi) = 2 := mul_div_cancel₀ 2 hpi.ne'
+  have h2x : 2 * x ≤ Real.pi * ‖Complex.exp ((x : ℂ) * Complex.I) - 1‖ := by
+    have h3 := mul_le_mul_of_nonneg_left hlow hpi.le
+    have h4 : Real.pi * (2 * (2 / Real.pi * (x / 2))) = 2 * x := by
+      calc Real.pi * (2 * (2 / Real.pi * (x / 2))) = (Real.pi * (2 / Real.pi)) * x := by ring
+        _ = 2 * x := by rw [hpi2]
+    linarith
+  calc ‖Complex.exp ((x : ℂ) * Complex.I) ^ K - 1‖ * x ≤ 2 * x :=
+        mul_le_mul_of_nonneg_right hnum h0.le
+    _ ≤ Real.pi * ‖Complex.exp ((x : ℂ) * Complex.I) - 1‖ := h2x
+
+/-- The sum of `e(θ (a + kℓ))` over `k < K` is `e(θ a)` times a geometric sum in `e(θ ℓ)`. -/
+theorem sum_exp_arith (θ : ℝ) (a ℓ K : ℕ) :
+    ∑ k ∈ Finset.range K, Complex.exp (((θ * ((a + k * ℓ : ℕ) : ℝ) : ℝ) : ℂ) * Complex.I)
+      = Complex.exp (((θ * a : ℝ) : ℂ) * Complex.I) *
+          ∑ k ∈ Finset.range K, Complex.exp (((θ * ℓ : ℝ) : ℂ) * Complex.I) ^ k := by
+  rw [Finset.mul_sum]
+  apply Finset.sum_congr rfl
+  intro k _
+  rw [← Complex.exp_nat_mul, ← Complex.exp_add]
+  congr 1
+  push_cast
+  ring
+
+/-- **Exponential sums over an evenly spread set.** Under the block hypotheses of
+`blocks_approx`, with `N = #(S ∩ [a, b))`,
+`‖∑_{p ∈ S ∩ [a, b)} e(θ p)‖ ≤ N (θℓ + ε/(1-ε) + π/((1-ε) K θ ℓ) + 1/((1-ε) ν))`. -/
+theorem norm_sum_filter_exp_le {S : ℕ → Prop} [DecidablePred S] {a b ℓ K : ℕ} {θ ν ε : ℝ}
+    (hK : 0 < K) (hθ : 0 < θ) (hθℓ0 : 0 < θ * ℓ) (hθℓ : θ * ℓ ≤ Real.pi) (hν : 0 < ν)
+    (hε1 : ε < 1) (hε0 : 0 ≤ ε)
+    (hab : a + K * ℓ ≤ b) (hb : b ≤ a + K * ℓ + K)
+    (hblock : ∀ k < K,
+      |(((Finset.Ico (a + k * ℓ) (a + k * ℓ + ℓ)).filter S).card : ℝ) - ν| ≤ ε * ν) :
+    ‖∑ p ∈ (Finset.Ico a b).filter S, Complex.exp (((θ * p : ℝ) : ℂ) * Complex.I)‖ ≤
+      (((Finset.Ico a b).filter S).card : ℝ) *
+        (θ * ℓ + ε / (1 - ε) + Real.pi / ((1 - ε) * (K * (θ * ℓ))) + 1 / ((1 - ε) * ν)) := by
+  have hFvar : ∀ p q : ℕ, q ≤ p → p < q + ℓ →
+      ‖Complex.exp (((θ * p : ℝ) : ℂ) * Complex.I) - Complex.exp (((θ * q : ℝ) : ℂ) * Complex.I)‖
+        ≤ θ * ℓ := by
+    intro p q hqp hpq
+    refine le_trans (norm_exp_sub_exp_le _ _) ?_
+    have h1 : (q : ℝ) ≤ p := by exact_mod_cast hqp
+    have h2 : (p : ℝ) < q + ℓ := by exact_mod_cast hpq
+    have h3 : θ * p - θ * q = θ * ((p : ℝ) - q) := by ring
+    rw [h3, abs_of_nonneg (mul_nonneg hθ.le (show (0 : ℝ) ≤ (p : ℝ) - q by linarith))]
+    exact mul_le_mul_of_nonneg_left (by linarith) hθ.le
+  have hmain := norm_sum_filter_le_aux (S := S)
+    (fun p : ℕ => Complex.exp (((θ * p : ℝ) : ℂ) * Complex.I))
+    (fun p => Complex.norm_exp_ofReal_mul_I _) hFvar hab hb hν.le hblock
+  have hgeom : ‖∑ k ∈ Finset.range K,
+      Complex.exp (((θ * ((a + k * ℓ : ℕ) : ℝ) : ℝ) : ℂ) * Complex.I)‖ ≤ Real.pi / (θ * ℓ) := by
+    rw [sum_exp_arith, norm_mul, Complex.norm_exp_ofReal_mul_I, one_mul]
+    exact norm_geom_exp_le K hθℓ0 hθℓ
+  have hcard := card_blocks_ge (S := S) a ℓ K hblock
+  have hsub : ((Finset.Ico a (a + K * ℓ)).filter S).card ≤ ((Finset.Ico a b).filter S).card :=
+    Finset.card_le_card (Finset.filter_subset_filter _ (Finset.Ico_subset_Ico le_rfl hab))
+  have hN₀N : ((((Finset.Ico a (a + K * ℓ)).filter S).card : ℕ) : ℝ)
+      ≤ (((Finset.Ico a b).filter S).card : ℝ) := by exact_mod_cast hsub
+  have hD : 0 < 1 - ε := by linarith
+  have hKr : (0 : ℝ) < K := by exact_mod_cast hK
+  have hM : (K : ℝ) * ((1 - ε) * ν) ≤ (((Finset.Ico a b).filter S).card : ℝ) :=
+    le_trans hcard hN₀N
+  have i1 : ((((Finset.Ico a (a + K * ℓ)).filter S).card : ℕ) : ℝ) * (θ * ℓ)
+      ≤ (((Finset.Ico a b).filter S).card : ℝ) * (θ * ℓ) :=
+    mul_le_mul_of_nonneg_right hN₀N hθℓ0.le
+  have i2 : (K : ℝ) * (ε * ν) ≤ (((Finset.Ico a b).filter S).card : ℝ) * (ε / (1 - ε)) := by
+    rw [mul_div_assoc', le_div_iff₀ hD]
+    have := mul_le_mul_of_nonneg_left hM hε0
+    linarith
+  have i3 : ν * (Real.pi / (θ * ℓ))
+      ≤ (((Finset.Ico a b).filter S).card : ℝ) * (Real.pi / ((1 - ε) * (K * (θ * ℓ)))) := by
+    rw [mul_div_assoc', mul_div_assoc',
+      div_le_div_iff₀ hθℓ0 (mul_pos hD (mul_pos hKr hθℓ0))]
+    have := mul_le_mul_of_nonneg_left hM (mul_nonneg Real.pi_pos.le hθℓ0.le)
+    linarith
+  have i4 : (K : ℝ) ≤ (((Finset.Ico a b).filter S).card : ℝ) * (1 / ((1 - ε) * ν)) := by
+    rw [mul_one_div, le_div_iff₀ (mul_pos hD hν)]
+    linarith
+  have i5 : ν * ‖∑ k ∈ Finset.range K,
+      Complex.exp (((θ * ((a + k * ℓ : ℕ) : ℝ) : ℝ) : ℂ) * Complex.I)‖
+        ≤ ν * (Real.pi / (θ * ℓ)) :=
+    mul_le_mul_of_nonneg_left hgeom hν.le
+  calc ‖∑ p ∈ (Finset.Ico a b).filter S, Complex.exp (((θ * p : ℝ) : ℂ) * Complex.I)‖
+      ≤ ((((Finset.Ico a (a + K * ℓ)).filter S).card : ℕ) : ℝ) * (θ * ℓ) + K * (ε * ν)
+          + ν * ‖∑ k ∈ Finset.range K,
+              Complex.exp (((θ * ((a + k * ℓ : ℕ) : ℝ) : ℝ) : ℂ) * Complex.I)‖ + K := hmain
+    _ ≤ (((Finset.Ico a b).filter S).card : ℝ) * (θ * ℓ)
+          + (((Finset.Ico a b).filter S).card : ℝ) * (ε / (1 - ε))
+          + (((Finset.Ico a b).filter S).card : ℝ) * (Real.pi / ((1 - ε) * (K * (θ * ℓ))))
+          + (((Finset.Ico a b).filter S).card : ℝ) * (1 / ((1 - ε) * ν)) := by linarith
+    _ = (((Finset.Ico a b).filter S).card : ℝ) *
+          (θ * ℓ + ε / (1 - ε) + Real.pi / ((1 - ε) * (K * (θ * ℓ))) + 1 / ((1 - ε) * ν)) := by
+        ring
+
+/-- The numerical budget: for `θℓ ≤ 1/1000`, `K θ ℓ ≥ 1000` and `ν ≥ 1000` the bound of
+`norm_sum_filter_exp_le` with `ε = 1/1000` is at most `1/100`. -/
+theorem final_numeric {x y ν : ℝ} (hx : x ≤ 1 / 1000) (hy : 1000 ≤ y) (hν : 1000 ≤ ν) :
+    x + (1 / 1000 : ℝ) / (1 - 1 / 1000) + Real.pi / ((1 - 1 / 1000) * y)
+      + 1 / ((1 - 1 / 1000) * ν) ≤ 1 / 100 := by
+  have hpi : Real.pi < 3.15 := Real.pi_lt_d2
+  have h1 : (1 / 1000 : ℝ) / (1 - 1 / 1000) ≤ 2 / 1000 := by norm_num
+  have hy0 : 0 < (1 - 1 / 1000 : ℝ) * y := by linarith
+  have hν0 : 0 < (1 - 1 / 1000 : ℝ) * ν := by linarith
+  have h2 : Real.pi / ((1 - 1 / 1000) * y) ≤ 4 / 1000 := by
+    rw [div_le_iff₀ hy0]
+    linarith
+  have h3 : 1 / ((1 - 1 / 1000) * ν) ≤ 2 / 1000 := by
+    rw [div_le_iff₀ hν0]
+    linarith
+  linarith
+
+/-- **The mean of `e(θ p - θ)` over `S ∩ [a, b)` is at most `1/100`**, when every block holds
+`ν (1 ± 1/1000)` elements of `S`, `θℓ ≤ 1/1000`, `K θ ℓ ≥ 1000` and `ν ≥ 1000`. -/
+theorem norm_mean_le_of_blocks {S : ℕ → Prop} [DecidablePred S] {a b ℓ K : ℕ} {θ ν : ℝ}
+    (hK : 0 < K) (hθ : 0 < θ) (hθℓ0 : 0 < θ * ℓ) (hθℓ : θ * ℓ ≤ 1 / 1000)
+    (hKθℓ : 1000 ≤ K * (θ * ℓ)) (hν : 1000 ≤ ν)
+    (hab : a + K * ℓ ≤ b) (hb : b ≤ a + K * ℓ + K)
+    (hblock : ∀ k < K,
+      |(((Finset.Ico (a + k * ℓ) (a + k * ℓ + ℓ)).filter S).card : ℝ) - ν| ≤ 1 / 1000 * ν) :
+    ‖(((Finset.Ico a b).filter S).card : ℂ)⁻¹ *
+        ∑ p ∈ (Finset.Ico a b).filter S, Complex.exp (((θ * p - θ : ℝ) : ℂ) * Complex.I)‖
+      ≤ 1 / 100 := by
+  have hsum : ∑ p ∈ (Finset.Ico a b).filter S, Complex.exp (((θ * p - θ : ℝ) : ℂ) * Complex.I)
+      = Complex.exp (((-θ : ℝ) : ℂ) * Complex.I) *
+          ∑ p ∈ (Finset.Ico a b).filter S, Complex.exp (((θ * p : ℝ) : ℂ) * Complex.I) := by
+    rw [Finset.mul_sum]
+    apply Finset.sum_congr rfl
+    intro p _
+    rw [← Complex.exp_add]
+    congr 1
+    push_cast
+    ring
+  rw [hsum, norm_mul, norm_mul, Complex.norm_exp_ofReal_mul_I, one_mul, norm_inv,
+    Complex.norm_natCast]
+  have hmain := norm_sum_filter_exp_le (S := S) (ε := 1 / 1000) hK hθ hθℓ0
+    (by linarith [Real.pi_gt_three]) (by linarith) (by norm_num) (by norm_num) hab hb hblock
+  have hbound := final_numeric hθℓ hKθℓ hν
+  by_cases hN : ((Finset.Ico a b).filter S).card = 0
+  · rw [hN]
+    norm_num
+  · have hN' : ((((Finset.Ico a b).filter S).card : ℕ) : ℝ) ≠ 0 := Nat.cast_ne_zero.mpr hN
+    calc ((((Finset.Ico a b).filter S).card : ℕ) : ℝ)⁻¹ *
+          ‖∑ p ∈ (Finset.Ico a b).filter S, Complex.exp (((θ * p : ℝ) : ℂ) * Complex.I)‖
+        ≤ ((((Finset.Ico a b).filter S).card : ℕ) : ℝ)⁻¹ *
+            ((((Finset.Ico a b).filter S).card : ℝ) *
+              (θ * ℓ + (1 / 1000 : ℝ) / (1 - 1 / 1000)
+                + Real.pi / ((1 - 1 / 1000) * (K * (θ * ℓ))) + 1 / ((1 - 1 / 1000) * ν))) :=
+          mul_le_mul_of_nonneg_left hmain (inv_nonneg.mpr (Nat.cast_nonneg _))
+      _ = θ * ℓ + (1 / 1000 : ℝ) / (1 - 1 / 1000)
+            + Real.pi / ((1 - 1 / 1000) * (K * (θ * ℓ))) + 1 / ((1 - 1 / 1000) * ν) := by
+          rw [← mul_assoc, inv_mul_cancel₀ hN', one_mul]
+      _ ≤ 1 / 100 := hbound
+
+/-! ## Real inequalities for the parameters -/
+
+/-- One block count: if `|c₁ Λ - y₁| ≤ δA` and `|c₂ Λ - (y₁ + ℓ)| ≤ δA` with `2δA ≤ ℓ/1000`,
+then `n = c₂ - c₁` satisfies `|n - ℓ/Λ| ≤ (ℓ/Λ)/1000`. -/
+theorem block_count_core {c₁ c₂ n y₁ ℓ Λ δA : ℝ} (hΛ : 0 < Λ) (hsum : c₁ + n = c₂)
+    (h1 : |c₁ * Λ - y₁| ≤ δA) (h2 : |c₂ * Λ - (y₁ + ℓ)| ≤ δA) (hδA : 2 * δA ≤ ℓ / 1000) :
+    |n - ℓ / Λ| ≤ 1 / 1000 * (ℓ / Λ) := by
+  have hΛ0 : Λ ≠ 0 := hΛ.ne'
+  have hn : n = c₂ - c₁ := by linarith
+  have key : (n * Λ - ℓ) / Λ = n - ℓ / Λ := by
+    rw [sub_div, mul_div_assoc, div_self hΛ0, mul_one]
+  have hbound : |n * Λ - ℓ| ≤ ℓ / 1000 := by
+    rw [abs_le] at h1 h2 ⊢
+    rw [hn]
+    constructor
+    · nlinarith [h1.1, h1.2, h2.1, h2.2]
+    · nlinarith [h1.1, h1.2, h2.1, h2.2]
+  rw [← key, abs_div, abs_of_pos hΛ]
+  rw [show 1 / 1000 * (ℓ / Λ) = (ℓ / 1000) / Λ by ring]
+  exact div_le_div_of_nonneg_right hbound hΛ.le
+
+/-- The phase speed. With `θ P = π (H - 1) φ`, `H ≥ 2`, `32X ≤ 2^26 P < 96X`, `φ ≥ 1`,
+`m/1000 ≤ φ ≤ m`, `(99/100) X ≤ W m ≤ 2X`, `K = 2^35 H` and `ℓK ≤ W ≤ 2ℓK`, one has
+`θ > 0`, `θ ℓ ≤ 1/1000` and `K θ ℓ ≥ 1000`: the phase turns through between `2000` and
+`π 2^22 H` radians over `W`. -/
+theorem theta_param_bounds {X m φ W P H ℓ K θ : ℝ}
+    (hφlo : 1 / 1000 * m ≤ φ) (hφhi : φ ≤ m) (hφ1 : 1 ≤ φ) (hH : 2 ≤ H)
+    (hWup : W * m ≤ 2 * X) (hWlo : 99 / 100 * X ≤ W * m) (hW0 : 0 ≤ W)
+    (hP0 : 0 < P) (hP32 : 32 * X ≤ P * 67108864) (hP96 : P * 67108864 < 96 * X)
+    (hθ : θ * P = Real.pi * (H - 1) * φ)
+    (hK : K = H * 34359738368) (hℓK : ℓ * K ≤ W) (hWℓK : W ≤ 2 * (ℓ * K)) :
+    0 < θ ∧ θ * ℓ ≤ 1 / 1000 ∧ 1000 ≤ K * (θ * ℓ) := by
+  have hpi0 : 0 < Real.pi := Real.pi_pos
+  have hpi1 : Real.pi < 3.15 := Real.pi_lt_d2
+  have hpi2 : 3.14 < Real.pi := Real.pi_gt_d2
+  have hnum : 0 < Real.pi * (H - 1) * φ :=
+    mul_pos (mul_pos hpi0 (by linarith)) (by linarith)
+  have hθ0 : 0 < θ := by
+    by_contra hneg
+    have : θ * P ≤ 0 := mul_nonpos_of_nonpos_of_nonneg (not_lt.mp hneg) hP0.le
+    linarith
+  have hup1 : (H - 1) * φ * W ≤ H * (4194304 * P) := by
+    have h1 : (H - 1) * (φ * W) ≤ H * (m * W) :=
+      mul_le_mul (by linarith) (mul_le_mul_of_nonneg_right hφhi hW0)
+        (mul_nonneg (by linarith) hW0) (by linarith)
+    have h2 : H * (m * W) ≤ H * (4194304 * P) :=
+      mul_le_mul_of_nonneg_left (by linarith) (by linarith)
+    linarith
+  have eW : θ * W * P = Real.pi * ((H - 1) * φ * W) := by
+    calc θ * W * P = θ * P * W := by ring
+      _ = Real.pi * (H - 1) * φ * W := by rw [hθ]
+      _ = Real.pi * ((H - 1) * φ * W) := by ring
+  have hθW_up : θ * W ≤ Real.pi * H * 4194304 := by
+    have h1 : θ * W * P ≤ Real.pi * H * 4194304 * P := by
+      rw [eW]
+      have := mul_le_mul_of_nonneg_left hup1 hpi0.le
+      linarith
+    exact le_of_mul_le_mul_right h1 hP0
+  have hlo1 : 99 / 100000 * X ≤ (H - 1) * φ * W := by
+    have h1 : 1 * (φ * W) ≤ (H - 1) * (φ * W) :=
+      mul_le_mul_of_nonneg_right (by linarith) (mul_nonneg (by linarith) hW0)
+    have h2 : 1 / 1000 * m * W ≤ φ * W := mul_le_mul_of_nonneg_right hφlo hW0
+    linarith
+  have hθW_lo : 2000 ≤ θ * W := by
+    have h1 : 2000 * P ≤ θ * W * P := by
+      rw [eW]
+      have h2 : 3.14 * (99 / 100000 * X) ≤ Real.pi * ((H - 1) * φ * W) :=
+        mul_le_mul hpi2.le hlo1 (by linarith) hpi0.le
+      linarith
+    exact le_of_mul_le_mul_right h1 hP0
+  refine ⟨hθ0, ?_, ?_⟩
+  · have h1 : θ * (ℓ * K) ≤ θ * W := mul_le_mul_of_nonneg_left hℓK hθ0.le
+    rw [hK] at h1
+    have hH0 : 0 < H := by linarith
+    have h2 : θ * ℓ * 34359738368 * H ≤ Real.pi * 4194304 * H := by linarith
+    have h3 := le_of_mul_le_mul_right h2 hH0
+    linarith
+  · have h1 : θ * W ≤ θ * (2 * (ℓ * K)) := mul_le_mul_of_nonneg_left hWℓK hθ0.le
+    linarith
+
+/-- From `π(y) log y = (1 ± δ/8) y` and `log Y ≥ 48/δ`, for `Y ≤ y ≤ 4Y`:
+`|π(y) log Y - y| ≤ δ Y`. -/
+theorem discrepancy_core {δ c Y y : ℝ} (hδ0 : 0 < δ) (hδ1 : δ ≤ 1) (hY : 1 ≤ Y) (hc : 0 ≤ c)
+    (hYy : Y ≤ y) (hy4 : y ≤ 4 * Y)
+    (hlo : (1 - δ / 8) * y ≤ c * Real.log y) (hhi : c * Real.log y ≤ (1 + δ / 8) * y)
+    (hlogY : 48 / δ ≤ Real.log Y) :
+    |c * Real.log Y - y| ≤ δ * Y := by
+  have hY0 : 0 < Y := by linarith
+  have hy0 : 0 < y := by linarith
+  have h48 : 48 ≤ δ * Real.log Y := by
+    rw [div_le_iff₀ hδ0] at hlogY
+    linarith
+  have hlogYy : Real.log Y ≤ Real.log y := Real.log_le_log hY0 hYy
+  have hlogy4 : Real.log y ≤ Real.log 4 + Real.log Y := by
+    rw [← Real.log_mul (show (4 : ℝ) ≠ 0 by norm_num) hY0.ne']
+    exact Real.log_le_log hy0 hy4
+  have hlog4 : Real.log 4 ≤ 3 := by
+    have := Real.log_le_sub_one_of_pos (show (0 : ℝ) < 4 by norm_num)
+    linarith
+  have h1 : c * Real.log Y ≤ c * Real.log y := mul_le_mul_of_nonneg_left hlogYy hc
+  have h9 : δ * y ≤ δ * (4 * Y) := mul_le_mul_of_nonneg_left hy4 hδ0.le
+  have hδy : δ * y ≤ 1 * y := mul_le_mul_of_nonneg_right hδ1 hy0.le
+  have h2 : c * Real.log Y ≤ 2 * y := by linarith
+  have h5 : c * 48 ≤ c * (δ * Real.log Y) := mul_le_mul_of_nonneg_left h48 hc
+  have h6 : δ * (c * Real.log Y) ≤ δ * (2 * y) := mul_le_mul_of_nonneg_left h2 hδ0.le
+  have h6c : 6 * c ≤ δ * Y := by linarith
+  have h7 : c * Real.log y ≤ c * Real.log Y + c * Real.log 4 := by
+    have := mul_le_mul_of_nonneg_left hlogy4 hc
+    linarith
+  have h8 : c * Real.log 4 ≤ c * 3 := mul_le_mul_of_nonneg_left hlog4 hc
+  rw [abs_le]
+  constructor
+  · linarith
+  · linarith
+
+/-- The real-variable core of the counting form of the prime number theorem. Here `N = u + 1`
+is the number of primes below `X`, so `p_u < X ≤ p_N`. -/
+theorem count_log_core {δ u N X : ℝ} (hδ0 : 0 < δ) (hδ1 : δ ≤ 1) (hu3 : 3 ≤ u)
+    (hNu : N = u + 1) (hNX : N ≤ X)
+    (ha : (1 - δ / 8) * (u * Real.log u) < X)
+    (hb : X ≤ (1 + δ / 8) * (N * Real.log N))
+    (hd : Real.log (2 * Real.log N) ≤ δ / 8 * Real.log N)
+    (he : Real.log X + 1 ≤ δ / 8 * X) :
+    (1 - δ) * X ≤ N * Real.log X ∧ N * Real.log X ≤ (1 + δ) * X := by
+  have hu0 : 0 < u := by linarith
+  have hN0 : 0 < N := by linarith
+  have hX0 : 0 < X := by linarith
+  have hlogu : 0 < Real.log u := Real.log_pos (by linarith)
+  have hlogN : 0 < Real.log N := Real.log_pos (by linarith)
+  have hlogNX : Real.log N ≤ Real.log X := Real.log_le_log hN0 hNX
+  have hlogX : 0 < Real.log X := lt_of_lt_of_le hlogN hlogNX
+  have hZ : 0 ≤ N * Real.log X := mul_nonneg hN0.le hlogX.le
+  have hNN : N * Real.log N ≤ N * Real.log X := mul_le_mul_of_nonneg_left hlogNX hN0.le
+  have hb' : X ≤ (1 + δ / 8) * (N * Real.log X) := by
+    have h2 : (1 + δ / 8) * (N * Real.log N) ≤ (1 + δ / 8) * (N * Real.log X) :=
+      mul_le_mul_of_nonneg_left hNN (by linarith)
+    linarith
+  constructor
+  · have h1 : (1 - δ) * X ≤ (1 - δ) * ((1 + δ / 8) * (N * Real.log X)) :=
+      mul_le_mul_of_nonneg_left hb' (by linarith)
+    have h3 : (1 - δ) * (1 + δ / 8) ≤ 1 := by nlinarith [sq_nonneg δ]
+    have h4 : (1 - δ) * (1 + δ / 8) * (N * Real.log X) ≤ 1 * (N * Real.log X) :=
+      mul_le_mul_of_nonneg_right h3 hZ
+    linarith
+  · have hNlogN : 0 ≤ N * Real.log N := mul_nonneg hN0.le hlogN.le
+    have hX2 : X ≤ 2 * (N * Real.log N) := by
+      have : (1 + δ / 8) * (N * Real.log N) ≤ 2 * (N * Real.log N) :=
+        mul_le_mul_of_nonneg_right (by linarith) hNlogN
+      linarith
+    have hL3 : Real.log X ≤ Real.log N + Real.log (2 * Real.log N) := by
+      have h1 : Real.log X ≤ Real.log (N * (2 * Real.log N)) :=
+        Real.log_le_log hX0 (by linarith)
+      rwa [Real.log_mul hN0.ne' (mul_pos two_pos hlogN).ne'] at h1
+    have hL5 : N * Real.log X ≤ (1 + δ / 8) * (N * Real.log N) := by
+      have h1 : Real.log X ≤ (1 + δ / 8) * Real.log N := by linarith
+      have h2 := mul_le_mul_of_nonneg_left h1 hN0.le
+      linarith
+    have hL6 : u * Real.log N ≤ u * Real.log u + 1 := by
+      have h1 := Real.log_le_sub_one_of_pos (div_pos hN0 hu0)
+      rw [Real.log_div hN0.ne' hu0.ne'] at h1
+      have h2 : u * (Real.log N - Real.log u) ≤ u * (N / u - 1) :=
+        mul_le_mul_of_nonneg_left h1 hu0.le
+      have h3 : u * (N / u - 1) = N - u := by
+        rw [mul_sub, mul_one, mul_div_cancel₀ _ hu0.ne']
+      rw [h3] at h2
+      linarith
+    have hL7 : N * Real.log N ≤ u * Real.log u + 1 + Real.log N := by
+      have e : N * Real.log N = u * Real.log N + Real.log N := by
+        rw [hNu]
+        ring
+      linarith
+    have hU0 : 0 ≤ u * Real.log u := mul_nonneg hu0.le hlogu.le
+    have hL8 : u * Real.log u ≤ (1 + δ / 4) * X := by
+      have h1 : 7 / 8 * (u * Real.log u) ≤ (1 - δ / 8) * (u * Real.log u) :=
+        mul_le_mul_of_nonneg_right (by linarith) hU0
+      have h2 : u * Real.log u ≤ 2 * X := by linarith
+      have h3 : δ / 8 * (u * Real.log u) ≤ δ / 8 * (2 * X) :=
+        mul_le_mul_of_nonneg_left h2 (by linarith)
+      linarith
+    have h1 : N * Real.log N ≤ (1 + δ / 4) * X + δ / 8 * X := by linarith
+    have h2 : (1 + δ / 8) * (N * Real.log N) ≤ (1 + δ / 8) * ((1 + δ / 4) * X + δ / 8 * X) :=
+      mul_le_mul_of_nonneg_left h1 (by linarith)
+    have h3 : δ * δ * X ≤ δ * X := by
+      have := mul_le_mul_of_nonneg_right hδ1 (mul_nonneg hδ0.le hX0.le)
+      linarith
+    linarith
+
+end ErdosProblems.Erdos249.PaperCompleteR21.FiberMean
+
+namespace ErdosProblems.Erdos249.PaperCompleteR21
+
+open Erdos249257.TotientTailPeriodKiller
+open ErdosProblems.Erdos251.PaperR11.PrimeSource (PrimeNumberTheorem)
+open ErdosProblems.Erdos249.PaperCompleteR21.ExcludedCofactor
+
+namespace FiberMean
+
+/-! ## Prime counts from the prime number theorem -/
+
+/-- `count p b = count p a + #{x ∈ [a, b) | p x}` for `a ≤ b`. -/
+theorem count_add_card_filter_Ico (p : ℕ → Prop) [DecidablePred p] {a b : ℕ} (hab : a ≤ b) :
+    Nat.count p a + ((Finset.Ico a b).filter p).card = Nat.count p b := by
+  have hdisj : Disjoint ((Finset.range a).filter p) ((Finset.Ico a b).filter p) := by
+    apply Finset.disjoint_filter_filter
+    rw [Finset.range_eq_Ico]
+    exact Finset.Ico_disjoint_Ico_consecutive 0 a b
+  have hunion : (Finset.range a).filter p ∪ (Finset.Ico a b).filter p
+      = (Finset.range b).filter p := by
+    rw [← Finset.filter_union, Finset.range_eq_Ico,
+      Finset.Ico_union_Ico_eq_Ico (Nat.zero_le a) hab]
+  have h1 : Nat.count p a = ((Finset.range a).filter p).card := Nat.count_eq_card_filter_range p a
+  have h2 : Nat.count p b = ((Finset.range b).filter p).card := Nat.count_eq_card_filter_range p b
+  rw [h1, h2, ← hunion, Finset.card_union_of_disjoint hdisj]
+
+/-- **The prime number theorem in counting form.** For `0 < δ ≤ 1`, for all large `x`,
+`(1 - δ) x ≤ π(x) log x ≤ (1 + δ) x`, where `π(x) = Nat.count Nat.Prime x` counts the primes
+below `x`. The upper bound uses `log x ≤ (1 + δ/8) log π(x)`. -/
+theorem eventually_count_log_two_sided (hPNT : PrimeNumberTheorem) {δ : ℝ} (hδ0 : 0 < δ)
+    (hδ1 : δ ≤ 1) :
+    ∀ᶠ x : ℕ in atTop,
+      (1 - δ) * (x : ℝ) ≤ (Nat.count Nat.Prime x : ℝ) * Real.log x ∧
+      (Nat.count Nat.Prime x : ℝ) * Real.log x ≤ (1 + δ) * x := by
+  have hδ8 : 0 < δ / 8 := by positivity
+  obtain ⟨K, hK2, hK⟩ := nthPrime_two_sided hPNT hδ8
+  have hll : ∀ᶠ n : ℕ in atTop, Real.log (2 * Real.log (n : ℝ)) ≤ δ / 8 * Real.log n :=
+    tendsto_natCast_atTop_atTop.eventually (eventually_log_two_mul_log_le hδ8)
+  obtain ⟨n₀, hn₀⟩ := eventually_atTop.mp hll
+  have hsm : ∀ᶠ x : ℕ in atTop, Real.log (x : ℝ) + 1 ≤ δ / 8 * (x : ℝ) :=
+    tendsto_natCast_atTop_atTop.eventually (eventually_log_add_le hδ8 1)
+  have hinf : (setOf Nat.Prime).Infinite := Nat.infinite_setOf_prime
+  filter_upwards [hsm, eventually_gt_atTop (Nat.nth Nat.Prime (K + n₀ + 5))] with x hsm hx
+  have hnK : K + n₀ + 5 < Nat.count Nat.Prime x := (Nat.lt_nth_iff_count_lt hinf).mpr hx
+  have hF2 : x ≤ Nat.nth Nat.Prime (Nat.count Nat.Prime x) := Nat.le_nth_count hinf x
+  have hF1 : Nat.nth Nat.Prime (Nat.count Nat.Prime x - 1) < x :=
+    Nat.nth_lt_of_lt_count (by omega)
+  have hnx : Nat.count Nat.Prime x ≤ x := Nat.count_le _
+  generalize Nat.count Nat.Prime x = n at hnK hF2 hF1 hnx ⊢
+  obtain ⟨hu1, -⟩ := hK (n - 1) (by omega)
+  obtain ⟨-, hn2⟩ := hK n (by omega)
+  have hun : ((n - 1 : ℕ) : ℝ) + 1 = (n : ℝ) := by
+    rw [Nat.cast_sub (by omega : 1 ≤ n), Nat.cast_one]
+    ring
+  exact count_log_core hδ0 hδ1 (u := ((n - 1 : ℕ) : ℝ)) (N := (n : ℝ)) (X := (x : ℝ))
+    (by exact_mod_cast (show 3 ≤ n - 1 by omega)) hun.symm (by exact_mod_cast hnx)
+    (lt_of_le_of_lt hu1 (by exact_mod_cast hF1)) (le_trans (by exact_mod_cast hF2) hn2)
+    (hn₀ n (by omega)) hsm
+
+/-- **Prime counts at scale `Y`.** For `0 < δ ≤ 1` there is `Y₀` such that
+`|π(y) log Y - y| ≤ δ Y` whenever `Y₀ ≤ Y ≤ y ≤ 4Y`. -/
+theorem exists_count_log_discrepancy (hPNT : PrimeNumberTheorem) {δ : ℝ} (hδ0 : 0 < δ)
+    (hδ1 : δ ≤ 1) :
+    ∃ Y₀ : ℕ, ∀ Y : ℕ, Y₀ ≤ Y → ∀ y : ℕ, Y ≤ y → y ≤ 4 * Y →
+      |(Nat.count Nat.Prime y : ℝ) * Real.log (Y : ℝ) - (y : ℝ)| ≤ δ * (Y : ℝ) := by
+  have hδ8 : 0 < δ / 8 := by positivity
+  obtain ⟨X₁, hX₁⟩ := eventually_atTop.mp
+    (eventually_count_log_two_sided hPNT hδ8 (by linarith))
+  have hlog : ∀ᶠ Y : ℕ in atTop, 48 / δ ≤ Real.log (Y : ℝ) :=
+    (Real.tendsto_log_atTop.comp tendsto_natCast_atTop_atTop).eventually_ge_atTop _
+  obtain ⟨X₂, hX₂⟩ := eventually_atTop.mp hlog
+  refine ⟨max (max X₁ X₂) 1, fun Y hY y hYy hy4 => ?_⟩
+  have hY1 : X₁ ≤ Y := le_trans (le_trans (le_max_left _ _) (le_max_left _ _)) hY
+  have hY2 : X₂ ≤ Y := le_trans (le_trans (le_max_right _ _) (le_max_left _ _)) hY
+  have hY3 : 1 ≤ Y := le_trans (le_max_right _ _) hY
+  obtain ⟨hlo, hhi⟩ := hX₁ y (le_trans hY1 hYy)
+  exact discrepancy_core hδ0 hδ1 (by exact_mod_cast hY3) (Nat.cast_nonneg _)
+    (by exact_mod_cast hYy) (by exact_mod_cast hy4) hlo hhi (hX₂ Y hY2)
+
+/-! ## The minimal depth -/
+
+/-- **The minimal depth.** For `h ≥ 1` and `X ≥ max(2^(h+22), 4h + 64)` the minimal admissible depth
+`L = minimalDepth h 26 X` has `h + 26 ≤ L`, `32X ≤ 2^L < 96X` and `L ≤ h + 36 + log₂ X`. The
+upper bound `2^L < 96X` holds because `L - 1` is not admissible. -/
+theorem minimalDepth_geometry {h X : ℕ} (hh : 0 < h) (hX1 : 2 ^ (h + 22) ≤ X)
+    (hX2 : 4 * h + 64 ≤ X) :
+    h + 26 ≤ minimalDepth h 26 X ∧
+    32 * X ≤ 2 ^ minimalDepth h 26 X ∧
+    2 ^ minimalDepth h 26 X < 96 * X ∧
+    minimalDepth h 26 X ≤ h + 36 + Nat.log 2 X := by
+  obtain ⟨hA1, hA2⟩ := minimalDepth_admissible h 26 X
+  have hle := minimalDepth_le (admissibleDepth_witness h 26 X)
+  have hpos : 0 < minimalDepth h 26 X := by omega
+  have hmin : ¬ AdmissibleDepth h 26 X (minimalDepth h 26 X - 1) :=
+    Nat.find_min (exists_admissibleDepth h 26 X) (Nat.sub_lt hpos Nat.one_pos)
+  have hlog : 4 * Nat.log 2 X ≤ X := four_mul_log_two_le (by omega)
+  have hP : 0 < 2 ^ (h + 21) := pow_pos (by norm_num) _
+  have h2 : 2 ^ (h + 26) = 32 * 2 ^ (h + 21) := by ring
+  have h3 : 2 ^ (h + 22) = 2 * 2 ^ (h + 21) := by ring
+  generalize minimalDepth h 26 X = L at hA1 hA2 hle hpos hmin ⊢
+  obtain ⟨k, rfl⟩ : ∃ k, L = k + 1 := ⟨L - 1, by omega⟩
+  simp only [AdmissibleDepth, Nat.add_sub_cancel, not_and, not_le] at hmin
+  have hpow : 2 ^ (k + 1) = 2 * 2 ^ k := pow_succ' 2 k
+  have h27 : h + 27 ≤ k + 1 := by
+    by_contra hcon
+    have hk : k + 1 = h + 26 := by omega
+    rw [hk] at hA2
+    omega
+  have hcase := hmin (by omega)
+  refine ⟨by omega, by omega, ?_, by omega⟩
+  rw [hpow]
+  omega
+
+/-! ## A fibre is a set of primes, and its phase is affine in the prime -/
+
+/-- At the base `mp - t` of a supplier prime `p` of `m`, the pivot phase is
+`pivotPrimePhase h L s m p`. -/
+theorem pivotPhaseAt_baseOfPrime (h : ℕ) {X L s m p : ℕ} (hm : 0 < m)
+    (hmsmall : m ≤ Nat.sqrt X / 2) (hp : p ∈ pivotSupplierPrimes X L s m) :
+    pivotPhaseAt h (pivotBaseOfPrime L s m p) L s = pivotPrimePhase h L s m p := by
+  obtain ⟨_, hpp, hlo, _⟩ := Finset.mem_filter.mp hp
+  have ht1 : 1 ≤ pivotOffset L s := by unfold pivotOffset; omega
+  have hmp : m < p := by
+    by_contra hcon
+    have h1 : m * p ≤ m * m := Nat.mul_le_mul_left m (by omega)
+    have h2 : m ≤ Nat.sqrt X := le_trans hmsmall (Nat.div_le_self _ _)
+    have h3 : m * m ≤ Nat.sqrt X * Nat.sqrt X := Nat.mul_le_mul h2 h2
+    have h4 := Nat.sqrt_le X
+    omega
+  have ht_le : pivotOffset L s ≤ m * p := by omega
+  have harg : pivotArgument (pivotBaseOfPrime L s m p) L s = m * p := by
+    simp only [pivotArgument, pivotBaseOfPrime]
+    exact Nat.sub_add_cancel ht_le
+  have hpivot := pivotPrime_eq_of_argument_eq_mul_prime hm hpp hmp harg
+  have hcof := pivotCofactor_eq_of_argument_eq_mul_prime hm hpp hmp harg
+  unfold pivotPhaseAt
+  rw [hpivot, hcof]
+
+/-- **A fibre mean is a mean over primes.** For `0 < m ≤ ⌊√X⌋/2`, the fibre mean of `m` is the
+mean of `pivotPrimePhase h L s m p` over the supplier primes `p` of `m`. -/
+theorem pivotFiberMean_eq_sum_primes (h : ℕ) {X L s m : ℕ} (hm : 0 < m)
+    (hmsmall : m ≤ Nat.sqrt X / 2) :
+    pivotFiberMean h X L s m =
+      ((pivotSupplierPrimes X L s m).card : ℂ)⁻¹ *
+        ∑ p ∈ pivotSupplierPrimes X L s m, pivotPrimePhase h L s m p := by
+  have hinj : Set.InjOn (pivotBaseOfPrime L s m) (pivotSupplierPrimes X L s m : Set ℕ) :=
+    fun p hp q hq heq => pivotBaseOfPrime_injective_on_supplierPrimes hm
+      (Finset.mem_coe.mp hp) (Finset.mem_coe.mp hq) heq
+  rw [pivotFiberMean, ← image_pivotSupplierPrimes_eq_pivotFiber (L := L) (s := s) hm hmsmall,
+    Finset.card_image_of_injOn hinj, Finset.sum_image hinj]
+  congr 1
+  exact Finset.sum_congr rfl (fun p hp => pivotPhaseAt_baseOfPrime h hm hmsmall hp)
+
+/-- The supplier primes of `m` are the primes of `[⌈(X + t)/m⌉, ⌈(2X + t)/m⌉)`,
+`t = pivotOffset L s`. -/
+theorem pivotSupplierPrimes_eq_filter_Ico {X L s m : ℕ} (hm : 0 < m) :
+    pivotSupplierPrimes X L s m =
+      (Finset.Ico ((X + pivotOffset L s + m - 1) / m)
+        ((2 * X + pivotOffset L s + m - 1) / m)).filter Nat.Prime := by
+  ext p
+  simp only [pivotSupplierPrimes, Finset.mem_filter, Finset.mem_range, Finset.mem_Ico]
+  have h1 := Nat.div_le_iff_le_mul_add_pred (a := X + pivotOffset L s + m - 1) (c := p) hm
+  have h2 := Nat.div_le_iff_le_mul_add_pred (a := 2 * X + pivotOffset L s + m - 1) (c := p) hm
+  have hp : p ≤ m * p := Nat.le_mul_of_pos_left p hm
+  constructor
+  · rintro ⟨_, hpp, hlo, hhi⟩
+    refine ⟨⟨h1.mpr (by omega), ?_⟩, hpp⟩
+    by_contra hcon
+    have := h2.mp (not_lt.mp hcon)
+    omega
+  · rintro ⟨⟨hlo, hhi⟩, hpp⟩
+    have hlo' := h1.mp hlo
+    have hhi' : m * p < 2 * X + pivotOffset L s := by
+      by_contra hcon
+      exact absurd (h2.mpr (by omega)) (not_le.mpr hhi)
+    exact ⟨by omega, hpp, by omega, hhi'⟩
+
+/-- At `s = 26` the pivot angle is affine in the prime: `θ p - θ` with
+`θ = π (2^h - 1) φ(m) / 2^(L - 26)`. -/
+theorem pivotPrimeAngle_eq_affine {h L m p : ℕ} {θ : ℝ}
+    (hθ : θ = Real.pi * ((2 : ℝ) ^ h - 1) * (Nat.totient m : ℝ) / (2 : ℝ) ^ (L - 26)) :
+    pivotPrimeAngle h L 26 m p = θ * p - θ := by
+  rw [pivotPrimeAngle, hθ]
+  ring
+
+/-- `⌈(X + t)/m⌉ ≥ 2⌊√X⌋` when `0 < m ≤ ⌊√X⌋/2`. -/
+theorem two_sqrt_le_ceil {X t m : ℕ} (hm : 0 < m) (hmsmall : m ≤ Nat.sqrt X / 2) :
+    2 * Nat.sqrt X ≤ (X + t + m - 1) / m := by
+  rw [Nat.le_div_iff_mul_le hm]
+  have h1 : Nat.sqrt X * (2 * m) ≤ Nat.sqrt X * Nat.sqrt X := Nat.mul_le_mul_left _ (by omega)
+  have h2 : 2 * Nat.sqrt X * m = Nat.sqrt X * (2 * m) := by ring
+  have h3 := Nat.sqrt_le X
+  omega
+
+/-! ## The fibre mean at one large `X` -/
+
+/-- **One fibre at one large `X`.** The fibre mean of a cofactor `m ≤ ⌊√X⌋/2` with
+`φ(m) ≥ m/1000` is at most `1/100`, given the bounds on the depth `L`, a lower bound on `⌊√X⌋`,
+and prime counts `|π(y) log A - y| ≤ δ A` on `[A, 4A]`, `A = ⌈(X + t)/m⌉`, with
+`δ = 1/(8000 · 2^(h+35))`. -/
+theorem fiberMean_le_at {h X m L A B : ℕ} {δ : ℝ} (hh : 0 < h) (hm : 0 < m)
+    (hmsmall : m ≤ Nat.sqrt X / 2)
+    (hgood : (1 / 1000 : ℝ) * (m : ℝ) ≤ (Nat.totient m : ℝ))
+    (hL26 : h + 26 ≤ L) (hL32 : 32 * X ≤ 2 ^ L) (hL96 : 2 ^ L < 96 * X)
+    (hLlog : L ≤ h + 36 + Nat.log 2 X) (hX2 : 4 * h + 64 ≤ X)
+    (hS : 2 ^ (h + 35) + 100 ≤ Nat.sqrt X)
+    (hA : A = (X + pivotOffset L 26 + m - 1) / m)
+    (hB : B = (2 * X + pivotOffset L 26 + m - 1) / m)
+    (hδ : δ * (8000 * (2 : ℝ) ^ (h + 35)) = 1) (hδ0 : 0 ≤ δ)
+    (hcount : ∀ y : ℕ, A ≤ y → y ≤ 4 * A →
+      |(Nat.count Nat.Prime y : ℝ) * Real.log (A : ℝ) - (y : ℝ)| ≤ δ * (A : ℝ))
+    (hlogA : 4000 * (2 : ℝ) ^ (h + 35) * Real.log (A : ℝ) ≤ (A : ℝ)) :
+    ‖pivotFiberMean h X L 26 m‖ ≤ 1 / 100 := by
+  have hK0 : 0 < 2 ^ (h + 35) := pow_pos (by norm_num) _
+  have ht1 : 1 ≤ pivotOffset L 26 := by unfold pivotOffset; omega
+  have ht2 : pivotOffset L 26 ≤ h + 11 + Nat.log 2 X := by unfold pivotOffset; omega
+  have hlog4 : 4 * Nat.log 2 X ≤ X := four_mul_log_two_le (by omega)
+  have hSS : Nat.sqrt X * Nat.sqrt X ≤ X := Nat.sqrt_le X
+  have h2m : 2 * m ≤ Nat.sqrt X := by omega
+  have hS100 : 100 * Nat.sqrt X ≤ X := by
+    have : 100 * Nat.sqrt X ≤ Nat.sqrt X * Nat.sqrt X := Nat.mul_le_mul_right _ (by omega)
+    omega
+  have hA1 : A * m ≤ X + pivotOffset L 26 + m - 1 := by
+    rw [hA]; exact Nat.div_mul_le_self _ _
+  have hA2 : X + pivotOffset L 26 ≤ A * m := by
+    have := Nat.lt_div_mul_add (a := X + pivotOffset L 26 + m - 1) hm
+    rw [← hA] at this
+    omega
+  have hB1 : B * m ≤ 2 * X + pivotOffset L 26 + m - 1 := by
+    rw [hB]; exact Nat.div_mul_le_self _ _
+  have hB2 : 2 * X + pivotOffset L 26 ≤ B * m := by
+    have := Nat.lt_div_mul_add (a := 2 * X + pivotOffset L 26 + m - 1) hm
+    rw [← hB] at this
+    omega
+  have hAB : A ≤ B := Nat.le_of_mul_le_mul_right (by omega : A * m ≤ B * m) hm
+  obtain ⟨W, hW⟩ : ∃ W, B = A + W := ⟨B - A, by omega⟩
+  have hWm : B * m = A * m + W * m := by rw [hW]; ring
+  have hWup : W * m + 1 ≤ X + m := by omega
+  have hWlo : X + 1 ≤ W * m + m := by omega
+  have hA2S : 2 * Nat.sqrt X ≤ A := by
+    apply Nat.le_of_mul_le_mul_right _ hm
+    have h1 : Nat.sqrt X * (2 * m) ≤ Nat.sqrt X * Nat.sqrt X := Nat.mul_le_mul_left _ h2m
+    have h2 : 2 * Nat.sqrt X * m = Nat.sqrt X * (2 * m) := by ring
+    omega
+  have hA2W : A ≤ 2 * W := by
+    apply Nat.le_of_mul_le_mul_right _ hm
+    have h2 : 2 * W * m = 2 * (W * m) := by ring
+    omega
+  have hW3A : W ≤ 3 * A := by
+    apply Nat.le_of_mul_le_mul_right _ hm
+    have h2 : 3 * A * m = 3 * (A * m) := by ring
+    omega
+  have hKW : 2 ^ (h + 35) ≤ W := by omega
+  obtain ⟨ℓ, hℓ⟩ : ∃ ℓ, ℓ = W / 2 ^ (h + 35) := ⟨_, rfl⟩
+  have hℓK : ℓ * 2 ^ (h + 35) ≤ W := by rw [hℓ]; exact Nat.div_mul_le_self _ _
+  have hℓK' : W < ℓ * 2 ^ (h + 35) + 2 ^ (h + 35) := by
+    rw [hℓ]; exact Nat.lt_div_mul_add hK0
+  have hℓ1 : 1 ≤ ℓ := by
+    rw [hℓ, Nat.le_div_iff_mul_le hK0]; omega
+  have hKℓ : 2 ^ (h + 35) ≤ ℓ * 2 ^ (h + 35) := Nat.le_mul_of_pos_left _ hℓ1
+  have hcomm : 2 ^ (h + 35) * ℓ = ℓ * 2 ^ (h + 35) := Nat.mul_comm _ _
+  have hA4 : A ≤ 4 * (ℓ * 2 ^ (h + 35)) := by omega
+  have hab : A + 2 ^ (h + 35) * ℓ ≤ B := by omega
+  have hbb : B ≤ A + 2 ^ (h + 35) * ℓ + 2 ^ (h + 35) := by omega
+  -- real facts
+  have hφhi : (Nat.totient m : ℝ) ≤ m := by exact_mod_cast Nat.totient_le m
+  have hφpos : 0 < Nat.totient m := Nat.totient_pos.mpr hm
+  have hφ1 : (1 : ℝ) ≤ Nat.totient m := by exact_mod_cast (show 1 ≤ Nat.totient m by omega)
+  have hH : (2 : ℝ) ≤ (2 : ℝ) ^ h := by
+    have := pow_le_pow_right₀ (by norm_num : (1 : ℝ) ≤ 2) (show 1 ≤ h by omega)
+    rwa [pow_one] at this
+  have hWupR : (W : ℝ) * m ≤ 2 * X := by
+    have : W * m ≤ 2 * X := by omega
+    exact_mod_cast this
+  have hWloR : 99 / 100 * (X : ℝ) ≤ (W : ℝ) * m := by
+    have : 99 * X ≤ 100 * (W * m) := by omega
+    have h' : (99 : ℝ) * X ≤ 100 * ((W : ℝ) * m) := by exact_mod_cast this
+    linarith
+  have hP0 : (0 : ℝ) < (2 : ℝ) ^ (L - 26) := by positivity
+  have hP26 : (2 : ℝ) ^ (L - 26) * 67108864 = (2 : ℝ) ^ L := by
+    rw [show (67108864 : ℝ) = 2 ^ 26 by norm_num, ← pow_add,
+      Nat.sub_add_cancel (by omega : 26 ≤ L)]
+  have hL32R : 32 * (X : ℝ) ≤ (2 : ℝ) ^ L := by exact_mod_cast hL32
+  have hL96R : (2 : ℝ) ^ L < 96 * (X : ℝ) := by exact_mod_cast hL96
+  have hKR : ((2 ^ (h + 35) : ℕ) : ℝ) = (2 : ℝ) ^ h * 34359738368 := by
+    push_cast
+    ring
+  have hℓKR : (ℓ : ℝ) * ((2 ^ (h + 35) : ℕ) : ℝ) ≤ W := by exact_mod_cast hℓK
+  have hWℓKR : (W : ℝ) ≤ 2 * ((ℓ : ℝ) * ((2 ^ (h + 35) : ℕ) : ℝ)) := by
+    have : W ≤ 2 * (ℓ * 2 ^ (h + 35)) := by omega
+    exact_mod_cast this
+  obtain ⟨hθ0, hθℓ, hKθℓ⟩ := theta_param_bounds
+    (θ := Real.pi * ((2 : ℝ) ^ h - 1) * (Nat.totient m : ℝ) / (2 : ℝ) ^ (L - 26))
+    hgood hφhi hφ1 hH hWupR hWloR (Nat.cast_nonneg W) hP0 (by linarith) (by linarith)
+    (div_mul_cancel₀ _ hP0.ne') hKR hℓKR hWℓKR
+  have hθℓ0 : 0 < Real.pi * ((2 : ℝ) ^ h - 1) * (Nat.totient m : ℝ) / (2 : ℝ) ^ (L - 26)
+      * (ℓ : ℝ) := mul_pos hθ0 (by exact_mod_cast (show 0 < ℓ by omega))
+  have hlogA0 : 0 < Real.log (A : ℝ) :=
+    Real.log_pos (by exact_mod_cast (show 1 < A by omega))
+  have hν : 1000 ≤ (ℓ : ℝ) / Real.log (A : ℝ) := by
+    rw [le_div_iff₀ hlogA0]
+    have h1 : (A : ℝ) ≤ 4 * ((ℓ : ℝ) * (2 : ℝ) ^ (h + 35)) := by exact_mod_cast hA4
+    have hKpos : (0 : ℝ) < 4 * (2 : ℝ) ^ (h + 35) := by positivity
+    have h2 : 4 * (2 : ℝ) ^ (h + 35) * (1000 * Real.log (A : ℝ))
+        ≤ 4 * (2 : ℝ) ^ (h + 35) * (ℓ : ℝ) := by linarith
+    exact le_of_mul_le_mul_left h2 hKpos
+  have hblock : ∀ k < 2 ^ (h + 35),
+      |(((Finset.Ico (A + k * ℓ) (A + k * ℓ + ℓ)).filter Nat.Prime).card : ℝ)
+          - (ℓ : ℝ) / Real.log (A : ℝ)| ≤ 1 / 1000 * ((ℓ : ℝ) / Real.log (A : ℝ)) := by
+    intro k hk
+    have hk1 : A + k * ℓ + ℓ ≤ A + 2 ^ (h + 35) * ℓ := by
+      have h1 : (k + 1) * ℓ ≤ 2 ^ (h + 35) * ℓ := Nat.mul_le_mul_right ℓ (by omega)
+      have h2 : (k + 1) * ℓ = k * ℓ + ℓ := by ring
+      omega
+    have hy1 := hcount (A + k * ℓ) (by omega) (by omega)
+    have hy2 := hcount (A + k * ℓ + ℓ) (by omega) (by omega)
+    have hsplit := count_add_card_filter_Ico Nat.Prime
+      (show A + k * ℓ ≤ A + k * ℓ + ℓ by omega)
+    have hsplitR : (Nat.count Nat.Prime (A + k * ℓ) : ℝ)
+        + (((Finset.Ico (A + k * ℓ) (A + k * ℓ + ℓ)).filter Nat.Prime).card : ℝ)
+        = (Nat.count Nat.Prime (A + k * ℓ + ℓ) : ℝ) := by exact_mod_cast hsplit
+    have e : (((A + k * ℓ + ℓ : ℕ) : ℝ)) = ((A + k * ℓ : ℕ) : ℝ) + (ℓ : ℝ) :=
+      Nat.cast_add _ _
+    have hy2' : |(Nat.count Nat.Prime (A + k * ℓ + ℓ) : ℝ) * Real.log (A : ℝ)
+        - (((A + k * ℓ : ℕ) : ℝ) + (ℓ : ℝ))| ≤ δ * (A : ℝ) := by
+      rw [← e]
+      exact hy2
+    refine block_count_core hlogA0 hsplitR hy1 hy2' ?_
+    have h1 : (A : ℝ) ≤ 4 * ((ℓ : ℝ) * (2 : ℝ) ^ (h + 35)) := by exact_mod_cast hA4
+    have h4 : δ * (A : ℝ) ≤ δ * (4 * ((ℓ : ℝ) * (2 : ℝ) ^ (h + 35))) :=
+      mul_le_mul_of_nonneg_left h1 hδ0
+    have h5 : δ * (8000 * (2 : ℝ) ^ (h + 35)) * (ℓ : ℝ) = 1 * (ℓ : ℝ) := by rw [hδ]
+    linarith
+  rw [pivotFiberMean_eq_sum_primes h hm hmsmall, pivotSupplierPrimes_eq_filter_Ico hm,
+    ← hA, ← hB]
+  have hphase : ∀ p : ℕ, pivotPrimePhase h L 26 m p =
+      Complex.exp (((Real.pi * ((2 : ℝ) ^ h - 1) * (Nat.totient m : ℝ) / (2 : ℝ) ^ (L - 26)
+          * (p : ℝ)
+        - Real.pi * ((2 : ℝ) ^ h - 1) * (Nat.totient m : ℝ) / (2 : ℝ) ^ (L - 26) : ℝ) : ℂ)
+          * Complex.I) := by
+    intro p
+    rw [pivotPrimePhase, pivotPrimeAngle_eq_affine (h := h) (L := L) (m := m) (p := p) rfl]
+  simp only [hphase]
+  exact norm_mean_le_of_blocks hK0 hθ0 hθℓ0 hθℓ hKθℓ hν hab hbb hblock
+
+end FiberMean
+
+open FiberMean
+
+/-- **The fibre means are small, from the prime number theorem.** At the minimal depth with
+`s = 26` and `η = 1/1000`, for every `h ≥ 1` and all large `X`, every good base `N` has
+`‖pivotFiberMean h X L 26 m_N‖ ≤ 1/100`. This is the `hmean` hypothesis of
+`dtw_of_fiberMean_and_centered`. -/
+theorem fiberMean_le_of_primeNumberTheorem (hPNT : PrimeNumberTheorem) :
+    ∀ h : ℕ, 0 < h → ∀ᶠ X : ℕ in Filter.atTop,
+      ∀ N ∈ pivotGoodBases X (minimalDepth h 26 X) 26 (1 / 1000 : ℝ),
+        ‖pivotFiberMean h X (minimalDepth h 26 X) 26
+            (pivotCofactor N (minimalDepth h 26 X) 26)‖ ≤ (1 / 100 : ℝ) := by
+  intro h hh
+  have hδ0 : (0 : ℝ) < 1 / (8000 * (2 : ℝ) ^ (h + 35)) := by positivity
+  have hδ1 : 1 / (8000 * (2 : ℝ) ^ (h + 35)) ≤ 1 := by
+    rw [div_le_one (show (0 : ℝ) < 8000 * (2 : ℝ) ^ (h + 35) by positivity)]
+    have : (1 : ℝ) ≤ (2 : ℝ) ^ (h + 35) := one_le_pow₀ (by norm_num)
+    linarith
+  obtain ⟨Y₀, hY₀⟩ := exists_count_log_discrepancy hPNT hδ0 hδ1
+  have hc : (0 : ℝ) < 1 / (4000 * (2 : ℝ) ^ (h + 35)) := by positivity
+  have hev : ∀ᶠ A : ℕ in atTop,
+      Real.log (A : ℝ) + 0 ≤ 1 / (4000 * (2 : ℝ) ^ (h + 35)) * (A : ℝ) :=
+    tendsto_natCast_atTop_atTop.eventually (eventually_log_add_le hc 0)
+  have hA₂ : ∀ᶠ A : ℕ in atTop, 4000 * (2 : ℝ) ^ (h + 35) * Real.log (A : ℝ) ≤ (A : ℝ) := by
+    filter_upwards [hev] with A hA
+    have hK0 : (0 : ℝ) < 4000 * (2 : ℝ) ^ (h + 35) := by positivity
+    have h1 : Real.log (A : ℝ) ≤ 1 / (4000 * (2 : ℝ) ^ (h + 35)) * A := by linarith
+    have h2 := mul_le_mul_of_nonneg_left h1 hK0.le
+    have h3 : 4000 * (2 : ℝ) ^ (h + 35) * (1 / (4000 * (2 : ℝ) ^ (h + 35)) * (A : ℝ))
+        = A := by
+      rw [← mul_assoc, mul_one_div_cancel hK0.ne', one_mul]
+    linarith
+  obtain ⟨A₂, hA₂'⟩ := eventually_atTop.mp hA₂
+  filter_upwards [eventually_ge_atTop (2 ^ (h + 22)), eventually_ge_atTop (4 * h + 64),
+    eventually_ge_atTop ((Y₀ + A₂ + 2 ^ (h + 35) + 100) * (Y₀ + A₂ + 2 ^ (h + 35) + 100))]
+    with X hX1 hX2 hX3
+  intro N hN
+  have hNsup : N ∈ pivotSupplierBases X (minimalDepth h 26 X) 26 := (Finset.mem_filter.mp hN).1
+  have hgood : (1 / 1000 : ℝ) * (pivotCofactor N (minimalDepth h 26 X) 26 : ℝ)
+      ≤ (Nat.totient (pivotCofactor N (minimalDepth h 26 X) 26) : ℝ) :=
+    (Finset.mem_filter.mp hN).2
+  obtain ⟨hm0, hmM⟩ := pivotCofactor_pos_le hNsup
+  obtain ⟨hL26, hL32, hL96, hLlog⟩ := minimalDepth_geometry hh hX1 hX2
+  have hK0 : 0 < 2 ^ (h + 35) := pow_pos (by norm_num) _
+  have hS : Y₀ + A₂ + 2 ^ (h + 35) + 100 ≤ Nat.sqrt X := Nat.le_sqrt.mpr hX3
+  have hA2S := two_sqrt_le_ceil (t := pivotOffset (minimalDepth h 26 X) 26) hm0 hmM
+  have hδ : 1 / (8000 * (2 : ℝ) ^ (h + 35)) * (8000 * (2 : ℝ) ^ (h + 35)) = 1 :=
+    one_div_mul_cancel (by positivity)
+  exact fiberMean_le_at hh hm0 hmM hgood hL26 hL32 hL96 hLlog hX2 (by omega) rfl rfl hδ hδ0.le
+    (hY₀ _ (by omega)) (hA₂' _ (by omega))
+
+end ErdosProblems.Erdos249.PaperCompleteR21
+
+#print axioms ErdosProblems.Erdos249.PaperCompleteR21.FiberMean.norm_mean_le_of_blocks
+#print axioms ErdosProblems.Erdos249.PaperCompleteR21.FiberMean.exists_count_log_discrepancy
+#print axioms ErdosProblems.Erdos249.PaperCompleteR21.FiberMean.minimalDepth_geometry
+#print axioms ErdosProblems.Erdos249.PaperCompleteR21.FiberMean.pivotFiberMean_eq_sum_primes
+#print axioms ErdosProblems.Erdos249.PaperCompleteR21.fiberMean_le_of_primeNumberTheorem
+
+
+/-!
+# Erdős #249: the pivot decorrelation from two of its clauses
+
+`DTWPivotResidualDecorrelation` (`FirstHarmonicPivot`, demand `G064` of the demand ledger)
+asks, for every `h`, for parameters at which the two depth conditions and the four clauses of
+`PivotBudgetAt` hold together, and it implies the irrationality of `∑ φ(n) / 2 ^ n`. The finite
+bridge `pivotBudgetAt_of_peripheral_estimates` reduces three of the clauses to a uniform
+fibre-mean bound, a count of bad bases and a count of non-supplier bases.
+
+At the minimal depth, with `s = 26` and `η = 1/1000`, two proofs that do not mention the
+decorrelation supply most of this. `prop_dickman` gives the two depth conditions and, for all
+large `X`, fewer than `8X/25` non-supplier bases, with no hypothesis. The argument graph's
+frontier of `prop_badcof` showed that its proof uses the prime number theorem only through a
+dyadic prime count, which Chebyshev's bound supplies:
+`excluded_budget_one_thousandth_of_chebyshev` gives fewer than `X/100` bad bases for all large
+`X`, with no hypothesis. The two theorems below state what remains: the fibre means and the
+centred correlation.
+-/
+
+open Filter
+
+namespace ErdosProblems.Erdos249.PaperCompleteR21
+
+open Erdos249257.TotientTailPeriodKiller
+open ErdosProblems.Erdos249.PaperCompleteR21.ExcludedCofactor
+
+/-- The bad-base clause, read off the excluded-cofactor count. -/
+theorem card_pivotBadBases_le_of_count (h X : ℕ)
+    (hcount : ((((pivotSupplierBases X (minimalDepth h 26 X) 26).filter
+        (fun N => pivotCofactor N (minimalDepth h 26 X) 26
+          ∈ excludedCofactorSet (1 / 1000))).card : ℕ) : ℝ) < (1 / 100 : ℝ) * X) :
+    ((pivotBadBases X (minimalDepth h 26 X) 26 (1 / 1000 : ℝ)).card : ℝ)
+      ≤ (1 / 100 : ℝ) * X := by
+  rw [← filter_excluded_eq_pivotBadBases]
+  exact hcount.le
+
+/-- **The decorrelation from its fibre-mean and centred clauses.** At the minimal depth, with
+`s = 26` and `η = 1/1000`, `prop_dickman` supplies the depth conditions and the non-supplier
+count and `excluded_budget_one_thousandth_of_chebyshev` the bad-base count. -/
+theorem dtw_of_fiberMean_and_centered
+    (hmean : ∀ h : ℕ, 0 < h → ∀ᶠ X : ℕ in atTop,
+      ∀ N ∈ pivotGoodBases X (minimalDepth h 26 X) 26 (1 / 1000 : ℝ),
+        ‖pivotFiberMean h X (minimalDepth h 26 X) 26
+            (pivotCofactor N (minimalDepth h 26 X) 26)‖ ≤ (1 / 100 : ℝ))
+    (hcentered : ∀ h : ℕ, 0 < h → ∀ A : ℕ, ∃ X : ℕ, max A 1 ≤ X ∧
+      (pivotCenteredCorrelation h X (minimalDepth h 26 X) 26 (1 / 1000 : ℝ)).re
+        ≤ (14 / 25 : ℝ) * X) :
+    DTWPivotResidualDecorrelation := by
+  intro h hh
+  refine ⟨26, by norm_num, (1 / 1000 : ℝ), by norm_num, by norm_num, ?_⟩
+  intro X₀
+  obtain ⟨A₁, hA₁⟩ := eventually_atTop.mp (hmean h hh)
+  obtain ⟨A₂, hA₂⟩ := eventually_atTop.mp (excluded_budget_one_thousandth_of_chebyshev h 26)
+  obtain ⟨A₃, hA₃⟩ := eventually_atTop.mp (prop_dickman h 26).2.2.2.2.2
+  obtain ⟨X, hX, hc⟩ := hcentered h hh (max X₀ (max A₁ (max A₂ A₃)))
+  simp only [max_le_iff] at hX
+  obtain ⟨⟨hX₀, hXA₁, hXA₂, hXA₃⟩, hX1⟩ := hX
+  have hadm : h ≤ minimalDepth h 26 X - 26 ∧
+      16 * (2 * X + h + minimalDepth h 26 X + 2) ≤ 2 ^ minimalDepth h 26 X :=
+    ((prop_dickman h 26).1 X).1
+  refine ⟨X, minimalDepth h 26 X, max_le hX₀ hX1, hadm.1, hadm.2, ?_⟩
+  refine pivotBudgetAt_of_peripheral_estimates h X (minimalDepth h 26 X) 26 (1 / 1000 : ℝ)
+    hc (hA₁ X hXA₁) ?_ ?_
+  · exact card_pivotBadBases_le_of_count h X (hA₂ X hXA₂).1
+  · have hnon := (hA₃ X hXA₃).2
+    simpa [filter_not_mem_pivotSupplierBases] using hnon.le
+
+/-- **The irrationality of `∑ φ(n) / 2 ^ n` from the fibre means and the centred
+correlation**, at the minimal depth with `s = 26` and `η = 1/1000`. -/
+theorem irrational_totient_series_of_fiberMean_and_centered
+    (hmean : ∀ h : ℕ, 0 < h → ∀ᶠ X : ℕ in atTop,
+      ∀ N ∈ pivotGoodBases X (minimalDepth h 26 X) 26 (1 / 1000 : ℝ),
+        ‖pivotFiberMean h X (minimalDepth h 26 X) 26
+            (pivotCofactor N (minimalDepth h 26 X) 26)‖ ≤ (1 / 100 : ℝ))
+    (hcentered : ∀ h : ℕ, 0 < h → ∀ A : ℕ, ∃ X : ℕ, max A 1 ≤ X ∧
+      (pivotCenteredCorrelation h X (minimalDepth h 26 X) 26 (1 / 1000 : ℝ)).re
+        ≤ (14 / 25 : ℝ) * X) :
+    Irrational (∑' n : ℕ, (Nat.totient n : ℝ) / 2 ^ n) :=
+  irrational_totient_series_of_pivotResidualDecorrelation
+    (dtw_of_fiberMean_and_centered hmean hcentered)
+
+end ErdosProblems.Erdos249.PaperCompleteR21
+
+#print axioms ErdosProblems.Erdos249.PaperCompleteR21.dtw_of_fiberMean_and_centered
+#print axioms ErdosProblems.Erdos249.PaperCompleteR21.irrational_totient_series_of_fiberMean_and_centered
+
+
+/-!
+# Erdős #249: the first-harmonic route, given the prime number theorem
+
+`Results/Erdos249.lean` reduces `DTWPivotResidualDecorrelation`, at the minimal depth with
+`s = 26` and `η = 1/1000`, to two clauses: a uniform bound on the fibre means and the centred
+correlation. `fiberMean_le_of_primeNumberTheorem` proves the first from the prime number
+theorem.
+
+The second is the first-harmonic gap on the good bases. There the first harmonic factors as the
+residual times the pivot phase, so its sum over the good bases is the centred correlation plus
+the fibre-mean contribution (`goodBase_sum_eq_centered_add_mean`). With every fibre mean at most
+`1/100` the two conditions differ by at most `X/100` either way: the good-base gap at `11X/20`
+gives the centred clause (`centered_re_le_of_goodBase_gap`), and the centred clause gives the
+good-base gap at `57X/100` (`goodBase_gap_of_centered_re_le`).
+
+Hence, given the prime number theorem, the irrationality of `∑ φ(n)/2^n` follows once, for every
+`h ≥ 1`, there are arbitrarily large `X` at which the real part of the first harmonic summed over
+the good bases is at most `11X/20`
+(`irrational_totient_series_of_primeNumberTheorem_and_goodBase_gap`). The non-supplier and bad
+bases, about a third of `[X, 2X)`, are handled unconditionally by `prop_dickman` and Chebyshev's
+bound.
+-/
+
+open Filter
+
+namespace ErdosProblems.Erdos249.PaperCompleteR21
+
+open Erdos249257.TotientTailPeriodKiller
+open ErdosProblems.Erdos251.PaperR11.PrimeSource (PrimeNumberTheorem)
+open Finset
+
+/-- The good-base first harmonic is the centred correlation plus the fibre-mean
+contribution. -/
+theorem goodBase_sum_eq_centered_add_mean (h X L s : ℕ) (η : ℝ) :
+    (∑ N ∈ pivotGoodBases X L s η, windowFirstExp h N L) =
+      pivotCenteredCorrelation h X L s η + pivotFiberMeanContribution h X L s η := by
+  rw [pivotCenteredCorrelation, pivotFiberMeanContribution, ← Finset.sum_add_distrib]
+  apply Finset.sum_congr rfl
+  intro N _
+  rw [windowFirstExp_eq_pivotResidualAt_mul_phase]
+  ring
+
+/-- With fibre means at most `1/100`, the good-base gap at `11X/20` gives the centred
+clause. -/
+theorem centered_re_le_of_goodBase_gap {h X L s : ℕ} {η : ℝ}
+    (hmean : ∀ N ∈ pivotGoodBases X L s η,
+      ‖pivotFiberMean h X L s (pivotCofactor N L s)‖ ≤ (1 / 100 : ℝ))
+    (hgap : (∑ N ∈ pivotGoodBases X L s η, windowFirstExp h N L).re ≤ (11 / 20 : ℝ) * X) :
+    (pivotCenteredCorrelation h X L s η).re ≤ (14 / 25 : ℝ) * X := by
+  have hsplit := congrArg Complex.re (goodBase_sum_eq_centered_add_mean h X L s η)
+  rw [Complex.add_re] at hsplit
+  have hfm := norm_pivotFiberMeanContribution_le_of_uniform h X L s η (1 / 100)
+    (by norm_num) hmean
+  have hre := (abs_le.mp (le_trans (Complex.abs_re_le_norm _) hfm)).1
+  linarith
+
+/-- Conversely the centred clause gives the good-base gap at `57X/100`: on the good bases the
+centred clause asks for nothing beyond the first-harmonic gap. -/
+theorem goodBase_gap_of_centered_re_le {h X L s : ℕ} {η : ℝ}
+    (hmean : ∀ N ∈ pivotGoodBases X L s η,
+      ‖pivotFiberMean h X L s (pivotCofactor N L s)‖ ≤ (1 / 100 : ℝ))
+    (hc : (pivotCenteredCorrelation h X L s η).re ≤ (14 / 25 : ℝ) * X) :
+    (∑ N ∈ pivotGoodBases X L s η, windowFirstExp h N L).re ≤ (57 / 100 : ℝ) * X := by
+  have hsplit := congrArg Complex.re (goodBase_sum_eq_centered_add_mean h X L s η)
+  rw [Complex.add_re] at hsplit
+  have hfm := norm_pivotFiberMeanContribution_le_of_uniform h X L s η (1 / 100)
+    (by norm_num) hmean
+  have hre := (abs_le.mp (le_trans (Complex.abs_re_le_norm _) hfm)).2
+  linarith
+
+/-- At the minimal depth with `s = 26` and `η = 1/1000`: eventual fibre means and a cofinal
+good-base gap at `11X/20` give the cofinal centred clause of `dtw_of_fiberMean_and_centered`. -/
+theorem centered_of_fiberMean_and_goodBase_gap
+    (hmean : ∀ h : ℕ, 0 < h → ∀ᶠ X : ℕ in atTop,
+      ∀ N ∈ pivotGoodBases X (minimalDepth h 26 X) 26 (1 / 1000 : ℝ),
+        ‖pivotFiberMean h X (minimalDepth h 26 X) 26
+            (pivotCofactor N (minimalDepth h 26 X) 26)‖ ≤ (1 / 100 : ℝ))
+    (hgap : ∀ h : ℕ, 0 < h → ∀ A : ℕ, ∃ X : ℕ, max A 1 ≤ X ∧
+      (∑ N ∈ pivotGoodBases X (minimalDepth h 26 X) 26 (1 / 1000 : ℝ),
+        windowFirstExp h N (minimalDepth h 26 X)).re ≤ (11 / 20 : ℝ) * X) :
+    ∀ h : ℕ, 0 < h → ∀ A : ℕ, ∃ X : ℕ, max A 1 ≤ X ∧
+      (pivotCenteredCorrelation h X (minimalDepth h 26 X) 26 (1 / 1000 : ℝ)).re
+        ≤ (14 / 25 : ℝ) * X := by
+  intro h hh A
+  obtain ⟨A₁, hA₁⟩ := eventually_atTop.mp (hmean h hh)
+  obtain ⟨X, hX, hg⟩ := hgap h hh (max A A₁)
+  have hmax : max (max A A₁) 1 ≤ X := hX
+  refine ⟨X, le_trans (max_le_max (le_max_left A A₁) le_rfl) hmax, ?_⟩
+  have hA₁X : A₁ ≤ X := le_trans (le_trans (le_max_right A A₁) (le_max_left _ _)) hmax
+  exact centered_re_le_of_goodBase_gap (hA₁ X hA₁X) hg
+
+/-- **The decorrelation from the prime number theorem and the centred clause.** -/
+theorem dtw_of_primeNumberTheorem_and_centered (hPNT : PrimeNumberTheorem)
+    (hcentered : ∀ h : ℕ, 0 < h → ∀ A : ℕ, ∃ X : ℕ, max A 1 ≤ X ∧
+      (pivotCenteredCorrelation h X (minimalDepth h 26 X) 26 (1 / 1000 : ℝ)).re
+        ≤ (14 / 25 : ℝ) * X) :
+    DTWPivotResidualDecorrelation :=
+  dtw_of_fiberMean_and_centered (fiberMean_le_of_primeNumberTheorem hPNT) hcentered
+
+/-- **The irrationality of `∑ φ(n) / 2 ^ n` from the prime number theorem and the centred
+clause.** -/
+theorem irrational_totient_series_of_primeNumberTheorem_and_centered (hPNT : PrimeNumberTheorem)
+    (hcentered : ∀ h : ℕ, 0 < h → ∀ A : ℕ, ∃ X : ℕ, max A 1 ≤ X ∧
+      (pivotCenteredCorrelation h X (minimalDepth h 26 X) 26 (1 / 1000 : ℝ)).re
+        ≤ (14 / 25 : ℝ) * X) :
+    Irrational (∑' n : ℕ, (Nat.totient n : ℝ) / 2 ^ n) :=
+  irrational_totient_series_of_pivotResidualDecorrelation
+    (dtw_of_primeNumberTheorem_and_centered hPNT hcentered)
+
+/-- **The irrationality of `∑ φ(n) / 2 ^ n` from the prime number theorem and a first-harmonic
+gap on the good bases**: for every `h ≥ 1`, arbitrarily large `X` at which the real part of the
+first harmonic summed over the good bases is at most `11X/20`. -/
+theorem irrational_totient_series_of_primeNumberTheorem_and_goodBase_gap
+    (hPNT : PrimeNumberTheorem)
+    (hgap : ∀ h : ℕ, 0 < h → ∀ A : ℕ, ∃ X : ℕ, max A 1 ≤ X ∧
+      (∑ N ∈ pivotGoodBases X (minimalDepth h 26 X) 26 (1 / 1000 : ℝ),
+        windowFirstExp h N (minimalDepth h 26 X)).re ≤ (11 / 20 : ℝ) * X) :
+    Irrational (∑' n : ℕ, (Nat.totient n : ℝ) / 2 ^ n) :=
+  irrational_totient_series_of_primeNumberTheorem_and_centered hPNT
+    (centered_of_fiberMean_and_goodBase_gap (fiberMean_le_of_primeNumberTheorem hPNT) hgap)
+
+end ErdosProblems.Erdos249.PaperCompleteR21
+
+#print axioms ErdosProblems.Erdos249.PaperCompleteR21.goodBase_sum_eq_centered_add_mean
+#print axioms ErdosProblems.Erdos249.PaperCompleteR21.centered_re_le_of_goodBase_gap
+#print axioms ErdosProblems.Erdos249.PaperCompleteR21.goodBase_gap_of_centered_re_le
+#print axioms ErdosProblems.Erdos249.PaperCompleteR21.dtw_of_primeNumberTheorem_and_centered
+#print axioms ErdosProblems.Erdos249.PaperCompleteR21.irrational_totient_series_of_primeNumberTheorem_and_goodBase_gap
+
+section ResidualiseEngine
+
+/-!
+# Residualisation
+
+`residualise N for D using s₁ … sₙ` searches for a proof of the demand `D` from the readings of
+the suppliers `s₁ … sₙ` and adds `N : ∀ residual clauses, D` once the kernel checks it; the
+residual clauses are what the readings could not supply. A reading of a theorem is its statement with some leading binders instantiated, a
+conjunct, the unfolding of a corpus definition, or a conjunct of an eventual conjunction.
+
+* Witnesses and supplier parameters are metavariables of the root context applied to the local
+  variables, so a supplier that fixes one (a depth function, an exponent) fixes it in every
+  clause that shares it.
+* A goal `∃ᶠ X in atTop, Q X` (or `∀ᶠ`) is split pointwise: every clause of `Q X` that a supplier
+  gives for all large `X` is supplied along the filter; the others stay together as one
+  residual `∃ᶠ X, …` (or `∀ᶠ X, …`).
+* A clause for all large `X` may also come from an eventual reading by glue: the reading
+  rewritten with equation lemmas, a conjunct of it, or its non-strict form, unified with the
+  clause. No tactic ever sees a metavariable of the search.
+* The cost of an alternative is the number of atomic clauses (counted through `∧`, `∃`, `∀`,
+  corpus definitions and filter bodies) it leaves open, so leaving a goal whole costs as much
+  as the goal and only supply lowers it.
+-/
+
+set_option autoImplicit false
+
+open Lean Meta Elab Term
+
+namespace ErdosProblems.ArgumentGraph.Residualise
+
+/-! ## Cofinal quantifiers read as `Filter.Frequently` -/
+
+theorem forall_exists₂_max_le_of_frequently {P : ℕ → ℕ → Prop}
+    (h : ∃ᶠ X in Filter.atTop, ∃ L, P X L) :
+    ∀ X₀ : ℕ, ∃ X L : ℕ, max X₀ 1 ≤ X ∧ P X L := by
+  intro X₀
+  obtain ⟨X, hX, L, hP⟩ := Filter.frequently_atTop.mp h (max X₀ 1)
+  exact ⟨X, L, hX, hP⟩
+
+theorem forall_exists_max_le_of_frequently {P : ℕ → Prop}
+    (h : ∃ᶠ X in Filter.atTop, P X) : ∀ X₀ : ℕ, ∃ X : ℕ, max X₀ 1 ≤ X ∧ P X := by
+  intro X₀
+  obtain ⟨X, hX, hP⟩ := Filter.frequently_atTop.mp h (max X₀ 1)
+  exact ⟨X, hX, hP⟩
+
+theorem forall_exists_le_of_frequently {P : ℕ → Prop}
+    (h : ∃ᶠ X in Filter.atTop, P X) : ∀ A : ℕ, ∃ X : ℕ, A ≤ X ∧ P X := by
+  intro A
+  obtain ⟨X, hX, hP⟩ := Filter.frequently_atTop.mp h A
+  exact ⟨X, hX, hP⟩
+
+/-- Rules the search applies like suppliers, read only at their whole conclusion. -/
+def adapters : Array Name :=
+  #[``forall_exists₂_max_le_of_frequently, ``forall_exists_max_le_of_frequently,
+    ``forall_exists_le_of_frequently]
+
+/-! ## Budgets and tactics -/
+
+def budgeted {α : Type} (heartbeats : Nat) (x : MetaM α) : MetaM (Option α) := do
+  withCurrHeartbeats <|
+    withTheReader Core.Context (fun ctx => { ctx with maxHeartbeats := heartbeats * 1000 }) do
+      tryCatchRuntimeEx (do return some (← x)) fun _ => return none
+
+def budgetedTerm {α : Type} (heartbeats : Nat) (x : TermElabM α) : TermElabM (Option α) := do
+  withCurrHeartbeats <|
+    withTheReader Core.Context (fun ctx => { ctx with maxHeartbeats := heartbeats * 1000 }) do
+      tryCatchRuntimeEx (do return some (← x)) fun _ => return none
+
+/-- `isDefEq` within a budget, leaving no assignment behind when it fails. -/
+def defEq (a b : Expr) : MetaM Bool := do
+  let s ← saveState
+  if (← budgeted 4000 (isDefEq a b)) == some true then return true
+  s.restore
+  return false
+
+def closingTactics : List String :=
+  ["norm_num", "positivity", "decide", "simp", "linarith", "omega"]
+
+/-- A proof of `goalType` by the tactic `tac`, only for a goal with no metavariable (a tactic
+may assign any metavariable it sees). Messages the tactic logs are dropped. -/
+def runTac (goalType : Expr) (tac : String) : TermElabM (Option Expr) := do
+  if goalType.hasMVar then return none
+  let env ← getEnv
+  let .ok stx := Parser.runParserCategory env `tactic tac | return none
+  let msgs := (← getThe Core.State).messages
+  let s ← Term.saveState
+  let r ← budgetedTerm 4000 <| Term.withoutErrToSorry do
+    let goal ← mkFreshExprMVar goalType .syntheticOpaque
+    let remaining ← Tactic.run goal.mvarId! (Tactic.evalTactic stx)
+    unless remaining.isEmpty do return none
+    Term.synthesizeSyntheticMVarsNoPostponing
+    let proof ← instantiateMVars goal
+    if proof.hasSorry || proof.hasMVar then return none
+    return some proof
+  let out ← match r with
+    | some (some p) => pure (some p)
+    | _ => do s.restore; pure none
+  modifyThe Core.State fun st => { st with messages := msgs }
+  return out
+
+def battery (goalType : Expr) : TermElabM (Option Expr) := do
+  for tac in closingTactics do
+    if let some p ← runTac goalType tac then return some p
+  return none
+
+/-- `proof : R` rewritten with the equation lemma `G` (right to left when `symm`), or `none`
+when `G` does not occur or leaves side goals. -/
+def rewriteWith (proof R : Expr) (G : Name) (symm : Bool) : MetaM (Option (Expr × Expr)) := do
+  let s ← saveState
+  try
+    let heq ← mkConstWithFreshMVarLevels G
+    let carrier ← mkFreshExprMVar R
+    let r ← carrier.mvarId!.rewrite R heq symm
+    unless r.mvarIds.isEmpty do
+      s.restore
+      return none
+    return some (← mkEqMP r.eqProof proof, ← instantiateMVars r.eNew)
+  catch _ =>
+    s.restore
+    return none
+
+/-- What `proof : R` gives by glue: `R`, `R` rewritten by up to two equation lemmas of `glue`
+in either direction, the conjuncts, and the non-strict form of a strict inequality. -/
+def glueCandidates (glue : Array Name) (proof R : Expr) : MetaM (Array (Expr × Expr)) := do
+  let mut stage : Array (Expr × Expr) := #[(proof, R)]
+  for _ in [0:2] do
+    let mut next := stage
+    for (p, S) in stage do
+      for g in glue do
+        for symm in [false, true] do
+          if let some c ← rewriteWith p S g symm then next := next.push c
+    stage := next
+  let mut out := #[]
+  for (p, S) in stage do
+    out := out.push (p, S)
+    let S ← whnfR S
+    if S.isAppOfArity ``And 2 then
+      out := out.push (← mkAppM ``And.left #[p], S.appFn!.appArg!)
+      out := out.push (← mkAppM ``And.right #[p], S.appArg!)
+  let mut weak := #[]
+  for (p, S) in out do
+    if S.isAppOfArity ``LT.lt 4 then
+      if let some q ← (try some <$> mkAppM ``le_of_lt #[p] catch _ => pure none) then
+        weak := weak.push (q, ← inferType q)
+  return out ++ weak
+
+/-! ## Readings and the index -/
+
+/-- One step of a reading: instantiate the first binder, take a conjunct, unfold a corpus
+definition, or take a conjunct of an eventual conjunction. -/
+inductive Step where
+  | inst | left | right | unfold | evLeft | evRight
+  deriving BEq, Inhabited, Repr
+
+/-- A reading of a theorem, replayable in any context. -/
+structure Ref where
+  name : Name
+  path : Array Step
+  deriving BEq, Inhabited
+
+/-- Statements of the readings of `stmt` with their paths (fresh metavariables for every
+binder), for the index. -/
+def readingPaths (unfoldOk : Name → Bool) (stmt : Expr) (path : Array Step) :
+    Nat → MetaM (Array (Expr × Array Step))
+  | 0 => do return #[(← instantiateMVars stmt, path)]
+  | depth + 1 => do
+    let stmt ← instantiateMVars stmt
+    let mut out := #[(stmt, path)]
+    let stmt ← whnfR stmt
+    match stmt with
+    | .forallE _ d b _ =>
+        let m ← mkFreshExprMVar d
+        return out ++ (← readingPaths unfoldOk (b.instantiate1 m) (path.push .inst) depth)
+    | _ =>
+      if stmt.isAppOfArity ``And 2 then
+        out := out ++ (← readingPaths unfoldOk stmt.appFn!.appArg! (path.push .left) depth)
+        out := out ++ (← readingPaths unfoldOk stmt.appArg! (path.push .right) depth)
+        return out
+      if stmt.isAppOfArity ``Filter.Eventually 3 then
+        if let .lam n α body bi := stmt.getArg! 1 then
+          if body.isAppOfArity ``And 2 then
+            let f := stmt.getArg! 2
+            for (b, step) in [(body.appFn!.appArg!, Step.evLeft), (body.appArg!, Step.evRight)] do
+              let e ← mkAppM ``Filter.Eventually #[.lam n α b bi, f]
+              out := out ++ (← readingPaths unfoldOk e (path.push step) depth)
+        return out
+      if let .const n _ := stmt.getAppFn then
+        if unfoldOk n then
+          if let some u ← unfoldDefinition? stmt then
+            out := out ++ (← readingPaths unfoldOk u (path.push .unfold) depth)
+      return out
+
+/-- Add the readings of `n` (up to `depth` steps) to the index. -/
+def indexTheorem (tree : DiscrTree Ref) (unfoldOk : Name → Bool) (n : Name) (depth : Nat) :
+    MetaM (DiscrTree Ref × Nat) := do
+  let some ci := (← getEnv).find? n | return (tree, 0)
+  let paths ← withNewMCtxDepth do
+    let lvls ← ci.levelParams.mapM fun _ => mkFreshLevelMVar
+    let ty := ci.type.instantiateLevelParams ci.levelParams lvls
+    let rs := (← budgeted 2000 (readingPaths unfoldOk ty #[] depth)).getD #[]
+    let mut out := #[]
+    for (stmt, path) in rs do
+      if let some keys ← budgeted 500 (DiscrTree.mkPath stmt) then
+        out := out.push (keys, path)
+    return out
+  let mut tree := tree
+  let mut added := 0
+  for (keys, path) in paths do
+    if keys.size ≤ 1 then continue
+    if keys[0]! == .star then continue
+    tree := tree.insertCore keys { name := n, path }
+    added := added + 1
+  return (tree, added)
+
+/-- The index of the given theorems and of the adapters. -/
+def indexOf (names : Array Name) (unfoldOk : Name → Bool) (depth : Nat := 10) :
+    MetaM (DiscrTree Ref) := do
+  let mut tree : DiscrTree Ref := {}
+  for n in names do
+    tree := (← indexTheorem tree unfoldOk n depth).1
+  for n in adapters do
+    tree := (← indexTheorem tree unfoldOk n 2).1
+  return tree
+
+/-- The index of every theorem of the modules under `roots`, and of the adapters. -/
+def indexCorpus (roots : Array Name) (unfoldOk : Name → Bool) (depth : Nat := 8) :
+    MetaM (DiscrTree Ref × Nat × Nat) := do
+  let env ← getEnv
+  let mut tree : DiscrTree Ref := {}
+  let mut theorems := 0
+  let mut entries := 0
+  for modName in env.header.moduleNames, data in env.header.moduleData do
+    unless roots.any (·.isPrefixOf modName) do continue
+    for n in data.constNames do
+      if n.isInternal then continue
+      let some (.thmInfo _) := env.find? n | continue
+      theorems := theorems + 1
+      let (t, k) ← indexTheorem tree unfoldOk n depth
+      tree := t
+      entries := entries + k
+  for n in adapters do
+    tree := (← indexTheorem tree unfoldOk n 2).1
+  return (tree, theorems, entries)
+
+/-! ## Search state -/
+
+structure Config where
+  glue : Array Name
+  unfoldPrefixes : Array Name
+  rootLCtx : LocalContext
+  rootInsts : LocalInstances
+  index : DiscrTree Ref
+  /-- theorems the search may not use (the held-out consumer, a withdrawn supplier) -/
+  exclude : Array Name := #[]
+  maxCandidates : Nat := 24
+  /-- search calls allowed for one demand, counted across backtracking -/
+  callBudget : Nat := 600
+  budgetRef : IO.Ref Nat
+
+/-- A clause of a filter body: a local metavariable standing for it, its clause count, and
+its proof along the filter when some supplier gives it for all large `X`. -/
+structure Leaf where
+  mvar : Expr
+  cost : Nat
+  eventual : Option Expr
+  deriving Inhabited
+
+structure RState where
+  /-- root holes (residual clauses) with their clause counts -/
+  holes : Array (Expr × Nat) := #[]
+  leaves : Array Leaf := #[]
+  /-- data metavariables whose type is not known to be inhabited: each is an obligation
+  (an object to construct) until unification fixes it -/
+  dataHoles : Array Expr := #[]
+  /-- theorems whose readings the search applied -/
+  used : Array Name := #[]
+
+abbrev ResM := ReaderT Config (StateRefT RState TermElabM)
+
+/-- The open clauses of the current state: its residual clauses, the kept clauses of the
+filter body being decomposed, and the data obligations unification has not fixed. -/
+def costNow : ResM Nat := do
+  let s ← get
+  let mut open_ := 0
+  for d in s.dataHoles do
+    if (← instantiateMVars d).hasMVar then open_ := open_ + 1
+  return s.holes.foldl (fun a h => a + h.2) 0 +
+    s.leaves.foldl (fun a l => a + (if l.eventual.isNone then l.cost else 0)) 0 + open_
+
+/-- Whether `Nonempty t` synthesises. -/
+def knownInhabited (t : Expr) : MetaM Bool := do
+  try
+    let u ← getLevel t
+    return (← synthInstance? (mkApp (mkConst ``Nonempty [u]) t)).isSome
+  catch _ => return false
+
+inductive Mode where
+  /-- an unsupplied clause becomes a residual clause -/
+  | residual
+  /-- every clause must be supplied, except a closed proposition (a named input) -/
+  | eventual
+  /-- inside a filter: an unsupplied clause becomes a clause of the filter's residual -/
+  | pointwise (x filt : Expr)
+
+structure Snapshot where
+  term : Term.SavedState
+  st : RState
+
+def snapshot : ResM Snapshot := return { term := ← Term.saveState, st := ← get }
+
+def Snapshot.restore (s : Snapshot) : ResM Unit := do
+  s.term.restore
+  set s.st
+
+/-- A metavariable of the root context, applied to the local variables `ctx`. -/
+def freshIn (ctx : Array Expr) (type : Expr) (kind : MetavarKind := .natural) : ResM Expr := do
+  let cfg ← read
+  let closed ← mkForallFVars ctx type
+  let m ← withLCtx cfg.rootLCtx cfg.rootInsts <| mkFreshExprMVar closed kind
+  return mkAppN m ctx
+
+def conj : List Expr → Expr
+  | [] => mkConst ``True
+  | [a] => a
+  | a :: rest => mkApp2 (mkConst ``And) a (conj rest)
+
+/-- Assign the leaves, in order, the components of `h : conj leaves`. -/
+def assignProjections (ls : List Leaf) (h : Expr) : MetaM Unit := do
+  match ls with
+  | [] => pure ()
+  | [l] => l.mvar.mvarId!.assign h
+  | l :: rest =>
+      l.mvar.mvarId!.assign (← mkAppM ``And.left #[h])
+      assignProjections rest (← mkAppM ``And.right #[h])
+
+def isAtTop (f : Expr) : Bool := f.getAppFn.isConstOf ``Filter.atTop
+
+def headsMatch (stmt T : Expr) : Bool :=
+  match stmt, T with
+  | .forallE .., .forallE .. => true
+  | _, _ =>
+    match stmt.getAppFn, T.getAppFn with
+    | .const a _, .const b _ => a == b
+    | _, _ => false
+
+def unfoldable (T : Expr) : ResM Bool := do
+  let .const n _ := T.getAppFn | return false
+  unless (← read).unfoldPrefixes.any (·.isPrefixOf n) do return false
+  match (← getEnv).find? n with
+  | some (.defnInfo _) => return true
+  | _ => return false
+
+/-- Atomic clauses of `T`, counted through `∧`, `∃`, `∀`, corpus definitions and filter
+bodies (the hypotheses of an implication are not clauses). -/
+def clauseCountAux : Nat → Expr → ResM Nat
+  | 0, _ => return 1
+  | depth + 1, T => do
+    let T ← whnfR (← instantiateMVars T)
+    match T with
+    | .forallE n d b bi => withLocalDecl n bi d fun x => clauseCountAux depth (b.instantiate1 x)
+    | _ =>
+      if T.isAppOfArity ``And 2 then
+        return (← clauseCountAux depth T.appFn!.appArg!) + (← clauseCountAux depth T.appArg!)
+      if T.isAppOfArity ``Exists 2 then
+        return ← withLocalDeclD `w T.appFn!.appArg! fun w =>
+          clauseCountAux depth (T.appArg!.beta #[w])
+      if T.isAppOfArity ``Filter.Eventually 3 || T.isAppOfArity ``Filter.Frequently 3 then
+        return ← withLocalDeclD `X (T.getArg! 0) fun x =>
+          clauseCountAux depth ((T.getArg! 1).beta #[x])
+      if ← unfoldable T then
+        if let some u ← unfoldDefinition? T then return ← clauseCountAux depth u
+      return 1
+
+/-- Atomic clauses of `T`, counted to depth `depth`. -/
+def clauseCount (T : Expr) (depth : Nat := 10) : ResM Nat := clauseCountAux depth T
+
+def mkHole (ctx : Array Expr) (T : Expr) : ResM Expr := do
+  let h ← freshIn ctx T .syntheticOpaque
+  let c ← clauseCount T
+  modify fun s => { s with holes := s.holes.push (h, c) }
+  return h
+
+/-- Replay a reading path of `proof : stmt` in context `ctx`: its proof, statement and
+obligations (data binders become root metavariables, propositions obligations). -/
+def replay (ctx : Array Expr) (proof stmt : Expr) (obls : Array Expr) :
+    List Step → ResM (Option (Expr × Expr × Array Expr))
+  | [] => return some (proof, ← instantiateMVars stmt, obls)
+  | s :: rest => do
+    let stmt ← whnfR (← instantiateMVars stmt)
+    match s with
+    | .inst =>
+        let .forallE _ d b bi := stmt | return none
+        if bi.isInstImplicit then
+          let m ← mkFreshExprMVar d
+          replay ctx (mkApp proof m) (b.instantiate1 m) (obls.push m) rest
+        else if ← isProp d then
+          let m ← mkFreshExprMVar d .syntheticOpaque
+          replay ctx (mkApp proof m) (b.instantiate1 m) (obls.push m) rest
+        else
+          let m ← freshIn ctx d
+          unless ← knownInhabited d do
+            modify fun st => { st with dataHoles := st.dataHoles.push m }
+          replay ctx (mkApp proof m) (b.instantiate1 m) obls rest
+    | .left =>
+        unless stmt.isAppOfArity ``And 2 do return none
+        replay ctx (← mkAppM ``And.left #[proof]) stmt.appFn!.appArg! obls rest
+    | .right =>
+        unless stmt.isAppOfArity ``And 2 do return none
+        replay ctx (← mkAppM ``And.right #[proof]) stmt.appArg! obls rest
+    | .unfold =>
+        let some u ← unfoldDefinition? stmt | return none
+        replay ctx proof u obls rest
+    | .evLeft | .evRight =>
+        unless stmt.isAppOfArity ``Filter.Eventually 3 do return none
+        let α := stmt.getArg! 0
+        let pred := stmt.getArg! 1
+        let proj := if s == .evLeft then ``And.left else ``And.right
+        let some p ← withLocalDeclD `x α fun x => do
+            let body ← whnfR (pred.beta #[x])
+            unless body.isAppOfArity ``And 2 do return none
+            let g ← withLocalDeclD `h body fun h => do mkLambdaFVars #[x, h] (← mkAppM proj #[h])
+            return some (← mkAppM ``Filter.Eventually.mono #[proof, g])
+          | return none
+        replay ctx p (← inferType p) obls rest
+
+/-- Readings retrieved for `T`: at most `maxCandidates`, excluded theorems skipped. -/
+def candidates (T : Expr) : ResM (Array Ref) := do
+  let cfg ← read
+  let refs ← cfg.index.getUnify T
+  let mut out := #[]
+  for r in refs do
+    if out.size ≥ cfg.maxCandidates then break
+    if cfg.exclude.contains r.name then continue
+    unless out.contains r do out := out.push r
+  return out
+
+/-- An unsupplied clause with no recursion left: a residual clause, a named input, or a kept
+clause of a filter body. -/
+def leaveBase (ctx : Array Expr) (T : Expr) (mode : Mode) : ResM (Option (Expr × Nat)) := do
+  match mode with
+  | .residual => return some (← mkHole ctx T, 0)
+  | .eventual =>
+      if T.hasFVar || T.hasMVar then return none
+      return some (← mkHole ctx T, 0)
+  | .pointwise _ _ =>
+      let leafM ← mkFreshExprMVar T .syntheticOpaque
+      let c ← clauseCount T
+      modify fun st => { st with leaves := st.leaves.push { mvar := leafM, cost := c, eventual := none } }
+      return some (leafM, 0)
+
+mutual
+
+/-- A proof of `T` in context `ctx` and the number of clauses it leaves open. -/
+def solve (k : Nat) (ctx : Array Expr) (T : Expr) (fuel : Nat) (mode : Mode) :
+    ResM (Option (Expr × Nat)) := do
+  match k with
+  | 0 => leaveBase ctx T mode
+  | k + 1 => do
+    let cfg ← read
+    let spent ← cfg.budgetRef.modifyGet fun n => (n + 1, n + 1)
+    let fuel := if spent > cfg.callBudget then 0 else fuel
+    let T ← instantiateMVars T
+    -- a hypothesis in context, without fixing any witness
+    for x in ctx do
+      let d ← inferType x
+      if ← isProp d then
+        if ← withNewMCtxDepth (defEq d T) then return some (x, 0)
+    -- the battery, on a goal with no metavariable and no corpus constant
+    if !T.hasMVar && !(T.getUsedConstants.any fun c => cfg.unfoldPrefixes.any (·.isPrefixOf c)) then
+      if let some p ← battery T then return some (p, 0)
+    if fuel == 0 then return (← leave k ctx T fuel mode)
+    let start ← snapshot
+    let base ← costNow
+    let mut best : Option (Expr × Nat × Snapshot) := none
+    -- a goal along `atTop`
+    if (T.isAppOfArity ``Filter.Frequently 3 || T.isAppOfArity ``Filter.Eventually 3) &&
+        isAtTop (T.getArg! 2) then
+      if let .residual := mode then
+        if let some p ← filterRule k ctx T fuel then
+          let c := (← costNow) - base
+          if c == 0 then return some (p, 0)
+          best := some (p, c, ← snapshot)
+        start.restore
+    -- readings retrieved from the index
+    for ref in ← candidates T do
+      start.restore
+      let c0 ← mkConstWithFreshMVarLevels ref.name
+      let some (proof, stmt, obls) ← replay ctx c0 (← inferType c0) #[] ref.path.toList | continue
+      unless headsMatch stmt T do continue
+      unless ← defEq stmt T do continue
+      unless ← discharge k ctx obls fuel mode do continue
+      modify fun st => { st with used := st.used.push ref.name }
+      let p ← instantiateMVars proof
+      let c := (← costNow) - base
+      if c == 0 then return some (p, 0)
+      if best.all (fun b => c < b.2.1) then best := some (p, c, ← snapshot)
+    -- structure
+    start.restore
+    if let some p ← structural k ctx T fuel mode then
+      let c := (← costNow) - base
+      if best.all (fun b => c < b.2.1) then best := some (p, c, ← snapshot)
+    -- leave it
+    start.restore
+    if let some (p, _) ← leave k ctx T fuel mode then
+      let c := (← costNow) - base
+      if best.all (fun b => c < b.2.1) then best := some (p, c, ← snapshot)
+    match best with
+    | some (p, c, s) =>
+        s.restore
+        return some (p, c)
+    | none =>
+        start.restore
+        return none
+
+/-- Prove a reading's obligations (instances by synthesis). -/
+def discharge (k : Nat) (ctx : Array Expr) (obls : Array Expr) (fuel : Nat) (mode : Mode) :
+    ResM Bool := do
+  match k with
+  | 0 => return false
+  | k + 1 => do
+    for o in obls do
+      if ← o.mvarId!.isAssigned then continue
+      let oT ← instantiateMVars (← inferType o)
+      if (← isClass? oT).isSome then
+        match ← (try (some <$> synthInstance oT) catch _ => pure none) with
+        | some inst => o.mvarId!.assign inst
+        | none => return false
+      else
+        match ← solve k ctx oT (fuel - 1) mode with
+        | some (p, _) => o.mvarId!.assign p
+        | none => return false
+    return true
+
+def structural (k : Nat) (ctx : Array Expr) (T : Expr) (fuel : Nat) (mode : Mode) :
+    ResM (Option Expr) := do
+  match k with
+  | 0 => return none
+  | k + 1 => do
+    match T with
+    | .forallE n d b bi =>
+        match mode with
+        | .pointwise .. => return none
+        | _ =>
+          withLocalDecl n bi d fun x => do
+            match ← solve k (ctx.push x) (b.instantiate1 x) fuel mode with
+            | some (p, _) => return some (← mkLambdaFVars #[x] p)
+            | none => return none
+    | _ =>
+      if T.isAppOfArity ``And 2 then
+        let A := T.appFn!.appArg!
+        let B := T.appArg!
+        -- the larger conjunct first, so that witnesses it fixes reach the side conditions
+        let swapped := A.approxDepth < B.approxDepth
+        let (first, second) := if swapped then (B, A) else (A, B)
+        let some (p1, _) ← solve k ctx first fuel mode | return none
+        let some (p2, _) ← solve k ctx (← instantiateMVars second) fuel mode | return none
+        let (pa, pb) := if swapped then (p2, p1) else (p1, p2)
+        return some (← mkAppM ``And.intro #[pa, pb])
+      if T.isAppOfArity ``Exists 2 then
+        let α := T.appFn!.appArg!
+        let pred := T.appArg!
+        let w ← freshIn ctx α
+        unless ← knownInhabited α do
+          modify fun st => { st with dataHoles := st.dataHoles.push w }
+        let some (p, _) ← solve k ctx (pred.beta #[w]) fuel mode | return none
+        return some (← mkAppOptM ``Exists.intro #[α, pred, w, p])
+      if ← unfoldable T then
+        if let some T' ← unfoldDefinition? T then
+          return (← solve k ctx T' (fuel - 1) mode).map (·.1)
+      return none
+
+/-- An unsupplied clause: a residual clause, a named input, or a clause of a filter body
+(supplied along the filter when some reading gives it for all large `X`). -/
+def leave (k : Nat) (ctx : Array Expr) (T : Expr) (fuel : Nat) (mode : Mode) :
+    ResM (Option (Expr × Nat)) := do
+  match k with
+  | 0 => leaveBase ctx T mode
+  | k + 1 => do
+    match mode with
+    | .residual => return some (← mkHole ctx T, 0)
+    | .eventual =>
+        if T.hasFVar || T.hasMVar then return none
+        return some (← mkHole ctx T, 0)
+    | .pointwise x f =>
+        let leafM ← mkFreshExprMVar T .syntheticOpaque
+        let c ← clauseCount T
+        if fuel > 0 then
+          if let some e ← supplyEventually k ctx.pop x f T (fuel - 1) then
+            modify fun st => { st with leaves := st.leaves.push { mvar := leafM, cost := c, eventual := some e } }
+            return some (leafM, 0)
+        modify fun st => { st with leaves := st.leaves.push { mvar := leafM, cost := c, eventual := none } }
+        return some (leafM, 0)
+
+/-- A proof of `∀ᶠ X in f, T X`: from a reading directly, or from an eventual reading
+`∀ᶠ X, R X` whose glue candidates unify with `T X`. -/
+def supplyEventually (k : Nat) (outer : Array Expr) (x f T : Expr) (fuel : Nat) :
+    ResM (Option Expr) := do
+  match k with
+  | 0 => return none
+  | k + 1 => do
+    let s ← snapshot
+    let E ← mkAppM ``Filter.Eventually #[← mkLambdaFVars #[x] T, f]
+    if let some (e, _) ← solve k outer E fuel .eventual then return some e
+    s.restore
+    -- every eventual reading along `f`
+    let α ← inferType x
+    let pat ← mkAppM ``Filter.Eventually #[← mkFreshExprMVar (← mkArrow α (mkSort levelZero)), f]
+    for ref in ← candidates pat do
+      s.restore
+      let c0 ← mkConstWithFreshMVarLevels ref.name
+      let some (proof, stmt, obls) ← replay outer c0 (← inferType c0) #[] ref.path.toList | continue
+      unless stmt.isAppOfArity ``Filter.Eventually 3 do continue
+      let R := (stmt.getArg! 1).beta #[x]
+      let glue := (← read).glue
+      let found ← withLocalDeclD `hR R fun hR => do
+        for (p, C) in ← glueCandidates glue hR R do
+          if ← defEq C T then
+            return some (← mkLambdaFVars #[x, hR] (← instantiateMVars p))
+        return none
+      let some g := found | continue
+      unless ← discharge k outer obls fuel .eventual do continue
+      modify fun st => { st with used := st.used.push ref.name }
+      return some (← mkAppM ``Filter.Eventually.mono #[← instantiateMVars proof, g])
+    s.restore
+    return none
+
+/-- `∃ᶠ X in atTop, Q X` or `∀ᶠ X in atTop, Q X`: decompose `Q X`, supply what some reading
+gives for all large `X`, and keep the rest as one residual along the filter. -/
+def filterRule (k : Nat) (ctx : Array Expr) (T : Expr) (fuel : Nat) : ResM (Option Expr) := do
+  match k with
+  | 0 => return none
+  | k + 1 => do
+    let freq := T.isAppOfArity ``Filter.Frequently 3
+    let α := T.getArg! 0
+    let pred := T.getArg! 1
+    let f := T.getArg! 2
+    withLocalDeclD `X α fun x => do
+      let saved := (← get).leaves
+      modify fun s => { s with leaves := #[] }
+      let r ← solve k (ctx.push x) (pred.beta #[x]) (fuel - 1) (.pointwise x f)
+      let leaves := (← get).leaves
+      modify fun s => { s with leaves := saved }
+      let some (q, _) := r | return none
+      let kept := leaves.filter (·.eventual.isNone)
+      let sup := leaves.filter (·.eventual.isSome)
+      let keptT ← kept.mapM fun l => do instantiateMVars (← inferType l.mvar)
+      let supT ← sup.mapM fun l => do instantiateMVars (← inferType l.mvar)
+      let K := conj keptT.toList
+      let S := conj supT.toList
+      let mut eS ← mkAppM ``Filter.eventually_true #[f]
+      if !sup.isEmpty then
+        eS := sup.back!.eventual.getD eS
+        for l in (sup.pop).reverse do
+          eS ← mkAppM ``Filter.Eventually.and #[l.eventual.getD eS, eS]
+      let glue ← withLocalDeclD `hKS (mkApp2 (mkConst ``And) K S) fun hKS => do
+        assignProjections kept.toList (← mkAppM ``And.left #[hKS])
+        assignProjections sup.toList (← mkAppM ``And.right #[hKS])
+        mkLambdaFVars #[x, hKS] (← instantiateMVars q)
+      let predK ← mkLambdaFVars #[x] K
+      if freq then
+        let comb ←
+          if kept.isEmpty then
+            mkAppM ``Filter.Eventually.frequently
+              #[← mkAppM ``Filter.Eventually.and #[← mkAppM ``Filter.eventually_true #[f], eS]]
+          else
+            let hole ← mkHole ctx (← mkAppM ``Filter.Frequently #[predK, f])
+            mkAppM ``Filter.Frequently.and_eventually #[hole, eS]
+        return some (← mkAppM ``Filter.Frequently.mono #[comb, glue])
+      else
+        let hK ←
+          if kept.isEmpty then mkAppM ``Filter.eventually_true #[f]
+          else mkHole ctx (← mkAppM ``Filter.Eventually #[predK, f])
+        return some (← mkAppM ``Filter.Eventually.mono #[← mkAppM ``Filter.Eventually.and #[hK, eS], glue])
+
+end
+
+/-- Residualise `demand` against `index`: the proof term with its holes, and the number of
+search calls. -/
+def searchResidual (demand : Expr) (index : DiscrTree Ref) (glue : Array Name) (fuel : Nat := 8)
+    (exclude : Array Name := #[]) (callBudget : Nat := 600) (maxCandidates : Nat := 24) :
+    TermElabM (Option Expr × Nat × Array Name) := do
+  let budgetRef ← IO.mkRef 0
+  let cfg : Config := {
+    glue, unfoldPrefixes := #[`ErdosProblems, `Erdos249257, `DemandLedger]
+    rootLCtx := ← getLCtx, rootInsts := ← getLocalInstances
+    index, exclude, callBudget, maxCandidates, budgetRef }
+  let (r, st) ← ((solve 100000 #[] demand fuel .residual).run cfg).run {}
+  let mut used : Array Name := #[]
+  for n in st.used do
+    unless used.contains n || adapters.contains n do used := used.push n
+  return (r.map (·.1), ← budgetRef.get, used)
+
+/-- Close residual clauses that became closed propositions (a witness fixed later) by the
+battery, abstract the rest, report them, and add `name : ∀ residual clauses, demand` after
+the kernel checks it. Returns the number of propositional clauses and the suppliers used. -/
+def certify (name : Name) (label : String) (proof : Expr) (used : Array Name) :
+    TermElabM (Nat × Array Name) := do
+  let proof ← instantiateMVars proof
+  for m in (← getMVars proof) do
+    unless ← m.isAssigned do
+      let t ← instantiateMVars (← m.getType)
+      if (← isProp t) && !t.hasMVar then
+        if let some p ← runTac t "(intros; first | norm_num | positivity | decide | simp)" then
+          m.assign p
+  let proof ← instantiateMVars proof
+  let res ← abstractMVars proof
+  let value := res.expr
+  let type ← instantiateMVars (← inferType value)
+  -- only the abstracted holes: `type` continues into the demand's own binders
+  let (props, objects) ← forallBoundedTelescope type (some res.numMVars) fun xs _ => do
+    let mut n := 0
+    let mut objs := 0
+    for x in xs do
+      let t ← inferType x
+      if ← isProp t then
+        n := n + 1
+        logInfo m!"[{label}]  clause {← x.fvarId!.getUserName} : {t}"
+      else if ← knownInhabited t then
+        logInfo m!"[{label}]  witness {← x.fvarId!.getUserName} : {t}"
+      else
+        objs := objs + 1
+        logInfo m!"[{label}]  object {← x.fvarId!.getUserName} : {t}"
+    return (n, objs)
+  addDecl (.thmDecl { name, levelParams := res.paramNames.toList, type, value })
+  logInfo m!"[{label}] certificate {name}: {props} propositional clause(s), {objects} \
+    object(s) to construct, {res.numMVars - props - objects} witness(es); readings applied from \
+    {used.toList}"
+  return (props + objects, used)
+
+end ErdosProblems.ArgumentGraph.Residualise
+
+
+/-! ## The command -/
+
+namespace ErdosProblems.ArgumentGraph.Residualise
+
+open Lean Meta Elab Command
+
+/- Every atom below except `residualise` is already a keyword of Lean, so importing this module
+reserves no new word (a reserved `glue` or `as` would break those names downstream). -/
+syntax (name := residualiseCmd)
+  "residualise " ident " for " ident " using " ident+ (" with " ident+)? : command
+
+/-- `residualise N for D using s₁ … sₙ with g₁ … gₖ` searches for a proof of the proposition `D`
+from the readings of `s₁ … sₙ`, gluing eventual readings with the equation lemmas `g₁ … gₖ`, and
+adds `N : ∀ residual clauses, D` after the kernel checks it. The residual clauses are logged.
+The certificate is regenerated whenever the module is built, so a change in the search that
+changes its statement breaks every use of `N`. -/
+@[command_elab residualiseCmd] def elabResidualise : CommandElab := fun stx => do
+  liftTermElabM do
+    let name := (← getCurrNamespace) ++ stx[1].getId
+    let demandName ← realizeGlobalConstNoOverloadWithInfo stx[3]
+    let suppliers ← stx[5].getArgs.mapM fun s => realizeGlobalConstNoOverloadWithInfo s
+    let glue ← if stx[6].isNone then pure #[]
+      else stx[6][1].getArgs.mapM fun s => realizeGlobalConstNoOverloadWithInfo s
+    let unfoldOk := fun (n : Name) => [`ErdosProblems, `Erdos249257].any (·.isPrefixOf n)
+    let index ← indexOf suppliers unfoldOk
+    let (r, calls, used) ← searchResidual (mkConst demandName) index glue
+    match r with
+    | none => throwError "residualise {demandName}: no residualisation found ({calls} calls)"
+    | some proof =>
+        let (clauses, _) ← certify name s!"{demandName}" proof used
+        addDocStringCore name <| s!"`{demandName}` from its residual clauses (the binders of this \
+          theorem): found by `residualise` from the readings of {suppliers.toList} \
+          ({clauses} clause(s) or object(s) left open, {calls} search calls) and checked by the \
+          kernel."
+
+end ErdosProblems.ArgumentGraph.Residualise
+end ResidualiseEngine
+
+
+
+/-!
+# Erdős #249: the first-harmonic route found by residualisation
+
+`residualise` (`ErdosProblems.ArgumentGraph.Residualise`) searches for a proof of a demand from
+the readings of given suppliers and adds a theorem stating the demand from the clauses it could
+not supply, once the kernel accepts it. The demand here is `DTWPivotResidualDecorrelation`
+(demand `G064`), from which the irrationality of `∑ φ(n)/2^n` follows. The composition written
+by hand for it, `dtw_of_fiberMean_and_centered` (`Results/Erdos249.lean`), is not among the
+suppliers.
+
+* `dtw_residual`: from `prop_dickman`, `excluded_budget_one_thousandth_of_chebyshev` and
+  `pivotBudgetAt_of_peripheral_estimates`, the search fixes the depth `L = minimalDepth h s X`
+  and `η = 1/1000`, and leaves: some `s > 0` such that for every `h > 0` the centred clause and the
+  fibre-mean clause hold together for arbitrarily large `X`
+  (`dtw_of_joint_fiberMean_and_centered`). The two clauses the hand-written composition assumes
+  imply this at `s = 26` (`joint_of_fiberMean_and_centered`); they ask for the fibre means at
+  every large `X`.
+* `dtw_residual_gen2`: with `fiberMean_le_of_primeNumberTheorem` among the suppliers the
+  fibre-mean clause is supplied and `s = 26` is fixed by it. What is left is the prime number
+  theorem and, for every `h > 0`, the centred clause for arbitrarily large `X`
+  (`irrational_totient_series_of_primeNumberTheorem_and_frequent_centered`).
+
+Both certificates are regenerated when this module is built, so a change in the search that
+changes either statement breaks the theorems below. They say what the decorrelation needs. The
+irrationality needs less: the good-base gap alone gives it, with no fibre-mean bound and no
+prime number theorem (`Results/Erdos249Endpoint.lean`).
+-/
+
+open Filter
+
+namespace ErdosProblems.Erdos249.PaperCompleteR21
+
+open Erdos249257.TotientTailPeriodKiller
+open ErdosProblems.Erdos249.PaperCompleteR21.ExcludedCofactor
+open ErdosProblems.Erdos251.PaperR11.PrimeSource (PrimeNumberTheorem)
+
+residualise dtw_residual for DTWPivotResidualDecorrelation
+  using prop_dickman excluded_budget_one_thousandth_of_chebyshev
+    pivotBudgetAt_of_peripheral_estimates
+  with filter_excluded_eq_pivotBadBases filter_not_mem_pivotSupplierBases
+
+residualise dtw_residual_gen2 for DTWPivotResidualDecorrelation
+  using prop_dickman excluded_budget_one_thousandth_of_chebyshev
+    pivotBudgetAt_of_peripheral_estimates fiberMean_le_of_primeNumberTheorem
+  with filter_excluded_eq_pivotBadBases filter_not_mem_pivotSupplierBases
+
+/-- **The decorrelation from the joint clause the residualiser leaves**: for some `s > 0`, for
+every `h > 0`, arbitrarily large `X` at which the centred clause and the fibre-mean clause hold
+together. -/
+theorem dtw_of_joint_fiberMean_and_centered (s : ℕ) (hs : 0 < s)
+    (hjoint : ∀ h : ℕ, 0 < h → ∃ᶠ X in atTop,
+      (pivotCenteredCorrelation h X (minimalDepth h s X) s (1 / 1000 : ℝ)).re
+          ≤ (14 / 25 : ℝ) * X ∧
+        ∀ N ∈ pivotGoodBases X (minimalDepth h s X) s (1 / 1000 : ℝ),
+          ‖pivotFiberMean h X (minimalDepth h s X) s
+              (pivotCofactor N (minimalDepth h s X) s)‖ ≤ (1 / 100 : ℝ)) :
+    DTWPivotResidualDecorrelation :=
+  dtw_residual s (fun _ _ => hs) hjoint
+
+/-- The two clauses `dtw_of_fiberMean_and_centered` assumes imply the joint clause at `s = 26`:
+the residualiser's interface asks for no more than the hand-written one. -/
+theorem joint_of_fiberMean_and_centered
+    (hmean : ∀ h : ℕ, 0 < h → ∀ᶠ X : ℕ in atTop,
+      ∀ N ∈ pivotGoodBases X (minimalDepth h 26 X) 26 (1 / 1000 : ℝ),
+        ‖pivotFiberMean h X (minimalDepth h 26 X) 26
+            (pivotCofactor N (minimalDepth h 26 X) 26)‖ ≤ (1 / 100 : ℝ))
+    (hcentered : ∀ h : ℕ, 0 < h → ∀ A : ℕ, ∃ X : ℕ, max A 1 ≤ X ∧
+      (pivotCenteredCorrelation h X (minimalDepth h 26 X) 26 (1 / 1000 : ℝ)).re
+        ≤ (14 / 25 : ℝ) * X) :
+    ∀ h : ℕ, 0 < h → ∃ᶠ X in atTop,
+      (pivotCenteredCorrelation h X (minimalDepth h 26 X) 26 (1 / 1000 : ℝ)).re
+          ≤ (14 / 25 : ℝ) * X ∧
+        ∀ N ∈ pivotGoodBases X (minimalDepth h 26 X) 26 (1 / 1000 : ℝ),
+          ‖pivotFiberMean h X (minimalDepth h 26 X) 26
+              (pivotCofactor N (minimalDepth h 26 X) 26)‖ ≤ (1 / 100 : ℝ) := by
+  intro h hh
+  have hfreq : ∃ᶠ X in atTop,
+      (pivotCenteredCorrelation h X (minimalDepth h 26 X) 26 (1 / 1000 : ℝ)).re
+        ≤ (14 / 25 : ℝ) * X := by
+    rw [Filter.frequently_atTop]
+    intro A
+    obtain ⟨X, hX, hc⟩ := hcentered h hh A
+    exact ⟨X, le_trans (le_max_left _ _) hX, hc⟩
+  exact hfreq.and_eventually (hmean h hh)
+
+/-- **The irrationality of `∑ φ(n) / 2 ^ n` from the prime number theorem and the centred clause
+for arbitrarily large `X`**, the second-generation residual. -/
+theorem irrational_totient_series_of_primeNumberTheorem_and_frequent_centered
+    (hPNT : PrimeNumberTheorem)
+    (hc : ∀ h : ℕ, 0 < h → ∃ᶠ X in atTop,
+      (pivotCenteredCorrelation h X (minimalDepth h 26 X) 26 (1 / 1000 : ℝ)).re
+        ≤ (14 / 25 : ℝ) * X) :
+    Irrational (∑' n : ℕ, (Nat.totient n : ℝ) / 2 ^ n) :=
+  irrational_totient_series_of_pivotResidualDecorrelation (dtw_residual_gen2 hc fun _ _ => hPNT)
+
+end ErdosProblems.Erdos249.PaperCompleteR21
+
+#print axioms ErdosProblems.Erdos249.PaperCompleteR21.dtw_residual
+#print axioms ErdosProblems.Erdos249.PaperCompleteR21.dtw_residual_gen2
+#print axioms ErdosProblems.Erdos249.PaperCompleteR21.dtw_of_joint_fiberMean_and_centered
+#print axioms ErdosProblems.Erdos249.PaperCompleteR21.joint_of_fiberMean_and_centered
+#print axioms ErdosProblems.Erdos249.PaperCompleteR21.irrational_totient_series_of_primeNumberTheorem_and_frequent_centered
+
+
+/-!
+# Erdős #249: the good-base gap gives the irrationality with no further input
+
+`Results/Erdos249Route.lean` reaches the irrationality of `∑ φ(n)/2^n` from a first-harmonic
+gap on the good bases by way of `DTWPivotResidualDecorrelation`. That demand bounds the fibre
+means, so the route needs the prime number theorem. The irrationality consumer
+(`irrational_totient_series_of_certificate_supply`) needs less: for every `h ≥ 1`, one certified
+kill beyond every threshold. `exists_certifiedKill_of_first_harmonic_gap_subset` finds one in any
+nonempty set of bases below `2X` whose average first cosine is at most `9/10`, at a depth with
+room, so that is the whole requirement (`irrational_totient_series_of_support_gap`).
+
+The good bases at the minimal depth, with `s = 26` and `η = 1/1000`, are such a set as soon as
+their first harmonic has real part at most `603X/1000`. The good, bad and non-supplier bases
+partition `[X, 2X)` (`card_pivotGoodBases_add_card_pivotBadBases`,
+`card_pivotSupplierBases_add_card_pivotNonSupplierBases`); for all large `X` there are fewer than
+`X/100` bad bases (Chebyshev's bound) and fewer than `8X/25` non-supplier bases
+(`prop_dickman`), so more than `67X/100` good ones (`eventually_card_pivotGoodBases_gt`), and
+`603/1000 = 9/10 · 67/100`. Hence `irrational_totient_series_of_goodBase_gap`: a cofinal
+good-base gap at `603X/1000` for every `h ≥ 1` gives the irrationality, with no hypothesis
+besides the gap. The route of `Results/Erdos249Route.lean` asks for the prime number theorem
+and the gap at `11X/20`, which is smaller than `603X/1000`.
+
+Two finite forms of the same barrier are stated for later suppliers: with nonnegative weights,
+a weighted average first cosine at most `9/10` gives a certified kill of positive weight
+(`exists_certifiedKill_of_weighted_first_harmonic_gap`), and the saving below `9/10` counts
+certified kills (`card_certifiedKill_ge`). The pointwise barrier they use is the singleton case
+of the subset theorem (`nine_tenths_lt_windowFirstCos_of_not_certifiedKill`).
+-/
+
+open Filter Finset
+
+namespace ErdosProblems.Erdos249.PaperCompleteR21
+
+open Erdos249257.TotientTailPeriodKiller
+open ErdosProblems.Erdos249.PaperCompleteR21.ExcludedCofactor
+
+/-- **The certificate interface of the first-harmonic family.** For every `h ≥ 1` and every
+threshold `A`, some nonempty set of bases in `[A, 2X)` whose average first cosine is at most
+`9/10`, at a depth `L` with room, gives the irrationality of `∑ φ(n)/2^n`. -/
+theorem irrational_totient_series_of_support_gap
+    (hgap : ∀ h : ℕ, 0 < h → ∀ A : ℕ, ∃ X L : ℕ, ∃ T : Finset ℕ,
+      16 * (2 * X + h + L + 2) ≤ 2 ^ L ∧ T.Nonempty ∧ (∀ N ∈ T, A ≤ N ∧ N < 2 * X) ∧
+      (∑ N ∈ T, windowFirstCos h N L) ≤ (9 / 10 : ℝ) * T.card) :
+    Irrational (∑' n : ℕ, (Nat.totient n : ℝ) / 2 ^ n) := by
+  apply irrational_totient_series_of_certificate_supply
+  intro h hh A
+  obtain ⟨X, L, T, hroom, hne, hT, hcos⟩ := hgap h hh A
+  obtain ⟨N, hN, hkill⟩ :=
+    exists_certifiedKill_of_first_harmonic_gap_subset T (fun N hN => (hT N hN).2) hne hroom hcos
+  exact ⟨N, (hT N hN).1, L, hkill⟩
+
+/-- The good and bad bases partition the supplier bases. -/
+theorem card_pivotGoodBases_add_card_pivotBadBases (X L s : ℕ) (η : ℝ) :
+    (pivotGoodBases X L s η).card + (pivotBadBases X L s η).card
+      = (pivotSupplierBases X L s).card := by
+  unfold pivotGoodBases pivotBadBases
+  exact Finset.card_filter_add_card_filter_not _
+
+/-- The supplier and non-supplier bases partition `[X, 2X)`. -/
+theorem card_pivotSupplierBases_add_card_pivotNonSupplierBases (X L s : ℕ) :
+    (pivotSupplierBases X L s).card + (pivotNonSupplierBases X L s).card = X := by
+  have hsplit := Finset.card_filter_add_card_filter_not
+    (s := Finset.Ico X (2 * X)) (pivotSupplier X L s)
+  rw [Nat.card_Ico] at hsplit
+  unfold pivotSupplierBases pivotNonSupplierBases
+  omega
+
+/-- At the minimal depth, with `s = 26` and `η = 1/1000`, more than `67X/100` of the bases in
+`[X, 2X)` are good, for all large `X`: Chebyshev's bound leaves fewer than `X/100` bad bases and
+`prop_dickman` fewer than `8X/25` non-supplier bases. -/
+theorem eventually_card_pivotGoodBases_gt (h : ℕ) :
+    ∀ᶠ X : ℕ in atTop, (67 / 100 : ℝ) * X
+      < ((pivotGoodBases X (minimalDepth h 26 X) 26 (1 / 1000 : ℝ)).card : ℝ) := by
+  filter_upwards [excluded_budget_one_thousandth_of_chebyshev h 26,
+    (prop_dickman h 26).2.2.2.2.2] with X hbad hnon
+  have hb := card_pivotBadBases_le_of_count h X hbad.1
+  have hn : ((pivotNonSupplierBases X (minimalDepth h 26 X) 26).card : ℝ) < 8 / 25 * X := by
+    simpa [filter_not_mem_pivotSupplierBases] using hnon.2
+  have hgb := card_pivotGoodBases_add_card_pivotBadBases X (minimalDepth h 26 X) 26
+    (1 / 1000 : ℝ)
+  have hsn := card_pivotSupplierBases_add_card_pivotNonSupplierBases X (minimalDepth h 26 X) 26
+  have hnat : (pivotGoodBases X (minimalDepth h 26 X) 26 (1 / 1000 : ℝ)).card
+      + (pivotBadBases X (minimalDepth h 26 X) 26 (1 / 1000 : ℝ)).card
+      + (pivotNonSupplierBases X (minimalDepth h 26 X) 26).card = X := by
+    omega
+  have hsum : ((pivotGoodBases X (minimalDepth h 26 X) 26 (1 / 1000 : ℝ)).card : ℝ)
+      + ((pivotBadBases X (minimalDepth h 26 X) 26 (1 / 1000 : ℝ)).card : ℝ)
+      + ((pivotNonSupplierBases X (minimalDepth h 26 X) 26).card : ℝ) = X := by
+    exact_mod_cast hnat
+  linarith
+
+/-- **The irrationality of `∑ φ(n) / 2 ^ n` from a first-harmonic gap on the good bases, with no
+further input**: for every `h ≥ 1`, arbitrarily large `X` at which the real part of the first
+harmonic summed over the good bases (minimal depth, `s = 26`, `η = 1/1000`) is at most
+`603X/1000`. -/
+theorem irrational_totient_series_of_goodBase_gap
+    (hgap : ∀ h : ℕ, 0 < h → ∀ A : ℕ, ∃ X : ℕ, max A 1 ≤ X ∧
+      (∑ N ∈ pivotGoodBases X (minimalDepth h 26 X) 26 (1 / 1000 : ℝ),
+        windowFirstExp h N (minimalDepth h 26 X)).re ≤ (603 / 1000 : ℝ) * X) :
+    Irrational (∑' n : ℕ, (Nat.totient n : ℝ) / 2 ^ n) := by
+  refine irrational_totient_series_of_support_gap fun h hh A => ?_
+  obtain ⟨A₁, hA₁⟩ := eventually_atTop.mp (eventually_card_pivotGoodBases_gt h)
+  obtain ⟨X, hX, hg⟩ := hgap h hh (max A A₁)
+  simp only [max_le_iff] at hX
+  obtain ⟨⟨hAX, hA₁X⟩, hX1⟩ := hX
+  have hcard := hA₁ X hA₁X
+  have hX0 : 0 < X := hX1
+  have hXpos : (0 : ℝ) < X := by exact_mod_cast hX0
+  have hadm : h ≤ minimalDepth h 26 X - 26 ∧
+      16 * (2 * X + h + minimalDepth h 26 X + 2) ≤ 2 ^ minimalDepth h 26 X :=
+    ((prop_dickman h 26).1 X).1
+  refine ⟨X, minimalDepth h 26 X, pivotGoodBases X (minimalDepth h 26 X) 26 (1 / 1000 : ℝ),
+    hadm.2, ?_, ?_, ?_⟩
+  · rw [← Finset.card_pos]
+    have hpos : (0 : ℝ) < ((pivotGoodBases X (minimalDepth h 26 X) 26 (1 / 1000 : ℝ)).card : ℝ) := by
+      linarith
+    exact_mod_cast hpos
+  · intro N hN
+    simp only [pivotGoodBases, pivotSupplierBases, Finset.mem_filter, Finset.mem_Ico] at hN
+    exact ⟨le_trans hAX hN.1.1.1, hN.1.1.2⟩
+  · have hre : (∑ N ∈ pivotGoodBases X (minimalDepth h 26 X) 26 (1 / 1000 : ℝ),
+        windowFirstExp h N (minimalDepth h 26 X)).re
+        = ∑ N ∈ pivotGoodBases X (minimalDepth h 26 X) 26 (1 / 1000 : ℝ),
+          windowFirstCos h N (minimalDepth h 26 X) := by
+      simp
+    linarith [hre]
+
+/-- The pointwise barrier: at a depth with room, a base below `2X` without a certified kill has
+first cosine above `9/10`. It is the singleton case of
+`exists_certifiedKill_of_first_harmonic_gap_subset`. -/
+theorem nine_tenths_lt_windowFirstCos_of_not_certifiedKill {h X L N : ℕ} (hN : N < 2 * X)
+    (hroom : 16 * (2 * X + h + L + 2) ≤ 2 ^ L) (hnot : ¬ certifiedKill h N L) :
+    (9 / 10 : ℝ) < windowFirstCos h N L := by
+  by_contra hle
+  have hle' : windowFirstCos h N L ≤ 9 / 10 := not_lt.mp hle
+  obtain ⟨M, hM, hk⟩ := exists_certifiedKill_of_first_harmonic_gap_subset {N}
+    (by simpa using hN) (Finset.singleton_nonempty N) hroom (by simpa using hle')
+  rw [Finset.mem_singleton] at hM
+  rw [hM] at hk
+  exact hnot hk
+
+/-- **The weighted barrier.** With nonnegative weights `a` of positive total on a set of bases
+below `2X`, a weighted average first cosine at most `9/10`, at a depth with room, gives a
+certified kill at a base of positive weight. -/
+theorem exists_certifiedKill_of_weighted_first_harmonic_gap {h X L : ℕ} (T : Finset ℕ)
+    (a : ℕ → ℝ) (ha : ∀ N ∈ T, 0 ≤ a N) (hTlt : ∀ N ∈ T, N < 2 * X)
+    (hroom : 16 * (2 * X + h + L + 2) ≤ 2 ^ L) (hpos : 0 < ∑ N ∈ T, a N)
+    (hgap : (∑ N ∈ T, a N * windowFirstCos h N L) ≤ (9 / 10 : ℝ) * ∑ N ∈ T, a N) :
+    ∃ N ∈ T, 0 < a N ∧ certifiedKill h N L := by
+  by_contra hnone
+  have hnot : ∀ N ∈ T, 0 < a N → ¬ certifiedKill h N L :=
+    fun N hN hp hk => hnone ⟨N, hN, hp, hk⟩
+  obtain ⟨M, hM, hMpos⟩ : ∃ M ∈ T, 0 < a M := by
+    by_contra hall
+    have hle : ∑ N ∈ T, a N ≤ 0 := Finset.sum_nonpos fun N hN => by
+      by_contra hlt
+      exact hall ⟨N, hN, not_le.mp hlt⟩
+    linarith
+  have hlt : (∑ N ∈ T, a N * (9 / 10 : ℝ)) < ∑ N ∈ T, a N * windowFirstCos h N L := by
+    apply Finset.sum_lt_sum
+    · intro N hN
+      rcases (ha N hN).lt_or_eq with hp | h0
+      · exact le_of_lt (mul_lt_mul_of_pos_left
+          (nine_tenths_lt_windowFirstCos_of_not_certifiedKill (hTlt N hN) hroom
+            (hnot N hN hp)) hp)
+      · rw [← h0]
+        simp
+    · exact ⟨M, hM, mul_lt_mul_of_pos_left
+        (nine_tenths_lt_windowFirstCos_of_not_certifiedKill (hTlt M hM) hroom
+          (hnot M hM hMpos)) hMpos⟩
+  rw [← Finset.sum_mul] at hlt
+  linarith
+
+/-- **Counting certified kills.** On a set of bases below `2X`, at a depth with room, the saving
+of the first cosines below `9/10` is at most `19/10` times the number of certified kills: a
+base without a kill has first cosine above `9/10`, and every first cosine is at least `-1`. -/
+theorem card_certifiedKill_ge {h X L : ℕ} (T : Finset ℕ) (hTlt : ∀ N ∈ T, N < 2 * X)
+    (hroom : 16 * (2 * X + h + L + 2) ≤ 2 ^ L) :
+    (9 / 10 : ℝ) * T.card - ∑ N ∈ T, windowFirstCos h N L
+      ≤ (19 / 10 : ℝ) * ((T.filter fun N => certifiedKill h N L).card : ℝ) := by
+  have hsplit := Finset.sum_filter_add_sum_filter_not T (fun N => certifiedKill h N L)
+    (fun N => windowFirstCos h N L)
+  have hcard := Finset.card_filter_add_card_filter_not (s := T) (fun N => certifiedKill h N L)
+  have hcardR : ((T.filter fun N => certifiedKill h N L).card : ℝ)
+      + ((T.filter fun N => ¬ certifiedKill h N L).card : ℝ) = T.card := by
+    exact_mod_cast hcard
+  have hyes := Finset.card_nsmul_le_sum (T.filter fun N => certifiedKill h N L)
+    (fun N => windowFirstCos h N L) (-1) (fun N _ => by
+      unfold windowFirstCos
+      exact Real.neg_one_le_cos _)
+  have hno := Finset.card_nsmul_le_sum (T.filter fun N => ¬ certifiedKill h N L)
+    (fun N => windowFirstCos h N L) (9 / 10) (fun N hN => le_of_lt
+      (nine_tenths_lt_windowFirstCos_of_not_certifiedKill (hTlt N (Finset.mem_filter.mp hN).1)
+        hroom (Finset.mem_filter.mp hN).2))
+  rw [nsmul_eq_mul] at hyes hno
+  linarith
+
+end ErdosProblems.Erdos249.PaperCompleteR21
+
+#print axioms ErdosProblems.Erdos249.PaperCompleteR21.irrational_totient_series_of_support_gap
+#print axioms ErdosProblems.Erdos249.PaperCompleteR21.card_pivotGoodBases_add_card_pivotBadBases
+#print axioms ErdosProblems.Erdos249.PaperCompleteR21.card_pivotSupplierBases_add_card_pivotNonSupplierBases
+#print axioms ErdosProblems.Erdos249.PaperCompleteR21.eventually_card_pivotGoodBases_gt
+#print axioms ErdosProblems.Erdos249.PaperCompleteR21.irrational_totient_series_of_goodBase_gap
+#print axioms ErdosProblems.Erdos249.PaperCompleteR21.nine_tenths_lt_windowFirstCos_of_not_certifiedKill
+#print axioms ErdosProblems.Erdos249.PaperCompleteR21.exists_certifiedKill_of_weighted_first_harmonic_gap
+#print axioms ErdosProblems.Erdos249.PaperCompleteR21.card_certifiedKill_ge
