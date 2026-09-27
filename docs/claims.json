@@ -1908,13 +1908,13 @@
         "lean/ErdosProblems.lean"
       ],
       "auxiliary_roots": [
-        "ErdosProblems.ArgumentGraph.Derived.Erdos1041",
         "ErdosProblems.ArgumentGraph.Derived.Erdos1049",
-        "ErdosProblems.ArgumentGraph.Derived.Erdos243",
         "ErdosProblems.ArgumentGraph.Derived.Erdos249",
         "ErdosProblems.ArgumentGraph.Derived.Erdos257",
         "ErdosProblems.ArgumentGraph.Derived.Erdos269",
         "ErdosProblems.ArgumentGraph.Derived.Erdos68",
+        "ErdosProblems.ArgumentGraph.Results.Erdos1041",
+        "ErdosProblems.ArgumentGraph.Results.Erdos243",
         "ErdosProblems.ArgumentGraph.Results.Erdos251",
         "ErdosProblems.Bit.verify.B1",
         "ErdosProblems.Bit.verify.B2",
@@ -8784,6 +8784,22 @@
           "role": "Lean proof module",
           "imports": [
             "ErdosProblems.ArgumentGraph.Derive"
+          ]
+        },
+        {
+          "id": "ErdosProblems.ArgumentGraph.Results.Erdos1041",
+          "path": "lean/ErdosProblems/ArgumentGraph/Results/Erdos1041.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.ArgumentGraph.Derived.Erdos1041"
+          ]
+        },
+        {
+          "id": "ErdosProblems.ArgumentGraph.Results.Erdos243",
+          "path": "lean/ErdosProblems/ArgumentGraph/Results/Erdos243.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.ArgumentGraph.Derived.Erdos243"
           ]
         },
         {
