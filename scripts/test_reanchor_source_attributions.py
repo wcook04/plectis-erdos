@@ -106,6 +106,22 @@ class ReanchorSourceAttributionTests(unittest.TestCase):
         self.save_registry(fixture_registry())
         self.commit()
 
+    def test_check_and_automatic_repair_preserve_excerpt_content(self):
+        self.reanchor("--check")
+        before = self.registry_bytes()
+        self.write(PAPER, ["Inserted line.", *PAPER_LINES])
+        self.reanchor("--check", expect=1)
+        self.assertEqual(self.registry_bytes(), before)
+        self.reanchor("--write", "--preserve-excerpts")
+        self.reanchor("--check")
+        shifted = self.registry_bytes()
+        edited = self.lines(PAPER)
+        edited[3] = r"An altered claim follows from \cite[Thm.~2]{alpha,beta}."
+        self.write(PAPER, edited)
+        self.reanchor("--write", "--preserve-excerpts", expect=1)
+        self.assertEqual(self.registry_bytes(), shifted)
+        self.reanchor("--check", "--write", expect=2)
+
     def git(self, *args: str) -> None:
         subprocess.run(["git", *args], cwd=self.root, env=ENVIRONMENT, check=True, capture_output=True)
 
