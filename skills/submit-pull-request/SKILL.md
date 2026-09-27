@@ -104,6 +104,14 @@ even while the ordinary release gate rejects stale evidence. Download and
 validate that artifact against the exact branch before committing it; the
 recovery run never substitutes for a passing normal PR run.
 
+The shared preflight also runs `scripts/check_ci_contracts.py`: the cold build,
+cache, exporter, scheduling and push-guard suites, in normal and optimized
+Python. Its coverage check rejects a test added to a build, external-verification,
+cache-warm or coverage workflow without local admission coverage. Register new
+infrastructure suites there. Keep scheduling policy in
+`test_lean_workflow_environment.py`; callers must reuse its behavioral checks
+instead of asserting a second, contradictory spelling of the workflow.
+
 Run the narrow tests required by every changed subsystem, followed by the
 public-boundary and contribution-entry checks when relevant. Record exact
 commands, results, omissions, and environmental deferrals. A green test is

@@ -27,6 +27,7 @@ anchor.
 from __future__ import annotations
 
 import argparse
+import os
 import subprocess
 import sys
 from concurrent.futures import ThreadPoolExecutor
@@ -155,6 +156,9 @@ PREFLIGHT_CHECKS: dict[str, tuple[str, ...]] = {
     # First-contact checks also bind documented workflow behavior. Keep this
     # dependency-free CI lane inside the outgoing-commit gate, not just CI.
     "scripts/check_cold_clone_comprehension.py": ("--quick",),
+    # The build/cache/exporter regression tests are cold Python checks too.
+    # They must fail on the outgoing snapshot before GitHub allocates Lean.
+    "scripts/check_ci_contracts.py": (),
 }
 
 # Omitted from mutation, never omitted from verification. A full Lean export
@@ -171,6 +175,14 @@ CHECK_ONLY_BUILDERS: dict[str, str] = {
 
 def check_command(builder: str) -> list[str]:
     return [sys.executable, str(ROOT / builder), *PREFLIGHT_CHECKS.get(builder, ("--check",))]
+
+
+def failure_annotation(builder: str, detail: str) -> str:
+    """Put the actual failed owner in Actions annotations, not just exit 1."""
+    def escape(value: str) -> str:
+        return value.replace("%", "%25").replace("\r", "%0D").replace("\n", "%0A")
+    command = "python3 " + " ".join([builder, *PREFLIGHT_CHECKS.get(builder, ())])
+    return f"::error file={builder},title=Publication preflight failed::{escape(command + ': ' + detail[-2000:])}"
 
 
 def preflight() -> int:
@@ -193,7 +205,12 @@ def preflight() -> int:
         print("projection preflight failed; no build or preparation was started:")
         for builder, detail in failures:
             print(f"  {builder}: {detail}")
-        print("run python3 scripts/refresh_projections.py for Python-owned projections")
+            if os.environ.get("GITHUB_ACTIONS") == "true":
+                print(failure_annotation(builder, detail))
+        if any(builder in BUILDERS for builder, _detail in failures):
+            print("run python3 scripts/refresh_projections.py for Python-owned projections")
+        if any(builder == "scripts/check_ci_contracts.py" for builder, _detail in failures):
+            print("run python3 scripts/check_ci_contracts.py and repair every reported contract failure")
         for builder, _detail in failures:
             if builder in CHECK_ONLY_BUILDERS:
                 print(f"  {builder}: {CHECK_ONLY_BUILDERS[builder]}")

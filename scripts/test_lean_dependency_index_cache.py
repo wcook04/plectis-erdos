@@ -553,16 +553,17 @@ def check_tracked_only_ignores_local_success() -> None:
 
 
 def check_ci_freshness_precedes_expensive_jobs() -> None:
+    # Scheduling policy has one behavioral owner. A second textual assertion
+    # here used to reject the explicitly permitted recovery dispatch while
+    # accepting neither the current needs list nor its tested failure rules.
+    from test_lean_workflow_environment import (
+        require_evidence_before_expensive_jobs,
+        require_release_before_expensive_jobs,
+    )
+
     workflow = (ROOT / ".github/workflows/lean.yml").read_text(encoding="utf-8")
-    jobs = dict(re.findall(r"^  ([\w-]+):\n(.*?)(?=^  [\w-]+:|\Z)", workflow, re.M | re.S))
-    gate = jobs["change_scope"]
-    command = "python3 scripts/refresh_projections.py --preflight"
-    require(command in gate, "CI must check committed evidence before its dependent jobs")
-    step = gate[gate.rfind("      - name:"):]
-    require(command in step and "if:" not in step, "freshness gate is conditional or moved")
-    for name in ("build", "external-verification", "release-surfaces"):
-        require("needs: change_scope" in jobs[name], f"{name} can bypass cheap freshness gate")
-    require("--full-check" in jobs["build"], "cheap freshness replaced independent Lean export")
+    require_evidence_before_expensive_jobs(workflow)
+    require_release_before_expensive_jobs(workflow)
 
 
 def check_write_stale_requires_full_check() -> None:
