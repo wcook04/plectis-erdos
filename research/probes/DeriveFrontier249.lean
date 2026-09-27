@@ -396,7 +396,7 @@ def supplyLeaf (t : Expr) (suppliers : Array Name) : MetaM (Option Expr) := do
       let found ← withNewMCtxDepth do
         let us ← mkFreshLevelMVarsFor info
         let (mvars, _, rest) ← forallMetaBoundedTelescope
-          (info.type.instantiateLevelParams info.levelParams us) (some k)
+          (info.type.instantiateLevelParams info.levelParams us) k
         unless mvars.size == k do return none
         unless (← budgeted 20000 (isDefEq rest t)) == some true do return none
         for m in mvars do
