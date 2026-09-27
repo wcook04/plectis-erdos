@@ -1,24 +1,24 @@
 {
-  "atlas_digest": "sha256:ff42e56ee69be1cc7c8b40c901025b485a2bc450fe33235f4d72ca206e5fcb21",
+  "atlas_digest": "sha256:942ea2925d142884dcd99a76228adbd057b634a8de0fcbda0047317a89dc68e2",
   "builder_digest": "sha256:bbe9c7455d149ec4dd9362c985bd69a69e43719f3a8456598fbbd6e734d511b4",
   "claim_binding_fingerprint": "sha256:46ad6d2299d149532b5b9ebc17e2949a403b5183336f328398819aa6c46b89e9",
   "generated_manifest_digest": "sha256:2bfcecad9a04352cf5a9b6939dca294e665a6dffe7ee25d4b451e5c7231f7bbb",
   "schema": "erdos249257-declaration-atlas-check/1",
-  "source_fingerprint": "sha256:21fa6d8e3869d287c3c277cfb612e32b94f946fe0441fecce99cdf3b06dd551f",
+  "source_fingerprint": "sha256:3eabf514c68a8bcc0f2357360112819f25a4adbb2ed50fb3a73245609a5c81b8",
   "summary": {
-    "declaration_count": 164153,
+    "declaration_count": 164211,
     "generated_certificate_declaration_count": 8171,
     "kind_counts": {
-      "abbrev": 57,
-      "def": 3954,
-      "inductive": 9,
+      "abbrev": 58,
+      "def": 3990,
+      "inductive": 11,
       "instance": 14,
       "lemma": 1446,
-      "structure": 66,
-      "theorem": 158607
+      "structure": 71,
+      "theorem": 158621
     },
-    "module_count": 1877,
+    "module_count": 1880,
     "principal_claim_link_count": 468,
-    "theorem_like_count": 160053
+    "theorem_like_count": 160067
   }
 }

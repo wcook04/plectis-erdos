@@ -268,7 +268,15 @@ the primes of a shifted interval, and at the minimal depth the pivot phase turns
 a bounded number of times across it. On the good bases the first harmonic is the
 centred correlation plus the fibre-mean contribution, so given the fibre means the
 centred clause is the first-harmonic gap on the good bases, up to `X/100` either
-way (`ArgumentGraph/Results/Erdos249Route.lean`). The projection lists the chains per
+way (`ArgumentGraph/Results/Erdos249Route.lean`). The irrationality asks for less
+than the decorrelation: one certified kill for each `h ≥ 1` beyond every
+threshold, which any nonempty set of bases with average first cosine at most
+`9/10` contains at a depth with room. For all large `X` more than `67X/100` of
+the bases are good, so the good-base gap at `603X/1000` gives the irrationality
+with no further input, neither the fibre means nor the prime number theorem
+(`ArgumentGraph/Results/Erdos249Endpoint.lean`); the route through the
+decorrelation asks for the prime number theorem and the gap at `11X/20`. The
+projection lists the chains per
 problem (paper-cited theorems first) under `interfaces`, and for every
 interface statement the paper results whose chains need it (`needed_by`).
 
@@ -585,6 +593,61 @@ two-level full factorial design, [NIST/SEMATECH e-Handbook
 §5.3.3.3.1](https://www.itl.nist.gov/div898/handbook/pri/section3/pri3331.htm)). A statement counts as
 supplied only by the export running both passes when no other export,
 the baseline included, supplies it.
+
+## Residualisation: what a demand still needs
+
+The producer search asks whether a corpus theorem supplies a statement. The
+module [`ErdosProblems.ArgumentGraph.Residualise`](../lean/ErdosProblems/ArgumentGraph/Residualise.lean)
+asks what a statement still needs, given some suppliers. The command
+
+```lean
+residualise N for D using s₁ … sₙ with g₁ … gₖ
+```
+
+searches for a proof of the proposition `D` from the readings of the theorems
+`s₁ … sₙ` and adds `N : ∀ residual clauses, D` once the kernel accepts it. A
+reading of a theorem is its statement with some leading binders instantiated, a
+conjunct, the unfolding of a corpus definition, or a conjunct of an eventual
+conjunction; the readings are indexed in a discrimination tree. Witnesses and
+supplier parameters are metavariables of the root context, so a supplier that
+fixes one (a depth function, an exponent) fixes it in every clause that shares
+it. A goal `∃ᶠ X in atTop, Q X` is split pointwise: every clause of `Q X` that a
+reading gives for all large `X` is supplied along the filter, and the others
+stay together as one residual. A clause for all large `X` can also come from an
+eventual reading rewritten with the equation lemmas `g₁ … gₖ`, from a conjunct
+of it, or from its non-strict form. The search prefers the alternative that
+leaves the fewest atomic clauses (counted through `∧`, `∃`, `∀`, corpus
+definitions and filter bodies), adding one for each data argument whose type is
+not known to be inhabited, since such an argument is an object still to
+construct. The theorem is regenerated whenever the module is built, so a change
+in the search that changes its statement breaks every proof that uses `N`.
+
+`ArgumentGraph/Results/Erdos249Residual.lean` runs it on
+`DTWPivotResidualDecorrelation` (demand `G064`, see [Interface
+chains](#interface-chains)) with the suppliers `prop_dickman`,
+`excluded_budget_one_thousandth_of_chebyshev` and
+`pivotBudgetAt_of_peripheral_estimates`, and with the hand-written composition
+`dtw_of_fiberMean_and_centered` withheld. The search fixes the depth
+`L = minimalDepth h s X` through the readings of `prop_dickman` and `η = 1/1000`
+through the Chebyshev budget, and leaves some `s > 0` such that, for every
+`h > 0`, the centred clause and the fibre-mean clause hold together for
+arbitrarily large `X` (`dtw_residual`). The hand-written composition asks for
+more: the fibre means at every large `X`, with `s = 26`
+(`joint_of_fiberMean_and_centered`). With `fiberMean_le_of_primeNumberTheorem`
+among the suppliers the fibre-mean clause is supplied, and `s = 26` is fixed by
+unification with it. What remains is the prime number theorem and, for every
+`h > 0`, the centred clause for arbitrarily large `X` (`dtw_residual_gen2`), so
+those two give the irrationality of the #249 series
+(`irrational_totient_series_of_primeNumberTheorem_and_frequent_centered`).
+Withdrawing the new supplier gives back the first residual. A residual is what
+this search left with these suppliers and budgets; another argument may need
+less. The search also keeps its demand: it finds what the decorrelation needs,
+while the irrationality needs only the good-base gap
+(`ArgumentGraph/Results/Erdos249Endpoint.lean`). Finding such a route means
+searching the sufficient conditions of the endpoint and comparing them, which
+the command does not do; fewer clauses left is the wrong measure there, since
+the useful condition can be a stronger statement in quantities the corpus can
+estimate.
 
 ## Checking a new statement without a local build
 

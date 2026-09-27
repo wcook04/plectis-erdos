@@ -1,10 +1,10 @@
 {
   "builder_schema": "erdos249257-semantic-corpus/1",
-  "input_fingerprint": "sha256:15079bd2316020ce4889d679b55d249e01ae3f1b18557b735ffee3f6a38ce2bd",
-  "output_digest": "sha256:a80d0c4cc5c7d7ebade03a2006f44ee61cc0260eba4569a0313ef2bf78782d7a",
+  "input_fingerprint": "sha256:7d2f62a2a68be2864ea244cd2f7d3191bed1c4f09ca20e588f14d671cff94b11",
+  "output_digest": "sha256:bccb59493a4b35ac925357d4153852132a8a9eec8e080d42837896914512884f",
   "schema": "erdos249257-semantic-corpus-check/1",
   "summary": {
-    "declarations": 164153,
+    "declarations": 164211,
     "orphan_count": 0,
     "public_semantic_census": {
       "authored_statement_node_count": 1125,
@@ -28,7 +28,7 @@
         "equivalence_or_classification": 107,
         "finite_instance": 87,
         "generated_certificate_instance": 4,
-        "infrastructure": 13670,
+        "infrastructure": 13684,
         "reduction_or_transport": 94,
         "representation_normalisation": 161,
         "unconditional_object_theorem": 360
@@ -87,8 +87,8 @@
         "269": 559,
         "68": 1068,
         "both": 0,
-        "shared_substrate": 4429,
-        "total": 14182
+        "shared_substrate": 4443,
+        "total": 14196
       },
       "prior_art_review_queue": {
         "1041": 0,
@@ -109,14 +109,14 @@
         "257": 6
       },
       "reviewed_frontier_shortlist_count": 11,
-      "source_structural_family_node_count": 13639
+      "source_structural_family_node_count": 13653
     },
-    "statement_nodes": 14767
+    "statement_nodes": 14781
   },
   "surface_digests": {
     "docs/RESULTS.md": "sha256:bd5daa1e05f5699b83a8ad26f0adf0d7f0f3a718f0c6bf61a87de4d81078a7d1",
-    "paper/systems/claim-faithful-publication-systems-paper.tex": "sha256:434a963b1c1e20917f03b0de07186c0546f19e1ce65920b34d45926918f6c5e1",
-    "paper/systems/cold-clone-to-proof-receipt.tex": "sha256:c2141f3c7b20073d7d1ced0a8c2f51ecabbcb3e5f1d4b4392b17d20c00023d1c"
+    "paper/systems/claim-faithful-publication-systems-paper.tex": "sha256:5f3484cc19a322734dabdfacdbccdc9a2ad810c5222e004d1a28072236b50e9b",
+    "paper/systems/cold-clone-to-proof-receipt.tex": "sha256:e10a3bd21ab707b6698c653fe11dd83832b8c167260b62a719e0d3947e109a78"
   },
   "verification_posture": "content_addressed_generated_corpus_and_public_census_surfaces_matched_a_full_builder_run"
 }
