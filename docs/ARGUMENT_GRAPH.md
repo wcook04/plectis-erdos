@@ -121,7 +121,9 @@ environment a producer.
 
 The export runs in continuous integration
 ([workflow](../.github/workflows/argument-continuations.yml)) because it needs
-the corpus built. Its stream is uploaded as an artifact together with
+the corpus built: on a push to `main` or to a `claude/argument-*` or
+`codex/argument-*` branch that changes the exporter, or by hand
+(`workflow_dispatch`) on any branch. Its stream is uploaded as an artifact together with
 `argument_continuations_lean_tree.txt`, the git tree of `lean/` at the exported
 commit, and `argument_continuations_source_revision.txt`, the commit itself.
 
