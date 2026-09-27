@@ -145,9 +145,12 @@ WRITE_FLAGS: dict[str, tuple[str, ...]] = {
 
 # These checks inspect shipped evidence only: no Lean, installs, regeneration,
 # or local-receipt fallback. CI and cold release preparation share this owner.
+# Budget reserved for cold admission by the workflow, excluding runner setup.
+PREFLIGHT_BUDGET_SECONDS = 1200
+
 PREFLIGHT_CHECKS: dict[str, tuple[str, ...]] = {
     **{builder: ("--check",) for builder in BUILDERS},
-    "scripts/check_release.py": ("--source-identity-only", "--route-budgets-only"),
+    "scripts/check_release.py": ("--source-identity-only", "--route-budgets-only", "--trust-only"),
     "scripts/check_publication_contract.py": (),
     "scripts/build_declaration_atlas.py": ("--check",),
     "scripts/build_declaration_search_index.py": ("--check",),

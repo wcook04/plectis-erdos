@@ -840,8 +840,9 @@ class LeanFastBuildTests(unittest.TestCase):
         self.assertIn("\n  pull_request:\n", triggers)
         self.assertIn("\n  workflow_dispatch:\n", triggers)
         self.assertNotIn("\n  push:\n", triggers)
-        self.assertIn("Main is protected with both jobs", workflow)
-        self.assertIn("If branch protection is relaxed, restore push validation", workflow)
+        # Validate the release entry itself; comment wording is not a gate.
+        import check_ci_release
+        self.assertEqual(check_ci_release.workflow_errors(workflow), [])
 
     def test_paper_only_skip_cannot_stand_in_for_unverified_layout_inputs(self):
         """GitHub reports a skipped required Lean job as success.
