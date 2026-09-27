@@ -406,39 +406,20 @@ Choose one validation level. Do not run the full release gate and then rerun its
 component checks as a serial checklist.
 
 Before publication, run `python3 scripts/refresh_projections.py --preflight`.
-This build-free check covers every builder in the projection registry, the
-formal-source checkpoint, manuscript/PDF build provenance, and tracked atlas,
-dependency-index and semantic corpus
-receipts using evidence that will ship in the clone; local cache evidence
-cannot substitute for it. CI and the cold release wrapper run this same check
-before expensive jobs, package installation or Lean preparation. Source, atlas, or
-formal-source identity changes can invalidate that receipt even after a focused
-Lean build passes. After the final projection refresh, regenerate with
-`python3 scripts/build_lean_dependency_index.py --check --full-check --write-stale`
-and commit both `docs/lean_dependency_index.json` and
-`docs/lean_dependency_index_check.json`. A stale export writes them and exits 1;
-rerun the cheap check to confirm the result. A CI export may be reused only when
-its input fingerprint and output digest match the candidate exactly. The release
-gate and CI entry job enforce this check before expensive validation.
-The semantic corpus uses `python3 scripts/build_semantic_corpus.py` to regenerate
-its own outputs and tracked receipt. `refresh_projections.py` refreshes Python
-projections in order, then checks the Lean evidence it cannot regenerate; it
-returns failure with the separate export command if that evidence is stale.
-Its `--check` mode verifies both categories without starting Lean.
+It checks every registered projection, tracked evidence, source identity and
+cold CI infrastructure contracts before compilation. A warm local receipt
+cannot substitute for evidence shipped in the clone. Follow the reported owner
+to repair failures; `refresh_projections.py` refreshes Python projections and
+reports any separate Lean export required. Commit both dependency-index files
+after an export and rerun the cheap check.
 
-The same preflight runs the cold infrastructure suites through
-`scripts/check_ci_contracts.py`, including build planning, tracked evidence,
-cache policy and workflow scheduling. New tests in the expensive CI jobs must
-join this registry or admission fails. Test failures and timeouts stay blocking;
-all results are reported together before any Lean preparation.
-
-Install `python3 scripts/check_push.py --install` once per worktree to apply
-that same preflight to the exact outgoing commits, independently of local
-uncommitted repairs. It also rejects a branch that omits the destination's
-current main, so integration and projection conflicts are repaired before CI.
-The contribution skill owns custom-hook integration and
-the explicit `dependency-index-refresh` CI recovery scope. Recovery produces
-an export for repair; normal PR release and Lean checks still have to pass.
+Install `python3 scripts/check_push.py --install` once per worktree. It checks
+the exact outgoing commits and the destination's current main, preserving local
+uncommitted work. Merge or rebase an advanced base and regenerate affected
+projections before retrying. The [submission skill](../../skills/submit-pull-request/SKILL.md)
+owns the full contract-test inventory, custom-hook integration and explicit
+`dependency-index-refresh` recovery scope. Recovery produces repair evidence;
+normal PR checks still have to pass.
 
 - During an edit, run only the owning builder or focused test named by the
   routed skill. For example, agent-entry work uses

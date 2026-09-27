@@ -1388,6 +1388,20 @@ def formal_source_identity_errors(release: dict) -> list[str]:
     return [] if matches else [detail or "current public Lean sources differ from formal-source checkpoint"]
 
 
+def route_budget_errors(route: dict, root: Path = ROOT) -> list[str]:
+    """One cheap byte-budget contract shared by admission and full release."""
+    total = 0
+    for rel in route.get("read", []):
+        path = root / rel
+        if not path.is_file():
+            return [f"route {route.get('id')!r} first-contact file is missing: {rel}"]
+        total += path.stat().st_size
+    if total > MAX_ROUTE_FIRST_CONTACT_BYTES:
+        return [f"route {route.get('id')!r} first-contact bundle is {total} bytes "
+                f"(budget {MAX_ROUTE_FIRST_CONTACT_BYTES}); shorten the entry and route detail to its owning skill"]
+    return []
+
+
 def missing_release_dependencies() -> list[str]:
     """Modules a release child imports that are absent from this interpreter."""
     from importlib.util import find_spec
@@ -1406,17 +1420,29 @@ def main(argv: list[str] | None = None) -> int:
         "--source-identity-only", action="store_true",
         help="verify the formal-source checkpoint without release packages, builds or query suites",
     )
+    parser.add_argument(
+        "--route-budgets-only", action="store_true",
+        help="check first-contact byte budgets without the late corpus query suites",
+    )
     args = parser.parse_args(argv)
-    if args.source_identity_only:
+    if args.source_identity_only or args.route_budgets_only:
         if args.singleflight_worker:
             parser.error("--source-identity-only cannot run a release worker")
         read.cache_clear()
         data = json.loads(read(ROOT / "docs" / "claims.json"))
-        errors = formal_source_identity_errors(data.get("release", {}))
+        errors = formal_source_identity_errors(data.get("release", {})) if args.source_identity_only else []
         for error in errors:
             print(f"formal-source identity: FAIL {error}")
-        if not errors:
+        if args.source_identity_only and not errors:
             print("formal-source identity: current Lean tree matches the committed checkpoint")
+        if args.route_budgets_only:
+            budget_errors = [error for route in data["machine_readable_paper"]["entrypoints"]
+                             for error in route_budget_errors(route, ROOT)]
+            for error in budget_errors:
+                print(f"first-contact budget: FAIL {error}")
+            errors.extend(budget_errors)
+            if not budget_errors:
+                print("first-contact budgets: current")
         return int(bool(errors))
     missing = missing_release_dependencies()
     if missing:
@@ -1792,15 +1818,11 @@ def main(argv: list[str] | None = None) -> int:
               f"route {route.get('id')!r} lacks bounded query, authority-owner, or adjacent-handle data")
         check(not (set(route.get("read", [])) & exhaustive_route_reads),
               f"route {route.get('id')!r} sends first contact to an exhaustive owner")
-        first_contact_bytes = 0
         for rel in route.get("read", []):
             path = ROOT / rel
             check(release_file_exists(path), f"machine-readable-paper entrypoint path does not exist: {rel}")
-            if release_file_exists(path):
-                first_contact_bytes += path.stat().st_size
-        check(first_contact_bytes <= MAX_ROUTE_FIRST_CONTACT_BYTES,
-              f"route {route.get('id')!r} first-contact bundle is {first_contact_bytes} bytes "
-              f"(budget {MAX_ROUTE_FIRST_CONTACT_BYTES})")
+        budget_errors = route_budget_errors(route)
+        check(not budget_errors, "; ".join(budget_errors))
         for owner in route.get("authority_owners", []):
             rel = str(owner).split("::", 1)[0]
             check(release_file_exists(ROOT / rel),
