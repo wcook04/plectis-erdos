@@ -731,7 +731,9 @@ with no hypotheses: an elementary mean-value estimate bounds the upper
 density of $\{m:\ph(m)<m/1000\}$ by $3/1000$, and Chebyshev's bound
 $\prod_{a+1<p\le2a+1}p\le\binom{2a+1}{a}\le4^a$ replaces the prime number
 theorem at the cost of a factor $\log4$, so at most
-$(3\log4/1000+o(1))X<X/100$ indices are excluded. The two remaining estimates concern the group
+$(3\log4/1000+o(1))X<X/100$ indices are excluded. The same argument
+\href{\laterepobase/lean/ErdosProblems/Erdos249/PaperCompleteR21/ExcludedCofactorEstimate.lean\#L930}{proves}
+the bound with no hypotheses for every $\eta$ with $0<\eta<1/(300\log4)$. The two remaining estimates concern the group
 means and their weighted, mean-subtracted phases. They must hold at the
 same depth and for the same choice of $\eta$; the existence of a cutoff
 that controls the excluded indices does not establish either of them.

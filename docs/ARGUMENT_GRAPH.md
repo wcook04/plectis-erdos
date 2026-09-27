@@ -424,6 +424,44 @@ kernel check:
   separately, directly or under `have`, `show` or `let`, splits. A paper result
   stated modulo a named input may so have parts that hold without it.
 
+The module
+[`ErdosProblems.ArgumentGraph.Factor`](../lean/ErdosProblems/ArgumentGraph/Factor.lean)
+adds one command that changes where a theorem's hypotheses sit in its
+statement:
+
+* `derive_factor T`: `T.factored`, the statement of `T` with each proposition
+  hypothesis assumed only by the claims of the conclusion whose proofs use it.
+  The conclusion is read through `∃`, `∧` and `∀`; each claim that reads no
+  further is one claim. From a proof of `H₁ → H₂ → ∃ w, A w ∧ B w ∧ C w` whose
+  witness and whose proof of `A w` use neither hypothesis, whose proof of `B w`
+  uses only `H₁` and whose proof of `C w` uses only `H₂`, it states
+  `∃ w, A w ∧ (H₁ → B w) ∧ (H₂ → C w)` with the proof's own witness. A
+  hypothesis the witness needs stays above the `∃`, and one no claim uses is left
+  out. The command reads the proof after normalising its spine: `have`s whose
+  value uses a hypothesis being moved are inlined, an elimination of a
+  constructor is reduced (`obtain ⟨a, b⟩ := ⟨x, y⟩`), an elimination whose major
+  premise is itself an elimination moves inside it, and a compiled `match` is
+  unfolded. When the proof destructures `L … h …` for a corpus theorem `L`, the
+  command first derives `L.factored` and rebuilds `L`'s conclusion from it, so a
+  hypothesis that `L` needs for one property no longer decides the witnesses `L`
+  supplies. It so follows a construction through the lemmas it is built from.
+  The factoring of a theorem imported from another library is named
+  `ErdosProblems.ArgumentGraph.Factored.<name>`. The reading only proposes the
+  placement; the kernel checks every theorem the command adds, including each
+  factoring it derives on the way.
+
+For the simultaneous prime-gap countermodel of #251,
+`short_joint_prime_gap_countermodel` assumes Schlage-Puchta's Lemma 4 and the
+prime number theorem and restricts its exponent to `0 < ε ≤ 1`. `derive_factor`
+states it for every `ε > 0` with the construction unconditional, Schlage-Puchta's
+Lemma 4 assumed only by the nonconcentration clause and the prime number theorem
+only by `P n ∼ n log n`. On the way it derives the factorings of
+`long_joint_prime_gap_countermodel`, of `prime_polylogarithmic_interval` (whose
+growth clause alone needs `ε < 1` and the prime number theorem) and of the
+lemmas beneath them.
+[`JointPrimeGapCountermodelPerClause`](../lean/ErdosProblems/Erdos251/PaperCompleteR21/JointPrimeGapCountermodelPerClause.lean)
+states both countermodels in this form.
+
 For the excluded-cofactor estimate of #249, `prop_badcof` assumes the prime
 number theorem, and its proof uses it only through a chain that ends at the
 dyadic prime count `eventually_card_primes_dyadic_le`. `derive_frontier
@@ -439,11 +477,23 @@ writes the commands for every theorem a paper cites, one module per problem
 under `lean/ErdosProblems/ArgumentGraph/Derived/`, with
 `argumentGraph.strict` set so that a derivation the export reported and the
 library cannot rebuild fails the build. Derivations the export does not decide
-in advance (conjunct splits, frontiers discharged by corpus theorems) are
-tried in a kernel probe first: given the probe's verdicts (`--verified`), the
+in advance (conjunct splits, factorings, frontiers discharged by corpus
+theorems) are tried in a kernel probe first (`--probes DIR` writes one probe
+per problem): given the probe's verdicts (`--verified`, read by
+[`scripts/frontier_verdicts.py`](../scripts/frontier_verdicts.py)), the
 generator keeps each one that added theorems as a strict command and drops,
-with the reason, each one that did not. It lists each derived theorem, with the
-paper rows of its source theorem, in `docs/argument_frontier.json`. A derived
+with the reason, each one that did not. A verdict rests on positive evidence:
+the probe's `added` message for the command. It lists each derived theorem,
+with the paper rows of its source theorem, in `docs/argument_frontier.json`,
+together with the statement and statement hash the probe reported for it.
+
+The frontier never loses a theorem it has published. A new export can stop
+proposing a derivation (its search is budgeted, and its use-site rule can
+change), so the generator carries every command of the modules already
+published into the new plan, with its imports. A probe verdict that a carried
+command no longer adds its theorem, or that a published name now states
+something else, stops the generator until the derivation is repaired or the
+command is retired by name (`--retire`). A derived
 theorem restates what its source proof already proves; it is new only as a
 statement, and whether a paper should state the stronger form is the author's
 decision.

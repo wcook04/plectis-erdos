@@ -1512,6 +1512,10 @@
             "file": "lean/ErdosProblems/Erdos251/PaperCompleteR21/JointPrimeGapCountermodel.lean"
           },
           {
+            "name": "ErdosProblems.Erdos251.PaperCompleteR21.short_joint_prime_gap_countermodel_per_clause",
+            "file": "lean/ErdosProblems/Erdos251/PaperCompleteR21/JointPrimeGapCountermodelPerClause.lean"
+          },
+          {
             "name": "ErdosProblems.Erdos251.PaperCompleteR21.cut_prefix_bound",
             "file": "lean/ErdosProblems/Erdos251/PaperCompleteR21/JointPrimeGapCountermodel.lean"
           }
@@ -1520,7 +1524,7 @@
           "ErdosProblems.Erdos251.PaperR11.PrimeSource.PrimeNumberTheorem",
           "ErdosProblems.Erdos251.PaperR11.PrimeSource.SchlagePuchtaLemma4"
         ],
-        "scope": "Schlage-Puchta's density lemma and the prime number theorem"
+        "scope": "Schlage-Puchta's density lemma, for fixed-block nonconcentration only, and the prime number theorem, for P_n ~ n log n only"
       },
       "comparator": {
         "status": "not_applicable"
@@ -17152,6 +17156,10 @@
             "file": "lean/ErdosProblems/Erdos251/PaperCompleteR21/JointPrimeGapCountermodel.lean"
           },
           {
+            "name": "ErdosProblems.Erdos251.PaperCompleteR21.long_joint_prime_gap_countermodel_per_clause",
+            "file": "lean/ErdosProblems/Erdos251/PaperCompleteR21/JointPrimeGapCountermodelPerClause.lean"
+          },
+          {
             "name": "ErdosProblems.Erdos251.PaperCompleteR21.cut_prefix_bound",
             "file": "lean/ErdosProblems/Erdos251/PaperCompleteR21/JointPrimeGapCountermodel.lean"
           }
@@ -17160,7 +17168,7 @@
           "ErdosProblems.Erdos251.PaperR11.PrimeSource.PrimeNumberTheorem",
           "ErdosProblems.Erdos251.PaperR11.PrimeSource.SchlagePuchtaLemma4"
         ],
-        "scope": "Schlage-Puchta's density lemma and the prime number theorem"
+        "scope": "Schlage-Puchta's density lemma, for fixed-block nonconcentration only, and the prime number theorem, for P_n ~ n log n only"
       },
       "comparator": {
         "status": "not_applicable"

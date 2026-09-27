@@ -490,7 +490,10 @@ $\binom{2a+1}{a}\le4^a$, gives $K=\log4$; at the record's explicit choice
 $\eta=1/1000$ an elementary estimate gives $D\le3/1000$, and since
 $3\log4/1000<1/100$ the count stays below $X/100$ for all large $X$ with no
 input at all. Lean checks that theorem
-(\href{\repobase/blob/57941a741fceaae33ab7e2513a9cd11fee060081/lean/ErdosProblems/Erdos249/PaperCompleteR21/ExcludedCofactorEstimate.lean}{\texttt{ExcludedCofactorEstimate.lean}}).
+(\href{\repobase/blob/57941a741fceaae33ab7e2513a9cd11fee060081/lean/ErdosProblems/Erdos249/PaperCompleteR21/ExcludedCofactorEstimate.lean}{\texttt{ExcludedCofactorEstimate.lean}})
+and the family it belongs to: the same argument holds for every $\eta>0$ with
+$3\eta\log4<1/100$, that is for $\eta<1/(300\log4)$
+(\repolink{lean/ErdosProblems/Erdos249/PaperCompleteR21/ExcludedCofactorEstimate.lean}{\texttt{excluded\_budget\_of\_chebyshev}}).
 
 \paragraph{The findings as library theorems.} A Lean module
 (\href{\repobase/blob/7391668980147292656da6d0bc66a927aa84824b/lean/ErdosProblems/ArgumentGraph/Derive.lean}{\texttt{Derive.lean}})
@@ -527,6 +530,31 @@ Lean theorem
 (\repolink{lean/ErdosProblems/ArgumentGraph/Derived/Erdos251.lean}{Erdos251.lean}),
 and Problem~257's square-root route without its sign hypothesis
 (\repolink{lean/ErdosProblems/ArgumentGraph/Derived/Erdos257.lean}{Erdos257.lean}).
+
+A second module
+(\repolink{lean/ErdosProblems/ArgumentGraph/Factor.lean}{\texttt{Factor.lean}})
+moves each hypothesis of a theorem to the claims of its conclusion whose proofs
+use it and keeps the proof's witnesses (\texttt{derive\_factor}): from a proof
+of $H_1\to H_2\to\exists w,\ A(w)\wedge B(w)\wedge C(w)$ whose witness and
+whose proof of $A$ use neither hypothesis, it states
+$\exists w,\ A(w)\wedge(H_1\to B(w))\wedge(H_2\to C(w))$. It reads the
+conclusion through $\exists$, $\wedge$ and $\forall$ and normalises the proof's
+spine; when the proof destructures a corpus lemma applied to a hypothesis
+being moved, it factors that lemma first and rebuilds the lemma's conclusion,
+so it follows a construction through the lemmas it is built from. The kernel
+checks every theorem it adds. Problem~251's simultaneous countermodel assumes
+Schlage-Puchta's Lemma~4 and the prime number theorem, and fixes
+$0<\varepsilon\le1$. Its factoring states the construction unconditionally, for
+every $\varepsilon>0$, with Schlage-Puchta's lemma assumed only by the
+nonconcentration clause and the prime number theorem only by
+$P_n\sim n\log n$
+(\repolink{lean/ErdosProblems/Erdos251/PaperCompleteR21/JointPrimeGapCountermodelPerClause.lean}{JointPrimeGapCountermodelPerClause.lean}).
+\AFFactored{} cited theorems have a factoring, and deriving them factored
+\AFFactoredLibrary{} lemmas beneath them. The generator carries every command
+it has published into each new plan, and it stops when a probe shows that one
+no longer adds its theorem or that a published name now states something else;
+a later export with a smaller search budget or another use-site rule cannot
+remove a theorem a paper cites.
 
 \paragraph{Research with the graph.} A research session on a problem opens a
 bounded packet built from the graph

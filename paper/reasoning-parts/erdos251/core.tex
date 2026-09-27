@@ -1511,8 +1511,10 @@ fixed-block polynomial nonconcentration, and vanishing total variation distance 
  \qquad P_n\sim n\log n.
 \]
 \end{corollary}
-\evidenceremark{The Lean proof assumes Schlage-Puchta's Lemma~4
-\cite{schlagepuchta2011} and the prime number theorem.}
+\evidenceremark{Lean proves this for every $\varepsilon>0$, assuming
+Schlage-Puchta's Lemma~4 \cite{schlagepuchta2011} only for the
+nonconcentration clause and the prime number theorem only for
+$P_n\sim n\log n$.}
 \end{samepage}
 \begin{proof}
 Apply Theorem~\ref{long251:res:sparse-rationalisation} at a rational target.
