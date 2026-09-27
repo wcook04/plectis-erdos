@@ -20,6 +20,9 @@ adds is checked by the kernel before it is added.
   site is the largest application around `h` (such as `L h`, `h.2` or `h 3`) that
   mentions no bound variable of the proof and no other hypothesis; its
   proposition must not mention `H`, be `H` up to unfolding, or be the conclusion.
+* `derive_conjuncts T` adds, for each conjunct of `T`'s conclusion whose own
+  proof leaves some hypotheses unused, `T.part_k`: that conjunct assuming only
+  what its proof needs (when the proof builds the conjunction part by part).
 * `derive_frontier T` follows those weakenings through the library. When a use
   site is `L a₁ … h … aₘ` for a theorem `L` whose proof uses that hypothesis only
   through consequences of its own, the site is replaced by `L.weakened_p` applied
@@ -133,6 +136,76 @@ def deriveIdle (name : Name) : MetaM (Except String Name) := do
   match ← addChecked newName info.levelParams type value doc with
   | .ok () => return .ok newName
   | .error e => return .error s!"kernel rejected {newName}: {e}"
+
+/-! ## Conjuncts
+
+A paper result often states several claims as one conjunction and assumes a
+named input that only some of them need. When the proof builds the conjunction
+directly (`⟨p₁, p₂, …⟩` after beta and `let` reduction), each part's own proof
+shows which hypotheses that part uses. -/
+
+/-- The conjuncts of `A₁ ∧ (A₂ ∧ (… ∧ Aₙ))` with their proofs, when `proof` is
+built by `And.intro` along the same spine (after `whnfCore`). -/
+partial def conjunctProofs (type proof : Expr) : MetaM (Array (Expr × Expr)) := do
+  match type.consumeMData.and? with
+  | none => return #[(type, proof)]
+  | some (a, b) =>
+      let p ← whnfCore proof
+      if p.isAppOfArity ``And.intro 4 then
+        let rest ← conjunctProofs b p.appArg!
+        return #[(a, p.appFn!.appArg!)] ++ rest
+      else
+        return #[(type, proof)]
+
+/-- For each conjunct of `T`'s conclusion whose proof leaves some proposition
+hypotheses unused, `T.part_k` (counting from 1): the conjunct alone, assuming
+only the binders its proof and statement need. -/
+def deriveConjuncts (name : Name) : MetaM (Except String (Array Name)) := do
+  let info ← getConstInfo name
+  let some value := info.value? | return .error "not a theorem with a proof term"
+  let parts ← forallTelescope info.type fun xs body => do
+    let pieces ← conjunctProofs body (← instantiateMVars (value.beta xs))
+    if pieces.size < 2 then return #[]
+    let mut out : Array (Nat × Expr × Expr × Array String) := #[]
+    for (a, p) in pieces, k in [1:pieces.size + 1] do
+      -- the binders the part needs: those its proof or statement mention, closed
+      -- under the binder types that mention them
+      let mut needed : Std.HashSet FVarId := {}
+      for x in xs do
+        if p.containsFVar x.fvarId! || a.containsFVar x.fvarId! then
+          needed := needed.insert x.fvarId!
+      let mut changed := true
+      while changed do
+        changed := false
+        for x in xs do
+          if needed.contains x.fvarId! then
+            for y in xs do
+              if !needed.contains y.fvarId! && (← x.fvarId!.getDecl).type.containsFVar y.fvarId! then
+                needed := needed.insert y.fvarId!
+                changed := true
+      let keep := xs.filter fun x => needed.contains x.fvarId!
+      let mut dropped : Array String := #[]
+      for x in xs do
+        unless needed.contains x.fvarId! do
+          if ← isProp (← inferType x) then
+            dropped := dropped.push (toString (← ppExpr (← inferType x)))
+      if dropped.isEmpty then continue
+      out := out.push (k, ← mkForallFVars keep a, ← mkLambdaFVars keep p, dropped)
+    return out
+  if parts.isEmpty then
+    return .error "no conjunct of its conclusion leaves a hypothesis unused (or the proof is not built conjunct by conjunct)"
+  let mut added : Array Name := #[]
+  for (k, type, value, dropped) in parts do
+    let newName := name ++ Name.mkSimple s!"part_{k}"
+    if (← getEnv).contains newName then
+      added := added.push newName
+      continue
+    let doc := s!"Conjunct {k} of `{name}`, which its proof establishes without \
+      {", ".intercalate dropped.toList}. Derived by `derive_conjuncts` from the same proof."
+    match ← addChecked newName info.levelParams type value doc with
+    | .ok () => added := added.push newName
+    | .error e => return .error s!"kernel rejected {newName}: {e}"
+  return .ok added
 
 /-! ## Used consequences -/
 
@@ -471,6 +544,7 @@ def frontierAt (name : Name) (i : Nat) (stops : Array Name) (suppliers : Array N
 
 syntax (name := deriveIdleCmd) "derive_idle " ident : command
 syntax (name := deriveWeakeningCmd) "derive_weakening " ident : command
+syntax (name := deriveConjunctsCmd) "derive_conjuncts " ident : command
 -- `at` and `using` are already Lean keywords, so the frontier command adds no new
 -- token that would shadow an identifier in a module importing this one.
 syntax (name := deriveFrontierCmd)
@@ -494,6 +568,13 @@ private def reportAdded (n : Name) : MetaM Unit := do
     match ← deriveIdle name with
     | .ok n => reportAdded n
     | .error e => reportFailure m!"derive_idle {name}: {e}"
+
+@[command_elab deriveConjunctsCmd] def elabDeriveConjuncts : CommandElab := fun stx => do
+  liftTermElabM do
+    let name ← realizeGlobalConstNoOverloadWithInfo stx[1]
+    match ← deriveConjuncts name with
+    | .ok names => for n in names do reportAdded n
+    | .error e => reportFailure m!"derive_conjuncts {name}: {e}"
 
 @[command_elab deriveWeakeningCmd] def elabDeriveWeakening : CommandElab := fun stx => do
   liftTermElabM do
