@@ -409,7 +409,15 @@ kernel check:
   site is replaced by `L.weakened_p` applied to proofs of those consequences
   (closed over the site's variables when its other arguments mention them),
   recursively, and each consequence where the chain stops becomes one
-  hypothesis, assumed once however many branches need it.
+  hypothesis, assumed once however many branches need it. The chain follows a
+  lemma only through a weakening whose use sites mention no variable but the
+  hypothesis, because the published frontiers were derived that way and
+  following weakenings with parameters would change what those names state
+  (`derive_weakening L` still adds such a weakening). The rule keeps the cut
+  the published names state. Each level down, of either kind, replaces a
+  hypothesis by one that implies it, so a deeper frontier assumes more and
+  applies in fewer cases; which cut serves a consumer depends on what the corpus
+  proves of the hypotheses it leaves.
   `derive_frontier T at L` stops at the use sites of `L`, and
   `derive_frontier T using S` discharges each such hypothesis that the corpus
   theorem `S` proves (exactly, after instantiating some of its binders by

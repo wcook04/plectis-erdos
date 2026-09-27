@@ -53,16 +53,20 @@
 % END generated_argument_graph_macros
 % BEGIN generated_argument_frontier_macros
 \newcommand{\AFModules}{8}
-\newcommand{\AFPaperTheorems}{85}
+\newcommand{\AFPaperTheorems}{222}
 \newcommand{\AFIdle}{45}
-\newcommand{\AFWeakened}{43}
+\newcommand{\AFWeakened}{71}
 \newcommand{\AFConjuncts}{2}
-\newcommand{\AFCuts}{5}
-\newcommand{\AFSupplied}{0}
+\newcommand{\AFFactored}{122}
+\newcommand{\AFFactoredLibrary}{69}
+\newcommand{\AFFactoredComposed}{3}
+\newcommand{\AFRetained}{10}
+\newcommand{\AFCuts}{9}
+\newcommand{\AFSupplied}{1}
 \newcommand{\AFDischarged}{2}
-\newcommand{\AFNamedInputs}{75}
-\newcommand{\AFNamedInputUses}{139}
-\newcommand{\AFNamedInputsTraced}{29}
+\newcommand{\AFNamedInputs}{73}
+\newcommand{\AFNamedInputUses}{129}
+\newcommand{\AFNamedInputsTraced}{55}
 % END generated_argument_frontier_macros
 \newcommand{\repolink}[2]{\href{\repobase/blob/87c64ce39d0874306da91681803f9f68c2c094b3/#1}{\texttt{#2}}}
 \emergencystretch=1.7em
@@ -549,6 +553,15 @@ every $\varepsilon>0$, with Schlage-Puchta's lemma assumed only by the
 nonconcentration clause and the prime number theorem only by
 $P_n\sim n\log n$
 (\repolink{lean/ErdosProblems/ArgumentGraph/Results/Erdos251.lean}{ArgumentGraph/Results/Erdos251.lean}).
+The exponents $\varepsilon>1$ add no content, since $(\log(n+3))^\varepsilon$
+increases with $\varepsilon$ and the sequence for $\varepsilon=1$ serves every
+larger exponent; the gain is that each input is assumed only by its own clause.
+Following the lemmas can leave out a hypothesis that the proof as written uses.
+Problem~243's transport-square theorem assumes $v_n>0$ for $n\ge T$ and passes
+it to the zero-density multiplier lemma only for claims it does not use, and
+its factoring omits it. The other hypotheses force $v_n>0$ anyway (from a zero
+term on, $v$ vanishes, coprimality makes $u_n=1$, and the density hypothesis
+fails), so the factored theorem is the same result with a shorter statement.
 \AFFactored{} cited theorems have a factoring, and deriving them factored
 \AFFactoredLibrary{} lemmas beneath them. A probe credits a command only with
 the theorem it names: a factoring refused after it derived lemma factorings on
@@ -556,7 +569,11 @@ the way is not counted. The generator carries every command it has published
 into each new plan and checks every name those commands declared, and it stops
 when a probe shows that a published name is no longer added or now states
 something else; a later export with a smaller search budget or another use-site
-rule cannot remove a theorem a paper cites.
+rule cannot remove a theorem a paper cites. The check has stopped one
+regeneration: once weakenings could use sites with parameters, ten published
+frontiers would have followed their chains further and assumed stronger
+statements, so a frontier follows only the kind of weakening it was published
+with.
 
 \paragraph{Research with the graph.} A research session on a problem opens a
 bounded packet built from the graph

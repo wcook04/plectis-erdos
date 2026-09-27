@@ -441,6 +441,9 @@ structure Weakening where
   /-- Per consequence, how many parameters its site has (none for a site that
   mentions no variable but the hypothesis). -/
   arity : Array Nat
+  /-- Whether the use sites are those of `weakenClosed`: every occurrence of the
+  hypothesis lies in a site that mentions no variable but it. -/
+  closedSites : Bool := false
 
 /-- The weakening of binder `i` by use sites that mention no variable but the
 hypothesis: one hypothesis per distinct use-site proposition, placed where the
@@ -487,7 +490,7 @@ def weakenClosed (info : ConstantInfo) (i : Nat) : MetaM (Option Weakening) := d
       let value ← instantiateMVars (← mkLambdaFVars keep replaced)
       if type.hasMVar || value.hasMVar then return none
       return some { type, value, hypothesis := hType, consequences, sites,
-                    arity := consequences.map fun _ => 0 }
+                    arity := consequences.map fun _ => 0, closedSites := true }
 
 /-! ## Used consequences with parameters
 
@@ -890,8 +893,13 @@ def peelLambdas : Nat → Expr → Option (Array (Name × Expr × BinderInfo) ×
 /-- The plan for a consequence `c` proved at `site`, a closed function of the
 hypothesis and of the site's `arity` parameters. A site `L a₁ … h … aₘ` whose
 other arguments mention only the parameters is followed into `L`'s weakening at
-`h`'s position, whose consequences are proved recursively. `stops` lists theorems
-whose use sites stay as they are. -/
+`h`'s position, whose consequences are proved recursively, when that weakening is by
+use sites that mention no variable but the hypothesis. The chain stops at a lemma
+weakened only by use sites with parameters, so that the published frontiers, derived
+without them, keep their statements; `derive_weakening L` still adds such a weakening.
+Each level of either kind assumes more than the level above it, and `stops` gives a
+shallower cut.
+`stops` lists theorems whose use sites stay as they are. -/
 def plan (stops : Array Name) : Nat → Expr → Expr → Nat → DeriveM Plan
   | 0, c, _, arity => return .leaf c arity
   | fuel + 1, c, site, arity => do
@@ -910,6 +918,7 @@ def plan (stops : Array Name) : Nat → Expr → Expr → Nat → DeriveM Plan
     for a in args, k in [0:args.size] do
       if k != p && mentions a then return .leaf c arity
     let some (wName, w) ← weakeningOf n p | return .leaf c arity
+    unless w.closedSites do return .leaf c arity
     let info ← getConstInfo n
     let inst (e : Expr) : Expr := e.instantiateLevelParams info.levelParams us
     let mut children : Array Plan := #[]
