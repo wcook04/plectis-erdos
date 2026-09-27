@@ -176,13 +176,14 @@ theorem polynomial_fiber_ncard (p : Polynomial ℂ) (hp : 0 < p.natDegree)
     have hh := (Polynomial.one_lt_rootMultiplicity_iff_isRoot hne).mp (by omega :
       1 < (p - Polynomial.C w).rootMultiplicity z)
     have hz : p.eval z = w := by
-      simpa [Polynomial.IsRoot] using hh.1
+      simpa [Polynomial.IsRoot, sub_eq_zero] using hh.1
     exact hregular z hz (by simpa [Polynomial.IsRoot] using hh.2)
   have hset : p.eval ⁻¹' {w} = ((p - Polynomial.C w).roots.toFinset : Set ℂ) := by
     ext z
-    simp [Polynomial.mem_roots hne, Polynomial.IsRoot]
+    simp [Polynomial.mem_roots hne, Polynomial.IsRoot, sub_eq_zero]
   rw [hset, Set.ncard_coe_finset, Multiset.toFinset_card_of_nodup hnodup,
-    Polynomial.card_roots_eq_natDegree, Polynomial.natDegree_sub_C]
+    ← (IsAlgClosed.splits (p - Polynomial.C w)).natDegree_eq_card_roots,
+    Polynomial.natDegree_sub_C]
 
 /-- The unit disc, as a value space. Components below are formed in its full
 polynomial preimage, so relative closedness does not assert closedness in ℂ. -/
@@ -240,7 +241,7 @@ theorem componentEval_finite_fiber (p : Polynomial ℂ) (hp : 0 < p.natDegree)
     apply Subtype.ext
     apply Subtype.ext
     apply Subtype.ext
-    exact congrArg Subtype.val hab
+    exact congrArg (fun x : p.eval ⁻¹' {w.val} => x.val) hab
   haveI : Finite (componentEval p z ⁻¹' {w}) := Finite.of_injective inclusion hinj
   exact Set.toFinite _
 
@@ -255,8 +256,8 @@ theorem componentEval_isCoveringMapOn (p : Polynomial ℂ) (hp : 0 < p.natDegree
     ((Metric.isOpen_ball : IsOpen unitDisc).preimage p.continuous_aeval).locallyConnectedSpace
   let j : connectedComponent z → ℂ := fun e => e.val.val
   have hj : Topology.IsOpenEmbedding j :=
-    ((Metric.isOpen_ball : IsOpen unitDisc).preimage p.continuous_aeval).
-      isOpenEmbedding_subtypeVal.comp isOpen_connectedComponent.isOpenEmbedding_subtypeVal
+    (((Metric.isOpen_ball : IsOpen unitDisc).preimage p.continuous_aeval).isOpenEmbedding_subtypeVal).comp
+      isOpen_connectedComponent.isOpenEmbedding_subtypeVal
   have hp_local : IsLocalHomeomorphOn p.eval
       (j '' (componentEval p z ⁻¹' s)) := by
     rintro _ ⟨e, he, rfl⟩
@@ -271,8 +272,7 @@ theorem componentEval_isCoveringMapOn (p : Polynomial ℂ) (hp : 0 < p.natDegree
   have hlocal : IsLocalHomeomorphOn (componentEval p z)
       (componentEval p z ⁻¹' s) :=
     hcomp.of_comp_left
-      (Metric.isOpen_ball : IsOpen unitDisc).isOpenEmbedding_subtypeVal.
-        isLocalHomeomorph.isLocalHomeomorphOn
+      ((Metric.isOpen_ball : IsOpen unitDisc).isOpenEmbedding_subtypeVal.isLocalHomeomorph.isLocalHomeomorphOn)
       (fun _ _ => (componentEval_continuous p z).continuousAt)
   refine (componentEval_isClosedMap p z).isCoveringMapOn_of_openPartialHomeomorph
     (fun w _ => componentEval_finite_fiber p hp z w) ?_
