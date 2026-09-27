@@ -92,6 +92,14 @@ theorem lambda_binder_depends (h : Strong) : ∀ k : Nat, k = k ∧ True :=
   fun k => (fun (x : {j : Nat // (h j).1 = (h j).1}) =>
     (⟨at_index x.val h, trivial⟩ : x.val = x.val ∧ True)) ⟨k, rfl⟩
 
+def ByGoal : Prop := ∀ n : Nat, n + 0 = n
+def ByInput : Prop := ∀ n : Nat, n = n + 0
+theorem byGoal_of_input (h : ByInput) : ByGoal := fun n => (h n).symm
+/-- A proof by contradiction: the use of `h` sits under the negated goal, so the
+closed consequence `¬ByGoal → False` restates the goal classically. -/
+theorem by_contra_use (h : ByInput) : ByGoal :=
+  Classical.byContradiction fun hng => hng (byGoal_of_input h)
+
 end IfaceToy
 
 namespace GroundToy
@@ -319,7 +327,7 @@ def check_v2(c: Checker, v1: Checker) -> None:
         c.expect(row is not None and row["kernel_checked"]
                  and [x["type"] for x in row["consequences"]] == consequences,
                  f"{name}: expected consequences {consequences}, got {row and [x['type'] for x in row['consequences']]}")
-    for name in ("vacuous_goal", "vacuous_lambda", "identity_use", "later_binder_depends"):
+    for name in ("vacuous_goal", "vacuous_lambda", "identity_use", "later_binder_depends", "by_contra_use"):
         c.expect(name not in w, f"{name} must not be weakened: {w.get(name)}")
     vacuous = {r["theorem"].split(".")[-1] for r in c.records("weakening_attempt") if r["status"] == "vacuous"}
     c.expect(not (vacuous & set(w)), f"a theorem recorded as vacuous is not weakened: {vacuous & set(w)}")
