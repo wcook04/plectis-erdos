@@ -14,7 +14,18 @@ rebuild, for every theorem a paper cites:
   with ``derive_frontier T at L`` for each theorem ``L`` on the chain at which
   every branch of the chain can stop on one statement.
 
-The commands are defined in ``lean/ErdosProblems/ArgumentGraph/Derive.lean``;
+* ``derive_factor T`` when ``T``'s conclusion is an existential or a conjunction
+  and it has a proposition hypothesis: ``T.factored`` assumes each hypothesis
+  only at the claims whose proofs use it (a candidate; the probe decides).
+
+The frontier never loses a theorem it has published. Every command of the
+modules already on disk (or at ``--retain-from REF``) is carried into the new
+plan even when the new graph no longer proposes it, and a probe verdict that a
+carried command adds nothing is a loss: the build stops unless ``--retire``
+names the command.
+
+The commands are defined in ``lean/ErdosProblems/ArgumentGraph/Derive.lean`` and
+``lean/ErdosProblems/ArgumentGraph/Factor.lean``;
 each theorem they add is checked by the kernel when the module is compiled, and
 the generated modules set ``argumentGraph.strict`` so a derivation the export
 reported but the library cannot rebuild fails the build. The module list is
@@ -23,6 +34,7 @@ paper rows of its source theorem and the statements the graph recorded for it.
 
 Usage:
     python3 scripts/build_argument_frontier.py [--graph PATH] [--root PATH] [--check]
+        [--verified VERDICTS.json] [--retain-from REF] [--retire COMMAND ...]
 
 ``--check`` compares the files on disk with what would be written and exits 1
 when they differ.
@@ -34,6 +46,7 @@ import argparse
 import gzip
 import json
 import re
+import subprocess
 import sys
 from collections import defaultdict
 from pathlib import Path
@@ -42,6 +55,10 @@ from typing import Any
 ROOT = Path(__file__).resolve().parents[1]
 DERIVED = Path("lean/ErdosProblems/ArgumentGraph/Derived")
 DERIVE_MODULE = "ErdosProblems.ArgumentGraph.Derive"
+FACTOR_MODULE = "ErdosProblems.ArgumentGraph.Factor"
+LIBRARY_MODULES = (DERIVE_MODULE, FACTOR_MODULE)
+NONSTRICT = "set_option argumentGraph.strict false in "
+MARKER = "@@COMMAND"
 PROBLEM_NAMES = {"68": "Erdos68", "243": "Erdos243", "249": "Erdos249", "251": "Erdos251",
                  "257": "Erdos257", "269": "Erdos269", "1041": "Erdos1041", "1049": "Erdos1049"}
 HEADER = """-- SPDX-FileCopyrightText: 2026 Will Cook
@@ -89,6 +106,71 @@ def lean_ident(name: str) -> str:
         else:
             parts.append(f"«{part}»")
     return ".".join(parts)
+
+
+def command_theorem(command: str) -> str:
+    """The theorem a ``derive_*`` command is about: its first argument, unescaped."""
+    parts = command.split()
+    return parts[1].replace("«", "").replace("»", "") if len(parts) > 1 else ""
+
+
+def parse_module(text: str) -> dict[str, Any]:
+    """The corpus imports and the commands of a generated frontier module."""
+    imports: set[str] = set()
+    strict: list[str] = []
+    supplied: list[str] = []
+    for line in text.splitlines():
+        if line.startswith("import "):
+            module = line.split()[1]
+            if module not in LIBRARY_MODULES:
+                imports.add(module)
+        elif line.startswith("derive_"):
+            strict.append(line.strip())
+        elif line.startswith(NONSTRICT + "derive_"):
+            supplied.append(line[len(NONSTRICT):].strip())
+    return {"imports": imports, "commands": strict, "supplied_commands": supplied}
+
+
+def retained_modules(root: Path, ref: str | None = None) -> dict[str, dict[str, Any]]:
+    """The published frontier: per problem, what its module imports and runs, read from
+    the working tree or, with ``ref``, from that git revision."""
+    out: dict[str, dict[str, Any]] = {}
+    for problem in PROBLEM_NAMES.values():
+        rel = DERIVED / f"{problem}.lean"
+        if ref:
+            done = subprocess.run(["git", "-C", str(root), "show", f"{ref}:{rel.as_posix()}"],
+                                  capture_output=True, text=True)
+            if done.returncode != 0:
+                continue
+            text = done.stdout
+        else:
+            path = root / rel
+            if not path.exists():
+                continue
+            text = path.read_text(encoding="utf-8")
+        out[problem] = parse_module(text)
+    return out
+
+
+def previous_derived(root: Path, ref: str | None = None) -> dict[str, dict[str, str]]:
+    """The statement records (name -> statement, hash) of the published manifest."""
+    rel = Path("docs") / "argument_frontier.json"
+    try:
+        if ref:
+            done = subprocess.run(["git", "-C", str(root), "show", f"{ref}:{rel.as_posix()}"],
+                                  capture_output=True, text=True, check=True)
+            text = done.stdout
+        else:
+            text = (root / rel).read_text(encoding="utf-8")
+        return json.loads(text).get("derived", {}) or {}
+    except (OSError, subprocess.CalledProcessError, json.JSONDecodeError):
+        return {}
+
+
+def structured(conclusion: str) -> bool:
+    """Whether a rendered conclusion is an existential or a conjunction somewhere
+    along its spine, the shapes ``derive_factor`` reads."""
+    return "∃" in conclusion or " ∧ " in conclusion
 
 
 def weakening_index(graph: dict[str, Any]) -> dict[str, list[dict[str, Any]]]:
@@ -145,7 +227,8 @@ def chain_cuts(theorem: str, weakenings: dict[str, list[dict[str, Any]]]) -> lis
     return [head for head in seen if leaves(theorem, head) == {head}]
 
 
-def plan(graph: dict[str, Any], papers: dict[str, list[dict[str, Any]]]) -> dict[str, Any]:
+def plan(graph: dict[str, Any], papers: dict[str, list[dict[str, Any]]],
+         retained: dict[str, dict[str, Any]] | None = None) -> dict[str, Any]:
     theorems = {t["name"]: t for t in graph.get("theorems", [])}
     statements = {s["key"]: s for s in graph.get("statements", [])}
     weakenings = weakening_index(graph)
@@ -233,6 +316,43 @@ def plan(graph: dict[str, Any], papers: dict[str, list[dict[str, Any]]]) -> dict
                             "consequences": [{"type": c.get("type"), "via": c.get("via")}
                                              for c in r.get("consequences", [])]} for r in rows],
             "frontier": deeper, "frontier_cuts": cuts, "suppliers": suppliers})
+    # A paper-cited theorem whose conclusion is an existential or a conjunction and
+    # which has a proposition hypothesis may prove some claims without it. The probe
+    # decides; `derive_factor` also derives the factorings of the lemmas the proof is
+    # built from.
+    for name in sorted(papers):
+        theorem = theorems.get(name)
+        if not theorem or not structured(theorem.get("conclusion_type") or ""):
+            continue
+        if not (theorem.get("hypotheses") or theorem.get("schematic_hypotheses")):
+            continue
+        problem = PROBLEM_NAMES.get(str(theorem.get("problem")))
+        if not problem:
+            continue
+        slot = per_problem[problem]
+        slot["imports"].add(theorem["module"])
+        slot["supplied_commands"].append(f"derive_factor {lean_ident(name)}")
+        slot["rows"].append({"operation": "factor_candidate", "theorem": name, "papers": papers[name],
+                             "source": theorem.get("source")})
+    # The published frontier is kept: a command the new graph no longer proposes is
+    # carried with its imports, and a probe must show it still adds its theorems.
+    for problem, old in (retained or {}).items():
+        slot = per_problem[problem]
+        slot["imports"] |= old["imports"]
+        for command in old["commands"]:
+            if command in slot["commands"]:
+                continue
+            if command in slot["supplied_commands"]:
+                slot["supplied_commands"].remove(command)
+            slot["commands"].append(command)
+            slot.setdefault("retained", []).append(command)
+            theorem = command_theorem(command)
+            slot["rows"].append({"operation": "retained", "theorem": theorem, "command": command,
+                                 "papers": papers.get(theorem, []),
+                                 "source": (theorems.get(theorem) or {}).get("source")})
+        for command in old["supplied_commands"]:
+            if command not in slot["commands"] and command not in slot["supplied_commands"]:
+                slot["supplied_commands"].append(command)
     return per_problem
 
 
@@ -365,7 +485,25 @@ def render_markdown(manifest: dict[str, Any]) -> str:
         idle = [r for r in rows if r["operation"] == "idle"]
         weak = [r for r in rows if r["operation"] == "weakening"]
         parts = [r for r in rows if r["operation"] == "conjuncts"]
-        if idle or weak or parts:
+        factored = [r for r in rows if r["operation"] == "factored"]
+        carried = [r for r in rows if r["operation"] == "retained"]
+        if factored:
+            out += ["### Factored theorems: each input only at the claims that use it", ""]
+            for r in factored:
+                labels = ", ".join(sorted({p["label"] for p in r["papers"] if p.get("label")}))
+                own = f"{r['theorem']}.factored"
+                statement = (r.get("statements") or {}).get(own, "")
+                also = [n for n in r.get("derived", []) if n != own]
+                out.append(f"- `{r['theorem'].rsplit('.', 1)[-1]}.factored` ({labels}): "
+                           + (f"`{clip(statement, 400)}`" if statement else "the same claims, each input at its claims")
+                           + (f"; derived on the way: {', '.join('`' + n.rsplit('.', 2)[-2] + '.factored`' for n in also)}"
+                              if also else "") + ".")
+                for pl in r.get("placements", []):
+                    if pl.get("derived") == own:
+                        out.append(f"  - `{clip(pl['hypothesis'], 120)}`: "
+                                   + ("not used" if pl["claims"] == "unused" else f"only {clip(pl['claims'], 220)}"))
+            out.append("")
+        if idle or weak or parts or carried:
             out += [f"### Derived theorems (`{manifest['modules'][PROBLEM_NAMES[problem]]}`)", ""]
             for r in idle:
                 labels = ", ".join(sorted({p["label"] for p in r["papers"] if p.get("label")}))
@@ -382,25 +520,39 @@ def render_markdown(manifest: dict[str, Any]) -> str:
                 labels = ", ".join(sorted({p["label"] for p in r["papers"] if p.get("label")}))
                 out.append(f"- `{r['theorem'].rsplit('.', 1)[-1]}.part_k` ({labels}): each claim of the "
                            "conclusion whose proof leaves a hypothesis unused, assuming only what it uses.")
+            for r in carried:
+                out.append(f"- `{r['command']}`: published before and kept, though the current graph no "
+                           "longer proposes it.")
             out.append("")
     return "\n".join(out)
 
 
-def apply_verdicts(per_problem: dict[str, dict[str, Any]], verified: dict[str, Any]) -> list[dict[str, Any]]:
+def apply_verdicts(per_problem: dict[str, dict[str, Any]], verified: dict[str, Any],
+                   retire: set[str] | frozenset[str] = frozenset()) -> tuple[list[dict[str, Any]], list[dict[str, Any]]]:
     """Apply a kernel probe's verdicts (``--verified``): a command the probe shows
     added nothing is dropped and listed, a candidate that added theorems moves into
     the strict section, and a command the probe did not reach stays where it was.
-    A row whose own command was dropped goes with it; a verified conjunct candidate
-    becomes a ``conjuncts`` row."""
+    A command carried from the published frontier that no longer adds its theorem is
+    a loss: it stays, and is listed as lost so the caller stops, unless ``retire``
+    names it. A row whose own command was dropped goes with it; a verified conjunct
+    candidate becomes a ``conjuncts`` row, a verified factoring candidate a
+    ``factored`` row naming the theorems its command added. Returns (dropped, lost)."""
     outcomes = verified.get("commands", {})
     dropped: list[dict[str, Any]] = []
+    lost: list[dict[str, Any]] = []
     for problem, slot in per_problem.items():
+        carried = set(slot.get("retained", []))
         keep: list[str] = []
         for command in slot["commands"]:
             verdict = outcomes.get(command)
             if verdict is not None and not verdict["added"]:
-                dropped.append({"problem": problem, "command": command, "strict": True,
-                                "message": verdict.get("message", "")})
+                entry = {"problem": problem, "command": command, "strict": True,
+                         "message": verdict.get("message", "")}
+                if command in carried and command not in retire:
+                    lost.append(entry)
+                    keep.append(command)
+                else:
+                    dropped.append(entry)
             else:
                 keep.append(command)
         pending: list[str] = []
@@ -418,27 +570,91 @@ def apply_verdicts(per_problem: dict[str, dict[str, Any]], verified: dict[str, A
         rows = []
         for row in slot["rows"]:
             own = {"idle": "derive_idle", "weakening": "derive_weakening",
-                   "conjuncts_candidate": "derive_conjuncts"}.get(row["operation"])
-            command = f"{own} {lean_ident(row['theorem'])}" if own else None
+                   "conjuncts_candidate": "derive_conjuncts", "factor_candidate": "derive_factor"}.get(row["operation"])
+            command = row.get("command") or (f"{own} {lean_ident(row['theorem'])}" if own else None)
             if command in gone:
                 continue
             if row["operation"] == "conjuncts_candidate" and command in keep:
                 row = {**row, "operation": "conjuncts"}
+            if row["operation"] == "factor_candidate" and command in keep:
+                verdict = outcomes.get(command) or {}
+                row = {**row, "operation": "factored", "command": command,
+                       "derived": verdict.get("names", []), "statements": verdict.get("statements", {}),
+                       "placements": verdict.get("placements", [])}
             rows.append(row)
         slot["rows"] = rows
-    return dropped
+    return dropped, lost
+
+
+def input_map(per_problem: dict[str, dict[str, Any]]) -> list[dict[str, Any]]:
+    """Per hypothesis a factoring moved (by its statement): where each factored theorem
+    of the frontier still assumes it."""
+    by_hypothesis: dict[str, list[dict[str, str]]] = defaultdict(list)
+    for slot in per_problem.values():
+        for row in slot["rows"]:
+            if row["operation"] != "factored":
+                continue
+            for pl in row.get("placements", []):
+                by_hypothesis[pl["hypothesis"]].append({"theorem": row["theorem"], "derived": pl["derived"],
+                                                        "claims": pl["claims"]})
+    return [{"hypothesis": h, "uses": sorted(uses, key=lambda u: u["derived"])}
+            for h, uses in sorted(by_hypothesis.items())]
+
+
+def derived_records(per_problem: dict[str, dict[str, Any]], verified: dict[str, Any] | None,
+                    previous: dict[str, dict[str, str]]) -> dict[str, dict[str, str]]:
+    """Name -> statement, hash and command of every theorem a kept strict command
+    adds, from the probe; a name the probe did not reach keeps its published record."""
+    records = {name: dict(record) for name, record in previous.items()}
+    if not verified:
+        return records
+    outcomes = verified.get("commands", {})
+    hashes = verified.get("statement_hashes", {})
+    for slot in per_problem.values():
+        for command in slot["commands"]:
+            verdict = outcomes.get(command) or {}
+            for name in verdict.get("names", []) if verdict.get("added") else []:
+                records[name] = {"statement": (verdict.get("statements") or {}).get(name, ""),
+                                 "hash": hashes.get(name, ""), "command": command}
+    return dict(sorted(records.items()))
+
+
+def duplicate_declarations(per_problem: dict[str, dict[str, Any]],
+                           verified: dict[str, Any] | None) -> dict[str, list[str]]:
+    """Names that kept commands of two modules would both declare. A factoring derives
+    the factorings of the lemmas it reads, so two modules can reach one lemma; a module
+    importing both would then fail, and the export imports them all together."""
+    outcomes = (verified or {}).get("commands", {})
+    owners: dict[str, set[str]] = defaultdict(set)
+    for problem, slot in per_problem.items():
+        for command in slot["commands"]:
+            verdict = outcomes.get(command) or {}
+            for name in verdict.get("names", []) if verdict.get("added") else []:
+                owners[name].add(problem)
+    return {name: sorted(modules) for name, modules in sorted(owners.items()) if len(modules) > 1}
+
+
+def restated(previous: dict[str, dict[str, str]], verified: dict[str, Any] | None,
+             retire: set[str] | frozenset[str] = frozenset()) -> list[dict[str, str]]:
+    """Published names whose statement hash the probe now reports differently: the
+    name would silently state something else."""
+    hashes = (verified or {}).get("statement_hashes", {})
+    return [{"name": name, "was": record.get("hash", ""), "now": hashes[name]}
+            for name, record in sorted(previous.items())
+            if name not in retire and record.get("hash") and name in hashes and hashes[name] != record["hash"]]
 
 
 def render_module(problem: str, slot: dict[str, Any], source: dict[str, Any]) -> str:
     lines = [HEADER.format(revision=revisions(source), tree=source.get("lean_tree", "?"))]
-    lines.append(f"import {DERIVE_MODULE}")
+    lines.append(f"import {FACTOR_MODULE}")
     lines += [f"import {m}" for m in sorted(slot["imports"])]
     lines.append("")
     lines.append(f"/-! # {problem}: theorems derived from what the paper results' proofs use")
     lines.append("")
     lines.append("Each command below rebuilds, as a library theorem the kernel checks, a finding of")
     lines.append("the argument graph about a theorem the papers cite. See")
-    lines.append("`ErdosProblems.ArgumentGraph.Derive` for what each command adds. -/")
+    lines.append("`ErdosProblems.ArgumentGraph.Derive` and `ErdosProblems.ArgumentGraph.Factor` for what each")
+    lines.append("command adds. -/")
     lines.append("")
     lines.append("set_option argumentGraph.strict true")
     lines.append("set_option maxHeartbeats 4000000")
@@ -469,6 +685,10 @@ def paper_macros(manifest: dict[str, Any], per_problem: dict[str, dict[str, Any]
         "AFIdle": sum(1 for r in rows if r["operation"] == "idle"),
         "AFWeakened": sum(1 for r in rows if r["operation"] == "weakening"),
         "AFConjuncts": sum(1 for r in rows if r["operation"] == "conjuncts"),
+        "AFFactored": sum(1 for r in rows if r["operation"] == "factored"),
+        "AFFactoredLibrary": len({n for r in rows if r["operation"] == "factored"
+                                  for n in r.get("derived", []) if n != f"{r['theorem']}.factored"}),
+        "AFRetained": sum(1 for r in rows if r["operation"] == "retained"),
         "AFCuts": sum(len(r.get("frontier_cuts", [])) for r in rows),
         "AFSupplied": sum(len(s.get("supplied_commands", [])) for s in per_problem.values()),
         # strict frontiers whose suppliers discharge every consequence (probe-verified)
@@ -513,6 +733,50 @@ def with_workflow_modules(text: str, modules: list[str]) -> str:
     return "\n".join(lines[: flag + 1] + kept + [indent + m for m in modules] + lines[end:]) + "\n"
 
 
+PROBE_EPILOGUE = """
+-- The statement hash of every theorem this file added, so the frontier can check
+-- that a published name still states what it stated.
+open Lean Elab Command in
+run_cmd do
+  let env ← getEnv
+  let mut out : Array String := #[]
+  for (n, ci) in env.constants.map₂.toList do
+    if let .thmInfo _ := ci then
+      if let .str _ last := n then
+        if last == "idle" || last == "factored" || last.startsWith "weakened_" || last.startsWith "frontier_"
+            || last.startsWith "part_" || last.startsWith "use_" then
+          let h := hash (toString (ErdosProblems.ArgumentGraph.normaliseBinders ci.type))
+          out := out.push s!"DERIVED\t{n}\t{String.ofList (Nat.toDigits 16 h.toNat)}"
+  IO.println ("\n".intercalate (out.qsort (· < ·)).toList)
+"""
+
+
+def library_body(root: Path, module: str) -> str:
+    """A library module's source without its imports and without the option it
+    registers: a probe carries the code it checks (a probe branch changes no file
+    under ``lean/``), and an option registered in a file cannot be set in it."""
+    path = root / "lean" / (module.replace(".", "/") + ".lean")
+    text = "\n".join(l for l in path.read_text(encoding="utf-8").splitlines() if not l.startswith("import "))
+    return re.sub(r"register_option argumentGraph\.strict : Bool := \{.*?\n\}\n", "", text, flags=re.S)
+
+
+def probe_text(root: Path, problem: str, slot: dict[str, Any]) -> str:
+    """A kernel probe that runs every command of a problem's planned module, strict and
+    candidate alike, with the library inlined; failures are warnings, and
+    ``scripts/frontier_verdicts.py`` reads what each command added."""
+    lines = ["import Lean"] + [f"import {m}" for m in sorted(slot["imports"])]
+    lines += [library_body(root, DERIVE_MODULE), "", library_body(root, FACTOR_MODULE), ""]
+    lines += [f"/-! Frontier probe for {problem}. -/", "", "set_option maxHeartbeats 4000000", ""]
+    # Lean prints an information message without its position, so a marker message
+    # before each command says which command the `added` lines after it belong to.
+    for command in slot["commands"] + slot.get("supplied_commands", []):
+        line = sum(part.count("\n") + 1 for part in lines) + 2
+        lines.append(f'run_cmd Lean.logInfo "{MARKER} {line}"')
+        lines.append(command)
+    lines.append(PROBE_EPILOGUE)
+    return "\n".join(lines)
+
+
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     parser.add_argument("--graph", type=Path, default=ROOT / "docs" / "argument_continuations_graph.json.gz")
@@ -521,34 +785,72 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--paper", type=Path, help="a LaTeX file whose generated_argument_frontier_macros "
                         "region receives the frontier's counts")
     parser.add_argument("--verified", type=Path,
-                        help="kernel-probe verdicts {probe_run, commands: {command: {added, message}}}: "
-                             "commands that added nothing are dropped, candidates that added theorems "
-                             "become strict")
+                        help="kernel-probe verdicts (scripts/frontier_verdicts.py): commands that added "
+                             "nothing are dropped, candidates that added theorems become strict")
+    parser.add_argument("--retain-from", metavar="REF",
+                        help="carry the frontier published at git revision REF (default: the modules on disk)")
+    parser.add_argument("--retire", action="append", default=[], metavar="COMMAND_OR_NAME",
+                        help="accept that a published command no longer adds its theorem, or that a "
+                             "published name now states something else")
+    parser.add_argument("--probes", type=Path, metavar="DIR",
+                        help="write one kernel probe per problem, running every planned command, to DIR")
     args = parser.parse_args(argv)
     graph = load_graph(args.graph)
     papers = paper_rows(args.root)
-    per_problem = plan(graph, papers)
+    retained = retained_modules(args.root, args.retain_from)
+    previous = previous_derived(args.root, args.retain_from)
+    per_problem = plan(graph, papers, retained)
+    if args.probes:
+        args.probes.mkdir(parents=True, exist_ok=True)
+        for problem, slot in sorted(per_problem.items()):
+            (args.probes / f"Frontier{problem}.lean").write_text(probe_text(args.root, problem, slot) + "\n",
+                                                                 encoding="utf-8")
+        print(f"wrote {len(per_problem)} probes to {args.probes}")
+        return 0
     verified = json.loads(args.verified.read_text(encoding="utf-8")) if args.verified else None
-    not_derived = apply_verdicts(per_problem, verified) if verified else []
+    retire = set(args.retire)
+    not_derived, lost = apply_verdicts(per_problem, verified, retire) if verified else ([], [])
+    changed = restated(previous, verified, retire)
+    twice = duplicate_declarations(per_problem, verified)
+    for name, modules in twice.items():
+        print(f"DECLARED TWICE {name}: {', '.join(modules)}", file=sys.stderr)
+    if twice:
+        return 4
+    if lost or changed:
+        for entry in lost:
+            print(f"LOST {entry['problem']}: {entry['command']} :: {entry['message'][:300]}", file=sys.stderr)
+        for entry in changed:
+            print(f"RESTATED {entry['name']}: {entry['was']} -> {entry['now']}", file=sys.stderr)
+        print("the published frontier would lose or change theorems; repair the derivation or name each "
+              "one with --retire", file=sys.stderr)
+        return 4
     source = graph.get("source", {})
     files: dict[Path, str] = {}
     for problem, slot in sorted(per_problem.items()):
         files[args.root / DERIVED / f"{problem}.lean"] = render_module(problem, slot, source)
     manifest = {
-        "schema": "plectis-argument-frontier/1",
+        "schema": "plectis-argument-frontier/2",
         "source": {**{k: source.get(k) for k in ("source_revision", "lean_tree", "export_digest")},
                    **({"combined_exports": source["combined_exports"]} if source.get("combined_exports") else {})},
         "rule": ("every row names a theorem a paper cites and a derivation the export's kernel check "
-                 "reported; the generated module rebuilds it and the kernel checks it when the module "
-                 "compiles (argumentGraph.strict makes a failed rebuild a build error)"),
+                 "reported, or one the frontier published before; the generated module rebuilds it and "
+                 "the kernel checks it when the module compiles (argumentGraph.strict makes a failed "
+                 "rebuild a build error)"),
         "modules": {problem: str(DERIVED / f"{problem}.lean") for problem in sorted(per_problem)},
         "rows": {problem: slot["rows"] for problem, slot in sorted(per_problem.items())},
         "named_inputs_rule": ("an open closed hypothesis of a theorem a paper cites; levels are what the "
                               "proofs consume of it, from the kernel-checked weakenings"),
         "named_inputs": named_inputs(graph, papers, weakening_index(graph)),
+        "input_map_rule": ("for each hypothesis a factoring moved, the factored theorems and the claims of "
+                           "their conclusions that still assume it (from the probe)"),
+        "input_map": input_map(per_problem),
+        "derived_rule": ("every theorem a strict command adds, with the statement and statement hash the "
+                         "probe reported; a regeneration that would change a hash stops"),
+        "derived": derived_records(per_problem, verified, previous),
     }
     if verified:
-        manifest["verification"] = {"probe_run": verified.get("probe_run"), "not_derived": not_derived}
+        manifest["verification"] = {"probe_run": verified.get("probe_run"), "not_derived": not_derived,
+                                    "retired": sorted(retire)}
     files[args.root / "docs" / "argument_frontier.json"] = json.dumps(manifest, indent=1, ensure_ascii=False) + "\n"
     files[args.root / "docs" / "ARGUMENT_FRONTIER.md"] = render_markdown(manifest) + "\n"
     if args.paper:
