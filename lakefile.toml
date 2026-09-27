@@ -47,6 +47,13 @@ srcDir = "lean"
 # resource bound only, so keep it weak rather than invalidating proof traces.
 weakLeanArgs = ["--tstack=65536"]
 
+# Elaboration tooling for argument-frontier derivations. Kept outside the two
+# mathematical library inventories; emitted theorems still undergo kernel checks.
+# Coverage targets import this library explicitly; it is not a default target.
+[[lean_lib]]
+name = "ArgumentGraphTools"
+srcDir = "lean"
+
 # Restartable #251 large finite certificate (250 kernel chunks + printed-floor
 # transport). Not a default target: CI builds it by naming
 # ErdosProblems.Erdos251.PaperLargeAuditR7, which imports the whole chain.

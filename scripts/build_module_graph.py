@@ -37,6 +37,15 @@ ROOT_FILES = tuple(
 # allowed here: if one falls out of the supported roots, the release gate still
 # fails.
 AUXILIARY_ROOT_PREFIXES = (
+    # Generated argument-frontier leaves have explicit coverage workflow targets.
+    "ErdosProblems.ArgumentGraph.Derived.Erdos1041",
+    "ErdosProblems.ArgumentGraph.Derived.Erdos1049",
+    "ErdosProblems.ArgumentGraph.Derived.Erdos243",
+    "ErdosProblems.ArgumentGraph.Derived.Erdos249",
+    "ErdosProblems.ArgumentGraph.Derived.Erdos251",
+    "ErdosProblems.ArgumentGraph.Derived.Erdos257",
+    "ErdosProblems.ArgumentGraph.Derived.Erdos269",
+    "ErdosProblems.ArgumentGraph.Derived.Erdos68",
     "ErdosProblems.Bit.",
     "ErdosProblems.Decl.",
     # Eight-paper coverage lane. The R7/R8/R11/R16/R18/R20/R21 paper modules and

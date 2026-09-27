@@ -76,6 +76,7 @@ BUILDERS = (
     # Keeping this first makes entry drift visible before expensive projections.
     "scripts/agent_skill_catalog.py",
     "scripts/build_methodology.py",
+    "scripts/build_argument_frontier.py",
     "scripts/build_module_graph.py",
     "scripts/build_declaration_atlas.py",
     # This compressed speed path is bound to the atlas fingerprint and must

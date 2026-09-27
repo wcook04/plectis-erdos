@@ -14,7 +14,7 @@ rebuild, for every theorem a paper cites:
   with ``derive_frontier T at L`` for each theorem ``L`` on the chain at which
   every branch of the chain can stop on one statement.
 
-The commands are defined in ``lean/ErdosProblems/ArgumentGraph/Derive.lean``;
+The commands are defined in ``lean/ArgumentGraphTools/Derive.lean``;
 each theorem they add is checked by the kernel when the module is compiled, and
 the generated modules set ``argumentGraph.strict`` so a derivation the export
 reported but the library cannot rebuild fails the build. The module list is
@@ -32,6 +32,7 @@ from __future__ import annotations
 
 import argparse
 import gzip
+import hashlib
 import json
 import re
 import sys
@@ -41,7 +42,7 @@ from typing import Any
 
 ROOT = Path(__file__).resolve().parents[1]
 DERIVED = Path("lean/ErdosProblems/ArgumentGraph/Derived")
-DERIVE_MODULE = "ErdosProblems.ArgumentGraph.Derive"
+DERIVE_MODULE = "ArgumentGraphTools.Derive"
 PROBLEM_NAMES = {"68": "Erdos68", "243": "Erdos243", "249": "Erdos249", "251": "Erdos251",
                  "257": "Erdos257", "269": "Erdos269", "1041": "Erdos1041", "1049": "Erdos1049"}
 HEADER = """-- SPDX-FileCopyrightText: 2026 Will Cook
@@ -349,7 +350,7 @@ def render_module(problem: str, slot: dict[str, Any], source: dict[str, Any]) ->
     lines.append("")
     lines.append("Each command below rebuilds, as a library theorem the kernel checks, a finding of")
     lines.append("the argument graph about a theorem the papers cite. See")
-    lines.append("`ErdosProblems.ArgumentGraph.Derive` for what each command adds. -/")
+    lines.append("`ArgumentGraphTools.Derive` for what each command adds. -/")
     lines.append("")
     lines.append("set_option argumentGraph.strict true")
     lines.append("set_option maxHeartbeats 4000000")
@@ -422,17 +423,38 @@ def with_workflow_modules(text: str, modules: list[str]) -> str:
 
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    parser.add_argument("--graph", type=Path, default=ROOT / "docs" / "argument_continuations_graph.json.gz")
+    parser.add_argument("--graph", type=Path, help="graph export used to refresh the committed portable plan")
     parser.add_argument("--root", type=Path, default=ROOT)
     parser.add_argument("--check", action="store_true")
     parser.add_argument("--paper", type=Path, help="a LaTeX file whose generated_argument_frontier_macros "
                         "region receives the frontier's counts")
     args = parser.parse_args(argv)
-    graph = load_graph(args.graph)
-    papers = paper_rows(args.root)
-    per_problem = plan(graph, papers)
-    source = graph.get("source", {})
-    files: dict[Path, str] = {}
+    plan_path = args.root / "docs" / "argument_frontier_plan.json"
+    graph_path = args.graph or args.root / "docs" / "argument_continuations_graph.json.gz"
+    inputs = {
+        "paper_coverage_sha256": hashlib.sha256((args.root / "docs" / "paper_lean_coverage.json").read_bytes()).hexdigest(),
+        "builder_sha256": hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
+    }
+    if graph_path.is_file():
+        graph = load_graph(graph_path)
+        papers = paper_rows(args.root)
+        per_problem = plan(graph, papers)
+        source = graph.get("source", {})
+        inputs_named = named_inputs(graph, papers, weakening_index(graph))
+        portable = {"schema": "plectis-argument-frontier-plan/1", "inputs": inputs,
+                    "source": source, "per_problem": per_problem, "named_inputs": inputs_named}
+    else:
+        if args.graph is not None or not plan_path.is_file():
+            raise SystemExit("missing graph/portable plan: restore the named public export, then run "
+                             "build_argument_frontier.py --graph <graph.json.gz> and commit its plan")
+        portable = json.loads(plan_path.read_text())
+        if portable.get("schema") != "plectis-argument-frontier-plan/1" or portable.get("inputs") != inputs:
+            raise SystemExit("argument frontier plan is stale: run build_argument_frontier.py --graph "
+                             "<graph.json.gz> after the changed builder or paper coverage, then commit the plan")
+        per_problem, source = portable["per_problem"], portable["source"]
+        inputs_named = portable["named_inputs"]
+    files: dict[Path, str] = {plan_path: json.dumps(portable, indent=1, ensure_ascii=False,
+                                                default=lambda value: sorted(value)) + "\n"}
     for problem, slot in sorted(per_problem.items()):
         files[args.root / DERIVED / f"{problem}.lean"] = render_module(problem, slot, source)
     manifest = {
@@ -445,7 +467,7 @@ def main(argv: list[str] | None = None) -> int:
         "rows": {problem: slot["rows"] for problem, slot in sorted(per_problem.items())},
         "named_inputs_rule": ("an open closed hypothesis of a theorem a paper cites; levels are what the "
                               "proofs consume of it, from the kernel-checked weakenings"),
-        "named_inputs": named_inputs(graph, papers, weakening_index(graph)),
+        "named_inputs": inputs_named,
     }
     files[args.root / "docs" / "argument_frontier.json"] = json.dumps(manifest, indent=1, ensure_ascii=False) + "\n"
     files[args.root / "docs" / "ARGUMENT_FRONTIER.md"] = render_markdown(manifest) + "\n"

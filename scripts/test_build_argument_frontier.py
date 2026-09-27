@@ -84,7 +84,7 @@ class Modules(unittest.TestCase):
             path.write_text(json.dumps(graph()))
             self.assertEqual(frontier.main(["--graph", str(path), "--root", str(root)]), 0)
             text = (root / frontier.DERIVED / "Erdos249.lean").read_text()
-            self.assertIn("import ErdosProblems.ArgumentGraph.Derive", text)
+            self.assertIn("import ArgumentGraphTools.Derive", text)
             self.assertIn("set_option argumentGraph.strict true", text)
             self.assertIn("derive_idle Toy.idle_thm", text)
             self.assertIn(f"derive_weakening {P}.prop_badcof", text)
@@ -96,6 +96,30 @@ class Modules(unittest.TestCase):
             ops = sorted(r["operation"] for r in manifest["rows"]["Erdos249"])
             self.assertEqual(ops, ["idle", "weakening"])
             self.assertEqual(frontier.main(["--graph", str(path), "--root", str(root), "--check"]), 0)
+            path.unlink()
+            # A clean clone can regenerate from committed selected commands;
+            # an input change must demand fresh planning from the public graph.
+            self.assertEqual(frontier.main(["--root", str(root), "--check"]), 0)
+            ledger_path = root / "docs" / "paper_lean_coverage.json"
+            ledger_path.write_text(ledger_path.read_text() + "\n")
+            with self.assertRaisesRegex(SystemExit, "plan is stale"):
+                frontier.main(["--root", str(root), "--check"])
+
+
+    def test_tooling_library_is_separate_and_coverage_leaves_are_registered(self):
+        import tomllib
+        import build_module_graph
+        import lean_source
+        root = frontier.ROOT
+        libraries = tomllib.loads((root / "lakefile.toml").read_text())["lean_lib"]
+        self.assertTrue(any(row["name"] == "ArgumentGraphTools" and row["srcDir"] == "lean"
+                            for row in libraries))
+        self.assertTrue((root / "lean/ArgumentGraphTools/Derive.lean").is_file())
+        self.assertNotIn("ArgumentGraphTools", lean_source.LIBRARY_ROOTS)
+        self.assertFalse((root / "lean/ErdosProblems/ArgumentGraph/Derive.lean").exists())
+        for problem in frontier.PROBLEM_NAMES.values():
+            self.assertIn(f"ErdosProblems.ArgumentGraph.Derived.{problem}",
+                          build_module_graph.AUXILIARY_ROOT_PREFIXES)
 
     def test_named_input_levels(self):
         g = graph()
