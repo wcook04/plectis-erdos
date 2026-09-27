@@ -595,8 +595,10 @@ def input_map(per_problem: dict[str, dict[str, Any]]) -> list[dict[str, Any]]:
             if row["operation"] != "factored":
                 continue
             for pl in row.get("placements", []):
-                by_hypothesis[pl["hypothesis"]].append({"theorem": row["theorem"], "derived": pl["derived"],
-                                                        "claims": pl["claims"]})
+                use = {"theorem": row["theorem"], "derived": pl["derived"], "claims": pl["claims"]}
+                # a lemma factoring two commands derive is logged by both
+                if not any(u["derived"] == use["derived"] for u in by_hypothesis[pl["hypothesis"]]):
+                    by_hypothesis[pl["hypothesis"]].append(use)
     return [{"hypothesis": h, "uses": sorted(uses, key=lambda u: u["derived"])}
             for h, uses in sorted(by_hypothesis.items())]
 

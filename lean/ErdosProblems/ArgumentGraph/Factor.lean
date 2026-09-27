@@ -567,9 +567,12 @@ def normAppAux : Nat → Array FVarId → Expr → FactorM Expr
         ← normAux fuel mv args[3]!]
     if let some app ← matchMatcherApp? e (alsoCasesOn := true) then
       if isCasesOnRecursor (← getEnv) app.matcherName then return ← normCasesAux fuel mv app
-      -- a compiled `match` is an elimination by its definition
-      if let some u ← unfoldDefinition? e (ignoreTransparency := true) then
-        return ← normAux fuel mv u.headBeta
+      -- a compiled `match` is an elimination by its definition (`unfoldDefinition?`
+      -- declines matchers, so the definition is instantiated here)
+      if let some (.defnInfo d) := (← getEnv).find? app.matcherName then
+        if d.levelParams.length == app.matcherLevels.size then
+          let value := d.value.instantiateLevelParams d.levelParams app.matcherLevels.toList
+          return ← normAux fuel mv (mkAppN value e.getAppArgs).headBeta
       return e
     -- a library theorem given a hypothesis being moved, proving a structured claim
     if !(movedIn mv e).isEmpty then
