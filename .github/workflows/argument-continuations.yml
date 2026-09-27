@@ -148,14 +148,16 @@ jobs:
         timeout-minutes: 195
         env:
           PLECTIS_CONTINUATION_EXPORT_FILE: ${{ runner.temp }}/argument_continuations_export.jsonl
-          PLECTIS_CONTINUATION_TIME_BUDGET_SECONDS: "4500"
+          PLECTIS_CONTINUATION_TIME_BUDGET_SECONDS: "7200"
           PLECTIS_CONTINUATION_IDLE_SECONDS: "600"
-          PLECTIS_CONTINUATION_WEAKEN_SECONDS: "600"
+          PLECTIS_CONTINUATION_WEAKEN_SECONDS: "0"
           # Use sites with parameters (the scope-aware pass).
           PLECTIS_CONTINUATION_USED_V2: "1"
           PLECTIS_CONTINUATION_BATTERY_SECONDS: "1200"
           PLECTIS_CONTINUATION_DEEP_LEAVES: "150"
           PLECTIS_CONTINUATION_DEEP_SECONDS: "600"
+          # Comparison arm: literal generalisation.
+          PLECTIS_CONTINUATION_GENERALISE_SECONDS: "0"
         run: |
           set -uo pipefail
           git rev-parse HEAD > "$RUNNER_TEMP/argument_continuations_source_revision.txt"
