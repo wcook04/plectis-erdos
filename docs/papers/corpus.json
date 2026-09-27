@@ -1119,7 +1119,7 @@
       ],
       "citations_rendered": 55,
       "local_pdf": "paper/archive/erdos249-257-main-paper.pdf",
-      "pdf_sha256": "sha256:1c4195728115cdfa972059c28f107494ce8c791fe24bf43419c9b1b7283ed2b6",
+      "pdf_sha256": "sha256:f862f94ff95308dd45e0a945809c4657c472c0b9434594e42f056af1260d2597",
       "pdf_byte_count": 457556,
       "first_pass": {
         "stated_by_the_paper": true,
@@ -4314,8 +4314,8 @@
       ],
       "citations_rendered": 20,
       "local_pdf": "paper/257/erdos-257-mersenne-support-subseries.pdf",
-      "pdf_sha256": "sha256:8bfc104bf9d5734c236ed5fdc98b6aa74feb5e5454edf2766fc302b709c7c20d",
-      "pdf_byte_count": 175549,
+      "pdf_sha256": "sha256:9076b2aa83e903cb9c328f7c7b317badc76a1d48ae6df535d43848def49fc978",
+      "pdf_byte_count": 175551,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection for this guide",
@@ -7667,7 +7667,7 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/claim-faithful-publication-systems-paper.md",
       "local_source": "paper/systems/claim-faithful-publication-systems-paper.tex",
-      "source_sha256": "sha256:434a963b1c1e20917f03b0de07186c0546f19e1ce65920b34d45926918f6c5e1",
+      "source_sha256": "sha256:5f3484cc19a322734dabdfacdbccdc9a2ad810c5222e004d1a28072236b50e9b",
       "canonical_source_commit": null,
       "canonical_source_pin_status": "local_unpublished",
       "canonical_source_url": null,
@@ -7831,10 +7831,10 @@
           "line": 376
         }
       ],
-      "citations_rendered": 71,
+      "citations_rendered": 75,
       "local_pdf": "paper/systems/claim-faithful-publication-systems-paper.pdf",
-      "pdf_sha256": "sha256:9f2a90025401621a92c603e52a8106743c65bb4043db656aa7b2513c3434bfc1",
-      "pdf_byte_count": 172298,
+      "pdf_sha256": "sha256:08424eb8075b784da8ffeadcd380fda6d949fe7d33d4ce0c73ec9ccf7b39b588",
+      "pdf_byte_count": 173892,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection for this guide",
@@ -7905,7 +7905,7 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/cold-clone-to-proof-receipt.md",
       "local_source": "paper/systems/cold-clone-to-proof-receipt.tex",
-      "source_sha256": "sha256:c2141f3c7b20073d7d1ced0a8c2f51ecabbcb3e5f1d4b4392b17d20c00023d1c",
+      "source_sha256": "sha256:e10a3bd21ab707b6698c653fe11dd83832b8c167260b62a719e0d3947e109a78",
       "canonical_source_commit": null,
       "canonical_source_pin_status": "local_unpublished",
       "canonical_source_url": null,
@@ -8035,8 +8035,8 @@
       ],
       "citations_rendered": 12,
       "local_pdf": "paper/systems/cold-clone-to-proof-receipt.pdf",
-      "pdf_sha256": "sha256:88511ae30f67ec96b927a56317fc3d4948537f9fd2e1769424d4bb93bbe482c9",
-      "pdf_byte_count": 88659,
+      "pdf_sha256": "sha256:a6410cbbb526fd11dea979968acf173f1d6f7cfab43ed0e38c29817e36080d6f",
+      "pdf_byte_count": 88656,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection for this guide",
