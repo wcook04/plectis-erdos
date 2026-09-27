@@ -115,7 +115,9 @@ jobs:
         run: python3 scripts/refresh_projections.py --preflight
 
   build:
-    needs: change_scope
+    # Diagnose the complete release surface before allocating a Lean runner.
+    # A stale paper manifest must not start hours of work on a rejected tree.
+    needs: [change_scope, release-surfaces]
     if: ${{ github.event_name != 'workflow_dispatch' || inputs.scope == 'all' }}
     runs-on: ubuntu-24.04
     timeout-minutes: 210
@@ -467,8 +469,11 @@ jobs:
         run: echo "No Lean source or proof-environment input changed; compilation is unchanged."
 
   external-verification:
-    needs: change_scope
-    if: ${{ needs.change_scope.outputs.erdos1041_corpus_only != 'true' && (github.event_name != 'workflow_dispatch' || inputs.scope == 'all' || inputs.scope == 'external-verification-only') }}
+    needs: [change_scope, release-surfaces]
+    # The explicit replay-only dispatch intentionally skips release-surfaces.
+    # Status functions avoid GitHub's implicit success() rejecting that skip;
+    # every ordinary PR still needs a successful release-surface result.
+    if: ${{ !cancelled() && needs.change_scope.result == 'success' && (needs.release-surfaces.result == 'success' || (github.event_name == 'workflow_dispatch' && inputs.scope == 'external-verification-only' && needs.release-surfaces.result == 'skipped')) && needs.change_scope.outputs.erdos1041_corpus_only != 'true' && (github.event_name != 'workflow_dispatch' || inputs.scope == 'all' || inputs.scope == 'external-verification-only') }}
     runs-on: ubuntu-24.04
     # Ten isolated checks run serially. The headline positive includes a
     # cold build of the full selected-statement closure; allow 45 minutes for

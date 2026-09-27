@@ -46,6 +46,46 @@ def run_builder_check() -> subprocess.CompletedProcess[str]:
 
 
 class ExternalVerificationContractTest(unittest.TestCase):
+    def test_sorry_census_is_independent_of_checkout_parent_names(self) -> None:
+        with tempfile.TemporaryDirectory(prefix="verification-census-") as temporary:
+            for location in ("ordinary", ".lake/snapshot"):
+                with self.subTest(location=location):
+                    root = Path(temporary) / location
+                    challenge = root / "verification/Challenge.lean"
+                    proof = root / "lean/ErdosProblems/Fixture.lean"
+                    cached = root / ".lake/packages/dependency/Fixture.lean"
+                    for path in (challenge, proof, cached):
+                        path.parent.mkdir(parents=True, exist_ok=True)
+                    (root / "lean/Erdos249257.lean").write_text("-- corpus root\n")
+                    (root / "lakefile.toml").write_text(
+                        '[[lean_lib]]\nname = "ErdosProblems"\nsrcDir = "lean"\n'
+                        '[[lean_lib]]\nname = "Erdos249257"\nsrcDir = "lean"\n'
+                    )
+                    challenge.write_text("theorem challenge : True := by sorry\n")
+                    proof.write_text("theorem proof : True := True.intro\n")
+                    cached.write_text("theorem cached : False := by sorry\n")
+                    # A caller may keep TMPDIR inside another Git checkout.
+                    # Give the fixture its own index so the corpus inventory
+                    # does not treat every fixture file as a parent's dirt.
+                    for command in (
+                        ["git", "init", "--quiet"],
+                        ["git", "add", "--", "lakefile.toml", "lean", "verification"],
+                    ):
+                        subprocess.run(command, cwd=root, check=True,
+                                       capture_output=True,
+                                       env=singleflight.command_environment())
+                    with patch.object(builder, "ROOT", root):
+                        self.assertEqual(builder.sorry_census(), {
+                            "challenge": {"verification/Challenge.lean": 1},
+                            "total": 1,
+                            "corpus_total": 0,
+                        })
+                        proof.write_text("theorem proof : False := by sorry\n")
+                        with self.assertRaisesRegex(
+                            SystemExit, "sorry outside.*lean/ErdosProblems/Fixture.lean"
+                        ):
+                            builder.sorry_census()
+
     def test_ranked_reader_tier_is_explicit_and_prose_independent(self) -> None:
         candidate = {
             "family_id": "known_irrational_supports",
