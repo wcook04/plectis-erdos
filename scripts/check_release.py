@@ -246,6 +246,7 @@ def finish_independent_checks(
 def late_check_commands() -> dict[str, list[str]]:
     """Read-only suites that may overlap the release gate's middle section."""
     return {
+        "github_release_contracts": [sys.executable, str(ROOT / "scripts" / "check_ci_release.py")],
         # These are the two long readers in this two-worker pool. Start both
         # immediately; queuing cold-clone checks behind short diagnostics left
         # several seconds of avoidable work on the release critical path.
@@ -3048,6 +3049,7 @@ def main(argv: list[str] | None = None) -> int:
     check(query_check.returncode == 0,
           f"corpus query surface failed: {child_output(query_check)}")
     for name in (
+        "github_release_contracts",
         "semantic_queries", "semantic_storage", "semantic_relation_parity",
         "proof_workbench", "computation_replay", "admissible_feedback",
         "interestingness_profile",

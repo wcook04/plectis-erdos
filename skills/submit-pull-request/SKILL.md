@@ -74,6 +74,20 @@ branch without a separate explicit instruction naming the exact target.
 
 ## Validate the proposed branch
 
+The full release entry, `scripts/check_release.py`, consumes the supplemental
+GitHub release checks from `scripts/check_ci_release.py`. Add release checks to
+that registry so local committed-snapshot validation and GitHub run the same
+commands; do not add workflow-only leaf checks. The cold preflight rejects
+inventory drift. Preserve failure aggregation, optimized runs, and the separate
+corpus-only privacy and publication boundaries. Keep admission deadlines large
+enough for the complete bounded suite on a cold runner.
+
+Repository maintainers must require the admission and first-contact statuses
+as well as `build` and `release-surfaces` in GitHub branch protection. A skipped
+dependent job can satisfy a required check; its failed upstream admission must
+therefore be required itself. Preserve the GitHub Actions application binding
+and strict current-base checks when updating protection.
+
 Install the repository's push guard once per worktree:
 
 ```sh

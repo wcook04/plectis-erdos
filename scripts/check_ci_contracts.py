@@ -34,6 +34,7 @@ TESTS = (
     "test_check_release_ref.py",
     "test_check_push.py",
     "test_ci_contracts.py",
+    "test_ci_release.py",
 )
 WORKFLOW_JOBS = {
     "lean.yml": ("build", "external-verification"),
@@ -75,7 +76,10 @@ def workflow_tests(workflow: str, jobs: tuple[str, ...]) -> set[str]:
 
 
 def coverage_errors(root: Path = ROOT, tests: tuple[str, ...] = TESTS) -> list[str]:
-    errors = []
+    import check_ci_release
+    errors = check_ci_release.registry_errors()
+    if root == ROOT:
+        errors += check_ci_release.workflow_errors((root / ".github/workflows/lean.yml").read_text())
     if len(tests) != len(set(tests)):
         errors.append("CI contract registry repeats a test")
     for test in tests:
@@ -96,7 +100,7 @@ def run_test(test: str, optimized: bool, *, root: Path = ROOT,
     label = test + (" (-O)" if optimized else "")
     argv = [sys.executable, *(["-O"] if optimized else []), str(root / "scripts" / test)]
     try:
-        result = subprocess.run(argv, cwd=root, env=singleflight.command_environment(),
+        result = singleflight.run_bounded(argv, cwd=root, env=singleflight.command_environment(),
                                 text=True, capture_output=True, timeout=timeout)
         if result.returncode:
             detail = (result.stdout + "\n" + result.stderr).strip()[-6000:]
