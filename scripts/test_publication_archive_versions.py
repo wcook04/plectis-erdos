@@ -6,6 +6,7 @@ from __future__ import annotations
 
 import copy
 import json
+import subprocess
 import sys
 import tempfile
 import unittest
@@ -70,6 +71,38 @@ class ArchiveVersionTests(unittest.TestCase):
                 path.write_text(json.dumps(source))
                 with self.assertRaises(taxonomy.TaxonomyError):
                     taxonomy.build(self.corpus, Path(directory))
+
+    def test_paper_guide_keeps_all_archives_with_exact_owner_handles(self):
+        result = subprocess.run(
+            [sys.executable, str(ROOT / "scripts/query_corpus.py"),
+             "--papers", "--format", "json"],
+            cwd=ROOT, capture_output=True, check=False,
+        )
+        self.assertEqual(result.returncode, 0, result.stderr.decode())
+        self.assertLessEqual(len(result.stdout), 80_000)
+        packet = json.loads(result.stdout)
+        visible = {}
+        for paper in packet["papers"]:
+            versions = paper.get("archived_versions", [])
+            if not versions:
+                continue
+            visible[paper["paper_id"]] = versions
+            for index, version in enumerate(versions):
+                ref = version["record_ref"]
+                owner, pointer = ref.split("#", 1)
+                self.assertEqual(owner, taxonomy.ARCHIVE_REL)
+                self.assertEqual(pointer, f"/papers/{paper['paper_id']}/{index}")
+                exact = self.source["papers"][paper["paper_id"]][index]
+                for key in ("identifier", "version", "url", "source_commit",
+                            "peer_review_state", "receiving_status"):
+                    self.assertEqual(version.get(key), exact.get(key))
+                self.assertIn(version["relation_to_current_manuscript"],
+                              ("same_source_and_pdf", "different_source_or_pdf"))
+                self.assertNotIn("source_archive_sha256", version)
+                self.assertIn("source_archive_sha256", exact)
+        self.assertEqual(set(visible), set(self.source["papers"]))
+        self.assertEqual(sum(map(len, visible.values())),
+                         sum(map(len, self.source["papers"].values())))
 
     def test_projection_is_idempotent(self):
         result = taxonomy.build(self.corpus, ROOT)

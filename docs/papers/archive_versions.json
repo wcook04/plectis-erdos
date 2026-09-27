@@ -20,6 +20,181 @@
         "source_archive_sha256": "sha256:696a9c67f6cd8c39704727706b40ee6e43b4f27d2fbc946f323940d065b20fc9",
         "peer_review_state": "not_externally_reviewed"
       }
+    ],
+    "erdos-68-factorial-denominator-irrationality": [
+      {
+        "identifier": "aiXiv:2609.03280",
+        "version": 1,
+        "published": "2026-09-27",
+        "url": "https://aixiv.online/abs/2609.03280v1",
+        "pdf_url": "https://aixiv.online/pdf/2609.03280v1",
+        "source_url": "https://aixiv.online/src/2609.03280v1",
+        "metadata_url": "https://aixiv.online/api/v1/papers/2609.03280",
+        "source_repository": "https://github.com/wcook04/plectis-erdos",
+        "source_commit": "551bae6dc6e732cf85172d66323c8d2bc77ba962",
+        "source_path": "paper/68/erdos-68-factorial-denominator-irrationality.tex",
+        "source_sha256": "sha256:260525ba1e5a4b98ca0b951ebf35f36dd7cef3d42ae0ce39a5666abd33dd7f1f",
+        "pdf_sha256": "sha256:78142ae738251199ffda529733f76941e079e9c57fd372e444f41b4eaf0f49f8",
+        "source_archive_sha256": "sha256:88bcf01f2884387bfae8d19b8b9269e801c515d91c69172ec7786b324593969e",
+        "peer_review_state": "not_externally_reviewed",
+        "receiving_status": "published_listing_pending_editorial_review",
+        "received_at": "2026-09-27T05:45:36Z",
+        "hash_evidence": {
+          "source_archive": "receiving page hash matched the uploaded archive",
+          "pdf": "uploaded artifact; served attachment bytes not independently downloaded for comparison"
+        },
+        "served_attachment_bytes_verified": false
+      }
+    ],
+    "erdos-243-reciprocal-tail-rigidity": [
+      {
+        "identifier": "aiXiv:2609.03279",
+        "version": 1,
+        "published": "2026-09-27",
+        "url": "https://aixiv.online/abs/2609.03279v1",
+        "pdf_url": "https://aixiv.online/pdf/2609.03279v1",
+        "source_url": "https://aixiv.online/src/2609.03279v1",
+        "metadata_url": "https://aixiv.online/api/v1/papers/2609.03279",
+        "source_repository": "https://github.com/wcook04/plectis-erdos",
+        "source_commit": "551bae6dc6e732cf85172d66323c8d2bc77ba962",
+        "source_path": "paper/243/erdos-243-reciprocal-tail-rigidity.tex",
+        "source_sha256": "sha256:3a2910fc8e47636c6438c7bf9deaa7582b7dbb0e58bc960618055bd5783a83ec",
+        "pdf_sha256": "sha256:2fbdb970c4547cfd401d9245e373d32c91f5c6e2e573a20f9c07f2761815c22a",
+        "source_archive_sha256": "sha256:cb8d96a2048940e5f3188e0861a42ad0d753fc0945d43f16b85eeaa6afc40830",
+        "peer_review_state": "not_externally_reviewed",
+        "receiving_status": "published_listing_pending_editorial_review",
+        "received_at": "2026-09-27T05:21:59Z",
+        "hash_evidence": {
+          "source_archive": "receiving page hash matched the uploaded archive",
+          "pdf": "uploaded artifact; served attachment bytes not independently downloaded for comparison"
+        },
+        "served_attachment_bytes_verified": false
+      }
+    ],
+    "erdos-249-binary-totient-series": [
+      {
+        "identifier": "aiXiv:2609.03281",
+        "version": 1,
+        "published": "2026-09-27",
+        "url": "https://aixiv.online/abs/2609.03281v1",
+        "pdf_url": "https://aixiv.online/pdf/2609.03281v1",
+        "source_url": "https://aixiv.online/src/2609.03281v1",
+        "metadata_url": "https://aixiv.online/api/v1/papers/2609.03281",
+        "source_repository": "https://github.com/wcook04/plectis-erdos",
+        "source_commit": "551bae6dc6e732cf85172d66323c8d2bc77ba962",
+        "source_path": "paper/249/erdos-249-binary-totient-series.tex",
+        "source_sha256": "sha256:05b086860e1d04afa531ec89042c906afb4d84e19b2fadea9113064d53fe926e",
+        "pdf_sha256": "sha256:fb775f909905f2e614735ff9fef166eaf518a482944c5d4f175e79c72368a4f9",
+        "source_archive_sha256": "sha256:7ce28c813abce5372b30450340ab85cfb063cf4ec4e95539dad4e223194c351c",
+        "peer_review_state": "not_externally_reviewed",
+        "receiving_status": "published_listing_pending_editorial_review",
+        "received_at": "2026-09-27T06:04:03Z",
+        "hash_evidence": {
+          "source_archive": "receiving page hash matched the uploaded archive",
+          "pdf": "uploaded artifact; served attachment bytes not independently downloaded for comparison"
+        },
+        "served_attachment_bytes_verified": false
+      }
+    ],
+    "erdos-251-prime-gap-dyadic-series": [
+      {
+        "identifier": "aiXiv:2609.03282",
+        "version": 1,
+        "published": "2026-09-27",
+        "url": "https://aixiv.online/abs/2609.03282v1",
+        "pdf_url": "https://aixiv.online/pdf/2609.03282v1",
+        "source_url": "https://aixiv.online/src/2609.03282v1",
+        "metadata_url": "https://aixiv.online/api/v1/papers/2609.03282",
+        "source_repository": "https://github.com/wcook04/plectis-erdos",
+        "source_commit": "551bae6dc6e732cf85172d66323c8d2bc77ba962",
+        "source_path": "paper/251/erdos-251-prime-gap-dyadic-series.tex",
+        "source_sha256": "sha256:3b9a9c7c5b29fbf6c6c8bb782c75217c51fc8104e64333d939e050b76367bc80",
+        "pdf_sha256": "sha256:75f219e038449d9ede5781e0ef58ef2e02e0dfc9da0ce0bbeaae91fb6dee2983",
+        "source_archive_sha256": "sha256:db68468f63b7c40e213999104e023a196c9b4dad6315e55ac27f62a575ac5773",
+        "peer_review_state": "not_externally_reviewed",
+        "receiving_status": "published_listing_pending_editorial_review",
+        "received_at": "2026-09-27T06:19:33Z",
+        "hash_evidence": {
+          "source_archive": "receiving page hash matched the uploaded archive",
+          "pdf": "uploaded artifact; served attachment bytes not independently downloaded for comparison"
+        },
+        "served_attachment_bytes_verified": false
+      }
+    ],
+    "erdos-269-three-prime-running-lcm": [
+      {
+        "identifier": "aiXiv:2609.03283",
+        "version": 1,
+        "published": "2026-09-27",
+        "url": "https://aixiv.online/abs/2609.03283v1",
+        "pdf_url": "https://aixiv.online/pdf/2609.03283v1",
+        "source_url": "https://aixiv.online/src/2609.03283v1",
+        "metadata_url": "https://aixiv.online/api/v1/papers/2609.03283",
+        "source_repository": "https://github.com/wcook04/plectis-erdos",
+        "source_commit": "551bae6dc6e732cf85172d66323c8d2bc77ba962",
+        "source_path": "paper/269/erdos-269-three-prime-running-lcm.tex",
+        "source_sha256": "sha256:848b631510dbda4efdfce326b348e7b3d650b6de3e3f9449c0710f2cb6e6e865",
+        "pdf_sha256": "sha256:09175a061b939e14a99c2af9bb550320c8571c31f253185720813b8fb688431d",
+        "source_archive_sha256": "sha256:ec7e43bddd90a571f7ca9a482ffaa6ac93f900a52897e754d266f76065e4be50",
+        "peer_review_state": "not_externally_reviewed",
+        "receiving_status": "published_listing_pending_editorial_review",
+        "received_at": "2026-09-27T06:35:23Z",
+        "hash_evidence": {
+          "source_archive": "receiving page hash matched the uploaded archive",
+          "pdf": "uploaded artifact; served attachment bytes not independently downloaded for comparison"
+        },
+        "served_attachment_bytes_verified": false
+      }
+    ],
+    "erdos-1041-lemniscate-newton-flow": [
+      {
+        "identifier": "aiXiv:2609.03284",
+        "version": 1,
+        "published": "2026-09-27",
+        "url": "https://aixiv.online/abs/2609.03284v1",
+        "pdf_url": "https://aixiv.online/pdf/2609.03284v1",
+        "source_url": "https://aixiv.online/src/2609.03284v1",
+        "metadata_url": "https://aixiv.online/api/v1/papers/2609.03284",
+        "source_repository": "https://github.com/wcook04/plectis-erdos",
+        "source_commit": "551bae6dc6e732cf85172d66323c8d2bc77ba962",
+        "source_path": "paper/1041/erdos-1041-lemniscate-newton-flow.tex",
+        "source_sha256": "sha256:53ff3bef71fb81041ea80b960e88147e6d75481d17048eca1f93fcabe7497999",
+        "pdf_sha256": "sha256:22157c2b960e2bdcc43ee778ff85ef97a21186b7475664d7467e27186aabd331",
+        "source_archive_sha256": "sha256:206734ce3de15990ea02dac346fe8454954cf25af8ddb58799ece62a6389da98",
+        "peer_review_state": "not_externally_reviewed",
+        "receiving_status": "published_listing_pending_editorial_review",
+        "received_at": "2026-09-27T06:51:42Z",
+        "hash_evidence": {
+          "source_archive": "receiving page hash matched the uploaded archive",
+          "pdf": "uploaded artifact; served attachment bytes not independently downloaded for comparison"
+        },
+        "served_attachment_bytes_verified": false
+      }
+    ],
+    "erdos-1049-rational-base-lambert": [
+      {
+        "identifier": "aiXiv:2609.03285",
+        "version": 1,
+        "published": "2026-09-27",
+        "url": "https://aixiv.online/abs/2609.03285v1",
+        "pdf_url": "https://aixiv.online/pdf/2609.03285v1",
+        "source_url": "https://aixiv.online/src/2609.03285v1",
+        "metadata_url": "https://aixiv.online/api/v1/papers/2609.03285",
+        "source_repository": "https://github.com/wcook04/plectis-erdos",
+        "source_commit": "551bae6dc6e732cf85172d66323c8d2bc77ba962",
+        "source_path": "paper/1049/erdos-1049-rational-base-lambert.tex",
+        "source_sha256": "sha256:8a4ef79bde4e4def74fc6ae6bfba990f43b824bd2638828814ddc53826e101a5",
+        "pdf_sha256": "sha256:a234de6946aa02592076337cc633d6f193d8d9b8679ba2ae555bbea381993a50",
+        "source_archive_sha256": "sha256:be1f0be80f24006800062ad861c06c5b2ab29e37e39529df840d69d3a4c305e9",
+        "peer_review_state": "not_externally_reviewed",
+        "receiving_status": "published_listing_pending_editorial_review",
+        "received_at": "2026-09-27T07:07:51Z",
+        "hash_evidence": {
+          "source_archive": "receiving page hash matched the uploaded archive",
+          "pdf": "uploaded artifact; served attachment bytes not independently downloaded for comparison"
+        },
+        "served_attachment_bytes_verified": false
+      }
     ]
   }
 }
