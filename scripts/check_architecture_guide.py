@@ -200,6 +200,7 @@ BANNED_SHORTHAND = (
 PAPER_SECTION_ORDER = (
     r"\section{A theorem and the explanation it needs}",
     r"\section{A problem-sized world}",
+    r"\section{The argument graph}",
     r"\section{From corpus to insight}",
     r"\section{From a proof to a public claim}",
     r"\section{The contribution cycle}",
@@ -327,14 +328,28 @@ PAPER_REQUIRED_ANCHOR_GROUPS = {
         "a direct precedent for the explanation a world keeps beside a formal proof",
         "the two designs developed independently",
     ),
+    # The 26 September revision retired the controlled-comparison plan: the
+    # record is measured by what its argument graph reads from the proof
+    # terms, and the paper says that no comparison has been run.
     "limits_and_scaling": (
         "The same design serves stronger models",
-        "The next measurement is comparative",
-        "an information-equivalent written briefing",
-        "A representation contrast holds information, tools and budget fixed",
-        "discovery comparisons use held-out transformations or prospective continuations",
+        "The graph gives the record a measurement of its own",
+        "no comparison with other organisations of the same material has been run",
         "whether the workflow made those results more likely has not been measured",
         "no outside human contributor had opened a pull request or issue",
+    ),
+    # The argument graph's evidence boundary: what the kernel checked, what
+    # rests on the unifier, what is only a lower bound, and the review that
+    # preceded every reported number.
+    "argument_graph": (
+        "A composition, a stronger statement, a weakened theorem or a tactic proof counts only if the kernel "
+        "accepts it",
+        "the kernel checks that theorem and each implication from $H$",
+        "never read as the absence of a producer",
+        "the rest of the graph is a map, and a lower bound",
+        "A disguise class records proved equivalences only",
+        "Importance, difficulty and interest remain judgements for a mathematician",
+        "counted a theorem needing a witness of an empty type as unconditional",
     ),
     "real_public_routes": (
         "docs/ARCHITECTURE.md",

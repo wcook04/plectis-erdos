@@ -9,7 +9,7 @@ assembled into a polynomial, with exhaustive root classification and the
 actual critical-point/spoke assertions. The cubic argument quantifies over
 ALL its roots directly; it is not restricted to a supplied root enumeration.
 
-New proof source, not elaborated in this environment.
+The default root `ErdosProblems` imports this module, so the supported-root build elaborates it.
 -/
 
 noncomputable section

@@ -725,9 +725,15 @@ The excluded-cofactor bound is
 \href{https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos249/PaperCompleteR21/ExcludedCofactorEstimate.lean\#L654}{proved in Lean}
 with the prime number theorem and the existence of the density of
 $\{m:\ph(m)<\eta m\}$ taken as hypotheses.
-An elementary mean-value estimate also
-gives the explicit sufficient cutoff $\eta=1/1000$ for the
-excluded-cofactor bound. The two remaining estimates concern the group
+At the explicit cutoff $\eta=1/1000$ the excluded-cofactor bound is
+\href{https://github.com/wcook04/plectis-erdos/blob/57941a741fceaae33ab7e2513a9cd11fee060081/lean/ErdosProblems/Erdos249/PaperCompleteR21/ExcludedCofactorEstimate.lean\#L910}{proved in Lean}
+with no hypotheses: an elementary mean-value estimate bounds the upper
+density of $\{m:\ph(m)<m/1000\}$ by $3/1000$, and Chebyshev's bound
+$\prod_{a+1<p\le2a+1}p\le\binom{2a+1}{a}\le4^a$ replaces the prime number
+theorem at the cost of a factor $\log4$, so at most
+$(3\log4/1000+o(1))X<X/100$ indices are excluded. The same argument
+\href{https://github.com/wcook04/plectis-erdos/blob/ab690b0aa515faa3a432e9d47de288704ebf6bb5/lean/ErdosProblems/Erdos249/PaperCompleteR21/ExcludedCofactorEstimate.lean\#L930}{proves}
+the bound with no hypotheses for every $\eta$ with $0<\eta<1/(300\log4)$. The two remaining estimates concern the group
 means and their weighted, mean-subtracted phases. They must hold at the
 same depth and for the same choice of $\eta$; the existence of a cutoff
 that controls the excluded indices does not establish either of them.

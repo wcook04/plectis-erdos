@@ -37,6 +37,11 @@ ROOT_FILES = tuple(
 # allowed here: if one falls out of the supported roots, the release gate still
 # fails.
 AUXILIARY_ROOT_PREFIXES = (
+    # The argument frontier: scripts/build_argument_frontier.py writes one module
+    # per problem that rebuilds the argument graph's findings about paper-cited
+    # theorems as kernel-checked library theorems. They import coverage modules,
+    # so no supported root imports them; the coverage build compiles them.
+    "ErdosProblems.ArgumentGraph.",
     "ErdosProblems.Bit.",
     "ErdosProblems.Decl.",
     # Eight-paper coverage lane. The R7/R8/R11/R16/R18/R20/R21 paper modules and
