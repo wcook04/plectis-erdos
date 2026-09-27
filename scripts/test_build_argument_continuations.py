@@ -929,6 +929,24 @@ class TypeBRepairs(unittest.TestCase):
         self.assertEqual((projection["summary"]["argument_graph_derived_theorems_skipped"],
                           projection["summary"]["argument_graph_derived_rows_skipped"]), (1, 3))
 
+    def test_read_findings_keeps_them_and_marks_them(self) -> None:
+        derived = "ErdosProblems.ArgumentGraph.Derived.Erdos249.T.idle"
+        rows = [statement("H"), statement("G"),
+                theorem(derived, [], "G", module="ErdosProblems.ArgumentGraph.Derived.Erdos249"),
+                match("H", derived), idle(derived, [(0, "H")])]
+        with tempfile.TemporaryDirectory() as tmp:
+            projection, payload = builder.build(write_stream(Path(tmp), rows), Path(tmp), read_findings=True)
+        graph = graph_of(rows, read_findings=True)
+        self.assertIn(derived, graph.theorems)
+        self.assertIn("G", graph.supplied)
+        self.assertEqual(projection["summary"]["argument_graph_findings_read"], 1)
+        self.assertEqual(projection["summary"]["argument_graph_derived_theorems_skipped"], 0)
+        self.assertEqual([t["name"] for t in payload["theorems"] if t.get("finding")], [derived])
+
+    def test_read_findings_refuses_paper_macros(self) -> None:
+        with self.assertRaises(SystemExit):
+            builder.main(["--export", "x.jsonl", "--read-findings", "--paper", "p.tex"])
+
 
 class Papers(unittest.TestCase):
     def test_paper_rows_take_the_most_conditional_status(self) -> None:
