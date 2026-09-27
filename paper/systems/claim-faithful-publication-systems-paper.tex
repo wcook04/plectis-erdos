@@ -15,11 +15,11 @@
 }
 \newcommand{\repobase}{https://github.com/wcook04/plectis-erdos}
 % BEGIN generated_semantic_coverage_macros
-\newcommand{\SemanticAuthoredTheoremLike}{152,016}
+\newcommand{\SemanticAuthoredTheoremLike}{152,020}
 \newcommand{\SemanticAuthoredInterpreted}{139,818}
 \newcommand{\SemanticDirectEvidence}{3,330}
 \newcommand{\SemanticContextual}{136,488}
-\newcommand{\SemanticStructuralOnly}{12,198}
+\newcommand{\SemanticStructuralOnly}{12,202}
 \newcommand{\SemanticAuthoredPercent}{92.0}
 % END generated_semantic_coverage_macros
 % BEGIN generated_argument_graph_macros
@@ -53,18 +53,22 @@
 % END generated_argument_graph_macros
 % BEGIN generated_argument_frontier_macros
 \newcommand{\AFModules}{8}
-\newcommand{\AFPaperTheorems}{85}
+\newcommand{\AFPaperTheorems}{222}
 \newcommand{\AFIdle}{45}
-\newcommand{\AFWeakened}{43}
+\newcommand{\AFWeakened}{71}
 \newcommand{\AFConjuncts}{2}
-\newcommand{\AFCuts}{5}
-\newcommand{\AFSupplied}{0}
+\newcommand{\AFFactored}{122}
+\newcommand{\AFFactoredLibrary}{69}
+\newcommand{\AFFactoredComposed}{3}
+\newcommand{\AFRetained}{10}
+\newcommand{\AFCuts}{9}
+\newcommand{\AFSupplied}{1}
 \newcommand{\AFDischarged}{2}
-\newcommand{\AFNamedInputs}{75}
-\newcommand{\AFNamedInputUses}{139}
-\newcommand{\AFNamedInputsTraced}{29}
+\newcommand{\AFNamedInputs}{73}
+\newcommand{\AFNamedInputUses}{129}
+\newcommand{\AFNamedInputsTraced}{55}
 % END generated_argument_frontier_macros
-\newcommand{\repolink}[2]{\href{\repobase/blob/87c64ce39d0874306da91681803f9f68c2c094b3/#1}{\texttt{#2}}}
+\newcommand{\repolink}[2]{\href{\repobase/blob/ab690b0aa515faa3a432e9d47de288704ebf6bb5/#1}{\texttt{#2}}}
 \emergencystretch=1.7em
 
 \runninghead{Problem-sized Lean worlds}
@@ -490,7 +494,10 @@ $\binom{2a+1}{a}\le4^a$, gives $K=\log4$; at the record's explicit choice
 $\eta=1/1000$ an elementary estimate gives $D\le3/1000$, and since
 $3\log4/1000<1/100$ the count stays below $X/100$ for all large $X$ with no
 input at all. Lean checks that theorem
-(\href{\repobase/blob/57941a741fceaae33ab7e2513a9cd11fee060081/lean/ErdosProblems/Erdos249/PaperCompleteR21/ExcludedCofactorEstimate.lean}{\texttt{ExcludedCofactorEstimate.lean}}).
+(\href{\repobase/blob/57941a741fceaae33ab7e2513a9cd11fee060081/lean/ErdosProblems/Erdos249/PaperCompleteR21/ExcludedCofactorEstimate.lean}{\texttt{ExcludedCofactorEstimate.lean}})
+and the family it belongs to: the same argument holds for every $\eta>0$ with
+$3\eta\log4<1/100$, that is for $\eta<1/(300\log4)$
+(\repolink{lean/ErdosProblems/Erdos249/PaperCompleteR21/ExcludedCofactorEstimate.lean}{\texttt{excluded\_budget\_of\_chebyshev}}).
 
 \paragraph{The findings as library theorems.} A Lean module
 (\href{\repobase/blob/7391668980147292656da6d0bc66a927aa84824b/lean/ErdosProblems/ArgumentGraph/Derive.lean}{\texttt{Derive.lean}})
@@ -527,6 +534,46 @@ Lean theorem
 (\repolink{lean/ErdosProblems/ArgumentGraph/Derived/Erdos251.lean}{Erdos251.lean}),
 and Problem~257's square-root route without its sign hypothesis
 (\repolink{lean/ErdosProblems/ArgumentGraph/Derived/Erdos257.lean}{Erdos257.lean}).
+
+A second module
+(\repolink{lean/ErdosProblems/ArgumentGraph/Factor.lean}{\texttt{Factor.lean}})
+moves each hypothesis of a theorem to the claims of its conclusion whose proofs
+use it and keeps the proof's witnesses (\texttt{derive\_factor}): from a proof
+of $H_1\to H_2\to\exists w,\ A(w)\wedge B(w)\wedge C(w)$ whose witness and
+whose proof of $A$ use neither hypothesis, it states
+$\exists w,\ A(w)\wedge(H_1\to B(w))\wedge(H_2\to C(w))$. It reads the
+conclusion through $\exists$, $\wedge$ and $\forall$ and normalises the proof's
+spine; when the proof destructures a corpus lemma applied to a hypothesis
+being moved, it factors that lemma first and rebuilds the lemma's conclusion,
+so it follows a construction through the lemmas it is built from. The kernel
+checks every theorem it adds. Problem~251's simultaneous countermodel assumes
+Schlage-Puchta's Lemma~4 and the prime number theorem, and fixes
+$0<\varepsilon\le1$. Its factoring states the construction unconditionally, for
+every $\varepsilon>0$, with Schlage-Puchta's lemma assumed only by the
+nonconcentration clause and the prime number theorem only by
+$P_n\sim n\log n$
+(\repolink{lean/ErdosProblems/ArgumentGraph/Results/Erdos251.lean}{ArgumentGraph/Results/Erdos251.lean}).
+The exponents $\varepsilon>1$ add no content, since $(\log(n+3))^\varepsilon$
+increases with $\varepsilon$ and the sequence for $\varepsilon=1$ serves every
+larger exponent; the gain is that each input is assumed only by its own clause.
+Following the lemmas can leave out a hypothesis that the proof as written uses.
+Problem~243's transport-square theorem assumes $v_n>0$ for $n\ge T$ and passes
+it to the zero-density multiplier lemma only for claims it does not use, and
+its factoring omits it. The other hypotheses force $v_n>0$ anyway (from a zero
+term on, $v$ vanishes, coprimality makes $u_n=1$, and the density hypothesis
+fails), so the factored theorem is the same result with a shorter statement.
+\AFFactored{} cited theorems have a factoring, and deriving them factored
+\AFFactoredLibrary{} lemmas beneath them. A probe credits a command only with
+the theorem it names: a factoring refused after it derived lemma factorings on
+the way is not counted. The generator carries every command it has published
+into each new plan and checks every name those commands declared, and it stops
+when a probe shows that a published name is no longer added or now states
+something else; a later export with a smaller search budget or another use-site
+rule cannot remove a theorem a paper cites. The check has stopped one
+regeneration: once weakenings could use sites with parameters, ten published
+frontiers would have followed their chains further and assumed stronger
+statements, so a frontier follows only the kind of weakening it was published
+with.
 
 \paragraph{Research with the graph.} A research session on a problem opens a
 bounded packet built from the graph
@@ -1135,7 +1182,11 @@ tactics and \texttt{have} steps a proof does not use, lifts the obligations
 inside a partial proof into standalone lemmas, and checks a proof against a
 separately given statement and a list of permitted axioms~\cite{axle}. The
 used-consequence pass lifts statements out of a proof in a similar way, and
-Comparator makes a check of the last kind for this record.
+Comparator makes a check of the last kind for this record. Proof mining
+extracts from a given proof information that its statement does not record,
+such as explicit bounds~\cite{kohlenbach}; the factoring pass reads off a proof
+which claims of its conclusion each hypothesis supports, and the kernel checks
+the statement that records it.
 
 Li, Peng, Severini and Shafto analyse Mathlib as a multilayer network of
 declarations and modules, measuring centrality, communities and the effect of
@@ -1424,6 +1475,9 @@ Interactive Theorem Proving with Lean 4}, 2026,
 \bibitem{lihai} C.~Li, Z.~Lai, D.~An, J.~Hu, and Z.~Wen, \emph{Advancing
 Mathematical Research via Human-AI Interactive Theorem Proving}, 2025,
 \href{https://arxiv.org/abs/2512.09443v2}{arXiv:2512.09443v2}.
+\bibitem{kohlenbach} U.~Kohlenbach, \emph{Applied Proof Theory: Proof
+Interpretations and their Use in Mathematics}, Springer Monographs in
+Mathematics, Springer, Berlin, 2008.
 \bibitem{gandhi} A.~Gandhi, A.~R.~Tadipatri, and T.~Gowers,
 \emph{Automatically Generalizing Proofs and Statements}, in \emph{16th
 International Conference on Interactive Theorem Proving}, LIPIcs 352, 2025,

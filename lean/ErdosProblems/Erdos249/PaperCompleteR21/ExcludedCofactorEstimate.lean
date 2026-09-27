@@ -920,8 +920,48 @@ theorem excluded_budget_one_thousandth_of_chebyshev (h s : ℕ) :
       have h4 : Real.log 4 ≤ 4 - 1 := Real.log_le_sub_one_of_pos (by norm_num)
       linarith)
 
+/-- **The budget for every small `η`, with no input.**  The proof of
+`excluded_budget_one_thousandth_of_chebyshev` uses `η = 1/1000` only through the
+inequality `log 4 · 3η < 1/100`: `B(η)` has upper density at most `3η` for every
+`η > 0` (`excludedCofactorSet_upperDensityLE`), and Chebyshev's dyadic count has
+constant `log 4`.  So whenever `0 < η` and `3η log 4 < 1/100`, that is for every
+`η < 1/(300 log 4)` (about `1/416`), for all large `X` the excluded-cofactor count is
+`< X/100` and the excluded-cofactor contribution meets its `X/100` budget. -/
+theorem excluded_budget_of_chebyshev (h s : ℕ) {η : ℝ} (hη : 0 < η)
+    (hbudget : Real.log 4 * (3 * η) < 1 / 100) :
+    ∀ᶠ X : ℕ in atTop,
+      ((((pivotSupplierBases X (minimalDepth h s X) s).filter
+          (fun N => pivotCofactor N (minimalDepth h s X) s
+            ∈ excludedCofactorSet η)).card : ℕ) : ℝ) < (1 / 100 : ℝ) * X ∧
+      ‖pivotBadContribution h X (minimalDepth h s X) s η‖ ≤ (1 / 100 : ℝ) * X := by
+  have hD0 : 0 ≤ 3 * η := by positivity
+  have hD1 : 3 * η ≤ 1 := by
+    have := mul_le_mul_of_nonneg_right one_le_log_four hD0
+    linarith
+  exact eventually_excluded_budget_of_upper_of_dyadic h s one_le_log_four
+    (fun _ε hε => eventually_card_primes_dyadic_le_log_four hε) hD0 hD1
+    (excludedCofactorSet_upperDensityLE hη) hbudget
+
+/-- The budget for every `η` with `0 < η < 1/900`, a rational range inside that of
+`excluded_budget_of_chebyshev` (`log 4 ≤ 3`); `η = 1/1000` is one instance. -/
+theorem excluded_budget_of_lt_one_nine_hundredth (h s : ℕ) {η : ℝ} (hη : 0 < η)
+    (hlt : η < 1 / 900) :
+    ∀ᶠ X : ℕ in atTop,
+      ((((pivotSupplierBases X (minimalDepth h s X) s).filter
+          (fun N => pivotCofactor N (minimalDepth h s X) s
+            ∈ excludedCofactorSet η)).card : ℕ) : ℝ) < (1 / 100 : ℝ) * X ∧
+      ‖pivotBadContribution h X (minimalDepth h s X) s η‖ ≤ (1 / 100 : ℝ) * X := by
+  apply excluded_budget_of_chebyshev h s hη
+  have h4 : Real.log 4 ≤ 3 := by
+    have := Real.log_le_sub_one_of_pos (show (0 : ℝ) < 4 by norm_num)
+    linarith
+  have := mul_le_mul_of_nonneg_right h4 (show (0 : ℝ) ≤ 3 * η by positivity)
+  linarith
+
 end ErdosProblems.Erdos249.PaperCompleteR21
 
 #print axioms ErdosProblems.Erdos249.PaperCompleteR21.excluded_budget_one_thousandth
 #print axioms ErdosProblems.Erdos249.PaperCompleteR21.prop_badcof
 #print axioms ErdosProblems.Erdos249.PaperCompleteR21.excluded_budget_one_thousandth_of_chebyshev
+#print axioms ErdosProblems.Erdos249.PaperCompleteR21.excluded_budget_of_chebyshev
+#print axioms ErdosProblems.Erdos249.PaperCompleteR21.excluded_budget_of_lt_one_nine_hundredth
