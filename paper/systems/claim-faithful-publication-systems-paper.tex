@@ -1163,7 +1163,11 @@ tactics and \texttt{have} steps a proof does not use, lifts the obligations
 inside a partial proof into standalone lemmas, and checks a proof against a
 separately given statement and a list of permitted axioms~\cite{axle}. The
 used-consequence pass lifts statements out of a proof in a similar way, and
-Comparator makes a check of the last kind for this record.
+Comparator makes a check of the last kind for this record. Proof mining
+extracts from a given proof information that its statement does not record,
+such as explicit bounds~\cite{kohlenbach}; the factoring pass reads off a proof
+which claims of its conclusion each hypothesis supports, and the kernel checks
+the statement that records it.
 
 Li, Peng, Severini and Shafto analyse Mathlib as a multilayer network of
 declarations and modules, measuring centrality, communities and the effect of
@@ -1452,6 +1456,9 @@ Interactive Theorem Proving with Lean 4}, 2026,
 \bibitem{lihai} C.~Li, Z.~Lai, D.~An, J.~Hu, and Z.~Wen, \emph{Advancing
 Mathematical Research via Human-AI Interactive Theorem Proving}, 2025,
 \href{https://arxiv.org/abs/2512.09443v2}{arXiv:2512.09443v2}.
+\bibitem{kohlenbach} U.~Kohlenbach, \emph{Applied Proof Theory: Proof
+Interpretations and their Use in Mathematics}, Springer Monographs in
+Mathematics, Springer, Berlin, 2008.
 \bibitem{gandhi} A.~Gandhi, A.~R.~Tadipatri, and T.~Gowers,
 \emph{Automatically Generalizing Proofs and Statements}, in \emph{16th
 International Conference on Interactive Theorem Proving}, LIPIcs 352, 2025,
