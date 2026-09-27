@@ -128,6 +128,26 @@ class Modules(unittest.TestCase):
         text = frontier.render_module("Erdos249", slot, g["source"])
         self.assertIn(f"set_option argumentGraph.strict false in derive_frontier {P}.prop_badcof using Toy.chebyshev", text)
 
+    def test_paper_macros(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            (root / "docs").mkdir()
+            ledger = {"rows": [{"id": "p#r", "label": "r", "paper_id": "p", "side": "long", "problem": 249,
+                                "lean": {"status": "modulo_named_input",
+                                         "declarations": [{"name": f"{P}.prop_badcof"}]}}]}
+            (root / "docs" / "paper_lean_coverage.json").write_text(json.dumps(ledger))
+            path = root / "g.json"
+            path.write_text(json.dumps(graph()))
+            paper = root / "paper.tex"
+            paper.write_text("x\n% BEGIN generated_argument_frontier_macros\nold\n"
+                             "% END generated_argument_frontier_macros\ny\n")
+            self.assertEqual(frontier.main(["--graph", str(path), "--root", str(root), "--paper", str(paper)]), 0)
+            text = paper.read_text()
+            self.assertIn(r"\newcommand{\AFWeakened}{1}", text)
+            self.assertIn(r"\newcommand{\AFCuts}{2}", text)
+            self.assertIn(r"\newcommand{\AFNamedInputs}{1}", text)
+            self.assertNotIn("old", text)
+
     def test_lean_ident_escapes(self):
         self.assertEqual(frontier.lean_ident("A.b_c.d'"), "A.b_c.d'")
         self.assertEqual(frontier.lean_ident("A.1x"), "A.«1x»")

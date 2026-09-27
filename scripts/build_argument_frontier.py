@@ -364,6 +364,39 @@ def render_module(problem: str, slot: dict[str, Any], source: dict[str, Any]) ->
     return "\n".join(lines)
 
 
+TEX_BEGIN = "% BEGIN generated_argument_frontier_macros"
+TEX_END = "% END generated_argument_frontier_macros"
+
+
+def paper_macros(manifest: dict[str, Any], per_problem: dict[str, dict[str, Any]]) -> str:
+    """LaTeX macros carrying the frontier's counts into a paper, so no number in
+    the prose is typed by hand."""
+    rows = [r for problem_rows in manifest["rows"].values() for r in problem_rows]
+    inputs = manifest.get("named_inputs", [])
+    values = {
+        "AFModules": len(manifest["modules"]),
+        "AFPaperTheorems": len({r["theorem"] for r in rows}),
+        "AFIdle": sum(1 for r in rows if r["operation"] == "idle"),
+        "AFWeakened": sum(1 for r in rows if r["operation"] == "weakening"),
+        "AFCuts": sum(len(r.get("frontier_cuts", [])) for r in rows),
+        "AFSupplied": sum(len(s.get("supplied_commands", [])) for s in per_problem.values()),
+        "AFNamedInputs": len(inputs),
+        "AFNamedInputUses": sum(len(e["consumers"]) for e in inputs),
+        "AFNamedInputsTraced": sum(1 for e in inputs if any(c.get("levels") for c in e["consumers"])),
+    }
+    lines = [TEX_BEGIN]
+    lines += [rf"\newcommand{{\{name}}}{{{value:,}}}" for name, value in values.items()]
+    lines.append(TEX_END)
+    return "\n".join(lines)
+
+
+def with_paper_macros(text: str, region: str) -> str:
+    start, end = text.find(TEX_BEGIN), text.find(TEX_END)
+    if start < 0 or end < start:
+        raise SystemExit("paper has no generated_argument_frontier_macros region")
+    return text[:start] + region + text[end + len(TEX_END):]
+
+
 WORKFLOW = Path(".github/workflows/lean-coverage-build.yml")
 STEP_ID = "id: coverage-build"
 
@@ -392,6 +425,8 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--graph", type=Path, default=ROOT / "docs" / "argument_continuations_graph.json.gz")
     parser.add_argument("--root", type=Path, default=ROOT)
     parser.add_argument("--check", action="store_true")
+    parser.add_argument("--paper", type=Path, help="a LaTeX file whose generated_argument_frontier_macros "
+                        "region receives the frontier's counts")
     args = parser.parse_args(argv)
     graph = load_graph(args.graph)
     papers = paper_rows(args.root)
@@ -414,6 +449,9 @@ def main(argv: list[str] | None = None) -> int:
     }
     files[args.root / "docs" / "argument_frontier.json"] = json.dumps(manifest, indent=1, ensure_ascii=False) + "\n"
     files[args.root / "docs" / "ARGUMENT_FRONTIER.md"] = render_markdown(manifest) + "\n"
+    if args.paper:
+        files[args.paper] = with_paper_macros(args.paper.read_text(encoding="utf-8"),
+                                              paper_macros(manifest, per_problem))
     workflow = args.root / WORKFLOW
     if workflow.exists():
         modules = sorted(f"ErdosProblems.ArgumentGraph.Derived.{p}" for p in per_problem)
