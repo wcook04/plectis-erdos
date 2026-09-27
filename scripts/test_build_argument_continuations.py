@@ -332,6 +332,31 @@ class ToyGraphWithBattery(unittest.TestCase):
             self.assertEqual(reloaded.disguise_classes(), fresh.disguise_classes())
 
 
+class Generalisations(unittest.TestCase):
+    """A kernel-checked generalisation row supplies its generalised statement,
+    and its theorem is a synthetic producer credited to the original; a refused
+    or unchecked row is only counted."""
+
+    def test_generalised_statement_is_supplied_and_credited(self) -> None:
+        rows = list(builder.read_export(FIXTURE))
+        name = "UseToy.goal_of_strong._argument_generalisation_0"
+        rows.append({"record": "generalisation", "theorem": "UseToy.goal_of_strong", "literal": "93",
+                     "literal_type": "Nat", "status": "generalised", "uniform": False, "witness": "94",
+                     "generalised": name, "type": "∀ (v : Nat), 5 < v → UseToy.Goal", "key": "gen000000000001",
+                     "obligations": [{"type": "5 < v", "closed_key": None}], "discharged": [],
+                     "kernel_checked": True})
+        rows.append({"record": "generalisation", "theorem": "UseToy.goal_of_strong", "literal": "7",
+                     "status": "refused", "reason": "pinned", "kernel_checked": False})
+        graph = builder.Graph(rows)
+        graph.analyse()
+        key = graph.canon("gen000000000001")
+        self.assertIn(key, graph.supplied)
+        self.assertEqual(graph.reductions[graph.witness[key]][1], name)
+        self.assertEqual(graph.synthetic[name], "UseToy.goal_of_strong")
+        self.assertEqual([e["obligations"] for e in graph.generalisations], [["5 < v"]])
+        self.assertEqual(graph.generalisations_refused, 1)
+
+
 class ToyWeakenings(unittest.TestCase):
     """Used consequences on the toy (namespace UseToy): goal_of_strong uses the
     open input Strong only through weak_of_strong, and a theorem proves Weak;
@@ -557,6 +582,51 @@ class Idle(unittest.TestCase):
         graph = graph_of(rows)
         self.assertIn("∀ n, Fresh n", graph.supplied)
         self.assertEqual(graph.idle[0]["reason"], "conclusion mentions a binder")
+
+
+class CombinedExports(unittest.TestCase):
+    TREE = "a" * 40
+    TELESCOPES = [theorem("T.use", [hyp(0, "S1"), hyp(1, "S2"), hyp(2, "S3")], "C"),
+                  theorem("L.p", [], "S1")]
+
+    def write(self, directory: Path, rows: list[dict], tree: str | None) -> Path:
+        directory.mkdir()
+        path = write_stream(directory, rows)
+        if tree:
+            (directory / builder.LEAN_TREE_FILE).write_text(tree + "\n", encoding="utf-8")
+        return path
+
+    def test_searches_add_up_and_checked_rows_survive(self) -> None:
+        # The earlier export found a producer for S1 and a battery proof of S2;
+        # the later one searched S1 again without finding one, and S3.
+        early = [*self.TELESCOPES, statement("S1"), match("S1", "L.p"), statement("S2"),
+                 {"record": "battery", "statement": "S2", "tactic": "decide", "kernel_checked": True}]
+        late = [*self.TELESCOPES, statement("S1"), statement("S3")]
+        with tempfile.TemporaryDirectory() as tmp:
+            a = self.write(Path(tmp) / "a", early, self.TREE)
+            b = self.write(Path(tmp) / "b", late, self.TREE)
+            rows = builder.read_exports([a, b], [self.TREE, self.TREE])
+            projection, payload = builder.build([a, b], Path(tmp))
+        self.assertEqual(sum(1 for r in rows if r.get("record") == "theorem"), 2)
+        self.assertEqual(rows[-1]["statements_searched_combined"], 3)
+        self.assertEqual(len(rows[-1]["combined_summaries"]), 2)
+        graph = builder.Graph(rows)
+        graph.analyse()
+        self.assertIn("S1", graph.supplied)
+        self.assertIn("S2", graph.supplied)
+        self.assertEqual(graph.status("S3"), "open")
+        self.assertEqual(len(payload["source"]["combined_exports"]), 2)
+        self.assertEqual(payload["source"]["lean_tree"], self.TREE)
+        self.assertEqual(projection["summary"]["theorems"], 2)
+
+    def test_exports_of_different_trees_are_refused(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            a = self.write(Path(tmp) / "a", [*self.TELESCOPES, statement("S1")], self.TREE)
+            b = self.write(Path(tmp) / "b", [*self.TELESCOPES, statement("S3")], "b" * 40)
+            c = self.write(Path(tmp) / "c", [*self.TELESCOPES, statement("S3")], None)
+            for pair in ([a, b], [a, c]):
+                with self.assertRaises(SystemExit):
+                    builder.build(pair, Path(tmp))
 
 
 class Build(unittest.TestCase):
