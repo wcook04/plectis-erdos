@@ -7550,6 +7550,9 @@ $\binom{2a+1}{a}\le4^a$, so
 $\#\{p\text{ prime}:a<p\le2a+1\}\log a\le a\log4+\log a$, the fibre bound
 becomes $(2\log4+o(1))X/(m\log X)$, and the count is at most
 $(3\log4/1000+o(1))X$ with $3\log4/1000<0.0042$.
+The proof uses $\eta=1/1000$ only through $3\eta\log4<1/100$, so Lean checks
+the budget with no input for every $\eta$ with $0<\eta<1/(300\log4)$
+(\href{\laterepobase/lean/ErdosProblems/Erdos249/PaperCompleteR21/ExcludedCofactorEstimate.lean\#L930}{Lean proof}).
 
 The first element of $B(1/5)$ is
 $30030=2\cdot3\cdot5\cdot7\cdot11\cdot13$, and

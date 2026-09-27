@@ -447,8 +447,6 @@ def liftInnerAux : Nat → Placement FVarId → Expr → Expr → MetaM Expr
     | _, _ => return e
 end
 
-/-- The docstring of a factored theorem: where each moved hypothesis went, claims
-numbered from 1 in the order the conclusion states them. -/
 /-- Per guard of a placement, the first and last claim number below its node (claims
 numbered from `k` in the order the conclusion states them); and the next number. -/
 def Placement.claimSpans : Placement FVarId → Nat → Array (FVarId × Nat × Nat) × Nat
@@ -681,8 +679,8 @@ def factorTheoremAux : Nat → Name → Bool → FactorM (Except String LibFacto
       match ← addChecked newName info.levelParams type value doc with
       | .error e => return .error s!"kernel rejected {newName}: {e}"
       | .ok () =>
-        modify fun s => { s with added := s.added.push newName,
-                              placements := s.placements ++ placed.map fun (h, w) => (newName, h, w) }
+        let rows : Array (Name × String × String) := placed.map fun (h, w) => (newName, h, w)
+        modify fun s => { s with added := s.added.push newName, placements := s.placements ++ rows }
         let index : FVarId → Nat := fun h => (order.findIdx? (· == h)).getD 0
         let keepIdx := (Array.range xs.size).filter fun j => !moved.contains order[j]!
         return .ok { name := newName, keep := keepIdx, place := inner.map index, deep }
