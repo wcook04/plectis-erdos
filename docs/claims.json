@@ -8424,6 +8424,7 @@
             "ErdosProblems.Erdos1041.PaperCompleteR21.ConstantFactorAreaCriteria",
             "ErdosProblems.Erdos1041.PaperCompleteR21.CriticalValueSeparationTransport",
             "ErdosProblems.Erdos1041.PaperCompleteR21.HyperbolicLawOfCosines",
+            "ErdosProblems.Erdos1041.PaperCompleteR21.LowCriticalScaleTransport",
             "ErdosProblems.Erdos1041.PaperCompleteR21.SeparationParent",
             "ErdosProblems.Erdos1041.PaperCompleteR21.SubcriticalPerimeterPath"
           ]
@@ -8443,10 +8444,8 @@
           "role": "Lean proof module",
           "imports": [
             "ErdosProblems.ArgumentGraph.Derive",
-            "ErdosProblems.Erdos243.PaperCompleteR21.AmplifiedRecordEquivalence",
             "ErdosProblems.Erdos243.PaperCompleteR21.ExactOrbitRecordDichotomy",
             "ErdosProblems.Erdos243.PaperCompleteR21.MaximalGapConstant",
-            "ErdosProblems.Erdos243.PaperCompleteR21.RecordJumpEnergySeries",
             "ErdosProblems.Erdos243.PaperCompleteR21.ReducedDenominatorPrimePowers",
             "ErdosProblems.Erdos243.PaperCompleteR21.ReducedStepLocalArithmetic",
             "ErdosProblems.Erdos243.PaperCompleteR21.WindowAvoidance"
@@ -8458,8 +8457,11 @@
           "role": "Lean proof module",
           "imports": [
             "ErdosProblems.ArgumentGraph.Derive",
+            "Erdos249257.LcmConeFlatness",
+            "Erdos249257.TotientActualLcmTopEdgeStaircase",
             "Erdos249257.TotientCarryKernelRigidity",
             "Erdos249257.TotientTailCarryPeriod",
+            "Erdos249257.TotientTailPeriodKiller",
             "ErdosProblems.Erdos249.PaperCompleteR20.LcmGridCorrespondence",
             "ErdosProblems.Erdos249.PaperCompleteR21.DivisorChannelSplitAndSeamDoubling",
             "ErdosProblems.Erdos249.PaperCompleteR21.DyadicSectionBasisAndRationalCarry",
@@ -8476,7 +8478,9 @@
             "ErdosProblems.Erdos249.PaperCompleteR21.PhaseEnergyAndForeignResidueProjection",
             "ErdosProblems.Erdos249.PaperCompleteR21.RationalTailPeriodWitnesses",
             "ErdosProblems.Erdos249.PaperCompleteR21.ScalarLocalisationAndInversePhaseGauge",
-            "ErdosProblems.Erdos249.PaperCompleteR21.TailCarryPeriodAndRankFloor"
+            "ErdosProblems.Erdos249.PaperCompleteR21.SimultaneousShiftCertificateDepth",
+            "ErdosProblems.Erdos249.PaperCompleteR21.TailCarryPeriodAndRankFloor",
+            "ErdosProblems.Erdos249.PaperCompleteR21.TopEdgeChainPaperBand"
           ]
         },
         {
@@ -8485,10 +8489,13 @@
           "role": "Lean proof module",
           "imports": [
             "ErdosProblems.ArgumentGraph.Derive",
+            "ErdosProblems.Erdos251.ActualPrimePaperR11",
+            "ErdosProblems.Erdos251.NonconcentrationConsequencesR11",
             "ErdosProblems.Erdos251.PaperCompleteR20.FiniteSeparation",
             "ErdosProblems.Erdos251.PaperCompleteR21.JointPrimeGapCountermodel",
             "ErdosProblems.Erdos251.PaperCompleteR21.PerturbedPrimePositions",
-            "ErdosProblems.Erdos251.PaperCompleteR21.TwoWindowSparsity"
+            "ErdosProblems.Erdos251.PaperCompleteR21.TwoWindowSparsity",
+            "ErdosProblems.Erdos251.PrimeGapDyadicTail"
           ]
         },
         {
@@ -8497,18 +8504,25 @@
           "role": "Lean proof module",
           "imports": [
             "ErdosProblems.ArgumentGraph.Derive",
+            "Erdos249257.BooleanMobiusCriticalCapacityCofinal",
+            "Erdos249257.BooleanMobiusSkipRowCofinal",
             "Erdos249257.CofinalStripReturn",
+            "Erdos249257.GreedyAchievementSet",
             "Erdos249257.HalfCarryReachability",
-            "Erdos249257.HalfTrappingReturnCarry",
+            "Erdos249257.HalfCylinderFullShellSeamBridge",
+            "Erdos249257.HalfCylinderLargestSkipInduction",
+            "Erdos249257.HalfCylinderMiddleCarryLowerBound",
             "Erdos249257.SuffixCylinderTerminalOnlyBridge",
             "Erdos249257.TwentyOneQuotientGreedy",
             "ErdosProblems.Erdos257.PaperCompleteR21.ArithmeticCounterexampleAssembly",
-            "ErdosProblems.Erdos257.PaperCompleteR21.CompatibleFiniteRowFamily",
+            "ErdosProblems.Erdos257.PaperCompleteR21.DyadicBandAndTwoSidedBounds",
             "ErdosProblems.Erdos257.PaperCompleteR21.EventualNonnegativeMargin",
             "ErdosProblems.Erdos257.PaperCompleteR21.FeedbackRowStripWitnessAllDepths",
             "ErdosProblems.Erdos257.PaperCompleteR21.GreedyOrbitNoTies",
             "ErdosProblems.Erdos257.PaperCompleteR21.LogarithmicInitialInterval",
             "ErdosProblems.Erdos257.PaperCompleteR21.MersenneChannelSurvivalAllHeights",
+            "ErdosProblems.Erdos257.PaperCompleteR21.ResetSqrtEscapeHalfMembership",
+            "ErdosProblems.Erdos257.PaperCompleteR21.SeamEscapeAndTerminalStrip",
             "ErdosProblems.Erdos257.PaperCompleteR21.ShortWindowDivisorPhase",
             "ErdosProblems.Erdos257.PaperCompleteR21.SkipSafetyAndDivisorZeroRuns",
             "ErdosProblems.Erdos257.PaperCompleteR21.TerminalStripExactRowGap"
