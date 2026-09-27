@@ -35,6 +35,7 @@ TESTS = (
     "test_check_push.py",
     "test_ci_contracts.py",
     "test_ci_release.py",
+    "test_check_release_environment.py",
 )
 WORKFLOW_JOBS = {
     "lean.yml": ("build", "external-verification"),

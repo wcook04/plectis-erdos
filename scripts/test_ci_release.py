@@ -85,12 +85,12 @@ class ReleaseParityTests(unittest.TestCase):
             self.assertTrue(release.registry_errors(commands))
 
     def test_admission_job_allows_local_deadline_and_setup(self):
-        import check_push
+        import refresh_projections
         import re
         source = (release.ROOT / '.github/workflows/lean.yml').read_text()
         body = source.split('  change_scope:\n', 1)[1].split('\n  build:', 1)[0]
         minutes = int(re.search(r'timeout-minutes: (\d+)', body).group(1))
-        self.assertGreaterEqual(minutes * 60, check_push.PREFLIGHT_TIMEOUT_SECONDS + 120)
+        self.assertGreaterEqual(minutes * 60, refresh_projections.PREFLIGHT_BUDGET_SECONDS + 120)
 
     def test_actions_annotation_cannot_create_another_command(self):
         value = release.escape_annotation('bad%\n::warning::surprise\r')

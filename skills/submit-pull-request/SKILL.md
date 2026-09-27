@@ -88,21 +88,39 @@ dependent job can satisfy a required check; its failed upstream admission must
 therefore be required itself. Preserve the GitHub Actions application binding
 and strict current-base checks when updating protection.
 
-Install the repository's push guard once per worktree:
+Install the shared guard once for the repository, including its worktrees:
 
 ```sh
-python3 scripts/check_push.py --install
+python3 scripts/check_push.py --install-shared
 ```
 
-It runs the shared projection preflight in an isolated clone of each outgoing
-commit. An uncommitted repair cannot validate a stale commit, and pushing an
-older ref checks that ref rather than HEAD. Existing custom hooks are preserved;
-integrate the guard with them if installation reports a conflict. For branch
-updates it also observes the destination's current `main`. If that base has
-advanced, merge or rebase it, regenerate affected projections with their owning
-builders, and commit the result before retrying. The guard fetches a missing
-base object without moving local refs, `FETCH_HEAD`, the index or your worktree.
-GitHub still validates any base change that happens after this observation.
+After committing, complete validation before opening a push connection:
+
+```sh
+python3 scripts/check_push.py --prepare HEAD
+```
+
+Use the pinned release interpreter provisioned by `scripts/run_release_check.py`.
+If `scripts/check_release_ref.py` already passed all gates for that exact commit,
+reuse its JSON receipt with `--prepare HEAD --release-receipt <path>`. The hook
+only verifies the immutable commit, tree and validator identity against that
+completed admission. A new commit or changed validator requires new admission;
+a working-tree repair cannot certify an older outgoing ref. Never run the long
+release suite inside the transport hook: idle SSH connections can expire before
+validation finishes. Existing custom hooks are preserved.
+
+For a stacked PR, pass its actual base when preparing:
+`--base-ref refs/heads/<parent> --destination-branch <branch>`.
+Otherwise the default is `refs/heads/main`. The hook observes that remote base
+again during push. If it advanced, integrate it, regenerate affected projections
+with their owners, commit, and validate again. A missing base object is fetched
+without moving local refs, `FETCH_HEAD`, the index or worktree. GitHub validates
+any base change after this observation.
+
+Stage new source files before running inventory-based builders: their Git-backed
+inventory intentionally excludes untracked files. Validate the committed snapshot
+again after generation. Proof trust and repository shape also run in the cheap
+preflight, before dependency provisioning or compilation.
 
 After the final source and projection edits, run
 `python3 scripts/refresh_projections.py --preflight` before preparing expensive

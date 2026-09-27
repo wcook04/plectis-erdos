@@ -85,6 +85,25 @@ class ContractTests(unittest.TestCase):
                 entry.unlink()
                 self.assertEqual(check_release.main(["--route-budgets-only"]), 1)
 
+    def test_trust_cli_rejects_partial_source_without_release_packages(self):
+        import json
+        import check_release
+        self.assertIn("--trust-only", refresh_projections.PREFLIGHT_CHECKS["scripts/check_release.py"])
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp)
+            (root / "docs").mkdir()
+            (root / "docs/claims.json").write_text(json.dumps({}))
+            source = root / "Fixture.lean"
+            with patch.object(check_release, "ROOT", root), \
+                 patch.object(check_release, "library_source_paths", return_value=[source]), \
+                 patch.object(check_release, "check_root_layout"), \
+                 patch.object(check_release, "ERRORS", []), \
+                 patch.object(check_release, "missing_release_dependencies", side_effect=AssertionError("late packages")), \
+                 contextlib.redirect_stdout(io.StringIO()):
+                source.write_text("partial def bad : Nat := bad\n")
+                self.assertEqual(check_release.main(["--trust-only"]), 1)
+                self.assertTrue(any("partial def" in error for error in check_release.ERRORS))
+
     def test_actual_workflow_and_mutations(self):
         source = workflow.WORKFLOW.read_text()
         workflow.require_evidence_before_expensive_jobs(source)

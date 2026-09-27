@@ -6,6 +6,8 @@
 from __future__ import annotations
 
 import os
+import json
+from unittest import mock
 import shutil
 import subprocess
 import sys
@@ -57,6 +59,8 @@ class PushTests(unittest.TestCase):
                 "raise SystemExit(0 if Path('source.txt').read_bytes() == "
                 "Path('projection.txt').read_bytes() else 1)\n"
             )
+            (root / "scripts/check_release.py").write_text(
+                "import runpy\nrunpy.run_path('scripts/refresh_projections.py', run_name='__main__')\n")
             (root / ".githooks").mkdir()
             hook = root / ".githooks/pre-push"
             shutil.copyfile(Path(check_push.__file__).parents[1] / ".githooks/pre-push", hook)
@@ -67,7 +71,12 @@ class PushTests(unittest.TestCase):
             git("commit", "-qm", "current fixture")
             subprocess.run([sys.executable, "scripts/check_push.py", "--install"],
                            cwd=root, env=env, check=True, capture_output=True)
+            def prepare(commit="HEAD", check=True):
+                return subprocess.run([sys.executable, "scripts/check_push.py", "--prepare", commit],
+                                      cwd=root, env=env, text=True, capture_output=True, check=check)
             good = git("rev-parse", "HEAD").stdout.strip()
+            self.assertNotEqual(git("push", "origin", "HEAD:refs/heads/review", check=False).returncode, 0)
+            prepare()
             self.assertEqual(git("push", "origin", "HEAD:refs/heads/review", check=False).returncode, 0)
 
             (root / "source.txt").write_text("after\n")
@@ -83,7 +92,9 @@ class PushTests(unittest.TestCase):
             self.assertEqual((root / "projection.txt").read_text(), "after\n")
 
             git("add", "projection.txt")
+            self.assertNotEqual(prepare(stale, check=False).returncode, 0)
             git("commit", "-qm", "commit repair")
+            prepare()
             self.assertEqual(git("push", "origin", "HEAD:refs/heads/review", check=False).returncode, 0)
             # Validate the ref being pushed even when HEAD is good.
             self.assertNotEqual(git("push", "origin", f"{stale}:refs/heads/old", check=False).returncode, 0)
@@ -104,6 +115,9 @@ class PushTests(unittest.TestCase):
             peer_git("commit", "-qm", "advance destination main")
             peer_git("push", "origin", "main")
             new_base = peer_git("rev-parse", "HEAD").stdout.strip()
+            peer_git("push", "origin", f"{old_base}:refs/heads/parent")
+            git("config", "branch.stacked.plectisAdmissionBase", "refs/heads/parent")
+            self.assertEqual(git("push", "origin", "HEAD:refs/heads/stacked", check=False).returncode, 0)
             (root / "scratch.txt").write_text("preserve local work\n")
             fetch_head = root / ".git/FETCH_HEAD"
             fetch_head.write_text("preserve fetch receipt\n")
@@ -117,7 +131,55 @@ class PushTests(unittest.TestCase):
             # The observed object was fetched without moving any local ref.
             git("cat-file", "-e", new_base)
             git("merge", "--no-edit", new_base)
+            prepare()
             self.assertEqual(git("push", "origin", "HEAD:refs/heads/review", check=False).returncode, 0)
+
+
+            # One shared versioned guard covers another worktree, using that
+            # worktree's Git root rather than the copied driver's directory.
+            git("config", "--worktree", "--unset", "core.hooksPath")
+            subprocess.run([sys.executable, "scripts/check_push.py", "--install-shared"],
+                           cwd=root, env=env, check=True, capture_output=True)
+            sibling = Path(temp) / "sibling"
+            git("worktree", "add", "-b", "sibling", str(sibling))
+            pushed = subprocess.run(["git", "push", "origin", "HEAD:refs/heads/sibling"],
+                                    cwd=sibling, env=env, text=True, capture_output=True)
+            self.assertEqual(pushed.returncode, 0, pushed.stderr)
+            # A changed validation driver invalidates its old admission.
+            installed = Path(git("config", "--get", "core.hooksPath").stdout.strip())
+            bundled = next(installed.glob("*/check_push.py"))
+            bundled.write_text(bundled.read_text() + "\n# revised validator\n")
+            rejected = subprocess.run(["git", "push", "origin", "HEAD:refs/heads/uncertified"],
+                                      cwd=sibling, env=env, text=True, capture_output=True)
+            self.assertNotEqual(rejected.returncode, 0)
+            self.assertIn("no current admission", rejected.stderr)
+            git("config", "--local", "core.hooksPath", "/custom/preserve")
+            refused = subprocess.run([sys.executable, "scripts/check_push.py", "--install-shared"],
+                                     cwd=root, env=env, text=True, capture_output=True)
+            self.assertNotEqual(refused.returncode, 0)
+            self.assertEqual(git("config", "--get", "core.hooksPath").stdout.strip(), "/custom/preserve")
+
+    def test_failed_incomplete_or_other_commit_receipts_never_admit(self):
+        with tempfile.TemporaryDirectory() as temp:
+            path = Path(temp) / "release.json"
+            passed = {"schema": check_push.snapshot.SCHEMA, "resolved_commit": "a" * 40,
+                      "status": "passed", "gate_exit_code": 0, "failed_gate_count": 0,
+                      "snapshot_posture": "clean_committed_clone_excludes_caller_worktree_changes",
+                      "release_commands": [list(c) for c in check_push.snapshot.RELEASE_COMMANDS],
+                      "gate_coverage": {"all_configured_gates_completed": True,
+                                        "completed_gate_count": len(check_push.snapshot.RELEASE_COMMANDS)}}
+            with mock.patch.object(check_push.snapshot, "resolve_commit", return_value="a" * 40), \
+                 mock.patch.object(check_push, "save_admission") as save:
+                for change in ({"status": "failed"}, {"resolved_commit": "b" * 40},
+                               {"gate_coverage": {}}, {"gate_exit_code": 1},
+                               {"failed_gate_count": 1}, {"release_commands": []}):
+                    path.write_text(json.dumps({**passed, **change}))
+                    with self.assertRaises(ValueError):
+                        check_push.prepare_commit("HEAD", path)
+                save.assert_not_called()
+                path.write_text(json.dumps(passed))
+                self.assertEqual(check_push.prepare_commit("HEAD", path), 0)
+                save.assert_called_once()
 
 
 if __name__ == "__main__":

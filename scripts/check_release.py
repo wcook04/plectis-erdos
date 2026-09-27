@@ -246,7 +246,6 @@ def finish_independent_checks(
 def late_check_commands() -> dict[str, list[str]]:
     """Read-only suites that may overlap the release gate's middle section."""
     return {
-        "github_release_contracts": [sys.executable, str(ROOT / "scripts" / "check_ci_release.py")],
         # These are the two long readers in this two-worker pool. Start both
         # immediately; queuing cold-clone checks behind short diagnostics left
         # several seconds of avoidable work on the release critical path.
@@ -255,6 +254,7 @@ def late_check_commands() -> dict[str, list[str]]:
             sys.executable,
             str(ROOT / "scripts" / "test_cold_clone_comprehension.py"),
         ],
+        "github_release_contracts": [sys.executable, str(ROOT / "scripts" / "check_ci_release.py")],
         "semantic_queries": [
             sys.executable,
             str(ROOT / "scripts" / "test_query_semantic_tiers.py"),
@@ -1425,8 +1425,10 @@ def main(argv: list[str] | None = None) -> int:
         "--route-budgets-only", action="store_true",
         help="check first-contact byte budgets without the late corpus query suites",
     )
+    parser.add_argument("--trust-only", action="store_true",
+                        help="check proof trust and repository shape without release packages or builds")
     args = parser.parse_args(argv)
-    if args.source_identity_only or args.route_budgets_only:
+    if args.source_identity_only or args.route_budgets_only or args.trust_only:
         if args.singleflight_worker:
             parser.error("--source-identity-only cannot run a release worker")
         read.cache_clear()
@@ -1444,6 +1446,14 @@ def main(argv: list[str] | None = None) -> int:
             errors.extend(budget_errors)
             if not budget_errors:
                 print("first-contact budgets: current")
+        if args.trust_only:
+            check_proof_trust()
+            check_root_layout()
+            errors.extend(ERRORS)
+            for error in ERRORS:
+                print(f"proof trust / root layout: FAIL {error}")
+            if not ERRORS:
+                print("proof trust / root layout: current")
         return int(bool(errors))
     missing = missing_release_dependencies()
     if missing:
