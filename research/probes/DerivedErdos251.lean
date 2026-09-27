@@ -203,6 +203,13 @@ def deriveConjuncts (name : Name) : MetaM (Except String (Array Name)) := do
     let claims := conclusionClaims body
     if claims.size < 2 then
       return Except.error "its conclusion is neither a conjunction nor an equivalence"
+    let mut hasPropHypothesis := false
+    for x in xs do
+      let decl ← x.fvarId!.getDecl
+      if decl.binderInfo != .instImplicit && (← isProp decl.type) then
+        hasPropHypothesis := true
+    unless hasPropHypothesis do
+      return Except.error "it has no proposition hypothesis to leave out"
     let proof ← instantiateMVars (value.beta xs)
     let mut out : Array (Nat × Expr × Expr × Array String) := #[]
     let mut uses : Array String := #[]
@@ -723,12 +730,9 @@ derive_idle ErdosProblems.Erdos251.PaperCompleteR20.finite_separation_complete
 derive_idle ErdosProblems.Erdos251.PaperCompleteR20.one_tail_signed_certificate
 derive_idle ErdosProblems.Erdos251.PaperCompleteR21.long_joint_prime_gap_countermodel
 derive_weakening ErdosProblems.Erdos251.PaperCompleteR21.long_joint_prime_gap_countermodel
-derive_frontier ErdosProblems.Erdos251.PaperCompleteR21.long_joint_prime_gap_countermodel
 derive_weakening ErdosProblems.Erdos251.PaperCompleteR21.prime_gap_two_window_sparse
-derive_frontier ErdosProblems.Erdos251.PaperCompleteR21.prime_gap_two_window_sparse
 derive_weakening ErdosProblems.Erdos251.PaperCompleteR21.short_joint_prime_gap_countermodel
 derive_frontier ErdosProblems.Erdos251.PaperCompleteR21.short_joint_prime_gap_countermodel
-derive_frontier ErdosProblems.Erdos251.PaperCompleteR21.short_joint_prime_gap_countermodel at ErdosProblems.Erdos251.PaperCompleteR21.long_joint_prime_gap_countermodel
 derive_weakening ErdosProblems.Erdos251.irrational_tsum_primeDyadicTerm_iff_primeGap
 derive_frontier ErdosProblems.Erdos251.irrational_tsum_primeDyadicTerm_iff_primeGap
-derive_frontier ErdosProblems.Erdos251.irrational_tsum_primeDyadicTerm_iff_primeGap at ErdosProblems.Erdos251.tsum_primeDyadicTerm_eq_two_add_primeGap
+derive_frontier ErdosProblems.Erdos251.irrational_tsum_primeDyadicTerm_iff_primeGap at ErdosProblems.Erdos251.tsum_primeDyadicTerm_eq_two_add_primeGap using ErdosProblems.Erdos251.tsum_primeDyadicTerm_eq_two_add_primeGap_unconditional ErdosProblems.Erdos251.tsum_primeDyadicTerm_eq_two_add_primeGap ErdosProblems.Erdos251.tsum_primeDisplayedDyadicTerm_eq_four_add_two_primeGap

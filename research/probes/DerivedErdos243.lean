@@ -1,8 +1,6 @@
 import Lean
-import ErdosProblems.Erdos243.PaperCompleteR21.AmplifiedRecordEquivalence
 import ErdosProblems.Erdos243.PaperCompleteR21.ExactOrbitRecordDichotomy
 import ErdosProblems.Erdos243.PaperCompleteR21.MaximalGapConstant
-import ErdosProblems.Erdos243.PaperCompleteR21.RecordJumpEnergySeries
 import ErdosProblems.Erdos243.PaperCompleteR21.ReducedDenominatorPrimePowers
 import ErdosProblems.Erdos243.PaperCompleteR21.ReducedStepLocalArithmetic
 import ErdosProblems.Erdos243.PaperCompleteR21.WindowAvoidance
@@ -203,6 +201,13 @@ def deriveConjuncts (name : Name) : MetaM (Except String (Array Name)) := do
     let claims := conclusionClaims body
     if claims.size < 2 then
       return Except.error "its conclusion is neither a conjunction nor an equivalence"
+    let mut hasPropHypothesis := false
+    for x in xs do
+      let decl ← x.fvarId!.getDecl
+      if decl.binderInfo != .instImplicit && (← isProp decl.type) then
+        hasPropHypothesis := true
+    unless hasPropHypothesis do
+      return Except.error "it has no proposition hypothesis to leave out"
     let proof ← instantiateMVars (value.beta xs)
     let mut out : Array (Nat × Expr × Expr × Array String) := #[]
     let mut uses : Array String := #[]

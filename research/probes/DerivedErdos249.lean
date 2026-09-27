@@ -220,6 +220,13 @@ def deriveConjuncts (name : Name) : MetaM (Except String (Array Name)) := do
     let claims := conclusionClaims body
     if claims.size < 2 then
       return Except.error "its conclusion is neither a conjunction nor an equivalence"
+    let mut hasPropHypothesis := false
+    for x in xs do
+      let decl ← x.fvarId!.getDecl
+      if decl.binderInfo != .instImplicit && (← isProp decl.type) then
+        hasPropHypothesis := true
+    unless hasPropHypothesis do
+      return Except.error "it has no proposition hypothesis to leave out"
     let proof ← instantiateMVars (value.beta xs)
     let mut out : Array (Nat × Expr × Expr × Array String) := #[]
     let mut uses : Array String := #[]
@@ -751,35 +758,25 @@ derive_idle ErdosProblems.Erdos249.PaperCompleteR21.residueOffset_of_dvd
 derive_idle ErdosProblems.Erdos249.PaperCompleteR21.twoAtom_strict_logConcave
 derive_weakening ErdosProblems.Erdos249.PaperCompleteR20.lcm_grid_flatness
 derive_frontier ErdosProblems.Erdos249.PaperCompleteR20.lcm_grid_flatness
-derive_frontier ErdosProblems.Erdos249.PaperCompleteR20.lcm_grid_flatness at Erdos249257.TotientTailPeriodKiller.rational_totient_series_forces_lcm_cone_flatness
 derive_weakening ErdosProblems.Erdos249.PaperCompleteR20.lcm_grid_fractional_parts
 derive_frontier ErdosProblems.Erdos249.PaperCompleteR20.lcm_grid_fractional_parts
-derive_frontier ErdosProblems.Erdos249.PaperCompleteR20.lcm_grid_fractional_parts at ErdosProblems.Erdos249.PaperCompleteR20.lcm_grid_flatness
 derive_frontier ErdosProblems.Erdos249.PaperCompleteR20.lcm_grid_fractional_parts at Erdos249257.TotientTailPeriodKiller.rational_totient_series_forces_lcm_cone_flatness
 derive_weakening ErdosProblems.Erdos249.PaperCompleteR21.exists_simultaneous_depth_of_irrational
-derive_frontier ErdosProblems.Erdos249.PaperCompleteR21.exists_simultaneous_depth_of_irrational
 derive_weakening ErdosProblems.Erdos249.PaperCompleteR21.exists_simultaneous_depth_succ_of_irrational
 derive_frontier ErdosProblems.Erdos249.PaperCompleteR21.exists_simultaneous_depth_succ_of_irrational
-derive_frontier ErdosProblems.Erdos249.PaperCompleteR21.exists_simultaneous_depth_succ_of_irrational at ErdosProblems.Erdos249.PaperCompleteR21.exists_simultaneous_depth_of_irrational
 derive_weakening ErdosProblems.Erdos249.PaperCompleteR21.irrational_of_paperAdjacentSuffixMidbandSupply
-derive_frontier ErdosProblems.Erdos249.PaperCompleteR21.irrational_of_paperAdjacentSuffixMidbandSupply
 derive_weakening ErdosProblems.Erdos249.PaperCompleteR21.lambert_id_rung_transcendental
 derive_frontier ErdosProblems.Erdos249.PaperCompleteR21.lambert_id_rung_transcendental
-derive_frontier ErdosProblems.Erdos249.PaperCompleteR21.lambert_id_rung_transcendental at ErdosProblems.Erdos249.PaperCompleteR21.transcendental_sigma_series
 derive_weakening ErdosProblems.Erdos249.PaperCompleteR21.paperAdjacentSuffixMidbandSupply_of_flexibleActualTopEdgeMagnitude
-derive_frontier ErdosProblems.Erdos249.PaperCompleteR21.paperAdjacentSuffixMidbandSupply_of_flexibleActualTopEdgeMagnitude
 derive_weakening ErdosProblems.Erdos249.PaperCompleteR21.paperAdjacentSuffixMidbandSupply_of_oddGuardTopEdgeHalfWordBand
-derive_frontier ErdosProblems.Erdos249.PaperCompleteR21.paperAdjacentSuffixMidbandSupply_of_oddGuardTopEdgeHalfWordBand
 derive_weakening ErdosProblems.Erdos249.PaperCompleteR21.prop_badcof
 derive_frontier ErdosProblems.Erdos249.PaperCompleteR21.prop_badcof
 derive_frontier ErdosProblems.Erdos249.PaperCompleteR21.prop_badcof at ErdosProblems.Erdos249.PaperCompleteR21.ExcludedCofactor.eventually_card_excluded_le_of_upper
 derive_frontier ErdosProblems.Erdos249.PaperCompleteR21.prop_badcof at ErdosProblems.Erdos249.PaperCompleteR21.ExcludedCofactor.eventually_card_primes_dyadic_le
 derive_weakening ErdosProblems.Erdos249.PaperCompleteR21.rational_forces_four_tail_diagonals_integral
 derive_frontier ErdosProblems.Erdos249.PaperCompleteR21.rational_forces_four_tail_diagonals_integral
-derive_frontier ErdosProblems.Erdos249.PaperCompleteR21.rational_forces_four_tail_diagonals_integral at Erdos249257.TotientTailPeriodKiller.rational_totient_series_forces_lcm_cone_flatness
 derive_weakening ErdosProblems.Erdos249.PaperCompleteR21.rational_forces_period_multiple_integrality
-derive_frontier ErdosProblems.Erdos249.PaperCompleteR21.rational_forces_period_multiple_integrality
 derive_weakening ErdosProblems.Erdos249.PaperCompleteR21.rational_forces_pulse_class_integrality
-derive_frontier ErdosProblems.Erdos249.PaperCompleteR21.rational_forces_pulse_class_integrality
 derive_weakening ErdosProblems.Erdos249.PaperCompleteR21.transcendental_sigma_series
-derive_frontier ErdosProblems.Erdos249.PaperCompleteR21.transcendental_sigma_series
+derive_conjuncts ErdosProblems.Erdos249.PaperCompleteR21.lambert_id_rung_transcendental
+derive_conjuncts ErdosProblems.Erdos249.PaperCompleteR21.prop_badcof
