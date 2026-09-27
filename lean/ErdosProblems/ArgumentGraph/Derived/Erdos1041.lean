@@ -38,13 +38,3 @@ derive_frontier ErdosProblems.Erdos1041.PaperCompleteR21.discSep_uniform_radius
 derive_weakening ErdosProblems.Erdos1041.PaperCompleteR21.scaledLowCriticalFiveHalves_of_lowCritical
 derive_frontier ErdosProblems.Erdos1041.PaperCompleteR21.scaledLowCriticalFiveHalves_of_lowCritical
 derive_weakening ErdosProblems.Erdos1041.PaperCompleteR21.scaledLowCritical_of_lowCritical
-
--- Derivations the export does not decide in advance: conjuncts a proof may establish
--- without an open hypothesis, and frontiers with the consequences the graph records as
--- proved by corpus theorems discharged. A command that adds nothing warns.
-set_option argumentGraph.strict false in derive_conjuncts ErdosProblems.Erdos1041.PaperCompleteR21.Arity.arity_not_capacity
-set_option argumentGraph.strict false in derive_conjuncts ErdosProblems.Erdos1041.PaperCompleteR21.cfa_constant_factor_path
-set_option argumentGraph.strict false in derive_conjuncts ErdosProblems.Erdos1041.PaperCompleteR21.discSep_cubic_six_fifths
-set_option argumentGraph.strict false in derive_conjuncts ErdosProblems.Erdos1041.PaperCompleteR21.discSep_separation_long
-set_option argumentGraph.strict false in derive_conjuncts ErdosProblems.Erdos1041.PaperCompleteR21.discSep_separation_short
-set_option argumentGraph.strict false in derive_conjuncts ErdosProblems.Erdos1041.PaperCompleteR21.discSep_uniform_radius

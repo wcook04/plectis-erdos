@@ -26,9 +26,3 @@ derive_frontier ErdosProblems.Erdos269.PaperCompleteR21.two_prime_sums_transcend
 derive_weakening ErdosProblems.Erdos269.PaperCompleteR21.two_prime_transcendence
 derive_frontier ErdosProblems.Erdos269.PaperCompleteR21.two_prime_transcendence
 derive_frontier ErdosProblems.Erdos269.PaperCompleteR21.two_prime_transcendence at ErdosProblems.Erdos269.PaperCompleteR21.transcendental_heckeValue
-
--- Derivations the export does not decide in advance: conjuncts a proof may establish
--- without an open hypothesis, and frontiers with the consequences the graph records as
--- proved by corpus theorems discharged. A command that adds nothing warns.
-set_option argumentGraph.strict false in derive_conjuncts ErdosProblems.Erdos269.PaperCompleteR21.two_prime_sums_transcendental
-set_option argumentGraph.strict false in derive_conjuncts ErdosProblems.Erdos269.PaperCompleteR21.two_prime_transcendence
