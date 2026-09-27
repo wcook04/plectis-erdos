@@ -63,19 +63,33 @@ def budgeted {α : Type} (heartbeats : Nat) (x : MetaM α) : MetaM (Option α) :
     withTheReader Core.Context (fun ctx => { ctx with maxHeartbeats := heartbeats * 1000 }) do
       tryCatchRuntimeEx (do return some (← x)) fun _ => return none
 
+/-- The recursion bound of every traversal in this module: the depth of term it
+follows (every definition here is total). When a bound is reached the traversal
+gives its conservative answer (no use site, no weakening, no split), and anything
+built from a partial result still has to pass the kernel. -/
+def traversalFuel : Nat := 100000
+
+/-- `normaliseBinders`, following at most `fuel` levels of the term. -/
+def normaliseBindersAux : Nat → Expr → Nat → Expr
+  | 0, e, _ => e
+  | fuel + 1, e, depth =>
+    let name := Name.mkSimple s!"x{depth}"
+    match e with
+    | .forallE _ t b _ =>
+        .forallE name (normaliseBindersAux fuel t depth) (normaliseBindersAux fuel b (depth + 1)) .default
+    | .lam _ t b _ =>
+        .lam name (normaliseBindersAux fuel t depth) (normaliseBindersAux fuel b (depth + 1)) .default
+    | .letE _ t v b nondep =>
+        .letE name (normaliseBindersAux fuel t depth) (normaliseBindersAux fuel v depth)
+          (normaliseBindersAux fuel b (depth + 1)) nondep
+    | .app f a => .app (normaliseBindersAux fuel f depth) (normaliseBindersAux fuel a depth)
+    | .mdata _ b => normaliseBindersAux fuel b depth
+    | .proj s i b => .proj s i (normaliseBindersAux fuel b depth)
+    | e => e
+
 /-- A statement with binder names, binder annotations and metadata erased, so two
 statements that differ only in naming compare equal. -/
-partial def normaliseBinders (e : Expr) (depth : Nat := 0) : Expr :=
-  let name := Name.mkSimple s!"x{depth}"
-  match e with
-  | .forallE _ t b _ => .forallE name (normaliseBinders t depth) (normaliseBinders b (depth + 1)) .default
-  | .lam _ t b _ => .lam name (normaliseBinders t depth) (normaliseBinders b (depth + 1)) .default
-  | .letE _ t v b nondep =>
-      .letE name (normaliseBinders t depth) (normaliseBinders v depth) (normaliseBinders b (depth + 1)) nondep
-  | .app f a => .app (normaliseBinders f depth) (normaliseBinders a depth)
-  | .mdata _ b => normaliseBinders b depth
-  | .proj s i b => .proj s i (normaliseBinders b depth)
-  | e => e
+def normaliseBinders (e : Expr) : Expr := normaliseBindersAux traversalFuel e 0
 
 /-- Add a theorem after a synchronous kernel check; the error text when the
 kernel rejects it. -/
@@ -144,18 +158,24 @@ named input that only some of them need. When the proof builds the conjunction
 directly (`⟨p₁, p₂, …⟩` after beta and `let` reduction), each part's own proof
 shows which hypotheses that part uses. -/
 
+/-- `conjunctProofs`, splitting at most `fuel` conjuncts. -/
+def conjunctProofsAux : Nat → Expr → Expr → MetaM (Array (Expr × Expr))
+  | 0, type, proof => return #[(type, proof)]
+  | fuel + 1, type, proof => do
+    match type.consumeMData.and? with
+    | none => return #[(type, proof)]
+    | some (a, b) =>
+        let p ← whnfCore proof
+        if p.isAppOfArity ``And.intro 4 then
+          let rest ← conjunctProofsAux fuel b p.appArg!
+          return #[(a, p.appFn!.appArg!)] ++ rest
+        else
+          return #[(type, proof)]
+
 /-- The conjuncts of `A₁ ∧ (A₂ ∧ (… ∧ Aₙ))` with their proofs, when `proof` is
 built by `And.intro` along the same spine (after `whnfCore`). -/
-partial def conjunctProofs (type proof : Expr) : MetaM (Array (Expr × Expr)) := do
-  match type.consumeMData.and? with
-  | none => return #[(type, proof)]
-  | some (a, b) =>
-      let p ← whnfCore proof
-      if p.isAppOfArity ``And.intro 4 then
-        let rest ← conjunctProofs b p.appArg!
-        return #[(a, p.appFn!.appArg!)] ++ rest
-      else
-        return #[(type, proof)]
+def conjunctProofs (type proof : Expr) : MetaM (Array (Expr × Expr)) :=
+  conjunctProofsAux 256 type proof
 
 /-- For each conjunct of `T`'s conclusion whose proof leaves some proposition
 hypotheses unused, `T.part_k` (counting from 1): the conjunct alone, assuming
@@ -209,20 +229,25 @@ def deriveConjuncts (name : Name) : MetaM (Except String (Array Name)) := do
 
 /-! ## Used consequences -/
 
+/-- `isHypRef`, looking through at most `fuel` casts. -/
+def isHypRefAux : Nat → FVarId → Expr → Bool
+  | 0, _, _ => false
+  | fuel + 1, h, e =>
+    match e.consumeMData with
+    | .fvar id => id == h
+    | e =>
+        match e.getAppFn with
+        | .const n _ =>
+            let args := e.getAppArgs
+            if (n == ``Eq.mpr || n == ``Eq.mp || n == ``cast) && args.size == 4 then
+              !args[2]!.containsFVar h && isHypRefAux fuel h args[3]!
+            else if n == ``id && args.size == 2 then isHypRefAux fuel h args[1]!
+            else false
+        | _ => false
+
 /-- Whether `e` is the hypothesis `h`, possibly transported by `Eq.mpr`, `Eq.mp`,
 `cast` or `id` whose other arguments do not use `h`. -/
-partial def isHypRef (h : FVarId) (e : Expr) : Bool :=
-  match e.consumeMData with
-  | .fvar id => id == h
-  | e =>
-      match e.getAppFn with
-      | .const n _ =>
-          let args := e.getAppArgs
-          if (n == ``Eq.mpr || n == ``Eq.mp || n == ``cast) && args.size == 4 then
-            !args[2]!.containsFVar h && isHypRef h args[3]!
-          else if n == ``id && args.size == 2 then isHypRef h args[1]!
-          else false
-      | _ => false
+def isHypRef (h : FVarId) (e : Expr) : Bool := isHypRefAux 64 h e
 
 structure UseScan where
   /-- Per subterm: whether it mentions `h`, and whether it mentions another free
@@ -234,28 +259,35 @@ structure UseScan where
 
 abbrev UseM := StateT UseScan MetaM
 
-partial def useFacts (h : FVarId) (e : Expr) : UseM (Bool × Bool) := do
-  if !e.hasFVar then return (false, false)
-  if let some f := (← get).facts.get? e then return f
-  let f ← match e with
-    | .fvar id => pure (id == h, id != h)
-    | .app f a => do
-        let x ← useFacts h f
-        let y ← useFacts h a
-        pure (x.1 || y.1, x.2 || y.2)
-    | .lam _ t b _ | .forallE _ t b _ => do
-        let x ← useFacts h t
-        let y ← useFacts h b
-        pure (x.1 || y.1, x.2 || y.2)
-    | .letE _ t v b _ => do
-        let x ← useFacts h t
-        let y ← useFacts h v
-        let z ← useFacts h b
-        pure (x.1 || y.1 || z.1, x.2 || y.2 || z.2)
-    | .mdata _ b | .proj _ _ b => useFacts h b
-    | _ => pure (false, false)
-  modify fun s => { s with facts := s.facts.insert e f }
-  return f
+/-- `useFacts`, following at most `fuel` levels. Past the bound a subterm counts
+as mentioning `h` and another variable, the answer that admits no use site. -/
+def useFactsAux : Nat → FVarId → Expr → UseM (Bool × Bool)
+  | 0, _, _ => return (true, true)
+  | fuel + 1, h, e => do
+    if !e.hasFVar then return (false, false)
+    if let some f := (← get).facts.get? e then return f
+    let f ← match e with
+      | .fvar id => pure (id == h, id != h)
+      | .app f a => do
+          let x ← useFactsAux fuel h f
+          let y ← useFactsAux fuel h a
+          pure (x.1 || y.1, x.2 || y.2)
+      | .lam _ t b _ | .forallE _ t b _ => do
+          let x ← useFactsAux fuel h t
+          let y ← useFactsAux fuel h b
+          pure (x.1 || y.1, x.2 || y.2)
+      | .letE _ t v b _ => do
+          let x ← useFactsAux fuel h t
+          let y ← useFactsAux fuel h v
+          let z ← useFactsAux fuel h b
+          pure (x.1 || y.1 || z.1, x.2 || y.2 || z.2)
+      | .mdata _ b | .proj _ _ b => useFactsAux fuel h b
+      | _ => pure (false, false)
+    modify fun s => { s with facts := s.facts.insert e f }
+    return f
+
+/-- Whether `e` mentions `h`, and whether it mentions another free variable. -/
+def useFacts (h : FVarId) (e : Expr) : UseM (Bool × Bool) := useFactsAux traversalFuel h e
 
 /-- No bound variable of the proof, no metavariable, no free variable but `h`. -/
 def closedFor (h : FVarId) (e : Expr) : UseM Bool := do
@@ -275,62 +307,70 @@ def siteType? (hType : Expr) (conclusion : Option Expr) (site : Expr) : MetaM (O
   catch _ => return none
 
 mutual
+/-- `collectUses` with a recursion bound; past it the answer is `false` (no
+weakening). -/
+def collectUsesAux : Nat → FVarId → Expr → Option Expr → Expr → UseM Bool
+  | 0, _, _, _, _ => return false
+  | fuel + 1, h, hType, conclusion, e => do
+    if !(← useFacts h e).1 then return true
+    if let some v := (← get).verdicts.get? e then return v
+    let s ← get
+    if s.visited ≥ 200000 then return false
+    set { s with visited := s.visited + 1 }
+    let v ← visitUsesAux fuel h hType conclusion e
+    modify fun s => { s with verdicts := s.verdicts.insert e v }
+    return v
+
+/-- One step of `collectUses`: the cases by the shape of `e`. -/
+def visitUsesAux : Nat → FVarId → Expr → Option Expr → Expr → UseM Bool
+  | 0, _, _, _, _ => return false
+  | fuel + 1, h, hType, conclusion, e => do
+    match e with
+    | .fvar _ => return false
+    | .mdata _ b => collectUsesAux fuel h hType conclusion b
+    | .proj _ _ b =>
+        if isHypRef h b && (← closedFor h e) then
+          unless (← siteType? hType conclusion e).isSome do return false
+          modify fun s => { s with sites := s.sites.push e }
+          return true
+        collectUsesAux fuel h hType conclusion b
+    | .lam _ t b _ | .forallE _ t b _ =>
+        let x ← collectUsesAux fuel h hType conclusion t
+        let y ← collectUsesAux fuel h hType conclusion b
+        return x && y
+    | .letE _ t v b _ =>
+        let x ← collectUsesAux fuel h hType conclusion t
+        let y ← collectUsesAux fuel h hType conclusion v
+        let z ← collectUsesAux fuel h hType conclusion b
+        return x && y && z
+    | .app .. =>
+        -- `h` transported by a cast is `h`; the application around it decides.
+        if isHypRef h e then return false
+        let fn := e.getAppFn
+        let args := e.getAppArgs
+        let mut k := 0
+        if ← closedFor h fn then
+          while k < args.size do
+            if ← closedFor h args[k]! then k := k + 1 else break
+        if k > 0 && (isHypRef h fn || (args.extract 0 k).any (isHypRef h)) then
+          let site := mkAppN fn (args.extract 0 k)
+          unless (← siteType? hType conclusion site).isSome do return false
+          modify fun s => { s with sites := s.sites.push site }
+          let mut ok := true
+          for a in args.extract k args.size do
+            unless ← collectUsesAux fuel h hType conclusion a do ok := false
+          return ok
+        let mut ok ← collectUsesAux fuel h hType conclusion fn
+        for a in args do
+          unless ← collectUsesAux fuel h hType conclusion a do ok := false
+        return ok
+    | _ => return true
+end
+
 /-- Whether every occurrence of `h` in `e` lies inside a use site; the sites are
 collected in the state. `false`: some occurrence uses `h` as it stands. -/
-partial def collectUses (h : FVarId) (hType : Expr) (conclusion : Option Expr) (e : Expr) :
-    UseM Bool := do
-  if !(← useFacts h e).1 then return true
-  if let some v := (← get).verdicts.get? e then return v
-  let s ← get
-  if s.visited ≥ 200000 then return false
-  set { s with visited := s.visited + 1 }
-  let v ← visitUses h hType conclusion e
-  modify fun s => { s with verdicts := s.verdicts.insert e v }
-  return v
-
-partial def visitUses (h : FVarId) (hType : Expr) (conclusion : Option Expr) (e : Expr) :
-    UseM Bool := do
-  match e with
-  | .fvar _ => return false
-  | .mdata _ b => collectUses h hType conclusion b
-  | .proj _ _ b =>
-      if isHypRef h b && (← closedFor h e) then
-        unless (← siteType? hType conclusion e).isSome do return false
-        modify fun s => { s with sites := s.sites.push e }
-        return true
-      collectUses h hType conclusion b
-  | .lam _ t b _ | .forallE _ t b _ =>
-      let x ← collectUses h hType conclusion t
-      let y ← collectUses h hType conclusion b
-      return x && y
-  | .letE _ t v b _ =>
-      let x ← collectUses h hType conclusion t
-      let y ← collectUses h hType conclusion v
-      let z ← collectUses h hType conclusion b
-      return x && y && z
-  | .app .. =>
-      -- `h` transported by a cast is `h`; the application around it decides.
-      if isHypRef h e then return false
-      let fn := e.getAppFn
-      let args := e.getAppArgs
-      let mut k := 0
-      if ← closedFor h fn then
-        while k < args.size do
-          if ← closedFor h args[k]! then k := k + 1 else break
-      if k > 0 && (isHypRef h fn || (args.extract 0 k).any (isHypRef h)) then
-        let site := mkAppN fn (args.extract 0 k)
-        unless (← siteType? hType conclusion site).isSome do return false
-        modify fun s => { s with sites := s.sites.push site }
-        let mut ok := true
-        for a in args.extract k args.size do
-          unless ← collectUses h hType conclusion a do ok := false
-        return ok
-      let mut ok ← collectUses h hType conclusion fn
-      for a in args do
-        unless ← collectUses h hType conclusion a do ok := false
-      return ok
-  | _ => return true
-end
+def collectUses (h : FVarId) (hType : Expr) (conclusion : Option Expr) (e : Expr) : UseM Bool :=
+  collectUsesAux traversalFuel h hType conclusion e
 
 /-- Binder `i` of a theorem replaced by what the proof uses of it. -/
 structure Weakening where
@@ -426,34 +466,52 @@ inductive Plan where
 
 /-- The plan for a consequence `c` proved at `site` (a closed function of the
 hypothesis). `stops` lists theorems whose use sites stay as they are. -/
-partial def plan (stops : Array Name) (fuel : Nat) (c : Expr) (site : Expr) : DeriveM Plan := do
-  if fuel == 0 then return .leaf c
-  let .lam _ _ body _ := site | return .leaf c
-  let .const n us := body.getAppFn | return .leaf c
-  if stops.contains n then return .leaf c
-  let args := body.getAppArgs
-  let some p := args.findIdx? (fun a => a.consumeMData == .bvar 0) | return .leaf c
-  for a in args, k in [0:args.size] do
-    if k != p && a.hasLooseBVars then return .leaf c
-  let some (wName, w) ← weakeningOf n p | return .leaf c
-  let info ← getConstInfo n
-  let inst (e : Expr) : Expr := e.instantiateLevelParams info.levelParams us
-  let mut children : Array Plan := #[]
-  for d in w.consequences, s in w.sites do
-    children := children.push (← plan stops (fuel - 1) (inst d) (inst s))
-  return .step (mkConst wName us) (args.extract 0 p) (args.extract (p + 1) args.size) children
+def plan (stops : Array Name) : Nat → Expr → Expr → DeriveM Plan
+  | 0, c, _ => return .leaf c
+  | fuel + 1, c, site => do
+    let .lam _ _ body _ := site | return .leaf c
+    let .const n us := body.getAppFn | return .leaf c
+    if stops.contains n then return .leaf c
+    let args := body.getAppArgs
+    let some p := args.findIdx? (fun a => a.consumeMData == .bvar 0) | return .leaf c
+    for a in args, k in [0:args.size] do
+      if k != p && a.hasLooseBVars then return .leaf c
+    let some (wName, w) ← weakeningOf n p | return .leaf c
+    let info ← getConstInfo n
+    let inst (e : Expr) : Expr := e.instantiateLevelParams info.levelParams us
+    let mut children : Array Plan := #[]
+    for d in w.consequences, s in w.sites do
+      children := children.push (← plan stops fuel (inst d) (inst s))
+    return .step (mkConst wName us) (args.extract 0 p) (args.extract (p + 1) args.size) children
 
-partial def Plan.leaves : Plan → Array Expr → Array Expr
-  | .leaf t, acc => if acc.contains t then acc else acc.push t
-  | .step _ _ _ cs, acc => cs.foldl (fun a c => c.leaves a) acc
+/-- The bound for walking a plan; `plan` builds plans at most `planFuel` deep. -/
+def planFuel : Nat := 64
 
-partial def Plan.build (types vars : Array Expr) : Plan → Expr
-  | .leaf t => vars[(types.findIdx? (· == t)).getD 0]!
-  | .step fn before after cs => mkAppN fn (before ++ cs.map (·.build types vars) ++ after)
+def Plan.leavesAux : Nat → Plan → Array Expr → Array Expr
+  | _, .leaf t, acc => if acc.contains t then acc else acc.push t
+  | 0, .step .., acc => acc
+  | fuel + 1, .step _ _ _ cs, acc => cs.foldl (fun a c => Plan.leavesAux fuel c a) acc
 
-partial def Plan.depth : Plan → Nat
-  | .leaf _ => 0
-  | .step _ _ _ cs => 1 + cs.foldl (fun m c => max m c.depth) 0
+/-- The distinct statements where a plan stops, added to `acc`. -/
+def Plan.leaves (p : Plan) (acc : Array Expr) : Array Expr := Plan.leavesAux planFuel p acc
+
+def Plan.buildAux : Nat → Array Expr → Array Expr → Plan → Expr
+  | _, types, vars, .leaf t => vars[(types.findIdx? (· == t)).getD 0]!
+  | 0, _, _, .step fn before after _ => mkAppN fn (before ++ after)
+  | fuel + 1, types, vars, .step fn before after cs =>
+      mkAppN fn (before ++ cs.map (Plan.buildAux fuel types vars ·) ++ after)
+
+/-- The proof term a plan describes, with `vars[j]` for the leaf `types[j]`. A term
+built past the bound is ill-typed, so the kernel rejects it. -/
+def Plan.build (types vars : Array Expr) (p : Plan) : Expr := Plan.buildAux planFuel types vars p
+
+def Plan.depthAux : Nat → Plan → Nat
+  | _, .leaf _ => 0
+  | 0, .step .. => 1
+  | fuel + 1, .step _ _ _ cs => 1 + cs.foldl (fun m c => max m (Plan.depthAux fuel c)) 0
+
+/-- How many weakenings deep the plan goes. -/
+def Plan.depth (p : Plan) : Nat := Plan.depthAux planFuel p
 
 /-- A proof of the closed proposition `t` by one of `suppliers`: the supplier
 itself when its statement is `t`, or the supplier applied to arguments found by
