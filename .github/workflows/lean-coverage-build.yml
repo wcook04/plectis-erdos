@@ -226,6 +226,8 @@ jobs:
           ErdosProblems.ArgumentGraph.Derived.Erdos257
           ErdosProblems.ArgumentGraph.Derived.Erdos269
           ErdosProblems.ArgumentGraph.Derived.Erdos68
+          ErdosProblems.ArgumentGraph.Results.Erdos1041
+          ErdosProblems.ArgumentGraph.Results.Erdos243
           ErdosProblems.ArgumentGraph.Results.Erdos251
 
       # Saved even after a failed build: Lake's content traces decide what is
