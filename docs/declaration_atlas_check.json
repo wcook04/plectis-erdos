@@ -1,12 +1,12 @@
 {
-  "atlas_digest": "sha256:6ad8d2c0af6ba2fc52a7c6dc43565405ed633b1eb8a56d9e5f5b6f0020767ba5",
+  "atlas_digest": "sha256:38450edc26cdaedd9c25bd5ac992d358b68b04f9a4aa89e8f48c869989eb8422",
   "builder_digest": "sha256:bbe9c7455d149ec4dd9362c985bd69a69e43719f3a8456598fbbd6e734d511b4",
   "claim_binding_fingerprint": "sha256:46ad6d2299d149532b5b9ebc17e2949a403b5183336f328398819aa6c46b89e9",
   "generated_manifest_digest": "sha256:2bfcecad9a04352cf5a9b6939dca294e665a6dffe7ee25d4b451e5c7231f7bbb",
   "schema": "erdos249257-declaration-atlas-check/1",
-  "source_fingerprint": "sha256:e023ddfd4f6922c37fc8ce76dbb2491a5eba382376eeafdfbdc9fb4276de8057",
+  "source_fingerprint": "sha256:9c617f399c98400f53c3554f4fab810eb10993bafff57baa25dbef51ffba9137",
   "summary": {
-    "declaration_count": 163947,
+    "declaration_count": 163960,
     "generated_certificate_declaration_count": 8171,
     "kind_counts": {
       "abbrev": 53,
@@ -15,10 +15,10 @@
       "instance": 14,
       "lemma": 1446,
       "structure": 60,
-      "theorem": 158536
+      "theorem": 158549
     },
-    "module_count": 1860,
+    "module_count": 1861,
     "principal_claim_link_count": 468,
-    "theorem_like_count": 159982
+    "theorem_like_count": 159995
   }
 }
