@@ -99,16 +99,17 @@ def normaliseBindersAux : Nat → Expr → Nat → Expr
 statements that differ only in naming compare equal. -/
 def normaliseBinders (e : Expr) : Expr := normaliseBindersAux traversalFuel e 0
 
-/-- Whether the declaration `name` exists with universe parameters `levels` and a
-statement definitionally equal to `wanted`. A derived name is a contract on its
-statement: a command that finds the name taken by a different statement reports
-it, rather than taking the old theorem for the one it was asked for. The check
-assigns nothing. -/
+/-- Whether the theorem `name` exists with universe parameters `levels` and the
+statement `wanted`, up to binder names, binder annotations and metadata: the
+comparison the frontier's statement hashes make. A derived name is a contract on its
+statement: a command that finds the name taken by a different statement, or by a
+constant that is not a theorem, reports it, rather than taking the old constant for
+the one it was asked for. -/
 def existingTypeMatches (name : Name) (levels : List Name) (wanted : Expr) : MetaM Bool := do
-  let some info := (← getEnv).find? name | return false
+  let some (.thmInfo info) := (← getEnv).find? name | return false
   unless info.levelParams.length == levels.length do return false
   let actual := info.type.instantiateLevelParams info.levelParams (levels.map mkLevelParam)
-  return (← budgeted 5000 (withoutModifyingState (withNewMCtxDepth (isDefEq actual wanted)))) == some true
+  return normaliseBinders actual == normaliseBinders (← instantiateMVars wanted)
 
 /-- Add a theorem after a synchronous kernel check; the error text when the
 kernel rejects it. When `name` already exists with the same statement (the command

@@ -16,21 +16,35 @@ uses only `H₂`, it adds
   `T.factored : ∃ w, A w ∧ (H₁ → B w) ∧ (H₂ → C w)`,
 
 with the proof's own witness. The two statements differ: the factored one says the
-construction exists unconditionally and that each input is needed only for the
-property it proves. A hypothesis that a witness needs stays above that `∃`; one
-no claim needs is left out. The conclusion is read through `∃`, `∧` and `∀`
-(implications included); anything else is one claim.
+construction exists without either input, and that in this proof each input is
+assumed only by the claim it proves. A hypothesis that a witness needs stays above
+that `∃`; one no claim needs is left out. The conclusion is read through `∃`, `∧`
+and `∀` (implications included); anything else is one claim.
 
 The proof is read after its spine is normalised: a `have` whose value uses a
 hypothesis being moved is inlined; an elimination of a constructor is reduced
 (`obtain ⟨a, b⟩ := ⟨x, y⟩` is `x, y`); an elimination whose major premise is
-itself an elimination moves inside it; a compiled `match` is unfolded to its
-eliminations. An application `L a₁ … aₘ` of a library theorem that passes it a
-hypothesis being moved, and proves a structured claim, is replaced by
-`L.factored` (derived first, recursively), rebuilt into `L`'s conclusion: this is
-how the command follows a construction through the lemmas it is built from, so
-that an input a lemma needs for one property does not stay attached to the
-lemma's witness.
+itself an elimination moves inside it; an elimination with one alternative whose
+proof ignores the fields it opens is dropped, and a constructor that alternative
+builds from terms free of those fields is moved out of it (so `obtain ⟨c, hc⟩ := h`
+followed by `⟨w, p⟩`, with `w` free of `c`, charges `h` to `p` only); a compiled
+`match`, `dite`, `Or.elim` and `Decidable.byCases` are unfolded to their
+eliminations, and `And.left`/`And.right` read as projections. An application
+`L a₁ … aₘ` of a library theorem that passes it a hypothesis being moved, and
+proves a structured claim, is replaced by `L.factored` (derived first,
+recursively), rebuilt into `L`'s conclusion: this is how the command follows a
+construction through the lemmas it is built from, so that an input a lemma needs
+for one property does not stay attached to the lemma's witness.
+
+Following the lemmas can leave a hypothesis unused that the proof as written does
+use: the proof passes it to a lemma only for claims of that lemma it never uses.
+Such a hypothesis is left out of `T.factored` even when no other moves, and the
+factoring is added: `derive_idle`, which reads the proof as written, keeps it.
+
+A factored name is a contract on its statement, so a factoring must not depend on
+where its lemma was reached. When a limit (the depth of lemmas followed, the size
+of the proof read, the heartbeat budget) cuts a reading short, the command adds
+nothing more and reports the limit, as an unknown.
 
 The reading only proposes where each hypothesis goes; every theorem the command
 adds, including the library factorings it derives on the way, is checked by the
@@ -115,6 +129,13 @@ def allGuards : Placement α → Array α
   | .ex g b => g ++ b.allGuards
   | .pi g b => g ++ b.allGuards
 
+/-- The tree with no guards. -/
+def clear : Placement α → Placement α
+  | .leaf _ => .leaf #[]
+  | .conj _ l r => .conj #[] l.clear r.clear
+  | .ex _ b => .ex #[] b.clear
+  | .pi _ b => .pi #[] b.clear
+
 end Placement
 
 /-- What the claims of a proof use: per atom, the hypotheses being moved that its
@@ -198,6 +219,10 @@ structure FactorState where
   added : Array Name := #[]
   /-- Per theorem added: each moved hypothesis and the claims that assume it. -/
   placements : Array (Name × String × String) := #[]
+  /-- The first limit that cut a reading short in this command. A factoring read that
+  way would depend on where its lemma was reached, so once this is set nothing more
+  is added. -/
+  cutShort : Option String := none
 
 abbrev FactorM := StateRefT FactorState MetaM
 
@@ -207,29 +232,54 @@ def factorWork : Nat := 2000000
 /-- The depth of the traversals of a proof's spine. -/
 def spineFuel : Nat := 10000
 
-/-- How deep factoring follows a construction into the lemmas it is built from. -/
-def libraryDepth : Nat := 6
+/-- How deep factoring follows a construction into the lemmas it is built from; a
+construction that goes deeper is an unknown. -/
+def libraryDepth : Nat := 10
 
 /-- The heartbeat budget (in thousands) of one command, and of each library factoring. -/
 def factorBudget : Nat := 400000
 def libraryBudget : Nat := 150000
 
-def tick : FactorM Unit := do
-  let s ← get
-  if s.work ≥ factorWork then throwError "the spine has more than {factorWork} nodes"
-  set { s with work := s.work + 1 }
+/-- Record that a limit cut a reading short (the first reason is kept). -/
+def markCut (why : String) : FactorM Unit :=
+  modify fun s => if s.cutShort.isSome then s else { s with cutShort := some why }
 
-/-- Run `x` with its own heartbeat budget (in thousands); `none` when the budget runs
-out or `x` throws. -/
-def factorBudgeted {α : Type} (heartbeats : Nat) (x : FactorM α) : FactorM (Option α) := do
+def tick : FactorM Unit := do
+  if (← get).work ≥ factorWork then
+    markCut s!"the proofs read have more than {factorWork} nodes"
+    throwError "the proofs read have more than {factorWork} nodes"
+  modify fun s => { s with work := s.work + 1 }
+
+/-- Run `x` with its own heartbeat budget (in thousands); the error text when `x`
+throws. Running out of heartbeats or of recursion depth also cuts the reading short. -/
+def factorBudgeted {α : Type} (heartbeats : Nat) (x : FactorM α) : FactorM (Except String α) := do
   withCurrHeartbeats <|
     withTheReader Core.Context (fun ctx => { ctx with maxHeartbeats := heartbeats * 1000 }) do
-      tryCatchRuntimeEx (do return some (← x)) fun _ => return none
+      tryCatchRuntimeEx (do return .ok (← x)) fun ex => do
+        if ex.isMaxHeartbeat || ex.isMaxRecDepth then
+          markCut "the heartbeat budget or the recursion depth ran out"
+        return .error (← ex.toMessageData.toString)
 
 /-- Whether a constant is a theorem. -/
 def isTheoremInfo : ConstantInfo → Bool
   | .thmInfo _ => true
   | _ => false
+
+/-- Whether `name` is itself a factoring, which is never factored again. -/
+def isFactoring (name : Name) : Bool :=
+  (`ErdosProblems.ArgumentGraph.Factored).isPrefixOf name ||
+    match name with
+    | .str _ "factored" => true
+    | _ => false
+
+/-- Eliminators stated as lemmas or definitions, which the reading unfolds to the
+eliminations they are defined by. -/
+def unfoldedEliminators : Array Name :=
+  #[`Or.elim, `And.elim, `dite, `Decidable.byCases, `Classical.byCases]
+
+/-- A pretty-printed expression on one line. -/
+def flatText (s : String) : String :=
+  " ".intercalate ((s.replace "\n" " ").splitOn " " |>.filter (· ≠ ""))
 
 /-- The name of the factoring of `name`: `name.factored` for a theorem of this library
 (or of the file being checked), and `ErdosProblems.ArgumentGraph.Factored.<name>` for
@@ -356,6 +406,40 @@ def commute? (outer : MatcherApp) (major : Expr) : FactorM (Option Expr) := do
       mkLambdaFVars xs (withMajor outer e).toExpr)
   return some (← rebuildCases inner resultType alts)
 
+/-- An elimination with one alternative (a structure, `∃`, `∧`) whose motive ignores the
+major premise, moved out of the way when that alternative does not need the fields it
+opens: dropped when its proof is free of them, and otherwise moved inside a
+constructor (`And.intro`, `Exists.intro`, a `fun`) that the alternative builds from
+terms free of them. So `obtain ⟨c, hc⟩ := h; exact ⟨w, p⟩` with `w` free of `c` reads
+as `⟨w, (obtain ⟨c, hc⟩ := h; p)⟩`, and the hypotheses of `h` are charged to `p`
+only. -/
+def floatOut? (app : MatcherApp) : FactorM (Option Expr) := do
+  unless app.remaining.isEmpty && app.alts.size == 1 do return none
+  unless (← constMotiveBody? app.motive app.discrs.size).isSome do return none
+  altTelescope app.alts[0]! (app.altNumParams[0]!) fun xs body => do
+    let free (t : Expr) : Bool := !xs.any (fun x => t.containsFVar x.fvarId!)
+    if free body then return some body
+    let body := body.consumeMData
+    if body.isAppOfArity ``And.intro 4 then
+      let args := body.getAppArgs
+      if free args[0]! && free args[1]! then
+        let l ← rebuildCases app args[0]! #[← mkLambdaFVars xs args[2]!]
+        let r ← rebuildCases app args[1]! #[← mkLambdaFVars xs args[3]!]
+        return some (mkApp4 (mkConst ``And.intro) args[0]! args[1]! l r)
+    if body.isAppOfArity ``Exists.intro 4 then
+      let args := body.getAppArgs
+      if free args[0]! && free args[1]! && free args[2]! then
+        let q ← rebuildCases app (predicateAt args[1]! args[2]!) #[← mkLambdaFVars xs args[3]!]
+        return some (mkAppN body.getAppFn #[args[0]!, args[1]!, args[2]!, q])
+    if let .lam n t b bi := body then
+      if free t then
+        return ← withLocalDecl n bi t fun y => do
+          let e := b.instantiate1 y
+          let ty ← inferType e
+          unless free ty do return none
+          return some (← mkLambdaFVars #[y] (← rebuildCases app ty #[← mkLambdaFVars xs e]))
+    return none
+
 /-- Whether a claim, under its leading `∀`s, is a conjunction or an existential. -/
 def structuredClaim (ty : Expr) : Bool :=
   let body := ty.getForallBody.consumeMData
@@ -462,10 +546,12 @@ def Placement.claimSpans : Placement FVarId → Nat → Array (FVarId × Nat × 
       let (sb, k₁) := b.claimSpans k
       (g.map (fun h => (h, k, k₁ - 1)) ++ sb, k₁)
 
-/-- Whether the factoring says more than the theorem without its unused hypotheses:
-some hypothesis it keeps is assumed by some claims and not by others. When every
-hypothesis a proof uses is still assumed by every claim, the factored statement is
-the original one with its premises moved inward, which says nothing new. -/
+/-- Whether the factoring separates some claim from some input: some hypothesis it
+moves is assumed by some claims and not by others. When every hypothesis the proof
+uses is still assumed by every claim, the factored statement only moves premises
+inward past binders; over inhabited witness types that is the original statement
+(`H → ∃ w, P w` and `∃ w, H → P w` differ only when the witness type is empty), so
+the command refuses it. -/
 def Placement.separates (p : Placement FVarId) (moved : Array FVarId) : Bool :=
   let (spans, next) := p.claimSpans 1
   moved.any fun h =>
@@ -475,7 +561,7 @@ def Placement.separates (p : Placement FVarId) (moved : Array FVarId) : Bool :=
 /-- The claims of a conclusion read along a placement, pretty-printed on one line
 (binders opened under their own names), in the order the conclusion states them. -/
 def leafClaimTexts : Nat → Placement FVarId → Expr → MetaM (Array String)
-  | 0, _, g => return #[flat (toString (← ppExpr g))]
+  | 0, _, g => return #[flatText (toString (← ppExpr g))]
   | fuel + 1, p, g => do
     match p, claimShape g with
     | .conj _ l r, .conj a b => return (← leafClaimTexts fuel l a) ++ (← leafClaimTexts fuel r b)
@@ -483,13 +569,13 @@ def leafClaimTexts : Nat → Placement FVarId → Expr → MetaM (Array String)
         withLocalDecl n bi d fun x => leafClaimTexts fuel b (gb.instantiate1 x)
     | .ex _ b, .ex _ α pred =>
         withLocalDecl (predicateBinder pred) .default α fun x => leafClaimTexts fuel b (predicateAt pred x)
-    | _, _ => return #[flat (toString (← ppExpr g))]
-where
-  flat (s : String) : String := " ".intercalate ((s.replace "\n" " ").splitOn " " |>.filter (· ≠ ""))
+    | _, _ => return #[flatText (toString (← ppExpr g))]
 
 /-- The docstring of a factored theorem, and per moved hypothesis where it went:
-claims are numbered from 1 in the order the conclusion states them. -/
-def factorDoc (name : Name) (xs : Array Expr) (moved : Array FVarId)
+claims are numbered from 1 in the order the conclusion states them. `composed` are
+the hypotheses the proof as written uses but no claim needs once the lemmas it
+applies are factored. -/
+def factorDoc (name : Name) (xs : Array Expr) (moved composed : Array FVarId)
     (inner : Placement FVarId) (body : Expr) : MetaM (String × Array (String × String)) := do
   let (spans, total) := inner.claimSpans 1
   let texts ← leafClaimTexts spineFuel inner body
@@ -497,9 +583,13 @@ def factorDoc (name : Name) (xs : Array Expr) (moved : Array FVarId)
   let mut placed : Array (String × String) := #[]
   for h in moved do
     let some x := xs.find? (·.fvarId! == h) | continue
-    let ty := toString (← ppExpr (← inferType x))
+    let ty := flatText (toString (← ppExpr (← inferType x)))
     let at_ := spans.filter (·.1 == h)
-    if at_.isEmpty then
+    if at_.isEmpty && composed.contains h then
+      parts := parts.push s!"`{ty}` is not needed: the proof passes it to lemmas only for \
+        claims of theirs it does not use"
+      placed := placed.push (ty, "unused once the lemmas it is passed to are factored")
+    else if at_.isEmpty then
       parts := parts.push s!"`{ty}` is not used"
       placed := placed.push (ty, "unused")
     else
@@ -520,7 +610,7 @@ mutual
 /-- `e` with its spine normalised (see the module docstring); `mv` are the
 hypotheses being moved. -/
 def normAux : Nat → Array FVarId → Expr → FactorM Expr
-  | 0, _, e => return e
+  | 0, _, e => do markCut "the proof is nested too deeply"; return e
   | fuel + 1, mv, e => do
     tick
     match e with
@@ -542,11 +632,21 @@ def normAux : Nat → Array FVarId → Expr → FactorM Expr
     | _ => return e
 
 def normAppAux : Nat → Array FVarId → Expr → FactorM Expr
-  | 0, _, e => return e
+  | 0, _, e => do markCut "the proof is nested too deeply"; return e
   | fuel + 1, mv, e => do
     let e' := e.headBeta
     if e' != e then return ← normAux fuel mv e'
     if e.isAppOfArity ``id 2 then return ← normAux fuel mv e.appArg!
+    -- `h.1` and `h.2` elaborate to these lemmas, not to projections
+    if e.isAppOfArity ``And.left 3 then return ← normAux fuel mv (.proj ``And 0 e.appArg!)
+    if e.isAppOfArity ``And.right 3 then return ← normAux fuel mv (.proj ``And 1 e.appArg!)
+    if let .const c us := e.getAppFn then
+      if unfoldedEliminators.contains c then
+        if let some info := (← getEnv).find? c then
+          if let some v := info.value? then
+            if info.levelParams.length == us.length then
+              return ← normAux fuel mv (mkAppN (v.instantiateLevelParams info.levelParams us)
+                e.getAppArgs).headBeta
     if e.isAppOfArity `letFun 4 then
       let args := e.getAppArgs
       match args[3]! with
@@ -581,7 +681,7 @@ def normAppAux : Nat → Array FVarId → Expr → FactorM Expr
     return e
 
 def normCasesAux : Nat → Array FVarId → MatcherApp → FactorM Expr
-  | 0, _, app => return app.toExpr
+  | 0, _, app => do markCut "the proof is nested too deeply"; return app.toExpr
   | fuel + 1, mv, app => do
     if !app.remaining.isEmpty then
       if let some r ← pushRemaining? app then return ← normAux fuel mv r
@@ -598,14 +698,17 @@ def normCasesAux : Nat → Array FVarId → MatcherApp → FactorM Expr
     for alt in app.alts, k in [0:app.alts.size] do
       alts := alts.push (← altTelescope alt (app.altNumParams[k]!) fun xs body => do
         mkLambdaFVars xs (← normAux fuel mv body))
-    return { app with alts }.toExpr
+    let app := { app with alts }
+    if let some r ← floatOut? app then return ← normAux fuel mv r
+    return app.toExpr
 
 /-- `L a₁ … aₘ` rebuilt from `L.factored` when some `aⱼ` mentions a hypothesis being
 moved and `L`'s factoring takes the `j`-th hypothesis away from `L`'s top level. -/
 def substLibraryAux : Nat → Array FVarId → Expr → FactorM (Option Expr)
-  | 0, _, _ => return none
+  | 0, _, _ => do markCut "the proof is nested too deeply"; return none
   | fuel + 1, mv, e => do
     let .const L us := e.getAppFn | return none
+    if isFactoring L then return none
     let some info := (← getEnv).find? L | return none
     unless isTheoremInfo info do return none
     let args := e.getAppArgs
@@ -621,24 +724,30 @@ def substLibraryAux : Nat → Array FVarId → Expr → FactorM (Option Expr)
 /-- The factoring of a library theorem, derived (and added) the first time it is
 needed. -/
 def factorLibraryAux : Nat → Name → FactorM (Option LibFactor)
-  | 0, _ => return none
+  | 0, _ => do markCut "the proof is nested too deeply"; return none
   | fuel + 1, L => do
     if let some r := (← get).library.get? L then return r
     let s ← get
-    if s.active.contains L || s.active.size ≥ libraryDepth then return none
+    if s.active.contains L then return none
+    if s.active.size ≥ libraryDepth then
+      markCut s!"the construction goes more than {libraryDepth} lemmas deep"
+      return none
     set { s with active := s.active.push L }
+    -- a lemma that cannot be factored (a thrown error included) is read as it stands
     let r ← factorBudgeted libraryBudget (factorTheoremAux fuel L false)
     let r := match r with
-      | some (.ok lf) => some lf
+      | .ok (.ok lf) => some lf
       | _ => none
     modify fun s => { s with active := s.active.pop, library := s.library.insert L r }
     return r
 
 /-- Factor theorem `name`: add `name.factored` and return where it put each moved
-hypothesis. With `requireDeep`, an error when no hypothesis moves below the
-conclusion's first claim (leaving out unused hypotheses is `derive_idle`). -/
+hypothesis. With `requireDeep`, an error unless some claim is separated from some
+input or the proof, once the lemmas it applies are factored, leaves out a hypothesis
+the proof as written uses (leaving out a hypothesis the proof never uses is
+`derive_idle`). -/
 def factorTheoremAux : Nat → Name → Bool → FactorM (Except String LibFactor)
-  | 0, _, _ => return .error "the library is nested too deeply"
+  | 0, _, _ => do markCut "the library is nested too deeply"; return .error "the library is nested too deeply"
   | fuel + 1, name, requireDeep => do
     let info ← getConstInfo name
     let some value := info.value? | return .error "not a theorem with a proof term"
@@ -657,28 +766,40 @@ def factorTheoremAux : Nat → Name → Bool → FactorM (Except String LibFacto
             break
         unless later do mv := mv.push x.fvarId!
       if mv.isEmpty then return .error "it has no proposition hypothesis that could move"
-      let proof ← normAux fuel mv (← instantiateMVars (value.beta xs))
+      let raw ← instantiateMVars (value.beta xs)
+      let proof ← normAux fuel mv raw
       let usage ← analyzeAux fuel mv proof body #[]
       let order := xs.map (·.fvarId!)
       let place := (usage.place #[]).sortBy order
+      let used := place.allGuards
+      -- hypotheses the proof as written uses that no claim needs once the lemmas it
+      -- applies are factored; `derive_idle`, which reads the proof as written, keeps them
+      let composed := (movedIn mv raw).filter (!used.contains ·)
       let top := place.guards
       let moved := mv.filter (!top.contains ·)
       if moved.isEmpty then
         return .error "every hypothesis its proof uses is needed before the conclusion's first claim"
       let inner := place.withGuards #[]
       let deep := inner.separates moved
-      if requireDeep && !deep then
+      if requireDeep && !deep && composed.isEmpty then
         return .error (if inner.hasInnerGuards
-          then "every hypothesis it moves is still assumed by every claim, which says nothing new"
+          then "every hypothesis it moves is still assumed by every claim, so no claim is separated from any input"
           else "it only leaves out hypotheses the proof never uses, which derive_idle adds")
+      -- when no claim is separated, what is left out is the whole finding: every
+      -- hypothesis the proof still uses stays in front
+      let (top, inner, moved) := if requireDeep && !deep
+        then (order.filter used.contains, inner.clear, mv.filter (!used.contains ·))
+        else (top, inner, moved)
       let keep := xs.filter fun x => !moved.contains x.fvarId!
       let type ← instantiateMVars (← mkForallFVars keep (← buildInnerAux spineFuel inner body))
       let proofBody ← factorInnerAux fuel mv inner body proof top
       let value ← instantiateMVars (← mkLambdaFVars keep proofBody)
       if type.hasFVar || type.hasMVar || value.hasFVar || value.hasMVar then
         return .error "the factored proof uses a hypothesis outside the claims that assume it"
+      -- a reading a limit cut short would depend on where the lemma was reached
+      if let some why := (← get).cutShort then return .error s!"{why} (unknown)"
       let newName ← factoredName name
-      let (doc, placed) ← factorDoc name xs moved inner body
+      let (doc, placed) ← factorDoc name xs moved composed inner body
       match ← addChecked newName info.levelParams type value doc with
       | .error e => return .error s!"kernel rejected {newName}: {e}"
       | .ok () =>
@@ -691,7 +812,9 @@ def factorTheoremAux : Nat → Name → Bool → FactorM (Except String LibFacto
 /-- What the claims of `e`, a proof of `g`, use of the hypotheses `mv`; `ctrl` are
 those the eliminations above `e` depend on. -/
 def analyzeAux : Nat → Array FVarId → Expr → Expr → Array FVarId → FactorM Usage
-  | 0, mv, e, _, ctrl => return .leaf (unionIds ctrl (movedIn mv e))
+  | 0, mv, e, _, ctrl => do
+    markCut "the proof is nested too deeply"
+    return .leaf (unionIds ctrl (movedIn mv e))
   | fuel + 1, mv, e, g, ctrl => do
     tick
     let d := movedIn mv e
@@ -738,7 +861,7 @@ def analyzeAux : Nat → Array FVarId → Expr → Expr → Array FVarId → Fac
 of `g`; `scope` are the moved hypotheses assumed above. -/
 def factorProofAux : Nat → Array FVarId → Placement FVarId → Expr → Expr → Array FVarId →
     FactorM Expr
-  | 0, _, _, _, _, _ => throwError "the proof is nested too deeply"
+  | 0, _, _, _, _, _ => do markCut "the proof is nested too deeply"; throwError "the proof is nested too deeply"
   | fuel + 1, mv, p, g, e, scope => do
     let gs := p.guards
     mkLambdaFVars (gs.map mkFVar) (← factorInnerAux fuel mv p g e (scope ++ gs))
@@ -746,7 +869,7 @@ def factorProofAux : Nat → Array FVarId → Placement FVarId → Expr → Expr
 /-- A proof of the factored claim without the guards of its root. -/
 def factorInnerAux : Nat → Array FVarId → Placement FVarId → Expr → Expr → Array FVarId →
     FactorM Expr
-  | 0, _, _, _, _, _ => throwError "the proof is nested too deeply"
+  | 0, _, _, _, _, _ => do markCut "the proof is nested too deeply"; throwError "the proof is nested too deeply"
   | fuel + 1, mv, p, g, e, scope => do
     tick
     if (movedIn mv e).all scope.contains then return ← liftInnerAux spineFuel p g e
@@ -826,14 +949,16 @@ syntax (name := deriveFactorCmd) "derive_factor " ident : command
   liftTermElabM do
     let name ← realizeGlobalConstNoOverloadWithInfo stx[1]
     let (r, s) ← (factorBudgeted factorBudget (factorTheorem name)).run {}
-    -- library factorings derived on the way are theorems in their own right
+    -- library factorings derived on the way are theorems in their own right; the
+    -- frontier credits the command only with `name`'s own factoring
     let own ← factoredName name
     for n in s.added do
       unless n == own do reportAdded n
+    -- after a limit cut a reading short, a refusal is as unknown as a failure
     match r with
-    | some (.ok lf) => reportAdded lf.name
-    | some (.error e) => reportFailure m!"derive_factor {name}: {e}"
-    | none => reportFailure m!"derive_factor {name}: the budget ran out (unknown)"
+    | .ok (.ok lf) => reportAdded lf.name
+    | .ok (.error e) | .error e =>
+      reportFailure m!"derive_factor {name}: {(s.cutShort.map (· ++ " (unknown)")).getD e}"
     -- one line per moved hypothesis, for the frontier's input map
     for (n, h, w) in s.placements do
       logInfo m!"placed {n} :: {h} :: {w}"
