@@ -14819,8 +14819,8 @@
         },
         {
           "path": "lakefile.toml",
-          "line_start": 67,
-          "line_end": 79,
+          "line_start": 74,
+          "line_end": 86,
           "excerpt_sha256": "sha256:831b7c7270f57c8606e4effd1314f87cfd4b9ad0eee57b89a546b5457b16aa78"
         }
       ],

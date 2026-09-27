@@ -213,7 +213,7 @@ The rest is engineering inventory. About 87% of the 163,712 declarations (142,66
 
 | Engineering inventory | Current size |
 |---|---:|
-| Lean modules (the two library roots) | 1,839 |
+| Lean modules (the two library roots) | 1,847 |
 | Formal results and supporting lemmas | 159,789 |
 | Curated claim records | 150 |
 | Contribution families | 33 |

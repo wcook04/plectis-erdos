@@ -4,7 +4,7 @@
   "coverage": {
     "bibliography_without_curated_link_count": 42,
     "curated_source_count": 301,
-    "lean_candidate_awaiting_review_count": 704,
+    "lean_candidate_awaiting_review_count": 705,
     "unmatched_citation_key_count": 0
   },
   "facets": {
@@ -4385,8 +4385,8 @@
   },
   "generated_by": "scripts/build_source_attributions.py",
   "lean_inventory": {
-    "awaiting_review_count": 704,
-    "candidate_count": 1560,
+    "awaiting_review_count": 705,
+    "candidate_count": 1561,
     "candidate_policy": "Comments only. Generic infrastructure tokens are excluded. Explicit URL/DOI/arXiv references are separated from bibliography-key and curated-surname clues. Authored lean_reviews bind exact path, line range, and excerpt digest; only missing or unresolved reviews remain queued.",
     "direct_reference_candidate_count": 3,
     "excluded_generic_tokens": [
@@ -17012,6 +17012,25 @@
         },
         "review_status": "reviewed",
         "source_sha256": "sha256:8d122cd4eb44d0ca462598b03243707bfc25e999a87c4a2b491d345b5af73042"
+      },
+      {
+        "classification": "lexical_candidate_not_attribution",
+        "excerpt_sha256": "sha256:a25df10dd108e20b6a788ce92ed793f29a7d699d13fe63221c1220c7ba2e4cdc",
+        "line_end": 13,
+        "line_start": 13,
+        "matches": [
+          {
+            "match_kind": "bibliography_key",
+            "source_id": "erdos_problems_catalog_eight_problem_context",
+            "source_ids": [
+              "erdos_problems_catalog_eight_problem_context"
+            ],
+            "token": "erdos1041"
+          }
+        ],
+        "path": "lean/ErdosProblems/ArgumentGraph/Derived/Erdos1041.lean",
+        "review_status": "awaiting_review",
+        "source_sha256": "sha256:4c49a6bf6ffab59abfddcc864f43812af3a4f177ae0d602c8cd65bf5a7df480a"
       },
       {
         "classification": "lexical_candidate_not_attribution",
@@ -55348,8 +55367,8 @@
         "source_sha256": "sha256:3e67dbcd782aaf87f105fcf22321757be9fcf2d634c47a3b5428aca364887ba6"
       }
     ],
-    "library_file_denominator": 1839,
-    "named_or_key_candidate_count": 1558,
+    "library_file_denominator": 1847,
+    "named_or_key_candidate_count": 1559,
     "reviewed_count": 856,
     "unresolved_count": 0
   },
@@ -115545,7 +115564,7 @@
     "public_source_credit": "Names and direct citations are retained for published literature, software and public contributions. Source identity, exact local use, and mathematical correspondence are separate."
   },
   "source_registry": "docs/research-commons/source-attributions.json",
-  "source_registry_sha256": "sha256:90f9af94a8c9cbe71a5e9bebe32f8b58ee4d3ae74bde57140febd01d4c226dc3",
+  "source_registry_sha256": "sha256:04a94c15ee190cfaf2102804cc40067a6ce1d5e175fb9ade3e500a7c822fa1fc",
   "sources": [
     {
       "artifact_coordinates": [
@@ -119058,10 +119077,10 @@
         },
         {
           "excerpt_sha256": "sha256:831b7c7270f57c8606e4effd1314f87cfd4b9ad0eee57b89a546b5457b16aa78",
-          "line_end": 79,
-          "line_start": 67,
+          "line_end": 86,
+          "line_start": 74,
           "path": "lakefile.toml",
-          "sha256": "sha256:e1a087453f8ac7bf939211194ae083a87212d33d82bd222d1f27ffc0bbdc5211"
+          "sha256": "sha256:9dc180ba64dad47b3c9028c22f0dd8a780a87b9cf1b25632e8cd7639cb90cb6c"
         }
       ],
       "artifact_links": [
@@ -119073,8 +119092,8 @@
         },
         {
           "excerpt_sha256": "sha256:831b7c7270f57c8606e4effd1314f87cfd4b9ad0eee57b89a546b5457b16aa78",
-          "line_end": 79,
-          "line_start": 67,
+          "line_end": 86,
+          "line_start": 74,
           "path": "lakefile.toml"
         }
       ],
@@ -119209,7 +119228,7 @@
           "line_end": 35,
           "line_start": 32,
           "path": "lakefile.toml",
-          "sha256": "sha256:e1a087453f8ac7bf939211194ae083a87212d33d82bd222d1f27ffc0bbdc5211"
+          "sha256": "sha256:9dc180ba64dad47b3c9028c22f0dd8a780a87b9cf1b25632e8cd7639cb90cb6c"
         },
         {
           "excerpt_sha256": "sha256:b0f750acfc6ef6e2955d978ed32fc02884e8fa180faa9f99bc1ec15ba856defc",
