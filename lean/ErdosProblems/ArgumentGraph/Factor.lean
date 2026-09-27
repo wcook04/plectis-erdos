@@ -196,6 +196,8 @@ structure FactorState where
   work : Nat := 0
   /-- Theorems added, in order. -/
   added : Array Name := #[]
+  /-- Per theorem added: each moved hypothesis and the claims that assume it. -/
+  placements : Array (Name × String × String) := #[]
 
 abbrev FactorM := StateRefT FactorState MetaM
 
@@ -223,6 +225,25 @@ def factorBudgeted {α : Type} (heartbeats : Nat) (x : FactorM α) : FactorM (Op
   withCurrHeartbeats <|
     withTheReader Core.Context (fun ctx => { ctx with maxHeartbeats := heartbeats * 1000 }) do
       tryCatchRuntimeEx (do return some (← x)) fun _ => return none
+
+/-- Whether a constant is a theorem. -/
+def isTheoremInfo : ConstantInfo → Bool
+  | .thmInfo _ => true
+  | _ => false
+
+/-- The name of the factoring of `name`: `name.factored` for a theorem of this library
+(or of the file being checked), and `ErdosProblems.ArgumentGraph.Factored.<name>` for
+one imported from another library, so that nothing is added in another library's
+namespace. -/
+def factoredName (name : Name) : MetaM Name := do
+  let env ← getEnv
+  match env.getModuleIdxFor? name with
+  | none => return name ++ `factored
+  | some idx =>
+    let module := env.header.moduleNames[idx.toNat]!
+    if (`ErdosProblems).isPrefixOf module || (`Erdos249257).isPrefixOf module then
+      return name ++ `factored
+    return `ErdosProblems.ArgumentGraph.Factored ++ name
 
 /-- The hypotheses of `mv` that `e` mentions. -/
 def movedIn (mv : Array FVarId) (e : Expr) : Array FVarId :=
@@ -428,37 +449,72 @@ end
 
 /-- The docstring of a factored theorem: where each moved hypothesis went, claims
 numbered from 1 in the order the conclusion states them. -/
+/-- Per guard of a placement, the first and last claim number below its node (claims
+numbered from `k` in the order the conclusion states them); and the next number. -/
+def Placement.claimSpans : Placement FVarId → Nat → Array (FVarId × Nat × Nat) × Nat
+  | .leaf g, k => (g.map fun h => (h, k, k), k + 1)
+  | .conj g l r, k =>
+      let (sl, k₁) := l.claimSpans k
+      let (sr, k₂) := r.claimSpans k₁
+      (g.map (fun h => (h, k, k₂ - 1)) ++ sl ++ sr, k₂)
+  | .ex g b, k =>
+      let (sb, k₁) := b.claimSpans k
+      (g.map (fun h => (h, k, k₁ - 1)) ++ sb, k₁)
+  | .pi g b, k =>
+      let (sb, k₁) := b.claimSpans k
+      (g.map (fun h => (h, k, k₁ - 1)) ++ sb, k₁)
+
+/-- Whether the factoring says more than the theorem without its unused hypotheses:
+some hypothesis it keeps is assumed by some claims and not by others. When every
+hypothesis a proof uses is still assumed by every claim, the factored statement is
+the original one with its premises moved inward, which says nothing new. -/
+def Placement.separates (p : Placement FVarId) (moved : Array FVarId) : Bool :=
+  let (spans, next) := p.claimSpans 1
+  moved.any fun h =>
+    let here := spans.filter (·.1 == h)
+    !here.isEmpty && here.foldl (fun n (_, a, b) => n + (b + 1 - a)) 0 < next - 1
+
+/-- The claims of a conclusion read along a placement, pretty-printed on one line
+(binders opened under their own names), in the order the conclusion states them. -/
+def leafClaimTexts : Nat → Placement FVarId → Expr → MetaM (Array String)
+  | 0, _, g => return #[flat (toString (← ppExpr g))]
+  | fuel + 1, p, g => do
+    match p, claimShape g with
+    | .conj _ l r, .conj a b => return (← leafClaimTexts fuel l a) ++ (← leafClaimTexts fuel r b)
+    | .pi _ b, .pi n d gb bi =>
+        withLocalDecl n bi d fun x => leafClaimTexts fuel b (gb.instantiate1 x)
+    | .ex _ b, .ex _ α pred =>
+        withLocalDecl (predicateBinder pred) .default α fun x => leafClaimTexts fuel b (predicateAt pred x)
+    | _, _ => return #[flat (toString (← ppExpr g))]
+where
+  flat (s : String) : String := " ".intercalate ((s.replace "\n" " ").splitOn " " |>.filter (· ≠ ""))
+
+/-- The docstring of a factored theorem, and per moved hypothesis where it went:
+claims are numbered from 1 in the order the conclusion states them. -/
 def factorDoc (name : Name) (xs : Array Expr) (moved : Array FVarId)
-    (inner : Placement FVarId) : MetaM String := do
-  let (spans, total) := claimSpans inner 1
+    (inner : Placement FVarId) (body : Expr) : MetaM (String × Array (String × String)) := do
+  let (spans, total) := inner.claimSpans 1
+  let texts ← leafClaimTexts spineFuel inner body
   let mut parts : Array String := #[]
+  let mut placed : Array (String × String) := #[]
   for h in moved do
     let some x := xs.find? (·.fvarId! == h) | continue
     let ty := toString (← ppExpr (← inferType x))
     let at_ := spans.filter (·.1 == h)
     if at_.isEmpty then
       parts := parts.push s!"`{ty}` is not used"
+      placed := placed.push (ty, "unused")
     else
       let where_ := at_.map fun (_, a, b) => if a == b then s!"claim {a}" else s!"claims {a}-{b}"
       parts := parts.push s!"`{ty}` is assumed by {", ".intercalate where_.toList}"
-  return s!"`{name}` with each hypothesis assumed only by the claims whose proofs use it \
+      let shown := at_.map fun (_, a, b) =>
+        if a == b then s!"claim {a}: {(texts[a - 1]?).getD ""}" else s!"claims {a}-{b}"
+      placed := placed.push (ty, "; ".intercalate shown.toList)
+  let doc := s!"`{name}` with each hypothesis assumed only by the claims whose proofs use it \
     (claims numbered 1 to {total - 1} as the conclusion states them): \
     {"; ".intercalate parts.toList}. The witnesses are those of the same proof. \
     Derived by `derive_factor`."
-where
-  /-- Per guard, the first and last claim number below its node; and the next number. -/
-  claimSpans : Placement FVarId → Nat → Array (FVarId × Nat × Nat) × Nat
-    | .leaf g, k => (g.map fun h => (h, k, k), k + 1)
-    | .conj g l r, k =>
-        let (sl, k₁) := claimSpans l k
-        let (sr, k₂) := claimSpans r k₁
-        (g.map (fun h => (h, k, k₂ - 1)) ++ sl ++ sr, k₂)
-    | .ex g b, k =>
-        let (sb, k₁) := claimSpans b k
-        (g.map (fun h => (h, k, k₁ - 1)) ++ sb, k₁)
-    | .pi g b, k =>
-        let (sb, k₁) := claimSpans b k
-        (g.map (fun h => (h, k, k₁ - 1)) ++ sb, k₁)
+  return (doc, placed)
 
 /-! ## Normalising the spine, and following a construction into the library -/
 
@@ -514,7 +570,8 @@ def normAppAux : Nat → Array FVarId → Expr → FactorM Expr
     if let some app ← matchMatcherApp? e (alsoCasesOn := true) then
       if isCasesOnRecursor (← getEnv) app.matcherName then return ← normCasesAux fuel mv app
       -- a compiled `match` is an elimination by its definition
-      if let some u ← unfoldDefinition? e then return ← normAux fuel mv u.headBeta
+      if let some u ← unfoldDefinition? e (ignoreTransparency := true) then
+        return ← normAux fuel mv u.headBeta
       return e
     -- a library theorem given a hypothesis being moved, proving a structured claim
     if !(movedIn mv e).isEmpty then
@@ -549,7 +606,7 @@ def substLibraryAux : Nat → Array FVarId → Expr → FactorM (Option Expr)
   | fuel + 1, mv, e => do
     let .const L us := e.getAppFn | return none
     let some info := (← getEnv).find? L | return none
-    unless info.isTheorem do return none
+    unless isTheoremInfo info do return none
     let args := e.getAppArgs
     let n ← forallTelescope info.type fun xs _ => return xs.size
     unless args.size == n do return none
@@ -584,7 +641,7 @@ def factorTheoremAux : Nat → Name → Bool → FactorM (Except String LibFacto
   | fuel + 1, name, requireDeep => do
     let info ← getConstInfo name
     let some value := info.value? | return .error "not a theorem with a proof term"
-    unless info.isTheorem do return .error "not a theorem"
+    unless isTheoremInfo info do return .error "not a theorem"
     forallTelescope info.type fun xs body => do
       let mut mv : Array FVarId := #[]
       for x in xs, i in [0:xs.size] do
@@ -608,21 +665,24 @@ def factorTheoremAux : Nat → Name → Bool → FactorM (Except String LibFacto
       if moved.isEmpty then
         return .error "every hypothesis its proof uses is needed before the conclusion's first claim"
       let inner := place.withGuards #[]
-      let deep := inner.hasInnerGuards
+      let deep := inner.separates moved
       if requireDeep && !deep then
-        return .error "it only leaves out hypotheses the proof never uses, which derive_idle adds"
+        return .error (if inner.hasInnerGuards
+          then "every hypothesis it moves is still assumed by every claim, which says nothing new"
+          else "it only leaves out hypotheses the proof never uses, which derive_idle adds")
       let keep := xs.filter fun x => !moved.contains x.fvarId!
       let type ← instantiateMVars (← mkForallFVars keep (← buildInnerAux spineFuel inner body))
       let proofBody ← factorInnerAux fuel mv inner body proof top
       let value ← instantiateMVars (← mkLambdaFVars keep proofBody)
       if type.hasFVar || type.hasMVar || value.hasFVar || value.hasMVar then
         return .error "the factored proof uses a hypothesis outside the claims that assume it"
-      let newName := name ++ `factored
-      let doc ← factorDoc name xs moved inner
+      let newName ← factoredName name
+      let (doc, placed) ← factorDoc name xs moved inner body
       match ← addChecked newName info.levelParams type value doc with
       | .error e => return .error s!"kernel rejected {newName}: {e}"
       | .ok () =>
-        modify fun s => { s with added := s.added.push newName }
+        modify fun s => { s with added := s.added.push newName,
+                              placements := s.placements ++ placed.map fun (h, w) => (newName, h, w) }
         let index : FVarId → Nat := fun h => (order.findIdx? (· == h)).getD 0
         let keepIdx := (Array.range xs.size).filter fun j => !moved.contains order[j]!
         return .ok { name := newName, keep := keepIdx, place := inner.map index, deep }
@@ -723,7 +783,7 @@ def factorInnerAux : Nat → Array FVarId → Placement FVarId → Expr → Expr
                 (← buildClaimAux spineFuel pr b) (← factorProofAux fuel mv pl a ea scope)
                 (← factorProofAux fuel mv pr b eb scope)
           | .pi _ pb, .pi n d gb bi =>
-              withLocalDecl n bi d fun x => do
+              return ← withLocalDecl n bi d fun x => do
                 let some ex ← applyAlts? app x (gb.instantiate1 x) | throwError "cannot apply an elimination"
                 let ex ← normAux fuel mv ex
                 mkLambdaFVars #[x] (← factorProofAux fuel mv pb (gb.instantiate1 x) ex scope)
@@ -766,11 +826,15 @@ syntax (name := deriveFactorCmd) "derive_factor " ident : command
     let name ← realizeGlobalConstNoOverloadWithInfo stx[1]
     let (r, s) ← (factorBudgeted factorBudget (factorTheorem name)).run {}
     -- library factorings derived on the way are theorems in their own right
+    let own ← factoredName name
     for n in s.added do
-      unless n == name ++ `factored do reportAdded n
+      unless n == own do reportAdded n
     match r with
     | some (.ok lf) => reportAdded lf.name
     | some (.error e) => reportFailure m!"derive_factor {name}: {e}"
     | none => reportFailure m!"derive_factor {name}: the budget ran out (unknown)"
+    -- one line per moved hypothesis, for the frontier's input map
+    for (n, h, w) in s.placements do
+      logInfo m!"placed {n} :: {h} :: {w}"
 
 end ErdosProblems.ArgumentGraph
