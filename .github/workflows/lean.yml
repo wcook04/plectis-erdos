@@ -202,11 +202,11 @@ jobs:
         run: python3 scripts/test_lean_dependency_index_cache.py
       - name: Restore project Lean cache
         if: steps.lean-inputs.outputs.changed == 'true'
-        uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
+        uses: actions/cache/restore@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
         with:
-          # This top-level action saves after the later custom build has
-          # populated project OLeans. Keep the historical lean-action key
-          # shape so existing main-branch caches seed the optimized run.
+          # Restore only: the combined action has an implicit post-save that
+          # bypasses the explicit main-only save condition below. Keep the key
+          # shape so existing main-branch caches seed the bounded build.
           path: .lake
           key: lake-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles('lean-toolchain') }}-${{ hashFiles('lake-manifest.json') }}-${{ github.sha }}
           restore-keys: |
@@ -412,7 +412,7 @@ jobs:
       # warmed by lean-cache-warm.yml on every push and by manual dispatch
       # here; a PR restores it and rebuilds only the modules it changes.
       - name: Save project Lean cache after the build
-        if: always() && steps.lean-inputs.outputs.changed == 'true' && github.event_name != 'pull_request'
+        if: always() && steps.lean-inputs.outputs.changed == 'true' && github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
         uses: actions/cache/save@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
         with:
           path: .lake
