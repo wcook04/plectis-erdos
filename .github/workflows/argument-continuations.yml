@@ -11,10 +11,18 @@ name: Argument continuations
 
 # A push trigger: its path filter sees only the commits pushed, so a later
 # push that leaves the exporter alone does not restart a two-hour export (a
-# pull_request path filter sees the whole pull-request diff).
+# pull_request path filter sees the whole pull-request diff). It runs on main
+# and on branches that work on the argument graph: any other branch that
+# merges main brings these files in through the merge commit, and would
+# otherwise start an export nobody reads. Another branch can run one by hand
+# (workflow_dispatch).
 on:
   workflow_dispatch:
   push:
+    branches:
+      - main
+      - "claude/argument-*"
+      - "codex/argument-*"
     paths:
       - scripts/export_argument_continuations.lean
       - scripts/test_argument_continuation_export.py
