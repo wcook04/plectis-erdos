@@ -156,6 +156,8 @@ jobs:
           PLECTIS_CONTINUATION_BATTERY_SECONDS: "1200"
           PLECTIS_CONTINUATION_DEEP_LEAVES: "150"
           PLECTIS_CONTINUATION_DEEP_SECONDS: "600"
+          # Literal generalisation (producer families), 25 min.
+          PLECTIS_CONTINUATION_GENERALISE_SECONDS: "1500"
         run: |
           set -uo pipefail
           git rev-parse HEAD > "$RUNNER_TEMP/argument_continuations_source_revision.txt"
