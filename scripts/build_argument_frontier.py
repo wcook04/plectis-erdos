@@ -471,6 +471,8 @@ def paper_macros(manifest: dict[str, Any], per_problem: dict[str, dict[str, Any]
         "AFConjuncts": sum(1 for r in rows if r["operation"] == "conjuncts"),
         "AFCuts": sum(len(r.get("frontier_cuts", [])) for r in rows),
         "AFSupplied": sum(len(s.get("supplied_commands", [])) for s in per_problem.values()),
+        # strict frontiers whose suppliers discharge every consequence (probe-verified)
+        "AFDischarged": sum(1 for s in per_problem.values() for c in s["commands"] if " using " in c),
         "AFNamedInputs": len(inputs),
         "AFNamedInputUses": sum(len(e["consumers"]) for e in inputs),
         "AFNamedInputsTraced": sum(1 for e in inputs if any(c.get("levels") for c in e["consumers"])),
