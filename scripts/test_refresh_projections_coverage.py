@@ -118,6 +118,8 @@ def check_external_evidence_is_not_silently_omitted() -> None:
 
 
 def main() -> int:
+    require(set(refresh_projections.BUILDERS) <= set(refresh_projections.PREFLIGHT_CHECKS),
+            "early preflight omits a registered projection; stale generated files can reach expensive CI")
     source = CHECK_RELEASE.read_text(encoding="utf-8")
     checked = checked_builders(source)
     require("refresh_projections.preflight()" in source, "release gate bypasses shared evidence preflight")

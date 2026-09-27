@@ -25,6 +25,7 @@ on:
           - all
           - external-verification-only
           - release-surfaces-only
+          - dependency-index-refresh
 
 concurrency:
   group: lean-ci-${{ github.event.pull_request.number || github.ref }}
@@ -112,13 +113,15 @@ jobs:
       # restoring Lean caches or compiling; keep the full export below as an
       # independent verification of a source-current packet.
       - name: Check committed source evidence before expensive jobs
+        if: ${{ github.event_name != 'workflow_dispatch' || inputs.scope != 'dependency-index-refresh' }}
         run: python3 scripts/refresh_projections.py --preflight
 
   build:
     # Diagnose the complete release surface before allocating a Lean runner.
     # A stale paper manifest must not start hours of work on a rejected tree.
     needs: [change_scope, release-surfaces]
-    if: ${{ github.event_name != 'workflow_dispatch' || inputs.scope == 'all' }}
+    # Recovery exports evidence for a broken branch; it is never a release pass.
+    if: ${{ !cancelled() && needs.change_scope.result == 'success' && (needs.release-surfaces.result == 'success' || (github.event_name == 'workflow_dispatch' && inputs.scope == 'dependency-index-refresh' && needs.release-surfaces.result == 'skipped')) && (github.event_name != 'workflow_dispatch' || inputs.scope == 'all' || inputs.scope == 'dependency-index-refresh') }}
     runs-on: ubuntu-24.04
     timeout-minutes: 210
     steps:
@@ -1082,7 +1085,9 @@ jobs:
           python3 -O scripts/test_expert_handoffs.py
       - name: Test clean committed-snapshot release wrapper
         if: ${{ !cancelled() && needs.change_scope.outputs.erdos1041_corpus_only != 'true' }}
-        run: python3 scripts/test_check_release_ref.py
+        run: |
+          python3 scripts/test_check_release_ref.py
+          python3 scripts/test_check_push.py
       - name: Test scope source-identity boundary
         if: ${{ !cancelled() && needs.change_scope.outputs.erdos1041_corpus_only != 'true' }}
         run: python3 scripts/test_scope_source_identity.py

@@ -160,6 +160,10 @@ def require_release_before_expensive_jobs(workflow: str) -> None:
              job == "external-verification"),
             ("workflow_dispatch", "external-verification-only", "failure", False, "false", False),
             ("workflow_dispatch", "external-verification-only", "skipped", True, "false", False),
+            ("workflow_dispatch", "dependency-index-refresh", "skipped", False, "false", job == "build"),
+            ("workflow_dispatch", "dependency-index-refresh", "failure", False, "false", False),
+            ("workflow_dispatch", "dependency-index-refresh", "skipped", True, "false", False),
+            ("pull_request", "dependency-index-refresh", "skipped", False, "false", False),
         ):
             values = {
                 "github.event_name": event,

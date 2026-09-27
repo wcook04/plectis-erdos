@@ -145,6 +145,7 @@ WRITE_FLAGS: dict[str, tuple[str, ...]] = {
 # These checks inspect shipped evidence only: no Lean, installs, regeneration,
 # or local-receipt fallback. CI and cold release preparation share this owner.
 PREFLIGHT_CHECKS: dict[str, tuple[str, ...]] = {
+    **{builder: ("--check",) for builder in BUILDERS},
     "scripts/check_release.py": ("--source-identity-only",),
     "scripts/check_publication_contract.py": (),
     "scripts/build_declaration_atlas.py": ("--check",),
@@ -171,20 +172,30 @@ def check_command(builder: str) -> list[str]:
 
 def preflight() -> int:
     """Reject stale shipped evidence before acquiring expensive resources."""
-    failures = []
-    for builder in PREFLIGHT_CHECKS:
+    def inspect(builder: str) -> tuple[str, str | None]:
         try:
             result = run(check_command(builder), cwd=ROOT)
             if result.returncode:
-                failures.append((builder, result.stderr.strip() or result.stdout.strip()))
+                return builder, result.stderr.strip() or result.stdout.strip() or f"exit {result.returncode}"
         except (OSError, subprocess.TimeoutExpired) as exc:
-            failures.append((builder, str(exc)))
+            return builder, str(exc)
+        return builder, None
+
+    # Read-only checks share one snapshot and retain registry order in reports.
+    # Derive coverage from BUILDERS so new projections cannot escape preflight.
+    with ThreadPoolExecutor(max_workers=CHECK_WORKERS) as executor:
+        failures = [(builder, detail) for builder, detail in executor.map(inspect, PREFLIGHT_CHECKS)
+                    if detail is not None]
     if failures:
         print("projection preflight failed; no build or preparation was started:")
         for builder, detail in failures:
             print(f"  {builder}: {detail}")
+        print("run python3 scripts/refresh_projections.py for Python-owned projections")
+        for builder, _detail in failures:
+            if builder in CHECK_ONLY_BUILDERS:
+                print(f"  {builder}: {CHECK_ONLY_BUILDERS[builder]}")
         return 1
-    print("projection preflight: source identity, publication artifacts and tracked evidence are current")
+    print(f"projection preflight: all {len(PREFLIGHT_CHECKS)} projection and evidence checks passed")
     return 0
 
 
