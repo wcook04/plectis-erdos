@@ -42,6 +42,7 @@ import Erdos249257.DiagonalPincerCertificatesT64
 import Erdos249257.DiagonalPincerDecomposition
 import Erdos249257.DiagonalPincerPrimeCertificates.ClosureT64
 import Erdos249257.DyadicPrefixCompression
+import Erdos249257.ExactRowRigidity
 import Erdos249257.FirstHarmonicGap
 import Erdos249257.FirstHarmonicPivot
 import Erdos249257.FreshPrimeDeficitDecomposition
