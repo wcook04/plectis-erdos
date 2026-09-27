@@ -322,8 +322,11 @@ bundle supplies the target alone.
 `next` ranks candidates in the same order: the named inputs and the open
 levels of their interface chains, then members of the inputs' bundles, then
 members of bundles of the problem's own targets and statements that settle
-others, with literal arithmetic last in each tier; cross-problem statements
-are listed apart. `needs` takes a theorem name or suffix, a paper label or a
+others, with literal arithmetic last in each tier and then the most paper
+results and the most leverage first; cross-problem statements are listed
+apart. A deeper interface level implies the levels above it, so it ranks
+higher, but it is also a stronger statement, closer to the hypothesis: each
+row names its level, and which level is the useful cut stays a judgement. `needs` takes a theorem name or suffix, a paper label or a
 ledger row, and prints each chain with, on every member, the paper results
 whose chains need it. `check-bundle` runs the joint check on any statements;
 `cut` finds the cheapest set, within a pool of at most 32 statements with

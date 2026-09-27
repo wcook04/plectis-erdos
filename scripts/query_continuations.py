@@ -619,10 +619,13 @@ def cmd_next(graph: builder.Graph, payload: dict[str, Any], args: argparse.Names
     settle others. A statement only other problems' theorems state is listed
     under ``cross_problem``, never in the shortlist. Within a tier, literal
     arithmetic (``0 - 1``) ranks last and is marked, then statements no barrier
-    touches, the most paper results, and leverage. A bundle whose members are
-    jointly impossible is never offered; a bundle or interface level that
-    restates its target is marked. Whether a candidate is worth a
-    mathematician's time stays a judgement."""
+    touches, the most paper results, and leverage. A deeper interface level
+    implies the levels above it, so it has more leverage and ranks higher; it
+    is also a stronger statement, closer to the hypothesis, and which level is
+    the useful cut stays a judgement (each row names its level). A bundle
+    whose members are jointly impossible is never offered; a bundle or
+    interface level that restates its target is marked. Whether a candidate is
+    worth a mathematician's time stays a judgement."""
     problem = args.problem
     touched = ((payload.get("barriers") or {}).get("constrains") or {})
     where = attribution(graph, payload, problem)
