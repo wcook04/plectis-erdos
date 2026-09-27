@@ -1915,7 +1915,7 @@
         "ErdosProblems.ArgumentGraph.Derived.Erdos68",
         "ErdosProblems.ArgumentGraph.Results.Erdos1041",
         "ErdosProblems.ArgumentGraph.Results.Erdos243",
-        "ErdosProblems.ArgumentGraph.Results.Erdos249",
+        "ErdosProblems.ArgumentGraph.Results.Erdos249Route",
         "ErdosProblems.ArgumentGraph.Results.Erdos251",
         "ErdosProblems.Bit.verify.B1",
         "ErdosProblems.Bit.verify.B2",
@@ -8813,6 +8813,15 @@
           ]
         },
         {
+          "id": "ErdosProblems.ArgumentGraph.Results.Erdos249Route",
+          "path": "lean/ErdosProblems/ArgumentGraph/Results/Erdos249Route.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.ArgumentGraph.Results.Erdos249",
+            "ErdosProblems.Erdos249.PaperCompleteR21.FiberMeanOfPrimeNumberTheorem"
+          ]
+        },
+        {
           "id": "ErdosProblems.ArgumentGraph.Results.Erdos251",
           "path": "lean/ErdosProblems/ArgumentGraph/Results/Erdos251.lean",
           "role": "Lean proof module",
@@ -13304,6 +13313,15 @@
           "imports": [
             "Erdos249257.CertificateKernel",
             "Erdos249257.GapFareyBound"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos249.PaperCompleteR21.FiberMeanOfPrimeNumberTheorem",
+          "path": "lean/ErdosProblems/Erdos249/PaperCompleteR21/FiberMeanOfPrimeNumberTheorem.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos249.PaperCompleteR21.ExcludedCofactorEstimate",
+            "ErdosProblems.Erdos249.TypeBReturnV8.PeripheralFiniteBridge"
           ]
         },
         {
