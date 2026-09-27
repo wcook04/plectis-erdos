@@ -218,6 +218,7 @@ jobs:
           ErdosProblems.Erdos269.PaperCorrespondenceAudit
           ErdosProblems.Erdos68.PaperCorrespondenceAudit
           ErdosProblems.Erdos68.PaperCorrespondenceAuditAdditive
+          ErdosProblems.Erdos251.PaperCompleteR21.JointPrimeGapCountermodelPerClause
           ErdosProblems.ArgumentGraph.Derived.Erdos1041
           ErdosProblems.ArgumentGraph.Derived.Erdos1049
           ErdosProblems.ArgumentGraph.Derived.Erdos243
