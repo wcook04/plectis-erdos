@@ -1,7 +1,7 @@
 {
  "schema": "plectis-paper-evidence/1",
  "lean_repository": "https://github.com/wcook04/plectis-erdos",
- "lean_pin": "4db6150ed53492363079661a68bed4d181eb56dd",
+ "lean_pin": "87c64ce39d0874306da91681803f9f68c2c094b3",
  "lean_toolchain": "leanprover/lean4:v4.29.1",
  "mathlib": "5e932f97dd25535344f80f9dd8da3aab83df0fe6",
  "corpus_repository": "https://github.com/wcook04/plectis-erdos-lean",
@@ -10466,7 +10466,7 @@
         "path": "lean/ErdosProblems/Erdos68/PaperCompleteExisting.lean",
         "line": 299,
         "kind": "theorem",
-        "docstring": "Corrector identities on the auxiliary support, including p=2.\nSee PaperCompleteSupportNoGo for the paper's n≥2 support incompatibility.",
+        "docstring": "Corrector identities on the auxiliary support, including p=2, whose index 1 lies outside\nthe paper's domain i≥2; the long record states the theorem for p≥3 and treats p=2 after it.",
         "statement": "theorem prime_channel_corrector {p : ℕ} (hp : p.Prime) :\n    _root_.Erdos68.factorialMoment (_root_.Erdos68.primeTranslatorCoeff p)\n      (_root_.Erdos68.primeTranslatorIndex p) = 0 ∧\n    _root_.Erdos68.channelNumerator (_root_.Erdos68.primeTranslatorCoeff p)\n      (_root_.Erdos68.primeTranslatorIndex p) p = (p.factorial : ℤ) - 1 ∧\n    (∀ d : ℕ, 2 ≤ d → d ≠ p →\n      _root_.Erdos68.channelNumerator (_root_.Erdos68.primeTranslatorCoeff p)\n        (_root_.Erdos68.primeTranslatorIndex p) d = 0)",
         "statement_sha256": "19a3dce2e72d4569fad2285d034e82e16af0303cc294585eb2216bfc365af480",
         "unfolds": []
@@ -40047,8 +40047,8 @@
      "environment": "prop",
      "printed_kind": "Proposition",
      "number": "12.9",
-     "page": "121",
-     "source": "paper/reasoning-parts/erdos249/a249_front.tex:7592",
+     "page": "122",
+     "source": "paper/reasoning-parts/erdos249/a249_front.tex:7597",
      "statement_sha256": "sha256:6652b2361d80c18bfdf3609aef0f346294121dfe9c87db2a758863b45bc7bf3d",
      "statement_key": "sha256:775d167bd30465dd29ba70149b2f3ea4ed9fbf80ae9382be3abbfbfbac2efa16",
      "title": null,
