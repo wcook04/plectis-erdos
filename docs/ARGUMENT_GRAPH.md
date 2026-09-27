@@ -459,7 +459,7 @@ only by `P n ∼ n log n`. On the way it derives the factorings of
 `long_joint_prime_gap_countermodel`, of `prime_polylogarithmic_interval` (whose
 growth clause alone needs `ε < 1` and the prime number theorem) and of the
 lemmas beneath them.
-[`JointPrimeGapCountermodelPerClause`](../lean/ErdosProblems/Erdos251/PaperCompleteR21/JointPrimeGapCountermodelPerClause.lean)
+[`ArgumentGraph.Results.Erdos251`](../lean/ErdosProblems/ArgumentGraph/Results/Erdos251.lean)
 states both countermodels in this form.
 
 For the excluded-cofactor estimate of #249, `prop_badcof` assumes the prime

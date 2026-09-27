@@ -729,8 +729,11 @@ def with_workflow_modules(text: str, modules: list[str]) -> str:
     while end < len(lines) and re.match(r"^\s+(ErdosProblems|Erdos249257)\.", lines[end]):
         end += 1
     indent = re.match(r"^(\s*)", lines[flag]).group(1)
+    # The frontier owns the generated modules; a hand-written ArgumentGraph module
+    # (Results, which states derived theorems for the papers) stays after them.
     kept = [l for l in lines[flag + 1:end] if ".ArgumentGraph." not in l]
-    return "\n".join(lines[: flag + 1] + kept + [indent + m for m in modules] + lines[end:]) + "\n"
+    tail = [l for l in lines[flag + 1:end] if ".ArgumentGraph." in l and ".ArgumentGraph.Derived." not in l]
+    return "\n".join(lines[: flag + 1] + kept + [indent + m for m in modules] + tail + lines[end:]) + "\n"
 
 
 PROBE_EPILOGUE = """

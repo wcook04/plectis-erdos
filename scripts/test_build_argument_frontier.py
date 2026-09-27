@@ -283,6 +283,21 @@ class Modules(unittest.TestCase):
                     self.assertEqual(number, i + 2)
                     self.assertTrue(lines[i + 1].startswith("derive_"))
 
+    def test_coverage_list_keeps_hand_written_argument_graph_modules(self):
+        text = "\n".join(["      - name: Coverage build", "        id: coverage-build", "        run: >-",
+                          "          python3 scripts/lean_fast_build.py --lake-staleness",
+                          "          ErdosProblems.Erdos68.PaperCorrespondenceAudit",
+                          "          ErdosProblems.ArgumentGraph.Derived.Erdos68",
+                          "          ErdosProblems.ArgumentGraph.Results.Erdos251",
+                          "      - name: next"])
+        out = frontier.with_workflow_modules(text, ["ErdosProblems.ArgumentGraph.Derived.Erdos243",
+                                                    "ErdosProblems.ArgumentGraph.Derived.Erdos68"])
+        lines = [l.strip() for l in out.splitlines()]
+        i = lines.index("ErdosProblems.Erdos68.PaperCorrespondenceAudit")
+        self.assertEqual(lines[i + 1:i + 4], ["ErdosProblems.ArgumentGraph.Derived.Erdos243",
+                                              "ErdosProblems.ArgumentGraph.Derived.Erdos68",
+                                              "ErdosProblems.ArgumentGraph.Results.Erdos251"])
+
     def test_lean_ident_escapes(self):
         self.assertEqual(frontier.lean_ident("A.b_c.d'"), "A.b_c.d'")
         self.assertEqual(frontier.lean_ident("A.1x"), "A.«1x»")

@@ -1513,7 +1513,7 @@
           },
           {
             "name": "ErdosProblems.Erdos251.PaperCompleteR21.short_joint_prime_gap_countermodel_per_clause",
-            "file": "lean/ErdosProblems/Erdos251/PaperCompleteR21/JointPrimeGapCountermodelPerClause.lean"
+            "file": "lean/ErdosProblems/ArgumentGraph/Results/Erdos251.lean"
           },
           {
             "name": "ErdosProblems.Erdos251.PaperCompleteR21.cut_prefix_bound",
@@ -17157,7 +17157,7 @@
           },
           {
             "name": "ErdosProblems.Erdos251.PaperCompleteR21.long_joint_prime_gap_countermodel_per_clause",
-            "file": "lean/ErdosProblems/Erdos251/PaperCompleteR21/JointPrimeGapCountermodelPerClause.lean"
+            "file": "lean/ErdosProblems/ArgumentGraph/Results/Erdos251.lean"
           },
           {
             "name": "ErdosProblems.Erdos251.PaperCompleteR21.cut_prefix_bound",
