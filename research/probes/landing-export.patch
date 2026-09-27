@@ -1,0 +1,2377 @@
+diff --git a/docs/claims.json b/docs/claims.json
+index 8b1249e217f104d8e0d6be796fb459b9892cf454..f2ac07c11d5ebbea8924cc5b28d2062339990a29 100644
+--- a/docs/claims.json
++++ b/docs/claims.json
+@@ -1908,6 +1908,14 @@
+         "lean/ErdosProblems.lean"
+       ],
+       "auxiliary_roots": [
++        "ErdosProblems.ArgumentGraph.Derived.Erdos1041",
++        "ErdosProblems.ArgumentGraph.Derived.Erdos1049",
++        "ErdosProblems.ArgumentGraph.Derived.Erdos243",
++        "ErdosProblems.ArgumentGraph.Derived.Erdos249",
++        "ErdosProblems.ArgumentGraph.Derived.Erdos251",
++        "ErdosProblems.ArgumentGraph.Derived.Erdos257",
++        "ErdosProblems.ArgumentGraph.Derived.Erdos269",
++        "ErdosProblems.ArgumentGraph.Derived.Erdos68",
+         "ErdosProblems.Bit.verify.B1",
+         "ErdosProblems.Bit.verify.B2",
+         "ErdosProblems.Bit.verify.B3",
+@@ -1935,7 +1943,6 @@
+         "ErdosProblems.Erdos249.PaperCompleteR20.FiniteCertificateBatch",
+         "ErdosProblems.Erdos249.PaperCompleteR20.FinitePrefixCountermodelEndpoint",
+         "ErdosProblems.Erdos249.PaperCompleteR20.GridArcRealInterface",
+-        "ErdosProblems.Erdos249.PaperCompleteR20.LcmGridCorrespondence",
+         "ErdosProblems.Erdos249.PaperCompleteR20.MobiusSquareReduction",
+         "ErdosProblems.Erdos249.PaperCompleteR20.RadicalDecomposition",
+         "ErdosProblems.Erdos249.PaperCompleteR20.RationalSpacingCorrespondence",
+@@ -1945,7 +1952,6 @@
+         "ErdosProblems.Erdos249.PaperCorrespondenceAuditAdditive",
+         "ErdosProblems.Erdos249.PaperCorrespondenceAuditRecovery",
+         "ErdosProblems.Erdos251.PaperCompleteR20.ExactDenominator",
+-        "ErdosProblems.Erdos251.PaperCompleteR20.FiniteSeparation",
+         "ErdosProblems.Erdos251.PaperCompleteR20.LocalTargetInterval",
+         "ErdosProblems.Erdos251.PaperCompleteR20.SparseConstructionAudit",
+         "ErdosProblems.Erdos251.PaperCorrespondenceAudit",
+@@ -2198,6 +2204,7 @@
+       "auxiliary_root_contract": {
+         "posture": "exhaustive_inventory_forest_not_compact_reading_root",
+         "allowed_prefixes": [
++          "ErdosProblems.ArgumentGraph.",
+           "ErdosProblems.Bit.",
+           "ErdosProblems.Decl.",
+           "ErdosProblems.EightPaperR21Audit",
+@@ -8401,6 +8408,146 @@
+             "Erdos249257.HalfGreedyFatalGap"
+           ]
+         },
++        {
++          "id": "ErdosProblems.ArgumentGraph.Derive",
++          "path": "lean/ErdosProblems/ArgumentGraph/Derive.lean",
++          "role": "Lean proof module",
++          "imports": []
++        },
++        {
++          "id": "ErdosProblems.ArgumentGraph.Derived.Erdos1041",
++          "path": "lean/ErdosProblems/ArgumentGraph/Derived/Erdos1041.lean",
++          "role": "Lean proof module",
++          "imports": [
++            "ErdosProblems.ArgumentGraph.Derive",
++            "ErdosProblems.Erdos1041.PaperCompleteR21.ArityNotCapacity",
++            "ErdosProblems.Erdos1041.PaperCompleteR21.ConstantFactorAreaCriteria",
++            "ErdosProblems.Erdos1041.PaperCompleteR21.CriticalValueSeparationTransport",
++            "ErdosProblems.Erdos1041.PaperCompleteR21.HyperbolicLawOfCosines",
++            "ErdosProblems.Erdos1041.PaperCompleteR21.LowCriticalScaleTransport",
++            "ErdosProblems.Erdos1041.PaperCompleteR21.SeparationParent",
++            "ErdosProblems.Erdos1041.PaperCompleteR21.SubcriticalPerimeterPath"
++          ]
++        },
++        {
++          "id": "ErdosProblems.ArgumentGraph.Derived.Erdos1049",
++          "path": "lean/ErdosProblems/ArgumentGraph/Derived/Erdos1049.lean",
++          "role": "Lean proof module",
++          "imports": [
++            "ErdosProblems.ArgumentGraph.Derive",
++            "ErdosProblems.Erdos1049.PaperCompleteR21.RationalBaseThreshold"
++          ]
++        },
++        {
++          "id": "ErdosProblems.ArgumentGraph.Derived.Erdos243",
++          "path": "lean/ErdosProblems/ArgumentGraph/Derived/Erdos243.lean",
++          "role": "Lean proof module",
++          "imports": [
++            "ErdosProblems.ArgumentGraph.Derive",
++            "ErdosProblems.Erdos243.PaperCompleteR21.ExactOrbitRecordDichotomy",
++            "ErdosProblems.Erdos243.PaperCompleteR21.MaximalGapConstant",
++            "ErdosProblems.Erdos243.PaperCompleteR21.ReducedDenominatorPrimePowers",
++            "ErdosProblems.Erdos243.PaperCompleteR21.ReducedStepLocalArithmetic",
++            "ErdosProblems.Erdos243.PaperCompleteR21.WindowAvoidance"
++          ]
++        },
++        {
++          "id": "ErdosProblems.ArgumentGraph.Derived.Erdos249",
++          "path": "lean/ErdosProblems/ArgumentGraph/Derived/Erdos249.lean",
++          "role": "Lean proof module",
++          "imports": [
++            "ErdosProblems.ArgumentGraph.Derive",
++            "Erdos249257.LcmConeFlatness",
++            "Erdos249257.TotientActualLcmTopEdgeStaircase",
++            "Erdos249257.TotientCarryKernelRigidity",
++            "Erdos249257.TotientTailCarryPeriod",
++            "Erdos249257.TotientTailPeriodKiller",
++            "ErdosProblems.Erdos249.PaperCompleteR20.LcmGridCorrespondence",
++            "ErdosProblems.Erdos249.PaperCompleteR21.DivisorChannelSplitAndSeamDoubling",
++            "ErdosProblems.Erdos249.PaperCompleteR21.DyadicSectionBasisAndRationalCarry",
++            "ErdosProblems.Erdos249.PaperCompleteR21.ExcludedCofactorEstimate",
++            "ErdosProblems.Erdos249.PaperCompleteR21.ExtremalOrderDirectedAndPulse",
++            "ErdosProblems.Erdos249.PaperCompleteR21.FirstHarmonicBlockCriteria",
++            "ErdosProblems.Erdos249.PaperCompleteR21.HarmonicGapAndFourTail",
++            "ErdosProblems.Erdos249.PaperCompleteR21.LambertSigmaRungAndNesterenko",
++            "ErdosProblems.Erdos249.PaperCompleteR21.MersennePrimeSupportAnchors",
++            "ErdosProblems.Erdos249.PaperCompleteR21.MobiusMersenneLadderLogConcavity",
++            "ErdosProblems.Erdos249.PaperCompleteR21.NearIntegerIrrationalityCriterion",
++            "ErdosProblems.Erdos249.PaperCompleteR21.NumeratorPolynomialAndMersenneRemainder",
++            "ErdosProblems.Erdos249.PaperCompleteR21.PeriodMultipleAndSecondDifference",
++            "ErdosProblems.Erdos249.PaperCompleteR21.PhaseEnergyAndForeignResidueProjection",
++            "ErdosProblems.Erdos249.PaperCompleteR21.RationalTailPeriodWitnesses",
++            "ErdosProblems.Erdos249.PaperCompleteR21.ScalarLocalisationAndInversePhaseGauge",
++            "ErdosProblems.Erdos249.PaperCompleteR21.SimultaneousShiftCertificateDepth",
++            "ErdosProblems.Erdos249.PaperCompleteR21.TailCarryPeriodAndRankFloor",
++            "ErdosProblems.Erdos249.PaperCompleteR21.TopEdgeChainPaperBand"
++          ]
++        },
++        {
++          "id": "ErdosProblems.ArgumentGraph.Derived.Erdos251",
++          "path": "lean/ErdosProblems/ArgumentGraph/Derived/Erdos251.lean",
++          "role": "Lean proof module",
++          "imports": [
++            "ErdosProblems.ArgumentGraph.Derive",
++            "ErdosProblems.Erdos251.ActualPrimePaperR11",
++            "ErdosProblems.Erdos251.NonconcentrationConsequencesR11",
++            "ErdosProblems.Erdos251.PaperCompleteR20.FiniteSeparation",
++            "ErdosProblems.Erdos251.PaperCompleteR21.JointPrimeGapCountermodel",
++            "ErdosProblems.Erdos251.PaperCompleteR21.PerturbedPrimePositions",
++            "ErdosProblems.Erdos251.PaperCompleteR21.TwoWindowSparsity",
++            "ErdosProblems.Erdos251.PrimeGapDyadicTail"
++          ]
++        },
++        {
++          "id": "ErdosProblems.ArgumentGraph.Derived.Erdos257",
++          "path": "lean/ErdosProblems/ArgumentGraph/Derived/Erdos257.lean",
++          "role": "Lean proof module",
++          "imports": [
++            "ErdosProblems.ArgumentGraph.Derive",
++            "Erdos249257.BooleanMobiusCriticalCapacityCofinal",
++            "Erdos249257.BooleanMobiusSkipRowCofinal",
++            "Erdos249257.CofinalStripReturn",
++            "Erdos249257.GreedyAchievementSet",
++            "Erdos249257.HalfCarryReachability",
++            "Erdos249257.HalfCylinderFullShellSeamBridge",
++            "Erdos249257.HalfCylinderLargestSkipInduction",
++            "Erdos249257.HalfCylinderMiddleCarryLowerBound",
++            "Erdos249257.SuffixCylinderTerminalOnlyBridge",
++            "Erdos249257.TwentyOneQuotientGreedy",
++            "ErdosProblems.Erdos257.PaperCompleteR21.ArithmeticCounterexampleAssembly",
++            "ErdosProblems.Erdos257.PaperCompleteR21.DyadicBandAndTwoSidedBounds",
++            "ErdosProblems.Erdos257.PaperCompleteR21.EventualNonnegativeMargin",
++            "ErdosProblems.Erdos257.PaperCompleteR21.FeedbackRowStripWitnessAllDepths",
++            "ErdosProblems.Erdos257.PaperCompleteR21.GreedyOrbitNoTies",
++            "ErdosProblems.Erdos257.PaperCompleteR21.LogarithmicInitialInterval",
++            "ErdosProblems.Erdos257.PaperCompleteR21.MersenneChannelSurvivalAllHeights",
++            "ErdosProblems.Erdos257.PaperCompleteR21.ResetSqrtEscapeHalfMembership",
++            "ErdosProblems.Erdos257.PaperCompleteR21.SeamEscapeAndTerminalStrip",
++            "ErdosProblems.Erdos257.PaperCompleteR21.ShortWindowDivisorPhase",
++            "ErdosProblems.Erdos257.PaperCompleteR21.SkipSafetyAndDivisorZeroRuns",
++            "ErdosProblems.Erdos257.PaperCompleteR21.TerminalStripExactRowGap"
++          ]
++        },
++        {
++          "id": "ErdosProblems.ArgumentGraph.Derived.Erdos269",
++          "path": "lean/ErdosProblems/ArgumentGraph/Derived/Erdos269.lean",
++          "role": "Lean proof module",
++          "imports": [
++            "ErdosProblems.ArgumentGraph.Derive",
++            "ErdosProblems.Erdos269.PaperCompleteR21.TwoPrimeSums",
++            "ErdosProblems.Erdos269.PaperR7BasicAssembly",
++            "ErdosProblems.Erdos269.PaperR7WindowResults"
++          ]
++        },
++        {
++          "id": "ErdosProblems.ArgumentGraph.Derived.Erdos68",
++          "path": "lean/ErdosProblems/ArgumentGraph/Derived/Erdos68.lean",
++          "role": "Lean proof module",
++          "imports": [
++            "ErdosProblems.ArgumentGraph.Derive",
++            "ErdosProblems.Erdos68.PaperCompletePrimePole"
++          ]
++        },
+         {
+           "id": "ErdosProblems.AxiomAudit",
+           "path": "lean/ErdosProblems/AxiomAudit.lean",
+@@ -19522,7 +19669,7 @@
+     "lean_toolchain": "leanprover/lean4:v4.29.1",
+     "repository": "https://github.com/wcook04/plectis-erdos",
+     "formal_source": {
+-      "ref": "4db6150ed53492363079661a68bed4d181eb56dd",
++      "ref": "87c64ce39d0874306da91681803f9f68c2c094b3",
+       "ref_kind": "commit",
+       "publication_state": "committed_checkpoint_pending_remote_publication",
+       "relationship_to_last_tag": "post_tag_checkpoint",
+diff --git a/docs/declaration_atlas.json b/docs/declaration_atlas.json
+index fecb5f7d4f90cfa23085952aa7503a700d544108..453891b0352af0590e840ca569aadb8463fe1b09 100644
+--- a/docs/declaration_atlas.json
++++ b/docs/declaration_atlas.json
+@@ -4,21 +4,21 @@
+   "projection_not_authority": true,
+   "proof_authority": "Lean source checked by the pinned Lean kernel",
+   "argument_authority": "docs/claims.json::machine_readable_paper.argument_graph",
+-  "source_fingerprint": "sha256:9c617f399c98400f53c3554f4fab810eb10993bafff57baa25dbef51ffba9137",
++  "source_fingerprint": "sha256:42903f3bfd781802ff55d2d8d1f09978c4688994dfea8cf93455b4a3cf121062",
+   "summary": {
+-    "module_count": 1861,
+-    "declaration_count": 163960,
+-    "theorem_like_count": 159995,
++    "module_count": 1870,
++    "declaration_count": 164013,
++    "theorem_like_count": 160003,
+     "generated_certificate_declaration_count": 8171,
+     "principal_claim_link_count": 468,
+     "kind_counts": {
+-      "abbrev": 53,
+-      "def": 3833,
+-      "inductive": 5,
++      "abbrev": 55,
++      "def": 3873,
++      "inductive": 6,
+       "instance": 14,
+       "lemma": 1446,
+-      "structure": 60,
+-      "theorem": 158549
++      "structure": 62,
++      "theorem": 158557
+     }
+   },
+   "modules": [
+@@ -8796,6 +8796,160 @@
+       "declaration_count": 0,
+       "kind_counts": {}
+     },
++    {
++      "id": "ErdosProblems.ArgumentGraph.Derive",
++      "path": "lean/ErdosProblems/ArgumentGraph/Derive.lean",
++      "imports": [],
++      "declaration_count": 45,
++      "kind_counts": {
++        "abbrev": 2,
++        "def": 40,
++        "inductive": 1,
++        "structure": 2
++      }
++    },
++    {
++      "id": "ErdosProblems.ArgumentGraph.Derived.Erdos1041",
++      "path": "lean/ErdosProblems/ArgumentGraph/Derived/Erdos1041.lean",
++      "imports": [
++        "ErdosProblems.ArgumentGraph.Derive",
++        "ErdosProblems.Erdos1041.PaperCompleteR21.ArityNotCapacity",
++        "ErdosProblems.Erdos1041.PaperCompleteR21.ConstantFactorAreaCriteria",
++        "ErdosProblems.Erdos1041.PaperCompleteR21.CriticalValueSeparationTransport",
++        "ErdosProblems.Erdos1041.PaperCompleteR21.HyperbolicLawOfCosines",
++        "ErdosProblems.Erdos1041.PaperCompleteR21.LowCriticalScaleTransport",
++        "ErdosProblems.Erdos1041.PaperCompleteR21.SeparationParent",
++        "ErdosProblems.Erdos1041.PaperCompleteR21.SubcriticalPerimeterPath"
++      ],
++      "declaration_count": 0,
++      "kind_counts": {}
++    },
++    {
++      "id": "ErdosProblems.ArgumentGraph.Derived.Erdos1049",
++      "path": "lean/ErdosProblems/ArgumentGraph/Derived/Erdos1049.lean",
++      "imports": [
++        "ErdosProblems.ArgumentGraph.Derive",
++        "ErdosProblems.Erdos1049.PaperCompleteR21.RationalBaseThreshold"
++      ],
++      "declaration_count": 0,
++      "kind_counts": {}
++    },
++    {
++      "id": "ErdosProblems.ArgumentGraph.Derived.Erdos243",
++      "path": "lean/ErdosProblems/ArgumentGraph/Derived/Erdos243.lean",
++      "imports": [
++        "ErdosProblems.ArgumentGraph.Derive",
++        "ErdosProblems.Erdos243.PaperCompleteR21.ExactOrbitRecordDichotomy",
++        "ErdosProblems.Erdos243.PaperCompleteR21.MaximalGapConstant",
++        "ErdosProblems.Erdos243.PaperCompleteR21.ReducedDenominatorPrimePowers",
++        "ErdosProblems.Erdos243.PaperCompleteR21.ReducedStepLocalArithmetic",
++        "ErdosProblems.Erdos243.PaperCompleteR21.WindowAvoidance"
++      ],
++      "declaration_count": 0,
++      "kind_counts": {}
++    },
++    {
++      "id": "ErdosProblems.ArgumentGraph.Derived.Erdos249",
++      "path": "lean/ErdosProblems/ArgumentGraph/Derived/Erdos249.lean",
++      "imports": [
++        "ErdosProblems.ArgumentGraph.Derive",
++        "Erdos249257.LcmConeFlatness",
++        "Erdos249257.TotientActualLcmTopEdgeStaircase",
++        "Erdos249257.TotientCarryKernelRigidity",
++        "Erdos249257.TotientTailCarryPeriod",
++        "Erdos249257.TotientTailPeriodKiller",
++        "ErdosProblems.Erdos249.PaperCompleteR20.LcmGridCorrespondence",
++        "ErdosProblems.Erdos249.PaperCompleteR21.DivisorChannelSplitAndSeamDoubling",
++        "ErdosProblems.Erdos249.PaperCompleteR21.DyadicSectionBasisAndRationalCarry",
++        "ErdosProblems.Erdos249.PaperCompleteR21.ExcludedCofactorEstimate",
++        "ErdosProblems.Erdos249.PaperCompleteR21.ExtremalOrderDirectedAndPulse",
++        "ErdosProblems.Erdos249.PaperCompleteR21.FirstHarmonicBlockCriteria",
++        "ErdosProblems.Erdos249.PaperCompleteR21.HarmonicGapAndFourTail",
++        "ErdosProblems.Erdos249.PaperCompleteR21.LambertSigmaRungAndNesterenko",
++        "ErdosProblems.Erdos249.PaperCompleteR21.MersennePrimeSupportAnchors",
++        "ErdosProblems.Erdos249.PaperCompleteR21.MobiusMersenneLadderLogConcavity",
++        "ErdosProblems.Erdos249.PaperCompleteR21.NearIntegerIrrationalityCriterion",
++        "ErdosProblems.Erdos249.PaperCompleteR21.NumeratorPolynomialAndMersenneRemainder",
++        "ErdosProblems.Erdos249.PaperCompleteR21.PeriodMultipleAndSecondDifference",
++        "ErdosProblems.Erdos249.PaperCompleteR21.PhaseEnergyAndForeignResidueProjection",
++        "ErdosProblems.Erdos249.PaperCompleteR21.RationalTailPeriodWitnesses",
++        "ErdosProblems.Erdos249.PaperCompleteR21.ScalarLocalisationAndInversePhaseGauge",
++        "ErdosProblems.Erdos249.PaperCompleteR21.SimultaneousShiftCertificateDepth",
++        "ErdosProblems.Erdos249.PaperCompleteR21.TailCarryPeriodAndRankFloor",
++        "ErdosProblems.Erdos249.PaperCompleteR21.TopEdgeChainPaperBand"
++      ],
++      "declaration_count": 0,
++      "kind_counts": {}
++    },
++    {
++      "id": "ErdosProblems.ArgumentGraph.Derived.Erdos251",
++      "path": "lean/ErdosProblems/ArgumentGraph/Derived/Erdos251.lean",
++      "imports": [
++        "ErdosProblems.ArgumentGraph.Derive",
++        "ErdosProblems.Erdos251.ActualPrimePaperR11",
++        "ErdosProblems.Erdos251.NonconcentrationConsequencesR11",
++        "ErdosProblems.Erdos251.PaperCompleteR20.FiniteSeparation",
++        "ErdosProblems.Erdos251.PaperCompleteR21.JointPrimeGapCountermodel",
++        "ErdosProblems.Erdos251.PaperCompleteR21.PerturbedPrimePositions",
++        "ErdosProblems.Erdos251.PaperCompleteR21.TwoWindowSparsity",
++        "ErdosProblems.Erdos251.PrimeGapDyadicTail"
++      ],
++      "declaration_count": 0,
++      "kind_counts": {}
++    },
++    {
++      "id": "ErdosProblems.ArgumentGraph.Derived.Erdos257",
++      "path": "lean/ErdosProblems/ArgumentGraph/Derived/Erdos257.lean",
++      "imports": [
++        "ErdosProblems.ArgumentGraph.Derive",
++        "Erdos249257.BooleanMobiusCriticalCapacityCofinal",
++        "Erdos249257.BooleanMobiusSkipRowCofinal",
++        "Erdos249257.CofinalStripReturn",
++        "Erdos249257.GreedyAchievementSet",
++        "Erdos249257.HalfCarryReachability",
++        "Erdos249257.HalfCylinderFullShellSeamBridge",
++        "Erdos249257.HalfCylinderLargestSkipInduction",
++        "Erdos249257.HalfCylinderMiddleCarryLowerBound",
++        "Erdos249257.SuffixCylinderTerminalOnlyBridge",
++        "Erdos249257.TwentyOneQuotientGreedy",
++        "ErdosProblems.Erdos257.PaperCompleteR21.ArithmeticCounterexampleAssembly",
++        "ErdosProblems.Erdos257.PaperCompleteR21.DyadicBandAndTwoSidedBounds",
++        "ErdosProblems.Erdos257.PaperCompleteR21.EventualNonnegativeMargin",
++        "ErdosProblems.Erdos257.PaperCompleteR21.FeedbackRowStripWitnessAllDepths",
++        "ErdosProblems.Erdos257.PaperCompleteR21.GreedyOrbitNoTies",
++        "ErdosProblems.Erdos257.PaperCompleteR21.LogarithmicInitialInterval",
++        "ErdosProblems.Erdos257.PaperCompleteR21.MersenneChannelSurvivalAllHeights",
++        "ErdosProblems.Erdos257.PaperCompleteR21.ResetSqrtEscapeHalfMembership",
++        "ErdosProblems.Erdos257.PaperCompleteR21.SeamEscapeAndTerminalStrip",
++        "ErdosProblems.Erdos257.PaperCompleteR21.ShortWindowDivisorPhase",
++        "ErdosProblems.Erdos257.PaperCompleteR21.SkipSafetyAndDivisorZeroRuns",
++        "ErdosProblems.Erdos257.PaperCompleteR21.TerminalStripExactRowGap"
++      ],
++      "declaration_count": 0,
++      "kind_counts": {}
++    },
++    {
++      "id": "ErdosProblems.ArgumentGraph.Derived.Erdos269",
++      "path": "lean/ErdosProblems/ArgumentGraph/Derived/Erdos269.lean",
++      "imports": [
++        "ErdosProblems.ArgumentGraph.Derive",
++        "ErdosProblems.Erdos269.PaperCompleteR21.TwoPrimeSums",
++        "ErdosProblems.Erdos269.PaperR7BasicAssembly",
++        "ErdosProblems.Erdos269.PaperR7WindowResults"
++      ],
++      "declaration_count": 0,
++      "kind_counts": {}
++    },
++    {
++      "id": "ErdosProblems.ArgumentGraph.Derived.Erdos68",
++      "path": "lean/ErdosProblems/ArgumentGraph/Derived/Erdos68.lean",
++      "imports": [
++        "ErdosProblems.ArgumentGraph.Derive",
++        "ErdosProblems.Erdos68.PaperCompletePrimePole"
++      ],
++      "declaration_count": 0,
++      "kind_counts": {}
++    },
+     {
+       "id": "ErdosProblems.AxiomAudit",
+       "path": "lean/ErdosProblems/AxiomAudit.lean",
+@@ -15022,9 +15176,9 @@
+         "ErdosProblems.Erdos249.PaperCompleteR21.UnassignedSmoothCount",
+         "ErdosProblems.Erdos251.ActualPrimePaperR11"
+       ],
+-      "declaration_count": 22,
++      "declaration_count": 30,
+       "kind_counts": {
+-        "theorem": 22
++        "theorem": 30
+       }
+     },
+     {
+@@ -177031,6 +177185,491 @@
+       "claim_ids": [],
+       "docstring": "**Canonical next-coin endpoint.** It is enough to prove the ordinary greedy invariant that every preterminal state lies below the next quotient coin. No fixed fringe width, exact equality exclusion, or full-row defect cap remains in the hypothesis."
+     },
++    {
++      "id": "lean/ErdosProblems/ArgumentGraph/Derive.lean:58:reportFailure",
++      "name": "reportFailure",
++      "kind": "def",
++      "module": "lean/ErdosProblems/ArgumentGraph/Derive.lean",
++      "line": 58,
++      "signature": "def reportFailure (msg : MessageData) : MetaM Unit",
++      "generated_certificate": false,
++      "claim_ids": [],
++      "docstring": "Report a derivation that added nothing: an error under `argumentGraph.strict`, a warning otherwise. The option is read by name, so a file that inlines this module (a kernel probe) can use the commands without evaluating the option's initialiser in the module that declares it."
++    },
++    {
++      "id": "lean/ErdosProblems/ArgumentGraph/Derive.lean:63:budgeted",
++      "name": "budgeted",
++      "kind": "def",
++      "module": "lean/ErdosProblems/ArgumentGraph/Derive.lean",
++      "line": 63,
++      "signature": "def budgeted {α : Type} (heartbeats : Nat) (x : MetaM α) : MetaM (Option α)",
++      "generated_certificate": false,
++      "claim_ids": [],
++      "docstring": "Run `x` with its own heartbeat budget (in thousands); `none` when the budget runs out or `x` throws."
++    },
++    {
++      "id": "lean/ErdosProblems/ArgumentGraph/Derive.lean:72:traversalFuel",
++      "name": "traversalFuel",
++      "kind": "def",
++      "module": "lean/ErdosProblems/ArgumentGraph/Derive.lean",
++      "line": 72,
++      "signature": "def traversalFuel : Nat",
++      "generated_certificate": false,
++      "claim_ids": [],
++      "docstring": "The recursion bound of every traversal in this module: the depth of term it follows (every definition here is total). When a bound is reached the traversal gives its conservative answer (no use site, no weakening, no split), and anything built from a partial result still has to pass the kernel."
++    },
++    {
++      "id": "lean/ErdosProblems/ArgumentGraph/Derive.lean:75:normaliseBindersAux",
++      "name": "normaliseBindersAux",
++      "kind": "def",
++      "module": "lean/ErdosProblems/ArgumentGraph/Derive.lean",
++      "line": 75,
++      "signature": "def normaliseBindersAux : Nat → Expr → Nat → Expr | 0, e, _ => e | fuel + 1, e, depth => let name",
++      "generated_certificate": false,
++      "claim_ids": [],
++      "docstring": "`normaliseBinders`, following at most `fuel` levels of the term."
++    },
++    {
++      "id": "lean/ErdosProblems/ArgumentGraph/Derive.lean:94:normaliseBinders",
++      "name": "normaliseBinders",
++      "kind": "def",
++      "module": "lean/ErdosProblems/ArgumentGraph/Derive.lean",
++      "line": 94,
++      "signature": "def normaliseBinders (e : Expr) : Expr",
++      "generated_certificate": false,
++      "claim_ids": [],
++      "docstring": "A statement with binder names, binder annotations and metadata erased, so two statements that differ only in naming compare equal."
++    },
++    {
++      "id": "lean/ErdosProblems/ArgumentGraph/Derive.lean:98:addChecked",
++      "name": "addChecked",
++      "kind": "def",
++      "module": "lean/ErdosProblems/ArgumentGraph/Derive.lean",
++      "line": 98,
++      "signature": "def addChecked (name : Name) (levelParams : List Name) (type value : Expr) (doc : String) : MetaM (Except String Unit)",
++      "generated_certificate": false,
++      "claim_ids": [],
++      "docstring": "Add a theorem after a synchronous kernel check; the error text when the kernel rejects it."
++    },
++    {
++      "id": "lean/ErdosProblems/ArgumentGraph/Derive.lean:114:idleBinders",
++      "name": "idleBinders",
++      "kind": "def",
++      "module": "lean/ErdosProblems/ArgumentGraph/Derive.lean",
++      "line": 114,
++      "signature": "def idleBinders (info : ConstantInfo) : MetaM (Array Nat)",
++      "generated_certificate": false,
++      "claim_ids": [],
++      "docstring": "The proposition binders of a theorem that its proof never uses: the binder's free variable occurs neither in the proof (beta-reduced against the statement's binders), nor in a later binder type, nor in the conclusion. Instance binders are kept."
++    },
++    {
++      "id": "lean/ErdosProblems/ArgumentGraph/Derive.lean:134:deriveIdle",
++      "name": "deriveIdle",
++      "kind": "def",
++      "module": "lean/ErdosProblems/ArgumentGraph/Derive.lean",
++      "line": 134,
++      "signature": "def deriveIdle (name : Name) : MetaM (Except String Name)",
++      "generated_certificate": false,
++      "claim_ids": [],
++      "docstring": "`T.idle`, when `T` has idle proposition hypotheses."
++    },
++    {
++      "id": "lean/ErdosProblems/ArgumentGraph/Derive.lean:166:andSpineAux",
++      "name": "andSpineAux",
++      "kind": "def",
++      "module": "lean/ErdosProblems/ArgumentGraph/Derive.lean",
++      "line": 166,
++      "signature": "def andSpineAux : Nat → Expr → Array Expr | 0, t => #[t] | fuel + 1, t => match t.consumeMData.and? with | some (a, b) => #[a] ++ andSpineAux fuel b | none => #[t] /-- The claims of a conclusion, each with the projection of a proof of the conclusion onto it: `A₁ ∧ (A₂ ∧ (… ∧ Aₙ))` gives the `Aᵢ`, and `A ↔ B` gives `A → B` and `B → A`. A conclusion of any other shape is one claim. -/ def conclusionClaims (type : Expr) : Array (Expr × (Expr → Expr))",
++      "generated_certificate": false,
++      "claim_ids": [],
++      "docstring": "The conjuncts of `A₁ ∧ (A₂ ∧ (… ∧ Aₙ))`, splitting at most `fuel` times."
++    },
++    {
++      "id": "lean/ErdosProblems/ArgumentGraph/Derive.lean:176:conclusionClaims",
++      "name": "conclusionClaims",
++      "kind": "def",
++      "module": "lean/ErdosProblems/ArgumentGraph/Derive.lean",
++      "line": 176,
++      "signature": "def conclusionClaims (type : Expr) : Array (Expr × (Expr → Expr))",
++      "generated_certificate": false,
++      "claim_ids": [],
++      "docstring": "The claims of a conclusion, each with the projection of a proof of the conclusion onto it: `A₁ ∧ (A₂ ∧ (… ∧ Aₙ))` gives the `Aᵢ`, and `A ↔ B` gives `A → B` and `B → A`. A conclusion of any other shape is one claim."
++    },
++    {
++      "id": "lean/ErdosProblems/ArgumentGraph/Derive.lean:192:deriveConjuncts",
++      "name": "deriveConjuncts",
++      "kind": "def",
++      "module": "lean/ErdosProblems/ArgumentGraph/Derive.lean",
++      "line": 192,
++      "signature": "def deriveConjuncts (name : Name) : MetaM (Except String (Array Name))",
++      "generated_certificate": false,
++      "claim_ids": [],
++      "docstring": "For each claim of `T`'s conclusion (a conjunct, or a direction of an equivalence) whose proof leaves some proposition hypotheses unused, `T.part_k` (counting from 1): the claim alone, assuming only the binders its proof and statement need."
++    },
++    {
++      "id": "lean/ErdosProblems/ArgumentGraph/Derive.lean:264:isHypRefAux",
++      "name": "isHypRefAux",
++      "kind": "def",
++      "module": "lean/ErdosProblems/ArgumentGraph/Derive.lean",
++      "line": 264,
++      "signature": "def isHypRefAux : Nat → FVarId → Expr → Bool | 0, _, _ => false | fuel + 1, h, e => match e.consumeMData with | .fvar id => id == h | e => match e.getAppFn with | .const n _ => let args",
++      "generated_certificate": false,
++      "claim_ids": [],
++      "docstring": "`isHypRef`, looking through at most `fuel` casts."
++    },
++    {
++      "id": "lean/ErdosProblems/ArgumentGraph/Derive.lean:281:isHypRef",
++      "name": "isHypRef",
++      "kind": "def",
++      "module": "lean/ErdosProblems/ArgumentGraph/Derive.lean",
++      "line": 281,
++      "signature": "def isHypRef (h : FVarId) (e : Expr) : Bool",
++      "generated_certificate": false,
++      "claim_ids": [],
++      "docstring": "Whether `e` is the hypothesis `h`, possibly transported by `Eq.mpr`, `Eq.mp`, `cast` or `id` whose other arguments do not use `h`."
++    },
++    {
++      "id": "lean/ErdosProblems/ArgumentGraph/Derive.lean:283:UseScan",
++      "name": "UseScan",
++      "kind": "structure",
++      "module": "lean/ErdosProblems/ArgumentGraph/Derive.lean",
++      "line": 283,
++      "signature": "structure UseScan",
++      "generated_certificate": false,
++      "claim_ids": []
++    },
++    {
++      "id": "lean/ErdosProblems/ArgumentGraph/Derive.lean:291:UseM",
++      "name": "UseM",
++      "kind": "abbrev",
++      "module": "lean/ErdosProblems/ArgumentGraph/Derive.lean",
++      "line": 291,
++      "signature": "abbrev UseM",
++      "generated_certificate": false,
++      "claim_ids": []
++    },
++    {
++      "id": "lean/ErdosProblems/ArgumentGraph/Derive.lean:295:useFactsAux",
++      "name": "useFactsAux",
++      "kind": "def",
++      "module": "lean/ErdosProblems/ArgumentGraph/Derive.lean",
++      "line": 295,
++      "signature": "def useFactsAux : Nat → FVarId → Expr → UseM (Bool × Bool) | 0, _, _ => return (true, true) | fuel + 1, h, e => do if !e.hasFVar then return (false, false) if let some f",
++      "generated_certificate": false,
++      "claim_ids": [],
++      "docstring": "`useFacts`, following at most `fuel` levels. Past the bound a subterm counts as mentioning `h` and another variable, the answer that admits no use site."
++    },
++    {
++      "id": "lean/ErdosProblems/ArgumentGraph/Derive.lean:321:useFacts",
++      "name": "useFacts",
++      "kind": "def",
++      "module": "lean/ErdosProblems/ArgumentGraph/Derive.lean",
++      "line": 321,
++      "signature": "def useFacts (h : FVarId) (e : Expr) : UseM (Bool × Bool)",
++      "generated_certificate": false,
++      "claim_ids": [],
++      "docstring": "Whether `e` mentions `h`, and whether it mentions another free variable."
++    },
++    {
++      "id": "lean/ErdosProblems/ArgumentGraph/Derive.lean:324:closedFor",
++      "name": "closedFor",
++      "kind": "def",
++      "module": "lean/ErdosProblems/ArgumentGraph/Derive.lean",
++      "line": 324,
++      "signature": "def closedFor (h : FVarId) (e : Expr) : UseM Bool",
++      "generated_certificate": false,
++      "claim_ids": [],
++      "docstring": "No bound variable of the proof, no metavariable, no free variable but `h`."
++    },
++    {
++      "id": "lean/ErdosProblems/ArgumentGraph/Derive.lean:329:siteType?",
++      "name": "siteType?",
++      "kind": "def",
++      "module": "lean/ErdosProblems/ArgumentGraph/Derive.lean",
++      "line": 329,
++      "signature": "def siteType? (hType : Expr) (conclusion : Option Expr) (site : Expr) : MetaM (Option Expr)",
++      "generated_certificate": false,
++      "claim_ids": [],
++      "docstring": "The proposition a use site proves, if the site qualifies."
++    },
++    {
++      "id": "lean/ErdosProblems/ArgumentGraph/Derive.lean:343:collectUsesAux",
++      "name": "collectUsesAux",
++      "kind": "def",
++      "module": "lean/ErdosProblems/ArgumentGraph/Derive.lean",
++      "line": 343,
++      "signature": "def collectUsesAux : Nat → FVarId → Expr → Option Expr → Expr → UseM Bool | 0, _, _, _, _ => return false | fuel + 1, h, hType, conclusion, e => do if !(← useFacts h e).1 then return true if let some v",
++      "generated_certificate": false,
++      "claim_ids": [],
++      "docstring": "`collectUses` with a recursion bound; past it the answer is `false` (no weakening)."
++    },
++    {
++      "id": "lean/ErdosProblems/ArgumentGraph/Derive.lean:356:visitUsesAux",
++      "name": "visitUsesAux",
++      "kind": "def",
++      "module": "lean/ErdosProblems/ArgumentGraph/Derive.lean",
++      "line": 356,
++      "signature": "def visitUsesAux : Nat → FVarId → Expr → Option Expr → Expr → UseM Bool | 0, _, _, _, _ => return false | fuel + 1, h, hType, conclusion, e => do match e with | .fvar _ => return false | .mdata _ b => collectUsesAux fuel h hType conclusion b | .proj _ _ b => if isHypRef h b && (← closedFor h e) then unless (← siteType? hType conclusion e).isSome do return false modify fun s => { s with sites",
++      "generated_certificate": false,
++      "claim_ids": [],
++      "docstring": "One step of `collectUses`: the cases by the shape of `e`."
++    },
++    {
++      "id": "lean/ErdosProblems/ArgumentGraph/Derive.lean:403:collectUses",
++      "name": "collectUses",
++      "kind": "def",
++      "module": "lean/ErdosProblems/ArgumentGraph/Derive.lean",
++      "line": 403,
++      "signature": "def collectUses (h : FVarId) (hType : Expr) (conclusion : Option Expr) (e : Expr) : UseM Bool",
++      "generated_certificate": false,
++      "claim_ids": [],
++      "docstring": "Whether every occurrence of `h` in `e` lies inside a use site; the sites are collected in the state. `false`: some occurrence uses `h` as it stands."
++    },
++    {
++      "id": "lean/ErdosProblems/ArgumentGraph/Derive.lean:407:Weakening",
++      "name": "Weakening",
++      "kind": "structure",
++      "module": "lean/ErdosProblems/ArgumentGraph/Derive.lean",
++      "line": 407,
++      "signature": "structure Weakening",
++      "generated_certificate": false,
++      "claim_ids": [],
++      "docstring": "Binder `i` of a theorem replaced by what the proof uses of it."
++    },
++    {
++      "id": "lean/ErdosProblems/ArgumentGraph/Derive.lean:419:weakenAt",
++      "name": "weakenAt",
++      "kind": "def",
++      "module": "lean/ErdosProblems/ArgumentGraph/Derive.lean",
++      "line": 419,
++      "signature": "def weakenAt (info : ConstantInfo) (i : Nat) : MetaM (Option Weakening)",
++      "generated_certificate": false,
++      "claim_ids": [],
++      "docstring": "The weakening of binder `i`: one hypothesis per distinct use-site proposition, placed where the binder was, each use site in the proof replaced by the new hypothesis."
++    },
++    {
++      "id": "lean/ErdosProblems/ArgumentGraph/Derive.lean:463:binderCount",
++      "name": "binderCount",
++      "kind": "def",
++      "module": "lean/ErdosProblems/ArgumentGraph/Derive.lean",
++      "line": 463,
++      "signature": "def binderCount (info : ConstantInfo) : MetaM Nat",
++      "generated_certificate": false,
++      "claim_ids": [],
++      "docstring": "The number of binders of a theorem's statement, without unfolding."
++    },
++    {
++      "id": "lean/ErdosProblems/ArgumentGraph/Derive.lean:467:DeriveM",
++      "name": "DeriveM",
++      "kind": "abbrev",
++      "module": "lean/ErdosProblems/ArgumentGraph/Derive.lean",
++      "line": 467,
++      "signature": "abbrev DeriveM",
++      "generated_certificate": false,
++      "claim_ids": [],
++      "docstring": "Weakenings added so far in this command, by theorem and binder."
++    },
++    {
++      "id": "lean/ErdosProblems/ArgumentGraph/Derive.lean:471:weakeningOf",
++      "name": "weakeningOf",
++      "kind": "def",
++      "module": "lean/ErdosProblems/ArgumentGraph/Derive.lean",
++      "line": 471,
++      "signature": "def weakeningOf (name : Name) (i : Nat) : DeriveM (Option (Name × Weakening))",
++      "generated_certificate": false,
++      "claim_ids": [],
++      "docstring": "The weakening of `name` at binder `i`, added to the environment as `name.weakened_i` the first time it is needed."
++    },
++    {
++      "id": "lean/ErdosProblems/ArgumentGraph/Derive.lean:493:Plan",
++      "name": "Plan",
++      "kind": "inductive",
++      "module": "lean/ErdosProblems/ArgumentGraph/Derive.lean",
++      "line": 493,
++      "signature": "inductive Plan",
++      "generated_certificate": false,
++      "claim_ids": [],
++      "docstring": "How a frontier proves one consequence: assumed as it stands, or obtained from `fn before … after` with each child consequence supplied recursively."
++    },
++    {
++      "id": "lean/ErdosProblems/ArgumentGraph/Derive.lean:500:plan",
++      "name": "plan",
++      "kind": "def",
++      "module": "lean/ErdosProblems/ArgumentGraph/Derive.lean",
++      "line": 500,
++      "signature": "def plan (stops : Array Name) : Nat → Expr → Expr → DeriveM Plan | 0, c, _ => return .leaf c | fuel + 1, c, site => do let .lam _ _ body _",
++      "generated_certificate": false,
++      "claim_ids": [],
++      "docstring": "The plan for a consequence `c` proved at `site` (a closed function of the hypothesis). `stops` lists theorems whose use sites stay as they are."
++    },
++    {
++      "id": "lean/ErdosProblems/ArgumentGraph/Derive.lean:519:planFuel",
++      "name": "planFuel",
++      "kind": "def",
++      "module": "lean/ErdosProblems/ArgumentGraph/Derive.lean",
++      "line": 519,
++      "signature": "def planFuel : Nat",
++      "generated_certificate": false,
++      "claim_ids": [],
++      "docstring": "The bound for walking a plan; `plan` builds plans at most `planFuel` deep."
++    },
++    {
++      "id": "lean/ErdosProblems/ArgumentGraph/Derive.lean:521:Plan.leavesAux",
++      "name": "Plan.leavesAux",
++      "kind": "def",
++      "module": "lean/ErdosProblems/ArgumentGraph/Derive.lean",
++      "line": 521,
++      "signature": "def Plan.leavesAux : Nat → Plan → Array Expr → Array Expr | _, .leaf t, acc => if acc.contains t then acc else acc.push t | 0, .step .., acc => acc | fuel + 1, .step _ _ _ cs, acc => cs.foldl (fun a c => Plan.leavesAux fuel c a) acc /-- The distinct statements",
++      "generated_certificate": false,
++      "claim_ids": []
++    },
++    {
++      "id": "lean/ErdosProblems/ArgumentGraph/Derive.lean:527:Plan.leaves",
++      "name": "Plan.leaves",
++      "kind": "def",
++      "module": "lean/ErdosProblems/ArgumentGraph/Derive.lean",
++      "line": 527,
++      "signature": "def Plan.leaves (p : Plan) (acc : Array Expr) : Array Expr",
++      "generated_certificate": false,
++      "claim_ids": [],
++      "docstring": "The distinct statements where a plan stops, added to `acc`."
++    },
++    {
++      "id": "lean/ErdosProblems/ArgumentGraph/Derive.lean:529:Plan.buildAux",
++      "name": "Plan.buildAux",
++      "kind": "def",
++      "module": "lean/ErdosProblems/ArgumentGraph/Derive.lean",
++      "line": 529,
++      "signature": "def Plan.buildAux : Nat → Array Expr → Array Expr → Plan → Expr | _, types, vars, .leaf t => vars[(types.findIdx? (· == t)).getD 0]! | 0, _, _, .step fn before after _ => mkAppN fn (before ++ after) | fuel + 1, types, vars, .step fn before after cs => mkAppN fn (before ++ cs.map (Plan.buildAux fuel types vars ·) ++ after) /-- The proof term a plan describes, with `vars[j]` for the leaf `types[j]`. A term built past the bound is ill-typed, so the kernel rejects it. -/ def Plan.build (types vars : Array Expr) (p : Plan) : Expr",
++      "generated_certificate": false,
++      "claim_ids": []
++    },
++    {
++      "id": "lean/ErdosProblems/ArgumentGraph/Derive.lean:537:Plan.build",
++      "name": "Plan.build",
++      "kind": "def",
++      "module": "lean/ErdosProblems/ArgumentGraph/Derive.lean",
++      "line": 537,
++      "signature": "def Plan.build (types vars : Array Expr) (p : Plan) : Expr",
++      "generated_certificate": false,
++      "claim_ids": [],
++      "docstring": "The proof term a plan describes, with `vars[j]` for the leaf `types[j]`. A term built past the bound is ill-typed, so the kernel rejects it."
++    },
++    {
++      "id": "lean/ErdosProblems/ArgumentGraph/Derive.lean:539:Plan.depthAux",
++      "name": "Plan.depthAux",
++      "kind": "def",
++      "module": "lean/ErdosProblems/ArgumentGraph/Derive.lean",
++      "line": 539,
++      "signature": "def Plan.depthAux : Nat → Plan → Nat | _, .leaf _ => 0 | 0, .step .. => 1 | fuel + 1, .step _ _ _ cs => 1 + cs.foldl (fun m c => max m (Plan.depthAux fuel c)) 0 /-- How many weakenings deep the plan goes. -/ def Plan.depth (p : Plan) : Nat",
++      "generated_certificate": false,
++      "claim_ids": []
++    },
++    {
++      "id": "lean/ErdosProblems/ArgumentGraph/Derive.lean:545:Plan.depth",
++      "name": "Plan.depth",
++      "kind": "def",
++      "module": "lean/ErdosProblems/ArgumentGraph/Derive.lean",
++      "line": 545,
++      "signature": "def Plan.depth (p : Plan) : Nat",
++      "generated_certificate": false,
++      "claim_ids": [],
++      "docstring": "How many weakenings deep the plan goes."
++    },
++    {
++      "id": "lean/ErdosProblems/ArgumentGraph/Derive.lean:552:supplyLeaf",
++      "name": "supplyLeaf",
++      "kind": "def",
++      "module": "lean/ErdosProblems/ArgumentGraph/Derive.lean",
++      "line": 552,
++      "signature": "def supplyLeaf (t : Expr) (suppliers : Array Name) : MetaM (Option Expr)",
++      "generated_certificate": false,
++      "claim_ids": [],
++      "docstring": "A proof of the closed proposition `t` by one of `suppliers`: the supplier itself when its statement is `t`, or the supplier applied to arguments found by unification when a prefix of its binders instantiates to `t` (instance arguments synthesised). `none` when no supplier fits without leftover metavariables."
++    },
++    {
++      "id": "lean/ErdosProblems/ArgumentGraph/Derive.lean:576:frontierDecl",
++      "name": "frontierDecl",
++      "kind": "def",
++      "module": "lean/ErdosProblems/ArgumentGraph/Derive.lean",
++      "line": 576,
++      "signature": "def frontierDecl (info : ConstantInfo) (i : Nat) (wName : Name) (plans : Array Plan) (leafTypes : Array Expr) (supplied : Array (Option Expr)) : MetaM (Expr × Expr)",
++      "generated_certificate": false,
++      "claim_ids": [],
++      "docstring": "The statement and proof of a frontier: `info`'s statement with binder `i` replaced by one hypothesis per leaf type that no supplier proves, proved by `wName` (the weakening at `i`) applied to the plans' proofs of its consequences."
++    },
++    {
++      "id": "lean/ErdosProblems/ArgumentGraph/Derive.lean:598:frontierAt",
++      "name": "frontierAt",
++      "kind": "def",
++      "module": "lean/ErdosProblems/ArgumentGraph/Derive.lean",
++      "line": 598,
++      "signature": "def frontierAt (name : Name) (i : Nat) (stops : Array Name) (suppliers : Array Name",
++      "generated_certificate": false,
++      "claim_ids": [],
++      "docstring": "`name.frontier_i` (or `name.frontier_i_<L>` when stopping at the use sites of `L`): `name` with hypothesis `i` replaced by the consequences where the chain of weakenings stops. With `suppliers`, each such consequence a supplier proves is discharged, and the theorem is named `…_supplied`; when every consequence is discharged, hypothesis `i` is gone. An error when the chain adds nothing."
++    },
++    {
++      "id": "lean/ErdosProblems/ArgumentGraph/Derive.lean:644:statementLine",
++      "name": "statementLine",
++      "kind": "def",
++      "module": "lean/ErdosProblems/ArgumentGraph/Derive.lean",
++      "line": 644,
++      "signature": "def statementLine (n : Name) (limit : Nat",
++      "generated_certificate": false,
++      "claim_ids": [],
++      "docstring": "The statement of an added theorem, on one line and at most `limit` characters, so a build log stays readable."
++    },
++    {
++      "id": "lean/ErdosProblems/ArgumentGraph/Derive.lean:651:reportAdded",
++      "name": "reportAdded",
++      "kind": "def",
++      "module": "lean/ErdosProblems/ArgumentGraph/Derive.lean",
++      "line": 651,
++      "signature": "private def reportAdded (n : Name) : MetaM Unit",
++      "generated_certificate": false,
++      "claim_ids": []
++    },
++    {
++      "id": "lean/ErdosProblems/ArgumentGraph/Derive.lean:654:elabDeriveIdle",
++      "name": "elabDeriveIdle",
++      "kind": "def",
++      "module": "lean/ErdosProblems/ArgumentGraph/Derive.lean",
++      "line": 654,
++      "signature": "@[command_elab deriveIdleCmd] def elabDeriveIdle : CommandElab",
++      "generated_certificate": false,
++      "claim_ids": []
++    },
++    {
++      "id": "lean/ErdosProblems/ArgumentGraph/Derive.lean:661:elabDeriveConjuncts",
++      "name": "elabDeriveConjuncts",
++      "kind": "def",
++      "module": "lean/ErdosProblems/ArgumentGraph/Derive.lean",
++      "line": 661,
++      "signature": "@[command_elab deriveConjunctsCmd] def elabDeriveConjuncts : CommandElab",
++      "generated_certificate": false,
++      "claim_ids": []
++    },
++    {
++      "id": "lean/ErdosProblems/ArgumentGraph/Derive.lean:668:elabDeriveWeakening",
++      "name": "elabDeriveWeakening",
++      "kind": "def",
++      "module": "lean/ErdosProblems/ArgumentGraph/Derive.lean",
++      "line": 668,
++      "signature": "@[command_elab deriveWeakeningCmd] def elabDeriveWeakening : CommandElab",
++      "generated_certificate": false,
++      "claim_ids": []
++    },
++    {
++      "id": "lean/ErdosProblems/ArgumentGraph/Derive.lean:696:elabDeriveFrontier",
++      "name": "elabDeriveFrontier",
++      "kind": "def",
++      "module": "lean/ErdosProblems/ArgumentGraph/Derive.lean",
++      "line": 696,
++      "signature": "@[command_elab deriveFrontierCmd] def elabDeriveFrontier : CommandElab",
++      "generated_certificate": false,
++      "claim_ids": []
++    },
+     {
+       "id": "lean/ErdosProblems/Bit/Corr1.lean:94:mod_sub_of_le_mod",
+       "name": "mod_sub_of_le_mod",
+@@ -259157,6 +259796,94 @@
+       "claim_ids": [],
+       "docstring": "**The explicit choice `η = 1/1000`** of the remark after `prop:badcof`, with the prime number theorem as the only input. The elementary bound `#(B(η) ∩ [1, x]) < 3ηx` (`excludedCofactorSet_upperDensityLE`) replaces the cited existence of `D(η)`: `B(1/1000)` has upper density at most `3/1000`, so for all large `X` the excluded-cofactor count is `< X/100` and the excluded-cofactor contribution meets its `X/100` budget."
+     },
++    {
++      "id": "lean/ErdosProblems/Erdos249/PaperCompleteR21/ExcludedCofactorEstimate.lean:710:prod_primes_dyadic_le_four_pow",
++      "name": "prod_primes_dyadic_le_four_pow",
++      "kind": "theorem",
++      "module": "lean/ErdosProblems/Erdos249/PaperCompleteR21/ExcludedCofactorEstimate.lean",
++      "line": 710,
++      "signature": "theorem prod_primes_dyadic_le_four_pow (a : ℕ) : ∏ p ∈ (Ico (a + 2) (2 * a + 2)).filter Nat.Prime, p ≤ 4 ^ a",
++      "generated_certificate": false,
++      "claim_ids": [],
++      "docstring": "Chebyshev's product bound: the primes `p` with `a + 2 ≤ p ≤ 2a + 1` divide the binomial coefficient `C(2a + 1, a + 1) = C(2a + 1, a) ≤ 4 ^ a`, so their product is at most `4 ^ a` (Mathlib's `primorial_add_le` and `Nat.choose_middle_le_pow`)."
++    },
++    {
++      "id": "lean/ErdosProblems/Erdos249/PaperCompleteR21/ExcludedCofactorEstimate.lean:722:card_primes_dyadic_mul_log_le",
++      "name": "card_primes_dyadic_mul_log_le",
++      "kind": "theorem",
++      "module": "lean/ErdosProblems/Erdos249/PaperCompleteR21/ExcludedCofactorEstimate.lean",
++      "line": 722,
++      "signature": "theorem card_primes_dyadic_mul_log_le (a : ℕ) : ((((Ioc a (2 * a + 1)).filter Nat.Prime).card : ℕ) : ℝ) * Real.log a ≤ a * Real.log 4 + Real.log a",
++      "generated_certificate": false,
++      "claim_ids": [],
++      "docstring": "The dyadic prime count from Chebyshev's bound, for every `a`: `#{p prime : a < p ≤ 2a + 1} · log a ≤ a log 4 + log a`. The primes above `a + 1` number at most `a log 4 / log (a + 2)` by `prod_primes_dyadic_le_four_pow`, and `a + 1` is the one other candidate."
++    },
++    {
++      "id": "lean/ErdosProblems/Erdos249/PaperCompleteR21/ExcludedCofactorEstimate.lean:764:eventually_card_primes_dyadic_le_log_four",
++      "name": "eventually_card_primes_dyadic_le_log_four",
++      "kind": "theorem",
++      "module": "lean/ErdosProblems/Erdos249/PaperCompleteR21/ExcludedCofactorEstimate.lean",
++      "line": 764,
++      "signature": "theorem eventually_card_primes_dyadic_le_log_four {ε : ℝ} (hε : 0 < ε) : ∀ᶠ a : ℕ in atTop, ((((Ioc a (2 * a + 1)).filter Nat.Prime).card : ℕ) : ℝ) * Real.log a ≤ (Real.log 4 + ε) * a",
++      "generated_certificate": false,
++      "claim_ids": [],
++      "docstring": "**Dyadic prime count from Chebyshev's bound.** For every `ε > 0`, for all large `a`, `#{p prime : a < p ≤ 2a + 1} · log a ≤ (log 4 + ε) a`. This is `eventually_card_primes_dyadic_le` with `log 4` in place of `1` and no hypothesis."
++    },
++    {
++      "id": "lean/ErdosProblems/Erdos249/PaperCompleteR21/ExcludedCofactorEstimate.lean:775:one_le_log_four",
++      "name": "one_le_log_four",
++      "kind": "theorem",
++      "module": "lean/ErdosProblems/Erdos249/PaperCompleteR21/ExcludedCofactorEstimate.lean",
++      "line": 775,
++      "signature": "theorem one_le_log_four : 1 ≤ Real.log 4",
++      "generated_certificate": false,
++      "claim_ids": [],
++      "docstring": "`1 ≤ log 4`, since `e < 4`."
++    },
++    {
++      "id": "lean/ErdosProblems/Erdos249/PaperCompleteR21/ExcludedCofactorEstimate.lean:783:excluded_final_arith_const",
++      "name": "excluded_final_arith_const",
++      "kind": "theorem",
++      "module": "lean/ErdosProblems/Erdos249/PaperCompleteR21/ExcludedCofactorEstimate.lean",
++      "line": 783,
++      "signature": "theorem excluded_final_arith_const {X t S T D C e ε Λ K : ℝ} (hX : 0 < X) (hΛ : 0 < Λ) (he0 : 0 < e) (he1 : e ≤ 1) (he8 : 8 * e ≤ ε) (hD0 : 0 ≤ D) (hD1 : D ≤ 1) (hC0 : 0 ≤ C) (hK : 0 < K) (hT0 : 0 ≤ T) (ht0 : 0 ≤ t) (hXt : t ≤ e * X) (hC : 8 * C ≤ e * Λ) (hS : S ≤ (2 * K * (X + t) / Λ) * T) (hT : T ≤ (D + e) * (Λ / 2) + C) : S ≤ K * (D + ε) * X",
++      "generated_certificate": false,
++      "claim_ids": [],
++      "docstring": "`excluded_final_arith` with a general leading constant `K > 0` in place of `1 + e`: with `t ≤ eX`, `8C ≤ e log X`, `S ≤ 2K(X + t)/log X · T`, `T ≥ 0` and `T ≤ (D + e)(log X)/2 + C`, one gets `S ≤ K (D + ε) X`."
++    },
++    {
++      "id": "lean/ErdosProblems/Erdos249/PaperCompleteR21/ExcludedCofactorEstimate.lean:811:eventually_card_excluded_le_of_upper_of_dyadic",
++      "name": "eventually_card_excluded_le_of_upper_of_dyadic",
++      "kind": "theorem",
++      "module": "lean/ErdosProblems/Erdos249/PaperCompleteR21/ExcludedCofactorEstimate.lean",
++      "line": 811,
++      "signature": "theorem eventually_card_excluded_le_of_upper_of_dyadic (h s : ℕ) {K : ℝ} (hK : 1 ≤ K) (hdy : ∀ ε : ℝ, 0 < ε → ∀ᶠ a : ℕ in atTop, ((((Ioc a (2 * a + 1)).filter Nat.Prime).card : ℕ) : ℝ) * Real.log a ≤ (K + ε) * a) {η D : ℝ} (hD0 : 0 ≤ D) (hD1 : D ≤ 1) (hup : UpperDensityLE (excludedCofactorSet η) D) {ε : ℝ} (hε : 0 < ε) : ∀ᶠ X : ℕ in atTop, ((((pivotSupplierBases X (minimalDepth h s X) s).filter (fun N => pivotCofactor N (minimalDepth h s X) s ∈ excludedCofactorSet η)).card : ℕ) : ℝ) ≤ (K * D + ε) * X",
++      "generated_certificate": false,
++      "claim_ids": [],
++      "docstring": "**The excluded-cofactor estimate from a dyadic prime count with constant `K`.** If `#{p prime : a < p ≤ 2a + 1} · log a ≤ (K + ε) a` for every `ε > 0` and all large `a`, and `B(η)` has upper density at most `D ∈ [0, 1]`, then for every `ε > 0`, for all large `X`, `#{N ∈ 𝒜 : m_N ∈ B(η)} ≤ (K D + ε) X`. The prime number theorem gives the dyadic count with `K = 1` (`eventually_card_primes_dyadic_le`), and then this is the bound of `eventually_card_excluded_le_of_upper`; Chebyshev's bound gives it with `K = log 4` (`eventually_card_primes_dyadic_le_log_four`)."
++    },
++    {
++      "id": "lean/ErdosProblems/Erdos249/PaperCompleteR21/ExcludedCofactorEstimate.lean:870:eventually_excluded_budget_of_upper_of_dyadic",
++      "name": "eventually_excluded_budget_of_upper_of_dyadic",
++      "kind": "theorem",
++      "module": "lean/ErdosProblems/Erdos249/PaperCompleteR21/ExcludedCofactorEstimate.lean",
++      "line": 870,
++      "signature": "theorem eventually_excluded_budget_of_upper_of_dyadic (h s : ℕ) {K : ℝ} (hK : 1 ≤ K) (hdy : ∀ ε : ℝ, 0 < ε → ∀ᶠ a : ℕ in atTop, ((((Ioc a (2 * a + 1)).filter Nat.Prime).card : ℕ) : ℝ) * Real.log a ≤ (K + ε) * a) {η D : ℝ} (hD0 : 0 ≤ D) (hD1 : D ≤ 1) (hup : UpperDensityLE (excludedCofactorSet η) D) (hKD : K * D < 1 / 100) : ∀ᶠ X : ℕ in atTop, ((((pivotSupplierBases X (minimalDepth h s X) s).filter (fun N => pivotCofactor N (minimalDepth h s X) s ∈ excludedCofactorSet η)).card : ℕ) : ℝ) < (1 / 100 : ℝ) * X ∧ ‖pivotBadContribution h X (minimalDepth h s X) s η‖ ≤ (1 / 100 : ℝ) * X",
++      "generated_certificate": false,
++      "claim_ids": [],
++      "docstring": "The budget consequence from a dyadic prime count with constant `K` and an upper density bound `D` with `K D < 1/100`: for all large `X` the count is `< X/100`, and the excluded-cofactor contribution `∑_{N ∈ 𝒜 ∖ 𝒢} E(h, N, L)` has norm at most `X/100`. With `K = 1` this is the conclusion of `eventually_excluded_budget_of_upper`."
++    },
++    {
++      "id": "lean/ErdosProblems/Erdos249/PaperCompleteR21/ExcludedCofactorEstimate.lean:910:excluded_budget_one_thousandth_of_chebyshev",
++      "name": "excluded_budget_one_thousandth_of_chebyshev",
++      "kind": "theorem",
++      "module": "lean/ErdosProblems/Erdos249/PaperCompleteR21/ExcludedCofactorEstimate.lean",
++      "line": 910,
++      "signature": "theorem excluded_budget_one_thousandth_of_chebyshev (h s : ℕ) : ∀ᶠ X : ℕ in atTop, ((((pivotSupplierBases X (minimalDepth h s X) s).filter (fun N => pivotCofactor N (minimalDepth h s X) s ∈ excludedCofactorSet (1 / 1000))).card : ℕ) : ℝ) < (1 / 100 : ℝ) * X ∧ ‖pivotBadContribution h X (minimalDepth h s X) s (1 / 1000)‖ ≤ (1 / 100 : ℝ) * X",
++      "generated_certificate": false,
++      "claim_ids": [],
++      "docstring": "**The explicit choice `η = 1/1000`, with no input.** Chebyshev's bound replaces the prime number theorem in `excluded_budget_one_thousandth`: it gives the dyadic prime count with constant `log 4` (`eventually_card_primes_dyadic_le_log_four`), `B(1/1000)` has upper density at most `3/1000` (`excludedCofactorSet_upperDensityLE`), and `log 4 · 3/1000 ≤ 9/1000 < 1/100`. So for all large `X` the excluded-cofactor count is `< X/100` and the excluded-cofactor contribution meets its `X/100` budget."
++    },
+     {
+       "id": "lean/ErdosProblems/Erdos249/PaperCompleteR21/ExtremalOrderDirectedAndPulse.lean:27:extremal_order_curvature_pos",
+       "name": "extremal_order_curvature_pos",
+@@ -310380,7 +311107,7 @@
+       "signature": "theorem prime_channel_corrector {p : ℕ} (hp : p.Prime) : _root_.Erdos68.factorialMoment (_root_.Erdos68.primeTranslatorCoeff p) (_root_.Erdos68.primeTranslatorIndex p) = 0 ∧ _root_.Erdos68.channelNumerator (_root_.Erdos68.primeTranslatorCoeff p) (_root_.Erdos68.primeTranslatorIndex p) p = (p.factorial : ℤ) - 1 ∧ (∀ d : ℕ, 2 ≤ d → d ≠ p → _root_.Erdos68.channelNumerator (_root_.Erdos68.primeTranslatorCoeff p) (_root_.Erdos68.primeTranslatorIndex p) d = 0)",
+       "generated_certificate": false,
+       "claim_ids": [],
+-      "docstring": "Corrector identities on the auxiliary support, including p=2. See PaperCompleteSupportNoGo for the paper's n≥2 support incompatibility."
++      "docstring": "Corrector identities on the auxiliary support, including p=2, whose index 1 lies outside the paper's domain i≥2; the long record states the theorem for p≥3 and treats p=2 after it."
+     },
+     {
+       "id": "lean/ErdosProblems/Erdos68/PaperCompleteFiniteLeadArithmetic.lean:24:quotient_remainder_transport",
+diff --git a/lean/ErdosProblems/ArgumentGraph/Derive.lean b/lean/ErdosProblems/ArgumentGraph/Derive.lean
+new file mode 100644
+index 0000000000000000000000000000000000000000..3466438d2ed585dc7bc25663378bda4cb90bbe1c
+--- /dev/null
++++ b/lean/ErdosProblems/ArgumentGraph/Derive.lean
+@@ -0,0 +1,718 @@
++-- SPDX-FileCopyrightText: 2026 Will Cook
++-- SPDX-License-Identifier: Apache-2.0
++import Lean
++
++/-!
++# Theorems derived from what proofs use
++
++The argument-graph exporter (`scripts/export_argument_continuations.lean`) reads
++every theorem of this library and records, among other things, the hypotheses a
++proof never uses and the hypotheses a proof uses only through a consequence. This
++module turns those observations into ordinary theorems of the library, so a
++paper, the paper-to-Lean ledger or another proof can cite them. Every theorem it
++adds is checked by the kernel before it is added.
++
++* `derive_idle T` adds `T.idle`: the statement of `T` without the proposition
++  hypotheses its proof never uses, with the same proof.
++* `derive_weakening T` adds, for each proposition hypothesis `h : H` of `T` that
++  the proof uses only inside use sites, `T.weakened_i`: `T` with `H` replaced by
++  the propositions `C₁ … Cₖ` those sites prove, and `T.use_i_j : H → Cⱼ`. A use
++  site is the largest application around `h` (such as `L h`, `h.2` or `h 3`) that
++  mentions no bound variable of the proof and no other hypothesis; its
++  proposition must not mention `H`, be `H` up to unfolding, or be the conclusion.
++* `derive_conjuncts T` adds, for each claim of `T`'s conclusion (a conjunct, or
++  a direction of an equivalence) whose own proof leaves some hypotheses unused,
++  `T.part_k`: that claim assuming only what its proof needs. A claim's proof is
++  the projection of `T`'s proof onto it, reduced; it is the claim's own proof
++  when the proof builds the claims separately.
++* `derive_frontier T` follows those weakenings through the library. When a use
++  site is `L a₁ … h … aₘ` for a theorem `L` whose proof uses that hypothesis only
++  through consequences of its own, the site is replaced by `L.weakened_p` applied
++  to proofs of those consequences, recursively. `T.frontier_i` states `T` with
++  `H` replaced by the consequences where the recursion stops, each assumed once
++  however many branches need it. `derive_frontier T at L₁ L₂` keeps the use
++  sites of `L₁` and `L₂` as they are, and names the result `T.frontier_i_L₁`.
++
++Each command adds nothing, and logs why, when a proof lacks the shape it needs.
++The weakenings a frontier passes through are added once each, as
++`L.weakened_p`, so the frontier's proof is a readable chain of library
++theorems.
++-/
++
++set_option autoImplicit false
++
++open Lean Meta Elab Command
++
++register_option argumentGraph.strict : Bool := {
++  defValue := false
++  descr := "make a derive_* command that cannot add what it was asked for fail with an \
++    error; by default it logs a warning"
++}
++
++namespace ErdosProblems.ArgumentGraph
++
++/-- Report a derivation that added nothing: an error under `argumentGraph.strict`,
++a warning otherwise. The option is read by name, so a file that inlines this
++module (a kernel probe) can use the commands without evaluating the option's
++initialiser in the module that declares it. -/
++def reportFailure (msg : MessageData) : MetaM Unit := do
++  if (← getOptions).getBool `argumentGraph.strict false then logError msg else logWarning msg
++
++/-- Run `x` with its own heartbeat budget (in thousands); `none` when the budget
++runs out or `x` throws. -/
++def budgeted {α : Type} (heartbeats : Nat) (x : MetaM α) : MetaM (Option α) := do
++  withCurrHeartbeats <|
++    withTheReader Core.Context (fun ctx => { ctx with maxHeartbeats := heartbeats * 1000 }) do
++      tryCatchRuntimeEx (do return some (← x)) fun _ => return none
++
++/-- The recursion bound of every traversal in this module: the depth of term it
++follows (every definition here is total). When a bound is reached the traversal
++gives its conservative answer (no use site, no weakening, no split), and anything
++built from a partial result still has to pass the kernel. -/
++def traversalFuel : Nat := 100000
++
++/-- `normaliseBinders`, following at most `fuel` levels of the term. -/
++def normaliseBindersAux : Nat → Expr → Nat → Expr
++  | 0, e, _ => e
++  | fuel + 1, e, depth =>
++    let name := Name.mkSimple s!"x{depth}"
++    match e with
++    | .forallE _ t b _ =>
++        .forallE name (normaliseBindersAux fuel t depth) (normaliseBindersAux fuel b (depth + 1)) .default
++    | .lam _ t b _ =>
++        .lam name (normaliseBindersAux fuel t depth) (normaliseBindersAux fuel b (depth + 1)) .default
++    | .letE _ t v b nondep =>
++        .letE name (normaliseBindersAux fuel t depth) (normaliseBindersAux fuel v depth)
++          (normaliseBindersAux fuel b (depth + 1)) nondep
++    | .app f a => .app (normaliseBindersAux fuel f depth) (normaliseBindersAux fuel a depth)
++    | .mdata _ b => normaliseBindersAux fuel b depth
++    | .proj s i b => .proj s i (normaliseBindersAux fuel b depth)
++    | e => e
++
++/-- A statement with binder names, binder annotations and metadata erased, so two
++statements that differ only in naming compare equal. -/
++def normaliseBinders (e : Expr) : Expr := normaliseBindersAux traversalFuel e 0
++
++/-- Add a theorem after a synchronous kernel check; the error text when the
++kernel rejects it. -/
++def addChecked (name : Name) (levelParams : List Name) (type value : Expr) (doc : String) :
++    MetaM (Except String Unit) := do
++  let decl := Declaration.thmDecl { name, levelParams, type, value }
++  match Kernel.Environment.addDecl (← getEnv).toKernelEnv (← getOptions) decl with
++  | .error ex => return .error (← (ex.toMessageData (← getOptions)).toString)
++  | .ok _ =>
++      addDecl decl
++      addDocStringCore name doc
++      return .ok ()
++
++/-! ## Idle hypotheses -/
++
++/-- The proposition binders of a theorem that its proof never uses: the binder's
++free variable occurs neither in the proof (beta-reduced against the statement's
++binders), nor in a later binder type, nor in the conclusion. Instance binders
++are kept. -/
++def idleBinders (info : ConstantInfo) : MetaM (Array Nat) := do
++  let some value := info.value? | return #[]
++  forallTelescope info.type fun xs body => do
++    let used := (collectFVars {} (value.beta xs)).fvarSet
++    let mut idle : Array Nat := #[]
++    for x in xs, i in [0:xs.size] do
++      let decl ← x.fvarId!.getDecl
++      if decl.binderInfo == .instImplicit then continue
++      unless ← isProp decl.type do continue
++      let id := x.fvarId!
++      if used.contains id || body.containsFVar id then continue
++      let mut later := false
++      for j in [i+1:xs.size] do
++        if (← xs[j]!.fvarId!.getDecl).type.containsFVar id then
++          later := true
++          break
++      unless later do idle := idle.push i
++    return idle
++
++/-- `T.idle`, when `T` has idle proposition hypotheses. -/
++def deriveIdle (name : Name) : MetaM (Except String Name) := do
++  let info ← getConstInfo name
++  let some value := info.value? | return .error "not a theorem with a proof term"
++  let idle ← idleBinders info
++  if idle.isEmpty then return .error "its proof uses every proposition hypothesis"
++  let (type, value, dropped) ← forallTelescope info.type fun xs body => do
++    let proof := value.beta xs
++    let mut keep : Array Expr := #[]
++    let mut dropped : Array String := #[]
++    for x in xs, i in [0:xs.size] do
++      if idle.contains i then
++        dropped := dropped.push (toString (← ppExpr (← inferType x)))
++      else
++        keep := keep.push x
++    return (← mkForallFVars keep body, ← mkLambdaFVars keep proof, dropped)
++  let newName := name ++ `idle
++  let doc := s!"`{name}` without the hypotheses its proof never uses: \
++    {", ".intercalate dropped.toList}. Derived by `derive_idle` from the same proof."
++  match ← addChecked newName info.levelParams type value doc with
++  | .ok () => return .ok newName
++  | .error e => return .error s!"kernel rejected {newName}: {e}"
++
++/-! ## Conjuncts
++
++A paper result often states several claims as one conjunction, or an equivalence,
++and assumes a named input that only some of the claims need. Projecting the proof
++onto one claim and reducing the projection (beta, `let`, a projection of a
++constructor, definitions such as `id`; never a theorem) gives that claim's own
++proof when the proof builds the claims separately, directly or under `have`,
++`show` or `let`; its free variables are the hypotheses the claim uses. -/
++
++/-- The conjuncts of `A₁ ∧ (A₂ ∧ (… ∧ Aₙ))`, splitting at most `fuel` times. -/
++def andSpineAux : Nat → Expr → Array Expr
++  | 0, t => #[t]
++  | fuel + 1, t =>
++    match t.consumeMData.and? with
++    | some (a, b) => #[a] ++ andSpineAux fuel b
++    | none => #[t]
++
++/-- The claims of a conclusion, each with the projection of a proof of the
++conclusion onto it: `A₁ ∧ (A₂ ∧ (… ∧ Aₙ))` gives the `Aᵢ`, and `A ↔ B` gives
++`A → B` and `B → A`. A conclusion of any other shape is one claim. -/
++def conclusionClaims (type : Expr) : Array (Expr × (Expr → Expr)) := Id.run do
++  if let some (a, b) := type.consumeMData.app2? ``Iff then
++    return #[(mkForall `h .default a b, fun p => mkProj ``Iff 0 p),
++             (mkForall `h .default b a, fun p => mkProj ``Iff 1 p)]
++  let parts := andSpineAux 256 type
++  let mut out : Array (Expr × (Expr → Expr)) := #[]
++  for a in parts, k in [0:parts.size] do
++    out := out.push (a, fun p =>
++      let rest := (List.range k).foldl (fun e _ => mkProj ``And 1 e) p
++      if k + 1 < parts.size then mkProj ``And 0 rest else rest)
++  return out
++
++/-- For each claim of `T`'s conclusion (a conjunct, or a direction of an
++equivalence) whose proof leaves some proposition hypotheses unused, `T.part_k`
++(counting from 1): the claim alone, assuming only the binders its proof and
++statement need. -/
++def deriveConjuncts (name : Name) : MetaM (Except String (Array Name)) := do
++  let info ← getConstInfo name
++  let some value := info.value? | return .error "not a theorem with a proof term"
++  let parts ← forallTelescope info.type fun xs body => do
++    let claims := conclusionClaims body
++    if claims.size < 2 then
++      return Except.error "its conclusion is neither a conjunction nor an equivalence"
++    let mut hasPropHypothesis := false
++    for x in xs do
++      let decl ← x.fvarId!.getDecl
++      if decl.binderInfo != .instImplicit && (← isProp decl.type) then
++        hasPropHypothesis := true
++    unless hasPropHypothesis do
++      return Except.error "it has no proposition hypothesis to leave out"
++    let proof ← instantiateMVars (value.beta xs)
++    let mut out : Array (Nat × Expr × Expr × Array String) := #[]
++    let mut uses : Array String := #[]
++    for (a, project) in claims, k in [1:claims.size + 1] do
++      let p := (← budgeted 2000 (whnf (project proof))).getD (project proof)
++      -- the binders the part needs: those its proof or statement mention, closed
++      -- under the binder types that mention them
++      let mut needed : Std.HashSet FVarId := {}
++      for x in xs do
++        if p.containsFVar x.fvarId! || a.containsFVar x.fvarId! then
++          needed := needed.insert x.fvarId!
++      let mut changed := true
++      while changed do
++        changed := false
++        for x in xs do
++          if needed.contains x.fvarId! then
++            for y in xs do
++              if !needed.contains y.fvarId! && (← x.fvarId!.getDecl).type.containsFVar y.fvarId! then
++                needed := needed.insert y.fvarId!
++                changed := true
++      let keep := xs.filter fun x => needed.contains x.fvarId!
++      let mut dropped : Array String := #[]
++      let mut used : Array String := #[]
++      for x in xs do
++        let decl ← x.fvarId!.getDecl
++        if decl.binderInfo == .instImplicit then continue
++        unless ← isProp decl.type do continue
++        if needed.contains x.fvarId! then
++          used := used.push (toString decl.userName)
++        else
++          dropped := dropped.push (toString (← ppExpr decl.type))
++      if dropped.isEmpty then
++        uses := uses.push s!"claim {k} uses {", ".intercalate used.toList}"
++        continue
++      out := out.push (k, ← mkForallFVars keep a, ← mkLambdaFVars keep p, dropped)
++    if out.isEmpty then
++      return Except.error s!"every claim of its conclusion uses every proposition hypothesis \
++        ({"; ".intercalate uses.toList})"
++    return Except.ok out
++  let parts ← match parts with
++    | .ok parts => pure parts
++    | .error e => return .error e
++  let mut added : Array Name := #[]
++  for (k, type, value, dropped) in parts do
++    let newName := name ++ Name.mkSimple s!"part_{k}"
++    if (← getEnv).contains newName then
++      added := added.push newName
++      continue
++    let doc := s!"Conjunct {k} of `{name}`, which its proof establishes without \
++      {", ".intercalate dropped.toList}. Derived by `derive_conjuncts` from the same proof."
++    match ← addChecked newName info.levelParams type value doc with
++    | .ok () => added := added.push newName
++    | .error e => return .error s!"kernel rejected {newName}: {e}"
++  return .ok added
++
++/-! ## Used consequences -/
++
++/-- `isHypRef`, looking through at most `fuel` casts. -/
++def isHypRefAux : Nat → FVarId → Expr → Bool
++  | 0, _, _ => false
++  | fuel + 1, h, e =>
++    match e.consumeMData with
++    | .fvar id => id == h
++    | e =>
++        match e.getAppFn with
++        | .const n _ =>
++            let args := e.getAppArgs
++            if (n == ``Eq.mpr || n == ``Eq.mp || n == ``cast) && args.size == 4 then
++              !args[2]!.containsFVar h && isHypRefAux fuel h args[3]!
++            else if n == ``id && args.size == 2 then isHypRefAux fuel h args[1]!
++            else false
++        | _ => false
++
++/-- Whether `e` is the hypothesis `h`, possibly transported by `Eq.mpr`, `Eq.mp`,
++`cast` or `id` whose other arguments do not use `h`. -/
++def isHypRef (h : FVarId) (e : Expr) : Bool := isHypRefAux 64 h e
++
++structure UseScan where
++  /-- Per subterm: whether it mentions `h`, and whether it mentions another free
++  variable. Memoised, so shared subterms are visited once. -/
++  facts : Std.HashMap Expr (Bool × Bool) := {}
++  verdicts : Std.HashMap Expr Bool := {}
++  sites : Array Expr := #[]
++  visited : Nat := 0
++
++abbrev UseM := StateT UseScan MetaM
++
++/-- `useFacts`, following at most `fuel` levels. Past the bound a subterm counts
++as mentioning `h` and another variable, the answer that admits no use site. -/
++def useFactsAux : Nat → FVarId → Expr → UseM (Bool × Bool)
++  | 0, _, _ => return (true, true)
++  | fuel + 1, h, e => do
++    if !e.hasFVar then return (false, false)
++    if let some f := (← get).facts.get? e then return f
++    let f ← match e with
++      | .fvar id => pure (id == h, id != h)
++      | .app f a => do
++          let x ← useFactsAux fuel h f
++          let y ← useFactsAux fuel h a
++          pure (x.1 || y.1, x.2 || y.2)
++      | .lam _ t b _ | .forallE _ t b _ => do
++          let x ← useFactsAux fuel h t
++          let y ← useFactsAux fuel h b
++          pure (x.1 || y.1, x.2 || y.2)
++      | .letE _ t v b _ => do
++          let x ← useFactsAux fuel h t
++          let y ← useFactsAux fuel h v
++          let z ← useFactsAux fuel h b
++          pure (x.1 || y.1 || z.1, x.2 || y.2 || z.2)
++      | .mdata _ b | .proj _ _ b => useFactsAux fuel h b
++      | _ => pure (false, false)
++    modify fun s => { s with facts := s.facts.insert e f }
++    return f
++
++/-- Whether `e` mentions `h`, and whether it mentions another free variable. -/
++def useFacts (h : FVarId) (e : Expr) : UseM (Bool × Bool) := useFactsAux traversalFuel h e
++
++/-- No bound variable of the proof, no metavariable, no free variable but `h`. -/
++def closedFor (h : FVarId) (e : Expr) : UseM Bool := do
++  if e.hasLooseBVars || e.hasMVar then return false
++  return !(← useFacts h e).2
++
++/-- The proposition a use site proves, if the site qualifies. -/
++def siteType? (hType : Expr) (conclusion : Option Expr) (site : Expr) : MetaM (Option Expr) := do
++  try
++    let t ← instantiateMVars (← inferType site)
++    unless ← isProp t do return none
++    if t.hasFVar || t.hasMVar || t.hasLooseBVars then return none
++    if (t.find? (· == hType)).isSome then return none
++    if conclusion == some (normaliseBinders t) then return none
++    if (← budgeted 5000 (withNewMCtxDepth (isDefEq t hType))) == some true then return none
++    return some t
++  catch _ => return none
++
++mutual
++/-- `collectUses` with a recursion bound; past it the answer is `false` (no
++weakening). -/
++def collectUsesAux : Nat → FVarId → Expr → Option Expr → Expr → UseM Bool
++  | 0, _, _, _, _ => return false
++  | fuel + 1, h, hType, conclusion, e => do
++    if !(← useFacts h e).1 then return true
++    if let some v := (← get).verdicts.get? e then return v
++    let s ← get
++    if s.visited ≥ 200000 then return false
++    set { s with visited := s.visited + 1 }
++    let v ← visitUsesAux fuel h hType conclusion e
++    modify fun s => { s with verdicts := s.verdicts.insert e v }
++    return v
++
++/-- One step of `collectUses`: the cases by the shape of `e`. -/
++def visitUsesAux : Nat → FVarId → Expr → Option Expr → Expr → UseM Bool
++  | 0, _, _, _, _ => return false
++  | fuel + 1, h, hType, conclusion, e => do
++    match e with
++    | .fvar _ => return false
++    | .mdata _ b => collectUsesAux fuel h hType conclusion b
++    | .proj _ _ b =>
++        if isHypRef h b && (← closedFor h e) then
++          unless (← siteType? hType conclusion e).isSome do return false
++          modify fun s => { s with sites := s.sites.push e }
++          return true
++        collectUsesAux fuel h hType conclusion b
++    | .lam _ t b _ | .forallE _ t b _ =>
++        let x ← collectUsesAux fuel h hType conclusion t
++        let y ← collectUsesAux fuel h hType conclusion b
++        return x && y
++    | .letE _ t v b _ =>
++        let x ← collectUsesAux fuel h hType conclusion t
++        let y ← collectUsesAux fuel h hType conclusion v
++        let z ← collectUsesAux fuel h hType conclusion b
++        return x && y && z
++    | .app .. =>
++        -- `h` transported by a cast is `h`; the application around it decides.
++        if isHypRef h e then return false
++        let fn := e.getAppFn
++        let args := e.getAppArgs
++        let mut k := 0
++        if ← closedFor h fn then
++          while k < args.size do
++            if ← closedFor h args[k]! then k := k + 1 else break
++        if k > 0 && (isHypRef h fn || (args.extract 0 k).any (isHypRef h)) then
++          let site := mkAppN fn (args.extract 0 k)
++          unless (← siteType? hType conclusion site).isSome do return false
++          modify fun s => { s with sites := s.sites.push site }
++          let mut ok := true
++          for a in args.extract k args.size do
++            unless ← collectUsesAux fuel h hType conclusion a do ok := false
++          return ok
++        let mut ok ← collectUsesAux fuel h hType conclusion fn
++        for a in args do
++          unless ← collectUsesAux fuel h hType conclusion a do ok := false
++        return ok
++    | _ => return true
++end
++
++/-- Whether every occurrence of `h` in `e` lies inside a use site; the sites are
++collected in the state. `false`: some occurrence uses `h` as it stands. -/
++def collectUses (h : FVarId) (hType : Expr) (conclusion : Option Expr) (e : Expr) : UseM Bool :=
++  collectUsesAux traversalFuel h hType conclusion e
++
++/-- Binder `i` of a theorem replaced by what the proof uses of it. -/
++structure Weakening where
++  type : Expr
++  value : Expr
++  hypothesis : Expr
++  /-- The distinct propositions the use sites prove, in order of first use. -/
++  consequences : Array Expr
++  /-- Per consequence, one of its use sites as a closed function of the hypothesis. -/
++  sites : Array Expr
++
++/-- The weakening of binder `i`: one hypothesis per distinct use-site
++proposition, placed where the binder was, each use site in the proof replaced by
++the new hypothesis. -/
++def weakenAt (info : ConstantInfo) (i : Nat) : MetaM (Option Weakening) := do
++  let some value := info.value? | return none
++  forallTelescope info.type fun xs body => do
++    unless i < xs.size do return none
++    let x := xs[i]!
++    let h := x.fvarId!
++    let decl ← h.getDecl
++    if decl.binderInfo == .instImplicit then return none
++    let hType ← instantiateMVars decl.type
++    unless ← isProp hType do return none
++    if body.containsFVar h then return none
++    for j in [i+1:xs.size] do
++      if (← xs[j]!.fvarId!.getDecl).type.containsFVar h then return none
++    let proof := value.beta xs
++    let conclusion := if body.hasFVar then none else some (normaliseBinders body)
++    let (ok, scan) ← (collectUses h hType conclusion proof).run {}
++    unless ok && !scan.sites.isEmpty do return none
++    let mut consequences : Array Expr := #[]
++    let mut slot : Array Nat := #[]
++    let mut sites : Array Expr := #[]
++    for site in scan.sites do
++      let t ← instantiateMVars (← inferType site)
++      match consequences.findIdx? (· == t) with
++      | some j => slot := slot.push j
++      | none =>
++          slot := slot.push consequences.size
++          consequences := consequences.push t
++          sites := sites.push (← mkLambdaFVars #[x] site)
++    let decls := consequences.mapIdx fun j t =>
++      (Name.mkSimple s!"used{j}", fun (_ : Array Expr) => (pure t : MetaM Expr))
++    withLocalDeclsD decls fun cs => do
++      let replaced := proof.replace fun e =>
++        if !e.hasFVar then none
++        else match scan.sites.findIdx? (· == e) with
++          | some j => some cs[slot[j]!]!
++          | none => none
++      if replaced.containsFVar h then return none
++      let keep := xs.extract 0 i ++ cs ++ xs.extract (i + 1) xs.size
++      let type ← instantiateMVars (← mkForallFVars keep body)
++      let value ← instantiateMVars (← mkLambdaFVars keep replaced)
++      if type.hasMVar || value.hasMVar then return none
++      return some { type, value, hypothesis := hType, consequences, sites }
++
++/-- The number of binders of a theorem's statement, without unfolding. -/
++def binderCount (info : ConstantInfo) : MetaM Nat :=
++  forallTelescope info.type fun xs _ => return xs.size
++
++/-- Weakenings added so far in this command, by theorem and binder. -/
++abbrev DeriveM := StateRefT (Std.HashMap (Name × Nat) (Option (Name × Weakening))) MetaM
++
++/-- The weakening of `name` at binder `i`, added to the environment as
++`name.weakened_i` the first time it is needed. -/
++def weakeningOf (name : Name) (i : Nat) : DeriveM (Option (Name × Weakening)) := do
++  if let some r := (← get).get? (name, i) then return r
++  let info ← getConstInfo name
++  let mut r : Option (Name × Weakening) := none
++  match ← weakenAt info i with
++  | none => pure ()
++  | some w =>
++      let wName := name ++ Name.mkSimple s!"weakened_{i}"
++      if (← getEnv).contains wName then
++        r := some (wName, w)
++      else
++        let doc := s!"`{name}` with its hypothesis number {i} replaced by what its proof \
++          uses of it. Derived by `derive_weakening` from the same proof."
++        if (← addChecked wName info.levelParams w.type w.value doc) matches .ok () then
++          r := some (wName, w)
++  modify (·.insert (name, i) r)
++  return r
++
++/-! ## Frontiers -/
++
++/-- How a frontier proves one consequence: assumed as it stands, or obtained from
++`fn before … after` with each child consequence supplied recursively. -/
++inductive Plan where
++  | leaf (type : Expr)
++  | step (fn : Expr) (before after : Array Expr) (children : Array Plan)
++  deriving Inhabited
++
++/-- The plan for a consequence `c` proved at `site` (a closed function of the
++hypothesis). `stops` lists theorems whose use sites stay as they are. -/
++def plan (stops : Array Name) : Nat → Expr → Expr → DeriveM Plan
++  | 0, c, _ => return .leaf c
++  | fuel + 1, c, site => do
++    let .lam _ _ body _ := site | return .leaf c
++    let .const n us := body.getAppFn | return .leaf c
++    if stops.contains n then return .leaf c
++    let args := body.getAppArgs
++    let some p := args.findIdx? (fun a => a.consumeMData == .bvar 0) | return .leaf c
++    for a in args, k in [0:args.size] do
++      if k != p && a.hasLooseBVars then return .leaf c
++    let some (wName, w) ← weakeningOf n p | return .leaf c
++    let info ← getConstInfo n
++    let inst (e : Expr) : Expr := e.instantiateLevelParams info.levelParams us
++    let mut children : Array Plan := #[]
++    for d in w.consequences, s in w.sites do
++      children := children.push (← plan stops fuel (inst d) (inst s))
++    return .step (mkConst wName us) (args.extract 0 p) (args.extract (p + 1) args.size) children
++
++/-- The bound for walking a plan; `plan` builds plans at most `planFuel` deep. -/
++def planFuel : Nat := 64
++
++def Plan.leavesAux : Nat → Plan → Array Expr → Array Expr
++  | _, .leaf t, acc => if acc.contains t then acc else acc.push t
++  | 0, .step .., acc => acc
++  | fuel + 1, .step _ _ _ cs, acc => cs.foldl (fun a c => Plan.leavesAux fuel c a) acc
++
++/-- The distinct statements where a plan stops, added to `acc`. -/
++def Plan.leaves (p : Plan) (acc : Array Expr) : Array Expr := Plan.leavesAux planFuel p acc
++
++def Plan.buildAux : Nat → Array Expr → Array Expr → Plan → Expr
++  | _, types, vars, .leaf t => vars[(types.findIdx? (· == t)).getD 0]!
++  | 0, _, _, .step fn before after _ => mkAppN fn (before ++ after)
++  | fuel + 1, types, vars, .step fn before after cs =>
++      mkAppN fn (before ++ cs.map (Plan.buildAux fuel types vars ·) ++ after)
++
++/-- The proof term a plan describes, with `vars[j]` for the leaf `types[j]`. A term
++built past the bound is ill-typed, so the kernel rejects it. -/
++def Plan.build (types vars : Array Expr) (p : Plan) : Expr := Plan.buildAux planFuel types vars p
++
++def Plan.depthAux : Nat → Plan → Nat
++  | _, .leaf _ => 0
++  | 0, .step .. => 1
++  | fuel + 1, .step _ _ _ cs => 1 + cs.foldl (fun m c => max m (Plan.depthAux fuel c)) 0
++
++/-- How many weakenings deep the plan goes. -/
++def Plan.depth (p : Plan) : Nat := Plan.depthAux planFuel p
++
++/-- A proof of the closed proposition `t` by one of `suppliers`: the supplier
++itself when its statement is `t`, or the supplier applied to arguments found by
++unification when a prefix of its binders instantiates to `t` (instance
++arguments synthesised). `none` when no supplier fits without leftover
++metavariables. -/
++def supplyLeaf (t : Expr) (suppliers : Array Name) : MetaM (Option Expr) := do
++  for s in suppliers do
++    let info ← getConstInfo s
++    let n ← forallTelescope info.type fun xs _ => return xs.size
++    for k in [0:n+1] do
++      let found ← withNewMCtxDepth do
++        let us ← mkFreshLevelMVarsFor info
++        let (mvars, _, rest) ← forallMetaBoundedTelescope
++          (info.type.instantiateLevelParams info.levelParams us) k
++        unless mvars.size == k do return none
++        unless (← budgeted 20000 (isDefEq rest t)) == some true do return none
++        for m in mvars do
++          unless ← m.mvarId!.isAssigned do
++            if let some inst ← (try synthInstance? (← inferType m) catch _ => pure none) then
++              m.mvarId!.assign inst
++        let proof ← instantiateMVars (mkAppN (mkConst s us) mvars)
++        if proof.hasMVar || proof.hasLevelMVar then return none
++        return some proof
++      if found.isSome then return found
++  return none
++
++/-- The statement and proof of a frontier: `info`'s statement with binder `i`
++replaced by one hypothesis per leaf type that no supplier proves, proved by
++`wName` (the weakening at `i`) applied to the plans' proofs of its consequences. -/
++def frontierDecl (info : ConstantInfo) (i : Nat) (wName : Name) (plans : Array Plan)
++    (leafTypes : Array Expr) (supplied : Array (Option Expr)) : MetaM (Expr × Expr) := do
++  let lvls := info.levelParams.map mkLevelParam
++  let openLeaves := (Array.range leafTypes.size).filter fun j => (supplied[j]!).isNone
++  forallTelescope info.type fun xs body => do
++    let decls := openLeaves.map fun j =>
++      (Name.mkSimple s!"interface{j}", fun (_ : Array Expr) => (pure leafTypes[j]! : MetaM Expr))
++    withLocalDeclsD decls fun ls => do
++      let vars := (Array.range leafTypes.size).map fun j =>
++        match supplied[j]! with
++        | some proof => proof
++        | none => ls[(openLeaves.findIdx? (· == j)).getD 0]!
++      let proofs := plans.map (·.build leafTypes vars)
++      let keep := xs.extract 0 i ++ ls ++ xs.extract (i + 1) xs.size
++      let applied := mkAppN (mkConst wName lvls) (xs.extract 0 i ++ proofs ++ xs.extract (i + 1) xs.size)
++      return (← mkForallFVars keep body, ← mkLambdaFVars keep applied)
++
++/-- `name.frontier_i` (or `name.frontier_i_<L>` when stopping at the use sites of
++`L`): `name` with hypothesis `i` replaced by the consequences where the chain of
++weakenings stops. With `suppliers`, each such consequence a supplier proves is
++discharged, and the theorem is named `…_supplied`; when every consequence is
++discharged, hypothesis `i` is gone. An error when the chain adds nothing. -/
++def frontierAt (name : Name) (i : Nat) (stops : Array Name) (suppliers : Array Name := #[]) :
++    DeriveM (Except String Name) := do
++  let some (wName, w) ← weakeningOf name i | return .error s!"hypothesis {i} has no weakening"
++  let info ← getConstInfo name
++  let mut plans : Array Plan := #[]
++  for c in w.consequences, s in w.sites do
++    plans := plans.push (← plan stops 24 c s)
++  let leafTypes := plans.foldl (fun acc p => p.leaves acc) #[]
++  let mut supplied : Array (Option Expr) := #[]
++  for t in leafTypes do
++    supplied := supplied.push (← if suppliers.isEmpty then pure none else supplyLeaf t suppliers)
++  let discharged := (supplied.filter (·.isSome)).size
++  if plans.all (·.depth == 0) && discharged == 0 then
++    return .error s!"hypothesis {i}: the chain stops at the first weakening ({wName})"
++  if !suppliers.isEmpty && discharged == 0 then
++    return .error s!"hypothesis {i}: no supplier proves a consequence where the chain stops"
++  let (type, value) ← frontierDecl info i wName plans leafTypes supplied
++  let suffix := (match stops[0]? with
++    | some n => "_" ++ n.getString!
++    | none => "") ++ (if discharged > 0 then "_supplied" else "")
++  let newName := name ++ Name.mkSimple s!"frontier_{i}{suffix}"
++  if (← getEnv).contains newName then return .ok newName
++  let stopText := if stops.isEmpty then "as far as the chain goes"
++    else s!"keeping the use sites of {stops.toList}"
++  let supplyText := if discharged == 0 then ""
++    else s!" {discharged} of the {leafTypes.size} consequence(s) are discharged by {suppliers.toList}\
++      {if discharged == leafTypes.size then ", so the hypothesis is gone" else ""}."
++  let doc := s!"`{name}` with its hypothesis number {i} replaced by the {leafTypes.size} \
++    consequence(s) reached by following the weakenings of the theorems its proof applies \
++    that hypothesis to, {stopText}.{supplyText} Derived by `derive_frontier`."
++  match ← addChecked newName info.levelParams type value doc with
++  | .ok () => return .ok newName
++  | .error e => return .error s!"kernel rejected {newName}: {e}"
++
++/-! ## Commands -/
++
++syntax (name := deriveIdleCmd) "derive_idle " ident : command
++syntax (name := deriveWeakeningCmd) "derive_weakening " ident : command
++syntax (name := deriveConjunctsCmd) "derive_conjuncts " ident : command
++-- `at` and `using` are already Lean keywords, so the frontier command adds no new
++-- token that would shadow an identifier in a module importing this one.
++syntax (name := deriveFrontierCmd)
++  "derive_frontier " ident (" at " ident+)? (" using " ident+)? : command
++
++/-- The statement of an added theorem, on one line and at most `limit` characters,
++so a build log stays readable. -/
++def statementLine (n : Name) (limit : Nat := 600) : MetaM String := do
++  let fmt ← withOptions (fun o => o.setBool `pp.proofs false)
++    (ppExpr (← getConstInfo n).type)
++  let flat := (toString fmt).replace "\n" " "
++  let flat := " ".intercalate (flat.splitOn " " |>.filter (· ≠ ""))
++  return if flat.length ≤ limit then flat else String.ofList (flat.toList.take limit) ++ " …"
++
++private def reportAdded (n : Name) : MetaM Unit := do
++  logInfo m!"added {n} : {← statementLine n}"
++
++@[command_elab deriveIdleCmd] def elabDeriveIdle : CommandElab := fun stx => do
++  liftTermElabM do
++    let name ← realizeGlobalConstNoOverloadWithInfo stx[1]
++    match ← deriveIdle name with
++    | .ok n => reportAdded n
++    | .error e => reportFailure m!"derive_idle {name}: {e}"
++
++@[command_elab deriveConjunctsCmd] def elabDeriveConjuncts : CommandElab := fun stx => do
++  liftTermElabM do
++    let name ← realizeGlobalConstNoOverloadWithInfo stx[1]
++    match ← deriveConjuncts name with
++    | .ok names => for n in names do reportAdded n
++    | .error e => reportFailure m!"derive_conjuncts {name}: {e}"
++
++@[command_elab deriveWeakeningCmd] def elabDeriveWeakening : CommandElab := fun stx => do
++  liftTermElabM do
++    let name ← realizeGlobalConstNoOverloadWithInfo stx[1]
++    let info ← getConstInfo name
++    let n ← binderCount info
++    let (added, _) ← (do
++      let mut added : Array Name := #[]
++      for i in [0:n] do
++        match ← weakeningOf name i with
++        | none => pure ()
++        | some (wName, w) =>
++          added := added.push wName
++          -- `H → Cⱼ`, when `H` is closed.
++          unless w.hypothesis.hasFVar do
++            for s in w.sites, j in [0:w.sites.size] do
++              let uName := name ++ Name.mkSimple s!"use_{i}_{j}"
++              unless (← getEnv).contains uName do
++                let type ← withLocalDeclD `h w.hypothesis fun h => do
++                  mkForallFVars #[h] (← inferType (s.beta #[h]))
++                let doc := s!"What `{name}` derives from its hypothesis number {i}: \
++                  its use site number {j}."
++                if (← addChecked uName info.levelParams type s doc) matches .ok () then
++                  added := added.push uName
++      return added : DeriveM (Array Name)).run {}
++    if added.isEmpty then
++      reportFailure m!"derive_weakening {name}: no hypothesis is used only through consequences"
++    for a in added do reportAdded a
++
++@[command_elab deriveFrontierCmd] def elabDeriveFrontier : CommandElab := fun stx => do
++  liftTermElabM do
++    let name ← realizeGlobalConstNoOverloadWithInfo stx[1]
++    let stops ← if stx[2].isNone then pure #[]
++      else stx[2][1].getArgs.mapM (fun s => realizeGlobalConstNoOverloadWithInfo s)
++    let suppliers ← if stx[3].isNone then pure #[]
++      else stx[3][1].getArgs.mapM (fun s => realizeGlobalConstNoOverloadWithInfo s)
++    let info ← getConstInfo name
++    let n ← binderCount info
++    let (results, _) ← (do
++      let mut results : Array (Except String Name) := #[]
++      for i in [0:n] do
++        if (← weakeningOf name i).isSome then
++          results := results.push (← frontierAt name i stops suppliers)
++      return results : DeriveM (Array (Except String Name))).run {}
++    if results.isEmpty then
++      reportFailure m!"derive_frontier {name}: no hypothesis is used only through consequences"
++    for r in results do
++      match r with
++      | .ok a => reportAdded a
++      | .error e => reportFailure m!"derive_frontier {name}: {e}"
++
++end ErdosProblems.ArgumentGraph
+diff --git a/lean/ErdosProblems/ArgumentGraph/Derived/Erdos1041.lean b/lean/ErdosProblems/ArgumentGraph/Derived/Erdos1041.lean
+new file mode 100644
+index 0000000000000000000000000000000000000000..8467e04a89310a10d6bc7abe652c787d54720c98
+--- /dev/null
++++ b/lean/ErdosProblems/ArgumentGraph/Derived/Erdos1041.lean
+@@ -0,0 +1,36 @@
++-- SPDX-FileCopyrightText: 2026 Will Cook
++-- SPDX-License-Identifier: Apache-2.0
++-- Generated by scripts/build_argument_frontier.py from the argument graph of
++-- source revisions 5176d8878036549d6e35a4cb42d8e26fdb3e4b46 and 4bcc5ecbf9a4720c53a1e4c22740f4f1e91041d5 combined (Lean tree ca2f57c9c7e461d54d2617d2ae33016ec7481567). Do not edit by hand.
++
++import ErdosProblems.ArgumentGraph.Derive
++import ErdosProblems.Erdos1041.PaperCompleteR21.ArityNotCapacity
++import ErdosProblems.Erdos1041.PaperCompleteR21.ConstantFactorAreaCriteria
++import ErdosProblems.Erdos1041.PaperCompleteR21.CriticalValueSeparationTransport
++import ErdosProblems.Erdos1041.PaperCompleteR21.HyperbolicLawOfCosines
++import ErdosProblems.Erdos1041.PaperCompleteR21.LowCriticalScaleTransport
++import ErdosProblems.Erdos1041.PaperCompleteR21.SeparationParent
++import ErdosProblems.Erdos1041.PaperCompleteR21.SubcriticalPerimeterPath
++
++/-! # Erdos1041: theorems derived from what the paper results' proofs use
++
++Each command below rebuilds, as a library theorem the kernel checks, a finding of
++the argument graph about a theorem the papers cite. See
++`ErdosProblems.ArgumentGraph.Derive` for what each command adds. -/
++
++set_option argumentGraph.strict true
++set_option maxHeartbeats 4000000
++
++derive_idle ErdosProblems.Erdos1041.PaperCompleteR21.Hyperbolic.le_of_lam_le
++derive_idle ErdosProblems.Erdos1041.PaperCompleteR21.SeparationParent.separation_parent
++derive_idle ErdosProblems.Erdos1041.PaperCompleteR21.cfaArity_length_le
++derive_idle ErdosProblems.Erdos1041.PaperCompleteR21.discSep_cubic_six_fifths
++derive_idle ErdosProblems.Erdos1041.PaperCompleteR21.discSep_uniform_radius
++derive_idle ErdosProblems.Erdos1041.PaperCompleteR21.subcritical_perimeter_path_paper
++derive_weakening ErdosProblems.Erdos1041.PaperCompleteR21.Arity.arity_not_capacity
++derive_weakening ErdosProblems.Erdos1041.PaperCompleteR21.discSep_cubic_six_fifths
++derive_frontier ErdosProblems.Erdos1041.PaperCompleteR21.discSep_cubic_six_fifths
++derive_weakening ErdosProblems.Erdos1041.PaperCompleteR21.discSep_separation_short
++derive_weakening ErdosProblems.Erdos1041.PaperCompleteR21.discSep_uniform_radius
++derive_frontier ErdosProblems.Erdos1041.PaperCompleteR21.discSep_uniform_radius
++derive_weakening ErdosProblems.Erdos1041.PaperCompleteR21.scaledLowCriticalFiveHalves_of_lowCritical
+diff --git a/lean/ErdosProblems/ArgumentGraph/Derived/Erdos1049.lean b/lean/ErdosProblems/ArgumentGraph/Derived/Erdos1049.lean
+new file mode 100644
+index 0000000000000000000000000000000000000000..57b40fb0ef4fa710251b9fdb77d22e17471666c2
+--- /dev/null
++++ b/lean/ErdosProblems/ArgumentGraph/Derived/Erdos1049.lean
+@@ -0,0 +1,20 @@
++-- SPDX-FileCopyrightText: 2026 Will Cook
++-- SPDX-License-Identifier: Apache-2.0
++-- Generated by scripts/build_argument_frontier.py from the argument graph of
++-- source revisions 5176d8878036549d6e35a4cb42d8e26fdb3e4b46 and 4bcc5ecbf9a4720c53a1e4c22740f4f1e91041d5 combined (Lean tree ca2f57c9c7e461d54d2617d2ae33016ec7481567). Do not edit by hand.
++
++import ErdosProblems.ArgumentGraph.Derive
++import ErdosProblems.Erdos1049.PaperCompleteR21.RationalBaseThreshold
++
++/-! # Erdos1049: theorems derived from what the paper results' proofs use
++
++Each command below rebuilds, as a library theorem the kernel checks, a finding of
++the argument graph about a theorem the papers cite. See
++`ErdosProblems.ArgumentGraph.Derive` for what each command adds. -/
++
++set_option argumentGraph.strict true
++set_option maxHeartbeats 4000000
++
++derive_idle ErdosProblems.Erdos1049.PaperCompleteR21.rational_base_measure_uniform
++derive_idle ErdosProblems.Erdos1049.PaperCompleteR21.rational_base_threshold
++derive_idle ErdosProblems.Erdos1049.PaperCompleteR21.rational_base_threshold_log
+diff --git a/lean/ErdosProblems/ArgumentGraph/Derived/Erdos243.lean b/lean/ErdosProblems/ArgumentGraph/Derived/Erdos243.lean
+new file mode 100644
+index 0000000000000000000000000000000000000000..784a4358edc93b41e97908df12105f50cf7c27cc
+--- /dev/null
++++ b/lean/ErdosProblems/ArgumentGraph/Derived/Erdos243.lean
+@@ -0,0 +1,27 @@
++-- SPDX-FileCopyrightText: 2026 Will Cook
++-- SPDX-License-Identifier: Apache-2.0
++-- Generated by scripts/build_argument_frontier.py from the argument graph of
++-- source revisions 5176d8878036549d6e35a4cb42d8e26fdb3e4b46 and 4bcc5ecbf9a4720c53a1e4c22740f4f1e91041d5 combined (Lean tree ca2f57c9c7e461d54d2617d2ae33016ec7481567). Do not edit by hand.
++
++import ErdosProblems.ArgumentGraph.Derive
++import ErdosProblems.Erdos243.PaperCompleteR21.ExactOrbitRecordDichotomy
++import ErdosProblems.Erdos243.PaperCompleteR21.MaximalGapConstant
++import ErdosProblems.Erdos243.PaperCompleteR21.ReducedDenominatorPrimePowers
++import ErdosProblems.Erdos243.PaperCompleteR21.ReducedStepLocalArithmetic
++import ErdosProblems.Erdos243.PaperCompleteR21.WindowAvoidance
++
++/-! # Erdos243: theorems derived from what the paper results' proofs use
++
++Each command below rebuilds, as a library theorem the kernel checks, a finding of
++the argument graph about a theorem the papers cite. See
++`ErdosProblems.ArgumentGraph.Derive` for what each command adds. -/
++
++set_option argumentGraph.strict true
++set_option maxHeartbeats 4000000
++
++derive_idle ErdosProblems.Erdos243.PaperCompleteR21.StandingOrbit.oddPrimePower_supply
++derive_idle ErdosProblems.Erdos243.PaperCompleteR21.exists_avoiding_in_window
++derive_idle ErdosProblems.Erdos243.PaperCompleteR21.exists_multiplier_ge_four
++derive_idle ErdosProblems.Erdos243.PaperCompleteR21.exists_slow_rise_avoiding_sequence
++derive_idle ErdosProblems.Erdos243.PaperCompleteR21.maximal_gap_limsup_eq_inv_sigma
++derive_idle ErdosProblems.Erdos243.PaperCompleteR21.unit_word_saturates_old_modulus
+diff --git a/lean/ErdosProblems/ArgumentGraph/Derived/Erdos249.lean b/lean/ErdosProblems/ArgumentGraph/Derived/Erdos249.lean
+new file mode 100644
+index 0000000000000000000000000000000000000000..6f99a4d92b6eb2489764f82e57cee53970d82e00
+--- /dev/null
++++ b/lean/ErdosProblems/ArgumentGraph/Derived/Erdos249.lean
+@@ -0,0 +1,77 @@
++-- SPDX-FileCopyrightText: 2026 Will Cook
++-- SPDX-License-Identifier: Apache-2.0
++-- Generated by scripts/build_argument_frontier.py from the argument graph of
++-- source revisions 5176d8878036549d6e35a4cb42d8e26fdb3e4b46 and 4bcc5ecbf9a4720c53a1e4c22740f4f1e91041d5 combined (Lean tree ca2f57c9c7e461d54d2617d2ae33016ec7481567). Do not edit by hand.
++
++import ErdosProblems.ArgumentGraph.Derive
++import Erdos249257.LcmConeFlatness
++import Erdos249257.TotientActualLcmTopEdgeStaircase
++import Erdos249257.TotientCarryKernelRigidity
++import Erdos249257.TotientTailCarryPeriod
++import Erdos249257.TotientTailPeriodKiller
++import ErdosProblems.Erdos249.PaperCompleteR20.LcmGridCorrespondence
++import ErdosProblems.Erdos249.PaperCompleteR21.DivisorChannelSplitAndSeamDoubling
++import ErdosProblems.Erdos249.PaperCompleteR21.DyadicSectionBasisAndRationalCarry
++import ErdosProblems.Erdos249.PaperCompleteR21.ExcludedCofactorEstimate
++import ErdosProblems.Erdos249.PaperCompleteR21.ExtremalOrderDirectedAndPulse
++import ErdosProblems.Erdos249.PaperCompleteR21.FirstHarmonicBlockCriteria
++import ErdosProblems.Erdos249.PaperCompleteR21.HarmonicGapAndFourTail
++import ErdosProblems.Erdos249.PaperCompleteR21.LambertSigmaRungAndNesterenko
++import ErdosProblems.Erdos249.PaperCompleteR21.MersennePrimeSupportAnchors
++import ErdosProblems.Erdos249.PaperCompleteR21.MobiusMersenneLadderLogConcavity
++import ErdosProblems.Erdos249.PaperCompleteR21.NearIntegerIrrationalityCriterion
++import ErdosProblems.Erdos249.PaperCompleteR21.NumeratorPolynomialAndMersenneRemainder
++import ErdosProblems.Erdos249.PaperCompleteR21.PeriodMultipleAndSecondDifference
++import ErdosProblems.Erdos249.PaperCompleteR21.PhaseEnergyAndForeignResidueProjection
++import ErdosProblems.Erdos249.PaperCompleteR21.RationalTailPeriodWitnesses
++import ErdosProblems.Erdos249.PaperCompleteR21.ScalarLocalisationAndInversePhaseGauge
++import ErdosProblems.Erdos249.PaperCompleteR21.SimultaneousShiftCertificateDepth
++import ErdosProblems.Erdos249.PaperCompleteR21.TailCarryPeriodAndRankFloor
++import ErdosProblems.Erdos249.PaperCompleteR21.TopEdgeChainPaperBand
++
++/-! # Erdos249: theorems derived from what the paper results' proofs use
++
++Each command below rebuilds, as a library theorem the kernel checks, a finding of
++the argument graph about a theorem the papers cite. See
++`ErdosProblems.ArgumentGraph.Derive` for what each command adds. -/
++
++set_option argumentGraph.strict true
++set_option maxHeartbeats 4000000
++
++derive_idle ErdosProblems.Erdos249.PaperCompleteR20.short_lcm_window_nondivisor
++derive_idle ErdosProblems.Erdos249.PaperCompleteR21.complementDenominator_dvd_scalar
++derive_idle ErdosProblems.Erdos249.PaperCompleteR21.complementSummand_low_double_echo
++derive_idle ErdosProblems.Erdos249.PaperCompleteR21.divisorChannels_sum_eq
++derive_idle ErdosProblems.Erdos249.PaperCompleteR21.dvd_pow_sub_one_iff_orderOf_dvd
++derive_idle ErdosProblems.Erdos249.PaperCompleteR21.extremal_order_curvature_neg
++derive_idle ErdosProblems.Erdos249.PaperCompleteR21.extremal_order_curvature_pos
++derive_idle ErdosProblems.Erdos249.PaperCompleteR21.inversePhaseGauge_locks_row_and_preserves_minor
++derive_idle ErdosProblems.Erdos249.PaperCompleteR21.irrational_of_near_integer_base_powers
++derive_idle ErdosProblems.Erdos249.PaperCompleteR21.paperNumerator_eval_two
++derive_idle ErdosProblems.Erdos249.PaperCompleteR21.real_part_bound_of_norm_bound
++derive_idle ErdosProblems.Erdos249.PaperCompleteR21.residueOffset_of_dvd
++derive_idle ErdosProblems.Erdos249.PaperCompleteR21.twoAtom_strict_logConcave
++derive_weakening ErdosProblems.Erdos249.PaperCompleteR20.lcm_grid_flatness
++derive_frontier ErdosProblems.Erdos249.PaperCompleteR20.lcm_grid_flatness
++derive_weakening ErdosProblems.Erdos249.PaperCompleteR20.lcm_grid_fractional_parts
++derive_frontier ErdosProblems.Erdos249.PaperCompleteR20.lcm_grid_fractional_parts
++derive_frontier ErdosProblems.Erdos249.PaperCompleteR20.lcm_grid_fractional_parts at Erdos249257.TotientTailPeriodKiller.rational_totient_series_forces_lcm_cone_flatness
++derive_weakening ErdosProblems.Erdos249.PaperCompleteR21.exists_simultaneous_depth_of_irrational
++derive_weakening ErdosProblems.Erdos249.PaperCompleteR21.exists_simultaneous_depth_succ_of_irrational
++derive_frontier ErdosProblems.Erdos249.PaperCompleteR21.exists_simultaneous_depth_succ_of_irrational
++derive_weakening ErdosProblems.Erdos249.PaperCompleteR21.irrational_of_paperAdjacentSuffixMidbandSupply
++derive_weakening ErdosProblems.Erdos249.PaperCompleteR21.lambert_id_rung_transcendental
++derive_frontier ErdosProblems.Erdos249.PaperCompleteR21.lambert_id_rung_transcendental
++derive_weakening ErdosProblems.Erdos249.PaperCompleteR21.paperAdjacentSuffixMidbandSupply_of_flexibleActualTopEdgeMagnitude
++derive_weakening ErdosProblems.Erdos249.PaperCompleteR21.paperAdjacentSuffixMidbandSupply_of_oddGuardTopEdgeHalfWordBand
++derive_weakening ErdosProblems.Erdos249.PaperCompleteR21.prop_badcof
++derive_frontier ErdosProblems.Erdos249.PaperCompleteR21.prop_badcof
++derive_frontier ErdosProblems.Erdos249.PaperCompleteR21.prop_badcof at ErdosProblems.Erdos249.PaperCompleteR21.ExcludedCofactor.eventually_card_excluded_le_of_upper
++derive_frontier ErdosProblems.Erdos249.PaperCompleteR21.prop_badcof at ErdosProblems.Erdos249.PaperCompleteR21.ExcludedCofactor.eventually_card_primes_dyadic_le
++derive_weakening ErdosProblems.Erdos249.PaperCompleteR21.rational_forces_four_tail_diagonals_integral
++derive_frontier ErdosProblems.Erdos249.PaperCompleteR21.rational_forces_four_tail_diagonals_integral
++derive_weakening ErdosProblems.Erdos249.PaperCompleteR21.rational_forces_period_multiple_integrality
++derive_weakening ErdosProblems.Erdos249.PaperCompleteR21.rational_forces_pulse_class_integrality
++derive_weakening ErdosProblems.Erdos249.PaperCompleteR21.transcendental_sigma_series
++derive_conjuncts ErdosProblems.Erdos249.PaperCompleteR21.lambert_id_rung_transcendental
++derive_conjuncts ErdosProblems.Erdos249.PaperCompleteR21.prop_badcof
+diff --git a/lean/ErdosProblems/ArgumentGraph/Derived/Erdos251.lean b/lean/ErdosProblems/ArgumentGraph/Derived/Erdos251.lean
+new file mode 100644
+index 0000000000000000000000000000000000000000..8f17d106f418fb84a8406f43742363ff50e42963
+--- /dev/null
++++ b/lean/ErdosProblems/ArgumentGraph/Derived/Erdos251.lean
+@@ -0,0 +1,33 @@
++-- SPDX-FileCopyrightText: 2026 Will Cook
++-- SPDX-License-Identifier: Apache-2.0
++-- Generated by scripts/build_argument_frontier.py from the argument graph of
++-- source revisions 5176d8878036549d6e35a4cb42d8e26fdb3e4b46 and 4bcc5ecbf9a4720c53a1e4c22740f4f1e91041d5 combined (Lean tree ca2f57c9c7e461d54d2617d2ae33016ec7481567). Do not edit by hand.
++
++import ErdosProblems.ArgumentGraph.Derive
++import ErdosProblems.Erdos251.ActualPrimePaperR11
++import ErdosProblems.Erdos251.NonconcentrationConsequencesR11
++import ErdosProblems.Erdos251.PaperCompleteR20.FiniteSeparation
++import ErdosProblems.Erdos251.PaperCompleteR21.JointPrimeGapCountermodel
++import ErdosProblems.Erdos251.PaperCompleteR21.PerturbedPrimePositions
++import ErdosProblems.Erdos251.PaperCompleteR21.TwoWindowSparsity
++import ErdosProblems.Erdos251.PrimeGapDyadicTail
++
++/-! # Erdos251: theorems derived from what the paper results' proofs use
++
++Each command below rebuilds, as a library theorem the kernel checks, a finding of
++the argument graph about a theorem the papers cite. See
++`ErdosProblems.ArgumentGraph.Derive` for what each command adds. -/
++
++set_option argumentGraph.strict true
++set_option maxHeartbeats 4000000
++
++derive_idle ErdosProblems.Erdos251.PaperCompleteR20.finite_separation_complete
++derive_idle ErdosProblems.Erdos251.PaperCompleteR20.one_tail_signed_certificate
++derive_idle ErdosProblems.Erdos251.PaperCompleteR21.long_joint_prime_gap_countermodel
++derive_weakening ErdosProblems.Erdos251.PaperCompleteR21.long_joint_prime_gap_countermodel
++derive_weakening ErdosProblems.Erdos251.PaperCompleteR21.prime_gap_two_window_sparse
++derive_weakening ErdosProblems.Erdos251.PaperCompleteR21.short_joint_prime_gap_countermodel
++derive_frontier ErdosProblems.Erdos251.PaperCompleteR21.short_joint_prime_gap_countermodel
++derive_weakening ErdosProblems.Erdos251.irrational_tsum_primeDyadicTerm_iff_primeGap
++derive_frontier ErdosProblems.Erdos251.irrational_tsum_primeDyadicTerm_iff_primeGap
++derive_frontier ErdosProblems.Erdos251.irrational_tsum_primeDyadicTerm_iff_primeGap at ErdosProblems.Erdos251.tsum_primeDyadicTerm_eq_two_add_primeGap using ErdosProblems.Erdos251.tsum_primeDyadicTerm_eq_two_add_primeGap_unconditional ErdosProblems.Erdos251.tsum_primeDyadicTerm_eq_two_add_primeGap ErdosProblems.Erdos251.tsum_primeDisplayedDyadicTerm_eq_four_add_two_primeGap
+diff --git a/lean/ErdosProblems/ArgumentGraph/Derived/Erdos257.lean b/lean/ErdosProblems/ArgumentGraph/Derived/Erdos257.lean
+new file mode 100644
+index 0000000000000000000000000000000000000000..0e28581e636db9bf95f564419b4dc4beae863222
+--- /dev/null
++++ b/lean/ErdosProblems/ArgumentGraph/Derived/Erdos257.lean
+@@ -0,0 +1,75 @@
++-- SPDX-FileCopyrightText: 2026 Will Cook
++-- SPDX-License-Identifier: Apache-2.0
++-- Generated by scripts/build_argument_frontier.py from the argument graph of
++-- source revisions 5176d8878036549d6e35a4cb42d8e26fdb3e4b46 and 4bcc5ecbf9a4720c53a1e4c22740f4f1e91041d5 combined (Lean tree ca2f57c9c7e461d54d2617d2ae33016ec7481567). Do not edit by hand.
++
++import ErdosProblems.ArgumentGraph.Derive
++import Erdos249257.BooleanMobiusCriticalCapacityCofinal
++import Erdos249257.BooleanMobiusSkipRowCofinal
++import Erdos249257.CofinalStripReturn
++import Erdos249257.GreedyAchievementSet
++import Erdos249257.HalfCarryReachability
++import Erdos249257.HalfCylinderFullShellSeamBridge
++import Erdos249257.HalfCylinderLargestSkipInduction
++import Erdos249257.HalfCylinderMiddleCarryLowerBound
++import Erdos249257.SuffixCylinderTerminalOnlyBridge
++import Erdos249257.TwentyOneQuotientGreedy
++import ErdosProblems.Erdos257.PaperCompleteR21.ArithmeticCounterexampleAssembly
++import ErdosProblems.Erdos257.PaperCompleteR21.DyadicBandAndTwoSidedBounds
++import ErdosProblems.Erdos257.PaperCompleteR21.EventualNonnegativeMargin
++import ErdosProblems.Erdos257.PaperCompleteR21.FeedbackRowStripWitnessAllDepths
++import ErdosProblems.Erdos257.PaperCompleteR21.GreedyOrbitNoTies
++import ErdosProblems.Erdos257.PaperCompleteR21.LogarithmicInitialInterval
++import ErdosProblems.Erdos257.PaperCompleteR21.MersenneChannelSurvivalAllHeights
++import ErdosProblems.Erdos257.PaperCompleteR21.ResetSqrtEscapeHalfMembership
++import ErdosProblems.Erdos257.PaperCompleteR21.SeamEscapeAndTerminalStrip
++import ErdosProblems.Erdos257.PaperCompleteR21.ShortWindowDivisorPhase
++import ErdosProblems.Erdos257.PaperCompleteR21.SkipSafetyAndDivisorZeroRuns
++import ErdosProblems.Erdos257.PaperCompleteR21.TerminalStripExactRowGap
++
++/-! # Erdos257: theorems derived from what the paper results' proofs use
++
++Each command below rebuilds, as a library theorem the kernel checks, a finding of
++the argument graph about a theorem the papers cite. See
++`ErdosProblems.ArgumentGraph.Derive` for what each command adds. -/
++
++set_option argumentGraph.strict true
++set_option maxHeartbeats 4000000
++
++derive_idle ErdosProblems.Erdos257.PaperCompleteR21.ShortWindowDivisorPhase.theta_eq_divisorResidueSum
++derive_idle ErdosProblems.Erdos257.PaperCompleteR21.ShortWindowDivisorPhase.theta_eq_geometricForm
++derive_idle ErdosProblems.Erdos257.PaperCompleteR21.ShortWindowDivisorPhase.theta_eq_tsum_divisorResidue
++derive_idle ErdosProblems.Erdos257.PaperCompleteR21.arithmetic_logarithmic_counterexample
++derive_idle ErdosProblems.Erdos257.PaperCompleteR21.logarithmic_initial_interval
++derive_idle ErdosProblems.Erdos257.PaperCompleteR21.paper_effective_horizon_test
++derive_idle ErdosProblems.Erdos257.PaperCompleteR21.paper_mersenne_channel_survival
++derive_idle ErdosProblems.Erdos257.PaperCompleteR21.paper_one_orbit_stability
++derive_idle ErdosProblems.Erdos257.PaperCompleteR21.paper_shared_prefix_family_strip_witness_after_feedback_of_all_depths
++derive_idle ErdosProblems.Erdos257.PaperCompleteR21.paper_zero_run_le_eps_logb
++derive_weakening Erdos249257.HalfCarryReachability.greedy_half_infinite_of_cofinalStripReturn
++derive_weakening Erdos249257.HalfCarryReachability.greedy_half_infinite_of_mobiusCenteredHalfCarry_sqrtBound
++derive_weakening Erdos249257.SeamTwoSidedDyadicCellEscape.twoSided
++derive_weakening Erdos249257.SuffixCylinderTerminalOnlyBridge.exists_infinite_positive_support_half_of_cofinalCylinderStages
++derive_weakening Erdos249257.half_mem_mersenneAchievementSet_of_criticalQuotientSupply
++derive_weakening Erdos249257.half_mem_mersenneAchievementSet_of_largestSkipLateStepSocket
++derive_frontier Erdos249257.half_mem_mersenneAchievementSet_of_largestSkipLateStepSocket
++derive_frontier Erdos249257.half_mem_mersenneAchievementSet_of_largestSkipLateStepSocket at Erdos249257.largestSkipLateAt_of_stepSocket
++derive_weakening Erdos249257.half_mem_mersenneAchievementSet_of_middleProducerCardEscape
++derive_weakening Erdos249257.half_mem_mersenneAchievementSet_of_middleProducerRowEscape
++derive_weakening Erdos249257.half_mem_mersenneAchievementSet_of_positiveHalfGreedySkips
++derive_weakening Erdos249257.half_mem_mersenneAchievementSet_of_skippedFullShellNonnegative
++derive_weakening Erdos249257.half_mem_mersenneAchievementSet_of_skippedSeamEscape
++derive_weakening Erdos249257.half_mem_mersenneAchievementSet_of_skipped_twoChannelCap
++derive_weakening Erdos249257.half_mem_mersenneAchievementSet_of_upperResetDyadicBandEscape
++derive_frontier Erdos249257.half_mem_mersenneAchievementSet_of_upperResetDyadicBandEscape
++derive_frontier Erdos249257.half_mem_mersenneAchievementSet_of_upperResetDyadicBandEscape at Erdos249257.SeamUpperResetDyadicBandEscape.remainder_ge_row
++derive_weakening Erdos249257.twentyOneFatalAlignedBranch_eventually_affine_supercapacity
++derive_frontier Erdos249257.twentyOneFatalAlignedBranch_eventually_affine_supercapacity
++derive_weakening Erdos249257.twentyOneFatalAlignedBranch_eventually_strict_supercapacity
++derive_weakening ErdosProblems.Erdos257.PaperCompleteR21.half_mem_mersenneAchievementSet_of_resetSqrtEscape
++derive_frontier ErdosProblems.Erdos257.PaperCompleteR21.half_mem_mersenneAchievementSet_of_resetSqrtEscape
++derive_weakening ErdosProblems.Erdos257.PaperCompleteR21.paper_seam_escape_implies_half_membership
++derive_weakening ErdosProblems.Erdos257.PaperCompleteR21.paper_theoremA_half_membership
++derive_weakening ErdosProblems.Erdos257.PaperCompleteR21.paper_two_sided_dyadic_bound
++derive_frontier ErdosProblems.Erdos257.PaperCompleteR21.paper_two_sided_dyadic_bound
++derive_frontier Erdos249257.HalfCarryReachability.greedy_half_infinite_of_mobiusCenteredHalfCarry_sqrtBound using Erdos249257.HalfCarryReachability.greedy_half_infinite_of_mobiusCenteredHalfCarry_upperBound
+diff --git a/lean/ErdosProblems/ArgumentGraph/Derived/Erdos269.lean b/lean/ErdosProblems/ArgumentGraph/Derived/Erdos269.lean
+new file mode 100644
+index 0000000000000000000000000000000000000000..0a3f3fa0a5584e2f647ef4b1853ac72e4fcaf8de
+--- /dev/null
++++ b/lean/ErdosProblems/ArgumentGraph/Derived/Erdos269.lean
+@@ -0,0 +1,25 @@
++-- SPDX-FileCopyrightText: 2026 Will Cook
++-- SPDX-License-Identifier: Apache-2.0
++-- Generated by scripts/build_argument_frontier.py from the argument graph of
++-- source revisions 5176d8878036549d6e35a4cb42d8e26fdb3e4b46 and 4bcc5ecbf9a4720c53a1e4c22740f4f1e91041d5 combined (Lean tree ca2f57c9c7e461d54d2617d2ae33016ec7481567). Do not edit by hand.
++
++import ErdosProblems.ArgumentGraph.Derive
++import ErdosProblems.Erdos269.PaperCompleteR21.TwoPrimeSums
++import ErdosProblems.Erdos269.PaperR7BasicAssembly
++import ErdosProblems.Erdos269.PaperR7WindowResults
++
++/-! # Erdos269: theorems derived from what the paper results' proofs use
++
++Each command below rebuilds, as a library theorem the kernel checks, a finding of
++the argument graph about a theorem the papers cite. See
++`ErdosProblems.ArgumentGraph.Derive` for what each command adds. -/
++
++set_option argumentGraph.strict true
++set_option maxHeartbeats 4000000
++
++derive_idle ErdosProblems.Erdos269.PaperR7.long_no_bounded_length
++derive_idle ErdosProblems.Erdos269.PaperR7.long_window_growth
++derive_idle ErdosProblems.Erdos269.PaperR7.paper_uniform_rank_and_nonseparation
++derive_weakening ErdosProblems.Erdos269.PaperCompleteR21.two_prime_sums_transcendental
++derive_weakening ErdosProblems.Erdos269.PaperCompleteR21.two_prime_transcendence
++derive_frontier ErdosProblems.Erdos269.PaperCompleteR21.two_prime_transcendence
+diff --git a/lean/ErdosProblems/ArgumentGraph/Derived/Erdos68.lean b/lean/ErdosProblems/ArgumentGraph/Derived/Erdos68.lean
+new file mode 100644
+index 0000000000000000000000000000000000000000..9ed7a87c0372a0424c6dea6198872fa6323af2d7
+--- /dev/null
++++ b/lean/ErdosProblems/ArgumentGraph/Derived/Erdos68.lean
+@@ -0,0 +1,18 @@
++-- SPDX-FileCopyrightText: 2026 Will Cook
++-- SPDX-License-Identifier: Apache-2.0
++-- Generated by scripts/build_argument_frontier.py from the argument graph of
++-- source revisions 5176d8878036549d6e35a4cb42d8e26fdb3e4b46 and 4bcc5ecbf9a4720c53a1e4c22740f4f1e91041d5 combined (Lean tree ca2f57c9c7e461d54d2617d2ae33016ec7481567). Do not edit by hand.
++
++import ErdosProblems.ArgumentGraph.Derive
++import ErdosProblems.Erdos68.PaperCompletePrimePole
++
++/-! # Erdos68: theorems derived from what the paper results' proofs use
++
++Each command below rebuilds, as a library theorem the kernel checks, a finding of
++the argument graph about a theorem the papers cite. See
++`ErdosProblems.ArgumentGraph.Derive` for what each command adds. -/
++
++set_option argumentGraph.strict true
++set_option maxHeartbeats 4000000
++
++derive_idle ErdosProblems.Erdos68.PaperComplete.maximal_prime_power_survival
+diff --git a/lean/ErdosProblems/Erdos1041/PaperStraightObstructions.lean b/lean/ErdosProblems/Erdos1041/PaperStraightObstructions.lean
+index e2822ca200313920b789c6510b03a4c429400be7..ed8e12bfaa680fa0331a001d35970a2bee9e2cac 100644
+--- a/lean/ErdosProblems/Erdos1041/PaperStraightObstructions.lean
++++ b/lean/ErdosProblems/Erdos1041/PaperStraightObstructions.lean
+@@ -9,7 +9,7 @@ assembled into a polynomial, with exhaustive root classification and the
+ actual critical-point/spoke assertions. The cubic argument quantifies over
+ ALL its roots directly; it is not restricted to a supplied root enumeration.
+ 
+-New proof source, not elaborated in this environment.
++The default root `ErdosProblems` imports this module, so the supported-root build elaborates it.
+ -/
+ 
+ noncomputable section
+diff --git a/lean/ErdosProblems/Erdos249/PaperCompleteR21/ExcludedCofactorEstimate.lean b/lean/ErdosProblems/Erdos249/PaperCompleteR21/ExcludedCofactorEstimate.lean
+index 0bcc412209c4af29c578fb76787e14f999323ddf..c1d238a3c95f7ed826091d108b137d433bc1d7df 100644
+--- a/lean/ErdosProblems/Erdos249/PaperCompleteR21/ExcludedCofactorEstimate.lean
++++ b/lean/ErdosProblems/Erdos249/PaperCompleteR21/ExcludedCofactorEstimate.lean
+@@ -23,12 +23,12 @@ Dictionary, with the development's own objects as in `prop_dickman`:
+ * "`B(η)` has natural density `D`" is `HasNaturalDensity (excludedCofactorSet η) D`,
+   that is `#(B(η) ∩ [1, x]) / x → D`.
+ 
+-Inputs.  The prime number theorem enters as a hypothesis, through the
+-repository's single PNT input
++Inputs.  The prime number theorem enters `prop_badcof` and `excluded_budget_one_thousandth`
++as a hypothesis, through the repository's single PNT input
+ `ErdosProblems.Erdos251.PaperR11.PrimeSource.PrimeNumberTheorem`
+-(`p_n / (n log n) → 1` for the zero-based `n`-th prime).  The existence of
+-`D(η)` (Schoenberg's theorem) enters only as the density hypothesis of
+-`prop_badcof`.  Nothing else is assumed.
++(`p_n / (n log n) → 1` for the zero-based `n`-th prime).  The existence of `D(η)` (Schoenberg's
++theorem) enters only as the density hypothesis of `prop_badcof`.  The budget at `η = 1/1000`
++needs no input (`excluded_budget_one_thousandth_of_chebyshev`).  Nothing else is assumed.
+ 
+ Proof, following the paper.
+ 1. PNT gives, uniformly in the start point, the dyadic count
+@@ -688,7 +688,240 @@ theorem excluded_budget_one_thousandth
+   eventually_excluded_budget_of_upper hPNT h s (D := 3 * (1 / 1000)) (by norm_num) (by norm_num)
+     (excludedCofactorSet_upperDensityLE (by norm_num)) (by norm_num)
+ 
++/-! ## The budget at `η = 1/1000` without the prime number theorem
++
++The prime number theorem enters `excluded_budget_one_thousandth` only through the
++dyadic count `eventually_card_primes_dyadic_le`.  Chebyshev's bound gives that count
++with `log 4` in place of `1`: the primes `p` with `a + 1 < p ≤ 2a + 1` divide
++`C(2a + 1, a) ≤ 4 ^ a` (`prod_primes_dyadic_le_four_pow`), so
++`#{p prime : a < p ≤ 2a + 1} · log a ≤ a log 4 + log a` for every `a`
++(`card_primes_dyadic_mul_log_le`).  Steps 2 to 4 of the proof are linear in the
++constant of the dyadic count, so a constant `K` gives the excluded count
++`(K D + o(1)) X` (`eventually_card_excluded_le_of_upper_of_dyadic`) and the `X/100`
++budget whenever `K D < 1/100` (`eventually_excluded_budget_of_upper_of_dyadic`).
++At `η = 1/1000`, `log 4 · 3/1000 ≤ 9/1000 < 1/100`
++(`excluded_budget_one_thousandth_of_chebyshev`). -/
++
++namespace ExcludedCofactor
++
++/-- Chebyshev's product bound: the primes `p` with `a + 2 ≤ p ≤ 2a + 1` divide the
++binomial coefficient `C(2a + 1, a + 1) = C(2a + 1, a) ≤ 4 ^ a`, so their product is
++at most `4 ^ a` (Mathlib's `primorial_add_le` and `Nat.choose_middle_le_pow`). -/
++theorem prod_primes_dyadic_le_four_pow (a : ℕ) :
++    ∏ p ∈ (Ico (a + 2) (2 * a + 2)).filter Nat.Prime, p ≤ 4 ^ a := by
++  have hle := primorial_add_le (m := a + 1) (n := a) (by omega)
++  rw [primorial_add (a + 1) a, show a + 1 + 1 = a + 2 by omega,
++    show a + 1 + a + 1 = 2 * a + 2 by omega, Nat.choose_symm_add,
++    show a + 1 + a = 2 * a + 1 by omega] at hle
++  exact le_trans (Nat.le_of_mul_le_mul_left hle (primorial_pos _)) (Nat.choose_middle_le_pow a)
++
++/-- The dyadic prime count from Chebyshev's bound, for every `a`:
++`#{p prime : a < p ≤ 2a + 1} · log a ≤ a log 4 + log a`.  The primes above `a + 1`
++number at most `a log 4 / log (a + 2)` by `prod_primes_dyadic_le_four_pow`, and
++`a + 1` is the one other candidate. -/
++theorem card_primes_dyadic_mul_log_le (a : ℕ) :
++    ((((Ioc a (2 * a + 1)).filter Nat.Prime).card : ℕ) : ℝ) * Real.log a
++      ≤ a * Real.log 4 + Real.log a := by
++  rcases Nat.eq_zero_or_pos a with rfl | ha
++  · simp
++  have hsub : (Ioc a (2 * a + 1)).filter Nat.Prime
++      ⊆ insert (a + 1) ((Ico (a + 2) (2 * a + 2)).filter Nat.Prime) := by
++    intro p hp
++    obtain ⟨hpI, hpp⟩ := Finset.mem_filter.mp hp
++    obtain ⟨hap, hp2⟩ := Finset.mem_Ioc.mp hpI
++    by_cases hpa : p = a + 1
++    · exact Finset.mem_insert.mpr (Or.inl hpa)
++    · exact Finset.mem_insert_of_mem
++        (Finset.mem_filter.mpr ⟨Finset.mem_Ico.mpr ⟨by omega, by omega⟩, hpp⟩)
++  have hcard : ((Ioc a (2 * a + 1)).filter Nat.Prime).card
++      ≤ ((Ico (a + 2) (2 * a + 2)).filter Nat.Prime).card + 1 :=
++    le_trans (Finset.card_le_card hsub) (Finset.card_insert_le _ _)
++  have hpow : (a + 2) ^ ((Ico (a + 2) (2 * a + 2)).filter Nat.Prime).card ≤ 4 ^ a := by
++    refine le_trans (Finset.pow_card_le_prod _ (fun p => p) (a + 2) ?_)
++      (prod_primes_dyadic_le_four_pow a)
++    intro p hp
++    exact (Finset.mem_Ico.mp (Finset.mem_filter.mp hp).1).1
++  have hpowR : ((a : ℝ) + 2) ^ ((Ico (a + 2) (2 * a + 2)).filter Nat.Prime).card
++      ≤ (4 : ℝ) ^ a := by
++    exact_mod_cast hpow
++  have hlogP := Real.log_le_log (by positivity) hpowR
++  rw [Real.log_pow, Real.log_pow] at hlogP
++  have haR : (1 : ℝ) ≤ a := by exact_mod_cast ha
++  have hloga0 : 0 ≤ Real.log a := Real.log_nonneg haR
++  have hloga2 : Real.log a ≤ Real.log ((a : ℝ) + 2) :=
++    Real.log_le_log (by linarith) (by linarith)
++  have hcardR : ((((Ioc a (2 * a + 1)).filter Nat.Prime).card : ℕ) : ℝ)
++      ≤ (((Ico (a + 2) (2 * a + 2)).filter Nat.Prime).card : ℝ) + 1 := by
++    exact_mod_cast hcard
++  have h1 := mul_le_mul_of_nonneg_right hcardR hloga0
++  have h2 := mul_le_mul_of_nonneg_left hloga2
++    (Nat.cast_nonneg (α := ℝ) ((Ico (a + 2) (2 * a + 2)).filter Nat.Prime).card)
++  linarith
++
++/-- **Dyadic prime count from Chebyshev's bound.**  For every `ε > 0`, for all
++large `a`, `#{p prime : a < p ≤ 2a + 1} · log a ≤ (log 4 + ε) a`.  This is
++`eventually_card_primes_dyadic_le` with `log 4` in place of `1` and no hypothesis. -/
++theorem eventually_card_primes_dyadic_le_log_four {ε : ℝ} (hε : 0 < ε) :
++    ∀ᶠ a : ℕ in atTop,
++      ((((Ioc a (2 * a + 1)).filter Nat.Prime).card : ℕ) : ℝ) * Real.log a
++        ≤ (Real.log 4 + ε) * a := by
++  have hsm : ∀ᶠ a : ℕ in atTop, Real.log (a : ℝ) + 0 ≤ ε * (a : ℝ) :=
++    tendsto_natCast_atTop_atTop.eventually (eventually_log_add_le hε 0)
++  filter_upwards [hsm] with a ha
++  have := card_primes_dyadic_mul_log_le a
++  linarith
++
++/-- `1 ≤ log 4`, since `e < 4`. -/
++theorem one_le_log_four : 1 ≤ Real.log 4 := by
++  have h := Real.log_le_log (Real.exp_pos 1)
++    (show Real.exp 1 ≤ 4 by linarith [Real.exp_one_lt_d9])
++  rwa [Real.log_exp] at h
++
++/-- `excluded_final_arith` with a general leading constant `K > 0` in place of
++`1 + e`: with `t ≤ eX`, `8C ≤ e log X`, `S ≤ 2K(X + t)/log X · T`, `T ≥ 0` and
++`T ≤ (D + e)(log X)/2 + C`, one gets `S ≤ K (D + ε) X`. -/
++theorem excluded_final_arith_const {X t S T D C e ε Λ K : ℝ} (hX : 0 < X) (hΛ : 0 < Λ)
++    (he0 : 0 < e) (he1 : e ≤ 1) (he8 : 8 * e ≤ ε) (hD0 : 0 ≤ D) (hD1 : D ≤ 1) (hC0 : 0 ≤ C)
++    (hK : 0 < K) (hT0 : 0 ≤ T) (ht0 : 0 ≤ t) (hXt : t ≤ e * X) (hC : 8 * C ≤ e * Λ)
++    (hS : S ≤ (2 * K * (X + t) / Λ) * T)
++    (hT : T ≤ (D + e) * (Λ / 2) + C) :
++    S ≤ K * (D + ε) * X := by
++  -- `S / K ≤ 2(X + t)/Λ · T ≤ 2(1 + e)(X + t)/Λ · T`, then `excluded_final_arith`
++  have hW0 : 0 ≤ (X + t) / Λ * T := mul_nonneg (div_nonneg (by linarith) hΛ.le) hT0
++  have hSK : S / K ≤ (2 * (1 + e) * (X + t) / Λ) * T := by
++    rw [div_le_iff₀ hK]
++    have e1 : (2 * K * (X + t) / Λ) * T = 2 * ((X + t) / Λ * T) * K := by ring
++    have e2 : (2 * (1 + e) * (X + t) / Λ) * T * K
++        = 2 * ((X + t) / Λ * T) * K + 2 * e * ((X + t) / Λ * T) * K := by ring
++    have h3 : 0 ≤ 2 * e * ((X + t) / Λ * T) * K :=
++      mul_nonneg (mul_nonneg (mul_nonneg zero_le_two he0.le) hW0) hK.le
++    linarith
++  have hfin := excluded_final_arith hX hΛ he0 he1 he8 hD0 hD1 hC0 ht0 hXt hC hSK hT
++  rw [div_le_iff₀ hK] at hfin
++  calc S ≤ (D + ε) * X * K := hfin
++    _ = K * (D + ε) * X := by ring
++
++/-- **The excluded-cofactor estimate from a dyadic prime count with constant `K`.**
++If `#{p prime : a < p ≤ 2a + 1} · log a ≤ (K + ε) a` for every `ε > 0` and all
++large `a`, and `B(η)` has upper density at most `D ∈ [0, 1]`, then for every
++`ε > 0`, for all large `X`, `#{N ∈ 𝒜 : m_N ∈ B(η)} ≤ (K D + ε) X`.  The prime
++number theorem gives the dyadic count with `K = 1` (`eventually_card_primes_dyadic_le`),
++and then this is the bound of `eventually_card_excluded_le_of_upper`; Chebyshev's
++bound gives it with `K = log 4` (`eventually_card_primes_dyadic_le_log_four`). -/
++theorem eventually_card_excluded_le_of_upper_of_dyadic (h s : ℕ) {K : ℝ} (hK : 1 ≤ K)
++    (hdy : ∀ ε : ℝ, 0 < ε → ∀ᶠ a : ℕ in atTop,
++      ((((Ioc a (2 * a + 1)).filter Nat.Prime).card : ℕ) : ℝ) * Real.log a ≤ (K + ε) * a)
++    {η D : ℝ} (hD0 : 0 ≤ D) (hD1 : D ≤ 1) (hup : UpperDensityLE (excludedCofactorSet η) D)
++    {ε : ℝ} (hε : 0 < ε) :
++    ∀ᶠ X : ℕ in atTop,
++      ((((pivotSupplierBases X (minimalDepth h s X) s).filter
++          (fun N => pivotCofactor N (minimalDepth h s X) s ∈ excludedCofactorSet η)).card
++            : ℕ) : ℝ)
++        ≤ (K * D + ε) * X := by
++  have hK9 : 0 < 8 * K + 9 := by linarith
++  obtain ⟨e, he0, he1, heK⟩ : ∃ e : ℝ, 0 < e ∧ e ≤ 1 ∧ e * (8 * K + 9) ≤ ε :=
++    ⟨min 1 (ε / (8 * K + 9)), lt_min (by norm_num) (div_pos hε hK9), min_le_left _ _,
++      (le_div_iff₀ hK9).mp (min_le_right _ _)⟩
++  obtain ⟨C, hC0, hCbound⟩ := upper_density_harmonic_bound _ hD0 hup he0
++  obtain ⟨A₀, hA₀⟩ := eventually_atTop.mp (hdy e he0)
++  have hA₀' : ∀ a ≥ A₀, ((((Ioc a (2 * a + 1)).filter Nat.Prime).card : ℕ) : ℝ) * Real.log a
++      ≤ (1 + (K + e - 1)) * a := by
++    intro a ha
++    rw [show (1 + (K + e - 1) : ℝ) = K + e by ring]
++    exact hA₀ a ha
++  have hE2 : ∀ᶠ X : ℕ in atTop, A₀ ≤ Nat.sqrt X := by
++    filter_upwards [eventually_ge_atTop (A₀ * A₀)] with X hX
++    exact Nat.le_sqrt.mpr hX
++  have hE3 := eventually_minimalOffset_le h s he0
++  have hE4 : ∀ᶠ X : ℕ in atTop, 8 * C ≤ e * Real.log X := by
++    have hlog : Tendsto (fun X : ℕ => Real.log (X : ℝ)) atTop atTop :=
++      Real.tendsto_log_atTop.comp tendsto_natCast_atTop_atTop
++    filter_upwards [hlog.eventually_ge_atTop (8 * C / e)] with X hX
++    rw [div_le_iff₀ he0] at hX
++    linarith
++  filter_upwards [hE2, hE3, hE4, eventually_ge_atTop 16] with X hX2 hX3 hX4 hX16
++  have hX16R : (16 : ℝ) ≤ X := by exact_mod_cast hX16
++  have hXpos : (0 : ℝ) < X := by linarith
++  have hΛ : 0 < Real.log X := Real.log_pos (by linarith)
++  have hS := card_excluded_le_harmonic (L := minimalDepth h s X) (s := s) η
++    (show (0 : ℝ) ≤ K + e - 1 by linarith) hX16 hX2 hA₀'
++  rw [show (1 + (K + e - 1) : ℝ) = K + e by ring] at hS
++  have hT : ∑ m ∈ (Icc 1 (Nat.sqrt X / 2)).filter (· ∈ excludedCofactorSet η), (1 : ℝ) / m
++      ≤ (D + e) * (Real.log X / 2) + C := by
++    have hb := hCbound (Nat.sqrt X / 2)
++    have hl := log_sqrt_half_succ_le hX16
++    have := mul_le_mul_of_nonneg_left hl (show 0 ≤ D + e by linarith)
++    linarith
++  have hT0 : 0 ≤ ∑ m ∈ (Icc 1 (Nat.sqrt X / 2)).filter (· ∈ excludedCofactorSet η),
++      (1 : ℝ) / m := Finset.sum_nonneg fun m _ => by positivity
++  have hX3' : ((pivotOffset (minimalDepth h s X) s : ℕ) : ℝ) ≤ e * X := hX3
++  have hfin := excluded_final_arith_const (ε := 8 * e) hXpos hΛ he0 he1 le_rfl hD0 hD1 hC0
++    (show (0 : ℝ) < K + e by linarith) hT0 (Nat.cast_nonneg _) hX3' hX4 hS hT
++  -- `(K + e)(D + 8e) ≤ K D + e (8K + 9) ≤ K D + ε`
++  have p1 : e * D ≤ e * 1 := mul_le_mul_of_nonneg_left hD1 he0.le
++  have p2 : e * e ≤ e * 1 := mul_le_mul_of_nonneg_left he1 he0.le
++  have hcoef : (K + e) * (D + 8 * e) ≤ K * D + ε := by linarith
++  exact le_trans hfin (mul_le_mul_of_nonneg_right hcoef hXpos.le)
++
++/-- The budget consequence from a dyadic prime count with constant `K` and an upper
++density bound `D` with `K D < 1/100`: for all large `X` the count is `< X/100`, and
++the excluded-cofactor contribution `∑_{N ∈ 𝒜 ∖ 𝒢} E(h, N, L)` has norm at most
++`X/100`.  With `K = 1` this is the conclusion of `eventually_excluded_budget_of_upper`. -/
++theorem eventually_excluded_budget_of_upper_of_dyadic (h s : ℕ) {K : ℝ} (hK : 1 ≤ K)
++    (hdy : ∀ ε : ℝ, 0 < ε → ∀ᶠ a : ℕ in atTop,
++      ((((Ioc a (2 * a + 1)).filter Nat.Prime).card : ℕ) : ℝ) * Real.log a ≤ (K + ε) * a)
++    {η D : ℝ} (hD0 : 0 ≤ D) (hD1 : D ≤ 1) (hup : UpperDensityLE (excludedCofactorSet η) D)
++    (hKD : K * D < 1 / 100) :
++    ∀ᶠ X : ℕ in atTop,
++      ((((pivotSupplierBases X (minimalDepth h s X) s).filter
++          (fun N => pivotCofactor N (minimalDepth h s X) s ∈ excludedCofactorSet η)).card
++            : ℕ) : ℝ) < (1 / 100 : ℝ) * X ∧
++      ‖pivotBadContribution h X (minimalDepth h s X) s η‖ ≤ (1 / 100 : ℝ) * X := by
++  have hε : 0 < (1 / 100 - K * D) / 2 := by linarith
++  filter_upwards [eventually_card_excluded_le_of_upper_of_dyadic h s hK hdy hD0 hD1 hup hε,
++    eventually_gt_atTop 0] with X hX hX0
++  have hX0R : (0 : ℝ) < X := by exact_mod_cast hX0
++  have hlt : ((((pivotSupplierBases X (minimalDepth h s X) s).filter
++      (fun N => pivotCofactor N (minimalDepth h s X) s ∈ excludedCofactorSet η)).card
++        : ℕ) : ℝ) < (1 / 100 : ℝ) * X := by
++    have : (K * D + (1 / 100 - K * D) / 2) * (X : ℝ) < (1 / 100 : ℝ) * X :=
++      mul_lt_mul_of_pos_right (by linarith) hX0R
++    linarith
++  refine ⟨hlt, ?_⟩
++  have hnorm : ‖pivotBadContribution h X (minimalDepth h s X) s η‖
++      ≤ ((pivotBadBases X (minimalDepth h s X) s η).card : ℝ) := by
++    unfold pivotBadContribution
++    calc ‖∑ N ∈ pivotBadBases X (minimalDepth h s X) s η, windowFirstExp h N (minimalDepth h s X)‖
++        ≤ ∑ N ∈ pivotBadBases X (minimalDepth h s X) s η,
++            ‖windowFirstExp h N (minimalDepth h s X)‖ := norm_sum_le _ _
++      _ = ((pivotBadBases X (minimalDepth h s X) s η).card : ℝ) := by
++          simp [norm_windowFirstExp]
++  rw [← filter_excluded_eq_pivotBadBases] at hnorm
++  linarith
++
++end ExcludedCofactor
++
++/-- **The explicit choice `η = 1/1000`, with no input.**  Chebyshev's bound
++replaces the prime number theorem in `excluded_budget_one_thousandth`: it gives the
++dyadic prime count with constant `log 4` (`eventually_card_primes_dyadic_le_log_four`),
++`B(1/1000)` has upper density at most `3/1000` (`excludedCofactorSet_upperDensityLE`),
++and `log 4 · 3/1000 ≤ 9/1000 < 1/100`.  So for all large `X` the excluded-cofactor
++count is `< X/100` and the excluded-cofactor contribution meets its `X/100` budget. -/
++theorem excluded_budget_one_thousandth_of_chebyshev (h s : ℕ) :
++    ∀ᶠ X : ℕ in atTop,
++      ((((pivotSupplierBases X (minimalDepth h s X) s).filter
++          (fun N => pivotCofactor N (minimalDepth h s X) s
++            ∈ excludedCofactorSet (1 / 1000))).card : ℕ) : ℝ) < (1 / 100 : ℝ) * X ∧
++      ‖pivotBadContribution h X (minimalDepth h s X) s (1 / 1000)‖ ≤ (1 / 100 : ℝ) * X :=
++  eventually_excluded_budget_of_upper_of_dyadic h s one_le_log_four
++    (fun _ε hε => eventually_card_primes_dyadic_le_log_four hε) (D := 3 * (1 / 1000))
++    (by norm_num) (by norm_num) (excludedCofactorSet_upperDensityLE (by norm_num))
++    (by
++      have h4 : Real.log 4 ≤ 4 - 1 := Real.log_le_sub_one_of_pos (by norm_num)
++      linarith)
++
+ end ErdosProblems.Erdos249.PaperCompleteR21
+ 
+ #print axioms ErdosProblems.Erdos249.PaperCompleteR21.excluded_budget_one_thousandth
+ #print axioms ErdosProblems.Erdos249.PaperCompleteR21.prop_badcof
++#print axioms ErdosProblems.Erdos249.PaperCompleteR21.excluded_budget_one_thousandth_of_chebyshev
+diff --git a/lean/ErdosProblems/Erdos68/PaperCompleteExisting.lean b/lean/ErdosProblems/Erdos68/PaperCompleteExisting.lean
+index 55d24cf61a3c078093ad785d26746986b6f85877..17c92fd58b584997051e12de21afe70938bf9a6d 100644
+--- a/lean/ErdosProblems/Erdos68/PaperCompleteExisting.lean
++++ b/lean/ErdosProblems/Erdos68/PaperCompleteExisting.lean
+@@ -294,8 +294,8 @@ theorem radius_not_littleO (M R : ℕ → ℕ)
+     exact_mod_cast hh
+   exact radius_no_eventual_upper M R hH (Filter.eventually_atTop.1 hnat)
+ 
+-/-- Corrector identities on the auxiliary support, including p=2.
+-See PaperCompleteSupportNoGo for the paper's n≥2 support incompatibility. -/
++/-- Corrector identities on the auxiliary support, including p=2, whose index 1 lies outside
++the paper's domain i≥2; the long record states the theorem for p≥3 and treats p=2 after it. -/
+ theorem prime_channel_corrector {p : ℕ} (hp : p.Prime) :
+     _root_.Erdos68.factorialMoment (_root_.Erdos68.primeTranslatorCoeff p)
+       (_root_.Erdos68.primeTranslatorIndex p) = 0 ∧
