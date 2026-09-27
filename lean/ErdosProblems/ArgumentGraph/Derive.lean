@@ -41,7 +41,8 @@ adds is checked by the kernel before it is added.
 Each command adds nothing, and logs why, when a proof lacks the shape it needs.
 The weakenings a frontier passes through are added once each, as
 `L.weakened_p`, so the frontier's proof is a readable chain of library
-theorems.
+theorems. A derived name is a contract on its statement: a command that finds
+its name already taken by another statement reports it and adds nothing.
 -/
 
 set_option autoImplicit false

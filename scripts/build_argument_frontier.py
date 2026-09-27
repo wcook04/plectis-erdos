@@ -458,6 +458,19 @@ def render_markdown(manifest: dict[str, Any]) -> str:
            f"{revisions(source, 12)}. The Lean modules it names are compiled with "
            "`argumentGraph.strict`, so every derived theorem listed here is checked by the kernel when they "
            "compile. `docs/argument_frontier.json` holds the same rows in full.", ""]
+    named = {" ".join((e.get("statement") or "").split()) for e in manifest.get("named_inputs", [])}
+    routed = [e for e in manifest.get("input_map", []) if " ".join(e["hypothesis"].split()) in named]
+    if routed:
+        out += ["## What each named input is needed for", "",
+                "A factoring moves each hypothesis of a paper theorem to the claims whose proofs use it. "
+                "For the named inputs, these are the claims that still assume one; every other claim of "
+                "the same theorem holds without it.", ""]
+        for entry in routed:
+            out.append(f"- `{clip(entry['hypothesis'], 140)}`:")
+            for use in entry["uses"]:
+                where = "not used" if use["claims"] == "unused" else clip(use["claims"], 200)
+                out.append(f"  - `{use['derived'].rsplit('.', 2)[-2]}.factored`: {where}")
+        out.append("")
     inputs_by_problem: dict[str, list[dict[str, Any]]] = defaultdict(list)
     for entry in manifest.get("named_inputs", []):
         for problem in sorted({str(c.get("problem")) for c in entry["consumers"]}):
