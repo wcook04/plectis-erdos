@@ -11,13 +11,22 @@ name: Argument continuations
 
 # A push trigger: its path filter sees only the commits pushed, so a later
 # push that leaves the exporter alone does not restart a two-hour export (a
-# pull_request path filter sees the whole pull-request diff).
+# pull_request path filter sees the whole pull-request diff). It runs on main
+# and on branches that work on the argument graph: any other branch that
+# merges main brings these files in through the merge commit, and would
+# otherwise start an export nobody reads. Another branch can run one by hand
+# (workflow_dispatch).
 on:
   workflow_dispatch:
   push:
+    branches:
+      - main
+      - "claude/argument-*"
+      - "codex/argument-*"
     paths:
       - scripts/export_argument_continuations.lean
       - scripts/test_argument_continuation_export.py
+      - scripts/test_argument_interface_export.py
       - scripts/coverage_build_targets.py
       - .github/workflows/argument-continuations.yml
 
@@ -109,6 +118,9 @@ jobs:
       - name: Toy-corpus exporter test
         run: python3 scripts/test_argument_continuation_export.py
 
+      - name: Toy-corpus test of the ground tier and the optional passes
+        run: python3 scripts/test_argument_interface_export.py
+
       - name: Memory-bounded Lean build of the corpus roots
         run: python3 scripts/lean_fast_build.py --jobs 2 --lake-staleness Erdos249257 ErdosProblems
 
@@ -125,7 +137,7 @@ jobs:
 
       # Each pass stops itself at its own budget: used consequences 10 min,
       # search 75 min, compositions at most 20 min after the search budget, idle
-      # hypotheses 10 min, battery 20 min, library search on the 150
+      # hypotheses 10 min, ground tier 4 min, battery 20 min, library search on the 150
       # most-consumed open leaves 10 min; the used consequences get 5 min of
       # battery and 5 min of library search of their own before those. The outer timeout is a backstop so a stuck elaboration cannot
       # consume the job and lose the partial stream. The builder labels a

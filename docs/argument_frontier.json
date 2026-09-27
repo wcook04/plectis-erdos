@@ -174,112 +174,6 @@
     "source": null
    },
    {
-    "operation": "conjuncts_candidate",
-    "theorem": "ErdosProblems.Erdos1041.PaperCompleteR21.Arity.arity_not_capacity",
-    "papers": [
-     {
-      "row": "erdos-1041-lemniscate-newton-flow#res:arity-not-capacity",
-      "label": "res:arity-not-capacity",
-      "paper": "erdos-1041-lemniscate-newton-flow",
-      "side": "short",
-      "lean_status": "modulo_named_input",
-      "source": "paper/1041/erdos-1041-lemniscate-newton-flow.tex:858"
-     }
-    ],
-    "source": null
-   },
-   {
-    "operation": "conjuncts_candidate",
-    "theorem": "ErdosProblems.Erdos1041.PaperCompleteR21.cfa_constant_factor_path",
-    "papers": [
-     {
-      "row": "erdos-1041-lemniscate-newton-flow#res:constant-factor-path",
-      "label": "res:constant-factor-path",
-      "paper": "erdos-1041-lemniscate-newton-flow",
-      "side": "short",
-      "lean_status": "modulo_named_input",
-      "source": "paper/1041/erdos-1041-lemniscate-newton-flow.tex:343"
-     },
-     {
-      "row": "erdos1041-lemniscate-reasoning-surface#res:constant-factor-path",
-      "label": "res:constant-factor-path",
-      "paper": "erdos1041-lemniscate-reasoning-surface",
-      "side": "long",
-      "lean_status": "modulo_named_input",
-      "source": "paper/reasoning-parts/erdos1041/core.tex:762"
-     }
-    ],
-    "source": null
-   },
-   {
-    "operation": "conjuncts_candidate",
-    "theorem": "ErdosProblems.Erdos1041.PaperCompleteR21.discSep_cubic_six_fifths",
-    "papers": [
-     {
-      "row": "erdos-1041-lemniscate-newton-flow#res:critical-value-thresholds",
-      "label": "res:critical-value-thresholds",
-      "paper": "erdos-1041-lemniscate-newton-flow",
-      "side": "short",
-      "lean_status": "modulo_named_input",
-      "source": "paper/1041/erdos-1041-lemniscate-newton-flow.tex:692"
-     }
-    ],
-    "source": null
-   },
-   {
-    "operation": "conjuncts_candidate",
-    "theorem": "ErdosProblems.Erdos1041.PaperCompleteR21.discSep_separation_long",
-    "papers": [
-     {
-      "row": "erdos1041-lemniscate-reasoning-surface#res:critical-value-separation",
-      "label": "res:critical-value-separation",
-      "paper": "erdos1041-lemniscate-reasoning-surface",
-      "side": "long",
-      "lean_status": "modulo_named_input",
-      "source": "paper/reasoning-parts/erdos1041/core.tex:1363"
-     }
-    ],
-    "source": null
-   },
-   {
-    "operation": "conjuncts_candidate",
-    "theorem": "ErdosProblems.Erdos1041.PaperCompleteR21.discSep_separation_short",
-    "papers": [
-     {
-      "row": "erdos-1041-lemniscate-newton-flow#res:critical-value-separation",
-      "label": "res:critical-value-separation",
-      "paper": "erdos-1041-lemniscate-newton-flow",
-      "side": "short",
-      "lean_status": "modulo_named_input",
-      "source": "paper/1041/erdos-1041-lemniscate-newton-flow.tex:663"
-     }
-    ],
-    "source": null
-   },
-   {
-    "operation": "conjuncts_candidate",
-    "theorem": "ErdosProblems.Erdos1041.PaperCompleteR21.discSep_uniform_radius",
-    "papers": [
-     {
-      "row": "erdos-1041-lemniscate-newton-flow#res:critical-value-thresholds",
-      "label": "res:critical-value-thresholds",
-      "paper": "erdos-1041-lemniscate-newton-flow",
-      "side": "short",
-      "lean_status": "modulo_named_input",
-      "source": "paper/1041/erdos-1041-lemniscate-newton-flow.tex:692"
-     },
-     {
-      "row": "erdos1041-lemniscate-reasoning-surface#res:critical-value-thresholds",
-      "label": "res:critical-value-thresholds",
-      "paper": "erdos1041-lemniscate-reasoning-surface",
-      "side": "long",
-      "lean_status": "modulo_named_input",
-      "source": "paper/reasoning-parts/erdos1041/core.tex:1560"
-     }
-    ],
-    "source": null
-   },
-   {
     "operation": "weakening",
     "theorem": "ErdosProblems.Erdos1041.PaperCompleteR21.Arity.arity_not_capacity",
     "papers": [
@@ -307,6 +201,7 @@
       ]
      }
     ],
+    "frontier": false,
     "frontier_cuts": [],
     "suppliers": []
    },
@@ -338,9 +233,8 @@
       ]
      }
     ],
-    "frontier_cuts": [
-     "ErdosProblems.Erdos1041.PaperCompleteR21.discSep_separation_short"
-    ],
+    "frontier": true,
+    "frontier_cuts": [],
     "suppliers": []
    },
    {
@@ -371,6 +265,7 @@
       ]
      }
     ],
+    "frontier": false,
     "frontier_cuts": [],
     "suppliers": []
    },
@@ -410,9 +305,8 @@
       ]
      }
     ],
-    "frontier_cuts": [
-     "ErdosProblems.Erdos1041.PaperCompleteR21.discSep_separation_short"
-    ],
+    "frontier": true,
+    "frontier_cuts": [],
     "suppliers": []
    },
    {
@@ -451,6 +345,7 @@
       ]
      }
     ],
+    "frontier": false,
     "frontier_cuts": [],
     "suppliers": []
    }
@@ -679,231 +574,6 @@
       "side": "long",
       "lean_status": "exact",
       "source": "paper/reasoning-parts/erdos243/core.tex:1308"
-     }
-    ],
-    "source": null
-   },
-   {
-    "operation": "conjuncts_candidate",
-    "theorem": "ErdosProblems.Erdos243.PaperCompleteR21.StandingOrbit.Rdelta_bddAbove_iff_amp",
-    "papers": [
-     {
-      "row": "erdos243-reciprocal-tail-reasoning-surface#long243:res:recordamplified",
-      "label": "long243:res:recordamplified",
-      "paper": "erdos243-reciprocal-tail-reasoning-surface",
-      "side": "long",
-      "lean_status": "exact",
-      "source": "paper/reasoning-parts/erdos243/core.tex:1935"
-     }
-    ],
-    "source": null
-   },
-   {
-    "operation": "conjuncts_candidate",
-    "theorem": "ErdosProblems.Erdos243.PaperCompleteR21.StandingOrbit.amp_bddAbove_iff_sylvester",
-    "papers": [
-     {
-      "row": "erdos243-reciprocal-tail-reasoning-surface#long243:res:recordamplified",
-      "label": "long243:res:recordamplified",
-      "paper": "erdos243-reciprocal-tail-reasoning-surface",
-      "side": "long",
-      "lean_status": "exact",
-      "source": "paper/reasoning-parts/erdos243/core.tex:1935"
-     }
-    ],
-    "source": null
-   },
-   {
-    "operation": "conjuncts_candidate",
-    "theorem": "ErdosProblems.Erdos243.PaperCompleteR21.StandingOrbit.coprimeMultiplier_cofinal",
-    "papers": [
-     {
-      "row": "erdos243-reciprocal-tail-reasoning-surface#long243:res:recordamplified",
-      "label": "long243:res:recordamplified",
-      "paper": "erdos243-reciprocal-tail-reasoning-surface",
-      "side": "long",
-      "lean_status": "exact",
-      "source": "paper/reasoning-parts/erdos243/core.tex:1935"
-     }
-    ],
-    "source": null
-   },
-   {
-    "operation": "conjuncts_candidate",
-    "theorem": "ErdosProblems.Erdos243.PaperCompleteR21.StandingOrbit.criticalRate",
-    "papers": [
-     {
-      "row": "erdos243-reciprocal-tail-reasoning-surface#long243:res:criticalrate",
-      "label": "long243:res:criticalrate",
-      "paper": "erdos243-reciprocal-tail-reasoning-surface",
-      "side": "long",
-      "lean_status": "exact",
-      "source": "paper/reasoning-parts/erdos243/core.tex:1941"
-     }
-    ],
-    "source": null
-   },
-   {
-    "operation": "conjuncts_candidate",
-    "theorem": "ErdosProblems.Erdos243.PaperCompleteR21.StandingOrbit.criticalRate_counterexample",
-    "papers": [
-     {
-      "row": "erdos243-reciprocal-tail-reasoning-surface#long243:res:criticalrate",
-      "label": "long243:res:criticalrate",
-      "paper": "erdos243-reciprocal-tail-reasoning-surface",
-      "side": "long",
-      "lean_status": "exact",
-      "source": "paper/reasoning-parts/erdos243/core.tex:1941"
-     }
-    ],
-    "source": null
-   },
-   {
-    "operation": "conjuncts_candidate",
-    "theorem": "ErdosProblems.Erdos243.PaperCompleteR21.StandingOrbit.energySqrt_summable_iff",
-    "papers": [
-     {
-      "row": "erdos243-reciprocal-tail-reasoning-surface#long243:res:energycriterion",
-      "label": "long243:res:energycriterion",
-      "paper": "erdos243-reciprocal-tail-reasoning-surface",
-      "side": "long",
-      "lean_status": "exact",
-      "source": "paper/reasoning-parts/erdos243/core.tex:2146"
-     }
-    ],
-    "source": null
-   },
-   {
-    "operation": "conjuncts_candidate",
-    "theorem": "ErdosProblems.Erdos243.PaperCompleteR21.StandingOrbit.energy_criterion",
-    "papers": [
-     {
-      "row": "erdos243-reciprocal-tail-reasoning-surface#long243:res:energycriterion",
-      "label": "long243:res:energycriterion",
-      "paper": "erdos243-reciprocal-tail-reasoning-surface",
-      "side": "long",
-      "lean_status": "exact",
-      "source": "paper/reasoning-parts/erdos243/core.tex:2146"
-     }
-    ],
-    "source": null
-   },
-   {
-    "operation": "conjuncts_candidate",
-    "theorem": "ErdosProblems.Erdos243.PaperCompleteR21.StandingOrbit.energy_summable_iff",
-    "papers": [
-     {
-      "row": "erdos243-reciprocal-tail-reasoning-surface#long243:res:energycriterion",
-      "label": "long243:res:energycriterion",
-      "paper": "erdos243-reciprocal-tail-reasoning-surface",
-      "side": "long",
-      "lean_status": "exact",
-      "source": "paper/reasoning-parts/erdos243/core.tex:2146"
-     }
-    ],
-    "source": null
-   },
-   {
-    "operation": "conjuncts_candidate",
-    "theorem": "ErdosProblems.Erdos243.PaperCompleteR21.StandingOrbit.exists_late_energy_window",
-    "papers": [
-     {
-      "row": "erdos243-reciprocal-tail-reasoning-surface#long243:res:energycriterion",
-      "label": "long243:res:energycriterion",
-      "paper": "erdos243-reciprocal-tail-reasoning-surface",
-      "side": "long",
-      "lean_status": "exact",
-      "source": "paper/reasoning-parts/erdos243/core.tex:2146"
-     }
-    ],
-    "source": null
-   },
-   {
-    "operation": "conjuncts_candidate",
-    "theorem": "ErdosProblems.Erdos243.PaperCompleteR21.StandingOrbit.largePrime_coprimeMultiplier",
-    "papers": [
-     {
-      "row": "erdos243-reciprocal-tail-reasoning-surface#long243:res:recordamplified",
-      "label": "long243:res:recordamplified",
-      "paper": "erdos243-reciprocal-tail-reasoning-surface",
-      "side": "long",
-      "lean_status": "exact",
-      "source": "paper/reasoning-parts/erdos243/core.tex:1935"
-     }
-    ],
-    "source": null
-   },
-   {
-    "operation": "conjuncts_candidate",
-    "theorem": "ErdosProblems.Erdos243.PaperCompleteR21.StandingOrbit.oddPrimePower_supply",
-    "papers": [
-     {
-      "row": "erdos243-reciprocal-tail-reasoning-surface#long243:res:oddpowersupply",
-      "label": "long243:res:oddpowersupply",
-      "paper": "erdos243-reciprocal-tail-reasoning-surface",
-      "side": "long",
-      "lean_status": "exact",
-      "source": "paper/reasoning-parts/erdos243/core.tex:2024"
-     }
-    ],
-    "source": null
-   },
-   {
-    "operation": "conjuncts_candidate",
-    "theorem": "ErdosProblems.Erdos243.PaperCompleteR21.StandingOrbit.oddPrimePower_supply_nat",
-    "papers": [
-     {
-      "row": "erdos243-reciprocal-tail-reasoning-surface#long243:res:oddpowersupply",
-      "label": "long243:res:oddpowersupply",
-      "paper": "erdos243-reciprocal-tail-reasoning-surface",
-      "side": "long",
-      "lean_status": "exact",
-      "source": "paper/reasoning-parts/erdos243/core.tex:2024"
-     }
-    ],
-    "source": null
-   },
-   {
-    "operation": "conjuncts_candidate",
-    "theorem": "ErdosProblems.Erdos243.PaperCompleteR21.StandingOrbit.primeBlock_supply",
-    "papers": [
-     {
-      "row": "erdos243-reciprocal-tail-reasoning-surface#long243:res:recordamplified",
-      "label": "long243:res:recordamplified",
-      "paper": "erdos243-reciprocal-tail-reasoning-surface",
-      "side": "long",
-      "lean_status": "exact",
-      "source": "paper/reasoning-parts/erdos243/core.tex:1935"
-     }
-    ],
-    "source": null
-   },
-   {
-    "operation": "conjuncts_candidate",
-    "theorem": "ErdosProblems.Erdos243.PaperCompleteR21.StandingOrbit.recordAmplified",
-    "papers": [
-     {
-      "row": "erdos243-reciprocal-tail-reasoning-surface#long243:res:recordamplified",
-      "label": "long243:res:recordamplified",
-      "paper": "erdos243-reciprocal-tail-reasoning-surface",
-      "side": "long",
-      "lean_status": "exact",
-      "source": "paper/reasoning-parts/erdos243/core.tex:1935"
-     }
-    ],
-    "source": null
-   },
-   {
-    "operation": "conjuncts_candidate",
-    "theorem": "ErdosProblems.Erdos243.PaperCompleteR21.StandingOrbit.unitRecordIncrement_criterion",
-    "papers": [
-     {
-      "row": "erdos243-reciprocal-tail-reasoning-surface#long243:res:unitrecord",
-      "label": "long243:res:unitrecord",
-      "paper": "erdos243-reciprocal-tail-reasoning-surface",
-      "side": "long",
-      "lean_status": "exact",
-      "source": "paper/reasoning-parts/erdos243/core.tex:2058"
      }
     ],
     "source": null
@@ -1198,60 +868,7 @@
     "source": null
    },
    {
-    "operation": "conjuncts_candidate",
-    "theorem": "Erdos249257.not_irrational_totientSeries_implies_mod_period_and_unbounded_rank",
-    "papers": [
-     {
-      "row": "erdos249-totient-reasoning-surface#prop:period-not-rank",
-      "label": "prop:period-not-rank",
-      "paper": "erdos249-totient-reasoning-surface",
-      "side": "long",
-      "lean_status": "exact",
-      "source": "paper/reasoning-parts/erdos249/a249_front.tex:259"
-     }
-    ],
-    "source": "lean/Erdos249257/TotientTailCarryPeriod.lean:224"
-   },
-   {
-    "operation": "conjuncts_candidate",
-    "theorem": "Erdos249257.not_irrational_totientSeries_implies_unbounded_carryRank_unconditional",
-    "papers": [
-     {
-      "row": "erdos249-totient-reasoning-surface#prop:rank",
-      "label": "prop:rank",
-      "paper": "erdos249-totient-reasoning-surface",
-      "side": "long",
-      "lean_status": "exact",
-      "source": "paper/reasoning-parts/erdos249/a249_front.tex:247"
-     },
-     {
-      "row": "erdos249-totient-reasoning-surface#catalogue:cert:d5",
-      "label": "catalogue:cert:d5",
-      "paper": "erdos249-totient-reasoning-surface",
-      "side": "long",
-      "lean_status": "exact",
-      "source": "paper/reasoning-parts/erdos249/a249_front.tex:1523"
-     }
-    ],
-    "source": "lean/Erdos249257/TotientCarryKernelRigidity.lean:300"
-   },
-   {
-    "operation": "conjuncts_candidate",
-    "theorem": "ErdosProblems.Erdos249.PaperCompleteR21.eventual_tail_period_of_not_irrational",
-    "papers": [
-     {
-      "row": "erdos249-totient-reasoning-surface#prop:A9-inv",
-      "label": "prop:A9-inv",
-      "paper": "erdos249-totient-reasoning-surface",
-      "side": "long",
-      "lean_status": "exact",
-      "source": "paper/reasoning-parts/erdos249/a249_front.tex:3285"
-     }
-    ],
-    "source": null
-   },
-   {
-    "operation": "conjuncts_candidate",
+    "operation": "conjuncts",
     "theorem": "ErdosProblems.Erdos249.PaperCompleteR21.lambert_id_rung_transcendental",
     "papers": [
      {
@@ -1266,7 +883,7 @@
     "source": null
    },
    {
-    "operation": "conjuncts_candidate",
+    "operation": "conjuncts",
     "theorem": "ErdosProblems.Erdos249.PaperCompleteR21.prop_badcof",
     "papers": [
      {
@@ -1276,81 +893,6 @@
       "side": "long",
       "lean_status": "modulo_named_input",
       "source": "paper/reasoning-parts/erdos249/a249_front.tex:7294"
-     }
-    ],
-    "source": null
-   },
-   {
-    "operation": "conjuncts_candidate",
-    "theorem": "ErdosProblems.Erdos249.PaperCompleteR21.rational_forces_four_tail_diagonals_integral",
-    "papers": [
-     {
-      "row": "erdos249-totient-reasoning-surface#catalogue:mob:e2",
-      "label": "catalogue:mob:e2",
-      "paper": "erdos249-totient-reasoning-surface",
-      "side": "long",
-      "lean_status": "exact",
-      "source": "paper/reasoning-parts/erdos249/a249_front.tex:2568"
-     }
-    ],
-    "source": null
-   },
-   {
-    "operation": "conjuncts_candidate",
-    "theorem": "ErdosProblems.Erdos249.PaperCompleteR21.rational_forces_period_multiple_integrality",
-    "papers": [
-     {
-      "row": "erdos249-totient-reasoning-surface#catalogue:cert:b2",
-      "label": "catalogue:cert:b2",
-      "paper": "erdos249-totient-reasoning-surface",
-      "side": "long",
-      "lean_status": "exact",
-      "source": "paper/reasoning-parts/erdos249/a249_front.tex:2357"
-     }
-    ],
-    "source": null
-   },
-   {
-    "operation": "conjuncts_candidate",
-    "theorem": "ErdosProblems.Erdos249.PaperCompleteR21.rational_forces_pulse_class_integrality",
-    "papers": [
-     {
-      "row": "erdos249-totient-reasoning-surface#prop:CP-07",
-      "label": "prop:CP-07",
-      "paper": "erdos249-totient-reasoning-surface",
-      "side": "long",
-      "lean_status": "exact",
-      "source": "paper/reasoning-parts/erdos249/a249_front.tex:2831"
-     }
-    ],
-    "source": null
-   },
-   {
-    "operation": "conjuncts_candidate",
-    "theorem": "ErdosProblems.Erdos249.PaperCompleteR21.rationality_forces_mod_period_and_unbounded_rank",
-    "papers": [
-     {
-      "row": "erdos249-totient-reasoning-surface#prop:CP-02",
-      "label": "prop:CP-02",
-      "paper": "erdos249-totient-reasoning-surface",
-      "side": "long",
-      "lean_status": "exact",
-      "source": "paper/reasoning-parts/erdos249/a249_front.tex:3165"
-     }
-    ],
-    "source": null
-   },
-   {
-    "operation": "conjuncts_candidate",
-    "theorem": "ErdosProblems.Erdos249.PaperCompleteR21.rationality_gives_mod_period_and_unbounded_rank",
-    "papers": [
-     {
-      "row": "erdos249-totient-reasoning-surface#prop:additional-hypothesis-totient-specific-rank",
-      "label": "prop:additional-hypothesis-totient-specific-rank",
-      "paper": "erdos249-totient-reasoning-surface",
-      "side": "long",
-      "lean_status": "exact_or_stronger",
-      "source": "paper/reasoning-parts/erdos249/a249_front.tex:5967"
      }
     ],
     "source": null
@@ -1399,9 +941,8 @@
       ]
      }
     ],
-    "frontier_cuts": [
-     "Erdos249257.TotientTailPeriodKiller.rational_totient_series_forces_lcm_cone_flatness"
-    ],
+    "frontier": true,
+    "frontier_cuts": [],
     "suppliers": []
    },
    {
@@ -1432,8 +973,8 @@
       ]
      }
     ],
+    "frontier": true,
     "frontier_cuts": [
-     "ErdosProblems.Erdos249.PaperCompleteR20.lcm_grid_flatness",
      "Erdos249257.TotientTailPeriodKiller.rational_totient_series_forces_lcm_cone_flatness"
     ],
     "suppliers": []
@@ -1466,6 +1007,7 @@
       ]
      }
     ],
+    "frontier": false,
     "frontier_cuts": [],
     "suppliers": []
    },
@@ -1497,9 +1039,8 @@
       ]
      }
     ],
-    "frontier_cuts": [
-     "ErdosProblems.Erdos249.PaperCompleteR21.exists_simultaneous_depth_of_irrational"
-    ],
+    "frontier": true,
+    "frontier_cuts": [],
     "suppliers": []
    },
    {
@@ -1530,6 +1071,7 @@
       ]
      }
     ],
+    "frontier": false,
     "frontier_cuts": [],
     "suppliers": []
    },
@@ -1561,9 +1103,8 @@
       ]
      }
     ],
-    "frontier_cuts": [
-     "ErdosProblems.Erdos249.PaperCompleteR21.transcendental_sigma_series"
-    ],
+    "frontier": true,
+    "frontier_cuts": [],
     "suppliers": []
    },
    {
@@ -1594,6 +1135,7 @@
       ]
      }
     ],
+    "frontier": false,
     "frontier_cuts": [],
     "suppliers": []
    },
@@ -1625,6 +1167,7 @@
       ]
      }
     ],
+    "frontier": false,
     "frontier_cuts": [],
     "suppliers": []
    },
@@ -1662,6 +1205,7 @@
       ]
      }
     ],
+    "frontier": true,
     "frontier_cuts": [
      "ErdosProblems.Erdos249.PaperCompleteR21.ExcludedCofactor.eventually_card_excluded_le_of_upper",
      "ErdosProblems.Erdos249.PaperCompleteR21.ExcludedCofactor.eventually_card_primes_dyadic_le"
@@ -1696,9 +1240,8 @@
       ]
      }
     ],
-    "frontier_cuts": [
-     "Erdos249257.TotientTailPeriodKiller.rational_totient_series_forces_lcm_cone_flatness"
-    ],
+    "frontier": true,
+    "frontier_cuts": [],
     "suppliers": []
    },
    {
@@ -1729,6 +1272,7 @@
       ]
      }
     ],
+    "frontier": false,
     "frontier_cuts": [],
     "suppliers": []
    },
@@ -1760,6 +1304,7 @@
       ]
      }
     ],
+    "frontier": false,
     "frontier_cuts": [],
     "suppliers": []
    },
@@ -1791,6 +1336,7 @@
       ]
      }
     ],
+    "frontier": false,
     "frontier_cuts": [],
     "suppliers": []
    }
@@ -1863,66 +1409,6 @@
     "source": null
    },
    {
-    "operation": "conjuncts_candidate",
-    "theorem": "ErdosProblems.Erdos251.PaperCompleteR21.long_joint_prime_gap_countermodel",
-    "papers": [
-     {
-      "row": "erdos251-prime-gap-reasoning-surface#long251:res:jointcountermodel",
-      "label": "long251:res:jointcountermodel",
-      "paper": "erdos251-prime-gap-reasoning-surface",
-      "side": "long",
-      "lean_status": "modulo_named_input",
-      "source": "paper/reasoning-parts/erdos251/core.tex:1501"
-     }
-    ],
-    "source": null
-   },
-   {
-    "operation": "conjuncts_candidate",
-    "theorem": "ErdosProblems.Erdos251.PaperCompleteR21.nonconcentration_does_not_force_irrationality",
-    "papers": [
-     {
-      "row": "erdos251-prime-gap-reasoning-surface#long251:res:nonconc-primes",
-      "label": "long251:res:nonconc-primes",
-      "paper": "erdos251-prime-gap-reasoning-surface",
-      "side": "long",
-      "lean_status": "modulo_named_input",
-      "source": "paper/reasoning-parts/erdos251/core.tex:1450"
-     }
-    ],
-    "source": null
-   },
-   {
-    "operation": "conjuncts_candidate",
-    "theorem": "ErdosProblems.Erdos251.PaperCompleteR21.prime_gap_two_window_sparse",
-    "papers": [
-     {
-      "row": "erdos251-prime-gap-reasoning-surface#long251:res:sparse",
-      "label": "long251:res:sparse",
-      "paper": "erdos251-prime-gap-reasoning-surface",
-      "side": "long",
-      "lean_status": "modulo_named_input",
-      "source": "paper/reasoning-parts/erdos251/core.tex:1573"
-     }
-    ],
-    "source": null
-   },
-   {
-    "operation": "conjuncts_candidate",
-    "theorem": "ErdosProblems.Erdos251.PaperCompleteR21.short_joint_prime_gap_countermodel",
-    "papers": [
-     {
-      "row": "erdos-251-prime-gap-dyadic-series#res:jointcountermodel",
-      "label": "res:jointcountermodel",
-      "paper": "erdos-251-prime-gap-dyadic-series",
-      "side": "short",
-      "lean_status": "modulo_named_input",
-      "source": "paper/251/erdos-251-prime-gap-dyadic-series.tex:263"
-     }
-    ],
-    "source": null
-   },
-   {
     "operation": "weakening",
     "theorem": "ErdosProblems.Erdos251.PaperCompleteR21.long_joint_prime_gap_countermodel",
     "papers": [
@@ -1950,6 +1436,7 @@
       ]
      }
     ],
+    "frontier": false,
     "frontier_cuts": [],
     "suppliers": []
    },
@@ -1981,6 +1468,7 @@
       ]
      }
     ],
+    "frontier": false,
     "frontier_cuts": [],
     "suppliers": []
    },
@@ -2012,9 +1500,8 @@
       ]
      }
     ],
-    "frontier_cuts": [
-     "ErdosProblems.Erdos251.PaperCompleteR21.long_joint_prime_gap_countermodel"
-    ],
+    "frontier": true,
+    "frontier_cuts": [],
     "suppliers": []
    },
    {
@@ -2045,9 +1532,8 @@
       ]
      }
     ],
-    "frontier_cuts": [
-     "ErdosProblems.Erdos251.tsum_primeDyadicTerm_eq_two_add_primeGap"
-    ],
+    "frontier": true,
+    "frontier_cuts": [],
     "suppliers": [
      "ErdosProblems.Erdos251.tsum_primeDyadicTerm_eq_two_add_primeGap_unconditional",
      "ErdosProblems.Erdos251.tsum_primeDyadicTerm_eq_two_add_primeGap",
@@ -2281,141 +1767,6 @@
     "source": null
    },
    {
-    "operation": "conjuncts_candidate",
-    "theorem": "Erdos249257.HalfCarryReachability.greedy_half_infinite_of_cofinalStripReturn",
-    "papers": [
-     {
-      "row": "erdos257-mersenne-reasoning-surface#record:257rig-c18",
-      "label": "record:257rig-c18",
-      "paper": "erdos257-mersenne-reasoning-surface",
-      "side": "long",
-      "lean_status": "exact",
-      "source": "paper/reasoning-parts/erdos257/a257_front.tex:4113"
-     }
-    ],
-    "source": "lean/Erdos249257/CofinalStripReturn.lean:130"
-   },
-   {
-    "operation": "conjuncts_candidate",
-    "theorem": "Erdos249257.HalfCarryReachability.greedy_half_infinite_of_mobiusCenteredHalfCarry_sqrtBound",
-    "papers": [
-     {
-      "row": "erdos257-mersenne-reasoning-surface#thm:sqrt-bound-route",
-      "label": "thm:sqrt-bound-route",
-      "paper": "erdos257-mersenne-reasoning-surface",
-      "side": "long",
-      "lean_status": "exact",
-      "source": "paper/reasoning-parts/erdos257/a257_front.tex:2658"
-     }
-    ],
-    "source": "lean/Erdos249257/HalfCarryReachability.lean:834"
-   },
-   {
-    "operation": "conjuncts_candidate",
-    "theorem": "Erdos249257.HalfCarryReachability.greedy_half_infinite_of_mobiusCenteredHalfCarry_upperBound",
-    "papers": [
-     {
-      "row": "erdos257-mersenne-reasoning-surface#record:257rig-c16",
-      "label": "record:257rig-c16",
-      "paper": "erdos257-mersenne-reasoning-surface",
-      "side": "long",
-      "lean_status": "exact",
-      "source": "paper/reasoning-parts/erdos257/a257_front.tex:4072"
-     }
-    ],
-    "source": "lean/Erdos249257/HalfCarryReachability.lean:953"
-   },
-   {
-    "operation": "conjuncts_candidate",
-    "theorem": "Erdos249257.HalfTrappingReturnCarry.overlappingReverseCarryWords_carryDifference_eq_twoPow_mul_odd",
-    "papers": [
-     {
-      "row": "erdos257-mersenne-reasoning-surface#record:257bm-i16",
-      "label": "record:257bm-i16",
-      "paper": "erdos257-mersenne-reasoning-surface",
-      "side": "long",
-      "lean_status": "exact",
-      "source": "paper/reasoning-parts/erdos257/a257_front.tex:4764"
-     }
-    ],
-    "source": "lean/Erdos249257/HalfTrappingReturnCarry.lean:124"
-   },
-   {
-    "operation": "conjuncts_candidate",
-    "theorem": "Erdos249257.SuffixCylinderTerminalOnlyBridge.exists_infinite_positive_support_half_of_cofinalCylinderStages",
-    "papers": [
-     {
-      "row": "erdos-257-mersenne-support-subseries#res:cylinderhalf",
-      "label": "res:cylinderhalf",
-      "paper": "erdos-257-mersenne-support-subseries",
-      "side": "short",
-      "lean_status": "exact_or_stronger",
-      "source": "paper/257/erdos-257-mersenne-support-subseries.tex:1178"
-     }
-    ],
-    "source": "lean/Erdos249257/SuffixCylinderTerminalOnlyBridge.lean:287"
-   },
-   {
-    "operation": "conjuncts_candidate",
-    "theorem": "Erdos249257.twentyOneFatalAlignedBranch_eventually_affine_supercapacity",
-    "papers": [
-     {
-      "row": "erdos-257-mersenne-support-subseries#res:one-over-twenty-one-frontier",
-      "label": "res:one-over-twenty-one-frontier",
-      "paper": "erdos-257-mersenne-support-subseries",
-      "side": "short",
-      "lean_status": "exact_or_stronger",
-      "source": "paper/257/erdos-257-mersenne-support-subseries.tex:1071"
-     }
-    ],
-    "source": "lean/Erdos249257/TwentyOneQuotientGreedy.lean:5658"
-   },
-   {
-    "operation": "conjuncts_candidate",
-    "theorem": "ErdosProblems.Erdos257.PaperCompleteR21.paper_compatible_finite_row_conditions",
-    "papers": [
-     {
-      "row": "erdos257-mersenne-reasoning-surface#record:257bm-c3",
-      "label": "record:257bm-c3",
-      "paper": "erdos257-mersenne-reasoning-surface",
-      "side": "long",
-      "lean_status": "exact",
-      "source": "paper/reasoning-parts/erdos257/a257_front.tex:3785"
-     }
-    ],
-    "source": null
-   },
-   {
-    "operation": "conjuncts_candidate",
-    "theorem": "ErdosProblems.Erdos257.PaperCompleteR21.paper_compatible_rows_agree_with_limit",
-    "papers": [
-     {
-      "row": "erdos257-mersenne-reasoning-surface#record:257bm-c3",
-      "label": "record:257bm-c3",
-      "paper": "erdos257-mersenne-reasoning-surface",
-      "side": "long",
-      "lean_status": "exact",
-      "source": "paper/reasoning-parts/erdos257/a257_front.tex:3785"
-     }
-    ],
-    "source": null
-   },
-   {
-    "operation": "conjuncts_candidate",
-    "theorem": "ErdosProblems.Erdos257.PaperCompleteR21.paper_terminal_strip_forces_half_membership",
-    "papers": [
-     {
-      "row": "erdos257-mersenne-reasoning-surface#record:257rig-c17",
-      "label": "record:257rig-c17",
-      "paper": "erdos257-mersenne-reasoning-surface",
-      "side": "long",
-      "lean_status": "exact_or_stronger",
-      "source": "paper/reasoning-parts/erdos257/a257_front.tex:4085"
-     }
-    ],
-    "source": null
-   },
-   {
     "operation": "weakening",
     "theorem": "Erdos249257.HalfCarryReachability.greedy_half_infinite_of_cofinalStripReturn",
     "papers": [
@@ -2443,6 +1794,7 @@
       ]
      }
     ],
+    "frontier": false,
     "frontier_cuts": [],
     "suppliers": []
    },
@@ -2474,6 +1826,7 @@
       ]
      }
     ],
+    "frontier": false,
     "frontier_cuts": [],
     "suppliers": [
      "Erdos249257.HalfCarryReachability.greedy_half_infinite_of_mobiusCenteredHalfCarry_upperBound"
@@ -2507,6 +1860,7 @@
       ]
      }
     ],
+    "frontier": false,
     "frontier_cuts": [],
     "suppliers": []
    },
@@ -2538,6 +1892,7 @@
       ]
      }
     ],
+    "frontier": false,
     "frontier_cuts": [],
     "suppliers": []
    },
@@ -2569,6 +1924,7 @@
       ]
      }
     ],
+    "frontier": false,
     "frontier_cuts": [],
     "suppliers": []
    },
@@ -2600,8 +1956,8 @@
       ]
      }
     ],
+    "frontier": true,
     "frontier_cuts": [
-     "Erdos249257.seamGreedyUnboundedSkippedRanksAlong_of_largestSkipLateStepSocket",
      "Erdos249257.largestSkipLateAt_of_stepSocket"
     ],
     "suppliers": []
@@ -2634,6 +1990,7 @@
       ]
      }
     ],
+    "frontier": false,
     "frontier_cuts": [],
     "suppliers": []
    },
@@ -2665,6 +2022,7 @@
       ]
      }
     ],
+    "frontier": false,
     "frontier_cuts": [],
     "suppliers": []
    },
@@ -2696,6 +2054,7 @@
       ]
      }
     ],
+    "frontier": false,
     "frontier_cuts": [],
     "suppliers": []
    },
@@ -2727,6 +2086,7 @@
       ]
      }
     ],
+    "frontier": false,
     "frontier_cuts": [],
     "suppliers": []
    },
@@ -2758,6 +2118,7 @@
       ]
      }
     ],
+    "frontier": false,
     "frontier_cuts": [],
     "suppliers": []
    },
@@ -2789,6 +2150,7 @@
       ]
      }
     ],
+    "frontier": false,
     "frontier_cuts": [],
     "suppliers": []
    },
@@ -2820,8 +2182,8 @@
       ]
      }
     ],
+    "frontier": true,
     "frontier_cuts": [
-     "Erdos249257.SeamUpperResetDyadicBandEscape.toMiddleProducerRowEscape",
      "Erdos249257.SeamUpperResetDyadicBandEscape.remainder_ge_row"
     ],
     "suppliers": []
@@ -2860,6 +2222,7 @@
       ]
      }
     ],
+    "frontier": true,
     "frontier_cuts": [],
     "suppliers": []
    },
@@ -2891,6 +2254,7 @@
       ]
      }
     ],
+    "frontier": false,
     "frontier_cuts": [],
     "suppliers": []
    },
@@ -2922,9 +2286,8 @@
       ]
      }
     ],
-    "frontier_cuts": [
-     "ErdosProblems.Erdos257.PaperCompleteR21.SeamResetSqrtEscape.largestSkipLateStepSocket"
-    ],
+    "frontier": true,
+    "frontier_cuts": [],
     "suppliers": []
    },
    {
@@ -2955,6 +2318,7 @@
       ]
      }
     ],
+    "frontier": false,
     "frontier_cuts": [],
     "suppliers": []
    },
@@ -2986,6 +2350,7 @@
       ]
      }
     ],
+    "frontier": false,
     "frontier_cuts": [],
     "suppliers": []
    },
@@ -3017,9 +2382,8 @@
       ]
      }
     ],
-    "frontier_cuts": [
-     "Erdos249257.SeamTwoSidedDyadicCellEscape.twoSided"
-    ],
+    "frontier": true,
+    "frontier_cuts": [],
     "suppliers": []
    }
   ],
@@ -3100,44 +2464,6 @@
     "source": "lean/ErdosProblems/Erdos269/PaperR7BasicAssembly.lean:22"
    },
    {
-    "operation": "conjuncts_candidate",
-    "theorem": "ErdosProblems.Erdos269.PaperCompleteR21.two_prime_sums_transcendental",
-    "papers": [
-     {
-      "row": "erdos-269-three-prime-running-lcm#res:two-prime-transcendence",
-      "label": "res:two-prime-transcendence",
-      "paper": "erdos-269-three-prime-running-lcm",
-      "side": "short",
-      "lean_status": "modulo_named_input",
-      "source": "paper/269/erdos-269-three-prime-running-lcm.tex:238"
-     },
-     {
-      "row": "erdos269-running-lcm-reasoning-surface#long269:res:lead-two-prime",
-      "label": "long269:res:lead-two-prime",
-      "paper": "erdos269-running-lcm-reasoning-surface",
-      "side": "long",
-      "lean_status": "modulo_named_input",
-      "source": "paper/reasoning-parts/erdos269/core.tex:41"
-     }
-    ],
-    "source": null
-   },
-   {
-    "operation": "conjuncts_candidate",
-    "theorem": "ErdosProblems.Erdos269.PaperCompleteR21.two_prime_transcendence",
-    "papers": [
-     {
-      "row": "erdos269-running-lcm-reasoning-surface#long269:res:lead-two-prime",
-      "label": "long269:res:lead-two-prime",
-      "paper": "erdos269-running-lcm-reasoning-surface",
-      "side": "long",
-      "lean_status": "modulo_named_input",
-      "source": "paper/reasoning-parts/erdos269/core.tex:41"
-     }
-    ],
-    "source": null
-   },
-   {
     "operation": "weakening",
     "theorem": "ErdosProblems.Erdos269.PaperCompleteR21.two_prime_sums_transcendental",
     "papers": [
@@ -3173,6 +2499,7 @@
       ]
      }
     ],
+    "frontier": false,
     "frontier_cuts": [],
     "suppliers": []
    },
@@ -3204,9 +2531,8 @@
       ]
      }
     ],
-    "frontier_cuts": [
-     "ErdosProblems.Erdos269.PaperCompleteR21.two_prime_sums_transcendental"
-    ],
+    "frontier": true,
+    "frontier_cuts": [],
     "suppliers": []
    }
   ],
@@ -6095,5 +5421,172 @@
     }
    ]
   }
- ]
+ ],
+ "verification": {
+  "probe_run": "36291432537",
+  "not_derived": [
+   {
+    "problem": "Erdos1041",
+    "command": "derive_conjuncts ErdosProblems.Erdos1041.PaperCompleteR21.Arity.arity_not_capacity",
+    "strict": false,
+    "message": "derive_conjuncts ErdosProblems.Erdos1041.PaperCompleteR21.Arity.arity_not_capacity: every claim of its conclusion uses every proposition hypothesis (claim 1 uses hLTD; claim 2 uses hLTD; claim 3 uses hLTD; claim 4 uses hLTD; claim 5 uses hLTD; claim 6 uses hLTD; claim 7 uses hLTD; claim 8 uses hLTD; claim 9 uses hLTD)"
+   },
+   {
+    "problem": "Erdos1041",
+    "command": "derive_conjuncts ErdosProblems.Erdos1041.PaperCompleteR21.cfa_constant_factor_path",
+    "strict": false,
+    "message": "derive_conjuncts ErdosProblems.Erdos1041.PaperCompleteR21.cfa_constant_factor_path: every claim of its conclusion uses every proposition hypothesis (claim 1 uses hext, hn, hmonic, hdeg, hz, hμ; claim 2 uses hext, hn, hmonic, hdeg, hz, hμ)"
+   },
+   {
+    "problem": "Erdos1041",
+    "command": "derive_conjuncts ErdosProblems.Erdos1041.PaperCompleteR21.discSep_cubic_six_fifths",
+    "strict": false,
+    "message": "derive_conjuncts ErdosProblems.Erdos1041.PaperCompleteR21.discSep_cubic_six_fifths: its conclusion is neither a conjunction nor an equivalence"
+   },
+   {
+    "problem": "Erdos1041",
+    "command": "derive_conjuncts ErdosProblems.Erdos1041.PaperCompleteR21.discSep_separation_long",
+    "strict": false,
+    "message": "derive_conjuncts ErdosProblems.Erdos1041.PaperCompleteR21.discSep_separation_long: its conclusion is neither a conjunction nor an equivalence"
+   },
+   {
+    "problem": "Erdos1041",
+    "command": "derive_conjuncts ErdosProblems.Erdos1041.PaperCompleteR21.discSep_separation_short",
+    "strict": false,
+    "message": "derive_conjuncts ErdosProblems.Erdos1041.PaperCompleteR21.discSep_separation_short: its conclusion is neither a conjunction nor an equivalence"
+   },
+   {
+    "problem": "Erdos1041",
+    "command": "derive_conjuncts ErdosProblems.Erdos1041.PaperCompleteR21.discSep_uniform_radius",
+    "strict": false,
+    "message": "derive_conjuncts ErdosProblems.Erdos1041.PaperCompleteR21.discSep_uniform_radius: its conclusion is neither a conjunction nor an equivalence"
+   },
+   {
+    "problem": "Erdos249",
+    "command": "derive_conjuncts Erdos249257.not_irrational_totientSeries_implies_mod_period_and_unbounded_rank",
+    "strict": false,
+    "message": "derive_conjuncts Erdos249257.not_irrational_totientSeries_implies_mod_period_and_unbounded_rank: its conclusion is neither a conjunction nor an equivalence"
+   },
+   {
+    "problem": "Erdos249",
+    "command": "derive_conjuncts Erdos249257.not_irrational_totientSeries_implies_unbounded_carryRank_unconditional",
+    "strict": false,
+    "message": "derive_conjuncts Erdos249257.not_irrational_totientSeries_implies_unbounded_carryRank_unconditional: its conclusion is neither a conjunction nor an equivalence"
+   },
+   {
+    "problem": "Erdos249",
+    "command": "derive_conjuncts ErdosProblems.Erdos249.PaperCompleteR21.eventual_tail_period_of_not_irrational",
+    "strict": false,
+    "message": "derive_conjuncts ErdosProblems.Erdos249.PaperCompleteR21.eventual_tail_period_of_not_irrational: its conclusion is neither a conjunction nor an equivalence\nadded ErdosProblems.Erdos249.PaperCompleteR21.lambert_id_rung_transcendental.part_1 : ∑' (d : ℕ+), ↑↑d / (2 ^ ↑d - 1) = ∑' (m : ℕ+), ↑((ArithmeticFunction.sigma 1) ↑m) / 2 ^ ↑m\nadded ErdosProblems.Erdos249.PaperCompleteR21.prop_badcof.part_1 : ∀ (h s X : ℕ), ErdosProblems.Erdos249.PaperCompleteR21.minimalOffset h s X ≤ h + Nat.log 2 X + 11\nadded ErdosProblems.Erdos249.PaperCompleteR21.prop_badcof.part_2 : ∀ (h s : ℕ) (η : ℝ) (X : ℕ), {N ∈ E"
+   },
+   {
+    "problem": "Erdos249",
+    "command": "derive_conjuncts ErdosProblems.Erdos249.PaperCompleteR21.rational_forces_four_tail_diagonals_integral",
+    "strict": false,
+    "message": "derive_conjuncts ErdosProblems.Erdos249.PaperCompleteR21.rational_forces_four_tail_diagonals_integral: its conclusion is neither a conjunction nor an equivalence"
+   },
+   {
+    "problem": "Erdos249",
+    "command": "derive_conjuncts ErdosProblems.Erdos249.PaperCompleteR21.rational_forces_period_multiple_integrality",
+    "strict": false,
+    "message": "derive_conjuncts ErdosProblems.Erdos249.PaperCompleteR21.rational_forces_period_multiple_integrality: its conclusion is neither a conjunction nor an equivalence"
+   },
+   {
+    "problem": "Erdos249",
+    "command": "derive_conjuncts ErdosProblems.Erdos249.PaperCompleteR21.rational_forces_pulse_class_integrality",
+    "strict": false,
+    "message": "derive_conjuncts ErdosProblems.Erdos249.PaperCompleteR21.rational_forces_pulse_class_integrality: its conclusion is neither a conjunction nor an equivalence"
+   },
+   {
+    "problem": "Erdos249",
+    "command": "derive_conjuncts ErdosProblems.Erdos249.PaperCompleteR21.rationality_forces_mod_period_and_unbounded_rank",
+    "strict": false,
+    "message": "derive_conjuncts ErdosProblems.Erdos249.PaperCompleteR21.rationality_forces_mod_period_and_unbounded_rank: its conclusion is neither a conjunction nor an equivalence"
+   },
+   {
+    "problem": "Erdos249",
+    "command": "derive_conjuncts ErdosProblems.Erdos249.PaperCompleteR21.rationality_gives_mod_period_and_unbounded_rank",
+    "strict": false,
+    "message": "derive_conjuncts ErdosProblems.Erdos249.PaperCompleteR21.rationality_gives_mod_period_and_unbounded_rank: its conclusion is neither a conjunction nor an equivalence"
+   },
+   {
+    "problem": "Erdos251",
+    "command": "derive_conjuncts ErdosProblems.Erdos251.PaperCompleteR21.long_joint_prime_gap_countermodel",
+    "strict": false,
+    "message": "derive_conjuncts ErdosProblems.Erdos251.PaperCompleteR21.long_joint_prime_gap_countermodel: its conclusion is neither a conjunction nor an equivalence"
+   },
+   {
+    "problem": "Erdos251",
+    "command": "derive_conjuncts ErdosProblems.Erdos251.PaperCompleteR21.nonconcentration_does_not_force_irrationality",
+    "strict": false,
+    "message": "derive_conjuncts ErdosProblems.Erdos251.PaperCompleteR21.nonconcentration_does_not_force_irrationality: its conclusion is neither a conjunction nor an equivalence"
+   },
+   {
+    "problem": "Erdos251",
+    "command": "derive_conjuncts ErdosProblems.Erdos251.PaperCompleteR21.prime_gap_two_window_sparse",
+    "strict": false,
+    "message": "derive_conjuncts ErdosProblems.Erdos251.PaperCompleteR21.prime_gap_two_window_sparse: every claim of its conclusion uses every proposition hypothesis (claim 1 uses hh, hSP; claim 2 uses hh, hSP)"
+   },
+   {
+    "problem": "Erdos251",
+    "command": "derive_conjuncts ErdosProblems.Erdos251.PaperCompleteR21.short_joint_prime_gap_countermodel",
+    "strict": false,
+    "message": "derive_conjuncts ErdosProblems.Erdos251.PaperCompleteR21.short_joint_prime_gap_countermodel: its conclusion is neither a conjunction nor an equivalence"
+   },
+   {
+    "problem": "Erdos251",
+    "command": "derive_frontier ErdosProblems.Erdos251.irrational_tsum_primeDyadicTerm_iff_primeGap using ErdosProblems.Erdos251.tsum_primeDyadicTerm_eq_two_add_primeGap_unconditional ErdosProblems.Erdos251.tsum_primeDyadicTerm_eq_two_add_primeGap ErdosProblems.Erdos251.tsum_primeDisplayedDyadicTerm_eq_four_add_two_primeGap",
+    "strict": false,
+    "message": "derive_frontier ErdosProblems.Erdos251.irrational_tsum_primeDyadicTerm_iff_primeGap: hypothesis 0: no supplier proves a consequence where the chain stops\nadded ErdosProblems.Erdos251.irrational_tsum_primeDyadicTerm_iff_primeGap.frontier_0_tsum_primeDyadicTerm_eq_two_add_primeGap_supplied : Irrational (∑' (n : ℕ), ErdosProblems.Erdos251.primeDyadicTerm n) ↔ Irrational (∑' (n : ℕ), ErdosProblems.Erdos251.primeGapDyadicTerm n)"
+   },
+   {
+    "problem": "Erdos257",
+    "command": "derive_conjuncts Erdos249257.HalfCarryReachability.greedy_half_infinite_of_cofinalStripReturn",
+    "strict": false,
+    "message": "derive_conjuncts Erdos249257.HalfCarryReachability.greedy_half_infinite_of_cofinalStripReturn: every claim of its conclusion uses every proposition hypothesis (claim 1 uses hreturn; claim 2 uses hreturn)"
+   },
+   {
+    "problem": "Erdos257",
+    "command": "derive_conjuncts Erdos249257.HalfCarryReachability.greedy_half_infinite_of_mobiusCenteredHalfCarry_sqrtBound",
+    "strict": false,
+    "message": "derive_conjuncts Erdos249257.HalfCarryReachability.greedy_half_infinite_of_mobiusCenteredHalfCarry_sqrtBound: every claim of its conclusion uses every proposition hypothesis (claim 1 uses hnonneg, hbound; claim 2 uses hnonneg, hbound)"
+   },
+   {
+    "problem": "Erdos257",
+    "command": "derive_conjuncts Erdos249257.HalfCarryReachability.greedy_half_infinite_of_mobiusCenteredHalfCarry_upperBound",
+    "strict": false,
+    "message": "derive_conjuncts Erdos249257.HalfCarryReachability.greedy_half_infinite_of_mobiusCenteredHalfCarry_upperBound: every claim of its conclusion uses every proposition hypothesis (claim 1 uses hbound; claim 2 uses hbound)"
+   },
+   {
+    "problem": "Erdos257",
+    "command": "derive_conjuncts Erdos249257.SuffixCylinderTerminalOnlyBridge.exists_infinite_positive_support_half_of_cofinalCylinderStages",
+    "strict": false,
+    "message": "derive_conjuncts Erdos249257.SuffixCylinderTerminalOnlyBridge.exists_infinite_positive_support_half_of_cofinalCylinderStages: its conclusion is neither a conjunction nor an equivalence"
+   },
+   {
+    "problem": "Erdos257",
+    "command": "derive_conjuncts Erdos249257.twentyOneFatalAlignedBranch_eventually_affine_supercapacity",
+    "strict": false,
+    "message": "derive_conjuncts Erdos249257.twentyOneFatalAlignedBranch_eventually_affine_supercapacity: its conclusion is neither a conjunction nor an equivalence"
+   },
+   {
+    "problem": "Erdos257",
+    "command": "derive_conjuncts ErdosProblems.Erdos257.PaperCompleteR21.paper_terminal_strip_forces_half_membership",
+    "strict": false,
+    "message": "derive_conjuncts ErdosProblems.Erdos257.PaperCompleteR21.paper_terminal_strip_forces_half_membership: its conclusion is neither a conjunction nor an equivalence\nadded Erdos249257.HalfCarryReachability.greedy_half_infinite_of_mobiusCenteredHalfCarry_sqrtBound.frontier_0_supplied : (∀ (N : ℕ), ↑(Erdos249257.HalfCarryReachability.mobiusCenteredHalfCarry (Erdos249257.greedyMersenneSupport (1 / 2)) N) ≤ 2 * √↑N + 4) → (Erdos249257.greedyMersenneSupport (1 / 2)).Infinite ∧ Erdos249257.erdosSupportSeries 2 (Erdos249257.greedyMersenneSupport (1 / 2)) = 1 / 2"
+   },
+   {
+    "problem": "Erdos269",
+    "command": "derive_conjuncts ErdosProblems.Erdos269.PaperCompleteR21.two_prime_sums_transcendental",
+    "strict": false,
+    "message": "derive_conjuncts ErdosProblems.Erdos269.PaperCompleteR21.two_prime_sums_transcendental: every claim of its conclusion uses every proposition hypothesis (claim 1 uses hBL, hp, hq, hpq; claim 2 uses hBL, hp, hq, hpq)"
+   },
+   {
+    "problem": "Erdos269",
+    "command": "derive_conjuncts ErdosProblems.Erdos269.PaperCompleteR21.two_prime_transcendence",
+    "strict": false,
+    "message": "derive_conjuncts ErdosProblems.Erdos269.PaperCompleteR21.two_prime_transcendence: every claim of its conclusion uses every proposition hypothesis (claim 1 uses hBL, hp, hq, hpq; claim 2 uses hBL, hp, hq, hpq)"
+   }
+  ]
+ }
 }

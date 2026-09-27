@@ -6,7 +6,9 @@ Input: the JSON Lines stream written by ``scripts/export_argument_continuations.
 also carries ``argument_continuations_lean_tree.txt`` (the git tree id of
 ``lean/`` at the exported commit) and ``argument_continuations_source_revision.txt``;
 the builder reads both from beside the export, or takes ``--lean-tree`` and
-``--source-revision``.
+``--source-revision``. Several exports of the same Lean tree combine (repeat
+``--export``, the latest last): each row observes the same environment, so the
+graph is built from the union of what the exports' searches found.
 
 Output:
 
@@ -164,6 +166,79 @@ def read_export(path: Path) -> list[dict[str, Any]]:
         rows.append({"record": "summary", "truncated": True, "cut_off_before_summary": True,
                      "theorems": sum(1 for row in rows if row.get("record") == "theorem")})
     return rows
+
+
+def row_identity(row: dict[str, Any]) -> tuple[Any, ...]:
+    """What makes two export rows the same observation. A statement, a
+    theorem's telescope, its idle, weakening or composition row, a literal's
+    generalisation and a candidate cap are identified by what they are about;
+    any other row (a match, a refutation, a battery proof, an unfolding) only
+    by its whole content."""
+    record = row.get("record")
+    if record == "statement":
+        return (record, row.get("key"))
+    if record == "candidate_cap":
+        return (record, row.get("statement"), row.get("search"))
+    if record == "theorem":
+        return (record, row.get("name"))
+    if record == "idle":
+        return (record, row.get("theorem"))
+    if record in ("weakening", "weakening_attempt"):
+        return (record, row.get("theorem"), row.get("i"))
+    if record == "composition":
+        return (record, row.get("theorem"), row.get("conclusion"))
+    if record == "generalisation":
+        return (record, row.get("theorem"), row.get("literal"), row.get("literal_type"))
+    return (record, json.dumps(row, sort_keys=True, ensure_ascii=False))
+
+
+def combine_exports(streams: list[list[dict[str, Any]]]) -> list[dict[str, Any]]:
+    """One stream from several exports of the same Lean tree, the last first.
+
+    Every row is an observation of the same elaborated environment: a match is
+    a unification the elaborator accepted, a battery row a proof the kernel
+    accepted. So the exports' searches add up, and the union is what they
+    observed together. Rows that are the same observation (``row_identity``)
+    are kept once, from the latest export that has them; the last export's rows
+    keep their order (telescopes before the rows that use them) and the rest
+    follow. The meta and summary records are the last export's, with the number
+    of exports combined and of statements the combined search covered."""
+    if len(streams) == 1:
+        return streams[0]
+    seen: set[tuple[Any, ...]] = set()
+    combined: list[dict[str, Any]] = []
+    for rows in reversed(streams):
+        for row in rows:
+            if row.get("record") in ("meta", "summary"):
+                continue
+            identity = row_identity(row)
+            if identity not in seen:
+                seen.add(identity)
+                combined.append(row)
+    last = streams[-1]
+    meta = {**last[0], "combined_exports": len(streams)}
+    summaries = [next(r for r in rows if r.get("record") == "summary") for rows in streams]
+    # A numeric field of the combined summary is the largest value any export
+    # recorded: for a count of work done (statements tried, searched) it is a
+    # lower bound on the combination, whose exact value no row records.
+    numeric = {key: max(s[key] for s in summaries if isinstance(s.get(key), (int, float))
+                        and not isinstance(s.get(key), bool))
+               for s in summaries for key in s
+               if isinstance(s.get(key), (int, float)) and not isinstance(s.get(key), bool)}
+    summary = {**summaries[-1], **numeric, "combined_exports": len(streams),
+               "statements_searched_combined": sum(1 for r in combined if r.get("record") == "statement"),
+               "truncated": any(s.get("truncated") for s in summaries),
+               "combined_summaries": [{k: v for k, v in s.items() if k != "record"} for s in summaries]}
+    return [meta, *combined, summary]
+
+
+def read_exports(paths: list[Path], lean_trees: list[str | None]) -> list[dict[str, Any]]:
+    """``read_export`` for one stream; for several, their combination, refused
+    unless every export names the same Lean tree."""
+    if len(paths) > 1 and (None in lean_trees or len(set(lean_trees)) != 1):
+        raise SystemExit("exports can be combined only when each names the same Lean tree "
+                         f"(found {lean_trees}); a row about one environment says nothing about another")
+    return combine_exports([read_export(path) for path in paths])
 
 
 def file_digest(path: Path) -> str:
@@ -447,6 +522,10 @@ class Graph:
         # proof uses of it), and each weakened theorem's derived name
         self.weakenings: list[dict[str, Any]] = []
         self.weakening_unchecked = 0
+        # Kernel-checked generalisations: a literal of a theorem made a variable,
+        # with the obligations the proof needed of it (generalisation rows).
+        self.generalisations: list[dict[str, Any]] = []
+        self.generalisations_refused = 0
         # kernel-checked weakening rows the builder refused (a consequence
         # without a key, no consequence, no hypothesis key): each would have
         # dropped an obligation without replacing it
@@ -477,6 +556,9 @@ class Graph:
         graph.compositions_checked = [dict(row) for row in payload.get("compositions_checked", [])]
         graph.weakenings = [dict(entry) for entry in payload.get("weakenings", [])]
         graph.synthetic = {e["weakened"]: e["theorem"] for e in graph.weakenings if e.get("weakened")}
+        graph.generalisations = [dict(entry) for entry in payload.get("generalisations", [])]
+        graph.synthetic.update({e["generalised"]: e["theorem"] for e in graph.generalisations
+                                if e.get("generalised")})
         graph.meta = {"schema": payload.get("schema")}
         graph.summary = (payload.get("source") or {}).get("export_summary", {})
         for row in payload.get("statements", []):
@@ -573,6 +655,7 @@ class Graph:
         binders_of: dict[str, list[dict[str, Any]]] = {}
         idle_rows: list[dict[str, Any]] = []
         weakening_rows: list[dict[str, Any]] = []
+        generalisation_rows: list[dict[str, Any]] = []
         composition_rows: list[dict[str, Any]] = []
         for row in rows:
             record = row.get("record")
@@ -695,6 +778,13 @@ class Graph:
                     weakening_rows.append(row)
                 else:
                     self.weakening_unchecked += 1
+            elif record == "generalisation":
+                if row.get("status") == "generalised" and row.get("kernel_checked") and row.get("generalised") \
+                        and row.get("theorem") not in findings:
+                    generalisation_rows.append(row)
+                    self.synthetic[row["generalised"]] = row.get("theorem")
+                else:
+                    self.generalisations_refused += 1
             elif record == "candidate_cap":
                 self.caps.append(row)
             elif record in ("theorem_error", "statement_error"):
@@ -703,6 +793,8 @@ class Graph:
             self._ingest_idle(row, binders_of.get(row.get("theorem")), add_reduction)
         for row in weakening_rows:
             self._ingest_weakening(row, binders_of.get(row.get("theorem")), add_reduction)
+        for row in generalisation_rows:
+            self._ingest_generalisation(row, add_reduction)
         # A kernel-checked composition is a closed proof term of its conclusion
         # (the exporter instantiated every binder, so a conclusion that mentions
         # a hypothesis becomes a statement of its own): a reduction without
@@ -719,6 +811,22 @@ class Graph:
                 self.composition_uses[before] = composition_uses_of(theorem, used)
         if not self.include_weakening:
             self.synthetic = {}
+
+    def _ingest_generalisation(self, row: dict[str, Any], add_reduction) -> None:
+        """A kernel-checked generalisation: the theorem with a literal made a
+        variable and the obligations its proof needed of that literal assumed.
+        The generalised statement is closed and proved, so it is supplied; its
+        theorem is a synthetic producer credited to the original."""
+        entry = {key: row.get(key) for key in ("theorem", "literal", "literal_type", "uniform", "witness",
+                                                "generalised", "type", "key")}
+        entry["obligations"] = [o.get("type") for o in row.get("obligations", []) or []]
+        entry["discharged"] = [{"type": d.get("type"), "tactic": d.get("tactic")}
+                               for d in row.get("discharged", []) or []]
+        if row.get("key"):
+            node = self._statement(row["key"], row.get("type"), "generalisation")
+            node["conclusion_of"].add(row["generalised"])
+            add_reduction(row["key"], row["generalised"], "generalisation", ())
+        self.generalisations.append(entry)
 
     def _ingest_weakening(self, row: dict[str, Any], binders: list[dict[str, Any]] | None,
                           add_reduction) -> None:
@@ -1747,10 +1855,15 @@ def barrier_overlay(graph: "Graph", root: Path) -> dict[str, Any]:
 # Projection
 
 
-def build(export_path: Path, root: Path = ROOT, *, lean_tree: str | None = None,
+def build(export_path: Path | list[Path], root: Path = ROOT, *, lean_tree: str | None = None,
           source_revision: str | None = None, include_idle: bool = True
           ) -> tuple[dict[str, Any], dict[str, Any]]:
-    rows = read_export(export_path)
+    # Several exports of one Lean tree combine (``combine_exports``); the last
+    # is the export whose provenance the graph carries first.
+    export_paths = export_path if isinstance(export_path, list) else [export_path]
+    export_path = export_paths[-1]
+    trees = [resolve_lean_tree(path, lean_tree) for path in export_paths]
+    rows = read_exports(export_paths, trees)
     graph = Graph(rows, include_idle=include_idle)
     graph.analyse()
     refs = source_refs(root)
@@ -2019,6 +2132,10 @@ def build(export_path: Path, root: Path = ROOT, *, lean_tree: str | None = None,
         "idle_reductions": sum(1 for e in graph.idle if e.get("reduction")),
         "idle_dropping_open": len(idle_dropping_open),
         "weakened_theorems": len({e["theorem"] for e in graph.weakenings}),
+        "generalised_theorems": len({e["theorem"] for e in graph.generalisations}),
+        "generalisations_kernel_checked": len(graph.generalisations),
+        "generalisations_uniform": sum(1 for e in graph.generalisations if e.get("uniform")),
+        "generalisations_refused": graph.generalisations_refused,
         "weakenings_kernel_checked": len(graph.weakenings),
         "weakenings_unchecked": graph.weakening_unchecked,
         "weakenings_refused_malformed": len(graph.weakenings_malformed),
@@ -2062,6 +2179,10 @@ def build(export_path: Path, root: Path = ROOT, *, lean_tree: str | None = None,
                           ("roots", "name_prefixes", "imports", "match_heartbeats_thousands",
                            "max_candidates", "max_statements", "time_budget_ms")},
     }
+    if len(export_paths) > 1:
+        source["combined_exports"] = [
+            {"export_digest": file_digest(path),
+             "source_revision": resolve_source_revision(path, None)} for path in export_paths]
     if not lean_tree:
         # Fallback provenance: the committed dependency index's fingerprint at
         # build time, which says nothing about the sources the export ran on.
@@ -2145,6 +2266,8 @@ def build(export_path: Path, root: Path = ROOT, *, lean_tree: str | None = None,
         "idle": idle_rows[:LIST_LIMIT * 3],
         "weakenings": weakening_rows[:LIST_LIMIT * 6],
         "weakenings_refused": graph.weakenings_malformed[:LIST_LIMIT],
+        "generalisations": sorted(graph.generalisations,
+                                  key=lambda e: (not papers.get(e["theorem"]), e["theorem"] or ""))[:LIST_LIMIT * 3],
         "interfaces": interfaces,
         "audit": audit,
         "sentinel_alarms": alarms,
@@ -2198,6 +2321,7 @@ def build(export_path: Path, root: Path = ROOT, *, lean_tree: str | None = None,
         "budget_exhausted": graph.budget_exhausted,
         "idle": graph.idle,
         "weakenings": graph.weakenings,
+        "generalisations": graph.generalisations,
         "theorems": [
             {**theorem_card(name), "module": t["module"], "problem": theorem_problems.get(name),
              "hypotheses": t["hypotheses"], "schematic_hypotheses": t["schematic_hypotheses"],
@@ -2359,8 +2483,9 @@ def write_outputs(projection: dict[str, Any], graph_payload: dict[str, Any],
 
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    parser.add_argument("--export", type=Path, required=True,
-                        help="export stream (.jsonl or .jsonl.gz) from export_argument_continuations.lean")
+    parser.add_argument("--export", type=Path, required=True, action="append",
+                        help="export stream (.jsonl or .jsonl.gz) from export_argument_continuations.lean; "
+                             "repeat it to combine exports of the same Lean tree, the latest last")
     parser.add_argument("--output", type=Path, default=DEFAULT_OUTPUT)
     parser.add_argument("--graph-output", type=Path, default=DEFAULT_GRAPH_OUTPUT)
     parser.add_argument("--root", type=Path, default=ROOT, help="repository root for the joins")

@@ -175,7 +175,10 @@ def plan(graph: dict[str, Any], papers: dict[str, list[dict[str, Any]]]) -> dict
         conclusion = (theorem or {}).get("conclusion_type") or ""
         if not theorem or (" ∧ " not in conclusion and " ↔ " not in conclusion):
             continue
-        if not any((statements.get(k) or {}).get("status") == "open" for k in theorem.get("hypotheses", []) or []):
+        # An open `Nonempty T` obligation is a data binder, which derive_conjuncts never leaves out.
+        if not any((statements.get(k) or {}).get("status") == "open"
+                   and not ((statements.get(k) or {}).get("type") or "").startswith("Nonempty ")
+                   for k in theorem.get("hypotheses", []) or []):
             continue
         problem = PROBLEM_NAMES.get(str(theorem.get("problem")))
         if not problem:
@@ -200,8 +203,17 @@ def plan(graph: dict[str, Any], papers: dict[str, list[dict[str, Any]]]) -> dict
                     if v in theorems:
                         slot["imports"].add(theorems[v]["module"])
         slot["commands"].append(f"derive_weakening {lean_ident(name)}")
-        slot["commands"].append(f"derive_frontier {lean_ident(name)}")
-        cuts = chain_cuts(name, weakenings)
+        # A frontier differs from the weakening only when some use site's lemma has
+        # a weakening of its own; otherwise derive_frontier would restate weakened_i.
+        deeper = any(v in weakenings and v != name for r in rows for c in r.get("consequences", [])
+                     for v in c.get("via") or [])
+        if deeper:
+            slot["commands"].append(f"derive_frontier {lean_ident(name)}")
+        # A cut at one of the theorem's own use-site lemmas stops where the weakening
+        # does, so it is derived only with suppliers that discharge what it leaves.
+        first_level = {v for r in rows for c in r.get("consequences", []) for v in c.get("via") or []}
+        all_cuts = chain_cuts(name, weakenings)
+        cuts = [cut for cut in all_cuts if cut not in first_level]
         for cut in cuts:
             slot["commands"].append(f"derive_frontier {lean_ident(name)} at {lean_ident(cut)}")
         suppliers = chain_suppliers(name, weakenings, statements, theorems)
@@ -212,7 +224,7 @@ def plan(graph: dict[str, Any], papers: dict[str, list[dict[str, Any]]]) -> dict
             # A supplied consequence the graph records need not sit where the Lean
             # chain stops, so these commands only warn when they discharge nothing.
             slot["supplied_commands"].append(f"derive_frontier {lean_ident(name)} using {using}")
-            for cut in cuts:
+            for cut in all_cuts:
                 slot["supplied_commands"].append(
                     f"derive_frontier {lean_ident(name)} at {lean_ident(cut)} using {using}")
         slot["rows"].append({
@@ -220,7 +232,7 @@ def plan(graph: dict[str, Any], papers: dict[str, list[dict[str, Any]]]) -> dict
             "hypotheses": [{"i": r.get("i"), "hypothesis": r.get("hypothesis_type") or r.get("hypothesis"),
                             "consequences": [{"type": c.get("type"), "via": c.get("via")}
                                              for c in r.get("consequences", [])]} for r in rows],
-            "frontier_cuts": cuts, "suppliers": suppliers})
+            "frontier": deeper, "frontier_cuts": cuts, "suppliers": suppliers})
     return per_problem
 
 
@@ -352,7 +364,8 @@ def render_markdown(manifest: dict[str, Any]) -> str:
         rows = manifest["rows"].get(PROBLEM_NAMES[problem], [])
         idle = [r for r in rows if r["operation"] == "idle"]
         weak = [r for r in rows if r["operation"] == "weakening"]
-        if idle or weak:
+        parts = [r for r in rows if r["operation"] == "conjuncts"]
+        if idle or weak or parts:
             out += [f"### Derived theorems (`{manifest['modules'][PROBLEM_NAMES[problem]]}`)", ""]
             for r in idle:
                 labels = ", ".join(sorted({p["label"] for p in r["papers"] if p.get("label")}))
@@ -362,10 +375,58 @@ def render_markdown(manifest: dict[str, Any]) -> str:
             for r in weak:
                 labels = ", ".join(sorted({p["label"] for p in r["papers"] if p.get("label")}))
                 cuts = ", ".join(f"`{c.rsplit('.', 1)[-1]}`" for c in r.get("frontier_cuts", []))
-                out.append(f"- `{r['theorem'].rsplit('.', 1)[-1]}` ({labels}): `weakened_i` and `frontier_i`"
+                out.append(f"- `{r['theorem'].rsplit('.', 1)[-1]}` ({labels}): `weakened_i`"
+                           + (" and `frontier_i`" if r.get("frontier", True) else "")
                            + (f", and frontiers cut at {cuts}" if cuts else "") + ".")
+            for r in parts:
+                labels = ", ".join(sorted({p["label"] for p in r["papers"] if p.get("label")}))
+                out.append(f"- `{r['theorem'].rsplit('.', 1)[-1]}.part_k` ({labels}): each claim of the "
+                           "conclusion whose proof leaves a hypothesis unused, assuming only what it uses.")
             out.append("")
     return "\n".join(out)
+
+
+def apply_verdicts(per_problem: dict[str, dict[str, Any]], verified: dict[str, Any]) -> list[dict[str, Any]]:
+    """Apply a kernel probe's verdicts (``--verified``): a command the probe shows
+    added nothing is dropped and listed, a candidate that added theorems moves into
+    the strict section, and a command the probe did not reach stays where it was.
+    A row whose own command was dropped goes with it; a verified conjunct candidate
+    becomes a ``conjuncts`` row."""
+    outcomes = verified.get("commands", {})
+    dropped: list[dict[str, Any]] = []
+    for problem, slot in per_problem.items():
+        keep: list[str] = []
+        for command in slot["commands"]:
+            verdict = outcomes.get(command)
+            if verdict is not None and not verdict["added"]:
+                dropped.append({"problem": problem, "command": command, "strict": True,
+                                "message": verdict.get("message", "")})
+            else:
+                keep.append(command)
+        pending: list[str] = []
+        for command in slot.get("supplied_commands", []):
+            verdict = outcomes.get(command)
+            if verdict is None:
+                pending.append(command)
+            elif verdict["added"]:
+                keep.append(command)
+            else:
+                dropped.append({"problem": problem, "command": command, "strict": False,
+                                "message": verdict.get("message", "")})
+        slot["commands"], slot["supplied_commands"] = keep, pending
+        gone = {d["command"] for d in dropped if d["problem"] == problem}
+        rows = []
+        for row in slot["rows"]:
+            own = {"idle": "derive_idle", "weakening": "derive_weakening",
+                   "conjuncts_candidate": "derive_conjuncts"}.get(row["operation"])
+            command = f"{own} {lean_ident(row['theorem'])}" if own else None
+            if command in gone:
+                continue
+            if row["operation"] == "conjuncts_candidate" and command in keep:
+                row = {**row, "operation": "conjuncts"}
+            rows.append(row)
+        slot["rows"] = rows
+    return dropped
 
 
 def render_module(problem: str, slot: dict[str, Any], source: dict[str, Any]) -> str:
@@ -407,8 +468,11 @@ def paper_macros(manifest: dict[str, Any], per_problem: dict[str, dict[str, Any]
         "AFPaperTheorems": len({r["theorem"] for r in rows}),
         "AFIdle": sum(1 for r in rows if r["operation"] == "idle"),
         "AFWeakened": sum(1 for r in rows if r["operation"] == "weakening"),
+        "AFConjuncts": sum(1 for r in rows if r["operation"] == "conjuncts"),
         "AFCuts": sum(len(r.get("frontier_cuts", [])) for r in rows),
         "AFSupplied": sum(len(s.get("supplied_commands", [])) for s in per_problem.values()),
+        # strict frontiers whose suppliers discharge every consequence (probe-verified)
+        "AFDischarged": sum(1 for s in per_problem.values() for c in s["commands"] if " using " in c),
         "AFNamedInputs": len(inputs),
         "AFNamedInputUses": sum(len(e["consumers"]) for e in inputs),
         "AFNamedInputsTraced": sum(1 for e in inputs if any(c.get("levels") for c in e["consumers"])),
@@ -456,10 +520,16 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--check", action="store_true")
     parser.add_argument("--paper", type=Path, help="a LaTeX file whose generated_argument_frontier_macros "
                         "region receives the frontier's counts")
+    parser.add_argument("--verified", type=Path,
+                        help="kernel-probe verdicts {probe_run, commands: {command: {added, message}}}: "
+                             "commands that added nothing are dropped, candidates that added theorems "
+                             "become strict")
     args = parser.parse_args(argv)
     graph = load_graph(args.graph)
     papers = paper_rows(args.root)
     per_problem = plan(graph, papers)
+    verified = json.loads(args.verified.read_text(encoding="utf-8")) if args.verified else None
+    not_derived = apply_verdicts(per_problem, verified) if verified else []
     source = graph.get("source", {})
     files: dict[Path, str] = {}
     for problem, slot in sorted(per_problem.items()):
@@ -477,6 +547,8 @@ def main(argv: list[str] | None = None) -> int:
                               "proofs consume of it, from the kernel-checked weakenings"),
         "named_inputs": named_inputs(graph, papers, weakening_index(graph)),
     }
+    if verified:
+        manifest["verification"] = {"probe_run": verified.get("probe_run"), "not_derived": not_derived}
     files[args.root / "docs" / "argument_frontier.json"] = json.dumps(manifest, indent=1, ensure_ascii=False) + "\n"
     files[args.root / "docs" / "ARGUMENT_FRONTIER.md"] = render_markdown(manifest) + "\n"
     if args.paper:

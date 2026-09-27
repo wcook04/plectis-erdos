@@ -4,7 +4,7 @@
 
 # Reading edition
 
-Edition fingerprint `6bc004e970af4a87`. Papers CC-BY-4.0, Will Cook, 2026. Source: <https://github.com/wcook04/plectis-erdos>. Website: <https://wcook04.github.io/plectis/maths/>.
+Edition fingerprint `2a59a5e32a7ef3f0`. Papers CC-BY-4.0, Will Cook, 2026. Source: <https://github.com/wcook04/plectis-erdos>. Website: <https://wcook04.github.io/plectis/maths/>.
 
 Read the mathematics with your own AI model, or without one, and without a clone. All three files come from one builder and one set of sources, so they agree with the papers and with each other.
 
@@ -33,7 +33,7 @@ A model with a small context window should take the starter file first and then 
 | #249 | [The Binary Totient Series](../../docs/papers/full-text/erdos249-totient-reasoning-surface.md) | longer record | 627 KB | [raw](https://raw.githubusercontent.com/wcook04/plectis-erdos/main/docs/papers/full-text/erdos249-totient-reasoning-surface.md) |
 | #251 | [Sparse Congruence-Preserving Perturbations of Dyadic Series](../../docs/papers/full-text/erdos-251-prime-gap-dyadic-series.md) | short paper | 60 KB | [raw](https://raw.githubusercontent.com/wcook04/plectis-erdos/main/docs/papers/full-text/erdos-251-prime-gap-dyadic-series.md) |
 | #251 | [Prime-Gap Dyadic Series: Perturbations, Exact Criteria and Certificates](../../docs/papers/full-text/erdos251-prime-gap-reasoning-surface.md) | longer record | 175 KB | [raw](https://raw.githubusercontent.com/wcook04/plectis-erdos/main/docs/papers/full-text/erdos251-prime-gap-reasoning-surface.md) |
-| #257 | [Weighted Support Criteria for Reciprocal Mersenne Subseries](../../docs/papers/full-text/erdos-257-mersenne-support-subseries.md) | short paper | 81 KB | [raw](https://raw.githubusercontent.com/wcook04/plectis-erdos/main/docs/papers/full-text/erdos-257-mersenne-support-subseries.md) |
+| #257 | [Weighted Support Criteria for Reciprocal Mersenne Subseries](../../docs/papers/full-text/erdos-257-mersenne-support-subseries.md) | short paper | 80 KB | [raw](https://raw.githubusercontent.com/wcook04/plectis-erdos/main/docs/papers/full-text/erdos-257-mersenne-support-subseries.md) |
 | #257 | [Reciprocal Mersenne Subseries](../../docs/papers/full-text/erdos257-mersenne-reasoning-surface.md) | longer record | 605 KB | [raw](https://raw.githubusercontent.com/wcook04/plectis-erdos/main/docs/papers/full-text/erdos257-mersenne-reasoning-surface.md) |
 | #269 | [No Finite Separable Representation at Three Prime Generators](../../docs/papers/full-text/erdos-269-three-prime-running-lcm.md) | short paper | 46 KB | [raw](https://raw.githubusercontent.com/wcook04/plectis-erdos/main/docs/papers/full-text/erdos-269-three-prime-running-lcm.md) |
 | #269 | [The Three-Prime Running LCM: Kernel Rank and Tail Arithmetic](../../docs/papers/full-text/erdos269-running-lcm-reasoning-surface.md) | longer record | 191 KB | [raw](https://raw.githubusercontent.com/wcook04/plectis-erdos/main/docs/papers/full-text/erdos269-running-lcm-reasoning-surface.md) |

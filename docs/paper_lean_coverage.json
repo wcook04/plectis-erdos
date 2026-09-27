@@ -1,7 +1,7 @@
 {
   "schema": "plectis-paper-lean-coverage/1",
-  "lean_pin": "3973d3b10bce72017b8f60093f0d6c3f4f592d80",
-  "content_digest": "sha256:4ac5f0f76631d56083aaedfb960456af210c1956d015302b0e7f4f632a32f2aa",
+  "lean_pin": "87c64ce39d0874306da91681803f9f68c2c094b3",
+  "content_digest": "sha256:6c4704bec2fe070331766748dde232a8b48df519f70eda339a4e192c78eeba7d",
   "authority": "Generated projection of the maintainer coverage count. Proof authority stays with the Lean source checked by the pinned kernel, and docs/claims.json owns claim status. Each row records which Lean declarations state one asserting paper environment and how far the row has travelled toward independent Comparator replay and Palomar preparation.",
   "row_rule": "One row per closed asserting theorem-like environment (and per registered labelled claim span) of the sixteen problem papers, short and long counted separately even when their statements agree. statement_sha256 is the sha256 of the environment body after TeX comments are removed; source is the authored file and line of its opening.",
   "status_rule": {
@@ -15,20 +15,20 @@
   "summary": {
     "rows": 677,
     "lean": {
-      "exact": 506,
-      "exact_or_stronger": 142,
+      "exact": 505,
+      "exact_or_stronger": 143,
       "modulo_named_input": 25,
       "none": 4
     },
     "comparator": {
-      "compared": 634,
+      "compared": 633,
       "not_applicable": 29,
-      "pending": 14
+      "pending": 15
     },
     "palomar": {
       "not_applicable": 29,
-      "pending": 14,
-      "prepared": 634
+      "pending": 15,
+      "prepared": 633
     },
     "uncounted_rows": 0
   },
@@ -2185,29 +2185,22 @@
       "statement_sha256": "sha256:506643145304e5fdb1a5ddbceac6a0b992d1929726a7d86ff093f2f6c01152c5",
       "source": "paper/257/erdos-257-mersenne-support-subseries.tex:1113",
       "lean": {
-        "status": "exact",
+        "status": "exact_or_stronger",
         "declarations": [
           {
-            "name": "ErdosProblems.Erdos257.PaperCompleteR20.paper_terminalhalf",
+            "name": "ErdosProblems.Erdos257.PaperCompleteR20.paper_terminalhalf_iff",
             "file": "lean/ErdosProblems/Erdos257/PaperCompleteR20/TerminalSetCorrespondence.lean"
           }
         ]
       },
       "palomar": {
-        "status": "prepared"
+        "status": "pending"
       },
       "comparator": {
-        "status": "compared",
-        "repository": "https://github.com/wcook04/plectis-erdos-lean",
-        "entries": [
-          "PalomarCorpus/E257bc"
-        ],
-        "run_ids": [
-          "35624228171"
-        ],
-        "corpus_commits": [
-          "b6cd2121370ae1eb2024399a3947dfbb815a488a"
-        ]
+        "status": "pending",
+        "queued_at": "2026-09-26",
+        "pending_reason": "Comparator entry E257_47 (replay 35935225572 at corpus commit cc7e541cf2081c6fef5a5e377d52e365e33b01eb) checks paper_terminalhalf, which is the right-to-left direction of the equivalence alone. No Challenge, Solution or replay is bound for paper_terminalhalf_iff.",
+        "next_action": "In the next governed corpus build, transport lean/ErdosProblems/Erdos257/PaperCompleteR20/TerminalSetCorrespondence.lean from public paper commit 4db6150ed53492363079661a68bed4d181eb56dd (SHA-256 6daff7f2777bede7e0831ba83061add33f7cbe520cb07ccf840f0b34e1ffcc8e; Lean v4.29.1). Build its module, probe the exact declaration closure, prepare an independent Challenge for paper_terminalhalf_iff with terminalPaperCarry and erdosSupportSeries restated from Mathlib, and its checked Solution, and run Comparator. Add an association for paper_terminalhalf_iff only after a matching source-bound replay passes, then regenerate paper evidence."
       }
     },
     {
@@ -16181,7 +16174,7 @@
       "environment": "prop",
       "kind": "proposition",
       "statement_sha256": "sha256:6652b2361d80c18bfdf3609aef0f346294121dfe9c87db2a758863b45bc7bf3d",
-      "source": "paper/reasoning-parts/erdos249/a249_front.tex:7592",
+      "source": "paper/reasoning-parts/erdos249/a249_front.tex:7597",
       "lean": {
         "status": "exact",
         "declarations": [

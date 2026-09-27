@@ -2,9 +2,9 @@
 
 This record belongs to the paper [erdos-257-mersenne-support-subseries.pdf](../paper/257/erdos-257-mersenne-support-subseries.pdf). For every result it lists the Lean declarations that state it, and the independent Comparator check where there is one. The margin marks in the paper link here.
 
-- **Lean.** Every declaration is quoted from [plectis-erdos](https://github.com/wcook04/plectis-erdos) at commit [`3973d3b10bce`](https://github.com/wcook04/plectis-erdos/tree/3973d3b10bce72017b8f60093f0d6c3f4f592d80) and is checked there by Lean's kernel (`leanprover/lean4:v4.29.1`, Mathlib `5e932f97dd25`).
+- **Lean.** Every declaration is quoted from [plectis-erdos](https://github.com/wcook04/plectis-erdos) at commit [`87c64ce39d08`](https://github.com/wcook04/plectis-erdos/tree/87c64ce39d0874306da91681803f9f68c2c094b3) and is checked there by Lean's kernel (`leanprover/lean4:v4.29.1`, Mathlib `5e932f97dd25`).
 - **Comparator.** For a compared result, each declaration was stated a second time, from Mathlib alone, as a *Challenge* in [plectis-erdos-lean](https://github.com/wcook04/plectis-erdos-lean), and a *Solution* that uses our proof was checked against it by [Comparator](https://github.com/leanprover/comparator), which also confirms that only the axioms `propext`, `Quot.sound`, `Classical.choice` are used. All checks below come from replay run [35935225572](https://github.com/wcook04/plectis-erdos-lean/actions/runs/35935225572) at corpus commit [`cc7e541cf208`](https://github.com/wcook04/plectis-erdos-lean/tree/cc7e541cf2081c6fef5a5e377d52e365e33b01eb) (tag `paper-evidence-2026-09-24`); both the default Lean kernel and the independent `nanoda` kernel accepted every entry. The replay's own report for each entry is kept in this repository and linked from each check. A Challenge shows `sorry` because it states the target without proving it.
-- **Counts.** 11 results: 10 with a Lean proof of the whole statement, 0 whose Lean proof assumes a named input (marked with a dagger), 1 without a Lean proof of the whole statement; 9 compared.
+- **Counts.** 11 results: 10 with a Lean proof of the whole statement, 0 whose Lean proof assumes a named input (marked with a dagger), 1 without a Lean proof of the whole statement; 8 compared.
 
 These checks establish that the stated propositions are proved. Whether each is the right proposition is for the reader to judge against the paper's statement, which is reproduced below.
 
@@ -32,13 +32,13 @@ These checks establish that the stated propositions are proved. Whether each is 
 
 The Lean declarations below together state this result or one that implies it. The Lean statements have the same hypotheses and conclusions as the printed ones, with $A\subseteq\Npos$ written as $0\notin A$ and $W_{b,P}(A)<\infty$ written as summability over $A$ for some finite nonempty set $P$ of primes. The fixed-base statement and, under (W), irrationality at every $b\ge2$ for every infinite subset are the two parts of `divisibilityWeightedClaim`; heredity under the fixed-base condition is `finitePrimeWeighted_fixedBase_hereditary`.
 
-1. [`ErdosProblems.Erdos257.PaperCompleteR8.divisibilityWeightedClaim`](https://github.com/wcook04/plectis-erdos/blob/3973d3b10bce72017b8f60093f0d6c3f4f592d80/lean/ErdosProblems/Erdos257/PaperCompleteR8/WeightedReturn.lean#L120)
+1. [`ErdosProblems.Erdos257.PaperCompleteR8.divisibilityWeightedClaim`](https://github.com/wcook04/plectis-erdos/blob/87c64ce39d0874306da91681803f9f68c2c094b3/lean/ErdosProblems/Erdos257/PaperCompleteR8/WeightedReturn.lean#L120)
 
 ```lean
 theorem divisibilityWeightedClaim : DivisibilityWeightedClaim
 ```
 
-where [`DivisibilityWeightedClaim`](https://github.com/wcook04/plectis-erdos/blob/3973d3b10bce72017b8f60093f0d6c3f4f592d80/lean/ErdosProblems/Erdos257/PaperCompleteR7/AnalyticTargets.lean#L61) is
+where [`DivisibilityWeightedClaim`](https://github.com/wcook04/plectis-erdos/blob/87c64ce39d0874306da91681803f9f68c2c094b3/lean/ErdosProblems/Erdos257/PaperCompleteR7/AnalyticTargets.lean#L61) is
 
 ```lean
 def DivisibilityWeightedClaim : Prop :=
@@ -49,7 +49,7 @@ def DivisibilityWeightedClaim : Prop :=
       ∀ b : ℕ, 2 ≤ b → Irrational (erdosSupportSeries b A))
 ```
 
-2. [`ErdosProblems.Erdos257.PaperCompleteR8.finitePrimeWeighted_fixedBase_hereditary`](https://github.com/wcook04/plectis-erdos/blob/3973d3b10bce72017b8f60093f0d6c3f4f592d80/lean/ErdosProblems/Erdos257/PaperCompleteR8/WeightedHereditaryClaim.lean#L31)
+2. [`ErdosProblems.Erdos257.PaperCompleteR8.finitePrimeWeighted_fixedBase_hereditary`](https://github.com/wcook04/plectis-erdos/blob/87c64ce39d0874306da91681803f9f68c2c094b3/lean/ErdosProblems/Erdos257/PaperCompleteR8/WeightedHereditaryClaim.lean#L31)
 
 ```lean
 theorem finitePrimeWeighted_fixedBase_hereditary
@@ -82,7 +82,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 The Lean declaration below states this result or one that implies it. The Lean statement has the same hypotheses and conclusion as the printed one, except that $A$ may contain $0$; the term at $0$ is $0$ in both $\sum_{a\in A}1/a$ and $X_A(b)$ under the convention $1/0=0$.
 
-[`Erdos249257.irrational_erdosSupportSeries_of_summable_reciprocal`](https://github.com/wcook04/plectis-erdos/blob/3973d3b10bce72017b8f60093f0d6c3f4f592d80/lean/Erdos249257/AllBaseReciprocalSupportIrrationality.lean#L395)
+[`Erdos249257.irrational_erdosSupportSeries_of_summable_reciprocal`](https://github.com/wcook04/plectis-erdos/blob/87c64ce39d0874306da91681803f9f68c2c094b3/lean/Erdos249257/AllBaseReciprocalSupportIrrationality.lean#L395)
 
 ```lean
 theorem irrational_erdosSupportSeries_of_summable_reciprocal
@@ -120,13 +120,13 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 The Lean declaration below states this result.
 
-[`ErdosProblems.Erdos257.PaperCompleteR8.strengthenedPositiveCoverClaim`](https://github.com/wcook04/plectis-erdos/blob/3973d3b10bce72017b8f60093f0d6c3f4f592d80/lean/ErdosProblems/Erdos257/PaperCompleteR8/PositiveCoverReturn.lean#L241)
+[`ErdosProblems.Erdos257.PaperCompleteR8.strengthenedPositiveCoverClaim`](https://github.com/wcook04/plectis-erdos/blob/87c64ce39d0874306da91681803f9f68c2c094b3/lean/ErdosProblems/Erdos257/PaperCompleteR8/PositiveCoverReturn.lean#L241)
 
 ```lean
 theorem strengthenedPositiveCoverClaim : StrengthenedPositiveCoverClaim
 ```
 
-where [`StrengthenedPositiveCoverClaim`](https://github.com/wcook04/plectis-erdos/blob/3973d3b10bce72017b8f60093f0d6c3f4f592d80/lean/ErdosProblems/Erdos257/PaperCompleteR7/AnalyticTargets.lean#L53) is
+where [`StrengthenedPositiveCoverClaim`](https://github.com/wcook04/plectis-erdos/blob/87c64ce39d0874306da91681803f9f68c2c094b3/lean/ErdosProblems/Erdos257/PaperCompleteR7/AnalyticTargets.lean#L53) is
 
 ```lean
 def StrengthenedPositiveCoverClaim : Prop :=
@@ -158,7 +158,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 The Lean declarations below together state this result or one that implies it. The two Lean statements supply the two hosts separately, with a positive support written as $0\notin E$ and a cover satisfying (V) indexed from $0$. `exists_weighted_not_strengthened_host` gives an infinite $E$ with $E\in\mathcal W_2$ and $E\notin\mathcal C$; `exists_strengthened_not_old_or_weighted_host` gives an infinite $V$ with $V\in\mathcal C$, $V\notin\mathcal W_b$ for every integer $b\ge2$, and non-summable reciprocals, which for nonnegative terms is $\sum_{a\in V}1/a=\infty$. Each adds further conclusions. The Lean host $V$ is a squarefree divisor-cube host with its own row schedule; the bounded-mass fresh-prime construction printed in the proof is an ordinary proof.
 
-1. [`ErdosProblems.Erdos257.PaperCompleteR8.exists_weighted_not_strengthened_host`](https://github.com/wcook04/plectis-erdos/blob/3973d3b10bce72017b8f60093f0d6c3f4f592d80/lean/ErdosProblems/Erdos257/PaperCompleteR8/AnalyticSeparationReturn.lean#L15)
+1. [`ErdosProblems.Erdos257.PaperCompleteR8.exists_weighted_not_strengthened_host`](https://github.com/wcook04/plectis-erdos/blob/87c64ce39d0874306da91681803f9f68c2c094b3/lean/ErdosProblems/Erdos257/PaperCompleteR8/AnalyticSeparationReturn.lean#L15)
 
 ```lean
 theorem exists_weighted_not_strengthened_host :
@@ -169,7 +169,7 @@ theorem exists_weighted_not_strengthened_host :
         Irrational (erdosSupportSeries b B))
 ```
 
-2. [`ErdosProblems.Erdos257.PaperCompleteR8.exists_strengthened_not_old_or_weighted_host`](https://github.com/wcook04/plectis-erdos/blob/3973d3b10bce72017b8f60093f0d6c3f4f592d80/lean/ErdosProblems/Erdos257/PaperCompleteR8/ReverseStrengthenedHost.lean#L387)
+2. [`ErdosProblems.Erdos257.PaperCompleteR8.exists_strengthened_not_old_or_weighted_host`](https://github.com/wcook04/plectis-erdos/blob/87c64ce39d0874306da91681803f9f68c2c094b3/lean/ErdosProblems/Erdos257/PaperCompleteR8/ReverseStrengthenedHost.lean#L387)
 
 ```lean
 theorem exists_strengthened_not_old_or_weighted_host :
@@ -193,13 +193,13 @@ theorem exists_strengthened_not_old_or_weighted_host :
 
 The Lean declarations below together state this result or one that implies it. The Lean statements have the same hypotheses and conclusion as the printed theorem, with $E\subseteq\Npos$ written as $0\notin E$. A cover satisfying (V), with its index $j\ge1$ shifted to start at $0$, is `mixedSupportClaim`; the positive-weight variant, with weights $\eta_j>0$, $\sum_j\eta_j=1$ and $\sum_jC_j\eta_j^{-\alpha_j}/(2^{\alpha_j}-1)<\infty$, is `arbitraryWeightMixedSupport_allBase_hereditary`.
 
-1. [`ErdosProblems.Erdos257.PaperCompleteR8.mixedSupportClaim`](https://github.com/wcook04/plectis-erdos/blob/3973d3b10bce72017b8f60093f0d6c3f4f592d80/lean/ErdosProblems/Erdos257/PaperCompleteR8/WeightedReturn.lean#L126)
+1. [`ErdosProblems.Erdos257.PaperCompleteR8.mixedSupportClaim`](https://github.com/wcook04/plectis-erdos/blob/87c64ce39d0874306da91681803f9f68c2c094b3/lean/ErdosProblems/Erdos257/PaperCompleteR8/WeightedReturn.lean#L126)
 
 ```lean
 theorem mixedSupportClaim : MixedSupportClaim
 ```
 
-where [`MixedSupportClaim`](https://github.com/wcook04/plectis-erdos/blob/3973d3b10bce72017b8f60093f0d6c3f4f592d80/lean/ErdosProblems/Erdos257/PaperCompleteR7/AnalyticTargets.lean#L71) is
+where [`MixedSupportClaim`](https://github.com/wcook04/plectis-erdos/blob/87c64ce39d0874306da91681803f9f68c2c094b3/lean/ErdosProblems/Erdos257/PaperCompleteR7/AnalyticTargets.lean#L71) is
 
 ```lean
 def MixedSupportClaim : Prop :=
@@ -209,7 +209,7 @@ def MixedSupportClaim : Prop :=
       ∀ b : ℕ, 2 ≤ b → Irrational (erdosSupportSeries b A)
 ```
 
-2. [`ErdosProblems.Erdos257.PaperCompleteR8.arbitraryWeightMixedSupport_allBase_hereditary`](https://github.com/wcook04/plectis-erdos/blob/3973d3b10bce72017b8f60093f0d6c3f4f592d80/lean/ErdosProblems/Erdos257/PaperCompleteR8/ArbitraryWeightMixedClaim.lean#L101)
+2. [`ErdosProblems.Erdos257.PaperCompleteR8.arbitraryWeightMixedSupport_allBase_hereditary`](https://github.com/wcook04/plectis-erdos/blob/87c64ce39d0874306da91681803f9f68c2c094b3/lean/ErdosProblems/Erdos257/PaperCompleteR8/ArbitraryWeightMixedClaim.lean#L101)
 
 ```lean
 theorem arbitraryWeightMixedSupport_allBase_hereditary
@@ -250,7 +250,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 The Lean declarations below together state this result or one that implies it. The Lean statements have the same hypotheses and conclusions as the printed ones, with $F\subseteq\Npos$ written as $0\notin F$; coprimality of $D_F$ and $b$ is proved without assuming $F$ nonempty. The order is the multiplicative order of $b$ modulo $D_F$, which is $1$ when $D_F=1$, as in the convention $\operatorname{ord}_1(b)=1$.
 
-1. [`Erdos249257.coprime_base_den_finiteErdosSum`](https://github.com/wcook04/plectis-erdos/blob/3973d3b10bce72017b8f60093f0d6c3f4f592d80/lean/Erdos249257/CertificateKernel.lean#L5221)
+1. [`Erdos249257.coprime_base_den_finiteErdosSum`](https://github.com/wcook04/plectis-erdos/blob/87c64ce39d0874306da91681803f9f68c2c094b3/lean/Erdos249257/CertificateKernel.lean#L5221)
 
 ```lean
 theorem coprime_base_den_finiteErdosSum
@@ -258,7 +258,7 @@ theorem coprime_base_den_finiteErdosSum
     Nat.Coprime b (finiteErdosSum F b).den
 ```
 
-2. [`Erdos249257.finite_period_noncollapse_rat_den`](https://github.com/wcook04/plectis-erdos/blob/3973d3b10bce72017b8f60093f0d6c3f4f592d80/lean/Erdos249257/CertificateKernel.lean#L5246)
+2. [`Erdos249257.finite_period_noncollapse_rat_den`](https://github.com/wcook04/plectis-erdos/blob/87c64ce39d0874306da91681803f9f68c2c094b3/lean/Erdos249257/CertificateKernel.lean#L5246)
 
 ```lean
 theorem finite_period_noncollapse_rat_den
@@ -268,7 +268,7 @@ theorem finite_period_noncollapse_rat_den
       = F.lcm id
 ```
 
-3. [`Erdos249257.lcm_lt_den_finiteErdosSum`](https://github.com/wcook04/plectis-erdos/blob/3973d3b10bce72017b8f60093f0d6c3f4f592d80/lean/Erdos249257/CertificateKernel.lean#L5260)
+3. [`Erdos249257.lcm_lt_den_finiteErdosSum`](https://github.com/wcook04/plectis-erdos/blob/87c64ce39d0874306da91681803f9f68c2c094b3/lean/Erdos249257/CertificateKernel.lean#L5260)
 
 ```lean
 theorem lcm_lt_den_finiteErdosSum
@@ -316,7 +316,7 @@ theorem finite_period_noncollapse_rat_den
 
 The Lean declaration below states this result.
 
-[`ErdosProblems.Erdos257.PaperCompleteR20.paper_general_repair_criteria`](https://github.com/wcook04/plectis-erdos/blob/3973d3b10bce72017b8f60093f0d6c3f4f592d80/lean/ErdosProblems/Erdos257/PaperCompleteR20/GeneralRepairCorrespondence.lean#L15)
+[`ErdosProblems.Erdos257.PaperCompleteR20.paper_general_repair_criteria`](https://github.com/wcook04/plectis-erdos/blob/87c64ce39d0874306da91681803f9f68c2c094b3/lean/ErdosProblems/Erdos257/PaperCompleteR20/GeneralRepairCorrespondence.lean#L15)
 
 ```lean
 theorem paper_general_repair_criteria {x : ℝ} (hx : 0 ≤ x) :
@@ -360,7 +360,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 The Lean declarations below together state this result or one that implies it. Item 2 follows from a Lean criterion with a weaker hypothesis: $1/21\in\Ach$ whenever $(s_R+2R+1)/2^{2R}\to0$ along some sequence of ranks $R\ge2$ tending to infinity, and ranks $R_k\to\infty$ with $s_{R_k}\le2^{R_k}$ supply such a sequence. Items 1 and 3 are stated as printed; the recurrence for $s_{R+1}$ is written with natural-number subtraction, which agrees with the integer identity because $s_{R+1}>2^{R+1}$ for all large $R$.
 
-1. [`Erdos249257.one_div_twenty_one_mem_iff_not_fatalAlignedBranch`](https://github.com/wcook04/plectis-erdos/blob/3973d3b10bce72017b8f60093f0d6c3f4f592d80/lean/Erdos249257/TwentyOneQuotientGreedy.lean#L3507)
+1. [`Erdos249257.one_div_twenty_one_mem_iff_not_fatalAlignedBranch`](https://github.com/wcook04/plectis-erdos/blob/87c64ce39d0874306da91681803f9f68c2c094b3/lean/Erdos249257/TwentyOneQuotientGreedy.lean#L3507)
 
 ```lean
 theorem one_div_twenty_one_mem_iff_not_fatalAlignedBranch :
@@ -368,7 +368,7 @@ theorem one_div_twenty_one_mem_iff_not_fatalAlignedBranch :
       ¬ TwentyOneFatalAlignedBranch
 ```
 
-2. [`Erdos249257.twentyOneCofinalEvenQuotientGreedyDecay_of_closedRows`](https://github.com/wcook04/plectis-erdos/blob/3973d3b10bce72017b8f60093f0d6c3f4f592d80/lean/Erdos249257/TwentyOneQuotientGreedy.lean#L5554)
+2. [`Erdos249257.twentyOneCofinalEvenQuotientGreedyDecay_of_closedRows`](https://github.com/wcook04/plectis-erdos/blob/87c64ce39d0874306da91681803f9f68c2c094b3/lean/Erdos249257/TwentyOneQuotientGreedy.lean#L5554)
 
 ```lean
 theorem twentyOneCofinalEvenQuotientGreedyDecay_of_closedRows
@@ -380,7 +380,7 @@ theorem twentyOneCofinalEvenQuotientGreedyDecay_of_closedRows
     TwentyOneCofinalEvenQuotientGreedyDecay
 ```
 
-where [`TwentyOneCofinalEvenQuotientGreedyDecay`](https://github.com/wcook04/plectis-erdos/blob/3973d3b10bce72017b8f60093f0d6c3f4f592d80/lean/Erdos249257/TwentyOneQuotientGreedy.lean#L5425) is
+where [`TwentyOneCofinalEvenQuotientGreedyDecay`](https://github.com/wcook04/plectis-erdos/blob/87c64ce39d0874306da91681803f9f68c2c094b3/lean/Erdos249257/TwentyOneQuotientGreedy.lean#L5425) is
 
 ```lean
 def TwentyOneCofinalEvenQuotientGreedyDecay : Prop :=
@@ -395,7 +395,7 @@ def TwentyOneCofinalEvenQuotientGreedyDecay : Prop :=
         atTop (nhds 0)
 ```
 
-3. [`Erdos249257.one_div_twenty_one_mem_mersenneAchievementSet_of_cofinalGreedyDecay`](https://github.com/wcook04/plectis-erdos/blob/3973d3b10bce72017b8f60093f0d6c3f4f592d80/lean/Erdos249257/TwentyOneQuotientGreedy.lean#L5458)
+3. [`Erdos249257.one_div_twenty_one_mem_mersenneAchievementSet_of_cofinalGreedyDecay`](https://github.com/wcook04/plectis-erdos/blob/87c64ce39d0874306da91681803f9f68c2c094b3/lean/Erdos249257/TwentyOneQuotientGreedy.lean#L5458)
 
 ```lean
 theorem one_div_twenty_one_mem_mersenneAchievementSet_of_cofinalGreedyDecay
@@ -403,7 +403,7 @@ theorem one_div_twenty_one_mem_mersenneAchievementSet_of_cofinalGreedyDecay
     (1 / 21 : ℝ) ∈ mersenneAchievementSet
 ```
 
-4. [`Erdos249257.twentyOneFatalAlignedBranch_eventually_strict_supercapacity`](https://github.com/wcook04/plectis-erdos/blob/3973d3b10bce72017b8f60093f0d6c3f4f592d80/lean/Erdos249257/TwentyOneQuotientGreedy.lean#L5625)
+4. [`Erdos249257.twentyOneFatalAlignedBranch_eventually_strict_supercapacity`](https://github.com/wcook04/plectis-erdos/blob/87c64ce39d0874306da91681803f9f68c2c094b3/lean/Erdos249257/TwentyOneQuotientGreedy.lean#L5625)
 
 ```lean
 theorem twentyOneFatalAlignedBranch_eventually_strict_supercapacity
@@ -412,7 +412,7 @@ theorem twentyOneFatalAlignedBranch_eventually_strict_supercapacity
       2 ^ R < twentyOneEvenQuotientGreedyRemainder R
 ```
 
-5. [`Erdos249257.twentyOneFatalAlignedBranch_eventually_affine_supercapacity`](https://github.com/wcook04/plectis-erdos/blob/3973d3b10bce72017b8f60093f0d6c3f4f592d80/lean/Erdos249257/TwentyOneQuotientGreedy.lean#L5658)
+5. [`Erdos249257.twentyOneFatalAlignedBranch_eventually_affine_supercapacity`](https://github.com/wcook04/plectis-erdos/blob/87c64ce39d0874306da91681803f9f68c2c094b3/lean/Erdos249257/TwentyOneQuotientGreedy.lean#L5658)
 
 ```lean
 theorem twentyOneFatalAlignedBranch_eventually_affine_supercapacity
@@ -452,32 +452,25 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 > ```
 > Then $`X_A(2)=1/2`$ for some infinite set $`A\subseteq\mathbb{N}_{>0}`$.*
 
-The Lean declaration below states this result.
+The Lean declaration below states this result or one that implies it. The Lean statement is the equivalence stated in the paragraph after the theorem: its right-to-left direction is the printed theorem, with $A\subseteq\mathbb N_{>0}$ written as $0\notin B$, and its left-to-right direction is the converse, with the approximants $M_j=j+1$ and $A_j=B\cap\{0,\ldots,j+1\}$.
 
-[`ErdosProblems.Erdos257.PaperCompleteR20.paper_terminalhalf`](https://github.com/wcook04/plectis-erdos/blob/3973d3b10bce72017b8f60093f0d6c3f4f592d80/lean/ErdosProblems/Erdos257/PaperCompleteR20/TerminalSetCorrespondence.lean#L51)
+[`ErdosProblems.Erdos257.PaperCompleteR20.paper_terminalhalf_iff`](https://github.com/wcook04/plectis-erdos/blob/87c64ce39d0874306da91681803f9f68c2c094b3/lean/ErdosProblems/Erdos257/PaperCompleteR20/TerminalSetCorrespondence.lean#L185)
 
 ```lean
-theorem paper_terminalhalf
-    (M : ℕ → ℕ) (A : ℕ → Set ℕ)
-    (hM : ∀ j, 1 ≤ M j)
-    (hlim : Filter.Tendsto M Filter.atTop Filter.atTop)
-    (hA : ∀ j n, n ∈ A j → 2 ≤ n ∧ n ≤ M j)
-    (herr : Filter.Tendsto
-      (fun j ↦ |(terminalPaperCarry (A j) (M j) : ℝ)| / (2 : ℝ) ^ M j)
-      Filter.atTop (nhds 0)) :
-    ∃ B : Set ℕ, 0 ∉ B ∧ B.Infinite ∧
-      erdosSupportSeries 2 B = (1 : ℝ) / 2
+theorem paper_terminalhalf_iff :
+    (∃ B : Set ℕ, 0 ∉ B ∧ B.Infinite ∧ erdosSupportSeries 2 B = (1 : ℝ) / 2) ↔
+      ∃ (M : ℕ → ℕ) (A : ℕ → Set ℕ),
+        (∀ j, 1 ≤ M j) ∧
+          Filter.Tendsto M Filter.atTop Filter.atTop ∧
+          (∀ j n, n ∈ A j → 2 ≤ n ∧ n ≤ M j) ∧
+          Filter.Tendsto
+            (fun j ↦ |(terminalPaperCarry (A j) (M j) : ℝ)| / (2 : ℝ) ^ M j)
+            Filter.atTop (nhds 0)
 ```
 
 <a id="res-terminalhalf-comparator"></a>
 
-**Comparator: passed** (run 35935225572, corpus commit `cc7e541cf208`).
-
-For each Lean declaration: the Challenge (the target, stated from Mathlib alone), the Solution (our proof) and the replay report.
-
-- `paper_terminalhalf`: [Challenge](https://github.com/wcook04/plectis-erdos-lean/blob/cc7e541cf2081c6fef5a5e377d52e365e33b01eb/PalomarCorpus/E257_47/Challenge.lean#L121) (E257_47, line 121), [Solution](https://github.com/wcook04/plectis-erdos-lean/blob/cc7e541cf2081c6fef5a5e377d52e365e33b01eb/Solutions/PalomarCorpus/E257_47/PaperStatementsBC.lean#L22) (PaperStatementsBC.lean, line 22), [replay report](../evidence/comparator/replay-35935225572/receipt-E257_47.json) (E257_47)
-
-Each Challenge states the same proposition as the Lean declaration it targets, with every definition it uses restated from Mathlib alone.
+**Comparator:** not yet compared.
 
 <a id="res-cylinderhalf"></a>
 
@@ -487,7 +480,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 The Lean declaration below states this result or one that implies it. The Lean hypothesis has the printed content: a stage at depth $M$ with cutoff $K\le M$ consists of sets $A_1,\ldots,A_{B(M)}\subseteq\{2,\ldots,M\}$ with $1\le K_{A_k}(m)\le B(m)$ for $1\le m\le M$ and $K_{A_k}(M)=k$, agreeing on $\{1,\ldots,K\}$, whose suffix values are $E-k$ for one integer $E\ge B(M)$. The conclusion is the printed one, with $A\subseteq\Npos$ written as $0\notin A$.
 
-[`Erdos249257.SuffixCylinderTerminalOnlyBridge.exists_infinite_positive_support_half_of_cofinalCylinderStages`](https://github.com/wcook04/plectis-erdos/blob/3973d3b10bce72017b8f60093f0d6c3f4f592d80/lean/Erdos249257/SuffixCylinderTerminalOnlyBridge.lean#L287)
+[`Erdos249257.SuffixCylinderTerminalOnlyBridge.exists_infinite_positive_support_half_of_cofinalCylinderStages`](https://github.com/wcook04/plectis-erdos/blob/87c64ce39d0874306da91681803f9f68c2c094b3/lean/Erdos249257/SuffixCylinderTerminalOnlyBridge.lean#L287)
 
 ```lean
 theorem exists_infinite_positive_support_half_of_cofinalCylinderStages

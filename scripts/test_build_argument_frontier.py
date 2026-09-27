@@ -148,6 +148,29 @@ class Modules(unittest.TestCase):
             self.assertIn(r"\newcommand{\AFNamedInputs}{1}", text)
             self.assertNotIn("old", text)
 
+    def test_probe_verdicts_prune_and_promote(self):
+        # A strict command the probe shows added nothing is dropped with its row; a
+        # candidate that added theorems becomes strict and its row a `conjuncts` row;
+        # a command the probe did not reach stays where it was.
+        g = graph()
+        g["theorems"].append({"name": f"{P}.bundle", "module": f"{P}.M", "problem": "249",
+                              "hypotheses": [PNT], "conclusion_type": "A ∧ B"})
+        papers = {f"{P}.prop_badcof": [{"row": "r", "label": "l", "lean_status": "modulo_named_input"}],
+                  "Toy.idle_thm": [{"row": "s", "label": "m", "lean_status": "exact"}],
+                  f"{P}.bundle": [{"row": "t", "label": "n", "lean_status": "modulo_named_input"}]}
+        per_problem = frontier.plan(g, papers)
+        verdicts = {"probe_run": "1", "commands": {
+            "derive_idle Toy.idle_thm": {"added": False, "message": "its proof uses every hypothesis"},
+            f"derive_conjuncts {P}.bundle": {"added": True, "message": ""}}}
+        dropped = frontier.apply_verdicts(per_problem, verdicts)
+        slot = per_problem["Erdos249"]
+        self.assertEqual([d["command"] for d in dropped], ["derive_idle Toy.idle_thm"])
+        self.assertIn(f"derive_conjuncts {P}.bundle", slot["commands"])
+        self.assertNotIn(f"derive_conjuncts {P}.bundle", slot["supplied_commands"])
+        self.assertIn(f"derive_weakening {P}.prop_badcof", slot["commands"])
+        ops = sorted(r["operation"] for r in slot["rows"])
+        self.assertEqual(ops, ["conjuncts", "weakening"])
+
     def test_lean_ident_escapes(self):
         self.assertEqual(frontier.lean_ident("A.b_c.d'"), "A.b_c.d'")
         self.assertEqual(frontier.lean_ident("A.1x"), "A.«1x»")

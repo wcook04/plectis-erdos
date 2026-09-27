@@ -5,217 +5,217 @@
         "paper/module-aliases.tex": "sha256:737606febfe16ddbda6f720c3cd5e32c2873288ebaf32d3fbe47e5266aa71aba",
         "paper/paper-house-style.sty": "sha256:1b4630ead32bfb407a2f29f5953fbb8d4140a659f6500799282a4805ba54a883",
         "paper/problem-note-preamble.tex": "sha256:088d36d7ba3d3ee0cee2df99e8915927999698f19889f8ea0b8d55b3721ec778",
-        "paper/systems/cold-clone-to-proof-receipt.tex": "sha256:d4ba169276995836b7dc914342dd9ba9371fa22e98a45dcb53c95a85cb78f133"
+        "paper/systems/cold-clone-to-proof-receipt.tex": "sha256:66d9830d42a6725086a651114277ac612b72e8ff05dd3fb7abb2cfc1286db133"
       },
-      "rendered_content_digest": "sha256:a8b4909579ef4f2d4edeb688ad1548a750590901b5d4a26c8aaa89ee8902c68b",
+      "rendered_content_digest": "sha256:1010848f99ba58a45120cdda2a005c9ce0d87f77ed6c8c0b36621f71204fdba0",
       "source_path": "paper/systems/cold-clone-to-proof-receipt.tex",
       "storage_path": "paper/systems/cold-clone-to-proof-receipt.pdf"
     },
     "erdos_1041_note": {
       "inputs": {
         "paper/1041/erdos-1041-lemniscate-newton-flow.tex": "sha256:53ff3bef71fb81041ea80b960e88147e6d75481d17048eca1f93fcabe7497999",
-        "paper/evidence/erdos-1041-lemniscate-newton-flow.tex": "sha256:a929ab146482132b6e2a1628f63e32678c18d6e266cdaf65ec5b82bf955e5372",
+        "paper/evidence/erdos-1041-lemniscate-newton-flow.tex": "sha256:230ee14958089edf4e5bdba18c76c9bd810c4c234edb2443816125db925e6e6b",
         "paper/module-aliases.tex": "sha256:737606febfe16ddbda6f720c3cd5e32c2873288ebaf32d3fbe47e5266aa71aba",
         "paper/paper-evidence.tex": "sha256:38a5b1a26bfdc0af26079896da4a7265eefdcbf2c0f217a72af7ddfaf3ae138b",
         "paper/paper-house-style.sty": "sha256:1b4630ead32bfb407a2f29f5953fbb8d4140a659f6500799282a4805ba54a883",
         "paper/problem-note-preamble.tex": "sha256:088d36d7ba3d3ee0cee2df99e8915927999698f19889f8ea0b8d55b3721ec778"
       },
-      "rendered_content_digest": "sha256:bdc0852550a79a171d5ed9fd1370fa1113ad19ad034a548b3e2bbf89053a99e5",
+      "rendered_content_digest": "sha256:136d0fcc1d3676b495e5fca4c71c145cf246809e8925b0019a22e528d97c55ee",
       "source_path": "paper/1041/erdos-1041-lemniscate-newton-flow.tex",
       "storage_path": "paper/1041/erdos-1041-lemniscate-newton-flow.pdf"
     },
     "erdos_1041_reasoning_record": {
       "inputs": {
         "paper/1041/erdos1041-lemniscate-reasoning-surface.tex": "sha256:df383fa768918554665481132badb8986c22aaa0dabfa8ca45ca42cf04e77dc7",
-        "paper/evidence/erdos1041-lemniscate-reasoning-surface.tex": "sha256:a3f5fbcfd625b29afc574a75414dfa567dd58e3ee4ea24a629f1a6b846c244e2",
+        "paper/evidence/erdos1041-lemniscate-reasoning-surface.tex": "sha256:40308078cda1259b16acccefcff618ad41a9e1e839471422dd0724990516d8ef",
         "paper/module-aliases.tex": "sha256:737606febfe16ddbda6f720c3cd5e32c2873288ebaf32d3fbe47e5266aa71aba",
         "paper/paper-evidence.tex": "sha256:38a5b1a26bfdc0af26079896da4a7265eefdcbf2c0f217a72af7ddfaf3ae138b",
         "paper/paper-house-style.sty": "sha256:1b4630ead32bfb407a2f29f5953fbb8d4140a659f6500799282a4805ba54a883",
         "paper/problem-note-preamble.tex": "sha256:088d36d7ba3d3ee0cee2df99e8915927999698f19889f8ea0b8d55b3721ec778"
       },
-      "rendered_content_digest": "sha256:687404b29cabb4a416ff600f579f9b6c42a3c08f9c402eb1037e12fae8afdeb1",
+      "rendered_content_digest": "sha256:3eb74930d5c98d4ab211d18b590c588b3335b0d3692d5e9af7ae889328049ef0",
       "source_path": "paper/1041/erdos1041-lemniscate-reasoning-surface.tex",
       "storage_path": "paper/1041/erdos1041-lemniscate-reasoning-surface.pdf"
     },
     "erdos_1049_note": {
       "inputs": {
         "paper/1049/erdos-1049-rational-base-lambert.tex": "sha256:8a4ef79bde4e4def74fc6ae6bfba990f43b824bd2638828814ddc53826e101a5",
-        "paper/evidence/erdos-1049-rational-base-lambert.tex": "sha256:59778e05bb343dfdfe7c1bfff795142ee955d0fa39da0b4c3df97abd4abb2f4e",
+        "paper/evidence/erdos-1049-rational-base-lambert.tex": "sha256:3ed8a318a4b1a30f9f4552375cd9d5d498b2b35f4bf76eab705e6f99ce4004f8",
         "paper/module-aliases.tex": "sha256:737606febfe16ddbda6f720c3cd5e32c2873288ebaf32d3fbe47e5266aa71aba",
         "paper/paper-evidence.tex": "sha256:38a5b1a26bfdc0af26079896da4a7265eefdcbf2c0f217a72af7ddfaf3ae138b",
         "paper/paper-house-style.sty": "sha256:1b4630ead32bfb407a2f29f5953fbb8d4140a659f6500799282a4805ba54a883",
         "paper/problem-note-preamble.tex": "sha256:088d36d7ba3d3ee0cee2df99e8915927999698f19889f8ea0b8d55b3721ec778"
       },
-      "rendered_content_digest": "sha256:11ebe34037d5053f4f12363ab4e0c77c1d14ac5c2ae19ad407b66be279b2adff",
+      "rendered_content_digest": "sha256:9e3835275fe2eb41204a8a36ae43aeae7a26fd25521b73a6c28bd25e213b2f30",
       "source_path": "paper/1049/erdos-1049-rational-base-lambert.tex",
       "storage_path": "paper/1049/erdos-1049-rational-base-lambert.pdf"
     },
     "erdos_1049_reasoning_record": {
       "inputs": {
         "paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex": "sha256:79483f26d8a9d3a856891fbf95af01db6c073782d4bb61e05dc7c51c4ebccb6e",
-        "paper/evidence/erdos1049-rational-base-lambert-reasoning-surface.tex": "sha256:074e861e9dd6eb9dff2f23b3fa8b04a364a228d9c667ec111a53cf83a541c7b2",
+        "paper/evidence/erdos1049-rational-base-lambert-reasoning-surface.tex": "sha256:0e4e0463886c611db0c268161137c9f35ec21505ca71d9d60318970339619458",
         "paper/module-aliases.tex": "sha256:737606febfe16ddbda6f720c3cd5e32c2873288ebaf32d3fbe47e5266aa71aba",
         "paper/paper-evidence.tex": "sha256:38a5b1a26bfdc0af26079896da4a7265eefdcbf2c0f217a72af7ddfaf3ae138b",
         "paper/paper-house-style.sty": "sha256:1b4630ead32bfb407a2f29f5953fbb8d4140a659f6500799282a4805ba54a883",
         "paper/problem-note-preamble.tex": "sha256:088d36d7ba3d3ee0cee2df99e8915927999698f19889f8ea0b8d55b3721ec778"
       },
-      "rendered_content_digest": "sha256:19e0eae3924c34a413da27536d2dc83f16649f07a4aa04888b826c9f9297c632",
+      "rendered_content_digest": "sha256:2db5ee912122089f49e9b31ddfadc5ff410d8ec4e89182146136047b92d6d6ed",
       "source_path": "paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex",
       "storage_path": "paper/1049/erdos1049-rational-base-lambert-reasoning-surface.pdf"
     },
     "erdos_243_note": {
       "inputs": {
         "paper/243/erdos-243-reciprocal-tail-rigidity.tex": "sha256:3a2910fc8e47636c6438c7bf9deaa7582b7dbb0e58bc960618055bd5783a83ec",
-        "paper/evidence/erdos-243-reciprocal-tail-rigidity.tex": "sha256:490bc6635f964567b72ed608a4a21b5912dd5f9229f0bbed61851d014aafbf11",
+        "paper/evidence/erdos-243-reciprocal-tail-rigidity.tex": "sha256:bf0352ed841bd0b0d2b8a7abe53c62357f175702f795e49627e1605b7186a04b",
         "paper/module-aliases.tex": "sha256:737606febfe16ddbda6f720c3cd5e32c2873288ebaf32d3fbe47e5266aa71aba",
         "paper/paper-evidence.tex": "sha256:38a5b1a26bfdc0af26079896da4a7265eefdcbf2c0f217a72af7ddfaf3ae138b",
         "paper/paper-house-style.sty": "sha256:1b4630ead32bfb407a2f29f5953fbb8d4140a659f6500799282a4805ba54a883",
         "paper/problem-note-preamble.tex": "sha256:088d36d7ba3d3ee0cee2df99e8915927999698f19889f8ea0b8d55b3721ec778"
       },
-      "rendered_content_digest": "sha256:453ebb3580bc15f5187d77fef92e1f015a3225b740e794b50e37dd02c26bbf7f",
+      "rendered_content_digest": "sha256:fd158301774ea55a1d88ceb6221fd3c721830cd5dfb53d7aed3bcdc8261eb937",
       "source_path": "paper/243/erdos-243-reciprocal-tail-rigidity.tex",
       "storage_path": "paper/243/erdos-243-reciprocal-tail-rigidity.pdf"
     },
     "erdos_243_reasoning_record": {
       "inputs": {
         "paper/243/erdos243-reciprocal-tail-reasoning-surface.tex": "sha256:f6b038eff6242fb20d37bcfd8cade6ea802cd8471301bd7623bb119118ac2d70",
-        "paper/evidence/erdos243-reciprocal-tail-reasoning-surface.tex": "sha256:9c98bc0be18748a081e4711a53b54cf8d2c0a37e412307b6614df40849b068ad",
+        "paper/evidence/erdos243-reciprocal-tail-reasoning-surface.tex": "sha256:8f612dcd5f97733c333a73d1de43cd87e1da02d24323627e71547432cc3c7ef4",
         "paper/module-aliases.tex": "sha256:737606febfe16ddbda6f720c3cd5e32c2873288ebaf32d3fbe47e5266aa71aba",
         "paper/paper-evidence.tex": "sha256:38a5b1a26bfdc0af26079896da4a7265eefdcbf2c0f217a72af7ddfaf3ae138b",
         "paper/paper-house-style.sty": "sha256:1b4630ead32bfb407a2f29f5953fbb8d4140a659f6500799282a4805ba54a883",
         "paper/problem-note-preamble.tex": "sha256:088d36d7ba3d3ee0cee2df99e8915927999698f19889f8ea0b8d55b3721ec778"
       },
-      "rendered_content_digest": "sha256:0356e3efbf01fced922fcd608295cca5b86e00fe5ca903db9f63fa6eb0c0e8b9",
+      "rendered_content_digest": "sha256:6c4c1a61b310048d846536e87ef262a22cd750925e5d8fc72927075a1f0f5bba",
       "source_path": "paper/243/erdos243-reciprocal-tail-reasoning-surface.tex",
       "storage_path": "paper/243/erdos243-reciprocal-tail-reasoning-surface.pdf"
     },
     "erdos_249_note": {
       "inputs": {
-        "paper/249/erdos-249-binary-totient-series.tex": "sha256:05b086860e1d04afa531ec89042c906afb4d84e19b2fadea9113064d53fe926e",
-        "paper/evidence/erdos-249-binary-totient-series.tex": "sha256:59dbf9fb83d0fc99d50ab417ca99fbab70186685a7b529a76d71345cda43ec9f",
+        "paper/249/erdos-249-binary-totient-series.tex": "sha256:e21fa9cae285f852955621085b835ed0f229408cf92fb718cb6e1b4ab80b27e2",
+        "paper/evidence/erdos-249-binary-totient-series.tex": "sha256:4185be05c42efb35c54f439f16f058f982a2cf8c15de85d844e7a265ba2c406d",
         "paper/module-aliases.tex": "sha256:737606febfe16ddbda6f720c3cd5e32c2873288ebaf32d3fbe47e5266aa71aba",
         "paper/paper-evidence.tex": "sha256:38a5b1a26bfdc0af26079896da4a7265eefdcbf2c0f217a72af7ddfaf3ae138b",
         "paper/paper-house-style.sty": "sha256:1b4630ead32bfb407a2f29f5953fbb8d4140a659f6500799282a4805ba54a883",
         "paper/problem-note-preamble.tex": "sha256:088d36d7ba3d3ee0cee2df99e8915927999698f19889f8ea0b8d55b3721ec778"
       },
-      "rendered_content_digest": "sha256:de37e323af20e84d9ddb811393acb932c8224ebad9602aab7c8577ff3b23e848",
+      "rendered_content_digest": "sha256:ced8e7606bd19f89b179027224db81736217ca6095fe8f1912633f483e672022",
       "source_path": "paper/249/erdos-249-binary-totient-series.tex",
       "storage_path": "paper/249/erdos-249-binary-totient-series.pdf"
     },
     "erdos_249_reasoning_record": {
       "inputs": {
-        "paper/249/erdos249-totient-reasoning-surface.tex": "sha256:a6c609c1f6ae72f3f1d287164b1d0d7ebfc02b9dce643fb383373edfafabcd53",
-        "paper/evidence/erdos249-totient-reasoning-surface.tex": "sha256:08ed58bd22955ab2e20c8b5bcecd7cd90e548a7a82415d905a2219d4353a9475",
+        "paper/249/erdos249-totient-reasoning-surface.tex": "sha256:b0d75ab24f3a7ee51313d263d9d57f65a53f59c198b0fbf4b3f391742ac39dea",
+        "paper/evidence/erdos249-totient-reasoning-surface.tex": "sha256:e709deb144153c85085037c71a4da7b315858ab21a4f788e6aec7b08d010a509",
         "paper/module-aliases.tex": "sha256:737606febfe16ddbda6f720c3cd5e32c2873288ebaf32d3fbe47e5266aa71aba",
         "paper/paper-evidence.tex": "sha256:38a5b1a26bfdc0af26079896da4a7265eefdcbf2c0f217a72af7ddfaf3ae138b",
         "paper/paper-house-style.sty": "sha256:1b4630ead32bfb407a2f29f5953fbb8d4140a659f6500799282a4805ba54a883",
         "paper/problem-note-preamble.tex": "sha256:088d36d7ba3d3ee0cee2df99e8915927999698f19889f8ea0b8d55b3721ec778"
       },
-      "rendered_content_digest": "sha256:80c54905d3a3baaff6fe24a7a64a5c4465218c6fdb0804088cc2c2af4545a0a4",
+      "rendered_content_digest": "sha256:d71d0bc14562175e4feb87fcfe189df67fbac73f5eda598994b0152694a524d8",
       "source_path": "paper/249/erdos249-totient-reasoning-surface.tex",
       "storage_path": "paper/249/erdos249-totient-reasoning-surface.pdf"
     },
     "erdos_251_note": {
       "inputs": {
         "paper/251/erdos-251-prime-gap-dyadic-series.tex": "sha256:3b9a9c7c5b29fbf6c6c8bb782c75217c51fc8104e64333d939e050b76367bc80",
-        "paper/evidence/erdos-251-prime-gap-dyadic-series.tex": "sha256:23bccbedaffeb82dc8103b1c9264913d841ae1d494899eb86c7827b9d657958b",
+        "paper/evidence/erdos-251-prime-gap-dyadic-series.tex": "sha256:3a354dbf79f66e1393007170e45767afa79488cb093e12d763bca69a8b889c1b",
         "paper/module-aliases.tex": "sha256:737606febfe16ddbda6f720c3cd5e32c2873288ebaf32d3fbe47e5266aa71aba",
         "paper/paper-evidence.tex": "sha256:38a5b1a26bfdc0af26079896da4a7265eefdcbf2c0f217a72af7ddfaf3ae138b",
         "paper/paper-house-style.sty": "sha256:1b4630ead32bfb407a2f29f5953fbb8d4140a659f6500799282a4805ba54a883",
         "paper/problem-note-preamble.tex": "sha256:088d36d7ba3d3ee0cee2df99e8915927999698f19889f8ea0b8d55b3721ec778"
       },
-      "rendered_content_digest": "sha256:5d8fb907b907470ce85decf50e2589100f376f77133f3e3867d23af5888373f9",
+      "rendered_content_digest": "sha256:aaa061eda5b85618380827f57b8e4d39a1238b120e1aed373453adf0db1fd760",
       "source_path": "paper/251/erdos-251-prime-gap-dyadic-series.tex",
       "storage_path": "paper/251/erdos-251-prime-gap-dyadic-series.pdf"
     },
     "erdos_251_reasoning_record": {
       "inputs": {
         "paper/251/erdos251-prime-gap-reasoning-surface.tex": "sha256:5e366351cb650eb751151f50081cf3a6b6456d6409de706a19c9adaa09b86091",
-        "paper/evidence/erdos251-prime-gap-reasoning-surface.tex": "sha256:3dfba9f48cde631da4d137302db7a32cc06545b357a74816b9fbdff626bc9f8f",
+        "paper/evidence/erdos251-prime-gap-reasoning-surface.tex": "sha256:91b522d75847f1c46cca0db48d2e21547414f35712bd141244e62251705ba6bc",
         "paper/module-aliases.tex": "sha256:737606febfe16ddbda6f720c3cd5e32c2873288ebaf32d3fbe47e5266aa71aba",
         "paper/paper-evidence.tex": "sha256:38a5b1a26bfdc0af26079896da4a7265eefdcbf2c0f217a72af7ddfaf3ae138b",
         "paper/paper-house-style.sty": "sha256:1b4630ead32bfb407a2f29f5953fbb8d4140a659f6500799282a4805ba54a883",
         "paper/problem-note-preamble.tex": "sha256:088d36d7ba3d3ee0cee2df99e8915927999698f19889f8ea0b8d55b3721ec778"
       },
-      "rendered_content_digest": "sha256:ca56ac14872ce4c28a8ca6962ae44d0cc4bf16637ff8a8a6b9e62091d3bd6153",
+      "rendered_content_digest": "sha256:18b6412167bcf0d4fbefb68a81320d23fd14cd390c406b2e932b4abb2d7f3605",
       "source_path": "paper/251/erdos251-prime-gap-reasoning-surface.tex",
       "storage_path": "paper/251/erdos251-prime-gap-reasoning-surface.pdf"
     },
     "erdos_257_note": {
       "inputs": {
         "paper/257/erdos-257-mersenne-support-subseries.tex": "sha256:257ba6b57ef2bc5d8db6066b2f7a5ea1cc8f9640c0756e7c8bc9bc5116909483",
-        "paper/evidence/erdos-257-mersenne-support-subseries.tex": "sha256:a5a3d27605309317ea94a638333cc02dbfe688476826bafae54f554d50fa3b14",
+        "paper/evidence/erdos-257-mersenne-support-subseries.tex": "sha256:4a9b5be10017cf4d2811778771b4f42f8bd98cc42a98985778889a5568f44a07",
         "paper/module-aliases.tex": "sha256:737606febfe16ddbda6f720c3cd5e32c2873288ebaf32d3fbe47e5266aa71aba",
         "paper/paper-evidence.tex": "sha256:38a5b1a26bfdc0af26079896da4a7265eefdcbf2c0f217a72af7ddfaf3ae138b",
         "paper/paper-house-style.sty": "sha256:1b4630ead32bfb407a2f29f5953fbb8d4140a659f6500799282a4805ba54a883",
         "paper/problem-note-preamble.tex": "sha256:088d36d7ba3d3ee0cee2df99e8915927999698f19889f8ea0b8d55b3721ec778"
       },
-      "rendered_content_digest": "sha256:186a2b1c10183f0e3da7438b6bb5f327b383f32c4f0861563b867e033f395fe8",
+      "rendered_content_digest": "sha256:4c252d4425885fec1ca180c3c5b550661296524c61d99feeaab8f5ad09cefd96",
       "source_path": "paper/257/erdos-257-mersenne-support-subseries.tex",
       "storage_path": "paper/257/erdos-257-mersenne-support-subseries.pdf"
     },
     "erdos_257_reasoning_record": {
       "inputs": {
         "paper/257/erdos257-mersenne-reasoning-surface.tex": "sha256:781868f903af0624baed4f556a46eccb225f88c087adcd04ce488e9606204131",
-        "paper/evidence/erdos257-mersenne-reasoning-surface.tex": "sha256:5d5f4fd9c4c9253037ca9675c3aa7d2c71b2eb82f5552f8f79c3fe00f1fd5cc1",
+        "paper/evidence/erdos257-mersenne-reasoning-surface.tex": "sha256:e28354a37384aac11bae5f1df5e74408ab65b9641e1f4aa8dcaf6eb897a8727b",
         "paper/module-aliases.tex": "sha256:737606febfe16ddbda6f720c3cd5e32c2873288ebaf32d3fbe47e5266aa71aba",
         "paper/paper-evidence.tex": "sha256:38a5b1a26bfdc0af26079896da4a7265eefdcbf2c0f217a72af7ddfaf3ae138b",
         "paper/paper-house-style.sty": "sha256:1b4630ead32bfb407a2f29f5953fbb8d4140a659f6500799282a4805ba54a883",
         "paper/problem-note-preamble.tex": "sha256:088d36d7ba3d3ee0cee2df99e8915927999698f19889f8ea0b8d55b3721ec778"
       },
-      "rendered_content_digest": "sha256:1c6127d739bc8230da3e09eb15774d4824d0264ea2b4850812f272ccedace340",
+      "rendered_content_digest": "sha256:5075dae8d7569e1edb1c2887f300cedb43ff39f6c21c123036954f2ddaadd9d9",
       "source_path": "paper/257/erdos257-mersenne-reasoning-surface.tex",
       "storage_path": "paper/257/erdos257-mersenne-reasoning-surface.pdf"
     },
     "erdos_269_note": {
       "inputs": {
         "paper/269/erdos-269-three-prime-running-lcm.tex": "sha256:848b631510dbda4efdfce326b348e7b3d650b6de3e3f9449c0710f2cb6e6e865",
-        "paper/evidence/erdos-269-three-prime-running-lcm.tex": "sha256:d051d6b1d3075b5b753d87ecc0fef5bca72045d5a0e2424d1293c5b6c3ec87ab",
+        "paper/evidence/erdos-269-three-prime-running-lcm.tex": "sha256:b8005ca0b07ff393076b59d8f0731a5a2097f147c25385a9d3655f04d085a4fb",
         "paper/module-aliases.tex": "sha256:737606febfe16ddbda6f720c3cd5e32c2873288ebaf32d3fbe47e5266aa71aba",
         "paper/paper-evidence.tex": "sha256:38a5b1a26bfdc0af26079896da4a7265eefdcbf2c0f217a72af7ddfaf3ae138b",
         "paper/paper-house-style.sty": "sha256:1b4630ead32bfb407a2f29f5953fbb8d4140a659f6500799282a4805ba54a883",
         "paper/problem-note-preamble.tex": "sha256:088d36d7ba3d3ee0cee2df99e8915927999698f19889f8ea0b8d55b3721ec778"
       },
-      "rendered_content_digest": "sha256:c31f003aa97d8acb41cab44aafe5b28cbd20ac78236314d881955be65297458c",
+      "rendered_content_digest": "sha256:16b2e5cd83275226988401da1f6c5feb60488b314b50c43cacf7b3460770ecfa",
       "source_path": "paper/269/erdos-269-three-prime-running-lcm.tex",
       "storage_path": "paper/269/erdos-269-three-prime-running-lcm.pdf"
     },
     "erdos_269_reasoning_record": {
       "inputs": {
         "paper/269/erdos269-running-lcm-reasoning-surface.tex": "sha256:316fd934a7a966623319e2cc56e6c035d3ea13067e41f980f7a5eacf3be07870",
-        "paper/evidence/erdos269-running-lcm-reasoning-surface.tex": "sha256:6aaa828b4e195e3771525f8db35cd4b5d3452af3e3b6d2dbdcc825c4f1cfa870",
+        "paper/evidence/erdos269-running-lcm-reasoning-surface.tex": "sha256:4336846da0a44abdf3a54a0953b64f26d6668f769301fa1d533c5550ca8fa7d9",
         "paper/module-aliases.tex": "sha256:737606febfe16ddbda6f720c3cd5e32c2873288ebaf32d3fbe47e5266aa71aba",
         "paper/paper-evidence.tex": "sha256:38a5b1a26bfdc0af26079896da4a7265eefdcbf2c0f217a72af7ddfaf3ae138b",
         "paper/paper-house-style.sty": "sha256:1b4630ead32bfb407a2f29f5953fbb8d4140a659f6500799282a4805ba54a883",
         "paper/problem-note-preamble.tex": "sha256:088d36d7ba3d3ee0cee2df99e8915927999698f19889f8ea0b8d55b3721ec778"
       },
-      "rendered_content_digest": "sha256:ac9dc3d9a2e86bf6858c99897c16e75e7e3c1fefbec2db96c8d08f6dc4604af6",
+      "rendered_content_digest": "sha256:c8f258c7995b6e192f1f46ec1475153a2b547dccc5c2c39a5b99e0d333e43f18",
       "source_path": "paper/269/erdos269-running-lcm-reasoning-surface.tex",
       "storage_path": "paper/269/erdos269-running-lcm-reasoning-surface.pdf"
     },
     "erdos_68_note": {
       "inputs": {
         "paper/68/erdos-68-factorial-denominator-irrationality.tex": "sha256:260525ba1e5a4b98ca0b951ebf35f36dd7cef3d42ae0ce39a5666abd33dd7f1f",
-        "paper/evidence/erdos-68-factorial-denominator-irrationality.tex": "sha256:c769b2ab2640788991b7711e280c8bf0848ff1000ada2216fb6d9f61f179f382",
+        "paper/evidence/erdos-68-factorial-denominator-irrationality.tex": "sha256:338f966db0fbaa149028489f1b03b98149c52d1007822ba1d14e2d4f537d2e41",
         "paper/module-aliases.tex": "sha256:737606febfe16ddbda6f720c3cd5e32c2873288ebaf32d3fbe47e5266aa71aba",
         "paper/paper-evidence.tex": "sha256:38a5b1a26bfdc0af26079896da4a7265eefdcbf2c0f217a72af7ddfaf3ae138b",
         "paper/paper-house-style.sty": "sha256:1b4630ead32bfb407a2f29f5953fbb8d4140a659f6500799282a4805ba54a883",
         "paper/problem-note-preamble.tex": "sha256:088d36d7ba3d3ee0cee2df99e8915927999698f19889f8ea0b8d55b3721ec778"
       },
-      "rendered_content_digest": "sha256:0cb4757196b3e52a98640a0d6b14eb295f48406c4563525967804a45882077ec",
+      "rendered_content_digest": "sha256:f5c0d7c854e6e1691c9e63f8e0e85d2577fdb27a10e594590a6e79b3cad3c285",
       "source_path": "paper/68/erdos-68-factorial-denominator-irrationality.tex",
       "storage_path": "paper/68/erdos-68-factorial-denominator-irrationality.pdf"
     },
     "erdos_68_reasoning_record": {
       "inputs": {
         "paper/68/erdos68-factorial-reasoning-surface.tex": "sha256:9c7466de76bfd6c91fcd05522c23c63e9549652f7da01385269c4253cc85d1b8",
-        "paper/evidence/erdos68-factorial-reasoning-surface.tex": "sha256:07b3a42fc1fbf9e65b31d55b610d295ebbe8cec20af172988f7a3273275e3ff5",
+        "paper/evidence/erdos68-factorial-reasoning-surface.tex": "sha256:0dd83b80179135727e5b812d421c447f19d50ab3d3d9c7bf2519c92ea738a730",
         "paper/module-aliases.tex": "sha256:737606febfe16ddbda6f720c3cd5e32c2873288ebaf32d3fbe47e5266aa71aba",
         "paper/paper-evidence.tex": "sha256:38a5b1a26bfdc0af26079896da4a7265eefdcbf2c0f217a72af7ddfaf3ae138b",
         "paper/paper-house-style.sty": "sha256:1b4630ead32bfb407a2f29f5953fbb8d4140a659f6500799282a4805ba54a883",
         "paper/problem-note-preamble.tex": "sha256:088d36d7ba3d3ee0cee2df99e8915927999698f19889f8ea0b8d55b3721ec778"
       },
-      "rendered_content_digest": "sha256:5365ff9673ba541bd268cd70ecb2a0081bde88128e4b53b4b04b8a0413198c07",
+      "rendered_content_digest": "sha256:1b2c0619e2765736a6d25bbd10e8ad4ecfd51daa141c27d4164b3314abc47b03",
       "source_path": "paper/68/erdos68-factorial-reasoning-surface.tex",
       "storage_path": "paper/68/erdos68-factorial-reasoning-surface.pdf"
     },
@@ -258,9 +258,9 @@
         "paper/module-aliases.tex": "sha256:737606febfe16ddbda6f720c3cd5e32c2873288ebaf32d3fbe47e5266aa71aba",
         "paper/paper-house-style.sty": "sha256:1b4630ead32bfb407a2f29f5953fbb8d4140a659f6500799282a4805ba54a883",
         "paper/problem-note-preamble.tex": "sha256:088d36d7ba3d3ee0cee2df99e8915927999698f19889f8ea0b8d55b3721ec778",
-        "paper/systems/claim-faithful-publication-systems-paper.tex": "sha256:d0c3108758a88c8f7353d7871943120828eedb2880e1d828e42b42cbc5165bf8"
+        "paper/systems/claim-faithful-publication-systems-paper.tex": "sha256:9657da674716738c4eaa32b64bfcfd843428b3edd9642c893ba12f0ba395e4e4"
       },
-      "rendered_content_digest": "sha256:e552827777c713d98687429bfab529b7665d3a80e60dce921c338de76796bd3f",
+      "rendered_content_digest": "sha256:3f62ca12d26acac1e5dbc48f124f3c5502a5a94fa0cbec618fd158e066906bdb",
       "source_path": "paper/systems/claim-faithful-publication-systems-paper.tex",
       "storage_path": "paper/systems/claim-faithful-publication-systems-paper.pdf"
     }
