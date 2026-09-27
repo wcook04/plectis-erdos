@@ -1,9 +1,19 @@
 {
  "schema": "plectis-argument-frontier/1",
  "source": {
-  "source_revision": "5176d8878036549d6e35a4cb42d8e26fdb3e4b46",
+  "source_revision": "4bcc5ecbf9a4720c53a1e4c22740f4f1e91041d5",
   "lean_tree": "ca2f57c9c7e461d54d2617d2ae33016ec7481567",
-  "export_digest": "sha256:72f536cbff1b601e76f90a58861b93df87bea048184d48ed1b6c897c6595e907"
+  "export_digest": "sha256:4b6a57486cc7526ec79c14d8bc878ff7c12568ba9865b8d41e969d381650636f",
+  "combined_exports": [
+   {
+    "export_digest": "sha256:72f536cbff1b601e76f90a58861b93df87bea048184d48ed1b6c897c6595e907",
+    "source_revision": "5176d8878036549d6e35a4cb42d8e26fdb3e4b46"
+   },
+   {
+    "export_digest": "sha256:4b6a57486cc7526ec79c14d8bc878ff7c12568ba9865b8d41e969d381650636f",
+    "source_revision": "4bcc5ecbf9a4720c53a1e4c22740f4f1e91041d5"
+   }
+  ]
  },
  "rule": "every row names a theorem a paper cites and a derivation the export's kernel check reported; the generated module rebuilds it and the kernel checks it when the module compiles (argumentGraph.strict makes a failed rebuild a build error)",
  "modules": {
@@ -268,6 +278,181 @@
      }
     ],
     "source": null
+   },
+   {
+    "operation": "weakening",
+    "theorem": "ErdosProblems.Erdos1041.PaperCompleteR21.Arity.arity_not_capacity",
+    "papers": [
+     {
+      "row": "erdos-1041-lemniscate-newton-flow#res:arity-not-capacity",
+      "label": "res:arity-not-capacity",
+      "paper": "erdos-1041-lemniscate-newton-flow",
+      "side": "short",
+      "lean_status": "modulo_named_input",
+      "source": "paper/1041/erdos-1041-lemniscate-newton-flow.tex:858"
+     }
+    ],
+    "source": null,
+    "hypotheses": [
+     {
+      "i": 0,
+      "hypothesis": "ErdosProblems.Erdos1041.PaperCompleteR21.LemniscateTransfiniteDiameter",
+      "consequences": [
+       {
+        "type": "ErdosProblems.Erdos1041.PaperCompleteR21.transfiniteDiameter     {z | ‖Polynomial.eval z ErdosProblems.Erdos1041.PaperCompleteR21.Arity.G‖ ≤ 2 * (187 / 2000)} =   (2 * (187 / 2000)) ^ (1 / ↑ErdosProblems.Erdos1041.PaperCompleteR21.Arity.G.natDegree)",
+        "via": [
+         "hypothesis"
+        ]
+       }
+      ]
+     }
+    ],
+    "frontier_cuts": [],
+    "suppliers": []
+   },
+   {
+    "operation": "weakening",
+    "theorem": "ErdosProblems.Erdos1041.PaperCompleteR21.discSep_cubic_six_fifths",
+    "papers": [
+     {
+      "row": "erdos-1041-lemniscate-newton-flow#res:critical-value-thresholds",
+      "label": "res:critical-value-thresholds",
+      "paper": "erdos-1041-lemniscate-newton-flow",
+      "side": "short",
+      "lean_status": "modulo_named_input",
+      "source": "paper/1041/erdos-1041-lemniscate-newton-flow.tex:692"
+     }
+    ],
+    "source": null,
+    "hypotheses": [
+     {
+      "i": 0,
+      "hypothesis": "ErdosProblems.Erdos1041.PaperCompleteR21.DiscSepBergmanArea",
+      "consequences": [
+       {
+        "type": "∀ {f : Polynomial ℂ} {n : ℕ} {c : ℂ} {w₀ S : ℝ},   3 ≤ n →     f.natDegree = n →       f.Monic →         Polynomial.eval c (Polynomial.derivative f) = 0 →           Polynomial.eval c (Polynomial.derivative (Polynomial.derivative f)) ≠ 0 →             Polynomial.eval c f ≠ 0 →               0 ≤ w₀ →                 w₀ ≤ 1 →                   max w₀ (1 - w₀) < S →                     (∀ (d : ℂ),                         d ≠ c →                           Polynomial.eval d (Polynomial.derivative f) = 0 →                             S ≤ ‖Polynomial.eval d f / Polynomial.eval c f - ↑w₀‖) →                       ∃ a b γ Lf,                         a ≠ b ∧                           Polynomial.eval a  …",
+        "via": [
+         "ErdosProblems.Erdos1041.PaperCompleteR21.discSep_separation_short"
+        ]
+       }
+      ]
+     }
+    ],
+    "frontier_cuts": [
+     "ErdosProblems.Erdos1041.PaperCompleteR21.discSep_separation_short"
+    ],
+    "suppliers": []
+   },
+   {
+    "operation": "weakening",
+    "theorem": "ErdosProblems.Erdos1041.PaperCompleteR21.discSep_separation_short",
+    "papers": [
+     {
+      "row": "erdos-1041-lemniscate-newton-flow#res:critical-value-separation",
+      "label": "res:critical-value-separation",
+      "paper": "erdos-1041-lemniscate-newton-flow",
+      "side": "short",
+      "lean_status": "modulo_named_input",
+      "source": "paper/1041/erdos-1041-lemniscate-newton-flow.tex:663"
+     }
+    ],
+    "source": null,
+    "hypotheses": [
+     {
+      "i": 0,
+      "hypothesis": "ErdosProblems.Erdos1041.PaperCompleteR21.DiscSepBergmanArea",
+      "consequences": [
+       {
+        "type": "∀ {P : Polynomial ℂ} {n : ℕ} {w₀ S : ℝ},   ErdosProblems.Erdos1041.PaperCompleteR21.DiscSepNormalised P n w₀ S →     ∃ Z L,       ErdosProblems.Erdos1041.PaperCompleteR21.DiscSepConnector P Z L ∧         Polynomial.eval (Z (-1)) P = 0 ∧           Polynomial.eval (Z 1) P = 0 ∧             Z (-1) ≠ Z 1 ∧               (∀ ξ ∈ Set.Icc (-1) 1, ‖Polynomial.eval (Z ξ) P‖ ≤ 1) ∧                 L ^ 2 ≤ 2 * ErdosProblems.Erdos1041.PaperCompleteR21.discSepCoefficient n S (w₀ * (1 - w₀)) ∧                   (ErdosProblems.Erdos1041.PaperCompleteR21.discSepCoefficient n S (w₀ * (1 - w₀)) < 2 → L < 2)",
+        "via": [
+         "ErdosProblems.Erdos1041.PaperCompleteR21.discSep_separation_long"
+        ]
+       }
+      ]
+     }
+    ],
+    "frontier_cuts": [],
+    "suppliers": []
+   },
+   {
+    "operation": "weakening",
+    "theorem": "ErdosProblems.Erdos1041.PaperCompleteR21.discSep_uniform_radius",
+    "papers": [
+     {
+      "row": "erdos-1041-lemniscate-newton-flow#res:critical-value-thresholds",
+      "label": "res:critical-value-thresholds",
+      "paper": "erdos-1041-lemniscate-newton-flow",
+      "side": "short",
+      "lean_status": "modulo_named_input",
+      "source": "paper/1041/erdos-1041-lemniscate-newton-flow.tex:692"
+     },
+     {
+      "row": "erdos1041-lemniscate-reasoning-surface#res:critical-value-thresholds",
+      "label": "res:critical-value-thresholds",
+      "paper": "erdos1041-lemniscate-reasoning-surface",
+      "side": "long",
+      "lean_status": "modulo_named_input",
+      "source": "paper/reasoning-parts/erdos1041/core.tex:1560"
+     }
+    ],
+    "source": null,
+    "hypotheses": [
+     {
+      "i": 0,
+      "hypothesis": "ErdosProblems.Erdos1041.PaperCompleteR21.DiscSepBergmanArea",
+      "consequences": [
+       {
+        "type": "∀ {f : Polynomial ℂ} {n : ℕ} {c : ℂ} {w₀ S : ℝ},   3 ≤ n →     f.natDegree = n →       f.Monic →         Polynomial.eval c (Polynomial.derivative f) = 0 →           Polynomial.eval c (Polynomial.derivative (Polynomial.derivative f)) ≠ 0 →             Polynomial.eval c f ≠ 0 →               0 ≤ w₀ →                 w₀ ≤ 1 →                   max w₀ (1 - w₀) < S →                     (∀ (d : ℂ),                         d ≠ c →                           Polynomial.eval d (Polynomial.derivative f) = 0 →                             S ≤ ‖Polynomial.eval d f / Polynomial.eval c f - ↑w₀‖) →                       ∃ a b γ Lf,                         a ≠ b ∧                           Polynomial.eval a  …",
+        "via": [
+         "ErdosProblems.Erdos1041.PaperCompleteR21.discSep_separation_short"
+        ]
+       }
+      ]
+     }
+    ],
+    "frontier_cuts": [
+     "ErdosProblems.Erdos1041.PaperCompleteR21.discSep_separation_short"
+    ],
+    "suppliers": []
+   },
+   {
+    "operation": "weakening",
+    "theorem": "ErdosProblems.Erdos1041.PaperCompleteR21.scaledLowCriticalFiveHalves_of_lowCritical",
+    "papers": [
+     {
+      "row": "erdos-1041-lemniscate-newton-flow#res:scaled-low-critical",
+      "label": "res:scaled-low-critical",
+      "paper": "erdos-1041-lemniscate-newton-flow",
+      "side": "short",
+      "lean_status": "modulo_named_input",
+      "source": "paper/1041/erdos-1041-lemniscate-newton-flow.tex:218"
+     },
+     {
+      "row": "erdos1041-lemniscate-reasoning-surface#res:scaled-low-critical-path",
+      "label": "res:scaled-low-critical-path",
+      "paper": "erdos1041-lemniscate-reasoning-surface",
+      "side": "long",
+      "lean_status": "modulo_named_input",
+      "source": "paper/reasoning-parts/erdos1041/core.tex:726"
+     }
+    ],
+    "source": null,
+    "hypotheses": [
+     {
+      "i": 0,
+      "hypothesis": "ErdosProblems.Erdos1041.PaperAnalyticTargets.LowCriticalThirteenTwentyFifths",
+      "consequences": [
+       {
+        "type": "ErdosProblems.Erdos1041.PaperAnalyticTargets.ScaledLowCritical",
+        "via": [
+         "ErdosProblems.Erdos1041.PaperCompleteR21.scaledLowCritical_of_lowCritical"
+        ]
+       }
+      ]
+     }
+    ],
+    "frontier_cuts": [],
+    "suppliers": []
    }
   ],
   "Erdos1049": [
@@ -1169,6 +1354,445 @@
      }
     ],
     "source": null
+   },
+   {
+    "operation": "weakening",
+    "theorem": "ErdosProblems.Erdos249.PaperCompleteR20.lcm_grid_flatness",
+    "papers": [
+     {
+      "row": "erdos249-totient-reasoning-surface#catalogue:cert:b6",
+      "label": "catalogue:cert:b6",
+      "paper": "erdos249-totient-reasoning-surface",
+      "side": "long",
+      "lean_status": "exact",
+      "source": "paper/reasoning-parts/erdos249/a249_front.tex:2395"
+     },
+     {
+      "row": "erdos249-totient-reasoning-surface#prop:B6-inv",
+      "label": "prop:B6-inv",
+      "paper": "erdos249-totient-reasoning-surface",
+      "side": "long",
+      "lean_status": "exact",
+      "source": "paper/reasoning-parts/erdos249/a249_front.tex:3307"
+     },
+     {
+      "row": "erdos249-totient-reasoning-surface#prop:tail-integrality-lcm-grid",
+      "label": "prop:tail-integrality-lcm-grid",
+      "paper": "erdos249-totient-reasoning-surface",
+      "side": "long",
+      "lean_status": "exact",
+      "source": "paper/reasoning-parts/erdos249/a249_front.tex:6339"
+     }
+    ],
+    "source": null,
+    "hypotheses": [
+     {
+      "i": 0,
+      "hypothesis": "¬Irrational (∑' (n : ℕ), ↑n.totient / 2 ^ n)",
+      "consequences": [
+       {
+        "type": "∃ t₁,   ∀ (t : ℕ),     t₁ ≤ t →       ∀ (q m : ℕ),         0 < q →           Erdos249257.TotientTailPeriodKiller.totientTail                 (q * Erdos249257.TotientTailPeriodKiller.periodLcm t +                   m * Erdos249257.TotientTailPeriodKiller.periodLcm t) -               Erdos249257.TotientTailPeriodKiller.totientTail (q * Erdos249257.TotientTailPeriodKiller.periodLcm t) ∈             Set.range Int.cast",
+        "via": [
+         "Erdos249257.TotientTailPeriodKiller.rational_totient_series_forces_lcm_cone_flatness"
+        ]
+       }
+      ]
+     }
+    ],
+    "frontier_cuts": [
+     "Erdos249257.TotientTailPeriodKiller.rational_totient_series_forces_lcm_cone_flatness"
+    ],
+    "suppliers": []
+   },
+   {
+    "operation": "weakening",
+    "theorem": "ErdosProblems.Erdos249.PaperCompleteR20.lcm_grid_fractional_parts",
+    "papers": [
+     {
+      "row": "erdos249-totient-reasoning-surface#catalogue:cert:b6",
+      "label": "catalogue:cert:b6",
+      "paper": "erdos249-totient-reasoning-surface",
+      "side": "long",
+      "lean_status": "exact",
+      "source": "paper/reasoning-parts/erdos249/a249_front.tex:2395"
+     }
+    ],
+    "source": null,
+    "hypotheses": [
+     {
+      "i": 0,
+      "hypothesis": "¬Irrational (∑' (n : ℕ), ↑n.totient / 2 ^ n)",
+      "consequences": [
+       {
+        "type": "∃ t₁,   ∀ (t : ℕ),     t₁ ≤ t →       ∀ (q m : ℕ),         0 < q →           Erdos249257.TotientTailPeriodKiller.totientTail ((q + m) * Erdos249257.TotientTailPeriodKiller.periodLcm t) -               Erdos249257.TotientTailPeriodKiller.totientTail (q * Erdos249257.TotientTailPeriodKiller.periodLcm t) ∈             Set.range Int.cast",
+        "via": [
+         "ErdosProblems.Erdos249.PaperCompleteR20.lcm_grid_flatness"
+        ]
+       }
+      ]
+     }
+    ],
+    "frontier_cuts": [
+     "ErdosProblems.Erdos249.PaperCompleteR20.lcm_grid_flatness",
+     "Erdos249257.TotientTailPeriodKiller.rational_totient_series_forces_lcm_cone_flatness"
+    ],
+    "suppliers": []
+   },
+   {
+    "operation": "weakening",
+    "theorem": "ErdosProblems.Erdos249.PaperCompleteR21.exists_simultaneous_depth_of_irrational",
+    "papers": [
+     {
+      "row": "erdos249-totient-reasoning-surface#prop:simultaneous-certificates-unrestricted-depth",
+      "label": "prop:simultaneous-certificates-unrestricted-depth",
+      "paper": "erdos249-totient-reasoning-surface",
+      "side": "long",
+      "lean_status": "exact",
+      "source": "paper/reasoning-parts/erdos249/a249_front.tex:5614"
+     }
+    ],
+    "source": null,
+    "hypotheses": [
+     {
+      "i": 0,
+      "hypothesis": "Irrational (∑' (n : ℕ), ↑n.totient / 2 ^ n)",
+      "consequences": [
+       {
+        "type": "∀ (h : ℕ),   0 < h →     ∀ (N : ℕ),       Erdos249257.TotientTailPeriodKiller.totientTail (N + h) - Erdos249257.TotientTailPeriodKiller.totientTail N ∉         Set.range Int.cast",
+        "via": [
+         "Iff.mp"
+        ]
+       }
+      ]
+     }
+    ],
+    "frontier_cuts": [],
+    "suppliers": []
+   },
+   {
+    "operation": "weakening",
+    "theorem": "ErdosProblems.Erdos249.PaperCompleteR21.exists_simultaneous_depth_succ_of_irrational",
+    "papers": [
+     {
+      "row": "erdos249-totient-reasoning-surface#prop:simultaneous-certificates-unrestricted-depth",
+      "label": "prop:simultaneous-certificates-unrestricted-depth",
+      "paper": "erdos249-totient-reasoning-surface",
+      "side": "long",
+      "lean_status": "exact",
+      "source": "paper/reasoning-parts/erdos249/a249_front.tex:5614"
+     }
+    ],
+    "source": null,
+    "hypotheses": [
+     {
+      "i": 0,
+      "hypothesis": "Irrational (∑' (n : ℕ), ↑n.totient / 2 ^ n)",
+      "consequences": [
+       {
+        "type": "∀ (N M : ℕ), 1 ≤ M → ∃ L, ∀ h ∈ Finset.Icc 1 M, Erdos249257.TotientTailPeriodKiller.certifiedKill h N L",
+        "via": [
+         "ErdosProblems.Erdos249.PaperCompleteR21.exists_simultaneous_depth_of_irrational"
+        ]
+       }
+      ]
+     }
+    ],
+    "frontier_cuts": [
+     "ErdosProblems.Erdos249.PaperCompleteR21.exists_simultaneous_depth_of_irrational"
+    ],
+    "suppliers": []
+   },
+   {
+    "operation": "weakening",
+    "theorem": "ErdosProblems.Erdos249.PaperCompleteR21.irrational_of_paperAdjacentSuffixMidbandSupply",
+    "papers": [
+     {
+      "row": "erdos249-totient-reasoning-surface#prop:te-chain",
+      "label": "prop:te-chain",
+      "paper": "erdos249-totient-reasoning-surface",
+      "side": "long",
+      "lean_status": "exact",
+      "source": "paper/reasoning-parts/erdos249/a249_front.tex:5374"
+     }
+    ],
+    "source": null,
+    "hypotheses": [
+     {
+      "i": 0,
+      "hypothesis": "ErdosProblems.Erdos249.PaperCompleteR21.PaperAdjacentSuffixMidbandSupply",
+      "consequences": [
+       {
+        "type": "Erdos249257.DiagonalFreshLossBridge.PowerTwoOddWindowAffine.PowerTwoActualLcmTopEdgeResidueGapSupply",
+        "via": [
+         "ErdosProblems.Erdos249.PaperCompleteR21.powerTwoActualLcmTopEdgeResidueGapSupply_of_paperAdjacentSuffixMidband"
+        ]
+       }
+      ]
+     }
+    ],
+    "frontier_cuts": [],
+    "suppliers": []
+   },
+   {
+    "operation": "weakening",
+    "theorem": "ErdosProblems.Erdos249.PaperCompleteR21.lambert_id_rung_transcendental",
+    "papers": [
+     {
+      "row": "erdos249-totient-reasoning-surface#prop:D7-inv",
+      "label": "prop:D7-inv",
+      "paper": "erdos249-totient-reasoning-surface",
+      "side": "long",
+      "lean_status": "modulo_named_input",
+      "source": "paper/reasoning-parts/erdos249/a249_front.tex:3388"
+     }
+    ],
+    "source": null,
+    "hypotheses": [
+     {
+      "i": 0,
+      "hypothesis": "ErdosProblems.Erdos249.PaperCompleteR21.NesterenkoTranscendenceP",
+      "consequences": [
+       {
+        "type": "Transcendental ℚ (∑' (m : ℕ+), ↑((ArithmeticFunction.sigma 1) ↑m) / 2 ^ ↑m)",
+        "via": [
+         "ErdosProblems.Erdos249.PaperCompleteR21.transcendental_sigma_series"
+        ]
+       }
+      ]
+     }
+    ],
+    "frontier_cuts": [
+     "ErdosProblems.Erdos249.PaperCompleteR21.transcendental_sigma_series"
+    ],
+    "suppliers": []
+   },
+   {
+    "operation": "weakening",
+    "theorem": "ErdosProblems.Erdos249.PaperCompleteR21.paperAdjacentSuffixMidbandSupply_of_flexibleActualTopEdgeMagnitude",
+    "papers": [
+     {
+      "row": "erdos249-totient-reasoning-surface#prop:te-chain",
+      "label": "prop:te-chain",
+      "paper": "erdos249-totient-reasoning-surface",
+      "side": "long",
+      "lean_status": "exact",
+      "source": "paper/reasoning-parts/erdos249/a249_front.tex:5374"
+     }
+    ],
+    "source": null,
+    "hypotheses": [
+     {
+      "i": 0,
+      "hypothesis": "Erdos249257.DiagonalFreshLossBridge.PowerTwoOddWindowAffine.PowerTwoFlexibleActualTopEdgeMagnitudeSupply",
+      "consequences": [
+       {
+        "type": "Erdos249257.DiagonalFreshLossBridge.PowerTwoOddWindowAffine.PowerTwoAdjacentSuffixMidbandSupply",
+        "via": [
+         "Erdos249257.DiagonalFreshLossBridge.PowerTwoOddWindowAffine.powerTwoAdjacentSuffixMidbandSupply_of_flexibleActualTopEdgeMagnitude"
+        ]
+       }
+      ]
+     }
+    ],
+    "frontier_cuts": [],
+    "suppliers": []
+   },
+   {
+    "operation": "weakening",
+    "theorem": "ErdosProblems.Erdos249.PaperCompleteR21.paperAdjacentSuffixMidbandSupply_of_oddGuardTopEdgeHalfWordBand",
+    "papers": [
+     {
+      "row": "erdos249-totient-reasoning-surface#prop:te-chain",
+      "label": "prop:te-chain",
+      "paper": "erdos249-totient-reasoning-surface",
+      "side": "long",
+      "lean_status": "exact",
+      "source": "paper/reasoning-parts/erdos249/a249_front.tex:5374"
+     }
+    ],
+    "source": null,
+    "hypotheses": [
+     {
+      "i": 0,
+      "hypothesis": "Erdos249257.DiagonalFreshLossBridge.PowerTwoOddWindowAffine.PowerTwoOddGuardTopEdgeHalfWordBandSupply",
+      "consequences": [
+       {
+        "type": "Erdos249257.DiagonalFreshLossBridge.PowerTwoOddWindowAffine.PowerTwoAdjacentSuffixMidbandSupply",
+        "via": [
+         "Erdos249257.DiagonalFreshLossBridge.PowerTwoOddWindowAffine.powerTwoAdjacentSuffixMidbandSupply_of_oddGuardTopEdgeHalfWordBand"
+        ]
+       }
+      ]
+     }
+    ],
+    "frontier_cuts": [],
+    "suppliers": []
+   },
+   {
+    "operation": "weakening",
+    "theorem": "ErdosProblems.Erdos249.PaperCompleteR21.prop_badcof",
+    "papers": [
+     {
+      "row": "erdos249-totient-reasoning-surface#prop:badcof",
+      "label": "prop:badcof",
+      "paper": "erdos249-totient-reasoning-surface",
+      "side": "long",
+      "lean_status": "modulo_named_input",
+      "source": "paper/reasoning-parts/erdos249/a249_front.tex:7294"
+     }
+    ],
+    "source": null,
+    "hypotheses": [
+     {
+      "i": 0,
+      "hypothesis": "ErdosProblems.Erdos251.PaperR11.PrimeSource.PrimeNumberTheorem",
+      "consequences": [
+       {
+        "type": "∀ (h s : ℕ) {η D : ℝ},   ErdosProblems.Erdos249.PaperCompleteR21.ExcludedCofactor.HasNaturalDensity       (ErdosProblems.Erdos249.PaperCompleteR21.ExcludedCofactor.excludedCofactorSet η) D →     ∀ {ε : ℝ},       0 < ε →         ∀ᶠ (X : ℕ) in Filter.atTop,           ↑{N ∈                     Erdos249257.TotientTailPeriodKiller.pivotSupplierBases X                       (ErdosProblems.Erdos249.PaperCompleteR21.minimalDepth h s X) s |                   Erdos249257.TotientTailPeriodKiller.pivotCofactor N                       (ErdosProblems.Erdos249.PaperCompleteR21.minimalDepth h s X) s ∈                     ErdosProblems.Erdos249.PaperCompleteR21.ExcludedCofactor.excludedCofactorSet η}.card ≤  …",
+        "via": [
+         "ErdosProblems.Erdos249.PaperCompleteR21.ExcludedCofactor.eventually_card_excluded_le"
+        ]
+       },
+       {
+        "type": "∀ (h s : ℕ) {η D : ℝ},   ErdosProblems.Erdos249.PaperCompleteR21.ExcludedCofactor.HasNaturalDensity       (ErdosProblems.Erdos249.PaperCompleteR21.ExcludedCofactor.excludedCofactorSet η) D →     D < 1 / 100 →       ∀ᶠ (X : ℕ) in Filter.atTop,         ↑{N ∈                     Erdos249257.TotientTailPeriodKiller.pivotSupplierBases X                       (ErdosProblems.Erdos249.PaperCompleteR21.minimalDepth h s X) s |                   Erdos249257.TotientTailPeriodKiller.pivotCofactor N                       (ErdosProblems.Erdos249.PaperCompleteR21.minimalDepth h s X) s ∈                     ErdosProblems.Erdos249.PaperCompleteR21.ExcludedCofactor.excludedCofactorSet η}.card <             1 / …",
+        "via": [
+         "ErdosProblems.Erdos249.PaperCompleteR21.ExcludedCofactor.eventually_excluded_budget"
+        ]
+       }
+      ]
+     }
+    ],
+    "frontier_cuts": [
+     "ErdosProblems.Erdos249.PaperCompleteR21.ExcludedCofactor.eventually_card_excluded_le_of_upper",
+     "ErdosProblems.Erdos249.PaperCompleteR21.ExcludedCofactor.eventually_card_primes_dyadic_le"
+    ],
+    "suppliers": []
+   },
+   {
+    "operation": "weakening",
+    "theorem": "ErdosProblems.Erdos249.PaperCompleteR21.rational_forces_four_tail_diagonals_integral",
+    "papers": [
+     {
+      "row": "erdos249-totient-reasoning-surface#catalogue:mob:e2",
+      "label": "catalogue:mob:e2",
+      "paper": "erdos249-totient-reasoning-surface",
+      "side": "long",
+      "lean_status": "exact",
+      "source": "paper/reasoning-parts/erdos249/a249_front.tex:2568"
+     }
+    ],
+    "source": null,
+    "hypotheses": [
+     {
+      "i": 0,
+      "hypothesis": "¬Irrational (∑' (n : ℕ), ↑n.totient / 2 ^ n)",
+      "consequences": [
+       {
+        "type": "∃ t₁,   ∀ (t : ℕ),     t₁ ≤ t →       ∀ (q m : ℕ),         0 < q →           Erdos249257.TotientTailPeriodKiller.totientTail                 (q * Erdos249257.TotientTailPeriodKiller.periodLcm t +                   m * Erdos249257.TotientTailPeriodKiller.periodLcm t) -               Erdos249257.TotientTailPeriodKiller.totientTail (q * Erdos249257.TotientTailPeriodKiller.periodLcm t) ∈             Set.range Int.cast",
+        "via": [
+         "Erdos249257.TotientTailPeriodKiller.rational_totient_series_forces_lcm_cone_flatness"
+        ]
+       }
+      ]
+     }
+    ],
+    "frontier_cuts": [
+     "Erdos249257.TotientTailPeriodKiller.rational_totient_series_forces_lcm_cone_flatness"
+    ],
+    "suppliers": []
+   },
+   {
+    "operation": "weakening",
+    "theorem": "ErdosProblems.Erdos249.PaperCompleteR21.rational_forces_period_multiple_integrality",
+    "papers": [
+     {
+      "row": "erdos249-totient-reasoning-surface#catalogue:cert:b2",
+      "label": "catalogue:cert:b2",
+      "paper": "erdos249-totient-reasoning-surface",
+      "side": "long",
+      "lean_status": "exact",
+      "source": "paper/reasoning-parts/erdos249/a249_front.tex:2357"
+     }
+    ],
+    "source": null,
+    "hypotheses": [
+     {
+      "i": 0,
+      "hypothesis": "¬Irrational (∑' (n : ℕ), ↑n.totient / 2 ^ n)",
+      "consequences": [
+       {
+        "type": "∃ h,   0 < h ∧     ∃ N₀,       ∀ (N : ℕ),         N₀ ≤ N →           Erdos249257.TotientTailPeriodKiller.totientTail (N + h) - Erdos249257.TotientTailPeriodKiller.totientTail N ∈             Set.range Int.cast",
+        "via": [
+         "Erdos249257.TotientTailPeriodKiller.eventual_period_of_not_irrational"
+        ]
+       }
+      ]
+     }
+    ],
+    "frontier_cuts": [],
+    "suppliers": []
+   },
+   {
+    "operation": "weakening",
+    "theorem": "ErdosProblems.Erdos249.PaperCompleteR21.rational_forces_pulse_class_integrality",
+    "papers": [
+     {
+      "row": "erdos249-totient-reasoning-surface#prop:CP-07",
+      "label": "prop:CP-07",
+      "paper": "erdos249-totient-reasoning-surface",
+      "side": "long",
+      "lean_status": "exact",
+      "source": "paper/reasoning-parts/erdos249/a249_front.tex:2831"
+     }
+    ],
+    "source": null,
+    "hypotheses": [
+     {
+      "i": 0,
+      "hypothesis": "¬Irrational (∑' (n : ℕ), ↑n.totient / 2 ^ n)",
+      "consequences": [
+       {
+        "type": "∃ h,   0 < h ∧     ∃ N₀,       ∀ (N : ℕ),         N₀ ≤ N →           Erdos249257.TotientTailPeriodKiller.totientTail (N + h) - Erdos249257.TotientTailPeriodKiller.totientTail N ∈             Set.range Int.cast",
+        "via": [
+         "Erdos249257.TotientTailPeriodKiller.eventual_period_of_not_irrational"
+        ]
+       }
+      ]
+     }
+    ],
+    "frontier_cuts": [],
+    "suppliers": []
+   },
+   {
+    "operation": "weakening",
+    "theorem": "ErdosProblems.Erdos249.PaperCompleteR21.transcendental_sigma_series",
+    "papers": [
+     {
+      "row": "erdos249-totient-reasoning-surface#prop:D7-inv",
+      "label": "prop:D7-inv",
+      "paper": "erdos249-totient-reasoning-surface",
+      "side": "long",
+      "lean_status": "modulo_named_input",
+      "source": "paper/reasoning-parts/erdos249/a249_front.tex:3388"
+     }
+    ],
+    "source": null,
+    "hypotheses": [
+     {
+      "i": 0,
+      "hypothesis": "ErdosProblems.Erdos249.PaperCompleteR21.NesterenkoTranscendenceP",
+      "consequences": [
+       {
+        "type": "IsAlgebraic ℚ (1 / 2) →   0 < |1 / 2| → |1 / 2| < 1 → Transcendental ℚ (ErdosProblems.Erdos249.PaperCompleteR21.ramanujanP (1 / 2))",
+        "via": [
+         "hypothesis"
+        ]
+       }
+      ]
+     }
+    ],
+    "frontier_cuts": [],
+    "suppliers": []
    }
   ],
   "Erdos251": [
@@ -1297,6 +1921,138 @@
      }
     ],
     "source": null
+   },
+   {
+    "operation": "weakening",
+    "theorem": "ErdosProblems.Erdos251.PaperCompleteR21.long_joint_prime_gap_countermodel",
+    "papers": [
+     {
+      "row": "erdos251-prime-gap-reasoning-surface#long251:res:jointcountermodel",
+      "label": "long251:res:jointcountermodel",
+      "paper": "erdos251-prime-gap-reasoning-surface",
+      "side": "long",
+      "lean_status": "modulo_named_input",
+      "source": "paper/reasoning-parts/erdos251/core.tex:1501"
+     }
+    ],
+    "source": null,
+    "hypotheses": [
+     {
+      "i": 0,
+      "hypothesis": "ErdosProblems.Erdos251.PaperR11.PrimeSource.SchlagePuchtaLemma4",
+      "consequences": [
+       {
+        "type": "ErdosProblems.Erdos251.PaperR11.Nonconcentration.FixedBlockNonconcentration fun n =>   ↑(ErdosProblems.Erdos251.PaperR11.PrimeSource.primeGap0 n)",
+        "via": [
+         "ErdosProblems.Erdos251.PaperR11.PrimeSource.fixedBlock_of_SchlagePuchta"
+        ]
+       }
+      ]
+     }
+    ],
+    "frontier_cuts": [],
+    "suppliers": []
+   },
+   {
+    "operation": "weakening",
+    "theorem": "ErdosProblems.Erdos251.PaperCompleteR21.prime_gap_two_window_sparse",
+    "papers": [
+     {
+      "row": "erdos251-prime-gap-reasoning-surface#long251:res:sparse",
+      "label": "long251:res:sparse",
+      "paper": "erdos251-prime-gap-reasoning-surface",
+      "side": "long",
+      "lean_status": "modulo_named_input",
+      "source": "paper/reasoning-parts/erdos251/core.tex:1573"
+     }
+    ],
+    "source": null,
+    "hypotheses": [
+     {
+      "i": 2,
+      "hypothesis": "ErdosProblems.Erdos251.PaperR11.Nonconcentration.FixedBlockNonconcentration fun n =>   ↑(ErdosProblems.Erdos251.primeGap0 n)",
+      "consequences": [
+       {
+        "type": "∀ (h : ℕ),   0 < h →     ErdosProblems.Erdos251.PaperR11.Nonconcentration.ZeroDensity         {N |           1 ≤ N ∧             (-1 < ErdosProblems.Erdos251.PaperR11.Nonconcentration.shift ErdosProblems.Erdos251.realPrimeGapTail h N ∧                 ErdosProblems.Erdos251.PaperR11.Nonconcentration.shift ErdosProblems.Erdos251.realPrimeGapTail h N <                   1) ∧               (-1 <                     ErdosProblems.Erdos251.PaperR11.Nonconcentration.shift ErdosProblems.Erdos251.realPrimeGapTail h                       (N + 1) ∧                   ErdosProblems.Erdos251.PaperR11.Nonconcentration.shift ErdosProblems.Erdos251.realPrimeGapTail h                       (N + 1) <          …",
+        "via": [
+         "ErdosProblems.Erdos251.PaperR11.Nonconcentration.small_mismatch_zeroDensity"
+        ]
+       }
+      ]
+     }
+    ],
+    "frontier_cuts": [],
+    "suppliers": []
+   },
+   {
+    "operation": "weakening",
+    "theorem": "ErdosProblems.Erdos251.PaperCompleteR21.short_joint_prime_gap_countermodel",
+    "papers": [
+     {
+      "row": "erdos-251-prime-gap-dyadic-series#res:jointcountermodel",
+      "label": "res:jointcountermodel",
+      "paper": "erdos-251-prime-gap-dyadic-series",
+      "side": "short",
+      "lean_status": "modulo_named_input",
+      "source": "paper/251/erdos-251-prime-gap-dyadic-series.tex:263"
+     }
+    ],
+    "source": null,
+    "hypotheses": [
+     {
+      "i": 0,
+      "hypothesis": "ErdosProblems.Erdos251.PaperR11.PrimeSource.SchlagePuchtaLemma4",
+      "consequences": [
+       {
+        "type": "ErdosProblems.Erdos251.PaperR11.PrimeSource.PrimeNumberTheorem →   ∀ (K : ℕ) {ε : ℝ},     0 < ε →       ε ≤ 1 →         ∃ e r C,           0 < C ∧             (∀ n < K, e n = 0) ∧               HasSum (fun n => ↑(ErdosProblems.Erdos251.PaperR11.PrimeSource.primeGap0 n + e n) / 2 ^ (n + 1)) ↑r ∧                 (∀ᶠ (n : ℕ) in Filter.atTop, ↑(e n) ≤ ErdosProblems.Erdos251.PaperR11.SparsePolylog.polylog ε n) ∧                   (∀ (q : ℕ),                       0 < q →                         ∀ᶠ (n : ℕ) in Filter.atTop,                           ErdosProblems.Erdos251.PaperR11.PrimeSource.primeGap0 n + e n ≡                               ErdosProblems.Erdos251.PaperR11.PrimeSource.primeGap0 n [ …",
+        "via": [
+         "ErdosProblems.Erdos251.PaperCompleteR21.long_joint_prime_gap_countermodel"
+        ]
+       }
+      ]
+     }
+    ],
+    "frontier_cuts": [
+     "ErdosProblems.Erdos251.PaperCompleteR21.long_joint_prime_gap_countermodel"
+    ],
+    "suppliers": []
+   },
+   {
+    "operation": "weakening",
+    "theorem": "ErdosProblems.Erdos251.irrational_tsum_primeDyadicTerm_iff_primeGap",
+    "papers": [
+     {
+      "row": "erdos-251-prime-gap-dyadic-series#res:infinite",
+      "label": "res:infinite",
+      "paper": "erdos-251-prime-gap-dyadic-series",
+      "side": "short",
+      "lean_status": "exact",
+      "source": "paper/251/erdos-251-prime-gap-dyadic-series.tex:370"
+     }
+    ],
+    "source": "lean/ErdosProblems/Erdos251/PrimeGapDyadicTail.lean:435",
+    "hypotheses": [
+     {
+      "i": 0,
+      "hypothesis": "Summable ErdosProblems.Erdos251.primeDyadicTerm",
+      "consequences": [
+       {
+        "type": "∑' (n : ℕ), ErdosProblems.Erdos251.primeDyadicTerm n = 2 + ∑' (n : ℕ), ErdosProblems.Erdos251.primeGapDyadicTerm n",
+        "via": [
+         "ErdosProblems.Erdos251.tsum_primeDyadicTerm_eq_two_add_primeGap"
+        ]
+       }
+      ]
+     }
+    ],
+    "frontier_cuts": [
+     "ErdosProblems.Erdos251.tsum_primeDyadicTerm_eq_two_add_primeGap"
+    ],
+    "suppliers": [
+     "ErdosProblems.Erdos251.tsum_primeDyadicTerm_eq_two_add_primeGap_unconditional",
+     "ErdosProblems.Erdos251.tsum_primeDyadicTerm_eq_two_add_primeGap",
+     "ErdosProblems.Erdos251.tsum_primeDisplayedDyadicTerm_eq_four_add_two_primeGap"
+    ]
    }
   ],
   "Erdos257": [
@@ -1658,6 +2414,613 @@
      }
     ],
     "source": null
+   },
+   {
+    "operation": "weakening",
+    "theorem": "Erdos249257.HalfCarryReachability.greedy_half_infinite_of_cofinalStripReturn",
+    "papers": [
+     {
+      "row": "erdos257-mersenne-reasoning-surface#record:257rig-c18",
+      "label": "record:257rig-c18",
+      "paper": "erdos257-mersenne-reasoning-surface",
+      "side": "long",
+      "lean_status": "exact",
+      "source": "paper/reasoning-parts/erdos257/a257_front.tex:4113"
+     }
+    ],
+    "source": "lean/Erdos249257/CofinalStripReturn.lean:130",
+    "hypotheses": [
+     {
+      "i": 0,
+      "hypothesis": "Erdos249257.HalfCarryReachability.GreedyHalfCarryCofinalStripReturn",
+      "consequences": [
+       {
+        "type": "Filter.Tendsto   (fun N => ↑(Erdos249257.HalfCarryReachability.integerHalfCarry (Erdos249257.greedyMersenneSupport (1 / 2)) N) / 2 ^ N)   Filter.atTop (nhds 0)",
+        "via": [
+         "Erdos249257.HalfCarryReachability.greedy_integerHalfCarry_scaled_tendsto_zero_of_cofinalStripReturn"
+        ]
+       }
+      ]
+     }
+    ],
+    "frontier_cuts": [],
+    "suppliers": []
+   },
+   {
+    "operation": "weakening",
+    "theorem": "Erdos249257.HalfCarryReachability.greedy_half_infinite_of_mobiusCenteredHalfCarry_sqrtBound",
+    "papers": [
+     {
+      "row": "erdos257-mersenne-reasoning-surface#thm:sqrt-bound-route",
+      "label": "thm:sqrt-bound-route",
+      "paper": "erdos257-mersenne-reasoning-surface",
+      "side": "long",
+      "lean_status": "exact",
+      "source": "paper/reasoning-parts/erdos257/a257_front.tex:2658"
+     }
+    ],
+    "source": "lean/Erdos249257/HalfCarryReachability.lean:834",
+    "hypotheses": [
+     {
+      "i": 0,
+      "hypothesis": "∀ (N : ℕ), 0 ≤ Erdos249257.HalfCarryReachability.mobiusCenteredHalfCarry (Erdos249257.greedyMersenneSupport (1 / 2)) N",
+      "consequences": [
+       {
+        "type": "(∀ (N : ℕ),     ↑(Erdos249257.HalfCarryReachability.mobiusCenteredHalfCarry (Erdos249257.greedyMersenneSupport (1 / 2)) N) ≤       2 * √↑N + 4) →   (Erdos249257.greedyMersenneSupport (1 / 2)).Infinite ∧     Erdos249257.erdosSupportSeries 2 (Erdos249257.greedyMersenneSupport (1 / 2)) = 1 / 2",
+        "via": [
+         "Erdos249257.HalfCarryReachability.infinite_support_half_of_mobiusCenteredHalfCarry_sqrtBound"
+        ]
+       }
+      ]
+     }
+    ],
+    "frontier_cuts": [],
+    "suppliers": [
+     "Erdos249257.HalfCarryReachability.greedy_half_infinite_of_mobiusCenteredHalfCarry_upperBound"
+    ]
+   },
+   {
+    "operation": "weakening",
+    "theorem": "Erdos249257.SeamTwoSidedDyadicCellEscape.twoSided",
+    "papers": [
+     {
+      "row": "erdos257-mersenne-reasoning-surface#thm:two-sided-dyadic",
+      "label": "thm:two-sided-dyadic",
+      "paper": "erdos257-mersenne-reasoning-surface",
+      "side": "long",
+      "lean_status": "exact_or_stronger",
+      "source": "paper/reasoning-parts/erdos257/a257_front.tex:2590"
+     }
+    ],
+    "source": "lean/Erdos249257/HalfCylinderMiddleCarryLowerBound.lean:4448",
+    "hypotheses": [
+     {
+      "i": 0,
+      "hypothesis": "Erdos249257.SeamTwoSidedDyadicCellEscape",
+      "consequences": [
+       {
+        "type": "∀ {s : ℕ} (hs : 5 ≤ s),   Erdos249257.HalfCylinderIntegerGreedy.seamIntegerGreedyRemainder s ≤ 2 ^ s ∨       (Erdos249257.HalfCylinderIntegerGreedy.seamAdjacentCut s hs).overshoot ≤ 2 ^ s →     Erdos249257.HalfCylinderIntegerGreedy.seamIntegerGreedyRemainder (s + 1) ≤ 2 ^ (s + 1) ∨       (Erdos249257.HalfCylinderIntegerGreedy.seamAdjacentCut (s + 1) ⋯).overshoot ≤ 2 ^ (s + 1)",
+        "via": [
+         "Erdos249257.SeamTwoSidedDyadicCellEscape.step"
+        ]
+       }
+      ]
+     }
+    ],
+    "frontier_cuts": [],
+    "suppliers": []
+   },
+   {
+    "operation": "weakening",
+    "theorem": "Erdos249257.SuffixCylinderTerminalOnlyBridge.exists_infinite_positive_support_half_of_cofinalCylinderStages",
+    "papers": [
+     {
+      "row": "erdos-257-mersenne-support-subseries#res:cylinderhalf",
+      "label": "res:cylinderhalf",
+      "paper": "erdos-257-mersenne-support-subseries",
+      "side": "short",
+      "lean_status": "exact_or_stronger",
+      "source": "paper/257/erdos-257-mersenne-support-subseries.tex:1178"
+     }
+    ],
+    "source": "lean/Erdos249257/SuffixCylinderTerminalOnlyBridge.lean:287",
+    "hypotheses": [
+     {
+      "i": 0,
+      "hypothesis": "∀ (N : ℕ), ∃ M K, max N 1 ≤ M ∧ Nonempty (Erdos249257.SuffixCylinderThreshold.CylinderStage K M)",
+      "consequences": [
+       {
+        "type": "Erdos249257.HalfCarryReachability.HalfCarryCofinalTerminalOnlyStrip",
+        "via": [
+         "Erdos249257.SuffixCylinderTerminalOnlyBridge.cofinalTerminalOnlyStrip_of_cofinalCylinderStages"
+        ]
+       }
+      ]
+     }
+    ],
+    "frontier_cuts": [],
+    "suppliers": []
+   },
+   {
+    "operation": "weakening",
+    "theorem": "Erdos249257.half_mem_mersenneAchievementSet_of_criticalQuotientSupply",
+    "papers": [
+     {
+      "row": "erdos257-mersenne-reasoning-surface#record:257bm-c4",
+      "label": "record:257bm-c4",
+      "paper": "erdos257-mersenne-reasoning-surface",
+      "side": "long",
+      "lean_status": "exact",
+      "source": "paper/reasoning-parts/erdos257/a257_front.tex:3820"
+     }
+    ],
+    "source": "lean/Erdos249257/BooleanMobiusCriticalCapacityCofinal.lean:1321",
+    "hypotheses": [
+     {
+      "i": 0,
+      "hypothesis": "Erdos249257.SkippedCoreCriticalQuotientSupply",
+      "consequences": [
+       {
+        "type": "Erdos249257.CofinalExactLocalMersenneHalfRows",
+        "via": [
+         "Erdos249257.cofinalExactLocalMersenneHalfRows_of_criticalQuotientSupply"
+        ]
+       }
+      ]
+     }
+    ],
+    "frontier_cuts": [],
+    "suppliers": []
+   },
+   {
+    "operation": "weakening",
+    "theorem": "Erdos249257.half_mem_mersenneAchievementSet_of_largestSkipLateStepSocket",
+    "papers": [
+     {
+      "row": "erdos257-mersenne-reasoning-surface#thm:largest-skip-late",
+      "label": "thm:largest-skip-late",
+      "paper": "erdos257-mersenne-reasoning-surface",
+      "side": "long",
+      "lean_status": "exact",
+      "source": "paper/reasoning-parts/erdos257/a257_front.tex:2538"
+     }
+    ],
+    "source": "lean/Erdos249257/HalfCylinderLargestSkipInduction.lean:167",
+    "hypotheses": [
+     {
+      "i": 0,
+      "hypothesis": "Erdos249257.LargestSkipLateStepSocket",
+      "consequences": [
+       {
+        "type": "Erdos249257.SeamGreedyUnboundedSkippedRanksAlong fun j => 14 + j",
+        "via": [
+         "Erdos249257.seamGreedyUnboundedSkippedRanksAlong_of_largestSkipLateStepSocket"
+        ]
+       }
+      ]
+     }
+    ],
+    "frontier_cuts": [
+     "Erdos249257.seamGreedyUnboundedSkippedRanksAlong_of_largestSkipLateStepSocket",
+     "Erdos249257.largestSkipLateAt_of_stepSocket"
+    ],
+    "suppliers": []
+   },
+   {
+    "operation": "weakening",
+    "theorem": "Erdos249257.half_mem_mersenneAchievementSet_of_middleProducerCardEscape",
+    "papers": [
+     {
+      "row": "erdos257-mersenne-reasoning-surface#thm:middle-producer-escape",
+      "label": "thm:middle-producer-escape",
+      "paper": "erdos257-mersenne-reasoning-surface",
+      "side": "long",
+      "lean_status": "exact",
+      "source": "paper/reasoning-parts/erdos257/a257_front.tex:2560"
+     }
+    ],
+    "source": "lean/Erdos249257/HalfCylinderMiddleCarryLowerBound.lean:2364",
+    "hypotheses": [
+     {
+      "i": 0,
+      "hypothesis": "Erdos249257.SeamMiddleProducerCardEscape",
+      "consequences": [
+       {
+        "type": "Erdos249257.SeamMiddleProducerTailEscape",
+        "via": [
+         "Erdos249257.SeamMiddleProducerCardEscape.toTailEscape"
+        ]
+       }
+      ]
+     }
+    ],
+    "frontier_cuts": [],
+    "suppliers": []
+   },
+   {
+    "operation": "weakening",
+    "theorem": "Erdos249257.half_mem_mersenneAchievementSet_of_middleProducerRowEscape",
+    "papers": [
+     {
+      "row": "erdos257-mersenne-reasoning-surface#thm:middle-producer-escape",
+      "label": "thm:middle-producer-escape",
+      "paper": "erdos257-mersenne-reasoning-surface",
+      "side": "long",
+      "lean_status": "exact",
+      "source": "paper/reasoning-parts/erdos257/a257_front.tex:2560"
+     }
+    ],
+    "source": "lean/Erdos249257/HalfCylinderMiddleCarryLowerBound.lean:2371",
+    "hypotheses": [
+     {
+      "i": 0,
+      "hypothesis": "Erdos249257.SeamMiddleProducerRowEscape",
+      "consequences": [
+       {
+        "type": "Erdos249257.SeamMiddleProducerCardEscape",
+        "via": [
+         "Erdos249257.SeamMiddleProducerRowEscape.toCardEscape"
+        ]
+       }
+      ]
+     }
+    ],
+    "frontier_cuts": [],
+    "suppliers": []
+   },
+   {
+    "operation": "weakening",
+    "theorem": "Erdos249257.half_mem_mersenneAchievementSet_of_positiveHalfGreedySkips",
+    "papers": [
+     {
+      "row": "erdos257-mersenne-reasoning-surface#record:257bm-c2",
+      "label": "record:257bm-c2",
+      "paper": "erdos257-mersenne-reasoning-surface",
+      "side": "long",
+      "lean_status": "exact",
+      "source": "paper/reasoning-parts/erdos257/a257_front.tex:3767"
+     }
+    ],
+    "source": "lean/Erdos249257/BooleanMobiusSkipRowCofinal.lean:97",
+    "hypotheses": [
+     {
+      "i": 0,
+      "hypothesis": "Erdos249257.CofinalPositiveHalfGreedySkips",
+      "consequences": [
+       {
+        "type": "Erdos249257.CofinalExactLocalMersenneHalfRows",
+        "via": [
+         "Erdos249257.cofinalExactLocalMersenneHalfRows_of_positiveHalfGreedySkips"
+        ]
+       }
+      ]
+     }
+    ],
+    "frontier_cuts": [],
+    "suppliers": []
+   },
+   {
+    "operation": "weakening",
+    "theorem": "Erdos249257.half_mem_mersenneAchievementSet_of_skippedFullShellNonnegative",
+    "papers": [
+     {
+      "row": "erdos257-mersenne-reasoning-surface#thm:frozen-margin",
+      "label": "thm:frozen-margin",
+      "paper": "erdos257-mersenne-reasoning-surface",
+      "side": "long",
+      "lean_status": "exact",
+      "source": "paper/reasoning-parts/erdos257/a257_front.tex:2674"
+     }
+    ],
+    "source": "lean/Erdos249257/HalfCylinderFullShellSeamBridge.lean:633",
+    "hypotheses": [
+     {
+      "i": 0,
+      "hypothesis": "Erdos249257.HalfGreedySkippedFullShellNonnegative",
+      "consequences": [
+       {
+        "type": "Erdos249257.HalfGreedyGovernedFrozenMarginProducer",
+        "via": [
+         "Erdos249257.governedFrozenMarginProducer_of_skippedFullShellNonnegative"
+        ]
+       }
+      ]
+     }
+    ],
+    "frontier_cuts": [],
+    "suppliers": []
+   },
+   {
+    "operation": "weakening",
+    "theorem": "Erdos249257.half_mem_mersenneAchievementSet_of_skippedSeamEscape",
+    "papers": [
+     {
+      "row": "erdos257-mersenne-reasoning-surface#thm:frozen-margin",
+      "label": "thm:frozen-margin",
+      "paper": "erdos257-mersenne-reasoning-surface",
+      "side": "long",
+      "lean_status": "exact",
+      "source": "paper/reasoning-parts/erdos257/a257_front.tex:2674"
+     }
+    ],
+    "source": "lean/Erdos249257/HalfCylinderFullShellSeamBridge.lean:722",
+    "hypotheses": [
+     {
+      "i": 0,
+      "hypothesis": "Erdos249257.HalfGreedySkippedSeamEscape",
+      "consequences": [
+       {
+        "type": "Erdos249257.HalfGreedyGovernedFrozenMarginProducer",
+        "via": [
+         "Erdos249257.governedFrozenMarginProducer_of_skippedSeamEscape"
+        ]
+       }
+      ]
+     }
+    ],
+    "frontier_cuts": [],
+    "suppliers": []
+   },
+   {
+    "operation": "weakening",
+    "theorem": "Erdos249257.half_mem_mersenneAchievementSet_of_skipped_twoChannelCap",
+    "papers": [
+     {
+      "row": "erdos257-mersenne-reasoning-surface#thm:two-channel-cap",
+      "label": "thm:two-channel-cap",
+      "paper": "erdos257-mersenne-reasoning-surface",
+      "side": "long",
+      "lean_status": "exact",
+      "source": "paper/reasoning-parts/erdos257/a257_front.tex:2489"
+     }
+    ],
+    "source": "lean/Erdos249257/GreedyAchievementSet.lean:1425",
+    "hypotheses": [
+     {
+      "i": 0,
+      "hypothesis": "∀ (n : ℕ),   ¬Erdos249257.mersenneWeight (n + 1) ≤ Erdos249257.greedyMersenneRemainder (1 / 2) n →     Erdos249257.greedyMersenneRemainder (1 / 2) n ≤ Erdos249257.halfTwoChannelCap (n + 1)",
+      "consequences": [
+       {
+        "type": "∀ (n : ℕ), Erdos249257.greedyMersenneRemainder (1 / 2) n ≤ Erdos249257.halfTwoChannelCap n",
+        "via": [
+         "Erdos249257.greedyMersenneRemainder_le_cap_of_skipBarrier"
+        ]
+       }
+      ]
+     }
+    ],
+    "frontier_cuts": [],
+    "suppliers": []
+   },
+   {
+    "operation": "weakening",
+    "theorem": "Erdos249257.half_mem_mersenneAchievementSet_of_upperResetDyadicBandEscape",
+    "papers": [
+     {
+      "row": "erdos257-mersenne-reasoning-surface#thm:upper-reset-band",
+      "label": "thm:upper-reset-band",
+      "paper": "erdos257-mersenne-reasoning-surface",
+      "side": "long",
+      "lean_status": "exact_or_stronger",
+      "source": "paper/reasoning-parts/erdos257/a257_front.tex:2630"
+     }
+    ],
+    "source": "lean/Erdos249257/HalfCylinderMiddleCarryLowerBound.lean:4790",
+    "hypotheses": [
+     {
+      "i": 0,
+      "hypothesis": "Erdos249257.SeamUpperResetDyadicBandEscape",
+      "consequences": [
+       {
+        "type": "Erdos249257.SeamMiddleProducerRowEscape",
+        "via": [
+         "Erdos249257.SeamUpperResetDyadicBandEscape.toMiddleProducerRowEscape"
+        ]
+       }
+      ]
+     }
+    ],
+    "frontier_cuts": [
+     "Erdos249257.SeamUpperResetDyadicBandEscape.toMiddleProducerRowEscape",
+     "Erdos249257.SeamUpperResetDyadicBandEscape.remainder_ge_row"
+    ],
+    "suppliers": []
+   },
+   {
+    "operation": "weakening",
+    "theorem": "Erdos249257.twentyOneFatalAlignedBranch_eventually_affine_supercapacity",
+    "papers": [
+     {
+      "row": "erdos-257-mersenne-support-subseries#res:one-over-twenty-one-frontier",
+      "label": "res:one-over-twenty-one-frontier",
+      "paper": "erdos-257-mersenne-support-subseries",
+      "side": "short",
+      "lean_status": "exact_or_stronger",
+      "source": "paper/257/erdos-257-mersenne-support-subseries.tex:1071"
+     }
+    ],
+    "source": "lean/Erdos249257/TwentyOneQuotientGreedy.lean:5658",
+    "hypotheses": [
+     {
+      "i": 0,
+      "hypothesis": "Erdos249257.TwentyOneFatalAlignedBranch",
+      "consequences": [
+       {
+        "type": "∃ K,   ∀ (R : ℕ),     K ≤ R →       Erdos249257.twentyOneEvenQuotientGreedySupport (R + 1) =           Erdos249257.twentyOneBoundaryLowerSupport (Erdos249257.twentyOneEvenQuotientGreedySupport R) R             (4 * Erdos249257.twentyOneEvenQuotientGreedyRemainder R + Erdos249257.twentyOneTargetTwoStepPulse (2 * R) -               Erdos249257.localPrefixTwoStepPulse (Erdos249257.twentyOneEvenQuotientGreedySupport R) (2 * R)) ∧         Erdos249257.twentyOneEvenQuotientGreedyRemainder (R + 1) =           Erdos249257.twentyOneBoundaryScalarState R             (4 * Erdos249257.twentyOneEvenQuotientGreedyRemainder R + Erdos249257.twentyOneTargetTwoStepPulse (2 * R) -               Erdos249257.loca …",
+        "via": [
+         "Erdos249257.twentyOneFatalAlignedBranch_eventually_canonical_transition"
+        ]
+       },
+       {
+        "type": "∃ K, ∀ (R : ℕ), K ≤ R → 2 ^ R < Erdos249257.twentyOneEvenQuotientGreedyRemainder R",
+        "via": [
+         "Erdos249257.twentyOneFatalAlignedBranch_eventually_strict_supercapacity"
+        ]
+       }
+      ]
+     }
+    ],
+    "frontier_cuts": [],
+    "suppliers": []
+   },
+   {
+    "operation": "weakening",
+    "theorem": "Erdos249257.twentyOneFatalAlignedBranch_eventually_strict_supercapacity",
+    "papers": [
+     {
+      "row": "erdos-257-mersenne-support-subseries#res:one-over-twenty-one-frontier",
+      "label": "res:one-over-twenty-one-frontier",
+      "paper": "erdos-257-mersenne-support-subseries",
+      "side": "short",
+      "lean_status": "exact_or_stronger",
+      "source": "paper/257/erdos-257-mersenne-support-subseries.tex:1071"
+     }
+    ],
+    "source": "lean/Erdos249257/TwentyOneQuotientGreedy.lean:5625",
+    "hypotheses": [
+     {
+      "i": 0,
+      "hypothesis": "Erdos249257.TwentyOneFatalAlignedBranch",
+      "consequences": [
+       {
+        "type": "1 / 21 ∉ Erdos249257.mersenneAchievementSet",
+        "via": [
+         "Iff.mp"
+        ]
+       }
+      ]
+     }
+    ],
+    "frontier_cuts": [],
+    "suppliers": []
+   },
+   {
+    "operation": "weakening",
+    "theorem": "ErdosProblems.Erdos257.PaperCompleteR21.half_mem_mersenneAchievementSet_of_resetSqrtEscape",
+    "papers": [
+     {
+      "row": "erdos257-mersenne-reasoning-surface#thm:lower-bound-every-reset",
+      "label": "thm:lower-bound-every-reset",
+      "paper": "erdos257-mersenne-reasoning-surface",
+      "side": "long",
+      "lean_status": "exact",
+      "source": "paper/reasoning-parts/erdos257/a257_front.tex:6789"
+     }
+    ],
+    "source": null,
+    "hypotheses": [
+     {
+      "i": 0,
+      "hypothesis": "ErdosProblems.Erdos257.PaperCompleteR21.SeamResetSqrtEscape",
+      "consequences": [
+       {
+        "type": "Erdos249257.LargestSkipLateStepSocket",
+        "via": [
+         "ErdosProblems.Erdos257.PaperCompleteR21.SeamResetSqrtEscape.largestSkipLateStepSocket"
+        ]
+       }
+      ]
+     }
+    ],
+    "frontier_cuts": [
+     "ErdosProblems.Erdos257.PaperCompleteR21.SeamResetSqrtEscape.largestSkipLateStepSocket"
+    ],
+    "suppliers": []
+   },
+   {
+    "operation": "weakening",
+    "theorem": "ErdosProblems.Erdos257.PaperCompleteR21.paper_seam_escape_implies_half_membership",
+    "papers": [
+     {
+      "row": "erdos257-mersenne-reasoning-surface#record:257bm-c15",
+      "label": "record:257bm-c15",
+      "paper": "erdos257-mersenne-reasoning-surface",
+      "side": "long",
+      "lean_status": "exact",
+      "source": "paper/reasoning-parts/erdos257/a257_front.tex:4059"
+     }
+    ],
+    "source": null,
+    "hypotheses": [
+     {
+      "i": 0,
+      "hypothesis": "∀ (n : ℕ),   3 ≤ n →     ¬Erdos249257.mersenneWeight n ≤ Erdos249257.greedyMersenneRemainder (1 / 2) (n - 1) →       Erdos249257.HalfCarryReachability.halfStripBound (2 * n) <         Erdos249257.HalfCylinderIntegerGreedy.seamIntegerGreedyRemainder n",
+      "consequences": [
+       {
+        "type": "Erdos249257.HalfGreedySkippedFullShellNonnegative",
+        "via": [
+         "ErdosProblems.Erdos257.PaperCompleteR21.paper_seam_escape_implies_full_shell_nonnegative"
+        ]
+       }
+      ]
+     }
+    ],
+    "frontier_cuts": [],
+    "suppliers": []
+   },
+   {
+    "operation": "weakening",
+    "theorem": "ErdosProblems.Erdos257.PaperCompleteR21.paper_theoremA_half_membership",
+    "papers": [
+     {
+      "row": "erdos257-mersenne-reasoning-surface#thm:lower-bound-every-reset",
+      "label": "thm:lower-bound-every-reset",
+      "paper": "erdos257-mersenne-reasoning-surface",
+      "side": "long",
+      "lean_status": "exact",
+      "source": "paper/reasoning-parts/erdos257/a257_front.tex:6789"
+     }
+    ],
+    "source": null,
+    "hypotheses": [
+     {
+      "i": 0,
+      "hypothesis": "ErdosProblems.Erdos257.PaperCompleteR21.PaperResetSqrtEscape",
+      "consequences": [
+       {
+        "type": "ErdosProblems.Erdos257.PaperCompleteR21.SeamResetSqrtEscape",
+        "via": [
+         "Iff.mp"
+        ]
+       }
+      ]
+     }
+    ],
+    "frontier_cuts": [],
+    "suppliers": []
+   },
+   {
+    "operation": "weakening",
+    "theorem": "ErdosProblems.Erdos257.PaperCompleteR21.paper_two_sided_dyadic_bound",
+    "papers": [
+     {
+      "row": "erdos257-mersenne-reasoning-surface#record:257bm-i13",
+      "label": "record:257bm-i13",
+      "paper": "erdos257-mersenne-reasoning-surface",
+      "side": "long",
+      "lean_status": "exact",
+      "source": "paper/reasoning-parts/erdos257/a257_front.tex:4711"
+     }
+    ],
+    "source": null,
+    "hypotheses": [
+     {
+      "i": 0,
+      "hypothesis": "Erdos249257.SeamTwoSidedDyadicCellEscape",
+      "consequences": [
+       {
+        "type": "∀ (s : ℕ) (hs : 5 ≤ s),   Erdos249257.HalfCylinderIntegerGreedy.seamIntegerGreedyRemainder s ≤ 2 ^ s ∨     (Erdos249257.HalfCylinderIntegerGreedy.seamAdjacentCut s hs).overshoot ≤ 2 ^ s",
+        "via": [
+         "Erdos249257.SeamTwoSidedDyadicCellEscape.twoSided"
+        ]
+       }
+      ]
+     }
+    ],
+    "frontier_cuts": [
+     "Erdos249257.SeamTwoSidedDyadicCellEscape.twoSided"
+    ],
+    "suppliers": []
    }
   ],
   "Erdos269": [
@@ -1773,6 +3136,78 @@
      }
     ],
     "source": null
+   },
+   {
+    "operation": "weakening",
+    "theorem": "ErdosProblems.Erdos269.PaperCompleteR21.two_prime_sums_transcendental",
+    "papers": [
+     {
+      "row": "erdos-269-three-prime-running-lcm#res:two-prime-transcendence",
+      "label": "res:two-prime-transcendence",
+      "paper": "erdos-269-three-prime-running-lcm",
+      "side": "short",
+      "lean_status": "modulo_named_input",
+      "source": "paper/269/erdos-269-three-prime-running-lcm.tex:238"
+     },
+     {
+      "row": "erdos269-running-lcm-reasoning-surface#long269:res:lead-two-prime",
+      "label": "long269:res:lead-two-prime",
+      "paper": "erdos269-running-lcm-reasoning-surface",
+      "side": "long",
+      "lean_status": "modulo_named_input",
+      "source": "paper/reasoning-parts/erdos269/core.tex:41"
+     }
+    ],
+    "source": null,
+    "hypotheses": [
+     {
+      "i": 0,
+      "hypothesis": "ErdosProblems.Erdos269.PaperCompleteR21.BugeaudLaurentTranscendence",
+      "consequences": [
+       {
+        "type": "∀ {p q : ℕ},   Nat.Prime p → Nat.Prime q → p < q → Transcendental ℚ (ErdosProblems.Erdos269.PaperR7.twoPrimeHeckeValue p q)",
+        "via": [
+         "ErdosProblems.Erdos269.PaperCompleteR21.transcendental_heckeValue"
+        ]
+       }
+      ]
+     }
+    ],
+    "frontier_cuts": [],
+    "suppliers": []
+   },
+   {
+    "operation": "weakening",
+    "theorem": "ErdosProblems.Erdos269.PaperCompleteR21.two_prime_transcendence",
+    "papers": [
+     {
+      "row": "erdos269-running-lcm-reasoning-surface#long269:res:lead-two-prime",
+      "label": "long269:res:lead-two-prime",
+      "paper": "erdos269-running-lcm-reasoning-surface",
+      "side": "long",
+      "lean_status": "modulo_named_input",
+      "source": "paper/reasoning-parts/erdos269/core.tex:41"
+     }
+    ],
+    "source": null,
+    "hypotheses": [
+     {
+      "i": 0,
+      "hypothesis": "ErdosProblems.Erdos269.PaperCompleteR21.BugeaudLaurentTranscendence",
+      "consequences": [
+       {
+        "type": "∀ {p q : ℕ},   Nat.Prime p →     Nat.Prime q →       p < q →         Transcendental ℚ (ErdosProblems.Erdos269.PaperCompleteR21.distinctSum p q) ∧           Transcendental ℚ (ErdosProblems.Erdos269.PaperCompleteR21.repeatedSum p q)",
+        "via": [
+         "ErdosProblems.Erdos269.PaperCompleteR21.two_prime_sums_transcendental"
+        ]
+       }
+      ]
+     }
+    ],
+    "frontier_cuts": [
+     "ErdosProblems.Erdos269.PaperCompleteR21.two_prime_sums_transcendental"
+    ],
+    "suppliers": []
    }
   ],
   "Erdos68": [
@@ -2096,7 +3531,28 @@
        "lean_status": "exact"
       }
      ],
-     "levels": []
+     "levels": [
+      [
+       {
+        "type": "∃ t₁,   ∀ (t : ℕ),     t₁ ≤ t →       ∀ (q m : ℕ),         0 < q →           Erdos249257.TotientTailPeriodKiller.totientTail                 (q * Erdos249257.TotientTailPeriodKiller.periodLcm t +                   m * Erdos249257.TotientTailPeriodKiller.periodLcm t) -               Erdos249257.TotientTailPeriodKiller.totientTail (q * Erdos249257.TotientTailPeriodKiller.periodLcm t) ∈             Set.range Int.cast",
+        "key": "7ee8d69169a6d8cb00000000c5d55fca",
+        "via": [
+         "Erdos249257.TotientTailPeriodKiller.rational_totient_series_forces_lcm_cone_flatness"
+        ],
+        "status": "open"
+       }
+      ],
+      [
+       {
+        "type": "∃ h,   0 < h ∧     ∃ N₀,       ∀ (N : ℕ),         N₀ ≤ N →           Erdos249257.TotientTailPeriodKiller.totientTail (N + h) - Erdos249257.TotientTailPeriodKiller.totientTail N ∈             Set.range Int.cast",
+        "key": "9868fbcab3befb5300000000e0df4a24",
+        "via": [
+         "Erdos249257.TotientTailPeriodKiller.eventual_period_of_not_irrational"
+        ],
+        "status": "open"
+       }
+      ]
+     ]
     },
     {
      "theorem": "ErdosProblems.Erdos249.PaperCompleteR20.lcm_grid_fractional_parts",
@@ -2108,7 +3564,38 @@
        "lean_status": "exact"
       }
      ],
-     "levels": []
+     "levels": [
+      [
+       {
+        "type": "∃ t₁,   ∀ (t : ℕ),     t₁ ≤ t →       ∀ (q m : ℕ),         0 < q →           Erdos249257.TotientTailPeriodKiller.totientTail ((q + m) * Erdos249257.TotientTailPeriodKiller.periodLcm t) -               Erdos249257.TotientTailPeriodKiller.totientTail (q * Erdos249257.TotientTailPeriodKiller.periodLcm t) ∈             Set.range Int.cast",
+        "key": "5dfdcd3c729cd62300000000dedf6c8f",
+        "via": [
+         "ErdosProblems.Erdos249.PaperCompleteR20.lcm_grid_flatness"
+        ],
+        "status": "open"
+       }
+      ],
+      [
+       {
+        "type": "∃ t₁,   ∀ (t : ℕ),     t₁ ≤ t →       ∀ (q m : ℕ),         0 < q →           Erdos249257.TotientTailPeriodKiller.totientTail                 (q * Erdos249257.TotientTailPeriodKiller.periodLcm t +                   m * Erdos249257.TotientTailPeriodKiller.periodLcm t) -               Erdos249257.TotientTailPeriodKiller.totientTail (q * Erdos249257.TotientTailPeriodKiller.periodLcm t) ∈             Set.range Int.cast",
+        "key": "7ee8d69169a6d8cb00000000c5d55fca",
+        "via": [
+         "Erdos249257.TotientTailPeriodKiller.rational_totient_series_forces_lcm_cone_flatness"
+        ],
+        "status": "open"
+       }
+      ],
+      [
+       {
+        "type": "∃ h,   0 < h ∧     ∃ N₀,       ∀ (N : ℕ),         N₀ ≤ N →           Erdos249257.TotientTailPeriodKiller.totientTail (N + h) - Erdos249257.TotientTailPeriodKiller.totientTail N ∈             Set.range Int.cast",
+        "key": "9868fbcab3befb5300000000e0df4a24",
+        "via": [
+         "Erdos249257.TotientTailPeriodKiller.eventual_period_of_not_irrational"
+        ],
+        "status": "open"
+       }
+      ]
+     ]
     },
     {
      "theorem": "ErdosProblems.Erdos249.PaperCompleteR21.eventual_tail_period_of_not_irrational",
@@ -2132,7 +3619,28 @@
        "lean_status": "exact"
       }
      ],
-     "levels": []
+     "levels": [
+      [
+       {
+        "type": "∃ t₁,   ∀ (t : ℕ),     t₁ ≤ t →       ∀ (q m : ℕ),         0 < q →           Erdos249257.TotientTailPeriodKiller.totientTail                 (q * Erdos249257.TotientTailPeriodKiller.periodLcm t +                   m * Erdos249257.TotientTailPeriodKiller.periodLcm t) -               Erdos249257.TotientTailPeriodKiller.totientTail (q * Erdos249257.TotientTailPeriodKiller.periodLcm t) ∈             Set.range Int.cast",
+        "key": "7ee8d69169a6d8cb00000000c5d55fca",
+        "via": [
+         "Erdos249257.TotientTailPeriodKiller.rational_totient_series_forces_lcm_cone_flatness"
+        ],
+        "status": "open"
+       }
+      ],
+      [
+       {
+        "type": "∃ h,   0 < h ∧     ∃ N₀,       ∀ (N : ℕ),         N₀ ≤ N →           Erdos249257.TotientTailPeriodKiller.totientTail (N + h) - Erdos249257.TotientTailPeriodKiller.totientTail N ∈             Set.range Int.cast",
+        "key": "9868fbcab3befb5300000000e0df4a24",
+        "via": [
+         "Erdos249257.TotientTailPeriodKiller.eventual_period_of_not_irrational"
+        ],
+        "status": "open"
+       }
+      ]
+     ]
     },
     {
      "theorem": "ErdosProblems.Erdos249.PaperCompleteR21.rational_forces_period_multiple_integrality",
@@ -2144,7 +3652,18 @@
        "lean_status": "exact"
       }
      ],
-     "levels": []
+     "levels": [
+      [
+       {
+        "type": "∃ h,   0 < h ∧     ∃ N₀,       ∀ (N : ℕ),         N₀ ≤ N →           Erdos249257.TotientTailPeriodKiller.totientTail (N + h) - Erdos249257.TotientTailPeriodKiller.totientTail N ∈             Set.range Int.cast",
+        "key": "9868fbcab3befb5300000000e0df4a24",
+        "via": [
+         "Erdos249257.TotientTailPeriodKiller.eventual_period_of_not_irrational"
+        ],
+        "status": "open"
+       }
+      ]
+     ]
     },
     {
      "theorem": "ErdosProblems.Erdos249.PaperCompleteR21.rational_forces_pulse_class_integrality",
@@ -2156,7 +3675,18 @@
        "lean_status": "exact"
       }
      ],
-     "levels": []
+     "levels": [
+      [
+       {
+        "type": "∃ h,   0 < h ∧     ∃ N₀,       ∀ (N : ℕ),         N₀ ≤ N →           Erdos249257.TotientTailPeriodKiller.totientTail (N + h) - Erdos249257.TotientTailPeriodKiller.totientTail N ∈             Set.range Int.cast",
+        "key": "9868fbcab3befb5300000000e0df4a24",
+        "via": [
+         "Erdos249257.TotientTailPeriodKiller.eventual_period_of_not_irrational"
+        ],
+        "status": "open"
+       }
+      ]
+     ]
     },
     {
      "theorem": "ErdosProblems.Erdos249.PaperCompleteR21.rationality_forces_mod_period_and_unbounded_rank",
@@ -2276,7 +3806,28 @@
        "lean_status": "modulo_named_input"
       }
      ],
-     "levels": []
+     "levels": [
+      [
+       {
+        "type": "∀ {f : Polynomial ℂ} {n : ℕ} {c : ℂ} {w₀ S : ℝ},   3 ≤ n →     f.natDegree = n →       f.Monic →         Polynomial.eval c (Polynomial.derivative f) = 0 →           Polynomial.eval c (Polynomial.derivative (Polynomial.derivative f)) ≠ 0 →             Polynomial.eval c f ≠ 0 →               0 ≤ w₀ →                 w₀ ≤ 1 →                   max w₀ (1 - w₀) < S →                     (∀ (d : ℂ),                         d ≠ c →                           Polynomial.eval d (Polynomial.derivative f) = 0 →                             S ≤ ‖Polynomial.eval d f / Polynomial.eval c f - ↑w₀‖) →                       ∃ a b γ Lf,                         a ≠ b ∧                           Polynomial.eval a  …",
+        "key": "e907150622fabce400000000977f25e5",
+        "via": [
+         "ErdosProblems.Erdos1041.PaperCompleteR21.discSep_separation_short"
+        ],
+        "status": "open"
+       }
+      ],
+      [
+       {
+        "type": "∀ {P : Polynomial ℂ} {n : ℕ} {w₀ S : ℝ},   ErdosProblems.Erdos1041.PaperCompleteR21.DiscSepNormalised P n w₀ S →     ∃ Z L,       ErdosProblems.Erdos1041.PaperCompleteR21.DiscSepConnector P Z L ∧         Polynomial.eval (Z (-1)) P = 0 ∧           Polynomial.eval (Z 1) P = 0 ∧             Z (-1) ≠ Z 1 ∧               (∀ ξ ∈ Set.Icc (-1) 1, ‖Polynomial.eval (Z ξ) P‖ ≤ 1) ∧                 L ^ 2 ≤ 2 * ErdosProblems.Erdos1041.PaperCompleteR21.discSepCoefficient n S (w₀ * (1 - w₀)) ∧                   (ErdosProblems.Erdos1041.PaperCompleteR21.discSepCoefficient n S (w₀ * (1 - w₀)) < 2 → L < 2)",
+        "key": "dd8e212edf18f2f3000000002800e8c0",
+        "via": [
+         "ErdosProblems.Erdos1041.PaperCompleteR21.discSep_separation_long"
+        ],
+        "status": "open"
+       }
+      ]
+     ]
     },
     {
      "theorem": "ErdosProblems.Erdos1041.PaperCompleteR21.discSep_separation_long",
@@ -2300,7 +3851,18 @@
        "lean_status": "modulo_named_input"
       }
      ],
-     "levels": []
+     "levels": [
+      [
+       {
+        "type": "∀ {P : Polynomial ℂ} {n : ℕ} {w₀ S : ℝ},   ErdosProblems.Erdos1041.PaperCompleteR21.DiscSepNormalised P n w₀ S →     ∃ Z L,       ErdosProblems.Erdos1041.PaperCompleteR21.DiscSepConnector P Z L ∧         Polynomial.eval (Z (-1)) P = 0 ∧           Polynomial.eval (Z 1) P = 0 ∧             Z (-1) ≠ Z 1 ∧               (∀ ξ ∈ Set.Icc (-1) 1, ‖Polynomial.eval (Z ξ) P‖ ≤ 1) ∧                 L ^ 2 ≤ 2 * ErdosProblems.Erdos1041.PaperCompleteR21.discSepCoefficient n S (w₀ * (1 - w₀)) ∧                   (ErdosProblems.Erdos1041.PaperCompleteR21.discSepCoefficient n S (w₀ * (1 - w₀)) < 2 → L < 2)",
+        "key": "dd8e212edf18f2f3000000002800e8c0",
+        "via": [
+         "ErdosProblems.Erdos1041.PaperCompleteR21.discSep_separation_long"
+        ],
+        "status": "open"
+       }
+      ]
+     ]
     },
     {
      "theorem": "ErdosProblems.Erdos1041.PaperCompleteR21.discSep_uniform_radius",
@@ -2317,7 +3879,28 @@
        "lean_status": "modulo_named_input"
       }
      ],
-     "levels": []
+     "levels": [
+      [
+       {
+        "type": "∀ {f : Polynomial ℂ} {n : ℕ} {c : ℂ} {w₀ S : ℝ},   3 ≤ n →     f.natDegree = n →       f.Monic →         Polynomial.eval c (Polynomial.derivative f) = 0 →           Polynomial.eval c (Polynomial.derivative (Polynomial.derivative f)) ≠ 0 →             Polynomial.eval c f ≠ 0 →               0 ≤ w₀ →                 w₀ ≤ 1 →                   max w₀ (1 - w₀) < S →                     (∀ (d : ℂ),                         d ≠ c →                           Polynomial.eval d (Polynomial.derivative f) = 0 →                             S ≤ ‖Polynomial.eval d f / Polynomial.eval c f - ↑w₀‖) →                       ∃ a b γ Lf,                         a ≠ b ∧                           Polynomial.eval a  …",
+        "key": "e907150622fabce400000000977f25e5",
+        "via": [
+         "ErdosProblems.Erdos1041.PaperCompleteR21.discSep_separation_short"
+        ],
+        "status": "open"
+       }
+      ],
+      [
+       {
+        "type": "∀ {P : Polynomial ℂ} {n : ℕ} {w₀ S : ℝ},   ErdosProblems.Erdos1041.PaperCompleteR21.DiscSepNormalised P n w₀ S →     ∃ Z L,       ErdosProblems.Erdos1041.PaperCompleteR21.DiscSepConnector P Z L ∧         Polynomial.eval (Z (-1)) P = 0 ∧           Polynomial.eval (Z 1) P = 0 ∧             Z (-1) ≠ Z 1 ∧               (∀ ξ ∈ Set.Icc (-1) 1, ‖Polynomial.eval (Z ξ) P‖ ≤ 1) ∧                 L ^ 2 ≤ 2 * ErdosProblems.Erdos1041.PaperCompleteR21.discSepCoefficient n S (w₀ * (1 - w₀)) ∧                   (ErdosProblems.Erdos1041.PaperCompleteR21.discSepCoefficient n S (w₀ * (1 - w₀)) < 2 → L < 2)",
+        "key": "dd8e212edf18f2f3000000002800e8c0",
+        "via": [
+         "ErdosProblems.Erdos1041.PaperCompleteR21.discSep_separation_long"
+        ],
+        "status": "open"
+       }
+      ]
+     ]
     }
    ]
   },
@@ -2418,7 +4001,18 @@
        "lean_status": "exact"
       }
      ],
-     "levels": []
+     "levels": [
+      [
+       {
+        "type": "Erdos249257.CofinalExactLocalMersenneHalfRows",
+        "key": "0296acb68453de48000000001081d72a",
+        "via": [
+         "Erdos249257.cofinalExactLocalMersenneHalfRows_of_criticalQuotientSupply"
+        ],
+        "status": "open"
+       }
+      ]
+     ]
     }
    ]
   },
@@ -2460,7 +4054,18 @@
        "lean_status": "modulo_named_input"
       }
      ],
-     "levels": []
+     "levels": [
+      [
+       {
+        "type": "∀ (h : ℕ),   0 < h →     ErdosProblems.Erdos251.PaperR11.Nonconcentration.ZeroDensity         {N |           1 ≤ N ∧             (-1 < ErdosProblems.Erdos251.PaperR11.Nonconcentration.shift ErdosProblems.Erdos251.realPrimeGapTail h N ∧                 ErdosProblems.Erdos251.PaperR11.Nonconcentration.shift ErdosProblems.Erdos251.realPrimeGapTail h N <                   1) ∧               (-1 <                     ErdosProblems.Erdos251.PaperR11.Nonconcentration.shift ErdosProblems.Erdos251.realPrimeGapTail h                       (N + 1) ∧                   ErdosProblems.Erdos251.PaperR11.Nonconcentration.shift ErdosProblems.Erdos251.realPrimeGapTail h                       (N + 1) <          …",
+        "key": "6e87053e86b184fa000000001647e101",
+        "via": [
+         "ErdosProblems.Erdos251.PaperR11.Nonconcentration.small_mismatch_zeroDensity"
+        ],
+        "status": "open"
+       }
+      ]
+     ]
     }
    ]
   },
@@ -2478,7 +4083,64 @@
        "lean_status": "modulo_named_input"
       }
      ],
-     "levels": []
+     "levels": [
+      [
+       {
+        "type": "∀ (h s : ℕ) {η D : ℝ},   ErdosProblems.Erdos249.PaperCompleteR21.ExcludedCofactor.HasNaturalDensity       (ErdosProblems.Erdos249.PaperCompleteR21.ExcludedCofactor.excludedCofactorSet η) D →     ∀ {ε : ℝ},       0 < ε →         ∀ᶠ (X : ℕ) in Filter.atTop,           ↑{N ∈                     Erdos249257.TotientTailPeriodKiller.pivotSupplierBases X                       (ErdosProblems.Erdos249.PaperCompleteR21.minimalDepth h s X) s |                   Erdos249257.TotientTailPeriodKiller.pivotCofactor N                       (ErdosProblems.Erdos249.PaperCompleteR21.minimalDepth h s X) s ∈                     ErdosProblems.Erdos249.PaperCompleteR21.ExcludedCofactor.excludedCofactorSet η}.card ≤  …",
+        "key": "86576a21e4c8101f000000005425202c",
+        "via": [
+         "ErdosProblems.Erdos249.PaperCompleteR21.ExcludedCofactor.eventually_card_excluded_le"
+        ],
+        "status": "open"
+       },
+       {
+        "type": "∀ (h s : ℕ) {η D : ℝ},   ErdosProblems.Erdos249.PaperCompleteR21.ExcludedCofactor.HasNaturalDensity       (ErdosProblems.Erdos249.PaperCompleteR21.ExcludedCofactor.excludedCofactorSet η) D →     D < 1 / 100 →       ∀ᶠ (X : ℕ) in Filter.atTop,         ↑{N ∈                     Erdos249257.TotientTailPeriodKiller.pivotSupplierBases X                       (ErdosProblems.Erdos249.PaperCompleteR21.minimalDepth h s X) s |                   Erdos249257.TotientTailPeriodKiller.pivotCofactor N                       (ErdosProblems.Erdos249.PaperCompleteR21.minimalDepth h s X) s ∈                     ErdosProblems.Erdos249.PaperCompleteR21.ExcludedCofactor.excludedCofactorSet η}.card <             1 / …",
+        "key": "422d306fc00a435100000000b5ad3aba",
+        "via": [
+         "ErdosProblems.Erdos249.PaperCompleteR21.ExcludedCofactor.eventually_excluded_budget"
+        ],
+        "status": "open"
+       }
+      ],
+      [
+       {
+        "type": "∀ (h s : ℕ) {η D : ℝ},   0 ≤ D →     D ≤ 1 →       ErdosProblems.Erdos249.PaperCompleteR21.ExcludedCofactor.UpperDensityLE           (ErdosProblems.Erdos249.PaperCompleteR21.ExcludedCofactor.excludedCofactorSet η) D →         ∀ {ε : ℝ},           0 < ε →             ∀ᶠ (X : ℕ) in Filter.atTop,               ↑{N ∈                         Erdos249257.TotientTailPeriodKiller.pivotSupplierBases X                           (ErdosProblems.Erdos249.PaperCompleteR21.minimalDepth h s X) s |                       Erdos249257.TotientTailPeriodKiller.pivotCofactor N                           (ErdosProblems.Erdos249.PaperCompleteR21.minimalDepth h s X) s ∈                         ErdosProblems.Erdos249.P …",
+        "key": "babe312f3ab009300000000030f0d608",
+        "via": [
+         "ErdosProblems.Erdos249.PaperCompleteR21.ExcludedCofactor.eventually_card_excluded_le_of_upper"
+        ],
+        "status": "open"
+       },
+       {
+        "type": "∀ (h s : ℕ) {η D : ℝ},   0 ≤ D →     D ≤ 1 →       ErdosProblems.Erdos249.PaperCompleteR21.ExcludedCofactor.UpperDensityLE           (ErdosProblems.Erdos249.PaperCompleteR21.ExcludedCofactor.excludedCofactorSet η) D →         D < 1 / 100 →           ∀ᶠ (X : ℕ) in Filter.atTop,             ↑{N ∈                         Erdos249257.TotientTailPeriodKiller.pivotSupplierBases X                           (ErdosProblems.Erdos249.PaperCompleteR21.minimalDepth h s X) s |                       Erdos249257.TotientTailPeriodKiller.pivotCofactor N                           (ErdosProblems.Erdos249.PaperCompleteR21.minimalDepth h s X) s ∈                         ErdosProblems.Erdos249.PaperCompleteR21.Exc …",
+        "key": "ca34fa5d1355588a00000000e53d4a51",
+        "via": [
+         "ErdosProblems.Erdos249.PaperCompleteR21.ExcludedCofactor.eventually_excluded_budget_of_upper"
+        ],
+        "status": "open"
+       }
+      ],
+      [
+       {
+        "type": "∀ {ε : ℝ},   0 < ε →     ∀ᶠ (a : ℕ) in Filter.atTop, ↑(Finset.filter Nat.Prime (Finset.Ioc a (2 * a + 1))).card * Real.log ↑a ≤ (1 + ε) * ↑a",
+        "key": "e1c080261f29e70c00000000408bc070",
+        "via": [
+         "ErdosProblems.Erdos249.PaperCompleteR21.ExcludedCofactor.eventually_card_primes_dyadic_le"
+        ],
+        "status": "open"
+       }
+      ],
+      [
+       {
+        "type": "∀ {δ : ℝ},   0 < δ →     ∃ K,       2 ≤ K ∧         ∀ (n : ℕ),           K ≤ n →             (1 - δ) * (↑n * Real.log ↑n) ≤ ↑(Nat.nth Nat.Prime n) ∧               ↑(Nat.nth Nat.Prime n) ≤ (1 + δ) * (↑n * Real.log ↑n)",
+        "key": "4f2f5d5d11d8c20700000000d275daf3",
+        "via": [
+         "ErdosProblems.Erdos249.PaperCompleteR21.ExcludedCofactor.nthPrime_two_sided"
+        ],
+        "status": "open"
+       }
+      ]
+     ]
     },
     {
      "theorem": "ErdosProblems.Erdos251.PaperCompleteR21.long_joint_prime_gap_countermodel",
@@ -2542,7 +4204,18 @@
        "lean_status": "modulo_named_input"
       }
      ],
-     "levels": []
+     "levels": [
+      [
+       {
+        "type": "∀ {p q : ℕ},   Nat.Prime p → Nat.Prime q → p < q → Transcendental ℚ (ErdosProblems.Erdos269.PaperR7.twoPrimeHeckeValue p q)",
+        "key": "fba8d073ffc59faf00000000ad6d5726",
+        "via": [
+         "ErdosProblems.Erdos269.PaperCompleteR21.transcendental_heckeValue"
+        ],
+        "status": "open"
+       }
+      ]
+     ]
     },
     {
      "theorem": "ErdosProblems.Erdos269.PaperCompleteR21.two_prime_transcendence",
@@ -2554,7 +4227,28 @@
        "lean_status": "modulo_named_input"
       }
      ],
-     "levels": []
+     "levels": [
+      [
+       {
+        "type": "∀ {p q : ℕ},   Nat.Prime p →     Nat.Prime q →       p < q →         Transcendental ℚ (ErdosProblems.Erdos269.PaperCompleteR21.distinctSum p q) ∧           Transcendental ℚ (ErdosProblems.Erdos269.PaperCompleteR21.repeatedSum p q)",
+        "key": "aaefa0af5ad6049c000000005c343500",
+        "via": [
+         "ErdosProblems.Erdos269.PaperCompleteR21.two_prime_sums_transcendental"
+        ],
+        "status": "open"
+       }
+      ],
+      [
+       {
+        "type": "∀ {p q : ℕ},   Nat.Prime p → Nat.Prime q → p < q → Transcendental ℚ (ErdosProblems.Erdos269.PaperR7.twoPrimeHeckeValue p q)",
+        "key": "fba8d073ffc59faf00000000ad6d5726",
+        "via": [
+         "ErdosProblems.Erdos269.PaperCompleteR21.transcendental_heckeValue"
+        ],
+        "status": "open"
+       }
+      ]
+     ]
     }
    ]
   },
@@ -2572,7 +4266,18 @@
        "lean_status": "exact"
       }
      ],
-     "levels": []
+     "levels": [
+      [
+       {
+        "type": "∀ (h : ℕ),   0 < h →     ∀ (N : ℕ),       Erdos249257.TotientTailPeriodKiller.totientTail (N + h) - Erdos249257.TotientTailPeriodKiller.totientTail N ∉         Set.range Int.cast",
+        "key": "0c85c88a7238ee60000000008f5e1d65",
+        "via": [
+         "Iff.mp"
+        ],
+        "status": "open"
+       }
+      ]
+     ]
     },
     {
      "theorem": "ErdosProblems.Erdos249.PaperCompleteR21.exists_simultaneous_depth_succ_of_irrational",
@@ -2584,7 +4289,28 @@
        "lean_status": "exact"
       }
      ],
-     "levels": []
+     "levels": [
+      [
+       {
+        "type": "∀ (N M : ℕ), 1 ≤ M → ∃ L, ∀ h ∈ Finset.Icc 1 M, Erdos249257.TotientTailPeriodKiller.certifiedKill h N L",
+        "key": "cf789e83784b47b500000000f6a306f4",
+        "via": [
+         "ErdosProblems.Erdos249.PaperCompleteR21.exists_simultaneous_depth_of_irrational"
+        ],
+        "status": "open"
+       }
+      ],
+      [
+       {
+        "type": "∀ (h : ℕ),   0 < h →     ∀ (N : ℕ),       Erdos249257.TotientTailPeriodKiller.totientTail (N + h) - Erdos249257.TotientTailPeriodKiller.totientTail N ∉         Set.range Int.cast",
+        "key": "0c85c88a7238ee60000000008f5e1d65",
+        "via": [
+         "Iff.mp"
+        ],
+        "status": "open"
+       }
+      ]
+     ]
     },
     {
      "theorem": "ErdosProblems.Erdos249.PaperCompleteR21.tail_diff_notMem_int_of_irrational",
@@ -2668,7 +4394,18 @@
        "lean_status": "exact"
       }
      ],
-     "levels": []
+     "levels": [
+      [
+       {
+        "type": "Erdos249257.CofinalExactLocalMersenneHalfRows",
+        "key": "0296acb68453de48000000001081d72a",
+        "via": [
+         "Erdos249257.cofinalExactLocalMersenneHalfRows_of_positiveHalfGreedySkips"
+        ],
+        "status": "open"
+       }
+      ]
+     ]
     }
    ]
   },
@@ -2746,7 +4483,18 @@
        "lean_status": "exact_or_stronger"
       }
      ],
-     "levels": []
+     "levels": [
+      [
+       {
+        "type": "∀ {s : ℕ} (hs : 5 ≤ s),   Erdos249257.HalfCylinderIntegerGreedy.seamIntegerGreedyRemainder s ≤ 2 ^ s ∨       (Erdos249257.HalfCylinderIntegerGreedy.seamAdjacentCut s hs).overshoot ≤ 2 ^ s →     Erdos249257.HalfCylinderIntegerGreedy.seamIntegerGreedyRemainder (s + 1) ≤ 2 ^ (s + 1) ∨       (Erdos249257.HalfCylinderIntegerGreedy.seamAdjacentCut (s + 1) ⋯).overshoot ≤ 2 ^ (s + 1)",
+        "key": "c67bf312fe35f81800000000bb3ad661",
+        "via": [
+         "Erdos249257.SeamTwoSidedDyadicCellEscape.step"
+        ],
+        "status": "open"
+       }
+      ]
+     ]
     },
     {
      "theorem": "ErdosProblems.Erdos257.PaperCompleteR21.paper_two_sided_dyadic_bound",
@@ -2758,7 +4506,28 @@
        "lean_status": "exact"
       }
      ],
-     "levels": []
+     "levels": [
+      [
+       {
+        "type": "∀ (s : ℕ) (hs : 5 ≤ s),   Erdos249257.HalfCylinderIntegerGreedy.seamIntegerGreedyRemainder s ≤ 2 ^ s ∨     (Erdos249257.HalfCylinderIntegerGreedy.seamAdjacentCut s hs).overshoot ≤ 2 ^ s",
+        "key": "5624243a22b59dab0000000052dbbf38",
+        "via": [
+         "Erdos249257.SeamTwoSidedDyadicCellEscape.twoSided"
+        ],
+        "status": "open"
+       }
+      ],
+      [
+       {
+        "type": "∀ {s : ℕ} (hs : 5 ≤ s),   Erdos249257.HalfCylinderIntegerGreedy.seamIntegerGreedyRemainder s ≤ 2 ^ s ∨       (Erdos249257.HalfCylinderIntegerGreedy.seamAdjacentCut s hs).overshoot ≤ 2 ^ s →     Erdos249257.HalfCylinderIntegerGreedy.seamIntegerGreedyRemainder (s + 1) ≤ 2 ^ (s + 1) ∨       (Erdos249257.HalfCylinderIntegerGreedy.seamAdjacentCut (s + 1) ⋯).overshoot ≤ 2 ^ (s + 1)",
+        "key": "c67bf312fe35f81800000000bb3ad661",
+        "via": [
+         "Erdos249257.SeamTwoSidedDyadicCellEscape.step"
+        ],
+        "status": "open"
+       }
+      ]
+     ]
     }
    ]
   },
@@ -2776,7 +4545,38 @@
        "lean_status": "exact_or_stronger"
       }
      ],
-     "levels": []
+     "levels": [
+      [
+       {
+        "type": "Erdos249257.SeamMiddleProducerRowEscape",
+        "key": "068822b4b6a97b7b000000006911f795",
+        "via": [
+         "Erdos249257.SeamUpperResetDyadicBandEscape.toMiddleProducerRowEscape"
+        ],
+        "status": "open"
+       }
+      ],
+      [
+       {
+        "type": "∀ {s : ℕ}, 13 ≤ s → s ≤ Erdos249257.HalfCylinderIntegerGreedy.seamIntegerGreedyRemainder s",
+        "key": "9e0d7c986e9c0eab0000000083df450d",
+        "via": [
+         "Erdos249257.SeamUpperResetDyadicBandEscape.remainder_ge_row"
+        ],
+        "status": "open"
+       }
+      ],
+      [
+       {
+        "type": "∀ {d k : ℕ} (hd5 : 5 ≤ d) (hd13 : 13 ≤ d),   k ≤ d →     (Erdos249257.HalfCylinderIntegerGreedy.seamAdjacentCut d hd5).successorCarries →       (∀ j < k,           Erdos249257.HalfCylinderIntegerGreedy.seamIntegerGreedyRemainder (d + j + 2) + 2 ^ (d + j + 2) +                 (Erdos249257.HalfCylinderIntegerGreedy.seamAdjacentCut (d + j + 1) ⋯).belowPulse +               4 =             4 * Erdos249257.HalfCylinderIntegerGreedy.seamIntegerGreedyRemainder (d + j + 1)) →         ¬Erdos249257.HalfCylinderIntegerGreedy.seamIntegerGreedyRemainder (d + k + 1) < d + k + 1",
+        "key": "d0de55331ee5b8730000000052a6f173",
+        "via": [
+         "Erdos249257.SeamUpperResetDyadicBandEscape.not_rowSmall_after_upperRightRun"
+        ],
+        "status": "open"
+       }
+      ]
+     ]
     },
     {
      "theorem": "ErdosProblems.Erdos257.PaperCompleteR21.paper_universal_band_condition_would_close_half",
@@ -2806,7 +4606,36 @@
        "lean_status": "exact_or_stronger"
       }
      ],
-     "levels": []
+     "levels": [
+      [
+       {
+        "type": "∃ K,   ∀ (R : ℕ),     K ≤ R →       Erdos249257.twentyOneEvenQuotientGreedySupport (R + 1) =           Erdos249257.twentyOneBoundaryLowerSupport (Erdos249257.twentyOneEvenQuotientGreedySupport R) R             (4 * Erdos249257.twentyOneEvenQuotientGreedyRemainder R + Erdos249257.twentyOneTargetTwoStepPulse (2 * R) -               Erdos249257.localPrefixTwoStepPulse (Erdos249257.twentyOneEvenQuotientGreedySupport R) (2 * R)) ∧         Erdos249257.twentyOneEvenQuotientGreedyRemainder (R + 1) =           Erdos249257.twentyOneBoundaryScalarState R             (4 * Erdos249257.twentyOneEvenQuotientGreedyRemainder R + Erdos249257.twentyOneTargetTwoStepPulse (2 * R) -               Erdos249257.loca …",
+        "key": "35c13a6ef48e4d8100000000eb3f787e",
+        "via": [
+         "Erdos249257.twentyOneFatalAlignedBranch_eventually_canonical_transition"
+        ],
+        "status": "open"
+       },
+       {
+        "type": "∃ K, ∀ (R : ℕ), K ≤ R → 2 ^ R < Erdos249257.twentyOneEvenQuotientGreedyRemainder R",
+        "key": "4ae6cfe2f0bed45a00000000f760676f",
+        "via": [
+         "Erdos249257.twentyOneFatalAlignedBranch_eventually_strict_supercapacity"
+        ],
+        "status": "open"
+       }
+      ],
+      [
+       {
+        "type": "1 / 21 ∉ Erdos249257.mersenneAchievementSet",
+        "key": "29a19f7d8fea910000000000d937cdc3",
+        "via": [
+         "Iff.mp"
+        ],
+        "status": "open"
+       }
+      ]
+     ]
     },
     {
      "theorem": "Erdos249257.twentyOneFatalAlignedBranch_eventually_strict_supercapacity",
@@ -2818,7 +4647,18 @@
        "lean_status": "exact_or_stronger"
       }
      ],
-     "levels": []
+     "levels": [
+      [
+       {
+        "type": "1 / 21 ∉ Erdos249257.mersenneAchievementSet",
+        "key": "29a19f7d8fea910000000000d937cdc3",
+        "via": [
+         "Iff.mp"
+        ],
+        "status": "open"
+       }
+      ]
+     ]
     }
    ]
   },
@@ -2841,7 +4681,18 @@
        "lean_status": "modulo_named_input"
       }
      ],
-     "levels": []
+     "levels": [
+      [
+       {
+        "type": "ErdosProblems.Erdos1041.PaperAnalyticTargets.ScaledLowCritical",
+        "key": "080d5509f0a56530000000006d8c9d77",
+        "via": [
+         "ErdosProblems.Erdos1041.PaperCompleteR21.scaledLowCritical_of_lowCritical"
+        ],
+        "status": "open"
+       }
+      ]
+     ]
     },
     {
      "theorem": "ErdosProblems.Erdos1041.PaperCompleteR21.scaledLowCritical_of_lowCritical",
@@ -2876,7 +4727,28 @@
        "lean_status": "modulo_named_input"
       }
      ],
-     "levels": []
+     "levels": [
+      [
+       {
+        "type": "Transcendental ℚ (∑' (m : ℕ+), ↑((ArithmeticFunction.sigma 1) ↑m) / 2 ^ ↑m)",
+        "key": "a9c8fa6d58f9183a00000000c5e1bc05",
+        "via": [
+         "ErdosProblems.Erdos249.PaperCompleteR21.transcendental_sigma_series"
+        ],
+        "status": "open"
+       }
+      ],
+      [
+       {
+        "type": "IsAlgebraic ℚ (1 / 2) →   0 < |1 / 2| → |1 / 2| < 1 → Transcendental ℚ (ErdosProblems.Erdos249.PaperCompleteR21.ramanujanP (1 / 2))",
+        "key": "1271c2147bacfb6f00000000c0976d8c",
+        "via": [
+         "hypothesis"
+        ],
+        "status": "open"
+       }
+      ]
+     ]
     },
     {
      "theorem": "ErdosProblems.Erdos249.PaperCompleteR21.transcendental_sigma_series",
@@ -2888,7 +4760,18 @@
        "lean_status": "modulo_named_input"
       }
      ],
-     "levels": []
+     "levels": [
+      [
+       {
+        "type": "IsAlgebraic ℚ (1 / 2) →   0 < |1 / 2| → |1 / 2| < 1 → Transcendental ℚ (ErdosProblems.Erdos249.PaperCompleteR21.ramanujanP (1 / 2))",
+        "key": "1271c2147bacfb6f00000000c0976d8c",
+        "via": [
+         "hypothesis"
+        ],
+        "status": "open"
+       }
+      ]
+     ]
     }
    ]
   },
@@ -2906,7 +4789,18 @@
        "lean_status": "exact"
       }
      ],
-     "levels": []
+     "levels": [
+      [
+       {
+        "type": "Erdos249257.DiagonalFreshLossBridge.PowerTwoOddWindowAffine.PowerTwoActualLcmTopEdgeResidueGapSupply",
+        "key": "73f3e53c82ddc8bd00000000c1ff7f12",
+        "via": [
+         "ErdosProblems.Erdos249.PaperCompleteR21.powerTwoActualLcmTopEdgeResidueGapSupply_of_paperAdjacentSuffixMidband"
+        ],
+        "status": "open"
+       }
+      ]
+     ]
     },
     {
      "theorem": "ErdosProblems.Erdos249.PaperCompleteR21.powerTwoActualLcmTopEdgeResidueGapSupply_of_paperAdjacentSuffixMidband",
@@ -2936,7 +4830,18 @@
        "lean_status": "modulo_named_input"
       }
      ],
-     "levels": []
+     "levels": [
+      [
+       {
+        "type": "ErdosProblems.Erdos251.PaperR11.Nonconcentration.FixedBlockNonconcentration fun n =>   ↑(ErdosProblems.Erdos251.PaperR11.PrimeSource.primeGap0 n)",
+        "key": "c531cb7fd7c4c53a0000000028098394",
+        "via": [
+         "ErdosProblems.Erdos251.PaperR11.PrimeSource.fixedBlock_of_SchlagePuchta"
+        ],
+        "status": "open"
+       }
+      ]
+     ]
     },
     {
      "theorem": "ErdosProblems.Erdos251.PaperCompleteR21.short_joint_prime_gap_countermodel",
@@ -2948,7 +4853,28 @@
        "lean_status": "modulo_named_input"
       }
      ],
-     "levels": []
+     "levels": [
+      [
+       {
+        "type": "ErdosProblems.Erdos251.PaperR11.PrimeSource.PrimeNumberTheorem →   ∀ (K : ℕ) {ε : ℝ},     0 < ε →       ε ≤ 1 →         ∃ e r C,           0 < C ∧             (∀ n < K, e n = 0) ∧               HasSum (fun n => ↑(ErdosProblems.Erdos251.PaperR11.PrimeSource.primeGap0 n + e n) / 2 ^ (n + 1)) ↑r ∧                 (∀ᶠ (n : ℕ) in Filter.atTop, ↑(e n) ≤ ErdosProblems.Erdos251.PaperR11.SparsePolylog.polylog ε n) ∧                   (∀ (q : ℕ),                       0 < q →                         ∀ᶠ (n : ℕ) in Filter.atTop,                           ErdosProblems.Erdos251.PaperR11.PrimeSource.primeGap0 n + e n ≡                               ErdosProblems.Erdos251.PaperR11.PrimeSource.primeGap0 n [ …",
+        "key": "1128bae7ff0e226900000000087ce44b",
+        "via": [
+         "ErdosProblems.Erdos251.PaperCompleteR21.long_joint_prime_gap_countermodel"
+        ],
+        "status": "open"
+       }
+      ],
+      [
+       {
+        "type": "ErdosProblems.Erdos251.PaperR11.Nonconcentration.FixedBlockNonconcentration fun n =>   ↑(ErdosProblems.Erdos251.PaperR11.PrimeSource.primeGap0 n)",
+        "key": "c531cb7fd7c4c53a0000000028098394",
+        "via": [
+         "ErdosProblems.Erdos251.PaperR11.PrimeSource.fixedBlock_of_SchlagePuchta"
+        ],
+        "status": "open"
+       }
+      ]
+     ]
     }
    ]
   },
@@ -3043,7 +4969,18 @@
        "lean_status": "exact"
       }
      ],
-     "levels": []
+     "levels": [
+      [
+       {
+        "type": "Erdos249257.HalfGreedySkippedFullShellNonnegative",
+        "key": "479c6097cc5743f4000000007b570d9c",
+        "via": [
+         "ErdosProblems.Erdos257.PaperCompleteR21.paper_seam_escape_implies_full_shell_nonnegative"
+        ],
+        "status": "open"
+       }
+      ]
+     ]
     }
    ]
   },
@@ -3223,7 +5160,18 @@
        "lean_status": "exact"
       }
      ],
-     "levels": []
+     "levels": [
+      [
+       {
+        "type": "Erdos249257.DiagonalFreshLossBridge.PowerTwoOddWindowAffine.PowerTwoAdjacentSuffixMidbandSupply",
+        "key": "e21a16cedde0e54500000000eb5aaa2e",
+        "via": [
+         "Erdos249257.DiagonalFreshLossBridge.PowerTwoOddWindowAffine.powerTwoAdjacentSuffixMidbandSupply_of_flexibleActualTopEdgeMagnitude"
+        ],
+        "status": "open"
+       }
+      ]
+     ]
     }
    ]
   },
@@ -3241,7 +5189,18 @@
        "lean_status": "exact"
       }
      ],
-     "levels": []
+     "levels": [
+      [
+       {
+        "type": "Erdos249257.DiagonalFreshLossBridge.PowerTwoOddWindowAffine.PowerTwoAdjacentSuffixMidbandSupply",
+        "key": "e21a16cedde0e54500000000eb5aaa2e",
+        "via": [
+         "Erdos249257.DiagonalFreshLossBridge.PowerTwoOddWindowAffine.powerTwoAdjacentSuffixMidbandSupply_of_oddGuardTopEdgeHalfWordBand"
+        ],
+        "status": "open"
+       }
+      ]
+     ]
     }
    ]
   },
@@ -3277,7 +5236,18 @@
        "lean_status": "exact"
       }
      ],
-     "levels": []
+     "levels": [
+      [
+       {
+        "type": "Filter.Tendsto   (fun N => ↑(Erdos249257.HalfCarryReachability.integerHalfCarry (Erdos249257.greedyMersenneSupport (1 / 2)) N) / 2 ^ N)   Filter.atTop (nhds 0)",
+        "key": "14c204c8cb3aafec000000008cccbadb",
+        "via": [
+         "Erdos249257.HalfCarryReachability.greedy_integerHalfCarry_scaled_tendsto_zero_of_cofinalStripReturn"
+        ],
+        "status": "open"
+       }
+      ]
+     ]
     }
    ]
   },
@@ -3295,7 +5265,18 @@
        "lean_status": "exact"
       }
      ],
-     "levels": []
+     "levels": [
+      [
+       {
+        "type": "Erdos249257.HalfGreedyGovernedFrozenMarginProducer",
+        "key": "6f2d5a2c8fb6c8420000000099622e96",
+        "via": [
+         "Erdos249257.governedFrozenMarginProducer_of_skippedFullShellNonnegative"
+        ],
+        "status": "open"
+       }
+      ]
+     ]
     }
    ]
   },
@@ -3331,7 +5312,18 @@
        "lean_status": "exact"
       }
      ],
-     "levels": []
+     "levels": [
+      [
+       {
+        "type": "Erdos249257.HalfGreedyGovernedFrozenMarginProducer",
+        "key": "6f2d5a2c8fb6c8420000000099622e96",
+        "via": [
+         "Erdos249257.governedFrozenMarginProducer_of_skippedSeamEscape"
+        ],
+        "status": "open"
+       }
+      ]
+     ]
     }
    ]
   },
@@ -3349,7 +5341,38 @@
        "lean_status": "exact"
       }
      ],
-     "levels": []
+     "levels": [
+      [
+       {
+        "type": "Erdos249257.SeamGreedyUnboundedSkippedRanksAlong fun j => 14 + j",
+        "key": "d1998647ec54ebb60000000099781828",
+        "via": [
+         "Erdos249257.seamGreedyUnboundedSkippedRanksAlong_of_largestSkipLateStepSocket"
+        ],
+        "status": "open"
+       }
+      ],
+      [
+       {
+        "type": "∀ (s : ℕ), 14 ≤ s → Erdos249257.LargestSkipLateAt s",
+        "key": "bc8c7b4c0564b29d000000000b9a56c9",
+        "via": [
+         "Erdos249257.largestSkipLateAt_of_stepSocket"
+        ],
+        "status": "open"
+       }
+      ],
+      [
+       {
+        "type": "∀ {s : ℕ}, 14 ≤ s → Erdos249257.LargestSkipLateAt s → Erdos249257.LargestSkipLateAt (s + 1)",
+        "key": "ceaaf38e65328b8d0000000088bed8ed",
+        "via": [
+         "Erdos249257.LargestSkipLateStepSocket.largestSkipLateAt_succ"
+        ],
+        "status": "open"
+       }
+      ]
+     ]
     }
    ]
   },
@@ -3367,7 +5390,18 @@
        "lean_status": "exact"
       }
      ],
-     "levels": []
+     "levels": [
+      [
+       {
+        "type": "Erdos249257.SeamMiddleProducerTailEscape",
+        "key": "f54758037ee1450400000000ffd792f2",
+        "via": [
+         "Erdos249257.SeamMiddleProducerCardEscape.toTailEscape"
+        ],
+        "status": "open"
+       }
+      ]
+     ]
     }
    ]
   },
@@ -3385,7 +5419,18 @@
        "lean_status": "exact"
       }
      ],
-     "levels": []
+     "levels": [
+      [
+       {
+        "type": "Erdos249257.SeamMiddleProducerCardEscape",
+        "key": "e39965fe229792340000000086bd2b47",
+        "via": [
+         "Erdos249257.SeamMiddleProducerRowEscape.toCardEscape"
+        ],
+        "status": "open"
+       }
+      ]
+     ]
     }
    ]
   },
@@ -3462,7 +5507,18 @@
        "lean_status": "modulo_named_input"
       }
      ],
-     "levels": []
+     "levels": [
+      [
+       {
+        "type": "ErdosProblems.Erdos1041.PaperCompleteR21.transfiniteDiameter     {z | ‖Polynomial.eval z ErdosProblems.Erdos1041.PaperCompleteR21.Arity.G‖ ≤ 2 * (187 / 2000)} =   (2 * (187 / 2000)) ^ (1 / ↑ErdosProblems.Erdos1041.PaperCompleteR21.Arity.G.natDegree)",
+        "key": "c4b6f6c31e7c0a17000000000b31f016",
+        "via": [
+         "hypothesis"
+        ],
+        "status": "open"
+       }
+      ]
+     ]
     }
    ]
   },
@@ -3534,7 +5590,18 @@
        "lean_status": "exact"
       }
      ],
-     "levels": []
+     "levels": [
+      [
+       {
+        "type": "ErdosProblems.Erdos257.PaperCompleteR21.SeamResetSqrtEscape",
+        "key": "95f476d2b095560300000000fecaa590",
+        "via": [
+         "Iff.mp"
+        ],
+        "status": "open"
+       }
+      ]
+     ]
     }
    ]
   },
@@ -3552,7 +5619,28 @@
        "lean_status": "exact"
       }
      ],
-     "levels": []
+     "levels": [
+      [
+       {
+        "type": "Erdos249257.LargestSkipLateStepSocket",
+        "key": "66641cf76aba3c2700000000d11a32f6",
+        "via": [
+         "ErdosProblems.Erdos257.PaperCompleteR21.SeamResetSqrtEscape.largestSkipLateStepSocket"
+        ],
+        "status": "open"
+       }
+      ],
+      [
+       {
+        "type": "ErdosProblems.Erdos257.PaperCompleteR21.SeamResetCrossingBoundEscape",
+        "key": "998ec3e5ed67d5f0000000004fcc7072",
+        "via": [
+         "ErdosProblems.Erdos257.PaperCompleteR21.SeamResetSqrtEscape.crossingBoundEscape"
+        ],
+        "status": "open"
+       }
+      ]
+     ]
     }
    ]
   },
@@ -3611,7 +5699,18 @@
        "lean_status": "exact_or_stronger"
       }
      ],
-     "levels": []
+     "levels": [
+      [
+       {
+        "type": "Erdos249257.HalfCarryReachability.HalfCarryCofinalTerminalOnlyStrip",
+        "key": "9acb03bc09f9347e00000000244df6c5",
+        "via": [
+         "Erdos249257.SuffixCylinderTerminalOnlyBridge.cofinalTerminalOnlyStrip_of_cofinalCylinderStages"
+        ],
+        "status": "open"
+       }
+      ]
+     ]
     }
    ]
   },
@@ -3886,7 +5985,18 @@
        "lean_status": "exact"
       }
      ],
-     "levels": []
+     "levels": [
+      [
+       {
+        "type": "∀ (n : ℕ), Erdos249257.greedyMersenneRemainder (1 / 2) n ≤ Erdos249257.halfTwoChannelCap n",
+        "key": "1c84823394f263d300000000802447be",
+        "via": [
+         "Erdos249257.greedyMersenneRemainder_le_cap_of_skipBarrier"
+        ],
+        "status": "open"
+       }
+      ]
+     ]
     }
    ]
   },
