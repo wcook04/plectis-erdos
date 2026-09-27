@@ -1,7 +1,7 @@
 {
  "schema": "plectis-paper-evidence/1",
  "lean_repository": "https://github.com/wcook04/plectis-erdos",
- "lean_pin": "3973d3b10bce72017b8f60093f0d6c3f4f592d80",
+ "lean_pin": "4db6150ed53492363079661a68bed4d181eb56dd",
  "lean_toolchain": "leanprover/lean4:v4.29.1",
  "mathlib": "5e932f97dd25535344f80f9dd8da3aab83df0fe6",
  "corpus_repository": "https://github.com/wcook04/plectis-erdos-lean",
@@ -4032,7 +4032,7 @@
      "title": "finite approximations with vanishing scaled error",
      "statement_markdown": "*Suppose there are integers $`M_j\\ge1`$ tending to infinity and sets $`A_j\\subseteq\\{2,\\ldots,M_j\\}`$ such that\n``` math\n\\frac{|K_{A_j}(M_j)|}{2^{M_j}}\\longrightarrow0.\n```\nThen $`X_A(2)=1/2`$ for some infinite set $`A\\subseteq\\mathbb{N}_{>0}`$.*",
      "lean": {
-      "status": "exact",
+      "status": "exact_or_stronger",
       "mark": "lean",
       "named_inputs": null,
       "named_input_definitions": [],
@@ -4040,45 +4040,22 @@
       "scope_markdown": null,
       "reason": null,
       "reason_markdown": null,
-      "relation_note": null,
+      "relation_note": "The Lean statement is the equivalence stated in the paragraph after the theorem: its right-to-left direction is the printed theorem, with $A\\subseteq\\mathbb N_{>0}$ written as $0\\notin B$, and its left-to-right direction is the converse, with the approximants $M_j=j+1$ and $A_j=B\\cap\\{0,\\ldots,j+1\\}$.",
       "declarations": [
        {
-        "name": "ErdosProblems.Erdos257.PaperCompleteR20.paper_terminalhalf",
+        "name": "ErdosProblems.Erdos257.PaperCompleteR20.paper_terminalhalf_iff",
         "path": "lean/ErdosProblems/Erdos257/PaperCompleteR20/TerminalSetCorrespondence.lean",
-        "line": 51,
+        "line": 185,
         "kind": "theorem",
-        "docstring": "Literal set-valued finite approximants from short `res:terminalhalf`.",
-        "statement": "theorem paper_terminalhalf\n    (M : ℕ → ℕ) (A : ℕ → Set ℕ)\n    (hM : ∀ j, 1 ≤ M j)\n    (hlim : Filter.Tendsto M Filter.atTop Filter.atTop)\n    (hA : ∀ j n, n ∈ A j → 2 ≤ n ∧ n ≤ M j)\n    (herr : Filter.Tendsto\n      (fun j ↦ |(terminalPaperCarry (A j) (M j) : ℝ)| / (2 : ℝ) ^ M j)\n      Filter.atTop (nhds 0)) :\n    ∃ B : Set ℕ, 0 ∉ B ∧ B.Infinite ∧\n      erdosSupportSeries 2 B = (1 : ℝ) / 2",
-        "statement_sha256": "2c74feb9b6a1338618770f563413627906f1cd01f1f1368c81d4ed9ebe7ef245",
+        "docstring": "Short `res:terminalhalf` as an equivalence.  An infinite support of positive\nintegers with Mersenne series value `1/2` exists exactly when there are depths\n`M_j ≥ 1` tending to infinity and sets `A_j ⊆ {2, …, M_j}` whose terminal\ncarries satisfy `|K_{A_j}(M_j)| / 2^{M_j} → 0`.  The right-to-left direction is\n`paper_terminalhalf`; the left-to-right direction is\n`paper_terminalhalf_converse`.",
+        "statement": "theorem paper_terminalhalf_iff :\n    (∃ B : Set ℕ, 0 ∉ B ∧ B.Infinite ∧ erdosSupportSeries 2 B = (1 : ℝ) / 2) ↔\n      ∃ (M : ℕ → ℕ) (A : ℕ → Set ℕ),\n        (∀ j, 1 ≤ M j) ∧\n          Filter.Tendsto M Filter.atTop Filter.atTop ∧\n          (∀ j n, n ∈ A j → 2 ≤ n ∧ n ≤ M j) ∧\n          Filter.Tendsto\n            (fun j ↦ |(terminalPaperCarry (A j) (M j) : ℝ)| / (2 : ℝ) ^ M j)\n            Filter.atTop (nhds 0)",
+        "statement_sha256": "3a980882134f31b5708c20de9f7b630c725be2523cd056552241f76e2bc65370",
         "unfolds": []
        }
       ]
      },
      "comparator": {
-      "status": "compared",
-      "commit": "cc7e541cf2081c6fef5a5e377d52e365e33b01eb",
-      "run_id": "35935225572",
-      "checks": [
-       {
-        "declaration": "ErdosProblems.Erdos257.PaperCompleteR20.paper_terminalhalf",
-        "entry": "E257_47",
-        "challenge": {
-         "declaration": "PalomarCorpus.E257.PaperStatementsBC.paper_terminalhalf",
-         "path": "PalomarCorpus/E257_47/Challenge.lean",
-         "line": 121,
-         "statement": "theorem paper_terminalhalf\n    (M : ℕ → ℕ) (A : ℕ → Set ℕ)\n    (hM : ∀ j, 1 ≤ M j)\n    (hlim : Filter.Tendsto M Filter.atTop Filter.atTop)\n    (hA : ∀ j n, n ∈ A j → 2 ≤ n ∧ n ≤ M j)\n    (herr : Filter.Tendsto\n      (fun j ↦ |(terminalPaperCarry (A j) (M j) : ℝ)| / (2 : ℝ) ^ M j)\n      Filter.atTop (nhds 0)) :\n    ∃ B : Set ℕ, 0 ∉ B ∧ B.Infinite ∧\n      erdosSupportSeries 2 B = (1 : ℝ) / 2",
-         "same_as_lean": true
-        },
-        "solution": {
-         "declaration": "PalomarCorpus.E257.PaperStatementsBC.paper_terminalhalf",
-         "module": "Solutions.PalomarCorpus.E257.PaperStatementsBC",
-         "path": "Solutions/PalomarCorpus/E257_47/PaperStatementsBC.lean",
-         "line": 22
-        },
-        "configuration": "PalomarCorpus/E257_47/comparator.json",
-        "receipt": "evidence/comparator/replay-35935225572/receipt-E257_47.json"
-       }
-      ]
+      "status": "pending"
      },
      "record": "evidence/erdos-257-mersenne-support-subseries.md"
     },
