@@ -570,13 +570,24 @@ def main() -> int:
     mutated_incremental = copy.deepcopy(incremental_surfaces)
     mutated_incremental[".github/workflows/lean.yml"] = mutated_incremental[
         ".github/workflows/lean.yml"
-    ].replace("uses: actions/cache@", "uses: actions/cache-bypassed@", 1)
+    ].replace("uses: actions/cache/restore@", "uses: actions/cache-bypassed@", 1)
     try:
         diagnostic.validate_incremental_build_contract(mutated_incremental)
     except AssertionError:
         checks += 1
     else:
         raise AssertionError("project-cache workflow deletion escaped")
+
+    mutated_incremental = copy.deepcopy(incremental_surfaces)
+    mutated_incremental[".github/workflows/lean.yml"] += (
+        "\n      - uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0\n"
+    )
+    try:
+        diagnostic.validate_incremental_build_contract(mutated_incremental)
+    except AssertionError:
+        checks += 1
+    else:
+        raise AssertionError("implicit PR cache post-save escaped")
 
     mutated_incremental = copy.deepcopy(incremental_surfaces)
     mutated_incremental["scripts/lean_fast_build.py"] = mutated_incremental[

@@ -152,6 +152,9 @@ PREFLIGHT_CHECKS: dict[str, tuple[str, ...]] = {
     "scripts/build_declaration_search_index.py": ("--check",),
     "scripts/build_lean_dependency_index.py": ("--check", "--tracked-only"),
     "scripts/build_semantic_corpus.py": ("--check", "--tracked-only"),
+    # First-contact checks also bind documented workflow behavior. Keep this
+    # dependency-free CI lane inside the outgoing-commit gate, not just CI.
+    "scripts/check_cold_clone_comprehension.py": ("--quick",),
 }
 
 # Omitted from mutation, never omitted from verification. A full Lean export
