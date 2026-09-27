@@ -500,9 +500,9 @@ $\sum_jC_j2^{j\alpha_j}2^{\alpha_j}/(2^{\alpha_j}-1)^2<\infty$
 implies~\eqref{eq:strengthened-cover}, since each of its summands is the
 corresponding summand of~\eqref{eq:strengthened-cover} multiplied by
 $2^{\alpha_j}/(2^{\alpha_j}-1)>1$.
-This proves inclusion of the hypotheses for a given cover, not strict
-inclusion of the resulting support classes after optimisation over
-all covers.  No separating construction is proved here.
+This proves inclusion of the hypotheses for a given cover; after
+optimisation over all covers, the inclusion of support classes is
+strict by a \href{https://github.com/wcook04/plectis-erdos/blob/3973d3b10bce72017b8f60093f0d6c3f4f592d80/lean/ErdosProblems/Erdos257/PaperCompleteR8/AnalyticIncomparability.lean\#L41}{Lean proof}.
 
 \subsection{What every positive cover must pay}
 A necessary lower bound on the cost holds for every choice of cover.  For finite $F$, write
@@ -728,10 +728,11 @@ contradict the proposition.  Theorem~\ref{res:mixed-supports} applies
 to the actual pair $E,V$ and proves the all-base hereditary conclusion;
 no addition of irrational numbers is involved.
 \end{proof}
-The mixed implication has a Lean declaration in the public corpus.
-Proposition~\ref{res:weighted-cover-incomparability} and this corollary
-have ordinary proofs here, but these particular constructions have not
-been formalised in Lean or independently reviewed.  The weighted-only
+The mixed implication and
+Proposition~\ref{res:weighted-cover-incomparability} have Lean proofs,
+the latter with a squarefree divisor-cube host as $V$.  The printed
+construction and this corollary have ordinary proofs, and none has been
+independently reviewed.  The weighted-only
 construction follows the first-logarithmic-moment method; the
 bounded-mass reverse construction was developed in an AI-assisted
 continuation on 25 September 2026.  No historical priority claim is

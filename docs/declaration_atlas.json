@@ -4,21 +4,21 @@
   "projection_not_authority": true,
   "proof_authority": "Lean source checked by the pinned Lean kernel",
   "argument_authority": "docs/claims.json::machine_readable_paper.argument_graph",
-  "source_fingerprint": "sha256:ebfb71877a4b1167ccb9ef872680ea87727dad2844af75a98591345432b6a484",
+  "source_fingerprint": "sha256:e023ddfd4f6922c37fc8ce76dbb2491a5eba382376eeafdfbdc9fb4276de8057",
   "summary": {
-    "module_count": 1847,
-    "declaration_count": 163712,
-    "theorem_like_count": 159789,
+    "module_count": 1860,
+    "declaration_count": 163947,
+    "theorem_like_count": 159982,
     "generated_certificate_declaration_count": 8171,
     "principal_claim_link_count": 468,
     "kind_counts": {
       "abbrev": 53,
-      "def": 3793,
+      "def": 3833,
       "inductive": 5,
       "instance": 14,
       "lemma": 1446,
-      "structure": 58,
-      "theorem": 158343
+      "structure": 60,
+      "theorem": 158536
     }
   },
   "modules": [
@@ -8715,6 +8715,9 @@
         "ErdosProblems.Erdos251.SparseRationalisationCore",
         "ErdosProblems.Erdos251.SparseScheduleDensityR8",
         "ErdosProblems.Erdos251.SparseScheduleR8",
+        "ErdosProblems.Erdos257.PaperCompleteR8.AnalyticIncomparability",
+        "ErdosProblems.Erdos257.PaperCompleteR8.CoverGaugeComplete",
+        "ErdosProblems.Erdos257.PaperCompleteR8.StrengthenedCoverFiniteUnion",
         "ErdosProblems.Erdos257.PaperCompleteR8.WeightedReturn",
         "ErdosProblems.Erdos257.WitnessLogicHost",
         "ErdosProblems.Erdos257.WitnessLogicIrrational",
@@ -8777,104 +8780,6 @@
         "ErdosProblems.Erdos68.ShrinkingTargetNormalForm",
         "ErdosProblems.Shared.IrrationalRotationStaircase",
         "ErdosProblems.Synthesis"
-      ],
-      "declaration_count": 0,
-      "kind_counts": {}
-    },
-    {
-      "id": "ErdosProblems.ArgumentGraph.Derived.Erdos1041",
-      "path": "lean/ErdosProblems/ArgumentGraph/Derived/Erdos1041.lean",
-      "imports": [
-        "ErdosProblems.Erdos1041.PaperCompleteR21.ConstantFactorAreaCriteria",
-        "ErdosProblems.Erdos1041.PaperCompleteR21.CriticalValueSeparationTransport",
-        "ErdosProblems.Erdos1041.PaperCompleteR21.HyperbolicLawOfCosines",
-        "ErdosProblems.Erdos1041.PaperCompleteR21.SeparationParent",
-        "ErdosProblems.Erdos1041.PaperCompleteR21.SubcriticalPerimeterPath"
-      ],
-      "declaration_count": 0,
-      "kind_counts": {}
-    },
-    {
-      "id": "ErdosProblems.ArgumentGraph.Derived.Erdos1049",
-      "path": "lean/ErdosProblems/ArgumentGraph/Derived/Erdos1049.lean",
-      "imports": [
-        "ErdosProblems.Erdos1049.PaperCompleteR21.RationalBaseThreshold"
-      ],
-      "declaration_count": 0,
-      "kind_counts": {}
-    },
-    {
-      "id": "ErdosProblems.ArgumentGraph.Derived.Erdos243",
-      "path": "lean/ErdosProblems/ArgumentGraph/Derived/Erdos243.lean",
-      "imports": [
-        "ErdosProblems.Erdos243.PaperCompleteR21.ExactOrbitRecordDichotomy",
-        "ErdosProblems.Erdos243.PaperCompleteR21.MaximalGapConstant",
-        "ErdosProblems.Erdos243.PaperCompleteR21.ReducedDenominatorPrimePowers",
-        "ErdosProblems.Erdos243.PaperCompleteR21.ReducedStepLocalArithmetic",
-        "ErdosProblems.Erdos243.PaperCompleteR21.WindowAvoidance"
-      ],
-      "declaration_count": 0,
-      "kind_counts": {}
-    },
-    {
-      "id": "ErdosProblems.ArgumentGraph.Derived.Erdos249",
-      "path": "lean/ErdosProblems/ArgumentGraph/Derived/Erdos249.lean",
-      "imports": [
-        "ErdosProblems.Erdos249.PaperCompleteR20.LcmGridCorrespondence",
-        "ErdosProblems.Erdos249.PaperCompleteR21.DivisorChannelSplitAndSeamDoubling",
-        "ErdosProblems.Erdos249.PaperCompleteR21.ExtremalOrderDirectedAndPulse",
-        "ErdosProblems.Erdos249.PaperCompleteR21.FirstHarmonicBlockCriteria",
-        "ErdosProblems.Erdos249.PaperCompleteR21.MersennePrimeSupportAnchors",
-        "ErdosProblems.Erdos249.PaperCompleteR21.MobiusMersenneLadderLogConcavity",
-        "ErdosProblems.Erdos249.PaperCompleteR21.NearIntegerIrrationalityCriterion",
-        "ErdosProblems.Erdos249.PaperCompleteR21.NumeratorPolynomialAndMersenneRemainder",
-        "ErdosProblems.Erdos249.PaperCompleteR21.PhaseEnergyAndForeignResidueProjection",
-        "ErdosProblems.Erdos249.PaperCompleteR21.ScalarLocalisationAndInversePhaseGauge"
-      ],
-      "declaration_count": 0,
-      "kind_counts": {}
-    },
-    {
-      "id": "ErdosProblems.ArgumentGraph.Derived.Erdos251",
-      "path": "lean/ErdosProblems/ArgumentGraph/Derived/Erdos251.lean",
-      "imports": [
-        "ErdosProblems.Erdos251.PaperCompleteR20.FiniteSeparation",
-        "ErdosProblems.Erdos251.PaperCompleteR21.JointPrimeGapCountermodel"
-      ],
-      "declaration_count": 0,
-      "kind_counts": {}
-    },
-    {
-      "id": "ErdosProblems.ArgumentGraph.Derived.Erdos257",
-      "path": "lean/ErdosProblems/ArgumentGraph/Derived/Erdos257.lean",
-      "imports": [
-        "ErdosProblems.Erdos257.PaperCompleteR21.ArithmeticCounterexampleAssembly",
-        "ErdosProblems.Erdos257.PaperCompleteR21.EventualNonnegativeMargin",
-        "ErdosProblems.Erdos257.PaperCompleteR21.FeedbackRowStripWitnessAllDepths",
-        "ErdosProblems.Erdos257.PaperCompleteR21.GreedyOrbitNoTies",
-        "ErdosProblems.Erdos257.PaperCompleteR21.LogarithmicInitialInterval",
-        "ErdosProblems.Erdos257.PaperCompleteR21.MersenneChannelSurvivalAllHeights",
-        "ErdosProblems.Erdos257.PaperCompleteR21.ShortWindowDivisorPhase",
-        "ErdosProblems.Erdos257.PaperCompleteR21.SkipSafetyAndDivisorZeroRuns"
-      ],
-      "declaration_count": 0,
-      "kind_counts": {}
-    },
-    {
-      "id": "ErdosProblems.ArgumentGraph.Derived.Erdos269",
-      "path": "lean/ErdosProblems/ArgumentGraph/Derived/Erdos269.lean",
-      "imports": [
-        "ErdosProblems.Erdos269.PaperR7BasicAssembly",
-        "ErdosProblems.Erdos269.PaperR7WindowResults"
-      ],
-      "declaration_count": 0,
-      "kind_counts": {}
-    },
-    {
-      "id": "ErdosProblems.ArgumentGraph.Derived.Erdos68",
-      "path": "lean/ErdosProblems/ArgumentGraph/Derived/Erdos68.lean",
-      "imports": [
-        "ErdosProblems.Erdos68.PaperCompletePrimePole"
       ],
       "declaration_count": 0,
       "kind_counts": {}
@@ -17492,6 +17397,32 @@
       }
     },
     {
+      "id": "ErdosProblems.Erdos257.PaperCompleteR8.AnalyticIncomparability",
+      "path": "lean/ErdosProblems/Erdos257/PaperCompleteR8/AnalyticIncomparability.lean",
+      "imports": [
+        "ErdosProblems.Erdos257.PaperCompleteR8.AnalyticSeparationReturn",
+        "ErdosProblems.Erdos257.PaperCompleteR8.FixedExponentCover"
+      ],
+      "declaration_count": 5,
+      "kind_counts": {
+        "theorem": 5
+      }
+    },
+    {
+      "id": "ErdosProblems.Erdos257.PaperCompleteR8.AnalyticSeparationReturn",
+      "path": "lean/ErdosProblems/Erdos257/PaperCompleteR8/AnalyticSeparationReturn.lean",
+      "imports": [
+        "ErdosProblems.Erdos257.PaperCompleteR8.DyadicHostSeparation",
+        "ErdosProblems.Erdos257.PaperCompleteR8.CoverClassTransport",
+        "ErdosProblems.Erdos257.PaperCompleteR8.CoverScalarGauge",
+        "ErdosProblems.Erdos257.PaperCompleteR7.TailGluing"
+      ],
+      "declaration_count": 2,
+      "kind_counts": {
+        "theorem": 2
+      }
+    },
+    {
       "id": "ErdosProblems.Erdos257.PaperCompleteR8.ArbitraryWeightMixedClaim",
       "path": "lean/ErdosProblems/Erdos257/PaperCompleteR8/ArbitraryWeightMixedClaim.lean",
       "imports": [
@@ -17567,6 +17498,31 @@
       }
     },
     {
+      "id": "ErdosProblems.Erdos257.PaperCompleteR8.CoverClassTransport",
+      "path": "lean/ErdosProblems/Erdos257/PaperCompleteR8/CoverClassTransport.lean",
+      "imports": [
+        "ErdosProblems.Erdos257.PaperCompleteR8.OptimizedCoverBudget",
+        "ErdosProblems.Erdos257.PaperCompleteR8.CoverPotentialBounds"
+      ],
+      "declaration_count": 4,
+      "kind_counts": {
+        "def": 2,
+        "theorem": 2
+      }
+    },
+    {
+      "id": "ErdosProblems.Erdos257.PaperCompleteR8.CoverGaugeComplete",
+      "path": "lean/ErdosProblems/Erdos257/PaperCompleteR8/CoverGaugeComplete.lean",
+      "imports": [
+        "ErdosProblems.Erdos257.PaperCompleteR8.CoverScalarGauge"
+      ],
+      "declaration_count": 20,
+      "kind_counts": {
+        "def": 3,
+        "theorem": 17
+      }
+    },
+    {
       "id": "ErdosProblems.Erdos257.PaperCompleteR8.CoverPotentialBounds",
       "path": "lean/ErdosProblems/Erdos257/PaperCompleteR8/CoverPotentialBounds.lean",
       "imports": [
@@ -17591,6 +17547,95 @@
       }
     },
     {
+      "id": "ErdosProblems.Erdos257.PaperCompleteR8.DivisorCubeIncidence",
+      "path": "lean/ErdosProblems/Erdos257/PaperCompleteR8/DivisorCubeIncidence.lean",
+      "imports": [
+        "ErdosProblems.Erdos257.PaperCompleteR8.DyadicDivisorFrames"
+      ],
+      "declaration_count": 11,
+      "kind_counts": {
+        "def": 3,
+        "theorem": 8
+      }
+    },
+    {
+      "id": "ErdosProblems.Erdos257.PaperCompleteR8.DivisorCubeMoments",
+      "path": "lean/ErdosProblems/Erdos257/PaperCompleteR8/DivisorCubeMoments.lean",
+      "imports": [
+        "ErdosProblems.Erdos257.PaperCompleteR8.OptimizedCubeCost",
+        "ErdosProblems.Erdos257.PaperCompleteR8.OldCoverObstruction"
+      ],
+      "declaration_count": 8,
+      "kind_counts": {
+        "theorem": 8
+      }
+    },
+    {
+      "id": "ErdosProblems.Erdos257.PaperCompleteR8.DivisorCubeProduct",
+      "path": "lean/ErdosProblems/Erdos257/PaperCompleteR8/DivisorCubeProduct.lean",
+      "imports": [
+        "ErdosProblems.Erdos257.PaperCompleteR8.FiniteAtomicMajorants",
+        "ErdosProblems.Erdos257.PaperCompleteR8.DivisorCubeIncidence",
+        "ErdosProblems.Erdos257.PaperCompleteR8.DivisorFrameWeightedBudget"
+      ],
+      "declaration_count": 17,
+      "kind_counts": {
+        "def": 4,
+        "theorem": 13
+      }
+    },
+    {
+      "id": "ErdosProblems.Erdos257.PaperCompleteR8.DivisorFrameHostTransport",
+      "path": "lean/ErdosProblems/Erdos257/PaperCompleteR8/DivisorFrameHostTransport.lean",
+      "imports": [
+        "ErdosProblems.Erdos257.PaperCompleteR8.DivisorFrameWeightedBudget",
+        "ErdosProblems.Erdos257.PaperCompleteR8.CountableCoverLogBudget",
+        "ErdosProblems.Erdos257.PaperCompleteR7.AnalyticTargets"
+      ],
+      "declaration_count": 5,
+      "kind_counts": {
+        "theorem": 5
+      }
+    },
+    {
+      "id": "ErdosProblems.Erdos257.PaperCompleteR8.DivisorFrameWeightedBudget",
+      "path": "lean/ErdosProblems/Erdos257/PaperCompleteR8/DivisorFrameWeightedBudget.lean",
+      "imports": [
+        "ErdosProblems.Erdos257.PaperCompleteR8.DyadicDivisorFrames",
+        "ErdosProblems.Erdos257.PaperCompleteR8.PrimeHarmonicBlocks"
+      ],
+      "declaration_count": 9,
+      "kind_counts": {
+        "def": 1,
+        "theorem": 8
+      }
+    },
+    {
+      "id": "ErdosProblems.Erdos257.PaperCompleteR8.DyadicDivisorFrames",
+      "path": "lean/ErdosProblems/Erdos257/PaperCompleteR8/DyadicDivisorFrames.lean",
+      "imports": [],
+      "declaration_count": 6,
+      "kind_counts": {
+        "def": 2,
+        "theorem": 4
+      }
+    },
+    {
+      "id": "ErdosProblems.Erdos257.PaperCompleteR8.DyadicHostSeparation",
+      "path": "lean/ErdosProblems/Erdos257/PaperCompleteR8/DyadicHostSeparation.lean",
+      "imports": [
+        "ErdosProblems.Erdos257.PaperCompleteR8.DivisorCubeIncidence",
+        "ErdosProblems.Erdos257.PaperCompleteR8.DyadicLogarithmicEvents",
+        "ErdosProblems.Erdos257.PaperCompleteR8.OptimizedCoverBudget",
+        "ErdosProblems.Erdos257.PaperCompleteR8.DivisorFrameHostTransport",
+        "ErdosProblems.Erdos257.PaperCompleteR8.WeightedReturn"
+      ],
+      "declaration_count": 9,
+      "kind_counts": {
+        "theorem": 9
+      }
+    },
+    {
       "id": "ErdosProblems.Erdos257.PaperCompleteR8.DyadicKernel",
       "path": "lean/ErdosProblems/Erdos257/PaperCompleteR8/DyadicKernel.lean",
       "imports": [
@@ -17600,6 +17645,30 @@
       "declaration_count": 9,
       "kind_counts": {
         "theorem": 9
+      }
+    },
+    {
+      "id": "ErdosProblems.Erdos257.PaperCompleteR8.DyadicLogarithmicEvents",
+      "path": "lean/ErdosProblems/Erdos257/PaperCompleteR8/DyadicLogarithmicEvents.lean",
+      "imports": [
+        "ErdosProblems.Erdos257.CoverIndependentPeriodicMean"
+      ],
+      "declaration_count": 4,
+      "kind_counts": {
+        "theorem": 4
+      }
+    },
+    {
+      "id": "ErdosProblems.Erdos257.PaperCompleteR8.FiniteAtomicMajorants",
+      "path": "lean/ErdosProblems/Erdos257/PaperCompleteR8/FiniteAtomicMajorants.lean",
+      "imports": [
+        "ErdosProblems.Erdos257.PaperCompleteR8.PositiveWeightPadding",
+        "ErdosProblems.Erdos257.PaperCompleteR8.DyadicLogarithmicEvents"
+      ],
+      "declaration_count": 7,
+      "kind_counts": {
+        "def": 1,
+        "theorem": 6
       }
     },
     {
@@ -17624,6 +17693,18 @@
       "kind_counts": {
         "def": 3,
         "theorem": 12
+      }
+    },
+    {
+      "id": "ErdosProblems.Erdos257.PaperCompleteR8.FixedExponentCover",
+      "path": "lean/ErdosProblems/Erdos257/PaperCompleteR8/FixedExponentCover.lean",
+      "imports": [
+        "ErdosProblems.Erdos257.PaperCompleteR8.ReverseStrengthenedHost"
+      ],
+      "declaration_count": 6,
+      "kind_counts": {
+        "def": 2,
+        "theorem": 4
       }
     },
     {
@@ -17653,6 +17734,19 @@
       }
     },
     {
+      "id": "ErdosProblems.Erdos257.PaperCompleteR8.OldCoverObstruction",
+      "path": "lean/ErdosProblems/Erdos257/PaperCompleteR8/OldCoverObstruction.lean",
+      "imports": [
+        "ErdosProblems.Erdos257.PaperCompleteR8.CountableGaugeBudget",
+        "ErdosProblems.Erdos257.PaperCompleteR8.CoverClassTransport"
+      ],
+      "declaration_count": 13,
+      "kind_counts": {
+        "def": 5,
+        "theorem": 8
+      }
+    },
+    {
       "id": "ErdosProblems.Erdos257.PaperCompleteR8.OptimizedCoverBudget",
       "path": "lean/ErdosProblems/Erdos257/PaperCompleteR8/OptimizedCoverBudget.lean",
       "imports": [
@@ -17663,6 +17757,19 @@
         "def": 4,
         "structure": 1,
         "theorem": 3
+      }
+    },
+    {
+      "id": "ErdosProblems.Erdos257.PaperCompleteR8.OptimizedCubeCost",
+      "path": "lean/ErdosProblems/Erdos257/PaperCompleteR8/OptimizedCubeCost.lean",
+      "imports": [
+        "ErdosProblems.Erdos257.PaperCompleteR8.DivisorCubeProduct",
+        "ErdosProblems.Erdos257.PaperCompleteR8.CoverGaugeComplete"
+      ],
+      "declaration_count": 17,
+      "kind_counts": {
+        "def": 1,
+        "theorem": 16
       }
     },
     {
@@ -17691,6 +17798,57 @@
       }
     },
     {
+      "id": "ErdosProblems.Erdos257.PaperCompleteR8.PositiveWeightPadding",
+      "path": "lean/ErdosProblems/Erdos257/PaperCompleteR8/PositiveWeightPadding.lean",
+      "imports": [
+        "ErdosProblems.Erdos257.PaperCompleteR8.CountableGaugeBudget",
+        "ErdosProblems.Erdos257.PaperCompleteR8.CoverPotentialBounds"
+      ],
+      "declaration_count": 19,
+      "kind_counts": {
+        "def": 4,
+        "structure": 1,
+        "theorem": 14
+      }
+    },
+    {
+      "id": "ErdosProblems.Erdos257.PaperCompleteR8.PrimeHarmonicBlocks",
+      "path": "lean/ErdosProblems/Erdos257/PaperCompleteR8/PrimeHarmonicBlocks.lean",
+      "imports": [],
+      "declaration_count": 10,
+      "kind_counts": {
+        "def": 3,
+        "theorem": 7
+      }
+    },
+    {
+      "id": "ErdosProblems.Erdos257.PaperCompleteR8.ReverseStrengthenedHost",
+      "path": "lean/ErdosProblems/Erdos257/PaperCompleteR8/ReverseStrengthenedHost.lean",
+      "imports": [
+        "ErdosProblems.Erdos257.PaperCompleteR8.DivisorCubeMoments",
+        "ErdosProblems.Erdos257.PaperCompleteR8.PrimeHarmonicBlocks",
+        "ErdosProblems.Erdos257.PaperCompleteR8.WeightedReturn"
+      ],
+      "declaration_count": 37,
+      "kind_counts": {
+        "def": 6,
+        "structure": 1,
+        "theorem": 30
+      }
+    },
+    {
+      "id": "ErdosProblems.Erdos257.PaperCompleteR8.StrengthenedCoverFiniteUnion",
+      "path": "lean/ErdosProblems/Erdos257/PaperCompleteR8/StrengthenedCoverFiniteUnion.lean",
+      "imports": [
+        "ErdosProblems.Erdos257.PaperCompleteR8.WeightedFiniteUnion"
+      ],
+      "declaration_count": 14,
+      "kind_counts": {
+        "def": 2,
+        "theorem": 12
+      }
+    },
+    {
       "id": "ErdosProblems.Erdos257.PaperCompleteR8.WeightedFiniteEstimates",
       "path": "lean/ErdosProblems/Erdos257/PaperCompleteR8/WeightedFiniteEstimates.lean",
       "imports": [
@@ -17712,6 +17870,19 @@
       "kind_counts": {
         "def": 1,
         "theorem": 5
+      }
+    },
+    {
+      "id": "ErdosProblems.Erdos257.PaperCompleteR8.WeightedFiniteUnion",
+      "path": "lean/ErdosProblems/Erdos257/PaperCompleteR8/WeightedFiniteUnion.lean",
+      "imports": [
+        "ErdosProblems.Erdos257.PaperCompleteR8.WeightedReturn",
+        "ErdosProblems.Erdos257.PaperCompleteR7.TailGluing"
+      ],
+      "declaration_count": 12,
+      "kind_counts": {
+        "def": 1,
+        "theorem": 11
       }
     },
     {
@@ -287238,6 +287409,81 @@
       "docstring": "The landed r6 gluing theorem, in its general finite-union form. The cutoffs are *chosen*; the untruncated countable union is not asserted to be admissible. Every host is retained beyond its own finite cutoff."
     },
     {
+      "id": "lean/ErdosProblems/Erdos257/PaperCompleteR8/AnalyticIncomparability.lean:15:strengthened_term_le_oldCostTerm",
+      "name": "strengthened_term_le_oldCostTerm",
+      "kind": "theorem",
+      "module": "lean/ErdosProblems/Erdos257/PaperCompleteR8/AnalyticIncomparability.lean",
+      "line": 15,
+      "signature": "theorem strengthened_term_le_oldCostTerm (C : PositiveCoverData) (j : ℕ) : C.cost j * (2 : ℝ) ^ (((j + 1 : ℕ) : ℝ) * C.exponent j) / ((2 : ℝ) ^ C.exponent j - 1) ≤ C.oldCostTerm j",
+      "generated_certificate": false,
+      "claim_ids": [],
+      "docstring": "The older cost actually dominates the strengthened cost term by term."
+    },
+    {
+      "id": "lean/ErdosProblems/Erdos257/PaperCompleteR8/AnalyticIncomparability.lean:27:oldCostSummable_strengthened",
+      "name": "oldCostSummable_strengthened",
+      "kind": "theorem",
+      "module": "lean/ErdosProblems/Erdos257/PaperCompleteR8/AnalyticIncomparability.lean",
+      "line": 27,
+      "signature": "theorem oldCostSummable_strengthened (C : PositiveCoverData) (hC : C.OldCostSummable) : C.StrengthenedCostSummable",
+      "generated_certificate": false,
+      "claim_ids": []
+    },
+    {
+      "id": "lean/ErdosProblems/Erdos257/PaperCompleteR8/AnalyticIncomparability.lean:35:hasStrengthenedPositiveCover_of_old",
+      "name": "hasStrengthenedPositiveCover_of_old",
+      "kind": "theorem",
+      "module": "lean/ErdosProblems/Erdos257/PaperCompleteR8/AnalyticIncomparability.lean",
+      "line": 35,
+      "signature": "theorem hasStrengthenedPositiveCover_of_old {A : Set ℕ} (hA : HasOldPositiveCover A) : HasStrengthenedPositiveCover A",
+      "generated_certificate": false,
+      "claim_ids": []
+    },
+    {
+      "id": "lean/ErdosProblems/Erdos257/PaperCompleteR8/AnalyticIncomparability.lean:41:old_cover_class_strictly_smaller",
+      "name": "old_cover_class_strictly_smaller",
+      "kind": "theorem",
+      "module": "lean/ErdosProblems/Erdos257/PaperCompleteR8/AnalyticIncomparability.lean",
+      "line": 41,
+      "signature": "theorem old_cover_class_strictly_smaller : (∀ A : Set ℕ, HasOldPositiveCover A → HasStrengthenedPositiveCover A) ∧ ∃ A : Set ℕ, A.Infinite ∧ 0 ∉ A ∧ (∀ a ∈ A, Squarefree a) ∧ HasStrengthenedPositiveCover A ∧ ¬ HasOldPositiveCover A",
+      "generated_certificate": false,
+      "claim_ids": [],
+      "docstring": "The class inclusion is strict with a constructed, squarefree witness."
+    },
+    {
+      "id": "lean/ErdosProblems/Erdos257/PaperCompleteR8/AnalyticIncomparability.lean:53:exists_incomparable_hosts_with_mixed_heredity",
+      "name": "exists_incomparable_hosts_with_mixed_heredity",
+      "kind": "theorem",
+      "module": "lean/ErdosProblems/Erdos257/PaperCompleteR8/AnalyticIncomparability.lean",
+      "line": 53,
+      "signature": "theorem exists_incomparable_hosts_with_mixed_heredity : ∃ W V : Set ℕ, W.Infinite ∧ V.Infinite ∧ 0 ∉ W ∧ 0 ∉ V ∧ FinitePrimeWeighted 2 W ∧ ¬ HasStrengthenedPositiveCover W ∧ HasStrengthenedPositiveCover V ∧ ¬ HasOldPositiveCover V ∧ (∀ α : ℝ, 0 < α → α ≤ 1 → ¬ HasFixedExponentPositiveCover V α) ∧ (∀ b : ℕ, 2 ≤ b → ¬ FinitePrimeWeighted b V) ∧ (∀ A : Set ℕ, A ⊆ W ∪ V → A.Infinite → ∀ b : ℕ, 2 ≤ b → Irrational (erdosSupportSeries b A))",
+      "generated_certificate": false,
+      "claim_ids": [],
+      "docstring": "Both directions of incomparability and the mixed all-base hereditary consumer use actual witnesses. The weighted-only witness is imported from `AnalyticSeparationReturn`; this assembly is elaborated and axiom-audited as stated in the file header."
+    },
+    {
+      "id": "lean/ErdosProblems/Erdos257/PaperCompleteR8/AnalyticSeparationReturn.lean:15:exists_weighted_not_strengthened_host",
+      "name": "exists_weighted_not_strengthened_host",
+      "kind": "theorem",
+      "module": "lean/ErdosProblems/Erdos257/PaperCompleteR8/AnalyticSeparationReturn.lean",
+      "line": 15,
+      "signature": "theorem exists_weighted_not_strengthened_host : ∃ A : Set ℕ, A.Infinite ∧ 0 ∉ A ∧ FinitePrimeWeighted 2 A ∧ ¬ Summable (Set.indicator A (fun a : ℕ => (1 : ℝ) / a)) ∧ ¬ HasStrengthenedPositiveCover A ∧ IsEmpty (LogBudgetCover A) ∧ (∀ B : Set ℕ, B ⊆ A → B.Infinite → ∀ b : ℕ, 2 ≤ b → Irrational (erdosSupportSeries b B))",
+      "generated_certificate": false,
+      "claim_ids": [],
+      "docstring": "A_W satisfies the literal weighted criterion but fails the literal strengthened-cover predicate, not just a differently typed obstruction."
+    },
+    {
+      "id": "lean/ErdosProblems/Erdos257/PaperCompleteR8/AnalyticSeparationReturn.lean:28:exists_weighted_obstruction_with_mixed_heredity",
+      "name": "exists_weighted_obstruction_with_mixed_heredity",
+      "kind": "theorem",
+      "module": "lean/ErdosProblems/Erdos257/PaperCompleteR8/AnalyticSeparationReturn.lean",
+      "line": 28,
+      "signature": "theorem exists_weighted_obstruction_with_mixed_heredity : ∃ A : Set ℕ, A.Infinite ∧ 0 ∉ A ∧ FinitePrimeWeighted 2 A ∧ IsEmpty (LogBudgetCover A) ∧ (∀ V : Set ℕ, HasStrengthenedPositiveCover V → ∀ B : Set ℕ, B ⊆ A ∪ V → B.Infinite → ∀ b : ℕ, 2 ≤ b → Irrational (erdosSupportSeries b B))",
+      "generated_certificate": false,
+      "claim_ids": [],
+      "docstring": "The constructed weighted obstruction can still be synchronised with any actual strengthened-cover host. This does not assume A-star exists."
+    },
+    {
       "id": "lean/ErdosProblems/Erdos257/PaperCompleteR8/ArbitraryWeightMixedClaim.lean:19:arbitraryWeightPositiveCover_allBase_hereditary",
       "name": "arbitraryWeightPositiveCover_allBase_hereditary",
       "kind": "theorem",
@@ -287686,6 +287932,259 @@
       "docstring": "Countably many tests have one good positive multiple. An observation budget, not a separate existential witness for each test, is consumed."
     },
     {
+      "id": "lean/ErdosProblems/Erdos257/PaperCompleteR8/CoverClassTransport.lean:13:logBudgetCover_of_strengthened",
+      "name": "logBudgetCover_of_strengthened",
+      "kind": "def",
+      "module": "lean/ErdosProblems/Erdos257/PaperCompleteR8/CoverClassTransport.lean",
+      "line": 13,
+      "signature": "def logBudgetCover_of_strengthened (C : PositiveCoverData) (hC : C.StrengthenedCostSummable) (A : Set ℕ) (hA : A ⊆ C.host) : LogBudgetCover A",
+      "generated_certificate": false,
+      "claim_ids": [],
+      "docstring": "Every strengthened cover in the paper defines literal arbitrary-weight data."
+    },
+    {
+      "id": "lean/ErdosProblems/Erdos257/PaperCompleteR8/CoverClassTransport.lean:43:LogBudgetCover.restrict",
+      "name": "LogBudgetCover.restrict",
+      "kind": "def",
+      "module": "lean/ErdosProblems/Erdos257/PaperCompleteR8/CoverClassTransport.lean",
+      "line": 43,
+      "signature": "def LogBudgetCover.restrict {A B : Set ℕ} (C : LogBudgetCover A) (hBA : B ⊆ A) : LogBudgetCover B",
+      "generated_certificate": false,
+      "claim_ids": [],
+      "docstring": "Restriction changes only the coverage field, not any analytic budget."
+    },
+    {
+      "id": "lean/ErdosProblems/Erdos257/PaperCompleteR8/CoverClassTransport.lean:48:not_hasStrengthenedPositiveCover_of_isEmpty",
+      "name": "not_hasStrengthenedPositiveCover_of_isEmpty",
+      "kind": "theorem",
+      "module": "lean/ErdosProblems/Erdos257/PaperCompleteR8/CoverClassTransport.lean",
+      "line": 48,
+      "signature": "theorem not_hasStrengthenedPositiveCover_of_isEmpty (A : Set ℕ) (hA : IsEmpty (LogBudgetCover A)) : ¬ HasStrengthenedPositiveCover A",
+      "generated_certificate": false,
+      "claim_ids": [],
+      "docstring": "The general no-cover conclusion excludes the paper's concrete cover class."
+    },
+    {
+      "id": "lean/ErdosProblems/Erdos257/PaperCompleteR8/CoverClassTransport.lean:55:no_logBudgetCover_of_subset",
+      "name": "no_logBudgetCover_of_subset",
+      "kind": "theorem",
+      "module": "lean/ErdosProblems/Erdos257/PaperCompleteR8/CoverClassTransport.lean",
+      "line": 55,
+      "signature": "theorem no_logBudgetCover_of_subset {A B : Set ℕ} (hAB : A ⊆ B) (hA : IsEmpty (LogBudgetCover A)) : IsEmpty (LogBudgetCover B)",
+      "generated_certificate": false,
+      "claim_ids": [],
+      "docstring": "A superset of a no-cover support cannot admit any finite-cost cover."
+    },
+    {
+      "id": "lean/ErdosProblems/Erdos257/PaperCompleteR8/CoverGaugeComplete.lean:18:coverLogParameter",
+      "name": "coverLogParameter",
+      "kind": "def",
+      "module": "lean/ErdosProblems/Erdos257/PaperCompleteR8/CoverGaugeComplete.lean",
+      "line": 18,
+      "signature": "def coverLogParameter (t : ℝ) : ℝ",
+      "generated_certificate": false,
+      "claim_ids": [],
+      "docstring": "The base-two logarithmic parameter, with exactly the paper's normalisation."
+    },
+    {
+      "id": "lean/ErdosProblems/Erdos257/PaperCompleteR8/CoverGaugeComplete.lean:20:coverLargeMinimizer",
+      "name": "coverLargeMinimizer",
+      "kind": "def",
+      "module": "lean/ErdosProblems/Erdos257/PaperCompleteR8/CoverGaugeComplete.lean",
+      "line": 20,
+      "signature": "def coverLargeMinimizer (t : ℝ) : ℝ",
+      "generated_certificate": false,
+      "claim_ids": []
+    },
+    {
+      "id": "lean/ErdosProblems/Erdos257/PaperCompleteR8/CoverGaugeComplete.lean:23:coverLargeValue",
+      "name": "coverLargeValue",
+      "kind": "def",
+      "module": "lean/ErdosProblems/Erdos257/PaperCompleteR8/CoverGaugeComplete.lean",
+      "line": 23,
+      "signature": "def coverLargeValue (u : ℝ) : ℝ",
+      "generated_certificate": false,
+      "claim_ids": []
+    },
+    {
+      "id": "lean/ErdosProblems/Erdos257/PaperCompleteR8/CoverGaugeComplete.lean:25:log_two_pos",
+      "name": "log_two_pos",
+      "kind": "theorem",
+      "module": "lean/ErdosProblems/Erdos257/PaperCompleteR8/CoverGaugeComplete.lean",
+      "line": 25,
+      "signature": "private theorem log_two_pos : 0 < Real.log (2 : ℝ)",
+      "generated_certificate": false,
+      "claim_ids": []
+    },
+    {
+      "id": "lean/ErdosProblems/Erdos257/PaperCompleteR8/CoverGaugeComplete.lean:28:optimal_power_quotient",
+      "name": "optimal_power_quotient",
+      "kind": "theorem",
+      "module": "lean/ErdosProblems/Erdos257/PaperCompleteR8/CoverGaugeComplete.lean",
+      "line": 28,
+      "signature": "theorem optimal_power_quotient {u x : ℝ} (hu : 1 < u) (hx : 1 < x) : coverLargeValue u ≤ x ^ u / (x - 1)",
+      "generated_certificate": false,
+      "claim_ids": [],
+      "docstring": "Bernoulli's supporting-line inequality identifies the global minimum."
+    },
+    {
+      "id": "lean/ErdosProblems/Erdos257/PaperCompleteR8/CoverGaugeComplete.lean:49:coverLargeValue_eq_quotient",
+      "name": "coverLargeValue_eq_quotient",
+      "kind": "theorem",
+      "module": "lean/ErdosProblems/Erdos257/PaperCompleteR8/CoverGaugeComplete.lean",
+      "line": 49,
+      "signature": "theorem coverLargeValue_eq_quotient {u : ℝ} (hu : 1 < u) : coverLargeValue u = u ^ u / (u - 1) ^ (u - 1)",
+      "generated_certificate": false,
+      "claim_ids": []
+    },
+    {
+      "id": "lean/ErdosProblems/Erdos257/PaperCompleteR8/CoverGaugeComplete.lean:60:scalar_cost_log_parameter",
+      "name": "scalar_cost_log_parameter",
+      "kind": "theorem",
+      "module": "lean/ErdosProblems/Erdos257/PaperCompleteR8/CoverGaugeComplete.lean",
+      "line": 60,
+      "signature": "theorem scalar_cost_log_parameter {t α : ℝ} (ht : 0 < t) : t ^ α / ((2 : ℝ) ^ α - 1) = ((2 : ℝ) ^ α) ^ coverLogParameter t / ((2 : ℝ) ^ α - 1)",
+      "generated_certificate": false,
+      "claim_ids": [],
+      "docstring": "Convert the original real-power cost, not a surrogate objective."
+    },
+    {
+      "id": "lean/ErdosProblems/Erdos257/PaperCompleteR8/CoverGaugeComplete.lean:71:coverLogParameter_gt_two",
+      "name": "coverLogParameter_gt_two",
+      "kind": "theorem",
+      "module": "lean/ErdosProblems/Erdos257/PaperCompleteR8/CoverGaugeComplete.lean",
+      "line": 71,
+      "signature": "theorem coverLogParameter_gt_two {t : ℝ} (ht : 4 < t) : 2 < coverLogParameter t",
+      "generated_certificate": false,
+      "claim_ids": []
+    },
+    {
+      "id": "lean/ErdosProblems/Erdos257/PaperCompleteR8/CoverGaugeComplete.lean:81:coverLargeMinimizer_bounds",
+      "name": "coverLargeMinimizer_bounds",
+      "kind": "theorem",
+      "module": "lean/ErdosProblems/Erdos257/PaperCompleteR8/CoverGaugeComplete.lean",
+      "line": 81,
+      "signature": "theorem coverLargeMinimizer_bounds {t : ℝ} (ht : 4 < t) : 0 < coverLargeMinimizer t ∧ coverLargeMinimizer t < 1",
+      "generated_certificate": false,
+      "claim_ids": [],
+      "docstring": "The minimiser is genuinely inside the admissible interval."
+    },
+    {
+      "id": "lean/ErdosProblems/Erdos257/PaperCompleteR8/CoverGaugeComplete.lean:93:two_rpow_coverLargeMinimizer",
+      "name": "two_rpow_coverLargeMinimizer",
+      "kind": "theorem",
+      "module": "lean/ErdosProblems/Erdos257/PaperCompleteR8/CoverGaugeComplete.lean",
+      "line": 93,
+      "signature": "theorem two_rpow_coverLargeMinimizer {t : ℝ} (ht : 4 < t) : (2 : ℝ) ^ coverLargeMinimizer t = coverLogParameter t / (coverLogParameter t - 1)",
+      "generated_certificate": false,
+      "claim_ids": []
+    },
+    {
+      "id": "lean/ErdosProblems/Erdos257/PaperCompleteR8/CoverGaugeComplete.lean:108:scalar_cost_at_large_minimizer",
+      "name": "scalar_cost_at_large_minimizer",
+      "kind": "theorem",
+      "module": "lean/ErdosProblems/Erdos257/PaperCompleteR8/CoverGaugeComplete.lean",
+      "line": 108,
+      "signature": "theorem scalar_cost_at_large_minimizer {t : ℝ} (ht : 4 < t) : t ^ coverLargeMinimizer t / ((2 : ℝ) ^ coverLargeMinimizer t - 1) = coverLargeValue (coverLogParameter t)",
+      "generated_certificate": false,
+      "claim_ids": [],
+      "docstring": "Equality at the minimiser; in particular the infimum is attained."
+    },
+    {
+      "id": "lean/ErdosProblems/Erdos257/PaperCompleteR8/CoverGaugeComplete.lean:120:coverGauge_eq_largeValue",
+      "name": "coverGauge_eq_largeValue",
+      "kind": "theorem",
+      "module": "lean/ErdosProblems/Erdos257/PaperCompleteR8/CoverGaugeComplete.lean",
+      "line": 120,
+      "signature": "theorem coverGauge_eq_largeValue {t : ℝ} (ht : 4 < t) : coverGauge t = coverLargeValue (coverLogParameter t)",
+      "generated_certificate": false,
+      "claim_ids": []
+    },
+    {
+      "id": "lean/ErdosProblems/Erdos257/PaperCompleteR8/CoverGaugeComplete.lean:135:coverGauge_eq_large",
+      "name": "coverGauge_eq_large",
+      "kind": "theorem",
+      "module": "lean/ErdosProblems/Erdos257/PaperCompleteR8/CoverGaugeComplete.lean",
+      "line": 135,
+      "signature": "theorem coverGauge_eq_large {t : ℝ} (ht : 4 < t) : coverGauge t = (coverLogParameter t) ^ (coverLogParameter t) / (coverLogParameter t - 1) ^ (coverLogParameter t - 1)",
+      "generated_certificate": false,
+      "claim_ids": [],
+      "docstring": "Exact large branch in the paper's displayed form."
+    },
+    {
+      "id": "lean/ErdosProblems/Erdos257/PaperCompleteR8/CoverGaugeComplete.lean:142:coverLargeValue_two",
+      "name": "coverLargeValue_two",
+      "kind": "theorem",
+      "module": "lean/ErdosProblems/Erdos257/PaperCompleteR8/CoverGaugeComplete.lean",
+      "line": 142,
+      "signature": "@[simp] theorem coverLargeValue_two : coverLargeValue 2 = 4",
+      "generated_certificate": false,
+      "claim_ids": []
+    },
+    {
+      "id": "lean/ErdosProblems/Erdos257/PaperCompleteR8/CoverGaugeComplete.lean:146:exp_one_mul_sub_one_le_coverGauge_two_rpow",
+      "name": "exp_one_mul_sub_one_le_coverGauge_two_rpow",
+      "kind": "theorem",
+      "module": "lean/ErdosProblems/Erdos257/PaperCompleteR8/CoverGaugeComplete.lean",
+      "line": 146,
+      "signature": "theorem exp_one_mul_sub_one_le_coverGauge_two_rpow (z : ℝ) : Real.exp 1 * (z - 1) ≤ coverGauge ((2 : ℝ) ^ z)",
+      "generated_certificate": false,
+      "claim_ids": [],
+      "docstring": "A sharp lower bound useful on divisor cubes, including ranks zero and one."
+    },
+    {
+      "id": "lean/ErdosProblems/Erdos257/PaperCompleteR8/CoverGaugeComplete.lean:185:log_one_add_inv_squeeze",
+      "name": "log_one_add_inv_squeeze",
+      "kind": "theorem",
+      "module": "lean/ErdosProblems/Erdos257/PaperCompleteR8/CoverGaugeComplete.lean",
+      "line": 185,
+      "signature": "theorem log_one_add_inv_squeeze {u : ℝ} (hu : 1 < u) : 1 - 1 / u ≤ (u - 1) * Real.log (1 + 1 / (u - 1)) ∧ (u - 1) * Real.log (1 + 1 / (u - 1)) ≤ 1",
+      "generated_certificate": false,
+      "claim_ids": [],
+      "docstring": "Elementary two-sided logarithm bound, avoiding an implicit l'Hôpital step."
+    },
+    {
+      "id": "lean/ErdosProblems/Erdos257/PaperCompleteR8/CoverGaugeComplete.lean:212:tendsto_large_log_factor",
+      "name": "tendsto_large_log_factor",
+      "kind": "theorem",
+      "module": "lean/ErdosProblems/Erdos257/PaperCompleteR8/CoverGaugeComplete.lean",
+      "line": 212,
+      "signature": "theorem tendsto_large_log_factor : Tendsto (fun u : ℝ => (u - 1) * Real.log (1 + 1 / (u - 1))) atTop (nhds 1)",
+      "generated_certificate": false,
+      "claim_ids": []
+    },
+    {
+      "id": "lean/ErdosProblems/Erdos257/PaperCompleteR8/CoverGaugeComplete.lean:225:coverLargeValue_div_parameter",
+      "name": "coverLargeValue_div_parameter",
+      "kind": "theorem",
+      "module": "lean/ErdosProblems/Erdos257/PaperCompleteR8/CoverGaugeComplete.lean",
+      "line": 225,
+      "signature": "theorem coverLargeValue_div_parameter {u : ℝ} (hu : 1 < u) : coverLargeValue u / u = Real.exp ((u - 1) * Real.log (1 + 1 / (u - 1)))",
+      "generated_certificate": false,
+      "claim_ids": []
+    },
+    {
+      "id": "lean/ErdosProblems/Erdos257/PaperCompleteR8/CoverGaugeComplete.lean:253:tendsto_coverLargeValue_div_parameter",
+      "name": "tendsto_coverLargeValue_div_parameter",
+      "kind": "theorem",
+      "module": "lean/ErdosProblems/Erdos257/PaperCompleteR8/CoverGaugeComplete.lean",
+      "line": 253,
+      "signature": "theorem tendsto_coverLargeValue_div_parameter : Tendsto (fun u : ℝ => coverLargeValue u / u) atTop (nhds (Real.exp 1))",
+      "generated_certificate": false,
+      "claim_ids": []
+    },
+    {
+      "id": "lean/ErdosProblems/Erdos257/PaperCompleteR8/CoverGaugeComplete.lean:260:tendsto_coverGauge_div_exp_logTwo",
+      "name": "tendsto_coverGauge_div_exp_logTwo",
+      "kind": "theorem",
+      "module": "lean/ErdosProblems/Erdos257/PaperCompleteR8/CoverGaugeComplete.lean",
+      "line": 260,
+      "signature": "theorem tendsto_coverGauge_div_exp_logTwo : Tendsto (fun t : ℝ => coverGauge t / (Real.exp 1 * coverLogParameter t)) atTop (nhds 1)",
+      "generated_certificate": false,
+      "claim_ids": [],
+      "docstring": "Psi(t)/(e log_2 t) tends to one, with no omitted constant or base change."
+    },
+    {
       "id": "lean/ErdosProblems/Erdos257/PaperCompleteR8/CoverPotentialBounds.lean:16:positiveCover_cost_nonneg",
       "name": "positiveCover_cost_nonneg",
       "kind": "theorem",
@@ -288038,6 +288537,701 @@
       "docstring": "Exact minimisation on the entire small-t branch, including the join t=4."
     },
     {
+      "id": "lean/ErdosProblems/Erdos257/PaperCompleteR8/DivisorCubeIncidence.lean:16:divisorCube",
+      "name": "divisorCube",
+      "kind": "def",
+      "module": "lean/ErdosProblems/Erdos257/PaperCompleteR8/DivisorCubeIncidence.lean",
+      "line": 16,
+      "signature": "def divisorCube (q : ℕ) (P : Finset ℕ) : Finset ℕ",
+      "generated_certificate": false,
+      "claim_ids": [],
+      "docstring": "The literal finite divisor cube used in the paper."
+    },
+    {
+      "id": "lean/ErdosProblems/Erdos257/PaperCompleteR8/DivisorCubeIncidence.lean:20:cubePrimeRank",
+      "name": "cubePrimeRank",
+      "kind": "def",
+      "module": "lean/ErdosProblems/Erdos257/PaperCompleteR8/DivisorCubeIncidence.lean",
+      "line": 20,
+      "signature": "def cubePrimeRank (q : ℕ) (P : Finset ℕ) (n : ℕ) : ℕ",
+      "generated_certificate": false,
+      "claim_ids": [],
+      "docstring": "Primes which can be inserted after the mandatory factor q."
+    },
+    {
+      "id": "lean/ErdosProblems/Erdos257/PaperCompleteR8/DivisorCubeIncidence.lean:24:log_nat_nonneg",
+      "name": "log_nat_nonneg",
+      "kind": "theorem",
+      "module": "lean/ErdosProblems/Erdos257/PaperCompleteR8/DivisorCubeIncidence.lean",
+      "line": 24,
+      "signature": "theorem log_nat_nonneg (n : ℕ) : 0 ≤ Real.log (n : ℝ)",
+      "generated_certificate": false,
+      "claim_ids": [],
+      "docstring": "Logarithms of natural cardinalities are nonnegative, including log 0 = 0."
+    },
+    {
+      "id": "lean/ErdosProblems/Erdos257/PaperCompleteR8/DivisorCubeIncidence.lean:30:prime_subset_product_injective",
+      "name": "prime_subset_product_injective",
+      "kind": "theorem",
+      "module": "lean/ErdosProblems/Erdos257/PaperCompleteR8/DivisorCubeIncidence.lean",
+      "line": 30,
+      "signature": "theorem prime_subset_product_injective (P : Finset ℕ) (hP : ∀ p ∈ P, Nat.Prime p) (q : ℕ) (hq : 0 < q) : Set.InjOn (fun S : Finset ℕ => q * S.prod id) (P.powerset : Set (Finset ℕ))",
+      "generated_certificate": false,
+      "claim_ids": [],
+      "docstring": "A prime-subset product uniquely identifies that subset."
+    },
+    {
+      "id": "lean/ErdosProblems/Erdos257/PaperCompleteR8/DivisorCubeIncidence.lean:46:two_pow_cubePrimeRank_le_incidence",
+      "name": "two_pow_cubePrimeRank_le_incidence",
+      "kind": "theorem",
+      "module": "lean/ErdosProblems/Erdos257/PaperCompleteR8/DivisorCubeIncidence.lean",
+      "line": 46,
+      "signature": "theorem two_pow_cubePrimeRank_le_incidence (q : ℕ) (P : Finset ℕ) (n : ℕ) (hq : 0 < q) (hP : ∀ p ∈ P, Nat.Prime p) (hn : 0 < n) (hqn : q ∣ n) : 2 ^ cubePrimeRank q P n ≤ ((divisorCube q P).filter (fun a => a ∣ n)).card",
+      "generated_certificate": false,
+      "claim_ids": [],
+      "docstring": "Every subset of available primes produces a different selected divisor. No coprimality between q and the prime set is needed."
+    },
+    {
+      "id": "lean/ErdosProblems/Erdos257/PaperCompleteR8/DivisorCubeIncidence.lean:89:cube_log_incidence_lower",
+      "name": "cube_log_incidence_lower",
+      "kind": "theorem",
+      "module": "lean/ErdosProblems/Erdos257/PaperCompleteR8/DivisorCubeIncidence.lean",
+      "line": 89,
+      "signature": "theorem cube_log_incidence_lower (q : ℕ) (P F : Finset ℕ) (n : ℕ) (hq : 0 < q) (hP : ∀ p ∈ P, Nat.Prime p) (hn : 0 < n) (hqn : q ∣ n) (hF : divisorCube q P ⊆ F) : Real.log 2 * (cubePrimeRank q P n : ℝ) ≤ Real.log ((F.filter (fun a => a ∣ n)).card : ℝ)",
+      "generated_certificate": false,
+      "claim_ids": [],
+      "docstring": "A containing finite support inherits the cube's first logarithmic moment."
+    },
+    {
+      "id": "lean/ErdosProblems/Erdos257/PaperCompleteR8/DivisorCubeIncidence.lean:106:dyadicBlockCount",
+      "name": "dyadicBlockCount",
+      "kind": "def",
+      "module": "lean/ErdosProblems/Erdos257/PaperCompleteR8/DivisorCubeIncidence.lean",
+      "line": 106,
+      "signature": "def dyadicBlockCount (P : Finset ℕ) (r n : ℕ) : ℕ",
+      "generated_certificate": false,
+      "claim_ids": [],
+      "docstring": "Exact dyadic row events, counted as a finite cardinality."
+    },
+    {
+      "id": "lean/ErdosProblems/Erdos257/PaperCompleteR8/DivisorCubeIncidence.lean:109:dyadicBlockCount_cast",
+      "name": "dyadicBlockCount_cast",
+      "kind": "theorem",
+      "module": "lean/ErdosProblems/Erdos257/PaperCompleteR8/DivisorCubeIncidence.lean",
+      "line": 109,
+      "signature": "theorem dyadicBlockCount_cast (P : Finset ℕ) (r n : ℕ) : (dyadicBlockCount P r n : ℝ) = ∑ p ∈ P, if 2 ^ r * p ∣ n ∧ ¬ 2 * (2 ^ r * p) ∣ n then (1 : ℝ) else 0",
+      "generated_certificate": false,
+      "claim_ids": []
+    },
+    {
+      "id": "lean/ErdosProblems/Erdos257/PaperCompleteR8/DivisorCubeIncidence.lean:118:odd_cofactor_of_dyadic_event",
+      "name": "odd_cofactor_of_dyadic_event",
+      "kind": "theorem",
+      "module": "lean/ErdosProblems/Erdos257/PaperCompleteR8/DivisorCubeIncidence.lean",
+      "line": 118,
+      "signature": "theorem odd_cofactor_of_dyadic_event (r p n : ℕ) (hp : ¬ 2 ∣ p) (he : 2 ^ r * p ∣ n ∧ ¬ 2 * (2 ^ r * p) ∣ n) : ∃ u : ℕ, ¬ 2 ∣ u ∧ n = 2 ^ r * u",
+      "generated_certificate": false,
+      "claim_ids": [],
+      "docstring": "An event supplies the exact odd cofactor; density is not assumed."
+    },
+    {
+      "id": "lean/ErdosProblems/Erdos257/PaperCompleteR8/DivisorCubeIncidence.lean:136:dyadic_event_row_unique",
+      "name": "dyadic_event_row_unique",
+      "kind": "theorem",
+      "module": "lean/ErdosProblems/Erdos257/PaperCompleteR8/DivisorCubeIncidence.lean",
+      "line": 136,
+      "signature": "theorem dyadic_event_row_unique (k l p q n : ℕ) (hp : ¬ 2 ∣ p) (hq : ¬ 2 ∣ q) (he : 2 ^ (k + 2) * p ∣ n ∧ ¬ 2 * (2 ^ (k + 2) * p) ∣ n) (hf : 2 ^ (l + 2) * q ∣ n ∧ ¬ 2 * (2 ^ (l + 2) * q) ∣ n) : k = l",
+      "generated_certificate": false,
+      "claim_ids": [],
+      "docstring": "Row events at different exact dyadic valuations cannot coexist."
+    },
+    {
+      "id": "lean/ErdosProblems/Erdos257/PaperCompleteR8/DivisorCubeIncidence.lean:145:dyadic_union_log_pointwise",
+      "name": "dyadic_union_log_pointwise",
+      "kind": "theorem",
+      "module": "lean/ErdosProblems/Erdos257/PaperCompleteR8/DivisorCubeIncidence.lean",
+      "line": 145,
+      "signature": "theorem dyadic_union_log_pointwise (P : ℕ → Finset ℕ) (J : Finset ℕ) (n : ℕ) (hn : 0 < n) (hP : ∀ k p, p ∈ P k → Nat.Prime p ∧ 2 < p) : Real.log 2 * (∑ k ∈ J, (dyadicBlockCount (P k) (k + 2) n : ℝ)) ≤ Real.log (((J.biUnion (fun k => dyadicDivisorFrame ((P k).prod id) k)).filter (fun a => a ∣ n)).card : ℝ)",
+      "generated_certificate": false,
+      "claim_ids": [],
+      "docstring": "First-moment lower bound over any finite collection of dyadic rows."
+    },
+    {
+      "id": "lean/ErdosProblems/Erdos257/PaperCompleteR8/DivisorCubeMoments.lean:11:cubePrimeRank_zero_of_not_dvd",
+      "name": "cubePrimeRank_zero_of_not_dvd",
+      "kind": "theorem",
+      "module": "lean/ErdosProblems/Erdos257/PaperCompleteR8/DivisorCubeMoments.lean",
+      "line": 11,
+      "signature": "theorem cubePrimeRank_zero_of_not_dvd (q : ℕ) (P : Finset ℕ) (n : ℕ) (hqn : ¬ q ∣ n) : cubePrimeRank q P n = 0",
+      "generated_certificate": false,
+      "claim_ids": []
+    },
+    {
+      "id": "lean/ErdosProblems/Erdos257/PaperCompleteR8/DivisorCubeMoments.lean:20:cube_log_incidence_exact",
+      "name": "cube_log_incidence_exact",
+      "kind": "theorem",
+      "module": "lean/ErdosProblems/Erdos257/PaperCompleteR8/DivisorCubeMoments.lean",
+      "line": 20,
+      "signature": "theorem cube_log_incidence_exact (q : ℕ) (P : Finset ℕ) (n : ℕ) (hq : 0 < q) (hP : ∀ p ∈ P, Nat.Prime p) (hn : 0 < n) : Real.log (((divisorCube q P).filter (fun a => a ∣ n)).card : ℝ) = Real.log 2 * (cubePrimeRank q P n : ℝ)",
+      "generated_certificate": false,
+      "claim_ids": []
+    },
+    {
+      "id": "lean/ErdosProblems/Erdos257/PaperCompleteR8/DivisorCubeMoments.lean:32:cube_rank_square_mean_lower",
+      "name": "cube_rank_square_mean_lower",
+      "kind": "theorem",
+      "module": "lean/ErdosProblems/Erdos257/PaperCompleteR8/DivisorCubeMoments.lean",
+      "line": 32,
+      "signature": "theorem cube_rank_square_mean_lower (q : ℕ) (P : Finset ℕ) (hq : 0 < q) (hP : ∀ p ∈ P, Nat.Prime p) : (primeReciprocalMass P) ^ 2 / (q : ℝ) ≤ (∑ n ∈ Icc 1 (q * P.prod id), (cubePrimeRank q P n : ℝ) ^ 2) / (q * P.prod id : ℕ)",
+      "generated_certificate": false,
+      "claim_ids": [],
+      "docstring": "A finite variance calculation restricted to the multiples of q. Using the whole period without this restriction would lose a factor q."
+    },
+    {
+      "id": "lean/ErdosProblems/Erdos257/PaperCompleteR8/DivisorCubeMoments.lean:103:cube_logSquare_mean_lower",
+      "name": "cube_logSquare_mean_lower",
+      "kind": "theorem",
+      "module": "lean/ErdosProblems/Erdos257/PaperCompleteR8/DivisorCubeMoments.lean",
+      "line": 103,
+      "signature": "theorem cube_logSquare_mean_lower (q : ℕ) (P : Finset ℕ) (hq : 0 < q) (hP : ∀ p ∈ P, Nat.Prime p) : (Real.log 2) ^ 2 * (primeReciprocalMass P) ^ 2 / (2 * (q : ℝ)) ≤ finiteLogSquareMean (divisorCube q P) (q * P.prod id)",
+      "generated_certificate": false,
+      "claim_ids": [],
+      "docstring": "The exact old-cover obstruction constant on a finite cube."
+    },
+    {
+      "id": "lean/ErdosProblems/Erdos257/PaperCompleteR8/DivisorCubeMoments.lean:128:half_le_log_one_add",
+      "name": "half_le_log_one_add",
+      "kind": "theorem",
+      "module": "lean/ErdosProblems/Erdos257/PaperCompleteR8/DivisorCubeMoments.lean",
+      "line": 128,
+      "signature": "theorem half_le_log_one_add {x : ℝ} (hx : 0 ≤ x) (hx1 : x ≤ 1) : x / 2 ≤ Real.log (1 + x)",
+      "generated_certificate": false,
+      "claim_ids": [],
+      "docstring": "Logarithmic lower bound on every Euler-product factor in the needed range."
+    },
+    {
+      "id": "lean/ErdosProblems/Erdos257/PaperCompleteR8/DivisorCubeMoments.lean:141:cubeProductCost_exp_lower",
+      "name": "cubeProductCost_exp_lower",
+      "kind": "theorem",
+      "module": "lean/ErdosProblems/Erdos257/PaperCompleteR8/DivisorCubeMoments.lean",
+      "line": 141,
+      "signature": "theorem cubeProductCost_exp_lower (q : ℕ) (P : Finset ℕ) (z : ℝ) (hP : ∀ p ∈ P, Nat.Prime p) (hz : 0 ≤ z) (hz1 : z ≤ 1) : Real.exp (z * primeReciprocalMass P / 2) / (q : ℝ) ≤ cubeProductCost q P z",
+      "generated_certificate": false,
+      "claim_ids": [],
+      "docstring": "A lower product bound sufficient for both reciprocal and fixed-alpha divergence."
+    },
+    {
+      "id": "lean/ErdosProblems/Erdos257/PaperCompleteR8/DivisorCubeMoments.lean:171:cubeProductCost_quadratic_lower",
+      "name": "cubeProductCost_quadratic_lower",
+      "kind": "theorem",
+      "module": "lean/ErdosProblems/Erdos257/PaperCompleteR8/DivisorCubeMoments.lean",
+      "line": 171,
+      "signature": "theorem cubeProductCost_quadratic_lower (q : ℕ) (P : Finset ℕ) (z : ℝ) (hP : ∀ p ∈ P, Nat.Prime p) (hz : 0 ≤ z) (hz1 : z ≤ 1) : z ^ 2 * (primeReciprocalMass P) ^ 2 / (4 * (q : ℝ)) ≤ cubeProductCost q P z",
+      "generated_certificate": false,
+      "claim_ids": [],
+      "docstring": "A polynomial lower bound avoids any unproved asymptotic comparison."
+    },
+    {
+      "id": "lean/ErdosProblems/Erdos257/PaperCompleteR8/DivisorCubeMoments.lean:183:cube_reciprocal_sum",
+      "name": "cube_reciprocal_sum",
+      "kind": "theorem",
+      "module": "lean/ErdosProblems/Erdos257/PaperCompleteR8/DivisorCubeMoments.lean",
+      "line": 183,
+      "signature": "theorem cube_reciprocal_sum (q : ℕ) (P : Finset ℕ) (hq : 0 < q) (hP : ∀ p ∈ P, Nat.Prime p) : (∑ a ∈ divisorCube q P, (1 : ℝ) / a) = cubeProductCost q P 1",
+      "generated_certificate": false,
+      "claim_ids": []
+    },
+    {
+      "id": "lean/ErdosProblems/Erdos257/PaperCompleteR8/DivisorCubeProduct.lean:16:primeReciprocalMass",
+      "name": "primeReciprocalMass",
+      "kind": "def",
+      "module": "lean/ErdosProblems/Erdos257/PaperCompleteR8/DivisorCubeProduct.lean",
+      "line": 16,
+      "signature": "def primeReciprocalMass (P : Finset ℕ) : ℝ",
+      "generated_certificate": false,
+      "claim_ids": []
+    },
+    {
+      "id": "lean/ErdosProblems/Erdos257/PaperCompleteR8/DivisorCubeProduct.lean:18:cubeProductCost",
+      "name": "cubeProductCost",
+      "kind": "def",
+      "module": "lean/ErdosProblems/Erdos257/PaperCompleteR8/DivisorCubeProduct.lean",
+      "line": 18,
+      "signature": "def cubeProductCost (q : ℕ) (P : Finset ℕ) (z : ℝ) : ℝ",
+      "generated_certificate": false,
+      "claim_ids": []
+    },
+    {
+      "id": "lean/ErdosProblems/Erdos257/PaperCompleteR8/DivisorCubeProduct.lean:21:cubeCoefficient",
+      "name": "cubeCoefficient",
+      "kind": "def",
+      "module": "lean/ErdosProblems/Erdos257/PaperCompleteR8/DivisorCubeProduct.lean",
+      "line": 21,
+      "signature": "def cubeCoefficient (q : ℕ) (P : Finset ℕ) (z : ℝ) : ℕ → ℝ",
+      "generated_certificate": false,
+      "claim_ids": []
+    },
+    {
+      "id": "lean/ErdosProblems/Erdos257/PaperCompleteR8/DivisorCubeProduct.lean:24:prime_product_pos",
+      "name": "prime_product_pos",
+      "kind": "theorem",
+      "module": "lean/ErdosProblems/Erdos257/PaperCompleteR8/DivisorCubeProduct.lean",
+      "line": 24,
+      "signature": "theorem prime_product_pos (P : Finset ℕ) (hP : ∀ p ∈ P, Nat.Prime p) : 0 < P.prod id",
+      "generated_certificate": false,
+      "claim_ids": []
+    },
+    {
+      "id": "lean/ErdosProblems/Erdos257/PaperCompleteR8/DivisorCubeProduct.lean:27:squarefree_prime_product",
+      "name": "squarefree_prime_product",
+      "kind": "theorem",
+      "module": "lean/ErdosProblems/Erdos257/PaperCompleteR8/DivisorCubeProduct.lean",
+      "line": 27,
+      "signature": "theorem squarefree_prime_product (P : Finset ℕ) (hP : ∀ p ∈ P, Nat.Prime p) : Squarefree (P.prod id)",
+      "generated_certificate": false,
+      "claim_ids": []
+    },
+    {
+      "id": "lean/ErdosProblems/Erdos257/PaperCompleteR8/DivisorCubeProduct.lean:44:prime_product_divisors_eq_powerset",
+      "name": "prime_product_divisors_eq_powerset",
+      "kind": "theorem",
+      "module": "lean/ErdosProblems/Erdos257/PaperCompleteR8/DivisorCubeProduct.lean",
+      "line": 44,
+      "signature": "theorem prime_product_divisors_eq_powerset (P : Finset ℕ) (hP : ∀ p ∈ P, Nat.Prime p) : (P.prod id).divisors = P.powerset.image (fun T => T.prod id)",
+      "generated_certificate": false,
+      "claim_ids": [],
+      "docstring": "Every divisor is the product of a unique subset of the prime set."
+    },
+    {
+      "id": "lean/ErdosProblems/Erdos257/PaperCompleteR8/DivisorCubeProduct.lean:67:divisorCube_eq_powerset_image",
+      "name": "divisorCube_eq_powerset_image",
+      "kind": "theorem",
+      "module": "lean/ErdosProblems/Erdos257/PaperCompleteR8/DivisorCubeProduct.lean",
+      "line": 67,
+      "signature": "theorem divisorCube_eq_powerset_image (q : ℕ) (P : Finset ℕ) (hP : ∀ p ∈ P, Nat.Prime p) : divisorCube q P = P.powerset.image (fun T => q * T.prod id)",
+      "generated_certificate": false,
+      "claim_ids": []
+    },
+    {
+      "id": "lean/ErdosProblems/Erdos257/PaperCompleteR8/DivisorCubeProduct.lean:76:cube_subset_dvd_iff",
+      "name": "cube_subset_dvd_iff",
+      "kind": "theorem",
+      "module": "lean/ErdosProblems/Erdos257/PaperCompleteR8/DivisorCubeProduct.lean",
+      "line": 76,
+      "signature": "theorem cube_subset_dvd_iff (q : ℕ) (P T : Finset ℕ) (n : ℕ) (hq : 0 < q) (hP : ∀ p ∈ P, Nat.Prime p) (hTP : T ⊆ P) (hn : 0 < n) (hqn : q ∣ n) : q * T.prod id ∣ n ↔ ∀ p ∈ T, q * p ∣ n",
+      "generated_certificate": false,
+      "claim_ids": [],
+      "docstring": "Divisibility by a squarefree subset product is exactly the collection of its prime-coordinate divisibilities, after cancelling q."
+    },
+    {
+      "id": "lean/ErdosProblems/Erdos257/PaperCompleteR8/DivisorCubeProduct.lean:95:cube_incidence_exact",
+      "name": "cube_incidence_exact",
+      "kind": "theorem",
+      "module": "lean/ErdosProblems/Erdos257/PaperCompleteR8/DivisorCubeProduct.lean",
+      "line": 95,
+      "signature": "theorem cube_incidence_exact (q : ℕ) (P : Finset ℕ) (n : ℕ) (hq : 0 < q) (hP : ∀ p ∈ P, Nat.Prime p) (hn : 0 < n) (hqn : q ∣ n) : ((divisorCube q P).filter (fun a => a ∣ n)).card = 2 ^ cubePrimeRank q P n",
+      "generated_certificate": false,
+      "claim_ids": []
+    },
+    {
+      "id": "lean/ErdosProblems/Erdos257/PaperCompleteR8/DivisorCubeProduct.lean:124:cube_incidence_zero",
+      "name": "cube_incidence_zero",
+      "kind": "theorem",
+      "module": "lean/ErdosProblems/Erdos257/PaperCompleteR8/DivisorCubeProduct.lean",
+      "line": 124,
+      "signature": "theorem cube_incidence_zero (q : ℕ) (P : Finset ℕ) (n : ℕ) (hqn : ¬ q ∣ n) : ((divisorCube q P).filter (fun a => a ∣ n)).card = 0",
+      "generated_certificate": false,
+      "claim_ids": []
+    },
+    {
+      "id": "lean/ErdosProblems/Erdos257/PaperCompleteR8/DivisorCubeProduct.lean:135:sum_subset_powers",
+      "name": "sum_subset_powers",
+      "kind": "theorem",
+      "module": "lean/ErdosProblems/Erdos257/PaperCompleteR8/DivisorCubeProduct.lean",
+      "line": 135,
+      "signature": "theorem sum_subset_powers (P B : Finset ℕ) (hBP : B ⊆ P) (z : ℝ) : (∑ T ∈ P.powerset, if T ⊆ B then z ^ T.card else 0) = (1 + z) ^ B.card",
+      "generated_certificate": false,
+      "claim_ids": [],
+      "docstring": "Restricted subset sums are the appropriate coordinate product."
+    },
+    {
+      "id": "lean/ErdosProblems/Erdos257/PaperCompleteR8/DivisorCubeProduct.lean:149:cube_fractional_expansion",
+      "name": "cube_fractional_expansion",
+      "kind": "theorem",
+      "module": "lean/ErdosProblems/Erdos257/PaperCompleteR8/DivisorCubeProduct.lean",
+      "line": 149,
+      "signature": "theorem cube_fractional_expansion (q : ℕ) (P : Finset ℕ) (α : ℝ) (n : ℕ) (hq : 0 < q) (hP : ∀ p ∈ P, Nat.Prime p) (hα : 0 < α) (hn : 0 < n) : (((divisorCube q P).filter (fun a => a ∣ n)).card : ℝ) ^ α = ∑ d ∈ n.divisors, cubeCoefficient q P ((2 : ℝ) ^ α - 1) d",
+      "generated_certificate": false,
+      "claim_ids": [],
+      "docstring": "Exact positive fractional incidence expansion, including the off-q case."
+    },
+    {
+      "id": "lean/ErdosProblems/Erdos257/PaperCompleteR8/DivisorCubeProduct.lean:188:cubeCoefficient_cost",
+      "name": "cubeCoefficient_cost",
+      "kind": "theorem",
+      "module": "lean/ErdosProblems/Erdos257/PaperCompleteR8/DivisorCubeProduct.lean",
+      "line": 188,
+      "signature": "theorem cubeCoefficient_cost (q : ℕ) (P : Finset ℕ) (z : ℝ) : (∑' d : ℕ, cubeCoefficient q P z d / (d : ℝ)) = cubeProductCost q P z",
+      "generated_certificate": false,
+      "claim_ids": [],
+      "docstring": "Exact cost of the canonical finite majorant."
+    },
+    {
+      "id": "lean/ErdosProblems/Erdos257/PaperCompleteR8/DivisorCubeProduct.lean:200:cubeCoverFrame",
+      "name": "cubeCoverFrame",
+      "kind": "def",
+      "module": "lean/ErdosProblems/Erdos257/PaperCompleteR8/DivisorCubeProduct.lean",
+      "line": 200,
+      "signature": "def cubeCoverFrame (q : ℕ) (P : Finset ℕ) (α : ℝ) (hq : 0 < q) (hP : ∀ p ∈ P, Nat.Prime p) (hα : 0 < α) (hα1 : α ≤ 1) : FiniteCoverFrame",
+      "generated_certificate": false,
+      "claim_ids": [],
+      "docstring": "All finite-cube data required by the infimum theorem are constructed."
+    },
+    {
+      "id": "lean/ErdosProblems/Erdos257/PaperCompleteR8/DivisorCubeProduct.lean:218:cubeCoverFrame_cost",
+      "name": "cubeCoverFrame_cost",
+      "kind": "theorem",
+      "module": "lean/ErdosProblems/Erdos257/PaperCompleteR8/DivisorCubeProduct.lean",
+      "line": 218,
+      "signature": "theorem cubeCoverFrame_cost (q : ℕ) (P : Finset ℕ) (α : ℝ) (hq : 0 < q) (hP : ∀ p ∈ P, Nat.Prime p) (hα : 0 < α) (hα1 : α ≤ 1) : (cubeCoverFrame q P α hq hP hα hα1).cost = cubeProductCost q P ((2 : ℝ) ^ α - 1)",
+      "generated_certificate": false,
+      "claim_ids": []
+    },
+    {
+      "id": "lean/ErdosProblems/Erdos257/PaperCompleteR8/DivisorCubeProduct.lean:224:cubeProductCost_le_exp",
+      "name": "cubeProductCost_le_exp",
+      "kind": "theorem",
+      "module": "lean/ErdosProblems/Erdos257/PaperCompleteR8/DivisorCubeProduct.lean",
+      "line": 224,
+      "signature": "theorem cubeProductCost_le_exp (q : ℕ) (P : Finset ℕ) (z : ℝ) (hz : 0 ≤ z) : cubeProductCost q P z ≤ Real.exp (z * primeReciprocalMass P) / (q : ℝ)",
+      "generated_certificate": false,
+      "claim_ids": [],
+      "docstring": "Finite prime products, including the empty prime set."
+    },
+    {
+      "id": "lean/ErdosProblems/Erdos257/PaperCompleteR8/DivisorCubeProduct.lean:245:cube_fractional_mean",
+      "name": "cube_fractional_mean",
+      "kind": "theorem",
+      "module": "lean/ErdosProblems/Erdos257/PaperCompleteR8/DivisorCubeProduct.lean",
+      "line": 245,
+      "signature": "theorem cube_fractional_mean (q : ℕ) (P : Finset ℕ) (α : ℝ) (hq : 0 < q) (hP : ∀ p ∈ P, Nat.Prime p) (hα : 0 < α) : (∑ n ∈ Icc 1 (q * P.prod id), (((divisorCube q P).filter (fun a => a ∣ n)).card : ℝ) ^ α) / (q * P.prod id : ℕ) = cubeProductCost q P ((2 : ℝ) ^ α - 1)",
+      "generated_certificate": false,
+      "claim_ids": [],
+      "docstring": "The complete-period fractional moment equals the canonical cost."
+    },
+    {
+      "id": "lean/ErdosProblems/Erdos257/PaperCompleteR8/DivisorFrameHostTransport.lean:15:primeSetPart_two_dyadic",
+      "name": "primeSetPart_two_dyadic",
+      "kind": "theorem",
+      "module": "lean/ErdosProblems/Erdos257/PaperCompleteR8/DivisorFrameHostTransport.lean",
+      "line": 15,
+      "signature": "theorem primeSetPart_two_dyadic {d : ℕ} (k : ℕ) (hd : ¬ 2 ∣ d) : primeSetPart {2} (2 ^ (k + 2) * d) = 2 ^ (k + 2)",
+      "generated_certificate": false,
+      "claim_ids": []
+    },
+    {
+      "id": "lean/ErdosProblems/Erdos257/PaperCompleteR8/DivisorFrameHostTransport.lean:25:dyadic_frame_canonical_weight_sum",
+      "name": "dyadic_frame_canonical_weight_sum",
+      "kind": "theorem",
+      "module": "lean/ErdosProblems/Erdos257/PaperCompleteR8/DivisorFrameHostTransport.lean",
+      "line": 25,
+      "signature": "theorem dyadic_frame_canonical_weight_sum (M k : ℕ) (hodd : ¬ 2 ∣ M) : (∑ a ∈ dyadicDivisorFrame M k, primeWeightedTerm 2 {2} a) = (∑ d ∈ M.divisors, (1 : ℝ) / d) / ((2 : ℝ) ^ (2 ^ (k + 2) : ℕ) - 1)",
+      "generated_certificate": false,
+      "claim_ids": []
+    },
+    {
+      "id": "lean/ErdosProblems/Erdos257/PaperCompleteR8/DivisorFrameHostTransport.lean:41:summable_indicator_frame_union",
+      "name": "summable_indicator_frame_union",
+      "kind": "theorem",
+      "module": "lean/ErdosProblems/Erdos257/PaperCompleteR8/DivisorFrameHostTransport.lean",
+      "line": 41,
+      "signature": "theorem summable_indicator_frame_union (G : ℕ → Finset ℕ) (w : ℕ → ℝ) (hw : ∀ a, 0 ≤ w a) (hs : Summable (fun k => ∑ a ∈ G k, w a)) : Summable (Set.indicator {a | ∃ k, a ∈ G k} w)",
+      "generated_certificate": false,
+      "claim_ids": [],
+      "docstring": "Summable nonnegative frame masses control the indicator of their union. Overlaps are allowed; only the upper bound is needed."
+    },
+    {
+      "id": "lean/ErdosProblems/Erdos257/PaperCompleteR8/DivisorFrameHostTransport.lean:83:summable_canonical_dyadic_host",
+      "name": "summable_canonical_dyadic_host",
+      "kind": "theorem",
+      "module": "lean/ErdosProblems/Erdos257/PaperCompleteR8/DivisorFrameHostTransport.lean",
+      "line": 83,
+      "signature": "theorem summable_canonical_dyadic_host (P : ℕ → Finset ℕ) (hP : ∀ k p, p ∈ P k → Nat.Prime p ∧ 2 < p) (hS : ∀ k, (∑ p ∈ P k, (1 : ℝ) / p) ≤ (2 : ℝ) ^ k + 1) : Summable (Set.indicator (dyadicDivisorHost (fun k => (P k).prod id)) (primeWeightedTerm 2 {2}))",
+      "generated_certificate": false,
+      "claim_ids": []
+    },
+    {
+      "id": "lean/ErdosProblems/Erdos257/PaperCompleteR8/DivisorFrameHostTransport.lean:111:exists_infinite_dyadic_weighted_host",
+      "name": "exists_infinite_dyadic_weighted_host",
+      "kind": "theorem",
+      "module": "lean/ErdosProblems/Erdos257/PaperCompleteR8/DivisorFrameHostTransport.lean",
+      "line": 111,
+      "signature": "theorem exists_infinite_dyadic_weighted_host : ∃ P : ℕ → Finset ℕ, Pairwise (fun k l => Disjoint (P k) (P l)) ∧ (∀ k, (∀ p ∈ P k, Nat.Prime p ∧ 2 < p) ∧ (2 : ℝ) ^ k ≤ ∑ p ∈ P k, (1 : ℝ) / p ∧ (∑ p ∈ P k, (1 : ℝ) / p) ≤ (2 : ℝ) ^ k + 1) ∧ (dyadicDivisorHost (fun k => (P k).prod id)).Infinite ∧ 0 ∉ dyadicDivisorHost (fun k => (P k).prod id) ∧ FinitePrimeWeighted 2 (dyadicDivisorHost (fun k => (P k).prod id))",
+      "generated_certificate": false,
+      "claim_ids": [],
+      "docstring": "The prime-block construction supplies an infinite positive host satisfying the original binary finite-prime weighted criterion."
+    },
+    {
+      "id": "lean/ErdosProblems/Erdos257/PaperCompleteR8/DivisorFrameWeightedBudget.lean:19:sum_divisors_prime_product",
+      "name": "sum_divisors_prime_product",
+      "kind": "theorem",
+      "module": "lean/ErdosProblems/Erdos257/PaperCompleteR8/DivisorFrameWeightedBudget.lean",
+      "line": 19,
+      "signature": "theorem sum_divisors_prime_product (P : Finset ℕ) (hP : ∀ p ∈ P, Nat.Prime p) : (∑ d ∈ (P.prod id).divisors, d) = ∏ p ∈ P, (p + 1)",
+      "generated_certificate": false,
+      "claim_ids": [],
+      "docstring": "Sum of divisors of a product of distinct primes."
+    },
+    {
+      "id": "lean/ErdosProblems/Erdos257/PaperCompleteR8/DivisorFrameWeightedBudget.lean:42:reciprocal_divisor_sum_eq",
+      "name": "reciprocal_divisor_sum_eq",
+      "kind": "theorem",
+      "module": "lean/ErdosProblems/Erdos257/PaperCompleteR8/DivisorFrameWeightedBudget.lean",
+      "line": 42,
+      "signature": "theorem reciprocal_divisor_sum_eq (M : ℕ) (hM : 0 < M) : (∑ d ∈ M.divisors, (1 : ℝ) / d) = (∑ d ∈ M.divisors, (d : ℝ)) / (M : ℝ)",
+      "generated_certificate": false,
+      "claim_ids": [],
+      "docstring": "Reciprocal divisor sums are the ordinary divisor sum divided by the integer."
+    },
+    {
+      "id": "lean/ErdosProblems/Erdos257/PaperCompleteR8/DivisorFrameWeightedBudget.lean:61:reciprocal_divisor_prime_product",
+      "name": "reciprocal_divisor_prime_product",
+      "kind": "theorem",
+      "module": "lean/ErdosProblems/Erdos257/PaperCompleteR8/DivisorFrameWeightedBudget.lean",
+      "line": 61,
+      "signature": "theorem reciprocal_divisor_prime_product (P : Finset ℕ) (hP : ∀ p ∈ P, Nat.Prime p) : (∑ d ∈ (P.prod id).divisors, (1 : ℝ) / d) = ∏ p ∈ P, (1 + (1 : ℝ) / p)",
+      "generated_certificate": false,
+      "claim_ids": [],
+      "docstring": "The exact Euler product of the finite divisor frame."
+    },
+    {
+      "id": "lean/ErdosProblems/Erdos257/PaperCompleteR8/DivisorFrameWeightedBudget.lean:78:reciprocal_divisor_prime_product_le_exp",
+      "name": "reciprocal_divisor_prime_product_le_exp",
+      "kind": "theorem",
+      "module": "lean/ErdosProblems/Erdos257/PaperCompleteR8/DivisorFrameWeightedBudget.lean",
+      "line": 78,
+      "signature": "theorem reciprocal_divisor_prime_product_le_exp (P : Finset ℕ) (hP : ∀ p ∈ P, Nat.Prime p) : (∑ d ∈ (P.prod id).divisors, (1 : ℝ) / d) ≤ Real.exp (∑ p ∈ P, (1 : ℝ) / p)",
+      "generated_certificate": false,
+      "claim_ids": [],
+      "docstring": "Harmonic mass bounds the actual reciprocal divisor sum."
+    },
+    {
+      "id": "lean/ErdosProblems/Erdos257/PaperCompleteR8/DivisorFrameWeightedBudget.lean:89:divisorFrameBudget",
+      "name": "divisorFrameBudget",
+      "kind": "def",
+      "module": "lean/ErdosProblems/Erdos257/PaperCompleteR8/DivisorFrameWeightedBudget.lean",
+      "line": 89,
+      "signature": "def divisorFrameBudget (P : Finset ℕ) (k : ℕ) : ℝ",
+      "generated_certificate": false,
+      "claim_ids": []
+    },
+    {
+      "id": "lean/ErdosProblems/Erdos257/PaperCompleteR8/DivisorFrameWeightedBudget.lean:94:dyadic_frame_literal_weight_sum",
+      "name": "dyadic_frame_literal_weight_sum",
+      "kind": "theorem",
+      "module": "lean/ErdosProblems/Erdos257/PaperCompleteR8/DivisorFrameWeightedBudget.lean",
+      "line": 94,
+      "signature": "theorem dyadic_frame_literal_weight_sum (M k : ℕ) : (∑ a ∈ dyadicDivisorFrame M k, ((2 : ℝ) ^ (k + 2)) / ((a : ℝ) * ((2 : ℝ) ^ (2 ^ (k + 2) : ℕ) - 1))) = (∑ d ∈ M.divisors, (1 : ℝ) / d) / ((2 : ℝ) ^ (2 ^ (k + 2) : ℕ) - 1)",
+      "generated_certificate": false,
+      "claim_ids": [],
+      "docstring": "Exact literal weighted sum on the actual dyadic divisor frame."
+    },
+    {
+      "id": "lean/ErdosProblems/Erdos257/PaperCompleteR8/DivisorFrameWeightedBudget.lean:117:divisorFrameBudget_le_geometric",
+      "name": "divisorFrameBudget_le_geometric",
+      "kind": "theorem",
+      "module": "lean/ErdosProblems/Erdos257/PaperCompleteR8/DivisorFrameWeightedBudget.lean",
+      "line": 117,
+      "signature": "theorem divisorFrameBudget_le_geometric (P : Finset ℕ) (k : ℕ) (hP : ∀ p ∈ P, Nat.Prime p) (hS : (∑ p ∈ P, (1 : ℝ) / p) ≤ (2 : ℝ) ^ k + 1) : divisorFrameBudget P k ≤ 6 * (3 / 16 : ℝ) ^ k",
+      "generated_certificate": false,
+      "claim_ids": [],
+      "docstring": "The concrete row scales yield a geometric majorant, with explicit constants."
+    },
+    {
+      "id": "lean/ErdosProblems/Erdos257/PaperCompleteR8/DivisorFrameWeightedBudget.lean:155:summable_divisorFrameBudget",
+      "name": "summable_divisorFrameBudget",
+      "kind": "theorem",
+      "module": "lean/ErdosProblems/Erdos257/PaperCompleteR8/DivisorFrameWeightedBudget.lean",
+      "line": 155,
+      "signature": "theorem summable_divisorFrameBudget (P : ℕ → Finset ℕ) (hP : ∀ k p, p ∈ P k → Nat.Prime p) (hS : ∀ k, (∑ p ∈ P k, (1 : ℝ) / p) ≤ (2 : ℝ) ^ k + 1) : Summable (fun k => divisorFrameBudget (P k) k)",
+      "generated_certificate": false,
+      "claim_ids": [],
+      "docstring": "Summability of the actual finite-product frame budgets at the prescribed scales."
+    },
+    {
+      "id": "lean/ErdosProblems/Erdos257/PaperCompleteR8/DivisorFrameWeightedBudget.lean:170:exists_disjoint_prime_blocks_summable_divisor_budgets",
+      "name": "exists_disjoint_prime_blocks_summable_divisor_budgets",
+      "kind": "theorem",
+      "module": "lean/ErdosProblems/Erdos257/PaperCompleteR8/DivisorFrameWeightedBudget.lean",
+      "line": 170,
+      "signature": "theorem exists_disjoint_prime_blocks_summable_divisor_budgets : ∃ P : ℕ → Finset ℕ, Pairwise (fun k l => Disjoint (P k) (P l)) ∧ (∀ k, (∀ p ∈ P k, Nat.Prime p ∧ 2 < p) ∧ (2 : ℝ) ^ k ≤ ∑ p ∈ P k, (1 : ℝ) / p ∧ (∑ p ∈ P k, (1 : ℝ) / p) ≤ (2 : ℝ) ^ k + 1) ∧ Summable (fun k => divisorFrameBudget (P k) k)",
+      "generated_certificate": false,
+      "claim_ids": [],
+      "docstring": "Concrete disjoint odd-prime blocks have a summable divisor-frame budget; the harmonic supply is proved, not an assumed supplier."
+    },
+    {
+      "id": "lean/ErdosProblems/Erdos257/PaperCompleteR8/DyadicDivisorFrames.lean:15:dyadic_exponent_eq_of_odd_cofactors",
+      "name": "dyadic_exponent_eq_of_odd_cofactors",
+      "kind": "theorem",
+      "module": "lean/ErdosProblems/Erdos257/PaperCompleteR8/DyadicDivisorFrames.lean",
+      "line": 15,
+      "signature": "theorem dyadic_exponent_eq_of_odd_cofactors {k l d e : ℕ} (hd : ¬ 2 ∣ d) (he : ¬ 2 ∣ e) (h : 2 ^ k * d = 2 ^ l * e) : k = l",
+      "generated_certificate": false,
+      "claim_ids": [],
+      "docstring": "Odd cofactors uniquely determine the dyadic exponent."
+    },
+    {
+      "id": "lean/ErdosProblems/Erdos257/PaperCompleteR8/DyadicDivisorFrames.lean:32:dyadicDivisorFrame",
+      "name": "dyadicDivisorFrame",
+      "kind": "def",
+      "module": "lean/ErdosProblems/Erdos257/PaperCompleteR8/DyadicDivisorFrames.lean",
+      "line": 32,
+      "signature": "def dyadicDivisorFrame (M k : ℕ) : Finset ℕ",
+      "generated_certificate": false,
+      "claim_ids": []
+    },
+    {
+      "id": "lean/ErdosProblems/Erdos257/PaperCompleteR8/DyadicDivisorFrames.lean:35:dyadicDivisorHost",
+      "name": "dyadicDivisorHost",
+      "kind": "def",
+      "module": "lean/ErdosProblems/Erdos257/PaperCompleteR8/DyadicDivisorFrames.lean",
+      "line": 35,
+      "signature": "def dyadicDivisorHost (M : ℕ → ℕ) : Set ℕ",
+      "generated_certificate": false,
+      "claim_ids": []
+    },
+    {
+      "id": "lean/ErdosProblems/Erdos257/PaperCompleteR8/DyadicDivisorFrames.lean:39:dyadicDivisorFrames_disjoint",
+      "name": "dyadicDivisorFrames_disjoint",
+      "kind": "theorem",
+      "module": "lean/ErdosProblems/Erdos257/PaperCompleteR8/DyadicDivisorFrames.lean",
+      "line": 39,
+      "signature": "theorem dyadicDivisorFrames_disjoint (M : ℕ → ℕ) (hodd : ∀ k, ¬ 2 ∣ M k) {k l : ℕ} (hkl : k ≠ l) : Disjoint (dyadicDivisorFrame (M k) k) (dyadicDivisorFrame (M l) l)",
+      "generated_certificate": false,
+      "claim_ids": [],
+      "docstring": "Distinct rows have disjoint supports, without any disjointness assumption on primes."
+    },
+    {
+      "id": "lean/ErdosProblems/Erdos257/PaperCompleteR8/DyadicDivisorFrames.lean:51:zero_not_mem_dyadicDivisorHost",
+      "name": "zero_not_mem_dyadicDivisorHost",
+      "kind": "theorem",
+      "module": "lean/ErdosProblems/Erdos257/PaperCompleteR8/DyadicDivisorFrames.lean",
+      "line": 51,
+      "signature": "theorem zero_not_mem_dyadicDivisorHost (M : ℕ → ℕ) : 0 ∉ dyadicDivisorHost M",
+      "generated_certificate": false,
+      "claim_ids": []
+    },
+    {
+      "id": "lean/ErdosProblems/Erdos257/PaperCompleteR8/DyadicDivisorFrames.lean:60:dyadicDivisorHost_infinite",
+      "name": "dyadicDivisorHost_infinite",
+      "kind": "theorem",
+      "module": "lean/ErdosProblems/Erdos257/PaperCompleteR8/DyadicDivisorFrames.lean",
+      "line": 60,
+      "signature": "theorem dyadicDivisorHost_infinite (M : ℕ → ℕ) (hM : ∀ k, 0 < M k) : (dyadicDivisorHost M).Infinite",
+      "generated_certificate": false,
+      "claim_ids": [],
+      "docstring": "Every positive row contributes its least dyadic point; hence the host is infinite."
+    },
+    {
+      "id": "lean/ErdosProblems/Erdos257/PaperCompleteR8/DyadicHostSeparation.lean:21:exists_dyadic_event_period",
+      "name": "exists_dyadic_event_period",
+      "kind": "theorem",
+      "module": "lean/ErdosProblems/Erdos257/PaperCompleteR8/DyadicHostSeparation.lean",
+      "line": 21,
+      "signature": "theorem exists_dyadic_event_period (P : ℕ → Finset ℕ) (J : Finset ℕ) (hP : ∀ k p, p ∈ P k → 0 < p) : ∃ X : ℕ, 0 < X ∧ ∀ k ∈ J, ∀ p ∈ P k, 2 * (2 ^ (k + 2) * p) ∣ X",
+      "generated_certificate": false,
+      "claim_ids": [],
+      "docstring": "A finite positive common period for all relevant exact-valuation events."
+    },
+    {
+      "id": "lean/ErdosProblems/Erdos257/PaperCompleteR8/DyadicHostSeparation.lean:37:mean_dyadicBlockCounts",
+      "name": "mean_dyadicBlockCounts",
+      "kind": "theorem",
+      "module": "lean/ErdosProblems/Erdos257/PaperCompleteR8/DyadicHostSeparation.lean",
+      "line": 37,
+      "signature": "theorem mean_dyadicBlockCounts (P : ℕ → Finset ℕ) (J : Finset ℕ) (X : ℕ) (hP : ∀ k p, p ∈ P k → 0 < p) (hX : 0 < X) (hperiod : ∀ k ∈ J, ∀ p ∈ P k, 2 * (2 ^ (k + 2) * p) ∣ X) : (∑ n ∈ Icc 1 X, ∑ k ∈ J, (dyadicBlockCount (P k) (k + 2) n : ℝ)) / X = ∑ k ∈ J, (∑ p ∈ P k, (1 : ℝ) / p) / (2 * (2 : ℝ) ^ (k + 2))",
+      "generated_certificate": false,
+      "claim_ids": [],
+      "docstring": "Exact mean of all block counts, before imposing the harmonic scale."
+    },
+    {
+      "id": "lean/ErdosProblems/Erdos257/PaperCompleteR8/DyadicHostSeparation.lean:50:harmonic_row_event_lower",
+      "name": "harmonic_row_event_lower",
+      "kind": "theorem",
+      "module": "lean/ErdosProblems/Erdos257/PaperCompleteR8/DyadicHostSeparation.lean",
+      "line": 50,
+      "signature": "theorem harmonic_row_event_lower (P : Finset ℕ) (k : ℕ) (hS : (2 : ℝ) ^ k ≤ ∑ p ∈ P, (1 : ℝ) / p) : (1 / 8 : ℝ) ≤ (∑ p ∈ P, (1 : ℝ) / p) / (2 * (2 : ℝ) ^ (k + 2))",
+      "generated_certificate": false,
+      "claim_ids": [],
+      "docstring": "Each prescribed row contributes at least one eighth to the event mean."
+    },
+    {
+      "id": "lean/ErdosProblems/Erdos257/PaperCompleteR8/DyadicHostSeparation.lean:58:dyadic_finite_logarithmic_growth",
+      "name": "dyadic_finite_logarithmic_growth",
+      "kind": "theorem",
+      "module": "lean/ErdosProblems/Erdos257/PaperCompleteR8/DyadicHostSeparation.lean",
+      "line": 58,
+      "signature": "theorem dyadic_finite_logarithmic_growth (P : ℕ → Finset ℕ) (m : ℕ) (hP : ∀ k p, p ∈ P k → Nat.Prime p ∧ 2 < p) (hS : ∀ k, (2 : ℝ) ^ k ≤ ∑ p ∈ P k, (1 : ℝ) / p) : ∃ X : ℕ, 0 < X ∧ Real.exp 1 * Real.log 2 * (m : ℝ) / 8 ≤ finiteLogarithmicMean ((Finset.range m).biUnion (fun k => dyadicDivisorFrame ((P k).prod id) k)) X",
+      "generated_certificate": false,
+      "claim_ids": [],
+      "docstring": "Linear logarithmic growth at a genuine common finite period."
+    },
+    {
+      "id": "lean/ErdosProblems/Erdos257/PaperCompleteR8/DyadicHostSeparation.lean:98:dyadic_host_unbounded_finite_logarithmic_means",
+      "name": "dyadic_host_unbounded_finite_logarithmic_means",
+      "kind": "theorem",
+      "module": "lean/ErdosProblems/Erdos257/PaperCompleteR8/DyadicHostSeparation.lean",
+      "line": 98,
+      "signature": "theorem dyadic_host_unbounded_finite_logarithmic_means (P : ℕ → Finset ℕ) (hP : ∀ k p, p ∈ P k → Nat.Prime p ∧ 2 < p) (hS : ∀ k, (2 : ℝ) ^ k ≤ ∑ p ∈ P k, (1 : ℝ) / p) : ∀ R : ℝ, ∃ F : Finset ℕ, (F : Set ℕ) ⊆ dyadicDivisorHost (fun k => (P k).prod id) ∧ ∃ X : ℕ, 0 < X ∧ R < finiteLogarithmicMean F X",
+      "generated_certificate": false,
+      "claim_ids": [],
+      "docstring": "The actual infinite host supplies arbitrarily large finite logarithmic means."
+    },
+    {
+      "id": "lean/ErdosProblems/Erdos257/PaperCompleteR8/DyadicHostSeparation.lean:126:finiteLogarithmicMean_le_reciprocal",
+      "name": "finiteLogarithmicMean_le_reciprocal",
+      "kind": "theorem",
+      "module": "lean/ErdosProblems/Erdos257/PaperCompleteR8/DyadicHostSeparation.lean",
+      "line": 126,
+      "signature": "theorem finiteLogarithmicMean_le_reciprocal (F : Finset ℕ) (hF : 0 ∉ F) (X : ℕ) (hX : 0 < X) : finiteLogarithmicMean F X ≤ Real.exp 1 * (∑ a ∈ F, (1 : ℝ) / a)",
+      "generated_certificate": false,
+      "claim_ids": [],
+      "docstring": "An elementary universal upper bound: logarithmic incidence costs at most ordinary reciprocal mass. This includes cardinality zero without log-positive notation."
+    },
+    {
+      "id": "lean/ErdosProblems/Erdos257/PaperCompleteR8/DyadicHostSeparation.lean:147:not_summable_reciprocal_of_unbounded_finite_means",
+      "name": "not_summable_reciprocal_of_unbounded_finite_means",
+      "kind": "theorem",
+      "module": "lean/ErdosProblems/Erdos257/PaperCompleteR8/DyadicHostSeparation.lean",
+      "line": 147,
+      "signature": "theorem not_summable_reciprocal_of_unbounded_finite_means (A : Set ℕ) (hA0 : 0 ∉ A) (hlarge : ∀ R : ℝ, ∃ F : Finset ℕ, (F : Set ℕ) ⊆ A ∧ ∃ X : ℕ, 0 < X ∧ R < finiteLogarithmicMean F X) : ¬ Summable (Set.indicator A (fun a : ℕ => (1 : ℝ) / a))",
+      "generated_certificate": false,
+      "claim_ids": [],
+      "docstring": "Unbounded first logarithmic moments force reciprocal divergence."
+    },
+    {
+      "id": "lean/ErdosProblems/Erdos257/PaperCompleteR8/DyadicHostSeparation.lean:174:no_logBudgetCover_dyadic_host",
+      "name": "no_logBudgetCover_dyadic_host",
+      "kind": "theorem",
+      "module": "lean/ErdosProblems/Erdos257/PaperCompleteR8/DyadicHostSeparation.lean",
+      "line": 174,
+      "signature": "theorem no_logBudgetCover_dyadic_host (P : ℕ → Finset ℕ) (hP : ∀ k p, p ∈ P k → Nat.Prime p ∧ 2 < p) (hS : ∀ k, (2 : ℝ) ^ k ≤ ∑ p ∈ P k, (1 : ℝ) / p) : IsEmpty (LogBudgetCover (dyadicDivisorHost (fun k => (P k).prod id)))",
+      "generated_certificate": false,
+      "claim_ids": [],
+      "docstring": "No strengthened positive cover, with arbitrary positive weights, covers this host."
+    },
+    {
+      "id": "lean/ErdosProblems/Erdos257/PaperCompleteR8/DyadicHostSeparation.lean:183:exists_weighted_host_outside_every_logBudgetCover",
+      "name": "exists_weighted_host_outside_every_logBudgetCover",
+      "kind": "theorem",
+      "module": "lean/ErdosProblems/Erdos257/PaperCompleteR8/DyadicHostSeparation.lean",
+      "line": 183,
+      "signature": "theorem exists_weighted_host_outside_every_logBudgetCover : ∃ A : Set ℕ, A.Infinite ∧ 0 ∉ A ∧ FinitePrimeWeighted 2 A ∧ ¬ Summable (Set.indicator A (fun a : ℕ => (1 : ℝ) / a)) ∧ IsEmpty (LogBudgetCover A) ∧ (∀ B : Set ℕ, B ⊆ A → B.Infinite → ∀ b : ℕ, 2 ≤ b → Irrational (erdosSupportSeries b B))",
+      "generated_certificate": false,
+      "claim_ids": [],
+      "docstring": "The complete A_W endpoint, including its actual construction and all-base heredity. There is no moment-growth or no-cover hypothesis in this theorem."
+    },
+    {
       "id": "lean/ErdosProblems/Erdos257/PaperCompleteR8/DyadicKernel.lean:21:normalised_geom_prefix_le",
       "name": "normalised_geom_prefix_le",
       "kind": "theorem",
@@ -288135,6 +289329,123 @@
       "generated_certificate": false,
       "claim_ids": [],
       "docstring": "Mandate's exact range M≥4L, as a direct corollary."
+    },
+    {
+      "id": "lean/ErdosProblems/Erdos257/PaperCompleteR8/DyadicLogarithmicEvents.lean:14:card_dyadic_divisibility_event",
+      "name": "card_dyadic_divisibility_event",
+      "kind": "theorem",
+      "module": "lean/ErdosProblems/Erdos257/PaperCompleteR8/DyadicLogarithmicEvents.lean",
+      "line": 14,
+      "signature": "theorem card_dyadic_divisibility_event (d X : ℕ) (hd : 0 < d) : ((Icc 1 X).filter (fun n => d ∣ n ∧ ¬ 2 * d ∣ n)).card = X / d - X / (2 * d)",
+      "generated_certificate": false,
+      "claim_ids": [],
+      "docstring": "Exact event count before choosing a common period."
+    },
+    {
+      "id": "lean/ErdosProblems/Erdos257/PaperCompleteR8/DyadicLogarithmicEvents.lean:32:card_dyadic_divisibility_event_period",
+      "name": "card_dyadic_divisibility_event_period",
+      "kind": "theorem",
+      "module": "lean/ErdosProblems/Erdos257/PaperCompleteR8/DyadicLogarithmicEvents.lean",
+      "line": 32,
+      "signature": "theorem card_dyadic_divisibility_event_period (d X : ℕ) (hd : 0 < d) (hperiod : 2 * d ∣ X) : ((Icc 1 X).filter (fun n => d ∣ n ∧ ¬ 2 * d ∣ n)).card = X / (2 * d)",
+      "generated_certificate": false,
+      "claim_ids": [],
+      "docstring": "At a complete period, exactly half the multiples survive."
+    },
+    {
+      "id": "lean/ErdosProblems/Erdos257/PaperCompleteR8/DyadicLogarithmicEvents.lean:48:mean_dyadic_divisibility_event",
+      "name": "mean_dyadic_divisibility_event",
+      "kind": "theorem",
+      "module": "lean/ErdosProblems/Erdos257/PaperCompleteR8/DyadicLogarithmicEvents.lean",
+      "line": 48,
+      "signature": "theorem mean_dyadic_divisibility_event (d X : ℕ) (hd : 0 < d) (hX : 0 < X) (hperiod : 2 * d ∣ X) : (∑ n ∈ Icc 1 X, if d ∣ n ∧ ¬ 2 * d ∣ n then (1 : ℝ) else 0) / (X : ℝ) = 1 / (2 * (d : ℝ))",
+      "generated_certificate": false,
+      "claim_ids": [],
+      "docstring": "The real-valued mean is an exact reciprocal, not merely an asymptotic density."
+    },
+    {
+      "id": "lean/ErdosProblems/Erdos257/PaperCompleteR8/DyadicLogarithmicEvents.lean:64:mean_prime_block_dyadic_events",
+      "name": "mean_prime_block_dyadic_events",
+      "kind": "theorem",
+      "module": "lean/ErdosProblems/Erdos257/PaperCompleteR8/DyadicLogarithmicEvents.lean",
+      "line": 64,
+      "signature": "theorem mean_prime_block_dyadic_events (P : Finset ℕ) (r X : ℕ) (hP : ∀ p ∈ P, 0 < p) (hX : 0 < X) (hperiod : ∀ p ∈ P, 2 * (2 ^ r * p) ∣ X) : (∑ n ∈ Icc 1 X, ∑ p ∈ P, if 2 ^ r * p ∣ n ∧ ¬ 2 * (2 ^ r * p) ∣ n then (1 : ℝ) else 0) / (X : ℝ) = (∑ p ∈ P, (1 : ℝ) / p) / (2 * (2 : ℝ) ^ r)",
+      "generated_certificate": false,
+      "claim_ids": [],
+      "docstring": "Exact finite harmonic contribution of a prime block at a common period. The identity holds for arbitrary positive distinct integers as well."
+    },
+    {
+      "id": "lean/ErdosProblems/Erdos257/PaperCompleteR8/FiniteAtomicMajorants.lean:13:finiteAtomicCoefficient",
+      "name": "finiteAtomicCoefficient",
+      "kind": "def",
+      "module": "lean/ErdosProblems/Erdos257/PaperCompleteR8/FiniteAtomicMajorants.lean",
+      "line": 13,
+      "signature": "def finiteAtomicCoefficient {ι : Type*} (I : Finset ι) (d : ι → ℕ) (w : ι → ℝ) (a : ℕ) : ℝ",
+      "generated_certificate": false,
+      "claim_ids": [],
+      "docstring": "Push finite atomic masses onto their actual positive conductors."
+    },
+    {
+      "id": "lean/ErdosProblems/Erdos257/PaperCompleteR8/FiniteAtomicMajorants.lean:17:finiteAtomicCoefficient_nonneg",
+      "name": "finiteAtomicCoefficient_nonneg",
+      "kind": "theorem",
+      "module": "lean/ErdosProblems/Erdos257/PaperCompleteR8/FiniteAtomicMajorants.lean",
+      "line": 17,
+      "signature": "theorem finiteAtomicCoefficient_nonneg {ι : Type*} (I : Finset ι) (d : ι → ℕ) (w : ι → ℝ) (hw : ∀ i ∈ I, 0 ≤ w i) (a : ℕ) : 0 ≤ finiteAtomicCoefficient I d w a",
+      "generated_certificate": false,
+      "claim_ids": []
+    },
+    {
+      "id": "lean/ErdosProblems/Erdos257/PaperCompleteR8/FiniteAtomicMajorants.lean:26:finiteAtomicCoefficient_column_summable",
+      "name": "finiteAtomicCoefficient_column_summable",
+      "kind": "theorem",
+      "module": "lean/ErdosProblems/Erdos257/PaperCompleteR8/FiniteAtomicMajorants.lean",
+      "line": 26,
+      "signature": "theorem finiteAtomicCoefficient_column_summable {ι : Type*} (I : Finset ι) (d : ι → ℕ) (w : ι → ℝ) : Summable (fun a : ℕ => finiteAtomicCoefficient I d w a / (a : ℝ))",
+      "generated_certificate": false,
+      "claim_ids": []
+    },
+    {
+      "id": "lean/ErdosProblems/Erdos257/PaperCompleteR8/FiniteAtomicMajorants.lean:38:finiteAtomicCoefficient_cost",
+      "name": "finiteAtomicCoefficient_cost",
+      "kind": "theorem",
+      "module": "lean/ErdosProblems/Erdos257/PaperCompleteR8/FiniteAtomicMajorants.lean",
+      "line": 38,
+      "signature": "theorem finiteAtomicCoefficient_cost {ι : Type*} (I : Finset ι) (d : ι → ℕ) (w : ι → ℝ) : (∑' a : ℕ, finiteAtomicCoefficient I d w a / (a : ℝ)) = ∑ i ∈ I, w i / (d i : ℝ)",
+      "generated_certificate": false,
+      "claim_ids": []
+    },
+    {
+      "id": "lean/ErdosProblems/Erdos257/PaperCompleteR8/FiniteAtomicMajorants.lean:61:finiteAtomicCoefficient_divisor_sum",
+      "name": "finiteAtomicCoefficient_divisor_sum",
+      "kind": "theorem",
+      "module": "lean/ErdosProblems/Erdos257/PaperCompleteR8/FiniteAtomicMajorants.lean",
+      "line": 61,
+      "signature": "theorem finiteAtomicCoefficient_divisor_sum {ι : Type*} (I : Finset ι) (d : ι → ℕ) (w : ι → ℝ) (n : ℕ) (hn : 0 < n) : (∑ a ∈ n.divisors, finiteAtomicCoefficient I d w a) = ∑ i ∈ I, if d i ∣ n then w i else 0",
+      "generated_certificate": false,
+      "claim_ids": [],
+      "docstring": "The conductor sum is literally the incidence sum of the finite atoms."
+    },
+    {
+      "id": "lean/ErdosProblems/Erdos257/PaperCompleteR8/FiniteAtomicMajorants.lean:77:mean_divisibility_atom",
+      "name": "mean_divisibility_atom",
+      "kind": "theorem",
+      "module": "lean/ErdosProblems/Erdos257/PaperCompleteR8/FiniteAtomicMajorants.lean",
+      "line": 77,
+      "signature": "theorem mean_divisibility_atom (d X : ℕ) (hd : 0 < d) (hX : 0 < X) (hperiod : d ∣ X) (w : ℝ) : (∑ n ∈ Icc 1 X, if d ∣ n then w else 0) / (X : ℝ) = w / (d : ℝ)",
+      "generated_certificate": false,
+      "claim_ids": [],
+      "docstring": "The count of positive multiples at a complete period, including X=d."
+    },
+    {
+      "id": "lean/ErdosProblems/Erdos257/PaperCompleteR8/FiniteAtomicMajorants.lean:90:mean_finite_divisor_atoms",
+      "name": "mean_finite_divisor_atoms",
+      "kind": "theorem",
+      "module": "lean/ErdosProblems/Erdos257/PaperCompleteR8/FiniteAtomicMajorants.lean",
+      "line": 90,
+      "signature": "theorem mean_finite_divisor_atoms {ι : Type*} (I : Finset ι) (d : ι → ℕ) (w : ι → ℝ) (X : ℕ) (hX : 0 < X) (hd : ∀ i ∈ I, 0 < d i) (hperiod : ∀ i ∈ I, d i ∣ X) : (∑ n ∈ Icc 1 X, ∑ i ∈ I, if d i ∣ n then w i else 0) / (X : ℝ) = ∑ i ∈ I, w i / (d i : ℝ)",
+      "generated_certificate": false,
+      "claim_ids": []
     },
     {
       "id": "lean/ErdosProblems/Erdos257/PaperCompleteR8/FiniteCoverLogBudget.lean:19:exists_frame_ge_weight_share",
@@ -288347,6 +289658,69 @@
       "generated_certificate": false,
       "claim_ids": [],
       "docstring": "The common-observation-scale lemma: explicit common L,R,M, not two unrelated existential returns. It also retains divisibility of the witness."
+    },
+    {
+      "id": "lean/ErdosProblems/Erdos257/PaperCompleteR8/FixedExponentCover.lean:15:finiteFractionalMean",
+      "name": "finiteFractionalMean",
+      "kind": "def",
+      "module": "lean/ErdosProblems/Erdos257/PaperCompleteR8/FixedExponentCover.lean",
+      "line": 15,
+      "signature": "def finiteFractionalMean (F : Finset ℕ) (α : ℝ) (X : ℕ) : ℝ",
+      "generated_certificate": false,
+      "claim_ids": []
+    },
+    {
+      "id": "lean/ErdosProblems/Erdos257/PaperCompleteR8/FixedExponentCover.lean:21:HasFixedExponentPositiveCover",
+      "name": "HasFixedExponentPositiveCover",
+      "kind": "def",
+      "module": "lean/ErdosProblems/Erdos257/PaperCompleteR8/FixedExponentCover.lean",
+      "line": 21,
+      "signature": "def HasFixedExponentPositiveCover (A : Set ℕ) (α : ℝ) : Prop",
+      "generated_certificate": false,
+      "claim_ids": [],
+      "docstring": "The old fixed-alpha positive-majorant class with finite *total* cost. The stronger enumeration-weighted hypotheses imply this class, but are not silently substituted for it."
+    },
+    {
+      "id": "lean/ErdosProblems/Erdos257/PaperCompleteR8/FixedExponentCover.lean:25:finiteFractionalMean_le_total_cost",
+      "name": "finiteFractionalMean_le_total_cost",
+      "kind": "theorem",
+      "module": "lean/ErdosProblems/Erdos257/PaperCompleteR8/FixedExponentCover.lean",
+      "line": 25,
+      "signature": "theorem finiteFractionalMean_le_total_cost (C : PositiveCoverData) {α : ℝ} (hα : 0 < α) (hα1 : α ≤ 1) (hconst : ∀ j, C.exponent j = α) (hs : Summable C.cost) (F : Finset ℕ) (hF : (F : Set ℕ) ⊆ C.host) (X : ℕ) (hX : 0 < X) : finiteFractionalMean F α X ≤ ∑' j, C.cost j",
+      "generated_certificate": false,
+      "claim_ids": []
+    },
+    {
+      "id": "lean/ErdosProblems/Erdos257/PaperCompleteR8/FixedExponentCover.lean:64:no_fixed_cover_of_unbounded_fractional_means",
+      "name": "no_fixed_cover_of_unbounded_fractional_means",
+      "kind": "theorem",
+      "module": "lean/ErdosProblems/Erdos257/PaperCompleteR8/FixedExponentCover.lean",
+      "line": 64,
+      "signature": "theorem no_fixed_cover_of_unbounded_fractional_means (A : Set ℕ) (α : ℝ) (hlarge : ∀ T : ℝ, ∃ F : Finset ℕ, (F : Set ℕ) ⊆ A ∧ ∃ X : ℕ, 0 < X ∧ T < finiteFractionalMean F α X) : ¬ HasFixedExponentPositiveCover A α",
+      "generated_certificate": false,
+      "claim_ids": [],
+      "docstring": "Unbounded finite periodic alpha-means exclude every finite-total-cost fixed-alpha cover, independently of all frame choices and overlaps."
+    },
+    {
+      "id": "lean/ErdosProblems/Erdos257/PaperCompleteR8/FixedExponentCover.lean:73:reverseHost_unbounded_fixed_moments",
+      "name": "reverseHost_unbounded_fixed_moments",
+      "kind": "theorem",
+      "module": "lean/ErdosProblems/Erdos257/PaperCompleteR8/FixedExponentCover.lean",
+      "line": 73,
+      "signature": "theorem reverseHost_unbounded_fixed_moments {α : ℝ} (hα : 0 < α) (hα1 : α ≤ 1) : ∀ T : ℝ, ∃ F : Finset ℕ, (F : Set ℕ) ⊆ reverseHost ∧ ∃ X : ℕ, 0 < X ∧ T < finiteFractionalMean F α X",
+      "generated_certificate": false,
+      "claim_ids": []
+    },
+    {
+      "id": "lean/ErdosProblems/Erdos257/PaperCompleteR8/FixedExponentCover.lean:101:reverseHost_no_fixed_exponent_cover",
+      "name": "reverseHost_no_fixed_exponent_cover",
+      "kind": "theorem",
+      "module": "lean/ErdosProblems/Erdos257/PaperCompleteR8/FixedExponentCover.lean",
+      "line": 101,
+      "signature": "theorem reverseHost_no_fixed_exponent_cover {α : ℝ} (hα : 0 < α) (hα1 : α ≤ 1) : ¬ HasFixedExponentPositiveCover reverseHost α",
+      "generated_certificate": false,
+      "claim_ids": [],
+      "docstring": "The same single constructed support excludes every admissible fixed alpha."
     },
     {
       "id": "lean/ErdosProblems/Erdos257/PaperCompleteR8/KernelRecurrence.lean:28:kernelWeight_step",
@@ -288576,6 +289950,141 @@
       "docstring": "Full short-note mixed conclusion conditional on the weighted mean producer. WeightedReturn supplies that producer and the premise-free endpoint."
     },
     {
+      "id": "lean/ErdosProblems/Erdos257/PaperCompleteR8/OldCoverObstruction.lean:18:sq_le_exp_of_nonneg",
+      "name": "sq_le_exp_of_nonneg",
+      "kind": "theorem",
+      "module": "lean/ErdosProblems/Erdos257/PaperCompleteR8/OldCoverObstruction.lean",
+      "line": 18,
+      "signature": "theorem sq_le_exp_of_nonneg {u : ℝ} (hu : 0 ≤ u) : u ^ 2 ≤ Real.exp u",
+      "generated_certificate": false,
+      "claim_ids": [],
+      "docstring": "A convenient elementary estimate; no Taylor-series certificate is needed."
+    },
+    {
+      "id": "lean/ErdosProblems/Erdos257/PaperCompleteR8/OldCoverObstruction.lean:33:oldScalarKernel",
+      "name": "oldScalarKernel",
+      "kind": "def",
+      "module": "lean/ErdosProblems/Erdos257/PaperCompleteR8/OldCoverObstruction.lean",
+      "line": 33,
+      "signature": "def oldScalarKernel (α : ℝ) : ℝ",
+      "generated_certificate": false,
+      "claim_ids": []
+    },
+    {
+      "id": "lean/ErdosProblems/Erdos257/PaperCompleteR8/OldCoverObstruction.lean:35:oldScalarKernel_nonneg",
+      "name": "oldScalarKernel_nonneg",
+      "kind": "theorem",
+      "module": "lean/ErdosProblems/Erdos257/PaperCompleteR8/OldCoverObstruction.lean",
+      "line": 35,
+      "signature": "theorem oldScalarKernel_nonneg (α : ℝ) : 0 ≤ oldScalarKernel α",
+      "generated_certificate": false,
+      "claim_ids": []
+    },
+    {
+      "id": "lean/ErdosProblems/Erdos257/PaperCompleteR8/OldCoverObstruction.lean:40:half_log_sq_le_old_scalar_cost",
+      "name": "half_log_sq_le_old_scalar_cost",
+      "kind": "theorem",
+      "module": "lean/ErdosProblems/Erdos257/PaperCompleteR8/OldCoverObstruction.lean",
+      "line": 40,
+      "signature": "theorem half_log_sq_le_old_scalar_cost {t α : ℝ} (ht : 1 ≤ t) (hα : 0 < α) (hα1 : α ≤ 1) : (Real.log t) ^ 2 / 2 ≤ t ^ α * oldScalarKernel α",
+      "generated_certificate": false,
+      "claim_ids": [],
+      "docstring": "The paper's constant 1/2 is retained, although the elementary estimate used here also permits a stronger constant."
+    },
+    {
+      "id": "lean/ErdosProblems/Erdos257/PaperCompleteR8/OldCoverObstruction.lean:63:countable_cover_scalar_kernel_mean_le_cost",
+      "name": "countable_cover_scalar_kernel_mean_le_cost",
+      "kind": "theorem",
+      "module": "lean/ErdosProblems/Erdos257/PaperCompleteR8/OldCoverObstruction.lean",
+      "line": 63,
+      "signature": "theorem countable_cover_scalar_kernel_mean_le_cost (φ : ℕ → ℝ) (k : ℝ → ℝ) (hφ0 : φ 0 = 0) (hk : ∀ α, 0 < α → α ≤ 1 → 0 ≤ k α) (hscalar : ∀ f : ℕ, f ≠ 0 → ∀ α, 0 < α → α ≤ 1 → φ f ≤ (f : ℝ) ^ α * k α) (F : Finset ℕ) (G : ℕ → Finset ℕ) (η α : ℕ → ℝ) (c : ℕ → ℕ → ℝ) (X : ℕ) (hX : 0 < X) (hη : HasSum η 1) (hηpos : ∀ j, 0 < η j) (hα : ∀ j, 0 < α j ∧ α j ≤ 1) (hc : ∀ j d, 0 < d → 0 ≤ c j d) (hcolumn : ∀ j, Summable (fun d : ℕ => c j d / (d : ℝ))) (hcover : ∀ a ∈ F, ∃ j, a ∈ G j) (hmaj : ∀ j n, 0 < n → (((G j).filter (fun a => a ∣ n)).card : ℝ) ^ α j ≤ ∑ d ∈ n.divisors, c j d) (hcost : Summable (fun j => (∑' d : ℕ, c j d / (d : ℝ)) / (η j ^ α j) * k (α j))) : (∑ n ∈ Icc 1 X, φ ((F.filter (fun a => a ∣ n)).card)) / X ≤",
+      "generated_certificate": false,
+      "claim_ids": [],
+      "docstring": "A general scalar comparison may be averaged through a countable cover. The scalar premise is local and is proved explicitly for the old kernel below."
+    },
+    {
+      "id": "lean/ErdosProblems/Erdos257/PaperCompleteR8/OldCoverObstruction.lean:149:_root_.ErdosProblems.Erdos257.PaperCompleteR7.PositiveCoverData.oldCostTerm",
+      "name": "_root_.ErdosProblems.Erdos257.PaperCompleteR7.PositiveCoverData.oldCostTerm",
+      "kind": "def",
+      "module": "lean/ErdosProblems/Erdos257/PaperCompleteR8/OldCoverObstruction.lean",
+      "line": 149,
+      "signature": "def _root_.ErdosProblems.Erdos257.PaperCompleteR7.PositiveCoverData.oldCostTerm (C : PositiveCoverData) (j : ℕ) : ℝ",
+      "generated_certificate": false,
+      "claim_ids": [],
+      "docstring": "The exact historical cost, indexed by j+1."
+    },
+    {
+      "id": "lean/ErdosProblems/Erdos257/PaperCompleteR8/OldCoverObstruction.lean:153:_root_.ErdosProblems.Erdos257.PaperCompleteR7.PositiveCoverData.OldCostSummable",
+      "name": "_root_.ErdosProblems.Erdos257.PaperCompleteR7.PositiveCoverData.OldCostSummable",
+      "kind": "def",
+      "module": "lean/ErdosProblems/Erdos257/PaperCompleteR8/OldCoverObstruction.lean",
+      "line": 153,
+      "signature": "def _root_.ErdosProblems.Erdos257.PaperCompleteR7.PositiveCoverData.OldCostSummable (C : PositiveCoverData) : Prop",
+      "generated_certificate": false,
+      "claim_ids": []
+    },
+    {
+      "id": "lean/ErdosProblems/Erdos257/PaperCompleteR8/OldCoverObstruction.lean:156:HasOldPositiveCover",
+      "name": "HasOldPositiveCover",
+      "kind": "def",
+      "module": "lean/ErdosProblems/Erdos257/PaperCompleteR8/OldCoverObstruction.lean",
+      "line": 156,
+      "signature": "def HasOldPositiveCover (A : Set ℕ) : Prop",
+      "generated_certificate": false,
+      "claim_ids": []
+    },
+    {
+      "id": "lean/ErdosProblems/Erdos257/PaperCompleteR8/OldCoverObstruction.lean:159:finiteLogSquareMean",
+      "name": "finiteLogSquareMean",
+      "kind": "def",
+      "module": "lean/ErdosProblems/Erdos257/PaperCompleteR8/OldCoverObstruction.lean",
+      "line": 159,
+      "signature": "def finiteLogSquareMean (F : Finset ℕ) (X : ℕ) : ℝ",
+      "generated_certificate": false,
+      "claim_ids": []
+    },
+    {
+      "id": "lean/ErdosProblems/Erdos257/PaperCompleteR8/OldCoverObstruction.lean:162:geometric_weight_inverse_rpow",
+      "name": "geometric_weight_inverse_rpow",
+      "kind": "theorem",
+      "module": "lean/ErdosProblems/Erdos257/PaperCompleteR8/OldCoverObstruction.lean",
+      "line": 162,
+      "signature": "theorem geometric_weight_inverse_rpow (j : ℕ) (α : ℝ) : (coverThreshold 1 j ^ α)⁻¹ = (2 : ℝ) ^ (((j + 1 : ℕ) : ℝ) * α)",
+      "generated_certificate": false,
+      "claim_ids": []
+    },
+    {
+      "id": "lean/ErdosProblems/Erdos257/PaperCompleteR8/OldCoverObstruction.lean:168:oldCostTerm_eq_kernel",
+      "name": "oldCostTerm_eq_kernel",
+      "kind": "theorem",
+      "module": "lean/ErdosProblems/Erdos257/PaperCompleteR8/OldCoverObstruction.lean",
+      "line": 168,
+      "signature": "theorem oldCostTerm_eq_kernel (C : PositiveCoverData) (j : ℕ) : C.oldCostTerm j = C.cost j / (coverThreshold 1 j ^ C.exponent j) * oldScalarKernel (C.exponent j)",
+      "generated_certificate": false,
+      "claim_ids": []
+    },
+    {
+      "id": "lean/ErdosProblems/Erdos257/PaperCompleteR8/OldCoverObstruction.lean:174:finiteLogSquareMean_le_old_cost",
+      "name": "finiteLogSquareMean_le_old_cost",
+      "kind": "theorem",
+      "module": "lean/ErdosProblems/Erdos257/PaperCompleteR8/OldCoverObstruction.lean",
+      "line": 174,
+      "signature": "theorem finiteLogSquareMean_le_old_cost (C : PositiveCoverData) (hC : C.OldCostSummable) (F : Finset ℕ) (hF : (F : Set ℕ) ⊆ C.host) (X : ℕ) (hX : 0 < X) : finiteLogSquareMean F X ≤ ∑' j, C.oldCostTerm j",
+      "generated_certificate": false,
+      "claim_ids": []
+    },
+    {
+      "id": "lean/ErdosProblems/Erdos257/PaperCompleteR8/OldCoverObstruction.lean:197:no_old_cover_of_unbounded_logSquare_means",
+      "name": "no_old_cover_of_unbounded_logSquare_means",
+      "kind": "theorem",
+      "module": "lean/ErdosProblems/Erdos257/PaperCompleteR8/OldCoverObstruction.lean",
+      "line": 197,
+      "signature": "theorem no_old_cover_of_unbounded_logSquare_means (A : Set ℕ) (hlarge : ∀ R : ℝ, ∃ F : Finset ℕ, (F : Set ℕ) ⊆ A ∧ ∃ X : ℕ, 0 < X ∧ R < finiteLogSquareMean F X) : ¬ HasOldPositiveCover A",
+      "generated_certificate": false,
+      "claim_ids": [],
+      "docstring": "Every old variable-exponent cover is excluded, not just the displayed one."
+    },
+    {
       "id": "lean/ErdosProblems/Erdos257/PaperCompleteR8/OptimizedCoverBudget.lean:14:LogBudgetCover",
       "name": "LogBudgetCover",
       "kind": "structure",
@@ -288658,6 +290167,184 @@
       "generated_certificate": false,
       "claim_ids": [],
       "docstring": "Unbounded finite logarithmic means exclude every finite-cost positive cover."
+    },
+    {
+      "id": "lean/ErdosProblems/Erdos257/PaperCompleteR8/OptimizedCubeCost.lean:14:exponentFromIncrement",
+      "name": "exponentFromIncrement",
+      "kind": "def",
+      "module": "lean/ErdosProblems/Erdos257/PaperCompleteR8/OptimizedCubeCost.lean",
+      "line": 14,
+      "signature": "def exponentFromIncrement (z : ℝ) : ℝ",
+      "generated_certificate": false,
+      "claim_ids": []
+    },
+    {
+      "id": "lean/ErdosProblems/Erdos257/PaperCompleteR8/OptimizedCubeCost.lean:16:exponentFromIncrement_bounds",
+      "name": "exponentFromIncrement_bounds",
+      "kind": "theorem",
+      "module": "lean/ErdosProblems/Erdos257/PaperCompleteR8/OptimizedCubeCost.lean",
+      "line": 16,
+      "signature": "theorem exponentFromIncrement_bounds {z : ℝ} (hz : 0 < z) (hz1 : z ≤ 1) : 0 < exponentFromIncrement z ∧ exponentFromIncrement z ≤ 1",
+      "generated_certificate": false,
+      "claim_ids": []
+    },
+    {
+      "id": "lean/ErdosProblems/Erdos257/PaperCompleteR8/OptimizedCubeCost.lean:25:two_rpow_exponentFromIncrement",
+      "name": "two_rpow_exponentFromIncrement",
+      "kind": "theorem",
+      "module": "lean/ErdosProblems/Erdos257/PaperCompleteR8/OptimizedCubeCost.lean",
+      "line": 25,
+      "signature": "theorem two_rpow_exponentFromIncrement {z : ℝ} (hz : 0 < z) : (2 : ℝ) ^ exponentFromIncrement z = 1 + z",
+      "generated_certificate": false,
+      "claim_ids": []
+    },
+    {
+      "id": "lean/ErdosProblems/Erdos257/PaperCompleteR8/OptimizedCubeCost.lean:34:cubePrimeRank_cast",
+      "name": "cubePrimeRank_cast",
+      "kind": "theorem",
+      "module": "lean/ErdosProblems/Erdos257/PaperCompleteR8/OptimizedCubeCost.lean",
+      "line": 34,
+      "signature": "theorem cubePrimeRank_cast (q : ℕ) (P : Finset ℕ) (n : ℕ) : (cubePrimeRank q P n : ℝ) = ∑ p ∈ P, if q * p ∣ n then (1 : ℝ) else 0",
+      "generated_certificate": false,
+      "claim_ids": []
+    },
+    {
+      "id": "lean/ErdosProblems/Erdos257/PaperCompleteR8/OptimizedCubeCost.lean:40:cubePrimeRank_mean",
+      "name": "cubePrimeRank_mean",
+      "kind": "theorem",
+      "module": "lean/ErdosProblems/Erdos257/PaperCompleteR8/OptimizedCubeCost.lean",
+      "line": 40,
+      "signature": "theorem cubePrimeRank_mean (q : ℕ) (P : Finset ℕ) (hq : 0 < q) (hP : ∀ p ∈ P, Nat.Prime p) : (∑ n ∈ Icc 1 (q * P.prod id), (cubePrimeRank q P n : ℝ)) / (q * P.prod id : ℕ) = primeReciprocalMass P / (q : ℝ)",
+      "generated_certificate": false,
+      "claim_ids": []
+    },
+    {
+      "id": "lean/ErdosProblems/Erdos257/PaperCompleteR8/OptimizedCubeCost.lean:60:cube_gauge_rank_lower",
+      "name": "cube_gauge_rank_lower",
+      "kind": "theorem",
+      "module": "lean/ErdosProblems/Erdos257/PaperCompleteR8/OptimizedCubeCost.lean",
+      "line": 60,
+      "signature": "theorem cube_gauge_rank_lower (q : ℕ) (P : Finset ℕ) (n : ℕ) (hq : 0 < q) (hP : ∀ p ∈ P, Nat.Prime p) (hn : 0 < n) : Real.exp 1 * ((cubePrimeRank q P n : ℝ) - (if q ∣ n then 1 else 0)) ≤ coverGauge (((divisorCube q P).filter (fun a => a ∣ n)).card : ℝ)",
+      "generated_certificate": false,
+      "claim_ids": [],
+      "docstring": "A pointwise lower bound with the correct off-q zero term."
+    },
+    {
+      "id": "lean/ErdosProblems/Erdos257/PaperCompleteR8/OptimizedCubeCost.lean:78:cube_gauge_mean_lower",
+      "name": "cube_gauge_mean_lower",
+      "kind": "theorem",
+      "module": "lean/ErdosProblems/Erdos257/PaperCompleteR8/OptimizedCubeCost.lean",
+      "line": 78,
+      "signature": "theorem cube_gauge_mean_lower (q : ℕ) (P : Finset ℕ) (hq : 0 < q) (hP : ∀ p ∈ P, Nat.Prime p) : Real.exp 1 * (primeReciprocalMass P - 1) / (q : ℝ) ≤ finiteGaugeMean (divisorCube q P) (q * P.prod id)",
+      "generated_certificate": false,
+      "claim_ids": []
+    },
+    {
+      "id": "lean/ErdosProblems/Erdos257/PaperCompleteR8/OptimizedCubeCost.lean:104:cube_every_cover_cost_lower",
+      "name": "cube_every_cover_cost_lower",
+      "kind": "theorem",
+      "module": "lean/ErdosProblems/Erdos257/PaperCompleteR8/OptimizedCubeCost.lean",
+      "line": 104,
+      "signature": "theorem cube_every_cover_cost_lower (q : ℕ) (P : Finset ℕ) (hq : 0 < q) (hP : ∀ p ∈ P, Nat.Prime p) (C : LogBudgetCover (divisorCube q P : Set ℕ)) : max 0 (Real.exp 1 * (primeReciprocalMass P - 1) / (q : ℝ)) ≤ C.cost",
+      "generated_certificate": false,
+      "claim_ids": [],
+      "docstring": "The exact lower bound applies to every actual countable cover."
+    },
+    {
+      "id": "lean/ErdosProblems/Erdos257/PaperCompleteR8/OptimizedCubeCost.lean:113:optimized_cube_cost_lower",
+      "name": "optimized_cube_cost_lower",
+      "kind": "theorem",
+      "module": "lean/ErdosProblems/Erdos257/PaperCompleteR8/OptimizedCubeCost.lean",
+      "line": 113,
+      "signature": "theorem optimized_cube_cost_lower (q : ℕ) (P : Finset ℕ) (hq : 0 < q) (hP : ∀ p ∈ P, Nat.Prime p) : max 0 (Real.exp 1 * (primeReciprocalMass P - 1) / (q : ℝ)) ≤ optimizedLogCoverCost (divisorCube q P : Set ℕ)",
+      "generated_certificate": false,
+      "claim_ids": []
+    },
+    {
+      "id": "lean/ErdosProblems/Erdos257/PaperCompleteR8/OptimizedCubeCost.lean:125:optimized_cube_cost_le_increment",
+      "name": "optimized_cube_cost_le_increment",
+      "kind": "theorem",
+      "module": "lean/ErdosProblems/Erdos257/PaperCompleteR8/OptimizedCubeCost.lean",
+      "line": 125,
+      "signature": "theorem optimized_cube_cost_le_increment (q : ℕ) (P : Finset ℕ) (hq : 0 < q) (hP : ∀ p ∈ P, Nat.Prime p) (z : ℝ) (hz : 0 < z) (hz1 : z ≤ 1) : optimizedLogCoverCost (divisorCube q P : Set ℕ) ≤ Real.exp (z * primeReciprocalMass P) / ((q : ℝ) * z)",
+      "generated_certificate": false,
+      "claim_ids": [],
+      "docstring": "General upper bound for every admissible increment 0<z<=1."
+    },
+    {
+      "id": "lean/ErdosProblems/Erdos257/PaperCompleteR8/OptimizedCubeCost.lean:143:optimized_cube_cost_le_exp",
+      "name": "optimized_cube_cost_le_exp",
+      "kind": "theorem",
+      "module": "lean/ErdosProblems/Erdos257/PaperCompleteR8/OptimizedCubeCost.lean",
+      "line": 143,
+      "signature": "theorem optimized_cube_cost_le_exp (q : ℕ) (P : Finset ℕ) (hq : 0 < q) (hP : ∀ p ∈ P, Nat.Prime p) : optimizedLogCoverCost (divisorCube q P : Set ℕ) ≤ Real.exp (primeReciprocalMass P) / (q : ℝ)",
+      "generated_certificate": false,
+      "claim_ids": [],
+      "docstring": "The universally valid bound, including S<1 and P empty."
+    },
+    {
+      "id": "lean/ErdosProblems/Erdos257/PaperCompleteR8/OptimizedCubeCost.lean:150:optimized_cube_cost_two_sided",
+      "name": "optimized_cube_cost_two_sided",
+      "kind": "theorem",
+      "module": "lean/ErdosProblems/Erdos257/PaperCompleteR8/OptimizedCubeCost.lean",
+      "line": 150,
+      "signature": "theorem optimized_cube_cost_two_sided (q : ℕ) (P : Finset ℕ) (hq : 0 < q) (hP : ∀ p ∈ P, Nat.Prime p) (hS : 1 ≤ primeReciprocalMass P) : max 0 (Real.exp 1 * (primeReciprocalMass P - 1) / (q : ℝ)) ≤ optimizedLogCoverCost (divisorCube q P : Set ℕ) ∧ optimizedLogCoverCost (divisorCube q P : Set ℕ) ≤ Real.exp 1 * primeReciprocalMass P / (q : ℝ)",
+      "generated_certificate": false,
+      "claim_ids": [],
+      "docstring": "Corrected optimised theorem: the S>=1 hypothesis is essential."
+    },
+    {
+      "id": "lean/ErdosProblems/Erdos257/PaperCompleteR8/OptimizedCubeCost.lean:167:factor_mem_divisorCube",
+      "name": "factor_mem_divisorCube",
+      "kind": "theorem",
+      "module": "lean/ErdosProblems/Erdos257/PaperCompleteR8/OptimizedCubeCost.lean",
+      "line": 167,
+      "signature": "theorem factor_mem_divisorCube (q : ℕ) (P : Finset ℕ) (hP : ∀ p ∈ P, Nat.Prime p) : q ∈ divisorCube q P",
+      "generated_certificate": false,
+      "claim_ids": [],
+      "docstring": "A nonempty cube contains its mandatory factor q."
+    },
+    {
+      "id": "lean/ErdosProblems/Erdos257/PaperCompleteR8/OptimizedCubeCost.lean:173:finiteGaugeMean_singleton",
+      "name": "finiteGaugeMean_singleton",
+      "kind": "theorem",
+      "module": "lean/ErdosProblems/Erdos257/PaperCompleteR8/OptimizedCubeCost.lean",
+      "line": 173,
+      "signature": "theorem finiteGaugeMean_singleton (q : ℕ) (hq : 0 < q) : finiteGaugeMean {q} q = 1 / (q : ℝ)",
+      "generated_certificate": false,
+      "claim_ids": []
+    },
+    {
+      "id": "lean/ErdosProblems/Erdos257/PaperCompleteR8/OptimizedCubeCost.lean:188:one_div_factor_le_optimized_cube_cost",
+      "name": "one_div_factor_le_optimized_cube_cost",
+      "kind": "theorem",
+      "module": "lean/ErdosProblems/Erdos257/PaperCompleteR8/OptimizedCubeCost.lean",
+      "line": 188,
+      "signature": "theorem one_div_factor_le_optimized_cube_cost (q : ℕ) (P : Finset ℕ) (hq : 0 < q) (hP : ∀ p ∈ P, Nat.Prime p) : 1 / (q : ℝ) ≤ optimizedLogCoverCost (divisorCube q P : Set ℕ)",
+      "generated_certificate": false,
+      "claim_ids": []
+    },
+    {
+      "id": "lean/ErdosProblems/Erdos257/PaperCompleteR8/OptimizedCubeCost.lean:202:optimized_cube_cost_empty",
+      "name": "optimized_cube_cost_empty",
+      "kind": "theorem",
+      "module": "lean/ErdosProblems/Erdos257/PaperCompleteR8/OptimizedCubeCost.lean",
+      "line": 202,
+      "signature": "theorem optimized_cube_cost_empty (q : ℕ) (hq : 0 < q) : optimizedLogCoverCost (divisorCube q ∅ : Set ℕ) = 1 / (q : ℝ)",
+      "generated_certificate": false,
+      "claim_ids": [],
+      "docstring": "The empty prime cube is a singleton, and its infimum is exactly 1/q."
+    },
+    {
+      "id": "lean/ErdosProblems/Erdos257/PaperCompleteR8/OptimizedCubeCost.lean:209:unrestricted_linear_cube_upper_bound_false",
+      "name": "unrestricted_linear_cube_upper_bound_false",
+      "kind": "theorem",
+      "module": "lean/ErdosProblems/Erdos257/PaperCompleteR8/OptimizedCubeCost.lean",
+      "line": 209,
+      "signature": "theorem unrestricted_linear_cube_upper_bound_false : ¬ (∀ (q : ℕ) (P : Finset ℕ), 0 < q → (∀ p ∈ P, Nat.Prime p) → optimizedLogCoverCost (divisorCube q P : Set ℕ) ≤ Real.exp 1 * primeReciprocalMass P / (q : ℝ))",
+      "generated_certificate": false,
+      "claim_ids": [],
+      "docstring": "Exact counterexample to the unqualified e*S/q assertion."
     },
     {
       "id": "lean/ErdosProblems/Erdos257/PaperCompleteR8/OrbitBound.lean:22:sum_kernelWeight_gcdOrbit",
@@ -288857,6 +290544,828 @@
       "docstring": "FULL short-note `thm:variable-fractional-cover`, including all bases and all infinite thinnings."
     },
     {
+      "id": "lean/ErdosProblems/Erdos257/PaperCompleteR8/PositiveWeightPadding.lean:18:paddedWeight",
+      "name": "paddedWeight",
+      "kind": "def",
+      "module": "lean/ErdosProblems/Erdos257/PaperCompleteR8/PositiveWeightPadding.lean",
+      "line": 18,
+      "signature": "def paddedWeight (ε : ℝ) : ℕ → ℝ | 0 => 1 - ε | j + 1 => coverThreshold ε j @[simp] theorem paddedWeight_zero (ε : ℝ) : paddedWeight ε 0 = 1 - ε",
+      "generated_certificate": false,
+      "claim_ids": [],
+      "docstring": "One genuine frame, with the remaining probability spread over empty frames."
+    },
+    {
+      "id": "lean/ErdosProblems/Erdos257/PaperCompleteR8/PositiveWeightPadding.lean:22:paddedWeight_zero",
+      "name": "paddedWeight_zero",
+      "kind": "theorem",
+      "module": "lean/ErdosProblems/Erdos257/PaperCompleteR8/PositiveWeightPadding.lean",
+      "line": 22,
+      "signature": "@[simp] theorem paddedWeight_zero (ε : ℝ) : paddedWeight ε 0 = 1 - ε",
+      "generated_certificate": false,
+      "claim_ids": []
+    },
+    {
+      "id": "lean/ErdosProblems/Erdos257/PaperCompleteR8/PositiveWeightPadding.lean:23:paddedWeight_succ",
+      "name": "paddedWeight_succ",
+      "kind": "theorem",
+      "module": "lean/ErdosProblems/Erdos257/PaperCompleteR8/PositiveWeightPadding.lean",
+      "line": 23,
+      "signature": "@[simp] theorem paddedWeight_succ (ε : ℝ) (j : ℕ) : paddedWeight ε (j + 1) = coverThreshold ε j",
+      "generated_certificate": false,
+      "claim_ids": []
+    },
+    {
+      "id": "lean/ErdosProblems/Erdos257/PaperCompleteR8/PositiveWeightPadding.lean:26:paddedWeight_positive",
+      "name": "paddedWeight_positive",
+      "kind": "theorem",
+      "module": "lean/ErdosProblems/Erdos257/PaperCompleteR8/PositiveWeightPadding.lean",
+      "line": 26,
+      "signature": "theorem paddedWeight_positive {ε : ℝ} (hε : 0 < ε) (hε1 : ε < 1) : ∀ j, 0 < paddedWeight ε j | 0 => sub_pos.mpr hε1 | j + 1 => coverThreshold_pos hε j theorem paddedWeight_hasSum (ε : ℝ) : HasSum (paddedWeight ε) 1",
+      "generated_certificate": false,
+      "claim_ids": []
+    },
+    {
+      "id": "lean/ErdosProblems/Erdos257/PaperCompleteR8/PositiveWeightPadding.lean:31:paddedWeight_hasSum",
+      "name": "paddedWeight_hasSum",
+      "kind": "theorem",
+      "module": "lean/ErdosProblems/Erdos257/PaperCompleteR8/PositiveWeightPadding.lean",
+      "line": 31,
+      "signature": "theorem paddedWeight_hasSum (ε : ℝ) : HasSum (paddedWeight ε) 1",
+      "generated_certificate": false,
+      "claim_ids": []
+    },
+    {
+      "id": "lean/ErdosProblems/Erdos257/PaperCompleteR8/PositiveWeightPadding.lean:39:summable_zero_supported",
+      "name": "summable_zero_supported",
+      "kind": "theorem",
+      "module": "lean/ErdosProblems/Erdos257/PaperCompleteR8/PositiveWeightPadding.lean",
+      "line": 39,
+      "signature": "theorem summable_zero_supported (f : ℕ → ℝ) (hf : ∀ j, f (j + 1) = 0) : Summable f",
+      "generated_certificate": false,
+      "claim_ids": [],
+      "docstring": "A summable sequence supported on its zeroth term."
+    },
+    {
+      "id": "lean/ErdosProblems/Erdos257/PaperCompleteR8/PositiveWeightPadding.lean:46:tsum_zero_supported",
+      "name": "tsum_zero_supported",
+      "kind": "theorem",
+      "module": "lean/ErdosProblems/Erdos257/PaperCompleteR8/PositiveWeightPadding.lean",
+      "line": 46,
+      "signature": "theorem tsum_zero_supported (f : ℕ → ℝ) (hf : ∀ j, f (j + 1) = 0) : (∑' j, f j) = f 0",
+      "generated_certificate": false,
+      "claim_ids": []
+    },
+    {
+      "id": "lean/ErdosProblems/Erdos257/PaperCompleteR8/PositiveWeightPadding.lean:53:FiniteCoverFrame",
+      "name": "FiniteCoverFrame",
+      "kind": "structure",
+      "module": "lean/ErdosProblems/Erdos257/PaperCompleteR8/PositiveWeightPadding.lean",
+      "line": 53,
+      "signature": "structure FiniteCoverFrame",
+      "generated_certificate": false,
+      "claim_ids": [],
+      "docstring": "Literal finite-frame data, before the countable positive padding."
+    },
+    {
+      "id": "lean/ErdosProblems/Erdos257/PaperCompleteR8/PositiveWeightPadding.lean:66:FiniteCoverFrame.cost",
+      "name": "FiniteCoverFrame.cost",
+      "kind": "def",
+      "module": "lean/ErdosProblems/Erdos257/PaperCompleteR8/PositiveWeightPadding.lean",
+      "line": 66,
+      "signature": "def FiniteCoverFrame.cost (F : FiniteCoverFrame) : ℝ",
+      "generated_certificate": false,
+      "claim_ids": []
+    },
+    {
+      "id": "lean/ErdosProblems/Erdos257/PaperCompleteR8/PositiveWeightPadding.lean:69:FiniteCoverFrame.scalarCost",
+      "name": "FiniteCoverFrame.scalarCost",
+      "kind": "def",
+      "module": "lean/ErdosProblems/Erdos257/PaperCompleteR8/PositiveWeightPadding.lean",
+      "line": 69,
+      "signature": "def FiniteCoverFrame.scalarCost (F : FiniteCoverFrame) : ℝ",
+      "generated_certificate": false,
+      "claim_ids": []
+    },
+    {
+      "id": "lean/ErdosProblems/Erdos257/PaperCompleteR8/PositiveWeightPadding.lean:72:FiniteCoverFrame.cost_nonneg",
+      "name": "FiniteCoverFrame.cost_nonneg",
+      "kind": "theorem",
+      "module": "lean/ErdosProblems/Erdos257/PaperCompleteR8/PositiveWeightPadding.lean",
+      "line": 72,
+      "signature": "theorem FiniteCoverFrame.cost_nonneg (F : FiniteCoverFrame) : 0 ≤ F.cost",
+      "generated_certificate": false,
+      "claim_ids": []
+    },
+    {
+      "id": "lean/ErdosProblems/Erdos257/PaperCompleteR8/PositiveWeightPadding.lean:80:FiniteCoverFrame.padded",
+      "name": "FiniteCoverFrame.padded",
+      "kind": "def",
+      "module": "lean/ErdosProblems/Erdos257/PaperCompleteR8/PositiveWeightPadding.lean",
+      "line": 80,
+      "signature": "def FiniteCoverFrame.padded (F : FiniteCoverFrame) (ε : ℝ) (hε : 0 < ε) (hε1 : ε < 1) : LogBudgetCover (F.support : Set ℕ)",
+      "generated_certificate": false,
+      "claim_ids": [],
+      "docstring": "No zero dummy weights and no unproved covering-property field."
+    },
+    {
+      "id": "lean/ErdosProblems/Erdos257/PaperCompleteR8/PositiveWeightPadding.lean:117:FiniteCoverFrame.padded_cost",
+      "name": "FiniteCoverFrame.padded_cost",
+      "kind": "theorem",
+      "module": "lean/ErdosProblems/Erdos257/PaperCompleteR8/PositiveWeightPadding.lean",
+      "line": 117,
+      "signature": "theorem FiniteCoverFrame.padded_cost (F : FiniteCoverFrame) (ε : ℝ) (hε : 0 < ε) (hε1 : ε < 1) : (F.padded ε hε hε1).cost = F.cost / ((1 - ε) ^ F.exponent) / ((2 : ℝ) ^ F.exponent - 1)",
+      "generated_certificate": false,
+      "claim_ids": [],
+      "docstring": "The precise epsilon penalty, before taking an infimum."
+    },
+    {
+      "id": "lean/ErdosProblems/Erdos257/PaperCompleteR8/PositiveWeightPadding.lean:130:FiniteCoverFrame.cover_nonempty",
+      "name": "FiniteCoverFrame.cover_nonempty",
+      "kind": "theorem",
+      "module": "lean/ErdosProblems/Erdos257/PaperCompleteR8/PositiveWeightPadding.lean",
+      "line": 130,
+      "signature": "theorem FiniteCoverFrame.cover_nonempty (F : FiniteCoverFrame) : Nonempty (LogBudgetCover (F.support : Set ℕ))",
+      "generated_certificate": false,
+      "claim_ids": [],
+      "docstring": "Every literal finite frame has a strictly-positive countable cover."
+    },
+    {
+      "id": "lean/ErdosProblems/Erdos257/PaperCompleteR8/PositiveWeightPadding.lean:134:LogBudgetCover.cost_nonneg",
+      "name": "LogBudgetCover.cost_nonneg",
+      "kind": "theorem",
+      "module": "lean/ErdosProblems/Erdos257/PaperCompleteR8/PositiveWeightPadding.lean",
+      "line": 134,
+      "signature": "theorem LogBudgetCover.cost_nonneg {A : Set ℕ} (C : LogBudgetCover A) : 0 ≤ C.cost",
+      "generated_certificate": false,
+      "claim_ids": []
+    },
+    {
+      "id": "lean/ErdosProblems/Erdos257/PaperCompleteR8/PositiveWeightPadding.lean:149:admissibleLogCoverCosts_bddBelow",
+      "name": "admissibleLogCoverCosts_bddBelow",
+      "kind": "theorem",
+      "module": "lean/ErdosProblems/Erdos257/PaperCompleteR8/PositiveWeightPadding.lean",
+      "line": 149,
+      "signature": "theorem admissibleLogCoverCosts_bddBelow (A : Set ℕ) : BddBelow (admissibleLogCoverCosts A)",
+      "generated_certificate": false,
+      "claim_ids": []
+    },
+    {
+      "id": "lean/ErdosProblems/Erdos257/PaperCompleteR8/PositiveWeightPadding.lean:155:optimizedLogCoverCost_le_cost",
+      "name": "optimizedLogCoverCost_le_cost",
+      "kind": "theorem",
+      "module": "lean/ErdosProblems/Erdos257/PaperCompleteR8/PositiveWeightPadding.lean",
+      "line": 155,
+      "signature": "theorem optimizedLogCoverCost_le_cost {A : Set ℕ} (C : LogBudgetCover A) : optimizedLogCoverCost A ≤ C.cost",
+      "generated_certificate": false,
+      "claim_ids": []
+    },
+    {
+      "id": "lean/ErdosProblems/Erdos257/PaperCompleteR8/PositiveWeightPadding.lean:159:optimizedLogCoverCost_nonneg",
+      "name": "optimizedLogCoverCost_nonneg",
+      "kind": "theorem",
+      "module": "lean/ErdosProblems/Erdos257/PaperCompleteR8/PositiveWeightPadding.lean",
+      "line": 159,
+      "signature": "theorem optimizedLogCoverCost_nonneg {A : Set ℕ} (C : LogBudgetCover A) : 0 ≤ optimizedLogCoverCost A",
+      "generated_certificate": false,
+      "claim_ids": []
+    },
+    {
+      "id": "lean/ErdosProblems/Erdos257/PaperCompleteR8/PositiveWeightPadding.lean:166:FiniteCoverFrame.optimizedCost_le",
+      "name": "FiniteCoverFrame.optimizedCost_le",
+      "kind": "theorem",
+      "module": "lean/ErdosProblems/Erdos257/PaperCompleteR8/PositiveWeightPadding.lean",
+      "line": 166,
+      "signature": "theorem FiniteCoverFrame.optimizedCost_le (F : FiniteCoverFrame) : optimizedLogCoverCost (F.support : Set ℕ) ≤ F.scalarCost",
+      "generated_certificate": false,
+      "claim_ids": [],
+      "docstring": "Pass to the limit through actual admissible positive-weight covers."
+    },
+    {
+      "id": "lean/ErdosProblems/Erdos257/PaperCompleteR8/PrimeHarmonicBlocks.lean:18:exists_subset_mass_between",
+      "name": "exists_subset_mass_between",
+      "kind": "theorem",
+      "module": "lean/ErdosProblems/Erdos257/PaperCompleteR8/PrimeHarmonicBlocks.lean",
+      "line": 18,
+      "signature": "theorem exists_subset_mass_between {ι : Type*} [DecidableEq ι] (S : Finset ι) (f : ι → ℝ) (R : ℝ) (hR : 0 ≤ R) (hf : ∀ a ∈ S, f a ≤ 1) (hS : R ≤ ∑ a ∈ S, f a) : ∃ T ⊆ S, R ≤ ∑ a ∈ T, f a ∧ (∑ a ∈ T, f a) ≤ R + 1",
+      "generated_certificate": false,
+      "claim_ids": [],
+      "docstring": "Nonnegative finite masses with atoms at most one have a threshold subset."
+    },
+    {
+      "id": "lean/ErdosProblems/Erdos257/PaperCompleteR8/PrimeHarmonicBlocks.lean:39:exists_prime_mass_outside",
+      "name": "exists_prime_mass_outside",
+      "kind": "theorem",
+      "module": "lean/ErdosProblems/Erdos257/PaperCompleteR8/PrimeHarmonicBlocks.lean",
+      "line": 39,
+      "signature": "theorem exists_prime_mass_outside (E : Finset Nat.Primes) (R : ℝ) : ∃ S : Finset Nat.Primes, Disjoint S E ∧ R < ∑ p ∈ S, (1 / p : ℝ)",
+      "generated_certificate": false,
+      "claim_ids": [],
+      "docstring": "Removing a finite set does not bound reciprocal-prime finite sums."
+    },
+    {
+      "id": "lean/ErdosProblems/Erdos257/PaperCompleteR8/PrimeHarmonicBlocks.lean:59:exists_odd_prime_harmonic_block",
+      "name": "exists_odd_prime_harmonic_block",
+      "kind": "theorem",
+      "module": "lean/ErdosProblems/Erdos257/PaperCompleteR8/PrimeHarmonicBlocks.lean",
+      "line": 59,
+      "signature": "theorem exists_odd_prime_harmonic_block (B : Finset ℕ) (R : ℝ) (hR : 0 ≤ R) : ∃ P : Finset ℕ, (∀ p ∈ P, Nat.Prime p ∧ 2 < p ∧ p ∉ B) ∧ R ≤ ∑ p ∈ P, (1 : ℝ) / p ∧ (∑ p ∈ P, (1 : ℝ) / p) ≤ R + 1",
+      "generated_certificate": false,
+      "claim_ids": [],
+      "docstring": "Finite odd-prime blocks avoid arbitrary forbidden integers and have controlled mass."
+    },
+    {
+      "id": "lean/ErdosProblems/Erdos257/PaperCompleteR8/PrimeHarmonicBlocks.lean:92:chosenPrimeHarmonicBlock",
+      "name": "chosenPrimeHarmonicBlock",
+      "kind": "def",
+      "module": "lean/ErdosProblems/Erdos257/PaperCompleteR8/PrimeHarmonicBlocks.lean",
+      "line": 92,
+      "signature": "def chosenPrimeHarmonicBlock (B : Finset ℕ) (R : ℝ) (hR : 0 ≤ R) : Finset ℕ",
+      "generated_certificate": false,
+      "claim_ids": []
+    },
+    {
+      "id": "lean/ErdosProblems/Erdos257/PaperCompleteR8/PrimeHarmonicBlocks.lean:95:chosenPrimeHarmonicBlock_spec",
+      "name": "chosenPrimeHarmonicBlock_spec",
+      "kind": "theorem",
+      "module": "lean/ErdosProblems/Erdos257/PaperCompleteR8/PrimeHarmonicBlocks.lean",
+      "line": 95,
+      "signature": "theorem chosenPrimeHarmonicBlock_spec (B : Finset ℕ) (R : ℝ) (hR : 0 ≤ R) : (∀ p ∈ chosenPrimeHarmonicBlock B R hR, Nat.Prime p ∧ 2 < p ∧ p ∉ B) ∧ R ≤ ∑ p ∈ chosenPrimeHarmonicBlock B R hR, (1 : ℝ) / p ∧ (∑ p ∈ chosenPrimeHarmonicBlock B R hR, (1 : ℝ) / p) ≤ R + 1",
+      "generated_certificate": false,
+      "claim_ids": []
+    },
+    {
+      "id": "lean/ErdosProblems/Erdos257/PaperCompleteR8/PrimeHarmonicBlocks.lean:101:primeBlockForbidden",
+      "name": "primeBlockForbidden",
+      "kind": "def",
+      "module": "lean/ErdosProblems/Erdos257/PaperCompleteR8/PrimeHarmonicBlocks.lean",
+      "line": 101,
+      "signature": "def primeBlockForbidden (R : ℕ → ℝ) (hR : ∀ k, 0 ≤ R k) : ℕ → Finset ℕ | 0 => ∅ | k + 1 => primeBlockForbidden R hR k ∪ chosenPrimeHarmonicBlock (primeBlockForbidden R hR k) (R k) (hR k) def disjointPrimeHarmonicBlock (R : ℕ → ℝ) (hR : ∀ k, 0 ≤ R k) (k : ℕ) : Finset ℕ",
+      "generated_certificate": false,
+      "claim_ids": []
+    },
+    {
+      "id": "lean/ErdosProblems/Erdos257/PaperCompleteR8/PrimeHarmonicBlocks.lean:106:disjointPrimeHarmonicBlock",
+      "name": "disjointPrimeHarmonicBlock",
+      "kind": "def",
+      "module": "lean/ErdosProblems/Erdos257/PaperCompleteR8/PrimeHarmonicBlocks.lean",
+      "line": 106,
+      "signature": "def disjointPrimeHarmonicBlock (R : ℕ → ℝ) (hR : ∀ k, 0 ≤ R k) (k : ℕ) : Finset ℕ",
+      "generated_certificate": false,
+      "claim_ids": []
+    },
+    {
+      "id": "lean/ErdosProblems/Erdos257/PaperCompleteR8/PrimeHarmonicBlocks.lean:109:primeBlockForbidden_mono",
+      "name": "primeBlockForbidden_mono",
+      "kind": "theorem",
+      "module": "lean/ErdosProblems/Erdos257/PaperCompleteR8/PrimeHarmonicBlocks.lean",
+      "line": 109,
+      "signature": "theorem primeBlockForbidden_mono (R : ℕ → ℝ) (hR : ∀ k, 0 ≤ R k) : Monotone (primeBlockForbidden R hR)",
+      "generated_certificate": false,
+      "claim_ids": []
+    },
+    {
+      "id": "lean/ErdosProblems/Erdos257/PaperCompleteR8/PrimeHarmonicBlocks.lean:116:disjointPrimeHarmonicBlocks_spec",
+      "name": "disjointPrimeHarmonicBlocks_spec",
+      "kind": "theorem",
+      "module": "lean/ErdosProblems/Erdos257/PaperCompleteR8/PrimeHarmonicBlocks.lean",
+      "line": 116,
+      "signature": "theorem disjointPrimeHarmonicBlocks_spec (R : ℕ → ℝ) (hR : ∀ k, 0 ≤ R k) : Pairwise (fun k l => Disjoint (disjointPrimeHarmonicBlock R hR k) (disjointPrimeHarmonicBlock R hR l)) ∧ ∀ k, (∀ p ∈ disjointPrimeHarmonicBlock R hR k, Nat.Prime p ∧ 2 < p) ∧ R k ≤ ∑ p ∈ disjointPrimeHarmonicBlock R hR k, (1 : ℝ) / p ∧ (∑ p ∈ disjointPrimeHarmonicBlock R hR k, (1 : ℝ) / p) ≤ R k + 1",
+      "generated_certificate": false,
+      "claim_ids": [],
+      "docstring": "Actual recursive pairwise disjoint blocks at every prescribed harmonic scale."
+    },
+    {
+      "id": "lean/ErdosProblems/Erdos257/PaperCompleteR8/PrimeHarmonicBlocks.lean:143:exists_separating_prime_blocks",
+      "name": "exists_separating_prime_blocks",
+      "kind": "theorem",
+      "module": "lean/ErdosProblems/Erdos257/PaperCompleteR8/PrimeHarmonicBlocks.lean",
+      "line": 143,
+      "signature": "theorem exists_separating_prime_blocks : ∃ P : ℕ → Finset ℕ, Pairwise (fun k l => Disjoint (P k) (P l)) ∧ ∀ k, (∀ p ∈ P k, Nat.Prime p ∧ 2 < p) ∧ (2 : ℝ) ^ k ≤ ∑ p ∈ P k, (1 : ℝ) / p ∧ (∑ p ∈ P k, (1 : ℝ) / p) ≤ (2 : ℝ) ^ k + 1",
+      "generated_certificate": false,
+      "claim_ids": [],
+      "docstring": "The exact harmonic scales of the A_W construction, with row index shifted by two."
+    },
+    {
+      "id": "lean/ErdosProblems/Erdos257/PaperCompleteR8/ReverseStrengthenedHost.lean:25:reverseScale",
+      "name": "reverseScale",
+      "kind": "def",
+      "module": "lean/ErdosProblems/Erdos257/PaperCompleteR8/ReverseStrengthenedHost.lean",
+      "line": 25,
+      "signature": "def reverseScale (j : ℕ) : ℕ",
+      "generated_certificate": false,
+      "claim_ids": []
+    },
+    {
+      "id": "lean/ErdosProblems/Erdos257/PaperCompleteR8/ReverseStrengthenedHost.lean:28:ReverseRow",
+      "name": "ReverseRow",
+      "kind": "structure",
+      "module": "lean/ErdosProblems/Erdos257/PaperCompleteR8/ReverseStrengthenedHost.lean",
+      "line": 28,
+      "signature": "structure ReverseRow (j : ℕ)",
+      "generated_certificate": false,
+      "claim_ids": [],
+      "docstring": "Arithmetic row data only: no analytic endpoint occurs among the fields."
+    },
+    {
+      "id": "lean/ErdosProblems/Erdos257/PaperCompleteR8/ReverseStrengthenedHost.lean:39:exists_reverseRow",
+      "name": "exists_reverseRow",
+      "kind": "theorem",
+      "module": "lean/ErdosProblems/Erdos257/PaperCompleteR8/ReverseStrengthenedHost.lean",
+      "line": 39,
+      "signature": "theorem exists_reverseRow (j : ℕ) : Nonempty (ReverseRow j)",
+      "generated_certificate": false,
+      "claim_ids": [],
+      "docstring": "Every row is supplied by Euclid's prime theorem and the checked finite harmonic-block theorem. No cover or obstruction is supplied as a premise."
+    },
+    {
+      "id": "lean/ErdosProblems/Erdos257/PaperCompleteR8/ReverseStrengthenedHost.lean:50:reverseRow",
+      "name": "reverseRow",
+      "kind": "def",
+      "module": "lean/ErdosProblems/Erdos257/PaperCompleteR8/ReverseStrengthenedHost.lean",
+      "line": 50,
+      "signature": "def reverseRow (j : ℕ) : ReverseRow j",
+      "generated_certificate": false,
+      "claim_ids": []
+    },
+    {
+      "id": "lean/ErdosProblems/Erdos257/PaperCompleteR8/ReverseStrengthenedHost.lean:52:ReverseRow.scale_le_sqrt",
+      "name": "ReverseRow.scale_le_sqrt",
+      "kind": "theorem",
+      "module": "lean/ErdosProblems/Erdos257/PaperCompleteR8/ReverseStrengthenedHost.lean",
+      "line": 52,
+      "signature": "theorem ReverseRow.scale_le_sqrt {j : ℕ} (R : ReverseRow j) : (reverseScale j : ℝ) ≤ Real.sqrt R.q",
+      "generated_certificate": false,
+      "claim_ids": []
+    },
+    {
+      "id": "lean/ErdosProblems/Erdos257/PaperCompleteR8/ReverseStrengthenedHost.lean:60:reverseScale_ge_index",
+      "name": "reverseScale_ge_index",
+      "kind": "theorem",
+      "module": "lean/ErdosProblems/Erdos257/PaperCompleteR8/ReverseStrengthenedHost.lean",
+      "line": 60,
+      "signature": "theorem reverseScale_ge_index (j : ℕ) : j + 2 ≤ reverseScale j",
+      "generated_certificate": false,
+      "claim_ids": []
+    },
+    {
+      "id": "lean/ErdosProblems/Erdos257/PaperCompleteR8/ReverseStrengthenedHost.lean:65:ReverseRow.q_gt_index",
+      "name": "ReverseRow.q_gt_index",
+      "kind": "theorem",
+      "module": "lean/ErdosProblems/Erdos257/PaperCompleteR8/ReverseStrengthenedHost.lean",
+      "line": 65,
+      "signature": "theorem ReverseRow.q_gt_index {j : ℕ} (R : ReverseRow j) : j + 1 < R.q",
+      "generated_certificate": false,
+      "claim_ids": []
+    },
+    {
+      "id": "lean/ErdosProblems/Erdos257/PaperCompleteR8/ReverseStrengthenedHost.lean:70:ReverseRow.sqrt_ge_one",
+      "name": "ReverseRow.sqrt_ge_one",
+      "kind": "theorem",
+      "module": "lean/ErdosProblems/Erdos257/PaperCompleteR8/ReverseStrengthenedHost.lean",
+      "line": 70,
+      "signature": "theorem ReverseRow.sqrt_ge_one {j : ℕ} (R : ReverseRow j) : 1 ≤ Real.sqrt R.q",
+      "generated_certificate": false,
+      "claim_ids": []
+    },
+    {
+      "id": "lean/ErdosProblems/Erdos257/PaperCompleteR8/ReverseStrengthenedHost.lean:76:ReverseRow.mass_ge_index",
+      "name": "ReverseRow.mass_ge_index",
+      "kind": "theorem",
+      "module": "lean/ErdosProblems/Erdos257/PaperCompleteR8/ReverseStrengthenedHost.lean",
+      "line": 76,
+      "signature": "theorem ReverseRow.mass_ge_index {j : ℕ} (R : ReverseRow j) : ((j + 1 : ℕ) : ℝ) ≤ primeReciprocalMass R.primes",
+      "generated_certificate": false,
+      "claim_ids": []
+    },
+    {
+      "id": "lean/ErdosProblems/Erdos257/PaperCompleteR8/ReverseStrengthenedHost.lean:82:ReverseRow.mass_pos",
+      "name": "ReverseRow.mass_pos",
+      "kind": "theorem",
+      "module": "lean/ErdosProblems/Erdos257/PaperCompleteR8/ReverseStrengthenedHost.lean",
+      "line": 82,
+      "signature": "theorem ReverseRow.mass_pos {j : ℕ} (R : ReverseRow j) : 0 < primeReciprocalMass R.primes",
+      "generated_certificate": false,
+      "claim_ids": []
+    },
+    {
+      "id": "lean/ErdosProblems/Erdos257/PaperCompleteR8/ReverseStrengthenedHost.lean:88:ReverseRow.mass_ratio_bound",
+      "name": "ReverseRow.mass_ratio_bound",
+      "kind": "theorem",
+      "module": "lean/ErdosProblems/Erdos257/PaperCompleteR8/ReverseStrengthenedHost.lean",
+      "line": 88,
+      "signature": "theorem ReverseRow.mass_ratio_bound {j : ℕ} (R : ReverseRow j) : primeReciprocalMass R.primes / (R.q : ℝ) ≤ 1 / (2 : ℝ) ^ (j + 2)",
+      "generated_certificate": false,
+      "claim_ids": [],
+      "docstring": "The strengthened first-log cost is geometrically summable."
+    },
+    {
+      "id": "lean/ErdosProblems/Erdos257/PaperCompleteR8/ReverseStrengthenedHost.lean:107:ReverseRow.square_mass_ratio",
+      "name": "ReverseRow.square_mass_ratio",
+      "kind": "theorem",
+      "module": "lean/ErdosProblems/Erdos257/PaperCompleteR8/ReverseStrengthenedHost.lean",
+      "line": 107,
+      "signature": "theorem ReverseRow.square_mass_ratio {j : ℕ} (R : ReverseRow j) : (((j + 1 : ℕ) : ℝ) ^ 2) ≤ (primeReciprocalMass R.primes) ^ 2 / (R.q : ℝ)",
+      "generated_certificate": false,
+      "claim_ids": [],
+      "docstring": "The old second-log cost, in contrast, grows quadratically in j."
+    },
+    {
+      "id": "lean/ErdosProblems/Erdos257/PaperCompleteR8/ReverseStrengthenedHost.lean:122:reverseExponent",
+      "name": "reverseExponent",
+      "kind": "def",
+      "module": "lean/ErdosProblems/Erdos257/PaperCompleteR8/ReverseStrengthenedHost.lean",
+      "line": 122,
+      "signature": "def reverseExponent (j : ℕ) : ℝ",
+      "generated_certificate": false,
+      "claim_ids": []
+    },
+    {
+      "id": "lean/ErdosProblems/Erdos257/PaperCompleteR8/ReverseStrengthenedHost.lean:125:reverseExponent_bounds",
+      "name": "reverseExponent_bounds",
+      "kind": "theorem",
+      "module": "lean/ErdosProblems/Erdos257/PaperCompleteR8/ReverseStrengthenedHost.lean",
+      "line": 125,
+      "signature": "theorem reverseExponent_bounds (j : ℕ) : 0 < reverseExponent j ∧ reverseExponent j ≤ 1",
+      "generated_certificate": false,
+      "claim_ids": []
+    },
+    {
+      "id": "lean/ErdosProblems/Erdos257/PaperCompleteR8/ReverseStrengthenedHost.lean:131:reverseFrame",
+      "name": "reverseFrame",
+      "kind": "def",
+      "module": "lean/ErdosProblems/Erdos257/PaperCompleteR8/ReverseStrengthenedHost.lean",
+      "line": 131,
+      "signature": "def reverseFrame (j : ℕ) : FiniteCoverFrame",
+      "generated_certificate": false,
+      "claim_ids": []
+    },
+    {
+      "id": "lean/ErdosProblems/Erdos257/PaperCompleteR8/ReverseStrengthenedHost.lean:136:reverseHost",
+      "name": "reverseHost",
+      "kind": "def",
+      "module": "lean/ErdosProblems/Erdos257/PaperCompleteR8/ReverseStrengthenedHost.lean",
+      "line": 136,
+      "signature": "def reverseHost : Set ℕ",
+      "generated_certificate": false,
+      "claim_ids": []
+    },
+    {
+      "id": "lean/ErdosProblems/Erdos257/PaperCompleteR8/ReverseStrengthenedHost.lean:138:reverseCover",
+      "name": "reverseCover",
+      "kind": "def",
+      "module": "lean/ErdosProblems/Erdos257/PaperCompleteR8/ReverseStrengthenedHost.lean",
+      "line": 138,
+      "signature": "def reverseCover : PositiveCoverData",
+      "generated_certificate": false,
+      "claim_ids": []
+    },
+    {
+      "id": "lean/ErdosProblems/Erdos257/PaperCompleteR8/ReverseStrengthenedHost.lean:148:reverseCover_host",
+      "name": "reverseCover_host",
+      "kind": "theorem",
+      "module": "lean/ErdosProblems/Erdos257/PaperCompleteR8/ReverseStrengthenedHost.lean",
+      "line": 148,
+      "signature": "theorem reverseCover_host : reverseCover.host = reverseHost",
+      "generated_certificate": false,
+      "claim_ids": []
+    },
+    {
+      "id": "lean/ErdosProblems/Erdos257/PaperCompleteR8/ReverseStrengthenedHost.lean:150:reverseCover_row_cost_bound",
+      "name": "reverseCover_row_cost_bound",
+      "kind": "theorem",
+      "module": "lean/ErdosProblems/Erdos257/PaperCompleteR8/ReverseStrengthenedHost.lean",
+      "line": 150,
+      "signature": "theorem reverseCover_row_cost_bound (j : ℕ) : reverseCover.cost j ≤ Real.exp 1 / (reverseRow j).q",
+      "generated_certificate": false,
+      "claim_ids": []
+    },
+    {
+      "id": "lean/ErdosProblems/Erdos257/PaperCompleteR8/ReverseStrengthenedHost.lean:162:reverse_geometric_factor_bound",
+      "name": "reverse_geometric_factor_bound",
+      "kind": "theorem",
+      "module": "lean/ErdosProblems/Erdos257/PaperCompleteR8/ReverseStrengthenedHost.lean",
+      "line": 162,
+      "signature": "theorem reverse_geometric_factor_bound (j : ℕ) : (2 : ℝ) ^ (((j + 1 : ℕ) : ℝ) * reverseExponent j) ≤ Real.exp 1",
+      "generated_certificate": false,
+      "claim_ids": []
+    },
+    {
+      "id": "lean/ErdosProblems/Erdos257/PaperCompleteR8/ReverseStrengthenedHost.lean:179:reverse_strengthened_term_bound",
+      "name": "reverse_strengthened_term_bound",
+      "kind": "theorem",
+      "module": "lean/ErdosProblems/Erdos257/PaperCompleteR8/ReverseStrengthenedHost.lean",
+      "line": 179,
+      "signature": "theorem reverse_strengthened_term_bound (j : ℕ) : reverseCover.cost j * (2 : ℝ) ^ (((j + 1 : ℕ) : ℝ) * reverseExponent j) / ((2 : ℝ) ^ reverseExponent j - 1) ≤ (Real.exp 1) ^ 2 / (2 : ℝ) ^ (j + 2)",
+      "generated_certificate": false,
+      "claim_ids": []
+    },
+    {
+      "id": "lean/ErdosProblems/Erdos257/PaperCompleteR8/ReverseStrengthenedHost.lean:200:reverseCover_strengthened",
+      "name": "reverseCover_strengthened",
+      "kind": "theorem",
+      "module": "lean/ErdosProblems/Erdos257/PaperCompleteR8/ReverseStrengthenedHost.lean",
+      "line": 200,
+      "signature": "theorem reverseCover_strengthened : reverseCover.StrengthenedCostSummable",
+      "generated_certificate": false,
+      "claim_ids": []
+    },
+    {
+      "id": "lean/ErdosProblems/Erdos257/PaperCompleteR8/ReverseStrengthenedHost.lean:215:reverseHost_has_strengthened_cover",
+      "name": "reverseHost_has_strengthened_cover",
+      "kind": "theorem",
+      "module": "lean/ErdosProblems/Erdos257/PaperCompleteR8/ReverseStrengthenedHost.lean",
+      "line": 215,
+      "signature": "theorem reverseHost_has_strengthened_cover : HasStrengthenedPositiveCover reverseHost",
+      "generated_certificate": false,
+      "claim_ids": []
+    },
+    {
+      "id": "lean/ErdosProblems/Erdos257/PaperCompleteR8/ReverseStrengthenedHost.lean:218:reverseHost_positive",
+      "name": "reverseHost_positive",
+      "kind": "theorem",
+      "module": "lean/ErdosProblems/Erdos257/PaperCompleteR8/ReverseStrengthenedHost.lean",
+      "line": 218,
+      "signature": "theorem reverseHost_positive : 0 ∉ reverseHost",
+      "generated_certificate": false,
+      "claim_ids": []
+    },
+    {
+      "id": "lean/ErdosProblems/Erdos257/PaperCompleteR8/ReverseStrengthenedHost.lean:222:reverseHost_squarefree",
+      "name": "reverseHost_squarefree",
+      "kind": "theorem",
+      "module": "lean/ErdosProblems/Erdos257/PaperCompleteR8/ReverseStrengthenedHost.lean",
+      "line": 222,
+      "signature": "theorem reverseHost_squarefree : ∀ a ∈ reverseHost, Squarefree a",
+      "generated_certificate": false,
+      "claim_ids": []
+    },
+    {
+      "id": "lean/ErdosProblems/Erdos257/PaperCompleteR8/ReverseStrengthenedHost.lean:237:reverseHost_infinite",
+      "name": "reverseHost_infinite",
+      "kind": "theorem",
+      "module": "lean/ErdosProblems/Erdos257/PaperCompleteR8/ReverseStrengthenedHost.lean",
+      "line": 237,
+      "signature": "theorem reverseHost_infinite : reverseHost.Infinite",
+      "generated_certificate": false,
+      "claim_ids": []
+    },
+    {
+      "id": "lean/ErdosProblems/Erdos257/PaperCompleteR8/ReverseStrengthenedHost.lean:247:exists_large_square_multiple",
+      "name": "exists_large_square_multiple",
+      "kind": "theorem",
+      "module": "lean/ErdosProblems/Erdos257/PaperCompleteR8/ReverseStrengthenedHost.lean",
+      "line": 247,
+      "signature": "theorem exists_large_square_multiple (c R : ℝ) (hc : 0 < c) (J : ℕ) : ∃ j : ℕ, J ≤ j ∧ R < c * (((j + 1 : ℕ) : ℝ) ^ 2)",
+      "generated_certificate": false,
+      "claim_ids": []
+    },
+    {
+      "id": "lean/ErdosProblems/Erdos257/PaperCompleteR8/ReverseStrengthenedHost.lean:258:reverseHost_unbounded_old_moments",
+      "name": "reverseHost_unbounded_old_moments",
+      "kind": "theorem",
+      "module": "lean/ErdosProblems/Erdos257/PaperCompleteR8/ReverseStrengthenedHost.lean",
+      "line": 258,
+      "signature": "theorem reverseHost_unbounded_old_moments : ∀ T : ℝ, ∃ F : Finset ℕ, (F : Set ℕ) ⊆ reverseHost ∧ ∃ X : ℕ, 0 < X ∧ T < finiteLogSquareMean F X",
+      "generated_certificate": false,
+      "claim_ids": []
+    },
+    {
+      "id": "lean/ErdosProblems/Erdos257/PaperCompleteR8/ReverseStrengthenedHost.lean:277:reverseHost_no_old_cover",
+      "name": "reverseHost_no_old_cover",
+      "kind": "theorem",
+      "module": "lean/ErdosProblems/Erdos257/PaperCompleteR8/ReverseStrengthenedHost.lean",
+      "line": 277,
+      "signature": "theorem reverseHost_no_old_cover : ¬ HasOldPositiveCover reverseHost",
+      "generated_certificate": false,
+      "claim_ids": []
+    },
+    {
+      "id": "lean/ErdosProblems/Erdos257/PaperCompleteR8/ReverseStrengthenedHost.lean:280:reverse_row_reciprocal_lower",
+      "name": "reverse_row_reciprocal_lower",
+      "kind": "theorem",
+      "module": "lean/ErdosProblems/Erdos257/PaperCompleteR8/ReverseStrengthenedHost.lean",
+      "line": 280,
+      "signature": "theorem reverse_row_reciprocal_lower (j : ℕ) : (((j + 1 : ℕ) : ℝ) ^ 2) / 4 ≤ ∑ a ∈ (reverseFrame j).support, (1 : ℝ) / a",
+      "generated_certificate": false,
+      "claim_ids": []
+    },
+    {
+      "id": "lean/ErdosProblems/Erdos257/PaperCompleteR8/ReverseStrengthenedHost.lean:290:reverseHost_reciprocal_not_summable",
+      "name": "reverseHost_reciprocal_not_summable",
+      "kind": "theorem",
+      "module": "lean/ErdosProblems/Erdos257/PaperCompleteR8/ReverseStrengthenedHost.lean",
+      "line": 290,
+      "signature": "theorem reverseHost_reciprocal_not_summable : ¬ Summable (Set.indicator reverseHost (fun a : ℕ => (1 : ℝ) / a))",
+      "generated_certificate": false,
+      "claim_ids": []
+    },
+    {
+      "id": "lean/ErdosProblems/Erdos257/PaperCompleteR8/ReverseStrengthenedHost.lean:309:no_smaller_prime_divides_cube",
+      "name": "no_smaller_prime_divides_cube",
+      "kind": "theorem",
+      "module": "lean/ErdosProblems/Erdos257/PaperCompleteR8/ReverseStrengthenedHost.lean",
+      "line": 309,
+      "signature": "theorem no_smaller_prime_divides_cube {j : ℕ} (R : ReverseRow j) (p a : ℕ) (hp : Nat.Prime p) (hpq : p < R.q) (ha : a ∈ divisorCube R.q R.primes) : ¬ p ∣ a",
+      "generated_certificate": false,
+      "claim_ids": [],
+      "docstring": "A finite set of smaller primes is absent from every factor of a row."
+    },
+    {
+      "id": "lean/ErdosProblems/Erdos257/PaperCompleteR8/ReverseStrengthenedHost.lean:326:reverse_row_primePart_one",
+      "name": "reverse_row_primePart_one",
+      "kind": "theorem",
+      "module": "lean/ErdosProblems/Erdos257/PaperCompleteR8/ReverseStrengthenedHost.lean",
+      "line": 326,
+      "signature": "theorem reverse_row_primePart_one (P : Finset ℕ) (hP : ∀ p ∈ P, Nat.Prime p) (j : ℕ) (hj : P.sup id ≤ j) (a : ℕ) (ha : a ∈ (reverseFrame j).support) : primeSetPart P a = 1",
+      "generated_certificate": false,
+      "claim_ids": []
+    },
+    {
+      "id": "lean/ErdosProblems/Erdos257/PaperCompleteR8/ReverseStrengthenedHost.lean:337:reverse_row_weighted_sum",
+      "name": "reverse_row_weighted_sum",
+      "kind": "theorem",
+      "module": "lean/ErdosProblems/Erdos257/PaperCompleteR8/ReverseStrengthenedHost.lean",
+      "line": 337,
+      "signature": "theorem reverse_row_weighted_sum (b : ℕ) (P : Finset ℕ) (hP : ∀ p ∈ P, Nat.Prime p) (j : ℕ) (hj : P.sup id ≤ j) : (∑ a ∈ (reverseFrame j).support, primeWeightedTerm b P a) = (∑ a ∈ (reverseFrame j).support, (1 : ℝ) / a) / ((b : ℝ) - 1)",
+      "generated_certificate": false,
+      "claim_ids": []
+    },
+    {
+      "id": "lean/ErdosProblems/Erdos257/PaperCompleteR8/ReverseStrengthenedHost.lean:351:reverseHost_no_weighted_sum",
+      "name": "reverseHost_no_weighted_sum",
+      "kind": "theorem",
+      "module": "lean/ErdosProblems/Erdos257/PaperCompleteR8/ReverseStrengthenedHost.lean",
+      "line": 351,
+      "signature": "theorem reverseHost_no_weighted_sum (b : ℕ) (hb : 2 ≤ b) (P : Finset ℕ) (hP : ∀ p ∈ P, Nat.Prime p) : ¬ Summable (Set.indicator reverseHost (primeWeightedTerm b P))",
+      "generated_certificate": false,
+      "claim_ids": [],
+      "docstring": "All finite-prime weighted tests fail at every integer base, including P empty. The official FinitePrimeWeighted predicate requires P nonempty."
+    },
+    {
+      "id": "lean/ErdosProblems/Erdos257/PaperCompleteR8/ReverseStrengthenedHost.lean:381:reverseHost_not_finitePrimeWeighted",
+      "name": "reverseHost_not_finitePrimeWeighted",
+      "kind": "theorem",
+      "module": "lean/ErdosProblems/Erdos257/PaperCompleteR8/ReverseStrengthenedHost.lean",
+      "line": 381,
+      "signature": "theorem reverseHost_not_finitePrimeWeighted (b : ℕ) (hb : 2 ≤ b) : ¬ FinitePrimeWeighted b reverseHost",
+      "generated_certificate": false,
+      "claim_ids": []
+    },
+    {
+      "id": "lean/ErdosProblems/Erdos257/PaperCompleteR8/ReverseStrengthenedHost.lean:387:exists_strengthened_not_old_or_weighted_host",
+      "name": "exists_strengthened_not_old_or_weighted_host",
+      "kind": "theorem",
+      "module": "lean/ErdosProblems/Erdos257/PaperCompleteR8/ReverseStrengthenedHost.lean",
+      "line": 387,
+      "signature": "theorem exists_strengthened_not_old_or_weighted_host : ∃ A : Set ℕ, A.Infinite ∧ 0 ∉ A ∧ (∀ a ∈ A, Squarefree a) ∧ HasStrengthenedPositiveCover A ∧ ¬ HasOldPositiveCover A ∧ (¬ Summable (Set.indicator A (fun a : ℕ => (1 : ℝ) / a))) ∧ (∀ b : ℕ, 2 ≤ b → ¬ FinitePrimeWeighted b A) ∧ (∀ B : Set ℕ, B ⊆ A → B.Infinite → ∀ b : ℕ, 2 ≤ b → Irrational (erdosSupportSeries b B))",
+      "generated_certificate": false,
+      "claim_ids": [],
+      "docstring": "Complete reverse host, composed through the checked hereditary consumer."
+    },
+    {
+      "id": "lean/ErdosProblems/Erdos257/PaperCompleteR8/StrengthenedCoverFiniteUnion.lean:22:nat_rpow_half_le",
+      "name": "nat_rpow_half_le",
+      "kind": "theorem",
+      "module": "lean/ErdosProblems/Erdos257/PaperCompleteR8/StrengthenedCoverFiniteUnion.lean",
+      "line": 22,
+      "signature": "theorem nat_rpow_half_le (n : ℕ) {α : ℝ} (hα : 0 < α) : (n : ℝ) ^ (α / 2) ≤ (n : ℝ) ^ α",
+      "generated_certificate": false,
+      "claim_ids": [],
+      "docstring": "Lowering a positive exponent preserves a positive majorant of integer counts."
+    },
+    {
+      "id": "lean/ErdosProblems/Erdos257/PaperCompleteR8/StrengthenedCoverFiniteUnion.lean:30:interleavedCover",
+      "name": "interleavedCover",
+      "kind": "def",
+      "module": "lean/ErdosProblems/Erdos257/PaperCompleteR8/StrengthenedCoverFiniteUnion.lean",
+      "line": 30,
+      "signature": "def interleavedCover (C D : PositiveCoverData) : PositiveCoverData",
+      "generated_certificate": false,
+      "claim_ids": []
+    },
+    {
+      "id": "lean/ErdosProblems/Erdos257/PaperCompleteR8/StrengthenedCoverFiniteUnion.lean:49:interleavedCover_frame_even",
+      "name": "interleavedCover_frame_even",
+      "kind": "theorem",
+      "module": "lean/ErdosProblems/Erdos257/PaperCompleteR8/StrengthenedCoverFiniteUnion.lean",
+      "line": 49,
+      "signature": "@[simp] theorem interleavedCover_frame_even (C D : PositiveCoverData) (j : ℕ) : (interleavedCover C D).frame (2 * j) = C.frame j",
+      "generated_certificate": false,
+      "claim_ids": []
+    },
+    {
+      "id": "lean/ErdosProblems/Erdos257/PaperCompleteR8/StrengthenedCoverFiniteUnion.lean:53:interleavedCover_frame_odd",
+      "name": "interleavedCover_frame_odd",
+      "kind": "theorem",
+      "module": "lean/ErdosProblems/Erdos257/PaperCompleteR8/StrengthenedCoverFiniteUnion.lean",
+      "line": 53,
+      "signature": "@[simp] theorem interleavedCover_frame_odd (C D : PositiveCoverData) (j : ℕ) : (interleavedCover C D).frame (2 * j + 1) = D.frame j",
+      "generated_certificate": false,
+      "claim_ids": []
+    },
+    {
+      "id": "lean/ErdosProblems/Erdos257/PaperCompleteR8/StrengthenedCoverFiniteUnion.lean:57:interleavedCover_host",
+      "name": "interleavedCover_host",
+      "kind": "theorem",
+      "module": "lean/ErdosProblems/Erdos257/PaperCompleteR8/StrengthenedCoverFiniteUnion.lean",
+      "line": 57,
+      "signature": "theorem interleavedCover_host (C D : PositiveCoverData) : (interleavedCover C D).host = C.host ∪ D.host",
+      "generated_certificate": false,
+      "claim_ids": []
+    },
+    {
+      "id": "lean/ErdosProblems/Erdos257/PaperCompleteR8/StrengthenedCoverFiniteUnion.lean:70:half_exponent_cover_cost_le",
+      "name": "half_exponent_cover_cost_le",
+      "kind": "theorem",
+      "module": "lean/ErdosProblems/Erdos257/PaperCompleteR8/StrengthenedCoverFiniteUnion.lean",
+      "line": 70,
+      "signature": "theorem half_exponent_cover_cost_le (c α : ℝ) (hc : 0 ≤ c) (hα : 0 < α) (hα1 : α ≤ 1) (n j : ℕ) (hn : n + 1 ≤ 2 * (j + 1)) : c * (2 : ℝ) ^ (((n + 1 : ℕ) : ℝ) * (α / 2)) / ((2 : ℝ) ^ (α / 2) - 1) ≤ 3 * (c * (2 : ℝ) ^ (((j + 1 : ℕ) : ℝ) * α) / ((2 : ℝ) ^ α - 1))",
+      "generated_certificate": false,
+      "claim_ids": [],
+      "docstring": "The denominator loss on halving an exponent is at most three."
+    },
+    {
+      "id": "lean/ErdosProblems/Erdos257/PaperCompleteR8/StrengthenedCoverFiniteUnion.lean:105:interleavedCover_strengthened",
+      "name": "interleavedCover_strengthened",
+      "kind": "theorem",
+      "module": "lean/ErdosProblems/Erdos257/PaperCompleteR8/StrengthenedCoverFiniteUnion.lean",
+      "line": 105,
+      "signature": "theorem interleavedCover_strengthened (C D : PositiveCoverData) (hC : C.StrengthenedCostSummable) (hD : D.StrengthenedCostSummable) : (interleavedCover C D).StrengthenedCostSummable",
+      "generated_certificate": false,
+      "claim_ids": []
+    },
+    {
+      "id": "lean/ErdosProblems/Erdos257/PaperCompleteR8/StrengthenedCoverFiniteUnion.lean:131:hasStrengthenedPositiveCover_union",
+      "name": "hasStrengthenedPositiveCover_union",
+      "kind": "theorem",
+      "module": "lean/ErdosProblems/Erdos257/PaperCompleteR8/StrengthenedCoverFiniteUnion.lean",
+      "line": 131,
+      "signature": "theorem hasStrengthenedPositiveCover_union {A B : Set ℕ} (hA : HasStrengthenedPositiveCover A) (hB : HasStrengthenedPositiveCover B) : HasStrengthenedPositiveCover (A ∪ B)",
+      "generated_certificate": false,
+      "claim_ids": []
+    },
+    {
+      "id": "lean/ErdosProblems/Erdos257/PaperCompleteR8/StrengthenedCoverFiniteUnion.lean:140:hasStrengthenedPositiveCover_mono",
+      "name": "hasStrengthenedPositiveCover_mono",
+      "kind": "theorem",
+      "module": "lean/ErdosProblems/Erdos257/PaperCompleteR8/StrengthenedCoverFiniteUnion.lean",
+      "line": 140,
+      "signature": "theorem hasStrengthenedPositiveCover_mono {A B : Set ℕ} (hBA : B ⊆ A) (hA : HasStrengthenedPositiveCover A) : HasStrengthenedPositiveCover B",
+      "generated_certificate": false,
+      "claim_ids": []
+    },
+    {
+      "id": "lean/ErdosProblems/Erdos257/PaperCompleteR8/StrengthenedCoverFiniteUnion.lean:145:finitePrimeWeighted_finset",
+      "name": "finitePrimeWeighted_finset",
+      "kind": "theorem",
+      "module": "lean/ErdosProblems/Erdos257/PaperCompleteR8/StrengthenedCoverFiniteUnion.lean",
+      "line": 145,
+      "signature": "theorem finitePrimeWeighted_finset (b : ℕ) (F : Finset ℕ) : FinitePrimeWeighted b (F : Set ℕ)",
+      "generated_certificate": false,
+      "claim_ids": []
+    },
+    {
+      "id": "lean/ErdosProblems/Erdos257/PaperCompleteR8/StrengthenedCoverFiniteUnion.lean:158:MixedSupportClass",
+      "name": "MixedSupportClass",
+      "kind": "def",
+      "module": "lean/ErdosProblems/Erdos257/PaperCompleteR8/StrengthenedCoverFiniteUnion.lean",
+      "line": 158,
+      "signature": "def MixedSupportClass (A : Set ℕ) : Prop",
+      "generated_certificate": false,
+      "claim_ids": [],
+      "docstring": "The class named in the short note; positivity belongs to its weighted part."
+    },
+    {
+      "id": "lean/ErdosProblems/Erdos257/PaperCompleteR8/StrengthenedCoverFiniteUnion.lean:162:mixedSupportClass_mono",
+      "name": "mixedSupportClass_mono",
+      "kind": "theorem",
+      "module": "lean/ErdosProblems/Erdos257/PaperCompleteR8/StrengthenedCoverFiniteUnion.lean",
+      "line": 162,
+      "signature": "theorem mixedSupportClass_mono {A B : Set ℕ} (hBA : B ⊆ A) (hA : MixedSupportClass A) : MixedSupportClass B",
+      "generated_certificate": false,
+      "claim_ids": []
+    },
+    {
+      "id": "lean/ErdosProblems/Erdos257/PaperCompleteR8/StrengthenedCoverFiniteUnion.lean:167:mixedSupportClass_union",
+      "name": "mixedSupportClass_union",
+      "kind": "theorem",
+      "module": "lean/ErdosProblems/Erdos257/PaperCompleteR8/StrengthenedCoverFiniteUnion.lean",
+      "line": 167,
+      "signature": "theorem mixedSupportClass_union {A B : Set ℕ} (hA : MixedSupportClass A) (hB : MixedSupportClass B) : MixedSupportClass (A ∪ B)",
+      "generated_certificate": false,
+      "claim_ids": []
+    },
+    {
+      "id": "lean/ErdosProblems/Erdos257/PaperCompleteR8/StrengthenedCoverFiniteUnion.lean:183:mixedSupportClass_adjoin_finset",
+      "name": "mixedSupportClass_adjoin_finset",
+      "kind": "theorem",
+      "module": "lean/ErdosProblems/Erdos257/PaperCompleteR8/StrengthenedCoverFiniteUnion.lean",
+      "line": 183,
+      "signature": "theorem mixedSupportClass_adjoin_finset {A : Set ℕ} (hA : MixedSupportClass A) (F : Finset ℕ) (hF : 0 ∉ F) : MixedSupportClass (A ∪ (F : Set ℕ))",
+      "generated_certificate": false,
+      "claim_ids": []
+    },
+    {
       "id": "lean/ErdosProblems/Erdos257/PaperCompleteR8/WeightedFiniteEstimates.lean:18:kernelWeight_nowrap_binary_envelope",
       "name": "kernelWeight_nowrap_binary_envelope",
       "kind": "theorem",
@@ -289037,6 +291546,126 @@
       "generated_certificate": false,
       "claim_ids": [],
       "docstring": "Full finite weighted estimate. Its error is independent of the finite support size. This is the uniform estimate needed before the infinite limit."
+    },
+    {
+      "id": "lean/ErdosProblems/Erdos257/PaperCompleteR8/WeightedFiniteUnion.lean:16:primeSetPart_dvd_of_subset",
+      "name": "primeSetPart_dvd_of_subset",
+      "kind": "theorem",
+      "module": "lean/ErdosProblems/Erdos257/PaperCompleteR8/WeightedFiniteUnion.lean",
+      "line": 16,
+      "signature": "theorem primeSetPart_dvd_of_subset {P Q : Finset ℕ} (hPQ : P ⊆ Q) (a : ℕ) : primeSetPart P a ∣ primeSetPart Q a",
+      "generated_certificate": false,
+      "claim_ids": []
+    },
+    {
+      "id": "lean/ErdosProblems/Erdos257/PaperCompleteR8/WeightedFiniteUnion.lean:21:primeWeightedTerm_antitone_primeSet",
+      "name": "primeWeightedTerm_antitone_primeSet",
+      "kind": "theorem",
+      "module": "lean/ErdosProblems/Erdos257/PaperCompleteR8/WeightedFiniteUnion.lean",
+      "line": 21,
+      "signature": "theorem primeWeightedTerm_antitone_primeSet (b : ℕ) (hb : 2 ≤ b) {P Q : Finset ℕ} (hPQ : P ⊆ Q) (a : ℕ) : primeWeightedTerm b Q a ≤ primeWeightedTerm b P a",
+      "generated_certificate": false,
+      "claim_ids": []
+    },
+    {
+      "id": "lean/ErdosProblems/Erdos257/PaperCompleteR8/WeightedFiniteUnion.lean:35:summable_primeWeighted_enlarge",
+      "name": "summable_primeWeighted_enlarge",
+      "kind": "theorem",
+      "module": "lean/ErdosProblems/Erdos257/PaperCompleteR8/WeightedFiniteUnion.lean",
+      "line": 35,
+      "signature": "theorem summable_primeWeighted_enlarge (b : ℕ) (hb : 2 ≤ b) (A : Set ℕ) {P Q : Finset ℕ} (hPQ : P ⊆ Q) (hs : Summable (Set.indicator A (primeWeightedTerm b P))) : Summable (Set.indicator A (primeWeightedTerm b Q))",
+      "generated_certificate": false,
+      "claim_ids": []
+    },
+    {
+      "id": "lean/ErdosProblems/Erdos257/PaperCompleteR8/WeightedFiniteUnion.lean:47:finitePrimeWeighted_mono",
+      "name": "finitePrimeWeighted_mono",
+      "kind": "theorem",
+      "module": "lean/ErdosProblems/Erdos257/PaperCompleteR8/WeightedFiniteUnion.lean",
+      "line": 47,
+      "signature": "theorem finitePrimeWeighted_mono (b : ℕ) (hb : 2 ≤ b) {A B : Set ℕ} (hBA : B ⊆ A) (hA : FinitePrimeWeighted b A) : FinitePrimeWeighted b B",
+      "generated_certificate": false,
+      "claim_ids": []
+    },
+    {
+      "id": "lean/ErdosProblems/Erdos257/PaperCompleteR8/WeightedFiniteUnion.lean:60:finitePrimeWeighted_empty",
+      "name": "finitePrimeWeighted_empty",
+      "kind": "theorem",
+      "module": "lean/ErdosProblems/Erdos257/PaperCompleteR8/WeightedFiniteUnion.lean",
+      "line": 60,
+      "signature": "theorem finitePrimeWeighted_empty (b : ℕ) : FinitePrimeWeighted b ∅",
+      "generated_certificate": false,
+      "claim_ids": []
+    },
+    {
+      "id": "lean/ErdosProblems/Erdos257/PaperCompleteR8/WeightedFiniteUnion.lean:68:finitePrimeWeighted_union",
+      "name": "finitePrimeWeighted_union",
+      "kind": "theorem",
+      "module": "lean/ErdosProblems/Erdos257/PaperCompleteR8/WeightedFiniteUnion.lean",
+      "line": 68,
+      "signature": "theorem finitePrimeWeighted_union (b : ℕ) (hb : 2 ≤ b) {A B : Set ℕ} (hA : FinitePrimeWeighted b A) (hB : FinitePrimeWeighted b B) : FinitePrimeWeighted b (A ∪ B)",
+      "generated_certificate": false,
+      "claim_ids": []
+    },
+    {
+      "id": "lean/ErdosProblems/Erdos257/PaperCompleteR8/WeightedFiniteUnion.lean:92:finiteSupportUnion",
+      "name": "finiteSupportUnion",
+      "kind": "def",
+      "module": "lean/ErdosProblems/Erdos257/PaperCompleteR8/WeightedFiniteUnion.lean",
+      "line": 92,
+      "signature": "def finiteSupportUnion (I : Finset ℕ) (E : ℕ → Set ℕ) : Set ℕ",
+      "generated_certificate": false,
+      "claim_ids": []
+    },
+    {
+      "id": "lean/ErdosProblems/Erdos257/PaperCompleteR8/WeightedFiniteUnion.lean:95:finiteSupportUnion_empty",
+      "name": "finiteSupportUnion_empty",
+      "kind": "theorem",
+      "module": "lean/ErdosProblems/Erdos257/PaperCompleteR8/WeightedFiniteUnion.lean",
+      "line": 95,
+      "signature": "@[simp] theorem finiteSupportUnion_empty (E : ℕ → Set ℕ) : finiteSupportUnion ∅ E = ∅",
+      "generated_certificate": false,
+      "claim_ids": []
+    },
+    {
+      "id": "lean/ErdosProblems/Erdos257/PaperCompleteR8/WeightedFiniteUnion.lean:98:finiteSupportUnion_insert",
+      "name": "finiteSupportUnion_insert",
+      "kind": "theorem",
+      "module": "lean/ErdosProblems/Erdos257/PaperCompleteR8/WeightedFiniteUnion.lean",
+      "line": 98,
+      "signature": "@[simp] theorem finiteSupportUnion_insert (i : ℕ) (I : Finset ℕ) (E : ℕ → Set ℕ) : finiteSupportUnion (insert i I) E = E i ∪ finiteSupportUnion I E",
+      "generated_certificate": false,
+      "claim_ids": []
+    },
+    {
+      "id": "lean/ErdosProblems/Erdos257/PaperCompleteR8/WeightedFiniteUnion.lean:110:finitePrimeWeighted_finiteUnion",
+      "name": "finitePrimeWeighted_finiteUnion",
+      "kind": "theorem",
+      "module": "lean/ErdosProblems/Erdos257/PaperCompleteR8/WeightedFiniteUnion.lean",
+      "line": 110,
+      "signature": "theorem finitePrimeWeighted_finiteUnion (b : ℕ) (hb : 2 ≤ b) (I : Finset ℕ) (E : ℕ → Set ℕ) (hE : ∀ i ∈ I, FinitePrimeWeighted b (E i)) : FinitePrimeWeighted b (finiteSupportUnion I E)",
+      "generated_certificate": false,
+      "claim_ids": []
+    },
+    {
+      "id": "lean/ErdosProblems/Erdos257/PaperCompleteR8/WeightedFiniteUnion.lean:123:finiteSupportUnion_positive",
+      "name": "finiteSupportUnion_positive",
+      "kind": "theorem",
+      "module": "lean/ErdosProblems/Erdos257/PaperCompleteR8/WeightedFiniteUnion.lean",
+      "line": 123,
+      "signature": "theorem finiteSupportUnion_positive (I : Finset ℕ) (E : ℕ → Set ℕ) (hE : ∀ i ∈ I, 0 ∉ E i) : 0 ∉ finiteSupportUnion I E",
+      "generated_certificate": false,
+      "claim_ids": []
+    },
+    {
+      "id": "lean/ErdosProblems/Erdos257/PaperCompleteR8/WeightedFiniteUnion.lean:128:hostPrefix_eq_finiteSupportUnion",
+      "name": "hostPrefix_eq_finiteSupportUnion",
+      "kind": "theorem",
+      "module": "lean/ErdosProblems/Erdos257/PaperCompleteR8/WeightedFiniteUnion.lean",
+      "line": 128,
+      "signature": "theorem hostPrefix_eq_finiteSupportUnion (E : ℕ → Set ℕ) (j : ℕ) : hostPrefix E j = finiteSupportUnion (range (j + 1)) E",
+      "generated_certificate": false,
+      "claim_ids": []
     },
     {
       "id": "lean/ErdosProblems/Erdos257/PaperCompleteR8/WeightedHereditaryClaim.lean:16:finitePrimeWeighted_subset",

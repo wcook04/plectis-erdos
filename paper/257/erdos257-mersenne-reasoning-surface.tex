@@ -964,9 +964,17 @@ constructions: one infinite host has a finite-prime weighted witness at base
 two but no strengthened positive cover, while a fresh-prime host has such a
 cover but no finite-prime weighted witness at any integer base.  Their union
 satisfies neither individual criterion, and this theorem gives every
-infinite subset an irrational sum at every integer base.  Those exact host
-constructions and the strictness corollary have not been formalised in Lean
-or independently reviewed; the mixed implication itself is kernel-checked.
+infinite subset an irrational sum at every integer base.  The existence of
+the two hosts has a
+\href{https://github.com/wcook04/plectis-erdos/blob/3973d3b10bce72017b8f60093f0d6c3f4f592d80/lean/ErdosProblems/Erdos257/PaperCompleteR8/AnalyticIncomparability.lean#L53}{Lean proof}
+whose reverse host is a squarefree divisor-cube host with a different row
+schedule.  The printed fresh-prime construction and the strictness corollary
+have ordinary proofs, and none of these constructions has been independently
+reviewed.  The Lean reverse host also admits no cover with
+$\sum_jC_j2^{j\alpha_j}2^{\alpha_j}/(2^{\alpha_j}-1)^2<\infty$, so this
+stronger cost defines a
+\href{https://github.com/wcook04/plectis-erdos/blob/3973d3b10bce72017b8f60093f0d6c3f4f592d80/lean/ErdosProblems/Erdos257/PaperCompleteR8/AnalyticIncomparability.lean#L41}{strictly smaller support class}.
+The mixed implication itself is kernel-checked.
 Universal irrationality and the quantitative and prime-power thinning claims
 remain open.
 
@@ -981,6 +989,8 @@ exponents divided by $r$ give a cost ratio below $2r$.  For weighted
 supports combine the finite prime witnesses: the prime part grows and
 $h/(2^h-1)$ decreases.  Subsets inherit the same hosts, and finite sets
 have finite weighted mass.
+\href{https://github.com/wcook04/plectis-erdos/blob/3973d3b10bce72017b8f60093f0d6c3f4f592d80/lean/ErdosProblems/Erdos257/PaperCompleteR8/StrengthenedCoverFiniteUnion.lean#L167}{Lean proves}
+these closures with the constant $3$ in place of $1+\sqrt2$.
 Countable unions require a tail budget.  Every prime singleton is admitted,
 but for the full prime support $\mathcal P$ one has
 $\Delta_{2,\mathcal P}(N)>1/3$ for every $N\ge1$: indeed

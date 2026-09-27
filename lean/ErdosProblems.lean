@@ -101,6 +101,9 @@ import ErdosProblems.Erdos251.SparsePolylogR11
 import ErdosProblems.Erdos251.SparseRationalisationCore
 import ErdosProblems.Erdos251.SparseScheduleDensityR8
 import ErdosProblems.Erdos251.SparseScheduleR8
+import ErdosProblems.Erdos257.PaperCompleteR8.AnalyticIncomparability
+import ErdosProblems.Erdos257.PaperCompleteR8.CoverGaugeComplete
+import ErdosProblems.Erdos257.PaperCompleteR8.StrengthenedCoverFiniteUnion
 import ErdosProblems.Erdos257.PaperCompleteR8.WeightedReturn
 import ErdosProblems.Erdos257.WitnessLogicHost
 import ErdosProblems.Erdos257.WitnessLogicIrrational
