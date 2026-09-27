@@ -1,0 +1,1822 @@
+import ErdosProblems.Erdos249.PaperCompleteR21.ExcludedCofactorEstimate
+import ErdosProblems.Erdos249.TypeBReturnV8.PeripheralFiniteBridge
+import ErdosProblems
+import Erdos249257
+import ErdosProblems.DemandLedger.Basic
+import ErdosProblems.ArgumentGraph.Derived.Erdos1041
+import ErdosProblems.ArgumentGraph.Derived.Erdos1049
+import ErdosProblems.ArgumentGraph.Derived.Erdos243
+import ErdosProblems.ArgumentGraph.Derived.Erdos249
+import ErdosProblems.ArgumentGraph.Derived.Erdos251
+import ErdosProblems.ArgumentGraph.Derived.Erdos257
+import ErdosProblems.ArgumentGraph.Derived.Erdos269
+import ErdosProblems.ArgumentGraph.Derived.Erdos68
+import ErdosProblems.ArgumentGraph.Results.Erdos1041
+import ErdosProblems.ArgumentGraph.Results.Erdos243
+import ErdosProblems.ArgumentGraph.Results.Erdos251
+import ErdosProblems.EightPaperR21Audit
+import ErdosProblems.EightPaperRecoveryAudit
+import ErdosProblems.Erdos1041.PaperCorrespondenceAudit
+import ErdosProblems.Erdos1041.PaperTrinomialCoverageAuditR20
+import ErdosProblems.Erdos1049.PaperCorrespondenceAudit
+import ErdosProblems.Erdos1049.PaperR20.RecoveredProofAudit
+import ErdosProblems.Erdos243.PaperCompleteR20.CubicArithmeticAudit
+import ErdosProblems.Erdos243.PaperCompleteR20.CubicRecoveryAudit
+import ErdosProblems.Erdos243.PaperCorrespondenceAudit
+import ErdosProblems.Erdos249.PaperCompleteR20.CyclotomicRecoveryAudit
+import ErdosProblems.Erdos249.PaperCompleteR20.DenominatorRecoveryAudit
+import ErdosProblems.Erdos249.PaperCompleteR20.FiniteCarryCorrespondence
+import ErdosProblems.Erdos249.PaperCompleteR20.FiniteCertificateBatch
+import ErdosProblems.Erdos249.PaperCompleteR20.FinitePrefixCountermodelEndpoint
+import ErdosProblems.Erdos249.PaperCompleteR20.GridArcRealInterface
+import ErdosProblems.Erdos249.PaperCompleteR20.LcmGridCorrespondence
+import ErdosProblems.Erdos249.PaperCompleteR20.MobiusSquareReduction
+import ErdosProblems.Erdos249.PaperCompleteR20.RadicalDecomposition
+import ErdosProblems.Erdos249.PaperCompleteR20.RationalSpacingCorrespondence
+import ErdosProblems.Erdos249.PaperCompleteR20.SignedDyadicClearing
+import ErdosProblems.Erdos249.PaperCompleteR20.TailDepthCorrespondence
+import ErdosProblems.Erdos249.PaperCorrespondenceAudit
+import ErdosProblems.Erdos249.PaperCorrespondenceAuditAdditive
+import ErdosProblems.Erdos249.PaperCorrespondenceAuditRecovery
+import ErdosProblems.Erdos251.PaperCompleteR20.ExactDenominator
+import ErdosProblems.Erdos251.PaperCompleteR20.FiniteSeparation
+import ErdosProblems.Erdos251.PaperCompleteR20.LocalTargetInterval
+import ErdosProblems.Erdos251.PaperCompleteR20.SparseConstructionAudit
+import ErdosProblems.Erdos251.PaperCorrespondenceAudit
+import ErdosProblems.Erdos257.PaperCompleteR20.AchievementGeometry
+import ErdosProblems.Erdos257.PaperCompleteR20.CofinalCarryCollapse
+import ErdosProblems.Erdos257.PaperCompleteR20.GeneralRepairCorrespondence
+import ErdosProblems.Erdos257.PaperCompleteR20.MersenneConstantDecimal
+import ErdosProblems.Erdos257.PaperCompleteR20.QuotientRowReal
+import ErdosProblems.Erdos257.PaperCompleteR20.TerminalSetCorrespondence
+import ErdosProblems.Erdos257.PaperCorrespondenceAudit
+import ErdosProblems.Erdos257.PaperCorrespondenceAuditAdditive
+import ErdosProblems.Erdos257.PaperCorrespondenceAuditAdditiveWave10
+import ErdosProblems.Erdos257.PaperCorrespondenceAuditAdditiveWave11
+import ErdosProblems.Erdos257.PaperCorrespondenceAuditAdditiveWave12
+import ErdosProblems.Erdos257.PaperCorrespondenceAuditAdditiveWave2
+import ErdosProblems.Erdos257.PaperCorrespondenceAuditAdditiveWave3
+import ErdosProblems.Erdos257.PaperCorrespondenceAuditAdditiveWave4
+import ErdosProblems.Erdos257.PaperCorrespondenceAuditAdditiveWave5
+import ErdosProblems.Erdos257.PaperCorrespondenceAuditAdditiveWave6
+import ErdosProblems.Erdos257.PaperCorrespondenceAuditAdditiveWave7
+import ErdosProblems.Erdos257.PaperCorrespondenceAuditAdditiveWave8
+import ErdosProblems.Erdos257.PaperCorrespondenceAuditAdditiveWave9
+import ErdosProblems.Erdos269.PaperCompleteR20.UniformRankAudit
+import ErdosProblems.Erdos269.PaperCorrespondenceAudit
+import ErdosProblems.Erdos68.PaperCompleteFiniteSizeCertificate
+import ErdosProblems.Erdos68.PaperCorrespondenceAudit
+import ErdosProblems.Erdos68.PaperCorrespondenceAuditAdditive
+import Mathlib.Order.Filter.AtTopBot.Basic
+import Mathlib.Tactic.NormNum
+import Mathlib.Tactic.Positivity
+import Mathlib.Tactic.Linarith
+import Mathlib.Util.AtomM
+
+-- SPDX-FileCopyrightText: 2026 Will Cook
+-- SPDX-License-Identifier: Apache-2.0
+
+/-!
+# Residualisation
+
+`residualise N for D using s₁ … sₙ` searches for a proof of the demand `D` from the readings of
+the suppliers `s₁ … sₙ` and adds `N : ∀ residual clauses, D` once the kernel checks it; the
+residual clauses are what the readings could not supply. A reading of a theorem is its statement with some leading binders instantiated, a
+conjunct, the unfolding of a corpus definition, or a conjunct of an eventual conjunction.
+
+* Witnesses and supplier parameters are metavariables of the root context applied to the local
+  variables, so a supplier that fixes one (a depth function, an exponent) fixes it in every
+  clause that shares it.
+* A goal `∃ᶠ X in atTop, Q X` (or `∀ᶠ`) is split pointwise: every clause of `Q X` that a supplier
+  gives for all large `X` is supplied along the filter; the others stay together as one
+  residual `∃ᶠ X, …` (or `∀ᶠ X, …`).
+* A clause for all large `X` may also come from an eventual reading by glue: the reading
+  rewritten with equation lemmas, a conjunct of it, or its non-strict form, unified with the
+  clause. No tactic ever sees a metavariable of the search.
+* The cost of an alternative is the number of atomic clauses (counted through `∧`, `∃`, `∀`,
+  corpus definitions and filter bodies) it leaves open, so leaving a goal whole costs as much
+  as the goal and only supply lowers it.
+-/
+
+set_option autoImplicit false
+
+open Lean Meta Elab Term
+
+namespace ErdosProblems.ArgumentGraph.Residualise
+
+/-! ## Cofinal quantifiers read as `Filter.Frequently` -/
+
+theorem forall_exists₂_max_le_of_frequently {P : ℕ → ℕ → Prop}
+    (h : ∃ᶠ X in Filter.atTop, ∃ L, P X L) :
+    ∀ X₀ : ℕ, ∃ X L : ℕ, max X₀ 1 ≤ X ∧ P X L := by
+  intro X₀
+  obtain ⟨X, hX, L, hP⟩ := Filter.frequently_atTop.mp h (max X₀ 1)
+  exact ⟨X, L, hX, hP⟩
+
+theorem forall_exists_max_le_of_frequently {P : ℕ → Prop}
+    (h : ∃ᶠ X in Filter.atTop, P X) : ∀ X₀ : ℕ, ∃ X : ℕ, max X₀ 1 ≤ X ∧ P X := by
+  intro X₀
+  obtain ⟨X, hX, hP⟩ := Filter.frequently_atTop.mp h (max X₀ 1)
+  exact ⟨X, hX, hP⟩
+
+theorem forall_exists_le_of_frequently {P : ℕ → Prop}
+    (h : ∃ᶠ X in Filter.atTop, P X) : ∀ A : ℕ, ∃ X : ℕ, A ≤ X ∧ P X := by
+  intro A
+  obtain ⟨X, hX, hP⟩ := Filter.frequently_atTop.mp h A
+  exact ⟨X, hX, hP⟩
+
+/-- Rules the search applies like suppliers, read only at their whole conclusion. -/
+def adapters : Array Name :=
+  #[``forall_exists₂_max_le_of_frequently, ``forall_exists_max_le_of_frequently,
+    ``forall_exists_le_of_frequently]
+
+/-! ## Budgets and tactics -/
+
+def budgeted {α : Type} (heartbeats : Nat) (x : MetaM α) : MetaM (Option α) := do
+  withCurrHeartbeats <|
+    withTheReader Core.Context (fun ctx => { ctx with maxHeartbeats := heartbeats * 1000 }) do
+      tryCatchRuntimeEx (do return some (← x)) fun _ => return none
+
+def budgetedTerm {α : Type} (heartbeats : Nat) (x : TermElabM α) : TermElabM (Option α) := do
+  withCurrHeartbeats <|
+    withTheReader Core.Context (fun ctx => { ctx with maxHeartbeats := heartbeats * 1000 }) do
+      tryCatchRuntimeEx (do return some (← x)) fun _ => return none
+
+/-- `isDefEq` within a budget, leaving no assignment behind when it fails. -/
+def defEq (a b : Expr) : MetaM Bool := do
+  let s ← saveState
+  if (← budgeted 4000 (isDefEq a b)) == some true then return true
+  s.restore
+  return false
+
+def closingTactics : List String :=
+  ["norm_num", "positivity", "decide", "simp", "linarith", "omega"]
+
+/-- A proof of `goalType` by the tactic `tac`, only for a goal with no metavariable (a tactic
+may assign any metavariable it sees). Messages the tactic logs are dropped. -/
+def runTac (goalType : Expr) (tac : String) : TermElabM (Option Expr) := do
+  if goalType.hasMVar then return none
+  let env ← getEnv
+  let .ok stx := Parser.runParserCategory env `tactic tac | return none
+  let msgs := (← getThe Core.State).messages
+  let s ← Term.saveState
+  let r ← budgetedTerm 4000 <| Term.withoutErrToSorry do
+    let goal ← mkFreshExprMVar goalType .syntheticOpaque
+    let remaining ← Tactic.run goal.mvarId! (Tactic.evalTactic stx)
+    unless remaining.isEmpty do return none
+    Term.synthesizeSyntheticMVarsNoPostponing
+    let proof ← instantiateMVars goal
+    if proof.hasSorry || proof.hasMVar then return none
+    return some proof
+  let out ← match r with
+    | some (some p) => pure (some p)
+    | _ => do s.restore; pure none
+  modifyThe Core.State fun st => { st with messages := msgs }
+  return out
+
+def battery (goalType : Expr) : TermElabM (Option Expr) := do
+  for tac in closingTactics do
+    if let some p ← runTac goalType tac then return some p
+  return none
+
+/-- `proof : R` rewritten with the equation lemma `G` (right to left when `symm`), or `none`
+when `G` does not occur or leaves side goals. -/
+def rewriteWith (proof R : Expr) (G : Name) (symm : Bool) : MetaM (Option (Expr × Expr)) := do
+  let s ← saveState
+  try
+    let heq ← mkConstWithFreshMVarLevels G
+    let carrier ← mkFreshExprMVar R
+    let r ← carrier.mvarId!.rewrite R heq symm
+    unless r.mvarIds.isEmpty do
+      s.restore
+      return none
+    return some (← mkEqMP r.eqProof proof, ← instantiateMVars r.eNew)
+  catch _ =>
+    s.restore
+    return none
+
+/-- What `proof : R` gives by glue: `R`, `R` rewritten by up to two equation lemmas of `glue`
+in either direction, the conjuncts, and the non-strict form of a strict inequality. -/
+def glueCandidates (glue : Array Name) (proof R : Expr) : MetaM (Array (Expr × Expr)) := do
+  let mut stage : Array (Expr × Expr) := #[(proof, R)]
+  for _ in [0:2] do
+    let mut next := stage
+    for (p, S) in stage do
+      for g in glue do
+        for symm in [false, true] do
+          if let some c ← rewriteWith p S g symm then next := next.push c
+    stage := next
+  let mut out := #[]
+  for (p, S) in stage do
+    out := out.push (p, S)
+    let S ← whnfR S
+    if S.isAppOfArity ``And 2 then
+      out := out.push (← mkAppM ``And.left #[p], S.appFn!.appArg!)
+      out := out.push (← mkAppM ``And.right #[p], S.appArg!)
+  let mut weak := #[]
+  for (p, S) in out do
+    if S.isAppOfArity ``LT.lt 4 then
+      if let some q ← (try some <$> mkAppM ``le_of_lt #[p] catch _ => pure none) then
+        weak := weak.push (q, ← inferType q)
+  return out ++ weak
+
+/-! ## Readings and the index -/
+
+/-- One step of a reading: instantiate the first binder, take a conjunct, unfold a corpus
+definition, or take a conjunct of an eventual conjunction. -/
+inductive Step where
+  | inst | left | right | unfold | evLeft | evRight
+  deriving BEq, Inhabited, Repr
+
+/-- A reading of a theorem, replayable in any context. -/
+structure Ref where
+  name : Name
+  path : Array Step
+  deriving BEq, Inhabited
+
+/-- Statements of the readings of `stmt` with their paths (fresh metavariables for every
+binder), for the index. -/
+def readingPaths (unfoldOk : Name → Bool) (stmt : Expr) (path : Array Step) :
+    Nat → MetaM (Array (Expr × Array Step))
+  | 0 => do return #[(← instantiateMVars stmt, path)]
+  | depth + 1 => do
+    let stmt ← instantiateMVars stmt
+    let mut out := #[(stmt, path)]
+    let stmt ← whnfR stmt
+    match stmt with
+    | .forallE _ d b _ =>
+        let m ← mkFreshExprMVar d
+        return out ++ (← readingPaths unfoldOk (b.instantiate1 m) (path.push .inst) depth)
+    | _ =>
+      if stmt.isAppOfArity ``And 2 then
+        out := out ++ (← readingPaths unfoldOk stmt.appFn!.appArg! (path.push .left) depth)
+        out := out ++ (← readingPaths unfoldOk stmt.appArg! (path.push .right) depth)
+        return out
+      if stmt.isAppOfArity ``Filter.Eventually 3 then
+        if let .lam n α body bi := stmt.getArg! 1 then
+          if body.isAppOfArity ``And 2 then
+            let f := stmt.getArg! 2
+            for (b, step) in [(body.appFn!.appArg!, Step.evLeft), (body.appArg!, Step.evRight)] do
+              let e ← mkAppM ``Filter.Eventually #[.lam n α b bi, f]
+              out := out ++ (← readingPaths unfoldOk e (path.push step) depth)
+        return out
+      if let .const n _ := stmt.getAppFn then
+        if unfoldOk n then
+          if let some u ← unfoldDefinition? stmt then
+            out := out ++ (← readingPaths unfoldOk u (path.push .unfold) depth)
+      return out
+
+/-- Add the readings of `n` (up to `depth` steps) to the index. -/
+def indexTheorem (tree : DiscrTree Ref) (unfoldOk : Name → Bool) (n : Name) (depth : Nat) :
+    MetaM (DiscrTree Ref × Nat) := do
+  let some ci := (← getEnv).find? n | return (tree, 0)
+  let paths ← withNewMCtxDepth do
+    let lvls ← ci.levelParams.mapM fun _ => mkFreshLevelMVar
+    let ty := ci.type.instantiateLevelParams ci.levelParams lvls
+    let rs := (← budgeted 2000 (readingPaths unfoldOk ty #[] depth)).getD #[]
+    let mut out := #[]
+    for (stmt, path) in rs do
+      if let some keys ← budgeted 500 (DiscrTree.mkPath stmt) then
+        out := out.push (keys, path)
+    return out
+  let mut tree := tree
+  let mut added := 0
+  for (keys, path) in paths do
+    if keys.size ≤ 1 then continue
+    if keys[0]! == .star then continue
+    tree := tree.insertCore keys { name := n, path }
+    added := added + 1
+  return (tree, added)
+
+/-- The index of the given theorems and of the adapters. -/
+def indexOf (names : Array Name) (unfoldOk : Name → Bool) (depth : Nat := 10) :
+    MetaM (DiscrTree Ref) := do
+  let mut tree : DiscrTree Ref := {}
+  for n in names do
+    tree := (← indexTheorem tree unfoldOk n depth).1
+  for n in adapters do
+    tree := (← indexTheorem tree unfoldOk n 2).1
+  return tree
+
+/-- The index of every theorem of the modules under `roots`, and of the adapters. -/
+def indexCorpus (roots : Array Name) (unfoldOk : Name → Bool) (depth : Nat := 8) :
+    MetaM (DiscrTree Ref × Nat × Nat) := do
+  let env ← getEnv
+  let mut tree : DiscrTree Ref := {}
+  let mut theorems := 0
+  let mut entries := 0
+  for modName in env.header.moduleNames, data in env.header.moduleData do
+    unless roots.any (·.isPrefixOf modName) do continue
+    for n in data.constNames do
+      if n.isInternal then continue
+      let some (.thmInfo _) := env.find? n | continue
+      theorems := theorems + 1
+      let (t, k) ← indexTheorem tree unfoldOk n depth
+      tree := t
+      entries := entries + k
+  for n in adapters do
+    tree := (← indexTheorem tree unfoldOk n 2).1
+  return (tree, theorems, entries)
+
+/-! ## Search state -/
+
+structure Config where
+  glue : Array Name
+  unfoldPrefixes : Array Name
+  rootLCtx : LocalContext
+  rootInsts : LocalInstances
+  index : DiscrTree Ref
+  /-- theorems the search may not use (the held-out consumer, a withdrawn supplier) -/
+  exclude : Array Name := #[]
+  maxCandidates : Nat := 24
+  /-- search calls allowed for one demand, counted across backtracking -/
+  callBudget : Nat := 600
+  budgetRef : IO.Ref Nat
+
+/-- A clause of a filter body: a local metavariable standing for it, its clause count, and
+its proof along the filter when some supplier gives it for all large `X`. -/
+structure Leaf where
+  mvar : Expr
+  cost : Nat
+  eventual : Option Expr
+  deriving Inhabited
+
+structure RState where
+  /-- root holes (residual clauses) with their clause counts -/
+  holes : Array (Expr × Nat) := #[]
+  leaves : Array Leaf := #[]
+  /-- data metavariables whose type is not known to be inhabited: each is an obligation
+  (an object to construct) until unification fixes it -/
+  dataHoles : Array Expr := #[]
+  /-- theorems whose readings the search applied -/
+  used : Array Name := #[]
+
+abbrev ResM := ReaderT Config (StateRefT RState TermElabM)
+
+/-- The open clauses of the current state: its residual clauses, the kept clauses of the
+filter body being decomposed, and the data obligations unification has not fixed. -/
+def costNow : ResM Nat := do
+  let s ← get
+  let mut open_ := 0
+  for d in s.dataHoles do
+    if (← instantiateMVars d).hasMVar then open_ := open_ + 1
+  return s.holes.foldl (fun a h => a + h.2) 0 +
+    s.leaves.foldl (fun a l => a + (if l.eventual.isNone then l.cost else 0)) 0 + open_
+
+/-- Whether `Nonempty t` synthesises. -/
+def knownInhabited (t : Expr) : MetaM Bool := do
+  try
+    let u ← getLevel t
+    return (← synthInstance? (mkApp (mkConst ``Nonempty [u]) t)).isSome
+  catch _ => return false
+
+inductive Mode where
+  /-- an unsupplied clause becomes a residual clause -/
+  | residual
+  /-- every clause must be supplied, except a closed proposition (a named input) -/
+  | eventual
+  /-- inside a filter: an unsupplied clause becomes a clause of the filter's residual -/
+  | pointwise (x filt : Expr)
+
+structure Snapshot where
+  term : Term.SavedState
+  st : RState
+
+def snapshot : ResM Snapshot := return { term := ← Term.saveState, st := ← get }
+
+def Snapshot.restore (s : Snapshot) : ResM Unit := do
+  s.term.restore
+  set s.st
+
+/-- A metavariable of the root context, applied to the local variables `ctx`. -/
+def freshIn (ctx : Array Expr) (type : Expr) (kind : MetavarKind := .natural) : ResM Expr := do
+  let cfg ← read
+  let closed ← mkForallFVars ctx type
+  let m ← withLCtx cfg.rootLCtx cfg.rootInsts <| mkFreshExprMVar closed kind
+  return mkAppN m ctx
+
+def conj : List Expr → Expr
+  | [] => mkConst ``True
+  | [a] => a
+  | a :: rest => mkApp2 (mkConst ``And) a (conj rest)
+
+/-- Assign the leaves, in order, the components of `h : conj leaves`. -/
+def assignProjections (ls : List Leaf) (h : Expr) : MetaM Unit := do
+  match ls with
+  | [] => pure ()
+  | [l] => l.mvar.mvarId!.assign h
+  | l :: rest =>
+      l.mvar.mvarId!.assign (← mkAppM ``And.left #[h])
+      assignProjections rest (← mkAppM ``And.right #[h])
+
+def isAtTop (f : Expr) : Bool := f.getAppFn.isConstOf ``Filter.atTop
+
+def headsMatch (stmt T : Expr) : Bool :=
+  match stmt, T with
+  | .forallE .., .forallE .. => true
+  | _, _ =>
+    match stmt.getAppFn, T.getAppFn with
+    | .const a _, .const b _ => a == b
+    | _, _ => false
+
+def unfoldable (T : Expr) : ResM Bool := do
+  let .const n _ := T.getAppFn | return false
+  unless (← read).unfoldPrefixes.any (·.isPrefixOf n) do return false
+  match (← getEnv).find? n with
+  | some (.defnInfo _) => return true
+  | _ => return false
+
+/-- Atomic clauses of `T`, counted through `∧`, `∃`, `∀`, corpus definitions and filter
+bodies (the hypotheses of an implication are not clauses). -/
+def clauseCountAux : Nat → Expr → ResM Nat
+  | 0, _ => return 1
+  | depth + 1, T => do
+    let T ← whnfR (← instantiateMVars T)
+    match T with
+    | .forallE n d b bi => withLocalDecl n bi d fun x => clauseCountAux depth (b.instantiate1 x)
+    | _ =>
+      if T.isAppOfArity ``And 2 then
+        return (← clauseCountAux depth T.appFn!.appArg!) + (← clauseCountAux depth T.appArg!)
+      if T.isAppOfArity ``Exists 2 then
+        return ← withLocalDeclD `w T.appFn!.appArg! fun w =>
+          clauseCountAux depth (T.appArg!.beta #[w])
+      if T.isAppOfArity ``Filter.Eventually 3 || T.isAppOfArity ``Filter.Frequently 3 then
+        return ← withLocalDeclD `X (T.getArg! 0) fun x =>
+          clauseCountAux depth ((T.getArg! 1).beta #[x])
+      if ← unfoldable T then
+        if let some u ← unfoldDefinition? T then return ← clauseCountAux depth u
+      return 1
+
+/-- Atomic clauses of `T`, counted to depth `depth`. -/
+def clauseCount (T : Expr) (depth : Nat := 10) : ResM Nat := clauseCountAux depth T
+
+def mkHole (ctx : Array Expr) (T : Expr) : ResM Expr := do
+  let h ← freshIn ctx T .syntheticOpaque
+  let c ← clauseCount T
+  modify fun s => { s with holes := s.holes.push (h, c) }
+  return h
+
+/-- Replay a reading path of `proof : stmt` in context `ctx`: its proof, statement and
+obligations (data binders become root metavariables, propositions obligations). -/
+def replay (ctx : Array Expr) (proof stmt : Expr) (obls : Array Expr) :
+    List Step → ResM (Option (Expr × Expr × Array Expr))
+  | [] => return some (proof, ← instantiateMVars stmt, obls)
+  | s :: rest => do
+    let stmt ← whnfR (← instantiateMVars stmt)
+    match s with
+    | .inst =>
+        let .forallE _ d b bi := stmt | return none
+        if bi.isInstImplicit then
+          let m ← mkFreshExprMVar d
+          replay ctx (mkApp proof m) (b.instantiate1 m) (obls.push m) rest
+        else if ← isProp d then
+          let m ← mkFreshExprMVar d .syntheticOpaque
+          replay ctx (mkApp proof m) (b.instantiate1 m) (obls.push m) rest
+        else
+          let m ← freshIn ctx d
+          unless ← knownInhabited d do
+            modify fun st => { st with dataHoles := st.dataHoles.push m }
+          replay ctx (mkApp proof m) (b.instantiate1 m) obls rest
+    | .left =>
+        unless stmt.isAppOfArity ``And 2 do return none
+        replay ctx (← mkAppM ``And.left #[proof]) stmt.appFn!.appArg! obls rest
+    | .right =>
+        unless stmt.isAppOfArity ``And 2 do return none
+        replay ctx (← mkAppM ``And.right #[proof]) stmt.appArg! obls rest
+    | .unfold =>
+        let some u ← unfoldDefinition? stmt | return none
+        replay ctx proof u obls rest
+    | .evLeft | .evRight =>
+        unless stmt.isAppOfArity ``Filter.Eventually 3 do return none
+        let α := stmt.getArg! 0
+        let pred := stmt.getArg! 1
+        let proj := if s == .evLeft then ``And.left else ``And.right
+        let some p ← withLocalDeclD `x α fun x => do
+            let body ← whnfR (pred.beta #[x])
+            unless body.isAppOfArity ``And 2 do return none
+            let g ← withLocalDeclD `h body fun h => do mkLambdaFVars #[x, h] (← mkAppM proj #[h])
+            return some (← mkAppM ``Filter.Eventually.mono #[proof, g])
+          | return none
+        replay ctx p (← inferType p) obls rest
+
+/-- Readings retrieved for `T`: at most `maxCandidates`, excluded theorems skipped. -/
+def candidates (T : Expr) : ResM (Array Ref) := do
+  let cfg ← read
+  let refs ← cfg.index.getUnify T
+  let mut out := #[]
+  for r in refs do
+    if out.size ≥ cfg.maxCandidates then break
+    if cfg.exclude.contains r.name then continue
+    unless out.contains r do out := out.push r
+  return out
+
+/-- An unsupplied clause with no recursion left: a residual clause, a named input, or a kept
+clause of a filter body. -/
+def leaveBase (ctx : Array Expr) (T : Expr) (mode : Mode) : ResM (Option (Expr × Nat)) := do
+  match mode with
+  | .residual => return some (← mkHole ctx T, 0)
+  | .eventual =>
+      if T.hasFVar || T.hasMVar then return none
+      return some (← mkHole ctx T, 0)
+  | .pointwise _ _ =>
+      let leafM ← mkFreshExprMVar T .syntheticOpaque
+      let c ← clauseCount T
+      modify fun st => { st with leaves := st.leaves.push { mvar := leafM, cost := c, eventual := none } }
+      return some (leafM, 0)
+
+mutual
+
+/-- A proof of `T` in context `ctx` and the number of clauses it leaves open. -/
+def solve (k : Nat) (ctx : Array Expr) (T : Expr) (fuel : Nat) (mode : Mode) :
+    ResM (Option (Expr × Nat)) := do
+  match k with
+  | 0 => leaveBase ctx T mode
+  | k + 1 => do
+    let cfg ← read
+    let spent ← cfg.budgetRef.modifyGet fun n => (n + 1, n + 1)
+    let fuel := if spent > cfg.callBudget then 0 else fuel
+    let T ← instantiateMVars T
+    -- a hypothesis in context, without fixing any witness
+    for x in ctx do
+      let d ← inferType x
+      if ← isProp d then
+        if ← withNewMCtxDepth (defEq d T) then return some (x, 0)
+    -- the battery, on a goal with no metavariable and no corpus constant
+    if !T.hasMVar && !(T.getUsedConstants.any fun c => cfg.unfoldPrefixes.any (·.isPrefixOf c)) then
+      if let some p ← battery T then return some (p, 0)
+    if fuel == 0 then return (← leave k ctx T fuel mode)
+    let start ← snapshot
+    let base ← costNow
+    let mut best : Option (Expr × Nat × Snapshot) := none
+    -- a goal along `atTop`
+    if (T.isAppOfArity ``Filter.Frequently 3 || T.isAppOfArity ``Filter.Eventually 3) &&
+        isAtTop (T.getArg! 2) then
+      if let .residual := mode then
+        if let some p ← filterRule k ctx T fuel then
+          let c := (← costNow) - base
+          if c == 0 then return some (p, 0)
+          best := some (p, c, ← snapshot)
+        start.restore
+    -- readings retrieved from the index
+    for ref in ← candidates T do
+      start.restore
+      let c0 ← mkConstWithFreshMVarLevels ref.name
+      let some (proof, stmt, obls) ← replay ctx c0 (← inferType c0) #[] ref.path.toList | continue
+      unless headsMatch stmt T do continue
+      unless ← defEq stmt T do continue
+      unless ← discharge k ctx obls fuel mode do continue
+      modify fun st => { st with used := st.used.push ref.name }
+      let p ← instantiateMVars proof
+      let c := (← costNow) - base
+      if c == 0 then return some (p, 0)
+      if best.all (fun b => c < b.2.1) then best := some (p, c, ← snapshot)
+    -- structure
+    start.restore
+    if let some p ← structural k ctx T fuel mode then
+      let c := (← costNow) - base
+      if best.all (fun b => c < b.2.1) then best := some (p, c, ← snapshot)
+    -- leave it
+    start.restore
+    if let some (p, _) ← leave k ctx T fuel mode then
+      let c := (← costNow) - base
+      if best.all (fun b => c < b.2.1) then best := some (p, c, ← snapshot)
+    match best with
+    | some (p, c, s) =>
+        s.restore
+        return some (p, c)
+    | none =>
+        start.restore
+        return none
+
+/-- Prove a reading's obligations (instances by synthesis). -/
+def discharge (k : Nat) (ctx : Array Expr) (obls : Array Expr) (fuel : Nat) (mode : Mode) :
+    ResM Bool := do
+  match k with
+  | 0 => return false
+  | k + 1 => do
+    for o in obls do
+      if ← o.mvarId!.isAssigned then continue
+      let oT ← instantiateMVars (← inferType o)
+      if (← isClass? oT).isSome then
+        match ← (try (some <$> synthInstance oT) catch _ => pure none) with
+        | some inst => o.mvarId!.assign inst
+        | none => return false
+      else
+        match ← solve k ctx oT (fuel - 1) mode with
+        | some (p, _) => o.mvarId!.assign p
+        | none => return false
+    return true
+
+def structural (k : Nat) (ctx : Array Expr) (T : Expr) (fuel : Nat) (mode : Mode) :
+    ResM (Option Expr) := do
+  match k with
+  | 0 => return none
+  | k + 1 => do
+    match T with
+    | .forallE n d b bi =>
+        match mode with
+        | .pointwise .. => return none
+        | _ =>
+          withLocalDecl n bi d fun x => do
+            match ← solve k (ctx.push x) (b.instantiate1 x) fuel mode with
+            | some (p, _) => return some (← mkLambdaFVars #[x] p)
+            | none => return none
+    | _ =>
+      if T.isAppOfArity ``And 2 then
+        let A := T.appFn!.appArg!
+        let B := T.appArg!
+        -- the larger conjunct first, so that witnesses it fixes reach the side conditions
+        let swapped := A.approxDepth < B.approxDepth
+        let (first, second) := if swapped then (B, A) else (A, B)
+        let some (p1, _) ← solve k ctx first fuel mode | return none
+        let some (p2, _) ← solve k ctx (← instantiateMVars second) fuel mode | return none
+        let (pa, pb) := if swapped then (p2, p1) else (p1, p2)
+        return some (← mkAppM ``And.intro #[pa, pb])
+      if T.isAppOfArity ``Exists 2 then
+        let α := T.appFn!.appArg!
+        let pred := T.appArg!
+        let w ← freshIn ctx α
+        unless ← knownInhabited α do
+          modify fun st => { st with dataHoles := st.dataHoles.push w }
+        let some (p, _) ← solve k ctx (pred.beta #[w]) fuel mode | return none
+        return some (← mkAppOptM ``Exists.intro #[α, pred, w, p])
+      if ← unfoldable T then
+        if let some T' ← unfoldDefinition? T then
+          return (← solve k ctx T' (fuel - 1) mode).map (·.1)
+      return none
+
+/-- An unsupplied clause: a residual clause, a named input, or a clause of a filter body
+(supplied along the filter when some reading gives it for all large `X`). -/
+def leave (k : Nat) (ctx : Array Expr) (T : Expr) (fuel : Nat) (mode : Mode) :
+    ResM (Option (Expr × Nat)) := do
+  match k with
+  | 0 => leaveBase ctx T mode
+  | k + 1 => do
+    match mode with
+    | .residual => return some (← mkHole ctx T, 0)
+    | .eventual =>
+        if T.hasFVar || T.hasMVar then return none
+        return some (← mkHole ctx T, 0)
+    | .pointwise x f =>
+        let leafM ← mkFreshExprMVar T .syntheticOpaque
+        let c ← clauseCount T
+        if fuel > 0 then
+          if let some e ← supplyEventually k ctx.pop x f T (fuel - 1) then
+            modify fun st => { st with leaves := st.leaves.push { mvar := leafM, cost := c, eventual := some e } }
+            return some (leafM, 0)
+        modify fun st => { st with leaves := st.leaves.push { mvar := leafM, cost := c, eventual := none } }
+        return some (leafM, 0)
+
+/-- A proof of `∀ᶠ X in f, T X`: from a reading directly, or from an eventual reading
+`∀ᶠ X, R X` whose glue candidates unify with `T X`. -/
+def supplyEventually (k : Nat) (outer : Array Expr) (x f T : Expr) (fuel : Nat) :
+    ResM (Option Expr) := do
+  match k with
+  | 0 => return none
+  | k + 1 => do
+    let s ← snapshot
+    let E ← mkAppM ``Filter.Eventually #[← mkLambdaFVars #[x] T, f]
+    if let some (e, _) ← solve k outer E fuel .eventual then return some e
+    s.restore
+    -- every eventual reading along `f`
+    let α ← inferType x
+    let pat ← mkAppM ``Filter.Eventually #[← mkFreshExprMVar (← mkArrow α (mkSort levelZero)), f]
+    for ref in ← candidates pat do
+      s.restore
+      let c0 ← mkConstWithFreshMVarLevels ref.name
+      let some (proof, stmt, obls) ← replay outer c0 (← inferType c0) #[] ref.path.toList | continue
+      unless stmt.isAppOfArity ``Filter.Eventually 3 do continue
+      let R := (stmt.getArg! 1).beta #[x]
+      let glue := (← read).glue
+      let found ← withLocalDeclD `hR R fun hR => do
+        for (p, C) in ← glueCandidates glue hR R do
+          if ← defEq C T then
+            return some (← mkLambdaFVars #[x, hR] (← instantiateMVars p))
+        return none
+      let some g := found | continue
+      unless ← discharge k outer obls fuel .eventual do continue
+      modify fun st => { st with used := st.used.push ref.name }
+      return some (← mkAppM ``Filter.Eventually.mono #[← instantiateMVars proof, g])
+    s.restore
+    return none
+
+/-- `∃ᶠ X in atTop, Q X` or `∀ᶠ X in atTop, Q X`: decompose `Q X`, supply what some reading
+gives for all large `X`, and keep the rest as one residual along the filter. -/
+def filterRule (k : Nat) (ctx : Array Expr) (T : Expr) (fuel : Nat) : ResM (Option Expr) := do
+  match k with
+  | 0 => return none
+  | k + 1 => do
+    let freq := T.isAppOfArity ``Filter.Frequently 3
+    let α := T.getArg! 0
+    let pred := T.getArg! 1
+    let f := T.getArg! 2
+    withLocalDeclD `X α fun x => do
+      let saved := (← get).leaves
+      modify fun s => { s with leaves := #[] }
+      let r ← solve k (ctx.push x) (pred.beta #[x]) (fuel - 1) (.pointwise x f)
+      let leaves := (← get).leaves
+      modify fun s => { s with leaves := saved }
+      let some (q, _) := r | return none
+      let kept := leaves.filter (·.eventual.isNone)
+      let sup := leaves.filter (·.eventual.isSome)
+      let keptT ← kept.mapM fun l => do instantiateMVars (← inferType l.mvar)
+      let supT ← sup.mapM fun l => do instantiateMVars (← inferType l.mvar)
+      let K := conj keptT.toList
+      let S := conj supT.toList
+      let mut eS ← mkAppM ``Filter.eventually_true #[f]
+      if !sup.isEmpty then
+        eS := sup.back!.eventual.getD eS
+        for l in (sup.pop).reverse do
+          eS ← mkAppM ``Filter.Eventually.and #[l.eventual.getD eS, eS]
+      let glue ← withLocalDeclD `hKS (mkApp2 (mkConst ``And) K S) fun hKS => do
+        assignProjections kept.toList (← mkAppM ``And.left #[hKS])
+        assignProjections sup.toList (← mkAppM ``And.right #[hKS])
+        mkLambdaFVars #[x, hKS] (← instantiateMVars q)
+      let predK ← mkLambdaFVars #[x] K
+      if freq then
+        let comb ←
+          if kept.isEmpty then
+            mkAppM ``Filter.Eventually.frequently
+              #[← mkAppM ``Filter.Eventually.and #[← mkAppM ``Filter.eventually_true #[f], eS]]
+          else
+            let hole ← mkHole ctx (← mkAppM ``Filter.Frequently #[predK, f])
+            mkAppM ``Filter.Frequently.and_eventually #[hole, eS]
+        return some (← mkAppM ``Filter.Frequently.mono #[comb, glue])
+      else
+        let hK ←
+          if kept.isEmpty then mkAppM ``Filter.eventually_true #[f]
+          else mkHole ctx (← mkAppM ``Filter.Eventually #[predK, f])
+        return some (← mkAppM ``Filter.Eventually.mono #[← mkAppM ``Filter.Eventually.and #[hK, eS], glue])
+
+end
+
+/-- Residualise `demand` against `index`: the proof term with its holes, and the number of
+search calls. -/
+def searchResidual (demand : Expr) (index : DiscrTree Ref) (glue : Array Name) (fuel : Nat := 8)
+    (exclude : Array Name := #[]) (callBudget : Nat := 600) (maxCandidates : Nat := 24) :
+    TermElabM (Option Expr × Nat × Array Name) := do
+  let budgetRef ← IO.mkRef 0
+  let cfg : Config := {
+    glue, unfoldPrefixes := #[`ErdosProblems, `Erdos249257, `DemandLedger]
+    rootLCtx := ← getLCtx, rootInsts := ← getLocalInstances
+    index, exclude, callBudget, maxCandidates, budgetRef }
+  let (r, st) ← ((solve 100000 #[] demand fuel .residual).run cfg).run {}
+  let mut used : Array Name := #[]
+  for n in st.used do
+    unless used.contains n || adapters.contains n do used := used.push n
+  return (r.map (·.1), ← budgetRef.get, used)
+
+/-- Close residual clauses that became closed propositions (a witness fixed later) by the
+battery, abstract the rest, report them, and add `name : ∀ residual clauses, demand` after
+the kernel checks it. Returns the number of propositional clauses and the suppliers used. -/
+def certify (name : Name) (label : String) (proof : Expr) (used : Array Name) :
+    TermElabM (Nat × Array Name) := do
+  let proof ← instantiateMVars proof
+  for m in (← getMVars proof) do
+    unless ← m.isAssigned do
+      let t ← instantiateMVars (← m.getType)
+      if (← isProp t) && !t.hasMVar then
+        if let some p ← runTac t "(intros; first | norm_num | positivity | decide | simp)" then
+          m.assign p
+  let proof ← instantiateMVars proof
+  let res ← abstractMVars proof
+  let value := res.expr
+  let type ← instantiateMVars (← inferType value)
+  -- only the abstracted holes: `type` continues into the demand's own binders
+  let (props, objects) ← forallBoundedTelescope type (some res.numMVars) fun xs _ => do
+    let mut n := 0
+    let mut objs := 0
+    for x in xs do
+      let t ← inferType x
+      if ← isProp t then
+        n := n + 1
+        logInfo m!"[{label}]  clause {← x.fvarId!.getUserName} : {t}"
+      else if ← knownInhabited t then
+        logInfo m!"[{label}]  witness {← x.fvarId!.getUserName} : {t}"
+      else
+        objs := objs + 1
+        logInfo m!"[{label}]  object {← x.fvarId!.getUserName} : {t}"
+    return (n, objs)
+  addDecl (.thmDecl { name, levelParams := res.paramNames.toList, type, value })
+  logInfo m!"[{label}] certificate {name}: {props} propositional clause(s), {objects} \
+    object(s) to construct, {res.numMVars - props - objects} witness(es); readings applied from \
+    {used.toList}"
+  return (props + objects, used)
+
+end ErdosProblems.ArgumentGraph.Residualise
+
+
+/-! ## The command -/
+
+namespace ErdosProblems.ArgumentGraph.Residualise
+
+open Lean Meta Elab Command
+
+/- Every atom below except `residualise` is already a keyword of Lean, so importing this module
+reserves no new word (a reserved `glue` or `as` would break those names downstream). -/
+syntax (name := residualiseCmd)
+  "residualise " ident " for " ident " using " ident+ (" with " ident+)? : command
+
+/-- `residualise N for D using s₁ … sₙ with g₁ … gₖ` searches for a proof of the proposition `D`
+from the readings of `s₁ … sₙ`, gluing eventual readings with the equation lemmas `g₁ … gₖ`, and
+adds `N : ∀ residual clauses, D` after the kernel checks it. The residual clauses are logged.
+The certificate is regenerated whenever the module is built, so a change in the search that
+changes its statement breaks every use of `N`. -/
+@[command_elab residualiseCmd] def elabResidualise : CommandElab := fun stx => do
+  liftTermElabM do
+    let name := (← getCurrNamespace) ++ stx[1].getId
+    let demandName ← realizeGlobalConstNoOverloadWithInfo stx[3]
+    let suppliers ← stx[5].getArgs.mapM fun s => realizeGlobalConstNoOverloadWithInfo s
+    let glue ← if stx[6].isNone then pure #[]
+      else stx[6][1].getArgs.mapM fun s => realizeGlobalConstNoOverloadWithInfo s
+    let unfoldOk := fun (n : Name) => [`ErdosProblems, `Erdos249257].any (·.isPrefixOf n)
+    let index ← indexOf suppliers unfoldOk
+    let (r, calls, used) ← searchResidual (mkConst demandName) index glue
+    match r with
+    | none => throwError "residualise {demandName}: no residualisation found ({calls} calls)"
+    | some proof =>
+        let (clauses, _) ← certify name s!"{demandName}" proof used
+        addDocStringCore name <| s!"`{demandName}` from its residual clauses (the binders of this \
+          theorem): found by `residualise` from the readings of {suppliers.toList} \
+          ({clauses} clause(s) or object(s) left open, {calls} search calls) and checked by the \
+          kernel."
+
+end ErdosProblems.ArgumentGraph.Residualise
+
+-- SPDX-FileCopyrightText: 2026 Will Cook
+-- SPDX-License-Identifier: Apache-2.0
+
+/-!
+# Abduction in an observable language
+
+A residual clause `C` that a search could not supply is often a linear comparison between
+quantities, some of which the corpus already controls: a lower bound on a cardinality, a
+partition identity, a budget. Keeping `C` as the residual asks for more than the corpus needs;
+leaving the demand itself is the degenerate answer. This module computes what `C` still needs
+once the controlled quantities are eliminated.
+
+Fix the facts `Γ` (linear comparisons in context), and split the atoms into *hidden* ones
+(those some fact mentions, other than the parameters in scope) and *observable* ones (the
+parameters, and the quantities no fact mentions). The weakest condition on the observables
+that gives `C` under `Γ` is
+
+  `R*(x) = ¬ ∃ y, Γ(x, y) ∧ ¬ C(x, y)`,
+
+since any sufficient condition excludes every counterexample. Over an ordered field the
+counterexample region is a polyhedron and Fourier–Motzkin elimination of the hidden atoms
+computes its projection exactly; `R*` is the negation of that projection, a disjunction of
+linear comparisons in the observables. The kernel then checks `Γ → R* → C` by `linarith`, so
+sufficiency is proved; weakestness holds relative to the linear facts used and is computed,
+not proved. Over `ℕ` and `ℤ` the rational projection still gives a sufficient condition.
+
+The tactic `abduce` replaces a comparison goal by `R*` (closing it when `R*` is `True`) and
+logs `R*`; `abduce [o₁, …]` fixes the observable atoms; `abduce using f₁, …` restricts the
+facts to the given terms. `abduceClause` is the same operation for a search.
+-/
+
+set_option autoImplicit false
+
+open Lean Meta Elab Term Mathlib.Tactic
+
+namespace ErdosProblems.ArgumentGraph.Abduce
+
+/-! ## Linear rows over ℚ -/
+
+inductive Rel where
+  | eq | le | lt
+  deriving BEq, Inhabited, Repr
+
+def Rel.join : Rel → Rel → Rel
+  | .lt, _ => .lt
+  | _, .lt => .lt
+  | .le, _ => .le
+  | _, .le => .le
+  | .eq, .eq => .eq
+
+/-- `∑ i, c[i] * x i + k  rel  0`, with `c` dense over the atoms. -/
+structure Row where
+  c : Array ℚ
+  k : ℚ
+  rel : Rel
+  deriving BEq, Inhabited, Repr
+
+def Row.coeff (r : Row) (i : Nat) : ℚ := r.c.getD i 0
+
+def Row.scale (q : ℚ) (r : Row) : Row := { r with c := r.c.map (q * ·), k := q * r.k }
+
+def Row.add (r s : Row) : Row :=
+  let n := max r.c.size s.c.size
+  { c := (Array.range n).map fun i => r.coeff i + s.coeff i, k := r.k + s.k,
+    rel := r.rel.join s.rel }
+
+def Row.isConstant (r : Row) : Bool := r.c.all (· == 0)
+
+/-- For a row with no atom: `some true` when it holds, `some false` when it fails. -/
+def Row.constantTruth (r : Row) : Option Bool :=
+  if !r.isConstant then none
+  else match r.rel with
+    | .eq => some (r.k == 0)
+    | .le => some (r.k ≤ 0)
+    | .lt => some (r.k < 0)
+
+/-- Scale a row so that its first nonzero coefficient has absolute value one. -/
+def Row.normalize (r : Row) : Row :=
+  match r.c.find? (· != 0) with
+  | some a => r.scale (1 / |a|)
+  | none => r
+
+/-- Drop rows that hold identically and duplicates; `none` when some row fails identically. -/
+def tidy (rows : Array Row) : Option (Array Row) := Id.run do
+  let mut out : Array Row := #[]
+  for r in rows do
+    match r.constantTruth with
+    | some true => continue
+    | some false => return none
+    | none =>
+      let r := r.normalize
+      unless out.contains r do out := out.push r
+  return some out
+
+/-- One Fourier–Motzkin step: eliminate atom `v` (by an equality when one has it). -/
+def eliminate (v : Nat) (rows : Array Row) : Array Row := Id.run do
+  let pivot? := rows.findIdx? fun r => r.rel == .eq && r.coeff v != 0
+  match pivot? with
+  | some p =>
+    let e := rows[p]!
+    let c := e.coeff v
+    let mut out := #[]
+    for i in [0:rows.size] do
+      if i == p then continue
+      let r := rows[i]!
+      let d := r.coeff v
+      out := out.push (if d == 0 then r else r.add (e.scale (-d / c)))
+    return out
+  | none =>
+    let pos := rows.filter (·.coeff v > 0)
+    let neg := rows.filter (·.coeff v < 0)
+    let mut out := rows.filter (·.coeff v == 0)
+    for p in pos do
+      for n in neg do
+        out := out.push ((p.scale (-(n.coeff v))).add (n.scale (p.coeff v)))
+    return out
+
+/-- Eliminate the atoms `hidden`, cheapest first. `some (some rows)` is the projection,
+`some none` means the rows are inconsistent, and `none` means the elimination passed `maxRows`
+rows and gave up. -/
+def project (hidden : Array Nat) (rows : Array Row) (maxRows : Nat := 4000) :
+    Option (Option (Array Row)) := Id.run do
+  let some rows0 := tidy rows | return some none
+  let mut rows := rows0
+  let mut todo := hidden
+  for _ in [0:hidden.size] do
+    if todo.isEmpty then break
+    -- the atom whose elimination creates the fewest rows
+    let mut best := todo[0]!
+    let mut bestCost := rows.size * rows.size + 1
+    for v in todo do
+      let hasEq := rows.any fun r => r.rel == .eq && r.coeff v != 0
+      let cost := if hasEq then 0 else
+        (rows.filter (·.coeff v > 0)).size * (rows.filter (·.coeff v < 0)).size
+      if cost < bestCost then
+        best := v
+        bestCost := cost
+    todo := todo.filter (· != best)
+    let next := eliminate best rows
+    if next.size > maxRows then return none
+    let some t := tidy next | return some none
+    rows := t
+  return some (some rows)
+
+/-- Rows implied by the others are dropped (checked by eliminating every atom). -/
+def pruneRedundant (rows : Array Row) : Array Row := Id.run do
+  let mut keep := rows
+  let mut i := 0
+  for _ in [0:rows.size] do
+    if i ≥ keep.size then break
+    let r := keep[i]!
+    let others := (keep.toList.eraseIdx i).toArray
+    -- `r` is redundant when `others ∧ ¬r` is inconsistent
+    let negR : Array Row := match r.rel with
+      | .le => #[{ r.scale (-1) with rel := .lt }]
+      | .lt => #[{ r.scale (-1) with rel := .le }]
+      | .eq => #[]
+    if negR.isEmpty then
+      i := i + 1
+      continue
+    let n := (others.foldl (fun m s => max m s.c.size) r.c.size)
+    match project ((Array.range n)) (others ++ negR) with
+    | some none => keep := others
+    | _ => i := i + 1
+  return keep
+
+/-- Whether the rows `fs` imply the row `r` (checked by eliminating every atom). -/
+def impliedBy (fs : Array Row) (r : Row) : Bool :=
+  let negR : Array Row := match r.rel with
+    | .le => #[{ r.scale (-1) with rel := .lt }]
+    | .lt => #[{ r.scale (-1) with rel := .le }]
+    | .eq => #[]
+  if negR.isEmpty then false
+  else
+    let n := fs.foldl (fun m s => max m s.c.size) r.c.size
+    match project (Array.range n) (fs ++ negR) with
+    | some none => true
+    | _ => false
+
+/-! ## Reading linear forms off expressions -/
+
+/-- A rational numeral: literals, casts of literals, and `+ - * /` of numerals. -/
+def numeral? : Nat → Expr → MetaM (Option ℚ)
+  | 0, _ => return none
+  | fuel + 1, e => do
+    let e ← instantiateMVars e
+    if let .lit (.natVal v) := e then return some v
+    match e.getAppFnArgs with
+    | (``OfNat.ofNat, #[_, n, _]) =>
+        match n with
+        | .lit (.natVal v) => return some v
+        | _ => return none
+    | (``Nat.cast, #[_, _, a]) => numeral? fuel a
+    | (``NatCast.natCast, #[_, _, a]) => numeral? fuel a
+    | (``Int.cast, #[_, _, a]) => numeral? fuel a
+    | (``IntCast.intCast, #[_, _, a]) => numeral? fuel a
+    | (``OfScientific.ofScientific, #[_, _, m, b, x]) =>
+        match m, b, x with
+        | .lit (.natVal m), .const ``Bool.true _, .lit (.natVal x) => return some ((m : ℚ) / 10 ^ x)
+        | .lit (.natVal m), .const ``Bool.false _, .lit (.natVal x) => return some ((m : ℚ) * 10 ^ x)
+        | _, _, _ => return none
+    | (``Neg.neg, #[_, _, a]) => return (← numeral? fuel a).map (- ·)
+    | (``HAdd.hAdd, #[_, _, _, _, a, b]) => do
+        let some x ← numeral? fuel a | return none
+        let some y ← numeral? fuel b | return none
+        return some (x + y)
+    | (``HSub.hSub, #[_, _, _, _, a, b]) => do
+        let some x ← numeral? fuel a | return none
+        let some y ← numeral? fuel b | return none
+        return some (x - y)
+    | (``HMul.hMul, #[_, _, _, _, a, b]) => do
+        let some x ← numeral? fuel a | return none
+        let some y ← numeral? fuel b | return none
+        return some (x * y)
+    | (``HDiv.hDiv, #[_, _, _, _, a, b]) => do
+        let some x ← numeral? fuel a | return none
+        let some y ← numeral? fuel b | return none
+        if y == 0 then return none
+        return some (x / y)
+    | _ => return none
+
+/-- A sparse linear form: coefficients by atom index, and a constant. -/
+structure Lin where
+  terms : List (Nat × ℚ) := []
+  k : ℚ := 0
+  deriving Inhabited
+
+def Lin.scale (q : ℚ) (l : Lin) : Lin := { terms := l.terms.map fun (i, a) => (i, q * a), k := q * l.k }
+
+def Lin.add (l m : Lin) : Lin := Id.run do
+  let mut t := l.terms
+  for (i, a) in m.terms do
+    if t.any (·.1 == i) then t := t.map fun (j, b) => if j == i then (j, b + a) else (j, b)
+    else t := t ++ [(i, a)]
+  return { terms := t, k := l.k + m.k }
+
+/-- The linear form of `e`; subterms that are not sums, differences, negations, or products and
+quotients by numerals are atoms. Truncated subtraction (`natSub`, over `ℕ`) and integer
+division (`integral`, over `ℕ` and `ℤ`) are atoms. -/
+def linForm (natSub integral : Bool) : Nat → Expr → AtomM Lin
+  | 0, e => do return { terms := [((← AtomM.addAtom e).1, 1)] }
+  | fuel + 1, e => do
+    let e ← instantiateMVars e
+    if let some q ← numeral? 64 e then return { k := q }
+    let atom : AtomM Lin := do return { terms := [((← AtomM.addAtom e).1, 1)] }
+    match e.getAppFnArgs with
+    | (``HAdd.hAdd, #[_, _, _, _, a, b]) =>
+        return (← linForm natSub integral fuel a).add (← linForm natSub integral fuel b)
+    | (``HSub.hSub, #[_, _, _, _, a, b]) =>
+        if natSub then atom
+        else do
+          let la ← linForm natSub integral fuel a
+          let lb ← linForm natSub integral fuel b
+          return la.add (lb.scale (-1))
+    | (``Neg.neg, #[_, _, a]) => return (← linForm natSub integral fuel a).scale (-1)
+    | (``HMul.hMul, #[_, _, _, _, a, b]) =>
+        if let some q ← numeral? 64 a then return (← linForm natSub integral fuel b).scale q
+        if let some q ← numeral? 64 b then return (← linForm natSub integral fuel a).scale q
+        atom
+    | (``HDiv.hDiv, #[_, _, _, _, a, b]) =>
+        if integral then atom
+        else if let some q ← numeral? 64 b then
+          if q == 0 then atom else return (← linForm natSub integral fuel a).scale (1 / q)
+        else atom
+    | _ => atom
+
+/-- `lhs rel rhs` read off a comparison proposition (through `≥`, `>` and `¬`), with its
+carrier type. -/
+def comparison? (P : Expr) : MetaM (Option (Expr × Expr × Expr × Rel)) := do
+  let P ← instantiateMVars P
+  match P.getAppFnArgs with
+  | (``LE.le, #[α, _, a, b]) => return some (α, a, b, .le)
+  | (``LT.lt, #[α, _, a, b]) => return some (α, a, b, .lt)
+  | (``GE.ge, #[α, _, a, b]) => return some (α, b, a, .le)
+  | (``GT.gt, #[α, _, a, b]) => return some (α, b, a, .lt)
+  | (``Eq, #[α, a, b]) =>
+      if (← isProp α) || α.isSort then return none else return some (α, a, b, .eq)
+  | (``Not, #[Q]) =>
+      match Q.getAppFnArgs with
+      | (``LE.le, #[α, _, a, b]) => return some (α, b, a, .lt)
+      | (``LT.lt, #[α, _, a, b]) => return some (α, b, a, .le)
+      | (``GE.ge, #[α, _, a, b]) => return some (α, a, b, .lt)
+      | (``GT.gt, #[α, _, a, b]) => return some (α, a, b, .le)
+      | _ => return none
+  | _ => return none
+
+/-- `(is ℕ, is ℕ or ℤ)`. -/
+def carrierKind (α : Expr) : MetaM (Bool × Bool) := do
+  let α ← whnfR α
+  return (α.isConstOf ``Nat, α.isConstOf ``Nat || α.isConstOf ``Int)
+
+/-- A parameter: a local variable, or a cast of one. -/
+def isParameter (e : Expr) : Bool :=
+  e.isFVar ||
+    match e.getAppFnArgs with
+    | (``Nat.cast, #[_, _, a]) => a.isFVar
+    | (``NatCast.natCast, #[_, _, a]) => a.isFVar
+    | (``Int.cast, #[_, _, a]) => a.isFVar
+    | (``IntCast.intCast, #[_, _, a]) => a.isFVar
+    | _ => false
+
+def isNatCast (e : Expr) : Option Expr :=
+  match e.getAppFnArgs with
+  | (``Nat.cast, #[_, _, a]) => some a
+  | (``NatCast.natCast, #[_, _, a]) => some a
+  | _ => none
+
+/-! ## Building the residual -/
+
+def numeralExpr (α : Expr) (q : ℚ) : MetaM Expr := do
+  let natE (n : Nat) : MetaM Expr := mkNumeral α n
+  let absq := |q|
+  let body ←
+    if absq.den == 1 then natE absq.num.natAbs
+    else mkAppM ``HDiv.hDiv #[← natE absq.num.natAbs, ← natE absq.den]
+  if q < 0 then mkAppM ``Neg.neg #[body] else return body
+
+/-- `∑ q_i * x_i + k` over `α` with positive terms added and negative ones subtracted;
+`none` for the empty sum with zero constant. -/
+def sumExpr (α : Expr) (atoms : Array Expr) (coeffs : List (Nat × ℚ)) (k : ℚ) :
+    MetaM Expr := do
+  let term (i : Nat) (q : ℚ) : MetaM Expr := do
+    let x := atoms[i]!
+    if q == 1 then return x else mkAppM ``HMul.hMul #[← numeralExpr α q, x]
+  let mut acc : Option Expr := none
+  for (i, q) in coeffs do
+    if q == 0 then continue
+    match acc with
+    | none => acc := some (← term i q)
+    | some s =>
+      if q > 0 then acc := some (← mkAppM ``HAdd.hAdd #[s, ← term i q])
+      else acc := some (← mkAppM ``HSub.hSub #[s, ← term i (-q)])
+  match acc with
+  | none => numeralExpr α k
+  | some s =>
+    if k == 0 then return s
+    else if k > 0 then mkAppM ``HAdd.hAdd #[s, ← numeralExpr α k]
+    else mkAppM ``HSub.hSub #[s, ← numeralExpr α (-k)]
+
+/-- The negation of the projected row `r` (`∑ c x + k rel 0`), solved for a pivot atom when
+the carrier is a field: `x_e ≤ …`, `… < x_e` and so on. Over `ℕ`-like carriers the
+coefficients are cleared of denominators and each side keeps nonnegative coefficients. -/
+def negatedRow (α : Expr) (integral : Bool) (atoms : Array Expr) (pivotOk : Expr → Bool)
+    (r : Row) : MetaM Expr := do
+  -- ¬(s ≤ 0) is 0 < s; ¬(s < 0) is 0 ≤ s; ¬(s = 0) is s ≠ 0
+  let nonzero := (List.range r.c.size).filterMap fun i =>
+    let q := r.coeff i
+    if q == 0 then none else some (i, q)
+  if integral || r.rel == .eq then
+    let den := nonzero.foldl (fun d (_, q) => Nat.lcm d q.den) r.k.den
+    let s := r.scale den
+    let pos := nonzero.filterMap fun (i, _) => if s.coeff i > 0 then some (i, s.coeff i) else none
+    let neg := nonzero.filterMap fun (i, _) => if s.coeff i < 0 then some (i, -(s.coeff i)) else none
+    -- `∑ pos + k (rel') ∑ neg` with the constant on the side where it is nonnegative
+    let (kl, kr) := if s.k ≥ 0 then (s.k, (0 : ℚ)) else ((0 : ℚ), -s.k)
+    let lhs ← sumExpr α atoms pos kl
+    let rhs ← sumExpr α atoms neg kr
+    match r.rel with
+    | .le => mkAppM ``LT.lt #[rhs, lhs]
+    | .lt => mkAppM ``LE.le #[rhs, lhs]
+    | .eq => mkAppM ``Ne #[lhs, rhs]
+  else
+    let pivot := (nonzero.find? fun (i, _) => pivotOk atoms[i]!).orElse fun _ => nonzero.head?
+    match pivot with
+    | none =>
+      -- a constant row cannot reach here after `tidy`
+      mkAppM ``LE.le #[← numeralExpr α 0, ← numeralExpr α r.k]
+    | some (e, ce) =>
+      let rest := nonzero.filter (·.1 != e)
+      -- ce * x_e + rest + k, divided by |ce|
+      let other := rest.map fun (i, q) => (i, -q / ce)
+      let otherK := -r.k / ce
+      let xe := atoms[e]!
+      let bound ← sumExpr α atoms other otherK
+      -- 0 < s  (rel le)  or  0 ≤ s  (rel lt):  with ce > 0 this is  bound < x_e  /  bound ≤ x_e
+      match r.rel, decide (ce > 0) with
+      | .le, true => mkAppM ``LT.lt #[bound, xe]
+      | .le, false => mkAppM ``LT.lt #[xe, bound]
+      | _, true => mkAppM ``LE.le #[bound, xe]
+      | _, false => mkAppM ``LE.le #[xe, bound]
+
+def disj : List Expr → Expr
+  | [] => Lean.mkConst ``False
+  | [a] => a
+  | a :: rest => mkApp2 (Lean.mkConst ``Or) a (disj rest)
+
+/-! ## Tactics under a budget -/
+
+def withHeartbeatBudget {α : Type} (heartbeats : Nat) (x : TermElabM α) : TermElabM (Option α) := do
+  withCurrHeartbeats <|
+    withTheReader Core.Context (fun ctx => { ctx with maxHeartbeats := heartbeats * 1000 }) do
+      tryCatchRuntimeEx (do return some (← x)) fun _ => return none
+
+/-- A proof of `goalType` by the tactic `tac` (no metavariables allowed in the goal). -/
+def proveByTactic (goalType : Expr) (tac : String) (heartbeats : Nat := 20000) : TermElabM (Option Expr) := do
+  if goalType.hasMVar then return none
+  let env ← getEnv
+  let .ok stx := Parser.runParserCategory env `tactic tac | return none
+  let msgs := (← getThe Core.State).messages
+  let s ← Term.saveState
+  let r ← withHeartbeatBudget heartbeats <| Term.withoutErrToSorry do
+    let goal ← mkFreshExprMVar goalType .syntheticOpaque
+    let remaining ← Tactic.run goal.mvarId! (Tactic.evalTactic stx)
+    unless remaining.isEmpty do return none
+    Term.synthesizeSyntheticMVarsNoPostponing
+    let proof ← instantiateMVars goal
+    if proof.hasSorry || proof.hasMVar then return none
+    return some proof
+  let out ← match r with
+    | some (some p) => pure (some p)
+    | _ => do s.restore; pure none
+  modifyThe Core.State fun st => { st with messages := msgs }
+  return out
+
+/-! ## The operation -/
+
+structure Abduced where
+  /-- the condition left (`True` when the facts give the clause) -/
+  residual : Expr
+  /-- a proof of `residual → clause` -/
+  proof : Expr
+  hidden : Array Expr
+  observed : Array Expr
+  /-- the facts that entered the elimination (their types) -/
+  facts : Array Expr
+
+/-- The weakest condition on the observable atoms that gives `goal` under the linear facts
+among `facts` (proofs), with a kernel-checked proof. `observable` fixes the observable atoms;
+by default they are the parameters and the atoms no fact mentions. `none` when `goal` is not a
+linear comparison, when every observable condition fails (the facts leave nothing sufficient
+in this language), or when the check fails. -/
+def abduceClause (goal : Expr) (facts : Array Expr) (observable : Option (Array Expr) := none) :
+    TermElabM (Option Abduced) := do
+  let some (α, gl, gr, grel) ← comparison? goal | return none
+  let (natSub, integral) ← carrierKind α
+  -- facts over the same carrier
+  let mut used : Array (Expr × Expr × Expr × Rel) := #[]
+  for f in facts do
+    let fT ← instantiateMVars (← inferType f)
+    let some (β, a, b, rel) ← comparison? fT | continue
+    unless ← isDefEq α β do continue
+    used := used.push (f, a, b, rel)
+  let parsed ← AtomM.run .reducible do
+    let g := (← linForm natSub integral 256 gl).add ((← linForm natSub integral 256 gr).scale (-1))
+    let mut rows : Array Lin := #[]
+    for (_, a, b, _) in used do
+      rows := rows.push ((← linForm natSub integral 256 a).add
+        ((← linForm natSub integral 256 b).scale (-1)))
+    return (g, rows, (← get).atoms)
+  let (g, factLins, atoms0) := parsed
+  -- nonnegativity of cast atoms (and of every atom over `ℕ`), proved by `positivity`
+  let atoms := atoms0
+  let mut extra : Array (Expr × Lin) := #[]
+  for i in [0:atoms.size] do
+    if natSub || (isNatCast atoms[i]!).isSome then
+      let t ← mkAppM ``LE.le #[← numeralExpr α 0, atoms[i]!]
+      if let some p ← proveByTactic t "positivity" then
+        extra := extra.push (p, { terms := [(i, -1)] })
+  let dense (l : Lin) (rel : Rel) : Row :=
+    { c := (Array.range atoms.size).map fun i =>
+        (l.terms.filter (·.1 == i)).foldl (fun s (_, q) => s + q) 0,
+      k := l.k, rel }
+  -- the counterexample: the facts and the negated clause
+  let negGoal : Array Row := match grel with
+    | .le => #[dense (g.scale (-1)) .lt]
+    | .lt => #[dense (g.scale (-1)) .le]
+    | .eq => #[]
+  if negGoal.isEmpty then return none
+  let mut rows := negGoal
+  for i in [0:used.size] do
+    rows := rows.push (dense factLins[i]! used[i]!.2.2.2)
+  for (_, l) in extra do
+    rows := rows.push (dense l .le)
+  -- hidden atoms
+  let mentioned : Array Nat := Id.run do
+    let mut m := #[]
+    for l in factLins do
+      for (i, q) in l.terms do
+        if q != 0 && !m.contains i then m := m.push i
+    return m
+  let mut hidden : Array Nat := #[]
+  match observable with
+  | some obs =>
+    for i in [0:atoms.size] do
+      let mut isObs := false
+      for o in obs do
+        if ← withReducible (isDefEq o atoms[i]!) then isObs := true
+      unless isObs do hidden := hidden.push i
+  | none =>
+    for i in mentioned do
+      unless isParameter atoms[i]! do hidden := hidden.push i
+  let obsAtoms := (Array.range atoms.size).filter (!hidden.contains ·) |>.map (atoms[·]!)
+  let hiddenAtoms := hidden.map (atoms[·]!)
+  let some projected := project hidden rows | return none
+  -- the facts alone, projected: a counterexample row they imply adds an always-false disjunct
+  let factProj := project hidden (rows.extract negGoal.size rows.size)
+  let kept : Option (Array Row) := projected.map fun ps =>
+    (pruneRedundant ps).filter fun r =>
+      match factProj with
+      | some (some fs) => !impliedBy fs r
+      | some none => false
+      | none => true
+  let residual ← match kept with
+    | none => pure (Lean.mkConst ``True)
+    | some ps =>
+      if ps.isEmpty then return none
+      let pivotOk (e : Expr) : Bool := !isParameter e
+      let negs ← ps.toList.mapM fun r => negatedRow α integral atoms pivotOk r
+      pure (disj negs)
+  -- the kernel check: facts → residual → goal
+  let factProofs := used.map (·.1) ++ extra.map (·.1)
+  let factTypes ← factProofs.mapM fun p => do instantiateMVars (← inferType p)
+  let decls := (Array.range factTypes.size).map fun i => (Name.mkSimple s!"hf{i}", factTypes[i]!)
+  let stmt ← withLocalDeclsDND decls fun hs => do
+    mkForallFVars hs (← mkArrow residual goal)
+  let nDisj := match kept with
+    | none => 1
+    | some ps => ps.size
+  let rcasesPat := String.intercalate " | " (List.replicate nDisj "hR")
+  -- one tactic each (a bare `a; b` does not parse in the tactic category)
+  let tacs :=
+    if nDisj ≤ 1 then ["(intros; linarith)", "(intros; omega)"]
+    else [s!"(intros; rename_i hR; rcases hR with {rcasesPat} <;> linarith)",
+          s!"(intros; rename_i hR; rcases hR with {rcasesPat} <;> omega)"]
+  let mut pf? : Option Expr := none
+  for t in tacs do
+    if pf?.isNone then
+      pf? ← proveByTactic stmt t
+  let some pf := pf? | return none
+  return some { residual, proof := mkAppN pf factProofs, hidden := hiddenAtoms,
+                observed := obsAtoms, facts := factTypes }
+
+end ErdosProblems.ArgumentGraph.Abduce
+
+/-! ## The tactic -/
+
+namespace ErdosProblems.ArgumentGraph.Abduce
+
+open Lean Meta Elab Tactic
+
+/- `abduce` is the only new word; `[`, `]`, `,` and `using` are already tokens. -/
+syntax (name := abduceTac) "abduce" ("[" term,* "]")? (" using " term,+)? : tactic
+
+/-- `abduce` replaces a linear comparison goal by the weakest condition on the observable
+atoms that gives it under the linear hypotheses in context, and logs that condition; it closes
+the goal when the hypotheses already give it. `abduce [o₁, …]` fixes the observable atoms;
+`abduce using f₁, …` uses only the given facts. -/
+@[tactic abduceTac] def evalAbduce : Tactic := fun stx => withMainContext do
+  let goal ← getMainGoal
+  let C ← instantiateMVars (← goal.getType)
+  let obs? ← if stx[1].isNone then pure none
+    else some <$> (stx[1][1].getSepArgs.mapM fun t => Tactic.elabTerm t none)
+  let facts ← if stx[2].isNone then do
+      let mut fs : Array Expr := #[]
+      for d in ← getLCtx do
+        if d.isImplementationDetail then continue
+        if ← isProp d.type then fs := fs.push d.toExpr
+      pure fs
+    else stx[2][1].getSepArgs.mapM fun t => Tactic.elabTerm t none
+  let some r ← abduceClause C facts obs?
+    | throwError "abduce: no condition on the observable atoms gives the goal under these facts"
+  if r.residual.isConstOf ``True then
+    logInfo m!"abduce: the facts give the goal"
+    goal.assign (mkApp r.proof (Lean.mkConst ``True.intro))
+    replaceMainGoal []
+  else
+    logInfo m!"abduce: {r.residual}\n  eliminated {r.hidden.toList}\n  kept {r.observed.toList}"
+    let newGoal ← mkFreshExprSyntheticOpaqueMVar r.residual
+    goal.assign (mkApp r.proof newGoal)
+    replaceMainGoal [newGoal.mvarId!]
+
+end ErdosProblems.ArgumentGraph.Abduce
+
+/-!
+# Abduction against the corpus
+
+`abduceClause` eliminates the atoms that the given facts control. Here the facts come from the
+corpus: every comparison reading of a corpus theorem (its statement with leading binders
+instantiated, a conjunct, or the unfolding of a corpus definition) is indexed under the corpus
+constants it mentions, and a comparison `C` retrieves the readings that share its constants,
+instantiated by unifying their subterms with the atoms of `C`, with their hypotheses
+discharged by the closing battery. Several facts can then combine linearly, which a supplier
+search that unifies one theorem at a time with the whole of `C` does not see.
+
+`abduceProp` applies this under `∀`, `→`, `∧`, `∃` and the filter quantifiers, and returns the
+restated proposition with a proof that it implies the original. `restateAntecedents` restates
+every hypothesis of a theorem this way, drops those the corpus facts give outright, and returns
+the new statement with a proof built from the original theorem.
+-/
+
+set_option autoImplicit false
+
+open Lean Meta Elab Term
+open ErdosProblems.ArgumentGraph.Residualise
+
+namespace ErdosProblems.ArgumentGraph.Abduce
+
+/-- Comparison readings of corpus theorems, keyed by the corpus constants they mention. -/
+abbrev FactIndex := Std.HashMap Name (Array Ref)
+
+def corpusConsts (unfoldOk : Name → Bool) (e : Expr) : Array Name :=
+  e.getUsedConstants.filter unfoldOk
+
+/-- Add the comparison readings of the theorem `n`. -/
+def indexFacts (idx : FactIndex) (unfoldOk : Name → Bool) (n : Name) (depth : Nat) :
+    MetaM (FactIndex × Nat) := do
+  let some ci := (← getEnv).find? n | return (idx, 0)
+  let found ← withNewMCtxDepth do
+    let lvls ← ci.levelParams.mapM fun _ => mkFreshLevelMVar
+    let ty := ci.type.instantiateLevelParams ci.levelParams lvls
+    let rs := (← budgeted 2000 (readingPaths unfoldOk ty #[] depth)).getD #[]
+    let mut out : Array (Array Name × Array Step) := #[]
+    for (stmt, path) in rs do
+      if path.any (fun s => s == .evLeft || s == .evRight) then continue
+      if (← comparison? stmt).isSome then
+        let cs := corpusConsts unfoldOk (← instantiateMVars stmt)
+        unless cs.isEmpty do out := out.push (cs, path)
+    return out
+  let mut idx := idx
+  for (cs, path) in found do
+    for c in cs do
+      idx := idx.insert c ((idx.getD c #[]).push { name := n, path })
+  return (idx, found.size)
+
+/-- The fact index of every theorem of the modules under `roots`. -/
+def buildFactIndex (roots : Array Name) (unfoldOk : Name → Bool) (depth : Nat := 6) :
+    MetaM (FactIndex × Nat) := do
+  let env ← getEnv
+  let mut idx : FactIndex := {}
+  let mut total := 0
+  for modName in env.header.moduleNames, data in env.header.moduleData do
+    unless roots.any (·.isPrefixOf modName) do continue
+    for n in data.constNames do
+      if n.isInternal then continue
+      let some (.thmInfo _) := env.find? n | continue
+      let (i, k) ← indexFacts idx unfoldOk n depth
+      idx := i
+      total := total + k
+  return (idx, total)
+
+/-- Subterms of `e` whose head is a constant, up to `fuel` nodes. -/
+def appSubterms : Nat → Expr → Array Expr → Array Expr
+  | 0, _, acc => acc
+  | fuel + 1, e, acc =>
+    match e with
+    | .app f a =>
+      let acc := if e.getAppFn.isConst then acc.push e else acc
+      appSubterms fuel a (appSubterms fuel f acc)
+    | .mdata _ b => appSubterms fuel b acc
+    | _ => acc
+
+/-- Replay a reading with fresh metavariables for its binders (propositional and instance
+binders are obligations): its proof, its statement and the obligations. -/
+def replayPlain (proof stmt : Expr) (obls : Array Expr) :
+    List Step → MetaM (Option (Expr × Expr × Array Expr))
+  | [] => return some (proof, ← instantiateMVars stmt, obls)
+  | s :: rest => do
+    let stmt ← whnfR (← instantiateMVars stmt)
+    match s with
+    | .inst =>
+        let .forallE _ d b bi := stmt | return none
+        let isP ← isProp d
+        let m ← mkFreshExprMVar d (if isP then .syntheticOpaque else .natural)
+        let obls := if isP || bi.isInstImplicit then obls.push m else obls
+        replayPlain (mkApp proof m) (b.instantiate1 m) obls rest
+    | .left =>
+        unless stmt.isAppOfArity ``And 2 do return none
+        replayPlain (← mkAppM ``And.left #[proof]) stmt.appFn!.appArg! obls rest
+    | .right =>
+        unless stmt.isAppOfArity ``And 2 do return none
+        replayPlain (← mkAppM ``And.right #[proof]) stmt.appArg! obls rest
+    | .unfold =>
+        let some u ← unfoldDefinition? stmt | return none
+        replayPlain proof u obls rest
+    | .evLeft | .evRight => return none
+
+/-- The atoms of the comparison `C`. -/
+def atomsOf (C : Expr) : MetaM (Array Expr) := do
+  let some (α, a, b, _) ← comparison? C | return #[]
+  let (natSub, integral) ← carrierKind α
+  Mathlib.Tactic.AtomM.run .reducible do
+    discard <| linForm natSub integral 256 a
+    discard <| linForm natSub integral 256 b
+    return (← get).atoms
+
+/-- Corpus facts for the comparison `C`: comparison readings that share its corpus constants,
+instantiated by unifying their subterms with the compound atoms of `C`, closed, with their
+hypotheses discharged by the battery. At most `maxK` readings are tried. -/
+def retrieveFacts (idx : FactIndex) (unfoldOk : Name → Bool) (exclude : Array Name)
+    (C : Expr) (maxK : Nat := 16) : TermElabM (Array Expr) := do
+  let some (α, _, _, _) ← comparison? C | return #[]
+  let atoms := (← atomsOf C).filter (·.getAppFn.isConst)
+  if atoms.isEmpty then return #[]
+  let cs := corpusConsts unfoldOk C
+  let mut scored : Array (Ref × Nat) := #[]
+  for c in cs do
+    for r in idx.getD c #[] do
+      if exclude.contains r.name then continue
+      match scored.findIdx? (·.1 == r) with
+      | some i => scored := scored.modify i fun (x, k) => (x, k + 1)
+      | none => scored := scored.push (r, 1)
+  let ranked := (scored.qsort fun a b => a.2 > b.2).extract 0 maxK
+  let mut facts : Array Expr := #[]
+  for (ref, _) in ranked do
+    let s ← saveState
+    let got? ← withHeartbeatBudget 4000 do
+      let c0 ← mkConstWithFreshMVarLevels ref.name
+      let some (proof, stmt, obls) ← replayPlain c0 (← inferType c0) #[] ref.path.toList
+        | return none
+      let some (β, _, _, _) ← comparison? stmt | return none
+      unless ← isDefEq β α do return none
+      for t in atoms do
+        for u in appSubterms 4000 stmt #[] do
+          if u.hasMVar && u.getAppFn.constName? == t.getAppFn.constName? then
+            let s2 ← saveState
+            unless ← isDefEq u t do s2.restore
+      let stmt ← instantiateMVars stmt
+      if stmt.hasMVar then return none
+      for o in obls do
+        if ← o.mvarId!.isAssigned then continue
+        let oT ← instantiateMVars (← inferType o)
+        if oT.hasMVar then return none
+        if (← isClass? oT).isSome then
+          let some inst ← (try some <$> synthInstance oT catch _ => pure none) | return none
+          o.mvarId!.assign inst
+        else
+          let some p ← battery oT | return none
+          o.mvarId!.assign p
+      let p ← instantiateMVars proof
+      if p.hasMVar then return none
+      return some p
+    match got? with
+    | some (some p) => facts := facts.push p
+    | _ => s.restore
+  return facts
+
+/-- The proof `fun h : A => h`. -/
+def idProof (A : Expr) : MetaM Expr := withLocalDeclD `h A fun h => mkLambdaFVars #[h] h
+
+/-- `C'` with a proof of `C' → C`: each comparison is abduced against the local hypotheses met
+on the way down and the corpus facts `retrieve` finds for it, under `∀`, `→`, `∧`, `∃` and the
+filter quantifiers. `none` when nothing changes. -/
+def abduceProp (retrieve : Expr → TermElabM (Array Expr)) :
+    Nat → Array Expr → Expr → TermElabM (Option (Expr × Expr))
+  | 0, _, _ => return none
+  | fuel + 1, locals, C => do
+    let C ← instantiateMVars C
+    match C with
+    | .forallE n d b bi =>
+      withLocalDecl n bi d fun x => do
+        let locals := if ← isProp d then locals.push x else locals
+        let some (B', pf) ← abduceProp retrieve fuel locals (b.instantiate1 x) | return none
+        let C' ← mkForallFVars #[x] B'
+        let proof ← withLocalDeclD `h C' fun h => do
+          mkLambdaFVars #[h] (← mkLambdaFVars #[x] (mkApp pf (mkApp h x)))
+        return some (C', proof)
+    | _ =>
+      if C.isAppOfArity ``And 2 then
+        let A := C.appFn!.appArg!
+        let B := C.appArg!
+        let ra ← abduceProp retrieve fuel locals A
+        let rb ← abduceProp retrieve fuel locals B
+        if ra.isNone && rb.isNone then return none
+        let (A', pa) ← match ra with | some r => pure r | none => pure (A, ← idProof A)
+        let (B', pb) ← match rb with | some r => pure r | none => pure (B, ← idProof B)
+        let aTrue := A'.isConstOf ``True
+        let bTrue := B'.isConstOf ``True
+        let C' := if aTrue then B' else if bTrue then A' else mkApp2 (Lean.mkConst ``And) A' B'
+        let proof ← withLocalDeclD `h C' fun h => do
+          let ha ← if aTrue then pure (Lean.mkConst ``True.intro)
+            else if bTrue then pure h else mkAppM ``And.left #[h]
+          let hb ← if bTrue then pure (Lean.mkConst ``True.intro)
+            else if aTrue then pure h else mkAppM ``And.right #[h]
+          mkLambdaFVars #[h] (← mkAppM ``And.intro #[mkApp pa ha, mkApp pb hb])
+        return some (C', proof)
+      if C.isAppOfArity ``Exists 2 then
+        let α := C.appFn!.appArg!
+        let P := C.appArg!
+        return ← withLocalDeclD `w α fun w => do
+          let some (P', pf) ← abduceProp retrieve fuel locals (P.beta #[w]) | return none
+          let C' ← mkAppM ``Exists #[← mkLambdaFVars #[w] P']
+          let impl ← mkLambdaFVars #[w] pf
+          let proof ← withLocalDeclD `h C' fun h => do
+            mkLambdaFVars #[h] (← mkAppM ``Exists.imp #[impl, h])
+          return some (C', proof)
+      if C.isAppOfArity ``Filter.Frequently 3 || C.isAppOfArity ``Filter.Eventually 3 then
+        let α := C.getArg! 0
+        let P := C.getArg! 1
+        let f := C.getArg! 2
+        let freq := C.isAppOfArity ``Filter.Frequently 3
+        return ← withLocalDeclD `X α fun X => do
+          let some (P', pf) ← abduceProp retrieve fuel locals (P.beta #[X]) | return none
+          let pred ← mkLambdaFVars #[X] P'
+          let C' ← mkAppM (if freq then ``Filter.Frequently else ``Filter.Eventually) #[pred, f]
+          let impl ← mkLambdaFVars #[X] pf
+          let proof ← withLocalDeclD `h C' fun h => do
+            mkLambdaFVars #[h] (← mkAppM (if freq then ``Filter.Frequently.mono
+              else ``Filter.Eventually.mono) #[h, impl])
+          return some (C', proof)
+      if (← comparison? C).isSome then
+        let facts := locals ++ (← retrieve C)
+        let some r ← abduceClause C facts none | return none
+        if ← withReducible (isDefEq r.residual C) then return none
+        return some (r.residual, r.proof)
+      return none
+
+/-- The hypotheses of the theorem `thm` restated by `abduceProp`: a hypothesis the facts give is
+dropped, another is replaced by its restatement. Returns the new statement, a proof of it from
+`thm`, and the numbers of hypotheses dropped and restated; `none` when nothing changes.
+Only hypotheses that no later binder depends on are touched. -/
+def restateAntecedents (retrieve : Expr → TermElabM (Array Expr)) (thm : Name) :
+    TermElabM (Option (Expr × Expr × Nat × Nat)) := do
+  let ci ← getConstInfo thm
+  let lvls := ci.levelParams.map Level.param
+  forallTelescopeReducing ci.type fun xs body => do
+    let rec go (j : Nat) (newXs args : Array Expr) (dropped restated : Nat) (fuel : Nat) :
+        TermElabM (Option (Expr × Expr × Nat × Nat)) := do
+      match fuel with
+      | 0 => return none
+      | fuel + 1 =>
+      if h : j < xs.size then
+        let x := xs[j]
+        let d := (← inferType x).replaceFVars (xs.extract 0 j) args
+        let decl ← x.fvarId!.getDecl
+        let dependsLater ← (xs.extract (j + 1) xs.size).anyM fun y => do
+          return (← inferType y).containsFVar x.fvarId!
+        let bodyDepends := body.containsFVar x.fvarId!
+        if (← isProp d) && !dependsLater && !bodyDepends then
+          let localFacts ← newXs.filterM fun y => do isProp (← inferType y)
+          match ← abduceProp retrieve 64 localFacts d with
+          | some (d', pf) =>
+            if d'.isConstOf ``True then
+              go (j + 1) newXs (args.push (mkApp pf (Lean.mkConst ``True.intro))) (dropped + 1)
+                restated fuel
+            else
+              withLocalDecl decl.userName decl.binderInfo d' fun y =>
+                go (j + 1) (newXs.push y) (args.push (mkApp pf y)) dropped (restated + 1) fuel
+          | none =>
+            withLocalDecl decl.userName decl.binderInfo d fun y =>
+              go (j + 1) (newXs.push y) (args.push y) dropped restated fuel
+        else
+          withLocalDecl decl.userName decl.binderInfo d fun y =>
+            go (j + 1) (newXs.push y) (args.push y) dropped restated fuel
+      else
+        if dropped + restated == 0 then return none
+        let body' := body.replaceFVars xs args
+        let value ← mkLambdaFVars newXs (mkAppN (Lean.mkConst thm lvls) args)
+        let type ← mkForallFVars newXs body'
+        return some (type, value, dropped, restated)
+    go 0 #[] #[] 0 0 (xs.size + 1)
+
+end ErdosProblems.ArgumentGraph.Abduce
+
+
+/-! ## Corpus sweep over every problem's conditional theorems -/
+
+namespace ErdosProblems.ArgumentGraph.Sweep
+
+open Lean Meta Elab Term
+open ErdosProblems.ArgumentGraph.Residualise ErdosProblems.ArgumentGraph.Abduce
+
+/-- The problem a module belongs to: `ErdosProblems.ErdosNNN…` is `NNN`, `Erdos249257…` is
+`249/257`, the demand ledger is `ledger`. -/
+def problemOfModule (m : Name) : String := Id.run do
+  let s := m.toString
+  if s.startsWith "ErdosProblems.DemandLedger" then return "ledger"
+  if s.startsWith "Erdos249257" then return "249/257"
+  for c in m.components do
+    let t := c.toString
+    let ds := t.toList.drop 5
+    if t.startsWith "Erdos" && !ds.isEmpty && ds.all Char.isDigit then
+      return String.mk ds
+  return "other"
+
+def problemOf (n : Name) : MetaM String := do
+  let env ← getEnv
+  match env.getModuleIdxFor? n with
+  | some idx => return problemOfModule env.header.moduleNames[idx.toNat]!
+  | none => return "local"
+
+set_option maxHeartbeats 0 in
+run_cmd Command.liftTermElabM do
+  let targets : Array (String × Name) := #[
+    ("1049", `ErdosProblems.Erdos1049.PaperCompleteR21.no_finite_simultaneous_two_three_system),
+    ("1049", `ErdosProblems.Erdos1049.PaperR18.polynomial_smul_apply),
+    ("269", `ErdosProblems.Erdos269.PaperCompleteR21.transcendental_heckeValue),
+    ("269", `ErdosProblems.Erdos269.PaperCompleteR21.two_prime_sums_transcendental),
+    ("269", `ErdosProblems.Erdos269.PaperCompleteR21.two_prime_transcendence),
+    ("269", `ErdosProblems.Erdos269.PaperR7.irrational_of_allReducedTailsNonintegral),
+    ("269", `ErdosProblems.Erdos269.channelCoboundary_eq_zero_of_two_anchors),
+    ("269", `ErdosProblems.Erdos269.no_bounded_carryLift_of_blockNull_twoAnchors),
+    ("269", `ErdosProblems.Erdos269.no_carryLift_of_errorBound_below_twoPow),
+    ("269", `ErdosProblems.Erdos269.irrational_of_cofinalLocalWindowEscape),
+    ("269", `ErdosProblems.Erdos269.irrational_value_of_cofinalLocalWindowEscape),
+    ("269", `ErdosProblems.Erdos269.value_ne_rat_of_cofinalLocalWindowEscape)
+  ]
+  let capMs : Nat := 1200000
+  let corpus : Array Name := #[`ErdosProblems, `Erdos249257]
+  let unfoldOk := fun (n : Name) => (corpus.push `DemandLedger).any (·.isPrefixOf n)
+  let t0 ← IO.monoMsNow
+  let (index, nThm, nEntries) ← indexCorpus corpus unfoldOk
+  let t1 ← IO.monoMsNow
+  let (fidx, nFacts) ← buildFactIndex corpus unfoldOk
+  logInfo m!"[sweep] index {nThm} theorems, {nEntries} readings ({t1 - t0} ms); fact index \
+    {nFacts} comparison readings under {fidx.size} constants ({(← IO.monoMsNow) - t1} ms); \
+    {targets.size} targets"
+  let mut visited := 0
+  let mut restatedThms := 0
+  let mut droppedHyps := 0
+  let mut restatedHyps := 0
+  let mut certs := 0
+  let mut supplied := 0
+  let mut crossCerts := 0
+  for (prob, thm) in targets do
+    if (← IO.monoMsNow) - t0 > capMs then
+      logInfo m!"[sweep] time cap reached after {visited} of {targets.size} targets"
+      break
+    let some ci := (← getEnv).find? thm
+      | logInfo m!"[sweep] {prob} {thm} missing from the environment"
+    visited := visited + 1
+    let retrieve := fun (C : Expr) => retrieveFacts fidx unfoldOk #[thm] C
+    -- 1. restate the hypotheses against the corpus facts
+    let s1 ← IO.monoMsNow
+    let r? ← try restateAntecedents retrieve thm
+      catch e => do
+        logInfo m!"[sweep] {prob} {thm} restate error: {e.toMessageData}"
+        pure none
+    match r? with
+    | some (ty, val, dropped, restated) =>
+      let nm := `ErdosProblems.ArgumentGraph.Sweep.restated ++ thm
+      try
+        addDecl (.thmDecl { name := nm, levelParams := ci.levelParams, type := ty, value := val })
+        restatedThms := restatedThms + 1
+        droppedHyps := droppedHyps + dropped
+        restatedHyps := restatedHyps + restated
+        logInfo m!"[sweep] {prob} {thm} RESTATED dropped={dropped} restated={restated} \
+          ({(← IO.monoMsNow) - s1} ms) as {nm} :\n  {ty}"
+      catch e =>
+        logInfo m!"[sweep] {prob} {thm} restatement rejected by the kernel: {e.toMessageData}"
+    | none => pure ()
+    -- 2. residualise every closed propositional hypothesis
+    let hyps ← forallTelescopeReducing ci.type fun xs _ => do
+      let mut out : Array Expr := #[]
+      for x in xs do
+        let d ← inferType x
+        if (← isProp d) && !d.hasFVar && !d.hasMVar then out := out.push d
+      return out
+    let mut i := 0
+    for H in hyps do
+      i := i + 1
+      if (← IO.monoMsNow) - t0 > capMs then break
+      let s2 ← IO.monoMsNow
+      let (r, calls, used) ← searchResidual H index #[] (exclude := #[thm]) (callBudget := 250)
+        (maxCandidates := 16)
+      match r with
+      | none => logInfo m!"[sweep] {prob} {thm} h{i} no residualisation ({calls} calls)"
+      | some p =>
+        let nm := `ErdosProblems.ArgumentGraph.Sweep.cert ++ thm ++ Name.mkSimple s!"h{i}"
+        let (clauses, used) ← try certify nm s!"{thm} h{i}" p used
+          catch e => do
+            logInfo m!"[sweep] {prob} {thm} h{i} certificate rejected: {e.toMessageData}"
+            pure (1000, #[])
+        if clauses == 1000 then continue
+        certs := certs + 1
+        if clauses == 0 then supplied := supplied + 1
+        let mut cross : Array (Name × String) := #[]
+        for s in used do
+          let ps ← problemOf s
+          if ps != prob && ps != "local" then cross := cross.push (s, ps)
+        if !cross.isEmpty then crossCerts := crossCerts + 1
+        logInfo m!"[sweep] {prob} {thm} h{i} clauses={clauses} used={used.toList} \
+          cross={cross.toList} calls={calls} ({(← IO.monoMsNow) - s2} ms)"
+  logInfo m!"[sweep] done: {visited} theorems; {restatedThms} restated ({droppedHyps} hypotheses \
+    dropped, {restatedHyps} restated); {certs} residual certificates, {supplied} with no clause \
+    left, {crossCerts} using another problem's theorem; {(← IO.monoMsNow) - t0} ms"
+
+end ErdosProblems.ArgumentGraph.Sweep
