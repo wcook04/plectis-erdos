@@ -1,0 +1,649 @@
+diff --git a/docs/claims.json b/docs/claims.json
+index 823a0ed4..8937da43 100644
+--- a/docs/claims.json
++++ b/docs/claims.json
+@@ -1908,13 +1908,14 @@
+         "lean/ErdosProblems.lean"
+       ],
+       "auxiliary_roots": [
+-        "ErdosProblems.ArgumentGraph.Derived.Erdos1041",
+         "ErdosProblems.ArgumentGraph.Derived.Erdos1049",
+-        "ErdosProblems.ArgumentGraph.Derived.Erdos243",
+         "ErdosProblems.ArgumentGraph.Derived.Erdos249",
+         "ErdosProblems.ArgumentGraph.Derived.Erdos257",
+         "ErdosProblems.ArgumentGraph.Derived.Erdos269",
+         "ErdosProblems.ArgumentGraph.Derived.Erdos68",
++        "ErdosProblems.ArgumentGraph.Results.Erdos1041",
++        "ErdosProblems.ArgumentGraph.Results.Erdos243",
++        "ErdosProblems.ArgumentGraph.Results.Erdos249",
+         "ErdosProblems.ArgumentGraph.Results.Erdos251",
+         "ErdosProblems.Bit.verify.B1",
+         "ErdosProblems.Bit.verify.B2",
+@@ -8786,6 +8787,31 @@
+             "ErdosProblems.ArgumentGraph.Derive"
+           ]
+         },
++        {
++          "id": "ErdosProblems.ArgumentGraph.Results.Erdos1041",
++          "path": "lean/ErdosProblems/ArgumentGraph/Results/Erdos1041.lean",
++          "role": "Lean proof module",
++          "imports": [
++            "ErdosProblems.ArgumentGraph.Derived.Erdos1041"
++          ]
++        },
++        {
++          "id": "ErdosProblems.ArgumentGraph.Results.Erdos243",
++          "path": "lean/ErdosProblems/ArgumentGraph/Results/Erdos243.lean",
++          "role": "Lean proof module",
++          "imports": [
++            "ErdosProblems.ArgumentGraph.Derived.Erdos243"
++          ]
++        },
++        {
++          "id": "ErdosProblems.ArgumentGraph.Results.Erdos249",
++          "path": "lean/ErdosProblems/ArgumentGraph/Results/Erdos249.lean",
++          "role": "Lean proof module",
++          "imports": [
++            "ErdosProblems.Erdos249.PaperCompleteR21.ExcludedCofactorEstimate",
++            "ErdosProblems.Erdos249.TypeBReturnV8.PeripheralFiniteBridge"
++          ]
++        },
+         {
+           "id": "ErdosProblems.ArgumentGraph.Results.Erdos251",
+           "path": "lean/ErdosProblems/ArgumentGraph/Results/Erdos251.lean",
+@@ -19915,7 +19941,7 @@
+     "lean_toolchain": "leanprover/lean4:v4.29.1",
+     "repository": "https://github.com/wcook04/plectis-erdos",
+     "formal_source": {
+-      "ref": "ab690b0aa515faa3a432e9d47de288704ebf6bb5",
++      "ref": "2e271055bc1cb8d1bcc1e71fe41460eb47d02d26",
+       "ref_kind": "commit",
+       "publication_state": "committed_checkpoint_pending_remote_publication",
+       "relationship_to_last_tag": "post_tag_checkpoint",
+diff --git a/docs/declaration_atlas.json b/docs/declaration_atlas.json
+index ca02ebe8..7b8c5973 100644
+--- a/docs/declaration_atlas.json
++++ b/docs/declaration_atlas.json
+@@ -4,11 +4,11 @@
+   "projection_not_authority": true,
+   "proof_authority": "Lean source checked by the pinned Lean kernel",
+   "argument_authority": "docs/claims.json::machine_readable_paper.argument_graph",
+-  "source_fingerprint": "sha256:e16ed9ce3a71dbe77f7c1fd660efca4d81b0898e7d81dfa5c3e44d9dcef07584",
++  "source_fingerprint": "sha256:42d36378841df6863d55b6f11a048cfacb31b24d3227e28450609858e20fa331",
+   "summary": {
+-    "module_count": 1872,
+-    "declaration_count": 164107,
+-    "theorem_like_count": 160007,
++    "module_count": 1875,
++    "declaration_count": 164120,
++    "theorem_like_count": 160020,
+     "generated_certificate_declaration_count": 8171,
+     "principal_claim_link_count": 468,
+     "kind_counts": {
+@@ -18,7 +18,7 @@
+       "instance": 14,
+       "lemma": 1446,
+       "structure": 66,
+-      "theorem": 158561
++      "theorem": 158574
+     }
+   },
+   "modules": [
+@@ -9206,15 +9206,49 @@
+         "structure": 2
+       }
+     },
++    {
++      "id": "ErdosProblems.ArgumentGraph.Results.Erdos1041",
++      "path": "lean/ErdosProblems/ArgumentGraph/Results/Erdos1041.lean",
++      "imports": [
++        "ErdosProblems.ArgumentGraph.Derived.Erdos1041"
++      ],
++      "declaration_count": 4,
++      "kind_counts": {
++        "theorem": 4
++      }
++    },
++    {
++      "id": "ErdosProblems.ArgumentGraph.Results.Erdos243",
++      "path": "lean/ErdosProblems/ArgumentGraph/Results/Erdos243.lean",
++      "imports": [
++        "ErdosProblems.ArgumentGraph.Derived.Erdos243"
++      ],
++      "declaration_count": 3,
++      "kind_counts": {
++        "theorem": 3
++      }
++    },
++    {
++      "id": "ErdosProblems.ArgumentGraph.Results.Erdos249",
++      "path": "lean/ErdosProblems/ArgumentGraph/Results/Erdos249.lean",
++      "imports": [
++        "ErdosProblems.Erdos249.PaperCompleteR21.ExcludedCofactorEstimate",
++        "ErdosProblems.Erdos249.TypeBReturnV8.PeripheralFiniteBridge"
++      ],
++      "declaration_count": 3,
++      "kind_counts": {
++        "theorem": 3
++      }
++    },
+     {
+       "id": "ErdosProblems.ArgumentGraph.Results.Erdos251",
+       "path": "lean/ErdosProblems/ArgumentGraph/Results/Erdos251.lean",
+       "imports": [
+         "ErdosProblems.ArgumentGraph.Derived.Erdos251"
+       ],
+-      "declaration_count": 2,
++      "declaration_count": 5,
+       "kind_counts": {
+-        "theorem": 2
++        "theorem": 5
+       }
+     },
+     {
+@@ -178910,6 +178944,115 @@
+       "generated_certificate": false,
+       "claim_ids": []
+     },
++    {
++      "id": "lean/ErdosProblems/ArgumentGraph/Results/Erdos1041.lean:28:lt_innerRadius_of_not_switch",
++      "name": "lt_innerRadius_of_not_switch",
++      "kind": "theorem",
++      "module": "lean/ErdosProblems/ArgumentGraph/Results/Erdos1041.lean",
++      "line": 28,
++      "signature": "theorem lt_innerRadius_of_not_switch {n : ℕ} (hn : 3 ≤ n) {r : ℝ} (hr0 : 0 < r) (hr1 : r ^ n < 1) (hsw : ¬ 1 ≤ r ^ n * (1 + chordCos n ^ n)) : r < innerRadius n r",
++      "generated_certificate": false,
++      "claim_ids": [],
++      "docstring": "Off the switch condition the inner radius exceeds `r`."
++    },
++    {
++      "id": "lean/ErdosProblems/ArgumentGraph/Results/Erdos1041.lean:50:inner_chord_maximality_vacuous_off_switch",
++      "name": "inner_chord_maximality_vacuous_off_switch",
++      "kind": "theorem",
++      "module": "lean/ErdosProblems/ArgumentGraph/Results/Erdos1041.lean",
++      "line": 50,
++      "signature": "theorem inner_chord_maximality_vacuous_off_switch {n : ℕ} (hn : 3 ≤ n) {r : ℝ} (hr0 : 0 < r) (hr1 : r ^ n < 1) (hsw : ¬ 1 ≤ r ^ n * (1 + chordCos n ^ n)) (s : ℝ) : ¬ (innerRadius n r < s ∧ s ≤ r)",
++      "generated_certificate": false,
++      "claim_ids": [],
++      "docstring": "Off the switch condition the maximality clause of `binomial_inner_chord_maximal` has no instance."
++    },
++    {
++      "id": "lean/ErdosProblems/ArgumentGraph/Results/Erdos1041.lean:58:switch_fails_at_three_half",
++      "name": "switch_fails_at_three_half",
++      "kind": "theorem",
++      "module": "lean/ErdosProblems/ArgumentGraph/Results/Erdos1041.lean",
++      "line": 58,
++      "signature": "theorem switch_fails_at_three_half : ¬ 1 ≤ ((1 : ℝ) / 2) ^ 3 * (1 + chordCos 3 ^ 3)",
++      "generated_certificate": false,
++      "claim_ids": [],
++      "docstring": "The switch condition fails at `n = 3`, `r = 1/2`."
++    },
++    {
++      "id": "lean/ErdosProblems/ArgumentGraph/Results/Erdos1041.lean:70:inner_chord_midpoint_at_three_half",
++      "name": "inner_chord_midpoint_at_three_half",
++      "kind": "theorem",
++      "module": "lean/ErdosProblems/ArgumentGraph/Results/Erdos1041.lean",
++      "line": 70,
++      "signature": "theorem inner_chord_midpoint_at_three_half : ‖(chordPoint 3 (innerRadius 3 (1 / 2)) (1 / 2)) ^ 3 - (((1 / 2 : ℝ) : ℝ) : ℂ) ^ 3‖ = 1",
++      "generated_certificate": false,
++      "claim_ids": [],
++      "docstring": "At `n = 3`, `r = 1/2`, outside the switch condition, the factored theorem gives the midpoint equality."
++    },
++    {
++      "id": "lean/ErdosProblems/ArgumentGraph/Results/Erdos243.lean:23:le_choose_add_two_three",
++      "name": "le_choose_add_two_three",
++      "kind": "theorem",
++      "module": "lean/ErdosProblems/ArgumentGraph/Results/Erdos243.lean",
++      "line": 23,
++      "signature": "theorem le_choose_add_two_three (n : ℕ) (hn : 1 ≤ n) : n ≤ (n + 2).choose 3",
++      "generated_certificate": false,
++      "claim_ids": []
++    },
++    {
++      "id": "lean/ErdosProblems/ArgumentGraph/Results/Erdos243.lean:35:not_zeroLowerDensity_of_tail",
++      "name": "not_zeroLowerDensity_of_tail",
++      "kind": "theorem",
++      "module": "lean/ErdosProblems/ArgumentGraph/Results/Erdos243.lean",
++      "line": 35,
++      "signature": "theorem not_zeroLowerDensity_of_tail (E : Set ℕ) (K : ℕ) (htail : ∀ n, K ≤ n → n ∈ E) : ¬ ZeroLowerDensity E",
++      "generated_certificate": false,
++      "claim_ids": [],
++      "docstring": "A set containing every `n ≥ K` does not have zero lower density."
++    },
++    {
++      "id": "lean/ErdosProblems/ArgumentGraph/Results/Erdos243.lean:50:transport_square_positivity_of_rest",
++      "name": "transport_square_positivity_of_rest",
++      "kind": "theorem",
++      "module": "lean/ErdosProblems/ArgumentGraph/Results/Erdos243.lean",
++      "line": 50,
++      "signature": "theorem transport_square_positivity_of_rest (a u v : ℕ → ℕ) (m : ℕ) (c : ℤ) (T : ℕ) (hm : 0 < m) (hden : ∀ n, T ≤ n → v (n + 1) = a n * v n) (hcop : ∀ n, T ≤ n → Nat.Coprime (u n) (v n)) (hzero : ZeroLowerDensity {n : ℕ | (u n : ℤ) ≠ (m : ℤ) * risingBinomial n + c}) : ∀ n, T ≤ n → 0 < v n",
++      "generated_certificate": false,
++      "claim_ids": [],
++      "docstring": "The hypotheses `transport_square_unconditional.factored` keeps imply the positivity hypothesis it leaves out."
++    },
++    {
++      "id": "lean/ErdosProblems/ArgumentGraph/Results/Erdos249.lean:33:card_pivotBadBases_le_of_count",
++      "name": "card_pivotBadBases_le_of_count",
++      "kind": "theorem",
++      "module": "lean/ErdosProblems/ArgumentGraph/Results/Erdos249.lean",
++      "line": 33,
++      "signature": "theorem card_pivotBadBases_le_of_count (h X : ℕ) (hcount : ((((pivotSupplierBases X (minimalDepth h 26 X) 26).filter (fun N => pivotCofactor N (minimalDepth h 26 X) 26 ∈ excludedCofactorSet (1 / 1000))).card : ℕ) : ℝ) < (1 / 100 : ℝ) * X) : ((pivotBadBases X (minimalDepth h 26 X) 26 (1 / 1000 : ℝ)).card : ℝ) ≤ (1 / 100 : ℝ) * X",
++      "generated_certificate": false,
++      "claim_ids": [],
++      "docstring": "The bad-base clause, read off the excluded-cofactor count."
++    },
++    {
++      "id": "lean/ErdosProblems/ArgumentGraph/Results/Erdos249.lean:45:dtw_of_fiberMean_and_centered",
++      "name": "dtw_of_fiberMean_and_centered",
++      "kind": "theorem",
++      "module": "lean/ErdosProblems/ArgumentGraph/Results/Erdos249.lean",
++      "line": 45,
++      "signature": "theorem dtw_of_fiberMean_and_centered (hmean : ∀ h : ℕ, 0 < h → ∀ᶠ X : ℕ in atTop, ∀ N ∈ pivotGoodBases X (minimalDepth h 26 X) 26 (1 / 1000 : ℝ), ‖pivotFiberMean h X (minimalDepth h 26 X) 26 (pivotCofactor N (minimalDepth h 26 X) 26)‖ ≤ (1 / 100 : ℝ)) (hcentered : ∀ h : ℕ, 0 < h → ∀ A : ℕ, ∃ X : ℕ, max A 1 ≤ X ∧ (pivotCenteredCorrelation h X (minimalDepth h 26 X) 26 (1 / 1000 : ℝ)).re ≤ (14 / 25 : ℝ) * X) : DTWPivotResidualDecorrelation",
++      "generated_certificate": false,
++      "claim_ids": [],
++      "docstring": "**The decorrelation from its fibre-mean and centred clauses.** At the minimal depth, with `s = 26` and `η = 1/1000`, `prop_dickman` supplies the depth conditions and the non-supplier count and `excluded_budget_one_thousandth_of_chebyshev` the bad-base count."
++    },
++    {
++      "id": "lean/ErdosProblems/ArgumentGraph/Results/Erdos249.lean:75:irrational_totient_series_of_fiberMean_and_centered",
++      "name": "irrational_totient_series_of_fiberMean_and_centered",
++      "kind": "theorem",
++      "module": "lean/ErdosProblems/ArgumentGraph/Results/Erdos249.lean",
++      "line": 75,
++      "signature": "theorem irrational_totient_series_of_fiberMean_and_centered (hmean : ∀ h : ℕ, 0 < h → ∀ᶠ X : ℕ in atTop, ∀ N ∈ pivotGoodBases X (minimalDepth h 26 X) 26 (1 / 1000 : ℝ), ‖pivotFiberMean h X (minimalDepth h 26 X) 26 (pivotCofactor N (minimalDepth h 26 X) 26)‖ ≤ (1 / 100 : ℝ)) (hcentered : ∀ h : ℕ, 0 < h → ∀ A : ℕ, ∃ X : ℕ, max A 1 ≤ X ∧ (pivotCenteredCorrelation h X (minimalDepth h 26 X) 26 (1 / 1000 : ℝ)).re ≤ (14 / 25 : ℝ) * X) : Irrational (∑' n : ℕ, (Nat.totient n : ℝ) / 2 ^ n)",
++      "generated_certificate": false,
++      "claim_ids": [],
++      "docstring": "**The irrationality of `∑ φ(n) / 2 ^ n` from the fibre means and the centred correlation**, at the minimal depth with `s = 26` and `η = 1/1000`."
++    },
+     {
+       "id": "lean/ErdosProblems/ArgumentGraph/Results/Erdos251.lean:39:long_joint_prime_gap_countermodel_per_clause",
+       "name": "long_joint_prime_gap_countermodel_per_clause",
+@@ -178932,6 +179075,37 @@
+       "claim_ids": [],
+       "docstring": "**Short paper, `res:jointcountermodel`, each input at its clause.** For every prefix length `K` and every `ε > 0` there is `b` with a rational dyadic sum, `b n = g n` below `K`, `g n ≤ b n ≤ g n + (log (n+3))^ε` eventually, every fixed eventual residue of the coefficients and cumulative positions, vanishing block total variation for lengths `o(log log X)`, and `0 ≤ P n - p n = O_ε(n (log (n+3))^ε / log log n)`; fixed-block polynomial nonconcentration holds under Schlage-Puchta's Lemma 4, and `P n ∼ n log n` under the prime number theorem."
+     },
++    {
++      "id": "lean/ErdosProblems/ArgumentGraph/Results/Erdos251.lean:93:one_le_log_nat_add_three",
++      "name": "one_le_log_nat_add_three",
++      "kind": "theorem",
++      "module": "lean/ErdosProblems/ArgumentGraph/Results/Erdos251.lean",
++      "line": 93,
++      "signature": "theorem one_le_log_nat_add_three (n : ℕ) : 1 ≤ Real.log ((n : ℝ) + 3)",
++      "generated_certificate": false,
++      "claim_ids": []
++    },
++    {
++      "id": "lean/ErdosProblems/ArgumentGraph/Results/Erdos251.lean:101:polylog_le_of_exponent_le",
++      "name": "polylog_le_of_exponent_le",
++      "kind": "theorem",
++      "module": "lean/ErdosProblems/ArgumentGraph/Results/Erdos251.lean",
++      "line": 101,
++      "signature": "theorem polylog_le_of_exponent_le {α β : ℝ} (h : α ≤ β) (n : ℕ) : polylog α n ≤ polylog β n",
++      "generated_certificate": false,
++      "claim_ids": []
++    },
++    {
++      "id": "lean/ErdosProblems/ArgumentGraph/Results/Erdos251.lean:107:short_joint_prime_gap_countermodel_of_exponent_one",
++      "name": "short_joint_prime_gap_countermodel_of_exponent_one",
++      "kind": "theorem",
++      "module": "lean/ErdosProblems/ArgumentGraph/Results/Erdos251.lean",
++      "line": 107,
++      "signature": "theorem short_joint_prime_gap_countermodel_of_exponent_one (K : ℕ) {ε : ℝ} (hε : 1 ≤ ε) : ∃ b : ℕ → ℕ, ∃ r : ℚ, ∃ C : ℝ, 0 < C ∧ HasSum (fun n => (b n : ℝ) / 2 ^ (n + 1)) (r : ℝ) ∧ (∀ n, n < K → b n = primeGap0 n) ∧ (∀ n, primeGap0 n ≤ b n) ∧ (∀ᶠ n : ℕ in atTop, ((b n - primeGap0 n : ℕ) : ℝ) ≤ polylog ε n) ∧ (∀ q : ℕ, 0 < q → ∀ᶠ n : ℕ in atTop, b n ≡ primeGap0 n [MOD q] ∧ cumulative b n ≡ prime0 n [MOD q]) ∧ (∀ m : ℕ → ℕ, Tendsto (fun X => (m X : ℝ) / Real.log (Real.log (X : ℝ))) atTop (𝓝 0) → Tendsto (fun X => blockTV primeGap0 b X (m X)) atTop (𝓝 0)) ∧ (SchlagePuchtaLemma4 → FixedBlockNonconcentration (fun n => (b n : ℤ))) ∧ (∀ n, prime0 n ≤ cumulative b n) ∧ (∀ᶠ n : ℕ in atTop, (cumulative b n : ℝ) - prime0 n",
++      "generated_certificate": false,
++      "claim_ids": [],
++      "docstring": "Every `ε ≥ 1` instance of `short_joint_prime_gap_countermodel_per_clause`, from the `ε = 1` instance alone."
++    },
+     {
+       "id": "lean/ErdosProblems/Bit/Corr1.lean:94:mod_sub_of_le_mod",
+       "name": "mod_sub_of_le_mod",
+diff --git a/lean/ErdosProblems/ArgumentGraph/Results/Erdos1041.lean b/lean/ErdosProblems/ArgumentGraph/Results/Erdos1041.lean
+new file mode 100644
+index 00000000..2bb47217
+--- /dev/null
++++ b/lean/ErdosProblems/ArgumentGraph/Results/Erdos1041.lean
+@@ -0,0 +1,80 @@
++-- SPDX-FileCopyrightText: 2026 Will Cook
++-- SPDX-License-Identifier: Apache-2.0
++import ErdosProblems.ArgumentGraph.Derived.Erdos1041
++
++/-!
++# Erdős #1041: what the inner-chord factoring adds, clause by clause
++
++`binomial_inner_chord_maximal` assumes the switch condition `1 ≤ rⁿ (1 + cⁿ)`, with
++`c = cos (π / n)`, and concludes a midpoint equality and a maximality clause
++`∀ s, innerRadius n r < s → s ≤ r → 1 < ‖…‖`. Its proof passes the switch condition to
++`inner_chord_maximal`, and `derive_factor` finds it unused once that lemma is factored:
++`binomial_inner_chord_maximal.factored` states both clauses without it.
++
++The theorems below say what that adds. Off the switch condition the inner radius exceeds
++`r`, so no `s` meets the maximality clause's hypotheses there and that clause gains
++nothing. The midpoint equality is asserted at every added point, and the added region is
++not empty: the switch condition fails at `n = 3`, `r = 1/2`, where the factored theorem
++gives the equality and the Lean theorem as written does not apply.
++-/
++
++noncomputable section
++
++namespace ErdosProblems.Erdos1041.PaperCompleteR21
++
++open BinomialChord
++
++/-- Off the switch condition the inner radius exceeds `r`. -/
++theorem lt_innerRadius_of_not_switch {n : ℕ} (hn : 3 ≤ n) {r : ℝ} (hr0 : 0 < r)
++    (hr1 : r ^ n < 1) (hsw : ¬ 1 ≤ r ^ n * (1 + chordCos n ^ n)) : r < innerRadius n r := by
++  have hc := chordCos_pos hn
++  have ht0 := (innerRadius_pos hn hr1).le
++  have hn0 : n ≠ 0 := by omega
++  have hlt : r ^ n * (1 + chordCos n ^ n) < 1 := not_le.mp hsw
++  have hpow : (r * chordCos n) ^ n < (innerRadius n r * chordCos n) ^ n := by
++    rw [innerRadius_mul_cos_pow hn hr1.le, mul_pow]
++    have e : r ^ n * (1 + chordCos n ^ n) = r ^ n + r ^ n * chordCos n ^ n := by ring
++    linarith
++  have hbase : r * chordCos n < innerRadius n r * chordCos n := by
++    by_contra hcon
++    push_neg at hcon
++    rcases hcon.lt_or_eq with h | h
++    · have := pow_lt_pow_left₀ h (by positivity) hn0
++      linarith
++    · rw [h] at hpow
++      exact lt_irrefl _ hpow
++  exact lt_of_mul_lt_mul_right hbase hc.le
++
++/-- Off the switch condition the maximality clause of `binomial_inner_chord_maximal` has
++no instance. -/
++theorem inner_chord_maximality_vacuous_off_switch {n : ℕ} (hn : 3 ≤ n) {r : ℝ} (hr0 : 0 < r)
++    (hr1 : r ^ n < 1) (hsw : ¬ 1 ≤ r ^ n * (1 + chordCos n ^ n)) (s : ℝ) :
++    ¬ (innerRadius n r < s ∧ s ≤ r) := by
++  rintro ⟨h1, h2⟩
++  have := lt_innerRadius_of_not_switch hn hr0 hr1 hsw
++  linarith
++
++/-- The switch condition fails at `n = 3`, `r = 1/2`. -/
++theorem switch_fails_at_three_half : ¬ 1 ≤ ((1 : ℝ) / 2) ^ 3 * (1 + chordCos 3 ^ 3) := by
++  have h0 := chordCos_nonneg (n := 3) (by norm_num)
++  have h1 := chordCos_le_one 3
++  have hc3 : chordCos 3 ^ 3 ≤ 1 := by
++    calc chordCos 3 ^ 3 ≤ 1 ^ 3 := by gcongr
++      _ = 1 := one_pow 3
++  intro h
++  rw [show ((1 : ℝ) / 2) ^ 3 = 1 / 8 by norm_num] at h
++  linarith
++
++/-- At `n = 3`, `r = 1/2`, outside the switch condition, the factored theorem gives the
++midpoint equality. -/
++theorem inner_chord_midpoint_at_three_half :
++    ‖(chordPoint 3 (innerRadius 3 (1 / 2)) (1 / 2)) ^ 3 - (((1 / 2 : ℝ) : ℝ) : ℂ) ^ 3‖ = 1 :=
++  (binomial_inner_chord_maximal.factored (n := 3) le_rfl (r := 1 / 2) (by norm_num)
++    (by norm_num)).1
++
++end ErdosProblems.Erdos1041.PaperCompleteR21
++
++#print axioms ErdosProblems.Erdos1041.PaperCompleteR21.lt_innerRadius_of_not_switch
++#print axioms ErdosProblems.Erdos1041.PaperCompleteR21.inner_chord_maximality_vacuous_off_switch
++#print axioms ErdosProblems.Erdos1041.PaperCompleteR21.switch_fails_at_three_half
++#print axioms ErdosProblems.Erdos1041.PaperCompleteR21.inner_chord_midpoint_at_three_half
+diff --git a/lean/ErdosProblems/ArgumentGraph/Results/Erdos243.lean b/lean/ErdosProblems/ArgumentGraph/Results/Erdos243.lean
+new file mode 100644
+index 00000000..50fcd75b
+--- /dev/null
++++ b/lean/ErdosProblems/ArgumentGraph/Results/Erdos243.lean
+@@ -0,0 +1,91 @@
++-- SPDX-FileCopyrightText: 2026 Will Cook
++-- SPDX-License-Identifier: Apache-2.0
++import ErdosProblems.ArgumentGraph.Derived.Erdos243
++
++/-!
++# Erdős #243: what the transport-square factoring adds
++
++`transport_square_unconditional` (`long243:res:transportsquare`) assumes `v n > 0` for
++`n ≥ T` and passes it to `primitive_zero_density_multiplier_irreducibility` only for claims
++it does not use, so `transport_square_unconditional.factored` leaves it out. The theorem
++below shows that the hypotheses the factoring keeps imply it: from a zero term on, `v`
++vanishes (`v (n + 1) = a n * v n`), coprimality then gives `u n = 1`, and
++`m * C(n + 2, 3) + c` exceeds `1` for large `n`, so the exceptional set contains a tail,
++which zero lower density forbids. The factored theorem is the same result, on the same
++premise region, with a shorter statement.
++-/
++
++namespace ErdosProblems.Erdos243.PaperCompleteR21
++
++open ErdosProblems.Erdos243.PaperCompleteR9
++open ErdosProblems.Erdos243.PaperCompleteR11
++
++theorem le_choose_add_two_three (n : ℕ) (hn : 1 ≤ n) : n ≤ (n + 2).choose 3 := by
++  induction n, hn using Nat.le_induction with
++  | base => decide
++  | succ n hn ih =>
++    have h : (n + 2 + 1).choose 3 = (n + 2).choose 2 + (n + 2).choose 3 :=
++      Nat.choose_succ_succ' (n + 2) 2
++    have hpos : 0 < (n + 2).choose 2 := Nat.choose_pos (by omega)
++    have e1 : n + 1 + 2 = n + 2 + 1 := by omega
++    rw [e1]
++    omega
++
++/-- A set containing every `n ≥ K` does not have zero lower density. -/
++theorem not_zeroLowerDensity_of_tail (E : Set ℕ) (K : ℕ) (htail : ∀ n, K ≤ n → n ∈ E) :
++    ¬ ZeroLowerDensity E := by
++  intro hzero
++  obtain ⟨X, hX, hlt⟩ := hzero (1 / 2) (by norm_num) (2 * K)
++  have hcount := disjoint_periodic_count E K 1 1 le_rfl
++    (fun k => ⟨0, by norm_num, htail _ (by omega)⟩) (X - K)
++  have hXeq : K + 1 * (X - K) = X := by omega
++  rw [hXeq] at hcount
++  have hc : ((X - K : ℕ) : ℝ) ≤ (exceptionCount E X : ℝ) := by exact_mod_cast hcount
++  have hsub : ((X - K : ℕ) : ℝ) = (X : ℝ) - K := by rw [Nat.cast_sub (by omega)]
++  have h2 : (2 * K : ℝ) ≤ X := by exact_mod_cast hX
++  linarith
++
++/-- The hypotheses `transport_square_unconditional.factored` keeps imply the positivity
++hypothesis it leaves out. -/
++theorem transport_square_positivity_of_rest
++    (a u v : ℕ → ℕ) (m : ℕ) (c : ℤ) (T : ℕ) (hm : 0 < m)
++    (hden : ∀ n, T ≤ n → v (n + 1) = a n * v n)
++    (hcop : ∀ n, T ≤ n → Nat.Coprime (u n) (v n))
++    (hzero : ZeroLowerDensity {n : ℕ | (u n : ℤ) ≠ (m : ℤ) * risingBinomial n + c}) :
++    ∀ n, T ≤ n → 0 < v n := by
++  intro k hk
++  by_contra hv
++  have hvk : v k = 0 := by omega
++  have hvan : ∀ n, k ≤ n → v n = 0 := by
++    intro n hn
++    induction n, hn using Nat.le_induction with
++    | base => exact hvk
++    | succ n hn ih => rw [hden n (by omega), ih, mul_zero]
++  have hu1 : ∀ n, k ≤ n → u n = 1 := by
++    intro n hn
++    have h := hcop n (by omega)
++    rw [hvan n hn] at h
++    exact Nat.coprime_zero_right _ |>.mp h
++  have hgrow : ∀ n, c.natAbs + 2 ≤ n → (m : ℤ) * risingBinomial n + c ≠ 1 := by
++    intro n hn heq
++    have h1 : (n : ℤ) ≤ ((n + 2).choose 3 : ℤ) := by
++      exact_mod_cast le_choose_add_two_three n (by omega)
++    have hm1 : (1 : ℤ) ≤ m := by exact_mod_cast hm
++    have hn' : (c.natAbs : ℤ) + 2 ≤ n := by exact_mod_cast hn
++    have habs : -(c.natAbs : ℤ) ≤ c := by
++      rcases Int.natAbs_eq c with h | h <;> omega
++    have hC0 : (0 : ℤ) ≤ ((n + 2).choose 3 : ℤ) := by positivity
++    have hmb : (n : ℤ) ≤ (m : ℤ) * ((n + 2).choose 3 : ℤ) := by nlinarith
++    unfold risingBinomial at heq
++    linarith
++  apply not_zeroLowerDensity_of_tail _ (max k (c.natAbs + 2)) _ hzero
++  intro n hn
++  show (u n : ℤ) ≠ (m : ℤ) * risingBinomial n + c
++  rw [hu1 n (le_of_max_le_left hn)]
++  push_cast
++  exact fun h => hgrow n (le_of_max_le_right hn) h.symm
++
++end ErdosProblems.Erdos243.PaperCompleteR21
++
++#print axioms ErdosProblems.Erdos243.PaperCompleteR21.not_zeroLowerDensity_of_tail
++#print axioms ErdosProblems.Erdos243.PaperCompleteR21.transport_square_positivity_of_rest
+diff --git a/lean/ErdosProblems/ArgumentGraph/Results/Erdos249.lean b/lean/ErdosProblems/ArgumentGraph/Results/Erdos249.lean
+new file mode 100644
+index 00000000..d0309978
+--- /dev/null
++++ b/lean/ErdosProblems/ArgumentGraph/Results/Erdos249.lean
+@@ -0,0 +1,90 @@
++-- SPDX-FileCopyrightText: 2026 Will Cook
++-- SPDX-License-Identifier: Apache-2.0
++import ErdosProblems.Erdos249.PaperCompleteR21.ExcludedCofactorEstimate
++import ErdosProblems.Erdos249.TypeBReturnV8.PeripheralFiniteBridge
++
++/-!
++# Erdős #249: the pivot decorrelation from two of its clauses
++
++`DTWPivotResidualDecorrelation` (`FirstHarmonicPivot`, demand `G064` of the demand ledger)
++asks, for every `h`, for parameters at which the two depth conditions and the four clauses of
++`PivotBudgetAt` hold together, and it implies the irrationality of `∑ φ(n) / 2 ^ n`. The finite
++bridge `pivotBudgetAt_of_peripheral_estimates` reduces three of the clauses to a uniform
++fibre-mean bound, a count of bad bases and a count of non-supplier bases.
++
++At the minimal depth, with `s = 26` and `η = 1/1000`, two proofs that do not mention the
++decorrelation supply most of this. `prop_dickman` gives the two depth conditions and, for all
++large `X`, fewer than `8X/25` non-supplier bases, with no hypothesis. The argument graph's
++frontier of `prop_badcof` showed that its proof uses the prime number theorem only through a
++dyadic prime count, which Chebyshev's bound supplies:
++`excluded_budget_one_thousandth_of_chebyshev` gives fewer than `X/100` bad bases for all large
++`X`, with no hypothesis. The two theorems below state what remains: the fibre means and the
++centred correlation.
++-/
++
++open Filter
++
++namespace ErdosProblems.Erdos249.PaperCompleteR21
++
++open Erdos249257.TotientTailPeriodKiller
++open ErdosProblems.Erdos249.PaperCompleteR21.ExcludedCofactor
++
++/-- The bad-base clause, read off the excluded-cofactor count. -/
++theorem card_pivotBadBases_le_of_count (h X : ℕ)
++    (hcount : ((((pivotSupplierBases X (minimalDepth h 26 X) 26).filter
++        (fun N => pivotCofactor N (minimalDepth h 26 X) 26
++          ∈ excludedCofactorSet (1 / 1000))).card : ℕ) : ℝ) < (1 / 100 : ℝ) * X) :
++    ((pivotBadBases X (minimalDepth h 26 X) 26 (1 / 1000 : ℝ)).card : ℝ)
++      ≤ (1 / 100 : ℝ) * X := by
++  rw [← filter_excluded_eq_pivotBadBases]
++  exact hcount.le
++
++/-- **The decorrelation from its fibre-mean and centred clauses.** At the minimal depth, with
++`s = 26` and `η = 1/1000`, `prop_dickman` supplies the depth conditions and the non-supplier
++count and `excluded_budget_one_thousandth_of_chebyshev` the bad-base count. -/
++theorem dtw_of_fiberMean_and_centered
++    (hmean : ∀ h : ℕ, 0 < h → ∀ᶠ X : ℕ in atTop,
++      ∀ N ∈ pivotGoodBases X (minimalDepth h 26 X) 26 (1 / 1000 : ℝ),
++        ‖pivotFiberMean h X (minimalDepth h 26 X) 26
++            (pivotCofactor N (minimalDepth h 26 X) 26)‖ ≤ (1 / 100 : ℝ))
++    (hcentered : ∀ h : ℕ, 0 < h → ∀ A : ℕ, ∃ X : ℕ, max A 1 ≤ X ∧
++      (pivotCenteredCorrelation h X (minimalDepth h 26 X) 26 (1 / 1000 : ℝ)).re
++        ≤ (14 / 25 : ℝ) * X) :
++    DTWPivotResidualDecorrelation := by
++  intro h hh
++  refine ⟨26, by norm_num, (1 / 1000 : ℝ), by norm_num, by norm_num, ?_⟩
++  intro X₀
++  obtain ⟨A₁, hA₁⟩ := eventually_atTop.mp (hmean h hh)
++  obtain ⟨A₂, hA₂⟩ := eventually_atTop.mp (excluded_budget_one_thousandth_of_chebyshev h 26)
++  obtain ⟨A₃, hA₃⟩ := eventually_atTop.mp (prop_dickman h 26).2.2.2.2.2
++  obtain ⟨X, hX, hc⟩ := hcentered h hh (max X₀ (max A₁ (max A₂ A₃)))
++  simp only [max_le_iff] at hX
++  obtain ⟨⟨hX₀, hXA₁, hXA₂, hXA₃⟩, hX1⟩ := hX
++  have hadm : h ≤ minimalDepth h 26 X - 26 ∧
++      16 * (2 * X + h + minimalDepth h 26 X + 2) ≤ 2 ^ minimalDepth h 26 X :=
++    ((prop_dickman h 26).1 X).1
++  refine ⟨X, minimalDepth h 26 X, max_le hX₀ hX1, hadm.1, hadm.2, ?_⟩
++  refine pivotBudgetAt_of_peripheral_estimates h X (minimalDepth h 26 X) 26 (1 / 1000 : ℝ)
++    hc (hA₁ X hXA₁) ?_ ?_
++  · exact card_pivotBadBases_le_of_count h X (hA₂ X hXA₂).1
++  · have hnon := (hA₃ X hXA₃).2
++    simpa [filter_not_mem_pivotSupplierBases] using hnon.le
++
++/-- **The irrationality of `∑ φ(n) / 2 ^ n` from the fibre means and the centred
++correlation**, at the minimal depth with `s = 26` and `η = 1/1000`. -/
++theorem irrational_totient_series_of_fiberMean_and_centered
++    (hmean : ∀ h : ℕ, 0 < h → ∀ᶠ X : ℕ in atTop,
++      ∀ N ∈ pivotGoodBases X (minimalDepth h 26 X) 26 (1 / 1000 : ℝ),
++        ‖pivotFiberMean h X (minimalDepth h 26 X) 26
++            (pivotCofactor N (minimalDepth h 26 X) 26)‖ ≤ (1 / 100 : ℝ))
++    (hcentered : ∀ h : ℕ, 0 < h → ∀ A : ℕ, ∃ X : ℕ, max A 1 ≤ X ∧
++      (pivotCenteredCorrelation h X (minimalDepth h 26 X) 26 (1 / 1000 : ℝ)).re
++        ≤ (14 / 25 : ℝ) * X) :
++    Irrational (∑' n : ℕ, (Nat.totient n : ℝ) / 2 ^ n) :=
++  irrational_totient_series_of_pivotResidualDecorrelation
++    (dtw_of_fiberMean_and_centered hmean hcentered)
++
++end ErdosProblems.Erdos249.PaperCompleteR21
++
++#print axioms ErdosProblems.Erdos249.PaperCompleteR21.dtw_of_fiberMean_and_centered
++#print axioms ErdosProblems.Erdos249.PaperCompleteR21.irrational_totient_series_of_fiberMean_and_centered
+diff --git a/lean/ErdosProblems/ArgumentGraph/Results/Erdos251.lean b/lean/ErdosProblems/ArgumentGraph/Results/Erdos251.lean
+index 691f1d93..98f6191a 100644
+--- a/lean/ErdosProblems/ArgumentGraph/Results/Erdos251.lean
++++ b/lean/ErdosProblems/ArgumentGraph/Results/Erdos251.lean
+@@ -83,7 +83,68 @@ theorem short_joint_prime_gap_countermodel_per_clause (K : ℕ) {ε : ℝ} (hε
+       (PrimeNumberTheorem → Tendsto (fun n => (cumulative b n : ℝ) / scale n) atTop (𝓝 1)) :=
+   short_joint_prime_gap_countermodel.factored K hε
+ 
++/-! ## The exponents `ε > 1` are a corollary
++
++`polylog ε n = (log (n + 3)) ^ ε` increases with `ε`, since `log (n + 3) ≥ log 3 > 1`. So the
++sequence `short_joint_prime_gap_countermodel_per_clause` gives at `ε = 1` has every property
++required at any `ε ≥ 1`: the factoring's widening from `ε ≤ 1` to every `ε > 0` adds nothing
++for `ε ≥ 1`, and its gain is each input at its own clause. -/
++
++theorem one_le_log_nat_add_three (n : ℕ) : 1 ≤ Real.log ((n : ℝ) + 3) := by
++  have he : Real.exp 1 ≤ (n : ℝ) + 3 := by
++    have := Real.exp_one_lt_d9
++    have : (0 : ℝ) ≤ n := n.cast_nonneg
++    linarith
++  calc (1 : ℝ) = Real.log (Real.exp 1) := (Real.log_exp 1).symm
++    _ ≤ Real.log ((n : ℝ) + 3) := Real.log_le_log (Real.exp_pos 1) he
++
++theorem polylog_le_of_exponent_le {α β : ℝ} (h : α ≤ β) (n : ℕ) : polylog α n ≤ polylog β n := by
++  unfold polylog
++  exact Real.rpow_le_rpow_of_exponent_le (one_le_log_nat_add_three n) h
++
++/-- Every `ε ≥ 1` instance of `short_joint_prime_gap_countermodel_per_clause`, from the
++`ε = 1` instance alone. -/
++theorem short_joint_prime_gap_countermodel_of_exponent_one (K : ℕ) {ε : ℝ} (hε : 1 ≤ ε) :
++    ∃ b : ℕ → ℕ, ∃ r : ℚ, ∃ C : ℝ, 0 < C ∧
++      HasSum (fun n => (b n : ℝ) / 2 ^ (n + 1)) (r : ℝ) ∧
++      (∀ n, n < K → b n = primeGap0 n) ∧
++      (∀ n, primeGap0 n ≤ b n) ∧
++      (∀ᶠ n : ℕ in atTop, ((b n - primeGap0 n : ℕ) : ℝ) ≤ polylog ε n) ∧
++      (∀ q : ℕ, 0 < q → ∀ᶠ n : ℕ in atTop,
++        b n ≡ primeGap0 n [MOD q] ∧ cumulative b n ≡ prime0 n [MOD q]) ∧
++      (∀ m : ℕ → ℕ,
++        Tendsto (fun X => (m X : ℝ) / Real.log (Real.log (X : ℝ))) atTop (𝓝 0) →
++        Tendsto (fun X => blockTV primeGap0 b X (m X)) atTop (𝓝 0)) ∧
++      (SchlagePuchtaLemma4 → FixedBlockNonconcentration (fun n => (b n : ℤ))) ∧
++      (∀ n, prime0 n ≤ cumulative b n) ∧
++      (∀ᶠ n : ℕ in atTop, (cumulative b n : ℝ) - prime0 n
++        ≤ C * ((n : ℝ) * polylog ε n / Real.log (Real.log (n : ℝ)))) ∧
++      (PrimeNumberTheorem →
++        Tendsto (fun n => (cumulative b n : ℝ) / scale n) atTop (𝓝 1)) := by
++  obtain ⟨b, r, C, hC, hsum, hpre, hle, hallow, hcong, hTV, hNC, hlo, hest, hgrow⟩ :=
++    short_joint_prime_gap_countermodel_per_clause K (ε := 1) one_pos
++  refine ⟨b, r, C, hC, hsum, hpre, hle, ?_, hcong, hTV, hNC, hlo, ?_, hgrow⟩
++  · filter_upwards [hallow] with n hn
++    exact hn.trans (polylog_le_of_exponent_le hε n)
++  · filter_upwards [hest, eventually_ge_atTop 16] with n hn h16
++    refine hn.trans ?_
++    have hn16 : (16 : ℝ) ≤ n := by exact_mod_cast h16
++    have hlog : 1 < Real.log (n : ℝ) := by
++      have he : Real.exp 1 < (n : ℝ) := by
++        have := Real.exp_one_lt_d9
++        linarith
++      calc (1 : ℝ) = Real.log (Real.exp 1) := (Real.log_exp 1).symm
++        _ < Real.log (n : ℝ) := Real.log_lt_log (Real.exp_pos 1) he
++    have hll : 0 < Real.log (Real.log (n : ℝ)) := Real.log_pos hlog
++    have hp := polylog_le_of_exponent_le hε n
++    have hn0 : (0 : ℝ) ≤ n := by linarith
++    have hq : (n : ℝ) * polylog 1 n / Real.log (Real.log (n : ℝ))
++        ≤ (n : ℝ) * polylog ε n / Real.log (Real.log (n : ℝ)) := by
++      gcongr
++    exact mul_le_mul_of_nonneg_left hq hC.le
++
+ end ErdosProblems.Erdos251.PaperCompleteR21
+ 
+ #print axioms ErdosProblems.Erdos251.PaperCompleteR21.long_joint_prime_gap_countermodel_per_clause
+ #print axioms ErdosProblems.Erdos251.PaperCompleteR21.short_joint_prime_gap_countermodel_per_clause
++#print axioms ErdosProblems.Erdos251.PaperCompleteR21.short_joint_prime_gap_countermodel_of_exponent_one
