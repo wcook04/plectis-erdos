@@ -7,11 +7,9 @@ import Erdos249257.HalfCarryReachability
 import Erdos249257.HalfCylinderFullShellSeamBridge
 import Erdos249257.HalfCylinderLargestSkipInduction
 import Erdos249257.HalfCylinderMiddleCarryLowerBound
-import Erdos249257.HalfTrappingReturnCarry
 import Erdos249257.SuffixCylinderTerminalOnlyBridge
 import Erdos249257.TwentyOneQuotientGreedy
 import ErdosProblems.Erdos257.PaperCompleteR21.ArithmeticCounterexampleAssembly
-import ErdosProblems.Erdos257.PaperCompleteR21.CompatibleFiniteRowFamily
 import ErdosProblems.Erdos257.PaperCompleteR21.DyadicBandAndTwoSidedBounds
 import ErdosProblems.Erdos257.PaperCompleteR21.EventualNonnegativeMargin
 import ErdosProblems.Erdos257.PaperCompleteR21.FeedbackRowStripWitnessAllDepths
@@ -577,6 +575,24 @@ def doubleNegated? (t : Expr) : Option Expr :=
     | .forallE _ d b _ => if b.isConstOf ``False then negated? d.consumeMData else none
     | _ => none
 
+/-- The statement a closed consequence `c` restates classically: `∀ xs, X` when
+`c` is `∀ xs, ¬¬X` (in a form `doubleNegated?` reads), or `∀ xs (_ : ¬X), False`,
+the shape of a `by_contra` site closed over the negated goal it assumes. -/
+def classicalRestatement? (c : Expr) : MetaM (Option Expr) :=
+  forallTelescope c fun xs body => do
+    if let some x := doubleNegated? body then
+      return some (← mkForallFVars xs x)
+    unless body.consumeMData.isConstOf ``False && !xs.isEmpty do return none
+    let last := (← inferType xs.back!).consumeMData
+    let negated? : Option Expr :=
+      if last.isAppOfArity ``Not 1 then some last.appArg!
+      else match last with
+        | .forallE _ x b _ => if b.consumeMData.isConstOf ``False && !b.hasLooseBVars then some x else none
+        | _ => none
+    match negated? with
+    | some x => return some (← mkForallFVars xs.pop x)
+    | none => return none
+
 /-- Admit `site` as a use site with parameters: its proposition closed over its
 parameters is a consequence of `H` (the kernel checks `H → C` the first time `C`
 is seen), and the site becomes that consequence's placeholder applied to the
@@ -595,6 +611,10 @@ def liftSite (ctx : SiteContext) (context : Array Expr) (site : Expr) : SiteM (O
       if ctx.goals.contains (normaliseBinders g) then return none
       if ctx.goals.contains (normaliseBinders (← instantiateMVars (← mkForallFVars params g))) then
         return none
+    -- A `by_contra` site proves `False` under the negated goal, so only its closed
+    -- form `¬G → False` shows that it restates the goal.
+    if let some g ← classicalRestatement? c then
+      if ctx.goals.contains (normaliseBinders (← instantiateMVars g)) then return none
     if (← budgeted 5000 (withNewMCtxDepth (isDefEq c ctx.hType))) == some true then return none
     let current ← get
     if let some j := current.consequences.findIdx? (· == c) then
@@ -1139,46 +1159,29 @@ derive_idle ErdosProblems.Erdos257.PaperCompleteR21.paper_one_orbit_stability
 derive_idle ErdosProblems.Erdos257.PaperCompleteR21.paper_shared_prefix_family_strip_witness_after_feedback_of_all_depths
 derive_idle ErdosProblems.Erdos257.PaperCompleteR21.paper_zero_run_le_eps_logb
 derive_weakening Erdos249257.HalfCarryReachability.greedy_half_infinite_of_cofinalStripReturn
-derive_frontier Erdos249257.HalfCarryReachability.greedy_half_infinite_of_cofinalStripReturn
 derive_weakening Erdos249257.HalfCarryReachability.greedy_half_infinite_of_mobiusCenteredHalfCarry_sqrtBound
-derive_frontier Erdos249257.HalfCarryReachability.greedy_half_infinite_of_mobiusCenteredHalfCarry_sqrtBound
 derive_weakening Erdos249257.SeamTwoSidedDyadicCellEscape.twoSided
-derive_frontier Erdos249257.SeamTwoSidedDyadicCellEscape.twoSided
 derive_weakening Erdos249257.SuffixCylinderTerminalOnlyBridge.exists_infinite_positive_support_half_of_cofinalCylinderStages
-derive_frontier Erdos249257.SuffixCylinderTerminalOnlyBridge.exists_infinite_positive_support_half_of_cofinalCylinderStages
 derive_weakening Erdos249257.half_mem_mersenneAchievementSet_of_criticalQuotientSupply
-derive_frontier Erdos249257.half_mem_mersenneAchievementSet_of_criticalQuotientSupply
 derive_weakening Erdos249257.half_mem_mersenneAchievementSet_of_largestSkipLateStepSocket
 derive_frontier Erdos249257.half_mem_mersenneAchievementSet_of_largestSkipLateStepSocket
-derive_frontier Erdos249257.half_mem_mersenneAchievementSet_of_largestSkipLateStepSocket at Erdos249257.seamGreedyUnboundedSkippedRanksAlong_of_largestSkipLateStepSocket
 derive_frontier Erdos249257.half_mem_mersenneAchievementSet_of_largestSkipLateStepSocket at Erdos249257.largestSkipLateAt_of_stepSocket
 derive_weakening Erdos249257.half_mem_mersenneAchievementSet_of_middleProducerCardEscape
-derive_frontier Erdos249257.half_mem_mersenneAchievementSet_of_middleProducerCardEscape
 derive_weakening Erdos249257.half_mem_mersenneAchievementSet_of_middleProducerRowEscape
-derive_frontier Erdos249257.half_mem_mersenneAchievementSet_of_middleProducerRowEscape
 derive_weakening Erdos249257.half_mem_mersenneAchievementSet_of_positiveHalfGreedySkips
-derive_frontier Erdos249257.half_mem_mersenneAchievementSet_of_positiveHalfGreedySkips
 derive_weakening Erdos249257.half_mem_mersenneAchievementSet_of_skippedFullShellNonnegative
-derive_frontier Erdos249257.half_mem_mersenneAchievementSet_of_skippedFullShellNonnegative
 derive_weakening Erdos249257.half_mem_mersenneAchievementSet_of_skippedSeamEscape
-derive_frontier Erdos249257.half_mem_mersenneAchievementSet_of_skippedSeamEscape
 derive_weakening Erdos249257.half_mem_mersenneAchievementSet_of_skipped_twoChannelCap
-derive_frontier Erdos249257.half_mem_mersenneAchievementSet_of_skipped_twoChannelCap
 derive_weakening Erdos249257.half_mem_mersenneAchievementSet_of_upperResetDyadicBandEscape
 derive_frontier Erdos249257.half_mem_mersenneAchievementSet_of_upperResetDyadicBandEscape
-derive_frontier Erdos249257.half_mem_mersenneAchievementSet_of_upperResetDyadicBandEscape at Erdos249257.SeamUpperResetDyadicBandEscape.toMiddleProducerRowEscape
 derive_frontier Erdos249257.half_mem_mersenneAchievementSet_of_upperResetDyadicBandEscape at Erdos249257.SeamUpperResetDyadicBandEscape.remainder_ge_row
 derive_weakening Erdos249257.twentyOneFatalAlignedBranch_eventually_affine_supercapacity
 derive_frontier Erdos249257.twentyOneFatalAlignedBranch_eventually_affine_supercapacity
 derive_weakening Erdos249257.twentyOneFatalAlignedBranch_eventually_strict_supercapacity
-derive_frontier Erdos249257.twentyOneFatalAlignedBranch_eventually_strict_supercapacity
 derive_weakening ErdosProblems.Erdos257.PaperCompleteR21.half_mem_mersenneAchievementSet_of_resetSqrtEscape
 derive_frontier ErdosProblems.Erdos257.PaperCompleteR21.half_mem_mersenneAchievementSet_of_resetSqrtEscape
-derive_frontier ErdosProblems.Erdos257.PaperCompleteR21.half_mem_mersenneAchievementSet_of_resetSqrtEscape at ErdosProblems.Erdos257.PaperCompleteR21.SeamResetSqrtEscape.largestSkipLateStepSocket
 derive_weakening ErdosProblems.Erdos257.PaperCompleteR21.paper_seam_escape_implies_half_membership
-derive_frontier ErdosProblems.Erdos257.PaperCompleteR21.paper_seam_escape_implies_half_membership
 derive_weakening ErdosProblems.Erdos257.PaperCompleteR21.paper_theoremA_half_membership
-derive_frontier ErdosProblems.Erdos257.PaperCompleteR21.paper_theoremA_half_membership
 derive_weakening ErdosProblems.Erdos257.PaperCompleteR21.paper_two_sided_dyadic_bound
 derive_frontier ErdosProblems.Erdos257.PaperCompleteR21.paper_two_sided_dyadic_bound
-derive_frontier ErdosProblems.Erdos257.PaperCompleteR21.paper_two_sided_dyadic_bound at Erdos249257.SeamTwoSidedDyadicCellEscape.twoSided
+derive_frontier Erdos249257.HalfCarryReachability.greedy_half_infinite_of_mobiusCenteredHalfCarry_sqrtBound using Erdos249257.HalfCarryReachability.greedy_half_infinite_of_mobiusCenteredHalfCarry_upperBound

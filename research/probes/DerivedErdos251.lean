@@ -560,6 +560,24 @@ def doubleNegated? (t : Expr) : Option Expr :=
     | .forallE _ d b _ => if b.isConstOf ``False then negated? d.consumeMData else none
     | _ => none
 
+/-- The statement a closed consequence `c` restates classically: `∀ xs, X` when
+`c` is `∀ xs, ¬¬X` (in a form `doubleNegated?` reads), or `∀ xs (_ : ¬X), False`,
+the shape of a `by_contra` site closed over the negated goal it assumes. -/
+def classicalRestatement? (c : Expr) : MetaM (Option Expr) :=
+  forallTelescope c fun xs body => do
+    if let some x := doubleNegated? body then
+      return some (← mkForallFVars xs x)
+    unless body.consumeMData.isConstOf ``False && !xs.isEmpty do return none
+    let last := (← inferType xs.back!).consumeMData
+    let negated? : Option Expr :=
+      if last.isAppOfArity ``Not 1 then some last.appArg!
+      else match last with
+        | .forallE _ x b _ => if b.consumeMData.isConstOf ``False && !b.hasLooseBVars then some x else none
+        | _ => none
+    match negated? with
+    | some x => return some (← mkForallFVars xs.pop x)
+    | none => return none
+
 /-- Admit `site` as a use site with parameters: its proposition closed over its
 parameters is a consequence of `H` (the kernel checks `H → C` the first time `C`
 is seen), and the site becomes that consequence's placeholder applied to the
@@ -578,6 +596,10 @@ def liftSite (ctx : SiteContext) (context : Array Expr) (site : Expr) : SiteM (O
       if ctx.goals.contains (normaliseBinders g) then return none
       if ctx.goals.contains (normaliseBinders (← instantiateMVars (← mkForallFVars params g))) then
         return none
+    -- A `by_contra` site proves `False` under the negated goal, so only its closed
+    -- form `¬G → False` shows that it restates the goal.
+    if let some g ← classicalRestatement? c then
+      if ctx.goals.contains (normaliseBinders (← instantiateMVars g)) then return none
     if (← budgeted 5000 (withNewMCtxDepth (isDefEq c ctx.hType))) == some true then return none
     let current ← get
     if let some j := current.consequences.findIdx? (· == c) then
@@ -1115,12 +1137,9 @@ derive_idle ErdosProblems.Erdos251.PaperCompleteR20.finite_separation_complete
 derive_idle ErdosProblems.Erdos251.PaperCompleteR20.one_tail_signed_certificate
 derive_idle ErdosProblems.Erdos251.PaperCompleteR21.long_joint_prime_gap_countermodel
 derive_weakening ErdosProblems.Erdos251.PaperCompleteR21.long_joint_prime_gap_countermodel
-derive_frontier ErdosProblems.Erdos251.PaperCompleteR21.long_joint_prime_gap_countermodel
 derive_weakening ErdosProblems.Erdos251.PaperCompleteR21.prime_gap_two_window_sparse
-derive_frontier ErdosProblems.Erdos251.PaperCompleteR21.prime_gap_two_window_sparse
 derive_weakening ErdosProblems.Erdos251.PaperCompleteR21.short_joint_prime_gap_countermodel
 derive_frontier ErdosProblems.Erdos251.PaperCompleteR21.short_joint_prime_gap_countermodel
-derive_frontier ErdosProblems.Erdos251.PaperCompleteR21.short_joint_prime_gap_countermodel at ErdosProblems.Erdos251.PaperCompleteR21.long_joint_prime_gap_countermodel
 derive_weakening ErdosProblems.Erdos251.irrational_tsum_primeDyadicTerm_iff_primeGap
 derive_frontier ErdosProblems.Erdos251.irrational_tsum_primeDyadicTerm_iff_primeGap
-derive_frontier ErdosProblems.Erdos251.irrational_tsum_primeDyadicTerm_iff_primeGap at ErdosProblems.Erdos251.tsum_primeDyadicTerm_eq_two_add_primeGap
+derive_frontier ErdosProblems.Erdos251.irrational_tsum_primeDyadicTerm_iff_primeGap at ErdosProblems.Erdos251.tsum_primeDyadicTerm_eq_two_add_primeGap using ErdosProblems.Erdos251.tsum_primeDyadicTerm_eq_two_add_primeGap_unconditional ErdosProblems.Erdos251.tsum_primeDyadicTerm_eq_two_add_primeGap ErdosProblems.Erdos251.tsum_primeDisplayedDyadicTerm_eq_four_add_two_primeGap

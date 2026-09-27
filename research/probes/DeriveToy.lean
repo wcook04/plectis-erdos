@@ -553,6 +553,24 @@ def doubleNegated? (t : Expr) : Option Expr :=
     | .forallE _ d b _ => if b.isConstOf ``False then negated? d.consumeMData else none
     | _ => none
 
+/-- The statement a closed consequence `c` restates classically: `∀ xs, X` when
+`c` is `∀ xs, ¬¬X` (in a form `doubleNegated?` reads), or `∀ xs (_ : ¬X), False`,
+the shape of a `by_contra` site closed over the negated goal it assumes. -/
+def classicalRestatement? (c : Expr) : MetaM (Option Expr) :=
+  forallTelescope c fun xs body => do
+    if let some x := doubleNegated? body then
+      return some (← mkForallFVars xs x)
+    unless body.consumeMData.isConstOf ``False && !xs.isEmpty do return none
+    let last := (← inferType xs.back!).consumeMData
+    let negated? : Option Expr :=
+      if last.isAppOfArity ``Not 1 then some last.appArg!
+      else match last with
+        | .forallE _ x b _ => if b.consumeMData.isConstOf ``False && !b.hasLooseBVars then some x else none
+        | _ => none
+    match negated? with
+    | some x => return some (← mkForallFVars xs.pop x)
+    | none => return none
+
 /-- Admit `site` as a use site with parameters: its proposition closed over its
 parameters is a consequence of `H` (the kernel checks `H → C` the first time `C`
 is seen), and the site becomes that consequence's placeholder applied to the
@@ -571,6 +589,10 @@ def liftSite (ctx : SiteContext) (context : Array Expr) (site : Expr) : SiteM (O
       if ctx.goals.contains (normaliseBinders g) then return none
       if ctx.goals.contains (normaliseBinders (← instantiateMVars (← mkForallFVars params g))) then
         return none
+    -- A `by_contra` site proves `False` under the negated goal, so only its closed
+    -- form `¬G → False` shows that it restates the goal.
+    if let some g ← classicalRestatement? c then
+      if ctx.goals.contains (normaliseBinders (← instantiateMVars g)) then return none
     if (← budgeted 5000 (withNewMCtxDepth (isDefEq c ctx.hType))) == some true then return none
     let current ← get
     if let some j := current.consequences.findIdx? (· == c) then
@@ -1245,6 +1267,17 @@ theorem weak_of_strong (h : Strong) : Weak := fun n => (h n).1
 
 end UseToy
 
+namespace ByContraToy
+
+def G : Prop := ∀ n : Nat, n + 0 = n
+def H : Prop := ∀ n : Nat, n = n + 0
+theorem g_of_h (h : H) : G := fun n => (h n).symm
+/-- A proof by contradiction: the use of `h` sits under the negated goal, so the
+closed consequence is `¬G → False`, which restates `G` classically. -/
+theorem by_contra_use (h : H) : G := Classical.byContradiction fun hng => hng (g_of_h h)
+
+end ByContraToy
+
 namespace V2Frontier
 
 def Input : Prop := ∀ n : Nat, n < n + 1
@@ -1290,6 +1323,7 @@ derive_weakening IfaceToy.identity_use
 derive_weakening IfaceToy.later_binder_depends
 derive_weakening IfaceToy.lambda_binder_depends
 derive_weakening UseToy.weak_of_strong
+derive_weakening ByContraToy.by_contra_use
 
 derive_weakening V2Frontier.top3
 derive_frontier V2Frontier.top3
@@ -1335,7 +1369,7 @@ example : ∀ k : Nat, 0 < k → k ≤ k + 1 ∧ True := V2Frontier.pos_use.fron
   IfaceToy.enclosed_use.weakened_0 IfaceToy.enclosed_use.use_0_0
   IfaceToy.vacuous_goal.weakened_1 IfaceToy.vacuous_lambda.weakened_0 IfaceToy.identity_use.weakened_0
   IfaceToy.later_binder_depends.weakened_0 IfaceToy.lambda_binder_depends.weakened_0
-  UseToy.weak_of_strong.weakened_0
+  UseToy.weak_of_strong.weakened_0 ByContraToy.by_contra_use.weakened_0
   V2Frontier.top3.weakened_0 V2Frontier.top3.frontier_0 V2Frontier.top3.frontier_0_supplied
   V2Frontier.top3.frontier_0_pair_at_supplied V2Frontier.pair_at.weakened_1
   V2Frontier.pair_v2.weakened_0 V2Frontier.top4.weakened_0 V2Frontier.top4.frontier_0

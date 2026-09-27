@@ -577,6 +577,24 @@ def doubleNegated? (t : Expr) : Option Expr :=
     | .forallE _ d b _ => if b.isConstOf ``False then negated? d.consumeMData else none
     | _ => none
 
+/-- The statement a closed consequence `c` restates classically: `∀ xs, X` when
+`c` is `∀ xs, ¬¬X` (in a form `doubleNegated?` reads), or `∀ xs (_ : ¬X), False`,
+the shape of a `by_contra` site closed over the negated goal it assumes. -/
+def classicalRestatement? (c : Expr) : MetaM (Option Expr) :=
+  forallTelescope c fun xs body => do
+    if let some x := doubleNegated? body then
+      return some (← mkForallFVars xs x)
+    unless body.consumeMData.isConstOf ``False && !xs.isEmpty do return none
+    let last := (← inferType xs.back!).consumeMData
+    let negated? : Option Expr :=
+      if last.isAppOfArity ``Not 1 then some last.appArg!
+      else match last with
+        | .forallE _ x b _ => if b.consumeMData.isConstOf ``False && !b.hasLooseBVars then some x else none
+        | _ => none
+    match negated? with
+    | some x => return some (← mkForallFVars xs.pop x)
+    | none => return none
+
 /-- Admit `site` as a use site with parameters: its proposition closed over its
 parameters is a consequence of `H` (the kernel checks `H → C` the first time `C`
 is seen), and the site becomes that consequence's placeholder applied to the
@@ -595,6 +613,10 @@ def liftSite (ctx : SiteContext) (context : Array Expr) (site : Expr) : SiteM (O
       if ctx.goals.contains (normaliseBinders g) then return none
       if ctx.goals.contains (normaliseBinders (← instantiateMVars (← mkForallFVars params g))) then
         return none
+    -- A `by_contra` site proves `False` under the negated goal, so only its closed
+    -- form `¬G → False` shows that it restates the goal.
+    if let some g ← classicalRestatement? c then
+      if ctx.goals.contains (normaliseBinders (← instantiateMVars g)) then return none
     if (← budgeted 5000 (withNewMCtxDepth (isDefEq c ctx.hType))) == some true then return none
     let current ← get
     if let some j := current.consequences.findIdx? (· == c) then
@@ -1143,35 +1165,25 @@ derive_idle ErdosProblems.Erdos249.PaperCompleteR21.residueOffset_of_dvd
 derive_idle ErdosProblems.Erdos249.PaperCompleteR21.twoAtom_strict_logConcave
 derive_weakening ErdosProblems.Erdos249.PaperCompleteR20.lcm_grid_flatness
 derive_frontier ErdosProblems.Erdos249.PaperCompleteR20.lcm_grid_flatness
-derive_frontier ErdosProblems.Erdos249.PaperCompleteR20.lcm_grid_flatness at Erdos249257.TotientTailPeriodKiller.rational_totient_series_forces_lcm_cone_flatness
 derive_weakening ErdosProblems.Erdos249.PaperCompleteR20.lcm_grid_fractional_parts
 derive_frontier ErdosProblems.Erdos249.PaperCompleteR20.lcm_grid_fractional_parts
-derive_frontier ErdosProblems.Erdos249.PaperCompleteR20.lcm_grid_fractional_parts at ErdosProblems.Erdos249.PaperCompleteR20.lcm_grid_flatness
 derive_frontier ErdosProblems.Erdos249.PaperCompleteR20.lcm_grid_fractional_parts at Erdos249257.TotientTailPeriodKiller.rational_totient_series_forces_lcm_cone_flatness
 derive_weakening ErdosProblems.Erdos249.PaperCompleteR21.exists_simultaneous_depth_of_irrational
-derive_frontier ErdosProblems.Erdos249.PaperCompleteR21.exists_simultaneous_depth_of_irrational
 derive_weakening ErdosProblems.Erdos249.PaperCompleteR21.exists_simultaneous_depth_succ_of_irrational
 derive_frontier ErdosProblems.Erdos249.PaperCompleteR21.exists_simultaneous_depth_succ_of_irrational
-derive_frontier ErdosProblems.Erdos249.PaperCompleteR21.exists_simultaneous_depth_succ_of_irrational at ErdosProblems.Erdos249.PaperCompleteR21.exists_simultaneous_depth_of_irrational
 derive_weakening ErdosProblems.Erdos249.PaperCompleteR21.irrational_of_paperAdjacentSuffixMidbandSupply
-derive_frontier ErdosProblems.Erdos249.PaperCompleteR21.irrational_of_paperAdjacentSuffixMidbandSupply
 derive_weakening ErdosProblems.Erdos249.PaperCompleteR21.lambert_id_rung_transcendental
 derive_frontier ErdosProblems.Erdos249.PaperCompleteR21.lambert_id_rung_transcendental
-derive_frontier ErdosProblems.Erdos249.PaperCompleteR21.lambert_id_rung_transcendental at ErdosProblems.Erdos249.PaperCompleteR21.transcendental_sigma_series
 derive_weakening ErdosProblems.Erdos249.PaperCompleteR21.paperAdjacentSuffixMidbandSupply_of_flexibleActualTopEdgeMagnitude
-derive_frontier ErdosProblems.Erdos249.PaperCompleteR21.paperAdjacentSuffixMidbandSupply_of_flexibleActualTopEdgeMagnitude
 derive_weakening ErdosProblems.Erdos249.PaperCompleteR21.paperAdjacentSuffixMidbandSupply_of_oddGuardTopEdgeHalfWordBand
-derive_frontier ErdosProblems.Erdos249.PaperCompleteR21.paperAdjacentSuffixMidbandSupply_of_oddGuardTopEdgeHalfWordBand
 derive_weakening ErdosProblems.Erdos249.PaperCompleteR21.prop_badcof
 derive_frontier ErdosProblems.Erdos249.PaperCompleteR21.prop_badcof
 derive_frontier ErdosProblems.Erdos249.PaperCompleteR21.prop_badcof at ErdosProblems.Erdos249.PaperCompleteR21.ExcludedCofactor.eventually_card_excluded_le_of_upper
 derive_frontier ErdosProblems.Erdos249.PaperCompleteR21.prop_badcof at ErdosProblems.Erdos249.PaperCompleteR21.ExcludedCofactor.eventually_card_primes_dyadic_le
 derive_weakening ErdosProblems.Erdos249.PaperCompleteR21.rational_forces_four_tail_diagonals_integral
 derive_frontier ErdosProblems.Erdos249.PaperCompleteR21.rational_forces_four_tail_diagonals_integral
-derive_frontier ErdosProblems.Erdos249.PaperCompleteR21.rational_forces_four_tail_diagonals_integral at Erdos249257.TotientTailPeriodKiller.rational_totient_series_forces_lcm_cone_flatness
 derive_weakening ErdosProblems.Erdos249.PaperCompleteR21.rational_forces_period_multiple_integrality
-derive_frontier ErdosProblems.Erdos249.PaperCompleteR21.rational_forces_period_multiple_integrality
 derive_weakening ErdosProblems.Erdos249.PaperCompleteR21.rational_forces_pulse_class_integrality
-derive_frontier ErdosProblems.Erdos249.PaperCompleteR21.rational_forces_pulse_class_integrality
 derive_weakening ErdosProblems.Erdos249.PaperCompleteR21.transcendental_sigma_series
-derive_frontier ErdosProblems.Erdos249.PaperCompleteR21.transcendental_sigma_series
+derive_conjuncts ErdosProblems.Erdos249.PaperCompleteR21.lambert_id_rung_transcendental
+derive_conjuncts ErdosProblems.Erdos249.PaperCompleteR21.prop_badcof
