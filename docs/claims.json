@@ -7218,6 +7218,14 @@
           ]
         },
         {
+          "id": "Erdos249257.ExactRowRigidity",
+          "path": "lean/Erdos249257/ExactRowRigidity.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.BooleanMobiusCofinalExactRows"
+          ]
+        },
+        {
           "id": "Erdos249257.ExponentOnlyTransport",
           "path": "lean/Erdos249257/ExponentOnlyTransport.lean",
           "role": "Lean proof module",
@@ -19514,7 +19522,7 @@
     "lean_toolchain": "leanprover/lean4:v4.29.1",
     "repository": "https://github.com/wcook04/plectis-erdos",
     "formal_source": {
-      "ref": "3973d3b10bce72017b8f60093f0d6c3f4f592d80",
+      "ref": "4db6150ed53492363079661a68bed4d181eb56dd",
       "ref_kind": "commit",
       "publication_state": "committed_checkpoint_pending_remote_publication",
       "relationship_to_last_tag": "post_tag_checkpoint",
