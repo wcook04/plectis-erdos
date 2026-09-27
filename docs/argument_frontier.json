@@ -1,0 +1,1081 @@
+{
+ "schema": "plectis-argument-frontier/1",
+ "source": {
+  "source_revision": "5176d8878036549d6e35a4cb42d8e26fdb3e4b46",
+  "lean_tree": "ca2f57c9c7e461d54d2617d2ae33016ec7481567",
+  "export_digest": "sha256:72f536cbff1b601e76f90a58861b93df87bea048184d48ed1b6c897c6595e907"
+ },
+ "rule": "every row names a theorem a paper cites and a derivation the export's kernel check reported; the generated module rebuilds it and the kernel checks it when the module compiles (argumentGraph.strict makes a failed rebuild a build error)",
+ "modules": {
+  "Erdos1041": "lean/ErdosProblems/ArgumentGraph/Derived/Erdos1041.lean",
+  "Erdos1049": "lean/ErdosProblems/ArgumentGraph/Derived/Erdos1049.lean",
+  "Erdos243": "lean/ErdosProblems/ArgumentGraph/Derived/Erdos243.lean",
+  "Erdos249": "lean/ErdosProblems/ArgumentGraph/Derived/Erdos249.lean",
+  "Erdos251": "lean/ErdosProblems/ArgumentGraph/Derived/Erdos251.lean",
+  "Erdos257": "lean/ErdosProblems/ArgumentGraph/Derived/Erdos257.lean",
+  "Erdos269": "lean/ErdosProblems/ArgumentGraph/Derived/Erdos269.lean",
+  "Erdos68": "lean/ErdosProblems/ArgumentGraph/Derived/Erdos68.lean"
+ },
+ "rows": {
+  "Erdos1041": [
+   {
+    "operation": "idle",
+    "theorem": "ErdosProblems.Erdos1041.PaperCompleteR21.Hyperbolic.le_of_lam_le",
+    "derived": [
+     "ErdosProblems.Erdos1041.PaperCompleteR21.Hyperbolic.le_of_lam_le.idle"
+    ],
+    "dropped": [
+     "0 < d₁"
+    ],
+    "statement": "∀ {d₁ d₂ : ℝ},   0 < d₂ →     ErdosProblems.Erdos1041.PaperCompleteR21.Hyperbolic.lam d₂ ≤         ErdosProblems.Erdos1041.PaperCompleteR21.Hyperbolic.lam d₁ →       d₁ ≤ d₂",
+    "papers": [
+     {
+      "row": "erdos1041-lemniscate-reasoning-surface#res:dual-arity-floor",
+      "label": "res:dual-arity-floor",
+      "paper": "erdos1041-lemniscate-reasoning-surface",
+      "side": "long",
+      "lean_status": "modulo_named_input",
+      "source": "paper/reasoning-parts/erdos1041/core.tex:421"
+     }
+    ],
+    "source": null
+   },
+   {
+    "operation": "idle",
+    "theorem": "ErdosProblems.Erdos1041.PaperCompleteR21.SeparationParent.separation_parent",
+    "derived": [
+     "ErdosProblems.Erdos1041.PaperCompleteR21.SeparationParent.separation_parent.idle"
+    ],
+    "dropped": [
+     "ErdosProblems.Erdos1041.PaperAnalyticTargets.RootsInOpenUnitDisc f"
+    ],
+    "statement": "ErdosProblems.Erdos1041.PaperCompleteR21.SeparationParent.CriticalValueSeparationTheorem →   ∀ {f : Polynomial ℂ} {c : ℂ} {w₀ S : ℝ},     f.Monic →       3 ≤ f.natDegree →         Polynomial.eval c (Polynomial.derivative f) = 0 →           Polynomial.eval c (Polynomial.derivative (Polynomial.derivative f)) ≠ 0 →             Polynomial.eval c f ≠ 0 →               ‖Polynomial.eval c f‖ < 1 →                 0 ≤ w₀ →                   w₀ ≤ 1 →                     4 / 3 ≤ S →                       ErdosProblems.Erdos1041.PaperCompleteR21.SeparationParent.ValueSeparatedAtCentre f c w₀ S →                         ErdosProblems.Erdos1041.PaperAnalyticTargets.HasDistinctConnection f 1 2",
+    "papers": [
+     {
+      "row": "erdos-1041-lemniscate-newton-flow#res:separation-parent",
+      "label": "res:separation-parent",
+      "paper": "erdos-1041-lemniscate-newton-flow",
+      "side": "short",
+      "lean_status": "modulo_named_input",
+      "source": "paper/1041/erdos-1041-lemniscate-newton-flow.tex:708"
+     }
+    ],
+    "source": null
+   },
+   {
+    "operation": "idle",
+    "theorem": "ErdosProblems.Erdos1041.PaperCompleteR21.cfaArity_length_le",
+    "derived": [
+     "ErdosProblems.Erdos1041.PaperCompleteR21.cfaArity_length_le.idle"
+    ],
+    "dropped": [
+     "0 ≤ B"
+    ],
+    "statement": "∀ {k₀ : ℕ} {B : ℝ}, 2 ≤ k₀ → B ^ 2 ≤ 2 * ↑k₀ → √(2 / ↑k₀) * B ≤ 2",
+    "papers": [
+     {
+      "row": "erdos1041-lemniscate-reasoning-surface#res:constant-factor-arity",
+      "label": "res:constant-factor-arity",
+      "paper": "erdos1041-lemniscate-reasoning-surface",
+      "side": "long",
+      "lean_status": "modulo_named_input",
+      "source": "paper/reasoning-parts/erdos1041/core.tex:909"
+     }
+    ],
+    "source": null
+   },
+   {
+    "operation": "idle",
+    "theorem": "ErdosProblems.Erdos1041.PaperCompleteR21.discSep_cubic_six_fifths",
+    "derived": [
+     "ErdosProblems.Erdos1041.PaperCompleteR21.discSep_cubic_six_fifths.idle"
+    ],
+    "dropped": [
+     "∀ (z : ℂ), Polynomial.eval z f = 0 → ‖z‖ < 1"
+    ],
+    "statement": "ErdosProblems.Erdos1041.PaperCompleteR21.DiscSepBergmanArea →   ∀ {f : Polynomial ℂ} {c : ℂ},     f.natDegree = 3 →       f.Monic →         Polynomial.eval c (Polynomial.derivative f) = 0 →           Polynomial.eval c (Polynomial.derivative (Polynomial.derivative f)) ≠ 0 →             Polynomial.eval c f ≠ 0 →               ‖Polynomial.eval c f‖ < 1 →                 (∀ (d : ℂ),                     d ≠ c →                       Polynomial.eval d (Polynomial.derivative f) = 0 →                         6 / 5 ≤ ‖Polynomial.eval d f / Polynomial.eval c f - 1‖) →                   ∃ a b γ,                     a ≠ b ∧                       Polynomial.eval a f = 0 ∧                         Polynomi …",
+    "papers": [
+     {
+      "row": "erdos-1041-lemniscate-newton-flow#res:critical-value-thresholds",
+      "label": "res:critical-value-thresholds",
+      "paper": "erdos-1041-lemniscate-newton-flow",
+      "side": "short",
+      "lean_status": "modulo_named_input",
+      "source": "paper/1041/erdos-1041-lemniscate-newton-flow.tex:692"
+     }
+    ],
+    "source": null
+   },
+   {
+    "operation": "idle",
+    "theorem": "ErdosProblems.Erdos1041.PaperCompleteR21.discSep_uniform_radius",
+    "derived": [
+     "ErdosProblems.Erdos1041.PaperCompleteR21.discSep_uniform_radius.idle"
+    ],
+    "dropped": [
+     "∀ (z : ℂ), Polynomial.eval z f = 0 → ‖z‖ < 1"
+    ],
+    "statement": "ErdosProblems.Erdos1041.PaperCompleteR21.DiscSepBergmanArea →   ∀ {f : Polynomial ℂ} {n : ℕ} {c : ℂ} {w₀ S : ℝ},     3 ≤ n →       f.natDegree = n →         f.Monic →           Polynomial.eval c (Polynomial.derivative f) = 0 →             Polynomial.eval c (Polynomial.derivative (Polynomial.derivative f)) ≠ 0 →               Polynomial.eval c f ≠ 0 →                 ‖Polynomial.eval c f‖ < 1 →                   0 ≤ w₀ →                     w₀ ≤ 1 →                       4 / 3 ≤ S →                         S ≤ 2 →                           (∀ (d : ℂ),                               d ≠ c →                                 Polynomial.eval d (Polynomial.derivative f) = 0 →                         …",
+    "papers": [
+     {
+      "row": "erdos-1041-lemniscate-newton-flow#res:critical-value-thresholds",
+      "label": "res:critical-value-thresholds",
+      "paper": "erdos-1041-lemniscate-newton-flow",
+      "side": "short",
+      "lean_status": "modulo_named_input",
+      "source": "paper/1041/erdos-1041-lemniscate-newton-flow.tex:692"
+     },
+     {
+      "row": "erdos1041-lemniscate-reasoning-surface#res:critical-value-thresholds",
+      "label": "res:critical-value-thresholds",
+      "paper": "erdos1041-lemniscate-reasoning-surface",
+      "side": "long",
+      "lean_status": "modulo_named_input",
+      "source": "paper/reasoning-parts/erdos1041/core.tex:1560"
+     }
+    ],
+    "source": null
+   },
+   {
+    "operation": "idle",
+    "theorem": "ErdosProblems.Erdos1041.PaperCompleteR21.subcritical_perimeter_path_paper",
+    "derived": [
+     "ErdosProblems.Erdos1041.PaperCompleteR21.subcritical_perimeter_path_paper.idle"
+    ],
+    "dropped": [
+     "p.Monic",
+     "Squarefree p",
+     "p.natDegree = n",
+     "2 ≤ n",
+     "ErdosProblems.Erdos1041.PaperAnalyticTargets.CriticalMinimum p μ",
+     "∀ (σ : ℝ),   0 < σ →     σ < μ →       ∀ (z : ℂ),         ‖Polynomial.eval z p‖ ≤ σ →           (MeasureTheory.Measure.hausdorffMeasure 1)               (frontier (connectedComponentIn {w | ‖Polynomial.eval w p‖ ≤ σ} z)) ≤             ENNReal.ofReal (β * σ ^ (1 / ↑n))"
+    ],
+    "statement": "∀ (p : Polynomial ℂ) (n : ℕ) (μ β : ℝ),   0 < μ →     0 < β →       ErdosProblems.Erdos1041.PaperCompleteR21.SubcriticalSplitExists (fun z => Polynomial.eval z p) μ           (β * μ ^ (1 / ↑n)) →         ErdosProblems.Erdos1041.PaperCompleteR21.HasDistinctConnectionAtMost (fun z => Polynomial.eval z p) μ           (β * μ ^ (1 / ↑n))",
+    "papers": [
+     {
+      "row": "erdos1041-lemniscate-reasoning-surface#res:conjecture-p-consumer",
+      "label": "res:conjecture-p-consumer",
+      "paper": "erdos1041-lemniscate-reasoning-surface",
+      "side": "long",
+      "lean_status": "modulo_named_input",
+      "source": "paper/reasoning-parts/erdos1041/core.tex:1141"
+     }
+    ],
+    "source": null
+   }
+  ],
+  "Erdos1049": [
+   {
+    "operation": "idle",
+    "theorem": "ErdosProblems.Erdos1049.PaperCompleteR21.rational_base_measure_uniform",
+    "derived": [
+     "ErdosProblems.Erdos1049.PaperCompleteR21.rational_base_measure_uniform.idle"
+    ],
+    "dropped": [
+     "a.Coprime b"
+    ],
+    "statement": "∀ (a b r : ℕ),   0 < b →     b < a →       0 < r →         Real.log ↑b / Real.log ↑a < ErdosProblems.Erdos1049.zudilinContour →           ErdosProblems.Erdos1049.PaperR11.irrationalityExponent               (ErdosProblems.Erdos1049.PaperR7.paperLambert ((↑a / ↑b) ^ r)) ≤             (1 - Real.log ↑b / Real.log ↑a) / (ErdosProblems.Erdos1049.zudilinContour - Real.log ↑b / Real.log ↑a)",
+    "papers": [
+     {
+      "row": "erdos-1049-rational-base-lambert#cor:rational-base-measure",
+      "label": "cor:rational-base-measure",
+      "paper": "erdos-1049-rational-base-lambert",
+      "side": "short",
+      "lean_status": "exact",
+      "source": "paper/1049/erdos-1049-rational-base-lambert.tex:412"
+     },
+     {
+      "row": "erdos1049-rational-base-lambert-reasoning-surface#long1049:cor:rational-base-measure",
+      "label": "long1049:cor:rational-base-measure",
+      "paper": "erdos1049-rational-base-lambert-reasoning-surface",
+      "side": "long",
+      "lean_status": "exact",
+      "source": "paper/reasoning-parts/erdos1049/core.tex:604"
+     }
+    ],
+    "source": null
+   },
+   {
+    "operation": "idle",
+    "theorem": "ErdosProblems.Erdos1049.PaperCompleteR21.rational_base_threshold",
+    "derived": [
+     "ErdosProblems.Erdos1049.PaperCompleteR21.rational_base_threshold.idle"
+    ],
+    "dropped": [
+     "a.Coprime b"
+    ],
+    "statement": "∀ (a b : ℕ),   0 < b →     b < a →       ↑b ^ ErdosProblems.Erdos1049.PaperCompleteR21.zudilinMu < ↑a →         Irrational (ErdosProblems.Erdos1049.PaperR7.paperLambert (↑a / ↑b))",
+    "papers": [
+     {
+      "row": "erdos-1049-rational-base-lambert#res:rational-base-threshold",
+      "label": "res:rational-base-threshold",
+      "paper": "erdos-1049-rational-base-lambert",
+      "side": "short",
+      "lean_status": "exact",
+      "source": "paper/1049/erdos-1049-rational-base-lambert.tex:151"
+     },
+     {
+      "row": "erdos1049-rational-base-lambert-reasoning-surface#long1049:res:region",
+      "label": "long1049:res:region",
+      "paper": "erdos1049-rational-base-lambert-reasoning-surface",
+      "side": "long",
+      "lean_status": "exact",
+      "source": "paper/reasoning-parts/erdos1049/core.tex:226"
+     }
+    ],
+    "source": null
+   },
+   {
+    "operation": "idle",
+    "theorem": "ErdosProblems.Erdos1049.PaperCompleteR21.rational_base_threshold_log",
+    "derived": [
+     "ErdosProblems.Erdos1049.PaperCompleteR21.rational_base_threshold_log.idle"
+    ],
+    "dropped": [
+     "a.Coprime b"
+    ],
+    "statement": "∀ (a b : ℕ),   0 < b →     b < a →       Real.log ↑b / Real.log ↑a < ErdosProblems.Erdos1049.zudilinContour →         Irrational (ErdosProblems.Erdos1049.PaperR7.paperLambert (↑a / ↑b))",
+    "papers": [
+     {
+      "row": "erdos-1049-rational-base-lambert#res:rational-base-threshold",
+      "label": "res:rational-base-threshold",
+      "paper": "erdos-1049-rational-base-lambert",
+      "side": "short",
+      "lean_status": "exact",
+      "source": "paper/1049/erdos-1049-rational-base-lambert.tex:151"
+     },
+     {
+      "row": "erdos1049-rational-base-lambert-reasoning-surface#long1049:res:region",
+      "label": "long1049:res:region",
+      "paper": "erdos1049-rational-base-lambert-reasoning-surface",
+      "side": "long",
+      "lean_status": "exact",
+      "source": "paper/reasoning-parts/erdos1049/core.tex:226"
+     }
+    ],
+    "source": null
+   }
+  ],
+  "Erdos243": [
+   {
+    "operation": "idle",
+    "theorem": "ErdosProblems.Erdos243.PaperCompleteR21.StandingOrbit.oddPrimePower_supply",
+    "derived": [
+     "ErdosProblems.Erdos243.PaperCompleteR21.StandingOrbit.oddPrimePower_supply.idle"
+    ],
+    "dropped": [
+     "0 < A"
+    ],
+    "statement": "∀ (O : ErdosProblems.Erdos243.PaperCompleteR21.StandingOrbit) (A : ℝ),   ∃ N,     ∀ (n : ℕ),       N ≤ n → ∃ p k, Nat.Prime p ∧ p ≠ 2 ∧ 1 ≤ k ∧ Odd (p ^ k) ∧ p ^ k ∣ O.v n ∧ (↑(O.Hmax n) + 2) ^ A < ↑(p ^ k)",
+    "papers": [
+     {
+      "row": "erdos243-reciprocal-tail-reasoning-surface#long243:res:oddpowersupply",
+      "label": "long243:res:oddpowersupply",
+      "paper": "erdos243-reciprocal-tail-reasoning-surface",
+      "side": "long",
+      "lean_status": "exact",
+      "source": "paper/reasoning-parts/erdos243/core.tex:2024"
+     }
+    ],
+    "source": null
+   },
+   {
+    "operation": "idle",
+    "theorem": "ErdosProblems.Erdos243.PaperCompleteR21.exists_avoiding_in_window",
+    "derived": [
+     "ErdosProblems.Erdos243.PaperCompleteR21.exists_avoiding_in_window.idle"
+    ],
+    "dropped": [
+     "∀ (i j : ℕ), i ≠ j → (m i).Coprime (m j)",
+     "1 ≤ L"
+    ],
+    "statement": "∀ {m : ℕ → ℕ},   StrictMono m →     (∀ (i : ℕ), 2 ≤ m i) →       ∀ {θ : ℝ},         (Summable fun i => 1 / ↑(m i)) →           ∑' (i : ℕ), 1 / ↑(m i) = θ →             θ < 1 →               ∀ {x L : ℕ},                 1 ≤ x → ↑{i | m i ≤ x + L}.ncard / (1 - θ) < ↑L → ∃ n, x ≤ n ∧ n < x + L ∧ ∀ (i : ℕ), ¬m i ∣ n",
+    "papers": [
+     {
+      "row": "erdos243-reciprocal-tail-reasoning-surface#long243:res:coprimalitycap",
+      "label": "long243:res:coprimalitycap",
+      "paper": "erdos243-reciprocal-tail-reasoning-surface",
+      "side": "long",
+      "lean_status": "exact",
+      "source": "paper/reasoning-parts/erdos243/core.tex:2483"
+     }
+    ],
+    "source": null
+   },
+   {
+    "operation": "idle",
+    "theorem": "ErdosProblems.Erdos243.PaperCompleteR21.exists_multiplier_ge_four",
+    "derived": [
+     "ErdosProblems.Erdos243.PaperCompleteR21.exists_multiplier_ge_four.idle"
+    ],
+    "dropped": [
+     "∀ (n : ℕ), 0 < C n"
+    ],
+    "statement": "∀ (a C D : ℕ → ℕ) (E : ℕ → ℤ),   (∀ (n : ℕ), 1 < a n) →     1 ≤ D 0 →       (∀ (n : ℕ), C (n + 1) + D n = a n * C n) →         (∀ (n : ℕ), D (n + 1) = a n * D n) →           (∀ (n : ℕ), E n = ErdosProblems.Erdos243.centeredState ↑(a n) ↑(D n) ↑(C n)) →             ∀ (N : ℕ), (∀ (n : ℕ), N ≤ n → 4 * (E n).natAbs < C n) → ∀ (M : ℕ), ∃ t, M ≤ t ∧ N ≤ t ∧ 4 ≤ a t",
+    "papers": [
+     {
+      "row": "erdos243-reciprocal-tail-reasoning-surface#long243:res:slownegative",
+      "label": "long243:res:slownegative",
+      "paper": "erdos243-reciprocal-tail-reasoning-surface",
+      "side": "long",
+      "lean_status": "exact",
+      "source": "paper/reasoning-parts/erdos243/core.tex:2198"
+     }
+    ],
+    "source": null
+   },
+   {
+    "operation": "idle",
+    "theorem": "ErdosProblems.Erdos243.PaperCompleteR21.exists_slow_rise_avoiding_sequence",
+    "derived": [
+     "ErdosProblems.Erdos243.PaperCompleteR21.exists_slow_rise_avoiding_sequence.idle"
+    ],
+    "dropped": [
+     "∀ (i j : ℕ), i ≠ j → (m i).Coprime (m j)",
+     "∑' (i : ℕ), 1 / ↑(m i) = θ",
+     "θ < 1"
+    ],
+    "statement": "∀ {m : ℕ → ℕ},   StrictMono m →     (∀ (i : ℕ), 2 ≤ m i) →       ∀ {θ : ℝ},         (Summable fun i => 1 / ↑(m i)) →           (∃ C, ∀ (i : ℕ), |ErdosProblems.Erdos243.PaperCompleteR21.ellScale ↑(m i) - ↑i| ≤ C) →             ∀ {ε : ℝ},               0 < ε →                 ∃ T u,                   StrictMono u ∧                     (∀ (n : ℕ), 0 < u n) ∧                       (∀ (i : ℕ), T ≤ i → ∀ (n : ℕ), ¬m i ∣ u n) ∧                         ∀ᶠ (n : ℕ) in Filter.atTop,                           ↑(u (n + 1)) - ↑(u n) ≤ (1 + ε) * ErdosProblems.Erdos243.PaperCompleteR21.ellScale ↑(u n)",
+    "papers": [
+     {
+      "row": "erdos243-reciprocal-tail-reasoning-surface#long243:res:coprimalitycap",
+      "label": "long243:res:coprimalitycap",
+      "paper": "erdos243-reciprocal-tail-reasoning-surface",
+      "side": "long",
+      "lean_status": "exact",
+      "source": "paper/reasoning-parts/erdos243/core.tex:2483"
+     }
+    ],
+    "source": null
+   },
+   {
+    "operation": "idle",
+    "theorem": "ErdosProblems.Erdos243.PaperCompleteR21.maximal_gap_limsup_eq_inv_sigma",
+    "derived": [
+     "ErdosProblems.Erdos243.PaperCompleteR21.maximal_gap_limsup_eq_inv_sigma.idle"
+    ],
+    "dropped": [
+     "StrictMono m"
+    ],
+    "statement": "∀ (m : ℕ → ℕ),   (∀ (j : ℕ), 2 ≤ m j) →     (∀ (i j : ℕ), i ≠ j → (m i).Coprime (m j)) →       ∀ (Cs : ℝ),         (∀ (j : ℕ), |ErdosProblems.Erdos243.PaperCompleteR11.recordLogLog ↑(m j) - ↑j| ≤ Cs) →           ∀ (σ : ℝ),             0 < σ →               Filter.Tendsto (fun T => ∏ j ∈ Finset.range T, (1 - 1 / ↑(m j))) Filter.atTop (nhds σ) →                 Filter.limsup                     (fun n =>                       (↑(Nat.nth (ErdosProblems.Erdos243.PaperCompleteR21.Avoids m) (n + 1)) -                           ↑(Nat.nth (ErdosProblems.Erdos243.PaperCompleteR21.Avoids m) n)) /                         ErdosProblems.Erdos243.PaperCompleteR11.recordLogLog                           ↑(N …",
+    "papers": [
+     {
+      "row": "erdos243-reciprocal-tail-reasoning-surface#long243:res:gapconstant",
+      "label": "long243:res:gapconstant",
+      "paper": "erdos243-reciprocal-tail-reasoning-surface",
+      "side": "long",
+      "lean_status": "exact",
+      "source": "paper/reasoning-parts/erdos243/core.tex:3575"
+     }
+    ],
+    "source": null
+   },
+   {
+    "operation": "idle",
+    "theorem": "ErdosProblems.Erdos243.PaperCompleteR21.unit_word_saturates_old_modulus",
+    "derived": [
+     "ErdosProblems.Erdos243.PaperCompleteR21.unit_word_saturates_old_modulus.idle"
+    ],
+    "dropped": [
+     "2 ≤ M"
+    ],
+    "statement": "∀ (M k : ℕ) (r : ℕ → ZMod M),   (∀ i ≤ k, IsUnit (r i)) →     ∃ a v,       (∀ i ≤ k, v i = 0) ∧         (∀ i < k, r (i + 1) + v i = a i * r i) ∧           (∀ i < k, v (i + 1) = a i * v i) ∧             ∀ (i : ℕ), i + 2 ≤ k → r (i + 2) = (a i + a (i + 1)) * r (i + 1) - a i ^ 2 * r i",
+    "papers": [
+     {
+      "row": "erdos243-reciprocal-tail-reasoning-surface#long243:res:oldmodulussaturation",
+      "label": "long243:res:oldmodulussaturation",
+      "paper": "erdos243-reciprocal-tail-reasoning-surface",
+      "side": "long",
+      "lean_status": "exact",
+      "source": "paper/reasoning-parts/erdos243/core.tex:1308"
+     }
+    ],
+    "source": null
+   }
+  ],
+  "Erdos249": [
+   {
+    "operation": "idle",
+    "theorem": "ErdosProblems.Erdos249.PaperCompleteR20.short_lcm_window_nondivisor",
+    "derived": [
+     "ErdosProblems.Erdos249.PaperCompleteR20.short_lcm_window_nondivisor.idle"
+    ],
+    "dropped": [
+     "1 ≤ t"
+    ],
+    "statement": "∀ (t j : ℕ),   1 ≤ j →     j < 2 * t → ¬j ∣ Erdos249257.TotientTailPeriodKiller.periodLcm t → ∃ p a, Nat.Prime p ∧ 1 ≤ a ∧ j = p ^ a ∧ t < j",
+    "papers": [
+     {
+      "row": "erdos249-totient-reasoning-surface#thm:nondivisors-short-lcm-window",
+      "label": "thm:nondivisors-short-lcm-window",
+      "paper": "erdos249-totient-reasoning-surface",
+      "side": "long",
+      "lean_status": "exact",
+      "source": "paper/reasoning-parts/erdos249/a249_front.tex:4432"
+     }
+    ],
+    "source": null
+   },
+   {
+    "operation": "idle",
+    "theorem": "ErdosProblems.Erdos249.PaperCompleteR21.complementDenominator_dvd_scalar",
+    "derived": [
+     "ErdosProblems.Erdos249.PaperCompleteR21.complementDenominator_dvd_scalar.idle"
+    ],
+    "dropped": [
+     "0 < H"
+    ],
+    "statement": "∀ (x : ℚ) (c : ℤ) {H : ℕ}, H ∣ x.den → (↑c * x).den ∣ H → ↑(x.den / H) ∣ c",
+    "papers": [
+     {
+      "row": "erdos249-totient-reasoning-surface#lem:complement-divisibility-after-multiplication",
+      "label": "lem:complement-divisibility-after-multiplication",
+      "paper": "erdos249-totient-reasoning-surface",
+      "side": "long",
+      "lean_status": "exact",
+      "source": "paper/reasoning-parts/erdos249/a249_front.tex:6169"
+     }
+    ],
+    "source": null
+   },
+   {
+    "operation": "idle",
+    "theorem": "ErdosProblems.Erdos249.PaperCompleteR21.complementSummand_low_double_echo",
+    "derived": [
+     "ErdosProblems.Erdos249.PaperCompleteR21.complementSummand_low_double_echo.idle"
+    ],
+    "dropped": [
+     "0 < H",
+     "0 < d"
+    ],
+    "statement": "∀ {d H s : ℕ},   ¬d ∣ H →     d ∣ H + s →       ErdosProblems.Erdos249.PaperCompleteR21.complementSummand d H s =           -(↑(ArithmeticFunction.moebius d) * ↑(H + s) / ↑d) ∧         ErdosProblems.Erdos249.PaperCompleteR21.complementSummand d H (2 * s) =             2 * (↑(ArithmeticFunction.moebius d) * ↑(H + s) / ↑d) ∧           (d ∣ 2 * H + 2 * s ∧ ¬d ∣ H + 2 * s) ∧             ErdosProblems.Erdos249.PaperCompleteR21.complementSummand d H (2 * s) =               -2 * ErdosProblems.Erdos249.PaperCompleteR21.complementSummand d H s",
+    "papers": [
+     {
+      "row": "erdos249-totient-reasoning-surface#prop:doubling-identity-two-portions-sum",
+      "label": "prop:doubling-identity-two-portions-sum",
+      "paper": "erdos249-totient-reasoning-surface",
+      "side": "long",
+      "lean_status": "exact",
+      "source": "paper/reasoning-parts/erdos249/a249_front.tex:4140"
+     }
+    ],
+    "source": null
+   },
+   {
+    "operation": "idle",
+    "theorem": "ErdosProblems.Erdos249.PaperCompleteR21.divisorChannels_sum_eq",
+    "derived": [
+     "ErdosProblems.Erdos249.PaperCompleteR21.divisorChannels_sum_eq.idle"
+    ],
+    "dropped": [
+     "0 < H"
+    ],
+    "statement": "∀ (H : ℕ),   ∑ d ∈ H.divisors, Erdos249257.ActualForeignResidueProjection.residueIncrement d H =     ↑H * ∑ d ∈ H.divisors, ↑(ArithmeticFunction.moebius d) / (↑d * (2 ^ d - 1))",
+    "papers": [
+     {
+      "row": "erdos249-totient-reasoning-surface#prop:finite-divisor-sum",
+      "label": "prop:finite-divisor-sum",
+      "paper": "erdos249-totient-reasoning-surface",
+      "side": "long",
+      "lean_status": "exact",
+      "source": "paper/reasoning-parts/erdos249/a249_front.tex:4271"
+     }
+    ],
+    "source": null
+   },
+   {
+    "operation": "idle",
+    "theorem": "ErdosProblems.Erdos249.PaperCompleteR21.dvd_pow_sub_one_iff_orderOf_dvd",
+    "derived": [
+     "ErdosProblems.Erdos249.PaperCompleteR21.dvd_pow_sub_one_iff_orderOf_dvd.idle"
+    ],
+    "dropped": [
+     "0 < n"
+    ],
+    "statement": "∀ {n p k : ℕ}, 0 < p → (n ∣ p ^ k - 1 ↔ orderOf ↑p ∣ k)",
+    "papers": [
+     {
+      "row": "erdos249-totient-reasoning-surface#thm:sufficient-order-hypothesis-unbounded-prime",
+      "label": "thm:sufficient-order-hypothesis-unbounded-prime",
+      "paper": "erdos249-totient-reasoning-surface",
+      "side": "long",
+      "lean_status": "exact",
+      "source": "paper/reasoning-parts/erdos249/a249_front.tex:4530"
+     }
+    ],
+    "source": null
+   },
+   {
+    "operation": "idle",
+    "theorem": "ErdosProblems.Erdos249.PaperCompleteR21.extremal_order_curvature_neg",
+    "derived": [
+     "ErdosProblems.Erdos249.PaperCompleteR21.extremal_order_curvature_neg.idle"
+    ],
+    "dropped": [
+     "1 ≤ H"
+    ],
+    "statement": "∀ {H j : ℕ},   (H + j).totient < (2 * H + j).totient →     (3 * H + j).totient < (2 * H + j).totient → ↑(3 * H + j).totient - 2 * ↑(2 * H + j).totient + ↑(H + j).totient < 0",
+    "papers": [
+     {
+      "row": "erdos249-totient-reasoning-surface#prop:FR-01",
+      "label": "prop:FR-01",
+      "paper": "erdos249-totient-reasoning-surface",
+      "side": "long",
+      "lean_status": "exact",
+      "source": "paper/reasoning-parts/erdos249/a249_front.tex:2782"
+     }
+    ],
+    "source": null
+   },
+   {
+    "operation": "idle",
+    "theorem": "ErdosProblems.Erdos249.PaperCompleteR21.extremal_order_curvature_pos",
+    "derived": [
+     "ErdosProblems.Erdos249.PaperCompleteR21.extremal_order_curvature_pos.idle"
+    ],
+    "dropped": [
+     "1 ≤ H"
+    ],
+    "statement": "∀ {H j : ℕ},   (2 * H + j).totient < min (H + j).totient (3 * H + j).totient →     0 < ↑(3 * H + j).totient - 2 * ↑(2 * H + j).totient + ↑(H + j).totient",
+    "papers": [
+     {
+      "row": "erdos249-totient-reasoning-surface#prop:FR-01",
+      "label": "prop:FR-01",
+      "paper": "erdos249-totient-reasoning-surface",
+      "side": "long",
+      "lean_status": "exact",
+      "source": "paper/reasoning-parts/erdos249/a249_front.tex:2782"
+     }
+    ],
+    "source": null
+   },
+   {
+    "operation": "idle",
+    "theorem": "ErdosProblems.Erdos249.PaperCompleteR21.inversePhaseGauge_locks_row_and_preserves_minor",
+    "derived": [
+     "ErdosProblems.Erdos249.PaperCompleteR21.inversePhaseGauge_locks_row_and_preserves_minor.idle"
+    ],
+    "dropped": [
+     "1 ≤ d"
+    ],
+    "statement": "∀ {d : ℕ} (e : Fin d → ℕ) (z : Fin d → ℂ),   (∀ (j : Fin d), z j ≠ 0) →     ∀ (i₀ : Fin d),       e i₀ = 1 →         (∀ (j : Fin d),             (Erdos249257.ResidualGaugeObstruction.phasePowerMatrix e z * Matrix.diagonal fun j => (z j)⁻¹) i₀ j = 1) ∧           (Erdos249257.ResidualGaugeObstruction.phasePowerMatrix e z * Matrix.diagonal fun j => (z j)⁻¹).det =               (Erdos249257.ResidualGaugeObstruction.phasePowerMatrix e z).det * ∏ j, (z j)⁻¹ ∧             ((Erdos249257.ResidualGaugeObstruction.phasePowerMatrix e z).det ≠ 0 →                 (Erdos249257.ResidualGaugeObstruction.phasePowerMatrix e z * Matrix.diagonal fun j => (z j)⁻¹).det ≠                   0) ∧               ((∀ ( …",
+    "papers": [
+     {
+      "row": "erdos249-totient-reasoning-surface#prop:nonzero-minor-survives-inverse-phase",
+      "label": "prop:nonzero-minor-survives-inverse-phase",
+      "paper": "erdos249-totient-reasoning-surface",
+      "side": "long",
+      "lean_status": "exact",
+      "source": "paper/reasoning-parts/erdos249/a249_front.tex:6296"
+     }
+    ],
+    "source": null
+   },
+   {
+    "operation": "idle",
+    "theorem": "ErdosProblems.Erdos249.PaperCompleteR21.irrational_of_near_integer_base_powers",
+    "derived": [
+     "ErdosProblems.Erdos249.PaperCompleteR21.irrational_of_near_integer_base_powers.idle"
+    ],
+    "dropped": [
+     "2 ≤ b₀"
+    ],
+    "statement": "∀ (b₀ : ℕ) {ξ : ℝ}, (∀ (q : ℕ), 0 < q → ∃ n z, 0 < |↑b₀ ^ n * ξ - ↑z| ∧ |↑b₀ ^ n * ξ - ↑z| < 1 / ↑q) → Irrational ξ",
+    "papers": [
+     {
+      "row": "erdos249-totient-reasoning-surface#catalogue:cert:d2",
+      "label": "catalogue:cert:d2",
+      "paper": "erdos249-totient-reasoning-surface",
+      "side": "long",
+      "lean_status": "exact_or_stronger",
+      "source": "paper/reasoning-parts/erdos249/a249_front.tex:1848"
+     }
+    ],
+    "source": null
+   },
+   {
+    "operation": "idle",
+    "theorem": "ErdosProblems.Erdos249.PaperCompleteR21.paperNumerator_eval_two",
+    "derived": [
+     "ErdosProblems.Erdos249.PaperCompleteR21.paperNumerator_eval_two.idle"
+    ],
+    "dropped": [
+     "Squarefree r"
+    ],
+    "statement": "∀ {r : ℕ},   ↑(Polynomial.eval 2 (ErdosProblems.Erdos249.PaperCompleteR21.paperNumeratorPolynomial r)) =     ∑ d ∈ r.divisors, ↑(ArithmeticFunction.moebius d) * ↑(r / d) * ((2 ^ r - 1) / (2 ^ d - 1))",
+    "papers": [
+     {
+      "row": "erdos249-totient-reasoning-surface#cor:numerator-polynomial-explicit-positive-coefficients",
+      "label": "cor:numerator-polynomial-explicit-positive-coefficients",
+      "paper": "erdos249-totient-reasoning-surface",
+      "side": "long",
+      "lean_status": "exact",
+      "source": "paper/reasoning-parts/erdos249/a249_front.tex:4174"
+     }
+    ],
+    "source": null
+   },
+   {
+    "operation": "idle",
+    "theorem": "ErdosProblems.Erdos249.PaperCompleteR21.real_part_bound_of_norm_bound",
+    "derived": [
+     "ErdosProblems.Erdos249.PaperCompleteR21.real_part_bound_of_norm_bound.idle"
+    ],
+    "dropped": [
+     "0 ≤ ↑X"
+    ],
+    "statement": "∀ {h X L : ℕ},   ‖∑ N ∈ Finset.Ico X (2 * X), Erdos249257.TotientTailPeriodKiller.windowFirstExp h N L‖ ≤ 21 / 25 * ↑X →     21 / 25 < 9 / 10 ∧       ∑ N ∈ Finset.Ico X (2 * X), Erdos249257.TotientTailPeriodKiller.windowFirstCos h N L ≤ 9 / 10 * ↑X",
+    "papers": [
+     {
+      "row": "erdos249-totient-reasoning-surface#thm:hgap-norm",
+      "label": "thm:hgap-norm",
+      "paper": "erdos249-totient-reasoning-surface",
+      "side": "long",
+      "lean_status": "exact",
+      "source": "paper/reasoning-parts/erdos249/a249_front.tex:5248"
+     }
+    ],
+    "source": null
+   },
+   {
+    "operation": "idle",
+    "theorem": "ErdosProblems.Erdos249.PaperCompleteR21.residueOffset_of_dvd",
+    "derived": [
+     "ErdosProblems.Erdos249.PaperCompleteR21.residueOffset_of_dvd.idle"
+    ],
+    "dropped": [
+     "0 < d"
+    ],
+    "statement": "∀ {d H : ℕ},   d ∣ H →     Erdos249257.ActualForeignResidueProjection.residueOffset d H = d ∧       Erdos249257.ActualForeignResidueProjection.residueOffset d (2 * H) = d",
+    "papers": [
+     {
+      "row": "erdos249-totient-reasoning-surface#prop:finite-divisor-sum",
+      "label": "prop:finite-divisor-sum",
+      "paper": "erdos249-totient-reasoning-surface",
+      "side": "long",
+      "lean_status": "exact",
+      "source": "paper/reasoning-parts/erdos249/a249_front.tex:4271"
+     }
+    ],
+    "source": null
+   },
+   {
+    "operation": "idle",
+    "theorem": "ErdosProblems.Erdos249.PaperCompleteR21.twoAtom_strict_logConcave",
+    "derived": [
+     "ErdosProblems.Erdos249.PaperCompleteR21.twoAtom_strict_logConcave.idle"
+    ],
+    "dropped": [
+     "1 ≤ r"
+    ],
+    "statement": "∀ (r : ℕ), (1 - 1 / 3 ^ r) * (1 - 1 / 3 ^ (r + 2)) < (1 - 1 / 3 ^ (r + 1)) ^ 2",
+    "papers": [
+     {
+      "row": "erdos249-totient-reasoning-surface#thm:first-two-summands-give-positive",
+      "label": "thm:first-two-summands-give-positive",
+      "paper": "erdos249-totient-reasoning-surface",
+      "side": "long",
+      "lean_status": "exact",
+      "source": "paper/reasoning-parts/erdos249/a249_front.tex:3858"
+     }
+    ],
+    "source": null
+   }
+  ],
+  "Erdos251": [
+   {
+    "operation": "idle",
+    "theorem": "ErdosProblems.Erdos251.PaperCompleteR20.finite_separation_complete",
+    "derived": [
+     "ErdosProblems.Erdos251.PaperCompleteR20.finite_separation_complete.idle"
+    ],
+    "dropped": [
+     "∀ (L : ℕ), 0 ≤ R L"
+    ],
+    "statement": "∀ (D : ℝ) (S R : ℕ → ℝ),   (∀ (L : ℕ), |D - S L| ≤ R L) →     Filter.Tendsto R Filter.atTop (nhds 0) →       (D ∉ Set.range Int.cast ↔ ∃ L, R L < Metric.infDist (S L) (Set.range Int.cast))",
+    "papers": [
+     {
+      "row": "erdos251-prime-gap-reasoning-surface#long251:res:complete-truncation",
+      "label": "long251:res:complete-truncation",
+      "paper": "erdos251-prime-gap-reasoning-surface",
+      "side": "long",
+      "lean_status": "exact",
+      "source": "paper/reasoning-parts/erdos251/core.tex:2398"
+     }
+    ],
+    "source": null
+   },
+   {
+    "operation": "idle",
+    "theorem": "ErdosProblems.Erdos251.PaperCompleteR20.one_tail_signed_certificate",
+    "derived": [
+     "ErdosProblems.Erdos251.PaperCompleteR20.one_tail_signed_certificate.idle"
+    ],
+    "dropped": [
+     "0 ≤ B"
+    ],
+    "statement": "∀ (D D' : ℝ) (s A B Q : ℤ),   s = -1 ∨ s = 1 →     0 < Q →       D' = 2 * D - ↑(2 * s) →         |↑Q * D - ↑A| ≤ ↑B →           2 * s * A - Q > 2 * B →             Q - s * A > B → (1 / 2 < ↑s * D ∧ ↑s * D < 1) ∧ |D'| < 1 ∧ D ∉ Set.range Int.cast ∧ D' ∉ Set.range Int.cast",
+    "papers": [
+     {
+      "row": "erdos251-prime-gap-reasoning-surface#long251:res:one-tail-certificate",
+      "label": "long251:res:one-tail-certificate",
+      "paper": "erdos251-prime-gap-reasoning-surface",
+      "side": "long",
+      "lean_status": "exact",
+      "source": "paper/reasoning-parts/erdos251/core.tex:1137"
+     }
+    ],
+    "source": null
+   },
+   {
+    "operation": "idle",
+    "theorem": "ErdosProblems.Erdos251.PaperCompleteR21.long_joint_prime_gap_countermodel",
+    "derived": [
+     "ErdosProblems.Erdos251.PaperCompleteR21.long_joint_prime_gap_countermodel.idle"
+    ],
+    "dropped": [
+     "ε ≤ 1"
+    ],
+    "statement": "ErdosProblems.Erdos251.PaperR11.PrimeSource.SchlagePuchtaLemma4 →   ErdosProblems.Erdos251.PaperR11.PrimeSource.PrimeNumberTheorem →     ∀ (K : ℕ) {ε : ℝ},       0 < ε →         ∃ e r C,           0 < C ∧             (∀ n < K, e n = 0) ∧               HasSum (fun n => ↑(ErdosProblems.Erdos251.PaperR11.PrimeSource.primeGap0 n + e n) / 2 ^ (n + 1)) ↑r ∧                 (∀ᶠ (n : ℕ) in Filter.atTop, ↑(e n) ≤ ErdosProblems.Erdos251.PaperR11.SparsePolylog.polylog ε n) ∧                   (∀ (q : ℕ),                       0 < q →                         ∀ᶠ (n : ℕ) in Filter.atTop,                           ErdosProblems.Erdos251.PaperR11.PrimeSource.primeGap0 n + e n ≡                               …",
+    "papers": [
+     {
+      "row": "erdos251-prime-gap-reasoning-surface#long251:res:jointcountermodel",
+      "label": "long251:res:jointcountermodel",
+      "paper": "erdos251-prime-gap-reasoning-surface",
+      "side": "long",
+      "lean_status": "modulo_named_input",
+      "source": "paper/reasoning-parts/erdos251/core.tex:1501"
+     }
+    ],
+    "source": null
+   }
+  ],
+  "Erdos257": [
+   {
+    "operation": "idle",
+    "theorem": "ErdosProblems.Erdos257.PaperCompleteR21.ShortWindowDivisorPhase.theta_eq_divisorResidueSum",
+    "derived": [
+     "ErdosProblems.Erdos257.PaperCompleteR21.ShortWindowDivisorPhase.theta_eq_divisorResidueSum.idle"
+    ],
+    "dropped": [
+     "1 ≤ L"
+    ],
+    "statement": "∀ (M L D : ℕ),   1 ≤ M →     M + L ≤ D →       ErdosProblems.Erdos257.PaperCompleteR21.ShortWindowDivisorPhase.Theta L M =         ∑ d ∈ Finset.Icc 2 D, ∑ i ∈ Finset.Icc 1 L with d ∣ M + i, (1 / 2) ^ i",
+    "papers": [
+     {
+      "row": "erdos257-mersenne-reasoning-surface#lem:odometer",
+      "label": "lem:odometer",
+      "paper": "erdos257-mersenne-reasoning-surface",
+      "side": "long",
+      "lean_status": "exact_or_stronger",
+      "source": "paper/reasoning-parts/erdos257/a257_front.tex:7549"
+     }
+    ],
+    "source": null
+   },
+   {
+    "operation": "idle",
+    "theorem": "ErdosProblems.Erdos257.PaperCompleteR21.ShortWindowDivisorPhase.theta_eq_geometricForm",
+    "derived": [
+     "ErdosProblems.Erdos257.PaperCompleteR21.ShortWindowDivisorPhase.theta_eq_geometricForm.idle"
+    ],
+    "dropped": [
+     "1 ≤ L"
+    ],
+    "statement": "∀ (M L D : ℕ),   1 ≤ M →     M + L ≤ D →       ErdosProblems.Erdos257.PaperCompleteR21.ShortWindowDivisorPhase.Theta L M =         ∑ d ∈ Finset.Icc 2 D,           (1 / 2) ^ ErdosProblems.Erdos257.PaperCompleteR21.ShortWindowDivisorPhase.iLeast d M *               (1 - (1 / 2) ^ (d * ErdosProblems.Erdos257.PaperCompleteR21.ShortWindowDivisorPhase.mCount d M L)) /             (1 - (1 / 2) ^ d)",
+    "papers": [
+     {
+      "row": "erdos257-mersenne-reasoning-surface#lem:odometer",
+      "label": "lem:odometer",
+      "paper": "erdos257-mersenne-reasoning-surface",
+      "side": "long",
+      "lean_status": "exact_or_stronger",
+      "source": "paper/reasoning-parts/erdos257/a257_front.tex:7549"
+     }
+    ],
+    "source": null
+   },
+   {
+    "operation": "idle",
+    "theorem": "ErdosProblems.Erdos257.PaperCompleteR21.ShortWindowDivisorPhase.theta_eq_tsum_divisorResidue",
+    "derived": [
+     "ErdosProblems.Erdos257.PaperCompleteR21.ShortWindowDivisorPhase.theta_eq_tsum_divisorResidue.idle"
+    ],
+    "dropped": [
+     "1 ≤ L"
+    ],
+    "statement": "∀ (M L : ℕ),   1 ≤ M →     ErdosProblems.Erdos257.PaperCompleteR21.ShortWindowDivisorPhase.Theta L M =       ∑' (d : ℕ), ∑ i ∈ Finset.Icc 1 L with d + 2 ∣ M + i, (1 / 2) ^ i",
+    "papers": [
+     {
+      "row": "erdos257-mersenne-reasoning-surface#lem:odometer",
+      "label": "lem:odometer",
+      "paper": "erdos257-mersenne-reasoning-surface",
+      "side": "long",
+      "lean_status": "exact_or_stronger",
+      "source": "paper/reasoning-parts/erdos257/a257_front.tex:7549"
+     }
+    ],
+    "source": null
+   },
+   {
+    "operation": "idle",
+    "theorem": "ErdosProblems.Erdos257.PaperCompleteR21.arithmetic_logarithmic_counterexample",
+    "derived": [
+     "ErdosProblems.Erdos257.PaperCompleteR21.arithmetic_logarithmic_counterexample.idle"
+    ],
+    "dropped": [
+     "0 ≤ A₀"
+    ],
+    "statement": "∀ (H : ℕ),   2 ≤ H →     ∀ (A₀ : ℝ),       ∃ L F,         0 < L ∧           Squarefree L ∧             F.Nonempty ∧               0 ∉ F ∧                 (∀ a ∈ F, 0 < a ∧ Squarefree a) ∧                   (∀ a ∈ F, max (↑L) A₀ < ↑a) ∧                     L ∣ F.lcm id ∧                       ErdosProblems.Erdos257.PaperCompleteR21.kappaOne F 1 ≤ 30 * Real.log 2 / ↑H ∧                         1 - Real.exp (-1) ≤ ErdosProblems.Erdos257.PaperCompleteR21.condExceedProb F L ∧                           ∃ R,                             1 / 2 <                               ErdosProblems.Erdos257.PaperCompleteR8.dyadicMean L R L                                 (ErdosProblems.Erdos257.PaperCompleteR2 …",
+    "papers": [
+     {
+      "row": "erdos257-mersenne-reasoning-surface#thm:257-logarithmic-counterexample",
+      "label": "thm:257-logarithmic-counterexample",
+      "paper": "erdos257-mersenne-reasoning-surface",
+      "side": "long",
+      "lean_status": "exact",
+      "source": "paper/reasoning-parts/erdos257/a257_front.tex:8809"
+     }
+    ],
+    "source": null
+   },
+   {
+    "operation": "idle",
+    "theorem": "ErdosProblems.Erdos257.PaperCompleteR21.logarithmic_initial_interval",
+    "derived": [
+     "ErdosProblems.Erdos257.PaperCompleteR21.logarithmic_initial_interval.idle"
+    ],
+    "dropped": [
+     "F.Nonempty",
+     "t ≤ 1"
+    ],
+    "statement": "∀ (F : Finset ℕ),   0 ∉ F →     ∀ (X : ℕ),       1 ≤ X →         ∀ (t : ℝ),           0 < t →             ↑{N ∈ Finset.Icc 1 X | t < ErdosProblems.Erdos257.PaperCompleteR8.framePotential F N}.card / ↑X ≤               2 / Real.log (4 / 3) * ErdosProblems.Erdos257.PaperCompleteR21.kappaOne F t",
+    "papers": [
+     {
+      "row": "erdos257-mersenne-reasoning-surface#prop:257-logarithmic-initial-interval",
+      "label": "prop:257-logarithmic-initial-interval",
+      "paper": "erdos257-mersenne-reasoning-surface",
+      "side": "long",
+      "lean_status": "exact_or_stronger",
+      "source": "paper/reasoning-parts/erdos257/a257_front.tex:9007"
+     }
+    ],
+    "source": null
+   },
+   {
+    "operation": "idle",
+    "theorem": "ErdosProblems.Erdos257.PaperCompleteR21.paper_effective_horizon_test",
+    "derived": [
+     "ErdosProblems.Erdos257.PaperCompleteR21.paper_effective_horizon_test.idle"
+    ],
+    "dropped": [
+     "0 < 1 - 2 ^ (k + 1) * Erdos249257.greedyMersenneRemainder (1 / 2) k"
+    ],
+    "statement": "∀ (k J : ℕ),   ↑(k + J + 3) / 2 ^ J < 1 - 2 ^ (k + 1) * Erdos249257.greedyMersenneRemainder (1 / 2) k →     0 < Erdos249257.greedyHalfFrozenMargin k J",
+    "papers": [
+     {
+      "row": "erdos257-mersenne-reasoning-surface#record:257bm-c19",
+      "label": "record:257bm-c19",
+      "paper": "erdos257-mersenne-reasoning-surface",
+      "side": "long",
+      "lean_status": "exact_or_stronger",
+      "source": "paper/reasoning-parts/erdos257/a257_front.tex:4120"
+     }
+    ],
+    "source": null
+   },
+   {
+    "operation": "idle",
+    "theorem": "ErdosProblems.Erdos257.PaperCompleteR21.paper_mersenne_channel_survival",
+    "derived": [
+     "ErdosProblems.Erdos257.PaperCompleteR21.paper_mersenne_channel_survival.idle"
+    ],
+    "dropped": [
+     "1 ≤ t",
+     "1 ≤ h",
+     "1 ≤ r"
+    ],
+    "statement": "∀ (P : Finset ℕ) {t h r : ℕ},   Squarefree r →     (∀ (q : ℕ), Nat.Prime q → q ∣ r → q ≤ t) →       (∀ p ∈ P, Nat.Prime p) →         (∀ p ∈ P, p ∣ r) →           (∀ p ∈ P, t < 2 * p) →             (∏ p ∈ P, (2 ^ p - 1)) / (∏ p ∈ P, (2 ^ p - 1)).gcd h ∣               (↑h * ErdosProblems.Erdos257.PaperCompleteR21.paperB r).den",
+    "papers": [
+     {
+      "row": "erdos257-mersenne-reasoning-surface#thm:mersenne-channel-survival",
+      "label": "thm:mersenne-channel-survival",
+      "paper": "erdos257-mersenne-reasoning-surface",
+      "side": "long",
+      "lean_status": "exact",
+      "source": "paper/reasoning-parts/erdos257/a257_front.tex:2850"
+     }
+    ],
+    "source": null
+   },
+   {
+    "operation": "idle",
+    "theorem": "ErdosProblems.Erdos257.PaperCompleteR21.paper_one_orbit_stability",
+    "derived": [
+     "ErdosProblems.Erdos257.PaperCompleteR21.paper_one_orbit_stability.idle"
+    ],
+    "dropped": [
+     "∀ (j n : ℕ), 0 < v j n"
+    ],
+    "statement": "∀ (t : ℕ → ℝ) (v : ℕ → ℕ → ℝ) (dep : ℕ → ℕ),   Filter.Tendsto t Filter.atTop (nhds (1 / 2)) →     (∀ (n : ℕ), 2 ≤ n → Filter.Tendsto (fun j => v j n) Filter.atTop (nhds (Erdos249257.mersenneWeight n))) →       Filter.Tendsto dep Filter.atTop Filter.atTop →         ∀ (K : ℕ),           ∀ᶠ (j : ℕ) in Filter.atTop,             K ≤ dep j ∧               ∀ (n : ℕ),                 2 ≤ n →                   n ≤ K →                     (v j n ≤ ErdosProblems.Erdos257.PaperCompleteR21.tailGreedyRemainder (t j) (v j) (n - 2) ↔                       Erdos249257.mersenneWeight n ≤ Erdos249257.greedyMersenneRemainder (1 / 2) (n - 1))",
+    "papers": [
+     {
+      "row": "erdos257-mersenne-reasoning-surface#prop:one-orbit",
+      "label": "prop:one-orbit",
+      "paper": "erdos257-mersenne-reasoning-surface",
+      "side": "long",
+      "lean_status": "exact",
+      "source": "paper/reasoning-parts/erdos257/a257_front.tex:5547"
+     }
+    ],
+    "source": null
+   },
+   {
+    "operation": "idle",
+    "theorem": "ErdosProblems.Erdos257.PaperCompleteR21.paper_shared_prefix_family_strip_witness_after_feedback_of_all_depths",
+    "derived": [
+     "ErdosProblems.Erdos257.PaperCompleteR21.paper_shared_prefix_family_strip_witness_after_feedback_of_all_depths.idle"
+    ],
+    "dropped": [
+     "1 ≤ N",
+     "27 ≤ Erdos249257.HalfCarryReachability.halfStripBound (N + 1)"
+    ],
+    "statement": "∀ {K N : ℕ} (S : Erdos249257.SuffixCylinderThreshold.CylinderStage K N),   K + 1 ≤ N →     N + 1 = 2 * (K + 1) →       ∃ a,         a ⟨0, ⋯⟩ = false ∧           (∀ (h : 1 < N + 1 + 1), a ⟨1, h⟩ = false) ∧             |↑(Erdos249257.HalfCarryReachability.integerHalfCarry (Erdos249257.HalfCarryReachability.wordSupport a)                     (N + 1 - 1))| ≤               ↑(Erdos249257.HalfCarryReachability.halfStripBound (N + 1))",
+    "papers": [
+     {
+      "row": "erdos257-mersenne-reasoning-surface#prop:finite-approximations-without-compatibility",
+      "label": "prop:finite-approximations-without-compatibility",
+      "paper": "erdos257-mersenne-reasoning-surface",
+      "side": "long",
+      "lean_status": "exact",
+      "source": "paper/reasoning-parts/erdos257/a257_front.tex:5109"
+     }
+    ],
+    "source": null
+   },
+   {
+    "operation": "idle",
+    "theorem": "ErdosProblems.Erdos257.PaperCompleteR21.paper_zero_run_le_eps_logb",
+    "derived": [
+     "ErdosProblems.Erdos257.PaperCompleteR21.paper_zero_run_le_eps_logb.idle"
+    ],
+    "dropped": [
+     "Odd v"
+    ],
+    "statement": "∀ (A : Set ℕ),   A.Infinite →     0 ∉ A →       ∀ (p : ℤ) (c v : ℕ),         0 < v →           Erdos249257.erdosSupportSeries 2 A = ↑p / ↑(2 ^ c * v) →             ∀ (ε : ℝ),               0 < ε →                 ∃ B,                   0 ≤ B ∧                     ∀ (N h : ℕ), 1 ≤ N → Erdos249257.SupportCoeffZeroWindow A (c + N) h → ↑h ≤ ε * Real.logb 2 ↑N + B",
+    "papers": [
+     {
+      "row": "erdos257-mersenne-reasoning-surface#record:257rig-i4a",
+      "label": "record:257rig-i4a",
+      "paper": "erdos257-mersenne-reasoning-surface",
+      "side": "long",
+      "lean_status": "exact",
+      "source": "paper/reasoning-parts/erdos257/a257_front.tex:4526"
+     }
+    ],
+    "source": null
+   }
+  ],
+  "Erdos269": [
+   {
+    "operation": "idle",
+    "theorem": "ErdosProblems.Erdos269.PaperR7.long_no_bounded_length",
+    "derived": [
+     "ErdosProblems.Erdos269.PaperR7.long_no_bounded_length.idle"
+    ],
+    "dropped": [
+     "B.Coprime 30",
+     "1 ≤ H"
+    ],
+    "statement": "∀ {B H : ℕ},   0 < B →     {lo |         ∃ len,           1 ≤ len ∧             len ≤ H ∧               ErdosProblems.Erdos269.PaperR7.longPaperCap B (lo + len) <                 ErdosProblems.Erdos269.leastPositiveResidue                   (ErdosProblems.Erdos269.PaperR7.actualWindowBase lo len).natAbs                   (-(↑B * ErdosProblems.Erdos269.PaperR7.actualWindowForcing lo len))}.Finite",
+    "papers": [
+     {
+      "row": "erdos269-running-lcm-reasoning-surface#long269:res:no-bounded-length",
+      "label": "long269:res:no-bounded-length",
+      "paper": "erdos269-running-lcm-reasoning-surface",
+      "side": "long",
+      "lean_status": "exact_or_stronger",
+      "source": "paper/reasoning-parts/erdos269/core.tex:1581"
+     }
+    ],
+    "source": "lean/ErdosProblems/Erdos269/PaperR7WindowResults.lean:267"
+   },
+   {
+    "operation": "idle",
+    "theorem": "ErdosProblems.Erdos269.PaperR7.long_window_growth",
+    "derived": [
+     "ErdosProblems.Erdos269.PaperR7.long_window_growth.idle"
+    ],
+    "dropped": [
+     "1 ≤ len"
+    ],
+    "statement": "∀ (lo len : ℕ),   ErdosProblems.Erdos269.PaperR7.actualWindowBase lo len =       ↑(2 ^ len * 3 ^ (⌊↑(lo + len) * Real.logb 3 2⌋₊ - ⌊↑lo * Real.logb 3 2⌋₊) *           5 ^ (⌊↑(lo + len) * Real.logb 5 2⌋₊ - ⌊↑lo * Real.logb 5 2⌋₊)) ∧     8 ^ len / 15 < ↑(ErdosProblems.Erdos269.PaperR7.actualWindowBase lo len) ∧       ↑(ErdosProblems.Erdos269.PaperR7.actualWindowBase lo len) < 15 * 8 ^ len",
+    "papers": [
+     {
+      "row": "erdos269-running-lcm-reasoning-surface#long269:res:window-growth",
+      "label": "long269:res:window-growth",
+      "paper": "erdos269-running-lcm-reasoning-surface",
+      "side": "long",
+      "lean_status": "exact_or_stronger",
+      "source": "paper/reasoning-parts/erdos269/core.tex:1560"
+     }
+    ],
+    "source": "lean/ErdosProblems/Erdos269/PaperR7WindowResults.lean:196"
+   },
+   {
+    "operation": "idle",
+    "theorem": "ErdosProblems.Erdos269.PaperR7.paper_uniform_rank_and_nonseparation",
+    "derived": [
+     "ErdosProblems.Erdos269.PaperR7.paper_uniform_rank_and_nonseparation.idle"
+    ],
+    "dropped": [
+     "p ≠ q"
+    ],
+    "statement": "∀ {p q r : ℕ},   Nat.Prime p →     Nat.Prime q →       Nat.Prime r →         p ≠ r →           q ≠ r →             (∀ (n : ℕ),                 ∃ I J,                   Function.Injective I ∧                     Function.Injective J ∧                       ∀ (k : ℕ),                         (Matrix.det fun a b => ErdosProblems.Erdos269.threePrimeKernelQ p q r (I a) (J b) k) ≠ 0) ∧               ∀ (d : ℕ),                 ¬∃ f G, ∀ (i j k : ℕ), ErdosProblems.Erdos269.threePrimeKernelQ p q r i j k = ∑ l, f l i * G l j k",
+    "papers": [
+     {
+      "row": "erdos-269-three-prime-running-lcm#res:infinite-rank",
+      "label": "res:infinite-rank",
+      "paper": "erdos-269-three-prime-running-lcm",
+      "side": "short",
+      "lean_status": "exact_or_stronger",
+      "source": "paper/269/erdos-269-three-prime-running-lcm.tex:75"
+     },
+     {
+      "row": "erdos269-running-lcm-reasoning-surface#long269:res:infinite-rank",
+      "label": "long269:res:infinite-rank",
+      "paper": "erdos269-running-lcm-reasoning-surface",
+      "side": "long",
+      "lean_status": "exact_or_stronger",
+      "source": "paper/reasoning-parts/erdos269/core.tex:450"
+     }
+    ],
+    "source": "lean/ErdosProblems/Erdos269/PaperR7BasicAssembly.lean:22"
+   }
+  ],
+  "Erdos68": [
+   {
+    "operation": "idle",
+    "theorem": "ErdosProblems.Erdos68.PaperComplete.maximal_prime_power_survival",
+    "derived": [
+     "ErdosProblems.Erdos68.PaperComplete.maximal_prime_power_survival.idle"
+    ],
+    "dropped": [
+     "2 ≤ M"
+    ],
+    "statement": "∀ {M p : ℕ},   Nat.Prime p →     p ∣ ErdosProblems.Erdos68.factorialGapPrefixLCM M →       ((ErdosProblems.Erdos68.factorialGapPrefix M).den.factorization p =           (ErdosProblems.Erdos68.factorialGapPrefixLCM M).factorization p ↔         ∑ n ∈ Finset.Icc 2 M with             (n.factorial - 1).factorization p = (ErdosProblems.Erdos68.factorialGapPrefixLCM M).factorization p,             (↑((n.factorial - 1) / p ^ (ErdosProblems.Erdos68.factorialGapPrefixLCM M).factorization p))⁻¹ ≠           0)",
+    "papers": [
+     {
+      "row": "erdos68-factorial-reasoning-surface#long68:res:prime-pole",
+      "label": "long68:res:prime-pole",
+      "paper": "erdos68-factorial-reasoning-surface",
+      "side": "long",
+      "lean_status": "exact",
+      "source": "paper/reasoning-parts/erdos68/core.tex:95"
+     }
+    ],
+    "source": "lean/ErdosProblems/Erdos68/PaperCompletePrimePole.lean:117"
+   }
+  ]
+ }
+}
