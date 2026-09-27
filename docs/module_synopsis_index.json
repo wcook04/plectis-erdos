@@ -1,9 +1,9 @@
 {
   "schema_version": "erdos249257-module-synopsis-index/1",
   "authority_posture": "generated_index_of_authored_Lean_module_headers_not_proof_or_claim_status_authority",
-  "source_fingerprint": "sha256:e16ed9ce3a71dbe77f7c1fd660efca4d81b0898e7d81dfa5c3e44d9dcef07584",
-  "module_count": 1872,
-  "synopsis_count": 1625,
+  "source_fingerprint": "sha256:a2fc01d976781a56349b2fb64456cd74553de5f24ef6a1e5aeaab8e92f2df38b",
+  "module_count": 1874,
+  "synopsis_count": 1627,
   "query_contract": {
     "command": "python3 scripts/query_corpus.py --module <module_path_or_sigil>",
     "returns": "Resolves a module synopsis to its declarations, paper sigil, source identity, attached claims, and route-memory context."
@@ -3541,6 +3541,16 @@
       "id": "ErdosProblems.ArgumentGraph.Factor",
       "path": "lean/ErdosProblems/ArgumentGraph/Factor.lean",
       "synopsis": "Factoring: each hypothesis at the claims whose proofs use it A paper result often proves several claims about one construction and assumes a named input that only some of the claims need. `derive_factor T` reads the proof of `T` and adds `T.factored`: the statement of `T` with each proposition hypothesis moved to the claims of the conclusion whose proofs use it. From a proof of `H₁ → H₂ → ∃ w, A w ∧ B w ∧ C w` whose witness and whose proof of `A w` use neither hypothesis, whose proof of `B w` uses only `H₁` and whose proof of `C w` uses only `H₂`, it adds `T.factored : ∃ w, A w ∧ (H₁ → B w) ∧ (H₂ → C w)`, with the proof's own witness. The two statements differ: the factored one says the construction exists without either input, and that in this proof each input is assumed only by the claim it proves. A hypothesis that a witness needs stays above that `∃`; one no claim needs is left out. The conclusion is read through `∃`, `∧` and `∀` (implications included); anything else is one claim. The proof is read after its spine is normalised: a `have` whose value uses a hypothesis being moved is inlined; an elimination of a constructor is reduced (`obtain ⟨a, b⟩ := ⟨x, y⟩` is `x, y`); an elimination whose major premise is itself an elimination moves inside it; an elimination with one alternative whose proof ignores the fields it opens is dropped, and a constructor that alternative builds from terms free of those fields is moved out of it (so `obtain ⟨c, hc⟩ := h` followed by `⟨w, p⟩`, with `w` free of `c`, charges `h` to `p` only); a compiled `match`, `dite`, `Or.elim` and `Decidabl"
+    },
+    {
+      "id": "ErdosProblems.ArgumentGraph.Results.Erdos1041",
+      "path": "lean/ErdosProblems/ArgumentGraph/Results/Erdos1041.lean",
+      "synopsis": "Erdős #1041: what the inner-chord factoring adds, clause by clause `binomial_inner_chord_maximal` assumes the switch condition `1 ≤ rⁿ (1 + cⁿ)`, with `c = cos (π / n)`, and concludes a midpoint equality and a maximality clause `∀ s, innerRadius n r < s → s ≤ r → 1 < ‖…‖`. Its proof passes the switch condition to `inner_chord_maximal`, and `derive_factor` finds it unused once that lemma is factored: `binomial_inner_chord_maximal.factored` states both clauses without it. The theorems below say what that adds. Off the switch condition the inner radius exceeds `r`, so no `s` meets the maximality clause's hypotheses there and that clause gains nothing. The midpoint equality is asserted at every added point, and the added region is not empty: the switch condition fails at `n = 3`, `r = 1/2`, where the factored theorem gives the equality and the Lean theorem as written does not apply."
+    },
+    {
+      "id": "ErdosProblems.ArgumentGraph.Results.Erdos243",
+      "path": "lean/ErdosProblems/ArgumentGraph/Results/Erdos243.lean",
+      "synopsis": "Erdős #243: what the transport-square factoring adds `transport_square_unconditional` (`long243:res:transportsquare`) assumes `v n > 0` for `n ≥ T` and passes it to `primitive_zero_density_multiplier_irreducibility` only for claims it does not use, so `transport_square_unconditional.factored` leaves it out. The theorem below shows that the hypotheses the factoring keeps imply it: from a zero term on, `v` vanishes (`v (n + 1) = a n * v n`), coprimality then gives `u n = 1`, and `m * C(n + 2, 3) + c` exceeds `1` for large `n`, so the exceptional set contains a tail, which zero lower density forbids. The factored theorem is the same result, on the same premise region, with a shorter statement."
     },
     {
       "id": "ErdosProblems.ArgumentGraph.Results.Erdos251",

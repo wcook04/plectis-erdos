@@ -107,14 +107,14 @@
   },
   "authority_posture": "navigation_projection_not_Lean_proof_authority_and_not_historical_evidence_authority",
   "content_hashes": {
-    "docs/claims.json": "sha256:fbf7fa009e3b707c5dd934c940bb4bdd2248b691f996066d5e5ec0cc337e7975",
+    "docs/claims.json": "sha256:97d3ff7b442ada220148899b63b072282659a52e3ab9158ac3a641bf707d7680",
     "docs/methodology.json": "sha256:cef19d9092c49ba9c9b269a4b04c2c6030164bba6b80561117577713f60c3750",
     "docs/problems.json": "sha256:b9d666ef4b9766a47d0e81dcda6ceccfd227196664625172ffc4df53ba392476",
     "docs/publication_contract.json": "sha256:c05515a98ae4bdde7e3c59ac51ea43d8fbbd8eec9c0d23ec8d1f8de817f8288c",
     "docs/publication_entry_source.json": "sha256:a350c6ba5ba1a9828e916301f3148bc9a81d7ca14b175db0eca8c5426b8e5e5d",
     "docs/publication_evidence.json": "sha256:4e350698eed8b4ee10fc629cfb7540ed71bc6ccf4020ee2ede8635f4aae809b3",
     "paper/systems/claim-faithful-publication-systems-paper.pdf": "sha256:4acc5dd5a345d9b356bbc42b53331bd2f2a526bb2f77d6f3e8291d379b80919c",
-    "paper/systems/claim-faithful-publication-systems-paper.tex": "sha256:45d779f154ee44e3571d51a47201829920f56118fb12777142e5e13225cd7700",
+    "paper/systems/claim-faithful-publication-systems-paper.tex": "sha256:79053960cebe430cc4658a10c39cfa6bfaade241887ccaf2184b1e0c938daad8",
     "research/experiments/publication_mutations.json": "sha256:9243e270257869e7a191c7598e917457cab61194299d1651e21bbc45a2d4c1e3",
     "research_corpus/Erdos1041/CORPUS_MANIFEST.json": "sha256:ce964d4a1e23101de34f35e3a42d4e2d6851873f9a37ddaecb6af718e9048ea6",
     "research_corpus/Erdos1041/FRONTIER.md": "sha256:e0c5f9c6ca8add9a7e87d11511fb63aa461699f0d54c392afba8bdabebf20299",
@@ -546,7 +546,7 @@
     "formal_source": {
       "public_tag": null,
       "publication_state": "committed_checkpoint_pending_remote_publication",
-      "ref": "ab690b0aa515faa3a432e9d47de288704ebf6bb5",
+      "ref": "0456a2081f2c6a1ac1982f29108dd351426c6500",
       "ref_kind": "commit",
       "relationship_to_last_tag": "post_tag_checkpoint"
     },
