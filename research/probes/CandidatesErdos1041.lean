@@ -3,6 +3,7 @@ import ErdosProblems.Erdos1041.PaperCompleteR21.ArityNotCapacity
 import ErdosProblems.Erdos1041.PaperCompleteR21.ConstantFactorAreaCriteria
 import ErdosProblems.Erdos1041.PaperCompleteR21.CriticalValueSeparationTransport
 import ErdosProblems.Erdos1041.PaperCompleteR21.HyperbolicLawOfCosines
+import ErdosProblems.Erdos1041.PaperCompleteR21.LowCriticalScaleTransport
 import ErdosProblems.Erdos1041.PaperCompleteR21.SeparationParent
 import ErdosProblems.Erdos1041.PaperCompleteR21.SubcriticalPerimeterPath
 -- SPDX-FileCopyrightText: 2026 Will Cook

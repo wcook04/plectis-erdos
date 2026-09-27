@@ -1,6 +1,9 @@
 import Lean
+import Erdos249257.LcmConeFlatness
+import Erdos249257.TotientActualLcmTopEdgeStaircase
 import Erdos249257.TotientCarryKernelRigidity
 import Erdos249257.TotientTailCarryPeriod
+import Erdos249257.TotientTailPeriodKiller
 import ErdosProblems.Erdos249.PaperCompleteR20.LcmGridCorrespondence
 import ErdosProblems.Erdos249.PaperCompleteR21.DivisorChannelSplitAndSeamDoubling
 import ErdosProblems.Erdos249.PaperCompleteR21.DyadicSectionBasisAndRationalCarry
@@ -17,7 +20,9 @@ import ErdosProblems.Erdos249.PaperCompleteR21.PeriodMultipleAndSecondDifference
 import ErdosProblems.Erdos249.PaperCompleteR21.PhaseEnergyAndForeignResidueProjection
 import ErdosProblems.Erdos249.PaperCompleteR21.RationalTailPeriodWitnesses
 import ErdosProblems.Erdos249.PaperCompleteR21.ScalarLocalisationAndInversePhaseGauge
+import ErdosProblems.Erdos249.PaperCompleteR21.SimultaneousShiftCertificateDepth
 import ErdosProblems.Erdos249.PaperCompleteR21.TailCarryPeriodAndRankFloor
+import ErdosProblems.Erdos249.PaperCompleteR21.TopEdgeChainPaperBand
 -- SPDX-FileCopyrightText: 2026 Will Cook
 -- SPDX-License-Identifier: Apache-2.0
 
