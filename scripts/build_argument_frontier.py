@@ -183,6 +183,66 @@ def plan(graph: dict[str, Any], papers: dict[str, list[dict[str, Any]]]) -> dict
     return per_problem
 
 
+def named_inputs(graph: dict[str, Any], papers: dict[str, list[dict[str, Any]]],
+                 weakenings: dict[str, list[dict[str, Any]]]) -> list[dict[str, Any]]:
+    """Every open closed hypothesis of a theorem a paper cites, with what each
+    proof consumes of it. A consumer's ``levels`` list the use-site
+    consequences of the hypothesis, then the consequences of the theorems
+    those sites apply it to, and so on (a site continues the chain when the
+    theorem it applies has a weakening of the same hypothesis). Each
+    consequence carries the graph's status for it, so an open input whose
+    deeper level is supplied is visible at a glance."""
+    statements = {s["key"]: s for s in graph.get("statements", [])}
+    theorems = {t["name"]: t for t in graph.get("theorems", [])}
+
+    def rows_for(theorem: str, hypothesis: str) -> list[dict[str, Any]]:
+        return [r for r in weakenings.get(theorem, []) if r.get("hypothesis") == hypothesis]
+
+    def levels(theorem: str, hypothesis: str) -> list[list[dict[str, Any]]]:
+        out: list[list[dict[str, Any]]] = []
+        seen: set[str] = set()
+        frontier = [theorem]
+        visited: set[str] = set()
+        while frontier and len(out) < 24:
+            level: list[dict[str, Any]] = []
+            nxt: list[str] = []
+            for name in frontier:
+                if name in visited:
+                    continue
+                visited.add(name)
+                for row in rows_for(name, hypothesis):
+                    for c in row.get("consequences", []):
+                        key = c.get("key")
+                        if key and key not in seen:
+                            seen.add(key)
+                            level.append({"type": c.get("type"), "key": key, "via": c.get("via", []),
+                                          "status": (statements.get(key) or {}).get("status")})
+                        for v in c.get("via") or []:
+                            if rows_for(v, hypothesis):
+                                nxt.append(v)
+            if level:
+                out.append(level)
+            frontier = nxt
+        return out
+
+    by_input: dict[str, dict[str, Any]] = {}
+    for name in sorted(papers):
+        theorem = theorems.get(name)
+        if not theorem:
+            continue
+        for key in theorem.get("hypotheses", []) or []:
+            statement = statements.get(key)
+            if not statement or statement.get("status") != "open":
+                continue
+            entry = by_input.setdefault(key, {"key": key, "statement": statement.get("type"), "consumers": []})
+            entry["consumers"].append({
+                "theorem": name, "problem": theorem.get("problem"),
+                "papers": [{"row": p["row"], "label": p["label"], "lean_status": p["lean_status"]}
+                           for p in papers[name]],
+                "levels": levels(name, key)})
+    return sorted(by_input.values(), key=lambda e: (-len(e["consumers"]), e["statement"] or ""))
+
+
 def render_module(problem: str, slot: dict[str, Any], source: dict[str, Any]) -> str:
     lines = [HEADER.format(revision=source.get("source_revision", "?"), tree=source.get("lean_tree", "?"))]
     lines.append(f"import {DERIVE_MODULE}")
@@ -223,6 +283,9 @@ def main(argv: list[str] | None = None) -> int:
                  "compiles (argumentGraph.strict makes a failed rebuild a build error)"),
         "modules": {problem: str(DERIVED / f"{problem}.lean") for problem in sorted(per_problem)},
         "rows": {problem: slot["rows"] for problem, slot in sorted(per_problem.items())},
+        "named_inputs_rule": ("an open closed hypothesis of a theorem a paper cites; levels are what the "
+                              "proofs consume of it, from the kernel-checked weakenings"),
+        "named_inputs": named_inputs(graph, papers, weakening_index(graph)),
     }
     files[args.root / "docs" / "argument_frontier.json"] = json.dumps(manifest, indent=1, ensure_ascii=False) + "\n"
     if args.check:
