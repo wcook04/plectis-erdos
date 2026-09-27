@@ -4,6 +4,7 @@
 -- source revision 5176d8878036549d6e35a4cb42d8e26fdb3e4b46 (Lean tree ca2f57c9c7e461d54d2617d2ae33016ec7481567). Do not edit by hand.
 
 import ErdosProblems.ArgumentGraph.Derive
+import ErdosProblems.Erdos1041.PaperCompleteR21.ArityNotCapacity
 import ErdosProblems.Erdos1041.PaperCompleteR21.ConstantFactorAreaCriteria
 import ErdosProblems.Erdos1041.PaperCompleteR21.CriticalValueSeparationTransport
 import ErdosProblems.Erdos1041.PaperCompleteR21.HyperbolicLawOfCosines
@@ -25,3 +26,13 @@ derive_idle ErdosProblems.Erdos1041.PaperCompleteR21.cfaArity_length_le
 derive_idle ErdosProblems.Erdos1041.PaperCompleteR21.discSep_cubic_six_fifths
 derive_idle ErdosProblems.Erdos1041.PaperCompleteR21.discSep_uniform_radius
 derive_idle ErdosProblems.Erdos1041.PaperCompleteR21.subcritical_perimeter_path_paper
+
+-- Derivations the export does not decide in advance: conjuncts a proof may establish
+-- without an open hypothesis, and frontiers with the consequences the graph records as
+-- proved by corpus theorems discharged. A command that adds nothing warns.
+set_option argumentGraph.strict false in derive_conjuncts ErdosProblems.Erdos1041.PaperCompleteR21.Arity.arity_not_capacity
+set_option argumentGraph.strict false in derive_conjuncts ErdosProblems.Erdos1041.PaperCompleteR21.cfa_constant_factor_path
+set_option argumentGraph.strict false in derive_conjuncts ErdosProblems.Erdos1041.PaperCompleteR21.discSep_cubic_six_fifths
+set_option argumentGraph.strict false in derive_conjuncts ErdosProblems.Erdos1041.PaperCompleteR21.discSep_separation_long
+set_option argumentGraph.strict false in derive_conjuncts ErdosProblems.Erdos1041.PaperCompleteR21.discSep_separation_short
+set_option argumentGraph.strict false in derive_conjuncts ErdosProblems.Erdos1041.PaperCompleteR21.discSep_uniform_radius

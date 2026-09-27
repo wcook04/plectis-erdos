@@ -157,6 +157,23 @@ def plan(graph: dict[str, Any], papers: dict[str, list[dict[str, Any]]]) -> dict
                              "dropped": [d.get("type") for d in row.get("dropped", [])],
                              "statement": row.get("type"), "papers": papers[name],
                              "source": theorem.get("source")})
+    # A paper-cited theorem with an open hypothesis and a conjunctive conclusion
+    # may prove some conjuncts without it. The export does not record which, so
+    # these commands run outside strict mode and the build log says which split.
+    for name in sorted(papers):
+        theorem = theorems.get(name)
+        if not theorem or " ∧ " not in (theorem.get("conclusion_type") or ""):
+            continue
+        if not any((statements.get(k) or {}).get("status") == "open" for k in theorem.get("hypotheses", []) or []):
+            continue
+        problem = PROBLEM_NAMES.get(str(theorem.get("problem")))
+        if not problem:
+            continue
+        slot = per_problem[problem]
+        slot["imports"].add(theorem["module"])
+        slot["supplied_commands"].append(f"derive_conjuncts {lean_ident(name)}")
+        slot["rows"].append({"operation": "conjuncts_candidate", "theorem": name, "papers": papers[name],
+                             "source": theorem.get("source")})
     for name, rows in sorted(weakenings.items()):
         if name not in papers or name not in theorems:
             continue
@@ -357,8 +374,9 @@ def render_module(problem: str, slot: dict[str, Any], source: dict[str, Any]) ->
     lines += slot["commands"]
     if slot.get("supplied_commands"):
         lines.append("")
-        lines.append("-- Frontiers with the consequences the graph records as proved by corpus theorems")
-        lines.append("-- discharged. Where the Lean chain stops elsewhere, a command adds nothing and warns.")
+        lines.append("-- Derivations the export does not decide in advance: conjuncts a proof may establish")
+        lines.append("-- without an open hypothesis, and frontiers with the consequences the graph records as")
+        lines.append("-- proved by corpus theorems discharged. A command that adds nothing warns.")
         lines += [f"set_option argumentGraph.strict false in {c}" for c in slot["supplied_commands"]]
     lines.append("")
     return "\n".join(lines)

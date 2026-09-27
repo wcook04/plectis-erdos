@@ -4,7 +4,13 @@
 -- source revision 5176d8878036549d6e35a4cb42d8e26fdb3e4b46 (Lean tree ca2f57c9c7e461d54d2617d2ae33016ec7481567). Do not edit by hand.
 
 import ErdosProblems.ArgumentGraph.Derive
+import Erdos249257.CofinalStripReturn
+import Erdos249257.HalfCarryReachability
+import Erdos249257.HalfTrappingReturnCarry
+import Erdos249257.SuffixCylinderTerminalOnlyBridge
+import Erdos249257.TwentyOneQuotientGreedy
 import ErdosProblems.Erdos257.PaperCompleteR21.ArithmeticCounterexampleAssembly
+import ErdosProblems.Erdos257.PaperCompleteR21.CompatibleFiniteRowFamily
 import ErdosProblems.Erdos257.PaperCompleteR21.EventualNonnegativeMargin
 import ErdosProblems.Erdos257.PaperCompleteR21.FeedbackRowStripWitnessAllDepths
 import ErdosProblems.Erdos257.PaperCompleteR21.GreedyOrbitNoTies
@@ -12,6 +18,7 @@ import ErdosProblems.Erdos257.PaperCompleteR21.LogarithmicInitialInterval
 import ErdosProblems.Erdos257.PaperCompleteR21.MersenneChannelSurvivalAllHeights
 import ErdosProblems.Erdos257.PaperCompleteR21.ShortWindowDivisorPhase
 import ErdosProblems.Erdos257.PaperCompleteR21.SkipSafetyAndDivisorZeroRuns
+import ErdosProblems.Erdos257.PaperCompleteR21.TerminalStripExactRowGap
 
 /-! # Erdos257: theorems derived from what the paper results' proofs use
 
@@ -32,3 +39,15 @@ derive_idle ErdosProblems.Erdos257.PaperCompleteR21.paper_mersenne_channel_survi
 derive_idle ErdosProblems.Erdos257.PaperCompleteR21.paper_one_orbit_stability
 derive_idle ErdosProblems.Erdos257.PaperCompleteR21.paper_shared_prefix_family_strip_witness_after_feedback_of_all_depths
 derive_idle ErdosProblems.Erdos257.PaperCompleteR21.paper_zero_run_le_eps_logb
+
+-- Derivations the export does not decide in advance: conjuncts a proof may establish
+-- without an open hypothesis, and frontiers with the consequences the graph records as
+-- proved by corpus theorems discharged. A command that adds nothing warns.
+set_option argumentGraph.strict false in derive_conjuncts Erdos249257.HalfCarryReachability.greedy_half_infinite_of_cofinalStripReturn
+set_option argumentGraph.strict false in derive_conjuncts Erdos249257.HalfCarryReachability.greedy_half_infinite_of_mobiusCenteredHalfCarry_sqrtBound
+set_option argumentGraph.strict false in derive_conjuncts Erdos249257.HalfCarryReachability.greedy_half_infinite_of_mobiusCenteredHalfCarry_upperBound
+set_option argumentGraph.strict false in derive_conjuncts Erdos249257.HalfTrappingReturnCarry.overlappingReverseCarryWords_carryDifference_eq_twoPow_mul_odd
+set_option argumentGraph.strict false in derive_conjuncts Erdos249257.SuffixCylinderTerminalOnlyBridge.exists_infinite_positive_support_half_of_cofinalCylinderStages
+set_option argumentGraph.strict false in derive_conjuncts Erdos249257.twentyOneFatalAlignedBranch_eventually_affine_supercapacity
+set_option argumentGraph.strict false in derive_conjuncts ErdosProblems.Erdos257.PaperCompleteR21.paper_compatible_finite_row_conditions
+set_option argumentGraph.strict false in derive_conjuncts ErdosProblems.Erdos257.PaperCompleteR21.paper_terminal_strip_forces_half_membership

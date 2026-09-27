@@ -6,6 +6,8 @@
 import ErdosProblems.ArgumentGraph.Derive
 import ErdosProblems.Erdos251.PaperCompleteR20.FiniteSeparation
 import ErdosProblems.Erdos251.PaperCompleteR21.JointPrimeGapCountermodel
+import ErdosProblems.Erdos251.PaperCompleteR21.PerturbedPrimePositions
+import ErdosProblems.Erdos251.PaperCompleteR21.TwoWindowSparsity
 
 /-! # Erdos251: theorems derived from what the paper results' proofs use
 
@@ -19,3 +21,11 @@ set_option maxHeartbeats 4000000
 derive_idle ErdosProblems.Erdos251.PaperCompleteR20.finite_separation_complete
 derive_idle ErdosProblems.Erdos251.PaperCompleteR20.one_tail_signed_certificate
 derive_idle ErdosProblems.Erdos251.PaperCompleteR21.long_joint_prime_gap_countermodel
+
+-- Derivations the export does not decide in advance: conjuncts a proof may establish
+-- without an open hypothesis, and frontiers with the consequences the graph records as
+-- proved by corpus theorems discharged. A command that adds nothing warns.
+set_option argumentGraph.strict false in derive_conjuncts ErdosProblems.Erdos251.PaperCompleteR21.long_joint_prime_gap_countermodel
+set_option argumentGraph.strict false in derive_conjuncts ErdosProblems.Erdos251.PaperCompleteR21.nonconcentration_does_not_force_irrationality
+set_option argumentGraph.strict false in derive_conjuncts ErdosProblems.Erdos251.PaperCompleteR21.prime_gap_two_window_sparse
+set_option argumentGraph.strict false in derive_conjuncts ErdosProblems.Erdos251.PaperCompleteR21.short_joint_prime_gap_countermodel

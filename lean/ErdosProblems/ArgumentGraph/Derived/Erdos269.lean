@@ -4,6 +4,7 @@
 -- source revision 5176d8878036549d6e35a4cb42d8e26fdb3e4b46 (Lean tree ca2f57c9c7e461d54d2617d2ae33016ec7481567). Do not edit by hand.
 
 import ErdosProblems.ArgumentGraph.Derive
+import ErdosProblems.Erdos269.PaperCompleteR21.TwoPrimeSums
 import ErdosProblems.Erdos269.PaperR7BasicAssembly
 import ErdosProblems.Erdos269.PaperR7WindowResults
 
@@ -19,3 +20,9 @@ set_option maxHeartbeats 4000000
 derive_idle ErdosProblems.Erdos269.PaperR7.long_no_bounded_length
 derive_idle ErdosProblems.Erdos269.PaperR7.long_window_growth
 derive_idle ErdosProblems.Erdos269.PaperR7.paper_uniform_rank_and_nonseparation
+
+-- Derivations the export does not decide in advance: conjuncts a proof may establish
+-- without an open hypothesis, and frontiers with the consequences the graph records as
+-- proved by corpus theorems discharged. A command that adds nothing warns.
+set_option argumentGraph.strict false in derive_conjuncts ErdosProblems.Erdos269.PaperCompleteR21.two_prime_sums_transcendental
+set_option argumentGraph.strict false in derive_conjuncts ErdosProblems.Erdos269.PaperCompleteR21.two_prime_transcendence
