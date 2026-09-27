@@ -382,6 +382,62 @@ and `K · 3/1000 < 1/100`, so any dyadic-count constant `K` in `[1, 10/3)`
 suffices, and the Chebyshev proof's `log 4 ≤ 3` leaves a margin of `1/1000`.
 Binding each row to the hypothesis it stands for is the caller's work.
 
+## The argument frontier: findings as library theorems
+
+The graph's findings about a proof live in an export stream. The module
+[`ErdosProblems.ArgumentGraph.Derive`](../lean/ErdosProblems/ArgumentGraph/Derive.lean)
+rebuilds them inside the library, so a paper, the ledger or another proof can
+cite them by name. Its commands read a theorem's proof term and add, after a
+kernel check:
+
+* `derive_idle T`: `T.idle`, the statement of `T` without the hypotheses its
+  proof never uses;
+* `derive_weakening T`: for each hypothesis `h : H` the proof uses only inside
+  use sites, `T.weakened_i` (the statement with `H` replaced by the
+  propositions `C₁ … Cₖ` those sites prove) and `T.use_i_j : H → Cⱼ`;
+* `derive_frontier T`: `T.frontier_i`, which follows the weakenings through
+  the theorems the proof applies `h` to. When a use site is `L … h …` and the
+  proof of `L` uses that hypothesis only through consequences of its own, the
+  site is replaced by `L.weakened_p` applied to proofs of those consequences,
+  recursively, and each consequence where the chain stops becomes one
+  hypothesis, assumed once however many branches need it.
+  `derive_frontier T at L` stops at the use sites of `L`, and
+  `derive_frontier T using S` discharges each such hypothesis that the corpus
+  theorem `S` proves (exactly, or after instantiating some of its binders by
+  unification); when every one is discharged, `T`'s hypothesis is gone and the
+  theorem is named `…_supplied`;
+* `derive_conjuncts T`: when `T` concludes `A₁ ∧ … ∧ Aₙ` (or `A ↔ B`, whose
+  claims are `A → B` and `B → A`), `T.part_k` states the `k`-th claim with only
+  the hypotheses its proof uses. That proof is the projection of `T`'s proof
+  onto the claim, reduced (beta, `let`, a projection of a constructor,
+  definitions such as `id`; never a theorem), so a proof that builds the claims
+  separately, directly or under `have`, `show` or `let`, splits. A paper result
+  stated modulo a named input may so have parts that hold without it.
+
+For the excluded-cofactor estimate of #249, `prop_badcof` assumes the prime
+number theorem, and its proof uses it only through a chain that ends at the
+dyadic prime count `eventually_card_primes_dyadic_le`. `derive_frontier
+prop_badcof at eventually_card_primes_dyadic_le` states `prop_badcof` with the
+prime number theorem replaced by that count, and the kernel checks the
+statement with a proof assembled from the weakenings along the chain. The
+first two conjuncts of `prop_badcof` (the offset bound and the identification
+of the excluded set) need neither the prime number theorem nor the density
+hypothesis, and `derive_conjuncts prop_badcof` states them so.
+
+[`scripts/build_argument_frontier.py`](../scripts/build_argument_frontier.py)
+writes the commands for every theorem a paper cites, one module per problem
+under `lean/ErdosProblems/ArgumentGraph/Derived/`, with
+`argumentGraph.strict` set so that a derivation the export reported and the
+library cannot rebuild fails the build. Derivations the export does not decide
+in advance (conjunct splits, frontiers discharged by corpus theorems) are
+tried in a kernel probe first: given the probe's verdicts (`--verified`), the
+generator keeps each one that added theorems as a strict command and drops,
+with the reason, each one that did not. It lists each derived theorem, with the
+paper rows of its source theorem, in `docs/argument_frontier.json`. A derived
+theorem restates what its source proof already proves; it is new only as a
+statement, and whether a paper should state the stronger form is the author's
+decision.
+
 ## Checking a new statement without a local build
 
 A corpus build needs several gigabytes. A research session without one can

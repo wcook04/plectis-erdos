@@ -294,8 +294,8 @@ theorem radius_not_littleO (M R : ℕ → ℕ)
     exact_mod_cast hh
   exact radius_no_eventual_upper M R hH (Filter.eventually_atTop.1 hnat)
 
-/-- Corrector identities on the auxiliary support, including p=2.
-See PaperCompleteSupportNoGo for the paper's n≥2 support incompatibility. -/
+/-- Corrector identities on the auxiliary support, including p=2, whose index 1 lies outside
+the paper's domain i≥2; the long record states the theorem for p≥3 and treats p=2 after it. -/
 theorem prime_channel_corrector {p : ℕ} (hp : p.Prime) :
     _root_.Erdos68.factorialMoment (_root_.Erdos68.primeTranslatorCoeff p)
       (_root_.Erdos68.primeTranslatorIndex p) = 0 ∧

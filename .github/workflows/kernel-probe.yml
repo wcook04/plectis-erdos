@@ -100,6 +100,15 @@ jobs:
         run: lake exe cache get
       - name: Memory-bounded Lean build of the corpus roots
         run: python3 scripts/lean_fast_build.py --jobs 2 --lake-staleness Erdos249257 ErdosProblems
+      - name: Build the corpus modules the probes import
+        # The restored cache holds the supported roots; a paper-coverage module a
+        # probe imports may be missing from it.
+        run: |
+          modules="$(python3 scripts/probe_imports.py)"
+          if [ -n "$modules" ]; then
+            # shellcheck disable=SC2086
+            python3 scripts/lean_fast_build.py --jobs 2 --lake-staleness $modules
+          fi
       - name: Run the probes
         run: python3 scripts/run_kernel_probes.py --out "$RUNNER_TEMP/kernel-probe"
       - name: Upload probe verdicts

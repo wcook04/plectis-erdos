@@ -7356,9 +7356,14 @@ excluded-cofactor budget. This does not establish either weighted phase
 estimate for that choice, and it is not claimed to be an optimal cutoff.
 Lean checks the estimate $\#(B(\eta)\cap[1,x])<3\eta x$ with no further input
 (\href{https://github.com/wcook04/plectis-erdos/blob/76f44c5329c0e207f5376062c7d79125485fbceb/lean/ErdosProblems/Erdos249/PaperCompleteR21/ExcludedCofactorDensity.lean\#L361}{Lean proof})
-and, with the prime number theorem as its only input, the excluded-cofactor
-budget at $\eta=1/1000$
-(\href{https://github.com/wcook04/plectis-erdos/blob/76f44c5329c0e207f5376062c7d79125485fbceb/lean/ErdosProblems/Erdos249/PaperCompleteR21/ExcludedCofactorEstimate.lean\#L681}{Lean proof}).
+and the excluded-cofactor budget at $\eta=1/1000$ with no input at all
+(\href{https://github.com/wcook04/plectis-erdos/blob/57941a741fceaae33ab7e2513a9cd11fee060081/lean/ErdosProblems/Erdos249/PaperCompleteR21/ExcludedCofactorEstimate.lean\#L910}{Lean proof}).
+For that budget Chebyshev's bound replaces the prime number theorem in the
+proof above: the primes $p$ with $a+1<p\le2a+1$ divide
+$\binom{2a+1}{a}\le4^a$, so
+$\#\{p\text{ prime}:a<p\le2a+1\}\log a\le a\log4+\log a$, the fibre bound
+becomes $(2\log4+o(1))X/(m\log X)$, and the count is at most
+$(3\log4/1000+o(1))X$ with $3\log4/1000<0.0042$.
 
 The first element of $B(1/5)$ is
 $30030=2\cdot3\cdot5\cdot7\cdot11\cdot13$, and
