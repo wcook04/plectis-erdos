@@ -349,7 +349,7 @@ PAPER_REQUIRED_ANCHOR_GROUPS = {
         "the rest of the graph is a map, and a lower bound",
         "A disguise class records proved equivalences only",
         "Importance, difficulty and interest remain judgements for a mathematician",
-        "so reported False as supplied",
+        "counted a theorem needing a witness of an empty type as unconditional",
     ),
     "real_public_routes": (
         "docs/ARCHITECTURE.md",

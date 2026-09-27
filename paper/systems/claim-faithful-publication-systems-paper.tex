@@ -26,20 +26,20 @@
 \newcommand{\AGTheorems}{17,442}
 \newcommand{\AGModules}{1,457}
 \newcommand{\AGConditional}{1,163}
-\newcommand{\AGStatements}{112,383}
-\newcommand{\AGSupplied}{5,479}
-\newcommand{\AGOpen}{106,659}
-\newcommand{\AGReductions}{97,583}
-\newcommand{\AGImplications}{16,510}
-\newcommand{\AGDisguiseClasses}{1,934}
-\newcommand{\AGLargestDisguise}{33}
-\newcommand{\AGCompositions}{100}
-\newcommand{\AGKernelCompositions}{16}
+\newcommand{\AGStatements}{119,284}
+\newcommand{\AGSupplied}{5,672}
+\newcommand{\AGOpen}{113,362}
+\newcommand{\AGReductions}{104,807}
+\newcommand{\AGImplications}{18,198}
+\newcommand{\AGDisguiseClasses}{2,136}
+\newcommand{\AGLargestDisguise}{36}
+\newcommand{\AGCompositions}{114}
+\newcommand{\AGKernelCompositions}{18}
 \newcommand{\AGPaperCompositions}{8}
 \newcommand{\AGBatteryClosed}{89}
 \newcommand{\AGBatteryTried}{1,499}
-\newcommand{\AGBudgetExhausted}{9,863}
-\newcommand{\AGRefuted}{192}
+\newcommand{\AGBudgetExhausted}{10,159}
+\newcommand{\AGRefuted}{196}
 \newcommand{\AGRefutedDerived}{1}
 \newcommand{\AGBarriers}{144}
 \newcommand{\AGBarriersInGraph}{106}
@@ -47,22 +47,24 @@
 \newcommand{\AGLabelDisagreements}{3}
 \newcommand{\AGIdle}{154}
 \newcommand{\AGIdleOpen}{0}
-\newcommand{\AGWeakened}{0}
-\newcommand{\AGWeakenedOpen}{0}
-\newcommand{\AGWeakeningGain}{0}
+\newcommand{\AGWeakened}{316}
+\newcommand{\AGWeakenedOpen}{302}
+\newcommand{\AGWeakeningGain}{8}
 % END generated_argument_graph_macros
 % BEGIN generated_argument_frontier_macros
 \newcommand{\AFModules}{8}
-\newcommand{\AFPaperTheorems}{81}
+\newcommand{\AFPaperTheorems}{85}
 \newcommand{\AFIdle}{45}
-\newcommand{\AFWeakened}{0}
-\newcommand{\AFCuts}{0}
-\newcommand{\AFSupplied}{40}
+\newcommand{\AFWeakened}{43}
+\newcommand{\AFConjuncts}{2}
+\newcommand{\AFCuts}{5}
+\newcommand{\AFSupplied}{0}
+\newcommand{\AFDischarged}{2}
 \newcommand{\AFNamedInputs}{75}
 \newcommand{\AFNamedInputUses}{139}
-\newcommand{\AFNamedInputsTraced}{0}
+\newcommand{\AFNamedInputsTraced}{29}
 % END generated_argument_frontier_macros
-\newcommand{\repolink}[2]{\href{\repobase/blob/5176d8878036549d6e35a4cb42d8e26fdb3e4b46/#1}{\texttt{#2}}}
+\newcommand{\repolink}[2]{\href{\repobase/blob/87c64ce39d0874306da91681803f9f68c2c094b3/#1}{\texttt{#2}}}
 \emergencystretch=1.7em
 
 \runninghead{Problem-sized Lean worlds}
@@ -441,27 +443,27 @@ export records.}
 \end{table}
 
 \paragraph{What it shows.} %FINDINGS-SECTION
-The numbers below come from the export of the record at this paper's
-revision. That export ran before the used-consequence pass was added, and its
-search stopped at its time budget before reaching most of the statements it
-had discovered. The graph has \AGStatements{} statements from \AGTheorems{}
+The numbers below come from two exports of the record's Lean sources at an
+earlier revision (Lean tree \texttt{ca2f57c9}), the second with the
+used-consequence pass, combined because every row of both observes the same
+elaborated environment. Each search stopped at its time budget before
+reaching most of the statements it had discovered. The graph has
+\AGStatements{} statements from \AGTheorems{}
 theorems in \AGModules{} Lean modules, of which \AGConditional{} are
 conditional arguments. \AGSupplied{} statements are supplied. \AGRefuted{} are
 refuted by a corpus theorem or a tactic proof of their negation,
 \AGRefutedDerived{} by a reduction to a refuted statement and others by
 conflict, and the refutations make \AGVacuous{} theorems vacuous. \AGOpen{}
-statements are open, a count that includes every statement the search did not
-reach. The kernel accepted \AGKernelCompositions{} compositions, \AGIdle{}
-statements without a hypothesis their proofs never use and
+statements are open, a count that includes every statement neither search
+reached. The kernel accepted \AGKernelCompositions{} compositions, \AGIdle{}
+statements without a hypothesis their proofs never use, \AGIdleOpen{} of them
+dropping a hypothesis that is open, and
 \AGBatteryClosed{} tactic proofs of statements for which the search found no
 producer. The open statements fall into \AGDisguiseClasses{} disguise
-classes, the largest with \AGLargestDisguise{} members.
-% Once an export includes the used-consequence pass, drop the clause saying it
-% ran before that pass, add after the idle count ", \AGIdleOpen{} of them
-% dropping a hypothesis that is open," and add: "\AGWeakened{} theorems use a
-% closed hypothesis only through consequences of it, \AGWeakenedOpen{} of them
-% an open hypothesis, and \AGWeakeningGain{} statements are supplied only
-% through such a replacement."
+classes, the largest with \AGLargestDisguise{} members. \AGWeakened{} theorems
+use a closed hypothesis only through consequences of it, \AGWeakenedOpen{} of
+them an open hypothesis, and \AGWeakeningGain{} statements are supplied only
+through such a replacement.
 
 \paragraph{What a proof uses of its input.} The Problem 249 long record
 proves an excluded-cofactor estimate, a bound $(D+o(1))X$ on a count at scale
@@ -487,9 +489,8 @@ Chebyshev's bound, that the primes in $(a+1,2a+1]$ divide
 $\binom{2a+1}{a}\le4^a$, gives $K=\log4$; at the record's explicit choice
 $\eta=1/1000$ an elementary estimate gives $D\le3/1000$, and since
 $3\log4/1000<1/100$ the count stays below $X/100$ for all large $X$ with no
-input at all. That theorem is on a
-\href{\repobase/blob/57941a741fceaae33ab7e2513a9cd11fee060081/lean/ErdosProblems/Erdos249/PaperCompleteR21/ExcludedCofactorEstimate.lean}{branch}
-awaiting review.
+input at all. Lean checks that theorem
+(\href{\repobase/blob/57941a741fceaae33ab7e2513a9cd11fee060081/lean/ErdosProblems/Erdos249/PaperCompleteR21/ExcludedCofactorEstimate.lean}{\texttt{ExcludedCofactorEstimate.lean}}).
 
 \paragraph{The findings as library theorems.} A Lean module
 (\href{\repobase/blob/7391668980147292656da6d0bc66a927aa84824b/lean/ErdosProblems/ArgumentGraph/Derive.lean}{\texttt{Derive.lean}})
@@ -515,11 +516,17 @@ the open unit disc, which neither its proof nor the separation theorem it
 assumes uses. A derived theorem restates what its source proof already proves.
 \AFNamedInputs{} statements the graph leaves open occur \AFNamedInputUses{}
 times among the hypotheses of the cited theorems; a proof of one removes it
-from every paper result that assumes it.
-% Once the graph includes the used-consequence pass, add: "\AFWeakened{} of the
-% cited theorems have a weakening, with \AFCuts{} frontiers cut at a named
-% lemma, and for \AFNamedInputsTraced{} of the open hypotheses the graph records
-% what the proofs use of them, level by level."
+from every paper result that assumes it. \AFWeakened{} of the
+cited theorems have a weakening, with \AFCuts{} frontiers cut at a named
+lemma, and for \AFNamedInputsTraced{} of the open hypotheses the graph records
+what the proofs use of them, level by level. In \AFDischarged{} frontiers the
+named corpus theorems prove all that the proof uses of a hypothesis, so the
+derived theorem drops it: Problem~251's equivalence between the irrationality
+of the prime and gap series holds without the summability hypothesis of its
+Lean theorem
+(\repolink{lean/ErdosProblems/ArgumentGraph/Derived/Erdos251.lean}{Erdos251.lean}),
+and Problem~257's square-root route without its sign hypothesis
+(\repolink{lean/ErdosProblems/ArgumentGraph/Derived/Erdos257.lean}{Erdos257.lean}).
 
 \paragraph{Research with the graph.} A research session on a problem opens a
 bounded packet built from the graph
