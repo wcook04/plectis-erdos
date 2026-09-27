@@ -120,6 +120,7 @@ def run_probe(path: Path, timeout: int) -> dict:
         "compilation_accepted": compiled,
         "accepted": compiled and not declared and not nonstandard,
         "output_tail": output[-4000:],
+        "_output": output,
     }
 
 
@@ -133,6 +134,7 @@ def main(argv: list[str] | None = None) -> int:
     results = []
     for path in probes:
         result = run_probe(path, args.timeout)
+        (args.out / f"{path.stem}.log").write_text(result.pop("_output", ""), encoding="utf-8")
         (args.out / f"{path.stem}.json").write_text(json.dumps(result, indent=1) + "\n", encoding="utf-8")
         results.append({k: result[k] for k in ("probe", "accepted", "compilation_accepted", "exit_code",
                                                 "timed_out", "elapsed_seconds", "uses_sorry", "axioms_declared",
