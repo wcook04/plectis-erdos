@@ -382,7 +382,11 @@ class ToyWeakenings(unittest.TestCase):
         first = projection["weakenings"][0]
         self.assertEqual((first["theorem"], first["conclusion_supplied_only_by_weakening"]),
                          ("UseToy.goal_of_strong", True))
-        self.assertIn(r"\newcommand{\AGWeakened}{5}", builder.paper_macro_region(projection))
+        self.assertEqual(builder.macro_values(projection)["AGWeakened"], 5)
+        # The toy export selects declarations by name prefix: it is not the
+        # corpus, so it can never fill a paper's totals.
+        with self.assertRaises(ValueError):
+            builder.paper_macro_region(projection)
         with tempfile.TemporaryDirectory() as tmp:
             out, gz = Path(tmp) / "a.json", Path(tmp) / "a.json.gz"
             builder.write_outputs(projection, payload, out, gz)
@@ -491,7 +495,8 @@ class Refutation(unittest.TestCase):
             builder.write_outputs(projection, payload, Path(tmp) / "p.json", gz)
             graph, loaded = query.load(gz)
             packet = query.packet_markdown(graph, loaded, "68", 12)
-            targets = packet.split("## 2.")[0]
+            targets = packet.split("## 3.")[0]
+            self.assertIn("## 2. Open targets among the problem's own statements", targets)
             self.assertNotIn("`R`", targets.replace(" (refuted: this route is dead)", ""))
             self.assertIn("## Refuted statements", packet)
             self.assertEqual(query.statement_view(graph, loaded, "Q")["refutation"]["kind"], "derived")
@@ -688,6 +693,173 @@ class Sentinels(unittest.TestCase):
             self.assertEqual(projection["summary"]["sentinel_alarms"], 1)
 
 
+def composition(theorem_name: str, conclusion: str, hypotheses: tuple[tuple[str, str], ...] = (),
+                *, kernel_checked: bool = True) -> dict:
+    return {"record": "composition", "theorem": theorem_name, "conclusion": conclusion, "type": conclusion,
+            "kernel_checked": kernel_checked,
+            "hypotheses": [{"key": k, "producer": p, "reading": "conclusion"} for k, p in hypotheses]}
+
+
+def weakening(name: str, i: int, hypothesis: str | None, consequences: list[dict], **extra) -> dict:
+    row = {"record": "weakening", "theorem": name, "i": i, "weakened": f"{name}._argument_weakening_{i}",
+           "type": "weakened", "kernel_checked": True, "consequences": consequences, **extra}
+    if hypothesis is not None:
+        row["hypothesis"] = hypothesis
+    return row
+
+
+class CheckedCompositions(unittest.TestCase):
+    """A kernel-checked composition is a closed proof of its conclusion. On the
+    post-review export five of the sixteen conclude a statement no reduction
+    reaches: the theorem's conclusion mentions its hypothesis, so it becomes a
+    statement of its own once the term fixes the proof."""
+
+    def test_a_dependent_conclusion_is_supplied(self) -> None:
+        rows = [theorem("T.order", [hyp(0, "Coprime 2 11")], None), statement("Coprime 2 11"),
+                match("Coprime 2 11", "T.coprime"), composition("T.order", "orderOf (unit h) = 10",
+                                                                (("Coprime 2 11", "T.coprime"),))]
+        graph = graph_of(rows)
+        self.assertIn("orderOf (unit h) = 10", graph.supplied)
+        tree = graph.proof_tree("orderOf (unit h) = 10")
+        self.assertEqual((tree["producer"], tree["reading"], tree["kernel_checked_composition"]),
+                         ("T.order", "checked_composition", True))
+        self.assertEqual(tree["composed_from"][0]["producer"], "T.coprime")
+        # Withdrawing what the term applied withdraws the composition.
+        self.assertIn("orderOf (unit h) = 10", graph.criticality(producer="T.coprime"))
+        self.assertIn("orderOf (unit h) = 10", graph.criticality(statement="Coprime 2 11"))
+        with tempfile.TemporaryDirectory() as tmp:
+            projection, payload = builder.build(write_stream(Path(tmp), rows), Path(tmp))
+            gz = Path(tmp) / "g.json.gz"
+            builder.write_outputs(projection, payload, Path(tmp) / "p.json", gz)
+            reloaded, _ = query.load(gz)
+        summary = projection["summary"]
+        self.assertEqual((summary["kernel_checked_compositions"],
+                          summary["statements_supplied_only_by_checked_compositions"], summary["compositions"]),
+                         (1, 1, 1))
+        self.assertEqual(projection["compositions"][0]["hypotheses_supplied_by"][0]["supplied_by"], "T.coprime")
+        self.assertEqual(reloaded.supplied, graph.supplied)
+        self.assertIn("orderOf (unit h) = 10", reloaded.criticality(producer="T.coprime"))
+
+    def test_a_witness_chain_stays_the_witness(self) -> None:
+        rows = [theorem("T.c", [hyp(0, "H")], "C"), statement("H"), match("H", "T.h"),
+                composition("T.c", "C", (("H", "T.h"),))]
+        graph = graph_of(rows)
+        head, producer, reading, _ = graph.reductions[graph.witness["C"]]
+        self.assertEqual((producer, reading), ("T.c", "theorem"))
+
+    def test_a_composition_of_false_raises_the_alarm_and_a_rejected_one_is_ignored(self) -> None:
+        graph = graph_of([statement("False"), composition("T.closed", "False")])
+        self.assertIn("False", graph.supplied)
+        self.assertEqual([(a["type"], a["overridable"]) for a in builder.sentinel_alarms(graph)], [("False", False)])
+        rejected = graph_of([statement("G"), composition("T.bad", "G", kernel_checked=False)])
+        self.assertNotIn("G", rejected.supplied)
+
+
+class TypeBRepairs(unittest.TestCase):
+    def test_any_contradiction_alarms_and_no_flag_overrides_it(self) -> None:
+        rows = [statement("P"), match("P", "T.p"), refute("P")]
+        graph = graph_of(rows)
+        alarms = builder.sentinel_alarms(graph)
+        self.assertEqual([(a["status"], a["overridable"]) for a in alarms], [("supplied_and_refuted", False)])
+        with tempfile.TemporaryDirectory() as tmp:
+            directory = Path(tmp)
+            paper = directory / "paper.tex"
+            paper.write_text(f"{builder.TEX_MACROS_BEGIN}\n{builder.TEX_MACROS_END}\n", encoding="utf-8")
+            code = builder.main(["--export", str(write_stream(directory, rows)), "--output", str(directory / "p.json"),
+                                 "--graph-output", str(directory / "g.json.gz"), "--root", str(directory),
+                                 "--paper", str(paper), "--allow-sentinel-alarms"])
+            self.assertEqual(code, 3)
+            self.assertNotIn("AGTheorems", paper.read_text(encoding="utf-8"))
+
+    def test_an_open_target_alarm_can_be_acknowledged(self) -> None:
+        half = "1 / 2 ∈ Erdos249257.mersenneAchievementSet"
+        rows = [statement(half), match(half, "T.solution")]
+        with tempfile.TemporaryDirectory() as tmp:
+            directory = Path(tmp)
+            paper = directory / "paper.tex"
+            paper.write_text(f"{builder.TEX_MACROS_BEGIN}\n{builder.TEX_MACROS_END}\n", encoding="utf-8")
+            args = ["--export", str(write_stream(directory, rows)), "--output", str(directory / "p.json"),
+                    "--graph-output", str(directory / "g.json.gz"), "--root", str(directory), "--paper", str(paper)]
+            self.assertEqual(builder.main(args), 3)
+            self.assertEqual(builder.main([*args, "--allow-sentinel-alarms"]), 0)
+            self.assertIn(r"\newcommand{\AGSupplied}{1}", paper.read_text(encoding="utf-8"))
+
+    def test_macros_refuse_what_is_not_the_corpus_even_when_called_directly(self) -> None:
+        base = {"summary": {}, "source": {"export_config": {"roots": sorted(builder.DEFAULT_ROOTS),
+                                                            "name_prefixes": []}, "export_summary": {}}}
+        refusals = [
+            {**base, "sentinel_alarms": [{"key": "False", "overridable": False}]},
+            {**base, "sentinel_alarms": [{"key": "half", "overridable": True}]},
+            {**base, "source": {"export_config": {"name_prefixes": ["ToyCorpus"]}}},
+            {**base, "source": {"export_config": {"roots": ["ErdosProblems"]}}},
+            {**base, "source": {"export_config": {"focus_declarations": ["T"]}}},
+            {**base, "source": {"export_summary": {"global_corpus_census": False}}},
+        ]
+        for projection in refusals:
+            with self.subTest(projection=projection), self.assertRaises(ValueError):
+                builder.paper_macro_region(projection)
+        # A truncated export is the corpus read to a budget: its totals are
+        # lower bounds, and the paper says so.
+        self.assertIsNone(builder.census_refusal({**base, "source": {**base["source"],
+                                                                     "export_summary": {"truncated": True}}}))
+
+    def test_a_malformed_weakening_never_drops_its_hypothesis(self) -> None:
+        good = {"key": "C", "type": "C", "via": ["L"], "implication_kernel_checked": True}
+        base = [theorem("T.t", [hyp(0, "H")], "G"), statement("H")]
+        for row in (weakening("T.t", 0, "H", [{"type": "C"}]), weakening("T.t", 0, "H", []),
+                    weakening("T.t", 0, "K", [good]), weakening("T.t", 3, "H", [good])):
+            with self.subTest(row=row):
+                graph = graph_of([*base, row])
+                self.assertNotIn("G", graph.supplied)
+                self.assertEqual(len(graph.weakenings_malformed), 1)
+                self.assertEqual(graph.weakenings, [])
+        accepted = graph_of([*base, weakening("T.t", 0, "H", [good]), theorem("T.c", [], "C")])
+        self.assertIn("G", accepted.supplied)
+
+    def test_aliases_survive_a_reload_and_a_cycle_is_refused(self) -> None:
+        rows = [statement("N"), {"record": "unfold", "statement": "N", "unfolded": "U", "type": "unfolded N"},
+                theorem("T.n", [], "U")]
+        with tempfile.TemporaryDirectory() as tmp:
+            projection, payload = builder.build(write_stream(Path(tmp), rows), Path(tmp))
+            gz = Path(tmp) / "g.json.gz"
+            builder.write_outputs(projection, payload, Path(tmp) / "p.json", gz)
+            graph, loaded = query.load(gz)
+        self.assertEqual(graph.canon("U"), "N")
+        self.assertEqual(query.statement_view(graph, loaded, "U")["key"], "N")  # the unfolding's key resolves
+        with self.assertRaises(ValueError):
+            builder.Graph.from_payload({"schema": builder.GRAPH_SCHEMA, "alias_keys": {"a": "b", "b": "a"}})
+
+    def test_a_refutation_row_alone_creates_its_statement(self) -> None:
+        graph = graph_of([refute("P")])
+        self.assertIn("P", graph.statements)
+        self.assertEqual(graph.status("P"), "refuted")
+
+    def test_leverage_is_keyed_by_its_bound_and_immutable(self) -> None:
+        graph = graph_of([statement(k) for k in "ABCG"] + [match("B", "T.b", ("A",)), match("C", "T.c", ("B",)),
+                                                          match("G", "T.g", ("C",))])
+        self.assertEqual(graph.leverage("A", limit=1), {"B"})
+        self.assertEqual(graph.leverage("A", limit=99), {"B", "C", "G"})
+        with self.assertRaises(AttributeError):
+            graph.leverage("A").clear()
+
+    def test_the_graphs_own_findings_are_not_corpus_theorems(self) -> None:
+        derived = "ErdosProblems.ArgumentGraph.Derived.Erdos249.T.idle"
+        rows = [statement("H"), statement("G"),
+                theorem(derived, [], "G", module="ErdosProblems.ArgumentGraph.Derived.Erdos249"),
+                match("H", derived), idle(derived, [(0, "H")]),
+                theorem("ErdosProblems.ArgumentGraphic.T.real", [hyp(0, "H")], "K",
+                        module="ErdosProblems.ArgumentGraphic")]
+        with tempfile.TemporaryDirectory() as tmp:
+            projection, _ = builder.build(write_stream(Path(tmp), rows), Path(tmp))
+        graph = graph_of(rows)
+        self.assertNotIn(derived, graph.theorems)
+        self.assertNotIn("G", graph.supplied)
+        self.assertNotIn("H", graph.supplied)
+        self.assertIn("ErdosProblems.ArgumentGraphic.T.real", graph.theorems)  # a prefix of a name is not a module
+        self.assertEqual((projection["summary"]["argument_graph_derived_theorems_skipped"],
+                          projection["summary"]["argument_graph_derived_rows_skipped"]), (1, 3))
+
+
 class Papers(unittest.TestCase):
     def test_paper_rows_take_the_most_conditional_status(self) -> None:
         import argparse
@@ -711,5 +883,17 @@ class Papers(unittest.TestCase):
         self.assertEqual([e["row"] for e in out["notable"]], ["r1"])
 
 
+SIBLING_SUITES = ("test_argument_graph_frontier", "test_argument_graph_interfaces",
+                  "test_argument_graph_contracts", "test_probe_semantics")
+
+
 if __name__ == "__main__":
-    unittest.main()
+    # check_release.py runs this file as the argument graph's gate: run the
+    # sibling suites of the graph's Python layer with it.
+    import importlib
+    loader = unittest.defaultTestLoader
+    suite = unittest.TestSuite([loader.loadTestsFromModule(sys.modules[__name__])])
+    for sibling in SIBLING_SUITES:
+        suite.addTests(loader.loadTestsFromModule(importlib.import_module(sibling)))
+    result = unittest.TextTestRunner(verbosity=1).run(suite)
+    sys.exit(0 if result.wasSuccessful() else 1)

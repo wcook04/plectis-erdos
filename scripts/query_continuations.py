@@ -16,7 +16,16 @@ the questions a researcher asks before spending effort on a statement:
                                 refutation of a refuted one
     about CONSTANT              everything the graph holds about one corpus object
     next --problem N            a shortlist of open statements worth attacking next,
-                                each with the structural reasons it was chosen
+                                anchored on the problem's paper results, each with
+                                the structural reasons it was chosen
+    needs THEOREM|LABEL         what a theorem, or the theorems a paper result
+                                cites, needs of each weakened hypothesis, level
+                                by level (interface chains)
+    check-bundle KEY... [--target KEY]
+                                whether statements assumed together are jointly
+                                impossible, and whether they restate a target
+    cut TARGET --costs FILE     the cheapest set, within a pool of statements with
+                                costs, that supplies the target without a conflict
     near "WORDS"                the supplied and open statements sharing the most
                                 corpus objects with a proposed statement
     barriers [--problem N]      kernel-checked barriers (countermodels, endpoint
@@ -48,11 +57,12 @@ import subprocess
 import sys
 from collections import defaultdict
 from pathlib import Path
-from typing import Any
+from typing import Any, Iterable
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "scripts"))
 
+import argument_graph_frontier as frontier_module  # noqa: E402
 import build_argument_continuations as builder  # noqa: E402
 
 DEFAULT_GRAPH = ROOT / "docs" / "argument_continuations_graph.json.gz"
@@ -82,6 +92,8 @@ def short(key: str) -> str:
 
 
 def resolve_key(graph: builder.Graph, token: str) -> str:
+    if token in graph.alias:  # the key of an unfolding merged into its named statement
+        token = graph.canon(token)
     if token in graph.statements:
         return token
     matches = [k for k in graph.statements if k.startswith(token)]
@@ -128,6 +140,75 @@ def theorem_card(graph: builder.Graph, name: str) -> dict[str, Any]:
     return card
 
 
+def specific(problems: Iterable[str]) -> set[str]:
+    """Problem attributions with the shared library read as both of its
+    problems and ``cross`` (a theorem several problems' papers cite) dropped."""
+    out = set(problems)
+    if "249_257" in out:
+        out |= {"249", "257"}
+    return out - {"249_257", "cross"}
+
+
+def attribution(graph: builder.Graph, payload: dict[str, Any], problem: str):
+    """Whether a statement is problem ``problem``'s own, another problem's that
+    a producer of this one merely reduces (``cross``), or neither. A statement
+    belongs to the problems of the theorems that state it; when no attributed
+    theorem states it, to the problems of the corpus objects it mentions (read
+    from their names as theorems are); when it mentions none, to the problems
+    of its producers. A general lemma of one problem that happens to match
+    another problem's statement does not make that statement its own."""
+    owners = problems_of(payload)
+    own = own_problems_of(graph, payload)
+    by_constant: dict[str, tuple[set[str], bool]] = {}
+
+    def constant_problems(name: str) -> tuple[set[str], bool]:
+        """A corpus object's problems, and whether they are specific (its
+        module names the problem, or its name carries one problem's token)
+        rather than the shared library's two."""
+        problem = builder.module_problem(name, name)
+        if problem in builder.PROBLEMS:
+            return {problem}, True
+        lowered = name.replace("Erdos249257", "").lower()
+        mersenne, totient = "mersenne" in lowered, "totient" in lowered
+        if mersenne != totient:
+            return ({"257"} if mersenne else {"249"}), True
+        return ({"249", "257"} if problem == "249_257" else set()), False
+
+    def about(key: str) -> set[str]:
+        """The problems of the objects a statement mentions: the specific ones
+        when there are any, else the shared library's."""
+        found: set[str] = set()
+        shared: set[str] = set()
+        for constant in graph.statements.get(key, {}).get("constants", ()):
+            if constant not in by_constant:
+                by_constant[constant] = constant_problems(constant)
+            problems, is_specific = by_constant[constant]
+            (found if is_specific else shared).update(problems)
+        return found or shared
+
+    def evidence(key: str) -> set[str]:
+        return specific(own.get(key, [])) or about(key)
+
+    def where(key: str) -> str | None:
+        found = evidence(key)
+        reduced_here = problem in owners.get(key, [])
+        if problem in found:
+            return "own"
+        if found:
+            return "cross" if reduced_here else None
+        return "own" if reduced_here else None
+
+    # A statement reached from this problem (a bundle member, say) that
+    # belongs to other problems all the same.
+    where.foreign = lambda key: bool(evidence(key)) and problem not in evidence(key)  # type: ignore[attr-defined]
+    where.stated_by = lambda key: sorted(evidence(key))  # type: ignore[attr-defined]
+    return where
+
+
+def papers_of(graph: builder.Graph):
+    return lambda name: (graph.theorems.get(name, {}).get("card") or {}).get("papers", [])
+
+
 def refutation_view(graph: builder.Graph, key: str) -> dict[str, Any]:
     record = graph.refuted[key]
     if record["kind"] == "kernel":
@@ -135,6 +216,14 @@ def refutation_view(graph: builder.Graph, key: str) -> dict[str, Any]:
         return {"kind": "kernel", "reading": record["reading"],
                 "refuted_by": producer if producer.startswith("tactic:") else theorem_card(graph, producer)}
     reaches = record["reaches"]
+    if record["kind"] == "derived_conflict":
+        return {"kind": "derived_conflict",
+                "note": "supplying this statement would supply the statement below together with the residuals "
+                        "of a recorded refutation of it",
+                "reaches": {"key": reaches, "type": graph.statements.get(reaches, {}).get("type"),
+                            "status": graph.status(reaches)},
+                "refuted_by": record.get("refuted_by"), "via": record["producers"],
+                "evidence_class": record.get("evidence_class")}
     return {"kind": "derived",
             "note": "supplying this statement would supply the refuted statement below",
             "reaches": {"key": reaches, "type": graph.statements.get(reaches, {}).get("type"),
@@ -179,11 +268,17 @@ def statement_view(graph: builder.Graph, payload: dict[str, Any], key: str, *, d
     gained = graph.leverage(key)
     view["leverage"] = {"count": len(gained),
                         "sample": [{"key": g, "type": graph.statements[g].get("type")} for g in sorted(gained)[:15]]}
+    needed = graph.interfaces().needed_by().get(key)
+    if needed:
+        view["interface_of"] = [{**user, "papers": [p.get("label") for p in papers_of(graph)(user["theorem"])][:4]}
+                                for user in needed[:12]]
     if depth == "full":
-        bundles, truncated = graph.bundles(key)
+        bundles, truncated, checks = graph.bundle_report(key)
         view["bundles"] = [[{"key": b, "type": graph.statements[b].get("type")} for b in bundle]
                            for bundle in bundles]
         view["bundles_truncated"] = truncated
+        if checks:
+            view["bundle_checks"] = [builder.joint_check_row(check) for check in checks]
     return view
 
 
@@ -228,7 +323,10 @@ def cmd_summary(graph: builder.Graph, payload: dict[str, Any], args: argparse.Na
         "open": len(graph.open),
         "refuted": sum(1 for r in graph.refuted.values() if r["kind"] == "kernel"),
         "refuted_derived": sum(1 for r in graph.refuted.values() if r["kind"] == "derived"),
+        "refuted_by_conflict": sum(1 for r in graph.refuted.values() if r["kind"] == "derived_conflict"),
         "supplied_and_refuted": len(graph.inconsistent),
+        "kernel_checked_compositions_supplying": len(graph.composition_uses),
+        "interface_chains": len(graph.interfaces().chains()),
         "reductions": len(graph.reductions),
         "disguise_classes": len(graph.disguise_classes()),
         "largest_disguise_class": max((len(c) for c in graph.disguise_classes()), default=0),
@@ -457,6 +555,10 @@ def cmd_papers(graph: builder.Graph, payload: dict[str, Any], args: argparse.Nam
                 if after != status and PAPER_STATUS_ORDER.index(after) > PAPER_STATUS_ORDER.index(
                         declaration.get("status_after_idle", status)):
                     declaration["status_after_weakening"] = after
+                declaration["interfaces"] = [
+                    {"hypothesis": (chain.get("hypothesis") or {}).get("type"), "levels": chain["depth"],
+                     "level_statuses": [level["status"] for level in chain["levels"]]}
+                    for chain in graph.interfaces().chains_of(name)]
             entry["declarations"].append(declaration)
     counts: dict[str, int] = defaultdict(int)
     for entry in rows.values():
@@ -502,56 +604,216 @@ def cmd_weakenings(graph: builder.Graph, payload: dict[str, Any], args: argparse
             "rows": rows[: args.limit]}
 
 
+NEXT_TIERS = ("paper input or interface level", "member of a bundle for a paper input",
+              "member of a bundle for an own target", "settles open statements")
+
+
 def cmd_next(graph: builder.Graph, payload: dict[str, Any], args: argparse.Namespace) -> Any:
     """A shortlist of open statements worth attacking next, each with its reasons.
 
-    Structural only: it excludes what is supplied or refuted, the problem's own
-    targets restated (members of a sink's disguise class) and statements that
-    settle nothing, and prefers members of bundles with two or more open
-    statements (no recorded reduction supplies the target from such a member
-    alone), statements no barrier touches, and statements serving more than one
-    problem. Whether a candidate is worth a mathematician's time stays a
-    judgement."""
-    keys = open_for_problem(graph, payload, args.problem)
-    sinks = sinks_for(graph, keys)
-    target_classes = {graph.component.get(s) for s in sinks}
+    Anchored on the problem's paper results. First the open hypotheses of the
+    theorems the problem's papers cite (its named inputs) and the open levels
+    of what those theorems' proofs use of them (interface chains); then the
+    members of the inputs' bundles with two or more open statements; then the
+    members of such bundles of the problem's own targets, and statements that
+    settle others. A statement only other problems' theorems state is listed
+    under ``cross_problem``, never in the shortlist. Within a tier, literal
+    arithmetic (``0 - 1``) ranks last and is marked, then statements no barrier
+    touches, the most paper results, and leverage. A deeper interface level
+    implies the levels above it, so it has more leverage and ranks higher; it
+    is also a stronger statement, closer to the hypothesis, and which level is
+    the useful cut stays a judgement (each row names its level). A bundle
+    whose members are jointly impossible is never offered; a bundle or
+    interface level that restates its target is marked. Whether a candidate is
+    worth a mathematician's time stays a judgement."""
+    problem = args.problem
     touched = ((payload.get("barriers") or {}).get("constrains") or {})
-    owners = problems_of(payload)
-    served_by_bundle: dict[str, set[str]] = defaultdict(set)
+    where = attribution(graph, payload, problem)
+    inputs = builder.paper_inputs(graph, papers_of(graph), problem)
+    candidates: dict[str, dict[str, Any]] = {}
+
+    def add(key: str, tier: int, reason: str, results: Iterable[tuple] = ()) -> None:
+        if key not in graph.open:
+            return
+        row = candidates.setdefault(key, {"tier": tier, "reasons": [], "results": set()})
+        row["tier"] = min(row["tier"], tier)
+        if reason not in row["reasons"]:
+            row["reasons"].append(reason)
+        row["results"].update(results)
+
+    cited: dict[str, set[tuple]] = defaultdict(set)
+    for entry in inputs:
+        results = {(r["paper"], r["label"]) for r in entry["results"]}
+        for result in entry["results"]:
+            cited[result["theorem"]].add((result["paper"], result["label"]))
+        if entry["status"] == "open":
+            labels = sorted({str(r["label"]) for r in entry["results"]})
+            add(entry["key"], 0, f"assumed by {entry['result_count']} paper result(s) of #{problem}: "
+                                 f"{', '.join(labels[:3])}", results)
+    index = graph.interfaces()
+    for name in sorted(cited):
+        for chain in index.chains_of(name):
+            hypothesis = chain.get("hypothesis") or {}
+            if hypothesis.get("status") != "open":
+                continue
+            for level in chain["levels"][1:]:
+                joint = level["joint"]
+                note = (" (the level restates the hypothesis)" if joint.get("restates_hypothesis") else
+                        " (the level is jointly impossible)" if joint["status"] == "refuted_jointly" else "")
+                for member in level["members"]:
+                    add(member["key"], 0, f"level {level['level']} of what `{name.split('.')[-1]}` needs of "
+                                          f"`{short(hypothesis['key'])}`{note}", cited[name])
+    for entry in inputs[: args.sinks]:
+        if entry["status"] != "open":
+            continue
+        bundles, _, checks = graph.bundle_report(entry["key"])
+        restating = {tuple(c["assumptions"]) for c in checks
+                     if c.get("endpoint_relation") == "joint_endpoint_equivalence"}
+        for bundle in bundles:
+            if len(bundle) < 2:
+                continue
+            note = " (the bundle restates it)" if tuple(bundle) in restating else ""
+            for member in bundle:
+                add(member, 1, f"member of a two-or-more bundle for input `{short(entry['key'])}`{note}")
+    own_keys = [k for k in graph.open if where(k) == "own"]
+    sinks = sinks_for(graph, own_keys)
+    target_classes = {graph.component.get(s) for s in sinks}
     for sink in sinks[: args.sinks]:
         for bundle in graph.bundles(sink)[0]:
             if len(bundle) >= 2:
                 for member in bundle:
-                    served_by_bundle[member].add(sink)
-    rows = []
-    for key in keys:
-        if key in graph.refuted or graph.component.get(key) in target_classes:
+                    add(member, 2, f"member of a two-or-more bundle for target `{short(sink)}`")
+    for key in own_keys:
+        if graph.component.get(key) in target_classes or key in candidates:
             continue
         gained = graph.leverage(key)
-        if not gained and key not in served_by_bundle:
-            continue
-        reasons = []
-        if key in served_by_bundle:
-            reasons.append(f"member of a two-or-more bundle for {len(served_by_bundle[key])} target(s)")
         if gained:
+            add(key, 3, f"settles {len(gained)} open statement(s)")
+    for key in graph.open:
+        if key not in candidates and where(key) == "cross":
+            add(key, 3, f"a theorem of #{problem} reduces it; it belongs to other problems")
+    rows: list[tuple[tuple, dict[str, Any]]] = []
+    cross: list[tuple[tuple, dict[str, Any]]] = []
+    for key, row in candidates.items():
+        text = graph.statements[key].get("type")
+        artifact = builder.instantiation_artifact(text)
+        gained = graph.leverage(key)
+        reasons = list(row["reasons"])
+        if gained and not any(r.startswith("settles") for r in reasons):
             reasons.append(f"settles {len(gained)} open statement(s)")
         if key in touched:
             reasons.append(f"touched by barrier(s) {', '.join(touched[key][:3])}: check them first")
         else:
             reasons.append("no recorded barrier touches it")
-        problems = owners.get(key, [])
-        if len(problems) > 1:
-            reasons.append(f"serves problems {', '.join(problems)}")
-        score = (key in served_by_bundle, key not in touched, len(problems), len(gained))
-        rows.append((score, key, reasons))
-    rows.sort(key=lambda row: row[0], reverse=True)
+        if artifact:
+            reasons.append("literal arithmetic in its statement: likely an instantiation artifact")
+        view = {"key": key, "type": text, "tier": NEXT_TIERS[row["tier"]], "reasons": reasons,
+                "paper_results": len(row["results"]), "artifact": artifact}
+        score = (row["tier"], artifact, key in touched, -len(row["results"]), -len(gained), key)
+        if row["tier"] > 0 and where.foreign(key):
+            view["belongs_to_problems"] = where.stated_by(key)
+            cross.append((score, view))
+        else:
+            rows.append((score, view))
+    rows.sort(key=lambda r: r[0])
+    cross.sort(key=lambda r: r[0])
     return {
-        "problem": args.problem,
-        "rule": "exclude supplied, refuted, target-restating and consequence-free statements; prefer bundle members, "
-                "unbarriered statements, cross-problem statements, then leverage",
-        "shortlist": [{"key": key, "type": graph.statements[key].get("type"), "reasons": reasons}
-                      for _, key, reasons in rows[: args.limit]],
+        "problem": problem,
+        "rule": "anchored on the paper results: the open hypotheses of the theorems the problem's papers cite and "
+                "the open levels of what their proofs use of them, then members of those inputs' bundles, then "
+                "members of bundles of the problem's own targets and statements that settle others; a statement "
+                "that other problems' theorems state, or that mentions only other problems' objects, goes under "
+                "cross_problem; literal arithmetic ranks last in each tier and is marked; jointly impossible "
+                "bundles are never offered",
+        "paper_inputs": {"open": sum(1 for e in inputs if e["status"] == "open"),
+                         "refuted": sum(1 for e in inputs if e["status"] == "refuted")},
+        "shortlist": [view for _, view in rows[: args.limit]],
+        "cross_problem": [view for _, view in cross[: args.limit]],
     }
+
+
+def chain_view(graph: builder.Graph, chain: dict[str, Any]) -> dict[str, Any]:
+    """An interface chain with, on every member, the paper results whose
+    chains need it."""
+    needed = graph.interfaces().needed_by()
+    cite = papers_of(graph)
+
+    def results_above(key: str) -> list[str]:
+        labels = []
+        for user in needed.get(key, []):
+            for paper in cite(user["theorem"]):
+                label = f"{paper.get('side')} {paper.get('label')} ({paper.get('paper')})"
+                if label not in labels:
+                    labels.append(label)
+        return labels[:8]
+
+    levels = []
+    for level in chain["levels"]:
+        levels.append({**level,
+                       "members": [{**m, "paper_results_above": results_above(m["key"]),
+                                    "artifact": builder.instantiation_artifact(m.get("type"))}
+                                   for m in level["members"]],
+                       "implied": [{**m, "paper_results_above": results_above(m["key"])} for m in level["implied"]]})
+    return {**chain, "papers": [p.get("label") for p in cite(chain["theorem"])][:6], "levels": levels}
+
+
+def cmd_needs(graph: builder.Graph, payload: dict[str, Any], args: argparse.Namespace) -> Any:
+    """What a theorem needs of each hypothesis it weakens, level by level; a
+    paper label (or ledger row id) stands for every theorem the ledger joins to
+    it. Level 0 is the hypothesis, level 1 what the proof uses of it, and each
+    further level what the lemmas at the use sites use in turn; every level
+    suffices for the theorem with its other obligations."""
+    name = resolve_theorem(graph, args.target)
+    if name is not None:
+        names, resolved = [name], "theorem"
+    else:
+        names = sorted(n for n, t in graph.theorems.items()
+                       if any(p.get("label") == args.target or p.get("row") == args.target
+                              for p in (t.get("card") or {}).get("papers", [])))
+        resolved = "paper result"
+        if not names:
+            raise SystemExit(f"no theorem, paper label or ledger row {args.target!r}")
+    index = graph.interfaces()
+    out = []
+    for name in names:
+        theorem = graph.theorems[name]
+        chains = index.chains_of(name)
+        row: dict[str, Any] = {
+            **theorem_card(graph, name),
+            "kernel_status": builder.kernel_status(graph, name),
+            "hypotheses": [{"key": h, "type": graph.statements.get(h, {}).get("type"), "status": graph.status(h)}
+                           for h in theorem.get("hypotheses", [])],
+            "interfaces": [chain_view(graph, chain) for chain in chains],
+        }
+        if not chains:
+            row["note"] = ("no kernel-checked weakening of this theorem: its proof uses each hypothesis as stated, "
+                           "or the used-consequence pass did not reach it")
+        out.append(row)
+    return {"target": args.target, "resolved_as": resolved, "theorems": out}
+
+
+def cmd_check_bundle(graph: builder.Graph, payload: dict[str, Any], args: argparse.Namespace) -> Any:
+    """Whether the given statements, assumed together, are jointly impossible
+    over the recorded edges, and whether they supply and restate a target."""
+    keys = [resolve_key(graph, k) for k in args.keys]
+    target = resolve_key(graph, args.target) if args.target else None
+    return graph.frontier().check(keys, target=target, max_work=args.max_work)
+
+
+def cmd_cut(graph: builder.Graph, payload: dict[str, Any], args: argparse.Namespace) -> Any:
+    """The cheapest set of statements from a pool with costs (a JSON object of
+    statement keys to integers or rational strings, at most 32) that supplies
+    the target without a recorded conflict; a statement is paid for once."""
+    target = resolve_key(graph, args.target)
+    raw = json.loads(args.costs.read_text(encoding="utf-8"))
+    if not isinstance(raw, dict):
+        raise SystemExit("--costs must hold a JSON object mapping statement keys to costs")
+    costs = {resolve_key(graph, k): v for k, v in raw.items()}
+    try:
+        return graph.frontier().cheapest_cut(target, costs, max_states=args.max_states, max_work=args.max_work,
+                                             exclude_equivalent=args.exclude_equivalent)
+    except ValueError as error:
+        raise SystemExit(str(error)) from error
 
 
 def cmd_near(graph: builder.Graph, payload: dict[str, Any], args: argparse.Namespace) -> Any:
@@ -667,9 +929,20 @@ def cmd_diff(graph: builder.Graph, payload: dict[str, Any], args: argparse.Names
 
 
 def packet_markdown(graph: builder.Graph, payload: dict[str, Any], problem: str, limit: int) -> str:
-    keys = open_for_problem(graph, payload, problem)
-    owners = problems_of(payload)
-    sinks = sinks_for(graph, keys)
+    where = attribution(graph, payload, problem)
+    keys = [k for k in graph.open if where(k) == "own"]
+    cross_keys = sorted(k for k in graph.open if where(k) == "cross")
+    inputs = builder.paper_inputs(graph, papers_of(graph), problem)
+    input_keys = {e["key"] for e in inputs}
+
+    def artifact(key: str) -> bool:
+        return builder.instantiation_artifact(graph.statements.get(key, {}).get("type"))
+
+    def mark(key: str) -> str:
+        return " (literal arithmetic: likely an instantiation artifact)" if artifact(key) else ""
+
+    sinks = sorted(sinks_for(graph, keys), key=artifact)  # stable: artifacts last
+    results = {(r["paper"], r["label"]) for e in inputs for r in e["results"]}
     source = payload.get("source", {})
     lines = [
         f"# Argument frontier for Erdős #{problem}",
@@ -679,11 +952,19 @@ def packet_markdown(graph: builder.Graph, payload: dict[str, Any], problem: str,
         "`open` means no chain of corpus theorems found by the export supplies or refutes the statement "
         "(the producer relation is a lower bound). Lean is the proof authority, not this packet.",
         "",
-        f"Open statements attributed to #{problem}: {len(keys)}. Open targets (sinks): {len(sinks)}.",
+        f"The frontier starts from the #{problem} papers: the hypotheses of the theorems they cite that the "
+        f"graph does not supply ({sum(1 for e in inputs if e['status'] == 'open')} open, "
+        f"{sum(1 for e in inputs if e['status'] == 'refuted')} refuted, assumed by {len(results)} paper "
+        f"results). Open statements of #{problem}'s own: {len(keys)}; open targets among them (sinks): "
+        f"{len(sinks)}. Statements that belong to other problems (their theorems state them, or they mention "
+        "only those problems' objects) appear only in the last section. "
+        "Literal arithmetic such as `0 - 1` or `0 / (0 + 0)` in a statement marks a likely instantiation "
+        "artifact, listed last.",
         "",
-        "## 1. Open targets",
+        "## 1. What the papers assume",
         "",
     ]
+    index = graph.interfaces()
 
     def paper_note(name: str) -> str:
         card = theorem_card(graph, name)
@@ -707,14 +988,103 @@ def packet_markdown(graph: builder.Graph, payload: dict[str, Any], problem: str,
     def residual_text(r: str) -> str:
         status = graph.status(r)
         marker = " (refuted: this route is dead)" if status == "refuted" else ""
-        return f"`{short(r)}` {graph.statements.get(r, {}).get('type')}{marker}"
+        return f"`{short(r)}` {graph.statements.get(r, {}).get('type')}{marker}{mark(r)}"
 
-    for key in sinks[:limit]:
+    def bundle_lines(key: str) -> list[str]:
+        """The bundles of ``key``, each checked as a whole: a jointly impossible
+        one is named and dropped, one the target implies member by member is
+        marked as the target restated."""
+        bundles, truncated, checks = graph.bundle_report(key)
+        restating = {tuple(c["assumptions"]) for c in checks
+                     if c.get("endpoint_relation") == "joint_endpoint_equivalence"}
+        out = []
+        if bundles:
+            out.append("Minimal bundles (supply every member of one bundle to close it):")
+            for bundle in bundles[:10]:
+                note = " (the target implies every member: the target restated)" \
+                    if tuple(bundle) in restating else ""
+                out.append("- " + " AND ".join(f"`{short(b)}`" for b in bundle) + note)
+        impossible = [c for c in checks if c["status"] == "refuted_jointly"]
+        if impossible:
+            out.append(f"Jointly impossible bundles, dropped ({len(impossible)}; derivation over recorded edges):")
+            for check in impossible[:4]:
+                conflict = (check.get("conflicts") or [{}])[0]
+                out.append("- " + " AND ".join(f"`{short(b)}`" for b in check["assumptions"])
+                           + f": supplies `{short(conflict.get('statement') or '?')}` and a recorded refutation "
+                             "of it")
+        if truncated:
+            out.append("- (bundle enumeration hit a limit; more bundles may exist)")
+        return out
+
+    def chain_lines(chain: dict[str, Any]) -> list[str]:
+        out = []
+        name = chain["theorem"].split(".")[-1]
+        for level in chain["levels"][1:]:
+            members = "; ".join(f"`{short(m['key'])}` {m.get('type')} ({m['status']}"
+                                + (f", via `{m['via'][0].split('.')[-1]}`" if m.get("via") else "") + ")"
+                                for m in level["members"]) or "(nothing left to supply)"
+            notes = []
+            if level["implied"]:
+                notes.append("implied by the others: " + ", ".join(f"`{short(m['key'])}`" for m in level["implied"]))
+            if level["joint"].get("restates_hypothesis"):
+                notes.append("this level restates the hypothesis")
+            if level["joint"]["status"] == "refuted_jointly":
+                notes.append("jointly impossible over recorded edges")
+            note = f" [{'; '.join(notes)}]" if notes else ""
+            out.append(f"  - `{name}` level {level['level']} ({level['status']}): {members}{note}")
+        if chain["truncated"]:
+            out.append(f"  - `{name}`: (the chain hit the depth or size limit)")
+        return out
+
+    shown_inputs = 0
+    for entry in inputs:
+        if entry["status"] != "open" or shown_inputs >= limit:
+            continue
+        shown_inputs += 1
+        key = entry["key"]
+        lines.append(f"### `{short(key)}` {entry['type']}{mark(key)}")
+        assumed = []
+        for result in entry["results"][:6]:
+            unused = " (its proof never uses it)" if result["unused_by_proof"] else ""
+            assumed.append(f"{result['side']} `{result['label']}` ({result['source']}; Comparator: "
+                           f"{result['comparator'] or 'n/a'}) through `{result['theorem']}`{unused}")
+        lines.append(f"Assumed by {entry['result_count']} paper result(s): " + "; ".join(assumed) + ".")
+        reductions = graph.reduced_by_head.get(key, [])
+        lines.append(f"Reductions into it: {len(reductions)}.")
+        for (_, producer, reading, left) in reductions[:6]:
+            leaves = "; ".join(residual_text(r) for r in left) or "(none)"
+            lines.append(f"- `{producer}` ({reading}) {paper_note(producer)} leaves: {leaves}")
+        lines += bundle_lines(key)
+        chains = [c for name in entry["theorems"] for c in index.chains_of(name)
+                  if (c.get("hypothesis") or {}).get("key") == key]
+        if chains:
+            lines.append("What the proofs use of it, level by level (each level suffices; the useful cut can be "
+                         "any of them):")
+            for chain in chains[:4]:
+                lines += chain_lines(chain)
+        lines.append("")
+    if not shown_inputs:
+        lines += [f"None: the theorems the #{problem} papers cite assume nothing the graph leaves open.", ""]
+    refuted_inputs = [e for e in inputs if e["status"] == "refuted"]
+    if refuted_inputs:
+        lines += ["Refuted inputs (every paper result that assumes one is vacuous):", ""]
+        for entry in refuted_inputs[:limit]:
+            labels = ", ".join(sorted({f"`{r['label']}`" for r in entry["results"]})[:4])
+            lines.append(f"- `{short(entry['key'])}` {entry['type']} (assumed by {labels})")
+        lines.append("")
+    lines += ["## 2. Open targets among the problem's own statements", ""]
+    shown_targets = 0
+    for key in sinks:
+        if key in input_keys:
+            continue
+        if shown_targets >= limit:
+            break
+        shown_targets += 1
         node = graph.statements[key]
-        lines.append(f"### `{short(key)}` {node.get('type')}")
-        results = depending_results(key)
-        if results:
-            lines.append("Paper results that assume it: " + "; ".join(results) + ".")
+        lines.append(f"### `{short(key)}` {node.get('type')}{mark(key)}")
+        results_ = depending_results(key)
+        if results_:
+            lines.append("Paper results that assume it: " + "; ".join(results_) + ".")
         if node.get("aliases"):
             lines.append("Also stated as: " + "; ".join(sorted(node["aliases"])[:3]) + ".")
         reductions = graph.reduced_by_head.get(key, [])
@@ -722,20 +1092,16 @@ def packet_markdown(graph: builder.Graph, payload: dict[str, Any], problem: str,
         for (_, producer, reading, left) in reductions[:8]:
             leaves = "; ".join(residual_text(r) for r in left) or "(none)"
             lines.append(f"- `{producer}` ({reading}) {paper_note(producer)} leaves: {leaves}")
-        bundles, truncated = graph.bundles(key)
-        if bundles:
-            lines.append("Minimal bundles (supply every member of one bundle to close it):")
-            for bundle in bundles[:10]:
-                lines.append("- " + " AND ".join(f"`{short(b)}`" for b in bundle))
-        if truncated:
-            lines.append("- (bundle enumeration hit a limit; more bundles may exist)")
+        lines += bundle_lines(key)
         component = graph.component.get(key)
         if component is not None and len(graph.components[component]) >= 2:
             lines.append(f"Disguise class: {len(graph.components[component])} statements equivalent through "
-                         "recorded reductions (see section 2). Moving between them is not progress.")
+                         "recorded reductions (see section 3). Moving between them is not progress.")
         lines.append("")
+    if not shown_targets:
+        lines += ["None beyond the inputs above.", ""]
 
-    lines += ["## 2. Disguise classes: the same statement in other coordinates", ""]
+    lines += ["## 3. Disguise classes: the same statement in other coordinates", ""]
     classes = sorted({graph.component[k] for k in keys if graph.component.get(k) is not None
                       and len(graph.components[graph.component[k]]) >= 2},
                      key=lambda c: -len(graph.components[c]))
@@ -748,22 +1114,31 @@ def packet_markdown(graph: builder.Graph, payload: dict[str, Any], problem: str,
             lines.append(f"- `{short(m)}` {graph.statements[m].get('type')}")
         lines.append("")
 
-    lines += ["## 3. Partial progress: members of bundles of size two or more", "",
+    lines += ["## 4. Partial progress: members of bundles of size two or more", "",
               "Supplying one member of such a bundle leaves a smaller open bundle for the target. The graph "
-              "records no reduction by which that member alone supplies the target, and it records nothing "
-              "about whether the target implies the member.", ""]
+              "records no reduction by which that member alone supplies the target. A member the target itself "
+              "supplies through recorded reductions is marked: it is necessary for the target as well as part of "
+              "a route to it. Jointly impossible bundles are not listed.", ""]
     seen: set[str] = set()
-    for key in sinks[:limit]:
-        bundles, _ = graph.bundles(key)
+    targets = [e["key"] for e in inputs if e["status"] == "open"][:limit] + \
+        [k for k in sinks if k not in input_keys][:limit]
+    for key in targets:
+        bundles, _, checks = graph.bundle_report(key)
+        implied = {m for c in checks for m in c.get("implied_by_target", [])}
+        reverse = graph.frontier().reverse(key)
         for bundle in bundles:
             if len(bundle) < 2:
                 continue
-            for member in bundle:
+            for member in sorted(bundle, key=lambda m: (where.foreign(m), artifact(m))):
                 if member in seen:
                     continue
                 seen.add(member)
-                lines.append(f"- `{short(member)}` {graph.statements[member].get('type')} "
-                             f"(leverage {len(graph.leverage(member))}; serves `{short(key)}`)")
+                necessary = member in implied or graph.frontier().is_positive(reverse, member)
+                note = "; the target implies it" if necessary else ""
+                if where.foreign(member):
+                    note += "; belongs to " + ", ".join(f"#{p}" for p in where.stated_by(member))
+                lines.append(f"- `{short(member)}` {graph.statements[member].get('type')}{mark(member)} "
+                             f"(leverage {len(graph.leverage(member))}; serves `{short(key)}`{note})")
     if not seen:
         lines.append("None: every recorded route to these targets is a single open statement.")
     lines.append("")
@@ -778,20 +1153,24 @@ def packet_markdown(graph: builder.Graph, payload: dict[str, Any], problem: str,
             lines.append(f"- **{e['kind']}** `{e.get('declaration') or e['id']}` ({lane}): {e.get('blocks')}")
         lines.append("")
 
-    refuted = sorted(k for k in graph.refuted if problem in owners.get(k, []))
+    refuted = sorted((k for k in graph.refuted if where(k) == "own"), key=lambda k: (artifact(k), k))
     if refuted:
         lines += ["## Refuted statements: routes that are closed", "",
-                  "A corpus theorem or a kernel-checked battery proof establishes the negation (kernel), or "
-                  "supplying the statement would supply a refuted one (derived). Every theorem that assumes one "
-                  "of these is vacuous.", ""]
+                  "A corpus theorem or a kernel-checked battery proof establishes the negation (kernel); "
+                  "supplying the statement would supply a refuted one (derived); or supplying it would supply "
+                  "another statement together with the residuals of a recorded refutation of that statement "
+                  "(conflict). Every theorem that assumes one of these is vacuous.", ""]
         for key in refuted[:limit * 2]:
             record = graph.refuted[key]
             if record["kind"] == "kernel":
                 how = f"kernel: `{record['producer']}` ({record['reading']})"
+            elif record["kind"] == "derived_conflict":
+                how = (f"conflict: supplies `{short(record['reaches'])}` and a refutation of it by "
+                       f"`{record.get('refuted_by')}`")
             else:
                 how = f"derived: reaches `{short(record['reaches'])}` via " + ", ".join(
                     f"`{p}`" for p in record["producers"][:3])
-            lines.append(f"- `{short(key)}` {graph.statements[key].get('type')} ({how})")
+            lines.append(f"- `{short(key)}` {graph.statements[key].get('type')}{mark(key)} ({how})")
         lines.append("")
 
     unused = [r for r in idle_rows(graph, problem) if any(d["open_without_idle"] for d in r["dropped"])]
@@ -804,25 +1183,41 @@ def packet_markdown(graph: builder.Graph, payload: dict[str, Any], problem: str,
             lines.append(f"- `{row['name']}` drops {dropped}: {row['stronger_statement']}")
         lines.append("")
 
-    weakened = [r for r in weakening_rows(graph, problem) if r["hypothesis"]["status"] == "open"]
-    if weakened:
-        lines += ["## What the proofs use of their open inputs", "",
-                  "Each theorem below assumes an open statement but its proof uses only the consequences listed "
-                  "(through the lemmas named); the kernel accepted the theorem with the input replaced by them. "
-                  "A consequence is a weaker target than the input it comes from.", ""]
-        for row in weakened[:limit * 2]:
-            uses = "; ".join(f"`{short(u['key'])}` {u['type']} ({u['status']}, via "
-                             + ", ".join(f"`{v}`" for v in u["via"][:2]) + ")" for u in row["uses_only"])
-            lines.append(f"- `{row['name']}` assumes {row['hypothesis']['type']} and uses only: {uses}")
+    shown_inputs_keys = {e["key"] for e in inputs if e["status"] == "open"}
+    other_chains = [chain for chain in index.chains()
+                    if (theorem_card(graph, chain["theorem"]).get("problem") == problem)
+                    and (chain.get("hypothesis") or {}).get("status") == "open"
+                    and (chain.get("hypothesis") or {}).get("key") not in shown_inputs_keys]
+    if other_chains:
+        lines += ["## What the other proofs use of their open inputs", "",
+                  "Theorems of this problem that no paper cites, with an open hypothesis their proofs use only "
+                  "through the statements listed, level by level; the kernel accepted each weakened theorem and "
+                  "each implication from the hypothesis.", ""]
+        for chain in other_chains[:limit]:
+            hypothesis = chain["hypothesis"]
+            lines.append(f"- `{chain['theorem']}` assumes `{short(hypothesis['key'])}` {hypothesis.get('type')}:")
+            lines += chain_lines(chain)
         lines.append("")
 
-    lines += ["## 4. Highest leverage open statements", ""]
-    levered = sorted(keys, key=lambda k: (-len(graph.leverage(k)), k))
+    lines += ["## 5. Highest leverage open statements", ""]
+    levered = sorted(keys, key=lambda k: (artifact(k), -len(graph.leverage(k)), k))
     for key in levered[:limit]:
         gained = graph.leverage(key)
         if not gained:
-            break
-        lines.append(f"- `{short(key)}` {graph.statements[key].get('type')}: supplies {len(gained)} open statements")
+            continue
+        lines.append(f"- `{short(key)}` {graph.statements[key].get('type')}{mark(key)}: supplies {len(gained)} "
+                     "open statements")
+    lines.append("")
+
+    lines += ["## 6. Cross-problem statements", "",
+              f"Open statements that #{problem}'s theorems reduce but that belong to other problems: other "
+              f"problems' theorems state them, or they mention only other problems' objects ({len(cross_keys)}). "
+              "They are the other problems' frontiers, reached from here.", ""]
+    for key in sorted(cross_keys, key=lambda k: (artifact(k), -len(graph.leverage(k)), k))[:limit]:
+        stated = ", ".join(f"#{p}" for p in where.stated_by(key))
+        lines.append(f"- `{short(key)}` {graph.statements[key].get('type')}{mark(key)} (belongs to {stated})")
+    if not cross_keys:
+        lines.append("None.")
     lines.append("")
     text = "\n".join(lines)
     if len(text.encode("utf-8")) > PACKET_BYTE_BUDGET:
@@ -858,13 +1253,24 @@ def main(argv: list[str] | None = None) -> int:
     p = sub.add_parser("diff"); p.add_argument("old", type=Path); p.add_argument("new", type=Path)
     p.add_argument("--limit", type=int, default=30)
     p = sub.add_parser("packet"); p.add_argument("--problem", required=True); p.add_argument("--limit", type=int, default=12)
+    p = sub.add_parser("needs"); p.add_argument("target", help="theorem name or suffix, paper label, or ledger row")
+    p = sub.add_parser("check-bundle"); p.add_argument("keys", nargs="+"); p.add_argument("--target")
+    p.add_argument("--max-work", type=int, default=frontier_module.CHECK_WORK_LIMIT,
+                   help="propagation steps before the answer reads unknown_budget")
+    p = sub.add_parser("cut"); p.add_argument("target")
+    p.add_argument("--costs", type=Path, required=True,
+                   help="JSON object: statement key (or unique prefix) -> integer or rational-string cost")
+    p.add_argument("--max-states", type=int, default=10_000)
+    p.add_argument("--max-work", type=int, default=5_000_000)
+    p.add_argument("--exclude-equivalent", action="store_true",
+                   help="skip sets the target implies member by member (restatements of the target)")
     args = parser.parse_args(argv)
     graph, payload = load(args.graph)
     handler = {"summary": cmd_summary, "problem": cmd_problem, "find": cmd_find, "statement": cmd_statement,
                "theorem": cmd_theorem, "why": cmd_why, "about": cmd_about, "near": cmd_near, "next": cmd_next,
                "barriers": cmd_barriers, "idle": cmd_idle, "weakenings": cmd_weakenings, "papers": cmd_papers,
-               "criticality": cmd_criticality,
-               "transfer": cmd_transfer, "diff": cmd_diff, "packet": cmd_packet}[args.command]
+               "criticality": cmd_criticality, "needs": cmd_needs, "check-bundle": cmd_check_bundle,
+               "cut": cmd_cut, "transfer": cmd_transfer, "diff": cmd_diff, "packet": cmd_packet}[args.command]
     result = handler(graph, payload, args)
     if isinstance(result, str):
         sys.stdout.write(result)
