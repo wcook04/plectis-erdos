@@ -1,5 +1,8 @@
 import Lean
-import ErdosProblems.Erdos68.PaperCompletePrimePole
+import ErdosProblems.Erdos251.PaperCompleteR20.FiniteSeparation
+import ErdosProblems.Erdos251.PaperCompleteR21.JointPrimeGapCountermodel
+import ErdosProblems.Erdos251.PaperCompleteR21.PerturbedPrimePositions
+import ErdosProblems.Erdos251.PaperCompleteR21.TwoWindowSparsity
 -- SPDX-FileCopyrightText: 2026 Will Cook
 -- SPDX-License-Identifier: Apache-2.0
 
@@ -57,7 +60,7 @@ a warning otherwise. The option is read by name, so a file that inlines this
 module (a kernel probe) can use the commands without evaluating the option's
 initialiser in the module that declares it. -/
 def reportFailure (msg : MessageData) : MetaM Unit := do
-  if (← getOptions).getBool `argumentGraph.strict true then logError msg else logWarning msg
+  if (← getOptions).getBool `argumentGraph.strict false then logError msg else logWarning msg
 
 /-- Run `x` with its own heartbeat budget (in thousands); `none` when the budget
 runs out or `x` throws. -/
@@ -713,4 +716,7 @@ end ErdosProblems.ArgumentGraph
 
 open ErdosProblems.ArgumentGraph
 set_option maxHeartbeats 4000000
-derive_idle ErdosProblems.Erdos68.PaperComplete.maximal_prime_power_survival
+derive_conjuncts ErdosProblems.Erdos251.PaperCompleteR21.long_joint_prime_gap_countermodel
+derive_conjuncts ErdosProblems.Erdos251.PaperCompleteR21.nonconcentration_does_not_force_irrationality
+derive_conjuncts ErdosProblems.Erdos251.PaperCompleteR21.prime_gap_two_window_sparse
+derive_conjuncts ErdosProblems.Erdos251.PaperCompleteR21.short_joint_prime_gap_countermodel

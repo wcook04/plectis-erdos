@@ -35,9 +35,11 @@ adds is checked by the kernel before it is added.
   site is the largest application around `h` (such as `L h`, `h.2` or `h 3`) that
   mentions no bound variable of the proof and no other hypothesis; its
   proposition must not mention `H`, be `H` up to unfolding, or be the conclusion.
-* `derive_conjuncts T` adds, for each conjunct of `T`'s conclusion whose own
-  proof leaves some hypotheses unused, `T.part_k`: that conjunct assuming only
-  what its proof needs (when the proof builds the conjunction part by part).
+* `derive_conjuncts T` adds, for each claim of `T`'s conclusion (a conjunct, or
+  a direction of an equivalence) whose own proof leaves some hypotheses unused,
+  `T.part_k`: that claim assuming only what its proof needs. A claim's proof is
+  the projection of `T`'s proof onto it, reduced; it is the claim's own proof
+  when the proof builds the claims separately.
 * `derive_frontier T` follows those weakenings through the library. When a use
   site is `L a₁ … h … aₘ` for a theorem `L` whose proof uses that hypothesis only
   through consequences of its own, the site is replaced by `L.weakened_p` applied
@@ -69,7 +71,7 @@ a warning otherwise. The option is read by name, so a file that inlines this
 module (a kernel probe) can use the commands without evaluating the option's
 initialiser in the module that declares it. -/
 def reportFailure (msg : MessageData) : MetaM Unit := do
-  if (← getOptions).getBool `argumentGraph.strict false then logError msg else logWarning msg
+  if (← getOptions).getBool `argumentGraph.strict true then logError msg else logWarning msg
 
 /-- Run `x` with its own heartbeat budget (in thousands); `none` when the budget
 runs out or `x` throws. -/
@@ -168,41 +170,52 @@ def deriveIdle (name : Name) : MetaM (Except String Name) := do
 
 /-! ## Conjuncts
 
-A paper result often states several claims as one conjunction and assumes a
-named input that only some of them need. When the proof builds the conjunction
-directly (`⟨p₁, p₂, …⟩` after beta and `let` reduction), each part's own proof
-shows which hypotheses that part uses. -/
+A paper result often states several claims as one conjunction, or an equivalence,
+and assumes a named input that only some of the claims need. Projecting the proof
+onto one claim and reducing the projection (beta, `let`, a projection of a
+constructor, definitions such as `id`; never a theorem) gives that claim's own
+proof when the proof builds the claims separately, directly or under `have`,
+`show` or `let`; its free variables are the hypotheses the claim uses. -/
 
-/-- `conjunctProofs`, splitting at most `fuel` conjuncts. -/
-def conjunctProofsAux : Nat → Expr → Expr → MetaM (Array (Expr × Expr))
-  | 0, type, proof => return #[(type, proof)]
-  | fuel + 1, type, proof => do
-    match type.consumeMData.and? with
-    | none => return #[(type, proof)]
-    | some (a, b) =>
-        let p ← whnfCore proof
-        if p.isAppOfArity ``And.intro 4 then
-          let rest ← conjunctProofsAux fuel b p.appArg!
-          return #[(a, p.appFn!.appArg!)] ++ rest
-        else
-          return #[(type, proof)]
+/-- The conjuncts of `A₁ ∧ (A₂ ∧ (… ∧ Aₙ))`, splitting at most `fuel` times. -/
+def andSpineAux : Nat → Expr → Array Expr
+  | 0, t => #[t]
+  | fuel + 1, t =>
+    match t.consumeMData.and? with
+    | some (a, b) => #[a] ++ andSpineAux fuel b
+    | none => #[t]
 
-/-- The conjuncts of `A₁ ∧ (A₂ ∧ (… ∧ Aₙ))` with their proofs, when `proof` is
-built by `And.intro` along the same spine (after `whnfCore`). -/
-def conjunctProofs (type proof : Expr) : MetaM (Array (Expr × Expr)) :=
-  conjunctProofsAux 256 type proof
+/-- The claims of a conclusion, each with the projection of a proof of the
+conclusion onto it: `A₁ ∧ (A₂ ∧ (… ∧ Aₙ))` gives the `Aᵢ`, and `A ↔ B` gives
+`A → B` and `B → A`. A conclusion of any other shape is one claim. -/
+def conclusionClaims (type : Expr) : Array (Expr × (Expr → Expr)) := Id.run do
+  if let some (a, b) := type.consumeMData.app2? ``Iff then
+    return #[(mkForall `h .default a b, fun p => mkProj ``Iff 0 p),
+             (mkForall `h .default b a, fun p => mkProj ``Iff 1 p)]
+  let parts := andSpineAux 256 type
+  let mut out : Array (Expr × (Expr → Expr)) := #[]
+  for a in parts, k in [0:parts.size] do
+    out := out.push (a, fun p =>
+      let rest := (List.range k).foldl (fun e _ => mkProj ``And 1 e) p
+      if k + 1 < parts.size then mkProj ``And 0 rest else rest)
+  return out
 
-/-- For each conjunct of `T`'s conclusion whose proof leaves some proposition
-hypotheses unused, `T.part_k` (counting from 1): the conjunct alone, assuming
-only the binders its proof and statement need. -/
+/-- For each claim of `T`'s conclusion (a conjunct, or a direction of an
+equivalence) whose proof leaves some proposition hypotheses unused, `T.part_k`
+(counting from 1): the claim alone, assuming only the binders its proof and
+statement need. -/
 def deriveConjuncts (name : Name) : MetaM (Except String (Array Name)) := do
   let info ← getConstInfo name
   let some value := info.value? | return .error "not a theorem with a proof term"
   let parts ← forallTelescope info.type fun xs body => do
-    let pieces ← conjunctProofs body (← instantiateMVars (value.beta xs))
-    if pieces.size < 2 then return #[]
+    let claims := conclusionClaims body
+    if claims.size < 2 then
+      return Except.error "its conclusion is neither a conjunction nor an equivalence"
+    let proof ← instantiateMVars (value.beta xs)
     let mut out : Array (Nat × Expr × Expr × Array String) := #[]
-    for (a, p) in pieces, k in [1:pieces.size + 1] do
+    let mut uses : Array String := #[]
+    for (a, project) in claims, k in [1:claims.size + 1] do
+      let p := (← budgeted 2000 (whnf (project proof))).getD (project proof)
       -- the binders the part needs: those its proof or statement mention, closed
       -- under the binder types that mention them
       let mut needed : Std.HashSet FVarId := {}
@@ -220,15 +233,26 @@ def deriveConjuncts (name : Name) : MetaM (Except String (Array Name)) := do
                 changed := true
       let keep := xs.filter fun x => needed.contains x.fvarId!
       let mut dropped : Array String := #[]
+      let mut used : Array String := #[]
       for x in xs do
-        unless needed.contains x.fvarId! do
-          if ← isProp (← inferType x) then
-            dropped := dropped.push (toString (← ppExpr (← inferType x)))
-      if dropped.isEmpty then continue
+        let decl ← x.fvarId!.getDecl
+        if decl.binderInfo == .instImplicit then continue
+        unless ← isProp decl.type do continue
+        if needed.contains x.fvarId! then
+          used := used.push (toString decl.userName)
+        else
+          dropped := dropped.push (toString (← ppExpr decl.type))
+      if dropped.isEmpty then
+        uses := uses.push s!"claim {k} uses {", ".intercalate used.toList}"
+        continue
       out := out.push (k, ← mkForallFVars keep a, ← mkLambdaFVars keep p, dropped)
-    return out
-  if parts.isEmpty then
-    return .error "no conjunct of its conclusion leaves a hypothesis unused (or the proof is not built conjunct by conjunct)"
+    if out.isEmpty then
+      return Except.error s!"every claim of its conclusion uses every proposition hypothesis \
+        ({"; ".intercalate uses.toList})"
+    return Except.ok out
+  let parts ← match parts with
+    | .ok parts => pure parts
+    | .error e => return .error e
   let mut added : Array Name := #[]
   for (k, type, value, dropped) in parts do
     let newName := name ++ Name.mkSimple s!"part_{k}"
@@ -713,11 +737,3 @@ derive_idle ErdosProblems.Erdos257.PaperCompleteR21.paper_mersenne_channel_survi
 derive_idle ErdosProblems.Erdos257.PaperCompleteR21.paper_one_orbit_stability
 derive_idle ErdosProblems.Erdos257.PaperCompleteR21.paper_shared_prefix_family_strip_witness_after_feedback_of_all_depths
 derive_idle ErdosProblems.Erdos257.PaperCompleteR21.paper_zero_run_le_eps_logb
-set_option argumentGraph.strict false in derive_conjuncts Erdos249257.HalfCarryReachability.greedy_half_infinite_of_cofinalStripReturn
-set_option argumentGraph.strict false in derive_conjuncts Erdos249257.HalfCarryReachability.greedy_half_infinite_of_mobiusCenteredHalfCarry_sqrtBound
-set_option argumentGraph.strict false in derive_conjuncts Erdos249257.HalfCarryReachability.greedy_half_infinite_of_mobiusCenteredHalfCarry_upperBound
-set_option argumentGraph.strict false in derive_conjuncts Erdos249257.HalfTrappingReturnCarry.overlappingReverseCarryWords_carryDifference_eq_twoPow_mul_odd
-set_option argumentGraph.strict false in derive_conjuncts Erdos249257.SuffixCylinderTerminalOnlyBridge.exists_infinite_positive_support_half_of_cofinalCylinderStages
-set_option argumentGraph.strict false in derive_conjuncts Erdos249257.twentyOneFatalAlignedBranch_eventually_affine_supercapacity
-set_option argumentGraph.strict false in derive_conjuncts ErdosProblems.Erdos257.PaperCompleteR21.paper_compatible_finite_row_conditions
-set_option argumentGraph.strict false in derive_conjuncts ErdosProblems.Erdos257.PaperCompleteR21.paper_terminal_strip_forces_half_membership

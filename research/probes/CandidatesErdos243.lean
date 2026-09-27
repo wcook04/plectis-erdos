@@ -1,5 +1,11 @@
 import Lean
-import ErdosProblems.Erdos68.PaperCompletePrimePole
+import ErdosProblems.Erdos243.PaperCompleteR21.AmplifiedRecordEquivalence
+import ErdosProblems.Erdos243.PaperCompleteR21.ExactOrbitRecordDichotomy
+import ErdosProblems.Erdos243.PaperCompleteR21.MaximalGapConstant
+import ErdosProblems.Erdos243.PaperCompleteR21.RecordJumpEnergySeries
+import ErdosProblems.Erdos243.PaperCompleteR21.ReducedDenominatorPrimePowers
+import ErdosProblems.Erdos243.PaperCompleteR21.ReducedStepLocalArithmetic
+import ErdosProblems.Erdos243.PaperCompleteR21.WindowAvoidance
 -- SPDX-FileCopyrightText: 2026 Will Cook
 -- SPDX-License-Identifier: Apache-2.0
 
@@ -57,7 +63,7 @@ a warning otherwise. The option is read by name, so a file that inlines this
 module (a kernel probe) can use the commands without evaluating the option's
 initialiser in the module that declares it. -/
 def reportFailure (msg : MessageData) : MetaM Unit := do
-  if (← getOptions).getBool `argumentGraph.strict true then logError msg else logWarning msg
+  if (← getOptions).getBool `argumentGraph.strict false then logError msg else logWarning msg
 
 /-- Run `x` with its own heartbeat budget (in thousands); `none` when the budget
 runs out or `x` throws. -/
@@ -713,4 +719,18 @@ end ErdosProblems.ArgumentGraph
 
 open ErdosProblems.ArgumentGraph
 set_option maxHeartbeats 4000000
-derive_idle ErdosProblems.Erdos68.PaperComplete.maximal_prime_power_survival
+derive_conjuncts ErdosProblems.Erdos243.PaperCompleteR21.StandingOrbit.Rdelta_bddAbove_iff_amp
+derive_conjuncts ErdosProblems.Erdos243.PaperCompleteR21.StandingOrbit.amp_bddAbove_iff_sylvester
+derive_conjuncts ErdosProblems.Erdos243.PaperCompleteR21.StandingOrbit.coprimeMultiplier_cofinal
+derive_conjuncts ErdosProblems.Erdos243.PaperCompleteR21.StandingOrbit.criticalRate
+derive_conjuncts ErdosProblems.Erdos243.PaperCompleteR21.StandingOrbit.criticalRate_counterexample
+derive_conjuncts ErdosProblems.Erdos243.PaperCompleteR21.StandingOrbit.energySqrt_summable_iff
+derive_conjuncts ErdosProblems.Erdos243.PaperCompleteR21.StandingOrbit.energy_criterion
+derive_conjuncts ErdosProblems.Erdos243.PaperCompleteR21.StandingOrbit.energy_summable_iff
+derive_conjuncts ErdosProblems.Erdos243.PaperCompleteR21.StandingOrbit.exists_late_energy_window
+derive_conjuncts ErdosProblems.Erdos243.PaperCompleteR21.StandingOrbit.largePrime_coprimeMultiplier
+derive_conjuncts ErdosProblems.Erdos243.PaperCompleteR21.StandingOrbit.oddPrimePower_supply
+derive_conjuncts ErdosProblems.Erdos243.PaperCompleteR21.StandingOrbit.oddPrimePower_supply_nat
+derive_conjuncts ErdosProblems.Erdos243.PaperCompleteR21.StandingOrbit.primeBlock_supply
+derive_conjuncts ErdosProblems.Erdos243.PaperCompleteR21.StandingOrbit.recordAmplified
+derive_conjuncts ErdosProblems.Erdos243.PaperCompleteR21.StandingOrbit.unitRecordIncrement_criterion

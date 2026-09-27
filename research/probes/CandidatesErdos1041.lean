@@ -1,5 +1,10 @@
 import Lean
-import ErdosProblems.Erdos68.PaperCompletePrimePole
+import ErdosProblems.Erdos1041.PaperCompleteR21.ArityNotCapacity
+import ErdosProblems.Erdos1041.PaperCompleteR21.ConstantFactorAreaCriteria
+import ErdosProblems.Erdos1041.PaperCompleteR21.CriticalValueSeparationTransport
+import ErdosProblems.Erdos1041.PaperCompleteR21.HyperbolicLawOfCosines
+import ErdosProblems.Erdos1041.PaperCompleteR21.SeparationParent
+import ErdosProblems.Erdos1041.PaperCompleteR21.SubcriticalPerimeterPath
 -- SPDX-FileCopyrightText: 2026 Will Cook
 -- SPDX-License-Identifier: Apache-2.0
 
@@ -57,7 +62,7 @@ a warning otherwise. The option is read by name, so a file that inlines this
 module (a kernel probe) can use the commands without evaluating the option's
 initialiser in the module that declares it. -/
 def reportFailure (msg : MessageData) : MetaM Unit := do
-  if (← getOptions).getBool `argumentGraph.strict true then logError msg else logWarning msg
+  if (← getOptions).getBool `argumentGraph.strict false then logError msg else logWarning msg
 
 /-- Run `x` with its own heartbeat budget (in thousands); `none` when the budget
 runs out or `x` throws. -/
@@ -713,4 +718,9 @@ end ErdosProblems.ArgumentGraph
 
 open ErdosProblems.ArgumentGraph
 set_option maxHeartbeats 4000000
-derive_idle ErdosProblems.Erdos68.PaperComplete.maximal_prime_power_survival
+derive_conjuncts ErdosProblems.Erdos1041.PaperCompleteR21.Arity.arity_not_capacity
+derive_conjuncts ErdosProblems.Erdos1041.PaperCompleteR21.cfa_constant_factor_path
+derive_conjuncts ErdosProblems.Erdos1041.PaperCompleteR21.discSep_cubic_six_fifths
+derive_conjuncts ErdosProblems.Erdos1041.PaperCompleteR21.discSep_separation_long
+derive_conjuncts ErdosProblems.Erdos1041.PaperCompleteR21.discSep_separation_short
+derive_conjuncts ErdosProblems.Erdos1041.PaperCompleteR21.discSep_uniform_radius

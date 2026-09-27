@@ -1,5 +1,23 @@
 import Lean
-import ErdosProblems.Erdos68.PaperCompletePrimePole
+import Erdos249257.TotientCarryKernelRigidity
+import Erdos249257.TotientTailCarryPeriod
+import ErdosProblems.Erdos249.PaperCompleteR20.LcmGridCorrespondence
+import ErdosProblems.Erdos249.PaperCompleteR21.DivisorChannelSplitAndSeamDoubling
+import ErdosProblems.Erdos249.PaperCompleteR21.DyadicSectionBasisAndRationalCarry
+import ErdosProblems.Erdos249.PaperCompleteR21.ExcludedCofactorEstimate
+import ErdosProblems.Erdos249.PaperCompleteR21.ExtremalOrderDirectedAndPulse
+import ErdosProblems.Erdos249.PaperCompleteR21.FirstHarmonicBlockCriteria
+import ErdosProblems.Erdos249.PaperCompleteR21.HarmonicGapAndFourTail
+import ErdosProblems.Erdos249.PaperCompleteR21.LambertSigmaRungAndNesterenko
+import ErdosProblems.Erdos249.PaperCompleteR21.MersennePrimeSupportAnchors
+import ErdosProblems.Erdos249.PaperCompleteR21.MobiusMersenneLadderLogConcavity
+import ErdosProblems.Erdos249.PaperCompleteR21.NearIntegerIrrationalityCriterion
+import ErdosProblems.Erdos249.PaperCompleteR21.NumeratorPolynomialAndMersenneRemainder
+import ErdosProblems.Erdos249.PaperCompleteR21.PeriodMultipleAndSecondDifference
+import ErdosProblems.Erdos249.PaperCompleteR21.PhaseEnergyAndForeignResidueProjection
+import ErdosProblems.Erdos249.PaperCompleteR21.RationalTailPeriodWitnesses
+import ErdosProblems.Erdos249.PaperCompleteR21.ScalarLocalisationAndInversePhaseGauge
+import ErdosProblems.Erdos249.PaperCompleteR21.TailCarryPeriodAndRankFloor
 -- SPDX-FileCopyrightText: 2026 Will Cook
 -- SPDX-License-Identifier: Apache-2.0
 
@@ -57,7 +75,7 @@ a warning otherwise. The option is read by name, so a file that inlines this
 module (a kernel probe) can use the commands without evaluating the option's
 initialiser in the module that declares it. -/
 def reportFailure (msg : MessageData) : MetaM Unit := do
-  if (← getOptions).getBool `argumentGraph.strict true then logError msg else logWarning msg
+  if (← getOptions).getBool `argumentGraph.strict false then logError msg else logWarning msg
 
 /-- Run `x` with its own heartbeat budget (in thousands); `none` when the budget
 runs out or `x` throws. -/
@@ -713,4 +731,13 @@ end ErdosProblems.ArgumentGraph
 
 open ErdosProblems.ArgumentGraph
 set_option maxHeartbeats 4000000
-derive_idle ErdosProblems.Erdos68.PaperComplete.maximal_prime_power_survival
+derive_conjuncts Erdos249257.not_irrational_totientSeries_implies_mod_period_and_unbounded_rank
+derive_conjuncts Erdos249257.not_irrational_totientSeries_implies_unbounded_carryRank_unconditional
+derive_conjuncts ErdosProblems.Erdos249.PaperCompleteR21.eventual_tail_period_of_not_irrational
+derive_conjuncts ErdosProblems.Erdos249.PaperCompleteR21.lambert_id_rung_transcendental
+derive_conjuncts ErdosProblems.Erdos249.PaperCompleteR21.prop_badcof
+derive_conjuncts ErdosProblems.Erdos249.PaperCompleteR21.rational_forces_four_tail_diagonals_integral
+derive_conjuncts ErdosProblems.Erdos249.PaperCompleteR21.rational_forces_period_multiple_integrality
+derive_conjuncts ErdosProblems.Erdos249.PaperCompleteR21.rational_forces_pulse_class_integrality
+derive_conjuncts ErdosProblems.Erdos249.PaperCompleteR21.rationality_forces_mod_period_and_unbounded_rank
+derive_conjuncts ErdosProblems.Erdos249.PaperCompleteR21.rationality_gives_mod_period_and_unbounded_rank

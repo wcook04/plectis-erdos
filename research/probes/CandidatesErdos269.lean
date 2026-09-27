@@ -1,5 +1,7 @@
 import Lean
-import ErdosProblems.Erdos68.PaperCompletePrimePole
+import ErdosProblems.Erdos269.PaperCompleteR21.TwoPrimeSums
+import ErdosProblems.Erdos269.PaperR7BasicAssembly
+import ErdosProblems.Erdos269.PaperR7WindowResults
 -- SPDX-FileCopyrightText: 2026 Will Cook
 -- SPDX-License-Identifier: Apache-2.0
 
@@ -57,7 +59,7 @@ a warning otherwise. The option is read by name, so a file that inlines this
 module (a kernel probe) can use the commands without evaluating the option's
 initialiser in the module that declares it. -/
 def reportFailure (msg : MessageData) : MetaM Unit := do
-  if (← getOptions).getBool `argumentGraph.strict true then logError msg else logWarning msg
+  if (← getOptions).getBool `argumentGraph.strict false then logError msg else logWarning msg
 
 /-- Run `x` with its own heartbeat budget (in thousands); `none` when the budget
 runs out or `x` throws. -/
@@ -713,4 +715,5 @@ end ErdosProblems.ArgumentGraph
 
 open ErdosProblems.ArgumentGraph
 set_option maxHeartbeats 4000000
-derive_idle ErdosProblems.Erdos68.PaperComplete.maximal_prime_power_survival
+derive_conjuncts ErdosProblems.Erdos269.PaperCompleteR21.two_prime_sums_transcendental
+derive_conjuncts ErdosProblems.Erdos269.PaperCompleteR21.two_prime_transcendence

@@ -1,5 +1,19 @@
 import Lean
-import ErdosProblems.Erdos68.PaperCompletePrimePole
+import Erdos249257.CofinalStripReturn
+import Erdos249257.HalfCarryReachability
+import Erdos249257.HalfTrappingReturnCarry
+import Erdos249257.SuffixCylinderTerminalOnlyBridge
+import Erdos249257.TwentyOneQuotientGreedy
+import ErdosProblems.Erdos257.PaperCompleteR21.ArithmeticCounterexampleAssembly
+import ErdosProblems.Erdos257.PaperCompleteR21.CompatibleFiniteRowFamily
+import ErdosProblems.Erdos257.PaperCompleteR21.EventualNonnegativeMargin
+import ErdosProblems.Erdos257.PaperCompleteR21.FeedbackRowStripWitnessAllDepths
+import ErdosProblems.Erdos257.PaperCompleteR21.GreedyOrbitNoTies
+import ErdosProblems.Erdos257.PaperCompleteR21.LogarithmicInitialInterval
+import ErdosProblems.Erdos257.PaperCompleteR21.MersenneChannelSurvivalAllHeights
+import ErdosProblems.Erdos257.PaperCompleteR21.ShortWindowDivisorPhase
+import ErdosProblems.Erdos257.PaperCompleteR21.SkipSafetyAndDivisorZeroRuns
+import ErdosProblems.Erdos257.PaperCompleteR21.TerminalStripExactRowGap
 -- SPDX-FileCopyrightText: 2026 Will Cook
 -- SPDX-License-Identifier: Apache-2.0
 
@@ -57,7 +71,7 @@ a warning otherwise. The option is read by name, so a file that inlines this
 module (a kernel probe) can use the commands without evaluating the option's
 initialiser in the module that declares it. -/
 def reportFailure (msg : MessageData) : MetaM Unit := do
-  if (← getOptions).getBool `argumentGraph.strict true then logError msg else logWarning msg
+  if (← getOptions).getBool `argumentGraph.strict false then logError msg else logWarning msg
 
 /-- Run `x` with its own heartbeat budget (in thousands); `none` when the budget
 runs out or `x` throws. -/
@@ -713,4 +727,12 @@ end ErdosProblems.ArgumentGraph
 
 open ErdosProblems.ArgumentGraph
 set_option maxHeartbeats 4000000
-derive_idle ErdosProblems.Erdos68.PaperComplete.maximal_prime_power_survival
+derive_conjuncts Erdos249257.HalfCarryReachability.greedy_half_infinite_of_cofinalStripReturn
+derive_conjuncts Erdos249257.HalfCarryReachability.greedy_half_infinite_of_mobiusCenteredHalfCarry_sqrtBound
+derive_conjuncts Erdos249257.HalfCarryReachability.greedy_half_infinite_of_mobiusCenteredHalfCarry_upperBound
+derive_conjuncts Erdos249257.HalfTrappingReturnCarry.overlappingReverseCarryWords_carryDifference_eq_twoPow_mul_odd
+derive_conjuncts Erdos249257.SuffixCylinderTerminalOnlyBridge.exists_infinite_positive_support_half_of_cofinalCylinderStages
+derive_conjuncts Erdos249257.twentyOneFatalAlignedBranch_eventually_affine_supercapacity
+derive_conjuncts ErdosProblems.Erdos257.PaperCompleteR21.paper_compatible_finite_row_conditions
+derive_conjuncts ErdosProblems.Erdos257.PaperCompleteR21.paper_compatible_rows_agree_with_limit
+derive_conjuncts ErdosProblems.Erdos257.PaperCompleteR21.paper_terminal_strip_forces_half_membership
