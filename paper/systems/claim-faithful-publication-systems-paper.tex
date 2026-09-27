@@ -569,6 +569,11 @@ factoring leaves out. Off that condition no chord meets the hypotheses of its
 maximality clause, so that clause gains nothing there, while the midpoint
 equality is asserted at every added point, for example $n=3$, $r=1/2$
 (\repolink{lean/ErdosProblems/ArgumentGraph/Results/Erdos1041.lean}{ArgumentGraph/Results/Erdos1041.lean}).
+Chockler, Gurfinkel and Strichman draw the same distinctions for a
+temporal-logic formula that a model passes: a subformula is vacuous when
+replacing it by false leaves the verdict unchanged, and they characterise the
+strongest formula the model still passes within a stated class of
+strengthenings~\cite{beyondvacuity}.
 \AFFactored{} cited theorems have a factoring, and deriving them factored
 \AFFactoredLibrary{} lemmas beneath them. A probe credits a command only with
 the theorem it names: a factoring refused after it derived lemma factorings on
@@ -1227,6 +1232,32 @@ counterexample~\cite{plausible}. The battery runs a fixed list of closing
 tactics and library search, and the graph refutes a statement only through
 kernel-checked theorems.
 
+\paragraph{Libraries grown from proofs.} Kaliszyk and Urban mine the inference
+graph of HOL~Light for intermediate statements worth naming, rank them by how
+often they are reused, how much proof they package and their size, and measure
+the ranking by how many library theorems an automated prover proves when given
+the mined lemmas, controlling what each theorem's own proof leaks; they note
+that accounting for dependencies conjunct by conjunct would be
+desirable~\cite{lemmamining}. Hipster conjectures equations from random tests
+and keeps a proved one only when a routine tactic fails on it~\cite{hipster}.
+DreamCoder keeps a routine only when rewriting the solved programs through it
+shrinks the library and the programs together~\cite{dreamcoder}. LEGO-Prover
+grows a library of verified lemmas while it proves, retrieves them by the
+subgoals a proof requests and rewrites them to be more
+general~\cite{legoprover}; re-evaluated at matched compute, its accepted proofs
+contain no verbatim reuse of learned lemmas~\cite{berlotattwell}. Proof-Refactor
+lifts blocks of generated Lean proofs into helper theorems and has a language
+model judge how reusable they are~\cite{proofrefactor}, and LeanConjecturer
+generates Lean conjectures from Mathlib files and keeps those that
+\texttt{exact?} and Aesop do not close~\cite{leanconjecturer}. Georgiev,
+G\'omez-Serrano, Tao and Wagner describe candidates that met an automatic score
+without the property it was written to measure, and the scores they rebuilt to
+exclude them~\cite{alphaevolvemath}. The factoring pass restates a proved
+theorem with each hypothesis at the claims whose proofs use it, conjunct by
+conjunct and through the lemmas the proof calls. What a restatement adds is
+decided by theorems the kernel checks, and whether another proof uses it is read
+from proof terms and from what the graph loses when it is withdrawn.
+
 \section{Limits, and what stronger models change}\label{sec:limits}
 \papersectiontarget{systems-trust}
 
@@ -1519,6 +1550,43 @@ pp.~253--266, \href{https://doi.org/10.1145/3573105.3575671}{DOI}.
 framework for Lean~4,
 \href{https://github.com/leanprover-community/plausible}{GitHub}, accessed
 September 2026.
+\bibitem{beyondvacuity} H.~Chockler, A.~Gurfinkel, and O.~Strichman,
+\emph{Beyond Vacuity: Towards the Strongest Passing Formula}, Formal Methods in
+System Design 43 (2013), 552--571,
+\href{https://doi.org/10.1007/s10703-013-0192-6}{DOI}.
+\bibitem{lemmamining} C.~Kaliszyk and J.~Urban, \emph{Lemma Mining over HOL
+Light}, in \emph{Logic for Programming, Artificial Intelligence, and Reasoning
+(LPAR-19)}, LNCS 8312, Springer, 2013, pp.~503--517,
+\href{https://doi.org/10.1007/978-3-642-45221-5_34}{DOI}.
+\bibitem{hipster} M.~Johansson, D.~Ros\'en, N.~Smallbone, and K.~Claessen,
+\emph{Hipster: Integrating Theory Exploration in a Proof Assistant}, in
+\emph{Intelligent Computer Mathematics (CICM 2014)}, LNCS 8543, Springer, 2014,
+pp.~108--122, \href{https://doi.org/10.1007/978-3-319-08434-3_9}{DOI}.
+\bibitem{dreamcoder} K.~Ellis, C.~Wong, M.~Nye, M.~Sabl\'e-Meyer, L.~Cary,
+L.~Morales, L.~Hewitt, A.~Solar-Lezama, and J.~B.~Tenenbaum, \emph{DreamCoder:
+Growing Generalizable, Interpretable Knowledge with Wake-Sleep Bayesian Program
+Learning}, 2020, \href{https://arxiv.org/abs/2006.08381}{arXiv:2006.08381}.
+\bibitem{legoprover} H.~Wang, H.~Xin, C.~Zheng, L.~Li, Z.~Liu, Q.~Cao,
+Y.~Huang, J.~Xiong, H.~Shi, E.~Xie, J.~Yin, Z.~Li, H.~Liao, and X.~Liang,
+\emph{LEGO-Prover: Neural Theorem Proving with Growing Libraries}, in
+\emph{International Conference on Learning Representations}, 2024,
+\href{https://arxiv.org/abs/2310.00656}{arXiv:2310.00656}.
+\bibitem{berlotattwell} I.~Berlot-Attwell, T.~Sesterhenn, F.~Rudzicz, and
+X.~Si, \emph{Is This LLM Library Learning? Evaluation Must Account For Compute
+and Behaviour}, in \emph{Proceedings of the 19th Conference of the European
+Chapter of the Association for Computational Linguistics, Volume 1: Long
+Papers}, 2026, pp.~3534--3568,
+\href{https://doi.org/10.18653/v1/2026.eacl-long.163}{DOI}.
+\bibitem{proofrefactor} Y.~Fu, P.~Liu, Z.~Wang, and K.~Yuan,
+\emph{Proof-Refactor: Refactoring Generated Formal Proofs into Modular
+Artifacts}, 2026, \href{https://arxiv.org/abs/2606.03743}{arXiv:2606.03743}.
+\bibitem{leanconjecturer} N.~Onda, K.~Kasaura, Y.~Oriike, M.~Taniguchi,
+A.~Sannai, and S.~Sonoda, \emph{LeanConjecturer: Automatic Generation of
+Mathematical Conjectures for Theorem Proving}, 2025,
+\href{https://arxiv.org/abs/2506.22005}{arXiv:2506.22005}.
+\bibitem{alphaevolvemath} B.~Georgiev, J.~G\'omez-Serrano, T.~Tao, and
+A.~Z.~Wagner, \emph{Mathematical Exploration and Discovery at Scale}, 2025,
+\href{https://arxiv.org/abs/2511.02864v3}{arXiv:2511.02864v3}.
 \bibitem{litt} D.~Litt, \emph{A beginning for mathematics}, 13 September
 2026, \href{https://www.daniellitt.com/blog/2026/9/13/a-beginning-for-mathematics/}{blog post}.
 \bibitem{chu} T.~Chu, \emph{The AI dissenter viewpoint}, \emph{Proofs and
