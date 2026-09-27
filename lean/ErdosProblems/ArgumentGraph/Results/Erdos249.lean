@@ -29,14 +29,6 @@ namespace ErdosProblems.Erdos249.PaperCompleteR21
 open Erdos249257.TotientTailPeriodKiller
 open ErdosProblems.Erdos249.PaperCompleteR21.ExcludedCofactor
 
-/-- The bases of `[X, 2X)` outside the supplier bases are the non-supplier bases. -/
-theorem filter_not_mem_pivotSupplierBases (X L s : ℕ) :
-    (Finset.Ico X (2 * X)).filter (fun N => N ∉ pivotSupplierBases X L s)
-      = pivotNonSupplierBases X L s := by
-  unfold pivotNonSupplierBases pivotSupplierBases
-  refine Finset.filter_congr fun N hN => ?_
-  simp [Finset.mem_filter, hN]
-
 /-- The bad-base clause, read off the excluded-cofactor count. -/
 theorem card_pivotBadBases_le_of_count (h X : ℕ)
     (hcount : ((((pivotSupplierBases X (minimalDepth h 26 X) 26).filter
