@@ -98,10 +98,26 @@ def normaliseBindersAux : Nat → Expr → Nat → Expr
 statements that differ only in naming compare equal. -/
 def normaliseBinders (e : Expr) : Expr := normaliseBindersAux traversalFuel e 0
 
+/-- Whether the declaration `name` exists with universe parameters `levels` and a
+statement definitionally equal to `wanted`. A derived name is a contract on its
+statement: a command that finds the name taken by a different statement reports
+it, rather than taking the old theorem for the one it was asked for. The check
+assigns nothing. -/
+def existingTypeMatches (name : Name) (levels : List Name) (wanted : Expr) : MetaM Bool := do
+  let some info := (← getEnv).find? name | return false
+  unless info.levelParams.length == levels.length do return false
+  let actual := info.type.instantiateLevelParams info.levelParams (levels.map mkLevelParam)
+  return (← budgeted 5000 (withoutModifyingState (withNewMCtxDepth (isDefEq actual wanted)))) == some true
+
 /-- Add a theorem after a synchronous kernel check; the error text when the
-kernel rejects it. -/
+kernel rejects it. When `name` already exists with the same statement (the command
+ran before in this environment) nothing is added; when it exists with another
+statement, that is an error. -/
 def addChecked (name : Name) (levelParams : List Name) (type value : Expr) (doc : String) :
     MetaM (Except String Unit) := do
+  if (← getEnv).contains name then
+    if ← existingTypeMatches name levelParams type then return .ok ()
+    return .error s!"{name} already exists with a different statement"
   let decl := Declaration.thmDecl { name, levelParams, type, value }
   match Kernel.Environment.addDecl (← getEnv).toKernelEnv (← getOptions) decl with
   | .error ex => return .error (← (ex.toMessageData (← getOptions)).toString)
@@ -254,6 +270,8 @@ def deriveConjuncts (name : Name) : MetaM (Except String (Array Name)) := do
   for (k, type, value, dropped) in parts do
     let newName := name ++ Name.mkSimple s!"part_{k}"
     if (← getEnv).contains newName then
+      unless ← existingTypeMatches newName info.levelParams type do
+        return .error s!"{newName} already exists with a different statement"
       added := added.push newName
       continue
     let doc := s!"Conjunct {k} of `{name}`, which its proof establishes without \
@@ -833,7 +851,8 @@ def weakeningResult (name : Name) (i : Nat) : DeriveM (Except String (Name × We
     | .ok w =>
       let wName := name ++ Name.mkSimple s!"weakened_{i}"
       if (← getEnv).contains wName then
-        pure (.ok (wName, w))
+        if ← existingTypeMatches wName info.levelParams w.type then pure (.ok (wName, w))
+        else pure (.error s!"{wName} already exists with a different statement")
       else
         let doc := s!"`{name}` with its hypothesis number {i} replaced by what its proof \
           uses of it. Derived by `derive_weakening` from the same proof."
@@ -1025,7 +1044,9 @@ def frontierAt (name : Name) (i : Nat) (stops : Array Name) (suppliers : Array N
     | some n => "_" ++ n.getString!
     | none => "") ++ (if discharged > 0 then "_supplied" else "")
   let newName := name ++ Name.mkSimple s!"frontier_{i}{suffix}"
-  if (← getEnv).contains newName then return .ok newName
+  if (← getEnv).contains newName then
+    if ← existingTypeMatches newName info.levelParams type then return .ok newName
+    return .error s!"{newName} already exists with a different statement"
   let stopText := if stops.isEmpty then "as far as the chain goes"
     else s!"keeping the use sites of {stops.toList}"
   let supplyText := if discharged == 0 then ""
@@ -1057,7 +1078,7 @@ def statementLine (n : Name) (limit : Nat := 600) : MetaM String := do
   let flat := " ".intercalate (flat.splitOn " " |>.filter (· ≠ ""))
   return if flat.length ≤ limit then flat else String.ofList (flat.toList.take limit) ++ " …"
 
-private def reportAdded (n : Name) : MetaM Unit := do
+def reportAdded (n : Name) : MetaM Unit := do
   logInfo m!"added {n} : {← statementLine n}"
 
 @[command_elab deriveIdleCmd] def elabDeriveIdle : CommandElab := fun stx => do
