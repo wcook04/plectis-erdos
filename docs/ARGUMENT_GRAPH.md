@@ -360,18 +360,26 @@ kernel check:
   proof never uses;
 * `derive_weakening T`: for each hypothesis `h : H` the proof uses only inside
   use sites, `T.weakened_i` (the statement with `H` replaced by the
-  propositions `C₁ … Cₖ` those sites prove) and `T.use_i_j : H → Cⱼ`;
+  propositions `C₁ … Cₖ` those sites prove) and `T.use_i_j : H → Cⱼ`. The use
+  sites are those of the export's used-consequence pass; when some occurrence
+  of `h` lies in none, they are those of its scope-aware version
+  (`PLECTIS_CONTINUATION_USED_V2`): a site may mention variables bound in the
+  proof (`L n h` under a binder `n`), its consequence is its proposition closed
+  over the variables it needs (`Cⱼ = ∀ n, P n`), and the site becomes the new
+  hypothesis applied to them;
 * `derive_frontier T`: `T.frontier_i`, which follows the weakenings through
   the theorems the proof applies `h` to. When a use site is `L … h …` and the
   proof of `L` uses that hypothesis only through consequences of its own, the
-  site is replaced by `L.weakened_p` applied to proofs of those consequences,
+  site is replaced by `L.weakened_p` applied to proofs of those consequences
+  (closed over the site's variables when its other arguments mention them),
   recursively, and each consequence where the chain stops becomes one
   hypothesis, assumed once however many branches need it.
   `derive_frontier T at L` stops at the use sites of `L`, and
   `derive_frontier T using S` discharges each such hypothesis that the corpus
-  theorem `S` proves (exactly, or after instantiating some of its binders by
-  unification); when every one is discharged, `T`'s hypothesis is gone and the
-  theorem is named `…_supplied`;
+  theorem `S` proves (exactly, after instantiating some of its binders by
+  unification, or, for a consequence closed over a site's variables, for each
+  value of them); when every one is discharged, `T`'s hypothesis is gone and
+  the theorem is named `…_supplied`;
 * `derive_conjuncts T`: when `T` concludes `A₁ ∧ … ∧ Aₙ` (or `A ↔ B`, whose
   claims are `A → B` and `B → A`), `T.part_k` states the `k`-th claim with only
   the hypotheses its proof uses. That proof is the projection of `T`'s proof
