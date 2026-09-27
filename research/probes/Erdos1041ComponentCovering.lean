@@ -252,11 +252,13 @@ theorem componentEval_isCoveringMapOn (p : Polynomial ℂ) (hp : 0 < p.natDegree
     (hregular : ∀ e : connectedComponent z,
       componentEval p z e ∈ s → p.derivative.eval e.val.val ≠ 0) :
     IsCoveringMapOn (componentEval p z) s := by
+  have hpreopen : IsOpen (p.eval ⁻¹' unitDisc) :=
+    (Metric.isOpen_ball : IsOpen unitDisc).preimage p.continuous_aeval
   letI : LocallyConnectedSpace (p.eval ⁻¹' unitDisc) :=
-    ((Metric.isOpen_ball : IsOpen unitDisc).preimage p.continuous_aeval).locallyConnectedSpace
+    hpreopen.locallyConnectedSpace
   let j : connectedComponent z → ℂ := fun e => e.val.val
   have hj : Topology.IsOpenEmbedding j :=
-    (((Metric.isOpen_ball : IsOpen unitDisc).preimage p.continuous_aeval).isOpenEmbedding_subtypeVal).comp
+    hpreopen.isOpenEmbedding_subtypeVal.comp
       isOpen_connectedComponent.isOpenEmbedding_subtypeVal
   have hp_local : IsLocalHomeomorphOn p.eval
       (j '' (componentEval p z ⁻¹' s)) := by
@@ -337,6 +339,36 @@ theorem existsUnique_root_branch {ι : Type*} [Finite ι] (p : Polynomial ℂ)
   apply (polynomial_isCoveringMap p hp v hcritical).existsUnique_continuousMap_lifts
   exact Subtype.ext ha
 
+/-- Inclusion of the slit domain into the unit disc as a continuous map. -/
+def domainInDisc {ι : Type*} (v : ι → ℂ) : C(domain v, unitDisc) :=
+  ⟨fun w => ⟨w.val, by
+      simpa [unitDisc, Metric.mem_ball, dist_zero_right] using w.property.1⟩,
+    continuous_subtype_val.subtype_mk _⟩
+
+/-- Each connected sublevel component contains a root. -/
+theorem component_has_root (p : Polynomial ℂ) (hp : 0 < p.natDegree)
+    (z : p.eval ⁻¹' unitDisc) :
+    ∃ a : connectedComponent z, p.eval a.val.val = 0 := by
+  obtain ⟨a, ha⟩ := componentEval_surjective p hp z
+    ⟨0, by simp [unitDisc]⟩
+  exact ⟨a, congrArg (fun w : unitDisc => w.val) ha⟩
+
+/-- Each root in the selected component determines a unique continuous inverse
+branch there. Only critical values of that component are excluded. This does
+not assert a conformal sheet decomposition or a formula for its sheet count. -/
+theorem component_existsUnique_root_branch {ι : Type*} [Finite ι]
+    (p : Polynomial ℂ) (hp : 0 < p.natDegree) (z : p.eval ⁻¹' unitDisc)
+    (v : ι → ℂ) (hv : ∀ i, v i ≠ 0)
+    (hcritical : ∀ e : connectedComponent z,
+      p.derivative.eval e.val.val = 0 → ∃ i, p.eval e.val.val = v i)
+    (a : connectedComponent z) (ha : p.eval a.val.val = 0) :
+    ∃! F : C(domain v, connectedComponent z),
+      F ⟨0, zero_mem v hv⟩ = a ∧ componentEval p z ∘ F = domainInDisc v := by
+  letI : SimplyConnectedSpace (domain v) := simplyConnected v hv
+  letI : LocPathConnectedSpace (domain v) := (isOpen_domain v hv).locPathConnectedSpace
+  exact (componentEval_slit_covering p hp z v hcritical).existsUnique_continuousMap_lifts
+    (domainInDisc v) (Subtype.ext ha) (fun w => w.property)
+
 #print axioms zero_mem
 #print axioms starConvex
 #print axioms contractible
@@ -356,5 +388,7 @@ theorem existsUnique_root_branch {ι : Type*} [Finite ι] (p : Polynomial ℂ)
 #print axioms isClosed_outwardRay
 #print axioms isOpen_domain
 #print axioms existsUnique_root_branch
+#print axioms component_has_root
+#print axioms component_existsUnique_root_branch
 
 end ErdosProblems.Erdos1041.OutwardSlitDomain
