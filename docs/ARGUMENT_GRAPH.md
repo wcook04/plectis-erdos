@@ -353,8 +353,8 @@ Binding each row to the hypothesis it stands for is the caller's work.
 The graph's findings about a proof live in an export stream. The module
 [`ErdosProblems.ArgumentGraph.Derive`](../lean/ErdosProblems/ArgumentGraph/Derive.lean)
 rebuilds them inside the library, so a paper, the ledger or another proof can
-cite them by name. Its three commands read a theorem's proof term and add, after
-a kernel check:
+cite them by name. Its commands read a theorem's proof term and add, after a
+kernel check:
 
 * `derive_idle T`: `T.idle`, the statement of `T` without the hypotheses its
   proof never uses;
@@ -367,14 +367,25 @@ a kernel check:
   site is replaced by `L.weakened_p` applied to proofs of those consequences,
   recursively, and each consequence where the chain stops becomes one
   hypothesis, assumed once however many branches need it.
-  `derive_frontier T at L` stops at the use sites of `L`.
+  `derive_frontier T at L` stops at the use sites of `L`, and
+  `derive_frontier T using S` discharges each such hypothesis that the corpus
+  theorem `S` proves (exactly, or after instantiating some of its binders by
+  unification); when every one is discharged, `T`'s hypothesis is gone and the
+  theorem is named `…_supplied`;
+* `derive_conjuncts T`: when `T` concludes `A₁ ∧ … ∧ Aₙ` and its proof builds
+  the conjunction part by part, `T.part_k` states `Aₖ` with only the
+  hypotheses the proof of that part uses. A paper result stated modulo a named
+  input may so have parts that hold without it.
 
 For the excluded-cofactor estimate of #249, `prop_badcof` assumes the prime
 number theorem, and its proof uses it only through a chain that ends at the
 dyadic prime count `eventually_card_primes_dyadic_le`. `derive_frontier
 prop_badcof at eventually_card_primes_dyadic_le` states `prop_badcof` with the
 prime number theorem replaced by that count, and the kernel checks the
-statement with a proof assembled from the weakenings along the chain.
+statement with a proof assembled from the weakenings along the chain. The
+first two conjuncts of `prop_badcof` (the offset bound and the identification
+of the excluded set) need neither the prime number theorem nor the density
+hypothesis, and `derive_conjuncts prop_badcof` states them so.
 
 [`scripts/build_argument_frontier.py`](../scripts/build_argument_frontier.py)
 writes the commands for every theorem a paper cites, one module per problem
