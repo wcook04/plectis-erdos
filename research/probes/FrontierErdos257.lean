@@ -1,4 +1,62 @@
 import Lean
+import Erdos249257.AdelicHeightObstruction
+import Erdos249257.BooleanMobiusCriticalCapacityCofinal
+import Erdos249257.BooleanMobiusExactRowCrossing
+import Erdos249257.BooleanMobiusExactRowDoubling
+import Erdos249257.BooleanMobiusGreedyReduction
+import Erdos249257.BooleanMobiusLocalRepair
+import Erdos249257.BooleanMobiusSkipRow
+import Erdos249257.BooleanMobiusSkipRowCofinal
+import Erdos249257.CertificateKernel
+import Erdos249257.CofinalStripReturn
+import Erdos249257.DyadicPrefixCompression
+import Erdos249257.GenericTailOrbitRigidity
+import Erdos249257.GreedyAchievementSet
+import Erdos249257.HalfCarryReachability
+import Erdos249257.HalfCutLocator
+import Erdos249257.HalfCylinderFullShellSeamBridge
+import Erdos249257.HalfCylinderLargestSkipInduction
+import Erdos249257.HalfCylinderMiddleCarryLowerBound
+import Erdos249257.HalfCylinderSkippedEndpointClassifier
+import Erdos249257.HalfTrappingReturnCarry
+import Erdos249257.HalfUpperResetCriticalBand
+import Erdos249257.RationalSupportCarrySkeleton
+import Erdos249257.SuffixCylinderTerminalOnlyBridge
+import Erdos249257.TwentyOneQuotientGreedy
+import ErdosProblems.Erdos257.PaperCompleteR20.CarryCollapseCorrespondence
+import ErdosProblems.Erdos257.PaperCompleteR20.GeneralRepairCorrespondence
+import ErdosProblems.Erdos257.PaperCompleteR20.QuotientRowReal
+import ErdosProblems.Erdos257.PaperCompleteR21.ArithmeticCounterexampleAssembly
+import ErdosProblems.Erdos257.PaperCompleteR21.BalancedPulseFanOutCount
+import ErdosProblems.Erdos257.PaperCompleteR21.BranchCellHorizonExclusions
+import ErdosProblems.Erdos257.PaperCompleteR21.CentredCompletionAndDecisionBoundary
+import ErdosProblems.Erdos257.PaperCompleteR21.CompatibleFiniteRowFamily
+import ErdosProblems.Erdos257.PaperCompleteR21.DenominatorBudget
+import ErdosProblems.Erdos257.PaperCompleteR21.DyadicBandAndTwoSidedBounds
+import ErdosProblems.Erdos257.PaperCompleteR21.EventualNonnegativeMargin
+import ErdosProblems.Erdos257.PaperCompleteR21.ExactRowDichotomyCountermodels
+import ErdosProblems.Erdos257.PaperCompleteR21.FeedbackRowStripWitnessAllDepths
+import ErdosProblems.Erdos257.PaperCompleteR21.GreedyGapCriteria
+import ErdosProblems.Erdos257.PaperCompleteR21.GreedyOrbitNoTies
+import ErdosProblems.Erdos257.PaperCompleteR21.LinearChannelAndMiddleCellExclusion
+import ErdosProblems.Erdos257.PaperCompleteR21.LogarithmicInitialInterval
+import ErdosProblems.Erdos257.PaperCompleteR21.MersenneChannelSurvivalAllHeights
+import ErdosProblems.Erdos257.PaperCompleteR21.MersenneQuotientRowRecurrences
+import ErdosProblems.Erdos257.PaperCompleteR21.OneSidedCertificateHierarchy
+import ErdosProblems.Erdos257.PaperCompleteR21.ResetSqrtEscapeHalfMembership
+import ErdosProblems.Erdos257.PaperCompleteR21.ResidueClassSupport
+import ErdosProblems.Erdos257.PaperCompleteR21.ScalarLocalisationHeightObstruction
+import ErdosProblems.Erdos257.PaperCompleteR21.SeamEscapeAndTerminalStrip
+import ErdosProblems.Erdos257.PaperCompleteR21.ShortWindowDivisorPhase
+import ErdosProblems.Erdos257.PaperCompleteR21.SkipSafetyAndDivisorZeroRuns
+import ErdosProblems.Erdos257.PaperCompleteR21.SquareDepthAndHalfMembershipEquivalences
+import ErdosProblems.Erdos257.PaperCompleteR21.TerminalStripExactRowGap
+import ErdosProblems.Erdos257.PaperCompleteR21.ThreeBranchRowDynamics
+import ErdosProblems.Erdos257.PaperCompleteR21.TruncatedRungGreedyDecision
+import ErdosProblems.Erdos257.PaperCompleteR21.TruncatedRungWitnessHorizon
+import ErdosProblems.Erdos257.PaperCompleteR21.UpperResetBandCertificate
+import ErdosProblems.Erdos257.PaperCompleteR8.WeightedReturn
+import ErdosProblems.Erdos257.WitnessLogicIrrational
 -- SPDX-FileCopyrightText: 2026 Will Cook
 -- SPDX-License-Identifier: Apache-2.0
 
@@ -1344,6 +1402,8 @@ structure FactorState where
   work : Nat := 0
   /-- Theorems added, in order. -/
   added : Array Name := #[]
+  /-- Per theorem added: each moved hypothesis and the claims that assume it. -/
+  placements : Array (Name × String × String) := #[]
 
 abbrev FactorM := StateRefT FactorState MetaM
 
@@ -1371,6 +1431,25 @@ def factorBudgeted {α : Type} (heartbeats : Nat) (x : FactorM α) : FactorM (Op
   withCurrHeartbeats <|
     withTheReader Core.Context (fun ctx => { ctx with maxHeartbeats := heartbeats * 1000 }) do
       tryCatchRuntimeEx (do return some (← x)) fun _ => return none
+
+/-- Whether a constant is a theorem. -/
+def isTheoremInfo : ConstantInfo → Bool
+  | .thmInfo _ => true
+  | _ => false
+
+/-- The name of the factoring of `name`: `name.factored` for a theorem of this library
+(or of the file being checked), and `ErdosProblems.ArgumentGraph.Factored.<name>` for
+one imported from another library, so that nothing is added in another library's
+namespace. -/
+def factoredName (name : Name) : MetaM Name := do
+  let env ← getEnv
+  match env.getModuleIdxFor? name with
+  | none => return name ++ `factored
+  | some idx =>
+    let module := env.header.moduleNames[idx.toNat]!
+    if (`ErdosProblems).isPrefixOf module || (`Erdos249257).isPrefixOf module then
+      return name ++ `factored
+    return `ErdosProblems.ArgumentGraph.Factored ++ name
 
 /-- The hypotheses of `mv` that `e` mentions. -/
 def movedIn (mv : Array FVarId) (e : Expr) : Array FVarId :=
@@ -1574,39 +1653,72 @@ def liftInnerAux : Nat → Placement FVarId → Expr → Expr → MetaM Expr
     | _, _ => return e
 end
 
-/-- The docstring of a factored theorem: where each moved hypothesis went, claims
-numbered from 1 in the order the conclusion states them. -/
+/-- Per guard of a placement, the first and last claim number below its node (claims
+numbered from `k` in the order the conclusion states them); and the next number. -/
+def Placement.claimSpans : Placement FVarId → Nat → Array (FVarId × Nat × Nat) × Nat
+  | .leaf g, k => (g.map fun h => (h, k, k), k + 1)
+  | .conj g l r, k =>
+      let (sl, k₁) := l.claimSpans k
+      let (sr, k₂) := r.claimSpans k₁
+      (g.map (fun h => (h, k, k₂ - 1)) ++ sl ++ sr, k₂)
+  | .ex g b, k =>
+      let (sb, k₁) := b.claimSpans k
+      (g.map (fun h => (h, k, k₁ - 1)) ++ sb, k₁)
+  | .pi g b, k =>
+      let (sb, k₁) := b.claimSpans k
+      (g.map (fun h => (h, k, k₁ - 1)) ++ sb, k₁)
+
+/-- Whether the factoring says more than the theorem without its unused hypotheses:
+some hypothesis it keeps is assumed by some claims and not by others. When every
+hypothesis a proof uses is still assumed by every claim, the factored statement is
+the original one with its premises moved inward, which says nothing new. -/
+def Placement.separates (p : Placement FVarId) (moved : Array FVarId) : Bool :=
+  let (spans, next) := p.claimSpans 1
+  moved.any fun h =>
+    let here := spans.filter (·.1 == h)
+    !here.isEmpty && here.foldl (fun n (_, a, b) => n + (b + 1 - a)) 0 < next - 1
+
+/-- The claims of a conclusion read along a placement, pretty-printed on one line
+(binders opened under their own names), in the order the conclusion states them. -/
+def leafClaimTexts : Nat → Placement FVarId → Expr → MetaM (Array String)
+  | 0, _, g => return #[flat (toString (← ppExpr g))]
+  | fuel + 1, p, g => do
+    match p, claimShape g with
+    | .conj _ l r, .conj a b => return (← leafClaimTexts fuel l a) ++ (← leafClaimTexts fuel r b)
+    | .pi _ b, .pi n d gb bi =>
+        withLocalDecl n bi d fun x => leafClaimTexts fuel b (gb.instantiate1 x)
+    | .ex _ b, .ex _ α pred =>
+        withLocalDecl (predicateBinder pred) .default α fun x => leafClaimTexts fuel b (predicateAt pred x)
+    | _, _ => return #[flat (toString (← ppExpr g))]
+where
+  flat (s : String) : String := " ".intercalate ((s.replace "\n" " ").splitOn " " |>.filter (· ≠ ""))
+
+/-- The docstring of a factored theorem, and per moved hypothesis where it went:
+claims are numbered from 1 in the order the conclusion states them. -/
 def factorDoc (name : Name) (xs : Array Expr) (moved : Array FVarId)
-    (inner : Placement FVarId) : MetaM String := do
-  let (spans, total) := claimSpans inner 1
+    (inner : Placement FVarId) (body : Expr) : MetaM (String × Array (String × String)) := do
+  let (spans, total) := inner.claimSpans 1
+  let texts ← leafClaimTexts spineFuel inner body
   let mut parts : Array String := #[]
+  let mut placed : Array (String × String) := #[]
   for h in moved do
     let some x := xs.find? (·.fvarId! == h) | continue
     let ty := toString (← ppExpr (← inferType x))
     let at_ := spans.filter (·.1 == h)
     if at_.isEmpty then
       parts := parts.push s!"`{ty}` is not used"
+      placed := placed.push (ty, "unused")
     else
       let where_ := at_.map fun (_, a, b) => if a == b then s!"claim {a}" else s!"claims {a}-{b}"
       parts := parts.push s!"`{ty}` is assumed by {", ".intercalate where_.toList}"
-  return s!"`{name}` with each hypothesis assumed only by the claims whose proofs use it \
+      let shown := at_.map fun (_, a, b) =>
+        if a == b then s!"claim {a}: {(texts[a - 1]?).getD ""}" else s!"claims {a}-{b}"
+      placed := placed.push (ty, "; ".intercalate shown.toList)
+  let doc := s!"`{name}` with each hypothesis assumed only by the claims whose proofs use it \
     (claims numbered 1 to {total - 1} as the conclusion states them): \
     {"; ".intercalate parts.toList}. The witnesses are those of the same proof. \
     Derived by `derive_factor`."
-where
-  /-- Per guard, the first and last claim number below its node; and the next number. -/
-  claimSpans : Placement FVarId → Nat → Array (FVarId × Nat × Nat) × Nat
-    | .leaf g, k => (g.map fun h => (h, k, k), k + 1)
-    | .conj g l r, k =>
-        let (sl, k₁) := claimSpans l k
-        let (sr, k₂) := claimSpans r k₁
-        (g.map (fun h => (h, k, k₂ - 1)) ++ sl ++ sr, k₂)
-    | .ex g b, k =>
-        let (sb, k₁) := claimSpans b k
-        (g.map (fun h => (h, k, k₁ - 1)) ++ sb, k₁)
-    | .pi g b, k =>
-        let (sb, k₁) := claimSpans b k
-        (g.map (fun h => (h, k, k₁ - 1)) ++ sb, k₁)
+  return (doc, placed)
 
 /-! ## Normalising the spine, and following a construction into the library -/
 
@@ -1661,8 +1773,12 @@ def normAppAux : Nat → Array FVarId → Expr → FactorM Expr
         ← normAux fuel mv args[3]!]
     if let some app ← matchMatcherApp? e (alsoCasesOn := true) then
       if isCasesOnRecursor (← getEnv) app.matcherName then return ← normCasesAux fuel mv app
-      -- a compiled `match` is an elimination by its definition
-      if let some u ← unfoldDefinition? e then return ← normAux fuel mv u.headBeta
+      -- a compiled `match` is an elimination by its definition (`unfoldDefinition?`
+      -- declines matchers, so the definition is instantiated here)
+      if let some (.defnInfo d) := (← getEnv).find? app.matcherName then
+        if d.levelParams.length == app.matcherLevels.size then
+          let value := d.value.instantiateLevelParams d.levelParams app.matcherLevels.toList
+          return ← normAux fuel mv (mkAppN value e.getAppArgs).headBeta
       return e
     -- a library theorem given a hypothesis being moved, proving a structured claim
     if !(movedIn mv e).isEmpty then
@@ -1697,7 +1813,7 @@ def substLibraryAux : Nat → Array FVarId → Expr → FactorM (Option Expr)
   | fuel + 1, mv, e => do
     let .const L us := e.getAppFn | return none
     let some info := (← getEnv).find? L | return none
-    unless info.isTheorem do return none
+    unless isTheoremInfo info do return none
     let args := e.getAppArgs
     let n ← forallTelescope info.type fun xs _ => return xs.size
     unless args.size == n do return none
@@ -1732,7 +1848,7 @@ def factorTheoremAux : Nat → Name → Bool → FactorM (Except String LibFacto
   | fuel + 1, name, requireDeep => do
     let info ← getConstInfo name
     let some value := info.value? | return .error "not a theorem with a proof term"
-    unless info.isTheorem do return .error "not a theorem"
+    unless isTheoremInfo info do return .error "not a theorem"
     forallTelescope info.type fun xs body => do
       let mut mv : Array FVarId := #[]
       for x in xs, i in [0:xs.size] do
@@ -1756,21 +1872,24 @@ def factorTheoremAux : Nat → Name → Bool → FactorM (Except String LibFacto
       if moved.isEmpty then
         return .error "every hypothesis its proof uses is needed before the conclusion's first claim"
       let inner := place.withGuards #[]
-      let deep := inner.hasInnerGuards
+      let deep := inner.separates moved
       if requireDeep && !deep then
-        return .error "it only leaves out hypotheses the proof never uses, which derive_idle adds"
+        return .error (if inner.hasInnerGuards
+          then "every hypothesis it moves is still assumed by every claim, which says nothing new"
+          else "it only leaves out hypotheses the proof never uses, which derive_idle adds")
       let keep := xs.filter fun x => !moved.contains x.fvarId!
       let type ← instantiateMVars (← mkForallFVars keep (← buildInnerAux spineFuel inner body))
       let proofBody ← factorInnerAux fuel mv inner body proof top
       let value ← instantiateMVars (← mkLambdaFVars keep proofBody)
       if type.hasFVar || type.hasMVar || value.hasFVar || value.hasMVar then
         return .error "the factored proof uses a hypothesis outside the claims that assume it"
-      let newName := name ++ `factored
-      let doc ← factorDoc name xs moved inner
+      let newName ← factoredName name
+      let (doc, placed) ← factorDoc name xs moved inner body
       match ← addChecked newName info.levelParams type value doc with
       | .error e => return .error s!"kernel rejected {newName}: {e}"
       | .ok () =>
-        modify fun s => { s with added := s.added.push newName }
+        let rows : Array (Name × String × String) := placed.map fun (h, w) => (newName, h, w)
+        modify fun s => { s with added := s.added.push newName, placements := s.placements ++ rows }
         let index : FVarId → Nat := fun h => (order.findIdx? (· == h)).getD 0
         let keepIdx := (Array.range xs.size).filter fun j => !moved.contains order[j]!
         return .ok { name := newName, keep := keepIdx, place := inner.map index, deep }
@@ -1871,7 +1990,7 @@ def factorInnerAux : Nat → Array FVarId → Placement FVarId → Expr → Expr
                 (← buildClaimAux spineFuel pr b) (← factorProofAux fuel mv pl a ea scope)
                 (← factorProofAux fuel mv pr b eb scope)
           | .pi _ pb, .pi n d gb bi =>
-              withLocalDecl n bi d fun x => do
+              return ← withLocalDecl n bi d fun x => do
                 let some ex ← applyAlts? app x (gb.instantiate1 x) | throwError "cannot apply an elimination"
                 let ex ← normAux fuel mv ex
                 mkLambdaFVars #[x] (← factorProofAux fuel mv pb (gb.instantiate1 x) ex scope)
@@ -1914,142 +2033,337 @@ syntax (name := deriveFactorCmd) "derive_factor " ident : command
     let name ← realizeGlobalConstNoOverloadWithInfo stx[1]
     let (r, s) ← (factorBudgeted factorBudget (factorTheorem name)).run {}
     -- library factorings derived on the way are theorems in their own right
+    let own ← factoredName name
     for n in s.added do
-      unless n == name ++ `factored do reportAdded n
+      unless n == own do reportAdded n
     match r with
     | some (.ok lf) => reportAdded lf.name
     | some (.error e) => reportFailure m!"derive_factor {name}: {e}"
     | none => reportFailure m!"derive_factor {name}: the budget ran out (unknown)"
+    -- one line per moved hypothesis, for the frontier's input map
+    for (n, h, w) in s.placements do
+      logInfo m!"placed {n} :: {h} :: {w}"
 
 end ErdosProblems.ArgumentGraph
 
+/-! Frontier probe for Erdos257. -/
 
-/-! Toy corpus for `derive_factor`: core Lean only. Each positive case is followed by
-an `example` stating the exact factored statement expected, so a wrong placement is a
-type error; negative cases must log a failure (strict mode is off for them). -/
+set_option maxHeartbeats 4000000
 
-namespace FactorToys
+run_cmd Lean.logInfo "@@COMMAND 2054"
+derive_idle ErdosProblems.Erdos257.PaperCompleteR21.ShortWindowDivisorPhase.theta_eq_divisorResidueSum
+run_cmd Lean.logInfo "@@COMMAND 2056"
+derive_idle ErdosProblems.Erdos257.PaperCompleteR21.ShortWindowDivisorPhase.theta_eq_geometricForm
+run_cmd Lean.logInfo "@@COMMAND 2058"
+derive_idle ErdosProblems.Erdos257.PaperCompleteR21.ShortWindowDivisorPhase.theta_eq_tsum_divisorResidue
+run_cmd Lean.logInfo "@@COMMAND 2060"
+derive_idle ErdosProblems.Erdos257.PaperCompleteR21.arithmetic_logarithmic_counterexample
+run_cmd Lean.logInfo "@@COMMAND 2062"
+derive_idle ErdosProblems.Erdos257.PaperCompleteR21.logarithmic_initial_interval
+run_cmd Lean.logInfo "@@COMMAND 2064"
+derive_idle ErdosProblems.Erdos257.PaperCompleteR21.paper_effective_horizon_test
+run_cmd Lean.logInfo "@@COMMAND 2066"
+derive_idle ErdosProblems.Erdos257.PaperCompleteR21.paper_mersenne_channel_survival
+run_cmd Lean.logInfo "@@COMMAND 2068"
+derive_idle ErdosProblems.Erdos257.PaperCompleteR21.paper_one_orbit_stability
+run_cmd Lean.logInfo "@@COMMAND 2070"
+derive_idle ErdosProblems.Erdos257.PaperCompleteR21.paper_shared_prefix_family_strip_witness_after_feedback_of_all_depths
+run_cmd Lean.logInfo "@@COMMAND 2072"
+derive_idle ErdosProblems.Erdos257.PaperCompleteR21.paper_zero_run_le_eps_logb
+run_cmd Lean.logInfo "@@COMMAND 2074"
+derive_weakening Erdos249257.HalfCarryReachability.greedy_half_infinite_of_cofinalStripReturn
+run_cmd Lean.logInfo "@@COMMAND 2076"
+derive_frontier Erdos249257.HalfCarryReachability.greedy_half_infinite_of_cofinalStripReturn
+run_cmd Lean.logInfo "@@COMMAND 2078"
+derive_weakening Erdos249257.SeamTwoSidedDyadicCellEscape.twoSided
+run_cmd Lean.logInfo "@@COMMAND 2080"
+derive_frontier Erdos249257.SeamTwoSidedDyadicCellEscape.twoSided
+run_cmd Lean.logInfo "@@COMMAND 2082"
+derive_weakening Erdos249257.SuffixCylinderTerminalOnlyBridge.exists_infinite_positive_support_half_of_cofinalCylinderStages
+run_cmd Lean.logInfo "@@COMMAND 2084"
+derive_weakening Erdos249257.exists_laterProtectedExactLocalMersenneRow
+run_cmd Lean.logInfo "@@COMMAND 2086"
+derive_weakening Erdos249257.halfGreedySkippedCriticalQuotientSupply_of_precriticalSuffix
+run_cmd Lean.logInfo "@@COMMAND 2088"
+derive_weakening Erdos249257.half_mem_mersenneAchievementSet_of_criticalQuotientSupply
+run_cmd Lean.logInfo "@@COMMAND 2090"
+derive_weakening Erdos249257.half_mem_mersenneAchievementSet_of_largestSkipLateStepSocket
+run_cmd Lean.logInfo "@@COMMAND 2092"
+derive_weakening Erdos249257.half_mem_mersenneAchievementSet_of_middleProducerCardEscape
+run_cmd Lean.logInfo "@@COMMAND 2094"
+derive_frontier Erdos249257.half_mem_mersenneAchievementSet_of_middleProducerCardEscape
+run_cmd Lean.logInfo "@@COMMAND 2096"
+derive_weakening Erdos249257.half_mem_mersenneAchievementSet_of_middleProducerRowEscape
+run_cmd Lean.logInfo "@@COMMAND 2098"
+derive_frontier Erdos249257.half_mem_mersenneAchievementSet_of_middleProducerRowEscape
+run_cmd Lean.logInfo "@@COMMAND 2100"
+derive_weakening Erdos249257.half_mem_mersenneAchievementSet_of_positiveHalfGreedySkips
+run_cmd Lean.logInfo "@@COMMAND 2102"
+derive_weakening Erdos249257.half_mem_mersenneAchievementSet_of_secondChannelSeparation
+run_cmd Lean.logInfo "@@COMMAND 2104"
+derive_weakening Erdos249257.half_mem_mersenneAchievementSet_of_secondChannelSeparationRat_from_seven
+run_cmd Lean.logInfo "@@COMMAND 2106"
+derive_weakening Erdos249257.half_mem_mersenneAchievementSet_of_skippedFullShellNonnegative
+run_cmd Lean.logInfo "@@COMMAND 2108"
+derive_frontier Erdos249257.half_mem_mersenneAchievementSet_of_skippedFullShellNonnegative
+run_cmd Lean.logInfo "@@COMMAND 2110"
+derive_weakening Erdos249257.half_mem_mersenneAchievementSet_of_skippedSeamEscape
+run_cmd Lean.logInfo "@@COMMAND 2112"
+derive_frontier Erdos249257.half_mem_mersenneAchievementSet_of_skippedSeamEscape
+run_cmd Lean.logInfo "@@COMMAND 2114"
+derive_weakening Erdos249257.half_mem_mersenneAchievementSet_of_skipped_dyadicCap
+run_cmd Lean.logInfo "@@COMMAND 2116"
+derive_weakening Erdos249257.half_mem_mersenneAchievementSet_of_skipped_twoChannelCap
+run_cmd Lean.logInfo "@@COMMAND 2118"
+derive_weakening Erdos249257.half_mem_mersenneAchievementSet_of_upperResetDyadicBandEscape
+run_cmd Lean.logInfo "@@COMMAND 2120"
+derive_frontier Erdos249257.half_mem_mersenneAchievementSet_of_upperResetDyadicBandEscape
+run_cmd Lean.logInfo "@@COMMAND 2122"
+derive_frontier Erdos249257.half_mem_mersenneAchievementSet_of_upperResetDyadicBandEscape at Erdos249257.SeamUpperResetDyadicBandEscape.remainder_ge_row
+run_cmd Lean.logInfo "@@COMMAND 2124"
+derive_frontier Erdos249257.half_mem_mersenneAchievementSet_of_upperResetDyadicBandEscape at Erdos249257.SeamUpperResetDyadicBandEscape.not_rowSmall_after_upperRightRun
+run_cmd Lean.logInfo "@@COMMAND 2126"
+derive_weakening Erdos249257.twentyOneFatalAlignedBranch_eventually_affine_supercapacity
+run_cmd Lean.logInfo "@@COMMAND 2128"
+derive_frontier Erdos249257.twentyOneFatalAlignedBranch_eventually_affine_supercapacity
+run_cmd Lean.logInfo "@@COMMAND 2130"
+derive_weakening Erdos249257.twentyOneFatalAlignedBranch_eventually_strict_supercapacity
+run_cmd Lean.logInfo "@@COMMAND 2132"
+derive_weakening ErdosProblems.Erdos257.PaperCompleteR21.half_mem_mersenneAchievementSet_of_resetSqrtEscape
+run_cmd Lean.logInfo "@@COMMAND 2134"
+derive_frontier ErdosProblems.Erdos257.PaperCompleteR21.half_mem_mersenneAchievementSet_of_resetSqrtEscape
+run_cmd Lean.logInfo "@@COMMAND 2136"
+derive_frontier ErdosProblems.Erdos257.PaperCompleteR21.half_mem_mersenneAchievementSet_of_resetSqrtEscape at ErdosProblems.Erdos257.PaperCompleteR21.SeamResetSqrtEscape.crossingBoundEscape
+run_cmd Lean.logInfo "@@COMMAND 2138"
+derive_weakening ErdosProblems.Erdos257.PaperCompleteR21.paper_seam_escape_implies_full_shell_nonnegative
+run_cmd Lean.logInfo "@@COMMAND 2140"
+derive_weakening ErdosProblems.Erdos257.PaperCompleteR21.paper_seam_escape_implies_half_membership
+run_cmd Lean.logInfo "@@COMMAND 2142"
+derive_frontier ErdosProblems.Erdos257.PaperCompleteR21.paper_seam_escape_implies_half_membership
+run_cmd Lean.logInfo "@@COMMAND 2144"
+derive_weakening ErdosProblems.Erdos257.PaperCompleteR21.paper_terminal_strip_forces_half_membership
+run_cmd Lean.logInfo "@@COMMAND 2146"
+derive_weakening ErdosProblems.Erdos257.PaperCompleteR21.paper_theoremA_half_membership
+run_cmd Lean.logInfo "@@COMMAND 2148"
+derive_weakening ErdosProblems.Erdos257.PaperCompleteR21.paper_two_sided_dyadic_bound
+run_cmd Lean.logInfo "@@COMMAND 2150"
+derive_frontier ErdosProblems.Erdos257.PaperCompleteR21.paper_two_sided_dyadic_bound
+run_cmd Lean.logInfo "@@COMMAND 2152"
+derive_frontier ErdosProblems.Erdos257.PaperCompleteR21.paper_two_sided_dyadic_bound at Erdos249257.SeamTwoSidedDyadicCellEscape.step
+run_cmd Lean.logInfo "@@COMMAND 2154"
+derive_weakening Erdos249257.HalfCarryReachability.greedy_half_infinite_of_mobiusCenteredHalfCarry_sqrtBound
+run_cmd Lean.logInfo "@@COMMAND 2156"
+derive_frontier Erdos249257.half_mem_mersenneAchievementSet_of_largestSkipLateStepSocket
+run_cmd Lean.logInfo "@@COMMAND 2158"
+derive_frontier Erdos249257.half_mem_mersenneAchievementSet_of_largestSkipLateStepSocket at Erdos249257.largestSkipLateAt_of_stepSocket
+run_cmd Lean.logInfo "@@COMMAND 2160"
+derive_frontier Erdos249257.HalfCarryReachability.greedy_half_infinite_of_mobiusCenteredHalfCarry_sqrtBound using Erdos249257.HalfCarryReachability.greedy_half_infinite_of_mobiusCenteredHalfCarry_upperBound
+run_cmd Lean.logInfo "@@COMMAND 2162"
+derive_conjuncts Erdos249257.HalfCarryReachability.greedy_half_infinite_of_cofinalStripReturn
+run_cmd Lean.logInfo "@@COMMAND 2164"
+derive_conjuncts Erdos249257.HalfCarryReachability.greedy_half_infinite_of_mobiusCenteredHalfCarry_sqrtBound
+run_cmd Lean.logInfo "@@COMMAND 2166"
+derive_conjuncts Erdos249257.HalfCarryReachability.greedy_half_infinite_of_mobiusCenteredHalfCarry_upperBound
+run_cmd Lean.logInfo "@@COMMAND 2168"
+derive_conjuncts Erdos249257.SuffixCylinderTerminalOnlyBridge.exists_infinite_positive_support_half_of_cofinalCylinderStages
+run_cmd Lean.logInfo "@@COMMAND 2170"
+derive_conjuncts Erdos249257.twentyOneFatalAlignedBranch_eventually_affine_supercapacity
+run_cmd Lean.logInfo "@@COMMAND 2172"
+derive_conjuncts ErdosProblems.Erdos257.PaperCompleteR21.paper_terminal_strip_forces_half_membership
+run_cmd Lean.logInfo "@@COMMAND 2174"
+derive_factor Erdos249257.AdelicHeightObstruction.linearDescender_eq_smul_eval
+run_cmd Lean.logInfo "@@COMMAND 2176"
+derive_factor Erdos249257.BooleanMobiusGreedyReduction.localMersenneHalfTarget_lower_word_eq_greedy_and_remainder_eq
+run_cmd Lean.logInfo "@@COMMAND 2178"
+derive_factor Erdos249257.BooleanMobiusGreedyReduction.remainder_lt_gap_iff_eq_integerGreedyBits
+run_cmd Lean.logInfo "@@COMMAND 2180"
+derive_factor Erdos249257.HalfCarryReachability.greedy_half_infinite_of_cofinalStripReturn
+run_cmd Lean.logInfo "@@COMMAND 2182"
+derive_factor Erdos249257.HalfCarryReachability.greedy_half_infinite_of_mobiusCenteredHalfCarry_sqrtBound
+run_cmd Lean.logInfo "@@COMMAND 2184"
+derive_factor Erdos249257.HalfCarryReachability.greedy_half_infinite_of_mobiusCenteredHalfCarry_upperBound
+run_cmd Lean.logInfo "@@COMMAND 2186"
+derive_factor Erdos249257.HalfCarryReachability.infinite_support_half_of_mobiusCenteredHalfCarry_sqrtBound
+run_cmd Lean.logInfo "@@COMMAND 2188"
+derive_factor Erdos249257.HalfTrappingReturnCarry.overlappingReverseCarryWords_carryDifference_eq_twoPow_mul_odd
+run_cmd Lean.logInfo "@@COMMAND 2190"
+derive_factor Erdos249257.HalfUpperResetCriticalBand.dyadicBandEscape_iff_exists_critical
+run_cmd Lean.logInfo "@@COMMAND 2192"
+derive_factor Erdos249257.HalfUpperResetCriticalBand.exists_criticalDyadicBandIndex
+run_cmd Lean.logInfo "@@COMMAND 2194"
+derive_factor Erdos249257.IsStraddlePrefix.half_step_forced
+run_cmd Lean.logInfo "@@COMMAND 2196"
+derive_factor Erdos249257.IsStraddlePrefix.half_strict
+run_cmd Lean.logInfo "@@COMMAND 2198"
+derive_factor Erdos249257.SuffixCylinderTerminalOnlyBridge.exists_infinite_positive_support_half_of_cofinalCylinderStages
+run_cmd Lean.logInfo "@@COMMAND 2200"
+derive_factor Erdos249257.balancedPulse_no_autonomous_decoder
+run_cmd Lean.logInfo "@@COMMAND 2202"
+derive_factor Erdos249257.divInt_mem_nextMersenneDyadicSliver_iff_excess
+run_cmd Lean.logInfo "@@COMMAND 2204"
+derive_factor Erdos249257.dyadicResidualInt_denominator_sandwich
+run_cmd Lean.logInfo "@@COMMAND 2206"
+derive_factor Erdos249257.dyadicResidual_denominator_sandwich
+run_cmd Lean.logInfo "@@COMMAND 2208"
+derive_factor Erdos249257.exists_boolean_word_of_lt_two_pow
+run_cmd Lean.logInfo "@@COMMAND 2210"
+derive_factor Erdos249257.exists_exactRowStrictUpperExtension_two_mul_sub_one_of_exact_below
+run_cmd Lean.logInfo "@@COMMAND 2212"
+derive_factor Erdos249257.exists_exactRowStrictUpperFill_of_skippedCoreSharpCapacity
+run_cmd Lean.logInfo "@@COMMAND 2214"
+derive_factor Erdos249257.exists_first_localMersenne_crossing
+run_cmd Lean.logInfo "@@COMMAND 2216"
+derive_factor Erdos249257.exists_laterProtectedExactLocalMersenneRow
+run_cmd Lean.logInfo "@@COMMAND 2218"
+derive_factor Erdos249257.exists_unbounded_shifted_odd_tail_nat_state_of_support_fraction
+run_cmd Lean.logInfo "@@COMMAND 2220"
+derive_factor Erdos249257.greedy_survives_of_mem_mersenneAchievementSet
+run_cmd Lean.logInfo "@@COMMAND 2222"
+derive_factor Erdos249257.halfGreedy_skipped_endpoint_trichotomy
+run_cmd Lean.logInfo "@@COMMAND 2224"
+derive_factor Erdos249257.irrational_erdosSupportSeries_tail_of_irrational
+run_cmd Lean.logInfo "@@COMMAND 2226"
+derive_factor Erdos249257.irrational_or_bpow_mul_eq_intCast_intWeightedErdosSeries_periodic
+run_cmd Lean.logInfo "@@COMMAND 2228"
+derive_factor Erdos249257.isStraddlePrefix_step_trichotomy
+run_cmd Lean.logInfo "@@COMMAND 2230"
+derive_factor Erdos249257.not_irrational_binaryCoeffSeries_iff_exists_temperedBinaryOrbit
+run_cmd Lean.logInfo "@@COMMAND 2232"
+derive_factor Erdos249257.shifted_state_unbounded_of_infinite_support
+run_cmd Lean.logInfo "@@COMMAND 2234"
+derive_factor Erdos249257.skipped_fullShell_neg_iff_alignment_and_seamRemainder_pos
+run_cmd Lean.logInfo "@@COMMAND 2236"
+derive_factor Erdos249257.twentyOneFatalAlignedBranch_eventually_affine_supercapacity
+run_cmd Lean.logInfo "@@COMMAND 2238"
+derive_factor Erdos249257.twentyOneFatalAlignedBranch_eventually_strict_supercapacity
+run_cmd Lean.logInfo "@@COMMAND 2240"
+derive_factor ErdosProblems.Erdos257.PaperCompleteR20.paper_general_repair_criteria
+run_cmd Lean.logInfo "@@COMMAND 2242"
+derive_factor ErdosProblems.Erdos257.PaperCompleteR20.paper_real_quotient_core
+run_cmd Lean.logInfo "@@COMMAND 2244"
+derive_factor ErdosProblems.Erdos257.PaperCompleteR20.paper_real_quotient_margins
+run_cmd Lean.logInfo "@@COMMAND 2246"
+derive_factor ErdosProblems.Erdos257.PaperCompleteR20.square_depth_witness
+run_cmd Lean.logInfo "@@COMMAND 2248"
+derive_factor ErdosProblems.Erdos257.PaperCompleteR21.ShortWindowDivisorPhase.iLeast_mem_Icc
+run_cmd Lean.logInfo "@@COMMAND 2250"
+derive_factor ErdosProblems.Erdos257.PaperCompleteR21.approx_orbit_induction
+run_cmd Lean.logInfo "@@COMMAND 2252"
+derive_factor ErdosProblems.Erdos257.PaperCompleteR21.arithmetic_logarithmic_counterexample
+run_cmd Lean.logInfo "@@COMMAND 2254"
+derive_factor ErdosProblems.Erdos257.PaperCompleteR21.certificate_of_existsFatalHalfGap
+run_cmd Lean.logInfo "@@COMMAND 2256"
+derive_factor ErdosProblems.Erdos257.PaperCompleteR21.exists_support_paperCoverCost_ge
+run_cmd Lean.logInfo "@@COMMAND 2258"
+derive_factor ErdosProblems.Erdos257.PaperCompleteR21.fatal_absorbing
+run_cmd Lean.logInfo "@@COMMAND 2260"
+derive_factor ErdosProblems.Erdos257.PaperCompleteR21.fatal_gap_endpoint_bounds
+run_cmd Lean.logInfo "@@COMMAND 2262"
+derive_factor ErdosProblems.Erdos257.PaperCompleteR21.fatal_gap_within_prefix_interval
+run_cmd Lean.logInfo "@@COMMAND 2264"
+derive_factor ErdosProblems.Erdos257.PaperCompleteR21.irrational_residueClass_positive_support
+run_cmd Lean.logInfo "@@COMMAND 2266"
+derive_factor ErdosProblems.Erdos257.PaperCompleteR21.paper_capacity_band_exclusion
+run_cmd Lean.logInfo "@@COMMAND 2268"
+derive_factor ErdosProblems.Erdos257.PaperCompleteR21.paper_centred_completion_of_fixed_precision
+run_cmd Lean.logInfo "@@COMMAND 2270"
+derive_factor ErdosProblems.Erdos257.PaperCompleteR21.paper_channel_factor_gcd_eq_one
+run_cmd Lean.logInfo "@@COMMAND 2272"
+derive_factor ErdosProblems.Erdos257.PaperCompleteR21.paper_compatible_finite_row_conditions
+run_cmd Lean.logInfo "@@COMMAND 2274"
+derive_factor ErdosProblems.Erdos257.PaperCompleteR21.paper_consecutive_not_both_divisible
+run_cmd Lean.logInfo "@@COMMAND 2276"
+derive_factor ErdosProblems.Erdos257.PaperCompleteR21.paper_critical_crossing_support_is_greedy_prefix
+run_cmd Lean.logInfo "@@COMMAND 2278"
+derive_factor ErdosProblems.Erdos257.PaperCompleteR21.paper_critical_dyadic_band_index_unique
+run_cmd Lean.logInfo "@@COMMAND 2280"
+derive_factor ErdosProblems.Erdos257.PaperCompleteR21.paper_critical_dyadic_boundary_is_smallest
+run_cmd Lean.logInfo "@@COMMAND 2282"
+derive_factor ErdosProblems.Erdos257.PaperCompleteR21.paper_dynamics
+run_cmd Lean.logInfo "@@COMMAND 2284"
+derive_factor ErdosProblems.Erdos257.PaperCompleteR21.paper_endpoint_term_counts_divisors
+run_cmd Lean.logInfo "@@COMMAND 2286"
+derive_factor ErdosProblems.Erdos257.PaperCompleteR21.paper_eventual_nonnegative_margin_equivalence
+run_cmd Lean.logInfo "@@COMMAND 2288"
+derive_factor ErdosProblems.Erdos257.PaperCompleteR21.paper_exact_mass_threshold
+run_cmd Lean.logInfo "@@COMMAND 2290"
+derive_factor ErdosProblems.Erdos257.PaperCompleteR21.paper_exact_row_double_or_recycle
+run_cmd Lean.logInfo "@@COMMAND 2292"
+derive_factor ErdosProblems.Erdos257.PaperCompleteR21.paper_exact_row_from_skipped_prefix
+run_cmd Lean.logInfo "@@COMMAND 2294"
+derive_factor ErdosProblems.Erdos257.PaperCompleteR21.paper_final_middle_cell_at_least_neg_two
+run_cmd Lean.logInfo "@@COMMAND 2296"
+derive_factor ErdosProblems.Erdos257.PaperCompleteR21.paper_forced_greedy_low_ranks
+run_cmd Lean.logInfo "@@COMMAND 2298"
+derive_factor ErdosProblems.Erdos257.PaperCompleteR21.paper_forced_greedy_unique_support_and_criterion
+run_cmd Lean.logInfo "@@COMMAND 2300"
+derive_factor ErdosProblems.Erdos257.PaperCompleteR21.paper_half_lcm_horizon
+run_cmd Lean.logInfo "@@COMMAND 2302"
+derive_factor ErdosProblems.Erdos257.PaperCompleteR21.paper_mersenne_height
+run_cmd Lean.logInfo "@@COMMAND 2304"
+derive_factor ErdosProblems.Erdos257.PaperCompleteR21.paper_next_floor_quotient_no_fixed_point
+run_cmd Lean.logInfo "@@COMMAND 2306"
+derive_factor ErdosProblems.Erdos257.PaperCompleteR21.paper_no_ties
+run_cmd Lean.logInfo "@@COMMAND 2308"
+derive_factor ErdosProblems.Erdos257.PaperCompleteR21.paper_one_orbit_stability
+run_cmd Lean.logInfo "@@COMMAND 2310"
+derive_factor ErdosProblems.Erdos257.PaperCompleteR21.paper_perturbed_prefixChoice_maximal
+run_cmd Lean.logInfo "@@COMMAND 2312"
+derive_factor ErdosProblems.Erdos257.PaperCompleteR21.paper_perturbed_two_stage_is_global_maximum
+run_cmd Lean.logInfo "@@COMMAND 2314"
+derive_factor ErdosProblems.Erdos257.PaperCompleteR21.paper_pulse_family_finite_state_card
+run_cmd Lean.logInfo "@@COMMAND 2316"
+derive_factor ErdosProblems.Erdos257.PaperCompleteR21.paper_pulse_family_no_autonomous_decoder
+run_cmd Lean.logInfo "@@COMMAND 2318"
+derive_factor ErdosProblems.Erdos257.PaperCompleteR21.paper_relationInvariant_channels_rank_le_one
+run_cmd Lean.logInfo "@@COMMAND 2320"
+derive_factor ErdosProblems.Erdos257.PaperCompleteR21.paper_rowLower_existsUnique
+run_cmd Lean.logInfo "@@COMMAND 2322"
+derive_factor ErdosProblems.Erdos257.PaperCompleteR21.paper_rowUpper_existsUnique
+run_cmd Lean.logInfo "@@COMMAND 2324"
+derive_factor ErdosProblems.Erdos257.PaperCompleteR21.paper_scalar_localization
+run_cmd Lean.logInfo "@@COMMAND 2326"
+derive_factor ErdosProblems.Erdos257.PaperCompleteR21.paper_seam_escape_forces_remainder_band
+run_cmd Lean.logInfo "@@COMMAND 2328"
+derive_factor ErdosProblems.Erdos257.PaperCompleteR21.paper_shared_prefix_family_strip_witness_after_feedback_all_depths
+run_cmd Lean.logInfo "@@COMMAND 2330"
+derive_factor ErdosProblems.Erdos257.PaperCompleteR21.paper_shared_prefix_family_strip_witness_after_feedback_of_all_depths
+run_cmd Lean.logInfo "@@COMMAND 2332"
+derive_factor ErdosProblems.Erdos257.PaperCompleteR21.paper_skipped_core_recycling_witness_bounded
+run_cmd Lean.logInfo "@@COMMAND 2334"
+derive_factor ErdosProblems.Erdos257.PaperCompleteR21.paper_square_depth_terminal_bound
+run_cmd Lean.logInfo "@@COMMAND 2336"
+derive_factor ErdosProblems.Erdos257.PaperCompleteR21.paper_terminal_strip_forces_half_membership
+run_cmd Lean.logInfo "@@COMMAND 2338"
+derive_factor ErdosProblems.Erdos257.PaperCompleteR21.paper_three_channel_margin_identity
+run_cmd Lean.logInfo "@@COMMAND 2340"
+derive_factor ErdosProblems.Erdos257.PaperCompleteR21.paper_unconditional_bound_one_extra_bit
+run_cmd Lean.logInfo "@@COMMAND 2342"
+derive_factor ErdosProblems.Erdos257.PaperCompleteR21.paper_upper_branch_needs_no_exceptional_cell
+run_cmd Lean.logInfo "@@COMMAND 2344"
+derive_factor ErdosProblems.Erdos257.PaperCompleteR21.paper_witness_exclusion
+run_cmd Lean.logInfo "@@COMMAND 2346"
+derive_factor ErdosProblems.Erdos257.PaperCompleteR21.paper_zero_run_le_eps_logb
+run_cmd Lean.logInfo "@@COMMAND 2348"
+derive_factor ErdosProblems.Erdos257.PaperCompleteR21.weighted_denominator_budget
+run_cmd Lean.logInfo "@@COMMAND 2350"
+derive_factor ErdosProblems.Erdos257.PaperCompleteR8.weighted_displacement_cofinal_close_return
+run_cmd Lean.logInfo "@@COMMAND 2352"
+derive_factor ErdosProblems.Erdos257.finite_monotone_witness_rule_realised
 
-def P : Prop := ∀ n : Nat, n + 0 = n
-def Q : Prop := ∀ n : Nat, 0 + n = n
-def R : Prop := True
-def A (n : Nat) : Prop := n ≤ n + 1
-def B (n : Nat) : Prop := n + 0 = n
-def C (n : Nat) : Prop := 0 + n = n
+-- The statement hash of every theorem this file added, so the frontier can check
+-- that a published name still states what it stated.
+open Lean Elab Command in
+run_cmd do
+  let env ← getEnv
+  let mut out : Array String := #[]
+  for (n, ci) in env.constants.map₂.toList do
+    if let .thmInfo _ := ci then
+      if let .str _ last := n then
+        if last == "idle" || last == "factored" || last.startsWith "weakened_" || last.startsWith "frontier_"
+            || last.startsWith "part_" || last.startsWith "use_" then
+          let h := hash (toString (ErdosProblems.ArgumentGraph.normaliseBinders ci.type))
+          out := out.push s!"DERIVED	{n}	{String.ofList (Nat.toDigits 16 h.toNat)}"
+  IO.println ("
+".intercalate (out.qsort (· < ·)).toList)
 
-/-- Constructor-exposed. -/
-theorem toy1 (hP : P) (hQ : Q) : ∃ n : Nat, A n ∧ B n ∧ C n :=
-  ⟨3, Nat.le_succ 3, hP 3, hQ 3⟩
-
-/-- A lemma whose third claim alone uses its hypothesis. -/
-theorem lib2 (hQ : Q) (k : Nat) : ∃ n : Nat, A n ∧ C n ∧ k ≤ n + k := by
-  refine ⟨k, Nat.le_succ k, hQ k, Nat.le_add_left k k⟩
-
-/-- `obtain` from a lemma given a moved hypothesis, then `have` and `exact`. -/
-theorem toy2 (hP : P) (hQ : Q) (k : Nat) : ∃ n : Nat, A n ∧ B n ∧ C n ∧ k ≤ n + k := by
-  obtain ⟨n, ha, hc, hk⟩ := lib2 hQ k
-  have hb : B n := hP n
-  exact ⟨n, ha, hb, hc, hk⟩
-
-/-- The witness comes from a hypothesis, which stays; the other moves. -/
-theorem toy3 (h : ∃ n : Nat, A n) (hP : P) : ∃ n : Nat, A n ∧ B n := by
-  obtain ⟨n, hn⟩ := h
-  exact ⟨n, hn, hP n⟩
-
-/-- Nothing can move: the only hypothesis decides the witness. -/
-theorem toy4 (h : ∃ n : Nat, B n) : ∃ n : Nat, B n ∧ A n := by
-  obtain ⟨n, hn⟩ := h
-  exact ⟨n, hn, Nat.le_succ n⟩
-
-/-- A `∀` claim, a `have`, and an unused hypothesis. -/
-theorem toy5 (hP : P) (hQ : Q) (hR : R) : ∀ m : Nat, (∃ n : Nat, A n ∧ B (n + m)) ∧ C m := by
-  intro m
-  have hc : C m := hQ m
-  exact ⟨⟨m, Nat.le_succ m, hP (m + m)⟩, hc⟩
-
-/-- Library recursion through a `∀` and a nested existential (the shape of the #251
-countermodels): `libInterval` needs `P` only for its innermost claim. -/
-theorem libInterval (hε : 0 < 2) (hP : P) (K : Nat) :
-    ∃ s : Nat, K ≤ s ∧ ∀ r : Nat, r ≤ s → ∃ e : Nat, e ≤ r ∧ B e := by
-  refine ⟨K, Nat.le_refl K, ?_⟩
-  intro r hr
-  exact ⟨0, Nat.zero_le r, hP 0⟩
-
-theorem joint (hS : Q) (hP : P) (K : Nat) : ∃ e : Nat, ∃ s : Nat, e ≤ s ∧ C e ∧ B e := by
-  obtain ⟨s, hs, hfill⟩ := libInterval (by decide) hP K
-  obtain ⟨e, he, hb⟩ := hfill s (Nat.le_refl s)
-  have hc : C e := hS e
-  exact ⟨e, s, he, hc, hb⟩
-
-/-- The witness is chosen by cases on a proposition no moved hypothesis decides. -/
-theorem toy7 (hP : P) (k : Nat) : ∃ n : Nat, A n ∧ B n := by
-  rcases Nat.eq_zero_or_pos k with h | h
-  · exact ⟨0, Nat.le_succ 0, hP 0⟩
-  · exact ⟨k, Nat.le_succ k, hP k⟩
-
-/-- A term-mode `match`. -/
-theorem toy8 (hP : P) (h : ∃ n : Nat, A n) : ∃ n : Nat, A n ∧ B n :=
-  match h with
-  | ⟨n, hn⟩ => ⟨n, hn, hP n⟩
-
-/-- Separate existentials: each keeps its own witness. -/
-theorem toy9 (hP : P) : (∃ n : Nat, A n) ∧ (∃ n : Nat, B n) :=
-  ⟨⟨0, Nat.le_succ 0⟩, ⟨1, hP 1⟩⟩
-
-/-- Only an unused hypothesis: `derive_idle`'s case, not factoring. -/
-theorem toy10 (hR : R) (h : ∃ n : Nat, B n) : ∃ n : Nat, B n ∧ A n := by
-  obtain ⟨n, hn⟩ := h
-  exact ⟨n, hn, Nat.le_succ n⟩
-
-/-- The lemma is used through a hypothesis-dependent `have` whose value is then
-destructured. -/
-theorem toy11 (hP : P) (hQ : Q) (k : Nat) : ∃ n : Nat, C n ∧ B n := by
-  have hl := lib2 hQ k
-  obtain ⟨n, _, hc, _⟩ := hl
-  exact ⟨n, hc, hP n⟩
-
-derive_factor toy1
-example : ∃ n : Nat, A n ∧ (P → B n) ∧ (Q → C n) := toy1.factored
-
-derive_factor toy2
-example : ∀ k : Nat, ∃ n : Nat, A n ∧ (Q → C n) ∧ k ≤ n + k := lib2.factored
-example : ∀ k : Nat, ∃ n : Nat, A n ∧ (P → B n) ∧ (Q → C n) ∧ k ≤ n + k := toy2.factored
-
-derive_factor toy3
-example : (∃ n : Nat, A n) → ∃ n : Nat, A n ∧ (P → B n) := toy3.factored
-
-derive_factor toy4
-
-derive_factor toy5
-example : ∀ m : Nat, (∃ n : Nat, A n ∧ (P → B (n + m))) ∧ (Q → C m) := toy5.factored
-
-derive_factor joint
-example : ∀ K : Nat, ∃ s : Nat, K ≤ s ∧ ∀ r : Nat, r ≤ s → ∃ e : Nat, e ≤ r ∧ (P → B e) :=
-  libInterval.factored
-example : ∀ K : Nat, ∃ e : Nat, ∃ s : Nat, e ≤ s ∧ (Q → C e) ∧ (P → B e) := joint.factored
-
-derive_factor toy7
-example : ∀ k : Nat, ∃ n : Nat, A n ∧ (P → B n) := toy7.factored
-
-derive_factor toy8
-example : (∃ n : Nat, A n) → ∃ n : Nat, A n ∧ (P → B n) := toy8.factored
-
-derive_factor toy9
-example : (∃ n : Nat, A n) ∧ (∃ n : Nat, P → B n) := toy9.factored
-
-derive_factor toy10
-
-derive_factor toy11
-example : ∀ k : Nat, ∃ n : Nat, (Q → C n) ∧ (P → B n) := toy11.factored
-
--- Re-running a command whose theorem exists with the same statement adds nothing
-derive_factor toy1
-
-#print axioms toy1.factored
-#print axioms toy2.factored
-#print axioms joint.factored
-#print axioms toy7.factored
-#print axioms toy8.factored
-#print axioms toy11.factored
-
-end FactorToys
