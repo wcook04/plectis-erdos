@@ -394,10 +394,40 @@ structure MatchOutcome where
   residuals : Array Expr
   openData : Bool
 
+/-- The binders of `xs` a residual `r` is stated under: the variables it
+mentions, the variables their types mention, and every hypothesis about a kept
+variable together with the variables that hypothesis mentions, closed
+transitively. A residual is a demand made at the statement's use site, where all
+of `xs` is available, so a hypothesis that constrains one of its variables must
+stay with it: closing `0 < min ε (1/2)` over `ε` alone drops `0 < ε` and states
+something false. Binders connected to `r` through no hypothesis are left out,
+which changes nothing when their hypotheses can be met. -/
+def residualContext (xs : Array Expr) (r : Expr) : MetaM (Array Expr) := do
+  let mut keep : Std.HashSet FVarId := {}
+  for x in xs do
+    if r.containsFVar x.fvarId! then keep := keep.insert x.fvarId!
+  let mut changed := true
+  while changed do
+    changed := false
+    for x in xs do
+      let id := x.fvarId!
+      let ty ← instantiateMVars (← id.getDecl).type
+      if keep.contains id then
+        for y in xs do
+          let yid := y.fvarId!
+          if !keep.contains yid && ty.containsFVar yid then
+            keep := keep.insert yid
+            changed := true
+      else if ← isProp ty then
+        if xs.any fun y => keep.contains y.fvarId! && ty.containsFVar y.fvarId! then
+          keep := keep.insert id
+          changed := true
+  return xs.filter fun x => keep.contains x.fvarId!
+
 /-- Try to supply `matrix` (the body of a closed statement under its own
 binders `xs`) from producer `p`. On success the producer's remaining
 propositional hypotheses are first discharged against the local hypotheses
-among `xs`, and the rest are closed over the binders they use. -/
+among `xs`, and the rest are closed over their `residualContext`. -/
 def tryProducer (cfg : Config) (xs : Array Expr) (localHyps : Array Expr)
     (matrix : Expr) (p : Producer) : MetaM (Option MatchOutcome) := do
   let attempt : MetaM (Option MatchOutcome) := withNewMCtxDepth do
@@ -459,7 +489,7 @@ def tryProducer (cfg : Config) (xs : Array Expr) (localHyps : Array Expr)
     for r in residuals do
       let r ← instantiateMVars r
       if r.hasMVar then openData := true
-      let abstracted ← mkForallFVars (usedOnly := true) xs r
+      let abstracted ← mkForallFVars (← residualContext xs r) r
       closed := closed.push (← instantiateMVars abstracted)
     return some { status := "matched", residuals := closed, openData }
   match ← budgeted cfg.matchHeartbeats attempt with
