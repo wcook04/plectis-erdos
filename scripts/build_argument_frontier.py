@@ -364,6 +364,29 @@ def render_module(problem: str, slot: dict[str, Any], source: dict[str, Any]) ->
     return "\n".join(lines)
 
 
+WORKFLOW = Path(".github/workflows/lean-coverage-build.yml")
+STEP_ID = "id: coverage-build"
+
+
+def with_workflow_modules(text: str, modules: list[str]) -> str:
+    """The coverage workflow with the argument-frontier modules in the
+    coverage-build step replaced by ``modules``. The step lists one target per
+    line after its ``--lake-staleness`` line; the frontier modules come last,
+    and every other target is kept as it is."""
+    lines = text.splitlines()
+    try:
+        start = next(i for i, line in enumerate(lines) if line.strip() == STEP_ID)
+        flag = next(i for i in range(start, len(lines)) if "--lake-staleness" in lines[i])
+    except StopIteration:
+        raise SystemExit(f"{WORKFLOW}: no step with {STEP_ID} and a --lake-staleness line") from None
+    end = flag + 1
+    while end < len(lines) and re.match(r"^\s+(ErdosProblems|Erdos249257)\.", lines[end]):
+        end += 1
+    indent = re.match(r"^(\s*)", lines[flag]).group(1)
+    kept = [l for l in lines[flag + 1:end] if ".ArgumentGraph." not in l]
+    return "\n".join(lines[: flag + 1] + kept + [indent + m for m in modules] + lines[end:]) + "\n"
+
+
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     parser.add_argument("--graph", type=Path, default=ROOT / "docs" / "argument_continuations_graph.json.gz")
@@ -391,12 +414,16 @@ def main(argv: list[str] | None = None) -> int:
     }
     files[args.root / "docs" / "argument_frontier.json"] = json.dumps(manifest, indent=1, ensure_ascii=False) + "\n"
     files[args.root / "docs" / "ARGUMENT_FRONTIER.md"] = render_markdown(manifest) + "\n"
+    workflow = args.root / WORKFLOW
+    if workflow.exists():
+        modules = sorted(f"ErdosProblems.ArgumentGraph.Derived.{p}" for p in per_problem)
+        files[workflow] = with_workflow_modules(workflow.read_text(encoding="utf-8"), modules)
     if args.check:
         stale = [str(p) for p, text in files.items() if not p.exists() or p.read_text(encoding="utf-8") != text]
         if stale:
             print("stale:\n  " + "\n  ".join(stale))
             return 1
-        print(f"ok: argument frontier current ({len(files) - 2} modules)")
+        print(f"ok: argument frontier current ({sum(1 for p in files if p.suffix == '.lean')} modules)")
         return 0
     for path, text in files.items():
         path.parent.mkdir(parents=True, exist_ok=True)
