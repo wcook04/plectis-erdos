@@ -153,6 +153,7 @@ import ErdosProblems.Erdos68.CanonicalFactorialTermination
 -- (Root.lean already imports the latter). CompanionConstantBridge is the join
 -- that fails to elaborate; keep the Core fork in the auxiliary forest.
 import ErdosProblems.Erdos68.DivisorChannelBasis
+import ErdosProblems.Erdos68.DepthFourShortSupport
 import ErdosProblems.Erdos68.FactorialAnalyticBoundary
 import ErdosProblems.Erdos68.FactorialDigitRigidity
 import ErdosProblems.Erdos68.PaperCompleteAsymptotics
