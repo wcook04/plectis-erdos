@@ -25,7 +25,7 @@ adds is checked by the kernel before it is added.
   through consequences of its own, the site is replaced by `L.weakened_p` applied
   to proofs of those consequences, recursively. `T.frontier_i` states `T` with
   `H` replaced by the consequences where the recursion stops, each assumed once
-  however many branches need it. `derive_frontier T stop L₁ L₂` keeps the use
+  however many branches need it. `derive_frontier T at L₁ L₂` keeps the use
   sites of `L₁` and `L₂` as they are, and names the result `T.frontier_i_L₁`.
 
 Each command adds nothing, and logs why, when a proof lacks the shape it needs.
@@ -38,7 +38,18 @@ set_option autoImplicit false
 
 open Lean Meta Elab Command
 
+register_option argumentGraph.strict : Bool := {
+  defValue := false
+  descr := "make a derive_* command that cannot add what it was asked for fail with an \
+    error; by default it logs a warning"
+}
+
 namespace ErdosProblems.ArgumentGraph
+
+/-- Report a derivation that added nothing: an error under `argumentGraph.strict`,
+a warning otherwise. -/
+def reportFailure (msg : MessageData) : MetaM Unit := do
+  if argumentGraph.strict.get (← getOptions) then logError msg else logWarning msg
 
 /-- Run `x` with its own heartbeat budget (in thousands); `none` when the budget
 runs out or `x` throws. -/
@@ -339,12 +350,12 @@ inductive Plan where
   deriving Inhabited
 
 /-- The plan for a consequence `c` proved at `site` (a closed function of the
-hypothesis). `stop` lists theorems whose use sites stay as they are. -/
-partial def plan (stop : Array Name) (fuel : Nat) (c : Expr) (site : Expr) : DeriveM Plan := do
+hypothesis). `stops` lists theorems whose use sites stay as they are. -/
+partial def plan (stops : Array Name) (fuel : Nat) (c : Expr) (site : Expr) : DeriveM Plan := do
   if fuel == 0 then return .leaf c
   let .lam _ _ body _ := site | return .leaf c
   let .const n us := body.getAppFn | return .leaf c
-  if stop.contains n then return .leaf c
+  if stops.contains n then return .leaf c
   let args := body.getAppArgs
   let some p := args.findIdx? (fun a => a.consumeMData == .bvar 0) | return .leaf c
   for a in args, k in [0:args.size] do
@@ -354,7 +365,7 @@ partial def plan (stop : Array Name) (fuel : Nat) (c : Expr) (site : Expr) : Der
   let inst (e : Expr) : Expr := e.instantiateLevelParams info.levelParams us
   let mut children : Array Plan := #[]
   for d in w.consequences, s in w.sites do
-    children := children.push (← plan stop (fuel - 1) (inst d) (inst s))
+    children := children.push (← plan stops (fuel - 1) (inst d) (inst s))
   return .step (mkConst wName us) (args.extract 0 p) (args.extract (p + 1) args.size) children
 
 partial def Plan.leaves : Plan → Array Expr → Array Expr
@@ -369,20 +380,13 @@ partial def Plan.depth : Plan → Nat
   | .leaf _ => 0
   | .step _ _ _ cs => 1 + cs.foldl (fun m c => max m c.depth) 0
 
-/-- `name.frontier_i` (or `name.frontier_i_<stop>`): `name` with hypothesis `i`
-replaced by the consequences where the chain of weakenings stops. `none` when the
-chain does not go past the first weakening. -/
-def frontierAt (name : Name) (i : Nat) (stop : Array Name) : DeriveM (Except String Name) := do
-  let some (wName, w) ← weakeningOf name i | return .error s!"hypothesis {i} has no weakening"
-  let info ← getConstInfo name
-  let mut plans : Array Plan := #[]
-  for c in w.consequences, s in w.sites do
-    plans := plans.push (← plan stop 24 c s)
-  if plans.all (·.depth == 0) then
-    return .error s!"hypothesis {i}: the chain stops at the first weakening ({wName})"
-  let leafTypes := plans.foldl (fun acc p => p.leaves acc) #[]
+/-- The statement and proof of a frontier: `info`'s statement with binder `i`
+replaced by one hypothesis per leaf type, proved by `wName` (the weakening at `i`)
+applied to the plans' proofs of its consequences. -/
+def frontierDecl (info : ConstantInfo) (i : Nat) (wName : Name) (plans : Array Plan)
+    (leafTypes : Array Expr) : MetaM (Expr × Expr) := do
   let lvls := info.levelParams.map mkLevelParam
-  let (type, value) ← forallTelescope info.type fun xs body => do
+  forallTelescope info.type fun xs body => do
     let decls := leafTypes.mapIdx fun j t =>
       (Name.mkSimple s!"interface{j}", fun (_ : Array Expr) => (pure t : MetaM Expr))
     withLocalDeclsD decls fun ls => do
@@ -390,13 +394,27 @@ def frontierAt (name : Name) (i : Nat) (stop : Array Name) : DeriveM (Except Str
       let keep := xs.extract 0 i ++ ls ++ xs.extract (i + 1) xs.size
       let applied := mkAppN (mkConst wName lvls) (xs.extract 0 i ++ proofs ++ xs.extract (i + 1) xs.size)
       return (← mkForallFVars keep body, ← mkLambdaFVars keep applied)
-  let suffix := match stop[0]? with
+
+/-- `name.frontier_i` (or `name.frontier_i_<L>` when stopping at the use sites of
+`L`): `name` with hypothesis `i` replaced by the consequences where the chain of
+weakenings stops. An error when the chain does not go past the first weakening. -/
+def frontierAt (name : Name) (i : Nat) (stops : Array Name) : DeriveM (Except String Name) := do
+  let some (wName, w) ← weakeningOf name i | return .error s!"hypothesis {i} has no weakening"
+  let info ← getConstInfo name
+  let mut plans : Array Plan := #[]
+  for c in w.consequences, s in w.sites do
+    plans := plans.push (← plan stops 24 c s)
+  if plans.all (·.depth == 0) then
+    return .error s!"hypothesis {i}: the chain stops at the first weakening ({wName})"
+  let leafTypes := plans.foldl (fun acc p => p.leaves acc) #[]
+  let (type, value) ← frontierDecl info i wName plans leafTypes
+  let suffix := match stops[0]? with
     | some n => "_" ++ n.getString!
     | none => ""
   let newName := name ++ Name.mkSimple s!"frontier_{i}{suffix}"
   if (← getEnv).contains newName then return .ok newName
-  let stopText := if stop.isEmpty then "as far as the chain goes"
-    else s!"keeping the use sites of {stop.toList}"
+  let stopText := if stops.isEmpty then "as far as the chain goes"
+    else s!"keeping the use sites of {stops.toList}"
   let doc := s!"`{name}` with its hypothesis number {i} replaced by the {leafTypes.size} \
     consequence(s) reached by following the weakenings of the theorems its proof applies \
     that hypothesis to, {stopText}. Derived by `derive_frontier`."
@@ -408,12 +426,14 @@ def frontierAt (name : Name) (i : Nat) (stop : Array Name) : DeriveM (Except Str
 
 syntax (name := deriveIdleCmd) "derive_idle " ident : command
 syntax (name := deriveWeakeningCmd) "derive_weakening " ident : command
-syntax (name := deriveFrontierCmd) "derive_frontier " ident (" stop " ident+)? : command
+-- `at` is already a Lean keyword, so the frontier command adds no new token that
+-- would shadow an identifier in a module importing this one.
+syntax (name := deriveFrontierCmd) "derive_frontier " ident (" at " ident+)? : command
 
 /-- The statement of an added theorem, on one line and at most `limit` characters,
 so a build log stays readable. -/
 def statementLine (n : Name) (limit : Nat := 600) : MetaM String := do
-  let fmt ← withOptions (fun o => o.setBool `pp.proofs false |>.setNat `format.width 100000)
+  let fmt ← withOptions (fun o => o.setBool `pp.proofs false)
     (ppExpr (← getConstInfo n).type)
   let flat := (toString fmt).replace "\n" " "
   let flat := " ".intercalate (flat.splitOn " " |>.filter (· ≠ ""))
@@ -427,7 +447,7 @@ private def reportAdded (n : Name) : MetaM Unit := do
     let name ← realizeGlobalConstNoOverloadWithInfo stx[1]
     match ← deriveIdle name with
     | .ok n => reportAdded n
-    | .error e => logWarning m!"derive_idle {name}: {e}"
+    | .error e => reportFailure m!"derive_idle {name}: {e}"
 
 @[command_elab deriveWeakeningCmd] def elabDeriveWeakening : CommandElab := fun stx => do
   liftTermElabM do
@@ -454,13 +474,13 @@ private def reportAdded (n : Name) : MetaM Unit := do
                   added := added.push uName
       return added : DeriveM (Array Name)).run {}
     if added.isEmpty then
-      logWarning m!"derive_weakening {name}: no hypothesis is used only through consequences"
+      reportFailure m!"derive_weakening {name}: no hypothesis is used only through consequences"
     for a in added do reportAdded a
 
 @[command_elab deriveFrontierCmd] def elabDeriveFrontier : CommandElab := fun stx => do
   liftTermElabM do
     let name ← realizeGlobalConstNoOverloadWithInfo stx[1]
-    let stop ← if stx[2].isNone then pure #[]
+    let stops ← if stx[2].isNone then pure #[]
       else stx[2][1].getArgs.mapM (fun s => realizeGlobalConstNoOverloadWithInfo s)
     let info ← getConstInfo name
     let n ← binderCount info
@@ -468,13 +488,13 @@ private def reportAdded (n : Name) : MetaM Unit := do
       let mut results : Array (Except String Name) := #[]
       for i in [0:n] do
         if (← weakeningOf name i).isSome then
-          results := results.push (← frontierAt name i stop)
+          results := results.push (← frontierAt name i stops)
       return results : DeriveM (Array (Except String Name))).run {}
     if results.isEmpty then
-      logWarning m!"derive_frontier {name}: no hypothesis is used only through consequences"
+      reportFailure m!"derive_frontier {name}: no hypothesis is used only through consequences"
     for r in results do
       match r with
       | .ok a => reportAdded a
-      | .error e => logWarning m!"derive_frontier {name}: {e}"
+      | .error e => reportFailure m!"derive_frontier {name}: {e}"
 
 end ErdosProblems.ArgumentGraph
