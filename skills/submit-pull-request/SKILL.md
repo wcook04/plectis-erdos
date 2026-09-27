@@ -83,7 +83,12 @@ python3 scripts/check_push.py --install
 It runs the shared projection preflight in an isolated clone of each outgoing
 commit. An uncommitted repair cannot validate a stale commit, and pushing an
 older ref checks that ref rather than HEAD. Existing custom hooks are preserved;
-integrate the guard with them if installation reports a conflict.
+integrate the guard with them if installation reports a conflict. For branch
+updates it also observes the destination's current `main`. If that base has
+advanced, merge or rebase it, regenerate affected projections with their owning
+builders, and commit the result before retrying. The guard fetches a missing
+base object without moving local refs, `FETCH_HEAD`, the index or your worktree.
+GitHub still validates any base change that happens after this observation.
 
 After the final source and projection edits, run
 `python3 scripts/refresh_projections.py --preflight` before preparing expensive

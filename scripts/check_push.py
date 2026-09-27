@@ -45,6 +45,42 @@ def check_commit(oid: str) -> int:
         return result.returncode
 
 
+def require_current_base(remote: str, lines: list[str]) -> None:
+    """Reject branch updates based on an older destination main.
+
+    Observe the actual remote, not a possibly stale tracking ref. Fetch only
+    the observed immutable object when necessary; never change local branches,
+    the index, the working tree or FETCH_HEAD. CI still guards a later base move.
+    """
+    branches = [row for row in lines if row.split()[2].startswith("refs/heads/")]
+    commits = outgoing_commits(branches)
+    if not commits:
+        return
+    result = snapshot.run(["git", "ls-remote", "--exit-code", remote, "refs/heads/main"],
+                          cwd=snapshot.ROOT, timeout=60)
+    if result.returncode == 2 and not result.stdout.strip():
+        # A new repository has no main yet; projection admission still applies.
+        return
+    if result.returncode:
+        raise ValueError("cannot observe destination main; retry when the remote is reachable")
+    rows = [line.split() for line in result.stdout.splitlines()]
+    if len(rows) != 1 or len(rows[0]) != 2 or rows[0][1] != "refs/heads/main" or not re.fullmatch(r"[0-9a-f]{40}|[0-9a-f]{64}", rows[0][0]):
+        raise ValueError("destination main did not resolve to one immutable commit")
+    base = rows[0][0]
+    known = snapshot.run(["git", "cat-file", "-e", f"{base}^{{commit}}"], cwd=snapshot.ROOT)
+    if known.returncode:
+        fetched = snapshot.run(["git", "fetch", "--no-tags", "--no-write-fetch-head", remote, base],
+                               cwd=snapshot.ROOT, timeout=60)
+        if fetched.returncode:
+            raise ValueError("cannot fetch the observed destination main")
+    for commit in commits:
+        ancestor = snapshot.run(["git", "merge-base", "--is-ancestor", base, commit], cwd=snapshot.ROOT)
+        if ancestor.returncode == 1:
+            raise ValueError(f"destination main advanced to {base[:12]}; merge or rebase it, regenerate affected projections, commit them and retry")
+        if ancestor.returncode:
+            raise ValueError("cannot establish outgoing commit ancestry")
+
+
 def install() -> int:
     # Worktree-local configuration avoids changing another branch's hooks.
     existing = subprocess.run(["git", "config", "--get", "core.hooksPath"],
@@ -70,7 +106,11 @@ def main() -> int:
     try:
         if args.install:
             return install()
-        for oid in outgoing_commits(sys.stdin.readlines()):
+        lines = sys.stdin.readlines()
+        commits = outgoing_commits(lines)
+        if args.remote:
+            require_current_base(args.remote, lines)
+        for oid in commits:
             code = check_commit(oid)
             if code:
                 return code
