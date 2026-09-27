@@ -383,44 +383,87 @@ partial def Plan.depth : Plan → Nat
   | .leaf _ => 0
   | .step _ _ _ cs => 1 + cs.foldl (fun m c => max m c.depth) 0
 
+/-- A proof of the closed proposition `t` by one of `suppliers`: the supplier
+itself when its statement is `t`, or the supplier applied to arguments found by
+unification when a prefix of its binders instantiates to `t` (instance
+arguments synthesised). `none` when no supplier fits without leftover
+metavariables. -/
+def supplyLeaf (t : Expr) (suppliers : Array Name) : MetaM (Option Expr) := do
+  for s in suppliers do
+    let info ← getConstInfo s
+    let n ← forallTelescope info.type fun xs _ => return xs.size
+    for k in [0:n+1] do
+      let found ← withNewMCtxDepth do
+        let us ← mkFreshLevelMVarsFor info
+        let (mvars, _, rest) ← forallMetaBoundedTelescope
+          (info.type.instantiateLevelParams info.levelParams us) (some k)
+        unless mvars.size == k do return none
+        unless (← budgeted 20000 (isDefEq rest t)) == some true do return none
+        for m in mvars do
+          unless ← m.mvarId!.isAssigned do
+            if let some inst ← (try synthInstance? (← inferType m) catch _ => pure none) then
+              m.mvarId!.assign inst
+        let proof ← instantiateMVars (mkAppN (mkConst s us) mvars)
+        if proof.hasMVar || proof.hasLevelMVar then return none
+        return some proof
+      if found.isSome then return found
+  return none
+
 /-- The statement and proof of a frontier: `info`'s statement with binder `i`
-replaced by one hypothesis per leaf type, proved by `wName` (the weakening at `i`)
-applied to the plans' proofs of its consequences. -/
+replaced by one hypothesis per leaf type that no supplier proves, proved by
+`wName` (the weakening at `i`) applied to the plans' proofs of its consequences. -/
 def frontierDecl (info : ConstantInfo) (i : Nat) (wName : Name) (plans : Array Plan)
-    (leafTypes : Array Expr) : MetaM (Expr × Expr) := do
+    (leafTypes : Array Expr) (supplied : Array (Option Expr)) : MetaM (Expr × Expr) := do
   let lvls := info.levelParams.map mkLevelParam
+  let openLeaves := (Array.range leafTypes.size).filter fun j => (supplied[j]!).isNone
   forallTelescope info.type fun xs body => do
-    let decls := leafTypes.mapIdx fun j t =>
-      (Name.mkSimple s!"interface{j}", fun (_ : Array Expr) => (pure t : MetaM Expr))
+    let decls := openLeaves.map fun j =>
+      (Name.mkSimple s!"interface{j}", fun (_ : Array Expr) => (pure leafTypes[j]! : MetaM Expr))
     withLocalDeclsD decls fun ls => do
-      let proofs := plans.map (·.build leafTypes ls)
+      let vars := (Array.range leafTypes.size).map fun j =>
+        match supplied[j]! with
+        | some proof => proof
+        | none => ls[(openLeaves.findIdx? (· == j)).getD 0]!
+      let proofs := plans.map (·.build leafTypes vars)
       let keep := xs.extract 0 i ++ ls ++ xs.extract (i + 1) xs.size
       let applied := mkAppN (mkConst wName lvls) (xs.extract 0 i ++ proofs ++ xs.extract (i + 1) xs.size)
       return (← mkForallFVars keep body, ← mkLambdaFVars keep applied)
 
 /-- `name.frontier_i` (or `name.frontier_i_<L>` when stopping at the use sites of
 `L`): `name` with hypothesis `i` replaced by the consequences where the chain of
-weakenings stops. An error when the chain does not go past the first weakening. -/
-def frontierAt (name : Name) (i : Nat) (stops : Array Name) : DeriveM (Except String Name) := do
+weakenings stops. With `suppliers`, each such consequence a supplier proves is
+discharged, and the theorem is named `…_supplied`; when every consequence is
+discharged, hypothesis `i` is gone. An error when the chain adds nothing. -/
+def frontierAt (name : Name) (i : Nat) (stops : Array Name) (suppliers : Array Name := #[]) :
+    DeriveM (Except String Name) := do
   let some (wName, w) ← weakeningOf name i | return .error s!"hypothesis {i} has no weakening"
   let info ← getConstInfo name
   let mut plans : Array Plan := #[]
   for c in w.consequences, s in w.sites do
     plans := plans.push (← plan stops 24 c s)
-  if plans.all (·.depth == 0) then
-    return .error s!"hypothesis {i}: the chain stops at the first weakening ({wName})"
   let leafTypes := plans.foldl (fun acc p => p.leaves acc) #[]
-  let (type, value) ← frontierDecl info i wName plans leafTypes
-  let suffix := match stops[0]? with
+  let mut supplied : Array (Option Expr) := #[]
+  for t in leafTypes do
+    supplied := supplied.push (← if suppliers.isEmpty then pure none else supplyLeaf t suppliers)
+  let discharged := (supplied.filter (·.isSome)).size
+  if plans.all (·.depth == 0) && discharged == 0 then
+    return .error s!"hypothesis {i}: the chain stops at the first weakening ({wName})"
+  if !suppliers.isEmpty && discharged == 0 then
+    return .error s!"hypothesis {i}: no supplier proves a consequence where the chain stops"
+  let (type, value) ← frontierDecl info i wName plans leafTypes supplied
+  let suffix := (match stops[0]? with
     | some n => "_" ++ n.getString!
-    | none => ""
+    | none => "") ++ (if discharged > 0 then "_supplied" else "")
   let newName := name ++ Name.mkSimple s!"frontier_{i}{suffix}"
   if (← getEnv).contains newName then return .ok newName
   let stopText := if stops.isEmpty then "as far as the chain goes"
     else s!"keeping the use sites of {stops.toList}"
+  let supplyText := if discharged == 0 then ""
+    else s!" {discharged} of the {leafTypes.size} consequence(s) are discharged by {suppliers.toList}\
+      {if discharged == leafTypes.size then ", so the hypothesis is gone" else ""}."
   let doc := s!"`{name}` with its hypothesis number {i} replaced by the {leafTypes.size} \
     consequence(s) reached by following the weakenings of the theorems its proof applies \
-    that hypothesis to, {stopText}. Derived by `derive_frontier`."
+    that hypothesis to, {stopText}.{supplyText} Derived by `derive_frontier`."
   match ← addChecked newName info.levelParams type value doc with
   | .ok () => return .ok newName
   | .error e => return .error s!"kernel rejected {newName}: {e}"
@@ -429,9 +472,10 @@ def frontierAt (name : Name) (i : Nat) (stops : Array Name) : DeriveM (Except St
 
 syntax (name := deriveIdleCmd) "derive_idle " ident : command
 syntax (name := deriveWeakeningCmd) "derive_weakening " ident : command
--- `at` is already a Lean keyword, so the frontier command adds no new token that
--- would shadow an identifier in a module importing this one.
-syntax (name := deriveFrontierCmd) "derive_frontier " ident (" at " ident+)? : command
+-- `at` and `using` are already Lean keywords, so the frontier command adds no new
+-- token that would shadow an identifier in a module importing this one.
+syntax (name := deriveFrontierCmd)
+  "derive_frontier " ident (" at " ident+)? (" using " ident+)? : command
 
 /-- The statement of an added theorem, on one line and at most `limit` characters,
 so a build log stays readable. -/
@@ -485,13 +529,15 @@ private def reportAdded (n : Name) : MetaM Unit := do
     let name ← realizeGlobalConstNoOverloadWithInfo stx[1]
     let stops ← if stx[2].isNone then pure #[]
       else stx[2][1].getArgs.mapM (fun s => realizeGlobalConstNoOverloadWithInfo s)
+    let suppliers ← if stx[3].isNone then pure #[]
+      else stx[3][1].getArgs.mapM (fun s => realizeGlobalConstNoOverloadWithInfo s)
     let info ← getConstInfo name
     let n ← binderCount info
     let (results, _) ← (do
       let mut results : Array (Except String Name) := #[]
       for i in [0:n] do
         if (← weakeningOf name i).isSome then
-          results := results.push (← frontierAt name i stops)
+          results := results.push (← frontierAt name i stops suppliers)
       return results : DeriveM (Array (Except String Name))).run {}
     if results.isEmpty then
       reportFailure m!"derive_frontier {name}: no hypothesis is used only through consequences"
