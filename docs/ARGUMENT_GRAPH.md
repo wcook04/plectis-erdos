@@ -103,9 +103,11 @@ export makes six passes.
 
 Four further passes are off unless their variable is set (the exporter's
 header lists them with their budgets). *Scope-aware used consequences*
-(`PLECTIS_CONTINUATION_USED_V2=1`) extend pass 2 to use sites whose lemma is
-applied under binders of the proof or to other hypotheses, abstracting them
-into the consequence. *Literal generalisation*
+(`PLECTIS_CONTINUATION_USED_V2=1`, set in the CI export) extend pass 2 to use
+sites whose lemma is applied under binders of the proof or to other hypotheses,
+abstracting them into the consequence; a site whose closed consequence restates
+the goal classically (a `by_contra` site, `¬G → False`) is refused like one
+that restates it outright. *Literal generalisation*
 (`PLECTIS_CONTINUATION_GENERALISE_SECONDS`) turns an ℕ, ℤ, ℚ or ℝ literal of a
 theorem into a variable, assumes as obligations the closed facts its proof
 used about that literal, discharges what the battery can, and keeps the
