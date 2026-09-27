@@ -175,7 +175,10 @@ def plan(graph: dict[str, Any], papers: dict[str, list[dict[str, Any]]]) -> dict
         conclusion = (theorem or {}).get("conclusion_type") or ""
         if not theorem or (" ∧ " not in conclusion and " ↔ " not in conclusion):
             continue
-        if not any((statements.get(k) or {}).get("status") == "open" for k in theorem.get("hypotheses", []) or []):
+        # An open `Nonempty T` obligation is a data binder, which derive_conjuncts never leaves out.
+        if not any((statements.get(k) or {}).get("status") == "open"
+                   and not ((statements.get(k) or {}).get("type") or "").startswith("Nonempty ")
+                   for k in theorem.get("hypotheses", []) or []):
             continue
         problem = PROBLEM_NAMES.get(str(theorem.get("problem")))
         if not problem:
