@@ -1,13 +1,13 @@
 #!/usr/bin/env python3
 # SPDX-FileCopyrightText: 2026 Will Cook
 # SPDX-License-Identifier: Apache-2.0
-"""Construct a leakage-controlled benchmark packet by temporal git cut.
+"""Prepare a recovery packet from a registered historical source cut.
 
-A packet is a detached git worktree of this repository checked out at the commit
-immediately BEFORE the target declaration was introduced, plus exactly those
-derived artifacts the chosen ablation arm is permitted to see. The target
-theorem is absent from the checkout by construction, so an agent cannot recover
-it by reading it, and the isolation does not depend on the agent's cooperation.
+A packet is an export of the frozen cut in benchmark_items.json, without Git
+history, plus the derived artifacts selected by the arm. The target declaration
+is checked absent. This prepares files; it does not isolate a participant from
+the rest of its filesystem, network, or prior knowledge. A scored run still
+needs a separately bound runner, blind review, and matched control workloads.
 
 The arms answer the question the whole layer exists to justify: does the
 semantic and mechanism scaffolding actually help recover mathematics, or would a
@@ -20,19 +20,18 @@ strong model plus ordinary source retrieval have done as well?
     mechanism_shuffled     control: same records, explanations permuted off-target
     mechanism_offproblem   control: real mechanisms about the other problem
 
-The two controls exist because a win over the graph arm is uninterpretable
-without them. Library-learning gains in this area have been shown to vanish once
-compute is matched, and unrelated subgraphs have been shown to reproduce
-full-graph behaviour, so 'more relevant-looking prose helped' is the hypothesis
-that has to be excluded before 'this mechanism helped' can be entertained.
+The controls are candidates for that comparison. They do not yet match the
+mechanism arm's capsules or prose volume and must not be treated as a completed
+matched-control design.
 
 Every injected artifact is filtered: a node, mechanism or receipt whose evidence
 names a declaration that does not exist at the cut is dropped, because carrying
 it would leak the future. The filter is applied against declarations extracted
 from the cut checkout itself, never against the current atlas.
 
-The answer key is written outside the worktree. Nothing that identifies the
-target -- name, statement, module -- is placed inside it.
+Future commit metadata and the answer key stay outside the export. Filtering
+declaration references does not establish that current explanatory prose was
+available at the cut or that it contains no hints; that requires separate review.
 """
 
 from __future__ import annotations
@@ -45,6 +44,8 @@ from semantic_corpus_storage import load_corpus
 import re
 import subprocess
 import sys
+import tarfile
+import tempfile
 
 import validation_singleflight as singleflight
 
@@ -53,6 +54,7 @@ ENVIRONMENT_CONTRACT = "clean_reproduction_subprocess_environment_v1"
 GIT_COMMAND_TIMEOUT_SECONDS = singleflight.GIT_COMMAND_TIMEOUT_SECONDS
 CORPUS = ROOT / "docs" / "semantic_corpus.json.gz"
 LAB = ROOT / "docs" / "theory_lab.json"
+BENCHMARK_ITEMS = ROOT / "docs" / "semantic" / "lab" / "benchmark_items.json"
 ARMS = (
     "signatures",
     "graph",
@@ -67,8 +69,8 @@ ARMS = (
 # both that skill-library gains evaporate once compute is matched, and that
 # unrelated subgraphs recover full-graph behaviour -- so an unshuffled win over
 # the graph arm establishes nothing on its own. The controls sit at the same
-# depth as ``mechanism`` and carry the same volume of prose, which is what makes
-# them comparable.
+# depth as ``mechanism`` but still require capsule and workload matching before
+# a scored comparison.
 ARM_LAYERS = {
     "signatures": (),
     "graph": ("graph",),
@@ -104,16 +106,74 @@ def git(*args: str, cwd: Path | None = None) -> str:
     return proc.stdout
 
 
-def _remove_worktree(dest: Path) -> None:
-    """Remove a prior packet with the same bounded, ambient-free Git call."""
-    subprocess.run(
-        ("git", "worktree", "remove", "--force", str(dest)),
-        cwd=str(ROOT),
-        capture_output=True,
-        check=False,
-        env=singleflight.command_environment(),
-        timeout=GIT_COMMAND_TIMEOUT_SECONDS,
-    )
+def validate_destination(dest: Path) -> Path:
+    """Do not overwrite a packet or let it inherit an enclosing Git history."""
+    if dest.exists() or dest.is_symlink():
+        raise SystemExit(f"refusing existing packet destination: {dest}")
+    dest = dest.resolve()
+    if dest == ROOT.resolve() or ROOT.resolve() in dest.parents:
+        raise SystemExit("packet destination must be outside the source repository")
+    if any((parent / ".git").exists() for parent in dest.parents):
+        raise SystemExit("packet destination must be outside every Git worktree")
+    return dest
+
+
+def export_snapshot(cut: str, dest: Path) -> None:
+    """Export regular tracked files, never a linked worktree or Git database."""
+    dest = validate_destination(dest)
+    inventory = {}
+    for row in git("ls-tree", "-rz", cut).split("\0"):
+        if not row:
+            continue
+        meta, name = row.split("\t", 1)
+        mode, kind, oid = meta.split()
+        if kind != "blob" or mode not in ("100644", "100755"):
+            raise SystemExit(f"only regular tracked files can be exported: {name}")
+        inventory[name] = (oid, mode == "100755")
+    with tempfile.TemporaryFile() as archive:
+        proc = subprocess.run(
+            ("git", "archive", "--format=tar", cut), cwd=str(ROOT),
+            stdout=archive, stderr=subprocess.PIPE, check=False,
+            env=singleflight.command_environment(),
+            timeout=GIT_COMMAND_TIMEOUT_SECONDS,
+        )
+        if proc.returncode:
+            raise RuntimeError(f"git archive failed: {proc.stderr.decode(errors='replace').strip()}")
+        archive.seek(0)
+        with tarfile.open(fileobj=archive, mode="r:") as source:
+            members = source.getmembers()
+            exported = {}
+            for member in members:
+                name = Path(member.name)
+                if (name.is_absolute() or ".." in name.parts or ".git" in name.parts
+                        or not (member.isfile() or member.isdir())):
+                    raise SystemExit(f"unsupported archive entry: {member.name}")
+                if member.isfile():
+                    if member.name in exported:
+                        raise SystemExit(f"duplicate archive entry: {member.name}")
+                    digest = hashlib.sha1(f"blob {member.size}\0".encode())
+                    with source.extractfile(member) as inp:
+                        while chunk := inp.read(1024 * 1024):
+                            digest.update(chunk)
+                    exported[member.name] = (digest.hexdigest(), bool(member.mode & 0o111))
+            # archive can apply export-ignore/export-subst, including local
+            # info/attributes. Reject any omission or transformation instead of
+            # treating an altered export as the historical source baseline.
+            if exported != inventory:
+                raise SystemExit("archive differs from the frozen Git tree (paths, bytes or executable modes)")
+            # All entries are validated before creating the destination. Use
+            # exclusive creation: neither a failed nor an old run is replaced.
+            dest.mkdir(parents=True, exist_ok=False)
+            for member in members:
+                path = dest / member.name
+                if member.isdir():
+                    path.mkdir(parents=True, exist_ok=True)
+                else:
+                    path.parent.mkdir(parents=True, exist_ok=True)
+                    with source.extractfile(member) as inp, path.open("xb") as out:
+                        while chunk := inp.read(1024 * 1024):
+                            out.write(chunk)
+                    path.chmod(0o755 if member.mode & 0o111 else 0o644)
 
 
 def code_mask(lines: list[str]) -> list[bool]:
@@ -153,64 +213,68 @@ def declarations_at(root: Path) -> set[str]:
     found, or the leak filter would wrongly believe it absent.
     """
     names: set[str] = set()
-    for library in LIBRARY_ROOTS:
-        base = root / "lean" / library
-        if not base.is_dir():
-            continue
-        for path in sorted(base.rglob("*.lean")):
-            try:
-                lines = path.read_text(encoding="utf-8").splitlines()
-            except (OSError, UnicodeDecodeError):
+    # Registered historical cuts predate the move into lean/. Read their
+    # actual layout as well as the current one; zero declarations cannot prove
+    # that a target is absent.
+    paths = {
+        path
+        for project in (root, root / "lean")
+        for library in LIBRARY_ROOTS
+        if (project / library).is_dir()
+        for path in (project / library).rglob("*.lean")
+    }
+    for path in sorted(paths):
+        try:
+            lines = path.read_text(encoding="utf-8").splitlines()
+        except (OSError, UnicodeDecodeError) as error:
+            raise SystemExit(f"cannot inspect historical Lean source {path}: {error}") from error
+        mask = code_mask(lines)
+        for index, line in enumerate(lines):
+            if not mask[index]:
                 continue
-            mask = code_mask(lines)
-            for index, line in enumerate(lines):
-                if not mask[index]:
+            match = DECL_RE.match(line)
+            if match:
+                names.add(match.group(2))
+                continue
+            # Keyword alone on this line: the name may be on a following one.
+            head = re.match(
+                r"^\s*(?:private\s+|protected\s+|noncomputable\s+|partial\s+"
+                r"|unsafe\s+|local\s+)*"
+                r"(theorem|lemma|def|abbrev|instance)\s*$",
+                line,
+            )
+            if not head:
+                continue
+            for offset in range(1, 4):
+                nxt = index + offset
+                if nxt >= len(lines) or not mask[nxt]:
                     continue
-                match = DECL_RE.match(line)
-                if match:
-                    names.add(match.group(2))
+                stripped = lines[nxt].strip()
+                if not stripped:
                     continue
-                # Keyword alone on this line: the name may be on a following one.
-                head = re.match(
-                    r"^\s*(?:private\s+|protected\s+|noncomputable\s+|partial\s+"
-                    r"|unsafe\s+|local\s+)*"
-                    r"(theorem|lemma|def|abbrev|instance)\s*$",
-                    line,
-                )
-                if not head:
-                    continue
-                for offset in range(1, 4):
-                    nxt = index + offset
-                    if nxt >= len(lines) or not mask[nxt]:
-                        continue
-                    stripped = lines[nxt].strip()
-                    if not stripped:
-                        continue
-                    name = re.match(r"^([A-Za-z_][A-Za-z0-9_'.!?]*)", stripped)
-                    if name:
-                        names.add(name.group(1))
-                    break
+                name = re.match(r"^([A-Za-z_][A-Za-z0-9_'.!?]*)", stripped)
+                if name:
+                    names.add(name.group(1))
+                break
     return names
 
 
-def introduction_commit(target: str) -> tuple[str, str, str]:
-    """Return (introducing_sha, parent_sha, subject) for a declaration name."""
-    out = git(
-        "log",
-        "-S",
-        target,
-        "--reverse",
-        "--format=%H\t%ad\t%s",
-        "--date=short",
-        "--",
-        "*.lean",
-    )
-    rows = [r for r in out.splitlines() if r.strip()]
-    if not rows:
-        raise SystemExit(f"no commit introduces {target!r} in any .lean file")
-    sha, date, subject = rows[0].split("\t", 2)
-    parent = git("rev-parse", f"{sha}^").strip()
-    return sha, parent, f"{date} {subject}"
+def registered_item(target: str) -> dict:
+    """Honor the authored holdout, including history preserved by reconciliation."""
+    items = json.loads(BENCHMARK_ITEMS.read_text(encoding="utf-8"))
+    matches = [item for item in items if item.get("target") == target]
+    if len(matches) != 1:
+        raise SystemExit(f"expected one registered benchmark item for {target!r}")
+    item = matches[0]
+    for key in ("cut_commit", "introducing_commit"):
+        value = item.get(key, "")
+        if not isinstance(value, str) or not re.fullmatch(r"[0-9a-f]{40}", value):
+            raise SystemExit(f"registered {key} must be a full commit hash")
+        if git("cat-file", "-t", value).strip() != "commit":
+            raise SystemExit(f"registered {key} is not a commit")
+    if git("rev-parse", f"{item['introducing_commit']}^1").strip() != item["cut_commit"]:
+        raise SystemExit("registered cut is not the introducing commit's first parent")
+    return item
 
 
 def node_for(corpus: dict, target: str) -> dict | None:
@@ -239,8 +303,8 @@ def evidence_names(record: dict) -> list[str]:
 def filter_to_cut(records: list[dict], available: set[str]) -> tuple[list[dict], list[str]]:
     """Keep records whose every cited declaration exists at the cut.
 
-    A record citing a declaration that does not yet exist is a record about the
-    future. Dropping it is the whole leak control, so the rule is all-or-nothing
+    A record citing a declaration that does not yet exist refers to the
+    future. The reference filter is all-or-nothing
     rather than a partial trim: a mechanism stripped of its post-cut evidence
     would still carry post-cut prose.
     """
@@ -255,27 +319,31 @@ def filter_to_cut(records: list[dict], available: set[str]) -> tuple[list[dict],
     return kept, dropped
 
 
-def build_packet(target: str, arm: str, dest: Path, keep: bool, problem: str = "") -> dict:
+def build_packet(target: str, arm: str, dest: Path, keep: bool = True, problem: str = "") -> dict:
     if arm not in ARMS:
         raise SystemExit(f"unknown arm {arm!r}; expected one of {', '.join(ARMS)}")
 
+    dest = validate_destination(dest)
+    item = registered_item(target)
+    if problem and problem != item.get("problem", problem):
+        raise SystemExit("requested problem disagrees with registered benchmark item")
+    problem = item.get("problem", problem)
     corpus = load_corpus(CORPUS, root=ROOT)
     lab = json.loads(LAB.read_text(encoding="utf-8")) if LAB.exists() else {}
 
-    sha, parent, subject = introduction_commit(target)
+    sha, parent = item["introducing_commit"], item["cut_commit"]
+    subject = git("show", "-s", "--format=%s", sha).strip()
     node = node_for(corpus, target)
 
-    if dest.exists():
-        _remove_worktree(dest)
-    dest.parent.mkdir(parents=True, exist_ok=True)
-    git("worktree", "add", "--detach", str(dest), parent)
+    export_snapshot(parent, dest)
 
     available = declarations_at(dest)
+    if not available:
+        raise SystemExit("no declarations found at the cut; target absence cannot be verified")
     if target in available:
-        _remove_worktree(dest)
         raise SystemExit(
             f"LEAK: {target!r} is present at the cut {parent[:8]}; "
-            "the -S search found a later edit, not the introduction"
+            "packet preparation failed; retained files are not an admitted packet"
         )
 
     layers = ARM_LAYERS[arm]
@@ -341,8 +409,8 @@ def build_packet(target: str, arm: str, dest: Path, keep: bool, problem: str = "
 
     if "mechanism_offproblem" in layers and lab.get("mechanisms"):
         mechs, drop = filter_to_cut(lab["mechanisms"], available)
-        # Real, correctly-attached mechanisms about the *other* problem. Same
-        # schema and comparable volume, wrong subject.
+        # Real mechanisms about another problem. Their volume and capsules
+        # remain unmatched; this is preparation, not an admitted control run.
         off = [m for m in mechs if m.get("problem_reach") not in (problem, "both")]
         payload = {
             "note": (
@@ -396,12 +464,9 @@ def build_packet(target: str, arm: str, dest: Path, keep: bool, problem: str = "
         dropped["failure_receipts"] = drop
 
     manifest = {
-        "schema": "erdos249257-benchmark-packet/1",
+        "schema": "erdos249257-benchmark-packet/2",
         "arm": arm,
-        "cut_commit": parent,
-        "introducing_commit": sha,
-        "introducing_subject": subject,
-        "target_fingerprint": "sha256:" + hashlib.sha256(target.encode()).hexdigest(),
+        "evaluation_ready": False,
         "declarations_at_cut": len(available),
         "injected": injected,
         "dropped_as_post_cut": {k: len(v) for k, v in dropped.items()},
@@ -409,8 +474,15 @@ def build_packet(target: str, arm: str, dest: Path, keep: bool, problem: str = "
         "leak_controls": [
             "target declaration verified absent from the checkout",
             "injected records filtered against declarations extracted from the checkout",
-            "target name, statement and module absent from the packet",
+            "no Git worktree, object database, or enclosing worktree",
+            "future commit metadata and target fingerprint withheld from participant manifest",
             "capsule transfer challenges withheld",
+        ],
+        "outstanding_evaluation_controls": [
+            "separate participant filesystem and network isolation",
+            "review current derived prose and concepts for answer hints",
+            "match capsules, prose volume, model, search tools and compute budgets across arms",
+            "fresh participants and a fixed independently applied scoring rubric",
         ],
     }
     (packet_dir / "MANIFEST.json").write_text(
@@ -418,11 +490,15 @@ def build_packet(target: str, arm: str, dest: Path, keep: bool, problem: str = "
     )
 
     answer = {
+        "schema": "erdos249257-benchmark-evaluator/2",
+        "item_id": item.get("item_id"),
         "target": target,
         "arm": arm,
         "cut_commit": parent,
         "introducing_commit": sha,
         "introducing_subject": subject,
+        "target_fingerprint": "sha256:" + hashlib.sha256(target.encode()).hexdigest(),
+        "registered_answer_key": item.get("answer_key"),
         "node_id": node.get("id") if node else None,
         "canonical_statement": node.get("canonical_statement") if node else None,
         "logical_class": node.get("logical_class") if node else None,
@@ -431,10 +507,7 @@ def build_packet(target: str, arm: str, dest: Path, keep: bool, problem: str = "
         "problem": node.get("problem") if node else None,
     }
 
-    if not keep:
-        pass  # caller removes; kept by default so the arm can be run
-
-    return {"manifest": manifest, "answer_key": answer, "worktree": str(dest)}
+    return {"manifest": manifest, "answer_key": answer, "packet": str(dest)}
 
 
 def main() -> int:
@@ -446,29 +519,32 @@ def main() -> int:
         default="",
         help="the item's problem; required by the off-problem control arm",
     )
-    parser.add_argument("--dest", required=True, help="worktree path (outside the repo)")
+    parser.add_argument("--dest", required=True, help="new export directory outside every Git worktree")
     parser.add_argument(
-        "--answer-key", help="write the answer key here (never inside the worktree)"
+        "--answer-key", help="new evaluator receipt path outside the participant export"
     )
-    parser.add_argument("--remove", action="store_true", help="remove an existing packet and exit")
+    parser.add_argument("--remove", action="store_true", help=argparse.SUPPRESS)
     args = parser.parse_args()
 
-    dest = Path(args.dest).resolve()
     if args.remove:
-        _remove_worktree(dest)
-        print(f"removed {dest}")
-        return 0
+        parser.error("--remove is unsupported; existing packets are never removed by this builder")
+
+    dest = validate_destination(Path(args.dest))
+    raw_key = Path(args.answer_key) if args.answer_key else None
+    if raw_key is not None and raw_key.is_symlink():
+        parser.error("refusing an answer-key symlink")
+    key = raw_key.resolve() if raw_key is not None else None
+    if key is not None:
+        if key == dest or dest in key.parents:
+            parser.error("refusing to write the answer key inside the packet")
+        if key.exists() or key.is_symlink():
+            parser.error("refusing to replace an existing answer key")
 
     result = build_packet(args.target, args.arm, dest, keep=True, problem=args.problem)
-    if args.answer_key:
-        key = Path(args.answer_key).resolve()
-        if str(key).startswith(str(dest)):
-            raise SystemExit("refusing to write the answer key inside the packet")
+    if key is not None:
         key.parent.mkdir(parents=True, exist_ok=True)
-        key.write_text(
-            json.dumps(result["answer_key"], ensure_ascii=False, indent=1) + "\n",
-            encoding="utf-8",
-        )
+        with key.open("x", encoding="utf-8") as out:
+            out.write(json.dumps(result["answer_key"], ensure_ascii=False, indent=1) + "\n")
     print(json.dumps(result["manifest"], ensure_ascii=False, indent=1))
     return 0
 
