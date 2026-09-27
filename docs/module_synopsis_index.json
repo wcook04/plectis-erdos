@@ -1,9 +1,9 @@
 {
   "schema_version": "erdos249257-module-synopsis-index/1",
   "authority_posture": "generated_index_of_authored_Lean_module_headers_not_proof_or_claim_status_authority",
-  "source_fingerprint": "sha256:d14142eadb927104c74de7292352680cf0925288c6a59a72dca90e5a4d135682",
-  "module_count": 1839,
-  "synopsis_count": 1592,
+  "source_fingerprint": "sha256:430e33d3e3ce6125cf0438706d1988335c43282c7d547dd3a1a67bfc9d38f497",
+  "module_count": 1861,
+  "synopsis_count": 1614,
   "query_contract": {
     "command": "python3 scripts/query_corpus.py --module <module_path_or_sigil>",
     "returns": "Resolves a module synopsis to its declarations, paper sigil, source identity, attached claims, and route-memory context."
@@ -6893,6 +6893,11 @@
       "synopsis": "Infinite tail budget and the landed r6 delayed gluing theorem Proof source. This file goes beyond the finite algebra in `DisplacementTailBudget.lean`: it proves the tail estimate for actual infinite support sums and assembles the diagonal construction. Its hypothesis is the r6 general version, namely return admissibility of *every finite union* of the given hosts. It does not assume that separately admissible hosts can be united, nor prove the missing weighted/positive-cover analytic producer. The r6 construction is in the current short note's prose rather than a numbered result environment. It is therefore recorded as supplementary coverage, not used to inflate the 261-row theorem-environment census."
     },
     {
+      "id": "ErdosProblems.Erdos257.PaperCompleteR8.AnalyticSeparationReturn",
+      "path": "lean/ErdosProblems/Erdos257/PaperCompleteR8/AnalyticSeparationReturn.lean",
+      "synopsis": "Paper-facing return: weighted separation and the original cover predicate"
+    },
+    {
       "id": "ErdosProblems.Erdos257.PaperCompleteR8.ArbitraryWeightMixedClaim",
       "path": "lean/ErdosProblems/Erdos257/PaperCompleteR8/ArbitraryWeightMixedClaim.lean",
       "synopsis": "Arbitrary-weight positive covers on the weighted common scale `LogBudgetCover` carries the paper's arbitrary strictly positive weights of total mass one. This module combines its nonlinear threshold test with the checked weighted finite mean, so both support classes use one actual sample."
@@ -6901,6 +6906,21 @@
       "id": "ErdosProblems.Erdos257.PaperCompleteR8.ArbitraryWeightReturns",
       "path": "lean/ErdosProblems/Erdos257/PaperCompleteR8/ArbitraryWeightReturns.lean",
       "synopsis": "Actual return supplier for arbitrary strictly positive probability weights This proves the paper's arbitrary-weight remark. It does not attempt to re-enumerate an arbitrary probability sequence into geometric weights. The checked single-column potential and finite-prefix limits are reused. Build and axiom-audit status belongs to source-bound validation receipts."
+    },
+    {
+      "id": "ErdosProblems.Erdos257.PaperCompleteR8.BoundedMassCoverBudget",
+      "path": "lean/ErdosProblems/Erdos257/PaperCompleteR8/BoundedMassCoverBudget.lean",
+      "synopsis": "A strengthened cover for the literal bounded-mass prime rows The product window controls the first prime-reciprocal moment. Applying `log x <= x - 1` to `q / 4^(j+1)` then bounds the indexed cover budget by a linear polynomial times `4^(-(j+1))`. This uses the lower bound on q only in a denominator comparison; it never upper-bounds log q by log 4^(j+1). The resulting cover uses the actual rows selected in BoundedMassPrimeRows. Reciprocal divergence and exclusion of every finite-prime weighted class are separate conclusions. Validation authority is the exact source-hashed Lean exit and axiom receipt, not this module's prose."
+    },
+    {
+      "id": "ErdosProblems.Erdos257.PaperCompleteR8.BoundedMassHostSeparation",
+      "path": "lean/ErdosProblems/Erdos257/PaperCompleteR8/BoundedMassHostSeparation.lean",
+      "synopsis": "Separation for the paper's bounded-mass divisor rows Each row escapes every fixed finite set of integers and has reciprocal mass at least one. The vanishing-tail criterion therefore rules out summability. Pairwise disjoint complete prime alphabets make each fixed finite prime set absent from all sufficiently late rows. On those rows its weighted term is exactly the reciprocal term divided by b - 1, so the same argument applies. This is the literal bounded-mass witness, rather than the alternate reverseHost. The exact Lean check and axiom output decide validation, not this description."
+    },
+    {
+      "id": "ErdosProblems.Erdos257.PaperCompleteR8.BoundedMassPrimeRows",
+      "path": "lean/ErdosProblems/Erdos257/PaperCompleteR8/BoundedMassPrimeRows.lean",
+      "synopsis": "Fresh prime rows with reciprocal mass between one and four thirds This supplies the actual bounded-mass row selection in the short paper. At each finite stage choose a new odd prime q >= 4^(j+1), then a finite set of fresh odd primes whose product of (1+1/p) first crosses q. Every factor is at most 4/3, so the overshoot is strictly below 4q/3. The recursion excludes the entire earlier alphabet, including every q. These are constructed arithmetic data, not cover or irrationality hypotheses. BoundedMassCoverBudget proves summability of their indexed cover costs; BoundedMassHostSeparation proves reciprocal divergence and exclusion of every finite-prime weighted criterion for the same union of divisor rows."
     },
     {
       "id": "ErdosProblems.Erdos257.PaperCompleteR8.CommonScale",
@@ -6923,6 +6943,16 @@
       "synopsis": "Summable families of actual modular tests This supplies the countable interchange and sampling layer after (S), with explicit summability hypotheses. The index type can be a pair of indices, so the theorem applies to both frame and conductor indices at once. It does not assume a lower bound on the fractional exponents."
     },
     {
+      "id": "ErdosProblems.Erdos257.PaperCompleteR8.CoverClassTransport",
+      "path": "lean/ErdosProblems/Erdos257/PaperCompleteR8/CoverClassTransport.lean",
+      "synopsis": "Transport the paper's fixed geometric weights to arbitrary-weight covers This transport prevents a type-level gap between the actual strengthened-cover predicate and the more general logarithmic obstruction."
+    },
+    {
+      "id": "ErdosProblems.Erdos257.PaperCompleteR8.CoverGaugeComplete",
+      "path": "lean/ErdosProblems/Erdos257/PaperCompleteR8/CoverGaugeComplete.lean",
+      "synopsis": "Complete scalar minimisation, sharp power-of-two bound and asymptotic The existing infimum and small branch are imported without modification. The large-parameter minimum follows from real Bernoulli's inequality, so there is no differentiation of an infimum or unproved minimiser premise."
+    },
+    {
       "id": "ErdosProblems.Erdos257.PaperCompleteR8.CoverPotentialBounds",
       "path": "lean/ErdosProblems/Erdos257/PaperCompleteR8/CoverPotentialBounds.lean",
       "synopsis": "Summability and means of the ACTUAL positive-cover potentials Every summability condition here is derived from PositiveCoverData and its displayed cost, before an interchange. No extra incidence-majorisation premise or uniform positive exponent is assumed."
@@ -6933,9 +6963,54 @@
       "synopsis": "The actual scalar cover gauge and its first exact branch Proof source. The infimum is over genuine admissible exponents. This module proves nonnegativity, the e*log lower bound, and the exact branch Psi(t)=t for 1<=t<=4. The large-t exact branch is proved in analytic_proofs.md but is not asserted as a Lean theorem in this module."
     },
     {
+      "id": "ErdosProblems.Erdos257.PaperCompleteR8.DivisorCubeIncidence",
+      "path": "lean/ErdosProblems/Erdos257/PaperCompleteR8/DivisorCubeIncidence.lean",
+      "synopsis": "Literal divisor cubes and logarithmic incidence The subsets counted below are actual prime subsets, not independent random variables supplied as an extra assumption. The multiplier q may have common prime factors with the cube: the relevant rank counts q*p dividing n."
+    },
+    {
+      "id": "ErdosProblems.Erdos257.PaperCompleteR8.DivisorCubeMoments",
+      "path": "lean/ErdosProblems/Erdos257/PaperCompleteR8/DivisorCubeMoments.lean",
+      "synopsis": "Exact first moments and a finite variance lower bound for divisor cubes. No independence premise, limiting distribution, or coprimality with q is used."
+    },
+    {
+      "id": "ErdosProblems.Erdos257.PaperCompleteR8.DivisorCubeProduct",
+      "path": "lean/ErdosProblems/Erdos257/PaperCompleteR8/DivisorCubeProduct.lean",
+      "synopsis": "Exact fractional divisor-cube identities The multiplier q need not be coprime to the squarefree prime product. No independent-Bernoulli distribution is assumed. All means are finite counts."
+    },
+    {
+      "id": "ErdosProblems.Erdos257.PaperCompleteR8.DivisorFrameHostTransport",
+      "path": "lean/ErdosProblems/Erdos257/PaperCompleteR8/DivisorFrameHostTransport.lean",
+      "synopsis": "Canonical finite-prime weights on the dyadic divisor host The valuation identity identifies the literal frame budget with the original finite-prime weighted criterion. A nonnegative finite-subcover argument then transports summability to the actual infinite union."
+    },
+    {
+      "id": "ErdosProblems.Erdos257.PaperCompleteR8.DivisorFrameWeightedBudget",
+      "path": "lean/ErdosProblems/Erdos257/PaperCompleteR8/DivisorFrameWeightedBudget.lean",
+      "synopsis": "Divisor-product masses and the separating host's weighted frame budget The reciprocal divisor sum is computed from the actual prime product. Its exponential upper bound and the prescribed harmonic scales give a summable sequence of literal dyadic frame weights. Identifying these literal weights with the finite-prime weighted term uses the odd-cofactor valuation identity; the divergent logarithmic moment is a separate remaining step."
+    },
+    {
+      "id": "ErdosProblems.Erdos257.PaperCompleteR8.DyadicDivisorFrames",
+      "path": "lean/ErdosProblems/Erdos257/PaperCompleteR8/DyadicDivisorFrames.lean",
+      "synopsis": "Disjoint dyadic divisor frames for the weighted separating host These are the actual frames F_k = {2^(k+2) d : d divides M_k}. Positive odd M_k make them pairwise disjoint and give an infinite positive union. The prime-block harmonic bounds, weighted summability and divergent logarithmic means are further obligations, not hypotheses hidden in a class-separation conclusion."
+    },
+    {
+      "id": "ErdosProblems.Erdos257.PaperCompleteR8.DyadicHostSeparation",
+      "path": "lean/ErdosProblems/Erdos257/PaperCompleteR8/DyadicHostSeparation.lean",
+      "synopsis": "The actual weighted host lies outside every strengthened positive cover The logarithmic growth supplier is proved from finite prime blocks and exact integer periods. Neither unbounded moments, reciprocal divergence, no-cover status, nor irrationality is assumed by the final existence theorem."
+    },
+    {
       "id": "ErdosProblems.Erdos257.PaperCompleteR8.DyadicKernel",
       "path": "lean/ErdosProblems/Erdos257/PaperCompleteR8/DyadicKernel.lean",
       "synopsis": "The finite estimate (S) All three regimes refer to the actual modular atom, not abstract error terms. The complete-orbit argument is in OrbitBound. The dyadic reciprocal-tail bound is reused from the compiled WeightedSupportAveraging module. This file proves no-wrap and transition bounds and then assembles the uniform finite estimate."
+    },
+    {
+      "id": "ErdosProblems.Erdos257.PaperCompleteR8.DyadicLogarithmicEvents",
+      "path": "lean/ErdosProblems/Erdos257/PaperCompleteR8/DyadicLogarithmicEvents.lean",
+      "synopsis": "Exact finite-period counts for dyadic logarithmic events For the separating divisor frames, the event for a prime in row k is 2^(k+2)*p divides n but 2^(k+3)*p does not. Counting it by subtraction avoids probabilistic independence assumptions or limiting density suppliers."
+    },
+    {
+      "id": "ErdosProblems.Erdos257.PaperCompleteR8.FiniteAtomicMajorants",
+      "path": "lean/ErdosProblems/Erdos257/PaperCompleteR8/FiniteAtomicMajorants.lean",
+      "synopsis": "Finite positive divisor atoms, with exact costs and exact complete-period means. Repeated atom conductors are allowed."
     },
     {
       "id": "ErdosProblems.Erdos257.PaperCompleteR8.FiniteCoverLogBudget",
@@ -6948,6 +7023,11 @@
       "synopsis": "Actual finite dyadic observation means The average samples exactly the positive progression points (m+1)*L. No independently chosen existential return is substituted for an average."
     },
     {
+      "id": "ErdosProblems.Erdos257.PaperCompleteR8.IndexedCubeCover",
+      "path": "lean/ErdosProblems/Erdos257/PaperCompleteR8/IndexedCubeCover.lean",
+      "synopsis": "Divisor-cube covers with the frame-index cost included For the j-th row put B_j = j + 1 + sum_{p in P_j} 1/p and choose 2^alpha_j - 1 = 1/B_j. The product cost and the frame-index factor together cost at most exp(1) * B_j / q_j. Thus a summable B_j/q_j budget constructs an actual strengthened positive cover of the union. This is the analytic step of the short paper's bounded-mass reverse construction, reindexed from j >= 1 to j >= 0. It does not construct the fresh prime rows or assert their reciprocal-mass bounds. Empty prime sets and overlapping rows are allowed. Validation receipts bind exact source bytes."
+    },
+    {
       "id": "ErdosProblems.Erdos257.PaperCompleteR8.KernelRecurrence",
       "path": "lean/ErdosProblems/Erdos257/PaperCompleteR8/KernelRecurrence.lean",
       "synopsis": "The missing incidence-to-kernel bridge, by recurrence comparison Proof module for the r8 upgrade. No additional analytic target is assumed in this module. The actual modular kernel is retained. Instead of exchanging the two infinite divisibility sums in the paper, compare the exact one-step recurrences. The fractional frame potential is a subsolution of the same expanding recurrence as its positive divisor majorant. A bounded above expanding defect is nonpositive. This proves the needed bridge directly. Pinned API: Mathlib/Analysis/SpecialFunctions/Pow/Real.lean (`mul_rpow`, `rpow_nonneg` and its real-power order lemmas); the two-term subadditivity is already used in the desk-checked PaperCompleteR7.CoverKernel."
@@ -6958,9 +7038,19 @@
       "synopsis": "Weighted mean + nonlinear cover test on ONE finite sampling scheme The previous return's JointDyadicMeanSupply is a sufficient condition, but is not the exact interface of the ordinary mixed proof: a small fractional cover test need not give a small FIRST MOMENT of the displacement. This module uses the correct nonlinear test. PositiveCoverData contributes no remaining target. The concrete weighted finite-mean producer is isolated here and proved, without additional premises, in WeightedReturn."
     },
     {
+      "id": "ErdosProblems.Erdos257.PaperCompleteR8.OldCoverObstruction",
+      "path": "lean/ErdosProblems/Erdos257/PaperCompleteR8/OldCoverObstruction.lean",
+      "synopsis": "The historical two-inverse-power class, not merely fixed exponents The definition below is the old displayed cost after reindexing j>=1 by j+1. The obstruction quantifies over every finite-frame cover, every enumeration, every overlap, and every sequence of admissible exponents."
+    },
+    {
       "id": "ErdosProblems.Erdos257.PaperCompleteR8.OptimizedCoverBudget",
       "path": "lean/ErdosProblems/Erdos257/PaperCompleteR8/OptimizedCoverBudget.lean",
       "synopsis": "Optimizing the actual countable positive-cover cost The admissible objects contain literal frames, divisor coefficients and the paper's explicit summability hypotheses. Their costs are optimized only when at least one admissible cover exists; the separate nonexistence theorem does not assign a fictitious value to the real infimum of an empty set."
+    },
+    {
+      "id": "ErdosProblems.Erdos257.PaperCompleteR8.OptimizedCubeCost",
+      "path": "lean/ErdosProblems/Erdos257/PaperCompleteR8/OptimizedCubeCost.lean",
+      "synopsis": "Optimised finite divisor-cube cost, with positive epsilon padding The upper bound e*S/q requires S >= 1. The valid general bound is exp(S)/q. The q multiplier can share primes with P. Infima need not be attained."
     },
     {
       "id": "ErdosProblems.Erdos257.PaperCompleteR8.OrbitBound",
@@ -6968,9 +7058,29 @@
       "synopsis": "Real-base complete-orbit bookkeeping Generalises the *repaired existing* binary proof in Erdos249257/ReciprocalSupportIrrationality.lean, lines 153--280, without changing its finite permutation argument. Unlike the binary result, this applies at B=2^α for α arbitrarily close to zero. No premise is an irrationality conclusion."
     },
     {
+      "id": "ErdosProblems.Erdos257.PaperCompleteR8.PaperIncomparabilityEndpoints",
+      "path": "lean/ErdosProblems/Erdos257/PaperCompleteR8/PaperIncomparabilityEndpoints.lean",
+      "synopsis": "Existential endpoints for the weighted and strengthened-cover classes These are the complete existential statements of short-paper `res:weighted-cover-incomparability` and `res:strict-mixed-supports`. The reverse witness is `reverseHost`, constructed by a different row schedule from the paper's printed bounded-mass fresh-prime construction. The theorem proves the same existence claim; it does not formalise that particular construction or its quantitative row bounds. The union argument uses downward closure of each sufficient class. Its irrationality conclusion comes from the common-scale mixed theorem, not from adding irrational numbers. Universal Erdős Problem 257 remains open. Check this module and its transitive imports with the pinned toolchain: `python3 scripts/lean_fast_build.py --jobs 2 ErdosProblems.Erdos257.PaperCompleteR8.PaperIncomparabilityEndpoints`. The two `#print axioms` commands below report the endpoint dependencies. Source availability alone does not establish a public build or Comparator result."
+    },
+    {
       "id": "ErdosProblems.Erdos257.PaperCompleteR8.PositiveCoverReturn",
       "path": "lean/ErdosProblems/Erdos257/PaperCompleteR8/PositiveCoverReturn.lean",
       "synopsis": "End-to-end strengthened positive-cover theorem No new Prop target or unproved bridge is a hypothesis of the final theorem. Input is exactly the desk PositiveCoverData and its one-inverse- power cost. Finite prefixes, the actual host, the potential comparison, summability, one common finite observation mean, and all-base heredity are assembled here. This module does not assert the weighted or mixed producer."
+    },
+    {
+      "id": "ErdosProblems.Erdos257.PaperCompleteR8.PositiveWeightPadding",
+      "path": "lean/ErdosProblems/Erdos257/PaperCompleteR8/PositiveWeightPadding.lean",
+      "synopsis": "Genuine positive-weight padding and the finite-frame infimum limit Every natural-number index has strictly positive weight. Dummy frames are empty; their coefficients, not their weights, vanish. The infimum upper bound is a limit of admissible costs, not a claim of attainment."
+    },
+    {
+      "id": "ErdosProblems.Erdos257.PaperCompleteR8.PrimeHarmonicBlocks",
+      "path": "lean/ErdosProblems/Erdos257/PaperCompleteR8/PrimeHarmonicBlocks.lean",
+      "synopsis": "Prime harmonic blocks with bounded overshoot Reciprocal-prime divergence supplies a finite block beyond any finite forbidden set. A finite threshold-crossing argument limits overshoot to one. Recursive exclusion of all earlier blocks then gives pairwise disjoint odd-prime blocks at any prescribed nonnegative harmonic scales. No weighted or logarithmic moment assertion about their divisor frames is assumed here."
+    },
+    {
+      "id": "ErdosProblems.Erdos257.PaperCompleteR8.ReverseStrengthenedHost",
+      "path": "lean/ErdosProblems/Erdos257/PaperCompleteR8/ReverseStrengthenedHost.lean",
+      "synopsis": "A constructed squarefree strengthened-cover host outside every old cover This proof uses a different admissible row schedule from the historical note. It avoids deleting an infinite reserved-prime set and does not need disjoint rows. The finite harmonic supplier is used after deleting all primes <= q_j. The factor (j+1) in S_j >= (j+1)*sqrt(q_j) is essential: S~sqrt(q) alone would not make the old logarithmic-square obstruction unbounded. The witness here is a squarefree divisor-cube host with rows supplied by `exists_odd_prime_harmonic_block`; it is not the paper's printed bounded-mass fresh-prime construction, and neither result stands in for the other."
     },
     {
       "id": "ErdosProblems.Erdos257.PaperCompleteR8.WeightedFiniteEstimates",

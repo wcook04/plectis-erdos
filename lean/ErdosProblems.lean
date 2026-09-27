@@ -102,6 +102,8 @@ import ErdosProblems.Erdos251.SparseRationalisationCore
 import ErdosProblems.Erdos251.SparseScheduleDensityR8
 import ErdosProblems.Erdos251.SparseScheduleR8
 import ErdosProblems.Erdos257.PaperCompleteR8.WeightedReturn
+import ErdosProblems.Erdos257.PaperCompleteR8.PaperIncomparabilityEndpoints
+import ErdosProblems.Erdos257.PaperCompleteR8.BoundedMassHostSeparation
 import ErdosProblems.Erdos257.WitnessLogicHost
 import ErdosProblems.Erdos257.WitnessLogicIrrational
 import ErdosProblems.Erdos269.ActualSharpTailMajorantR10
