@@ -110,6 +110,24 @@ class Modules(unittest.TestCase):
             [f"C({E}.eventually_card_primes_dyadic_le)"],
             [f"C({E}.nthPrime_two_sided)"]])
 
+    def test_supplied_consequence_gives_a_using_command(self):
+        g = graph()
+        g["theorems"].append({"name": "Toy.chebyshev", "module": "Toy.Cheb", "problem": "249", "hypotheses": []})
+        for st in g["statements"]:
+            if st["key"] == f"k:{E}.eventually_card_primes_dyadic_le":
+                st["status"], st["witness"] = "supplied", "Toy.chebyshev"
+        index = frontier.weakening_index(g)
+        theorems = {t["name"]: t for t in g["theorems"]}
+        statements = {st["key"]: st for st in g["statements"]}
+        self.assertEqual(frontier.chain_suppliers(f"{P}.prop_badcof", index, statements, theorems),
+                         ["Toy.chebyshev"])
+        papers = {f"{P}.prop_badcof": [{"row": "r", "label": "l", "lean_status": "modulo_named_input"}]}
+        slot = frontier.plan(g, papers)["Erdos249"]
+        self.assertIn(f"derive_frontier {P}.prop_badcof using Toy.chebyshev", slot["supplied_commands"])
+        self.assertIn("Toy.Cheb", slot["imports"])
+        text = frontier.render_module("Erdos249", slot, g["source"])
+        self.assertIn(f"set_option argumentGraph.strict false in derive_frontier {P}.prop_badcof using Toy.chebyshev", text)
+
     def test_lean_ident_escapes(self):
         self.assertEqual(frontier.lean_ident("A.b_c.d'"), "A.b_c.d'")
         self.assertEqual(frontier.lean_ident("A.1x"), "A.«1x»")

@@ -138,8 +138,10 @@ def chain_cuts(theorem: str, weakenings: dict[str, list[dict[str, Any]]]) -> lis
 
 def plan(graph: dict[str, Any], papers: dict[str, list[dict[str, Any]]]) -> dict[str, Any]:
     theorems = {t["name"]: t for t in graph.get("theorems", [])}
+    statements = {s["key"]: s for s in graph.get("statements", [])}
     weakenings = weakening_index(graph)
-    per_problem: dict[str, dict[str, Any]] = defaultdict(lambda: {"imports": set(), "commands": [], "rows": []})
+    per_problem: dict[str, dict[str, Any]] = defaultdict(
+        lambda: {"imports": set(), "commands": [], "supplied_commands": [], "rows": []})
     for row in graph.get("idle", []) or []:
         name = row["theorem"]
         if name not in papers or name not in theorems:
@@ -174,13 +176,51 @@ def plan(graph: dict[str, Any], papers: dict[str, list[dict[str, Any]]]) -> dict
         cuts = chain_cuts(name, weakenings)
         for cut in cuts:
             slot["commands"].append(f"derive_frontier {lean_ident(name)} at {lean_ident(cut)}")
+        suppliers = chain_suppliers(name, weakenings, statements, theorems)
+        if suppliers:
+            for s in suppliers:
+                slot["imports"].add(theorems[s]["module"])
+            using = " ".join(lean_ident(s) for s in suppliers)
+            # A supplied consequence the graph records need not sit where the Lean
+            # chain stops, so these commands only warn when they discharge nothing.
+            slot["supplied_commands"].append(f"derive_frontier {lean_ident(name)} using {using}")
+            for cut in cuts:
+                slot["supplied_commands"].append(
+                    f"derive_frontier {lean_ident(name)} at {lean_ident(cut)} using {using}")
         slot["rows"].append({
             "operation": "weakening", "theorem": name, "papers": papers[name], "source": theorem.get("source"),
             "hypotheses": [{"i": r.get("i"), "hypothesis": r.get("hypothesis_type") or r.get("hypothesis"),
                             "consequences": [{"type": c.get("type"), "via": c.get("via")}
                                              for c in r.get("consequences", [])]} for r in rows],
-            "frontier_cuts": cuts})
+            "frontier_cuts": cuts, "suppliers": suppliers})
     return per_problem
+
+
+def chain_suppliers(theorem: str, weakenings: dict[str, list[dict[str, Any]]],
+                    statements: dict[str, dict[str, Any]], theorems: dict[str, dict[str, Any]]) -> list[str]:
+    """Corpus theorems the graph records as witnesses of a consequence anywhere on
+    the weakening chain below ``theorem``: the candidates for
+    ``derive_frontier … using``. Battery witnesses (tactics) are not constants and
+    are left out."""
+    out: list[str] = []
+    seen: set[str] = set()
+    frontier = [theorem]
+    while frontier:
+        nxt: list[str] = []
+        for name in frontier:
+            if name in seen:
+                continue
+            seen.add(name)
+            for row in weakenings.get(name, []):
+                for c in row.get("consequences", []):
+                    statement = statements.get(c.get("key") or "") or {}
+                    witness = statement.get("witness")
+                    if statement.get("status") == "supplied" and isinstance(witness, str) \
+                            and witness in theorems and witness not in out:
+                        out.append(witness)
+                    nxt += [v for v in c.get("via") or [] if v in weakenings]
+        frontier = nxt
+    return out
 
 
 def named_inputs(graph: dict[str, Any], papers: dict[str, list[dict[str, Any]]],
@@ -315,6 +355,11 @@ def render_module(problem: str, slot: dict[str, Any], source: dict[str, Any]) ->
     lines.append("set_option maxHeartbeats 4000000")
     lines.append("")
     lines += slot["commands"]
+    if slot.get("supplied_commands"):
+        lines.append("")
+        lines.append("-- Frontiers with the consequences the graph records as proved by corpus theorems")
+        lines.append("-- discharged. Where the Lean chain stops elsewhere, a command adds nothing and warns.")
+        lines += [f"set_option argumentGraph.strict false in {c}" for c in slot["supplied_commands"]]
     lines.append("")
     return "\n".join(lines)
 
