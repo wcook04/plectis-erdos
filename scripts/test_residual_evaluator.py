@@ -280,6 +280,84 @@ def check_shipped_manifest_carries_negative_controls() -> None:
     assert laundered, "the bench must carry restatement specimens too"
 
 
+def _two_sketches(binders_a: str = "", binders_b: str = "") -> list[ev.Sketch]:
+    return [
+        ev.Sketch(sketch_id="Deep", target="T", residuals=["R1"], binders=binders_a),
+        ev.Sketch(sketch_id="Shallow", target="T", residuals=["R2"], binders=binders_b),
+    ]
+
+
+def check_probe_names_are_lean_identifiers() -> None:
+    """A probe name becomes a declaration name.
+
+    Dominance probes were named `probe_dominance__A>B`, which Lean cannot parse,
+    so a run with cross-sketch dominance could never report an edge.
+    """
+    probes = ev.build_probes(_two_sketches(), cross=True)
+    dominance = [p for p in probes if p.kind == "dominance"]
+    assert len(dominance) == 2, [p.name for p in dominance]
+    for probe in probes:
+        assert ev.LEAN_NAME.match(probe.name), probe.name
+    assert {p.subject for p in dominance} == {"Deep>Shallow", "Shallow>Deep"}
+
+
+def check_a_sketch_id_that_is_not_an_identifier_is_refused() -> None:
+    try:
+        ev.build_probes([ev.Sketch(sketch_id="a-b", target="T", residuals=["R"])], cross=False)
+    except ValueError as error:
+        assert "not a Lean identifier" in str(error), error
+    else:
+        raise AssertionError("a probe name with '-' was accepted")
+
+
+def check_binders_close_every_probe() -> None:
+    """A sketch with binders is decided pointwise: every probe is stated under them."""
+    sketch = ev.Sketch(sketch_id="Cut", target="G n", residuals=["P n ∧ Q n"],
+                       binders="(n : ℕ) (hn : 3 ≤ n)", unfold=["P", "Q", "G"])
+    probes = ev.build_probes([sketch], cross=False)
+    by_kind = {p.kind: p for p in probes}
+    assert by_kind["soundness"].statement == "∀ (n : ℕ) (hn : 3 ≤ n), P n ∧ Q n → G n"
+    assert by_kind["soundness"].intros == ["n", "hn"]
+    assert by_kind["refutation"].statement == "¬ (∀ (n : ℕ) (hn : 3 ≤ n), P n ∧ Q n)"
+    assert by_kind["refutation"].intros == []
+    text = ev.render_probe_file("M", [by_kind["soundness"]], "N")
+    assert "  unfold G P Q\n  intro n hn\n" in text, text[:600]
+
+
+def check_dominance_compares_only_under_the_same_binders() -> None:
+    same = ev.build_probes(_two_sketches("(n : ℕ)", "(n : ℕ)"), cross=True)
+    assert [p.statement for p in same if p.kind == "dominance"] == [
+        "∀ (n : ℕ), R1 → R2", "∀ (n : ℕ), R2 → R1"]
+    different = ev.build_probes(_two_sketches("(n : ℕ)", "(m : ℕ)"), cross=True)
+    assert not [p for p in different if p.kind == "dominance"]
+
+
+def check_emitted_run_is_read_back_from_its_logs(tmp: Path) -> None:
+    """An emitted run decides from its logs, and refuses when no control log came back."""
+    sketches = [ev.Sketch(sketch_id="S", target="T", residuals=["R"])]
+    probes = ev.build_probes(sketches, cross=False)
+    out = tmp / "emitted"
+    written = ev.emit_probe_files("M", "N", probes, out)
+    assert [p.stem for p in written[:2]] == ["probe_control__true", "probe_control__false"]
+    assert len(written) == 2 + len(probes)
+    logs = tmp / "logs"
+    try:
+        ev.results_from_logs(probes, logs)
+    except ev.HarnessNotLiveError:
+        pass
+    else:
+        raise AssertionError("a run with no logs was decided")
+    logs.mkdir()
+    (logs / "probe_control__true.log").write_text(
+        "'probe_control__true__t0' does not depend on any axioms\n")
+    (logs / "probe_control__false.log").write_text("error: unsolved goals\n")
+    (logs / "probe_soundness__S.log").write_text(
+        "'probe_soundness__S__t2' depends on axioms: [propext]\n")
+    results = {r.kind: r for r in ev.results_from_logs(probes, logs)}
+    assert results["soundness"].proved and not results["refutation"].proved
+    assert ev.classify(sketches[0], list(results.values()))["verdict"] == ev.STRICT_DECOMPOSITION_CANDIDATE
+
+
 def main() -> int:
     import tempfile
 
@@ -300,6 +378,11 @@ def main() -> int:
             check_one_lean_file_per_probe,
             check_vetoes_are_exactly_the_two_kernel_backed_verdicts,
             check_shipped_manifest_carries_negative_controls,
+            check_probe_names_are_lean_identifiers,
+            check_a_sketch_id_that_is_not_an_identifier_is_refused,
+            check_binders_close_every_probe,
+            check_dominance_compares_only_under_the_same_binders,
+            lambda: check_emitted_run_is_read_back_from_its_logs(tmp),
         ]
         for check in checks:
             check()
