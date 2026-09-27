@@ -87,12 +87,37 @@ export makes six passes.
    Dropping them leaves a stronger statement with the same proof, and the
    kernel checks that statement (`idle` rows). The pass has a time budget, and
    the export's summary says when it ran out.
-6. **Tactic battery.** For every closed statement for which the search found
-   no usable producer, it tries a fixed battery of standard closing tactics
-   (`decide`, `omega`, `norm_num`, `simp_all`, `positivity`, `linarith`) after
+6. **Tactic battery.** A ground tier comes first: every discovered statement,
+   searched or not, that is small (at most 400 term nodes) and ground (no λ, no
+   `let`, every `∀` an implication between propositions) goes to `decide`,
+   `norm_num` and `simp`, and so does its negation; a statement `Nonempty T`
+   goes to an instance, `default` and a bounded search for a constructor
+   application, and a failure never refutes it. Then, for every searched
+   statement without a producer that needs nothing
+   further (a producer with residuals does not exempt it), the most-consumed
+   first, it tries a fixed battery of standard closing tactics (`decide`,
+   `omega`, `norm_num`, `simp_all`, `positivity`, `linarith`) after
    introducing binders and unfolding the corpus definitions the statement
    mentions, and then the same battery on its negation. A proof counts only if
    the kernel accepts it.
+
+Four further passes are off unless their variable is set (the exporter's
+header lists them with their budgets). *Scope-aware used consequences*
+(`PLECTIS_CONTINUATION_USED_V2=1`) extend pass 2 to use sites whose lemma is
+applied under binders of the proof or to other hypotheses, abstracting them
+into the consequence. *Literal generalisation*
+(`PLECTIS_CONTINUATION_GENERALISE_SECONDS`) turns an ℕ, ℤ, ℚ or ℝ literal of a
+theorem into a variable, assumes as obligations the closed facts its proof
+used about that literal, discharges what the battery can, and keeps the
+generalised theorem only when the kernel accepts it and a second value of the
+variable satisfies the obligations; a literal the statement pins down, a
+proof too large to traverse and a vacuous result are refused and recorded
+with the reason. *Bounded counterexamples*
+(`PLECTIS_CONTINUATION_NAT_REFUTE_SECONDS`) test statements that open with a
+universal over ℕ on an initial segment; a refutation is the kernel-checked
+negation of the statement. *Library producers*
+(`PLECTIS_CONTINUATION_LIBRARY_PRODUCERS=1`) make every theorem of the
+environment a producer.
 
 The export runs in continuous integration
 ([workflow](../.github/workflows/argument-continuations.yml)) because it needs
@@ -104,7 +129,14 @@ commit, and `argument_continuations_source_revision.txt`, the commit itself.
 computes the following from that stream. It reads the tree id from beside the
 export (or from `--lean-tree`), and `query_continuations.py summary` reports the
 graph stale when `git rev-parse HEAD:lean` differs from it; uncommitted edits
-under `lean/` are not compared.
+under `lean/` are not compared. Exports of the same Lean tree combine:
+repeating `--export` (the latest last) builds the graph from the union of
+their rows, since each row observes the same environment, and the graph's
+`source` lists every export combined. A count in the combined summary is the
+largest any export recorded, so a count of work done (statements tried) is a
+lower bound. Exports of different trees are refused.
+A kernel-checked generalisation supplies its statement and is credited to the
+theorem it generalises.
 
 | Notion | Definition |
 |---|---|
