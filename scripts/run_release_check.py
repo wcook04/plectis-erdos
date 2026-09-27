@@ -20,6 +20,8 @@ import subprocess
 import sys
 from pathlib import Path
 
+import refresh_projections
+
 
 ROOT = Path(__file__).resolve().parents[1]
 LOCK = ROOT / "scripts" / "requirements-release.txt"
@@ -145,6 +147,8 @@ def main() -> int:
     parser.add_argument("--prepare-only", action="store_true", help="prepare prerequisites without running the release gate")
     args = parser.parse_args()
     try:
+        if refresh_projections.preflight():
+            return 1
         python = prepare_python(select_python(args.python))
         prepare_pilot(python)
         if args.prepare_only:

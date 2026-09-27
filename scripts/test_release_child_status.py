@@ -8,6 +8,7 @@ from __future__ import annotations
 import inspect
 import subprocess
 import sys
+from unittest.mock import patch
 
 import check_release
 
@@ -26,6 +27,13 @@ def require(condition: bool, message: str) -> None:
 
 
 def main() -> int:
+    with patch.object(check_release.refresh_projections, "preflight", return_value=1) as preflight, \
+         patch.object(check_release, "missing_release_dependencies", return_value=[]), \
+         patch.object(check_release, "check_proof_trust", side_effect=AssertionError("release continued past stale evidence")):
+        require(check_release.main(["--singleflight-worker"]) == 1,
+                "release accepted stale dependency evidence")
+        preflight.assert_called_once_with()
+
     source = inspect.getsource(check_release)
     require("2>/dev/null" not in source, "release runner still discards stderr")
     require("| tail" not in source, "release runner still truncates child output in a pipe")

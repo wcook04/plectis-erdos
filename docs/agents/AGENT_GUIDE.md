@@ -405,6 +405,22 @@ authored exposition, then generated projections.
 Choose one validation level. Do not run the full release gate and then rerun its
 component checks as a serial checklist.
 
+Before publication, run `python3 scripts/refresh_projections.py --preflight`.
+It checks every registered projection, tracked evidence, source identity and
+cold CI infrastructure contracts before compilation. A warm local receipt
+cannot substitute for evidence shipped in the clone. Follow the reported owner
+to repair failures; `refresh_projections.py` refreshes Python projections and
+reports any separate Lean export required. Commit both dependency-index files
+after an export and rerun the cheap check.
+
+Install `python3 scripts/check_push.py --install` once per worktree. It checks
+the exact outgoing commits and the destination's current main, preserving local
+uncommitted work. Merge or rebase an advanced base and regenerate affected
+projections before retrying. The [submission skill](../../skills/submit-pull-request/SKILL.md)
+owns the full contract-test inventory, custom-hook integration and explicit
+`dependency-index-refresh` recovery scope. Recovery produces repair evidence;
+normal PR checks still have to pass.
+
 - During an edit, run only the owning builder or focused test named by the
   routed skill. For example, agent-entry work uses
   `python3 scripts/test_agent_entry.py`; semantic projection work uses its

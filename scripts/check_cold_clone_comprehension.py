@@ -1001,7 +1001,7 @@ def validate_incremental_build_contract(surfaces: dict[str, str]) -> None:
     # that had not changed. The policy is asserted below instead: pinned to a
     # commit, annotated with the version that commit is.
     for token in (
-        "uses: actions/cache@",
+        "uses: actions/cache/restore@",
         "path: .lake",
         "restore-keys:",
         # Two workers, not four: four exhausted the runner while compiling
@@ -1011,6 +1011,8 @@ def validate_incremental_build_contract(surfaces: dict[str, str]) -> None:
         "No Lean source or proof-environment input changed; compilation is unchanged.",
     ):
         require(token in workflow, f"Lean CI lost cache/build contract: {token}")
+    require("uses: actions/cache@" not in workflow,
+            "Lean CI must not implicitly save PR caches in the combined cache action's post step")
 
     unpinned = [
         line.strip()

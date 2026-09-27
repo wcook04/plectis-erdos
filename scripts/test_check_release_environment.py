@@ -485,11 +485,13 @@ def main() -> int:
     )
     main_source = inspect.getsource(check_release.main)
     require(
-        main_source.index("formal_source_matches_current_lean_tree(")
+        main_source.index("formal_source_identity_errors(")
         < main_source.index("publication_stage_results =")
         < main_source.index("start_independent_checks("),
         "release identity no longer fails before expensive projection and late pools",
     )
+    require("formal_source_matches_current_lean_tree(" in inspect.getsource(check_release.formal_source_identity_errors),
+            "shared source-identity helper omitted the actual Lean-tree comparison")
     check_dependency_preflight()
     check_empty_selection_is_not_a_pass()
     print(
