@@ -14,6 +14,9 @@ from pathlib import Path
 
 import check_release_ref as snapshot
 
+# Shared admission includes bounded cold CI suites, beyond projections.
+PREFLIGHT_TIMEOUT_SECONDS = 1200
+
 
 def outgoing_commits(lines: list[str]) -> list[str]:
     commits = []
@@ -35,7 +38,7 @@ def check_commit(oid: str) -> int:
             raise ValueError("outgoing commit lacks a regular projection preflight script")
         result = snapshot.run(
             [sys.executable, "scripts/refresh_projections.py", "--preflight"],
-            cwd=clone, timeout=300,
+            cwd=clone, timeout=PREFLIGHT_TIMEOUT_SECONDS,
         )
         print(f"pre-push {commit[:12]}: {result.stdout.strip()}", flush=True)
         if result.stderr:

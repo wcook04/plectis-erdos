@@ -77,7 +77,8 @@ jobs:
   change_scope:
     name: Classify pull-request scope
     runs-on: ubuntu-24.04
-    timeout-minutes: 5
+    # Allow the expanded cold admission suite plus checkout overhead.
+    timeout-minutes: 25
     outputs:
       erdos1041_corpus_only: ${{ steps.scope.outputs.erdos1041_corpus_only }}
     steps:
