@@ -1,9 +1,9 @@
 {
   "schema_version": "erdos249257-module-synopsis-index/1",
   "authority_posture": "generated_index_of_authored_Lean_module_headers_not_proof_or_claim_status_authority",
-  "source_fingerprint": "sha256:a2fc01d976781a56349b2fb64456cd74553de5f24ef6a1e5aeaab8e92f2df38b",
-  "module_count": 1874,
-  "synopsis_count": 1627,
+  "source_fingerprint": "sha256:42d36378841df6863d55b6f11a048cfacb31b24d3227e28450609858e20fa331",
+  "module_count": 1875,
+  "synopsis_count": 1628,
   "query_contract": {
     "command": "python3 scripts/query_corpus.py --module <module_path_or_sigil>",
     "returns": "Resolves a module synopsis to its declarations, paper sigil, source identity, attached claims, and route-memory context."
@@ -3551,6 +3551,11 @@
       "id": "ErdosProblems.ArgumentGraph.Results.Erdos243",
       "path": "lean/ErdosProblems/ArgumentGraph/Results/Erdos243.lean",
       "synopsis": "Erdős #243: what the transport-square factoring adds `transport_square_unconditional` (`long243:res:transportsquare`) assumes `v n > 0` for `n ≥ T` and passes it to `primitive_zero_density_multiplier_irreducibility` only for claims it does not use, so `transport_square_unconditional.factored` leaves it out. The theorem below shows that the hypotheses the factoring keeps imply it: from a zero term on, `v` vanishes (`v (n + 1) = a n * v n`), coprimality then gives `u n = 1`, and `m * C(n + 2, 3) + c` exceeds `1` for large `n`, so the exceptional set contains a tail, which zero lower density forbids. The factored theorem is the same result, on the same premise region, with a shorter statement."
+    },
+    {
+      "id": "ErdosProblems.ArgumentGraph.Results.Erdos249",
+      "path": "lean/ErdosProblems/ArgumentGraph/Results/Erdos249.lean",
+      "synopsis": "Erdős #249: the pivot decorrelation from two of its clauses `DTWPivotResidualDecorrelation` (`FirstHarmonicPivot`, demand `G064` of the demand ledger) asks, for every `h`, for parameters at which the two depth conditions and the four clauses of `PivotBudgetAt` hold together, and it implies the irrationality of `∑ φ(n) / 2 ^ n`. The finite bridge `pivotBudgetAt_of_peripheral_estimates` reduces three of the clauses to a uniform fibre-mean bound, a count of bad bases and a count of non-supplier bases. At the minimal depth, with `s = 26` and `η = 1/1000`, two proofs that do not mention the decorrelation supply most of this. `prop_dickman` gives the two depth conditions and, for all large `X`, fewer than `8X/25` non-supplier bases, with no hypothesis. The argument graph's frontier of `prop_badcof` showed that its proof uses the prime number theorem only through a dyadic prime count, which Chebyshev's bound supplies: `excluded_budget_one_thousandth_of_chebyshev` gives fewer than `X/100` bad bases for all large `X`, with no hypothesis. The two theorems below state what remains: the fibre means and the centred correlation."
     },
     {
       "id": "ErdosProblems.ArgumentGraph.Results.Erdos251",

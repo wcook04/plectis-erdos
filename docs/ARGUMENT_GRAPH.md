@@ -253,7 +253,16 @@ constant `1 + ε` (level 3); and that one only through the two-sided bounds of
 `nthPrime_two_sided` (level 4). The budget at `η = 1/1000` was later proved
 with no hypothesis by supplying level 3 with the constant `log 4` from
 Chebyshev's bound: the useful cut was a middle level, and the deepest level is
-close to the prime number theorem itself. The projection lists the chains per
+close to the prime number theorem itself. The budget then served a proof that
+never calls the estimate: `DTWPivotResidualDecorrelation` (demand `G064`, from
+which the irrationality of the #249 series follows) needs the depth conditions,
+a bad-base count, a non-supplier count, the fibre means and the centred
+correlation. At the minimal depth `prop_dickman` supplies the depth conditions
+and the non-supplier count with no hypothesis, the Chebyshev budget supplies the
+bad-base count, and `ArgumentGraph/Results/Erdos249.lean` states the rest:
+the decorrelation, hence the irrationality, from the fibre means and the
+centred correlation alone. Without the Chebyshev budget the bad-base count
+stays an input, or needs the prime number theorem. The projection lists the chains per
 problem (paper-cited theorems first) under `interfaces`, and for every
 interface statement the paper results whose chains need it (`needed_by`).
 
