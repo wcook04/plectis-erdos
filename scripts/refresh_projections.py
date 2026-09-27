@@ -147,7 +147,7 @@ WRITE_FLAGS: dict[str, tuple[str, ...]] = {
 # or local-receipt fallback. CI and cold release preparation share this owner.
 PREFLIGHT_CHECKS: dict[str, tuple[str, ...]] = {
     **{builder: ("--check",) for builder in BUILDERS},
-    "scripts/check_release.py": ("--source-identity-only",),
+    "scripts/check_release.py": ("--source-identity-only", "--route-budgets-only"),
     "scripts/check_publication_contract.py": (),
     "scripts/build_declaration_atlas.py": ("--check",),
     "scripts/build_declaration_search_index.py": ("--check",),

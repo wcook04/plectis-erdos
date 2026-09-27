@@ -67,6 +67,24 @@ class ContractTests(unittest.TestCase):
         self.assertIn("50%25%0A::warning::fixture%0Dnext", annotation)
         self.assertNotIn("\n", annotation)
 
+    def test_route_budget_cli_rejects_growth_and_missing_files_before_release(self):
+        import json
+        import check_release
+        self.assertIn("--route-budgets-only", refresh_projections.PREFLIGHT_CHECKS["scripts/check_release.py"])
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp)
+            (root / "docs").mkdir()
+            route = {"id": "fixture", "read": ["entry.md"]}
+            (root / "docs/claims.json").write_text(json.dumps({"machine_readable_paper": {"entrypoints": [route]}}))
+            entry = root / "entry.md"
+            with patch.object(check_release, "ROOT", root), contextlib.redirect_stdout(io.StringIO()):
+                entry.write_bytes(b"x" * check_release.MAX_ROUTE_FIRST_CONTACT_BYTES)
+                self.assertEqual(check_release.main(["--route-budgets-only"]), 0)
+                entry.write_bytes(entry.read_bytes() + b"x")
+                self.assertEqual(check_release.main(["--route-budgets-only"]), 1)
+                entry.unlink()
+                self.assertEqual(check_release.main(["--route-budgets-only"]), 1)
+
     def test_actual_workflow_and_mutations(self):
         source = workflow.WORKFLOW.read_text()
         workflow.require_evidence_before_expensive_jobs(source)
