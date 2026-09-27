@@ -1209,6 +1209,7 @@ APPROVED_ROOT_FILES = {
 }
 
 APPROVED_ROOT_DIRS = {
+    ".githooks": "opt-in Git push checks for exact committed release evidence",
     ".agents": "host-discovery entrypoints used by integrations",
     ".github": "CI and hosted repository metadata",
     "LICENSES": "SPDX licence texts",
