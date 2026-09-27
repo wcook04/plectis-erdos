@@ -23,10 +23,14 @@ P = "ErdosProblems.Erdos249.PaperCompleteR21"
 E = f"{P}.ExcludedCofactor"
 
 
+PNT = "kPNT"
+
+
 def weakening(theorem: str, *vias: str) -> dict:
-    return {"theorem": theorem, "i": 0, "hypothesis_type": "PrimeNumberTheorem",
-            "consequences": [{"key": f"k{theorem}{n}", "type": f"C({v})", "via": [v]}
-                             for n, v in enumerate(vias)]}
+    # A use site `v h` proves the statement of `v` applied to the input, the
+    # same statement whichever theorem's proof contains it.
+    return {"theorem": theorem, "i": 0, "hypothesis": PNT, "hypothesis_type": "PrimeNumberTheorem",
+            "consequences": [{"key": f"k:{v}", "type": f"C({v})", "via": [v]} for v in vias]}
 
 
 def graph() -> dict:
@@ -36,7 +40,10 @@ def graph() -> dict:
     return {
         "source": {"source_revision": "abc", "lean_tree": "def"},
         "theorems": [{"name": n, "module": f"{P}.ExcludedCofactorEstimate" if n != "Toy.idle_thm" else "Toy.M",
-                      "problem": "249", "source": "x.lean:1"} for n in names],
+                      "problem": "249", "source": "x.lean:1",
+                      "hypotheses": [PNT] if n != "Toy.idle_thm" else []} for n in names],
+        "statements": [{"key": PNT, "type": "PrimeNumberTheorem", "status": "open"}]
+                      + [{"key": f"k:{n}", "type": f"C({n})", "status": "open"} for n in names],
         "idle": [{"theorem": "Toy.idle_thm", "type": "∀ a, a ≤ a", "dropped": [{"i": 1, "type": "0 < a"}]}],
         "weakenings": [
             weakening(f"{P}.prop_badcof", f"{E}.eventually_card_excluded_le", f"{E}.eventually_excluded_budget"),
@@ -89,6 +96,37 @@ class Modules(unittest.TestCase):
             ops = sorted(r["operation"] for r in manifest["rows"]["Erdos249"])
             self.assertEqual(ops, ["idle", "weakening"])
             self.assertEqual(frontier.main(["--graph", str(path), "--root", str(root), "--check"]), 0)
+
+    def test_named_input_levels(self):
+        g = graph()
+        papers = {f"{P}.prop_badcof": [{"row": "p#res:badcof", "label": "res:badcof",
+                                          "lean_status": "modulo_named_input"}]}
+        inputs = frontier.named_inputs(g, papers, frontier.weakening_index(g))
+        self.assertEqual([i["statement"] for i in inputs], ["PrimeNumberTheorem"])
+        levels = [[c["type"] for c in level] for level in inputs[0]["consumers"][0]["levels"]]
+        self.assertEqual(levels, [
+            [f"C({E}.eventually_card_excluded_le)", f"C({E}.eventually_excluded_budget)"],
+            [f"C({E}.eventually_card_excluded_le_of_upper)", f"C({E}.eventually_excluded_budget_of_upper)"],
+            [f"C({E}.eventually_card_primes_dyadic_le)"],
+            [f"C({E}.nthPrime_two_sided)"]])
+
+    def test_supplied_consequence_gives_a_using_command(self):
+        g = graph()
+        g["theorems"].append({"name": "Toy.chebyshev", "module": "Toy.Cheb", "problem": "249", "hypotheses": []})
+        for st in g["statements"]:
+            if st["key"] == f"k:{E}.eventually_card_primes_dyadic_le":
+                st["status"], st["witness"] = "supplied", "Toy.chebyshev"
+        index = frontier.weakening_index(g)
+        theorems = {t["name"]: t for t in g["theorems"]}
+        statements = {st["key"]: st for st in g["statements"]}
+        self.assertEqual(frontier.chain_suppliers(f"{P}.prop_badcof", index, statements, theorems),
+                         ["Toy.chebyshev"])
+        papers = {f"{P}.prop_badcof": [{"row": "r", "label": "l", "lean_status": "modulo_named_input"}]}
+        slot = frontier.plan(g, papers)["Erdos249"]
+        self.assertIn(f"derive_frontier {P}.prop_badcof using Toy.chebyshev", slot["supplied_commands"])
+        self.assertIn("Toy.Cheb", slot["imports"])
+        text = frontier.render_module("Erdos249", slot, g["source"])
+        self.assertIn(f"set_option argumentGraph.strict false in derive_frontier {P}.prop_badcof using Toy.chebyshev", text)
 
     def test_lean_ident_escapes(self):
         self.assertEqual(frontier.lean_ident("A.b_c.d'"), "A.b_c.d'")

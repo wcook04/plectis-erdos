@@ -138,8 +138,10 @@ def chain_cuts(theorem: str, weakenings: dict[str, list[dict[str, Any]]]) -> lis
 
 def plan(graph: dict[str, Any], papers: dict[str, list[dict[str, Any]]]) -> dict[str, Any]:
     theorems = {t["name"]: t for t in graph.get("theorems", [])}
+    statements = {s["key"]: s for s in graph.get("statements", [])}
     weakenings = weakening_index(graph)
-    per_problem: dict[str, dict[str, Any]] = defaultdict(lambda: {"imports": set(), "commands": [], "rows": []})
+    per_problem: dict[str, dict[str, Any]] = defaultdict(
+        lambda: {"imports": set(), "commands": [], "supplied_commands": [], "rows": []})
     for row in graph.get("idle", []) or []:
         name = row["theorem"]
         if name not in papers or name not in theorems:
@@ -174,13 +176,168 @@ def plan(graph: dict[str, Any], papers: dict[str, list[dict[str, Any]]]) -> dict
         cuts = chain_cuts(name, weakenings)
         for cut in cuts:
             slot["commands"].append(f"derive_frontier {lean_ident(name)} at {lean_ident(cut)}")
+        suppliers = chain_suppliers(name, weakenings, statements, theorems)
+        if suppliers:
+            for s in suppliers:
+                slot["imports"].add(theorems[s]["module"])
+            using = " ".join(lean_ident(s) for s in suppliers)
+            # A supplied consequence the graph records need not sit where the Lean
+            # chain stops, so these commands only warn when they discharge nothing.
+            slot["supplied_commands"].append(f"derive_frontier {lean_ident(name)} using {using}")
+            for cut in cuts:
+                slot["supplied_commands"].append(
+                    f"derive_frontier {lean_ident(name)} at {lean_ident(cut)} using {using}")
         slot["rows"].append({
             "operation": "weakening", "theorem": name, "papers": papers[name], "source": theorem.get("source"),
             "hypotheses": [{"i": r.get("i"), "hypothesis": r.get("hypothesis_type") or r.get("hypothesis"),
                             "consequences": [{"type": c.get("type"), "via": c.get("via")}
                                              for c in r.get("consequences", [])]} for r in rows],
-            "frontier_cuts": cuts})
+            "frontier_cuts": cuts, "suppliers": suppliers})
     return per_problem
+
+
+def chain_suppliers(theorem: str, weakenings: dict[str, list[dict[str, Any]]],
+                    statements: dict[str, dict[str, Any]], theorems: dict[str, dict[str, Any]]) -> list[str]:
+    """Corpus theorems the graph records as witnesses of a consequence anywhere on
+    the weakening chain below ``theorem``: the candidates for
+    ``derive_frontier … using``. Battery witnesses (tactics) are not constants and
+    are left out."""
+    out: list[str] = []
+    seen: set[str] = set()
+    frontier = [theorem]
+    while frontier:
+        nxt: list[str] = []
+        for name in frontier:
+            if name in seen:
+                continue
+            seen.add(name)
+            for row in weakenings.get(name, []):
+                for c in row.get("consequences", []):
+                    statement = statements.get(c.get("key") or "") or {}
+                    witness = statement.get("witness")
+                    if statement.get("status") == "supplied" and isinstance(witness, str) \
+                            and witness in theorems and witness not in out:
+                        out.append(witness)
+                    nxt += [v for v in c.get("via") or [] if v in weakenings]
+        frontier = nxt
+    return out
+
+
+def named_inputs(graph: dict[str, Any], papers: dict[str, list[dict[str, Any]]],
+                 weakenings: dict[str, list[dict[str, Any]]]) -> list[dict[str, Any]]:
+    """Every open closed hypothesis of a theorem a paper cites, with what each
+    proof consumes of it. A consumer's ``levels`` list the use-site
+    consequences of the hypothesis, then the consequences of the theorems
+    those sites apply it to, and so on (a site continues the chain when the
+    theorem it applies has a weakening of the same hypothesis). Each
+    consequence carries the graph's status for it, so an open input whose
+    deeper level is supplied is visible at a glance."""
+    statements = {s["key"]: s for s in graph.get("statements", [])}
+    theorems = {t["name"]: t for t in graph.get("theorems", [])}
+
+    def rows_for(theorem: str, hypothesis: str) -> list[dict[str, Any]]:
+        return [r for r in weakenings.get(theorem, []) if r.get("hypothesis") == hypothesis]
+
+    def levels(theorem: str, hypothesis: str) -> list[list[dict[str, Any]]]:
+        out: list[list[dict[str, Any]]] = []
+        seen: set[str] = set()
+        frontier = [theorem]
+        visited: set[str] = set()
+        while frontier and len(out) < 24:
+            level: list[dict[str, Any]] = []
+            nxt: list[str] = []
+            for name in frontier:
+                if name in visited:
+                    continue
+                visited.add(name)
+                for row in rows_for(name, hypothesis):
+                    for c in row.get("consequences", []):
+                        key = c.get("key")
+                        if key and key not in seen:
+                            seen.add(key)
+                            level.append({"type": c.get("type"), "key": key, "via": c.get("via", []),
+                                          "status": (statements.get(key) or {}).get("status")})
+                        for v in c.get("via") or []:
+                            if rows_for(v, hypothesis):
+                                nxt.append(v)
+            if level:
+                out.append(level)
+            frontier = nxt
+        return out
+
+    by_input: dict[str, dict[str, Any]] = {}
+    for name in sorted(papers):
+        theorem = theorems.get(name)
+        if not theorem:
+            continue
+        for key in theorem.get("hypotheses", []) or []:
+            statement = statements.get(key)
+            if not statement or statement.get("status") != "open":
+                continue
+            entry = by_input.setdefault(key, {"key": key, "statement": statement.get("type"), "consumers": []})
+            entry["consumers"].append({
+                "theorem": name, "problem": theorem.get("problem"),
+                "papers": [{"row": p["row"], "label": p["label"], "lean_status": p["lean_status"]}
+                           for p in papers[name]],
+                "levels": levels(name, key)})
+    return sorted(by_input.values(), key=lambda e: (-len(e["consumers"]), e["statement"] or ""))
+
+
+def clip(text: str | None, limit: int = 220) -> str:
+    flat = " ".join((text or "").split())
+    return flat if len(flat) <= limit else flat[: limit - 1] + "…"
+
+
+def render_markdown(manifest: dict[str, Any]) -> str:
+    """The frontier for readers: per problem, the named inputs its paper
+    results assume with what their proofs use of them, and the theorems the
+    library derives. Statements are clipped; the JSON has them whole."""
+    source = manifest["source"]
+    out = ["# The argument frontier", "",
+           f"Generated by `scripts/build_argument_frontier.py` from the argument graph of source revision "
+           f"`{(source.get('source_revision') or '?')[:12]}`. The Lean modules it names are compiled with "
+           "`argumentGraph.strict`, so every derived theorem listed here is checked by the kernel when they "
+           "compile. `docs/argument_frontier.json` holds the same rows in full.", ""]
+    inputs_by_problem: dict[str, list[dict[str, Any]]] = defaultdict(list)
+    for entry in manifest.get("named_inputs", []):
+        for problem in sorted({str(c.get("problem")) for c in entry["consumers"]}):
+            inputs_by_problem[problem].append(entry)
+    problems = sorted(set(PROBLEM_NAMES) & (set(inputs_by_problem) | {k.removeprefix("Erdos") for k in manifest["rows"]}),
+                      key=int)
+    for problem in problems:
+        out += [f"## Erdős #{problem}", ""]
+        entries = inputs_by_problem.get(problem, [])
+        if entries:
+            out += ["### Named inputs the paper results assume", ""]
+            for entry in entries:
+                consumers = [c for c in entry["consumers"] if str(c.get("problem")) == problem]
+                labels = sorted({p["label"] for c in consumers for p in c["papers"] if p.get("label")})
+                out.append(f"- `{clip(entry['statement'], 160)}`: assumed by {len(consumers)} cited "
+                           f"theorem(s) ({', '.join(labels[:6])}{', …' if len(labels) > 6 else ''}).")
+                for consumer in consumers:
+                    for depth, level in enumerate(consumer.get("levels", []), start=1):
+                        statuses = ", ".join(f"`{clip(c['type'], 140)}` ({c.get('status')})" for c in level[:3])
+                        more = f" and {len(level) - 3} more" if len(level) > 3 else ""
+                        out.append(f"  - `{consumer['theorem'].rsplit('.', 1)[-1]}`, level {depth}: "
+                                   f"uses it only through {statuses}{more}")
+            out.append("")
+        rows = manifest["rows"].get(PROBLEM_NAMES[problem], [])
+        idle = [r for r in rows if r["operation"] == "idle"]
+        weak = [r for r in rows if r["operation"] == "weakening"]
+        if idle or weak:
+            out += [f"### Derived theorems (`{manifest['modules'][PROBLEM_NAMES[problem]]}`)", ""]
+            for r in idle:
+                labels = ", ".join(sorted({p["label"] for p in r["papers"] if p.get("label")}))
+                out.append(f"- `{r['theorem'].rsplit('.', 1)[-1]}.idle` ({labels}): the statement without "
+                           f"{'; '.join('`' + clip(d, 100) + '`' for d in r['dropped'])}, which the proof "
+                           "never uses.")
+            for r in weak:
+                labels = ", ".join(sorted({p["label"] for p in r["papers"] if p.get("label")}))
+                cuts = ", ".join(f"`{c.rsplit('.', 1)[-1]}`" for c in r.get("frontier_cuts", []))
+                out.append(f"- `{r['theorem'].rsplit('.', 1)[-1]}` ({labels}): `weakened_i` and `frontier_i`"
+                           + (f", and frontiers cut at {cuts}" if cuts else "") + ".")
+            out.append("")
+    return "\n".join(out)
 
 
 def render_module(problem: str, slot: dict[str, Any], source: dict[str, Any]) -> str:
@@ -198,6 +355,11 @@ def render_module(problem: str, slot: dict[str, Any], source: dict[str, Any]) ->
     lines.append("set_option maxHeartbeats 4000000")
     lines.append("")
     lines += slot["commands"]
+    if slot.get("supplied_commands"):
+        lines.append("")
+        lines.append("-- Frontiers with the consequences the graph records as proved by corpus theorems")
+        lines.append("-- discharged. Where the Lean chain stops elsewhere, a command adds nothing and warns.")
+        lines += [f"set_option argumentGraph.strict false in {c}" for c in slot["supplied_commands"]]
     lines.append("")
     return "\n".join(lines)
 
@@ -223,14 +385,18 @@ def main(argv: list[str] | None = None) -> int:
                  "compiles (argumentGraph.strict makes a failed rebuild a build error)"),
         "modules": {problem: str(DERIVED / f"{problem}.lean") for problem in sorted(per_problem)},
         "rows": {problem: slot["rows"] for problem, slot in sorted(per_problem.items())},
+        "named_inputs_rule": ("an open closed hypothesis of a theorem a paper cites; levels are what the "
+                              "proofs consume of it, from the kernel-checked weakenings"),
+        "named_inputs": named_inputs(graph, papers, weakening_index(graph)),
     }
     files[args.root / "docs" / "argument_frontier.json"] = json.dumps(manifest, indent=1, ensure_ascii=False) + "\n"
+    files[args.root / "docs" / "ARGUMENT_FRONTIER.md"] = render_markdown(manifest) + "\n"
     if args.check:
         stale = [str(p) for p, text in files.items() if not p.exists() or p.read_text(encoding="utf-8") != text]
         if stale:
             print("stale:\n  " + "\n  ".join(stale))
             return 1
-        print(f"ok: argument frontier current ({len(files) - 1} modules)")
+        print(f"ok: argument frontier current ({len(files) - 2} modules)")
         return 0
     for path, text in files.items():
         path.parent.mkdir(parents=True, exist_ok=True)
