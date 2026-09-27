@@ -493,10 +493,15 @@ def composition_uses_of(theorem: str, hypotheses: Iterable[tuple[str, str]]) -> 
 
 class Graph:
     def __init__(self, rows: list[dict[str, Any]], *, include_battery: bool = True,
-                 include_idle: bool = True, include_weakening: bool = True):
+                 include_idle: bool = True, include_weakening: bool = True,
+                 read_findings: bool = False):
         self.include_battery = include_battery
         self.include_idle = include_idle
         self.include_weakening = include_weakening
+        # Read the graph's own findings back as corpus theorems (an experiment
+        # comparing the library with and without them); off for the published graph.
+        self.read_findings = read_findings
+        self.findings_read: set[str] = set()
         self.meta = rows[0] if rows else {}
         self.summary = next((row for row in rows if row.get("record") == "summary"), {})
         self.theorems: dict[str, dict[str, Any]] = {}
@@ -632,6 +637,11 @@ class Graph:
                     and is_argument_graph_module(row.get("module") or "")}
         findings |= {row["weakened"] for row in rows if row.get("record") == "weakening"
                      and row.get("theorem") in findings and row.get("weakened")}
+        if self.read_findings:
+            # Kept, and named in each theorem node, so that what they add can be
+            # attributed to them (criticality withdraws them one at a time).
+            self.findings_read = findings
+            findings = set()
         self.findings_skipped = {"theorems": sum(1 for row in rows if row.get("record") == "theorem"
                                                  and row["name"] in findings), "rows": 0}
         # Theorems the export derived by weakening a hypothesis, by name.
@@ -687,6 +697,8 @@ class Graph:
                     "conclusion_closed": bool(conclusion.get("closed")),
                     "data_binders": [b.get("name") for b in binders if b.get("kind") == "data"],
                 }
+                if name in self.findings_read:
+                    self.theorems[name]["finding"] = True
                 for key, text in found["residuals"]:
                     node = self._statement(key, text, "hypothesis")
                     node["consumers"].add(name)
@@ -1856,15 +1868,15 @@ def barrier_overlay(graph: "Graph", root: Path) -> dict[str, Any]:
 
 
 def build(export_path: Path | list[Path], root: Path = ROOT, *, lean_tree: str | None = None,
-          source_revision: str | None = None, include_idle: bool = True
-          ) -> tuple[dict[str, Any], dict[str, Any]]:
+          source_revision: str | None = None, include_idle: bool = True,
+          read_findings: bool = False) -> tuple[dict[str, Any], dict[str, Any]]:
     # Several exports of one Lean tree combine (``combine_exports``); the last
     # is the export whose provenance the graph carries first.
     export_paths = export_path if isinstance(export_path, list) else [export_path]
     export_path = export_paths[-1]
     trees = [resolve_lean_tree(path, lean_tree) for path in export_paths]
     rows = read_exports(export_paths, trees)
-    graph = Graph(rows, include_idle=include_idle)
+    graph = Graph(rows, include_idle=include_idle, read_findings=read_findings)
     graph.analyse()
     refs = source_refs(root)
     papers = paper_rows(root)
@@ -2094,6 +2106,7 @@ def build(export_path: Path | list[Path], root: Path = ROOT, *, lean_tree: str |
         # rows that used one: never read back as corpus theorems
         "argument_graph_derived_theorems_skipped": graph.findings_skipped["theorems"],
         "argument_graph_derived_rows_skipped": graph.findings_skipped["rows"],
+        "argument_graph_findings_read": len(graph.findings_read),
         "theorem_modules": len(theorem_modules),
         "conditional_arguments": len(conditional),
         "closed_statements": len(graph.statements),
@@ -2326,7 +2339,8 @@ def build(export_path: Path | list[Path], root: Path = ROOT, *, lean_tree: str |
             {**theorem_card(name), "module": t["module"], "problem": theorem_problems.get(name),
              "hypotheses": t["hypotheses"], "schematic_hypotheses": t["schematic_hypotheses"],
              "witness_obligations": t["witness_obligations"], "after_idle": t.get("after_idle"),
-             "conclusion": t["conclusion_key"], "conclusion_type": t["conclusion_type"]}
+             "conclusion": t["conclusion_key"], "conclusion_type": t["conclusion_type"],
+             **({"finding": True} if t.get("finding") else {})}
             for name, t in sorted(graph.theorems.items())
         ],
     }
@@ -2501,9 +2515,15 @@ def main(argv: list[str] | None = None) -> int:
                         help="acknowledge settled open targets (a solution, after a person checked it): write "
                              "paper macros and exit 0; a contradiction (False supplied, or a statement supplied "
                              "and refuted) is never acknowledged")
+    parser.add_argument("--read-findings", action="store_true",
+                        help="read the graph's own findings (theorems under ErdosProblems.ArgumentGraph) back as "
+                             "corpus theorems and producers, to compare a library with them against one without; "
+                             "such a graph writes no paper macros")
     args = parser.parse_args(argv)
+    if args.read_findings and args.paper:
+        parser.error("--read-findings builds an experimental graph; it writes no paper macros")
     projection, graph_payload = build(args.export, args.root, lean_tree=args.lean_tree,
-                                      source_revision=args.source_revision)
+                                      source_revision=args.source_revision, read_findings=args.read_findings)
     write_outputs(projection, graph_payload, args.output, args.graph_output)
     alarms = projection["sentinel_alarms"]
     hard = [a for a in alarms if a.get("overridable") is not True]

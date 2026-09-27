@@ -2490,6 +2490,10 @@ def main(argv: list[str] | None = None) -> int:
                 sys.executable,
                 str(ROOT / "scripts" / "test_frontier_verdicts.py"),
             ],
+            "argument_export_comparison": [
+                sys.executable,
+                str(ROOT / "scripts" / "test_compare_argument_exports.py"),
+            ],
             "barrier_registry_source": [
                 sys.executable,
                 str(ROOT / "scripts" / "check_barrier_registry.py"),

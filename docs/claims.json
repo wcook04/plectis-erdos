@@ -1908,13 +1908,13 @@
         "lean/ErdosProblems.lean"
       ],
       "auxiliary_roots": [
-        "ErdosProblems.ArgumentGraph.Derived.Erdos1041",
         "ErdosProblems.ArgumentGraph.Derived.Erdos1049",
-        "ErdosProblems.ArgumentGraph.Derived.Erdos243",
         "ErdosProblems.ArgumentGraph.Derived.Erdos249",
         "ErdosProblems.ArgumentGraph.Derived.Erdos257",
         "ErdosProblems.ArgumentGraph.Derived.Erdos269",
         "ErdosProblems.ArgumentGraph.Derived.Erdos68",
+        "ErdosProblems.ArgumentGraph.Results.Erdos1041",
+        "ErdosProblems.ArgumentGraph.Results.Erdos243",
         "ErdosProblems.ArgumentGraph.Results.Erdos251",
         "ErdosProblems.Bit.verify.B1",
         "ErdosProblems.Bit.verify.B2",
@@ -8784,6 +8784,22 @@
           "role": "Lean proof module",
           "imports": [
             "ErdosProblems.ArgumentGraph.Derive"
+          ]
+        },
+        {
+          "id": "ErdosProblems.ArgumentGraph.Results.Erdos1041",
+          "path": "lean/ErdosProblems/ArgumentGraph/Results/Erdos1041.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.ArgumentGraph.Derived.Erdos1041"
+          ]
+        },
+        {
+          "id": "ErdosProblems.ArgumentGraph.Results.Erdos243",
+          "path": "lean/ErdosProblems/ArgumentGraph/Results/Erdos243.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.ArgumentGraph.Derived.Erdos243"
           ]
         },
         {
@@ -19915,7 +19931,7 @@
     "lean_toolchain": "leanprover/lean4:v4.29.1",
     "repository": "https://github.com/wcook04/plectis-erdos",
     "formal_source": {
-      "ref": "ab690b0aa515faa3a432e9d47de288704ebf6bb5",
+      "ref": "0456a2081f2c6a1ac1982f29108dd351426c6500",
       "ref_kind": "commit",
       "publication_state": "committed_checkpoint_pending_remote_publication",
       "relationship_to_last_tag": "post_tag_checkpoint",

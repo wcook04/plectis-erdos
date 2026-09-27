@@ -1119,7 +1119,7 @@
       ],
       "citations_rendered": 55,
       "local_pdf": "paper/archive/erdos249-257-main-paper.pdf",
-      "pdf_sha256": "sha256:aeacc9e55889edc3f044d3edf0a8201f7023c38740b89f015c8385800971109f",
+      "pdf_sha256": "sha256:55d590ddfe0a451fb680cb4b9c25b8669842dbef46932454d841c28dca7ca636",
       "pdf_byte_count": 457556,
       "first_pass": {
         "stated_by_the_paper": true,
@@ -4314,7 +4314,7 @@
       ],
       "citations_rendered": 20,
       "local_pdf": "paper/257/erdos-257-mersenne-support-subseries.pdf",
-      "pdf_sha256": "sha256:447d9c19cb7c6246a3a62932d68ab934ace9edea6b838b9fae34b76df749c7fc",
+      "pdf_sha256": "sha256:ad3250752c10859ace5fc794e1d7767d236f5582e2e325fc369b7f5b22cd8649",
       "pdf_byte_count": 175549,
       "first_pass": {
         "stated_by_the_paper": false,
@@ -7667,12 +7667,12 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/claim-faithful-publication-systems-paper.md",
       "local_source": "paper/systems/claim-faithful-publication-systems-paper.tex",
-      "source_sha256": "sha256:45d779f154ee44e3571d51a47201829920f56118fb12777142e5e13225cd7700",
+      "source_sha256": "sha256:85dea10fe8d5544101e36956f93e4ba85a19783c323e483e6eb7530723c1739f",
       "canonical_source_commit": null,
       "canonical_source_pin_status": "local_unpublished",
       "canonical_source_url": null,
       "canonical_source_raw_url": null,
-      "section_count": 25,
+      "section_count": 26,
       "sections": [
         {
           "level": 1,
@@ -7807,28 +7807,34 @@
           "line": 334
         },
         {
+          "level": 4,
+          "id": "libraries-grown-from-proofs.",
+          "title": "Libraries grown from proofs.",
+          "line": 344
+        },
+        {
           "level": 1,
           "id": "sec:limits",
           "title": "Limits, and what stronger models change",
-          "line": 344
+          "line": 350
         },
         {
           "level": 1,
           "id": "sec:conclusion",
           "title": "Conclusion",
-          "line": 364
+          "line": 370
         },
         {
           "level": 1,
           "id": "app:repro",
           "title": "Inspection routes and reproducibility",
-          "line": 370
+          "line": 376
         }
       ],
-      "citations_rendered": 62,
+      "citations_rendered": 71,
       "local_pdf": "paper/systems/claim-faithful-publication-systems-paper.pdf",
-      "pdf_sha256": "sha256:4acc5dd5a345d9b356bbc42b53331bd2f2a526bb2f77d6f3e8291d379b80919c",
-      "pdf_byte_count": 168196,
+      "pdf_sha256": "sha256:e3488f10590962d2584408c0ac54d2cf8d6d85e5e8f6ea09302a1da6ac2e02be",
+      "pdf_byte_count": 172303,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection for this guide",
@@ -7856,7 +7862,7 @@
           {
             "id": "sec:limits",
             "title": "Limits, and what stronger models change",
-            "line": 344
+            "line": 350
           }
         ],
         "unresolved_count": 0
@@ -7899,7 +7905,7 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/cold-clone-to-proof-receipt.md",
       "local_source": "paper/systems/cold-clone-to-proof-receipt.tex",
-      "source_sha256": "sha256:42acaf61cffade58501cc30a61d2842a44d86111bcede129410b1c178da39c89",
+      "source_sha256": "sha256:74418220d944bba1a1330e1b2daa4af4ee23aeed82bb0464bfc123463f08f9b2",
       "canonical_source_commit": null,
       "canonical_source_pin_status": "local_unpublished",
       "canonical_source_url": null,
@@ -8029,8 +8035,8 @@
       ],
       "citations_rendered": 12,
       "local_pdf": "paper/systems/cold-clone-to-proof-receipt.pdf",
-      "pdf_sha256": "sha256:d0e36c52fe6c7050104a4ec3b2156c56e8c7b5c23f4982a596d441596cdbe1a2",
-      "pdf_byte_count": 88659,
+      "pdf_sha256": "sha256:ccd6e562ee875651ca75f267f44280ccf60f853a40e99d82a129b81568325d43",
+      "pdf_byte_count": 88655,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection for this guide",

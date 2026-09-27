@@ -15,11 +15,11 @@
 }
 \newcommand{\repobase}{https://github.com/wcook04/plectis-erdos}
 % BEGIN generated_semantic_coverage_macros
-\newcommand{\SemanticAuthoredTheoremLike}{152,020}
+\newcommand{\SemanticAuthoredTheoremLike}{152,030}
 \newcommand{\SemanticAuthoredInterpreted}{139,818}
 \newcommand{\SemanticDirectEvidence}{3,330}
 \newcommand{\SemanticContextual}{136,488}
-\newcommand{\SemanticStructuralOnly}{12,202}
+\newcommand{\SemanticStructuralOnly}{12,212}
 \newcommand{\SemanticAuthoredPercent}{92.0}
 % END generated_semantic_coverage_macros
 % BEGIN generated_argument_graph_macros
@@ -68,7 +68,7 @@
 \newcommand{\AFNamedInputUses}{129}
 \newcommand{\AFNamedInputsTraced}{55}
 % END generated_argument_frontier_macros
-\newcommand{\repolink}[2]{\href{\repobase/blob/ab690b0aa515faa3a432e9d47de288704ebf6bb5/#1}{\texttt{#2}}}
+\newcommand{\repolink}[2]{\href{\repobase/blob/0456a2081f2c6a1ac1982f29108dd351426c6500/#1}{\texttt{#2}}}
 \emergencystretch=1.7em
 
 \runninghead{Problem-sized Lean worlds}
@@ -547,32 +547,31 @@ spine; when the proof destructures a corpus lemma applied to a hypothesis
 being moved, it factors that lemma first and rebuilds the lemma's conclusion,
 so it follows a construction through the lemmas it is built from. The kernel
 checks every theorem it adds. Problem~251's simultaneous countermodel assumes
-Schlage-Puchta's Lemma~4 and the prime number theorem, and fixes
-$0<\varepsilon\le1$. Its factoring states the construction unconditionally, for
-every $\varepsilon>0$, with Schlage-Puchta's lemma assumed only by the
-nonconcentration clause and the prime number theorem only by
-$P_n\sim n\log n$
-(\repolink{lean/ErdosProblems/ArgumentGraph/Results/Erdos251.lean}{ArgumentGraph/Results/Erdos251.lean}).
-The exponents $\varepsilon>1$ add no content, since $(\log(n+3))^\varepsilon$
-increases with $\varepsilon$ and the sequence for $\varepsilon=1$ serves every
-larger exponent; the gain is that each input is assumed only by its own clause.
-Following the lemmas can leave out a hypothesis that the proof as written uses.
-Problem~243's transport-square theorem assumes $v_n>0$ for $n\ge T$ and passes
-it to the zero-density multiplier lemma only for claims it does not use, and
-its factoring omits it. The other hypotheses force $v_n>0$ anyway (from a zero
-term on, $v$ vanishes, coprimality makes $u_n=1$, and the density hypothesis
-fails), so the factored theorem is the same result with a shorter statement.
+Schlage-Puchta's Lemma~4 and the prime number theorem and fixes
+$0<\varepsilon\le1$; its factoring gives the construction for every
+$\varepsilon>0$ with each input assumed only by its own clause
+(\repolink{lean/ErdosProblems/ArgumentGraph/Results/Erdos251.lean}{Results/Erdos251.lean}),
+and the exponents $\varepsilon>1$ add nothing, since the sequence for
+$\varepsilon=1$ serves them. Following the lemmas can drop a hypothesis the
+proof as written uses: Problem~243's transport-square theorem passes $v_n>0$
+only to claims it does not use, and the other hypotheses force $v_n>0$ anyway
+(\repolink{lean/ErdosProblems/ArgumentGraph/Results/Erdos243.lean}{Results/Erdos243.lean}),
+so the factored theorem is the same result, stated shorter.
+Problem~1041's inner-chord factoring drops a switch condition; off it the
+maximality clause holds vacuously and the midpoint equality is asserted, as at
+$n=3$, $r=1/2$
+(\repolink{lean/ErdosProblems/ArgumentGraph/Results/Erdos1041.lean}{Results/Erdos1041.lean}).
+Model checking draws these distinctions: a subformula is vacuous if replacing
+it by false keeps a passing verdict~\cite{beyondvacuity}.
 \AFFactored{} cited theorems have a factoring, and deriving them factored
 \AFFactoredLibrary{} lemmas beneath them. A probe credits a command only with
-the theorem it names: a factoring refused after it derived lemma factorings on
-the way is not counted. The generator carries every command it has published
-into each new plan and checks every name those commands declared, and it stops
-when a probe shows that a published name is no longer added or now states
-something else; a later export with a smaller search budget or another use-site
-rule cannot remove a theorem a paper cites. The check has stopped one
-regeneration: once weakenings could use sites with parameters, ten published
-frontiers would have followed their chains further and assumed stronger
-statements, so a frontier follows only the kind of weakening it was published
+the theorem it names, never with lemma factorings derived on the way. The
+generator carries every published command into each new plan and stops when a
+probe shows a published name no longer added or stating something else, so a
+later export with a smaller budget or another use-site rule cannot remove a
+theorem a paper cites. The check has stopped one regeneration, in which ten
+published frontiers would have followed parameterised weakenings to stronger
+statements; a frontier follows only the kind of weakening it was published
 with.
 
 \paragraph{Research with the graph.} A research session on a problem opens a
@@ -1220,6 +1219,22 @@ counterexample~\cite{plausible}. The battery runs a fixed list of closing
 tactics and library search, and the graph refutes a statement only through
 kernel-checked theorems.
 
+\paragraph{Libraries grown from proofs.} Kaliszyk and Urban rank intermediate
+statements of HOL~Light proofs by reuse, packaged proof and size, and test the
+ranking with an automated prover, controlling what each theorem's own proof
+leaks~\cite{lemmamining}. Hipster keeps a lemma only when a
+routine tactic fails on it~\cite{hipster}; DreamCoder keeps a routine only when
+rewriting solved programs through it shrinks the whole~\cite{dreamcoder}.
+LEGO-Prover grows a library of verified lemmas retrieved by requested
+subgoals~\cite{legoprover}, and at matched compute its proofs reuse none
+verbatim~\cite{berlotattwell}. Proof-Refactor lifts
+proof blocks into helpers that a language model judges~\cite{proofrefactor},
+LeanConjecturer screens conjectures with \texttt{exact?} and
+Aesop~\cite{leanconjecturer}, and Georgiev et al.\ report automatic scores met
+without the property measured~\cite{alphaevolvemath}. Here the gain of a
+restatement is a kernel-checked theorem, and its use by another proof is read
+from proof terms and from what withdrawing it loses.
+
 \section{Limits, and what stronger models change}\label{sec:limits}
 \papersectiontarget{systems-trust}
 
@@ -1512,6 +1527,36 @@ pp.~253--266, \href{https://doi.org/10.1145/3573105.3575671}{DOI}.
 framework for Lean~4,
 \href{https://github.com/leanprover-community/plausible}{GitHub}, accessed
 September 2026.
+\bibitem{beyondvacuity} H.~Chockler, A.~Gurfinkel, and O.~Strichman,
+\emph{Beyond Vacuity: Towards the Strongest Passing Formula}, Form.\ Methods
+Syst.\ Des.\ 43 (2013), 552--571,
+\href{https://doi.org/10.1007/s10703-013-0192-6}{DOI}.
+\bibitem{lemmamining} C.~Kaliszyk and J.~Urban, \emph{Lemma Mining over HOL
+Light}, LPAR-19, LNCS 8312, 2013, pp.~503--517,
+\href{https://doi.org/10.1007/978-3-642-45221-5_34}{DOI}.
+\bibitem{hipster} M.~Johansson, D.~Ros\'en, N.~Smallbone, and K.~Claessen,
+\emph{Hipster: Integrating Theory Exploration in a Proof Assistant}, CICM
+2014, LNCS 8543, pp.~108--122,
+\href{https://doi.org/10.1007/978-3-319-08434-3_9}{DOI}.
+\bibitem{dreamcoder} K.~Ellis et al., \emph{DreamCoder: Growing
+Generalizable, Interpretable Knowledge with Wake-Sleep Bayesian Program
+Learning}, 2020, \href{https://arxiv.org/abs/2006.08381}{arXiv:2006.08381}.
+\bibitem{legoprover} H.~Wang, H.~Xin, et al., \emph{LEGO-Prover: Neural
+Theorem Proving with Growing Libraries}, ICLR 2024,
+\href{https://arxiv.org/abs/2310.00656}{arXiv:2310.00656}.
+\bibitem{berlotattwell} I.~Berlot-Attwell, T.~Sesterhenn, F.~Rudzicz, and
+X.~Si, \emph{Is This LLM Library Learning? Evaluation Must Account For Compute
+and Behaviour}, EACL 2026, pp.~3534--3568,
+\href{https://doi.org/10.18653/v1/2026.eacl-long.163}{DOI}.
+\bibitem{proofrefactor} Y.~Fu, P.~Liu, Z.~Wang, and K.~Yuan,
+\emph{Proof-Refactor: Refactoring Generated Formal Proofs into Modular
+Artifacts}, 2026, \href{https://arxiv.org/abs/2606.03743}{arXiv:2606.03743}.
+\bibitem{leanconjecturer} N.~Onda et al., \emph{LeanConjecturer: Automatic
+Generation of Mathematical Conjectures for Theorem Proving}, 2025,
+\href{https://arxiv.org/abs/2506.22005}{arXiv:2506.22005}.
+\bibitem{alphaevolvemath} B.~Georgiev, J.~G\'omez-Serrano, T.~Tao, and
+A.~Z.~Wagner, \emph{Mathematical Exploration and Discovery at Scale}, 2025,
+\href{https://arxiv.org/abs/2511.02864v3}{arXiv:2511.02864v3}.
 \bibitem{litt} D.~Litt, \emph{A beginning for mathematics}, 13 September
 2026, \href{https://www.daniellitt.com/blog/2026/9/13/a-beginning-for-mathematics/}{blog post}.
 \bibitem{chu} T.~Chu, \emph{The AI dissenter viewpoint}, \emph{Proofs and

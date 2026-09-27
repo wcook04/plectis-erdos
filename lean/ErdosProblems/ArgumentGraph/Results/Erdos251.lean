@@ -83,7 +83,68 @@ theorem short_joint_prime_gap_countermodel_per_clause (K : ℕ) {ε : ℝ} (hε 
       (PrimeNumberTheorem → Tendsto (fun n => (cumulative b n : ℝ) / scale n) atTop (𝓝 1)) :=
   short_joint_prime_gap_countermodel.factored K hε
 
+/-! ## The exponents `ε > 1` are a corollary
+
+`polylog ε n = (log (n + 3)) ^ ε` increases with `ε`, since `log (n + 3) ≥ log 3 > 1`. So the
+sequence `short_joint_prime_gap_countermodel_per_clause` gives at `ε = 1` has every property
+required at any `ε ≥ 1`: the factoring's widening from `ε ≤ 1` to every `ε > 0` adds nothing
+for `ε ≥ 1`, and its gain is each input at its own clause. -/
+
+theorem one_le_log_nat_add_three (n : ℕ) : 1 ≤ Real.log ((n : ℝ) + 3) := by
+  have he : Real.exp 1 ≤ (n : ℝ) + 3 := by
+    have := Real.exp_one_lt_d9
+    have : (0 : ℝ) ≤ n := n.cast_nonneg
+    linarith
+  calc (1 : ℝ) = Real.log (Real.exp 1) := (Real.log_exp 1).symm
+    _ ≤ Real.log ((n : ℝ) + 3) := Real.log_le_log (Real.exp_pos 1) he
+
+theorem polylog_le_of_exponent_le {α β : ℝ} (h : α ≤ β) (n : ℕ) : polylog α n ≤ polylog β n := by
+  unfold polylog
+  exact Real.rpow_le_rpow_of_exponent_le (one_le_log_nat_add_three n) h
+
+/-- Every `ε ≥ 1` instance of `short_joint_prime_gap_countermodel_per_clause`, from the
+`ε = 1` instance alone. -/
+theorem short_joint_prime_gap_countermodel_of_exponent_one (K : ℕ) {ε : ℝ} (hε : 1 ≤ ε) :
+    ∃ b : ℕ → ℕ, ∃ r : ℚ, ∃ C : ℝ, 0 < C ∧
+      HasSum (fun n => (b n : ℝ) / 2 ^ (n + 1)) (r : ℝ) ∧
+      (∀ n, n < K → b n = primeGap0 n) ∧
+      (∀ n, primeGap0 n ≤ b n) ∧
+      (∀ᶠ n : ℕ in atTop, ((b n - primeGap0 n : ℕ) : ℝ) ≤ polylog ε n) ∧
+      (∀ q : ℕ, 0 < q → ∀ᶠ n : ℕ in atTop,
+        b n ≡ primeGap0 n [MOD q] ∧ cumulative b n ≡ prime0 n [MOD q]) ∧
+      (∀ m : ℕ → ℕ,
+        Tendsto (fun X => (m X : ℝ) / Real.log (Real.log (X : ℝ))) atTop (𝓝 0) →
+        Tendsto (fun X => blockTV primeGap0 b X (m X)) atTop (𝓝 0)) ∧
+      (SchlagePuchtaLemma4 → FixedBlockNonconcentration (fun n => (b n : ℤ))) ∧
+      (∀ n, prime0 n ≤ cumulative b n) ∧
+      (∀ᶠ n : ℕ in atTop, (cumulative b n : ℝ) - prime0 n
+        ≤ C * ((n : ℝ) * polylog ε n / Real.log (Real.log (n : ℝ)))) ∧
+      (PrimeNumberTheorem →
+        Tendsto (fun n => (cumulative b n : ℝ) / scale n) atTop (𝓝 1)) := by
+  obtain ⟨b, r, C, hC, hsum, hpre, hle, hallow, hcong, hTV, hNC, hlo, hest, hgrow⟩ :=
+    short_joint_prime_gap_countermodel_per_clause K (ε := 1) one_pos
+  refine ⟨b, r, C, hC, hsum, hpre, hle, ?_, hcong, hTV, hNC, hlo, ?_, hgrow⟩
+  · filter_upwards [hallow] with n hn
+    exact hn.trans (polylog_le_of_exponent_le hε n)
+  · filter_upwards [hest, eventually_ge_atTop 16] with n hn h16
+    refine hn.trans ?_
+    have hn16 : (16 : ℝ) ≤ n := by exact_mod_cast h16
+    have hlog : 1 < Real.log (n : ℝ) := by
+      have he : Real.exp 1 < (n : ℝ) := by
+        have := Real.exp_one_lt_d9
+        linarith
+      calc (1 : ℝ) = Real.log (Real.exp 1) := (Real.log_exp 1).symm
+        _ < Real.log (n : ℝ) := Real.log_lt_log (Real.exp_pos 1) he
+    have hll : 0 < Real.log (Real.log (n : ℝ)) := Real.log_pos hlog
+    have hp := polylog_le_of_exponent_le hε n
+    have hn0 : (0 : ℝ) ≤ n := by linarith
+    have hq : (n : ℝ) * polylog 1 n / Real.log (Real.log (n : ℝ))
+        ≤ (n : ℝ) * polylog ε n / Real.log (Real.log (n : ℝ)) := by
+      gcongr
+    exact mul_le_mul_of_nonneg_left hq hC.le
+
 end ErdosProblems.Erdos251.PaperCompleteR21
 
 #print axioms ErdosProblems.Erdos251.PaperCompleteR21.long_joint_prime_gap_countermodel_per_clause
 #print axioms ErdosProblems.Erdos251.PaperCompleteR21.short_joint_prime_gap_countermodel_per_clause
+#print axioms ErdosProblems.Erdos251.PaperCompleteR21.short_joint_prime_gap_countermodel_of_exponent_one

@@ -4652,7 +4652,7 @@
       "paper": "erdos249-totient-reasoning-surface",
       "side": "long",
       "lean_status": "exact",
-      "source": "paper/reasoning-parts/erdos249/a249_front.tex:7597"
+      "source": "paper/reasoning-parts/erdos249/a249_front.tex:7600"
      }
     ],
     "source": null,
@@ -6045,7 +6045,7 @@
       "paper": "erdos251-prime-gap-reasoning-surface",
       "side": "long",
       "lean_status": "exact",
-      "source": "paper/reasoning-parts/erdos251/core.tex:2398"
+      "source": "paper/reasoning-parts/erdos251/core.tex:2400"
      }
     ],
     "source": null
@@ -6192,7 +6192,7 @@
       "paper": "erdos251-prime-gap-reasoning-surface",
       "side": "long",
       "lean_status": "modulo_named_input",
-      "source": "paper/reasoning-parts/erdos251/core.tex:1573"
+      "source": "paper/reasoning-parts/erdos251/core.tex:1575"
      }
     ],
     "source": null,
@@ -6268,7 +6268,7 @@
       "paper": "erdos-251-prime-gap-dyadic-series",
       "side": "short",
       "lean_status": "exact",
-      "source": "paper/251/erdos-251-prime-gap-dyadic-series.tex:370"
+      "source": "paper/251/erdos-251-prime-gap-dyadic-series.tex:372"
      }
     ],
     "source": "lean/ErdosProblems/Erdos251/PrimeGapDyadicTail.lean:435",
@@ -6495,7 +6495,7 @@
       "paper": "erdos-251-prime-gap-dyadic-series",
       "side": "short",
       "lean_status": "exact",
-      "source": "paper/251/erdos-251-prime-gap-dyadic-series.tex:423"
+      "source": "paper/251/erdos-251-prime-gap-dyadic-series.tex:425"
      }
     ],
     "source": null,
@@ -7850,7 +7850,7 @@
       "paper": "erdos251-prime-gap-reasoning-surface",
       "side": "long",
       "lean_status": "modulo_named_input",
-      "source": "paper/reasoning-parts/erdos251/core.tex:1573"
+      "source": "paper/reasoning-parts/erdos251/core.tex:1575"
      }
     ],
     "source": null
@@ -20714,6 +20714,12 @@
  },
  "pinned_rule": "derived names the hand-written result modules use; a strict command must add each",
  "pinned": {
+  "ErdosProblems.Erdos1041.PaperCompleteR21.binomial_inner_chord_maximal.factored": [
+   "lean/ErdosProblems/ArgumentGraph/Results/Erdos1041.lean"
+  ],
+  "ErdosProblems.Erdos243.PaperCompleteR21.transport_square_unconditional.factored": [
+   "lean/ErdosProblems/ArgumentGraph/Results/Erdos243.lean"
+  ],
   "ErdosProblems.Erdos251.PaperCompleteR21.long_joint_prime_gap_countermodel.factored": [
    "lean/ErdosProblems/ArgumentGraph/Results/Erdos251.lean"
   ],

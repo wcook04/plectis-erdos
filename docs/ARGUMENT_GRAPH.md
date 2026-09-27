@@ -308,7 +308,13 @@ The theorems the argument graph itself contributes to Lean (modules under
 `ErdosProblems.ArgumentGraph`, which the coverage build imports) are left out
 of the graph with every row that uses one as theorem or producer, and counted
 in `argument_graph_derived_theorems_skipped`: the graph never reads its own
-findings back as corpus theorems.
+findings back as corpus theorems. `--read-findings` builds the other graph, for
+comparison: it keeps them, marks each one `finding` in the graph file, and
+writes no paper macros. On main's export of 27 September (run 36308380510) the
+174 findings supply seven more statements: three that no theorem assumes, and
+four assumed only by weakened theorems the export derived from findings. No
+theorem has all its hypotheses supplied because of them, and no paper result
+changes.
 
 ## Asking it questions
 
@@ -536,6 +542,34 @@ source proof already proves; it is new only as a statement, and whether a paper
 should state the stronger form is the author's decision. A factoring records
 what one proof uses: that an input is still assumed by a claim in a checked
 factoring does not show that the claim needs it.
+
+What a derived statement adds is decided clause by clause. When a factoring
+drops a hypothesis, the added points are those where it fails: a conjunct is
+asserted at each of them, and a clause `A → B` says something there only where
+`A` holds. #1041's `binomial_inner_chord_maximal` gains its midpoint equality on
+the added region and its maximality clause nothing, since off the switch
+condition no `s` meets that clause's hypotheses; the region is not empty
+(`ArgumentGraph/Results/Erdos1041.lean`). An added region can also be covered by
+old instances: every `ε ≥ 1` instance of #251's per-clause countermodel follows
+from the `ε = 1` instance (`ArgumentGraph/Results/Erdos251.lean`). And a dropped
+hypothesis can follow from the others, as #243's `v n > 0` does, which gives the
+same region with a shorter statement (`ArgumentGraph/Results/Erdos243.lean`).
+Model checking draws the same distinctions for a formula that a model passes: a
+subformula is vacuous when replacing it by false leaves the verdict unchanged
+([Chockler, Gurfinkel and Strichman](https://doi.org/10.1007/s10703-013-0192-6)).
+`scripts/residual_evaluator.py` decides
+such relations with the kernel: whether residuals imply a target, restate it or
+are false, and whether one demand for a target implies another, under binders
+the sketches share (`--emit` writes its probes for a kernel-probe branch and
+`--from-logs` decides from that run's logs). Exports that switch the weakening
+and literal-generalisation passes on and off are compared by
+`scripts/compare_argument_exports.py`: the caps and what each pass attempted,
+the statements only one export exposes, and each pass's effect and their
+interaction on the statements every export searched (the contrasts of a
+two-level full factorial design, [NIST/SEMATECH e-Handbook
+§5.3.3.3.1](https://www.itl.nist.gov/div898/handbook/pri/section3/pri3331.htm)). A statement counts as
+supplied only by the export running both passes when no other export,
+the baseline included, supplies it.
 
 ## Checking a new statement without a local build
 
