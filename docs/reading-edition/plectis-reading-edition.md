@@ -4,7 +4,7 @@
 
 # Plectis reading edition: eight Erdős problems
 
-Edition fingerprint `6a7ce3431bbece89`. Papers CC-BY-4.0, Will Cook, 2026. Source: <https://github.com/wcook04/plectis-erdos>. Website: <https://wcook04.github.io/plectis/maths/>.
+Edition fingerprint `f0fbdeb93c843e1a`. Papers CC-BY-4.0, Will Cook, 2026. Source: <https://github.com/wcook04/plectis-erdos>. Website: <https://wcook04.github.io/plectis/maths/>.
 
 
 ## How to use this edition
@@ -3796,6 +3796,29 @@ index.**
 
 #### The probe
 
+##### Try it in a browser
+
+Download [`explorer.html`](https://github.com/wcook04/plectis-erdos/blob/main/research/experiments/choices_contraction/explorer.html) using GitHub's **Download raw file**
+button, then open the saved file in a modern browser. It is a single offline
+page with no dependencies or installation. Change the target, allowed
+exponents or depth, inspect each forced choice, and download its exact result
+as JSON. Start with `189/388` at depths 16 and 17 to see finite survival become
+a strict exclusion.
+
+The page uses integer fractions with JavaScript BigInt, through depth 64 with
+tail horizon 160. Its result rows follow the Python probe's contract below.
+The [independent terminal-witness checker](https://github.com/wcook04/plectis-erdos/blob/main/research/experiments/choices_contraction/verify_terminal_witness.py) accepts
+its finite sums and exclusions and refuses undecided records. Reaching a
+finite depth is not a membership certificate. This remains a finite
+computation, not a Lean proof or a solution to Erdős #257.
+
+To replay the browser arithmetic against Python and the separate checker, run
+`python3 scripts/test_rational_explorer.py` from the repository root with
+Node.js available. The test executes the script embedded in the HTML and
+also checks deliberately corrupted exports.
+
+##### Run the Python probe
+
 [`rational_membership_probe.py`](https://github.com/wcook04/plectis-erdos/blob/main/research/experiments/choices_contraction/rational_membership_probe.py) runs the greedy
 rule in exact rational arithmetic on every reduced fraction `p/q` with
 `q <= Q` in the relevant interval, through depth `N`. It sorts each fraction
@@ -3857,8 +3880,13 @@ python3 research/experiments/choices_contraction/verify_terminal_witness.py \
 ```
 
 The checker refuses `not_excluded` rows, including mixed files containing
-one. It has a horizon resource limit of 512; refusal beyond that limit is
-not a mathematical verdict. A checked terminal row is an exact finite
+one. It has a horizon resource limit of 512. Rational fields use ASCII integer
+or fraction strings such as `0`, `189/388` or `-1/3`, with at most 4,300 digits
+in each numerator and denominator. Decimal, exponent, underscore and whitespace
+forms are refused before conversion; Python's integer-string guard remains
+enabled and may impose a stricter limit. Refusal at a resource or input boundary
+is not a mathematical verdict. Canonical exports within these bounds retain
+their existing meaning. A checked terminal row is an exact finite
 certificate, not a Lean check or a decision about all rational targets.
 
 ```sh
