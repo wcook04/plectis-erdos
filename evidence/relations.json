@@ -1213,6 +1213,14 @@
    "lean_statements": {
     "Erdos68.factorialGapSegment_log_sum_le_channelLCM_add_choose": "79e3521dda89139fb2add88b01c1b2339926ba165301fc757cfc17f74c2a4ffb"
    }
+  },
+  "erdos-257-mersenne-support-subseries#res:weighted-cover-incomparability": {
+   "note": "The two Lean statements supply the two hosts separately, with a positive support written as $0\\notin E$ and a cover satisfying (V) indexed from $0$. `exists_weighted_not_strengthened_host` gives an infinite $E$ with $E\\in\\mathcal W_2$ and $E\\notin\\mathcal C$; `exists_strengthened_not_old_or_weighted_host` gives an infinite $V$ with $V\\in\\mathcal C$, $V\\notin\\mathcal W_b$ for every integer $b\\ge2$, and non-summable reciprocals, which for nonnegative terms is $\\sum_{a\\in V}1/a=\\infty$. Each adds further conclusions. The Lean host $V$ is a squarefree divisor-cube host with its own row schedule; the bounded-mass fresh-prime construction printed in the proof is an ordinary proof.",
+   "statement_key": "sha256:c98f508389e9bedf3baeed1d57fe7a957069b51c6a598cf9a79f6335234d7113",
+   "lean_statements": {
+    "ErdosProblems.Erdos257.PaperCompleteR8.exists_weighted_not_strengthened_host": "f0b7085233677e5df696b7536f3fa5da6b8f605dfd60cf7d04498bd80fbb9986",
+    "ErdosProblems.Erdos257.PaperCompleteR8.exists_strengthened_not_old_or_weighted_host": "d26db4b9228a9c9e190e38f85550f28f09b7a73d208436d0e262b3642132eddc"
+   }
   }
  }
 }
