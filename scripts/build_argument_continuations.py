@@ -447,6 +447,10 @@ class Graph:
         # proof uses of it), and each weakened theorem's derived name
         self.weakenings: list[dict[str, Any]] = []
         self.weakening_unchecked = 0
+        # Kernel-checked generalisations: a literal of a theorem made a variable,
+        # with the obligations the proof needed of it (generalisation rows).
+        self.generalisations: list[dict[str, Any]] = []
+        self.generalisations_refused = 0
         # kernel-checked weakening rows the builder refused (a consequence
         # without a key, no consequence, no hypothesis key): each would have
         # dropped an obligation without replacing it
@@ -477,6 +481,9 @@ class Graph:
         graph.compositions_checked = [dict(row) for row in payload.get("compositions_checked", [])]
         graph.weakenings = [dict(entry) for entry in payload.get("weakenings", [])]
         graph.synthetic = {e["weakened"]: e["theorem"] for e in graph.weakenings if e.get("weakened")}
+        graph.generalisations = [dict(entry) for entry in payload.get("generalisations", [])]
+        graph.synthetic.update({e["generalised"]: e["theorem"] for e in graph.generalisations
+                                if e.get("generalised")})
         graph.meta = {"schema": payload.get("schema")}
         graph.summary = (payload.get("source") or {}).get("export_summary", {})
         for row in payload.get("statements", []):
@@ -573,6 +580,7 @@ class Graph:
         binders_of: dict[str, list[dict[str, Any]]] = {}
         idle_rows: list[dict[str, Any]] = []
         weakening_rows: list[dict[str, Any]] = []
+        generalisation_rows: list[dict[str, Any]] = []
         composition_rows: list[dict[str, Any]] = []
         for row in rows:
             record = row.get("record")
@@ -695,6 +703,13 @@ class Graph:
                     weakening_rows.append(row)
                 else:
                     self.weakening_unchecked += 1
+            elif record == "generalisation":
+                if row.get("status") == "generalised" and row.get("kernel_checked") and row.get("generalised") \
+                        and row.get("theorem") not in findings:
+                    generalisation_rows.append(row)
+                    self.synthetic[row["generalised"]] = row.get("theorem")
+                else:
+                    self.generalisations_refused += 1
             elif record == "candidate_cap":
                 self.caps.append(row)
             elif record in ("theorem_error", "statement_error"):
@@ -703,6 +718,8 @@ class Graph:
             self._ingest_idle(row, binders_of.get(row.get("theorem")), add_reduction)
         for row in weakening_rows:
             self._ingest_weakening(row, binders_of.get(row.get("theorem")), add_reduction)
+        for row in generalisation_rows:
+            self._ingest_generalisation(row, add_reduction)
         # A kernel-checked composition is a closed proof term of its conclusion
         # (the exporter instantiated every binder, so a conclusion that mentions
         # a hypothesis becomes a statement of its own): a reduction without
@@ -719,6 +736,22 @@ class Graph:
                 self.composition_uses[before] = composition_uses_of(theorem, used)
         if not self.include_weakening:
             self.synthetic = {}
+
+    def _ingest_generalisation(self, row: dict[str, Any], add_reduction) -> None:
+        """A kernel-checked generalisation: the theorem with a literal made a
+        variable and the obligations its proof needed of that literal assumed.
+        The generalised statement is closed and proved, so it is supplied; its
+        theorem is a synthetic producer credited to the original."""
+        entry = {key: row.get(key) for key in ("theorem", "literal", "literal_type", "uniform", "witness",
+                                                "generalised", "type", "key")}
+        entry["obligations"] = [o.get("type") for o in row.get("obligations", []) or []]
+        entry["discharged"] = [{"type": d.get("type"), "tactic": d.get("tactic")}
+                               for d in row.get("discharged", []) or []]
+        if row.get("key"):
+            node = self._statement(row["key"], row.get("type"), "generalisation")
+            node["conclusion_of"].add(row["generalised"])
+            add_reduction(row["key"], row["generalised"], "generalisation", ())
+        self.generalisations.append(entry)
 
     def _ingest_weakening(self, row: dict[str, Any], binders: list[dict[str, Any]] | None,
                           add_reduction) -> None:
@@ -2019,6 +2052,10 @@ def build(export_path: Path, root: Path = ROOT, *, lean_tree: str | None = None,
         "idle_reductions": sum(1 for e in graph.idle if e.get("reduction")),
         "idle_dropping_open": len(idle_dropping_open),
         "weakened_theorems": len({e["theorem"] for e in graph.weakenings}),
+        "generalised_theorems": len({e["theorem"] for e in graph.generalisations}),
+        "generalisations_kernel_checked": len(graph.generalisations),
+        "generalisations_uniform": sum(1 for e in graph.generalisations if e.get("uniform")),
+        "generalisations_refused": graph.generalisations_refused,
         "weakenings_kernel_checked": len(graph.weakenings),
         "weakenings_unchecked": graph.weakening_unchecked,
         "weakenings_refused_malformed": len(graph.weakenings_malformed),
@@ -2145,6 +2182,8 @@ def build(export_path: Path, root: Path = ROOT, *, lean_tree: str | None = None,
         "idle": idle_rows[:LIST_LIMIT * 3],
         "weakenings": weakening_rows[:LIST_LIMIT * 6],
         "weakenings_refused": graph.weakenings_malformed[:LIST_LIMIT],
+        "generalisations": sorted(graph.generalisations,
+                                  key=lambda e: (not papers.get(e["theorem"]), e["theorem"] or ""))[:LIST_LIMIT * 3],
         "interfaces": interfaces,
         "audit": audit,
         "sentinel_alarms": alarms,
@@ -2198,6 +2237,7 @@ def build(export_path: Path, root: Path = ROOT, *, lean_tree: str | None = None,
         "budget_exhausted": graph.budget_exhausted,
         "idle": graph.idle,
         "weakenings": graph.weakenings,
+        "generalisations": graph.generalisations,
         "theorems": [
             {**theorem_card(name), "module": t["module"], "problem": theorem_problems.get(name),
              "hypotheses": t["hypotheses"], "schematic_hypotheses": t["schematic_hypotheses"],

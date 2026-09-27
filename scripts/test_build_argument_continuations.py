@@ -332,6 +332,31 @@ class ToyGraphWithBattery(unittest.TestCase):
             self.assertEqual(reloaded.disguise_classes(), fresh.disguise_classes())
 
 
+class Generalisations(unittest.TestCase):
+    """A kernel-checked generalisation row supplies its generalised statement,
+    and its theorem is a synthetic producer credited to the original; a refused
+    or unchecked row is only counted."""
+
+    def test_generalised_statement_is_supplied_and_credited(self) -> None:
+        rows = list(builder.read_export(FIXTURE))
+        name = "UseToy.goal_of_strong._argument_generalisation_0"
+        rows.append({"record": "generalisation", "theorem": "UseToy.goal_of_strong", "literal": "93",
+                     "literal_type": "Nat", "status": "generalised", "uniform": False, "witness": "94",
+                     "generalised": name, "type": "∀ (v : Nat), 5 < v → UseToy.Goal", "key": "gen000000000001",
+                     "obligations": [{"type": "5 < v", "closed_key": None}], "discharged": [],
+                     "kernel_checked": True})
+        rows.append({"record": "generalisation", "theorem": "UseToy.goal_of_strong", "literal": "7",
+                     "status": "refused", "reason": "pinned", "kernel_checked": False})
+        graph = builder.Graph(rows)
+        graph.analyse()
+        key = graph.canon("gen000000000001")
+        self.assertIn(key, graph.supplied)
+        self.assertEqual(graph.reductions[graph.witness[key]][1], name)
+        self.assertEqual(graph.synthetic[name], "UseToy.goal_of_strong")
+        self.assertEqual([e["obligations"] for e in graph.generalisations], [["5 < v"]])
+        self.assertEqual(graph.generalisations_refused, 1)
+
+
 class ToyWeakenings(unittest.TestCase):
     """Used consequences on the toy (namespace UseToy): goal_of_strong uses the
     open input Strong only through weak_of_strong, and a theorem proves Weak;
