@@ -165,34 +165,35 @@ structure Ref where
 
 /-- Statements of the readings of `stmt` with their paths (fresh metavariables for every
 binder), for the index. -/
-partial def readingPaths (unfoldOk : Name → Bool) (stmt : Expr) (path : Array Step) (depth : Nat) :
-    MetaM (Array (Expr × Array Step)) := do
-  let stmt ← instantiateMVars stmt
-  let mut out := #[(stmt, path)]
-  if depth == 0 then return out
-  let stmt ← whnfR stmt
-  match stmt with
-  | .forallE _ d b _ =>
-      let m ← mkFreshExprMVar d
-      return out ++ (← readingPaths unfoldOk (b.instantiate1 m) (path.push .inst) (depth - 1))
-  | _ =>
-    if stmt.isAppOfArity ``And 2 then
-      out := out ++ (← readingPaths unfoldOk stmt.appFn!.appArg! (path.push .left) (depth - 1))
-      out := out ++ (← readingPaths unfoldOk stmt.appArg! (path.push .right) (depth - 1))
+def readingPaths (unfoldOk : Name → Bool) (stmt : Expr) (path : Array Step) :
+    Nat → MetaM (Array (Expr × Array Step))
+  | 0 => do return #[(← instantiateMVars stmt, path)]
+  | depth + 1 => do
+    let stmt ← instantiateMVars stmt
+    let mut out := #[(stmt, path)]
+    let stmt ← whnfR stmt
+    match stmt with
+    | .forallE _ d b _ =>
+        let m ← mkFreshExprMVar d
+        return out ++ (← readingPaths unfoldOk (b.instantiate1 m) (path.push .inst) depth)
+    | _ =>
+      if stmt.isAppOfArity ``And 2 then
+        out := out ++ (← readingPaths unfoldOk stmt.appFn!.appArg! (path.push .left) depth)
+        out := out ++ (← readingPaths unfoldOk stmt.appArg! (path.push .right) depth)
+        return out
+      if stmt.isAppOfArity ``Filter.Eventually 3 then
+        if let .lam n α body bi := stmt.getArg! 1 then
+          if body.isAppOfArity ``And 2 then
+            let f := stmt.getArg! 2
+            for (b, step) in [(body.appFn!.appArg!, Step.evLeft), (body.appArg!, Step.evRight)] do
+              let e ← mkAppM ``Filter.Eventually #[.lam n α b bi, f]
+              out := out ++ (← readingPaths unfoldOk e (path.push step) depth)
+        return out
+      if let .const n _ := stmt.getAppFn then
+        if unfoldOk n then
+          if let some u ← unfoldDefinition? stmt then
+            out := out ++ (← readingPaths unfoldOk u (path.push .unfold) depth)
       return out
-    if stmt.isAppOfArity ``Filter.Eventually 3 then
-      if let .lam n α body bi := stmt.getArg! 1 then
-        if body.isAppOfArity ``And 2 then
-          let f := stmt.getArg! 2
-          for (b, step) in [(body.appFn!.appArg!, Step.evLeft), (body.appArg!, Step.evRight)] do
-            let e ← mkAppM ``Filter.Eventually #[.lam n α b bi, f]
-            out := out ++ (← readingPaths unfoldOk e (path.push step) (depth - 1))
-      return out
-    if let .const n _ := stmt.getAppFn then
-      if unfoldOk n then
-        if let some u ← unfoldDefinition? stmt then
-          out := out ++ (← readingPaths unfoldOk u (path.push .unfold) (depth - 1))
-    return out
 
 /-- Add the readings of `n` (up to `depth` steps) to the index. -/
 def indexTheorem (tree : DiscrTree Ref) (unfoldOk : Name → Bool) (n : Name) (depth : Nat) :
@@ -329,7 +330,7 @@ def conj : List Expr → Expr
   | a :: rest => mkApp2 (mkConst ``And) a (conj rest)
 
 /-- Assign the leaves, in order, the components of `h : conj leaves`. -/
-partial def assignProjections (ls : List Leaf) (h : Expr) : MetaM Unit := do
+def assignProjections (ls : List Leaf) (h : Expr) : MetaM Unit := do
   match ls with
   | [] => pure ()
   | [l] => l.mvar.mvarId!.assign h
@@ -356,23 +357,27 @@ def unfoldable (T : Expr) : ResM Bool := do
 
 /-- Atomic clauses of `T`, counted through `∧`, `∃`, `∀`, corpus definitions and filter
 bodies (the hypotheses of an implication are not clauses). -/
-partial def clauseCount (T : Expr) (depth : Nat := 10) : ResM Nat := do
-  if depth == 0 then return 1
-  let T ← whnfR (← instantiateMVars T)
-  match T with
-  | .forallE n d b bi => withLocalDecl n bi d fun x => clauseCount (b.instantiate1 x) (depth - 1)
-  | _ =>
-    if T.isAppOfArity ``And 2 then
-      return (← clauseCount T.appFn!.appArg! (depth - 1)) + (← clauseCount T.appArg! (depth - 1))
-    if T.isAppOfArity ``Exists 2 then
-      return ← withLocalDeclD `w T.appFn!.appArg! fun w =>
-        clauseCount (T.appArg!.beta #[w]) (depth - 1)
-    if T.isAppOfArity ``Filter.Eventually 3 || T.isAppOfArity ``Filter.Frequently 3 then
-      return ← withLocalDeclD `X (T.getArg! 0) fun x =>
-        clauseCount ((T.getArg! 1).beta #[x]) (depth - 1)
-    if ← unfoldable T then
-      if let some u ← unfoldDefinition? T then return ← clauseCount u (depth - 1)
-    return 1
+def clauseCountAux : Nat → Expr → ResM Nat
+  | 0, _ => return 1
+  | depth + 1, T => do
+    let T ← whnfR (← instantiateMVars T)
+    match T with
+    | .forallE n d b bi => withLocalDecl n bi d fun x => clauseCountAux depth (b.instantiate1 x)
+    | _ =>
+      if T.isAppOfArity ``And 2 then
+        return (← clauseCountAux depth T.appFn!.appArg!) + (← clauseCountAux depth T.appArg!)
+      if T.isAppOfArity ``Exists 2 then
+        return ← withLocalDeclD `w T.appFn!.appArg! fun w =>
+          clauseCountAux depth (T.appArg!.beta #[w])
+      if T.isAppOfArity ``Filter.Eventually 3 || T.isAppOfArity ``Filter.Frequently 3 then
+        return ← withLocalDeclD `X (T.getArg! 0) fun x =>
+          clauseCountAux depth ((T.getArg! 1).beta #[x])
+      if ← unfoldable T then
+        if let some u ← unfoldDefinition? T then return ← clauseCountAux depth u
+      return 1
+
+/-- Atomic clauses of `T`, counted to depth `depth`. -/
+def clauseCount (T : Expr) (depth : Nat := 10) : ResM Nat := clauseCountAux depth T
 
 def mkHole (ctx : Array Expr) (T : Expr) : ResM Expr := do
   let h ← freshIn ctx T .syntheticOpaque
@@ -382,7 +387,7 @@ def mkHole (ctx : Array Expr) (T : Expr) : ResM Expr := do
 
 /-- Replay a reading path of `proof : stmt` in context `ctx`: its proof, statement and
 obligations (data binders become root metavariables, propositions obligations). -/
-partial def replay (ctx : Array Expr) (proof stmt : Expr) (obls : Array Expr) :
+def replay (ctx : Array Expr) (proof stmt : Expr) (obls : Array Expr) :
     List Step → ResM (Option (Expr × Expr × Array Expr))
   | [] => return some (proof, ← instantiateMVars stmt, obls)
   | s :: rest => do
@@ -434,211 +439,243 @@ def candidates (T : Expr) : ResM (Array Ref) := do
     unless out.contains r do out := out.push r
   return out
 
-mutual
-
-/-- A proof of `T` in context `ctx` and the number of clauses it leaves open. -/
-partial def solve (ctx : Array Expr) (T : Expr) (fuel : Nat) (mode : Mode) :
-    ResM (Option (Expr × Nat)) := do
-  let cfg ← read
-  let spent ← cfg.budgetRef.modifyGet fun n => (n + 1, n + 1)
-  let fuel := if spent > cfg.callBudget then 0 else fuel
-  let T ← instantiateMVars T
-  -- a hypothesis in context, without fixing any witness
-  for x in ctx do
-    let d ← inferType x
-    if ← isProp d then
-      if ← withNewMCtxDepth (defEq d T) then return some (x, 0)
-  -- the battery, on a goal with no metavariable and no corpus constant
-  if !T.hasMVar && !(T.getUsedConstants.any fun c => cfg.unfoldPrefixes.any (·.isPrefixOf c)) then
-    if let some p ← battery T then return some (p, 0)
-  if fuel == 0 then return (← leave ctx T fuel mode)
-  let start ← snapshot
-  let base ← costNow
-  let mut best : Option (Expr × Nat × Snapshot) := none
-  -- a goal along `atTop`
-  if (T.isAppOfArity ``Filter.Frequently 3 || T.isAppOfArity ``Filter.Eventually 3) &&
-      isAtTop (T.getArg! 2) then
-    if let .residual := mode then
-      if let some p ← filterRule ctx T fuel then
-        let c := (← costNow) - base
-        if c == 0 then return some (p, 0)
-        best := some (p, c, ← snapshot)
-      start.restore
-  -- readings retrieved from the index
-  for ref in ← candidates T do
-    start.restore
-    let c0 ← mkConstWithFreshMVarLevels ref.name
-    let some (proof, stmt, obls) ← replay ctx c0 (← inferType c0) #[] ref.path.toList | continue
-    unless headsMatch stmt T do continue
-    unless ← defEq stmt T do continue
-    unless ← discharge ctx obls fuel mode do continue
-    modify fun st => { st with used := st.used.push ref.name }
-    let p ← instantiateMVars proof
-    let c := (← costNow) - base
-    if c == 0 then return some (p, 0)
-    if best.all (fun b => c < b.2.1) then best := some (p, c, ← snapshot)
-  -- structure
-  start.restore
-  if let some p ← structural ctx T fuel mode then
-    let c := (← costNow) - base
-    if best.all (fun b => c < b.2.1) then best := some (p, c, ← snapshot)
-  -- leave it
-  start.restore
-  if let some (p, _) ← leave ctx T fuel mode then
-    let c := (← costNow) - base
-    if best.all (fun b => c < b.2.1) then best := some (p, c, ← snapshot)
-  match best with
-  | some (p, c, s) =>
-      s.restore
-      return some (p, c)
-  | none =>
-      start.restore
-      return none
-
-/-- Prove a reading's obligations (instances by synthesis). -/
-partial def discharge (ctx : Array Expr) (obls : Array Expr) (fuel : Nat) (mode : Mode) :
-    ResM Bool := do
-  for o in obls do
-    if ← o.mvarId!.isAssigned then continue
-    let oT ← instantiateMVars (← inferType o)
-    if (← isClass? oT).isSome then
-      match ← (try (some <$> synthInstance oT) catch _ => pure none) with
-      | some inst => o.mvarId!.assign inst
-      | none => return false
-    else
-      match ← solve ctx oT (fuel - 1) mode with
-      | some (p, _) => o.mvarId!.assign p
-      | none => return false
-  return true
-
-partial def structural (ctx : Array Expr) (T : Expr) (fuel : Nat) (mode : Mode) :
-    ResM (Option Expr) := do
-  match T with
-  | .forallE n d b bi =>
-      match mode with
-      | .pointwise .. => return none
-      | _ =>
-        withLocalDecl n bi d fun x => do
-          match ← solve (ctx.push x) (b.instantiate1 x) fuel mode with
-          | some (p, _) => return some (← mkLambdaFVars #[x] p)
-          | none => return none
-  | _ =>
-    if T.isAppOfArity ``And 2 then
-      let A := T.appFn!.appArg!
-      let B := T.appArg!
-      -- the larger conjunct first, so that witnesses it fixes reach the side conditions
-      let swapped := A.approxDepth < B.approxDepth
-      let (first, second) := if swapped then (B, A) else (A, B)
-      let some (p1, _) ← solve ctx first fuel mode | return none
-      let some (p2, _) ← solve ctx (← instantiateMVars second) fuel mode | return none
-      let (pa, pb) := if swapped then (p2, p1) else (p1, p2)
-      return some (← mkAppM ``And.intro #[pa, pb])
-    if T.isAppOfArity ``Exists 2 then
-      let α := T.appFn!.appArg!
-      let pred := T.appArg!
-      let w ← freshIn ctx α
-      unless ← knownInhabited α do
-        modify fun st => { st with dataHoles := st.dataHoles.push w }
-      let some (p, _) ← solve ctx (pred.beta #[w]) fuel mode | return none
-      return some (← mkAppOptM ``Exists.intro #[α, pred, w, p])
-    if ← unfoldable T then
-      if let some T' ← unfoldDefinition? T then
-        return (← solve ctx T' (fuel - 1) mode).map (·.1)
-    return none
-
-/-- An unsupplied clause: a residual clause, a named input, or a clause of a filter body
-(supplied along the filter when some reading gives it for all large `X`). -/
-partial def leave (ctx : Array Expr) (T : Expr) (fuel : Nat) (mode : Mode) :
-    ResM (Option (Expr × Nat)) := do
+/-- An unsupplied clause with no recursion left: a residual clause, a named input, or a kept
+clause of a filter body. -/
+def leaveBase (ctx : Array Expr) (T : Expr) (mode : Mode) : ResM (Option (Expr × Nat)) := do
   match mode with
   | .residual => return some (← mkHole ctx T, 0)
   | .eventual =>
       if T.hasFVar || T.hasMVar then return none
       return some (← mkHole ctx T, 0)
-  | .pointwise x f =>
+  | .pointwise _ _ =>
       let leafM ← mkFreshExprMVar T .syntheticOpaque
       let c ← clauseCount T
-      if fuel > 0 then
-        if let some e ← supplyEventually ctx.pop x f T (fuel - 1) then
-          modify fun st => { st with leaves := st.leaves.push { mvar := leafM, cost := c, eventual := some e } }
-          return some (leafM, 0)
       modify fun st => { st with leaves := st.leaves.push { mvar := leafM, cost := c, eventual := none } }
       return some (leafM, 0)
 
+mutual
+
+/-- A proof of `T` in context `ctx` and the number of clauses it leaves open. -/
+def solve (k : Nat) (ctx : Array Expr) (T : Expr) (fuel : Nat) (mode : Mode) :
+    ResM (Option (Expr × Nat)) := do
+  match k with
+  | 0 => leaveBase ctx T mode
+  | k + 1 => do
+    let cfg ← read
+    let spent ← cfg.budgetRef.modifyGet fun n => (n + 1, n + 1)
+    let fuel := if spent > cfg.callBudget then 0 else fuel
+    let T ← instantiateMVars T
+    -- a hypothesis in context, without fixing any witness
+    for x in ctx do
+      let d ← inferType x
+      if ← isProp d then
+        if ← withNewMCtxDepth (defEq d T) then return some (x, 0)
+    -- the battery, on a goal with no metavariable and no corpus constant
+    if !T.hasMVar && !(T.getUsedConstants.any fun c => cfg.unfoldPrefixes.any (·.isPrefixOf c)) then
+      if let some p ← battery T then return some (p, 0)
+    if fuel == 0 then return (← leave k ctx T fuel mode)
+    let start ← snapshot
+    let base ← costNow
+    let mut best : Option (Expr × Nat × Snapshot) := none
+    -- a goal along `atTop`
+    if (T.isAppOfArity ``Filter.Frequently 3 || T.isAppOfArity ``Filter.Eventually 3) &&
+        isAtTop (T.getArg! 2) then
+      if let .residual := mode then
+        if let some p ← filterRule k ctx T fuel then
+          let c := (← costNow) - base
+          if c == 0 then return some (p, 0)
+          best := some (p, c, ← snapshot)
+        start.restore
+    -- readings retrieved from the index
+    for ref in ← candidates T do
+      start.restore
+      let c0 ← mkConstWithFreshMVarLevels ref.name
+      let some (proof, stmt, obls) ← replay ctx c0 (← inferType c0) #[] ref.path.toList | continue
+      unless headsMatch stmt T do continue
+      unless ← defEq stmt T do continue
+      unless ← discharge k ctx obls fuel mode do continue
+      modify fun st => { st with used := st.used.push ref.name }
+      let p ← instantiateMVars proof
+      let c := (← costNow) - base
+      if c == 0 then return some (p, 0)
+      if best.all (fun b => c < b.2.1) then best := some (p, c, ← snapshot)
+    -- structure
+    start.restore
+    if let some p ← structural k ctx T fuel mode then
+      let c := (← costNow) - base
+      if best.all (fun b => c < b.2.1) then best := some (p, c, ← snapshot)
+    -- leave it
+    start.restore
+    if let some (p, _) ← leave k ctx T fuel mode then
+      let c := (← costNow) - base
+      if best.all (fun b => c < b.2.1) then best := some (p, c, ← snapshot)
+    match best with
+    | some (p, c, s) =>
+        s.restore
+        return some (p, c)
+    | none =>
+        start.restore
+        return none
+
+/-- Prove a reading's obligations (instances by synthesis). -/
+def discharge (k : Nat) (ctx : Array Expr) (obls : Array Expr) (fuel : Nat) (mode : Mode) :
+    ResM Bool := do
+  match k with
+  | 0 => return false
+  | k + 1 => do
+    for o in obls do
+      if ← o.mvarId!.isAssigned then continue
+      let oT ← instantiateMVars (← inferType o)
+      if (← isClass? oT).isSome then
+        match ← (try (some <$> synthInstance oT) catch _ => pure none) with
+        | some inst => o.mvarId!.assign inst
+        | none => return false
+      else
+        match ← solve k ctx oT (fuel - 1) mode with
+        | some (p, _) => o.mvarId!.assign p
+        | none => return false
+    return true
+
+def structural (k : Nat) (ctx : Array Expr) (T : Expr) (fuel : Nat) (mode : Mode) :
+    ResM (Option Expr) := do
+  match k with
+  | 0 => return none
+  | k + 1 => do
+    match T with
+    | .forallE n d b bi =>
+        match mode with
+        | .pointwise .. => return none
+        | _ =>
+          withLocalDecl n bi d fun x => do
+            match ← solve k (ctx.push x) (b.instantiate1 x) fuel mode with
+            | some (p, _) => return some (← mkLambdaFVars #[x] p)
+            | none => return none
+    | _ =>
+      if T.isAppOfArity ``And 2 then
+        let A := T.appFn!.appArg!
+        let B := T.appArg!
+        -- the larger conjunct first, so that witnesses it fixes reach the side conditions
+        let swapped := A.approxDepth < B.approxDepth
+        let (first, second) := if swapped then (B, A) else (A, B)
+        let some (p1, _) ← solve k ctx first fuel mode | return none
+        let some (p2, _) ← solve k ctx (← instantiateMVars second) fuel mode | return none
+        let (pa, pb) := if swapped then (p2, p1) else (p1, p2)
+        return some (← mkAppM ``And.intro #[pa, pb])
+      if T.isAppOfArity ``Exists 2 then
+        let α := T.appFn!.appArg!
+        let pred := T.appArg!
+        let w ← freshIn ctx α
+        unless ← knownInhabited α do
+          modify fun st => { st with dataHoles := st.dataHoles.push w }
+        let some (p, _) ← solve k ctx (pred.beta #[w]) fuel mode | return none
+        return some (← mkAppOptM ``Exists.intro #[α, pred, w, p])
+      if ← unfoldable T then
+        if let some T' ← unfoldDefinition? T then
+          return (← solve k ctx T' (fuel - 1) mode).map (·.1)
+      return none
+
+/-- An unsupplied clause: a residual clause, a named input, or a clause of a filter body
+(supplied along the filter when some reading gives it for all large `X`). -/
+def leave (k : Nat) (ctx : Array Expr) (T : Expr) (fuel : Nat) (mode : Mode) :
+    ResM (Option (Expr × Nat)) := do
+  match k with
+  | 0 => leaveBase ctx T mode
+  | k + 1 => do
+    match mode with
+    | .residual => return some (← mkHole ctx T, 0)
+    | .eventual =>
+        if T.hasFVar || T.hasMVar then return none
+        return some (← mkHole ctx T, 0)
+    | .pointwise x f =>
+        let leafM ← mkFreshExprMVar T .syntheticOpaque
+        let c ← clauseCount T
+        if fuel > 0 then
+          if let some e ← supplyEventually k ctx.pop x f T (fuel - 1) then
+            modify fun st => { st with leaves := st.leaves.push { mvar := leafM, cost := c, eventual := some e } }
+            return some (leafM, 0)
+        modify fun st => { st with leaves := st.leaves.push { mvar := leafM, cost := c, eventual := none } }
+        return some (leafM, 0)
+
 /-- A proof of `∀ᶠ X in f, T X`: from a reading directly, or from an eventual reading
 `∀ᶠ X, R X` whose glue candidates unify with `T X`. -/
-partial def supplyEventually (outer : Array Expr) (x f T : Expr) (fuel : Nat) :
+def supplyEventually (k : Nat) (outer : Array Expr) (x f T : Expr) (fuel : Nat) :
     ResM (Option Expr) := do
-  let s ← snapshot
-  let E ← mkAppM ``Filter.Eventually #[← mkLambdaFVars #[x] T, f]
-  if let some (e, _) ← solve outer E fuel .eventual then return some e
-  s.restore
-  -- every eventual reading along `f`
-  let α ← inferType x
-  let pat ← mkAppM ``Filter.Eventually #[← mkFreshExprMVar (← mkArrow α (mkSort levelZero)), f]
-  for ref in ← candidates pat do
+  match k with
+  | 0 => return none
+  | k + 1 => do
+    let s ← snapshot
+    let E ← mkAppM ``Filter.Eventually #[← mkLambdaFVars #[x] T, f]
+    if let some (e, _) ← solve k outer E fuel .eventual then return some e
     s.restore
-    let c0 ← mkConstWithFreshMVarLevels ref.name
-    let some (proof, stmt, obls) ← replay outer c0 (← inferType c0) #[] ref.path.toList | continue
-    unless stmt.isAppOfArity ``Filter.Eventually 3 do continue
-    let R := (stmt.getArg! 1).beta #[x]
-    let glue := (← read).glue
-    let found ← withLocalDeclD `hR R fun hR => do
-      for (p, C) in ← glueCandidates glue hR R do
-        if ← defEq C T then
-          return some (← mkLambdaFVars #[x, hR] (← instantiateMVars p))
-      return none
-    let some g := found | continue
-    unless ← discharge outer obls fuel .eventual do continue
-    modify fun st => { st with used := st.used.push ref.name }
-    return some (← mkAppM ``Filter.Eventually.mono #[← instantiateMVars proof, g])
-  s.restore
-  return none
+    -- every eventual reading along `f`
+    let α ← inferType x
+    let pat ← mkAppM ``Filter.Eventually #[← mkFreshExprMVar (← mkArrow α (mkSort levelZero)), f]
+    for ref in ← candidates pat do
+      s.restore
+      let c0 ← mkConstWithFreshMVarLevels ref.name
+      let some (proof, stmt, obls) ← replay outer c0 (← inferType c0) #[] ref.path.toList | continue
+      unless stmt.isAppOfArity ``Filter.Eventually 3 do continue
+      let R := (stmt.getArg! 1).beta #[x]
+      let glue := (← read).glue
+      let found ← withLocalDeclD `hR R fun hR => do
+        for (p, C) in ← glueCandidates glue hR R do
+          if ← defEq C T then
+            return some (← mkLambdaFVars #[x, hR] (← instantiateMVars p))
+        return none
+      let some g := found | continue
+      unless ← discharge k outer obls fuel .eventual do continue
+      modify fun st => { st with used := st.used.push ref.name }
+      return some (← mkAppM ``Filter.Eventually.mono #[← instantiateMVars proof, g])
+    s.restore
+    return none
 
 /-- `∃ᶠ X in atTop, Q X` or `∀ᶠ X in atTop, Q X`: decompose `Q X`, supply what some reading
 gives for all large `X`, and keep the rest as one residual along the filter. -/
-partial def filterRule (ctx : Array Expr) (T : Expr) (fuel : Nat) : ResM (Option Expr) := do
-  let freq := T.isAppOfArity ``Filter.Frequently 3
-  let α := T.getArg! 0
-  let pred := T.getArg! 1
-  let f := T.getArg! 2
-  withLocalDeclD `X α fun x => do
-    let saved := (← get).leaves
-    modify fun s => { s with leaves := #[] }
-    let r ← solve (ctx.push x) (pred.beta #[x]) (fuel - 1) (.pointwise x f)
-    let leaves := (← get).leaves
-    modify fun s => { s with leaves := saved }
-    let some (q, _) := r | return none
-    let kept := leaves.filter (·.eventual.isNone)
-    let sup := leaves.filter (·.eventual.isSome)
-    let keptT ← kept.mapM fun l => do instantiateMVars (← inferType l.mvar)
-    let supT ← sup.mapM fun l => do instantiateMVars (← inferType l.mvar)
-    let K := conj keptT.toList
-    let S := conj supT.toList
-    let mut eS ← mkAppM ``Filter.eventually_true #[f]
-    if !sup.isEmpty then
-      eS := sup.back!.eventual.getD eS
-      for l in (sup.pop).reverse do
-        eS ← mkAppM ``Filter.Eventually.and #[l.eventual.getD eS, eS]
-    let glue ← withLocalDeclD `hKS (mkApp2 (mkConst ``And) K S) fun hKS => do
-      assignProjections kept.toList (← mkAppM ``And.left #[hKS])
-      assignProjections sup.toList (← mkAppM ``And.right #[hKS])
-      mkLambdaFVars #[x, hKS] (← instantiateMVars q)
-    let predK ← mkLambdaFVars #[x] K
-    if freq then
-      let comb ←
-        if kept.isEmpty then
-          mkAppM ``Filter.Eventually.frequently
-            #[← mkAppM ``Filter.Eventually.and #[← mkAppM ``Filter.eventually_true #[f], eS]]
-        else
-          let hole ← mkHole ctx (← mkAppM ``Filter.Frequently #[predK, f])
-          mkAppM ``Filter.Frequently.and_eventually #[hole, eS]
-      return some (← mkAppM ``Filter.Frequently.mono #[comb, glue])
-    else
-      let hK ←
-        if kept.isEmpty then mkAppM ``Filter.eventually_true #[f]
-        else mkHole ctx (← mkAppM ``Filter.Eventually #[predK, f])
-      return some (← mkAppM ``Filter.Eventually.mono #[← mkAppM ``Filter.Eventually.and #[hK, eS], glue])
+def filterRule (k : Nat) (ctx : Array Expr) (T : Expr) (fuel : Nat) : ResM (Option Expr) := do
+  match k with
+  | 0 => return none
+  | k + 1 => do
+    let freq := T.isAppOfArity ``Filter.Frequently 3
+    let α := T.getArg! 0
+    let pred := T.getArg! 1
+    let f := T.getArg! 2
+    withLocalDeclD `X α fun x => do
+      let saved := (← get).leaves
+      modify fun s => { s with leaves := #[] }
+      let r ← solve k (ctx.push x) (pred.beta #[x]) (fuel - 1) (.pointwise x f)
+      let leaves := (← get).leaves
+      modify fun s => { s with leaves := saved }
+      let some (q, _) := r | return none
+      let kept := leaves.filter (·.eventual.isNone)
+      let sup := leaves.filter (·.eventual.isSome)
+      let keptT ← kept.mapM fun l => do instantiateMVars (← inferType l.mvar)
+      let supT ← sup.mapM fun l => do instantiateMVars (← inferType l.mvar)
+      let K := conj keptT.toList
+      let S := conj supT.toList
+      let mut eS ← mkAppM ``Filter.eventually_true #[f]
+      if !sup.isEmpty then
+        eS := sup.back!.eventual.getD eS
+        for l in (sup.pop).reverse do
+          eS ← mkAppM ``Filter.Eventually.and #[l.eventual.getD eS, eS]
+      let glue ← withLocalDeclD `hKS (mkApp2 (mkConst ``And) K S) fun hKS => do
+        assignProjections kept.toList (← mkAppM ``And.left #[hKS])
+        assignProjections sup.toList (← mkAppM ``And.right #[hKS])
+        mkLambdaFVars #[x, hKS] (← instantiateMVars q)
+      let predK ← mkLambdaFVars #[x] K
+      if freq then
+        let comb ←
+          if kept.isEmpty then
+            mkAppM ``Filter.Eventually.frequently
+              #[← mkAppM ``Filter.Eventually.and #[← mkAppM ``Filter.eventually_true #[f], eS]]
+          else
+            let hole ← mkHole ctx (← mkAppM ``Filter.Frequently #[predK, f])
+            mkAppM ``Filter.Frequently.and_eventually #[hole, eS]
+        return some (← mkAppM ``Filter.Frequently.mono #[comb, glue])
+      else
+        let hK ←
+          if kept.isEmpty then mkAppM ``Filter.eventually_true #[f]
+          else mkHole ctx (← mkAppM ``Filter.Eventually #[predK, f])
+        return some (← mkAppM ``Filter.Eventually.mono #[← mkAppM ``Filter.Eventually.and #[hK, eS], glue])
 
 end
 
@@ -652,7 +689,7 @@ def searchResidual (demand : Expr) (index : DiscrTree Ref) (glue : Array Name) (
     glue, unfoldPrefixes := #[`ErdosProblems, `Erdos249257, `DemandLedger]
     rootLCtx := ← getLCtx, rootInsts := ← getLocalInstances
     index, exclude, callBudget, maxCandidates, budgetRef }
-  let (r, st) ← ((solve #[] demand fuel .residual).run cfg).run {}
+  let (r, st) ← ((solve 100000 #[] demand fuel .residual).run cfg).run {}
   let mut used : Array Name := #[]
   for n in st.used do
     unless used.contains n || adapters.contains n do used := used.push n
