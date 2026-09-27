@@ -499,7 +499,10 @@ def validate_systems_evidence_source(
         "human judgement boundary": (
             r"does not technically force a second independent mathematician"
         ),
-        "coverage boundary": r"coverage boundary, not a reliability score",
+        "coverage boundary": (
+            r"study locates a coverage boundary\. its nine rejections do not "
+            r"estimate how reliable the checker is"
+        ),
         "post-repair example": (
             r"post-repair witness accepts the current readme and rejects a "
             r"test copy containing the false clause"
@@ -1937,7 +1940,7 @@ def mutation_fixture_failures(reader: RepositoryReader) -> list[str]:
     source_path = systems["source_path"]
     original_source = reader.read_text(source_path)
     limited_sentence = (
-        "The evidence marks a coverage boundary, not a reliability score."
+        "Its nine rejections do not estimate how reliable the checker is."
     )
     inflated_sentence = (
         "This example establishes a general reliability score for future errors."
