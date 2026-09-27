@@ -208,6 +208,13 @@ def deriveConjuncts (name : Name) : MetaM (Except String (Array Name)) := do
     let claims := conclusionClaims body
     if claims.size < 2 then
       return Except.error "its conclusion is neither a conjunction nor an equivalence"
+    let mut hasPropHypothesis := false
+    for x in xs do
+      let decl ← x.fvarId!.getDecl
+      if decl.binderInfo != .instImplicit && (← isProp decl.type) then
+        hasPropHypothesis := true
+    unless hasPropHypothesis do
+      return Except.error "it has no proposition hypothesis to leave out"
     let proof ← instantiateMVars (value.beta xs)
     let mut out : Array (Nat × Expr × Expr × Array String) := #[]
     let mut uses : Array String := #[]
@@ -1140,9 +1147,13 @@ derive_idle ErdosProblems.Erdos1041.PaperCompleteR21.discSep_cubic_six_fifths
 derive_idle ErdosProblems.Erdos1041.PaperCompleteR21.discSep_uniform_radius
 derive_idle ErdosProblems.Erdos1041.PaperCompleteR21.subcritical_perimeter_path_paper
 derive_weakening ErdosProblems.Erdos1041.PaperCompleteR21.Arity.arity_not_capacity
+derive_weakening ErdosProblems.Erdos1041.PaperCompleteR21.SeparationParent.separation_parent
+derive_weakening ErdosProblems.Erdos1041.PaperCompleteR21.cfa_constant_factor_path
 derive_weakening ErdosProblems.Erdos1041.PaperCompleteR21.discSep_cubic_six_fifths
 derive_frontier ErdosProblems.Erdos1041.PaperCompleteR21.discSep_cubic_six_fifths
 derive_weakening ErdosProblems.Erdos1041.PaperCompleteR21.discSep_separation_short
 derive_weakening ErdosProblems.Erdos1041.PaperCompleteR21.discSep_uniform_radius
 derive_frontier ErdosProblems.Erdos1041.PaperCompleteR21.discSep_uniform_radius
 derive_weakening ErdosProblems.Erdos1041.PaperCompleteR21.scaledLowCriticalFiveHalves_of_lowCritical
+derive_frontier ErdosProblems.Erdos1041.PaperCompleteR21.scaledLowCriticalFiveHalves_of_lowCritical
+derive_weakening ErdosProblems.Erdos1041.PaperCompleteR21.scaledLowCritical_of_lowCritical
