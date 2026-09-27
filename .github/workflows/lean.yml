@@ -25,6 +25,7 @@ on:
           - all
           - external-verification-only
           - release-surfaces-only
+          - dependency-index-refresh
 
 concurrency:
   group: lean-ci-${{ github.event.pull_request.number || github.ref }}
@@ -108,11 +109,19 @@ jobs:
           echo "erdos1041_corpus_only=$corpus_only" >> "$GITHUB_OUTPUT"
           echo "Erdős 1041 corpus-only publication: $corpus_only"
 
+      # Every job depends on this gate. Reject stale committed evidence before
+      # restoring Lean caches or compiling; keep the full export below as an
+      # independent verification of a source-current packet.
+      - name: Check committed source evidence before expensive jobs
+        if: ${{ github.event_name != 'workflow_dispatch' || inputs.scope != 'dependency-index-refresh' }}
+        run: python3 scripts/refresh_projections.py --preflight
+
   build:
     # Diagnose the complete release surface before allocating a Lean runner.
     # A stale paper manifest must not start hours of work on a rejected tree.
     needs: [change_scope, release-surfaces]
-    if: ${{ github.event_name != 'workflow_dispatch' || inputs.scope == 'all' }}
+    # Recovery exports evidence for a broken branch; it is never a release pass.
+    if: ${{ !cancelled() && needs.change_scope.result == 'success' && (needs.release-surfaces.result == 'success' || (github.event_name == 'workflow_dispatch' && inputs.scope == 'dependency-index-refresh' && needs.release-surfaces.result == 'skipped')) && (github.event_name != 'workflow_dispatch' || inputs.scope == 'all' || inputs.scope == 'dependency-index-refresh') }}
     runs-on: ubuntu-24.04
     timeout-minutes: 210
     steps:
@@ -193,11 +202,11 @@ jobs:
         run: python3 scripts/test_lean_dependency_index_cache.py
       - name: Restore project Lean cache
         if: steps.lean-inputs.outputs.changed == 'true'
-        uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
+        uses: actions/cache/restore@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
         with:
-          # This top-level action saves after the later custom build has
-          # populated project OLeans. Keep the historical lean-action key
-          # shape so existing main-branch caches seed the optimized run.
+          # Restore only: the combined action has an implicit post-save that
+          # bypasses the explicit main-only save condition below. Keep the key
+          # shape so existing main-branch caches seed the bounded build.
           path: .lake
           key: lake-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles('lean-toolchain') }}-${{ hashFiles('lake-manifest.json') }}-${{ github.sha }}
           restore-keys: |
@@ -403,7 +412,7 @@ jobs:
       # warmed by lean-cache-warm.yml on every push and by manual dispatch
       # here; a PR restores it and rebuilds only the modules it changes.
       - name: Save project Lean cache after the build
-        if: always() && steps.lean-inputs.outputs.changed == 'true' && github.event_name != 'pull_request'
+        if: always() && steps.lean-inputs.outputs.changed == 'true' && github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
         uses: actions/cache/save@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
         with:
           path: .lake
@@ -1076,7 +1085,9 @@ jobs:
           python3 -O scripts/test_expert_handoffs.py
       - name: Test clean committed-snapshot release wrapper
         if: ${{ !cancelled() && needs.change_scope.outputs.erdos1041_corpus_only != 'true' }}
-        run: python3 scripts/test_check_release_ref.py
+        run: |
+          python3 scripts/test_check_release_ref.py
+          python3 scripts/test_check_push.py
       - name: Test scope source-identity boundary
         if: ${{ !cancelled() && needs.change_scope.outputs.erdos1041_corpus_only != 'true' }}
         run: python3 scripts/test_scope_source_identity.py

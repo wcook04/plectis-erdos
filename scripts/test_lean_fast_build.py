@@ -324,7 +324,7 @@ class LeanFastBuildTests(unittest.TestCase):
         self.assertLess(cache_step, toolchain_step)
         self.assertLess(toolchain_step, dependencies_step)
         self.assertLess(dependencies_step, bounded_build)
-        self.assertIn("uses: actions/cache@", workflow)
+        self.assertIn("uses: actions/cache/restore@", workflow)
         # The contract is that the cache action is pinned to a commit and
         # annotated with the version that commit is, so a reader can tell what
         # a forty-character hex string is without leaving the file. It is not
@@ -333,7 +333,7 @@ class LeanFastBuildTests(unittest.TestCase):
         # four jobs with the message "Lean CI lost cache/build contract" —
         # which was not true, and pointed at the workflow rather than at the
         # assertion. Every other token in this contract describes behaviour.
-        self.assertRegex(workflow, r"uses: actions/cache@[0-9a-f]{40} # v\d")
+        self.assertRegex(workflow, r"uses: actions/cache/restore@[0-9a-f]{40} # v\d")
         self.assertIn("path: .lake", workflow)
         # Sibling sweep: the same supply-chain policy applies to every action
         # this workflow uses, and only the cache line was ever checked.
@@ -364,6 +364,14 @@ class LeanFastBuildTests(unittest.TestCase):
         save_step = workflow[start : workflow.index("\n      - ", start + 1)]
         self.assertIn("uses: actions/cache/save@", save_step)
         self.assertIn("github.event_name != 'pull_request'", save_step)
+        self.assertIn("github.ref == 'refs/heads/main'", save_step)
+        # The combined cache action also saves in its post step. Guarding
+        # only the explicit save left PRs writing multi-gigabyte caches.
+        self.assertNotRegex(workflow, r"uses: actions/cache@")
+        restore = workflow.split("- name: Restore project Lean cache", 1)[1]
+        restore = restore.split("\n      - ", 1)[0]
+        self.assertIn("uses: actions/cache/restore@", restore)
+        self.assertEqual(workflow.count("uses: actions/cache/save@"), 1)
         warm = (fast.ROOT / ".github" / "workflows" / "lean-cache-warm.yml").read_text(
             encoding="utf-8"
         )

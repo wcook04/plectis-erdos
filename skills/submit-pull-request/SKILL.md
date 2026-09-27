@@ -74,6 +74,36 @@ branch without a separate explicit instruction naming the exact target.
 
 ## Validate the proposed branch
 
+Install the repository's push guard once per worktree:
+
+```sh
+python3 scripts/check_push.py --install
+```
+
+It runs the shared projection preflight in an isolated clone of each outgoing
+commit. An uncommitted repair cannot validate a stale commit, and pushing an
+older ref checks that ref rather than HEAD. Existing custom hooks are preserved;
+integrate the guard with them if installation reports a conflict.
+
+After the final source and projection edits, run
+`python3 scripts/refresh_projections.py --preflight` before preparing expensive
+validation or pushing. It checks the shipped evidence without compiling or
+installing anything. A valid local receipt does not establish that a fresh
+clone has current evidence. Follow the named builder on failure and commit its
+outputs and tracked receipt together. The full projection refresh also checks
+artifacts requiring a separate Lean export and reports that exact repair command;
+it must not silently declare them current or start an implicit Lean build.
+
+Preflight derives its complete projection inventory from the refresh registry,
+including reading editions embedded from experiment guides. After a Lean source
+change, build and export with `python3 scripts/build_lean_dependency_index.py`
+and commit both the index and tracked check receipt. If a local Lean environment
+is unavailable, an explicitly authorised CI dispatch with scope
+`dependency-index-refresh` builds the branch and exports its recovery artifact
+even while the ordinary release gate rejects stale evidence. Download and
+validate that artifact against the exact branch before committing it; the
+recovery run never substitutes for a passing normal PR run.
+
 Run the narrow tests required by every changed subsystem, followed by the
 public-boundary and contribution-entry checks when relevant. Record exact
 commands, results, omissions, and environmental deferrals. A green test is

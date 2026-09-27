@@ -142,6 +142,62 @@ WRITE_FLAGS: dict[str, tuple[str, ...]] = {
     "scripts/refresh_reasoning_source_coordinates.py": ("--write",),
 }
 
+# These checks inspect shipped evidence only: no Lean, installs, regeneration,
+# or local-receipt fallback. CI and cold release preparation share this owner.
+PREFLIGHT_CHECKS: dict[str, tuple[str, ...]] = {
+    **{builder: ("--check",) for builder in BUILDERS},
+    "scripts/check_release.py": ("--source-identity-only",),
+    "scripts/check_publication_contract.py": (),
+    "scripts/build_declaration_atlas.py": ("--check",),
+    "scripts/build_declaration_search_index.py": ("--check",),
+    "scripts/build_lean_dependency_index.py": ("--check", "--tracked-only"),
+    "scripts/build_semantic_corpus.py": ("--check", "--tracked-only"),
+}
+
+# Omitted from mutation, never omitted from verification. A full Lean export
+# is an explicit operation after source/projection changes have settled.
+CHECK_ONLY_BUILDERS: dict[str, str] = {
+    "scripts/check_release.py": "bind release.formal_source to the reviewed committed Lean tree",
+    "scripts/check_publication_contract.py": "follow the named manuscript/PDF repair before restamping",
+    "scripts/build_lean_dependency_index.py": (
+        "run python3 scripts/build_lean_dependency_index.py --check --full-check "
+        "--write-stale; commit the index and its tracked receipt, then recheck"
+    ),
+}
+
+
+def check_command(builder: str) -> list[str]:
+    return [sys.executable, str(ROOT / builder), *PREFLIGHT_CHECKS.get(builder, ("--check",))]
+
+
+def preflight() -> int:
+    """Reject stale shipped evidence before acquiring expensive resources."""
+    def inspect(builder: str) -> tuple[str, str | None]:
+        try:
+            result = run(check_command(builder), cwd=ROOT)
+            if result.returncode:
+                return builder, result.stderr.strip() or result.stdout.strip() or f"exit {result.returncode}"
+        except (OSError, subprocess.TimeoutExpired) as exc:
+            return builder, str(exc)
+        return builder, None
+
+    # Read-only checks share one snapshot and retain registry order in reports.
+    # Derive coverage from BUILDERS so new projections cannot escape preflight.
+    with ThreadPoolExecutor(max_workers=CHECK_WORKERS) as executor:
+        failures = [(builder, detail) for builder, detail in executor.map(inspect, PREFLIGHT_CHECKS)
+                    if detail is not None]
+    if failures:
+        print("projection preflight failed; no build or preparation was started:")
+        for builder, detail in failures:
+            print(f"  {builder}: {detail}")
+        print("run python3 scripts/refresh_projections.py for Python-owned projections")
+        for builder, _detail in failures:
+            if builder in CHECK_ONLY_BUILDERS:
+                print(f"  {builder}: {CHECK_ONLY_BUILDERS[builder]}")
+        return 1
+    print(f"projection preflight: all {len(PREFLIGHT_CHECKS)} projection and evidence checks passed")
+    return 0
+
 
 def tracked_diff() -> set[str]:
     result = run(["git", "diff", "--name-only"], cwd=ROOT)
@@ -158,7 +214,8 @@ def parse_args(argv: list[str] | None) -> argparse.Namespace:
         epilog=f"Builders, in the dependency order this script runs them:\n{dependency_order}",
         formatter_class=argparse.RawDescriptionHelpFormatter,
     )
-    parser.add_argument(
+    mode = parser.add_mutually_exclusive_group()
+    mode.add_argument(
         "--check",
         action="store_true",
         help=(
@@ -166,26 +223,30 @@ def parse_args(argv: list[str] | None) -> argparse.Namespace:
             "builder's own --check, without regenerating or writing anything"
         ),
     )
+    mode.add_argument(
+        "--preflight", action="store_true",
+        help="check portable source evidence without builds, regeneration or package installation",
+    )
     return parser.parse_args(argv)
 
 
 def check_only() -> int:
     """Run every builder's --check and report staleness without mutating the tree."""
-    for builder in BUILDERS:
+    builders = (*BUILDERS, *CHECK_ONLY_BUILDERS)
+    for builder in builders:
         script = ROOT / builder
         if not script.is_file():
             print(f"missing builder: {builder}")
             return 1
 
     def check_builder(builder: str) -> tuple[str, subprocess.CompletedProcess[str]]:
-        script = ROOT / builder
-        return builder, run([sys.executable, str(script), "--check"], cwd=ROOT)
+        return builder, run(check_command(builder), cwd=ROOT)
 
     # Check mode is read-only and every builder reads the same committed
     # generation. Preserve dependency order for mutation in refresh(), but do
     # not serialize independent freshness comparisons.
     with ThreadPoolExecutor(max_workers=min(CHECK_WORKERS, len(BUILDERS))) as executor:
-        results = list(executor.map(check_builder, BUILDERS))
+        results = list(executor.map(check_builder, builders))
     stale = []
     for builder, result in results:
         if result.returncode != 0:
@@ -195,7 +256,10 @@ def check_only() -> int:
         print("projections are stale:")
         for builder, message in stale:
             print(f"  {builder}: {message}")
-        print("run python3 scripts/refresh_projections.py to regenerate")
+        print("run python3 scripts/refresh_projections.py for Python-owned projections")
+        for builder, _message in stale:
+            if builder in CHECK_ONLY_BUILDERS:
+                print(f"  {builder}: {CHECK_ONLY_BUILDERS[builder]}")
         return 1
 
     print("refresh_projections --check: every projection is current")
@@ -222,7 +286,7 @@ def refresh() -> int:
 
     stale = []
     for builder in BUILDERS:
-        result = run([sys.executable, str(ROOT / builder), "--check"], cwd=ROOT)
+        result = run(check_command(builder), cwd=ROOT)
         if result.returncode != 0:
             stale.append((builder, result.stdout.strip() or result.stderr.strip()))
 
@@ -232,6 +296,15 @@ def refresh() -> int:
             print(f"  {builder}: {message}")
         print("this means a builder is not a pure function of the committed tree")
         return 1
+
+    # Builders above can invalidate evidence they do not produce. Never report
+    # overall success until those downstream consumers have also accepted it.
+    for builder, repair in CHECK_ONLY_BUILDERS.items():
+        result = run(check_command(builder), cwd=ROOT)
+        if result.returncode:
+            print(f"Python projections refreshed; {builder} still requires: {repair}")
+            print(result.stderr.strip() or result.stdout.strip())
+            return 1
 
     rewritten = sorted(tracked_diff() - before)
     if rewritten:
@@ -249,6 +322,8 @@ def refresh() -> int:
 
 def main(argv: list[str] | None = None) -> int:
     args = parse_args(argv)
+    if args.preflight:
+        return preflight()
     if args.check:
         return check_only()
     return refresh()

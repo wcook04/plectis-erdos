@@ -405,6 +405,33 @@ authored exposition, then generated projections.
 Choose one validation level. Do not run the full release gate and then rerun its
 component checks as a serial checklist.
 
+Before publication, run `python3 scripts/refresh_projections.py --preflight`.
+This build-free check covers every builder in the projection registry, the
+formal-source checkpoint, manuscript/PDF build provenance, and tracked atlas,
+dependency-index and semantic corpus
+receipts using evidence that will ship in the clone; local cache evidence
+cannot substitute for it. CI and the cold release wrapper run this same check
+before expensive jobs, package installation or Lean preparation. Source, atlas, or
+formal-source identity changes can invalidate that receipt even after a focused
+Lean build passes. After the final projection refresh, regenerate with
+`python3 scripts/build_lean_dependency_index.py --check --full-check --write-stale`
+and commit both `docs/lean_dependency_index.json` and
+`docs/lean_dependency_index_check.json`. A stale export writes them and exits 1;
+rerun the cheap check to confirm the result. A CI export may be reused only when
+its input fingerprint and output digest match the candidate exactly. The release
+gate and CI entry job enforce this check before expensive validation.
+The semantic corpus uses `python3 scripts/build_semantic_corpus.py` to regenerate
+its own outputs and tracked receipt. `refresh_projections.py` refreshes Python
+projections in order, then checks the Lean evidence it cannot regenerate; it
+returns failure with the separate export command if that evidence is stale.
+Its `--check` mode verifies both categories without starting Lean.
+
+Install `python3 scripts/check_push.py --install` once per worktree to apply
+that same preflight to the exact outgoing commits, independently of local
+uncommitted repairs. The contribution skill owns custom-hook integration and
+the explicit `dependency-index-refresh` CI recovery scope. Recovery produces
+an export for repair; normal PR release and Lean checks still have to pass.
+
 - During an edit, run only the owning builder or focused test named by the
   routed skill. For example, agent-entry work uses
   `python3 scripts/test_agent_entry.py`; semantic projection work uses its

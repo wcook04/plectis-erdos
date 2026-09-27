@@ -177,7 +177,7 @@ def projection_check_results() -> dict[str, subprocess.CompletedProcess[str]]:
 
     def check_builder(builder: str) -> tuple[str, subprocess.CompletedProcess[str]]:
         result = _SUBPROCESS_RUN(
-            [sys.executable, str(ROOT / builder), "--check"],
+            refresh_projections.check_command(builder),
             cwd=ROOT,
             capture_output=True,
             text=True,
@@ -373,11 +373,7 @@ def publication_stage_check_results() -> dict[str, subprocess.CompletedProcess[s
     global _PROJECTION_CHECK_RESULTS
     projection_prefix = "projection:"
     commands = {
-        f"{projection_prefix}{builder}": [
-            sys.executable,
-            str(ROOT / builder),
-            "--check",
-        ]
+        f"{projection_prefix}{builder}": refresh_projections.check_command(builder)
         for builder in refresh_projections.BUILDERS
     }
     commands.update(
@@ -1213,6 +1209,7 @@ APPROVED_ROOT_FILES = {
 }
 
 APPROVED_ROOT_DIRS = {
+    ".githooks": "opt-in Git push checks for exact committed release evidence",
     ".agents": "host-discovery entrypoints used by integrations",
     ".github": "CI and hosted repository metadata",
     "LICENSES": "SPDX licence texts",
@@ -1373,6 +1370,24 @@ def check_proof_trust() -> None:
 RELEASE_CHILD_MODULES = ("pypdf",)
 
 
+def formal_source_identity_errors(release: dict) -> list[str]:
+    """Use the same source identity check in preflight and full validation."""
+    formal_source = release.get("formal_source")
+    if not isinstance(formal_source, dict):
+        return ["release must name a formal_source checkpoint"]
+    formal_ref = formal_source.get("ref")
+    if not isinstance(formal_ref, str) or not re.fullmatch(r"[0-9a-f]{40}", formal_ref):
+        return ["release.formal_source.ref must be a full lowercase Git commit id"]
+    resolved = run(
+        ["git", "rev-parse", "--verify", f"{formal_ref}^{{commit}}"],
+        cwd=ROOT, capture_output=True, text=True, check=False,
+    )
+    if resolved.returncode:
+        return [f"release.formal_source.ref {formal_ref!r} does not resolve to a local commit"]
+    matches, detail = formal_source_matches_current_lean_tree(formal_ref)
+    return [] if matches else [detail or "current public Lean sources differ from formal-source checkpoint"]
+
+
 def missing_release_dependencies() -> list[str]:
     """Modules a release child imports that are absent from this interpreter."""
     from importlib.util import find_spec
@@ -1387,7 +1402,22 @@ def main(argv: list[str] | None = None) -> int:
         action="store_true",
         help=argparse.SUPPRESS,
     )
+    parser.add_argument(
+        "--source-identity-only", action="store_true",
+        help="verify the formal-source checkpoint without release packages, builds or query suites",
+    )
     args = parser.parse_args(argv)
+    if args.source_identity_only:
+        if args.singleflight_worker:
+            parser.error("--source-identity-only cannot run a release worker")
+        read.cache_clear()
+        data = json.loads(read(ROOT / "docs" / "claims.json"))
+        errors = formal_source_identity_errors(data.get("release", {}))
+        for error in errors:
+            print(f"formal-source identity: FAIL {error}")
+        if not errors:
+            print("formal-source identity: current Lean tree matches the committed checkpoint")
+        return int(bool(errors))
     missing = missing_release_dependencies()
     if missing:
         print(
@@ -1436,6 +1466,9 @@ def main(argv: list[str] | None = None) -> int:
     # letting the thousands of consumers below share one admitted read.
     read.cache_clear()
     cache: dict[tuple[str, str | None], list[str] | None] = {}
+
+    if refresh_projections.preflight():
+        return 1
 
     # Fail fast on the cheapest high-severity invariant.  In particular, do
     # not spend the corpus-query budget before rejecting untrusted proof code.
@@ -1489,31 +1522,9 @@ def main(argv: list[str] | None = None) -> int:
     # alive for another 20-30 seconds before reporting it.
     release = data["release"]
     formal_source = release.get("formal_source")
-    check(isinstance(formal_source, dict), "release must name a formal_source checkpoint")
     formal_ref = formal_source.get("ref") if isinstance(formal_source, dict) else None
-    check(isinstance(formal_ref, str) and re.fullmatch(r"[0-9a-f]{40}", formal_ref or "") is not None,
-          "release.formal_source.ref must be a full lowercase Git commit id")
-    if isinstance(formal_ref, str) and re.fullmatch(r"[0-9a-f]{40}", formal_ref):
-        formal_ref_resolves = run(
-            ["git", "rev-parse", "--verify", f"{formal_ref}^{{commit}}"],
-            cwd=ROOT,
-            capture_output=True,
-            text=True,
-            check=False,
-        )
-        check(
-            formal_ref_resolves.returncode == 0,
-            f"release.formal_source.ref {formal_ref!r} does not resolve to a local commit",
-        )
-        if formal_ref_resolves.returncode == 0:
-            formal_tree_matches, formal_tree_detail = formal_source_matches_current_lean_tree(
-                formal_ref
-            )
-            check(
-                formal_tree_matches,
-                formal_tree_detail
-                or "current public Lean sources differ from formal-source checkpoint",
-            )
+    identity_errors = formal_source_identity_errors(release)
+    check(not identity_errors, "; ".join(identity_errors))
     if ERRORS:
         print(
             "check_release: "
