@@ -68,7 +68,11 @@ export makes six passes.
    from the statement's own hypotheses where they match. A producer's type is
    opened without unfolding its conclusion, so a conclusion such as `¬ P`,
    `a ≠ b` or a named ∀-proposition is matched as written. What the producer
-   still needs is closed over the binders it uses and searched in turn. When
+   still needs is closed over the binders it uses, together with every
+   hypothesis of the statement about those binders, and searched in turn: under
+   `0 < ε`, a producer that needs `0 < min ε (1/2)` leaves
+   `∀ ε, 0 < ε → 0 < min ε (1/2)`, which the battery proves; closed over `ε`
+   alone it would read `∀ ε, 0 < min ε (1/2)`, which is false. When
    unification leaves one of the producer's data arguments undetermined, the
    match counts only if that argument's type is known to be inhabited; any
    other such match is recorded as existential and supplies nothing. A named
