@@ -1,9 +1,9 @@
 {
   "schema_version": "erdos249257-module-synopsis-index/1",
   "authority_posture": "generated_index_of_authored_Lean_module_headers_not_proof_or_claim_status_authority",
-  "source_fingerprint": "sha256:42d36378841df6863d55b6f11a048cfacb31b24d3227e28450609858e20fa331",
-  "module_count": 1875,
-  "synopsis_count": 1628,
+  "source_fingerprint": "sha256:21fa6d8e3869d287c3c277cfb612e32b94f946fe0441fecce99cdf3b06dd551f",
+  "module_count": 1877,
+  "synopsis_count": 1630,
   "query_contract": {
     "command": "python3 scripts/query_corpus.py --module <module_path_or_sigil>",
     "returns": "Resolves a module synopsis to its declarations, paper sigil, source identity, attached claims, and route-memory context."
@@ -3558,6 +3558,11 @@
       "synopsis": "Erdős #249: the pivot decorrelation from two of its clauses `DTWPivotResidualDecorrelation` (`FirstHarmonicPivot`, demand `G064` of the demand ledger) asks, for every `h`, for parameters at which the two depth conditions and the four clauses of `PivotBudgetAt` hold together, and it implies the irrationality of `∑ φ(n) / 2 ^ n`. The finite bridge `pivotBudgetAt_of_peripheral_estimates` reduces three of the clauses to a uniform fibre-mean bound, a count of bad bases and a count of non-supplier bases. At the minimal depth, with `s = 26` and `η = 1/1000`, two proofs that do not mention the decorrelation supply most of this. `prop_dickman` gives the two depth conditions and, for all large `X`, fewer than `8X/25` non-supplier bases, with no hypothesis. The argument graph's frontier of `prop_badcof` showed that its proof uses the prime number theorem only through a dyadic prime count, which Chebyshev's bound supplies: `excluded_budget_one_thousandth_of_chebyshev` gives fewer than `X/100` bad bases for all large `X`, with no hypothesis. The two theorems below state what remains: the fibre means and the centred correlation."
     },
     {
+      "id": "ErdosProblems.ArgumentGraph.Results.Erdos249Route",
+      "path": "lean/ErdosProblems/ArgumentGraph/Results/Erdos249Route.lean",
+      "synopsis": "Erdős #249: the first-harmonic route, given the prime number theorem `Results/Erdos249.lean` reduces `DTWPivotResidualDecorrelation`, at the minimal depth with `s = 26` and `η = 1/1000`, to two clauses: a uniform bound on the fibre means and the centred correlation. `fiberMean_le_of_primeNumberTheorem` proves the first from the prime number theorem. The second is the first-harmonic gap on the good bases. There the first harmonic factors as the residual times the pivot phase, so its sum over the good bases is the centred correlation plus the fibre-mean contribution (`goodBase_sum_eq_centered_add_mean`). With every fibre mean at most `1/100` the two conditions differ by at most `X/100` either way: the good-base gap at `11X/20` gives the centred clause (`centered_re_le_of_goodBase_gap`), and the centred clause gives the good-base gap at `57X/100` (`goodBase_gap_of_centered_re_le`). Hence, given the prime number theorem, the irrationality of `∑ φ(n)/2^n` follows once, for every `h ≥ 1`, there are arbitrarily large `X` at which the real part of the first harmonic summed over the good bases is at most `11X/20` (`irrational_totient_series_of_primeNumberTheorem_and_goodBase_gap`). The non-supplier and bad bases, about a third of `[X, 2X)`, are handled unconditionally by `prop_dickman` and Chebyshev's bound."
+    },
+    {
       "id": "ErdosProblems.ArgumentGraph.Results.Erdos251",
       "path": "lean/ErdosProblems/ArgumentGraph/Results/Erdos251.lean",
       "synopsis": "Erdős #251: the simultaneous countermodel, each input at its clause `short_joint_prime_gap_countermodel` (`res:jointcountermodel`) and `long_joint_prime_gap_countermodel` (`long251:res:jointcountermodel`) assume Schlage-Puchta's Lemma 4 and the prime number theorem and restrict the allowance exponent to `0 < ε ≤ 1`. Their proofs use Schlage-Puchta's Lemma 4 only to prove fixed-block nonconcentration, the prime number theorem only to prove `P n ∼ n log n`, and never use `ε ≤ 1`: the construction runs at the exponent `min ε (1/2)`. So the sequence exists unconditionally for every `ε > 0`, with all its other properties, and each input is needed only for its own clause. The two theorems below state this. Their proofs are `derive_factor`'s factorings of the two countermodels (`ErdosProblems.ArgumentGraph.Derived.Erdos251`), which follow the construction through `prime_polylogarithmic_interval` and derive its factoring on the way; the kernel checks each of them."
@@ -6016,6 +6021,11 @@
       "id": "ErdosProblems.Erdos249.PaperCompleteR21.FareyGapDenominatorExclusion",
       "path": "lean/ErdosProblems/Erdos249/PaperCompleteR21/FareyGapDenominatorExclusion.lean",
       "synopsis": "Paper-form restatement of `prop:C2sup` of the long #249 manuscript: unbounded Farey-gap denominator bounds imply irrationality. The hypothesis `sup_K (b+d)(K) = ∞` says exactly that the proved exclusion bounds on the `N = 1` window family are arbitrarily large; nothing here proves or attempts that unboundedness."
+    },
+    {
+      "id": "ErdosProblems.Erdos249.PaperCompleteR21.FiberMeanOfPrimeNumberTheorem",
+      "path": "lean/ErdosProblems/Erdos249/PaperCompleteR21/FiberMeanOfPrimeNumberTheorem.lean",
+      "synopsis": "Erdős #249: the fibre means from the prime number theorem `dtw_of_fiberMean_and_centered` (`ErdosProblems.ArgumentGraph.Results.Erdos249`) derives `DTWPivotResidualDecorrelation` from two clauses: a uniform bound on the fibre means and the centred correlation. This module proves the first clause, `hmean`, from the prime number theorem (`fiberMean_le_of_primeNumberTheorem`): at the minimal depth `L = minimalDepth h 26 X`, with `s = 26` and `η = 1/1000`, for every `h ≥ 1` and all large `X`, every good base `N` has `‖pivotFiberMean h X L 26 m_N‖ ≤ 1/100`, where `m_N = pivotCofactor N L 26`. Input. The prime number theorem enters as the hypothesis `ErdosProblems.Erdos251.PaperR11.PrimeSource.PrimeNumberTheorem`, that is `p_n / (n log n) → 1` for the zero-based `n`-th prime `p_n = Nat.nth Nat.Prime n`. Nothing else is assumed. Proof. Fix `h ≥ 1` and a good base with cofactor `m`, so `0 < m ≤ ⌊√X⌋/2` and `φ(m) ≥ m/1000`. Put `t = L - 25`, `A = ⌈(X + t)/m⌉` and `B = ⌈(2X + t)/m⌉`. 1. The fibre of `m` is the image of the primes `p` with `X + t ≤ mp < 2X + t` (`image_pivotSupplierPrimes_eq_pivotFiber`), so the fibre mean is the mean of `pivotPrimePhase h L 26 m p` over the primes of `[A, B)` (`pivotFiberMean_eq_sum_primes`, `pivotSupplierPrimes_eq_filter_Ico`). 2. That phase is `e(θ p - θ)` with `e(x) = exp(ix)` and `θ = π (2^h - 1) φ(m) / 2^(L - 26)` (`pivotPrimeAngle_eq_affine`). 3. For large `X` the minimal depth has `32X ≤ 2^L < 96X` (`minimalDepth_geometry`), so the phase turns through between `2000` and `π 2^(h+22)` radians over `[A, B)`. 4. Cut `[A, B)` into `K = 2^(h+35)` bl"
     },
     {
       "id": "ErdosProblems.Erdos249.PaperCompleteR21.FirstHarmonicBlockCriteria",

@@ -262,7 +262,13 @@ and the non-supplier count with no hypothesis, the Chebyshev budget supplies the
 bad-base count, and `ArgumentGraph/Results/Erdos249.lean` states the rest:
 the decorrelation, hence the irrationality, from the fibre means and the
 centred correlation alone. Without the Chebyshev budget the bad-base count
-stays an input, or needs the prime number theorem. The projection lists the chains per
+stays an input, or needs the prime number theorem. The fibre means then follow
+from the prime number theorem (`fiberMean_le_of_primeNumberTheorem`): a fibre is
+the primes of a shifted interval, and at the minimal depth the pivot phase turns
+a bounded number of times across it. On the good bases the first harmonic is the
+centred correlation plus the fibre-mean contribution, so given the fibre means the
+centred clause is the first-harmonic gap on the good bases, up to `X/100` either
+way (`ArgumentGraph/Results/Erdos249Route.lean`). The projection lists the chains per
 problem (paper-cited theorems first) under `interfaces`, and for every
 interface statement the paper results whose chains need it (`needed_by`).
 

@@ -15,12 +15,12 @@
 }
 \newcommand{\repobase}{https://github.com/wcook04/plectis-erdos}
 % BEGIN generated_semantic_coverage_macros
-\newcommand{\SemanticAuthoredTheoremLike}{152,033}
+\newcommand{\SemanticAuthoredTheoremLike}{152,066}
 \newcommand{\SemanticAuthoredInterpreted}{139,818}
 \newcommand{\SemanticDirectEvidence}{3,330}
 \newcommand{\SemanticContextual}{136,488}
-\newcommand{\SemanticStructuralOnly}{12,215}
-\newcommand{\SemanticAuthoredPercent}{92.0}
+\newcommand{\SemanticStructuralOnly}{12,248}
+\newcommand{\SemanticAuthoredPercent}{91.9}
 % END generated_semantic_coverage_macros
 % BEGIN generated_argument_graph_macros
 \newcommand{\AGTheorems}{17,442}
@@ -68,7 +68,7 @@
 \newcommand{\AFNamedInputUses}{129}
 \newcommand{\AFNamedInputsTraced}{55}
 % END generated_argument_frontier_macros
-\newcommand{\repolink}[2]{\href{\repobase/blob/2e271055bc1cb8d1bcc1e71fe41460eb47d02d26/#1}{\texttt{#2}}}
+\newcommand{\repolink}[2]{\href{\repobase/blob/948f3276061a743bc722937874e1603683737ffb/#1}{\texttt{#2}}}
 \emergencystretch=1.7em
 
 \runninghead{Problem-sized Lean worlds}
@@ -483,24 +483,26 @@ $\#\{p\ \text{prime}:a<p\le2a+1\}\cdot\log a\le(1+\varepsilon)\,a$, for each
 $\varepsilon>0$ and all large $a$, which uses it only through
 $(1-\delta)\,n\log n\le p_n\le(1+\delta)\,n\log n$ for the $n$th prime $p_n$,
 each $\delta>0$ and all large $n$. The kernel accepted every weakened theorem
-along the chain and every implication from the prime number theorem to what
-replaced it, so the question becomes which constant $K$ in place of $1$ the
-rest of the argument can afford. The pass does not turn a constant into a parameter; that step was
-taken here by hand. The rest of the argument is linear in $K$ and bounds the count by $(KD+o(1))X$.
+on the chain and each implication from the prime number theorem, so the question
+is which constant $K$ in place of $1$ the argument affords (the pass keeps
+constants fixed; that step was by hand). The argument is linear in $K$ and bounds the count by $(KD+o(1))X$.
 Chebyshev's bound, that the primes in $(a+1,2a+1]$ divide
 $\binom{2a+1}{a}\le4^a$, gives $K=\log4$; at the record's explicit choice
 $\eta=1/1000$ an elementary estimate gives $D\le3/1000$, and since
 $3\log4/1000<1/100$ the count stays below $X/100$ for all large $X$ with no
 input at all. Lean checks that theorem
-(\href{\repobase/blob/57941a741fceaae33ab7e2513a9cd11fee060081/lean/ErdosProblems/Erdos249/PaperCompleteR21/ExcludedCofactorEstimate.lean}{\texttt{ExcludedCofactorEstimate.lean}})
+(\repolink{lean/ErdosProblems/Erdos249/PaperCompleteR21/ExcludedCofactorEstimate.lean}{\texttt{ExcludedCofactorEstimate.lean}})
 and the family it belongs to: the same argument holds for every $\eta>0$ with
-$3\eta\log4<1/100$, that is for $\eta<1/(300\log4)$
+$3\eta\log4<1/100$
 (\repolink{lean/ErdosProblems/Erdos249/PaperCompleteR21/ExcludedCofactorEstimate.lean}{\texttt{excluded\_budget\_of\_chebyshev}}).
 The count also serves a route that never calls it: with the
 unconditional \texttt{prop\_dickman} it discharges the depth, bad-base and
 non-supplier conditions of Problem~249's first-harmonic route, leaving its
 fibre-mean and centred estimates
 (\repolink{lean/ErdosProblems/ArgumentGraph/Results/Erdos249.lean}{Results/Erdos249.lean}).
+The prime number theorem gives the fibre means; on the good bases the
+centred estimate is the first-harmonic gap, up to $X/100$
+(\repolink{lean/ErdosProblems/ArgumentGraph/Results/Erdos249Route.lean}{Results/Erdos249Route.lean}).
 
 \paragraph{The findings as library theorems.} A Lean module
 (\href{\repobase/blob/7391668980147292656da6d0bc66a927aa84824b/lean/ErdosProblems/ArgumentGraph/Derive.lean}{\texttt{Derive.lean}})
@@ -1221,13 +1223,12 @@ tactics and library search, and the graph refutes a statement only through
 kernel-checked theorems.
 
 \paragraph{Libraries grown from proofs.} Kaliszyk and Urban rank intermediate
-statements of HOL~Light proofs by reuse, packaged proof and size, and test the
-ranking with an automated prover, controlling what each theorem's own proof
-leaks~\cite{lemmamining}. Hipster keeps a lemma only when a
+statements of HOL~Light proofs by reuse and test the ranking with a prover,
+controlling what each theorem's own proof leaks~\cite{lemmamining}. Hipster keeps a lemma only when a
 routine tactic fails on it~\cite{hipster}; DreamCoder keeps a routine only when
 rewriting solved programs through it shrinks the whole~\cite{dreamcoder}.
-LEGO-Prover grows a library of verified lemmas retrieved by requested
-subgoals~\cite{legoprover}, and at matched compute its proofs reuse none
+LEGO-Prover retrieves verified lemmas by requested
+subgoals~\cite{legoprover}; at matched compute its proofs reuse none
 verbatim~\cite{berlotattwell}. Proof-Refactor lifts
 proof blocks into helpers that a language model judges~\cite{proofrefactor},
 LeanConjecturer screens conjectures with \texttt{exact?} and
