@@ -426,6 +426,12 @@ projections in order, then checks the Lean evidence it cannot regenerate; it
 returns failure with the separate export command if that evidence is stale.
 Its `--check` mode verifies both categories without starting Lean.
 
+The same preflight runs the cold infrastructure suites through
+`scripts/check_ci_contracts.py`, including build planning, tracked evidence,
+cache policy and workflow scheduling. New tests in the expensive CI jobs must
+join this registry or admission fails. Test failures and timeouts stay blocking;
+all results are reported together before any Lean preparation.
+
 Install `python3 scripts/check_push.py --install` once per worktree to apply
 that same preflight to the exact outgoing commits, independently of local
 uncommitted repairs. The contribution skill owns custom-hook integration and
