@@ -1,7 +1,7 @@
 {
  "schema": "plectis-argument-frontier-plan/1",
  "inputs": {
-  "paper_coverage_sha256": "48cfa6b511287aefc7036201d156d8e40615f3c392465d16973efdfa80f37c94",
+  "paper_coverage_sha256": "ea1e9d43d6dd615678c5abf9aba0838aca659dbb8cb8b9c23b9880db5999864c",
   "builder_sha256": "4fd0eac694f54d4c37dcf076f14482837739f2e1fc513d83047fe249aa3f4c41"
  },
  "source": {
@@ -1029,7 +1029,7 @@
        "paper": "erdos257-mersenne-reasoning-surface",
        "side": "long",
        "lean_status": "exact_or_stronger",
-       "source": "paper/reasoning-parts/erdos257/a257_front.tex:7549"
+       "source": "paper/reasoning-parts/erdos257/a257_front.tex:7559"
       }
      ],
      "source": null
@@ -1051,7 +1051,7 @@
        "paper": "erdos257-mersenne-reasoning-surface",
        "side": "long",
        "lean_status": "exact_or_stronger",
-       "source": "paper/reasoning-parts/erdos257/a257_front.tex:7549"
+       "source": "paper/reasoning-parts/erdos257/a257_front.tex:7559"
       }
      ],
      "source": null
@@ -1073,7 +1073,7 @@
        "paper": "erdos257-mersenne-reasoning-surface",
        "side": "long",
        "lean_status": "exact_or_stronger",
-       "source": "paper/reasoning-parts/erdos257/a257_front.tex:7549"
+       "source": "paper/reasoning-parts/erdos257/a257_front.tex:7559"
       }
      ],
      "source": null
@@ -1095,7 +1095,7 @@
        "paper": "erdos257-mersenne-reasoning-surface",
        "side": "long",
        "lean_status": "exact",
-       "source": "paper/reasoning-parts/erdos257/a257_front.tex:8809"
+       "source": "paper/reasoning-parts/erdos257/a257_front.tex:8819"
       }
      ],
      "source": null
@@ -1118,7 +1118,7 @@
        "paper": "erdos257-mersenne-reasoning-surface",
        "side": "long",
        "lean_status": "exact_or_stronger",
-       "source": "paper/reasoning-parts/erdos257/a257_front.tex:9007"
+       "source": "paper/reasoning-parts/erdos257/a257_front.tex:9017"
       }
      ],
      "source": null
@@ -1140,7 +1140,7 @@
        "paper": "erdos257-mersenne-reasoning-surface",
        "side": "long",
        "lean_status": "exact_or_stronger",
-       "source": "paper/reasoning-parts/erdos257/a257_front.tex:4120"
+       "source": "paper/reasoning-parts/erdos257/a257_front.tex:4130"
       }
      ],
      "source": null
@@ -1164,7 +1164,7 @@
        "paper": "erdos257-mersenne-reasoning-surface",
        "side": "long",
        "lean_status": "exact",
-       "source": "paper/reasoning-parts/erdos257/a257_front.tex:2850"
+       "source": "paper/reasoning-parts/erdos257/a257_front.tex:2860"
       }
      ],
      "source": null
@@ -1186,7 +1186,7 @@
        "paper": "erdos257-mersenne-reasoning-surface",
        "side": "long",
        "lean_status": "exact",
-       "source": "paper/reasoning-parts/erdos257/a257_front.tex:5547"
+       "source": "paper/reasoning-parts/erdos257/a257_front.tex:5557"
       }
      ],
      "source": null
@@ -1209,7 +1209,7 @@
        "paper": "erdos257-mersenne-reasoning-surface",
        "side": "long",
        "lean_status": "exact",
-       "source": "paper/reasoning-parts/erdos257/a257_front.tex:5109"
+       "source": "paper/reasoning-parts/erdos257/a257_front.tex:5119"
       }
      ],
      "source": null
@@ -1231,7 +1231,7 @@
        "paper": "erdos257-mersenne-reasoning-surface",
        "side": "long",
        "lean_status": "exact",
-       "source": "paper/reasoning-parts/erdos257/a257_front.tex:4526"
+       "source": "paper/reasoning-parts/erdos257/a257_front.tex:4536"
       }
      ],
      "source": null
