@@ -74242,8 +74242,8 @@
         "citation_usages": [
           {
             "command": "cite",
-            "line_end": 7906,
-            "line_start": 7906,
+            "line_end": 7911,
+            "line_start": 7911,
             "path": "paper/249/erdos249-totient-reasoning-surface.tex",
             "qualifiers": [
               "Definition~2.1"
@@ -74269,13 +74269,13 @@
         ],
         "key": "allouche-shallit",
         "kind": "bibliography_entry",
-        "line_end": 8845,
-        "line_start": 8840,
+        "line_end": 8850,
+        "line_start": 8845,
         "paper_id": "erdos249-totient-reasoning-surface",
         "path": "paper/249/erdos249-totient-reasoning-surface.tex",
         "source_id": "source-5752bb5009e4de",
         "source_role": "generated_manuscript",
-        "source_sha256": "sha256:a6c609c1f6ae72f3f1d287164b1d0d7ebfc02b9dce643fb383373edfafabcd53"
+        "source_sha256": "sha256:b0d75ab24f3a7ee51313d263d9d57f65a53f59c198b0fbf4b3f391742ac39dea"
       },
       {
         "citation_text": "\\bibitem{coons} M.~Coons, \\emph{(Non)Automaticity of number theoretic functions}, J.\\ Th\\'eor.\\ Nombres Bordeaux \\textbf{22} (2010), no.~2, 339--352, doi:\\href{https://doi.org/10.5802/jtnb.718}{10.5802/jtnb.718}. Theorem~3.2, p.~348.",
@@ -74300,8 +74300,8 @@
           },
           {
             "command": "cite",
-            "line_end": 7911,
-            "line_start": 7911,
+            "line_end": 7916,
+            "line_start": 7916,
             "path": "paper/249/erdos249-totient-reasoning-surface.tex",
             "qualifiers": [
               "Theorem~3.2"
@@ -74345,13 +74345,13 @@
         ],
         "key": "coons",
         "kind": "bibliography_entry",
-        "line_end": 8850,
-        "line_start": 8845,
+        "line_end": 8855,
+        "line_start": 8850,
         "paper_id": "erdos249-totient-reasoning-surface",
         "path": "paper/249/erdos249-totient-reasoning-surface.tex",
         "source_id": "source-741da55b02c5a9",
         "source_role": "generated_manuscript",
-        "source_sha256": "sha256:a6c609c1f6ae72f3f1d287164b1d0d7ebfc02b9dce643fb383373edfafabcd53"
+        "source_sha256": "sha256:b0d75ab24f3a7ee51313d263d9d57f65a53f59c198b0fbf4b3f391742ac39dea"
       },
       {
         "citation_text": "\\bibitem{coons-jsr} M.~Coons, \\emph{Regular sequences and the joint spectral radius}, Internat.\\ J.\\ Found.\\ Comput.\\ Sci.\\ \\textbf{28} (2017), no.~2, 135--140, doi:\\href{https://doi.org/10.1142/S0129054117500095}{10.1142/S0129054117500095}; arXiv:\\href{https://arxiv.org/abs/1511.07535v1}{1511.07535v1}. Theorem~1, Proposition~4 and Corollary~7 are cited with the arXiv v1 numbering.",
@@ -74385,13 +74385,13 @@
         ],
         "key": "coons-jsr",
         "kind": "bibliography_entry",
-        "line_end": 8856,
-        "line_start": 8850,
+        "line_end": 8861,
+        "line_start": 8855,
         "paper_id": "erdos249-totient-reasoning-surface",
         "path": "paper/249/erdos249-totient-reasoning-surface.tex",
         "source_id": "source-296ff41148fff7",
         "source_role": "generated_manuscript",
-        "source_sha256": "sha256:a6c609c1f6ae72f3f1d287164b1d0d7ebfc02b9dce643fb383373edfafabcd53"
+        "source_sha256": "sha256:b0d75ab24f3a7ee51313d263d9d57f65a53f59c198b0fbf4b3f391742ac39dea"
       },
       {
         "citation_text": "\\bibitem{martin-phi-inequalities} G.~Martin, \\emph{Simultaneous inequalities among values of the Euler phi-function}, arXiv:\\href{https://arxiv.org/abs/math/0603053v1}{math/0603053v1}, 2006. Theorem~1, pp.~1--2.",
@@ -74461,21 +74461,21 @@
         ],
         "key": "martin-phi-inequalities",
         "kind": "bibliography_entry",
-        "line_end": 8860,
-        "line_start": 8856,
+        "line_end": 8865,
+        "line_start": 8861,
         "paper_id": "erdos249-totient-reasoning-surface",
         "path": "paper/249/erdos249-totient-reasoning-surface.tex",
         "source_id": "source-11b46a0435368f",
         "source_role": "generated_manuscript",
-        "source_sha256": "sha256:a6c609c1f6ae72f3f1d287164b1d0d7ebfc02b9dce643fb383373edfafabcd53"
+        "source_sha256": "sha256:b0d75ab24f3a7ee51313d263d9d57f65a53f59c198b0fbf4b3f391742ac39dea"
       },
       {
         "citation_text": "\\bibitem{wong2015} E.~Wong, \\href{https://math.stackexchange.com/a/1211557}{answer 1211557} to \\emph{An infinite sum based on the mod-parity of Euler's totient function}, Mathematics Stack Exchange, 29 March 2015, accessed 15 September 2026.",
         "citation_usages": [
           {
             "command": "cite",
-            "line_end": 8776,
-            "line_start": 8776,
+            "line_end": 8781,
+            "line_start": 8781,
             "path": "paper/249/erdos249-totient-reasoning-surface.tex",
             "qualifiers": []
           },
@@ -74497,13 +74497,13 @@
         ],
         "key": "wong2015",
         "kind": "bibliography_entry",
-        "line_end": 8864,
-        "line_start": 8860,
+        "line_end": 8869,
+        "line_start": 8865,
         "paper_id": "erdos249-totient-reasoning-surface",
         "path": "paper/249/erdos249-totient-reasoning-surface.tex",
         "source_id": "source-0f61ad0796acdf",
         "source_role": "generated_manuscript",
-        "source_sha256": "sha256:a6c609c1f6ae72f3f1d287164b1d0d7ebfc02b9dce643fb383373edfafabcd53"
+        "source_sha256": "sha256:b0d75ab24f3a7ee51313d263d9d57f65a53f59c198b0fbf4b3f391742ac39dea"
       },
       {
         "citation_text": "\\bibitem{eldar2026oeis} A.~Eldar, comment and formula added to OEIS A256936 (revisions 28 and 31), 15 March 2026, \\url{https://oeis.org/history?seq=A256936}, accessed 16 September 2026.",
@@ -74533,13 +74533,13 @@
         ],
         "key": "eldar2026oeis",
         "kind": "bibliography_entry",
-        "line_end": 8868,
-        "line_start": 8864,
+        "line_end": 8873,
+        "line_start": 8869,
         "paper_id": "erdos249-totient-reasoning-surface",
         "path": "paper/249/erdos249-totient-reasoning-surface.tex",
         "source_id": "source-71037224a1dd7c",
         "source_role": "generated_manuscript",
-        "source_sha256": "sha256:a6c609c1f6ae72f3f1d287164b1d0d7ebfc02b9dce643fb383373edfafabcd53"
+        "source_sha256": "sha256:b0d75ab24f3a7ee51313d263d9d57f65a53f59c198b0fbf4b3f391742ac39dea"
       },
       {
         "citation_text": "\\bibitem{fan2026totient} S.~Fan, comment on Erd\\H{o}s Problem \\#249, 16 May 2026, 19:01, \\href{https://www.erdosproblems.com/forum/thread/249}{Erd\\H{o}s Problems discussion thread}, accessed 16 September 2026.",
@@ -74569,13 +74569,13 @@
         ],
         "key": "fan2026totient",
         "kind": "bibliography_entry",
-        "line_end": 8872,
-        "line_start": 8868,
+        "line_end": 8877,
+        "line_start": 8873,
         "paper_id": "erdos249-totient-reasoning-surface",
         "path": "paper/249/erdos249-totient-reasoning-surface.tex",
         "source_id": "source-99c2f3cb190b95",
         "source_role": "generated_manuscript",
-        "source_sha256": "sha256:a6c609c1f6ae72f3f1d287164b1d0d7ebfc02b9dce643fb383373edfafabcd53"
+        "source_sha256": "sha256:b0d75ab24f3a7ee51313d263d9d57f65a53f59c198b0fbf4b3f391742ac39dea"
       },
       {
         "citation_text": "\\bibitem{erdosgraham1980} P.~Erd\\H{o}s and R.~L.~Graham, \\emph{Old and New Problems and Results in Combinatorial Number Theory}, Monographies de L'Enseignement Math\\'ematique \\textbf{28}, 1980, p.~61.",
@@ -74609,13 +74609,13 @@
         ],
         "key": "erdosgraham1980",
         "kind": "bibliography_entry",
-        "line_end": 8876,
-        "line_start": 8872,
+        "line_end": 8881,
+        "line_start": 8877,
         "paper_id": "erdos249-totient-reasoning-surface",
         "path": "paper/249/erdos249-totient-reasoning-surface.tex",
         "source_id": "source-10545f868b3e88",
         "source_role": "generated_manuscript",
-        "source_sha256": "sha256:a6c609c1f6ae72f3f1d287164b1d0d7ebfc02b9dce643fb383373edfafabcd53"
+        "source_sha256": "sha256:b0d75ab24f3a7ee51313d263d9d57f65a53f59c198b0fbf4b3f391742ac39dea"
       },
       {
         "citation_text": "\\bibitem{erdos1948lambert} P.~Erd\\H{o}s, \\emph{On arithmetical properties of Lambert series}, J.\\ Indian Math.\\ Soc.\\ (N.S.) \\textbf{12} (1948), 63--66, \\url{https://users.renyi.hu/~p_erdos/1948-04.pdf}.",
@@ -74727,13 +74727,13 @@
         ],
         "key": "erdos1948lambert",
         "kind": "bibliography_entry",
-        "line_end": 8880,
-        "line_start": 8876,
+        "line_end": 8885,
+        "line_start": 8881,
         "paper_id": "erdos249-totient-reasoning-surface",
         "path": "paper/249/erdos249-totient-reasoning-surface.tex",
         "source_id": "source-5c72388a6ca10f",
         "source_role": "generated_manuscript",
-        "source_sha256": "sha256:a6c609c1f6ae72f3f1d287164b1d0d7ebfc02b9dce643fb383373edfafabcd53"
+        "source_sha256": "sha256:b0d75ab24f3a7ee51313d263d9d57f65a53f59c198b0fbf4b3f391742ac39dea"
       },
       {
         "citation_text": "\\bibitem{postelmans-vanassche} K.~Postelmans and W.~Van Assche, \\emph{Irrationality of $\\zeta_q(1)$ and $\\zeta_q(2)$}, J.\\ Number Theory \\textbf{126} (2007), no.~1, 119--154, doi:\\href{https://doi.org/10.1016/j.jnt.2006.11.011}{10.1016/j.jnt.2006.11.011}; arXiv:\\href{https://arxiv.org/abs/math/0604312v1}{math/0604312v1}. Theorem~1.3 is cited with the arXiv v1 pagination, p.~3.",
@@ -74767,13 +74767,13 @@
         ],
         "key": "postelmans-vanassche",
         "kind": "bibliography_entry",
-        "line_end": 8886,
-        "line_start": 8880,
+        "line_end": 8891,
+        "line_start": 8885,
         "paper_id": "erdos249-totient-reasoning-surface",
         "path": "paper/249/erdos249-totient-reasoning-surface.tex",
         "source_id": "source-6c2fbacaba626f",
         "source_role": "generated_manuscript",
-        "source_sha256": "sha256:a6c609c1f6ae72f3f1d287164b1d0d7ebfc02b9dce643fb383373edfafabcd53"
+        "source_sha256": "sha256:b0d75ab24f3a7ee51313d263d9d57f65a53f59c198b0fbf4b3f391742ac39dea"
       },
       {
         "citation_text": "\\bibitem{nesterenko1996} Yu.~V.~Nesterenko, \\emph{Modular functions and transcendence questions}, Sb.\\ Math.\\ \\textbf{187} (1996), no.~9, 1319--1348, doi:\\href{https://doi.org/10.1070/SM1996v187n09ABEH000158}{10.1070/SM1996v187n09ABEH000158}. Corollary~2, p.~1320.",
@@ -74825,13 +74825,13 @@
         ],
         "key": "nesterenko1996",
         "kind": "bibliography_entry",
-        "line_end": 8891,
-        "line_start": 8886,
+        "line_end": 8896,
+        "line_start": 8891,
         "paper_id": "erdos249-totient-reasoning-surface",
         "path": "paper/249/erdos249-totient-reasoning-surface.tex",
         "source_id": "source-6346eeeac5036d",
         "source_role": "generated_manuscript",
-        "source_sha256": "sha256:a6c609c1f6ae72f3f1d287164b1d0d7ebfc02b9dce643fb383373edfafabcd53"
+        "source_sha256": "sha256:b0d75ab24f3a7ee51313d263d9d57f65a53f59c198b0fbf4b3f391742ac39dea"
       },
       {
         "citation_text": "\\bibitem{schramm-gcd} W.~Schramm, \\emph{The Fourier transform of functions of the greatest common divisor}, Integers \\textbf{8} (2008), \\#A50, \\url{https://math.colgate.edu/~integers/i50/i50.pdf}. Theorem and equation~(2), p.~2.",
@@ -74865,13 +74865,13 @@
         ],
         "key": "schramm-gcd",
         "kind": "bibliography_entry",
-        "line_end": 8896,
-        "line_start": 8891,
+        "line_end": 8901,
+        "line_start": 8896,
         "paper_id": "erdos249-totient-reasoning-surface",
         "path": "paper/249/erdos249-totient-reasoning-surface.tex",
         "source_id": "source-c786f202d47318",
         "source_role": "generated_manuscript",
-        "source_sha256": "sha256:a6c609c1f6ae72f3f1d287164b1d0d7ebfc02b9dce643fb383373edfafabcd53"
+        "source_sha256": "sha256:b0d75ab24f3a7ee51313d263d9d57f65a53f59c198b0fbf4b3f391742ac39dea"
       },
       {
         "citation_text": "\\bibitem{toth-gcd} L.~T\\'oth, \\emph{A survey of gcd-sum functions}, J.\\ Integer Seq.\\ \\textbf{13} (2010), Article~10.8.1, \\url{https://cs.uwaterloo.ca/journals/JIS/VOL13/Toth/toth10.pdf}. \\S1, equations (1)--(2).",
@@ -74905,13 +74905,13 @@
         ],
         "key": "toth-gcd",
         "kind": "bibliography_entry",
-        "line_end": 8901,
-        "line_start": 8896,
+        "line_end": 8906,
+        "line_start": 8901,
         "paper_id": "erdos249-totient-reasoning-surface",
         "path": "paper/249/erdos249-totient-reasoning-surface.tex",
         "source_id": "source-22ce74d28ddb49",
         "source_role": "generated_manuscript",
-        "source_sha256": "sha256:a6c609c1f6ae72f3f1d287164b1d0d7ebfc02b9dce643fb383373edfafabcd53"
+        "source_sha256": "sha256:b0d75ab24f3a7ee51313d263d9d57f65a53f59c198b0fbf4b3f391742ac39dea"
       },
       {
         "citation_text": "\\bibitem{merca-schmidt} M.~Merca and M.~D.~Schmidt, \\emph{Generating special arithmetic functions by Lambert series factorizations}, Contrib.\\ Discrete Math.\\ \\textbf{14} (2019), no.~1, 31--45, doi:\\href{https://doi.org/10.55016/ojs/cdm.v14i1.62425}{10.55016/ojs/cdm.v14i1.62425}; arXiv:\\href{https://arxiv.org/abs/1706.00393v2}{1706.00393v2}. Equation~(1) is cited with the arXiv v2 pagination, p.~2.",
@@ -74927,8 +74927,8 @@
           },
           {
             "command": "cite",
-            "line_end": 8783,
-            "line_start": 8783,
+            "line_end": 8788,
+            "line_start": 8788,
             "path": "paper/249/erdos249-totient-reasoning-surface.tex",
             "qualifiers": []
           },
@@ -74959,21 +74959,21 @@
         ],
         "key": "merca-schmidt",
         "kind": "bibliography_entry",
-        "line_end": 8908,
-        "line_start": 8901,
+        "line_end": 8913,
+        "line_start": 8906,
         "paper_id": "erdos249-totient-reasoning-surface",
         "path": "paper/249/erdos249-totient-reasoning-surface.tex",
         "source_id": "source-619de19af78c4c",
         "source_role": "generated_manuscript",
-        "source_sha256": "sha256:a6c609c1f6ae72f3f1d287164b1d0d7ebfc02b9dce643fb383373edfafabcd53"
+        "source_sha256": "sha256:b0d75ab24f3a7ee51313d263d9d57f65a53f59c198b0fbf4b3f391742ac39dea"
       },
       {
         "citation_text": "\\bibitem{merca2017} M.~Merca, \\emph{The Lambert series factorization theorem}, Ramanujan J.\\ \\textbf{44} (2017), 417--435, doi:\\href{https://doi.org/10.1007/s11139-016-9856-3}{10.1007/s11139-016-9856-3}. Theorem~1.2, p.~420.",
         "citation_usages": [
           {
             "command": "cite",
-            "line_end": 8782,
-            "line_start": 8782,
+            "line_end": 8787,
+            "line_start": 8787,
             "path": "paper/249/erdos249-totient-reasoning-surface.tex",
             "qualifiers": [
               "Theorem~1.2"
@@ -74999,21 +74999,21 @@
         ],
         "key": "merca2017",
         "kind": "bibliography_entry",
-        "line_end": 8913,
-        "line_start": 8908,
+        "line_end": 8918,
+        "line_start": 8913,
         "paper_id": "erdos249-totient-reasoning-surface",
         "path": "paper/249/erdos249-totient-reasoning-surface.tex",
         "source_id": "source-8935df46fb4693",
         "source_role": "generated_manuscript",
-        "source_sha256": "sha256:a6c609c1f6ae72f3f1d287164b1d0d7ebfc02b9dce643fb383373edfafabcd53"
+        "source_sha256": "sha256:b0d75ab24f3a7ee51313d263d9d57f65a53f59c198b0fbf4b3f391742ac39dea"
       },
       {
         "citation_text": "\\bibitem{kovac-tao} V.~Kova\\v{c} and T.~Tao, \\emph{On several irrationality problems for Ahmes series}, Acta Math.\\ Hungar.\\ \\textbf{175} (2025), no.~2, 572--608, doi:\\href{https://doi.org/10.1007/s10474-025-01528-0}{10.1007/s10474-025-01528-0}; arXiv:\\href{https://arxiv.org/abs/2406.17593v4}{2406.17593v4}. Theorem~2.3 is cited with the arXiv v4 pagination, p.~5.",
         "citation_usages": [
           {
             "command": "cite",
-            "line_end": 8780,
-            "line_start": 8780,
+            "line_end": 8785,
+            "line_start": 8785,
             "path": "paper/249/erdos249-totient-reasoning-surface.tex",
             "qualifiers": [
               "Theorem~2.3"
@@ -75039,21 +75039,21 @@
         ],
         "key": "kovac-tao",
         "kind": "bibliography_entry",
-        "line_end": 8919,
-        "line_start": 8913,
+        "line_end": 8924,
+        "line_start": 8918,
         "paper_id": "erdos249-totient-reasoning-surface",
         "path": "paper/249/erdos249-totient-reasoning-surface.tex",
         "source_id": "source-4f5fd0d7405e29",
         "source_role": "generated_manuscript",
-        "source_sha256": "sha256:a6c609c1f6ae72f3f1d287164b1d0d7ebfc02b9dce643fb383373edfafabcd53"
+        "source_sha256": "sha256:b0d75ab24f3a7ee51313d263d9d57f65a53f59c198b0fbf4b3f391742ac39dea"
       },
       {
         "citation_text": "\\bibitem{bgs2016} R.~Balasubramanian, S.~Giri and P.~Srivastav, \\emph{On correlations of certain multiplicative functions}, J.\\ Number Theory \\textbf{174} (2017), 221--238, doi:\\href{https://doi.org/10.1016/j.jnt.2016.10.001}{10.1016/j.jnt.2016.10.001}; arXiv:\\href{https://arxiv.org/abs/1511.02221v3}{1511.02221v3}. Theorem~2.2 is cited with the arXiv v3 pagination, p.~2.",
         "citation_usages": [
           {
             "command": "cite",
-            "line_end": 8787,
-            "line_start": 8787,
+            "line_end": 8792,
+            "line_start": 8792,
             "path": "paper/249/erdos249-totient-reasoning-surface.tex",
             "qualifiers": [
               "Theorem~2.2"
@@ -75061,8 +75061,8 @@
           },
           {
             "command": "cite",
-            "line_end": 8789,
-            "line_start": 8789,
+            "line_end": 8794,
+            "line_start": 8794,
             "path": "paper/249/erdos249-totient-reasoning-surface.tex",
             "qualifiers": [
               "Rem.~2.9"
@@ -75097,13 +75097,13 @@
         ],
         "key": "bgs2016",
         "kind": "bibliography_entry",
-        "line_end": 8925,
-        "line_start": 8919,
+        "line_end": 8930,
+        "line_start": 8924,
         "paper_id": "erdos249-totient-reasoning-surface",
         "path": "paper/249/erdos249-totient-reasoning-surface.tex",
         "source_id": "proposed-direct-595203db1f6891",
         "source_role": "generated_manuscript",
-        "source_sha256": "sha256:a6c609c1f6ae72f3f1d287164b1d0d7ebfc02b9dce643fb383373edfafabcd53"
+        "source_sha256": "sha256:b0d75ab24f3a7ee51313d263d9d57f65a53f59c198b0fbf4b3f391742ac39dea"
       },
       {
         "citation_text": "\\bibitem{granville-smooth} A.~Granville, \\emph{Smooth numbers: computational number theory and beyond}, in \\emph{Algorithmic Number Theory}, MSRI Publ.\\ \\textbf{44} (2008), 267--323, \\url{https://library.slmath.org/books/Book44/files/09andrew.pdf}. Equations (1.1) and (1.3), p.~268.",
@@ -75155,13 +75155,13 @@
         ],
         "key": "granville-smooth",
         "kind": "bibliography_entry",
-        "line_end": 8930,
-        "line_start": 8925,
+        "line_end": 8935,
+        "line_start": 8930,
         "paper_id": "erdos249-totient-reasoning-surface",
         "path": "paper/249/erdos249-totient-reasoning-surface.tex",
         "source_id": "source-bc5d16b84e62c7",
         "source_role": "generated_manuscript",
-        "source_sha256": "sha256:a6c609c1f6ae72f3f1d287164b1d0d7ebfc02b9dce643fb383373edfafabcd53"
+        "source_sha256": "sha256:b0d75ab24f3a7ee51313d263d9d57f65a53f59c198b0fbf4b3f391742ac39dea"
       },
       {
         "citation_text": "\\bibitem{schoenberg1928} I.~Schoenberg, \\emph{\\\"Uber die asymptotische Verteilung reeller Zahlen mod~1}, Math.\\ Z.\\ \\textbf{28} (1928), 171--199, doi:\\href{https://doi.org/10.1007/BF01181156}{10.1007/BF01181156}. \\S17, p.~193, for the distribution of $\\varphi(n)/n$.",
@@ -75195,13 +75195,13 @@
         ],
         "key": "schoenberg1928",
         "kind": "bibliography_entry",
-        "line_end": 8935,
-        "line_start": 8930,
+        "line_end": 8940,
+        "line_start": 8935,
         "paper_id": "erdos249-totient-reasoning-surface",
         "path": "paper/249/erdos249-totient-reasoning-surface.tex",
         "source_id": "source-eeff3fa685af8a",
         "source_role": "generated_manuscript",
-        "source_sha256": "sha256:a6c609c1f6ae72f3f1d287164b1d0d7ebfc02b9dce643fb383373edfafabcd53"
+        "source_sha256": "sha256:b0d75ab24f3a7ee51313d263d9d57f65a53f59c198b0fbf4b3f391742ac39dea"
       },
       {
         "citation_text": "\\bibitem{schoenberg1936} I.~J.~Schoenberg, \\emph{On asymptotic distributions of arithmetical functions}, Trans.\\ Amer.\\ Math.\\ Soc.\\ \\textbf{39} (1936), no.~2, 315--330. Theorem~1, pp.~318--319; \\S8, p.~323.",
@@ -75235,13 +75235,13 @@
         ],
         "key": "schoenberg1936",
         "kind": "bibliography_entry",
-        "line_end": 8939,
-        "line_start": 8935,
+        "line_end": 8944,
+        "line_start": 8940,
         "paper_id": "erdos249-totient-reasoning-surface",
         "path": "paper/249/erdos249-totient-reasoning-surface.tex",
         "source_id": "source-0e9b7210b29d99",
         "source_role": "generated_manuscript",
-        "source_sha256": "sha256:a6c609c1f6ae72f3f1d287164b1d0d7ebfc02b9dce643fb383373edfafabcd53"
+        "source_sha256": "sha256:b0d75ab24f3a7ee51313d263d9d57f65a53f59c198b0fbf4b3f391742ac39dea"
       },
       {
         "citation_text": "\\bibitem{edeko-vdc} N.~Edeko, H.~Kreidler and R.~Nagel, \\emph{A dynamical proof of the van der Corput inequality}, Dyn.\\ Syst.\\ \\textbf{37} (2022), no.~4, 648--665, doi:\\href{https://doi.org/10.1080/14689367.2022.2100244}{10.1080/14689367.2022.2100244}; arXiv:\\href{https://arxiv.org/abs/2106.11835v3}{2106.11835v3}. Theorem~2.1 is cited with the arXiv v3 pagination, p.~4.",
@@ -75275,21 +75275,21 @@
         ],
         "key": "edeko-vdc",
         "kind": "bibliography_entry",
-        "line_end": 8945,
-        "line_start": 8939,
+        "line_end": 8950,
+        "line_start": 8944,
         "paper_id": "erdos249-totient-reasoning-surface",
         "path": "paper/249/erdos249-totient-reasoning-surface.tex",
         "source_id": "source-3d300ccd5e4cbb",
         "source_role": "generated_manuscript",
-        "source_sha256": "sha256:a6c609c1f6ae72f3f1d287164b1d0d7ebfc02b9dce643fb383373edfafabcd53"
+        "source_sha256": "sha256:b0d75ab24f3a7ee51313d263d9d57f65a53f59c198b0fbf4b3f391742ac39dea"
       },
       {
         "citation_text": "\\bibitem{matomaki-radziwill} K.~Matom\\\"aki and M.~Radziwi\\l\\l, \\emph{Multiplicative functions in short intervals}, Ann.\\ of Math.\\ \\textbf{183} (2016), no.~3, 1015--1056, doi:\\href{https://doi.org/10.4007/annals.2016.183.3.6}{10.4007/annals.2016.183.3.6}; arXiv:\\href{https://arxiv.org/abs/1501.04585v4}{1501.04585v4}. Theorem~1 is cited with the arXiv v4 pagination, pp.~1--2.",
         "citation_usages": [
           {
             "command": "cite",
-            "line_end": 7633,
-            "line_start": 7633,
+            "line_end": 7638,
+            "line_start": 7638,
             "path": "paper/249/erdos249-totient-reasoning-surface.tex",
             "qualifiers": [
               "Theorem~1"
@@ -75315,21 +75315,21 @@
         ],
         "key": "matomaki-radziwill",
         "kind": "bibliography_entry",
-        "line_end": 8951,
-        "line_start": 8945,
+        "line_end": 8956,
+        "line_start": 8950,
         "paper_id": "erdos249-totient-reasoning-surface",
         "path": "paper/249/erdos249-totient-reasoning-surface.tex",
         "source_id": "proposed-direct-4e797194f74404",
         "source_role": "generated_manuscript",
-        "source_sha256": "sha256:a6c609c1f6ae72f3f1d287164b1d0d7ebfc02b9dce643fb383373edfafabcd53"
+        "source_sha256": "sha256:b0d75ab24f3a7ee51313d263d9d57f65a53f59c198b0fbf4b3f391742ac39dea"
       },
       {
         "citation_text": "\\bibitem{tao-elliott} T.~Tao, \\emph{The logarithmically averaged Chowla and Elliott conjectures for two-point correlations}, Forum Math.\\ Pi \\textbf{4} (2016), e8, doi:\\href{https://doi.org/10.1017/fmp.2016.6}{10.1017/fmp.2016.6}; arXiv:\\href{https://arxiv.org/abs/1509.05422v4}{1509.05422v4}. Theorems~1.2--1.3 are cited with the arXiv v4 pagination, pp.~2 and~5.",
         "citation_usages": [
           {
             "command": "cite",
-            "line_end": 7636,
-            "line_start": 7636,
+            "line_end": 7641,
+            "line_start": 7641,
             "path": "paper/249/erdos249-totient-reasoning-surface.tex",
             "qualifiers": [
               "Theorems~1.2--1.3"
@@ -75355,21 +75355,21 @@
         ],
         "key": "tao-elliott",
         "kind": "bibliography_entry",
-        "line_end": 8957,
-        "line_start": 8951,
+        "line_end": 8962,
+        "line_start": 8956,
         "paper_id": "erdos249-totient-reasoning-surface",
         "path": "paper/249/erdos249-totient-reasoning-surface.tex",
         "source_id": "proposed-direct-4e797194f74404",
         "source_role": "generated_manuscript",
-        "source_sha256": "sha256:a6c609c1f6ae72f3f1d287164b1d0d7ebfc02b9dce643fb383373edfafabcd53"
+        "source_sha256": "sha256:b0d75ab24f3a7ee51313d263d9d57f65a53f59c198b0fbf4b3f391742ac39dea"
       },
       {
         "citation_text": "\\bibitem{tao-teravainen} T.~Tao and J.~Ter\\\"av\\\"ainen, \\emph{Odd order cases of the logarithmically averaged Chowla conjecture}, J.\\ Th\\'eor.\\ Nombres Bordeaux \\textbf{30} (2018), no.~3, 997--1015, doi:\\href{https://doi.org/10.5802/jtnb.1062}{10.5802/jtnb.1062}; arXiv:\\href{https://arxiv.org/abs/1710.02112v1}{1710.02112v1}. Theorem~1.1 is cited with the arXiv v1 pagination, p.~2.",
         "citation_usages": [
           {
             "command": "cite",
-            "line_end": 7638,
-            "line_start": 7638,
+            "line_end": 7643,
+            "line_start": 7643,
             "path": "paper/249/erdos249-totient-reasoning-surface.tex",
             "qualifiers": [
               "Theorem~1.1"
@@ -75395,21 +75395,21 @@
         ],
         "key": "tao-teravainen",
         "kind": "bibliography_entry",
-        "line_end": 8964,
-        "line_start": 8957,
+        "line_end": 8969,
+        "line_start": 8962,
         "paper_id": "erdos249-totient-reasoning-surface",
         "path": "paper/249/erdos249-totient-reasoning-surface.tex",
         "source_id": "proposed-direct-4e797194f74404",
         "source_role": "generated_manuscript",
-        "source_sha256": "sha256:a6c609c1f6ae72f3f1d287164b1d0d7ebfc02b9dce643fb383373edfafabcd53"
+        "source_sha256": "sha256:b0d75ab24f3a7ee51313d263d9d57f65a53f59c198b0fbf4b3f391742ac39dea"
       },
       {
         "citation_text": "\\bibitem{adamczewski-bugeaud} B.~Adamczewski and Y.~Bugeaud, \\emph{On the complexity of algebraic numbers I. Expansions in integer bases}, Ann.\\ of Math.\\ \\textbf{165} (2007), no.~2, 547--565. Theorem~1, p.~549.",
         "citation_usages": [
           {
             "command": "cite",
-            "line_end": 7808,
-            "line_start": 7808,
+            "line_end": 7813,
+            "line_start": 7813,
             "path": "paper/249/erdos249-totient-reasoning-surface.tex",
             "qualifiers": [
               "Theorem~1, p.~549"
@@ -75435,13 +75435,13 @@
         ],
         "key": "adamczewski-bugeaud",
         "kind": "bibliography_entry",
-        "line_end": 8968,
-        "line_start": 8964,
+        "line_end": 8973,
+        "line_start": 8969,
         "paper_id": "erdos249-totient-reasoning-surface",
         "path": "paper/249/erdos249-totient-reasoning-surface.tex",
         "source_id": "source-7c8ba4ea6eea79",
         "source_role": "generated_manuscript",
-        "source_sha256": "sha256:a6c609c1f6ae72f3f1d287164b1d0d7ebfc02b9dce643fb383373edfafabcd53"
+        "source_sha256": "sha256:b0d75ab24f3a7ee51313d263d9d57f65a53f59c198b0fbf4b3f391742ac39dea"
       },
       {
         "citation_text": "\\bibitem{everest-periodic} G.~Everest, A.~J.~van der Poorten, Y.~Puri and T.~Ward, \\emph{Integer sequences and periodic points}, J.\\ Integer Seq.\\ \\textbf{5} (2002), Article~02.2.3. Lemma~3.1 is cited with the preprint pagination, p.~5.",
@@ -75475,13 +75475,13 @@
         ],
         "key": "everest-periodic",
         "kind": "bibliography_entry",
-        "line_end": 8972,
-        "line_start": 8968,
+        "line_end": 8977,
+        "line_start": 8973,
         "paper_id": "erdos249-totient-reasoning-surface",
         "path": "paper/249/erdos249-totient-reasoning-surface.tex",
         "source_id": "source-5cac1ad51acb12",
         "source_role": "generated_manuscript",
-        "source_sha256": "sha256:a6c609c1f6ae72f3f1d287164b1d0d7ebfc02b9dce643fb383373edfafabcd53"
+        "source_sha256": "sha256:b0d75ab24f3a7ee51313d263d9d57f65a53f59c198b0fbf4b3f391742ac39dea"
       },
       {
         "citation_text": "\\bibitem{erdos-gal} P.~Erd\\H{o}s and I.~S.~G\\'al, \\emph{On the law of the iterated logarithm.~I}, Proc.\\ Kon.\\ Ned.\\ Akad.\\ Wetensch.\\ Ser.~A \\textbf{58} $=$ Indag.\\ Math.\\ \\textbf{17} (1955), 65--76, \\url{https://www.renyi.hu/~p_erdos/1955-06.pdf}.",
@@ -75515,13 +75515,13 @@
         ],
         "key": "erdos-gal",
         "kind": "bibliography_entry",
-        "line_end": 8976,
-        "line_start": 8972,
+        "line_end": 8981,
+        "line_start": 8977,
         "paper_id": "erdos249-totient-reasoning-surface",
         "path": "paper/249/erdos249-totient-reasoning-surface.tex",
         "source_id": "source-39690ee8e07b0c",
         "source_role": "generated_manuscript",
-        "source_sha256": "sha256:a6c609c1f6ae72f3f1d287164b1d0d7ebfc02b9dce643fb383373edfafabcd53"
+        "source_sha256": "sha256:b0d75ab24f3a7ee51313d263d9d57f65a53f59c198b0fbf4b3f391742ac39dea"
       },
       {
         "citation_text": "\\bibitem{yazdani2001} S.~Yazdani, \\emph{Multiplicative functions and $k$-automatic sequences}, J.\\ Th\\'eor.\\ Nombres Bordeaux \\textbf{13} (2001), no.~2, 651--658, \\url{https://www.numdam.org/item/JTNB_2001__13_2_651_0/}. Theorem~2 and its proof, pp.~652--653; Corollary~4, p.~654.",
@@ -75573,13 +75573,13 @@
         ],
         "key": "yazdani2001",
         "kind": "bibliography_entry",
-        "line_end": 8981,
-        "line_start": 8976,
+        "line_end": 8986,
+        "line_start": 8981,
         "paper_id": "erdos249-totient-reasoning-surface",
         "path": "paper/249/erdos249-totient-reasoning-surface.tex",
         "source_id": "source-a0d109b4492fba",
         "source_role": "generated_manuscript",
-        "source_sha256": "sha256:a6c609c1f6ae72f3f1d287164b1d0d7ebfc02b9dce643fb383373edfafabcd53"
+        "source_sha256": "sha256:b0d75ab24f3a7ee51313d263d9d57f65a53f59c198b0fbf4b3f391742ac39dea"
       },
       {
         "citation_text": "\\bibitem{allouche-shallit-yassawi} J.-P.~Allouche, J.~Shallit and R.~Yassawi, \\emph{How to prove that a sequence is not automatic}, Exposition.\\ Math.\\ \\textbf{40} (2022), no.~1, 1--22, doi:\\href{https://doi.org/10.1016/j.exmath.2021.08.001}{10.1016/j.exmath.2021.08.001}; arXiv:\\href{https://arxiv.org/abs/2104.13072v1}{2104.13072v1}. Theorem and example numbering follows the arXiv v1 (2021).",
@@ -75613,21 +75613,21 @@
         ],
         "key": "allouche-shallit-yassawi",
         "kind": "bibliography_entry",
-        "line_end": 8987,
-        "line_start": 8981,
+        "line_end": 8992,
+        "line_start": 8986,
         "paper_id": "erdos249-totient-reasoning-surface",
         "path": "paper/249/erdos249-totient-reasoning-surface.tex",
         "source_id": "source-6b460d123159d9",
         "source_role": "generated_manuscript",
-        "source_sha256": "sha256:a6c609c1f6ae72f3f1d287164b1d0d7ebfc02b9dce643fb383373edfafabcd53"
+        "source_sha256": "sha256:b0d75ab24f3a7ee51313d263d9d57f65a53f59c198b0fbf4b3f391742ac39dea"
       },
       {
         "citation_text": "\\bibitem{bell-smertnig2026} J.~Bell and D.~Smertnig, \\emph{Mahler series with multiplicative coefficient sequences}, arXiv:\\href{https://arxiv.org/abs/2603.23456v1}{2603.23456v1}, 24 March 2026, preprint. Theorem~1.3, p.~2; Lemma~3.3, p.~9.",
         "citation_usages": [
           {
             "command": "cite",
-            "line_end": 8804,
-            "line_start": 8804,
+            "line_end": 8809,
+            "line_start": 8809,
             "path": "paper/249/erdos249-totient-reasoning-surface.tex",
             "qualifiers": [
               "Thm.~1.3 and p.~3"
@@ -75653,21 +75653,21 @@
         ],
         "key": "bell-smertnig2026",
         "kind": "bibliography_entry",
-        "line_end": 8991,
-        "line_start": 8987,
+        "line_end": 8996,
+        "line_start": 8992,
         "paper_id": "erdos249-totient-reasoning-surface",
         "path": "paper/249/erdos249-totient-reasoning-surface.tex",
         "source_id": "source-3bc828513b4d63",
         "source_role": "generated_manuscript",
-        "source_sha256": "sha256:a6c609c1f6ae72f3f1d287164b1d0d7ebfc02b9dce643fb383373edfafabcd53"
+        "source_sha256": "sha256:b0d75ab24f3a7ee51313d263d9d57f65a53f59c198b0fbf4b3f391742ac39dea"
       },
       {
         "citation_text": "\\bibitem{bell-bruin-coons} J.~P.~Bell, N.~Bruin and M.~Coons, \\emph{Transcendence of generating functions whose coefficients are multiplicative}, Trans.\\ Amer.\\ Math.\\ Soc.\\ \\textbf{364} (2012), no.~2, 933--959, doi:\\href{https://doi.org/10.1090/S0002-9947-2011-05479-6}{10.1090/S0002-9947-2011-05479-6}; arXiv:\\href{https://arxiv.org/abs/1003.2221v2}{1003.2221v2}. Theorems~1.5--1.6 are cited with the arXiv v2 pagination, p.~2.",
         "citation_usages": [
           {
             "command": "cite",
-            "line_end": 8806,
-            "line_start": 8806,
+            "line_end": 8811,
+            "line_start": 8811,
             "path": "paper/249/erdos249-totient-reasoning-surface.tex",
             "qualifiers": [
               "Thms.~1.5--1.6"
@@ -75693,21 +75693,21 @@
         ],
         "key": "bell-bruin-coons",
         "kind": "bibliography_entry",
-        "line_end": 8997,
-        "line_start": 8991,
+        "line_end": 9002,
+        "line_start": 8996,
         "paper_id": "erdos249-totient-reasoning-surface",
         "path": "paper/249/erdos249-totient-reasoning-surface.tex",
         "source_id": "source-b791f5b49e0da6",
         "source_role": "generated_manuscript",
-        "source_sha256": "sha256:a6c609c1f6ae72f3f1d287164b1d0d7ebfc02b9dce643fb383373edfafabcd53"
+        "source_sha256": "sha256:b0d75ab24f3a7ee51313d263d9d57f65a53f59c198b0fbf4b3f391742ac39dea"
       },
       {
         "citation_text": "\\bibitem{adamczewski-drmota-mullner} B.~Adamczewski, M.~Drmota and C.~M\\\"ullner, \\emph{(Logarithmic) densities for automatic sequences along primes and squares}, Trans.\\ Amer.\\ Math.\\ Soc.\\ \\textbf{375} (2022), no.~1, 455--499, doi:\\href{https://doi.org/10.1090/tran/8476}{10.1090/tran/8476}; arXiv:\\href{https://arxiv.org/abs/2009.14773v2}{2009.14773v2}. Theorem~1.4 and Remark~1.5, p.~4, and the proof at the end of Section~7, p.~19, refer to the arXiv v2 (2021).",
         "citation_usages": [
           {
             "command": "cite",
-            "line_end": 8812,
-            "line_start": 8812,
+            "line_end": 8817,
+            "line_start": 8817,
             "path": "paper/249/erdos249-totient-reasoning-surface.tex",
             "qualifiers": [
               "Thm.~1.4 and Rem.~1.5"
@@ -75733,21 +75733,21 @@
         ],
         "key": "adamczewski-drmota-mullner",
         "kind": "bibliography_entry",
-        "line_end": 9004,
-        "line_start": 8997,
+        "line_end": 9009,
+        "line_start": 9002,
         "paper_id": "erdos249-totient-reasoning-surface",
         "path": "paper/249/erdos249-totient-reasoning-surface.tex",
         "source_id": "source-4afc43674f7082",
         "source_role": "generated_manuscript",
-        "source_sha256": "sha256:a6c609c1f6ae72f3f1d287164b1d0d7ebfc02b9dce643fb383373edfafabcd53"
+        "source_sha256": "sha256:b0d75ab24f3a7ee51313d263d9d57f65a53f59c198b0fbf4b3f391742ac39dea"
       },
       {
         "citation_text": "\\bibitem{adamczewski-bell-smertnig2023} B.~Adamczewski, J.~Bell and D.~Smertnig, \\emph{A height gap theorem for coefficients of Mahler functions}, J.~Eur.~Math.~Soc.\\ \\textbf{25} (2023), no.~7, 2525--2571, doi:\\href{https://doi.org/10.4171/JEMS/1244}{10.4171/JEMS/1244}. Theorem~1.2(b), p.~2528; logarithmic height in Section~1.1.1, p.~2527.",
         "citation_usages": [
           {
             "command": "cite",
-            "line_end": 8799,
-            "line_start": 8799,
+            "line_end": 8804,
+            "line_start": 8804,
             "path": "paper/249/erdos249-totient-reasoning-surface.tex",
             "qualifiers": [
               "Thm.~1.2(b), p.~2528"
@@ -75773,21 +75773,21 @@
         ],
         "key": "adamczewski-bell-smertnig2023",
         "kind": "bibliography_entry",
-        "line_end": 9010,
-        "line_start": 9004,
+        "line_end": 9015,
+        "line_start": 9009,
         "paper_id": "erdos249-totient-reasoning-surface",
         "path": "paper/249/erdos249-totient-reasoning-surface.tex",
         "source_id": null,
         "source_role": "generated_manuscript",
-        "source_sha256": "sha256:a6c609c1f6ae72f3f1d287164b1d0d7ebfc02b9dce643fb383373edfafabcd53"
+        "source_sha256": "sha256:b0d75ab24f3a7ee51313d263d9d57f65a53f59c198b0fbf4b3f391742ac39dea"
       },
       {
         "citation_text": "\\bibitem{allouche-shallit} J.-P.~Allouche and J.~Shallit, \\emph{The ring of $k$-regular sequences}, Theoret.\\ Comput.\\ Sci.\\ \\textbf{98} (1992), no.~2, 163--197, doi:\\href{https://doi.org/10.1016/0304-3975(92)90001-V}{10.1016/0304-3975(92)90001-V}. Definitions and early statements are cited with the author preprint's numbering.",
         "citation_usages": [
           {
             "command": "cite",
-            "line_end": 7906,
-            "line_start": 7906,
+            "line_end": 7911,
+            "line_start": 7911,
             "path": "paper/249/erdos249-totient-reasoning-surface.tex",
             "qualifiers": [
               "Definition~2.1"
@@ -75805,8 +75805,8 @@
         ],
         "equivalent_source_coordinates": [
           {
-            "line_end": 8845,
-            "line_start": 8840,
+            "line_end": 8850,
+            "line_start": 8845,
             "path": "paper/249/erdos249-totient-reasoning-surface.tex",
             "source_role": "generated_manuscript"
           }
@@ -75844,8 +75844,8 @@
           },
           {
             "command": "cite",
-            "line_end": 7911,
-            "line_start": 7911,
+            "line_end": 7916,
+            "line_start": 7916,
             "path": "paper/249/erdos249-totient-reasoning-surface.tex",
             "qualifiers": [
               "Theorem~3.2"
@@ -75881,8 +75881,8 @@
         ],
         "equivalent_source_coordinates": [
           {
-            "line_end": 8850,
-            "line_start": 8845,
+            "line_end": 8855,
+            "line_start": 8850,
             "path": "paper/249/erdos249-totient-reasoning-surface.tex",
             "source_role": "generated_manuscript"
           }
@@ -75921,8 +75921,8 @@
         ],
         "equivalent_source_coordinates": [
           {
-            "line_end": 8856,
-            "line_start": 8850,
+            "line_end": 8861,
+            "line_start": 8855,
             "path": "paper/249/erdos249-totient-reasoning-surface.tex",
             "source_role": "generated_manuscript"
           }
@@ -75997,8 +75997,8 @@
         ],
         "equivalent_source_coordinates": [
           {
-            "line_end": 8860,
-            "line_start": 8856,
+            "line_end": 8865,
+            "line_start": 8861,
             "path": "paper/249/erdos249-totient-reasoning-surface.tex",
             "source_role": "generated_manuscript"
           }
@@ -76018,8 +76018,8 @@
         "citation_usages": [
           {
             "command": "cite",
-            "line_end": 8776,
-            "line_start": 8776,
+            "line_end": 8781,
+            "line_start": 8781,
             "path": "paper/249/erdos249-totient-reasoning-surface.tex",
             "qualifiers": []
           },
@@ -76033,8 +76033,8 @@
         ],
         "equivalent_source_coordinates": [
           {
-            "line_end": 8864,
-            "line_start": 8860,
+            "line_end": 8869,
+            "line_start": 8865,
             "path": "paper/249/erdos249-totient-reasoning-surface.tex",
             "source_role": "generated_manuscript"
           }
@@ -76069,8 +76069,8 @@
         ],
         "equivalent_source_coordinates": [
           {
-            "line_end": 8868,
-            "line_start": 8864,
+            "line_end": 8873,
+            "line_start": 8869,
             "path": "paper/249/erdos249-totient-reasoning-surface.tex",
             "source_role": "generated_manuscript"
           }
@@ -76105,8 +76105,8 @@
         ],
         "equivalent_source_coordinates": [
           {
-            "line_end": 8872,
-            "line_start": 8868,
+            "line_end": 8877,
+            "line_start": 8873,
             "path": "paper/249/erdos249-totient-reasoning-surface.tex",
             "source_role": "generated_manuscript"
           }
@@ -76145,8 +76145,8 @@
         ],
         "equivalent_source_coordinates": [
           {
-            "line_end": 8876,
-            "line_start": 8872,
+            "line_end": 8881,
+            "line_start": 8877,
             "path": "paper/249/erdos249-totient-reasoning-surface.tex",
             "source_role": "generated_manuscript"
           }
@@ -76263,8 +76263,8 @@
         ],
         "equivalent_source_coordinates": [
           {
-            "line_end": 8880,
-            "line_start": 8876,
+            "line_end": 8885,
+            "line_start": 8881,
             "path": "paper/249/erdos249-totient-reasoning-surface.tex",
             "source_role": "generated_manuscript"
           }
@@ -76303,8 +76303,8 @@
         ],
         "equivalent_source_coordinates": [
           {
-            "line_end": 8886,
-            "line_start": 8880,
+            "line_end": 8891,
+            "line_start": 8885,
             "path": "paper/249/erdos249-totient-reasoning-surface.tex",
             "source_role": "generated_manuscript"
           }
@@ -76361,8 +76361,8 @@
         ],
         "equivalent_source_coordinates": [
           {
-            "line_end": 8891,
-            "line_start": 8886,
+            "line_end": 8896,
+            "line_start": 8891,
             "path": "paper/249/erdos249-totient-reasoning-surface.tex",
             "source_role": "generated_manuscript"
           }
@@ -76401,8 +76401,8 @@
         ],
         "equivalent_source_coordinates": [
           {
-            "line_end": 8896,
-            "line_start": 8891,
+            "line_end": 8901,
+            "line_start": 8896,
             "path": "paper/249/erdos249-totient-reasoning-surface.tex",
             "source_role": "generated_manuscript"
           }
@@ -76441,8 +76441,8 @@
         ],
         "equivalent_source_coordinates": [
           {
-            "line_end": 8901,
-            "line_start": 8896,
+            "line_end": 8906,
+            "line_start": 8901,
             "path": "paper/249/erdos249-totient-reasoning-surface.tex",
             "source_role": "generated_manuscript"
           }
@@ -76471,8 +76471,8 @@
           },
           {
             "command": "cite",
-            "line_end": 8783,
-            "line_start": 8783,
+            "line_end": 8788,
+            "line_start": 8788,
             "path": "paper/249/erdos249-totient-reasoning-surface.tex",
             "qualifiers": []
           },
@@ -76495,8 +76495,8 @@
         ],
         "equivalent_source_coordinates": [
           {
-            "line_end": 8908,
-            "line_start": 8901,
+            "line_end": 8913,
+            "line_start": 8906,
             "path": "paper/249/erdos249-totient-reasoning-surface.tex",
             "source_role": "generated_manuscript"
           }
@@ -76516,8 +76516,8 @@
         "citation_usages": [
           {
             "command": "cite",
-            "line_end": 8782,
-            "line_start": 8782,
+            "line_end": 8787,
+            "line_start": 8787,
             "path": "paper/249/erdos249-totient-reasoning-surface.tex",
             "qualifiers": [
               "Theorem~1.2"
@@ -76535,8 +76535,8 @@
         ],
         "equivalent_source_coordinates": [
           {
-            "line_end": 8913,
-            "line_start": 8908,
+            "line_end": 8918,
+            "line_start": 8913,
             "path": "paper/249/erdos249-totient-reasoning-surface.tex",
             "source_role": "generated_manuscript"
           }
@@ -76556,8 +76556,8 @@
         "citation_usages": [
           {
             "command": "cite",
-            "line_end": 8780,
-            "line_start": 8780,
+            "line_end": 8785,
+            "line_start": 8785,
             "path": "paper/249/erdos249-totient-reasoning-surface.tex",
             "qualifiers": [
               "Theorem~2.3"
@@ -76575,8 +76575,8 @@
         ],
         "equivalent_source_coordinates": [
           {
-            "line_end": 8919,
-            "line_start": 8913,
+            "line_end": 8924,
+            "line_start": 8918,
             "path": "paper/249/erdos249-totient-reasoning-surface.tex",
             "source_role": "generated_manuscript"
           }
@@ -76596,8 +76596,8 @@
         "citation_usages": [
           {
             "command": "cite",
-            "line_end": 8787,
-            "line_start": 8787,
+            "line_end": 8792,
+            "line_start": 8792,
             "path": "paper/249/erdos249-totient-reasoning-surface.tex",
             "qualifiers": [
               "Theorem~2.2"
@@ -76605,8 +76605,8 @@
           },
           {
             "command": "cite",
-            "line_end": 8789,
-            "line_start": 8789,
+            "line_end": 8794,
+            "line_start": 8794,
             "path": "paper/249/erdos249-totient-reasoning-surface.tex",
             "qualifiers": [
               "Rem.~2.9"
@@ -76633,8 +76633,8 @@
         ],
         "equivalent_source_coordinates": [
           {
-            "line_end": 8925,
-            "line_start": 8919,
+            "line_end": 8930,
+            "line_start": 8924,
             "path": "paper/249/erdos249-totient-reasoning-surface.tex",
             "source_role": "generated_manuscript"
           }
@@ -76691,8 +76691,8 @@
         ],
         "equivalent_source_coordinates": [
           {
-            "line_end": 8930,
-            "line_start": 8925,
+            "line_end": 8935,
+            "line_start": 8930,
             "path": "paper/249/erdos249-totient-reasoning-surface.tex",
             "source_role": "generated_manuscript"
           }
@@ -76731,8 +76731,8 @@
         ],
         "equivalent_source_coordinates": [
           {
-            "line_end": 8935,
-            "line_start": 8930,
+            "line_end": 8940,
+            "line_start": 8935,
             "path": "paper/249/erdos249-totient-reasoning-surface.tex",
             "source_role": "generated_manuscript"
           }
@@ -76771,8 +76771,8 @@
         ],
         "equivalent_source_coordinates": [
           {
-            "line_end": 8939,
-            "line_start": 8935,
+            "line_end": 8944,
+            "line_start": 8940,
             "path": "paper/249/erdos249-totient-reasoning-surface.tex",
             "source_role": "generated_manuscript"
           }
@@ -76811,8 +76811,8 @@
         ],
         "equivalent_source_coordinates": [
           {
-            "line_end": 8945,
-            "line_start": 8939,
+            "line_end": 8950,
+            "line_start": 8944,
             "path": "paper/249/erdos249-totient-reasoning-surface.tex",
             "source_role": "generated_manuscript"
           }
@@ -76832,8 +76832,8 @@
         "citation_usages": [
           {
             "command": "cite",
-            "line_end": 7633,
-            "line_start": 7633,
+            "line_end": 7638,
+            "line_start": 7638,
             "path": "paper/249/erdos249-totient-reasoning-surface.tex",
             "qualifiers": [
               "Theorem~1"
@@ -76851,8 +76851,8 @@
         ],
         "equivalent_source_coordinates": [
           {
-            "line_end": 8951,
-            "line_start": 8945,
+            "line_end": 8956,
+            "line_start": 8950,
             "path": "paper/249/erdos249-totient-reasoning-surface.tex",
             "source_role": "generated_manuscript"
           }
@@ -76872,8 +76872,8 @@
         "citation_usages": [
           {
             "command": "cite",
-            "line_end": 7636,
-            "line_start": 7636,
+            "line_end": 7641,
+            "line_start": 7641,
             "path": "paper/249/erdos249-totient-reasoning-surface.tex",
             "qualifiers": [
               "Theorems~1.2--1.3"
@@ -76891,8 +76891,8 @@
         ],
         "equivalent_source_coordinates": [
           {
-            "line_end": 8957,
-            "line_start": 8951,
+            "line_end": 8962,
+            "line_start": 8956,
             "path": "paper/249/erdos249-totient-reasoning-surface.tex",
             "source_role": "generated_manuscript"
           }
@@ -76912,8 +76912,8 @@
         "citation_usages": [
           {
             "command": "cite",
-            "line_end": 7638,
-            "line_start": 7638,
+            "line_end": 7643,
+            "line_start": 7643,
             "path": "paper/249/erdos249-totient-reasoning-surface.tex",
             "qualifiers": [
               "Theorem~1.1"
@@ -76931,8 +76931,8 @@
         ],
         "equivalent_source_coordinates": [
           {
-            "line_end": 8964,
-            "line_start": 8957,
+            "line_end": 8969,
+            "line_start": 8962,
             "path": "paper/249/erdos249-totient-reasoning-surface.tex",
             "source_role": "generated_manuscript"
           }
@@ -76952,8 +76952,8 @@
         "citation_usages": [
           {
             "command": "cite",
-            "line_end": 7808,
-            "line_start": 7808,
+            "line_end": 7813,
+            "line_start": 7813,
             "path": "paper/249/erdos249-totient-reasoning-surface.tex",
             "qualifiers": [
               "Theorem~1, p.~549"
@@ -76971,8 +76971,8 @@
         ],
         "equivalent_source_coordinates": [
           {
-            "line_end": 8968,
-            "line_start": 8964,
+            "line_end": 8973,
+            "line_start": 8969,
             "path": "paper/249/erdos249-totient-reasoning-surface.tex",
             "source_role": "generated_manuscript"
           }
@@ -77011,8 +77011,8 @@
         ],
         "equivalent_source_coordinates": [
           {
-            "line_end": 8972,
-            "line_start": 8968,
+            "line_end": 8977,
+            "line_start": 8973,
             "path": "paper/249/erdos249-totient-reasoning-surface.tex",
             "source_role": "generated_manuscript"
           }
@@ -77051,8 +77051,8 @@
         ],
         "equivalent_source_coordinates": [
           {
-            "line_end": 8976,
-            "line_start": 8972,
+            "line_end": 8981,
+            "line_start": 8977,
             "path": "paper/249/erdos249-totient-reasoning-surface.tex",
             "source_role": "generated_manuscript"
           }
@@ -77109,8 +77109,8 @@
         ],
         "equivalent_source_coordinates": [
           {
-            "line_end": 8981,
-            "line_start": 8976,
+            "line_end": 8986,
+            "line_start": 8981,
             "path": "paper/249/erdos249-totient-reasoning-surface.tex",
             "source_role": "generated_manuscript"
           }
@@ -77149,8 +77149,8 @@
         ],
         "equivalent_source_coordinates": [
           {
-            "line_end": 8987,
-            "line_start": 8981,
+            "line_end": 8992,
+            "line_start": 8986,
             "path": "paper/249/erdos249-totient-reasoning-surface.tex",
             "source_role": "generated_manuscript"
           }
@@ -77170,8 +77170,8 @@
         "citation_usages": [
           {
             "command": "cite",
-            "line_end": 8804,
-            "line_start": 8804,
+            "line_end": 8809,
+            "line_start": 8809,
             "path": "paper/249/erdos249-totient-reasoning-surface.tex",
             "qualifiers": [
               "Thm.~1.3 and p.~3"
@@ -77189,8 +77189,8 @@
         ],
         "equivalent_source_coordinates": [
           {
-            "line_end": 8991,
-            "line_start": 8987,
+            "line_end": 8996,
+            "line_start": 8992,
             "path": "paper/249/erdos249-totient-reasoning-surface.tex",
             "source_role": "generated_manuscript"
           }
@@ -77210,8 +77210,8 @@
         "citation_usages": [
           {
             "command": "cite",
-            "line_end": 8806,
-            "line_start": 8806,
+            "line_end": 8811,
+            "line_start": 8811,
             "path": "paper/249/erdos249-totient-reasoning-surface.tex",
             "qualifiers": [
               "Thms.~1.5--1.6"
@@ -77229,8 +77229,8 @@
         ],
         "equivalent_source_coordinates": [
           {
-            "line_end": 8997,
-            "line_start": 8991,
+            "line_end": 9002,
+            "line_start": 8996,
             "path": "paper/249/erdos249-totient-reasoning-surface.tex",
             "source_role": "generated_manuscript"
           }
@@ -77250,8 +77250,8 @@
         "citation_usages": [
           {
             "command": "cite",
-            "line_end": 8812,
-            "line_start": 8812,
+            "line_end": 8817,
+            "line_start": 8817,
             "path": "paper/249/erdos249-totient-reasoning-surface.tex",
             "qualifiers": [
               "Thm.~1.4 and Rem.~1.5"
@@ -77269,8 +77269,8 @@
         ],
         "equivalent_source_coordinates": [
           {
-            "line_end": 9004,
-            "line_start": 8997,
+            "line_end": 9009,
+            "line_start": 9002,
             "path": "paper/249/erdos249-totient-reasoning-surface.tex",
             "source_role": "generated_manuscript"
           }
@@ -77290,8 +77290,8 @@
         "citation_usages": [
           {
             "command": "cite",
-            "line_end": 8799,
-            "line_start": 8799,
+            "line_end": 8804,
+            "line_start": 8804,
             "path": "paper/249/erdos249-totient-reasoning-surface.tex",
             "qualifiers": [
               "Thm.~1.2(b), p.~2528"
@@ -77309,8 +77309,8 @@
         ],
         "equivalent_source_coordinates": [
           {
-            "line_end": 9010,
-            "line_start": 9004,
+            "line_end": 9015,
+            "line_start": 9009,
             "path": "paper/249/erdos249-totient-reasoning-surface.tex",
             "source_role": "generated_manuscript"
           }
@@ -105354,7 +105354,7 @@
         ],
         "source_id": "source-10545f868b3e88",
         "source_role": "generated_manuscript",
-        "source_sha256": "sha256:a6c609c1f6ae72f3f1d287164b1d0d7ebfc02b9dce643fb383373edfafabcd53"
+        "source_sha256": "sha256:b0d75ab24f3a7ee51313d263d9d57f65a53f59c198b0fbf4b3f391742ac39dea"
       },
       {
         "citation_context": "in_text_citation",
@@ -105370,7 +105370,7 @@
         ],
         "source_id": "source-741da55b02c5a9",
         "source_role": "generated_manuscript",
-        "source_sha256": "sha256:a6c609c1f6ae72f3f1d287164b1d0d7ebfc02b9dce643fb383373edfafabcd53"
+        "source_sha256": "sha256:b0d75ab24f3a7ee51313d263d9d57f65a53f59c198b0fbf4b3f391742ac39dea"
       },
       {
         "citation_context": "in_text_citation",
@@ -105386,7 +105386,7 @@
         ],
         "source_id": "source-11b46a0435368f",
         "source_role": "generated_manuscript",
-        "source_sha256": "sha256:a6c609c1f6ae72f3f1d287164b1d0d7ebfc02b9dce643fb383373edfafabcd53"
+        "source_sha256": "sha256:b0d75ab24f3a7ee51313d263d9d57f65a53f59c198b0fbf4b3f391742ac39dea"
       },
       {
         "citation_context": "in_text_citation",
@@ -105402,7 +105402,7 @@
         ],
         "source_id": "source-a0d109b4492fba",
         "source_role": "generated_manuscript",
-        "source_sha256": "sha256:a6c609c1f6ae72f3f1d287164b1d0d7ebfc02b9dce643fb383373edfafabcd53"
+        "source_sha256": "sha256:b0d75ab24f3a7ee51313d263d9d57f65a53f59c198b0fbf4b3f391742ac39dea"
       },
       {
         "citation_context": "in_text_citation",
@@ -105418,7 +105418,7 @@
         ],
         "source_id": "source-a0d109b4492fba",
         "source_role": "generated_manuscript",
-        "source_sha256": "sha256:a6c609c1f6ae72f3f1d287164b1d0d7ebfc02b9dce643fb383373edfafabcd53"
+        "source_sha256": "sha256:b0d75ab24f3a7ee51313d263d9d57f65a53f59c198b0fbf4b3f391742ac39dea"
       },
       {
         "citation_context": "in_text_citation",
@@ -105434,7 +105434,7 @@
         ],
         "source_id": "source-6b460d123159d9",
         "source_role": "generated_manuscript",
-        "source_sha256": "sha256:a6c609c1f6ae72f3f1d287164b1d0d7ebfc02b9dce643fb383373edfafabcd53"
+        "source_sha256": "sha256:b0d75ab24f3a7ee51313d263d9d57f65a53f59c198b0fbf4b3f391742ac39dea"
       },
       {
         "citation_context": "in_text_citation",
@@ -105448,7 +105448,7 @@
         "qualifiers": [],
         "source_id": "source-71037224a1dd7c",
         "source_role": "generated_manuscript",
-        "source_sha256": "sha256:a6c609c1f6ae72f3f1d287164b1d0d7ebfc02b9dce643fb383373edfafabcd53"
+        "source_sha256": "sha256:b0d75ab24f3a7ee51313d263d9d57f65a53f59c198b0fbf4b3f391742ac39dea"
       },
       {
         "citation_context": "in_text_citation",
@@ -105462,7 +105462,7 @@
         "qualifiers": [],
         "source_id": "source-99c2f3cb190b95",
         "source_role": "generated_manuscript",
-        "source_sha256": "sha256:a6c609c1f6ae72f3f1d287164b1d0d7ebfc02b9dce643fb383373edfafabcd53"
+        "source_sha256": "sha256:b0d75ab24f3a7ee51313d263d9d57f65a53f59c198b0fbf4b3f391742ac39dea"
       },
       {
         "citation_context": "in_text_citation",
@@ -105476,7 +105476,7 @@
         "qualifiers": [],
         "source_id": "source-5c72388a6ca10f",
         "source_role": "generated_manuscript",
-        "source_sha256": "sha256:a6c609c1f6ae72f3f1d287164b1d0d7ebfc02b9dce643fb383373edfafabcd53"
+        "source_sha256": "sha256:b0d75ab24f3a7ee51313d263d9d57f65a53f59c198b0fbf4b3f391742ac39dea"
       },
       {
         "citation_context": "in_text_citation",
@@ -105492,7 +105492,7 @@
         ],
         "source_id": "source-5c72388a6ca10f",
         "source_role": "generated_manuscript",
-        "source_sha256": "sha256:a6c609c1f6ae72f3f1d287164b1d0d7ebfc02b9dce643fb383373edfafabcd53"
+        "source_sha256": "sha256:b0d75ab24f3a7ee51313d263d9d57f65a53f59c198b0fbf4b3f391742ac39dea"
       },
       {
         "citation_context": "in_text_citation",
@@ -105508,7 +105508,7 @@
         ],
         "source_id": "source-619de19af78c4c",
         "source_role": "generated_manuscript",
-        "source_sha256": "sha256:a6c609c1f6ae72f3f1d287164b1d0d7ebfc02b9dce643fb383373edfafabcd53"
+        "source_sha256": "sha256:b0d75ab24f3a7ee51313d263d9d57f65a53f59c198b0fbf4b3f391742ac39dea"
       },
       {
         "citation_context": "in_text_citation",
@@ -105524,7 +105524,7 @@
         ],
         "source_id": "source-6c2fbacaba626f",
         "source_role": "generated_manuscript",
-        "source_sha256": "sha256:a6c609c1f6ae72f3f1d287164b1d0d7ebfc02b9dce643fb383373edfafabcd53"
+        "source_sha256": "sha256:b0d75ab24f3a7ee51313d263d9d57f65a53f59c198b0fbf4b3f391742ac39dea"
       },
       {
         "citation_context": "in_text_citation",
@@ -105540,7 +105540,7 @@
         ],
         "source_id": "source-22ce74d28ddb49",
         "source_role": "generated_manuscript",
-        "source_sha256": "sha256:a6c609c1f6ae72f3f1d287164b1d0d7ebfc02b9dce643fb383373edfafabcd53"
+        "source_sha256": "sha256:b0d75ab24f3a7ee51313d263d9d57f65a53f59c198b0fbf4b3f391742ac39dea"
       },
       {
         "citation_context": "in_text_citation",
@@ -105556,7 +105556,7 @@
         ],
         "source_id": "source-c786f202d47318",
         "source_role": "generated_manuscript",
-        "source_sha256": "sha256:a6c609c1f6ae72f3f1d287164b1d0d7ebfc02b9dce643fb383373edfafabcd53"
+        "source_sha256": "sha256:b0d75ab24f3a7ee51313d263d9d57f65a53f59c198b0fbf4b3f391742ac39dea"
       },
       {
         "citation_context": "in_text_citation",
@@ -105572,7 +105572,7 @@
         ],
         "source_id": "source-6346eeeac5036d",
         "source_role": "generated_manuscript",
-        "source_sha256": "sha256:a6c609c1f6ae72f3f1d287164b1d0d7ebfc02b9dce643fb383373edfafabcd53"
+        "source_sha256": "sha256:b0d75ab24f3a7ee51313d263d9d57f65a53f59c198b0fbf4b3f391742ac39dea"
       },
       {
         "citation_context": "in_text_citation",
@@ -105586,7 +105586,7 @@
         "qualifiers": [],
         "source_id": "source-5c72388a6ca10f",
         "source_role": "generated_manuscript",
-        "source_sha256": "sha256:a6c609c1f6ae72f3f1d287164b1d0d7ebfc02b9dce643fb383373edfafabcd53"
+        "source_sha256": "sha256:b0d75ab24f3a7ee51313d263d9d57f65a53f59c198b0fbf4b3f391742ac39dea"
       },
       {
         "citation_context": "in_text_citation",
@@ -105602,7 +105602,7 @@
         ],
         "source_id": "source-6346eeeac5036d",
         "source_role": "generated_manuscript",
-        "source_sha256": "sha256:a6c609c1f6ae72f3f1d287164b1d0d7ebfc02b9dce643fb383373edfafabcd53"
+        "source_sha256": "sha256:b0d75ab24f3a7ee51313d263d9d57f65a53f59c198b0fbf4b3f391742ac39dea"
       },
       {
         "citation_context": "in_text_citation",
@@ -105618,7 +105618,7 @@
         ],
         "source_id": "source-5cac1ad51acb12",
         "source_role": "generated_manuscript",
-        "source_sha256": "sha256:a6c609c1f6ae72f3f1d287164b1d0d7ebfc02b9dce643fb383373edfafabcd53"
+        "source_sha256": "sha256:b0d75ab24f3a7ee51313d263d9d57f65a53f59c198b0fbf4b3f391742ac39dea"
       },
       {
         "citation_context": "in_text_citation",
@@ -105634,7 +105634,7 @@
         ],
         "source_id": "source-5c72388a6ca10f",
         "source_role": "generated_manuscript",
-        "source_sha256": "sha256:a6c609c1f6ae72f3f1d287164b1d0d7ebfc02b9dce643fb383373edfafabcd53"
+        "source_sha256": "sha256:b0d75ab24f3a7ee51313d263d9d57f65a53f59c198b0fbf4b3f391742ac39dea"
       },
       {
         "citation_context": "in_text_citation",
@@ -105650,7 +105650,7 @@
         ],
         "source_id": "source-741da55b02c5a9",
         "source_role": "generated_manuscript",
-        "source_sha256": "sha256:a6c609c1f6ae72f3f1d287164b1d0d7ebfc02b9dce643fb383373edfafabcd53"
+        "source_sha256": "sha256:b0d75ab24f3a7ee51313d263d9d57f65a53f59c198b0fbf4b3f391742ac39dea"
       },
       {
         "citation_context": "in_text_citation",
@@ -105666,7 +105666,7 @@
         ],
         "source_id": "source-11b46a0435368f",
         "source_role": "generated_manuscript",
-        "source_sha256": "sha256:a6c609c1f6ae72f3f1d287164b1d0d7ebfc02b9dce643fb383373edfafabcd53"
+        "source_sha256": "sha256:b0d75ab24f3a7ee51313d263d9d57f65a53f59c198b0fbf4b3f391742ac39dea"
       },
       {
         "citation_context": "in_text_citation",
@@ -105682,7 +105682,7 @@
         ],
         "source_id": "source-296ff41148fff7",
         "source_role": "generated_manuscript",
-        "source_sha256": "sha256:a6c609c1f6ae72f3f1d287164b1d0d7ebfc02b9dce643fb383373edfafabcd53"
+        "source_sha256": "sha256:b0d75ab24f3a7ee51313d263d9d57f65a53f59c198b0fbf4b3f391742ac39dea"
       },
       {
         "citation_context": "in_text_citation",
@@ -105698,7 +105698,7 @@
         ],
         "source_id": "source-11b46a0435368f",
         "source_role": "generated_manuscript",
-        "source_sha256": "sha256:a6c609c1f6ae72f3f1d287164b1d0d7ebfc02b9dce643fb383373edfafabcd53"
+        "source_sha256": "sha256:b0d75ab24f3a7ee51313d263d9d57f65a53f59c198b0fbf4b3f391742ac39dea"
       },
       {
         "citation_context": "in_text_citation",
@@ -105714,7 +105714,7 @@
         ],
         "source_id": "source-3d300ccd5e4cbb",
         "source_role": "generated_manuscript",
-        "source_sha256": "sha256:a6c609c1f6ae72f3f1d287164b1d0d7ebfc02b9dce643fb383373edfafabcd53"
+        "source_sha256": "sha256:b0d75ab24f3a7ee51313d263d9d57f65a53f59c198b0fbf4b3f391742ac39dea"
       },
       {
         "citation_context": "in_text_citation",
@@ -105728,7 +105728,7 @@
         "qualifiers": [],
         "source_id": "source-5c72388a6ca10f",
         "source_role": "generated_manuscript",
-        "source_sha256": "sha256:a6c609c1f6ae72f3f1d287164b1d0d7ebfc02b9dce643fb383373edfafabcd53"
+        "source_sha256": "sha256:b0d75ab24f3a7ee51313d263d9d57f65a53f59c198b0fbf4b3f391742ac39dea"
       },
       {
         "citation_context": "in_text_citation",
@@ -105744,7 +105744,7 @@
         ],
         "source_id": "source-5c72388a6ca10f",
         "source_role": "generated_manuscript",
-        "source_sha256": "sha256:a6c609c1f6ae72f3f1d287164b1d0d7ebfc02b9dce643fb383373edfafabcd53"
+        "source_sha256": "sha256:b0d75ab24f3a7ee51313d263d9d57f65a53f59c198b0fbf4b3f391742ac39dea"
       },
       {
         "citation_context": "in_text_citation",
@@ -105760,7 +105760,7 @@
         ],
         "source_id": "source-39690ee8e07b0c",
         "source_role": "generated_manuscript",
-        "source_sha256": "sha256:a6c609c1f6ae72f3f1d287164b1d0d7ebfc02b9dce643fb383373edfafabcd53"
+        "source_sha256": "sha256:b0d75ab24f3a7ee51313d263d9d57f65a53f59c198b0fbf4b3f391742ac39dea"
       },
       {
         "citation_context": "in_text_citation",
@@ -105776,7 +105776,7 @@
         ],
         "source_id": "source-bc5d16b84e62c7",
         "source_role": "generated_manuscript",
-        "source_sha256": "sha256:a6c609c1f6ae72f3f1d287164b1d0d7ebfc02b9dce643fb383373edfafabcd53"
+        "source_sha256": "sha256:b0d75ab24f3a7ee51313d263d9d57f65a53f59c198b0fbf4b3f391742ac39dea"
       },
       {
         "citation_context": "in_text_citation",
@@ -105792,7 +105792,7 @@
         ],
         "source_id": "source-bc5d16b84e62c7",
         "source_role": "generated_manuscript",
-        "source_sha256": "sha256:a6c609c1f6ae72f3f1d287164b1d0d7ebfc02b9dce643fb383373edfafabcd53"
+        "source_sha256": "sha256:b0d75ab24f3a7ee51313d263d9d57f65a53f59c198b0fbf4b3f391742ac39dea"
       },
       {
         "citation_context": "in_text_citation",
@@ -105808,7 +105808,7 @@
         ],
         "source_id": "source-eeff3fa685af8a",
         "source_role": "generated_manuscript",
-        "source_sha256": "sha256:a6c609c1f6ae72f3f1d287164b1d0d7ebfc02b9dce643fb383373edfafabcd53"
+        "source_sha256": "sha256:b0d75ab24f3a7ee51313d263d9d57f65a53f59c198b0fbf4b3f391742ac39dea"
       },
       {
         "citation_context": "in_text_citation",
@@ -105824,15 +105824,15 @@
         ],
         "source_id": "source-0e9b7210b29d99",
         "source_role": "generated_manuscript",
-        "source_sha256": "sha256:a6c609c1f6ae72f3f1d287164b1d0d7ebfc02b9dce643fb383373edfafabcd53"
+        "source_sha256": "sha256:b0d75ab24f3a7ee51313d263d9d57f65a53f59c198b0fbf4b3f391742ac39dea"
       },
       {
         "citation_context": "in_text_citation",
         "command": "cite",
         "key": "matomaki-radziwill",
         "kind": "citation_usage",
-        "line_end": 7633,
-        "line_start": 7633,
+        "line_end": 7638,
+        "line_start": 7638,
         "paper_id": "erdos249-totient-reasoning-surface",
         "path": "paper/249/erdos249-totient-reasoning-surface.tex",
         "qualifiers": [
@@ -105840,15 +105840,15 @@
         ],
         "source_id": "proposed-direct-4e797194f74404",
         "source_role": "generated_manuscript",
-        "source_sha256": "sha256:a6c609c1f6ae72f3f1d287164b1d0d7ebfc02b9dce643fb383373edfafabcd53"
+        "source_sha256": "sha256:b0d75ab24f3a7ee51313d263d9d57f65a53f59c198b0fbf4b3f391742ac39dea"
       },
       {
         "citation_context": "in_text_citation",
         "command": "cite",
         "key": "tao-elliott",
         "kind": "citation_usage",
-        "line_end": 7636,
-        "line_start": 7636,
+        "line_end": 7641,
+        "line_start": 7641,
         "paper_id": "erdos249-totient-reasoning-surface",
         "path": "paper/249/erdos249-totient-reasoning-surface.tex",
         "qualifiers": [
@@ -105856,15 +105856,15 @@
         ],
         "source_id": "proposed-direct-4e797194f74404",
         "source_role": "generated_manuscript",
-        "source_sha256": "sha256:a6c609c1f6ae72f3f1d287164b1d0d7ebfc02b9dce643fb383373edfafabcd53"
+        "source_sha256": "sha256:b0d75ab24f3a7ee51313d263d9d57f65a53f59c198b0fbf4b3f391742ac39dea"
       },
       {
         "citation_context": "in_text_citation",
         "command": "cite",
         "key": "tao-teravainen",
         "kind": "citation_usage",
-        "line_end": 7638,
-        "line_start": 7638,
+        "line_end": 7643,
+        "line_start": 7643,
         "paper_id": "erdos249-totient-reasoning-surface",
         "path": "paper/249/erdos249-totient-reasoning-surface.tex",
         "qualifiers": [
@@ -105872,15 +105872,15 @@
         ],
         "source_id": "proposed-direct-4e797194f74404",
         "source_role": "generated_manuscript",
-        "source_sha256": "sha256:a6c609c1f6ae72f3f1d287164b1d0d7ebfc02b9dce643fb383373edfafabcd53"
+        "source_sha256": "sha256:b0d75ab24f3a7ee51313d263d9d57f65a53f59c198b0fbf4b3f391742ac39dea"
       },
       {
         "citation_context": "in_text_citation",
         "command": "cite",
         "key": "adamczewski-bugeaud",
         "kind": "citation_usage",
-        "line_end": 7808,
-        "line_start": 7808,
+        "line_end": 7813,
+        "line_start": 7813,
         "paper_id": "erdos249-totient-reasoning-surface",
         "path": "paper/249/erdos249-totient-reasoning-surface.tex",
         "qualifiers": [
@@ -105888,15 +105888,15 @@
         ],
         "source_id": "source-7c8ba4ea6eea79",
         "source_role": "generated_manuscript",
-        "source_sha256": "sha256:a6c609c1f6ae72f3f1d287164b1d0d7ebfc02b9dce643fb383373edfafabcd53"
+        "source_sha256": "sha256:b0d75ab24f3a7ee51313d263d9d57f65a53f59c198b0fbf4b3f391742ac39dea"
       },
       {
         "citation_context": "in_text_citation",
         "command": "cite",
         "key": "allouche-shallit",
         "kind": "citation_usage",
-        "line_end": 7906,
-        "line_start": 7906,
+        "line_end": 7911,
+        "line_start": 7911,
         "paper_id": "erdos249-totient-reasoning-surface",
         "path": "paper/249/erdos249-totient-reasoning-surface.tex",
         "qualifiers": [
@@ -105904,15 +105904,15 @@
         ],
         "source_id": "source-5752bb5009e4de",
         "source_role": "generated_manuscript",
-        "source_sha256": "sha256:a6c609c1f6ae72f3f1d287164b1d0d7ebfc02b9dce643fb383373edfafabcd53"
+        "source_sha256": "sha256:b0d75ab24f3a7ee51313d263d9d57f65a53f59c198b0fbf4b3f391742ac39dea"
       },
       {
         "citation_context": "in_text_citation",
         "command": "cite",
         "key": "coons",
         "kind": "citation_usage",
-        "line_end": 7911,
-        "line_start": 7911,
+        "line_end": 7916,
+        "line_start": 7916,
         "paper_id": "erdos249-totient-reasoning-surface",
         "path": "paper/249/erdos249-totient-reasoning-surface.tex",
         "qualifiers": [
@@ -105920,29 +105920,29 @@
         ],
         "source_id": "source-741da55b02c5a9",
         "source_role": "generated_manuscript",
-        "source_sha256": "sha256:a6c609c1f6ae72f3f1d287164b1d0d7ebfc02b9dce643fb383373edfafabcd53"
+        "source_sha256": "sha256:b0d75ab24f3a7ee51313d263d9d57f65a53f59c198b0fbf4b3f391742ac39dea"
       },
       {
         "citation_context": "in_text_citation",
         "command": "cite",
         "key": "wong2015",
         "kind": "citation_usage",
-        "line_end": 8776,
-        "line_start": 8776,
+        "line_end": 8781,
+        "line_start": 8781,
         "paper_id": "erdos249-totient-reasoning-surface",
         "path": "paper/249/erdos249-totient-reasoning-surface.tex",
         "qualifiers": [],
         "source_id": "source-0f61ad0796acdf",
         "source_role": "generated_manuscript",
-        "source_sha256": "sha256:a6c609c1f6ae72f3f1d287164b1d0d7ebfc02b9dce643fb383373edfafabcd53"
+        "source_sha256": "sha256:b0d75ab24f3a7ee51313d263d9d57f65a53f59c198b0fbf4b3f391742ac39dea"
       },
       {
         "citation_context": "in_text_citation",
         "command": "cite",
         "key": "kovac-tao",
         "kind": "citation_usage",
-        "line_end": 8780,
-        "line_start": 8780,
+        "line_end": 8785,
+        "line_start": 8785,
         "paper_id": "erdos249-totient-reasoning-surface",
         "path": "paper/249/erdos249-totient-reasoning-surface.tex",
         "qualifiers": [
@@ -105950,15 +105950,15 @@
         ],
         "source_id": "source-4f5fd0d7405e29",
         "source_role": "generated_manuscript",
-        "source_sha256": "sha256:a6c609c1f6ae72f3f1d287164b1d0d7ebfc02b9dce643fb383373edfafabcd53"
+        "source_sha256": "sha256:b0d75ab24f3a7ee51313d263d9d57f65a53f59c198b0fbf4b3f391742ac39dea"
       },
       {
         "citation_context": "in_text_citation",
         "command": "cite",
         "key": "merca2017",
         "kind": "citation_usage",
-        "line_end": 8782,
-        "line_start": 8782,
+        "line_end": 8787,
+        "line_start": 8787,
         "paper_id": "erdos249-totient-reasoning-surface",
         "path": "paper/249/erdos249-totient-reasoning-surface.tex",
         "qualifiers": [
@@ -105966,29 +105966,29 @@
         ],
         "source_id": "source-8935df46fb4693",
         "source_role": "generated_manuscript",
-        "source_sha256": "sha256:a6c609c1f6ae72f3f1d287164b1d0d7ebfc02b9dce643fb383373edfafabcd53"
+        "source_sha256": "sha256:b0d75ab24f3a7ee51313d263d9d57f65a53f59c198b0fbf4b3f391742ac39dea"
       },
       {
         "citation_context": "in_text_citation",
         "command": "cite",
         "key": "merca-schmidt",
         "kind": "citation_usage",
-        "line_end": 8783,
-        "line_start": 8783,
+        "line_end": 8788,
+        "line_start": 8788,
         "paper_id": "erdos249-totient-reasoning-surface",
         "path": "paper/249/erdos249-totient-reasoning-surface.tex",
         "qualifiers": [],
         "source_id": "source-619de19af78c4c",
         "source_role": "generated_manuscript",
-        "source_sha256": "sha256:a6c609c1f6ae72f3f1d287164b1d0d7ebfc02b9dce643fb383373edfafabcd53"
+        "source_sha256": "sha256:b0d75ab24f3a7ee51313d263d9d57f65a53f59c198b0fbf4b3f391742ac39dea"
       },
       {
         "citation_context": "in_text_citation",
         "command": "cite",
         "key": "bgs2016",
         "kind": "citation_usage",
-        "line_end": 8787,
-        "line_start": 8787,
+        "line_end": 8792,
+        "line_start": 8792,
         "paper_id": "erdos249-totient-reasoning-surface",
         "path": "paper/249/erdos249-totient-reasoning-surface.tex",
         "qualifiers": [
@@ -105996,15 +105996,15 @@
         ],
         "source_id": "proposed-direct-595203db1f6891",
         "source_role": "generated_manuscript",
-        "source_sha256": "sha256:a6c609c1f6ae72f3f1d287164b1d0d7ebfc02b9dce643fb383373edfafabcd53"
+        "source_sha256": "sha256:b0d75ab24f3a7ee51313d263d9d57f65a53f59c198b0fbf4b3f391742ac39dea"
       },
       {
         "citation_context": "in_text_citation",
         "command": "cite",
         "key": "bgs2016",
         "kind": "citation_usage",
-        "line_end": 8789,
-        "line_start": 8789,
+        "line_end": 8794,
+        "line_start": 8794,
         "paper_id": "erdos249-totient-reasoning-surface",
         "path": "paper/249/erdos249-totient-reasoning-surface.tex",
         "qualifiers": [
@@ -106012,15 +106012,15 @@
         ],
         "source_id": "proposed-direct-595203db1f6891",
         "source_role": "generated_manuscript",
-        "source_sha256": "sha256:a6c609c1f6ae72f3f1d287164b1d0d7ebfc02b9dce643fb383373edfafabcd53"
+        "source_sha256": "sha256:b0d75ab24f3a7ee51313d263d9d57f65a53f59c198b0fbf4b3f391742ac39dea"
       },
       {
         "citation_context": "in_text_citation",
         "command": "cite",
         "key": "adamczewski-bell-smertnig2023",
         "kind": "citation_usage",
-        "line_end": 8799,
-        "line_start": 8799,
+        "line_end": 8804,
+        "line_start": 8804,
         "paper_id": "erdos249-totient-reasoning-surface",
         "path": "paper/249/erdos249-totient-reasoning-surface.tex",
         "qualifiers": [
@@ -106028,15 +106028,15 @@
         ],
         "source_id": null,
         "source_role": "generated_manuscript",
-        "source_sha256": "sha256:a6c609c1f6ae72f3f1d287164b1d0d7ebfc02b9dce643fb383373edfafabcd53"
+        "source_sha256": "sha256:b0d75ab24f3a7ee51313d263d9d57f65a53f59c198b0fbf4b3f391742ac39dea"
       },
       {
         "citation_context": "in_text_citation",
         "command": "cite",
         "key": "bell-smertnig2026",
         "kind": "citation_usage",
-        "line_end": 8804,
-        "line_start": 8804,
+        "line_end": 8809,
+        "line_start": 8809,
         "paper_id": "erdos249-totient-reasoning-surface",
         "path": "paper/249/erdos249-totient-reasoning-surface.tex",
         "qualifiers": [
@@ -106044,15 +106044,15 @@
         ],
         "source_id": "source-3bc828513b4d63",
         "source_role": "generated_manuscript",
-        "source_sha256": "sha256:a6c609c1f6ae72f3f1d287164b1d0d7ebfc02b9dce643fb383373edfafabcd53"
+        "source_sha256": "sha256:b0d75ab24f3a7ee51313d263d9d57f65a53f59c198b0fbf4b3f391742ac39dea"
       },
       {
         "citation_context": "in_text_citation",
         "command": "cite",
         "key": "bell-bruin-coons",
         "kind": "citation_usage",
-        "line_end": 8806,
-        "line_start": 8806,
+        "line_end": 8811,
+        "line_start": 8811,
         "paper_id": "erdos249-totient-reasoning-surface",
         "path": "paper/249/erdos249-totient-reasoning-surface.tex",
         "qualifiers": [
@@ -106060,15 +106060,15 @@
         ],
         "source_id": "source-b791f5b49e0da6",
         "source_role": "generated_manuscript",
-        "source_sha256": "sha256:a6c609c1f6ae72f3f1d287164b1d0d7ebfc02b9dce643fb383373edfafabcd53"
+        "source_sha256": "sha256:b0d75ab24f3a7ee51313d263d9d57f65a53f59c198b0fbf4b3f391742ac39dea"
       },
       {
         "citation_context": "in_text_citation",
         "command": "cite",
         "key": "adamczewski-drmota-mullner",
         "kind": "citation_usage",
-        "line_end": 8812,
-        "line_start": 8812,
+        "line_end": 8817,
+        "line_start": 8817,
         "paper_id": "erdos249-totient-reasoning-surface",
         "path": "paper/249/erdos249-totient-reasoning-surface.tex",
         "qualifiers": [
@@ -106076,7 +106076,7 @@
         ],
         "source_id": "source-4afc43674f7082",
         "source_role": "generated_manuscript",
-        "source_sha256": "sha256:a6c609c1f6ae72f3f1d287164b1d0d7ebfc02b9dce643fb383373edfafabcd53"
+        "source_sha256": "sha256:b0d75ab24f3a7ee51313d263d9d57f65a53f59c198b0fbf4b3f391742ac39dea"
       },
       {
         "citation_context": "in_text_citation",
@@ -116234,7 +116234,7 @@
     "public_source_credit": "Names and direct citations are retained for published literature, software and public contributions. Source identity, exact local use, and mathematical correspondence are separate."
   },
   "source_registry": "docs/research-commons/source-attributions.json",
-  "source_registry_sha256": "sha256:361435907252e50b7dc96ca5d5701bb9f6e4d872580e1b7f8408495041668632",
+  "source_registry_sha256": "sha256:930396e11e84fb8ccdcb3db4204d2a3416582df1b88d9fa8e518f9bb29d1be82",
   "sources": [
     {
       "artifact_coordinates": [
@@ -120298,10 +120298,10 @@
         {
           "excerpt_sha256": "sha256:f37eea22c3c2e50c9106c29e8480d8c2ab20d0f3f59a7faec27317f14c9ea473",
           "expected_text": "\\bibitem{matomaki-radziwill}",
-          "line_end": 8951,
-          "line_start": 8945,
+          "line_end": 8956,
+          "line_start": 8950,
           "path": "paper/249/erdos249-totient-reasoning-surface.tex",
-          "sha256": "sha256:a6c609c1f6ae72f3f1d287164b1d0d7ebfc02b9dce643fb383373edfafabcd53"
+          "sha256": "sha256:b0d75ab24f3a7ee51313d263d9d57f65a53f59c198b0fbf4b3f391742ac39dea"
         },
         {
           "excerpt_sha256": "sha256:f37eea22c3c2e50c9106c29e8480d8c2ab20d0f3f59a7faec27317f14c9ea473",
@@ -120314,10 +120314,10 @@
         {
           "excerpt_sha256": "sha256:e35aaa04403be003a4b96499d83a53616643be3a1bc6ec591562551be6db9bf5",
           "expected_text": "\\bibitem{tao-elliott}",
-          "line_end": 8957,
-          "line_start": 8951,
+          "line_end": 8962,
+          "line_start": 8956,
           "path": "paper/249/erdos249-totient-reasoning-surface.tex",
-          "sha256": "sha256:a6c609c1f6ae72f3f1d287164b1d0d7ebfc02b9dce643fb383373edfafabcd53"
+          "sha256": "sha256:b0d75ab24f3a7ee51313d263d9d57f65a53f59c198b0fbf4b3f391742ac39dea"
         },
         {
           "excerpt_sha256": "sha256:e35aaa04403be003a4b96499d83a53616643be3a1bc6ec591562551be6db9bf5",
@@ -120330,10 +120330,10 @@
         {
           "excerpt_sha256": "sha256:4ca7b4c0db1de3a40807dc6214421cb78ee688d52511a96a2204550ee24c19a4",
           "expected_text": "\\bibitem{tao-teravainen}",
-          "line_end": 8964,
-          "line_start": 8957,
+          "line_end": 8969,
+          "line_start": 8962,
           "path": "paper/249/erdos249-totient-reasoning-surface.tex",
-          "sha256": "sha256:a6c609c1f6ae72f3f1d287164b1d0d7ebfc02b9dce643fb383373edfafabcd53"
+          "sha256": "sha256:b0d75ab24f3a7ee51313d263d9d57f65a53f59c198b0fbf4b3f391742ac39dea"
         },
         {
           "excerpt_sha256": "sha256:4ca7b4c0db1de3a40807dc6214421cb78ee688d52511a96a2204550ee24c19a4",
@@ -120370,8 +120370,8 @@
         {
           "excerpt_sha256": "sha256:f37eea22c3c2e50c9106c29e8480d8c2ab20d0f3f59a7faec27317f14c9ea473",
           "expected_text": "\\bibitem{matomaki-radziwill}",
-          "line_end": 8951,
-          "line_start": 8945,
+          "line_end": 8956,
+          "line_start": 8950,
           "path": "paper/249/erdos249-totient-reasoning-surface.tex"
         },
         {
@@ -120384,8 +120384,8 @@
         {
           "excerpt_sha256": "sha256:e35aaa04403be003a4b96499d83a53616643be3a1bc6ec591562551be6db9bf5",
           "expected_text": "\\bibitem{tao-elliott}",
-          "line_end": 8957,
-          "line_start": 8951,
+          "line_end": 8962,
+          "line_start": 8956,
           "path": "paper/249/erdos249-totient-reasoning-surface.tex"
         },
         {
@@ -120398,8 +120398,8 @@
         {
           "excerpt_sha256": "sha256:4ca7b4c0db1de3a40807dc6214421cb78ee688d52511a96a2204550ee24c19a4",
           "expected_text": "\\bibitem{tao-teravainen}",
-          "line_end": 8964,
-          "line_start": 8957,
+          "line_end": 8969,
+          "line_start": 8962,
           "path": "paper/249/erdos249-totient-reasoning-surface.tex"
         },
         {
@@ -120569,10 +120569,10 @@
         {
           "excerpt_sha256": "sha256:1e409fb0093faa23ebcc4e5651da0b5eac48a708ad25c90724afa7a140769712",
           "expected_text": "\\bibitem{bgs2016}",
-          "line_end": 8925,
-          "line_start": 8919,
+          "line_end": 8930,
+          "line_start": 8924,
           "path": "paper/249/erdos249-totient-reasoning-surface.tex",
-          "sha256": "sha256:a6c609c1f6ae72f3f1d287164b1d0d7ebfc02b9dce643fb383373edfafabcd53"
+          "sha256": "sha256:b0d75ab24f3a7ee51313d263d9d57f65a53f59c198b0fbf4b3f391742ac39dea"
         },
         {
           "excerpt_sha256": "sha256:1e409fb0093faa23ebcc4e5651da0b5eac48a708ad25c90724afa7a140769712",
@@ -120600,8 +120600,8 @@
         {
           "excerpt_sha256": "sha256:1e409fb0093faa23ebcc4e5651da0b5eac48a708ad25c90724afa7a140769712",
           "expected_text": "\\bibitem{bgs2016}",
-          "line_end": 8925,
-          "line_start": 8919,
+          "line_end": 8930,
+          "line_start": 8924,
           "path": "paper/249/erdos249-totient-reasoning-surface.tex"
         },
         {
@@ -121896,10 +121896,10 @@
         {
           "excerpt_sha256": "sha256:2ffe3c91d993950605f8bf070b0a5a11ffc1f8ef39055137701039e8577a8e67",
           "expected_text": "\\bibitem{schoenberg1936}",
-          "line_end": 8939,
-          "line_start": 8935,
+          "line_end": 8944,
+          "line_start": 8940,
           "path": "paper/249/erdos249-totient-reasoning-surface.tex",
-          "sha256": "sha256:a6c609c1f6ae72f3f1d287164b1d0d7ebfc02b9dce643fb383373edfafabcd53"
+          "sha256": "sha256:b0d75ab24f3a7ee51313d263d9d57f65a53f59c198b0fbf4b3f391742ac39dea"
         },
         {
           "excerpt_sha256": "sha256:2ffe3c91d993950605f8bf070b0a5a11ffc1f8ef39055137701039e8577a8e67",
@@ -121914,8 +121914,8 @@
         {
           "excerpt_sha256": "sha256:2ffe3c91d993950605f8bf070b0a5a11ffc1f8ef39055137701039e8577a8e67",
           "expected_text": "\\bibitem{schoenberg1936}",
-          "line_end": 8939,
-          "line_start": 8935,
+          "line_end": 8944,
+          "line_start": 8940,
           "path": "paper/249/erdos249-totient-reasoning-surface.tex"
         },
         {
@@ -122483,10 +122483,10 @@
         {
           "excerpt_sha256": "sha256:a550ec768381cedd7a6eeb6b4523783c7294044d1c637ec4e2264bb7d9a4439e",
           "expected_text": "\\bibitem{wong2015}",
-          "line_end": 8864,
-          "line_start": 8860,
+          "line_end": 8869,
+          "line_start": 8865,
           "path": "paper/249/erdos249-totient-reasoning-surface.tex",
-          "sha256": "sha256:a6c609c1f6ae72f3f1d287164b1d0d7ebfc02b9dce643fb383373edfafabcd53"
+          "sha256": "sha256:b0d75ab24f3a7ee51313d263d9d57f65a53f59c198b0fbf4b3f391742ac39dea"
         },
         {
           "excerpt_sha256": "sha256:a550ec768381cedd7a6eeb6b4523783c7294044d1c637ec4e2264bb7d9a4439e",
@@ -122508,8 +122508,8 @@
         {
           "excerpt_sha256": "sha256:a550ec768381cedd7a6eeb6b4523783c7294044d1c637ec4e2264bb7d9a4439e",
           "expected_text": "\\bibitem{wong2015}",
-          "line_end": 8864,
-          "line_start": 8860,
+          "line_end": 8869,
+          "line_start": 8865,
           "path": "paper/249/erdos249-totient-reasoning-surface.tex"
         },
         {
@@ -122686,10 +122686,10 @@
         {
           "excerpt_sha256": "sha256:727de5144fdf771c479a2e03e7b875cffecf9400543450974b25f25aced90f03",
           "expected_text": "\\bibitem{erdosgraham1980}",
-          "line_end": 8876,
-          "line_start": 8872,
+          "line_end": 8881,
+          "line_start": 8877,
           "path": "paper/249/erdos249-totient-reasoning-surface.tex",
-          "sha256": "sha256:a6c609c1f6ae72f3f1d287164b1d0d7ebfc02b9dce643fb383373edfafabcd53"
+          "sha256": "sha256:b0d75ab24f3a7ee51313d263d9d57f65a53f59c198b0fbf4b3f391742ac39dea"
         },
         {
           "excerpt_sha256": "sha256:727de5144fdf771c479a2e03e7b875cffecf9400543450974b25f25aced90f03",
@@ -122807,8 +122807,8 @@
         {
           "excerpt_sha256": "sha256:727de5144fdf771c479a2e03e7b875cffecf9400543450974b25f25aced90f03",
           "expected_text": "\\bibitem{erdosgraham1980}",
-          "line_end": 8876,
-          "line_start": 8872,
+          "line_end": 8881,
+          "line_start": 8877,
           "path": "paper/249/erdos249-totient-reasoning-surface.tex"
         },
         {
@@ -123230,10 +123230,10 @@
         {
           "excerpt_sha256": "sha256:c97e654465265fb62b6de801d7921a842ace01171d8790c26144b859fefa809c",
           "expected_text": "\\bibitem{martin-phi-inequalities}",
-          "line_end": 8860,
-          "line_start": 8856,
+          "line_end": 8865,
+          "line_start": 8861,
           "path": "paper/249/erdos249-totient-reasoning-surface.tex",
-          "sha256": "sha256:a6c609c1f6ae72f3f1d287164b1d0d7ebfc02b9dce643fb383373edfafabcd53"
+          "sha256": "sha256:b0d75ab24f3a7ee51313d263d9d57f65a53f59c198b0fbf4b3f391742ac39dea"
         },
         {
           "excerpt_sha256": "sha256:c97e654465265fb62b6de801d7921a842ace01171d8790c26144b859fefa809c",
@@ -123283,8 +123283,8 @@
         {
           "excerpt_sha256": "sha256:c97e654465265fb62b6de801d7921a842ace01171d8790c26144b859fefa809c",
           "expected_text": "\\bibitem{martin-phi-inequalities}",
-          "line_end": 8860,
-          "line_start": 8856,
+          "line_end": 8865,
+          "line_start": 8861,
           "path": "paper/249/erdos249-totient-reasoning-surface.tex"
         },
         {
@@ -125461,10 +125461,10 @@
         {
           "excerpt_sha256": "sha256:6b26831b0198ae83ddcc51944fe34abc4a33f500ca85d17497481409ce3268b5",
           "expected_text": "\\bibitem{toth-gcd}",
-          "line_end": 8901,
-          "line_start": 8896,
+          "line_end": 8906,
+          "line_start": 8901,
           "path": "paper/249/erdos249-totient-reasoning-surface.tex",
-          "sha256": "sha256:a6c609c1f6ae72f3f1d287164b1d0d7ebfc02b9dce643fb383373edfafabcd53"
+          "sha256": "sha256:b0d75ab24f3a7ee51313d263d9d57f65a53f59c198b0fbf4b3f391742ac39dea"
         },
         {
           "excerpt_sha256": "sha256:6b26831b0198ae83ddcc51944fe34abc4a33f500ca85d17497481409ce3268b5",
@@ -125479,8 +125479,8 @@
         {
           "excerpt_sha256": "sha256:6b26831b0198ae83ddcc51944fe34abc4a33f500ca85d17497481409ce3268b5",
           "expected_text": "\\bibitem{toth-gcd}",
-          "line_end": 8901,
-          "line_start": 8896,
+          "line_end": 8906,
+          "line_start": 8901,
           "path": "paper/249/erdos249-totient-reasoning-surface.tex"
         },
         {
@@ -126030,10 +126030,10 @@
         {
           "excerpt_sha256": "sha256:de208be728552e87a1ec173f99d8429dd11fd4df8ecf144d7252710e5141acaa",
           "expected_text": "\\bibitem{coons-jsr}",
-          "line_end": 8856,
-          "line_start": 8850,
+          "line_end": 8861,
+          "line_start": 8855,
           "path": "paper/249/erdos249-totient-reasoning-surface.tex",
-          "sha256": "sha256:a6c609c1f6ae72f3f1d287164b1d0d7ebfc02b9dce643fb383373edfafabcd53"
+          "sha256": "sha256:b0d75ab24f3a7ee51313d263d9d57f65a53f59c198b0fbf4b3f391742ac39dea"
         },
         {
           "excerpt_sha256": "sha256:de208be728552e87a1ec173f99d8429dd11fd4df8ecf144d7252710e5141acaa",
@@ -126076,8 +126076,8 @@
         {
           "excerpt_sha256": "sha256:de208be728552e87a1ec173f99d8429dd11fd4df8ecf144d7252710e5141acaa",
           "expected_text": "\\bibitem{coons-jsr}",
-          "line_end": 8856,
-          "line_start": 8850,
+          "line_end": 8861,
+          "line_start": 8855,
           "path": "paper/249/erdos249-totient-reasoning-surface.tex"
         },
         {
@@ -128964,10 +128964,10 @@
         {
           "excerpt_sha256": "sha256:e8efab4ceb7a738eebd6f794631df1b61792fb0a00d2d6d557380dd4e37f9c41",
           "expected_text": "\\bibitem{erdos-gal}",
-          "line_end": 8976,
-          "line_start": 8972,
+          "line_end": 8981,
+          "line_start": 8977,
           "path": "paper/249/erdos249-totient-reasoning-surface.tex",
-          "sha256": "sha256:a6c609c1f6ae72f3f1d287164b1d0d7ebfc02b9dce643fb383373edfafabcd53"
+          "sha256": "sha256:b0d75ab24f3a7ee51313d263d9d57f65a53f59c198b0fbf4b3f391742ac39dea"
         },
         {
           "excerpt_sha256": "sha256:e8efab4ceb7a738eebd6f794631df1b61792fb0a00d2d6d557380dd4e37f9c41",
@@ -128982,8 +128982,8 @@
         {
           "excerpt_sha256": "sha256:e8efab4ceb7a738eebd6f794631df1b61792fb0a00d2d6d557380dd4e37f9c41",
           "expected_text": "\\bibitem{erdos-gal}",
-          "line_end": 8976,
-          "line_start": 8972,
+          "line_end": 8981,
+          "line_start": 8977,
           "path": "paper/249/erdos249-totient-reasoning-surface.tex"
         },
         {
@@ -129182,10 +129182,10 @@
         {
           "excerpt_sha256": "sha256:a596a5a3ab90688c2d2e40605ef4e488e6632133e5a12a5f09f3821c37ac1dbd",
           "expected_text": "\\bibitem{bell-smertnig2026}",
-          "line_end": 8991,
-          "line_start": 8987,
+          "line_end": 8996,
+          "line_start": 8992,
           "path": "paper/249/erdos249-totient-reasoning-surface.tex",
-          "sha256": "sha256:a6c609c1f6ae72f3f1d287164b1d0d7ebfc02b9dce643fb383373edfafabcd53"
+          "sha256": "sha256:b0d75ab24f3a7ee51313d263d9d57f65a53f59c198b0fbf4b3f391742ac39dea"
         },
         {
           "excerpt_sha256": "sha256:a596a5a3ab90688c2d2e40605ef4e488e6632133e5a12a5f09f3821c37ac1dbd",
@@ -129263,8 +129263,8 @@
         {
           "excerpt_sha256": "sha256:a596a5a3ab90688c2d2e40605ef4e488e6632133e5a12a5f09f3821c37ac1dbd",
           "expected_text": "\\bibitem{bell-smertnig2026}",
-          "line_end": 8991,
-          "line_start": 8987,
+          "line_end": 8996,
+          "line_start": 8992,
           "path": "paper/249/erdos249-totient-reasoning-surface.tex"
         },
         {
@@ -129390,10 +129390,10 @@
         {
           "excerpt_sha256": "sha256:5ea3e979eefb577068ea145beb2c4d5913b323a0f5a413f315280b716ec5eb58",
           "expected_text": "\\bibitem{edeko-vdc}",
-          "line_end": 8945,
-          "line_start": 8939,
+          "line_end": 8950,
+          "line_start": 8944,
           "path": "paper/249/erdos249-totient-reasoning-surface.tex",
-          "sha256": "sha256:a6c609c1f6ae72f3f1d287164b1d0d7ebfc02b9dce643fb383373edfafabcd53"
+          "sha256": "sha256:b0d75ab24f3a7ee51313d263d9d57f65a53f59c198b0fbf4b3f391742ac39dea"
         },
         {
           "excerpt_sha256": "sha256:5ea3e979eefb577068ea145beb2c4d5913b323a0f5a413f315280b716ec5eb58",
@@ -129408,8 +129408,8 @@
         {
           "excerpt_sha256": "sha256:5ea3e979eefb577068ea145beb2c4d5913b323a0f5a413f315280b716ec5eb58",
           "expected_text": "\\bibitem{edeko-vdc}",
-          "line_end": 8945,
-          "line_start": 8939,
+          "line_end": 8950,
+          "line_start": 8944,
           "path": "paper/249/erdos249-totient-reasoning-surface.tex"
         },
         {
@@ -130305,10 +130305,10 @@
         {
           "excerpt_sha256": "sha256:c412b56a71492694abbd8a4bb30d4b12dd25d5050689bc96bb8d162c095f07c6",
           "expected_text": "\\bibitem{adamczewski-drmota-mullner}",
-          "line_end": 9004,
-          "line_start": 8997,
+          "line_end": 9009,
+          "line_start": 9002,
           "path": "paper/249/erdos249-totient-reasoning-surface.tex",
-          "sha256": "sha256:a6c609c1f6ae72f3f1d287164b1d0d7ebfc02b9dce643fb383373edfafabcd53"
+          "sha256": "sha256:b0d75ab24f3a7ee51313d263d9d57f65a53f59c198b0fbf4b3f391742ac39dea"
         },
         {
           "excerpt_sha256": "sha256:c412b56a71492694abbd8a4bb30d4b12dd25d5050689bc96bb8d162c095f07c6",
@@ -130347,8 +130347,8 @@
         {
           "excerpt_sha256": "sha256:c412b56a71492694abbd8a4bb30d4b12dd25d5050689bc96bb8d162c095f07c6",
           "expected_text": "\\bibitem{adamczewski-drmota-mullner}",
-          "line_end": 9004,
-          "line_start": 8997,
+          "line_end": 9009,
+          "line_start": 9002,
           "path": "paper/249/erdos249-totient-reasoning-surface.tex"
         },
         {
@@ -130707,10 +130707,10 @@
         {
           "excerpt_sha256": "sha256:aa7e7a743f9042755d99379ed9c411c18d6b86186718b25aa42a57c133a0f41e",
           "expected_text": "\\bibitem{kovac-tao}",
-          "line_end": 8919,
-          "line_start": 8913,
+          "line_end": 8924,
+          "line_start": 8918,
           "path": "paper/249/erdos249-totient-reasoning-surface.tex",
-          "sha256": "sha256:a6c609c1f6ae72f3f1d287164b1d0d7ebfc02b9dce643fb383373edfafabcd53"
+          "sha256": "sha256:b0d75ab24f3a7ee51313d263d9d57f65a53f59c198b0fbf4b3f391742ac39dea"
         },
         {
           "excerpt_sha256": "sha256:aa7e7a743f9042755d99379ed9c411c18d6b86186718b25aa42a57c133a0f41e",
@@ -130921,8 +130921,8 @@
         {
           "excerpt_sha256": "sha256:aa7e7a743f9042755d99379ed9c411c18d6b86186718b25aa42a57c133a0f41e",
           "expected_text": "\\bibitem{kovac-tao}",
-          "line_end": 8919,
-          "line_start": 8913,
+          "line_end": 8924,
+          "line_start": 8918,
           "path": "paper/249/erdos249-totient-reasoning-surface.tex"
         },
         {
@@ -131901,10 +131901,10 @@
         {
           "excerpt_sha256": "sha256:1faa5900afcaadc94dc78596f20f82bc542cdeea10be862bbe3be3e9ca92f21f",
           "expected_text": "\\bibitem{allouche-shallit}",
-          "line_end": 8845,
-          "line_start": 8840,
+          "line_end": 8850,
+          "line_start": 8845,
           "path": "paper/249/erdos249-totient-reasoning-surface.tex",
-          "sha256": "sha256:a6c609c1f6ae72f3f1d287164b1d0d7ebfc02b9dce643fb383373edfafabcd53"
+          "sha256": "sha256:b0d75ab24f3a7ee51313d263d9d57f65a53f59c198b0fbf4b3f391742ac39dea"
         },
         {
           "excerpt_sha256": "sha256:1faa5900afcaadc94dc78596f20f82bc542cdeea10be862bbe3be3e9ca92f21f",
@@ -131933,8 +131933,8 @@
         {
           "excerpt_sha256": "sha256:1faa5900afcaadc94dc78596f20f82bc542cdeea10be862bbe3be3e9ca92f21f",
           "expected_text": "\\bibitem{allouche-shallit}",
-          "line_end": 8845,
-          "line_start": 8840,
+          "line_end": 8850,
+          "line_start": 8845,
           "path": "paper/249/erdos249-totient-reasoning-surface.tex"
         },
         {
@@ -132779,10 +132779,10 @@
         {
           "excerpt_sha256": "sha256:83ff6ef68815bf0b391a143e9e5336b1ff5b127bd0fbcac01ed9f7a399d02225",
           "expected_text": "\\bibitem{erdos1948lambert}",
-          "line_end": 8880,
-          "line_start": 8876,
+          "line_end": 8885,
+          "line_start": 8881,
           "path": "paper/249/erdos249-totient-reasoning-surface.tex",
-          "sha256": "sha256:a6c609c1f6ae72f3f1d287164b1d0d7ebfc02b9dce643fb383373edfafabcd53"
+          "sha256": "sha256:b0d75ab24f3a7ee51313d263d9d57f65a53f59c198b0fbf4b3f391742ac39dea"
         },
         {
           "excerpt_sha256": "sha256:83ff6ef68815bf0b391a143e9e5336b1ff5b127bd0fbcac01ed9f7a399d02225",
@@ -132962,8 +132962,8 @@
         {
           "excerpt_sha256": "sha256:83ff6ef68815bf0b391a143e9e5336b1ff5b127bd0fbcac01ed9f7a399d02225",
           "expected_text": "\\bibitem{erdos1948lambert}",
-          "line_end": 8880,
-          "line_start": 8876,
+          "line_end": 8885,
+          "line_start": 8881,
           "path": "paper/249/erdos249-totient-reasoning-surface.tex"
         },
         {
@@ -133345,10 +133345,10 @@
         {
           "excerpt_sha256": "sha256:77de149e1b9e4c1cbd9c39690b007e9959c56e7732149a19d644b96ce9c396c8",
           "expected_text": "\\bibitem{everest-periodic}",
-          "line_end": 8972,
-          "line_start": 8968,
+          "line_end": 8977,
+          "line_start": 8973,
           "path": "paper/249/erdos249-totient-reasoning-surface.tex",
-          "sha256": "sha256:a6c609c1f6ae72f3f1d287164b1d0d7ebfc02b9dce643fb383373edfafabcd53"
+          "sha256": "sha256:b0d75ab24f3a7ee51313d263d9d57f65a53f59c198b0fbf4b3f391742ac39dea"
         },
         {
           "excerpt_sha256": "sha256:77de149e1b9e4c1cbd9c39690b007e9959c56e7732149a19d644b96ce9c396c8",
@@ -133363,8 +133363,8 @@
         {
           "excerpt_sha256": "sha256:77de149e1b9e4c1cbd9c39690b007e9959c56e7732149a19d644b96ce9c396c8",
           "expected_text": "\\bibitem{everest-periodic}",
-          "line_end": 8972,
-          "line_start": 8968,
+          "line_end": 8977,
+          "line_start": 8973,
           "path": "paper/249/erdos249-totient-reasoning-surface.tex"
         },
         {
@@ -133867,10 +133867,10 @@
         {
           "excerpt_sha256": "sha256:168b06eeef0d655602ef10d79d4d5a2c298c562e5b09b730a812b94d0458d1a2",
           "expected_text": "\\bibitem{merca-schmidt}",
-          "line_end": 8908,
-          "line_start": 8901,
+          "line_end": 8913,
+          "line_start": 8906,
           "path": "paper/249/erdos249-totient-reasoning-surface.tex",
-          "sha256": "sha256:a6c609c1f6ae72f3f1d287164b1d0d7ebfc02b9dce643fb383373edfafabcd53"
+          "sha256": "sha256:b0d75ab24f3a7ee51313d263d9d57f65a53f59c198b0fbf4b3f391742ac39dea"
         },
         {
           "excerpt_sha256": "sha256:168b06eeef0d655602ef10d79d4d5a2c298c562e5b09b730a812b94d0458d1a2",
@@ -133898,8 +133898,8 @@
         {
           "excerpt_sha256": "sha256:168b06eeef0d655602ef10d79d4d5a2c298c562e5b09b730a812b94d0458d1a2",
           "expected_text": "\\bibitem{merca-schmidt}",
-          "line_end": 8908,
-          "line_start": 8901,
+          "line_end": 8913,
+          "line_start": 8906,
           "path": "paper/249/erdos249-totient-reasoning-surface.tex"
         },
         {
@@ -134794,10 +134794,10 @@
         {
           "excerpt_sha256": "sha256:786abf98fbd01e8ff40ec5a22574fff70c8c6565197a70a1b1cf5f71fbf62c38",
           "expected_text": "\\bibitem{nesterenko1996}",
-          "line_end": 8891,
-          "line_start": 8886,
+          "line_end": 8896,
+          "line_start": 8891,
           "path": "paper/249/erdos249-totient-reasoning-surface.tex",
-          "sha256": "sha256:a6c609c1f6ae72f3f1d287164b1d0d7ebfc02b9dce643fb383373edfafabcd53"
+          "sha256": "sha256:b0d75ab24f3a7ee51313d263d9d57f65a53f59c198b0fbf4b3f391742ac39dea"
         },
         {
           "excerpt_sha256": "sha256:786abf98fbd01e8ff40ec5a22574fff70c8c6565197a70a1b1cf5f71fbf62c38",
@@ -134845,8 +134845,8 @@
         {
           "excerpt_sha256": "sha256:786abf98fbd01e8ff40ec5a22574fff70c8c6565197a70a1b1cf5f71fbf62c38",
           "expected_text": "\\bibitem{nesterenko1996}",
-          "line_end": 8891,
-          "line_start": 8886,
+          "line_end": 8896,
+          "line_start": 8891,
           "path": "paper/249/erdos249-totient-reasoning-surface.tex"
         },
         {
@@ -136437,10 +136437,10 @@
         {
           "excerpt_sha256": "sha256:baac1f8ff06d86954ea6fb3d6ea4be3f7ba3e7cc9c207ea61e4e3d1c42db53d0",
           "expected_text": "\\bibitem{allouche-shallit-yassawi}",
-          "line_end": 8987,
-          "line_start": 8981,
+          "line_end": 8992,
+          "line_start": 8986,
           "path": "paper/249/erdos249-totient-reasoning-surface.tex",
-          "sha256": "sha256:a6c609c1f6ae72f3f1d287164b1d0d7ebfc02b9dce643fb383373edfafabcd53"
+          "sha256": "sha256:b0d75ab24f3a7ee51313d263d9d57f65a53f59c198b0fbf4b3f391742ac39dea"
         },
         {
           "excerpt_sha256": "sha256:baac1f8ff06d86954ea6fb3d6ea4be3f7ba3e7cc9c207ea61e4e3d1c42db53d0",
@@ -136462,8 +136462,8 @@
         {
           "excerpt_sha256": "sha256:baac1f8ff06d86954ea6fb3d6ea4be3f7ba3e7cc9c207ea61e4e3d1c42db53d0",
           "expected_text": "\\bibitem{allouche-shallit-yassawi}",
-          "line_end": 8987,
-          "line_start": 8981,
+          "line_end": 8992,
+          "line_start": 8986,
           "path": "paper/249/erdos249-totient-reasoning-surface.tex"
         },
         {
@@ -136560,10 +136560,10 @@
         {
           "excerpt_sha256": "sha256:d225e8a6b24e1aa1895e5b08441a48c78042c267387c9e1c0073591e2991cb37",
           "expected_text": "\\bibitem{postelmans-vanassche}",
-          "line_end": 8886,
-          "line_start": 8880,
+          "line_end": 8891,
+          "line_start": 8885,
           "path": "paper/249/erdos249-totient-reasoning-surface.tex",
-          "sha256": "sha256:a6c609c1f6ae72f3f1d287164b1d0d7ebfc02b9dce643fb383373edfafabcd53"
+          "sha256": "sha256:b0d75ab24f3a7ee51313d263d9d57f65a53f59c198b0fbf4b3f391742ac39dea"
         },
         {
           "excerpt_sha256": "sha256:d225e8a6b24e1aa1895e5b08441a48c78042c267387c9e1c0073591e2991cb37",
@@ -136630,8 +136630,8 @@
         {
           "excerpt_sha256": "sha256:d225e8a6b24e1aa1895e5b08441a48c78042c267387c9e1c0073591e2991cb37",
           "expected_text": "\\bibitem{postelmans-vanassche}",
-          "line_end": 8886,
-          "line_start": 8880,
+          "line_end": 8891,
+          "line_start": 8885,
           "path": "paper/249/erdos249-totient-reasoning-surface.tex"
         },
         {
@@ -136926,10 +136926,10 @@
         {
           "excerpt_sha256": "sha256:bb9e02a0cb308737040e1d9af54ab2a42d227d1dbf584528d1d8763f1f2fe1e1",
           "expected_text": "\\bibitem{eldar2026oeis}",
-          "line_end": 8868,
-          "line_start": 8864,
+          "line_end": 8873,
+          "line_start": 8869,
           "path": "paper/249/erdos249-totient-reasoning-surface.tex",
-          "sha256": "sha256:a6c609c1f6ae72f3f1d287164b1d0d7ebfc02b9dce643fb383373edfafabcd53"
+          "sha256": "sha256:b0d75ab24f3a7ee51313d263d9d57f65a53f59c198b0fbf4b3f391742ac39dea"
         },
         {
           "excerpt_sha256": "sha256:bb9e02a0cb308737040e1d9af54ab2a42d227d1dbf584528d1d8763f1f2fe1e1",
@@ -136951,8 +136951,8 @@
         {
           "excerpt_sha256": "sha256:bb9e02a0cb308737040e1d9af54ab2a42d227d1dbf584528d1d8763f1f2fe1e1",
           "expected_text": "\\bibitem{eldar2026oeis}",
-          "line_end": 8868,
-          "line_start": 8864,
+          "line_end": 8873,
+          "line_start": 8869,
           "path": "paper/249/erdos249-totient-reasoning-surface.tex"
         },
         {
@@ -137319,10 +137319,10 @@
         {
           "excerpt_sha256": "sha256:5cedcebcfca20ab63e92ba4441d035c85b0a632e564a43408ffe6b79fe30ae48",
           "expected_text": "\\bibitem{coons}",
-          "line_end": 8850,
-          "line_start": 8845,
+          "line_end": 8855,
+          "line_start": 8850,
           "path": "paper/249/erdos249-totient-reasoning-surface.tex",
-          "sha256": "sha256:a6c609c1f6ae72f3f1d287164b1d0d7ebfc02b9dce643fb383373edfafabcd53"
+          "sha256": "sha256:b0d75ab24f3a7ee51313d263d9d57f65a53f59c198b0fbf4b3f391742ac39dea"
         },
         {
           "excerpt_sha256": "sha256:5cedcebcfca20ab63e92ba4441d035c85b0a632e564a43408ffe6b79fe30ae48",
@@ -137400,8 +137400,8 @@
         {
           "excerpt_sha256": "sha256:5cedcebcfca20ab63e92ba4441d035c85b0a632e564a43408ffe6b79fe30ae48",
           "expected_text": "\\bibitem{coons}",
-          "line_end": 8850,
-          "line_start": 8845,
+          "line_end": 8855,
+          "line_start": 8850,
           "path": "paper/249/erdos249-totient-reasoning-surface.tex"
         },
         {
@@ -138928,10 +138928,10 @@
         {
           "excerpt_sha256": "sha256:48c8f377367df5c421434058ed0f1e7474c781ee36061cf7ab0d39eda785c36d",
           "expected_text": "\\bibitem{adamczewski-bugeaud}",
-          "line_end": 8968,
-          "line_start": 8964,
+          "line_end": 8973,
+          "line_start": 8969,
           "path": "paper/249/erdos249-totient-reasoning-surface.tex",
-          "sha256": "sha256:a6c609c1f6ae72f3f1d287164b1d0d7ebfc02b9dce643fb383373edfafabcd53"
+          "sha256": "sha256:b0d75ab24f3a7ee51313d263d9d57f65a53f59c198b0fbf4b3f391742ac39dea"
         },
         {
           "excerpt_sha256": "sha256:48c8f377367df5c421434058ed0f1e7474c781ee36061cf7ab0d39eda785c36d",
@@ -138970,8 +138970,8 @@
         {
           "excerpt_sha256": "sha256:48c8f377367df5c421434058ed0f1e7474c781ee36061cf7ab0d39eda785c36d",
           "expected_text": "\\bibitem{adamczewski-bugeaud}",
-          "line_end": 8968,
-          "line_start": 8964,
+          "line_end": 8973,
+          "line_start": 8969,
           "path": "paper/249/erdos249-totient-reasoning-surface.tex"
         },
         {
@@ -141684,10 +141684,10 @@
         {
           "excerpt_sha256": "sha256:68764d4d7a89374c4c04bae75c94f6c2e0e288f6e20da9c4a285948259753998",
           "expected_text": "\\bibitem{merca2017}",
-          "line_end": 8913,
-          "line_start": 8908,
+          "line_end": 8918,
+          "line_start": 8913,
           "path": "paper/249/erdos249-totient-reasoning-surface.tex",
-          "sha256": "sha256:a6c609c1f6ae72f3f1d287164b1d0d7ebfc02b9dce643fb383373edfafabcd53"
+          "sha256": "sha256:b0d75ab24f3a7ee51313d263d9d57f65a53f59c198b0fbf4b3f391742ac39dea"
         },
         {
           "excerpt_sha256": "sha256:68764d4d7a89374c4c04bae75c94f6c2e0e288f6e20da9c4a285948259753998",
@@ -141715,8 +141715,8 @@
         {
           "excerpt_sha256": "sha256:68764d4d7a89374c4c04bae75c94f6c2e0e288f6e20da9c4a285948259753998",
           "expected_text": "\\bibitem{merca2017}",
-          "line_end": 8913,
-          "line_start": 8908,
+          "line_end": 8918,
+          "line_start": 8913,
           "path": "paper/249/erdos249-totient-reasoning-surface.tex"
         },
         {
@@ -143422,10 +143422,10 @@
         {
           "excerpt_sha256": "sha256:6f68ca842cab80e0e80859b0448d856556a74a77fbf2793f408455173289681c",
           "expected_text": "\\bibitem{fan2026totient}",
-          "line_end": 8872,
-          "line_start": 8868,
+          "line_end": 8877,
+          "line_start": 8873,
           "path": "paper/249/erdos249-totient-reasoning-surface.tex",
-          "sha256": "sha256:a6c609c1f6ae72f3f1d287164b1d0d7ebfc02b9dce643fb383373edfafabcd53"
+          "sha256": "sha256:b0d75ab24f3a7ee51313d263d9d57f65a53f59c198b0fbf4b3f391742ac39dea"
         },
         {
           "excerpt_sha256": "sha256:6f68ca842cab80e0e80859b0448d856556a74a77fbf2793f408455173289681c",
@@ -143447,8 +143447,8 @@
         {
           "excerpt_sha256": "sha256:6f68ca842cab80e0e80859b0448d856556a74a77fbf2793f408455173289681c",
           "expected_text": "\\bibitem{fan2026totient}",
-          "line_end": 8872,
-          "line_start": 8868,
+          "line_end": 8877,
+          "line_start": 8873,
           "path": "paper/249/erdos249-totient-reasoning-surface.tex"
         },
         {
@@ -144310,10 +144310,10 @@
         {
           "excerpt_sha256": "sha256:1afac1390d37599a1aabc74b5e4f00b9c13fe3b5510b23747164aafc5cabb79f",
           "expected_text": "\\bibitem{yazdani2001}",
-          "line_end": 8981,
-          "line_start": 8976,
+          "line_end": 8986,
+          "line_start": 8981,
           "path": "paper/249/erdos249-totient-reasoning-surface.tex",
-          "sha256": "sha256:a6c609c1f6ae72f3f1d287164b1d0d7ebfc02b9dce643fb383373edfafabcd53"
+          "sha256": "sha256:b0d75ab24f3a7ee51313d263d9d57f65a53f59c198b0fbf4b3f391742ac39dea"
         },
         {
           "excerpt_sha256": "sha256:1afac1390d37599a1aabc74b5e4f00b9c13fe3b5510b23747164aafc5cabb79f",
@@ -144335,8 +144335,8 @@
         {
           "excerpt_sha256": "sha256:1afac1390d37599a1aabc74b5e4f00b9c13fe3b5510b23747164aafc5cabb79f",
           "expected_text": "\\bibitem{yazdani2001}",
-          "line_end": 8981,
-          "line_start": 8976,
+          "line_end": 8986,
+          "line_start": 8981,
           "path": "paper/249/erdos249-totient-reasoning-surface.tex"
         },
         {
@@ -148016,10 +148016,10 @@
         {
           "excerpt_sha256": "sha256:e10593522712515931ddcbaa7131d36a55628516394338e405b737d442819636",
           "expected_text": "\\bibitem{bell-bruin-coons}",
-          "line_end": 8997,
-          "line_start": 8991,
+          "line_end": 9002,
+          "line_start": 8996,
           "path": "paper/249/erdos249-totient-reasoning-surface.tex",
-          "sha256": "sha256:a6c609c1f6ae72f3f1d287164b1d0d7ebfc02b9dce643fb383373edfafabcd53"
+          "sha256": "sha256:b0d75ab24f3a7ee51313d263d9d57f65a53f59c198b0fbf4b3f391742ac39dea"
         },
         {
           "excerpt_sha256": "sha256:e10593522712515931ddcbaa7131d36a55628516394338e405b737d442819636",
@@ -148041,8 +148041,8 @@
         {
           "excerpt_sha256": "sha256:e10593522712515931ddcbaa7131d36a55628516394338e405b737d442819636",
           "expected_text": "\\bibitem{bell-bruin-coons}",
-          "line_end": 8997,
-          "line_start": 8991,
+          "line_end": 9002,
+          "line_start": 8996,
           "path": "paper/249/erdos249-totient-reasoning-surface.tex"
         },
         {
@@ -148544,10 +148544,10 @@
         {
           "excerpt_sha256": "sha256:3b4314143d0179f0e80db37bd37b8d4c9238a3d5a98cff4c888fcdf15fd2d416",
           "expected_text": "\\bibitem{granville-smooth}",
-          "line_end": 8930,
-          "line_start": 8925,
+          "line_end": 8935,
+          "line_start": 8930,
           "path": "paper/249/erdos249-totient-reasoning-surface.tex",
-          "sha256": "sha256:a6c609c1f6ae72f3f1d287164b1d0d7ebfc02b9dce643fb383373edfafabcd53"
+          "sha256": "sha256:b0d75ab24f3a7ee51313d263d9d57f65a53f59c198b0fbf4b3f391742ac39dea"
         },
         {
           "excerpt_sha256": "sha256:3b4314143d0179f0e80db37bd37b8d4c9238a3d5a98cff4c888fcdf15fd2d416",
@@ -148562,8 +148562,8 @@
         {
           "excerpt_sha256": "sha256:3b4314143d0179f0e80db37bd37b8d4c9238a3d5a98cff4c888fcdf15fd2d416",
           "expected_text": "\\bibitem{granville-smooth}",
-          "line_end": 8930,
-          "line_start": 8925,
+          "line_end": 8935,
+          "line_start": 8930,
           "path": "paper/249/erdos249-totient-reasoning-surface.tex"
         },
         {
@@ -149163,10 +149163,10 @@
         {
           "excerpt_sha256": "sha256:cda83ebde02e28a432b8ceb19002a8a337d3c75febb082deef2e12df21f76d3e",
           "expected_text": "\\bibitem{schramm-gcd}",
-          "line_end": 8896,
-          "line_start": 8891,
+          "line_end": 8901,
+          "line_start": 8896,
           "path": "paper/249/erdos249-totient-reasoning-surface.tex",
-          "sha256": "sha256:a6c609c1f6ae72f3f1d287164b1d0d7ebfc02b9dce643fb383373edfafabcd53"
+          "sha256": "sha256:b0d75ab24f3a7ee51313d263d9d57f65a53f59c198b0fbf4b3f391742ac39dea"
         },
         {
           "excerpt_sha256": "sha256:cda83ebde02e28a432b8ceb19002a8a337d3c75febb082deef2e12df21f76d3e",
@@ -149181,8 +149181,8 @@
         {
           "excerpt_sha256": "sha256:cda83ebde02e28a432b8ceb19002a8a337d3c75febb082deef2e12df21f76d3e",
           "expected_text": "\\bibitem{schramm-gcd}",
-          "line_end": 8896,
-          "line_start": 8891,
+          "line_end": 8901,
+          "line_start": 8896,
           "path": "paper/249/erdos249-totient-reasoning-surface.tex"
         },
         {
@@ -153323,10 +153323,10 @@
         {
           "excerpt_sha256": "sha256:32599e7a2120d5129deed6138e89e7ebef17cd091f20f82776fde8449312e5ca",
           "expected_text": "\\bibitem{schoenberg1928}",
-          "line_end": 8935,
-          "line_start": 8930,
+          "line_end": 8940,
+          "line_start": 8935,
           "path": "paper/249/erdos249-totient-reasoning-surface.tex",
-          "sha256": "sha256:a6c609c1f6ae72f3f1d287164b1d0d7ebfc02b9dce643fb383373edfafabcd53"
+          "sha256": "sha256:b0d75ab24f3a7ee51313d263d9d57f65a53f59c198b0fbf4b3f391742ac39dea"
         },
         {
           "excerpt_sha256": "sha256:32599e7a2120d5129deed6138e89e7ebef17cd091f20f82776fde8449312e5ca",
@@ -153341,8 +153341,8 @@
         {
           "excerpt_sha256": "sha256:32599e7a2120d5129deed6138e89e7ebef17cd091f20f82776fde8449312e5ca",
           "expected_text": "\\bibitem{schoenberg1928}",
-          "line_end": 8935,
-          "line_start": 8930,
+          "line_end": 8940,
+          "line_start": 8935,
           "path": "paper/249/erdos249-totient-reasoning-surface.tex"
         },
         {
