@@ -495,7 +495,8 @@ class Refutation(unittest.TestCase):
             builder.write_outputs(projection, payload, Path(tmp) / "p.json", gz)
             graph, loaded = query.load(gz)
             packet = query.packet_markdown(graph, loaded, "68", 12)
-            targets = packet.split("## 2.")[0]
+            targets = packet.split("## 3.")[0]
+            self.assertIn("## 2. Open targets among the problem's own statements", targets)
             self.assertNotIn("`R`", targets.replace(" (refuted: this route is dead)", ""))
             self.assertIn("## Refuted statements", packet)
             self.assertEqual(query.statement_view(graph, loaded, "Q")["refutation"]["kind"], "derived")
@@ -882,7 +883,8 @@ class Papers(unittest.TestCase):
         self.assertEqual([e["row"] for e in out["notable"]], ["r1"])
 
 
-SIBLING_SUITES = ("test_argument_graph_frontier", "test_argument_graph_contracts", "test_probe_semantics")
+SIBLING_SUITES = ("test_argument_graph_frontier", "test_argument_graph_interfaces",
+                  "test_argument_graph_contracts", "test_probe_semantics")
 
 
 if __name__ == "__main__":

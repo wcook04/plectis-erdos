@@ -64,6 +64,8 @@ attribute a theorem to a problem; they never create an edge.
   restated (``joint_endpoint_equivalence``).
 * The *leverage* of an open statement ``A`` is the set of open statements that
   become supplied when ``A`` is added and the fixpoint is recomputed.
+* The *interface chain* of a weakened hypothesis lists, level by level, what
+  the theorem needs of it (``argument_graph_interfaces.py``).
 
 The producer relation is a lower bound (see the exporter's docstring); a
 statement reported open may be supplied by an argument the export did not
@@ -85,8 +87,10 @@ from typing import Any, Iterable
 
 try:
     from argument_graph_frontier import EVIDENCE as JOINT_EVIDENCE, Frontier
+    from argument_graph_interfaces import Interfaces
 except ImportError:  # imported as the package module scripts.build_argument_continuations
     from scripts.argument_graph_frontier import EVIDENCE as JOINT_EVIDENCE, Frontier  # type: ignore
+    from scripts.argument_graph_interfaces import Interfaces  # type: ignore
 
 ROOT = Path(__file__).resolve().parents[1]
 SCHEMA = "erdos249257-argument-continuations/2"
@@ -1054,7 +1058,7 @@ class Graph:
             for r in left:
                 self._by_residual_open[r].append(index)
         for cache in ("_reduced_by_head", "_leverage_cache", "_class_closure", "_frontier", "_bundle_cache",
-                      "_bundle_check_work"):
+                      "_bundle_check_work", "_interfaces"):
             self.__dict__.pop(cache, None)
         self._frontier = frontier
         self._mark_idle_open()
@@ -1158,6 +1162,13 @@ class Graph:
         index = self.__dict__.get("_frontier")
         if index is None:
             index = self._frontier = Frontier(self)
+        return index
+
+    def interfaces(self) -> Interfaces:
+        """The interface chains of this analysed graph's weakenings."""
+        index = self.__dict__.get("_interfaces")
+        if index is None:
+            index = self._interfaces = Interfaces(self)
         return index
 
     def bundles(self, key: str) -> tuple[list[list[str]], bool]:
@@ -1512,6 +1523,64 @@ def compositions(graph: "Graph", papers: dict[str, list[dict[str, Any]]]) -> lis
     return out
 
 
+# Arithmetic nobody writes in a statement: a numeral subtracted from a numeral
+# (``0 - 1``, the ``1 - 1`` of ``n - 1 + 1 - 1``), or zero added, multiplied or
+# divided (``0 / (0 + 0)``). Such a statement is an instance the unifier
+# produced by substituting literals. An exponent (``2 ^ 3 - 1``), a projection
+# (``x.1 - 1``), a quotient or product on the right (``1 - 1 / 2``) and a
+# rational literal (``1 / 2``) do not count.
+LITERAL_ARITHMETIC = (
+    re.compile(r"(?<!\^ )(?<![\w.'])\d+ - \d+(?![\w.]| ?[/*^•])"),
+    re.compile(r"(?<![\w.'^])0 [+*/] "),
+    re.compile(r" [+*] 0(?![\w.])"),
+)
+
+
+def instantiation_artifact(text: str | None) -> bool:
+    """Whether a statement's rendering does literal arithmetic nobody writes
+    (``LITERAL_ARITHMETIC``): a likely instantiation artifact, ranked below
+    the rest and marked, never hidden."""
+    return bool(text) and any(pattern.search(text) for pattern in LITERAL_ARITHMETIC)
+
+
+def paper_inputs(graph: "Graph", papers_of: Any, problem: str) -> list[dict[str, Any]]:
+    """The closed obligations the graph does not supply of the theorems that
+    problem ``problem``'s papers cite (the paper-to-Lean ledger), each with the
+    paper results that assume it: the problem's named inputs, which anchor its
+    frontier. An obligation the theorem's proof never uses (an idle row)
+    is marked. Open inputs first, then refuted ones (the results that assume
+    them are vacuous); within each, literal arithmetic last, then the most
+    assumed."""
+    idle_dropped: dict[str, set[str]] = defaultdict(set)
+    for entry in graph.idle:
+        for dropped in entry.get("dropped", []):
+            if dropped.get("key"):
+                idle_dropped[entry.get("theorem")].add(dropped["key"])
+    inputs: dict[str, dict[str, Any]] = {}
+    for name in sorted(graph.theorems):
+        rows = [p for p in papers_of(name) or [] if str(p.get("problem")) == str(problem)]
+        if not rows:
+            continue
+        for key in graph.theorems[name].get("hypotheses", []):
+            if key in graph.supplied:
+                continue
+            entry = inputs.setdefault(key, {
+                "key": key, "type": graph.statements.get(key, {}).get("type"), "status": graph.status(key),
+                "artifact": instantiation_artifact(graph.statements.get(key, {}).get("type")),
+                "results": [], "theorems": []})
+            if name not in entry["theorems"]:
+                entry["theorems"].append(name)
+            for row in rows:
+                entry["results"].append({"label": row.get("label"), "paper": row.get("paper"),
+                                         "side": row.get("side"), "source": row.get("source"),
+                                         "comparator": row.get("comparator"), "theorem": name,
+                                         "unused_by_proof": key in idle_dropped.get(name, set())})
+    for entry in inputs.values():
+        entry["result_count"] = len({(r["paper"], r["label"]) for r in entry["results"]})
+    return sorted(inputs.values(), key=lambda e: (e["status"] != "open", e["artifact"], -e["result_count"],
+                                                  e["type"] or "", e["key"]))
+
+
 def joint_check_row(check: dict[str, Any]) -> dict[str, Any]:
     """A joint check as the projection keeps it: the verdict, and the
     witnesses of a conflict or of a restatement of the target."""
@@ -1525,6 +1594,55 @@ def joint_check_row(check: dict[str, Any]) -> dict[str, Any]:
             if key in check:
                 row[key] = check[key]
     return row
+
+
+INTERFACE_LIST_LIMIT = 20
+
+
+def interface_section(graph: "Graph", papers: dict[str, list[dict[str, Any]]],
+                      theorem_problems: dict[str, str | None]) -> dict[str, Any]:
+    """The projection's interface chains: per problem, the chains of the
+    problem's theorems (paper-cited ones, then open hypotheses, first), and for
+    every interface statement the paper results whose chains need it."""
+    index = graph.interfaces()
+    chains = index.chains()
+
+    def labels(name: str) -> list[dict[str, Any]]:
+        return [{"row": p.get("row"), "paper": p.get("paper"), "side": p.get("side"), "label": p.get("label"),
+                 "comparator": p.get("comparator")} for p in papers.get(name, [])][:6]
+
+    def order(chain: dict[str, Any]) -> tuple:
+        hypothesis = chain.get("hypothesis") or {}
+        return (not papers.get(chain["theorem"]), hypothesis.get("status") != "open", -chain["depth"],
+                chain["theorem"], chain["i"] if isinstance(chain["i"], int) else -1)
+
+    by_problem: dict[str, list[dict[str, Any]]] = defaultdict(list)
+    for chain in sorted(chains, key=order):
+        problem = theorem_problems.get(chain["theorem"]) or "unattributed"
+        by_problem[problem].append({**chain, "problem": problem, "papers": labels(chain["theorem"])})
+    needed = index.needed_by()
+    rows = []
+    for key, users in needed.items():
+        results = [{**user, "papers": labels(user["theorem"])} for user in users]
+        rows.append({"key": key, "type": graph.statements.get(key, {}).get("type"), "status": graph.status(key),
+                     "needed_by": results[:12], "needed_by_count": len(results),
+                     "paper_results": len({(p["row"], p["label"]) for r in results for p in r["papers"]})})
+    rows.sort(key=lambda r: (r["status"] != "open", -r["paper_results"], -r["needed_by_count"], r["key"]))
+    levels = [level for chain in chains for level in chain["levels"][1:]]
+    return {
+        "summary": {
+            "interface_chains": len(chains),
+            "interface_chains_deeper_than_one_level": sum(1 for c in chains if c["depth"] >= 2),
+            "interface_statements": len(needed),
+            "interface_statements_open": sum(1 for k in needed if graph.status(k) == "open"),
+            "interface_levels_jointly_impossible": sum(1 for lv in levels if lv["joint"]["status"]
+                                                       == "refuted_jointly"),
+            "interface_levels_restating_hypothesis": sum(1 for lv in levels if lv["joint"].get("restates_hypothesis")),
+        },
+        "by_problem": {p: rows_[:INTERFACE_LIST_LIMIT] for p, rows_ in sorted(by_problem.items())},
+        "chain_counts": {p: len(rows_) for p, rows_ in sorted(by_problem.items())},
+        "needed_by": rows[:INTERFACE_LIST_LIMIT * 10],
+    }
 
 
 def audit_authored_layers(graph: "Graph", root: Path) -> dict[str, Any]:
@@ -1750,7 +1868,13 @@ def build(export_path: Path, root: Path = ROOT, *, lean_tree: str | None = None,
                           if graph.component.get(k) is not None
                           and len(graph.components[graph.component[k]]) >= 2})
         problem_barriers = [e for e in barriers["entries"] if e["problem"] == problem]
+        inputs = paper_inputs(graph, lambda name: papers.get(name, []), problem)
         per_problem[problem] = {
+            # The problem's named inputs: what the theorems its papers cite
+            # assume and the graph does not supply. These anchor its frontier.
+            "paper_inputs": [{**{k: v for k, v in inputs_row.items() if k != "results"},
+                              "results": inputs_row["results"][:8]} for inputs_row in inputs[:LIST_LIMIT]],
+            "paper_input_count": len(inputs),
             "barriers": problem_barriers[:LIST_LIMIT * 2],
             "barrier_count": len(problem_barriers),
             "open_statements_constrained_by_barriers": sum(
@@ -1918,6 +2042,8 @@ def build(export_path: Path, root: Path = ROOT, *, lean_tree: str | None = None,
                                      or c.get("endpoint_relation") == "unknown_budget"),
         "bundle_check_work": graph.__dict__.get("_bundle_check_work", 0),
     })
+    interfaces = interface_section(graph, papers, theorem_problems)
+    summary.update(interfaces.pop("summary"))
     alarms = sentinel_alarms(graph)
     summary["sentinel_alarms"] = len(alarms)
     lean_tree = resolve_lean_tree(export_path, lean_tree)
@@ -1995,6 +2121,13 @@ def build(export_path: Path, root: Path = ROOT, *, lean_tree: str | None = None,
                          "H → C for each. uses_only lists the C; a reduction of each C to H (reading use_site) "
                          "lets a refutation of C refute H. A kernel-checked row whose consequences are missing or "
                          "unkeyed, or whose binder is not the hypothesis it names, is refused (weakenings_refused)",
+            "interface_chain": "what a theorem needs of a weakened hypothesis H, level by level. Level 0 is H, "
+                               "level 1 the consequences its proof uses; a member refines when the lemma at its use "
+                               "site is itself weakened and the export matched that weakened lemma against the "
+                               "member (a recorded reduction), and level k+1 replaces each refinable member of level "
+                               "k by what the lemma uses, dropping members the others supply (implied). Every level "
+                               "suffices for the theorem with its other obligations; each keeps its joint check: "
+                               "members jointly impossible, or the level restating H (the level implies H back)",
             "vacuous_theorem": "a conditional theorem with a refuted closed hypothesis: it can never be applied",
             "audit": "authored logical classes and open antecedents checked against the kernel graph",
         },
@@ -2012,6 +2145,7 @@ def build(export_path: Path, root: Path = ROOT, *, lean_tree: str | None = None,
         "idle": idle_rows[:LIST_LIMIT * 3],
         "weakenings": weakening_rows[:LIST_LIMIT * 6],
         "weakenings_refused": graph.weakenings_malformed[:LIST_LIMIT],
+        "interfaces": interfaces,
         "audit": audit,
         "sentinel_alarms": alarms,
     }
