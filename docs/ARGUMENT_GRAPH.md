@@ -394,7 +394,11 @@ hypothesis, and `derive_conjuncts prop_badcof` states them so.
 writes the commands for every theorem a paper cites, one module per problem
 under `lean/ErdosProblems/ArgumentGraph/Derived/`, with
 `argumentGraph.strict` set so that a derivation the export reported and the
-library cannot rebuild fails the build. It lists each derived theorem, with the
+library cannot rebuild fails the build. Derivations the export does not decide
+in advance (conjunct splits, frontiers discharged by corpus theorems) are
+tried in a kernel probe first: given the probe's verdicts (`--verified`), the
+generator keeps each one that added theorems as a strict command and drops,
+with the reason, each one that did not. It lists each derived theorem, with the
 paper rows of its source theorem, in `docs/argument_frontier.json`. A derived
 theorem restates what its source proof already proves; it is new only as a
 statement, and whether a paper should state the stronger form is the author's
