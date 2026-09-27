@@ -203,8 +203,17 @@ def plan(graph: dict[str, Any], papers: dict[str, list[dict[str, Any]]]) -> dict
                     if v in theorems:
                         slot["imports"].add(theorems[v]["module"])
         slot["commands"].append(f"derive_weakening {lean_ident(name)}")
-        slot["commands"].append(f"derive_frontier {lean_ident(name)}")
-        cuts = chain_cuts(name, weakenings)
+        # A frontier differs from the weakening only when some use site's lemma has
+        # a weakening of its own; otherwise derive_frontier would restate weakened_i.
+        deeper = any(v in weakenings and v != name for r in rows for c in r.get("consequences", [])
+                     for v in c.get("via") or [])
+        if deeper:
+            slot["commands"].append(f"derive_frontier {lean_ident(name)}")
+        # A cut at one of the theorem's own use-site lemmas stops where the weakening
+        # does, so it is derived only with suppliers that discharge what it leaves.
+        first_level = {v for r in rows for c in r.get("consequences", []) for v in c.get("via") or []}
+        all_cuts = chain_cuts(name, weakenings)
+        cuts = [cut for cut in all_cuts if cut not in first_level]
         for cut in cuts:
             slot["commands"].append(f"derive_frontier {lean_ident(name)} at {lean_ident(cut)}")
         suppliers = chain_suppliers(name, weakenings, statements, theorems)
@@ -215,7 +224,7 @@ def plan(graph: dict[str, Any], papers: dict[str, list[dict[str, Any]]]) -> dict
             # A supplied consequence the graph records need not sit where the Lean
             # chain stops, so these commands only warn when they discharge nothing.
             slot["supplied_commands"].append(f"derive_frontier {lean_ident(name)} using {using}")
-            for cut in cuts:
+            for cut in all_cuts:
                 slot["supplied_commands"].append(
                     f"derive_frontier {lean_ident(name)} at {lean_ident(cut)} using {using}")
         slot["rows"].append({
@@ -223,7 +232,7 @@ def plan(graph: dict[str, Any], papers: dict[str, list[dict[str, Any]]]) -> dict
             "hypotheses": [{"i": r.get("i"), "hypothesis": r.get("hypothesis_type") or r.get("hypothesis"),
                             "consequences": [{"type": c.get("type"), "via": c.get("via")}
                                              for c in r.get("consequences", [])]} for r in rows],
-            "frontier_cuts": cuts, "suppliers": suppliers})
+            "frontier": deeper, "frontier_cuts": cuts, "suppliers": suppliers})
     return per_problem
 
 
@@ -366,7 +375,8 @@ def render_markdown(manifest: dict[str, Any]) -> str:
             for r in weak:
                 labels = ", ".join(sorted({p["label"] for p in r["papers"] if p.get("label")}))
                 cuts = ", ".join(f"`{c.rsplit('.', 1)[-1]}`" for c in r.get("frontier_cuts", []))
-                out.append(f"- `{r['theorem'].rsplit('.', 1)[-1]}` ({labels}): `weakened_i` and `frontier_i`"
+                out.append(f"- `{r['theorem'].rsplit('.', 1)[-1]}` ({labels}): `weakened_i`"
+                           + (" and `frontier_i`" if r.get("frontier", True) else "")
                            + (f", and frontiers cut at {cuts}" if cuts else "") + ".")
             for r in parts:
                 labels = ", ".join(sorted({p["label"] for p in r["papers"] if p.get("label")}))

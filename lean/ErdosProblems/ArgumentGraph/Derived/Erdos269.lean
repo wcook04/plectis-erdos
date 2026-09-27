@@ -21,13 +21,5 @@ derive_idle ErdosProblems.Erdos269.PaperR7.long_no_bounded_length
 derive_idle ErdosProblems.Erdos269.PaperR7.long_window_growth
 derive_idle ErdosProblems.Erdos269.PaperR7.paper_uniform_rank_and_nonseparation
 derive_weakening ErdosProblems.Erdos269.PaperCompleteR21.two_prime_sums_transcendental
-derive_frontier ErdosProblems.Erdos269.PaperCompleteR21.two_prime_sums_transcendental
 derive_weakening ErdosProblems.Erdos269.PaperCompleteR21.two_prime_transcendence
 derive_frontier ErdosProblems.Erdos269.PaperCompleteR21.two_prime_transcendence
-derive_frontier ErdosProblems.Erdos269.PaperCompleteR21.two_prime_transcendence at ErdosProblems.Erdos269.PaperCompleteR21.two_prime_sums_transcendental
-
--- Derivations the export does not decide in advance: conjuncts a proof may establish
--- without an open hypothesis, and frontiers with the consequences the graph records as
--- proved by corpus theorems discharged. A command that adds nothing warns.
-set_option argumentGraph.strict false in derive_conjuncts ErdosProblems.Erdos269.PaperCompleteR21.two_prime_sums_transcendental
-set_option argumentGraph.strict false in derive_conjuncts ErdosProblems.Erdos269.PaperCompleteR21.two_prime_transcendence
