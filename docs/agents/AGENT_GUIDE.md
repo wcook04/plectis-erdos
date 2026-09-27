@@ -434,7 +434,9 @@ all results are reported together before any Lean preparation.
 
 Install `python3 scripts/check_push.py --install` once per worktree to apply
 that same preflight to the exact outgoing commits, independently of local
-uncommitted repairs. The contribution skill owns custom-hook integration and
+uncommitted repairs. It also rejects a branch that omits the destination's
+current main, so integration and projection conflicts are repaired before CI.
+The contribution skill owns custom-hook integration and
 the explicit `dependency-index-refresh` CI recovery scope. Recovery produces
 an export for repair; normal PR release and Lean checks still have to pass.
 

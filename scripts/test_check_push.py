@@ -89,6 +89,36 @@ class PushTests(unittest.TestCase):
             self.assertNotEqual(git("push", "origin", f"{stale}:refs/heads/old", check=False).returncode, 0)
             self.assertEqual(git("push", "origin", ":refs/heads/review", check=False).returncode, 0)
 
+            # A green old head is insufficient after another PR advances main.
+            self.assertEqual(git("push", "origin", "HEAD:refs/heads/main", check=False).returncode, 0)
+            old_base = git("rev-parse", "origin/main").stdout.strip()
+            peer = Path(temp) / "peer"
+            git("clone", "-q", "--branch", "main", str(remote), str(peer))
+            def peer_git(*args):
+                return subprocess.run(["git", *args], cwd=peer, env=env, text=True,
+                                      capture_output=True, check=True)
+            peer_git("config", "user.name", "Base fixture")
+            peer_git("config", "user.email", "base@example.invalid")
+            (peer / "base.txt").write_text("new main\n")
+            peer_git("add", "base.txt")
+            peer_git("commit", "-qm", "advance destination main")
+            peer_git("push", "origin", "main")
+            new_base = peer_git("rev-parse", "HEAD").stdout.strip()
+            (root / "scratch.txt").write_text("preserve local work\n")
+            fetch_head = root / ".git/FETCH_HEAD"
+            fetch_head.write_text("preserve fetch receipt\n")
+            before = git("status", "--porcelain").stdout
+            rejected = git("push", "origin", "HEAD:refs/heads/review", check=False)
+            self.assertNotEqual(rejected.returncode, 0)
+            self.assertIn("destination main advanced", rejected.stderr)
+            self.assertEqual(git("status", "--porcelain").stdout, before)
+            self.assertEqual(fetch_head.read_text(), "preserve fetch receipt\n")
+            self.assertEqual(git("rev-parse", "origin/main").stdout.strip(), old_base)
+            # The observed object was fetched without moving any local ref.
+            git("cat-file", "-e", new_base)
+            git("merge", "--no-edit", new_base)
+            self.assertEqual(git("push", "origin", "HEAD:refs/heads/review", check=False).returncode, 0)
+
 
 if __name__ == "__main__":
     unittest.main()
