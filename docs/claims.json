@@ -21878,7 +21878,7 @@
       "id": "remaining_open.erdos_269_two_dimensional_representation",
       "status": "open",
       "open_target_claim": "erdos_269",
-      "statement": "Represent D_{2,3,5} faithfully by a specified two-dimensional Mahler-type value theorem with every hypothesis verified, give a conditional theorem under explicit logarithmic nondegeneracy, or prove no such representation exists.",
+      "statement": "D_{2,3,5} is irrational (Lean-checked, res:distinct-height-235); its transcendence is open. Represent D_{2,3,5} faithfully by a specified two-dimensional Mahler-type value theorem with every hypothesis verified and deduce transcendence, give a conditional transcendence theorem under explicit logarithmic nondegeneracy, or prove no such representation exists.",
       "paper_anchor": {
         "source": "paper/269/erdos269-running-lcm-reasoning-surface.tex",
         "environment": "problem",
@@ -21964,7 +21964,7 @@
       "id": "erdos_269",
       "label": "Erdős #269: irrationality of running-LCM reciprocal sums",
       "status": "open",
-      "statement": "For every finite set P of at least two primes, the distinct-height sum D_P, which counts each value of the running LCM of the P-smooth integers once, is irrational (res:distinct-height-all; ordinary proof found within the project on 26 September 2026 and independently refereed by a second AI reader, no Lean proof), as Erdős asserted without an argument in 1973; for |P| = 2 it follows from the two-prime Hecke-Mahler transcendence. The case P = {2,3,5} is Lean-checked by a dyadic-block proof (res:distinct-height-235; ErdosProblems.Erdos269.distinctHeightSum235_irrational, Comparator not yet run). For the catalogue sum, both two-prime sums are transcendental by Fan's reduction to a cited Hecke-Mahler value theorem (res:two-prime-transcendence), and for every finite P with |P| >= 2 the sub-sum E_p over the powers of one prime p is irrational (res:single-prime-subsums; ordinary refereed proof, no Lean proof, literature not searched). The catalogue sum for three or more primes is unresolved in this release: for {2,3,5} the rationality-to-positive-reduced-carry bridge is checked, and the remaining endpoint is cofinal local-window escape, equivalently exclusion of the integral branch.",
+      "statement": "For every finite set P of at least two primes, the distinct-height sum D_P (each running LCM value of the P-smooth integers counted once) is irrational (res:distinct-height-all; ordinary proof checked by a second AI agent, no human review), as Erdős asserted without an argument in 1973; for |P| = 2 it follows from Hecke-Mahler transcendence, and D_{2,3,5} is Lean-checked (res:distinct-height-235; Comparator not yet run). Each single-prime sub-sum E_p of the catalogue sum is irrational (res:single-prime-subsums; same evidence class as D_P). The catalogue sum for three or more primes is unresolved in this release: for {2,3,5} the rationality-to-positive-reduced-carry bridge is checked, and the remaining endpoint is cofinal local-window escape, equivalently exclusion of the integral branch.",
       "remaining_open_proposition_ids": [
         "remaining_open.erdos_269_three_prime_irrationality",
         "remaining_open.erdos_269_reduced_tail_nonintegrality",

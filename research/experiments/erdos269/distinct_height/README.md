@@ -21,10 +21,10 @@ checks the same argument in Lean. Erdős asserted irrationality of these distinc
 dated 1 January 1973 ([Fibonacci Quarterly 12 (1974), p. 335](https://www.fq.math.ca/Scanned/12-4/letter.pdf))
 without printing an argument. The #269 papers now prove D_P irrational for
 every finite set P of at least two primes, by a second argument that
-compares two tails of the series (an ordinary proof, independently refereed
-by a second reader within the project on 26 September 2026, with no Lean
-proof); for two primes this was already implied by a Hecke-Mahler
-transcendence theorem, so the new case is three or more primes. The dyadic
+compares two tails of the series (an ordinary proof, checked step by step
+by a second, independent AI agent within the project on 26 September 2026,
+with no human review and no Lean proof); for two primes this was already
+implied by a Hecke-Mahler transcendence theorem. The dyadic
 argument, together with the exact finite certificates computed here, gives
 an independent proof for every set of three primes at most 31 and for 292
 of the 330 sets of four primes at most 31; those results are ordinary proofs
@@ -166,8 +166,8 @@ papers quote about this argument; the proof uses none of them.
 
 The same comparison proves that the sub-sum E_p = sum_a 1/H_P(p^a) of the
 catalogue series is irrational for every P with |P| >= 2 (an ordinary
-refereed proof in the long record, no Lean proof; new for |P| >= 3, literature
-not searched). two_tail.py checks the identities used around it: the carry
+proof in the long record checked by a second AI agent, no human review, no
+Lean proof; literature not searched for |P| >= 3). two_tail.py checks the identities used around it: the carry
 f_p of an ordering of distinct primes is the product of the followers of p,
 R_{p,q} = E_p E_q term by term, the three-prime carries lie in {0,1} and the
 four-prime carries in {0,1,2}, D_P = sum_q E_q - (|P| - 1), and for {2,3,5},

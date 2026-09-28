@@ -2320,7 +2320,7 @@
         "status": "none",
         "counted": true,
         "declarations": [],
-        "reason": "ordinary proof, independently refereed within the project on 26 September 2026; not formalised: a Lean proof would need Kronecker's theorem on the closure of a line in a torus (density of the forward orbit in the subtorus it generates) and the Euler-characteristic count for line arrangements on a two-dimensional subtorus"
+        "reason": "ordinary proof, checked step by step by a second, independent AI agent within the project on 26 September 2026, no human review; not formalised: a Lean proof would need Kronecker's theorem on the closure of a line in a torus (density of the forward orbit in the subtorus it generates) and the Euler-characteristic count for line arrangements on a two-dimensional subtorus"
       },
       "comparator": {
         "status": "not_applicable"
@@ -2343,7 +2343,7 @@
         "status": "none",
         "counted": true,
         "declarations": [],
-        "reason": "ordinary proof, part of the refereed proof that D_P is irrational for every finite P; not formalised: the surrounding argument would need Kronecker's theorem on subtori and an Euler-characteristic count, which are not formalised here"
+        "reason": "ordinary proof, part of the agent-checked proof that D_P is irrational for every finite P; not formalised: the surrounding argument would need Kronecker's theorem on subtori and an Euler-characteristic count, which are not formalised here"
       },
       "comparator": {
         "status": "not_applicable"
@@ -2366,7 +2366,7 @@
         "status": "none",
         "counted": true,
         "declarations": [],
-        "reason": "ordinary proof, part of the refereed proof that D_P is irrational for every finite P; not formalised: the surrounding argument would need Kronecker's theorem on subtori and an Euler-characteristic count, which are not formalised here"
+        "reason": "ordinary proof, part of the agent-checked proof that D_P is irrational for every finite P; not formalised: the surrounding argument would need Kronecker's theorem on subtori and an Euler-characteristic count, which are not formalised here"
       },
       "comparator": {
         "status": "not_applicable"
@@ -2389,7 +2389,7 @@
         "status": "none",
         "counted": true,
         "declarations": [],
-        "reason": "ordinary proof, part of the refereed proof that D_P is irrational for every finite P; not formalised: the surrounding argument would need Kronecker's theorem on subtori and an Euler-characteristic count, which are not formalised here"
+        "reason": "ordinary proof, part of the agent-checked proof that D_P is irrational for every finite P; not formalised: the surrounding argument would need Kronecker's theorem on subtori and an Euler-characteristic count, which are not formalised here"
       },
       "comparator": {
         "status": "not_applicable"
@@ -2484,7 +2484,7 @@
         "status": "none",
         "counted": true,
         "declarations": [],
-        "reason": "ordinary proof, part of the refereed proof that D_P is irrational for every finite P; not formalised: the surrounding argument would need Kronecker's theorem on subtori and an Euler-characteristic count, which are not formalised here"
+        "reason": "ordinary proof, part of the agent-checked proof that D_P is irrational for every finite P; not formalised: the surrounding argument would need Kronecker's theorem on subtori and an Euler-characteristic count, which are not formalised here"
       },
       "comparator": {
         "status": "not_applicable"
@@ -2948,7 +2948,7 @@
         "status": "none",
         "counted": true,
         "declarations": [],
-        "reason": "ordinary proof, independently refereed within the project on 26 September 2026; not formalised: a Lean proof would need Kronecker's theorem on the closure of a line in a torus and the density of its forward orbit"
+        "reason": "ordinary proof, checked step by step by a second, independent AI agent within the project on 26 September 2026, no human review; not formalised: a Lean proof would need Kronecker's theorem on the closure of a line in a torus and the density of its forward orbit"
       },
       "comparator": {
         "status": "not_applicable"
@@ -25347,7 +25347,7 @@
         "status": "none",
         "counted": true,
         "declarations": [],
-        "reason": "ordinary proof, independently refereed within the project on 26 September 2026; not formalised: a Lean proof would need Kronecker's theorem on the closure of a line in a torus (density of the forward orbit in the subtorus it generates) and the Euler-characteristic count for line arrangements on a two-dimensional subtorus"
+        "reason": "ordinary proof, checked step by step by a second, independent AI agent within the project on 26 September 2026, no human review; not formalised: a Lean proof would need Kronecker's theorem on the closure of a line in a torus (density of the forward orbit in the subtorus it generates) and the Euler-characteristic count for line arrangements on a two-dimensional subtorus"
       },
       "comparator": {
         "status": "not_applicable"
@@ -25739,7 +25739,7 @@
         "status": "none",
         "counted": true,
         "declarations": [],
-        "reason": "ordinary proof, part of the refereed proof that D_P is irrational for every finite P; not formalised: the surrounding argument would need Kronecker's theorem on subtori and an Euler-characteristic count, which are not formalised here"
+        "reason": "ordinary proof, part of the agent-checked proof that D_P is irrational for every finite P; not formalised: the surrounding argument would need Kronecker's theorem on subtori and an Euler-characteristic count, which are not formalised here"
       },
       "comparator": {
         "status": "not_applicable"
@@ -25762,7 +25762,7 @@
         "status": "none",
         "counted": true,
         "declarations": [],
-        "reason": "ordinary proof, part of the refereed proof that D_P is irrational for every finite P; not formalised: the surrounding argument would need Kronecker's theorem on subtori and an Euler-characteristic count, which are not formalised here"
+        "reason": "ordinary proof, part of the agent-checked proof that D_P is irrational for every finite P; not formalised: the surrounding argument would need Kronecker's theorem on subtori and an Euler-characteristic count, which are not formalised here"
       },
       "comparator": {
         "status": "not_applicable"
@@ -25785,7 +25785,7 @@
         "status": "none",
         "counted": true,
         "declarations": [],
-        "reason": "ordinary proof, part of the refereed proof that D_P is irrational for every finite P; not formalised: the surrounding argument would need Kronecker's theorem on subtori and an Euler-characteristic count, which are not formalised here"
+        "reason": "ordinary proof, part of the agent-checked proof that D_P is irrational for every finite P; not formalised: the surrounding argument would need Kronecker's theorem on subtori and an Euler-characteristic count, which are not formalised here"
       },
       "comparator": {
         "status": "not_applicable"
@@ -25808,7 +25808,7 @@
         "status": "none",
         "counted": true,
         "declarations": [],
-        "reason": "ordinary proof, part of the refereed proof that D_P is irrational for every finite P; not formalised: the surrounding argument would need Kronecker's theorem on subtori and an Euler-characteristic count, which are not formalised here"
+        "reason": "ordinary proof, part of the agent-checked proof that D_P is irrational for every finite P; not formalised: the surrounding argument would need Kronecker's theorem on subtori and an Euler-characteristic count, which are not formalised here"
       },
       "comparator": {
         "status": "not_applicable"
@@ -26035,7 +26035,7 @@
         "status": "none",
         "counted": true,
         "declarations": [],
-        "reason": "ordinary proof, independently refereed within the project on 26 September 2026; not formalised: a Lean proof would need Kronecker's theorem on the closure of a line in a torus and the density of its forward orbit"
+        "reason": "ordinary proof, checked step by step by a second, independent AI agent within the project on 26 September 2026, no human review; not formalised: a Lean proof would need Kronecker's theorem on the closure of a line in a torus and the density of its forward orbit"
       },
       "comparator": {
         "status": "not_applicable"
