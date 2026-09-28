@@ -263,7 +263,18 @@ class FormalConjecturesCrosswalkTest(unittest.TestCase):
         mutated = copy.deepcopy(self.problem_index)
         mutated["problems"][0]["status"] = "solved"
         self.assertTrue(
-            any("must remain open" in error for error in self.errors(problem_index=mutated))
+            any("status must be open" in error for error in self.errors(problem_index=mutated))
+        )
+
+    def test_1041_status_must_record_the_refuted_formal_statement(self) -> None:
+        mutated = copy.deepcopy(self.problem_index)
+        row = next(row for row in mutated["problems"] if row["erdos_number"] == 1041)
+        row["status"] = "open"
+        self.assertTrue(
+            any(
+                "status must be formal statement refuted" in error
+                for error in self.errors(problem_index=mutated)
+            )
         )
 
     def test_local_navigation_route_is_exact_and_bidirectional(self) -> None:

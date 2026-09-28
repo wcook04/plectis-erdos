@@ -28,6 +28,9 @@ EXPECTED_1049_MISMATCH = (
     "'Erdos249257.ExternalVerification1049.comparator_sevenHalves_numericalHeight'"
 )
 ENVIRONMENT_CONTRACT = "clean_committed_snapshot_subprocess_environment_v1"
+# Mirrors methodology_contract.PROGRAMME_TARGET_STATUSES without importing it
+# into the Comparator runtime.
+PROGRAMME_TARGET_STATUSES = frozenset({"open", "formal statement refuted"})
 SUBPROCESS_TIMEOUT_SECONDS = singleflight.DEFAULT_WORKER_TIMEOUT_SECONDS
 
 
@@ -386,8 +389,16 @@ def main() -> int:
         args.weighted_support_positive_log,
         args.weighted_support_negative_log,
     )
-    all_statuses_open = all(
-        row["status"] == "open" for row in packet["problem_index"]["problems"]
+    # The receipt discloses every indexed problem status. Seven problems are
+    # open; Lean refutes the exact Formal Conjectures statement of #1041, and
+    # the review of its correspondence with the 1958 wording stays open.
+    # Neither status claims that a Comparator run settles an original problem.
+    problem_statuses = {
+        str(row["erdos_number"]): row["status"]
+        for row in packet["problem_index"]["problems"]
+    }
+    statuses_disclosed = bool(problem_statuses) and all(
+        status in PROGRAMME_TARGET_STATUSES for status in problem_statuses.values()
     )
     passed = (
         projection_check == 0
@@ -400,7 +411,7 @@ def main() -> int:
         and all(binary_digests.values())
         and expected_commit_matches
         and args.sandbox_mode in {"user-manager", "system-manager-nonprivileged-unit", "local-fake-landrun-smoke"}
-        and all_statuses_open
+        and statuses_disclosed
     )
     receipt = {
         "schema": "erdos-external-verification-runtime-receipt/1",
@@ -435,7 +446,8 @@ def main() -> int:
             "problem_index_digest": packet["problem_index"]["projection_digest"],
             "problem_count": packet["problem_index"]["problem_count"],
             "problem_ids": owner["problem_ids"],
-            "all_statuses_open": all_statuses_open,
+            "problem_statuses": problem_statuses,
+            "statuses_within_programme_boundary": statuses_disclosed,
         },
         "statement_contract": runtime_statement_contract(owner, packet),
         "selected_replay_units": {"weighted-support": weighted_support},

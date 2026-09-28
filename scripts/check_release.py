@@ -72,7 +72,12 @@ from pathlib import Path
 from typing import Any
 
 from check_problem_note_sources import note_pinned_commit, snapshot_lines_batch
-from methodology_contract import mutation_fixture_errors, render_markdown, validate_contract
+from methodology_contract import (
+    PROGRAMME_TARGET_STATUSES,
+    mutation_fixture_errors,
+    render_markdown,
+    validate_contract,
+)
 from lean_source import (
     LIBRARY_ROOTS,
     library_dir,
@@ -1902,9 +1907,10 @@ def main(argv: list[str] | None = None) -> int:
                   f"programme route {route.get('id')!r} has unknown problem targets: "
                   f"{sorted(target_ids - claim_id_set)}")
             check(
-                all(claim_index[target_id]["status"] == "open"
+                all(claim_index[target_id]["status"] in PROGRAMME_TARGET_STATUSES
                     for target_id in target_ids if target_id in claim_index),
-                f"programme route {route.get('id')!r} target claims must carry canonical status=open",
+                f"programme route {route.get('id')!r} target claims must carry a programme-target "
+                "status (open or formal statement refuted)",
             )
             check(not (core_ids - claim_id_set),
                   f"programme route {route.get('id')!r} has unknown core claims: "

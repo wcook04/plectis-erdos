@@ -583,14 +583,17 @@ a claim to settle the seven unresolved targets or the unadjudicated historical
   support. This is a change of coordinates for hypothetical rational support,
   not a contradiction or a universal #257 proof; arbitrary infinite support
   and the `1/2` membership boundary remain open.
-- **A separate #1041 positive route remains open.** The source frontier identifies
-  `min_c L(c) ≤ 2` over admissible
-  hubs on the ray-separated locus as the surviving parent carrier; lower
-  semicontinuity would turn it into the theorem. Its degree-five `SPOKE-5`
-  instance would settle that degree. This is source-only research evidence,
-  not a Lean theorem: hub choice, path containment, and the `SPOKE-5` supply
-  remain open, while the earlier minimum-critical and aggregate shortcuts are
-  explicitly refuted (`research_corpus/Erdos1041/FRONTIER.md`).
+- **Degree-restricted #1041 positive routes remain open.** The source
+  frontier's parent carrier is `min_c L(c) ≤ 2` over admissible hubs on the
+  ray-separated locus. Its Corollary G, with Theorem L and Corollary S,
+  ordinary proofs in the research corpus with no human review, shows that the
+  carrier in degree `n` gives the degree-`n` case of
+  #1041, so ani's example makes the carrier fail in degree seven. Its
+  degree-five `SPOKE-5` instance would settle degree five. This is source-only
+  research evidence with no Lean counterpart: hub choice, path containment,
+  and the `SPOKE-5` supply remain open, and the earlier minimum-critical and
+  aggregate shortcuts are explicitly refuted
+  (`research_corpus/Erdos1041/FRONTIER.md`).
 - **#249, an endpoint-facing conditional route plus a finite-level rank
   spine.** The actual-LCM orbit route gives a genuinely endpoint-facing
   reduction: an explicit approximation of the orbit by an odd-rank raw block,
@@ -1324,8 +1327,9 @@ core)**
   ray-separation consumer, not a theorem (`:315`).
 - A Cassini example refutes the printed global tree budget of a March 2026
   manuscript's Proposition 12; that obstruction is not a disproof of
-  Erdős #1041. The source-only frontier still records hub selection on the
-  ray-separated locus as an open parent carrier
+  Erdős #1041. The source-only frontier records hub selection on the
+  ray-separated locus as a parent carrier; by its Corollary G the carrier
+  fails in degree seven, so only degree-restricted versions stay open
   (`research_corpus/Erdos1041/FRONTIER.md`).
 - Checked counterexample: using the explicit degree-seven polynomial of
   erdosproblems.com contributor
@@ -1503,7 +1507,9 @@ The Mersenne achievement set consists of subsums of
 rational subseries, which would refute the universal statement in Problem 257.
 The repository does not prove this membership.
 
-The checked chain includes:
+The chain includes the declarations below. Public CI does not compile the
+files cited here under `ErdosProblems/Skip`, `Bit`, `Decl` or `Hlow`; the
+two `Erdos249257` files are in the default build.
 
 - `half_mem_mersenneAchievementSet_iff_greedySkippedSupport_infinite` in
   `Erdos249257/GreedyAchievementSet.lean`: membership of `1/2` is equivalent to
@@ -1603,9 +1609,14 @@ at arbitrarily large scales. The theorem says nothing at `t = 83`.
 ### Finite off-diagonal certificates
 
 The source-bound roster records 125 verified rows at positions not constrained
-to equal `periodLcm t`. Two pairs of rows repeat the same `(h,N,L)` triple, so
-the roster contains 123 distinct certificates matched to 123 public Lean
-theorems across 122 files. Its largest recorded position is:
+to equal `periodLcm t`; "verified" is the `lean_verified` flag of the source log
+`lean/ErdosProblems/FreePosition/data.jsonl`. Two pairs of rows repeat the same
+`(h,N,L)` triple, so the roster contains 123 distinct certificates matched to
+123 public Lean theorems across 122 files. Public CI does not compile the
+`ErdosProblems/FreePosition` files. The source-bound reproduction plan in
+`scripts/run_source_bound_reproduction.py` includes a focused recompilation of
+`FreeKill64OneHundredFifteenDI.lean`; no receipt of a run is committed. Its
+largest recorded position is:
 
 ```text
 freeKill_64OneHundredFifteenDI :
@@ -1692,7 +1703,8 @@ not supply the unbounded theorem required by #249.
 ### Scoped no-go theorems
 
 These theorems rule out particular proof mechanisms. They do not rule out other
-arguments.
+arguments. Public CI compiles none of the `Lift`, `Half`, `Rem`, `Three` and
+`Decl` files cited in this list.
 
 - `no_lift_from_lower_totient_data`, `ErdosProblems/Lift/AngleA5.lean` — no
   universal lift of the displayed form can follow only from the stated lower
@@ -1790,7 +1802,8 @@ emitted source and receipt handles.
 ## Historical corrections retained in source
 
 The current Lean module headers and declarations retain the operative
-boundaries. The principal corrections were:
+boundaries. Public CI compiles none of the files listed below. The principal
+corrections were:
 
 - `Lift/AngleB2.lean` no longer says that the survivor set is empty. Its theorem
   is conditional on a false `hcof` instance at each surviving class and on an
@@ -2088,10 +2101,11 @@ anchor, kept separate from the source currently under validation.
 Farey's method supplies the number directly; it is not an improvement on the
 classical bound.
 
-Labels are descriptions, not scores. **Formalised here** means a statement
-rendered and kernel-checked in Lean, which for a known theorem is a checked
-rendering and not a priority claim; **proved here** means the argument is this
-project's. **Verified finite instance** means
+The labels describe evidence. **Formalised here** means known mathematics
+rendered and kernel-checked in Lean; it makes no priority claim. **Proved
+here** means the argument is this project's.
+**Unconditional progress** marks a theorem that does not settle the open
+problem and asserts neither novelty nor prior knowledge. **Verified finite instance** means
 Lean checked only the listed inputs; **conditional reduction** means the
 conclusion depends on a named open condition.
 

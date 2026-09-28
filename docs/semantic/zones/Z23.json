@@ -2,6 +2,7 @@
  "zone_id": "Z23",
  "title": "Remainder recurrences, bounded measurements, and their limits",
  "problem": "257",
+ "build_lane": "unbuilt: the ErdosProblems/Rem and ErdosProblems/Three files cited in this zone, with their verify files, are in no CI build, so these declarations are stated in source but not kernel-checked by this repository's CI.",
  "concepts": [
   {
    "id": "audited_expansion_boundary",

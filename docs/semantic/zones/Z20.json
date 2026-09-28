@@ -2,6 +2,7 @@
  "zone_id": "Z20",
  "title": "Skip and wire calculations with vacuity recorded",
  "problem": "257",
+ "build_lane": "unbuilt: every module cited in this zone except ErdosProblems/Skip/LadderT67.lean is in no CI build (the Skip D, Wire and verify files), so those declarations are stated in source but not kernel-checked by this repository's CI.",
  "concepts": [
   {
    "id": "audited_expansion_boundary",

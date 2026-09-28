@@ -1,4 +1,4 @@
-**All eight problems remain open.** This is the public coordination point for anyone deciding whether and where to contribute.
+**Seven of the eight problems remain open.** Lean refutes the exact Formal Conjectures statement of #1041; its correspondence with the original wording awaits review. This is the public coordination point for anyone deciding whether and where to contribute.
 
 The working copy is **`main` and the mathematics site**, not a tagged ZIP. Start with the [mathematics site](https://wcook04.github.io/plectis/maths/). In the repository, read [A reader's way in](https://github.com/wcook04/plectis-erdos/blob/main/docs/READING_GUIDE.md), then [RESULTS](https://github.com/wcook04/plectis-erdos/blob/main/docs/RESULTS.md) for the strongest checked progress and the exact obligation still open in each programme.
 

@@ -165,7 +165,9 @@ class ExternalVerificationContractTest(unittest.TestCase):
             [row["erdos_number"] for row in index["problems"]],
             [68, 243, 249, 251, 257, 269, 1041, 1049],
         )
-        self.assertEqual({row["status"] for row in index["problems"]}, {"open"})
+        statuses = {row["erdos_number"]: row["status"] for row in index["problems"]}
+        self.assertEqual(statuses.pop(1041), "formal statement refuted")
+        self.assertEqual(set(statuses.values()), {"open"})
         owner_boundary = json.loads(
             (ROOT / "docs/claims.json").read_text(encoding="utf-8")
         )["external_verification_packet"]["boundary"]

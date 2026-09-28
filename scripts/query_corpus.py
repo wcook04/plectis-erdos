@@ -9943,8 +9943,13 @@ def mathematical_signal_spine(
     ranked_source_results = []
     for candidate in sorted(source_candidates, key=lambda row: row["rank"]):
         claim = claims_by_id.get(candidate["claim_id"])
-        if claim is None or claim["status"] != "formalised here":
-            raise ValueError("Palomar source result lacks a formalised registry claim")
+        if claim is None or claim["status"] not in {
+            "formalised here", "unconditional progress"
+        }:
+            raise ValueError(
+                "Palomar source result lacks a registry claim that is formalised here "
+                "or unconditional progress"
+            )
         declaration = next(
             (
                 row for row in claim["declarations"]

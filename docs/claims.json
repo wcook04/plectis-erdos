@@ -20202,7 +20202,8 @@
     "conditional reduction": "Exact implication whose remaining hypothesis is open",
     "verified finite instance": "Kernel-checked computation at a bounded range",
     "cited only": "External theorem used for positioning, not formalised",
-    "open": "Not proved by this release"
+    "open": "Not proved by this release",
+    "formal statement refuted": "Lean refutes the exact Formal Conjectures statement; correspondence with the original wording awaits independent review"
   },
   "external_verification_packet": {
     "schema": "erdos-external-verification-packet/1",
@@ -22068,14 +22069,35 @@
     {
       "id": "erdos_1041",
       "label": "Erdős #1041: short connections inside polynomial lemniscates",
-      "status": "open",
+      "status": "formal statement refuted",
       "statement": "Using ani's explicit monic degree-seven polynomial, Lean proves that every preconnected subset of its strict unit lemniscate containing two distinct roots has one-dimensional Hausdorff measure greater than 2. This refutes the exact Formal Conjectures path-image-length statement and its total-variation counterpart. The reported family is not formalised, and independent human review of correspondence with the 1958 wording is not recorded.",
       "remaining_open_proposition_ids": [
         "remaining_open.erdos_1041_lemniscate_connection"
       ],
       "paper_label": null,
       "readme_headline": false,
-      "declarations": []
+      "declarations": [
+        {
+          "name": "erdos1041_counterexample_hausdorff",
+          "module": "ErdosProblems/Erdos1041/Counterexample/HausdorffLength.lean",
+          "line": 283
+        },
+        {
+          "name": "erdos1041_hausdorff_negation",
+          "module": "ErdosProblems/Erdos1041/Counterexample/HausdorffLength.lean",
+          "line": 407
+        },
+        {
+          "name": "erdos1041_hausdorff_answer_false",
+          "module": "ErdosProblems/Erdos1041/Counterexample/HausdorffLength.lean",
+          "line": 449
+        },
+        {
+          "name": "erdos1041_ani_degree_seven",
+          "module": "ErdosProblems/Erdos1041/Counterexample/CatalogueAdapter.lean",
+          "line": 25
+        }
+      ]
     },
     {
       "id": "newton_ray_separation_consumer",
@@ -23813,7 +23835,7 @@
     {
       "id": "stern_brocot_run_fibonacci_stability",
       "label": "Fibonacci and continuant stability of Stern–Brocot runs",
-      "status": "formalised here",
+      "status": "unconditional progress",
       "statement": "A Stern–Brocot word with r nonempty alternating runs has height at least F_(r+3), with equality on the all-unit run spine. Writing each run length as 1+e_i gives an exact multiaffine continuant-defect expansion, the sharp global gain F_(r+1) sum e_i, and exact one-site coefficient F_(i+2)F_(r-i+1). Under the gcd-one weight 2^-(a+b), the first induced run layer has mass 1/2, while the natural denominator-bookkeeping exponent is exactly F_(r+3)-2. These are source-level combinatorial and arithmetic facts; no analytic denominator survival or irrationality conclusion is claimed.",
       "paper_label": "res:sternbrocotruns",
       "readme_headline": false,
@@ -23953,7 +23975,7 @@
     {
       "id": "totient_carry_kernel_anti_compression",
       "label": "Totient carry anti-compression",
-      "status": "formalised here",
+      "status": "unconditional progress",
       "statement": "If the binary totient coefficient series were rational, one positive-multiplier tempered integral carry would have uniformly eventually-periodic dyadic sections modulo its multiplier while retaining canonical carry-section span dimension at least 2^e − 1 for every e. No finite-rank bound for every rationality-supplied carry is proved, so this quotient-periodicity/anti-compression conjunction is a necessary consequence rather than an irrationality criterion for S.",
       "remaining_open_proposition_ids": [
         "remaining_open.erdos_249_irrationality"
@@ -24001,7 +24023,8 @@
     {
       "id": "denominator_exclusion",
       "label": "Unconditional denominator exclusion for the totient constant",
-      "status": "formalised here",
+      "status": "verified finite instance",
+      "bounded_domain": "Integer p and 1 <= q <= 79 639 646 646 701 375 323 355 774 875 831 053; no larger denominator is excluded.",
       "statement": "S = ∑ φ(n)/2ⁿ is not equal to p/q for any integer p and any 1 ≤ q ≤ 79 639 646 646 701 375 323 355 774 875 831 053 (≈ 7.96 × 10³⁴). A lower bound on any rational representation, not a proof of irrationality.",
       "remaining_open_proposition_ids": [
         "remaining_open.erdos_249_irrationality"
@@ -24790,7 +24813,7 @@
     {
       "id": "greedy_achievement_geometry",
       "label": "Greedy geometry of the Mersenne achievement set",
-      "status": "formalised here",
+      "status": "unconditional progress",
       "statement": "The Mersenne achievement set is compact, perfect, totally disconnected, nowhere dense, and has Lebesgue measure one. Membership is equivalent to greedy survival at every level; for the target 1/2 it is exactly equivalent to the canonical greedy orbit omitting infinitely many exponents. No finite normalized support has value 1/2, so positive membership would automatically produce an infinite rational-valued support and refute universal #257. Finite exact-rational death certificates soundly prove non-membership (3/4 is excluded at level one). The strict-tail Cantor geometry is recorded by Kovač–Tao; no novelty claim is made for the formalised refinements.",
       "remaining_open_proposition_ids": [
         "remaining_open.universal_257_all_infinite_supports"
@@ -25673,7 +25696,7 @@
     {
       "id": "cubic_rate_irrationality_unconditional",
       "label": "Cubic-rate reciprocal-sum irrationality under the stated asymptotic",
-      "status": "formalised here",
+      "status": "unconditional progress",
       "statement": "For a zero-indexed strictly increasing sequence of positive natural numbers a, if n³(a(n)²/a(n+1) − (1 + 3/n)) tends to zero and the reciprocal series has sum S, then S is irrational. Lean proves the square-specialisation input through the Dedekind-zeta simple pole, so this theorem has no Chebotarev premise. The paper states the ordinary one-based bridge. The quantitative cubic-rate hypothesis is essential here; this does not settle the original eventual Sylvester recurrence assertion.",
       "remaining_open_proposition_ids": [
         "remaining_open.erdos_243_eventual_recurrence"
@@ -25691,7 +25714,7 @@
     {
       "id": "nonintegral_regular_rate_irrationality",
       "label": "Nonintegral regular-rate reciprocal-sum irrationality",
-      "status": "formalised here",
+      "status": "unconditional progress",
       "statement": "For a zero-indexed strictly increasing sequence of positive natural numbers a and a real noninteger lambda greater than one, if n^lambda (a(n)^2/a(n+1) - (1 + lambda/n)) tends to zero, then the reciprocal series converges and its sum is irrational. The Lean theorem derives summability from the rate; the one-based paper form uses an ordinary finite-prefix bridge. The little-o remainder is essential to the integer-extraction argument. This does not settle the unrestricted Erdős #243 problem.",
       "remaining_open_proposition_ids": [
         "remaining_open.erdos_243_eventual_recurrence"
@@ -26028,8 +26051,8 @@
     {
       "id": "zudilin_all_rank_hankel_order",
       "label": "All-rank normalized Hankel order and leading coefficient",
-      "status": "formalised here",
-      "statement": "For every natural N, including N = 0, the normalized Zudilin Hankel determinant has q-order N(N-1)(2N-1)/6. Its leading coefficient satisfies the division-free identity 2^N times the coefficient = (N!)^2 (N+1)!, with the corresponding rational quotient formula. The all-row producer is proved rather than assumed. This algebraic theorem does not by itself supply the analytic estimates or irrationality at 3/2.",
+      "status": "unconditional progress",
+      "statement": "For every natural N, including N = 0, the normalized Zudilin Hankel determinant has q-order N(N-1)(2N-1)/6. Its leading coefficient satisfies the division-free identity 2^N times the coefficient = (N!)^2 (N+1)!, with the corresponding rational quotient formula. The all-row producer is proved rather than assumed. This algebraic theorem does not by itself supply the analytic estimates or irrationality at 3/2. Zudilin (2016) proves the q-order inequality; the equality is proved here.",
       "remaining_open_proposition_ids": [
         "remaining_open.erdos_1049_irrationality"
       ],
@@ -26056,7 +26079,7 @@
     {
       "id": "coefficient_pencil_finite_rank",
       "label": "Coefficient-pencil positivity and root interlacing through rank eight",
-      "status": "formalised here",
+      "status": "unconditional progress",
       "statement": "For each real p > 1 and each natural rank N ≤ 8, the coefficient Hankel matrix A_N is positive definite, the polynomial det(Y A_N − B_N) splits over the reals, and every root is strictly below F(p). For adjacent ranks N and N+1 ≤ 8, the ordered root lists interlace non-strictly, with multiplicities. Lean includes N = 0; the paper states the ranks 1 through 8. No all-rank coefficient-pencil theorem, simple-root or strict-interlacing assertion, limiting result, or irrationality of F(3/2) follows from this finite proposition.",
       "remaining_open_proposition_ids": [
         "remaining_open.erdos_1049_irrationality"
@@ -26092,7 +26115,7 @@
         "remaining_open.universal_257_all_infinite_supports"
       ],
       "statement": "For every integer base b >= 2, every infinite positive support A with finite weighted mass for some finite nonempty prime set P has irrational support series. If a host H of positive integers has finite base-two weighted mass, then every infinite subset A of H has irrational support series at every integer base b >= 2. This is a sufficient support criterion, not the universal statement.",
-      "status": "formalised here"
+      "status": "unconditional progress"
     },
     {
       "declarations": [
@@ -26110,7 +26133,7 @@
         "remaining_open.universal_257_all_infinite_supports"
       ],
       "statement": "A strengthened positive divisor-cover datum with summable scaled cost makes every infinite subset of its host irrational at every integer base b >= 2. The statement retains the nonlinear cover majorant and summability hypotheses; it does not cover arbitrary supports.",
-      "status": "formalised here"
+      "status": "unconditional progress"
     },
     {
       "declarations": [
@@ -26128,7 +26151,7 @@
         "remaining_open.universal_257_all_infinite_supports"
       ],
       "statement": "Let E have finite base-two finite-prime weighted mass and let V lie in a strengthened positive-cover host. Every infinite support A contained in E union V has irrational support series at every integer base b >= 2. The theorem uses a common observation scale; it does not assume separate irrationality conclusions for the two components.",
-      "status": "formalised here"
+      "status": "unconditional progress"
     },
     {
       "declarations": [
@@ -26145,8 +26168,8 @@
       "remaining_open_proposition_ids": [
         "remaining_open.universal_257_all_infinite_supports"
       ],
-      "statement": "For every integer base b >= 2 and every infinite support A, summability of the reciprocal-support mass implies that the support series is irrational. No pairwise-coprimality hypothesis is required.",
-      "status": "formalised here"
+      "statement": "For every integer base b >= 2 and every infinite support A, summability of the reciprocal-support mass implies that the support series is irrational. No pairwise-coprimality hypothesis is required. Erdős (1968) stated this extension without proof.",
+      "status": "unconditional progress"
     },
     {
       "id": "ani_degree_seven_total_variation_counterexample",

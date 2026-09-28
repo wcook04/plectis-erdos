@@ -11,6 +11,11 @@ from copy import deepcopy
 from typing import Any
 
 
+# Statuses a problem-level target claim may carry. "formal statement refuted"
+# means Lean refutes the exact Formal Conjectures statement while the review of
+# its correspondence with the original wording stays an open proposition.
+PROGRAMME_TARGET_STATUSES = frozenset({"open", "formal statement refuted"})
+
 IMPLEMENTED_GUARDS = {
     "release.methodology_schema_and_references",
     "release.claim_transition_requirements",
@@ -346,8 +351,9 @@ def validate_contract(claims: dict[str, Any], methodology: dict[str, Any]) -> li
         if row.get("status") != "open":
             errors.append(f"{row_id}: remaining open proposition status must be open")
         target = claims_by_id.get(row.get("open_target_claim"))
-        if target is None or target.get("status") != "open":
-            errors.append(f"{row_id}: open_target_claim must name an open claim")
+        if target is None or target.get("status") not in PROGRAMME_TARGET_STATUSES:
+            errors.append(f"{row_id}: open_target_claim must name a claim with a programme-target status "
+                          "(open or formal statement refuted)")
         if not row.get("statement"):
             errors.append(f"{row_id}: missing statement")
 
@@ -359,6 +365,8 @@ def validate_contract(claims: dict[str, Any], methodology: dict[str, Any]) -> li
             errors.append(f"{claim_id}: unknown remaining open propositions {sorted(unknown)}")
         if claim.get("status") == "conditional reduction" and not remaining:
             errors.append(f"{claim_id}: conditional reduction must name a remaining open proposition")
+        if claim.get("status") == "formal statement refuted" and not remaining:
+            errors.append(f"{claim_id}: formal statement refuted must name the open wording review")
         bounded_domain = claim.get("bounded_domain")
         if claim.get("status") == "verified finite instance" and not bounded_domain:
             errors.append(f"{claim_id}: verified finite instance must state bounded_domain")
@@ -377,8 +385,9 @@ def validate_contract(claims: dict[str, Any], methodology: dict[str, Any]) -> li
         target_id = edge.get("to")
         target = claims_by_id.get(target_id)
         effect = edge.get("remaining_open_effect")
-        if target is None or target.get("status") != "open":
-            errors.append(f"argument edge {source}->{target_id}: target must be an open claim")
+        if target is None or target.get("status") not in PROGRAMME_TARGET_STATUSES:
+            errors.append(f"argument edge {source}->{target_id}: target must be a claim with a "
+                          "programme-target status (open or formal statement refuted)")
         if not isinstance(effect, dict):
             errors.append(f"argument edge {source}->{target_id}: missing remaining_open_effect")
             continue

@@ -1080,7 +1080,7 @@ def test_cross_programme_source_result_spine_is_claim_bound() -> None:
     claims_by_id = {claim["id"]: claim for claim in claims["claims"]}
     for row in rows:
         claim = claims_by_id[row["claim_id"]]
-        assert claim["status"] == "formalised here"
+        assert claim["status"] in {"formalised here", "unconditional progress"}
         source = next(
             declaration for declaration in claim["declarations"]
             if declaration["name"] == row["source_declaration"]
