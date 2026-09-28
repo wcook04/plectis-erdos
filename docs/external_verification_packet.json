@@ -1740,7 +1740,7 @@
     "owner": "docs/problem_index_source.json",
     "owner_digest": "sha256:d77108b3d7f3ee0f723bbe553a4406c4129091a57ae9fc4f5feea149160cb725",
     "projection": "docs/problems.json",
-    "projection_digest": "sha256:b9d666ef4b9766a47d0e81dcda6ceccfd227196664625172ffc4df53ba392476",
+    "projection_digest": "sha256:47f93b25a4458eb0e7b8b345fa6c26b30ed881c77201809b21376442b20ba508",
     "schema": "erdos249257-problem-index/1",
     "problem_count": 8,
     "authority_posture": "navigation_projection_not_Lean_proof_authority_and_not_a_reviewed_claim_registry",
@@ -2753,23 +2753,23 @@
           "files": {
             "frontier": {
               "path": "research_corpus/Erdos1041/FRONTIER.md",
-              "content_digest": "sha256:e0c5f9c6ca8add9a7e87d11511fb63aa461699f0d54c392afba8bdabebf20299"
+              "content_digest": "sha256:8aef5071a9a2a35de6b2af79bf0a486d97306aa0b6d4b997144e16ba1d112a9a"
             },
             "strongest_results": {
               "path": "research_corpus/Erdos1041/STRONGEST_RESULTS.json",
-              "content_digest": "sha256:6b11ede029441a4c50aae08895a035b236a5a3e08a39452cf78a8ab87194199f"
+              "content_digest": "sha256:bc981e18993f1824b1d2174e3ef85b0e449b435c77b05e2a7171215d56994e65"
             },
             "manifest": {
               "path": "research_corpus/Erdos1041/CORPUS_MANIFEST.json",
-              "content_digest": "sha256:ce964d4a1e23101de34f35e3a42d4e2d6851873f9a37ddaecb6af718e9048ea6"
+              "content_digest": "sha256:d3e9276504f79783c10fdd23676bbf14cfa87db77e6d19bcf5e950a13da34aa2"
             },
             "checkpoint": {
               "path": "research_corpus/Erdos1041/PUBLIC_CORPUS_CHECKPOINT.json",
-              "content_digest": "sha256:007198e7eb8c48c7438c21d2a082342c45f44b945c49d5a3326d0a600d6b725c"
+              "content_digest": "sha256:fe4201b6e58428e38661e65ecaf4ee0003703b648297ab828e0fb45f13ee3d5f"
             }
           },
           "strongest_result_summary": {
-            "source_checkpoint": "fd47c99b7f95ee10cbf22bd7e13a3bec9ea6bfac",
+            "source_checkpoint": "a02c51d95b47e06d8d54dc09189cc712547f989d",
             "status": "open",
             "result_count": 294
           },
