@@ -10264,7 +10264,26 @@ def paper_reading_guide_packet() -> dict[str, Any]:
                 "publication_state": row["publication_state"],
                 "manuscript_status": row["manuscript_status"],
                 "peer_review_state": row["peer_review_state"],
-                "archived_versions": row.get("archived_versions", []),
+                # Keep immutable archive receipts in their owner. Repeating every
+                # digest and attachment URL here can exhaust the bounded guide.
+                "archived_versions": [
+                    {
+                        **{
+                            key: version[key]
+                            for key in (
+                                "identifier", "version", "url", "source_commit",
+                                "relation_to_current_manuscript", "peer_review_state",
+                                "receiving_status",
+                            )
+                            if key in version
+                        },
+                        "record_ref": (
+                            "docs/papers/archive_versions.json#/papers/"
+                            f"{row['paper_id']}/{index}"
+                        ),
+                    }
+                    for index, version in enumerate(row.get("archived_versions", []))
+                ],
                 "preferred_read_path": preferred_read_path,
                 "full_text_available_in_checkout": full_text_available,
                 "pdf_available_in_checkout": pdf_available,

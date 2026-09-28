@@ -77,8 +77,8 @@
         },
         {
           "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
-          "line_start": 1438,
-          "line_end": 1441,
+          "line_start": 1440,
+          "line_end": 1443,
           "expected_text": "\\bibitem{formalconjectures}",
           "excerpt_sha256": "sha256:1d891b554cf100c91b2fce4d68b68b3847498ea54355b6d6f9da795c07521527"
         }
@@ -486,8 +486,8 @@
         },
         {
           "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
-          "line_start": 1399,
-          "line_end": 1403,
+          "line_start": 1401,
+          "line_end": 1405,
           "expected_text": "\\bibitem{lean4}",
           "excerpt_sha256": "sha256:a79650c0f50caca8446521a3613124f26f30878a82d4d43715c4bfc4f1b646d1"
         }
@@ -4760,8 +4760,8 @@
         },
         {
           "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
-          "line_start": 1465,
-          "line_end": 1470,
+          "line_start": 1467,
+          "line_end": 1472,
           "expected_text": "\\bibitem{leanarchitect}",
           "excerpt_sha256": "sha256:a79881cccf900aa81e79f56667f432a2c78d4fe0ce5caf35422ec16531187624"
         }
@@ -4806,8 +4806,8 @@
         },
         {
           "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
-          "line_start": 1462,
-          "line_end": 1465,
+          "line_start": 1464,
+          "line_end": 1467,
           "expected_text": "\\bibitem{leanblueprint}",
           "excerpt_sha256": "sha256:7309da2fcaace6abbd9af2aeeb912021812d164e3d40997aa7c1cb4e98c478c8"
         }
@@ -4859,8 +4859,8 @@
         },
         {
           "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
-          "line_start": 1484,
-          "line_end": 1487,
+          "line_start": 1486,
+          "line_end": 1489,
           "expected_text": "\\bibitem{leandojo}",
           "excerpt_sha256": "sha256:80218c80a0b100a8360f88d3e1a3726d130e48747a99ee6ad9750c781000d3d7"
         }
@@ -5891,8 +5891,8 @@
         },
         {
           "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
-          "line_start": 1432,
-          "line_end": 1435,
+          "line_start": 1434,
+          "line_end": 1437,
           "expected_text": "\\bibitem{ehp1958}",
           "excerpt_sha256": "sha256:1c7bbff8b9ecf2229080e8b8ba7833142628f64292e1aecef725441fa86f7ef9"
         }
@@ -6518,8 +6518,8 @@
         },
         {
           "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
-          "line_start": 1403,
-          "line_end": 1406,
+          "line_start": 1405,
+          "line_end": 1408,
           "expected_text": "\\bibitem{erdosgraham}",
           "excerpt_sha256": "sha256:1b937681bd73e372ca1eb2a058ee0578cb99d388132d9fdc186e9ec9fc03e58b"
         }
@@ -10392,8 +10392,8 @@
       "artifact_links": [
         {
           "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
-          "line_start": 1487,
-          "line_end": 1490,
+          "line_start": 1489,
+          "line_end": 1492,
           "expected_text": "\\bibitem{openprover}",
           "excerpt_sha256": "sha256:d05aa1d2493bce7bc302b098d84b1f8fe15b2615cb5122434cd82ac36b15b1d4"
         }
@@ -13447,8 +13447,8 @@
         },
         {
           "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
-          "line_start": 1444,
-          "line_end": 1447,
+          "line_start": 1446,
+          "line_end": 1449,
           "expected_text": "\\bibitem{fan269}",
           "excerpt_sha256": "sha256:6974b157493799b4a7767f749fa6d8152750333b471355942174e4bfd947b461"
         }
@@ -13871,15 +13871,15 @@
         },
         {
           "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
-          "line_start": 1429,
-          "line_end": 1432,
+          "line_start": 1431,
+          "line_end": 1434,
           "expected_text": "\\bibitem{erdos1041}",
           "excerpt_sha256": "sha256:62c7f30e6e69a9518a78ce54ec17705c85fe324ecc02ed5ab901a96123bb8909"
         },
         {
           "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
-          "line_start": 1371,
-          "line_end": 1373,
+          "line_start": 1373,
+          "line_end": 1375,
           "expected_text": "\\bibitem{erdosproblems}",
           "excerpt_sha256": "sha256:1ac5357f10c02faa48f742246381cd200e43461ec7bf1ad931f1b9be3964b97b"
         }
@@ -14514,8 +14514,8 @@
         },
         {
           "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
-          "line_start": 1435,
-          "line_end": 1438,
+          "line_start": 1437,
+          "line_end": 1440,
           "expected_text": "\\bibitem{aniforum}",
           "excerpt_sha256": "sha256:4419d8e310bee757279aba1d4fb70c9d9b4ebd270e118ac08c5e49ce48817fbd"
         }
@@ -15994,8 +15994,8 @@
         },
         {
           "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
-          "line_start": 1450,
-          "line_end": 1453,
+          "line_start": 1452,
+          "line_end": 1455,
           "expected_text": "\\bibitem{prove2me}",
           "excerpt_sha256": "sha256:c9a36ce66934887ca2d845c1c21fdca445b85d85fda8067ad6a244acf9f4fbe6"
         }
@@ -16062,8 +16062,8 @@
         },
         {
           "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
-          "line_start": 1422,
-          "line_end": 1425,
+          "line_start": 1424,
+          "line_end": 1427,
           "expected_text": "\\bibitem{aletheia}",
           "excerpt_sha256": "sha256:06650ad7fd498dc3411f33be1c9fa8d899b3b07e13190cc806400263d07a88c8"
         }
@@ -16134,8 +16134,8 @@
         },
         {
           "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
-          "line_start": 1453,
-          "line_end": 1456,
+          "line_start": 1455,
+          "line_end": 1458,
           "expected_text": "\\bibitem{autonomousmath}",
           "excerpt_sha256": "sha256:8390940285e5ebe3fa348b34c283e57cd010fdfb08dc84dbd79db8071c51e094"
         }
@@ -16179,8 +16179,8 @@
         },
         {
           "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
-          "line_start": 1456,
-          "line_end": 1459,
+          "line_start": 1458,
+          "line_end": 1461,
           "expected_text": "\\bibitem{taowiki}",
           "excerpt_sha256": "sha256:b286b09fb9c90ba4049a0069fa8b7698b73f4799d2b73fac1a54fdceef20a7d8"
         }
@@ -16298,8 +16298,8 @@
       "artifact_links": [
         {
           "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
-          "line_start": 1490,
-          "line_end": 1493,
+          "line_start": 1492,
+          "line_end": 1495,
           "expected_text": "\\bibitem{lihai}",
           "excerpt_sha256": "sha256:b82d8ed1c80672ed82ae452a87448ac398ce482d8717aebd2d8eb1d7b21c714d"
         }
@@ -22956,8 +22956,8 @@
       "artifact_links": [
         {
           "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
-          "line_start": 1383,
-          "line_end": 1387,
+          "line_start": 1385,
+          "line_end": 1389,
           "expected_text": "\\bibitem{kra}",
           "excerpt_sha256": "sha256:e32354d6e9dce5beea0bd7639fc428e29239061b36285063968f4c6b438d2b27"
         }
@@ -22990,8 +22990,8 @@
       "artifact_links": [
         {
           "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
-          "line_start": 1387,
-          "line_end": 1390,
+          "line_start": 1389,
+          "line_end": 1392,
           "expected_text": "\\bibitem{cohn}",
           "excerpt_sha256": "sha256:069ff384c13f55f042ef0e445571c6ee28f771d27e9e80ae21ed97ffbf0c2689"
         }
@@ -23024,8 +23024,8 @@
       "artifact_links": [
         {
           "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
-          "line_start": 1390,
-          "line_end": 1392,
+          "line_start": 1392,
+          "line_end": 1394,
           "expected_text": "\\bibitem{taomining}",
           "excerpt_sha256": "sha256:2d82072ecac5b1ee63f9196038f8571e3f41c077968642287239a708bf0838ac"
         }
@@ -23058,8 +23058,8 @@
       "artifact_links": [
         {
           "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
-          "line_start": 1392,
-          "line_end": 1396,
+          "line_start": 1394,
+          "line_end": 1398,
           "expected_text": "\\bibitem{fieldsdecl}",
           "excerpt_sha256": "sha256:89a8572972941dbe073d1556d617df2e0a8d68508abbb26e667f054aa22542c9"
         }
@@ -23092,8 +23092,8 @@
       "artifact_links": [
         {
           "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
-          "line_start": 1396,
-          "line_end": 1399,
+          "line_start": 1398,
+          "line_end": 1401,
           "expected_text": "\\bibitem{sanderson}",
           "excerpt_sha256": "sha256:57b56b3dc98f87e01830ec9d8ad0f84c00156ef9828cf7682e76d145c0ecf451"
         }
@@ -23126,8 +23126,8 @@
       "artifact_links": [
         {
           "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
-          "line_start": 1425,
-          "line_end": 1427,
+          "line_start": 1427,
+          "line_end": 1429,
           "expected_text": "\\bibitem{leanfrocomparator}",
           "excerpt_sha256": "sha256:deb96a200b13f5e87c5d0fd551fcbcf9b199c27d94d72de6039982177c546346"
         }
@@ -23158,8 +23158,8 @@
       "artifact_links": [
         {
           "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
-          "line_start": 1427,
-          "line_end": 1429,
+          "line_start": 1429,
+          "line_end": 1431,
           "expected_text": "\\bibitem{nanodalib}",
           "excerpt_sha256": "sha256:a524c5a22e5fbacade3320260e08f8d57395a112937206a765495b6dfc73eafb"
         }
@@ -23192,8 +23192,8 @@
       "artifact_links": [
         {
           "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
-          "line_start": 1459,
-          "line_end": 1462,
+          "line_start": 1461,
+          "line_end": 1464,
           "expected_text": "\\bibitem{ringer}",
           "excerpt_sha256": "sha256:d26896e824fc6ec4be1ca9fa58e0870913de11aaddf21f73f81231cffa1984d4"
         }
@@ -23226,8 +23226,8 @@
       "artifact_links": [
         {
           "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
-          "line_start": 1560,
-          "line_end": 1562,
+          "line_start": 1562,
+          "line_end": 1564,
           "expected_text": "\\bibitem{litt}",
           "excerpt_sha256": "sha256:be814ce4951f2905b8004c7408ab43e90833c53c2d9b14a310a0db0a25ef9a49"
         }
@@ -23260,8 +23260,8 @@
       "artifact_links": [
         {
           "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
-          "line_start": 1562,
-          "line_end": 1565,
+          "line_start": 1564,
+          "line_end": 1567,
           "expected_text": "\\bibitem{chu}",
           "excerpt_sha256": "sha256:389f1072e7710565d0ac22458d1649687336a06f23358534558210550d8c9d02"
         }
@@ -23294,8 +23294,8 @@
       "artifact_links": [
         {
           "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
-          "line_start": 1565,
-          "line_end": 1570,
+          "line_start": 1567,
+          "line_end": 1572,
           "expected_text": "\\bibitem{greenletter}",
           "excerpt_sha256": "sha256:ac245ce2f2ef2f2b58c37f9d6208461ebddbd9910d265d81108a7b2a80ee0c8d"
         }
@@ -23328,8 +23328,8 @@
       "artifact_links": [
         {
           "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
-          "line_start": 1570,
-          "line_end": 1573,
+          "line_start": 1572,
+          "line_end": 1575,
           "expected_text": "\\bibitem{gowers}",
           "excerpt_sha256": "sha256:3a38116bdc9ac7954a4da9c52e66825e7c058d6e89d5d407cbaa402c7e2c6d4a"
         }
@@ -23362,8 +23362,8 @@
       "artifact_links": [
         {
           "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
-          "line_start": 1573,
-          "line_end": 1576,
+          "line_start": 1575,
+          "line_end": 1578,
           "expected_text": "\\bibitem{koukoulopoulos}",
           "excerpt_sha256": "sha256:78dd6ea8e8ef43d29d302fc8b5de01969a7254476ce7b4f61f7082ea5b1bdea9"
         }
@@ -23396,8 +23396,8 @@
       "artifact_links": [
         {
           "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
-          "line_start": 1576,
-          "line_end": 1578,
+          "line_start": 1578,
+          "line_end": 1580,
           "expected_text": "\\bibitem{antieau}",
           "excerpt_sha256": "sha256:40636bd4181cb1367d332b1f51606f18e04ec37fb1b15e45c260a64dba3ce1ac"
         }
