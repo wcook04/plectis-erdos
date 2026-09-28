@@ -16362,6 +16362,126 @@
       }
     },
     {
+      "id": "erdos249-totient-reasoning-surface#thm:goodbasegap",
+      "problem": 249,
+      "paper_id": "erdos249-totient-reasoning-surface",
+      "side": "long",
+      "label": "thm:goodbasegap",
+      "environment": "thm",
+      "kind": "theorem",
+      "statement_sha256": "sha256:eeda23264978aa4901daa9291892638f994b19fe1ca980df189184fe3bd9acb9",
+      "source": "paper/reasoning-parts/erdos249/a249_front.tex:1075",
+      "lean": {
+        "status": "exact",
+        "declarations": [
+          {
+            "name": "ErdosProblems.Erdos249.PaperCompleteR21.irrational_totient_series_of_support_gap",
+            "file": "lean/ErdosProblems/ArgumentGraph/Results/Erdos249Endpoint.lean"
+          },
+          {
+            "name": "ErdosProblems.Erdos249.PaperCompleteR21.irrational_totient_series_of_goodBase_gap",
+            "file": "lean/ErdosProblems/ArgumentGraph/Results/Erdos249Endpoint.lean"
+          }
+        ]
+      },
+      "comparator": {
+        "status": "pending",
+        "queued_at": "2026-09-28"
+      },
+      "palomar": {
+        "status": "pending"
+      }
+    },
+    {
+      "id": "erdos249-totient-reasoning-surface#prop:radixresidue",
+      "problem": 249,
+      "paper_id": "erdos249-totient-reasoning-surface",
+      "side": "long",
+      "label": "prop:radixresidue",
+      "environment": "prop",
+      "kind": "proposition",
+      "statement_sha256": "sha256:2c95682be2a1255d71ddf07ad8c2c1e12d9d34e00ae161f6fadae37cf3cbcd9e",
+      "source": "paper/reasoning-parts/erdos249/a249_front.tex:327",
+      "lean": {
+        "status": "exact",
+        "declarations": [
+          {
+            "name": "ErdosProblems.Erdos249.PaperCompleteR7.RationalIntegerRadix.radix_residue_series_irrational",
+            "file": "lean/ErdosProblems/Erdos249/PaperCompleteR7/RationalIntegerRadixClassification.lean"
+          },
+          {
+            "name": "ErdosProblems.Erdos249.PaperCompleteR7.RationalIntegerRadix.rational_zmod_radix_observable_iff",
+            "file": "lean/ErdosProblems/Erdos249/PaperCompleteR7/RationalIntegerRadixClassification.lean"
+          },
+          {
+            "name": "ErdosProblems.Erdos249.PaperCompleteR7.IntegerRadixObservables.positiveRadixValue_eq_of_even_constant",
+            "file": "lean/ErdosProblems/Erdos249/PaperCompleteR7/IntegerRadixObservables.lean"
+          }
+        ]
+      },
+      "comparator": {
+        "status": "pending",
+        "queued_at": "2026-09-28"
+      },
+      "palomar": {
+        "status": "pending"
+      }
+    },
+    {
+      "id": "erdos249-totient-reasoning-surface#prop:dilations",
+      "problem": 249,
+      "paper_id": "erdos249-totient-reasoning-surface",
+      "side": "long",
+      "label": "prop:dilations",
+      "environment": "prop",
+      "kind": "proposition",
+      "statement_sha256": "sha256:72b4af134a510529048e44b21bc4b0d2982f0565fbf9d7150b6eeca4207f6b30",
+      "source": "paper/reasoning-parts/erdos249/a249_front.tex:350",
+      "lean": {
+        "status": "exact",
+        "declarations": [
+          {
+            "name": "ErdosProblems.Erdos249.FiniteDilationLinearIndependent.linearIndependent_one_and_least_residue_values",
+            "file": "lean/ErdosProblems/Erdos249/FiniteDilationLinearIndependent.lean"
+          },
+          {
+            "name": "ErdosProblems.Erdos249.FiniteDilationMixedModuli.rational_mixed_moduli_with_constant_iff",
+            "file": "lean/ErdosProblems/Erdos249/FiniteDilationMixedModuli.lean"
+          }
+        ]
+      },
+      "comparator": {
+        "status": "pending",
+        "queued_at": "2026-09-28"
+      },
+      "palomar": {
+        "status": "pending"
+      }
+    },
+    {
+      "id": "erdos249-totient-reasoning-surface#prop:slowmoduli",
+      "problem": 249,
+      "paper_id": "erdos249-totient-reasoning-surface",
+      "side": "long",
+      "label": "prop:slowmoduli",
+      "environment": "prop",
+      "kind": "proposition",
+      "statement_sha256": "sha256:88215c042310d2e856eeb36dc2ea6ada4b1e96b590f8db60df9da1a614d2cf5c",
+      "source": "paper/reasoning-parts/erdos249/a249_front.tex:394",
+      "lean": {
+        "status": "none",
+        "counted": true,
+        "declarations": [],
+        "reason": "ordinary proof in the record; the block construction from prime factors of Fermat numbers and the tail estimate are not formalised"
+      },
+      "comparator": {
+        "status": "not_applicable"
+      },
+      "palomar": {
+        "status": "not_applicable"
+      }
+    },
+    {
       "id": "erdos249-totient-reasoning-surface#prop:route4",
       "problem": 249,
       "paper_id": "erdos249-totient-reasoning-surface",

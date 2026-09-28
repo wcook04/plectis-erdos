@@ -24569,6 +24569,75 @@
       ]
     },
     {
+      "id": "totient_residue_series_classification",
+      "label": "Irrational totient residue series and the rational dyadic residue observables",
+      "status": "unconditional progress",
+      "statement": "For every m ≥ 3 the series ∑_{n≥1} (φ(n) mod m)/2^n is irrational, and for k ≥ 1 and f: Z/2^kZ → Q the series ∑_{n≥1} f(φ(n) mod 2^k)/2^n is rational exactly when f is constant on the even residue classes, with value 3f(1)/4 + c/4 where c is that constant. The first assertion, in every integer base, already follows from Erdős's Lemma 1 (Indag. Math. 19 (1957), p. 213; the case b = 0 of his Lemma 4, pp. 215-218) because φ(n) mod m vanishes outside a set of density zero, and equally from Theorem 3 of Kaneko, Suzuki and Tachiya (arXiv:2601.20743v1, p. 5). Those criteria also give the classification when the values f(r) - f(0) on the even classes have one sign; with both signs they need a further spacing hypothesis, which the isolated-coefficient proof does not need. Wong posted the case in which the base equals the modulus in 2015. No novelty claim is made for the first assertion. The reduced series say nothing about the unreduced series ∑ φ(n)/2^n.",
+      "remaining_open_proposition_ids": [
+        "remaining_open.erdos_249_irrationality"
+      ],
+      "paper_label": "res:residueseries",
+      "readme_headline": false,
+      "declarations": [
+        {
+          "name": "short_note_residue_theorem",
+          "module": "ErdosProblems/Erdos249/PaperCompleteR7/RationalObservableClassification.lean",
+          "line": 276
+        }
+      ]
+    },
+    {
+      "id": "totient_residue_series_integer_radix",
+      "label": "Totient residue series in every integer base",
+      "status": "unconditional progress",
+      "statement": "For every integer t ≥ 2 and m ≥ 3 the series ∑_{n≥1} (φ(n) mod m)/t^n is irrational, and for k ≥ 1 and f: Z/2^kZ → Q the series ∑_{n≥1} f(φ(n) mod 2^k)/t^n is rational exactly when f is constant on the even residue classes, with value (t+1)f(1)/t^2 + f(0)/(t^2(t-1)). The first assertion already follows from Erdős's Lemma 1 (1957) and from Theorem 3 of Kaneko, Suzuki and Tachiya, as recorded for the binary case; no novelty claim is made for it.",
+      "remaining_open_proposition_ids": [
+        "remaining_open.erdos_249_irrationality"
+      ],
+      "paper_label": "prop:radixresidue",
+      "readme_headline": false,
+      "declarations": [
+        {
+          "name": "radix_residue_series_irrational",
+          "module": "ErdosProblems/Erdos249/PaperCompleteR7/RationalIntegerRadixClassification.lean",
+          "line": 128
+        },
+        {
+          "name": "rational_zmod_radix_observable_iff",
+          "module": "ErdosProblems/Erdos249/PaperCompleteR7/RationalIntegerRadixClassification.lean",
+          "line": 145
+        },
+        {
+          "name": "positiveRadixValue_eq_of_even_constant",
+          "module": "ErdosProblems/Erdos249/PaperCompleteR7/IntegerRadixObservables.lean",
+          "line": 303
+        }
+      ]
+    },
+    {
+      "id": "totient_residue_series_dilations",
+      "label": "Linear independence of dilated totient residue series",
+      "status": "unconditional progress",
+      "statement": "For every integer t ≥ 2 and m ≥ 3, the numbers 1 and ∑_{n≥1} (φ(n) mod m)/t^{dn}, d = 1, 2, ..., are linearly independent over Q. For a finite set D of positive integers and residue functions f_d: Z/2^{k_d}Z → Q with k_d ≥ 1, any rational constant plus ∑_{d∈D} ∑_{n≥1} f_d(φ(n) mod 2^{k_d})/t^{dn} is rational exactly when every f_d is constant on the even residue classes. The proof isolates a nonzero coefficient at the least active dilation by the Chinese remainder theorem and Dirichlet's theorem. When all coefficients of a relation have one sign, Erdős's Lemma 1 (1957) already excludes it; the mixed-sign case is not covered by that criterion without a further spacing hypothesis.",
+      "remaining_open_proposition_ids": [
+        "remaining_open.erdos_249_irrationality"
+      ],
+      "paper_label": "prop:dilations",
+      "readme_headline": false,
+      "declarations": [
+        {
+          "name": "linearIndependent_one_and_least_residue_values",
+          "module": "ErdosProblems/Erdos249/FiniteDilationLinearIndependent.lean",
+          "line": 42
+        },
+        {
+          "name": "rational_mixed_moduli_with_constant_iff",
+          "module": "ErdosProblems/Erdos249/FiniteDilationMixedModuli.lean",
+          "line": 95
+        }
+      ]
+    },
+    {
       "id": "dyadic_totient_certificate_interface",
       "label": "Dyadic totient-kernel finite-level rank",
       "status": "unconditional progress",
@@ -25162,6 +25231,34 @@
           "name": "irrational_totient_series_of_pivotResidualDecorrelation",
           "module": "Erdos249257/FirstHarmonicPivot.lean",
           "line": 577
+        }
+      ]
+    },
+    {
+      "id": "first_harmonic_good_index_reduction",
+      "label": "Irrationality of the totient series from one first-harmonic bound on the good indices",
+      "status": "conditional reduction",
+      "statement": "At the minimal admissible depth with s = 26 and η = 1/1000, if for every h ≥ 1 there are arbitrarily large X at which the real part of the first-harmonic sum over the good indices (the assigned indices N in [X, 2X) whose cofactor m satisfies φ(m) ≥ m/1000) is at most 603X/1000, then ∑ φ(n)/2^n is irrational. For all large X more than 67X/100 indices are good, by the unconditional unassigned count and the Chebyshev excluded-cofactor count, and 603/1000 = (9/10)(67/100); the underlying interface asks only for nonempty sets of indices beyond every threshold whose average first cosine is at most 9/10 at a depth with room. The bound is open, sufficient and not known to be necessary. It needs neither the prime number theorem nor a bound on the group means, and it supersedes the prime-number-theorem route at 11X/20. No computation in the record bears on it.",
+      "remaining_open_proposition_ids": [
+        "remaining_open.unbounded_certificate_supply"
+      ],
+      "paper_label": "thm:goodbasegap",
+      "readme_headline": false,
+      "declarations": [
+        {
+          "name": "irrational_totient_series_of_support_gap",
+          "module": "ErdosProblems/ArgumentGraph/Results/Erdos249Endpoint.lean",
+          "line": 44
+        },
+        {
+          "name": "eventually_card_pivotGoodBases_gt",
+          "module": "ErdosProblems/ArgumentGraph/Results/Erdos249Endpoint.lean",
+          "line": 75
+        },
+        {
+          "name": "irrational_totient_series_of_goodBase_gap",
+          "module": "ErdosProblems/ArgumentGraph/Results/Erdos249Endpoint.lean",
+          "line": 100
         }
       ]
     },
