@@ -174,7 +174,7 @@ TACTIC_LADDER: tuple[str, ...] = (
 BUDGET_ID = "ladder_v3_independent"
 
 
-def _attempt_lines(unfolds: Iterable[str], tactic: str) -> list[str]:
+def _attempt_lines(unfolds: Iterable[str], tactic: str, intros: Iterable[str] = ()) -> list[str]:
     """Render one tactic attempt as a standalone tactic block.
 
     Each (probe, tactic) pair gets its own declaration rather than becoming an
@@ -189,6 +189,9 @@ def _attempt_lines(unfolds: Iterable[str], tactic: str) -> list[str]:
     names = " ".join(sorted(set(unfolds)))
     if names:
         lines.append(f"  unfold {names}")
+    bound = " ".join(intros)
+    if bound:
+        lines.append(f"  intro {bound}")
     lines.append(f"  {tactic}")
     return lines
 
@@ -237,6 +240,14 @@ class Sketch:
     #: against the derived verdict; never substituted for it.
     expect: str | None = None
     note: str = ""
+    #: Binders the target and residuals share, as Lean source (`(n : ℕ) (h : P n)`).
+    #: Every probe of the sketch is stated under them, so a relation between two
+    #: sketches is decided pointwise, for the same `n` and `h`.
+    binders: str = ""
+    #: Constants to unfold before each tactic. Defaults to the target and residuals
+    #: themselves, which a bench states as named propositions; a sketch with binders
+    #: states applied terms, and names the constants to unfold here.
+    unfold: list[str] | None = None
 
     def demand(self) -> str:
         """The residual conjunction, as a Lean term."""
@@ -245,7 +256,9 @@ class Sketch:
         return "(" + " ∧ ".join(self.residuals) + ")"
 
     def unfolds(self) -> list[str]:
-        return [self.target, *self.residuals]
+        if self.unfold is not None:
+            return list(self.unfold)
+        return [] if self.binders.strip() else [self.target, *self.residuals]
 
 
 def load_manifest(path: Path) -> tuple[str, list[Sketch]]:
@@ -270,6 +283,8 @@ def load_manifest(path: Path) -> tuple[str, list[Sketch]]:
                 residuals=list(row["residuals"]),
                 expect=expect,
                 note=row.get("note", ""),
+                binders=row.get("binders", ""),
+                unfold=row.get("unfold"),
             )
         )
     return module, sketches
@@ -278,6 +293,23 @@ def load_manifest(path: Path) -> tuple[str, list[Sketch]]:
 # --------------------------------------------------------------------------
 # Probe emission
 # --------------------------------------------------------------------------
+
+#: A named binder group `(x y : T)`, `{h : P x}` or `⦃…⦄`; instance brackets bind no name.
+BINDER_GROUP = re.compile(r"[({⦃]\s*([^:(){}⦃⦄\[\]]+?)\s*:")
+
+#: A probe name becomes a Lean declaration name, so it must be an identifier.
+LEAN_NAME = re.compile(r"^[A-Za-z_][A-Za-z0-9_']*$")
+
+
+def binder_names(binders: str) -> list[str]:
+    """Names a binder string introduces, in order: `(n : ℕ) {h : P n}` gives n, h."""
+    return [name for group in BINDER_GROUP.findall(binders) for name in group.split()]
+
+
+def close(statement: str, binders: str) -> str:
+    """The statement under the sketch's binders, which every probe of the sketch shares."""
+    return f"∀ {binders}, {statement}" if binders.strip() else statement
+
 
 PROBE_MARK = re.compile(r"^probe_(?P<kind>soundness|laundering|refutation|dominance)__(?P<id>\S+)$")
 
@@ -289,16 +321,19 @@ class Probe:
     subject: str
     statement: str
     unfolds: list[str]
+    #: Binder names to introduce before each tactic.
+    intros: list[str] = field(default_factory=list)
 
 
 def build_probes(sketches: list[Sketch], *, cross: bool) -> list[Probe]:
     probes: list[Probe] = []
     for s in sketches:
         d = s.demand()
+        names = binder_names(s.binders)
         probes.append(
             Probe(
                 f"probe_soundness__{s.sketch_id}", "soundness", s.sketch_id,
-                f"{d} → {s.target}", s.unfolds(),
+                close(f"{d} → {s.target}", s.binders), s.unfolds(), names,
             )
         )
         # Laundering is asked per residual, in both directions, never of the
@@ -310,38 +345,48 @@ def build_probes(sketches: list[Sketch], *, cross: bool) -> list[Probe]:
         # never moved. A residual that is merely implied by the target, or merely
         # implies it, is doing real work in one direction.
         for k, r in enumerate(s.residuals):
+            unfolds = [s.target, r] if s.unfold is None and not s.binders.strip() else s.unfolds()
             probes.append(
                 Probe(f"probe_p2r{k}__{s.sketch_id}", f"p2r{k}", s.sketch_id,
-                      f"{s.target} → {r}", [s.target, r])
+                      close(f"{s.target} → {r}", s.binders), unfolds, names)
             )
             probes.append(
                 Probe(f"probe_r2p{k}__{s.sketch_id}", f"r2p{k}", s.sketch_id,
-                      f"{r} → {s.target}", [s.target, r])
+                      close(f"{r} → {s.target}", s.binders), unfolds, names)
             )
         probes.append(
             Probe(
                 f"probe_refutation__{s.sketch_id}", "refutation", s.sketch_id,
-                f"¬ {d}", s.residuals,
+                close(f"¬ {d}", s.binders) if not s.binders.strip() else f"¬ ({close(d, s.binders)})",
+                s.residuals if s.unfold is None and not s.binders.strip() else s.unfolds(), [],
             )
         )
     if cross:
-        by_target: dict[str, list[Sketch]] = {}
+        # Dominance compares demands for the same target under the same binders:
+        # `∀ ctx, D_A → D_B` says A asks for at least what B asks for, at every point.
+        by_target: dict[tuple[str, str], list[Sketch]] = {}
         for s in sketches:
-            by_target.setdefault(s.target, []).append(s)
+            by_target.setdefault((s.target, s.binders.strip()), []).append(s)
         for group in by_target.values():
             for a in group:
                 for b in group:
                     if a.sketch_id == b.sketch_id:
                         continue
+                    unfolds = ([*a.residuals, *b.residuals] if a.unfold is None and not a.binders.strip()
+                               else sorted({*a.unfolds(), *b.unfolds()}))
                     probes.append(
                         Probe(
-                            f"probe_dominance__{a.sketch_id}>{b.sketch_id}",
+                            f"probe_dominance__{a.sketch_id}__over__{b.sketch_id}",
                             "dominance",
                             f"{a.sketch_id}>{b.sketch_id}",
-                            f"{a.demand()} → {b.demand()}",
-                            [*a.residuals, *b.residuals],
+                            close(f"{a.demand()} → {b.demand()}", a.binders),
+                            unfolds, binder_names(a.binders),
                         )
                     )
+    for probe in probes:
+        if not LEAN_NAME.match(probe.name):
+            raise ValueError(f"probe name {probe.name!r} is not a Lean identifier; "
+                             "sketch ids must be letters, digits and underscores")
     return probes
 
 
@@ -356,7 +401,7 @@ def render_probe_file(module: str, probes: list[Probe], namespace: str) -> str:
         f"open {namespace}",
         "",
     ]
-    def emit(base: str, stmt: str, unfolds: list[str]) -> None:
+    def emit(base: str, stmt: str, unfolds: list[str], intros: list[str]) -> None:
         # The axiom report follows its own theorem immediately. Collected at the
         # end of the file instead, none of them printed at all: Lean stops
         # emitting diagnostics once a file accumulates enough errors, and a probe
@@ -364,12 +409,12 @@ def render_probe_file(module: str, probes: list[Probe], namespace: str) -> str:
         # truncated run still reports every declaration it actually reached.
         for i, tac in enumerate(TACTIC_LADDER):
             lines.append(f"theorem {base}__t{i} : {stmt} := by")
-            lines.extend(_attempt_lines(unfolds, tac))
+            lines.extend(_attempt_lines(unfolds, tac, intros))
             lines.append(f"#print axioms {base}__t{i}")
             lines.append("")
 
     for p in probes:
-        emit(p.name, p.statement, p.unfolds)
+        emit(p.name, p.statement, p.unfolds, p.intros)
 
     # Positive success signal. A `first | t1 | t2 | ...` block whose early
     # alternatives fail still emits their diagnostics, so "this probe reported no
@@ -395,6 +440,93 @@ class ProbeResult:
     proved: bool
     detail: str = ""
     axioms: list[str] = field(default_factory=list)
+
+
+#: `#print axioms` output for one attempt: proof exists, with its axioms.
+AXIOM_REPORT = re.compile(
+    r"'(probe_\S+)' (?:depends on axioms: \[(.*?)\]|does not depend on any axioms)", re.DOTALL
+)
+
+
+def axiom_reports(blob: str) -> dict[str, list[str]]:
+    """Attempt name -> axioms, for every attempt the text reports as declared."""
+    return {
+        m.group(1): [a.strip() for a in (m.group(2) or "").split(",") if a.strip()]
+        for m in AXIOM_REPORT.finditer(blob)
+    }
+
+
+def decide(probes: list[Probe], all_axioms: dict[str, list[str]],
+           all_detail: dict[str, str]) -> list[ProbeResult]:
+    """Probe results from axiom reports, refusing unless the controls discriminate."""
+
+    def _proved(name: str) -> bool:
+        """True when at least one tactic attempt for this probe closed cleanly."""
+        return any(
+            f"{name}__t{i}" in all_axioms and "sorryAx" not in all_axioms[f"{name}__t{i}"]
+            for i in range(len(TACTIC_LADDER))
+        )
+
+    def _winning_tactic(name: str) -> str:
+        for i, tac in enumerate(TACTIC_LADDER):
+            k2 = f"{name}__t{i}"
+            if k2 in all_axioms and "sorryAx" not in all_axioms[k2]:
+                return tac
+        return ""
+
+    if not all_axioms:
+        raise HarnessNotLiveError(
+            "No probe produced an axiom report, so nothing in this run elaborated. "
+            "Most often the bench module is not built into the search path."
+        )
+    for name, _stmt, must_prove in CONTROL_PROBES:
+        if _proved(name) != must_prove:
+            raise HarnessNotLiveError(
+                f"control probe {name} came back proved={_proved(name)}, expected "
+                f"{must_prove}. The harness is not discriminating; no verdict in "
+                "this run can be trusted."
+            )
+    return [
+        ProbeResult(
+            name=pr.name, kind=pr.kind, subject=pr.subject, statement=pr.statement,
+            proved=_proved(pr.name),
+            detail=_winning_tactic(pr.name) or all_detail.get(pr.name, "not proved within budget"),
+            axioms=all_axioms.get(f"{pr.name}__t0", []),
+        )
+        for pr in probes
+    ]
+
+
+def control_probes() -> list[Probe]:
+    return [Probe(name, "control", name, stmt, []) for name, stmt, _ in CONTROL_PROBES]
+
+
+def emit_probe_files(module: str, namespace: str, probes: list[Probe], out_dir: Path) -> list[Path]:
+    """One Lean file per probe, controls first, for a kernel-probe branch.
+
+    The kernel-probe workflow elaborates each file on its own and keeps its log as
+    `<file stem>.log`; `results_from_logs` reads those logs back.
+    """
+    out_dir.mkdir(parents=True, exist_ok=True)
+    written = []
+    for pr in control_probes() + probes:
+        path = out_dir / f"{pr.name}.lean"
+        path.write_text(render_probe_file(module, [pr], namespace))
+        written.append(path)
+    return written
+
+
+def results_from_logs(probes: list[Probe], log_dir: Path) -> list[ProbeResult]:
+    """Decide from the logs of an emitted run; a missing log decides nothing."""
+    all_axioms: dict[str, list[str]] = {}
+    all_detail: dict[str, str] = {}
+    for pr in control_probes() + probes:
+        log = log_dir / f"{pr.name}.log"
+        if not log.exists():
+            all_detail[pr.name] = "no log"
+            continue
+        all_axioms.update(axiom_reports(log.read_text(errors="replace")))
+    return decide(probes, all_axioms, all_detail)
 
 
 def run_probes(
@@ -434,54 +566,10 @@ def run_probes(
         except subprocess.TimeoutExpired:
             blob = ""
             all_detail[pr.name] = "lean timed out"
-        for m in re.finditer(
-            r"'(probe_\S+)' (?:depends on axioms: \[(.*?)\]|does not depend on any axioms)",
-            blob, re.DOTALL,
-        ):
-            all_axioms[m.group(1)] = [
-                a.strip() for a in (m.group(2) or "").split(",") if a.strip()
-            ]
-
-    def _proved(name: str) -> bool:
-        """True when at least one tactic attempt for this probe closed cleanly."""
-        return any(
-            f"{name}__t{i}" in all_axioms and "sorryAx" not in all_axioms[f"{name}__t{i}"]
-            for i in range(len(TACTIC_LADDER))
-        )
-
-    def _winning_tactic(name: str) -> str:
-        for i, tac in enumerate(TACTIC_LADDER):
-            k2 = f"{name}__t{i}"
-            if k2 in all_axioms and "sorryAx" not in all_axioms[k2]:
-                return tac
-        return ""
-
-    if not all_axioms:
-        raise HarnessNotLiveError(
-            "No probe produced an axiom report, so nothing in this run elaborated. "
-            "Most often the bench module is not built into the search path."
-        )
-    for name, _stmt, must_prove in CONTROL_PROBES:
-        if _proved(name) != must_prove:
-            raise HarnessNotLiveError(
-                f"control probe {name} came back proved={_proved(name)}, expected "
-                f"{must_prove}. The harness is not discriminating; no verdict in "
-                "this run can be trusted."
-            )
+        all_axioms.update(axiom_reports(blob))
 
     probe_path.write_text("\n".join(transcript))
-    return [
-        ProbeResult(
-            name=pr.name, kind=pr.kind, subject=pr.subject, statement=pr.statement,
-            proved=_proved(pr.name),
-            detail=_winning_tactic(pr.name) or all_detail.get(pr.name, "not proved within budget"),
-            axioms=all_axioms.get(f"{pr.name}__t0", []),
-        )
-        for pr in probes
-    ]
-
-
-# --------------------------------------------------------------------------
+    return decide(probes, all_axioms, all_detail)
 
 
 def classify(sketch: Sketch, results: list[ProbeResult]) -> dict:
@@ -517,6 +605,7 @@ def classify(sketch: Sketch, results: list[ProbeResult]) -> dict:
     return {
         "sketch_id": sketch.sketch_id,
         "target": sketch.target,
+        "binders": sketch.binders,
         "residuals": sketch.residuals,
         "verdict": verdict,
         "is_veto": verdict in VETOES,
@@ -561,8 +650,14 @@ def dominance_edges(results: list[ProbeResult]) -> list[dict]:
 def main(argv: list[str] | None = None) -> int:
     ap = argparse.ArgumentParser(description=__doc__.split("\n")[0])
     ap.add_argument("--manifest", required=True, type=Path)
-    ap.add_argument("--lean-root", required=True, type=Path,
-                    help="Directory containing lakefile + built Mathlib.")
+    ap.add_argument("--lean-root", type=Path,
+                    help="Directory containing lakefile + built Mathlib (a local run).")
+    ap.add_argument("--emit", type=Path, metavar="DIR",
+                    help="Write one probe file per probe (controls first) to DIR for a "
+                         "kernel-probe branch, and stop.")
+    ap.add_argument("--from-logs", type=Path, metavar="DIR",
+                    help="Decide from the logs (<probe>.log) of an emitted run in DIR "
+                         "instead of running Lean.")
     ap.add_argument("--out", type=Path, help="Write the JSON report here.")
     ap.add_argument("--probe-out", type=Path,
                     help="Keep the generated probe file at this path.")
@@ -575,6 +670,24 @@ def main(argv: list[str] | None = None) -> int:
                     help="Exit 1 if any derived verdict disagrees with its expectation.")
     args = ap.parse_args(argv)
 
+    if args.emit or args.from_logs:
+        module, sketches = load_manifest(args.manifest)
+        namespace = args.namespace or module
+        probes = build_probes(sketches, cross=not args.no_cross)
+        if args.emit:
+            written = emit_probe_files(module, namespace, probes, args.emit)
+            print(f"wrote {len(written)} probe file(s) to {args.emit}")
+            return 0
+        try:
+            results = results_from_logs(probes, args.from_logs)
+        except HarnessNotLiveError as exc:
+            print(f"HARNESS NOT LIVE — no verdicts reported.\n{exc}", file=sys.stderr)
+            return 3
+        return report_and_exit(args, module, sketches, probes, results,
+                               lean_root=str(args.from_logs), elapsed=0.0)
+
+    if args.lean_root is None:
+        ap.error("--lean-root is required for a local run (or use --emit / --from-logs)")
     lean_root = args.lean_root.resolve()
     if not (lean_root / "lakefile.toml").exists() and not (lean_root / "lakefile.lean").exists():
         print(f"REFUSED: {lean_root} has no lakefile; cannot run probes.", file=sys.stderr)
@@ -602,6 +715,13 @@ def main(argv: list[str] | None = None) -> int:
 
     if args.probe_out:
         args.probe_out.write_text(probe_path.read_text())
+    return report_and_exit(args, module, sketches, probes, results,
+                           lean_root=str(lean_root), elapsed=elapsed)
+
+
+def report_and_exit(args: argparse.Namespace, module: str, sketches: list[Sketch],
+                    probes: list[Probe], results: list[ProbeResult], *,
+                    lean_root: str, elapsed: float) -> int:
     verdicts = [classify(s, results) for s in sketches]
     edges = dominance_edges(results)
 
@@ -609,7 +729,7 @@ def main(argv: list[str] | None = None) -> int:
     report = {
         "schema": "residual_evaluator/1",
         "module": module,
-        "lean_root": str(lean_root),
+        "lean_root": lean_root,
         "tactic_budget": {"id": BUDGET_ID, "ladder": list(TACTIC_LADDER)},
         "elapsed_seconds": elapsed,
         "sketch_count": len(sketches),

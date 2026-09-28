@@ -103,9 +103,11 @@ export makes six passes.
 
 Four further passes are off unless their variable is set (the exporter's
 header lists them with their budgets). *Scope-aware used consequences*
-(`PLECTIS_CONTINUATION_USED_V2=1`) extend pass 2 to use sites whose lemma is
-applied under binders of the proof or to other hypotheses, abstracting them
-into the consequence. *Literal generalisation*
+(`PLECTIS_CONTINUATION_USED_V2=1`, set in the CI export) extend pass 2 to use
+sites whose lemma is applied under binders of the proof or to other hypotheses,
+abstracting them into the consequence; a site whose closed consequence restates
+the goal classically (a `by_contra` site, `¬G → False`) is refused like one
+that restates it outright. *Literal generalisation*
 (`PLECTIS_CONTINUATION_GENERALISE_SECONDS`) turns an ℕ, ℤ, ℚ or ℝ literal of a
 theorem into a variable, assumes as obligations the closed facts its proof
 used about that literal, discharges what the battery can, and keeps the
@@ -251,7 +253,22 @@ constant `1 + ε` (level 3); and that one only through the two-sided bounds of
 `nthPrime_two_sided` (level 4). The budget at `η = 1/1000` was later proved
 with no hypothesis by supplying level 3 with the constant `log 4` from
 Chebyshev's bound: the useful cut was a middle level, and the deepest level is
-close to the prime number theorem itself. The projection lists the chains per
+close to the prime number theorem itself. The budget then served a proof that
+never calls the estimate: `DTWPivotResidualDecorrelation` (demand `G064`, from
+which the irrationality of the #249 series follows) needs the depth conditions,
+a bad-base count, a non-supplier count, the fibre means and the centred
+correlation. At the minimal depth `prop_dickman` supplies the depth conditions
+and the non-supplier count with no hypothesis, the Chebyshev budget supplies the
+bad-base count, and `ArgumentGraph/Results/Erdos249.lean` states the rest:
+the decorrelation, hence the irrationality, from the fibre means and the
+centred correlation alone. Without the Chebyshev budget the bad-base count
+stays an input, or needs the prime number theorem. The fibre means then follow
+from the prime number theorem (`fiberMean_le_of_primeNumberTheorem`): a fibre is
+the primes of a shifted interval, and at the minimal depth the pivot phase turns
+a bounded number of times across it. On the good bases the first harmonic is the
+centred correlation plus the fibre-mean contribution, so given the fibre means the
+centred clause is the first-harmonic gap on the good bases, up to `X/100` either
+way (`ArgumentGraph/Results/Erdos249Route.lean`). The projection lists the chains per
 problem (paper-cited theorems first) under `interfaces`, and for every
 interface statement the paper results whose chains need it (`needed_by`).
 
@@ -306,7 +323,13 @@ The theorems the argument graph itself contributes to Lean (modules under
 `ErdosProblems.ArgumentGraph`, which the coverage build imports) are left out
 of the graph with every row that uses one as theorem or producer, and counted
 in `argument_graph_derived_theorems_skipped`: the graph never reads its own
-findings back as corpus theorems.
+findings back as corpus theorems. `--read-findings` builds the other graph, for
+comparison: it keeps them, marks each one `finding` in the graph file, and
+writes no paper macros. On main's export of 27 September (run 36308380510) the
+174 findings supply seven more statements: three that no theorem assumes, and
+four assumed only by weakened theorems the export derived from findings. No
+theorem has all its hypotheses supplied because of them, and no paper result
+changes.
 
 ## Asking it questions
 
@@ -394,18 +417,34 @@ kernel check:
   proof never uses;
 * `derive_weakening T`: for each hypothesis `h : H` the proof uses only inside
   use sites, `T.weakened_i` (the statement with `H` replaced by the
-  propositions `C₁ … Cₖ` those sites prove) and `T.use_i_j : H → Cⱼ`;
+  propositions `C₁ … Cₖ` those sites prove) and `T.use_i_j : H → Cⱼ`. The use
+  sites are those of the export's used-consequence pass; when some occurrence
+  of `h` lies in none, they are those of its scope-aware version
+  (`PLECTIS_CONTINUATION_USED_V2`): a site may mention variables bound in the
+  proof (`L n h` under a binder `n`), its consequence is its proposition closed
+  over the variables it needs (`Cⱼ = ∀ n, P n`), and the site becomes the new
+  hypothesis applied to them;
 * `derive_frontier T`: `T.frontier_i`, which follows the weakenings through
   the theorems the proof applies `h` to. When a use site is `L … h …` and the
   proof of `L` uses that hypothesis only through consequences of its own, the
-  site is replaced by `L.weakened_p` applied to proofs of those consequences,
+  site is replaced by `L.weakened_p` applied to proofs of those consequences
+  (closed over the site's variables when its other arguments mention them),
   recursively, and each consequence where the chain stops becomes one
-  hypothesis, assumed once however many branches need it.
+  hypothesis, assumed once however many branches need it. The chain follows a
+  lemma only through a weakening whose use sites mention no variable but the
+  hypothesis, because the published frontiers were derived that way and
+  following weakenings with parameters would change what those names state
+  (`derive_weakening L` still adds such a weakening). The rule keeps the cut
+  the published names state. Each level down, of either kind, replaces a
+  hypothesis by one that implies it, so a deeper frontier assumes more and
+  applies in fewer cases; which cut serves a consumer depends on what the corpus
+  proves of the hypotheses it leaves.
   `derive_frontier T at L` stops at the use sites of `L`, and
   `derive_frontier T using S` discharges each such hypothesis that the corpus
-  theorem `S` proves (exactly, or after instantiating some of its binders by
-  unification); when every one is discharged, `T`'s hypothesis is gone and the
-  theorem is named `…_supplied`;
+  theorem `S` proves (exactly, after instantiating some of its binders by
+  unification, or, for a consequence closed over a site's variables, for each
+  value of them); when every one is discharged, `T`'s hypothesis is gone and
+  the theorem is named `…_supplied`;
 * `derive_conjuncts T`: when `T` concludes `A₁ ∧ … ∧ Aₙ` (or `A ↔ B`, whose
   claims are `A → B` and `B → A`), `T.part_k` states the `k`-th claim with only
   the hypotheses its proof uses. That proof is the projection of `T`'s proof
@@ -413,6 +452,62 @@ kernel check:
   definitions such as `id`; never a theorem), so a proof that builds the claims
   separately, directly or under `have`, `show` or `let`, splits. A paper result
   stated modulo a named input may so have parts that hold without it.
+
+The module
+[`ErdosProblems.ArgumentGraph.Factor`](../lean/ErdosProblems/ArgumentGraph/Factor.lean)
+adds one command that changes where a theorem's hypotheses sit in its
+statement:
+
+* `derive_factor T`: `T.factored`, the statement of `T` with each proposition
+  hypothesis assumed only by the claims of the conclusion whose proofs use it.
+  The conclusion is read through `∃`, `∧` and `∀`; each claim that reads no
+  further is one claim. From a proof of `H₁ → H₂ → ∃ w, A w ∧ B w ∧ C w` whose
+  witness and whose proof of `A w` use neither hypothesis, whose proof of `B w`
+  uses only `H₁` and whose proof of `C w` uses only `H₂`, it states
+  `∃ w, A w ∧ (H₁ → B w) ∧ (H₂ → C w)` with the proof's own witness. A
+  hypothesis the witness needs stays above the `∃`, and one no claim uses is left
+  out. The command reads the proof after normalising its spine: `have`s whose
+  value uses a hypothesis being moved are inlined, an elimination of a
+  constructor is reduced (`obtain ⟨a, b⟩ := ⟨x, y⟩`), an elimination whose major
+  premise is itself an elimination moves inside it, an elimination with one
+  alternative is dropped when its proof ignores the fields it opens and otherwise
+  lets out a constructor built from terms free of them (so after
+  `obtain ⟨c, hc⟩ := h` the hypotheses behind `h` are charged only to the claims
+  that use `c` or `hc`), a compiled `match`, `dite`, `Or.elim` and
+  `Decidable.byCases` are unfolded to eliminations, and `h.1`, `h.2` read as
+  projections. When the proof destructures `L … h …` for a corpus theorem `L`, the
+  command first derives `L.factored` and rebuilds `L`'s conclusion from it, so a
+  hypothesis that `L` needs for one property no longer decides the witnesses `L`
+  supplies. It so follows a construction through the lemmas it is built from.
+  The factoring of a theorem imported from another library is named
+  `ErdosProblems.ArgumentGraph.Factored.<name>`. The reading only proposes the
+  placement; the kernel checks every theorem the command adds, including each
+  factoring it derives on the way.
+
+  Following the lemmas can leave out a hypothesis that the proof as written does
+  use: the proof passes it to a lemma only for claims of that lemma it never
+  uses. `T.factored` then states `T` without it, whatever the shape of the
+  conclusion (`derive_idle`, which reads the proof as written, keeps it). A
+  factoring that neither separates some claim from some input nor leaves out
+  such a hypothesis is refused: it would only move premises inward past binders,
+  which is the original statement whenever the witness types are inhabited.
+
+  A factored name is a contract on its statement, so a factoring must not depend
+  on where its lemma was reached. When a limit (the depth of lemmas followed, the
+  size of the proofs read, the heartbeat budget) cuts a reading short, the
+  command adds nothing more and reports the limit as an unknown.
+
+For the simultaneous prime-gap countermodel of #251,
+`short_joint_prime_gap_countermodel` assumes Schlage-Puchta's Lemma 4 and the
+prime number theorem and restricts its exponent to `0 < ε ≤ 1`. `derive_factor`
+states it for every `ε > 0` with the construction unconditional, Schlage-Puchta's
+Lemma 4 assumed only by the nonconcentration clause and the prime number theorem
+only by `P n ∼ n log n`. On the way it derives the factorings of
+`long_joint_prime_gap_countermodel`, of `prime_polylogarithmic_interval` (whose
+growth clause alone needs `ε < 1` and the prime number theorem) and of the
+lemmas beneath them.
+[`ArgumentGraph.Results.Erdos251`](../lean/ErdosProblems/ArgumentGraph/Results/Erdos251.lean)
+states both countermodels in this form.
 
 For the excluded-cofactor estimate of #249, `prop_badcof` assumes the prime
 number theorem, and its proof uses it only through a chain that ends at the
@@ -429,14 +524,67 @@ writes the commands for every theorem a paper cites, one module per problem
 under `lean/ErdosProblems/ArgumentGraph/Derived/`, with
 `argumentGraph.strict` set so that a derivation the export reported and the
 library cannot rebuild fails the build. Derivations the export does not decide
-in advance (conjunct splits, frontiers discharged by corpus theorems) are
-tried in a kernel probe first: given the probe's verdicts (`--verified`), the
-generator keeps each one that added theorems as a strict command and drops,
-with the reason, each one that did not. It lists each derived theorem, with the
-paper rows of its source theorem, in `docs/argument_frontier.json`. A derived
-theorem restates what its source proof already proves; it is new only as a
-statement, and whether a paper should state the stronger form is the author's
-decision.
+in advance (conjunct splits, factorings, frontiers discharged by corpus
+theorems) are tried in a kernel probe first (`--probes DIR` writes one probe
+per problem): given the probe's verdicts (`--verified`, read by
+[`scripts/frontier_verdicts.py`](../scripts/frontier_verdicts.py)), the
+generator keeps each one that added what it was asked for, and failed at
+nothing, as a strict command; one that added it and failed at another part (a
+frontier that discharges one hypothesis and not another) runs outside strict
+mode; and it drops, with the reason, each one that added nothing it was asked
+for. A verdict rests on positive evidence for the command's own output: the
+probe's `added` message for `T.factored` after the marker of `derive_factor T`
+(a factoring of a lemma derived on the way is a checked theorem, recorded as a
+helper, and does not satisfy the command), and a log that stops before the next
+marker or the probe's closing `@@END` leaves the command without a verdict. It
+lists each derived theorem, with the paper rows of its source theorem, in
+`docs/argument_frontier.json`, together with the statement and statement hash
+the probe reported for it.
+
+The frontier never loses a theorem it has published. A new export can stop
+proposing a derivation (its search is budgeted, and its use-site rule can
+change), so the generator carries every command of the modules already
+published into the new plan, with its imports. It checks names as well as
+commands: a probe of the published modules against the published library
+(`--baseline`) records every name they declare with its statement hash, and a
+probe verdict that a carried command no longer adds its theorem, that a
+published name is no longer added by any command, or that it now states
+something else, stops the generator until the derivation is repaired or the
+command or name is retired (`--retire`). A derived name that a hand-written
+module under `ArgumentGraph/Results` uses must be added by a strict command of
+a module it imports, and cannot be retired. A derived theorem restates what its
+source proof already proves; it is new only as a statement, and whether a paper
+should state the stronger form is the author's decision. A factoring records
+what one proof uses: that an input is still assumed by a claim in a checked
+factoring does not show that the claim needs it.
+
+What a derived statement adds is decided clause by clause. When a factoring
+drops a hypothesis, the added points are those where it fails: a conjunct is
+asserted at each of them, and a clause `A → B` says something there only where
+`A` holds. #1041's `binomial_inner_chord_maximal` gains its midpoint equality on
+the added region and its maximality clause nothing, since off the switch
+condition no `s` meets that clause's hypotheses; the region is not empty
+(`ArgumentGraph/Results/Erdos1041.lean`). An added region can also be covered by
+old instances: every `ε ≥ 1` instance of #251's per-clause countermodel follows
+from the `ε = 1` instance (`ArgumentGraph/Results/Erdos251.lean`). And a dropped
+hypothesis can follow from the others, as #243's `v n > 0` does, which gives the
+same region with a shorter statement (`ArgumentGraph/Results/Erdos243.lean`).
+Model checking draws the same distinctions for a formula that a model passes: a
+subformula is vacuous when replacing it by false leaves the verdict unchanged
+([Chockler, Gurfinkel and Strichman](https://doi.org/10.1007/s10703-013-0192-6)).
+`scripts/residual_evaluator.py` decides
+such relations with the kernel: whether residuals imply a target, restate it or
+are false, and whether one demand for a target implies another, under binders
+the sketches share (`--emit` writes its probes for a kernel-probe branch and
+`--from-logs` decides from that run's logs). Exports that switch the weakening
+and literal-generalisation passes on and off are compared by
+`scripts/compare_argument_exports.py`: the caps and what each pass attempted,
+the statements only one export exposes, and each pass's effect and their
+interaction on the statements every export searched (the contrasts of a
+two-level full factorial design, [NIST/SEMATECH e-Handbook
+§5.3.3.3.1](https://www.itl.nist.gov/div898/handbook/pri/section3/pri3331.htm)). A statement counts as
+supplied only by the export running both passes when no other export,
+the baseline included, supplies it.
 
 ## Checking a new statement without a local build
 

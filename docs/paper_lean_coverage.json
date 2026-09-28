@@ -1,7 +1,7 @@
 {
   "schema": "plectis-paper-lean-coverage/1",
-  "lean_pin": "87c64ce39d0874306da91681803f9f68c2c094b3",
-  "content_digest": "sha256:6c4704bec2fe070331766748dde232a8b48df519f70eda339a4e192c78eeba7d",
+  "lean_pin": "ab690b0aa515faa3a432e9d47de288704ebf6bb5",
+  "content_digest": "sha256:81fb8087e0dd5722d9df7cb38cd9bdeebf806bb595e8859183b0df93c66bbba6",
   "authority": "Generated projection of the maintainer coverage count. Proof authority stays with the Lean source checked by the pinned kernel, and docs/claims.json owns claim status. Each row records which Lean declarations state one asserting paper environment and how far the row has travelled toward independent Comparator replay and Palomar preparation.",
   "row_rule": "One row per closed asserting theorem-like environment (and per registered labelled claim span) of the sixteen problem papers, short and long counted separately even when their statements agree. statement_sha256 is the sha256 of the environment body after TeX comments are removed; source is the authored file and line of its opening.",
   "status_rule": {
@@ -1512,6 +1512,10 @@
             "file": "lean/ErdosProblems/Erdos251/PaperCompleteR21/JointPrimeGapCountermodel.lean"
           },
           {
+            "name": "ErdosProblems.Erdos251.PaperCompleteR21.short_joint_prime_gap_countermodel_per_clause",
+            "file": "lean/ErdosProblems/ArgumentGraph/Results/Erdos251.lean"
+          },
+          {
             "name": "ErdosProblems.Erdos251.PaperCompleteR21.cut_prefix_bound",
             "file": "lean/ErdosProblems/Erdos251/PaperCompleteR21/JointPrimeGapCountermodel.lean"
           }
@@ -1520,7 +1524,7 @@
           "ErdosProblems.Erdos251.PaperR11.PrimeSource.PrimeNumberTheorem",
           "ErdosProblems.Erdos251.PaperR11.PrimeSource.SchlagePuchtaLemma4"
         ],
-        "scope": "Schlage-Puchta's density lemma and the prime number theorem"
+        "scope": "Schlage-Puchta's density lemma, for fixed-block nonconcentration only, and the prime number theorem, for P_n ~ n log n only"
       },
       "comparator": {
         "status": "not_applicable"
@@ -1538,7 +1542,7 @@
       "environment": "theorem",
       "kind": "theorem",
       "statement_sha256": "sha256:d68a7a9905c8a96d43d8e6ed6217f4a7e3849c948096ac6d7ea3f70544d37ed8",
-      "source": "paper/251/erdos-251-prime-gap-dyadic-series.tex:370",
+      "source": "paper/251/erdos-251-prime-gap-dyadic-series.tex:372",
       "lean": {
         "status": "exact",
         "declarations": [
@@ -1594,7 +1598,7 @@
       "environment": "lemma",
       "kind": "lemma",
       "statement_sha256": "sha256:63bb00d45cf55c92ebdc836d288655abebb6ac847fdebf2a111e80df099e2ee6",
-      "source": "paper/251/erdos-251-prime-gap-dyadic-series.tex:392",
+      "source": "paper/251/erdos-251-prime-gap-dyadic-series.tex:394",
       "lean": {
         "status": "exact",
         "declarations": [
@@ -1630,7 +1634,7 @@
       "environment": "theorem",
       "kind": "theorem",
       "statement_sha256": "sha256:78cb83b39eb38629ba9f73a0044050c41f5d9d9db6e3c8d2a7df2b62c326a359",
-      "source": "paper/251/erdos-251-prime-gap-dyadic-series.tex:423",
+      "source": "paper/251/erdos-251-prime-gap-dyadic-series.tex:425",
       "lean": {
         "status": "exact",
         "declarations": [
@@ -1671,7 +1675,7 @@
       "environment": "proposition",
       "kind": "proposition",
       "statement_sha256": "sha256:4c9d5b1e8762e5f6b50e40db4dc009108bbcc2f681db11467f2d757ea54cb7bb",
-      "source": "paper/251/erdos-251-prime-gap-dyadic-series.tex:467",
+      "source": "paper/251/erdos-251-prime-gap-dyadic-series.tex:469",
       "lean": {
         "status": "exact",
         "declarations": [
@@ -1711,7 +1715,7 @@
       "environment": "proposition",
       "kind": "proposition",
       "statement_sha256": "sha256:4074ea287b2796ca7f8cce7d904bf2a848151a980a0cdc487e1d22ac6f6b2b16",
-      "source": "paper/251/erdos-251-prime-gap-dyadic-series.tex:511",
+      "source": "paper/251/erdos-251-prime-gap-dyadic-series.tex:513",
       "other_labels": [
         "eq:truncation"
       ],
@@ -1750,7 +1754,7 @@
       "environment": "corollary",
       "kind": "corollary",
       "statement_sha256": "sha256:1c2e8457bd46c6dc327f5b7a8a6987e355b06b90037b761a0b2fe2abe31835a7",
-      "source": "paper/251/erdos-251-prime-gap-dyadic-series.tex:601",
+      "source": "paper/251/erdos-251-prime-gap-dyadic-series.tex:603",
       "lean": {
         "status": "exact_or_stronger",
         "declarations": [
@@ -1790,7 +1794,7 @@
       "environment": "proposition",
       "kind": "proposition",
       "statement_sha256": "sha256:cd389d5ff3d35d1ebf4a30b8de3fc45e9bc319dad7ce97ecb5ad342cb609bce6",
-      "source": "paper/251/erdos-251-prime-gap-dyadic-series.tex:611",
+      "source": "paper/251/erdos-251-prime-gap-dyadic-series.tex:613",
       "lean": {
         "status": "exact",
         "declarations": [
@@ -16174,7 +16178,7 @@
       "environment": "prop",
       "kind": "proposition",
       "statement_sha256": "sha256:6652b2361d80c18bfdf3609aef0f346294121dfe9c87db2a758863b45bc7bf3d",
-      "source": "paper/reasoning-parts/erdos249/a249_front.tex:7597",
+      "source": "paper/reasoning-parts/erdos249/a249_front.tex:7600",
       "lean": {
         "status": "exact",
         "declarations": [
@@ -17152,6 +17156,10 @@
             "file": "lean/ErdosProblems/Erdos251/PaperCompleteR21/JointPrimeGapCountermodel.lean"
           },
           {
+            "name": "ErdosProblems.Erdos251.PaperCompleteR21.long_joint_prime_gap_countermodel_per_clause",
+            "file": "lean/ErdosProblems/ArgumentGraph/Results/Erdos251.lean"
+          },
+          {
             "name": "ErdosProblems.Erdos251.PaperCompleteR21.cut_prefix_bound",
             "file": "lean/ErdosProblems/Erdos251/PaperCompleteR21/JointPrimeGapCountermodel.lean"
           }
@@ -17160,7 +17168,7 @@
           "ErdosProblems.Erdos251.PaperR11.PrimeSource.PrimeNumberTheorem",
           "ErdosProblems.Erdos251.PaperR11.PrimeSource.SchlagePuchtaLemma4"
         ],
-        "scope": "Schlage-Puchta's density lemma and the prime number theorem"
+        "scope": "Schlage-Puchta's density lemma, for fixed-block nonconcentration only, and the prime number theorem, for P_n ~ n log n only"
       },
       "comparator": {
         "status": "not_applicable"
@@ -17178,7 +17186,7 @@
       "environment": "theorem",
       "kind": "theorem",
       "statement_sha256": "sha256:a6627fe367fa7daefb60c87ac3f765d08e934217e5fdb3987b08be1c64f0bb22",
-      "source": "paper/reasoning-parts/erdos251/core.tex:1573",
+      "source": "paper/reasoning-parts/erdos251/core.tex:1575",
       "lean": {
         "status": "modulo_named_input",
         "declarations": [
@@ -17216,7 +17224,7 @@
       "environment": "theorem",
       "kind": "theorem",
       "statement_sha256": "sha256:002890fa96296163524eb7310492082913bea6bb5032f3ee068eee26eb873a1b",
-      "source": "paper/reasoning-parts/erdos251/core.tex:1646",
+      "source": "paper/reasoning-parts/erdos251/core.tex:1648",
       "lean": {
         "status": "exact",
         "declarations": [
@@ -17252,7 +17260,7 @@
       "environment": "proposition",
       "kind": "proposition",
       "statement_sha256": "sha256:679111e1b497cf2f472627a5da6def6d7a3dd4821b4bef51da77ba38fa51591b",
-      "source": "paper/reasoning-parts/erdos251/core.tex:1802",
+      "source": "paper/reasoning-parts/erdos251/core.tex:1804",
       "lean": {
         "status": "exact",
         "declarations": [
@@ -17288,7 +17296,7 @@
       "environment": "proposition",
       "kind": "proposition",
       "statement_sha256": "sha256:963c7eb3669285253a43c137260efbb3c4a6e0b3a1175e64f3d659e3119c1de1",
-      "source": "paper/reasoning-parts/erdos251/core.tex:1833",
+      "source": "paper/reasoning-parts/erdos251/core.tex:1835",
       "lean": {
         "status": "exact",
         "declarations": [
@@ -17324,7 +17332,7 @@
       "environment": "proposition",
       "kind": "proposition",
       "statement_sha256": "sha256:ef969fdae654c198347a7b88826fc2f0e56c8e620f1c7e65a4ce9a73b7325bbf",
-      "source": "paper/reasoning-parts/erdos251/core.tex:2306",
+      "source": "paper/reasoning-parts/erdos251/core.tex:2308",
       "lean": {
         "status": "exact",
         "declarations": [
@@ -17360,7 +17368,7 @@
       "environment": "proposition",
       "kind": "proposition",
       "statement_sha256": "sha256:0dd582cb2e3a123da8e2eb5b6f163c6195ed674641e5457ce90ee39f4f22a1bc",
-      "source": "paper/reasoning-parts/erdos251/core.tex:2319",
+      "source": "paper/reasoning-parts/erdos251/core.tex:2321",
       "lean": {
         "status": "exact",
         "declarations": [
@@ -17396,7 +17404,7 @@
       "environment": "proposition",
       "kind": "proposition",
       "statement_sha256": "sha256:9a147b1c82bcea3b5c882efcf622980d69d29b095332c1d7971872f0df128025",
-      "source": "paper/reasoning-parts/erdos251/core.tex:2354",
+      "source": "paper/reasoning-parts/erdos251/core.tex:2356",
       "lean": {
         "status": "exact_or_stronger",
         "declarations": [
@@ -17432,7 +17440,7 @@
       "environment": "proposition",
       "kind": "proposition",
       "statement_sha256": "sha256:82562b0ed14dff0ab2e07246b2efea9d09631d3824bceec0ff31c284b3481f39",
-      "source": "paper/reasoning-parts/erdos251/core.tex:2398",
+      "source": "paper/reasoning-parts/erdos251/core.tex:2400",
       "lean": {
         "status": "exact",
         "declarations": [
@@ -17468,7 +17476,7 @@
       "environment": "proposition",
       "kind": "proposition",
       "statement_sha256": "sha256:e3e40bd17d5ecd97606ee570f38e242154ab2f075a82abb2016a4eddfdef20ba",
-      "source": "paper/reasoning-parts/erdos251/core.tex:2548",
+      "source": "paper/reasoning-parts/erdos251/core.tex:2550",
       "lean": {
         "status": "exact_or_stronger",
         "declarations": [
@@ -17504,7 +17512,7 @@
       "environment": "theorem",
       "kind": "theorem",
       "statement_sha256": "sha256:0476c65d1df3aaf6c56376837db5a2f2d3b999789c0bfd5a64f01fe7d020bd11",
-      "source": "paper/reasoning-parts/erdos251/core.tex:2675",
+      "source": "paper/reasoning-parts/erdos251/core.tex:2677",
       "other_labels": [
         "eq:affinecollapse",
         "eq:affinecofinal",

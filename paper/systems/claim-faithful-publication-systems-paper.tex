@@ -15,12 +15,12 @@
 }
 \newcommand{\repobase}{https://github.com/wcook04/plectis-erdos}
 % BEGIN generated_semantic_coverage_macros
-\newcommand{\SemanticAuthoredTheoremLike}{152,016}
+\newcommand{\SemanticAuthoredTheoremLike}{152,066}
 \newcommand{\SemanticAuthoredInterpreted}{139,818}
 \newcommand{\SemanticDirectEvidence}{3,330}
 \newcommand{\SemanticContextual}{136,488}
-\newcommand{\SemanticStructuralOnly}{12,198}
-\newcommand{\SemanticAuthoredPercent}{92.0}
+\newcommand{\SemanticStructuralOnly}{12,248}
+\newcommand{\SemanticAuthoredPercent}{91.9}
 % END generated_semantic_coverage_macros
 % BEGIN generated_argument_graph_macros
 \newcommand{\AGTheorems}{17,442}
@@ -53,18 +53,22 @@
 % END generated_argument_graph_macros
 % BEGIN generated_argument_frontier_macros
 \newcommand{\AFModules}{8}
-\newcommand{\AFPaperTheorems}{85}
+\newcommand{\AFPaperTheorems}{222}
 \newcommand{\AFIdle}{45}
-\newcommand{\AFWeakened}{43}
+\newcommand{\AFWeakened}{71}
 \newcommand{\AFConjuncts}{2}
-\newcommand{\AFCuts}{5}
-\newcommand{\AFSupplied}{0}
+\newcommand{\AFFactored}{122}
+\newcommand{\AFFactoredLibrary}{69}
+\newcommand{\AFFactoredComposed}{3}
+\newcommand{\AFRetained}{10}
+\newcommand{\AFCuts}{9}
+\newcommand{\AFSupplied}{1}
 \newcommand{\AFDischarged}{2}
-\newcommand{\AFNamedInputs}{75}
-\newcommand{\AFNamedInputUses}{139}
-\newcommand{\AFNamedInputsTraced}{29}
+\newcommand{\AFNamedInputs}{73}
+\newcommand{\AFNamedInputUses}{129}
+\newcommand{\AFNamedInputsTraced}{55}
 % END generated_argument_frontier_macros
-\newcommand{\repolink}[2]{\href{\repobase/blob/87c64ce39d0874306da91681803f9f68c2c094b3/#1}{\texttt{#2}}}
+\newcommand{\repolink}[2]{\href{\repobase/blob/948f3276061a743bc722937874e1603683737ffb/#1}{\texttt{#2}}}
 \emergencystretch=1.7em
 
 \runninghead{Problem-sized Lean worlds}
@@ -479,18 +483,26 @@ $\#\{p\ \text{prime}:a<p\le2a+1\}\cdot\log a\le(1+\varepsilon)\,a$, for each
 $\varepsilon>0$ and all large $a$, which uses it only through
 $(1-\delta)\,n\log n\le p_n\le(1+\delta)\,n\log n$ for the $n$th prime $p_n$,
 each $\delta>0$ and all large $n$. The kernel accepted every weakened theorem
-along the chain and every implication from the prime number theorem to what
-replaced it. So the proof needs from its input only the dyadic count, and the
-question becomes which constant $K$ in place of $1$ the rest of the argument
-can afford. The pass does not yet turn a constant into a parameter; that step
-had been taken outside it, on this module, before the pass was run there. The
-rest of the argument is linear in $K$ and bounds the count by $(KD+o(1))X$.
+on the chain and each implication from the prime number theorem, so the question
+is which constant $K$ in place of $1$ the argument affords (the pass keeps
+constants fixed; that step was by hand). The argument is linear in $K$ and bounds the count by $(KD+o(1))X$.
 Chebyshev's bound, that the primes in $(a+1,2a+1]$ divide
 $\binom{2a+1}{a}\le4^a$, gives $K=\log4$; at the record's explicit choice
 $\eta=1/1000$ an elementary estimate gives $D\le3/1000$, and since
 $3\log4/1000<1/100$ the count stays below $X/100$ for all large $X$ with no
 input at all. Lean checks that theorem
-(\href{\repobase/blob/57941a741fceaae33ab7e2513a9cd11fee060081/lean/ErdosProblems/Erdos249/PaperCompleteR21/ExcludedCofactorEstimate.lean}{\texttt{ExcludedCofactorEstimate.lean}}).
+(\repolink{lean/ErdosProblems/Erdos249/PaperCompleteR21/ExcludedCofactorEstimate.lean}{\texttt{ExcludedCofactorEstimate.lean}})
+and the family it belongs to: the same argument holds for every $\eta>0$ with
+$3\eta\log4<1/100$
+(\repolink{lean/ErdosProblems/Erdos249/PaperCompleteR21/ExcludedCofactorEstimate.lean}{\texttt{excluded\_budget\_of\_chebyshev}}).
+The count also serves a route that never calls it: with the
+unconditional \texttt{prop\_dickman} it discharges the depth, bad-base and
+non-supplier conditions of Problem~249's first-harmonic route, leaving its
+fibre-mean and centred estimates
+(\repolink{lean/ErdosProblems/ArgumentGraph/Results/Erdos249.lean}{Results/Erdos249.lean}).
+The prime number theorem gives the fibre means; on the good bases the
+centred estimate is the first-harmonic gap, up to $X/100$
+(\repolink{lean/ErdosProblems/ArgumentGraph/Results/Erdos249Route.lean}{Results/Erdos249Route.lean}).
 
 \paragraph{The findings as library theorems.} A Lean module
 (\href{\repobase/blob/7391668980147292656da6d0bc66a927aa84824b/lean/ErdosProblems/ArgumentGraph/Derive.lean}{\texttt{Derive.lean}})
@@ -506,10 +518,9 @@ hypotheses its own proof uses (\texttt{derive\_conjuncts}). A generator
 writes the commands for \AFPaperTheorems{} cited theorems, \AFIdle{} of them
 with a hypothesis the proof never uses, in \AFModules{} modules, one per
 problem, and the build fails when a derivation the export reported cannot be
-rebuilt. In kernel probes for Problem 249, the excluded-cofactor estimate
-holds with the prime number theorem replaced by the dyadic prime count, its
-first two conjuncts hold with neither the prime number theorem nor the density
-hypothesis, and the Lean proof that $\sum_{m\ge1}\sigma(m)/2^m$ is
+rebuilt. In kernel probes for Problem 249, the first two conjuncts of the
+excluded-cofactor estimate hold with neither the prime number theorem nor the
+density hypothesis, and the Lean proof that $\sum_{m\ge1}\sigma(m)/2^m$ is
 transcendental uses Nesterenko's theorem only at $q=1/2$. For Problem 1041,
 the separation corollary holds without the hypothesis that the roots lie in
 the open unit disc, which neither its proof nor the separation theorem it
@@ -527,6 +538,44 @@ Lean theorem
 (\repolink{lean/ErdosProblems/ArgumentGraph/Derived/Erdos251.lean}{Erdos251.lean}),
 and Problem~257's square-root route without its sign hypothesis
 (\repolink{lean/ErdosProblems/ArgumentGraph/Derived/Erdos257.lean}{Erdos257.lean}).
+
+A second module
+(\repolink{lean/ErdosProblems/ArgumentGraph/Factor.lean}{\texttt{Factor.lean}})
+moves each hypothesis of a theorem to the claims of its conclusion whose proofs
+use it and keeps the proof's witnesses (\texttt{derive\_factor}): from a proof
+of $H_1\to H_2\to\exists w,\ A(w)\wedge B(w)\wedge C(w)$ whose witness and
+whose proof of $A$ use neither hypothesis, it states
+$\exists w,\ A(w)\wedge(H_1\to B(w))\wedge(H_2\to C(w))$. When the proof
+destructures a corpus lemma applied to a hypothesis being moved, it factors
+that lemma first, so it follows a construction through the lemmas it is built
+from. The kernel
+checks every theorem it adds. Problem~251's simultaneous countermodel assumes
+Schlage-Puchta's Lemma~4 and the prime number theorem and fixes
+$0<\varepsilon\le1$; its factoring gives the construction for every
+$\varepsilon>0$ with each input assumed only by its own clause
+(\repolink{lean/ErdosProblems/ArgumentGraph/Results/Erdos251.lean}{Results/Erdos251.lean}),
+and the exponents $\varepsilon>1$ add nothing, since the sequence for
+$\varepsilon=1$ serves them. Following the lemmas can drop a hypothesis the
+proof as written uses: Problem~243's transport-square theorem passes $v_n>0$
+only to claims it does not use, and the other hypotheses force $v_n>0$ anyway
+(\repolink{lean/ErdosProblems/ArgumentGraph/Results/Erdos243.lean}{Results/Erdos243.lean}),
+so the factored theorem is the same result, stated shorter.
+Problem~1041's inner-chord factoring drops a switch condition; off it the
+maximality clause holds vacuously and the midpoint equality is asserted, as at
+$n=3$, $r=1/2$
+(\repolink{lean/ErdosProblems/ArgumentGraph/Results/Erdos1041.lean}{Results/Erdos1041.lean}).
+Model checking draws these distinctions: a subformula is vacuous if replacing
+it by false keeps a passing verdict~\cite{beyondvacuity}.
+\AFFactored{} cited theorems have a factoring, and deriving them factored
+\AFFactoredLibrary{} lemmas beneath them. A probe credits a command only with
+the theorem it names, never with lemma factorings derived on the way. The
+generator carries every published command into each new plan and stops when a
+probe shows a published name no longer added or stating something else, so a
+later export with a smaller budget or another use-site rule cannot remove a
+theorem a paper cites. The check has stopped one regeneration, in which ten
+published frontiers would have followed parameterised weakenings to stronger
+statements; a frontier follows only the kind of weakening it was published
+with.
 
 \paragraph{Research with the graph.} A research session on a problem opens a
 bounded packet built from the graph
@@ -1135,7 +1184,11 @@ tactics and \texttt{have} steps a proof does not use, lifts the obligations
 inside a partial proof into standalone lemmas, and checks a proof against a
 separately given statement and a list of permitted axioms~\cite{axle}. The
 used-consequence pass lifts statements out of a proof in a similar way, and
-Comparator makes a check of the last kind for this record.
+Comparator makes a check of the last kind for this record. Proof mining
+extracts from a given proof information that its statement does not record,
+such as explicit bounds~\cite{kohlenbach}; the factoring pass reads off a proof
+which claims of its conclusion each hypothesis supports, and the kernel checks
+the statement that records it.
 
 Li, Peng, Severini and Shafto analyse Mathlib as a multilayer network of
 declarations and modules, measuring centrality, communities and the effect of
@@ -1168,6 +1221,21 @@ Plausible tests a proposition on generated examples and reports a
 counterexample~\cite{plausible}. The battery runs a fixed list of closing
 tactics and library search, and the graph refutes a statement only through
 kernel-checked theorems.
+
+\paragraph{Libraries grown from proofs.} Kaliszyk and Urban rank intermediate
+statements of HOL~Light proofs by reuse and test the ranking with a prover,
+controlling what each theorem's own proof leaks~\cite{lemmamining}. Hipster keeps a lemma only when a
+routine tactic fails on it~\cite{hipster}; DreamCoder keeps a routine only when
+rewriting solved programs through it shrinks the whole~\cite{dreamcoder}.
+LEGO-Prover retrieves verified lemmas by requested
+subgoals~\cite{legoprover}; at matched compute its proofs reuse none
+verbatim~\cite{berlotattwell}. Proof-Refactor lifts
+proof blocks into helpers that a language model judges~\cite{proofrefactor},
+LeanConjecturer screens conjectures with \texttt{exact?} and
+Aesop~\cite{leanconjecturer}, and Georgiev et al.\ report scores met
+without the property measured~\cite{alphaevolvemath}. Here the gain of a
+restatement is a kernel-checked theorem, and its use by another proof is read
+from proof terms and from what withdrawing it loses.
 
 \section{Limits, and what stronger models change}\label{sec:limits}
 \papersectiontarget{systems-trust}
@@ -1424,6 +1492,9 @@ Interactive Theorem Proving with Lean 4}, 2026,
 \bibitem{lihai} C.~Li, Z.~Lai, D.~An, J.~Hu, and Z.~Wen, \emph{Advancing
 Mathematical Research via Human-AI Interactive Theorem Proving}, 2025,
 \href{https://arxiv.org/abs/2512.09443v2}{arXiv:2512.09443v2}.
+\bibitem{kohlenbach} U.~Kohlenbach, \emph{Applied Proof Theory: Proof
+Interpretations and their Use in Mathematics}, Springer Monographs in
+Mathematics, Springer, Berlin, 2008.
 \bibitem{gandhi} A.~Gandhi, A.~R.~Tadipatri, and T.~Gowers,
 \emph{Automatically Generalizing Proofs and Statements}, in \emph{16th
 International Conference on Interactive Theorem Proving}, LIPIcs 352, 2025,
@@ -1458,6 +1529,36 @@ pp.~253--266, \href{https://doi.org/10.1145/3573105.3575671}{DOI}.
 framework for Lean~4,
 \href{https://github.com/leanprover-community/plausible}{GitHub}, accessed
 September 2026.
+\bibitem{beyondvacuity} H.~Chockler, A.~Gurfinkel, and O.~Strichman,
+\emph{Beyond Vacuity: Towards the Strongest Passing Formula}, Form.\ Methods
+Syst.\ Des.\ 43 (2013), 552--571,
+\href{https://doi.org/10.1007/s10703-013-0192-6}{DOI}.
+\bibitem{lemmamining} C.~Kaliszyk and J.~Urban, \emph{Lemma Mining over HOL
+Light}, LPAR-19, LNCS 8312, 2013, pp.~503--517,
+\href{https://doi.org/10.1007/978-3-642-45221-5_34}{DOI}.
+\bibitem{hipster} M.~Johansson, D.~Ros\'en, N.~Smallbone, and K.~Claessen,
+\emph{Hipster: Integrating Theory Exploration in a Proof Assistant}, CICM
+2014, LNCS 8543, pp.~108--122,
+\href{https://doi.org/10.1007/978-3-319-08434-3_9}{DOI}.
+\bibitem{dreamcoder} K.~Ellis et al., \emph{DreamCoder: Growing
+Generalizable, Interpretable Knowledge with Wake-Sleep Bayesian Program
+Learning}, 2020, \href{https://arxiv.org/abs/2006.08381}{arXiv:2006.08381}.
+\bibitem{legoprover} H.~Wang, H.~Xin, et al., \emph{LEGO-Prover: Neural
+Theorem Proving with Growing Libraries}, ICLR 2024,
+\href{https://arxiv.org/abs/2310.00656}{arXiv:2310.00656}.
+\bibitem{berlotattwell} I.~Berlot-Attwell, T.~Sesterhenn, F.~Rudzicz, and
+X.~Si, \emph{Is This LLM Library Learning? Evaluation Must Account For Compute
+and Behaviour}, EACL 2026, pp.~3534--3568,
+\href{https://doi.org/10.18653/v1/2026.eacl-long.163}{DOI}.
+\bibitem{proofrefactor} Y.~Fu, P.~Liu, Z.~Wang, and K.~Yuan,
+\emph{Proof-Refactor: Refactoring Generated Formal Proofs into Modular
+Artifacts}, 2026, \href{https://arxiv.org/abs/2606.03743}{arXiv:2606.03743}.
+\bibitem{leanconjecturer} N.~Onda et al., \emph{LeanConjecturer: Automatic
+Generation of Mathematical Conjectures for Theorem Proving}, 2025,
+\href{https://arxiv.org/abs/2506.22005}{arXiv:2506.22005}.
+\bibitem{alphaevolvemath} B.~Georgiev, J.~G\'omez-Serrano, T.~Tao, and
+A.~Z.~Wagner, \emph{Mathematical Exploration and Discovery at Scale}, 2025,
+\href{https://arxiv.org/abs/2511.02864v3}{arXiv:2511.02864v3}.
 \bibitem{litt} D.~Litt, \emph{A beginning for mathematics}, 13 September
 2026, \href{https://www.daniellitt.com/blog/2026/9/13/a-beginning-for-mathematics/}{blog post}.
 \bibitem{chu} T.~Chu, \emph{The AI dissenter viewpoint}, \emph{Proofs and
