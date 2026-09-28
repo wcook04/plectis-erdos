@@ -19070,6 +19070,8 @@
             "ErdosProblems.Synthesis.DyadicShiftEscape",
             "ErdosProblems.Synthesis.FeedbackContinuation",
             "ErdosProblems.Synthesis.FactorialJet",
+            "ErdosProblems.Synthesis.RealBaseRounding",
+            "ErdosProblems.Synthesis.RoundingBarrier",
             "ErdosProblems.Synthesis.UniformRankBarrier"
           ]
         },
@@ -20027,7 +20029,7 @@
     "lean_toolchain": "leanprover/lean4:v4.29.1",
     "repository": "https://github.com/wcook04/plectis-erdos",
     "formal_source": {
-      "ref": "c9422ab261256099a89371c458af44c83e4e357f",
+      "ref": "07e8f01faed6cdc23c439cdb602667f116f708ab",
       "ref_kind": "commit",
       "publication_state": "committed_checkpoint_pending_remote_publication",
       "relationship_to_last_tag": "post_tag_checkpoint",
