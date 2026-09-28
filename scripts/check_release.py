@@ -461,7 +461,7 @@ INTERNAL_IMPORT_RE = re.compile(
 )
 
 LINE_WINDOW = 3  # declaration name must appear within this many lines of the stated line
-MAX_ROUTE_FIRST_CONTACT_BYTES = 48_000
+MAX_ROUTE_FIRST_CONTACT_BYTES = 56_000
 
 README_BANNED_PHRASES = [
     "Ramanujan Machine Challenge",

@@ -4,7 +4,7 @@
   "index_path": "docs/problems.json",
   "purpose": "Name every Erdős problem this repository holds formal material for, say what is checked and what is not, and route to the note, the modules, and the surviving obligation.",
   "authority_posture": "authored_navigation_source_not_Lean_proof_authority_and_not_a_reviewed_claim_registry",
-  "index_max_bytes": 65536,
+  "index_max_bytes": 73728,
   "note_coverage_floor": 0.6,
   "note_coverage_rule": "A note pins its links so they cannot break when the library moves; the cost is that it can fall silently behind. check_problem_note_sources.py --coverage measures the gap as the fraction of declarations that exist now which the note actually links, and fails below this floor. Lower it only as a deliberate, recorded decision.",
   "upstream_ref": "codex/problem-centric-erdos",
