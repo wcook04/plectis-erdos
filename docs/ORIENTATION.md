@@ -105,6 +105,7 @@ The prior-art record, not this table, supplies antecedents.
 | verified finite instance | Kernel-checked computation at a bounded range |
 | cited only | External theorem used for positioning, not formalised |
 | open | Not proved by this release |
+| formal statement refuted | Lean refutes the exact Formal Conjectures statement; correspondence with the original wording awaits independent review |
 
 ## Exact open boundary
 

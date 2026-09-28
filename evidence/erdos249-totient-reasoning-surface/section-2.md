@@ -4,7 +4,7 @@ Part of the [evidence record](../erdos249-totient-reasoning-surface.md) of the p
 
 <a id="lem-gsound"></a>
 
-## Lemma 2.1 (A residue certificate excludes an integral tail difference), page 7
+## Lemma 2.1 (A residue certificate excludes an integral tail difference), page 9
 
 > *Let $`c:\mathbb{N}\to\mathbb{N}`$ satisfy $`c(n)\le n`$ for all $`n`$. For $`h,N,L\in\mathbb{N}`$, $`\mathcal C_c(h,N,L) \Rightarrow R^{c}_{N+h} - R^{c}_{N} \notin \mathbb{Z}`$.*
 
@@ -49,7 +49,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="lem-gperiod"></a>
 
-## Lemma 2.2 (Generic tail-period law), page 7
+## Lemma 2.2 (Generic tail-period law), page 9
 
 > *Let $`c:\mathbb{N}\to\mathbb{N}`$ satisfy $`c(n)\le n`$ for all $`n`$. If $`T_c = p/(2^{e}m)`$ with $`p\in\mathbb{Z}`$, $`e\ge0`$ and $`m`$ a positive odd integer, and if $`h\ge1`$ satisfies $`m\mid 2^h-1`$, then $`R^{c}_{N+h} - R^{c}_{N} \in \mathbb{Z}`$ for every $`N \ge e`$.*
 
@@ -86,7 +86,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="thm-gamma"></a>
 
-## Theorem 2.4 (A rational sequence agreeing with any finite totient prefix), page 8
+## Theorem 2.4 (A rational sequence agreeing with any finite totient prefix), page 10
 
 > *Let $`B\ge1`$ and $`P>B`$ be integers. Define $`\gamma : \mathbb{N}\to \mathbb{N}`$ by
 > ``` math
@@ -198,7 +198,7 @@ theorem no_certificate_after_prefix (B P : ℕ) (hBP : B < P) :
 
 <a id="cor-b1"></a>
 
-## Corollary 2.5 (The limit of a finite-prefix argument), page 8
+## Corollary 2.5 (The limit of a finite-prefix argument), page 10
 
 > *No proof rule uniform over all $`c:\mathbb{N}\to\mathbb{N}`$ with $`c(n)\le n`$ can establish $`\mathrm{Sep}`$ from a single fixed prefix $`\{c(n):n\le B\}`$: Theorem 2.4 supplies a rational countermodel with that same prefix. This does *not* invalidate an argument that uses the fixed arithmetic sequence $`\varphi`$ together with compatible information at arbitrarily large horizons; the theorem gives a different $`\gamma_B`$ for each $`B`$, not one sequence agreeing with $`\varphi`$ at every $`B`$.*
 
@@ -230,7 +230,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="prop-b2"></a>
 
-## Proposition 2.7 (Three particular equivalences), page 9
+## Proposition 2.7 (Three particular equivalences), page 11
 
 > 1.  **Certificate completeness.* The complete residue tests considered here are equivalent to the corresponding nonintegrality assertions. Rewriting the quantified condition using one of these equivalences does not weaken it.*
 > 
@@ -287,7 +287,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="prop-b4"></a>
 
-## Proposition 2.9 (Failure of a specified two-adic congruence construction), page 10
+## Proposition 2.9 (Failure of a specified two-adic congruence construction), page 12
 
 > *A certificate requires the residue to lie farther than $`N+h+L+2`$ from either endpoint modulo $`2^L`$. In the specific construction below, a pulse places the residue at $`2^{K-1}`$ modulo $`2^K`$, but the defining congruence is $`p\equiv1+2^{K-1}\pmod{2^K}`$. Hence $`p\ge1+2^{K-1}`$. At $`N=p-K`$, $`h=H`$, and $`L=K`$, the error bound is $`p+H+2>2^{K-1}`$, so the residue does not satisfy the certificate inequalities. This calculation defeats this construction at every depth. It does not prove a corresponding statement for every use of the Chinese Remainder Theorem or every prescribed totient pattern.*
 
@@ -333,7 +333,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="prop-b5"></a>
 
-## Proposition 2.11 (Information lost by specific carry descriptions), page 10
+## Proposition 2.11 (Information lost by specific carry descriptions), page 12
 
 > 1.  *Fix $`m\ge2`$ and write $`R=\lfloor(m+1)/2\rfloor`$. For $`r=0,\ldots,R`$, let $`c_r`$ vanish except at $`c_r(m)=R-r`$ and $`c_r(m+1)=2r`$. Each sequence satisfies $`0\le c_r(n)\le n`$, has the same binary sum $`R2^{-m}`$, and has the same coefficients and scaled tails before position $`m`$. Its scaled tail at position $`m`$ is $`r`$. The common history therefore does not determine that tail. A finite set of labels that determines the tail for each member of this family must contain at least $`R+1=\lfloor(m+1)/2\rfloor+1`$ elements, one for each value of $`r`$.*
 > 
@@ -438,7 +438,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="prop-b6"></a>
 
-## Proposition 2.12 (Four limits of particular linear constructions), page 11
+## Proposition 2.12 (Four limits of particular linear constructions), page 13
 
 > *The following four constructions have different limitations. They must not be read as a claim that every finite family of totient sections is independent: the full family has the explicit relations described in the short paper.*
 > 
@@ -638,7 +638,7 @@ theorem b6_mobius_incidence_unimodular_and_injective (N : ℕ) :
 
 <a id="prop-b7"></a>
 
-## Proposition 2.13 (The coefficient properties of the rational example), page 12
+## Proposition 2.13 (The coefficient properties of the rational example), page 14
 
 > *The rational sequence in Proposition 1.9 satisfies uniform boundedness, $`c(n)\le n`$, agreement with $`\varphi(n)`$ modulo $`2`$ at every index, and the stated separated-carry form of aperiodicity. Consequently, those properties alone cannot imply irrationality of a dyadic series. The example does not exclude arguments using further totient identities, including its multiplicative relations.*
 
