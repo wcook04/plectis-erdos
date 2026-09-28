@@ -21973,7 +21973,7 @@
       "id": "erdos_68",
       "label": "Erdős #68: irrationality of S = ∑_{n≥2} 1/(n! − 1)",
       "status": "open",
-      "statement": "The irrationality of the factorial-denominator series remains open in this release; the checked reductions and finite obstructions do not supply the required cofinal failure.",
+      "statement": "Lean proves that S = ∑_{n≥2} 1/(n! − 1) is irrational if and only if, for infinitely many m, m does not divide ⌊m!·S_m⌋ + 1, where S_m is the prefix sum through n = m (irrational_factorialGapSeries_iff_cofinal_strictFacTopRat_misses); equivalently, the factorial-gap carry differs from 1 for infinitely many m (irrational_factorialGapSeries_iff_cofinal_nonunit_carries). Lean also proves liminf log L_N/(N^{3/2} log N) ≥ 2√2/3 for the common denominator L_N = lcm_{2≤n≤N}(n! − 1) before cancellation (common_denominator_growth_liminf). The irrationality of S remains open: the checked reductions and finite obstructions do not supply the required cofinal non-unit carries.",
       "remaining_open_proposition_ids": [
         "remaining_open.erdos_68_irrationality"
       ],
@@ -22000,7 +22000,7 @@
       "id": "erdos_251",
       "label": "Erdős #251: irrationality of Π = ∑_{n≥1} p_n/2ⁿ",
       "status": "open",
-      "statement": "The prime-index dyadic series remains open in this release; the exact tail-shift equivalence, prime-gap unboundedness, and nonperiodicity do not supply the required cofinal escape for the actual prime gaps.",
+      "statement": "Lean proves that Π = ∑_{n≥1} p_n/2ⁿ equals 2 plus the prime-gap dyadic series and that Π is irrational if and only if that gap series is (tsum_primeDyadicTerm_eq_two_add_primeGap_unconditional, irrational_tsum_primeDyadicTerm_iff_primeGap), with summability from the elementary bound p_n ≤ 1250(n+1)^4; the identity is the known summation by parts. Lean also proves that the consecutive prime gaps are unbounded and not eventually periodic (exists_primeGap0_gt, primeGap0_not_eventually_periodic). The irrationality of Π remains open: these facts do not supply the required cofinal escape for the actual prime gaps.",
       "remaining_open_proposition_ids": [
         "remaining_open.erdos_251_irrationality"
       ],
@@ -24160,7 +24160,7 @@
       "id": "diagonal_pincer_reduction",
       "label": "Exact full-target reduction on the lcm diagonal",
       "status": "conditional reduction",
-      "statement": "At each lcm-diagonal scale, integrality is equivalent to a foreign-defect term landing in an explicit full-target interval. Globally, S is irrational if and only if the full target is avoided at arbitrarily large diagonal scales; that cofinal avoidance is not proved.",
+      "statement": "At each lcm-diagonal scale, integrality holds if and only if a foreign-defect term lands in an explicit full-target interval. Globally, S is irrational if and only if the full target is avoided at arbitrarily large diagonal scales; that cofinal avoidance is not proved.",
       "remaining_open_proposition_ids": [
         "remaining_open.unbounded_certificate_supply"
       ],
@@ -24469,7 +24469,7 @@
       "id": "adelic_height_obstruction",
       "label": "Scalar-localisation height obstruction",
       "status": "proved here",
-      "statement": "If H divides the reduced denominator of a rational x and the reduced denominator of c·x divides H for an integer c, then the complementary factor x.den/H divides |c|. Scalar localisation transfers, rather than discards, that denominator information; this local obstruction is not an irrationality criterion.",
+      "statement": "For every rational x, integer c and natural number H, if H divides the reduced denominator of x and the reduced denominator of c·x divides H, then the complementary factor x.den/H divides |c|. Scalar localisation therefore moves that denominator information into the scalar; this local obstruction is not an irrationality criterion.",
       "paper_label": "res:adelic",
       "readme_headline": true,
       "declarations": [
@@ -25596,7 +25596,7 @@
       "id": "erdos_1049",
       "label": "Erdős #1049: irrationality of F(t) at rational bases",
       "status": "open",
-      "statement": "For rational bases in the Zudilin contour region, including every positive integral power of 31/4, the public Lean development proves irrationality and the stated irrationality-exponent bound from the constructed polynomial forms and analytic estimates. The universal rational-base assertion remains open; 3/2 lies outside this region and is unresolved here.",
+      "statement": "For natural numbers 0 < b < a in the Zudilin contour region, Lean proves that F(a/b) is irrational with irrationality exponent at most rationalBaseMeasureBound a b (rational_base_region, rational_base_measure), from the constructed polynomial forms and analytic estimates; in particular F((31/4)^r) is irrational for every positive integer r (thirtyone_four_powers). The universal rational-base assertion remains open; 3/2 lies outside this region and is unresolved here.",
       "remaining_open_proposition_ids": [
         "remaining_open.erdos_1049_irrationality"
       ],
@@ -25690,7 +25690,7 @@
       "id": "erdos_243",
       "label": "Erdős #243: eventual Sylvester recurrence",
       "status": "open",
-      "statement": "The eventual Sylvester recurrence assertion remains open in this release; the bounded-rise barrier and conditional negative-part reductions leave the mixed-sign unbounded regime unresolved.",
+      "statement": "Lean proves that if a is a strictly increasing sequence of positive integers with n^λ(a(n)²/a(n+1) − 1 − λ/n) → 0, then the reciprocal sum ∑ 1/a(n) is irrational, for every non-integer λ > 1, where Lean also derives convergence (nonintegral_regular_rate_irrational), and for λ = 3 whenever the sum converges (cubic_rate_irrationality_unconditional). Both theorems are zero-indexed; the paper transfers them to one-based indexing by an ordinary finite-prefix argument. Without such a rate the eventual Sylvester recurrence assertion remains open: the bounded-rise barrier and the conditional negative-part reductions leave the mixed-sign unbounded regime unresolved.",
       "remaining_open_proposition_ids": [
         "remaining_open.erdos_243_eventual_recurrence"
       ],
@@ -25866,7 +25866,7 @@
       "id": "erdos_249",
       "label": "Erdős #249: irrationality of S = ∑ φ(n)/2ⁿ",
       "status": "open",
-      "statement": "Not proved by this release. The reductions convert it into the unboundedness of the certificate supply, which is untouched.",
+      "statement": "Lean proves that S = ∑ φ(n)/2ⁿ is irrational if, for every h ≥ 1, there are arbitrarily large X at which the real part of the first-harmonic sum over the good indices is at most 603X/1000 (irrational_totient_series_of_goodBase_gap); the good indices are the assigned indices N in [X, 2X) at the minimal admissible depth with s = 26 whose cofactor m satisfies φ(m) ≥ m/1000. For all large X more than 67X/100 indices are good (eventually_card_pivotGoodBases_gt), and 603/1000 = (9/10)(67/100). Lean also proves that S is irrational if and only if certified non-integrality witnesses occur at unbounded parameters (irrational_totient_series_iff_certificate_supply). The 603X/1000 bound and that unbounded certificate supply are open, so S is not proved irrational.",
       "remaining_open_proposition_ids": [
         "remaining_open.erdos_249_irrationality",
         "remaining_open.unbounded_certificate_supply"
@@ -25877,7 +25877,7 @@
       "id": "universal_257",
       "label": "Erdős #257, universal form",
       "status": "open",
-      "statement": "Irrationality of ∑_{n∈A} 1/(2ⁿ − 1) for every infinite A is not proved by this release; only named families are formalised.",
+      "statement": "Lean proves that for every integer base b ≥ 2 and every finite nonempty set P of primes, with h(a) the largest divisor of a supported on P, every infinite set A of positive integers with ∑_{a∈A} h(a)/(a(b^{h(a)} − 1)) finite has ∑_{n∈A} 1/(bⁿ − 1) irrational (divisibilityWeightedClaim). Lean also proves irrationality at every such base for every infinite A with ∑_{a∈A} 1/a finite (irrational_erdosSupportSeries_of_summable_reciprocal), and exhibits sets with divergent reciprocal sum all of whose infinite subsets have irrational series at every such base (finite_monotone_witness_rule_realised). Irrationality of ∑_{n∈A} 1/(2ⁿ − 1) for every infinite A remains open.",
       "remaining_open_proposition_ids": [
         "remaining_open.half_value_membership",
         "remaining_open.universal_257_all_infinite_supports"
