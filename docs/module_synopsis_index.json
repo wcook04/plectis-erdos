@@ -1,9 +1,9 @@
 {
   "schema_version": "erdos249257-module-synopsis-index/1",
   "authority_posture": "generated_index_of_authored_Lean_module_headers_not_proof_or_claim_status_authority",
-  "source_fingerprint": "sha256:e023ddfd4f6922c37fc8ce76dbb2491a5eba382376eeafdfbdc9fb4276de8057",
-  "module_count": 1860,
-  "synopsis_count": 1613,
+  "source_fingerprint": "sha256:21fa6d8e3869d287c3c277cfb612e32b94f946fe0441fecce99cdf3b06dd551f",
+  "module_count": 1877,
+  "synopsis_count": 1630,
   "query_contract": {
     "command": "python3 scripts/query_corpus.py --module <module_path_or_sigil>",
     "returns": "Resolves a module synopsis to its declarations, paper sigil, source identity, attached claims, and route-memory context."
@@ -2773,6 +2773,11 @@
       "synopsis": "Dyadic prefix compression This module owns the corrected transport from a reduced finite Mersenne prefix to the residual support fraction and its wrap-ratio bound. The reusable core is stated for an arbitrary finite positive fragment, not only for an initial segment. No novelty or priority claim is made for the statements in this file. Nothing here proves or refutes the universal Erdős #257 problem."
     },
     {
+      "id": "Erdos249257.ExactRowRigidity",
+      "path": "lean/Erdos249257/ExactRowRigidity.lean",
+      "synopsis": "Exact Boolean quotient rows agree below a gap threshold An exact Boolean quotient row at endpoint `n ≥ 2` is a finite set `D` of integers in `[2, n]` with `localPrefixQuotient D n = 2^(n-1) - 1` (`ExactLocalMersenneHalfRow`). Its Mersenne value `∑ d ∈ D, 1 / (2^d - 1)` lies within `(n + 1) / 2^n` of `1/2` (`abs_exactLocalMersenneRowValue_sub_half_le`). The gap at rank `j` is `mersenneWeight j - mersenneTail j`, which is `mersenneGap j`. This module proves the following. * `sum_le_mersenneTail`: a finite Mersenne subsum supported strictly above `j` is at most `mersenneTail j`. * `gap_le_sub_of_least_diff`: if two finite sets first disagree at rank `j`, the one containing `j` has Mersenne value larger by at least the gap at `j`. * `gap_le_two_mul_of_ne`: two distinct finite sets whose Mersenne values both lie within `ε` of `1/2` first disagree at a rank whose gap is at most `2 ε`. * `exactLocalMersenneRowValue_eq_sum`: `exactLocalMersenneRowValue D` is the real sum `∑ d ∈ D, mersenneWeight d`. * `exactRow_gap_le`: two distinct exact rows at the same endpoint `n` first disagree at a rank whose gap is at most `2 (n + 1) / 2^n`. * `exactRow_agree_below_of_two_le`: if the gap at every rank `i` with `2 ≤ i < J` exceeds `2 (n + 1) / 2^n`, any two exact rows at endpoint `n` contain the same ranks below `J`. Ranks `0` and `1` lie in no exact row, so the hypothesis starts at rank `2`. * `exactRow_mersenneGap_le` and `exactRow_agree_below_mersenneGap` state the last two results with the gap written as `mersenneGap`. The module does not determine the ranks at which the gap exceeds `2 (n"
+    },
+    {
       "id": "Erdos249257.ExponentOnlyTransport",
       "path": "lean/Erdos249257/ExponentOnlyTransport.lean",
       "synopsis": "Exponent-only transport for Erdős #249 This module isolates the support-stable side of an LCM prime-power jump. If `p ∣ H`, multiplying `H` by `p` cannot add a squarefree divisor channel: every squarefree divisor of `p * H` already divides `H`. Consequently the four-vertex commutator is pure transport on the active Möbius support, unlike the new-prime jump where a migrated `p`-saturated layer must be retained. The residue kernel is also decomposed into its genuine affine state. The periodic residue coordinate alone is insufficient: dilation transports both a linear slope and an intercept. The first-order formula below records both blocks and prevents the constant-block determinant from being mistaken for a global non-cancellation theorem. The final theorem is conditional on an explicitly named infinite supply. No such supply is asserted here, and this file does not claim Erdős #249."
@@ -3488,6 +3493,81 @@
       "synopsis": "Problem-centric Erdős research library This is the supported root for the problem-owned modules. The `Erdos249257` library remains available as the reviewed #249/#257 corpus."
     },
     {
+      "id": "ErdosProblems.ArgumentGraph.Derive",
+      "path": "lean/ErdosProblems/ArgumentGraph/Derive.lean",
+      "synopsis": "Theorems derived from what proofs use The argument-graph exporter (`scripts/export_argument_continuations.lean`) reads every theorem of this library and records, among other things, the hypotheses a proof never uses and the hypotheses a proof uses only through a consequence. This module turns those observations into ordinary theorems of the library, so a paper, the paper-to-Lean ledger or another proof can cite them. Every theorem it adds is checked by the kernel before it is added. * `derive_idle T` adds `T.idle`: the statement of `T` without the proposition hypotheses its proof never uses, with the same proof. * `derive_weakening T` adds, for each proposition hypothesis `h : H` of `T` that the proof uses only inside use sites, `T.weakened_i`: `T` with `H` replaced by the propositions `C₁ … Cₖ` those sites prove, and `T.use_i_j : H → Cⱼ`. A use site is the largest application around `h` (such as `L h`, `h.2` or `h 3`) that mentions no bound variable of the proof and no other hypothesis; its proposition must not mention `H`, be `H` up to unfolding, or be the conclusion. When some occurrence of `h` lies in no such site, a use site may mention local variables (`L n h` under a binder `n`): its consequence is its proposition closed over the variables it needs, `Cⱼ = ∀ n, P n`, and the site becomes the new hypothesis applied to them. * `derive_conjuncts T` adds, for each claim of `T`'s conclusion (a conjunct, or a direction of an equivalence) whose own proof leaves some hypotheses unused, `T.part_k`: that claim assuming only what its proof needs. A claim's proof is the projectio"
+    },
+    {
+      "id": "ErdosProblems.ArgumentGraph.Derived.Erdos1041",
+      "path": "lean/ErdosProblems/ArgumentGraph/Derived/Erdos1041.lean",
+      "synopsis": "Erdos1041: theorems derived from what the paper results' proofs use Each command below rebuilds, as a library theorem the kernel checks, a finding of the argument graph about a theorem the papers cite. See `ErdosProblems.ArgumentGraph.Derive` and `ErdosProblems.ArgumentGraph.Factor` for what each command adds."
+    },
+    {
+      "id": "ErdosProblems.ArgumentGraph.Derived.Erdos1049",
+      "path": "lean/ErdosProblems/ArgumentGraph/Derived/Erdos1049.lean",
+      "synopsis": "Erdos1049: theorems derived from what the paper results' proofs use Each command below rebuilds, as a library theorem the kernel checks, a finding of the argument graph about a theorem the papers cite. See `ErdosProblems.ArgumentGraph.Derive` and `ErdosProblems.ArgumentGraph.Factor` for what each command adds."
+    },
+    {
+      "id": "ErdosProblems.ArgumentGraph.Derived.Erdos243",
+      "path": "lean/ErdosProblems/ArgumentGraph/Derived/Erdos243.lean",
+      "synopsis": "Erdos243: theorems derived from what the paper results' proofs use Each command below rebuilds, as a library theorem the kernel checks, a finding of the argument graph about a theorem the papers cite. See `ErdosProblems.ArgumentGraph.Derive` and `ErdosProblems.ArgumentGraph.Factor` for what each command adds."
+    },
+    {
+      "id": "ErdosProblems.ArgumentGraph.Derived.Erdos249",
+      "path": "lean/ErdosProblems/ArgumentGraph/Derived/Erdos249.lean",
+      "synopsis": "Erdos249: theorems derived from what the paper results' proofs use Each command below rebuilds, as a library theorem the kernel checks, a finding of the argument graph about a theorem the papers cite. See `ErdosProblems.ArgumentGraph.Derive` and `ErdosProblems.ArgumentGraph.Factor` for what each command adds."
+    },
+    {
+      "id": "ErdosProblems.ArgumentGraph.Derived.Erdos251",
+      "path": "lean/ErdosProblems/ArgumentGraph/Derived/Erdos251.lean",
+      "synopsis": "Erdos251: theorems derived from what the paper results' proofs use Each command below rebuilds, as a library theorem the kernel checks, a finding of the argument graph about a theorem the papers cite. See `ErdosProblems.ArgumentGraph.Derive` and `ErdosProblems.ArgumentGraph.Factor` for what each command adds."
+    },
+    {
+      "id": "ErdosProblems.ArgumentGraph.Derived.Erdos257",
+      "path": "lean/ErdosProblems/ArgumentGraph/Derived/Erdos257.lean",
+      "synopsis": "Erdos257: theorems derived from what the paper results' proofs use Each command below rebuilds, as a library theorem the kernel checks, a finding of the argument graph about a theorem the papers cite. See `ErdosProblems.ArgumentGraph.Derive` and `ErdosProblems.ArgumentGraph.Factor` for what each command adds."
+    },
+    {
+      "id": "ErdosProblems.ArgumentGraph.Derived.Erdos269",
+      "path": "lean/ErdosProblems/ArgumentGraph/Derived/Erdos269.lean",
+      "synopsis": "Erdos269: theorems derived from what the paper results' proofs use Each command below rebuilds, as a library theorem the kernel checks, a finding of the argument graph about a theorem the papers cite. See `ErdosProblems.ArgumentGraph.Derive` and `ErdosProblems.ArgumentGraph.Factor` for what each command adds."
+    },
+    {
+      "id": "ErdosProblems.ArgumentGraph.Derived.Erdos68",
+      "path": "lean/ErdosProblems/ArgumentGraph/Derived/Erdos68.lean",
+      "synopsis": "Erdos68: theorems derived from what the paper results' proofs use Each command below rebuilds, as a library theorem the kernel checks, a finding of the argument graph about a theorem the papers cite. See `ErdosProblems.ArgumentGraph.Derive` and `ErdosProblems.ArgumentGraph.Factor` for what each command adds."
+    },
+    {
+      "id": "ErdosProblems.ArgumentGraph.Factor",
+      "path": "lean/ErdosProblems/ArgumentGraph/Factor.lean",
+      "synopsis": "Factoring: each hypothesis at the claims whose proofs use it A paper result often proves several claims about one construction and assumes a named input that only some of the claims need. `derive_factor T` reads the proof of `T` and adds `T.factored`: the statement of `T` with each proposition hypothesis moved to the claims of the conclusion whose proofs use it. From a proof of `H₁ → H₂ → ∃ w, A w ∧ B w ∧ C w` whose witness and whose proof of `A w` use neither hypothesis, whose proof of `B w` uses only `H₁` and whose proof of `C w` uses only `H₂`, it adds `T.factored : ∃ w, A w ∧ (H₁ → B w) ∧ (H₂ → C w)`, with the proof's own witness. The two statements differ: the factored one says the construction exists without either input, and that in this proof each input is assumed only by the claim it proves. A hypothesis that a witness needs stays above that `∃`; one no claim needs is left out. The conclusion is read through `∃`, `∧` and `∀` (implications included); anything else is one claim. The proof is read after its spine is normalised: a `have` whose value uses a hypothesis being moved is inlined; an elimination of a constructor is reduced (`obtain ⟨a, b⟩ := ⟨x, y⟩` is `x, y`); an elimination whose major premise is itself an elimination moves inside it; an elimination with one alternative whose proof ignores the fields it opens is dropped, and a constructor that alternative builds from terms free of those fields is moved out of it (so `obtain ⟨c, hc⟩ := h` followed by `⟨w, p⟩`, with `w` free of `c`, charges `h` to `p` only); a compiled `match`, `dite`, `Or.elim` and `Decidabl"
+    },
+    {
+      "id": "ErdosProblems.ArgumentGraph.Results.Erdos1041",
+      "path": "lean/ErdosProblems/ArgumentGraph/Results/Erdos1041.lean",
+      "synopsis": "Erdős #1041: what the inner-chord factoring adds, clause by clause `binomial_inner_chord_maximal` assumes the switch condition `1 ≤ rⁿ (1 + cⁿ)`, with `c = cos (π / n)`, and concludes a midpoint equality and a maximality clause `∀ s, innerRadius n r < s → s ≤ r → 1 < ‖…‖`. Its proof passes the switch condition to `inner_chord_maximal`, and `derive_factor` finds it unused once that lemma is factored: `binomial_inner_chord_maximal.factored` states both clauses without it. The theorems below say what that adds. Off the switch condition the inner radius exceeds `r`, so no `s` meets the maximality clause's hypotheses there and that clause gains nothing. The midpoint equality is asserted at every added point, and the added region is not empty: the switch condition fails at `n = 3`, `r = 1/2`, where the factored theorem gives the equality and the Lean theorem as written does not apply."
+    },
+    {
+      "id": "ErdosProblems.ArgumentGraph.Results.Erdos243",
+      "path": "lean/ErdosProblems/ArgumentGraph/Results/Erdos243.lean",
+      "synopsis": "Erdős #243: what the transport-square factoring adds `transport_square_unconditional` (`long243:res:transportsquare`) assumes `v n > 0` for `n ≥ T` and passes it to `primitive_zero_density_multiplier_irreducibility` only for claims it does not use, so `transport_square_unconditional.factored` leaves it out. The theorem below shows that the hypotheses the factoring keeps imply it: from a zero term on, `v` vanishes (`v (n + 1) = a n * v n`), coprimality then gives `u n = 1`, and `m * C(n + 2, 3) + c` exceeds `1` for large `n`, so the exceptional set contains a tail, which zero lower density forbids. The factored theorem is the same result, on the same premise region, with a shorter statement."
+    },
+    {
+      "id": "ErdosProblems.ArgumentGraph.Results.Erdos249",
+      "path": "lean/ErdosProblems/ArgumentGraph/Results/Erdos249.lean",
+      "synopsis": "Erdős #249: the pivot decorrelation from two of its clauses `DTWPivotResidualDecorrelation` (`FirstHarmonicPivot`, demand `G064` of the demand ledger) asks, for every `h`, for parameters at which the two depth conditions and the four clauses of `PivotBudgetAt` hold together, and it implies the irrationality of `∑ φ(n) / 2 ^ n`. The finite bridge `pivotBudgetAt_of_peripheral_estimates` reduces three of the clauses to a uniform fibre-mean bound, a count of bad bases and a count of non-supplier bases. At the minimal depth, with `s = 26` and `η = 1/1000`, two proofs that do not mention the decorrelation supply most of this. `prop_dickman` gives the two depth conditions and, for all large `X`, fewer than `8X/25` non-supplier bases, with no hypothesis. The argument graph's frontier of `prop_badcof` showed that its proof uses the prime number theorem only through a dyadic prime count, which Chebyshev's bound supplies: `excluded_budget_one_thousandth_of_chebyshev` gives fewer than `X/100` bad bases for all large `X`, with no hypothesis. The two theorems below state what remains: the fibre means and the centred correlation."
+    },
+    {
+      "id": "ErdosProblems.ArgumentGraph.Results.Erdos249Route",
+      "path": "lean/ErdosProblems/ArgumentGraph/Results/Erdos249Route.lean",
+      "synopsis": "Erdős #249: the first-harmonic route, given the prime number theorem `Results/Erdos249.lean` reduces `DTWPivotResidualDecorrelation`, at the minimal depth with `s = 26` and `η = 1/1000`, to two clauses: a uniform bound on the fibre means and the centred correlation. `fiberMean_le_of_primeNumberTheorem` proves the first from the prime number theorem. The second is the first-harmonic gap on the good bases. There the first harmonic factors as the residual times the pivot phase, so its sum over the good bases is the centred correlation plus the fibre-mean contribution (`goodBase_sum_eq_centered_add_mean`). With every fibre mean at most `1/100` the two conditions differ by at most `X/100` either way: the good-base gap at `11X/20` gives the centred clause (`centered_re_le_of_goodBase_gap`), and the centred clause gives the good-base gap at `57X/100` (`goodBase_gap_of_centered_re_le`). Hence, given the prime number theorem, the irrationality of `∑ φ(n)/2^n` follows once, for every `h ≥ 1`, there are arbitrarily large `X` at which the real part of the first harmonic summed over the good bases is at most `11X/20` (`irrational_totient_series_of_primeNumberTheorem_and_goodBase_gap`). The non-supplier and bad bases, about a third of `[X, 2X)`, are handled unconditionally by `prop_dickman` and Chebyshev's bound."
+    },
+    {
+      "id": "ErdosProblems.ArgumentGraph.Results.Erdos251",
+      "path": "lean/ErdosProblems/ArgumentGraph/Results/Erdos251.lean",
+      "synopsis": "Erdős #251: the simultaneous countermodel, each input at its clause `short_joint_prime_gap_countermodel` (`res:jointcountermodel`) and `long_joint_prime_gap_countermodel` (`long251:res:jointcountermodel`) assume Schlage-Puchta's Lemma 4 and the prime number theorem and restrict the allowance exponent to `0 < ε ≤ 1`. Their proofs use Schlage-Puchta's Lemma 4 only to prove fixed-block nonconcentration, the prime number theorem only to prove `P n ∼ n log n`, and never use `ε ≤ 1`: the construction runs at the exponent `min ε (1/2)`. So the sequence exists unconditionally for every `ε > 0`, with all its other properties, and each input is needed only for its own clause. The two theorems below state this. Their proofs are `derive_factor`'s factorings of the two countermodels (`ErdosProblems.ArgumentGraph.Derived.Erdos251`), which follow the construction through `prime_polylogarithmic_interval` and derive its factoring on the way; the kernel checks each of them."
+    },
+    {
       "id": "ErdosProblems.AxiomAudit",
       "path": "lean/ErdosProblems/AxiomAudit.lean",
       "synopsis": "Assumption audit for the problem-owned assimilation root This file is intentionally executable documentation. The release gate builds it and records the assumptions of the main results brought in by the first problem-centric wave."
@@ -4110,7 +4190,7 @@
     {
       "id": "ErdosProblems.Erdos1041.PaperStraightObstructions",
       "path": "lean/ErdosProblems/Erdos1041/PaperStraightObstructions.lean",
-      "synopsis": "Complete polynomial straight-path obstructions Paper target: short_note/res:straight-no-go. The quintic certificate is assembled into a polynomial, with exhaustive root classification and the actual critical-point/spoke assertions. The cubic argument quantifies over ALL its roots directly; it is not restricted to a supplied root enumeration. New proof source, not elaborated in this environment."
+      "synopsis": "Complete polynomial straight-path obstructions Paper target: short_note/res:straight-no-go. The quintic certificate is assembled into a polynomial, with exhaustive root classification and the actual critical-point/spoke assertions. The cubic argument quantifies over ALL its roots directly; it is not restricted to a supplied root enumeration. The default root `ErdosProblems` imports this module, so the supported-root build elaborates it."
     },
     {
       "id": "ErdosProblems.Erdos1041.PaperTrinomial",
@@ -5920,7 +6000,7 @@
     {
       "id": "ErdosProblems.Erdos249.PaperCompleteR21.ExcludedCofactorEstimate",
       "path": "lean/ErdosProblems/Erdos249/PaperCompleteR21/ExcludedCofactorEstimate.lean",
-      "synopsis": "`prop:badcof` of the long #249 paper (\"The excluded-cofactor estimate\", `paper/reasoning-parts/erdos249/a249_front.tex`), and the assembled proposition `prop_badcof`. The paper's statement: fix `h, s` and use the minimal admissible depth `L`, so `t = L - s + 1 = O_{h,s}(log X)`. For `η ∈ (0, 1)` let `B(η) = {m ≥ 1 : φ(m) < η m}`, with natural density `D(η)` (cited to Schoenberg). Then `#{N ∈ 𝒜 : m_N ∈ B(η)} ≤ (D(η) + o(1)) X`, so a single `η` with `D(η) < 1/200` meets the `X/100` budget for all large `X`. Dictionary, with the development's own objects as in `prop_dickman`: * `L = minimalDepth h s X`, `t = minimalOffset h s X = pivotOffset L s`; * `𝒜 = pivotSupplierBases X L s` and `m_N = pivotCofactor N L s`; * `B(η) = excludedCofactorSet η` (in `ExcludedCofactorDensity`); the set `{N ∈ 𝒜 : m_N ∈ B(η)}` equals `pivotBadBases X L s η` (`𝒜 ∖ 𝒢`), whose contribution `pivotBadContribution` carries the `X/100` budget of `PivotBudgetAt`; * \"`B(η)` has natural density `D`\" is `HasNaturalDensity (excludedCofactorSet η) D`, that is `#(B(η) ∩ [1, x]) / x → D`. Inputs. The prime number theorem enters as a hypothesis, through the repository's single PNT input `ErdosProblems.Erdos251.PaperR11.PrimeSource.PrimeNumberTheorem` (`p_n / (n log n) → 1` for the zero-based `n`-th prime). The existence of `D(η)` (Schoenberg's theorem) enters only as the density hypothesis of `prop_badcof`. Nothing else is assumed. Proof, following the paper. 1. PNT gives, uniformly in the start point, the dyadic count `#{p prime : a < p ≤ 2a + 1} · log a ≤ (1 + ε) a` for all large `a` (`eventually_card_primes_dy"
+      "synopsis": "`prop:badcof` of the long #249 paper (\"The excluded-cofactor estimate\", `paper/reasoning-parts/erdos249/a249_front.tex`), and the assembled proposition `prop_badcof`. The paper's statement: fix `h, s` and use the minimal admissible depth `L`, so `t = L - s + 1 = O_{h,s}(log X)`. For `η ∈ (0, 1)` let `B(η) = {m ≥ 1 : φ(m) < η m}`, with natural density `D(η)` (cited to Schoenberg). Then `#{N ∈ 𝒜 : m_N ∈ B(η)} ≤ (D(η) + o(1)) X`, so a single `η` with `D(η) < 1/200` meets the `X/100` budget for all large `X`. Dictionary, with the development's own objects as in `prop_dickman`: * `L = minimalDepth h s X`, `t = minimalOffset h s X = pivotOffset L s`; * `𝒜 = pivotSupplierBases X L s` and `m_N = pivotCofactor N L s`; * `B(η) = excludedCofactorSet η` (in `ExcludedCofactorDensity`); the set `{N ∈ 𝒜 : m_N ∈ B(η)}` equals `pivotBadBases X L s η` (`𝒜 ∖ 𝒢`), whose contribution `pivotBadContribution` carries the `X/100` budget of `PivotBudgetAt`; * \"`B(η)` has natural density `D`\" is `HasNaturalDensity (excludedCofactorSet η) D`, that is `#(B(η) ∩ [1, x]) / x → D`. Inputs. The prime number theorem enters `prop_badcof` and `excluded_budget_one_thousandth` as a hypothesis, through the repository's single PNT input `ErdosProblems.Erdos251.PaperR11.PrimeSource.PrimeNumberTheorem` (`p_n / (n log n) → 1` for the zero-based `n`-th prime). The existence of `D(η)` (Schoenberg's theorem) enters only as the density hypothesis of `prop_badcof`. The budget at `η = 1/1000` needs no input (`excluded_budget_one_thousandth_of_chebyshev`). Nothing else is assumed. Proof, following the paper. 1. PNT gives, "
     },
     {
       "id": "ErdosProblems.Erdos249.PaperCompleteR21.ExtremalOrderDirectedAndPulse",
@@ -5941,6 +6021,11 @@
       "id": "ErdosProblems.Erdos249.PaperCompleteR21.FareyGapDenominatorExclusion",
       "path": "lean/ErdosProblems/Erdos249/PaperCompleteR21/FareyGapDenominatorExclusion.lean",
       "synopsis": "Paper-form restatement of `prop:C2sup` of the long #249 manuscript: unbounded Farey-gap denominator bounds imply irrationality. The hypothesis `sup_K (b+d)(K) = ∞` says exactly that the proved exclusion bounds on the `N = 1` window family are arbitrarily large; nothing here proves or attempts that unboundedness."
+    },
+    {
+      "id": "ErdosProblems.Erdos249.PaperCompleteR21.FiberMeanOfPrimeNumberTheorem",
+      "path": "lean/ErdosProblems/Erdos249/PaperCompleteR21/FiberMeanOfPrimeNumberTheorem.lean",
+      "synopsis": "Erdős #249: the fibre means from the prime number theorem `dtw_of_fiberMean_and_centered` (`ErdosProblems.ArgumentGraph.Results.Erdos249`) derives `DTWPivotResidualDecorrelation` from two clauses: a uniform bound on the fibre means and the centred correlation. This module proves the first clause, `hmean`, from the prime number theorem (`fiberMean_le_of_primeNumberTheorem`): at the minimal depth `L = minimalDepth h 26 X`, with `s = 26` and `η = 1/1000`, for every `h ≥ 1` and all large `X`, every good base `N` has `‖pivotFiberMean h X L 26 m_N‖ ≤ 1/100`, where `m_N = pivotCofactor N L 26`. Input. The prime number theorem enters as the hypothesis `ErdosProblems.Erdos251.PaperR11.PrimeSource.PrimeNumberTheorem`, that is `p_n / (n log n) → 1` for the zero-based `n`-th prime `p_n = Nat.nth Nat.Prime n`. Nothing else is assumed. Proof. Fix `h ≥ 1` and a good base with cofactor `m`, so `0 < m ≤ ⌊√X⌋/2` and `φ(m) ≥ m/1000`. Put `t = L - 25`, `A = ⌈(X + t)/m⌉` and `B = ⌈(2X + t)/m⌉`. 1. The fibre of `m` is the image of the primes `p` with `X + t ≤ mp < 2X + t` (`image_pivotSupplierPrimes_eq_pivotFiber`), so the fibre mean is the mean of `pivotPrimePhase h L 26 m p` over the primes of `[A, B)` (`pivotFiberMean_eq_sum_primes`, `pivotSupplierPrimes_eq_filter_Ico`). 2. That phase is `e(θ p - θ)` with `e(x) = exp(ix)` and `θ = π (2^h - 1) φ(m) / 2^(L - 26)` (`pivotPrimeAngle_eq_affine`). 3. For large `X` the minimal depth has `32X ≤ 2^L < 96X` (`minimalDepth_geometry`), so the phase turns through between `2000` and `π 2^(h+22)` radians over `[A, B)`. 4. Cut `[A, B)` into `K = 2^(h+35)` bl"
     },
     {
       "id": "ErdosProblems.Erdos249.PaperCompleteR21.FirstHarmonicBlockCriteria",
@@ -6620,7 +6705,7 @@
     {
       "id": "ErdosProblems.Erdos257.PaperCompleteR20.TerminalSetCorrespondence",
       "path": "lean/ErdosProblems/Erdos257/PaperCompleteR20/TerminalSetCorrespondence.lean",
-      "synopsis": "Positive-support terminal approximation endpoint for Erdős 257 This module keeps the `0 ∉ A` clause from short `res:terminalhalf` explicit. It also records the exact index conversion between the paper's terminal carry `K_A(M)` and the affine carry used by the scaled-vanishing producer."
+      "synopsis": "Positive-support terminal approximation endpoint for Erdős 257 This module keeps the `0 ∉ A` clause from short `res:terminalhalf` explicit. It also records the exact index conversion between the paper's terminal carry `K_A(M)` and the affine carry used by the scaled-vanishing producer. The converse holds with no further hypothesis: a support with series value `1/2` omits the exponent `1`, and the terminal carry of its prefix through `M` is the scaled coefficient tail of the full support, which lies in `[0, 2√M + 4]`. `paper_terminalhalf_iff` states the paper's equivalence as one theorem."
     },
     {
       "id": "ErdosProblems.Erdos257.PaperCompleteR21.AchievementSetTopologyAndFiniteHalf",

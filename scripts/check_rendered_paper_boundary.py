@@ -96,7 +96,7 @@ FIRST_MINUTE_CONTRACT = {
             "comparator-checked",
             "does not technically force a second independent mathematician",
             "nine of the ten edits were rejected",
-            "coverage boundary, not a reliability score",
+            "study locates a coverage boundary",
         ),
         (8, 10): (
             "an empty search never counts as evidence of no consequence",

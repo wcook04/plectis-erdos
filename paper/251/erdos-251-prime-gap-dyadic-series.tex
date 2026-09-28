@@ -281,8 +281,10 @@ Moreover, with $P_n=2+\sum_{i<n}b_i$,
 \]
 These positions are not asserted to be prime.
 \end{corollary}
-\evidenceremark{The Lean proof assumes Schlage-Puchta's Lemma~4
-\cite{schlagepuchta2011} and the prime number theorem.}
+\evidenceremark{Lean proves this for every $\varepsilon>0$, assuming
+Schlage-Puchta's Lemma~4 \cite{schlagepuchta2011} only for the
+nonconcentration bound and the prime number theorem only for
+$P_n\sim n\log n$.}
 
 \begin{proof}
 Choose a rational target in the interval
