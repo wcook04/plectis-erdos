@@ -1635,10 +1635,13 @@
             "all_base_totient_kernel_index_reduction",
             "all_base_totient_kernel_conditional_rank",
             "residual_gauge_obstruction",
-            "totient_carry_kernel_anti_compression"
+            "totient_carry_kernel_anti_compression",
+            "totient_residue_series_classification",
+            "totient_residue_series_integer_radix",
+            "totient_residue_series_dilations"
           ],
-          "status_summary": "Exact finite obstructions and interfaces, a constructive dyadic basis, and an all-base arithmetic/spanning layer. The reusable rank wrapper is conditional; AllBaseTotientKernel.lean separately proves its independence premise and the complete rank unconditionally.",
-          "prior_art_posture": "Classical Euler/Möbius, CRT, determinant, and Lambert tools; Coons already implies full-kernel infinite rank, and Martin supplies a broader external affine-independence antecedent. The Lean all-base proof uses CRT and Dirichlet independently. No completed irrationality endpoint or priority claim.",
+          "status_summary": "Exact finite obstructions and interfaces, a constructive dyadic basis, and an all-base arithmetic/spanning layer. The reusable rank wrapper is conditional; AllBaseTotientKernel.lean separately proves its independence premise and the complete rank unconditionally. The residue-series claims classify the rational totient residue series and prove the dilated series linearly independent.",
+          "prior_art_posture": "Classical Euler/Möbius, CRT, determinant, and Lambert tools; Coons already implies full-kernel infinite rank, and Martin supplies a broader external affine-independence antecedent. The Lean all-base proof uses CRT and Dirichlet independently. Erdős 1957 (Lemma 1) and Kaneko–Suzuki–Tachiya (Theorem 3) already give the irrationality of the totient residue series. No #249 irrationality endpoint or priority claim.",
           "primary_narrative_owner": "docs/claims.json::claims",
           "source_route": "python3 scripts/query_corpus.py --route lambert_obstruction_interfaces",
           "consumer_or_open_obligation": "No rationality-to-finite-rank bridge or #249 irrationality endpoint is proved. The all-base independence premise is discharged in AllBaseTotientKernel.lean; the reusable conditional interface remains separately recorded.",
@@ -1663,6 +1666,7 @@
           "claim_ids": [
             "first_harmonic_certificate_interface",
             "first_harmonic_pivot_decomposition",
+            "first_harmonic_good_index_reduction",
             "adjacent_phase_separation_reduction",
             "pivot_anti_reconstruction_reduction",
             "strict_prime_tail_orbit_gap",
@@ -1676,7 +1680,7 @@
           "prior_art_posture": "No matching combined theorem is identified; all novelty language remains provisional.",
           "primary_narrative_owner": "docs/claims.json::claims",
           "source_route": "python3 scripts/query_corpus.py --claim pivot_anti_reconstruction_reduction",
-          "consumer_or_open_obligation": "Supply a cofinal first-harmonic pivot budget, adjacent-pair separator, anti-reconstruction producer, or one of the two tail-orbit strict-gap antecedents (late-block nonpositive phase density, or cofinally many natural primes with tail-orbit real part below 9/10).",
+          "consumer_or_open_obligation": "Supply a cofinal first-harmonic pivot budget, a cofinal 603X/1000 first-harmonic bound on the good indices, adjacent-pair separator, anti-reconstruction producer, or one of the two tail-orbit strict-gap antecedents (late-block nonpositive phase density, or cofinally many natural primes with tail-orbit real part below 9/10).",
           "view_decision": "registry_only_after_one_sided_companion_retirement"
         },
         {
