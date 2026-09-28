@@ -1,7 +1,7 @@
 {
   "builder_schema": "erdos249257-semantic-corpus/1",
-  "input_fingerprint": "sha256:c207defd72ff137ef43e9c2455991321aa8eeb84a7fcff3bbfee4c4bffc9c04f",
-  "output_digest": "sha256:b2e031306efe524a17ab80f749fb04db9d242471edf387e7cc477cdba653a7ea",
+  "input_fingerprint": "sha256:53a8da58dbfb5344d694988fcf6ee7b0455ae7899c8be25c9513f618450013f8",
+  "output_digest": "sha256:efe3557cd32255b34ac6092705197ef46c41fda28eb4038c7c4106914c5818ca",
   "schema": "erdos249257-semantic-corpus-check/1",
   "summary": {
     "declarations": 164401,

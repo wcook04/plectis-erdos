@@ -109,17 +109,17 @@
   "content_hashes": {
     "docs/claims.json": "sha256:86b3b6dabf7642bb12fab08e064e9fee276a2c3515a08c5acde84a617a402c0e",
     "docs/methodology.json": "sha256:cef19d9092c49ba9c9b269a4b04c2c6030164bba6b80561117577713f60c3750",
-    "docs/problems.json": "sha256:47f93b25a4458eb0e7b8b345fa6c26b30ed881c77201809b21376442b20ba508",
+    "docs/problems.json": "sha256:e56884218eaabeac6415315215490c5df7b0760393819404fdef1faa9074071e",
     "docs/publication_contract.json": "sha256:d45c282984fa8d3a7f4f18aa143bf0e4ac797d2c9b0a51e3f9db4e05a8a2f3b2",
     "docs/publication_entry_source.json": "sha256:a350c6ba5ba1a9828e916301f3148bc9a81d7ca14b175db0eca8c5426b8e5e5d",
     "docs/publication_evidence.json": "sha256:4e350698eed8b4ee10fc629cfb7540ed71bc6ccf4020ee2ede8635f4aae809b3",
     "paper/systems/claim-faithful-publication-systems-paper.pdf": "sha256:3b99fd3ca32e922036329301704cc4584618258edbfb393d2e7beb6ba1afde5d",
     "paper/systems/claim-faithful-publication-systems-paper.tex": "sha256:ff79e083fc7360949bbd56a36a54322b03f74430705cb7160ed50c998e2f6dd7",
     "research/experiments/publication_mutations.json": "sha256:9243e270257869e7a191c7598e917457cab61194299d1651e21bbc45a2d4c1e3",
-    "research_corpus/Erdos1041/CORPUS_MANIFEST.json": "sha256:d3e9276504f79783c10fdd23676bbf14cfa87db77e6d19bcf5e950a13da34aa2",
+    "research_corpus/Erdos1041/CORPUS_MANIFEST.json": "sha256:edc01f9cf6a356e0722e7dc51425fa01be7200720b17cc2a131cd4bb504b31b3",
     "research_corpus/Erdos1041/FRONTIER.md": "sha256:8aef5071a9a2a35de6b2af79bf0a486d97306aa0b6d4b997144e16ba1d112a9a",
-    "research_corpus/Erdos1041/PUBLIC_CORPUS_CHECKPOINT.json": "sha256:fe4201b6e58428e38661e65ecaf4ee0003703b648297ab828e0fb45f13ee3d5f",
-    "research_corpus/Erdos1041/STRONGEST_RESULTS.json": "sha256:bc981e18993f1824b1d2174e3ef85b0e449b435c77b05e2a7171215d56994e65",
+    "research_corpus/Erdos1041/PUBLIC_CORPUS_CHECKPOINT.json": "sha256:079c82a0261abfb4c7135d092a7f06a367db36bbbc8ce5c01e1eeefbc1b36b43",
+    "research_corpus/Erdos1041/STRONGEST_RESULTS.json": "sha256:a5f888560836a710024bd6079538cbd62b39c1544a19514903ac57f9789d7e24",
     "scripts/run_publication_mutations.py": "sha256:34168a755035ab14b591e981a62d7fc5030ea796774baf2243de803e1f1167b7"
   },
   "five_sentence_summary": [
@@ -504,7 +504,7 @@
     "directory": "research_corpus/Erdos1041",
     "files": {
       "checkpoint": {
-        "content_digest": "sha256:fe4201b6e58428e38661e65ecaf4ee0003703b648297ab828e0fb45f13ee3d5f",
+        "content_digest": "sha256:079c82a0261abfb4c7135d092a7f06a367db36bbbc8ce5c01e1eeefbc1b36b43",
         "path": "research_corpus/Erdos1041/PUBLIC_CORPUS_CHECKPOINT.json"
       },
       "frontier": {
@@ -512,11 +512,11 @@
         "path": "research_corpus/Erdos1041/FRONTIER.md"
       },
       "manifest": {
-        "content_digest": "sha256:d3e9276504f79783c10fdd23676bbf14cfa87db77e6d19bcf5e950a13da34aa2",
+        "content_digest": "sha256:edc01f9cf6a356e0722e7dc51425fa01be7200720b17cc2a131cd4bb504b31b3",
         "path": "research_corpus/Erdos1041/CORPUS_MANIFEST.json"
       },
       "strongest_results": {
-        "content_digest": "sha256:bc981e18993f1824b1d2174e3ef85b0e449b435c77b05e2a7171215d56994e65",
+        "content_digest": "sha256:a5f888560836a710024bd6079538cbd62b39c1544a19514903ac57f9789d7e24",
         "path": "research_corpus/Erdos1041/STRONGEST_RESULTS.json"
       }
     },
@@ -531,12 +531,12 @@
     ],
     "reading_rule": "Read FRONTIER.md for dated refutations and open gaps, then STRONGEST_RESULTS.json for source-pinned activation. Premises and falsifiers retain local hypotheses; research rows do not settle historical correspondence or become Comparator claims.",
     "source_index": {
-      "content_digest": "sha256:47f93b25a4458eb0e7b8b345fa6c26b30ed881c77201809b21376442b20ba508",
+      "content_digest": "sha256:e56884218eaabeac6415315215490c5df7b0760393819404fdef1faa9074071e",
       "path": "docs/problems.json"
     },
     "strongest_result_summary": {
       "result_count": 294,
-      "source_checkpoint": "a02c51d95b47e06d8d54dc09189cc712547f989d",
+      "source_checkpoint": "fb5c8803c1498cad9755d1615473cb33b11af6ee",
       "status": "open"
     }
   },

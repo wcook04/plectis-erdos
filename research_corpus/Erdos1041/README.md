@@ -3,7 +3,7 @@
 # Erdős 1041 research corpus
 
 This directory is the complete public-safe committed research corpus for
-Erdős Problem 1041 at source checkpoint `a02c51d95b47e06d8d54dc09189cc712547f989d`. The exact
+Erdős Problem 1041 at source checkpoint `fb5c8803c1`. The exact
 Formal Conjectures statement is refuted by ani's degree-seven example. Lean
 proves the total-variation form and the Hausdorff-measure form
 (`erdos1041_counterexample_hausdorff` in
