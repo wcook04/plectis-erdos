@@ -1920,11 +1920,11 @@
         "ErdosProblems.ArgumentGraph.Derived.Erdos257",
         "ErdosProblems.ArgumentGraph.Derived.Erdos269",
         "ErdosProblems.ArgumentGraph.Derived.Erdos68",
-        "ErdosProblems.ArgumentGraph.Results.Erdos1041",
         "ErdosProblems.ArgumentGraph.Results.Erdos243",
         "ErdosProblems.ArgumentGraph.Results.Erdos249Abduction",
         "ErdosProblems.ArgumentGraph.Results.Erdos249Residual",
         "ErdosProblems.ArgumentGraph.Results.Erdos251",
+        "ErdosProblems.ArgumentGraph.Results.RelationCertificates",
         "ErdosProblems.Bit.verify.B1",
         "ErdosProblems.Bit.verify.B2",
         "ErdosProblems.Bit.verify.B3",
@@ -8423,6 +8423,12 @@
           ]
         },
         {
+          "id": "ErdosProblems.ArgumentGraph.Contracts",
+          "path": "lean/ErdosProblems/ArgumentGraph/Contracts.lean",
+          "role": "Lean proof module",
+          "imports": []
+        },
+        {
           "id": "ErdosProblems.ArgumentGraph.Derive",
           "path": "lean/ErdosProblems/ArgumentGraph/Derive.lean",
           "role": "Lean proof module",
@@ -8884,6 +8890,20 @@
           "role": "Lean proof module",
           "imports": [
             "ErdosProblems.ArgumentGraph.Derived.Erdos251"
+          ]
+        },
+        {
+          "id": "ErdosProblems.ArgumentGraph.Results.RelationCertificates",
+          "path": "lean/ErdosProblems/ArgumentGraph/Results/RelationCertificates.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.ArgumentGraph.Contracts",
+            "ErdosProblems.ArgumentGraph.Results.Erdos1041",
+            "ErdosProblems.ArgumentGraph.Results.Erdos249Endpoint",
+            "ErdosProblems.DemandLedger.edges.Bridge1",
+            "ErdosProblems.Erdos251.PrimeGapDyadicTail",
+            "ErdosProblems.Erdos1049.PaperCompleteR21.RationalBaseThreshold",
+            "ErdosProblems.Erdos257.PaperCompleteR21.ResetSqrtEscapeHalfMembership"
           ]
         },
         {
