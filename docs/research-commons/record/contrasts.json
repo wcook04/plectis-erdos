@@ -24,7 +24,7 @@
           "start_line": 586,
           "end_line": 593,
           "must_contain": [
-            "A separate #1041 positive route remains open",
+            "Degree-restricted #1041 positive routes remain open",
             "min_c L(c) ≤ 2"
           ]
         },
@@ -717,12 +717,12 @@
         {
           "kind": "claim",
           "ref": "finite_prime_weighted_support",
-          "detail": "Status formalised here; the prior-art ledger credits antecedents and makes no novelty claim."
+          "detail": "Carried the status formalised here until 28 September 2026, when it was re-typed unconditional progress; the prior-art ledger credits antecedents and makes no novelty claim."
         },
         {
           "kind": "claim",
           "ref": "cubic_rate_irrationality_unconditional",
-          "detail": "Status formalised here."
+          "detail": "Carried the status formalised here until 28 September 2026, when it was re-typed unconditional progress."
         }
       ],
       "triggers": {
@@ -751,8 +751,8 @@
         {
           "kind": "source_span",
           "path": "docs/PRIOR_ART.md",
-          "start_line": 324,
-          "end_line": 324,
+          "start_line": 334,
+          "end_line": 334,
           "must_contain": [
             "Priority for the two-prime result is Fan's"
           ]
@@ -760,8 +760,8 @@
         {
           "kind": "source_span",
           "path": "docs/PRIOR_ART.md",
-          "start_line": 371,
-          "end_line": 371,
+          "start_line": 381,
+          "end_line": 381,
           "must_contain": [
             "no priority claim is attached to them"
           ]
@@ -769,8 +769,8 @@
         {
           "kind": "source_span",
           "path": "docs/PRIOR_ART.md",
-          "start_line": 172,
-          "end_line": 172,
+          "start_line": 182,
+          "end_line": 182,
           "must_contain": [
             "already implies the affine-totient independence"
           ]
@@ -822,11 +822,11 @@
         {
           "kind": "source_span",
           "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
-          "start_line": 860,
-          "end_line": 865,
+          "start_line": 942,
+          "end_line": 946,
           "must_contain": [
             "Comparator cannot",
-            "would overclaim"
+            "Comparator-checked"
           ]
         }
       ],
