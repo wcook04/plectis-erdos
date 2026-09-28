@@ -365,7 +365,7 @@ Start here (selected for this guide): [Support criteria and their proofs](full-t
 
 **The Three-Prime Running LCM: Kernel Rank and Tail Arithmetic**
 
-[full text](full-text/erdos269-running-lcm-reasoning-surface.md) · [PDF](../../paper/269/erdos269-running-lcm-reasoning-surface.pdf) · [LaTeX source](../../paper/269/erdos269-running-lcm-reasoning-surface.tex) · 45 sections · `erdos269-running-lcm-reasoning-surface` · native to this repository
+[full text](full-text/erdos269-running-lcm-reasoning-surface.md) · [PDF](../../paper/269/erdos269-running-lcm-reasoning-surface.pdf) · [LaTeX source](../../paper/269/erdos269-running-lcm-reasoning-surface.tex) · 58 sections · `erdos269-running-lcm-reasoning-surface` · native to this repository
 
 Start here (selected for this guide): [The problem, and what is settled](full-text/erdos269-running-lcm-reasoning-surface.md#long269:sec:problem), [Why the third prime prevents finite separation](full-text/erdos269-running-lcm-reasoning-surface.md#long269:sec:rank), [The remaining arithmetic questions](full-text/erdos269-running-lcm-reasoning-surface.md#long269:sec:open), [What the results use and what they do not prove](full-text/erdos269-running-lcm-reasoning-surface.md#sec:erdos-269-complete-family-map).
 
@@ -373,7 +373,7 @@ Start here (selected for this guide): [The problem, and what is settled](full-te
 
 **No Finite Separable Representation at Three Prime Generators**
 
-[full text](full-text/erdos-269-three-prime-running-lcm.md) · [PDF](../../paper/269/erdos-269-three-prime-running-lcm.pdf) · [LaTeX source](../../paper/269/erdos-269-three-prime-running-lcm.tex) · 16 sections · `erdos-269-three-prime-running-lcm` · native to this repository
+[full text](full-text/erdos-269-three-prime-running-lcm.md) · [PDF](../../paper/269/erdos-269-three-prime-running-lcm.pdf) · [LaTeX source](../../paper/269/erdos-269-three-prime-running-lcm.tex) · 20 sections · `erdos-269-three-prime-running-lcm` · native to this repository
 
 Archived edition: [aiXiv:2609.03283v1](https://aixiv.online/abs/2609.03283v1) ([PDF](https://aixiv.online/pdf/2609.03283v1), [source archive](https://aixiv.online/src/2609.03283v1)); published 2026-09-27 from [source `551bae6dc6e7`](https://github.com/wcook04/plectis-erdos/blob/551bae6dc6e732cf85172d66323c8d2bc77ba962/paper/269/erdos-269-three-prime-running-lcm.tex).
 
@@ -468,7 +468,7 @@ The author recommends starting with [The two exact reductions](full-text/erdos24
 
 **Reading Eight Erdős Problems Together** · **included here; not yet published on the website**
 
-[full text](full-text/optimal-sparse-perturbations.md) · [PDF](../../paper/synthesis/optimal-sparse-perturbations.pdf) · [LaTeX source](../../paper/synthesis/optimal-sparse-perturbations.tex) · 36 sections · `optimal-sparse-perturbations` · native to this repository
+[full text](full-text/optimal-sparse-perturbations.md) · [PDF](../../paper/synthesis/optimal-sparse-perturbations.pdf) · [LaTeX source](../../paper/synthesis/optimal-sparse-perturbations.tex) · 37 sections · `optimal-sparse-perturbations` · native to this repository
 
 Start here (selected for this guide): [From individual problems to reusable questions](full-text/optimal-sparse-perturbations.md#sec:map), [An exact capacity criterion](full-text/optimal-sparse-perturbations.md#capacity:sec:criterion), [Lambert subsums across bases](full-text/optimal-sparse-perturbations.md#sec:results), [Further questions](full-text/optimal-sparse-perturbations.md#sec:questions).
 

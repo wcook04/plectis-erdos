@@ -54,6 +54,7 @@ check: all
 	python3 $(REASONING_ASSEMBLER) --check
 	python3 ../scripts/check_rendered_paper_boundary.py
 	python3 ../scripts/check_problem_note_sources.py
+	python3 ../scripts/check_paper_evidence_pdfs.py
 
 # The public reasoning manuscripts are flat generated projections. Their
 # authored parts remain small enough for focused mathematical review.
@@ -66,9 +67,10 @@ check: all
 # Short and long problem papers and synthesis publications track the preamble.
 $(NOTES:%=%.pdf) $(SYNTHESIS:%=%.pdf) $(filter %-reasoning-surface.pdf,$(PAPERS:%=%.pdf)): $(PREAMBLE)
 $(PAPERS:%=%.pdf): paper-house-style.sty
-# Evidence marks are included by the TeX sources. Rebuild their PDFs when the
-# evidence owner changes an included sidecar, including a record-commit pin.
-$(EVIDENCE_PAPERS): %.pdf: evidence/%.tex
+# Evidence marks and their placement code are included by the TeX sources.
+# Rebuild their PDFs when the evidence owner changes an included sidecar,
+# including a record-commit pin, even if the authored manuscript is unchanged.
+$(EVIDENCE_PAPERS): %.pdf: evidence/%.tex paper-evidence.tex
 
 # Only the mathematical gateway owns Lean source-link aliases. Keeping every
 # unrelated manuscript in this prerequisite list rebuilt the complete paper
@@ -78,7 +80,7 @@ $(ALIASES): archive/erdos249-257-main-paper.tex ../scripts/build_paper_module_al
 
 %.pdf: %.tex $(ALIASES)
 	@if command -v tectonic >/dev/null 2>&1; then \
-	  tectonic -o . -Z search-path=. $< ; \
+	  tectonic -o . -Z search-path=. --keep-intermediates $< ; \
 	else \
 	  TEXINPUTS="$(CURDIR)//:$$TEXINPUTS" pdflatex -output-directory . $< && \
 	  TEXINPUTS="$(CURDIR)//:$$TEXINPUTS" pdflatex -output-directory . $< ; \

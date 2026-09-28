@@ -80,9 +80,9 @@ FIRST_MINUTE_CONTRACT = {
     # the contribution cycle and the limits each keep their boundary within
     # one page of where they render today. The 24 September revision opens
     # with three pages of worked mathematics, so the later windows moved back.
-    # The 26 September revision adds source-cost controls and the periodic-chain
-    # example to Section 3. Checks begin on page 7, the cycle on page 9 and
-    # limitations on page 13; each boundary stays within its section's band.
+    # The merged 26 September revision includes both route replay and source-
+    # cost controls. Checks render on pages 8-9, the contribution boundary on
+    # page 10, and limitations on page 14. Keep the same three-page windows.
     "claim-faithful-publication-systems-paper.pdf": {
         (1, 1): (
             "problem-sized lean worlds",
@@ -102,7 +102,7 @@ FIRST_MINUTE_CONTRACT = {
             "an empty search never counts as evidence of no consequence",
             "whether the formal statement matches the 1958 wording",
         ),
-        (12, 14): (
+        (13, 15): (
             "no outside human contributor had opened a pull request or issue",
             "ethical objections",
         ),
@@ -112,7 +112,7 @@ FIRST_MINUTE_CONTRACT = {
             "from a cold clone to a proof receipt",
             "153,253 declarations",
             "navigation does not receive proof authority",
-            "verdicts come from the pinned lean process",
+            "derives probe verdicts from the pinned lean process",
             "not an autonomous theorem prover",
         ),
     },
