@@ -746,7 +746,11 @@ and the support as witnesses, is not yet within the search budget.
 Over the whole corpus, a probe of `scripts/export_abductions.lean` built an index of 6,245
 comparison readings in 1.3 s and tried the 401 distinct closed hypotheses of the corpus theorems in
 336 s: 3 are given outright by combined facts, 31 are restated, 2 ran out of budget, and the kernel
-rejected none.
+rejected none. The kernel checks that a restatement implies its hypothesis, not that it can hold:
+the cofinal reading asks for `Q A X` at every `A ≤ X`, including `A = X`, and a clause such as
+`A < X` inside `Q` then makes the restatement unsatisfiable, so it implies the hypothesis
+vacuously. Until the engine refutes a restated body before accepting it, the count of
+restatements is an upper bound.
 
 ## Checking a new statement without a local build
 

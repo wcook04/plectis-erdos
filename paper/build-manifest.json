@@ -7,7 +7,7 @@
         "paper/problem-note-preamble.tex": "sha256:088d36d7ba3d3ee0cee2df99e8915927999698f19889f8ea0b8d55b3721ec778",
         "paper/systems/cold-clone-to-proof-receipt.tex": "sha256:06e34d60ee38e632f2ebd3334c33f7a829825a66958f551956f0ec5c36d2a3cf"
       },
-      "rendered_content_digest": "sha256:5bc41c2e300961a94e98354a4d517f39698d0240ed9e6def5da8895b67c21afe",
+      "rendered_content_digest": "sha256:782b2074e342a941fd2001305e4d16f240228e36707c2107bed37c995e1b3fb3",
       "source_path": "paper/systems/cold-clone-to-proof-receipt.tex",
       "storage_path": "paper/systems/cold-clone-to-proof-receipt.pdf"
     },
@@ -150,7 +150,7 @@
         "paper/paper-house-style.sty": "sha256:1b4630ead32bfb407a2f29f5953fbb8d4140a659f6500799282a4805ba54a883",
         "paper/problem-note-preamble.tex": "sha256:088d36d7ba3d3ee0cee2df99e8915927999698f19889f8ea0b8d55b3721ec778"
       },
-      "rendered_content_digest": "sha256:df804db6ef226f8fca9479ee1edf2279d60be7ec4e1d4665495fabca9d5fb848",
+      "rendered_content_digest": "sha256:c2eecb1a5e247e0c0cdd8b7cc826ae8ac338f80cfd28884469b898461e97cdac",
       "source_path": "paper/257/erdos-257-mersenne-support-subseries.tex",
       "storage_path": "paper/257/erdos-257-mersenne-support-subseries.pdf"
     },
@@ -238,7 +238,7 @@
         "paper/paper-house-style.sty": "sha256:1b4630ead32bfb407a2f29f5953fbb8d4140a659f6500799282a4805ba54a883",
         "paper/problem-note-preamble.tex": "sha256:088d36d7ba3d3ee0cee2df99e8915927999698f19889f8ea0b8d55b3721ec778"
       },
-      "rendered_content_digest": "sha256:149fd589827db5271000b3368887281f4c167319e230ea351d16c295f2d3ac74",
+      "rendered_content_digest": "sha256:1d8b0ee13d3d6a979488c63afe11511b124fd916d086242a924d1f231adc69b7",
       "source_path": "paper/archive/erdos249-257-main-paper.tex",
       "storage_path": "paper/archive/erdos249-257-main-paper.pdf"
     },
@@ -260,7 +260,7 @@
         "paper/problem-note-preamble.tex": "sha256:088d36d7ba3d3ee0cee2df99e8915927999698f19889f8ea0b8d55b3721ec778",
         "paper/systems/claim-faithful-publication-systems-paper.tex": "sha256:96203e9133c5aab849582f0119c22e49af83075d97a8119a298e19dcb5bb709a"
       },
-      "rendered_content_digest": "sha256:37da61f10629706830724dc6ba0304ac482423b96cbc0f27a4fa6cbf4f59e412",
+      "rendered_content_digest": "sha256:bbb39bb41025474027d1db959b1145f0e74cea816ca192a47fc918990b8a9be9",
       "source_path": "paper/systems/claim-faithful-publication-systems-paper.tex",
       "storage_path": "paper/systems/claim-faithful-publication-systems-paper.pdf"
     }
