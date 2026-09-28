@@ -16434,6 +16434,14 @@
           ]
         },
         {
+          "id": "ErdosProblems.Erdos68.DepthFourShortSupport",
+          "path": "lean/ErdosProblems/Erdos68/DepthFourShortSupport.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos68.DivisorChannelBasis"
+          ]
+        },
+        {
           "id": "ErdosProblems.Erdos68.DivisorChannelBasis",
           "path": "lean/ErdosProblems/Erdos68/DivisorChannelBasis.lean",
           "role": "Lean proof module",
