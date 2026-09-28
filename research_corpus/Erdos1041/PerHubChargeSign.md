@@ -1,5 +1,7 @@
 # Erdős 1041: the near-Fekete residue is a curvature charge, and it is negative at some hubs
 
+> Status note (2026-09-28): the exact Formal Conjectures statement of Erdős #1041 is refuted by ani's degree-seven example (Lean `erdos1041_counterexample_hausdorff`, `lean/ErdosProblems/Erdos1041/Counterexample/HausdorffLength.lean` in the public repository); correspondence with the 1958 wording awaits independent review. Earlier statements in this note that the problem is open are dated history.
+
 Status: one exact counterexample, two exact identities, and one measured
 selection mechanism. 2026-08-24. **This does not prove Erdős #1041** and it does
 not weaken the surviving obligation. It removes a class of attacks on the

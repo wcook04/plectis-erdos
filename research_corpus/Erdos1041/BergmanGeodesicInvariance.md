@@ -1,5 +1,7 @@
 # Erdős 1041: the Bergman segment functional is a Möbius invariant, so the sharp bound is a *geodesic* bound
 
+> Status note (2026-09-28): the exact Formal Conjectures statement of Erdős #1041 is refuted by ani's degree-seven example (Lean `erdos1041_counterexample_hausdorff`, `lean/ErdosProblems/Erdos1041/Counterexample/HausdorffLength.lean` in the public repository); correspondence with the 1958 wording awaits independent review. Earlier statements in this note that the problem is open are dated history.
+
 Status: one invariance lemma, one sharp theorem with its equality family, two
 exact potential-theoretic identities, one explicit criterion, one exact
 subdomain computation on the degenerate stratum, and a new member of the

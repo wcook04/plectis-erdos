@@ -1,5 +1,7 @@
 # Erdős 1041: the hard regime is one point, and the two-root component is one Blaschke product
 
+> Status note (2026-09-28): the exact Formal Conjectures statement of Erdős #1041 is refuted by ani's degree-seven example (Lean `erdos1041_counterexample_hausdorff`, `lean/ErdosProblems/Erdos1041/Counterexample/HausdorffLength.lean` in the public repository); correspondence with the 1958 wording awaits independent review. Earlier statements in this note that the problem is open are dated history.
+
 Status: one coordinate change, one exact conformal normal form, two
 unconditional length bounds, and one affine-invariant sharpening of the
 standing obligation. 2026-08-24. **This does not prove Erdős #1041.** It

@@ -1,5 +1,7 @@
 # Erdős 1041: the attachment-coupled selector, exact quartic no-go, and transport ceiling
 
+> Status note (2026-09-28): the exact Formal Conjectures statement of Erdős #1041 is refuted by ani's degree-seven example (Lean `erdos1041_counterexample_hausdorff`, `lean/ErdosProblems/Erdos1041/Counterexample/HausdorffLength.lean` in the public repository); correspondence with the 1958 wording awaits independent review. Earlier statements in this note that the problem is open are dated history.
+
 Status, 2026-08-26: one exact actual-polynomial no-go, one sharp abstract
 weighted-tree selector, and one exact transport identity showing why that
 selector does not by itself close the polynomial metric consumer. Unrestricted

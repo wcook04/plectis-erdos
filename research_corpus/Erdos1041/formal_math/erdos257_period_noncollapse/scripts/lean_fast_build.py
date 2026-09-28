@@ -88,6 +88,46 @@ def try_public_lean_host_lock() -> tuple[object | None, Path]:
     return handle, path
 
 
+def inherited_host_build_lease(
+    broker_root: Path, conflict_keys: list[str], jobs: int
+) -> bool:
+    """Verify the outer host-admitted command's fenced broker ownership.
+
+    The marker alone is not authority. Reuse the broker's token/epoch check
+    and require the inherited lease to own this exact project's entire mutable
+    build boundary. A fresh admission is not inherited host ownership.
+    """
+
+    if (
+        resource_capacity_broker is None
+        or os.environ.get("AIW_PLECTIS_LEAN_HOST_LOCK_HELD") != "1"
+        or not os.environ.get(resource_capacity_broker.TOKEN_ENV)
+        or not os.environ.get(resource_capacity_broker.EPOCH_ENV)
+    ):
+        return False
+    admission = resource_capacity_broker.acquire_capacity(
+        broker_root,
+        work_key="lean-fast-build:verify-inherited-host",
+        resource_class="lean_build",
+        owner_surface="lean_fast_build.py:inherited_host",
+        flow_id=resource_capacity_broker.derive_flow_id("lean-fast-build", env=os.environ),
+        requested_seats=jobs,
+        conflict_keys=conflict_keys,
+        env=os.environ,
+    )
+    inherited = admission.get("inherited") is True
+    if admission.get("decision") == "ADMIT" and not inherited:
+        resource_capacity_broker.release_capacity(
+            broker_root, admission, outcome="not_inherited_host_owner"
+        )
+    lease = admission.get("lease") or {}
+    return (
+        admission.get("decision") == "ADMIT"
+        and inherited
+        and set(conflict_keys).issubset(lease.get("conflict_keys") or [])
+    )
+
+
 IMPORT_RE = re.compile(r"^\s*import\s+([A-Za-z0-9_'.]+)\s*(?:--.*)?$")
 
 
@@ -542,6 +582,7 @@ def lake_targets_up_to_date(
     *,
     rehash: bool = True,
     facet: str | None = None,
+    diagnostic: dict[str, object] | None = None,
 ) -> bool:
     """Ask Lake for a content-trace verdict without starting a build."""
 
@@ -561,10 +602,18 @@ def lake_targets_up_to_date(
     result = subprocess.run(
         command,
         cwd=project_root,
-        stdout=subprocess.DEVNULL,
-        stderr=subprocess.DEVNULL,
+        stdout=subprocess.PIPE if diagnostic is not None else subprocess.DEVNULL,
+        stderr=subprocess.PIPE if diagnostic is not None else subprocess.DEVNULL,
+        text=diagnostic is not None,
         check=False,
     )
+    if diagnostic is not None:
+        diagnostic.update({
+            "argv": command,
+            "exit_code": result.returncode,
+            "stdout_tail": (result.stdout or "")[-2000:],
+            "stderr_tail": (result.stderr or "")[-2000:],
+        })
     return result.returncode == 0
 
 
@@ -645,6 +694,31 @@ def run_module(
     return module, result.returncode, time.monotonic() - started
 
 
+class ModuleBuildFailure(RuntimeError):
+    """Exact failed modules, so unrelated proof branches can still advance."""
+
+    def __init__(self, modules: Iterable[str]) -> None:
+        self.modules = frozenset(modules)
+        super().__init__("module prebuild failed: " + ", ".join(sorted(self.modules)))
+
+
+def failed_dependency_closure(
+    graph: dict[str, set[str]], failures: set[str],
+) -> set[str]:
+    consumers: dict[str, set[str]] = {}
+    for module, dependencies in graph.items():
+        for dependency in dependencies:
+            consumers.setdefault(dependency, set()).add(module)
+    blocked = set(failures)
+    pending = list(failures)
+    while pending:
+        for consumer in consumers.get(pending.pop(), ()):
+            if consumer not in blocked:
+                blocked.add(consumer)
+                pending.append(consumer)
+    return blocked
+
+
 def build_wave(
     project_root: Path,
     lake: str,
@@ -670,7 +744,7 @@ def build_wave(
             if returncode:
                 failures.append(module)
         if failures:
-            raise RuntimeError("module prebuild failed: " + ", ".join(sorted(failures)))
+            raise ModuleBuildFailure(failures)
 
 
 def plan_lines(build_waves: Iterable[Iterable[str]], *, verbose: bool) -> list[str]:
@@ -733,6 +807,26 @@ def materialize_dependencies(args: argparse.Namespace, project_root: Path) -> in
 
     lake = str(args.lake)
     packages = [str(name) for name in args.materialize_dependencies]
+    if not packages:
+        # The no-update path can reuse an idle same-lock donor without asking
+        # Lake to create another multi-gigabyte package tree first.
+        cache_admission = admit_workspace_dependency_cache(project_root)
+        cache_action = str(cache_admission.get("action") or "")
+        if cache_action in {"reject", "defer"}:
+            emit_workspace_cache_admission(cache_admission)
+            return int(cache_admission.get("exit_code") or (75 if cache_action == "defer" else 64))
+        if cache_action in {"attached", "reuse"} and mathlib_cache_preflight(project_root, lake).get("allow") is True:
+            emit_workspace_cache_admission(cache_admission)
+            print(json.dumps({
+                "schema": "lean_fast_build_materialize_receipt_v0",
+                "status": "current_compatible_cache_before_hydration",
+                "project_root": str(project_root),
+                "packages": [],
+                "steps": [],
+                "exit_code": 0,
+                "proof_scope": "not_proof_evidence",
+            }, sort_keys=True))
+            return 0
     host_lock, host_lock_path = try_public_lean_host_lock()
     if host_lock is None:
         print(
@@ -1011,7 +1105,9 @@ def main(argv: list[str] | None = None) -> int:
         inner_env[CONTROL_PLANE_CHILD_ENV] = "1"
         inner_env["AIW_PLECTIS_LEAN_HOST_LOCK_HELD"] = "1"
         host_lock, _host_lock_path = try_public_lean_host_lock()
-        if host_lock is None:
+        if host_lock is None and not inherited_host_build_lease(
+            broker_root, conflict_keys, args.jobs
+        ):
             future = submit_deferred_build_future(args, project_root, broker_root)
             emit_deferred_turn_handoff(args, project_root, broker_root, future)
             return resource_capacity_broker.DEFER_EXIT_CODE
@@ -1033,8 +1129,9 @@ def main(argv: list[str] | None = None) -> int:
                 env=inner_env,
             )
         finally:
-            fcntl.flock(host_lock.fileno(), fcntl.LOCK_UN)
-            host_lock.close()
+            if host_lock is not None:
+                fcntl.flock(host_lock.fileno(), fcntl.LOCK_UN)
+                host_lock.close()
         if result == resource_capacity_broker.DEFER_EXIT_CODE:
             future = submit_deferred_build_future(args, project_root, broker_root)
             emit_deferred_turn_handoff(args, project_root, broker_root, future)
@@ -1246,6 +1343,11 @@ def operator_reinvoke_argv(args: argparse.Namespace, project_root: Path) -> list
     return values
 
 
+# Host ownership may span a full proof replay. A detached retry must survive
+# the same contention interval as capacity admission, without polling an agent.
+DEFERRED_BUILD_WAIT_SECONDS = 24 * 60 * 60
+
+
 def detached_requeue_argv(
     args: argparse.Namespace,
     project_root: Path,
@@ -1270,9 +1372,9 @@ def detached_requeue_argv(
         str(args.jobs),
         "--reuse-completed-success-only",
         "--capacity-wait-seconds",
-        str(24 * 60 * 60),
+        str(DEFERRED_BUILD_WAIT_SECONDS),
         "--retry-child-defer-seconds",
-        str(30),
+        str(DEFERRED_BUILD_WAIT_SECONDS),
         "--dependency-barrier-reason",
         "Lean validation is queued behind the current host build owner",
     ]
@@ -1320,8 +1422,8 @@ def submit_deferred_build_future(
         requested_seats=args.jobs,
         conflict_keys=build_conflict_keys(project_root, broker_root),
         inline_budget_ms=50,
-        capacity_wait_seconds=24 * 60 * 60,
-        retry_child_defer_seconds=30,
+        capacity_wait_seconds=DEFERRED_BUILD_WAIT_SECONDS,
+        retry_child_defer_seconds=DEFERRED_BUILD_WAIT_SECONDS,
         reuse_completed_success_only=True,
         dependency_barrier_reason=(
             "Lean validation owns its durable continuation while the caller advances "
@@ -1712,6 +1814,61 @@ def compact_pinned_package_git_preflight(
     }
 
 
+def mathlib_cache_preflight(project_root: Path, lake: str) -> dict[str, object]:
+    """Require a current compiled Mathlib before any ordinary proof build.
+
+    Bounding local module workers cannot bound Lake's dependency scheduler.
+    A cold or stale dependency tree must be attached or explicitly hydrated,
+    never silently rebuilt by the first local module. The no-build trace check
+    validates the complete Mathlib import cone without compiling it.
+    """
+    manifest = project_root / "lake-manifest.json"
+    if not manifest.is_file():
+        return {"status": "not_applicable", "allow": True}
+    payload = json.loads(manifest.read_text(encoding="utf-8"))
+    if not any(row.get("name") == "mathlib" for row in payload.get("packages", [])):
+        return {"status": "not_applicable", "allow": True}
+    diagnostic: dict[str, object] = {}
+    current = lake_targets_up_to_date(
+        project_root, lake, ["Mathlib"], rehash=True, facet="olean", diagnostic=diagnostic
+    )
+    # Lake uses exit 3 when --no-build finds work to do. A guard refusal,
+    # admission defer, or command error does not establish a stale cache and
+    # must never recommend fetching/rebuilding dependencies.
+    probe_exit = diagnostic.get("exit_code")
+    if not current and probe_exit not in {None, 3}:
+        status = (
+            "dependency_cache_probe_refused" if probe_exit == 64 else
+            "dependency_cache_probe_deferred" if probe_exit == 75 else
+            "dependency_cache_probe_failed"
+        )
+        return {
+            "schema": "lean_mathlib_cache_preflight_v0",
+            "status": status,
+            "allow": False,
+            "proof_scope": "dependency_readiness_unknown_not_proof_evidence",
+            "project_root": str(project_root),
+            "exit_code": int(probe_exit) if isinstance(probe_exit, int) and probe_exit > 0 else 69,
+            "next_action": "resolve_the_no_build_probe_diagnostic_before_cache_recovery",
+            "probe": diagnostic,
+        }
+    return {
+        "schema": "lean_mathlib_cache_preflight_v0",
+        "status": "current" if current else "dependency_cache_materialization_required",
+        "allow": current,
+        "proof_scope": "dependency_readiness_not_proof_evidence",
+        "project_root": str(project_root),
+        "exit_code": 0 if current else 69,
+        "probe": diagnostic,
+        "next_action": "build_local_targets" if current else "attach_a_current_compatible_cache_or_materialize_dependencies",
+        "materialize_argv": [
+            sys.executable, str(Path(__file__).resolve()),
+            "--project-root", str(project_root), "--lake", lake,
+            "--materialize-dependencies",
+        ],
+    }
+
+
 def _main_admitted(args: argparse.Namespace, project_root: Path) -> int:
     identity = pinned_package_git_preflight(project_root)
     successful_compact_plan = (
@@ -1730,6 +1887,11 @@ def _main_admitted(args: argparse.Namespace, project_root: Path) -> int:
     )
     if identity["status"] != "clear":
         return 65
+    if not args.plan:
+        cache = mathlib_cache_preflight(project_root, str(args.lake))
+        if not cache["allow"]:
+            print(json.dumps(cache, sort_keys=True), file=sys.stderr)
+            return int(cache["exit_code"])
     modules = discover_modules(project_root)
     targets = args.targets or sorted(name for name, source in modules.items() if source.parent == project_root)
     target_resolutions = [
@@ -1856,7 +2018,12 @@ def _main_admitted(args: argparse.Namespace, project_root: Path) -> int:
             print(line)
         return 0
 
+    failed_modules: set[str] = set()
+    blocked_modules: set[str] = set()
     for wave in stale_waves:
+        wave = [module for module in wave if module not in blocked_modules]
+        if not wave:
+            continue
         current = (
             lake_stale_modules(
                 project_root,
@@ -1867,13 +2034,30 @@ def _main_admitted(args: argparse.Namespace, project_root: Path) -> int:
             if use_lake_staleness
             else [module for module in wave if module_is_stale(project_root, module, modules, graph)]
         )
-        build_wave(
-            project_root,
-            args.lake,
-            current,
-            args.jobs,
-            facet=prebuild_facet,
-        )
+        try:
+            build_wave(
+                project_root,
+                args.lake,
+                current,
+                args.jobs,
+                facet=prebuild_facet,
+            )
+        except ModuleBuildFailure as failure:
+            failed_modules.update(failure.modules)
+            blocked_modules = failed_dependency_closure(graph, failed_modules)
+
+    if failed_modules:
+        print(json.dumps({
+            "schema": "lean_fast_build_partial_failure_v1",
+            "status": "failed",
+            "failed_modules": sorted(failed_modules),
+            "blocked_dependent_modules": sorted(blocked_modules - failed_modules),
+            "blocked_roots": sorted(set(roots) & blocked_modules),
+            "independent_roots": sorted(set(roots) - blocked_modules),
+            "final_authority_check": "not_run_batch_failed",
+            "next_action": "repair_failed_modules_then_reuse_current_independent_outputs",
+        }, sort_keys=True), file=sys.stderr)
+        return 1
 
     if args.no_final_build:
         compact_reconstructable_build_metadata(project_root)

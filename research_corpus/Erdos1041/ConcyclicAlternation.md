@@ -1,5 +1,7 @@
 # Erdős #1041 for concyclic zeros: a Chebyshev alternation on the circle
 
+> Status note (2026-09-28): the exact Formal Conjectures statement of Erdős #1041 is refuted by ani's degree-seven example (Lean `erdos1041_counterexample_hausdorff`, `lean/ErdosProblems/Erdos1041/Counterexample/HausdorffLength.lean` in the public repository); correspondence with the 1958 wording awaits independent review. Earlier statements in this note that the problem is open are dated history.
+
 Status, 2026-08-24: one complete sharp theorem, one complete lemma, one
 unconditional corollary settling Erdős #1041 for a new class, and one calibrated
 conjecture.  Erdős #1041 itself remains open; nothing below claims otherwise.

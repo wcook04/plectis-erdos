@@ -1,5 +1,7 @@
 # Erdős #1041: the tie race — why every fixed path family fails by a hair, measured
 
+> Status note (2026-09-28): the exact Formal Conjectures statement of Erdős #1041 is refuted by ani's degree-seven example (Lean `erdos1041_counterexample_hausdorff`, `lean/ErdosProblems/Erdos1041/Counterexample/HausdorffLength.lean` in the public repository); correspondence with the 1958 wording awaits independent review. Earlier statements in this note that the problem is open are dated history.
+
 Status: one exact negative result (certified in rational arithmetic) and a set of
 measured laws, 2026-09-05, conductor lab. Nothing here settles a regime of Erdős
 #1041; the value of the note is that it pins, with numbers, the shape of the

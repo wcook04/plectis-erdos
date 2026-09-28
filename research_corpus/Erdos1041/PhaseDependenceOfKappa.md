@@ -1,5 +1,7 @@
 # Erdős 1041: where the split direction actually enters `kappa_n(phi)`
 
+> Status note (2026-09-28): the exact Formal Conjectures statement of Erdős #1041 is refuted by ani's degree-seven example (Lean `erdos1041_counterexample_hausdorff`, `lean/ErdosProblems/Erdos1041/Counterexample/HausdorffLength.lean` in the public repository); correspondence with the 1958 wording awaits independent review. Earlier statements in this note that the problem is open are dated history.
+
 Status: one symmetry (proved), one structural identity (derived modulo §2's
 modelling assumption, and confirmed against the cusp law's own sweep at `n = 3`
 and `n = 4`), and one refuted reading — mine, from earlier today. 2026-08-24.
