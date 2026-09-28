@@ -1,21 +1,29 @@
-name: Kernel probe
+name: Kernel probe with dependency-index export
 
-# Check scratch Lean files against the built corpus, for research sessions on
-# hosts without a local corpus build. Push `research/probes/*.lean` to a branch
-# named `claude/kernel-probe-*` or `codex/kernel-probe-*`; each probe is run
-# with `lake env lean` against the two corpus roots and its exit status and
-# messages are uploaded as the `kernel-probe-<sha>` artifact.
+# Export branch for the landing branch claude/derive-factoring-20260927.
 #
-# A probe verdict is a kernel check of that file at that commit and nothing
-# more; results that matter move into lean/ through the ordinary landing path.
-# Restore-only cache, like argument-continuations.yml, so probes never evict
-# main's `.lake`.
+# lean.yml runs its build job only after release-surfaces passes, and the
+# release gate rejects a committed dependency index that predates the Lean
+# tree, so a pull request that changes Lean cannot obtain the
+# lean-dependency-index-fresh artifact from its own Lean CI.  The publication
+# gate admits no branch that adds lean/ files before the formal-source pin
+# moves, so this branch is main plus research/probes/landing-export.patch: the
+# difference between main and the landing branch's formal-source checkpoint in
+# lean/, docs/declaration_atlas.json and docs/claims.json.  This workflow
+# applies that patch, refuses to continue unless the dependency-index input
+# fingerprint equals the landing tree's, runs the same build wrapper and the
+# same exporter command as lean.yml's build job, and uploads the same three
+# files.  build_lean_dependency_index.py --check in the pull request's own
+# build job accepts the index only when its recorded input fingerprint equals
+# the fingerprint of the pull request's tree.
+#
+# Restore-only cache, like the probe workflow, so this run never evicts main's
+# `.lake`.
 
 on:
   push:
     branches:
       - "claude/kernel-probe-*"
-      - "codex/kernel-probe-*"
     paths:
       - "research/probes/**"
       - ".github/workflows/kernel-probe.yml"
@@ -29,9 +37,9 @@ permissions:
   contents: read
 
 jobs:
-  probe:
+  export:
     runs-on: ubuntu-24.04
-    timeout-minutes: 120
+    timeout-minutes: 240
     env:
       GIT_CONFIG_NOSYSTEM: "1"
       GIT_CONFIG_GLOBAL: /tmp/plectis-ci-empty.gitconfig
@@ -60,6 +68,7 @@ jobs:
       PYTHONNOUSERSITE: "1"
       PYTHONDONTWRITEBYTECODE: "1"
       PYTHONUTF8: "1"
+      LANDING_INPUT_FINGERPRINT: "sha256:60067af17df596b56d0775cb98a55e586d06b257200f94d1efb29f044ac314a8"
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
         with:
@@ -69,13 +78,26 @@ jobs:
         uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
         with:
           python-version: "3.12.9"
+      - name: Reconstruct the landing tree's Lean sources, atlas and claims
+        run: |
+          set -euo pipefail
+          git apply --index research/probes/landing-export.patch
+          python3 - <<'PY'
+          import os
+          import sys
+          sys.path.insert(0, "scripts")
+          import build_lean_dependency_index as index
+          observed = index.check_input_fingerprint()
+          expected = os.environ["LANDING_INPUT_FINGERPRINT"]
+          print(f"dependency-index input fingerprint {observed}")
+          if observed != expected:
+              raise SystemExit(f"patched tree fingerprint {observed} is not the landing tree's {expected}")
+          PY
       - name: Restore project Lean cache
         uses: actions/cache/restore@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
         with:
           path: .lake
           key: lake-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles('lean-toolchain') }}-${{ hashFiles('lake-manifest.json') }}-${{ github.sha }}
-          # Larger PR caches can evict main's `lake-` cache; main's coverage
-          # cache also holds the supported roots.
           restore-keys: |
             lake-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles('lean-toolchain') }}-${{ hashFiles('lake-manifest.json') }}
             lake-coverage-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles('lean-toolchain') }}-${{ hashFiles('lake-manifest.json') }}
@@ -100,22 +122,34 @@ jobs:
         run: lake exe cache get
       - name: Memory-bounded Lean build of the corpus roots
         run: python3 scripts/lean_fast_build.py --jobs 2 --lake-staleness Erdos249257 ErdosProblems
-      - name: Build the corpus modules the probes import
-        # The restored cache holds the supported roots; a paper-coverage module a
-        # probe imports may be missing from it.
+      - name: Verify elaborated dependency index
+        id: dependency-index
+        continue-on-error: true
         run: |
-          modules="$(python3 scripts/probe_imports.py)"
-          if [ -n "$modules" ]; then
-            # shellcheck disable=SC2086
-            python3 scripts/lean_fast_build.py --jobs 2 --lake-staleness $modules
+          set -euo pipefail
+          if python3 scripts/build_lean_dependency_index.py --check; then
+            exit 0
           fi
-      - name: Run the probes
-        run: python3 scripts/run_kernel_probes.py --out "$RUNNER_TEMP/kernel-probe"
-      - name: Upload probe verdicts
-        if: always()
+          python3 scripts/build_lean_dependency_index.py --check --full-check --write-stale
+      - name: Upload the fresh dependency index
+        if: steps.dependency-index.outputs.fresh_export_written == 'true'
         uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
         with:
-          name: kernel-probe-${{ github.sha }}
-          path: ${{ runner.temp }}/kernel-probe
-          retention-days: 14
+          name: lean-dependency-index-fresh-${{ steps.dependency-index.outputs.checkout_revision || github.sha }}
+          path: |
+            docs/lean_dependency_index.json
+            docs/lean_dependency_index_check.json
+            .lake/aiw/lean_dependency_index_outcome.json
+          if-no-files-found: error
+      - name: Upload dependency-index diagnostics
+        if: >-
+          always() &&
+          steps.dependency-index.outcome != 'success' &&
+          steps.dependency-index.outputs.fresh_export_written != 'true'
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: lean-dependency-index-diagnostics-${{ steps.dependency-index.outputs.checkout_revision || github.sha }}
+          path: |
+            .lake/aiw/lean_dependency_index_outcome.json
+            .lake/aiw/lean_dependency_export_diagnostics.log
           if-no-files-found: warn

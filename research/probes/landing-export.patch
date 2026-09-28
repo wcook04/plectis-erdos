@@ -1,0 +1,501 @@
+diff --git a/docs/claims.json b/docs/claims.json
+index bf70e659..2d2d03b7 100644
+--- a/docs/claims.json
++++ b/docs/claims.json
+@@ -20210,7 +20210,8 @@
+     "conditional reduction": "Exact implication whose remaining hypothesis is open",
+     "verified finite instance": "Kernel-checked computation at a bounded range",
+     "cited only": "External theorem used for positioning, not formalised",
+-    "open": "Not proved by this release"
++    "open": "Not proved by this release",
++    "formal statement refuted": "Lean refutes the exact Formal Conjectures statement; correspondence with the original wording awaits independent review"
+   },
+   "external_verification_packet": {
+     "schema": "erdos-external-verification-packet/1",
+@@ -21935,7 +21936,7 @@
+         "source": "paper/249/erdos-249-binary-totient-series.tex",
+         "environment": "problem",
+         "title": "Four estimates for the first-harmonic sum",
+-        "line": 704
++        "line": 707
+       }
+     },
+     {
+@@ -21980,7 +21981,7 @@
+       "id": "erdos_68",
+       "label": "Erdős #68: irrationality of S = ∑_{n≥2} 1/(n! − 1)",
+       "status": "open",
+-      "statement": "The irrationality of the factorial-denominator series remains open in this release; the checked reductions and finite obstructions do not supply the required cofinal failure.",
++      "statement": "Lean proves that S = ∑_{n≥2} 1/(n! − 1) is irrational if and only if, for infinitely many m, m does not divide ⌊m!·S_m⌋ + 1, where S_m is the prefix sum through n = m (irrational_factorialGapSeries_iff_cofinal_strictFacTopRat_misses); equivalently, the factorial-gap carry differs from 1 for infinitely many m (irrational_factorialGapSeries_iff_cofinal_nonunit_carries). Lean also proves liminf log L_N/(N^{3/2} log N) ≥ 2√2/3 for the common denominator L_N = lcm_{2≤n≤N}(n! − 1) before cancellation (common_denominator_growth_liminf). The irrationality of S remains open: the checked reductions and finite obstructions do not supply the required cofinal non-unit carries.",
+       "remaining_open_proposition_ids": [
+         "remaining_open.erdos_68_irrationality"
+       ],
+@@ -22007,7 +22008,7 @@
+       "id": "erdos_251",
+       "label": "Erdős #251: irrationality of Π = ∑_{n≥1} p_n/2ⁿ",
+       "status": "open",
+-      "statement": "The prime-index dyadic series remains open in this release; the exact tail-shift equivalence, prime-gap unboundedness, and nonperiodicity do not supply the required cofinal escape for the actual prime gaps.",
++      "statement": "Lean proves that Π = ∑_{n≥1} p_n/2ⁿ equals 2 plus the prime-gap dyadic series and that Π is irrational if and only if that gap series is (tsum_primeDyadicTerm_eq_two_add_primeGap_unconditional, irrational_tsum_primeDyadicTerm_iff_primeGap), with summability from the elementary bound p_n ≤ 1250(n+1)^4; the identity is the known summation by parts. Lean also proves that the consecutive prime gaps are unbounded and not eventually periodic (exists_primeGap0_gt, primeGap0_not_eventually_periodic). The irrationality of Π remains open: these facts do not supply the required cofinal escape for the actual prime gaps.",
+       "remaining_open_proposition_ids": [
+         "remaining_open.erdos_251_irrationality"
+       ],
+@@ -22076,14 +22077,35 @@
+     {
+       "id": "erdos_1041",
+       "label": "Erdős #1041: short connections inside polynomial lemniscates",
+-      "status": "open",
++      "status": "formal statement refuted",
+       "statement": "Using ani's explicit monic degree-seven polynomial, Lean proves that every preconnected subset of its strict unit lemniscate containing two distinct roots has one-dimensional Hausdorff measure greater than 2. This refutes the exact Formal Conjectures path-image-length statement and its total-variation counterpart. The reported family is not formalised, and independent human review of correspondence with the 1958 wording is not recorded.",
+       "remaining_open_proposition_ids": [
+         "remaining_open.erdos_1041_lemniscate_connection"
+       ],
+       "paper_label": null,
+       "readme_headline": false,
+-      "declarations": []
++      "declarations": [
++        {
++          "name": "erdos1041_counterexample_hausdorff",
++          "module": "ErdosProblems/Erdos1041/Counterexample/HausdorffLength.lean",
++          "line": 283
++        },
++        {
++          "name": "erdos1041_hausdorff_negation",
++          "module": "ErdosProblems/Erdos1041/Counterexample/HausdorffLength.lean",
++          "line": 407
++        },
++        {
++          "name": "erdos1041_hausdorff_answer_false",
++          "module": "ErdosProblems/Erdos1041/Counterexample/HausdorffLength.lean",
++          "line": 449
++        },
++        {
++          "name": "erdos1041_ani_degree_seven",
++          "module": "ErdosProblems/Erdos1041/Counterexample/CatalogueAdapter.lean",
++          "line": 25
++        }
++      ]
+     },
+     {
+       "id": "newton_ray_separation_consumer",
+@@ -23821,7 +23843,7 @@
+     {
+       "id": "stern_brocot_run_fibonacci_stability",
+       "label": "Fibonacci and continuant stability of Stern–Brocot runs",
+-      "status": "formalised here",
++      "status": "unconditional progress",
+       "statement": "A Stern–Brocot word with r nonempty alternating runs has height at least F_(r+3), with equality on the all-unit run spine. Writing each run length as 1+e_i gives an exact multiaffine continuant-defect expansion, the sharp global gain F_(r+1) sum e_i, and exact one-site coefficient F_(i+2)F_(r-i+1). Under the gcd-one weight 2^-(a+b), the first induced run layer has mass 1/2, while the natural denominator-bookkeeping exponent is exactly F_(r+3)-2. These are source-level combinatorial and arithmetic facts; no analytic denominator survival or irrationality conclusion is claimed.",
+       "paper_label": "res:sternbrocotruns",
+       "readme_headline": false,
+@@ -23961,7 +23983,7 @@
+     {
+       "id": "totient_carry_kernel_anti_compression",
+       "label": "Totient carry anti-compression",
+-      "status": "formalised here",
++      "status": "unconditional progress",
+       "statement": "If the binary totient coefficient series were rational, one positive-multiplier tempered integral carry would have uniformly eventually-periodic dyadic sections modulo its multiplier while retaining canonical carry-section span dimension at least 2^e − 1 for every e. No finite-rank bound for every rationality-supplied carry is proved, so this quotient-periodicity/anti-compression conjunction is a necessary consequence rather than an irrationality criterion for S.",
+       "remaining_open_proposition_ids": [
+         "remaining_open.erdos_249_irrationality"
+@@ -24009,7 +24031,8 @@
+     {
+       "id": "denominator_exclusion",
+       "label": "Unconditional denominator exclusion for the totient constant",
+-      "status": "formalised here",
++      "status": "verified finite instance",
++      "bounded_domain": "Integer p and 1 <= q <= 79 639 646 646 701 375 323 355 774 875 831 053; no larger denominator is excluded.",
+       "statement": "S = ∑ φ(n)/2ⁿ is not equal to p/q for any integer p and any 1 ≤ q ≤ 79 639 646 646 701 375 323 355 774 875 831 053 (≈ 7.96 × 10³⁴). A lower bound on any rational representation, not a proof of irrationality.",
+       "remaining_open_proposition_ids": [
+         "remaining_open.erdos_249_irrationality"
+@@ -24145,7 +24168,7 @@
+       "id": "diagonal_pincer_reduction",
+       "label": "Exact full-target reduction on the lcm diagonal",
+       "status": "conditional reduction",
+-      "statement": "At each lcm-diagonal scale, integrality is equivalent to a foreign-defect term landing in an explicit full-target interval. Globally, S is irrational if and only if the full target is avoided at arbitrarily large diagonal scales; that cofinal avoidance is not proved.",
++      "statement": "At each lcm-diagonal scale, integrality holds if and only if a foreign-defect term lands in an explicit full-target interval. Globally, S is irrational if and only if the full target is avoided at arbitrarily large diagonal scales; that cofinal avoidance is not proved.",
+       "remaining_open_proposition_ids": [
+         "remaining_open.unbounded_certificate_supply"
+       ],
+@@ -24454,7 +24477,7 @@
+       "id": "adelic_height_obstruction",
+       "label": "Scalar-localisation height obstruction",
+       "status": "proved here",
+-      "statement": "If H divides the reduced denominator of a rational x and the reduced denominator of c·x divides H for an integer c, then the complementary factor x.den/H divides |c|. Scalar localisation transfers, rather than discards, that denominator information; this local obstruction is not an irrationality criterion.",
++      "statement": "For every rational x, integer c and natural number H, if H divides the reduced denominator of x and the reduced denominator of c·x divides H, then the complementary factor x.den/H divides |c|. Scalar localisation therefore moves that denominator information into the scalar; this local obstruction is not an irrationality criterion.",
+       "paper_label": "res:adelic",
+       "readme_headline": true,
+       "declarations": [
+@@ -24553,6 +24576,75 @@
+         }
+       ]
+     },
++    {
++      "id": "totient_residue_series_classification",
++      "label": "Irrational totient residue series and the rational dyadic residue observables",
++      "status": "unconditional progress",
++      "statement": "For every m ≥ 3 the series ∑_{n≥1} (φ(n) mod m)/2^n is irrational, and for k ≥ 1 and f: Z/2^kZ → Q the series ∑_{n≥1} f(φ(n) mod 2^k)/2^n is rational exactly when f is constant on the even residue classes, with value 3f(1)/4 + c/4 where c is that constant. The first assertion, in every integer base, already follows from Erdős's Lemma 1 (Indag. Math. 19 (1957), p. 213; the case b = 0 of his Lemma 4, pp. 215-218) because φ(n) mod m vanishes outside a set of density zero, and equally from Theorem 3 of Kaneko, Suzuki and Tachiya (arXiv:2601.20743v1, p. 5). Those criteria also give the classification when the values f(r) - f(0) on the even classes have one sign; with both signs they need a further spacing hypothesis, which the isolated-coefficient proof does not need. Wong posted the case in which the base equals the modulus in 2015. No novelty claim is made for the first assertion. The reduced series say nothing about the unreduced series ∑ φ(n)/2^n.",
++      "remaining_open_proposition_ids": [
++        "remaining_open.erdos_249_irrationality"
++      ],
++      "paper_label": "res:residueseries",
++      "readme_headline": false,
++      "declarations": [
++        {
++          "name": "short_note_residue_theorem",
++          "module": "ErdosProblems/Erdos249/PaperCompleteR7/RationalObservableClassification.lean",
++          "line": 276
++        }
++      ]
++    },
++    {
++      "id": "totient_residue_series_integer_radix",
++      "label": "Totient residue series in every integer base",
++      "status": "unconditional progress",
++      "statement": "For every integer t ≥ 2 and m ≥ 3 the series ∑_{n≥1} (φ(n) mod m)/t^n is irrational, and for k ≥ 1 and f: Z/2^kZ → Q the series ∑_{n≥1} f(φ(n) mod 2^k)/t^n is rational exactly when f is constant on the even residue classes, with value (t+1)f(1)/t^2 + f(0)/(t^2(t-1)). The first assertion already follows from Erdős's Lemma 1 (1957) and from Theorem 3 of Kaneko, Suzuki and Tachiya, as recorded for the binary case; no novelty claim is made for it.",
++      "remaining_open_proposition_ids": [
++        "remaining_open.erdos_249_irrationality"
++      ],
++      "paper_label": "prop:radixresidue",
++      "readme_headline": false,
++      "declarations": [
++        {
++          "name": "radix_residue_series_irrational",
++          "module": "ErdosProblems/Erdos249/PaperCompleteR7/RationalIntegerRadixClassification.lean",
++          "line": 128
++        },
++        {
++          "name": "rational_zmod_radix_observable_iff",
++          "module": "ErdosProblems/Erdos249/PaperCompleteR7/RationalIntegerRadixClassification.lean",
++          "line": 145
++        },
++        {
++          "name": "positiveRadixValue_eq_of_even_constant",
++          "module": "ErdosProblems/Erdos249/PaperCompleteR7/IntegerRadixObservables.lean",
++          "line": 303
++        }
++      ]
++    },
++    {
++      "id": "totient_residue_series_dilations",
++      "label": "Linear independence of dilated totient residue series",
++      "status": "unconditional progress",
++      "statement": "For every integer t ≥ 2 and m ≥ 3, the numbers 1 and ∑_{n≥1} (φ(n) mod m)/t^{dn}, d = 1, 2, ..., are linearly independent over Q. For a finite set D of positive integers and residue functions f_d: Z/2^{k_d}Z → Q with k_d ≥ 1, any rational constant plus ∑_{d∈D} ∑_{n≥1} f_d(φ(n) mod 2^{k_d})/t^{dn} is rational exactly when every f_d is constant on the even residue classes. The proof isolates a nonzero coefficient at the least active dilation by the Chinese remainder theorem and Dirichlet's theorem. When all coefficients of a relation have one sign, Erdős's Lemma 1 (1957) already excludes it; the mixed-sign case is not covered by that criterion without a further spacing hypothesis.",
++      "remaining_open_proposition_ids": [
++        "remaining_open.erdos_249_irrationality"
++      ],
++      "paper_label": "prop:dilations",
++      "readme_headline": false,
++      "declarations": [
++        {
++          "name": "linearIndependent_one_and_least_residue_values",
++          "module": "ErdosProblems/Erdos249/FiniteDilationLinearIndependent.lean",
++          "line": 42
++        },
++        {
++          "name": "rational_mixed_moduli_with_constant_iff",
++          "module": "ErdosProblems/Erdos249/FiniteDilationMixedModuli.lean",
++          "line": 95
++        }
++      ]
++    },
+     {
+       "id": "dyadic_totient_certificate_interface",
+       "label": "Dyadic totient-kernel finite-level rank",
+@@ -24798,7 +24890,7 @@
+     {
+       "id": "greedy_achievement_geometry",
+       "label": "Greedy geometry of the Mersenne achievement set",
+-      "status": "formalised here",
++      "status": "unconditional progress",
+       "statement": "The Mersenne achievement set is compact, perfect, totally disconnected, nowhere dense, and has Lebesgue measure one. Membership is equivalent to greedy survival at every level; for the target 1/2 it is exactly equivalent to the canonical greedy orbit omitting infinitely many exponents. No finite normalized support has value 1/2, so positive membership would automatically produce an infinite rational-valued support and refute universal #257. Finite exact-rational death certificates soundly prove non-membership (3/4 is excluded at level one). The strict-tail Cantor geometry is recorded by Kovač–Tao; no novelty claim is made for the formalised refinements.",
+       "remaining_open_proposition_ids": [
+         "remaining_open.universal_257_all_infinite_supports"
+@@ -25150,6 +25242,34 @@
+         }
+       ]
+     },
++    {
++      "id": "first_harmonic_good_index_reduction",
++      "label": "Irrationality of the totient series from one first-harmonic bound on the good indices",
++      "status": "conditional reduction",
++      "statement": "At the minimal admissible depth with s = 26 and η = 1/1000, if for every h ≥ 1 there are arbitrarily large X at which the real part of the first-harmonic sum over the good indices (the assigned indices N in [X, 2X) whose cofactor m satisfies φ(m) ≥ m/1000) is at most 603X/1000, then ∑ φ(n)/2^n is irrational. For all large X more than 67X/100 indices are good, by the unconditional unassigned count and the Chebyshev excluded-cofactor count, and 603/1000 = (9/10)(67/100); the underlying interface asks only for nonempty sets of indices beyond every threshold whose average first cosine is at most 9/10 at a depth with room. The bound is open, sufficient and not known to be necessary. It needs neither the prime number theorem nor a bound on the group means, and it supersedes the prime-number-theorem route at 11X/20. No computation in the record bears on it.",
++      "remaining_open_proposition_ids": [
++        "remaining_open.unbounded_certificate_supply"
++      ],
++      "paper_label": "thm:goodbasegap",
++      "readme_headline": false,
++      "declarations": [
++        {
++          "name": "irrational_totient_series_of_support_gap",
++          "module": "ErdosProblems/ArgumentGraph/Results/Erdos249Endpoint.lean",
++          "line": 44
++        },
++        {
++          "name": "eventually_card_pivotGoodBases_gt",
++          "module": "ErdosProblems/ArgumentGraph/Results/Erdos249Endpoint.lean",
++          "line": 75
++        },
++        {
++          "name": "irrational_totient_series_of_goodBase_gap",
++          "module": "ErdosProblems/ArgumentGraph/Results/Erdos249Endpoint.lean",
++          "line": 100
++        }
++      ]
++    },
+     {
+       "id": "adjacent_phase_separation_reduction",
+       "label": "Adjacent-pair phase separation reduction",
+@@ -25484,7 +25604,7 @@
+       "id": "erdos_1049",
+       "label": "Erdős #1049: irrationality of F(t) at rational bases",
+       "status": "open",
+-      "statement": "For rational bases in the Zudilin contour region, including every positive integral power of 31/4, the public Lean development proves irrationality and the stated irrationality-exponent bound from the constructed polynomial forms and analytic estimates. The universal rational-base assertion remains open; 3/2 lies outside this region and is unresolved here.",
++      "statement": "For natural numbers 0 < b < a in the Zudilin contour region, Lean proves that F(a/b) is irrational with irrationality exponent at most rationalBaseMeasureBound a b (rational_base_region, rational_base_measure), from the constructed polynomial forms and analytic estimates; in particular F((31/4)^r) is irrational for every positive integer r (thirtyone_four_powers). The universal rational-base assertion remains open; 3/2 lies outside this region and is unresolved here.",
+       "remaining_open_proposition_ids": [
+         "remaining_open.erdos_1049_irrationality"
+       ],
+@@ -25578,7 +25698,7 @@
+       "id": "erdos_243",
+       "label": "Erdős #243: eventual Sylvester recurrence",
+       "status": "open",
+-      "statement": "The eventual Sylvester recurrence assertion remains open in this release; the bounded-rise barrier and conditional negative-part reductions leave the mixed-sign unbounded regime unresolved.",
++      "statement": "Lean proves that if a is a strictly increasing sequence of positive integers with n^λ(a(n)²/a(n+1) − 1 − λ/n) → 0, then the reciprocal sum ∑ 1/a(n) is irrational, for every non-integer λ > 1, where Lean also derives convergence (nonintegral_regular_rate_irrational), and for λ = 3 whenever the sum converges (cubic_rate_irrationality_unconditional). Both theorems are zero-indexed; the paper transfers them to one-based indexing by an ordinary finite-prefix argument. Without such a rate the eventual Sylvester recurrence assertion remains open: the bounded-rise barrier and the conditional negative-part reductions leave the mixed-sign unbounded regime unresolved.",
+       "remaining_open_proposition_ids": [
+         "remaining_open.erdos_243_eventual_recurrence"
+       ],
+@@ -25681,7 +25801,7 @@
+     {
+       "id": "cubic_rate_irrationality_unconditional",
+       "label": "Cubic-rate reciprocal-sum irrationality under the stated asymptotic",
+-      "status": "formalised here",
++      "status": "unconditional progress",
+       "statement": "For a zero-indexed strictly increasing sequence of positive natural numbers a, if n³(a(n)²/a(n+1) − (1 + 3/n)) tends to zero and the reciprocal series has sum S, then S is irrational. Lean proves the square-specialisation input through the Dedekind-zeta simple pole, so this theorem has no Chebotarev premise. The paper states the ordinary one-based bridge. The quantitative cubic-rate hypothesis is essential here; this does not settle the original eventual Sylvester recurrence assertion.",
+       "remaining_open_proposition_ids": [
+         "remaining_open.erdos_243_eventual_recurrence"
+@@ -25699,7 +25819,7 @@
+     {
+       "id": "nonintegral_regular_rate_irrationality",
+       "label": "Nonintegral regular-rate reciprocal-sum irrationality",
+-      "status": "formalised here",
++      "status": "unconditional progress",
+       "statement": "For a zero-indexed strictly increasing sequence of positive natural numbers a and a real noninteger lambda greater than one, if n^lambda (a(n)^2/a(n+1) - (1 + lambda/n)) tends to zero, then the reciprocal series converges and its sum is irrational. The Lean theorem derives summability from the rate; the one-based paper form uses an ordinary finite-prefix bridge. The little-o remainder is essential to the integer-extraction argument. This does not settle the unrestricted Erdős #243 problem.",
+       "remaining_open_proposition_ids": [
+         "remaining_open.erdos_243_eventual_recurrence"
+@@ -25754,7 +25874,7 @@
+       "id": "erdos_249",
+       "label": "Erdős #249: irrationality of S = ∑ φ(n)/2ⁿ",
+       "status": "open",
+-      "statement": "Not proved by this release. The reductions convert it into the unboundedness of the certificate supply, which is untouched.",
++      "statement": "Lean proves that S = ∑ φ(n)/2ⁿ is irrational if, for every h ≥ 1, there are arbitrarily large X at which the real part of the first-harmonic sum over the good indices is at most 603X/1000 (irrational_totient_series_of_goodBase_gap); the good indices are the assigned indices N in [X, 2X) at the minimal admissible depth with s = 26 whose cofactor m satisfies φ(m) ≥ m/1000. For all large X more than 67X/100 indices are good (eventually_card_pivotGoodBases_gt), and 603/1000 = (9/10)(67/100). Lean also proves that S is irrational if and only if certified non-integrality witnesses occur at unbounded parameters (irrational_totient_series_iff_certificate_supply). The 603X/1000 bound and that unbounded certificate supply are open, so S is not proved irrational.",
+       "remaining_open_proposition_ids": [
+         "remaining_open.erdos_249_irrationality",
+         "remaining_open.unbounded_certificate_supply"
+@@ -25765,7 +25885,7 @@
+       "id": "universal_257",
+       "label": "Erdős #257, universal form",
+       "status": "open",
+-      "statement": "Irrationality of ∑_{n∈A} 1/(2ⁿ − 1) for every infinite A is not proved by this release; only named families are formalised.",
++      "statement": "Lean proves that for every integer base b ≥ 2 and every finite nonempty set P of primes, with h(a) the largest divisor of a supported on P, every infinite set A of positive integers with ∑_{a∈A} h(a)/(a(b^{h(a)} − 1)) finite has ∑_{n∈A} 1/(bⁿ − 1) irrational (divisibilityWeightedClaim). Lean also proves irrationality at every such base for every infinite A with ∑_{a∈A} 1/a finite (irrational_erdosSupportSeries_of_summable_reciprocal), and exhibits sets with divergent reciprocal sum all of whose infinite subsets have irrational series at every such base (finite_monotone_witness_rule_realised). Irrationality of ∑_{n∈A} 1/(2ⁿ − 1) for every infinite A remains open.",
+       "remaining_open_proposition_ids": [
+         "remaining_open.half_value_membership",
+         "remaining_open.universal_257_all_infinite_supports"
+@@ -26036,8 +26156,8 @@
+     {
+       "id": "zudilin_all_rank_hankel_order",
+       "label": "All-rank normalized Hankel order and leading coefficient",
+-      "status": "formalised here",
+-      "statement": "For every natural N, including N = 0, the normalized Zudilin Hankel determinant has q-order N(N-1)(2N-1)/6. Its leading coefficient satisfies the division-free identity 2^N times the coefficient = (N!)^2 (N+1)!, with the corresponding rational quotient formula. The all-row producer is proved rather than assumed. This algebraic theorem does not by itself supply the analytic estimates or irrationality at 3/2.",
++      "status": "unconditional progress",
++      "statement": "For every natural N, including N = 0, the normalized Zudilin Hankel determinant has q-order N(N-1)(2N-1)/6. Its leading coefficient satisfies the division-free identity 2^N times the coefficient = (N!)^2 (N+1)!, with the corresponding rational quotient formula. The all-row producer is proved rather than assumed. This algebraic theorem does not by itself supply the analytic estimates or irrationality at 3/2. Zudilin (2016) proves the q-order inequality; the equality is proved here.",
+       "remaining_open_proposition_ids": [
+         "remaining_open.erdos_1049_irrationality"
+       ],
+@@ -26064,7 +26184,7 @@
+     {
+       "id": "coefficient_pencil_finite_rank",
+       "label": "Coefficient-pencil positivity and root interlacing through rank eight",
+-      "status": "formalised here",
++      "status": "unconditional progress",
+       "statement": "For each real p > 1 and each natural rank N ≤ 8, the coefficient Hankel matrix A_N is positive definite, the polynomial det(Y A_N − B_N) splits over the reals, and every root is strictly below F(p). For adjacent ranks N and N+1 ≤ 8, the ordered root lists interlace non-strictly, with multiplicities. Lean includes N = 0; the paper states the ranks 1 through 8. No all-rank coefficient-pencil theorem, simple-root or strict-interlacing assertion, limiting result, or irrationality of F(3/2) follows from this finite proposition.",
+       "remaining_open_proposition_ids": [
+         "remaining_open.erdos_1049_irrationality"
+@@ -26100,7 +26220,7 @@
+         "remaining_open.universal_257_all_infinite_supports"
+       ],
+       "statement": "For every integer base b >= 2, every infinite positive support A with finite weighted mass for some finite nonempty prime set P has irrational support series. If a host H of positive integers has finite base-two weighted mass, then every infinite subset A of H has irrational support series at every integer base b >= 2. This is a sufficient support criterion, not the universal statement.",
+-      "status": "formalised here"
++      "status": "unconditional progress"
+     },
+     {
+       "declarations": [
+@@ -26118,7 +26238,7 @@
+         "remaining_open.universal_257_all_infinite_supports"
+       ],
+       "statement": "A strengthened positive divisor-cover datum with summable scaled cost makes every infinite subset of its host irrational at every integer base b >= 2. The statement retains the nonlinear cover majorant and summability hypotheses; it does not cover arbitrary supports.",
+-      "status": "formalised here"
++      "status": "unconditional progress"
+     },
+     {
+       "declarations": [
+@@ -26136,7 +26256,7 @@
+         "remaining_open.universal_257_all_infinite_supports"
+       ],
+       "statement": "Let E have finite base-two finite-prime weighted mass and let V lie in a strengthened positive-cover host. Every infinite support A contained in E union V has irrational support series at every integer base b >= 2. The theorem uses a common observation scale; it does not assume separate irrationality conclusions for the two components.",
+-      "status": "formalised here"
++      "status": "unconditional progress"
+     },
+     {
+       "declarations": [
+@@ -26153,8 +26273,8 @@
+       "remaining_open_proposition_ids": [
+         "remaining_open.universal_257_all_infinite_supports"
+       ],
+-      "statement": "For every integer base b >= 2 and every infinite support A, summability of the reciprocal-support mass implies that the support series is irrational. No pairwise-coprimality hypothesis is required.",
+-      "status": "formalised here"
++      "statement": "For every integer base b >= 2 and every infinite support A, summability of the reciprocal-support mass implies that the support series is irrational. No pairwise-coprimality hypothesis is required. Erdős (1968) stated this extension without proof.",
++      "status": "unconditional progress"
+     },
+     {
+       "id": "ani_degree_seven_total_variation_counterexample",
+diff --git a/docs/declaration_atlas.json b/docs/declaration_atlas.json
+index abff13d2..253a1b29 100644
+--- a/docs/declaration_atlas.json
++++ b/docs/declaration_atlas.json
+@@ -10,7 +10,7 @@
+     "declaration_count": 164639,
+     "theorem_like_count": 160373,
+     "generated_certificate_declaration_count": 8171,
+-    "principal_claim_link_count": 469,
++    "principal_claim_link_count": 478,
+     "kind_counts": {
+       "abbrev": 58,
+       "def": 4102,
+@@ -181209,7 +181209,9 @@
+       "line": 44,
+       "signature": "theorem irrational_totient_series_of_support_gap (hgap : ∀ h : ℕ, 0 < h → ∀ A : ℕ, ∃ X L : ℕ, ∃ T : Finset ℕ, 16 * (2 * X + h + L + 2) ≤ 2 ^ L ∧ T.Nonempty ∧ (∀ N ∈ T, A ≤ N ∧ N < 2 * X) ∧ (∑ N ∈ T, windowFirstCos h N L) ≤ (9 / 10 : ℝ) * T.card) : Irrational (∑' n : ℕ, (Nat.totient n : ℝ) / 2 ^ n)",
+       "generated_certificate": false,
+-      "claim_ids": [],
++      "claim_ids": [
++        "first_harmonic_good_index_reduction"
++      ],
+       "docstring": "**The certificate interface of the first-harmonic family.** For every `h ≥ 1` and every threshold `A`, some nonempty set of bases in `[A, 2X)` whose average first cosine is at most `9/10`, at a depth `L` with room, gives the irrationality of `∑ φ(n)/2^n`."
+     },
+     {
+@@ -181242,7 +181244,9 @@
+       "line": 75,
+       "signature": "theorem eventually_card_pivotGoodBases_gt (h : ℕ) : ∀ᶠ X : ℕ in atTop, (67 / 100 : ℝ) * X < ((pivotGoodBases X (minimalDepth h 26 X) 26 (1 / 1000 : ℝ)).card : ℝ)",
+       "generated_certificate": false,
+-      "claim_ids": [],
++      "claim_ids": [
++        "first_harmonic_good_index_reduction"
++      ],
+       "docstring": "At the minimal depth, with `s = 26` and `η = 1/1000`, more than `67X/100` of the bases in `[X, 2X)` are good, for all large `X`: Chebyshev's bound leaves fewer than `X/100` bad bases and `prop_dickman` fewer than `8X/25` non-supplier bases."
+     },
+     {
+@@ -181253,7 +181257,9 @@
+       "line": 100,
+       "signature": "theorem irrational_totient_series_of_goodBase_gap (hgap : ∀ h : ℕ, 0 < h → ∀ A : ℕ, ∃ X : ℕ, max A 1 ≤ X ∧ (∑ N ∈ pivotGoodBases X (minimalDepth h 26 X) 26 (1 / 1000 : ℝ), windowFirstExp h N (minimalDepth h 26 X)).re ≤ (603 / 1000 : ℝ) * X) : Irrational (∑' n : ℕ, (Nat.totient n : ℝ) / 2 ^ n)",
+       "generated_certificate": false,
+-      "claim_ids": [],
++      "claim_ids": [
++        "first_harmonic_good_index_reduction"
++      ],
+       "docstring": "**The irrationality of `∑ φ(n) / 2 ^ n` from a first-harmonic gap on the good bases, with no further input**: for every `h ≥ 1`, arbitrarily large `X` at which the real part of the first harmonic summed over the good bases (minimal depth, `s = 26`, `η = 1/1000`) is at most `603X/1000`."
+     },
+     {
+@@ -198253,6 +198259,7 @@
+       "signature": "theorem erdos1041_ani_degree_seven : ∃ (p : ℂ[X]), p.Monic ∧ p.natDegree = 7 ∧ (∀ z, p.IsRoot z → ‖z‖ < 1) ∧ p.roots.Nodup ∧ ∀ z₁ z₂, p.IsRoot z₁ → p.IsRoot z₂ → z₁ ≠ z₂ → ∀ γ : ℝ → ℂ, ContinuousOn γ (Set.Icc 0 1) → γ 0 = z₁ → γ 1 = z₂ → (∀ τ ∈ Set.Icc (0 : ℝ) 1, ‖p.eval (γ τ)‖ < 1) → (2 : ℝ≥0∞) < eVariationOn γ (Set.Icc 0 1)",
+       "generated_certificate": false,
+       "claim_ids": [
++        "erdos_1041",
+         "ani_degree_seven_total_variation_counterexample"
+       ],
+       "docstring": "Existential wrapper matching `FormalConjectures.ErdosProblems.erdos_1041.variants.ani_degree_seven`."
+@@ -198736,6 +198743,7 @@
+       "signature": "theorem erdos1041_counterexample_hausdorff : ∀ z₁ z₂, f.IsRoot z₁ → f.IsRoot z₂ → z₁ ≠ z₂ → ∀ K : Set ℂ, IsPreconnected K → z₁ ∈ K → z₂ ∈ K → K ⊆ Omega f → (2 : ℝ≥0∞) < μH[1] K",
+       "generated_certificate": false,
+       "claim_ids": [
++        "erdos_1041",
+         "ani_degree_seven_total_variation_counterexample"
+       ],
+       "docstring": "Every preconnected subset of the strict lemniscate of `f` that contains two distinct roots has one-dimensional Hausdorff measure greater than two."
+@@ -198771,6 +198779,7 @@
+       "signature": "theorem erdos1041_hausdorff_negation : ¬ ∀ (n : ℕ) (f : ℂ[X]), n ≥ 2 → f.natDegree = n → f.Monic → f.rootSet ℂ ⊆ Metric.ball 0 1 → ∃ (z₁ z₂ : ℂ) (h : ({z₁, z₂} : Multiset ℂ) ≤ f.roots) (γ : Path z₁ z₂), Set.range γ ⊆ { z : ℂ | ‖f.eval z‖ < 1 } ∧ fcLength (Set.range γ) < 2",
+       "generated_certificate": false,
+       "claim_ids": [
++        "erdos_1041",
+         "ani_degree_seven_total_variation_counterexample"
+       ],
+       "docstring": "Negation of Formal Conjectures' `Erdos1041.erdos_1041`. Its section variables `n`, `f`, `hn`, `hnum`, `h_monic`, `h` are quantified in their declared order, and path length is `length (Set.range γ)`, the one-dimensional Hausdorff measure of the image. The polynomial `f` of `Defs.lean` refutes it."
+@@ -198784,6 +198793,7 @@
+       "signature": "theorem erdos1041_hausdorff_answer_false : False ↔ ∀ (n : ℕ) (f : ℂ[X]), n ≥ 2 → f.natDegree = n → f.Monic → f.rootSet ℂ ⊆ Metric.ball 0 1 → ∃ (z₁ z₂ : ℂ) (h : ({z₁, z₂} : Multiset ℂ) ≤ f.roots) (γ : Path z₁ z₂), Set.range γ ⊆ { z : ℂ | ‖f.eval z‖ < 1 } ∧ fcLength (Set.range γ) < 2",
+       "generated_certificate": false,
+       "claim_ids": [
++        "erdos_1041",
+         "ani_degree_seven_total_variation_counterexample"
+       ],
+       "docstring": "The `answer(False) ↔ …` form of the same statement, which is how Formal Conjectures records a question settled in the negative (`answer(False)` elaborates to `False`)."
+@@ -260687,7 +260697,9 @@
+       "line": 42,
+       "signature": "theorem linearIndependent_one_and_least_residue_values (m B : ℕ) (hm : 3 ≤ m) (hB : 2 ≤ B) : LinearIndependent ℚ (fun d : ℕ => if d = 0 then (1 : ℝ) else positiveRadixValue (B ^ d) (fun r : ℕ => (r : ℚ)) m)",
+       "generated_certificate": false,
+-      "claim_ids": [],
++      "claim_ids": [
++        "totient_residue_series_dilations"
++      ],
+       "docstring": "The exact countable formulation of the finite affine obstruction: index zero is the constant 1, and positive index d is the least-residue totient series in base B^d."
+     },
+     {
+@@ -260729,7 +260741,9 @@
+       "line": 95,
+       "signature": "theorem rational_mixed_moduli_with_constant_iff (D : Finset ℕ) (k : ℕ → ℕ) (f : (d : ℕ) → ZMod (2 ^ (k d)) → ℚ) (B : ℕ) (q₀ : ℚ) (hB : 2 ≤ B) (hpos : ∀ d ∈ D, 0 < d) (hk : ∀ d ∈ D, 0 < k d) : (∃ q : ℚ, (q₀ : ℝ) + (∑ d ∈ D, ∑' n : ℕ, (f d (Nat.totient (n + 1) : ZMod (2 ^ (k d))) : ℝ) / ((B : ℝ) ^ d) ^ (n + 1)) = (q : ℝ)) ↔ ∀ d ∈ D, ∀ r : ℕ, r < 2 ^ (k d) → Even r → f d (r : ZMod (2 ^ (k d))) = f d 0",
+       "generated_certificate": false,
+-      "claim_ids": [],
++      "claim_ids": [
++        "totient_residue_series_dilations"
++      ],
+       "docstring": "A rational constant cannot cancel a nonconstant even-residue component."
+     },
+     {
+@@ -270077,7 +270091,9 @@
+       "line": 303,
+       "signature": "theorem positiveRadixValue_eq_of_even_constant (B : ℕ) (hB : 2 ≤ B) {k : ℕ} (hk : 1 ≤ k) (f : ℕ → ℚ) (c : ℚ) (hc : ∀ r, r < 2 ^ k → r % 2 = 0 → f r = c) : positiveRadixValue B f (2 ^ k) = ((B : ℝ) + 1) / (B : ℝ) ^ 2 * (f 1 : ℝ) + (c : ℝ) / ((B : ℝ) ^ 2 * ((B : ℝ) - 1))",
+       "generated_certificate": false,
+-      "claim_ids": [],
++      "claim_ids": [
++        "totient_residue_series_integer_radix"
++      ],
+       "docstring": "Exact rational case of the all-integer-base observable classification."
+     },
+     {
+@@ -270306,7 +270322,9 @@
+       "line": 128,
+       "signature": "theorem radix_residue_series_irrational (B : ℕ) (hB : 2 ≤ B) {m : ℕ} (hm : 3 ≤ m) : Irrational (radixValue B (fun n => (Nat.totient n % m : ℤ)))",
+       "generated_certificate": false,
+-      "claim_ids": [],
++      "claim_ids": [
++        "totient_residue_series_integer_radix"
++      ],
+       "docstring": "The least-residue totient series is irrational for every integer radix at least two and every modulus at least three."
+     },
+     {
+@@ -270317,7 +270335,9 @@
+       "line": 145,
+       "signature": "theorem rational_zmod_radix_observable_iff (B : ℕ) (hB : 2 ≤ B) {k : ℕ} (hk : 1 ≤ k) (f : ZMod (2 ^ k) → ℚ) : (∃ q : ℚ, (∑' n : ℕ, (f (Nat.totient (n + 1) : ZMod (2 ^ k)) : ℝ) / (B : ℝ) ^ (n + 1)) = (q : ℝ)) ↔ ∀ r : ℕ, r < 2 ^ k → r % 2 = 0 → f (r : ZMod (2 ^ k)) = f 0",
+       "generated_certificate": false,
+-      "claim_ids": [],
++      "claim_ids": [
++        "totient_residue_series_integer_radix"
++      ],
+       "docstring": "The same classification in the finite residue domain used by the public binary theorem."
+     },
+     {
+@@ -270511,7 +270531,9 @@
+       "line": 276,
+       "signature": "theorem short_note_residue_theorem : (∀ m : ℕ, 3 ≤ m → Irrational (totientResidueValue m)) ∧ (∀ k : ℕ, 1 ≤ k → ∀ f : ZMod (2 ^ k) → ℚ, ((∃ q : ℚ, (∑' n : ℕ, (f (Nat.totient (n + 1) : ZMod (2 ^ k)) : ℝ) / 2 ^ (n + 1)) = (q : ℝ)) ↔ ∀ r : ℕ, r < 2 ^ k → r % 2 = 0 → f (r : ZMod (2 ^ k)) = f 0)) ∧ (∀ k : ℕ, 1 ≤ k → ∀ f : ZMod (2 ^ k) → ℚ, ∀ c : ℚ, (∀ r : ℕ, r < 2 ^ k → r % 2 = 0 → f (r : ZMod (2 ^ k)) = c) → (∑' n : ℕ, (f (Nat.totient (n + 1) : ZMod (2 ^ k)) : ℝ) / 2 ^ (n + 1)) = ((3 * f 1 / 4 + c / 4 : ℚ) : ℝ))",
+       "generated_certificate": false,
+-      "claim_ids": [],
++      "claim_ids": [
++        "totient_residue_series_classification"
++      ],
+       "docstring": "One end-to-end assembly for short-note res:residueseries."
+     },
+     {
