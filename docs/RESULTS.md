@@ -594,9 +594,18 @@ a claim to settle the seven unresolved targets or the unadjudicated historical
   and the `SPOKE-5` supply remain open, and the earlier minimum-critical and
   aggregate shortcuts are explicitly refuted
   (`research_corpus/Erdos1041/FRONTIER.md`).
-- **#249, an endpoint-facing conditional route plus a finite-level rank
-  spine.** The actual-LCM orbit route gives a genuinely endpoint-facing
-  reduction: an explicit approximation of the orbit by an odd-rank raw block,
+- **#249, one open bound.** Lean proves that `S = ∑ φ(n)/2ⁿ` is irrational if,
+  for every shift `h ≥ 1`, there are arbitrarily large `X` at which the real
+  part of the first-harmonic sum over the good indices is at most `603X/1000`,
+  at `s = 26`, `η = 1/1000` and minimal depth
+  (`irrational_totient_series_of_goodBase_gap`,
+  `ArgumentGraph/Results/Erdos249Endpoint.lean`). For all large `X` more than
+  `67X/100` of the indices in `[X, 2X)` are good
+  (`eventually_card_pivotGoodBases_gt`), so the bound asks for the average
+  first-harmonic cosine over them to stay below `9/10`. At these parameters the
+  four pivot budgets imply it, and it asks less than the prime-number-theorem
+  route's `11X/20`. The bound is open. The actual-LCM orbit route is a second
+  sufficient route: an explicit approximation of the orbit by an odd-rank raw block,
   with an error radius, turns cofinal distance at least `1/32` plus that radius
   from every integer into the existing signed-margin producer. The exact
   source calls this `PowerTwoActualLcmOrbitSeparationSupply` and then derives
@@ -2021,8 +2030,10 @@ The irrationality of
 ∑_{n≥1} φ(n)/2^n
 ```
 
-is not proved in this release. The short paper proves all-base finite-level
-rank `k^e+1` for `k≥2, e≥1`, with canonical integral coordinates and all
+is not proved in this release; Lean proves it from one open bound, a real part
+at most `603X/1000` for the first-harmonic sum over the good indices at
+arbitrarily large `X` (`irrational_totient_series_of_goodBase_gap`). The short
+paper proves all-base finite-level rank `k^e+1` for `k≥2, e≥1`, with canonical integral coordinates and all
 integral relations; at prime base the rank is exponential in the level `e`.
 A rational `5/4` control agreeing with totient on odd arguments has tempered
 carry rank at least `2^e−1` at every depth, so a generic rationality-driven
@@ -2157,6 +2168,9 @@ states its own open questions. For the two problems with working records:
 
 - Prove that `S = ∑ φ(n)/2ⁿ` is irrational without placing a bound on a possible
   rational denominator.
+- Prove the single #249 bound: for every shift, a real part at most `603X/1000`
+  for the first-harmonic sum over the good indices at arbitrarily large `X`,
+  which Lean turns into irrationality.
 - Produce the unbounded certificate supply required by the exact #249
   reduction.
 - Prove irrationality of `∑_{n∈A} 1/(2ⁿ - 1)` for every infinite
