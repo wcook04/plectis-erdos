@@ -10,7 +10,12 @@ import os
 import re
 import stat
 import subprocess
+import sys
 from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+
+import build_systems_paper_counts as systems_paper_counts  # noqa: E402
 
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -59,7 +64,19 @@ MAX_GUIDE_BYTES = 18_000
 # Raised from 76_500 on 2026-09-28 by the replay-of-the-record paragraph that
 # landed with PR #278 (Dream-RSI and the two Hecke-Mahler citations); the
 # paragraph was cut from about 3,700 to about 1,300 bytes first.
-SYSTEMS_PAPER_BASE_BYTES = 78_700
+# Raised from 78_700 on 2026-09-28 by the research-loop section (the loop between
+# maintainers and outside research runs, the research record with its relation
+# contracts, contrast ledger and packet compiler, and what the record measures),
+# about 4,200 bytes, and the generated record-count region of
+# scripts/build_systems_paper_counts.py, about 900 bytes, which replaced every
+# hand-typed ledger, module and claim count. The abstract, the Patel paragraph and
+# three restating passages were cut first and the priority sentence deleted, so
+# the raise is 4,100 of the 5,100 bytes the new architecture takes.
+# Lowered to 80_900 on 2026-09-28 when the budget stopped counting the bodies of
+# the generated regions (see authored_bytes): builders rewrite those at release,
+# and a longer number there had left the authored prose 110 bytes of headroom
+# that a regeneration alone could spend. The authored prose keeps about 250.
+SYSTEMS_PAPER_BASE_BYTES = 80_900
 SYSTEMS_PAPER_BYTES_PER_ARTIFACT = 1_000
 
 
@@ -333,7 +350,20 @@ PAPER_REQUIRED_ANCHOR_GROUPS = {
         "Persistence, correction, shared work and exact statement checking are therefore overlapping capabilities",
         "LeanMarathon maintains an evolving blueprint",
         "a direct precedent for the explanation a world keeps beside a formal proof",
-        "the two designs developed independently",
+        # The 28 September revision deleted the July priority and independence
+        # sentence, which no record evidenced, and states the joint-conflict
+        # boundary the frontier query actually has.
+        "the graph keeps no complete set of minimal inconsistent sets",
+    ),
+    # The research loop: who does what, where custody comes, and the limit on
+    # what the record's counts measure.
+    "research_loop": (
+        "a loop between the repository's maintainer and outside research runs",
+        "deciding what an answer means are manual steps",
+        "no field of the record confers kernel authority",
+        "so it never counts as weakening",
+        "predicts nothing about later answers",
+        "These counts describe the process and measure no effect of the loop on the mathematics",
     ),
     # The 26 September revision retired the controlled-comparison plan: the
     # record is measured by what its argument graph reads from the proof
@@ -473,9 +503,22 @@ def validate_guide(text: str) -> None:
         require((GUIDE.parent / path).exists(), f"architecture guide has broken local link {target}")
 
 
+GENERATED_REGION = re.compile(r"(% BEGIN (generated_\w+)\n).*?(% END \2)", re.S)
+
+
+def authored_bytes(text: str) -> int:
+    """Bytes of the paper source with the body of every generated region removed.
+
+    Builders rewrite those regions at release (the semantic-coverage,
+    argument-graph, argument-frontier and record-count macros), so a longer
+    number or list there is not prose growth and must not spend the budget.
+    """
+    return len(GENERATED_REGION.sub(r"\1\3", text).encode("utf-8"))
+
+
 def validate_systems_paper(text: str) -> None:
     """Keep the PDF source architecture-first rather than experiment-first."""
-    size = len(text.encode("utf-8"))
+    size = authored_bytes(text)
     contract = json.loads(safe_architecture_text(PUBLICATION_CONTRACT))
     artifact_count = len(contract["artifacts"])
     byte_budget = (
@@ -531,6 +574,11 @@ def validate_systems_paper(text: str) -> None:
             f"systems paper links to missing repository file {target}"
         ))
     validate_pinned_evidence_links(text)
+    # Every ledger, module, claim and research-record count is a generated macro;
+    # a stale value fails here rather than reaching the PDF.
+    count_errors = systems_paper_counts.errors(text)
+    require(not count_errors, "systems paper counts differ from the checkout "
+            "(python3 scripts/build_systems_paper_counts.py --write): " + "; ".join(count_errors))
     require(SYSTEMS_PDF.is_file(), "rendered systems architecture PDF is missing")
 
 

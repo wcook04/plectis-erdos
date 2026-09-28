@@ -68,6 +68,32 @@
 \newcommand{\AFNamedInputUses}{129}
 \newcommand{\AFNamedInputsTraced}{55}
 % END generated_argument_frontier_macros
+% BEGIN generated_record_count_macros
+\newcommand{\LedgerRows}{696}
+\newcommand{\LedgerExact}{508}
+\newcommand{\LedgerSpecialising}{143}
+\newcommand{\LedgerNamedInput}{25}
+\newcommand{\LedgerNoLean}{20}
+\newcommand{\LedgerWithLean}{676}
+\newcommand{\LedgerFormal}{651}
+\newcommand{\LedgerCompared}{633}
+\newcommand{\LedgerQueued}{18}
+\newcommand{\LeanModules}{1,902}
+\newcommand{\Claims}{155}
+\newcommand{\ClaimObligations}{19}
+\newcommand{\ClaimStatuses}{eight}
+\newcommand{\FrontierTree}{6410fad4}
+\newcommand{\JournalHead}{7bae2287900e}
+\newcommand{\Rounds}{5}
+\newcommand{\RoundsSealed}{0}
+\newcommand{\Returns}{13}
+\newcommand{\ReturnsAdmitted}{6}
+\newcommand{\ReturnsUnreviewed}{7}
+\newcommand{\Relations}{8}
+\newcommand{\RelationsAttested}{0}
+\newcommand{\Contrasts}{14}
+\newcommand{\ContrastGateFlags}{five, six and eight}
+% END generated_record_count_macros
 \newcommand{\repolink}[2]{\href{\repobase/blob/8802151983a2a549323f8d6647dd815eb26c9d42/#1}{\texttt{#2}}}
 \emergencystretch=1.7em
 
@@ -109,18 +135,17 @@ turned a stalled argument into an ordinary proof, so far checked only by a
 second agent, that the Problem 269 distinct-height sum is irrational for every
 set of at least two primes, which Erd\H{o}s asserted without proof in 1973;
 Lean checks the case of the primes 2, 3 and 5. The record also reads every
-unfinished argument out of
-the elaborated Lean environment and connects them. Within a time budget, a
-unification search looks for the theorems that supply each standalone
-hypothesis of each theorem, what they still need and the theorems that refute
-it, and the kernel checks each composition the search proposes and each
-theorem restated with a hypothesis dropped or replaced by what its proof uses
-of it. The resulting argument graph, over
-\AGStatements{} statements and joined to the papers, the ledger and
-Comparator, shows what is proved and by which chain, what is refuted, which
-open statements are the same question in other coordinates, what each missing
-input would settle and what fails without a given lemma. %FINDINGS-ABSTRACT
-The paper compares the design with Prove2Me and blueprint-based systems, and
+unfinished argument out of the elaborated Lean environment: a unification
+search under a time budget finds the theorems that supply, still need or
+refute each standalone hypothesis, and the kernel checks each composition it
+proposes and each theorem restated without a hypothesis or with only what its
+proof uses of it. The resulting argument graph, joined to the papers, the
+ledger and Comparator, shows what is proved and by which chain, what is
+refuted, which open statements are one question in other coordinates, what
+each missing input would settle and what fails without a given lemma.
+%FINDINGS-ABSTRACT
+A research record keeps custody of the answers outside research runs return,
+for the rounds it records, and computes what each still owes. The paper compares the design with Prove2Me and blueprint-based systems, and
 the argument graph with earlier work on proof generalisation and truth
 maintenance.
 \end{abstract}
@@ -130,16 +155,18 @@ maintenance.
 research; four separately recorded decisions about every returned result, on
 its evidence, its mathematical appraisal, its exposition and the next unit of
 work; an argument graph of the record's unfinished arguments, read out of the
-Lean environment and joined to the papers and Comparator; a path from proof to
+Lean environment and joined to the papers and Comparator; a research record
+that keeps custody of returned research and what it owes; a path from proof to
 public claim that separates what Lean settles, what Comparator settles and
 what a mathematician judges; and a contribution cycle that a person or an
 agent can run from a public clone.
 \textbf{Instance.} Eight Erd\H{o}s problems in one Lean repository:
-sixteen problem papers, 1,900 Lean modules, and 696 results
-asserted in the papers, short and long versions counted separately, of which 676
-carry a Lean declaration and 633 have been compared by Comparator; the
-argument graph holds \AGTheorems{} theorems, \AGConditional{} of them
-conditional arguments.
+sixteen problem papers, \LeanModules{} Lean modules, and \LedgerRows{} results
+asserted in the papers, short and long versions counted separately, of which
+\LedgerWithLean{} carry a Lean declaration and \LedgerCompared{} have been
+compared by Comparator; an export of Lean tree \texttt{ca2f57c9} gave the
+argument graph \AGTheorems{} theorems, \AGConditional{} of them conditional
+arguments.
 \textbf{Scope.} For Problem 1041 the Formal Conjectures statement is refuted;
 independent human review of its correspondence with the 1958 wording has not
 been recorded. The other seven targets remain open. The system leaves novelty
@@ -221,10 +248,9 @@ literature it relied on and the precise statement that remains open.
 
 This paper describes a research environment built to keep that record. Its
 unit of work is the \emph{problem-sized world}: one research problem together
-with everything learned about it, kept in a public repository. As producing results becomes easier, helping other people
-understand and use them becomes the scarce part of the work, and the world is
-organised around that part. Section~\ref{sec:graph} reads the world's
-unfinished arguments out of its Lean source and connects them.
+with everything learned about it, kept in a public repository.
+Section~\ref{sec:graph} reads the world's unfinished arguments out of its Lean
+source, and Section~\ref{sec:loop} follows returned research into the record.
 
 \section{A problem-sized world}\label{sec:world}
 
@@ -520,7 +546,8 @@ optionally at a named lemma and discharging what named corpus theorems prove
 (\texttt{derive\_frontier}), or each conjunct of the conclusion with only the
 hypotheses its own proof uses (\texttt{derive\_conjuncts}). A generator
 (\href{\repobase/blob/7391668980147292656da6d0bc66a927aa84824b/scripts/build_argument_frontier.py}{\texttt{build\_argument\_frontier.py}})
-writes the commands for \AFPaperTheorems{} cited theorems, \AFIdle{} of them
+writes, from Lean tree \texttt{\FrontierTree}, the commands for
+\AFPaperTheorems{} cited theorems, \AFIdle{} of them
 with a hypothesis the proof never uses, in \AFModules{} modules, one per
 problem, and the build fails when a derivation the export reported cannot be
 rebuilt. In kernel probes for Problem 249, the first two conjuncts of the
@@ -606,17 +633,12 @@ from the main branch's cache, runs the file and returns a verdict, which
 accepts the file when Lean reports no error, no declaration uses
 \texttt{sorry} and no axiom beyond the three standard ones is declared or
 printed
-(\repolink{.github/workflows/kernel-probe.yml}{kernel-probe.yml}). A route that
-a countermodel is suspected to block is tested the same way, by stating the
-route as a proposition and proving its negation from the countermodel.
-
-Two requests quoted in Section~\ref{sec:intro} become operations a reader can
-run. The analysis Tao asks for, of what a solution process revealed about
-nearby problems, is for a record the label the graph gives every statement:
-proved, refuted, conditional on named inputs or open, with the kernel theorems
-behind the label and the revision it was computed from. The isolation of new
-methods that the declaration asks for is visible as a cross-problem reduction,
-a lemma proved for one problem that supplies another problem's hypothesis.
+(\repolink{.github/workflows/kernel-probe.yml}{kernel-probe.yml}). The verdict
+is a compilation receipt: it does not check that the file states the intended
+target, and the workflow keeps it for fourteen days, so a verdict cited later
+must be committed. A route that a countermodel is suspected to block is tested
+the same way, by stating the route as a proposition and proving its negation
+from the countermodel.
 
 \paragraph{What it does not establish.} The kernel-checked compositions,
 stronger statements, weakened theorems and tactic proofs are proofs; a
@@ -654,10 +676,7 @@ each new result against the whole corpus and makes the four decisions of
 Table~\ref{tab:decisions}: what the result establishes, whether it is routine
 or strong and whom it credits, where it belongs in a paper, and which
 obligation deserves the next unit of work. One agent may play both roles in
-sequence. Neither inherits the other's authority. Stewardship runs after a
-stable result or review event, and discovery resumes when the recorded
-frontier justifies a further discriminating attempt; an unchanged record is
-no reason to poll or repeat a run.
+sequence. Neither inherits the other's authority.
 
 Models do the reading, comparison and drafting under written procedures,
 published with the repository as agent skills. Deterministic code assembles
@@ -696,24 +715,6 @@ estimate is false, and the problem itself is untouched. Inside the weighted
 proof the same discipline explains the second average: the short paper shows
 why the majorant of the reciprocal-summable proof fails beyond that class.
 
-\paragraph{Replaying the record.}
-Zheng et al.~\cite{dreamrsi} store a discovery run as a tree of evaluated
-attempts, so that another exploration policy can be replayed over it without
-rerunning any attempt. On 26 September four readers replayed the recorded
-routes of the eight worlds
-(\href{\repobase/blob/f3559e2f/research/experiments/replay_worlds/README.md}{replay}),
-classing 70 decisive rows as proofs, obstructions, counterexamples, finite
-computations, stalled attempts, superseded formulations or routes never
-tried; a checker rereads every cited record at the pinned commit. Reopened
-routes gave the irrationality of the Problem 269 distinct-height sum
-$\mathcal D_P$ for every set $P$ of at least two primes and of each
-single-prime sub-sum $E_p$~\cite{paper269}; for two primes this already
-follows from Hecke--Mahler transcendence~\cite{loxtonvdp1977,bugeaudlaurent2023}.
-They also gave transcendence of the Lambert subsum over every infinite
-divisibility chain at every rational base~\cite{synthesis}. Lean checks
-$\mathcal D_{\{2,3,5\}}$; the other proofs are ordinary arguments awaiting
-specialist review, and the replay compares no exploration policies.
-
 Reading the problems together raises questions that none of them asks alone.
 The smallest complete case is a transfer between two problems. For dyadic
 tails $T_{N+1}=2T_N-g_{N+1}$ with integer digits $g_N$, the Problem 251 record
@@ -748,16 +749,12 @@ closure}, at their own evidence classes. This sharpens a quantitative irrational
 criterion; establishing the criterion for the actual prime gaps remains
 open.
 
-The transfer also makes conditional proof cost concrete. Holding the target
-fixed, one can inspect the source work counted when the recorded proof is
-expanded through the shift criterion or the escape lemma, and the work counted
-when these are treated as available premises.
-Patel et al.'s composition inequality bounds ideal proof cost through an
-intermediate lemma; their Bellman-type equality requires an additional
-optimal-intermediate assumption~\cite[Definition~1]{patel}. A dependency
-expansion of these recorded proofs is an inspectable accounting model, not
-evidence for that assumption. The successful change from $T$ to its
-difference $U$ remains the mathematical reason these two premises combine.
+The transfer also makes conditional proof cost concrete: with the target
+fixed, the source work counted when the recorded proof is expanded through the
+shift criterion or the escape lemma can be compared with the work counted when
+these are available premises. Such an expansion is an inspectable accounting
+model; it gives no evidence for the optimal-intermediate assumption behind
+Patel et al.'s Bellman-type equality~\cite[Definition~1]{patel}.
 
 The sharp-constant question then leads to a question about the shifts being
 tested. A rational dyadic orbit is eventually periodic modulo one, so a
@@ -828,6 +825,91 @@ candidate-generating move, looking for a functional equation before improving
 the estimate. The result is not attributed to a numeric ranking, and no
 measured discovery advantage is claimed.
 
+\section{The research loop as it runs}\label{sec:loop}
+\papersectiontarget{systems-research-loop}
+
+Results also reach the record through a loop between the repository's
+maintainer and outside research runs; the Problem~249 endpoint theorems of
+Section~\ref{sec:graph} came from one round of it. The maintainer chooses a
+question and assembles a fixed packet of excerpts from the record; a run in a
+separate session, usually a frontier model working from the packet, returns a
+written answer, often with code or Lean. The maintainer keeps the returned bytes
+before reading them, checks each claim at its own evidence class (a kernel
+probe, the corpus build, Comparator, a rerun computation or a reading of the
+argument) and carries what survives into Lean, the papers and the claim
+registry. Choosing the
+question, relaying packets and answers between sessions and deciding what an
+answer means are manual steps.
+
+\paragraph{The research record.} Since 28 September the loop keeps its own
+\href{\repobase/blob/90a655020aab3bf25df1f224808ef182e4985ecc/docs/reference/RESEARCH_RECORD.md}{record}.
+An append-only journal, each line hashed with the one before it, records the
+packet and declared consumers of each round, the custody of each return, its
+review, a disposition for each component and consumer, and the results the
+round owes. The milestones of a result, such as a paper link, a claim entry or
+a Comparator listing, are computed from the checkout and labelled with their
+evidence class, and no field of the record confers kernel authority. The record
+is itself a product of the loop: round six asked three runs what the
+infrastructure should become, and the parts taken from their answers include
+the record's consumer dispositions and computed milestones, the relation
+contracts, the contrast ledger and the packet compiler.
+The contracts, in Lean
+(\href{\repobase/blob/90a655020aab3bf25df1f224808ef182e4985ecc/lean/ErdosProblems/ArgumentGraph/Contracts.lean}{\texttt{Contracts.lean}}),
+compare two statements inside one context. A \emph{slot replacement} $R$ for a
+hypothesis $H$ comes with a proof of $H$ from $R$, so it never counts as
+weakening $H$; a proof of the converse makes the two equivalent, and strictness
+needs a separating instance. An \emph{endpoint route} proves the endpoint
+itself from $R$, and only such a route can reach an endpoint from less than an
+earlier argument demanded, as the Problem~249 good-base gap of
+Section~\ref{sec:graph} does. Equivalent formulations count as one question
+for credit and stay separate views for search. The contrast ledger records
+\Contrasts{} distinctions the programme has read wrongly, each with source spans
+that expose it and a check a reviewer applies to any later return that touches
+it. The packet compiler adds an obligation for each contrast a question
+triggers to those the packet's author states and covers them all within a byte
+budget. A completed exact search gives the fewest bytes, a search cut short is
+labelled incomplete, and when nothing fits the compiler refuses and names what
+the budget cannot hold.
+
+\paragraph{What the record measures.} These numbers are what the record's
+commands (\texttt{research\_\allowbreak record.py status},
+\texttt{relation\_\allowbreak registry.py check},
+\texttt{contrast\_\allowbreak ledger.py triggered}) report on this corpus, each
+at its own evidence class. At journal head \texttt{\JournalHead} the record
+holds \Rounds{} rounds (\RoundsSealed{} sealed), entered on 28 September from
+custody kept before the journal and the packet compiler existed. Of their
+\Returns{} returns, \ReturnsAdmitted{} are admitted for integration with their
+consumer dispositions incomplete, and \ReturnsUnreviewed{} are kept with no
+recorded review. When the record was first filled, its computed milestones
+showed the two Problem~249 endpoint theorems in a compiled module of the pinned
+Lean source, with no paper link, claim entry or Comparator listing, and the
+$\{2,3,5\}$ case of the Problem~269 theorem linked from both papers with no
+claim entry or Comparator listing. Of the \Relations{} relation rows, \RelationsAttested{} are attested;
+the declaration atlas of the pinned source does not yet list the others'
+certificates. Matched against the three published round-six answers, from
+which most contrasts were drawn, the ledger's triggers flag \ContrastGateFlags{}
+contrasts; that exercises the matching and predicts nothing about later
+answers. These counts describe the process and measure no effect of the loop on
+the mathematics.
+
+\paragraph{Replaying the record.}
+Zheng et al.~\cite{dreamrsi} store a discovery run as a tree of evaluated
+attempts, so that another exploration policy can be replayed over it without
+rerunning any attempt. On 26 September four readers replayed the recorded
+routes of the eight worlds
+(\href{\repobase/blob/f3559e2f/research/experiments/replay_worlds/README.md}{replay}),
+classing 70 decisive rows as proofs, obstructions, counterexamples, finite
+computations, stalled attempts, superseded formulations or routes never
+tried; a checker rereads every cited record at the pinned commit. Reopened
+routes gave the irrationality of the Problem 269 distinct-height sum
+$\mathcal D_P$ for every set $P$ of at least two primes and of each
+single-prime sub-sum $E_p$~\cite{paper269}; for two primes this already
+follows from Hecke--Mahler transcendence~\cite{loxtonvdp1977,bugeaudlaurent2023}.
+They also gave transcendence of the Lambert subsum over every infinite
+divisibility chain at every rational base~\cite{synthesis}. Lean checks
+$\mathcal D_{\{2,3,5\}}$; the other proofs are ordinary arguments awaiting
+specialist review, and the replay compares no exploration policies.
+
 \section{From a proof to a public claim}\label{sec:checks}
 \papersectiontarget{systems-lifecycle}
 
@@ -859,20 +941,20 @@ integration also requires Comparator to reject a deliberately altered
 statement. This control exercises that mismatch path; the surrounding
 invocation and verdict contract have separate obligations. Comparator cannot
 decide whether a statement is the right translation of the problem. It
-guarantees that the
-separately written statement, which a reader can inspect, is the statement
-that was proved, so ``Comparator-checked'' is accurate where ``independently
-verified'' would overclaim.
+guarantees that the separately written statement, which a reader can inspect,
+is the statement that was proved, and the record reports exactly that scope as
+Comparator-checked.
 
 The paper-to-Lean ledger makes both formal questions countable for the papers'
-own statements. It holds one row
-for each result asserted in the sixteen problem papers, 696 in all, counting a
-result stated in both a short paper and a long record twice, with its
-statement digest and kind of correspondence. For 508 rows the named Lean
-declarations state the result exactly; for 143 they state it or a result that
-implies it by an immediate specialisation; 25 are proved from a named input,
-marked with a dagger; and 20 have no Lean statement. Comparator has compared 633
-of the 651 exact and specialising rows, and the other 18 are queued for its
+own statements. It holds one row for each result asserted in the sixteen
+problem papers, \LedgerRows{} in all, counting a result stated in both a short
+paper and a long record twice, with its statement digest and kind of
+correspondence. For \LedgerExact{} rows the named Lean declarations state the
+result exactly; for \LedgerSpecialising{} they state it or a result that
+implies it by an immediate specialisation; \LedgerNamedInput{} are proved from
+a named input, marked with a dagger; and \LedgerNoLean{} have no Lean
+statement. Comparator has compared \LedgerCompared{} of the \LedgerFormal{}
+exact and specialising rows, and the other \LedgerQueued{} are queued for its
 next replay; every receipt in the pinned corpus replay was accepted by both the
 Lean kernel and nanoda. A digest detects a changed statement, and the
 classification of a correspondence stays the maintainer's judgement.
@@ -1041,12 +1123,12 @@ each result in full with its hypotheses and sources.}
 \label{tab:problems}
 \end{table}
 
-The repository holds 1,900 Lean modules, counting the two library root files,
-under a pinned toolchain. The root-import check counts the 1,898 modules
-beneath those roots. It also holds sixteen problem papers, a cross-problem
-synthesis paper and three systems papers. The claim registry holds 151 public
-claims in seven statuses, from proved here and formalised here to conditional
-reduction and open, and states 19 remaining obligations exactly. Continuous integration builds the supported Lean roots,
+The Lean library holds \LeanModules{} modules, its two root files included,
+built under a pinned toolchain; the repository also holds sixteen problem
+papers, a cross-problem synthesis paper and three systems papers. The claim registry holds \Claims{}
+public claims in \ClaimStatuses{} statuses, from proved here and formalised
+here to conditional reduction and open, and states \ClaimObligations{}
+remaining obligations exactly. Continuous integration builds the supported Lean roots,
 a coverage build compiles every module a paper cites, and the release checker
 checks claims, papers, generated views and licences. A fresh
 clone needs no private file, and no public theorem depends on an unpublished
@@ -1095,10 +1177,7 @@ formalisation corrected after a disproof; its service documents statement
 deprecation and relinking. Persistence, correction, shared work and exact
 statement checking are therefore overlapping capabilities. The comparison is
 about what a reader can do with each public research object
-(Table~\ref{tab:prove2me}). Prove2Me's paper appeared on 28
-August 2026; the first public version of this paper, with its claim registry
-and release checks, appeared in July 2026, and the two designs developed
-independently. Prove2Me is the published reference for hosted statement and
+(Table~\ref{tab:prove2me}). Prove2Me is the published reference for hosted statement and
 proof separation, audited mission cores and read-back auditing.
 
 \begin{table}[!ht]
@@ -1225,9 +1304,12 @@ records justifications as propositional Horn clauses and labels each node with
 the minimal consistent sets of assumptions from which it follows~\cite{dekleer}.
 The graph's reductions are Horn clauses over closed statements, a supplied
 statement follows from no assumption, and a bundle is a minimal set of open
-statements from which a statement follows, enumerated up to four members. The
-graph refutes single statements and records no set of open statements as
-jointly inconsistent, which the truth maintenance system records as a nogood.
+statements from which a statement follows, enumerated up to four members. For
+a given set of open statements, a joint query asks whether the recorded edges
+derive a conflict from it, which makes it a nogood of the truth maintenance
+system, and, given a target, whether the set is that target restated. Both answers are
+derivations over recorded edges found at query time, and the graph keeps no
+complete set of minimal inconsistent sets.
 Mokhov, Mitchell and Peyton Jones describe a build system by the order in which
 it runs tasks and how it decides, from records of earlier builds, whether a
 task must run again~\cite{buildsystems}; the graph is rebuilt from a complete
@@ -1275,7 +1357,7 @@ been recorded. The system records evidence classes and review events;
 novelty and significance are judgements it leaves to experts, as Feng et al.\
 also propose~\cite{autonomousmath}. The examples here show how the record
 organises results; whether the workflow made those results more likely has
-not been measured. By 24 September 2026 no outside human contributor had
+not been measured. By 28 September 2026 no outside human contributor had
 opened a pull request or issue in the repository; its outside record is the
 Formal Conjectures merges of Section~\ref{sec:cycle} and the Prove2Me package.
 A record also leaves several of the concerns in Section~\ref{sec:intro} where it
@@ -1304,10 +1386,7 @@ and its argument graph is one concrete form for the map such work needs: its
 subproblems are the open statements, and the edges between them are corpus
 theorems matched by unification. Antieau writes that texts generated largely by a language
 model deserve a home other than the arXiv~\cite{antieau}; a world gives its
-long records one beside the proofs they explain. The same structure suits a
-single landmark result, and it asks three things of a field: stable result
-identities, a checker where one exists, and an explicit boundary on public
-claims.
+long records one beside the proofs they explain.
 
 The graph gives the record a measurement of its own. Each build is dated by
 the revision it was computed from, and the difference between two builds lists
@@ -1332,9 +1411,8 @@ map of its problems: what is proved, what is refuted, what reduces to what,
 what is the open problem in other coordinates and what each missing input would
 settle, with every kernel-checked row a proof and the rest a lower bound that
 says so. %FINDINGS-CONCLUSION
-The record is built for models stronger than the ones that produced it: each
-starts from the graph with the failed routes, refutations and disguise classes
-already marked, and whatever it proves re-enters the graph at the next build.
+The research record keeps custody of the answers returned in the rounds it
+records and computes what each still owes.
 
 \appendix
 \section{Inspection routes and reproducibility}\label{app:repro}

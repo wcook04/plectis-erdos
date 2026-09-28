@@ -701,8 +701,12 @@ on the observable atoms `x` gives `C` under `Γ`, and any condition on the obser
 region is a polyhedron; Fourier–Motzkin elimination of the hidden atoms computes its projection, and
 `R*` is the negation of that projection, a disjunction of comparisons of observables. The kernel
 checks `Γ → R* → C` through `linarith`, so the sufficiency is proved; that `R*` is the weakest such
-condition, relative to the facts used, rests on the elimination. Over `ℕ` and `ℤ` the rational
-projection still gives a sufficient condition. The tactic `abduce` replaces a comparison goal by
+condition, relative to the facts used, rests on the elimination and holds with every atom read as
+a real number. Over `ℕ` and `ℤ` the rational projection still gives a sufficient condition, and a
+weaker one can suffice. On #249 below, the count of good bases is, for all large `X`, an integer greater than `67X/100`,
+hence at least `⌊67X/100⌋ + 1`, so a good-base sum at most `(9/10)·(⌊67X/100⌋ + 1)` already
+suffices, while the real projection asks for `603X/1000`; at `X = 100` the two bounds are `61.2`
+and `60.3`, and their difference always lies in `(0, 9/10]`. The tactic `abduce` replaces a comparison goal by
 `R*`, and closes it when the facts give it; `abduce [o₁, …]` fixes the observable atoms and
 `abduce using f₁, …` the facts.
 
