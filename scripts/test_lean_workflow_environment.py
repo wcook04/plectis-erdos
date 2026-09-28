@@ -126,6 +126,44 @@ def require_release_validator_path(workflow: str) -> None:
     )
 
 
+def evaluate_condition(expression: str, values: dict[str, object]) -> bool:
+    """Evaluate the supported boolean subset, refusing unknown expressions."""
+    rendered = expression
+    for key, value in values.items():
+        rendered = rendered.replace(key, repr(value))
+    rendered = rendered.replace("&&", " and ").replace("||", " or ")
+    rendered = re.sub(r"!(?!=)", "not ", rendered).strip()
+    tree = ast.parse(rendered, mode="eval")
+    allowed = (ast.Expression, ast.BoolOp, ast.UnaryOp, ast.Compare,
+               ast.Constant, ast.And, ast.Or, ast.Not, ast.Eq, ast.NotEq)
+    require(all(isinstance(node, allowed) for node in ast.walk(tree)),
+            "unsupported CI scheduling expression")
+    return bool(eval(compile(tree, "<CI condition>", "eval"), {"__builtins__": {}}))
+
+
+def require_evidence_before_expensive_jobs(workflow: str) -> None:
+    """Only explicit recovery may bypass stale evidence, never a PR."""
+    gate = job_body(workflow, "change_scope")
+    steps = re.split(r"(?m)^      - ", gate)[1:]
+    evidence = [s for s in steps if "run: python3 scripts/refresh_projections.py --preflight" in s]
+    require(len(evidence) == 1, "classification must run exactly one committed-evidence gate")
+    condition = re.search(r"(?m)^        if: \$\{\{ (.+) \}\}$", evidence[0])
+    require(condition is not None, "evidence recovery condition is missing")
+    for event in ("pull_request", "push", "workflow_dispatch"):
+        for scope in ("", "all", "external-verification-only", "release-surfaces-only", "dependency-index-refresh"):
+            actual = evaluate_condition(condition.group(1), {
+                "github.event_name": event, "inputs.scope": scope,
+            })
+            require(actual == (event != "workflow_dispatch" or scope != "dependency-index-refresh"),
+                    f"evidence gate schedules incorrectly: {event}/{scope}")
+    for name in ("build", "external-verification", "release-surfaces"):
+        body = job_body(workflow, name)
+        needs = re.search(r"(?m)^    needs: (.+)$", body)
+        require(needs is not None and "change_scope" in needs.group(1).strip("[]").split(", "),
+                f"{name} can bypass the evidence gate")
+    require("--full-check" in job_body(workflow, "build"), "cheap freshness replaced Lean export")
+
+
 def require_release_before_expensive_jobs(workflow: str) -> None:
     """Evaluate the actual job conditions across failed and selective runs.
 
@@ -160,31 +198,26 @@ def require_release_before_expensive_jobs(workflow: str) -> None:
              job == "external-verification"),
             ("workflow_dispatch", "external-verification-only", "failure", False, "false", False),
             ("workflow_dispatch", "external-verification-only", "skipped", True, "false", False),
+            ("workflow_dispatch", "dependency-index-refresh", "skipped", False, "false", job == "build"),
+            ("workflow_dispatch", "dependency-index-refresh", "failure", False, "false", False),
+            ("workflow_dispatch", "dependency-index-refresh", "skipped", True, "false", False),
+            ("pull_request", "dependency-index-refresh", "skipped", False, "false", False),
         ):
-            values = {
-                "github.event_name": event,
-                "inputs.scope": scope,
-                "needs.change_scope.result": "success",
-                "needs.change_scope.outputs.erdos1041_corpus_only": corpus_only,
-                "needs.release-surfaces.result": result,
-                "cancelled()": cancelled,
-            }
-            rendered = expression
-            for key, value in values.items():
-                rendered = rendered.replace(key, repr(value))
-            rendered = rendered.replace("&&", " and ").replace("||", " or ")
-            rendered = re.sub(r"!(?!=)", "not ", rendered).strip()
-            tree = ast.parse(rendered, mode="eval")
-            allowed = (ast.Expression, ast.BoolOp, ast.UnaryOp, ast.Compare,
-                       ast.Constant, ast.And, ast.Or, ast.Not, ast.Eq, ast.NotEq)
-            require(all(isinstance(node, allowed) for node in ast.walk(tree)),
-                    f"unsupported CI condition in {job}")
-            actual = bool(eval(compile(tree, "<job condition>", "eval"), {"__builtins__": {}}))
-            if "cancelled()" not in expression:
-                actual = actual and result == "success" and not cancelled
-            require(actual == expected,
-                    f"{job} schedules incorrectly: {event}/{scope}/{result}, "
-                    f"cancelled={cancelled}, corpus_only={corpus_only}")
+            for change_result in ("success", "failure", "skipped", "cancelled"):
+                values = {
+                    "github.event_name": event,
+                    "inputs.scope": scope,
+                    "needs.change_scope.result": change_result,
+                    "needs.change_scope.outputs.erdos1041_corpus_only": corpus_only,
+                    "needs.release-surfaces.result": result,
+                    "cancelled()": cancelled,
+                }
+                actual = evaluate_condition(expression, values)
+                if "cancelled()" not in expression:
+                    actual = actual and result == "success" and change_result == "success" and not cancelled
+                require(actual == (expected and change_result == "success"),
+                        f"{job} schedules incorrectly: {event}/{scope}/{result}, "
+                        f"cancelled={cancelled}, corpus_only={corpus_only}, classification={change_result}")
 
 
 def main() -> int:
@@ -210,6 +243,7 @@ def main() -> int:
     workflow = WORKFLOW.read_text(encoding="utf-8")
     require_pinned_python(workflow)
     require_release_validator_path(workflow)
+    require_evidence_before_expensive_jobs(workflow)
     require_release_before_expensive_jobs(workflow)
     require(
         re.search(r"(?m)^    env:\n", workflow) is None,

@@ -74,6 +74,81 @@ branch without a separate explicit instruction naming the exact target.
 
 ## Validate the proposed branch
 
+The full release entry, `scripts/check_release.py`, consumes the supplemental
+GitHub release checks from `scripts/check_ci_release.py`. Add release checks to
+that registry so local committed-snapshot validation and GitHub run the same
+commands; do not add workflow-only leaf checks. The cold preflight rejects
+inventory drift. Preserve failure aggregation, optimized runs, and the separate
+corpus-only privacy and publication boundaries. Keep admission deadlines large
+enough for the complete bounded suite on a cold runner.
+
+Repository maintainers must require the admission and first-contact statuses
+as well as `build` and `release-surfaces` in GitHub branch protection. A skipped
+dependent job can satisfy a required check; its failed upstream admission must
+therefore be required itself. Preserve the GitHub Actions application binding
+and strict current-base checks when updating protection.
+
+Install the shared guard once for the repository, including its worktrees:
+
+```sh
+python3 scripts/check_push.py --install-shared
+```
+
+After committing, complete validation before opening a push connection:
+
+```sh
+python3 scripts/check_push.py --prepare HEAD
+```
+
+Use the pinned release interpreter provisioned by `scripts/run_release_check.py`.
+If `scripts/check_release_ref.py` already passed all gates for that exact commit,
+reuse its JSON receipt with `--prepare HEAD --release-receipt <path>`. The hook
+only verifies the immutable commit, tree and validator identity against that
+completed admission. A new commit or changed validator requires new admission;
+a working-tree repair cannot certify an older outgoing ref. Never run the long
+release suite inside the transport hook: idle SSH connections can expire before
+validation finishes. Existing custom hooks are preserved.
+
+For a stacked PR, pass its actual base when preparing:
+`--base-ref refs/heads/<parent> --destination-branch <branch>`.
+Otherwise the default is `refs/heads/main`. The hook observes that remote base
+again during push. If it advanced, integrate it, regenerate affected projections
+with their owners, commit, and validate again. A missing base object is fetched
+without moving local refs, `FETCH_HEAD`, the index or worktree. GitHub validates
+any base change after this observation.
+
+Stage new source files before running inventory-based builders: their Git-backed
+inventory intentionally excludes untracked files. Validate the committed snapshot
+again after generation. Proof trust and repository shape also run in the cheap
+preflight, before dependency provisioning or compilation.
+
+After the final source and projection edits, run
+`python3 scripts/refresh_projections.py --preflight` before preparing expensive
+validation or pushing. It checks the shipped evidence without compiling or
+installing anything. A valid local receipt does not establish that a fresh
+clone has current evidence. Follow the named builder on failure and commit its
+outputs and tracked receipt together. The full projection refresh also checks
+artifacts requiring a separate Lean export and reports that exact repair command;
+it must not silently declare them current or start an implicit Lean build.
+
+Preflight derives its complete projection inventory from the refresh registry,
+including reading editions embedded from experiment guides. After a Lean source
+change, build and export with `python3 scripts/build_lean_dependency_index.py`
+and commit both the index and tracked check receipt. If a local Lean environment
+is unavailable, an explicitly authorised CI dispatch with scope
+`dependency-index-refresh` builds the branch and exports its recovery artifact
+even while the ordinary release gate rejects stale evidence. Download and
+validate that artifact against the exact branch before committing it; the
+recovery run never substitutes for a passing normal PR run.
+
+The shared preflight also runs `scripts/check_ci_contracts.py`: the cold build,
+cache, exporter, scheduling and push-guard suites, in normal and optimized
+Python. Its coverage check rejects a test added to a build, external-verification,
+cache-warm or coverage workflow without local admission coverage. Register new
+infrastructure suites there. Keep scheduling policy in
+`test_lean_workflow_environment.py`; callers must reuse its behavioral checks
+instead of asserting a second, contradictory spelling of the workflow.
+
 Run the narrow tests required by every changed subsystem, followed by the
 public-boundary and contribution-entry checks when relevant. Record exact
 commands, results, omissions, and environmental deferrals. A green test is
