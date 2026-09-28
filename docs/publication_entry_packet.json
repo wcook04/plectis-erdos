@@ -114,7 +114,7 @@
     "docs/publication_entry_source.json": "sha256:a350c6ba5ba1a9828e916301f3148bc9a81d7ca14b175db0eca8c5426b8e5e5d",
     "docs/publication_evidence.json": "sha256:4e350698eed8b4ee10fc629cfb7540ed71bc6ccf4020ee2ede8635f4aae809b3",
     "paper/systems/claim-faithful-publication-systems-paper.pdf": "sha256:3b99fd3ca32e922036329301704cc4584618258edbfb393d2e7beb6ba1afde5d",
-    "paper/systems/claim-faithful-publication-systems-paper.tex": "sha256:97adfe82ed242f9b2d09ff0128c499f0f37bef6179d625cb1ced92eab3cb6c4c",
+    "paper/systems/claim-faithful-publication-systems-paper.tex": "sha256:b40980c53aac160e8eb65fc05f799b07376bea7ba1e514cc87b2a4ed06f8d89d",
     "research/experiments/publication_mutations.json": "sha256:9243e270257869e7a191c7598e917457cab61194299d1651e21bbc45a2d4c1e3",
     "research_corpus/Erdos1041/CORPUS_MANIFEST.json": "sha256:ce964d4a1e23101de34f35e3a42d4e2d6851873f9a37ddaecb6af718e9048ea6",
     "research_corpus/Erdos1041/FRONTIER.md": "sha256:e0c5f9c6ca8add9a7e87d11511fb63aa461699f0d54c392afba8bdabebf20299",

@@ -693,7 +693,7 @@ Theorem <a href="#thm:chain-transcendence" data-reference-type="ref" data-refer
 
 #### Evidence.
 
-Ordinary proof, with the $`p`$-adic Subspace Theorem as an external premise; it is not checked in Lean. Exact finite checks of the formulas used below are in `research/experiments/chain_transcendence/` of the repository. They check the bookkeeping and form no part of the proof.
+Ordinary proof, with the $`p`$-adic Subspace Theorem as an external premise, awaiting specialist review; it is not checked in Lean. Exact finite checks of the formulas used below are in `research/experiments/chain_transcendence/` of the repository. They check the bookkeeping and form no part of the proof.
 
 <div class="proof">
 
