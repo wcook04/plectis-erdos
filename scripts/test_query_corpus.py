@@ -2865,7 +2865,7 @@ def main() -> int:
     assert not formal_source_publication_errors(formal_source)
 
     claim = query("--claim", "denominator_exclusion")
-    assert claim["claim"]["status"] == "formalised here"
+    assert claim["claim"]["status"] == "verified finite instance"
     assert claim["remaining_open_propositions"][0]["id"] == "remaining_open.erdos_249_irrationality"
     assert claim["argument_neighbourhood"]["outgoing"][0]["neighbour"]["id"] == "erdos_249"
     assert "partial progress" in claim["argument_neighbourhood"]["outgoing"][0]["relation_meaning"]

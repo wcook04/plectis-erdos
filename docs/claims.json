@@ -1026,7 +1026,10 @@
           "source": "paper/249/erdos249-totient-reasoning-surface.tex",
           "rendered": "paper/249/erdos249-totient-reasoning-surface.pdf",
           "formal_source_ref": "99f4bf47422abbd8757cbb22b50ba079d764d3a7",
-          "role": "Full problem-specific reasoning record for Erdős #249."
+          "role": "Full problem-specific reasoning record for Erdős #249.",
+          "anchor_label_allowlist": [
+            "thm:goodbasegap"
+          ]
         },
         {
           "title": "Reciprocal Mersenne Subseries: a complete working record of Erdős Problem 257",
