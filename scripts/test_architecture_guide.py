@@ -126,7 +126,20 @@ def main() -> int:
         checker.SYSTEMS_PAPER_BASE_BYTES
         + checker.SYSTEMS_PAPER_BYTES_PER_ARTIFACT * len(contract["artifacts"])
     )
-    assert len(systems_paper.encode("utf-8")) <= systems_paper_budget
+    assert checker.authored_bytes(systems_paper) <= systems_paper_budget
+    # A regenerated region may grow without spending the budget; prose may not.
+    region_end = "% END generated_semantic_coverage_macros"
+    assert region_end in systems_paper
+    grown_region = systems_paper.replace(region_end, "%" + "0" * 5000 + "\n" + region_end, 1)
+    checker.validate_systems_paper(grown_region)
+    grown_prose = systems_paper.replace(region_end, region_end + "\n%" + "0" * 5000, 1)
+    try:
+        checker.validate_systems_paper(grown_prose)
+    except AssertionError:
+        pass
+    else:
+        raise AssertionError("systems paper budget accepted 5,000 bytes of authored growth")
+    checks += 2
 
     mutations = (
         (
@@ -292,7 +305,7 @@ def main() -> int:
             checks += 1
 
     overflow = systems_paper + "x" * (
-        systems_paper_budget - len(systems_paper.encode("utf-8")) + 1
+        systems_paper_budget - checker.authored_bytes(systems_paper) + 1
     )
     assert_paper_rejected(
         overflow,

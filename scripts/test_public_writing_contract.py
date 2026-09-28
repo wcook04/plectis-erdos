@@ -113,6 +113,7 @@ def main() -> None:
         re.IGNORECASE,
     )
     first_contact = [
+        ROOT / ".github/START_HERE_ISSUE.md",
         ROOT / "README.md",
         ROOT / "docs/README.md",
         ROOT / "docs/READING_GUIDE.md",

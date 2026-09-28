@@ -46,8 +46,10 @@ ORIENTATION_MAX_BYTES = 36_000
 # statement to appear here, so registering the eight #243/#249/#257/#269
 # propositions the papers already state is obliged to lengthen this file, while
 # a paragraph of new commentary is not. At the eleven propositions the old
-# 16,000-byte pin was set against, this formula returns 16,080.
-ORIENTATION_MARKDOWN_BASE_BYTES = 13_000
+# 16,000-byte pin was set against, this formula returned 16,080. The base also
+# carries the claim-status table; its eighth status, formal statement refuted
+# (Erdős #1041), added 160 bytes to the base.
+ORIENTATION_MARKDOWN_BASE_BYTES = 13_160
 ORIENTATION_MARKDOWN_PER_OPEN_PROPOSITION_BYTES = 280
 # The file also carries one line per mathematical programme, with its title and
 # claim ceiling, because the cold-clone contract requires a reader of this file

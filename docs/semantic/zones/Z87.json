@@ -3,6 +3,7 @@
   "title": "Angle A4: exact non-integrality coordinates, scalar lift obstruction, and frontier localisation",
   "problem": "249",
   "replaces_role_zone": "Z19",
+  "build_lane": "unbuilt: ErdosProblems/Lift/AngleA4.lean, the module cited in this zone, is in no CI build, so its declarations are stated in source but not kernel-checked by this repository's CI.",
   "concepts": [
     {
       "id": "z87_tail_difference_orbit",

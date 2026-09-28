@@ -247,7 +247,7 @@ KINDS: dict[str, tuple[str, dict[str, Checker], dict[str, Checker]]] = {
         "reviewer": c_text}, {}),
     "component_disposed": ("return_id", {
         "return_id": c_ident, "component": c_text, "decision": c_enum(COMPONENT_DECISIONS),
-        "reason": c_text, "landed_as": c_list(c_text)}, {}),
+        "reason": c_text, "landed_as": c_list(c_text)}, {"reentry": c_reentry}),
     "output_declared": ("output_id", {
         "output_id": c_ident, "kind": c_enum(OUTPUT_KINDS), "locator": c_locator,
         "problem": c_problem, "produced_by": c_list(c_ident),
@@ -305,6 +305,8 @@ def detail_errors(kind: str, subject: Any, detail: Any) -> list[str]:
             errors.append("a taken or adapted component must name where it landed")
         if detail["decision"] in {"rejected", "deferred"} and detail["landed_as"]:
             errors.append("a rejected or deferred component has not landed anywhere")
+        if detail["decision"] != "deferred" and detail.get("reentry") is not None:
+            errors.append("reentry belongs only to a deferral")
     if kind == "output_declared" and not errors:
         required_names = detail["required"]
         locator = detail["locator"]
@@ -562,6 +564,11 @@ def append(root: Path, kind: str, subject: str, detail: dict[str, Any],
                 "recorded_at": recorded_at or utc_now()}
         event = dict(body, event_sha=event_hash(body))
         errors = state.apply(event)
+        # Component deferrals written before reentry existed still verify; a new
+        # one must name who takes it up again and when, like a consumer deferral.
+        if (kind == "component_disposed" and isinstance(detail, dict)
+                and detail.get("decision") == "deferred" and not detail.get("reentry")):
+            errors.append("a new component deferral needs reentry {owner, trigger}")
         if errors:
             raise RecordError("; ".join(errors))
         prior = path.read_bytes() if path.exists() else b""
@@ -939,8 +946,9 @@ def status(root: Path, round_id: str | None = None, checkout: Checkout | None = 
                              "trigger": v["reentry"]["trigger"], "reason": v["reason"]})
         for c, v in sorted(r["components"].items()):
             if v["decision"] == "deferred":
-                deferred.append({"subject_id": rid, "component": c, "owner": None, "trigger": None,
-                                 "reason": v["reason"]})
+                reentry = v.get("reentry") or {}
+                deferred.append({"subject_id": rid, "component": c, "owner": reentry.get("owner"),
+                                 "trigger": reentry.get("trigger"), "reason": v["reason"]})
         returns[rid] = {
             "round_id": d["round_id"], "sha256": d["sha256"], "bytes": d["bytes"],
             "media_type": d["media_type"], "custody": d["custody"], "public_copy": d["public_copy"],
@@ -1067,7 +1075,10 @@ def render_markdown(report: dict[str, Any]) -> str:
         lines.append("Nothing deferred.")
     for x in report["deferred"]:
         item = x.get("consumer") or x.get("component")
-        lines.append(f"- `{x['subject_id']}` / {item}: owner {x['owner']}, trigger {x['trigger']}")
+        if x["owner"] is None:
+            lines.append(f"- `{x['subject_id']}` / {item}: no re-entry recorded ({x['reason']})")
+        else:
+            lines.append(f"- `{x['subject_id']}` / {item}: owner {x['owner']}, trigger {x['trigger']}")
     lines += ["", "## Orphans", ""]
     for key, values in report["orphans"].items():
         lines.append(f"- {key}: " + (", ".join(f"`{v}`" for v in values) or "none"))

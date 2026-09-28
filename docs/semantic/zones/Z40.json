@@ -3,6 +3,7 @@
   "title": "Skip D3: late three-cofactor dichotomy, exact survivor certificates, and the auxiliary late-only ratchet",
   "problem": "257",
   "replaces_role_zone": "Z20",
+  "build_lane": "unbuilt: ErdosProblems/Skip/D3.lean, the module cited in this zone, is in no CI build, so its declarations are stated in source but not kernel-checked by this repository's CI.",
   "concepts": [
     {"id": "largest_late_false_rank", "label": "Late largest false rank", "description": "A row has a skipped rank d whose maximal false rank remains in the terminal zone 2s<3d."},
     {"id": "three_cofactor_boundary", "label": "Three-cofactor boundary", "description": "Among ranks below s dividing 2s+1 or 2s+2, only quotient cofactor three can enter the late zone; the half-row cofactor cannot."},

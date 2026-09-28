@@ -1671,7 +1671,7 @@ acknowledgements: null
 external_verification:
   owner: "docs/claims.json::external_verification_packet"
   problem_index: "docs/problems.json"
-  problem_index_digest: "sha256:426ebec10d97b275ebf564e796a754d60de678ad3214af8cf22ea6a77647f836"
+  problem_index_digest: "sha256:9aca33e03fd89395a60a30fa10e2cda6e035b1c0e678cedcda046b49b2f1008f"
   problem_count: 8
   problems:
     - id: "erdos_68"
@@ -1712,7 +1712,7 @@ external_verification:
       claim_registry_status: "registered_declarations"
     - id: "erdos_1041"
       erdos_number: 1041
-      status: "open"
+      status: "formal statement refuted"
       checked_frontier: "For ani’s degree-seven polynomial, every preconnected strict-lemniscate set containing two distinct roots has one-dimensional Hausdorff measure above two. Lean refutes the exact Formal Conjectures path-image claim and checks a separate total-variation bound."
       open_frontier: "The full small-parameter family reported by ani; only one explicit polynomial is formalised."
       claim_registry_status: "registered_declarations"

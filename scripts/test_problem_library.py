@@ -52,6 +52,19 @@ class ProblemLibraryTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "one programme-card region"):
             builder.update_programme_card("missing region", "content")
 
+    def test_problem_statuses_come_from_the_claim_record_and_vocabulary(self):
+        source = json.loads(builder.SOURCE.read_text())
+        payload = builder.build(
+            source,
+            {row["id"]: row for row in json.loads(builder.CONTRACT.read_text())["artifacts"]},
+            json.loads(builder.CLAIMS.read_text()),
+            json.loads(builder.CORPUS.read_text()),
+        )
+        statuses = {row["erdos_number"]: row["status"] for row in payload["problems"]}
+        self.assertTrue(set(statuses.values()) <= set(source["status_vocabulary"]))
+        self.assertEqual(statuses.pop(1041), "formal statement refuted")
+        self.assertEqual(set(statuses.values()), {"open"})
+
     def test_registration_follows_claim_coordinates_not_library_names(self):
         modules = [{"path": "lean/ErdosProblems/Erdos68/Main.lean"}]
         claims = {"claims": [

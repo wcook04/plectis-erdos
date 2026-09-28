@@ -483,3 +483,105 @@ For each Lean declaration: the Challenge (the target, stated from Mathlib alone)
 - `tsum_parityCoboundaryWeight_eq_three_halves`: [Challenge](https://github.com/wcook04/plectis-erdos-lean/blob/cc7e541cf2081c6fef5a5e377d52e365e33b01eb/PalomarCorpus/E249_02/Challenge.lean#L65) (E249_02, line 65), [Solution](https://github.com/wcook04/plectis-erdos-lean/blob/cc7e541cf2081c6fef5a5e377d52e365e33b01eb/Solutions/PalomarCorpus/E249_02/PaperStatementsAG.lean#L48) (PaperStatementsAG.lean, line 48), [replay report](../../evidence/comparator/replay-35935225572/receipt-E249_02.json) (E249_02)
 
 Each Challenge states the same proposition as the Lean declaration it targets, with every definition it uses restated from Mathlib alone.
+
+<a id="prop-radixresidue"></a>
+
+## Proposition 1.10 (Residue series in every integer base), page 7
+
+> *Let $`t\ge2`$ be an integer.*
+> 
+> 1.  *For every $`m\ge3`$, $`\sum_{n\ge1}(\varphi(n)\bmod m)\,t^{-n}`$ is irrational ([`radix_residue_series_irrational`](https://github.com/wcook04/plectis-erdos/blob/24edbddbe2bd68e920327a701aad0b9dd0d69675/lean/ErdosProblems/Erdos249/PaperCompleteR7/RationalIntegerRadixClassification.lean#L128)).*
+> 
+> 2.  *For $`k\ge1`$ and $`f:\mathbb{Z}/2^k\mathbb{Z}\to\mathbb{Q}`$, the series $`\sum_{n\ge1}f(\varphi(n)\bmod2^k)\,t^{-n}`$ is rational exactly when $`f`$ is constant on the even residue classes, and its value is then $`(t+1)f(1)/t^2+f(0)/\bigl(t^2(t-1)\bigr)`$ ([`rational_zmod_radix_observable_iff`](https://github.com/wcook04/plectis-erdos/blob/24edbddbe2bd68e920327a701aad0b9dd0d69675/lean/ErdosProblems/Erdos249/PaperCompleteR7/RationalIntegerRadixClassification.lean#L145), [`positiveRadixValue_eq_of_even_constant`](https://github.com/wcook04/plectis-erdos/blob/24edbddbe2bd68e920327a701aad0b9dd0d69675/lean/ErdosProblems/Erdos249/PaperCompleteR7/IntegerRadixObservables.lean#L303)).*
+
+The Lean declarations below together state this result.
+
+1. [`ErdosProblems.Erdos249.PaperCompleteR7.RationalIntegerRadix.radix_residue_series_irrational`](https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos249/PaperCompleteR7/RationalIntegerRadixClassification.lean#L128)
+
+```lean
+theorem radix_residue_series_irrational
+    (B : ℕ) (hB : 2 ≤ B) {m : ℕ} (hm : 3 ≤ m) :
+    Irrational (radixValue B (fun n => (Nat.totient n % m : ℤ)))
+```
+
+2. [`ErdosProblems.Erdos249.PaperCompleteR7.RationalIntegerRadix.rational_zmod_radix_observable_iff`](https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos249/PaperCompleteR7/RationalIntegerRadixClassification.lean#L145)
+
+```lean
+theorem rational_zmod_radix_observable_iff
+    (B : ℕ) (hB : 2 ≤ B) {k : ℕ} (hk : 1 ≤ k)
+    (f : ZMod (2 ^ k) → ℚ) :
+    (∃ q : ℚ,
+      (∑' n : ℕ, (f (Nat.totient (n + 1) : ZMod (2 ^ k)) : ℝ) /
+        (B : ℝ) ^ (n + 1)) = (q : ℝ)) ↔
+      ∀ r : ℕ, r < 2 ^ k → r % 2 = 0 → f (r : ZMod (2 ^ k)) = f 0
+```
+
+3. [`ErdosProblems.Erdos249.PaperCompleteR7.IntegerRadixObservables.positiveRadixValue_eq_of_even_constant`](https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos249/PaperCompleteR7/IntegerRadixObservables.lean#L303)
+
+```lean
+theorem positiveRadixValue_eq_of_even_constant
+    (B : ℕ) (hB : 2 ≤ B) {k : ℕ} (hk : 1 ≤ k)
+    (f : ℕ → ℚ) (c : ℚ)
+    (hc : ∀ r, r < 2 ^ k → r % 2 = 0 → f r = c) :
+    positiveRadixValue B f (2 ^ k) =
+      ((B : ℝ) + 1) / (B : ℝ) ^ 2 * (f 1 : ℝ) +
+        (c : ℝ) / ((B : ℝ) ^ 2 * ((B : ℝ) - 1))
+```
+
+<a id="prop-radixresidue-comparator"></a>
+
+**Comparator:** not yet compared.
+
+<a id="prop-dilations"></a>
+
+## Proposition 1.11 (Finitely many dilations), page 7
+
+> *Let $`t\ge2`$ be an integer.*
+> 
+> 1.  *For every $`m\ge3`$, the numbers $`1`$ and $`\sum_{n\ge1}(\varphi(n)\bmod m)\,t^{-dn}`$, $`d=1,2,\ldots`$, are linearly independent over $`\mathbb{Q}`$ ([`linearIndependent_one_and_least_residue_values`](https://github.com/wcook04/plectis-erdos/blob/24edbddbe2bd68e920327a701aad0b9dd0d69675/lean/ErdosProblems/Erdos249/FiniteDilationLinearIndependent.lean#L42)).*
+> 
+> 2.  *Let $`D`$ be a finite set of positive integers, and for $`d\in D`$ let $`k_d\ge1`$ and $`f_d:\mathbb{Z}/2^{k_d}\mathbb{Z}\to\mathbb{Q}`$. For every $`c\in\mathbb{Q}`$, the number
+>     ``` math
+>     c+\sum_{d\in D}\sum_{n\ge1}f_d\bigl(\varphi(n)\bmod2^{k_d}\bigr)\,t^{-dn}
+>     ```
+>     is rational exactly when every $`f_d`$ is constant on the even residue classes ([`rational_mixed_moduli_with_constant_iff`](https://github.com/wcook04/plectis-erdos/blob/24edbddbe2bd68e920327a701aad0b9dd0d69675/lean/ErdosProblems/Erdos249/FiniteDilationMixedModuli.lean#L95)).*
+
+The Lean declarations below together state this result.
+
+1. [`ErdosProblems.Erdos249.FiniteDilationLinearIndependent.linearIndependent_one_and_least_residue_values`](https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos249/FiniteDilationLinearIndependent.lean#L42)
+
+```lean
+theorem linearIndependent_one_and_least_residue_values
+    (m B : ℕ) (hm : 3 ≤ m) (hB : 2 ≤ B) :
+    LinearIndependent ℚ (fun d : ℕ =>
+      if d = 0 then (1 : ℝ) else
+        positiveRadixValue (B ^ d) (fun r : ℕ => (r : ℚ)) m)
+```
+
+2. [`ErdosProblems.Erdos249.FiniteDilationMixedModuli.rational_mixed_moduli_with_constant_iff`](https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos249/FiniteDilationMixedModuli.lean#L95)
+
+```lean
+theorem rational_mixed_moduli_with_constant_iff
+    (D : Finset ℕ) (k : ℕ → ℕ)
+    (f : (d : ℕ) → ZMod (2 ^ (k d)) → ℚ) (B : ℕ) (q₀ : ℚ)
+    (hB : 2 ≤ B)
+    (hpos : ∀ d ∈ D, 0 < d)
+    (hk : ∀ d ∈ D, 0 < k d) :
+    (∃ q : ℚ, (q₀ : ℝ) + (∑ d ∈ D, ∑' n : ℕ,
+      (f d (Nat.totient (n + 1) : ZMod (2 ^ (k d))) : ℝ) /
+        ((B : ℝ) ^ d) ^ (n + 1)) = (q : ℝ)) ↔
+      ∀ d ∈ D, ∀ r : ℕ, r < 2 ^ (k d) → Even r →
+        f d (r : ZMod (2 ^ (k d))) = f d 0
+```
+
+<a id="prop-dilations-comparator"></a>
+
+**Comparator:** not yet compared.
+
+<a id="prop-slowmoduli"></a>
+
+## Proposition 1.12 (Slowly growing dyadic moduli), page 7
+
+> *Let $`\kappa:\mathbb{N}\to\mathbb{N}`$ satisfy $`2^{\kappa(n)}=o(\log n)`$, and put $`a_n=\varphi(n)\bmod2^{\kappa(n)}`$. Then $`\sum_{n\ge1}a_n2^{-n}`$ is rational exactly when $`a_n=0`$ for all large $`n`$. In particular the sum is irrational when $`\kappa(3^k)\ge2`$ for infinitely many $`k`$.*
+
+**No Lean proof of the whole statement.** In Lean, ordinary proof in the record; the block construction from prime factors of Fermat numbers and the tail estimate are not formalised.

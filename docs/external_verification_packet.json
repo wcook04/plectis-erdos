@@ -1738,9 +1738,9 @@
   "source_owner": "docs/claims.json::external_verification_packet",
   "problem_index": {
     "owner": "docs/problem_index_source.json",
-    "owner_digest": "sha256:2e8a345da3ce5b130e5be6ca4f3867c2e5f3f0188f7a3b9bf44f1ddb2ab7f744",
+    "owner_digest": "sha256:434f7bbcaa5a93da61e4d37291b36dcb634bc705d79222abea6fe2c6c80fd8e3",
     "projection": "docs/problems.json",
-    "projection_digest": "sha256:426ebec10d97b275ebf564e796a754d60de678ad3214af8cf22ea6a77647f836",
+    "projection_digest": "sha256:9aca33e03fd89395a60a30fa10e2cda6e035b1c0e678cedcda046b49b2f1008f",
     "schema": "erdos249257-problem-index/1",
     "problem_count": 8,
     "authority_posture": "navigation_projection_not_Lean_proof_authority_and_not_a_reviewed_claim_registry",
@@ -1762,7 +1762,7 @@
           ],
           "boundary": "Only the listed claim rows carry their recorded public status; other declarations are not promoted by module membership or a kernel build.",
           "programme_status": "open",
-          "programme_statement": "The irrationality of the factorial-denominator series remains open in this release; the checked reductions and finite obstructions do not supply the required cofinal failure."
+          "programme_statement": "Lean proves that S = ∑_{n≥2} 1/(n! − 1) is irrational if and only if, for infinitely many m, m does not divide ⌊m!·S_m⌋ + 1, where S_m is the prefix sum through n = m (irrational_factorialGapSeries_iff_cofinal_strictFacTopRat_misses); equivalently, the factorial-gap carry differs from 1 for infinitely many m (irrational_factorialGapSeries_iff_cofinal_nonunit_carries). Lean also proves liminf log L_N/(N^{3/2} log N) ≥ 2√2/3 for the common denominator L_N = lcm_{2≤n≤N}(n! − 1) before cancellation (common_denominator_growth_liminf). The irrationality of S remains open: the checked reductions and finite obstructions do not supply the required cofinal non-unit carries."
         },
         "directory": "lean/ErdosProblems/Erdos68",
         "modules": [
@@ -1975,7 +1975,7 @@
           ],
           "boundary": "Only the listed claim rows carry their recorded public status; other declarations are not promoted by module membership or a kernel build.",
           "programme_status": "open",
-          "programme_statement": "The eventual Sylvester recurrence assertion remains open in this release; the bounded-rise barrier and conditional negative-part reductions leave the mixed-sign unbounded regime unresolved."
+          "programme_statement": "Lean proves that if a is a strictly increasing sequence of positive integers with n^λ(a(n)²/a(n+1) − 1 − λ/n) → 0, then the reciprocal sum ∑ 1/a(n) is irrational, for every non-integer λ > 1, where Lean also derives convergence (nonintegral_regular_rate_irrational), and for λ = 3 whenever the sum converges (cubic_rate_irrationality_unconditional). Both theorems are zero-indexed; the paper transfers them to one-based indexing by an ordinary finite-prefix argument. Without such a rate the eventual Sylvester recurrence assertion remains open: the bounded-rise barrier and the conditional negative-part reductions leave the mixed-sign unbounded regime unresolved."
         },
         "directory": "lean/ErdosProblems/Erdos243",
         "modules": [
@@ -2146,7 +2146,7 @@
           ],
           "boundary": "Only the listed claim rows carry their recorded public status; other declarations are not promoted by module membership or a kernel build.",
           "programme_status": "open",
-          "programme_statement": "Not proved by this release. The reductions convert it into the unboundedness of the certificate supply, which is untouched."
+          "programme_statement": "Lean proves that S = ∑ φ(n)/2ⁿ is irrational if, for every h ≥ 1, there are arbitrarily large X at which the real part of the first-harmonic sum over the good indices is at most 603X/1000 (irrational_totient_series_of_goodBase_gap); the good indices are the assigned indices N in [X, 2X) at the minimal admissible depth with s = 26 whose cofactor m satisfies φ(m) ≥ m/1000. For all large X more than 67X/100 indices are good (eventually_card_pivotGoodBases_gt), and 603/1000 = (9/10)(67/100). Lean also proves that S is irrational if and only if certified non-integrality witnesses occur at unbounded parameters (irrational_totient_series_iff_certificate_supply). The 603X/1000 bound and that unbounded certificate supply are open, so S is not proved irrational."
         },
         "directory": "lean/ErdosProblems/Erdos249",
         "modules": [
@@ -2284,7 +2284,7 @@
           ],
           "boundary": "Only the listed claim rows carry their recorded public status; other declarations are not promoted by module membership or a kernel build.",
           "programme_status": "open",
-          "programme_statement": "The prime-index dyadic series remains open in this release; the exact tail-shift equivalence, prime-gap unboundedness, and nonperiodicity do not supply the required cofinal escape for the actual prime gaps."
+          "programme_statement": "Lean proves that Π = ∑_{n≥1} p_n/2ⁿ equals 2 plus the prime-gap dyadic series and that Π is irrational if and only if that gap series is (tsum_primeDyadicTerm_eq_two_add_primeGap_unconditional, irrational_tsum_primeDyadicTerm_iff_primeGap), with summability from the elementary bound p_n ≤ 1250(n+1)^4; the identity is the known summation by parts. Lean also proves that the consecutive prime gaps are unbounded and not eventually periodic (exists_primeGap0_gt, primeGap0_not_eventually_periodic). The irrationality of Π remains open: these facts do not supply the required cofinal escape for the actual prime gaps."
         },
         "directory": "lean/ErdosProblems/Erdos251",
         "modules": [
@@ -2380,7 +2380,7 @@
           "registered_claim_ids": [],
           "boundary": "Only the listed claim rows carry their recorded public status; other declarations are not promoted by module membership or a kernel build.",
           "programme_status": "open",
-          "programme_statement": "Irrationality of ∑_{n∈A} 1/(2ⁿ − 1) for every infinite A is not proved by this release; only named families are formalised."
+          "programme_statement": "Lean proves that for every integer base b ≥ 2 and every finite nonempty set P of primes, with h(a) the largest divisor of a supported on P, every infinite set A of positive integers with ∑_{a∈A} h(a)/(a(b^{h(a)} − 1)) finite has ∑_{n∈A} 1/(bⁿ − 1) irrational (divisibilityWeightedClaim). Lean also proves irrationality at every such base for every infinite A with ∑_{a∈A} 1/a finite (irrational_erdosSupportSeries_of_summable_reciprocal), and exhibits sets with divergent reciprocal sum all of whose infinite subsets have irrational series at every such base (finite_monotone_witness_rule_realised). Irrationality of ∑_{n∈A} 1/(2ⁿ − 1) for every infinite A remains open."
         },
         "directory": "lean/ErdosProblems/Erdos257",
         "modules": [
@@ -2625,7 +2625,7 @@
         "problem_id": "erdos_1041",
         "erdos_number": 1041,
         "short_title": "Short connections inside polynomial lemniscates",
-        "status": "open",
+        "status": "formal statement refuted",
         "question": "Must two roots of a monic polynomial in the open unit disc be joined by a sub-two-length curve inside its unit lemniscate? Ani’s degree-seven example refutes the exact Formal Conjectures statement; correspondence with the 1958 wording awaits human review.",
         "library_root": "ErdosProblems.lean",
         "claim_registry_status": "registered_declarations",
@@ -2635,10 +2635,11 @@
           "programme_claim_id": "erdos_1041",
           "registered_claim_ids": [
             "ani_degree_seven_total_variation_counterexample",
+            "erdos_1041",
             "newton_ray_separation_consumer"
           ],
           "boundary": "Only the listed claim rows carry their recorded public status; other declarations are not promoted by module membership or a kernel build.",
-          "programme_status": "open",
+          "programme_status": "formal statement refuted",
           "programme_statement": "Using ani's explicit monic degree-seven polynomial, Lean proves that every preconnected subset of its strict unit lemniscate containing two distinct roots has one-dimensional Hausdorff measure greater than 2. This refutes the exact Formal Conjectures path-image-length statement and its total-variation counterpart. The reported family is not formalised, and independent human review of correspondence with the 1958 wording is not recorded."
         },
         "directory": "lean/ErdosProblems/Erdos1041",
@@ -2802,7 +2803,7 @@
           ],
           "boundary": "Only the listed claim rows carry their recorded public status; other declarations are not promoted by module membership or a kernel build.",
           "programme_status": "open",
-          "programme_statement": "For rational bases in the Zudilin contour region, including every positive integral power of 31/4, the public Lean development proves irrationality and the stated irrationality-exponent bound from the constructed polynomial forms and analytic estimates. The universal rational-base assertion remains open; 3/2 lies outside this region and is unresolved here."
+          "programme_statement": "For natural numbers 0 < b < a in the Zudilin contour region, Lean proves that F(a/b) is irrational with irrationality exponent at most rationalBaseMeasureBound a b (rational_base_region, rational_base_measure), from the constructed polynomial forms and analytic estimates; in particular F((31/4)^r) is irrational for every positive integer r (thirtyone_four_powers). The universal rational-base assertion remains open; 3/2 lies outside this region and is unresolved here."
         },
         "directory": "lean/ErdosProblems/Erdos1049",
         "modules": [

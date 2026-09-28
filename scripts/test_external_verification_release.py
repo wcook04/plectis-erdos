@@ -678,7 +678,7 @@ def synthetic_repository(parent: Path) -> tuple[Path, dict, str, str, str, Path]
             "negative_fixture_rejected": True,
             "negative_expected_diagnostic": diagnostic,
         },
-        "whole_programme_disclosure": {"all_statuses_open": True},
+        "whole_programme_disclosure": {"statuses_within_programme_boundary": True},
     }
     receipt_path = parent / "runtime-receipt.json"
     write_json(receipt_path, receipt)

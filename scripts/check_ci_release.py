@@ -34,6 +34,8 @@ COMMANDS = (
     ('scripts/check_architecture_guide.py',),
     ('scripts/check_agent_navigation_paper.py',),
     ('scripts/test_architecture_guide.py',),
+    ('scripts/test_build_systems_paper_counts.py',),
+    ('-O', 'scripts/test_build_systems_paper_counts.py'),
     ('scripts/test_verify_claims.py',),
     ('scripts/test_problem_library.py',),
     ('scripts/check_publication_contract.py',),

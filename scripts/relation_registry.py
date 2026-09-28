@@ -840,11 +840,16 @@ def classes(rows: list[dict[str, Any]]) -> list[dict[str, Any]]:
 
 
 def explain(rows: list[dict[str, Any]], text: str) -> list[dict[str, Any]]:
+    """Rows whose left, right or id mention ``text``, or, for a bare problem
+    number such as ``249`` or ``#249``, every row recorded for that problem."""
     needle = text.casefold()
+    number = needle.removeprefix("#")
+    problem = int(number) if number.isdigit() else None
     out = []
     for row in rows:
         haystack = [row["left"], row.get("right") or "", row["id"]]
-        if any(needle in h.casefold() for h in haystack):
+        if (problem is not None and row.get("problem") == problem) or any(
+                needle in h.casefold() for h in haystack):
             out.append({"id": row["id"], "relation": row["relation"], "problem": row.get("problem"),
                         "left": row["left"], "right": row.get("right"), "context": row["context"],
                         "direction": DIRECTION[row["relation"]],
@@ -912,7 +917,8 @@ def main(argv: list[str] | None = None) -> int:
     sub.add_parser("check", help="validate and attest every row; exit 1 on a mismatch, a listed_not_compiled "
                                  "row or a schema error")
     for name, help_text in (("classes", "equivalence classes over usable equivalent rows"),
-                            ("explain", "rows whose left or right mention TEXT"),
+                            ("explain", "rows whose left, right or id mention TEXT, or every row of "
+                                        "problem TEXT when TEXT is a number such as 249 or #249"),
                             ("transport", "what a supplied or refuted statement implies")):
         p = sub.add_parser(name, help=help_text)
         p.add_argument("--include-residualbench", action="store_true",

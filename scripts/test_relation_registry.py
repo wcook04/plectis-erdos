@@ -469,6 +469,17 @@ class CommittedRegistry(unittest.TestCase):
         document = rr.load_registry(ROOT)
         self.assertEqual(REAL_REGISTRY.read_text(encoding="utf-8"), rr.render_registry(document))
 
+    def test_explain_selects_every_row_of_a_problem_number(self) -> None:
+        # Statement text rarely contains the problem number, so a bare number
+        # (with or without '#') selects by the recorded problem instead.
+        rows = rr.load_registry(ROOT)["rows"]
+        for problem in sorted(set(self.EXPECTED.values())):
+            expected = sorted(k for k, p in self.EXPECTED.items() if p == problem)
+            for text in (str(problem), f"#{problem}"):
+                with self.subTest(text=text):
+                    self.assertEqual([r["id"] for r in rr.explain(rows, text)], expected)
+        self.assertEqual([r["id"] for r in rr.explain(rows, "contour")], ["contour_view"])
+
 
 if __name__ == "__main__":
     unittest.main()

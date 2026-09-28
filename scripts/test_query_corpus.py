@@ -419,7 +419,9 @@ def validate_problem_reader_journey() -> None:
         answer = query_corpus.problem_reader_answer(route_id)
         card = run("--route", route_id)
         assert card.returncode == 0, card.stderr
-        assert card.stdout.startswith(f"problem {route_id} | #{number} | open")
+        assert card.stdout.startswith(
+            f"problem {route_id} | #{number} | {problem['status']}"
+        )
         assert len(card.stdout.encode("utf-8")) <= 8_000
         assert len(card.stdout.splitlines()) <= 36
         families = packet["route"]["result_families"]
@@ -764,12 +766,12 @@ def validate_agent_tour() -> None:
         PROGRAMME_EXPECTATIONS
     )
     assert packet["scale"]["indexed_problem_count"] == 8
-    assert packet["scale"]["indexed_open_problem_count"] == 8
+    assert packet["scale"]["indexed_open_problem_count"] == 7
     assert packet["scale"]["reviewed_remaining_open_proposition_count"] == len(
         packet["frontier"]
     )
     assert packet["open_frontier_contract"] == {
-        "indexed_open_problem_count": 8,
+        "indexed_open_problem_count": 7,
         "reviewed_remaining_open_proposition_count": len(packet["frontier"]),
         "reviewed_scope": "all eight indexed problem programmes",
         "distinction": (
@@ -907,7 +909,7 @@ def validate_agent_tour() -> None:
         "--tour --format json",
     ):
         assert f"{command} {arguments}" in card.stdout
-    assert "Historical programme targets marked open: 8 of 8." in card.stdout
+    assert "Historical programme targets marked open: 7 of 8." in card.stdout
     assert "does not run Lean" in card.stdout
     assert run("--tour").stdout == card.stdout
     source = query("--declaration", lead["source_declaration"])["matches"][0]
@@ -1731,7 +1733,7 @@ def validate_route_memory_cards() -> None:
     """Cards must preserve every canonical resume command present in JSON."""
     claim_card = query_corpus.render_card(claim_packet("denominator_exclusion"))
     assert (
-        "claim denominator_exclusion | formalised here | paper=res:farey "
+        "claim denominator_exclusion | verified finite instance | paper=res:farey "
         "| incoming=0 | outgoing=1 | declarations="
         "tsum_totient_div_pow_two_ne_ratCast_of_den_le_79639646646701375323355774875831053 "
         "| resume=python3 scripts/query_route_memory.py --problem 249 --route "
@@ -2863,7 +2865,7 @@ def main() -> int:
     assert not formal_source_publication_errors(formal_source)
 
     claim = query("--claim", "denominator_exclusion")
-    assert claim["claim"]["status"] == "formalised here"
+    assert claim["claim"]["status"] == "verified finite instance"
     assert claim["remaining_open_propositions"][0]["id"] == "remaining_open.erdos_249_irrationality"
     assert claim["argument_neighbourhood"]["outgoing"][0]["neighbour"]["id"] == "erdos_249"
     assert "partial progress" in claim["argument_neighbourhood"]["outgoing"][0]["relation_meaning"]

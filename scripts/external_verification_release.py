@@ -326,8 +326,9 @@ def validate_runtime_receipt(
         raise ReleaseIdentityError("runtime negative fixture was not rejected")
     if checks.get("negative_expected_diagnostic") != expected_diagnostic:
         raise ReleaseIdentityError("runtime negative diagnostic differs from contract")
-    if receipt.get("whole_programme_disclosure", {}).get("all_statuses_open") is not True:
-        raise ReleaseIdentityError("runtime receipt lost the all-eight-open disclosure")
+    disclosure = receipt.get("whole_programme_disclosure", {})
+    if disclosure.get("statuses_within_programme_boundary") is not True:
+        raise ReleaseIdentityError("runtime receipt lost the programme-status disclosure")
 
 
 def artifact_rows(

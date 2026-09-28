@@ -310,6 +310,147 @@ bounds, parity and aperiodicity also hold for a rational control. Each
 conclusion concerns its stated hypotheses, not all possible arithmetic
 information about $\varphi$.
 
+\subsection{Reduced coefficients}\label{sub:reduced-coefficients}
+
+Reducing $\varphi(n)$ modulo a fixed integer makes the coefficients
+bounded, and the short paper's residue theorem then settles the
+reduced series: $\sum_{n\ge1}(\varphi(n)\bmod m)2^{-n}$ is irrational for
+every $m\ge3$, and $\sum_{n\ge1}f(\varphi(n)\bmod2^k)2^{-n}$ is rational
+exactly when $f$ is constant on the even residue classes. Its proof finds,
+for every $L$, a prime $p$ with $\varphi(p)\bmod m$ a prescribed nonzero
+residue while each neighbour $p+j$, $0<|j|\le L$, has a prime factor
+$q\equiv1\pmod m$, so that $m\mid\varphi(p+j)$. A bounded coefficient
+sequence with a nonzero term between arbitrarily long zero blocks has an
+irrational sum in every integer base. The same construction gives the
+following three results.
+
+\begin{prop}[Residue series in every integer base]
+\label{prop:radixresidue}
+Let $t\ge2$ be an integer.
+\begin{enumerate}[label=(\alph*),leftmargin=*]
+\item For every $m\ge3$, $\sum_{n\ge1}(\varphi(n)\bmod m)\,t^{-n}$ is
+  irrational
+  (\href{https://github.com/wcook04/plectis-erdos/blob/24edbddbe2bd68e920327a701aad0b9dd0d69675/lean/ErdosProblems/Erdos249/PaperCompleteR7/RationalIntegerRadixClassification.lean\#L128}{\texttt{radix\_residue\_series\_irrational}}).
+\item For $k\ge1$ and $f:\Z/2^k\Z\to\Q$, the series
+  $\sum_{n\ge1}f(\varphi(n)\bmod2^k)\,t^{-n}$ is rational exactly when $f$
+  is constant on the even residue classes, and its value is then
+  $(t+1)f(1)/t^2+f(0)/\bigl(t^2(t-1)\bigr)$
+  (\href{https://github.com/wcook04/plectis-erdos/blob/24edbddbe2bd68e920327a701aad0b9dd0d69675/lean/ErdosProblems/Erdos249/PaperCompleteR7/RationalIntegerRadixClassification.lean\#L145}{\texttt{rational\_zmod\_radix\_observable\_iff}},
+  \href{https://github.com/wcook04/plectis-erdos/blob/24edbddbe2bd68e920327a701aad0b9dd0d69675/lean/ErdosProblems/Erdos249/PaperCompleteR7/IntegerRadixObservables.lean\#L303}{\texttt{positiveRadixValue\_eq\_of\_even\_constant}}).
+\end{enumerate}
+\end{prop}
+
+\begin{proof}
+The short paper's proof applies verbatim in base $t$: its lemma on an
+isolated nonzero coefficient uses only $Ct^{-L}<1/q$ in place of
+$C2^{-L}<1/q$. For the value in (b), $\varphi(1)=\varphi(2)=1$ and
+$\varphi(n)$ is even for $n\ge3$.
+\end{proof}
+
+\begin{prop}[Finitely many dilations]
+\label{prop:dilations}
+Let $t\ge2$ be an integer.
+\begin{enumerate}[label=(\alph*),leftmargin=*]
+\item For every $m\ge3$, the numbers $1$ and
+  $\sum_{n\ge1}(\varphi(n)\bmod m)\,t^{-dn}$, $d=1,2,\ldots$, are linearly
+  independent over $\Q$
+  (\href{https://github.com/wcook04/plectis-erdos/blob/24edbddbe2bd68e920327a701aad0b9dd0d69675/lean/ErdosProblems/Erdos249/FiniteDilationLinearIndependent.lean\#L42}{\texttt{linearIndependent\_one\_and\_least\_residue\_values}}).
+\item Let $D$ be a finite set of positive integers, and for $d\in D$ let
+  $k_d\ge1$ and $f_d:\Z/2^{k_d}\Z\to\Q$. For every $c\in\Q$, the number
+  \[
+   c+\sum_{d\in D}\sum_{n\ge1}f_d\bigl(\varphi(n)\bmod2^{k_d}\bigr)\,t^{-dn}
+  \]
+  is rational exactly when every $f_d$ is constant on the even residue
+  classes
+  (\href{https://github.com/wcook04/plectis-erdos/blob/24edbddbe2bd68e920327a701aad0b9dd0d69675/lean/ErdosProblems/Erdos249/FiniteDilationMixedModuli.lean\#L95}{\texttt{rational\_mixed\_moduli\_with\_constant\_iff}}).
+\end{enumerate}
+\end{prop}
+
+\begin{proof}
+(a) A relation gives integers $c_0$ and $c_d$, $d$ in a finite set $D$ of
+positive integers, with some $c_d\ne0$ and
+$c_0+\sum_{N\ge1}b_Nt^{-N}=0$, where
+$b_N=\sum_{d\in D,\,d\mid N}c_d\bigl(\varphi(N/d)\bmod m\bigr)$ is bounded.
+Discard the $d$ with $c_d=0$ and let $\delta$ be the least remaining one.
+Given $L$, choose distinct primes $q_j\equiv1\pmod m$, $0<|j|\le L$, each
+larger than $L$ and than every element of $D$. By the Chinese remainder
+theorem and Dirichlet's theorem there are arbitrarily large primes $p$ with
+$p\equiv-1\pmod m$ and $\delta p\equiv-j\pmod{q_j}$ for every $j$. For
+$p>\max D$ the only $d\in D$ dividing $\delta p$ is $\delta$, so
+$b_{\delta p}=c_\delta(m-2)\ne0$. If $d\in D$ divides $\delta p+j$, then
+$q_j\nmid d$, so $q_j\mid(\delta p+j)/d$ and
+$m\mid\varphi((\delta p+j)/d)$; hence $b_{\delta p+j}=0$. The isolated
+coefficient makes $\sum_Nb_Nt^{-N}$ irrational, which contradicts
+$c_0\in\Z$.
+
+(b) Each $f_d$ that is constant on the even classes contributes a rational
+number, by Proposition~\ref{prop:radixresidue}(b) in base $t^d$. After
+lifting every $f_d$ to a common modulus $2^K$ and subtracting $f_d(0)$,
+the least remaining $d$ has an even residue $r$ with
+$f_d(r)\ne f_d(0)$; the argument of (a), with $p\equiv r+1\pmod{2^K}$ in
+place of $p\equiv-1\pmod m$, isolates a nonzero coefficient.
+\end{proof}
+
+\begin{prop}[Slowly growing dyadic moduli]
+\label{prop:slowmoduli}
+Let $\kappa:\N\to\N$ satisfy $2^{\kappa(n)}=o(\log n)$, and put
+$a_n=\varphi(n)\bmod2^{\kappa(n)}$. Then $\sum_{n\ge1}a_n2^{-n}$ is
+rational exactly when $a_n=0$ for all large $n$. In particular the sum is
+irrational when $\kappa(3^k)\ge2$ for infinitely many $k$.
+\end{prop}
+\evidenceremark{Ordinary proof; not formalised in Lean.}
+
+\begin{proof}
+If $a_n$ vanishes eventually the sum is finite. Suppose instead that
+$a_n\ne0$ infinitely often and that the sum equals $u/v$. Then
+$T_N=\sum_{j\ge1}a_{N+j}2^{-j}$ lies in $v^{-1}\Z$ for every $N$. For
+$1\le j\le L$ let $q_j$ be a prime factor of the Fermat number
+$2^{2^j}+1$; then $q_j\equiv1\pmod{2^{j+1}}$, and the $q_j$ are distinct
+because distinct Fermat numbers are coprime. Put $Q=q_1\cdots q_L$, so
+$Q<2^{2^{L+1}}$. Given $M$, the Chinese remainder theorem gives
+$N\in[M,M+Q)$ with $q_j\mid N+j$ for $1\le j\le L$. Then
+$2^{j+1}\mid\varphi(N+j)$, so $2^j\mid a_{N+j}$: either
+$\kappa(N+j)\le j$ and $a_{N+j}=0$, or $2^j$ divides both $\varphi(N+j)$
+and the modulus. Hence $T_N$ differs from an integer by
+$\sum_{j>L}a_{N+j}2^{-j}$, which is positive because $a_n\ne0$
+infinitely often, and at most $\sum_{j>L}2^{\kappa(N+j)-j}$. Choose
+$\epsilon>0$ with $3\epsilon<1/v$, then $M$ with
+$2^{\kappa(n)}\le\epsilon\log n$ for $n\ge M$, then $L\ge2$ so large that
+$Q\ge M$. Then $N<M+Q\le2Q$ and $\log(N+j)\le\log(2Q)+j\le2^{L+1}+j$, so
+the tail is at most $\epsilon2^{-L}(2^{L+1}+L+2)\le3\epsilon<1/v$. It is a
+positive element of $v^{-1}\Z$ below $1/v$, a contradiction. Finally $\varphi(3^k)=2\cdot3^{k-1}$ is not divisible by
+$4$, so $a_{3^k}\ne0$ whenever $\kappa(3^k)\ge2$.
+\end{proof}
+
+\begin{rem}[Earlier results and the reduced coefficients]
+\label{rem:erdos1957}
+Proposition~\ref{prop:radixresidue}(a), and with it the first assertion
+of the short paper's residue theorem, already follows from Erd\H{o}s's
+Lemma~1 of~\cite[p.~213]{erdos1957}: if integers $a_k\ge0$ have
+$\sum_{k\le n}a_k=O(n)$, infinitely many $a_k\ne0$, and
+$\liminf_n\#\{k\le n:a_k>0\}/n=0$, then $\sum_ka_kt^{-k}$ is irrational for
+every integer $t\ge2$. Erd\H{o}s notes that this is the case $b_k=0$ of his
+Lemma~4 (stated pp.~215--216, proved pp.~216--218). For
+$a_n=\varphi(n)\bmod m$ the hypotheses hold: $a_n\ne0$ forces $n$ to have
+no prime factor $p\equiv1\pmod m$, and such $n$ have density zero because
+$\sum_{p\equiv1\ (m)}1/p$ diverges, while $a_p=m-2$ for every prime
+$p\equiv-1\pmod m$. Erd\H{o}s's Lemma~4$'$ (p.~218, proof omitted there)
+and Theorem~3 of Kaneko, Suzuki and Tachiya~\cite[p.~5]{kst2026} give the
+same conclusion; the latter paper proves Lemma~4$'$ as its Theorem~A
+(pp.~2 and~18). The same argument covers
+Proposition~\ref{prop:radixresidue}(b) and Proposition~\ref{prop:dilations}
+when the values $f(r)-f(0)$, respectively the coefficients $c_d$, have one
+sign. With both signs present, Lemmas~4 and~4$'$ and Theorem~3
+of~\cite{kst2026} require an additional spacing condition on the negative
+terms, which is not checked here; the isolated coefficient needs none.
+Theorem~3 of~\cite{kst2026}, with $b=0$ and $z_n=\log_2\log x_n$, also
+gives the irrational direction of Proposition~\ref{prop:slowmoduli} once
+the $n<x$ with $v_2(\varphi(n))<\log_2\log x$ are shown to number
+$o(x/\log\log x)$; this record does not write out that density estimate.
+Wong's base-equals-modulus theorem~\cite{wong2015} is the case $t=m$ of
+Proposition~\ref{prop:radixresidue}(a).
+\end{rem}
+
 \section{Rational comparison sequences}
 \label{sec:wall}
 
@@ -909,7 +1050,9 @@ Propositions~\ref{prop:dickman} and~\ref{prop:badcof} below do establish the
 unassigned and excluded-cofactor bounds at minimal admissible depth, with
 one sufficiently small fixed $\eta$. The mean and mean-subtracted estimates
 remain to be established at that same depth and for that same $\eta$.
-Only the real part of the mean-subtracted contribution is required.
+Only the real part of the mean-subtracted contribution is required, and
+Theorem~\ref{thm:goodbasegap} below replaces the two estimates by a single
+bound on the indices in $\mathcal G$.
 
 
 A nonzero determinant alone does not prove the needed correlation
@@ -920,6 +1063,87 @@ while fixing an entire row of weighted phases to $1$. A successful
 application must distinguish that comparison, for example by additional
 arithmetic information, rather than only by column rescaling. The exact
 four-term identity supplies no prime-distribution estimate.
+
+\subsection{One bound on the good indices}\label{sub:goodbasegap}
+
+For fixed $h$ and $s$, write $L(X)$ for the least $L$ with $h\le L-s$ and
+$16(2X+h+L+2)\le2^L$; this is the minimal admissible depth of
+Proposition~\ref{prop:dickman}. At $s=26$ and $\eta=1/1000$ the two proved
+counting bounds leave more than $67X/100$ of the indices in $\mathcal G$,
+and a saving on those indices alone gives irrationality.
+
+\begin{thm}[Irrationality from one bound on the good indices]
+\label{thm:goodbasegap}
+\begin{enumerate}[label=(\alph*),leftmargin=*]
+\item Suppose that for every $h\ge1$ and every $A$ there are $X$, $L$ with
+  $16(2X+h+L+2)\le2^L$ and a nonempty finite set $T$ of integers in
+  $[A,2X)$ with
+  \[
+   \sum_{N\in T}\operatorname{Re}E(h,N,L)\le\tfrac{9}{10}\,\#T.
+  \]
+  Then $S\notin\Q$
+  (\href{https://github.com/wcook04/plectis-erdos/blob/24edbddbe2bd68e920327a701aad0b9dd0d69675/lean/ErdosProblems/ArgumentGraph/Results/Erdos249Endpoint.lean\#L44}{\texttt{irrational\_totient\_series\_of\_support\_gap}}).
+\item Take $s=26$, $\eta=1/1000$ and $L=L(X)$. Suppose that for every
+  $h\ge1$ there are arbitrarily large $X$ with
+  \[
+   \operatorname{Re}\sum_{N\in\mathcal G}E\bigl(h,N,L(X)\bigr)
+   \le\tfrac{603}{1000}X.
+  \]
+  Then $S\notin\Q$
+  (\href{https://github.com/wcook04/plectis-erdos/blob/24edbddbe2bd68e920327a701aad0b9dd0d69675/lean/ErdosProblems/ArgumentGraph/Results/Erdos249Endpoint.lean\#L100}{\texttt{irrational\_totient\_series\_of\_goodBase\_gap}}).
+\end{enumerate}
+\end{thm}
+
+\begin{proof}
+(a) At a depth satisfying the room inequality, a nonempty set of indices
+below $2X$ whose average of $\operatorname{Re}E(h,N,L)$ is at most $9/10$
+contains an index $N$ with $\mathcal C(h,N,L)$
+(\lean{Erdos249257.exists\_certifiedKill\_of\_first\_harmonic\_gap\_subset}{FirstHarmonicGap.lean:104}).
+The hypothesis therefore supplies, for every $h\ge1$, certificates beyond
+every threshold, which is Definition~\ref{defn:sep}; that condition is
+equivalent to $S\notin\Q$.
+
+(b) For all large $X$, fewer than $8X/25$ indices in $[X,2X)$ are
+unassigned (Proposition~\ref{prop:dickman}), and fewer than $X/100$
+assigned indices have $\varphi(m_N)<m_N/1000$, by the Chebyshev form of
+Proposition~\ref{prop:badcof} given after its proof. These two sets and
+$\mathcal G$ partition $[X,2X)$, so $\#\mathcal G>67X/100$
+(\href{https://github.com/wcook04/plectis-erdos/blob/24edbddbe2bd68e920327a701aad0b9dd0d69675/lean/ErdosProblems/ArgumentGraph/Results/Erdos249Endpoint.lean\#L75}{\texttt{eventually\_card\_pivotGoodBases\_gt}}).
+Since $603/1000=(9/10)(67/100)$, each large $X$ in the hypothesis gives
+$\sum_{N\in\mathcal G}\operatorname{Re}E(h,N,L(X))<\tfrac{9}{10}\#\mathcal G$.
+For $X\ge A$ the set $T=\mathcal G$ is nonempty and lies in $[A,2X)$, and
+$L(X)$ satisfies the room inequality, so (a) applies.
+\end{proof}
+
+The trivial bound for the sum in (b) is $\#\mathcal G$, so the
+hypothesis asks for a fixed saving: along a sequence of blocks, the
+average of $\cos\bigl(2\pi D(h,N,L)/2^L\bigr)$ over $\mathcal G$ must be
+at most $603X/(1000\,\#\mathcal G)$, a number below $9/10$.
+Equidistributed phases would make the sum $o(X)$. A rational value
+$S=a/(2^cv)$ with $v$ odd makes the bound fail for $h=\varphi(v)$ and all
+large $X$: every large index
+then has an integral tail difference, hence no certificate, and an index
+at a depth with room and without a certificate has
+$\operatorname{Re}E>9/10$.
+The hypothesis is sufficient and is not known to be necessary: from
+irrationality one obtains nonintegral tail differences, and no argument
+turns them into a fixed saving on $\mathcal G$. It is open. No computation in this record bears
+on it, and the count $\#\mathcal G>67X/100$ holds only for large $X$.
+
+When the first two inequalities of Definition~\ref{defn:pivot} hold with
+$s=26$, $\eta=1/1000$ and $L=L(X)$, they add to
+$\operatorname{Re}\sum_{N\in\mathcal G}E(h,N,L(X))\le\tfrac{57}{100}X$, so
+the four-term condition at these parameters implies the hypothesis of (b). An earlier route used
+the prime number theorem, which bounds every group mean $|\bar z_m|$ on
+$\mathcal G$ by $1/100$ for all large $X$
+(\href{https://github.com/wcook04/plectis-erdos/blob/24edbddbe2bd68e920327a701aad0b9dd0d69675/lean/ErdosProblems/Erdos249/PaperCompleteR21/FiberMeanOfPrimeNumberTheorem.lean\#L935}{\texttt{fiberMean\_le\_of\_primeNumberTheorem}}).
+Given that bound, the bound $\tfrac{11}{20}X$ on the good indices yields
+the mean-subtracted inequality, and irrationality follows
+(\href{https://github.com/wcook04/plectis-erdos/blob/24edbddbe2bd68e920327a701aad0b9dd0d69675/lean/ErdosProblems/ArgumentGraph/Results/Erdos249.lean\#L45}{\texttt{dtw\_of\_fiberMean\_and\_centered}},
+\href{https://github.com/wcook04/plectis-erdos/blob/24edbddbe2bd68e920327a701aad0b9dd0d69675/lean/ErdosProblems/ArgumentGraph/Results/Erdos249Route.lean\#L118}{\texttt{irrational\_totient\_series\_of\_primeNumberTheorem\_and\_goodBase\_gap}}).
+Theorem~\ref{thm:goodbasegap}(b) supersedes that route. It assumes
+neither the prime number theorem nor a bound on the group means, and the
+bound it asks for, $603X/1000$, is weaker than $11X/20$.
 
 
 \subsection{A fixed separation at prime positions}
@@ -8530,6 +8754,7 @@ Certificates on LCM grids beyond every threshold & equivalent via the base condi
 Quantified finite-grid condition & sufficient; requires each one-sided size bound & Theorem~\ref{catalogue:cert:b10b} \\
 Nonintegral diagonal or LCM-grid tail differences & \textbf{equivalent} to the corresponding unrestricted-depth certificate condition & Corollary~\ref{catalogue:cert:b8} \\
 Block norm condition & sufficient for the quantified residue condition; no converse proved & Theorem~\ref{catalogue:mob:e1} \\
+Bound $603X/1000$ on the good indices & sufficient; no converse proved; needs neither the prime number theorem nor the group means & Theorem~\ref{thm:goodbasegap} \\
 $\Omega_a\notin\mathbb Z$ beyond every threshold & \textbf{equivalent} to $S\notin\mathbb Q$ itself & Proposition~\ref{prop:NI-01} \\
 Short-window certificate condition & sufficient; imposes an additional short-depth restriction at powers of two & Proposition~\ref{prop:AR-07} \\
 Upper-endpoint residue condition beyond every threshold & sufficient for $\Omega_a\notin\mathbb Z$ beyond every threshold & Proposition~\ref{prop:TE-04} \\
@@ -8572,10 +8797,13 @@ and $L$ satisfying both the modulus bound and
 The saving $21/25$ is fixed, but the chosen block and depth may depend
 on $h$ and $X_0$; uniformity of these choices in $h$ is not required.
 The preceding four-term decomposition and the proved counting bounds
-identify contributions to this sum. The two remaining weighted
-estimates must still be obtained with the same parameters. The record
-therefore gives an exact reduction and some of its estimates, not a
-proof of the displayed cancellation bound.
+identify contributions to this sum. By
+Theorem~\ref{thm:goodbasegap}(b) the two remaining weighted estimates may
+be replaced by the single bound
+$\operatorname{Re}\sum_{N\in\mathcal G}E(h,N,L(X))\le603X/1000$ at
+$s=26$, $\eta=1/1000$ and minimal depth, for arbitrarily large $X$; that
+bound is open. The record therefore gives an exact reduction and some of
+its estimates; the displayed cancellation bound remains unproved.
 
 \paragraph{The last totient difference.} The endpoint criteria compare
 \[
@@ -8596,7 +8824,8 @@ examples at $a=4,6$, do not establish an asymptotic pattern.
 Erick Wong posted a proof that
 $\sum_{n\ge1}(\varphi(n)\bmod k)k^{-n}$ is irrational for every integer $k>2$
 on Mathematics Stack Exchange on 29 March 2015~\cite{wong2015}; there the base
-equals the modulus.  The M\"obius-square form of $S$ and its coprimality
+equals the modulus. Erd\H{o}s's 1957 criterion already gives every base
+(Remark~\ref{rem:erdos1957}).  The M\"obius-square form of $S$ and its coprimality
 interpretation were posted publicly before this record, as credited in
 \S\ref{ssec:coprime}.  Kova\v{c} and Tao show that suitable subsums of Lambert
 series in distinct integer bases can be rational~\cite[Theorem~2.3]{kovac-tao};
@@ -8683,6 +8912,16 @@ Theorem~1, pp.~1--2.
 E.~Wong, \href{https://math.stackexchange.com/a/1211557}{answer 1211557} to
 \emph{An infinite sum based on the mod-parity of Euler's totient function},
 Mathematics Stack Exchange, 29 March 2015, accessed 15 September 2026.
+\bibitem{erdos1957}
+P.~Erd\H{o}s, \emph{On the irrationality of certain series}, Indag. Math.
+\textbf{19} (1957), 212--219,
+\url{https://users.renyi.hu/~p_erdos/1957-07.pdf}.
+Lemma~1, p.~213; Lemma~4, pp.~215--218; Lemma~4$'$, p.~218.
+\bibitem{kst2026}
+H.~Kaneko, Y.~Suzuki and Y.~Tachiya, \emph{Refinements of Erd\H{o}s's
+irrationality criterion for certain sparse infinite series},
+arXiv:\href{https://arxiv.org/abs/2601.20743v1}{2601.20743v1}, 2026.
+Theorem~A, p.~2; Theorem~3, p.~5; proof of Theorem~A, p.~18.
 \bibitem{eldar2026oeis}
 A.~Eldar, comment and formula added to OEIS A256936 (revisions 28 and 31),
 15 March 2026, \url{https://oeis.org/history?seq=A256936},
