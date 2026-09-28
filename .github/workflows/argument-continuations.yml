@@ -25,6 +25,7 @@ on:
       - "codex/argument-*"
     paths:
       - scripts/export_argument_continuations.lean
+      - scripts/export_abductions.lean
       - scripts/test_argument_continuation_export.py
       - scripts/test_argument_interface_export.py
       - scripts/coverage_build_targets.py
@@ -179,12 +180,39 @@ jobs:
           tail -n 1 "$PLECTIS_CONTINUATION_EXPORT_FILE" || true
           exit "$status"
 
+      # For every closed hypothesis, what it still needs once the corpus's
+      # comparison facts are used (scripts/export_abductions.lean): given by a
+      # combination of facts, or restated in the quantities no fact controls,
+      # each with a kernel-checked proof. Keys match the export above; the
+      # builder reads both streams. The pass stops itself at 30 min.
+      - name: Export the abductions
+        if: always()
+        timeout-minutes: 45
+        env:
+          PLECTIS_ABDUCTION_EXPORT_FILE: ${{ runner.temp }}/argument_abductions_export.jsonl
+          PLECTIS_ABDUCTION_SECONDS: "1800"
+        run: |
+          set -uo pipefail
+          wrapper="$RUNNER_TEMP/AbductionExportWithCoverage.lean"
+          {
+            head -n 2 scripts/export_abductions.lean
+            python3 scripts/coverage_build_targets.py --imports
+            tail -n +3 scripts/export_abductions.lean
+          } > "$wrapper"
+          timeout --kill-after=60s 40m lake env lean "$wrapper"
+          status=$?
+          echo "abduction export exit $status"
+          tail -n 1 "$PLECTIS_ABDUCTION_EXPORT_FILE" || true
+          exit "$status"
+
       - name: Compress the argument graph
         if: always()
         run: |
-          if [ -f "$RUNNER_TEMP/argument_continuations_export.jsonl" ]; then
-            gzip -9 -f "$RUNNER_TEMP/argument_continuations_export.jsonl"
-          fi
+          for f in argument_continuations_export argument_abductions_export; do
+            if [ -f "$RUNNER_TEMP/$f.jsonl" ]; then
+              gzip -9 -f "$RUNNER_TEMP/$f.jsonl"
+            fi
+          done
 
       - name: Upload the argument graph artifact
         if: always()
@@ -193,6 +221,7 @@ jobs:
           name: argument-continuations-${{ github.sha }}
           path: |
             ${{ runner.temp }}/argument_continuations_export.jsonl.gz
+            ${{ runner.temp }}/argument_abductions_export.jsonl.gz
             ${{ runner.temp }}/argument_continuations_source_revision.txt
             ${{ runner.temp }}/argument_continuations_lean_tree.txt
           retention-days: 14

@@ -125,13 +125,24 @@ negation of the statement. *Library producers*
 (`PLECTIS_CONTINUATION_LIBRARY_PRODUCERS=1`) make every theorem of the
 environment a producer.
 
+A second stream, from `scripts/export_abductions.lean`, restates every closed
+hypothesis against the comparison facts of the whole corpus (see
+[Abduction](#abduction-what-a-hypothesis-needs-in-the-quantities-the-corpus-does-not-control)):
+an `abduction` row with `given` records a hypothesis that a combination of
+corpus theorems gives, and one with a `residual` records what the hypothesis
+still needs in the quantities no fact controls, each with a proof the kernel
+checked. Its keys are the main export's, and the builder reads it as a
+reduction: with no residual for a given hypothesis, to the residual otherwise.
+
 The export runs in continuous integration
 ([workflow](../.github/workflows/argument-continuations.yml)) because it needs
 the corpus built: on a push to `main` or to a `claude/argument-*` or
 `codex/argument-*` branch that changes the exporter, or by hand
 (`workflow_dispatch`) on any branch. Its stream is uploaded as an artifact together with
-`argument_continuations_lean_tree.txt`, the git tree of `lean/` at the exported
-commit, and `argument_continuations_source_revision.txt`, the commit itself.
+the abduction stream, `argument_continuations_lean_tree.txt`, the git tree of `lean/`
+at the exported commit, and `argument_continuations_source_revision.txt`, the commit
+itself. To read both, give the abduction stream first:
+`--export argument_abductions_export.jsonl.gz --export argument_continuations_export.jsonl.gz`.
 
 **Graph.** `scripts/build_argument_continuations.py --export <artifact>`
 computes the following from that stream. It reads the tree id from beside the
@@ -296,6 +307,23 @@ Lean proposition (every property of the object the route would use, implying
 the conclusion it needs) and prove its negation from the countermodel in a
 kernel probe; a proof settles the question, and a failed attempt says only that
 this countermodel does not obviously apply.
+
+One construction blocks a class of routes in four problems
+([`Synthesis/RoundingBarrier.lean`](../lean/ErdosProblems/Synthesis/RoundingBarrier.lean),
+[`Synthesis/RealBaseRounding.lean`](../lean/ErdosProblems/Synthesis/RealBaseRounding.lean)).
+For a series `∑ c(n)/2^n` with a convergent value, a modulus `q ≥ 1` and a cutoff, subtracting
+`q` times the binary digits of a suitable real number beyond the cutoff (when `c ≥ q` there), or
+adding them, gives a sequence equal to `c` up to the cutoff, congruent to it modulo `q`, within
+`q` of it, and with a dyadic value; a sequence with `c(n) ≤ n` and a rational value has no
+certificate (`no_certificate_of_dyadic`), and no property that such a sequence has implies a
+demand the corpus turns into irrationality (`no_route_of_rational_witness`). For #249 the shadow
+keeps the parity of `φ`, stays within 2 of it and sums to `5/4`, and one keeps the residues of
+`φ` modulo any fixed `q` and its depth-`L` window residues; the same construction applies to the
+primes (#251), to every support (#257) and to the divisor counts at every real base `x > 1`
+(#1049). A bounded perturbation of `φ` that is multiplicative is `φ` itself
+(`eq_of_multiplicative_of_bounded_sub`), and the registry rows list multiplicativity, residues
+modulo a growing modulus and joint statistics of state and forcing among what the shadows do not
+block.
 
 Each theorem is joined to the paper results that cite it, short or long, with
 the label, the TeX line and the Comparator status recorded in the
@@ -652,6 +680,73 @@ searching the sufficient conditions of the endpoint and comparing them, which
 the command does not do; fewer clauses left is the wrong measure there, since
 the useful condition can be a stronger statement in quantities the corpus can
 estimate.
+
+## Abduction: what a hypothesis needs in the quantities the corpus does not control
+
+The residualiser keeps each clause that no supplier gives as it stands. A clause that compares
+quantities often mentions some that other corpus theorems already control, such as a cardinality
+with a proved lower bound, and asking for the clause as it stands asks for more than the corpus
+needs. The module
+[`ErdosProblems.ArgumentGraph.Abduce`](../lean/ErdosProblems/ArgumentGraph/Abduce.lean) restates
+such a clause in the quantities no fact controls.
+
+Fix the linear facts `Γ` in scope and a comparison `C`. An atom of `C` or of a fact is *hidden*
+when some fact mentions it and it is not a variable in scope; the other atoms are *observable*. The
+condition
+
+    R*(x) = ¬ ∃ y, Γ(x, y) ∧ ¬ C(x, y)
+
+on the observable atoms `x` gives `C` under `Γ`, and any condition on the observables that gives
+`C` implies it, since it rules out every counterexample. Over an ordered field the counterexample
+region is a polyhedron; Fourier–Motzkin elimination of the hidden atoms computes its projection, and
+`R*` is the negation of that projection, a disjunction of comparisons of observables. The kernel
+checks `Γ → R* → C` through `linarith`, so the sufficiency is proved; that `R*` is the weakest such
+condition, relative to the facts used, rests on the elimination. Over `ℕ` and `ℤ` the rational
+projection still gives a sufficient condition. The tactic `abduce` replaces a comparison goal by
+`R*`, and closes it when the facts give it; `abduce [o₁, …]` fixes the observable atoms and
+`abduce using f₁, …` the facts.
+
+[`ErdosProblems.ArgumentGraph.AbduceCorpus`](../lean/ErdosProblems/ArgumentGraph/AbduceCorpus.lean)
+takes the facts from the corpus. The comparison readings of corpus theorems, and their eventual
+comparison readings `∀ᶠ X in f, F X`, are indexed by the corpus constants they mention; a clause
+retrieves the readings that share its constants, instantiated by unifying their subterms with its
+atoms and closed by the variables in scope, with their hypotheses discharged by the hypotheses in
+scope or the closing battery. Several facts then combine linearly, which a search that unifies one
+theorem at a time with a whole statement does not see. The restatement runs under `∀`, `→`, `∧`, `∃`
+and the filter quantifiers:
+
+* a hypothesis in scope is a fact, together with the comparisons it gives through membership in
+  `Ico`, `Icc`, `range`, `filter` and the unfolding of corpus finsets; `s.Nonempty` is read as
+  `0 < s.card`, and counts over `ℕ` meet bounds over `ℝ` after a cast;
+* a variable bound by `∀` inside the proposition may be eliminated, and a data binder the
+  restatement no longer mentions is dropped with the hypotheses about it;
+* under `∃ᶠ X` or `∀ᶠ X` an eventual fact is used at `X` and supplied along the filter;
+* `∀ A, ∃ X, Q A X` over `ℕ` is read as `∃ᶠ X, ∀ A ≤ X, Q A X` when that restates something;
+* `∃ w, P w` takes the witness, among the terms of the suppliers' statements, that leaves the
+  fewest clauses.
+
+`restate N for D using s₁ … sₙ` records the result with the facts of `s₁ … sₙ`: for a theorem `D`,
+each hypothesis the facts give is dropped and each other one is replaced by its restatement, and `N`
+is the new theorem; for a proposition `D`, `N : D' → D`. The kernel checks `N`, and the statement
+is recomputed whenever the module is built.
+
+On #249,
+[`Results/Erdos249Abduction.lean`](../lean/ErdosProblems/ArgumentGraph/Results/Erdos249Abduction.lean)
+restates the subset-barrier clause on the good bases, `∑_{N good} cos(2π A_{h,N,L}/2^L) ≤ (9/10)·#good`
+for arbitrarily large `X` at the minimal depth, against the single supplier
+`eventually_card_pivotGoodBases_gt` (more than `67X/100` good bases for all large `X`). The count is
+eliminated at each frequent scale and the restatement is the good-base gap
+`∑_{N good} cos(2π A_{h,N,L}/2^L) ≤ 603X/1000`, which `Results/Erdos249Endpoint.lean` shows gives the
+irrationality of `∑ φ(n)/2^n` with no other input; that bound was first found by hand. A kernel probe
+restated and checked it in under a second. The same probe discharges the threshold clause
+(`A ≤ X` and membership in the good bases give `A ≤ N`) and the nonemptiness clause (the count gives
+`0 < #good`) outright. The full chain from the support interface, which must also choose the depth
+and the support as witnesses, is not yet within the search budget.
+
+Over the whole corpus, a probe of `scripts/export_abductions.lean` built an index of 6,245
+comparison readings in 1.3 s and tried the 401 distinct closed hypotheses of the corpus theorems in
+336 s: 3 are given outright by combined facts, 31 are restated, 2 ran out of budget, and the kernel
+rejected none.
 
 ## Checking a new statement without a local build
 

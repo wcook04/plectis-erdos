@@ -232,7 +232,10 @@ jobs:
           ErdosProblems.ArgumentGraph.Results.Erdos249Route
           ErdosProblems.ArgumentGraph.Results.Erdos249Endpoint
           ErdosProblems.ArgumentGraph.Results.Erdos249Residual
+          ErdosProblems.ArgumentGraph.Results.Erdos249Abduction
           ErdosProblems.ArgumentGraph.Results.Erdos251
+          ErdosProblems.Synthesis.RoundingBarrier
+          ErdosProblems.Synthesis.RealBaseRounding
 
       # Saved even after a failed build: Lake's content traces decide what is
       # current, so a partial tree only shortens the next run.

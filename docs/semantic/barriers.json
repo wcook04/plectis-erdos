@@ -2934,6 +2934,176 @@
    "target": "Erdős #68: Irrational (∑_{n≥2} 1/(n! − 1))",
    "evidence_class": "kernel_checked",
    "axioms_note": null
+  },
+  {
+   "id": "cross-dyadic-rounding-shadow-certificate-barrier",
+   "problem": "cross",
+   "barrier_kind": "countermodel",
+   "declaration": "ErdosProblems.Synthesis.RoundingBarrier.down_rounding_barrier",
+   "source_ref": "lean/ErdosProblems/Synthesis/RoundingBarrier.lean:595",
+   "statement": "theorem down_rounding_barrier (c : ℕ → ℕ) (hc : ∀ n, c n ≤ n) {q : ℕ} (hq : 0 < q) (M : ℕ) (hbig : ∀ n, M < n → q ≤ c n) : ¬ ∀ a : ℕ → ℕ, (∀ n, a n ≤ n) → (∀ n, a n ≡ c n [MOD q]) → (∀ n, a n ≤ c n ∧ c n ≤ a n + q) → (∀ n, n ≤ M → a n = c n) → FinitePrefixCountermodel.separation a",
+   "plain_statement": "For c(n) ≤ n with c(n) ≥ q beyond M: a(n) ≤ n, a ≡ c (mod q), c − q ≤ a ≤ c and a = c up to M do not imply the certificate supply separation a. The downward shadow (c minus q times the binary digits of fract(T_c(M)/q) written after M) has these properties and a dyadic binary value.",
+   "blocks": "Deriving the cofinal certificate supply (FinitePrefixCountermodel.separation: for every lag h > 0, certificates at arbitrarily large N) for a base-two coefficient sequence from properties that a bounded rounding preserves: the coefficients modulo one fixed q, their size up to q, the bound c(n) ≤ n, and any finite prefix. The dyadic value excludes every certificate at every N ≥ M, lag and depth (downShadow_no_certificate); the schema no_route_of_rational_witness extends the block to every demand that an engine sound for c(n) ≤ n turns into irrationality.",
+   "route_predicates": [
+    "ErdosProblems.Erdos249.PaperCompleteR20.FinitePrefixCountermodel.separation",
+    "ErdosProblems.Erdos249.PaperCompleteR20.GenericTailCertificates.certificate",
+    "Erdos249257.binaryCoeffSeries",
+    "ErdosProblems.Synthesis.RoundingBarrier.downShadow",
+    "ErdosProblems.Synthesis.RoundingBarrier.upShadow"
+   ],
+   "does_not_block": [
+    "multiplicativity on coprime arguments: a multiplicative sequence within bounded distance of φ or of τ equals it (ErdosProblems.Synthesis.MultiplicativeRigidity.eq_totient_of_multiplicative_of_bounded_sub, eq_card_divisors_of_multiplicative_of_bounded_sub), so no rounding shadow keeps it",
+    "residues modulo moduli that grow with n, such as 2^L at the depth L that a certificate at position N needs (2^L > 2(N + h + L + 2)); each shadow keeps one fixed modulus q, and its cutoff grows with q",
+    "joint state-forcing correlations of the actual sequence: statistics that couple the fractional part of its binary tail with its forcing word; the shadow's value is dyadic, so its binary tails are integers beyond the cutoff and these statistics are not shared",
+    "sequences with c(n) < q infinitely often in the downward form (the upward form up_rounding_barrier needs instead c(n) + q ≤ n beyond M)",
+    "the individual certificates of the actual sequence below the cutoff M, where the shadow equals c"
+   ],
+   "target": "Erdős #249: Irrational (∑' n : ℕ, (Nat.totient n : ℝ) / 2 ^ n) ; also Erdős #251: Irrational (∑ p_n / 2^n) over the primes, equivalently irrationality of the consecutive-prime-gap dyadic series ; also Erdős #257: for every infinite A ⊆ ℕ≥1, ∑_{n∈A} 1/(2^n − 1) is irrational (in Lean: Irrational (erdosSupportSeries 2 A)) ; also the base-two member of Erdős #1049: irrationality of ∑_{n≥1} 1/(t^n − 1) for rational t > 1; first open base t = 3/2 (each read as irrationality of a base-two coefficient series ∑ c(n)/2^n)",
+   "evidence_class": "kernel_checked",
+   "axioms_note": "standard axioms only (propext, Classical.choice, Quot.sound) in kernel probe run 36362232898 (branch claude/kernel-probe-barrier-4-20260928, file sha256 prefix 9497059af6ae / 913974d89dd2); not yet landed: source_ref is the proposed landing path and line; imports ErdosProblems.Erdos249.PaperCompleteR20.FinitePrefixCountermodelEndpoint, which main compiles only in the lean-coverage-build lane"
+  },
+  {
+   "id": "249-within-two-parity-shadow",
+   "problem": "249",
+   "barrier_kind": "countermodel",
+   "declaration": "ErdosProblems.Synthesis.RoundingBarrier.no_certificate_route_249",
+   "source_ref": "lean/ErdosProblems/Synthesis/RoundingBarrier.lean:825",
+   "statement": "theorem no_certificate_route_249 (route : ∀ a : ℕ → ℕ, TotientParityWithinTwo a → FinitePrefixCountermodel.separation a) : False",
+   "plain_statement": "TotientParityWithinTwo (a ≡ φ mod 2, |a − φ| ≤ 2, a(n) ≤ n) does not imply the certificate supply: totientShadow (φ(n) − 2d_{n−2} for n ≥ 3, d_j the binary digits of 2S − 5/2) has the three properties, ∑ a(n)/2^n = 5/4, and no certificate at any N ≥ 2, lag or depth.",
+   "blocks": "Proofs of the #249 certificate supply (the hypothesis of irrational_totient_series_of_certificate_supply, which is separation Nat.totient by separation_totient_iff) or of irrationality (totientParityWithinTwo_not_imply_irrational) whose only inputs are agreement with φ modulo 2, distance at most two from φ, a(n) ≤ n, and consequences of these; for example every fixed-shift limiting statistic of a(n)/n agrees with that of φ(n)/n, since |a(n)/n − φ(n)/n| ≤ 2/n. The same witness also fails the shifted two-sided return demand of irrational_binaryCoeffSeries_of_shiftedTwoSidedReturn (totientParityWithinTwo_not_imply_shiftedReturn).",
+   "route_predicates": [
+    "ErdosProblems.Synthesis.RoundingBarrier.TotientParityWithinTwo",
+    "ErdosProblems.Erdos249.PaperCompleteR20.FinitePrefixCountermodel.separation",
+    "Erdos249257.TotientTailPeriodKiller.certifiedKill"
+   ],
+   "does_not_block": [
+    "multiplicativity on coprime arguments: a multiplicative sequence within bounded distance of φ or of τ equals it (ErdosProblems.Synthesis.MultiplicativeRigidity.eq_totient_of_multiplicative_of_bounded_sub, eq_card_divisors_of_multiplicative_of_bounded_sub), so no rounding shadow keeps it",
+    "residues modulo moduli that grow with n, such as 2^L at the depth L that a certificate at position N needs (2^L > 2(N + h + L + 2)); each shadow keeps one fixed modulus q, and its cutoff grows with q",
+    "joint state-forcing correlations of the actual sequence: statistics that couple the fractional part of its binary tail with its forcing word; the shadow's value is dyadic, so its binary tails are integers beyond the cutoff and these statistics are not shared",
+    "the exact Euler product or factorisation of φ(n) (the shadow is not multiplicative: totientShadow_not_multiplicative)"
+   ],
+   "target": "Erdős #249: Irrational (∑' n : ℕ, (Nat.totient n : ℝ) / 2 ^ n)",
+   "evidence_class": "kernel_checked",
+   "axioms_note": "standard axioms only (propext, Classical.choice, Quot.sound) in kernel probe run 36362232898 (branch claude/kernel-probe-barrier-4-20260928, file sha256 prefix 9497059af6ae / 913974d89dd2); not yet landed: source_ref is the proposed landing path and line; imports ErdosProblems.Erdos249.PaperCompleteR20.FinitePrefixCountermodelEndpoint, which main compiles only in the lean-coverage-build lane"
+  },
+  {
+   "id": "249-every-modulus-rounding-shadow",
+   "problem": "249",
+   "barrier_kind": "countermodel",
+   "declaration": "ErdosProblems.Synthesis.RoundingBarrier.totient_rounding_barrier",
+   "source_ref": "lean/ErdosProblems/Synthesis/RoundingBarrier.lean:929",
+   "statement": "theorem totient_rounding_barrier {q B : ℕ} (hq : 0 < q) (hB : (2 * q) ^ (2 * q) ≤ B) : ¬ ∀ a : ℕ → ℕ, (∀ n, a n ≤ n) → (∀ n, a n ≡ Nat.totient n [MOD q]) → (∀ n, a n ≤ Nat.totient n ∧ Nat.totient n ≤ a n + q) → (∀ n, n ≤ B → a n = Nat.totient n) → FinitePrefixCountermodel.separation a",
+   "plain_statement": "For every q ≥ 1 and B ≥ (2q)^(2q): a(n) ≤ n, a ≡ φ (mod q), φ − q ≤ a ≤ φ and a = φ up to B do not imply the certificate supply. The downward shadow of φ at (q, B) has these properties, a dyadic value and no certificate at any N ≥ B.",
+   "blocks": "Proofs of the #249 certificate supply from φ modulo one fixed q (for instance φ modulo 2^L at a fixed depth L, the input of the fixed-depth CRT phase concentration), from φ up to an additive error q, from φ(n) ≤ n, and from agreement with φ on any finite prefix.",
+   "route_predicates": [
+    "ErdosProblems.Synthesis.RoundingBarrier.downShadow",
+    "ErdosProblems.Erdos249.PaperCompleteR20.FinitePrefixCountermodel.separation",
+    "Erdos249257.TotientTailPeriodKiller.certifiedKill"
+   ],
+   "does_not_block": [
+    "multiplicativity on coprime arguments: a multiplicative sequence within bounded distance of φ or of τ equals it (ErdosProblems.Synthesis.MultiplicativeRigidity.eq_totient_of_multiplicative_of_bounded_sub, eq_card_divisors_of_multiplicative_of_bounded_sub), so no rounding shadow keeps it",
+    "residues modulo moduli that grow with n, such as 2^L at the depth L that a certificate at position N needs (2^L > 2(N + h + L + 2)); each shadow keeps one fixed modulus q, and its cutoff grows with q",
+    "joint state-forcing correlations of the actual sequence: statistics that couple the fractional part of its binary tail with its forcing word; the shadow's value is dyadic, so its binary tails are integers beyond the cutoff and these statistics are not shared",
+    "the exact Euler product or factorisation of φ(n)"
+   ],
+   "target": "Erdős #249: Irrational (∑' n : ℕ, (Nat.totient n : ℝ) / 2 ^ n)",
+   "evidence_class": "kernel_checked",
+   "axioms_note": "standard axioms only (propext, Classical.choice, Quot.sound) in kernel probe run 36362232898 (branch claude/kernel-probe-barrier-4-20260928, file sha256 prefix 9497059af6ae / 913974d89dd2); not yet landed: source_ref is the proposed landing path and line; imports ErdosProblems.Erdos249.PaperCompleteR20.FinitePrefixCountermodelEndpoint, which main compiles only in the lean-coverage-build lane"
+  },
+  {
+   "id": "249-fixed-depth-window-residue-shadow",
+   "problem": "249",
+   "barrier_kind": "countermodel",
+   "declaration": "ErdosProblems.Synthesis.RoundingBarrier.fixedDepth_window_barrier",
+   "source_ref": "lean/ErdosProblems/Synthesis/RoundingBarrier.lean:968",
+   "statement": "theorem fixedDepth_window_barrier (L : ℕ) {B : ℕ} (hB : (2 * 2 ^ L) ^ (2 * 2 ^ L) ≤ B) : ¬ ∀ a : ℕ → ℕ, (∀ n, a n ≤ n) → (∀ h N, GenericTailCertificates.discrepancy a h N L ≡ GenericTailCertificates.discrepancy Nat.totient h N L [ZMOD 2 ^ L]) → (∀ n, a n ≤ Nat.totient n ∧ Nat.totient n ≤ a n + 2 ^ L) → (∀ n, n ≤ B → a n = Nat.totient n) → FinitePrefixCountermodel.separation a",
+   "plain_statement": "For every depth L and B ≥ (2·2^L)^(2·2^L): a(n) ≤ n, the depth-L window residues of φ at every lag h and position N (discrepancy a h N L ≡ discrepancy φ h N L mod 2^L), φ − 2^L ≤ a ≤ φ and a = φ up to B do not imply the certificate supply. The downward shadow of φ at modulus 2^L has these properties and no certificate at any N ≥ B.",
+   "blocks": "Proofs of the #249 certificate supply whose arithmetic input is the depth-L window data of φ for one fixed depth L at all lags and positions (equivalently the phases e(A_{h,N,L}/2^L)), such as the fixed-depth CRT concentration of window phases, together with size bounds and a finite prefix. A certificate at (h, N, L) needs 2(N + h + L + 2) < 2^L (certifiedKill_depth_floor), so certificates of a fixed depth L reach only N < 2^(L−1), while the supply asks for arbitrarily large N.",
+   "route_predicates": [
+    "ErdosProblems.Erdos249.PaperCompleteR20.GenericTailCertificates.discrepancy",
+    "Erdos249257.TotientTailPeriodKiller.windowDiscrepancy",
+    "ErdosProblems.Erdos249.PaperCompleteR20.FinitePrefixCountermodel.separation"
+   ],
+   "does_not_block": [
+    "window data at a depth that grows with the position, in the dyadic room regime 2(N + h + L + 2) < 2^L",
+    "multiplicativity on coprime arguments: a multiplicative sequence within bounded distance of φ or of τ equals it (ErdosProblems.Synthesis.MultiplicativeRigidity.eq_totient_of_multiplicative_of_bounded_sub, eq_card_divisors_of_multiplicative_of_bounded_sub), so no rounding shadow keeps it",
+    "joint state-forcing correlations of the actual sequence: statistics that couple the fractional part of its binary tail with its forcing word; the shadow's value is dyadic, so its binary tails are integers beyond the cutoff and these statistics are not shared"
+   ],
+   "target": "Erdős #249: Irrational (∑' n : ℕ, (Nat.totient n : ℝ) / 2 ^ n)",
+   "evidence_class": "kernel_checked",
+   "axioms_note": "standard axioms only (propext, Classical.choice, Quot.sound) in kernel probe run 36362232898 (branch claude/kernel-probe-barrier-4-20260928, file sha256 prefix 9497059af6ae / 913974d89dd2); not yet landed: source_ref is the proposed landing path and line; imports ErdosProblems.Erdos249.PaperCompleteR20.FinitePrefixCountermodelEndpoint, which main compiles only in the lean-coverage-build lane"
+  },
+  {
+   "id": "251-prime-rounding-shadow",
+   "problem": "251",
+   "barrier_kind": "countermodel",
+   "declaration": "ErdosProblems.Synthesis.RoundingBarrier.prime_rounding_barrier",
+   "source_ref": "lean/ErdosProblems/Synthesis/RoundingBarrier.lean:992",
+   "statement": "theorem prime_rounding_barrier {q B : ℕ} (hq : 0 < q) (hB : q ≤ B) : ¬ ∀ a : ℕ → ℕ, (∀ n, a n ≡ ErdosProblems.Erdos251.prime0 n [MOD q]) → (∀ n, a n ≤ ErdosProblems.Erdos251.prime0 n ∧ ErdosProblems.Erdos251.prime0 n ≤ a n + q) → (∀ n, n ≤ B → a n = ErdosProblems.Erdos251.prime0 n) → Irrational (∑' n, (a n : ℝ) / 2 ^ n)",
+   "plain_statement": "For every q ≥ 1 and B ≥ q: a ≡ p_n (mod q), p_n − q ≤ a(n) ≤ p_n and a = p_n up to B do not imply irrationality of ∑ a(n)/2^n. The downward shadow of the primes has these properties and a dyadic value.",
+   "blocks": "Irrationality proofs for ∑ p_n/2^n (Erdős #251, displayed form primeDisplayedDyadicTerm) whose only inputs about the primes survive lowering each p_n by 0 or q: p_n modulo one fixed q (Dirichlet, equidistribution in residue classes), p_n up to an additive constant (the prime number theorem with any error term, Bertrand), and any finite prefix. Consecutive differences of the shadow stay within q of the prime gaps and keep their residues modulo q. Complements 251-bounded-perturbation-countermodel, which moves the gaps and lets p_n drift without bound.",
+   "route_predicates": [
+    "ErdosProblems.Erdos251.prime0",
+    "ErdosProblems.Synthesis.RoundingBarrier.downShadow"
+   ],
+   "does_not_block": [
+    "primality of the values: the shadow's values need not be prime",
+    "residues modulo moduli that grow with n, such as 2^L at the depth L that a certificate at position N needs (2^L > 2(N + h + L + 2)); each shadow keeps one fixed modulus q, and its cutoff grows with q",
+    "joint state-forcing correlations of the actual sequence: statistics that couple the fractional part of its binary tail with its forcing word; the shadow's value is dyadic, so its binary tails are integers beyond the cutoff and these statistics are not shared",
+    "the certificate notion GenericTailCertificates.certificate, whose soundness needs c(n) ≤ n, which p_n violates; this row is at the level of irrationality only"
+   ],
+   "target": "Erdős #251: Irrational (∑ p_n / 2^n) over the primes, equivalently irrationality of the consecutive-prime-gap dyadic series",
+   "evidence_class": "kernel_checked",
+   "axioms_note": "standard axioms only (propext, Classical.choice, Quot.sound) in kernel probe run 36362232898 (branch claude/kernel-probe-barrier-4-20260928, file sha256 prefix 9497059af6ae / 913974d89dd2); not yet landed: source_ref is the proposed landing path and line"
+  },
+  {
+   "id": "257-support-rounding-shadow",
+   "problem": "257",
+   "barrier_kind": "countermodel",
+   "declaration": "ErdosProblems.Synthesis.RoundingBarrier.support_rounding_barrier",
+   "source_ref": "lean/ErdosProblems/Synthesis/RoundingBarrier.lean:1050",
+   "statement": "theorem support_rounding_barrier (A : Set ℕ) {q B : ℕ} (hq : 0 < q) (hB : 2 * q + 1 ≤ B) : ¬ ∀ a : ℕ → ℕ, (∀ n, a n ≤ n) → (∀ n, a n ≡ supportCoeff A n [MOD q]) → (∀ n, supportCoeff A n ≤ a n ∧ a n ≤ supportCoeff A n + q) → (∀ n, n ≤ B → a n = supportCoeff A n) → FinitePrefixCountermodel.separation a",
+   "plain_statement": "For every support A, q ≥ 1 and B ≥ 2q + 1: a(n) ≤ n, a ≡ f_A (mod q), f_A ≤ a ≤ f_A + q and a = f_A up to B do not imply the certificate supply, where f_A(n) counts the divisors of n in A. The upward shadow of f_A (plus q times binary digits written after B) has these properties, a dyadic value and no certificate at any N ≥ B.",
+   "blocks": "Proofs of irrationality of erdosSupportSeries 2 A = ∑ f_A(n)/2^n (erdosSupportSeries_two_eq) whose only inputs are f_A modulo one fixed q, f_A up to an additive error q, f_A(n) ≤ n and a finite prefix of f_A, whether through the generic certificate supply or through any engine sound for coefficients with c(n) ≤ n (no_route_of_rational_witness); at the level of irrationality alone the bound is not needed (support_rounding_barrier_irrational). It applies to every support A, finite or infinite.",
+   "route_predicates": [
+    "Erdos249257.supportCoeff",
+    "Erdos249257.erdosSupportSeries",
+    "ErdosProblems.Erdos249.PaperCompleteR20.FinitePrefixCountermodel.separation",
+    "ErdosProblems.Synthesis.RoundingBarrier.upShadow"
+   ],
+   "does_not_block": [
+    "multiplicativity on coprime arguments: a multiplicative sequence within bounded distance of φ or of τ equals it (ErdosProblems.Synthesis.MultiplicativeRigidity.eq_totient_of_multiplicative_of_bounded_sub, eq_card_divisors_of_multiplicative_of_bounded_sub), so no rounding shadow keeps it",
+    "residues modulo moduli that grow with n, such as 2^L at the depth L that a certificate at position N needs (2^L > 2(N + h + L + 2)); each shadow keeps one fixed modulus q, and its cutoff grows with q",
+    "joint state-forcing correlations of the actual sequence: statistics that couple the fractional part of its binary tail with its forcing word; the shadow's value is dyadic, so its binary tails are integers beyond the cutoff and these statistics are not shared",
+    "the Dirichlet incidence structure f_A = 1_A * 1 itself: the shadow is not the divisor count of any support",
+    "engines not stated for a general coefficient sequence with c(n) ≤ n, such as support-specific or block-divisibility hypotheses on f_A (the schema needs soundness at the shadow)"
+   ],
+   "target": "Erdős #257: for every infinite A ⊆ ℕ≥1, ∑_{n∈A} 1/(2^n − 1) is irrational (in Lean: Irrational (erdosSupportSeries 2 A))",
+   "evidence_class": "kernel_checked",
+   "axioms_note": "standard axioms only (propext, Classical.choice, Quot.sound) in kernel probe run 36362232898 (branch claude/kernel-probe-barrier-4-20260928, file sha256 prefix 9497059af6ae / 913974d89dd2); not yet landed: source_ref is the proposed landing path and line; imports ErdosProblems.Erdos249.PaperCompleteR20.FinitePrefixCountermodelEndpoint, which main compiles only in the lean-coverage-build lane"
+  },
+  {
+   "id": "1049-divisor-count-real-base-rounding",
+   "problem": "1049",
+   "barrier_kind": "countermodel",
+   "declaration": "ErdosProblems.Synthesis.RealBaseRounding.paperLambert_rounding_barrier",
+   "source_ref": "lean/ErdosProblems/Synthesis/RealBaseRounding.lean:251",
+   "statement": "theorem paperLambert_rounding_barrier {x : ℝ} (hx : 1 < x) {q : ℕ} (hq : 0 < q) (M : ℕ) : ¬ ∀ a : ℕ → ℕ, (∀ n, a n ≡ n.divisors.card [MOD q]) → (∀ n, n.divisors.card ≤ a n ∧ a n ≤ n.divisors.card + q * ⌈x - 1⌉₊) → (∀ n, n ≤ M → a n = n.divisors.card) → Irrational (∑' n, (a n : ℝ) / x ^ n)",
+   "plain_statement": "For every real x > 1, q ≥ 1 and M: a ≡ τ (mod q), τ ≤ a ≤ τ + q⌈x − 1⌉ and a = τ up to M do not imply irrationality of ∑ a(n)/x^n, which at a = τ is paperLambert x = ∑_{n≥1} 1/(x^n − 1) (paperLambert_eq_tsum_divisor_count). The upward shadow of τ in base x has these properties and a rational value.",
+   "blocks": "Irrationality proofs for ∑_{n≥1} 1/(x^n − 1) at a base x > 1, including the open base 3/2 (paperLambert_threeHalves_rounding_barrier, with τ ≤ a ≤ τ + q), whose only inputs are the divisor count τ modulo one fixed q, τ up to a bounded additive error, and a finite prefix of τ. At x = 2 the series is irrational (Erdős 1948), so there the row records that the same inputs are insufficient for a known theorem.",
+   "route_predicates": [
+    "ErdosProblems.Erdos1049.PaperR7.paperLambert",
+    "ErdosProblems.Synthesis.RealBaseRounding.exists_upShadow_realBase"
+   ],
+   "does_not_block": [
+    "the Lambert and q-series identities of paperLambert and the linear-form constructions built on them (CancelledApproximationSupply), which use exact values of the function rather than coefficient properties",
+    "multiplicativity on coprime arguments: a multiplicative sequence within bounded distance of φ or of τ equals it (ErdosProblems.Synthesis.MultiplicativeRigidity.eq_totient_of_multiplicative_of_bounded_sub, eq_card_divisors_of_multiplicative_of_bounded_sub), so no rounding shadow keeps it",
+    "residues modulo moduli that grow with n, such as 2^L at the depth L that a certificate at position N needs (2^L > 2(N + h + L + 2)); each shadow keeps one fixed modulus q, and its cutoff grows with q",
+    "statistics that couple the tail states of the actual series in base x with its coefficient word; the shadow's value is rational, so its tail states differ from those of the actual series"
+   ],
+   "target": "Erdős #1049: irrationality of ∑_{n≥1} 1/(t^n − 1) for rational t > 1; first open base t = 3/2",
+   "evidence_class": "kernel_checked",
+   "axioms_note": "standard axioms only (propext, Classical.choice, Quot.sound) in kernel probe run 36362232898 (branch claude/kernel-probe-barrier-4-20260928, file sha256 prefix 9497059af6ae / 913974d89dd2); not yet landed: source_ref is the proposed landing path and line; RealBaseRounding.lean imports ErdosProblems.Erdos1049.PaperLinearFormsR7 for the paperLambert bridge"
   }
  ],
  "build_lanes": {
@@ -3080,7 +3250,14 @@
   "68-fixed-pair-private-quotients-absorbed": "root_env",
   "68-small-prime-factor-not-private-support": "root_env",
   "68-small-isolated-prime-insufficient": "root_env",
-  "68-cofinal-miss-normal-forms-are-target": "root_env"
+  "68-cofinal-miss-normal-forms-are-target": "root_env",
+  "cross-dyadic-rounding-shadow-certificate-barrier": "coverage_lane",
+  "249-within-two-parity-shadow": "coverage_lane",
+  "249-every-modulus-rounding-shadow": "coverage_lane",
+  "249-fixed-depth-window-residue-shadow": "coverage_lane",
+  "251-prime-rounding-shadow": "coverage_lane",
+  "257-support-rounding-shadow": "coverage_lane",
+  "1049-divisor-count-real-base-rounding": "coverage_lane"
  },
  "siblings": {
   "249-prime-adjunction-diamond-collapse": [
@@ -3974,6 +4151,208 @@
     "source_ref": "lean/ErdosProblems/Erdos68/FactorialShiftFamilyOrbit.lean:156",
     "lane": "root_env"
    }
+  ],
+  "cross-dyadic-rounding-shadow-certificate-barrier": [
+   {
+    "declaration": "ErdosProblems.Synthesis.RoundingBarrier.up_rounding_barrier",
+    "source_ref": "lean/ErdosProblems/Synthesis/RoundingBarrier.lean:650",
+    "lane": "coverage_lane"
+   },
+   {
+    "declaration": "ErdosProblems.Synthesis.RoundingBarrier.down_rounding_barrier_irrational",
+    "source_ref": "lean/ErdosProblems/Synthesis/RoundingBarrier.lean:612",
+    "lane": "coverage_lane"
+   },
+   {
+    "declaration": "ErdosProblems.Synthesis.RoundingBarrier.up_rounding_barrier_irrational",
+    "source_ref": "lean/ErdosProblems/Synthesis/RoundingBarrier.lean:666",
+    "lane": "coverage_lane"
+   },
+   {
+    "declaration": "ErdosProblems.Synthesis.RoundingBarrier.no_route_of_rational_witness",
+    "source_ref": "lean/ErdosProblems/Synthesis/RoundingBarrier.lean:545",
+    "lane": "coverage_lane"
+   },
+   {
+    "declaration": "ErdosProblems.Synthesis.RoundingBarrier.no_separation_route_of_rational_witness",
+    "source_ref": "lean/ErdosProblems/Synthesis/RoundingBarrier.lean:552",
+    "lane": "coverage_lane"
+   },
+   {
+    "declaration": "ErdosProblems.Synthesis.RoundingBarrier.exists_downShadow",
+    "source_ref": "lean/ErdosProblems/Synthesis/RoundingBarrier.lean:331",
+    "lane": "coverage_lane"
+   },
+   {
+    "declaration": "ErdosProblems.Synthesis.RoundingBarrier.exists_upShadow",
+    "source_ref": "lean/ErdosProblems/Synthesis/RoundingBarrier.lean:412",
+    "lane": "coverage_lane"
+   },
+   {
+    "declaration": "ErdosProblems.Synthesis.RoundingBarrier.no_certificate_of_dyadic",
+    "source_ref": "lean/ErdosProblems/Synthesis/RoundingBarrier.lean:446",
+    "lane": "coverage_lane"
+   },
+   {
+    "declaration": "ErdosProblems.Synthesis.RoundingBarrier.not_cofinal_certificate_of_dyadic",
+    "source_ref": "lean/ErdosProblems/Synthesis/RoundingBarrier.lean:459",
+    "lane": "coverage_lane"
+   },
+   {
+    "declaration": "ErdosProblems.Synthesis.RoundingBarrier.irrational_of_separation",
+    "source_ref": "lean/ErdosProblems/Synthesis/RoundingBarrier.lean:498",
+    "lane": "coverage_lane"
+   },
+   {
+    "declaration": "ErdosProblems.Synthesis.RoundingBarrier.no_shiftedReturn_route_of_rational_witness",
+    "source_ref": "lean/ErdosProblems/Synthesis/RoundingBarrier.lean:559",
+    "lane": "coverage_lane"
+   },
+   {
+    "declaration": "ErdosProblems.Synthesis.RoundingBarrier.downShadow_no_certificate",
+    "source_ref": "lean/ErdosProblems/Synthesis/RoundingBarrier.lean:586",
+    "lane": "coverage_lane"
+   },
+   {
+    "declaration": "ErdosProblems.Synthesis.RoundingBarrier.upShadow_no_certificate",
+    "source_ref": "lean/ErdosProblems/Synthesis/RoundingBarrier.lean:641",
+    "lane": "coverage_lane"
+   },
+   {
+    "declaration": "ErdosProblems.Synthesis.RealBaseRounding.exists_upShadow_realBase",
+    "source_ref": "lean/ErdosProblems/Synthesis/RealBaseRounding.lean:149",
+    "lane": "coverage_lane"
+   },
+   {
+    "declaration": "ErdosProblems.Synthesis.RealBaseRounding.up_rounding_barrier_realBase",
+    "source_ref": "lean/ErdosProblems/Synthesis/RealBaseRounding.lean:176",
+    "lane": "coverage_lane"
+   }
+  ],
+  "249-within-two-parity-shadow": [
+   {
+    "declaration": "ErdosProblems.Synthesis.RoundingBarrier.tsum_totientShadow",
+    "source_ref": "lean/ErdosProblems/Synthesis/RoundingBarrier.lean:779",
+    "lane": "coverage_lane"
+   },
+   {
+    "declaration": "ErdosProblems.Synthesis.RoundingBarrier.totientShadow_no_certificate",
+    "source_ref": "lean/ErdosProblems/Synthesis/RoundingBarrier.lean:798",
+    "lane": "coverage_lane"
+   },
+   {
+    "declaration": "ErdosProblems.Synthesis.RoundingBarrier.totientShadow_not_cofinal_certificate",
+    "source_ref": "lean/ErdosProblems/Synthesis/RoundingBarrier.lean:835",
+    "lane": "coverage_lane"
+   },
+   {
+    "declaration": "ErdosProblems.Synthesis.RoundingBarrier.totientParityWithinTwo_not_imply_shiftedReturn",
+    "source_ref": "lean/ErdosProblems/Synthesis/RoundingBarrier.lean:841",
+    "lane": "coverage_lane"
+   },
+   {
+    "declaration": "ErdosProblems.Synthesis.RoundingBarrier.no_certificate_route_of_totientShadow",
+    "source_ref": "lean/ErdosProblems/Synthesis/RoundingBarrier.lean:817",
+    "lane": "coverage_lane"
+   },
+   {
+    "declaration": "ErdosProblems.Synthesis.RoundingBarrier.totientParityWithinTwo_not_imply_irrational",
+    "source_ref": "lean/ErdosProblems/Synthesis/RoundingBarrier.lean:831",
+    "lane": "coverage_lane"
+   },
+   {
+    "declaration": "ErdosProblems.Synthesis.RoundingBarrier.totientShadow_not_multiplicative",
+    "source_ref": "lean/ErdosProblems/Synthesis/RoundingBarrier.lean:856",
+    "lane": "coverage_lane"
+   },
+   {
+    "declaration": "ErdosProblems.Synthesis.RoundingBarrier.certificate_totient_iff",
+    "source_ref": "lean/ErdosProblems/Synthesis/RoundingBarrier.lean:519",
+    "lane": "coverage_lane"
+   },
+   {
+    "declaration": "ErdosProblems.Synthesis.RoundingBarrier.separation_totient_iff",
+    "source_ref": "lean/ErdosProblems/Synthesis/RoundingBarrier.lean:527",
+    "lane": "coverage_lane"
+   },
+   {
+    "declaration": "ErdosProblems.Synthesis.RoundingBarrier.irrational_totient_series_of_separation",
+    "source_ref": "lean/ErdosProblems/Synthesis/RoundingBarrier.lean:534",
+    "lane": "coverage_lane"
+   }
+  ],
+  "249-fixed-depth-window-residue-shadow": [
+   {
+    "declaration": "ErdosProblems.Synthesis.RoundingBarrier.discrepancy_modEq_of_modEq",
+    "source_ref": "lean/ErdosProblems/Synthesis/RoundingBarrier.lean:945",
+    "lane": "coverage_lane"
+   },
+   {
+    "declaration": "ErdosProblems.Synthesis.RoundingBarrier.totient_rounding_barrier",
+    "source_ref": "lean/ErdosProblems/Synthesis/RoundingBarrier.lean:929",
+    "lane": "coverage_lane"
+   },
+   {
+    "declaration": "ErdosProblems.Synthesis.RoundingBarrier.discrepancy_totient",
+    "source_ref": "lean/ErdosProblems/Synthesis/RoundingBarrier.lean:511",
+    "lane": "coverage_lane"
+   }
+  ],
+  "249-every-modulus-rounding-shadow": [
+   {
+    "declaration": "ErdosProblems.Synthesis.RoundingBarrier.totient_downShadow_no_certificate",
+    "source_ref": "lean/ErdosProblems/Synthesis/RoundingBarrier.lean:936",
+    "lane": "coverage_lane"
+   },
+   {
+    "declaration": "ErdosProblems.Synthesis.RoundingBarrier.totient_ge_of_large",
+    "source_ref": "lean/ErdosProblems/Synthesis/RoundingBarrier.lean:921",
+    "lane": "coverage_lane"
+   }
+  ],
+  "257-support-rounding-shadow": [
+   {
+    "declaration": "ErdosProblems.Synthesis.RoundingBarrier.support_rounding_barrier_irrational",
+    "source_ref": "lean/ErdosProblems/Synthesis/RoundingBarrier.lean:1066",
+    "lane": "coverage_lane"
+   },
+   {
+    "declaration": "ErdosProblems.Synthesis.RoundingBarrier.support_upShadow_no_certificate",
+    "source_ref": "lean/ErdosProblems/Synthesis/RoundingBarrier.lean:1057",
+    "lane": "coverage_lane"
+   },
+   {
+    "declaration": "ErdosProblems.Synthesis.RoundingBarrier.erdosSupportSeries_two_eq",
+    "source_ref": "lean/ErdosProblems/Synthesis/RoundingBarrier.lean:1041",
+    "lane": "coverage_lane"
+   },
+   {
+    "declaration": "ErdosProblems.Synthesis.RoundingBarrier.divisorCount_rounding_barrier",
+    "source_ref": "lean/ErdosProblems/Synthesis/RoundingBarrier.lean:1075",
+    "lane": "coverage_lane"
+   }
+  ],
+  "1049-divisor-count-real-base-rounding": [
+   {
+    "declaration": "ErdosProblems.Synthesis.RealBaseRounding.paperLambert_threeHalves_rounding_barrier",
+    "source_ref": "lean/ErdosProblems/Synthesis/RealBaseRounding.lean:261",
+    "lane": "coverage_lane"
+   },
+   {
+    "declaration": "ErdosProblems.Synthesis.RealBaseRounding.paperLambert_eq_tsum_divisor_count",
+    "source_ref": "lean/ErdosProblems/Synthesis/RealBaseRounding.lean:239",
+    "lane": "coverage_lane"
+   },
+   {
+    "declaration": "ErdosProblems.Synthesis.RealBaseRounding.tsum_one_div_pow_sub_one_eq_tsum_divisor_count",
+    "source_ref": "lean/ErdosProblems/Synthesis/RealBaseRounding.lean:200",
+    "lane": "coverage_lane"
+   },
+   {
+    "declaration": "ErdosProblems.Synthesis.RoundingBarrier.divisorCount_rounding_barrier",
+    "source_ref": "lean/ErdosProblems/Synthesis/RoundingBarrier.lean:1075",
+    "lane": "coverage_lane"
+   }
   ]
  },
  "authored_pointers": {
@@ -4311,35 +4690,35 @@
   "68-cofinal-miss-normal-forms-are-target": []
  },
  "counts": {
-  "total": 144,
+  "total": 151,
   "by_problem": {
-   "249": 62,
-   "257": 44,
-   "1049": 9,
-   "251": 6,
-   "269": 6,
-   "68": 6,
+   "249": 65,
+   "cross": 2,
+   "257": 45,
    "243": 5,
+   "251": 7,
+   "269": 6,
+   "1049": 10,
    "1041": 5,
-   "cross": 1
+   "68": 6
   },
   "by_kind": {
-   "countermodel": 48,
    "method_ceiling": 44,
-   "scoped_failure_receipt": 22,
+   "countermodel": 55,
    "endpoint_equivalence": 18,
+   "scoped_failure_receipt": 22,
    "finite_blindness": 9,
    "other": 3
   },
   "by_evidence_class": {
    "both": 55,
    "authored_record": 38,
-   "kernel_checked": 51
+   "kernel_checked": 58
   },
   "by_build_lane": {
    "root_env": 93,
    "unbuilt": 34,
-   "coverage_lane": 13,
+   "coverage_lane": 20,
    "authored_only": 4
   },
   "by_problem_and_kind": {
