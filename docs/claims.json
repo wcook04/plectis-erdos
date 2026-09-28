@@ -1915,7 +1915,8 @@
         "ErdosProblems.ArgumentGraph.Derived.Erdos68",
         "ErdosProblems.ArgumentGraph.Results.Erdos1041",
         "ErdosProblems.ArgumentGraph.Results.Erdos243",
-        "ErdosProblems.ArgumentGraph.Results.Erdos249Route",
+        "ErdosProblems.ArgumentGraph.Results.Erdos249Endpoint",
+        "ErdosProblems.ArgumentGraph.Results.Erdos249Residual",
         "ErdosProblems.ArgumentGraph.Results.Erdos251",
         "ErdosProblems.Bit.verify.B1",
         "ErdosProblems.Bit.verify.B2",
@@ -8788,6 +8789,12 @@
           ]
         },
         {
+          "id": "ErdosProblems.ArgumentGraph.Residualise",
+          "path": "lean/ErdosProblems/ArgumentGraph/Residualise.lean",
+          "role": "Lean proof module",
+          "imports": []
+        },
+        {
           "id": "ErdosProblems.ArgumentGraph.Results.Erdos1041",
           "path": "lean/ErdosProblems/ArgumentGraph/Results/Erdos1041.lean",
           "role": "Lean proof module",
@@ -8810,6 +8817,23 @@
           "imports": [
             "ErdosProblems.Erdos249.PaperCompleteR21.ExcludedCofactorEstimate",
             "ErdosProblems.Erdos249.TypeBReturnV8.PeripheralFiniteBridge"
+          ]
+        },
+        {
+          "id": "ErdosProblems.ArgumentGraph.Results.Erdos249Endpoint",
+          "path": "lean/ErdosProblems/ArgumentGraph/Results/Erdos249Endpoint.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.ArgumentGraph.Results.Erdos249"
+          ]
+        },
+        {
+          "id": "ErdosProblems.ArgumentGraph.Results.Erdos249Residual",
+          "path": "lean/ErdosProblems/ArgumentGraph/Results/Erdos249Residual.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.ArgumentGraph.Residualise",
+            "ErdosProblems.ArgumentGraph.Results.Erdos249Route"
           ]
         },
         {
@@ -19959,7 +19983,7 @@
     "lean_toolchain": "leanprover/lean4:v4.29.1",
     "repository": "https://github.com/wcook04/plectis-erdos",
     "formal_source": {
-      "ref": "948f3276061a743bc722937874e1603683737ffb",
+      "ref": "ce0c74e8748088383ae90b04de0477cc9862d520",
       "ref_kind": "commit",
       "publication_state": "committed_checkpoint_pending_remote_publication",
       "relationship_to_last_tag": "post_tag_checkpoint",

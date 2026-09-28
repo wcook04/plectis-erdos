@@ -52,7 +52,11 @@ MAX_GUIDE_BYTES = 18_000
 # Raised from 73_000 on 2026-09-14 after the related-work section absorbed
 # five prior-art citations (Prove2Me, two Feng et al. reports, Henkel, Li et
 # al.) that the paper had been missing; the text was trimmed twice first.
-SYSTEMS_PAPER_BASE_BYTES = 75_000
+# Raised from 75_000 on 2026-09-27 by the description of the residualisation
+# command, a part of the argument graph the previous base did not cover, and the
+# four prior-art citations it needed (DreamProver, CircuitProver, ProofEvolve,
+# Boehme and Nipkow); the Problem 249 paragraph was tightened first.
+SYSTEMS_PAPER_BASE_BYTES = 76_500
 SYSTEMS_PAPER_BYTES_PER_ARTIFACT = 1_000
 
 
