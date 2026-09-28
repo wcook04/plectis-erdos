@@ -11,7 +11,7 @@ Private correspondence appears only under a neutral anonymous identity until pub
 
 ## Coverage and anonymous implementation credits
 
-The registry contains `301` curated sources across `22` registered papers and `1900` Lean library files.
+The registry contains `301` curated sources across `22` registered papers and `1903` Lean library files.
 
 Source review states: `bibliography_only`: `96`; `existing_source_closure`: `31`; `external_claim_unverified`: `1`; `implemented_advice`: `3`; `source_verified`: `170`.
 
@@ -25,7 +25,7 @@ Implemented advice whose identity is awaiting confirmation:
 
 - Unmatched citation keys: `0`
 - Bibliography entries awaiting curated links: `79`
-- Lean candidates awaiting review: `786` (`3` direct URL/DOI/arXiv rows; `1640` surname/key rows; categories may overlap).
+- Lean candidates awaiting review: `792` (`3` direct URL/DOI/arXiv rows; `1646` surname/key rows; categories may overlap).
 
 ## Browse by problem
 
@@ -9070,7 +9070,7 @@ These gaps are shown explicitly so the catalogue cannot be mistaken for complete
 - Registered papers scanned: `22`; TeX source files scanned after local includes: `91`.
 - Citation keys without a local bibliography definition: `0`
 - Bibliography entries without a curated source link: `79`
-- Lean lexical candidates awaiting review: `786`
+- Lean lexical candidates awaiting review: `792`
 - Unresolved local TeX includes: `0`
 
 Machine-readable inventories, hashes, unresolved keys, and lexical candidates: [source-attribution-index.json](source-attribution-index.json).

@@ -1,7 +1,7 @@
 {
  "schema": "plectis-paper-evidence/2",
  "lean_repository": "https://github.com/wcook04/plectis-erdos",
- "lean_pin": "24edbddbe2bd68e920327a701aad0b9dd0d69675",
+ "lean_pin": "436f55ebdafa67e4af0fff79f621c13f2ded12bf",
  "lean_toolchain": "leanprover/lean4:v4.29.1",
  "mathlib": "5e932f97dd25535344f80f9dd8da3aab83df0fe6",
  "corpus_repository": "https://github.com/wcook04/plectis-erdos-lean",

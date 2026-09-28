@@ -10,9 +10,9 @@
       "evidence": [
         {
           "kind": "source_span",
-          "path": "research_corpus/Erdos1041/FRONTIER.md",
-          "start_line": 2877,
-          "end_line": 2877,
+          "path": "research_corpus/Erdos1041/research_packet.json",
+          "start_line": 5228,
+          "end_line": 5228,
           "must_contain": [
             "min-pair INTRINSIC distance",
             "exactly 2 at every degree"
@@ -21,8 +21,8 @@
         {
           "kind": "source_span",
           "path": "docs/RESULTS.md",
-          "start_line": 577,
-          "end_line": 584,
+          "start_line": 586,
+          "end_line": 593,
           "must_contain": [
             "A separate #1041 positive route remains open",
             "min_c L(c) ≤ 2"
@@ -822,8 +822,8 @@
         {
           "kind": "source_span",
           "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
-          "start_line": 837,
-          "end_line": 842,
+          "start_line": 860,
+          "end_line": 865,
           "must_contain": [
             "Comparator cannot",
             "would overclaim"
