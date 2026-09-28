@@ -18,7 +18,12 @@
         "source_sha256": "sha256:39b26c1a00840f40047ee03223b6359e10e7bafe4be8f0c9eca8f52a536d7984",
         "pdf_sha256": "sha256:b7635e96da57a679d715c552af4e1f0b31b555b9ca9ba9ca1dc075e7526563a2",
         "source_archive_sha256": "sha256:696a9c67f6cd8c39704727706b40ee6e43b4f27d2fbc946f323940d065b20fc9",
-        "peer_review_state": "not_externally_reviewed"
+        "peer_review_state": "not_externally_reviewed",
+        "hash_evidence": {
+          "source_archive": "served source archive downloaded and matched the frozen upload",
+          "pdf": "served attachment bytes downloaded and matched the frozen upload"
+        },
+        "served_attachment_bytes_verified": true
       }
     ],
     "erdos-68-factorial-denominator-irrationality": [
@@ -40,10 +45,10 @@
         "receiving_status": "published_listing_pending_editorial_review",
         "received_at": "2026-09-27T05:45:36Z",
         "hash_evidence": {
-          "source_archive": "receiving page hash matched the uploaded archive",
-          "pdf": "uploaded artifact; served attachment bytes not independently downloaded for comparison"
+          "source_archive": "served source archive downloaded and matched the frozen upload",
+          "pdf": "served attachment bytes downloaded and matched the frozen upload"
         },
-        "served_attachment_bytes_verified": false
+        "served_attachment_bytes_verified": true
       }
     ],
     "erdos-243-reciprocal-tail-rigidity": [
@@ -65,10 +70,10 @@
         "receiving_status": "published_listing_pending_editorial_review",
         "received_at": "2026-09-27T05:21:59Z",
         "hash_evidence": {
-          "source_archive": "receiving page hash matched the uploaded archive",
-          "pdf": "uploaded artifact; served attachment bytes not independently downloaded for comparison"
+          "source_archive": "served source archive downloaded and matched the frozen upload",
+          "pdf": "served attachment bytes downloaded and matched the frozen upload"
         },
-        "served_attachment_bytes_verified": false
+        "served_attachment_bytes_verified": true
       }
     ],
     "erdos-249-binary-totient-series": [
@@ -90,10 +95,10 @@
         "receiving_status": "published_listing_pending_editorial_review",
         "received_at": "2026-09-27T06:04:03Z",
         "hash_evidence": {
-          "source_archive": "receiving page hash matched the uploaded archive",
-          "pdf": "uploaded artifact; served attachment bytes not independently downloaded for comparison"
+          "source_archive": "served source archive downloaded and matched the frozen upload",
+          "pdf": "served attachment bytes downloaded and matched the frozen upload"
         },
-        "served_attachment_bytes_verified": false
+        "served_attachment_bytes_verified": true
       }
     ],
     "erdos-251-prime-gap-dyadic-series": [
@@ -115,10 +120,10 @@
         "receiving_status": "published_listing_pending_editorial_review",
         "received_at": "2026-09-27T06:19:33Z",
         "hash_evidence": {
-          "source_archive": "receiving page hash matched the uploaded archive",
-          "pdf": "uploaded artifact; served attachment bytes not independently downloaded for comparison"
+          "source_archive": "served source archive downloaded and matched the frozen upload",
+          "pdf": "served attachment bytes downloaded and matched the frozen upload"
         },
-        "served_attachment_bytes_verified": false
+        "served_attachment_bytes_verified": true
       }
     ],
     "erdos-269-three-prime-running-lcm": [
@@ -140,10 +145,10 @@
         "receiving_status": "published_listing_pending_editorial_review",
         "received_at": "2026-09-27T06:35:23Z",
         "hash_evidence": {
-          "source_archive": "receiving page hash matched the uploaded archive",
-          "pdf": "uploaded artifact; served attachment bytes not independently downloaded for comparison"
+          "source_archive": "served source archive downloaded and matched the frozen upload",
+          "pdf": "served attachment bytes downloaded and matched the frozen upload"
         },
-        "served_attachment_bytes_verified": false
+        "served_attachment_bytes_verified": true
       }
     ],
     "erdos-1041-lemniscate-newton-flow": [
@@ -165,10 +170,10 @@
         "receiving_status": "published_listing_pending_editorial_review",
         "received_at": "2026-09-27T06:51:42Z",
         "hash_evidence": {
-          "source_archive": "receiving page hash matched the uploaded archive",
-          "pdf": "uploaded artifact; served attachment bytes not independently downloaded for comparison"
+          "source_archive": "served source archive downloaded and matched the frozen upload",
+          "pdf": "served attachment bytes downloaded and matched the frozen upload"
         },
-        "served_attachment_bytes_verified": false
+        "served_attachment_bytes_verified": true
       }
     ],
     "erdos-1049-rational-base-lambert": [
@@ -190,10 +195,10 @@
         "receiving_status": "published_listing_pending_editorial_review",
         "received_at": "2026-09-27T07:07:51Z",
         "hash_evidence": {
-          "source_archive": "receiving page hash matched the uploaded archive",
-          "pdf": "uploaded artifact; served attachment bytes not independently downloaded for comparison"
+          "source_archive": "served source archive downloaded and matched the frozen upload",
+          "pdf": "served attachment bytes downloaded and matched the frozen upload"
         },
-        "served_attachment_bytes_verified": false
+        "served_attachment_bytes_verified": true
       }
     ]
   }

@@ -1198,10 +1198,10 @@
           "receiving_status": "published_listing_pending_editorial_review",
           "received_at": "2026-09-27T05:45:36Z",
           "hash_evidence": {
-            "source_archive": "receiving page hash matched the uploaded archive",
-            "pdf": "uploaded artifact; served attachment bytes not independently downloaded for comparison"
+            "source_archive": "served source archive downloaded and matched the frozen upload",
+            "pdf": "served attachment bytes downloaded and matched the frozen upload"
           },
-          "served_attachment_bytes_verified": false,
+          "served_attachment_bytes_verified": true,
           "relation_to_current_manuscript": "different_source_or_pdf"
         }
       ],
@@ -1788,10 +1788,10 @@
           "receiving_status": "published_listing_pending_editorial_review",
           "received_at": "2026-09-27T05:21:59Z",
           "hash_evidence": {
-            "source_archive": "receiving page hash matched the uploaded archive",
-            "pdf": "uploaded artifact; served attachment bytes not independently downloaded for comparison"
+            "source_archive": "served source archive downloaded and matched the frozen upload",
+            "pdf": "served attachment bytes downloaded and matched the frozen upload"
           },
-          "served_attachment_bytes_verified": false,
+          "served_attachment_bytes_verified": true,
           "relation_to_current_manuscript": "different_source_or_pdf"
         }
       ],
@@ -2436,10 +2436,10 @@
           "receiving_status": "published_listing_pending_editorial_review",
           "received_at": "2026-09-27T06:04:03Z",
           "hash_evidence": {
-            "source_archive": "receiving page hash matched the uploaded archive",
-            "pdf": "uploaded artifact; served attachment bytes not independently downloaded for comparison"
+            "source_archive": "served source archive downloaded and matched the frozen upload",
+            "pdf": "served attachment bytes downloaded and matched the frozen upload"
           },
-          "served_attachment_bytes_verified": false,
+          "served_attachment_bytes_verified": true,
           "relation_to_current_manuscript": "different_source_or_pdf"
         }
       ],
@@ -3694,10 +3694,10 @@
           "receiving_status": "published_listing_pending_editorial_review",
           "received_at": "2026-09-27T06:19:33Z",
           "hash_evidence": {
-            "source_archive": "receiving page hash matched the uploaded archive",
-            "pdf": "uploaded artifact; served attachment bytes not independently downloaded for comparison"
+            "source_archive": "served source archive downloaded and matched the frozen upload",
+            "pdf": "served attachment bytes downloaded and matched the frozen upload"
           },
-          "served_attachment_bytes_verified": false,
+          "served_attachment_bytes_verified": true,
           "relation_to_current_manuscript": "different_source_or_pdf"
         }
       ],
@@ -4243,6 +4243,11 @@
           "pdf_sha256": "sha256:b7635e96da57a679d715c552af4e1f0b31b555b9ca9ba9ca1dc075e7526563a2",
           "source_archive_sha256": "sha256:696a9c67f6cd8c39704727706b40ee6e43b4f27d2fbc946f323940d065b20fc9",
           "peer_review_state": "not_externally_reviewed",
+          "hash_evidence": {
+            "source_archive": "served source archive downloaded and matched the frozen upload",
+            "pdf": "served attachment bytes downloaded and matched the frozen upload"
+          },
+          "served_attachment_bytes_verified": true,
           "relation_to_current_manuscript": "different_source_or_pdf"
         }
       ],
@@ -5900,10 +5905,10 @@
           "receiving_status": "published_listing_pending_editorial_review",
           "received_at": "2026-09-27T06:35:23Z",
           "hash_evidence": {
-            "source_archive": "receiving page hash matched the uploaded archive",
-            "pdf": "uploaded artifact; served attachment bytes not independently downloaded for comparison"
+            "source_archive": "served source archive downloaded and matched the frozen upload",
+            "pdf": "served attachment bytes downloaded and matched the frozen upload"
           },
-          "served_attachment_bytes_verified": false,
+          "served_attachment_bytes_verified": true,
           "relation_to_current_manuscript": "different_source_or_pdf"
         }
       ],
@@ -6099,10 +6104,10 @@
           "receiving_status": "published_listing_pending_editorial_review",
           "received_at": "2026-09-27T06:51:42Z",
           "hash_evidence": {
-            "source_archive": "receiving page hash matched the uploaded archive",
-            "pdf": "uploaded artifact; served attachment bytes not independently downloaded for comparison"
+            "source_archive": "served source archive downloaded and matched the frozen upload",
+            "pdf": "served attachment bytes downloaded and matched the frozen upload"
           },
-          "served_attachment_bytes_verified": false,
+          "served_attachment_bytes_verified": true,
           "relation_to_current_manuscript": "different_source_or_pdf"
         }
       ],
@@ -6867,10 +6872,10 @@
           "receiving_status": "published_listing_pending_editorial_review",
           "received_at": "2026-09-27T07:07:51Z",
           "hash_evidence": {
-            "source_archive": "receiving page hash matched the uploaded archive",
-            "pdf": "uploaded artifact; served attachment bytes not independently downloaded for comparison"
+            "source_archive": "served source archive downloaded and matched the frozen upload",
+            "pdf": "served attachment bytes downloaded and matched the frozen upload"
           },
-          "served_attachment_bytes_verified": false,
+          "served_attachment_bytes_verified": true,
           "relation_to_current_manuscript": "different_source_or_pdf"
         }
       ],
