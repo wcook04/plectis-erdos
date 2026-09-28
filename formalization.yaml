@@ -1671,7 +1671,7 @@ acknowledgements: null
 external_verification:
   owner: "docs/claims.json::external_verification_packet"
   problem_index: "docs/problems.json"
-  problem_index_digest: "sha256:a401a1e89e49d2083af255cf67eab6b962e56b916e9e8f0843cc482e9e9c67aa"
+  problem_index_digest: "sha256:81c9de141cd88496d0ffad9a7932d926327eda411295e05aae5e97fc44296fbb"
   problem_count: 8
   problems:
     - id: "erdos_68"
@@ -1708,7 +1708,7 @@ external_verification:
       erdos_number: 269
       status: "open"
       checked_frontier: "That for three pairwise distinct primes the least common multiple of the smooth prefix equals the product of the three maximal pure prime powers below the cutoff."
-      open_frontier: "Irrationality or transcendence in any three-prime case."
+      open_frontier: "Irrationality of the repeated sum, or transcendence, in any three-prime case."
       claim_registry_status: "registered_declarations"
     - id: "erdos_1041"
       erdos_number: 1041

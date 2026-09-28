@@ -1046,7 +1046,7 @@ Exact registry keys and Comparator routing are listed separately.
 
 **Checked frontier.** That for three pairwise distinct primes the least common multiple of the smooth prefix equals the product of the three maximal pure prime powers below the cutoff.
 
-**Open boundary.** Irrationality or transcendence in any three-prime case.
+**Open boundary.** Irrationality of the repeated sum, or transcendence, in any three-prime case.
 
 **Read.** [Programme paper](../paper/269/erdos-269-three-prime-running-lcm.pdf) · [Lean source](../lean/ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean)
 

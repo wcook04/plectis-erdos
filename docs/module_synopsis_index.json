@@ -1,9 +1,9 @@
 {
   "schema_version": "erdos249257-module-synopsis-index/1",
   "authority_posture": "generated_index_of_authored_Lean_module_headers_not_proof_or_claim_status_authority",
-  "source_fingerprint": "sha256:be59080170efd358aaf0e5bb4cfccd9623c13158d2051d9b34b118bd3cbbc8f9",
-  "module_count": 1885,
-  "synopsis_count": 1638,
+  "source_fingerprint": "sha256:156df14a25be65e02ead655df0ac6fb17ef4a104c254252a414ac91e3ce045be",
+  "module_count": 1900,
+  "synopsis_count": 1652,
   "query_contract": {
     "command": "python3 scripts/query_corpus.py --module <module_path_or_sigil>",
     "returns": "Resolves a module synopsis to its declarations, paper sigil, source identity, attached claims, and route-memory context."
@@ -5598,6 +5598,11 @@
       "synopsis": "Erdős 243: descent, and the constant and periodic negative magnitudes Paper-form restatements of three environments of the long note `paper/reasoning-parts/erdos243/core.tex`: * `long243:res:descent` (descent), stated exactly by the existing `centeredState_eventually_zero`; * `long243:res:constant` (no constant negative magnitude), both its clause at every index and its clause \"the same holds if the shape equation only begins at some index\"; * `long243:res:periodic` (no periodic negative magnitude). The two exclusion theorems are phrased in the paper as the non-existence of a pair (respectively a quadruple) of sequences. The tree states them as the falsity of the hypotheses. The restatements below are the packaged `¬ ∃` forms, so that the Lean statement is literally the paper's."
     },
     {
+      "id": "ErdosProblems.Erdos243.PaperCompleteR21.NonintegralRegularRate",
+      "path": "lean/ErdosProblems/Erdos243/PaperCompleteR21/NonintegralRegularRate.lean",
+      "synopsis": null
+    },
+    {
       "id": "ErdosProblems.Erdos243.PaperCompleteR21.ProductDefectThresholds",
       "path": "lean/ErdosProblems/Erdos243/PaperCompleteR21/ProductDefectThresholds.lean",
       "synopsis": "Erdős 243: the product-ratio criterion and the `1/n` threshold This file supplies the strict clause of `long243:res:onethreshold` and gives a home to the two clauses of that corollary, and to the bounded clause of `long243:res:strausbounded`, that the tree already states. The paper's quantities in one-based indexing are `P_n = a_1 ⋯ a_{n-1}`, `t_n = P_n / a_n`, `γ_n = a_n²/a_{n+1} - 1` and `Q_n = t_n γ_n`. The tree's `prefixProduct a n = ∏_{j < n} a j` and `productDefect a n = (prefixProduct a n / a n) (a n ²/a (n+1) - 1)` are these in zero-based indexing. The strict clause says: if `limsup n (γ_n)_+ < 1`, the sequence is eventually Sylvester. The hypothesis is carried in the form that is equivalent to that limsup bound, namely: there is an `r < 1` with `n (γ_n)_+ ≤ r` for all large `n`. The proof is the paper's, in the sharper telescoping form: from `n (γ_n)_+ ≤ r ≤ 1` one gets `t_{n+1}/t_n = 1 + γ_n ≤ (n+1)/n`, so `N t_n ≤ t_N n`, and hence `Q_n = t_n γ_n ≤ t_N r`. The bounded-defect criterion then applies. No asymptotic estimate `t_n = O(n^r)` is needed."
@@ -5645,7 +5650,7 @@
     {
       "id": "ErdosProblems.Erdos243.PaperCompleteR21.SquareSpecialisationDedekind",
       "path": "lean/ErdosProblems/Erdos243/PaperCompleteR21/SquareSpecialisationDedekind.lean",
-      "synopsis": "Erdős 243: the square-specialisation lemma without the Chebotarev density theorem Paper form of `long243:res:squarespec` of `paper/reasoning-parts/erdos243/core.tex` (lemma at line 303): `f ∈ ℚ[T]` irreducible with root `α`, `H (α) ≠ 0`, and for all but finitely many primes `ℓ` every root `r` of `f` modulo `ℓ` has `H (r)` a nonzero square modulo `ℓ` (stated through integral models `G = d f`, `J = d ^ 2 H`); then `H (α)` is a square in `ℚ(α)`. The paper derives this from the Chebotarev density theorem. Here it follows from `ErdosProblems.Shared.NonsquareModuloPrimes.exists_prime_hom_not_isSquare`, whose only analytic input is the simple pole of the Dedekind zeta function at `s = 1`, already in Mathlib. The reduction. Put `K = ℚ[T] / (f)` with `α` the class of `T`, and `c` the leading coefficient of `G`. Then `a = c α` is integral, and for a polynomial `P ∈ ℤ[T]` and `e ≥ deg P` the element `∑_{j ≤ e} P_j c ^ (e - j) a ^ j` of `𝓞 K` equals `c ^ e P (α)`; under any ring homomorphism `φ : 𝓞 K → ZMod ℓ` it becomes `c ^ e P (r)` with `r = φ (a) / c`. Taking `P = G` shows that `r` is a root of `G` modulo `ℓ`, and taking `P = J`, `e = 2 deg J`, gives an element `b = (c ^ (deg J) d) ^ 2 H (α)` of `𝓞 K` with `φ (b) = (c ^ (deg J)) ^ 2 J (r)`. If `H (α)` were not a square in `K`, neither would `b` be, and some prime `ℓ` beyond every bound would make `φ (b)` zero or a non-square, contradicting the hypothesis at the root `r`. `squareSpecialisation_holds` is the statement of `ErdosProblems.Erdos243.PaperCompleteR21.SquareSpecialisation` written out in full, so this file depends on Mathli"
+      "synopsis": "Erdős 243: the square-specialisation lemma without the Chebotarev density theorem Paper form of `long243:res:squarespec` of `paper/reasoning-parts/erdos243/core.tex` (lemma at line 303): `f ∈ ℚ[T]` irreducible with root `α`, `H (α) ≠ 0`, and for all but finitely many primes `ℓ` every root `r` of `f` modulo `ℓ` has `H (r)` a nonzero square modulo `ℓ` (stated through integral models `G = d f`, `J = d ^ 2 H`); then `H (α)` is a square in `ℚ(α)`. The paper derives this from the Chebotarev density theorem. Here it follows from `ErdosProblems.Shared.NonsquareModuloPrimes.exists_prime_hom_nonsquare_of_not_isSquare`, whose only analytic input is the simple pole of the Dedekind zeta function at `s = 1`, already in Mathlib. The reduction. Put `K = ℚ[T] / (f)` with `α` the class of `T`, and `c` the leading coefficient of `G`. Then `a = c α` is integral, and for a polynomial `P ∈ ℤ[T]` and `e ≥ deg P` the element `∑_{j ≤ e} P_j c ^ (e - j) a ^ j` of `𝓞 K` equals `c ^ e P (α)`; under any ring homomorphism `φ : 𝓞 K → ZMod ℓ` it becomes `c ^ e P (r)` with `r = φ (a) / c`. Taking `P = G` shows that `r` is a root of `G` modulo `ℓ`, and taking `P = J`, `e = 2 deg J`, gives an element `b = (c ^ (deg J) d) ^ 2 H (α)` of `𝓞 K` with `φ (b) = (c ^ (deg J)) ^ 2 J (r)`. If `H (α)` were not a square in `K`, neither would `b` be, and some prime `ℓ` beyond every bound would make `φ (b)` a non-square, contradicting the hypothesis at the root `r`. `squareSpecialisation_holds` is the statement of `ErdosProblems.Erdos243.PaperCompleteR21.SquareSpecialisation` written out in full, so this file depends on M"
     },
     {
       "id": "ErdosProblems.Erdos243.PaperCompleteR21.SquareSpecialisationUnconditional",
@@ -5831,6 +5836,46 @@
       "id": "ErdosProblems.Erdos249.CyclotomicAnchoredKill",
       "path": "lean/ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean",
       "synopsis": "Erdős #249: the exact `X - 2` cyclotomic layer and anchored period kills For the polynomial `X - 2`, the cyclic resultant at index `n` is `2^n - 1`. This file discharges the previously abstract prime-ray producer completely: every prime divisor of `2^q - 1`, for prime `q`, is `1 mod q`; consequently the prime divisors appearing in these layers are unbounded. That arithmetic support theorem does not itself prove irrationality of the binary totient series. The second half records the exact missing bridge: cofinally remote certified tail discrepancies, with the period allowed to be a multiple of the cyclotomic anchor. Two substantial finite certificates are also checked by the Lean kernel."
+    },
+    {
+      "id": "ErdosProblems.Erdos249.FiniteDilationDyadicClassification",
+      "path": "lean/ErdosProblems/Erdos249/FiniteDilationDyadicClassification.lean",
+      "synopsis": "Finite dyadic observables across commensurate integer bases The first theorem applies the joint integer pulse result after simultaneous rational centering. Its first-active-dilation hypothesis is later discharged by separating the finitely many even-constant observables."
+    },
+    {
+      "id": "ErdosProblems.Erdos249.FiniteDilationJointValue",
+      "path": "lean/ErdosProblems/Erdos249/FiniteDilationJointValue.lean",
+      "synopsis": "Joint irrationality for a finite family of commensurate bases This private module composes the finite-dilation CRT pulse, finite-series transport, and the public integer-radix pulse consumer. The statement is a finite-combination theorem; the countable rational-independence corollary requires only the usual reduction of a relation to finite support."
+    },
+    {
+      "id": "ErdosProblems.Erdos249.FiniteDilationLeastResidueRational",
+      "path": "lean/ErdosProblems/Erdos249/FiniteDilationLeastResidueRational.lean",
+      "synopsis": "Rational coefficients in finite least-residue relations The joint integer-coefficient theorem already isolates a nonzero least dilation. One common denominator converts a finite rational relation to that integer theorem while preserving the actual positive-index series value."
+    },
+    {
+      "id": "ErdosProblems.Erdos249.FiniteDilationLinearIndependent",
+      "path": "lean/ErdosProblems/Erdos249/FiniteDilationLinearIndependent.lean",
+      "synopsis": "Countable rational independence of dilated least-residue values The finite affine obstruction is the source theorem. This companion records its countable family form using Mathlib's `LinearIndependent` predicate."
+    },
+    {
+      "id": "ErdosProblems.Erdos249.FiniteDilationMixedModuli",
+      "path": "lean/ErdosProblems/Erdos249/FiniteDilationMixedModuli.lean",
+      "synopsis": "Joint rationality with a different dyadic modulus at each dilation The common-modulus theorem is applied after lifting each finite residue table to one dyadic level. The positive-index series is retained throughout."
+    },
+    {
+      "id": "ErdosProblems.Erdos249.FiniteDilationPulseCore",
+      "path": "lean/ErdosProblems/Erdos249/FiniteDilationPulseCore.lean",
+      "synopsis": "Arithmetic core for pulses after finitely many dilations Private finite-dilation arithmetic core, checked with Mathlib / Lean 4.29.1. This file proves centre isolation, neighbour killing, the simultaneous CRT/Dirichlet prime-witness construction, and unconditional isolated pulses for finite dilation mixing at a prime-accessible residue. The public integer-radix source supplies the signed-series consumer separately. Series transport and the joint value theorem are not proved here. None of these statements establishes irrationality of the unreduced totient series."
+    },
+    {
+      "id": "ErdosProblems.Erdos249.FiniteDilationRationalObservables",
+      "path": "lean/ErdosProblems/Erdos249/FiniteDilationRationalObservables.lean",
+      "synopsis": "Rational observables across finitely many dilations The integer mixed-word theorem applies after subtracting each observable's value at residue zero and clearing denominators once for the entire finite family. This file isolates that simultaneous clearing step."
+    },
+    {
+      "id": "ErdosProblems.Erdos249.FiniteDilationSeriesTransport",
+      "path": "lean/ErdosProblems/Erdos249/FiniteDilationSeriesTransport.lean",
+      "synopsis": "Reindexing one dilated series The arithmetic pulse proof uses coefficients indexed by `d * n`. This file isolates the infinite-sum change of variables needed before finite dilation mixing can be identified with one integer-radix series."
     },
     {
       "id": "ErdosProblems.Erdos249.FiniteEulerSieve",
@@ -6253,9 +6298,19 @@
       "synopsis": "The first clause of the long #249 paper's `prop:dickman` (\"A one-sided bound for the unassigned terms\"). `prop:dickman` asserts four things: (a) an unassigned `n = N + t` has `P(n) ≤ y_X` with `y_X = 4√X + 2t/√X`; (b) the resulting count is at most `Ψ(2X+t-1, y_X) - Ψ(X+t-1, y_X)`; (c) that difference is `(1 - log 2 + o(1))X`; (d) hence `< (8/25)X` eventually. Clauses (b)–(d) need the smooth-number counting function `Ψ` and Dickman's `ρ`, neither of which exists in Mathlib or in this tree, plus the paper's cited fixed-`u` asymptotic. Clause (a) is elementary and is proved here against the tree's own assignment predicate. The paper's assigned set `𝒜` is `Erdos249257.TotientTailPeriodKiller.pivotSupplierBases X L s`, its offset `t` is `pivotOffset L s = L - s + 1`, its `n = N + t` is `pivotArgument N L s`, and its `P(n)`, `m = n/P(n)` are `pivotPrime`, `pivotCofactor`."
     },
     {
+      "id": "ErdosProblems.Erdos249.PaperCompleteR7.ArbitraryBaseIsolatedPulse",
+      "path": "lean/ErdosProblems/Erdos249/PaperCompleteR7/ArbitraryBaseIsolatedPulse.lean",
+      "synopsis": "Arbitrary-base isolated-pulse lattice obstruction This is the algebraic core for the integer-radix extension of the fixed-binary-base totient-residue theorem. It accepts a bounded tail orbit and a fixed rational lattice as explicit hypotheses. The companion analytic interface constructs that orbit from a bounded series."
+    },
+    {
       "id": "ErdosProblems.Erdos249.PaperCompleteR7.ArithmeticAssemblies",
       "path": "lean/ErdosProblems/Erdos249/PaperCompleteR7/ArithmeticAssemblies.lean",
       "synopsis": "Exact arithmetic and endpoint assemblies for the two papers Targets include long-record cert:d9 / prop:D9-inv, mob:a1b, T7, prop:CP-04-kill, and the level-zero clause of short-note res:basis. The canonical Mersenne theorem is restated with the quotient and oddness as printed, instead of silently changing its quantifiers. These are proof-source candidates; compilation was NOT available in this run. The rational-gap proof reuses the existing exact separation inequality; the same adapter is present under the older public namespace in Erdos249257/PrimitiveRationalGapSupply.lean at the retained public pin."
+    },
+    {
+      "id": "ErdosProblems.Erdos249.PaperCompleteR7.IntegerRadixObservables",
+      "path": "lean/ErdosProblems/Erdos249/PaperCompleteR7/IntegerRadixObservables.lean",
+      "synopsis": "Integer-radix totient observables This module generalizes the analytic part of the bounded-residue theorem from binary denominators to any integer radix at least two. The original binary declarations remain the public compatibility interface."
     },
     {
       "id": "ErdosProblems.Erdos249.PaperCompleteR7.KernelIntegral",
@@ -6266,6 +6321,11 @@
       "id": "ErdosProblems.Erdos249.PaperCompleteR7.PeriodicAndPulse",
       "path": "lean/ErdosProblems/Erdos249/PaperCompleteR7/PeriodicAndPulse.lean",
       "synopsis": "Paper-complete interfaces: eventual periodic coefficients and cofinal pulses Targets: short-note `cor:periodic-freezing` and `lem:bounded-pulse`. This file extends the compiled r5 periodic theorem, not the uncompiled r6 helper. Every theorem has a proof term and no extra mathematical assumption. Build status for this return: source-reviewed, NOT RUN (no Lean executable)."
+    },
+    {
+      "id": "ErdosProblems.Erdos249.PaperCompleteR7.RationalIntegerRadixClassification",
+      "path": "lean/ErdosProblems/Erdos249/PaperCompleteR7/RationalIntegerRadixClassification.lean",
+      "synopsis": "Rational totient observables in an integer radix The classification shares the existing prime-isolation source with the binary theorem. The analytic pulse obstruction is the integer-radix companion."
     },
     {
       "id": "ErdosProblems.Erdos249.PaperCompleteR7.RationalObservableClassification",
@@ -7391,6 +7451,21 @@
       "id": "ErdosProblems.Erdos269.CofinalWindowEscapeEquivalence",
       "path": "lean/ErdosProblems/Erdos269/CofinalWindowEscapeEquivalence.lean",
       "synopsis": "Erdős #269: the cofinal local-window escape producer is *equivalent* to the target `RationalityCarryBridge` closes the rationality-to-carry bridge and derives `ActualCofinalLocalWindowEscape → Irrational (Σ_{h ∈ ⟨2,3,5⟩} 1/H(h))`. The producer was therefore recorded as a *strictly stronger, target-deciding* open route. This module proves the **converse**, unconditionally: `Irrational (Σ_{h ∈ ⟨2,3,5⟩} 1/H(h)) → ActualCofinalLocalWindowEscape`, so the two are exactly equivalent (`actualCofinalLocalWindowEscape_iff`, `actualCofinalLocalWindowEscape_iff_irrational_value`). What this proves and what it does not It **proves** an exact equivalence of two propositions. It does **not** prove either of them. **Erdős #269 remains open.** The mathematical content is a *no-go for the producer as a reduction*: `ActualCofinalLocalWindowEscape` is not a weaker, more tractable statement one could hope to attack by window/anti-concentration arguments and thereby obtain irrationality; proving it is literally proving Erdős #269. Any future effort spent on the producer must be justified as an attack on the target itself. The mechanism Let `X_a = trueNormalizedState a` be the genuine half-height normalized tail, `b` the actual radix word and `m` the actual ordered digit, so `X_{a+1} = b_a X_a - m_a`, `0 < X_a ≤ 90 (a+1)^2`. Unrolling across a window `[lo, lo+len)` gives, over the reals, `X_{lo+len} = W X_lo - F`, `W = windowBase b lo len`, `F = windowForcing b m lo len`. If the least positive residue `r` of `-(B F)` modulo `W` satisfies `r ≤ K` with `K = B · 90 (lo+len+1)^2`, then writing `r + B"
+    },
+    {
+      "id": "ErdosProblems.Erdos269.DistinctHeightAxiomAudit",
+      "path": "lean/ErdosProblems/Erdos269/DistinctHeightAxiomAudit.lean",
+      "synopsis": "Axiom audit for the irrationality of the distinct-height sum `𝒟_{2,3,5}` Each theorem below should depend only on `propext`, `Classical.choice` and `Quot.sound`."
+    },
+    {
+      "id": "ErdosProblems.Erdos269.DistinctHeightBlockRadix",
+      "path": "lean/ErdosProblems/Erdos269/DistinctHeightBlockRadix.lean",
+      "synopsis": "Erdős #269: a block-radix irrationality criterion This module isolates the arithmetic engine behind the irrationality of the distinct-height sum `𝒟_{2,3,5}`, which is assembled in `ErdosProblems.Erdos269.DistinctHeightIrrationality`. A *block letter* is one of the five pairs `(b, μ)` (2, 1), (6, 3), (10, 3), (30, 13), (30, 9), the radix and numerator of a dyadic block of type `∅`, `3`, `5`, `35`, `53`. Given a word of block letters `(b a, μ a)`, put `P a = b 0 ⋯ b (a - 1)` and consider the series `∑ a, μ a / P (a + 1)`. Its normalised tails Y a = P a · ∑_{j ≥ a} μ j / P (j + 1) satisfy `b a · Y a = μ a + Y (a + 1)` (`base_mul_tailState`). * `tailState_ge`, `tailState_le`: if every three consecutive letters contain one with `5 ∣ b`, then `3/10 ≤ Y a ≤ 13/15`. * `blockLetter_decode`: on `[3/10, 13/15]` the five affine maps `y ↦ (μ + y) / b` have pairwise disjoint images, so `Y a` determines the letter at `a`, and then `Y (a + 1) = b a · Y a - μ a`. * `exists_int_mul_tailState`: if the sum is a rational `q`, every `q.den · Y a` is an integer; with the bounds, two tails coincide. * `irrational_tsum_blockTerm`: hence a rational sum forces the letter word to be eventually periodic, and a word whose radices are not eventually periodic gives an irrational sum."
+    },
+    {
+      "id": "ErdosProblems.Erdos269.DistinctHeightIrrationality",
+      "path": "lean/ErdosProblems/Erdos269/DistinctHeightIrrationality.lean",
+      "synopsis": "Erdős #269: the distinct-height sum `𝒟_{2,3,5}` is irrational Let `H(t) = 2^⌊log₂ t⌋ · 3^⌊log₃ t⌋ · 5^⌊log₅ t⌋` (`runningHeight235`). For `t ≥ 1` this is the running least common multiple of the `{2,3,5}`-smooth integers not exceeding `t` (`smoothPrefixLcm_eq_runningHeight235`). The #269 long record defines the distinct-height sum 𝒟_{2,3,5} = 1 + ∑_{t ∈ {2^n, 3^n, 5^n : n ≥ 1}} 1 / H(t), which counts every value of the running LCM once, at the jump where it first appears. This module proves * `distinctHeightSum235_irrational : Irrational distinctHeightSum235`, the sum over the jump points exactly as displayed above, and * `distinctHeightSum235_eq_tsum_range` together with `irrational_tsum_range_runningHeight235`: the same number is `∑' h : Set.range runningHeight235, 1 / h`, the sum of `1 / h` over the distinct values `h` of `H`, and it is irrational. Erdős asserted the irrationality of distinct-height sums for finite sets of primes in a letter of 1 January 1973 (Fibonacci Quarterly 12 (1974), p. 335) and printed no argument. Route Group the jump points into the dyadic blocks `(2^a, 2^(a+1)]`. Each block contains `2^(a+1)`, at most one power of `3` (`firstPow 3 a`, the first power of `3` above `2^a`) and at most one power of `5` (`firstPow 5 a`), so its contribution is `blockNum a / H(2^(a+1))` with `H(2^(a+1)) = blockBase a · H(2^a)` and `(blockBase a, blockNum a)` one of the five block letters of `ErdosProblems.Erdos269.DistinctHeightBlockRadix` (`sum_block_jumpTerm_eq`). Every three consecutive blocks contain a power of `5`, because `4 < 5 < 8` (`five_spacing`), and the "
     },
     {
       "id": "ErdosProblems.Erdos269.DyadicBlockMassIdentity",

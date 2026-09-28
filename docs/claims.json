@@ -21811,7 +21811,7 @@
         "source": "paper/269/erdos-269-three-prime-running-lcm.tex",
         "environment": "section",
         "title": "Introduction",
-        "line": 70
+        "line": 71
       }
     },
     {
@@ -21859,7 +21859,7 @@
         "source": "paper/269/erdos-269-three-prime-running-lcm.tex",
         "environment": "problem",
         "title": "no reduced tail is an integer",
-        "line": 931
+        "line": 848
       }
     },
     {
@@ -21871,19 +21871,19 @@
         "source": "paper/269/erdos-269-three-prime-running-lcm.tex",
         "environment": "problem",
         "title": "residue inequalities after every starting index",
-        "line": 937
+        "line": 854
       }
     },
     {
       "id": "remaining_open.erdos_269_two_dimensional_representation",
       "status": "open",
       "open_target_claim": "erdos_269",
-      "statement": "D_{2,3,5} is irrational (Lean-checked, res:distinct-height-235); its transcendence is open. Represent D_{2,3,5} faithfully by a specified two-dimensional Mahler-type value theorem with every hypothesis verified and deduce transcendence, give a conditional transcendence theorem under explicit logarithmic nondegeneracy, or prove no such representation exists.",
+      "statement": "Transcendence of D_{2,3,5}, which is irrational: represent it faithfully by a specified two-dimensional Mahler-type value theorem with every hypothesis verified, give a conditional theorem under explicit logarithmic nondegeneracy, or prove no such representation exists.",
       "paper_anchor": {
         "source": "paper/269/erdos269-running-lcm-reasoning-surface.tex",
         "environment": "problem",
         "title": "an exact function representing the distinct-height sum",
-        "line": 3196
+        "line": 3195
       }
     },
     {
