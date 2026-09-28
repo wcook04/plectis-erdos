@@ -1,5 +1,7 @@
 # Erdős 1041: the near-Fekete cusp has a law, and its sign is favourable
 
+> Status note (2026-09-28): the exact Formal Conjectures statement of Erdős #1041 is refuted by ani's degree-seven example (Lean `erdos1041_counterexample_hausdorff`, `lean/ErdosProblems/Erdos1041/Counterexample/HausdorffLength.lean` in the public repository); correspondence with the 1958 wording awaits independent review. Earlier statements in this note that the problem is open are dated history.
+
 Status: one ordinary theorem (Fekete stability), one ordinary scaling argument
 (the near-field model), and a high-precision measurement of the constants that
 scaling leaves undetermined. Its source-current companion now proves the finite

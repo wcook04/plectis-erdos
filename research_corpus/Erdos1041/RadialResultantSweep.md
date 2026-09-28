@@ -1,5 +1,7 @@
 # Erdős 1041: the radial resultant sweep, and the near-field model of the origin-spoke route
 
+> Status note (2026-09-28): the exact Formal Conjectures statement of Erdős #1041 is refuted by ani's degree-seven example (Lean `erdos1041_counterexample_hausdorff`, `lean/ErdosProblems/Erdos1041/Counterexample/HausdorffLength.lean` in the public repository); correspondence with the 1958 wording awaits independent review. Earlier statements in this note that the problem is open are dated history.
+
 Status: two exact identities, one exact entry-radius law for the first-order
 model, one near-field model with an exactly critical optimum, and an explanation
 of why two earlier searches pinned at the threshold. Current through 2026-08-27;

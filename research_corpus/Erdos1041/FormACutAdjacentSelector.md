@@ -1,5 +1,7 @@
 # Erdős 1041: the Form A-cut hub is not free — near Fekete it is the adjacent good pair
 
+> Status note (2026-09-28): the exact Formal Conjectures statement of Erdős #1041 is refuted by ani's degree-seven example (Lean `erdos1041_counterexample_hausdorff`, `lean/ErdosProblems/Erdos1041/Counterexample/HausdorffLength.lean` in the public repository); correspondence with the 1958 wording awaits independent review. Earlier statements in this note that the problem is open are dated history.
+
 Status: one near-field expansion with checked error orders, one closed-half-plane
 count, one leading-order sufficiency proof for an explicit selector when
 `E_1 != 0`, one refuted selector, and a measured agreement with the free

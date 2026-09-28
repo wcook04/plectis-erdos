@@ -1,5 +1,7 @@
 # Erdős 1041: the global critical-point length budget
 
+> Status note (2026-09-28): the exact Formal Conjectures statement of Erdős #1041 is refuted by ani's degree-seven example (Lean `erdos1041_counterexample_hausdorff`, `lean/ErdosProblems/Erdos1041/Counterexample/HausdorffLength.lean` in the public repository); correspondence with the 1958 wording awaits independent review. Earlier statements in this note that the problem is open are dated history.
+
 The problem, exactly as stated: for `f(z) = ∏ᵢ(z − zᵢ)` with `|zᵢ| < 1`, must there
 be a path of length less than 2 inside `{|f| < 1}` joining two of the roots?
 Erdős, Herzog and Piranian proved that some component of that set contains at

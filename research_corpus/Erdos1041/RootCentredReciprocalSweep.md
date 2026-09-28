@@ -1,5 +1,7 @@
 # Erdős 1041: the reciprocal sweep can be centred at a root
 
+> Status note (2026-09-28): the exact Formal Conjectures statement of Erdős #1041 is refuted by ani's degree-seven example (Lean `erdos1041_counterexample_hausdorff`, `lean/ErdosProblems/Erdos1041/Counterexample/HausdorffLength.lean` in the public repository); correspondence with the 1958 wording awaits independent review. Earlier statements in this note that the problem is open are dated history.
+
 Status: one theorem with an ordinary proof, two corollaries, and an explicit
 construction shape. Current through 2026-08-27; the exact replay below confirms
 the recorded numerical checks. This does not

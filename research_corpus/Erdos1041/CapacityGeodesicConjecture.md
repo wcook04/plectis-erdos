@@ -1,5 +1,7 @@
 # Erdős 1041: the length bound is a capacity bound, and it is sharp at every scale
 
+> Status note (2026-09-28): the exact Formal Conjectures statement of Erdős #1041 is refuted by ani's degree-seven example (Lean `erdos1041_counterexample_hausdorff`, `lean/ErdosProblems/Erdos1041/Counterexample/HausdorffLength.lean` in the public repository); correspondence with the 1958 wording awaits independent review. Earlier statements in this note that the problem is open are dated history.
+
 Status: one reformulation, four proved statements, one rigorous elimination, and
 an audited measurement. 2026-08-27. **Erdős #1041 remains open** and nothing
 below claims otherwise.
