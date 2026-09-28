@@ -1740,7 +1740,7 @@
     "owner": "docs/problem_index_source.json",
     "owner_digest": "sha256:434f7bbcaa5a93da61e4d37291b36dcb634bc705d79222abea6fe2c6c80fd8e3",
     "projection": "docs/problems.json",
-    "projection_digest": "sha256:9aca33e03fd89395a60a30fa10e2cda6e035b1c0e678cedcda046b49b2f1008f",
+    "projection_digest": "sha256:b7a3f733e9e6cf488a5113e11b8f99cf09df0dbc8baff9580c47873940db0eb6",
     "schema": "erdos249257-problem-index/1",
     "problem_count": 8,
     "authority_posture": "navigation_projection_not_Lean_proof_authority_and_not_a_reviewed_claim_registry",
@@ -2545,7 +2545,7 @@
         ],
         "note": {
           "artifact_id": "erdos_269_note",
-          "title": "No Finite Separable Representation\\\\at Three Prime Generators",
+          "title": "Irrational Distinct-Height Sums\\\\for Finite Prime Sets",
           "source_path": "paper/269/erdos-269-three-prime-running-lcm.tex",
           "rendered_path": "paper/269/erdos-269-three-prime-running-lcm.pdf",
           "authority_posture": "authored_mathematical_exposition_not_Lean_proof_authority; public_status_is_owned_per_claim_by_docs/claims.json"
@@ -2595,7 +2595,7 @@
         "finite_search": "The integer-only dyadic-window checker reproduces three exact packet certificates and, for all 106,666 pairs with denominator B <= 1000 coprime to 30 and dyadic start 100 <= a <= 500, finds an escaping window of length at most 18; the largest first successful length is 14. This is finite proof-consumer evidence only and proves neither unbounded-denominator nor cofinal escape.",
         "paper": {
           "paper_id": "erdos-269-three-prime-running-lcm",
-          "title": "No Finite Separable Representation at Three Prime Generators",
+          "title": "Irrational Distinct-Height Sums for Finite Prime Sets",
           "source": "paper/269/erdos-269-three-prime-running-lcm.tex",
           "pdf": "paper/269/erdos-269-three-prime-running-lcm.pdf",
           "full_text": "docs/papers/full-text/erdos-269-three-prime-running-lcm.md",

@@ -6138,8 +6138,8 @@
       ],
       "citations_rendered": 27,
       "local_pdf": "paper/269/erdos-269-three-prime-running-lcm.pdf",
-      "pdf_sha256": "sha256:19a951e9bbf1e026a2b8ac68fff36d55b49a3f32a6d8783d06a7475a4c938083",
-      "pdf_byte_count": 143373,
+      "pdf_sha256": "sha256:6b9ef4c4d2ca4196db0d25dc3c7cb09954e2251dc97d2830a819e33788c8f2b4",
+      "pdf_byte_count": 143607,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection for this guide",
@@ -8170,8 +8170,8 @@
       ],
       "citations_rendered": 79,
       "local_pdf": "paper/systems/claim-faithful-publication-systems-paper.pdf",
-      "pdf_sha256": "sha256:8e5dc54c4ee0d8c30a5b33bb106f7a180ddd7b97be041f329859b04c41ea549f",
-      "pdf_byte_count": 182447,
+      "pdf_sha256": "sha256:ffffabcc9959cb19eaca4632dfade00eba0d8a5c0fa51c9ec4571d35207bfaef",
+      "pdf_byte_count": 187255,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection for this guide",

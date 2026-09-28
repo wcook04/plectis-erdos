@@ -32,4 +32,3 @@ import ErdosProblems.Erdos257.DyadicShellSynchronisation
 
 #check ErdosProblems.Erdos257.DyadicShellSynchronisation.exists_common_sample_of_weighted_sum_lt_one
 #print axioms ErdosProblems.Erdos257.DyadicShellSynchronisation.exists_common_sample_of_weighted_sum_lt_one
-

@@ -558,7 +558,7 @@ class View:
             claim = row["record"]
             lines += [f"## {claim['id']}", "", f"Recorded status: {claim['status']}", "", claim["statement"], "",
                       f"Source: `{row['source']['path']}` `{row['source']['pointer']}` `{row['source']['sha256']}`", ""]
-        return "\n".join(lines) + "\n"
+        return "\n".join(lines).rstrip() + "\n"
 
 
 def check_generated(expected: str, actual: str) -> None:
