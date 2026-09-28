@@ -84,13 +84,14 @@ def _text(value: str | bytes | None) -> str:
     return value.decode("utf-8", errors="replace") if isinstance(value, bytes) else (value or "")
 
 
-def run_probe(path: Path, timeout: int) -> dict:
+def run_probe(path: Path, timeout: int, root: Path | None = None) -> dict:
+    root = ROOT if root is None else Path(root)
     if timeout <= 0:
         raise ValueError("timeout must be a positive number of seconds")
     source = path.read_bytes()
     started = time.monotonic()
     try:
-        completed = subprocess.run(["lake", "env", "lean", str(path.relative_to(ROOT))], cwd=ROOT,
+        completed = subprocess.run(["lake", "env", "lean", str(path.relative_to(root))], cwd=root,
                                    text=True, capture_output=True, timeout=timeout)
         exit_code, output = completed.returncode, _text(completed.stdout) + _text(completed.stderr)
     except subprocess.TimeoutExpired as expired:
@@ -104,7 +105,7 @@ def run_probe(path: Path, timeout: int) -> dict:
     nonstandard = sorted({a for axioms in printed.values() for a in axioms} - STANDARD_AXIOMS)
     compiled = exit_code == 0 and not errors and not uses_sorry
     return {
-        "probe": str(path.relative_to(ROOT)),
+        "probe": str(path.relative_to(root)),
         "source_sha256": hashlib.sha256(source).hexdigest(),
         "evidence_class": "compilation_probe",
         "exact_target_checked": False,

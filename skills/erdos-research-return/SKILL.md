@@ -58,6 +58,42 @@ An architecture return uses `--require-submitted --check-git` without the
 route-memory flags. A pull request may carry these package files as transient
 intake artifacts; they do not belong on the accepted main branch.
 
+For a separately planned, packet-bound research round, the public compiler
+profile takes an authored packet spec, dispatch profile and *previously frozen*
+baseline. Use a full source commit and a new output directory:
+
+```sh
+python3 scripts/research_packet_profile.py --spec <spec.json> \
+  --profile <profile.json> --baseline <baseline.json> --root . \
+  --ref <full-commit> --out <new-output-dir>
+python3 scripts/research_round_plan.py --zip <preserved-return.zip> \
+  --expected-bindings <frozen-dispatch-bindings.json>
+```
+
+The profile forces additive contrast guards and produces a handoff manifest;
+its `audit_delivery()` API must inspect the actual rendered files before
+dispatch. The round planner checks bounded ZIP bytes and exact dispatch
+bindings without extraction or execution. Supply expected bindings from the
+frozen dispatch, never from the returned ZIP. Neither command stores custody,
+accepts components or changes the journal. This profile is an optional route
+for an explicitly prepared round, not a requirement for an ordinary issue or
+pull request.
+
+For a returned claim whose evidence is already indexed, the read-only gate can
+extract its stated claims and assess one request:
+
+```sh
+python3 scripts/research_return_gate.py extract <return-file>
+python3 scripts/research_return_gate.py assess "<exact claim to assess>" \
+  --return-file <return-file> --evidence-index <index.json> \
+  --evidence-root <preserved-evidence-dir>
+```
+
+An extraction or gate result is review evidence, not execution, journal
+acceptance, publication or mathematical proof. Keep the native
+`continue_research.py` package and acceptance checks above for a submitted
+public contribution.
+
 Before packaging a stable result, run
 `skills/propagate-research-consequences/SKILL.md`. The return should distinguish
 consequences updated now from those verified unchanged, deferred with a

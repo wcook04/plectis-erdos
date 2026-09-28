@@ -5947,13 +5947,13 @@
     },
     {
       "paper_id": "erdos-269-three-prime-running-lcm",
-      "title": "No Finite Separable Representation at Three Prime Generators",
+      "title": "Irrational Distinct-Height Sums for Finite Prime Sets",
       "title_source": "manuscript",
-      "question_this_paper_answers": "Why does the Erd\u0151s #269 running-LCM kernel admit no finite separable representation, and which residue inequalities remain for {2,3,5}?",
+      "question_this_paper_answers": "Why are distinct-height running-LCM sums irrational for finite prime sets of size at least two, and what remains open for the repeated-value Erd\u0151s #269 sum?",
       "subject": "Erd\u0151s #269",
       "subject_kind": "problem",
       "form": "Problem note",
-      "owns": "the problem-specific exposition for Erd\u0151s #269: the two-prime transcendence deductions and attribution, three-prime product formula, cell and shell structure, non-separability, finite experiments, and remaining cofinal escape condition",
+      "owns": "the problem-specific exposition for Erd\u0151s #269: the ordinary distinct-height irrationality theorem for finite prime sets of size at least two, its Lean-checked {2,3,5} instance, single-prime subsums, three-prime kernel rank and non-separability, and the repeated-value tail criterion with its remaining cofinal escape condition",
       "not_authority_for": "the validity of claims tagged Lean, which belongs to the cited kernel-checked source, or a solution to Erd\u0151s #269, which remains open",
       "publication_state": "active",
       "publication_class": "problem_paper",
@@ -5965,13 +5965,13 @@
       "preferred_citation": {
         "author": "Will Cook",
         "year": "2026",
-        "title": "No Finite Separable Representation at Three Prime Generators",
+        "title": "Irrational Distinct-Height Sums for Finite Prime Sets",
         "repository": "plectis-erdos",
         "canonical_source_commit": null,
         "canonical_source_url": null,
         "licence": "CC-BY-4.0",
         "identifier_kind": "unversioned_source",
-        "text": "Will Cook (2026). No Finite Separable Representation at Three Prime Generators. plectis-erdos. CC-BY-4.0.",
+        "text": "Will Cook (2026). Irrational Distinct-Height Sums for Finite Prime Sets. plectis-erdos. CC-BY-4.0.",
         "derived_from": [
           "docs/papers/corpus.json: title, copyright, home_repository, canonical_source_commit, canonical_source_url, licence"
         ]
@@ -6008,7 +6008,7 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/erdos-269-three-prime-running-lcm.md",
       "local_source": "paper/269/erdos-269-three-prime-running-lcm.tex",
-      "source_sha256": "sha256:8a931b7598a37f965ab34ecdd433d921aed8ae4f32c84906299883dc0b6e55b1",
+      "source_sha256": "sha256:926fb901e37325cc52e815adc4c5f9ef25c35e0d5856a597ccaa217316feabc0",
       "canonical_source_commit": null,
       "canonical_source_pin_status": "local_unpublished",
       "canonical_source_url": null,
@@ -6018,122 +6018,122 @@
         {
           "level": 1,
           "id": "erdos-269-three-prime-running-lcm",
-          "title": "No Finite Separable Representation at Three Prime Generators",
+          "title": "Irrational Distinct-Height Sums for Finite Prime Sets",
           "line": 1
         },
         {
           "level": 1,
           "id": "sec:problem",
-          "title": "Introduction",
+          "title": "Two sums from running least common multiples",
           "line": 13
         },
         {
           "level": 1,
           "id": "sec:distinct",
-          "title": "The distinct-height sums",
-          "line": 38
+          "title": "Irrationality for finite prime sets",
+          "line": 40
         },
         {
           "level": 4,
           "id": "words.",
           "title": "Words.",
-          "line": 60
+          "line": 62
         },
         {
           "level": 4,
           "id": "the-torus.",
           "title": "The torus.",
-          "line": 119
+          "line": 121
         },
         {
           "level": 2,
           "id": "sec:distinct-235",
           "title": "The case \\{2,3,5\\}, checked in Lean",
-          "line": 145
+          "line": 147
         },
         {
           "level": 1,
           "id": "sec:rank",
           "title": "Nonsingular minors of every order",
-          "line": 160
+          "line": 162
         },
         {
           "level": 4,
           "id": "the-indices-must-be-selected.",
           "title": "The indices must be selected.",
-          "line": 246
+          "line": 248
         },
         {
           "level": 4,
           "id": "exact-rank-is-not-an-approximation-obstruction.",
           "title": "Exact rank is not an approximation obstruction.",
-          "line": 273
+          "line": 275
         },
         {
           "level": 1,
           "id": "sec:two-prime",
           "title": "The two-prime comparison",
-          "line": 279
+          "line": 281
         },
         {
           "level": 1,
           "id": "sec:lcm",
           "title": "The recurrence for the repeated sum",
-          "line": 334
+          "line": 336
         },
         {
           "level": 1,
           "id": "sec:escape",
           "title": "A window test and the remaining arithmetic",
-          "line": 512
+          "line": 514
         },
         {
           "level": 2,
           "id": "statements-and-declarations",
           "title": "Statements and declarations",
-          "line": 620
+          "line": 622
         },
         {
           "level": 4,
           "id": "proof-sources.",
           "title": "Proof sources.",
-          "line": 624
+          "line": 626
         },
         {
           "level": 4,
           "id": "artefact-and-data-availability.",
           "title": "Artefact and data availability.",
-          "line": 630
+          "line": 632
         },
         {
           "level": 4,
           "id": "funding-and-competing-interests.",
           "title": "Funding and competing interests.",
-          "line": 636
+          "line": 638
         },
         {
           "level": 4,
           "id": "acknowledgements.",
           "title": "Acknowledgements.",
-          "line": 642
+          "line": 644
         },
         {
           "level": 1,
           "id": "app:sources",
           "title": "Guide to the formal sources",
-          "line": 648
+          "line": 650
         },
         {
           "level": 4,
           "id": "library-declarations.",
           "title": "Library declarations.",
-          "line": 654
+          "line": 656
         },
         {
           "level": 4,
           "id": "scope-of-the-supplementary-literature.",
           "title": "Scope of the supplementary literature.",
-          "line": 660
+          "line": 662
         }
       ],
       "citations_rendered": 27,
@@ -6146,23 +6146,23 @@
         "sections": [
           {
             "id": "sec:problem",
-            "title": "Introduction",
+            "title": "Two sums from running least common multiples",
             "line": 13
           },
           {
             "id": "sec:rank",
             "title": "Nonsingular minors of every order",
-            "line": 160
+            "line": 162
           },
           {
             "id": "sec:lcm",
             "title": "The recurrence for the repeated sum",
-            "line": 334
+            "line": 336
           },
           {
             "id": "sec:escape",
             "title": "A window test and the remaining arithmetic",
-            "line": 512
+            "line": 514
           }
         ],
         "unresolved_count": 0
@@ -7974,12 +7974,12 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/claim-faithful-publication-systems-paper.md",
       "local_source": "paper/systems/claim-faithful-publication-systems-paper.tex",
-      "source_sha256": "sha256:bf053abfe5c2a23db9a6821c7da6719f787635421010ac5067122c9822b8bcb8",
+      "source_sha256": "sha256:64ed42ebb46edbfcb67043aa4a7743135ee3c32f69af063e543311403497285c",
       "canonical_source_commit": null,
       "canonical_source_pin_status": "local_unpublished",
       "canonical_source_url": null,
       "canonical_source_raw_url": null,
-      "section_count": 30,
+      "section_count": 31,
       "sections": [
         {
           "level": 1,
@@ -8091,75 +8091,81 @@
         },
         {
           "level": 1,
+          "id": "sec:evaluation",
+          "title": "Testing decisions made from the record",
+          "line": 247
+        },
+        {
+          "level": 1,
           "id": "sec:checks",
           "title": "From a proof to a public claim",
-          "line": 247
+          "line": 261
         },
         {
           "level": 1,
           "id": "sec:cycle",
           "title": "The contribution cycle",
-          "line": 269
+          "line": 283
         },
         {
           "level": 4,
           "id": "credit.",
           "title": "Credit.",
-          "line": 279
+          "line": 293
         },
         {
           "level": 2,
           "id": "sec:example",
           "title": "Worked example: Problem 1041",
-          "line": 287
+          "line": 301
         },
         {
           "level": 1,
           "id": "sec:instance",
           "title": "Eight problems in one repository",
-          "line": 293
+          "line": 307
         },
         {
           "level": 1,
           "id": "sec:related",
           "title": "Relation to Prove2Me and other systems",
-          "line": 330
+          "line": 344
         },
         {
           "level": 4,
           "id": "other-systems.",
           "title": "Other systems.",
-          "line": 354
+          "line": 368
         },
         {
           "level": 4,
           "id": "precedents-for-the-argument-graph.",
           "title": "Precedents for the argument graph.",
-          "line": 360
+          "line": 374
         },
         {
           "level": 4,
           "id": "libraries-grown-from-proofs.",
           "title": "Libraries grown from proofs.",
-          "line": 370
+          "line": 384
         },
         {
           "level": 1,
           "id": "sec:limits",
           "title": "Limits, and what stronger models change",
-          "line": 376
+          "line": 390
         },
         {
           "level": 1,
           "id": "sec:conclusion",
           "title": "Conclusion",
-          "line": 396
+          "line": 410
         },
         {
           "level": 1,
           "id": "app:repro",
           "title": "Inspection routes and reproducibility",
-          "line": 402
+          "line": 416
         }
       ],
       "citations_rendered": 79,
@@ -8188,12 +8194,12 @@
           {
             "id": "sec:checks",
             "title": "From a proof to a public claim",
-            "line": 247
+            "line": 261
           },
           {
             "id": "sec:limits",
             "title": "Limits, and what stronger models change",
-            "line": 376
+            "line": 390
           }
         ],
         "unresolved_count": 0

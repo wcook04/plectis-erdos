@@ -1007,7 +1007,8 @@ class AbductionRows(unittest.TestCase):
 
 
 SIBLING_SUITES = ("test_argument_graph_frontier", "test_argument_graph_interfaces",
-                  "test_argument_graph_contracts", "test_probe_semantics")
+                  "test_argument_graph_contracts", "test_probe_semantics",
+                  "test_transfer_obligations")
 
 
 if __name__ == "__main__":

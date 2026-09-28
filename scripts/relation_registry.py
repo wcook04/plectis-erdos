@@ -641,7 +641,13 @@ PROBE_RELATION = {
 
 
 def residualbench_rows(root: Path) -> list[dict[str, Any]]:
-    """Rows computed from ``docs/residualbench_report.json`` verdicts (never stored)."""
+    """Conservative adapter; individual-residual equivalence is not bundle equivalence.
+
+    This reads the repository owner's report, not arbitrary returned probe logs.
+    It does not upgrade report provenance to independently replayed kernel evidence.
+    Bound refutations in legacy reports negate a universal statement, so they may
+    not populate the pointwise Refuted relation. Preserve them as unknown.
+    """
     path = Path(root) / RESIDUALBENCH_PATH
     if not path.is_file():
         return []
@@ -650,36 +656,68 @@ def residualbench_rows(root: Path) -> list[dict[str, Any]]:
         raise RegistryError("unsupported residualbench report schema")
     module = report.get("module", "ResidualBench")
     budget = (report.get("tactic_budget") or {}).get("id")
+    report_sha = hashlib.sha256(path.read_bytes()).hexdigest()
     rows = []
     for verdict in report.get("verdicts", []):
-        relation = PROBE_RELATION.get(verdict.get("verdict"))
-        if relation is None:
-            raise RegistryError(f"unrecognised residualbench verdict {verdict.get('verdict')!r}")
+        label = verdict.get("verdict")
+        if label not in PROBE_RELATION:
+            raise RegistryError(f"unrecognised residualbench verdict {label!r}")
         residuals = verdict.get("residuals") or []
-        conjunction = " ∧ ".join(residuals)
-        target = verdict["target"]
-        if relation == "refuted":
-            left, right = conjunction, None
+        if not isinstance(residuals, list) or not all(isinstance(r, str) for r in residuals):
+            raise RegistryError("residuals must be proposition strings")
+        conjunction = (residuals[0] if len(residuals) == 1 else
+                       " ∧ ".join(f"({r})" for r in residuals) if residuals else "True")
+        target, binders = verdict["target"], verdict.get("binders", "")
+        if not isinstance(binders, str):
+            raise RegistryError("binders must be a shared telescope string")
+        receipts = verdict.get("receipts", {})
+        if any(type(v) is not bool for v in receipts.values()):
+            raise RegistryError("probe receipt fields must be booleans")
+        equivalent = verdict.get("equivalent_residuals")
+        if equivalent is None:
+            # A one-residual legacy verdict is unambiguous; a multi-residual
+            # one is not. Never choose which residual matched by guessing.
+            equivalent = residuals[:] if label == "endpoint_equivalent" and len(residuals) == 1 else []
+        if not isinstance(equivalent, list) or not all(r in residuals for r in equivalent):
+            raise RegistryError("equivalent_residuals must name actual residuals")
+        context = f"{module} | binders {binders!r} | report {report_sha} (tactic budget {budget})"
+        source = [{"report": RESIDUALBENCH_PATH, "report_sha256": report_sha,
+                   "sketch_id": verdict["sketch_id"], "receipts": receipts}]
+
+        def add(suffix, relation, left, right, note):
+            rows.append({"id": f"residualbench:{verdict['sketch_id']}{suffix}",
+                "relation": relation, "problem": None, "left": left, "right": right,
+                "context": context, "certificate": None, "sources": source, "note": note,
+                "converse": "unknown" if relation == "slot_replacement" else None,
+                "state": "kernel_probe_verdict", "evidence_class": EVIDENCE_PROBE})
+
+        if label == "residual_refuted":
+            if binders.strip():
+                add("", "unknown", target, conjunction,
+                    "Legacy refutation negates the universally closed demand, not every pointwise demand; re-probe the intended scope")
+            else:
+                add("", "refuted", conjunction, None, "Closed residual conjunction refuted in the report")
+        elif label == "endpoint_equivalent":
+            if len(residuals) == 1 and equivalent:
+                add("", "equivalent", target, residuals[0], "The individual residual is equivalent to the target")
+            else:
+                # `target_implies_all_residuals` is emitted by the new producer.
+                all_reverse = verdict.get("target_implies_all_residuals") is True
+                sound = receipts.get("soundness") is True
+                relation = "equivalent" if sound and all_reverse else (
+                    "slot_replacement" if sound or equivalent else "unknown")
+                add("", relation, target, conjunction,
+                    "Whole-demand relation; individual equivalence alone does not establish its converse")
+                for index, residual in enumerate(dict.fromkeys(equivalent)):
+                    add(f":residual:{index}", "equivalent", target, residual,
+                        "One individual residual restates the target; retain the circularity alert")
+        elif label == "strict_decomposition_candidate":
+            all_reverse = verdict.get("target_implies_all_residuals") is True
+            sound = receipts.get("soundness") is True
+            add("", "equivalent" if sound and all_reverse else "slot_replacement", target, conjunction,
+                "Joint equivalence when every reverse is proved; otherwise sufficiency, never inferred strictness")
         else:
-            left, right = target, conjunction
-        note = {
-            "equivalent": "soundness and laundering probes both elaborated: the residuals restate the target",
-            "slot_replacement": "the residuals reconstruct the target; the converse is unknown within the budget",
-            "refuted": "the refutation probe elaborated: the residual conjunction is refuted",
-            "unknown": "no probe decided a relation within the budget; this is not evidence against any relation",
-        }[relation]
-        rows.append({
-            "id": f"residualbench:{verdict['sketch_id']}",
-            "relation": relation, "problem": None, "left": left, "right": right,
-            "context": f"{module} (tactic budget {budget})",
-            "certificate": None,
-            "sources": [{"report": RESIDUALBENCH_PATH, "sketch_id": verdict["sketch_id"],
-                         "receipts": verdict.get("receipts", {})}],
-            "note": note,
-            "converse": "unknown" if relation == "slot_replacement" else None,
-            "state": "kernel_probe_verdict",
-            "evidence_class": EVIDENCE_PROBE,
-        })
+            add("", "unknown", target, conjunction, "No recorded relation; budget failure proves no negative")
     return rows
 
 
@@ -789,7 +827,7 @@ def usable_rows(root: Path, include_residualbench: bool = False, include_pending
                 registry_path: str | Path | None = None) -> tuple[list[dict[str, Any]], dict[str, Any]]:
     root = Path(root)
     report = check(root, registry_path)
-    if report["errors"] and not report["rows"]:
+    if not report["ok"]:
         raise RegistryError("; ".join(report["errors"]))
     document = load_registry(root, registry_path)
     states = {r["id"]: r for r in report["rows"]}

@@ -140,6 +140,43 @@ forest; exact dependency neighborhoods cover both compact roots. Entry:
 python3 scripts/query_semantic.py inventory
 ```
 
+## Source-bound decisions and transfer candidates
+
+Start with `query_corpus.py --ask` for the registered frontier. The argument
+graph gives a second, recorded-edge view; `next` ranks open statements and
+`transfer` screens cross-problem reductions without certifying a useful
+application:
+
+```sh
+python3 scripts/query_continuations.py next --problem 269 --limit 8
+python3 scripts/query_continuations.py transfer --limit 12 --max-work 10000 --max-checks 250
+python3 scripts/research_decision.py --problem 269 --source-commit <full-commit> --format markdown
+```
+
+The continuation commands require `docs/argument_continuations_graph.json.gz`.
+If it is absent, obtain a matching kernel export and run
+`python3 scripts/build_argument_continuations.py --export <export.jsonl.gz>`;
+the builder's `--help` describes the export and provenance sidecars. Do not
+infer a frontier from an absent projection.
+
+The decision adapter binds its read set to the named commit and reports missing
+capabilities explicitly. It reads the existing claims, relations, contrasts
+and journal; it is not a new claim registry. For a mechanism already authored
+in the theory lab, use the read-only retrieval adapter:
+
+```sh
+python3 scripts/insight_engine.py reverse "rational tail denominator"
+python3 scripts/insight_engine.py forward <mechanism_id> --exclude-origin --limit 8
+```
+
+These are lexical source candidates with pending proof obligations. The graph
+screen checks recorded relations only; exhaustion is `unknown_budget`. Neither
+route proves applicability, strictness, novelty or usefulness. For a
+prospective, source-bound experiment on a selected mechanism, follow
+[`run-coupled-research-goals`](../../skills/run-coupled-research-goals/SKILL.md)
+and its `research_episode.py plan` route. For dispatch and returned work, use
+[`erdos-research-return`](../../skills/erdos-research-return/SKILL.md).
+
 ## The move grammar
 
 A workbench session is a sequence of typed moves in an append-only

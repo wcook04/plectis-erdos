@@ -1,6 +1,6 @@
 <a id="erdos-269-three-prime-running-lcm"></a>
 
-# No Finite Separable Representation at Three Prime Generators
+# Irrational Distinct-Height Sums for Finite Prime Sets
 
 <div class="center">
 
@@ -12,7 +12,9 @@ For every finite set $`P`$ of at least two primes, the sum of the reciprocals of
 
 <a id="sec:problem"></a>
 
-# Introduction
+# Two sums from running least common multiples
+
+The main result is the distinct-height irrationality theorem of Section <a href="#sec:distinct" data-reference-type="ref" data-reference="sec:distinct">2</a>. It applies to every finite prime set containing at least two primes. It does not settle the irrationality of the repeated-value series that motivated it. We introduce both sums here, keeping that distinction visible before the proof.
 
 For a finite prime set $`P`$, let $`\mathcal S_P`$ consist of the positive integers whose prime factors lie in $`P`$, including $`1`$. We use $`\mathbb{N}=\{0,1,2,\ldots\}`$ for exponent indices. For $`x\ge1`$, put
 ``` math
@@ -37,7 +39,7 @@ Fan used the identity $`\operatorname{L}=\operatorname{H}`$ to separate the two-
 
 <a id="sec:distinct"></a>
 
-# The distinct-height sums
+# Irrationality for finite prime sets
 
 Let $`P`$ be a finite set of primes with $`|P|\ge2`$ and put $`\operatorname{H}_P(t)=\prod_{r\in P}r^{\lfloor\log_rt\rfloor}`$. The proof of Proposition <a href="#res:lcm" data-reference-type="ref" data-reference="res:lcm">12</a> applies to any finite set of primes: the running LCM of the $`P`$-smooth integers up to $`t`$ is $`\operatorname{H}_P(t)`$, and it changes only at the prime powers $`r^n`$ ($`r\in P`$, $`n\ge1`$), where it is multiplied by $`r`$. List these prime powers as $`t_1<t_2<\cdots`$, let $`q_k`$ be the prime of $`t_k`$, and put $`Q_k=q_1\cdots q_k=\operatorname{H}_P(t_k)`$. Then
 ``` math

@@ -242,14 +242,14 @@
     },
     {
       "id": "erdos_269_note",
-      "title": "No Finite Separable Representation\\\\at Three Prime Generators",
+      "title": "Irrational Distinct-Height Sums\\\\for Finite Prime Sets",
       "artifact_class": "problem_note",
       "source_path": "paper/269/erdos-269-three-prime-running-lcm.tex",
       "source_content_digest": "sha256:8a931b7598a37f965ab34ecdd433d921aed8ae4f32c84906299883dc0b6e55b1",
       "rendered_path": "paper/269/erdos-269-three-prime-running-lcm.pdf",
       "rendered_content_digest": "sha256:19a951e9bbf1e026a2b8ac68fff36d55b49a3f32a6d8783d06a7475a4c938083",
       "authority_posture": "authored_mathematical_exposition_not_Lean_proof_authority; public_status_is_owned_per_claim_by_docs/claims.json",
-      "claim_scope": "Steve Fan posted the two-prime factorisation, reduction and transcendence conclusion first (erdosproblems.com/269, 26 June 2026, post-7218). This paper records that argument as an ordinary deduction from Bugeaud–Laurent's external Hecke–Mahler theorem and does not claim priority or a Lean theorem for the two-prime case. For three primes the paper proves nonsingular selected minors of every order from one binary carry. Comparator checks the (2,3,5) minor −1/15, the running-LCM height identity, and a conditional carry-escape consumer; it does not check the arbitrary-order rank theorem. The actual-series reduction is given; the source-specific cofinal escape remains unproved. Problem 269 remains open from three primes onward.",
+      "claim_scope": "The distinct-height running-LCM reciprocal sum is irrational for every finite prime set of size at least two by an ordinary proof checked by a second AI agent, without human review. A separate Lean proof covers {2,3,5}. The repeated-value Erdős #269 series remains open for three primes and beyond. Steve Fan posted the two-prime factorisation, reduction and transcendence conclusion first (erdosproblems.com/269, 26 June 2026, post-7218); it is an ordinary deduction from an external Hecke–Mahler theorem, not a new Lean theorem or priority claim here. The paper also gives nonsingular selected three-prime kernel minors of every order and a conditional repeated-value tail criterion. Comparator checks its listed finite, identity and conditional-consumer entries; it does not establish the all-finite-prime-set ordinary theorem or the unresolved source-specific cofinal escape.",
       "architecture_ref": "docs/claims.json::machine_readable_paper.publication_assembly.publication_architecture.problem_series",
       "entry_route_id": "read_one_problem_note",
       "validation": [

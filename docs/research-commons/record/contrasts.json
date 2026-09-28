@@ -207,7 +207,7 @@
       "title": "A slot replacement reconstructs the hypothesis it replaces",
       "distinction": "A replacement R for a hypothesis H that reconstructs H in the same context is at least as strong as H there, and a proof of the converse makes the two equivalent; a slot replacement never shows that H was stronger than needed.",
       "wrong_reading": "The abduction export's column weaker, which records that a bounded tactic search found H → R, was read as saying the replacement asks for less than the hypothesis, and the weakest-residual computation was read as a proof of weakestness.",
-      "right_reading": "SlotReplacement.not_separates proves that no admissible context value satisfies H and fails R once R reconstructs H, and SlotReplacement.equivalent_of_converse turns a converse into an equivalence. The abduction module itself says weakestness relative to the linear facts used is computed and unproved. A replacement can reach an endpoint from less only as an EndpointRoute.",
+      "right_reading": "SlotReplacement.not_separates proves that no admissible context value satisfies R and fails H once R reconstructs H, and SlotReplacement.equivalent_of_converse turns a converse into an equivalence. The abduction module itself says weakestness relative to the linear facts used is computed and unproved. A replacement can reach an endpoint from less only as an EndpointRoute.",
       "evidence": [
         {
           "kind": "declaration",

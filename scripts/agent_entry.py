@@ -200,6 +200,9 @@ def render_entry(packet: dict[str, Any]) -> str:
         lines.extend(("", "Other plausible lanes:"))
         for row in packet["alternatives"]:
             lines.append(f"  - {row['id']}: {row['title']}")
+    if "frontier" in packet:
+        import corpus_substrate
+        lines.extend(("", corpus_substrate.render_frontier(packet["frontier"])))
     lines.extend(("", f"All skills: {packet['catalog_command']}"))
     return "\n".join(lines)
 
@@ -275,6 +278,7 @@ def parser() -> argparse.ArgumentParser:
     result.add_argument("--check-upstream", action="store_true", help="compare with public main over the network (no fetch or checkout changes)")
     result.add_argument("--purpose", help="explicit workflow purpose: research, method, infrastructure, write, return, reproduce")
     result.add_argument("--scope", help="paper, problem, declaration or experiment to keep in the handoff")
+    result.add_argument("--problem", type=int, help="include the source-bound frontier directly in the entry packet")
     result.add_argument("--json", action="store_true", help="emit machine-readable JSON")
     return result
 
@@ -283,8 +287,8 @@ def main() -> int:
     args = parser().parse_args()
     if args.check_upstream and not (args.checkout or args.entry is not None):
         parser().error("--check-upstream requires --checkout or --entry")
-    if (args.purpose or args.scope) and args.entry is None:
-        parser().error("--purpose and --scope require --entry")
+    if (args.purpose or args.scope or args.problem is not None) and args.entry is None:
+        parser().error("--purpose, --scope and --problem require --entry")
     if args.checkout:
         card = checkout_card(check_upstream=args.check_upstream)
         print(json.dumps(card, indent=2) if args.json else render_checkout(card))
@@ -294,6 +298,9 @@ def main() -> int:
         if args.entry is not None:
             value: Any = entry_packet(catalog, args.entry, purpose=args.purpose, scope=args.scope)
             value["checkout"] = checkout_card(check_upstream=args.check_upstream)
+            if args.problem is not None:
+                import corpus_substrate
+                value["frontier"] = corpus_substrate.frontier_packet(ROOT, str(args.problem))
             output = json.dumps(value, indent=2) if args.json else render_entry(value)
         elif args.skills:
             value = {
@@ -307,7 +314,7 @@ def main() -> int:
         else:
             value = skill_card(catalog, args.skill)
             output = json.dumps(value, indent=2) if args.json else render_skill(catalog, args.skill)
-    except (OSError, json.JSONDecodeError, SkillCatalogError) as exc:
+    except (OSError, ValueError, SkillCatalogError) as exc:
         parser().error(str(exc))
     print(output)
     return 0

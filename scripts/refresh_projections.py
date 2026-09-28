@@ -128,6 +128,9 @@ BUILDERS = (
     "scripts/build_paper_module_aliases.py",
     "scripts/build_corpus_descriptor.py",
     "scripts/build_publication_entry_packet.py",
+    # Reads the final source/projection inventory; its own output is excluded
+    # from that read set, so it runs last and cannot fingerprint itself.
+    "scripts/corpus_substrate.py",
 )
 
 # Builders whose bare invocation is a dry run. The two rosters print their
@@ -139,6 +142,7 @@ BUILDERS = (
 # argument parser and fails when a builder that declares --write is missing
 # from this table.
 WRITE_FLAGS: dict[str, tuple[str, ...]] = {
+    "scripts/corpus_substrate.py": ("--write",),
     "scripts/reanchor_source_attributions.py": ("--write", "--preserve-excerpts", "--base", "HEAD"),
     "scripts/build_off_diagonal_certificate_roster.py": ("--write",),
     "scripts/build_checked_diagonal_depth_roster.py": ("--write",),

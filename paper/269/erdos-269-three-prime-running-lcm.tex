@@ -19,7 +19,7 @@
 \newcommand{\distinctheightlean}{https://github.com/wcook04/plectis-erdos/blob/5154f4c46fa5d5ab2cff8df857a0b10f310cbeeb/lean/ErdosProblems/Erdos269/DistinctHeightIrrationality.lean}
 \newcommand{\distinctheightblocklean}{https://github.com/wcook04/plectis-erdos/blob/5154f4c46fa5d5ab2cff8df857a0b10f310cbeeb/lean/ErdosProblems/Erdos269/DistinctHeightBlockRadix.lean}
 \hypersetup{
-  pdftitle={No finite separable representation at three prime generators (Erdős Problem 269)},
+  pdftitle={Irrational distinct-height sums for finite prime sets (Erdős Problem 269)},
   pdfsubject={Erdős Problem Notes: Problem 269},
   pdfkeywords={irrationality, transcendence, Hecke-Mahler values, least common multiple, smooth numbers, Cantor series, lattice sums, Lean 4},
 }
@@ -29,10 +29,10 @@
 \newcommand{\Lprefix}{\operatorname{L}}
 \newcommand{\Kernel}{\operatorname{K}}
 
-\runninghead{Erd\H{o}s \#269: no finite separable representation}
-\title{No Finite Separable Representation\\at Three Prime Generators}
-\subtitle{Irrational distinct-height sums for every finite set of primes,
-kernel rank and a tail criterion for Erd\H{o}s Problem~\#269}
+\runninghead{Distinct-height sums for finite prime sets}
+\title{Irrational Distinct-Height Sums\\for Finite Prime Sets}
+\subtitle{Running least common multiples, three-prime kernel rank,
+and a tail criterion for Erd\H{o}s Problem~\#269}
 \author{Will Cook}
 \date{July 2026; revised 26 September 2026}
 
@@ -68,7 +68,13 @@ no counterpart there, and the criterion's inequalities for every multiplier
 coprime to $30$ after arbitrarily late starts are unproved.
 \end{abstract}
 
-\section{Introduction}\label{sec:problem}
+\section{Two sums from running least common multiples}\label{sec:problem}
+The main result is the distinct-height irrationality theorem of
+Section~\ref{sec:distinct}.  It applies to every finite prime set containing
+at least two primes.  It does not settle the irrationality of the
+repeated-value series that motivated it.  We introduce both
+sums here, keeping that distinction visible before the proof.
+
 For a finite prime set $P$, let $\mathcal S_P$ consist of the positive
 integers whose prime factors lie in $P$, including $1$.  We use
 $\N=\{0,1,2,\ldots\}$ for exponent indices.  For $x\ge1$, put
@@ -113,7 +119,7 @@ $\{2,3,5\}$ sum and state exactly what its irrationality still requires.
 
 \evidenceparagraph{\evidencerecordurl}
 
-\section{The distinct-height sums}
+\section{Irrationality for finite prime sets}
 \label{sec:distinct}
 
 Let $P$ be a finite set of primes with $|P|\ge2$ and put

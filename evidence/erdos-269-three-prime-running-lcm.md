@@ -1,4 +1,4 @@
-# Formal evidence: No Finite Separable Representation\\at Three Prime Generators
+# Formal evidence: Irrational Distinct-Height Sums\\for Finite Prime Sets
 
 This record belongs to the paper [erdos-269-three-prime-running-lcm.pdf](../paper/269/erdos-269-three-prime-running-lcm.pdf). For every result it lists the Lean declarations that state it, and the independent Comparator check where there is one. The margin marks in the paper link here.
 

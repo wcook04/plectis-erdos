@@ -907,7 +907,20 @@ def cmd_transfer(graph: builder.Graph, payload: dict[str, Any], args: argparse.N
                      "status": graph.status(head),
                      "open_residuals": [r for r in residuals if r not in graph.supplied]})
     rows.sort(key=lambda r: (r["producer_problem"], r["producer"]))
-    return {"cross_problem_reductions": len(rows), "rows": rows[: args.limit]}
+    # Keep the raw relation inventory for compatibility, but do not mistake it
+    # for demonstrated mechanism transfer. In particular, nonsupplied residuals
+    # may already be refuted. Use the native joint-bundle checker, not a new graph.
+    from transfer_obligations import screen
+    classified = screen(graph, rows, max_work=getattr(args, "transfer_max_work", 10000),
+                        max_checks=getattr(args, "transfer_max_checks", 250))
+    candidates = [r for r in classified["rows"]
+                  if r["obligation_screen"]["decision"] == "candidate_not_proved_useful"]
+    return {"cross_problem_reductions": len(rows), "rows": classified["rows"][: args.limit],
+            "obligation_counts": classified["counts"],
+            "candidate_rows": candidates[: args.limit],
+            "joint_checks": classified["joint_checks"],
+            "max_work_per_native_closure": classified["max_work_per_native_closure"],
+            "claim_ceiling": classified["claim_ceiling"]}
 
 
 def cmd_diff(graph: builder.Graph, payload: dict[str, Any], args: argparse.Namespace) -> Any:
@@ -1250,6 +1263,10 @@ def main(argv: list[str] | None = None) -> int:
     p.add_argument("--limit", type=int, default=40)
     p = sub.add_parser("criticality"); p.add_argument("target"); p.add_argument("--limit", type=int, default=30)
     p = sub.add_parser("transfer"); p.add_argument("--limit", type=int, default=60)
+    p.add_argument("--max-work", dest="transfer_max_work", type=int, default=10000,
+                   help="work cap per native forward/reverse closure; exhaustion is unknown")
+    p.add_argument("--max-checks", dest="transfer_max_checks", type=int, default=250,
+                   help="maximum native joint-bundle checks; excess rows remain unknown")
     p = sub.add_parser("diff"); p.add_argument("old", type=Path); p.add_argument("new", type=Path)
     p.add_argument("--limit", type=int, default=30)
     p = sub.add_parser("packet"); p.add_argument("--problem", required=True); p.add_argument("--limit", type=int, default=12)

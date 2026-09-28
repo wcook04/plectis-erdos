@@ -83,11 +83,11 @@
 \newcommand{\ClaimObligations}{19}
 \newcommand{\ClaimStatuses}{eight}
 \newcommand{\FrontierTree}{6410fad4}
-\newcommand{\JournalHead}{f4d86fac4021}
-\newcommand{\Rounds}{5}
-\newcommand{\RoundsSealed}{0}
-\newcommand{\Returns}{13}
-\newcommand{\ReturnsAdmitted}{6}
+\newcommand{\JournalHead}{41c1ae9ed793}
+\newcommand{\Rounds}{6}
+\newcommand{\RoundsSealed}{1}
+\newcommand{\Returns}{19}
+\newcommand{\ReturnsAdmitted}{12}
 \newcommand{\ReturnsUnreviewed}{7}
 \newcommand{\Relations}{8}
 \newcommand{\RelationsAttested}{8}
@@ -147,7 +147,11 @@ each missing input would settle and what fails without a given lemma.
 A research record keeps custody of the answers outside research runs return,
 for the rounds it records, and computes what each still owes. The paper compares the design with Prove2Me and blueprint-based systems, and
 the argument graph with earlier work on proof generalisation and truth
-maintenance.
+maintenance. A source-bound benchmark tests whether the repository's query
+routes recover known obligations; it does not measure what a reader learns.
+We give a controlled reader-study protocol for frontier, status, restatement
+and transfer decisions. No controlled comparison or prospective discovery
+study has yet established a benefit from the infrastructure.
 \end{abstract}
 
 \begin{paperresult}{Contribution and scope}
@@ -170,7 +174,8 @@ arguments.
 \textbf{Scope.} For Problem 1041 the Formal Conjectures statement is refuted;
 independent human review of its correspondence with the 1958 wording has not
 been recorded. The other seven targets remain open. The system leaves novelty
-and significance to experts.
+and significance to experts. The current benchmark checks retrieval against
+known source handles; comparative reader and discovery effects are unmeasured.
 \end{paperresult}
 
 \section{A theorem and the explanation it needs}\label{sec:intro}
@@ -869,7 +874,10 @@ it. The packet compiler adds an obligation for each contrast a question
 triggers to those the packet's author states and covers them all within a byte
 budget. A completed exact search gives the fewest bytes, a search cut short is
 labelled incomplete, and when nothing fits the compiler refuses and names what
-the budget cannot hold.
+the budget cannot hold. A triggered contrast is a request to check both sides
+of a distinction, not an automatic rejection of a returned claim. Deciding
+whether a result restates an existing one requires the exact hypotheses,
+direction of implication and evidence for any claimed strictness.
 
 \paragraph{What the record measures.} These numbers are what the record's
 commands (\texttt{research\_\allowbreak record.py status},
@@ -909,6 +917,64 @@ They also gave transcendence of the Lambert subsum over every infinite
 divisibility chain at every rational base~\cite{synthesis}. Lean checks
 $\mathcal D_{\{2,3,5\}}$; the other proofs are ordinary arguments awaiting
 specialist review, and the replay compares no exploration policies.
+
+\section{Testing decisions made from the record}\label{sec:evaluation}
+
+The record has two different possible benefits. It may help a reader identify
+the current frontier and avoid counting a restatement as progress; it may also
+help a researcher find an application that would otherwise be missed. The
+first is a decision about existing evidence. The second requires a new,
+independently checked consumer. The transfer in Section~\ref{sec:production}
+shows what mathematical reuse looks like, but its presence in the corpus does
+not measure either effect of the record.
+
+The current \texttt{benchmark\_semantic\_reasoning.py} exercises fixed
+queries against named source references: it checks that a returned packet
+contains specified results, statuses and dependency entries. This is a
+regression test of navigation, not an experiment with
+readers. An exact statement appearing in two places may be equivalent,
+strictly stronger in one context, or simply related by an unproved converse;
+matching words or graph proximity cannot decide which. The relation registry
+and contrast ledger expose the evidence for review. The journal records the
+reviewed disposition of each returned component. A measurement of rediscovery
+must first join companion prose and code belonging to one submitted attempt;
+files or equivalent formulations are not separate discoveries.
+
+A controlled model-reader comparison would freeze a source revision, task
+families, the correct frontier, answer keys and grading rules before runs begin.
+The planned tasks ask for a maximal recorded result under stated assumptions,
+an exact status, a scoped relation or a possible transfer. Papers alone, the
+active repository, a compiled context packet and the same excerpts without
+the packet's structure are four proposed reading conditions. The papers and
+repository conditions
+must use current material, and every condition must receive the same correct
+frontier when the question is whether an explanation or obligation list helps.
+Hold out tasks by proof and definition lineage, including aliases and generated
+graph or paper views that could reveal the answer. A task family, not each
+rephrased prompt or repeated seed, is the independent comparison unit.
+
+The offline \texttt{reader\_study.py} prepares explicit file allowlists and
+digest-bound jobs, checks their bytes, and can form grading packets without
+showing their arm labels. It does not run a model, provide an isolated execution
+environment, verify that all answer-bearing aliases were excluded, or judge
+mathematical correctness. Those steps need separate review and execution. A
+completed comparison would report every issued task, including timeouts and
+invalid answers, paired exact-decision accuracy, severe errors, source-use and
+total preparation and review cost. Independent grading must preserve justified
+uncertainty when a converse, witness or source claim is missing. No such
+completed comparison is reported here.
+
+Discovery needs a separate prospective test. Before a target consumer is
+revealed, freeze the mechanism records and source boundary, then ask whether a
+candidate map discharges its typed hypotheses, yields a kernel-checked or
+otherwise fully argued new application, survives a search for existing work,
+and helps an independent consumer. Record failed probes, human integration time
+and adverse cases as well as successes. A source mutation, such as withdrawing
+a guard or correcting a stale statement, offers another test: does the changed
+claim reach the packet, the reader's decision and each downstream paper or
+claim without invalidating unrelated work? These are proposed measurements,
+not results inferred from the number of files, the eight problem worlds or the
+existing research rounds.
 
 \section{From a proof to a public claim}\label{sec:checks}
 \papersectiontarget{systems-lifecycle}
@@ -1412,7 +1478,10 @@ what is the open problem in other coordinates and what each missing input would
 settle, with every kernel-checked row a proof and the rest a lower bound that
 says so. %FINDINGS-CONCLUSION
 The research record keeps custody of the answers returned in the rounds it
-records and computes what each still owes.
+records and computes what each still owes. The next empirical question is
+whether source-bound packets improve exact reader decisions under controlled
+conditions, followed separately by whether reviewed mechanisms help an
+independent consumer. Neither effect follows from the size of this record.
 
 \appendix
 \section{Inspection routes and reproducibility}\label{app:repro}
