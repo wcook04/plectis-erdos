@@ -20184,7 +20184,7 @@
     "lean_toolchain": "leanprover/lean4:v4.29.1",
     "repository": "https://github.com/wcook04/plectis-erdos",
     "formal_source": {
-      "ref": "24edbddbe2bd68e920327a701aad0b9dd0d69675",
+      "ref": "436f55ebdafa67e4af0fff79f621c13f2ded12bf",
       "ref_kind": "commit",
       "publication_state": "committed_checkpoint_pending_remote_publication",
       "relationship_to_last_tag": "post_tag_checkpoint",

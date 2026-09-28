@@ -107,19 +107,19 @@
   },
   "authority_posture": "navigation_projection_not_Lean_proof_authority_and_not_historical_evidence_authority",
   "content_hashes": {
-    "docs/claims.json": "sha256:76a69c0ebf1c4a67bb601de20d1828034da602a00f8c76ede178a1389ba21045",
+    "docs/claims.json": "sha256:7d76c3bfd8d872758909db0cfb371e148c32d0885af1701b433f6764d35dd384",
     "docs/methodology.json": "sha256:cef19d9092c49ba9c9b269a4b04c2c6030164bba6b80561117577713f60c3750",
-    "docs/problems.json": "sha256:81c9de141cd88496d0ffad9a7932d926327eda411295e05aae5e97fc44296fbb",
+    "docs/problems.json": "sha256:426ebec10d97b275ebf564e796a754d60de678ad3214af8cf22ea6a77647f836",
     "docs/publication_contract.json": "sha256:f46653b3fcecf8d455c2e22f3065b2e8f2d6a54d42d9386c1155a05dafcc35b0",
     "docs/publication_entry_source.json": "sha256:a350c6ba5ba1a9828e916301f3148bc9a81d7ca14b175db0eca8c5426b8e5e5d",
     "docs/publication_evidence.json": "sha256:4e350698eed8b4ee10fc629cfb7540ed71bc6ccf4020ee2ede8635f4aae809b3",
     "paper/systems/claim-faithful-publication-systems-paper.pdf": "sha256:2b5874c28e921bf224440ffb180df8609af839ac3c8e7be282456e371cc4c936",
-    "paper/systems/claim-faithful-publication-systems-paper.tex": "sha256:b40980c53aac160e8eb65fc05f799b07376bea7ba1e514cc87b2a4ed06f8d89d",
+    "paper/systems/claim-faithful-publication-systems-paper.tex": "sha256:581e28319c42a39ea23fdd1f2f61fb44e8b65f56e306d9ff3e6bca0b4ce2e65a",
     "research/experiments/publication_mutations.json": "sha256:9243e270257869e7a191c7598e917457cab61194299d1651e21bbc45a2d4c1e3",
-    "research_corpus/Erdos1041/CORPUS_MANIFEST.json": "sha256:ce964d4a1e23101de34f35e3a42d4e2d6851873f9a37ddaecb6af718e9048ea6",
-    "research_corpus/Erdos1041/FRONTIER.md": "sha256:e0c5f9c6ca8add9a7e87d11511fb63aa461699f0d54c392afba8bdabebf20299",
-    "research_corpus/Erdos1041/PUBLIC_CORPUS_CHECKPOINT.json": "sha256:007198e7eb8c48c7438c21d2a082342c45f44b945c49d5a3326d0a600d6b725c",
-    "research_corpus/Erdos1041/STRONGEST_RESULTS.json": "sha256:6b11ede029441a4c50aae08895a035b236a5a3e08a39452cf78a8ab87194199f",
+    "research_corpus/Erdos1041/CORPUS_MANIFEST.json": "sha256:edc01f9cf6a356e0722e7dc51425fa01be7200720b17cc2a131cd4bb504b31b3",
+    "research_corpus/Erdos1041/FRONTIER.md": "sha256:8aef5071a9a2a35de6b2af79bf0a486d97306aa0b6d4b997144e16ba1d112a9a",
+    "research_corpus/Erdos1041/PUBLIC_CORPUS_CHECKPOINT.json": "sha256:079c82a0261abfb4c7135d092a7f06a367db36bbbc8ce5c01e1eeefbc1b36b43",
+    "research_corpus/Erdos1041/STRONGEST_RESULTS.json": "sha256:a5f888560836a710024bd6079538cbd62b39c1544a19514903ac57f9789d7e24",
     "scripts/run_publication_mutations.py": "sha256:34168a755035ab14b591e981a62d7fc5030ea796774baf2243de803e1f1167b7"
   },
   "five_sentence_summary": [
@@ -504,19 +504,19 @@
     "directory": "research_corpus/Erdos1041",
     "files": {
       "checkpoint": {
-        "content_digest": "sha256:007198e7eb8c48c7438c21d2a082342c45f44b945c49d5a3326d0a600d6b725c",
+        "content_digest": "sha256:079c82a0261abfb4c7135d092a7f06a367db36bbbc8ce5c01e1eeefbc1b36b43",
         "path": "research_corpus/Erdos1041/PUBLIC_CORPUS_CHECKPOINT.json"
       },
       "frontier": {
-        "content_digest": "sha256:e0c5f9c6ca8add9a7e87d11511fb63aa461699f0d54c392afba8bdabebf20299",
+        "content_digest": "sha256:8aef5071a9a2a35de6b2af79bf0a486d97306aa0b6d4b997144e16ba1d112a9a",
         "path": "research_corpus/Erdos1041/FRONTIER.md"
       },
       "manifest": {
-        "content_digest": "sha256:ce964d4a1e23101de34f35e3a42d4e2d6851873f9a37ddaecb6af718e9048ea6",
+        "content_digest": "sha256:edc01f9cf6a356e0722e7dc51425fa01be7200720b17cc2a131cd4bb504b31b3",
         "path": "research_corpus/Erdos1041/CORPUS_MANIFEST.json"
       },
       "strongest_results": {
-        "content_digest": "sha256:6b11ede029441a4c50aae08895a035b236a5a3e08a39452cf78a8ab87194199f",
+        "content_digest": "sha256:a5f888560836a710024bd6079538cbd62b39c1544a19514903ac57f9789d7e24",
         "path": "research_corpus/Erdos1041/STRONGEST_RESULTS.json"
       }
     },
@@ -531,12 +531,12 @@
     ],
     "reading_rule": "Read FRONTIER.md for dated refutations and open gaps, then STRONGEST_RESULTS.json for source-pinned activation. Premises and falsifiers retain local hypotheses; research rows do not settle historical correspondence or become Comparator claims.",
     "source_index": {
-      "content_digest": "sha256:81c9de141cd88496d0ffad9a7932d926327eda411295e05aae5e97fc44296fbb",
+      "content_digest": "sha256:426ebec10d97b275ebf564e796a754d60de678ad3214af8cf22ea6a77647f836",
       "path": "docs/problems.json"
     },
     "strongest_result_summary": {
       "result_count": 294,
-      "source_checkpoint": "fd47c99b7f95ee10cbf22bd7e13a3bec9ea6bfac",
+      "source_checkpoint": "fb5c8803c1498cad9755d1615473cb33b11af6ee",
       "status": "open"
     }
   },
@@ -546,7 +546,7 @@
     "formal_source": {
       "public_tag": null,
       "publication_state": "committed_checkpoint_pending_remote_publication",
-      "ref": "24edbddbe2bd68e920327a701aad0b9dd0d69675",
+      "ref": "436f55ebdafa67e4af0fff79f621c13f2ded12bf",
       "ref_kind": "commit",
       "relationship_to_last_tag": "post_tag_checkpoint"
     },

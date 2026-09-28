@@ -5,7 +5,7 @@
       "certificate": {
         "declaration": "ErdosProblems.ArgumentGraph.RelationCertificates.prime_gap_view",
         "module": "lean/ErdosProblems/ArgumentGraph/Results/RelationCertificates.lean",
-        "signature_sha256": null
+        "signature_sha256": "b8a88eb5e468c8d53e2d2e135d0dd74efb5d99e542ba3a266f5ae677a8d704b0"
       },
       "context": "fun _ : Unit => True",
       "id": "prime_gap_view",
@@ -29,7 +29,7 @@
       "certificate": {
         "declaration": "ErdosProblems.ArgumentGraph.RelationCertificates.contour_view",
         "module": "lean/ErdosProblems/ArgumentGraph/Results/RelationCertificates.lean",
-        "signature_sha256": null
+        "signature_sha256": "ef3612662417ed1095dd858cb15f085a6a11884486ee83082b0ca154a62b3608"
       },
       "context": "fun ab : ℕ × ℕ => 0 < ab.2 ∧ ab.2 < ab.1",
       "id": "contour_view",
@@ -49,7 +49,7 @@
       "certificate": {
         "declaration": "ErdosProblems.ArgumentGraph.RelationCertificates.square_view",
         "module": "lean/ErdosProblems/ArgumentGraph/Results/RelationCertificates.lean",
-        "signature_sha256": null
+        "signature_sha256": "3c10132a374db2079eb420ab9f130d18a3ea8a4cecff521ab3053fe77062d52a"
       },
       "context": "fun _ : Unit => True",
       "id": "square_view",
@@ -69,7 +69,7 @@
       "certificate": {
         "declaration": "ErdosProblems.ArgumentGraph.RelationCertificates.demand_G102_view",
         "module": "lean/ErdosProblems/ArgumentGraph/Results/RelationCertificates.lean",
-        "signature_sha256": null
+        "signature_sha256": "f5e15058d7532d368b6a7e438fae0ec6472b6386803fc5ddef023b7dce0b8ec3"
       },
       "context": "fun _ : Unit => True",
       "id": "demand_G102_view",
@@ -93,7 +93,7 @@
       "certificate": {
         "declaration": "ErdosProblems.ArgumentGraph.RelationCertificates.support_gap_route",
         "module": "lean/ErdosProblems/ArgumentGraph/Results/RelationCertificates.lean",
-        "signature_sha256": null
+        "signature_sha256": "2b8f44169ede20621de066fcd6573913544eda4ed05b67824240efc7b7f33c09"
       },
       "context": "fun _ : Unit => True",
       "id": "support_gap_route",
@@ -113,7 +113,7 @@
       "certificate": {
         "declaration": "ErdosProblems.ArgumentGraph.RelationCertificates.good_base_gap_route",
         "module": "lean/ErdosProblems/ArgumentGraph/Results/RelationCertificates.lean",
-        "signature_sha256": null
+        "signature_sha256": "9690bfe8bd5fbbbca228e8c9d1f1e789c99ef98ee9d3bdb02e33ba9bdc861b90"
       },
       "context": "fun _ : Unit => True",
       "id": "good_base_gap_route",
@@ -133,7 +133,7 @@
       "certificate": {
         "declaration": "ErdosProblems.ArgumentGraph.RelationCertificates.maximality_clause_refuted_off_switch",
         "module": "lean/ErdosProblems/ArgumentGraph/Results/RelationCertificates.lean",
-        "signature_sha256": null
+        "signature_sha256": "416cea3bbd93b4263b5d43627e438da6e4662b069bd21e41048b81ff74151415"
       },
       "context": "ErdosProblems.ArgumentGraph.RelationCertificates.OffSwitch: fun v : ℕ × ℝ × ℝ => 3 ≤ v.1 ∧ 0 < v.2.1 ∧ v.2.1 ^ v.1 < 1 ∧ ¬ 1 ≤ v.2.1 ^ v.1 * (1 + chordCos v.1 ^ v.1)",
       "id": "maximality_clause_refuted_off_switch",
@@ -153,7 +153,7 @@
       "certificate": {
         "declaration": "ErdosProblems.ArgumentGraph.RelationCertificates.off_switch_region_feasible",
         "module": "lean/ErdosProblems/ArgumentGraph/Results/RelationCertificates.lean",
-        "signature_sha256": null
+        "signature_sha256": "9b5acc3857da7cefa1a12165b817679c0048ac16311feca322d1f8d2c643dc74"
       },
       "context": "fun _ : ℕ × ℝ × ℝ => True",
       "id": "off_switch_region_feasible",
