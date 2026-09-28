@@ -13006,6 +13006,69 @@
           ]
         },
         {
+          "id": "ErdosProblems.Erdos249.FiniteDilationDyadicClassification",
+          "path": "lean/ErdosProblems/Erdos249/FiniteDilationDyadicClassification.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos249.FiniteDilationJointValue",
+            "ErdosProblems.Erdos249.FiniteDilationRationalObservables"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos249.FiniteDilationJointValue",
+          "path": "lean/ErdosProblems/Erdos249/FiniteDilationJointValue.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos249.FiniteDilationPulseCore",
+            "ErdosProblems.Erdos249.FiniteDilationSeriesTransport",
+            "ErdosProblems.Erdos249.PaperCompleteR7.IntegerRadixObservables"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos249.FiniteDilationLeastResidueRational",
+          "path": "lean/ErdosProblems/Erdos249/FiniteDilationLeastResidueRational.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos249.FiniteDilationJointValue"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos249.FiniteDilationLinearIndependent",
+          "path": "lean/ErdosProblems/Erdos249/FiniteDilationLinearIndependent.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos249.FiniteDilationLeastResidueRational"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos249.FiniteDilationMixedModuli",
+          "path": "lean/ErdosProblems/Erdos249/FiniteDilationMixedModuli.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos249.FiniteDilationDyadicClassification"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos249.FiniteDilationPulseCore",
+          "path": "lean/ErdosProblems/Erdos249/FiniteDilationPulseCore.lean",
+          "role": "Lean proof module",
+          "imports": []
+        },
+        {
+          "id": "ErdosProblems.Erdos249.FiniteDilationRationalObservables",
+          "path": "lean/ErdosProblems/Erdos249/FiniteDilationRationalObservables.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos249.PaperCompleteR7.IntegerRadixObservables"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos249.FiniteDilationSeriesTransport",
+          "path": "lean/ErdosProblems/Erdos249/FiniteDilationSeriesTransport.lean",
+          "role": "Lean proof module",
+          "imports": []
+        },
+        {
           "id": "ErdosProblems.Erdos249.FiniteEulerSieve",
           "path": "lean/ErdosProblems/Erdos249/FiniteEulerSieve.lean",
           "role": "Lean proof module",
@@ -13733,6 +13796,12 @@
           ]
         },
         {
+          "id": "ErdosProblems.Erdos249.PaperCompleteR7.ArbitraryBaseIsolatedPulse",
+          "path": "lean/ErdosProblems/Erdos249/PaperCompleteR7/ArbitraryBaseIsolatedPulse.lean",
+          "role": "Lean proof module",
+          "imports": []
+        },
+        {
           "id": "ErdosProblems.Erdos249.PaperCompleteR7.ArithmeticAssemblies",
           "path": "lean/ErdosProblems/Erdos249/PaperCompleteR7/ArithmeticAssemblies.lean",
           "role": "Lean proof module",
@@ -13742,6 +13811,15 @@
             "Erdos249257.SignedQMomentObstruction",
             "Erdos249257.AllBaseTotientKernel",
             "ErdosProblems.Erdos249.CyclotomicAnchoredKill"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos249.PaperCompleteR7.IntegerRadixObservables",
+          "path": "lean/ErdosProblems/Erdos249/PaperCompleteR7/IntegerRadixObservables.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos249.PaperCompleteR7.RationalObservableClassification",
+            "ErdosProblems.Erdos249.PaperCompleteR7.ArbitraryBaseIsolatedPulse"
           ]
         },
         {
@@ -13759,6 +13837,14 @@
           "imports": [
             "ErdosProblems.Erdos249.PeriodicTotientIndependence",
             "ErdosProblems.Erdos249.ResidueClassTotientSeries"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos249.PaperCompleteR7.RationalIntegerRadixClassification",
+          "path": "lean/ErdosProblems/Erdos249/PaperCompleteR7/RationalIntegerRadixClassification.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos249.PaperCompleteR7.IntegerRadixObservables"
           ]
         },
         {
