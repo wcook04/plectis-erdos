@@ -233,6 +233,8 @@ jobs:
           ErdosProblems.ArgumentGraph.Results.Erdos249Residual
           ErdosProblems.ArgumentGraph.Results.Erdos249Abduction
           ErdosProblems.ArgumentGraph.Results.Erdos251
+          ErdosProblems.ArgumentGraph.Contracts
+          ErdosProblems.ArgumentGraph.Results.RelationCertificates
 
       # Saved even after a failed build: Lake's content traces decide what is
       # current, so a partial tree only shortens the next run.

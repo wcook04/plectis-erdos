@@ -102,6 +102,19 @@ COMMANDS = (
     ('scripts/test_shard_closure_t64.py',),
     ('scripts/test_source_bound_reproduction.py',),
     ('scripts/test_strict_prime_semantic_digest.py',),
+    # The research record: journal custody, relation rows, the contrast ledger
+    # and the research-packet compiler, then the committed record data.
+    ('scripts/test_research_record.py',),
+    ('-O', 'scripts/test_research_record.py'),
+    ('scripts/test_relation_registry.py',),
+    ('-O', 'scripts/test_relation_registry.py'),
+    ('scripts/test_contrast_ledger.py',),
+    ('-O', 'scripts/test_contrast_ledger.py'),
+    ('scripts/test_compile_research_packet.py',),
+    ('-O', 'scripts/test_compile_research_packet.py'),
+    ('scripts/research_record.py', 'verify'),
+    ('scripts/relation_registry.py', 'check'),
+    ('scripts/contrast_ledger.py', 'check'),
     ('-m', 'reuse', 'lint'),
 )
 
