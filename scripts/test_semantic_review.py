@@ -25,6 +25,9 @@ CEILING = (
     "boundaries; not Lean proof authority, novelty review, or human review."
 )
 ENVIRONMENT_CONTRACT = "clean_committed_snapshot_subprocess_environment_v1"
+# Semantic queries read and fingerprint the full corpus, unlike Git metadata.
+# Keep a finite workload budget with room for simultaneous release checks.
+SEMANTIC_QUERY_TIMEOUT_SECONDS = 120
 
 
 def require(condition: bool, message: str) -> None:
@@ -100,7 +103,7 @@ def run_query(*args: str) -> subprocess.CompletedProcess[str]:
         text=True,
         check=False,
         env=singleflight.command_environment(),
-        timeout=singleflight.GIT_COMMAND_TIMEOUT_SECONDS,
+        timeout=SEMANTIC_QUERY_TIMEOUT_SECONDS,
     )
 
 
@@ -140,9 +143,23 @@ def check_query_environment() -> None:
     require(sanitized["LANG"] == "C.UTF-8", "canonical LANG missing")
     require(sanitized["PATH"] == os.defpath, "ambient PATH leaked into semantic query")
     require(
-        kwargs["timeout"] == singleflight.GIT_COMMAND_TIMEOUT_SECONDS,
+        kwargs["timeout"] == SEMANTIC_QUERY_TIMEOUT_SECONDS,
         "semantic query timeout drifted",
     )
+    require(
+        singleflight.GIT_COMMAND_TIMEOUT_SECONDS < SEMANTIC_QUERY_TIMEOUT_SECONDS
+        < singleflight.DEFAULT_WORKER_TIMEOUT_SECONDS,
+        "corpus query needs its own finite budget within the release worker deadline",
+    )
+    with patch.object(subprocess, "run", side_effect=subprocess.TimeoutExpired(
+        "query_semantic.py", SEMANTIC_QUERY_TIMEOUT_SECONDS
+    )):
+        try:
+            run_query("semantic-reviews", "Z00::sample")
+        except subprocess.TimeoutExpired:
+            pass
+        else:
+            raise AssertionError("semantic query timeout must fail the test")
     require(
         ENVIRONMENT_CONTRACT
         == "clean_committed_snapshot_subprocess_environment_v1",

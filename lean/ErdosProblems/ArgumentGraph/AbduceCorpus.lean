@@ -1,5 +1,7 @@
 -- SPDX-FileCopyrightText: 2026 Will Cook
 -- SPDX-License-Identifier: Apache-2.0
+import Mathlib.Data.Real.Basic
+import Mathlib.Order.Interval.Finset.Defs
 import ErdosProblems.ArgumentGraph.Residualise
 import ErdosProblems.ArgumentGraph.Abduce
 

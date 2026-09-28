@@ -570,11 +570,16 @@ def describe(change: Change) -> str:
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     parser.add_argument("--root", type=Path, default=ROOT, help="repository checkout (default: this clone)")
-    parser.add_argument("--base", default="origin/main", help="git ref the recorded anchors were digested against")
+    parser.add_argument("--base", help="git ref the recorded anchors were digested against")
     parser.add_argument("--write", action="store_true", help="save the registry when every anchor resolves")
+    parser.add_argument("--check", action="store_true", help="fail on stale anchors without writing; defaults to HEAD as base")
+    parser.add_argument("--preserve-excerpts", action="store_true", help="refuse automatic repair when excerpt content would change")
     parser.add_argument("--patch", type=Path, help="JSON list of source rows to add or extend")
     parser.add_argument("--verbose", action="store_true", help="also list rows that only moved")
     args = parser.parse_args(argv)
+    if args.check and (args.write or args.patch):
+        parser.error("--check cannot write or patch the registry")
+    args.base = args.base or ("HEAD" if args.check else "origin/main")
     root = args.root.resolve()
     registry_path = root / REGISTRY
     try:
@@ -613,6 +618,12 @@ def main(argv: list[str] | None = None) -> int:
         f"current {report.current}, moved {len(report.moved)}, recomputed {len(report.recomputed)}, "
         f"unresolved {len(report.unresolved)}; registry {'changed' if output != raw else 'unchanged'}"
     )
+    if args.preserve_excerpts and report.recomputed:
+        print("not written: changed excerpt content requires review; only unchanged excerpts move automatically")
+        return 1
+    if args.check and output != raw:
+        print("source-attribution anchors are stale; run the projection refresh")
+        return 1
     if report.unresolved:
         if args.write:
             print("not written: resolve the anchors above, then rerun")
