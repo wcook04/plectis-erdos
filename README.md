@@ -203,7 +203,7 @@ follow the [agent workbench](docs/agents/AGENT_WORKBENCH.md).
 
 ## Corpus at a glance
 
-The reviewed layer a mathematician should judge: 150 curated claim records in 33 contribution families, reaching Lean source through 468 principal declaration links. `docs/SCOPE.md` gives its shape and `docs/RESULTS.md` gives the strongest checked result per problem. The website and the papers are the human reading path.
+The reviewed layer a mathematician should judge: 151 curated claim records in 33 contribution families, reaching Lean source through 469 principal declaration links. `docs/SCOPE.md` gives its shape and `docs/RESULTS.md` gives the strongest checked result per problem. The website and the papers are the human reading path.
 
 The rest is engineering inventory. About 87% of the 164,401 declarations (142,668 across 695 modules) are machine-emitted certificate shards: one integer checked prime, one position excluded. The remainder is not all hand-written either.
 

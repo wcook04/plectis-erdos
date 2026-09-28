@@ -185,6 +185,7 @@
       ],
       "what_is_checked": [
         "Lean proves cubic_rate_irrationality_unconditional for positive StrictMono zero-indexed a_n with a_n²/a_(n+1) = 1 + 3/n + o(n^-3). The one-based paper uses a finite-prefix bridge; general #243 remains open.",
+        "Lean proves nonintegral_regular_rate_irrational for positive StrictMono zero-indexed a_n whenever the real coefficient lambda is greater than one and nonintegral, with a_n²/a_(n+1) = 1 + lambda/n + o(n^-lambda). Summability is derived. The one-based paper uses the same finite-prefix bridge; the unrestricted problem remains open.",
         "The exact product-cleared tail dynamics and the defect identity, as identities in the integer state variables.",
         "That a vanishing centred state is absorbing under strict centring, so the state is either eventually zero or nowhere zero.",
         "That eventual vanishing of the centred state, with the next tail state nonvanishing, forces the Sylvester recurrence eventually.",
