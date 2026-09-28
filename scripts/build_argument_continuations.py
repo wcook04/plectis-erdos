@@ -189,6 +189,8 @@ def row_identity(row: dict[str, Any]) -> tuple[Any, ...]:
         return (record, row.get("theorem"), row.get("conclusion"))
     if record == "generalisation":
         return (record, row.get("theorem"), row.get("literal"), row.get("literal_type"))
+    if record == "abduction":
+        return (record, row.get("statement"), row.get("residual"))
     return (record, json.dumps(row, sort_keys=True, ensure_ascii=False))
 
 
@@ -757,6 +759,17 @@ class Graph:
                 # accepted the proof: a residual-free reduction.
                 self._statement(row["statement"], None, "battery")
                 add_reduction(row["statement"], f"tactic:{row.get('tactic')}", "battery", ())
+            elif record == "abduction" and row.get("kernel_checked"):
+                # scripts/export_abductions.lean: a combination of corpus facts
+                # gives the statement (a residual-free reduction), or restates it
+                # in the quantities no fact controls (a reduction to the residual).
+                producer = "abduction:" + ",".join(row.get("facts") or [])
+                self._statement(row["statement"], row.get("type"), "abduction")
+                if row.get("given"):
+                    add_reduction(row["statement"], producer, "abduction", ())
+                elif row.get("residual"):
+                    self._statement(row["residual"], row.get("residual_type"), "abduction")
+                    add_reduction(row["statement"], producer, "abduction", [row["residual"]])
             elif record == "refutation":
                 if row.get("status") != "matched":
                     self.budget_exhausted.append({
@@ -2126,6 +2139,10 @@ def build(export_path: Path | list[Path], root: Path = ROOT, *, lean_tree: str |
         "export_truncated": bool(graph.summary.get("truncated")),
         "battery_closed_statements": sum(1 for (_, producer, _, _) in graph.reductions
                                          if producer.startswith("tactic:")),
+        "abduction_given_statements": sum(1 for (_, producer, _, residuals) in graph.reductions
+                                          if producer.startswith("abduction:") and not residuals),
+        "abduction_restated_statements": sum(1 for (_, producer, _, residuals) in graph.reductions
+                                             if producer.startswith("abduction:") and residuals),
         "refuted_statements": len(kernel_refuted),
         "refuted_statements_derived": len(derived_refuted),
         "refuted_statements_by_conflict": len(conflict_refuted),
@@ -2462,6 +2479,8 @@ def macro_values(projection: dict[str, Any]) -> dict[str, Any]:
         "AGKernelCompositions": summary.get("kernel_checked_compositions", 0),
         "AGPaperCompositions": summary["compositions_of_paper_cited_conditional_theorems"],
         "AGBatteryClosed": summary.get("battery_closed_statements", 0),
+        "AGAbductionGiven": summary.get("abduction_given_statements", 0),
+        "AGAbductionRestated": summary.get("abduction_restated_statements", 0),
         "AGBatteryTried": export.get("battery_tried", 0),
         "AGBudgetExhausted": summary["budget_exhausted_attempts"],
         "AGRefuted": summary["refuted_statements"],

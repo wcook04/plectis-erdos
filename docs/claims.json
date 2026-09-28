@@ -1915,7 +1915,7 @@
         "ErdosProblems.ArgumentGraph.Derived.Erdos68",
         "ErdosProblems.ArgumentGraph.Results.Erdos1041",
         "ErdosProblems.ArgumentGraph.Results.Erdos243",
-        "ErdosProblems.ArgumentGraph.Results.Erdos249Endpoint",
+        "ErdosProblems.ArgumentGraph.Results.Erdos249Abduction",
         "ErdosProblems.ArgumentGraph.Results.Erdos249Residual",
         "ErdosProblems.ArgumentGraph.Results.Erdos251",
         "ErdosProblems.Bit.verify.B1",
@@ -8399,6 +8399,21 @@
           ]
         },
         {
+          "id": "ErdosProblems.ArgumentGraph.Abduce",
+          "path": "lean/ErdosProblems/ArgumentGraph/Abduce.lean",
+          "role": "Lean proof module",
+          "imports": []
+        },
+        {
+          "id": "ErdosProblems.ArgumentGraph.AbduceCorpus",
+          "path": "lean/ErdosProblems/ArgumentGraph/AbduceCorpus.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.ArgumentGraph.Residualise",
+            "ErdosProblems.ArgumentGraph.Abduce"
+          ]
+        },
+        {
           "id": "ErdosProblems.ArgumentGraph.Derive",
           "path": "lean/ErdosProblems/ArgumentGraph/Derive.lean",
           "role": "Lean proof module",
@@ -8817,6 +8832,15 @@
           "imports": [
             "ErdosProblems.Erdos249.PaperCompleteR21.ExcludedCofactorEstimate",
             "ErdosProblems.Erdos249.TypeBReturnV8.PeripheralFiniteBridge"
+          ]
+        },
+        {
+          "id": "ErdosProblems.ArgumentGraph.Results.Erdos249Abduction",
+          "path": "lean/ErdosProblems/ArgumentGraph/Results/Erdos249Abduction.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.ArgumentGraph.AbduceCorpus",
+            "ErdosProblems.ArgumentGraph.Results.Erdos249Endpoint"
           ]
         },
         {
@@ -19010,6 +19034,26 @@
           ]
         },
         {
+          "id": "ErdosProblems.Synthesis.RealBaseRounding",
+          "path": "lean/ErdosProblems/Synthesis/RealBaseRounding.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos251.SparseRationalisationCore",
+            "ErdosProblems.Erdos1049.PaperLinearFormsR7"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Synthesis.RoundingBarrier",
+          "path": "lean/ErdosProblems/Synthesis/RoundingBarrier.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.TotientTailPeriodKiller",
+            "ErdosProblems.Erdos251.BoundedPerturbationCountermodel",
+            "ErdosProblems.Erdos249.PaperCompleteR20.FinitePrefixCountermodelEndpoint",
+            "Erdos249257.ReciprocalSupportIrrationality"
+          ]
+        },
+        {
           "id": "ErdosProblems.Synthesis.UniformRankBarrier",
           "path": "lean/ErdosProblems/Synthesis/UniformRankBarrier.lean",
           "role": "Lean proof module",
@@ -19026,6 +19070,8 @@
             "ErdosProblems.Synthesis.DyadicShiftEscape",
             "ErdosProblems.Synthesis.FeedbackContinuation",
             "ErdosProblems.Synthesis.FactorialJet",
+            "ErdosProblems.Synthesis.RealBaseRounding",
+            "ErdosProblems.Synthesis.RoundingBarrier",
             "ErdosProblems.Synthesis.UniformRankBarrier"
           ]
         },
@@ -19983,7 +20029,7 @@
     "lean_toolchain": "leanprover/lean4:v4.29.1",
     "repository": "https://github.com/wcook04/plectis-erdos",
     "formal_source": {
-      "ref": "ce0c74e8748088383ae90b04de0477cc9862d520",
+      "ref": "8802151983a2a549323f8d6647dd815eb26c9d42",
       "ref_kind": "commit",
       "publication_state": "committed_checkpoint_pending_remote_publication",
       "relationship_to_last_tag": "post_tag_checkpoint",

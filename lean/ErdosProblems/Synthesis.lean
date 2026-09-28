@@ -5,4 +5,6 @@ import ErdosProblems.Synthesis.CongruenceInterpolation
 import ErdosProblems.Synthesis.DyadicShiftEscape
 import ErdosProblems.Synthesis.FeedbackContinuation
 import ErdosProblems.Synthesis.FactorialJet
+import ErdosProblems.Synthesis.RealBaseRounding
+import ErdosProblems.Synthesis.RoundingBarrier
 import ErdosProblems.Synthesis.UniformRankBarrier

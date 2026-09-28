@@ -971,6 +971,41 @@ class Papers(unittest.TestCase):
         self.assertEqual([e["row"] for e in out["notable"]], ["r1"])
 
 
+class AbductionRows(unittest.TestCase):
+    """Rows of scripts/export_abductions.lean: a statement the corpus facts give
+    is supplied through an abduction reduction with no residual, a restated one
+    reduces to its residual, and a row the kernel did not check registers
+    nothing."""
+
+    @staticmethod
+    def row(**fields) -> dict:
+        return {"record": "abduction", "statement": "H", "type": "H", "facts": ["F.one", "F.two"],
+                "kernel_checked": True, **fields}
+
+    def test_given_supplies_the_statement_and_its_consumer(self) -> None:
+        graph = graph_of([theorem("T.uses_h", [hyp(0, "H")], "G"), statement("H"),
+                          self.row(given=True)])
+        self.assertIn("H", graph.supplied)
+        self.assertIn("G", graph.supplied)
+        self.assertIn(("H", "abduction:F.one,F.two", "abduction", ()), graph.reductions)
+
+    def test_restated_reduces_to_the_residual(self) -> None:
+        row = self.row(given=False, residual="R", residual_type="R")
+        open_graph = graph_of([theorem("T.uses_h", [hyp(0, "H")], "G"), statement("H"), row])
+        self.assertIn("R", open_graph.statements)
+        self.assertNotIn("H", open_graph.supplied)
+        closed_graph = graph_of([theorem("T.uses_h", [hyp(0, "H")], "G"), statement("H"), row,
+                                 statement("R"), match("R", "T.gives_r")])
+        self.assertIn("H", closed_graph.supplied)
+        self.assertIn("G", closed_graph.supplied)
+
+    def test_unchecked_rows_register_nothing(self) -> None:
+        graph = graph_of([theorem("T.uses_h", [hyp(0, "H")], "G"), statement("H"),
+                          self.row(given=True, kernel_checked=False)])
+        self.assertNotIn("H", graph.supplied)
+        self.assertFalse([r for r in graph.reductions if r[2] == "abduction"])
+
+
 SIBLING_SUITES = ("test_argument_graph_frontier", "test_argument_graph_interfaces",
                   "test_argument_graph_contracts", "test_probe_semantics")
 
