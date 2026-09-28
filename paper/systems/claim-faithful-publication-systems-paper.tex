@@ -15,11 +15,11 @@
 }
 \newcommand{\repobase}{https://github.com/wcook04/plectis-erdos}
 % BEGIN generated_semantic_coverage_macros
-\newcommand{\SemanticAuthoredTheoremLike}{152,066}
+\newcommand{\SemanticAuthoredTheoremLike}{152,080}
 \newcommand{\SemanticAuthoredInterpreted}{139,818}
 \newcommand{\SemanticDirectEvidence}{3,330}
 \newcommand{\SemanticContextual}{136,488}
-\newcommand{\SemanticStructuralOnly}{12,248}
+\newcommand{\SemanticStructuralOnly}{12,262}
 \newcommand{\SemanticAuthoredPercent}{91.9}
 % END generated_semantic_coverage_macros
 % BEGIN generated_argument_graph_macros
@@ -68,7 +68,7 @@
 \newcommand{\AFNamedInputUses}{129}
 \newcommand{\AFNamedInputsTraced}{55}
 % END generated_argument_frontier_macros
-\newcommand{\repolink}[2]{\href{\repobase/blob/948f3276061a743bc722937874e1603683737ffb/#1}{\texttt{#2}}}
+\newcommand{\repolink}[2]{\href{\repobase/blob/ce0c74e8748088383ae90b04de0477cc9862d520/#1}{\texttt{#2}}}
 \emergencystretch=1.7em
 
 \runninghead{Problem-sized Lean worlds}
@@ -475,34 +475,34 @@ $X$ in which $D$ is the density of the integers $m$ with $\varphi(m)<\eta m$;
 the argument needs the count below $X/100$. The Lean proof
 (\repolink{lean/ErdosProblems/Erdos249/PaperCompleteR21/ExcludedCofactorEstimate.lean}{ExcludedCofactorEstimate.lean})
 takes the prime number theorem as a named input, and the paper marks the
-result with a dagger. Run on that module in a kernel probe, the
-used-consequence pass shows, by following the lemma at each use site, that the
-proof uses the prime number theorem only through a chain of lemmas ending at
-the dyadic prime count
-$\#\{p\ \text{prime}:a<p\le2a+1\}\cdot\log a\le(1+\varepsilon)\,a$, for each
-$\varepsilon>0$ and all large $a$, which uses it only through
-$(1-\delta)\,n\log n\le p_n\le(1+\delta)\,n\log n$ for the $n$th prime $p_n$,
-each $\delta>0$ and all large $n$. The kernel accepted every weakened theorem
-on the chain and each implication from the prime number theorem, so the question
-is which constant $K$ in place of $1$ the argument affords (the pass keeps
-constants fixed; that step was by hand). The argument is linear in $K$ and bounds the count by $(KD+o(1))X$.
-Chebyshev's bound, that the primes in $(a+1,2a+1]$ divide
-$\binom{2a+1}{a}\le4^a$, gives $K=\log4$; at the record's explicit choice
-$\eta=1/1000$ an elementary estimate gives $D\le3/1000$, and since
-$3\log4/1000<1/100$ the count stays below $X/100$ for all large $X$ with no
-input at all. Lean checks that theorem
-(\repolink{lean/ErdosProblems/Erdos249/PaperCompleteR21/ExcludedCofactorEstimate.lean}{\texttt{ExcludedCofactorEstimate.lean}})
-and the family it belongs to: the same argument holds for every $\eta>0$ with
-$3\eta\log4<1/100$
+result with a dagger. In a kernel probe the used-consequence pass shows that
+the proof uses it only through a chain of lemmas ending at the dyadic prime
+count $\#\{p\ \text{prime}:a<p\le2a+1\}\cdot\log a\le(1+\varepsilon)\,a$ for
+all large $a$, and the kernel accepted every weakened theorem on the chain. The
+argument is linear in the constant $K$ in place of $1$ (that step was by hand)
+and bounds the count by $(KD+o(1))X$. Chebyshev's bound, that the primes in
+$(a+1,2a+1]$ divide $\binom{2a+1}{a}\le4^a$, gives $K=\log4$; at
+$\eta=1/1000$ an elementary estimate gives $D\le3/1000$, and
+$3\log4/1000<1/100$, so the count stays below $X/100$ with no input at all, as
+it does for every $\eta>0$ with $3\eta\log4<1/100$
 (\repolink{lean/ErdosProblems/Erdos249/PaperCompleteR21/ExcludedCofactorEstimate.lean}{\texttt{excluded\_budget\_of\_chebyshev}}).
-The count also serves a route that never calls it: with the
-unconditional \texttt{prop\_dickman} it discharges the depth, bad-base and
-non-supplier conditions of Problem~249's first-harmonic route, leaving its
-fibre-mean and centred estimates
-(\repolink{lean/ErdosProblems/ArgumentGraph/Results/Erdos249.lean}{Results/Erdos249.lean}).
-The prime number theorem gives the fibre means; on the good bases the
-centred estimate is the first-harmonic gap, up to $X/100$
+With the unconditional \texttt{prop\_dickman} the count discharges the depth,
+bad-base and non-supplier conditions of Problem~249's first-harmonic route,
+leaving its fibre-mean and centred estimates
+(\repolink{lean/ErdosProblems/ArgumentGraph/Results/Erdos249.lean}{Results/Erdos249.lean});
+the prime number theorem gives the fibre means, and on the good bases the
+centred estimate is the first-harmonic gap up to $X/100$
 (\repolink{lean/ErdosProblems/ArgumentGraph/Results/Erdos249Route.lean}{Results/Erdos249Route.lean}).
+The irrationality needs less: a set of bases whose average first cosine is at
+most $\tfrac{9}{10}$ contains a certified kill, and more than $67X/100$ of the bases are
+good, so the good-base gap at $603X/1000$ alone gives it
+(\repolink{lean/ErdosProblems/ArgumentGraph/Results/Erdos249Endpoint.lean}{Results/Erdos249Endpoint.lean}).
+A search command, \texttt{residualise}, finds the route through the
+decorrelation with the composition withheld, fixing the depth and $\eta$ by
+unification, and adds once the kernel accepts it the theorem that the clauses
+no supplier gives imply the decorrelation: with the fibre-mean theorem among
+the suppliers, the prime number theorem and the centred estimate
+(\repolink{lean/ErdosProblems/ArgumentGraph/Results/Erdos249Residual.lean}{Results/Erdos249Residual.lean}).
 
 \paragraph{The findings as library theorems.} A Lean module
 (\href{\repobase/blob/7391668980147292656da6d0bc66a927aa84824b/lean/ErdosProblems/ArgumentGraph/Derive.lean}{\texttt{Derive.lean}})
@@ -1233,7 +1233,13 @@ verbatim~\cite{berlotattwell}. Proof-Refactor lifts
 proof blocks into helpers that a language model judges~\cite{proofrefactor},
 LeanConjecturer screens conjectures with \texttt{exact?} and
 Aesop~\cite{leanconjecturer}, and Georgiev et al.\ report scores met
-without the property measured~\cite{alphaevolvemath}. Here the gain of a
+without the property measured~\cite{alphaevolvemath}. DreamProver grows a
+Lean lemma library in wake and sleep stages and ablates the whole
+library~\cite{dreamprover}, as CircuitProver does for hardware
+proofs~\cite{circuitprover}; ProofEvolve stores kernel-checked sub-proofs as
+schemas whose unmet premises become subgoals~\cite{proofevolve}; B\"ohme and
+Nipkow minimise the facts of one proof by withdrawing each and
+rechecking~\cite{judgementday}. Here the gain of a
 restatement is a kernel-checked theorem, and its use by another proof is read
 from proof terms and from what withdrawing it loses.
 
@@ -1546,6 +1552,18 @@ Learning}, 2020, \href{https://arxiv.org/abs/2006.08381}{arXiv:2006.08381}.
 \bibitem{legoprover} H.~Wang, H.~Xin, et al., \emph{LEGO-Prover: Neural
 Theorem Proving with Growing Libraries}, ICLR 2024,
 \href{https://arxiv.org/abs/2310.00656}{arXiv:2310.00656}.
+\bibitem{dreamprover} Y.~Zhang, J.~Sun, et al., \emph{DreamProver: Evolving
+Transferable Lemma Libraries via a Wake-Sleep Theorem-Proving Agent}, 2026,
+\href{https://arxiv.org/abs/2604.26311}{arXiv:2604.26311}.
+\bibitem{circuitprover} Z.~Yang, W.~Fang, et al., \emph{CircuitProver: Agentic
+Lean 4 Theorem Proving with Reusable Circuit Proof Library for Hardware
+Verification}, 2026, \href{https://arxiv.org/abs/2607.27259}{arXiv:2607.27259}.
+\bibitem{proofevolve} W.~Ye, Z.~Guan, et al., \emph{ProofEvolve: Neuro-Symbolic
+Evolution for Formal Automated Theorem Proving}, 2026,
+\href{https://arxiv.org/abs/2608.26334}{arXiv:2608.26334}.
+\bibitem{judgementday} S.~B\"ohme and T.~Nipkow, \emph{Sledgehammer: Judgement
+Day}, IJCAR 2010, LNCS 6173, pp.~107--121,
+\href{https://doi.org/10.1007/978-3-642-14203-1_9}{DOI}.
 \bibitem{berlotattwell} I.~Berlot-Attwell, T.~Sesterhenn, F.~Rudzicz, and
 X.~Si, \emph{Is This LLM Library Learning? Evaluation Must Account For Compute
 and Behaviour}, EACL 2026, pp.~3534--3568,
