@@ -177,7 +177,8 @@ class Base(unittest.TestCase):
         self.add("component_disposed", {"return_id": "A", "component": "contracts", "decision": "taken",
                                         "reason": "sound", "landed_as": ["lean/Toy/Paper.lean"]})
         self.add("component_disposed", {"return_id": "A", "component": "optimiser", "decision": "deferred",
-                                        "reason": "needs the packet compiler", "landed_as": []})
+                                        "reason": "needs the packet compiler", "landed_as": [],
+                                        "reentry": {"owner": "record lane", "trigger": "packet compiler lands"}})
         self.add("output_declared", output())
         self.add("consumer_disposed", consumer("A", "lean"))
         self.add("consumer_disposed", consumer("A", "papers", "deferred", (),
@@ -304,12 +305,17 @@ class Schemas(Base):
         with self.assertRaises(rec.RecordError):
             self.add("consumer_disposed", consumer())  # before review
         self.add("review_recorded", review())
+        deferral = dict(component, decision="deferred", landed_as=[])
         for label, detail in {
                 "taken without landing": dict(component, landed_as=[]),
-                "rejected with landing": dict(component, decision="rejected")}.items():
+                "rejected with landing": dict(component, decision="rejected"),
+                "new deferral without reentry": deferral,
+                "reentry on a taken component": dict(component, reentry={"owner": "o", "trigger": "t"}),
+                "empty reentry trigger": dict(deferral, reentry={"owner": "o", "trigger": ""})}.items():
             with self.subTest(label):
                 with self.assertRaises(rec.RecordError):
                     self.add("component_disposed", detail)
+        self.add("component_disposed", dict(deferral, reentry={"owner": "o", "trigger": "t"}))
         for label, detail in {
                 "undeclared consumer": consumer(name="stranger"),
                 "updated without evidence": consumer(evidence=()),
@@ -516,7 +522,8 @@ class Status(Base):
         self.assertNotIn("arrivals:2_of_2", r1["outstanding"])
         deferred = {(d["subject_id"], d.get("consumer") or d.get("component")): d for d in report["deferred"]}
         self.assertEqual(deferred[("A", "papers")]["owner"], "papers pass")
-        self.assertIn(("A", "optimiser"), deferred)
+        self.assertEqual((deferred[("A", "optimiser")]["owner"], deferred[("A", "optimiser")]["trigger"]),
+                         ("record lane", "packet compiler lands"))
 
     def test_later_review_invalidates_consumer_dispositions(self) -> None:
         self.lifecycle()

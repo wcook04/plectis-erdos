@@ -22,7 +22,7 @@ class each entry carries.
 | Rounds | `journal.jsonl`, `round_opened`, `round_sealed` | A packet sent for research, its declared consumers and the returns expected; sealing closes it to further arrivals. |
 | Returns | `journal.jsonl`, `return_received` | Custody of one returned file: bytes, sha256, the private intake that holds it, and an optional public copy. |
 | Reviews | `journal.jsonl`, `review_recorded` | A reviewer's disposition of a return, with its rationale. |
-| Component dispositions | `journal.jsonl`, `component_disposed` | Each component of a return taken, adapted, rejected or deferred, and where it landed. |
+| Component dispositions | `journal.jsonl`, `component_disposed` | Each component of a return taken, adapted, rejected or deferred, and where it landed; a deferral names an owner and a re-entry trigger, and the latest disposition of a component is the one that counts. |
 | Consumer dispositions | `journal.jsonl`, `consumer_disposed` | What each declared consumer did with a return or output; a deferral names an owner and a re-entry trigger. |
 | Outputs and milestones | `journal.jsonl`, `output_declared`, `milestone_reported` | A result the programme owes and the milestones it needs, computed from the checkout wherever the checkout can answer. |
 | Relations | `relations.json` | How two statements compare inside one context, each row bound to a certificate declaration in [RelationCertificates.lean](../../lean/ErdosProblems/ArgumentGraph/Results/RelationCertificates.lean). |
