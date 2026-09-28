@@ -1119,7 +1119,7 @@
       ],
       "citations_rendered": 55,
       "local_pdf": "paper/archive/erdos249-257-main-paper.pdf",
-      "pdf_sha256": "sha256:1d8b0ee13d3d6a979488c63afe11511b124fd916d086242a924d1f231adc69b7",
+      "pdf_sha256": "sha256:6264b6e56330d4c35c6bed9d51eb69266e305780bca4fd8f6e7b66f99f831dd6",
       "pdf_byte_count": 457556,
       "first_pass": {
         "stated_by_the_paper": true,
@@ -4423,7 +4423,7 @@
       ],
       "citations_rendered": 20,
       "local_pdf": "paper/257/erdos-257-mersenne-support-subseries.pdf",
-      "pdf_sha256": "sha256:c2eecb1a5e247e0c0cdd8b7cc826ae8ac338f80cfd28884469b898461e97cdac",
+      "pdf_sha256": "sha256:311115d0aee71f8b8d3f66496e3aa2836cd890777c782f23d15efcbf27fe1574",
       "pdf_byte_count": 175549,
       "first_pass": {
         "stated_by_the_paper": false,
@@ -7854,7 +7854,7 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/claim-faithful-publication-systems-paper.md",
       "local_source": "paper/systems/claim-faithful-publication-systems-paper.tex",
-      "source_sha256": "sha256:96203e9133c5aab849582f0119c22e49af83075d97a8119a298e19dcb5bb709a",
+      "source_sha256": "sha256:ff79e083fc7360949bbd56a36a54322b03f74430705cb7160ed50c998e2f6dd7",
       "canonical_source_commit": null,
       "canonical_source_pin_status": "local_unpublished",
       "canonical_source_url": null,
@@ -8020,8 +8020,8 @@
       ],
       "citations_rendered": 75,
       "local_pdf": "paper/systems/claim-faithful-publication-systems-paper.pdf",
-      "pdf_sha256": "sha256:bbb39bb41025474027d1db959b1145f0e74cea816ca192a47fc918990b8a9be9",
-      "pdf_byte_count": 173889,
+      "pdf_sha256": "sha256:3b99fd3ca32e922036329301704cc4584618258edbfb393d2e7beb6ba1afde5d",
+      "pdf_byte_count": 173893,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection for this guide",
@@ -8222,7 +8222,7 @@
       ],
       "citations_rendered": 12,
       "local_pdf": "paper/systems/cold-clone-to-proof-receipt.pdf",
-      "pdf_sha256": "sha256:782b2074e342a941fd2001305e4d16f240228e36707c2107bed37c995e1b3fb3",
+      "pdf_sha256": "sha256:195df7cdf38d486fdec621c0461edf16d46162ea46b3c249c6a31ef69eb955b4",
       "pdf_byte_count": 88660,
       "first_pass": {
         "stated_by_the_paper": false,
