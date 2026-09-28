@@ -1,0 +1,506 @@
+{
+ "primes": [
+  2,
+  3,
+  5,
+  7
+ ],
+ "block_base": 2,
+ "gap_exponents": {
+  "3": 1,
+  "5": 2,
+  "7": 2
+ },
+ "states": 18,
+ "block_types": 16,
+ "methods": {
+  "outer": {
+   "tail_range": [
+    "0.188245",
+    "0.784835"
+   ],
+   "first_passing_depth": null,
+   "depths": [
+    {
+     "depth": 1,
+     "passed": false,
+     "intervals": 16,
+     "least_gap": null,
+     "least_gap_float": null,
+     "largest_overlaps": [
+      {
+       "types": [
+        "()",
+        "(3)"
+       ],
+       "length": "0.0240463"
+      },
+      {
+       "types": [
+        "(5)",
+        "(5,3)"
+       ],
+       "length": "0.00147327"
+      },
+      {
+       "types": [
+        "(5,7)",
+        "(7)"
+       ],
+       "length": "0.00123992"
+      },
+      {
+       "types": [
+        "(5,7,3)",
+        "(7)"
+       ],
+       "length": "0.00120696"
+      }
+     ]
+    },
+    {
+     "depth": 2,
+     "passed": false,
+     "intervals": 58,
+     "least_gap": null,
+     "least_gap_float": null,
+     "largest_overlaps": [
+      {
+       "types": [
+        "()",
+        "(3)"
+       ],
+       "length": "0.00178072"
+      },
+      {
+       "types": [
+        "(5)",
+        "(5,3)"
+       ],
+       "length": "0.000991222"
+      },
+      {
+       "types": [
+        "(5,7,3)",
+        "(7)"
+       ],
+       "length": "0.000828729"
+      },
+      {
+       "types": [
+        "(3,5,7)",
+        "(3,7)"
+       ],
+       "length": "0.000609356"
+      }
+     ]
+    },
+    {
+     "depth": 3,
+     "passed": false,
+     "intervals": 386,
+     "least_gap": null,
+     "least_gap_float": null,
+     "largest_overlaps": [
+      {
+       "types": [
+        "()",
+        "(3)"
+       ],
+       "length": "0.00010058"
+      },
+      {
+       "types": [
+        "(5,7,3)",
+        "(7)"
+       ],
+       "length": "9.11819e-05"
+      },
+      {
+       "types": [
+        "(3,5,7)",
+        "(3,7)"
+       ],
+       "length": "7.79439e-05"
+      }
+     ]
+    },
+    {
+     "depth": 4,
+     "passed": false,
+     "intervals": 1413,
+     "least_gap": null,
+     "least_gap_float": null,
+     "largest_overlaps": [
+      {
+       "types": [
+        "()",
+        "(3)"
+       ],
+       "length": "4.55909e-05"
+      },
+      {
+       "types": [
+        "(5,7,3)",
+        "(7)"
+       ],
+       "length": "2.81067e-06"
+      },
+      {
+       "types": [
+        "(3,5,7)",
+        "(3,7)"
+       ],
+       "length": "1.45085e-06"
+      }
+     ]
+    },
+    {
+     "depth": 5,
+     "passed": false,
+     "intervals": 8395,
+     "least_gap": null,
+     "least_gap_float": null,
+     "largest_overlaps": [
+      {
+       "types": [
+        "()",
+        "(3)"
+       ],
+       "length": "7.57312e-07"
+      },
+      {
+       "types": [
+        "(5,7,3)",
+        "(7)"
+       ],
+       "length": "4.92032e-07"
+      },
+      {
+       "types": [
+        "(3,5,7)",
+        "(3,7)"
+       ],
+       "length": "2.41808e-07"
+      }
+     ]
+    },
+    {
+     "depth": 6,
+     "passed": false,
+     "intervals": 38494,
+     "least_gap": null,
+     "least_gap_float": null,
+     "largest_overlaps": [
+      {
+       "types": [
+        "()",
+        "(3)"
+       ],
+       "length": "2.39476e-07"
+      },
+      {
+       "types": [
+        "(5,7,3)",
+        "(7)"
+       ],
+       "length": "1.0855e-07"
+      },
+      {
+       "types": [
+        "(3,5,7)",
+        "(3,7)"
+       ],
+       "length": "3.09301e-08"
+      }
+     ]
+    },
+    {
+     "depth": 7,
+     "passed": false,
+     "intervals": 193905,
+     "least_gap": null,
+     "least_gap_float": null,
+     "largest_overlaps": [
+      {
+       "types": [
+        "()",
+        "(3)"
+       ],
+       "length": "1.80916e-08"
+      },
+      {
+       "types": [
+        "(5,7,3)",
+        "(7)"
+       ],
+       "length": "1.45382e-09"
+      },
+      {
+       "types": [
+        "(3,5,7)",
+        "(3,7)"
+       ],
+       "length": "5.75733e-10"
+      }
+     ]
+    }
+   ],
+   "actual_path_check": {
+    "blocks": 400,
+    "checked": 397,
+    "violations": 0
+   }
+  },
+  "exact": {
+   "tail_range": [
+    "0.188245",
+    "0.784835"
+   ],
+   "first_passing_depth": null,
+   "depths": [
+    {
+     "depth": 1,
+     "passed": false,
+     "intervals": 16,
+     "least_gap": null,
+     "least_gap_float": null,
+     "largest_overlaps": [
+      {
+       "types": [
+        "()",
+        "(3)"
+       ],
+       "length": "0.0240463"
+      },
+      {
+       "types": [
+        "(5)",
+        "(5,3)"
+       ],
+       "length": "0.00147327"
+      },
+      {
+       "types": [
+        "(5,7)",
+        "(7)"
+       ],
+       "length": "0.00123992"
+      },
+      {
+       "types": [
+        "(5,7,3)",
+        "(7)"
+       ],
+       "length": "0.00120696"
+      }
+     ]
+    },
+    {
+     "depth": 2,
+     "passed": false,
+     "intervals": 58,
+     "least_gap": null,
+     "least_gap_float": null,
+     "largest_overlaps": [
+      {
+       "types": [
+        "()",
+        "(3)"
+       ],
+       "length": "0.00178072"
+      },
+      {
+       "types": [
+        "(5)",
+        "(5,3)"
+       ],
+       "length": "0.000991222"
+      },
+      {
+       "types": [
+        "(5,7,3)",
+        "(7)"
+       ],
+       "length": "0.000828729"
+      },
+      {
+       "types": [
+        "(3,5,7)",
+        "(3,7)"
+       ],
+       "length": "0.000609356"
+      }
+     ]
+    },
+    {
+     "depth": 3,
+     "passed": false,
+     "intervals": 386,
+     "least_gap": null,
+     "least_gap_float": null,
+     "largest_overlaps": [
+      {
+       "types": [
+        "()",
+        "(3)"
+       ],
+       "length": "0.00010058"
+      },
+      {
+       "types": [
+        "(5,7,3)",
+        "(7)"
+       ],
+       "length": "9.11819e-05"
+      },
+      {
+       "types": [
+        "(3,5,7)",
+        "(3,7)"
+       ],
+       "length": "7.79439e-05"
+      }
+     ]
+    },
+    {
+     "depth": 4,
+     "passed": false,
+     "intervals": 1413,
+     "least_gap": null,
+     "least_gap_float": null,
+     "largest_overlaps": [
+      {
+       "types": [
+        "()",
+        "(3)"
+       ],
+       "length": "4.55909e-05"
+      },
+      {
+       "types": [
+        "(5,7,3)",
+        "(7)"
+       ],
+       "length": "2.81067e-06"
+      },
+      {
+       "types": [
+        "(3,5,7)",
+        "(3,7)"
+       ],
+       "length": "1.45085e-06"
+      }
+     ]
+    },
+    {
+     "depth": 5,
+     "passed": false,
+     "intervals": 8395,
+     "least_gap": null,
+     "least_gap_float": null,
+     "largest_overlaps": [
+      {
+       "types": [
+        "()",
+        "(3)"
+       ],
+       "length": "7.57312e-07"
+      },
+      {
+       "types": [
+        "(5,7,3)",
+        "(7)"
+       ],
+       "length": "4.92032e-07"
+      },
+      {
+       "types": [
+        "(3,5,7)",
+        "(3,7)"
+       ],
+       "length": "2.41808e-07"
+      }
+     ]
+    },
+    {
+     "depth": 6,
+     "passed": false,
+     "intervals": 38494,
+     "least_gap": null,
+     "least_gap_float": null,
+     "largest_overlaps": [
+      {
+       "types": [
+        "()",
+        "(3)"
+       ],
+       "length": "2.39476e-07"
+      },
+      {
+       "types": [
+        "(5,7,3)",
+        "(7)"
+       ],
+       "length": "1.0855e-07"
+      },
+      {
+       "types": [
+        "(3,5,7)",
+        "(3,7)"
+       ],
+       "length": "3.09301e-08"
+      }
+     ]
+    },
+    {
+     "depth": 7,
+     "passed": false,
+     "intervals": 193905,
+     "least_gap": null,
+     "least_gap_float": null,
+     "largest_overlaps": [
+      {
+       "types": [
+        "()",
+        "(3)"
+       ],
+       "length": "1.80916e-08"
+      },
+      {
+       "types": [
+        "(5,7,3)",
+        "(7)"
+       ],
+       "length": "1.45382e-09"
+      },
+      {
+       "types": [
+        "(3,5,7)",
+        "(3,7)"
+       ],
+       "length": "5.75733e-10"
+      }
+     ]
+    }
+   ],
+   "actual_path_check": {
+    "blocks": 400,
+    "checked": 397,
+    "violations": 0
+   }
+  }
+ },
+ "run": {
+  "program": "certificate.py",
+  "program_sha256": "f19b4fa209972322b22fbee98de8c3fdec920ed98aaeb1c4efe7c6e3d943f63f",
+  "arguments": {
+   "primes": "2,3,5,7",
+   "max_depth": 7,
+   "method": "both",
+   "validate_blocks": 400
+  },
+  "python": "3.14.7",
+  "seconds": 25.84
+ }
+}

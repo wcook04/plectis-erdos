@@ -1,5 +1,7 @@
 # Erdős 1041: the cone bound is one monotone harmonic functional
 
+> Status note (2026-09-28): the exact Formal Conjectures statement of Erdős #1041 is refuted by ani's degree-seven example (Lean `erdos1041_counterexample_hausdorff`, `lean/ErdosProblems/Erdos1041/Counterexample/HausdorffLength.lean` in the public repository); correspondence with the 1958 wording awaits independent review. Earlier statements in this note that the problem is open are dated history.
+
 Status: a second, shorter proof of a theorem that was proved concurrently by
 another route, plus three things that route does not carry — a family of monotone
 functionals, an exact window that selects the hub, and Theorem R, which closes the

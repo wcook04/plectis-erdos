@@ -1,5 +1,7 @@
 # Erdős #1041, concyclic zeros: exact Form-A-cut certificates and the concentric-alternation law
 
+> Status note (2026-09-28): the exact Formal Conjectures statement of Erdős #1041 is refuted by ani's degree-seven example (Lean `erdos1041_counterexample_hausdorff`, `lean/ErdosProblems/Erdos1041/Counterexample/HausdorffLength.lean` in the public repository); correspondence with the 1958 wording awaits independent review. Earlier statements in this note that the problem is open are dated history.
+
 Status, corrected 2026-08-25: one exact reduction criterion, one **Lean-checked
 potential-domination kernel**, one **proven infeasibility** for first-moment-only
 certificates, and one now-**refuted** concentric-alternation conjecture.  The

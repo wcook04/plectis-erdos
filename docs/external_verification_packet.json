@@ -1738,9 +1738,9 @@
   "source_owner": "docs/claims.json::external_verification_packet",
   "problem_index": {
     "owner": "docs/problem_index_source.json",
-    "owner_digest": "sha256:d77108b3d7f3ee0f723bbe553a4406c4129091a57ae9fc4f5feea149160cb725",
+    "owner_digest": "sha256:2e8a345da3ce5b130e5be6ca4f3867c2e5f3f0188f7a3b9bf44f1ddb2ab7f744",
     "projection": "docs/problems.json",
-    "projection_digest": "sha256:b9d666ef4b9766a47d0e81dcda6ceccfd227196664625172ffc4df53ba392476",
+    "projection_digest": "sha256:426ebec10d97b275ebf564e796a754d60de678ad3214af8cf22ea6a77647f836",
     "schema": "erdos249257-problem-index/1",
     "problem_count": 8,
     "authority_posture": "navigation_projection_not_Lean_proof_authority_and_not_a_reviewed_claim_registry",
@@ -2070,6 +2070,7 @@
         },
         "what_is_checked": [
           "Lean proves cubic_rate_irrationality_unconditional for positive StrictMono zero-indexed a_n with a_n²/a_(n+1) = 1 + 3/n + o(n^-3). The one-based paper uses a finite-prefix bridge; general #243 remains open.",
+          "Lean proves nonintegral_regular_rate_irrational for positive StrictMono zero-indexed a_n whenever the real coefficient lambda is greater than one and nonintegral, with a_n²/a_(n+1) = 1 + lambda/n + o(n^-lambda). Summability is derived. The one-based paper uses the same finite-prefix bridge; the unrestricted problem remains open.",
           "The exact product-cleared tail dynamics and the defect identity, as identities in the integer state variables.",
           "That a vanishing centred state is absorbing under strict centring, so the state is either eventually zero or nowhere zero.",
           "That eventual vanishing of the centred state, with the next tail state nonvanishing, forces the Sylvester recurrence eventually.",
@@ -2474,7 +2475,7 @@
           ],
           "boundary": "Only the listed claim rows carry their recorded public status; other declarations are not promoted by module membership or a kernel build.",
           "programme_status": "open",
-          "programme_statement": "The running-LCM reciprocal sum remains unresolved from three or more primes in this release. For the actual {2,3,5} series, the rationality-to-positive-reduced-carry bridge is checked; the remaining endpoint is cofinal local-window escape, equivalently exclusion of the integral branch."
+          "programme_statement": "For every finite set P of at least two primes, the distinct-height sum D_P (each running LCM value of the P-smooth integers counted once) is irrational (res:distinct-height-all; ordinary proof checked by a second AI agent, no human review), as Erdős asserted without an argument in 1973; for |P| = 2 it follows from Hecke-Mahler transcendence, and D_{2,3,5} is Lean-checked (res:distinct-height-235; Comparator not yet run). Each single-prime sub-sum E_p of the catalogue sum is irrational (res:single-prime-subsums; same evidence class as D_P). The catalogue sum for three or more primes is unresolved in this release: for {2,3,5} the rationality-to-positive-reduced-carry bridge is checked, and the remaining endpoint is cofinal local-window escape, equivalently exclusion of the integral branch."
         },
         "directory": "lean/ErdosProblems/Erdos269",
         "modules": [
@@ -2563,10 +2564,11 @@
           "For the actual {2,3,5} series, rationality produces a positive reduced carry; cofinal local-window escape rules out such carries under the recorded bound.",
           "A bounded-radix dichotomy: under a bounded positive digit alphabet, a nonzero scaled tail must be separated from the integers cofinally.",
           "Exact three-channel block-nullity as a coboundary condition, and extinction of a bounded carry lift under two independent anchors.",
-          "The exact residue-digit plus coboundary form of an integral carry, together with a function-faithful observer criterion and a finite realised-span consequence."
+          "The exact residue-digit plus coboundary form of an integral carry, together with a function-faithful observer criterion and a finite realised-span consequence.",
+          "Irrationality of the distinct-height sum for {2,3,5}, which counts each running value once."
         ],
         "what_is_not_checked": [
-          "Irrationality or transcendence in any three-prime case.",
+          "Irrationality of the repeated sum, or transcendence, in any three-prime case.",
           "CofinalLocalWindowEscape for those actual words; it is an explicit hypothesis of the checked consumer, not a theorem.",
           "A proof that the actual three-channel word satisfies the block-null, anchor, or factorisation hypotheses of the migrated abstract consumers.",
           "The infinite limit of the jump expansion; only its finite core is checked.",
@@ -2753,23 +2755,23 @@
           "files": {
             "frontier": {
               "path": "research_corpus/Erdos1041/FRONTIER.md",
-              "content_digest": "sha256:e0c5f9c6ca8add9a7e87d11511fb63aa461699f0d54c392afba8bdabebf20299"
+              "content_digest": "sha256:8aef5071a9a2a35de6b2af79bf0a486d97306aa0b6d4b997144e16ba1d112a9a"
             },
             "strongest_results": {
               "path": "research_corpus/Erdos1041/STRONGEST_RESULTS.json",
-              "content_digest": "sha256:6b11ede029441a4c50aae08895a035b236a5a3e08a39452cf78a8ab87194199f"
+              "content_digest": "sha256:a5f888560836a710024bd6079538cbd62b39c1544a19514903ac57f9789d7e24"
             },
             "manifest": {
               "path": "research_corpus/Erdos1041/CORPUS_MANIFEST.json",
-              "content_digest": "sha256:ce964d4a1e23101de34f35e3a42d4e2d6851873f9a37ddaecb6af718e9048ea6"
+              "content_digest": "sha256:edc01f9cf6a356e0722e7dc51425fa01be7200720b17cc2a131cd4bb504b31b3"
             },
             "checkpoint": {
               "path": "research_corpus/Erdos1041/PUBLIC_CORPUS_CHECKPOINT.json",
-              "content_digest": "sha256:007198e7eb8c48c7438c21d2a082342c45f44b945c49d5a3326d0a600d6b725c"
+              "content_digest": "sha256:079c82a0261abfb4c7135d092a7f06a367db36bbbc8ce5c01e1eeefbc1b36b43"
             }
           },
           "strongest_result_summary": {
-            "source_checkpoint": "fd47c99b7f95ee10cbf22bd7e13a3bec9ea6bfac",
+            "source_checkpoint": "fb5c8803c1498cad9755d1615473cb33b11af6ee",
             "status": "open",
             "result_count": 294
           },

@@ -1,5 +1,7 @@
 # Erdős 1041: the near-field cusp is one polynomial at every degree
 
+> Status note (2026-09-28): the exact Formal Conjectures statement of Erdős #1041 is refuted by ani's degree-seven example (Lean `erdos1041_counterexample_hausdorff`, `lean/ErdosProblems/Erdos1041/Counterexample/HausdorffLength.lean` in the public repository); correspondence with the 1958 wording awaits independent review. Earlier statements in this note that the problem is open are dated history.
+
 Status: six ordinary propositions plus one guarded measurement, reconciled with
 the source-current near-field theorem stack on 2026-08-24. **This does not prove
 Erdős #1041.** This note supplies an alternate polynomial normalisation and

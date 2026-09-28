@@ -15,12 +15,12 @@
 }
 \newcommand{\repobase}{https://github.com/wcook04/plectis-erdos}
 % BEGIN generated_semantic_coverage_macros
-\newcommand{\SemanticAuthoredTheoremLike}{152,187}
+\newcommand{\SemanticAuthoredTheoremLike}{152,386}
 \newcommand{\SemanticAuthoredInterpreted}{139,818}
 \newcommand{\SemanticDirectEvidence}{3,330}
 \newcommand{\SemanticContextual}{136,488}
-\newcommand{\SemanticStructuralOnly}{12,369}
-\newcommand{\SemanticAuthoredPercent}{91.9}
+\newcommand{\SemanticStructuralOnly}{12,568}
+\newcommand{\SemanticAuthoredPercent}{91.8}
 % END generated_semantic_coverage_macros
 % BEGIN generated_argument_graph_macros
 \newcommand{\AGTheorems}{17,442}
@@ -104,7 +104,12 @@ answer as \texttt{False} and links the proof. Worked cases from Problems 257
 and 249 and from a cross-problem synthesis show what the record keeps for a
 result, and a transfer between Problems 251 and 269, checked in Lean, shows one
 problem's theorem proving another's criterion and then improving its constant
-from $1/31$ to $1/3$. The record also reads every unfinished argument out of
+from $1/31$ to $1/3$. Replaying the recorded failed routes of all eight problems
+turned a stalled argument into an ordinary proof, so far checked only by a
+second agent, that the Problem 269 distinct-height sum is irrational for every
+set of at least two primes, which Erd\H{o}s asserted without proof in 1973;
+Lean checks the case of the primes 2, 3 and 5. The record also reads every
+unfinished argument out of
 the elaborated Lean environment and connects them. Within a time budget, a
 unification search looks for the theorems that supply each standalone
 hypothesis of each theorem, what they still need and the theorems that refute
@@ -130,8 +135,8 @@ public claim that separates what Lean settles, what Comparator settles and
 what a mathematician judges; and a contribution cycle that a person or an
 agent can run from a public clone.
 \textbf{Instance.} Eight Erd\H{o}s problems in one Lean repository:
-sixteen problem papers, 1,823 Lean modules, and 674 results
-asserted in the papers, short and long versions counted separately, of which 671
+sixteen problem papers, 1,900 Lean modules, and 696 results
+asserted in the papers, short and long versions counted separately, of which 676
 carry a Lean declaration and 633 have been compared by Comparator; the
 argument graph holds \AGTheorems{} theorems, \AGConditional{} of them
 conditional arguments.
@@ -691,6 +696,24 @@ estimate is false, and the problem itself is untouched. Inside the weighted
 proof the same discipline explains the second average: the short paper shows
 why the majorant of the reciprocal-summable proof fails beyond that class.
 
+\paragraph{Replaying the record.}
+Zheng et al.~\cite{dreamrsi} store a discovery run as a tree of evaluated
+attempts, so that another exploration policy can be replayed over it without
+rerunning any attempt. On 26 September four readers replayed the recorded
+routes of the eight worlds
+(\href{\repobase/blob/f3559e2f/research/experiments/replay_worlds/README.md}{replay}),
+classing 70 decisive rows as proofs, obstructions, counterexamples, finite
+computations, stalled attempts, superseded formulations or routes never
+tried; a checker rereads every cited record at the pinned commit. Reopened
+routes gave the irrationality of the Problem 269 distinct-height sum
+$\mathcal D_P$ for every set $P$ of at least two primes and of each
+single-prime sub-sum $E_p$~\cite{paper269}; for two primes this already
+follows from Hecke--Mahler transcendence~\cite{loxtonvdp1977,bugeaudlaurent2023}.
+They also gave transcendence of the Lambert subsum over every infinite
+divisibility chain at every rational base~\cite{synthesis}. Lean checks
+$\mathcal D_{\{2,3,5\}}$; the other proofs are ordinary arguments awaiting
+specialist review, and the replay compares no exploration policies.
+
 Reading the problems together raises questions that none of them asks alone.
 The smallest complete case is a transfer between two problems. For dyadic
 tails $T_{N+1}=2T_N-g_{N+1}$ with integer digits $g_N$, the Problem 251 record
@@ -843,13 +866,13 @@ verified'' would overclaim.
 
 The paper-to-Lean ledger makes both formal questions countable for the papers'
 own statements. It holds one row
-for each result asserted in the sixteen problem papers, 674 in all, counting a
+for each result asserted in the sixteen problem papers, 696 in all, counting a
 result stated in both a short paper and a long record twice, with its
-statement digest and kind of correspondence. For 506 rows the named Lean
-declarations state the result exactly; for 140 they state it or a result that
+statement digest and kind of correspondence. For 508 rows the named Lean
+declarations state the result exactly; for 143 they state it or a result that
 implies it by an immediate specialisation; 25 are proved from a named input,
-marked with a dagger; and 3 have no Lean statement. Comparator has compared 633
-of the 646 exact and specialising rows, and the other 13 are queued for its
+marked with a dagger; and 20 have no Lean statement. Comparator has compared 633
+of the 651 exact and specialising rows, and the other 18 are queued for its
 next replay; every receipt in the pinned corpus replay was accepted by both the
 Lean kernel and nanoda. A digest detects a changed statement, and the
 classification of a correspondence stays the maintainer's judgement.
@@ -1018,10 +1041,10 @@ each result in full with its hypotheses and sources.}
 \label{tab:problems}
 \end{table}
 
-The repository holds 1,823 Lean modules, counting the two library root files,
-under a pinned toolchain. The root-import check counts the 1,821 modules
+The repository holds 1,900 Lean modules, counting the two library root files,
+under a pinned toolchain. The root-import check counts the 1,898 modules
 beneath those roots. It also holds sixteen problem papers, a cross-problem
-synthesis paper and three systems papers. The claim registry holds 150 public
+synthesis paper and three systems papers. The claim registry holds 151 public
 claims in seven statuses, from proved here and formalised here to conditional
 reduction and open, and states 19 remaining obligations exactly. Continuous integration builds the supported Lean roots,
 a coverage build compiles every module a paper cites, and the release checker
@@ -1449,6 +1472,20 @@ September 2026.
 \bibitem{fcpr} Formal Conjectures, pull request 6505, \emph{Erd\H{o}s 1041:
 mark solved with answer(False) and link a formal proof}, merged 23 September
 2026, \href{https://github.com/google-deepmind/formal-conjectures/pull/6505}{GitHub}.
+\bibitem{dreamrsi} T.~Zheng, X.~Wu, Z.~Zhang, et al., \emph{Dream-RSI:
+Recursive Self-Improvement through Evolving Worlds}, 2026,
+\href{https://arxiv.org/abs/2609.14858}{arXiv:2609.14858}.
+\bibitem{loxtonvdp1977} J.~H.~Loxton and A.~J.~van der Poorten, \emph{Arithmetic
+properties of certain functions in several variables III}, Bull. Austral.
+Math. Soc. \textbf{16} (1977), 15--47.
+
+\bibitem{bugeaudlaurent2023} Y.~Bugeaud and M.~Laurent, \emph{Transcendence and
+continued fraction expansion of values of Hecke--Mahler series}, Acta Arith.
+\textbf{209} (2023), 59--90.
+
+\bibitem{paper269} W.~Cook, \emph{The Three-Prime Running LCM}, short paper on
+Erd\H{o}s Problem~269, September 2026,
+\repolink{paper/269/erdos-269-three-prime-running-lcm.pdf}{PDF}.
 \bibitem{fan269} S.~Fan, comment on Erd\H{o}s Problem \#269, erdosproblems.com
 forum, 26 June 2026,
 \href{https://www.erdosproblems.com/forum/thread/269\#post-7218}{forum post}.

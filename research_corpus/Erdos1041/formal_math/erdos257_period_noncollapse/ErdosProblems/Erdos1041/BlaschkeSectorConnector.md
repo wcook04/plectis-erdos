@@ -1,5 +1,7 @@
 # Blaschke-sector connector (ordinary r6 companion)
 
+> Status note (2026-09-28): the exact Formal Conjectures statement of Erdős #1041 is refuted by ani's degree-seven example (Lean `erdos1041_counterexample_hausdorff`, `lean/ErdosProblems/Erdos1041/Counterexample/HausdorffLength.lean` in the public repository); correspondence with the 1958 wording awaits independent review. Earlier statements in this note that the problem is open are dated history.
+
 Ordinary note, 2026-09-07, Type B r6 return. Type A applied the twelve
 hash-guarded short-note edits that display the already registered scaling
 corollary. The uniform quadratic-sector connector, the degree-24 length

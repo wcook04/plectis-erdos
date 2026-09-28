@@ -174,6 +174,7 @@ jobs:
           ErdosProblems.Erdos1049.PaperR20.RecoveredProofAudit
           ErdosProblems.Erdos243.PaperCompleteR20.CubicArithmeticAudit
           ErdosProblems.Erdos243.PaperCompleteR20.CubicRecoveryAudit
+          ErdosProblems.Erdos243.PaperCompleteR21.NonintegralRegularRate
           ErdosProblems.Erdos243.PaperCorrespondenceAudit
           ErdosProblems.Erdos249.PaperCompleteR20.CyclotomicRecoveryAudit
           ErdosProblems.Erdos249.PaperCompleteR20.DenominatorRecoveryAudit
@@ -233,6 +234,8 @@ jobs:
           ErdosProblems.ArgumentGraph.Results.Erdos249Residual
           ErdosProblems.ArgumentGraph.Results.Erdos249Abduction
           ErdosProblems.ArgumentGraph.Results.Erdos251
+          ErdosProblems.ArgumentGraph.Contracts
+          ErdosProblems.ArgumentGraph.Results.RelationCertificates
 
       # Saved even after a failed build: Lake's content traces decide what is
       # current, so a partial tree only shortens the next run.

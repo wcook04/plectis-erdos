@@ -56,7 +56,10 @@ MAX_GUIDE_BYTES = 18_000
 # command, a part of the argument graph the previous base did not cover, and the
 # four prior-art citations it needed (DreamProver, CircuitProver, ProofEvolve,
 # Boehme and Nipkow); the Problem 249 paragraph was tightened first.
-SYSTEMS_PAPER_BASE_BYTES = 76_500
+# Raised from 76_500 on 2026-09-28 by the replay-of-the-record paragraph that
+# landed with PR #278 (Dream-RSI and the two Hecke-Mahler citations); the
+# paragraph was cut from about 3,700 to about 1,300 bytes first.
+SYSTEMS_PAPER_BASE_BYTES = 78_700
 SYSTEMS_PAPER_BYTES_PER_ARTIFACT = 1_000
 
 

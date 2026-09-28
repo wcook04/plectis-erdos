@@ -80,9 +80,10 @@ FIRST_MINUTE_CONTRACT = {
     # the contribution cycle and the limits each keep their boundary within
     # one page of where they render today. The 24 September revision opens
     # with three pages of worked mathematics, so the later windows moved back.
-    # The 26 September revision adds source-cost controls and the periodic-chain
-    # example to Section 3. Checks begin on page 7, the cycle on page 9 and
-    # limitations on page 13; each boundary stays within its section's band.
+    # The 28 September landing train (argument graph, route replay and the
+    # merged PRs) renders the checks on page 12, the contribution boundary on
+    # page 13 and limitations on page 18. Keep the same three-page windows.
+    # Several anchors below no longer occur in the text; full mode is not gated.
     "claim-faithful-publication-systems-paper.pdf": {
         (1, 1): (
             "problem-sized lean worlds",
@@ -91,18 +92,18 @@ FIRST_MINUTE_CONTRACT = {
             "leaves novelty and significance to experts",
             "formal refutation of the formal conjectures statement of problem 1041",
         ),
-        (7, 9): (
+        (11, 13): (
             "lean verifies that a proof establishes the formal statement written in the source",
             "comparator-checked",
             "does not technically force a second independent mathematician",
             "nine of the ten edits were rejected",
             "study locates a coverage boundary",
         ),
-        (8, 10): (
+        (12, 14): (
             "an empty search never counts as evidence of no consequence",
             "whether the formal statement matches the 1958 wording",
         ),
-        (12, 14): (
+        (17, 19): (
             "no outside human contributor had opened a pull request or issue",
             "ethical objections",
         ),
@@ -112,7 +113,7 @@ FIRST_MINUTE_CONTRACT = {
             "from a cold clone to a proof receipt",
             "153,253 declarations",
             "navigation does not receive proof authority",
-            "verdicts come from the pinned lean process",
+            "derives probe verdicts from the pinned lean process",
             "not an autonomous theorem prover",
         ),
     },

@@ -1,5 +1,7 @@
 # Erdős 1041: the turning bound alone gives the length bound — no curvature estimate
 
+> Status note (2026-09-28): the exact Formal Conjectures statement of Erdős #1041 is refuted by ani's degree-seven example (Lean `erdos1041_counterexample_hausdorff`, `lean/ErdosProblems/Erdos1041/Counterexample/HausdorffLength.lean` in the public repository); correspondence with the 1958 wording awaits independent review. Earlier statements in this note that the problem is open are dated history.
+
 Status: one exact identity (Lemma T), one elementary inequality, and an
 arithmetic check that is closed-form at every degree. 2026-08-23.
 **This does not prove Erdős #1041**, and it does not by itself prove the

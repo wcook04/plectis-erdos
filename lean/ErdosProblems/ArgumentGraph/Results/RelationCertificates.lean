@@ -1,0 +1,140 @@
+-- SPDX-FileCopyrightText: 2026 Will Cook
+-- SPDX-License-Identifier: Apache-2.0
+import ErdosProblems.ArgumentGraph.Contracts
+import ErdosProblems.ArgumentGraph.Results.Erdos1041
+import ErdosProblems.ArgumentGraph.Results.Erdos249Endpoint
+import ErdosProblems.DemandLedger.edges.Bridge1
+import ErdosProblems.Erdos251.PrimeGapDyadicTail
+import ErdosProblems.Erdos1049.PaperCompleteR21.RationalBaseThreshold
+import ErdosProblems.Erdos257.PaperCompleteR21.ResetSqrtEscapeHalfMembership
+
+/-!
+# Relation certificates for recorded reformulations
+
+Each theorem here restates an existing corpus result as a relation contract from
+`ErdosProblems.ArgumentGraph.Contracts`, so the research record can read the kind of
+comparison from the head of the statement: `Equivalent`, `EndpointRoute`, `Refuted` or
+`Feasible`. No theorem adds mathematics; each proof is one application of the named source
+declaration.
+
+* `prime_gap_view`: the two #251 irrationality statements are equivalent. The equivalence
+  supplies neither of them.
+* `contour_view`: the #1049 power condition and the contour region agree on `0 < b < a`;
+  the guards are part of the context.
+* `square_view`: the #257 square-root escape and the square escape are equivalent.
+* `demand_G102_view`: the #249 demand `G102` is equivalent to the irrationality of
+  `∑ φ(n)/2^n`, so counting `G102` as progress would count the target twice.
+* `support_gap_route` and `good_base_gap_route`: two conditions that give the #249
+  irrationality directly. They are endpoint routes; neither is known to be implied by it.
+* `maximality_clause_refuted_off_switch` and `off_switch_region_feasible`: the #1041
+  maximality clause is refuted wherever the switch fails, and the region where it fails is
+  nonempty, so the vacuity concerns one clause of a result about a nonempty region.
+-/
+
+set_option autoImplicit false
+
+noncomputable section
+
+namespace ErdosProblems.ArgumentGraph.RelationCertificates
+
+open ErdosProblems.ArgumentGraph.Contracts
+
+/-- The two #251 dyadic tails are irrational together. -/
+theorem prime_gap_view :
+    Equivalent (fun _ : Unit => True)
+      (fun _ => Irrational (∑' n : ℕ, ErdosProblems.Erdos251.primeDyadicTerm n))
+      (fun _ => Irrational (∑' n : ℕ, ErdosProblems.Erdos251.primeGapDyadicTerm n)) :=
+  ⟨fun _ _ h => (ErdosProblems.Erdos251.irrational_tsum_primeDyadicTerm_iff_primeGap
+      ErdosProblems.Erdos251.summable_primeDyadicTerm).mp h,
+    fun _ _ h => (ErdosProblems.Erdos251.irrational_tsum_primeDyadicTerm_iff_primeGap
+      ErdosProblems.Erdos251.summable_primeDyadicTerm).mpr h⟩
+
+section Erdos1049
+
+open ErdosProblems.Erdos1049 ErdosProblems.Erdos1049.PaperR7 ErdosProblems.Erdos1049.PaperR10
+  ErdosProblems.Erdos1049.PaperR11 ErdosProblems.Erdos1049.PaperCompleteR21
+
+/-- On `0 < b < a`, the #1049 power condition is the contour region. -/
+theorem contour_view :
+    Equivalent (fun ab : ℕ × ℕ => 0 < ab.2 ∧ ab.2 < ab.1)
+      (fun ab => ((ab.2 : ℝ) ^ zudilinMu < (ab.1 : ℝ)))
+      (fun ab => ZudilinContourRegion ab.1 ab.2) :=
+  ⟨fun ab h hp => (zudilin_rpow_lt_iff_contourRegion ab.1 ab.2 h.1 h.2).mp hp,
+    fun ab h hp => (zudilin_rpow_lt_iff_contourRegion ab.1 ab.2 h.1 h.2).mpr hp⟩
+
+end Erdos1049
+
+section Erdos257
+
+open Erdos249257 Erdos249257.HalfCylinderIntegerGreedy Erdos249257.HalfUpperResetCriticalBand
+  ErdosProblems.Erdos257.PaperCompleteR21
+
+/-- The #257 square-root escape and the square escape are the same statement. -/
+theorem square_view :
+    Equivalent (fun _ : Unit => True) (fun _ => PaperResetSqrtEscape)
+      (fun _ => SeamResetSqrtEscape) :=
+  ⟨fun _ _ h => paperResetSqrtEscape_iff_square.mp h,
+    fun _ _ h => paperResetSqrtEscape_iff_square.mpr h⟩
+
+end Erdos257
+
+/-- The #249 demand `G102` is the irrationality of `∑ φ(n)/2^n` in other words. -/
+theorem demand_G102_view :
+    Equivalent (fun _ : Unit => True) (fun _ => DemandLedger.G102)
+      (fun _ => Irrational (∑' n : ℕ, (Nat.totient n : ℝ) / 2 ^ n)) :=
+  ⟨fun _ _ h => DemandLedger.Bridge1.Bridge1.irr_of_G102 h,
+    fun _ _ h => DemandLedger.Bridge1.Bridge1.G102_of_irr h⟩
+
+section Erdos249
+
+open Erdos249257.TotientTailPeriodKiller ErdosProblems.Erdos249.PaperCompleteR21
+  ErdosProblems.Erdos249.PaperCompleteR21.ExcludedCofactor
+
+/-- The support-gap certificate interface of the first-harmonic family. -/
+def SupportGap : Prop :=
+  ∀ h : ℕ, 0 < h → ∀ A : ℕ, ∃ X L : ℕ, ∃ T : Finset ℕ,
+    16 * (2 * X + h + L + 2) ≤ 2 ^ L ∧ T.Nonempty ∧ (∀ N ∈ T, A ≤ N ∧ N < 2 * X) ∧
+    (∑ N ∈ T, windowFirstCos h N L) ≤ (9 / 10 : ℝ) * T.card
+
+/-- The first-harmonic gap on the good bases at `603X/1000`. -/
+def GoodBaseGap : Prop :=
+  ∀ h : ℕ, 0 < h → ∀ A : ℕ, ∃ X : ℕ, max A 1 ≤ X ∧
+    (∑ N ∈ pivotGoodBases X (minimalDepth h 26 X) 26 (1 / 1000 : ℝ),
+      windowFirstExp h N (minimalDepth h 26 X)).re ≤ (603 / 1000 : ℝ) * X
+
+/-- The support gap gives the #249 irrationality directly. -/
+theorem support_gap_route :
+    EndpointRoute (fun _ : Unit => True) (fun _ => SupportGap)
+      (fun _ => Irrational (∑' n : ℕ, (Nat.totient n : ℝ) / 2 ^ n)) :=
+  ⟨fun _ _ h => irrational_totient_series_of_support_gap h⟩
+
+/-- The good-base gap gives the #249 irrationality directly, with no further input. -/
+theorem good_base_gap_route :
+    EndpointRoute (fun _ : Unit => True) (fun _ => GoodBaseGap)
+      (fun _ => Irrational (∑' n : ℕ, (Nat.totient n : ℝ) / 2 ^ n)) :=
+  ⟨fun _ _ h => irrational_totient_series_of_goodBase_gap h⟩
+
+end Erdos249
+
+section Erdos1041
+
+open ErdosProblems.Erdos1041.PaperCompleteR21 ErdosProblems.Erdos1041.PaperCompleteR21.BinomialChord
+
+/-- The context of the #1041 maximality clause: degree, radius, a point `s`, and a failed switch. -/
+def OffSwitch (v : ℕ × ℝ × ℝ) : Prop :=
+  3 ≤ v.1 ∧ 0 < v.2.1 ∧ v.2.1 ^ v.1 < 1 ∧ ¬ 1 ≤ v.2.1 ^ v.1 * (1 + chordCos v.1 ^ v.1)
+
+/-- Off the switch, no point lies between the inner radius and the radius. -/
+theorem maximality_clause_refuted_off_switch :
+    Refuted OffSwitch (fun v => innerRadius v.1 v.2.1 < v.2.2 ∧ v.2.2 ≤ v.2.1) :=
+  fun v h => inner_chord_maximality_vacuous_off_switch h.1 h.2.1 h.2.2.1 h.2.2.2 v.2.2
+
+/-- The switch fails at degree three and radius one half, so the off-switch region is nonempty. -/
+theorem off_switch_region_feasible :
+    Feasible (fun _ : ℕ × ℝ × ℝ => True) (fun v => v.1 = 3 ∧ v.2.1 = 1 / 2 ∧
+      ¬ 1 ≤ v.2.1 ^ v.1 * (1 + chordCos v.1 ^ v.1)) :=
+  ⟨(3, 1 / 2, 0), trivial, rfl, rfl, switch_fails_at_three_half⟩
+
+end Erdos1041
+
+end ErdosProblems.ArgumentGraph.RelationCertificates

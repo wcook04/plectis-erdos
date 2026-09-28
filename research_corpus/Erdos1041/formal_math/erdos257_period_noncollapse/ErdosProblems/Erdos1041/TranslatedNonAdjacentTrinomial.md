@@ -1,5 +1,7 @@
 # Erdős #1041 for arbitrarily translated non-adjacent trinomials
 
+> Status note (2026-09-28): the exact Formal Conjectures statement of Erdős #1041 is refuted by ani's degree-seven example (Lean `erdos1041_counterexample_hausdorff`, `lean/ErdosProblems/Erdos1041/Counterexample/HausdorffLength.lean` in the public repository); correspondence with the 1958 wording awaits independent review. Earlier statements in this note that the problem is open are dated history.
+
 Status: ordinary analytic case theorem, assimilated 2026-09-05 from Type B
 return batch `erdos1041_20260905_eight_return_stream_01`, source
 `r07_centred_moments_translated_trinomials.md`.  Every proof step below was

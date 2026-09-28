@@ -1,5 +1,7 @@
 # Erdős 1041: the hard regime is the near-Fekete regime
 
+> Status note (2026-09-28): the exact Formal Conjectures statement of Erdős #1041 is refuted by ani's degree-seven example (Lean `erdos1041_counterexample_hausdorff`, `lean/ErdosProblems/Erdos1041/Counterexample/HausdorffLength.lean` in the public repository); correspondence with the 1958 wording awaits independent review. Earlier statements in this note that the problem is open are dated history. References here to z^n - r^n as this problem's extremal family mean extremal among the configurations tested in this corpus; ani's example lies outside that family.
+
 Status: exact measurement on stored witnesses plus an elementary consequence of
 two facts already in this directory. Current through 2026-08-27 source audit.
 This note proves nothing about Erdős #1041. It is a statement about **where the

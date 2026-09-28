@@ -287,13 +287,36 @@ def late_check_commands() -> dict[str, list[str]]:
             sys.executable,
             str(ROOT / "scripts" / "test_erdos251_computation_replay.py"),
         ],
+        "replay_routes": [
+            sys.executable,
+            str(ROOT / "research" / "experiments" / "replay_worlds" / "test_check_routes.py"),
+        ],
         "totient_normal_form": [
             sys.executable,
             str(ROOT / "scripts" / "test_totient_kernel_normal_form.py"),
         ],
+        "finite_dilation_normal_form": [
+            sys.executable,
+            str(ROOT / "scripts" / "erdos249_finite_dilation_normal_form.py"),
+            "--self-test",
+        ],
+        "chain_transcendence": [
+            sys.executable,
+            str(ROOT / "research" / "experiments" / "chain_transcendence" / "test_chain_bookkeeping.py"),
+        ],
         "admissible_feedback": [
             sys.executable,
             str(ROOT / "research" / "experiments" / "sparse_interpolation" / "test_feedback.py"),
+        ],
+        "distinct_height": [
+            sys.executable,
+            str(ROOT / "research" / "experiments" / "erdos269" / "distinct_height"
+                / "test_distinct_height.py"),
+        ],
+        "distinct_height_two_tail": [
+            sys.executable,
+            str(ROOT / "research" / "experiments" / "erdos269" / "distinct_height"
+                / "test_two_tail.py"),
         ],
         "interestingness_profile": [
             sys.executable,
@@ -3081,10 +3104,10 @@ def main(argv: list[str] | None = None) -> int:
     for name in (
         "github_release_contracts",
         "semantic_queries", "semantic_storage", "semantic_relation_parity",
-        "proof_workbench", "computation_replay", "admissible_feedback",
-        "interestingness_profile",
-        "conditional_reuse",
-        "periodic_chain_probe",
+        "chain_transcendence", "totient_normal_form", "finite_dilation_normal_form",
+        "proof_workbench", "computation_replay", "replay_routes", "admissible_feedback",
+        "distinct_height", "distinct_height_two_tail",
+        "interestingness_profile", "conditional_reuse", "periodic_chain_probe",
     ):
         result = late_checks[name]
         check(result.returncode == 0,

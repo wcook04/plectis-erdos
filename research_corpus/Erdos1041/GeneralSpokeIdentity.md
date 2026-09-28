@@ -1,5 +1,7 @@
 # Erdős 1041: the cubic spoke identity generalises to every degree
 
+> Status note (2026-09-28): the exact Formal Conjectures statement of Erdős #1041 is refuted by ani's degree-seven example (Lean `erdos1041_counterexample_hausdorff`, `lean/ErdosProblems/Erdos1041/Counterexample/HausdorffLength.lean` in the public repository); correspondence with the 1958 wording awaits independent review. Earlier statements in this note that the problem is open are dated history.
+
 Status: one identity, proved and verified symbolically at `n = 3, 4, 5, 6`, plus
 the containment criterion it yields. 2026-08-23. This does not prove Erdős
 #1041. It converts straight-spoke containment at a normalised hub from a

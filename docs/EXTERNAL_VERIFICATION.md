@@ -1046,7 +1046,7 @@ Exact registry keys and Comparator routing are listed separately.
 
 **Checked frontier.** That for three pairwise distinct primes the least common multiple of the smooth prefix equals the product of the three maximal pure prime powers below the cutoff.
 
-**Open boundary.** Irrationality or transcendence in any three-prime case.
+**Open boundary.** Irrationality of the repeated sum, or transcendence, in any three-prime case.
 
 **Read.** [Programme paper](../paper/269/erdos-269-three-prime-running-lcm.pdf) · [Lean source](../lean/ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean)
 
@@ -1196,7 +1196,7 @@ Exact registry keys and Comparator routing are listed separately.
 
 [Dated frontier](../research_corpus/Erdos1041/FRONTIER.md) · [strongest-result map](../research_corpus/Erdos1041/STRONGEST_RESULTS.json) · [corpus manifest](../research_corpus/Erdos1041/CORPUS_MANIFEST.json) · [checkpoint](../research_corpus/Erdos1041/PUBLIC_CORPUS_CHECKPOINT.json)
 
-This source-fingerprinted route contains 294 activated research results at source checkpoint `fd47c99b7f95ee10cbf22bd7e13a3bec9ea6bfac`. Read the dated frontier first: the map preserves hypotheses, falsifiers, and open gaps.
+This source-fingerprinted route contains 294 activated research results at source checkpoint `fb5c8803c1498cad9755d1615473cb33b11af6ee`. Read the dated frontier first: the map preserves hypotheses, falsifiers, and open gaps.
 
 Authority boundary: these are public research evidence, not reviewed claim-registry entries or Comparator interfaces. They do not close Erdős #1041 or promote research-corpus rows into the checked result set.
 
