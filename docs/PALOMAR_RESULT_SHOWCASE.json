@@ -8,8 +8,8 @@
     "comparator_sha256": "c4f34656bac6072dccb7ff4b68604bd786808412decc06473652442f5a0fcaeb",
     "comparator_theorem_count": 53,
     "source_review_matrix": "HEAD:docs/claims.json::external_verification_packet.review_matrix",
-    "source_review_matrix_sha256": "8289cfa0d78e88530cb0e293dd1b1f0ab41f88d784c98e27cd1127049fdaffcd",
-    "source_review_family_count": 71,
+    "source_review_matrix_sha256": "72846b2b730c847722ce1f8909c1af3c3f27c2a608e3f8c54ac98c62f4afb15c",
+    "source_review_family_count": 76,
     "source_review_family_count_at_dispatch": 60,
     "comparator_roster": [
       "Erdos249257.ExternalVerification.irrational_factorialGapSeries_iff_cofinal_strictFacTopRat_misses",
@@ -561,8 +561,8 @@
   "candidate_universe": {
     "authority": "HEAD:docs/claims.json::external_verification_packet.review_matrix",
     "source_review_matrix_path": "docs/claims.json::external_verification_packet.review_matrix",
-    "source_review_matrix_sha256": "8289cfa0d78e88530cb0e293dd1b1f0ab41f88d784c98e27cd1127049fdaffcd",
-    "source_review_family_count": 71,
+    "source_review_matrix_sha256": "72846b2b730c847722ce1f8909c1af3c3f27c2a608e3f8c54ac98c62f4afb15c",
+    "source_review_family_count": 76,
     "source_review_family_count_at_dispatch": 60,
     "selection_scope": "all_current_source_review_families_plus_targeted_theorem_forest_discoveries",
     "source_review_family_ids": [
@@ -636,7 +636,12 @@
       "coordinatewise_corridor_no_go",
       "rational_base_tail_recurrence",
       "seven_halves_irrationality",
-      "height_and_pade_arithmetic"
+      "height_and_pade_arithmetic",
+      "signed_totient_entire_defect_interpolation",
+      "separated_cut_algebraic_lambert_transcendence",
+      "independent_clock_channel_relations",
+      "selected_staircase_integral_height_boundary",
+      "calibrated_rational_hankel_countermodel"
     ],
     "source_family_disposition_contract": {
       "authority_binding": "Resolve each source_review_row against HEAD:docs/claims.json::external_verification_packet.review_matrix.",
@@ -734,7 +739,12 @@
       "rational_base_tail_recurrence": "represented",
       "seven_halves_irrationality": "long_tail",
       "height_and_pade_arithmetic": "represented",
-      "finite_prime_weighted_support": "represented"
+      "finite_prime_weighted_support": "represented",
+      "signed_totient_entire_defect_interpolation": "represented",
+      "separated_cut_algebraic_lambert_transcendence": "represented",
+      "independent_clock_channel_relations": "represented",
+      "selected_staircase_integral_height_boundary": "subordinate",
+      "calibrated_rational_hankel_countermodel": "represented"
     },
     "targeted_theorem_forest_discoveries": [
       {

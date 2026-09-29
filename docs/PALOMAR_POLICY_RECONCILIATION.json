@@ -213,15 +213,15 @@
     "selected_declaration": "Erdos249257.ExternalVerification.divisibilityWeightedClaim",
     "selected_source_declaration": "ErdosProblems.Erdos257.PaperCompleteR8.divisibilityWeightedClaim",
     "selected_family_id": "finite_prime_weighted_support",
-      "selection_basis": "The committed claims review matrix is the source-landscape universe: its current 71 families and thirteen targeted theorem-forest discoveries are evaluated on mathematical nontriviality, endpoint consequence, mechanism depth, genuine independence, review and proof-digestion value, evidence certainty, natural friction, and overclaim risk. The exact 53-row Comparator roster is a nested statement and axiom screen. The selected finite-prime weighted theorem has fixed-base irrationality and a binary-mass all-base hereditary clause under explicit summability and positive-support hypotheses. External Comparator replay remains pending; the source-only #68, #243, and #1041 discoveries remain below completed endpoints without promoting their missing producers into evidence.",
+      "selection_basis": "The committed claims review matrix is the source-landscape universe: its current 76 families and thirteen targeted theorem-forest discoveries are evaluated on mathematical nontriviality, endpoint consequence, mechanism depth, genuine independence, review and proof-digestion value, evidence certainty, natural friction, and overclaim risk. The exact 53-row Comparator roster is a nested statement and axiom screen. The selected finite-prime weighted theorem has fixed-base irrationality and a binary-mass all-base hereditary clause under explicit summability and positive-support hypotheses. External Comparator replay remains pending; the new Round-8 ordinary-proof families are represented in the source landscape but have no exact Comparator-eligible Lean statement. The source-only #68, #243, and #1041 discoveries remain below completed endpoints without promoting their missing producers into evidence.",
     "anti_underclaim": "The weighted support criterion is stated at its full two-clause strength, including binary-mass all-base heredity, while the classical full-support theorem remains visible as a distinct proved result.",
     "anti_hype": "Finite prime-weighted mass is a sufficient hypothesis, not universal Erdős #257. The selected theorem is not novelty, human review, registration, or completed external Comparator evidence.",
     "reversal_condition": "Only a newly committed, source-checked row with strictly stronger direct consequence, genuinely deeper independent mechanism, equal-or-better evidence certainty, and no larger hidden-hypothesis risk can replace this selection.",
     "source_landscape_universe": {
       "authority": "HEAD:docs/claims.json::external_verification_packet.review_matrix",
       "review_matrix_path": "docs/claims.json::external_verification_packet.review_matrix",
-      "review_matrix_sha256": "8289cfa0d78e88530cb0e293dd1b1f0ab41f88d784c98e27cd1127049fdaffcd",
-      "review_family_count": 71,
+      "review_matrix_sha256": "72846b2b730c847722ce1f8909c1af3c3f27c2a608e3f8c54ac98c62f4afb15c",
+      "review_family_count": 76,
       "dispatch_baseline_count": 60,
       "targeted_discovery_ids": [
         "first_harmonic_pivot",

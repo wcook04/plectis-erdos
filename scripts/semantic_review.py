@@ -11,6 +11,13 @@ fingerprint, and states what the review did and did not establish.
 
 The authored registry is ``docs/semantic/reviews.json``. The semantic corpus
 builder attaches only valid receipts; stale receipts make the build fail.
+
+When a release advances its pinned formal-source revision, update that pin and
+refresh the declaration atlas before migrating receipts. Use
+``--rereview-moved-revision`` to verify every cited declaration across the
+revision move. ``--rebind`` is only for an atlas fingerprint change while the
+pinned formal-source revision stays fixed; applying it first can leave the
+later revision migration without a reproducible baseline.
 """
 
 from __future__ import annotations
@@ -918,8 +925,8 @@ def main(argv: Iterable[str] | None = None) -> int:
         action="store_true",
         help=(
             "report which receipts went stale purely because the declaration "
-            "atlas fingerprint moved, and refuse any whose reviewed material "
-            "actually changed"
+            "atlas fingerprint moved at an unchanged formal-source revision, "
+            "and refuse any whose reviewed material actually changed"
         ),
     )
     parser.add_argument(

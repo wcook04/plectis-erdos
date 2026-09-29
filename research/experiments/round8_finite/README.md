@@ -40,3 +40,18 @@ proves the rational seed normalization and finite telescoping identity. Its
 to those finite statements; positive measures and Hankel height remain outside
 its scope. Replay from the repository root with
 `lake env lean research/probes/Round8CalibratedFinite.lean`.
+
+Three further [finite Lean probes](../../probes/) keep the algebraic
+boundaries visible. The comments saying “UNRUN” in two files describe the
+return environment; the source-hash-bound receipts below record subsequent
+full-file checks in this checkout.
+
+| Return | Probe and receipt | What Lean checks |
+| --- | --- | --- |
+| P1 | [Separated cuts](../../probes/Round8DivisibilityCuts.lean) · [receipt](divisibility_cuts_lean_receipt.json) | Cut heredity and power-difference divisibility, not the number-field or transcendence step. |
+| P2 | [Ordered words](../../probes/Round8OrderedWordFinite.lean) · [receipt](ordered_word_lean_receipt.json) | Affine collisions and a lattice-separation interface, not the independent-clock classification. |
+| P4 | [Signed moment packet](../../probes/Round8MomentPacketFinite.lean) · [receipt](moment_packet_lean_receipt.json) | Two vanishing moments and a generating-polynomial identity, not infinite interpolation or the totient application. |
+
+These standalone probes are not imported by the library roots and do not
+change any infinite claim's formalization status. Replay each with
+`lake env lean research/probes/<probe filename>` from the repository root.

@@ -1223,6 +1223,7 @@ def proof_trust_violation_bytes(data: bytes) -> str | None:
 
 
 APPROVED_ROOT_FILES = {
+    '.gitattributes',  # preserve hash-bound historical excerpt whitespace
     '.gitignore',
     'AGENTS.md',
     'CITATION.cff',

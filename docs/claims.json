@@ -20251,7 +20251,7 @@
     "lean_toolchain": "leanprover/lean4:v4.29.1",
     "repository": "https://github.com/wcook04/plectis-erdos",
     "formal_source": {
-      "ref": "436f55ebdafa67e4af0fff79f621c13f2ded12bf",
+      "ref": "2a8c1667566020d123a081b6165e3ee94550566d",
       "ref_kind": "commit",
       "publication_state": "committed_checkpoint_pending_remote_publication",
       "relationship_to_last_tag": "post_tag_checkpoint",
@@ -21928,7 +21928,7 @@
         "source": "paper/257/erdos-257-mersenne-support-subseries.tex",
         "environment": "problem",
         "title": "membership of 1/21 in the Mersenne achievement set",
-        "line": 1192
+        "line": 1218
       }
     },
     {
@@ -22024,7 +22024,7 @@
         "source": "paper/269/erdos269-running-lcm-reasoning-surface.tex",
         "environment": "problem",
         "title": "an exact function representing the distinct-height sum",
-        "line": 3195
+        "line": 3449
       }
     },
     {
@@ -22048,7 +22048,7 @@
         "source": "paper/249/erdos-249-binary-totient-series.tex",
         "environment": "problem",
         "title": "Four estimates for the first-harmonic sum",
-        "line": 707
+        "line": 735
       }
     },
     {
@@ -22060,7 +22060,7 @@
         "source": "paper/257/erdos-257-mersenne-support-subseries.tex",
         "environment": "problem",
         "title": "bounded returns of the scaled remainder",
-        "line": 1208
+        "line": 1234
       }
     },
     {
@@ -22072,7 +22072,7 @@
         "source": "paper/257/erdos-257-mersenne-support-subseries.tex",
         "environment": "problem",
         "title": "arithmetic tests for the greedy sequence",
-        "line": 1217
+        "line": 1243
       }
     },
     {
@@ -22084,7 +22084,7 @@
         "source": "paper/257/erdos-257-mersenne-support-subseries.tex",
         "environment": "problem",
         "title": "final-skip Diophantine exclusion",
-        "line": 1228
+        "line": 1254
       }
     }
   ],

@@ -187,11 +187,11 @@ Every contribution family and every statement-isolated interface remains queryab
 
 ### Complete serious-result universe
 
-All 71 source-current review families are accounted for here. The categories preserve honest selection reasons while the programme dossiers below retain each family's exact mechanism and boundary. This inventory is complete but deliberately does not compete with the ranked frontier for attention.
+All 76 source-current review families are accounted for here. The categories preserve honest selection reasons while the programme dossiers below retain each family's exact mechanism and boundary. This inventory is complete but deliberately does not compete with the ranked frontier for attention.
 
-- **represented (50).** [#257](#programme-257) `achievement_set_geometry`, [#249](#programme-249) `actual_foreign_residue_projection`, [#249](#programme-249) `actual_lcm_orbit_separation`, [#257](#programme-257) `boolean_mobius_carry`, [#257](#programme-257) `boolean_mobius_exact_row_dynamics`, [#243](#programme-243) `bounded_negative_exclusion`, [#243](#programme-243) `bounded_rise_coprimality`, [#243](#programme-243) `centered_state_dynamics`, [#251](#programme-251) `coefficient_only_no_go`, [#257](#programme-257) `composite_dilation_defect_identity`, [#269](#programme-269) `dyadic_block_alphabet`, [#251](#programme-251) `dyadic_tail_integrality_classification`, [#249](#programme-249) `eventually_periodic_lambert`, [#68](#programme-68) `factorial_carry_characterisation`, [#68](#programme-68) `factorial_channel_and_projection_rigidity`, [#257](#programme-257) `finite_period_noncollapse`, [#257](#programme-257) `finite_prime_weighted_support`, [#249](#programme-249) `first_harmonic_pivot_decomposition`, [#249](#programme-249) `fixed_precision_transport_no_go`, [#257](#programme-257) `half_membership_seam_classification`, [#1049](#programme-1049) `height_and_pade_arithmetic`, [#269](#programme-269) `height_fibre_and_shell`, [#251](#programme-251) `integral_shift_classification`, [#257](#programme-257) `known_irrational_supports`, [#1041](#programme-1041) `newton_value_decay`, [#257](#programme-257) `orthogonal_petal_sunflower_reduction`, [#257](#programme-257) `pairwise_coprime_support`, [#257](#programme-257) `periodic_nonnegative_weight_irrationality`, [#251](#programme-251) `prime_gap_reformulation`, [#1049](#programme-1049) `rational_base_tail_recurrence`, [#1041](#programme-1041) `ray_separation`, [#257](#programme-257) `restricted_achievement_sets`, [#1041](#programme-1041) `root_retention`, [#257](#programme-257) `shifted_odd_tail_state`, [#251](#programme-251) `small_mismatch_criterion`, [#249](#programme-249) `squared_lambert_gcd_moments`, [#249](#programme-249) `stern_brocot_cylinder_law`, [#249](#programme-249) `stern_brocot_run_fibonacci_stability`, [#249](#programme-249) `strict_prime_tail_orbit_gap`, [#269](#programme-269) `three_prime_lcm_cells`, [#249](#programme-249) `totient_carry_anti_compression`, [#249](#programme-249) `totient_certificate_equivalences`, [#249](#programme-249) `totient_kernel_all_base_index`, [#249](#programme-249) `totient_kernel_basis`, [#249](#programme-249) `totient_kernel_rank`, [#249](#programme-249) `totient_lambert_coefficients`, [#251](#programme-251) `totient_shift_propagation`, [#249](#programme-249) `totient_visible_coprime_lattice_mass`, [#1041](#programme-1041) `translation_avoidance`, [#269](#programme-269) `weighted_phase_carry_observer`
+- **represented (54).** [#257](#programme-257) `achievement_set_geometry`, [#249](#programme-249) `actual_foreign_residue_projection`, [#249](#programme-249) `actual_lcm_orbit_separation`, [#257](#programme-257) `boolean_mobius_carry`, [#257](#programme-257) `boolean_mobius_exact_row_dynamics`, [#243](#programme-243) `bounded_negative_exclusion`, [#243](#programme-243) `bounded_rise_coprimality`, [#1049](#programme-1049) `calibrated_rational_hankel_countermodel`, [#243](#programme-243) `centered_state_dynamics`, [#251](#programme-251) `coefficient_only_no_go`, [#257](#programme-257) `composite_dilation_defect_identity`, [#269](#programme-269) `dyadic_block_alphabet`, [#251](#programme-251) `dyadic_tail_integrality_classification`, [#249](#programme-249) `eventually_periodic_lambert`, [#68](#programme-68) `factorial_carry_characterisation`, [#68](#programme-68) `factorial_channel_and_projection_rigidity`, [#257](#programme-257) `finite_period_noncollapse`, [#257](#programme-257) `finite_prime_weighted_support`, [#249](#programme-249) `first_harmonic_pivot_decomposition`, [#249](#programme-249) `fixed_precision_transport_no_go`, [#257](#programme-257) `half_membership_seam_classification`, [#1049](#programme-1049) `height_and_pade_arithmetic`, [#269](#programme-269) `height_fibre_and_shell`, [#269](#programme-269) `independent_clock_channel_relations`, [#251](#programme-251) `integral_shift_classification`, [#257](#programme-257) `known_irrational_supports`, [#1041](#programme-1041) `newton_value_decay`, [#257](#programme-257) `orthogonal_petal_sunflower_reduction`, [#257](#programme-257) `pairwise_coprime_support`, [#257](#programme-257) `periodic_nonnegative_weight_irrationality`, [#251](#programme-251) `prime_gap_reformulation`, [#1049](#programme-1049) `rational_base_tail_recurrence`, [#1041](#programme-1041) `ray_separation`, [#257](#programme-257) `restricted_achievement_sets`, [#1041](#programme-1041) `root_retention`, [#257](#programme-257) `separated_cut_algebraic_lambert_transcendence`, [#257](#programme-257) `shifted_odd_tail_state`, [#249](#programme-249) `signed_totient_entire_defect_interpolation`, [#251](#programme-251) `small_mismatch_criterion`, [#249](#programme-249) `squared_lambert_gcd_moments`, [#249](#programme-249) `stern_brocot_cylinder_law`, [#249](#programme-249) `stern_brocot_run_fibonacci_stability`, [#249](#programme-249) `strict_prime_tail_orbit_gap`, [#269](#programme-269) `three_prime_lcm_cells`, [#249](#programme-249) `totient_carry_anti_compression`, [#249](#programme-249) `totient_certificate_equivalences`, [#249](#programme-249) `totient_kernel_all_base_index`, [#249](#programme-249) `totient_kernel_basis`, [#249](#programme-249) `totient_kernel_rank`, [#249](#programme-249) `totient_lambert_coefficients`, [#251](#programme-251) `totient_shift_propagation`, [#249](#programme-249) `totient_visible_coprime_lattice_mass`, [#1041](#programme-1041) `translation_avoidance`, [#269](#programme-269) `weighted_phase_carry_observer`
 
-- **subordinate (6).** [#269](#programme-269) `conditional_carry_escape`, [#68](#programme-68) `factorial_conditional_producers`, [#1049](#programme-1049) `four_jet_collision`, [#257](#programme-257) `half_and_twenty_one_frontiers`, [#243](#programme-243) `negative_mass_recovery`, [#249](#programme-249) `totient_carry_rank`
+- **subordinate (7).** [#269](#programme-269) `conditional_carry_escape`, [#68](#programme-68) `factorial_conditional_producers`, [#1049](#programme-1049) `four_jet_collision`, [#257](#programme-257) `half_and_twenty_one_frontiers`, [#243](#programme-243) `negative_mass_recovery`, [#269](#programme-269) `selected_staircase_integral_height_boundary`, [#249](#programme-249) `totient_carry_rank`
 
 - **rejected (6).** [#1049](#programme-1049) `coordinatewise_corridor_no_go`, [#1049](#programme-1049) `endpoint_residues`, [#249](#programme-249) `lcm_factor_ideal_shift_algebra_no_go`, [#243](#programme-243) `negative_orbit_no_go`, [#269](#programme-269) `rank_two_kernel_no_go`, [#1049](#programme-1049) `scalar_content_no_go`
 
@@ -524,7 +524,7 @@ This is Palomar's source-current reader order, not review-matrix or Comparator r
    - **Boundary.** This rational normalization identity does not prove irrationality of the binary totient series or settle #249.
 
 <details>
-<summary>Contribution families (19)</summary>
+<summary>Contribution families (20)</summary>
 
 Exact registry keys and Comparator routing are listed separately.
 
@@ -623,10 +623,15 @@ Exact registry keys and Comparator routing are listed separately.
   **Boundary.** Equivalent producer statements are as hard as the unresolved target.<br>
   *Evidence.* exact equivalence and conditional reduction · Lean kernel
 
+- **Signed totient entire defect interpolation**<br>
+  For any integer beta>=2 and positive allowance f(n) tending to infinity, an interval around the totient value is filled by integer sequences b=phi+e with 0<=b(n)<=n and |e(n)|<=f(n). One target-independent even support has upper Banach density zero, leaving any fixed prefix and odd coefficients unchanged. The construction preserves every fixed eventual coefficient and cumulative congruence, gives eventually constant progression moment defects outside common hulls of density zero, entire progression Dirichlet defects, and smooth root-of-unity radial germs with prescribed finite zero jets. The full proof includes the allowance-dependent block bound and first-harmonic rational countermodels. It is an ordinary proof with two AI proof reviews, not a Lean proof of the infinite theorem or independent human review.<br>
+  **Boundary.** The correction is signed, so it does not subsume the one-sided prime-gap theorem. It preserves singularities and prescribed finite jets, not full analytic functions or all Taylor coefficients. The unperturbed totient and prime series remain unresolved.<br>
+  *Evidence.* ordinary paper argument · ordinary proof; two AI reviews, no independent human review
+
 </details>
 
 <details>
-<summary>Technical registry and Comparator routing (19)</summary>
+<summary>Technical registry and Comparator routing (20)</summary>
 
 - <code>totient_kernel_basis</code><br>
   Comparator: <code>targeted</code>
@@ -684,6 +689,9 @@ Exact registry keys and Comparator routing are listed separately.
 
 - <code>totient_certificate_equivalences</code><br>
   Comparator: <code>not_selected_deep_certificate_vocabulary</code>
+
+- <code>signed_totient_entire_defect_interpolation</code><br>
+  Comparator: <code>not_applicable_without_exact_Lean_statement</code>
 
 </details>
 
@@ -906,7 +914,7 @@ This is Palomar's source-current reader order, not review-matrix or Comparator r
    - **Boundary.** A finite-support denominator theorem does not settle an infinite-support sum.
 
 <details>
-<summary>Contribution families (15)</summary>
+<summary>Contribution families (16)</summary>
 
 Exact registry keys and Comparator routing are listed separately.
 
@@ -985,10 +993,15 @@ Exact registry keys and Comparator routing are listed separately.
   **Boundary.** Neither membership question is decided; the 2-adic bound is sharp locally, and the two countermodel routes require unconstructed terminal-scaled or cofinal-cylinder antecedents.<br>
   *Evidence.* conditional reduction and no-go result · Lean kernel plus Comparator
 
+- **Separated cut algebraic lambert transcendence**<br>
+  For an infinite positive-integer host with cuts L_j < M_j, L_j tending to infinity and M_j-L_j tending to infinity, every host exponent at most L_j dividing L_j and every later exponent divisible by M_j, every infinite thinning with bounded positive integer weights has transcendental Lambert sum at every real algebraic base t > 1. This includes all divisibility chains and an explicit host of unbounded divisibility width and divergent reciprocal sum. The full number-field Subspace Theorem argument has two AI proof reviews; it is an ordinary proof with no Lean transcendence theorem, independent human review or asserted historical priority.<br>
+  **Boundary.** The full support at 3/2 and arbitrary infinite supports at base two remain unresolved. Finite cut arithmetic is not a proof of transcendence.<br>
+  *Evidence.* ordinary paper argument · ordinary proof; two AI reviews, no independent human review
+
 </details>
 
 <details>
-<summary>Technical registry and Comparator routing (15)</summary>
+<summary>Technical registry and Comparator routing (16)</summary>
 
 - <code>finite_period_noncollapse</code><br>
   Comparator: <code>targeted</code>
@@ -1034,6 +1047,9 @@ Exact registry keys and Comparator routing are listed separately.
 
 - <code>half_and_twenty_one_frontiers</code><br>
   Comparator: <code>targeted</code>
+
+- <code>separated_cut_algebraic_lambert_transcendence</code><br>
+  Comparator: <code>not_applicable_without_exact_Lean_statement</code>
 
 </details>
 
@@ -1103,7 +1119,7 @@ This is Palomar's source-current reader order, not review-matrix or Comparator r
    - **Boundary.** Cell structure alone does not prove irrationality.
 
 <details>
-<summary>Contribution families (8)</summary>
+<summary>Contribution families (10)</summary>
 
 Exact registry keys and Comparator routing are listed separately.
 
@@ -1147,10 +1163,20 @@ Exact registry keys and Comparator routing are listed separately.
   **Boundary.** Finite search is not a cofinal statement.<br>
   *Evidence.* finite computation · external exact computation
 
+- **Independent clock channel relations**<br>
+  For positive rationally independent clock rates with no simultaneous positive crossings, and integer radices b_i >= 2, all rational relations among 1 and the channel sums S_i are multiples of (-1,b_1-1,...,b_d-1). The proof uses genuine late swaps with a common infinite suffix in one orbit closure, a fixed rational lattice, and density of the clock section. The explicit rates 1,sqrt(2),sqrt(3),sqrt(6) and radices 2,3,5,7 give rational span dimension four. This is an ordinary proof reviewed by AI agents, without Lean or independent human verification of the infinite theorem.<br>
+  **Boundary.** No rational independence of the original reciprocal prime logarithms is assumed or proved; the repeated running-LCM endpoint remains open.<br>
+  *Evidence.* ordinary paper argument · ordinary proof; two AI reviews, no independent human review
+
+- **Selected staircase integral height boundary**<br>
+  The selected staircase matrix with ones on and below the diagonal and integer r>=2 above it has Smith factors 1,r-1,...,r-1. For the selected {2,3,5} kernel, any entrywise-integral diagonal clearing has determinant magnitude at least 4^(N-1), whereas the reduced rational determinant has numerator one up to sign. A rational single-target border has primitive polynomial plus or minus (tX-s), where s/t is the reduced Schur complement. These ordinary arithmetic arguments were reviewed by AI agents; they are not the existing Lean nonvanishing theorem and have no independent human review.<br>
+  **Boundary.** The optimality concerns diagonal clearing and one rational target. It does not rule out multi-target, nonlinear, recurrence, or new approximation methods and does not prove running-LCM irrationality.<br>
+  *Evidence.* ordinary paper argument · ordinary proof; two AI reviews, no independent human review
+
 </details>
 
 <details>
-<summary>Technical registry and Comparator routing (8)</summary>
+<summary>Technical registry and Comparator routing (10)</summary>
 
 - <code>three_prime_lcm_cells</code><br>
   Comparator: <code>targeted_running_lcm_identity</code>
@@ -1175,6 +1201,12 @@ Exact registry keys and Comparator routing are listed separately.
 
 - <code>three_prime_finite_search</code><br>
   Comparator: <code>not_applicable_not_a_lean_theorem</code>
+
+- <code>independent_clock_channel_relations</code><br>
+  Comparator: <code>not_applicable_without_exact_Lean_statement</code>
+
+- <code>selected_staircase_integral_height_boundary</code><br>
+  Comparator: <code>not_applicable_without_exact_Lean_statement</code>
 
 </details>
 
@@ -1339,7 +1371,7 @@ This is Palomar's source-current reader order, not review-matrix or Comparator r
    - **Relation.** `stronger_natural_friction_than` `height_and_pade_arithmetic`: The sharp rectangular threshold analysis carries deeper model-specific information than the coordinatewise transfer obstruction, while neither proves the endpoint.
 
 <details>
-<summary>Contribution families (7)</summary>
+<summary>Contribution families (8)</summary>
 
 Exact registry keys and Comparator routing are listed separately.
 
@@ -1378,10 +1410,15 @@ Exact registry keys and Comparator routing are listed separately.
   **Boundary.** This is a sharp no-go only for the explicit rectangular two-function exponent model under the stated real hypotheses; it constructs no approximating polynomials or remainders and is not a universal Padé or Hermite-Padé no-go. It proves no irrationality at 3/2 or any general rational-base endpoint, and the analytic remainder/nonvanishing input remains untreated. No novelty, priority, significance, external-review, or endpoint claim is made; Erdős #1049 remains open.<br>
   *Evidence.* locally proved sharp model-specific no-go; novelty unassessed · Lean kernel plus Comparator
 
+- **Calibrated rational hankel countermodel**<br>
+  An explicit positive atomic moment family and integer formal series have all-rank Hankel order sum_{j<N} j^2 and leading coefficient (N!)^2(N+1)!/2^N, with the same fixed-base asymptotic shape including N^(-8 xi), while xi=G_{2/3}(2/3)=1. For n>=1 the exact reduced moment denominator is 3^(31n+62)(3^(n+1)-2^(n+1))^4; the determinant denominator has logarithmic size Theta(N^3), and a proposed rank-two row-product clearer leaves denominator625. These are ordinary proofs with independent exact finite checks and AI proof reviews, not a Lean proof of the infinite family or human peer review.<br>
+  **Boundary.** These are not Zudilin's actual moments. They refute an inference from the shared signature alone; they do not settle F(3/2) or refute the attributed divisibility-based criterion.<br>
+  *Evidence.* ordinary paper argument · ordinary proof; two AI reviews, no independent human review
+
 </details>
 
 <details>
-<summary>Technical registry and Comparator routing (7)</summary>
+<summary>Technical registry and Comparator routing (8)</summary>
 
 - <code>scalar_content_no_go</code><br>
   Comparator: <code>not_selected_scalar_content_scaling_family</code>
@@ -1403,6 +1440,9 @@ Exact registry keys and Comparator routing are listed separately.
 
 - <code>height_and_pade_arithmetic</code><br>
   Comparator: <code>targeted</code>
+
+- <code>calibrated_rational_hankel_countermodel</code><br>
+  Comparator: <code>not_applicable_without_exact_Lean_statement</code>
 
 </details>
 

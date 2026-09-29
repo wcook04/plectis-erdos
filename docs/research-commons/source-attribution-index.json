@@ -122734,7 +122734,7 @@
           "line_end": 60,
           "line_start": 1,
           "path": "formalization.yaml",
-          "sha256": "sha256:8ecf4dc40d779264ef445efd4ddd9105b0659ab7ea0847ba0ac8aef02930b66d"
+          "sha256": "sha256:048788d1a7ba04aa8372412a7c6967558fc44d35d4e74b302673837f27d65c73"
         },
         {
           "excerpt_sha256": "sha256:8b08466c661aa5a0f1977d62d091fd0a355dd90ba5d7d74a51ca6c578639737f",
@@ -122755,7 +122755,7 @@
           "line_end": 14,
           "line_start": 4,
           "path": "docs/EXTERNAL_VERIFICATION.md",
-          "sha256": "sha256:3aed2bd780107612df4d198cdd302160014e860890f36417c2979029821bb328"
+          "sha256": "sha256:cc54a28bfd2b832a23e0c8199f9333e88dfe81243b109fdf25c27ab8e4deea76"
         }
       ],
       "artifact_links": [
@@ -122854,14 +122854,14 @@
           "line_end": 216,
           "line_start": 159,
           "path": "formalization.yaml",
-          "sha256": "sha256:8ecf4dc40d779264ef445efd4ddd9105b0659ab7ea0847ba0ac8aef02930b66d"
+          "sha256": "sha256:048788d1a7ba04aa8372412a7c6967558fc44d35d4e74b302673837f27d65c73"
         },
         {
           "excerpt_sha256": "sha256:cb49ade0a57a20d0355d24a8ebc443b2be0b82e0f3c2bdd61f361abe2913a17b",
           "line_end": 539,
           "line_start": 529,
           "path": "docs/EXTERNAL_VERIFICATION.md",
-          "sha256": "sha256:3aed2bd780107612df4d198cdd302160014e860890f36417c2979029821bb328"
+          "sha256": "sha256:cc54a28bfd2b832a23e0c8199f9333e88dfe81243b109fdf25c27ab8e4deea76"
         }
       ],
       "artifact_links": [
