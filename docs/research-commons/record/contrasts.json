@@ -812,8 +812,8 @@
         {
           "kind": "source_span",
           "path": "docs/external_verification_packet.json",
-          "start_line": 1727,
-          "end_line": 1728,
+          "start_line": 1772,
+          "end_line": 1773,
           "must_contain": [
             "Comparator-checked against a separately declared statement and axiom budget",
             "\"forbidden_wording\": \"independently verified\""

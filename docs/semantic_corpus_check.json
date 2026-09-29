@@ -115,7 +115,7 @@
   },
   "surface_digests": {
     "docs/RESULTS.md": "sha256:6ad095ac4ca073207e3bf997f25c9d3bfe747f7c277542e2e17a72d49bf4c9e4",
-    "paper/systems/claim-faithful-publication-systems-paper.tex": "sha256:ea20c5b94ecbce75cd538c9b65ef462ef08b68b5568bb8290157c810b41dceab",
+    "paper/systems/claim-faithful-publication-systems-paper.tex": "sha256:3af1deaaf478d291f0920667479322c783d9b819871495074c7c5b0a81a59f96",
     "paper/systems/cold-clone-to-proof-receipt.tex": "sha256:b49322acf67d58f7018ce742206bd3ed00fe3446fb71b269a6774cd178dd568b"
   },
   "verification_posture": "content_addressed_generated_corpus_and_public_census_surfaces_matched_a_full_builder_run"
