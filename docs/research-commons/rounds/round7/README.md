@@ -41,6 +41,12 @@ measurement, its primary comparison, isolation requirements and missing-data
 rules. A synthetic pipeline check or deterministic routing regression is not a
 model-reader trial.
 
+The [frozen replay and development examples](evidence/README.md) record the
+actual local check: eight exact relation bindings and four diagnostic probes
+passed with complete axiom output. The development bank is bound to the named
+historical source commit. Later release and journal changes do not silently
+refresh that snapshot.
+
 ## Source-grounded design choices
 
 The private annex preserves the downloaded primary documents and version

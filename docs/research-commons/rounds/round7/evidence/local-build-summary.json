@@ -1,0 +1,16 @@
+{
+  "schema": "repository-validation-singleflight/1",
+  "key": "2989d81ce73c45a66b22592c2a9f2764516d68b248842c884db6c78658215ebd",
+  "completed_at": "2026-09-29T02:24:13+00:00",
+  "exit_code": 0,
+  "exit_state": "passed",
+  "attempt_count": 3,
+  "automatic_resume_count": 2,
+  "external_termination_exits": [
+    -9,
+    -9
+  ],
+  "validation_authority": "scripts/lean_fast_build.py",
+  "target": "ErdosProblems.ArgumentGraph.Results.RelationCertificates",
+  "boundary": "Portable summary of the native local build; full host receipt retained by the maintainer. Does not authenticate a clean-room reproduction."
+}

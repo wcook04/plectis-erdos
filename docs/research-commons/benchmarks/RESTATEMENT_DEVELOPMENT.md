@@ -1,5 +1,10 @@
 # Developmental relation benchmark
 
+A [frozen round-7 bank with its local replay evidence](../rounds/round7/evidence/README.md)
+is available for inspection. Its eight disclosed examples were checked at the
+commit named in that record. The commands below build from the current checkout;
+the historical receipt must not be used to certify changed source inputs.
+
 Run from a cold public clone without private files or a Lean build:
 
 ```sh
