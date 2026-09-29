@@ -15,7 +15,8 @@ last 4,000 characters); `<out>/summary.json` lists them all.
 A probe is accepted (`accepted`) when Lean exits 0, reports no error, no
 declaration uses `sorry`, the file declares no axiom, and no `#print axioms`
 line names an axiom other than `propext`, `Classical.choice` and
-`Quot.sound`; `compilation_accepted` is the first three alone. Print the axioms
+`Quot.sound`, and every active `#print axioms` directive has printed evidence;
+`compilation_accepted` is the exit/error/sorry check alone. Print the axioms
 of every declaration that matters: an axiom reached only through an imported
 module shows nowhere else. Acceptance is a compilation receipt for the probe
 file at the checked commit (`evidence_class: compilation_probe`): it does not
@@ -36,6 +37,8 @@ import sys
 import time
 from pathlib import Path
 
+from lean_source import lean_code_without_comments_and_strings
+
 ROOT = Path(__file__).resolve().parents[1]
 PROBES = ROOT / "research" / "probes"
 MESSAGE = re.compile(r"^(?P<file>[^:\n]+\.lean):(?P<line>\d+):(?P<col>\d+): (?P<kind>error|warning)(?:\([^)]*\))?: (?P<text>.*)$")
@@ -47,6 +50,7 @@ PRINTED_AXIOMS = re.compile(r"'(?P<name>[^'\n]+)' (?:depends on axioms: \[(?P<ax
 DECLARED_AXIOM = re.compile(r"^\s*(?:@\[[^\]]*\]\s*)?(?:(?:private|protected|noncomputable|unsafe)\s+)*"
                             r"axiom\s+(?P<name>[^\s:({\[]+)", re.MULTILINE)
 COMMENT = re.compile(r"/-.*?-/|--[^\n]*", re.DOTALL)
+PRINT_DIRECTIVE = re.compile(r"^\s*#print\s+axioms\b(?P<target>[^\n]*)", re.MULTILINE)
 
 
 def parse_messages(output: str) -> list[dict]:
@@ -71,6 +75,32 @@ def printed_axioms(output: str) -> dict[str, list[str]]:
                                           if a.strip()]
         found[match["name"]] = names
     return found
+
+
+def missing_axiom_prints(source: str, output: str) -> list[str]:
+    """Require output for each active directive, including names resolved in a namespace."""
+    code = lean_code_without_comments_and_strings(source)
+    requested = []
+    for match in PRINT_DIRECTIVE.finditer(code):
+        parts = match["target"].split()
+        requested.append(parts[0] if parts else "<unnamed #print axioms>")
+    available = [match["name"] for match in PRINTED_AXIOMS.finditer(output)]
+    # Match explicit names first, so an unqualified request cannot consume the
+    # only output for another directive naming the same suffix explicitly.
+    remaining = []
+    for name in requested:
+        if name in available:
+            available.remove(name)
+        else:
+            remaining.append(name)
+    missing = []
+    for name in remaining:
+        match = next((actual for actual in available if actual.endswith("." + name)), None)
+        if match is None:
+            missing.append(name)
+        else:
+            available.remove(match)
+    return sorted(set(missing))
 
 
 def declared_axioms(source: str) -> list[str]:
@@ -100,8 +130,10 @@ def run_probe(path: Path, timeout: int, root: Path | None = None) -> dict:
     messages = parse_messages(output)
     errors = [m for m in messages if m["kind"] == "error"]
     uses_sorry = any("declaration uses 'sorry'" in m["text"] for m in messages)
-    declared = declared_axioms(source.decode("utf-8", errors="replace"))
+    source_text = source.decode("utf-8", errors="replace")
+    declared = declared_axioms(source_text)
     printed = printed_axioms(output)
+    missing_prints = missing_axiom_prints(source_text, output)
     nonstandard = sorted({a for axioms in printed.values() for a in axioms} - STANDARD_AXIOMS)
     compiled = exit_code == 0 and not errors and not uses_sorry
     return {
@@ -118,9 +150,10 @@ def run_probe(path: Path, timeout: int, root: Path | None = None) -> dict:
         "uses_sorry": uses_sorry,
         "axioms_declared": declared,
         "axioms_printed": printed,
+        "missing_axiom_prints": missing_prints,
         "nonstandard_axioms": nonstandard,
         "compilation_accepted": compiled,
-        "accepted": compiled and not declared and not nonstandard,
+        "accepted": compiled and not declared and not nonstandard and not missing_prints,
         "output_tail": output[-4000:],
         "_output": output,
     }
@@ -142,10 +175,12 @@ def main(argv: list[str] | None = None) -> int:
         (args.out / f"{path.stem}.json").write_text(json.dumps(result, indent=1) + "\n", encoding="utf-8")
         results.append({k: result[k] for k in ("probe", "accepted", "compilation_accepted", "exit_code",
                                                 "timed_out", "elapsed_seconds", "uses_sorry", "axioms_declared",
-                                                "nonstandard_axioms", "source_sha256", "evidence_class")}
+                                                "nonstandard_axioms", "missing_axiom_prints", "source_sha256",
+                                                "evidence_class")}
                        | {"error_count": len(result["errors"])})
         reasons = ([f"{len(result['errors'])} errors"] + (["sorry"] if result["uses_sorry"] else [])
-                   + [f"axiom {a}" for a in result["axioms_declared"] + result["nonstandard_axioms"]])
+                   + [f"axiom {a}" for a in result["axioms_declared"] + result["nonstandard_axioms"]]
+                   + [f"missing #print axioms {name}" for name in result["missing_axiom_prints"]])
         print(f"{'ACCEPTED' if result['accepted'] else 'REJECTED'} {result['probe']} "
               f"({', '.join(reasons)}, {result['elapsed_seconds']} s)")
     (args.out / "summary.json").write_text(json.dumps({"probes": results}, indent=1) + "\n", encoding="utf-8")
