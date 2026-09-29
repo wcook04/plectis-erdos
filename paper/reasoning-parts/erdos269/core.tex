@@ -1328,6 +1328,191 @@ terms of every ray $p^\alpha w$, with $w$ a $(P\smallsetminus\{p\})$-smooth
 integer, that enters between the two scales, so the two scaled tails are
 far apart.  $E_p$ is the case of the single ray $w=1$, where nothing enters.
 
+\section{Integer-radix words ordered by independent clocks}
+\label{long269:sec:clock-transfer}
+
+The distinct-height argument compares two tails that agree through a long
+prefix.  A related comparison works for a different, explicit family of
+ordered words without requiring a decoder for all words.  It uses an
+isolated interchange of two events in the shift-orbit closure.  The clock
+rates in this section are independent parameters; they are not asserted to
+be the reciprocal logarithms of primes occurring in the original problem.
+The elementary tail recurrence below is standard.  The result here is its
+application to all rational relations among the clock-channel sums.
+
+Let $A$ be a finite alphabet.  Give $a\in A$ an integer radix $b_a\ge2$
+and a rational digit $c_a$.  For $w=w_1w_2\cdots$, define
+\[
+ Q_0=1,\qquad Q_n=\prod_{j=1}^n b_{w_j},\qquad
+ V_c(w)=\sum_{n\ge1}\frac{c_{w_n}}{Q_n},\qquad
+ T_a(x)=\frac{c_a+x}{b_a}.
+\]
+Write $\sigma w=w_2w_3\cdots$ and
+$X_w=\overline{\{\sigma^nw:n\ge0\}}$ in the one-sided product topology.
+The first letter acts by the outermost map: if $u=u_1\cdots u_m$, then
+$V_c(uz)=T_{u_1}\circ\cdots\circ T_{u_m}(V_c(z))$.  Put
+$B(u)=\prod_{j\le m}b_{u_j}$, with $B(\varnothing)=1$.
+
+\begin{lemma}[the suffix lattice and a late interchange]
+\label{long269:lem:late-swap}
+Suppose $V_c(w)$ is rational.  If for distinct letters $a,b$ and arbitrarily
+long words $u$ there is a common infinite suffix $z$ such that both
+$uabz$ and $ubaz$ belong to $X_w$, then
+\[
+ c_a(b_b-1)=c_b(b_a-1).
+\]
+If such interchanges join every pair of letters along a connected graph,
+$V_c(w)$ is rational precisely when there is $\lambda\in\Q$ with
+$c_a=\lambda(b_a-1)$ for all $a$; in that case $V_c(w)=\lambda$.
+\end{lemma}
+
+\begin{proof}
+First clear the common denominator of the digits, so that all $c_a$ are
+integers.  The recurrence
+$V_c(\sigma w)=b_{w_1}V_c(w)-c_{w_1}$ shows that, if
+$V_c(w)=p/K$, then every shifted value belongs to $K^{-1}\Z$.
+For $\lambda_a=c_a/(b_a-1)$, the positive weights
+\[
+ \frac{b_{w_n}-1}{Q_n}=\frac1{Q_{n-1}}-\frac1{Q_n}
+\]
+sum to one.  Hence $V_c(v)$ lies between $\min_a\lambda_a$ and
+$\max_a\lambda_a$ for every word $v$.  Sharing $m$ initial letters
+changes a value by at most the width of this interval divided by $B(u)$.
+Thus $V_c$ is continuous, and $V_c(X_w)\subseteq K^{-1}\Z$.
+
+The order of the maps matters.  A direct calculation gives, for every $x$,
+\[
+ T_a(T_b(x))-T_b(T_a(x))
+  =\frac{c_a(b_b-1)-c_b(b_a-1)}{b_ab_b}.
+\]
+The values of $uabz$ and $ubaz$ therefore differ by this number divided
+by $B(u)$.  Their difference belongs to $K^{-1}\Z$.  If its numerator
+were nonzero, its absolute value would be positive but smaller than $1/K$
+for a sufficiently long $u$, a contradiction.  On a connected interchange
+graph all $\lambda_a$ agree.  Conversely, for
+$c_a=\lambda(b_a-1)$ the displayed positive weights telescope and give
+$V_c(v)=\lambda$ for every $v$.  Dividing by the earlier common digit
+denominator restores the rational-digit statement.
+\end{proof}
+
+The common suffix is essential: distinct words can have the same affine
+map.  For example, the blocks $(5,7,3,2)$ and $(7,2,3,5)$ have the same
+map $(51+x)/210$.  Choosing the second block at block indices
+$1,2,4,8,\ldots$ produces a non-eventually-periodic word with rational
+value $51/209$.  Aperiodicity, compact tails and an integer alphabet alone
+therefore cannot replace the interchange hypothesis.  Nor does the lemma
+assert sufficiency when its graph is disconnected.
+
+Now let $r_1,\ldots,r_d>0$, $d\ge2$, be linearly independent over $\Q$.
+Clock $i$ crosses at positive times $t$ for which
+$r_it+\theta_i\in\Z$, where $\theta_i\in[0,1)$, and assume no two clocks
+cross simultaneously at positive time.  Ordering the crossings gives
+an infinite word $w$ on $\{1,\ldots,d\}$.
+
+\begin{lemma}[isolated interchanges in a clock word]
+\label{long269:lem:clock-swaps}
+Every pair of distinct clock labels satisfies the late-interchange
+hypothesis of Lemma~\ref{long269:lem:late-swap} for $X_w$.
+\end{lemma}
+
+\begin{proof}
+Fix a label $a$.  Immediately after its sufficiently late crossings,
+the phases of the other clocks are
+\[
+ \theta_i-\frac{r_i}{r_a}\theta_a
+       +k\frac{r_i}{r_a}\pmod1\qquad(i\ne a),
+\]
+where $k$ runs through all sufficiently large integers.  These points
+are dense in the $(d-1)$-torus.  Indeed, $1$ and the $r_i/r_a$ for $i\ne a$
+are rationally independent.  For every nonzero integral character of
+the torus, its average along this orbit is a geometric sum divided by
+its length and tends to zero.  Trigonometric approximation of continuous
+functions then shows that every nonempty open set is visited infinitely
+often.  This also proves density after any finite initial segment is
+discarded.
+
+Fix $b\ne a$ and an arbitrarily large integer $L$, and work on the section
+just after an $a$-crossing.  Set $T=L/r_a$ and choose the phase of $b$ so
+that its clock crosses at $T$.  This phase is nonzero, since
+$Lr_b/r_a\notin\Z$.  Choose the remaining phases outside the countable
+sets that cause a crossing at zero, a third crossing at $T$, or any other
+positive simultaneous crossing.  The resulting singular configuration has
+exactly the one double crossing of $a,b$ at $T$: a second meeting of these
+two clocks would make $r_b/r_a$ rational.
+
+Perturb the $b$ phase on opposite sides.  On any bounded time interval
+containing finitely many crossings, a sufficiently small perturbation
+preserves every order except that of this pair.  Taking one-sided limits
+of the whole event words gives $uabz$ and $ubaz$ with the \emph{same}
+infinite suffix $z$.  Their common prefix has at least $L-1$ letters,
+from the earlier $a$-crossings.  For each finite prefix of either limit,
+a small open set of nonsingular section phases realises that prefix.
+The dense actual $a$-section orbit meets that set, so the prefix occurs
+at the beginning of an actual shifted word.  Consequently both limiting
+words belong to $X_w$.  Letting $L$ grow proves the assertion.
+\end{proof}
+
+\begin{theorem}[rational relations among independent-clock channels]
+\label{long269:thm:clock-relations}
+Under the preceding clock hypotheses, choose integers $b_i\ge2$, put
+$Q_n=\prod_{k\le n}b_{w_k}$ and
+\[
+ S_i=\sum_{n:\,w_n=i}\frac1{Q_n}\qquad(1\le i\le d).
+\]
+For every $c_i\in\Q$,
+\[
+ \sum_{i=1}^dc_iS_i\in\Q
+ \quad\Longleftrightarrow\quad
+ c_i=\lambda(b_i-1)\quad\hbox{for all $i$ and some $\lambda\in\Q$}.
+\]
+The rational value is $\lambda$.  Equivalently, all rational relations
+$a_0+\sum_i a_iS_i=0$ are multiples of
+$(-1,b_1-1,\ldots,b_d-1)$.  Thus the span of
+$1,S_1,\ldots,S_d$ has dimension $d$; each channel and each nonempty
+proper unweighted sub-sum is irrational.  The full unweighted sum is
+irrational exactly when the radices are not all equal.
+\end{theorem}
+
+The theorem has the ordinary proof below.  It has not been Lean-checked or
+externally peer reviewed.
+
+\begin{proof}
+Absolute convergence gives $\sum_i c_iS_i=V_c(w)$.  The previous
+two lemmas make the interchange graph complete, so they give both
+directions and the stated value.  The relation space follows by moving
+the rational value to the constant coordinate.  An indicator vector of
+a nonempty proper set has both zero and one entries and cannot be a
+multiple of the strictly positive vector $(b_i-1)_i$.  The all-ones
+vector is such a multiple precisely when all the $b_i$ agree.
+\end{proof}
+
+For a concrete four-clock instance take
+\[
+ (r_1,r_2,r_3,r_4)=(1,\sqrt2,\sqrt3,\sqrt6),\qquad
+ (b_1,b_2,b_3,b_4)=(2,3,5,7),\qquad \theta_i=0.
+\]
+The four rates form the standard basis of the biquadratic field
+$\Q(\sqrt2,\sqrt3)$ over $\Q$; the ratio of any two distinct rates is
+irrational, so positive crossings never coincide.  Write
+$(d_1,d_2,d_3,d_4)=(1,2,3,6)$.  Counting crossings up to the $n$th
+crossing of clock $i$ gives the explicit series
+\begin{equation}\label{long269:eq:four-clocks}
+ S_i=\sum_{n\ge1}\left(
+       \prod_{j=1}^4 b_j^{\lfloor n\sqrt{d_j/d_i}\rfloor}
+                        \right)^{-1}.
+\end{equation}
+The only rational relation among $1,S_1,S_2,S_3,S_4$ is generated by
+$S_1+2S_2+4S_3+6S_4=1$.  In particular their rational span has
+dimension four and $\sum_iS_i$ is irrational.  This does not provide an
+irrationality measure or transcendence result.  In the related
+two-letter Hecke--Mahler setting, stronger transcendence results exist
+\cite{bugeaudlaurent2023}; the example's four independent rates do not
+satisfy that two-letter hypothesis.  The original distinct running-LCM
+sum is proved earlier by its two-wall argument, without assuming
+rational independence of reciprocal prime logarithms.  The repeated
+running-LCM question remains open.
+
+
 \section{Why the third prime prevents finite separation}\label{long269:sec:rank}
 
 With two generators the reciprocal-height kernel is one product of a row
@@ -1548,6 +1733,75 @@ transcendence of the sum.
 The threshold construction needs $\log_r p$ and $\log_r q$ irrational,
 but not $p\ne q$.  The latter condition is needed for the three-prime
 running-LCM interpretation, not for the two independent dense orbits.
+
+\subsection{The selected kernel's integral index and height boundary}
+\label{long269:sec:selected-kernel-height}
+The nonsingular minors above show exact rank, but a determinant's
+nonvanishing is not by itself a small integral linear form.  The
+selected staircase in the proof of
+Theorem~\ref{long269:res:infinite-rank} has a precise
+integral index.  Let $A_N(r)$ have entry $1$ on and below the diagonal
+and entry $r$ above it, for integers $N\ge1$, $r\ge2$.
+
+\begin{lemma}[Smith factors of the selected staircase]
+\label{long269:lem:staircase-smith}
+The Smith factors of $A_N(r)$ are
+$1,r-1,\ldots,r-1$, and
+$\det A_N(r)=(1-r)^{N-1}$.
+\end{lemma}
+
+The Smith calculation and its height consequence are ordinary arguments
+here; the existing Lean result proves nonvanishing of the selected minors,
+not these arithmetic statements.
+
+\begin{proof}
+Working from bottom to top, subtract row $i-1$ from row $i$ for every
+$i>1$.  Row $i$ then has just $1-r$ in column $i$.  The first row is
+$(1,r,\ldots,r)$; subtract $r$ times its first column from each later
+column.  The resulting diagonal is $(1,1-r,\ldots,1-r)$.  These are
+unimodular integral operations, and $1$ divides $r-1$, so this is its
+Smith form up to signs.  Its determinant has the displayed sign.
+\end{proof}
+
+In the source-selected $\{2,3,5\}$ minor, the positive integers $U_i,V_j$ give
+\[
+ K=\operatorname{diag}(U_i)^{-1}A_N(5)\operatorname{diag}(5V_j)^{-1}.
+\]
+Consequently
+\[
+ \det K=\frac{(-4)^{N-1}}{W},\qquad
+ W=5^N\prod_iU_i\prod_jV_j.
+\]
+More generally, an entrywise-integral diagonal clearing
+$\operatorname{diag}(s)K\operatorname{diag}(t)$ has diagonal entries
+$z_i=s_it_i/(5U_iV_i)\in\Z\smallsetminus\{0\}$ and determinant
+$(-4)^{N-1}\prod_i z_i$.  Its absolute determinant is therefore at
+least $4^{N-1}$, attained by $s_i=5U_i$, $t_j=V_j$.
+This optimality is restricted to diagonal entrywise clearings.
+
+For the selected carry pattern, the source's injective nonnegative
+index families $I,J$ satisfy
+$v_2(W)\ge\sum_iI(i)+\sum_jJ(j)\ge N(N-1)\ge2(N-1)$.
+Thus $4^{N-1}$ divides $W$, and the \emph{reduced} determinant is
+$\pm1/D$, where $D=W/4^{N-1}\in\N_{>0}$.
+The Smith index explains the numerator before reduction, while the
+reduced scalar has no numerator left to spend on a one-value
+denominator clearing.  A bordered determinant with one target $X$
+illustrates the same limit: for $K\in\mathrm{GL}_N(\Q)$ and rational
+$u,v$, the Schur complement gives
+\[
+ \det\begin{pmatrix}K&u\\v^T&X\end{pmatrix}
+ =\det K\bigl(X-v^TK^{-1}u\bigr).
+\]
+If $v^TK^{-1}u=s/t$ in lowest terms, an integral scalar multiple
+of $\det K(X-s/t)$ must have its linear coefficient divisible by $t$.
+Its primitive integral coefficient polynomial is therefore
+$\pm(tX-s)$, regardless of the smallness of
+$\det K$ or a compatible rational change of basis.  This is a
+one-target, diagonal-clearing boundary, not a prohibition on new
+recurrences, multiple target values, or stronger approximation data;
+it does not settle the repeated running-LCM problem.  Smith form is
+used here in its standard sense~\cite{stanley2016}.
 
 \subsection{The exact uniform approximation error}
 
@@ -4018,6 +4272,10 @@ here.
 \bibitem{kovactao2024} Vjekoslav Kova\v{c} and Terence Tao,
   \emph{On several irrationality problems for Ahmes series}, Acta Mathematica Hungarica \textbf{175} (2025), 572--608,
   \href{https://doi.org/10.1007/s10474-025-01528-0}{doi:\nolinkurl{10.1007/s10474-025-01528-0}}; arXiv:\href{https://arxiv.org/abs/2406.17593}{2406.17593}.
+\bibitem{stanley2016} R.~P. Stanley, \emph{Smith normal form in combinatorics},
+  J. Combin. Theory Ser. A \textbf{144} (2016), 476--495,
+  doi:\href{https://doi.org/10.1016/j.jcta.2016.06.013}{10.1016/j.jcta.2016.06.013};
+  arXiv:\href{https://arxiv.org/abs/1602.00166v1}{1602.00166v1}.
 \bibitem{bugeaudlaurent2023} Yann Bugeaud and Michel Laurent,
   \emph{Transcendence and continued fraction expansion of values of Hecke--Mahler series}, Acta Arithmetica \textbf{209} (2023), 59--90,
   \href{https://doi.org/10.4064/aa220323-18-1}{doi:\nolinkurl{10.4064/aa220323-18-1}}; arXiv:\href{https://arxiv.org/abs/2203.12901}{2203.12901}.

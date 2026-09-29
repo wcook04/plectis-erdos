@@ -13,6 +13,7 @@ from typing import Any
 import query_corpus
 
 
+
 BENCHMARK_SCHEMA = "erdos249257-semantic-reasoning-benchmark/1"
 
 # Development questions are the motivating failures that shaped the first
@@ -640,7 +641,7 @@ def main() -> int:
         return 0
     parser = argparse.ArgumentParser(description=__doc__, epilog=(
         "Additional workflows: restatement --out DIR builds disclosed development "
-        "relation tasks; study --help prepares, verifies, grades and analyzes frozen reader jobs."))
+        "relation tasks; study --help prepares, verifies, executes via a trusted bridge, captures, and analyzes frozen reader jobs."))
     parser.add_argument(
         "--split",
         choices=("all", "development", "held_out"),

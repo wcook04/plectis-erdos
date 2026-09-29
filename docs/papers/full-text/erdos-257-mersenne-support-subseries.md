@@ -491,6 +491,14 @@ For $`r`$ covers, interleave at positions at most $`rj`$ and divide each exponen
 
 For comparison, Tao–Teräväinen prove the full-prime case at base $`2`$ \[taoteravainen2025, Theorem 1.3, p. 4\]. The paragraph following it states extensions to prime support at every integer base and to full prime-power support at base $`2`$, leaving the modifications to the reader. It does not treat arbitrary infinite thinnings. The proposed thinning extension is not a premise of any theorem here.
 
+<a id="sec:separated-support-transfer"></a>
+
+## Algebraic bases on separated supports
+
+The weighted theorem above concerns integer bases. A different argument gives a stronger conclusion on another explicit class of supports. Suppose an infinite host $`H`$ has cuts $`L_j<M_j`$ with $`L_j\to\infty`$ and $`M_j-L_j\to\infty`$, such that every $`n\in H`$ below or equal to $`L_j`$ divides $`L_j`$, and every $`n\in H`$ above $`L_j`$ is divisible by $`M_j`$. For every infinite $`B\subseteq H`$, bounded positive integer weights $`w_n`$, and real algebraic $`t>1`$, the sum $`\sum_{n\in B}w_n/(t^n-1)`$ is transcendental. The full ordinary proof is in the companion [*Reading eight Erdős problems together*](../../../paper/synthesis/optimal-sparse-perturbations.pdf), subsection “Divisibility cuts at every algebraic base”. It uses the number-field Subspace Theorem, not the formal weighted proof.
+
+Every divisibility chain has such cuts. The host $`H_* = \bigcup_j N_j\{1,\ldots,2^{N_j}\}`$, where $`N_0=1`$ and $`N_{j+1}=2N_j\operatorname{lcm}(1,\ldots,2^{N_j})`$, also does. Each block contributes at least $`1/2`$ to $`\sum_{n\in H_*}1/n`$ and has an antichain whose size tends to infinity. Nevertheless its one-prime weighted mass at every real $`t>1`$ is at most $`2t^2/(t-1)^3`$. This example connects the weighted criterion to algebraic-base transcendence without asserting that all weighted hosts satisfy the cut condition. Arbitrary infinite supports at base two remain unresolved. The transfer theorem has two AI proof reviews; it has no Lean proof of transcendence, independent human review or asserted historical priority.
+
 <a id="sec:period"></a>
 
 # Finite-support denominator periods

@@ -108,6 +108,14 @@ hash and local route. Following a link does not verify a lab explanation.
 
 ## What this layer does not decide
 
+The [round-8 transfer record](../../research-commons/rounds/round8/README.md)
+links ordinary proofs of separated-cut transcendence, independent-clock
+classification, calibrated height countermodels and signed interpolation.
+Their reusable mechanisms and surviving boundaries are explicit in the papers
+and claim registry. They are not inserted into the formal mechanism inventory:
+that inventory's declaration links would otherwise suggest kernel evidence
+that these infinite results do not yet have.
+
 Lean owns proof correctness; the semantic corpus owns statement records. Lab
 mechanisms do not establish correctness, novelty or significance.
 `docs/methodology.json::blinded_recovery_evaluation` defines the separate

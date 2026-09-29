@@ -45,3 +45,14 @@ answers on this bank support no measured performance, novelty, independent
 result count or prospective discovery claim. The controlled reader protocol is
 in [READER_STUDY.md](READER_STUDY.md); new confirmatory families require a
 separately frozen, independently adjudicated bank.
+
+## Historical Round 8 candidate bank
+
+[Round 8 disclosed candidate questions](round8_candidate_development/README.md)
+add 12 source-excerpt-bound examples across four dependent problem clusters at
+historical commit `0268dd8bfb2a556a0c93078337d42c6d07138fa2`.
+Use `python3 scripts/benchmark_semantic_reasoning.py restatement candidate
+validate` to inspect their custody state, or the `candidate` subcommands for
+response parsing and byte-bound label-free review export. The author proposals
+stay separate and are not mathematical gold. This addition does not replace
+the eight-row current-source calibration above or claim a new Lean replay.

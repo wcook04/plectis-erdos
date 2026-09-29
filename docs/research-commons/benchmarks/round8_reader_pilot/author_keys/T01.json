@@ -1,0 +1,82 @@
+{
+  "schema": "plectis-round8-reader-candidate-key/1",
+  "task_id": "T01",
+  "family_id": "totient_first_harmonic_endpoint",
+  "status": "candidate_source_reading_not_independently_adjudicated",
+  "source_commit": "0268dd8bfb2a556a0c93078337d42c6d07138fa2",
+  "binding_replay_status": "UNRUN at this commit; older 0d0129c6 receipt remains historical",
+  "criteria": [
+    {
+      "id": "quantifiers",
+      "required": true,
+      "description": "For every integer h>=1 and every threshold A, some X>=max(A,1) satisfies the good-base gap; not one fixed h, a finite experiment, or an assertion at every X."
+    },
+    {
+      "id": "parameters",
+      "required": true,
+      "description": "Uses minimalDepth h 26 X, s=26, eta=1/1000, and real part of the first-harmonic sum over the good bases <=603X/1000."
+    },
+    {
+      "id": "conditional_endpoint",
+      "required": true,
+      "description": "That single gap gives irrationality with no additional supplied PNT or fibre-mean bound; the gap itself is not proved by this implication."
+    },
+    {
+      "id": "scope",
+      "required": true,
+      "description": "No converse is recorded for this endpoint. No claim of strict logical weakening or solved irrationality follows from the missing converse."
+    },
+    {
+      "id": "evidence",
+      "required": true,
+      "description": "Cites a correct source locus and separates source-reported Lean proof from a fresh compiler execution."
+    }
+  ],
+  "severe_error_examples": [
+    "Declares S irrational unconditionally from this endpoint",
+    "Replaces the cofinal quantifiers by finite testing",
+    "Treats the good-base gap as proved",
+    "Asserts a converse or strictness without support"
+  ],
+  "reference_answer": "For every h>=1 and A, it is enough to find X>=max(A,1) such that at L=minimalDepth(h,26,X), s=26 and eta=1/1000, Re sum over pivotGoodBases of windowFirstExp <= (603/1000)X. The source proves that this gap alone implies irrationality. The proof supplies the cardinality/truncation prerequisites internally; the earlier fibre-mean route carried a PNT input and the tighter 11X/20 bound. The cofinal gap remains open. The registry records an endpoint route, not a converse or strictness certificate. This is a source-reading conclusion, not fresh Lean replay.",
+  "source_handles": [
+    {
+      "path": "corpus/paper/249/erdos-249-binary-totient-series.tex",
+      "start_line": 640,
+      "end_line": 749,
+      "file_sha256": "6ad13ba77371b054966f217673351bfc4953bce0b37e6756cf4756e3438f97ac",
+      "excerpt_path": "grader/evidence/T01-01.txt",
+      "excerpt_sha256": "186b9c2ef6f8b9d147b7e9e22829e9937ab83285fc3fcbdb99af5ad22058003c"
+    },
+    {
+      "path": "corpus/lean/ErdosProblems/ArgumentGraph/Results/Erdos249Endpoint.lean",
+      "start_line": 5,
+      "end_line": 30,
+      "file_sha256": "4d824b648c71e9e7c3d6746308b3723fc3a575b490446488dff69d5871116f85",
+      "excerpt_path": "grader/evidence/T01-02.txt",
+      "excerpt_sha256": "8014996f55411e69562e72601e7b28c4ad6f0b04091b1796f5d09d18636dfc4a"
+    },
+    {
+      "path": "corpus/lean/ErdosProblems/ArgumentGraph/Results/Erdos249Endpoint.lean",
+      "start_line": 93,
+      "end_line": 135,
+      "file_sha256": "4d824b648c71e9e7c3d6746308b3723fc3a575b490446488dff69d5871116f85",
+      "excerpt_path": "grader/evidence/T01-03.txt",
+      "excerpt_sha256": "abeadc7eec25ab3cb5e126a5f5b7cffdcf1d2a88f703ef8f3e06e8839af2d15c"
+    },
+    {
+      "path": "corpus/docs/research-commons/record/relations.json",
+      "start_line": 110,
+      "end_line": 131,
+      "file_sha256": "40b6fbd240bb4a747b3d186d5624cd3e55dc7901d2020bffcac828d3db7e0d3d",
+      "excerpt_path": "grader/evidence/T01-04.txt",
+      "excerpt_sha256": "62e0b5dd26b3326a40694dce4f1456421041ecb1d59fb03802078c164a783a71"
+    }
+  ],
+  "declarations": [
+    "ErdosProblems.Erdos249.PaperCompleteR21.irrational_totient_series_of_goodBase_gap",
+    "ErdosProblems.ArgumentGraph.RelationCertificates.GoodBaseGap"
+  ],
+  "scoring_rule": "correct iff every required criterion is satisfied and no material severe error; source-faithful wording accepted; adjudicate ambiguity before a real run",
+  "abstention_rule": "Acknowledging an unproved converse, input or review is required where appropriate. Blanket abstention on the answerable source question is incorrect, not automatically severe."
+}

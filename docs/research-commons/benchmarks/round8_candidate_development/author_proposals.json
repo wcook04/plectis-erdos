@@ -1,0 +1,603 @@
+{
+  "schema": "plectis-relation-candidate-key/1",
+  "packet_id": "plectis_round8_p5_relation_bank_20260929",
+  "source_commit": "0268dd8bfb2a556a0c93078337d42c6d07138fa2",
+  "status": "candidate_author_proposals_not_gold",
+  "confirmatory_sealed": false,
+  "answers": [
+    {
+      "task_id": "R8P5-01",
+      "semantic_family_id": "factorial_carry_cofinality",
+      "adjudication_status": "candidate_author_proposal",
+      "kernel_status": "UNRUN",
+      "relation_label": "equivalent",
+      "direction": "P_iff_Q",
+      "supply_status": "relation_supplied_endpoints_open",
+      "assessment": "supported",
+      "reasoning": "The exact unconditional iff is already in FactorialGapPlateauCore. Both directions are supplied as a relation; neither cofinality nor irrationality follows merely by citing the iff. This says nothing by itself about computational tractability.",
+      "unproved_obligations": [
+        "A proof of either actual factorial-gap endpoint."
+      ],
+      "required_evidence": [
+        "s68_iff"
+      ],
+      "reverse_status": "supported",
+      "perturbations": [
+        {
+          "kind": "reverse_direction",
+          "mutation": "Exchange P and Q.",
+          "status": "supported",
+          "evidence": "s68_iff supplies both directions.",
+          "scope_limit": "Existing equivalence, not two solved endpoints."
+        },
+        {
+          "kind": "remove_premise",
+          "mutation": "Drop the cofinality requirement and retain only c(60) ≠ 1.",
+          "status": "unestablished",
+          "evidence": "s68_finite supplies that finite event; s68_iff still needs arbitrarily large misses.",
+          "scope_limit": "Not a refutation of the actual irrationality. A generic carry sequence equal to 1 after index 67 refutes only the inference pattern from finitely many misses."
+        },
+        {
+          "kind": "change_quantifier_or_context",
+          "mutation": "Replace ∀B ∃m>B by ∃m ∀B, m>B ∧ c(m)≠1.",
+          "status": "refuted",
+          "evidence": "Taking B=m contradicts m>B.",
+          "scope_limit": "This rejects the quantified mutant outright, not the original cofinal statement."
+        }
+      ],
+      "ordinary_proof": null,
+      "independent_semantic_review": null,
+      "gold_eligible": false,
+      "verification_remaining": [
+        "Replay the exact source iff and review the intended actual-series definitions. Neither endpoint needs to be solved to adjudicate this relation item.",
+        "Independent semantic adjudication and Type A source-current kernel evidence are absent in this return."
+      ]
+    },
+    {
+      "task_id": "R8P5-02",
+      "semantic_family_id": "factorial_carry_cofinality",
+      "adjudication_status": "candidate_author_proposal",
+      "kernel_status": "UNRUN",
+      "relation_label": "endpoint_route",
+      "direction": "Q_implies_P",
+      "supply_status": "finite_conclusions_supplied",
+      "assessment": "supported",
+      "reasoning": "For the displayed pair, Q⇒P is available trivially because the finite certificates P are independently supplied. The useful forward P⇒Q is not established: the cofinal criterion still needs arbitrarily large misses. The certificates do supply q≥67 for every displayed positive rational denominator. Thus the return claim is correctly limited; neither irrationality nor rationality is proved. This reverse implication does not make the finite facts semantically equivalent to the open endpoint.",
+      "unproved_obligations": [
+        "Cofinal actual misses or another irrationality proof."
+      ],
+      "required_evidence": [
+        "s68_finite",
+        "s68_iff",
+        "s68_unit_test"
+      ],
+      "reverse_status": "supported",
+      "perturbations": [
+        {
+          "kind": "reverse_direction",
+          "mutation": "Infer the cited finite certificates from irrationality.",
+          "status": "supported",
+          "evidence": "They are supplied independently by s68_finite.",
+          "scope_limit": "The implication is trivial because its conclusion is already supplied; this gives no semantic identification of finite data with irrationality."
+        },
+        {
+          "kind": "remove_premise",
+          "mutation": "Omit the index-67 certificate.",
+          "status": "unestablished",
+          "evidence": "The remaining index-60 certificate still gives q≥60 but no cofinality.",
+          "scope_limit": "Removing evidence cannot create the missing producer; the actual target remains unresolved."
+        },
+        {
+          "mutation": "Generalise the finite misses to c(m)≠1 for every m≥51.",
+          "status": "refuted",
+          "evidence": "Exact rational-prefix arithmetic gives strictFacTopRat(prefix 52,52) divisible by 52. The source iff s68_unit_test therefore gives c(52)=1. See results/exact_arithmetic.json and the UNRUN unit52 wrapper.",
+          "scope_limit": "This is an actual finite counter-instance, not a synthetic carry sequence. The arithmetic was run with Fraction; the Lean replay remains UNRUN.",
+          "kind": "change_quantifier_or_context"
+        }
+      ],
+      "ordinary_proof": null,
+      "independent_semantic_review": null,
+      "gold_eligible": false,
+      "verification_remaining": [
+        "Replay the finite source certificates and the unit-carry criterion; kernel-check the index-52 arithmetic specimen if used as formal disconfirmation. Independently review that a finite event is not being promoted to the cofinal producer.",
+        "Independent semantic adjudication and Type A source-current kernel evidence are absent in this return."
+      ]
+    },
+    {
+      "task_id": "R8P5-03",
+      "semantic_family_id": "factorial_carry_cofinality",
+      "adjudication_status": "candidate_author_proposal",
+      "kernel_status": "UNRUN",
+      "relation_label": "strictly_stronger",
+      "direction": "P_implies_Q_not_converse",
+      "supply_status": "relation_ordinary_proof",
+      "assessment": "overstatement",
+      "reasoning": "For 1≤q≤59, q divides 59!, so P implies Q. The separator q=59! satisfies Q and fails P. The smooth-number claim is stronger than the source theorem: 2^55 has only prime factor 2, whereas v₂(59!)=54, so it does not divide 59!. This is a scope error in the quoted comment, not a kernel error.",
+      "unproved_obligations": [],
+      "required_evidence": [
+        "s68_divisor",
+        "s68_finite"
+      ],
+      "reverse_status": "refuted",
+      "perturbations": [
+        {
+          "kind": "reverse_direction",
+          "mutation": "Infer P from Q.",
+          "status": "refuted",
+          "evidence": "q=59! is a positive separator.",
+          "scope_limit": "The separator belongs to the arbitrary-q context only. No claim that S has denominator 59! is made."
+        },
+        {
+          "kind": "remove_premise",
+          "mutation": "Drop q>0.",
+          "status": "refuted",
+          "evidence": "q=0: ¬(0∣59!) is true but 60≤0 is false.",
+          "scope_limit": "Nat divisibility, since 59! is nonzero."
+        },
+        {
+          "kind": "change_quantifier_or_context",
+          "mutation": "Restrict the comparison to actual rational presentations S=a/q.",
+          "status": "context_changed",
+          "evidence": "Both exclusions are then supplied by source theorems; the separator q=59! is forbidden by those hypotheses.",
+          "scope_limit": "Strictness proved in the arbitrary-q context does not transport to the rational-presentation context."
+        }
+      ],
+      "ordinary_proof": "If 1≤q≤59, q occurs as a factor of 59!, hence q∣59!. Contraposition gives P⇒q≥60. Take q=59! for failure of Q⇒P. Legendre counting gives v₂(59!)=⌊59/2⌋+⌊59/4⌋+⌊59/8⌋+⌊59/16⌋+⌊59/32⌋=29+14+7+3+1=54, so 2^55∤59!, although all its prime factors are ≤59. These are arithmetic separation statements, not candidate rational representations of S.",
+      "independent_semantic_review": null,
+      "gold_eligible": false,
+      "verification_remaining": [
+        "Replay the source denominator exclusions; kernel-check the generic positive-q implication and its two arithmetic separators. Keep arbitrary q separate from rational representations of the series.",
+        "Independent semantic adjudication and Type A source-current kernel evidence are absent in this return."
+      ]
+    },
+    {
+      "task_id": "R8P5-04",
+      "semantic_family_id": "integer_negative_mass_stabilisation",
+      "adjudication_status": "candidate_author_proposal",
+      "kernel_status": "UNRUN",
+      "relation_label": "equivalent",
+      "direction": "P_iff_Q",
+      "supply_status": "relation_supplied_with_elementary_converse",
+      "assessment": "rediscovery",
+      "reasoning": "The stronger scalar theorem at line 612 already proves P⇒Q without normalised vanishing; the paper-facing theorem also omits it. Conversely Q makes δ finitely supported, so it is summable. The converse is supplied here as an elementary ordinary proof, not a claim of mathematical novelty.",
+      "unproved_obligations": [],
+      "required_evidence": [
+        "s243_mass",
+        "s243_old",
+        "s243_scalar",
+        "s243_natural"
+      ],
+      "reverse_status": "supported",
+      "perturbations": [
+        {
+          "kind": "reverse_direction",
+          "mutation": "Infer finite mass from eventual zero error.",
+          "status": "supported",
+          "evidence": "After the threshold δ=0, hence finite support and summability.",
+          "scope_limit": "No recurrence is needed for this reverse direction."
+        },
+        {
+          "kind": "remove_premise",
+          "mutation": "Remove the exact step recurrence but keep positivity and finite mass.",
+          "status": "refuted",
+          "evidence": "C(n)=1,E(n)=1 has δ=0 and E never zero.",
+          "scope_limit": "Both sequences retain their required integer domains."
+        },
+        {
+          "kind": "change_quantifier_or_context",
+          "mutation": "Require one common N valid for all admissible C,E.",
+          "status": "refuted",
+          "evidence": "For any proposed N choose T≥N, C(n)=2 for n≤T and 1 thereafter, E(T)=1 and E(n)=0 otherwise. Mass is zero, yet E(T)≠0.",
+          "scope_limit": "The theorem has ∀C,E ∃N, not ∃N ∀C,E."
+        }
+      ],
+      "ordinary_proof": "P⇒Q is exactly the existing scalar theorem. If E(n)=0 for n≥N, then min(E(n),0)=0 and δ(n)=0 there; the real series has finite support and is summable. This proves Q⇒P. The positive C=1,E=1 specimen shows why the recurrence cannot be omitted. The delayed single downward jump satisfies the exact recurrence and refutes a uniform threshold over all inputs.",
+      "independent_semantic_review": null,
+      "gold_eligible": false,
+      "verification_remaining": [
+        "Replay the strongest scalar theorem; check the elementary finite-support converse and the two scope specimens. Do not require a proof of an open canonical-input premise to accept this conditional relation.",
+        "Independent semantic adjudication and Type A source-current kernel evidence are absent in this return."
+      ]
+    },
+    {
+      "task_id": "R8P5-05",
+      "semantic_family_id": "integer_negative_mass_stabilisation",
+      "adjudication_status": "candidate_author_proposal",
+      "kernel_status": "UNRUN",
+      "relation_label": "strictly_stronger",
+      "direction": "P_implies_Q_not_converse",
+      "supply_status": "conditional_conclusion",
+      "assessment": "overstatement",
+      "reasoning": "The forward endpoint is already supplied. Finite mass is not supplied for an arbitrary canonical input to the original problem. In the stated wider state context the converse is actually false: D₀=1,Dₙ₊₁=Dₙ(Dₙ+1),aₙ=Cₙ=Dₙ+1,Eₙ=−Dₙ² satisfies all state equations and the Sylvester recurrence, but δₙ=Dₙ²/(Dₙ+1)≥1/2. It is not the canonical tail of its reciprocal series.",
+      "unproved_obligations": [
+        "A finite-mass theorem for the intended canonical inputs, or an alternative route."
+      ],
+      "required_evidence": [
+        "s243_defs",
+        "s243_natural",
+        "s243_canonical"
+      ],
+      "reverse_status": "refuted",
+      "perturbations": [
+        {
+          "kind": "reverse_direction",
+          "mutation": "Infer finite mass from eventual Sylvester dynamics.",
+          "status": "refuted",
+          "evidence": "The D₀=1 quadratic orbit has Q and fails P.",
+          "scope_limit": "This refutes the converse only under the exact state context printed in this item, not under extra canonical-tail hypotheses."
+        },
+        {
+          "kind": "remove_premise",
+          "mutation": "Remove D(n+1)=a(n)D(n).",
+          "status": "refuted",
+          "evidence": "Let a alternate 2 and 3, C≡1, D=a−1, E≡0. The C equation and finite mass hold, but infinitely many 3→2 steps violate Sylvester.",
+          "scope_limit": "The omitted D equation is the one that fails in this example."
+        },
+        {
+          "kind": "change_quantifier_or_context",
+          "mutation": "Add that C,D are the canonical state constructed from the actual rational sum.",
+          "status": "context_changed",
+          "evidence": "The separation orbit has C/D=1+1/D rather than the canonical vanishing tail.",
+          "scope_limit": "Its use as a counterexample in the narrower context is invalid; the reverse there is not adjudicated by this item."
+        }
+      ],
+      "ordinary_proof": "Define D₀=1 and Dₙ₊₁=Dₙ(Dₙ+1). Inductively Dₙ≥1. Set aₙ=Cₙ=Dₙ+1 and Eₙ=−Dₙ². Then Dₙ₊₁=aₙDₙ; Cₙ₊₁+Dₙ=Dₙ²+2Dₙ+1=aₙCₙ; and Dₙ−(aₙ−1)Cₙ=−Dₙ². Moreover aₙ₊₁=Dₙ²+Dₙ+1=aₙ²−aₙ+1. Thus Q holds at every index. But δₙ=Dₙ²/(Dₙ+1)≥1/2, so terms do not tend to zero and the nonnegative series diverges. This proves Q∧¬P in the stated context. The forward theorem is the second conjunct of finite_negative_mass_paper, giving strictness. No claim is made that this noncanonical C is the state of a rational reciprocal-series input. The obstruction is homogeneous freedom in the state equations: if (a,C,D) satisfies them, then C̃=C+kD also does, for fixed k∈ℕ; the centred error becomes Ẽ=E−k(a−1)D. For this orbit the canonical choice C=1 has E=0, and the exhibited choice is its k=1 shift. Indeed 1/(Dₙ+1)=1/Dₙ−1/Dₙ₊₁, and Dₙ≥2ⁿ, so the actual reciprocal tail starting at n equals 1/Dₙ. The canonical scaled tail is 1, not Dₙ+1. The normalisation C/D→0 selects k=0; the shifted ratio tends to 1.",
+      "independent_semantic_review": null,
+      "gold_eligible": false,
+      "verification_remaining": [
+        "Replay the natural-state forward theorem. Independently review and formalise QuadraticOrbitSeparation under exactly StateContext; the canonical-tail boundary and homogeneous shift argument require semantic review.",
+        "Independent semantic adjudication and Type A source-current kernel evidence are absent in this return."
+      ]
+    },
+    {
+      "task_id": "R8P5-06",
+      "semantic_family_id": "integer_negative_mass_stabilisation",
+      "adjudication_status": "candidate_author_proposal",
+      "kernel_status": "UNRUN",
+      "relation_label": "refuted_generalisation",
+      "direction": "claimed_P_implies_Q_refuted",
+      "supply_status": "counterexample_ordinary_proof",
+      "assessment": "false_in_stated_context",
+      "reasoning": "C(n)=n+1 and E(n)=−1 satisfy positivity and the exact recurrence. For each K, n≥K gives K<n+1, so P holds. Q fails at every index; δ(n)=1/(n+1) is not summable. This does not refute a theorem using the additional exact a,D dynamics of the actual problem.",
+      "unproved_obligations": [],
+      "required_evidence": [
+        "s243_mass",
+        "s243_scalar"
+      ],
+      "reverse_status": "supported",
+      "perturbations": [
+        {
+          "kind": "reverse_direction",
+          "mutation": "Infer P from Q.",
+          "status": "supported",
+          "evidence": "For n beyond the zero threshold, K|E(n)|=0<C(n) for every K.",
+          "scope_limit": "Positivity is retained."
+        },
+        {
+          "kind": "remove_premise",
+          "mutation": "Remove the step recurrence from the proposed theorem.",
+          "status": "refuted",
+          "evidence": "The same counterexample already satisfies the recurrence, so also refutes the weaker hypothesis set.",
+          "scope_limit": "No need to invent a second counterexample."
+        },
+        {
+          "kind": "change_quantifier_or_context",
+          "mutation": "Replace ∀K∃N by ∃N∀K.",
+          "status": "supported",
+          "evidence": "For fixed n≥N choose K=C(n). Since C(n)>0, K|E(n)|<C(n) forces |E(n)|=0.",
+          "scope_limit": "This quantifier-swapped condition is much stronger and does imply Q; do not label every mutant false."
+        }
+      ],
+      "ordinary_proof": "For C(n)=n+1,E(n)=−1, C(n+1)=n+2=C(n)−E(n). Taking N=K proves the division-free normalised condition. E is never zero. The negative-relative mass is the harmonic sequence 1/(n+1). In each dyadic block n+1∈[2^j,2^(j+1)−1], its sum is at least 1/2; infinitely many blocks imply divergence. The reverse Q⇒P and the stronger ∃N∀K condition follow by the pointwise calculations in the perturbations.",
+      "independent_semantic_review": null,
+      "gold_eligible": false,
+      "verification_remaining": [
+        "Check the linear countermodel and common-threshold implication, including natural/integer/real coercions. No original-problem counterexample is asserted.",
+        "Independent semantic adjudication and Type A source-current kernel evidence are absent in this return."
+      ]
+    },
+    {
+      "task_id": "R8P5-07",
+      "semantic_family_id": "weighted_support_scope",
+      "adjudication_status": "candidate_author_proposal",
+      "kernel_status": "UNRUN",
+      "relation_label": "endpoint_route",
+      "direction": "P_implies_Q",
+      "supply_status": "conditional_conclusion",
+      "assessment": "understatement",
+      "reasoning": "finitePrimeWeighted_fixedBase_hereditary already closes that mean-estimate dependency via weightedDyadicMeanTarget. W_b(H) remains an actual assumption; once supplied, no additional weighted-mean producer is missing in this theorem. The base is the same on input and conclusion. A converse from hereditary irrationality is not established here.",
+      "unproved_obligations": [
+        "A W_b(H) witness for any newly proposed support H."
+      ],
+      "required_evidence": [
+        "s257_def",
+        "s257_hered",
+        "s257_series",
+        "s257_union"
+      ],
+      "reverse_status": "unestablished",
+      "perturbations": [
+        {
+          "kind": "reverse_direction",
+          "mutation": "Infer W_b(H) from hereditary irrationality of every infinite subset.",
+          "status": "unestablished",
+          "evidence": "The cited theorem supplies no such converse. Full-support irrationality alone does not supply the stronger hereditary premise.",
+          "scope_limit": "Do not mislabel the converse refuted merely using full support."
+        },
+        {
+          "kind": "remove_premise",
+          "mutation": "Remove A.Infinite.",
+          "status": "refuted",
+          "evidence": "Choose H=A=∅. W_b(∅) is supplied by s257_union, but X_b(∅)=0 is rational.",
+          "scope_limit": "All other displayed premises hold."
+        },
+        {
+          "kind": "change_quantifier_or_context",
+          "mutation": "Replace the fixed conclusion base b by every b′≥2 while retaining only W_b(H).",
+          "status": "unestablished",
+          "evidence": "The source declaration fixes the same base. Monotone extension to b′≥b needs its comparison argument; decreasing the base is not supplied by this statement.",
+          "scope_limit": "No global counterexample or base-independence claim is made."
+        }
+      ],
+      "ordinary_proof": null,
+      "independent_semantic_review": null,
+      "gold_eligible": false,
+      "verification_remaining": [
+        "Replay the fixed-base hereditary theorem and empty-support facts. Review which analytic dependency is already closed; a new W witness is not required to validate this conditional theorem item.",
+        "Independent semantic adjudication and Type A source-current kernel evidence are absent in this return."
+      ]
+    },
+    {
+      "task_id": "R8P5-08",
+      "semantic_family_id": "weighted_support_scope",
+      "adjudication_status": "candidate_author_proposal",
+      "kernel_status": "UNRUN",
+      "relation_label": "separation",
+      "direction": "P_and_not_Q",
+      "supply_status": "conclusion_supplied",
+      "assessment": "supported",
+      "reasoning": "Full-support irrationality is an existing theorem for every integer base ≥2. For any fixed finite prime set P, the progression a=Qn+1, Q=∏p∈P p, has primeSetPart(P,a)=1 and a divergent weighted subseries 1/[a(b−1)]. Hence W fails. W is sufficient, not necessary for individual irrationality. The W-failure proof here is ordinary mathematics, not a claim of an existing direct Lean declaration.",
+      "unproved_obligations": [],
+      "required_evidence": [
+        "s257_def",
+        "s257_full",
+        "s257_univ",
+        "s257_paper",
+        "s257_series"
+      ],
+      "reverse_status": "refuted",
+      "perturbations": [
+        {
+          "kind": "reverse_direction",
+          "mutation": "Infer W_b(A) from Irrational X_b(A).",
+          "status": "refuted",
+          "evidence": "The full support itself supplies Irrational X_b(A) and fails W_b(A).",
+          "scope_limit": "This is a genuine counterexample to necessity for individual irrationality, unlike the hereditary converse in item 07."
+        },
+        {
+          "kind": "remove_premise",
+          "mutation": "Replace full support by an arbitrary infinite subset A.",
+          "status": "unestablished",
+          "evidence": "The full-support certificate theorem does not quantify over arbitrary A; a valid W witness is one sufficient route.",
+          "scope_limit": "No rational subset is exhibited and no universal subset-irrationality solution is claimed."
+        },
+        {
+          "kind": "change_quantifier_or_context",
+          "mutation": "Permit the finite prime set to depend on a inside the summand.",
+          "status": "refuted",
+          "evidence": "Choose P_a as the prime divisors of a (and {2} for a=1). Then h(a)=a and the summand becomes 1/(b^a−1), summable on the full positive support.",
+          "scope_limit": "This is not the original ∃fixed P with summability; it invalidates transport of the W-failure result to the altered definition."
+        }
+      ],
+      "ordinary_proof": "Fix b≥2 and finite P of primes, and put Q=∏P. For a_n=Qn+1, every p∈P has a_n≡1 mod p, hence h(a_n)=1. These positive indices are distinct and their weights are 1/[(Qn+1)(b−1)]≥1/[Q(b−1)(n+1)], whose sum diverges by dyadic grouping. Nonnegative summability on full support would imply summability on this progression, a contradiction. Thus every fixed P fails, while irrationality is supplied by the existing full-support theorem. For the varying-P mutant, h(a)=a and 1/(b^a−1)≤2b^(−a) for a≥1, so geometric comparison proves convergence.",
+      "independent_semantic_review": null,
+      "gold_eligible": false,
+      "verification_remaining": [
+        "Replay full-support irrationality and the Set.univ/positive-support equality. Independently review and formalise FullSupportNotWeighted and the varying-P comparison.",
+        "Independent semantic adjudication and Type A source-current kernel evidence are absent in this return."
+      ]
+    },
+    {
+      "task_id": "R8P5-09",
+      "semantic_family_id": "weighted_support_scope",
+      "adjudication_status": "candidate_author_proposal",
+      "kernel_status": "UNRUN",
+      "relation_label": "refuted_generalisation",
+      "direction": "claimed_P_implies_Q_refuted",
+      "supply_status": "counterexample_ordinary_proof",
+      "assessment": "false_in_stated_context",
+      "reasoning": "Let E(n)={n+1}. Each singleton is weighted with P={2}, since its weight function has finite support. Their union is all positive integers, which fails W for every fixed finite P. The failure is summing countably many finite masses without any uniform total bound, not simply failure to find a common prime set.",
+      "unproved_obligations": [],
+      "required_evidence": [
+        "s257_def",
+        "s257_union",
+        "s257_paper",
+        "s257_series"
+      ],
+      "reverse_status": "supported",
+      "perturbations": [
+        {
+          "kind": "reverse_direction",
+          "mutation": "Infer W_b(E(n)) for every n from W_b of the union.",
+          "status": "supported",
+          "evidence": "Each piece is a subset; finitePrimeWeighted_mono applies individually even to a countable union.",
+          "scope_limit": "The inclusion direction is valid and does not require a finite index set."
+        },
+        {
+          "kind": "remove_premise",
+          "mutation": "Remove the requirement that each piece is W-weighted in the finite-union theorem.",
+          "status": "refuted",
+          "evidence": "Take I={0} and E(0)=ℕ_{>0}; the union is not W.",
+          "scope_limit": "The ordinary full-support W-failure proof is used."
+        },
+        {
+          "kind": "change_quantifier_or_context",
+          "mutation": "Replace I : Finset ℕ by all of ℕ, keeping a common prime set but no summable total-mass bound.",
+          "status": "refuted",
+          "evidence": "The singleton family already has common P={2} and defeats this mutant.",
+          "scope_limit": "A condition bounding the sum of the piece masses would be different and is not rejected."
+        }
+      ],
+      "ordinary_proof": "For each n choose E(n)={n+1}, P={2}. A real function supported at a singleton is summable, so W_b(E(n)) holds. The union is ℕ_{>0}; the preceding progression argument proves it is not W_b. This is an explicit countable-closure failure with a shared prime set for all component supports. Restriction in the reverse direction follows from the source monotonicity theorem.",
+      "independent_semantic_review": null,
+      "gold_eligible": false,
+      "verification_remaining": [
+        "Replay finite-union and monotonicity results; formalise the singleton family and CountableUnionFailure using FullSupportNotWeighted.",
+        "Independent semantic adjudication and Type A source-current kernel evidence are absent in this return."
+      ]
+    },
+    {
+      "task_id": "R8P5-10",
+      "semantic_family_id": "actual_window_escape",
+      "adjudication_status": "candidate_author_proposal",
+      "kernel_status": "UNRUN",
+      "relation_label": "equivalent",
+      "direction": "P_iff_Q",
+      "supply_status": "relation_supplied_endpoints_open",
+      "assessment": "understatement",
+      "reasoning": "actualCofinalLocalWindowEscape_iff_irrational_value is the unconditional current iff at the actual repeated-value target. No extra cap-G premise belongs to it. Neither endpoint is supplied. An equivalence settles logical relation, not whether a representation is more useful computationally.",
+      "unproved_obligations": [
+        "A proof of actual cofinal escape or repeated-value irrationality."
+      ],
+      "required_evidence": [
+        "s269_def",
+        "s269_actual",
+        "s269_iff"
+      ],
+      "reverse_status": "supported",
+      "perturbations": [
+        {
+          "kind": "reverse_direction",
+          "mutation": "Exchange P and Q.",
+          "status": "supported",
+          "evidence": "s269_iff supplies both implications without a cap-G hypothesis.",
+          "scope_limit": "No endpoint follows solely from either implication."
+        },
+        {
+          "kind": "remove_premise",
+          "mutation": "Omit an alleged extra cap-G hypothesis.",
+          "status": "supported",
+          "evidence": "That premise is absent from the current actual iff.",
+          "scope_limit": "This is retrieval of a stronger existing theorem, not a new strengthening."
+        },
+        {
+          "kind": "change_quantifier_or_context",
+          "mutation": "Replace ∀B>0 coprime to 30 by ∃B>0 coprime to 30 in the escape predicate.",
+          "status": "unestablished",
+          "evidence": "The rationality bridge must handle the reduced denominator of an arbitrary rational presentation. A witness for one unrelated B does not supply that quantifier.",
+          "scope_limit": "No assertion that the existential actual predicate is false."
+        }
+      ],
+      "ordinary_proof": null,
+      "independent_semantic_review": null,
+      "gold_eligible": false,
+      "verification_remaining": [
+        "Replay the exact current actual-target iff and review the distinction from the older cap-G theorem. Neither endpoint needs solving to adjudicate the iff.",
+        "Independent semantic adjudication and Type A source-current kernel evidence are absent in this return."
+      ]
+    },
+    {
+      "task_id": "R8P5-11",
+      "semantic_family_id": "actual_window_escape",
+      "adjudication_status": "candidate_author_proposal",
+      "kernel_status": "UNRUN",
+      "relation_label": "endpoint_route",
+      "direction": "P_implies_Q",
+      "supply_status": "relation_supplied_reverse_unestablished",
+      "assessment": "overstatement",
+      "reasoning": "The theorem type supplies only irrationality⇒escape for an upper-bounded cap. It has no reverse. The existing escape_zero_cap supplies zero-cap escape without irrationality, so any valid zero-cap converse would itself solve the still-open target. This does not prove that converse false: irrationality is unresolved. A valid reverse for a nonzero cap needs the carry-bound bridge, as the current long-cap composition illustrates.",
+      "unproved_obligations": [
+        "A valid reverse bridge for the proposed cap; the zero-cap converse would solve the target."
+      ],
+      "required_evidence": [
+        "s269_quadratic",
+        "s269_zero",
+        "s269_longcurrent",
+        "s269_iff"
+      ],
+      "reverse_status": "unestablished",
+      "perturbations": [
+        {
+          "kind": "reverse_direction",
+          "mutation": "Infer P from Q using only quadratic upper domination.",
+          "status": "unestablished",
+          "evidence": "For sb=0 the conclusion of that converse is the actual open target, since escape_zero_cap already supplies Q.",
+          "scope_limit": "A known Q and unknown P do not constitute Q∧¬P; do not mark this as a logical refutation."
+        },
+        {
+          "kind": "remove_premise",
+          "mutation": "Remove the quadratic upper-bound hypothesis from P⇒Q.",
+          "status": "unestablished",
+          "evidence": "The proof uses an exponential-beats-bound argument. Without it the stated theorem cannot be applied.",
+          "scope_limit": "No universal counterexample to every other possible escape criterion is claimed."
+        },
+        {
+          "kind": "change_quantifier_or_context",
+          "mutation": "Strengthen the cap context to the actual longPaperCap with its current validated bridge.",
+          "status": "supported",
+          "evidence": "long_cap_window_equivalenceR11 supplies an iff for this particular cap and paperSeries235.",
+          "scope_limit": "Its specific lower-domination and upper-growth arguments do not transfer to arbitrary sb."
+        }
+      ],
+      "ordinary_proof": null,
+      "independent_semantic_review": null,
+      "gold_eligible": false,
+      "verification_remaining": [
+        "Replay the one-way quadratic theorem, zero-cap escape and specific long-cap equivalence. Independently review unestablished reverse versus refutation; failure to prove a converse must not be recorded as its negation.",
+        "Independent semantic adjudication and Type A source-current kernel evidence are absent in this return."
+      ]
+    },
+    {
+      "task_id": "R8P5-12",
+      "semantic_family_id": "actual_window_escape",
+      "adjudication_status": "candidate_author_proposal",
+      "kernel_status": "UNRUN",
+      "relation_label": "finite_obstruction",
+      "direction": "P_implies_Q",
+      "supply_status": "conclusion_supplied",
+      "assessment": "supported",
+      "reasoning": "escaping_start_lt_thirty_pow bounds every successful start by 30^H. Hence bounded-length escaping starts are finite; the cofinal producer cannot have one global length bound. This is not an irrationality proof. The later LongWindowCapR11 source already supplies the actual long-cap equivalence, so the old header’s missing-bridge status must not be repeated.",
+      "unproved_obligations": [
+        "An actual escape producer with window lengths allowed to grow."
+      ],
+      "required_evidence": [
+        "s269_longdef",
+        "s269_bound",
+        "s269_majorant",
+        "s269_longcurrent"
+      ],
+      "reverse_status": "refuted",
+      "perturbations": [
+        {
+          "kind": "reverse_direction",
+          "mutation": "Infer escape from lo<30^H.",
+          "status": "refuted",
+          "evidence": "Take B=31,lo=0,len=H=1. The exact long cap at endpoint 1 exceeds 30, whereas the least positive residue is ≤|W|≤30.",
+          "scope_limit": "This uses the actual cap definition; the supplied computation records its exact value."
+        },
+        {
+          "kind": "remove_premise",
+          "mutation": "Remove len≤H from the finite obstruction.",
+          "status": "unestablished",
+          "evidence": "The proof specifically uses |W|≤30^len≤30^H.",
+          "scope_limit": "No bound by 30^H remains established for unrestricted lengths."
+        },
+        {
+          "kind": "change_quantifier_or_context",
+          "mutation": "Replace ∀starting threshold ∃lo,len by ∃H ∀starting threshold ∃lo,len≤H.",
+          "status": "refuted",
+          "evidence": "Choose the starting threshold 30^H, contradicting lo<30^H for any alleged window.",
+          "scope_limit": "The obstruction rules out uniform bounded lengths; it does not rule out the original unbounded-length escape."
+        }
+      ],
+      "ordinary_proof": "The existing theorem gives lo<30^H for every escaping window of length≤H. Cofinality with a common H would permit lo≥30^H, contradiction. For the reverse, paperJumpIndex(1)=1 and carryMajorantQ(1)=(1+8+18)/9=3, so longPaperCap(31,1)=93>30. Every length-one modulus is positive and at most 30, and its least positive residue is at most that modulus. Thus B=31,lo=0,len=H=1 has Q but not P. This is a finite obstruction and not a proof of either actual irrationality endpoint.",
+      "independent_semantic_review": null,
+      "gold_eligible": false,
+      "verification_remaining": [
+        "Replay the bounded-start theorem and actual long-cap definitions. Check the B=31 finite separator and the bounded-length/cofinality contradiction.",
+        "Independent semantic adjudication and Type A source-current kernel evidence are absent in this return."
+      ]
+    }
+  ],
+  "authority_boundary": "No label is independently adjudicated. No current Lean replay has been performed. Ordinary proofs are exposed for independent checking."
+}

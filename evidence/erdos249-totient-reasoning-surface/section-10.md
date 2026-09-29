@@ -310,3 +310,21 @@ For each Lean declaration: the Challenge (the target, stated from Mathlib alone)
 - `canonicalTotientKernelFamily_independent_card_and_span`: [Challenge](https://github.com/wcook04/plectis-erdos-lean/blob/cc7e541cf2081c6fef5a5e377d52e365e33b01eb/PalomarCorpus/E249_26/Challenge.lean#L205) (E249_26, line 205), [Solution](https://github.com/wcook04/plectis-erdos-lean/blob/cc7e541cf2081c6fef5a5e377d52e365e33b01eb/Solutions/PalomarCorpus/E249_26/PaperStatementsBB.lean#L27) (PaperStatementsBB.lean, line 27), [replay report](../../evidence/comparator/replay-35935225572/receipt-E249_26.json) (E249_26)
 
 Each Challenge states the same proposition as the Lean declaration it targets, with every definition it uses restated from Mathlib alone.
+
+<a id="long249-thm-signed-interpolation"></a>
+
+## Theorem 10.8, page 112
+
+**No Lean proof of the whole statement.** In Lean, Full ordinary proof reviewed by AI agents. Finite auxiliary checks do not formalise this infinite or arithmetic statement; independent human review is not recorded..
+
+<a id="long249-cor-signed-observations"></a>
+
+## Corollary 10.9, page 115
+
+**No Lean proof of the whole statement.** In Lean, Full ordinary proof reviewed by AI agents. Finite auxiliary checks do not formalise this infinite or arithmetic statement; independent human review is not recorded..
+
+<a id="long249-prop-signed-first-harmonic"></a>
+
+## Proposition 10.10, page 116
+
+**No Lean proof of the whole statement.** In Lean, Full ordinary proof reviewed by AI agents. Finite auxiliary checks do not formalise this infinite or arithmetic statement; independent human review is not recorded..

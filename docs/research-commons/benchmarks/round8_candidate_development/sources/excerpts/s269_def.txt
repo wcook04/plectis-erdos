@@ -1,0 +1,16 @@
+
+/-- The exact remaining producer after local-window compression.  It is kept
+as a named proposition, not asserted as a theorem. -/
+def CofinalLocalWindowEscape
+    (b m : ℕ → ℕ) (shortBound : ℕ → ℕ → ℕ) : Prop :=
+  ∀ B : ℕ, 0 < B → Nat.Coprime B 30 →
+    ∀ lo₀ : ℕ, ∃ lo len : ℕ,
+      lo₀ ≤ lo ∧ 0 < len ∧
+      0 < Int.natAbs (windowBase (fun n => b n) lo len) ∧
+      shortBound B (lo + len) <
+        leastPositiveResidue
+          (Int.natAbs (windowBase (fun n => b n) lo len))
+          (-((B : ℤ) *
+            windowForcing (fun n => b n) (fun n => m n) lo len))
+
+/-- The denominator-dependent local-window producer is exactly strong enough

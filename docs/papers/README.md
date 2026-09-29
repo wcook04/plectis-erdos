@@ -302,7 +302,7 @@ Start here (selected for this guide): [Irrationality at the cubic rate](full-tex
 
 **Bases and Integral Relations for the k-Kernel of Euler’s Totient**
 
-[full text](full-text/erdos-249-binary-totient-series.md) · [PDF](../../paper/249/erdos-249-binary-totient-series.pdf) · [LaTeX source](../../paper/249/erdos-249-binary-totient-series.tex) · 18 sections · `erdos-249-binary-totient-series` · native to this repository
+[full text](full-text/erdos-249-binary-totient-series.md) · [PDF](../../paper/249/erdos-249-binary-totient-series.pdf) · [LaTeX source](../../paper/249/erdos-249-binary-totient-series.tex) · 19 sections · `erdos-249-binary-totient-series` · native to this repository
 
 Archived edition: [aiXiv:2609.03281v1](https://aixiv.online/abs/2609.03281v1) ([PDF](https://aixiv.online/pdf/2609.03281v1), [source archive](https://aixiv.online/src/2609.03281v1)); published 2026-09-27 from [source `551bae6dc6e7`](https://github.com/wcook04/plectis-erdos/blob/551bae6dc6e732cf85172d66323c8d2bc77ba962/paper/249/erdos-249-binary-totient-series.tex).
 
@@ -315,7 +315,7 @@ Start here (selected for this guide): [A basis and all its relations](full-text/
 
 **The Binary Totient Series**
 
-[full text](full-text/erdos249-totient-reasoning-surface.md) · [PDF](../../paper/249/erdos249-totient-reasoning-surface.pdf) · [LaTeX source](../../paper/249/erdos249-totient-reasoning-surface.tex) · 163 sections · `erdos249-totient-reasoning-surface` · native to this repository
+[full text](full-text/erdos249-totient-reasoning-surface.md) · [PDF](../../paper/249/erdos249-totient-reasoning-surface.pdf) · [LaTeX source](../../paper/249/erdos249-totient-reasoning-surface.tex) · 164 sections · `erdos249-totient-reasoning-surface` · native to this repository
 
 Start here (selected for this guide): [Rational comparison sequences](full-text/erdos249-totient-reasoning-surface.md#sec:wall), [Conditions that would imply irrationality](full-text/erdos249-totient-reasoning-surface.md#sec:survivors), [Series identities and finite exclusions](full-text/erdos249-totient-reasoning-surface.md#sec:series), [Exact dyadic rank and the limits of a rank argument](full-text/erdos249-totient-reasoning-surface.md#sec:mahler-defect).
 
@@ -336,7 +336,7 @@ Start here (selected for this guide): [Introduction](full-text/erdos-251-prime-g
 
 **Prime-Gap Dyadic Series: Perturbations, Exact Criteria and Certificates**
 
-[full text](full-text/erdos251-prime-gap-reasoning-surface.md) · [PDF](../../paper/251/erdos251-prime-gap-reasoning-surface.pdf) · [LaTeX source](../../paper/251/erdos251-prime-gap-reasoning-surface.tex) · 49 sections · `erdos251-prime-gap-reasoning-surface` · native to this repository
+[full text](full-text/erdos251-prime-gap-reasoning-surface.md) · [PDF](../../paper/251/erdos251-prime-gap-reasoning-surface.pdf) · [LaTeX source](../../paper/251/erdos251-prime-gap-reasoning-surface.tex) · 50 sections · `erdos251-prime-gap-reasoning-surface` · native to this repository
 
 Start here (selected for this guide): [The tail recurrence and the exact criteria](full-text/erdos251-prime-gap-reasoning-surface.md#long251:sec:tail), [What cannot supply the missing input](full-text/erdos251-prime-gap-reasoning-surface.md#long251:sec:obstructions), [Remaining prime-gap estimates](full-text/erdos251-prime-gap-reasoning-surface.md#long251:sec:open), [Conclusions](full-text/erdos251-prime-gap-reasoning-surface.md#sec:erdos-251-complete-family-map).
 
@@ -344,7 +344,7 @@ Start here (selected for this guide): [The tail recurrence and the exact criteri
 
 **Weighted Support Criteria for Reciprocal Mersenne Subseries**
 
-[full text](full-text/erdos-257-mersenne-support-subseries.md) · [PDF](../../paper/257/erdos-257-mersenne-support-subseries.pdf) · [LaTeX source](../../paper/257/erdos-257-mersenne-support-subseries.tex) · 26 sections · `erdos-257-mersenne-support-subseries` · native to this repository
+[full text](full-text/erdos-257-mersenne-support-subseries.md) · [PDF](../../paper/257/erdos-257-mersenne-support-subseries.pdf) · [LaTeX source](../../paper/257/erdos-257-mersenne-support-subseries.tex) · 27 sections · `erdos-257-mersenne-support-subseries` · native to this repository
 
 Archived edition: [aiXiv:2609.02921v1](https://aixiv.online/abs/2609.02921v1) ([PDF](https://aixiv.online/pdf/2609.02921v1), [source archive](https://aixiv.online/src/2609.02921v1)); published 2026-09-25 from [source `2945372c6d30`](https://github.com/wcook04/plectis-erdos/blob/2945372c6d306dc8c5bf62c95dfd8bc2939c650d/paper/257/erdos-257-mersenne-support-subseries.tex).
 
@@ -365,7 +365,7 @@ Start here (selected for this guide): [Support criteria and their proofs](full-t
 
 **The Three-Prime Running LCM: Kernel Rank and Tail Arithmetic**
 
-[full text](full-text/erdos269-running-lcm-reasoning-surface.md) · [PDF](../../paper/269/erdos269-running-lcm-reasoning-surface.pdf) · [LaTeX source](../../paper/269/erdos269-running-lcm-reasoning-surface.tex) · 58 sections · `erdos269-running-lcm-reasoning-surface` · native to this repository
+[full text](full-text/erdos269-running-lcm-reasoning-surface.md) · [PDF](../../paper/269/erdos269-running-lcm-reasoning-surface.pdf) · [LaTeX source](../../paper/269/erdos269-running-lcm-reasoning-surface.tex) · 60 sections · `erdos269-running-lcm-reasoning-surface` · native to this repository
 
 Start here (selected for this guide): [The problem, and what is settled](full-text/erdos269-running-lcm-reasoning-surface.md#long269:sec:problem), [Why the third prime prevents finite separation](full-text/erdos269-running-lcm-reasoning-surface.md#long269:sec:rank), [The remaining arithmetic questions](full-text/erdos269-running-lcm-reasoning-surface.md#long269:sec:open), [What the results use and what they do not prove](full-text/erdos269-running-lcm-reasoning-surface.md#sec:erdos-269-complete-family-map).
 
@@ -407,7 +407,7 @@ Start here (selected for this guide): [A small least critical value](full-text/e
 
 **Zudilin’s Forms at Rational Bases and the Exact Normalised Hankel Order**
 
-[full text](full-text/erdos-1049-rational-base-lambert.md) · [PDF](../../paper/1049/erdos-1049-rational-base-lambert.pdf) · [LaTeX source](../../paper/1049/erdos-1049-rational-base-lambert.tex) · 23 sections · `erdos-1049-rational-base-lambert` · native to this repository
+[full text](full-text/erdos-1049-rational-base-lambert.md) · [PDF](../../paper/1049/erdos-1049-rational-base-lambert.pdf) · [LaTeX source](../../paper/1049/erdos-1049-rational-base-lambert.tex) · 24 sections · `erdos-1049-rational-base-lambert` · native to this repository
 
 Archived edition: [aiXiv:2609.03285v1](https://aixiv.online/abs/2609.03285v1) ([PDF](https://aixiv.online/pdf/2609.03285v1), [source archive](https://aixiv.online/src/2609.03285v1)); published 2026-09-27 from [source `551bae6dc6e7`](https://github.com/wcook04/plectis-erdos/blob/551bae6dc6e732cf85172d66323c8d2bc77ba962/paper/1049/erdos-1049-rational-base-lambert.tex).
 
@@ -420,7 +420,7 @@ Start here (selected for this guide): [Introduction](full-text/erdos-1049-ration
 
 **Zudilin’s Forms at Rational Bases: Proofs and Research Record**
 
-[full text](full-text/erdos1049-rational-base-lambert-reasoning-surface.md) · [PDF](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.pdf) · [LaTeX source](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex) · 62 sections · `erdos1049-rational-base-lambert-reasoning-surface` · native to this repository
+[full text](full-text/erdos1049-rational-base-lambert-reasoning-surface.md) · [PDF](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.pdf) · [LaTeX source](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex) · 63 sections · `erdos1049-rational-base-lambert-reasoning-surface` · native to this repository
 
 Start here (selected for this guide): [The region b^{\mu}<a and the base 31/4](full-text/erdos1049-rational-base-lambert-reasoning-surface.md#long1049:sec:region), [The sharp q-order of the normalised Hankel determinant](full-text/erdos1049-rational-base-lambert-reasoning-surface.md#long1049:sec:hankel-order), [A finite spectral consequence.](full-text/erdos1049-rational-base-lambert-reasoning-surface.md#a-finite-spectral-consequence.), [Complements and further questions](full-text/erdos1049-rational-base-lambert-reasoning-surface.md#long1049:sec:open).
 
@@ -468,7 +468,7 @@ The author recommends starting with [The two exact reductions](full-text/erdos24
 
 **Reading Eight Erdős Problems Together** · **included here; not yet published on the website**
 
-[full text](full-text/optimal-sparse-perturbations.md) · [PDF](../../paper/synthesis/optimal-sparse-perturbations.pdf) · [LaTeX source](../../paper/synthesis/optimal-sparse-perturbations.tex) · 37 sections · `optimal-sparse-perturbations` · native to this repository
+[full text](full-text/optimal-sparse-perturbations.md) · [PDF](../../paper/synthesis/optimal-sparse-perturbations.pdf) · [LaTeX source](../../paper/synthesis/optimal-sparse-perturbations.tex) · 38 sections · `optimal-sparse-perturbations` · native to this repository
 
 Start here (selected for this guide): [From individual problems to reusable questions](full-text/optimal-sparse-perturbations.md#sec:map), [An exact capacity criterion](full-text/optimal-sparse-perturbations.md#capacity:sec:criterion), [Lambert subsums across bases](full-text/optimal-sparse-perturbations.md#sec:results), [Further questions](full-text/optimal-sparse-perturbations.md#sec:questions).
 

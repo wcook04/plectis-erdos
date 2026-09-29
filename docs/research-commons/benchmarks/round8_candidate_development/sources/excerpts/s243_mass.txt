@@ -1,0 +1,14 @@
+noncomputable def negativeRelativeMass
+    (C : ℕ → ℕ) (E : ℕ → ℤ) (n : ℕ) : ℝ :=
+  (Int.natAbs (min (E n) 0) : ℝ) / C n
+
+/-- The exact update `Cₙ₊₁ = Cₙ - Eₙ` is bounded above by multiplication by
+`1 + negativeRelativeMass`. -/
+theorem tail_growth_le_one_add_negativeRelativeMass
+    (C : ℕ → ℕ) (E : ℕ → ℤ)
+    (hCpos : ∀ n, 0 < C n)
+    (hstep :
+      ∀ n, (C (n + 1) : ℤ) = (C n : ℤ) - E n) :
+    ∀ n,
+      (C (n + 1) : ℝ) ≤
+        C n * (1 + negativeRelativeMass C E n) := by

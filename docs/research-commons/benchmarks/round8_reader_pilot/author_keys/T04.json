@@ -1,0 +1,91 @@
+{
+  "schema": "plectis-round8-reader-candidate-key/1",
+  "task_id": "T04",
+  "family_id": "prime_gap_affine_transfer",
+  "status": "candidate_source_reading_not_independently_adjudicated",
+  "source_commit": "0268dd8bfb2a556a0c93078337d42c6d07138fa2",
+  "binding_replay_status": "UNRUN at this commit; older 0d0129c6 receipt remains historical",
+  "criteria": [
+    {
+      "id": "normalisation",
+      "required": true,
+      "description": "Pi=2+G, D=2Pi=4+2G. Do not confuse the two zero-based denominators."
+    },
+    {
+      "id": "summability",
+      "required": true,
+      "description": "Absolute summability is established using a polynomial prime bound; finite summation by parts includes the endpoint p_n/2^(n+1), which tends to zero."
+    },
+    {
+      "id": "equivalence",
+      "required": true,
+      "description": "Adding a rational and multiplying by a nonzero rational preserve irrationality both ways, so all three share irrationality status."
+    },
+    {
+      "id": "open",
+      "required": true,
+      "description": "The equivalence supplies none of those irrationality statements; unbounded/nonperiodic integer coefficients alone do not imply an irrational weighted sum."
+    },
+    {
+      "id": "evidence",
+      "required": true,
+      "description": "Identifies this as recorded transfer and cites correct paper/Lean loci, without a new discovery or fresh replay claim."
+    }
+  ],
+  "severe_error_examples": [
+    "Uses Pi=4+2G or D=2+G",
+    "Claims the equivalence proves actual prime irrationality",
+    "Drops convergence without accounting for the endpoint",
+    "Treats integer gap nonperiodicity as a binary-digit irrationality test"
+  ],
+  "reference_answer": "Finite summation by parts gives sum_{i=0}^n p_i/2^(i+1)=2+sum_{i=0}^{n-1}g_i/2^(i+1)-p_n/2^(n+1). The source supplies a polynomial bound for p_n, so the endpoint vanishes and both series converge absolutely. Hence Pi=2+G; D=2Pi=4+2G. A rational shift and a nonzero rational scaling preserve rationality and irrationality in both directions. The equivalence supplies no irrationality theorem for the actual primes. Unbounded/nonperiodic integer coefficients may have rational dyadic sums; unlike binary digits they permit carries. This is an existing source identity, not a new transfer result.",
+  "source_handles": [
+    {
+      "path": "corpus/paper/251/erdos-251-prime-gap-dyadic-series.tex",
+      "start_line": 249,
+      "end_line": 262,
+      "file_sha256": "4d63f86b6113dfad6f969385faaa97f2b48b95742379a1c7f6148d283d06add0",
+      "excerpt_path": "grader/evidence/T04-01.txt",
+      "excerpt_sha256": "be5a5ff9bb4791b13265c06aa1babe3dc1d62b7f52854343690d53c5de93a240"
+    },
+    {
+      "path": "corpus/paper/251/erdos-251-prime-gap-dyadic-series.tex",
+      "start_line": 362,
+      "end_line": 395,
+      "file_sha256": "4d63f86b6113dfad6f969385faaa97f2b48b95742379a1c7f6148d283d06add0",
+      "excerpt_path": "grader/evidence/T04-02.txt",
+      "excerpt_sha256": "2c0dd5296c25b76834cabee0b6092ee743696a43ff0ec759413054df9a9b7c35"
+    },
+    {
+      "path": "corpus/paper/251/erdos-251-prime-gap-dyadic-series.tex",
+      "start_line": 583,
+      "end_line": 632,
+      "file_sha256": "4d63f86b6113dfad6f969385faaa97f2b48b95742379a1c7f6148d283d06add0",
+      "excerpt_path": "grader/evidence/T04-03.txt",
+      "excerpt_sha256": "cdfb2ad5db98e7338a186ab3c0e8c68a5e9728782a063fce730641c266f0d053"
+    },
+    {
+      "path": "corpus/lean/ErdosProblems/Erdos251/PrimeGapDyadicTail.lean",
+      "start_line": 180,
+      "end_line": 209,
+      "file_sha256": "d284ca394ba94d6e43b2819757ce27eb86562949b525f8bbf81546d613abfcd1",
+      "excerpt_path": "grader/evidence/T04-04.txt",
+      "excerpt_sha256": "1771cf94a8a861ae64891c1e6a450afc1eef1125d0c7f458e4eba5e1f727d8f8"
+    },
+    {
+      "path": "corpus/lean/ErdosProblems/Erdos251/PrimeGapDyadicTail.lean",
+      "start_line": 375,
+      "end_line": 471,
+      "file_sha256": "d284ca394ba94d6e43b2819757ce27eb86562949b525f8bbf81546d613abfcd1",
+      "excerpt_path": "grader/evidence/T04-05.txt",
+      "excerpt_sha256": "89f74e4fa4512c3ecc684506ccd6cc2abfd2930d00026afc44ac0deed9d87104"
+    }
+  ],
+  "declarations": [
+    "ErdosProblems.Erdos251.tsum_primeDyadicTerm_eq_two_add_primeGap_unconditional",
+    "ErdosProblems.Erdos251.tsum_primeDisplayedDyadicTerm_eq_four_add_two_primeGap",
+    "ErdosProblems.Erdos251.irrational_tsum_primeDyadicTerm_iff_primeGap"
+  ],
+  "scoring_rule": "correct iff every required criterion is satisfied and no material severe error; source-faithful wording accepted; adjudicate ambiguity before a real run",
+  "abstention_rule": "Acknowledging an unproved converse, input or review is required where appropriate. Blanket abstention on the answerable source question is incorrect, not automatically severe."
+}

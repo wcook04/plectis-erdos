@@ -402,6 +402,14 @@ This theorem treats averages after the quotients are formed. Signed coefficients
 ```
 Convergence alone does not give this estimate. The elementary dyadic prefix bounds give only $`q_j|S-p_j/q_j|\le N+2`$ at depth $`N`$, not a quantity tending to zero. A prescribed approximation family therefore needs a sharper error or reduced-denominator bound. When approximants may be chosen freely, continued-fraction convergents show that the criterion is equivalent to irrationality, just as <a href="#eq:canonical-gap" data-reference-type="eqref" data-reference="eq:canonical-gap">[eq:canonical-gap]</a> is. The theorem above excludes the displayed rank-one quotients and their positive averages, not other approximation families.
 
+<a id="sec:signed-interpolation-transfer"></a>
+
+## Preserving Dirichlet singularities under signed changes
+
+The companion [*The Binary Totient Series*](../../../paper/249/erdos249-totient-reasoning-surface.pdf), subsection “Signed interpolation with entire Dirichlet defects”, proves the following stronger comparison theorem by an ordinary argument. Fix an integer $`\beta\ge2`$, a prefix and finitely many prescribed zero moments. For every positive allowance $`f(n)\to\infty`$, even a nonmonotone one, an interval around $`\sum\varphi(n)\beta^{-n}`$ is filled by values of integer sequences $`b=\varphi+e`$ with $`0\le b(n)\le n`$ and $`|e(n)|\le f(n)`$. The correction is supported on even indices of upper Banach density zero; it leaves the prefix and odd coefficients unchanged. Each fixed coefficient and cumulative congruence is eventually preserved. In each fixed arithmetic progression the Dirichlet defect is entire, and every root-of-unity radial germ is smooth, with the prescribed finite jets zero. Thus both rational and irrational values coexist with those observations. The proof also quantifies the block lengths preserved for the chosen allowance.
+
+The corrections have both signs. Entire defects preserve singularities, not the regular parts or zeros of the Dirichlet functions; smooth finite jets do not preserve the entire radial germ. Rational comparison values force first harmonics larger than the $`603X/1000`$ cancellation threshold on the actual totient good-index set at all sufficiently large admissible scales. These comparisons identify information insufficient to prove the needed bound. They do not supply that bound for the unchanged totient, nor a Lean proof of the interpolation theorem.
+
 <a id="sec:open"></a>
 
 # A remaining exponential-sum estimate

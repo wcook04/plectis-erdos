@@ -338,7 +338,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="res-one-over-twenty-one-frontier"></a>
 
-## Theorem 9.1 (integer-quotient tests for $`1/21`$), page 17
+## Theorem 9.1 (integer-quotient tests for $`1/21`$), page 18
 
 > *The following statements hold.*
 > 

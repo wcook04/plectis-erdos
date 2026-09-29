@@ -584,7 +584,7 @@ Like the block criterion, this condition concerns actual totient values at arbit
 
 The decomposition is an exact identity, proved in Lean ([`Erdos249257.windowFirstExp_sum_eq_pivot_decomposition`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/FirstHarmonicPivot.lean#L514)), as is the implication from the four bounds to the real-part bound ([`Erdos249257.first_harmonic_gap_of_pivotBudgetAt`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/FirstHarmonicPivot.lean#L549)). The mean being subtracted is the mean of $`z_N`$, not of the residual weight $`w_N`$. On each cofactor group, $`\sum_N(z_N-\bar z_m)=0`$, but $`\sum_Nw_N(z_N-\bar z_m)`$ need not vanish because $`w_N`$ varies with $`N`$. Thus centring the phase does not estimate the weighted correlation. Only its real part is required: $`14X/25`$ suffices in place of the earlier proposed norm bound $`X/2`$. For $`X\ge4`$ and $`s=L-h`$, the assigned indices *with cofactor $`m_N=1`$* are exactly those for which $`N+h+1`$ is prime. This describes one cofactor group, not all assigned indices. The source proves this membership equality ([`Erdos249257.mem_pivotFiber_one_overlap_iff`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/FirstHarmonicPivot.lean#L423)), using $`\varphi(mp)=\varphi(m)(p-1)`$ and $`p>m`$. This special choice has $`s=L-h`$ varying with $`L`$; it illustrates the arithmetic of the groups but does not establish the condition with $`s`$ fixed before $`X_0`$.
 
-The four inequalities are not proved with their required common parameters. Propositions <a href="#prop:dickman" data-reference-type="ref" data-reference="prop:dickman">278</a> and <a href="#prop:badcof" data-reference-type="ref" data-reference="prop:badcof">279</a> below do establish the unassigned and excluded-cofactor bounds at minimal admissible depth, with one sufficiently small fixed $`\eta`$. The mean and mean-subtracted estimates remain to be established at that same depth and for that same $`\eta`$. Only the real part of the mean-subtracted contribution is required, and Theorem <a href="#thm:goodbasegap" data-reference-type="ref" data-reference="thm:goodbasegap">31</a> below replaces the two estimates by a single bound on the indices in $`\mathcal G`$.
+The four inequalities are not proved with their required common parameters. Propositions <a href="#prop:dickman" data-reference-type="ref" data-reference="prop:dickman">281</a> and <a href="#prop:badcof" data-reference-type="ref" data-reference="prop:badcof">282</a> below do establish the unassigned and excluded-cofactor bounds at minimal admissible depth, with one sufficiently small fixed $`\eta`$. The mean and mean-subtracted estimates remain to be established at that same depth and for that same $`\eta`$. Only the real part of the mean-subtracted contribution is required, and Theorem <a href="#thm:goodbasegap" data-reference-type="ref" data-reference="thm:goodbasegap">31</a> below replaces the two estimates by a single bound on the indices in $`\mathcal G`$.
 
 A nonzero determinant alone does not prove the needed correlation estimate. The comparison in the linked source ([`Erdos249257.locked_reconstruction_preserves_nonzero_minor`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/ResidualGaugeObstruction.lean#L94)) preserves such a determinant while fixing an entire row of weighted phases to $`1`$. A successful application must distinguish that comparison, for example by additional arithmetic information, rather than only by column rescaling. The exact four-term identity supplies no prime-distribution estimate.
 
@@ -592,7 +592,7 @@ A nonzero determinant alone does not prove the needed correlation estimate. The 
 
 ## One bound on the good indices
 
-For fixed $`h`$ and $`s`$, write $`L(X)`$ for the least $`L`$ with $`h\le L-s`$ and $`16(2X+h+L+2)\le2^L`$; this is the minimal admissible depth of Proposition <a href="#prop:dickman" data-reference-type="ref" data-reference="prop:dickman">278</a>. At $`s=26`$ and $`\eta=1/1000`$ the two proved counting bounds leave more than $`67X/100`$ of the indices in $`\mathcal G`$, and a saving on those indices alone gives irrationality.
+For fixed $`h`$ and $`s`$, write $`L(X)`$ for the least $`L`$ with $`h\le L-s`$ and $`16(2X+h+L+2)\le2^L`$; this is the minimal admissible depth of Proposition <a href="#prop:dickman" data-reference-type="ref" data-reference="prop:dickman">281</a>. At $`s=26`$ and $`\eta=1/1000`$ the two proved counting bounds leave more than $`67X/100`$ of the indices in $`\mathcal G`$, and a saving on those indices alone gives irrationality.
 
 <div id="thm:goodbasegap" class="thm">
 <p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/3cbbd4356dcd713314c0b6ba83ec4db353faa5c2/evidence/erdos249-totient-reasoning-surface/section-3.md#thm-goodbasegap">Lean</a></p>
@@ -618,7 +618,7 @@ For fixed $`h`$ and $`s`$, write $`L(X)`$ for the least $`L`$ with $`h\le L-s`$ 
 
 *Proof.* (a) At a depth satisfying the room inequality, a nonempty set of indices below $`2X`$ whose average of $`\operatorname{Re}E(h,N,L)`$ is at most $`9/10`$ contains an index $`N`$ with $`\mathcal C(h,N,L)`$ ([`Erdos249257.exists_certifiedKill_of_first_harmonic_gap_subset`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/FirstHarmonicGap.lean#L104)). The hypothesis therefore supplies, for every $`h\ge1`$, certificates beyond every threshold, which is Definition <a href="#defn:sep" data-reference-type="ref" data-reference="defn:sep">2</a>; that condition is equivalent to $`S\notin\mathbb{Q}`$.
 
-\(b\) For all large $`X`$, fewer than $`8X/25`$ indices in $`[X,2X)`$ are unassigned (Proposition <a href="#prop:dickman" data-reference-type="ref" data-reference="prop:dickman">278</a>), and fewer than $`X/100`$ assigned indices have $`\varphi(m_N)<m_N/1000`$, by the Chebyshev form of Proposition <a href="#prop:badcof" data-reference-type="ref" data-reference="prop:badcof">279</a> given after its proof. These two sets and $`\mathcal G`$ partition $`[X,2X)`$, so $`\#\mathcal G>67X/100`$ ([`eventually_card_pivotGoodBases_gt`](https://github.com/wcook04/plectis-erdos/blob/24edbddbe2bd68e920327a701aad0b9dd0d69675/lean/ErdosProblems/ArgumentGraph/Results/Erdos249Endpoint.lean#L75)). Since $`603/1000=(9/10)(67/100)`$, each large $`X`$ in the hypothesis gives $`\sum_{N\in\mathcal G}\operatorname{Re}E(h,N,L(X))<\tfrac{9}{10}\#\mathcal G`$. For $`X\ge A`$ the set $`T=\mathcal G`$ is nonempty and lies in $`[A,2X)`$, and $`L(X)`$ satisfies the room inequality, so (a) applies. ◻
+\(b\) For all large $`X`$, fewer than $`8X/25`$ indices in $`[X,2X)`$ are unassigned (Proposition <a href="#prop:dickman" data-reference-type="ref" data-reference="prop:dickman">281</a>), and fewer than $`X/100`$ assigned indices have $`\varphi(m_N)<m_N/1000`$, by the Chebyshev form of Proposition <a href="#prop:badcof" data-reference-type="ref" data-reference="prop:badcof">282</a> given after its proof. These two sets and $`\mathcal G`$ partition $`[X,2X)`$, so $`\#\mathcal G>67X/100`$ ([`eventually_card_pivotGoodBases_gt`](https://github.com/wcook04/plectis-erdos/blob/24edbddbe2bd68e920327a701aad0b9dd0d69675/lean/ErdosProblems/ArgumentGraph/Results/Erdos249Endpoint.lean#L75)). Since $`603/1000=(9/10)(67/100)`$, each large $`X`$ in the hypothesis gives $`\sum_{N\in\mathcal G}\operatorname{Re}E(h,N,L(X))<\tfrac{9}{10}\#\mathcal G`$. For $`X\ge A`$ the set $`T=\mathcal G`$ is nonempty and lies in $`[A,2X)`$, and $`L(X)`$ satisfies the room inequality, so (a) applies. ◻
 
 </div>
 
@@ -5305,6 +5305,181 @@ u_0=\frac{u_L+\sum_{j=1}^{L}2^{L-j}a(j)}{2^L}.
 
 </div>
 
+<a id="long249:sec:signed-interpolation"></a>
+
+## Signed interpolation with entire Dirichlet defects
+
+Sparse changes can preserve more than local statistics. We construct integer sequences that agree with the totient at every odd index and have the same Dirichlet singularities in every fixed arithmetic progression, yet whose values at a reciprocal integer base fill an interval. The correction is a sum of widely separated finite differences. Increasing their orders kills each fixed moment eventually; choosing their amplitudes from overlapping integer digit ranges leaves an interval of possible values.
+
+For a sequence $`a`$, write $`F_a(z)=\sum_{n\ge1}a(n)z^n`$. For integers $`q\ge1`$, $`0\le c<q`$ and $`d\ge0`$, put
+``` math
+M_{q,c,d}(a;N)=\sum_{\substack{1\le n<N\\ n\equiv c\pmod q}}n^d a(n).
+```
+Let $`\mu_{a,X,m}`$ be the empirical distribution of the length-$`m`$ blocks starting at the integers $`X\le N<2X`$, with mass $`1/X`$ per start. Upper Banach density means the limiting upper density over all intervals of a given length, with their starting points unrestricted.
+
+<div id="long249:thm:signed-interpolation" class="thm">
+
+**Theorem 273** (Sparse interpolation around the totient). *Fix integers $`\beta\ge2`$, $`K\ge1`$, $`P\ge2`$, and any function $`f:\mathbb{N}_{>0}\to(0,\infty)`$ with $`f(n)\to\infty`$. There exist $`T>0`$ and target-independent sets $`S\subseteq H\subseteq\{n>K\}`$, with every element of $`S`$ even, such that every
+``` math
+r\in[F_\varphi(\beta^{-1})-T,F_\varphi(\beta^{-1})+T]
+```
+equals $`F_b(\beta^{-1})`$ for an integer sequence $`b=\varphi+e`$ satisfying:*
+
+1.  *$`0\le b(n)\le n`$, $`|e(n)|\le f(n)`$, and $`\operatorname{supp}(e)\subseteq S`$. In particular the prefix through $`K`$ and every odd coefficient are unchanged.*
+
+2.  *For every fixed $`q\ge1`$, both $`e(n)`$ and $`\sum_{i<n}e(i)`$ are divisible by $`q`$ eventually, with a cutoff independent of $`r`$.*
+
+3.  *For every fixed $`(q,c,d)`$, the defect $`M_{q,c,d}(b;N)-M_{q,c,d}(\varphi;N)`$ equals an integer $`C_{q,c,d,r}`$ for all sufficiently large $`N\notin H`$. The cutoff is independent of $`r`$. If $`q\le P`$ and $`d<P`$, this defect is zero at every $`N\notin H`$.*
+
+4.  *For each root of unity $`\zeta`$, the radial function $`x\mapsto F_b(x\zeta)-F_\varphi(x\zeta)`$ extends smoothly to $`x=1`$. Its Taylor coefficients there lie in $`\mathbb{Z}[\zeta]`$. The coefficients of orders $`u<P`$ are zero if the order of $`\zeta`$ is at most $`P`$.*
+
+5.  *For every fixed $`(q,c)`$ the absolutely convergent series
+    ``` math
+    D_{q,c,r}(s)=\sum_{\substack{n\ge1\\n\equiv c\pmod q}}e(n)n^{-s},
+     \qquad \operatorname{Re}s>3/2,
+    ```
+    extends to an entire function, and $`D_{q,c,r}(-d)=C_{q,c,d,r}`$.*
+
+*The set $`S`$ has upper Banach density zero. The set $`H`$ has ordinary density zero and upper Banach density one. Define
+``` math
+g(n)=\min\left(\inf_{k\ge n}f(k),(n/2)^{1/4}\right),\qquad
+ \ell(X)=2\left\lfloor\frac{\log_\beta g(\lfloor X/4\rfloor)}8\right\rfloor.
+```
+For large $`X`$, $`\ell(X)>0`$, and one constant $`C`$, independent of $`r`$, gives
+``` math
+d_{\rm TV}(\mu_{\varphi,X,m},\mu_{b,X,m})
+ \le\min\left(1,C\left[\frac m{\ell(X)}+\ell(X)^{-1/2}\right]\right),
+ \qquad 1\le m\le X.
+```
+Thus every block length $`m=o(\ell(X))`$ is preserved asymptotically.*
+
+</div>
+
+The allowance can grow as slowly as desired and need not be monotone. For $`f(n)=(\log(n+3))^\epsilon`$, $`\epsilon>0`$, the allowed block scale is $`o(\log\log X)`$; for $`f(n)=(n+3)^\alpha`$, $`\alpha>0`$, it is $`o(\log X)`$. The exact Taylor series, growing moduli, zeros and regular parts of Dirichlet functions are not preserved. The correction has both signs; this theorem does not retain the one-sided perturbation constraint from the earlier constructions. It is an ordinary proof, not a Lean formalization or a rationality assertion about $`F_\varphi(1/2)`$.
+
+<div class="proof">
+
+*Proof.* The tail infimum in $`g`$ is positive, nondecreasing and tends to infinity. The cap gives $`g(n)\le(n/2)^{1/4}`$, while $`g(n)\le f(k)`$ for every $`k\ge n`$. Choose a large even $`n_{-1}>K`$ so that $`g\ge1`$ thereafter and the first spacing below is at least $`\max(16,(2PP!)^2)`$. Define
+``` math
+\begin{aligned}
+ s_j&=2\left\lfloor\tfrac18\log_\beta g(n_{j-1})\right\rfloor,
+ &n_j&=n_{j-1}+s_j,\\
+ k_j&=\max\{k\ge1:(2kk!)^2\le s_j\},
+ &M_j&=k_j!,\quad t_j=2k_j!,\quad W_j=k_jt_j,\\
+ A_j&=\beta^{s_j+2}.
+ \end{aligned}
+```
+The spacings and orders are nondecreasing and tend to infinity; $`s_j=O(\log n_{j-1})`$ and $`W_j\le\sqrt{s_j}<s_{j+1}`$. For digits $`d_j\in\{-A_j,\ldots,A_j\}`$, form
+``` math
+P_j(z)=d_jM_jz^{n_j}(1-z^{t_j})^{k_j},\qquad E(z)=\sum_{j\ge0}P_j(z).
+```
+Let $`S`$ consist of all $`n_j+lt_j`$, $`0\le l\le k_j`$, and let $`H`$ be the union of their full integer hulls $`[n_j,n_j+W_j]`$. These hulls are disjoint and all points of $`S`$ are even.
+
+*Coefficient room.* If $`s\ge16`$ and $`2kk!\le\sqrt s`$, then $`4k!2^k\le2\sqrt s\,2^{\sqrt s/2}\le2^s`$. It follows for $`\beta\ge2`$ that $`\beta^2k!2^k\le\beta^s`$. Therefore
+``` math
+\begin{equation}
+\label{long249:eq:signed-budget}
+ \|P_j\|_1\le M_j\beta^{s_j+2}2^{k_j}
+ \le\beta^{2s_j}\le\sqrt{g(n_{j-1})}.
+\end{equation}
+```
+At every modified index $`n`$ this is at most $`f(n)`$ and at most $`(n_{j-1}/2)^{1/8}\le\sqrt{n/2}`$. The totient has precisely the needed two-sided room at even indices: its product formula gives
+``` math
+\frac{\varphi(n)^2}{n}
+ =\prod_{p^a\parallel n}p^{a-2}(p-1)^2\ge\frac12,
+```
+because all odd-prime factors are at least one and the smallest possible factor at two is $`1/2`$. Also $`\varphi(n)\le n/2`$ for even $`n`$. Thus $`b=\varphi+e`$, where $`e`$ is the coefficient sequence of $`E`$, stays between zero and $`n`$. The coefficient bound ensures absolute convergence of $`E`$ inside the unit disk.
+
+*An interval of values.* Put $`a_j=(1-\beta^{-t_j})^{k_j}`$ and $`w_j=M_j\beta^{-n_j}a_j`$. Bernoulli’s inequality gives $`3/4\le a_j\le1`$. Since $`M_{j+1}\ge M_j`$,
+``` math
+A_{j+1}w_{j+1}=\beta^2M_{j+1}\beta^{-n_j}a_{j+1}
+ \ge3M_j\beta^{-n_j}\ge3w_j.
+```
+The capacity $`T=\sum_j A_jw_j`$ is positive and finite, by <a href="#long249:eq:signed-budget" data-reference-type="eqref" data-reference="long249:eq:signed-budget">[long249:eq:signed-budget]</a>. If $`T_j=\sum_{i>j}A_iw_i`$, the intervals $`[dw_j-T_j,dw_j+T_j]`$, $`-A_j\le d\le A_j`$, overlap and cover $`[-A_jw_j-T_j,A_jw_j+T_j]`$. Successive digit choices therefore represent every value in $`[-T,T]`$, since $`T_j\to0`$. This is the finite-choice interval principle of Crmarić and Kovač \[crmarickovac2025signed, Lemma 4(a), Remark 5\], here verified for signed finite differences. It also shows $`T`$ can be made arbitrarily small, while positive, by increasing the initial cutoff.
+
+*Congruences and moments.* For every polynomial $`p`$ of degree less than $`k`$,
+``` math
+\begin{equation}
+\label{long249:eq:signed-difference}
+ \sum_{l=0}^k(-1)^l\binom kl p(n+lt)=0.
+\end{equation}
+```
+This follows by iterating the forward-difference operator, which lowers polynomial degree. Eventually $`q\mid M_j`$, so every later coefficient and every partial packet sum vanish modulo $`q`$. Complete packets have mass zero, giving the cumulative assertion. Eventually also $`q\mid t_j`$ and $`k_j>d`$. Each such packet lies in one residue class modulo $`q`$ and its moment of degree $`d`$ is zero by <a href="#long249:eq:signed-difference" data-reference-type="eqref" data-reference="long249:eq:signed-difference">[long249:eq:signed-difference]</a>. Outside the common hull set $`H`$, only complete packets have been summed, so the defect equals the integer contribution of finitely many early packets. If $`q\le P`$ and $`d<P`$, there are no exceptional early packets. These cutoffs do not depend on the digits.
+
+*Sparsity and blocks.* Within the $`j`$th packet the gaps in $`S`$ are $`t_j\to\infty`$; between packets they are at least $`s_{j+1}-\sqrt{s_{j+1}}\to\infty`$. Uniform spacing after a finite prefix implies upper Banach density zero. To estimate the hulls without assuming regular variation of $`f`$, take any hull meeting $`[X,2X+m)`$, $`m\le X`$. Its center lies in $`[X/2,3X]`$ eventually and its preceding center is at least $`X/4`$, since its width and spacing are $`O(\log X)`$. Thus $`s_j\ge\ell(X)`$ for every such packet. There are $`O(X/\ell(X)+1)`$ of them, and
+``` math
+W_j+1\le2\sqrt{s_j}\le\frac{2s_{j+1}}{\sqrt{\ell(X)}}.
+```
+The following gaps telescope to $`O(X)`$ over these consecutive centers. Consequently the total hull lengths are $`O(X/\sqrt{\ell(X)})`$. A hull can meet length-$`m`$ blocks at at most $`m+W_j+1`$ starts. Coupling the two empirical laws at the same start proves the stated total-variation bound; the extra $`m/X`$ is absorbed by $`m/\ell(X)`$. The hull estimate at $`m=1`$, followed by dyadic summation, gives ordinary density zero for $`H`$. But $`W_j\to\infty`$, so $`H`$ contains arbitrarily long solid intervals and its upper Banach density is one.
+
+*Radial smoothness.* Fix a root $`\zeta`$ of order $`q`$, and integers $`u,A\ge0`$. Choose $`B\ge u+A+2`$. For all sufficiently late packets, $`q\mid t_j`$ and $`k_j\ge B`$. Factor
+``` math
+P_j(x\zeta)=(1-x)^B R_j(x),\qquad
+ R_j(x)=d_jM_j\zeta^{n_j}x^{n_j}
+ (1+x+\cdots+x^{t_j-1})^B(1-x^{t_j})^{k_j-B}.
+```
+Its coefficient norm is at most $`\sqrt{g(n_{j-1})}t_j^B=O_B(n_j^{1/2})`$, because $`g(n)\le(n/2)^{1/4}`$ and $`t_j=O(\sqrt{\log n_j})`$. All exponents lie between $`n_j`$ and $`2n_j`$ eventually. For $`x\in[1/2,1)`$,
+``` math
+\sum_j|R_j^{(v)}(x)|
+ \le C_{B,v}\sum_{n\ge1}n^{v+1/2}x^n
+ \le C'_{B,v}(1-x)^{-v-3/2}.
+```
+The series and derivatives converge normally on compact subintervals. After differentiating $`(1-x)^B\sum_jR_j(x)`$ $`u`$ times, every term is $`O((1-x)^{B-u-3/2})=O((1-x)^{A+1/2})`$. Thus, after subtracting a finite initial polynomial, all prescribed derivative orders vanish to any prescribed order at the boundary. Integration of the continuous derivative limits gives a single smooth extension. For an integer polynomial $`\sum c_nz^n`$, its radial Taylor coefficient of order $`u`$ at $`\zeta`$ is $`\sum c_n\binom nu\zeta^n\in\mathbb{Z}[\zeta]`$. Every such coefficient stabilizes after finitely many packets. The first $`P`$ vanish at roots of order at most $`P`$.
+
+*Entire Dirichlet continuation.* Fix $`(q,c)`$ and a compact set of complex $`s`$, with $`\operatorname{Re}s\ge-R`$. Choose an integer $`B>R+3/2`$. All sufficiently late packets align modulo $`q`$ and have $`k_j\ge B`$. The derivative of $`y^{-s}`$ of order $`B`$ is $`(-1)^B(s)(s+1)\cdots(s+B-1)y^{-s-B}`$. Repeated integration expresses its $`B`$th finite difference as an integral over $`[0,t_j]^B`$. The remaining differences contribute at most $`2^{k_j-B}`$, so the absolute Dirichlet contribution of one packet is at most
+``` math
+C|d_j|M_j2^{k_j-B}t_j^B n_j^{R-B}
+ \le C' n_j^{R-B+1/2}.
+```
+This is summable over the distinct positive centers. The packet Dirichlet polynomials therefore converge normally on every compact set and define an entire function. In $`\operatorname{Re}s>3/2`$ they agree with the absolutely convergent ungrouped series. At $`s=-d`$, all late packets vanish by their moment identity, leaving exactly $`C_{q,c,d,r}`$. These are analytic-continuation values; the original ungrouped series need not converge at negative integers. ◻
+
+</div>
+
+<div id="long249:cor:signed-observations" class="cor">
+
+**Corollary 274** (Observations that do not determine irrationality). *The following data, taken together, do not determine whether $`F_b(\beta^{-1})`$ is rational: the fixed prefix and odd coefficients; every fixed eventual coefficient and cumulative congruence; the block laws on scales $`o(\ell(X))`$; fixed progression moments modulo eventual integer constants outside $`H`$; progression Dirichlet functions modulo entire functions; and radial germs at all roots of unity modulo smooth functions with Taylor coefficients in $`\mathbb{Z}[\zeta]`$. This remains true with exact equality of the first $`P`$ moment degrees and first $`P`$ radial Taylor coefficients at moduli and root orders at most $`P`$.*
+
+</div>
+
+<div class="proof">
+
+*Proof.* Every constructed sequence has the specified data of $`\varphi`$, including the common exceptional sets, while the nondegenerate interval of attained values contains both rational and irrational numbers. ◻
+
+</div>
+
+In particular, finite linear combinations of progression channels show that every fixed periodic twist preserves all poles and Laurent principal parts wherever the reference function has meromorphic continuation. For the untwisted totient channel the classical identity gives
+``` math
+\sum_{n\ge1}b(n)n^{-s}=\frac{\zeta(s-1)}{\zeta(s)}+D_{1,0,r}(s),
+ \qquad\operatorname{Re}s>2.
+```
+The version used by Coons \[coons-arxiv-signed, Theorem 3.3\] supplies this function identity, not an irrationality theorem for one value of $`F_\varphi`$. Likewise, Habiro’s injectivity of the exact Taylor map for a cyclotomic completion \[habiro2004signed, Theorem 5.2\] concerns a different, stronger datum. The complete Taylor jet is not fixed here: the second Taylor coefficient of $`Mz^n(1-z^t)^2`$ at one is $`Mt^2`$.
+
+The change of sign is indispensable for this construction. An infinitely supported nonnegative integer correction has unbounded Abel limit at one. It also cannot have an entire Dirichlet defect if the defining series converges in some right half-plane. Indeed, choose a positive real $`\sigma`$ inside that half-plane. Termwise differentiation gives $`(-1)^kD^{(k)}(\sigma)=\sum_ne(n)n^{-\sigma}(\log n)^k\ge0`$. The entire Taylor series at zero and Tonelli’s theorem then give
+``` math
+D(0)=\sum_{k\ge0}\frac{\sigma^k}{k!}
+       \sum_ne(n)n^{-\sigma}(\log n)^k=\sum_ne(n)<\infty.
+```
+Integer nonnegativity forces finite support, and a finite correction at an integer reciprocal base cannot change rationality. Signed differences are what allow the stronger observation class above.
+
+<div id="long249:prop:signed-first-harmonic" class="prop">
+
+**Proposition 275** (The first-harmonic test on the rational members). *Let $`b(n)`$ be integers with $`0\le b(n)\le n`$ and $`F_b(1/2)=u/(2^cv)`$, where $`c\ge0`$ and $`v`$ is odd and positive. Choose $`h\ge1`$ with $`v\mid2^h-1`$. If $`X\ge\max(c,1)`$ and $`16(2X+h+L+2)\le2^L`$, then for every integer $`N\in[X,2X)`$,
+``` math
+\cos\left(2\pi\,2^{-L}\sum_{j=0}^{L-1}
+    [b(N+h+1+j)-b(N+1+j)]2^{L-1-j}\right)
+ \ge\cos(\pi/8)>\frac9{10}.
+```*
+
+</div>
+
+<div class="proof">
+
+*Proof.* The actual tail $`R_N=\sum_{j\ge1}b(N+j)2^{-j}`$ lies in $`[0,N+2]`$ and satisfies $`R_N\equiv2^NF_b(1/2)\pmod\mathbb{Z}`$. Thus $`R_{N+h}-R_N`$ is an integer for $`N\ge c`$. If $`D`$ denotes the integer window sum in the statement, direct truncation gives $`2^L(R_{N+h}-R_N)-D=R_{N+h+L}-R_{N+L}`$. The right side has absolute value at most $`N+h+L+2`$, so $`D/2^L`$ is within $`1/16`$ of an integer. The cosine bound follows; its strict comparison with $`9/10`$ follows from $`\cos^2(\pi/8)=(2+\sqrt2)/4>17/20>81/100`$. ◻
+
+</div>
+
+This applies to every nonempty subset of the block, including the *actual totient-selected* set $`\mathcal G`$ of Theorem <a href="#thm:goodbasegap" data-reference-type="ref" data-reference="thm:goodbasegap">31</a>(b), at $`s=26`$, $`\eta=1/1000`$ and its minimal admissible depth $`L(X)`$. This set is held fixed rather than recomputed from $`b`$. Wherever it has more than $`67X/100`$ elements, the real first-harmonic sum exceeds $`603X/1000`$. The interpolation interval has an explicit dyadic rational member: for sufficiently large $`J`$, the finite prefix $`\sum_{n\le J}\varphi(n)2^{-n}`$ lies inside it, since the omitted tail is at most $`(J+2)2^{-J}`$. For this member one may take $`h=1`$. Consequently the preserved observations cannot imply the good-base saving for all admissible sequences. No counterexample to the saving for the actual totient is asserted; additional structure, such as its exact multiplicative relations at the relevant growing scales, is still required.
+
 <a id="sec:promotion-audit"></a>
 
 # Why the stated hypotheses cannot be omitted
@@ -5387,7 +5562,7 @@ Write $`S=\sum_{n\ge 1}\varphi(n)/2^n`$, $`R_N=\sum_{m\ge 1}\varphi(N+m)/2^m`$ f
 <div id="lem:orbit" class="lem">
 <p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/3cbbd4356dcd713314c0b6ba83ec4db353faa5c2/evidence/erdos249-totient-reasoning-surface/section-12.md#lem-orbit">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/3cbbd4356dcd713314c0b6ba83ec4db353faa5c2/evidence/erdos249-totient-reasoning-surface/section-12.md#lem-orbit-comparator">Comparator</a></p>
 
-**Lemma 273** (The doubling identity). *For all $`N\ge 0`$ and $`h\ge 1`$,
+**Lemma 276** (The doubling identity). *For all $`N\ge 0`$ and $`h\ge 1`$,
 ``` math
 R_{N+1}=2R_N-\varphi(N+1),
   \qquad
@@ -5410,7 +5585,7 @@ These identities express the phases as a lacunary exponential sum in one real va
 <div id="prop:transfer" class="prop">
 <p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos249/PaperCompleteR21/DoublingOrbitTransferAndFullDepthPhase.lean#L92">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/3cbbd4356dcd713314c0b6ba83ec4db353faa5c2/evidence/erdos249-totient-reasoning-surface/section-12.md#prop-transfer-comparator">Comparator</a></p>
 
-**Proposition 274** (Transfer to the doubling orbit). *Suppose that
+**Proposition 277** (Transfer to the doubling orbit). *Suppose that
 ``` math
 \forall h\ge 1\ \forall X_0\ \exists X\ge \max(X_0,1):\quad
   \sum_{N=X}^{2X-1}\cos\bigl(2\pi\,2^{N}\alpha_h\bigr)\;\le\;\tfrac{89}{100}\,X .
@@ -5432,7 +5607,7 @@ The proof above makes the truncation margin explicit. The full implication is al
 <div id="cor:digitform" class="cor">
 <p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/3cbbd4356dcd713314c0b6ba83ec4db353faa5c2/evidence/erdos249-totient-reasoning-surface/section-12.md#cor-digitform">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/3cbbd4356dcd713314c0b6ba83ec4db353faa5c2/evidence/erdos249-totient-reasoning-surface/section-12.md#cor-digitform-comparator">Comparator</a></p>
 
-**Corollary 275** (A digit version of the analytic condition). *Let $`\rho_h(X)`$ denote the proportion of $`N\in[X,2X)`$ with $`\|2^N\alpha_h\|_{\mathbb{R}/\mathbb{Z}}\ge 1/4`$. If for every $`h\ge 1`$ there are cofinally many $`X`$ with $`\rho_h(X)\ge 11/100`$, then $`S`$ is irrational. For nondyadic $`\alpha_h`$, the condition counted by $`\rho_h(X)`$ is exactly a change between binary digits $`N+1`$ and $`N+2`$. Thus the same sufficient hypothesis asks for at least $`11X/100`$ such changes, counted with $`X\le N<2X`$, on arbitrarily large blocks for every $`h`$.*
+**Corollary 278** (A digit version of the analytic condition). *Let $`\rho_h(X)`$ denote the proportion of $`N\in[X,2X)`$ with $`\|2^N\alpha_h\|_{\mathbb{R}/\mathbb{Z}}\ge 1/4`$. If for every $`h\ge 1`$ there are cofinally many $`X`$ with $`\rho_h(X)\ge 11/100`$, then $`S`$ is irrational. For nondyadic $`\alpha_h`$, the condition counted by $`\rho_h(X)`$ is exactly a change between binary digits $`N+1`$ and $`N+2`$. Thus the same sufficient hypothesis asks for at least $`11X/100`$ such changes, counted with $`X\le N<2X`$, on arbitrarily large blocks for every $`h`$.*
 
 </div>
 
@@ -5443,7 +5618,7 @@ The proof above makes the truncation margin explicit. The full implication is al
 \sum_{N=X}^{2X-1}\cos(2\pi 2^N\alpha_h)
           \le(1-\rho_h(X))X\le\frac{89}{100}X.
 ```
-Proposition <a href="#prop:transfer" data-reference-type="ref" data-reference="prop:transfer">274</a> now applies. For the digit reading, for a nondyadic $`\alpha_h`$ the fractional part of $`2^N\alpha_h`$ is in $`[1/4,3/4]`$ exactly when those two binary digits differ. The nondyadic qualification excludes the endpoint ambiguity at $`3/4`$. ◻
+Proposition <a href="#prop:transfer" data-reference-type="ref" data-reference="prop:transfer">277</a> now applies. For the digit reading, for a nondyadic $`\alpha_h`$ the fractional part of $`2^N\alpha_h`$ is in $`[1/4,3/4]`$ exactly when those two binary digits differ. The nondyadic qualification excludes the endpoint ambiguity at $`3/4`$. ◻
 
 </div>
 
@@ -5472,7 +5647,7 @@ The endpoints have the same quotient on division by $`2^{80}`$, which certifies 
 
 <div id="obs:allroutes" class="obs">
 
-*Observation 276*. Lemma <a href="#lem:orbit" data-reference-type="ref" data-reference="lem:orbit">273</a> expresses each tail phase in terms of the doubling orbit of $`\alpha_h=(2^h-1)S`$. The block conditions average those phases, the prime condition samples prescribed prime-indexed positions, and the full-depth condition requires a finite residue certificate for each $`(d,N)`$ at some multiple of $`d`$. Corollary <a href="#cor:digitform" data-reference-type="ref" data-reference="cor:digitform">275</a> gives one sufficient digit-change test for the real-part estimate; it is not an equivalence with the norm bound or with the four separate budgets. Likewise, a bound on a binary run length is not the exact prime-gap condition. Section <a href="#sub:shape" data-reference-type="ref" data-reference="sub:shape">12.7</a> compares the original inequalities.
+*Observation 279*. Lemma <a href="#lem:orbit" data-reference-type="ref" data-reference="lem:orbit">276</a> expresses each tail phase in terms of the doubling orbit of $`\alpha_h=(2^h-1)S`$. The block conditions average those phases, the prime condition samples prescribed prime-indexed positions, and the full-depth condition requires a finite residue certificate for each $`(d,N)`$ at some multiple of $`d`$. Corollary <a href="#cor:digitform" data-reference-type="ref" data-reference="cor:digitform">278</a> gives one sufficient digit-change test for the real-part estimate; it is not an equivalence with the norm bound or with the four separate budgets. Likewise, a bound on a binary run length is not the exact prime-gap condition. Section <a href="#sub:shape" data-reference-type="ref" data-reference="sub:shape">12.7</a> compares the original inequalities.
 
 </div>
 
@@ -5489,7 +5664,7 @@ The endpoints have the same quotient on division by $`2^{80}`$, which certifies 
   \max(X_0,1)\le X,\quad 16(2X+h+L+2)\le 2^{L},\quad
   \Bigl\|\sum_{N=X}^{2X-1} e\bigl(D(h,N,L)/2^{L}\bigr)\Bigr\|\le \tfrac{21}{25}X,
 ```
-where $`D(h,N,L)=\sum_{j<L}\bigl(\varphi(N+h+1+j)-\varphi(N+1+j)\bigr)2^{L-1-j}`$. This inequality is unproved; it implies irrationality ([`Erdos249257.TotientTailPeriodKiller.DTWFirstHarmonicNormGap`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/FirstHarmonicPivot.lean#L75), [`Erdos249257.irrational_totient_series_of_first_harmonic_norm_gap`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/FirstHarmonicPivot.lean#L83)). By Proposition <a href="#prop:transfer" data-reference-type="ref" data-reference="prop:transfer">274</a> the real-part bound with constant $`89/100`$ for the *exact doubling phases* suffices; its transfer to the truncated phases uses the separate error estimate in that proposition.
+where $`D(h,N,L)=\sum_{j<L}\bigl(\varphi(N+h+1+j)-\varphi(N+1+j)\bigr)2^{L-1-j}`$. This inequality is unproved; it implies irrationality ([`Erdos249257.TotientTailPeriodKiller.DTWFirstHarmonicNormGap`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/FirstHarmonicPivot.lean#L75), [`Erdos249257.irrational_totient_series_of_first_harmonic_norm_gap`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/FirstHarmonicPivot.lean#L83)). By Proposition <a href="#prop:transfer" data-reference-type="ref" data-reference="prop:transfer">277</a> the real-part bound with constant $`89/100`$ for the *exact doubling phases* suffices; its transfer to the truncated phases uses the separate error estimate in that proposition.
 
 <a id="the-discrepancy-in-terms-of-the-doubling-map."></a>
 
@@ -5514,7 +5689,7 @@ The phase is a geometrically weighted sum of totients at $`L+h`$ consecutive arg
 
 The following comparisons identify the estimates still needed; they do not rule out these methods.
 
-*Weyl differencing and van der Corput.* The van der Corput inequality applies to arbitrary bounded complex sequences \[edeko-vdc, Theorem 2.1\], but its use here requires estimates for shifted correlations. For the exact phases $`x_N=2^N\alpha_h`$ of Lemma <a href="#lem:orbit" data-reference-type="ref" data-reference="lem:orbit">273</a>,
+*Weyl differencing and van der Corput.* The van der Corput inequality applies to arbitrary bounded complex sequences \[edeko-vdc, Theorem 2.1\], but its use here requires estimates for shifted correlations. For the exact phases $`x_N=2^N\alpha_h`$ of Lemma <a href="#lem:orbit" data-reference-type="ref" data-reference="lem:orbit">276</a>,
 ``` math
 x_{N+q}-x_N=(2^q-1)x_N.
 ```
@@ -5544,7 +5719,7 @@ For general coefficients $`0\le c(n)\le n`$, irrationality alone does not imply 
 <div id="thm:lacunary" class="thm">
 <p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/3cbbd4356dcd713314c0b6ba83ec4db353faa5c2/evidence/erdos249-totient-reasoning-surface/section-12.md#thm-lacunary">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/3cbbd4356dcd713314c0b6ba83ec4db353faa5c2/evidence/erdos249-totient-reasoning-surface/section-12.md#thm-lacunary-comparator">Comparator</a></p>
 
-**Theorem 277** (The block norm condition is stronger in the class $`0\le c(n)\le n`$). *Let $`c(n)=1`$ if $`n=k!`$ for some $`k\ge 1`$ and $`c(n)=0`$ otherwise, so $`0\le c(n)\le n`$ for all $`n\ge 1`$, and let $`\beta=\sum_{n\ge1}c(n)/2^{n}
+**Theorem 280** (The block norm condition is stronger in the class $`0\le c(n)\le n`$). *Let $`c(n)=1`$ if $`n=k!`$ for some $`k\ge 1`$ and $`c(n)=0`$ otherwise, so $`0\le c(n)\le n`$ for all $`n\ge 1`$, and let $`\beta=\sum_{n\ge1}c(n)/2^{n}
 =\sum_{k\ge 1}2^{-k!}`$. Then $`\beta`$ is irrational, and for every $`h\ge 1`$ and every $`X\ge 81(h+5)`$,
 ``` math
 \sum_{N=X}^{2X-1}\cos\bigl(2\pi\,2^{N}(2^{h}-1)\beta\bigr) \;>\; \tfrac{9}{10}X .
@@ -5609,7 +5784,7 @@ An unassigned index has a smooth shifted argument, but the converse is not asser
 <div id="prop:dickman" class="prop">
 <p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos249/PaperCompleteR21/UnassignedSmoothCount.lean#L556">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/3cbbd4356dcd713314c0b6ba83ec4db353faa5c2/evidence/erdos249-totient-reasoning-surface/section-12.md#prop-dickman-comparator">Comparator</a></p>
 
-**Proposition 278** (A one-sided bound for the unassigned terms). *Fix $`h,s`$ and choose the admissible depth $`L`$ minimally for each large $`X`$. Put $`t=L-s+1=O_{h,s}(\log X)`$ and $`y_X=4\sqrt X+2t/\sqrt X`$. If $`n=N+t`$ is unassigned, then its largest prime factor satisfies $`P(n)\le y_X`$. Consequently
+**Proposition 281** (A one-sided bound for the unassigned terms). *Fix $`h,s`$ and choose the admissible depth $`L`$ minimally for each large $`X`$. Put $`t=L-s+1=O_{h,s}(\log X)`$ and $`y_X=4\sqrt X+2t/\sqrt X`$. If $`n=N+t`$ is unassigned, then its largest prime factor satisfies $`P(n)\le y_X`$. Consequently
 ``` math
 \begin{aligned}
  \#\{N\in[X,2X):N\notin\mathcal A\}
@@ -5649,7 +5824,7 @@ Mertens’ theorems, proved in Lean with explicit constants, then give $`(1-\log
 <div id="prop:badcof" class="prop">
 <p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos249/PaperCompleteR21/ExcludedCofactorEstimate.lean#L654">Lean†</a></p>
 
-**Proposition 279** (The excluded-cofactor estimate). *Fix $`h,s`$ and use the minimal admissible depth $`L`$, as in Proposition <a href="#prop:dickman" data-reference-type="ref" data-reference="prop:dickman">278</a>; thus $`t=L-s+1=O_{h,s}(\log X)`$. For $`\eta\in(0,1)`$ let $`B(\eta)=\{m\ge1:\varphi(m)<\eta m\}`$, with natural density $`D(\eta)`$; by Schoenberg’s theorem $`D`$ exists, is continuous, and $`D(0+)=0`$ \[schoenberg1928, §17, p. 193\], in the framework of \[schoenberg1936, Theorem 1, pp. 318–319, and §8, p. 323\]. Then
+**Proposition 282** (The excluded-cofactor estimate). *Fix $`h,s`$ and use the minimal admissible depth $`L`$, as in Proposition <a href="#prop:dickman" data-reference-type="ref" data-reference="prop:dickman">281</a>; thus $`t=L-s+1=O_{h,s}(\log X)`$. For $`\eta\in(0,1)`$ let $`B(\eta)=\{m\ge1:\varphi(m)<\eta m\}`$, with natural density $`D(\eta)`$; by Schoenberg’s theorem $`D`$ exists, is continuous, and $`D(0+)=0`$ \[schoenberg1928, §17, p. 193\], in the framework of \[schoenberg1936, Theorem 1, pp. 318–319, and §8, p. 323\]. Then
 ``` math
 \#\{N\in\mathcal A:m_N\in B(\eta)\}
   \;\le\;\bigl(D(\eta)+o(1)\bigr)X ,
@@ -5711,7 +5886,7 @@ Choosing $`t=O(\log\log X)`$ would require $`s`$ to grow with $`X`$, contrary to
 
 #### The remaining prime-weighted correlation.
 
-Propositions <a href="#prop:dickman" data-reference-type="ref" data-reference="prop:dickman">278</a> and <a href="#prop:badcof" data-reference-type="ref" data-reference="prop:badcof">279</a> give the unassigned and excluded-cofactor bounds at minimal admissible depth. They must be combined with mean and correlation estimates at the same $`X,L,s,\eta`$; bounds obtained at unrelated depths cannot be substituted.
+Propositions <a href="#prop:dickman" data-reference-type="ref" data-reference="prop:dickman">281</a> and <a href="#prop:badcof" data-reference-type="ref" data-reference="prop:badcof">282</a> give the unassigned and excluded-cofactor bounds at minimal admissible depth. They must be combined with mean and correlation estimates at the same $`X,L,s,\eta`$; bounds obtained at unrelated depths cannot be substituted.
 
 With the notation of Section <a href="#sub:four-sums" data-reference-type="ref" data-reference="sub:four-sums">3.2</a>, the correlation estimate still required is
 ``` math
@@ -5811,7 +5986,7 @@ On this sample the selected cofactor is $`1`$, so its coefficient is the odd int
 
 <div class="rem">
 
-*Remark 280*. Fixing the sample rules out the particular argument that selects a pair only after locating separation. It does not prove that <a href="#eq:primefibre" data-reference-type="eqref" data-reference="eq:primefibre">[eq:primefibre]</a> is inequivalent to irrationality, or that it is a strictly stronger condition. No such comparison is established here.
+*Remark 283*. Fixing the sample rules out the particular argument that selects a pair only after locating separation. It does not prove that <a href="#eq:primefibre" data-reference-type="eqref" data-reference="eq:primefibre">[eq:primefibre]</a> is inequivalent to irrationality, or that it is a strictly stronger condition. No such comparison is established here.
 
 </div>
 
@@ -5838,18 +6013,18 @@ Writing $`h=td`$ and using $`D(h,N,L)/2^{L}=(R_{N+h}-R_N)-(R_{N+L+h}-R_{N+L})/2^
 <div id="prop:route4" class="prop">
 <p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/3cbbd4356dcd713314c0b6ba83ec4db353faa5c2/evidence/erdos249-totient-reasoning-surface/section-12.md#prop-route4">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/3cbbd4356dcd713314c0b6ba83ec4db353faa5c2/evidence/erdos249-totient-reasoning-surface/section-12.md#prop-route4-comparator">Comparator</a></p>
 
-**Proposition 281**. *$`\mathcal{C}(h,N,h)`$ holds whenever $`\bigl\|2^{N+h}S-2^{N}S\bigr\|_{\mathbb{R}/\mathbb{Z}}>2(N+2h+2)/2^{h}`$.*
+**Proposition 284**. *$`\mathcal{C}(h,N,h)`$ holds whenever $`\bigl\|2^{N+h}S-2^{N}S\bigr\|_{\mathbb{R}/\mathbb{Z}}>2(N+2h+2)/2^{h}`$.*
 
 </div>
 
 <div class="proof">
 
 *Proof.* $`\|D(h,N,h)/2^{h}\|\ge\|R_{N+h}-R_N\|-|R_{N+2h}-R_{N+h}|/2^{h}
- >2(N+2h+2)/2^{h}-(N+2h+2)/2^{h}=(N+2h+2)/2^{h}`$, and $`R_{N+h}-R_N\equiv 2^{N}(2^{h}-1)S=2^{N+h}S-2^{N}S\pmod 1`$ by Lemma <a href="#lem:orbit" data-reference-type="ref" data-reference="lem:orbit">273</a>. A residue at distance more than $`(N+2h+2)/2^{h}`$ from $`\mathbb{Z}`$ is exactly a residue certificate at depth $`h`$. ◻
+ >2(N+2h+2)/2^{h}-(N+2h+2)/2^{h}=(N+2h+2)/2^{h}`$, and $`R_{N+h}-R_N\equiv 2^{N}(2^{h}-1)S=2^{N+h}S-2^{N}S\pmod 1`$ by Lemma <a href="#lem:orbit" data-reference-type="ref" data-reference="lem:orbit">276</a>. A residue at distance more than $`(N+2h+2)/2^{h}`$ from $`\mathbb{Z}`$ is exactly a residue certificate at depth $`h`$. ◻
 
 </div>
 
-Proposition <a href="#prop:route4" data-reference-type="ref" data-reference="prop:route4">281</a> gives a sufficient analytic criterion for the condition with depth equal to the shift: for each $`d\ge1`$ and $`N\ge0`$, it is enough to find $`h=td`$, $`t\ge1`$, for which the displayed distance exceeds the stated threshold. The criterion is not asserted to be equivalent to each individual finite certificate. It involves the phase of $`S`$ itself, and the threshold tends to zero exponentially as $`t`$ grows. The propagation theorem of the short paper (Theorem 3.1 there) explains why one nonintegral tail difference produces late certificates; it does not supply such tail differences for all $`d,N`$.
+Proposition <a href="#prop:route4" data-reference-type="ref" data-reference="prop:route4">284</a> gives a sufficient analytic criterion for the condition with depth equal to the shift: for each $`d\ge1`$ and $`N\ge0`$, it is enough to find $`h=td`$, $`t\ge1`$, for which the displayed distance exceeds the stated threshold. The criterion is not asserted to be equivalent to each individual finite certificate. It involves the phase of $`S`$ itself, and the threshold tends to zero exponentially as $`t`$ grows. The propagation theorem of the short paper (Theorem 3.1 there) explains why one nonintegral tail difference produces late certificates; it does not supply such tail differences for all $`d,N`$.
 
 <a id="comparison-with-digit-complexity."></a>
 
@@ -5947,7 +6122,7 @@ This subsection compares the stated conditions and the recorded finite observati
 
 #### Comparison of conditions.
 
-The following table records the conditions themselves, rather than sufficient digit proxies. Lemma <a href="#lem:orbit" data-reference-type="ref" data-reference="lem:orbit">273</a> explains how their phases are related.
+The following table records the conditions themselves, rather than sufficient digit proxies. Lemma <a href="#lem:orbit" data-reference-type="ref" data-reference="lem:orbit">276</a> explains how their phases are related.
 
 <div class="center">
 
@@ -5961,7 +6136,7 @@ The following table records the conditions themselves, rather than sufficient di
 
 </div>
 
-The first four conditions concern the same constant but impose different averaging, sampling and separation requirements. The $`11/100`$ digit-change test in Corollary <a href="#cor:digitform" data-reference-type="ref" data-reference="cor:digitform">275</a> is sufficient for a real-part bound; it is not a replacement for the norm or four-term rows. Only the full-depth row is proved here to be equivalent to irrationality. The last row records a false generic upper bound, not an additional open hypothesis.
+The first four conditions concern the same constant but impose different averaging, sampling and separation requirements. The $`11/100`$ digit-change test in Corollary <a href="#cor:digitform" data-reference-type="ref" data-reference="cor:digitform">278</a> is sufficient for a real-part bound; it is not a replacement for the norm or four-term rows. Only the full-depth row is proved here to be equivalent to irrationality. The last row records a false generic upper bound, not an additional open hypothesis.
 
 <a id="quantitative-estimates."></a>
 
@@ -5981,7 +6156,7 @@ The recorded small margins near a forbidden endpoint also require careful interp
 
 #### Scope of the comparison.
 
-Corollary <a href="#cor:digitform" data-reference-type="ref" data-reference="cor:digitform">275</a> specifies one sufficient digit statistic: for every fixed $`h`$, the digit-change proportion must reach at least $`11/100`$ on arbitrarily large blocks. A statement for one shift, a smaller positive proportion, or finitely many blocks is not this hypothesis. An upper bound $`o(N)`$ on the longest run alone would not imply irrationality; a periodic alternating expansion has bounded runs. The prime-index condition in <a href="#eq:primefibre" data-reference-type="eqref" data-reference="eq:primefibre">[eq:primefibre]</a> is another proposed sufficient estimate. Its exact algebraic decomposition does not establish the required correlation bound.
+Corollary <a href="#cor:digitform" data-reference-type="ref" data-reference="cor:digitform">278</a> specifies one sufficient digit statistic: for every fixed $`h`$, the digit-change proportion must reach at least $`11/100`$ on arbitrarily large blocks. A statement for one shift, a smaller positive proportion, or finitely many blocks is not this hypothesis. An upper bound $`o(N)`$ on the longest run alone would not imply irrationality; a periodic alternating expansion has bounded runs. The prime-index condition in <a href="#eq:primefibre" data-reference-type="eqref" data-reference="eq:primefibre">[eq:primefibre]</a> is another proposed sufficient estimate. Its exact algebraic decomposition does not establish the required correlation bound.
 
 <a id="remaining-arithmetic-questions"></a>
 
@@ -6496,6 +6671,6 @@ This work received no external funding. The author declares no competing interes
 
 99
 
-J.-P. Allouche and J. Shallit, *The ring of $`k`$-regular sequences*, Theoret. Comput. Sci. **98** (1992), no. 2, 163–197, doi:[10.1016/0304-3975(92)90001-V](https://doi.org/10.1016/0304-3975(92)90001-V). Definitions and early statements are cited with the author preprint’s numbering. M. Coons, *(Non)Automaticity of number theoretic functions*, J. Théor. Nombres Bordeaux **22** (2010), no. 2, 339–352, doi:[10.5802/jtnb.718](https://doi.org/10.5802/jtnb.718). Theorem 3.2, p. 348. M. Coons, *Regular sequences and the joint spectral radius*, Internat. J. Found. Comput. Sci. **28** (2017), no. 2, 135–140, doi:[10.1142/S0129054117500095](https://doi.org/10.1142/S0129054117500095); arXiv:[1511.07535v1](https://arxiv.org/abs/1511.07535v1). Theorem 1, Proposition 4 and Corollary 7 are cited with the arXiv v1 numbering. G. Martin, *Simultaneous inequalities among values of the Euler phi-function*, arXiv:[math/0603053v1](https://arxiv.org/abs/math/0603053v1), 2006. Theorem 1, pp. 1–2. E. Wong, [answer 1211557](https://math.stackexchange.com/a/1211557) to *An infinite sum based on the mod-parity of Euler’s totient function*, Mathematics Stack Exchange, 29 March 2015, accessed 15 September 2026. P. Erdős, *On the irrationality of certain series*, Indag. Math. **19** (1957), 212–219, <https://users.renyi.hu/~p_erdos/1957-07.pdf>. Lemma 1, p. 213; Lemma 4, pp. 215–218; Lemma 4$`'`$, p. 218. H. Kaneko, Y. Suzuki and Y. Tachiya, *Refinements of Erdős’s irrationality criterion for certain sparse infinite series*, arXiv:[2601.20743v1](https://arxiv.org/abs/2601.20743v1), 2026. Theorem A, p. 2; Theorem 3, p. 5; proof of Theorem A, p. 18. A. Eldar, comment and formula added to OEIS A256936 (revisions 28 and 31), 15 March 2026, <https://oeis.org/history?seq=A256936>, accessed 16 September 2026. S. Fan, comment on Erdős Problem \#249, 16 May 2026, 19:01, [Erdős Problems discussion thread](https://www.erdosproblems.com/forum/thread/249), accessed 16 September 2026. P. Erdős and R. L. Graham, *Old and New Problems and Results in Combinatorial Number Theory*, Monographies de L’Enseignement Mathématique **28**, 1980, p. 61. P. Erdős, *On arithmetical properties of Lambert series*, J. Indian Math. Soc. (N.S.) **12** (1948), 63–66, <https://users.renyi.hu/~p_erdos/1948-04.pdf>. K. Postelmans and W. Van Assche, *Irrationality of $`\zeta_q(1)`$ and $`\zeta_q(2)`$*, J. Number Theory **126** (2007), no. 1, 119–154, doi:[10.1016/j.jnt.2006.11.011](https://doi.org/10.1016/j.jnt.2006.11.011); arXiv:[math/0604312v1](https://arxiv.org/abs/math/0604312v1). Theorem 1.3 is cited with the arXiv v1 pagination, p. 3. Yu. V. Nesterenko, *Modular functions and transcendence questions*, Sb. Math. **187** (1996), no. 9, 1319–1348, doi:[10.1070/SM1996v187n09ABEH000158](https://doi.org/10.1070/SM1996v187n09ABEH000158). Corollary 2, p. 1320. W. Schramm, *The Fourier transform of functions of the greatest common divisor*, Integers **8** (2008), \#A50, <https://math.colgate.edu/~integers/i50/i50.pdf>. Theorem and equation (2), p. 2. L. Tóth, *A survey of gcd-sum functions*, J. Integer Seq. **13** (2010), Article 10.8.1, <https://cs.uwaterloo.ca/journals/JIS/VOL13/Toth/toth10.pdf>. §1, equations (1)–(2). M. Merca and M. D. Schmidt, *Generating special arithmetic functions by Lambert series factorizations*, Contrib. Discrete Math. **14** (2019), no. 1, 31–45, doi:[10.55016/ojs/cdm.v14i1.62425](https://doi.org/10.55016/ojs/cdm.v14i1.62425); arXiv:[1706.00393v2](https://arxiv.org/abs/1706.00393v2). Equation (1) is cited with the arXiv v2 pagination, p. 2. M. Merca, *The Lambert series factorization theorem*, Ramanujan J. **44** (2017), 417–435, doi:[10.1007/s11139-016-9856-3](https://doi.org/10.1007/s11139-016-9856-3). Theorem 1.2, p. 420. V. Kovač and T. Tao, *On several irrationality problems for Ahmes series*, Acta Math. Hungar. **175** (2025), no. 2, 572–608, doi:[10.1007/s10474-025-01528-0](https://doi.org/10.1007/s10474-025-01528-0); arXiv:[2406.17593v4](https://arxiv.org/abs/2406.17593v4). Theorem 2.3 is cited with the arXiv v4 pagination, p. 5. R. Balasubramanian, S. Giri and P. Srivastav, *On correlations of certain multiplicative functions*, J. Number Theory **174** (2017), 221–238, doi:[10.1016/j.jnt.2016.10.001](https://doi.org/10.1016/j.jnt.2016.10.001); arXiv:[1511.02221v3](https://arxiv.org/abs/1511.02221v3). Theorem 2.2 is cited with the arXiv v3 pagination, p. 2. A. Granville, *Smooth numbers: computational number theory and beyond*, in *Algorithmic Number Theory*, MSRI Publ. **44** (2008), 267–323, <https://library.slmath.org/books/Book44/files/09andrew.pdf>. Equations (1.1) and (1.3), p. 268. I. Schoenberg, *Über die asymptotische Verteilung reeller Zahlen mod 1*, Math. Z. **28** (1928), 171–199, doi:[10.1007/BF01181156](https://doi.org/10.1007/BF01181156). §17, p. 193, for the distribution of $`\varphi(n)/n`$. I. J. Schoenberg, *On asymptotic distributions of arithmetical functions*, Trans. Amer. Math. Soc. **39** (1936), no. 2, 315–330. Theorem 1, pp. 318–319; §8, p. 323. N. Edeko, H. Kreidler and R. Nagel, *A dynamical proof of the van der Corput inequality*, Dyn. Syst. **37** (2022), no. 4, 648–665, doi:[10.1080/14689367.2022.2100244](https://doi.org/10.1080/14689367.2022.2100244); arXiv:[2106.11835v3](https://arxiv.org/abs/2106.11835v3). Theorem 2.1 is cited with the arXiv v3 pagination, p. 4. K. Matomäki and M. Radziwiłł, *Multiplicative functions in short intervals*, Ann. of Math. **183** (2016), no. 3, 1015–1056, doi:[10.4007/annals.2016.183.3.6](https://doi.org/10.4007/annals.2016.183.3.6); arXiv:[1501.04585v4](https://arxiv.org/abs/1501.04585v4). Theorem 1 is cited with the arXiv v4 pagination, pp. 1–2. T. Tao, *The logarithmically averaged Chowla and Elliott conjectures for two-point correlations*, Forum Math. Pi **4** (2016), e8, doi:[10.1017/fmp.2016.6](https://doi.org/10.1017/fmp.2016.6); arXiv:[1509.05422v4](https://arxiv.org/abs/1509.05422v4). Theorems 1.2–1.3 are cited with the arXiv v4 pagination, pp. 2 and 5. T. Tao and J. Teräväinen, *Odd order cases of the logarithmically averaged Chowla conjecture*, J. Théor. Nombres Bordeaux **30** (2018), no. 3, 997–1015, doi:[10.5802/jtnb.1062](https://doi.org/10.5802/jtnb.1062); arXiv:[1710.02112v1](https://arxiv.org/abs/1710.02112v1). Theorem 1.1 is cited with the arXiv v1 pagination, p. 2. B. Adamczewski and Y. Bugeaud, *On the complexity of algebraic numbers I. Expansions in integer bases*, Ann. of Math. **165** (2007), no. 2, 547–565. Theorem 1, p. 549. G. Everest, A. J. van der Poorten, Y. Puri and T. Ward, *Integer sequences and periodic points*, J. Integer Seq. **5** (2002), Article 02.2.3. Lemma 3.1 is cited with the preprint pagination, p. 5. P. Erdős and I. S. Gál, *On the law of the iterated logarithm. I*, Proc. Kon. Ned. Akad. Wetensch. Ser. A **58** $`=`$ Indag. Math. **17** (1955), 65–76, <https://www.renyi.hu/~p_erdos/1955-06.pdf>. S. Yazdani, *Multiplicative functions and $`k`$-automatic sequences*, J. Théor. Nombres Bordeaux **13** (2001), no. 2, 651–658, <https://www.numdam.org/item/JTNB_2001__13_2_651_0/>. Theorem 2 and its proof, pp. 652–653; Corollary 4, p. 654. J.-P. Allouche, J. Shallit and R. Yassawi, *How to prove that a sequence is not automatic*, Exposition. Math. **40** (2022), no. 1, 1–22, doi:[10.1016/j.exmath.2021.08.001](https://doi.org/10.1016/j.exmath.2021.08.001); arXiv:[2104.13072v1](https://arxiv.org/abs/2104.13072v1). Theorem and example numbering follows the arXiv v1 (2021). J. Bell and D. Smertnig, *Mahler series with multiplicative coefficient sequences*, arXiv:[2603.23456v1](https://arxiv.org/abs/2603.23456v1), 24 March 2026, preprint. Theorem 1.3, p. 2; Lemma 3.3, p. 9. J. P. Bell, N. Bruin and M. Coons, *Transcendence of generating functions whose coefficients are multiplicative*, Trans. Amer. Math. Soc. **364** (2012), no. 2, 933–959, doi:[10.1090/S0002-9947-2011-05479-6](https://doi.org/10.1090/S0002-9947-2011-05479-6); arXiv:[1003.2221v2](https://arxiv.org/abs/1003.2221v2). Theorems 1.5–1.6 are cited with the arXiv v2 pagination, p. 2. B. Adamczewski, M. Drmota and C. Müllner, *(Logarithmic) densities for automatic sequences along primes and squares*, Trans. Amer. Math. Soc. **375** (2022), no. 1, 455–499, doi:[10.1090/tran/8476](https://doi.org/10.1090/tran/8476); arXiv:[2009.14773v2](https://arxiv.org/abs/2009.14773v2). Theorem 1.4 and Remark 1.5, p. 4, and the proof at the end of Section 7, p. 19, refer to the arXiv v2 (2021). B. Adamczewski, J. Bell and D. Smertnig, *A height gap theorem for coefficients of Mahler functions*, J. Eur. Math. Soc. **25** (2023), no. 7, 2525–2571, doi:[10.4171/JEMS/1244](https://doi.org/10.4171/JEMS/1244). Theorem 1.2(b), p. 2528; logarithmic height in Section 1.1.1, p. 2527.
+J.-P. Allouche and J. Shallit, *The ring of $`k`$-regular sequences*, Theoret. Comput. Sci. **98** (1992), no. 2, 163–197, doi:[10.1016/0304-3975(92)90001-V](https://doi.org/10.1016/0304-3975(92)90001-V). Definitions and early statements are cited with the author preprint’s numbering. M. Coons, *(Non)Automaticity of number theoretic functions*, J. Théor. Nombres Bordeaux **22** (2010), no. 2, 339–352, doi:[10.5802/jtnb.718](https://doi.org/10.5802/jtnb.718). Theorem 3.2, p. 348. M. Coons, *Regular sequences and the joint spectral radius*, Internat. J. Found. Comput. Sci. **28** (2017), no. 2, 135–140, doi:[10.1142/S0129054117500095](https://doi.org/10.1142/S0129054117500095); arXiv:[1511.07535v1](https://arxiv.org/abs/1511.07535v1). Theorem 1, Proposition 4 and Corollary 7 are cited with the arXiv v1 numbering. G. Martin, *Simultaneous inequalities among values of the Euler phi-function*, arXiv:[math/0603053v1](https://arxiv.org/abs/math/0603053v1), 2006. Theorem 1, pp. 1–2. E. Wong, [answer 1211557](https://math.stackexchange.com/a/1211557) to *An infinite sum based on the mod-parity of Euler’s totient function*, Mathematics Stack Exchange, 29 March 2015, accessed 15 September 2026. P. Erdős, *On the irrationality of certain series*, Indag. Math. **19** (1957), 212–219, <https://users.renyi.hu/~p_erdos/1957-07.pdf>. Lemma 1, p. 213; Lemma 4, pp. 215–218; Lemma 4$`'`$, p. 218. H. Kaneko, Y. Suzuki and Y. Tachiya, *Refinements of Erdős’s irrationality criterion for certain sparse infinite series*, arXiv:[2601.20743v1](https://arxiv.org/abs/2601.20743v1), 2026. Theorem A, p. 2; Theorem 3, p. 5; proof of Theorem A, p. 18. A. Eldar, comment and formula added to OEIS A256936 (revisions 28 and 31), 15 March 2026, <https://oeis.org/history?seq=A256936>, accessed 16 September 2026. S. Fan, comment on Erdős Problem \#249, 16 May 2026, 19:01, [Erdős Problems discussion thread](https://www.erdosproblems.com/forum/thread/249), accessed 16 September 2026. P. Erdős and R. L. Graham, *Old and New Problems and Results in Combinatorial Number Theory*, Monographies de L’Enseignement Mathématique **28**, 1980, p. 61. P. Erdős, *On arithmetical properties of Lambert series*, J. Indian Math. Soc. (N.S.) **12** (1948), 63–66, <https://users.renyi.hu/~p_erdos/1948-04.pdf>. K. Postelmans and W. Van Assche, *Irrationality of $`\zeta_q(1)`$ and $`\zeta_q(2)`$*, J. Number Theory **126** (2007), no. 1, 119–154, doi:[10.1016/j.jnt.2006.11.011](https://doi.org/10.1016/j.jnt.2006.11.011); arXiv:[math/0604312v1](https://arxiv.org/abs/math/0604312v1). Theorem 1.3 is cited with the arXiv v1 pagination, p. 3. Yu. V. Nesterenko, *Modular functions and transcendence questions*, Sb. Math. **187** (1996), no. 9, 1319–1348, doi:[10.1070/SM1996v187n09ABEH000158](https://doi.org/10.1070/SM1996v187n09ABEH000158). Corollary 2, p. 1320. W. Schramm, *The Fourier transform of functions of the greatest common divisor*, Integers **8** (2008), \#A50, <https://math.colgate.edu/~integers/i50/i50.pdf>. Theorem and equation (2), p. 2. L. Tóth, *A survey of gcd-sum functions*, J. Integer Seq. **13** (2010), Article 10.8.1, <https://cs.uwaterloo.ca/journals/JIS/VOL13/Toth/toth10.pdf>. §1, equations (1)–(2). M. Merca and M. D. Schmidt, *Generating special arithmetic functions by Lambert series factorizations*, Contrib. Discrete Math. **14** (2019), no. 1, 31–45, doi:[10.55016/ojs/cdm.v14i1.62425](https://doi.org/10.55016/ojs/cdm.v14i1.62425); arXiv:[1706.00393v2](https://arxiv.org/abs/1706.00393v2). Equation (1) is cited with the arXiv v2 pagination, p. 2. M. Merca, *The Lambert series factorization theorem*, Ramanujan J. **44** (2017), 417–435, doi:[10.1007/s11139-016-9856-3](https://doi.org/10.1007/s11139-016-9856-3). Theorem 1.2, p. 420. V. Kovač and T. Tao, *On several irrationality problems for Ahmes series*, Acta Math. Hungar. **175** (2025), no. 2, 572–608, doi:[10.1007/s10474-025-01528-0](https://doi.org/10.1007/s10474-025-01528-0); arXiv:[2406.17593v4](https://arxiv.org/abs/2406.17593v4). Theorem 2.3 is cited with the arXiv v4 pagination, p. 5. R. Balasubramanian, S. Giri and P. Srivastav, *On correlations of certain multiplicative functions*, J. Number Theory **174** (2017), 221–238, doi:[10.1016/j.jnt.2016.10.001](https://doi.org/10.1016/j.jnt.2016.10.001); arXiv:[1511.02221v3](https://arxiv.org/abs/1511.02221v3). Theorem 2.2 is cited with the arXiv v3 pagination, p. 2. A. Granville, *Smooth numbers: computational number theory and beyond*, in *Algorithmic Number Theory*, MSRI Publ. **44** (2008), 267–323, <https://library.slmath.org/books/Book44/files/09andrew.pdf>. Equations (1.1) and (1.3), p. 268. I. Schoenberg, *Über die asymptotische Verteilung reeller Zahlen mod 1*, Math. Z. **28** (1928), 171–199, doi:[10.1007/BF01181156](https://doi.org/10.1007/BF01181156). §17, p. 193, for the distribution of $`\varphi(n)/n`$. I. J. Schoenberg, *On asymptotic distributions of arithmetical functions*, Trans. Amer. Math. Soc. **39** (1936), no. 2, 315–330. Theorem 1, pp. 318–319; §8, p. 323. N. Edeko, H. Kreidler and R. Nagel, *A dynamical proof of the van der Corput inequality*, Dyn. Syst. **37** (2022), no. 4, 648–665, doi:[10.1080/14689367.2022.2100244](https://doi.org/10.1080/14689367.2022.2100244); arXiv:[2106.11835v3](https://arxiv.org/abs/2106.11835v3). Theorem 2.1 is cited with the arXiv v3 pagination, p. 4. K. Matomäki and M. Radziwiłł, *Multiplicative functions in short intervals*, Ann. of Math. **183** (2016), no. 3, 1015–1056, doi:[10.4007/annals.2016.183.3.6](https://doi.org/10.4007/annals.2016.183.3.6); arXiv:[1501.04585v4](https://arxiv.org/abs/1501.04585v4). Theorem 1 is cited with the arXiv v4 pagination, pp. 1–2. T. Tao, *The logarithmically averaged Chowla and Elliott conjectures for two-point correlations*, Forum Math. Pi **4** (2016), e8, doi:[10.1017/fmp.2016.6](https://doi.org/10.1017/fmp.2016.6); arXiv:[1509.05422v4](https://arxiv.org/abs/1509.05422v4). Theorems 1.2–1.3 are cited with the arXiv v4 pagination, pp. 2 and 5. T. Tao and J. Teräväinen, *Odd order cases of the logarithmically averaged Chowla conjecture*, J. Théor. Nombres Bordeaux **30** (2018), no. 3, 997–1015, doi:[10.5802/jtnb.1062](https://doi.org/10.5802/jtnb.1062); arXiv:[1710.02112v1](https://arxiv.org/abs/1710.02112v1). Theorem 1.1 is cited with the arXiv v1 pagination, p. 2. B. Adamczewski and Y. Bugeaud, *On the complexity of algebraic numbers I. Expansions in integer bases*, Ann. of Math. **165** (2007), no. 2, 547–565. Theorem 1, p. 549. G. Everest, A. J. van der Poorten, Y. Puri and T. Ward, *Integer sequences and periodic points*, J. Integer Seq. **5** (2002), Article 02.2.3. Lemma 3.1 is cited with the preprint pagination, p. 5. P. Erdős and I. S. Gál, *On the law of the iterated logarithm. I*, Proc. Kon. Ned. Akad. Wetensch. Ser. A **58** $`=`$ Indag. Math. **17** (1955), 65–76, <https://www.renyi.hu/~p_erdos/1955-06.pdf>. S. Yazdani, *Multiplicative functions and $`k`$-automatic sequences*, J. Théor. Nombres Bordeaux **13** (2001), no. 2, 651–658, <https://www.numdam.org/item/JTNB_2001__13_2_651_0/>. Theorem 2 and its proof, pp. 652–653; Corollary 4, p. 654. J.-P. Allouche, J. Shallit and R. Yassawi, *How to prove that a sequence is not automatic*, Exposition. Math. **40** (2022), no. 1, 1–22, doi:[10.1016/j.exmath.2021.08.001](https://doi.org/10.1016/j.exmath.2021.08.001); arXiv:[2104.13072v1](https://arxiv.org/abs/2104.13072v1). Theorem and example numbering follows the arXiv v1 (2021). J. Bell and D. Smertnig, *Mahler series with multiplicative coefficient sequences*, arXiv:[2603.23456v1](https://arxiv.org/abs/2603.23456v1), 24 March 2026, preprint. Theorem 1.3, p. 2; Lemma 3.3, p. 9. J. P. Bell, N. Bruin and M. Coons, *Transcendence of generating functions whose coefficients are multiplicative*, Trans. Amer. Math. Soc. **364** (2012), no. 2, 933–959, doi:[10.1090/S0002-9947-2011-05479-6](https://doi.org/10.1090/S0002-9947-2011-05479-6); arXiv:[1003.2221v2](https://arxiv.org/abs/1003.2221v2). Theorems 1.5–1.6 are cited with the arXiv v2 pagination, p. 2. B. Adamczewski, M. Drmota and C. Müllner, *(Logarithmic) densities for automatic sequences along primes and squares*, Trans. Amer. Math. Soc. **375** (2022), no. 1, 455–499, doi:[10.1090/tran/8476](https://doi.org/10.1090/tran/8476); arXiv:[2009.14773v2](https://arxiv.org/abs/2009.14773v2). Theorem 1.4 and Remark 1.5, p. 4, and the proof at the end of Section 7, p. 19, refer to the arXiv v2 (2021). B. Adamczewski, J. Bell and D. Smertnig, *A height gap theorem for coefficients of Mahler functions*, J. Eur. Math. Soc. **25** (2023), no. 7, 2525–2571, doi:[10.4171/JEMS/1244](https://doi.org/10.4171/JEMS/1244). Theorem 1.2(b), p. 2528; logarithmic height in Section 1.1.1, p. 2527. T. Crmarić and V. Kovač, *On the irrationality of certain super-polynomially decaying series*, arXiv:[2504.18712v1](https://arxiv.org/abs/2504.18712v1) (2025), Lemma 4(a) and Remark 5. M. Coons, *(Non)Automaticity of number theoretic functions*, arXiv:[0810.3709v3](https://arxiv.org/abs/0810.3709v3), Theorem 3.3. This version’s numbering differs from the journal version cited above. K. Habiro, *Cyclotomic completions of polynomial rings*, Publ. Res. Inst. Math. Sci. **40** (2004), 1127–1146, Theorem 5.2, p. 1138.
 
 </div>

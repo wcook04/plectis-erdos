@@ -1567,6 +1567,14 @@ The proof in fact uses no rationality of $`D_N`$: the integer $`q`$ is chosen fr
 
 The first test is exactly even integrality of $`D_N`$, regardless of $`r`$. The fixed-progression test compares $`2^r\operatorname{dist}(D_N,\mathbb{Z})`$ with the bound on the remaining tail. When $`D_N`$ is nonintegral, the growth hypothesis makes the former larger than twice the latter at a suitable scale. Rewriting the test does not provide an estimate about the distribution of consecutive primes.
 
+<a id="long251:sec:signed-dirichlet-comparison"></a>
+
+## A signed comparison with more analytic data
+
+The totient companion [*The Binary Totient Series*](../../../paper/249/erdos249-totient-reasoning-surface.pdf), subsection “Signed interpolation with entire Dirichlet defects”, gives a comparison for the sparse-digit method. Around the totient sequence, signed integer changes bounded by any positive $`f(n)\to\infty`$ fill an interval at every reciprocal integer base. They can preserve the odd coefficients, every fixed eventual congruence, all arithmetic-progression Dirichlet singularities, and prescribed finite root-of-unity jets. The proof uses increasingly high finite differences on separated packets. The changing support has upper Banach density zero, while the full packet hulls have ordinary density zero and upper Banach density one.
+
+This theorem permits arbitrarily slow allowance growth and retains more analytic observations. It uses both signs, however, and does not subsume the one-sided prime-gap perturbation theorem proved here. In particular, it constructs comparison integer sequences, not consecutive prime gaps, and neither theorem supplies an irrationality proof for the actual prime series. The companion contains a full ordinary proof and the precise allowance-dependent block estimate; no infinite formal theorem is claimed.
+
 <a id="sec:erdos-251-complete-family-map"></a>
 
 # Conclusions

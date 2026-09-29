@@ -25,6 +25,10 @@ TIMEOUT_SECONDS = 360
 # Migrated without dropping any command from the GitHub release-surfaces job.
 # Optimized runs and module-based unittest invocations remain distinct gates.
 COMMANDS = (
+    ('research/experiments/round8_finite/test_round8_finite.py',),
+    ('-O', 'research/experiments/round8_finite/test_round8_finite.py'),
+    ('scripts/test_round8_native_port.py',),
+    ('-O', 'scripts/test_round8_native_port.py'),
     ('scripts/test_restatement_benchmark.py',),
     ('-O', 'scripts/test_restatement_benchmark.py'),
     ('scripts/test_research_decision.py',),
