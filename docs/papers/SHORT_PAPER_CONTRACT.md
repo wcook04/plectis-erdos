@@ -43,6 +43,50 @@ The source inventory and statement normalization come from `check_lean_paper_pro
 
 The theorem renderer currently accepts a lead with existing whole-statement formal support or a native-recorded ordinary proof. It refuses to promote `computed` or `cited` evidence into a proved lead theorem. Other dossier results remain available upstream but are not automatically selected. Supporting computed/cited content needs a separately typed renderer in a future amendment.
 
+## Editorial revision exchange
+
+The native writer can freeze selected manuscript sources for a further
+editorial pass. Give it the short paper and complete long record together:
+
+```sh
+python3 scripts/short_paper_writer.py packet --packet-id paper_revision \
+  --source paper/269/erdos-269-three-prime-running-lcm.tex \
+  --source paper/269/erdos269-running-lcm-reasoning-surface.tex \
+  --output /tmp/paper_revision.zip
+```
+
+The packet preserves exact input bytes, their digests, the coverage ledger and
+the native audit inputs. `source_head` supplies historical context; the frozen
+file digests identify the actual inputs, including any deliberately selected
+working-tree changes. Copy `RETURN.template.json` to `RETURN.json`, return
+the named edited sources, and declare every changed, added, moved or demoted
+statement by path, label, relation and reason. Preserve the labels, citation
+keys and bibliography credit. A returned audit program is inert evidence.
+
+```sh
+python3 scripts/short_paper_writer.py check-return \
+  --packet /tmp/paper_revision.zip /tmp/paper_revision_return.zip
+python3 scripts/test_paper_refinement.py
+```
+
+The checker never applies an edit or executes a returned program. A declared
+statement change or a failed manuscript audit produces
+`native_review_required`; that status is an unresolved obligation. Review the
+mathematical relation and complete formal support, integrate accepted changes
+into the authored long-record parts, reconcile the coverage rows, and rebuild
+the evidence, reading routes and PDFs. Retain ordinary arguments as such when
+their formalisation is incomplete; an unchanged conditional Lean deduction
+continues to carry its named-input limitation. Record the accepted delta and
+the exact source and statement digests in `docs/statement_migrations/`.
+
+An advisory writer and a tool-enabled author use the same acceptance boundary.
+Judge a revision by what a reader can now reconstruct, especially the hard
+step, motivating example and exact remainder. Word count and stylistic rates
+are diagnostics. Record returned writing suggestions as candidates with an
+example and limit, and adopt a rule only after reviewing a concrete improvement
+to this contract or the public writing skill. A smaller manuscript or a green
+mechanical check establishes no reader-comprehension result.
+
 ## Versioned authoring interface
 
 The shared `dossier/1` remains the base. The candidate `extensions.short_paper_v1` adds authored title, audience, lead choice, definitions, abstract statement, motivation, mechanism, hard step, proof outline, target relationship, boundary, attribution bibliography, and long-record route. Each semantic role has a nonempty array of `{path,start_line,end_line,sha256}` source spans. Paths are repository-relative. SHA-256 covers the exact UTF-8 bytes of the complete selected lines, including their original newlines.

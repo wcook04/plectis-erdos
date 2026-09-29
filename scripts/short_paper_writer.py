@@ -579,10 +579,19 @@ def main(argv: list[str] | None=None) -> int:
     parser.add_argument('--root',type=Path,default=ROOT)
     sub=parser.add_subparsers(dest='command',required=True)
     a=sub.add_parser('audit'); a.add_argument('--output',type=Path); a.add_argument('--system-id',default='claim-faithful-publication-systems')
+    p=sub.add_parser('packet',help='Freeze manuscript sources and native audit inputs for an advisory writer')
+    p.add_argument('--packet-id',required=True);p.add_argument('--source',action='append',required=True);p.add_argument('--output',type=Path,required=True)
+    p=sub.add_parser('check-return',help='Check an inert editorial return without applying it')
+    p.add_argument('--packet',type=Path,required=True);p.add_argument('returned',type=Path)
     for name in ['draft','check-draft']:
         p=sub.add_parser(name);p.add_argument('--dossier',type=Path,required=True);p.add_argument('--evidence',type=Path,required=True);p.add_argument('--output-dir',type=Path,required=True)
     args=parser.parse_args(argv)
     try:
+        if args.command in {'packet','check-return'}:
+            import paper_refinement
+            value=(paper_refinement.freeze(args.root,args.packet_id,args.source,args.output)
+                   if args.command=='packet' else paper_refinement.check_return(args.packet,args.returned))
+            print(json.dumps(value,indent=2));return 0
         if args.command=='audit':
             value=run_portfolio(args.root,args.system_id)
             payload=json.dumps(value,indent=2,ensure_ascii=False)+'\n'
