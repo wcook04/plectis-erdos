@@ -2,11 +2,11 @@
   "boundary": "Checks registered asserting environments and registered claim spans. Unregistered prose assertions, mathematical equivalence, correctness of ordinary proofs, Lean compilation, Comparator replay and PDF freshness are not established by this audit.",
   "global_findings": [],
   "input_sha256": {
-    "docs/paper_lean_coverage.json": "sha256:66822deb129b200213bbfe2ab7289e25092c71c9ef41acad91074ba227d4fc4a",
-    "docs/papers/corpus.json": "sha256:64658ca352b5607c2fa181baa9b1186a7820703615542509c55f607476267c4d",
+    "docs/paper_lean_coverage.json": "sha256:4a6b0487a5a1e0e2a2087c7762f497f0334d5d2d70c4696401a421d62e6b8a59",
+    "docs/papers/corpus.json": "sha256:9a38acdff78e9b58624694c4d2fb05529e04c6c349aeb85af29685c92e471d08",
     "docs/papers/full-text/erdos-1041-lemniscate-newton-flow.md": "sha256:ed6127fd4ef2d8a339c71c58889bd320715044b2a07e688cb8c7352a641fd45f",
     "docs/papers/full-text/erdos-1049-rational-base-lambert.md": "sha256:c84cdb30d9fa3ee0ae69a5b5109a93cfc0e357c89534dddf2757d8f569b135c8",
-    "docs/papers/full-text/erdos-243-reciprocal-tail-rigidity.md": "sha256:7a22c4b20182b55b02351b904296eb9ec9b9b6ebac2d1de882a4102f910cbe6c",
+    "docs/papers/full-text/erdos-243-reciprocal-tail-rigidity.md": "sha256:bfed6829a2531f0fd911bd8b458eadc88f5f5838a2df6a98c20dacd01cbe2e9e",
     "docs/papers/full-text/erdos-249-binary-totient-series.md": "sha256:abbf6c152910b0a2ef7ea932e1f6f4705d79a73b76cb593138674ed250b5b5d7",
     "docs/papers/full-text/erdos-251-prime-gap-dyadic-series.md": "sha256:8b8a68952c9df62f526d6bf3bcbc86f4529a9ff2a638d7be95fec4555b3660b3",
     "docs/papers/full-text/erdos-257-mersenne-support-subseries.md": "sha256:c0653a373ace4094587e6c219c13e4055231a0050981760c993b5693181d0c7c",
@@ -14,7 +14,7 @@
     "docs/papers/full-text/erdos-68-factorial-denominator-irrationality.md": "sha256:21489e168f860904585ae516a8a7ae00ccbed20b621895588ec593db3a3d1143",
     "docs/papers/full-text/erdos1041-lemniscate-reasoning-surface.md": "sha256:6ee00e14041e02f593d0ad850ea0079e790c7ddcea40f28ad909251a4585422c",
     "docs/papers/full-text/erdos1049-rational-base-lambert-reasoning-surface.md": "sha256:f98feaab52f2167bcb9e1c9a23844cb84a19c43cd0d2ad254339fcd45aac872a",
-    "docs/papers/full-text/erdos243-reciprocal-tail-reasoning-surface.md": "sha256:ffc023247166e825bc23cbca8f81dde53c5188b69023d5a55d80b60c595ccf72",
+    "docs/papers/full-text/erdos243-reciprocal-tail-reasoning-surface.md": "sha256:34d7e420b0268bd053511640a2633370d85a5786c12a6d607c93dbe9e6d9ae1d",
     "docs/papers/full-text/erdos249-totient-reasoning-surface.md": "sha256:b516794eccff2b6670865926e9d5bfcf88734bffc0b4bd4a8f43b7f0d06d50b5",
     "docs/papers/full-text/erdos251-prime-gap-reasoning-surface.md": "sha256:225008cbf7ee1330608f838a81f71719a5edb94a2fee62a4dc080be70b832e19",
     "docs/papers/full-text/erdos257-mersenne-reasoning-surface.md": "sha256:b2508298f0ca01900e1abf99deb6649d4ead5e3c83f46d549bf2971412dccd62",
@@ -54,8 +54,8 @@
     "paper/1041/erdos1041-lemniscate-reasoning-surface.tex": "sha256:df383fa768918554665481132badb8986c22aaa0dabfa8ca45ca42cf04e77dc7",
     "paper/1049/erdos-1049-rational-base-lambert.tex": "sha256:9ba198eea03d9db71d4b41cae304c627ebcbdf715f6b5e07ffe1b0b7e3e63e11",
     "paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex": "sha256:053d9288870abc63a26f77d50d1702d0fd81f241c3248e08e19ced350f20ad25",
-    "paper/243/erdos-243-reciprocal-tail-rigidity.tex": "sha256:3a2910fc8e47636c6438c7bf9deaa7582b7dbb0e58bc960618055bd5783a83ec",
-    "paper/243/erdos243-reciprocal-tail-reasoning-surface.tex": "sha256:e05756b2513617d5d33753d394edf8eb0953128755a51a0f6bdccea2edfab77e",
+    "paper/243/erdos-243-reciprocal-tail-rigidity.tex": "sha256:def93c4e0701c57d12f7207c27f0bda576187c02b2412a6e3f37cf77de4c246b",
+    "paper/243/erdos243-reciprocal-tail-reasoning-surface.tex": "sha256:b4414eee367b56d53d7d626c666c648af029ae67a019aeadfa185e10687f22c0",
     "paper/249/erdos-249-binary-totient-series.tex": "sha256:d71021aaee4593483ea4a8b77dce5a27c44df3e705470330753e6499fe0e160c",
     "paper/249/erdos249-totient-reasoning-surface.tex": "sha256:05232d93f348e1e5debc6d73c2e78b76c4d57dddfbb956d0f0a65b6f007e6c49",
     "paper/251/erdos-251-prime-gap-dyadic-series.tex": "sha256:4d63f86b6113dfad6f969385faaa97f2b48b95742379a1c7f6148d283d06add0",
@@ -93,7 +93,7 @@
     "paper/reasoning-parts/erdos1049/family_catalogue.tex": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
     "paper/reasoning-parts/erdos1049/preamble.tex": "sha256:debcd1fc16d1f3d8cbcd31772d581ce87cfe006527dcee48bd7e903389dd5ecd",
     "paper/reasoning-parts/erdos243/back.tex": "sha256:7c0796754f02f5feb9aadd6a37d7145d65bd53ddb0779dba48832b3bbb06fcb2",
-    "paper/reasoning-parts/erdos243/core.tex": "sha256:2ad52ca0fdae8ae20c8e6a0a5b566aba1d4db51400f66486dc23083ff5f9cfcd",
+    "paper/reasoning-parts/erdos243/core.tex": "sha256:f552f4061fffe086633eacc5368f12c144d5e069a34bbfe063ed6deedbb9b3ea",
     "paper/reasoning-parts/erdos243/family_catalogue.tex": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
     "paper/reasoning-parts/erdos243/preamble.tex": "sha256:4d57736f08adaa4a497ec4ea18b5caa78555e113a130f87ef149433401eda6a9",
     "paper/reasoning-parts/erdos249/a249_front.tex": "sha256:f11b7cc697963079cee8c3ab1dee59aa4fa974484a2ae1c5bba674d3330a7b1d",
@@ -144,7 +144,7 @@
     "docs/reading-edition/RECORDS.md": "sha256:1b049d8adff23c15cf56bc707e06c514b430a06a4a64bf144aebc1f034de054d",
     "docs/reading-edition/records/erdos1041.md": "sha256:a9a921c56ffc3bd9bec2e2d38182e12d60f17a6ae111fb42ba0f951fe988e399",
     "docs/reading-edition/records/erdos1049.md": "sha256:b88afcdba0f5c48caa24f499d267b2f6e52093421aac2e17b95519a3cdad9565",
-    "docs/reading-edition/records/erdos243.md": "sha256:220277a0a808bd53fa92e7d90945350a9e9988b751b9bdbf216b63348aa12981",
+    "docs/reading-edition/records/erdos243.md": "sha256:4cc84eca535a82c5d54888f24d518b6e3e4b149c5451a5758223a0f50a1a202f",
     "docs/reading-edition/records/erdos249.md": "sha256:593a7a69e91ec2a3203ce6762e33bf672c6b744f5a7bc6bfe002094fcba46909",
     "docs/reading-edition/records/erdos251.md": "sha256:2c9fe42bd69a6c964fe06b3b54d50d2609654ac34cf8df9da191e897a0364bf5",
     "docs/reading-edition/records/erdos257.md": "sha256:cf4c26660013e6a9994b9305f990d2b1ee3c62632d5804b7b04ace793b7ba912",
@@ -1080,9 +1080,9 @@
             {
               "basis": "partial_declaration_overlap",
               "location": {
-                "end_line": 2320,
+                "end_line": 2321,
                 "label": "long243:res:strausbounded",
-                "line": 2307,
+                "line": 2308,
                 "path": "paper/reasoning-parts/erdos243/core.tex"
               },
               "long_claim": "erdos243-reciprocal-tail-reasoning-surface#long243:res:strausbounded",
@@ -1098,9 +1098,9 @@
           "matches": [],
           "short_claim": "erdos-243-reciprocal-tail-rigidity#res:originalbounded",
           "short_location": {
-            "end_line": 88,
+            "end_line": 573,
             "label": "res:originalbounded",
-            "line": 80,
+            "line": 565,
             "path": "paper/243/erdos-243-reciprocal-tail-rigidity.tex"
           },
           "state": "unresolved",
@@ -1111,9 +1111,9 @@
             {
               "basis": "complete_declaration_set",
               "location": {
-                "end_line": 3109,
+                "end_line": 3110,
                 "label": "long243:res:bounded",
-                "line": 3096,
+                "line": 3097,
                 "path": "paper/reasoning-parts/erdos243/core.tex"
               },
               "long_claim": "erdos243-reciprocal-tail-reasoning-surface#long243:res:bounded",
@@ -1127,9 +1127,9 @@
           "ledger_lean_status": "exact",
           "long_locations": [
             {
-              "end_line": 3109,
+              "end_line": 3110,
               "label": "long243:res:bounded",
-              "line": 3096,
+              "line": 3097,
               "path": "paper/reasoning-parts/erdos243/core.tex"
             }
           ],
@@ -1171,9 +1171,9 @@
           ],
           "short_claim": "erdos-243-reciprocal-tail-rigidity#res:bounded",
           "short_location": {
-            "end_line": 145,
+            "end_line": 469,
             "label": "res:bounded",
-            "line": 132,
+            "line": 456,
             "path": "paper/243/erdos-243-reciprocal-tail-rigidity.tex"
           },
           "state": "registered_evidence_linked",
@@ -1184,9 +1184,9 @@
             {
               "basis": "label_alias",
               "location": {
-                "end_line": 3145,
+                "end_line": 3146,
                 "label": "long243:res:cor",
-                "line": 3141,
+                "line": 3142,
                 "path": "paper/reasoning-parts/erdos243/core.tex"
               },
               "long_claim": "erdos243-reciprocal-tail-reasoning-surface#long243:res:cor",
@@ -1200,9 +1200,9 @@
           "matches": [],
           "short_claim": "erdos-243-reciprocal-tail-rigidity#res:cor",
           "short_location": {
-            "end_line": 208,
+            "end_line": 551,
             "label": "res:cor",
-            "line": 205,
+            "line": 548,
             "path": "paper/243/erdos-243-reciprocal-tail-rigidity.tex"
           },
           "state": "unresolved",
@@ -1213,9 +1213,9 @@
             {
               "basis": "label_alias",
               "location": {
-                "end_line": 1058,
+                "end_line": 1059,
                 "label": "long243:res:update",
-                "line": 1052,
+                "line": 1053,
                 "path": "paper/reasoning-parts/erdos243/core.tex"
               },
               "long_claim": "erdos243-reciprocal-tail-reasoning-surface#long243:res:update",
@@ -1229,9 +1229,9 @@
           "matches": [],
           "short_claim": "erdos-243-reciprocal-tail-rigidity#res:update",
           "short_location": {
-            "end_line": 233,
+            "end_line": 193,
             "label": "res:update",
-            "line": 227,
+            "line": 187,
             "path": "paper/243/erdos-243-reciprocal-tail-rigidity.tex"
           },
           "state": "unresolved",
@@ -1242,9 +1242,9 @@
             {
               "basis": "label_alias",
               "location": {
-                "end_line": 1400,
+                "end_line": 1401,
                 "label": "long243:res:absorb",
-                "line": 1395,
+                "line": 1396,
                 "path": "paper/reasoning-parts/erdos243/core.tex"
               },
               "long_claim": "erdos243-reciprocal-tail-reasoning-surface#long243:res:absorb",
@@ -1258,9 +1258,9 @@
           "matches": [],
           "short_claim": "erdos-243-reciprocal-tail-rigidity#res:absorb",
           "short_location": {
-            "end_line": 243,
+            "end_line": 209,
             "label": "res:absorb",
-            "line": 239,
+            "line": 205,
             "path": "paper/243/erdos-243-reciprocal-tail-rigidity.tex"
           },
           "state": "unresolved",
@@ -1271,9 +1271,9 @@
             {
               "basis": "label_alias",
               "location": {
-                "end_line": 1234,
+                "end_line": 1235,
                 "label": "long243:res:step",
-                "line": 1228,
+                "line": 1229,
                 "path": "paper/reasoning-parts/erdos243/core.tex"
               },
               "long_claim": "erdos243-reciprocal-tail-reasoning-surface#long243:res:step",
@@ -1289,9 +1289,9 @@
           "matches": [],
           "short_claim": "erdos-243-reciprocal-tail-rigidity#res:step",
           "short_location": {
-            "end_line": 255,
+            "end_line": 221,
             "label": "res:step",
-            "line": 251,
+            "line": 217,
             "path": "paper/243/erdos-243-reciprocal-tail-rigidity.tex"
           },
           "state": "unresolved",
@@ -1302,9 +1302,9 @@
             {
               "basis": "label_alias",
               "location": {
-                "end_line": 2868,
+                "end_line": 2869,
                 "label": "long243:res:crt",
-                "line": 2865,
+                "line": 2866,
                 "path": "paper/reasoning-parts/erdos243/core.tex"
               },
               "long_claim": "erdos243-reciprocal-tail-reasoning-surface#long243:res:crt",
@@ -1318,9 +1318,9 @@
           "matches": [],
           "short_claim": "erdos-243-reciprocal-tail-rigidity#res:crt",
           "short_location": {
-            "end_line": 270,
+            "end_line": 498,
             "label": "res:crt",
-            "line": 267,
+            "line": 495,
             "path": "paper/243/erdos-243-reciprocal-tail-rigidity.tex"
           },
           "state": "unresolved",
@@ -1331,9 +1331,9 @@
             {
               "basis": "label_alias",
               "location": {
-                "end_line": 2908,
+                "end_line": 2909,
                 "label": "long243:res:barrier",
-                "line": 2903,
+                "line": 2904,
                 "path": "paper/reasoning-parts/erdos243/core.tex"
               },
               "long_claim": "erdos243-reciprocal-tail-reasoning-surface#long243:res:barrier",
@@ -1347,9 +1347,9 @@
           "matches": [],
           "short_claim": "erdos-243-reciprocal-tail-rigidity#res:barrier",
           "short_location": {
-            "end_line": 293,
+            "end_line": 513,
             "label": "res:barrier",
-            "line": 289,
+            "line": 509,
             "path": "paper/243/erdos-243-reciprocal-tail-rigidity.tex"
           },
           "state": "unresolved",
@@ -1360,9 +1360,9 @@
             {
               "basis": "complete_declaration_set",
               "location": {
-                "end_line": 2961,
+                "end_line": 2962,
                 "label": "long243:res:reduced",
-                "line": 2957,
+                "line": 2958,
                 "path": "paper/reasoning-parts/erdos243/core.tex"
               },
               "long_claim": "erdos243-reciprocal-tail-reasoning-surface#long243:res:reduced",
@@ -1376,9 +1376,9 @@
           "ledger_lean_status": "exact",
           "long_locations": [
             {
-              "end_line": 2961,
+              "end_line": 2962,
               "label": "long243:res:reduced",
-              "line": 2957,
+              "line": 2958,
               "path": "paper/reasoning-parts/erdos243/core.tex"
             }
           ],
@@ -1420,9 +1420,9 @@
           ],
           "short_claim": "erdos-243-reciprocal-tail-rigidity#res:reduced",
           "short_location": {
-            "end_line": 319,
+            "end_line": 246,
             "label": "res:reduced",
-            "line": 315,
+            "line": 242,
             "path": "paper/243/erdos-243-reciprocal-tail-rigidity.tex"
           },
           "state": "registered_evidence_linked",
@@ -1433,9 +1433,9 @@
             {
               "basis": "complete_declaration_set",
               "location": {
-                "end_line": 3010,
+                "end_line": 3011,
                 "label": "long243:res:gcdstab",
-                "line": 3003,
+                "line": 3004,
                 "path": "paper/reasoning-parts/erdos243/core.tex"
               },
               "long_claim": "erdos243-reciprocal-tail-reasoning-surface#long243:res:gcdstab",
@@ -1449,9 +1449,9 @@
           "ledger_lean_status": "exact",
           "long_locations": [
             {
-              "end_line": 3010,
+              "end_line": 3011,
               "label": "long243:res:gcdstab",
-              "line": 3003,
+              "line": 3004,
               "path": "paper/reasoning-parts/erdos243/core.tex"
             }
           ],
@@ -1493,9 +1493,9 @@
           ],
           "short_claim": "erdos-243-reciprocal-tail-rigidity#res:gcdstab",
           "short_location": {
-            "end_line": 332,
+            "end_line": 484,
             "label": "res:gcdstab",
-            "line": 327,
+            "line": 479,
             "path": "paper/243/erdos-243-reciprocal-tail-rigidity.tex"
           },
           "state": "registered_evidence_linked",
@@ -1506,9 +1506,9 @@
             {
               "basis": "complete_declaration_set",
               "location": {
-                "end_line": 3201,
+                "end_line": 3202,
                 "label": "long243:res:mass",
-                "line": 3193,
+                "line": 3194,
                 "path": "paper/reasoning-parts/erdos243/core.tex"
               },
               "long_claim": "erdos243-reciprocal-tail-reasoning-surface#long243:res:mass",
@@ -1522,9 +1522,9 @@
           "ledger_lean_status": "exact",
           "long_locations": [
             {
-              "end_line": 3201,
+              "end_line": 3202,
               "label": "long243:res:mass",
-              "line": 3193,
+              "line": 3194,
               "path": "paper/reasoning-parts/erdos243/core.tex"
             }
           ],
@@ -1566,9 +1566,9 @@
           ],
           "short_claim": "erdos-243-reciprocal-tail-rigidity#res:massscalar",
           "short_location": {
-            "end_line": 462,
+            "end_line": 650,
             "label": "res:massscalar",
-            "line": 455,
+            "line": 643,
             "path": "paper/243/erdos-243-reciprocal-tail-rigidity.tex"
           },
           "state": "registered_evidence_linked",
@@ -1579,9 +1579,9 @@
             {
               "basis": "complete_declaration_set",
               "location": {
-                "end_line": 1542,
+                "end_line": 1543,
                 "label": "long243:res:weightedrecord",
-                "line": 1535,
+                "line": 1536,
                 "path": "paper/reasoning-parts/erdos243/core.tex"
               },
               "long_claim": "erdos243-reciprocal-tail-reasoning-surface#long243:res:weightedrecord",
@@ -1595,9 +1595,9 @@
           "ledger_lean_status": "exact",
           "long_locations": [
             {
-              "end_line": 1542,
+              "end_line": 1543,
               "label": "long243:res:weightedrecord",
-              "line": 1535,
+              "line": 1536,
               "path": "paper/reasoning-parts/erdos243/core.tex"
             }
           ],
@@ -1639,9 +1639,9 @@
           ],
           "short_claim": "erdos-243-reciprocal-tail-rigidity#res:weightedrecord",
           "short_location": {
-            "end_line": 544,
+            "end_line": 732,
             "label": "res:weightedrecord",
-            "line": 536,
+            "line": 724,
             "path": "paper/243/erdos-243-reciprocal-tail-rigidity.tex"
           },
           "state": "registered_evidence_linked",
@@ -1656,9 +1656,9 @@
           "matches": [],
           "short_claim": "erdos-243-reciprocal-tail-rigidity#res:lcmbounded",
           "short_location": {
-            "end_line": 651,
+            "end_line": 839,
             "label": "res:lcmbounded",
-            "line": 643,
+            "line": 831,
             "path": "paper/243/erdos-243-reciprocal-tail-rigidity.tex"
           },
           "state": "unresolved",
@@ -1669,9 +1669,9 @@
             {
               "basis": "partial_declaration_overlap",
               "location": {
-                "end_line": 2396,
+                "end_line": 2397,
                 "label": "long243:res:onethreshold",
-                "line": 2384,
+                "line": 2385,
                 "path": "paper/reasoning-parts/erdos243/core.tex"
               },
               "long_claim": "erdos243-reciprocal-tail-reasoning-surface#long243:res:onethreshold",
@@ -1688,9 +1688,9 @@
           "matches": [],
           "short_claim": "erdos-243-reciprocal-tail-rigidity#res:inclusiveone",
           "short_location": {
-            "end_line": 720,
+            "end_line": 608,
             "label": "res:inclusiveone",
-            "line": 711,
+            "line": 599,
             "path": "paper/243/erdos-243-reciprocal-tail-rigidity.tex"
           },
           "state": "unresolved",
@@ -1701,9 +1701,9 @@
             {
               "basis": "complete_declaration_set",
               "location": {
-                "end_line": 114,
+                "end_line": 115,
                 "label": "long243:res:cubicrate",
-                "line": 111,
+                "line": 112,
                 "path": "paper/reasoning-parts/erdos243/core.tex"
               },
               "long_claim": "erdos243-reciprocal-tail-reasoning-surface#long243:res:cubicrate",
@@ -1717,9 +1717,9 @@
           "ledger_lean_status": "exact",
           "long_locations": [
             {
-              "end_line": 114,
+              "end_line": 115,
               "label": "long243:res:cubicrate",
-              "line": 111,
+              "line": 112,
               "path": "paper/reasoning-parts/erdos243/core.tex"
             }
           ],
@@ -1761,9 +1761,9 @@
           ],
           "short_claim": "erdos-243-reciprocal-tail-rigidity#res:cubicrate",
           "short_location": {
-            "end_line": 740,
+            "end_line": 86,
             "label": "res:cubicrate",
-            "line": 734,
+            "line": 80,
             "path": "paper/243/erdos-243-reciprocal-tail-rigidity.tex"
           },
           "state": "registered_evidence_linked",
@@ -1774,9 +1774,9 @@
             {
               "basis": "complete_declaration_set",
               "location": {
-                "end_line": 3304,
+                "end_line": 3305,
                 "label": "long243:res:frontier",
-                "line": 3288,
+                "line": 3289,
                 "path": "paper/reasoning-parts/erdos243/core.tex"
               },
               "long_claim": "erdos243-reciprocal-tail-reasoning-surface#long243:res:frontier",
@@ -1790,9 +1790,9 @@
           "ledger_lean_status": "exact",
           "long_locations": [
             {
-              "end_line": 3304,
+              "end_line": 3305,
               "label": "long243:res:frontier",
-              "line": 3288,
+              "line": 3289,
               "path": "paper/reasoning-parts/erdos243/core.tex"
             }
           ],
@@ -1834,9 +1834,9 @@
           ],
           "short_claim": "erdos-243-reciprocal-tail-rigidity#res:frontier",
           "short_location": {
-            "end_line": 836,
+            "end_line": 889,
             "label": "res:frontier",
-            "line": 828,
+            "line": 881,
             "path": "paper/243/erdos-243-reciprocal-tail-rigidity.tex"
           },
           "state": "registered_evidence_linked",
@@ -1851,9 +1851,9 @@
           "matches": [],
           "short_claim": "erdos-243-reciprocal-tail-rigidity#res:weights",
           "short_location": {
-            "end_line": 896,
+            "end_line": 923,
             "label": "res:weights",
-            "line": 891,
+            "line": 918,
             "path": "paper/243/erdos-243-reciprocal-tail-rigidity.tex"
           },
           "state": "unresolved",
@@ -1864,9 +1864,9 @@
             {
               "basis": "label_alias",
               "location": {
-                "end_line": 3848,
+                "end_line": 3849,
                 "label": "long243:res:residue",
-                "line": 3845,
+                "line": 3846,
                 "path": "paper/reasoning-parts/erdos243/core.tex"
               },
               "long_claim": "erdos243-reciprocal-tail-reasoning-surface#long243:res:residue",
@@ -1882,9 +1882,9 @@
           "matches": [],
           "short_claim": "erdos-243-reciprocal-tail-rigidity#res:residue",
           "short_location": {
-            "end_line": 1110,
+            "end_line": 1035,
             "label": "res:residue",
-            "line": 1107,
+            "line": 1032,
             "path": "paper/243/erdos-243-reciprocal-tail-rigidity.tex"
           },
           "state": "unresolved",
@@ -1897,9 +1897,9 @@
           "detail": "No accepted complete evidence match or hash-bound authored proof link. This is a correspondence gap, not a finding that the mathematics is false or absent.",
           "long_locations": [
             {
-              "end_line": 2320,
+              "end_line": 2321,
               "label": "long243:res:strausbounded",
-              "line": 2307,
+              "line": 2308,
               "path": "paper/reasoning-parts/erdos243/core.tex"
             }
           ],
@@ -1907,9 +1907,9 @@
           "severity": "error",
           "short_claim": "erdos-243-reciprocal-tail-rigidity#res:originalbounded",
           "short_location": {
-            "end_line": 88,
+            "end_line": 573,
             "label": "res:originalbounded",
-            "line": 80,
+            "line": 565,
             "path": "paper/243/erdos-243-reciprocal-tail-rigidity.tex"
           }
         },
@@ -1918,9 +1918,9 @@
           "detail": "No accepted complete evidence match or hash-bound authored proof link. This is a correspondence gap, not a finding that the mathematics is false or absent.",
           "long_locations": [
             {
-              "end_line": 3145,
+              "end_line": 3146,
               "label": "long243:res:cor",
-              "line": 3141,
+              "line": 3142,
               "path": "paper/reasoning-parts/erdos243/core.tex"
             }
           ],
@@ -1928,8 +1928,50 @@
           "severity": "error",
           "short_claim": "erdos-243-reciprocal-tail-rigidity#res:cor",
           "short_location": {
-            "end_line": 208,
+            "end_line": 551,
             "label": "res:cor",
+            "line": 548,
+            "path": "paper/243/erdos-243-reciprocal-tail-rigidity.tex"
+          }
+        },
+        {
+          "code": "unresolved_short_long_link",
+          "detail": "No accepted complete evidence match or hash-bound authored proof link. This is a correspondence gap, not a finding that the mathematics is false or absent.",
+          "long_locations": [
+            {
+              "end_line": 1059,
+              "label": "long243:res:update",
+              "line": 1053,
+              "path": "paper/reasoning-parts/erdos243/core.tex"
+            }
+          ],
+          "long_record": "paper/243/erdos243-reciprocal-tail-reasoning-surface.tex",
+          "severity": "error",
+          "short_claim": "erdos-243-reciprocal-tail-rigidity#res:update",
+          "short_location": {
+            "end_line": 193,
+            "label": "res:update",
+            "line": 187,
+            "path": "paper/243/erdos-243-reciprocal-tail-rigidity.tex"
+          }
+        },
+        {
+          "code": "unresolved_short_long_link",
+          "detail": "No accepted complete evidence match or hash-bound authored proof link. This is a correspondence gap, not a finding that the mathematics is false or absent.",
+          "long_locations": [
+            {
+              "end_line": 1401,
+              "label": "long243:res:absorb",
+              "line": 1396,
+              "path": "paper/reasoning-parts/erdos243/core.tex"
+            }
+          ],
+          "long_record": "paper/243/erdos243-reciprocal-tail-reasoning-surface.tex",
+          "severity": "error",
+          "short_claim": "erdos-243-reciprocal-tail-rigidity#res:absorb",
+          "short_location": {
+            "end_line": 209,
+            "label": "res:absorb",
             "line": 205,
             "path": "paper/243/erdos-243-reciprocal-tail-rigidity.tex"
           }
@@ -1939,51 +1981,9 @@
           "detail": "No accepted complete evidence match or hash-bound authored proof link. This is a correspondence gap, not a finding that the mathematics is false or absent.",
           "long_locations": [
             {
-              "end_line": 1058,
-              "label": "long243:res:update",
-              "line": 1052,
-              "path": "paper/reasoning-parts/erdos243/core.tex"
-            }
-          ],
-          "long_record": "paper/243/erdos243-reciprocal-tail-reasoning-surface.tex",
-          "severity": "error",
-          "short_claim": "erdos-243-reciprocal-tail-rigidity#res:update",
-          "short_location": {
-            "end_line": 233,
-            "label": "res:update",
-            "line": 227,
-            "path": "paper/243/erdos-243-reciprocal-tail-rigidity.tex"
-          }
-        },
-        {
-          "code": "unresolved_short_long_link",
-          "detail": "No accepted complete evidence match or hash-bound authored proof link. This is a correspondence gap, not a finding that the mathematics is false or absent.",
-          "long_locations": [
-            {
-              "end_line": 1400,
-              "label": "long243:res:absorb",
-              "line": 1395,
-              "path": "paper/reasoning-parts/erdos243/core.tex"
-            }
-          ],
-          "long_record": "paper/243/erdos243-reciprocal-tail-reasoning-surface.tex",
-          "severity": "error",
-          "short_claim": "erdos-243-reciprocal-tail-rigidity#res:absorb",
-          "short_location": {
-            "end_line": 243,
-            "label": "res:absorb",
-            "line": 239,
-            "path": "paper/243/erdos-243-reciprocal-tail-rigidity.tex"
-          }
-        },
-        {
-          "code": "unresolved_short_long_link",
-          "detail": "No accepted complete evidence match or hash-bound authored proof link. This is a correspondence gap, not a finding that the mathematics is false or absent.",
-          "long_locations": [
-            {
-              "end_line": 1234,
+              "end_line": 1235,
               "label": "long243:res:step",
-              "line": 1228,
+              "line": 1229,
               "path": "paper/reasoning-parts/erdos243/core.tex"
             }
           ],
@@ -1991,9 +1991,9 @@
           "severity": "error",
           "short_claim": "erdos-243-reciprocal-tail-rigidity#res:step",
           "short_location": {
-            "end_line": 255,
+            "end_line": 221,
             "label": "res:step",
-            "line": 251,
+            "line": 217,
             "path": "paper/243/erdos-243-reciprocal-tail-rigidity.tex"
           }
         },
@@ -2002,9 +2002,9 @@
           "detail": "No accepted complete evidence match or hash-bound authored proof link. This is a correspondence gap, not a finding that the mathematics is false or absent.",
           "long_locations": [
             {
-              "end_line": 2868,
+              "end_line": 2869,
               "label": "long243:res:crt",
-              "line": 2865,
+              "line": 2866,
               "path": "paper/reasoning-parts/erdos243/core.tex"
             }
           ],
@@ -2012,9 +2012,9 @@
           "severity": "error",
           "short_claim": "erdos-243-reciprocal-tail-rigidity#res:crt",
           "short_location": {
-            "end_line": 270,
+            "end_line": 498,
             "label": "res:crt",
-            "line": 267,
+            "line": 495,
             "path": "paper/243/erdos-243-reciprocal-tail-rigidity.tex"
           }
         },
@@ -2023,9 +2023,9 @@
           "detail": "No accepted complete evidence match or hash-bound authored proof link. This is a correspondence gap, not a finding that the mathematics is false or absent.",
           "long_locations": [
             {
-              "end_line": 2908,
+              "end_line": 2909,
               "label": "long243:res:barrier",
-              "line": 2903,
+              "line": 2904,
               "path": "paper/reasoning-parts/erdos243/core.tex"
             }
           ],
@@ -2033,9 +2033,9 @@
           "severity": "error",
           "short_claim": "erdos-243-reciprocal-tail-rigidity#res:barrier",
           "short_location": {
-            "end_line": 293,
+            "end_line": 513,
             "label": "res:barrier",
-            "line": 289,
+            "line": 509,
             "path": "paper/243/erdos-243-reciprocal-tail-rigidity.tex"
           }
         },
@@ -2047,9 +2047,9 @@
           "severity": "error",
           "short_claim": "erdos-243-reciprocal-tail-rigidity#res:lcmbounded",
           "short_location": {
-            "end_line": 651,
+            "end_line": 839,
             "label": "res:lcmbounded",
-            "line": 643,
+            "line": 831,
             "path": "paper/243/erdos-243-reciprocal-tail-rigidity.tex"
           }
         },
@@ -2058,9 +2058,9 @@
           "detail": "No accepted complete evidence match or hash-bound authored proof link. This is a correspondence gap, not a finding that the mathematics is false or absent.",
           "long_locations": [
             {
-              "end_line": 2396,
+              "end_line": 2397,
               "label": "long243:res:onethreshold",
-              "line": 2384,
+              "line": 2385,
               "path": "paper/reasoning-parts/erdos243/core.tex"
             }
           ],
@@ -2068,9 +2068,9 @@
           "severity": "error",
           "short_claim": "erdos-243-reciprocal-tail-rigidity#res:inclusiveone",
           "short_location": {
-            "end_line": 720,
+            "end_line": 608,
             "label": "res:inclusiveone",
-            "line": 711,
+            "line": 599,
             "path": "paper/243/erdos-243-reciprocal-tail-rigidity.tex"
           }
         },
@@ -2082,9 +2082,9 @@
           "severity": "error",
           "short_claim": "erdos-243-reciprocal-tail-rigidity#res:weights",
           "short_location": {
-            "end_line": 896,
+            "end_line": 923,
             "label": "res:weights",
-            "line": 891,
+            "line": 918,
             "path": "paper/243/erdos-243-reciprocal-tail-rigidity.tex"
           }
         },
@@ -2093,9 +2093,9 @@
           "detail": "No accepted complete evidence match or hash-bound authored proof link. This is a correspondence gap, not a finding that the mathematics is false or absent.",
           "long_locations": [
             {
-              "end_line": 3848,
+              "end_line": 3849,
               "label": "long243:res:residue",
-              "line": 3845,
+              "line": 3846,
               "path": "paper/reasoning-parts/erdos243/core.tex"
             }
           ],
@@ -2103,9 +2103,9 @@
           "severity": "error",
           "short_claim": "erdos-243-reciprocal-tail-rigidity#res:residue",
           "short_location": {
-            "end_line": 1110,
+            "end_line": 1035,
             "label": "res:residue",
-            "line": 1107,
+            "line": 1032,
             "path": "paper/243/erdos-243-reciprocal-tail-rigidity.tex"
           }
         }
@@ -2113,414 +2113,414 @@
       "long_only_or_unmatched": [
         {
           "location": {
-            "end_line": 124,
+            "end_line": 125,
             "label": "long243:res:nonintegralrate",
-            "line": 119,
+            "line": 120,
             "path": "paper/reasoning-parts/erdos243/core.tex"
           },
           "long_claim": "erdos243-reciprocal-tail-reasoning-surface#long243:res:nonintegralrate"
         },
         {
           "location": {
-            "end_line": 180,
+            "end_line": 181,
             "label": "long243:res:cubicexclusion",
-            "line": 168,
+            "line": 169,
             "path": "paper/reasoning-parts/erdos243/core.tex"
           },
           "long_claim": "erdos243-reciprocal-tail-reasoning-surface#long243:res:cubicexclusion"
         },
         {
           "location": {
-            "end_line": 243,
+            "end_line": 244,
             "label": "long243:res:periodicobstruction",
-            "line": 238,
+            "line": 239,
             "path": "paper/reasoning-parts/erdos243/core.tex"
           },
           "long_claim": "erdos243-reciprocal-tail-reasoning-surface#long243:res:periodicobstruction"
         },
         {
           "location": {
-            "end_line": 274,
+            "end_line": 275,
             "label": "long243:res:gcdshape",
-            "line": 261,
+            "line": 262,
             "path": "paper/reasoning-parts/erdos243/core.tex"
           },
           "long_claim": "erdos243-reciprocal-tail-reasoning-surface#long243:res:gcdshape"
         },
         {
           "location": {
-            "end_line": 318,
+            "end_line": 319,
             "label": "long243:res:reduciblecase",
-            "line": 314,
+            "line": 315,
             "path": "paper/reasoning-parts/erdos243/core.tex"
           },
           "long_claim": "erdos243-reciprocal-tail-reasoning-surface#long243:res:reduciblecase"
         },
         {
           "location": {
-            "end_line": 350,
+            "end_line": 351,
             "label": "long243:res:squarespec",
-            "line": 345,
+            "line": 346,
             "path": "paper/reasoning-parts/erdos243/core.tex"
           },
           "long_claim": "erdos243-reciprocal-tail-reasoning-surface#long243:res:squarespec"
         },
         {
           "location": {
-            "end_line": 399,
+            "end_line": 400,
             "label": "long243:res:transportsquare",
-            "line": 395,
+            "line": 396,
             "path": "paper/reasoning-parts/erdos243/core.tex"
           },
           "long_claim": "erdos243-reciprocal-tail-reasoning-surface#long243:res:transportsquare"
         },
         {
           "location": {
-            "end_line": 441,
+            "end_line": 442,
             "label": "long243:res:scaletwelve",
-            "line": 437,
+            "line": 438,
             "path": "paper/reasoning-parts/erdos243/core.tex"
           },
           "long_claim": "erdos243-reciprocal-tail-reasoning-surface#long243:res:scaletwelve"
         },
         {
           "location": {
-            "end_line": 527,
+            "end_line": 528,
             "label": "long243:res:modseven",
-            "line": 521,
+            "line": 522,
             "path": "paper/reasoning-parts/erdos243/core.tex"
           },
           "long_claim": "erdos243-reciprocal-tail-reasoning-surface#long243:res:modseven"
         },
         {
           "location": {
-            "end_line": 604,
+            "end_line": 605,
             "label": "long243:res:extraction",
-            "line": 597,
+            "line": 598,
             "path": "paper/reasoning-parts/erdos243/core.tex"
           },
           "long_claim": "erdos243-reciprocal-tail-reasoning-surface#long243:res:extraction"
         },
         {
           "location": {
-            "end_line": 675,
+            "end_line": 676,
             "label": "long243:res:tailratio",
-            "line": 667,
+            "line": 668,
             "path": "paper/reasoning-parts/erdos243/core.tex"
           },
           "long_claim": "erdos243-reciprocal-tail-reasoning-surface#long243:res:tailratio"
         },
         {
           "location": {
-            "end_line": 1058,
+            "end_line": 1059,
             "label": "long243:res:update",
-            "line": 1052,
+            "line": 1053,
             "path": "paper/reasoning-parts/erdos243/core.tex"
           },
           "long_claim": "erdos243-reciprocal-tail-reasoning-surface#long243:res:update"
         },
         {
           "location": {
-            "end_line": 1166,
+            "end_line": 1167,
             "label": "long243:res:scale",
-            "line": 1157,
+            "line": 1158,
             "path": "paper/reasoning-parts/erdos243/core.tex"
           },
           "long_claim": "erdos243-reciprocal-tail-reasoning-surface#long243:res:scale"
         },
         {
           "location": {
-            "end_line": 1202,
+            "end_line": 1203,
             "label": "long243:res:defect",
-            "line": 1192,
+            "line": 1193,
             "path": "paper/reasoning-parts/erdos243/core.tex"
           },
           "long_claim": "erdos243-reciprocal-tail-reasoning-surface#long243:res:defect"
         },
         {
           "location": {
-            "end_line": 1234,
+            "end_line": 1235,
             "label": "long243:res:step",
-            "line": 1228,
+            "line": 1229,
             "path": "paper/reasoning-parts/erdos243/core.tex"
           },
           "long_claim": "erdos243-reciprocal-tail-reasoning-surface#long243:res:step"
         },
         {
           "location": {
-            "end_line": 1265,
+            "end_line": 1266,
             "label": "long243:res:secondorder",
-            "line": 1259,
+            "line": 1260,
             "path": "paper/reasoning-parts/erdos243/core.tex"
           },
           "long_claim": "erdos243-reciprocal-tail-reasoning-surface#long243:res:secondorder"
         },
         {
           "location": {
-            "end_line": 1295,
+            "end_line": 1296,
             "label": "long243:res:curvature",
-            "line": 1289,
+            "line": 1290,
             "path": "paper/reasoning-parts/erdos243/core.tex"
           },
           "long_claim": "erdos243-reciprocal-tail-reasoning-surface#long243:res:curvature"
         },
         {
           "location": {
-            "end_line": 1363,
+            "end_line": 1364,
             "label": "long243:res:oldmodulussaturation",
-            "line": 1357,
+            "line": 1358,
             "path": "paper/reasoning-parts/erdos243/core.tex"
           },
           "long_claim": "erdos243-reciprocal-tail-reasoning-surface#long243:res:oldmodulussaturation"
         },
         {
           "location": {
-            "end_line": 1384,
+            "end_line": 1385,
             "label": "long243:res:eventual",
-            "line": 1379,
+            "line": 1380,
             "path": "paper/reasoning-parts/erdos243/core.tex"
           },
           "long_claim": "erdos243-reciprocal-tail-reasoning-surface#long243:res:eventual"
         },
         {
           "location": {
-            "end_line": 1400,
+            "end_line": 1401,
             "label": "long243:res:absorb",
-            "line": 1395,
+            "line": 1396,
             "path": "paper/reasoning-parts/erdos243/core.tex"
           },
           "long_claim": "erdos243-reciprocal-tail-reasoning-surface#long243:res:absorb"
         },
         {
           "location": {
-            "end_line": 1491,
+            "end_line": 1492,
             "label": "long243:res:arithmeticrecord",
-            "line": 1475,
+            "line": 1476,
             "path": "paper/reasoning-parts/erdos243/core.tex"
           },
           "long_claim": "erdos243-reciprocal-tail-reasoning-surface#long243:res:arithmeticrecord"
         },
         {
           "location": {
-            "end_line": 1754,
+            "end_line": 1755,
             "label": "long243:res:valuationtransition",
-            "line": 1741,
+            "line": 1742,
             "path": "paper/reasoning-parts/erdos243/core.tex"
           },
           "long_claim": "erdos243-reciprocal-tail-reasoning-surface#long243:res:valuationtransition"
         },
         {
           "location": {
-            "end_line": 1772,
+            "end_line": 1773,
             "label": "long243:res:powerpersistence",
-            "line": 1769,
+            "line": 1770,
             "path": "paper/reasoning-parts/erdos243/core.tex"
           },
           "long_claim": "erdos243-reciprocal-tail-reasoning-surface#long243:res:powerpersistence"
         },
         {
           "location": {
-            "end_line": 1790,
+            "end_line": 1791,
             "label": "long243:res:recorddichotomy",
-            "line": 1782,
+            "line": 1783,
             "path": "paper/reasoning-parts/erdos243/core.tex"
           },
           "long_claim": "erdos243-reciprocal-tail-reasoning-surface#long243:res:recorddichotomy"
         },
         {
           "location": {
-            "end_line": 1811,
+            "end_line": 1812,
             "label": "long243:res:loglogboundary",
-            "line": 1801,
+            "line": 1802,
             "path": "paper/reasoning-parts/erdos243/core.tex"
           },
           "long_claim": "erdos243-reciprocal-tail-reasoning-surface#long243:res:loglogboundary"
         },
         {
           "location": {
-            "end_line": 1988,
+            "end_line": 1989,
             "label": "long243:res:recordamplified",
-            "line": 1984,
+            "line": 1985,
             "path": "paper/reasoning-parts/erdos243/core.tex"
           },
           "long_claim": "erdos243-reciprocal-tail-reasoning-surface#long243:res:recordamplified"
         },
         {
           "location": {
-            "end_line": 1995,
+            "end_line": 1996,
             "label": "long243:res:criticalrate",
-            "line": 1990,
+            "line": 1991,
             "path": "paper/reasoning-parts/erdos243/core.tex"
           },
           "long_claim": "erdos243-reciprocal-tail-reasoning-surface#long243:res:criticalrate"
         },
         {
           "location": {
-            "end_line": 2081,
+            "end_line": 2082,
             "label": "long243:res:oddpowersupply",
-            "line": 2073,
+            "line": 2074,
             "path": "paper/reasoning-parts/erdos243/core.tex"
           },
           "long_claim": "erdos243-reciprocal-tail-reasoning-surface#long243:res:oddpowersupply"
         },
         {
           "location": {
-            "end_line": 2112,
+            "end_line": 2113,
             "label": "long243:res:unitrecord",
-            "line": 2107,
+            "line": 2108,
             "path": "paper/reasoning-parts/erdos243/core.tex"
           },
           "long_claim": "erdos243-reciprocal-tail-reasoning-surface#long243:res:unitrecord"
         },
         {
           "location": {
-            "end_line": 2163,
+            "end_line": 2164,
             "label": "long243:res:epochenergy",
-            "line": 2154,
+            "line": 2155,
             "path": "paper/reasoning-parts/erdos243/core.tex"
           },
           "long_claim": "erdos243-reciprocal-tail-reasoning-surface#long243:res:epochenergy"
         },
         {
           "location": {
-            "end_line": 2200,
+            "end_line": 2201,
             "label": "long243:res:energycriterion",
-            "line": 2195,
+            "line": 2196,
             "path": "paper/reasoning-parts/erdos243/core.tex"
           },
           "long_claim": "erdos243-reciprocal-tail-reasoning-surface#long243:res:energycriterion"
         },
         {
           "location": {
-            "end_line": 2252,
+            "end_line": 2253,
             "label": "long243:res:slownegative",
-            "line": 2247,
+            "line": 2248,
             "path": "paper/reasoning-parts/erdos243/core.tex"
           },
           "long_claim": "erdos243-reciprocal-tail-reasoning-surface#long243:res:slownegative"
         },
         {
           "location": {
-            "end_line": 2320,
+            "end_line": 2321,
             "label": "long243:res:strausbounded",
-            "line": 2307,
+            "line": 2308,
             "path": "paper/reasoning-parts/erdos243/core.tex"
           },
           "long_claim": "erdos243-reciprocal-tail-reasoning-surface#long243:res:strausbounded"
         },
         {
           "location": {
-            "end_line": 2396,
+            "end_line": 2397,
             "label": "long243:res:onethreshold",
-            "line": 2384,
+            "line": 2385,
             "path": "paper/reasoning-parts/erdos243/core.tex"
           },
           "long_claim": "erdos243-reciprocal-tail-reasoning-surface#long243:res:onethreshold"
         },
         {
           "location": {
-            "end_line": 2494,
+            "end_line": 2495,
             "label": "long243:res:classicalhalfspace",
-            "line": 2465,
+            "line": 2466,
             "path": "paper/reasoning-parts/erdos243/core.tex"
           },
           "long_claim": "erdos243-reciprocal-tail-reasoning-surface#long243:res:classicalhalfspace"
         },
         {
           "location": {
-            "end_line": 2544,
+            "end_line": 2545,
             "label": "long243:res:coprimalitycap",
-            "line": 2532,
+            "line": 2533,
             "path": "paper/reasoning-parts/erdos243/core.tex"
           },
           "long_claim": "erdos243-reciprocal-tail-reasoning-surface#long243:res:coprimalitycap"
         },
         {
           "location": {
-            "end_line": 2623,
+            "end_line": 2624,
             "label": "long243:res:descent",
-            "line": 2620,
+            "line": 2621,
             "path": "paper/reasoning-parts/erdos243/core.tex"
           },
           "long_claim": "erdos243-reciprocal-tail-reasoning-surface#long243:res:descent"
         },
         {
           "location": {
-            "end_line": 2680,
+            "end_line": 2681,
             "label": "long243:res:constant",
-            "line": 2675,
+            "line": 2676,
             "path": "paper/reasoning-parts/erdos243/core.tex"
           },
           "long_claim": "erdos243-reciprocal-tail-reasoning-surface#long243:res:constant"
         },
         {
           "location": {
-            "end_line": 2780,
+            "end_line": 2781,
             "label": "long243:res:periodic",
-            "line": 2772,
+            "line": 2773,
             "path": "paper/reasoning-parts/erdos243/core.tex"
           },
           "long_claim": "erdos243-reciprocal-tail-reasoning-surface#long243:res:periodic"
         },
         {
           "location": {
-            "end_line": 2868,
+            "end_line": 2869,
             "label": "long243:res:crt",
-            "line": 2865,
+            "line": 2866,
             "path": "paper/reasoning-parts/erdos243/core.tex"
           },
           "long_claim": "erdos243-reciprocal-tail-reasoning-surface#long243:res:crt"
         },
         {
           "location": {
-            "end_line": 2908,
+            "end_line": 2909,
             "label": "long243:res:barrier",
-            "line": 2903,
+            "line": 2904,
             "path": "paper/reasoning-parts/erdos243/core.tex"
           },
           "long_claim": "erdos243-reciprocal-tail-reasoning-surface#long243:res:barrier"
         },
         {
           "location": {
-            "end_line": 3060,
+            "end_line": 3061,
             "label": "long243:res:gcdsparse",
-            "line": 3050,
+            "line": 3051,
             "path": "paper/reasoning-parts/erdos243/core.tex"
           },
           "long_claim": "erdos243-reciprocal-tail-reasoning-surface#long243:res:gcdsparse"
         },
         {
           "location": {
-            "end_line": 3145,
+            "end_line": 3146,
             "label": "long243:res:cor",
-            "line": 3141,
+            "line": 3142,
             "path": "paper/reasoning-parts/erdos243/core.tex"
           },
           "long_claim": "erdos243-reciprocal-tail-reasoning-surface#long243:res:cor"
         },
         {
           "location": {
-            "end_line": 3596,
+            "end_line": 3597,
             "label": "long243:res:variablerise",
-            "line": 3584,
+            "line": 3585,
             "path": "paper/reasoning-parts/erdos243/core.tex"
           },
           "long_claim": "erdos243-reciprocal-tail-reasoning-surface#long243:res:variablerise"
         },
         {
           "location": {
-            "end_line": 3634,
+            "end_line": 3635,
             "label": "long243:res:gapconstant",
-            "line": 3624,
+            "line": 3625,
             "path": "paper/reasoning-parts/erdos243/core.tex"
           },
           "long_claim": "erdos243-reciprocal-tail-reasoning-surface#long243:res:gapconstant"
         },
         {
           "location": {
-            "end_line": 3848,
+            "end_line": 3849,
             "label": "long243:res:residue",
-            "line": 3845,
+            "line": 3846,
             "path": "paper/reasoning-parts/erdos243/core.tex"
           },
           "long_claim": "erdos243-reciprocal-tail-reasoning-surface#long243:res:residue"
@@ -2922,22 +2922,22 @@
           "sections": [
             {
               "id": "sec:problem",
-              "line": 15,
-              "title": "Introduction"
+              "line": 13,
+              "title": "The problem and the cubic rate"
             },
             {
               "id": "sec:secondaryrate",
-              "line": 478,
-              "title": "Cubic-rate irrationality and further consequences"
+              "line": 188,
+              "title": "Proof of cubic-rate irrationality"
             },
             {
               "id": "sec:bounded",
-              "line": 101,
-              "title": "Proof under a lower bound on the error"
+              "line": 328,
+              "title": "A separate route: bounded upward increments"
             },
             {
               "id": "sec:open",
-              "line": 539,
+              "line": 652,
               "title": "The remaining arithmetic estimate"
             }
           ],
@@ -2957,110 +2957,140 @@
           {
             "id": "sec:problem",
             "level": 1,
-            "line": 15,
-            "title": "Introduction"
+            "line": 13,
+            "title": "The problem and the cubic rate"
           },
           {
-            "id": "sec:bounded",
-            "level": 1,
-            "line": 101,
-            "title": "Proof under a lower bound on the error"
+            "id": "an-example-beyond-bounded-increments.",
+            "level": 4,
+            "line": 50,
+            "title": "An example beyond bounded increments."
           },
           {
-            "id": "sec:state",
-            "level": 1,
-            "line": 132,
-            "title": "The arithmetic ingredients"
+            "id": "why-a-cubic-is-restrictive.",
+            "level": 4,
+            "line": 64,
+            "title": "Why a cubic is restrictive."
           },
           {
-            "id": "sec:defect",
-            "level": 2,
-            "line": 138,
-            "title": "Error, absorption and descent"
-          },
-          {
-            "id": "sec:barrier",
-            "level": 2,
-            "line": 189,
-            "title": "The first-crossing obstruction"
-          },
-          {
-            "id": "reduction-and-stabilisation",
-            "level": 2,
-            "line": 229,
-            "title": "Reduction and stabilisation"
+            "id": "evidence-and-reading-route.",
+            "level": 4,
+            "line": 72,
+            "title": "Evidence and reading route."
           },
           {
             "id": "sec:transfer",
             "level": 1,
-            "line": 264,
-            "title": "Constructing the integers from a reciprocal series"
+            "line": 78,
+            "title": "Integer tails and the information they retain"
           },
           {
-            "id": "an-example-with-positive-limiting-increments.",
-            "level": 4,
-            "line": 312,
-            "title": "An example with positive limiting increments."
+            "id": "sec:defect",
+            "level": 2,
+            "line": 105,
+            "title": "The error and its zero state"
+          },
+          {
+            "id": "sec:reduction",
+            "level": 2,
+            "line": 162,
+            "title": "What reduction preserves"
+          },
+          {
+            "id": "sec:secondaryrate",
+            "level": 1,
+            "line": 188,
+            "title": "Proof of cubic-rate irrationality"
+          },
+          {
+            "id": "sec:cubic-extraction",
+            "level": 2,
+            "line": 201,
+            "title": "An eventual polynomial from an integer sequence"
+          },
+          {
+            "id": "sec:cubic-normalisation",
+            "level": 2,
+            "line": 223,
+            "title": "Normalisation and irreducibility"
+          },
+          {
+            "id": "sec:cubic-field",
+            "level": 2,
+            "line": 249,
+            "title": "A modular square and its number-field consequence"
+          },
+          {
+            "id": "sec:cubic-trace",
+            "level": 2,
+            "line": 275,
+            "title": "The trace calculation leaves only two cubics"
+          },
+          {
+            "id": "sec:cubic-mod-seven",
+            "level": 2,
+            "line": 310,
+            "title": "Both profiles fail modulo seven"
+          },
+          {
+            "id": "sec:bounded",
+            "level": 1,
+            "line": 328,
+            "title": "A separate route: bounded upward increments"
+          },
+          {
+            "id": "sec:barrier",
+            "level": 2,
+            "line": 361,
+            "title": "A stable gcd and a forbidden block"
+          },
+          {
+            "id": "sec:product-bound",
+            "level": 2,
+            "line": 437,
+            "title": "The condition in the original sequence"
           },
           {
             "id": "sec:mass",
             "level": 1,
-            "line": 326,
+            "line": 504,
             "title": "Finite total relative increase"
           },
           {
             "id": "sec:lcmrecords",
             "level": 1,
-            "line": 358,
-            "title": "A criterion using new maxima of an LCM numerator"
-          },
-          {
-            "id": "sec:secondaryrate",
-            "level": 1,
-            "line": 478,
-            "title": "Cubic-rate irrationality and further consequences"
+            "line": 536,
+            "title": "New maxima of an LCM numerator"
           },
           {
             "id": "sec:open",
             "level": 1,
-            "line": 539,
+            "line": 652,
             "title": "The remaining arithmetic estimate"
+          },
+          {
+            "id": "sec:scalar-limit",
+            "level": 2,
+            "line": 715,
+            "title": "Why the scalar profile is not enough"
           },
           {
             "id": "acknowledgements.",
             "level": 4,
-            "line": 622,
+            "line": 739,
             "title": "Acknowledgements."
-          },
-          {
-            "id": "app:index",
-            "level": 1,
-            "line": 628,
-            "title": "Sources and related methods"
-          },
-          {
-            "id": "earlier-remainder-methods-and-related-problems.",
-            "level": 4,
-            "line": 634,
-            "title": "Earlier remainder methods and related problems."
-          },
-          {
-            "id": "main-criterion-and-arithmetic-lemmas.",
-            "level": 4,
-            "line": 640,
-            "title": "Main criterion and arithmetic lemmas."
-          },
-          {
-            "id": "the-scalar-criterion.",
-            "level": 4,
-            "line": 650,
-            "title": "The scalar criterion."
           },
           {
             "id": "app:residue",
             "level": 1,
-            "line": 658,
+            "line": 745,
             "title": "A factorial residue reduction for forced orbits"
+          },
+          {
+            "id": "app:index",
+            "level": 1,
+            "line": 791,
+            "title": "Proof record and related work"
           }
         ],
         "title": "Cubic-Rate Irrationality and Reciprocal-Tail Rigidity"

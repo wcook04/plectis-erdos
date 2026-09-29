@@ -15,6 +15,9 @@ from short_paper_writer import ROOT, digest, read_json, safe_path, Refusal
 PAPER='paper/269/erdos-269-three-prime-running-lcm.tex'
 PID='erdos-269-three-prime-running-lcm'
 RID='res:distinct-height-all'
+# The demo pins exact spans of the #269 paper as it stood when p3 wrote it; editorial rounds rewrite the live paper, so
+# the demo reads a frozen copy of that paper, its input closure and the coverage ledger (see the fixture README).
+FIXTURE_ROOT=Path(__file__).resolve().parent/'fixtures'/'short_paper_demo'
 
 
 def build(root: Path) -> tuple[dict,dict]:
@@ -88,7 +91,7 @@ def build(root: Path) -> tuple[dict,dict]:
 
 
 def main():
-    p=argparse.ArgumentParser(description=__doc__);p.add_argument('--root',type=Path,default=ROOT);p.add_argument('--output-dir',type=Path,required=True)
+    p=argparse.ArgumentParser(description=__doc__);p.add_argument('--root',type=Path,default=FIXTURE_ROOT);p.add_argument('--output-dir',type=Path,required=True)
     args=p.parse_args();d,e=build(args.root);args.output_dir.mkdir(parents=True,exist_ok=True)
     for name,obj in [('dossier269.json',d),('claim_evidence269.json',e)]:
         (args.output_dir/name).write_text(json.dumps(obj,indent=2,ensure_ascii=False)+'\n')

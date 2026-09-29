@@ -16,9 +16,9 @@ import build_short_paper_demo as demo
 class WriterTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.d, cls.e = demo.build(w.ROOT)
-        cls.paper = (w.ROOT/demo.PAPER).read_text()
-        cls.pairs, errors = w.source_tree(w.ROOT,demo.PAPER)
+        cls.d, cls.e = demo.build(demo.FIXTURE_ROOT)
+        cls.paper = (demo.FIXTURE_ROOT/demo.PAPER).read_text()
+        cls.pairs, errors = w.source_tree(demo.FIXTURE_ROOT,demo.PAPER)
         if errors: raise RuntimeError(errors)
 
     def setUp(self):
@@ -27,7 +27,7 @@ class WriterTests(unittest.TestCase):
         for path,text in self.pairs:
             target=self.root/path;target.parent.mkdir(parents=True,exist_ok=True);target.write_text(text)
         q=self.root/'docs/paper_lean_coverage.json';q.parent.mkdir(exist_ok=True)
-        q.write_bytes((w.ROOT/'docs/paper_lean_coverage.json').read_bytes())
+        q.write_bytes((demo.FIXTURE_ROOT/'docs/paper_lean_coverage.json').read_bytes())
         self.d=copy.deepcopy(self.__class__.d);self.e=copy.deepcopy(self.__class__.e)
 
     def audit(self):return w.audit(self.root,demo.PID,demo.PAPER)

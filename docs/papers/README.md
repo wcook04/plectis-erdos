@@ -281,14 +281,14 @@ Start here (selected for this guide): [Rationality and the next integer above a 
 
 **Cubic-Rate Irrationality and Reciprocal-Tail Rigidity**
 
-[full text](full-text/erdos-243-reciprocal-tail-rigidity.md) · [PDF](../../paper/243/erdos-243-reciprocal-tail-rigidity.pdf) · [LaTeX source](../../paper/243/erdos-243-reciprocal-tail-rigidity.tex) · 19 sections · `erdos-243-reciprocal-tail-rigidity` · native to this repository
+[full text](full-text/erdos-243-reciprocal-tail-rigidity.md) · [PDF](../../paper/243/erdos-243-reciprocal-tail-rigidity.pdf) · [LaTeX source](../../paper/243/erdos-243-reciprocal-tail-rigidity.tex) · 24 sections · `erdos-243-reciprocal-tail-rigidity` · native to this repository
 
 Archived edition: [aiXiv:2609.03279v1](https://aixiv.online/abs/2609.03279v1) ([PDF](https://aixiv.online/pdf/2609.03279v1), [source archive](https://aixiv.online/src/2609.03279v1)); published 2026-09-27 from [source `551bae6dc6e7`](https://github.com/wcook04/plectis-erdos/blob/551bae6dc6e732cf85172d66323c8d2bc77ba962/paper/243/erdos-243-reciprocal-tail-rigidity.tex).
 
 The current source or PDF differs from this frozen edition; the archive record does not cover later changes.
 Archive publication does not establish independent mathematical review.
 
-Start here (selected for this guide): [Introduction](full-text/erdos-243-reciprocal-tail-rigidity.md#sec:problem), [Cubic-rate irrationality and further consequences](full-text/erdos-243-reciprocal-tail-rigidity.md#sec:secondaryrate), [Proof under a lower bound on the error](full-text/erdos-243-reciprocal-tail-rigidity.md#sec:bounded), [The remaining arithmetic estimate](full-text/erdos-243-reciprocal-tail-rigidity.md#sec:open).
+Start here (selected for this guide): [The problem and the cubic rate](full-text/erdos-243-reciprocal-tail-rigidity.md#sec:problem), [Proof of cubic-rate irrationality](full-text/erdos-243-reciprocal-tail-rigidity.md#sec:secondaryrate), [A separate route: bounded upward increments](full-text/erdos-243-reciprocal-tail-rigidity.md#sec:bounded), [The remaining arithmetic estimate](full-text/erdos-243-reciprocal-tail-rigidity.md#sec:open).
 
 ### Which growth hypotheses make a reciprocal sum irrational, and which sufficient conditions force the Sylvester recurrence without settling Erdős #243?
 

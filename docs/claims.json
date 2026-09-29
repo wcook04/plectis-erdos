@@ -21988,7 +21988,7 @@
         "source": "paper/243/erdos-243-reciprocal-tail-rigidity.tex",
         "environment": "problem",
         "title": "Erdős #243",
-        "line": 156
+        "line": 63
       }
     },
     {
@@ -22024,7 +22024,7 @@
         "source": "paper/269/erdos269-running-lcm-reasoning-surface.tex",
         "environment": "problem",
         "title": "an exact function representing the distinct-height sum",
-        "line": 3449
+        "line": 3462
       }
     },
     {
@@ -22036,7 +22036,7 @@
         "source": "paper/243/erdos-243-reciprocal-tail-rigidity.tex",
         "environment": "problem",
         "title": "growth of repeated denominator factors",
-        "line": 851
+        "line": 975
       }
     },
     {

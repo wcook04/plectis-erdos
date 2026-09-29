@@ -1393,7 +1393,7 @@
         "manuscript_title": "Two Incomparable Denominator Exclusions for \\sum_{n\\ge2}(n!-1)^{-1}"
       },
       "local_pdf": "paper/68/erdos-68-factorial-denominator-irrationality.pdf",
-      "pdf_sha256": "sha256:6c745a2dff06dbb7113fc26840ddb2e3cb5878da25f10d3573da3536289aa387",
+      "pdf_sha256": "sha256:2dc3f9520ba76bfb1080168bd283319454e325d2fa89fe438de1c090258a9e05",
       "pdf_byte_count": 134926,
       "first_pass": {
         "stated_by_the_paper": false,
@@ -1801,12 +1801,12 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/erdos-243-reciprocal-tail-rigidity.md",
       "local_source": "paper/243/erdos-243-reciprocal-tail-rigidity.tex",
-      "source_sha256": "sha256:3a2910fc8e47636c6438c7bf9deaa7582b7dbb0e58bc960618055bd5783a83ec",
+      "source_sha256": "sha256:def93c4e0701c57d12f7207c27f0bda576187c02b2412a6e3f37cf77de4c246b",
       "canonical_source_commit": null,
       "canonical_source_pin_status": "local_unpublished",
       "canonical_source_url": null,
       "canonical_source_raw_url": null,
-      "section_count": 19,
+      "section_count": 24,
       "sections": [
         {
           "level": 1,
@@ -1817,139 +1817,169 @@
         {
           "level": 1,
           "id": "sec:problem",
-          "title": "Introduction",
-          "line": 15
+          "title": "The problem and the cubic rate",
+          "line": 13
         },
         {
-          "level": 1,
-          "id": "sec:bounded",
-          "title": "Proof under a lower bound on the error",
-          "line": 101
+          "level": 4,
+          "id": "an-example-beyond-bounded-increments.",
+          "title": "An example beyond bounded increments.",
+          "line": 50
         },
         {
-          "level": 1,
-          "id": "sec:state",
-          "title": "The arithmetic ingredients",
-          "line": 132
+          "level": 4,
+          "id": "why-a-cubic-is-restrictive.",
+          "title": "Why a cubic is restrictive.",
+          "line": 64
         },
         {
-          "level": 2,
-          "id": "sec:defect",
-          "title": "Error, absorption and descent",
-          "line": 138
-        },
-        {
-          "level": 2,
-          "id": "sec:barrier",
-          "title": "The first-crossing obstruction",
-          "line": 189
-        },
-        {
-          "level": 2,
-          "id": "reduction-and-stabilisation",
-          "title": "Reduction and stabilisation",
-          "line": 229
+          "level": 4,
+          "id": "evidence-and-reading-route.",
+          "title": "Evidence and reading route.",
+          "line": 72
         },
         {
           "level": 1,
           "id": "sec:transfer",
-          "title": "Constructing the integers from a reciprocal series",
-          "line": 264
+          "title": "Integer tails and the information they retain",
+          "line": 78
         },
         {
-          "level": 4,
-          "id": "an-example-with-positive-limiting-increments.",
-          "title": "An example with positive limiting increments.",
-          "line": 312
+          "level": 2,
+          "id": "sec:defect",
+          "title": "The error and its zero state",
+          "line": 105
+        },
+        {
+          "level": 2,
+          "id": "sec:reduction",
+          "title": "What reduction preserves",
+          "line": 162
+        },
+        {
+          "level": 1,
+          "id": "sec:secondaryrate",
+          "title": "Proof of cubic-rate irrationality",
+          "line": 188
+        },
+        {
+          "level": 2,
+          "id": "sec:cubic-extraction",
+          "title": "An eventual polynomial from an integer sequence",
+          "line": 201
+        },
+        {
+          "level": 2,
+          "id": "sec:cubic-normalisation",
+          "title": "Normalisation and irreducibility",
+          "line": 223
+        },
+        {
+          "level": 2,
+          "id": "sec:cubic-field",
+          "title": "A modular square and its number-field consequence",
+          "line": 249
+        },
+        {
+          "level": 2,
+          "id": "sec:cubic-trace",
+          "title": "The trace calculation leaves only two cubics",
+          "line": 275
+        },
+        {
+          "level": 2,
+          "id": "sec:cubic-mod-seven",
+          "title": "Both profiles fail modulo seven",
+          "line": 310
+        },
+        {
+          "level": 1,
+          "id": "sec:bounded",
+          "title": "A separate route: bounded upward increments",
+          "line": 328
+        },
+        {
+          "level": 2,
+          "id": "sec:barrier",
+          "title": "A stable gcd and a forbidden block",
+          "line": 361
+        },
+        {
+          "level": 2,
+          "id": "sec:product-bound",
+          "title": "The condition in the original sequence",
+          "line": 437
         },
         {
           "level": 1,
           "id": "sec:mass",
           "title": "Finite total relative increase",
-          "line": 326
+          "line": 504
         },
         {
           "level": 1,
           "id": "sec:lcmrecords",
-          "title": "A criterion using new maxima of an LCM numerator",
-          "line": 358
-        },
-        {
-          "level": 1,
-          "id": "sec:secondaryrate",
-          "title": "Cubic-rate irrationality and further consequences",
-          "line": 478
+          "title": "New maxima of an LCM numerator",
+          "line": 536
         },
         {
           "level": 1,
           "id": "sec:open",
           "title": "The remaining arithmetic estimate",
-          "line": 539
+          "line": 652
+        },
+        {
+          "level": 2,
+          "id": "sec:scalar-limit",
+          "title": "Why the scalar profile is not enough",
+          "line": 715
         },
         {
           "level": 4,
           "id": "acknowledgements.",
           "title": "Acknowledgements.",
-          "line": 622
-        },
-        {
-          "level": 1,
-          "id": "app:index",
-          "title": "Sources and related methods",
-          "line": 628
-        },
-        {
-          "level": 4,
-          "id": "earlier-remainder-methods-and-related-problems.",
-          "title": "Earlier remainder methods and related problems.",
-          "line": 634
-        },
-        {
-          "level": 4,
-          "id": "main-criterion-and-arithmetic-lemmas.",
-          "title": "Main criterion and arithmetic lemmas.",
-          "line": 640
-        },
-        {
-          "level": 4,
-          "id": "the-scalar-criterion.",
-          "title": "The scalar criterion.",
-          "line": 650
+          "line": 739
         },
         {
           "level": 1,
           "id": "app:residue",
           "title": "A factorial residue reduction for forced orbits",
-          "line": 658
+          "line": 745
+        },
+        {
+          "level": 1,
+          "id": "app:index",
+          "title": "Proof record and related work",
+          "line": 791
         }
       ],
-      "citations_rendered": 31,
+      "citations_rendered": 22,
       "local_pdf": "paper/243/erdos-243-reciprocal-tail-rigidity.pdf",
-      "pdf_sha256": "sha256:09637f1ad609bb31b250f445f88bc0f6208ecae162ac81609b7121dfc2c1c091",
-      "pdf_byte_count": 139682,
+      "pdf_sha256": "sha256:c6be5a3c9c6a2cbb2783ae6091e467c826bfe4276c9dda06ff238d16278260e6",
+      "pdf_byte_count": 139617,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection for this guide",
         "sections": [
           {
             "id": "sec:problem",
-            "title": "Introduction",
-            "line": 15
+            "title": "The problem and the cubic rate",
+            "line": 13
           },
           {
             "id": "sec:secondaryrate",
-            "title": "Cubic-rate irrationality and further consequences",
-            "line": 478
+            "title": "Proof of cubic-rate irrationality",
+            "line": 188
           },
           {
             "id": "sec:bounded",
-            "title": "Proof under a lower bound on the error",
-            "line": 101
+            "title": "A separate route: bounded upward increments",
+            "line": 328
           },
           {
             "id": "sec:open",
             "title": "The remaining arithmetic estimate",
-            "line": 539
+            "line": 652
           }
         ],
         "unresolved_count": 0
@@ -1992,7 +2022,7 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/erdos243-reciprocal-tail-reasoning-surface.md",
       "local_source": "paper/243/erdos243-reciprocal-tail-reasoning-surface.tex",
-      "source_sha256": "sha256:e05756b2513617d5d33753d394edf8eb0953128755a51a0f6bdccea2edfab77e",
+      "source_sha256": "sha256:b4414eee367b56d53d7d626c666c648af029ae67a019aeadfa185e10687f22c0",
       "canonical_source_commit": null,
       "canonical_source_pin_status": "local_unpublished",
       "canonical_source_url": null,
@@ -2356,8 +2386,8 @@
       ],
       "citations_rendered": 64,
       "local_pdf": "paper/243/erdos243-reciprocal-tail-reasoning-surface.pdf",
-      "pdf_sha256": "sha256:f116dd08a3c5dec8b05e5c434fdcbdd1b47e53da6809f9c608d1a5f035ff8c69",
-      "pdf_byte_count": 377976,
+      "pdf_sha256": "sha256:3ccdbfce7792d8376a061cc5ea1dfd368d4f1ab962a657d29ab7ce72b2dde523",
+      "pdf_byte_count": 378144,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection for this guide",
@@ -2577,8 +2607,8 @@
         "manuscript_title": "Bases and Integral Relations for the k-Kernel of Euler\u2019s Totient"
       },
       "local_pdf": "paper/249/erdos-249-binary-totient-series.pdf",
-      "pdf_sha256": "sha256:1bf39694e04f4549039c79248430314d445c9fc36f078f5e51aae8384a932f90",
-      "pdf_byte_count": 149531,
+      "pdf_sha256": "sha256:118c424c3285c8d5fc1e194cfa4ec917f4ccaeff1aab116c031b55e30f37395f",
+      "pdf_byte_count": 149530,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection for this guide",
@@ -3638,7 +3668,7 @@
       ],
       "citations_rendered": 55,
       "local_pdf": "paper/249/erdos249-totient-reasoning-surface.pdf",
-      "pdf_sha256": "sha256:363f090efeb89eddea292a4bd2fb2caa67178627d60108b0ae7bbbd5fbadf6e0",
+      "pdf_sha256": "sha256:eba4224b0d452be1bd3350513f17b0a6e878d34d0f5d0224293d70ca1b25e30d",
       "pdf_byte_count": 796046,
       "first_pass": {
         "stated_by_the_paper": false,
@@ -3819,8 +3849,8 @@
       ],
       "citations_rendered": 37,
       "local_pdf": "paper/251/erdos-251-prime-gap-dyadic-series.pdf",
-      "pdf_sha256": "sha256:011b3a41303201e590037997cebe5ce17c5186ce972f99acb62649f2e6e318ea",
-      "pdf_byte_count": 123924,
+      "pdf_sha256": "sha256:206036eb42485dfb5cf2282e3628f09dcd3a4e9e373abc75ae92e2d137743de8",
+      "pdf_byte_count": 123927,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection for this guide",
@@ -4196,7 +4226,7 @@
       ],
       "citations_rendered": 69,
       "local_pdf": "paper/251/erdos251-prime-gap-reasoning-surface.pdf",
-      "pdf_sha256": "sha256:a4cc57e27ca209d6c1b62afde25b194c617f6723a15c8ab4216eadf40022edda",
+      "pdf_sha256": "sha256:2115139610db6fd0aa3c3ec68030b03bf762c13a68845ad0ba5de6389bb60aac",
       "pdf_byte_count": 294573,
       "first_pass": {
         "stated_by_the_paper": false,
@@ -5520,8 +5550,8 @@
       ],
       "citations_rendered": 42,
       "local_pdf": "paper/257/erdos257-mersenne-reasoning-surface.pdf",
-      "pdf_sha256": "sha256:ff0823602d0f6e7821b46ffe0363e64009b458dd1d7716e707d9ae90bd977df2",
-      "pdf_byte_count": 804317,
+      "pdf_sha256": "sha256:b5cba01291c1417e78d2464b7e43581e4cb902d2d3438543f553452b2b5b8e05",
+      "pdf_byte_count": 805107,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection for this guide",
@@ -5963,8 +5993,8 @@
       ],
       "citations_rendered": 60,
       "local_pdf": "paper/269/erdos269-running-lcm-reasoning-surface.pdf",
-      "pdf_sha256": "sha256:4609703a4e143532b1ff9bf76152a940404e2e4a2a2c34d7f39d6f8c61f7a30b",
-      "pdf_byte_count": 428750,
+      "pdf_sha256": "sha256:734a75779a20a0744047eda5c640b226b533ef7f30224ee1618a78f0c053512c",
+      "pdf_byte_count": 429516,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection for this guide",
@@ -8040,7 +8070,7 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/claim-faithful-publication-systems-paper.md",
       "local_source": "paper/systems/claim-faithful-publication-systems-paper.tex",
-      "source_sha256": "sha256:0172d4a0d75c838ee4ef90e2bce741f0ec69d11e04a8c7b876b297308af6777c",
+      "source_sha256": "sha256:4e80724cf3ca306553c12150c19a8623353600ba67ed68ce43436d50fc501f3d",
       "canonical_source_commit": null,
       "canonical_source_pin_status": "local_unpublished",
       "canonical_source_url": null,
@@ -8122,8 +8152,8 @@
       ],
       "citations_rendered": 11,
       "local_pdf": "paper/systems/claim-faithful-publication-systems-paper.pdf",
-      "pdf_sha256": "sha256:e9462338a644aafc585640f27bacf5df2c23d0c14c14f75aea7d09cba7903ebc",
-      "pdf_byte_count": 182306,
+      "pdf_sha256": "sha256:9d388f48a89718851a5c1e456a21f2a0955d75679294a0d879aac91cdd2f5961",
+      "pdf_byte_count": 62757,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection for this guide",

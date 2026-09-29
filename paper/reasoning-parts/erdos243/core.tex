@@ -14,9 +14,10 @@ $a_{n+1}/a_n^2\to1$. They control either increases of an integer tail
 numerator or a convergent sum at steps setting new maxima. The paper
 gives the underlying recurrences, their relation to earlier work, and
 examples separating numerical growth bounds from the exact recurrences. The
-cubic-rate theorem, in its zero-indexed form, is checked in Lean, together
-with every lemma used in its proof, and so is every other theorem, proposition, lemma and corollary
-below. None of the additional bounds is
+margin links identify recorded Lean propositions and checking evidence;
+they are not a new replay or an independent review of this revision.
+The ordinary cubic proof uses Chebotarev, while the recorded Lean route
+uses a Dedekind-zeta pole comparison. None of the additional bounds is
 derived for every rational reciprocal sum in Erd\H{o}s Problem~\#243.
 \end{abstract}
 
@@ -3735,7 +3736,7 @@ Bloom's Erd\H{o}s Problems catalogue~\cite{erdosproblems}.
 \section{Guide to the formal sources}\label{long243:app:index}
 
 The recurrence identities
-and arithmetic exclusions are in \texttt{ReciprocalTailRigidity.lean}, the
+and arithmetic exclusions are in \path{ReciprocalTailRigidity.lean}, the
 scalar convergence theorem is in \texttt{SparseResetRecovery.lean}, and
 the bounds on cancelled factors are in \texttt{RepairEntropy.lean}.
 The Lean statement excluding a periodic error assumes $e_n<a_n$;
@@ -3894,15 +3895,16 @@ applies to other recurrences defined by polynomial division.
 % ; - part family_catalogue ; -
 \section{Result map and proof dependencies}\label{sec:erdos-243-complete-family-map}
 The following map records proof dependencies.
-The short note contains its bounded-increment proof in Sections~2--4.
-Details kept here rather than repeated there are the signed-series
+The short note now proves the cubic result in Section~3 and bounded
+increments in Section~4. Details retained here are the signed-series
 comparison in Section~\ref{long243:sec:priorwork}, the integer-coefficient
-extension at the end of Section~\ref{long243:sec:lcmrecords}, the general
-$1+c/n$ comparison in Section~\ref{long243:sec:records}, and the scalar
-failed-divisibility example in Section~\ref{long243:sec:open}.
-The cubic and double-logarithmic arguments retain their separate proofs
-in Section~\ref{long243:sec:cubicrate} and
-Theorem~\ref{long243:res:recorddichotomy}, respectively.
+extension in Section~\ref{long243:sec:lcmrecords}, and the general
+$1+c/n$ comparison in Section~\ref{long243:sec:records}.
+Section~\ref{long243:sec:cubicrate} retains the full regular-rate
+extraction and positive-density cubic exclusion;
+Theorem~\ref{long243:res:recorddichotomy} gives the separate
+double-logarithmic argument. The short note also includes the scalar
+failed-divisibility example from Section~\ref{long243:sec:open}.
 
 \paragraph{Bounded upward increments.}
 Vanishing relative error gives eventual absorption. Bounded negative

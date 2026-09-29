@@ -4,7 +4,7 @@
 
 # Plectis reading edition: eight Erdős problems
 
-Edition fingerprint `e950200b51922eff`. Papers CC-BY-4.0, Will Cook, 2026. Source: <https://github.com/wcook04/plectis-erdos>. Website: <https://wcook04.github.io/plectis/maths/>.
+Edition fingerprint `8b7b9f5a11d41fcc`. Papers CC-BY-4.0, Will Cook, 2026. Source: <https://github.com/wcook04/plectis-erdos>. Website: <https://wcook04.github.io/plectis/maths/>.
 
 
 ## How to use this edition
@@ -1740,81 +1740,21 @@ Longer record: [Reciprocal-Tail Rigidity: Theorems, Proofs and Questions](https:
 
 </div>
 
-We prove that every strictly increasing sequence of positive integers with $`a_n^2/a_{n+1}=1+3/n+o(n^{-3})`$ has an irrational reciprocal sum. If the sum were rational, the integer numerators of its tails would eventually agree with a cubic polynomial in $`n`$; a square condition in a cubic number field and congruences modulo seven exclude every such cubic. The Lean proof, for sequences indexed from zero, uses the simple pole of the Dedekind zeta function in place of the Chebotarev density theorem.
-
-We also prove that, when $`a_{n+1}/a_n^2\to1`$ and the reciprocal sum is rational, an eventual upper bound on the increments of $`P_n/a_n`$, where $`P_n=\prod_{j<n}a_j`$, forces the Sylvester recurrence $`a_{n+1}=a_n^2-a_n+1`$ eventually. That increment bound is not derived from growth and rationality alone; the unrestricted Erdős problem remains open.
+A rational reciprocal sum with $`a_{n+1}\sim a_n^2`$ gives an exact sequence of positive integer tail numerators. We use this integrality to prove irrationality when $`a_n^2/a_{n+1}=1+3/n+o(n^{-3})`$: the numerators would have to be a cubic polynomial, but the tail recurrence forces a square condition in a cubic number field that leaves two profiles, both impossible modulo seven. We give this argument, including its use of Chebotarev, before treating the separate bounded-increment criterion for an eventual Sylvester recurrence. A weighted first-crossing criterion then identifies an estimate still needed in the unrestricted Erdős problem. None of these additional rate or increment hypotheses is deduced from quadratic growth and rationality alone.
 
 <a id="erdos-243-reciprocal-tail-rigidity--sec:problem"></a>
 
-### Introduction
+### The problem and the cubic rate
 
-For integers $`a_n>1`$, the Sylvester recurrence $`a_{n+1}=a_n^2-a_n+1`$ gives the telescoping identity
+The identity
 ``` math
-\frac1{a_n-1}=\frac1{a_n}+\frac1{a_{n+1}-1}.
+\frac1{a-1}=\frac1a+\frac1{a^2-a}
 ```
-We call a sequence that satisfies this recurrence eventually a *Sylvester tail*. Its reciprocal sum from any index $`n`$ in that tail onwards is $`1/(a_n-1)`$. Erdős Problem #243 (Problem <a href="#erdos-243-reciprocal-tail-rigidity--res:problem" data-reference-type="ref" data-reference="erdos-243-reciprocal-tail-rigidity--res:problem">3</a> below) asks whether rationality of $`\sum1/a_n`$ and $`a_{n+1}\sim a_n^2`$ force this recurrence.
-
-Theorem <a href="#erdos-243-reciprocal-tail-rigidity--res:cubicrate" data-reference-type="ref" data-reference="erdos-243-reciprocal-tail-rigidity--res:cubicrate">16</a> settles the problem for one class of sequences: every strictly increasing sequence of positive integers with
-``` math
-\frac{a_n^2}{a_{n+1}}=1+\frac3n+o(n^{-3})
-```
-has an irrational reciprocal sum. Such a sequence has $`a_{n+1}\sim a_n^2`$ and is never a Sylvester tail, for which $`a_n^2/a_{n+1}-1=O(1/a_n)`$. If its sum were rational, the integer numerators $`C_n`$ of Section <a href="#erdos-243-reciprocal-tail-rigidity--sec:transfer" data-reference-type="ref" data-reference="erdos-243-reciprocal-tail-rigidity--sec:transfer">4</a> would eventually agree with a cubic polynomial in $`n`$; a square condition in a cubic number field and congruences modulo seven exclude every such cubic. For the recurrence itself we prove the following sufficient condition.
-
-<div id="erdos-243-reciprocal-tail-rigidity--res:originalbounded" class="corollary">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos243/PaperCompleteR7/ProductDefect.lean#L211">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cd83a19f8002856293310f4d71358b2f9d72a24e/evidence/erdos-243-reciprocal-tail-rigidity.md#res-originalbounded-comparator">Comparator</a></p>
-
-**Corollary 1** (bounded increments of $`P_n/a_n`$). *Let $`a_1<a_2<\cdots`$ be positive integers, $`a_{n+1}/a_n^2\to1`$, and $`\sum_{n\ge1}1/a_n\in\mathbb{Q}`$. Put $`P_n=\prod_{j<n}a_j`$. If
-``` math
-\limsup_{n\to\infty}\frac{P_n}{a_n}
- \left(\frac{a_n^2}{a_{n+1}}-1\right)<+\infty,
-```
-then $`a_{n+1}=a_n^2-a_n+1`$ for all sufficiently large $`n`$.*
-
-</div>
-
-The assumption bounds the upward increments of $`P_n/a_n`$; it does not bound $`P_n/a_n`$ itself. Indeed,
-``` math
-\frac{P_n}{a_n}\left(\frac{a_n^2}{a_{n+1}}-1\right)
- =\frac{P_{n+1}}{a_{n+1}}-\frac{P_n}{a_n}.
-```
-The hypothesis is one-sided: it imposes no lower bound on the increments and does not require monotonicity. The growth hypothesis alone says that the ratio of consecutive terms of $`P_n/a_n`$ tends to one; it does not bound their difference.
-
-For a Sylvester sequence starting at $`a_1>1`$, $`a_n-1=(a_1-1)P_n`$, so the increments tend to zero. For $`a_n=b^{2^{n-1}}`$, with integer $`b\ge2`$, they are identically zero; since this sequence has no Sylvester tail, the corollary recovers the irrationality of its reciprocal sum. The bound also allows positive limiting increments: the integer sequence $`a_1=4`$, $`a_{n+1}=\lceil n a_n^2/(n+1)\rceil`$, beginning $`4,8,43,1387,\ldots`$, is such an example. We verify this after the main proof in Section <a href="#erdos-243-reciprocal-tail-rigidity--sec:transfer" data-reference-type="ref" data-reference="erdos-243-reciprocal-tail-rigidity--sec:transfer">4</a>. A ratio tending to one alone does not give the bound: the rounded cubic-rate example in Section <a href="#erdos-243-reciprocal-tail-rigidity--sec:secondaryrate" data-reference-type="ref" data-reference="erdos-243-reciprocal-tail-rigidity--sec:secondaryrate">7</a> has increments of order $`n^2`$.
-
-Write the rational tail as $`C_n/D_n`$, clearing denominators without reducing at each step. Up to a finite shift and a common positive factor, these are Koizumi’s tail numerators and denominators \[koizumi2025, Corollary 3, p. 9; Lemma 4, pp. 11–12\]. The error $`E_n=D_n-(a_n-1)C_n`$ measures departure from the Sylvester tail, and $`C_{n+1}=C_n-E_n`$ turns a lower error bound into an upper increment bound. If the error does not vanish eventually, the numerator tends to infinity and negative errors occur arbitrarily late. Each gcd divides every later error, so the bounded negative magnitudes force the gcd to stabilise. Dividing it out gives coprimality to every earlier multiplier. The Chinese remainder theorem then supplies a forbidden block that bounded upward jumps cannot cross without landing inside.
-
-<div class="samepage">
-
-Here is the precise arithmetic statement. For the rational tails, Section <a href="#erdos-243-reciprocal-tail-rigidity--sec:transfer" data-reference-type="ref" data-reference="erdos-243-reciprocal-tail-rigidity--sec:transfer">4</a> supplies every condition except (5). Condition (4) follows from (6) with $`K=1`$; listing it separately makes the hypothesis used when propagating a zero error explicit.
-
-<div id="erdos-243-reciprocal-tail-rigidity--res:bounded" class="theorem">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean#L2360">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cd83a19f8002856293310f4d71358b2f9d72a24e/evidence/erdos-243-reciprocal-tail-rigidity.md#res-bounded-comparator">Comparator</a></p>
-
-**Theorem 2** (bounded negative part). *Let $`a,C,D:\mathbb{N}\to\mathbb{N}`$ and $`E:\mathbb{N}\to\mathbb{Z}`$ satisfy*
-
-1.  *$`a_n>1`$ and $`C_n>0`$ for every $`n`$;*
-
-2.  *the exact dynamics $`C_{n+1}+D_n=a_nC_n`$ and $`D_{n+1}=a_nD_n`$;*
-
-3.  *$`E_n=D_n-(a_n-1)C_n`$ for every $`n`$;*
-
-4.  **eventual strict centring*: $`|E_n|<C_n`$ for all large $`n`$;*
-
-5.  **eventually bounded negative part*: $`-B\le E_n`$ for all large $`n`$, for some integer $`B\ge0`$;*
-
-6.  **vanishing relative error*: for every integer $`K\ge1`$ there is an $`N`$ with $`K\,|E_n|<C_n`$ for all $`n\ge N`$.*
-
-*Then $`E_n=0`$ for all sufficiently large $`n`$.*
-
-</div>
-
-</div>
-
-Condition (5) bounds upward steps but permits sign changes and places no independent upper bound on positive errors. Condition (6) is $`|E_n|/C_n\to0`$. Absorption needs only the weaker centring bound (4), not $`-C_n/2\le E_n<C_n/2`$. The scalar example $`C_n=n+1`$, $`E_n=-1`$ satisfies the update and conditions (5)–(6) without stabilising: the relations involving the denominator are essential.
+explains why the Sylvester recurrence $`a_{n+1}=a_n^2-a_n+1`$ produces a rational reciprocal tail. We call a sequence satisfying this recurrence eventually a *Sylvester tail*; at every sufficiently late index its tail sum is $`1/(a_n-1)`$. The question is whether quadratic growth allows any other rational reciprocal sum.
 
 <div id="erdos-243-reciprocal-tail-rigidity--res:problem" class="problem">
 
-**Problem 3** (Erdős \#243). Let $`1\le a_1<a_2<\cdots`$ be a sequence of integers with
+**Problem 1** (Erdős \#243). Let $`1\le a_1<a_2<\cdots`$ be a sequence of integers with
 ``` math
 \lim_{n\to\infty}\frac{a_n}{a_{n-1}^{2}}=1
  \qquad\text{and}\qquad
@@ -1824,59 +1764,90 @@ Then $`a_n=a_{n-1}^{2}-a_{n-1}+1`$ for all sufficiently large $`n`$.
 
 </div>
 
-The question is recorded by Erdős and Graham \[erdosgraham1980\] and by Erdős \[erdos1988, p. 105\], and Bloom’s catalogue lists it as Problem #243 \[erdosproblems\].
+This is the question recorded by Erdős and Graham \[erdosgraham1980, p. 64\], by Erdős \[erdos1988, p. 105\], and as \#243 in Bloom’s catalogue \[erdosproblems\]. It is not resolved here. Our leading result rules out rationality under a specified higher-order rate; the unrestricted problem is not an instance of that rate theorem.
 
-Sections <a href="#erdos-243-reciprocal-tail-rigidity--sec:bounded" data-reference-type="ref" data-reference="erdos-243-reciprocal-tail-rigidity--sec:bounded">2</a>–<a href="#erdos-243-reciprocal-tail-rigidity--sec:transfer" data-reference-type="ref" data-reference="erdos-243-reciprocal-tail-rigidity--sec:transfer">4</a> contain the main proof: the arithmetic argument, its gcd and CRT lemmas, and the construction from the reciprocal series. The later sections give extensions and state the estimate still needed for the unrestricted problem. Further proofs and examples are in the companion paper, *Reciprocal-Tail Rigidity: Theorems, Proofs and Questions*.
+<div id="erdos-243-reciprocal-tail-rigidity--res:cubicrate" class="theorem">
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos243/PaperCompleteR21/SquareSpecialisationUnconditional.lean#L70">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cd83a19f8002856293310f4d71358b2f9d72a24e/evidence/erdos-243-reciprocal-tail-rigidity.md#res-cubicrate-comparator">Comparator</a></p>
 
-*Formal proofs.* A result with a kernel-checked Lean proof carries a mark in the margin. *Lean* opens the proof: the declaration itself when one declaration states the whole result, otherwise the list of declarations that together state it. *Comparator* opens the record of an independent check, in which the same statement, written again from Mathlib alone in a separate repository, was compared with our proof by Lean’s Comparator tool, allowing only the three standard axioms. A dagger on the Lean mark means that the Lean proof assumes an input named just below the result. A result without a mark has no Lean proof of its whole statement; what is checked is said below it. The [evidence record](https://github.com/wcook04/plectis-erdos/blob/cd83a19f8002856293310f4d71358b2f9d72a24e/evidence/erdos-243-reciprocal-tail-rigidity.md) gives every declaration, version and check. These checks show that the stated propositions are proved; whether they are the right propositions is a question the reader can settle by comparing them with the text.
-
-<a id="erdos-243-reciprocal-tail-rigidity--sec:bounded"></a>
-
-### Proof under a lower bound on the error
-
-We first assemble the argument. Section <a href="#erdos-243-reciprocal-tail-rigidity--sec:state" data-reference-type="ref" data-reference="erdos-243-reciprocal-tail-rigidity--sec:state">3</a> proves its arithmetic lemmas; Section <a href="#erdos-243-reciprocal-tail-rigidity--sec:transfer" data-reference-type="ref" data-reference="erdos-243-reciprocal-tail-rigidity--sec:transfer">4</a> constructs the integers from the rational reciprocal sum.
-
-<div class="proof">
-
-*Proof of Theorem <a href="#erdos-243-reciprocal-tail-rigidity--res:bounded" data-reference-type="ref" data-reference="erdos-243-reciprocal-tail-rigidity--res:bounded">2</a>.* Suppose the error is not eventually zero. By Theorem <a href="#erdos-243-reciprocal-tail-rigidity--res:absorb" data-reference-type="ref" data-reference="erdos-243-reciprocal-tail-rigidity--res:absorb">6</a>, after the centring threshold a single zero would force every later error to be zero. Hence $`|E_n|\ge1`$ on a sufficiently late tail, and condition (6) gives $`C_n\to\infty`$.
-
-If there were only finitely many negative indices, Theorem <a href="#erdos-243-reciprocal-tail-rigidity--res:descent" data-reference-type="ref" data-reference="erdos-243-reciprocal-tail-rigidity--res:descent">[res:descent]</a> would give eventual zero. There are therefore infinitely many, and condition (5) bounds their magnitudes by $`B`$. In particular $`B\ge1`$. Proposition <a href="#erdos-243-reciprocal-tail-rigidity--res:gcdstab" data-reference-type="ref" data-reference="erdos-243-reciprocal-tail-rigidity--res:gcdstab">11</a> now makes $`G_n=\gcd(C_n,D_n)`$ constant, say $`g>0`$, from some index onwards. On this tail $`u_n=C_n/g`$ and $`v_n=D_n/g`$ form a reduced exact orbit, with $`u_n\to\infty`$ and
+**Theorem 2** (cubic-rate irrationality). *A strictly increasing sequence of positive integers with
 ``` math
-u_{n+1}-u_n=-E_n/g\le B.
+a_n^2/a_{n+1}=1+\frac3n+o(n^{-3})
 ```
-The earlier multipliers are coprime to every later reduced numerator. Theorem <a href="#erdos-243-reciprocal-tail-rigidity--res:barrier" data-reference-type="ref" data-reference="erdos-243-reciprocal-tail-rigidity--res:barrier">9</a> says that these coprimality conditions are incompatible with divergence and the displayed bound on upward steps. ◻
+has irrational reciprocal sum.*
 
 </div>
 
-<div id="erdos-243-reciprocal-tail-rigidity--res:cor" class="corollary">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos243/PaperCompleteR7/Arithmetic.lean#L179">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cd83a19f8002856293310f4d71358b2f9d72a24e/evidence/erdos-243-reciprocal-tail-rigidity.md#res-cor-comparator">Comparator</a></p>
+The hypothesis still gives $`a_{n+1}\sim a_n^2`$, but it excludes a Sylvester tail: the latter has $`a_n^2/a_{n+1}-1=O(1/a_n)`$, much smaller than $`3/n`$. The theorem therefore settles the rationality question in this restricted class by proving irrationality, not by deriving a recurrence for a rational example.
 
-**Corollary 4**. *Under Theorem <a href="#erdos-243-reciprocal-tail-rigidity--res:bounded" data-reference-type="ref" data-reference="erdos-243-reciprocal-tail-rigidity--res:bounded">2</a>, the multipliers satisfy $`a_{n+1}=a_n^2-a_n+1`$ eventually.*
+<a id="erdos-243-reciprocal-tail-rigidity--an-example-beyond-bounded-increments."></a>
 
-</div>
+###### An example beyond bounded increments.
 
-<div class="proof">
+Set $`a_1=8`$ and
+``` math
+a_{n+1}=\left\lceil\frac{n a_n^2}{n+3}\right\rceil.
+```
+The first terms are $`8,16,103,5305`$. Induction gives $`a_n\ge4\cdot2^{2^{n-1}}`$, since $`a_{n+1}\ge a_n^2/4`$. The rounding error is less than one, so
+``` math
+0\le 1+\frac3n-\frac{a_n^2}{a_{n+1}}<\frac{16}{a_n^2}=o(n^{-3}).
+```
+Thus its reciprocal sum is irrational by Theorem <a href="#erdos-243-reciprocal-tail-rigidity--res:cubicrate" data-reference-type="ref" data-reference="erdos-243-reciprocal-tail-rigidity--res:cubicrate">2</a>. If $`P_n=\prod_{j<n}a_j`$ and $`t_n=P_n/a_n`$, then $`t_{n+1}/t_n=a_n^2/a_{n+1}`$. Comparison with $`n(n+1)(n+2)`$, using the summable rounding errors, gives $`t_n\sim K n^3`$ for some $`K>0`$ and $`t_{n+1}-t_n\sim3K n^2`$. This example lies outside the bounded-increment criterion proved in Section <a href="#erdos-243-reciprocal-tail-rigidity--sec:bounded" data-reference-type="ref" data-reference="erdos-243-reciprocal-tail-rigidity--sec:bounded">4</a>.
 
-*Proof.* Theorem <a href="#erdos-243-reciprocal-tail-rigidity--res:bounded" data-reference-type="ref" data-reference="erdos-243-reciprocal-tail-rigidity--res:bounded">2</a> gives eventual zero error. Since $`C_n>0`$, Corollary <a href="#erdos-243-reciprocal-tail-rigidity--res:eventual" data-reference-type="ref" data-reference="erdos-243-reciprocal-tail-rigidity--res:eventual">[res:eventual]</a> gives the recurrence. ◻
+<a id="erdos-243-reciprocal-tail-rigidity--why-a-cubic-is-restrictive."></a>
 
-</div>
+###### Why a cubic is restrictive.
 
-<a id="erdos-243-reciprocal-tail-rigidity--sec:state"></a>
+Clearing the rational tails gives positive integers $`C_n`$ with $`C_{n+1}/C_n=1+3/n+o(n^{-3})`$. The exact recurrence, not informal differentiation of an error term, makes their fourth differences vanish eventually. Hence $`C_n=A n(n+1)(n+2)+B`$. Arithmetic then enters: a stable gcd gives a primitive recurrence, which forces a square modulo almost every prime at every root of the cubic. Chebotarev lifts this condition to its cubic number field. A trace calculation leaves two normalised cubics; a four-term calculation modulo seven excludes both. Sections <a href="#erdos-243-reciprocal-tail-rigidity--sec:transfer" data-reference-type="ref" data-reference="erdos-243-reciprocal-tail-rigidity--sec:transfer">2</a>–<a href="#erdos-243-reciprocal-tail-rigidity--sec:secondaryrate" data-reference-type="ref" data-reference="erdos-243-reciprocal-tail-rigidity--sec:secondaryrate">3</a> give these steps.
 
-### The arithmetic ingredients
+The other results concern rational tails under weaker growth information. An upper bound on the increments of $`P_n/a_n`$ is sufficient for a Sylvester tail (Corollary <a href="#erdos-243-reciprocal-tail-rigidity--res:originalbounded" data-reference-type="ref" data-reference="erdos-243-reciprocal-tail-rigidity--res:originalbounded">12</a>); a weighted sum over new maxima of an LCM numerator gives an exact criterion (Theorem <a href="#erdos-243-reciprocal-tail-rigidity--res:weightedrecord" data-reference-type="ref" data-reference="erdos-243-reciprocal-tail-rigidity--res:weightedrecord">15</a>). Their hard step is a Chinese-remainder first-crossing argument, not the number-field argument for the cubic. The remainder construction is compared with Koizumi below, and the bounded-increment proof with Bado at its point of use. The scalar summability argument is elementary and has an existing working-report antecedent; we do not claim it as a new method.
 
-We write $`z_+=\max(z,0)`$ and take empty products and least common multiples to be $`1`$. An *exact state* means sequences satisfying the two recurrences and the definition of $`E_n`$ in Theorem <a href="#erdos-243-reciprocal-tail-rigidity--res:bounded" data-reference-type="ref" data-reference="erdos-243-reciprocal-tail-rigidity--res:bounded">2</a>; positivity and bounds on the error are stated separately. Removing finitely many terms does not change convergence or rationality of the reciprocal series, or the eventual validity of a recurrence. A specified higher-order rate retains its original index: reindexing changes its lower-order terms.
+<a id="erdos-243-reciprocal-tail-rigidity--evidence-and-reading-route."></a>
+
+###### Evidence and reading route.
+
+The proofs in this paper are ordinary mathematical arguments. The margin links identify recorded Lean declarations and Comparator checks, not new executions or an independent review of this revision. In particular, the printed cubic proof uses Chebotarev; the recorded Lean route uses a Dedekind-zeta pole comparison. The [companion record](https://github.com/wcook04/plectis-erdos/blob/main/paper/243/erdos243-reciprocal-tail-reasoning-surface.pdf), Section 2, gives the full cubic and more general polynomial-extraction arguments, and its final result map locates the other extensions. The frozen evidence record retains source-pin and index gaps; they are not assertions that the corresponding theorems are false.
+
+<a id="erdos-243-reciprocal-tail-rigidity--sec:transfer"></a>
+
+### Integer tails and the information they retain
+
+<span id="erdos-243-reciprocal-tail-rigidity--sec:state" label="sec:state"></span> Assume for this section that $`a_n`$ are strictly increasing positive integers, $`a_{n+1}/a_n^2\to1`$, and $`\sum_{n\ge1}1/a_n=p/q`$ with positive integers $`p,q`$. Write
+``` math
+x_n=\sum_{k\ge n}\frac1{a_k},\qquad P_n=\prod_{j<n}a_j,
+ \qquad D_n=qP_n,\qquad C_n=D_nx_n.
+```
+Then
+``` math
+C_n=pP_n-q\sum_{k<n}\frac{P_n}{a_k}\in\mathbb{N}_{>0},
+ \qquad C_{n+1}=a_nC_n-D_n,\qquad D_{n+1}=a_nD_n.
+```
+These are exact denominator-clearing identities; the fraction is not reduced at each step. They are Koizumi’s integer-tail coordinates up to a common rescaling and the stated indexing \[koizumi2025, Lemma 4, pp. 11–12\].
+
+For large $`n`$, $`a_{n+1}\ge a_n^2/2\ge2a_n`$. The terms after $`1/a_{n+1}`$ sum to at most $`2/a_{n+2}\le4/a_{n+1}^2`$, so
+``` math
+\begin{equation}
+\label{eq:tail-estimate}
+ x_n=\frac1{a_n}+\frac1{a_{n+1}}+O(a_{n+1}^{-2}),
+ \qquad
+ \frac{C_{n+1}}{C_n}=\frac{a_n^2}{a_{n+1}}+O(1/a_n).
+\end{equation}
+```
+The growth is at least double exponential after a fixed initial index. In particular, $`1/a_n=o(n^{-k})`$ for every fixed $`k`$. A finite prefix can be removed when proving an eventual recurrence, but the original one-based index is retained in the cubic rate: shifting $`n`$ changes its lower-order terms.
 
 <a id="erdos-243-reciprocal-tail-rigidity--sec:defect"></a>
 
-#### Error, absorption and descent
+#### The error and its zero state
 
-<span id="erdos-243-reciprocal-tail-rigidity--sec:descent" label="sec:descent"></span> The error identity gives both the Sylvester recurrence and propagation of a zero error. Descent then handles an eventually nonnegative error.
+<span id="erdos-243-reciprocal-tail-rigidity--sec:descent" label="sec:descent"></span> Define
+``` math
+E_n=D_n-(a_n-1)C_n.
+```
+An *exact state* is a collection satisfying this definition and the two displayed updates. Thus $`E_n=0`$ means precisely $`x_n=1/(a_n-1)`$ at a positive tail. We use $`z_+=\max(z,0)`$, and *strict centring* means $`|E_n|<C_n`$.
 
 <div id="erdos-243-reciprocal-tail-rigidity--res:update" class="proposition">
 <p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos243/PaperCompleteR7/Arithmetic.lean#L21">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cd83a19f8002856293310f4d71358b2f9d72a24e/evidence/erdos-243-reciprocal-tail-rigidity.md#res-update-comparator">Comparator</a></p>
 
-**Proposition 5** (error identities). *<span id="erdos-243-reciprocal-tail-rigidity--res:defect" label="res:defect"></span> For an exact integer state,
+**Proposition 3** (error identities). *<span id="erdos-243-reciprocal-tail-rigidity--res:defect" label="res:defect"></span> For an exact integer state,
 ``` math
 C_{n+1}=C_n-E_n,\qquad
  \bigl(a_{n+1}-a_n^2+a_n-1\bigr)C_{n+1}=a_n^2E_n-E_{n+1}.
@@ -1886,116 +1857,209 @@ C_{n+1}=C_n-E_n,\qquad
 
 <div class="proof">
 
-*Proof.* Substitute $`E_n=D_n-(a_n-1)C_n`$ and use $`D_{n+1}=a_nD_n`$, $`C_{n+1}=a_nC_n-D_n`$. ◻
+*Proof.* Substitute the definition of $`E_n`$ into the two exact updates and eliminate $`D_n`$. No limit or coprimality is used. ◻
 
 </div>
+
+Equation <a href="#erdos-243-reciprocal-tail-rigidity--eq:tail-estimate" data-reference-type="eqref" data-reference="erdos-243-reciprocal-tail-rigidity--eq:tail-estimate">[eq:tail-estimate]</a> now gives $`E_n/C_n=1-C_{n+1}/C_n\to0`$, hence strict centring eventually. Koizumi also obtains the relative-gap limit on an eventual pseudo-greedy tail \[koizumi2025, Corollary 3, p. 9\]; his rounding convention gives the stronger half-width centring, which we do not need.
 
 <div id="erdos-243-reciprocal-tail-rigidity--res:absorb" class="theorem">
 <p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos243/PaperCompleteR7/Arithmetic.lean#L120">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cd83a19f8002856293310f4d71358b2f9d72a24e/evidence/erdos-243-reciprocal-tail-rigidity.md#res-absorb-comparator">Comparator</a></p>
 
-**Theorem 6** (absorption and descent). *<span id="erdos-243-reciprocal-tail-rigidity--res:descent" label="res:descent"></span> For a positive exact state with strict centring, $`E_n=0`$ implies $`E_{n+1}=0`$. For any positive integer state with $`C_{n+1}=C_n-E_n`$, eventual nonnegativity of $`E_n`$ implies its eventual vanishing.*
+**Theorem 4** (absorption and descent). *<span id="erdos-243-reciprocal-tail-rigidity--res:descent" label="res:descent"></span> For a positive exact state with strict centring, $`E_n=0`$ implies $`E_{n+1}=0`$. For any positive integer state with $`C_{n+1}=C_n-E_n`$, eventual nonnegativity of $`E_n`$ implies its eventual vanishing.*
 
 </div>
 
 <div class="proof">
 
-*Proof.* When $`E_n=0`$, the second identity makes $`E_{n+1}`$ a multiple of $`C_{n+1}`$; strict centring forces that multiple to be zero. In the second assertion, $`C_n`$ is eventually a nonincreasing sequence of positive integers, so it stabilises. ◻
+*Proof.* If $`E_n=0`$, the second identity in Proposition <a href="#erdos-243-reciprocal-tail-rigidity--res:update" data-reference-type="ref" data-reference="erdos-243-reciprocal-tail-rigidity--res:update">3</a> makes $`E_{n+1}`$ a multiple of $`C_{n+1}`$. Strict centring at that successor index forces the multiple to be zero. For the second assertion, $`C_n`$ is eventually a nonincreasing sequence of positive integers and stabilises. ◻
 
 </div>
 
 <div id="erdos-243-reciprocal-tail-rigidity--res:step" class="corollary">
 <p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/cd83a19f8002856293310f4d71358b2f9d72a24e/evidence/erdos-243-reciprocal-tail-rigidity.md#res-step">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cd83a19f8002856293310f4d71358b2f9d72a24e/evidence/erdos-243-reciprocal-tail-rigidity.md#res-step-comparator">Comparator</a></p>
 
-**Corollary 7** (two zero errors). *<span id="erdos-243-reciprocal-tail-rigidity--res:eventual" label="res:eventual"></span> If $`E_n=E_{n+1}=0`$ and $`C_{n+1}\ne0`$, then $`a_{n+1}=a_n^2-a_n+1`$. Thus eventual zero error in a positive exact state implies the eventual Sylvester recurrence.*
+**Corollary 5** (two zero errors). *<span id="erdos-243-reciprocal-tail-rigidity--res:eventual" label="res:eventual"></span> If $`E_n=E_{n+1}=0`$ and $`C_{n+1}\ne0`$, then $`a_{n+1}=a_n^2-a_n+1`$. Thus eventual zero error in a positive exact state implies the eventual Sylvester recurrence.*
 
 </div>
 
 <div class="proof">
 
-*Proof.* The second error identity has nonzero factor $`C_{n+1}`$. ◻
+*Proof.* Cancel the nonzero factor $`C_{n+1}`$ in the second error identity. ◻
 
 </div>
 
-Absorption uses strict centring at the successor index. After an eventual centring threshold, a zero therefore propagates to every later index. On a tail that is not eventually Sylvester, no zero can occur beyond that threshold. Then $`|E_n|\ge1`$, so vanishing relative error gives $`C_n\to\infty`$.
+Consequently, beyond a centring threshold either all later errors vanish, or none does. In the latter case $`|E_n|\ge1`$, so the relative-error limit forces $`C_n\to\infty`$. This is stronger than a scalar approximation: $`C_n=n+1`$, $`E_n=-1`$ obey the numerator update and relative limit but need not satisfy any denominator recurrence.
 
-<a id="erdos-243-reciprocal-tail-rigidity--sec:barrier"></a>
+<a id="erdos-243-reciprocal-tail-rigidity--sec:reduction"></a>
 
-#### The first-crossing obstruction
+#### What reduction preserves
 
-<div id="erdos-243-reciprocal-tail-rigidity--res:crt" class="lemma">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean#L839">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cd83a19f8002856293310f4d71358b2f9d72a24e/evidence/erdos-243-reciprocal-tail-rigidity.md#res-crt-comparator">Comparator</a></p>
-
-**Lemma 8** (consecutive multiples). *For pairwise coprime integers $`m_0,\ldots,m_{B-1}\ge2`$ and every lower bound, there is a larger $`t`$ such that $`m_i\mid t+i`$ for each $`i<B`$.*
-
-</div>
-
-<div class="proof">
-
-*Proof.* Solve $`t\equiv-i\pmod{m_i}`$ by the Chinese remainder theorem, then add multiples of $`\prod_i m_i`$. ◻
-
-</div>
-
-Lemma <a href="#erdos-243-reciprocal-tail-rigidity--res:crt" data-reference-type="ref" data-reference="erdos-243-reciprocal-tail-rigidity--res:crt">8</a> matches each modulus $`m_i`$ to its own multiple $`t+i`$ inside a window of $`B`$ consecutive integers. The same forbidden block and first-crossing contradiction, under a two-sided bound on the error, appear in the proof of Bado’s Theorem 5.1 \[bado2026, pp. 4–5\]. The lemma here isolates bounded upward movement, and the gcd stabilisation below makes it applicable with only a lower bound on the error.
-
-For example, the consecutive integers $`6k+2,6k+3`$ are forbidden to a sequence coprime to both $`2`$ and $`3`$. Upward jumps of size at most $`2`$ cannot cross this pair from below without landing in it. The following statement is the same first-crossing argument with a block supplied by the Chinese remainder theorem.
-
-<div id="erdos-243-reciprocal-tail-rigidity--res:barrier" class="theorem">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean#L903">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cd83a19f8002856293310f4d71358b2f9d72a24e/evidence/erdos-243-reciprocal-tail-rigidity.md#res-barrier-comparator">Comparator</a></p>
-
-**Theorem 9** (Chinese remainder theorem and first crossing). *Let $`u:\mathbb{N}\to\mathbb{N}`$ tend to infinity and let $`B\ge1`$ be an integer with $`u_{n+1}\le u_n+B`$ for every $`n`$. There is no sequence of pairwise coprime integers $`m_i\ge2`$ for which $`\gcd(m_i,u_t)=1`$ whenever $`i<t`$.*
-
-</div>
-
-<div class="proof">
-
-*Proof.* Choose $`m_0,\ldots,m_{B-1}`$ and use Lemma <a href="#erdos-243-reciprocal-tail-rigidity--res:crt" data-reference-type="ref" data-reference="erdos-243-reciprocal-tail-rigidity--res:crt">8</a> to find $`t>\max(u_0,\ldots,u_B)`$ with $`m_i\mid t+i`$. Since $`u_n\to\infty`$, there is a first $`n>B`$ with $`u_n\ge t`$. Minimality and the rise bound give
+The gcds $`G_n=\gcd(C_n,D_n)`$ form a divisibility chain, since both updates preserve common divisors. Also $`G_n\mid E_n`$. If $`G_n`$ is constant, say $`g`$, on a tail, division by $`g`$ gives
 ``` math
-t\le u_n\le u_{n-1}+B<t+B.
+u_{n+1}=a_nu_n-v_n,\qquad v_{n+1}=a_nv_n,
+ \qquad \gcd(u_n,v_n)=1.
 ```
-Hence $`u_n=t+i`$ for some $`0\le i<B<n`$, so $`m_i\mid u_n`$. This contradicts $`\gcd(m_i,u_n)=1`$. The argument uses first crossing, not monotonicity: the numerator may fall before it reaches the block. ◻
-
-</div>
-
-Only unboundedness above is needed for the first crossing. The stated hypothesis $`u_n\to\infty`$ holds in the application to reduced tails.
-
-<a id="erdos-243-reciprocal-tail-rigidity--reduction-and-stabilisation"></a>
-
-#### Reduction and stabilisation
-
-A reduced exact tail has positive $`u_n`$, integer $`v_n\ge0`$, $`\gcd(u_n,v_n)=1`$, and
-``` math
-u_{n+1}=a_nu_n-v_n,\qquad v_{n+1}=a_nv_n.
-```
+Here $`u_n>0`$ and $`v_n\ge0`$; we call this a *reduced exact tail*.
 
 <div id="erdos-243-reciprocal-tail-rigidity--res:reduced" class="proposition">
 <p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos243/PaperCompleteR7/Reduction.lean#L16">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cd83a19f8002856293310f4d71358b2f9d72a24e/evidence/erdos-243-reciprocal-tail-rigidity.md#res-reduced-comparator">Comparator</a></p>
 
-**Proposition 10** (persistent coprimality). *In a reduced exact tail, $`\gcd(a_n,v_n)=1`$. Distinct multipliers are pairwise coprime, and every earlier multiplier is coprime to every later numerator.*
+**Proposition 6** (persistent coprimality). *In a reduced exact tail, $`\gcd(a_n,v_n)=1`$. Distinct multipliers are pairwise coprime, and every earlier multiplier is coprime to every later numerator.*
 
 </div>
 
 <div class="proof">
 
-*Proof.* A common prime divisor of $`a_n,v_n`$ would divide both $`u_{n+1}`$ and $`v_{n+1}`$. Also, $`a_i\mid v_t`$ for $`i<t`$, so reducedness gives $`\gcd(a_i,u_t)=1`$, and $`\gcd(a_t,v_t)=1`$ gives $`\gcd(a_i,a_t)=1`$. ◻
+*Proof.* A prime dividing both $`a_n`$ and $`v_n`$ would divide $`u_{n+1}`$ and $`v_{n+1}`$, contrary to reducedness. For $`i<t`$, the factor $`a_i`$ divides $`v_t`$. Reducedness gives $`\gcd(a_i,u_t)=1`$, and $`\gcd(a_t,v_t)=1`$ gives $`\gcd(a_i,a_t)=1`$. ◻
 
 </div>
 
-<div id="erdos-243-reciprocal-tail-rigidity--res:gcdstab" class="proposition">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos243/PaperCompleteR7/Reduction.lean#L103">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cd83a19f8002856293310f4d71358b2f9d72a24e/evidence/erdos-243-reciprocal-tail-rigidity.md#res-gcdstab-comparator">Comparator</a></p>
+The cubic proof will make $`G_n`$ bounded by a finite difference; the bounded-increment proof will bound it using negative errors. These are different reasons for reaching the same primitive recurrence.
 
-**Proposition 11** (gcd stabilisation). *For a positive exact state, suppose that some fixed integer $`B\ge1`$ satisfies $`-B\le E_n<0`$ at infinitely many indices. Then $`G_n=\gcd(C_n,D_n)`$ is eventually constant. Division by its stable value gives a reduced exact tail.*
+<a id="erdos-243-reciprocal-tail-rigidity--sec:secondaryrate"></a>
 
-</div>
+### Proof of cubic-rate irrationality
 
-<div class="proof">
+Suppose, towards a contradiction, that the reciprocal sum in Theorem <a href="#erdos-243-reciprocal-tail-rigidity--res:cubicrate" data-reference-type="ref" data-reference="erdos-243-reciprocal-tail-rigidity--res:cubicrate">2</a> is rational. Construct $`C_n,D_n`$ as in Section <a href="#erdos-243-reciprocal-tail-rigidity--sec:transfer" data-reference-type="ref" data-reference="erdos-243-reciprocal-tail-rigidity--sec:transfer">2</a>. Equation <a href="#erdos-243-reciprocal-tail-rigidity--eq:tail-estimate" data-reference-type="eqref" data-reference="erdos-243-reciprocal-tail-rigidity--eq:tail-estimate">[eq:tail-estimate]</a> transfers the rate without changing its precision:
+``` math
+\begin{equation}
+\label{eq:cubic-ratio}
+ \frac{C_{n+1}}{C_n}=1+\frac3n+o(n^{-3}).
+\end{equation}
+```
+We first extract the polynomial, then use the exact denominator dynamics to exclude it. The following is the cubic specialisation of the companion’s Section 2; its general extraction result is not needed here.
 
-*Proof.* Both updates preserve common divisors, so $`G_n\mid G_{n+1}`$, and $`G_n\mid E_n`$. For any $`n`$, choose $`t\ge n`$ with $`-B\le E_t<0`$. Then $`G_n\le G_t\le -E_t\le B`$. Thus the entire positive divisibility chain is bounded and eventually constant, even if other negative errors are larger. Division by its stable value preserves both exact updates and leaves the states coprime. ◻
+<a id="erdos-243-reciprocal-tail-rigidity--sec:cubic-extraction"></a>
 
-</div>
+#### An eventual polynomial from an integer sequence
 
-<a id="erdos-243-reciprocal-tail-rigidity--sec:transfer"></a>
+Put $`F_n=n(n+1)(n+2)`$, so $`F_{n+1}/F_n=1+3/n`$, and write the error in <a href="#erdos-243-reciprocal-tail-rigidity--eq:cubic-ratio" data-reference-type="eqref" data-reference="erdos-243-reciprocal-tail-rigidity--eq:cubic-ratio">[eq:cubic-ratio]</a> as $`\varepsilon_n=o(n^{-3})`$. For $`z_n=C_n/F_n`$,
+``` math
+\frac{z_{n+1}}{z_n}=1+\frac{\varepsilon_n}{1+3/n}.
+```
+The logarithms of these positive ratios are absolutely summable. Thus $`z_n\to A>0`$; their tails are $`o(n^{-2})`$, so $`z_n-A=o(n^{-2})`$. Hence $`\delta_n=C_n-AF_n=o(n)`$. It would be invalid to differentiate this last estimate formally. Instead the recurrence gives
+``` math
+\Delta\delta_n=\frac3n\delta_n+\varepsilon_n C_n=o(1),
+ \qquad \Delta h_n=h_{n+1}-h_n.
+```
+It follows that $`\Delta^4C_n=\Delta^3(\Delta\delta_n)\to0`$. These fourth differences are integers and therefore vanish eventually. The sequence $`C_n`$ agrees on a tail with a polynomial in $`\mathbb{Q}[n]`$ of degree at most three. Since $`C_n-AF_n=o(n)`$, comparison of polynomial coefficients gives
+``` math
+\begin{equation}
+\label{eq:cubic-shape}
+ C_n=A n(n+1)(n+2)+B,\qquad A\in\mathbb{Q}_{>0},\quad B\in\mathbb{Q}.
+\end{equation}
+```
+The little-oh hypothesis has done real work. The positive integer sequence $`F_n+(-1)^n`$ has ratio $`1+3/n+O(n^{-3})`$ but is not eventually a polynomial. This scalar example explains the precision in the extraction step; it is not a reciprocal-tail counterexample.
 
-*This entry ends here, at a section boundary. Later sections of the paper, and anything the text above says is given below, are in [the full short paper](https://github.com/wcook04/plectis-erdos/blob/main/docs/papers/full-text/erdos-243-reciprocal-tail-rigidity.md) (72 KB as text) and in `plectis-short-papers.md`.*
+<a id="erdos-243-reciprocal-tail-rigidity--sec:cubic-normalisation"></a>
+
+#### Normalisation and irreducibility
+
+For a sufficiently late $`n`$, the integer $`G_n=\gcd(C_n,D_n)`$ divides $`C_n,C_{n+1},C_{n+2},C_{n+3}`$ and therefore divides $`\Delta^3C_n=6A`$. The positive divisibility chain $`G_n`$ is bounded and stabilises at $`g`$. Proposition <a href="#erdos-243-reciprocal-tail-rigidity--res:reduced" data-reference-type="ref" data-reference="erdos-243-reciprocal-tail-rigidity--res:reduced">6</a> applies to $`u_n=C_n/g`$, $`v_n=D_n/g`$. In addition, adjacent numerators are coprime: $`\gcd(u_n,u_{n+1})=\gcd(u_n,v_n)=1`$.
+
+Write the polynomial for $`u_n`$ as
+``` math
+\begin{equation}
+\label{eq:normal-cubic}
+ Q(n)=\frac m6 n(n+1)(n+2)+c.
+\end{equation}
+```
+Its third difference $`m=6A/g`$ is a positive integer. Since $`Q`$ is integer-valued at all sufficiently large integers, it is integer-valued at every integer: choose a common denominator of its coefficients and translate any integer by a sufficiently large multiple of that denominator. In particular $`c=Q(0)\in\mathbb{Z}`$. If a prime $`\ell`$ divides $`c`$, choose an arbitrarily late $`n\equiv-1\pmod{6\ell}`$. Both $`Q(n)`$ and $`Q(n+1)`$ would be divisible by $`\ell`$, contradicting adjacent coprimality. This also excludes $`c=0`$. Thus
+``` math
+m\in\mathbb{N}_{>0},\qquad c\in\{1,-1\}.
+```
+
+The multipliers $`a_n>1`$ on the reduced tail are pairwise coprime, so infinitely many distinct primes occur among them. Once a prime divides one such $`a_n`$, it divides every later $`v_t`$ and no later $`u_t`$. If the cubic $`Q`$ had a rational root, that root would reduce to a root modulo all but finitely many primes. Choose one of the persistent primes outside those exceptions; a sufficiently late index in the root’s residue class would have $`\ell\mid Q(t)=u_t`$, a contradiction. A cubic is reducible over $`\mathbb{Q}`$ only if it has a rational root. Hence $`Q`$ is irreducible.
+
+Set $`\kappa=m/6`$, $`\eta=6c/m`$, and
+``` math
+f(T)=T^3-T+\eta,\qquad Q(n)=\kappa f(n+1).
+```
+Let $`\alpha`$ be a root of $`f`$ and $`K=\mathbb{Q}(\alpha)`$, a cubic number field.
+
+<a id="erdos-243-reciprocal-tail-rigidity--sec:cubic-field"></a>
+
+#### A modular square and its number-field consequence
+
+Eliminating $`v_n`$ from the reduced recurrence gives
+``` math
+\begin{equation}
+\label{eq:three-tail}
+ u_{n+2}=(a_n+a_{n+1})u_{n+1}-a_n^2u_n.
+\end{equation}
+```
+Take a prime $`\ell\nmid6m`$ and a root $`r`$ of $`f`$ in $`\mathbb F_\ell`$. The roots $`0,1,-1`$ are excluded because $`\eta\ne0`$ modulo $`\ell`$. Choose a late index $`k`$ with $`k+1\equiv r\pmod\ell`$. Then $`u_k\equiv0`$ and
+``` math
+f(r-1)=-3r(r-1),\qquad f(r+1)=3r(r+1).
+```
+Multiplying <a href="#erdos-243-reciprocal-tail-rigidity--eq:three-tail" data-reference-type="eqref" data-reference="erdos-243-reciprocal-tail-rigidity--eq:three-tail">[eq:three-tail]</a> at index $`k-1`$ by $`u_{k-1}`$ yields
+``` math
+-u_{k-1}u_{k+1}=(a_{k-1}u_{k-1})^2
+ =9\kappa^2r^2(r^2-1)\quad\text{in }\mathbb F_\ell.
+```
+The expression is nonzero. Therefore $`r^2-1`$ is a nonzero square for every root $`r`$ of $`f`$ modulo every such prime.
+
+We spell out the step from primes to $`K`$. Suppose $`\alpha^2-1`$ were not a square in $`K`$, and let $`\beta^2=\alpha^2-1`$. The nontrivial automorphism of the quadratic extension $`K(\beta)/K`$ fixes $`\alpha`$ and exchanges $`\beta`$ and $`-\beta`$. Extend it to an automorphism $`\sigma`$ of a Galois closure over $`\mathbb{Q}`$. By the Chebotarev density theorem \[stevenhagenlenstra1996, §3, author-version p. 15\], infinitely many unramified rational primes have Frobenius in the conjugacy class of $`\sigma`$. Choose a prime above each of them whose Frobenius is $`\sigma`$, and discard the finitely many primes of bad reduction, residue characteristic two, or vanishing denominators.
+
+In the residue field, Frobenius fixes $`\bar\alpha`$ but sends $`\bar\beta`$ to $`-\bar\beta\ne\bar\beta`$. Thus $`\bar\alpha\in\mathbb F_\ell`$ is a root of $`f`$, while $`\bar\alpha^2-1`$ is not a square in $`\mathbb F_\ell`$: its only two square roots in the residue field are $`\pm\bar\beta`$, neither fixed by Frobenius. This contradicts the modular condition. Consequently there is a $`\beta\in K`$ with $`\beta^2=\alpha^2-1`$. This is the global ingredient; the remaining calculation is algebraic.
+
+<a id="erdos-243-reciprocal-tail-rigidity--sec:cubic-trace"></a>
+
+#### The trace calculation leaves only two cubics
+
+Put $`z=\alpha+\beta`$. Then $`z^{-1}=\alpha-\beta`$ and $`\alpha=(z+z^{-1})/2`$, so $`\mathbb{Q}(z)=K`$. Write the minimal polynomial of $`z`$ as $`z^3+bz^2+dz+w`$, with $`b,d,w\in\mathbb{Q}`$ and $`w\ne0`$. The polynomial for $`\alpha`$ gives
+``` math
+\operatorname{Tr}(\alpha)=0,\qquad
+ \operatorname{Tr}(\alpha^2)=2,\qquad
+ \operatorname{Tr}(\alpha^3)=-3\eta.
+```
+Newton’s identities for $`z`$ and $`z^{-1}`$ turn these three equations into
+``` math
+\begin{equation}
+\label{eq:cubic-traces}
+ d=-bw,\qquad b^2+b(w-w^{-1})=1,\qquad
+ \eta=\frac{(b^2+1)(w+w^{-1})}{8}.
+\end{equation}
+```
+For clarity, the first uses $`\operatorname{Tr}(z)=-b`$, $`\operatorname{Tr}(z^{-1})=-d/w`$. After substituting $`d=-bw`$, the second follows from $`4\operatorname{Tr}(\alpha^2)
+=\operatorname{Tr}(z^2)+6+\operatorname{Tr}(z^{-2})`$; the third follows from $`8\operatorname{Tr}(\alpha^3)
+=\operatorname{Tr}(z^3)+\operatorname{Tr}(z^{-3})`$, since $`\operatorname{Tr}(z+z^{-1})=0`$.
+
+The middle equation factors as $`(bw-1)(b+w)=0`$. Write $`w=r/s`$ in lowest terms, with $`r\ne0`$, $`s>0`$. Substituting $`b=-w`$ or $`b=1/w`$ into the last equation and using $`\eta=6c/m`$ gives respectively
+``` math
+m=\frac{48c\,r s^3}{(r^2+s^2)^2}
+ \qquad\text{or}\qquad
+ m=\frac{48c\,r^3s}{(r^2+s^2)^2}.
+```
+Because $`\gcd(r^2+s^2,rs)=1`$ and $`m`$ is an integer, $`(r^2+s^2)^2\mid48`$. The only possible nonzero coprime pair has $`r^2+s^2=2`$, hence $`|r|=s=1`$; positivity then gives $`m=12`$. The only remaining numerators are
+``` math
+Q(n)=2n(n+1)(n+2)+1
+ \quad\text{and}\quad
+ Q(n)=2n(n+1)(n+2)-1.
+```
+
+<a id="erdos-243-reciprocal-tail-rigidity--sec:cubic-mod-seven"></a>
+
+#### Both profiles fail modulo seven
+
+In the plus case, choose a late block starting at $`n\equiv0\pmod7`$; in the minus case, start at $`n\equiv1\pmod7`$. The four successive numerators have residues
+``` math
+(u_n,u_{n+1},u_{n+2},u_{n+3})\equiv
+ \begin{cases}(1,6,0,2)&(c=1),\\(4,5,0,1)&(c=-1).
+ \end{cases}
+```
+Call the first two denominator residues $`d_0,d_1`$ and the displayed numerator residues $`c_0,c_1,0,c_3`$. From $`0=a_{n+1}c_1-d_1`$ and $`c_3=-a_{n+1}d_1`$ we get $`d_1^2=-c_1c_3=2`$. Thus $`d_1\in\{3,4\}`$. The first update, however, gives
+``` math
+d_1=a_nd_0=\frac{d_0(d_0+c_1)}{c_0}.
+```
+As $`d_0`$ runs through $`\mathbb F_7`$, the plus case is $`d_0(d_0+6)`$ and the minus case is $`2d_0(d_0+5)`$. Both have image $`\{0,2,5,6\}`$, disjoint from $`\{3,4\}`$. This contradiction excludes both profiles and proves Theorem <a href="#erdos-243-reciprocal-tail-rigidity--res:cubicrate" data-reference-type="ref" data-reference="erdos-243-reciprocal-tail-rigidity--res:cubicrate">2</a>.
+
+The companion proves the stronger exclusion of agreement with any such cubic outside a set of density zero. Its positive disagreement bound may depend on the polynomial; no universal numerical lower bound is asserted here. For this theorem, exclusion of eventual agreement suffices.
+
+<a id="erdos-243-reciprocal-tail-rigidity--sec:bounded"></a>
+
+*This entry ends here, at a section boundary. Later sections of the paper, and anything the text above says is given below, are in [the full short paper](https://github.com/wcook04/plectis-erdos/blob/main/docs/papers/full-text/erdos-243-reciprocal-tail-rigidity.md) (66 KB as text) and in `plectis-short-papers.md`.*
 
 #### References cited in this paper
 
