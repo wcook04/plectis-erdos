@@ -2444,7 +2444,7 @@
    "problem": "269",
    "barrier_kind": "endpoint_equivalence",
    "declaration": "ErdosProblems.Erdos269.actualCofinalLocalWindowEscape_iff",
-   "source_ref": "lean/ErdosProblems/Erdos269/CofinalWindowEscapeEquivalence.lean:392",
+   "source_ref": "lean/ErdosProblems/Erdos269/CofinalWindowEscapeEquivalence.lean:391",
    "statement": "theorem actualCofinalLocalWindowEscape_iff : ActualCofinalLocalWindowEscape ↔ Irrational (dyadicShellTsumTailR235 1)",
    "plain_statement": "ActualCofinalLocalWindowEscape is equivalent to irrationality of the {2,3,5} running-LCM value; irrationality already implies the escape for every short bound dominated by c·B·(n+1)^2.",
    "blocks": "Attacking the cofinal local-window escape producer (by window or anti-concentration arguments, or by reshaping/sharpening the quadratic short bound) as a weaker route to #269.",
@@ -3955,12 +3955,12 @@
   "269-window-escape-producer-is-target": [
    {
     "declaration": "ErdosProblems.Erdos269.actualCofinalLocalWindowEscape_iff_irrational_value",
-    "source_ref": "lean/ErdosProblems/Erdos269/CofinalWindowEscapeEquivalence.lean:398",
+    "source_ref": "lean/ErdosProblems/Erdos269/CofinalWindowEscapeEquivalence.lean:397",
     "lane": "root_env"
    },
    {
     "declaration": "ErdosProblems.Erdos269.cofinalLocalWindowEscape_of_irrational_of_quadratic",
-    "source_ref": "lean/ErdosProblems/Erdos269/CofinalWindowEscapeEquivalence.lean:355",
+    "source_ref": "lean/ErdosProblems/Erdos269/CofinalWindowEscapeEquivalence.lean:354",
     "lane": "root_env"
    }
   ],

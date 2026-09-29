@@ -173,6 +173,21 @@ def emit(payload: object) -> int:
     return 0
 
 
+def listed_review(receipt: dict) -> dict:
+    """Keep a review inventory bounded without disguising omitted scope text."""
+    review = dict(receipt)
+    scope = review.get("review_scope")
+    if isinstance(scope, str) and len(scope.encode("utf-8")) > 4096:
+        review.pop("review_scope")
+        review["review_scope_excerpt"] = scope[:240]
+        review["review_scope_sha256"] = "sha256:" + hashlib.sha256(
+            scope.encode("utf-8")
+        ).hexdigest()
+        review["review_scope_bytes"] = len(scope.encode("utf-8"))
+        review["review_scope_complete"] = False
+    return review
+
+
 def load_json(path: Path, label: str) -> dict:
     if not path.is_file():
         raise SystemExit(f"{path.relative_to(ROOT)} missing; cannot run {label}")
@@ -2370,7 +2385,7 @@ def cmd_semantic_reviews(corpus: dict, args) -> int:
                 "problem": node.get("problem"),
                 "class": node.get("logical_class"),
                 "statement": node.get("canonical_statement"),
-                "review": receipt,
+                "review": listed_review(receipt),
             }
         )
 
@@ -2393,7 +2408,7 @@ def cmd_semantic_reviews(corpus: dict, args) -> int:
                 "relation": edge.get("relation"),
                 "to": edge.get("to"),
                 "basis": edge.get("basis"),
-                "review": receipt,
+                "review": listed_review(receipt),
             }
         )
 
