@@ -17,15 +17,15 @@
 \author{Will Cook}
 \date{29 September 2026}
 % BEGIN generated_pipeline_counts
-\newcommand{\LedgerRows}{710}
-\newcommand{\LedgerExact}{511}
-\newcommand{\LedgerSpecialising}{143}
-\newcommand{\LedgerNamedInput}{25}
-\newcommand{\LedgerNoLean}{31}
-\newcommand{\LedgerWithLean}{679}
-\newcommand{\LedgerFormal}{654}
-\newcommand{\LedgerCompared}{633}
-\newcommand{\LedgerQueued}{21}
+\newcommand{\LedgerRows}{699}
+\newcommand{\LedgerExact}{502}
+\newcommand{\LedgerSpecialising}{141}
+\newcommand{\LedgerNamedInput}{23}
+\newcommand{\LedgerNoLean}{33}
+\newcommand{\LedgerWithLean}{666}
+\newcommand{\LedgerFormal}{643}
+\newcommand{\LedgerCompared}{620}
+\newcommand{\LedgerQueued}{23}
 \newcommand{\LeanModules}{1,903}
 \newcommand{\Claims}{160}
 \newcommand{\ClaimObligations}{19}
@@ -56,408 +56,1209 @@
 \begin{document}
 \maketitle
 % BEGIN audited_body
+% SENTENCE r3.provenance
+\paperprovenance
+% END SENTENCE r3.provenance
+
 \begin{abstract}
-% SENTENCE p7.001
-Plectis organises mathematical source, evidence and exposition into a persistent problem-sized world whose main reader-facing outputs are a short paper and a complete reasoning record.
-% END SENTENCE p7.001
-% SENTENCE p7.002
-The working route connects authored claims to Lean declarations and selected Comparator receipts, assembles long records from reviewable parts, and preserves returned work with its review and attribution.
-% END SENTENCE p7.002
-% SENTENCE p7.003
-The intended writing route selects a general result, explains its mechanism and hard step, locates the motivating problem as an instance, and preserves the exact evidence boundary.
-% END SENTENCE p7.003
-% SENTENCE p7.004
-We describe which parts of that route exist in the attached source snapshot, which require editorial judgement, and which remain interface contracts.
-% END SENTENCE p7.004
-% SENTENCE p7.005
-This revision adds source-bound prose auditing and generated inventory counts to make unsupported changes visible during revision.
-% END SENTENCE p7.005
-% SENTENCE p7.006
-A paired-packet protocol evaluates ordinary research-session returns without paid model calls; it has no completed comparative result in this report.
-% END SENTENCE p7.006
-% SENTENCE p7.007
-The contribution is an inspectable research-to-paper workflow with explicit evidence limits; improved exposition, discovery and reader understanding remain hypotheses for evaluation.
-% END SENTENCE p7.007
+
+
+% SENTENCE r3.001.01
+Plectis maintains a mathematical claim together with the sources needed to publish and revise it.
+% END SENTENCE r3.001.01
+% SENTENCE r3.001.02
+Its publication tools bind statements to source revisions, retain the complete set of recorded formal supports, and assemble papers from authored material.
+% END SENTENCE r3.001.02
+% SENTENCE r3.001.03
+We describe the implementation through a support criterion for reciprocal Mersenne series, where omitting a hypothesis would turn a sufficient condition into an unsupported answer to an open problem.
+% END SENTENCE r3.001.03
+% SENTENCE r3.001.04
+A historical test rejected \HistoricalRejected{} of \HistoricalEdits{} deliberately false edits; the surviving edit misstated what the mathematics established.
+% END SENTENCE r3.001.04
+% SENTENCE r3.001.05
+This failure separates the checks that source binding can automate from the mathematical interpretation that still requires review.
+% END SENTENCE r3.001.05
+% SENTENCE r3.001.06
+We give a protocol for testing reader understanding; no comparative reader result is reported.
+% END SENTENCE r3.001.06
+
+
 \end{abstract}
 
-\section{A research record that can become a paper}\label{sec:intro}
 
-% SENTENCE p7.008
-The practical question is how an existing mathematical corpus becomes a paper that another mathematician can understand, check and reuse.
-% END SENTENCE p7.008
-% SENTENCE p7.009
-For this purpose a problem-sized world contains the problem, established results, scoped failed routes, literature, proof evidence and open obligations, rather than only a list of successful declarations.
-% END SENTENCE p7.009
-% SENTENCE p7.010
-The short paper carries the mathematical argument a reader should remember, while the long record preserves the fuller development and provenance.
-% END SENTENCE p7.010
+\section{Introduction}\label{sec:intro}
 
-% SENTENCE p7.011
-Problem 257 supplies a concrete example: for a finite nonempty set of primes $P$, write $h_P(a)=\prod_{p\in P}p^{v_p(a)}$ and $X_A(b)=\sum_{a\in A}(b^a-1)^{-1}$.
-% END SENTENCE p7.011
-% SENTENCE p7.012
-The short paper states that convergence of $\sum_{a\in A}h_P(a)/[a(2^{h_P(a)}-1)]$ implies irrationality of $X_B(b)$ for every integer $b\ge2$ and every infinite $B\subseteq A$.
-% END SENTENCE p7.012
-% SENTENCE p7.013
-Its proof makes positive displacements small by averaging over multiples of a modulus, with a further dyadic average controlling incomplete periods.
-% END SENTENCE p7.013
-% SENTENCE p7.014
-The universal infinite-support problem remains outside that sufficient criterion, and failure of the criterion is not evidence of rationality.
-% END SENTENCE p7.014
 
-% SENTENCE p7.015
-This example fixes the writing objective: preserve the general theorem, make the hard step intelligible, distinguish it from antecedents, and state the remaining problem exactly.
-% END SENTENCE p7.015
-% SENTENCE p7.016
-It supplies no measurement of whether Plectis made the theorem easier to discover or understand.
-% END SENTENCE p7.016
 
-\section{Pre-digestion: selecting a usable result}\label{sec:predigestion}\label{sec:world}\label{sec:graph}
+% SENTENCE r3.002.01
+A theorem may establish an implication under a support condition, while its abstract says that the motivating problem has been solved.
+% END SENTENCE r3.002.01
+% SENTENCE r3.002.02
+Rebuilding the proof will reproduce the theorem with its hypotheses intact, without necessarily finding the error in the abstract.
+% END SENTENCE r3.002.02
+% SENTENCE r3.002.03
+We study how a publication system can preserve the connection between the statement that was checked and the claim that a reader encounters.
+% END SENTENCE r3.002.03
 
-% SENTENCE p1.001
-The existing problem index joins authored questions and boundaries to derived module paths, paper routes, digests and recorded checking dispositions.
-% END SENTENCE p1.001
-% SENTENCE p1.002
-The argument-continuation machinery builds a graph from an elaborated export and records the source identity and limits of that export.
-% END SENTENCE p1.002
-% SENTENCE p1.003
-A relation row distinguishes a replacement hypothesis, an endpoint route and an equivalence inside the stated context.
-% END SENTENCE p1.003
-% SENTENCE p1.004
-An atlas listing with a matching signature and a reachable build target is an attestation to the source projection; it does not establish that a particular continuous-integration run compiled the module.
-% END SENTENCE p1.004
 
-% SENTENCE p1.005
-The round contract proposes a per-problem dossier containing each result's statement, generality, mechanism, hard step, evidence, consumers, attribution and open questions.
-% END SENTENCE p1.005
-% SENTENCE p1.006
-That dossier should be an editorial selection over the existing corpus, with a reason for retaining or excluding each candidate result.
-% END SENTENCE p1.006
-% SENTENCE p1.007
-Retrieval alone cannot establish that a result is the most useful abstraction or that the literature comparison is complete.
-% END SENTENCE p1.007
-% SENTENCE p1.008
-The proposed acceptance test therefore requires an exact source statement, a supported generality relation and a named potential consumer, with missing information left explicit.
-% END SENTENCE p1.008
-% SENTENCE p1.009
-This report does not treat the parallel dossier implementation as already delivered.
-% END SENTENCE p1.009
+% SENTENCE r3.003.01
+We study this problem in Plectis, a collection of research records organised around problems in Bloom's Erd\H{o}s catalogue~\cite{erdosproblems}.
+% END SENTENCE r3.003.01
+% SENTENCE r3.003.02
+Each record connects a claim to its source, the evidence recorded for it and the papers in which it appears.
+% END SENTENCE r3.003.02
+% SENTENCE r3.003.03
+A short paper develops a selected argument; a longer record retains supporting proofs and the history needed to continue the research.
+% END SENTENCE r3.003.03
+% SENTENCE r3.003.04
+Lean~\cite{lean4} and mathlib~\cite{mathlib} supply the formal language and library.
+% END SENTENCE r3.003.04
+% SENTENCE r3.003.05
+The publication tools operate on the surrounding documents and their connections.
+% END SENTENCE r3.003.05
 
-\section{From verification to a claim}\label{sec:checks}
 
+% SENTENCE r3.004.01
+The implemented contribution is a source-bound publication path through these records.
+% END SENTENCE r3.004.01
+% SENTENCE r3.004.02
+Given an immutable revision, the packet compiler collects a writer's dossier in which each assertion retains all of its registered supports, including any named assumptions on which the result depends.
+% END SENTENCE r3.004.02
+% SENTENCE r3.004.03
+The evidence renderer connects paper statements to recorded formal checks, an assembler rebuilds the long records from authored parts, and a prose checker detects changes to audited sentences or their declared sources.
+% END SENTENCE r3.004.03
+% SENTENCE r3.004.04
+Together these operations expose stale support during revision.
+% END SENTENCE r3.004.04
+% SENTENCE r3.004.05
+The mathematical relation between a sentence and its sources remains an authored judgement.
+% END SENTENCE r3.004.05
+
+
+% SENTENCE r3.005.01
+Formalisation blueprints already connect mathematical exposition to declarations.
+% END SENTENCE r3.005.01
+% SENTENCE r3.005.02
+Massot's \texttt{leanblueprint} and LeanArchitect are the closest antecedents for that connection~\cite{leanblueprint,leanarchitect}.
+% END SENTENCE r3.005.02
+% SENTENCE r3.005.03
+Our account concerns papers that combine formal proofs with ordinary arguments, computations and unresolved claims, and that must retain those distinctions through later edits.
+% END SENTENCE r3.005.03
+% SENTENCE r3.005.04
+The Equational Theories Project provides an existing example of persistent collaborative exploration~\cite{etp}; Prove2Me is a closely related agent-oriented formalisation platform~\cite{prove2me}.
+% END SENTENCE r3.005.04
+% SENTENCE r3.005.05
+We claim neither priority for persistent research records nor a measured advantage over these systems.
+% END SENTENCE r3.005.05
+
+
+% SENTENCE r3.006.01
+We follow a support theorem for reciprocal Mersenne series through this path, then describe the checks and the two reading formats (Sections~\ref{sec:world}--\ref{sec:long}).
+% END SENTENCE r3.006.01
+% SENTENCE r3.006.02
+The observations in Section~\ref{sec:instance} precede a proposed evaluation of research sessions.
+% END SENTENCE r3.006.02
+% SENTENCE r3.006.03
+Throughout, we distinguish code in the supplied revision of 29 September 2026 from additional designs described in its component reports.
+% END SENTENCE r3.006.03
+% SENTENCE r3.006.04
+Appendix~\ref{app:repro} records the missing implementations and run material that limit reproduction from this attachment.
+% END SENTENCE r3.006.04
+
+
+\section{A support condition through the publication path}\label{sec:predigestion}\label{sec:world}
+
+
+
+% SENTENCE r3.007.01a
+Consider the series
+\[
+ X_A(b)=\sum_{a\in A}\frac{1}{b^a-1},
+ \qquad A\subseteq\mathbb N_{>0}\text{ infinite},\quad b\in\mathbb Z,\ b\ge2.
+\]
+% END SENTENCE r3.007.01a
+% SENTENCE r3.007.01b
+For a finite nonempty set $P$ of primes, write
+$h_P(a)=\prod_{p\in P}p^{v_p(a)}$ for the $P$-part of $a$.
+% END SENTENCE r3.007.01b
+% SENTENCE r3.007.02
+The weighted support theorem in the Problem~257 paper~\cite{paper257} states that
+\begin{equation}\label{eq:worked-condition}
+ \sum_{a\in A}\frac{h_P(a)}{a(2^{h_P(a)}-1)}<\infty
+\end{equation}
+implies that $X_B(b)$ is irrational for every integer $b\ge2$ and every infinite subset $B\subseteq A$.
+% END SENTENCE r3.007.02
+% SENTENCE r3.007.03
+The quantifiers over $b$ and $B$ belong to the conclusion; the summability condition belongs to the hypothesis.
+% END SENTENCE r3.007.03
+% SENTENCE r3.008.01
+For $P=\{2\}$, write $a=2^km$ with $m$ odd.
+% END SENTENCE r3.008.01
+% SENTENCE r3.008.02
+The summand in~\eqref{eq:worked-condition} becomes $1/[m(2^{2^k}-1)]$: the large power of two allows a support with more reciprocal mass than the unweighted criterion would permit.
+% END SENTENCE r3.008.02
+% SENTENCE r3.008.03
+For example, $A=\{2^k:k\ge0\}$ satisfies the condition since $2^{2^k}-1\ge2^k$, and hence the summands are at most $2^{-k}$.
+% END SENTENCE r3.008.03
+% SENTENCE r3.008.04
+Every infinite thinning of this support satisfies it as well.
+% END SENTENCE r3.008.04
+
+
+% SENTENCE r3.009.01
+To see how the proof works, consider the displacement
+\begin{equation}\label{eq:worked-displacement}
+ \Delta_{b,A}(N)=\sum_{a\in A}\frac{b^{N\bmod a}-1}{b^a-1}
+               =(b^N-1)X_A(b)-J_{b,A}(N),
+\end{equation}
+where $J_{b,A}(N)=\sum_{a\in A,\,a\le N}\sum_{j=1}^{\lfloor N/a\rfloor}b^{N-ja}$ is an integer.
+% END SENTENCE r3.009.01
+% SENTENCE r3.009.02
+For $N>0$, an exponent $a>N$ contributes a positive term, so rationality $X_A(b)=p/q$ would imply $\Delta_{b,A}(N)\ge1/q$.
+% END SENTENCE r3.009.02
+% SENTENCE r3.009.03
+The proof contradicts this lower bound by averaging along multiples of a growing modulus.
+% END SENTENCE r3.009.03
+% SENTENCE r3.009.04
+The difficult estimate concerns incomplete periods: a complete-period average alone does not control the finite tails needed in the argument, so the weighted proof takes a second, dyadic average~\cite{paper257}.
+% END SENTENCE r3.009.04
+
+
+% SENTENCE r3.010.01
+Erd\H{o}s had already stated the reciprocal-summable support criterion~\cite{erdos1968}.
+% END SENTENCE r3.010.01
+% SENTENCE r3.010.02
+The Problem~257 paper supplies its averaging proof and distinguishes the weighted extension from that earlier statement.
+% END SENTENCE r3.010.02
+% SENTENCE r3.010.03
+It also compares perfect-power supports with the Lambert-series work of Duverney and Tachiya~\cite{duverneytachiya}.
+% END SENTENCE r3.010.03
+% SENTENCE r3.010.04
+These attributions must travel with the argument: a new arrangement of a proof does not make its ingredients new.
+% END SENTENCE r3.010.04
+
+
+% SENTENCE r3.011.01
+The universal question asks for irrationality for every infinite $A$ in base two.
+% END SENTENCE r3.011.01
+% SENTENCE r3.011.02
+For each finite $P$, full support, the odd exponents and the primes all fail~\eqref{eq:worked-condition}; the theorem gives no rationality conclusion for them~\cite{paper257}.
+% END SENTENCE r3.011.02
+% SENTENCE r3.011.03
+Thus an abstract that drops the support condition asserts more than the theorem proves, even if its Lean links remain intact.
+% END SENTENCE r3.011.03
+
+
+% SENTENCE r3.012.01
+In a writer's dossier, we keep the exact statement beside its evidence and the remaining universal question.
+% END SENTENCE r3.012.01
+% SENTENCE r3.012.02
+Fields for the mechanism and the difficult step may be empty: their content has to come from an argument such as~\eqref{eq:worked-displacement}, rather than from counting the theorem's dependencies.
+% END SENTENCE r3.012.02
+
+
+\section{Source binding and evidence}\label{sec:checks}
 \papersectiontarget{systems-lifecycle}
-% SENTENCE p2.001
-The evidence renderer reads the paper-to-Lean coverage ledger and produces formal-evidence sidecars and result records.
-% END SENTENCE p2.001
-% SENTENCE p2.002
-A Comparator mark requires all recorded declarations for the result to resolve to a challenge, a solution and an accepted replay receipt with matching source digests.
-% END SENTENCE p2.002
-% SENTENCE p2.003
-It also requires agreement between the declaration statement at the paper's Lean pin and the statement compiled by the compared corpus, after comments and layout are removed.
-% END SENTENCE p2.003
-% SENTENCE p2.004
-The renderer collects failures and writes nothing when resolution fails.
-% END SENTENCE p2.004
 
-% SENTENCE p2.005
-The ledger distinguishes exact correspondence, an exact-or-specialising correspondence, a result depending on a named input, and a result with no Lean statement.
-% END SENTENCE p2.005
-% SENTENCE p2.006
-A statement digest detects a changed assertion; the mathematical judgement that a declaration corresponds to the assertion still needs review.
-% END SENTENCE p2.006
-% SENTENCE p2.007
-Lean checks the formal proposition supplied to it, whereas agreement with the intended mathematics and the quality of its explanation remain separate questions.
-% END SENTENCE p2.007
-% SENTENCE p2.008
-A named open input must remain visible in the prose, and an ordinary argument cannot acquire a Lean or Comparator label merely because it is adjacent to a checked theorem.
-% END SENTENCE p2.008
 
-% SENTENCE p2.009
+\subsection{Immutable inputs and complete support}
+
+
+% SENTENCE r3.013.01
+The dossier mode extends the research-packet compiler with an immutable reader.
+% END SENTENCE r3.013.01
+% SENTENCE r3.013.02
+It resolves a Git revision and reads the claim registry, paper coverage and declaration atlas at that revision, together with the dependency export and research record.
+% END SENTENCE r3.013.02
+% SENTENCE r3.013.03
+Because this reader disables the index's working-tree fallback, a missing required source causes an error instead of silently producing an empty dossier.
+% END SENTENCE r3.013.03
+% SENTENCE r3.014.01
+Each source locator identifies the revision and file digest, followed by a line span, a JSON pointer or a whole-file selection.
+% END SENTENCE r3.014.01
+% SENTENCE r3.014.02
+Before writing a dossier, the compiler re-resolves each selection and checks its digest; the output then carries an input-file inventory and the hashes of the generated files.
+% END SENTENCE r3.014.02
+% SENTENCE r3.014.03
+With the source revision, compiler and annotations held fixed, timestamps and absolute paths are excluded from the output.
+% END SENTENCE r3.014.03
+
+
+% SENTENCE r3.015.01
+A paper occurrence, a registry assertion and an uncurated declaration have distinct record types because a statement can occur in several papers and a declaration can support several statements.
+% END SENTENCE r3.015.01
+% SENTENCE r3.015.02
+We expose these relations to the writer without counting them as mathematical discoveries.
+% END SENTENCE r3.015.02
+
+
+% SENTENCE r3.016.01
+For a paper assertion to receive the dossier's formal-evidence classification, every registered support must resolve in the pinned source and dependency export, and its recorded statement identities must agree.
+% END SENTENCE r3.016.01
+% SENTENCE r3.016.02
+The support relation and any named input are retained.
+% END SENTENCE r3.016.02
+% SENTENCE r3.016.03
+A successful match to just one lemma would be insufficient for a result that depends on several.
+% END SENTENCE r3.016.03
+
+\subsection{Dependency records}\label{sec:graph}
+
+% SENTENCE r3.016a.01
+The argument-continuation graph is built from an elaborated export whose source identity and coverage limits remain part of the graph record.
+% END SENTENCE r3.016a.01
+% SENTENCE r3.016a.02
+Relation rows distinguish a replacement hypothesis, an endpoint route and an equivalence in a stated context.
+% END SENTENCE r3.016a.02
+% SENTENCE r3.016a.03
+An atlas entry with a matching signature and a reachable target attests to that source projection; it does not establish that any particular continuous-integration run compiled the module.
+% END SENTENCE r3.016a.03
+% SENTENCE r3.016a.04
+Retrieval also leaves the selection of a useful abstraction and the completeness of the literature comparison to the author.
+% END SENTENCE r3.016a.04
+
+
+% SENTENCE r3.017.01
+This design follows the familiar idea that a derived object depends on the versions of its inputs.
+% END SENTENCE r3.017.01
+% SENTENCE r3.017.02
+Build Systems \`a la Carte separates dependency scheduling from rebuilding~\cite{buildsystems}; de Kleer's assumption-based truth-maintenance system records the assumptions supporting conclusions~\cite{dekleer}.
+% END SENTENCE r3.017.02
+% SENTENCE r3.017.03
+Here the inputs include a paper statement and its declared support, which gives revision checks a finer object to track than an entire PDF.
+% END SENTENCE r3.017.03
+% SENTENCE r3.017.04
+Changing a source can therefore invalidate the evidence annotation even when the mathematical sentence itself is unchanged.
+% END SENTENCE r3.017.04
+
+
+\subsection{What an evidence mark says}
+
+
+% SENTENCE r3.018.01
+We separate evidence kind from checking history.
+% END SENTENCE r3.018.01
+% SENTENCE r3.018.02
+A record first identifies a Lean declaration, a Comparator result, an ordinary proof or a finite computation, then gives its checking history and remaining assumptions in separate fields.
+% END SENTENCE r3.018.02
+% SENTENCE r3.018.03
+This avoids treating recorded formal support as though it were a fresh independent check.
+% END SENTENCE r3.018.03
+
+
+% SENTENCE r3.019.01
+The native evidence renderer resolves every declaration selected for a Comparator mark to a challenge, a solution and an accepted replay receipt with matching digests.
+% END SENTENCE r3.019.01
+% SENTENCE r3.019.02
+It also compares the recorded declaration statement at the paper's Lean pin with the statement compiled by the compared corpus, ignoring comments and layout, and writes nothing if resolution fails.
+% END SENTENCE r3.019.02
+% SENTENCE r3.019.03
+Comparator and its independent checking backend, \texttt{nanoda\_lib}, are credited dependencies~\cite{leanfrocomparator,nanodalib}.
+% END SENTENCE r3.019.03
+% SENTENCE r3.019.04
+The dossier labels its own kernel and Comparator replays as unrun.
+% END SENTENCE r3.019.04
+
+
+% SENTENCE r3.020.01
+The claim-evidence component report extends this check to dependency membership and the wording permitted beside a statement.
+% END SENTENCE r3.020.01
+% SENTENCE r3.020.02
+Its diagnostic output retains unresolved supports, so a failed join remains visible for review.
+% END SENTENCE r3.020.02
+% SENTENCE r3.020.03
+We describe this extension from the report, whose checker implementation is absent from the attachment.
+% END SENTENCE r3.020.03
+
+
+% SENTENCE r3.021.01
+The integration records illustrate why the revision must be part of a source identity.
+% END SENTENCE r3.021.01
+% SENTENCE r3.021.02
+An earlier interface report records a partially successful join, whereas the later supplied claim-evidence report has no joined rows and gives two global \texttt{formal\_pin} findings.
+% END SENTENCE r3.021.02
+% SENTENCE r3.021.03
+These findings concern disagreement between source pins; they establish neither a failed Lean build nor an absence of formal evidence in the corpus.
+% END SENTENCE r3.021.03
+
+
+\subsection{Checking the prose}
+
+
+% SENTENCE r3.022.01
+This paper's checker inventories its authored body as explicitly delimited sentences, each with a digest, an evidence class and a warrant referring to source spans.
+% END SENTENCE r3.022.01
+% SENTENCE r3.022.02
+It rejects missing or duplicate bindings, altered text and stale source digests, without executing commands named in the evidence records.
+% END SENTENCE r3.022.02
+
+
+% SENTENCE r3.023.01
+The warrant is an assertion by the author.
+% END SENTENCE r3.023.01
+% SENTENCE r3.023.02
+If the author edits both a sentence and its annotation, matching hashes cannot establish that the revision follows from the source.
+% END SENTENCE r3.023.02
+% SENTENCE r3.023.03
+The historical experiment in Section~\ref{sec:instance} contains such a failure of coverage, which still requires mathematical comparison even when the relevant source and changed passage have been brought together.
+% END SENTENCE r3.023.03
+
+
+\section{Short papers and longer records}\label{sec:short}\label{sec:production}
+
+
+
+% SENTENCE r3.024.01
+A writer also needs to establish the motivating problem's relation to the chosen result.
+% END SENTENCE r3.024.01
+% SENTENCE r3.024.02
+It may be an instance of a general theorem, a related but distinct target, a conditional consequence, or the object of a counterexample.
+% END SENTENCE r3.024.02
+% SENTENCE r3.024.03
+For Problem~257 we retain the sufficient support condition in the opening, together with the universal question that it leaves open.
+% END SENTENCE r3.024.03
+
+
+% SENTENCE r3.025.01
+For Problem~269 the distinction is different: the component reports separate a general ordinary-proof result about distinct prime-power heights from a formalised special case, and separate both from the catalogue question involving repetitions~\cite{paper269}.
+% END SENTENCE r3.025.01
+% SENTENCE r3.025.02
+Calling that question an instance of the general theorem would change the target relation.
+% END SENTENCE r3.025.02
+% SENTENCE r3.025.03
+The stronger ordinary result also shows why a formal proof of a special case should not determine which theorem leads the paper.
+% END SENTENCE r3.025.03
+
+
+% SENTENCE r3.026.01
+The short-paper component report describes a deterministic renderer for such authored cards.
+% END SENTENCE r3.026.01
+% SENTENCE r3.026.02
+It uses the existing assertion identifiers and source spans to prepare an opening and a proof outline, with the mechanism supplied by the author.
+% END SENTENCE r3.026.02
+% SENTENCE r3.026.03
+Reported checks reject altered hypotheses and missing source passages.
+% END SENTENCE r3.026.03
+% SENTENCE r3.026.04
+A deliberately false statement of the relation to the original problem nevertheless survived one source-binding test, because the explanatory text still pointed to unchanged source bytes.
+% END SENTENCE r3.026.04
+
+
+% SENTENCE r3.027.01
+In the Mersenne example, an intelligible opening must explain why rationality bounds the displacement away from zero and how averaging contradicts that bound.
+% END SENTENCE r3.027.01
+% SENTENCE r3.027.02
+The source links identify where to check this account, but the writer has to supply it.
+% END SENTENCE r3.027.02
+% SENTENCE r3.027.03
+This is the organisational work emphasised by Halmos and by Knuth, Larrabee and Roberts~\cite{halmos,knuth}.
+% END SENTENCE r3.027.03
+
+
+\section{Assembly and navigation}\label{sec:long}
+
+
+
+% SENTENCE r3.028.01
+The native assembler rebuilds a long manuscript from an ordered list of authored source parts and checks the markers used to split it back into its owners.
+% END SENTENCE r3.028.01
+% SENTENCE r3.028.02
+Its freshness check compares the assembled text with the saved manuscript, allowing a reviewer to change one part while retaining a flat source file that ordinary TeX and extraction tools can read.
+% END SENTENCE r3.028.02
+
+
+% SENTENCE r3.029.01
+For navigation between papers, the component report permits automatic matching only when the complete sets of supporting declarations agree and the evidence classes and source coordinates are compatible.
+% END SENTENCE r3.029.01
+% SENTENCE r3.029.02
+A partial overlap becomes a review candidate: linking to one lemma may be correct while leaving the rest of the short-paper claim unsupported.
+% END SENTENCE r3.029.02
+% SENTENCE r3.030.01
+Ordinary proofs require an authored correspondence that binds the short statement, the long statement and the proof passage separately, so a later edit to any one invalidates the saved correspondence.
+% END SENTENCE r3.030.01
+% SENTENCE r3.030.02
+Even a current match leaves the proof's mathematical sufficiency to review.
+% END SENTENCE r3.030.02
+% SENTENCE r3.030.03
+The navigator retains unlinked material, including failed approaches, rather than deleting it to make the coverage appear complete.
+% END SENTENCE r3.030.03
+
+
+% SENTENCE r3.031.01
+The navigator audit left correspondences unresolved.
+% END SENTENCE r3.031.01
+% SENTENCE r3.031.02
+Missing history blocked some cross-link checks, and no papers were rendered in that component audit.
+% END SENTENCE r3.031.02
+% SENTENCE r3.031.03
+It therefore established neither complete proof routes from short to long papers nor an improvement in reading.
+% END SENTENCE r3.031.03
+
+
+\section{Observed checks and their limits}\label{sec:instance}
+\papersectiontarget{systems-scaling}
+
+
+
+\subsection{The documented source inventory}
+
+
+% SENTENCE r3.032.01
+The supplied inventory records \ProblemWorlds{} problem worlds and \RegisteredPapers{} papers (\ShortPapers{} short papers and \LongRecords{} long records among them), with \LeanModules{} Lean modules, \Claims{} registered claims in \ClaimStatuses{} statuses, and \ClaimObligations{} open obligations.
+% END SENTENCE r3.032.01
+% SENTENCE r3.032.02
+These quantities describe artefacts at the recorded cut.
+% END SENTENCE r3.032.02
+
+
+% SENTENCE r3.033.01
+The paper-coverage ledger has \LedgerRows{} statement occurrences: \LedgerExact{} exact formal supports, \LedgerSpecialising{} specialisations, \LedgerNamedInput{} results conditional on named inputs and \LedgerNoLean{} occurrences without recorded Lean support.
+% END SENTENCE r3.033.01
+% SENTENCE r3.033.02
+Of the \LedgerFormal{} exact or specialising occurrences, \LedgerCompared{} have selected Comparator records and \LedgerQueued{} remain queued.
+% END SENTENCE r3.033.02
+% SENTENCE r3.033.03
+These classifications record a relation and its checking history, rather than executions performed for this paper.
+% END SENTENCE r3.033.03
+
+
+% SENTENCE r3.034.01
+The supplied companion's semantic-coverage macros label \SemanticAuthoredInterpreted{} of \SemanticAuthoredTheoremLike{} theorem-like declarations as interpreted (\SemanticAuthoredPercent{}\%).
+% END SENTENCE r3.034.01
+% SENTENCE r3.034.02
+It separates \SemanticDirectEvidence{} directly anchored declarations from \SemanticContextual{} contextually interpreted ones, leaving \SemanticStructuralOnly{} structural-only declarations.
+% END SENTENCE r3.034.02
+% SENTENCE r3.034.03
+The contextual category does not amount to an individual human reading or a proof-level explanation of every declaration.
+% END SENTENCE r3.034.03
+% SENTENCE r3.034.04
+Likewise, the fixed-query semantic benchmark checks expected handles and dependencies, not a reader's understanding.
+% END SENTENCE r3.034.04
+
+
+% SENTENCE r3.035.01
+At journal head \texttt{\JournalHead}, the generated inventory reports \Rounds{} rounds and \Returns{} returns, of which \ReturnsAdmitted{} were admitted and \ReturnsUnreviewed{} remain unreviewed; \RoundsSealed{} rounds are sealed.
+% END SENTENCE r3.035.01
+% SENTENCE r3.035.02
+The journal is absent from this attachment, so these values are retained from the supplied JSON snapshot.
+% END SENTENCE r3.035.02
+% SENTENCE r3.035.03
+They describe that journal's coverage, which need not include every round mentioned in the private history.
+% END SENTENCE r3.035.03
+
+
+\subsection{The historical false-edit experiment}
+
+
+% SENTENCE r3.036.01
 The historical publication-evidence record reports that \HistoricalRejected{} of the \HistoricalEdits{} deliberately false edits were rejected and \HistoricalEscaped{} escaped.
-% END SENTENCE p2.009
-% SENTENCE p2.010
+% END SENTENCE r3.036.01
+% SENTENCE r3.036.02
+The edits were applied separately, with the baseline restored between trials.
+% END SENTENCE r3.036.02
+% SENTENCE r3.036.03
+The escaped edit changed a description of an unresolved step from ``does not supply'' to ``completes'', and the publication checks accepted it.
+% END SENTENCE r3.036.03
+% SENTENCE r3.037.01
 The edits were authored by the checker's author, the original run logs were not retained, and the other \HistoricalNotRerun{} edits were not rerun against the extended checklist.
-% END SENTENCE p2.010
-% SENTENCE p2.011
-This record identifies a missing coverage rule and provides no estimate of general reliability.
-% END SENTENCE p2.011
+% END SENTENCE r3.037.01
+% SENTENCE r3.037.02
+After the escape, the recorded follow-up checked the intact baseline and that particular edit against an added check.
+% END SENTENCE r3.037.02
+% SENTENCE r3.037.03
+It did not repeat the entire experiment, so the record supplies no post-repair ten-of-ten result.
+% END SENTENCE r3.037.03
 
-\section{Writing the short paper}\label{sec:short}\label{sec:production}
 
-% SENTENCE p3.001
-The supplied essays motivate this objective from different perspectives: Kra asks what a result teaches, Riehl emphasises explanatory generality, Cohn treats undigested output as a burden on readers, and Sanderson argues for recognising motivated explanations~\cite{essays}.
-% END SENTENCE p3.001
-% SENTENCE p3.002
-Gowers distinguishes legitimate problem-solving and theory-building aims, so these views provide editorial questions rather than a unanimous policy about AI-assisted mathematics~\cite{essays}.
-% END SENTENCE p3.002
+% SENTENCE r3.038.01
+The sample comes from one corpus and one author's selection of errors, with neither a manual-review control nor an ordinary continuous-integration comparator.
+% END SENTENCE r3.038.01
+% SENTENCE r3.038.02
+It shows how the checks behaved on those particular edits.
+% END SENTENCE r3.038.02
+% SENTENCE r3.038.03
+General reliability, reader understanding and mathematical transfer remain unmeasured.
+% END SENTENCE r3.038.03
 
-% SENTENCE p3.003
-The supplied private machinery contains a source-frozen editorial packet builder and a writing brief that prioritises the strongest established contribution, its antecedents and its hard idea.
-% END SENTENCE p3.003
-% SENTENCE p3.004
-This is machinery for assigning and packaging editorial work; the attached source does not establish a complete automatic writer from the new dossier contract.
-% END SENTENCE p3.004
-% SENTENCE p3.005
-The builder also imports a dissemination helper that is absent from the supplied private archive, so this report does not claim a successful offline run of that builder.
-% END SENTENCE p3.005
 
-% SENTENCE p3.006
-The proposed short-paper writer consumes the dossier and claim-evidence rows, then drafts a theorem-led account in which the motivating problem is an application of the general result.
-% END SENTENCE p3.006
-% SENTENCE p3.007
-The drafting order should be mathematical question, general statement with hypotheses, mechanism, hard step, comparison with antecedents, and the exact open boundary.
-% END SENTENCE p3.007
-% SENTENCE p3.008
-For the weighted-support example, the short paper should explain why incomplete periods require the second average before listing supplementary finite-denominator results.
-% END SENTENCE p3.008
-% SENTENCE p3.009
-The long record can retain those supplementary developments without making the short paper an inventory of everything that was proved.
-% END SENTENCE p3.009
+\subsection{Component checks}
 
-% SENTENCE p3.010
-A structural linter can detect missing evidence fields, unsupported status changes and forbidden register patterns, while explanatory adequacy still needs a reader.
-% END SENTENCE p3.010
-% SENTENCE p3.011
-A successful revision should enable a cold reader to recover the statement, its mechanism, its difficult step and its limitations without consulting the originating conversation.
-% END SENTENCE p3.011
 
-\section{Assembling the long record}\label{sec:long}
+% SENTENCE r3.039.01
+The component reports describe regeneration checks and altered-input tests, including runs under ordinary and optimised Python where stated.
+% END SENTENCE r3.039.01
+% SENTENCE r3.039.02
+Those accounts are retained as reported results because the attachment omits some implementations and raw run outputs.
+% END SENTENCE r3.039.02
+% SENTENCE r3.039.03
+They are separate from the manuscript checks run for this revision.
+% END SENTENCE r3.039.03
 
-% SENTENCE p4.001
-The native assembler writes flat long manuscripts from authored reasoning parts and retains a visible marker before each part.
-% END SENTENCE p4.001
-% SENTENCE p4.002
-Its check mode compares the generated manuscript with the assembled result and acts as a freshness gate.
-% END SENTENCE p4.002
-% SENTENCE p4.003
-This arrangement lets a reviewer revise a bounded part while keeping a manuscript that ordinary TeX and text-extraction tools can read.
-% END SENTENCE p4.003
 
-% SENTENCE p4.004
-Assembly freshness does not imply that the long record agrees mathematically with the short paper.
-% END SENTENCE p4.004
-% SENTENCE p4.005
-The proposed cross-paper check should join stable result identifiers and compare statements, assumptions, evidence classes and open boundaries before either manuscript is released.
-% END SENTENCE p4.005
-% SENTENCE p4.006
-A deletion from the short paper should preserve the long-record result or record an explicit correction; it should not erase the history of a failed route.
-% END SENTENCE p4.006
-% SENTENCE p4.007
-The short and long versions may use different explanations while citing the same supported mathematical assertion.
-% END SENTENCE p4.007
-
-\section{The review and improvement loop}\label{sec:loop}\label{sec:cycle}
-
+\section{Research revisions and reader evaluation}\label{sec:loop}\label{sec:cycle}
 \papersectiontarget{systems-research-loop}\papersectiontarget{systems-public}
-% SENTENCE p5.001
-The public research record maintains an append-only hash-linked journal of packets, returns, reviews and consumer dispositions.
-% END SENTENCE p5.001
-% SENTENCE p5.002
-The supplied private intake tool preserves return bytes before judgement, and its reflection tool consumes outcome records separately from custody.
-% END SENTENCE p5.002
-% SENTENCE p5.003
-The reflection tool can examine outcomes, policies, mathematics, context, assimilation, infrastructure and objectives, while changes to directives and objectives remain operator proposals.
-% END SENTENCE p5.003
-% SENTENCE p5.004
-Its documented promotion rule requires a causal-trial contract, evidence from separate batches and a clean replay before a candidate policy becomes active.
-% END SENTENCE p5.004
 
-% SENTENCE p5.005
-For paper work, the proposed loop is to freeze inputs, commission a bounded revision, preserve its return, check changed claims, review its exposition, and either integrate or reject the change with reasons.
-% END SENTENCE p5.005
-% SENTENCE p5.006
-An accepted component still needs a recorded consumer and an integration decision; acceptance does not itself show that a paper changed or a reader benefited.
-% END SENTENCE p5.006
-% SENTENCE p5.007
-Policy changes should be tested against retained difficult cases as well as the latest successful return, because making a prompt stricter can suppress useful work.
-% END SENTENCE p5.007
-% SENTENCE p5.008
-The existence of repeated rounds is evidence of an iterative process, not evidence that the process improves automatically.
-% END SENTENCE p5.008
 
-\section{Evaluation through ordinary research packets}\label{sec:evaluation}
+\subsection{A revision remains part of the research record}
 
-% SENTENCE p6.001
-The existing semantic benchmark runs fixed queries and checks for expected source handles, statuses and dependency entries.
-% END SENTENCE p6.001
-% SENTENCE p6.002
-Such a check can reveal broken navigation, but it does not measure reader understanding or the usefulness of a paper.
-% END SENTENCE p6.002
-% SENTENCE p6.003
-The native reader-study tool prepares digest-bound materials and analysis, and its optional execution path requires a separately authorised provider bridge.
-% END SENTENCE p6.003
-% SENTENCE p6.004
-The operator's revised protocol uses the ordinary Type B research sessions as subjects and requires no paid model calls or new provider runner.
-% END SENTENCE p6.004
 
-% SENTENCE p6.005
-For a component comparison, both packets receive the same task, source revision, evidence boundary, budget and frozen rubric, with one declared input difference.
-% END SENTENCE p6.005
-% SENTENCE p6.006
-The corresponding source-only control and structured-dossier treatment should contain the same mathematical facts when the estimand is the effect of organisation.
-% END SENTENCE p6.006
-% SENTENCE p6.007
-A separate grader receives anonymised outputs in counterbalanced order, together with the frozen answer key and rubric; it receives neither the producing arm label nor the desired result.
-% END SENTENCE p6.007
-% SENTENCE p6.008
-Severe mathematical or evidence-status errors are reported separately from exposition scores and cannot be cancelled by fluent prose.
-% END SENTENCE p6.008
+% SENTENCE r3.040.01
+The public research-record tool maintains an append-only, hash-linked journal of submitted work and later review.
+% END SENTENCE r3.040.01
+% SENTENCE r3.040.02
+In the supplied private excerpts, receipt of a return precedes judgement of its content, so rejected or superseded work remains available.
+% END SENTENCE r3.040.02
+% SENTENCE r3.040.03
+A consumer disposition records what happened after review.
+% END SENTENCE r3.040.03
 
-% SENTENCE p6.009
-The primary observations are whether a reader can state the general result, identify the hard step, locate its evidence and distinguish the remaining open question.
-% END SENTENCE p6.009
-% SENTENCE p6.010
-Related short and long papers, repeated sessions and equivalent formulations are clustered by mathematical lineage instead of being treated as independent discoveries.
-% END SENTENCE p6.010
-% SENTENCE p6.011
-Every issued assignment, missing return, timeout, invalid output and adjudication should remain in the record, together with preparation and review effort.
-% END SENTENCE p6.011
-% SENTENCE p6.012
-Ordinary session access avoids additional model-call charges in this design, while human time and any existing subscription remain costs.
-% END SENTENCE p6.012
-% SENTENCE p6.013
-A before-and-after writing round can show revision progress, whereas a causal claim about a component requires the matched comparison rather than different tasks assigned to different components.
-% END SENTENCE p6.013
-% SENTENCE p6.014
-The protocol would count against the upgrade if source-faithful reader decisions did not improve, if severe errors increased, or if additional preparation outweighed the recorded benefit.
-% END SENTENCE p6.014
-% SENTENCE p6.015
-No comparative scores or reader gains are reported for this revision.
-% END SENTENCE p6.015
 
-\section{What the attached snapshot establishes}\label{sec:instance}
+% SENTENCE r3.041.01
+The loop component specifies the domain, quantifiers and assumptions of a task, together with any finite range or approximation regime, and retains that task when a fallback is offered.
+% END SENTENCE r3.041.01
+% SENTENCE r3.041.02
+An agent may then return a valid special case without erasing the unanswered original question.
+% END SENTENCE r3.041.02
+% SENTENCE r3.041.03
+Whether the return is in fact such a special case requires mathematical review.
+% END SENTENCE r3.041.03
 
-% SENTENCE p7.017
-The attached snapshot indexes \ProblemWorlds{} problem worlds and registers \RegisteredPapers{} paper entries, including \ShortPapers{} short problem papers and \LongRecords{} long reasoning records.
-% END SENTENCE p7.017
-% SENTENCE p7.018
-The paper-to-Lean ledger contains \LedgerRows{} assertion occurrences: \LedgerExact{} exact rows, \LedgerSpecialising{} exact-or-specialising rows, \LedgerNamedInput{} rows depending on a named input, and \LedgerNoLean{} rows without a Lean statement.
-% END SENTENCE p7.018
-% SENTENCE p7.019
-Its recorded Comparator dispositions are \LedgerCompared{} compared and \LedgerQueued{} pending among the \LedgerFormal{} exact and exact-or-specialising rows.
-% END SENTENCE p7.019
-% SENTENCE p7.020
-These counts are generated by the native counts builder and do not measure mathematical importance, completeness of the literature review or exposition quality.
-% END SENTENCE p7.020
 
-% SENTENCE p7.021
-At recorded journal head \texttt{\JournalHead}, the source journal contains \Rounds{} opened rounds, \RoundsSealed{} sealed rounds and \Returns{} returns, with \ReturnsAdmitted{} admitted for integration and \ReturnsUnreviewed{} without a recorded review.
-% END SENTENCE p7.021
-% SENTENCE p7.022
-Those journal counts do not claim complete capture of all rounds mentioned in the private history.
-% END SENTENCE p7.022
-% SENTENCE p7.023
-The revised paper records its prose as explicit source-bound units and checks for changed text, missing bindings, duplicate identifiers and changed evidence bytes.
-% END SENTENCE p7.023
-% SENTENCE p7.024
-The associated source excerpts distinguish the supplied private machinery and literature from local run receipts.
-% END SENTENCE p7.024
-% SENTENCE p7.025
-This auditing mechanism is a review aid: a maintainer who changes both an assertion and its supporting annotation can still introduce a shared mistake.
-% END SENTENCE p7.025
+% SENTENCE r3.042.01
+For policy proposals, the reflection tool requires a causal-trial contract, evidence from separate batches and a clean replay before promotion.
+% END SENTENCE r3.042.01
+% SENTENCE r3.042.02
+Directive and objective changes remain proposals for the operator.
+% END SENTENCE r3.042.02
+% SENTENCE r3.042.03
+The component's idempotent use-tracking demonstration concerns infrastructure use, and supplies no observation of outside uptake of a theorem.
+% END SENTENCE r3.042.03
 
-\section{Relation to prior systems}\label{sec:related}
 
-% SENTENCE p7.026
-LeanArchitect is the nearest listed comparator for synchronising exposition with formal declarations: its annotations and environment data support dependency extraction and generated blueprint text~\cite{leanarchitect}.
-% END SENTENCE p7.026
-% SENTENCE p7.027
-Plectis adds a different publication path around mixed evidence classes, separately recorded statement comparison, short and long paper roles, and the custody of unresolved returned work.
-% END SENTENCE p7.027
-% SENTENCE p7.028
-This combination has not been shown to produce clearer papers or better formalisation performance than LeanArchitect.
-% END SENTENCE p7.028
+% SENTENCE r3.043.01
+Repeated rounds supply a revision history, but a comparison must keep the task fixed to establish whether a policy helps.
+% END SENTENCE r3.043.01
+% SENTENCE r3.043.02
+We would retain useful generalisations as well as unsupported claims in that comparison, since a stricter prompt may suppress either.
+% END SENTENCE r3.043.02
 
-% SENTENCE p7.029
-The Equational Theories Project is a stronger precedent for demonstrated collaborative exploration, including implication and non-implication data, Lean validation and shared project management~\cite{etp}.
-% END SENTENCE p7.029
-% SENTENCE p7.030
-Persistence, correction and formal checking therefore cannot serve as standalone novelty claims for Plectis.
-% END SENTENCE p7.030
-% SENTENCE p7.031
-The mathlib community supplies the reusable formal library and maintenance model on which problem-specific developments can build, while Formal Conjectures supplies formal problem statements~\cite{mathlib,formalconjectures}.
-% END SENTENCE p7.031
 
-% SENTENCE p7.032
-AlphaEvolve improves code against executable evaluators and stores evaluated candidates in an evolutionary database, while its mathematical exploration report studies constructions and subsequent mathematical analysis~\cite{alphaevolve,alphaevolvemath}.
-% END SENTENCE p7.032
-% SENTENCE p7.033
-The present paper-writing loop does not demonstrate comparable autonomous optimisation, and grammatical quality alone is not a trustworthy executable evaluator of mathematical exposition.
-% END SENTENCE p7.033
-% SENTENCE p7.034
-Learning to Discover Interesting Mathematics proposes proof-length-based interestingness and studies its relation to downstream utility in formal libraries~\cite{interestingness}.
-% END SENTENCE p7.034
-% SENTENCE p7.035
-Plectis treats such a score as a possible selection signal whose value for a short paper would still need a named consumer and a reader test.
-% END SENTENCE p7.035
+\subsection{A paired protocol}\label{sec:evaluation}
 
-% SENTENCE p7.036
-Agent Hunt distributes autoformalisation through bounties, OpenProver maintains planner, worker and verifier state, and OProver incorporates retrieval and compiler feedback into formal proving~\cite{agenthunt,openprover,oprover}.
-% END SENTENCE p7.036
-% SENTENCE p7.037
-CircuitProver explicitly studies reusable proof knowledge in hardware verification, so storing reusable lemmas is also an established direction~\cite{circuitprover}.
-% END SENTENCE p7.037
-% SENTENCE p7.038
-The differentiating question here is how the resulting research record becomes trustworthy exposition, not whether this workflow proves more theorems than those systems.
-% END SENTENCE p7.038
 
-% SENTENCE p7.039
-RE-Bench illustrates the importance of explicit tasks, budgets and comparators in evaluating research agents; its official versioned abstract is used here because the attached extraction includes an earlier internal draft~\cite{rebench}.
-% END SENTENCE p7.039
-% SENTENCE p7.040
-Halmos\textquotesingle{} account of mathematical writing supports treating the organisation of an argument as substantive work rather than assuming a proof transcript is already a finished paper~\cite{halmos}.
-% END SENTENCE p7.040
+% SENTENCE r3.044.01
+The proposed comparison pairs ordinary research sessions on the same task, source revision, evidence limits and effort budget.
+% END SENTENCE r3.044.01
+% SENTENCE r3.044.02
+To test organisation, the treatment could receive a structured dossier while the control receives the same facts as source excerpts.
+% END SENTENCE r3.044.02
+% SENTENCE r3.044.03
+Changing exactly one permitted file is mechanically checkable.
+% END SENTENCE r3.044.03
+% SENTENCE r3.044.04
+Whether that file changes only the intended intervention requires inspection of its content.
+% END SENTENCE r3.044.04
+% SENTENCE r3.045.01
+A separate grader receives anonymised returns in counterbalanced order, with a frozen rubric and answer key but neither the arm label nor the desired outcome.
+% END SENTENCE r3.045.01
+% SENTENCE r3.045.02
+Quoted passages tie each judgement to the returned text, and severe evidence errors or changes of mathematical meaning are considered separately from ordinal exposition scores.
+% END SENTENCE r3.045.02
+% SENTENCE r3.045.03
+The design prepares these materials without paid model calls or a new provider runner; preparation time, review effort and existing subscriptions remain costs.
+% END SENTENCE r3.045.03
+
+
+% SENTENCE r3.046.01
+Anonymisation may fail when a distinctive phrase or extra navigation page reveals the arm.
+% END SENTENCE r3.046.01
+% SENTENCE r3.046.02
+Session identifiers also provide limited evidence of independence, so the protocol preserves disagreements and requests another grading session when necessary.
+% END SENTENCE r3.046.02
+% SENTENCE r3.046.03
+Historical grading by one analyst remains calibration material.
+% END SENTENCE r3.046.03
+
+
+% SENTENCE r3.047.01
+For the Mersenne example, we would ask a reader to state the support condition and explain why rationality bounds the displacement away from zero.
+% END SENTENCE r3.047.01
+% SENTENCE r3.047.02
+We would then ask which universal question remains open and where the complete proof, with its assumptions, can be found.
+% END SENTENCE r3.047.02
+% SENTENCE r3.047.03
+The answer key needs to be checked against the source theorem before dispatch.
+% END SENTENCE r3.047.03
+
+
+% SENTENCE r3.048.01
+Short and long versions of one result, together with repeated sessions on it, form one analysis cluster.
+% END SENTENCE r3.048.01
+% SENTENCE r3.048.02
+The proposed paired analysis reserves its uncertainty interval for completed observations under stated independence and boundedness assumptions, and does not infer zero uncertainty from constant observed scores.
+% END SENTENCE r3.048.02
+% SENTENCE r3.048.03
+Every issued assignment, missing return, timeout, invalid output and adjudication should remain in the record.
+% END SENTENCE r3.048.03
+% SENTENCE r3.048.04
+The exposed corpus is development material; transfer requires unseen mathematics.
+% END SENTENCE r3.048.04
+
+
+% SENTENCE r3.049.01
+No independent writing comparison, blind grading run or cold-reader experiment is reported here.
+% END SENTENCE r3.049.01
+% SENTENCE r3.049.02
+We would count against the intervention a failure to improve source-faithful reader decisions, an increase in severe errors, or preparation costs that outweigh its benefit.
+% END SENTENCE r3.049.02
+% SENTENCE r3.049.03
+Prepared packets and fixed-query benchmark results do not answer these questions.
+% END SENTENCE r3.049.03
+
+
+\section{Related work}\label{sec:related}
+
+
+
+\subsection{Formal libraries, blueprints and proof support}
+
+
+% SENTENCE r3.050.01
+The mathlib paper motivates library abstractions through the mathematical constructions that need them~\cite{mathlib}, while de Moura and Ullrich introduce Lean~4 through an executable example before developing its metaprogramming facilities~\cite{lean4}.
+% END SENTENCE r3.050.01
+% SENTENCE r3.050.02
+Plectis uses their formal infrastructure to connect an authored account to its supporting declarations.
+% END SENTENCE r3.050.02
+% SENTENCE r3.051.01
+LeanArchitect generates blueprint material from annotated Lean source and environment data~\cite{leanarchitect}.
+% END SENTENCE r3.051.01
+% SENTENCE r3.051.02
+Our dossier also depends on authored explanations and machine-readable declarations, with additional records for nonformal arguments and unresolved evidence.
+% END SENTENCE r3.051.02
+% SENTENCE r3.051.03
+The long-record correspondence has a narrower purpose: locating a passage that supports a particular short-paper claim.
+% END SENTENCE r3.051.03
+
+
+% SENTENCE r3.052.01
+Hattori, Matsuzaki and Fujiwara study natural-language translation and recursive summarisation of formal proofs~\cite{hattori}, LeanMarathon addresses long-horizon autoformalisation~\cite{leanmarathon}, and Proof-Refactor concerns modularising generated proofs~\cite{proofrefactor}.
+% END SENTENCE r3.052.01
+% SENTENCE r3.052.02
+The writer component places its dependency-aware documentation task beside DocAgent~\cite{p3docagent}.
+% END SENTENCE r3.052.02
+% SENTENCE r3.052.03
+These tasks can supply useful material, while the mathematical mechanism in the present writer remains authored.
+% END SENTENCE r3.052.03
+
+
+% SENTENCE r3.053.01
+LeanDojo extracts premise locations and proof states for retrieval-augmented proving~\cite{leandojo}.
+% END SENTENCE r3.053.01
+% SENTENCE r3.053.02
+Lean Hammer, Aesop and Sledgehammer also concern premise use and proof automation~\cite{leanhammer,aesop,judgementday}.
+% END SENTENCE r3.053.02
+% SENTENCE r3.053.03
+In a dossier, dependencies serve the different purpose of exposing a claim's support to a writer; using a graph to judge mathematical importance would require further justification, as the analyses of Mathlib and the Isabelle Archive of Formal Proofs make relevant~\cite{mathlibnetwork,huch}.
+% END SENTENCE r3.053.03
+
+
+% SENTENCE r3.054.01
+Kohlenbach's proof-theoretic methods and the automatic generalisation work of Gandhi, Tadipatri and Gowers concern the assumptions and content of arguments~\cite{kohlenbach,gandhi}.
+% END SENTENCE r3.054.01
+% SENTENCE r3.054.02
+At a more local level, Batteries' \texttt{unusedArguments} linter, Plausible's property tests and work on vacuity examine statements or their use~\cite{batteries,plausible,beyondvacuity}.
+% END SENTENCE r3.054.02
+% SENTENCE r3.054.03
+A dossier can preserve such findings, but source hashes cannot perform those analyses.
+% END SENTENCE r3.054.03
+
+
+\subsection{Research agents and reusable knowledge}
+
+
+% SENTENCE r3.055.01
+Reusable mathematical material is the subject of lemma mining in HOL Light and theory exploration in Hipster~\cite{lemmamining,hipster}.
+% END SENTENCE r3.055.01
+% SENTENCE r3.055.02
+DreamCoder studies library learning, while LEGO-Prover, DreamProver and ProofEvolve examine growing libraries or evolving proof procedures~\cite{dreamcoder,legoprover,dreamprover,proofevolve}.
+% END SENTENCE r3.055.02
+% SENTENCE r3.055.03
+LeanConjecturer generates candidate statements~\cite{leanconjecturer}.
+% END SENTENCE r3.055.03
+% SENTENCE r3.055.04
+We address the later publication task of explaining a selected result and retaining the evidence for that explanation.
+% END SENTENCE r3.055.04
+
+
+% SENTENCE r3.056.01
+AlphaEvolve evaluates generated code against executable objectives, and its mathematical exploration report connects computational constructions to subsequent analysis~\cite{alphaevolve,alphaevolvemath}.
+% END SENTENCE r3.056.01
+% SENTENCE r3.056.02
+Proof-length-based interestingness and its relation to downstream utility are studied in Learning to Discover Interesting Mathematics~\cite{interestingness,patel}, with Dream-RSI another approach to recursive improvement through evolving tasks~\cite{dreamrsi}.
+% END SENTENCE r3.056.02
+% SENTENCE r3.056.03
+We treat such objectives as possible selection signals, whose value for a paper would still need an identified use and a reader test.
+% END SENTENCE r3.056.03
+
+
+% SENTENCE r3.057.01
+Agent Hunt organises collaborative autoformalisation through bounties, OpenProver maintains planner, worker and verifier state, and OProver combines retrieval with compiler feedback~\cite{agenthunt,openprover,oprover}.
+% END SENTENCE r3.057.01
+% SENTENCE r3.057.02
+CircuitProver studies reusable proof knowledge in hardware verification~\cite{circuitprover}.
+% END SENTENCE r3.057.02
+% SENTENCE r3.057.03
+Prove2Me offers an open collaborative formalisation platform and AXLE supplies cloud infrastructure for Lean utilities~\cite{prove2me,axle}.
+% END SENTENCE r3.057.03
+% SENTENCE r3.057.04
+The present evaluation concerns the publication and revision of claims, leaving comparative theorem-proving performance untested.
+% END SENTENCE r3.057.04
+
+
+% SENTENCE r3.058.01
+The Aletheia case study distinguishes technical validity from the meaning of the intended problem, and Towards Autonomous Mathematics Research separates autonomy from significance~\cite{aletheia,autonomousmath}.
+% END SENTENCE r3.058.01
+% SENTENCE r3.058.02
+Li and colleagues describe a human--AI interactive proving protocol~\cite{lihai}.
+% END SENTENCE r3.058.02
+% SENTENCE r3.058.03
+The claim's relation to the motivating problem belongs in the public account for the same reason: a valid neighbouring result may leave the original question unanswered.
+% END SENTENCE r3.058.03
+% SENTENCE r3.058.04
+Tao's community register of AI contributions provides an existing place where those distinctions affect how work is recorded~\cite{taowiki}.
+% END SENTENCE r3.058.04
+
+
+\subsection{Evaluation and mathematical judgement}
+
+
+% SENTENCE r3.059.01
+RE-Bench supplies an example of research-agent evaluation with explicit tasks and budgets~\cite{rebench}; we use its official versioned abstract because the supplied extraction also contains an earlier internal draft.
+% END SENTENCE r3.059.01
+% SENTENCE r3.059.02
+Berlot-Attwell and colleagues examine compute and behaviour in library-learning evaluation~\cite{berlotattwell}.
+% END SENTENCE r3.059.02
+% SENTENCE r3.059.03
+The reader protocol relates its questions to repository-documentation evaluation, automated proof engineering and statement-autoformalisation assessment~\cite{p6-swd,p6-ape,p6-poiroux}.
+% END SENTENCE r3.059.03
+% SENTENCE r3.059.04
+Its outcome is what a reader can recover from a paper.
+% END SENTENCE r3.059.04
+
+
+% SENTENCE r3.060.01
+The evaluation questions also draw on accounts of mathematical understanding.
+% END SENTENCE r3.060.01
+% SENTENCE r3.060.02
+Kra asks what a result teaches, Riehl emphasises explanatory generality, Cohn discusses the burden of undigested output, and Sanderson argues for motivated explanations~\cite{kra,cohn,sanderson,essays}.
+% END SENTENCE r3.060.02
+% SENTENCE r3.060.03
+Tao's discussion of mining open problems and Litt's account of new research possibilities give further context~\cite{taomining,litt}.
+% END SENTENCE r3.060.03
+% SENTENCE r3.060.04
+These writings motivate questions; they supply no evidence that Plectis answers them.
+% END SENTENCE r3.060.04
+
+
+% SENTENCE r3.061.01
+The collected discussion includes the Fields medallists' declaration, Chu's dissenting viewpoint and the Royal Society letter, together with Gowers's response~\cite{fieldsdecl,chu,greenletter,gowers}.
+% END SENTENCE r3.061.01
+% SENTENCE r3.061.02
+Ringer considers the consequences of becoming a benchmark, Koukoulopoulos discusses shared research infrastructure, and Antieau examines the pace of mathematical work~\cite{ringer,koukoulopoulos,antieau}.
+% END SENTENCE r3.061.02
+% SENTENCE r3.061.03
+Gowers also distinguishes legitimate problem-solving and theory-building aims~\cite{essays}.
+% END SENTENCE r3.061.03
+% SENTENCE r3.061.04
+We preserve these differing perspectives without treating them as a unanimous policy for AI-assisted mathematics.
+% END SENTENCE r3.061.04
+
 
 \section{Limits and conclusion}\label{sec:limits}\label{sec:conclusion}
+\papersectiontarget{systems-trust}
 
-\papersectiontarget{systems-trust}\papersectiontarget{systems-scaling}
-% SENTENCE p7.041
-This report is scoped to an attached source snapshot and accompanying records, with no assertion that the snapshot is the present public main branch.
-% END SENTENCE p7.041
-% SENTENCE p7.042
-The ordinary arguments, historical checking receipts and source-index classifications are reported at their own evidence levels; this revision contains no fresh Lean or Comparator result.
-% END SENTENCE p7.042
-% SENTENCE p7.043
-The dossier generator, short-paper generator and prospective paired evaluation remain separately owned work until their implementations and returns are available.
-% END SENTENCE p7.043
-% SENTENCE p7.044
-Better scores within a familiar corpus would still leave transfer to unseen mathematical material and understanding by independent human readers unsettled.
-% END SENTENCE p7.044
 
-% SENTENCE p7.045
-The useful completed object is a faithful paper together with the evidence needed to inspect it and the record needed to revise it.
-% END SENTENCE p7.045
-% SENTENCE p7.046
-For Plectis, the next test is whether evidence-preserving pre-digestion and editorial revision make the existing mathematics easier to understand and reuse.
-% END SENTENCE p7.046
-% SENTENCE p7.047
-Additional corpus volume and repeated packet production cannot answer that question by themselves.
-% END SENTENCE p7.047
+% SENTENCE r3.062.01
+With the pinned sources available, the implemented tools let a reader recover the declared support of an assertion and detect specified changes to it.
+% END SENTENCE r3.062.01
+% SENTENCE r3.062.02
+They cannot guarantee that this evidence proves the prose, that the formalisation expresses the intended question, or that the explanation communicates the argument.
+% END SENTENCE r3.062.02
+% SENTENCE r3.062.03
+An error shared by a statement and its annotation may survive.
+% END SENTENCE r3.062.03
+
+
+% SENTENCE r3.063.01
+This revision reports no new Lean or Comparator execution, comparative formalisation result or autonomous-optimisation experiment.
+% END SENTENCE r3.063.01
+% SENTENCE r3.063.02
+The additional component designs retain their implementation and testing limits, the historical mutation sample is too narrow for a general reliability estimate, and the reader comparison remains unrun.
+% END SENTENCE r3.063.02
+% SENTENCE r3.063.03
+Transfer to unseen mathematics and understanding by independent human readers are unresolved.
+% END SENTENCE r3.063.03
+
+
+% SENTENCE r3.064.01
+For the support theorem, successful exposition would leave the reader with its hypothesis, the displacement argument and the universal question still open.
+% END SENTENCE r3.064.01
+% SENTENCE r3.064.02
+Plectis connects that account to records that can be inspected and revised.
+% END SENTENCE r3.064.02
+% SENTENCE r3.064.03
+Whether these connections help authors produce mathematics that others understand and reuse is an empirical question.
+% END SENTENCE r3.064.03
+
+
 \appendix
 
-\section{Inspection routes and reproduction}\label{app:repro}
 
-% SENTENCE p7.048
-The human entry points are \texttt{docs/ARCHITECTURE.md}, the problem-paper registry and the selected paper's evidence record.
-% END SENTENCE p7.048
-% SENTENCE p7.049
-The local command \texttt{python3 scripts/build\_systems\_paper\_counts.py} checks the displayed inventory against the current source owners, and its snapshot option records the source digests.
-% END SENTENCE p7.049
-% SENTENCE p7.050
-The command \texttt{python3 scripts/systems\_paper\_evidence.py} checks the explicit prose inventory and source bindings without executing any command listed as evidence.
-% END SENTENCE p7.050
-% SENTENCE p7.051
-The section contract assigns pre-digestion, claim evidence, short writing, long assembly, loop and evaluation to their respective component owners, while the whole-paper editor controls the thesis and cross-section consistency.
-% END SENTENCE p7.051
-% SENTENCE p7.052
-The navigation companion should retain clone-to-receipt instructions, the strategy companion should retain participation and resource choices, and the compact evidence-boundary companion should direct readers to a single claim's support.
-% END SENTENCE p7.052
-% SENTENCE p7.053
-For the external reader, the \papersectionlink{cold-clone-to-proof-receipt.pdf}{cold-clone-problem}{navigation companion} gives an executable entry route and the \papersectionlink{open-source-mathematics-strategy.pdf}{strategy-protocol}{strategy companion} describes participation choices.
-% END SENTENCE p7.053
+\section{Mathematical provenance in the research records}\label{app:credit}
+
+
+
+% SENTENCE r3.065.01
+A publication record must preserve credit at a finer level than the problem number.
+% END SENTENCE r3.065.01
+% SENTENCE r3.065.02
+For the totient work~\cite{paper249}, the supplied attribution registry identifies Coons's non-$k$-regularity theorem as the antecedent refined by the finite-level ranks~\cite{coons}.
+% END SENTENCE r3.065.02
+% SENTENCE r3.065.03
+It distinguishes Martin's separation theorem from the paper's own Chinese-remainder and Dirichlet argument, whose mechanism is traced to Yazdani~\cite{martin,yazdani}.
+% END SENTENCE r3.065.03
+% SENTENCE r3.065.04
+These are separate relations between earlier mathematics and the recorded result; they should remain separate when a paper is shortened.
+% END SENTENCE r3.065.04
+
+
+% SENTENCE r3.066.01
+The running-LCM record~\cite{paper269} retains Fan's public priority for the two-prime case, even though its authors report an independent derivation.
+% END SENTENCE r3.066.01
+% SENTENCE r3.066.02
+The recorded route passes through Hecke--Mahler series, with credit to Loxton and van der Poorten and to Bugeaud and Laurent~\cite{fan269,loxtonvdp1977,bugeaudlaurent2023}.
+% END SENTENCE r3.066.02
+% SENTENCE r3.066.03
+The Erd\H{o}s--Graham problem source remains distinct from the subsequent theorem~\cite{erdosgraham}.
+% END SENTENCE r3.066.03
+% SENTENCE r3.066.04
+The earlier discussion also cites Akiyama and Kaneko's report of Dubickas's result on multiplicative approximation~\cite{akiyamakaneko}; this is background credit, not an additional proof of the running-LCM claim.
+% END SENTENCE r3.066.04
+
+
+% SENTENCE r3.067.01
+For the polynomial-lemniscate record, the historical question comes from Erd\H{o}s, Herzog and Piranian and is catalogued as Problem~1041~\cite{ehp1958,erdos1041}.
+% END SENTENCE r3.067.01
+% SENTENCE r3.067.02
+The registry credits the public degree-seven construction to \texttt{ani}~\cite{aniforum}.
+% END SENTENCE r3.067.02
+% SENTENCE r3.067.03
+It describes the formalised instance as a counterexample to the universal total-variation formulation, while leaving correspondence with the historical curve-length question unadjudicated.
+% END SENTENCE r3.067.03
+% SENTENCE r3.067.04
+The related Formal Conjectures entry~\cite{formalconjectures,fcpr} is a separate recorded action; its status is not a substitute for that correspondence check.
+% END SENTENCE r3.067.04
+
+
+% SENTENCE r3.068.01
+The synthesis paper records connections across the eight problem records, including the periodic-chain theorem~\cite{synthesis}.
+% END SENTENCE r3.068.01
+% SENTENCE r3.068.02
+A connection becomes useful to a later writer only when its assumptions and destination are recoverable.
+% END SENTENCE r3.068.02
+% SENTENCE r3.068.03
+For that reason, the evidence record retains the cited work and the particular relation asserted, even when a later publication gives it less space.
+% END SENTENCE r3.068.03
+
+
+\section{Inspection and reproduction}\label{app:repro}
+
+
+
+% SENTENCE r3.069.01
+The source manifest for this revision identifies commit \texttt{5beb950af93e}.
+% END SENTENCE r3.069.01
+% SENTENCE r3.069.02
+It describes a local integration branch, not the current public main branch.
+% END SENTENCE r3.069.02
+% SENTENCE r3.069.03
+The repository links retained in the bibliography include earlier pins and should be read at those stated revisions.
+% END SENTENCE r3.069.03
+% SENTENCE r3.069.04
+The canonical entry points are the architecture guide, the paper registry and the selected paper's evidence record.
+% END SENTENCE r3.069.04
+
+
+% SENTENCE r3.070.01
+Within the supplied public tree, \texttt{python3 scripts/systems\_paper\_evidence.py} checks this paper's audited passages and their native source bindings.
+% END SENTENCE r3.070.01
+% SENTENCE r3.070.02
+The source ledger additionally lists the supplied component reports and literature excerpts used for the revision, with packet-relative paths and digests.
+% END SENTENCE r3.070.02
+% SENTENCE r3.070.03
+Those supplemental bindings are checked separately and are not evidence that the native checker executed the reported component tests.
+% END SENTENCE r3.070.03
+% SENTENCE r3.070.04
+The revision report records both scopes.
+% END SENTENCE r3.070.04
+
+
+% SENTENCE r3.071.01
+The inventory command, \texttt{python3 scripts/build\_systems\_paper\_counts.py}, normally rebuilds the displayed counts from their source owners.
+% END SENTENCE r3.071.01
+% SENTENCE r3.071.02
+In this attachment it stops at the absent research journal.
+% END SENTENCE r3.071.02
+% SENTENCE r3.071.03
+Dossier reproduction also needs the full pinned repository and imported helper modules that are outside this packet.
+% END SENTENCE r3.071.03
+% SENTENCE r3.071.04a
+The supplied generated counts have therefore been retained without editing; the available manuscript and source-binding checks have a narrower reproduction scope.
+% END SENTENCE r3.071.04a
+% SENTENCE r3.071.04b
+The private editorial builder also imports a dissemination helper absent from the packet, so no offline execution of that builder is claimed.
+% END SENTENCE r3.071.04b
+% SENTENCE r3.071.05
+The native reader-study tool has an optional execution route requiring a separately authorised provider bridge; the manual comparison described here does not use that route.
+% END SENTENCE r3.071.05
+
+
+% SENTENCE r3.072.01
+The \papersectionlink{cold-clone-to-proof-receipt.pdf}{cold-clone-problem}{navigation companion} gives the clone-to-proof route.
+% END SENTENCE r3.072.01
+% SENTENCE r3.072.02
+The \papersectionlink{open-source-mathematics-strategy.pdf}{strategy-protocol}{strategy companion} discusses participation and resource choices.
+% END SENTENCE r3.072.02
+% SENTENCE r3.072.03
+They remain separately owned documents with their own dates and evidence limits.
+% END SENTENCE r3.072.03
+% SENTENCE r3.072.04
+This revision changes neither companion.
+% END SENTENCE r3.072.04
+
 % END audited_body
 
 \begin{thebibliography}{99}
+\bibitem{erdosproblems} T.~F.~Bloom, \emph{Erd\H{o}s problems},
+\href{https://www.erdosproblems.com}{erdosproblems.com}, accessed September 2026.
+\bibitem{paper257} W.~Cook, \emph{Weighted Support Criteria for Reciprocal
+Mersenne Subseries}, short paper on Erd\H{o}s Problem~257, September 2026,
+\repolink{paper/257/erdos-257-mersenne-support-subseries.pdf}{PDF}.
+\bibitem{erdos1968} P.~Erd\H{o}s, \emph{On the irrationality of certain
+series}, Math.\ Student 36 (1968), 222--226 (issued 1969),
+\href{https://users.renyi.hu/~p_erdos/1969-09.pdf}{scan}.
+\bibitem{duverneytachiya} D.~Duverney and Y.~Tachiya, \emph{Refinement of the
+Chowla--Erd\H{o}s method and linear independence of certain Lambert series},
+Forum Math.\ 31 (2019), 1557--1566,
+\href{https://doi.org/10.1515/forum-2018-0299}{DOI}.
+\bibitem{kra} B.~Kra, \emph{Deep theorems were scarce and difficult and so
+became an effective mechanism to identify deep thought. AI has broken this
+system}, guest post on \emph{What's new}, 13 September 2026,
+\href{https://terrytao.wordpress.com/2026/09/13/deep-theorems-were-scarce-and-difficult-and-so-became-an-effective-mechanism-to-identify-deep-thought-ai-has-broken-this-system/}{blog post}.
+\bibitem{cohn} H.~Cohn, \emph{The technical debt of AI-generated mathematics},
+guest post on \emph{What's new}, 15 September 2026,
+\href{https://terrytao.wordpress.com/2026/09/15/the-technical-debt-of-ai-generated-mathematics/}{blog post}.
+\bibitem{taomining} T.~Tao, thread on mining open problems, Mathstodon,
+8 September 2026, \href{https://mathstodon.xyz/@tao/117237320796901560}{thread}.
+\bibitem{fieldsdecl} Twenty-five Fields Medallists, \emph{A severe
+misalignment of AI in mathematics}, declaration posted on \emph{What's new},
+11 September 2026,
+\href{https://terrytao.wordpress.com/2026/09/11/a-severe-misalignment-of-ai-in-mathematics/}{blog post}.
+\bibitem{sanderson} G.~Sanderson, \emph{If math is more than proof, we need to
+better celebrate the rest of it}, guest post on \emph{What's new}, 18 September
+2026, \href{https://terrytao.wordpress.com/2026/09/18/if-math-is-more-than-proof-we-need-to-better-celebrate-the-rest-of-it/}{blog post}.
+\bibitem{lean4} L.~de Moura and S.~Ullrich, \emph{The Lean 4 Theorem Prover
+and Programming Language}, in \emph{Automated Deduction, CADE 28}, Lecture
+Notes in Computer Science 12699, 2021, pp.~625--635,
+\href{https://doi.org/10.1007/978-3-030-79876-5_37}{DOI}.
+\bibitem{erdosgraham} P.~Erd\H{o}s and R.~L.~Graham, \emph{Old and New
+Problems and Results in Combinatorial Number Theory}, Monographies de
+L'Enseignement Math\'ematique 28, 1980, p.~61.
+\bibitem{paper249} W.~Cook, \emph{Bases and Integral Relations for the
+$k$-Kernel of Euler's Totient}, short paper on Erd\H{o}s Problem~249, revised
+18 September 2026,
+\repolink{paper/249/erdos-249-binary-totient-series.pdf}{PDF}.
+\bibitem{coons} M.~Coons, \emph{(Non)Automaticity of number theoretic
+functions}, J.\ Th\'eor.\ Nombres Bordeaux 22 (2010), 339--352,
+\href{https://doi.org/10.5802/jtnb.718}{DOI}, Theorem~3.2.
+\bibitem{martin} G.~Martin, \emph{Simultaneous inequalities among values of
+the Euler phi-function}, 2006,
+\href{https://arxiv.org/abs/math/0603053v1}{arXiv:math/0603053v1}, Theorem~1.
+\bibitem{yazdani} S.~Yazdani, \emph{Multiplicative functions and $k$-automatic
+sequences}, J.\ Th\'eor.\ Nombres Bordeaux 13 (2001), 651--658,
+\href{https://www.numdam.org/item/JTNB_2001__13_2_651_0/}{Numdam}.
+\bibitem{synthesis} W.~Cook, \emph{Reading Eight Erd\H{o}s Problems
+Together}, synthesis paper, September 2026,
+\href{\repobase/blob/af1462ce/paper/synthesis/optimal-sparse-perturbations.tex}{source, including the periodic-chain theorem}.
+\bibitem{aletheia} T.~Feng, T.~Trinh, G.~Bingham, et al., \emph{Semi-Autonomous
+Mathematics Discovery with Gemini: A Case Study on the Erd\H{o}s Problems},
+2026, \href{https://doi.org/10.48550/arXiv.2601.22401}{arXiv}.
+\bibitem{leanfrocomparator} Lean FRO, \emph{Comparator}, 2025,
+\href{https://github.com/leanprover/comparator}{GitHub}.
+\bibitem{nanodalib} \texttt{ammkrn}, \emph{nanoda\_lib}, an independent type
+checker for Lean 4, \href{https://github.com/ammkrn/nanoda_lib}{GitHub}.
+\bibitem{erdos1041} T.~F.~Bloom, \emph{Erd\H{o}s Problem \#1041},
+\href{https://www.erdosproblems.com/1041}{erdosproblems.com}, accessed
+September 2026.
+\bibitem{ehp1958} P.~Erd\H{o}s, F.~Herzog and G.~Piranian, \emph{Metric
+properties of polynomials}, J. Analyse Math. 6 (1958), 125--148,
+\href{https://doi.org/10.1007/BF02790232}{DOI}.
+\bibitem{aniforum} \texttt{ani}, post in the Problem 1041 discussion thread,
+7 September 2026,
+\href{https://www.erdosproblems.com/forum/thread/1041\#post-8861}{erdosproblems.com forum}.
+\bibitem{fcpr} Formal Conjectures, pull request 6505, \emph{Erd\H{o}s 1041:
+mark solved with answer(False) and link a formal proof}, merged 23 September
+2026, \href{https://github.com/google-deepmind/formal-conjectures/pull/6505}{GitHub}.
+\bibitem{dreamrsi} T.~Zheng, X.~Wu, Z.~Zhang, et al., \emph{Dream-RSI:
+Recursive Self-Improvement through Evolving Worlds}, 2026,
+\href{https://arxiv.org/abs/2609.14858}{arXiv:2609.14858}.
+\bibitem{loxtonvdp1977} J.~H.~Loxton and A.~J.~van der Poorten, \emph{Arithmetic
+properties of certain functions in several variables III}, Bull. Austral.
+Math. Soc. \textbf{16} (1977), 15--47.
+\bibitem{bugeaudlaurent2023} Y.~Bugeaud and M.~Laurent, \emph{Transcendence and
+continued fraction expansion of values of Hecke--Mahler series}, Acta Arith.
+\textbf{209} (2023), 59--90.
+\bibitem{paper269} W.~Cook, \emph{The Three-Prime Running LCM}, short paper on
+Erd\H{o}s Problem~269, September 2026,
+\repolink{paper/269/erdos-269-three-prime-running-lcm.pdf}{PDF}.
+\bibitem{fan269} S.~Fan, comment on Erd\H{o}s Problem \#269, erdosproblems.com
+forum, 26 June 2026,
+\href{https://www.erdosproblems.com/forum/thread/269\#post-7218}{forum post}.
+\bibitem{patel} N.~Patel, A.~Rammal, A.~Hayat, R.~Munos, and J.~Kempe,
+\emph{Learning to Discover Interesting Mathematics}, arXiv:2609.28603v1,
+2026, \url{https://arxiv.org/abs/2609.28603}.
+\bibitem{prove2me} S.~Chen, K.~Marwaha, X.~Lu, H.~Yuen, and T.~Peng,
+\emph{Prove2Me: An Open Collaborative Platform for Scaling Math
+Formalization}, 2026, \href{https://doi.org/10.48550/arXiv.2608.28433}{arXiv}.
+\bibitem{autonomousmath} T.~Feng, T.~H.~Trinh, G.~Bingham, et al.,
+\emph{Towards Autonomous Mathematics Research}, 2026,
+\href{https://doi.org/10.48550/arXiv.2602.10177}{arXiv}.
+\bibitem{taowiki} T.~Tao, \emph{AI contributions to Erd\H{o}s problems},
+\href{https://github.com/teorth/erdosproblems/wiki/AI-contributions-to-Erd%C5%91s-problems}{GitHub},
+accessed September 2026.
+\bibitem{ringer} T.~Ringer, \emph{Becoming a benchmark}, guest post on
+\emph{What's new}, 17 September 2026,
+\href{https://terrytao.wordpress.com/2026/09/17/becoming-a-benchmark/}{blog post}.
+\bibitem{leanblueprint} P.~Massot, \emph{leanblueprint}, plasTeX plugin for
+Lean formalisation blueprints, 2020,
+\href{https://github.com/PatrickMassot/leanblueprint}{software repository}.
+\bibitem{leanmarathon} Y.~Zhang, Y.~Sun, T.~Suzuki, J.~D.~Lee, and F.~Liu,
+\emph{LeanMarathon: Toward Reliable AI Co-Mathematicians through Long-Horizon
+Lean Autoformalization}, 2026,
+\href{https://arxiv.org/abs/2606.05400}{arXiv:2606.05400}.
+\bibitem{hattori} S.~Hattori, T.~Matsuzaki, and M.~Fujiwara, \emph{Natural
+Language Translation of Formal Proofs through Informalization of Proof Steps
+and Recursive Summarization along Proof Structure}, in \emph{Proceedings of
+the 18th International Natural Language Generation Conference}, 2025,
+pp.~376--389, \href{https://aclanthology.org/2025.inlg-main.23/}{ACL Anthology}.
+\bibitem{akiyamakaneko} S.~Akiyama and H.~Kaneko, \emph{Multiplicative analogue
+of Markoff--Lagrange spectrum and Pisot numbers}, Adv.\ Math.\ 380 (2021),
+107547, p.~3, reporting the
+theorem of A.~Dubickas, J.\ Number Theory 117 (2006), 222--239,
+\href{https://arxiv.org/abs/1911.06170v6}{arXiv:1911.06170v6}.
+\bibitem{leandojo} K.~Yang et al., \emph{LeanDojo: Theorem Proving with
+Retrieval-Augmented Language Models}, NeurIPS 2023, Datasets and Benchmarks
+Track, \href{https://arxiv.org/abs/2306.15626}{arXiv:2306.15626}.
+\bibitem{lihai} C.~Li, Z.~Lai, D.~An, J.~Hu, and Z.~Wen, \emph{Advancing
+Mathematical Research via Human-AI Interactive Theorem Proving}, 2025,
+\href{https://arxiv.org/abs/2512.09443v2}{arXiv:2512.09443v2}.
+\bibitem{kohlenbach} U.~Kohlenbach, \emph{Applied Proof Theory: Proof
+Interpretations and their Use in Mathematics}, Springer Monographs in
+Mathematics, Springer, Berlin, 2008.
+\bibitem{gandhi} A.~Gandhi, A.~R.~Tadipatri, and T.~Gowers,
+\emph{Automatically Generalizing Proofs and Statements}, in \emph{16th
+International Conference on Interactive Theorem Proving}, LIPIcs 352, 2025,
+pp.~12:1--12:18, \href{https://doi.org/10.4230/LIPIcs.ITP.2025.12}{DOI}.
+\bibitem{batteries} Lean community, \emph{Batteries}, the
+\texttt{unusedArguments} linter in \path{Batteries/Tactic/Lint/Misc.lean},
+\href{https://github.com/leanprover-community/batteries}{GitHub}, accessed
+September 2026.
+\bibitem{axle} J.~Xin, A.~Schneidman, C.~Cummins, K.~Ram, S.~Ganesh, and
+J.~Limperg, \emph{AXLE: A Cloud Infrastructure for Lean~4 Theorem Proving
+Utilities}, 2026, \href{https://arxiv.org/abs/2606.26442}{arXiv:2606.26442}.
+\bibitem{mathlibnetwork} X.~Li, N.~Peng, S.~Severini, and P.~Shafto,
+\emph{The Network Structure of Mathlib}, 2026,
+\href{https://arxiv.org/abs/2604.24797}{arXiv:2604.24797}.
+\bibitem{huch} F.~Huch, \emph{Structure in Theorem Proving: Analyzing and
+Improving the Isabelle Archive of Formal Proofs}, extended abstract, 2022,
+\href{https://arxiv.org/abs/2209.13305}{arXiv:2209.13305}.
+\bibitem{dekleer} J.~de Kleer, \emph{An assumption-based TMS}, Artificial
+Intelligence 28 (1986), 127--162,
+\href{https://doi.org/10.1016/0004-3702(86)90080-9}{DOI}.
+\bibitem{buildsystems} A.~Mokhov, N.~Mitchell, and S.~Peyton Jones,
+\emph{Build Systems \`a la Carte}, Proc.\ ACM Program.\ Lang.\ 2 (ICFP),
+2018, article~79, \href{https://doi.org/10.1145/3236774}{DOI}.
+\bibitem{leanhammer} T.~Zhu, J.~Clune, J.~Avigad, A.~Q.~Jiang, and
+S.~Welleck, \emph{Premise Selection for a Lean Hammer}, 2025, revised 2026,
+\href{https://arxiv.org/abs/2506.07477}{arXiv:2506.07477}.
+\bibitem{aesop} J.~Limperg and A.~H.~From, \emph{Aesop: White-Box Best-First
+Proof Search for Lean}, in \emph{Proceedings of the 12th ACM SIGPLAN
+International Conference on Certified Programs and Proofs}, 2023,
+pp.~253--266, \href{https://doi.org/10.1145/3573105.3575671}{DOI}.
+\bibitem{plausible} Lean community, \emph{Plausible}, a property testing
+framework for Lean~4,
+\href{https://github.com/leanprover-community/plausible}{GitHub}, accessed
+September 2026.
+\bibitem{beyondvacuity} H.~Chockler, A.~Gurfinkel, and O.~Strichman,
+\emph{Beyond Vacuity: Towards the Strongest Passing Formula}, Form.\ Methods
+Syst.\ Des.\ 43 (2013), 552--571,
+\href{https://doi.org/10.1007/s10703-013-0192-6}{DOI}.
+\bibitem{lemmamining} C.~Kaliszyk and J.~Urban, \emph{Lemma Mining over HOL
+Light}, LPAR-19, LNCS 8312, 2013, pp.~503--517,
+\href{https://doi.org/10.1007/978-3-642-45221-5_34}{DOI}.
+\bibitem{hipster} M.~Johansson, D.~Ros\'en, N.~Smallbone, and K.~Claessen,
+\emph{Hipster: Integrating Theory Exploration in a Proof Assistant}, CICM
+2014, LNCS 8543, pp.~108--122,
+\href{https://doi.org/10.1007/978-3-319-08434-3_9}{DOI}.
+\bibitem{dreamcoder} K.~Ellis et al., \emph{DreamCoder: Growing
+Generalizable, Interpretable Knowledge with Wake-Sleep Bayesian Program
+Learning}, 2020, \href{https://arxiv.org/abs/2006.08381}{arXiv:2006.08381}.
+\bibitem{legoprover} H.~Wang, H.~Xin, et al., \emph{LEGO-Prover: Neural
+Theorem Proving with Growing Libraries}, ICLR 2024,
+\href{https://arxiv.org/abs/2310.00656}{arXiv:2310.00656}.
+\bibitem{dreamprover} Y.~Zhang, J.~Sun, et al., \emph{DreamProver: Evolving
+Transferable Lemma Libraries via a Wake-Sleep Theorem-Proving Agent}, 2026,
+\href{https://arxiv.org/abs/2604.26311}{arXiv:2604.26311}.
+\bibitem{proofevolve} W.~Ye, Z.~Guan, et al., \emph{ProofEvolve: Neuro-Symbolic
+Evolution for Formal Automated Theorem Proving}, 2026,
+\href{https://arxiv.org/abs/2608.26334}{arXiv:2608.26334}.
+\bibitem{judgementday} S.~B\"ohme and T.~Nipkow, \emph{Sledgehammer: Judgement
+Day}, IJCAR 2010, LNCS 6173, pp.~107--121,
+\href{https://doi.org/10.1007/978-3-642-14203-1_9}{DOI}.
+\bibitem{berlotattwell} I.~Berlot-Attwell, T.~Sesterhenn, F.~Rudzicz, and
+X.~Si, \emph{Is This LLM Library Learning? Evaluation Must Account For Compute
+and Behaviour}, EACL 2026, pp.~3534--3568,
+\href{https://doi.org/10.18653/v1/2026.eacl-long.163}{DOI}.
+\bibitem{proofrefactor} Y.~Fu, P.~Liu, Z.~Wang, and K.~Yuan,
+\emph{Proof-Refactor: Refactoring Generated Formal Proofs into Modular
+Artifacts}, 2026, \href{https://arxiv.org/abs/2606.03743}{arXiv:2606.03743}.
+\bibitem{leanconjecturer} N.~Onda et al., \emph{LeanConjecturer: Automatic
+Generation of Mathematical Conjectures for Theorem Proving}, 2025,
+\href{https://arxiv.org/abs/2506.22005}{arXiv:2506.22005}.
+\bibitem{litt} D.~Litt, \emph{A beginning for mathematics}, 13 September
+2026, \href{https://www.daniellitt.com/blog/2026/9/13/a-beginning-for-mathematics/}{blog post}.
+\bibitem{chu} T.~Chu, \emph{The AI dissenter viewpoint}, \emph{Proofs and
+Prompts}, 9 August 2026,
+\href{https://proofsandprompts.com/2026/08/09/the-ai-dissenter-viewpoint/}{blog post}.
+\bibitem{greenletter} B.~Green and forty-one other Fellows and Foreign Members
+of the Royal Society,
+\emph{Open letter to Sir Paul Nurse, President of the Royal Society},
+\emph{Proofs and Prompts}, 17 September 2026,
+\href{https://proofsandprompts.com/2026/09/17/open-letter-to-sir-paul-nurse-president-of-the-royal-society/}{blog post}.
+\bibitem{gowers} W.~T.~Gowers, \emph{Why I didn't sign the Fields medallists'
+letter}, 17 September 2026,
+\href{https://gowers.wordpress.com/2026/09/17/why-i-didnt-sign-the-fields-medallists-letter/}{blog post}.
+\bibitem{koukoulopoulos} D.~Koukoulopoulos, \emph{A CERN for AI-assisted
+science?}, guest post on \emph{What's new}, 17 September 2026,
+\href{https://terrytao.wordpress.com/2026/09/17/a-cern-for-ai-assisted-science/}{blog post}.
+\bibitem{antieau} B.~Antieau, \emph{Fast math/slow math}, 15 September 2026,
+\href{https://antieau.github.io/2026/09/15/fast-math-slow-math.html}{blog post}.
+\bibitem{knuth} D. E. Knuth, T. Larrabee and P. M. Roberts. \emph{Mathematical Writing}. Stanford report CS1193, based on the autumn 1987 course, Section~1.
+\bibitem{p3docagent}Dayu Yang et al., \emph{DocAgent: A Multi-Agent System for Automated Code Documentation Generation}, arXiv:2504.08725v3, 2025, Sections 2--3.
+\bibitem{p6-swd}Xinchen Wang, Ruida Hu, Cuiyun Gao, Pengfei Gao, and Chao Peng. \emph{Evaluating Repository-level Software Documentation via Question Answering and Feature-Driven Development}. arXiv:2604.06793v1, 2026.
+\bibitem{p6-ape}Huajian Xin, Luming Li, Xiaoran Jin, Jacques Fleuriot, and Wenda Li. \emph{APE-Bench: Evaluating Automated Proof Engineering for Formal Math Libraries}. arXiv:2504.19110v3, 2026.
+\bibitem{p6-poiroux}Auguste Poiroux, Gail Weiss, Viktor Kun\v{c}ak, and Antoine Bosselut. \emph{Reliable Evaluation and Benchmarks for Statement Autoformalization}. arXiv:2406.07222v3, 2025.
+
 \bibitem{leanarchitect} T. Zhu, P. Monticone, J. Avigad and S. Welleck.
 \emph{LeanArchitect: Automating Blueprint Generation for Humans and AI}.
 \href{https://arxiv.org/abs/2601.22554v1}{arXiv:2601.22554v1}, 2026, Methods and Case Studies.

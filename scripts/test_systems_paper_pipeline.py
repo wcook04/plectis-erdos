@@ -8,6 +8,7 @@ Invoked by the existing counts/architecture test entrypoints in release checks.
 """
 from __future__ import annotations
 import copy
+import re
 import json
 import tempfile
 import unittest
@@ -70,7 +71,8 @@ class EvidenceTests(unittest.TestCase):
     def test_unbound_include(self):
         self.assertTrue(self.check(self.text.replace(evidence.AUDIT_END,r'\input{hidden}'+ '\n'+evidence.AUDIT_END)))
     def test_boundary_mutations(self):
-        for text in [self.text.replace('% END SENTENCE p7.001','% END SENTENCE p7.999',1),self.text.replace(evidence.AUDIT_END,''),self.text.replace(evidence.AUDIT_BEGIN,evidence.AUDIT_BEGIN+'\n'+evidence.AUDIT_BEGIN),self.text.replace(r'\end{document}',r'\end{document}\end{document}')]:
+        end=re.search(r'% END SENTENCE (\S+)',self.text).group()
+        for text in [self.text.replace(end,end+'-renamed',1),self.text.replace(evidence.AUDIT_END,''),self.text.replace(evidence.AUDIT_BEGIN,evidence.AUDIT_BEGIN+'\n'+evidence.AUDIT_BEGIN),self.text.replace(r'\end{document}',r'\end{document}\end{document}')]:
             with self.subTest(text=text[:20]):self.assertTrue(self.check(text))
     def test_duplicate_markers(self):
         m=evidence.SENTENCE.search(self.text);self.assertTrue(self.check(self.text.replace(m.group(),m.group()+'\n'+m.group(),1)))

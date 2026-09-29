@@ -4,7 +4,7 @@ Part of the [evidence record](../erdos257-mersenne-reasoning-surface.md) of the 
 
 <a id="thm-full-support"></a>
 
-## Theorem 5.4 (Full-support irrationality, unconditional, every base $`b \ge 2`$), page 36
+## Theorem 5.4 (Full-support irrationality, unconditional, every base $`b \ge 2`$), page 37
 
 > *For every integer $`b \ge 2`$,
 > ``` math
@@ -142,7 +142,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="thm-topology"></a>
 
-## Theorem 5.9 (Achievement-set topology and measure), page 37
+## Theorem 5.9 (Achievement-set topology and measure), page 38
 
 > *$`\mathcal{A}`$ (Definition 5.2) is compact, closed, perfect, totally disconnected, and nowhere dense; its Lebesgue measure is exactly $`1`$: $`\operatorname{volume}(\mathcal{A}) = 1`$. **Hypotheses:** none. **Conclusion:** $`\mathcal A`$ is a Cantor set of positive measure, often called a fat Cantor set. Its measure is $`1`$, not the length of its ambient interval $`[0,E]`$, where $`E\approx1.6067`$. Strict separation and summability give the compactness, unique coding, and Cantor topology, and Hornich’s strict-tail theorem, as proved by Nitecki \[nitecki2013, Theorem 4(1), p. 9\], gives the measure as $`\lim_N2^NR_N`$ with $`R_N=\sum_{n>N}x_n`$: each level-$`N`$ cylinder has length $`R_N`$, and the $`2^N`$ disjoint cylinders have total length $`2^NR_N`$. The Mersenne-specific input is $`2^NR_N\to1`$. Other weight sequences require their own tail asymptotic.\
 > *Use:* Theorem 5.10 below (compactness is exactly what powers every “limit of achieved points is achieved” argument used downstream, including the seam-limit route of Part 2).*

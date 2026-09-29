@@ -13,7 +13,7 @@
         "label": "long269:res:distinct-height-all",
         "path": "paper/reasoning-parts/erdos269/core.tex",
         "selector": "proof_of",
-        "sha256": "sha256:fa737708a574ee06e2d1186c0d71459a1233c0a51fc78aa9f26725e4e3efaadd"
+        "sha256": "sha256:766a3e446d249bfd5f8075749fd61010cfe10d925d63131bd06b8498634528da"
       }
     },
     {
@@ -28,7 +28,7 @@
         "label": "long269:res:dp-integral-tails",
         "path": "paper/reasoning-parts/erdos269/core.tex",
         "selector": "adjacent_proof",
-        "sha256": "sha256:d78d1f7b88aaaf7d6d19ce763eff7ea85e9a9ae1a2896ee91be136cde6fb60e3"
+        "sha256": "sha256:7c0559fd19be9c80be231490473ebb32fd8809b71d849e453a807e9942d1d85f"
       }
     },
     {
@@ -43,7 +43,7 @@
         "label": "long269:res:dp-blocks",
         "path": "paper/reasoning-parts/erdos269/core.tex",
         "selector": "adjacent_proof",
-        "sha256": "sha256:919c0270b50f071cc4a018840f5a2b309907a5e1175c086d2f1639f5c12323d1"
+        "sha256": "sha256:7ab4b196148d05824ba9bca9c39ce9e32c290c701384b20c9801e958ed9b94ee"
       }
     },
     {
@@ -58,7 +58,7 @@
         "label": "long269:res:dp-short",
         "path": "paper/reasoning-parts/erdos269/core.tex",
         "selector": "adjacent_proof",
-        "sha256": "sha256:7618f49e1281fc7c1203275d96bc64f57a3239badd630e240921fe34a6227f54"
+        "sha256": "sha256:035f25718cab4e34464cb6ad3e2479acdc7c3d03f04f7a6c31799860042a9601"
       }
     },
     {
@@ -73,7 +73,7 @@
         "label": "long269:res:dp-two-walls",
         "path": "paper/reasoning-parts/erdos269/core.tex",
         "selector": "adjacent_proof",
-        "sha256": "sha256:42c2a3b1501075c2aab7ac49b550d99953153310b464d27532281ab6fe004628"
+        "sha256": "sha256:ab639ccf06ecf3112864ef24a2ffe9910edc2f717dc49dcdf21fb6ab1122ea57"
       }
     },
     {
@@ -88,7 +88,7 @@
         "label": "long269:res:single-prime-subsums",
         "path": "paper/reasoning-parts/erdos269/core.tex",
         "selector": "adjacent_proof",
-        "sha256": "sha256:bc60ff4546b3960ff6f3f4ac58566ad4c1cc4bd1b2a3163d2d971711d2049c71"
+        "sha256": "sha256:196193b785b81ef19f1466d657e600c4e26d76e79dfc0ed4820173d166a06545"
       }
     },
     {
@@ -98,10 +98,10 @@
       "short_id": "erdos-257-mersenne-support-subseries#res:strict-mixed-supports",
       "short_statement_sha256": "sha256:ec8cba3f6409742197fa4fa63d81b4e71f2aba928597821a4600ea8cfa8c3f4a",
       "support": {
-        "end": "its presence here records no independent proof review.",
+        "end": "under the review qualification given in the introduction.",
         "path": "paper/reasoning-parts/erdos257/a257_front.tex",
         "selector": "between",
-        "sha256": "sha256:33ea5b20058fca3bbfe14697925051b40a412d77191298236e9ec65b53c5a53a",
+        "sha256": "sha256:e6fb0129077fac184ccd875b1a8bcc44f966446c8bfbc5eec0417255301ad84c",
         "start": "\\paragraph{Why the mixed criterion is strict.}\\label{record257:strict-mixed-proof}"
       }
     }

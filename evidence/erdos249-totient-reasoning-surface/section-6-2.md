@@ -958,7 +958,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="catalogue-cert-b10a"></a>
 
-## Theorem 6.56 (A finite-grid condition gives a nonintegral pair), page 42
+## Theorem 6.56 (A finite-grid condition gives a nonintegral pair), page 41
 
 > *Let $`Q\subseteq\mathbb N_{>0}`$ be finite and nonempty. Suppose that $`B_q<2^L`$ for every $`q\in Q`$ and that
 > ``` math

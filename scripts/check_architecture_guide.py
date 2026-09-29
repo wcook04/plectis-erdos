@@ -545,7 +545,7 @@ def validate_systems_paper(text: str) -> None:
     if "% SYSTEMS_PAPER_VERSION 2" in text:
         import systems_paper_evidence
         labels=("sec:intro", "sec:predigestion", "sec:checks", "sec:short", "sec:long",
-                "sec:loop", "sec:evaluation", "sec:instance", "sec:related", "sec:limits", "app:repro")
+                "sec:instance", "sec:loop", "sec:evaluation", "sec:related", "sec:limits", "app:repro")
         positions=[text.find(r"\label{"+label+"}") for label in labels]
         require(all(p>=0 for p in positions) and positions==sorted(positions),
                 "systems paper lost the version-2 pipeline section order")

@@ -67,7 +67,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="lem-complement-divisibility-after-multiplication"></a>
 
-## Lemma 10.2 (Complement divisibility after multiplication), page 101
+## Lemma 10.2 (Complement divisibility after multiplication), page 100
 
 > *Write $`x=a/b`$ in lowest terms, where $`a\in\mathbb{Z}`$ and $`b\ge1`$. Let $`c\in\mathbb{Z}`$ and let $`H`$ be a positive divisor of $`b`$. If the reduced denominator of $`cx`$ divides $`H`$, then
 > ``` math
@@ -97,7 +97,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="lem-nonvanishing-unique-largest-denominator-exponent"></a>
 
-## Lemma 10.3 (Nonvanishing from a unique largest denominator exponent), page 102
+## Lemma 10.3 (Nonvanishing from a unique largest denominator exponent), page 101
 
 > *Let $`I`$ be a finite set, let $`u_i\in\mathbb{Z}`$ and $`e_i\in\mathbb{N}`$ for $`i\in I`$, and suppose that $`m\in I`$ satisfies $`e_i<e_m`$ for every $`i\ne m`$. If $`u_m`$ is odd, then
 > ``` math
@@ -152,7 +152,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="prop-nonzero-minor-survives-inverse-phase"></a>
 
-## Proposition 10.4 (A nonzero minor survives inverse-phase column weights), page 103
+## Proposition 10.4 (A nonzero minor survives inverse-phase column weights), page 102
 
 > *Let $`d\ge1`$ be an integer, let $`e_0,\ldots,e_{d-1}`$ be nonnegative integers, and let $`z_0,\ldots,z_{d-1}`$ be nonzero complex numbers. Write $`P_{ij}=z_j^{e_i}`$, and suppose $`e_{i_0}=1`$ for some $`i_0`$. Multiplying column $`j`$ by $`W_j=z_j^{-1}`$ gives
 > ``` math
@@ -313,7 +313,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long249-thm-signed-interpolation"></a>
 
-## Theorem 10.8 (Sparse interpolation around the totient), page 112
+## Theorem 10.8 (Sparse interpolation around the totient), page 111
 
 > *Fix integers $`\beta\ge2`$, $`K\ge1`$, $`P\ge2`$, and any function $`f:\mathbb{N}_{>0}\to(0,\infty)`$ with $`f(n)\to\infty`$. There exist $`T>0`$ and target-independent sets $`S\subseteq H\subseteq\{n>K\}`$, with every element of $`S`$ even, such that every
 > ``` math
@@ -353,7 +353,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long249-cor-signed-observations"></a>
 
-## Corollary 10.9 (Observations that do not determine irrationality), page 115
+## Corollary 10.9 (Observations that do not determine irrationality), page 114
 
 > *The following data, taken together, do not determine whether $`F_b(\beta^{-1})`$ is rational: the fixed prefix and odd coefficients; every fixed eventual coefficient and cumulative congruence; the block laws on scales $`o(\ell(X))`$; fixed progression moments modulo eventual integer constants outside $`H`$; progression Dirichlet functions modulo entire functions; and radial germs at all roots of unity modulo smooth functions with Taylor coefficients in $`\mathbb{Z}[\zeta]`$. This remains true with exact equality of the first $`P`$ moment degrees and first $`P`$ radial Taylor coefficients at moduli and root orders at most $`P`$.*
 
@@ -361,7 +361,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long249-prop-signed-first-harmonic"></a>
 
-## Proposition 10.10 (The first-harmonic test on the rational members), page 116
+## Proposition 10.10 (The first-harmonic test on the rational members), page 115
 
 > *Let $`b(n)`$ be integers with $`0\le b(n)\le n`$ and $`F_b(1/2)=u/(2^cv)`$, where $`c\ge0`$ and $`v`$ is odd and positive. Choose $`h\ge1`$ with $`v\mid2^h-1`$. If $`X\ge\max(c,1)`$ and $`16(2X+h+L+2)\le2^L`$, then for every integer $`N\in[X,2X)`$,
 > ``` math

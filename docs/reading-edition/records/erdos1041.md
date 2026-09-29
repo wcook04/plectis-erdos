@@ -4,7 +4,7 @@
 
 Start with [Paths in Polynomial Lemniscates: A Degree-Seven Counterexample and Two Short-Path Criteria](../../../docs/papers/full-text/erdos-1041-lemniscate-newton-flow.md). The longer account is [Paths in Polynomial Lemniscates: A Degree-Seven Counterexample and Two Short-Path Criteria](../../../docs/papers/full-text/erdos1041-lemniscate-reasoning-surface.md).
 
-Registered assertions: 25 short, 27 long. Located links: 6. Correspondences needing review: 19.
+Registered assertions: 8 short, 37 long. Located links: 2. Correspondences needing review: 6.
 
 Checks registered asserting environments and registered claim spans. Unregistered prose assertions, mathematical equivalence, correctness of ordinary proofs, Lean compilation, Comparator replay and PDF freshness are not established by this audit.
 
@@ -25,19 +25,19 @@ A complete registered-evidence match locates the same full declaration set in th
 
 State: **unresolved**.
 
-Short statement: [paper/1041/erdos-1041-lemniscate-newton-flow.tex](../../../paper/1041/erdos-1041-lemniscate-newton-flow.tex) lines 124-134.
+Short statement: [paper/1041/erdos-1041-lemniscate-newton-flow.tex](../../../paper/1041/erdos-1041-lemniscate-newton-flow.tex) lines 262-272.
 
 Ledger evidence: Lean `exact_or_stronger`; Comparator `compared`. These statuses are copied from the evidence ledger; this build reruns neither checker.
 
 No accepted correspondence is recorded. Check the candidates below; none is silently treated as a proof of this short statement.
 
-- `label_alias`: [paper/reasoning-parts/erdos1041/core.tex](../../../paper/reasoning-parts/erdos1041/core.tex) lines 155-161.
+- `label_alias`: [paper/reasoning-parts/erdos1041/core.tex](../../../paper/reasoning-parts/erdos1041/core.tex) lines 443-449.
 
 ### res:sextic-spoke
 
 State: **unresolved**.
 
-Short statement: [paper/1041/erdos-1041-lemniscate-newton-flow.tex](../../../paper/1041/erdos-1041-lemniscate-newton-flow.tex) lines 166-174.
+Short statement: [paper/1041/erdos-1041-lemniscate-newton-flow.tex](../../../paper/1041/erdos-1041-lemniscate-newton-flow.tex) lines 298-306.
 
 Ledger evidence: Lean `exact_or_stronger`; Comparator `compared`. These statuses are copied from the evidence ledger; this build reruns neither checker.
 
@@ -49,316 +49,117 @@ No candidate was found by the bounded label/declaration rules. Read the long rec
 
 State: **unresolved**.
 
-Short statement: [paper/1041/erdos-1041-lemniscate-newton-flow.tex](../../../paper/1041/erdos-1041-lemniscate-newton-flow.tex) lines 197-202.
+Short statement: [paper/1041/erdos-1041-lemniscate-newton-flow.tex](../../../paper/1041/erdos-1041-lemniscate-newton-flow.tex) lines 327-332.
 
 Ledger evidence: Lean `none`; Comparator `not_applicable`. These statuses are copied from the evidence ledger; this build reruns neither checker.
 
 No accepted correspondence is recorded. Check the candidates below; none is silently treated as a proof of this short statement.
 
-- `label_alias`: [paper/reasoning-parts/erdos1041/core.tex](../../../paper/reasoning-parts/erdos1041/core.tex) lines 238-245.
+- `label_alias`: [paper/reasoning-parts/erdos1041/core.tex](../../../paper/reasoning-parts/erdos1041/core.tex) lines 535-542.
 
 ### res:scaled-low-critical
 
 State: **unresolved**.
 
-Short statement: [paper/1041/erdos-1041-lemniscate-newton-flow.tex](../../../paper/1041/erdos-1041-lemniscate-newton-flow.tex) lines 218-226.
+Short statement: [paper/1041/erdos-1041-lemniscate-newton-flow.tex](../../../paper/1041/erdos-1041-lemniscate-newton-flow.tex) lines 334-342.
 
 Ledger evidence: Lean `modulo_named_input`; Comparator `not_applicable`. These statuses are copied from the evidence ledger; this build reruns neither checker.
 
 No accepted correspondence is recorded. Check the candidates below; none is silently treated as a proof of this short statement.
 
-- `partial_declaration_overlap`: [paper/reasoning-parts/erdos1041/core.tex](../../../paper/reasoning-parts/erdos1041/core.tex) lines 260-265.
-- `partial_declaration_overlap`: [paper/reasoning-parts/erdos1041/core.tex](../../../paper/reasoning-parts/erdos1041/core.tex) lines 726-731.
-
-### res:constant-factor-path
-
-State: **unresolved**.
-
-Short statement: [paper/1041/erdos-1041-lemniscate-newton-flow.tex](../../../paper/1041/erdos-1041-lemniscate-newton-flow.tex) lines 343-353.
-
-Ledger evidence: Lean `modulo_named_input`; Comparator `not_applicable`. These statuses are copied from the evidence ledger; this build reruns neither checker.
-
-No accepted correspondence is recorded. Check the candidates below; none is silently treated as a proof of this short statement.
-
-- `complete_declaration_set`: [paper/reasoning-parts/erdos1041/core.tex](../../../paper/reasoning-parts/erdos1041/core.tex) lines 762-772.
-- `partial_declaration_overlap`: [paper/reasoning-parts/erdos1041/core.tex](../../../paper/reasoning-parts/erdos1041/core.tex) lines 909-920.
-
-### res:critical-proximity
-
-State: **unresolved**.
-
-Short statement: [paper/1041/erdos-1041-lemniscate-newton-flow.tex](../../../paper/1041/erdos-1041-lemniscate-newton-flow.tex) lines 432-447.
-
-Ledger evidence: Lean `exact`; Comparator `compared`. These statuses are copied from the evidence ledger; this build reruns neither checker.
-
-No accepted correspondence is recorded. Check the candidates below; none is silently treated as a proof of this short statement.
-
-No candidate was found by the bounded label/declaration rules. Read the long record before declaring the result absent.
-
-### res:two-nearest-roots
-
-State: **unresolved**.
-
-Short statement: [paper/1041/erdos-1041-lemniscate-newton-flow.tex](../../../paper/1041/erdos-1041-lemniscate-newton-flow.tex) lines 463-466.
-
-Ledger evidence: Lean `exact`; Comparator `compared`. These statuses are copied from the evidence ledger; this build reruns neither checker.
-
-No accepted correspondence is recorded. Check the candidates below; none is silently treated as a proof of this short statement.
-
-No candidate was found by the bounded label/declaration rules. Read the long record before declaring the result absent.
-
-### res:straight-no-go
-
-State: **unresolved**.
-
-Short statement: [paper/1041/erdos-1041-lemniscate-newton-flow.tex](../../../paper/1041/erdos-1041-lemniscate-newton-flow.tex) lines 491-498.
-
-Ledger evidence: Lean `exact`; Comparator `compared`. These statuses are copied from the evidence ledger; this build reruns neither checker.
-
-No accepted correspondence is recorded. Check the candidates below; none is silently treated as a proof of this short statement.
-
-No candidate was found by the bounded label/declaration rules. Read the long record before declaring the result absent.
-
-### res:cubic-fibres
-
-State: **registered_evidence_linked**.
-
-Short statement: [paper/1041/erdos-1041-lemniscate-newton-flow.tex](../../../paper/1041/erdos-1041-lemniscate-newton-flow.tex) lines 555-564.
-
-Ledger evidence: Lean `exact`; Comparator `compared`. These statuses are copied from the evidence ledger; this build reruns neither checker.
-
-Long-record location: [paper/reasoning-parts/erdos1041/core.tex](../../../paper/reasoning-parts/erdos1041/core.tex) lines 2011-2025.
-
-- `ErdosProblems.Erdos1041.PaperCubicFibres.complete_translated_cubic_quotient_fibres`: [lean/ErdosProblems/Erdos1041/PaperCubicFibres.lean](../../../lean/ErdosProblems/Erdos1041/PaperCubicFibres.lean) lines 240-240.
-
-### res:primitive-quintic
-
-State: **unresolved**.
-
-Short statement: [paper/1041/erdos-1041-lemniscate-newton-flow.tex](../../../paper/1041/erdos-1041-lemniscate-newton-flow.tex) lines 607-623.
-
-Ledger evidence: Lean `exact`; Comparator `compared`. These statuses are copied from the evidence ledger; this build reruns neither checker.
-
-No accepted correspondence is recorded. Check the candidates below; none is silently treated as a proof of this short statement.
-
-No candidate was found by the bounded label/declaration rules. Read the long record before declaring the result absent.
+- `partial_declaration_overlap`: [paper/reasoning-parts/erdos1041/core.tex](../../../paper/reasoning-parts/erdos1041/core.tex) lines 553-558.
+- `partial_declaration_overlap`: [paper/reasoning-parts/erdos1041/core.tex](../../../paper/reasoning-parts/erdos1041/core.tex) lines 1031-1036.
 
 ### res:critical-value-separation
 
 State: **unresolved**.
 
-Short statement: [paper/1041/erdos-1041-lemniscate-newton-flow.tex](../../../paper/1041/erdos-1041-lemniscate-newton-flow.tex) lines 663-678.
+Short statement: [paper/1041/erdos-1041-lemniscate-newton-flow.tex](../../../paper/1041/erdos-1041-lemniscate-newton-flow.tex) lines 487-502.
 
 Ledger evidence: Lean `modulo_named_input`; Comparator `not_applicable`. These statuses are copied from the evidence ledger; this build reruns neither checker.
 
 No accepted correspondence is recorded. Check the candidates below; none is silently treated as a proof of this short statement.
 
-- `label_alias`: [paper/reasoning-parts/erdos1041/core.tex](../../../paper/reasoning-parts/erdos1041/core.tex) lines 1363-1389.
+- `label_alias`: [paper/reasoning-parts/erdos1041/core.tex](../../../paper/reasoning-parts/erdos1041/core.tex) lines 1694-1720.
 
 ### res:critical-value-thresholds
 
 State: **unresolved**.
 
-Short statement: [paper/1041/erdos-1041-lemniscate-newton-flow.tex](../../../paper/1041/erdos-1041-lemniscate-newton-flow.tex) lines 692-703.
+Short statement: [paper/1041/erdos-1041-lemniscate-newton-flow.tex](../../../paper/1041/erdos-1041-lemniscate-newton-flow.tex) lines 513-524.
 
 Ledger evidence: Lean `modulo_named_input`; Comparator `not_applicable`. These statuses are copied from the evidence ledger; this build reruns neither checker.
 
 No accepted correspondence is recorded. Check the candidates below; none is silently treated as a proof of this short statement.
 
-- `label_alias`: [paper/reasoning-parts/erdos1041/core.tex](../../../paper/reasoning-parts/erdos1041/core.tex) lines 1560-1571.
-
-### res:separation-parent
-
-State: **unresolved**.
-
-Short statement: [paper/1041/erdos-1041-lemniscate-newton-flow.tex](../../../paper/1041/erdos-1041-lemniscate-newton-flow.tex) lines 708-713.
-
-Ledger evidence: Lean `modulo_named_input`; Comparator `not_applicable`. These statuses are copied from the evidence ledger; this build reruns neither checker.
-
-No accepted correspondence is recorded. Check the candidates below; none is silently treated as a proof of this short statement.
-
-No candidate was found by the bounded label/declaration rules. Read the long record before declaring the result absent.
-
-### res:sep-or-false
-
-State: **unresolved**.
-
-Short statement: [paper/1041/erdos-1041-lemniscate-newton-flow.tex](../../../paper/1041/erdos-1041-lemniscate-newton-flow.tex) lines 804-812.
-
-Ledger evidence: Lean `exact`; Comparator `compared`. These statuses are copied from the evidence ledger; this build reruns neither checker.
-
-No accepted correspondence is recorded. Check the candidates below; none is silently treated as a proof of this short statement.
-
-No candidate was found by the bounded label/declaration rules. Read the long record before declaring the result absent.
-
-### res:one-root-gamma-false
-
-State: **unresolved**.
-
-Short statement: [paper/1041/erdos-1041-lemniscate-newton-flow.tex](../../../paper/1041/erdos-1041-lemniscate-newton-flow.tex) lines 817-824.
-
-Ledger evidence: Lean `exact`; Comparator `compared`. These statuses are copied from the evidence ledger; this build reruns neither checker.
-
-No accepted correspondence is recorded. Check the candidates below; none is silently treated as a proof of this short statement.
-
-No candidate was found by the bounded label/declaration rules. Read the long record before declaring the result absent.
-
-### res:arity-not-capacity
-
-State: **unresolved**.
-
-Short statement: [paper/1041/erdos-1041-lemniscate-newton-flow.tex](../../../paper/1041/erdos-1041-lemniscate-newton-flow.tex) lines 858-864.
-
-Ledger evidence: Lean `modulo_named_input`; Comparator `not_applicable`. These statuses are copied from the evidence ledger; this build reruns neither checker.
-
-No accepted correspondence is recorded. Check the candidates below; none is silently treated as a proof of this short statement.
-
-No candidate was found by the bounded label/declaration rules. Read the long record before declaring the result absent.
-
-### res:value
-
-State: **registered_evidence_linked**.
-
-Short statement: [paper/1041/erdos-1041-lemniscate-newton-flow.tex](../../../paper/1041/erdos-1041-lemniscate-newton-flow.tex) lines 882-890.
-
-Ledger evidence: Lean `exact_or_stronger`; Comparator `compared`. These statuses are copied from the evidence ledger; this build reruns neither checker.
-
-Long-record location: [paper/reasoning-parts/erdos1041/core.tex](../../../paper/reasoning-parts/erdos1041/core.tex) lines 3521-3526.
-
-- `ErdosProblems.Erdos1041.PaperCompleteR20.newton_real_value_whole`: [lean/ErdosProblems/Erdos1041/PaperCompleteR20/NewtonRealTime.lean](../../../lean/ErdosProblems/Erdos1041/PaperCompleteR20/NewtonRealTime.lean) lines 52-52.
-
-### res:ray
-
-State: **registered_evidence_linked**.
-
-Short statement: [paper/1041/erdos-1041-lemniscate-newton-flow.tex](../../../paper/1041/erdos-1041-lemniscate-newton-flow.tex) lines 915-925.
-
-Ledger evidence: Lean `exact_or_stronger`; Comparator `compared`. These statuses are copied from the evidence ledger; this build reruns neither checker.
-
-Long-record location: [paper/reasoning-parts/erdos1041/core.tex](../../../paper/reasoning-parts/erdos1041/core.tex) lines 3544-3554.
-
-- `ErdosProblems.Erdos1041.PaperCompleteR20.newton_real_endpoint_whole`: [lean/ErdosProblems/Erdos1041/PaperCompleteR20/NewtonRealTime.lean](../../../lean/ErdosProblems/Erdos1041/PaperCompleteR20/NewtonRealTime.lean) lines 69-69.
-
-### res:locus
-
-State: **registered_evidence_linked**.
-
-Short statement: [paper/1041/erdos-1041-lemniscate-newton-flow.tex](../../../paper/1041/erdos-1041-lemniscate-newton-flow.tex) lines 963-970.
-
-Ledger evidence: Lean `exact`; Comparator `compared`. These statuses are copied from the evidence ledger; this build reruns neither checker.
-
-Long-record location: [paper/reasoning-parts/erdos1041/core.tex](../../../paper/reasoning-parts/erdos1041/core.tex) lines 3599-3606.
-
-- `ErdosProblems.Erdos1041.translated_samePositiveRay_parameterization`: [lean/ErdosProblems/Erdos1041/NewtonFlowRaySeparation.lean](../../../lean/ErdosProblems/Erdos1041/NewtonFlowRaySeparation.lean) lines 107-107.
-
-### res:complementary-binomial-chords
-
-State: **unresolved**.
-
-Short statement: [paper/1041/erdos-1041-lemniscate-newton-flow.tex](../../../paper/1041/erdos-1041-lemniscate-newton-flow.tex) lines 1116-1125.
-
-Ledger evidence: Lean `exact`; Comparator `compared`. These statuses are copied from the evidence ledger; this build reruns neither checker.
-
-No accepted correspondence is recorded. Check the candidates below; none is silently treated as a proof of this short statement.
-
-No candidate was found by the bounded label/declaration rules. Read the long record before declaring the result absent.
-
-### res:sharp-collinear-root-diameter
-
-State: **registered_evidence_linked**.
-
-Short statement: [paper/1041/erdos-1041-lemniscate-newton-flow.tex](../../../paper/1041/erdos-1041-lemniscate-newton-flow.tex) lines 1172-1182.
-
-Ledger evidence: Lean `exact_or_stronger`; Comparator `compared`. These statuses are copied from the evidence ledger; this build reruns neither checker.
-
-Long-record location: [paper/reasoning-parts/erdos1041/core.tex](../../../paper/reasoning-parts/erdos1041/core.tex) lines 1736-1748.
-
-- `ErdosProblems.Erdos1041.PaperCompleteR21.sharp_collinear_root_diameter`: [lean/ErdosProblems/Erdos1041/PaperCompleteR21/CollinearDiameterWhole.lean](../../../lean/ErdosProblems/Erdos1041/PaperCompleteR21/CollinearDiameterWhole.lean) lines 367-367.
-- `ErdosProblems.Erdos1041.PaperCompleteR21.sharp_collinear_root_diameter_monic`: [lean/ErdosProblems/Erdos1041/PaperCompleteR21/CollinearDiameterWhole.lean](../../../lean/ErdosProblems/Erdos1041/PaperCompleteR21/CollinearDiameterWhole.lean) lines 967-967.
-- `ErdosProblems.Erdos1041.PaperCompleteR21.exists_collinear_factorisation`: [lean/ErdosProblems/Erdos1041/PaperCompleteR21/CollinearDiameterWhole.lean](../../../lean/ErdosProblems/Erdos1041/PaperCompleteR21/CollinearDiameterWhole.lean) lines 928-928.
-- `ErdosProblems.Erdos1041.PaperCompleteR21.exists_gap_le_comparisonBound`: [lean/ErdosProblems/Erdos1041/PaperCompleteR21/CollinearDiameterWhole.lean](../../../lean/ErdosProblems/Erdos1041/PaperCompleteR21/CollinearDiameterWhole.lean) lines 212-212.
-- `ErdosProblems.Erdos1041.PaperCompleteR21.sharp_collinear_equality_attained`: [lean/ErdosProblems/Erdos1041/PaperCompleteR21/CollinearDiameterWhole.lean](../../../lean/ErdosProblems/Erdos1041/PaperCompleteR21/CollinearDiameterWhole.lean) lines 836-836.
-- `ErdosProblems.Erdos1041.PaperCompleteR21.chebyshev_configuration_attains`: [lean/ErdosProblems/Erdos1041/PaperCompleteR21/CollinearDiameterWhole.lean](../../../lean/ErdosProblems/Erdos1041/PaperCompleteR21/CollinearDiameterWhole.lean) lines 769-769.
-- `ErdosProblems.Erdos1041.PaperCompleteR21.monicScaledChebyshev_eq_prod`: [lean/ErdosProblems/Erdos1041/PaperCompleteR21/CollinearDiameterWhole.lean](../../../lean/ErdosProblems/Erdos1041/PaperCompleteR21/CollinearDiameterWhole.lean) lines 684-684.
-- `ErdosProblems.Erdos1041.PaperCompleteR21.collinearDiameterBound_sharpConstant`: [lean/ErdosProblems/Erdos1041/PaperCompleteR21/CollinearDiameterWhole.lean](../../../lean/ErdosProblems/Erdos1041/PaperCompleteR21/CollinearDiameterWhole.lean) lines 871-871.
-- `ErdosProblems.Erdos1041.PaperCompleteR21.sharpConstant_le_of_collinearDiameterBound`: [lean/ErdosProblems/Erdos1041/PaperCompleteR21/CollinearDiameterWhole.lean](../../../lean/ErdosProblems/Erdos1041/PaperCompleteR21/CollinearDiameterWhole.lean) lines 878-878.
-
-### res:fp-weighted-all-degree
-
-State: **unresolved**.
-
-Short statement: [paper/1041/erdos-1041-lemniscate-newton-flow.tex](../../../paper/1041/erdos-1041-lemniscate-newton-flow.tex) lines 1263-1276.
-
-Ledger evidence: Lean `exact`; Comparator `compared`. These statuses are copied from the evidence ledger; this build reruns neither checker.
-
-No accepted correspondence is recorded. Check the candidates below; none is silently treated as a proof of this short statement.
-
-No candidate was found by the bounded label/declaration rules. Read the long record before declaring the result absent.
-
-### res:fp-to-s
-
-State: **unresolved**.
-
-Short statement: [paper/1041/erdos-1041-lemniscate-newton-flow.tex](../../../paper/1041/erdos-1041-lemniscate-newton-flow.tex) lines 1351-1360.
-
-Ledger evidence: Lean `exact`; Comparator `compared`. These statuses are copied from the evidence ledger; this build reruns neither checker.
-
-No accepted correspondence is recorded. Check the candidates below; none is silently treated as a proof of this short statement.
-
-No candidate was found by the bounded label/declaration rules. Read the long record before declaring the result absent.
-
-### res:orlicz-currency
-
-State: **unresolved**.
-
-Short statement: [paper/1041/erdos-1041-lemniscate-newton-flow.tex](../../../paper/1041/erdos-1041-lemniscate-newton-flow.tex) lines 1443-1467.
-
-Ledger evidence: Lean `exact_or_stronger`; Comparator `compared`. These statuses are copied from the evidence ledger; this build reruns neither checker.
-
-No accepted correspondence is recorded. Check the candidates below; none is silently treated as a proof of this short statement.
-
-No candidate was found by the bounded label/declaration rules. Read the long record before declaring the result absent.
+- `label_alias`: [paper/reasoning-parts/erdos1041/core.tex](../../../paper/reasoning-parts/erdos1041/core.tex) lines 1888-1899.
 
 ### res:ani-degree-seven-counterexample
 
 State: **registered_evidence_linked**.
 
-Short statement: [paper/1041/erdos-1041-lemniscate-newton-flow.tex](../../../paper/1041/erdos-1041-lemniscate-newton-flow.tex) lines 83-93.
+Short statement: [paper/1041/erdos-1041-lemniscate-newton-flow.tex](../../../paper/1041/erdos-1041-lemniscate-newton-flow.tex) lines 81-85.
 
 Ledger evidence: Lean `exact_or_stronger`; Comparator `pending`. These statuses are copied from the evidence ledger; this build reruns neither checker.
 
-Long-record location: [paper/reasoning-parts/erdos1041/core.tex](../../../paper/reasoning-parts/erdos1041/core.tex) lines 89-98.
+Long-record location: [paper/reasoning-parts/erdos1041/core.tex](../../../paper/reasoning-parts/erdos1041/core.tex) lines 56-61.
 
 - `Erdos1041.Counterexample.erdos1041_counterexample`: [lean/ErdosProblems/Erdos1041/Counterexample/Assembly.lean](../../../lean/ErdosProblems/Erdos1041/Counterexample/Assembly.lean) lines 319-319.
 - `Erdos1041.Counterexample.erdos1041_counterexample_hausdorff`: [lean/ErdosProblems/Erdos1041/Counterexample/HausdorffLength.lean](../../../lean/ErdosProblems/Erdos1041/Counterexample/HausdorffLength.lean) lines 283-283.
 - `Erdos1041.Counterexample.erdos1041_hausdorff_negation`: [lean/ErdosProblems/Erdos1041/Counterexample/HausdorffLength.lean](../../../lean/ErdosProblems/Erdos1041/Counterexample/HausdorffLength.lean) lines 407-407.
 - `Erdos1041.Counterexample.erdos1041_hausdorff_answer_false`: [lean/ErdosProblems/Erdos1041/Counterexample/HausdorffLength.lean](../../../lean/ErdosProblems/Erdos1041/Counterexample/HausdorffLength.lean) lines 449-449.
 
+### lem:two-sheet-bottleneck
+
+State: **registered_evidence_linked**.
+
+Short statement: [paper/1041/erdos-1041-lemniscate-newton-flow.tex](../../../paper/1041/erdos-1041-lemniscate-newton-flow.tex) lines 199-209.
+
+Ledger evidence: Lean `exact_or_stronger`; Comparator `pending`. These statuses are copied from the evidence ledger; this build reruns neither checker.
+
+Long-record location: [paper/reasoning-parts/erdos1041/core.tex](../../../paper/reasoning-parts/erdos1041/core.tex) lines 99-113.
+
+- `Erdos1041.Counterexample.s3_bottleneck_hausdorff`: [lean/ErdosProblems/Erdos1041/Counterexample/HausdorffLength.lean](../../../lean/ErdosProblems/Erdos1041/Counterexample/HausdorffLength.lean) lines 187-187.
+
 ## Long-record material retained outside these links
 
 These registered long assertions are not used by an accepted short-paper link. They may be supporting lemmas, broader results, route-local obstructions, or unresolved matches. They are retained and are not deletion candidates.
 
-- `res:trinomial-all-degree`: [paper/reasoning-parts/erdos1041/core.tex](../../../paper/reasoning-parts/erdos1041/core.tex) lines 155-161.
-- `res:low-critical-thirteen-twentyfifths`: [paper/reasoning-parts/erdos1041/core.tex](../../../paper/reasoning-parts/erdos1041/core.tex) lines 238-245.
-- `res:low-critical-scale-free`: [paper/reasoning-parts/erdos1041/core.tex](../../../paper/reasoning-parts/erdos1041/core.tex) lines 260-265.
-- `res:circle-slice-packing`: [paper/reasoning-parts/erdos1041/core.tex](../../../paper/reasoning-parts/erdos1041/core.tex) lines 398-406.
-- `res:dual-arity-floor`: [paper/reasoning-parts/erdos1041/core.tex](../../../paper/reasoning-parts/erdos1041/core.tex) lines 421-431.
-- `res:scaled-low-critical-path`: [paper/reasoning-parts/erdos1041/core.tex](../../../paper/reasoning-parts/erdos1041/core.tex) lines 726-731.
-- `res:constant-factor-path`: [paper/reasoning-parts/erdos1041/core.tex](../../../paper/reasoning-parts/erdos1041/core.tex) lines 762-772.
-- `res:constant-factor-arity`: [paper/reasoning-parts/erdos1041/core.tex](../../../paper/reasoning-parts/erdos1041/core.tex) lines 909-920.
-- `res:constant-factor-capacity`: [paper/reasoning-parts/erdos1041/core.tex](../../../paper/reasoning-parts/erdos1041/core.tex) lines 954-968.
-- `res:conjecture-p-consumer`: [paper/reasoning-parts/erdos1041/core.tex](../../../paper/reasoning-parts/erdos1041/core.tex) lines 1141-1151.
-- `res:degree-three`: [paper/reasoning-parts/erdos1041/core.tex](../../../paper/reasoning-parts/erdos1041/core.tex) lines 1259-1265.
-- `res:critical-value-separation`: [paper/reasoning-parts/erdos1041/core.tex](../../../paper/reasoning-parts/erdos1041/core.tex) lines 1363-1389.
-- `res:critical-value-thresholds`: [paper/reasoning-parts/erdos1041/core.tex](../../../paper/reasoning-parts/erdos1041/core.tex) lines 1560-1571.
-- `prop:sharp-collinear-chebyshev-comparator`: [paper/reasoning-parts/erdos1041/core.tex](../../../paper/reasoning-parts/erdos1041/core.tex) lines 1714-1725.
-- `cor:collinear-erdos-1041`: [paper/reasoning-parts/erdos1041/core.tex](../../../paper/reasoning-parts/erdos1041/core.tex) lines 1790-1795.
-- `prop:primitive-quintic-two-tail-energy-selector`: [paper/reasoning-parts/erdos1041/core.tex](../../../paper/reasoning-parts/erdos1041/core.tex) lines 1865-1875.
-- `thm:primitive-quintic-two-tail`: [paper/reasoning-parts/erdos1041/core.tex](../../../paper/reasoning-parts/erdos1041/core.tex) lines 1886-1905.
-- `lem:cubic-safe-root-spoke`: [paper/reasoning-parts/erdos1041/core.tex](../../../paper/reasoning-parts/erdos1041/core.tex) lines 2001-2009.
-- `res:critical-value-budget`: [paper/reasoning-parts/erdos1041/core.tex](../../../paper/reasoning-parts/erdos1041/core.tex) lines 2641-2661.
-- `res:reflected-critical-value`: [paper/reasoning-parts/erdos1041/core.tex](../../../paper/reasoning-parts/erdos1041/core.tex) lines 2673-2679.
-- `res:attachment-aware-reeb`: [paper/reasoning-parts/erdos1041/core.tex](../../../paper/reasoning-parts/erdos1041/core.tex) lines 3745-3767.
+- `res:trinomial-all-degree`: [paper/reasoning-parts/erdos1041/core.tex](../../../paper/reasoning-parts/erdos1041/core.tex) lines 443-449.
+- `res:low-critical-thirteen-twentyfifths`: [paper/reasoning-parts/erdos1041/core.tex](../../../paper/reasoning-parts/erdos1041/core.tex) lines 535-542.
+- `res:low-critical-scale-free`: [paper/reasoning-parts/erdos1041/core.tex](../../../paper/reasoning-parts/erdos1041/core.tex) lines 553-558.
+- `res:circle-slice-packing`: [paper/reasoning-parts/erdos1041/core.tex](../../../paper/reasoning-parts/erdos1041/core.tex) lines 692-700.
+- `res:dual-arity-floor`: [paper/reasoning-parts/erdos1041/core.tex](../../../paper/reasoning-parts/erdos1041/core.tex) lines 715-725.
+- `res:scaled-low-critical-path`: [paper/reasoning-parts/erdos1041/core.tex](../../../paper/reasoning-parts/erdos1041/core.tex) lines 1031-1036.
+- `res:constant-factor-path`: [paper/reasoning-parts/erdos1041/core.tex](../../../paper/reasoning-parts/erdos1041/core.tex) lines 1076-1086.
+- `res:constant-factor-arity`: [paper/reasoning-parts/erdos1041/core.tex](../../../paper/reasoning-parts/erdos1041/core.tex) lines 1224-1235.
+- `res:constant-factor-capacity`: [paper/reasoning-parts/erdos1041/core.tex](../../../paper/reasoning-parts/erdos1041/core.tex) lines 1270-1284.
+- `res:conjecture-p-consumer`: [paper/reasoning-parts/erdos1041/core.tex](../../../paper/reasoning-parts/erdos1041/core.tex) lines 1467-1477.
+- `res:degree-three`: [paper/reasoning-parts/erdos1041/core.tex](../../../paper/reasoning-parts/erdos1041/core.tex) lines 1591-1597.
+- `res:critical-value-separation`: [paper/reasoning-parts/erdos1041/core.tex](../../../paper/reasoning-parts/erdos1041/core.tex) lines 1694-1720.
+- `res:critical-value-thresholds`: [paper/reasoning-parts/erdos1041/core.tex](../../../paper/reasoning-parts/erdos1041/core.tex) lines 1888-1899.
+- `prop:sharp-collinear-chebyshev-comparator`: [paper/reasoning-parts/erdos1041/core.tex](../../../paper/reasoning-parts/erdos1041/core.tex) lines 2101-2112.
+- `thm:sharp-collinear-diameter`: [paper/reasoning-parts/erdos1041/core.tex](../../../paper/reasoning-parts/erdos1041/core.tex) lines 2123-2135.
+- `cor:collinear-erdos-1041`: [paper/reasoning-parts/erdos1041/core.tex](../../../paper/reasoning-parts/erdos1041/core.tex) lines 2177-2182.
+- `prop:primitive-quintic-two-tail-energy-selector`: [paper/reasoning-parts/erdos1041/core.tex](../../../paper/reasoning-parts/erdos1041/core.tex) lines 2253-2263.
+- `thm:primitive-quintic-two-tail`: [paper/reasoning-parts/erdos1041/core.tex](../../../paper/reasoning-parts/erdos1041/core.tex) lines 2274-2293.
+- `lem:cubic-safe-root-spoke`: [paper/reasoning-parts/erdos1041/core.tex](../../../paper/reasoning-parts/erdos1041/core.tex) lines 2390-2398.
+- `thm:translated-cubic-quotient-fibres`: [paper/reasoning-parts/erdos1041/core.tex](../../../paper/reasoning-parts/erdos1041/core.tex) lines 2400-2414.
+- `res:critical-value-budget`: [paper/reasoning-parts/erdos1041/core.tex](../../../paper/reasoning-parts/erdos1041/core.tex) lines 3051-3071.
+- `res:reflected-critical-value`: [paper/reasoning-parts/erdos1041/core.tex](../../../paper/reasoning-parts/erdos1041/core.tex) lines 3083-3089.
+- `res:value`: [paper/reasoning-parts/erdos1041/core.tex](../../../paper/reasoning-parts/erdos1041/core.tex) lines 4098-4106.
+- `res:ray`: [paper/reasoning-parts/erdos1041/core.tex](../../../paper/reasoning-parts/erdos1041/core.tex) lines 4124-4134.
+- `res:locus`: [paper/reasoning-parts/erdos1041/core.tex](../../../paper/reasoning-parts/erdos1041/core.tex) lines 4181-4188.
+- `res:attachment-aware-reeb`: [paper/reasoning-parts/erdos1041/core.tex](../../../paper/reasoning-parts/erdos1041/core.tex) lines 4361-4383.
+- `res:critical-proximity`: [paper/reasoning-parts/erdos1041/core.tex](../../../paper/reasoning-parts/erdos1041/core.tex) lines 3483-3498.
+- `res:two-nearest-roots`: [paper/reasoning-parts/erdos1041/core.tex](../../../paper/reasoning-parts/erdos1041/core.tex) lines 3513-3516.
+- `res:straight-no-go`: [paper/reasoning-parts/erdos1041/core.tex](../../../paper/reasoning-parts/erdos1041/core.tex) lines 3558-3565.
+- `res:sep-or-false`: [paper/reasoning-parts/erdos1041/core.tex](../../../paper/reasoning-parts/erdos1041/core.tex) lines 2023-2031.
+- `res:one-root-gamma-false`: [paper/reasoning-parts/erdos1041/core.tex](../../../paper/reasoning-parts/erdos1041/core.tex) lines 1422-1429.
+- `res:arity-not-capacity`: [paper/reasoning-parts/erdos1041/core.tex](../../../paper/reasoning-parts/erdos1041/core.tex) lines 2049-2055.
+- `res:complementary-binomial-chords`: [paper/reasoning-parts/erdos1041/core.tex](../../../paper/reasoning-parts/erdos1041/core.tex) lines 2634-2643.
+- `res:fp-weighted-all-degree`: [paper/reasoning-parts/erdos1041/core.tex](../../../paper/reasoning-parts/erdos1041/core.tex) lines 3157-3170.
+- `res:orlicz-currency`: [paper/reasoning-parts/erdos1041/core.tex](../../../paper/reasoning-parts/erdos1041/core.tex) lines 4017-4041.
 
 ## Passage-review queue
 

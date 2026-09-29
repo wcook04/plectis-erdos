@@ -8,15 +8,17 @@
 
 </div>
 
-The dyadic sections of Euler’s totient through level $`e\ge1`$ have an explicit rational basis of size $`2^e+1`$. This record gives the detailed statements behind that result and examines what coefficient structure can say about $`S=\sum_{n\ge1}\varphi(n)2^{-n}`$. Truncating a scaled tail difference produces an integer whose residue certifies nonintegrality when its distances from both endpoints of the residue interval exceed an explicit error bound. We develop the resulting finite denominator exclusions, equivalent residue criteria and sufficient exponential-sum estimates. Rational comparison sequences identify the limitations of particular size, parity, rank and finite-prefix arguments. The short paper supplies the all-base basis theorem and its integral relations. Here each conditional result is accompanied by the arithmetic hypothesis still needed to apply it; these hypotheses are not established in the form required to prove irrationality of $`S`$.
+The series $`S=\sum_{n\ge1}\varphi(n)2^{-n}`$ admits exact tail identities and finite tests excluding specified rational denominators. We give the proofs of these tests, the integral relations among totient sections, and rational comparison sequences preserving several kinds of coefficient data. We also derive sufficient exponential-sum estimates and identify the weighted cancellation that remains to be proved. The irrationality of $`S`$ is unresolved.
 
-<a id="reading-guide"></a>
+<a id="organisation"></a>
 
-# Reading guide
+# Organisation
 
-The short paper, *Bases and Integral Relations for the $`k`$-Kernel of Euler’s Totient*, gives a direct proof of the basis theorem and its integral normal form. This longer record is organised for reference. The opening section introduces the finite residue test and its quantified form, Definition <a href="#defn:sep" data-reference-type="ref" data-reference="defn:sep">2</a>. Section <a href="#sec:wall" data-reference-type="ref" data-reference="sec:wall">2</a> gives rational comparison sequences, and Section <a href="#sec:survivors" data-reference-type="ref" data-reference="sec:survivors">3</a> states four possible arithmetic conditions for irrationality. The detailed formulas then begin with the series identities and denominator bound in Section <a href="#ssec:farey" data-reference-type="ref" data-reference="ssec:farey">5.3</a>. The basis and relation modules are revisited in Section <a href="#sec:mahler-defect" data-reference-type="ref" data-reference="sec:mahler-defect">10.8</a>.
+The short paper, *Integral Relations among Totient Sections*, proves that the sections through level $`e\ge1`$ in base $`k\ge2`$ have rank $`k^e+1`$ and gives all their integral relations. Its [proof of the basis theorem](../../../paper/249/erdos-249-binary-totient-series.pdf#nameddest=short249-proof) is independent of the irrationality question. Here we develop the tail identities and comparison sequences needed to understand the additional arithmetic conditions on $`S`$.
 
-Two distinctions recur. “Cofinal” means that a condition holds at some index beyond each threshold; it does not mean that it holds at every sufficiently large index. A counterexample excludes only the hypotheses it satisfies. Agreement with a finite totient prefix, for example, need not preserve multiplicativity.
+We first introduce the residue test of Definition <a href="#defn:sep" data-reference-type="ref" data-reference="defn:sep">2</a> and the rational comparisons in Section <a href="#sec:wall" data-reference-type="ref" data-reference="sec:wall">2</a>. Section <a href="#sec:survivors" data-reference-type="ref" data-reference="sec:survivors">3</a> states the resulting irrationality criteria. The proofs and exact finite computations begin in Section <a href="#sec:series" data-reference-type="ref" data-reference="sec:series">5</a>; the dyadic basis and relation module are treated in Section <a href="#sec:mahler-defect" data-reference-type="ref" data-reference="sec:mahler-defect">10.8</a>. For the two remaining weighted sums, see Section <a href="#sub:pivot" data-reference-type="ref" data-reference="sub:pivot">12.3</a> and the [four-estimate problem in the short paper](../../../paper/249/erdos-249-binary-totient-series.pdf#nameddest=short249-first-harmonic). Appendix <a href="#app:r3-complements" data-reference-type="ref" data-reference="app:r3-complements">14</a> contains the propagation and Mersenne-residue arguments and the sharp rank-one quotient bound. Appendix <a href="#app:r3-declarations" data-reference-type="ref" data-reference="app:r3-declarations">15</a> collects the formal declarations cited in the short paper.
+
+Throughout, a cofinal condition means that a witness exists beyond each threshold. It need not hold at every sufficiently large index. Each comparison sequence is used only for the properties it preserves; agreement with a fixed totient prefix, for example, imposes no multiplicativity condition on the continuation.
 
 *Formal proofs.* A result with a kernel-checked Lean proof carries a mark in the margin. *Lean* opens the proof: the declaration itself when one declaration states the whole result, otherwise the list of declarations that together state it. *Comparator* opens the record of an independent check, in which the same statement, written again from Mathlib alone in a separate repository, was compared with our proof by Lean’s Comparator tool, allowing only the three standard axioms. A dagger on the Lean mark means that the Lean proof assumes an input named just below the result. A result without a mark has no Lean proof of its whole statement; what is checked is said below it. The [evidence record](https://github.com/wcook04/plectis-erdos/blob/cd83a19f8002856293310f4d71358b2f9d72a24e/evidence/erdos249-totient-reasoning-surface.md) gives every declaration, version and check. These checks show that the stated propositions are proved; whether they are the right propositions is a question the reader can settle by comparing them with the text.
 
@@ -26,7 +28,7 @@ A small-capital <span class="smallcaps">Lean source</span> link beside a step, a
 
 # Totient sections and tail differences
 
-Let $`\varphi`$ be Euler’s totient function, with $`\varphi(0)=0`$, and use $`\mathbb{N}=\{0,1,2,\ldots\}`$. The dyadic sections $`n\mapsto\varphi(2^jn+r)`$, for $`0\le j\le e`$ and $`0\le r<2^j`$, have rational rank $`2^e+1`$ when $`e\ge1`$. A basis consists of $`n\mapsto\varphi(n)`$, $`n\mapsto\varphi(2n)`$, and the sections with odd $`r`$ at levels $`1\le j\le e`$. For example, $`\varphi(4n)=2\varphi(2n)`$ and $`\varphi(4n+2)=\varphi(2n+1)`$ recover the omitted sections at level two. The short paper proves the corresponding rank $`k^e+1`$ in every integer base $`k\ge2`$, together with the integral coordinates and relations. For composite $`k`$, the retained condition is $`k\nmid r`$, not $`\gcd(k,r)=1`$.
+Let $`\varphi(0)=0`$ and $`\mathbb{N}=\{0,1,2,\ldots\}`$. The identities $`\varphi(4n)=2\varphi(2n)`$ and $`\varphi(4n+2)=\varphi(2n+1)`$ reduce the seven dyadic sections through level two to five independent sequences. At level $`e\ge1`$ the analogous basis consists of $`\varphi(n)`$, $`\varphi(2n)`$ and $`\varphi(2^jn+r)`$ for $`1\le j\le e`$ and odd $`0<r<2^j`$; its size is $`2^e+1`$. In base $`k\ge2`$ the short paper gives rank $`k^e+1`$, integral coordinates, and generators for every relation. The positive residues retained in that basis satisfy $`k\nmid r`$. They need not be coprime to $`k`$.
 
 The question about the series concerns more than these coefficient relations. Put
 ``` math
@@ -83,7 +85,7 @@ The order of the quantifiers matters. A certificate at one $`(h,N,L)`$ excludes 
 
 ## Unconditional results
 
-The following results require no irrationality hypothesis. The finite denominator bound concerns rational values of $`S`$; the rank and positivity results concern its coefficients and tails. The latter do not by themselves exclude rationality.
+We begin with a finite denominator exclusion, then record the rank of the totient sections and the positivity of certain tail differences. All these results are unconditional. Positivity and coefficient rank alone leave open the rationality of the sum.
 
 <div id="thm:denom" class="thm">
 <p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/cd83a19f8002856293310f4d71358b2f9d72a24e/evidence/erdos249-totient-reasoning-surface/section-1.md#thm-denom">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cd83a19f8002856293310f4d71358b2f9d72a24e/evidence/erdos249-totient-reasoning-surface/section-1.md#thm-denom-comparator">Comparator</a></p>
@@ -170,7 +172,11 @@ These propositions separate several logical obligations. Positivity leaves an up
 
 ## Reduced coefficients
 
-Reducing $`\varphi(n)`$ modulo a fixed integer makes the coefficients bounded, and the short paper’s residue theorem then settles the reduced series: $`\sum_{n\ge1}(\varphi(n)\bmod m)2^{-n}`$ is irrational for every $`m\ge3`$, and $`\sum_{n\ge1}f(\varphi(n)\bmod2^k)2^{-n}`$ is rational exactly when $`f`$ is constant on the even residue classes. Its proof finds, for every $`L`$, a prime $`p`$ with $`\varphi(p)\bmod m`$ a prescribed nonzero residue while each neighbour $`p+j`$, $`0<|j|\le L`$, has a prime factor $`q\equiv1\pmod m`$, so that $`m\mid\varphi(p+j)`$. A bounded coefficient sequence with a nonzero term between arbitrarily long zero blocks has an irrational sum in every integer base. The same construction gives the following three results.
+<div id="long249-r3-residue-extension">
+
+</div>
+
+The bounded sequence $`\varphi(n)\bmod m`$ behaves differently from $`\varphi(n)`$ itself. For $`m\ge3`$ its binary series is irrational, and a rational-valued function of $`\varphi(n)\bmod2^k`$ has a rational binary series precisely when the function is constant on the even residues. To prove this, choose a prime $`p`$ with a prescribed value of $`\varphi(p)\bmod m`$, and use CRT to make each of the $`2L`$ neighbours $`p+j`$, $`0<|j|\le L`$, divisible by a prime congruent to $`1\pmod m`$. Thus a nonzero coefficient is isolated between zero blocks of length $`L`$, for arbitrarily large $`L`$. The elementary tail argument works in any integer base and also permits the dilation results below.
 
 <div id="prop:radixresidue" class="prop">
 <p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/cd83a19f8002856293310f4d71358b2f9d72a24e/evidence/erdos249-totient-reasoning-surface/section-1.md#prop-radixresidue">Lean</a></p>
@@ -236,13 +242,13 @@ Ordinary proof; not formalised in Lean.
 
 # Rational comparison sequences
 
-The countermodels distinguish information that determines a finite calculation from information that forces nonintegrality at unbounded indices. A fixed prefix, parity at every index, and a specified finite collection of linear relations are different hypotheses. The useful conclusion in each case is the precise information a rational control sequence can preserve.
+We compare rational sequences preserving a fixed totient prefix, parity at every index, or specified finite linear relations. These are different assumptions, and we state the preserved data separately for each construction. A conclusion about finite data need not extend to nonintegrality at unbounded indices.
 
 <a id="what-finite-information-does-not-determine"></a>
 
 ## What finite information does not determine
 
-The comparison sequences below preserve different parts of the totient data. Theorem <a href="#thm:gamma" data-reference-type="ref" data-reference="thm:gamma">17</a> preserves an arbitrary fixed prefix. Proposition <a href="#prop:parity" data-reference-type="ref" data-reference="prop:parity">9</a> preserves parity at every index, together with size bounds and aperiodicity. Propositions <a href="#prop:b5" data-reference-type="ref" data-reference="prop:b5">24</a> and <a href="#prop:b6" data-reference-type="ref" data-reference="prop:b6">25</a> address particular carry descriptions and linear constructions, not every finite-state or finite-dimensional argument.
+A prescribed prefix, parity, and a carry recurrence impose different restrictions on a coefficient sequence. Theorem <a href="#thm:gamma" data-reference-type="ref" data-reference="thm:gamma">17</a> constructs a rational continuation of any fixed prefix. Proposition <a href="#prop:parity" data-reference-type="ref" data-reference="prop:parity">9</a> retains parity at every index, linear size bounds and aperiodicity. The constructions in Propositions <a href="#prop:b5" data-reference-type="ref" data-reference="prop:b5">24</a> and <a href="#prop:b6" data-reference-type="ref" data-reference="prop:b6">25</a> concern the particular carry and linear descriptions stated there; they make no assertion about all finite-state or finite-dimensional methods.
 
 Two other limitations do not require a rational comparison sequence. A congruence construction can increase the index so much that its tail error exceeds the residue it produces (Proposition <a href="#prop:b4" data-reference-type="ref" data-reference="prop:b4">22</a>). An exact reformulation or a finite list of examples still needs the quantified arithmetic assertion (Proposition <a href="#prop:b2" data-reference-type="ref" data-reference="prop:b2">20</a>).
 
@@ -350,7 +356,7 @@ Proposition <a href="#prop:parity" data-reference-type="ref" data-reference="pr
 
 ## Limits of specific reductions and estimates
 
-The following results concern specified assumptions, not all possible proof methods.
+We next test whether particular congruences, recurrences and estimates force the required residue inequality. Each counterexample retains the assumptions in its statement, so the conclusion applies only to that deduction.
 
 <div id="prop:b2" class="prop">
 <p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/cd83a19f8002856293310f4d71358b2f9d72a24e/evidence/erdos249-totient-reasoning-surface/section-2.md#prop-b2">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cd83a19f8002856293310f4d71358b2f9d72a24e/evidence/erdos249-totient-reasoning-surface/section-2.md#prop-b2-comparator">Comparator</a></p>
@@ -459,7 +465,7 @@ The proof bounds each infinite sum $`\sum_{d\ge1}\mu(d)/(2^d-1)^r`$, $`r\ge3`$, 
 
 ## What the counterexamples establish
 
-The counterexamples isolate several distinctions. Finite prefix data are not a statement about all larger indices. A congruence construction can produce a large residue while producing an even larger error bound. Periodicity modulo an integer does not control rational rank. An exact reformulation leaves the original arithmetic assertion to be proved.
+These examples show why the residue margin has to be estimated together with the tail error. A congruence may enlarge both, and a finite prefix leaves all later indices free. Likewise, periodicity modulo an integer places no general upper bound on rational rank. The equivalent residue conditions still require witnesses with their stated quantifiers.
 
 These are limitations of specified arguments, not an exhaustive classification of possible methods. In particular, an averaging estimate is one possible source of the missing information, not the only possible source. A new arithmetic identity or a propagation theorem could also be useful. The next section describes the precise assumptions of several approaches considered here.
 
@@ -467,7 +473,7 @@ These are limitations of specified arguments, not an exhaustive classification o
 
 # Conditions that would imply irrationality
 
-Four conditions considered below would imply irrationality. The first three ask for quantitative estimates; the fourth is an exact reformulation of irrationality. We also record a generic rank assertion that is false, to prevent its being mistaken for an open sufficient hypothesis. None of this is an exhaustive list of approaches. For each condition the question is whether its particular arithmetic hypothesis can be proved.
+The first three conditions below ask for quantitative estimates and would imply irrationality. The fourth is an equivalent reformulation of the original problem. We also give the rational counterexample to a generic rank assertion, which must therefore be distinguished from the open sufficient conditions. The list makes no claim to exhaust the possible approaches.
 
 <a id="cancellation-on-a-full-block"></a>
 
@@ -529,7 +535,7 @@ Formal sources for these implications: [`Erdos249257.windowFirstCos_gt_of_not_ce
 
 ## A four-term bound for the real part
 
-The next condition separates one totient value from each phase, then subtracts a mean on each group with the same cofactor. The definitions below make all four sums explicit.
+Write each phase as the product of one selected totient phase and a residual weight. We group the selected phases by their cofactors and subtract the group mean. Summing this identity over the good and excluded indices gives the four sums below.
 
 Fix $`h,s\ge1`$, $`L\ge s+h`$, $`X\ge1`$ and $`0<\eta<1`$, and put $`t=L-s+1`$. For $`X\le N<2X`$, let $`p_N`$ be the largest prime factor of $`N+t`$ and put $`m_N=(N+t)/p_N`$. Assign the index $`N`$ to this factorisation when
 ``` math
@@ -687,7 +693,7 @@ Periodicity modulo $`v`$ alone does not provide the additional rank bound.
 
 # Guide to the detailed statements
 
-The remaining sections are reference material. They restate the identities and implications in enough detail to compare their hypotheses. A repeated statement has the same meaning as before; its repetition does not supply a missing assumption.
+For reference, we now give the identities and implications used above with their full hypotheses. The repeated formulations allow a tail condition to be compared directly with its residue or approximation form. None removes the additional arithmetic assumption in a conditional result.
 
 <a id="quantifiers-and-hypotheses."></a>
 
@@ -705,7 +711,7 @@ Sections <a href="#sec:wall" data-reference-type="ref" data-reference="sec:wall
 
 # Series identities and finite exclusions
 
-The identities in this section express $`S`$ through finite prefixes, scaled tails and Möbius sums. The finite calculation in Section <a href="#ssec:farey" data-reference-type="ref" data-reference="ssec:farey">5.3</a> then excludes a specified range of rational denominators. Equivalent series representations do not by themselves extend that finite exclusion to all denominators.
+We express $`S`$ successively through finite prefixes, scaled tails and Möbius sums. The Farey calculation in Section <a href="#ssec:farey" data-reference-type="ref" data-reference="ssec:farey">5.3</a> uses a finite interval to exclude a specified range of rational denominators. The other identities give alternative expressions for the same number; an exclusion of all denominators would require a further estimate.
 
 <a id="the-series"></a>
 
@@ -756,7 +762,11 @@ If $`S=a/(2^cv)`$ with $`v\ge1`$ odd, Euler’s theorem supplies $`h=\varphi(v)>
 
 ## The finite denominator bound
 
-The finite calculation gives a lower bound on its denominator should it happen to be rational. It is obtained by a Farey mediant argument that does not assume the quantified residue condition or use the tail-period test.
+<div id="long249-r3-farey">
+
+</div>
+
+Suppose that $`S`$ were rational. The Farey mediant argument below gives a lower bound for its denominator from a finite enclosing interval, without using either the tail-period test or the quantified residue condition.
 
 <div id="lem:farey" class="lem">
 <p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/Erdos249257/GapFareyBound.lean#L51">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cd83a19f8002856293310f4d71358b2f9d72a24e/evidence/erdos249-totient-reasoning-surface/section-5.md#lem-farey-comparator">Comparator</a></p>
@@ -816,7 +826,7 @@ Equivalently: *if $`S`$ is rational, its reduced denominator exceeds* $`Q_0 \app
 
 ## Equivalent expressions and their denominator bounds
 
-The exact finite Farey record behind Theorem <a href="#thm:denom-record" data-reference-type="ref" data-reference="thm:denom-record">40</a> is not tied to the $`\varphi(n)/2^n`$ presentation of $`S`$; it transfers verbatim to two other exact reformulations of the same constant, at exactly half the bound. Amiram Eldar posted both reformulations to OEIS A256936 on 15 March 2026: an equivalent coprimality interpretation of Proposition <a href="#prop:coprime" data-reference-type="ref" data-reference="prop:coprime">43</a> in revision 28, and the Möbius-square formula of Proposition <a href="#prop:mobsq" data-reference-type="ref" data-reference="prop:mobsq">48</a> in revision 31 \[eldar2026oeis\]. Steve Fan posted the Möbius-square formula on the problem’s forum thread on 16 May 2026 \[fan2026totient\]. Both identities follow here from Möbius inversion and geometric sums.
+The finite bound in Theorem <a href="#thm:denom-record" data-reference-type="ref" data-reference="thm:denom-record">40</a> also applies to the two expressions for $`S-1/2`$ below, with half the denominator bound. Amiram Eldar posted the coprimality interpretation of Proposition <a href="#prop:coprime" data-reference-type="ref" data-reference="prop:coprime">43</a> in revision 28 of OEIS A256936 on 15 March 2026, and the Möbius-square formula of Proposition <a href="#prop:mobsq" data-reference-type="ref" data-reference="prop:mobsq">48</a> in revision 31 \[eldar2026oeis\]. Steve Fan posted the latter formula on the problem’s forum thread on 16 May 2026 \[fan2026totient\]. We derive both identities by Möbius inversion and geometric summation.
 
 <div id="prop:coprime" class="prop">
 <p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/cd83a19f8002856293310f4d71358b2f9d72a24e/evidence/erdos249-totient-reasoning-surface/section-5.md#prop-coprime">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cd83a19f8002856293310f4d71358b2f9d72a24e/evidence/erdos249-totient-reasoning-surface/section-5.md#prop-coprime-comparator">Comparator</a></p>
@@ -943,7 +953,7 @@ where $`P(n) := \sum_{e\mid n}\varphi(e)\cdot(n/e) = (\varphi * \mathrm{Id})(n)`
 
 ## Diagonal certificates through scale 82
 
-This table records finite instances of the residue test introduced in Definition <a href="#defn:sep" data-reference-type="ref" data-reference="defn:sep">2</a>. The aggregate result covers every integer scale $`t\le82`$. It does not assert an instance at scale $`83`$ or an unbounded family. The individual source links identify the computations used.
+The table lists finite instances of Definition <a href="#defn:sep" data-reference-type="ref" data-reference="defn:sep">2</a>. The aggregate theorem includes every integer scale $`t\le82`$; there is no assertion at $`83`$ or at unbounded scales. The individual links give the source computations for the displayed witnesses.
 
 <a id="definition-of-the-finite-residue-test"></a>
 
@@ -997,13 +1007,13 @@ for every $`h,N`$. Requiring such certificates beyond every basepoint threshold 
 
 # Detailed statements
 
-The following statements collect the dependencies used in the earlier arguments. We begin with unconditional identities, rank bounds and finite examples. The next subsection supplies the definitions and elementary implications, followed by the quantified conditions that would be needed to prove irrationality. A source link supports the indicated statement, not an unproved hypothesis appearing in it.
+We collect the exact statements behind the preceding arguments, beginning with the unconditional identities, rank bounds and finite examples. The definitions and elementary implications follow, then the quantified residue conditions. A formal declaration for an implication includes its hypothesis; it does not establish that hypothesis for the totient.
 
 <a id="unconditional-structure-and-finite-examples"></a>
 
 ## Unconditional structure and finite examples
 
-The distinction between a finite example and a family at arbitrarily large scales is important here. The rank and denominator statements below hold with their displayed quantifiers; the residue computations establish only the explicitly stated finite ranges.
+The rank bounds hold for every displayed level. The residue computations below cover only the specified finite sets of shifts or scales, and the Farey calculation excludes only its specified denominator range. Unbounded families require the later quantified conditions.
 
 <div id="catalogue:cert:a9" class="thm">
 <p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos249/PaperCompleteR20/SpecifiedTailPeriod.lean#L44">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cd83a19f8002856293310f4d71358b2f9d72a24e/evidence/erdos249-totient-reasoning-surface/section-6-1.md#catalogue-cert-a9-comparator">Comparator</a></p>
@@ -1168,7 +1178,7 @@ the corresponding depths begin $`6,5,7,7,9,14,15,14,21,22,23,26,\ldots`$. Each e
 
 ## Definitions and elementary identities
 
-The finite test rests on two identities: the prefix-tail decomposition and the truncation of a tail difference. We state those first, then give the soundness and completeness arguments, the LCM specialisation and the corresponding rational-approximation criteria. The subsequent Möbius identities describe the same series with different coefficient weights.
+We start with the prefix-tail identity and the truncation formula for a tail difference. These give soundness and completeness of the finite residue test, its LCM specialisation and the rational-approximation criteria. Möbius inversion then gives the alternative coefficient weights used in the later estimates.
 
 <a id="initial-implications"></a>
 
@@ -1661,7 +1671,7 @@ Thus the bound $`\Omega(a)\le1`$ and two prime factors do not by themselves make
 
 ### Equivalent quantified certificate conditions
 
-Each statement in this block relates a quantified certificate condition to irrationality. The implications are proved; the assertions that certificates occur beyond every threshold remain unproved. Completeness gives equivalences for the base condition and the LCM-diagonal condition. The one-directional implications remain useful proof components, but do not by themselves describe the full logical relation.
+Completeness identifies the base residue condition and the LCM-diagonal condition with irrationality. The following statements spell out the quantifiers and the implications between them. The existence of the required certificates beyond every threshold remains unproved.
 
 <div id="catalogue:cert:a10" class="thm">
 <p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/Erdos249257/LcmConeFlatness.lean#L412">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cd83a19f8002856293310f4d71358b2f9d72a24e/evidence/erdos249-totient-reasoning-surface/section-6-2.md#catalogue-cert-a10-comparator">Comparator</a></p>
@@ -2161,7 +2171,7 @@ then $`R_{N+h}-R_N\notin\mathbb Z`$. An integral tail difference would give one 
 
 ## Further exact identities
 
-The identities in this subsection hold independently of the proposed residue tests. Each gives either an exact expression or a bound that can be used when studying those tests.
+We next expand the tail differences and bound their remainders without assuming any residue separation. These identities will be used to test whether a proposed rational centre is sufficiently far from the integers.
 
 <div id="prop:AR-04-inv" class="prop">
 <p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/cd83a19f8002856293310f4d71358b2f9d72a24e/evidence/erdos249-totient-reasoning-surface/section-6-3.md#prop-ar-04-inv">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cd83a19f8002856293310f4d71358b2f9d72a24e/evidence/erdos249-totient-reasoning-surface/section-6-3.md#prop-ar-04-inv-comparator">Comparator</a></p>
@@ -2533,7 +2543,7 @@ For independent random variables $`X,Y`$ with $`\Pr(X=n)=\Pr(Y=n)=2^{-n}`$, $`n\
 
 ## Counterexamples and limitations
 
-Each example below is a counterexample to a stated deduction, not to irrationality of $`S`$. The assumptions that fail to suffice are given with the example, so that its conclusion is not extended to other arguments.
+The examples below concern deductions from specified information about coefficients or residues. They leave $`S`$ unchanged as the open target and show which additional property a proposed deduction must use.
 
 <div id="prop:SGN-02" class="obs">
 
@@ -2738,13 +2748,13 @@ These follow by subtracting consecutive prime-power values of $`\varphi`$. For e
 
 ## Related structural results
 
-The following results concern the Möbius-weighted series, integer carry recurrences, rational approximations, and factorizations used above. The statements are grouped by their mathematical objects.
+We turn to the Möbius-weighted series and its log-concavity, followed by integer carry recurrences, rational approximations and factorisations. The proofs use the identities already established for each of these objects.
 
 <a id="log-concavity-of-the-möbius-weighted-series"></a>
 
 ### Log-concavity of the Möbius-weighted series
 
-The series $`\Theta_r=\sum_{n\ge0}\mu(n+1)/(2^{n+1}-1)^r`$ includes $`S-1/2`$ at $`r=2`$. The next result proves strict log-concavity for every integer $`r\ge1`$. This is an order property of these values, not an irrationality criterion.
+Put $`\Theta_r=\sum_{n\ge0}\mu(n+1)/(2^{n+1}-1)^r`$, so that $`\Theta_2=S-1/2`$. We prove strict log-concavity for every integer $`r\ge1`$. This orders the values of the family without determining their rationality.
 
 <div class="defn">
 
@@ -2820,7 +2830,7 @@ The accompanying formal results include a rectangular determinant expansion deri
 
 ### Integer recurrences and rational binary series
 
-For a binary series with integer coefficients, rationality can be expressed by an integer recurrence whose growth is smaller than $`2^N`$. The next equivalence is elementary algebra and convergence; no novelty is claimed for it.
+An integer-coefficient binary series is rational exactly when a suitable integer carry satisfies a subexponential growth condition relative to $`2^N`$. We include the elementary recurrence proof to fix the normalisation used later.
 
 <div id="thm:binary-carry-criterion" class="thm">
 <p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/cd83a19f8002856293310f4d71358b2f9d72a24e/evidence/erdos249-totient-reasoning-surface/section-6-4.md#thm-binary-carry-criterion">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cd83a19f8002856293310f4d71358b2f9d72a24e/evidence/erdos249-totient-reasoning-surface/section-6-4.md#thm-binary-carry-criterion-comparator">Comparator</a></p>
@@ -3028,7 +3038,7 @@ Each quotient is an integer because $`d\mid r`$.*
 
 ### Exact dyadic comparisons and tail bounds
 
-The next two formulas concern exact comparisons with a dyadic rational and an explicit tail bound. They are useful when a residue is computed using a finite prefix: the error must remain smaller than its distance from the boundary.
+A finite prefix locates a dyadic rational relative to the tail. The following two formulas give the exact comparison and an upper bound for the omitted terms, so that the residue margin can be compared with its error.
 
 <div class="defn">
 
@@ -3061,7 +3071,7 @@ Indeed, $`1-2^{-n}\ge3/4`$. Summing over $`n>m`$, for an integer $`m\ge1`$, give
 
 ### Squared distances between complex phases
 
-For a finite set of unit complex phases, distance from $`1`$ is related exactly to the real part of their sum. A second elementary identity bounds the total squared distance between pairs. These facts turn suitable separation estimates into the real-part inequality; neither supplies that separation for the totient phases.
+For unit complex numbers, the identity $`|z-1|^2=2-2\operatorname{Re}z`$ converts squared distances into a real-part sum. We also sum the corresponding pairwise identity. Applying these formulas to totient phases still requires a separation estimate for those phases.
 
 <div id="prop:squared-distance-phase-one" class="prop">
 <p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos249/PaperCompleteR21/PhaseEnergyAndForeignResidueProjection.lean#L31">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cd83a19f8002856293310f4d71358b2f9d72a24e/evidence/erdos249-totient-reasoning-surface/section-6-4.md#prop-squared-distance-phase-one-comparator">Comparator</a></p>
@@ -3180,7 +3190,7 @@ When $`D\ge2H`$, the first-order part of the omitted sum can also be included ex
 
 ### Coprime-pair sums
 
-Counting coprime pairs gives another expression for the totient series. The adjacent Lambert identity is classical and uses different weights. Its sum is an elementary rational function of the parameter; it does not decide irrationality of $`S`$.
+Coprime-pair counting gives a further expression for $`S`$. The classical Lambert identity alongside it uses different weights and sums to an elementary rational function. That evaluation does not determine the rationality of the totient series.
 
 <div id="thm:coprime-pair-counting-totient" class="thm">
 <p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/cd83a19f8002856293310f4d71358b2f9d72a24e/evidence/erdos249-totient-reasoning-surface/section-6-4.md#thm-coprime-pair-counting-totient">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cd83a19f8002856293310f4d71358b2f9d72a24e/evidence/erdos249-totient-reasoning-surface/section-6-4.md#thm-coprime-pair-counting-totient-comparator">Comparator</a></p>
@@ -3228,7 +3238,7 @@ This total is $`1`$ exactly when $`r=1/2`$.*
 
 ### The single-parameter diagonal condition
 
-The period can be chosen to be a least common multiple. This reduces the required certificate condition to a single scale $`t`$. The reduction does not remove the demand for arbitrarily large scales, which is the remaining arithmetic assertion.
+Taking the period to be a least common multiple reduces the certificate condition to a single scale $`t`$. The witness must still occur beyond every threshold in $`t`$. We prove the reduction and retain that arithmetic requirement explicitly.
 
 <div class="obs">
 
@@ -3267,7 +3277,7 @@ The largest totient argument is $`2H_6+9=129`$ for $`t\le6`$, and $`2H_8+15=1695
 
 ### Prime divisors of Mersenne factors and finite exclusions
 
-For the polynomial $`X-2`$, elementary order arguments give unbounded prime support in the Mersenne factors. This settles the particular abstract prime-support hypothesis used below. It does not give the tail-residue inequality needed for irrationality. The separate finite exclusions retain their stated periods and basepoints.
+For $`X-2`$, multiplicative orders supply infinitely many prime divisors among the Mersenne factors. They therefore satisfy the abstract prime-support hypothesis below. This does not imply the required tail-residue inequality. The accompanying finite exclusions concern only their stated periods and basepoints.
 
 <div id="thm:unbounded-prime-support-mersenne-factors" class="thm">
 <p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/cd83a19f8002856293310f4d71358b2f9d72a24e/evidence/erdos249-totient-reasoning-surface/section-6-4.md#thm-unbounded-prime-support-mersenne-factors">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cd83a19f8002856293310f4d71358b2f9d72a24e/evidence/erdos249-totient-reasoning-surface/section-6-4.md#thm-unbounded-prime-support-mersenne-factors-comparator">Comparator</a></p>
@@ -3301,7 +3311,7 @@ These results supply prime divisors with the required orders. They do not supply
 
 ### A sufficient hypothesis for unbounded prime support
 
-The residue group matters in this criterion. The bounded exponent $`k`$ in $`p^k\equiv1\pmod{mq}`$ is a finite-field extension degree, or equivalently a bound for the order of $`p`$ modulo $`mq`$. It is not a bound for the order of $`2`$ modulo $`p`$ in the binary examples. The displayed condition forces a prime divisor of $`C(mq)`$ to grow with $`q`$. A separate assumption that these values exceed $`1`$ ensures that prime divisors exist.
+Here the exponent $`k`$ in $`p^k\equiv1\pmod{mq}`$ bounds the order of $`p`$ modulo $`mq`$, or equivalently a finite-field extension degree. It does not bound the order of $`2`$ modulo $`p`$ in the binary examples. The condition forces a prime divisor of $`C(mq)`$ to grow with $`q`$, provided the separate assumption $`C(mq)>1`$ ensures the existence of such a divisor.
 
 <div id="thm:sufficient-order-hypothesis-unbounded-prime" class="thm">
 <p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/cd83a19f8002856293310f4d71358b2f9d72a24e/evidence/erdos249-totient-reasoning-surface/section-6-4.md#thm-sufficient-order-hypothesis-unbounded-prime">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cd83a19f8002856293310f4d71358b2f9d72a24e/evidence/erdos249-totient-reasoning-surface/section-6-4.md#thm-sufficient-order-hypothesis-unbounded-prime-comparator">Comparator</a></p>
@@ -3320,7 +3330,7 @@ The divisibility forces $`\gcd(p,mq)=1`$. For such $`p`$, existence of $`k`$ in 
 
 ### The lower bound for rank-one quotients
 
-The following finite-sum quotients do not approach $`\Theta_2=S-1/2`$. Their lower bound is uniform in both the exponent and the truncation length. This matters for rational approximation: varying either parameter cannot make the associated linear form tend to zero.
+The finite-sum quotients below stay a positive distance above $`\Theta_2=S-1/2`$, uniformly in their exponent and truncation length. Consequently neither parameter can make the associated rational linear form tend to zero. Appendix <a href="#long249:r3-rankone" data-reference-type="ref" data-reference="long249:r3-rankone">14.4</a> gives the sharp minimum and its ordinary proof, strengthening the bound recorded here.
 
 <div id="thm:uniform-positive-gap-rank-one" class="thm">
 <p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/cd83a19f8002856293310f4d71358b2f9d72a24e/evidence/erdos249-totient-reasoning-surface/section-6-4.md#thm-uniform-positive-gap-rank-one">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cd83a19f8002856293310f4d71358b2f9d72a24e/evidence/erdos249-totient-reasoning-surface/section-6-4.md#thm-uniform-positive-gap-rank-one-comparator">Comparator</a></p>
@@ -3355,7 +3365,7 @@ Here $`\Theta_2=S-1/2`$. For $`r\ge3`$, the proof uses $`1429/1512\le\Theta_r<1`
 
 ### Multiples of a period
 
-Allowing positive multiples of a prescribed period gives another criterion equivalent to irrationality of $`S`$. Sufficiency follows by telescoping the tail-period identity, and necessity follows from completeness of the residue test. The equivalence is proved, but its quantified arithmetic condition is not established. The finite examples below give denominator exclusions whose overlap with the diagonal certificates is described explicitly.
+We allow a positive multiple of each prescribed period. Telescoping proves sufficiency, and completeness of the residue test proves necessity, giving another condition equivalent to irrationality. The universally quantified condition remains unproved. For the finite examples, we specify which excluded denominators already occur in the diagonal computations.
 
 <div id="thm:concatenation-specified-period-multiples" class="thm">
 <p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/cd83a19f8002856293310f4d71358b2f9d72a24e/evidence/erdos249-totient-reasoning-surface/section-6-4.md#thm-concatenation-specified-period-multiples">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cd83a19f8002856293310f4d71358b2f9d72a24e/evidence/erdos249-totient-reasoning-surface/section-6-4.md#thm-concatenation-specified-period-multiples-comparator">Comparator</a></p>
@@ -4262,7 +4272,7 @@ In the periodic-weight rows, write $`w:\mathbb N\to\mathbb Z`$ and $`c_w(n)=\sum
 
 ## What extending a finite calculation would require
 
-A finite computation can be extended by further computation or by a uniform argument. The following examples distinguish these possibilities from parameter-uniform theorems that are already proved. They do not assert that a computational bound is intrinsic to a method.
+Further finite calculations would enlarge the displayed ranges. A uniform argument would instead have to produce witnesses with the stated quantifiers. We distinguish these possibilities in the examples below, without treating the current computational limit as a limit of the method.
 
 1.  **Finite certificate tables.** Results such as the diagonal certificates at 28 explicit values of $`t`$ through $`t{=}64`$, now a strict subset of the aggregate band $`t\le82`$ ([`certifiedKill_diagonal_all_imported`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/DiagonalPincerCertificates.lean#L2870)), the certificates for $`h\in[1,8]`$ at fixed depth 16 ([`certifiedKill_all_small`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/TotientTailPeriodKiller.lean#L404)), and the exclusions for $`h\in[1,16]`$ at exponent 14 ([`totient_series_ne_rat_of_den_dvd_pow_two_mul_mersenne_upto_sixteen`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/CertificateKernel.lean#L18890)) are each a finite *list* of independently verified rows, not a single argument instantiated at a free parameter. The existing lists do not establish further rows; an extension needs either additional computations or an argument for a family of parameters.
 
@@ -4276,7 +4286,7 @@ The missing arithmetic inputs include the stated constant-saving exponential-sum
 
 # Relations between the representations
 
-The formulas below express the same series through binary tails, Möbius sums, rational approximations and exponential sums. Each identity permits a change of variables or representation. A limitation of one proposed argument does not automatically apply after that change: its hypotheses must be checked for the new objects. The last subsection illustrates this distinction with finite-state decoding and polynomial denominator identities.
+The following identities pass between binary tails, Möbius sums, rational approximations and exponential sums. Before applying a counterexample after such a change, one must check its hypotheses for the new objects. Finite-state decoding and polynomial denominator identities illustrate this requirement in the final subsection.
 
 Binary-weighted series and tails.  
 The coefficients in $`S=\sum_{n\ge1}\varphi(n)2^{-n}`$ are unbounded; this expression is not the base-two digit expansion of $`S`$. The tail $`R_N`$, finite difference numerator $`D(h,N,L)`$ and test $`\mathcal C(h,N,L)`$ retain this coefficient information. The identity
@@ -4331,13 +4341,13 @@ The Möbius representation instead allows the squared-Lambert identity of Propos
 
 # Index of unproved conditions
 
-This section collects the unproved hypotheses used by the conditional results above. For each one, it states the additional arithmetic assertion and the implication to $`S\notin\mathbb Q`$. A proof of an implication is not a proof of its hypothesis. The record does not settle whether $`S=\sum_{n\ge0}\varphi(n)2^{-n}`$ is irrational.
+We collect the arithmetic hypotheses needed by the conditional results. For each hypothesis we give its quantifiers and the implication to $`S\notin\mathbb{Q}`$. The implications are proved; the hypotheses required to settle the irrationality of $`S=\sum_{n\ge0}\varphi(n)2^{-n}`$ remain open.
 
 <a id="how-to-use-the-index"></a>
 
 ## How to use the index
 
-Each entry separates the proved implication from the additional hypothesis needed to apply it. The comparison concerns the displayed statements, not the prospects of an entire method.
+Each entry states the extra hypothesis next to the result that uses it. Comparisons are between these particular statements. They do not establish the prospects or limitations of an entire method.
 
 Each entry states its quantifiers in full. A cofinal assertion, with a quantifier of the form $`\forall a_0\ \exists a\ge a_0`$, may itself be proved or may remain an unproved hypothesis; the text of each entry says which. A cofinal assertion about a different quantity, or with a different order of quantifiers, need not supply the irrationality condition.
 
@@ -4351,7 +4361,7 @@ The following catalogue compares fourteen proposed approaches to this condition.
 
 ## The exponential-sum criterion
 
-The next three definitions recall the finite sum, its residue test and its phase. The following theorems explain which estimates for that phase would imply the quantified condition in Definition <a href="#defn:sep" data-reference-type="ref" data-reference="defn:sep">2</a>.
+We recall the finite discrepancy, the residue test and the associated complex phase. We then prove the implications from estimates of that phase to the quantified condition in Definition <a href="#defn:sep" data-reference-type="ref" data-reference="defn:sep">2</a>.
 
 <div class="defn">
 
@@ -4448,7 +4458,7 @@ The subset theorem permits any *nonempty* finite sample inside $`[0,2X)`$; no de
 
 ## Proved results and the additional assumptions they need
 
-Section <a href="#ssec:headline" data-reference-type="ref" data-reference="ssec:headline">9.2</a> gives the exponential-sum condition. The remaining entries compare tail signs, endpoint residues, finite approximations, short windows, Farey bounds, divisibility constructions, denominator growth and carry rank. Each states the extra assumption needed for its proposed application. The entries are not a classification of all possible approaches to \#249.
+After the exponential-sum condition in Section <a href="#ssec:headline" data-reference-type="ref" data-reference="ssec:headline">9.2</a>, we consider tail signs, endpoint residues, finite approximations, short windows, Farey bounds, divisibility, denominator growth and carry rank. In each case we state the estimate needed for the application. This list is not a classification of all possible approaches to Problem #249.
 
 <a id="positivity-and-the-remaining-residue-inequality"></a>
 
@@ -4483,7 +4493,7 @@ The one-sided test below excludes precisely that upper interval. This uses the b
 
 ### An exact endpoint identity
 
-The sign estimate permits a one-sided residue test under the bounds below. This is a sufficient criterion, with additional arithmetic hypotheses, rather than a claimed strict weakening of irrationality.
+Under the bounds below, positivity places an integral tail difference at the upper residue endpoint. A one-sided inequality would exclude it. That additional inequality is a sufficient condition, and is not claimed to be strictly weaker than irrationality.
 
 <div id="thm:proved-implications" class="thm">
 <p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/cd83a19f8002856293310f4d71358b2f9d72a24e/evidence/erdos249-totient-reasoning-surface/section-9.md#thm-proved-implications">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cd83a19f8002856293310f4d71358b2f9d72a24e/evidence/erdos249-totient-reasoning-surface/section-9.md#thm-proved-implications-comparator">Comparator</a></p>
@@ -4538,7 +4548,7 @@ No unconditional statement anywhere in the record locates the residue of the dia
 
 ### A bound on the last totient difference
 
-The next condition compares one totient difference with a centred residue. Its usefulness would depend on proving that comparison for arbitrarily large $`a`$ within the required range of $`q`$.
+We compare the last totient difference with a centred residue. To use the comparison for irrationality, it would have to hold for arbitrarily large $`a`$, with $`q`$ in the prescribed range.
 
 <div class="defn">
 
@@ -4927,7 +4937,7 @@ This is the rational-separation criterion of Proposition <a href="#catalogue:ce
 
 ### Rationality and carry rank
 
-The next two theorems concern the totient sections and, under rationality, the sections of an integral carry. Both give lower bounds for dimension. A rank argument for irrationality would also need an incompatible upper bound. Rationality alone does not provide one.
+The totient sections have a dimension lower bound, as do the sections of an integral carry under the rationality hypothesis. An incompatible upper bound would finish a rank argument. The rational comparison sequences show why rationality by itself gives no such bound.
 
 <div id="thm:rationality-carry-rank" class="thm">
 <p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/cd83a19f8002856293310f4d71358b2f9d72a24e/evidence/erdos249-totient-reasoning-surface/section-9.md#thm-rationality-carry-rank">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cd83a19f8002856293310f4d71358b2f9d72a24e/evidence/erdos249-totient-reasoning-surface/section-9.md#thm-rationality-carry-rank-comparator">Comparator</a></p>
@@ -4965,7 +4975,7 @@ The proof is given in Section <a href="#sec:mahler-defect" data-reference-type=
 
 ## What the preceding comparisons show
 
-The comparison separates three issues. A block estimate with a fixed saving in the real part or norm of an exponential sum would provide certificates. The upper-endpoint conditions instead ask for a particular residue or size estimate along an LCM sequence. Their sufficient forms are related by Proposition <a href="#prop:te-chain" data-reference-type="ref" data-reference="prop:te-chain">229</a>, but those implications do not prove any of the arithmetic hypotheses.
+A fixed saving in the real part or norm of the block exponential sum would give certificates. The endpoint criteria ask instead for a residue or size estimate along an LCM sequence. Proposition <a href="#prop:te-chain" data-reference-type="ref" data-reference="prop:te-chain">229</a> relates their sufficient forms; the arithmetic estimates themselves remain to be proved.
 
 The generic bounded-rank argument fails for a separate reason: the rational comparison sequence has unbounded section rank. A totient-specific upper bound would require hypotheses not shared by that sequence.
 
@@ -4975,27 +4985,27 @@ These are statements about the displayed conditions and comparisons, not an exha
 
 # Counterexamples to proposed deductions
 
-The following examples disprove particular deductions proposed for $`S=\sum_{n\ge1}\varphi(n)2^{-n}`$. Each example specifies the assumptions that it satisfies and the conclusion that fails. Some concern other coefficient sequences; others concern a particular way of estimating a totient sum. Neither kind decides the irrationality of $`S`$, and neither excludes arguments using additional properties of $`\varphi`$.
+We construct coefficient sequences with specified totient data and rational sums, and examine proposed estimates of actual totient sums. Each construction identifies the assumptions it preserves. These counterexamples leave the irrationality of $`S`$ open and leave room for arguments using further properties of $`\varphi`$.
 
 <a id="changing-the-coefficients-after-a-finite-prefix"></a>
 
 ## Changing the coefficients after a finite prefix
 
-**(a) Proposed argument.** The quantified residue condition requires certificates beyond every starting index. A finite computation can check many instances, but one fixed inspection bound cannot establish these quantifiers. The following comparison explains this limitation without making any claim about all possible irrationality arguments. [`Erdos249257.irrational_totient_series_iff_certificate_supply`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/LcmConeFlatness.lean#L412)
+**Proposed argument.** The quantified residue condition requires certificates beyond every starting index. A finite computation can check many instances, but one fixed inspection bound cannot establish these quantifiers. The following comparison explains this limitation without making any claim about all possible irrationality arguments. [`Erdos249257.irrational_totient_series_iff_certificate_supply`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/LcmConeFlatness.lean#L412)
 
-**(b) Counterexample.** Theorem <a href="#thm:gamma" data-reference-type="ref" data-reference="thm:gamma">17</a> gives an explicit splice construction; its series value, exact reduced denominator and failure of the separation condition are checked in Lean. Choose an integer $`P>B`$, set $`\gamma(n)=\varphi(n)`$ for $`n\le B`$, and $`\gamma(n)=n-\mathbf 1_{P\mid n}`$ for $`n>B`$. Then $`0\le\gamma(n)\le n`$, and the binary series $`\sum\gamma(n)/2^n`$ is *rational*: it is a finite rational prefix, plus the tail of $`\sum_n n2^{-n}`$, minus a geometric sum over the multiples of $`P`$ beyond $`B`$. Because $`\gamma`$ agrees with $`\varphi`$ on every index $`\le B`$, $`\gamma`$ passes every finite certificate that only inspects indices $`\le B`$; in particular it passes or fails every instance of $`\mathcal{C}(h,N,L)`$ with $`N+h+L\le B`$ exactly as $`\varphi`$ does. Yet $`\sum\gamma(n)/2^n\in\mathbb Q`$ by construction.
+**Counterexample.** Theorem <a href="#thm:gamma" data-reference-type="ref" data-reference="thm:gamma">17</a> gives an explicit splice construction; its series value, exact reduced denominator and failure of the separation condition are checked in Lean. Choose an integer $`P>B`$, set $`\gamma(n)=\varphi(n)`$ for $`n\le B`$, and $`\gamma(n)=n-\mathbf 1_{P\mid n}`$ for $`n>B`$. Then $`0\le\gamma(n)\le n`$, and the binary series $`\sum\gamma(n)/2^n`$ is *rational*: it is a finite rational prefix, plus the tail of $`\sum_n n2^{-n}`$, minus a geometric sum over the multiples of $`P`$ beyond $`B`$. Because $`\gamma`$ agrees with $`\varphi`$ on every index $`\le B`$, $`\gamma`$ passes every finite certificate that only inspects indices $`\le B`$; in particular it passes or fails every instance of $`\mathcal{C}(h,N,L)`$ with $`N+h+L\le B`$ exactly as $`\varphi`$ does. Yet $`\sum\gamma(n)/2^n\in\mathbb Q`$ by construction.
 
-**(c) Scope.** For each fixed bound $`B`$, a different rational comparison sequence can agree with $`\varphi`$ on all inspected coefficients. This rules out a deduction from that finite prefix alone. It does not rule out a proof that establishes the required instances for arbitrarily large $`B`$ with the correct quantifiers. Such a proof would no longer be a single finite inspection. The comparison also does not preserve multiplicativity or every other arithmetic property of $`\varphi`$.
+**Scope.** For each fixed bound $`B`$, a different rational comparison sequence can agree with $`\varphi`$ on all inspected coefficients. This rules out a deduction from that finite prefix alone. It does not rule out a proof that establishes the required instances for arbitrarily large $`B`$ with the correct quantifiers. Such a proof would no longer be a single finite inspection. The comparison also does not preserve multiplicativity or every other arithmetic property of $`\varphi`$.
 
-**(d) Consequence.** The finite-prefix example and the parity example below are distinct constructions. The former preserves a prescribed finite prefix; the latter preserves parity and has separated nonperiodic blocks. Each shows why its own list of assumptions is insufficient. The recorded finite diagonal examples remain useful individual certificates, but their number alone gives no assertion at arbitrarily large scales. [`Erdos249257.certifiedKill_diagonal_all_imported_through_t64`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/DiagonalPincerCertificatesT64.lean#L1967)
+**Consequence.** The finite-prefix example and the parity example below are distinct constructions. The former preserves a prescribed finite prefix; the latter preserves parity and has separated nonperiodic blocks. Each shows why its own list of assumptions is insufficient. The recorded finite diagonal examples remain useful individual certificates, but their number alone gives no assertion at arbitrarily large scales. [`Erdos249257.certifiedKill_diagonal_all_imported_through_t64`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/DiagonalPincerCertificatesT64.lean#L1967)
 
 <a id="sec:parity-countermodel"></a>
 
 ## A rational series with matching totient parity
 
-**(a) Proposed argument.** Consider the claim that a uniformly bounded sequence $`c:\mathbb{N}\to\mathbb{N}`$, with $`c(n)\le n`$, exact totient parity and no eventual period, must have an irrational binary sum. The next example refutes this claim. It also has arbitrarily many paired changes beyond every threshold, with an arbitrarily prescribed minimum separation.
+A bounded sequence can have the totient’s parity, satisfy $`c(n)\le n`$, and fail to be eventually periodic while its binary sum is rational. The next example proves this and permits arbitrarily many paired changes beyond every threshold, with any prescribed minimum separation.
 
-**(b) Construction.** Start with the sequence $`0,1,1,2,4,4,4,\ldots`$. At each position $`m=2^{k+3}`$, $`k\ge0`$, replace the pair $`(4,4)`$ at $`m,m+1`$ by $`(6,0)`$. Equivalently,
+**Construction.** Start with the sequence $`0,1,1,2,4,4,4,\ldots`$. At each position $`m=2^{k+3}`$, $`k\ge0`$, replace the pair $`(4,4)`$ at $`m,m+1`$ by $`(6,0)`$. Equivalently,
 ``` math
 c(n)=
  \begin{cases}
@@ -5016,9 +5026,9 @@ Each replacement leaves the binary sum unchanged because $`2\cdot2^{-m}-4\cdot2^
 
 </div>
 
-**(c) Scope.** The displayed bounds, parity agreement and aperiodicity, including the stated number and separation of the edits, are jointly compatible with a rational binary sum. They therefore do not imply irrationality. The sequence $`c`$ differs from $`\varphi`$: the example preserves its parity, not all its arithmetic properties. It excludes an argument using only the listed assumptions, not every strengthening of an aperiodicity condition or every use of totient coefficients.
+**Scope.** The displayed bounds, parity agreement and aperiodicity, including the stated number and separation of the edits, are jointly compatible with a rational binary sum. They therefore do not imply irrationality. The sequence $`c`$ differs from $`\varphi`$: the example preserves its parity, not all its arithmetic properties. It excludes an argument using only the listed assumptions, not every strengthening of an aperiodicity condition or every use of totient coefficients.
 
-**(d) Consequence.** The paired edits have zero total contribution, since $`2\cdot2^{-m}-4\cdot2^{-(m+1)}=0`$. Applied at the specified sparse positions of this particular base sequence, they preserve the rational sum and the required bounds while preventing eventual periodicity. This does not construct a rational series for every prescribed parity pattern, and it is not the finite-prefix construction of Theorem <a href="#thm:gamma" data-reference-type="ref" data-reference="thm:gamma">17</a>. A proposed criterion using only the assumptions of this example must fail; a criterion using further arithmetic information is not addressed.
+**Consequence.** The paired edits have zero total contribution, since $`2\cdot2^{-m}-4\cdot2^{-(m+1)}=0`$. Applied at the specified sparse positions of this particular base sequence, they preserve the rational sum and the required bounds while preventing eventual periodicity. This does not construct a rational series for every prescribed parity pattern, and it is not the finite-prefix construction of Theorem <a href="#thm:gamma" data-reference-type="ref" data-reference="thm:gamma">17</a>. A proposed criterion using only the assumptions of this example must fail; a criterion using further arithmetic information is not addressed.
 
 <a id="what-the-square-crt-construction-proves"></a>
 
@@ -5044,7 +5054,7 @@ This identity is proved in Lean ([`alternating_powerset_sum_eq_zero_of_insert_in
 
 ## The cost of clearing a rational denominator
 
-For example, multiplying $`5/12`$ by $`4`$ gives $`5/3`$: the factor $`4`$ removed from the denominator appears in the multiplier. The following lemma gives the exact divisibility behind this calculation. It concerns ordinary reduced fractions, without assumptions on totients.
+Multiplication by $`4`$ changes $`5/12`$ to $`5/3`$, transferring a factor from the denominator to the multiplier. We state the divisibility behind this elementary example for arbitrary reduced fractions. No property of the totient is assumed.
 
 <div id="lem:complement-divisibility-after-multiplication" class="lem">
 <p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos249/PaperCompleteR21/ScalarLocalisationAndInversePhaseGauge.lean#L29">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cd83a19f8002856293310f4d71358b2f9d72a24e/evidence/erdos249-totient-reasoning-surface/section-10.md#lem-complement-divisibility-after-multiplication-comparator">Comparator</a></p>
@@ -5085,7 +5095,7 @@ The finite Farey exclusion for $`S`$ is a separate use of reduced denominators. 
 
 ## Signed moments and parity
 
-A determinant construction needs a nonzero numerator as well as a small approximation error. The following parity test can establish the first requirement for a specified finite sum.
+To use a determinant for rational approximation, we need both a nonzero numerator and an error estimate. The parity calculation below verifies nonvanishing for the stated finite signed sum.
 
 <div id="lem:nonvanishing-unique-largest-denominator-exponent" class="lem">
 <p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/cd83a19f8002856293310f4d71358b2f9d72a24e/evidence/erdos249-totient-reasoning-surface/section-10.md#lem-nonvanishing-unique-largest-denominator-exponent">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cd83a19f8002856293310f4d71358b2f9d72a24e/evidence/erdos249-totient-reasoning-surface/section-10.md#lem-nonvanishing-unique-largest-denominator-exponent-comparator">Comparator</a></p>
@@ -5137,9 +5147,9 @@ These are statements about complex matrices, not arithmetic properties of the to
 
 ## Tail integrality on an LCM grid
 
-**(a) The comparison.** The diagonal condition ([`Erdos249257.irrational_totient_series_iff_lcm_diagonal_certificate_supply`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/LcmConeFlatness.lean#L426)) uses the pair $`(H_t,2H_t)`$. Under rationality, the same fractional part occurs at every positive multiple of $`H_t`$ once $`t`$ is sufficiently large. A finite set of these multiples therefore gives another possible place to test for a nonintegral difference. The criterion below does not assert a smaller successful depth than the diagonal test.
+**The comparison.** The diagonal condition ([`Erdos249257.irrational_totient_series_iff_lcm_diagonal_certificate_supply`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/LcmConeFlatness.lean#L426)) uses the pair $`(H_t,2H_t)`$. Under rationality, the same fractional part occurs at every positive multiple of $`H_t`$ once $`t`$ is sufficiently large. A finite set of these multiples therefore gives another possible place to test for a nonintegral difference. The criterion below does not assert a smaller successful depth than the diagonal test.
 
-**(b) Eventual equality of fractional parts.**
+**Eventual equality of fractional parts.**
 
 <div id="prop:tail-integrality-lcm-grid" class="prop">
 <p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos249/PaperCompleteR20/LcmGridCorrespondence.lean#L8">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cd83a19f8002856293310f4d71358b2f9d72a24e/evidence/erdos249-totient-reasoning-surface/section-10.md#prop-tail-integrality-lcm-grid-comparator">Comparator</a></p>
@@ -5168,21 +5178,21 @@ Then $`R_{q_jH}-R_{q_iH}\notin\mathbb Z`$ for some $`q_i,q_j\in Q`$. The proof a
 
 </div>
 
-**(c) Scope.** Eventual integrality on the LCM grid is a necessary consequence of rationality, not a claim about the actual series made without that hypothesis. The finite-grid test uses the individual one-sided bounds $`B_q<2^L`$, rather than charging the larger radius to both ends of a pairwise interval. This compares modulus bounds, not binary depths. A finite nonempty set and every stated size inequality are needed; three or more points and pairwise compatibility are not.
+**Scope.** Eventual integrality on the LCM grid is a necessary consequence of rationality, not a claim about the actual series made without that hypothesis. The finite-grid test uses the individual one-sided bounds $`B_q<2^L`$, rather than charging the larger radius to both ends of a pairwise interval. This compares modulus bounds, not binary depths. A finite nonempty set and every stated size inequality are needed; three or more points and pairwise compatibility are not.
 
 Neither statement supplies the unbounded family required to decide \#249. Exhibiting a nonintegral tail difference on the LCM grid at arbitrarily large $`t`$ would refute rationality. The finite-grid test is a way to certify such a difference, not a proof that these tests succeed at arbitrarily large scales.
 
 The implication from rationality to grid flatness ([`rational_totient_series_forces_lcm_cone_flatness`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/LcmConeFlatness.lean#L90)) should not be confused with an assertion of flatness for the actual series. The exact diagonal integrality reformulation and its quantified converse ([`diagonal_int_iff_foreignDiagonalDefect_hits_fullTarget`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/DiagonalPincerDecomposition.lean#L215), [`irrational_totientSeries_of_full_target_avoidance_supply`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/DiagonalPincerDecomposition.lean#L290)) give other equivalent forms of the problem. They are not the only such forms; Proposition <a href="#prop:iffs" data-reference-type="ref" data-reference="prop:iffs">8</a> lists further equivalent certificate conditions.
 
-**(d) Consequence.** Choosing the least deep tail is the step that turns a common-fractional-part assumption into an intersection of arcs. A related finite comparison concerns first and second differences: at $`(h,N)=(1,8)`$ the first-difference test holds at depth $`8`$, while no second-difference certificate exists at depth at most $`8`$ ([`totient_tail_rank_two_kill_sound_but_not_shallower_cell`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/CertificateKernel.lean#L19090)). This disproves a universal claim of smaller depth for second differences; it does not show that they can never improve a certificate.
+**Consequence.** Choosing the least deep tail is the step that turns a common-fractional-part assumption into an intersection of arcs. A related finite comparison concerns first and second differences: at $`(h,N)=(1,8)`$ the first-difference test holds at depth $`8`$, while no second-difference certificate exists at depth at most $`8`$ ([`totient_tail_rank_two_kill_sound_but_not_shallower_cell`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/CertificateKernel.lean#L19090)). This disproves a universal claim of smaller depth for second differences; it does not show that they can never improve a certificate.
 
 <a id="sec:mahler-defect"></a>
 
 ## Exact dyadic rank and the limits of a rank argument
 
-**(a) The question.** Which linear relations hold among the sections $`n\mapsto\varphi(2^j n+r)`$, and how does their span grow as the level increases? Coons had already proved nonregularity in every base $`k\ge2`$ \[coons, Theorem 3.2\]. The result below identifies a basis and gives the exact rank at each dyadic level. Martin’s Theorem 1 implies the independence of the positive-residue affine forms \[martin-phi-inequalities, Theorem 1\]; the two sections with residue zero need a separate argument. The short paper gives the all-base proof and the integral relations.
+We now determine the linear relations among the dyadic sections $`n\mapsto\varphi(2^jn+r)`$. Coons proved nonregularity in every base $`k\ge2`$ \[coons, Theorem 3.2\]; here the rank is computed at each finite level and the basis is given explicitly. Martin’s Theorem 1 supplies independence for the positive-residue affine forms \[martin-phi-inequalities, Theorem 1\], leaving the two zero-residue sections to be treated separately. The [all-base proof in the short paper](../../../paper/249/erdos-249-binary-totient-series.pdf#nameddest=short249-proof) also gives the integral relations.
 
-**(b) Construction.**
+**Construction.**
 
 <div id="thm:exact-dyadic-rank-infinite-dimensionality" class="thm">
 <p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/cd83a19f8002856293310f4d71358b2f9d72a24e/evidence/erdos249-totient-reasoning-surface/section-10.md#thm-exact-dyadic-rank-infinite-dimensionality">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cd83a19f8002856293310f4d71358b2f9d72a24e/evidence/erdos249-totient-reasoning-surface/section-10.md#thm-exact-dyadic-rank-infinite-dimensionality-comparator">Comparator</a></p>
@@ -5226,7 +5236,7 @@ Indeed, subtracting $`\sum_{i\notin J_e}c_iR_i`$ from a relation removes all omi
 
 The [integral normal form](https://github.com/wcook04/plectis-erdos/blob/25ef6245d15a47548c6926369ae8f1a0f0a14a80/ErdosProblems/Erdos249/PaperCompleteR8/KernelRelationBasis.lean#L398) and the [full dyadic rational basis](https://github.com/wcook04/plectis-erdos/blob/25ef6245d15a47548c6926369ae8f1a0f0a14a80/ErdosProblems/Erdos249/PaperCompleteR8/FullKernelAssemblies.lean#L156) are formally checked in Lean. The formal statement gives the same construction for every integer base $`k\ge2`$, with relation rank $`\sum_{j=1}^{e-1}k^j`$. The full dyadic assembly separately gives a basis for the infinite rational span and for its finitely supported rational relations. These finite and infinite statements should not be confused with a claim about infinite sums of relations.
 
-**(c) What the rank theorem does not prove.** Infinite section rank does not imply irrationality of $`S`$. The result quantifies the nonregularity already cited above: it gives the rank, the retained sections and their integral relations. Martin’s simultaneous inequalities supply another proof for pairwise nonproportional affine forms with positive slopes \[martin-phi-inequalities, Theorem 1\]. His theorem does not separate $`n`$ from $`2n`$; the two evaluations above do that. The linked Lean proof is independent of Martin’s theorem.
+**What the rank theorem does not prove.** Infinite section rank does not imply irrationality of $`S`$. The result quantifies the nonregularity already cited above: it gives the rank, the retained sections and their integral relations. Martin’s simultaneous inequalities supply another proof for pairwise nonproportional affine forms with positive slopes \[martin-phi-inequalities, Theorem 1\]. His theorem does not separate $`n`$ from $`2n`$; the two evaluations above do that. The linked Lean proof is independent of Martin’s theorem.
 
 The same independence argument also bounds the rank of an integral carry. If $`S\in\mathbb{Q}`$, choose an integer $`v>0`$ with $`vS\in\mathbb{Z}`$ and put $`u_N=vR_N`$, where $`R_N=\sum_{j\ge1}\varphi(N+j)2^{-j}`$. Then $`u_N\in\mathbb{Z}`$,
 ``` math
@@ -5249,13 +5259,13 @@ To contradict rationality by rank, one would also need an incompatible upper bou
 
 A separate finite-dimensional calculation concerns the matrix $`U_N(i,j)=\mu((i+1)/(j+1))`$ when $`(j+1)\mid(i+1)`$ and zero otherwise, for $`0\le i,j<N`$. It is lower triangular with diagonal entries one. Hence $`\det U_N=1`$ and the map $`x\mapsto U_Nx`$ is injective ([`incidenceMobius_det_eq_one`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/IncidenceQuotientHermitePade.lean#L56)). This proves injectivity of that particular map, not the impossibility of every finite-dimensional argument for irrationality.
 
-**(d) The evaluation-matrix argument.** For functions $`f_1,\ldots,f_s`$ with values in a field, points $`n_1,\ldots,n_s`$ for which $`\det(f_j(n_i))\ne0`$ prove linear independence: evaluating a relation gives an invertible linear system for its coefficients. This elementary criterion is Proposition <a href="#catalogue:cert:d3" data-reference-type="ref" data-reference="catalogue:cert:d3">78</a>. It does not, by itself, construct the points. Here the totient formula, CRT and Dirichlet’s theorem provide them for nonproportional affine forms, followed by the separate zero-residue argument. Another arithmetic function would require its own argument for nonvanishing of the evaluation determinant.
+**The evaluation-matrix argument.** For functions $`f_1,\ldots,f_s`$ with values in a field, points $`n_1,\ldots,n_s`$ for which $`\det(f_j(n_i))\ne0`$ prove linear independence: evaluating a relation gives an invertible linear system for its coefficients. This elementary criterion is Proposition <a href="#catalogue:cert:d3" data-reference-type="ref" data-reference="catalogue:cert:d3">78</a>. It does not, by itself, construct the points. Here the totient formula, CRT and Dirichlet’s theorem provide them for nonproportional affine forms, followed by the separate zero-residue argument. Another arithmetic function would require its own argument for nonvanishing of the evaluation determinant.
 
 <a id="further-counterexamples-and-sharp-bounds"></a>
 
 ## Further counterexamples and sharp bounds
 
-The following table records further counterexamples and bounds. Each row states the argument, identifies its source and specifies what remains possible beyond the assumptions it tests.
+The table gives additional constructions and bounds, with the hypotheses of each deduction and the part that the counterexample leaves untouched. The source links distinguish the separate arguments.
 
 <div class="landscape">
 
@@ -5309,7 +5319,11 @@ u_0=\frac{u_L+\sum_{j=1}^{L}2^{L-j}a(j)}{2^L}.
 
 ## Signed interpolation with entire Dirichlet defects
 
-Sparse changes can preserve more than local statistics. We construct integer sequences that agree with the totient at every odd index and have the same Dirichlet singularities in every fixed arithmetic progression, yet whose values at a reciprocal integer base fill an interval. The correction is a sum of widely separated finite differences. Increasing their orders kills each fixed moment eventually; choosing their amplitudes from overlapping integer digit ranges leaves an interval of possible values.
+<div id="long249-r3-interpolation">
+
+</div>
+
+We construct integer sequences agreeing with $`\varphi`$ on every odd index and preserving its Dirichlet singularities in each fixed arithmetic progression, while their values at a reciprocal integer base fill an interval. To do this we add widely separated finite differences whose orders increase, so that every fixed moment is eventually killed. Overlapping integer ranges for their amplitudes then provide an interval of possible sums.
 
 For a sequence $`a`$, write $`F_a(z)=\sum_{n\ge1}a(n)z^n`$. For integers $`q\ge1`$, $`0\le c<q`$ and $`d\ge0`$, put
 ``` math
@@ -5484,7 +5498,7 @@ This applies to every nonempty subset of the block, including the *actual totien
 
 # Why the stated hypotheses cannot be omitted
 
-A conditional theorem can hold at every scale while its arithmetic hypothesis is known at only a few scales, or at none. The distinctions below concern the specific implications already stated. They are not claims that every argument using the same objects must fail.
+An implication may hold at every scale even when its arithmetic hypothesis is known at only a few scales, or at none. We examine this distinction for the particular implications above. Their limitations do not establish failure of every argument using the same objects.
 
 <a id="implications-concerning-the-totient-series"></a>
 
@@ -5524,7 +5538,7 @@ The coefficient independence and hypothetical-carry rank bounds hold uniformly i
 
 ## Related source comparisons for Problem #257
 
-The following related statements concern Problem #257. They are not inputs to any proof about $`S`$; the comparisons below do not extend the cited statements beyond their hypotheses.
+For comparison we include the following statements about Problem #257. None is used as an input to a proof about $`S`$, and each is stated with the hypotheses of the cited result.
 
 The comparison of the middle-carry estimate ([`one_third_lt_scaledMersenneTail_floorWall`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfCylinderMiddleCarryLowerBound.lean#L2308)) with the remainder estimate ([`SeamGreedyRemainderGapBound`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfCylinderSeamLimit.lean#L192)) distinguishes the direction of an inequality from control of the required deviation. No unconditional proof of the associated sign claim is supplied, and a sign alone would not give a lower bound for the magnitude.
 
@@ -5544,7 +5558,7 @@ For example, a statement of the form $`\exists N\,\exists L\,\forall h`$ does no
 
 # Additional mathematics required by the sufficient conditions
 
-The preceding sections contain identities, conditional implications and comparison sequences. This section develops the arithmetic estimates needed by the sufficient conditions in Section <a href="#sec:survivors" data-reference-type="ref" data-reference="sec:survivors">3</a>. It separates proved reductions from proposed applications of analytic methods; a limitation of one proposed application is not a theorem excluding the method.
+We now examine the estimates required in Section <a href="#sec:survivors" data-reference-type="ref" data-reference="sec:survivors">3</a>. The doubling identity relates the exponential sums to exact tail phases; the subsequent decompositions isolate the weighted contributions that need cancellation. Proposed uses of analytic methods are distinguished from the reductions proved here. A failed application does not exclude the method itself.
 
 The section contains a doubling-orbit formulation with explicit thresholds, a lacunary comparison sequence for the strength of a block estimate, and sufficient estimates for the prime-factor decomposition. The discussion of a rank upper bound must also be read with the rational $`5/4`$ comparison sequence: rationality alone does not give bounded rank. These are the scope distinctions needed to interpret the individual statements, not priority claims.
 
@@ -5755,6 +5769,10 @@ Under Lebesgue measure on the phase circle, the binary digit maps are independen
 <a id="sub:pivot"></a>
 
 ## The four-term decomposition
+
+<div id="long249-r3-counts">
+
+</div>
 
 <a id="the-simultaneous-inequalities."></a>
 
@@ -6116,7 +6134,7 @@ The theorem for $`\varphi`$ in Proposition <a href="#prop:rank" data-reference-
 
 ## What the available results suggest
 
-This subsection compares the stated conditions and the recorded finite observations. It does not infer an asymptotic digit distribution or rank the prospects of different proof methods.
+We compare the quantified conditions with the finite observations. Those observations give no asymptotic digit distribution and no ranking of the possible proof methods.
 
 <a id="comparison-of-conditions."></a>
 
@@ -6162,7 +6180,7 @@ Corollary <a href="#cor:digitform" data-reference-type="ref" data-reference="co
 
 # Remaining arithmetic questions
 
-Erdős \#249 asks whether $`S = \sum_{n\ge 0} \varphi(n)/2^n`$ is irrational. It is open: nothing in this record decides it.
+The irrationality of $`S=\sum_{n\ge0}\varphi(n)2^{-n}`$ in Erdős Problem #249 remains open. We finish by gathering the residue and exponential-sum conditions that would settle it.
 
 This section collects quantified conditions on the scaled tail $`R_N=\sum_{j\ge0}\varphi(N+1+j)2^{-(j+1)}`$ that suffice for irrationality. The implication theorems and the arithmetic assumptions have different status: the former are proved in the indicated sources, while the latter are not supplied for the actual totient sequence. [`Erdos249257.TotientTailPeriodKiller.totientTail`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/TotientTailPeriodKiller.lean#L57)
 
@@ -6216,7 +6234,7 @@ For fixed $`h`$, the required certificate may choose both $`N\ge N_0`$ and $`L`$
 
 ## Multiples, diagonals, and LCM grids
 
-The next forms change which tail differences may provide a witness. Each follows from irrationality and each is sufficient for irrationality, by the displayed implications and the preceding equivalence. Their different quantifiers may make different arithmetic estimates applicable, but logical equivalence alone does not provide any of those estimates.
+We may seek a witness among multiples of a period, diagonal tails, or an LCM grid. Each condition below is equivalent to irrationality by the stated implications and completeness. Different quantifiers permit different estimates to be attempted, but the equivalences supply none of those estimates.
 
 <a id="multiples-of-a-period."></a>
 
@@ -6307,7 +6325,7 @@ The underlying finite lemma is more general: it applies to any nonempty finite $
 
 ## The actual tail difference on the LCM diagonal
 
-The same irrationality question can be expressed on the sparse sequence $`H=H_{2^a}`$. The equivalence below is useful because its right-hand side contains only the actual tail differences $`\Omega_a`$, not an auxiliary approximation.
+Set $`H=H_{2^a}`$ and examine the actual differences $`\Omega_a=R_{2H}-R_H`$. The following equivalence restricts attention to this sparse sequence and removes the auxiliary rational approximation. Its nonintegrality requirement is still an arithmetic condition to prove.
 
 > **The exact equivalence.**
 > ``` math
@@ -6529,7 +6547,7 @@ N+s+h+b+4<2^b,\qquad
 
 ## Farey growth and the failed generic rank argument
 
-The Farey growth law below is a separate unproved assertion. The rank statement is retained only to record a counterfactual sufficient input and the reason that the generic argument for it fails; it is not a second open problem supported by the present argument.
+The Farey growth law below remains unproved. We retain the generic rank statement to explain a failed sufficient input: rational comparison sequences disprove it. It is therefore not a second open problem supported by that argument.
 
 <a id="the-hypothetical-rank-bound."></a>
 
@@ -6605,7 +6623,7 @@ The second column gives the relation to the quantified residue condition or to t
 
 ## What remains to be proved
 
-The implications above leave explicit arithmetic assertions to prove for $`\varphi`$. Two types of estimate can be stated directly, without assuming either that they follow from known methods or that they exhaust the possible approaches.
+Two remaining estimates can be stated directly for $`\varphi`$: weighted cancellation in the exponential sums, or a residue inequality involving the last totient difference. Neither is known here to follow from the cited methods, and the alternatives do not exhaust the possible approaches.
 
 <a id="exponential-sums."></a>
 
@@ -6628,6 +6646,302 @@ The endpoint criteria compare
    =\varphi(2H+2q+2)-\varphi(H+2q+2),\qquad H=H_{2^a},
 ```
 with twice the centred residue $`u_{a,q}`$. An appropriate inequality, proved for arbitrarily large $`a`$ with the stated bounds on $`q`$, would contradict the carry interval required by integrality. The exact identity explains why such an inequality would suffice; it does not supply the inequality. The finite examples through $`t=82`$, and the short-window examples at $`a=4,6`$, do not establish an asymptotic pattern.
+
+<a id="app:r3-complements"></a>
+
+# Complementary proofs for the short paper
+
+<div id="long249-r3-complements">
+
+</div>
+
+The [basis theorem](../../../paper/249/erdos-249-binary-totient-series.pdf#nameddest=short249-basis) and the [bounded residue theorem](../../../paper/249/erdos-249-binary-totient-series.pdf#nameddest=short249-residues) are proved in the short paper. We give here the full propagation and Mersenne-residue arguments used in its discussion of $`S`$, followed by the comparisons and the sharp rank-one quotient bound. The residue test denoted by $`K(h,N,L)`$ below is the condition $`\mathcal C(h,N,L)`$ of the main text.
+
+<a id="long249:r3-ray"></a>
+
+## Propagation of nonintegral tail differences
+
+<div id="long249-r3-ray">
+
+</div>
+
+Write
+``` math
+S=\sum_{n\ge1}\varphi(n)2^{-n},\qquad
+ R_N=\sum_{j\ge1}\varphi(N+j)2^{-j},\qquad
+ \Delta_h(N)=R_{N+h}-R_N.
+```
+The identity
+``` math
+2^NS=\sum_{n=1}^N\varphi(n)2^{N-n}+R_N
+```
+has an integer finite sum. Subtracting the identities at $`N+h`$ and $`N`$ gives
+``` math
+\begin{equation}
+\label{long249:r3-tail-phase}
+ \Delta_h(N)\equiv2^N(2^h-1)S\pmod\mathbb{Z}.
+\end{equation}
+```
+In particular, a nonintegral tail difference excludes every rational value whose denominator divides $`2^N(2^h-1)`$.
+
+<a id="the-finite-test."></a>
+
+#### The finite test.
+
+For $`h,N,L\in\mathbb{N}`$, let
+``` math
+D_{h,N,L}=\sum_{j=0}^{L-1}
+   \bigl(\varphi(N+h+1+j)-\varphi(N+1+j)\bigr)2^{L-1-j},
+ \qquad B=N+h+L+2.
+```
+All residues below are least nonnegative residues. Write $`K(h,N,L)`$ for
+``` math
+B<D_{h,N,L}\bmod2^L<2^L-B.
+```
+The omitted terms form another difference of scaled tails:
+``` math
+2^L\Delta_h(N)-D_{h,N,L}=R_{N+h+L}-R_{N+L}.
+```
+Since $`0\le R_M\le\sum_{j\ge1}(M+j)2^{-j}=M+2`$, their absolute difference is bounded by $`N+h+L+2`$. Thus
+``` math
+\begin{equation}
+\label{long249:r3-tail-error}
+ |2^L\Delta_h(N)-D_{h,N,L}|\le B.
+\end{equation}
+```
+A certificate $`K(h,N,L)`$ therefore forces $`\Delta_h(N)\notin\mathbb{Z}`$. Conversely, write $`\|x\|_{\mathbb{R}/\mathbb{Z}}=\min_{z\in\mathbb{Z}}|x-z|`$ for the distance to the nearest integer. If $`\Delta_h(N)\notin\mathbb{Z}`$, choose $`L`$ so that $`2^L\|\Delta_h(N)\|_{\mathbb{R}/\mathbb{Z}}>2B`$. Such a choice exists: $`h,N`$ are fixed, the distance is positive, and $`B=N+h+L+2`$ grows only linearly in $`L`$. The error estimate then puts the residue of $`D_{h,N,L}`$ more than $`B`$ from either endpoint. Thus nonintegrality is equivalent to a certificate at some unrestricted depth.
+
+<div id="res:fulldepth" class="theorem">
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos249/PaperCompleteR7/ShortNoteAssemblies.lean#L35">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cd83a19f8002856293310f4d71358b2f9d72a24e/evidence/erdos249-totient-reasoning-surface/section-12.md#res-fulldepth-comparator">Comparator</a></p>
+
+**Theorem 285** (Propagation of one nonintegral tail difference). *Fix $`d\ge1`$ and $`N\ge0`$. If $`\Delta_d(N)\notin\mathbb{Z}`$, then every sufficiently late pair $`\{t,t+1\}`$ contains an $`m`$ such that $`K(md,N,md)`$ holds. Consequently
+``` math
+\exists t\ge1:\ K(td,N,td)
+ \quad\Longleftrightarrow\quad\Delta_d(N)\notin\mathbb{Z}.
+```
+Requiring this for every $`d\ge1,N\ge0`$ is equivalent to $`S\notin\mathbb{Q}`$.*
+
+</div>
+
+For a fixed $`d,N`$, the hypothesis is just one nonintegral tail difference; it does not assert irrationality of $`S`$. Requiring it for *every* $`d,N`$ is as strong as the original problem. The conclusion sets the truncation depth equal to the shift, $`L=md`$, and loses at most one member of each sufficiently late pair of successive multipliers.
+
+<div class="proof">
+
+*Proof.* Set $`F_t=\Delta_{td}(N)`$. Equation <a href="#long249:r3-tail-phase" data-reference-type="eqref" data-reference="long249:r3-tail-phase">[long249:r3-tail-phase]</a> yields $`F_{t+1}\equiv2^dF_t+F_1\pmod\mathbb{Z}`$. If $`K(td,N,td)`$ fails, <a href="#long249:r3-tail-error" data-reference-type="eqref" data-reference="long249:r3-tail-error">[long249:r3-tail-error]</a> gives
+``` math
+\|F_t\|_{\mathbb{R}/\mathbb{Z}}\le\epsilon_t,
+ \qquad \epsilon_t=2(N+2td+2)2^{-td}.
+```
+Two adjacent failures would imply $`\|F_1\|_{\mathbb{R}/\mathbb{Z}}\le2^d\epsilon_t+\epsilon_{t+1}`$, impossible for all sufficiently large $`t`$ because the left side is positive and the right side tends to zero. Conversely, if $`F_1`$ is integral, then every $`F_t`$ is integral by the same recurrence, so no certificate exists. Finally, <a href="#long249:r3-tail-phase" data-reference-type="eqref" data-reference="long249:r3-tail-phase">[long249:r3-tail-phase]</a> is nonintegral for every $`d,N`$ when $`S`$ is irrational. If $`S=a/(2^cv)`$ with $`v`$ odd, take $`N=c`$ and $`d=\varphi(v)`$ to make it integral. ◻
+
+</div>
+
+For instance $`D_{1,12,16}=-143140`$, with residue $`53468`$ modulo $`2^{16}`$ and $`B=31`$, verifies the hypothesis at $`d=1,N=12`$. The theorem gives infinitely many certificates with depth equal to the shift for this pair, not for every $`d,N`$.
+
+<a id="long249:r3-mersenne"></a>
+
+## Residues modulo divisors of Mersenne numbers
+
+<div id="long249-r3-mersenne">
+
+</div>
+
+For $`c\ge0`$, odd $`v\ge1`$ and a positive multiple $`H`$ of $`\varphi(v)`$, put
+``` math
+M=\frac{2^H-1}{v},\qquad
+ B_{H,c}=\sum_{j=0}^{H-1}\varphi(c+1+j)2^{H-1-j}.
+```
+Euler’s theorem makes $`M`$ integral.
+
+<div id="res:canonicalmersenne" class="equivform">
+
+**Equivalent formulation 286** (A residue test modulo a divisor of $`2^H-1`$). *The series $`S`$ is irrational if and only if, for every $`c\ge0`$ and odd $`v\ge1`$, some positive multiple $`H`$ of $`\varphi(v)`$ satisfies
+``` math
+\begin{equation}
+\label{eq:canonical-gap}
+ c+H+1<(-B_{H,c})\bmod M<M-(c+H+1).
+\end{equation}
+```*
+
+</div>
+
+<div class="proof">
+
+*Proof.* The identity
+``` math
+B_{H,c}=2^HR_c-R_{c+H}=M(vR_c)-\Delta_H(c)
+```
+is exact. For $`H\ge1`$, $`|\Delta_H(c)|<c+H+1`$. Indeed $`R_N\le N+1`$ for $`N\ge1`$ and $`0<R_0\le3/2`$; the strict inequalities follow by subtracting a positive tail. If $`S=a/(2^cv)`$, then $`vR_c\in\mathbb{Z}`$ and $`\Delta_H(c)\in\mathbb{Z}`$. The residue of $`-B_{H,c}`$ is therefore within distance less than $`c+H+1`$ of $`0\pmod M`$, so <a href="#eq:canonical-gap" data-reference-type="eqref" data-reference="eq:canonical-gap">[eq:canonical-gap]</a> fails.
+
+If $`S`$ is irrational, fix $`c,v`$. Then $`vR_c`$ is nonintegral. As $`H`$ tends to infinity through positive multiples of $`\varphi(v)`$, $`\Delta_H(c)/M\to0`$ and $`(c+H+1)/M\to0`$. Hence the fractional part of $`-B_{H,c}/M=-vR_c+\Delta_H(c)/M`$ stays away from both endpoints of $`[0,1]`$, which gives <a href="#eq:canonical-gap" data-reference-type="eqref" data-reference="eq:canonical-gap">[eq:canonical-gap]</a> for all sufficiently large such $`H`$. ◻
+
+</div>
+
+With its universal quantifiers, this condition is equivalent to the unresolved irrationality assertion. A rational value $`a/(2^cv)`$ fails the test for that same $`c,v`$, whereas irrationality gives it for every sufficiently large allowed $`H`$. The proof does not find such an $`H`$ without assuming irrationality.
+
+A formal declaration for the equivalence is [available here](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean#L3165), with the modulus written as $`vM=2^H-1`$. The finite residues also satisfy
+``` math
+\rho_{H,N+1,M}=
+ \bigl(2\rho_{H,N,M}-\varphi(N+H+1)+\varphi(N+1)\bigr)\bmod M,
+ \quad \rho_{H,N,M}=(-B_{H,N})\bmod M,
+```
+which is an exact recurrence for searches directed at <a href="#eq:canonical-gap" data-reference-type="eqref" data-reference="eq:canonical-gap">[eq:canonical-gap]</a>.
+
+<a id="long249:r3-comparisons"></a>
+
+## LCM tails and rational comparisons
+
+<div id="long249-r3-comparisons">
+
+</div>
+
+The short paper uses the following consequences of the LCM identities and comparison constructions. Their source declarations are retained beside the formulas; the earlier sections give the constructions and the scope of each comparison.
+
+1.  <span id="res:actualorbit" label="res:actualorbit"></span> **Tail differences at least common multiples.** Let $`H_a=\operatorname{lcm}(1,\ldots,2^a)`$. Then $`S`$ is irrational if and only if, beyond every threshold $`a_0`$, some $`a\ge a_0`$ satisfies $`\Delta_{H_a}(H_a)\notin\mathbb{Z}`$. This is the [exact cofinal nonintegrality criterion](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/TotientActualLcmOrbitNonintegrality.lean#L37) for the actual LCM diagonal, not a quantitative separation estimate and not a proof that such indices occur; the [forward implication](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/TotientActualLcmOrbitNonintegrality.lean#L53) is recorded separately.
+
+2.  <span id="res:actualsign" label="res:actualsign"></span> **Positive tail differences need not be nonintegral.** For $`a\ge8`$ and $`J+(a+6)<2\cdot2^a`$, one has $`\Delta_{H_a}(H_a+J)>0`$. Suppose this difference is an integer. If a truncation depth $`K`$ satisfies
+    ``` math
+    J+K+(a+6)<2\cdot2^a,
+     \qquad 2H_a+J+K+2<2^K,
+    ```
+    then
+    ``` math
+    D_{H_a,H_a+J,K}\bmod2^K
+       =2^K-\Delta_{H_a}(H_a+J+K)
+    ```
+    lies strictly between $`2^K-(2H_a+J+K+2)`$ and $`2^K`$. The later tail difference is a positive integer; its *negative* is the representative near zero. Thus positivity determines which endpoint contains the residue, but does not exclude an integral tail difference. Both displayed bounds on $`K`$ are required for this conclusion. *Source declarations:* [positive tail differences](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/TotientActualLcmOrbitSign.lean#L39), [negative endpoint representative](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/TotientActualLcmOrbitSign.lean#L172), [residue near the upper endpoint](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/TotientActualLcmOrbitSign.lean#L211).
+
+3.  <span id="res:factorideal" label="res:factorideal"></span> **Divisibility and finite linear combinations do not suffice.** A dyadic coboundary is a sequence of the form $`2u_j-u_{j+1}`$; its weighted sum telescopes. For every $`t\ge3`$, with $`H=\operatorname{lcm}(1,\ldots,t)`$, the linked source constructs a nonzero comparison sequence of this form. Its coefficients reproduce the actual totient differences at $`t-2`$ prescribed indices and are divisible by $`\varphi(H)`$. Every finite integer linear combination of forward shifts preserves the telescoping identity and divisibility by $`\varphi(H)`$ and the corresponding lower-level factors. The bounds remain uniform in the index, but are multiplied by the sum of the absolute values of the combination’s coefficients. A variant preserves sparse prescribed values along entire arithmetic progressions. These properties alone do not force a contradiction: the comparison need not consist of actual totient differences. The theorem concerns linear combinations of shifts, not nonlinear operations, and does not supply certificates at arbitrarily large scales. *Source declarations:* [obstruction for finite integer combinations of shifts](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/LcmFactorIdealPulseObstruction.lean#L798).
+
+If $`S=a/v`$ with integers $`a`$ and $`v\ge1`$, the scaled tails $`u_N=vR_N`$ are integers and satisfy
+``` math
+u_{N+1}=2u_N-v\varphi(N+1),\qquad 0\le u_N\le v(N+2).
+```
+In particular $`u_N/2^N\to0`$, the condition called temperedness in the formal sources. Its dyadic sections $`n\mapsto u_{2^jn+r}`$ have rational rank at least $`2^e-1`$ through level $`e`$ and a common eventual period modulo $`v`$. Both properties are [the corresponding theorem for the same carry](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/TotientTailCarryPeriod.lean#L224); they are compatible, and neither supplies a contradiction.
+
+Section <a href="#sec:parity-countermodel" data-reference-type="ref" data-reference="sec:parity-countermodel">10.2</a> constructs a rational comparison sequence with $`c(n)=\varphi(n)`$ for odd $`n`$, $`|c(n)-\varphi(n)|\le2`$ for even $`n`$, $`0\le c(n)\le n`$, and
+``` math
+\sum_{n\ge1}c(n)2^{-n}=\frac54.
+```
+This comparison sequence has an integral tempered carry with dyadic rank at least $`2^e-1`$ at every level. Thus the same lower bound for a hypothetical totient carry is compatible with rationality. For one fixed prime $`p`$ and $`g:\mathbb{N}\to\mathbb{Z}`$, the exact laws $`g(pn)=p g(n)`$ when $`p\mid n`$ and $`g(pn)=(p-1)g(n)`$ otherwise, together with $`g-\varphi=o(n)`$, force $`g=\varphi`$: a nonzero defect keeps a nonzero ratio to the argument along $`p^j n`$. The comparison sequence fails these dilation laws. The unchanged odd-residue sections also give coefficient rank at least $`2^e-1`$ at every level. This is a lower bound, not an exact formula for the full coefficient rank.
+
+<a id="long249:r3-rankone"></a>
+
+## The sharp rank-one quotient bound
+
+<div id="long249-r3-rankone">
+
+</div>
+
+We now consider a particular family of rational approximants. Let $`\mu`$ be the Möbius function and put
+``` math
+\Theta_2=\sum_{d\ge1}\frac{\mu(d)}{(2^d-1)^2}=S-\frac12,
+ \qquad
+ Q(e,Y)=\frac{\bigl(\sum_{d=1}^{Y}\mu(d)/(2^d-1)^{e+2}\bigr)^2}
+ {\sum_{d=1}^{Y}\mu(d)/(2^d-1)^{2e+2}}.
+```
+The divisor-convolution identity $`\varphi=\mu*\mathrm{Id}`$ gives $`S=\sum_{d\ge1}\mu(d)2^d/(2^d-1)^2`$. Now $`2^d=(2^d-1)+1`$ and $`\sum_{d\ge1}\mu(d)/(2^d-1)=1/2`$, the latter following from $`\sum_{d\mid n}\mu(d)=0`$ for $`n>1`$ and $`1`$ for $`n=1`$. These identities give the displayed value of $`\Theta_2`$; all the sums are absolutely convergent. Amiram Eldar posted the corresponding formula $`S=\tfrac12+\sum_{d\ge1}\mu(d)/(2^d-1)^2`$, together with its coprimality interpretation, to OEIS A256936 on 15 March 2026 \[eldar2026oeis\], and Steve Fan posted the formula on the problem’s forum thread on 16 May 2026 \[fan2026totient\]. The lower bound $`1/480`$ in Section <a href="#rank-one-subrank" data-reference-type="ref" data-reference="rank-one-subrank">6.6.13</a> is sharpened below to the exact extremum.
+
+<div id="res:rankonefloor" class="theorem">
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/cd83a19f8002856293310f4d71358b2f9d72a24e/evidence/erdos249-totient-reasoning-surface/section-12.md#res-rankonefloor">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/cd83a19f8002856293310f4d71358b2f9d72a24e/evidence/erdos249-totient-reasoning-surface/section-12.md#res-rankonefloor-comparator">Comparator</a></p>
+
+**Theorem 287** (A lower bound for the rank-one quotients). *For $`e\ge1`$ and $`Y\ge4`$, the denominator of $`Q(e,Y)`$ is positive, and the unique minimiser is $`(e,Y)=(1,5)`$. Every admissible quotient and every nonempty finite positive weighted average of such quotients satisfies
+``` math
+Q-\Theta_2>\frac{21}{320}.
+```
+The uniform bound $`Q-\Theta_2>1/15`$ is false already at $`(1,5)`$.*
+
+</div>
+
+<div class="proof">
+
+*Proof.* We compare finite prefixes with geometric bounds for their tails. Put
+``` math
+P_Y(r)=\sum_{d=1}^{Y}\frac{\mu(d)}{(2^d-1)^r},\quad
+ \Theta_r=\sum_{d\ge1}\frac{\mu(d)}{(2^d-1)^r},\quad
+ E_r(Y)=\frac{2^{-rY}}{1-2^{-r}}.
+```
+Since $`|\mu(d)|\le1`$ and $`2^d-1\ge2^{d-1}`$,
+``` math
+|\Theta_r-P_Y(r)|\le E_r(Y),\qquad
+ |P_Y(r)-P_Z(r)|\le E_r(Z)\quad(Y\ge Z).
+```
+For $`r\ge4`$, separating the terms $`d=1,2`$ gives $`\Theta_r=1-3^{-r}+T_r`$, where $`|T_r|\le[2^r(2^r-1)]^{-1}`$. Thus
+``` math
+\alpha:=\frac{6373}{6480}=1-\frac1{81}-\frac1{240}
+ \le\Theta_r<1,
+ \qquad E_r(Y)\le\varepsilon:=\frac1{61440}\quad(Y\ge4).
+```
+For the strict upper bound, the tail bound is smaller than $`3^{-r}`$: $`2^r(2^r-1)>3^r`$ for $`r\ge4`$. In particular $`P_Y(2e+2)\ge\alpha-\varepsilon>0`$ for every admissible $`e,Y`$, proving denominator positivity.
+
+Write $`q_*=Q(1,5)`$. Using $`(\mu(1),\ldots,\mu(7))=(1,-1,-1,0,-1,1,-1)`$ gives
+``` math
+q_* = \frac{35076077250375200}{37573118933633199}.
+```
+The same seven terms verify the following exact rational inequalities:
+``` math
+\begin{align*}
+ \frac{(\alpha-\varepsilon)^2}{1+\varepsilon}&>q_*,\\
+ Q(1,4)=\frac{79049881}{84671559}&>q_*,\\
+ Q(1,6)=\frac{1043700953468949889}{1117992059749781919}&>q_*,\\
+ \frac{(P_7(3)-1/1835008)^2}{P_7(4)+1/251658240}&>q_*.
+\end{align*}
+```
+All four comparisons follow by multiplication by their positive denominators. For $`e\ge2`$, the first inequality and the bounds on $`\Theta_r,P_Y(r)`$ imply $`Q(e,Y)>q_*`$. For $`e=1,Y\ge7`$, the finite-prefix tail bounds with $`Z=7`$ imply the last inequality is a lower bound for $`Q(1,Y)`$; its numerator lower bound is positive. The cases $`Y=4,5,6`$ are displayed explicitly. Therefore $`(1,5)`$ is the unique minimiser.
+
+Finally the same tail estimate at $`r=2`$ gives
+``` math
+P_6(2)-\frac1{3072}\le\Theta_2\le P_7(2)+\frac1{12288}.
+```
+Direct fraction comparison, using $`P_6(2)=3309559/3814209`$ and $`P_7(2)=53376062902/61519376961`$, yields
+``` math
+q_*-\left(P_7(2)+\frac1{12288}\right)>\frac{21}{320},
+ \qquad
+ q_*-\left(P_6(2)-\frac1{3072}\right)<\frac1{15}.
+```
+The minimum proves the lower gap for every quotient; the second inequality proves failure of the proposed $`1/15`$ bound at $`(1,5)`$. Multiplying the strict lower gap by positive weights, summing over a nonempty finite set and dividing by the positive total weight proves the assertion for weighted averages. ◻
+
+</div>
+
+This theorem treats averages after the quotients are formed. Signed coefficients, coupling before the quotient, and higher-rank kernels require separate arguments. For rational approximants $`p_j/q_j`$ in lowest terms, with $`q_j>0`$, a sufficient arithmetic target is
+``` math
+0<q_j\left|\Theta_2-p_j/q_j\right|\longrightarrow0.
+```
+Convergence alone does not give this estimate. The elementary dyadic prefix bounds give only $`q_j|S-p_j/q_j|\le N+2`$ at depth $`N`$, not a quantity tending to zero. A prescribed approximation family therefore needs a sharper error or reduced-denominator bound. When approximants may be chosen freely, continued-fraction convergents show that the criterion is equivalent to irrationality, just as <a href="#eq:canonical-gap" data-reference-type="eqref" data-reference="eq:canonical-gap">[eq:canonical-gap]</a> is. The theorem above excludes the displayed rank-one quotients and their positive averages, not other approximation families.
+
+<a id="app:r3-declarations"></a>
+
+# Formal declaration guide
+
+<div id="long249-r3-declarations">
+
+</div>
+
+The links below group the formal declarations used in the short paper. They retain the supplied source revisions and line destinations. A conditional declaration includes an assumption; the link does not assert that the assumption holds for the totient series.
+
+**Bases and relations.**
+
+[reduction of sections with residue zero](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/TotientMahlerDefect.lean#L160); [reduction of even residues](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/TotientMahlerDefect.lean#L169); [independence](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/TotientMahlerDefect.lean#L1265); [span equality](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/TotientMahlerDefect.lean#L1380); [basis](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/TotientMahlerDefect.lean#L1392); [independence](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/TotientMahlerDefect.lean#L935); [dimension](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/TotientMahlerDefect.lean#L989); [the exact finite-truncation rank](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/TotientMahlerDefect.lean#L1084); [infinite-dimensionality directly](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/TotientMahlerDefect.lean#L1145); [coordinate specification](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/TotientKernelIndex.lean#L124); [injective residues](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/TotientKernelIndex.lean#L190); [unique representation](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/TotientKernelIndex.lean#L213); [level count](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/TotientKernelIndex.lean#L241); [section-index count](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/TotientKernelIndex.lean#L249); [index as two plus the odd-residue count](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/TotientKernelIndex.lean#L264); [full index count](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/TotientKernelIndex.lean#L277); [a nonzero evaluation determinant](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/TotientMahlerDefect.lean#L823); [an invertible minor for affine totient sections](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/TotientMahlerDefect.lean#L882); [power-multiplication identity](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/TotientKernelReduction.lean#L60); [affine cross-gcd identity](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/TotientKernelReduction.lean#L117); [nonzero reduction scalar](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/TotientKernelConditional.lean#L35); [all-base residue step](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/TotientKernelConditional.lean#L54); [canonical spanning](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/TotientKernelConditional.lean#L102); [span equality](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/TotientKernelConditional.lean#L185); [rank in every base from independence](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/TotientKernelConditional.lean#L203); [all-base truncation rank from independence](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/TotientKernelConditional.lean#L215); [independence in every integer base](https://github.com/wcook04/plectis-erdos/blob/25ef6245d15a47548c6926369ae8f1a0f0a14a80/Erdos249257/AllBaseTotientKernel.lean#L1118); [the rank of the retained all-base family](https://github.com/wcook04/plectis-erdos/blob/25ef6245d15a47548c6926369ae8f1a0f0a14a80/Erdos249257/AllBaseTotientKernel.lean#L1231); [the rank of all sections through a finite level](https://github.com/wcook04/plectis-erdos/blob/25ef6245d15a47548c6926369ae8f1a0f0a14a80/Erdos249257/AllBaseTotientKernel.lean#L1239).
+
+**Tail identities, residue tests and carries.**
+
+[the finite-prefix and tail identity](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/TotientTailPeriodKiller.lean#L150); [definition](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/TotientTailPeriodKiller.lean#L72); [certificates for shifts 1 through 8](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/TotientTailPeriodKiller.lean#L404); [nonintegral tail differences at the checked shifts](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/TotientTailPeriodKiller.lean#L407); [the integer carry recurrence and its growth bound](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/GenericTailOrbitRigidity.lean#L67); [residue recurrence](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean#L2322); [comparison of the two residue conditions](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean#L3132); [exact equivalence](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean#L3165); [a certificate in each sufficiently late pair of multipliers](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos249/FullDepthRayAmplifier.lean#L364); [pointwise equivalence](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos249/FullDepthRayAmplifier.lean#L388); [global equivalence](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos249/FullDepthRayAmplifier.lean#L406); [equivalence after setting depth equal to the shift](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos249/FullDepthRayAmplifier.lean#L421); [irrationality and arbitrarily large certificates](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos249/FullDepthRayAmplifier.lean#L438); [the carry-rank lower bound under rationality](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/TotientCarryKernelRigidity.lean#L300); [carry rank at least $`2^e-1`$ from independent totient sections](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/TotientCarryKernelRigidity.lean#L211); [modular periodicity and the rank lower bound for the same carry](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/TotientTailCarryPeriod.lean#L224); [forcing vanishing](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/TotientTailCarryPeriod.lean#L126); [geometric reduction](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/TotientTailCarryPeriod.lean#L140); [identity](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/CertificateKernel.lean#L18445); [sign](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/MersenneLambertLadder.lean#L370); [primes](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/MersenneLambertLadder.lean#L297); [prime powers](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/MersenneLambertLadder.lean#L272); [unboundedness](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/MersenneLambertLadder.lean#L321); [exact centre decomposition](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/SquaredMersenneDiagonalEnclosure.lean#L138); [explicit error bound](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/SquaredMersenneDiagonalEnclosure.lean#L408); [separation criterion](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/SquaredMersenneDiagonalEnclosure.lean#L426); [target equivalence](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/FullTargetPrimeAdjunctionNoGo.lean#L139); [endpoint nonnegativity](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/FreshPrimeDeficitDecomposition.lean#L91); [foreign-channel identity](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/FreshPrimeDeficitDecomposition.lean#L184); [five-point loss bound](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/FreshPrimeDeficitDecomposition.lean#L269); [simultaneous finite family](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/SquareCRTCube.lean#L297); [finite horizon](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/SquareCRTCube.lean#L327); [vanishing block](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/SquareCRTCube.lean#L459); [nonzero block](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/SquareCRTCube.lean#L477); [centrality equivalence](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/DiagonalFreshLossBridge.lean#L2667); [equivalence of the two conditions](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/DiagonalFreshLossBridge.lean#L2757); [conditional irrationality theorem](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/DiagonalFreshLossBridge.lean#L2932); [finite complement bound](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/ActualForeignResidueProjection.lean#L276); [exact channel split](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/ActualForeignResidueProjection.lean#L308); [conditional target-miss theorem](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/ActualForeignResidueProjection.lean#L414); [the periodic theorem](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/CertificateKernel.lean#L12811); [$`\sum\varphi(n)/(2^n-1)=2`$](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/CertificateKernel.lean#L18429); [rationality and integer carries with controlled growth](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/GenericTailOrbitRigidity.lean#L426); [diagonal split](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/FreshPrimeDeficitDecomposition.lean#L171); [definition](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/CarrySurvivorExtinction.lean#L515); [definition of the scaled tail](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/TotientTailPeriodKiller.lean#L57); [the proposed cyclotomic residue condition](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean#L3231); [the checked equivalence](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean#L3327); [checked conditional support/period counterexample](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean#L1706); [the checked binary-layer theorem](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean#L1693); [certificates with depth equal to the period multiple](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos249/PeriodMultipleEscape.lean#L441).
+
+**Finite denominator exclusions.**
+
+[exclusion](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/CertificateKernel.lean#L18371); [reduced-denominator form](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/CertificateKernel.lean#L18384); [first failure](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/GapFareyBound.lean#L225); [the conditional implication](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/CertificateKernel.lean#L16025); [farey gap](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/GapFareyBound.lean#L51); [the denominator bound at window 240](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/GapFareyBound.lean#L176); [denominator exclusion from a finite interval](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/CertificateKernel.lean#L15986); [the earlier denominator bound at window 120](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/GapFareyBound.lean#L88); [denominator exclusion for the coprimality probability](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/CertificateKernel.lean#L18572); [list](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/DiagonalPincerCertificatesT64.lean#L1933); [verification](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/DiagonalPincerCertificatesT64.lean#L1967); [certificates at every scale through 82](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Skip/LadderT67.lean#L71264).
+
+**Least common multiples and limits of the tested methods.**
+
+[certificate completeness](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/LcmConeFlatness.lean#L316); [tail-difference integrality](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/LcmConeFlatness.lean#L327); [irrationality iff every tail difference is nonintegral](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/LcmConeFlatness.lean#L386); [exact frontier](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/TotientActualLcmOrbitNonintegrality.lean#L37); [forward implication](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/TotientActualLcmOrbitNonintegrality.lean#L53); [positive tail differences](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/TotientActualLcmOrbitSign.lean#L39); [negative endpoint representative](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/TotientActualLcmOrbitSign.lean#L172); [residue near the upper endpoint](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/TotientActualLcmOrbitSign.lean#L211); [divisibility preserved by finite combinations of shifts](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/LcmFactorIdealPulseObstruction.lean#L798); [the counterexample with sparse prescribed values](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/LcmFactorIdealPulseObstruction.lean#L866); [pointwise](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/LcmConeFlatness.lean#L399); [cofinal at each shift](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/LcmConeFlatness.lean#L412); [$`\operatorname{lcm}`$ diagonal](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/LcmConeFlatness.lean#L426); [the certificate at $`t=2^4`$ and depth $`23`$](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/TotientActualLcmShortKill.lean#L18); [the certificate at $`t=2^6`$ and depth $`93`$](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/TotientActualLcmShortKill.lean#L27); [actual-orbit non-integrality at both heights](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/TotientActualLcmShortKill.lean#L35); [certificates beyond every threshold $`a_0\le 6`$](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/TotientActualLcmShortKill.lean#L54); [an explicit approximation error](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/TotientActualLcmOrbitSeparation.lean#L141); [the approximation as an integer over $`4^q`$](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/TotientActualLcmOrbitSeparation.lean#L179); [distance at least $`1/32`$ from every integer](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/TotientActualLcmOrbitSeparation.lean#L208); [the cofinal separation hypothesis](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/TotientActualLcmOrbitSeparation.lean#L254); [the conditional endpoint theorem](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/TotientActualLcmOrbitSeparation.lean#L305); [the staircase is impossible under the stated room hypothesis](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/TotientActualLcmTopEdgeStaircase.lean#L251); [terminal-remainder identity](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/TotientActualLcmTopEdgeStaircase.lean#L297); [the limitation of fixed-precision valuation data](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/TropicalCurvatureCarry.lean#L137); [rationality from an integral tail difference](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/LcmConeFlatness.lean#L357).
+
+**Möbius identities and rational approximation.**
+
+[unique minimizer](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos249/RankOneSharpFloor.lean#L534); [uniform lower bound $`21/320`$](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos249/RankOneSharpFloor.lean#L624); [lower bound $`1/16`$](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos249/RankOneSharpFloor.lean#L634); [$`1/15`$ failure](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos249/RankOneSharpFloor.lean#L645); [positive weighted averages of the quotients](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos249/RankOneSharpFloor.lean#L655); [rational linear-form obstruction](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos249/RankOneSharpFloor.lean#L693); [divisor-count layer](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/GcdMomentCalculus.lean#L216); [first gcd moment](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/GcdMomentCalculus.lean#L235); [no fixed index](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/PrimitiveDeterminantLift.lean#L169); [the primorial divisibility](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/PrimitiveDeterminantLift.lean#L148); [irrationality of the Erdős–Borwein series](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/CertificateKernel.lean#L8335); [$`\sum\mu(n)/(2^n-1)=1/2`$](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/CertificateKernel.lean#L18434); [the squared-Mersenne expression for the totient series](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/CertificateKernel.lean#L18454); [the coprimality-probability expression](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/CertificateKernel.lean#L18557); [the Lambert-weighted sum over coprime positive pairs](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/GcdMomentCalculus.lean#L349); [the Stern–Brocot recursion with stopping](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/GcdMomentCalculus.lean#L474); [$`s=1`$](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos249/FiniteEulerSieve.lean#L28); [$`s=2`$](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos249/FiniteEulerSieve.lean#L36); [first difference](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos249/FiniteEulerSieve.lean#L44); [second difference](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos249/FiniteEulerSieve.lean#L51).
+
+**Proposed exponential-sum and prime-factor estimates.**
+
+[window-separated pairs](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/PivotAntiReconstruction.lean#L1765); [the unproved quantitative separation condition at primes](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos249/TotientStrictPrimeEscape.lean#L157); [a positive adaptive truncation budget](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos249/TotientStrictPrimeEscape.lean#L485); [$`S`$ is irrational](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos249/TotientStrictPrimeEscape.lean#L524); [density hypothesis](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos249/TotientStrictPrimeEscape.lean#L35); [block-gap hypothesis](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos249/TotientStrictPrimeEscape.lean#L25); [density-to-gap implication](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos249/TotientStrictPrimeEscape.lean#L45); [exact squaring recurrence](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos249/TotientStrictPrimeEscape.lean#L167); [iterate formula](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos249/TotientStrictPrimeEscape.lean#L191); [initial-phase normal form](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos249/TotientStrictPrimeEscape.lean#L201); [initial-phase equivalence](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos249/TotientStrictPrimeEscape.lean#L278); [dyadic-root obstruction](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos249/TotientStrictPrimeEscape.lean#L322); [prime-alignment implication](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos249/TotientStrictPrimeEscape.lean#L465); [mixed difference](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos249/PrimeRayCyclotomicCurvature.lean#L22); [separable case](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos249/PrimeRayCyclotomicCurvature.lean#L26); [fixed-stencil uniqueness](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos249/PrimeRayCyclotomicCurvature.lean#L32); [a four-point divisor-layer identity](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos249/PrimeRayCyclotomicCurvature.lean#L45); [a centred representative for a residue class modulo an even modulus](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos249/PrimeRayCyclotomicCurvature.lean#L62); [eventual nontriviality and coprimality of the layers](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos249/PrimeRayCyclotomicCurvature.lean#L95); [order divisibility with bounded extension degree](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos249/PrimeRayCyclotomicCurvature.lean#L102); [exclusion of any fixed finite prime support](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos249/PrimeRayCyclotomicCurvature.lean#L151); [unbounded prime divisors](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos249/PrimeRayCyclotomicCurvature.lean#L158); [membership](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/FirstHarmonicPivot.lean#L299); [injectivity](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/FirstHarmonicPivot.lean#L367); [image equality](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/FirstHarmonicPivot.lean#L384); [checked counterexample](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/FirstHarmonicPivot.lean#L394); [the exact decomposition into four prime-factor contributions](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/FirstHarmonicPivot.lean#L514); [the conditional irrationality theorem](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/FirstHarmonicPivot.lean#L577); [the four inequalities on a common block](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/FirstHarmonicPivot.lean#L543); [the first-harmonic bound from those four inequalities](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/FirstHarmonicPivot.lean#L549).
 
 <a id="declarations"></a>
 

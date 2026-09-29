@@ -580,7 +580,7 @@ theorem rational_mixed_moduli_with_constant_iff
 
 <a id="prop-slowmoduli"></a>
 
-## Proposition 1.12 (Slowly growing dyadic moduli), page 7
+## Proposition 1.12 (Slowly growing dyadic moduli), page 8
 
 > *Let $`\kappa:\mathbb{N}\to\mathbb{N}`$ satisfy $`2^{\kappa(n)}=o(\log n)`$, and put $`a_n=\varphi(n)\bmod2^{\kappa(n)}`$. Then $`\sum_{n\ge1}a_n2^{-n}`$ is rational exactly when $`a_n=0`$ for all large $`n`$. In particular the sum is irrational when $`\kappa(3^k)\ge2`$ for infinitely many $`k`$.*
 

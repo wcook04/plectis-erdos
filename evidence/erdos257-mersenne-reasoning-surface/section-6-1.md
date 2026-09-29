@@ -127,7 +127,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="thm-two-channel-cap"></a>
 
-## Theorem 6.3 (Two-channel and dyadic cap sufficiency), page 43
+## Theorem 6.3 (Two-channel and dyadic cap sufficiency), page 44
 
 > *Suppose that for every $`n\ge0`$ at which the next weight is skipped,
 > ``` math
@@ -319,7 +319,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="thm-middle-producer-escape"></a>
 
-## Theorem 6.7 (Two sufficient bounds at middle transitions), page 44
+## Theorem 6.7 (Two sufficient bounds at middle transitions), page 45
 
 > *Suppose that at every middle transition with row $`s\ge13`$,
 > ``` math
@@ -495,7 +495,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="thm-upper-reset-band"></a>
 
-## Theorem 6.10 (Upper-reset dyadic-band escape, checked for $`13\le d\le30`$), page 45
+## Theorem 6.10 (Upper-reset dyadic-band escape, checked for $`13\le d\le30`$), page 46
 
 > *The upper-reset dyadic-band escape condition requires the following at every actual upper reset $`d\ge13`$: for every $`0\le j\le d`$, the reset charge avoids a linear-width band immediately below the dyadic power $`2^{d-j+1}`$ ($`2^{d-j+1}<\mathrm{resetCharge}`$ or $`\mathrm{resetCharge}+2(d+j)\le 2^{d-j+1}`$). Granted this, $`1/2\in
 > \ensuremath{\mathcal A}`$. The linked proof verifies this condition for $`13\le d\le30`$, using exact successor remainders at rows $`14`$–$`31`$ (for example, $`\mathrm{rem}(14)=392`$ and $`\mathrm{rem}(31)=4187487147`$). This finite verification does not supply the hypothesis for every $`d\ge13`$.*
@@ -723,7 +723,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="thm-full-support-catalogue"></a>
 
-## Theorem 6.14 (Erdős–Borwein full-support irrationality, unconditional), page 46
+## Theorem 6.14 (Erdős–Borwein full-support irrationality, unconditional), page 47
 
 > *For every integer $`b\ge2`$, the sum $`\sum_{n\ge1}(b^n-1)^{-1}`$ is irrational. This is Erdős’s theorem \[erdos1948\]; at base $`2`$ the sum is the Erdős–Borwein constant. The result concerns full support, not all its infinite subsets.*
 
@@ -748,7 +748,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="thm-pairwise-coprime"></a>
 
-## Theorem 6.15 (Pairwise-coprime support irrationality, Erdős 1968), page 46
+## Theorem 6.15 (Pairwise-coprime support irrationality, Erdős 1968), page 47
 
 > *For every integer $`b\ge2`$ and every infinite pairwise-coprime support $`A\subseteq\mathbb{N}_{>0}`$ with summable reciprocals, $`\sum_{a\in A} 1/(b^a-1)`$ is irrational.*
 
@@ -844,7 +844,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="thm-factorial-twopow-support"></a>
 
-## Theorem 6.18 (Factorial-support and $`2^k`$-support instances), page 47
+## Theorem 6.18 (Factorial-support and $`2^k`$-support instances), page 48
 
 > *For every integer $`b\ge2`$, both
 > ``` math

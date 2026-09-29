@@ -4,7 +4,7 @@ Part of the [evidence record](../erdos257-mersenne-reasoning-surface.md) of the 
 
 <a id="prop-cpgs-equiv"></a>
 
-## Proposition 12.3 (Infinitely many positive skips are equivalent to half-membership), page 131
+## Proposition 12.3 (Infinitely many positive skips are equivalent to half-membership), page 132
 
 > *Define
 > ``` math

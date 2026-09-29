@@ -2,16 +2,6 @@
  "schema": "plectis-paper-evidence-relations/1",
  "rule": "For each exact_or_stronger result: one sentence saying how the Lean statement implies the printed one. statement_sha256 and lean_statements record what the sentence was written against; a change to either invalidates it. Non-proposition stamps use the versioned complete source and transitive import binding in paper_evidence.py; legacy header-only stamps require review, never automatic migration.",
  "rows": {
-  "erdos-1041-lemniscate-newton-flow#res:ani-degree-seven-counterexample": {
-   "note": "The polynomial is monic of degree seven with distinct roots in the open unit disc, and every continuous root-to-root path in $\\{|f|<1\\}$ has length greater than $2$ (`erdos1041_counterexample`). The Hausdorff bound holds for every preconnected subset of $\\{|f|<1\\}$ containing two distinct roots (`erdos1041_counterexample_hausdorff`), so it covers the image of every continuous root-to-root path, which is connected. The negation and `answer(False)` forms of the Formal Conjectures statement are `erdos1041_hausdorff_negation` and `erdos1041_hausdorff_answer_false`.",
-   "statement_key": "sha256:9bb99c85d46d47f11b2387ff931abe5a15b19d1733536a92f5dc97f1adfb9a7b",
-   "lean_statements": {
-    "Erdos1041.Counterexample.erdos1041_counterexample": "2556c7667b3065f4f2c216662e5bec410477bbc3c4e696220de41c4aadd45312",
-    "Erdos1041.Counterexample.erdos1041_counterexample_hausdorff": "4629757391d80cb54eab4a21efcb741b1cdcd7adeda827e19b49480c97d4a7bc",
-    "Erdos1041.Counterexample.erdos1041_hausdorff_negation": "1bedbc2e91e3ec6d728e0aade3b7f1eb21f35284773ce4fb350aaf25661953c4",
-    "Erdos1041.Counterexample.erdos1041_hausdorff_answer_false": "c5139c381e7b3a5feb1230c23ab62bc47f1582c4b767b632a9b23af6df664a37"
-   }
-  },
   "erdos-1041-lemniscate-newton-flow#res:orlicz-currency": {
    "note": "The Lean statements prove $\\Phi$ strictly increasing on $[0,\\infty)$, which contains the printed monotonicity on $(0,\\infty)$, and the integrand $1/\\log(\\coth t)$ continuous on $\\mathbb R$ with value $0$ at $t=0$, which is the printed convention. The identity (O1), strict convexity on $(0,\\infty)$, (O2), (O3) and the absence of a universal constant are stated as printed.",
    "statement_key": "sha256:e434266ca0307a634382fd0dc25057170a5e16acaa95954804ecd10af6bbd32d",
@@ -259,16 +249,6 @@
     "ErdosProblems.Erdos269.PaperR7.short_window_equivalence": "dfde55f8941a4e8c38b610c65405c32aa3549f904d63542d17d849557925822c"
    }
   },
-  "erdos1041-lemniscate-reasoning-surface#res:ani-degree-seven-counterexample-long": {
-   "note": "The first Lean statement gives that the polynomial is monic of degree seven with distinct roots in the open unit disc, and that every continuous path in $\\{|f|<1\\}$ joining two distinct roots has total variation greater than $2$. The second gives the Hausdorff bound for every preconnected subset of $\\{|f|<1\\}$ containing two distinct roots, which covers the image of such a path because that image is connected. The last two are the negation and `answer(False)` forms of the Formal Conjectures statement, in which length is one-dimensional Hausdorff measure.",
-   "statement_key": "sha256:d4dd26f4f9e375336371ae6765e368dce07f8c360751e429b9fec42381a9da19",
-   "lean_statements": {
-    "Erdos1041.Counterexample.erdos1041_counterexample": "2556c7667b3065f4f2c216662e5bec410477bbc3c4e696220de41c4aadd45312",
-    "Erdos1041.Counterexample.erdos1041_counterexample_hausdorff": "4629757391d80cb54eab4a21efcb741b1cdcd7adeda827e19b49480c97d4a7bc",
-    "Erdos1041.Counterexample.erdos1041_hausdorff_negation": "1bedbc2e91e3ec6d728e0aade3b7f1eb21f35284773ce4fb350aaf25661953c4",
-    "Erdos1041.Counterexample.erdos1041_hausdorff_answer_false": "c5139c381e7b3a5feb1230c23ab62bc47f1582c4b767b632a9b23af6df664a37"
-   }
-  },
   "erdos1041-lemniscate-reasoning-surface#res:circle-slice-packing": {
    "note": "The Lean statement proves $\\sum_jw(d_j,r)\\le\\pi$ for every separation $D>0$, with the points in geodesic polar coordinates $(d_j,\\theta_j)$, $d_j>0$, about $i$ in the upper half-plane, the image of the disc model under an isometry sending $0$ to $i$; a second form holds in any metric space obeying the hyperbolic law of cosines. The printed statement is the case $D=4\\operatorname{artanh}\\sqrt{\\tanh(1/a)}$ with $d_j=d(0,b_j)>0$.",
    "statement_key": "sha256:3deb33dce340b28439657442596833f52a51c4fc02b1f9117198af5db0b2f692",
@@ -279,14 +259,6 @@
     "ErdosProblems.Erdos1041.PaperCompleteR21.Hyperbolic.exists_polar": "b815d35ded5aef549f2929617fe730417f5faa19716fbc159b7b6ebd227dbff1",
     "ErdosProblems.Erdos1041.PaperCompleteR21.Hyperbolic.polar_zero_zero": "0ef76afe64fbfa00e3993e5714a64ade92a4c68beeebe07dce8953a80d4e0788",
     "ErdosProblems.Erdos1041.PaperCompleteR21.Hyperbolic.circle_slice_packing_abstract": "5aa6329441b499f27132cd2c181de0dcffd8d37c7a7f16b91b5271c41e139bc6"
-   }
-  },
-  "erdos1041-lemniscate-reasoning-surface#res:critical-value-budget": {
-   "note": "The Lean statement has the same hypotheses and conclusion as the printed one.",
-   "statement_key": "sha256:3e87d72b103557742b0a721822180feedb1215d23a7e02acbe8d270985c67522",
-   "lean_statements": {
-    "ErdosProblems.Erdos1041.PaperCompleteR20.critical_value_three_budgets": "dc7c251a4fb8940ff5652decc75d6865f691c3d283d8dc360854f7729b1a576f",
-    "ErdosProblems.Erdos1041.PaperCompleteR20.critical_value_three_budgets_sharp": "8fc75e93e1c9435170ab1f3e5d1cc6abe70661aa32137faa0a965fca227b72d1"
    }
   },
   "erdos1041-lemniscate-reasoning-surface#res:degree-three": {
@@ -311,25 +283,11 @@
     "ErdosProblems.Erdos1041.PaperTrinomial.complete_trinomial": "2c8af0711fb23f50b59ee0e05760117599985a383f0e90efac5ef63e83f7dac7"
    }
   },
-  "erdos1041-lemniscate-reasoning-surface#res:value": {
-   "note": "The Lean statement allows any function $f$ with a complex derivative at each $z(t)$, $t\\in I$, of which a polynomial is a case, and adds the integrated form $f(z(t))=e^{-(t-t_0)}f(z(t_0))$ for $t,t_0\\in I$.",
-   "statement_key": "sha256:bde4607ae3a40249d61f78b4f60c59b02e79398a5ec72d7b74bf53bfa71a2c27",
-   "lean_statements": {
-    "ErdosProblems.Erdos1041.PaperCompleteR20.newton_real_value_whole": "881e307ae2b5f03a97412b844b222f841c9c48c6b21ee719e5ba6ae910295f8c"
-   }
-  },
   "erdos1049-rational-base-lambert-reasoning-surface#long1049:cor:no-decay-below-square": {
    "note": "The Lean statement assumes the hypotheses of Theorem 2.5 in the form of its Lean statement, which allows any real function $F$ and requires $\\Lambda_n(x)\\ne0$ only for all sufficiently large $n$ at each real $x>1$. For integers $1\\le b<a<b^2$ its conclusion is the printed nondecay of $b^{d_n}\\Lambda_n(a/b)$, with no assumption on $d_n/n^2$.",
    "statement_key": "sha256:14d3b1e980727f0fc6fbab833151d84832eacf9ea95f1c997759dba38fbb8c31",
    "lean_statements": {
     "ErdosProblems.Erdos1049.PaperR9.cleared_below_square_not_tendsto_zero": "b8bf8ba1b1611da897da57550b9ddc5c13990391d3355e907041c1ae4e559386"
-   }
-  },
-  "erdos1049-rational-base-lambert-reasoning-surface#long1049:res:archcap": {
-   "note": "The Lean statement holds for every real function $F$ in place of the Lambert series and requires $\\Lambda_n(x)\\ne0$ only for all sufficiently large $n$ at each real $x>1$; it reads the bounds in (2) and (3) as $\\le(\\delta+\\varepsilon)n^2$ and $\\le(h+\\varepsilon)n^2$ for all large $n$, for each $\\varepsilon>0$. For integers $a>b\\ge1$ its conclusions are the printed ones, including $\\sigma\\le\\delta$, the limsup bound, the cutoff bound $1/2$, the exact-degree limit with decay below and divergence above $\\sigma/(\\sigma+d)$, and the divergence at $a/b=3/2$.",
-   "statement_key": "sha256:bce8dbbbfde5e66f1766a3877bd39bd179a63c0c110346e13eff0e29aa3dfc27",
-   "lean_statements": {
-    "ErdosProblems.Erdos1049.PaperR9.long_record_archcap": "2b44291a0f31ae63a0e6740398c148c52124eaa8f072f1fd646547460ad2c665"
    }
   },
   "erdos1049-rational-base-lambert-reasoning-surface#long1049:res:finite-pencil": {
@@ -351,20 +309,6 @@
    "statement_key": "sha256:4b04fb79878dd1fc4652906920f398f56d437848597999689a3ba9074a5052bd",
    "lean_statements": {
     "ErdosProblems.Erdos1049.PaperCompleteR21.GeometricUniversality.geometric_universality": "f37dc12aa1811324f3bf295732ecd29c5e8c8344a3c4490e715c688ba53b05cd"
-   }
-  },
-  "erdos243-reciprocal-tail-reasoning-surface#long243:res:bounded": {
-   "note": "The Lean statement omits hypothesis (4), eventual strict centring $|E_n|<C_n$, which the printed theorem adds (it is also the case $K=1$ of (6)); hypotheses (1), (2), (3), (5) and (6) are as printed.",
-   "statement_key": "sha256:5cbdd3d0e166c78a25d6e97acb37d6f3a5189d2c17485e14cb3012084e599a03",
-   "lean_statements": {
-    "ErdosProblems.Erdos243.eventuallyBoundedNegativePart_eventually_zero": "6ea70d58c44fbc6bc3824a00247a6382e8280ffecac63e5290ac07e25e6f547c"
-   }
-  },
-  "erdos243-reciprocal-tail-reasoning-surface#long243:res:cor": {
-   "note": "The Lean statement drops both eventual strict centring $|E_n|<C_n$ and the extra hypothesis $C_{n+1}\\ne0$ for large $n$, which the printed corollary adds (the latter already follows from $C_n>0$); its conclusion $a_{n+1}=a_n^2-a_n+1$ for all large $n$ is the printed one.",
-   "statement_key": "sha256:7098ddadaea3849e1bf6a5be18e77580bf6f3db84d05b73aca22aee40f82935b",
-   "lean_statements": {
-    "ErdosProblems.Erdos243.boundedNegativePart_sylvesterNext_eventually": "47ee3f7ba0e7486a97893cfd04e604b4fc93e03b089333f2e06a5b3ab001bfae"
    }
   },
   "erdos243-reciprocal-tail-reasoning-surface#long243:res:onethreshold": {
@@ -1220,6 +1164,106 @@
    "lean_statements": {
     "ErdosProblems.Erdos257.PaperCompleteR8.exists_weighted_not_strengthened_host": "f0b7085233677e5df696b7536f3fa5da6b8f605dfd60cf7d04498bd80fbb9986",
     "ErdosProblems.Erdos257.PaperCompleteR8.exists_strengthened_not_old_or_weighted_host": "d26db4b9228a9c9e190e38f85550f28f09b7a73d208436d0e262b3642132eddc"
+   }
+  },
+  "erdos-243-reciprocal-tail-rigidity#res:bounded": {
+   "note": "`eventuallyBoundedNegativePart_eventually_zero` takes the vanishing hypothesis as: for every $K$ there is $N$ with $K|E_n|<C_n$ for $n\\ge N$. Since $C_n>0$, $E_n/C_n\\to0$ gives this with $\\varepsilon=1/K$; $E_n\\ge-B$ for large $n$ is `hbound`, and the conclusion $E_n=0$ for large $n$ is the same.",
+   "statement_key": "sha256:695469b3fa3f07f027497c34736b2df95c23e89f4e52232179e496ad7b5a86f3",
+   "lean_statements": {
+    "ErdosProblems.Erdos243.eventuallyBoundedNegativePart_eventually_zero": "6ea70d58c44fbc6bc3824a00247a6382e8280ffecac63e5290ac07e25e6f547c"
+   }
+  },
+  "erdos243-reciprocal-tail-reasoning-surface#long243:res:bounded": {
+   "note": "`eventuallyBoundedNegativePart_eventually_zero` takes the vanishing hypothesis as: for every $K$ there is $N$ with $K|E_n|<C_n$ for $n\\ge N$. Since $C_n>0$, $E_n/C_n\\to0$ gives this with $\\varepsilon=1/K$; $E_n\\ge-B$ for large $n$ is `hbound`, and the conclusion $E_n=0$ for large $n$ is the same.",
+   "statement_key": "sha256:695469b3fa3f07f027497c34736b2df95c23e89f4e52232179e496ad7b5a86f3",
+   "lean_statements": {
+    "ErdosProblems.Erdos243.eventuallyBoundedNegativePart_eventually_zero": "6ea70d58c44fbc6bc3824a00247a6382e8280ffecac63e5290ac07e25e6f547c"
+   }
+  },
+  "erdos243-reciprocal-tail-reasoning-surface#long243:res:cor": {
+   "note": "`boundedNegativePart_sylvesterNext_eventually` has the hypotheses of `eventuallyBoundedNegativePart_eventually_zero` (with $E_n/C_n\\to0$ unfolded as there) and concludes $a_{n+1}=a_n^2-a_n+1$ (`sylvesterNext`) for all large $n$; it assumes nothing about $C_{n+1}\\ne0$.",
+   "statement_key": "sha256:f073914b6257cfcd05ab13fe0efb0e0d0b63e871624a01c200e3da233757daae",
+   "lean_statements": {
+    "ErdosProblems.Erdos243.boundedNegativePart_sylvesterNext_eventually": "47ee3f7ba0e7486a97893cfd04e604b4fc93e03b089333f2e06a5b3ab001bfae"
+   }
+  },
+  "erdos-1041-lemniscate-newton-flow#res:ani-degree-seven-counterexample": {
+   "note": "`erdos1041_counterexample` shows $f$ is monic of degree seven with distinct roots (`roots.Nodup`) in the open unit disc; `erdos1041_counterexample_hausdorff` bounds $\\mathcal H^1(K)>2$ for every preconnected $K\\subset\\{|f|<1\\}$ containing two distinct roots, and a connected set is preconnected. `erdos1041_hausdorff_negation` and `erdos1041_hausdorff_answer_false` give the Formal Conjectures forms.",
+   "statement_key": "sha256:8b1ca5b3fa66a4b1341e52cd07e79837fa9ddc19e4541e57abd84a796a9f0ec1",
+   "lean_statements": {
+    "Erdos1041.Counterexample.erdos1041_counterexample": "2556c7667b3065f4f2c216662e5bec410477bbc3c4e696220de41c4aadd45312",
+    "Erdos1041.Counterexample.erdos1041_counterexample_hausdorff": "4629757391d80cb54eab4a21efcb741b1cdcd7adeda827e19b49480c97d4a7bc",
+    "Erdos1041.Counterexample.erdos1041_hausdorff_negation": "1bedbc2e91e3ec6d728e0aade3b7f1eb21f35284773ce4fb350aaf25661953c4",
+    "Erdos1041.Counterexample.erdos1041_hausdorff_answer_false": "c5139c381e7b3a5feb1230c23ab62bc47f1582c4b767b632a9b23af6df664a37"
+   }
+  },
+  "erdos1041-lemniscate-reasoning-surface#res:ani-degree-seven-counterexample-long": {
+   "note": "`erdos1041_counterexample` shows $f$ is monic of degree seven with distinct roots (`roots.Nodup`) in the open unit disc; `erdos1041_counterexample_hausdorff` bounds $\\mathcal H^1(K)>2$ for every preconnected $K\\subset\\{|f|<1\\}$ containing two distinct roots, and a connected set is preconnected. `erdos1041_hausdorff_negation` and `erdos1041_hausdorff_answer_false` give the Formal Conjectures forms.",
+   "statement_key": "sha256:3076eb8a976fe4c75f3cd370666945303eb7ea375e34126586e1ec73986d5abb",
+   "lean_statements": {
+    "Erdos1041.Counterexample.erdos1041_counterexample": "2556c7667b3065f4f2c216662e5bec410477bbc3c4e696220de41c4aadd45312",
+    "Erdos1041.Counterexample.erdos1041_counterexample_hausdorff": "4629757391d80cb54eab4a21efcb741b1cdcd7adeda827e19b49480c97d4a7bc",
+    "Erdos1041.Counterexample.erdos1041_hausdorff_negation": "1bedbc2e91e3ec6d728e0aade3b7f1eb21f35284773ce4fb350aaf25661953c4",
+    "Erdos1041.Counterexample.erdos1041_hausdorff_answer_false": "c5139c381e7b3a5feb1230c23ab62bc47f1582c4b767b632a9b23af6df664a37"
+   }
+  },
+  "erdos1041-lemniscate-reasoning-surface#res:critical-value-budget": {
+   "note": "The Lean statement has the same hypotheses and conclusion as the printed one. `paper_critical_value_mean` states the quadratic budget and the $1/n$ consequence, the statement absorbed from the short paper's former res:fp-to-s.",
+   "statement_key": "sha256:3e87d72b103557742b0a721822180feedb1215d23a7e02acbe8d270985c67522",
+   "lean_statements": {
+    "ErdosProblems.Erdos1041.PaperCompleteR20.critical_value_three_budgets": "dc7c251a4fb8940ff5652decc75d6865f691c3d283d8dc360854f7729b1a576f",
+    "ErdosProblems.Erdos1041.PaperCompleteR20.critical_value_three_budgets_sharp": "8fc75e93e1c9435170ab1f3e5d1cc6abe70661aa32137faa0a965fca227b72d1",
+    "ErdosProblems.Erdos1041.paper_critical_value_mean": "3ee236389e621f210d928cf856947811393ac57a734aef5f3d5151474c5200d8"
+   }
+  },
+  "erdos1049-rational-base-lambert-reasoning-surface#long1049:res:archcap": {
+   "note": "The Lean statement holds for every real function $F$ in place of the Lambert series and requires $\\Lambda_n(x)\\ne0$ only for all sufficiently large $n$ at each real $x>1$; it reads the bounds in (2) and (3) as $\\le(\\delta+\\varepsilon)n^2$ and $\\le(h+\\varepsilon)n^2$ for all large $n$, for each $\\varepsilon>0$. For integers $a>b\\ge1$ its conclusions are the printed ones, including $\\sigma\\le\\delta$, the limsup bound, the cutoff bound $1/2$, the exact-degree limit with decay below and divergence above $\\sigma/(\\sigma+d)$, and the divergence at $a/b=3/2$. `short_note_archimedean_cap` states the version with the $\\ell^1$ height absorbed from the short paper; an $\\ell^1$ height bound implies the maximum-height bound with the same $h$.",
+   "statement_key": "sha256:bce8dbbbfde5e66f1766a3877bd39bd179a63c0c110346e13eff0e29aa3dfc27",
+   "lean_statements": {
+    "ErdosProblems.Erdos1049.PaperR9.long_record_archcap": "2b44291a0f31ae63a0e6740398c148c52124eaa8f072f1fd646547460ad2c665",
+    "ErdosProblems.Erdos1049.PaperR9.short_note_archimedean_cap": "e9ec6609ee62eb8acdaeb940f045a6041ea7853384343eb987888651c256793d"
+   }
+  },
+  "erdos1041-lemniscate-reasoning-surface#res:value": {
+   "note": "The Lean statement allows any function $f$ with a complex derivative at each point $z(t)$, $t\\in I$, of which a polynomial is a case; its conclusions are $w'=-w$ on $I$ and $f(z(t))=e^{-(t-t_0)}f(z(t_0))$ for $t,t_0\\in I$.",
+   "statement_key": "sha256:d9942c48e2dc844fcff899b84ca3f5e52dfda08109dd5329fbe293cd78779172",
+   "lean_statements": {
+    "ErdosProblems.Erdos1041.PaperCompleteR20.newton_real_value_whole": "881e307ae2b5f03a97412b844b222f841c9c48c6b21ee719e5ba6ae910295f8c"
+   }
+  },
+  "erdos1041-lemniscate-reasoning-surface#res:orlicz-currency": {
+   "note": "The Lean statements prove $\\Phi$ strictly increasing on $[0,\\infty)$, which contains the printed monotonicity on $(0,\\infty)$, and the integrand $1/\\log(\\coth t)$ continuous on $\\mathbb R$ with value $0$ at $t=0$, which is the printed convention. The identity (O1), strict convexity on $(0,\\infty)$, (O2), (O3) and the absence of a universal constant are stated as printed.",
+   "statement_key": "sha256:e434266ca0307a634382fd0dc25057170a5e16acaa95954804ecd10af6bbd32d",
+   "lean_statements": {
+    "ErdosProblems.Erdos1041.PaperCompleteR21.orlicz_currency": "0bc8122dc0d3c8f93f3cbcd9c8c311d83bae427a3836daf7b58fe46f124a6f83",
+    "ErdosProblems.Erdos1041.PaperCompleteR21.orliczKernel_continuous": "ea1ff7ac5856c7328a4183899b6703548b50a7adf842ad9c8b0d4831d0128252",
+    "ErdosProblems.Erdos1041.PaperCompleteR21.orliczKernel_tendsto_zero": "7b6e51a9c7682223aa36c3c30c35c474aacd46ed18a63271c3534caf9416ff82",
+    "ErdosProblems.Erdos1041.PaperCompleteR21.mergerIntegral_eq_mul_phi": "3897db75ef6e23347292f607830927141d8c00ab3ab024d98401fcbb673c3e26",
+    "ErdosProblems.Erdos1041.PaperCompleteR21.phi_strictMonoOn": "f8a935a375cd59efbfe571465ef4565b3e36a2ba96a107a8ef407c0417de16e2",
+    "ErdosProblems.Erdos1041.PaperCompleteR21.phi_strictConvexOn": "37ae753363e2c8a1f0bbeb9f776abf797de192e9b77b791786b37539c053e19b",
+    "ErdosProblems.Erdos1041.PaperCompleteR21.phi_div_tendsto_zero": "0432edde30c42778f64cf63d678503a7897b2e191c255a750d61f755904c5be6",
+    "ErdosProblems.Erdos1041.PaperCompleteR21.exists_mergerIntegral_lt": "f27ab32eb3d4679489c47e850e0330450bb3e162a006a5a57454c0399eee04fe"
+   }
+  },
+  "erdos-1041-lemniscate-newton-flow#lem:two-sheet-bottleneck": {
+   "note": "`s3_bottleneck_hausdorff` is stated for any nonzero normaliser $\\hat a$ with $|A(z)/\\hat a-1|\\le1/4$ on $|z|\\le h$ and $\\delta<|\\hat a|h^2/4$; take $\\hat a=A(0)$, nonzero because $c$ is simple. Its hypotheses that $a\\ne b$ are the only zeros and $c$ the only critical point in the component are what the degree-two hypothesis supplies; it allows preconnected $K$, and $\\mathrm{ofReal}(x)\\le\\mathcal H^1(K)$ is the printed bound.",
+   "statement_key": "sha256:b3f6dda90fcb9a5fb8872825ef1ef303c1786ca881a7bcf077e1a01e8a00e5c7",
+   "lean_statements": {
+    "Erdos1041.Counterexample.s3_bottleneck_hausdorff": "cec415f6f162b90166e3af19a201c6c8487ae4fc95879db3625999260e7c475e"
+   }
+  },
+  "erdos1041-lemniscate-reasoning-surface#lem:two-sheet-bottleneck-long": {
+   "note": "`s3_bottleneck_hausdorff` is stated for any nonzero normaliser $\\hat a$ with $|A(z)/\\hat a-1|\\le1/4$ on $|z|\\le h$ and $\\delta<|\\hat a|h^2/4$; take $\\hat a=A(0)$, nonzero because $c$ is simple. Its hypotheses that $a\\ne b$ are the only zeros and $c$ the only critical point in the component are what the degree-two hypothesis supplies; it allows preconnected $K$, and $\\mathrm{ofReal}(x)\\le\\mathcal H^1(K)$ is the printed bound.",
+   "statement_key": "sha256:a5d3959dcec696ebf2bd856249acbd12763fc035fa6389108c71c6d607b1a524",
+   "lean_statements": {
+    "Erdos1041.Counterexample.s3_bottleneck_hausdorff": "cec415f6f162b90166e3af19a201c6c8487ae4fc95879db3625999260e7c475e"
+   }
+  },
+  "erdos-1049-rational-base-lambert#prop:weight-factorisation": {
+   "note": "`rogers_factorisation_proposition` gives, for the coefficients $\\gamma_k$ of $G_q$ at fixed $0<q<1$, $\\gamma_k=R_k^{(2)}R_k^{(3)}/(q;q)_k$, $P^5c_k\\le P^4\\gamma_k\\le P^{-1}c_k$ with $c_k=(k+1)^2(k+2)/2$, and $P^4\\gamma_{k+h}/(P^4\\gamma_k)\\le P^{-6}(1+h)^3$; with $a_k=[w^k]P^4G_q(w)$ these are the printed clauses.",
+   "statement_key": "sha256:efbf319690bf45096f4670c50e4caf0e67ac939e8d6ea07ee79cd528259d413c",
+   "lean_statements": {
+    "ErdosProblems.Erdos1049.PaperCompleteR21.RogersFactorisation.rogers_factorisation_proposition": "63b26b119de87700fb235427588b64336b3195b9555380378c79f715620386f7"
    }
   }
  }

@@ -1,4 +1,4 @@
-# Formal evidence: Denominators and Rationality Criteria\\for $\sum_{n\ge2}(n!-1)^{-1}$
+# Formal evidence: Factorial Linear Forms and Denominators\\Detailed Proofs and Rationality Criteria
 
 This record belongs to the paper [erdos68-factorial-reasoning-surface.pdf](../paper/68/erdos68-factorial-reasoning-surface.pdf). For every result it lists the Lean declarations that state it, and the independent Comparator check where there is one. The margin marks in the paper link here.
 
@@ -8,513 +8,9 @@ This record belongs to the paper [erdos68-factorial-reasoning-surface.pdf](../pa
 
 These checks establish that the stated propositions are proved. Whether each is the right proposition is for the reader to judge against the paper's statement, which is reproduced below.
 
-<a id="long68-res-prime-pole"></a>
-
-## Theorem 1.2 (maximal prime-power survival), page 3
-
-> *Let $`M\ge2`$, let $`p`$ be a prime dividing $`L_M`$, and put $`e=v_p(L_M)`$. Let $`J=\{n:2\le n\le M,\ v_p(d_n)=e\}`$ and write $`d_n=p^eu_n`$ for $`n\in J`$. Then, with inverses in $`\mathbb F_p`$,
-> ``` math
-> \begin{equation}
-> \label{long68:eq:prime-pole-survival}
->  v_p\bigl(\operatorname{den}(H_M)\bigr)=e
->  \quad\Longleftrightarrow\quad
->  \sum_{n\in J}u_n^{-1}\ne0\quad\hbox{in }\mathbb F_p.
-> \end{equation}
-> ```*
-
-The Lean declaration below states this result.
-
-[`ErdosProblems.Erdos68.PaperComplete.maximal_prime_power_survival`](https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos68/PaperCompletePrimePole.lean#L117)
-
-```lean
-theorem maximal_prime_power_survival {M p : ℕ} (_hM : 2 ≤ M)
-    (hp : p.Prime) (hpL : p ∣ factorialGapPrefixLCM M) :
-    (factorialGapPrefix M).den.factorization p =
-        (factorialGapPrefixLCM M).factorization p ↔
-      (∑ n ∈ (Finset.Icc 2 M).filter
-          (fun n => (n.factorial - 1).factorization p =
-            (factorialGapPrefixLCM M).factorization p),
-        (((n.factorial - 1) /
-          p ^ (factorialGapPrefixLCM M).factorization p : ℕ) : ZMod p)⁻¹) ≠ 0
-```
-
-<a id="long68-res-prime-pole-comparator"></a>
-
-**Comparator: passed** (run 35935225572, corpus commit `cc7e541cf208`).
-
-For each Lean declaration: the Challenge (the target, stated from Mathlib alone), the Solution (our proof) and the replay report.
-
-- `maximal_prime_power_survival`: [Challenge](https://github.com/wcook04/plectis-erdos-lean/blob/cc7e541cf2081c6fef5a5e377d52e365e33b01eb/PalomarCorpus/E68_01/Challenge.lean#L112) (E68_01, line 112), [Solution](https://github.com/wcook04/plectis-erdos-lean/blob/cc7e541cf2081c6fef5a5e377d52e365e33b01eb/Solutions/PalomarCorpus/E68_01/PaperStatementsA.lean#L224) (PaperStatementsA.lean, line 224), [replay report](../evidence/comparator/replay-35935225572/receipt-E68_01.json) (E68_01)
-
-Each Challenge states the same proposition as the Lean declaration it targets, with every definition it uses restated from Mathlib alone.
-
-<a id="long68-res-wilson-cofinality"></a>
-
-## Proposition 1.3 (cofinal first prime occurrences), page 4
-
-> *For every integer $`B\ge0`$ there are a prime $`q`$ and an integer $`m>B`$ with $`m<q`$, $`q\mid m!-1`$ and $`\gcd(q,k!-1)=1`$ for every $`k`$ with $`2\le k<m`$.*
-
-The Lean declaration below states this result.
-
-[`ErdosProblems.Erdos68.PaperComplete.cofinal_first_prime_occurrences`](https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos68/PaperCompleteExisting.lean#L180)
-
-```lean
-theorem cofinal_first_prime_occurrences :
-    ∀ B : ℕ, ∃ q m : ℕ, B < m ∧ q.Prime ∧ m < q ∧
-      q ∣ m.factorial - 1 ∧
-      ∀ k : ℕ, 2 ≤ k → k < m → Nat.Coprime q (k.factorial - 1)
-```
-
-<a id="long68-res-wilson-cofinality-comparator"></a>
-
-**Comparator: passed** (run 35935225572, corpus commit `cc7e541cf208`).
-
-For each Lean declaration: the Challenge (the target, stated from Mathlib alone), the Solution (our proof) and the replay report.
-
-- `cofinal_first_prime_occurrences`: [Challenge](https://github.com/wcook04/plectis-erdos-lean/blob/cc7e541cf2081c6fef5a5e377d52e365e33b01eb/PalomarCorpus/E68_01/Challenge.lean#L82) (E68_01, line 82), [Solution](https://github.com/wcook04/plectis-erdos-lean/blob/cc7e541cf2081c6fef5a5e377d52e365e33b01eb/Solutions/PalomarCorpus/E68_01/PaperStatementsA.lean#L150) (PaperStatementsA.lean, line 150), [replay report](../evidence/comparator/replay-35935225572/receipt-E68_01.json) (E68_01)
-
-Each Challenge states the same proposition as the Lean declaration it targets, with every definition it uses restated from Mathlib alone.
-
-<a id="long68-res-product-lcm"></a>
-
-## Lemma 2.1 (product, least common multiple, pairwise gcd), page 5
-
-> *For positive integers $`x_1,\ldots,x_k`$,
-> ``` math
-> \prod_{i=1}^{k}x_i\ \Big|\ \operatorname{lcm}(x_1,\ldots,x_k)\prod_{i<j}\gcd(x_i,x_j).
-> ```*
-
-The Lean declaration below states this result.
-
-[`ErdosProblems.Erdos68.PaperComplete.product_lcm_pairwise_gcd`](https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos68/PaperCompleteExisting.lean#L189)
-
-```lean
-theorem product_lcm_pairwise_gcd (xs : List ℕ) :
-    xs.prod ∣ _root_.Erdos68.listLCM xs * _root_.Erdos68.pairwiseGCDProduct xs
-```
-
-<a id="long68-res-product-lcm-comparator"></a>
-
-**Comparator: passed** (run 35935225572, corpus commit `cc7e541cf208`).
-
-For each Lean declaration: the Challenge (the target, stated from Mathlib alone), the Solution (our proof) and the replay report.
-
-- `product_lcm_pairwise_gcd`: [Challenge](https://github.com/wcook04/plectis-erdos-lean/blob/cc7e541cf2081c6fef5a5e377d52e365e33b01eb/PalomarCorpus/E68_01/Challenge.lean#L136) (E68_01, line 136), [Solution](https://github.com/wcook04/plectis-erdos-lean/blob/cc7e541cf2081c6fef5a5e377d52e365e33b01eb/Solutions/PalomarCorpus/E68_01/PaperStatementsE.lean#L17) (PaperStatementsE.lean, line 17), [replay report](../evidence/comparator/replay-35935225572/receipt-E68_01.json) (E68_01)
-
-Challenge for `product_lcm_pairwise_gcd`:
-
-```lean
-theorem product_lcm_pairwise_gcd (xs : List ℕ) :
-    xs.prod ∣ listLCM xs * pairwiseGCDProduct xs := by sorry
-```
-
-<a id="long68-res-gap-gcd"></a>
-
-## Lemma 2.2 (factorial-gap gcd), page 5
-
-> *For $`2\le i<j`$, the integer $`g=\gcd(i!-1,j!-1)`$ divides $`j!/i!-1`$, and $`g\le j!/i!-1<j^{\,j-i}`$.*
-
-The Lean declaration below states this result.
-
-[`Erdos68.factorial_gap_gcd_exact`](https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos68/ChannelIntegralCongruence.lean#L288)
-
-```lean
-theorem factorial_gap_gcd_exact
-    {m n : ℕ} (hm : 2 ≤ m) (hmn : m < n) :
-    let g := Nat.gcd (m.factorial - 1) (n.factorial - 1)
-    let Q := n.descFactorial (n - m)
-    g ∣ Q - 1 ∧ g ≤ Q - 1 ∧ Q - 1 < n ^ (n - m)
-```
-
-<a id="long68-res-gap-gcd-comparator"></a>
-
-**Comparator: passed** (run 35935225572, corpus commit `cc7e541cf208`).
-
-For each Lean declaration: the Challenge (the target, stated from Mathlib alone), the Solution (our proof) and the replay report.
-
-- `factorial_gap_gcd_exact`: [Challenge](https://github.com/wcook04/plectis-erdos-lean/blob/cc7e541cf2081c6fef5a5e377d52e365e33b01eb/PalomarCorpus/E68_01/Challenge.lean#L146) (E68_01, line 146), [Solution](https://github.com/wcook04/plectis-erdos-lean/blob/cc7e541cf2081c6fef5a5e377d52e365e33b01eb/Solutions/PalomarCorpus/E68_01/FactorialGapBounds.lean#L19) (FactorialGapBounds.lean, line 19), [replay report](../evidence/comparator/replay-35935225572/receipt-E68_01.json) (E68_01)
-
-Each Challenge states the same proposition as the Lean declaration it targets, with every definition it uses restated from Mathlib alone.
-
-<a id="long68-res-segment"></a>
-
-## Lemma 2.3 (segment inequality), page 5
-
-> *For $`2\le k\le N-1`$,
-> ``` math
-> \begin{equation}
-> \label{long68:eq:segment}
->  \sum_{n=N-k+1}^{N}\log(n!-1)
->  \ \le\ \log L_N+\binom{k+1}{3}\log N.
-> \end{equation}
-> ```*
-
-The Lean declaration below states this result or one that implies it. The Lean inequality holds for every $k$ with $0\le k\le N-1$; the printed statement is its range $2\le k\le N-1$.
-
-[`Erdos68.factorialGapSegment_log_sum_le_channelLCM_add_choose`](https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos68/ChannelIntegralCongruence.lean#L566)
-
-```lean
-theorem factorialGapSegment_log_sum_le_channelLCM_add_choose
-    {D k : ℕ} (hkD : k < D) :
-    (∑ n ∈ Finset.Ico (D + 1 - k) (D + 1),
-      Real.log ((n.factorial - 1 : ℕ) : ℝ)) ≤
-      Real.log (channelLCM D : ℝ) +
-        (((k + 1).choose 3 : ℕ) : ℝ) * Real.log (D : ℝ)
-```
-
-<a id="long68-res-segment-comparator"></a>
-
-**Comparator: passed** (run 35935225572, corpus commit `cc7e541cf208`).
-
-For each Lean declaration: the Challenge (the target, stated from Mathlib alone), the Solution (our proof) and the replay report.
-
-- `factorialGapSegment_log_sum_le_channelLCM_add_choose`: [Challenge](https://github.com/wcook04/plectis-erdos-lean/blob/cc7e541cf2081c6fef5a5e377d52e365e33b01eb/PalomarCorpus/E68_01/Challenge.lean#L153) (E68_01, line 153), [Solution](https://github.com/wcook04/plectis-erdos-lean/blob/cc7e541cf2081c6fef5a5e377d52e365e33b01eb/Solutions/PalomarCorpus/E68_01/FactorialGapBounds.lean#L27) (FactorialGapBounds.lean, line 27), [replay report](../evidence/comparator/replay-35935225572/receipt-E68_01.json) (E68_01)
-
-Each Challenge states the same proposition as the Lean declaration it targets, with every definition it uses restated from Mathlib alone.
-
-<a id="long68-res-lcm-growth"></a>
-
-## Theorem 2.4 (common-denominator growth), page 5
-
-> *``` math
-> \liminf_{N\to\infty}\frac{\log L_N}{N^{3/2}\log N}
->  \ \ge\ \frac{2\sqrt2}{3}.
-> ```*
-
-The Lean declaration below states this result.
-
-[`ErdosProblems.Erdos68.PaperComplete.common_denominator_growth_liminf`](https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos68/PaperCompleteLiminf.lean#L42)
-
-```lean
-theorem common_denominator_growth_liminf :
-    ((2 * Real.sqrt 2 / 3 : ℝ) : EReal) ≤
-      Filter.liminf (fun N : ℕ =>
-        ((Real.log (_root_.Erdos68.channelLCM N : ℝ) /
-          ((N : ℝ) ^ ((3 : ℝ) / 2) * Real.log (N : ℝ)) : ℝ) : EReal)) atTop
-```
-
-<a id="long68-res-lcm-growth-comparator"></a>
-
-**Comparator: passed** (run 35935225572, corpus commit `cc7e541cf208`).
-
-For each Lean declaration: the Challenge (the target, stated from Mathlib alone), the Solution (our proof) and the replay report.
-
-- `common_denominator_growth_liminf`: [Challenge](https://github.com/wcook04/plectis-erdos-lean/blob/cc7e541cf2081c6fef5a5e377d52e365e33b01eb/PalomarCorpus/E68_01/Challenge.lean#L166) (E68_01, line 166), [Solution](https://github.com/wcook04/plectis-erdos-lean/blob/cc7e541cf2081c6fef5a5e377d52e365e33b01eb/Solutions/PalomarCorpus/E68_01/CommonDenominatorGrowth.lean#L30) (CommonDenominatorGrowth.lean, line 30), [replay report](../evidence/comparator/replay-35935225572/receipt-E68_01.json) (E68_01)
-
-Challenge for `common_denominator_growth_liminf`:
-
-```lean
-theorem common_denominator_growth_liminf :
-    ((2 * Real.sqrt 2 / 3 : ℝ) : EReal) ≤
-      Filter.liminf (fun N : ℕ =>
-        ((Real.log (channelLCM N : ℝ) /
-          ((N : ℝ) ^ ((3 : ℝ) / 2) * Real.log (N : ℝ)) : ℝ) : EReal)) atTop := by sorry
-```
-
-<a id="long68-res-carry-equivalence"></a>
-
-## Theorem 3.1 (an exact criterion from successive partial sums), page 8
-
-> *For $`m\ge3`$,
-> ``` math
-> \begin{equation}
-> \label{long68:eq:unit-window}
->  b_m=1
->  \iff m\mid Z_m
->  \iff 1+\varepsilon_m<m\Delta_m\le2+\varepsilon_m .
-> \end{equation}
-> ```*
->
-> *Moreover
-> ``` math
-> \begin{align}
->  S\in\mathbb{Q}
->  &\iff b_m=1\ \hbox{for all sufficiently large }m,
->  \label{long68:eq:carry-rationality}\\
->  S\notin\mathbb{Q}
->  &\iff \forall B\ \exists m>B:\ m\nmid Z_m .
->  \label{long68:eq:strict-misses}
-> \end{align}
-> ```
-> If $`S=a/q`$ with $`a\in\mathbb{Z}`$, $`q\ge1`$ and $`b_m\ne1`$, then $`q\nmid(m-1)!`$ and $`q\ge m`$.*
-
-The Lean declaration below states this result.
-
-[`ErdosProblems.Erdos68.PaperComplete.strict_successor_characterisation`](https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos68/PaperCompleteExisting.lean#L77)
-
-```lean
-theorem strict_successor_characterisation :
-    (∀ m : ℕ, 3 ≤ m →
-      (factorialGapStepCarry m = 1 ↔
-        (m : ℤ) ∣ strictFacTopRat (factorialGapPrefix m) m) ∧
-      ((m : ℤ) ∣ strictFacTopRat (factorialGapPrefix m) m ↔
-        1 + 1 / ((m.factorial : ℝ) - 1) <
-            (m : ℝ) * factorialGapPredecessorGap m ∧
-        (m : ℝ) * factorialGapPredecessorGap m ≤
-            2 + 1 / ((m.factorial : ℝ) - 1))) ∧
-    (¬ Irrational _root_.Erdos68.factorialGapSeries ↔
-      ∃ M : ℕ, ∀ m : ℕ, M ≤ m → factorialGapStepCarry m = 1) ∧
-    (Irrational _root_.Erdos68.factorialGapSeries ↔
-      ∀ B : ℕ, ∃ m : ℕ, B < m ∧
-        ¬ (m : ℤ) ∣ strictFacTopRat (factorialGapPrefix m) m) ∧
-    (∀ (m q : ℕ) (a : ℤ), 3 ≤ m → 0 < q →
-      _root_.Erdos68.factorialGapSeries = (a : ℝ) / (q : ℝ) →
-      factorialGapStepCarry m ≠ 1 →
-      (¬ q ∣ (m - 1).factorial) ∧ m ≤ q)
-```
-
-<a id="long68-res-carry-equivalence-comparator"></a>
-
-**Comparator: passed** (run 35935225572, corpus commit `cc7e541cf208`).
-
-For each Lean declaration: the Challenge (the target, stated from Mathlib alone), the Solution (our proof) and the replay report.
-
-- `strict_successor_characterisation`: [Challenge](https://github.com/wcook04/plectis-erdos-lean/blob/cc7e541cf2081c6fef5a5e377d52e365e33b01eb/PalomarCorpus/E68_01/Challenge.lean#L185) (E68_01, line 185), [Solution](https://github.com/wcook04/plectis-erdos-lean/blob/cc7e541cf2081c6fef5a5e377d52e365e33b01eb/Solutions/PalomarCorpus/E68_01/PaperStatementsB.lean#L66) (PaperStatementsB.lean, line 66), [replay report](../evidence/comparator/replay-35935225572/receipt-E68_01.json) (E68_01)
-
-Challenge for `strict_successor_characterisation`:
-
-```lean
-theorem strict_successor_characterisation :
-    (∀ m : ℕ, 3 ≤ m →
-      (factorialGapStepCarry m = 1 ↔
-        (m : ℤ) ∣ strictFacTopRat (factorialGapPrefix m) m) ∧
-      ((m : ℤ) ∣ strictFacTopRat (factorialGapPrefix m) m ↔
-        1 + 1 / ((m.factorial : ℝ) - 1) <
-            (m : ℝ) * factorialGapPredecessorGap m ∧
-        (m : ℝ) * factorialGapPredecessorGap m ≤
-            2 + 1 / ((m.factorial : ℝ) - 1))) ∧
-    (¬ Irrational factorialGapSeries ↔
-      ∃ M : ℕ, ∀ m : ℕ, M ≤ m → factorialGapStepCarry m = 1) ∧
-    (Irrational factorialGapSeries ↔
-      ∀ B : ℕ, ∃ m : ℕ, B < m ∧
-        ¬ (m : ℤ) ∣ strictFacTopRat (factorialGapPrefix m) m) ∧
-    (∀ (m q : ℕ) (a : ℤ), 3 ≤ m → 0 < q →
-      factorialGapSeries = (a : ℝ) / (q : ℝ) →
-      factorialGapStepCarry m ≠ 1 →
-      (¬ q ∣ (m - 1).factorial) ∧ m ≤ q) := by sorry
-```
-
-<a id="long68-res-companion-orbit"></a>
-
-## Proposition 3.2 (rationality and factorial residues), page 10
-
-> *``` math
-> S\in\mathbb{Q}
->  \quad\Longleftrightarrow\quad
->  \lfloor m!C\rfloor\equiv-2\pmod m
->  \quad\hbox{for all sufficiently large }m.
-> ```*
-
-The Lean declaration below states this result.
-
-[`ErdosProblems.Erdos68.PaperComplete.companion_orbit`](https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos68/PaperCompleteExisting.lean#L38)
-
-```lean
-theorem companion_orbit :
-    ¬ Irrational _root_.Erdos68.factorialGapSeries ↔
-      ∃ M : ℕ, ∀ m : ℕ, M ≤ m →
-        (facFloor companionConstant m + 2) % (m : ℤ) = 0
-```
-
-<a id="long68-res-companion-orbit-comparator"></a>
-
-**Comparator: passed** (run 35935225572, corpus commit `cc7e541cf208`).
-
-For each Lean declaration: the Challenge (the target, stated from Mathlib alone), the Solution (our proof) and the replay report.
-
-- `companion_orbit`: [Challenge](https://github.com/wcook04/plectis-erdos-lean/blob/cc7e541cf2081c6fef5a5e377d52e365e33b01eb/PalomarCorpus/E68_01/Challenge.lean#L88) (E68_01, line 88), [Solution](https://github.com/wcook04/plectis-erdos-lean/blob/cc7e541cf2081c6fef5a5e377d52e365e33b01eb/Solutions/PalomarCorpus/E68_01/PaperStatementsA.lean#L155) (PaperStatementsA.lean, line 155), [replay report](../evidence/comparator/replay-35935225572/receipt-E68_01.json) (E68_01)
-
-Challenge for `companion_orbit`:
-
-```lean
-theorem companion_orbit :
-    ¬ Irrational factorialGapSeries ↔
-      ∃ M : ℕ, ∀ m : ℕ, M ≤ m →
-        (facFloor companionConstant m + 2) % (m : ℤ) = 0 := by sorry
-```
-
-<a id="long68-res-lower-escape"></a>
-
-## Proposition 3.3 (lower-interval criterion), page 10
-
-> *``` math
-> \begin{equation}
-> \label{long68:eq:lower-escape}
->  S\notin\mathbb{Q}
->  \quad\Longleftrightarrow\quad
->  \forall B\ \exists m>B:\ E_m\le m\theta_{m-1}.
-> \end{equation}
-> ```
-> For $`m\ge3`$ the finite condition
-> ``` math
-> \begin{equation}
-> \label{long68:eq:finite-escape}
->  m\Delta_m\le1+\varepsilon_m
->  \quad\hbox{or}\quad
->  1+\varepsilon_m+\frac2m\le m\Delta_m
-> \end{equation}
-> ```
-> implies the escape inequality in (10). Cofinally many instances of (11) therefore imply $`S\notin\mathbb{Q}`$.*
-
-The Lean declaration below states this result.
-
-[`ErdosProblems.Erdos68.PaperComplete.lower_interval_criterion`](https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos68/PaperCompleteExisting.lean#L102)
-
-```lean
-theorem lower_interval_criterion :
-    (Irrational _root_.Erdos68.factorialGapSeries ↔
-      ∀ B : ℕ, ∃ m : ℕ, B < m ∧
-        factorialGapScaledTail m ≤
-          (m : ℝ) * canonicalRemainder _root_.Erdos68.factorialGapSeries (m - 1)) ∧
-    (∀ m : ℕ, 3 ≤ m →
-      ((m : ℝ) * factorialGapPredecessorGap m ≤ 1 + 1 / ((m.factorial : ℝ) - 1) ∨
-        1 + 1 / ((m.factorial : ℝ) - 1) + 2 / (m : ℝ) ≤
-          (m : ℝ) * factorialGapPredecessorGap m) →
-      factorialGapScaledTail m ≤
-        (m : ℝ) * canonicalRemainder _root_.Erdos68.factorialGapSeries (m - 1)) ∧
-    ((∀ B : ℕ, ∃ m : ℕ, 3 ≤ m ∧ B < m ∧
-      ((m : ℝ) * factorialGapPredecessorGap m ≤ 1 + 1 / ((m.factorial : ℝ) - 1) ∨
-        1 + 1 / ((m.factorial : ℝ) - 1) + 2 / (m : ℝ) ≤
-          (m : ℝ) * factorialGapPredecessorGap m)) →
-      Irrational _root_.Erdos68.factorialGapSeries)
-```
-
-<a id="long68-res-lower-escape-comparator"></a>
-
-**Comparator: passed** (run 35935225572, corpus commit `cc7e541cf208`).
-
-For each Lean declaration: the Challenge (the target, stated from Mathlib alone), the Solution (our proof) and the replay report.
-
-- `lower_interval_criterion`: [Challenge](https://github.com/wcook04/plectis-erdos-lean/blob/cc7e541cf2081c6fef5a5e377d52e365e33b01eb/PalomarCorpus/E68_01/Challenge.lean#L94) (E68_01, line 94), [Solution](https://github.com/wcook04/plectis-erdos-lean/blob/cc7e541cf2081c6fef5a5e377d52e365e33b01eb/Solutions/PalomarCorpus/E68_01/PaperStatementsA.lean#L207) (PaperStatementsA.lean, line 207), [replay report](../evidence/comparator/replay-35935225572/receipt-E68_01.json) (E68_01)
-
-Challenge for `lower_interval_criterion`:
-
-```lean
-theorem lower_interval_criterion :
-    (Irrational factorialGapSeries ↔
-      ∀ B : ℕ, ∃ m : ℕ, B < m ∧
-        factorialGapScaledTail m ≤
-          (m : ℝ) * canonicalRemainder factorialGapSeries (m - 1)) ∧
-    (∀ m : ℕ, 3 ≤ m →
-      ((m : ℝ) * factorialGapPredecessorGap m ≤ 1 + 1 / ((m.factorial : ℝ) - 1) ∨
-        1 + 1 / ((m.factorial : ℝ) - 1) + 2 / (m : ℝ) ≤
-          (m : ℝ) * factorialGapPredecessorGap m) →
-      factorialGapScaledTail m ≤
-        (m : ℝ) * canonicalRemainder factorialGapSeries (m - 1)) ∧
-    ((∀ B : ℕ, ∃ m : ℕ, 3 ≤ m ∧ B < m ∧
-      ((m : ℝ) * factorialGapPredecessorGap m ≤ 1 + 1 / ((m.factorial : ℝ) - 1) ∨
-        1 + 1 / ((m.factorial : ℝ) - 1) + 2 / (m : ℝ) ≤
-          (m : ℝ) * factorialGapPredecessorGap m)) →
-      Irrational factorialGapSeries) := by sorry
-```
-
-<a id="long68-res-shift-family"></a>
-
-## Theorem 3.4 (a criterion for the shifts $`t\ge-1`$), page 12
-
-> *For every integer $`t\ge-1`$, the series $`S_t`$ is rational exactly when
-> ``` math
-> \bigl\lceil t\,m!\,C_t\bigr\rceil\equiv2\pmod m
-> ```
-> for all sufficiently large $`m`$, and irrational exactly when that residue is missed cofinally. The member $`t=-1`$ is $`S`$, and the member $`t=0`$ is $`e-2`$, for which the scaled correction is always $`0`$ and hence misses the residue class at every $`m\ge3`$, proving the irrationality of $`e`$.*
-
-The Lean declarations below together state this result.
-
-1. [`ErdosProblems.Erdos68.PaperComplete.uniform_family_boundary`](https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos68/PaperCompleteExisting.lean#L123)
-
-```lean
-theorem uniform_family_boundary {t : ℤ} (ht : -1 ≤ t) :
-    (¬ Irrational (shiftGapSeries t) ↔
-      ∃ M : ℕ, ∀ m : ℕ, M ≤ m →
-        (m : ℤ) ∣ ⌈(t : ℝ) * (m.factorial : ℝ) * shiftCompanionConstant t⌉ - 2) ∧
-    (Irrational (shiftGapSeries t) ↔
-      ∀ B : ℕ, ∃ m : ℕ, B < m ∧
-        ¬ (m : ℤ) ∣ ⌈(t : ℝ) * (m.factorial : ℝ) * shiftCompanionConstant t⌉ - 2)
-```
-
-2. [`ErdosProblems.Erdos68.PaperComplete.uniform_family_members`](https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos68/PaperCompleteExisting.lean#L134)
-
-```lean
-theorem uniform_family_members :
-    shiftGapSeries (-1) = _root_.Erdos68.factorialGapSeries ∧
-    shiftGapSeries 0 = Real.exp 1 - 2 ∧
-    (∀ m : ℕ, ⌈(0 : ℝ) * (m.factorial : ℝ) * shiftCompanionConstant 0⌉ = 0) ∧
-    (∀ m : ℕ, 3 ≤ m → ¬ (m : ℤ) ∣ (0 : ℤ) - 2) ∧
-    Irrational (Real.exp 1)
-```
-
-<a id="long68-res-shift-family-comparator"></a>
-
-**Comparator: passed** (run 35935225572, corpus commit `cc7e541cf208`).
-
-For each Lean declaration: the Challenge (the target, stated from Mathlib alone), the Solution (our proof) and the replay report.
-
-- `uniform_family_boundary`: [Challenge](https://github.com/wcook04/plectis-erdos-lean/blob/cc7e541cf2081c6fef5a5e377d52e365e33b01eb/PalomarCorpus/E68_02/Challenge.lean#L85) (E68_02, line 85), [Solution](https://github.com/wcook04/plectis-erdos-lean/blob/cc7e541cf2081c6fef5a5e377d52e365e33b01eb/Solutions/PalomarCorpus/E68_02/PaperStatementsC.lean#L39) (PaperStatementsC.lean, line 39), [replay report](../evidence/comparator/replay-35935225572/receipt-E68_02.json) (E68_02)
-- `uniform_family_members`: [Challenge](https://github.com/wcook04/plectis-erdos-lean/blob/cc7e541cf2081c6fef5a5e377d52e365e33b01eb/PalomarCorpus/E68_02/Challenge.lean#L94) (E68_02, line 94), [Solution](https://github.com/wcook04/plectis-erdos-lean/blob/cc7e541cf2081c6fef5a5e377d52e365e33b01eb/Solutions/PalomarCorpus/E68_02/PaperStatementsC.lean#L47) (PaperStatementsC.lean, line 47), [replay report](../evidence/comparator/replay-35935225572/receipt-E68_02.json) (E68_02)
-
-Each Challenge states the same proposition as the Lean declaration it targets except where shown below, with every definition it uses restated from Mathlib alone.
-
-Challenge for `uniform_family_members`:
-
-```lean
-theorem uniform_family_members :
-    shiftGapSeries (-1) = factorialGapSeries ∧
-    shiftGapSeries 0 = Real.exp 1 - 2 ∧
-    (∀ m : ℕ, ⌈(0 : ℝ) * (m.factorial : ℝ) * shiftCompanionConstant 0⌉ = 0) ∧
-    (∀ m : ℕ, 3 ≤ m → ¬ (m : ℤ) ∣ (0 : ℤ) - 2) ∧
-    Irrational (Real.exp 1) := by sorry
-```
-
-<a id="long68-res-global-residue"></a>
-
-## Theorem 4.1 (a sufficient tail inequality), page 13
-
-> *Suppose that for every $`B`$ there is a natural parameter $`p\ge3`$ with $`p>B`$, $`R_p>1`$, and
-> ``` math
-> \begin{equation}
-> \label{long68:eq:global-scale}
->  (2p+1)L^{\mathrm{blk}}_p<K_p\rho_p .
-> \end{equation}
-> ```
-> Then $`S`$ is irrational.*
-
-The Lean declaration below states this result.
-
-[`ErdosProblems.Erdos68.PaperComplete.global_complementary_criterion_nat`](https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos68/PaperCompleteExisting.lean#L154)
-
-```lean
-theorem global_complementary_criterion_nat
-    (hcert : ∀ B : ℕ, ∃ p : ℕ,
-      3 ≤ p ∧ B < p ∧ 1 < factorialBlockPrivateModulus p ∧
-      factorialBlockBudget p * factorialBlockEndpointLcm p <
-        factorialBlockScale p * complementaryProjectedResidue
-          (factorialBlockTailNumerator p) (factorialBlockPrivateModulus p)) :
-    Irrational _root_.Erdos68.factorialGapSeries
-```
-
-<a id="long68-res-global-residue-comparator"></a>
-
-**Comparator: passed** (run 35935225572, corpus commit `cc7e541cf208`).
-
-For each Lean declaration: the Challenge (the target, stated from Mathlib alone), the Solution (our proof) and the replay report.
-
-- `global_complementary_criterion_nat`: [Challenge](https://github.com/wcook04/plectis-erdos-lean/blob/cc7e541cf2081c6fef5a5e377d52e365e33b01eb/PalomarCorpus/E68_05/Challenge.lean#L220) (E68_05, line 220), [Solution](https://github.com/wcook04/plectis-erdos-lean/blob/cc7e541cf2081c6fef5a5e377d52e365e33b01eb/Solutions/PalomarCorpus/E68_05/PaperStatementsA.lean#L86) (PaperStatementsA.lean, line 86), [replay report](../evidence/comparator/replay-35935225572/receipt-E68_05.json) (E68_05)
-
-Challenge for `global_complementary_criterion_nat`:
-
-```lean
-theorem global_complementary_criterion_nat
-    (hcert : ∀ B : ℕ, ∃ p : ℕ,
-      3 ≤ p ∧ B < p ∧ 1 < factorialBlockPrivateModulus p ∧
-      factorialBlockBudget p * factorialBlockEndpointLcm p <
-        factorialBlockScale p * complementaryProjectedResidue
-          (factorialBlockTailNumerator p) (factorialBlockPrivateModulus p)) :
-    Irrational factorialGapSeries := by sorry
-```
-
 <a id="long68-res-normalform"></a>
 
-## Theorem 5.1 (divisibility of the difference), page 15
+## Theorem 1.1 (divisibility of the difference), page 2
 
 > *For every finite integer support and every $`d\ge2`$ there is an integer $`k`$ with $`V_{d}(c)=M(c)+(d!-1)k`$.*
 
@@ -539,7 +35,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long68-res-bandbreakpoint"></a>
 
-## Theorem 5.2 (constant values of the floor in the weights), page 16
+## Theorem 1.2 (constant values of the floor in the weights), page 3
 
 > *Let $`d\ge2`$ and $`k\ge0`$, and suppose every supported index $`i`$ satisfies $`kd\le i<(k+1)d`$. Then $`M(c)=(d!)^kV_{d}(c)`$. In particular, cancellation on the interval $`d\le i<2d`$ forces $`M(c)=0`$; and if every supported index is at least $`d`$ while $`M(c)\ne0`$ and $`V_{d}(c)=0`$, then some supported index is at least $`2d`$.*
 
@@ -586,7 +82,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long68-res-moment-ideal"></a>
 
-## Theorem 5.3 (the set of attainable moments), page 17
+## Theorem 1.3 (the set of attainable moments), page 5
 
 > *Fix $`D\ge2`$ and a prime $`p`$ with $`D/2<p\le D`$. Put
 > ``` math
@@ -631,9 +127,9 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long68-res-residual-transparency"></a>
 
-## Theorem 5.4 (how the coefficient choices change the remainder), page 19
+## Theorem 1.4 (how the coefficient choices change the remainder), page 7
 
-> *For the vector in (19),
+> *For the vector in (2),
 > ``` math
 > \mathcal R\!\left(tK_D+\sum_{n>D}z_nU_n\right)
 >  =tL_D(S-H_D)+\sum_{n>D}z_n.
@@ -702,7 +198,7 @@ theorem residual_transparency {D : ℕ} (hD : 2 ≤ D) (t : ℤ)
 
 <a id="long68-res-channel-radius"></a>
 
-## Theorem 5.5 (a lower bound for the support parameter), page 21
+## Theorem 1.5 (a lower bound for the support parameter), page 8
 
 > *Let $`t,M,R\in\mathbb{N}`$ satisfy
 > ``` math
@@ -788,7 +284,7 @@ theorem radius_not_littleO (M R : ℕ → ℕ)
 
 <a id="long68-res-radius-constant"></a>
 
-## Corollary 5.6 (the asymptotic lower bound), page 21
+## Corollary 1.6 (the asymptotic lower bound), page 9
 
 > *Let $`M(t),R(t)`$ satisfy $`M(t)>0`$, $`L_{2t^2}\mid M(t)`$ and $`M(t)<(R(t)+1)!-1`$ for all sufficiently large $`t`$. Then
 > ``` math
@@ -831,7 +327,7 @@ theorem asymptotic_radius_constant_liminf (M R : ℕ → ℕ)
 
 <a id="long68-res-translator"></a>
 
-## Theorem 5.7 (changing just one weighted sum), page 22
+## Theorem 1.7 (changing just one weighted sum), page 10
 
 > *Let $`p\ge3`$ be prime and let $`c_{p-1}=p`$, $`c_p=-1`$, with every other coefficient zero. Then $`M(c)=0`$, $`V_{p}(c)=p!-1`$, and $`V_{d}(c)=0`$ for every $`d\ge2`$ with $`d\ne p`$.*
 
@@ -869,4 +365,508 @@ theorem prime_channel_corrector {p : ℕ} (hp : p.Prime) :
     (∀ d : ℕ, 2 ≤ d → d ≠ p →
       channelNumerator (primeTranslatorCoeff p)
         (primeTranslatorIndex p) d = 0) := by sorry
+```
+
+<a id="long68-res-prime-pole"></a>
+
+## Theorem 2.1 (maximal prime-power survival), page 12
+
+> *Let $`M\ge2`$, let $`p`$ be a prime dividing $`L_M`$, and put $`e=v_p(L_M)`$. Let $`J=\{n:2\le n\le M,\ v_p(d_n)=e\}`$ and write $`d_n=p^eu_n`$ for $`n\in J`$. Then, with inverses in $`\mathbb F_p`$,
+> ``` math
+> \begin{equation}
+> \label{long68:eq:prime-pole-survival}
+>  v_p\bigl(\operatorname{den}(H_M)\bigr)=e
+>  \quad\Longleftrightarrow\quad
+>  \sum_{n\in J}u_n^{-1}\ne0\quad\hbox{in }\mathbb F_p.
+> \end{equation}
+> ```*
+
+The Lean declaration below states this result.
+
+[`ErdosProblems.Erdos68.PaperComplete.maximal_prime_power_survival`](https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos68/PaperCompletePrimePole.lean#L117)
+
+```lean
+theorem maximal_prime_power_survival {M p : ℕ} (_hM : 2 ≤ M)
+    (hp : p.Prime) (hpL : p ∣ factorialGapPrefixLCM M) :
+    (factorialGapPrefix M).den.factorization p =
+        (factorialGapPrefixLCM M).factorization p ↔
+      (∑ n ∈ (Finset.Icc 2 M).filter
+          (fun n => (n.factorial - 1).factorization p =
+            (factorialGapPrefixLCM M).factorization p),
+        (((n.factorial - 1) /
+          p ^ (factorialGapPrefixLCM M).factorization p : ℕ) : ZMod p)⁻¹) ≠ 0
+```
+
+<a id="long68-res-prime-pole-comparator"></a>
+
+**Comparator: passed** (run 35935225572, corpus commit `cc7e541cf208`).
+
+For each Lean declaration: the Challenge (the target, stated from Mathlib alone), the Solution (our proof) and the replay report.
+
+- `maximal_prime_power_survival`: [Challenge](https://github.com/wcook04/plectis-erdos-lean/blob/cc7e541cf2081c6fef5a5e377d52e365e33b01eb/PalomarCorpus/E68_01/Challenge.lean#L112) (E68_01, line 112), [Solution](https://github.com/wcook04/plectis-erdos-lean/blob/cc7e541cf2081c6fef5a5e377d52e365e33b01eb/Solutions/PalomarCorpus/E68_01/PaperStatementsA.lean#L224) (PaperStatementsA.lean, line 224), [replay report](../evidence/comparator/replay-35935225572/receipt-E68_01.json) (E68_01)
+
+Each Challenge states the same proposition as the Lean declaration it targets, with every definition it uses restated from Mathlib alone.
+
+<a id="long68-res-wilson-cofinality"></a>
+
+## Proposition 2.2 (cofinal first prime occurrences), page 13
+
+> *For every integer $`B\ge0`$ there are a prime $`q`$ and an integer $`m>B`$ with $`m<q`$, $`q\mid m!-1`$ and $`\gcd(q,k!-1)=1`$ for every $`k`$ with $`2\le k<m`$.*
+
+The Lean declaration below states this result.
+
+[`ErdosProblems.Erdos68.PaperComplete.cofinal_first_prime_occurrences`](https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos68/PaperCompleteExisting.lean#L180)
+
+```lean
+theorem cofinal_first_prime_occurrences :
+    ∀ B : ℕ, ∃ q m : ℕ, B < m ∧ q.Prime ∧ m < q ∧
+      q ∣ m.factorial - 1 ∧
+      ∀ k : ℕ, 2 ≤ k → k < m → Nat.Coprime q (k.factorial - 1)
+```
+
+<a id="long68-res-wilson-cofinality-comparator"></a>
+
+**Comparator: passed** (run 35935225572, corpus commit `cc7e541cf208`).
+
+For each Lean declaration: the Challenge (the target, stated from Mathlib alone), the Solution (our proof) and the replay report.
+
+- `cofinal_first_prime_occurrences`: [Challenge](https://github.com/wcook04/plectis-erdos-lean/blob/cc7e541cf2081c6fef5a5e377d52e365e33b01eb/PalomarCorpus/E68_01/Challenge.lean#L82) (E68_01, line 82), [Solution](https://github.com/wcook04/plectis-erdos-lean/blob/cc7e541cf2081c6fef5a5e377d52e365e33b01eb/Solutions/PalomarCorpus/E68_01/PaperStatementsA.lean#L150) (PaperStatementsA.lean, line 150), [replay report](../evidence/comparator/replay-35935225572/receipt-E68_01.json) (E68_01)
+
+Each Challenge states the same proposition as the Lean declaration it targets, with every definition it uses restated from Mathlib alone.
+
+<a id="long68-res-product-lcm"></a>
+
+## Lemma 3.1 (product, least common multiple, pairwise gcd), page 14
+
+> *For positive integers $`x_1,\ldots,x_k`$,
+> ``` math
+> \prod_{i=1}^{k}x_i\ \Big|\ \operatorname{lcm}(x_1,\ldots,x_k)\prod_{i<j}\gcd(x_i,x_j).
+> ```*
+
+The Lean declaration below states this result.
+
+[`ErdosProblems.Erdos68.PaperComplete.product_lcm_pairwise_gcd`](https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos68/PaperCompleteExisting.lean#L189)
+
+```lean
+theorem product_lcm_pairwise_gcd (xs : List ℕ) :
+    xs.prod ∣ _root_.Erdos68.listLCM xs * _root_.Erdos68.pairwiseGCDProduct xs
+```
+
+<a id="long68-res-product-lcm-comparator"></a>
+
+**Comparator: passed** (run 35935225572, corpus commit `cc7e541cf208`).
+
+For each Lean declaration: the Challenge (the target, stated from Mathlib alone), the Solution (our proof) and the replay report.
+
+- `product_lcm_pairwise_gcd`: [Challenge](https://github.com/wcook04/plectis-erdos-lean/blob/cc7e541cf2081c6fef5a5e377d52e365e33b01eb/PalomarCorpus/E68_01/Challenge.lean#L136) (E68_01, line 136), [Solution](https://github.com/wcook04/plectis-erdos-lean/blob/cc7e541cf2081c6fef5a5e377d52e365e33b01eb/Solutions/PalomarCorpus/E68_01/PaperStatementsE.lean#L17) (PaperStatementsE.lean, line 17), [replay report](../evidence/comparator/replay-35935225572/receipt-E68_01.json) (E68_01)
+
+Challenge for `product_lcm_pairwise_gcd`:
+
+```lean
+theorem product_lcm_pairwise_gcd (xs : List ℕ) :
+    xs.prod ∣ listLCM xs * pairwiseGCDProduct xs := by sorry
+```
+
+<a id="long68-res-gap-gcd"></a>
+
+## Lemma 3.2 (factorial-gap gcd), page 14
+
+> *For $`2\le i<j`$, the integer $`g=\gcd(i!-1,j!-1)`$ divides $`j!/i!-1`$, and $`g\le j!/i!-1<j^{\,j-i}`$.*
+
+The Lean declaration below states this result.
+
+[`Erdos68.factorial_gap_gcd_exact`](https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos68/ChannelIntegralCongruence.lean#L288)
+
+```lean
+theorem factorial_gap_gcd_exact
+    {m n : ℕ} (hm : 2 ≤ m) (hmn : m < n) :
+    let g := Nat.gcd (m.factorial - 1) (n.factorial - 1)
+    let Q := n.descFactorial (n - m)
+    g ∣ Q - 1 ∧ g ≤ Q - 1 ∧ Q - 1 < n ^ (n - m)
+```
+
+<a id="long68-res-gap-gcd-comparator"></a>
+
+**Comparator: passed** (run 35935225572, corpus commit `cc7e541cf208`).
+
+For each Lean declaration: the Challenge (the target, stated from Mathlib alone), the Solution (our proof) and the replay report.
+
+- `factorial_gap_gcd_exact`: [Challenge](https://github.com/wcook04/plectis-erdos-lean/blob/cc7e541cf2081c6fef5a5e377d52e365e33b01eb/PalomarCorpus/E68_01/Challenge.lean#L146) (E68_01, line 146), [Solution](https://github.com/wcook04/plectis-erdos-lean/blob/cc7e541cf2081c6fef5a5e377d52e365e33b01eb/Solutions/PalomarCorpus/E68_01/FactorialGapBounds.lean#L19) (FactorialGapBounds.lean, line 19), [replay report](../evidence/comparator/replay-35935225572/receipt-E68_01.json) (E68_01)
+
+Each Challenge states the same proposition as the Lean declaration it targets, with every definition it uses restated from Mathlib alone.
+
+<a id="long68-res-segment"></a>
+
+## Lemma 3.3 (segment inequality), page 14
+
+> *For $`2\le k\le N-1`$,
+> ``` math
+> \begin{equation}
+> \label{long68:eq:segment}
+>  \sum_{n=N-k+1}^{N}\log(n!-1)
+>  \ \le\ \log L_N+\binom{k+1}{3}\log N.
+> \end{equation}
+> ```*
+
+The Lean declaration below states this result or one that implies it. The Lean inequality holds for every $k$ with $0\le k\le N-1$; the printed statement is its range $2\le k\le N-1$.
+
+[`Erdos68.factorialGapSegment_log_sum_le_channelLCM_add_choose`](https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos68/ChannelIntegralCongruence.lean#L566)
+
+```lean
+theorem factorialGapSegment_log_sum_le_channelLCM_add_choose
+    {D k : ℕ} (hkD : k < D) :
+    (∑ n ∈ Finset.Ico (D + 1 - k) (D + 1),
+      Real.log ((n.factorial - 1 : ℕ) : ℝ)) ≤
+      Real.log (channelLCM D : ℝ) +
+        (((k + 1).choose 3 : ℕ) : ℝ) * Real.log (D : ℝ)
+```
+
+<a id="long68-res-segment-comparator"></a>
+
+**Comparator: passed** (run 35935225572, corpus commit `cc7e541cf208`).
+
+For each Lean declaration: the Challenge (the target, stated from Mathlib alone), the Solution (our proof) and the replay report.
+
+- `factorialGapSegment_log_sum_le_channelLCM_add_choose`: [Challenge](https://github.com/wcook04/plectis-erdos-lean/blob/cc7e541cf2081c6fef5a5e377d52e365e33b01eb/PalomarCorpus/E68_01/Challenge.lean#L153) (E68_01, line 153), [Solution](https://github.com/wcook04/plectis-erdos-lean/blob/cc7e541cf2081c6fef5a5e377d52e365e33b01eb/Solutions/PalomarCorpus/E68_01/FactorialGapBounds.lean#L27) (FactorialGapBounds.lean, line 27), [replay report](../evidence/comparator/replay-35935225572/receipt-E68_01.json) (E68_01)
+
+Each Challenge states the same proposition as the Lean declaration it targets, with every definition it uses restated from Mathlib alone.
+
+<a id="long68-res-lcm-growth"></a>
+
+## Theorem 3.4 (common-denominator growth), page 15
+
+> *``` math
+> \liminf_{N\to\infty}\frac{\log L_N}{N^{3/2}\log N}
+>  \ \ge\ \frac{2\sqrt2}{3}.
+> ```*
+
+The Lean declaration below states this result.
+
+[`ErdosProblems.Erdos68.PaperComplete.common_denominator_growth_liminf`](https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos68/PaperCompleteLiminf.lean#L42)
+
+```lean
+theorem common_denominator_growth_liminf :
+    ((2 * Real.sqrt 2 / 3 : ℝ) : EReal) ≤
+      Filter.liminf (fun N : ℕ =>
+        ((Real.log (_root_.Erdos68.channelLCM N : ℝ) /
+          ((N : ℝ) ^ ((3 : ℝ) / 2) * Real.log (N : ℝ)) : ℝ) : EReal)) atTop
+```
+
+<a id="long68-res-lcm-growth-comparator"></a>
+
+**Comparator: passed** (run 35935225572, corpus commit `cc7e541cf208`).
+
+For each Lean declaration: the Challenge (the target, stated from Mathlib alone), the Solution (our proof) and the replay report.
+
+- `common_denominator_growth_liminf`: [Challenge](https://github.com/wcook04/plectis-erdos-lean/blob/cc7e541cf2081c6fef5a5e377d52e365e33b01eb/PalomarCorpus/E68_01/Challenge.lean#L166) (E68_01, line 166), [Solution](https://github.com/wcook04/plectis-erdos-lean/blob/cc7e541cf2081c6fef5a5e377d52e365e33b01eb/Solutions/PalomarCorpus/E68_01/CommonDenominatorGrowth.lean#L30) (CommonDenominatorGrowth.lean, line 30), [replay report](../evidence/comparator/replay-35935225572/receipt-E68_01.json) (E68_01)
+
+Challenge for `common_denominator_growth_liminf`:
+
+```lean
+theorem common_denominator_growth_liminf :
+    ((2 * Real.sqrt 2 / 3 : ℝ) : EReal) ≤
+      Filter.liminf (fun N : ℕ =>
+        ((Real.log (channelLCM N : ℝ) /
+          ((N : ℝ) ^ ((3 : ℝ) / 2) * Real.log (N : ℝ)) : ℝ) : EReal)) atTop := by sorry
+```
+
+<a id="long68-res-carry-equivalence"></a>
+
+## Theorem 4.1 (an exact criterion from successive partial sums), page 17
+
+> *For $`m\ge3`$,
+> ``` math
+> \begin{equation}
+> \label{long68:eq:unit-window}
+>  b_m=1
+>  \iff m\mid Z_m
+>  \iff 1+\varepsilon_m<m\Delta_m\le2+\varepsilon_m .
+> \end{equation}
+> ```*
+>
+> *Moreover
+> ``` math
+> \begin{align}
+>  S\in\mathbb{Q}
+>  &\iff b_m=1\ \hbox{for all sufficiently large }m,
+>  \label{long68:eq:carry-rationality}\\
+>  S\notin\mathbb{Q}
+>  &\iff \forall B\ \exists m>B:\ m\nmid Z_m .
+>  \label{long68:eq:strict-misses}
+> \end{align}
+> ```
+> If $`S=a/q`$ with $`a\in\mathbb{Z}`$, $`q\ge1`$ and $`b_m\ne1`$, then $`q\nmid(m-1)!`$ and $`q\ge m`$.*
+
+The Lean declaration below states this result.
+
+[`ErdosProblems.Erdos68.PaperComplete.strict_successor_characterisation`](https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos68/PaperCompleteExisting.lean#L77)
+
+```lean
+theorem strict_successor_characterisation :
+    (∀ m : ℕ, 3 ≤ m →
+      (factorialGapStepCarry m = 1 ↔
+        (m : ℤ) ∣ strictFacTopRat (factorialGapPrefix m) m) ∧
+      ((m : ℤ) ∣ strictFacTopRat (factorialGapPrefix m) m ↔
+        1 + 1 / ((m.factorial : ℝ) - 1) <
+            (m : ℝ) * factorialGapPredecessorGap m ∧
+        (m : ℝ) * factorialGapPredecessorGap m ≤
+            2 + 1 / ((m.factorial : ℝ) - 1))) ∧
+    (¬ Irrational _root_.Erdos68.factorialGapSeries ↔
+      ∃ M : ℕ, ∀ m : ℕ, M ≤ m → factorialGapStepCarry m = 1) ∧
+    (Irrational _root_.Erdos68.factorialGapSeries ↔
+      ∀ B : ℕ, ∃ m : ℕ, B < m ∧
+        ¬ (m : ℤ) ∣ strictFacTopRat (factorialGapPrefix m) m) ∧
+    (∀ (m q : ℕ) (a : ℤ), 3 ≤ m → 0 < q →
+      _root_.Erdos68.factorialGapSeries = (a : ℝ) / (q : ℝ) →
+      factorialGapStepCarry m ≠ 1 →
+      (¬ q ∣ (m - 1).factorial) ∧ m ≤ q)
+```
+
+<a id="long68-res-carry-equivalence-comparator"></a>
+
+**Comparator: passed** (run 35935225572, corpus commit `cc7e541cf208`).
+
+For each Lean declaration: the Challenge (the target, stated from Mathlib alone), the Solution (our proof) and the replay report.
+
+- `strict_successor_characterisation`: [Challenge](https://github.com/wcook04/plectis-erdos-lean/blob/cc7e541cf2081c6fef5a5e377d52e365e33b01eb/PalomarCorpus/E68_01/Challenge.lean#L185) (E68_01, line 185), [Solution](https://github.com/wcook04/plectis-erdos-lean/blob/cc7e541cf2081c6fef5a5e377d52e365e33b01eb/Solutions/PalomarCorpus/E68_01/PaperStatementsB.lean#L66) (PaperStatementsB.lean, line 66), [replay report](../evidence/comparator/replay-35935225572/receipt-E68_01.json) (E68_01)
+
+Challenge for `strict_successor_characterisation`:
+
+```lean
+theorem strict_successor_characterisation :
+    (∀ m : ℕ, 3 ≤ m →
+      (factorialGapStepCarry m = 1 ↔
+        (m : ℤ) ∣ strictFacTopRat (factorialGapPrefix m) m) ∧
+      ((m : ℤ) ∣ strictFacTopRat (factorialGapPrefix m) m ↔
+        1 + 1 / ((m.factorial : ℝ) - 1) <
+            (m : ℝ) * factorialGapPredecessorGap m ∧
+        (m : ℝ) * factorialGapPredecessorGap m ≤
+            2 + 1 / ((m.factorial : ℝ) - 1))) ∧
+    (¬ Irrational factorialGapSeries ↔
+      ∃ M : ℕ, ∀ m : ℕ, M ≤ m → factorialGapStepCarry m = 1) ∧
+    (Irrational factorialGapSeries ↔
+      ∀ B : ℕ, ∃ m : ℕ, B < m ∧
+        ¬ (m : ℤ) ∣ strictFacTopRat (factorialGapPrefix m) m) ∧
+    (∀ (m q : ℕ) (a : ℤ), 3 ≤ m → 0 < q →
+      factorialGapSeries = (a : ℝ) / (q : ℝ) →
+      factorialGapStepCarry m ≠ 1 →
+      (¬ q ∣ (m - 1).factorial) ∧ m ≤ q) := by sorry
+```
+
+<a id="long68-res-companion-orbit"></a>
+
+## Proposition 4.2 (rationality and factorial residues), page 19
+
+> *``` math
+> S\in\mathbb{Q}
+>  \quad\Longleftrightarrow\quad
+>  \lfloor m!C\rfloor\equiv-2\pmod m
+>  \quad\hbox{for all sufficiently large }m.
+> ```*
+
+The Lean declaration below states this result.
+
+[`ErdosProblems.Erdos68.PaperComplete.companion_orbit`](https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos68/PaperCompleteExisting.lean#L38)
+
+```lean
+theorem companion_orbit :
+    ¬ Irrational _root_.Erdos68.factorialGapSeries ↔
+      ∃ M : ℕ, ∀ m : ℕ, M ≤ m →
+        (facFloor companionConstant m + 2) % (m : ℤ) = 0
+```
+
+<a id="long68-res-companion-orbit-comparator"></a>
+
+**Comparator: passed** (run 35935225572, corpus commit `cc7e541cf208`).
+
+For each Lean declaration: the Challenge (the target, stated from Mathlib alone), the Solution (our proof) and the replay report.
+
+- `companion_orbit`: [Challenge](https://github.com/wcook04/plectis-erdos-lean/blob/cc7e541cf2081c6fef5a5e377d52e365e33b01eb/PalomarCorpus/E68_01/Challenge.lean#L88) (E68_01, line 88), [Solution](https://github.com/wcook04/plectis-erdos-lean/blob/cc7e541cf2081c6fef5a5e377d52e365e33b01eb/Solutions/PalomarCorpus/E68_01/PaperStatementsA.lean#L155) (PaperStatementsA.lean, line 155), [replay report](../evidence/comparator/replay-35935225572/receipt-E68_01.json) (E68_01)
+
+Challenge for `companion_orbit`:
+
+```lean
+theorem companion_orbit :
+    ¬ Irrational factorialGapSeries ↔
+      ∃ M : ℕ, ∀ m : ℕ, M ≤ m →
+        (facFloor companionConstant m + 2) % (m : ℤ) = 0 := by sorry
+```
+
+<a id="long68-res-lower-escape"></a>
+
+## Proposition 4.3 (lower-interval criterion), page 20
+
+> *``` math
+> \begin{equation}
+> \label{long68:eq:lower-escape}
+>  S\notin\mathbb{Q}
+>  \quad\Longleftrightarrow\quad
+>  \forall B\ \exists m>B:\ E_m\le m\theta_{m-1}.
+> \end{equation}
+> ```
+> For $`m\ge3`$ the finite condition
+> ``` math
+> \begin{equation}
+> \label{long68:eq:finite-escape}
+>  m\Delta_m\le1+\varepsilon_m
+>  \quad\hbox{or}\quad
+>  1+\varepsilon_m+\frac2m\le m\Delta_m
+> \end{equation}
+> ```
+> implies the escape inequality in (17). Cofinally many instances of (18) therefore imply $`S\notin\mathbb{Q}`$.*
+
+The Lean declaration below states this result.
+
+[`ErdosProblems.Erdos68.PaperComplete.lower_interval_criterion`](https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos68/PaperCompleteExisting.lean#L102)
+
+```lean
+theorem lower_interval_criterion :
+    (Irrational _root_.Erdos68.factorialGapSeries ↔
+      ∀ B : ℕ, ∃ m : ℕ, B < m ∧
+        factorialGapScaledTail m ≤
+          (m : ℝ) * canonicalRemainder _root_.Erdos68.factorialGapSeries (m - 1)) ∧
+    (∀ m : ℕ, 3 ≤ m →
+      ((m : ℝ) * factorialGapPredecessorGap m ≤ 1 + 1 / ((m.factorial : ℝ) - 1) ∨
+        1 + 1 / ((m.factorial : ℝ) - 1) + 2 / (m : ℝ) ≤
+          (m : ℝ) * factorialGapPredecessorGap m) →
+      factorialGapScaledTail m ≤
+        (m : ℝ) * canonicalRemainder _root_.Erdos68.factorialGapSeries (m - 1)) ∧
+    ((∀ B : ℕ, ∃ m : ℕ, 3 ≤ m ∧ B < m ∧
+      ((m : ℝ) * factorialGapPredecessorGap m ≤ 1 + 1 / ((m.factorial : ℝ) - 1) ∨
+        1 + 1 / ((m.factorial : ℝ) - 1) + 2 / (m : ℝ) ≤
+          (m : ℝ) * factorialGapPredecessorGap m)) →
+      Irrational _root_.Erdos68.factorialGapSeries)
+```
+
+<a id="long68-res-lower-escape-comparator"></a>
+
+**Comparator: passed** (run 35935225572, corpus commit `cc7e541cf208`).
+
+For each Lean declaration: the Challenge (the target, stated from Mathlib alone), the Solution (our proof) and the replay report.
+
+- `lower_interval_criterion`: [Challenge](https://github.com/wcook04/plectis-erdos-lean/blob/cc7e541cf2081c6fef5a5e377d52e365e33b01eb/PalomarCorpus/E68_01/Challenge.lean#L94) (E68_01, line 94), [Solution](https://github.com/wcook04/plectis-erdos-lean/blob/cc7e541cf2081c6fef5a5e377d52e365e33b01eb/Solutions/PalomarCorpus/E68_01/PaperStatementsA.lean#L207) (PaperStatementsA.lean, line 207), [replay report](../evidence/comparator/replay-35935225572/receipt-E68_01.json) (E68_01)
+
+Challenge for `lower_interval_criterion`:
+
+```lean
+theorem lower_interval_criterion :
+    (Irrational factorialGapSeries ↔
+      ∀ B : ℕ, ∃ m : ℕ, B < m ∧
+        factorialGapScaledTail m ≤
+          (m : ℝ) * canonicalRemainder factorialGapSeries (m - 1)) ∧
+    (∀ m : ℕ, 3 ≤ m →
+      ((m : ℝ) * factorialGapPredecessorGap m ≤ 1 + 1 / ((m.factorial : ℝ) - 1) ∨
+        1 + 1 / ((m.factorial : ℝ) - 1) + 2 / (m : ℝ) ≤
+          (m : ℝ) * factorialGapPredecessorGap m) →
+      factorialGapScaledTail m ≤
+        (m : ℝ) * canonicalRemainder factorialGapSeries (m - 1)) ∧
+    ((∀ B : ℕ, ∃ m : ℕ, 3 ≤ m ∧ B < m ∧
+      ((m : ℝ) * factorialGapPredecessorGap m ≤ 1 + 1 / ((m.factorial : ℝ) - 1) ∨
+        1 + 1 / ((m.factorial : ℝ) - 1) + 2 / (m : ℝ) ≤
+          (m : ℝ) * factorialGapPredecessorGap m)) →
+      Irrational factorialGapSeries) := by sorry
+```
+
+<a id="long68-res-shift-family"></a>
+
+## Theorem 4.4 (a criterion for the shifts $`t\ge-1`$), page 21
+
+> *For every integer $`t\ge-1`$, the series $`S_t`$ is rational exactly when
+> ``` math
+> \bigl\lceil t\,m!\,C_t\bigr\rceil\equiv2\pmod m
+> ```
+> for all sufficiently large $`m`$, and irrational exactly when that residue is missed cofinally. The member $`t=-1`$ is $`S`$, and the member $`t=0`$ is $`e-2`$, for which the scaled correction is always $`0`$ and hence misses the residue class at every $`m\ge3`$, proving the irrationality of $`e`$.*
+
+The Lean declarations below together state this result.
+
+1. [`ErdosProblems.Erdos68.PaperComplete.uniform_family_boundary`](https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos68/PaperCompleteExisting.lean#L123)
+
+```lean
+theorem uniform_family_boundary {t : ℤ} (ht : -1 ≤ t) :
+    (¬ Irrational (shiftGapSeries t) ↔
+      ∃ M : ℕ, ∀ m : ℕ, M ≤ m →
+        (m : ℤ) ∣ ⌈(t : ℝ) * (m.factorial : ℝ) * shiftCompanionConstant t⌉ - 2) ∧
+    (Irrational (shiftGapSeries t) ↔
+      ∀ B : ℕ, ∃ m : ℕ, B < m ∧
+        ¬ (m : ℤ) ∣ ⌈(t : ℝ) * (m.factorial : ℝ) * shiftCompanionConstant t⌉ - 2)
+```
+
+2. [`ErdosProblems.Erdos68.PaperComplete.uniform_family_members`](https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos68/PaperCompleteExisting.lean#L134)
+
+```lean
+theorem uniform_family_members :
+    shiftGapSeries (-1) = _root_.Erdos68.factorialGapSeries ∧
+    shiftGapSeries 0 = Real.exp 1 - 2 ∧
+    (∀ m : ℕ, ⌈(0 : ℝ) * (m.factorial : ℝ) * shiftCompanionConstant 0⌉ = 0) ∧
+    (∀ m : ℕ, 3 ≤ m → ¬ (m : ℤ) ∣ (0 : ℤ) - 2) ∧
+    Irrational (Real.exp 1)
+```
+
+<a id="long68-res-shift-family-comparator"></a>
+
+**Comparator: passed** (run 35935225572, corpus commit `cc7e541cf208`).
+
+For each Lean declaration: the Challenge (the target, stated from Mathlib alone), the Solution (our proof) and the replay report.
+
+- `uniform_family_boundary`: [Challenge](https://github.com/wcook04/plectis-erdos-lean/blob/cc7e541cf2081c6fef5a5e377d52e365e33b01eb/PalomarCorpus/E68_02/Challenge.lean#L85) (E68_02, line 85), [Solution](https://github.com/wcook04/plectis-erdos-lean/blob/cc7e541cf2081c6fef5a5e377d52e365e33b01eb/Solutions/PalomarCorpus/E68_02/PaperStatementsC.lean#L39) (PaperStatementsC.lean, line 39), [replay report](../evidence/comparator/replay-35935225572/receipt-E68_02.json) (E68_02)
+- `uniform_family_members`: [Challenge](https://github.com/wcook04/plectis-erdos-lean/blob/cc7e541cf2081c6fef5a5e377d52e365e33b01eb/PalomarCorpus/E68_02/Challenge.lean#L94) (E68_02, line 94), [Solution](https://github.com/wcook04/plectis-erdos-lean/blob/cc7e541cf2081c6fef5a5e377d52e365e33b01eb/Solutions/PalomarCorpus/E68_02/PaperStatementsC.lean#L47) (PaperStatementsC.lean, line 47), [replay report](../evidence/comparator/replay-35935225572/receipt-E68_02.json) (E68_02)
+
+Each Challenge states the same proposition as the Lean declaration it targets except where shown below, with every definition it uses restated from Mathlib alone.
+
+Challenge for `uniform_family_members`:
+
+```lean
+theorem uniform_family_members :
+    shiftGapSeries (-1) = factorialGapSeries ∧
+    shiftGapSeries 0 = Real.exp 1 - 2 ∧
+    (∀ m : ℕ, ⌈(0 : ℝ) * (m.factorial : ℝ) * shiftCompanionConstant 0⌉ = 0) ∧
+    (∀ m : ℕ, 3 ≤ m → ¬ (m : ℤ) ∣ (0 : ℤ) - 2) ∧
+    Irrational (Real.exp 1) := by sorry
+```
+
+<a id="long68-res-global-residue"></a>
+
+## Theorem 5.1 (a sufficient tail inequality), page 23
+
+> *Suppose that for every $`B`$ there is a natural parameter $`p\ge3`$ with $`p>B`$, $`R_p>1`$, and
+> ``` math
+> \begin{equation}
+> \label{long68:eq:global-scale}
+>  (2p+1)L^{\mathrm{blk}}_p<K_p\rho_p .
+> \end{equation}
+> ```
+> Then $`S`$ is irrational.*
+
+The Lean declaration below states this result.
+
+[`ErdosProblems.Erdos68.PaperComplete.global_complementary_criterion_nat`](https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos68/PaperCompleteExisting.lean#L154)
+
+```lean
+theorem global_complementary_criterion_nat
+    (hcert : ∀ B : ℕ, ∃ p : ℕ,
+      3 ≤ p ∧ B < p ∧ 1 < factorialBlockPrivateModulus p ∧
+      factorialBlockBudget p * factorialBlockEndpointLcm p <
+        factorialBlockScale p * complementaryProjectedResidue
+          (factorialBlockTailNumerator p) (factorialBlockPrivateModulus p)) :
+    Irrational _root_.Erdos68.factorialGapSeries
+```
+
+<a id="long68-res-global-residue-comparator"></a>
+
+**Comparator: passed** (run 35935225572, corpus commit `cc7e541cf208`).
+
+For each Lean declaration: the Challenge (the target, stated from Mathlib alone), the Solution (our proof) and the replay report.
+
+- `global_complementary_criterion_nat`: [Challenge](https://github.com/wcook04/plectis-erdos-lean/blob/cc7e541cf2081c6fef5a5e377d52e365e33b01eb/PalomarCorpus/E68_05/Challenge.lean#L220) (E68_05, line 220), [Solution](https://github.com/wcook04/plectis-erdos-lean/blob/cc7e541cf2081c6fef5a5e377d52e365e33b01eb/Solutions/PalomarCorpus/E68_05/PaperStatementsA.lean#L86) (PaperStatementsA.lean, line 86), [replay report](../evidence/comparator/replay-35935225572/receipt-E68_05.json) (E68_05)
+
+Challenge for `global_complementary_criterion_nat`:
+
+```lean
+theorem global_complementary_criterion_nat
+    (hcert : ∀ B : ℕ, ∃ p : ℕ,
+      3 ≤ p ∧ B < p ∧ 1 < factorialBlockPrivateModulus p ∧
+      factorialBlockBudget p * factorialBlockEndpointLcm p <
+        factorialBlockScale p * complementaryProjectedResidue
+          (factorialBlockTailNumerator p) (factorialBlockPrivateModulus p)) :
+    Irrational factorialGapSeries := by sorry
 ```

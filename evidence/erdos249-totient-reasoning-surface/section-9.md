@@ -653,7 +653,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="thm-separation-rational-approximation"></a>
 
-## Theorem 9.19, page 91
+## Theorem 9.19, page 90
 
 > *Unconditionally, for every $`a`$ and $`q`$,
 > ``` math
@@ -935,7 +935,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="prop-simultaneous-certificates-unrestricted-depth"></a>
 
-## Proposition 9.29 (Simultaneous certificates with unrestricted depth), page 93
+## Proposition 9.29 (Simultaneous certificates with unrestricted depth), page 92
 
 > *The existence of a function $`f:\mathbb{N}\to\mathbb{N}`$ with $`f(N)\to\infty`$ such that
 > ``` math
@@ -1137,7 +1137,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="prop-sufficient-accumulated-residue-condition"></a>
 
-## Proposition 9.36 (A sufficient accumulated-residue condition), page 95
+## Proposition 9.36 (A sufficient accumulated-residue condition), page 94
 
 > *Suppose that for every integer $`h\ge1`$ and every $`N_0\in\mathbb N`$ there are $`N\ge N_0`$ and $`L\ge1`$ such that
 > ``` math
@@ -1238,7 +1238,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="prop-sufficient-inequality"></a>
 
-## Proposition 9.40 (A sufficient inequality), page 96
+## Proposition 9.40 (A sufficient inequality), page 95
 
 > *If, for every $`a_0\in\mathbb N`$, there is $`a\ge\max(2,a_0)`$ with $`\sigma_{2^a}\ge0`$, then $`S\notin\mathbb Q`$. This is the sufficient condition defined above, not a claim that the inequality holds at arbitrarily large indices. Equality at the edge is allowed: the condition is nonnegativity, not strict positivity.*
 
@@ -1286,7 +1286,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="thm-certificate-four-tail-combination"></a>
 
-## Theorem 9.41, page 96
+## Theorem 9.41, page 95
 
 > *Use $`J(H,p)`$, $`W(H,p,L)`$ and $`B(H,p,L)`$ from Theorem 6.60. For all $`H,p,L\in\mathbb N`$,
 > ``` math
@@ -1643,7 +1643,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="prop-additional-hypothesis-totient-specific-rank"></a>
 
-## Proposition 9.50 (An additional hypothesis for a totient-specific rank argument), page 98
+## Proposition 9.50 (An additional hypothesis for a totient-specific rank argument), page 97
 
 > *A rank bound that contradicts the lower bound $`2^e-1`$ would have to use additional arithmetic of the actual totient coefficients. The generic proposal that every rational coefficient series has bounded tempered-carry rank is ruled out by the rational control recorded in the short paper: its carry rank is at least $`2^e-1`$ at every level. It is therefore not a remaining general lemma from which totient irrationality follows. The conditional Proposition 1.7 records eventual periodicity modulo $`v`$ together with unbounded rational rank. Periodicity of the residue sequences concerns values in a finite quotient; it does not bound the rational span of the integer-valued sections. The $`5/4`$ comparison shows that this distinction persists for a rational coefficient series.*
 

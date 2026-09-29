@@ -4,7 +4,7 @@ Part of the [evidence record](../erdos249-totient-reasoning-surface.md) of the p
 
 <a id="lem-orbit"></a>
 
-## Lemma 12.1 (The doubling identity), page 119
+## Lemma 12.1 (The doubling identity), page 118
 
 > *For all $`N\ge 0`$ and $`h\ge 1`$,
 > ``` math
@@ -94,7 +94,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="prop-transfer"></a>
 
-## Proposition 12.2 (Transfer to the doubling orbit), page 119
+## Proposition 12.2 (Transfer to the doubling orbit), page 118
 
 > *Suppose that
 > ``` math
@@ -130,7 +130,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="cor-digitform"></a>
 
-## Corollary 12.3 (A digit version of the analytic condition), page 120
+## Corollary 12.3 (A digit version of the analytic condition), page 119
 
 > *Let $`\rho_h(X)`$ denote the proportion of $`N\in[X,2X)`$ with $`\|2^N\alpha_h\|_{\mathbb{R}/\mathbb{Z}}\ge 1/4`$. If for every $`h\ge 1`$ there are cofinally many $`X`$ with $`\rho_h(X)\ge 11/100`$, then $`S`$ is irrational. For nondyadic $`\alpha_h`$, the condition counted by $`\rho_h(X)`$ is exactly a change between binary digits $`N+1`$ and $`N+2`$. Thus the same sufficient hypothesis asks for at least $`11X/100`$ such changes, counted with $`X\le N<2X`$, on arbitrarily large blocks for every $`h`$.*
 
@@ -213,7 +213,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="thm-lacunary"></a>
 
-## Theorem 12.5 (The block norm condition is stronger in the class $`0\le c(n)\le n`$), page 122
+## Theorem 12.5 (The block norm condition is stronger in the class $`0\le c(n)\le n`$), page 121
 
 > *Let $`c(n)=1`$ if $`n=k!`$ for some $`k\ge 1`$ and $`c(n)=0`$ otherwise, so $`0\le c(n)\le n`$ for all $`n\ge 1`$, and let $`\beta=\sum_{n\ge1}c(n)/2^{n}
 > =\sum_{k\ge 1}2^{-k!}`$. Then $`\beta`$ is irrational, and for every $`h\ge 1`$ and every $`X\ge 81(h+5)`$,
@@ -282,7 +282,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="prop-dickman"></a>
 
-## Proposition 12.6 (A one-sided bound for the unassigned terms), page 124
+## Proposition 12.6 (A one-sided bound for the unassigned terms), page 123
 
 > *Fix $`h,s`$ and choose the admissible depth $`L`$ minimally for each large $`X`$. Put $`t=L-s+1=O_{h,s}(\log X)`$ and $`y_X=4\sqrt X+2t/\sqrt X`$. If $`n=N+t`$ is unassigned, then its largest prime factor satisfies $`P(n)\le y_X`$. Consequently
 > ``` math
@@ -336,7 +336,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="prop-badcof"></a>
 
-## Proposition 12.7 (The excluded-cofactor estimate), page 125
+## Proposition 12.7 (The excluded-cofactor estimate), page 124
 
 > *Fix $`h,s`$ and use the minimal admissible depth $`L`$, as in Proposition 12.6; thus $`t=L-s+1=O_{h,s}(\log X)`$. For $`\eta\in(0,1)`$ let $`B(\eta)=\{m\ge1:\varphi(m)<\eta m\}`$, with natural density $`D(\eta)`$; by Schoenberg’s theorem $`D`$ exists, is continuous, and $`D(0+)=0`$ \[schoenberg1928, §17, p. 193\], in the framework of \[schoenberg1936, Theorem 1, pp. 318–319, and §8, p. 323\]. Then
 > ``` math
@@ -382,7 +382,7 @@ def PrimeNumberTheorem : Prop :=
 
 <a id="prop-route4"></a>
 
-## Proposition 12.9, page 130
+## Proposition 12.9, page 128
 
 > *$`\mathcal{C}(h,N,h)`$ holds whenever $`\bigl\|2^{N+h}S-2^{N}S\bigr\|_{\mathbb{R}/\mathbb{Z}}>2(N+2h+2)/2^{h}`$.*
 
@@ -424,5 +424,129 @@ For each Lean declaration: the Challenge (the target, stated from Mathlib alone)
 
 - `certifiedKill_of_fullDepth_phase_separation`: [Challenge](https://github.com/wcook04/plectis-erdos-lean/blob/cc7e541cf2081c6fef5a5e377d52e365e33b01eb/PalomarCorpus/E249_28/Challenge.lean#L142) (E249_28, line 142), [Solution](https://github.com/wcook04/plectis-erdos-lean/blob/cc7e541cf2081c6fef5a5e377d52e365e33b01eb/Solutions/PalomarCorpus/E249_28/PaperStatementsAT.lean#L343) (PaperStatementsAT.lean, line 343), [replay report](../../evidence/comparator/replay-35935225572/receipt-E249_28.json) (E249_28)
 - `bracket_of_two_sided_separation`: [Challenge](https://github.com/wcook04/plectis-erdos-lean/blob/cc7e541cf2081c6fef5a5e377d52e365e33b01eb/PalomarCorpus/E249_28/Challenge.lean#L124) (E249_28, line 124), [Solution](https://github.com/wcook04/plectis-erdos-lean/blob/cc7e541cf2081c6fef5a5e377d52e365e33b01eb/Solutions/PalomarCorpus/E249_28/PaperStatementsAJ.lean#L157) (PaperStatementsAJ.lean, line 157), [replay report](../../evidence/comparator/replay-35935225572/receipt-E249_28.json) (E249_28)
+
+Each Challenge states the same proposition as the Lean declaration it targets, with every definition it uses restated from Mathlib alone.
+
+<a id="res-fulldepth"></a>
+
+## Theorem A.1 (Propagation of one nonintegral tail difference), page 147
+
+> *Fix $`d\ge1`$ and $`N\ge0`$. If $`\Delta_d(N)\notin\mathbb{Z}`$, then every sufficiently late pair $`\{t,t+1\}`$ contains an $`m`$ such that $`K(md,N,md)`$ holds. Consequently
+> ``` math
+> \exists t\ge1:\ K(td,N,td)
+>  \quad\Longleftrightarrow\quad\Delta_d(N)\notin\mathbb{Z}.
+> ```
+> Requiring this for every $`d\ge1,N\ge0`$ is equivalent to $`S\notin\mathbb{Q}`$.*
+
+The Lean declaration below states this result.
+
+[`ErdosProblems.Erdos249.PaperCompleteR7.fullDepth_amplification`](https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos249/PaperCompleteR7/ShortNoteAssemblies.lean#L35)
+
+```lean
+theorem fullDepth_amplification :
+    (∀ d N : ℕ, 0 < d →
+      (totientTail (N + d) - totientTail N ∉ Set.range ((↑) : ℤ → ℝ)) →
+      ∃ T : ℕ, 0 < T ∧ ∀ t : ℕ, T ≤ t →
+        certifiedKill (t * d) N (t * d) ∨
+          certifiedKill ((t + 1) * d) N ((t + 1) * d)) ∧
+    (∀ d N : ℕ, 0 < d →
+      ((∃ t : ℕ, 0 < t ∧ certifiedKill (t * d) N (t * d)) ↔
+        totientTail (N + d) - totientTail N ∉ Set.range ((↑) : ℤ → ℝ))) ∧
+    ((∀ d : ℕ, 0 < d → ∀ N : ℕ,
+        ∃ t : ℕ, 0 < t ∧ certifiedKill (t * d) N (t * d)) ↔
+      Irrational (∑' n : ℕ, (Nat.totient n : ℝ) / 2 ^ n))
+```
+
+<a id="res-fulldepth-comparator"></a>
+
+**Comparator: passed** (run 35935225572, corpus commit `cc7e541cf208`).
+
+For each Lean declaration: the Challenge (the target, stated from Mathlib alone), the Solution (our proof) and the replay report.
+
+- `fullDepth_amplification`: [Challenge](https://github.com/wcook04/plectis-erdos-lean/blob/cc7e541cf2081c6fef5a5e377d52e365e33b01eb/PalomarCorpus/E249_30/Challenge.lean#L106) (E249_30, line 106), [Solution](https://github.com/wcook04/plectis-erdos-lean/blob/cc7e541cf2081c6fef5a5e377d52e365e33b01eb/Solutions/PalomarCorpus/E249_30/PaperStatementsM.lean#L18) (PaperStatementsM.lean, line 18), [replay report](../../evidence/comparator/replay-35935225572/receipt-E249_30.json) (E249_30)
+
+Each Challenge states the same proposition as the Lean declaration it targets, with every definition it uses restated from Mathlib alone.
+
+<a id="res-rankonefloor"></a>
+
+## Theorem A.3 (A lower bound for the rank-one quotients), page 150
+
+> *For $`e\ge1`$ and $`Y\ge4`$, the denominator of $`Q(e,Y)`$ is positive, and the unique minimiser is $`(e,Y)=(1,5)`$. Every admissible quotient and every nonempty finite positive weighted average of such quotients satisfies
+> ``` math
+> Q-\Theta_2>\frac{21}{320}.
+> ```
+> The uniform bound $`Q-\Theta_2>1/15`$ is false already at $`(1,5)`$.*
+
+The Lean declarations below together state this result.
+
+1. [`ErdosProblems.Erdos249.RankOneSubrankObstruction.rankOne_denominator_pos`](https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos249/RankOneSharpFloor.lean#L25)
+
+```lean
+theorem rankOne_denominator_pos {e Y : ℕ} (he : 1 ≤ e) (hY : 4 ≤ Y) :
+    0 < mobiusMersennePrefix Y (2 * e + 2)
+```
+
+2. [`ErdosProblems.Erdos249.RankOneSubrankObstruction.rankOneSubrankQuotient_ge_one_five`](https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos249/RankOneSharpFloor.lean#L530)
+
+```lean
+theorem rankOneSubrankQuotient_ge_one_five
+    {e Y : ℕ} (he : 1 ≤ e) (hY : 4 ≤ Y) :
+    rankOneSubrankQuotient 1 5 ≤ rankOneSubrankQuotient e Y
+```
+
+3. [`ErdosProblems.Erdos249.RankOneSubrankObstruction.rankOneSubrankQuotient_eq_one_five_iff`](https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos249/RankOneSharpFloor.lean#L546)
+
+```lean
+theorem rankOneSubrankQuotient_eq_one_five_iff
+    {e Y : ℕ} (he : 1 ≤ e) (hY : 4 ≤ Y) :
+    rankOneSubrankQuotient e Y = rankOneSubrankQuotient 1 5 ↔
+      e = 1 ∧ Y = 5
+```
+
+4. [`ErdosProblems.Erdos249.RankOneSubrankObstruction.rankOneSubrankQuotient_sub_theta_two_gt_twentyOne_div_threeTwenty`](https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos249/RankOneSharpFloor.lean#L636)
+
+```lean
+theorem rankOneSubrankQuotient_sub_theta_two_gt_twentyOne_div_threeTwenty
+    {e Y : ℕ} (he : 1 ≤ e) (hY : 4 ≤ Y) :
+    (21 : ℝ) / 320 <
+      rankOneSubrankQuotient e Y - mobiusMersenneTheta 2
+```
+
+5. [`ErdosProblems.Erdos249.RankOneSubrankObstruction.positive_direct_sum_sub_theta_two_gt_twentyOne_div_threeTwenty`](https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos249/RankOneSharpFloor.lean#L667)
+
+```lean
+theorem positive_direct_sum_sub_theta_two_gt_twentyOne_div_threeTwenty
+    {ι : Type*} [DecidableEq ι]
+    (s : Finset ι) (hs : s.Nonempty)
+    (w : ι → ℝ) (e Y : ι → ℕ)
+    (hw : ∀ i ∈ s, 0 < w i)
+    (he : ∀ i ∈ s, 1 ≤ e i)
+    (hY : ∀ i ∈ s, 4 ≤ Y i) :
+    (21 : ℝ) / 320 <
+      (∑ i ∈ s, w i * rankOneSubrankQuotient (e i) (Y i)) /
+          (∑ i ∈ s, w i) -
+        mobiusMersenneTheta 2
+```
+
+6. [`ErdosProblems.Erdos249.RankOneSubrankObstruction.rankOneSubrankQuotient_one_five_sub_theta_two_lt_one_div_fifteen`](https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos249/RankOneSharpFloor.lean#L617)
+
+```lean
+theorem rankOneSubrankQuotient_one_five_sub_theta_two_lt_one_div_fifteen :
+    rankOneSubrankQuotient 1 5 - mobiusMersenneTheta 2 <
+      (1 : ℝ) / 15
+```
+
+<a id="res-rankonefloor-comparator"></a>
+
+**Comparator: passed** (run 35935225572, corpus commit `cc7e541cf208`).
+
+For each Lean declaration: the Challenge (the target, stated from Mathlib alone), the Solution (our proof) and the replay report.
+
+- `rankOne_denominator_pos`: [Challenge](https://github.com/wcook04/plectis-erdos-lean/blob/cc7e541cf2081c6fef5a5e377d52e365e33b01eb/PalomarCorpus/E249_30/Challenge.lean#L139) (E249_30, line 139), [Solution](https://github.com/wcook04/plectis-erdos-lean/blob/cc7e541cf2081c6fef5a5e377d52e365e33b01eb/Solutions/PalomarCorpus/E249_30/RankOneDenominator.lean#L20) (RankOneDenominator.lean, line 20), [replay report](../../evidence/comparator/replay-35935225572/receipt-E249_30.json) (E249_30)
+- `rankOneSubrankQuotient_ge_one_five`: [Challenge](https://github.com/wcook04/plectis-erdos-lean/blob/cc7e541cf2081c6fef5a5e377d52e365e33b01eb/PalomarCorpus/E249_33/Challenge.lean#L104) (E249_33, line 104), [Solution](https://github.com/wcook04/plectis-erdos-lean/blob/cc7e541cf2081c6fef5a5e377d52e365e33b01eb/Solutions/PalomarCorpus/E249_33/RankOneSharpFloor.lean#L15) (RankOneSharpFloor.lean, line 15), [replay report](../../evidence/comparator/replay-35935225572/receipt-E249_33.json) (E249_33)
+- `rankOneSubrankQuotient_eq_one_five_iff`: [Challenge](https://github.com/wcook04/plectis-erdos-lean/blob/cc7e541cf2081c6fef5a5e377d52e365e33b01eb/PalomarCorpus/E249_30/Challenge.lean#L149) (E249_30, line 149), [Solution](https://github.com/wcook04/plectis-erdos-lean/blob/cc7e541cf2081c6fef5a5e377d52e365e33b01eb/Solutions/PalomarCorpus/E249_30/RankOneSharpFloor.lean#L28) (RankOneSharpFloor.lean, line 28), [replay report](../../evidence/comparator/replay-35935225572/receipt-E249_30.json) (E249_30)
+- `rankOneSubrankQuotient_sub_theta_two_gt_twentyOne_div_threeTwenty`: [Challenge](https://github.com/wcook04/plectis-erdos-lean/blob/cc7e541cf2081c6fef5a5e377d52e365e33b01eb/PalomarCorpus/E249_30/Challenge.lean#L155) (E249_30, line 155), [Solution](https://github.com/wcook04/plectis-erdos-lean/blob/cc7e541cf2081c6fef5a5e377d52e365e33b01eb/Solutions/PalomarCorpus/E249_30/RankOneSharpFloor.lean#L41) (RankOneSharpFloor.lean, line 41), [replay report](../../evidence/comparator/replay-35935225572/receipt-E249_30.json) (E249_30)
+- `positive_direct_sum_sub_theta_two_gt_twentyOne_div_threeTwenty`: [Challenge](https://github.com/wcook04/plectis-erdos-lean/blob/cc7e541cf2081c6fef5a5e377d52e365e33b01eb/PalomarCorpus/E249_30/Challenge.lean#L161) (E249_30, line 161), [Solution](https://github.com/wcook04/plectis-erdos-lean/blob/cc7e541cf2081c6fef5a5e377d52e365e33b01eb/Solutions/PalomarCorpus/E249_30/RankOneSharpFloor.lean#L79) (RankOneSharpFloor.lean, line 79), [replay report](../../evidence/comparator/replay-35935225572/receipt-E249_30.json) (E249_30)
+- `rankOneSubrankQuotient_one_five_sub_theta_two_lt_one_div_fifteen`: [Challenge](https://github.com/wcook04/plectis-erdos-lean/blob/cc7e541cf2081c6fef5a5e377d52e365e33b01eb/PalomarCorpus/E249_30/Challenge.lean#L127) (E249_30, line 127), [Solution](https://github.com/wcook04/plectis-erdos-lean/blob/cc7e541cf2081c6fef5a5e377d52e365e33b01eb/Solutions/PalomarCorpus/E249_30/PaperStatementsBG.lean#L74) (PaperStatementsBG.lean, line 74), [replay report](../../evidence/comparator/replay-35935225572/receipt-E249_30.json) (E249_30)
 
 Each Challenge states the same proposition as the Lean declaration it targets, with every definition it uses restated from Mathlib alone.

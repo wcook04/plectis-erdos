@@ -1,4 +1,4 @@
-# Formal evidence: Two Incomparable Denominator Exclusions\\for $\sum_{n\ge2}(n!-1)^{-1}$
+# Formal evidence: Integer Linear Forms for a\\Factorial Reciprocal Series
 
 This record belongs to the paper [erdos-68-factorial-denominator-irrationality.pdf](../paper/68/erdos-68-factorial-denominator-irrationality.pdf). For every result it lists the Lean declarations that state it, and the independent Comparator check where there is one. The margin marks in the paper link here.
 
@@ -8,53 +8,9 @@ This record belongs to the paper [erdos-68-factorial-denominator-irrationality.p
 
 These checks establish that the stated propositions are proved. Whether each is the right proposition is for the reader to judge against the paper's statement, which is reproduced below.
 
-<a id="res-carry-characterization"></a>
-
-## Theorem 1.1 (exact carry characterisation), page 3
-
-> *<span id="res:strict-successor-complete-characterization" label="res:strict-successor-complete-characterization"></span> The following conditions are equivalent:
-> ``` math
-> S\notin\mathbb Q,\qquad
-> (\forall B)(\exists m>B)\ b_m\ne1,\qquad
-> (\forall B)(\exists m>B)\ m\nmid Z_m.
-> ```
-> In particular, [cofinal non-unit carries imply irrationality](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos68/FactorialZeroPlateau.lean#L953); equivalently, the original problem is the [criterion using the next integer](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos68/FactorialZeroPlateau.lean#L1090).*
-
-The Lean declaration below states this result.
-
-[`ErdosProblems.Erdos68.PaperComplete.carry_characterisation`](https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos68/PaperCompleteExisting.lean#L45)
-
-```lean
-theorem carry_characterisation :
-    (Irrational _root_.Erdos68.factorialGapSeries ↔
-      ∀ B : ℕ, ∃ m : ℕ, B < m ∧ factorialGapStepCarry m ≠ 1) ∧
-    (Irrational _root_.Erdos68.factorialGapSeries ↔
-      ∀ B : ℕ, ∃ m : ℕ, B < m ∧
-        ¬ (m : ℤ) ∣ strictFacTopRat (factorialGapPrefix m) m)
-```
-
-<a id="res-carry-characterization-comparator"></a>
-
-**Comparator: passed** (run 35935225572, corpus commit `cc7e541cf208`).
-
-For each Lean declaration: the Challenge (the target, stated from Mathlib alone), the Solution (our proof) and the replay report.
-
-- `carry_characterisation`: [Challenge](https://github.com/wcook04/plectis-erdos-lean/blob/cc7e541cf2081c6fef5a5e377d52e365e33b01eb/PalomarCorpus/E68_05/Challenge.lean#L177) (E68_05, line 177), [Solution](https://github.com/wcook04/plectis-erdos-lean/blob/cc7e541cf2081c6fef5a5e377d52e365e33b01eb/Solutions/PalomarCorpus/E68_05/PaperStatementsA.lean#L38) (PaperStatementsA.lean, line 38), [replay report](../evidence/comparator/replay-35935225572/receipt-E68_05.json) (E68_05)
-
-Challenge for `carry_characterisation`:
-
-```lean
-theorem carry_characterisation :
-    (Irrational factorialGapSeries ↔
-      ∀ B : ℕ, ∃ m : ℕ, B < m ∧ factorialGapStepCarry m ≠ 1) ∧
-    (Irrational factorialGapSeries ↔
-      ∀ B : ℕ, ∃ m : ℕ, B < m ∧
-        ¬ (m : ℤ) ∣ strictFacTopRat (factorialGapPrefix m) m) := by sorry
-```
-
 <a id="res-divisor-channel-coordinates"></a>
 
-## Theorem 2.1 (an integer basis with prescribed weighted sums), page 4
+## Theorem 2.1 (an integer basis with prescribed weighted sums), page 3
 
 > *Set
 > ``` math
@@ -105,7 +61,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="res-finite-channel-moment-certificate"></a>
 
-## Theorem 2.2 (a finite formula for the gcd), page 6
+## Theorem 3.1 (a finite formula for the gcd), page 4
 
 > *Choose a prime $`\ell`$ with $`D/2<\ell\le D`$ and put $`H=D(2\ell-1)`$. Then
 > ``` math
@@ -146,7 +102,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="res-bandbreakpoint"></a>
 
-## Theorem 2.3 (constant values of the floor in the weights), page 6
+## Theorem 4.1 (constant values of the floor in the weights), page 6
 
 > *Let $`\lambda`$ be a finitely supported integer vector, let $`d\ge2`$ and $`k\ge0`$ be integers, and suppose each index $`n`$ in its support satisfies $`kd\le n<(k+1)d`$. Then
 > ``` math
@@ -195,9 +151,53 @@ For each Lean declaration: the Challenge (the target, stated from Mathlib alone)
 
 Each Challenge states the same proposition as the Lean declaration it targets, with every definition it uses restated from Mathlib alone.
 
+<a id="res-carry-characterization"></a>
+
+## Theorem 7.1 (exact carry characterisation), page 9
+
+> *<span id="res:strict-successor-complete-characterization" label="res:strict-successor-complete-characterization"></span> The following conditions are equivalent:
+> ``` math
+> S\notin\mathbb Q,\qquad
+> (\forall B)(\exists m>B)\ b_m\ne1,\qquad
+> (\forall B)(\exists m>B)\ m\nmid Z_m.
+> ```
+> In particular, [cofinal non-unit carries imply irrationality](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos68/FactorialZeroPlateau.lean#L953); equivalently, the original problem is the [criterion using the next integer](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos68/FactorialZeroPlateau.lean#L1090).*
+
+The Lean declaration below states this result.
+
+[`ErdosProblems.Erdos68.PaperComplete.carry_characterisation`](https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos68/PaperCompleteExisting.lean#L45)
+
+```lean
+theorem carry_characterisation :
+    (Irrational _root_.Erdos68.factorialGapSeries ↔
+      ∀ B : ℕ, ∃ m : ℕ, B < m ∧ factorialGapStepCarry m ≠ 1) ∧
+    (Irrational _root_.Erdos68.factorialGapSeries ↔
+      ∀ B : ℕ, ∃ m : ℕ, B < m ∧
+        ¬ (m : ℤ) ∣ strictFacTopRat (factorialGapPrefix m) m)
+```
+
+<a id="res-carry-characterization-comparator"></a>
+
+**Comparator: passed** (run 35935225572, corpus commit `cc7e541cf208`).
+
+For each Lean declaration: the Challenge (the target, stated from Mathlib alone), the Solution (our proof) and the replay report.
+
+- `carry_characterisation`: [Challenge](https://github.com/wcook04/plectis-erdos-lean/blob/cc7e541cf2081c6fef5a5e377d52e365e33b01eb/PalomarCorpus/E68_05/Challenge.lean#L177) (E68_05, line 177), [Solution](https://github.com/wcook04/plectis-erdos-lean/blob/cc7e541cf2081c6fef5a5e377d52e365e33b01eb/Solutions/PalomarCorpus/E68_05/PaperStatementsA.lean#L38) (PaperStatementsA.lean, line 38), [replay report](../evidence/comparator/replay-35935225572/receipt-E68_05.json) (E68_05)
+
+Challenge for `carry_characterisation`:
+
+```lean
+theorem carry_characterisation :
+    (Irrational factorialGapSeries ↔
+      ∀ B : ℕ, ∃ m : ℕ, B < m ∧ factorialGapStepCarry m ≠ 1) ∧
+    (Irrational factorialGapSeries ↔
+      ∀ B : ℕ, ∃ m : ℕ, B < m ∧
+        ¬ (m : ℤ) ∣ strictFacTopRat (factorialGapPrefix m) m) := by sorry
+```
+
 <a id="res-global-complementary-criterion"></a>
 
-## Proposition 5.1 (a sufficient tail inequality), page 10
+## Proposition A.1 (a sufficient tail inequality), page 11
 
 > *If arbitrarily large natural parameters $`p\ge3`$ satisfy
 > ``` math
@@ -245,7 +245,7 @@ theorem global_complementary_criterion_nat
 
 <a id="res-companion-orbit-rationality-boundary"></a>
 
-## Theorem A.1 (rationality and factorial residues), page 13
+## Theorem B.1 (rationality and factorial residues), page 11
 
 > *The following statements are equivalent:*
 >

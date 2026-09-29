@@ -3,73 +3,34 @@
 \noteprovenance
 
 \begin{abstract}
-For one degree-seven polynomial constructed by the erdosproblems.com contributor
-\href{https://www.erdosproblems.com/forum/thread/1041\#post-8861}{\texttt{ani}},
-Lean proves that every preconnected subset of its strict unit lemniscate
-$\{|f|<1\}$ containing two distinct roots has one-dimensional Hausdorff
-measure greater than $2$.  This refutes the exact path-image-length
-formulation in Formal Conjectures, as well as the total-variation
-formulation.  Independent human review of correspondence with the 1958
-curve-length wording is not recorded. The remaining results give short
-paths under additional hypotheses.
-For a monic trinomial with roots in the open unit disc, the root equation
-bounds the polynomial along every root-to-origin segment. Any two distinct roots
-are therefore joined inside $\{|f|<1\}$ by a path of length less than $2$.
-For any squarefree monic polynomial $f$ of degree $n\ge2$, an area-growth
-argument, closed by an exact rational certificate computed by a program,
-gives such a path when its least critical-value modulus $\mu$
-is at most $13/25$, without a root-location hypothesis. Scaling gives
-length less than $(5/2)\mu^{1/n}$ inside $\{|f|<(25/13)\mu\}$.
-We develop this argument, an independent inverse-ray averaging estimate,
-and a construction using an isolated simple critical value. We also prove
-results for collinear roots and several coefficient families.
-A weighted Poisson identity gives the mean bound, with sharp constant,
-$\sum_{j=1}^{n-1}|f(c_j)|^{4/(n-1)}\le(n-1)R^{4n/(n-1)}$
-for roots in a closed disc of radius $R$, with critical points counted
-with multiplicity. Examples distinguish this bound from path-length control.
-The final sections examine inverse-sheet topology and refute an earlier
-spanning-tree estimate. The positive results retain their stated hypotheses
-and do not repair the refuted universal formulation.
+We give an ordinary proof of the degree-seven counterexample constructed
+by \texttt{ani}, including rational tests for its roots, critical points
+and connecting arcs. Its two-root component is a double cover with a
+narrow bottleneck, which gives a lower bound for Hausdorff measure of
+every connection. We then prove short-path criteria for trinomials,
+small least critical values and isolated simple critical values. The
+small-critical-value argument includes the complete area comparison
+and a replayed rational certificate. Further sections treat sparse
+families, sharp collinear bounds and critical-value moments, and retain
+counterexamples to prescribed paths and to the earlier spanning-tree
+estimate. The final questions concern restricted geometric and
+quantitative problems.
 \end{abstract}
 
-The \href{erdos-1041-lemniscate-newton-flow.pdf}{short note} states the
-counterexample and two sufficient conditions for a short path: the
-trinomial identity of Section~\ref{sec:trinomials}, whose proof does not
-use Newton flow, and the small-critical-value criterion, whose complete
-proof is Section~\ref{sec:low-critical-closure}. The other constructions
-are independent of that proof. This record provides their derivations and
-keeps failed estimates beside the witnesses that refute them.
-
-\begin{center}
-\begin{tabular}{@{}p{0.27\linewidth}p{0.65\linewidth}@{}}
-\toprule
-Short-note passage & Argument in this record\\
-\midrule
-\raggedright Section 3: small critical value &
-Section~\ref{sec:low-critical-closure}: inverse-map lengths,
-packing, area growth and the rational certificate.\\[3pt]
-\raggedright Supplement after Section 3: area estimate &
-Section~\ref{sec:constant-factor}: regular-level selection,
-low and high lifts, and the adjacent-pair average.\\[3pt]
-\raggedright Section 6: isolated critical value &
-Section~\ref{sec:critical-value-separation}: the two-sheeted component,
-square-root map, Bergman segment bound and capacity estimate.\\[3pt]
-\raggedright Sections 13--14: chords and collinear roots &
-Section~\ref{sec:frontier}: the \hyperlink{binomial-chord-calculation}{exact binomial chord calculation};
-Section~\ref{subsec:sharp-collinear-chebyshev}: Chebyshev comparison
-and \hyperlink{collinear-source-comparison}{related extremal problems}.\\[3pt]
-\raggedright Section 15: critical-value means &
-Section~\ref{sec:frontier}: the reflected derivative,
-weighted Poisson identity, boundary passage and equality cases.\\[3pt]
-\raggedright Section 17: limits and examples &
-Section~\ref{sec:frontier}, subsections
-\hyperlink{closed-class-limits}{Limits of contained paths at fixed degree}
-and \hyperlink{blaschke-product-examples}{Blaschke-product examples and limits in varying degree}.\\
-\bottomrule
-\end{tabular}
-\end{center}
+The \href{erdos-1041-lemniscate-newton-flow.pdf}{short paper} develops the
+counterexample and its contrast with sufficient conditions for short
+paths. Here the finite verification is in Section~\ref{sec:counterexample-proof},
+the area argument in Section~\ref{sec:low-critical-closure}, and the
+isolated-value construction in Section~\ref{sec:critical-value-separation}.
+The remaining sections give full proofs of the additional estimates and
+retain the examples that delimit their use. The final verification notes
+distinguish the formal statements from ordinary analytic arguments and
+from the rational computations.
 
 \section{The question and the degree-seven counterexample}\label{sec:problem}
+
+For a monic polynomial $f$, let $\Omega_f=\{|f|<1\}$. Erd\H{o}s,
+Herzog and Piranian \cite[Problem~5, p.~139]{ehp1958} asked:
 
 \begin{problem}[Erd\H{o}s \#1041]\label{res:problem}
 Let $f(z)=\prod_{i=1}^{n}(z-z_i)$ be monic of degree $n\ge2$, with
@@ -77,80 +38,407 @@ $z_i\in\dbar$, the open unit disc.  Must two of the roots be joined by a curve o
 $2$ lying in the open lemniscate $\{z\in\mathbb{C}:|f(z)|<1\}$?
 \end{problem}
 
-The open-disc hypothesis is essential for this formulation.  For
-$f(z)=z^2-1$, whose roots lie on the unit circle, every continuous path from
-$-1$ to $1$ meets the imaginary axis.  There $|f(iy)|=1+y^2\ge1$, so no
-such path lies in the open unit lemniscate.  Repeated roots, counted as distinct
-occurrences, give a constant path; the substantive case is therefore
-squarefree. The problem numbering follows Bloom's Erd\H{o}s problem catalogue
-\cite{bloom}.
+Boundary roots already give an elementary failure of strict containment.
+For $f(z)=z^2-1$, every continuous path from $-1$ to $1$ meets the
+imaginary axis, where $|f(iy)|=1+y^2\ge1$. The two endpoints are therefore
+unjoinable in $\{|f|<1\}$, although the diameter lies in $\{|f|\le1\}$.
+This illustrates the distinction between the open and closed lemniscates.
 
-\phantomsection\label{res:ani-degree-seven-counterexample-long}
-The degree-seven polynomial constructed by
-\href{https://www.erdosproblems.com/forum/thread/1041\#post-8861}{erdosproblems.com contributor \texttt{ani}}
-has distinct roots in the open unit disc.  Lean proves that every preconnected
-subset of its strict unit lemniscate containing two distinct roots has
-one-dimensional Hausdorff measure greater than~$2$.  Hence the image of every
-continuous root-to-root path has Hausdorff length greater than~$2$, and the
-exact Formal Conjectures statement is false.\footnote{The checked
-\href{https://github.com/wcook04/plectis-erdos/blob/7380b7871687b6bcc41ca0143c61f232e8af6500/lean/ErdosProblems/Erdos1041/Counterexample/HausdorffLength.lean\#L283}{preconnected-set theorem} yields the
-\href{https://github.com/wcook04/plectis-erdos/blob/7380b7871687b6bcc41ca0143c61f232e8af6500/lean/ErdosProblems/Erdos1041/Counterexample/HausdorffLength.lean\#L407}{negation} and
-\href{https://github.com/wcook04/plectis-erdos/blob/7380b7871687b6bcc41ca0143c61f232e8af6500/lean/ErdosProblems/Erdos1041/Counterexample/HausdorffLength.lean\#L449}{\texttt{answer(False)}} forms of the Formal Conjectures proposition.
-\href{https://github.com/google-deepmind/formal-conjectures/tree/398958d3964d738886bd24433918c365df4a2aab/FormalConjectures/ErdosProblems}{Formal Conjectures} is a public Lean repository of formal
-statements of open problems, among them many Erd\H{o}s problems.
-Lean separately proves the
-\href{https://github.com/wcook04/plectis-erdos/blob/f70679d47178bf1174309cb29f5b31748609cc04/lean/ErdosProblems/Erdos1041/Counterexample/CatalogueAdapter.lean\#L25}{total-variation formulation}.
-This formalises one polynomial, not ani's reported small-parameter family.
-Independent human review has not adjudicated correspondence with the 1958
-wording.}
-The new Hausdorff bound uses a bottleneck: a preconnected set joining the two
-roots must cross radial circles in two disjoint sheets near a critical point.
-The distance coordinate is one-Lipschitz on each sheet, and the resulting
-lower bounds for their disjoint portions add to more than~$2$.  This is
-stronger than a bound only on the variation of a parametrisation.
-The original source is Problem~5 on printed p.~139 of
-Erd\H{o}s--Herzog--Piranian \cite[Problem~5, p.~139]{ehp1958}; the paragraph
-before it there records the known fact that one component of the
-lemniscate contains at least two zeros.
+A repeated zero gives a constant path between two occurrences. Thus the
+question concerns distinct zeros. The catalogue of Bloom \cite{bloom}
+records the problem and its discussion. Pendyala
+\cite[Theorem~1 and Lemma~1]{june2026} proved the degree-four case by
+chords or radial segments through the centre of a smallest enclosing disc.
+The degree-seven construction of
+\href{https://www.erdosproblems.com/forum/thread/1041\#post-8861}{\texttt{ani}}
+has a different geometry.
 
-The main constructions use different kinds of information. The
-trinomial identity controls a prescribed path directly. The area argument
-instead uses the number of roots in a sublevel component. Source comparisons for
-component counts and lemniscate topology accompany the inverse-sheet
-discussion in Section~\ref{sec:gap}; the Newton-flow terminology is
-introduced in Section~\ref{sec:newton}.
+\begin{theorem}[\texttt{ani}'s counterexample]\label{res:ani-degree-seven-counterexample-long}
+The monic polynomial in \eqref{eq:ani-f-long} has seven distinct roots
+in the open unit disc. Every connected subset of its strict unit
+lemniscate containing two roots has one-dimensional Hausdorff measure
+greater than $2$.
+\end{theorem}
 
-Two recent manuscripts are relevant.  The 48-page manuscript posted by
-\texttt{shtuka} on 24 March 2026
-\cite[Theorem~1, p.~1]{march2026} claims the unrestricted
-statement.  Its Proposition~12 (p.~16, with proof continuing through p.~30)
-supplies the spanning-tree decomposition used in the final proof.  The defect
-was located publicly in the problem's discussion thread: on 25 March 2026 Tao
-observed that the invocation of Lemma~8 there is unjustified and that the flow
-lines need not organise into connected trees, and on 26 March 2026 the
-manuscript's author agreed that the statement of Proposition~12 itself, not
-only its printed proof, is incorrect, and set the strategy aside.  Section~\ref{sec:gap}
-records an independent diagnosis of the same local saddle defect, together
-with the Cassini obstruction to the printed global tree-length bound.  That
-obstruction refutes the metric estimate used in the final proof; by itself it does not answer the problem.  Pendyala's independent June 2026
-preprint \cite[Thm.~1, p.~1]{june2026} proves the degree-four case through a
-finite four-point radial lemma and a short polygonal connector.  That is the
-degree-four result directly comparable to the root-pair problem. Together
-with the cubic theorem proved here, it settles degrees three and four.
-The all-degree estimates below either impose a bound on the least
-critical-value modulus or allow a larger length constant and containment
-level. They address different hypotheses from the quartic theorem.
+Section~\ref{sec:counterexample-proof} proves the statement. A local
+quadratic estimate confines the preimage of an outward critical-value
+slit to a small disc. The global degree of the selected component is
+two, so no other preimage can bypass that disc. Radial projections on
+the two inverse sheets then bound Hausdorff measure itself. This applies
+to the image of a continuous path and also excludes a rectifiable path
+of total variation less than $2$.
 
-\evidenceparagraph{\evidencerecordurl}
-Links in the running text go to Lean proofs of single steps, such as a
-finite inequality; such a link does not cover the surrounding argument.
-No independent review of the analytic arguments is recorded.
+The theorem concerns a fixed polynomial. The small-parameter family
+reported by \texttt{ani} is not proved here, and independent human review
+of correspondence with the 1958 wording is not recorded. The supplied
+formal statements and their scope are listed in
+Section~\ref{sec:verification-notes}.
+
+For comparison, the trinomial root identity gives a short broken line
+between every pair of roots. The condition on the least critical-value
+modulus in Section~\ref{sec:low-critical-closure} gives some short pair
+without a root-location assumption. Isolating a simple critical value
+leads to the component estimate in
+Section~\ref{sec:critical-value-separation}. These are sufficient
+conditions; neither failure of one of them nor a bound on critical-value
+means decides the path problem for an individual polynomial.
+
+\section{The degree-seven construction}\label{sec:counterexample-proof}
+\papersectiontarget{counterexample-proof}
+
+The construction places two roots on opposite inverse sheets of a component
+whose only critical point is very close to the origin. The sheets meet in a
+small neighbourhood of that point. The sum of the distances from the two roots
+to the neighbourhood exceeds $2$, even after the roots have been contracted
+into the open unit disc. We first give the geometric argument, then verify
+the finite estimates for the polynomial of \texttt{ani}.
+
+\subsection{A two-sheeted component}\label{subsec:two-sheet-bottleneck}
+\papersectiontarget{two-sheet-bottleneck}
+
+\begin{lemma}[a bottleneck estimate]\label{lem:two-sheet-bottleneck-long}
+Let $p$ be a polynomial and $U$ a component of $\{|p|<1\}$ on which $p$
+is a proper map of degree two. Suppose its only critical point $c$ is
+simple and $v=p(c)\ne0$.
+Write
+\[
+ p(c+z)-v=z^2 A(z),\qquad M=|A(0)|,\qquad \delta=1-|v|.
+\]
+Suppose $h>0$, $|A(z)/A(0)-1|\le1/4$ for $|z|\le h$, and
+$\delta<Mh^2/4$. If $a,b$ are the two zeros in $U$, every connected
+$K\subset U$ containing $a,b$ satisfies
+\[
+ \mathcal H^1(K)\ge |a-c|+|b-c|-\frac83\sqrt{\delta/M}.
+\]
+\end{lemma}
+
+\begin{proof}
+Cut the value disc along $J=\{tv:1\le t<1/|v|\}$. Its complement is simply
+connected and contains $0$. The restriction of $p$ above this complement is
+an unramified two-sheeted covering, hence is the disjoint union of two
+biholomorphic sheets $U_1,U_2$, containing $a,b$ respectively.
+
+Put $r_0=(4/3)\sqrt{\delta/M}<2h/3$. On $|z|=r_0$,
+\[
+ |p(c+z)-v|\ge\tfrac34Mr_0^2=\tfrac43\delta>\delta.
+\]
+For each $w\in J$, Rouch\'e's theorem therefore gives two zeros, counted
+with multiplicity, of $p(c+z)-w$ in $|z|<r_0$. They remain in $U$: as $w$
+moves out from $v$ along $J$, the zeros continue from $c$ and cannot cross
+$|z|=r_0$. Since the degree on $U$ is two, these are all its preimages of
+$w$. Consequently $p^{-1}(J)\cap U\subset B(c,r_0)$.
+
+For $r_0<t<|a-c|$, the set $U_1\cap\{|z-c|>t\}$ has relative boundary
+in $U$ contained in the circle $|z-c|=t$. If that circle missed $K\cap U_1$,
+its intersection with $K$ would be a nonempty proper subset both open and
+closed in $K$, a contradiction. Thus the radial map $z\mapsto|z-c|$ sends
+$K\cap U_1$ onto a set containing $(r_0,|a-c|)$ whenever that interval is
+nonempty. This map is $1$-Lipschitz, so
+\[
+ \mathcal H^1(K\cap U_1)\ge (|a-c|-r_0)_+.
+\]
+The same argument applies to $b$ and $U_2$. Hausdorff outer measure is
+additive across these disjoint open sheets, giving the asserted lower
+bound. This proof applies to connected sets without a chosen parametrisation.
+\end{proof}
+
+\subsection{Polynomial and roots}\label{subsec:counterexample-polynomial}
+\papersectiontarget{counterexample-certificate}
+
+All constants in the following calculation are rational. Set
+\[
+ s=10^{-6},\qquad \varepsilon=s^2=10^{-12},\qquad
+ \rho=1-s^{16}=1-10^{-96},
+\]
+\[
+ A_0=-\frac{329507}{1600},\qquad B_0=\frac{551827}{800},\qquad
+ C_0=-\frac{23013813}{32000},
+\]
+and define
+\[
+ a=A_0-is,\qquad b=iB_0+\frac95s,\qquad
+ c_0=-C_0-\frac{162}{25}is.
+\]
+The polynomial is
+\begin{align}
+ F(z)&=z^7-1+\varepsilon^4(az^3-\bar a z^4)
+       +\varepsilon^5(bz^2-\bar b z^5)
+       +\varepsilon^6(c_0z-\bar c_0z^6),\label{eq:ani-F-long}\\
+ f(z)&=\rho^7 F(z/\rho).\label{eq:ani-f-long}
+\end{align}
+The identity $F(z)=-z^7\overline{F(1/\bar z)}$ is useful, but does not by
+itself place the zeros on the unit circle. For that purpose put
+$\chi(x)=(1+ix)/(1-ix)$. Direct expansion gives
+$(1-ix)^7 F(\chi(x))=2iH(x)$, where
+\begin{align*}
+ H(x)={}&7x-35x^3+21x^5-x^7
+ -\varepsilon^4(1+x^2)^3(s+A_0x)\\
+ &+\varepsilon^5(1+x^2)^2
+       \bigl[B_0(1-3x^2)+(9s/5)(x^3-3x)\bigr]\\
+ &+\varepsilon^6(1+x^2)
+       \bigl[C_0(5x-10x^3+x^5)
+          -(162s/25)(1-10x^2+5x^4)\bigr].
+\end{align*}
+The signs at the following rational endpoints are obtained by substitution.
+Both endpoints in each row are divided by $10^4$.
+\begin{center}
+\begin{tabular}{@{}rrrrr@{}}
+\toprule
+$j$ & Left endpoint & Right endpoint & Left sign & Right sign\\
+\midrule
+0&$-1$&1&$-$&$+$\\
+1&4815&4816&$+$&$-$\\
+2&12539&12540&$-$&$+$\\
+3&43812&43813&$+$&$-$\\
+4&$-43813$&$-43812$&$+$&$-$\\
+5&$-12540$&$-12539$&$-$&$+$\\
+6&$-4816$&$-4815$&$+$&$-$\\
+\bottomrule
+\end{tabular}
+\end{center}
+The seven intervals give distinct real zeros $x_j$ of $H$, so
+$\zeta_j=\chi(x_j)$ are all seven zeros of $F$. They have modulus one.
+Hence the zeros $b_j=\rho\zeta_j$ of $f$ are distinct and lie in the open
+unit disc.
+
+\subsection{Critical points and local estimates}\label{subsec:counterexample-critical}
+
+Write $F(\varepsilon w)=-1+\varepsilon^7 Q(w)$, where
+\[
+ Q(w)=c_0w+bw^2+aw^3-\varepsilon\bar a w^4
+       -\varepsilon^3\bar b w^5-\varepsilon^5\bar c_0 w^6+w^7.
+\]
+For a centre $v_j$, let $T_k(v_j)$ be the coefficient of $z^k$ in
+$Q(v_j+z)$. If $Q(w)=\sum q_kw^k$, these coefficients are given by the
+finite formula
+\[
+ T_k(v_j)=\sum_{\ell=k}^7{\ell\choose k}q_\ell v_j^{\ell-k}.
+\]
+Use the following centres, whose displayed decimals are exact, and radius
+$r=10^{-6}$:
+\begin{center}\small
+\begin{tabular}{@{}rrr@{}}
+\toprule
+$j$&$\operatorname{Re}v_j$&$\operatorname{Im}v_j$\\
+\midrule
+0&$3.1898275786$&$-0.4999999979$\\
+1&$-3.1898275845$&$-0.5000000021$\\
+2&$0.0000000039$&$0.8232474662$\\
+3&$0.0000002274$&$1.8078590858$\\
+4&$-0.0000002265$&$1.8838591455$\\
+5&$0.0000000011$&$-3.5149656976$\\
+\bottomrule
+\end{tabular}
+\end{center}
+These six discs are disjoint. For a Gaussian rational $z=u+iv$, put
+$N(z)=|u|+|v|$ and $m(z)=\max(|u|,|v|)$, so
+$m(z)\le|z|\le N(z)$. Define
+\[
+ E_j=N(T_1(v_j))+\sum_{k=2}^{6}(k+1)N(T_{k+1}(v_j))r^k,
+ \qquad L_j=2m(T_2(v_j))r.
+\]
+The next table proves $E_j<L_j$ in every disc. Rouch\'e's theorem, applied
+to the linear term of $Q'$, gives exactly one critical point in each.
+
+To determine its critical-value modulus, use
+\[
+ \mathscr H(w)=\frac{1-\rho^{14}}{2\rho^{14}\varepsilon^7}
+       +\operatorname{Re}Q(w)-\frac{\varepsilon^7}{2}|Q(w)|^2,
+ \qquad |f(\rho\varepsilon w)|^2
+       =1-2\rho^{14}\varepsilon^7\mathscr H(w).
+\]
+For $|w-v_j|\le r$, set
+$V_j=\sum_{k=1}^7N(T_k(v_j))r^k$. Substituting
+$\operatorname{Re}T_0(v_j)\pm V_j$ for $\operatorname{Re}Q(w)$ and
+$N(T_0(v_j))+V_j$ for $|Q(w)|$ gives the following rational bounds.
+An interval in the last column contains $10^9\mathscr H(w)$ throughout
+the whole disc.
+\begin{center}
+\begin{tabular}{@{}rrrr@{}}
+\toprule
+$j$&$10^9 E_j<$&$10^6 L_j>$&$10^9\mathscr H(w)$\\
+\midrule
+0&423&8340&$[-502,-486]$\\
+1&433&8340&$[-502,-486]$\\
+2&12&378&$[3556,3558]$\\
+3&3&43&$[-75,-74]$\\
+4&4&48&$[-864,-863]$\\
+5&1298&16812&$[-1566,-1548]$\\
+\bottomrule
+\end{tabular}
+\end{center}
+It follows that $f$ has just one critical point in $\{|f|<1\}$, namely
+$c_s=\rho\varepsilon w_s$ with $|w_s-v_2|<r$. Its critical value is
+nonzero, since the polynomial has simple roots, and no critical point
+lies on $|f|=1$.
+
+Expanding the same Taylor coefficients throughout $|w-v_2|\le r$ gives
+\[
+ |T_2(w)|>189.1,\qquad
+ (|T_3(w)|,|T_4(w)|,|T_5(w)|,|T_6(w)|,|T_7(w)|)
+ <(190,20,15,6,2).
+\]
+In the last coordinate the exact value is $|T_7|=1$. In particular, for
+$h=\rho\varepsilon/10$ and
+$f(c_s+z)-f(c_s)=z^2A_s(z)$,
+\begin{equation}\label{eq:counterexample-local-bounds}
+ |A_s(0)|>180\rho^5\varepsilon^5,
+ \qquad
+ \left|\frac{A_s(z)}{A_s(0)}-1\right|<\frac14\quad(|z|\le h).
+\end{equation}
+Indeed the numerator of the relative error is at most
+$190/10+20/100+15/1000+6/10^4+1/10^5<189.1/4$ in scaled
+coordinates. The positive critical-value bound in the table also gives
+\[
+ 0<\delta=1-|f(c_s)|
+ \le 1-|f(c_s)|^2
+ <\rho^7\varepsilon^7\frac{36}{5\cdot10^6}.
+\]
+Consequently
+\begin{equation}\label{eq:counterexample-radius}
+ \sqrt{\delta/|A_s(0)|}<\frac{\rho\varepsilon}{5000},
+ \qquad \delta<|A_s(0)|h^2/4.
+\end{equation}
+
+\subsection{The two roots in the component}\label{subsec:counterexample-connections}
+
+We verify that $b_3$ and $b_6$ belong to the component of $c_s$. This
+also supplies a direct ordinary proof of the component identification,
+independent of the barrier implementation in the Lean files.
+Put
+\begin{align*}
+ \operatorname{Re}w_q={}&\frac{39226583259917038484346953200647}{10^{40}},\\
+ \operatorname{Im}w_q={}&\frac{8232474661944848953672917849472800078083}{10^{40}},\\
+ x_3={}&w_q-6+3i,\qquad x_6=w_q+5-5i,\\
+ m_3={}&\frac{-720775094321935300989+347106991294046496381i}{10^{20}},\\
+ m_6={}&\frac{498791841486986824420-625465185974423846967i}{10^{20}}.
+\end{align*}
+The elementary inequality
+$1-\rho^{14}\ge14\rho^{14}\varepsilon^8$ shows that
+\[
+ \mathscr H_0(w)=7\varepsilon+\operatorname{Re}Q(w)
+                  -\frac{\varepsilon^7}{2}|Q(w)|^2
+ \le\mathscr H(w).
+\]
+Thus $\mathscr H_0>0$ suffices for containment. To check a segment from
+$u$ to $v$, expand
+$\mathscr H_0(u+t(v-u))=\sum_{k=0}^{14}a_kt^k$. Its Bernstein
+coefficients of degree $14$ are
+\[
+ \beta_j=\sum_{k=0}^j a_k\frac{{j\choose k}}{{14\choose k}},
+ \qquad
+ \mathscr H_0(u+t(v-u))
+   =\sum_{j=0}^{14}\beta_j{14\choose j}t^j(1-t)^{14-j}.
+\]
+All weights on the right are nonnegative and sum to one for $0\le t\le1$.
+Exact substitution gives the lower bounds
+\begin{center}
+\begin{tabular}{@{}lr@{}}
+\toprule
+Segment & Lower bound for every $\beta_j$\\
+\midrule
+$[w_q,x_3]$ & $3556874/10^{12}$\\
+$[x_3,m_3]$ & $640506$\\
+$[w_q,x_6]$ & $3556874/10^{12}$\\
+$[x_6,m_6]$ & $139485$\\
+\bottomrule
+\end{tabular}
+\end{center}
+The formula for $T_k$ above, followed by the displayed formula for
+$\beta_j$, specifies these checks using rational arithmetic alone; no
+sampling between endpoints is involved. The same Taylor test at $w_q$,
+with radius $10^{-8}$, gives one zero of $Q'$ in that disc and
+$\mathscr H_0>3556874/10^{12}$ throughout it. The disc is contained in
+$|w-v_2|<10^{-6}$, so this zero is $w_s$.
+
+For the remaining segments no large polynomial expansion is needed.
+The Cayley intervals give
+$|m_j/8-\zeta_j|<1/10$ and $|m_j/8|<101/100$, for $j=3,6$.
+If $x$ lies between $m_j/8$ and $\zeta_j$, then
+$|x|\le101/100$ and $|x-\zeta_j|<1/10$.
+From $F(\zeta_j)=0$ and $|\zeta_j|=1$ we have
+$|\zeta_j^7-1|<10^{-40}$. Telescoping $x^7-\zeta_j^7$ therefore gives
+\[
+ \operatorname{Re}x^7
+ \ge1-\frac7{10}\left(\frac{101}{100}\right)^6-10^{-40}>\frac14.
+\]
+The coefficient bounds
+\[
+ (|q_1|,\ldots,|q_7|)
+ \le(720,690,206,10^{-9},10^{-30},10^{-55},1)=:(U_1,\ldots,U_7)
+\]
+imply
+\[
+ \sum_{k=1}^6U_k(8.08)^k<160000,\qquad
+ \operatorname{Re}Q(8x)>350000,\qquad |Q(8x)|<2500000.
+\]
+Hence $\mathscr H_0(8x)>0$. This connects $m_j$ to $8\zeta_j$.
+Finally, for $8\varepsilon\le t\le1$, the root equation gives
+\[
+ F(t\zeta_j)=t^7-1+
+       \sum_{k=1}^6\varepsilon^{7-k}q_k\zeta_j^k(t^k-t^7),
+\]
+so
+\[
+ |F(t\zeta_j)|\le1-t^7+t^7\sum_{k=1}^6\frac{U_k}{8^{7-k}}<1,
+ \qquad \sum_{k=1}^6\frac{U_k}{8^{7-k}}<\frac{3}{40}.
+\]
+Scaling by $\rho$ joins $\rho\varepsilon\,8\zeta_j$ to $b_j$ within
+$\{|f|<1\}$. The concatenated segments connect $c_s$ to both roots.
+
+Every component of a polynomial lemniscate at a regular level is simply
+connected. The component-wise Riemann--Hurwitz formula
+\cite[proof of Proposition~2.1]{eks2010} says that a component containing
+$k$ zeros has $k-1$ critical points, counted with multiplicity. The critical
+point table therefore shows that the component $U$ of $c_s$ contains
+exactly $b_3,b_6$, and every other component contains one root.
+
+\subsection{The length inequality}\label{subsec:counterexample-length}
+
+For a unit complex number $\zeta$,
+$|\zeta-\varepsilon w_s|\ge1-\varepsilon\operatorname{Re}(\bar\zeta w_s)$.
+The Cayley intervals and $|w_s-v_2|<10^{-6}$ give
+\[
+ \operatorname{Re}\bigl((\bar\zeta_3+\bar\zeta_6)w_s\bigr)
+ <-\frac{143}{1000}.
+\]
+For completeness, this last bound can be obtained without trigonometric
+estimates: use the midpoint of each rational interval and the derivative
+bound $|\chi'(x)|=2/(1+x^2)$ to enclose $\zeta_j$, then substitute the
+disc for $w_s$. These enclosures in fact give an upper bound below
+$-0.28635$. Thus
+\[
+ |b_3-c_s|+|b_6-c_s|>\rho\left(2+\frac{143}{1000}\varepsilon\right).
+\]
+Lemma~\ref{lem:two-sheet-bottleneck-long} and
+\eqref{eq:counterexample-radius} now yield
+\[
+ \mathcal H^1(K)>
+ \rho\left(2+\left(\frac{143}{1000}-\frac8{15000}\right)
+                     \varepsilon\right)>2
+\]
+for every connected subset of $U$ containing both roots. The last strict
+inequality follows by substituting $\rho=1-10^{-96}$ and
+$\varepsilon=10^{-12}$; its excess over $2$ exceeds $1.42\cdot10^{-13}$.
+A connected set containing any two roots must lie in one component, so
+this proves the assertion for the whole strict lemniscate. In particular
+it applies to the image of every continuous root-to-root path. Since the
+Hausdorff measure of a rectifiable path image is at most its total
+variation, both interpretations of path length are excluded.
+
+The construction above fixes $s=10^{-6}$. It establishes no interval of
+parameters for the small-parameter family reported by \texttt{ani}.
+The formal files also prove the assertion for arbitrary preconnected sets;
+the argument here uses the equivalent connected-subset formulation and
+ordinary Rouch\'e and covering arguments. No new Lean build or independent
+human review is asserted by this exposition.
 
 \section{Trinomials}
 \label{sec:trinomials}
 
-Write $E_f=\{z\in\mathbb C:|f(z)|<1\}$.  The first theorem gives a prescribed
-path between every pair of zeros of a trinomial, in every degree.
+The equation at a root of a trinomial has only two partial sums. Both
+lie in the unit disc, and Abel summation therefore controls the whole
+radial segment. This elementary observation proves the following result.
 
 \begin{theorem}[trinomial root connections]
 \label{res:trinomial-all-degree}
@@ -226,6 +514,15 @@ and the
 
 \section{A small least critical value}
 \label{sec:low-critical-closure}
+\papersectiontarget{low-critical-proof}
+
+As the level of $|f|$ increases, components born at the roots merge at
+critical values. We follow one component from its first merger. If it
+contains no root-to-root path shorter than $2$, conformal length bounds
+force its roots apart and a packing estimate forces its area to grow.
+The resulting comparison contradicts P\'olya's area bound when the least
+critical-value modulus is small enough.
+
 
 The next criterion restricts the smallest critical-value modulus, but
 places no condition on the coefficients or the root locations. Throughout
@@ -243,11 +540,7 @@ curve of length strictly below $2$.  No hypothesis is placed on the locations
 of the roots, on the number of roots in any component, or on the capacity of
 any component.
 \end{theorem}
-\evidenceremark{No Lean proof covers the whole theorem. Lean checks the
-degree-two case, and the closing inequality $(13/25)e^X<1$ at the stopping
-time $X$ certified below. The computation that certifies $X$, done by an
-exact-arithmetic program, and the analytic argument in degrees three and
-higher are not checked in Lean.}
+
 
 For $f(z)=z^n-b$ with $0<|b|<1$, the only critical point is $0$ and
 $\mu=|b|$. Thus this criterion includes $|b|\le13/25$ but excludes
@@ -265,6 +558,7 @@ $2\bigl((25/13)\mu\bigr)^{1/n}$.
 \end{corollary}
 \evidenceremark{The Lean proof assumes
 Theorem~\ref{res:low-critical-thirteen-twentyfifths}.}
+
 
 \begin{proof}
 Apply Theorem~\ref{res:low-critical-thirteen-twentyfifths} to
@@ -434,6 +728,7 @@ If $U>0$, then failure forces $k\ge(x-\pi\Sigma)/U$.
 \eqref{eq:lc-radius-and-budget} as hypotheses; their derivation from the
 failure assumption, given above, is not checked in Lean.}
 
+
 \begin{proof}
 By~\eqref{eq:lc-radius-and-budget}, Lemma~\ref{res:circle-slice-packing} and
 the radius bound,
@@ -445,9 +740,8 @@ the radius bound,
 \]
 \end{proof}
 
-The weighted sum of circle-slice inequalities is a dual certificate: it
-bounds the contribution of every permitted root configuration without
-having to optimise over all configurations directly. The weights give a
+A nonnegative weighted sum of the circle-slice inequalities bounds every
+admissible configuration at once. The weights give a
 usable bound only when
 $\Sigma$ and the supremum $U$ have rigorous bounds. In particular, checking
 the expression on a finite grid does not bound the supremum between grid
@@ -512,11 +806,11 @@ centred ball. Its radius $R$ satisfies $\cosh R=1+mE$.
 With $v=\cosh r-1$, the identity
 $-\log\tanh(r/2)=\tfrac12\log(1+2/v)$ reduces the radial integral to
 $(2E)^{-1}\int_0^{mE}\log(1+2/v)\,dv$. Evaluating it gives
-\[
+\begin{align*}
  \frac1{2\pi E}\int_{B_{\mathrm{hyp}}(0,R)}-\log|z|\,dA_{\mathrm{hyp}}
- =\frac{\frac{mE}{2}\log(1+2/(mE))+\log(1+mE/2)}{E}
- \le\frac{1+\log(1+mE/2)}{E},
-\]
+ &=\frac{\frac{mE}{2}\log(1+2/(mE))+\log(1+mE/2)}{E}\\
+ &\le\frac{1+\log(1+mE/2)}{E},
+\end{align*}
 where the improper integral is finite because $v\log v\to0$ as
 $v\downarrow0$, and the last inequality uses $\log(1+u)\le u$ for $u>0$.
 Adding the possible exceptional contribution and inverting each case yields
@@ -647,6 +941,17 @@ certifies
  \qquad \frac{13}{25}e^{X}<1,
 \]
 which gives Theorem~\ref{res:low-critical-thirteen-twentyfifths}.
+The full calculation was replayed for this revision from the immutable
+program cited above. It accepted all $126$ dual certificates and
+reproduced this value of $X$. The exact radii, nonnegative weights, sums
+and certified upper bounds were retained, rather than only the rounded
+sample values. The program's Git blob identifier is
+\texttt{e9b4998884575a31ce0d1f6762a210ae2d617103}.
+Its comparison regression and observer-containing-circle audit were
+also rerun. The comparison check is exact; the geometry audit combines
+an exact full-circle boundary test with floating identity checks.
+No new per-degree thresholds were computed.
+
 A coarser run gives $X=664373027131/1000000000000$
 and the weaker threshold $51/100$.
 The floating optimiser proposes weights but supplies no proof. The
@@ -732,6 +1037,7 @@ $\mu=\min_{f'(c)=0}|f(c)|$.
 \evidenceremark{The Lean proof assumes
 Theorem~\ref{res:low-critical-thirteen-twentyfifths} in degrees above two;
 the degree-two case is checked without it.}
+
 \begin{proof}
 For $n\ge3$, apply Theorem~\ref{res:low-critical-thirteen-twentyfifths}
 to $g(z)=s^{-n}f(sz)$ with $s=((25/13)\mu)^{1/n}$.
@@ -741,11 +1047,19 @@ $25/13<(5/4)^3$.  For $n=2$, write $f(z)=(z-h)^2-d^2$.
 The two radial segments through $h$ have total length $2|d|=2\mu^{1/2}$
 and lie in the closed level $\mu$, which is inside the stated open level.
 \end{proof}
-The next section gives a different construction whose estimates retain
-the root count and capacity of the chosen component.
+The next construction retains the root count and capacity of a chosen
+component, at the cost of a larger universal constant.
 
 \section{A path estimate from area and boundary length}
 \label{sec:constant-factor}
+\papersectiontarget{constant-factor-proof}
+
+Averaging inverse-ray lengths and boundary arcs gives a path estimate
+without the packing calculation. It also retains information about the
+number of roots and the capacity of the selected component. Write
+$K_t=\{|f|\le t\}$, $\mu=\min_{f'(c)=0}|f(c)|$ and
+$\rho=\mu^{1/n}$.
+
 
 Corollary~\ref{res:scaled-low-critical-path} has both a smaller length
 constant and a smaller containment level than the next theorem:
@@ -774,6 +1088,7 @@ length at most $5.7$.
 in degrees $n\ge3$, which the proof obtains by averaging over levels and
 value directions. The degenerate case, degree two and the numerical
 constants are checked without that input.}
+
 
 The constant is the rationally certified specialization of a two-parameter
 bound.  If the selected component contains $k\ge2$ roots, then for
@@ -922,6 +1237,7 @@ Then Erd\H{o}s~\#1041 holds for $f$ in each of the three cases
 Theorem~\ref{res:constant-factor-path}, for a component containing at least
 $k_0$ roots; the rational inequalities are checked.}
 
+
 \begin{proof}
 If $\mu=0$, a repeated zero gives the constant path. Assume henceforth
 $\mu>0$. Every selected component $C_t$ in the proof of
@@ -970,6 +1286,7 @@ $k_0=3,\ldots,9$, rising to $39/40$ at $k_0=16$.
 proof of Theorem~\ref{res:constant-factor-path}, rerun with the
 area--capacity inequality for the area of $C$; the rational cutoffs are
 checked.}
+
 
 \begin{proof}
 Repeat the averaging proof of Theorem~\ref{res:constant-factor-path} with
@@ -1102,6 +1419,15 @@ $(1+x)^{-1/2}$ below its secant on $[0,1]$. Integrating that secant
 at $x=\sin^2s$ bounds the loop length divided by $d$ by
 $(\pi/2)(1+\sqrt2)$, as used below.
 
+\begin{proposition}[a counterexample to the proposed one-root perimeter bound]
+\label{res:one-root-gamma-false}
+Let $p(z)=z^8-(3/2)z$ and let $C$ be the component of $\{|p|\le1\}$
+containing the origin.  Then $C$ contains exactly one zero and a
+neighbourhood of the closed disc of radius $5/8$, so
+$\mathcal H^1(\partial C)>5\pi/4$.  The constant
+$\Gamma(1/4)^2/(2\sqrt{\pi})$ is at most $(\pi/2)(1+\sqrt2)<5\pi/4$.
+\end{proposition}
+
 The quadratic loop is exceeded in degree eight, even with the global
 subcritical hypothesis. For $p(z)=z^8-(3/2)z$, every critical point $c$
 satisfies $c^7=3/16$ and $p(c)=-(21/16)c$. Hence
@@ -1154,6 +1480,7 @@ first critical level that the proof below constructs: two one-root
 components whose closures meet at a critical point, each with boundary
 length at most $\beta\rho$ and each joining its root to that point within
 half its perimeter.}
+
 
 \begin{proof}
 \hypertarget{perimeter-to-path}{}
@@ -1256,6 +1583,11 @@ no claim of novelty follows from the scope or outcome of a literature search.
 \section{Degree three}
 \label{sec:degree-three}
 
+For a cubic, the local inverse map at a critical point can be estimated
+directly. The resulting two-root path gives the following sufficient
+critical-value bound.
+
+
 \begin{theorem}[the cubic case]
 \label{res:degree-three}
 Let $f(z)=\prod_{j=1}^{3}(z-z_j)$ with $|z_j|<1$, the roots listed with
@@ -1338,13 +1670,12 @@ case; no historical priority for the cubic theorem is asserted here.
 
 \section{An all-degree critical-value separation theorem}
 \label{sec:critical-value-separation}
+\papersectiontarget{critical-value-separation-proof}
 
-The next theorem applies when one simple critical value is separated
-from all the others by a disc in the value plane. After a change of variables,
-the chosen critical point is $0$ and its value is $1$. The hypothesis below
-then says that the disc of centre $w_0$ and radius $S$ contains no other
-critical value. It is a condition to check, not an isolation property
-guaranteed for every polynomial.
+Let a disc in the value plane contain $0$ and one simple critical value,
+but no other critical value. The component above it has degree two. Its
+square-root coordinate gives a root-to-root connector, and its capacity
+bounds the area entering the Bergman length estimate.
 
 The simplicity assumption means that the chosen critical point is a simple
 zero of the derivative, so two inverse branches meet there. A multiple
@@ -1387,10 +1718,7 @@ Consequently the connector is shorter than $2$ whenever
  \log\!\frac{S^2+S+p}{S^2-S+p}<2.                    \tag{6}
 \end{equation*}
 \end{theorem}
-\evidenceremark{The Lean proof assumes the analytic construction in the
-proof below: the connector obtained through the square-root map, its
-Bergman length bound (7), and the capacity bound for the area of the
-two-sheeted component.}
+
 
 \begin{proof}
 Let $Q=D(w_0,S)$ and let $U$ be the component of $P^{-1}(Q)$ containing
@@ -1569,10 +1897,7 @@ $v=f(c)\ne0$ and $|v|<1$, and
 for every other critical point $d$, then two roots of $f$ are joined inside
 $\{|f|<1\}$ by a curve of length strictly below $2$.
 \end{corollary}
-\evidenceremark{The Lean proof assumes the same construction as
-Theorem~\ref{res:critical-value-separation} for the second assertion.
-Inequality~\eqref{eq:disk-family-coefficient} and every numerical step are
-checked without it.}
+
 
 \begin{proof}
 For $S\ge4/3$ and $p\ge0$,
@@ -1688,18 +2013,80 @@ Theorem~\ref{res:low-critical-thirteen-twentyfifths} and to
 Theorem~\ref{res:constant-factor-path}.  Dubinin's theorem is a neighbouring
 result under a full covering hypothesis and supplies no root connector.
 
+\section{Examples separating the geometric hypotheses}\label{sec:component-examples}
+\papersectiontarget{component-counterexamples}
+
+The least critical modulus and the separation radius impose independent
+restrictions. The following cubic satisfies neither of the sufficient
+conditions used in the short paper.
+
+\begin{proposition}[failure of two critical-value criteria to cover all polynomials]
+\label{res:sep-or-false}
+Let $f(z)=z^3+(3/100)z-3/4$.  Every root lies in the open unit disc, both
+critical points are simple, the critical values lie on distinct positive
+rays, $\mu>13/25$, and
+\[
+ \bigl|1-f(c_-)/f(c_+)\bigr|<2/375<2.
+\]
+\end{proposition}
+\begin{proof}
+On $|z|=1$, $|3z/100-3/4|\le78/100<1$, so Rouch\'e's theorem puts
+all three roots in the disc. The critical points are $c_\pm=\pm i/10$,
+and $f(c_\pm)=-3/4\pm i/500$. They are nonzero, have distinct arguments
+and modulus greater than $3/4$. Moreover
+\[
+ \left|1-\frac{f(c_-)}{f(c_+)}\right|
+ =\frac{1/250}{|f(c_+)|}<\frac2{375}.
+\]
+For any $w_0\in[0,1]$, the other normalised value is at distance less
+than $1+2/375<4/3$ from $w_0$, so the radius-$4/3$ hypothesis fails.
+\end{proof}
+
+A component with two roots immediately after the first merger may
+contain more roots at a later level. Thus its first root count alone
+does not give a capacity saving at level $2\mu$.
+
+\begin{proposition}[root count does not force a capacity gap]
+\label{res:arity-not-capacity}
+Let $g(z)=z^3-(3/400)z-3/32$. All roots lie in the open unit disc and
+$\mu=187/2000\le1/2$. The first merger joins two root components, so
+$k_0=2$, but the component at level $2\mu$ containing that pair has
+normalised capacity $1$.
+\end{proposition}
+\evidenceremark{The Lean proof assumes the classical value $t^{1/n}$ of
+the transfinite diameter of the filled lemniscate $\{|p|\le t\}$ of a
+monic polynomial $p$ of degree $n$, and uses it only in the capacity
+clause; the root count $k_0=2$ is proved outright.}
+\begin{proof}
+Rouch\'e's theorem on the unit circle applies because
+$3/400+3/32<1$. The critical points are $\pm1/20$, with critical values
+$-187/2000$ and $-188/2000$. The first merger therefore has one simple
+critical point and joins two root components. At level
+$2\mu=374/2000$, both critical points are inside the filled lemniscate.
+The component count $n-(n-1)=1$ from Riemann--Hurwitz shows that it is
+connected. Its capacity is $(2\mu)^{1/3}$
+\cite[Theorem~5.2.5]{ransford1995}, so division by that scale gives one.
+The use of logarithmic capacity agrees with transfinite diameter by the
+Fekete--Szeg\H{o} theorem \cite[p.~153]{ransford1995}.
+\end{proof}
+
+The degree-eight perimeter example, Proposition~\ref{res:one-root-gamma-false},
+requires no root-disc hypothesis. It refutes the proposed Gamma constant,
+while the existence of a uniform one-root perimeter bound remains open
+in Problem~\ref{prob:conjecture-p}. The Runge construction reported in
+\cite[Proposition~2]{revision2026} has no supplied proof and is not used.
+
 \section{Collinear roots and two sparse polynomial families}
 \label{sec:solved-polynomial-families}
 
-The following results impose concrete restrictions: roots on one line,
-a quintic with two missing coefficients, or a polynomial of the form
-$P((z-h)^q)$ with $P$ cubic. None covers a general polynomial with roots
-in the unit disc. We first state the finite inequalities used in their
-proofs, then explain how the inequalities produce contained paths. The
-formal links distinguish these two steps.
+We next treat three families for which the connector is explicit.
+Collinear roots are handled by Chebyshev alternation; the sparse quintic
+uses a harmonic-moment identity to select two radial segments; and a
+power substitution in a cubic gives two segments through its centre.
 
 \subsection{Collinear roots and Chebyshev comparison}
 \label{subsec:sharp-collinear-chebyshev}
+\papersectiontarget{collinear-proof}
 
 The extreme zeros of $T_n$ are $\pm\cos(\pi/(2n))$. Scaling them to
 $\pm1$ makes the comparison polynomial have the same endpoint zeros as
@@ -1853,6 +2240,7 @@ segment is a shortest path in $\{|f|<1\}$.
 
 \subsection{Quintics with two missing coefficients}
 \label{subsec:primitive-sparse-quintic}
+\papersectiontarget{quintic-proof}
 
 The next inequality selects two indices from five real pairs. Its three
 moment identities will come from the missing cubic and quadratic terms
@@ -1991,6 +2379,7 @@ and their total length is $|w_i|+|w_j|<2$.
 
 \subsection{Polynomials obtained from a cubic by a power substitution}
 \label{subsec:translated-cubic-quotient-fibres}
+\papersectiontarget{cubic-fibre-proof}
 
 For $f(z)=P((z-h)^q)$, the roots associated with a nonzero root of $P$
 form a regular $q$-gon centred at $h$. This rotational symmetry is a
@@ -2084,6 +2473,12 @@ $2\sqrt{1-|h|^2}$ obtained in the proof.
 
 \section{Further families and counterexamples to proposed proof steps}
 \label{sec:frontier}
+
+The following calculations describe further cases of the radial and
+conformal arguments. They also distinguish hypotheses needed for a
+particular construction from hypotheses necessary for the existence
+of any short path.
+
 
 The following sections collect additional sufficient conditions and
 counterexamples to particular path constructions. They are not a programme
@@ -2231,14 +2626,29 @@ supply a fixed pair of roots.
 
 \subsection*{The exact binomial chord calculation}
 \hypertarget{binomial-chord-calculation}{}
-For $f(z)=z^n-r^n$, $0<r<1$ and $n\ge2$, the construction in
-Section~13 of the short note depends on the maximum over an entire
+For $n\ge2$ and $0<|a|<1$, put $r=|a|^{1/n}$ and
+$r_*=(1+\cos^n(\pi/n))^{-1/n}$. A rotation reduces $z^n-a$ to
+$z^n-r^n$ without changing lengths or moduli. For $n=2$, $r_*=1$
+and only the outer-diameter case occurs.
+
+\begin{theorem}[complementary binomial chords]\label{res:complementary-binomial-chords}
+Two adjacent zeros of $z^n-a$ can be joined by an explicit polygonal path
+inside $\{|z^n-a|<1\}$ of length strictly below $2$.  For $r<r_*$ the
+adjacent-root chord itself works.  For $r\ge r_*$, two radial legs and an
+inner adjacent crossing chord work after an arbitrarily small radial
+contraction.  These two constructions meet at $r=r_*$, where the outer chord attains
+$|f|=1$ at its midpoint and therefore lies only in the closed lemniscate.
+Open containment at and above the switch uses the inner chord
+after a radial contraction.
+\end{theorem}
+
+For $f(z)=z^n-r^n$, $0<r<1$ and $n\ge2$, the two constructions depend on the maximum over an entire
 chord. The endpoint values alone do not give that maximum. Put
 $\omega=e^{2\pi i/n}$ and $c=\cos(\pi/n)$. When $n\ge3$, define
 $r_*=(1+c^n)^{-1/n}$ and $\varepsilon=(1-r^n)^{1/n}$; in the inner-chord
 case $r\ge r_*$, set $t=\varepsilon/c\le r$.
 
-Here is the chord estimate, including the smaller radii used in the
+We prove the chord estimate also at the smaller radii needed for the
 second construction. For $n\ge3$, let $0<s\le r$. A point on the chord
 from $s$ to $s\omega$ can be written
 \[
@@ -2744,6 +3154,21 @@ bounds still leave the geometry of the joining paths to be supplied.
 
 \paragraph{The weighted Poisson inequality and its equality case.}
 \hypertarget{weighted-poisson-proof}{}
+\begin{theorem}[a weighted inequality for points in a disc]
+\label{res:fp-weighted-all-degree}
+Let $c_1,\ldots,c_m\in\overline{\mathbb D}$ and let $w_j>0$ satisfy
+$\sum_j w_j=1$.  Set
+\[
+ G(z)=\prod_k |1-\overline{c_k}z|^{w_k}.
+\]
+Then
+\[
+ \sum_j w_j G(c_j)^2\le 1,
+\]
+with equality if and only if every $c_j=0$.  Equal weights therefore give
+$\sum_j(\prod_k|1-\overline{c_k}c_j|)^{1/m}\le m$ for every $m$.
+\end{theorem}
+
 For one point $c$ of weight $1$, the quantity to bound is
 $(1-|c|^2)^2\le1$; equality holds only at $c=0$.
 For two points $c,-c$ of equal weight, it is $1-|c|^4\le1$.
@@ -3054,8 +3479,42 @@ comparison is still needed.
 
 \subsection*{A sufficient critical-value threshold in degree five}
 
+\papersectiontarget{root-distance-proofs}
+\begin{theorem}[a geometric-mean bound for distances to a critical point]
+\label{res:critical-proximity}
+Let $n\ge2$, let $z_1,\ldots,z_n,c\in\mathbb C$ with $c\ne z_k$ for every
+$k$, and suppose
+\[
+  \sum_{k=1}^n\frac1{c-z_k}=0.
+\]
+If $r>0$ is determined by
+\[
+  r^n=\prod_{k=1}^n|c-z_k|,
+\]
+then there are distinct indices $i,j$ such that
+\[
+  |c-z_i|+|c-z_j|\le2r.
+\]
+\end{theorem}
+\begin{proof}
+Order the distances $d_1\le d_2\le\cdots\le d_n$. Isolating the nearest
+term in the reciprocal balance gives $d_2\le(n-1)d_1$, while
+$d_1d_2^{n-1}\le r^n$. For $t=d_2/d_1\in[1,n-1]$,
+\[
+ \frac{d}{dt}\log\frac{2t^{(n-1)/n}}{1+t}
+       =\frac{n-1-t}{nt(1+t)}\ge0.
+\]
+The logarithm vanishes at $t=1$, so
+$d_1+d_2\le2(d_1d_2^{n-1})^{1/n}\le2r$.
+\end{proof}
+
 \paragraph{The distance bound for the two nearest roots.}
 \hypertarget{two-nearest-root-distance}{}
+\begin{corollary}[two nearest roots]\label{res:two-nearest-roots}
+If the roots lie in the open unit disc and $c$ is a non-root critical point,
+the two nearest roots to $c$ have total distance strictly below $2$.
+\end{corollary}
+
 Let $f$ have degree $n\ge2$ and all roots in the closed unit disc, and
 let $c$ be a critical point with $f(c)\ne0$. List roots with multiplicity.
 Its two nearest roots have
@@ -3093,6 +3552,47 @@ A
 This argument selects the two nearest roots but does not put their
 segments inside a polynomial sublevel set. The next calculation supplies
 that separate containment estimate under a bound on $|f(c)|$.
+
+\paragraph{Two failures of straight segments.}
+\papersectiontarget{straight-path-counterexamples}
+\begin{proposition}[two counterexamples to straight-path assertions]
+\label{res:straight-no-go}
+There is a monic quintic with all roots in the open unit disc and a non-root
+critical point $c$ whose unique nearest root has a point on the straight spoke
+to $c$ outside $\{|f|<1\}$.  There is also a monic cubic with all roots in the
+open unit disc such that the midpoint of every pair of distinct roots lies
+outside $\{|f|<1\}$.
+\end{proposition}
+\begin{proof}
+For the quintic, put $p=999/1000$ and $a=(901/902)p$, and take
+\[
+ Q(z)=(z-a)(z^2+p^2)
+       \left(z^2+\frac{902}{901}pz+p^2\right).
+\]
+Its roots are
+\[
+ a,\quad ip,\quad-ip,\quad
+ p\frac{-451+780i}{901},\quad p\frac{-451-780i}{901}.
+\]
+Since $451^2+780^2=901^2$, the last four roots have modulus $p<1$,
+while $0<a<p$. Also $Q'(0)=0$ and $Q(0)=-ap^4\ne0$. Thus $a$ is
+the uniquely nearest root to the non-root critical point $0$.
+At one tenth of that segment, exact rational arithmetic gives
+\[
+ |Q(a/10)|=
+ \frac{9a}{10}\left(\frac{a^2}{100}+p^2\right)
+ \left(\frac{a^2}{100}+\frac{11p^2}{10}\right)>1.
+\]
+For the cubic, take $g(z)=z^3-(99/100)^3$. If $z,w$ are distinct roots,
+then $z+w$ is the negative of the third root, so
+\[
+ g\!\left(\frac{z+w}{2}\right)
+ =-\frac98\left(\frac{99}{100}\right)^3,
+ \qquad \frac98\left(\frac{99}{100}\right)^3
+ =\frac{8732691}{8000000}>1.
+\]
+All three roots have modulus $99/100$.
+\end{proof}
 
 \paragraph{Containment of the two selected segments.}
 Let $f$ be monic of degree $n\ge3$ with roots in the closed unit disc.
@@ -3498,7 +3998,84 @@ as an open assertion: a counterexample to the original question would
 refute it as well. The reduction remains useful on separately specified
 polynomial classes.
 
+\subsection*{An integral for successive merger scales}\label{subsec:merger-integral}
+\papersectiontarget{merger-integral-proof}
+Consider a component containing $k$ roots that later joins a larger
+component as the level of $|f|$ increases. If $r\in(0,1]$ is the ratio
+of these two merger scales, one logarithmic contribution assigned to each
+of its roots is $k^{-1}\log(1/r)$. An earlier length estimate instead
+involves the integral
+\[
+ I_k(r)=\int_r^1
+ \frac{dq}{q\log\bigl((1+q^{2/k})/(1-q^{2/k})\bigr)}.
+\]
+For nearby merger scales, $r$ is close to $1$. The integral is then much
+smaller than $k^{-1}\log(1/r)$. The following change of variables proves
+that no fixed positive multiple of this logarithmic contribution is a
+uniform lower bound.
+
+\begin{theorem}[the relation between two merger-scale integrals]
+\label{res:orlicz-currency}
+Define
+\[
+ \Phi(x)=\int_0^x\frac{dt}{\log(\coth t)}\qquad(x\ge0).
+\]
+At $t=0$ the integrand is understood by its continuous limiting value $0$
+(equivalently, the integral is improper at that endpoint).
+For every integer $k\ge1$ and $0<r\le1$, with
+$x=k^{-1}\log(1/r)$,
+\[
+ I_k(r)=k\Phi(x).                                      \tag{O1}
+\]
+The function $\Phi$ is increasing and strictly convex on $(0,\infty)$, and
+\[
+ \frac{\Phi(x)}x\longrightarrow0\qquad(x\downarrow0). \tag{O2}
+\]
+Consequently, for every fixed $k\ge1$ and every $c>0$, some $0<r<1$
+satisfies
+\[
+ I_k(r)<c\,\frac1k\log\frac1r.                        \tag{O3}
+\]
+In particular, no positive universal constant bounds $I_k(r)$ below
+by that constant times $k^{-1}\log(1/r)$.
+\end{theorem}
+
+\begin{proof}
+Set $q=e^{-kt}$.  Then $dq/q=-k\,dt$, the endpoints $q=1,r$ become
+$t=0,x$, and
+\[
+ \frac{1+e^{-2t}}{1-e^{-2t}}=\coth t,
+\]
+which proves (O1).  Since $\coth t$, and hence $\log(\coth t)$, is strictly
+decreasing, the positive integrand $1/\log(\coth t)$ is strictly increasing.
+This proves monotonicity and strict convexity.  Moreover
+\[
+ 0\le\frac{\Phi(x)}x\le\frac1{\log(\coth x)}\longrightarrow0,
+\]
+which gives (O2); taking $r=e^{-kx}$ gives (O3).
+\end{proof}
+
+
+As $r$ approaches $1$, two successive merger scales approach each other.
+The integral can then be arbitrarily small relative to the logarithmic
+contribution, even for
+fixed $k$. Any estimate along a chain of mergers must retain this nonlinear
+dependence. Related weighted Jensen estimates and a lemma selecting two
+roots with small total logarithmic contribution are given in a
+\href{https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos1041/AttachmentAgeLifetimeOrlicz.md}{research note}.
+Those inequalities do not by themselves construct pieces of a contained
+path that meet one another.
+
+
 \section{The Newton value equation}\label{sec:newton}
+\papersectiontarget{newton-value-proof}
+
+The Newton vector field makes the polynomial value decay exponentially.
+This identifies its trajectories with inverse lifts of radial segments
+in the value plane. The identity is classical; we use the account of
+the Newtonian graph in Kozen and Stef\'ansson
+\cite[Lemmas~2.1--2.2 and \S2]{kozen-stefansson1997}.
+
 
 Sutherland uses the term Newton flow for $\dot z=-f(z)/f'(z)$ and
 notes that its solution curves map under $f$ to radial lines
@@ -3519,10 +4096,13 @@ put $w(t)=f(z(t))$.  Kozen and Stef\'ansson record the following identity as
 a lemma of Shub, Tischler and Williams \cite[Lemma~2.1]{kozen-stefansson1997}.
 
 \begin{theorem}[value equation]\label{res:value}
-Let $f$ be a polynomial and $z:I\to\mathbb C$ a differentiable curve on
-an interval $I$, with $f'(z(t))\ne0$ and
-$z'(t)=-f(z(t))/f'(z(t))$ throughout $I$.  For $w=f\circ z$, one has
-$w'(t)=-w(t)$ on $I$.
+For a polynomial $f$ and a differentiable curve $z:I\to\mathbb C$ on an
+interval $I$, assume $f'(z(t))\ne0$ and
+$z'(t)=-f(z(t))/f'(z(t))$ throughout $I$.  Then $w=f\circ z$ satisfies
+$w'=-w$, and
+\[
+ f(z(t))=e^{-(t-t_0)}f(z(t_0))\qquad(t,t_0\in I).
+\]
 \end{theorem}
 
 \noindent The computation is one line: $w'=f'(z)\,z'=f'(z)\cdot(-f(z)/f'(z))=-f(z)=-w$.
@@ -3561,10 +4141,12 @@ under $f$, every edge maps onto a segment of a ray through the origin whose
 endpoints are $0$ or critical values \cite[\S2]{kozen-stefansson1997}.
 
 \section{Arguments, not moduli}\label{sec:arguments}
+\papersectiontarget{argument-perturbation-proof}
 
-It is tempting to arrange a generic perturbation so that the critical values
-are pairwise distinct, or that their moduli are pairwise distinct, and to
-conclude that saddle connections are excluded.  Neither is enough.
+Two nonzero critical values lie on the same positive ray exactly when
+their ratio is positive real. A constant perturbation translates the
+values and leaves the critical points fixed, so the exceptional
+parameters can be written explicitly.
 
 Along a Newton trajectory the argument of $f$ stays constant while its
 modulus decreases. By Corollary~\ref{res:ray}, arranging pairwise distinct
@@ -3617,7 +4199,41 @@ root-retention estimates. A constant cannot separate equal critical values;
 coefficient perturbation and control of the remaining geometric margins
 are separate requirements.
 
+\subsection*{Local polynomial expansions}\label{subsec:local-polynomial-expansions}
+
+For $f(z)=\prod_j(z-a_j)$ with $a_j\ne0$, put $r=\min_j|a_j|$ and
+$p_m=\sum_j a_j^{-m}$.  On $|z|<r$, the exact expansion
+\[
+ \log|f(z)|=\log|f(0)|-\Re\sum_{m\ge1}\frac{p_m}{m}z^m
+\]
+expresses the local level geometry through the reciprocal power sums.  If $q=|z|/r<1$,
+the tail after $N$ has modulus at most
+$nq^{N+1}/((N+1)(1-q))$; differentiated geometric series give the
+corresponding first and second derivative bounds.
+A \href{https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos1041/ReciprocalNewtonExpansion.md}{research note}
+gives recurrences for these reciprocal power sums and tests based on the
+first two derivatives for a locally contained piecewise path.
+The assumption $|z|<r$ is essential: this disc contains no zero of $f$,
+so a logarithm exists there. The expansion does not continue through a
+root and does not select a pair of roots to join. A proposed local path
+must still satisfy the containment inequalities.
+
+
 \section{Why the proposed spanning-tree estimate fails}\label{sec:gap}
+\papersectiontarget{cassini-counterexample}
+
+The spanning-tree estimate in \cite[Proposition~12]{march2026} fails
+already for a quadratic Cassini lemniscate. That manuscript, posted by
+\texttt{shtuka} on 24 March 2026, claims the unrestricted statement
+\cite[Theorem~1, p.~1]{march2026}. The defect was located publicly in the
+problem's discussion thread: on 25 March 2026 Tao observed that the
+invocation of Lemma~8 there is unjustified and that the flow lines need not
+organise into connected trees, and on 26 March 2026 the manuscript's author
+agreed that the statement of Proposition~12 itself is incorrect. We give the
+numerical
+contradiction first, then discuss the saddle model and the separate
+attachment-aware topological statement.
+
 
 Recent work on polynomial lemniscates separates component counts from metric
 path questions. Ghosh and Ramachandran record that the open set
@@ -3765,9 +4381,7 @@ geometric realisation of that tree.
 Small neighbourhoods of the saddles can be chosen with diameter
 $O(\sqrt\delta)$ at value radius $\delta$.
 \end{theorem}
-\evidenceremark{No Lean proof covers the whole theorem. Lean checks the
-ray-disjointness, level-separation and saddle-scale steps of the proof; the
-Morse, monodromy and strip statements are not checked.}
+
 
 \begin{proof}
 The map $f:U\to\mathbb D$ is proper of degree $k$, and $U$ is simply
@@ -3861,6 +4475,11 @@ tree supplies no length bound for the historical question.
 
 \section{Numerical path searches}\label{sec:finite}
 
+The earlier searches discretised root configurations and tested
+candidate connections. Their finite scope is recorded here so that a
+negative search is not mistaken for a general path theorem.
+
+
 A search was run over random monic polynomials with roots in the unit disc.  For
 each sample the region $\{|f|<1\}$ was rasterised and shortest grid paths were
 computed between every pair of roots.  The reported grid distances were
@@ -3891,12 +4510,13 @@ separatrices.  They should report those diagnostics.  Raster paths remain candid
 finders, never continuous certificates.
 
 \section{Further questions about topology, length and perturbation}\label{sec:open}
+\papersectiontarget{remaining-questions}
 
-The questions below separate topological, metric and perturbative steps
-of earlier arguments. They are retained for their own content, not as a
-claim that completing them must prove the unrestricted historical assertion.
-A counterexample or a necessary additional hypothesis can be as informative
-as a positive theorem.
+The degree-seven example refutes the unrestricted formulation. The
+questions below concern the topology and quantitative estimates needed
+on restricted classes. They preserve the distinction between a valid
+inverse-sheet decomposition, bounds for its pieces, and a bound for a
+contained curve assembled from those pieces.
 
 \subsection*{1. Local saddle geometry and the refuted tree estimate}
 
@@ -4323,15 +4943,10 @@ endorsed the mathematics of the present paper.
 \section{Numerical estimates for the packing inequality}
 \label{sec:record-circle-slice}
 
-This appendix records numerical estimates for the packing argument in
-Theorem~\ref{res:low-critical-thirteen-twentyfifths}. The short paper does not depend on the floating-point comparisons below.
-Those comparisons are not certified upper bounds; the separate table of
-certified lower root counts is identified as such. The computations indicate
-where particular relaxations lose strength in the displayed range
-$13/25<\mu<1$. This is not an uncovered interval: the rigorous
-comparison above also covers $\mu\le529/1000$. The floating-point
-comparisons neither enlarge that certified range nor assert the
-historical path bound throughout the rest of the interval.
+The circle-slice inequality admits finite-dimensional numerical
+relaxations. The values below compare those relaxations with particular
+configurations; their optimisation accuracy is separate from the
+rational certificate used in Section~\ref{sec:low-critical-closure}.
 
 At $a=1$ the constants of the failure inequalities have the rounded
 values $\delta\approx0.4586751$, $D\approx5.3770730$, and
@@ -4423,6 +5038,11 @@ path threshold would still need to be established.
 
 % Part: family_catalogue
 \section{Guide to the results}\label{sec:erdos-1041-complete-family-map}
+
+The table locates the main families and the statements that establish
+them. Hypotheses on coefficients, root geometry and critical values
+are listed separately because none is interchangeable with the others.
+
 The table distinguishes the main conclusions and their limitations.
 Each theorem retains its own hypotheses; the scope of formal verification
 is given in the \href{\evidencerecordurl}{evidence record}.
@@ -4456,6 +5076,104 @@ A critical-value mean, a contained segment and a formally checked finite
 inequality do not supply the same conclusion.
 
 % Part: back
+\section{Formal statements and computational checks}\label{sec:verification-notes}
+\papersectiontarget{verification-notes}
+
+The formal sources supplied with these manuscripts have not been rebuilt
+for this revision. Their recorded statements include the fixed
+counterexample for
+\href{https://github.com/wcook04/plectis-erdos/blob/7380b7871687b6bcc41ca0143c61f232e8af6500/lean/ErdosProblems/Erdos1041/Counterexample/HausdorffLength.lean\#L283}{preconnected sets},
+the
+\href{https://github.com/wcook04/plectis-erdos/blob/7380b7871687b6bcc41ca0143c61f232e8af6500/lean/ErdosProblems/Erdos1041/Counterexample/HausdorffLength.lean\#L407}{negation of the Formal Conjectures statement},
+its
+\href{https://github.com/wcook04/plectis-erdos/blob/7380b7871687b6bcc41ca0143c61f232e8af6500/lean/ErdosProblems/Erdos1041/Counterexample/HausdorffLength.lean\#L449}{\texttt{answer(False)} form},
+and the
+\href{https://github.com/wcook04/plectis-erdos/blob/f70679d47178bf1174309cb29f5b31748609cc04/lean/ErdosProblems/Erdos1041/Counterexample/CatalogueAdapter.lean\#L25}{total-variation formulation}.
+The independent ordinary reconstruction in
+Section~\ref{sec:counterexample-proof} uses Rouch\'e's theorem, the
+component degree and Hausdorff measure. Its Cayley signs, critical-disc
+estimates and all four Bernstein tests were recomputed with rational
+arithmetic. Independent human review of the construction and its
+correspondence with the 1958 wording is not recorded.
+
+The rational program for the $13/25$ theorem was fully replayed, as
+described in Section~\ref{sec:low-critical-closure}. The analytic proof
+that reduces the path question to that computation is an ordinary
+proof. A recorded Comparator receipt or an individual Lean lemma does
+not independently check that reduction. The fourth-power refinement of
+the critical-value mean and the longer analytic family arguments also
+remain ordinary proofs. The source-specific restrictions formerly
+placed after individual statements are collected below.
+
+\begin{description}
+\item[\ref{res:low-critical-thirteen-twentyfifths}.] No Lean proof covers the whole theorem. Lean checks the
+degree-two case, and the closing inequality $(13/25)e^X<1$ at the stopping
+time $X$ certified in the proof. The computation that certifies $X$, done by an
+exact-arithmetic program, and the analytic argument in degrees three and
+higher are not checked in Lean.
+
+\item[\ref{res:low-critical-scale-free}.] The Lean proof assumes
+Theorem~\ref{res:low-critical-thirteen-twentyfifths}.
+
+\item[\ref{res:dual-arity-floor}.] The Lean proof takes the separation bound
+\eqref{eq:lc-separation} and the radius and budget bounds
+\eqref{eq:lc-radius-and-budget} as hypotheses; their derivation from the
+failure assumption, given in that section, is not checked in Lean.
+
+\item[\ref{res:scaled-low-critical-path}.] The Lean proof assumes
+Theorem~\ref{res:low-critical-thirteen-twentyfifths} in degrees above two;
+the degree-two case is checked without it.
+
+\item[\ref{res:constant-factor-path}.] The Lean proof assumes the two-parameter bound (CF) in the proof
+in degrees $n\ge3$, which the proof obtains by averaging over levels and
+value directions. The degenerate case, degree two and the numerical
+constants are checked without that input.
+
+\item[\ref{res:constant-factor-arity}.] The Lean proof assumes the bound (CF) from the proof of
+Theorem~\ref{res:constant-factor-path}, for a component containing at least
+$k_0$ roots; the rational inequalities are checked.
+
+\item[\ref{res:constant-factor-capacity}.] The Lean proof assumes the averaging construction in the
+proof of Theorem~\ref{res:constant-factor-path}, rerun with the
+area--capacity inequality for the area of $C$; the rational cutoffs are
+checked.
+
+\item[\ref{res:conjecture-p-consumer}.] The Lean proof assumes the two-component split at the
+first critical level that the proof in the proof constructs: two one-root
+components whose closures meet at a critical point, each with boundary
+length at most $\beta\rho$ and each joining its root to that point within
+half its perimeter.
+
+\item[\ref{res:critical-value-separation}.] The Lean proof assumes the analytic construction in the
+proof in the proof: the connector obtained through the square-root map, its
+Bergman length bound (7), and the capacity bound for the area of the
+two-sheeted component.
+
+\item[\ref{res:critical-value-thresholds}.] The Lean proof assumes the same construction as
+Theorem~\ref{res:critical-value-separation} for the second assertion.
+Inequality~\eqref{eq:disk-family-coefficient} and every numerical step are
+checked without it.
+
+\item[\ref{res:attachment-aware-reeb}.] No Lean proof covers the whole theorem. Lean checks the
+ray-disjointness, level-separation and saddle-scale steps of the proof; the
+Morse, monodromy and strip statements are not checked.
+
+\item[\ref{res:arity-not-capacity}.] The formal capacity conclusion takes
+as input the classical transfinite-diameter formula for a filled monic
+lemniscate. The root count at the first merger does not require that input.
+\item[Moved statements.] Statements moved verbatim retain their original
+mathematical text. Where two statements have been consolidated, their
+old formal associations must be reconciled with the displayed statement;
+no additional Lean coverage is inferred from the consolidation.
+\end{description}
+
+No supplied proof establishes the reported Runge construction of
+unbounded one-root perimeters or the stronger assertion that every
+critical joining point fails in the near-pentagon example. Neither is
+used in the positive theorems. The fixed value of the degree-seven
+parameter is not a proof of the reported parameter family.
+\evidenceparagraph{\evidencerecordurl}
+
 \begin{thebibliography}{99}
 \bibitem{polya1928} G.~P\'olya,
   \emph{Beitrag zur Verallgemeinerung des Verzerrungssatzes auf mehrfach
@@ -4593,4 +5311,8 @@ inequality do not supply the same conclusion.
   \emph{\"Uber die Verteilung der Wurzeln bei gewissen algebraischen
   Gleichungen mit ganzzahligen Koeffizienten}, Math. Z. \textbf{1}
   (1918), no.~4, 377--402.
+\bibitem{ransford1995} T.~Ransford,
+  \emph{Potential Theory in the Complex Plane}, London Mathematical Society
+  Student Texts~28, Cambridge University Press, Cambridge, 1995,
+  doi:\href{https://doi.org/10.1017/CBO9780511623776}{10.1017/CBO9780511623776}.
 \end{thebibliography}

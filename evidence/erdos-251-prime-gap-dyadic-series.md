@@ -115,7 +115,7 @@ theorem polylogarithmic_word_interval_uniform (a : ℕ → ℕ) {A ε : ℝ}
 
 <a id="res-jointcountermodel"></a>
 
-## Corollary 1.2 (a rational sum with the stated prime-gap statistics), page 5
+## Corollary 3.1 (a rational sum with the stated prime-gap statistics), page 5
 
 > *Let $`p_0=2,p_1=3,\ldots`$ be the primes and $`g_n=p_{n+1}-p_n`$. Given $`K\in\mathbb{N}`$ and $`0<\varepsilon\le1`$, there is $`b:\mathbb{N}\to\mathbb{N}`$ with rational dyadic sum such that $`b_n=g_n`$ for $`n<K`$, $`b_n\ge g_n`$, and $`b_n-g_n\le(\log(n+3))^\varepsilon`$ eventually. For every fixed positive modulus, both the coefficients and the cumulative positions eventually retain their corresponding residues. The empirical distributions of unnormalised blocks have total variation distance tending to zero for lengths $`o(\log\log X)`$, and for every fixed nonzero $`F\in\mathbb{Z}[x_0,\ldots,x_k]`$,
 > ``` math
@@ -206,7 +206,7 @@ def SchlagePuchtaLemma4 : Prop :=
 
 <a id="res-infinite"></a>
 
-## Theorem 2.1 (prime-to-gap identity), page 6
+## Theorem 4.1 (prime-to-gap identity), page 6
 
 > *The actual prime and gap series satisfy $`\Pi=2+G`$. Their complete tails
 > ``` math
@@ -279,9 +279,49 @@ For each Lean declaration: the Challenge (the target, stated from Mathlib alone)
 
 Each Challenge states the same proposition as the Lean declaration it targets, with every definition it uses restated from Mathlib alone.
 
+<a id="res-irr-equivalence"></a>
+
+## Corollary 4.2 (exact irrationality reformulation), page 6
+
+> *The prime-value dyadic series is irrational if and only if the prime-gap dyadic series is. Both series converge by the polynomial bound proved above; neither side is proved irrational.*
+
+The Lean declarations below together state this result or one that implies it. The second Lean statement gives the equivalence of irrationality of $\Pi$ and $G$, and the first gives convergence of both series; the Lean statements add the identity $\Pi=2+G$ and the same equivalence for $\sum_{n\ge0}p_n2^{-n}=4+2G$.
+
+1. [`ErdosProblems.Erdos251.PaperR7.infinite_prime_gap_identity`](https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos251/PaperCoreR7.lean#L47)
+
+```lean
+theorem infinite_prime_gap_identity :
+    Summable primeDyadicTerm ∧ Summable primeGapDyadicTerm ∧
+    (∑' n : ℕ, primeDyadicTerm n) =
+      2 + ∑' n : ℕ, primeGapDyadicTerm n
+```
+
+2. [`ErdosProblems.Erdos251.PaperR7.irrationality_reformulation`](https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos251/PaperCoreR7.lean#L56)
+
+```lean
+theorem irrationality_reformulation :
+    (Irrational (∑' n : ℕ, primeDyadicTerm n) ↔
+      Irrational (∑' n : ℕ, primeGapDyadicTerm n)) ∧
+    (∑' n : ℕ, primeDisplayedDyadicTerm n) =
+      4 + 2 * ∑' n : ℕ, primeGapDyadicTerm n ∧
+    (Irrational (∑' n : ℕ, primeDisplayedDyadicTerm n) ↔
+      Irrational (∑' n : ℕ, primeGapDyadicTerm n))
+```
+
+<a id="res-irr-equivalence-comparator"></a>
+
+**Comparator: passed** (run 35935225572, corpus commit `cc7e541cf208`).
+
+For each Lean declaration: the Challenge (the target, stated from Mathlib alone), the Solution (our proof) and the replay report.
+
+- `infinite_prime_gap_identity`: [Challenge](https://github.com/wcook04/plectis-erdos-lean/blob/cc7e541cf2081c6fef5a5e377d52e365e33b01eb/PalomarCorpus/E251_01/Challenge.lean#L205) (E251_01, line 205), [Solution](https://github.com/wcook04/plectis-erdos-lean/blob/cc7e541cf2081c6fef5a5e377d52e365e33b01eb/Solutions/PalomarCorpus/E251_01/PaperStatementsG.lean#L44) (PaperStatementsG.lean, line 44), [replay report](../evidence/comparator/replay-35935225572/receipt-E251_01.json) (E251_01)
+- `irrationality_reformulation`: [Challenge](https://github.com/wcook04/plectis-erdos-lean/blob/cc7e541cf2081c6fef5a5e377d52e365e33b01eb/PalomarCorpus/E251_01/Challenge.lean#L211) (E251_01, line 211), [Solution](https://github.com/wcook04/plectis-erdos-lean/blob/cc7e541cf2081c6fef5a5e377d52e365e33b01eb/Solutions/PalomarCorpus/E251_01/PaperStatementsG.lean#L49) (PaperStatementsG.lean, line 49), [replay report](../evidence/comparator/replay-35935225572/receipt-E251_01.json) (E251_01)
+
+Each Challenge states the same proposition as the Lean declaration it targets, with every definition it uses restated from Mathlib alone.
+
 <a id="res-true-tail"></a>
 
-## Lemma 2.2 (the boundary condition identifying a true tail), page 7
+## Lemma 4.3 (the boundary condition identifying a true tail), page 6
 
 > *Let $`\sum_{j\ge1}|a_j|2^{-j}<\infty`$ and $`U_{N+1}=2U_N-a_{N+1}`$. Then $`U_N=\sum_{j\ge1}a_{N+j}2^{-j}`$ for every $`N`$ if and only if $`2^{-N}U_N\to0`$.*
 
@@ -309,7 +349,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="res-escape-irrational"></a>
 
-## Theorem 3.1 (exact rationality classification), page 7
+## Theorem 4.4 (exact rationality classification), page 7
 
 > *For a real integer-coefficient recurrence, the following are equivalent: $`U_0\in\mathbb{Q}`$; $`D_h(N)\in\mathbb{Z}`$ for some $`h\ge1,N\ge0`$; and, for some fixed $`h\ge1`$, $`D_h(N)\in\mathbb{Z}`$ at every sufficiently large $`N`$. More precisely, if $`U_0=u/(2^sd)`$ is in lowest terms, with $`d`$ odd, then
 > ``` math
@@ -360,7 +400,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="res-signedwindow"></a>
 
-## Proposition 4.1 (two consecutive differences of absolute value less than one), page 8
+## Proposition 5.1 (two consecutive differences of absolute value less than one), page 7
 
 > *Let $`D,D'\in\mathbb{R}`$, $`\delta\in2\mathbb{Z}`$ and $`D'=2D-\delta`$. The conditions $`|D|<1`$, $`|D'|<1`$ and $`\delta\ne0`$ hold exactly when, for some $`s\in\{-1,1\}`$,
 > ``` math
@@ -404,7 +444,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="res-truncation"></a>
 
-## Proposition 4.3 (finite separation criterion), page 9
+## Proposition 5.3 (finite separation criterion), page 8
 
 > *If for every $`h\ge1`$ and every cutoff $`N_0`$ there are $`N\ge N_0,L\ge1`$ with
 > ``` math
@@ -438,49 +478,9 @@ For each Lean declaration: the Challenge (the target, stated from Mathlib alone)
 
 Each Challenge states the same proposition as the Lean declaration it targets, with every definition it uses restated from Mathlib alone.
 
-<a id="res-irr-equivalence"></a>
-
-## Corollary 6.1 (exact irrationality reformulation), page 10
-
-> *The prime-value dyadic series is irrational if and only if the prime-gap dyadic series is. Both series converge by the polynomial bound proved above; neither side is proved irrational.*
-
-The Lean declarations below together state this result or one that implies it. The second Lean statement gives the equivalence of irrationality of $\Pi$ and $G$, and the first gives convergence of both series; the Lean statements add the identity $\Pi=2+G$ and the same equivalence for $\sum_{n\ge0}p_n2^{-n}=4+2G$.
-
-1. [`ErdosProblems.Erdos251.PaperR7.infinite_prime_gap_identity`](https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos251/PaperCoreR7.lean#L47)
-
-```lean
-theorem infinite_prime_gap_identity :
-    Summable primeDyadicTerm ∧ Summable primeGapDyadicTerm ∧
-    (∑' n : ℕ, primeDyadicTerm n) =
-      2 + ∑' n : ℕ, primeGapDyadicTerm n
-```
-
-2. [`ErdosProblems.Erdos251.PaperR7.irrationality_reformulation`](https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos251/PaperCoreR7.lean#L56)
-
-```lean
-theorem irrationality_reformulation :
-    (Irrational (∑' n : ℕ, primeDyadicTerm n) ↔
-      Irrational (∑' n : ℕ, primeGapDyadicTerm n)) ∧
-    (∑' n : ℕ, primeDisplayedDyadicTerm n) =
-      4 + 2 * ∑' n : ℕ, primeGapDyadicTerm n ∧
-    (Irrational (∑' n : ℕ, primeDisplayedDyadicTerm n) ↔
-      Irrational (∑' n : ℕ, primeGapDyadicTerm n))
-```
-
-<a id="res-irr-equivalence-comparator"></a>
-
-**Comparator: passed** (run 35935225572, corpus commit `cc7e541cf208`).
-
-For each Lean declaration: the Challenge (the target, stated from Mathlib alone), the Solution (our proof) and the replay report.
-
-- `infinite_prime_gap_identity`: [Challenge](https://github.com/wcook04/plectis-erdos-lean/blob/cc7e541cf2081c6fef5a5e377d52e365e33b01eb/PalomarCorpus/E251_01/Challenge.lean#L205) (E251_01, line 205), [Solution](https://github.com/wcook04/plectis-erdos-lean/blob/cc7e541cf2081c6fef5a5e377d52e365e33b01eb/Solutions/PalomarCorpus/E251_01/PaperStatementsG.lean#L44) (PaperStatementsG.lean, line 44), [replay report](../evidence/comparator/replay-35935225572/receipt-E251_01.json) (E251_01)
-- `irrationality_reformulation`: [Challenge](https://github.com/wcook04/plectis-erdos-lean/blob/cc7e541cf2081c6fef5a5e377d52e365e33b01eb/PalomarCorpus/E251_01/Challenge.lean#L211) (E251_01, line 211), [Solution](https://github.com/wcook04/plectis-erdos-lean/blob/cc7e541cf2081c6fef5a5e377d52e365e33b01eb/Solutions/PalomarCorpus/E251_01/PaperStatementsG.lean#L49) (PaperStatementsG.lean, line 49), [replay report](../evidence/comparator/replay-35935225572/receipt-E251_01.json) (E251_01)
-
-Each Challenge states the same proposition as the Lean declaration it targets, with every definition it uses restated from Mathlib alone.
-
 <a id="res-gap-nonperiodic"></a>
 
-## Proposition 6.2 (prime gaps do not become periodic), page 10
+## Proposition 6.1 (prime gaps do not become periodic), page 9
 
 > *For every positive $`h`$, the actual consecutive-prime-gap sequence is not eventually periodic with period $`h`$.*
 

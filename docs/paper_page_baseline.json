@@ -8,7 +8,7 @@
   "erdos-249-binary-totient-series": 17,
   "erdos-251-prime-gap-dyadic-series": 15,
   "erdos-257-mersenne-support-subseries": 23,
-  "erdos-269-three-prime-running-lcm": 16,
+  "erdos-269-three-prime-running-lcm": 17,
   "erdos-1041-lemniscate-newton-flow": 32,
   "erdos-1049-rational-base-lambert": 21,
   "erdos68-factorial-reasoning-surface": 49,
@@ -17,10 +17,10 @@
   "erdos251-prime-gap-reasoning-surface": 49,
   "erdos257-mersenne-reasoning-surface": 166,
   "erdos269-running-lcm-reasoning-surface": 69,
-  "erdos1041-lemniscate-reasoning-surface": 78,
-  "erdos1049-rational-base-lambert-reasoning-surface": 73
+  "erdos1041-lemniscate-reasoning-surface": 83,
+  "erdos1049-rational-base-lambert-reasoning-surface": 75
  },
- "total": 875,
+ "total": 883,
  "revisions": [
   {
    "date": "2026-09-26",
@@ -42,6 +42,27 @@
    "from": 65,
    "to": 69,
    "reason": "Round8 adds ordinary late-swap and independent-clock proofs, explicit four-clock/collision controls and selected-staircase Smith/height analysis; same typography. Sourcecommit2a8c1667; new proof pages21\u201322 and finalbibliography page69 visually checked."
+  },
+  {
+   "date": "2026-09-29",
+   "paper": "erdos-269-three-prime-running-lcm",
+   "from": 16,
+   "to": 17,
+   "reason": "Round-12 register pass rewrote the short paper (4,301 to 4,109 prose words) and Type A restored the evidence remark naming the two-prime result's Lean input; same typography."
+  },
+  {
+   "date": "2026-09-29",
+   "paper": "erdos1041-lemniscate-reasoning-surface",
+   "from": 78,
+   "to": 83,
+   "reason": "Round-12 rewrite moved nine short-paper results into the record with their proofs (declared merges) and Type A restored nine evidence remarks naming Lean inputs; same typography."
+  },
+  {
+   "date": "2026-09-29",
+   "paper": "erdos1049-rational-base-lambert-reasoning-surface",
+   "from": 73,
+   "to": 75,
+   "reason": "Round-12 rewrite moved ten short-paper results into the record (declared merges); same typography."
   }
  ]
 }
