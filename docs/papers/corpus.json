@@ -4526,12 +4526,12 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/erdos257-mersenne-reasoning-surface.md",
       "local_source": "paper/257/erdos257-mersenne-reasoning-surface.tex",
-      "source_sha256": "sha256:781868f903af0624baed4f556a46eccb225f88c087adcd04ce488e9606204131",
+      "source_sha256": "sha256:051ec215e04c555cfd4c10dd6009ed6c362bf4f7b2cf55558dc3cfc0e74c6828",
       "canonical_source_commit": null,
       "canonical_source_pin_status": "local_unpublished",
       "canonical_source_url": null,
       "canonical_source_raw_url": null,
-      "section_count": 163,
+      "section_count": 164,
       "sections": [
         {
           "level": 1,
@@ -4613,903 +4613,909 @@
         },
         {
           "level": 6,
+          "id": "record257:strict-mixed-proof",
+          "title": "Why the mixed criterion is strict.",
+          "line": 540
+        },
+        {
+          "level": 6,
           "id": "the-elementary-independence-boundary.",
           "title": "The elementary independence boundary.",
-          "line": 544
+          "line": 550
         },
         {
           "level": 4,
           "id": "the-universal-problem-and-the-half-value-question",
           "title": "The universal problem and the half-value question",
-          "line": 550
+          "line": 556
         },
         {
           "level": 4,
           "id": "known-support-theorems",
           "title": "Known support theorems",
-          "line": 572
+          "line": 578
         },
         {
           "level": 6,
           "id": "periodic-weights-the-two-hypothesis-sets.",
           "title": "Periodic weights: the two hypothesis sets.",
-          "line": 625
+          "line": 631
         },
         {
           "level": 6,
           "id": "a-separate-denominator-growth-criterion.",
           "title": "A separate denominator-growth criterion.",
-          "line": 631
+          "line": 637
         },
         {
           "level": 4,
           "id": "geometry-and-rational-target-membership",
           "title": "Geometry and rational-target membership",
-          "line": 643
+          "line": 649
         },
         {
           "level": 6,
           "id": "hausdorff-dimension-of-a-restricted-set.",
           "title": "Hausdorff dimension of a restricted set.",
-          "line": 661
+          "line": 667
         },
         {
           "level": 1,
           "id": "ii.-limitations-and-extensions-of-recorded-methods",
           "title": "II. Limitations and extensions of recorded methods",
-          "line": 719
+          "line": 725
         },
         {
           "level": 3,
           "id": "sec:257-wall",
           "title": "Limitations of the recorded methods",
-          "line": 723
+          "line": 729
         },
         {
           "level": 4,
           "id": "what-the-obstructions-do-and-do-not-show",
           "title": "What the obstructions do and do not show",
-          "line": 727
+          "line": 733
         },
         {
           "level": 4,
           "id": "bar:canon",
           "title": "Uniqueness of the specified greedy words",
-          "line": 752
+          "line": 758
         },
         {
           "level": 4,
           "id": "bar:collapse",
           "title": "Equivalent formulations of half-membership",
-          "line": 796
+          "line": 802
         },
         {
           "level": 4,
           "id": "bar:scale",
           "title": "The size of the required error bounds",
-          "line": 876
+          "line": 882
         },
         {
           "level": 4,
           "id": "bar:asym",
           "title": "What finite certificates decide",
-          "line": 927
+          "line": 933
         },
         {
           "level": 4,
           "id": "bar:measure",
           "title": "Why measure and category do not decide a rational target",
-          "line": 946
+          "line": 952
         },
         {
           "level": 4,
           "id": "bar:box",
           "title": "Hypotheses of the CRT block-certificate argument",
-          "line": 958
+          "line": 964
         },
         {
           "level": 4,
           "id": "the-distinct-estimates-still-required",
           "title": "The distinct estimates still required",
-          "line": 972
+          "line": 978
         },
         {
           "level": 3,
           "id": "sec:257-survivors",
           "title": "Unproved inputs for further arguments",
-          "line": 978
+          "line": 984
         },
         {
           "level": 4,
           "id": "two-further-analytic-tests",
           "title": "Two further analytic tests",
-          "line": 984
+          "line": 990
         },
         {
           "level": 4,
           "id": "ssec:route-1",
           "title": "A lower bound at reset ranks",
-          "line": 1023
+          "line": 1029
         },
         {
           "level": 4,
           "id": "ssec:route-2",
           "title": "Increasing the depths of exact finite sums",
-          "line": 1047
+          "line": 1053
         },
         {
           "level": 4,
           "id": "ssec:route-3",
           "title": "The known prime-support theorem",
-          "line": 1075
+          "line": 1081
         },
         {
           "level": 4,
           "id": "ssec:route-4",
           "title": "Equivalent membership conditions",
-          "line": 1088
+          "line": 1094
         },
         {
           "level": 4,
           "id": "ssec:route-5",
           "title": "Why zero windows do not split the support class",
-          "line": 1096
+          "line": 1102
         },
         {
           "level": 4,
           "id": "comparison-of-the-remaining-inputs",
           "title": "Comparison of the remaining inputs",
-          "line": 1111
+          "line": 1117
         },
         {
           "level": 3,
           "id": "sec:257-howto",
           "title": "Reading the detailed record",
-          "line": 1117
+          "line": 1123
         },
         {
           "level": 6,
           "id": "read-linearly.",
           "title": "Read linearly.",
-          "line": 1123
+          "line": 1129
         },
         {
           "level": 6,
           "id": "use-as-reference.",
           "title": "Use as reference.",
-          "line": 1129
+          "line": 1135
         },
         {
           "level": 6,
           "id": "finite-ranges-and-unbounded-statements.",
           "title": "Finite ranges and unbounded statements.",
-          "line": 1135
+          "line": 1141
         },
         {
           "level": 1,
           "id": "iii.-detailed-statement-and-arithmetic-catalogue",
           "title": "III. Detailed statement and arithmetic catalogue",
-          "line": 1141
+          "line": 1147
         },
         {
           "level": 3,
           "id": "the-series-the-greedy-rule-and-finite-identities",
           "title": "The series, the greedy rule and finite identities",
-          "line": 1145
+          "line": 1151
         },
         {
           "level": 4,
           "id": "the-object",
           "title": "The object",
-          "line": 1149
+          "line": 1155
         },
         {
           "level": 4,
           "id": "what-is-proved",
           "title": "What is proved",
-          "line": 1176
+          "line": 1182
         },
         {
           "level": 5,
           "id": "full-support-irrationality-for-every-base",
           "title": "Full-support irrationality, for every base",
-          "line": 1180
+          "line": 1186
         },
         {
           "level": 5,
           "id": "structured-infinite-supports",
           "title": "Structured infinite supports",
-          "line": 1197
+          "line": 1203
         },
         {
           "level": 5,
           "id": "topology-and-measure-of-the-achievement-set",
           "title": "Topology and measure of the achievement set",
-          "line": 1234
+          "line": 1240
         },
         {
           "level": 4,
           "id": "ssec:greedy-orbit",
           "title": "The greedy rule for one half",
-          "line": 1258
+          "line": 1264
         },
         {
           "level": 4,
           "id": "ssec:seam-model",
           "title": "Integer quotients and their remainder identity",
-          "line": 1290
+          "line": 1296
         },
         {
           "level": 4,
           "id": "a-real-valued-form-of-the-quotient-identity",
           "title": "A real-valued form of the quotient identity",
-          "line": 1335
+          "line": 1341
         },
         {
           "level": 4,
           "id": "dynamics",
           "title": "Dynamics",
-          "line": 1367
+          "line": 1373
         },
         {
           "level": 4,
           "id": "ssec:anchors",
           "title": "Reported finite checks",
-          "line": 1435
+          "line": 1441
         },
         {
           "level": 3,
           "id": "detailed-results-and-their-hypotheses",
           "title": "Detailed results and their hypotheses",
-          "line": 1463
+          "line": 1469
         },
         {
           "level": 4,
           "id": "conditional-membership-tests",
           "title": "Conditional membership tests",
-          "line": 1469
+          "line": 1475
         },
         {
           "level": 6,
           "id": "comparison-with-the-known-theorem.",
           "title": "Comparison with the known theorem.",
-          "line": 1782
+          "line": 1788
         },
         {
           "level": 4,
           "id": "exact-identities-and-reductions",
           "title": "Exact identities and reductions",
-          "line": 1847
+          "line": 1853
         },
         {
           "level": 4,
           "id": "consequence-theorems",
           "title": "Consequence theorems",
-          "line": 2373
+          "line": 2379
         },
         {
           "level": 5,
           "id": "finite-quotients-and-their-remainders",
           "title": "Finite quotients and their remainders",
-          "line": 2379
+          "line": 2385
         },
         {
           "level": 5,
           "id": "two-implications-yielding-half-membership",
           "title": "Two implications yielding half-membership",
-          "line": 2441
+          "line": 2447
         },
         {
           "level": 5,
           "id": "compatible-finite-approximations",
           "title": "Compatible finite approximations",
-          "line": 2469
+          "line": 2475
         },
         {
           "level": 5,
           "id": "a-quotient-bound-at-a-crossing",
           "title": "A quotient bound at a crossing",
-          "line": 2499
+          "line": 2505
         },
         {
           "level": 5,
           "id": "filling-the-remaining-binary-positions",
           "title": "Filling the remaining binary positions",
-          "line": 2575
+          "line": 2581
         },
         {
           "level": 5,
           "id": "reducing-the-dyadic-boundary-checks",
           "title": "Reducing the dyadic-boundary checks",
-          "line": 2625
+          "line": 2631
         },
         {
           "level": 5,
           "id": "nonnegativity-of-the-omitted-tail-margin",
           "title": "Nonnegativity of the omitted-tail margin",
-          "line": 2668
+          "line": 2674
         },
         {
           "level": 5,
           "id": "square-root-bounds-for-half-carries",
           "title": "Square-root bounds for half-carries",
-          "line": 2713
+          "line": 2719
         },
         {
           "level": 5,
           "id": "a-margin-at-an-unspecified-later-horizon",
           "title": "A margin at an unspecified later horizon",
-          "line": 2760
+          "line": 2766
         },
         {
           "level": 5,
           "id": "equivalent-conditions-for-infinitely-many-greedy-skips",
           "title": "Equivalent conditions for infinitely many greedy skips",
-          "line": 2783
+          "line": 2789
         },
         {
           "level": 4,
           "id": "invariants",
           "title": "Invariants",
-          "line": 2798
+          "line": 2804
         },
         {
           "level": 5,
           "id": "one-step-quotient-identities",
           "title": "One-step quotient identities",
-          "line": 2804
+          "line": 2810
         },
         {
           "level": 5,
           "id": "bounds-for-the-remaining-binary-positions",
           "title": "Bounds for the remaining binary positions",
-          "line": 2837
+          "line": 2843
         },
         {
           "level": 5,
           "id": "doubling-the-endpoint",
           "title": "Doubling the endpoint",
-          "line": 2889
+          "line": 2895
         },
         {
           "level": 5,
           "id": "the-depth-six-example",
           "title": "The depth-six example",
-          "line": 2927
+          "line": 2933
         },
         {
           "level": 5,
           "id": "approximation-error-and-finite-denominators",
           "title": "Approximation error and finite denominators",
-          "line": 2943
+          "line": 2949
         },
         {
           "level": 5,
           "id": "uniqueness-for-gap-dominated-finite-weights",
           "title": "Uniqueness for gap-dominated finite weights",
-          "line": 2961
+          "line": 2967
         },
         {
           "level": 5,
           "id": "a-geometric-form-of-the-quotient-condition",
           "title": "A geometric form of the quotient condition",
-          "line": 3009
+          "line": 3015
         },
         {
           "level": 5,
           "id": "bounds-for-a-general-coefficient-sequence",
           "title": "Bounds for a general coefficient sequence",
-          "line": 3025
+          "line": 3031
         },
         {
           "level": 5,
           "id": "restrictions-on-a-support-with-rational-value",
           "title": "Restrictions on a support with rational value",
-          "line": 3083
+          "line": 3089
         },
         {
           "level": 5,
           "id": "the-first-crossing-of-the-half-value",
           "title": "The first crossing of the half-value",
-          "line": 3128
+          "line": 3134
         },
         {
           "level": 5,
           "id": "centred-carries-at-skipped-ranks",
           "title": "Centred carries at skipped ranks",
-          "line": 3156
+          "line": 3162
         },
         {
           "level": 5,
           "id": "gap-lengths-and-the-measure-of-their-union",
           "title": "Gap lengths and the measure of their union",
-          "line": 3184
+          "line": 3190
         },
         {
           "level": 5,
           "id": "a-sufficient-test-for-a-safe-skip",
           "title": "A sufficient test for a safe skip",
-          "line": 3214
+          "line": 3220
         },
         {
           "level": 5,
           "id": "two-sided-bounds-near-dyadic-endpoints",
           "title": "Two-sided bounds near dyadic endpoints",
-          "line": 3252
+          "line": 3258
         },
         {
           "level": 5,
           "id": "general-identities-for-perturbed-greedy-recurrences",
           "title": "General identities for perturbed greedy recurrences",
-          "line": 3280
+          "line": 3286
         },
         {
           "level": 4,
           "id": "obstructions-and-countermodels",
           "title": "Obstructions and countermodels",
-          "line": 3307
+          "line": 3313
         },
         {
           "level": 4,
           "id": "further-finite-and-conditional-results",
           "title": "Further finite and conditional results",
-          "line": 3437
+          "line": 3443
         },
         {
           "level": 5,
           "id": "the-integer-update-in-a-middle-interval",
           "title": "The integer update in a middle interval",
-          "line": 3443
+          "line": 3449
         },
         {
           "level": 5,
           "id": "finite-approximations-without-compatibility",
           "title": "Finite approximations without compatibility",
-          "line": 3488
+          "line": 3494
         },
         {
           "level": 5,
           "id": "removing-one-case-from-a-sufficient-tail-condition",
           "title": "Removing one case from a sufficient tail condition",
-          "line": 3535
+          "line": 3541
         },
         {
           "level": 5,
           "id": "an-eventual-nonnegative-margin",
           "title": "An eventual nonnegative margin",
-          "line": 3553
+          "line": 3559
         },
         {
           "level": 5,
           "id": "rewriting-the-signed-carry-recurrence",
           "title": "Rewriting the signed carry recurrence",
-          "line": 3574
+          "line": 3580
         },
         {
           "level": 5,
           "id": "further-restrictions-on-represented-values",
           "title": "Further restrictions on represented values",
-          "line": 3587
+          "line": 3593
         },
         {
           "level": 5,
           "id": "conditional-counterexamples-at-rational-targets",
           "title": "Conditional counterexamples at rational targets",
-          "line": 3602
+          "line": 3608
         },
         {
           "level": 5,
           "id": "multiplicity-of-the-stated-twothree-representations",
           "title": "Multiplicity of the stated two\u2013three representations",
-          "line": 3615
+          "line": 3621
         },
         {
           "level": 5,
           "id": "integer-quotient-tests-for-one-twenty-first",
           "title": "Integer-quotient tests for one twenty-first",
-          "line": 3621
+          "line": 3627
         },
         {
           "level": 1,
           "id": "iv.-scales-conditional-interfaces-and-unresolved-inputs",
           "title": "IV. Scales, conditional interfaces and unresolved inputs",
-          "line": 3637
+          "line": 3643
         },
         {
           "level": 3,
           "id": "sec:scale-ladder",
           "title": "Finite ranges and unbounded parameters",
-          "line": 3641
+          "line": 3647
         },
         {
           "level": 3,
           "id": "sec:four-coordinates",
           "title": "Approximations to the greedy orbit",
-          "line": 3741
+          "line": 3747
         },
         {
           "level": 4,
           "id": "four-reported-calculations",
           "title": "Four reported calculations",
-          "line": 3745
+          "line": 3751
         },
         {
           "level": 4,
           "id": "successive-tail-truncations",
           "title": "Successive tail truncations",
-          "line": 3797
+          "line": 3803
         },
         {
           "level": 3,
           "id": "which-hypotheses-remain-unproved",
           "title": "Which hypotheses remain unproved",
-          "line": 3925
+          "line": 3931
         },
         {
           "level": 4,
           "id": "the-three-257-obligations-stated-exactly",
           "title": "The three #257 obligations, stated exactly",
-          "line": 3931
+          "line": 3937
         },
         {
           "level": 4,
           "id": "reading-a-row",
           "title": "Reading a row",
-          "line": 3953
+          "line": 3959
         },
         {
           "level": 4,
           "id": "reset-estimates-and-their-missing-hypotheses",
           "title": "Reset estimates and their missing hypotheses",
-          "line": 3959
+          "line": 3965
         },
         {
           "level": 4,
           "id": "finite-quotient-sums-and-unbounded-depths",
           "title": "Finite quotient sums and unbounded depths",
-          "line": 4110
+          "line": 4116
         },
         {
           "level": 4,
           "id": "universal-support-criteria-and-their-limits",
           "title": "Universal support criteria and their limits",
-          "line": 4210
+          "line": 4216
         },
         {
           "level": 4,
           "id": "three-combined-conditional-arguments",
           "title": "Three combined conditional arguments",
-          "line": 4358
+          "line": 4364
         },
         {
           "level": 4,
           "id": "four-limitations-of-the-stated-implications",
           "title": "Four limitations of the stated implications",
-          "line": 4392
+          "line": 4398
         },
         {
           "level": 3,
           "id": "hypothesis-specific-obstructions",
           "title": "Hypothesis-specific obstructions",
-          "line": 4422
+          "line": 4428
         },
         {
           "level": 4,
           "id": "four-tested-approaches-to-the-reset-estimate",
           "title": "Four tested approaches to the reset estimate",
-          "line": 4430
+          "line": 4436
         },
         {
           "level": 4,
           "id": "sec:branch-exclusions",
           "title": "Excluding particular final dyadic intervals",
-          "line": 4519
+          "line": 4525
         },
         {
           "level": 4,
           "id": "related-counterexamples-and-restrictions",
           "title": "Related counterexamples and restrictions",
-          "line": 4605
+          "line": 4611
         },
         {
           "level": 4,
           "id": "the-scalar-localisation-height-obstruction",
           "title": "The scalar-localisation height obstruction",
-          "line": 4650
+          "line": 4656
         },
         {
           "level": 4,
           "id": "the-final-skip-band-formula-and-what-it-does-not-show",
           "title": "The final-skip band formula, and what it does not show",
-          "line": 4674
+          "line": 4680
         },
         {
           "level": 3,
           "id": "sec:invent-257",
           "title": "Unproved inputs for the recorded implications",
-          "line": 4714
+          "line": 4720
         },
         {
           "level": 4,
           "id": "sec:invent-R1",
           "title": "Reset bounds and finite weighted divisor sums",
-          "line": 4743
+          "line": 4749
         },
         {
           "level": 5,
           "id": "the-statement-needed",
           "title": "The statement needed",
-          "line": 4747
+          "line": 4753
         },
         {
           "level": 5,
           "id": "divisor-residues-and-the-changing-skip-set",
           "title": "Divisor residues and the changing skip set",
-          "line": 4777
+          "line": 4783
         },
         {
           "level": 5,
           "id": "the-specific-obstacle",
           "title": "The specific obstacle",
-          "line": 4839
+          "line": 4845
         },
         {
           "level": 5,
           "id": "possible-estimates-to-prove",
           "title": "Possible estimates to prove",
-          "line": 4853
+          "line": 4859
         },
         {
           "level": 4,
           "id": "sec:invent-R2",
           "title": "Progress to larger endpoint depths",
-          "line": 4925
+          "line": 4931
         },
         {
           "level": 5,
           "id": "the-statement-needed-1",
           "title": "The statement needed",
-          "line": 4929
+          "line": 4935
         },
         {
           "level": 5,
           "id": "what-kind-of-object-would-furnish-it",
           "title": "What kind of object would furnish it",
-          "line": 4955
+          "line": 4961
         },
         {
           "level": 5,
           "id": "the-specific-obstacle-1",
           "title": "The specific obstacle",
-          "line": 4963
+          "line": 4969
         },
         {
           "level": 5,
           "id": "possible-estimates-to-prove-1",
           "title": "Possible estimates to prove",
-          "line": 4971
+          "line": 4977
         },
         {
           "level": 4,
           "id": "sec:invent-R3",
           "title": "Prime support and the limits of one formal argument",
-          "line": 4986
+          "line": 4992
         },
         {
           "level": 4,
           "id": "sec:invent-R4",
           "title": "Equivalent carry conditions at perfect-square depths",
-          "line": 5009
+          "line": 5015
         },
         {
           "level": 5,
           "id": "the-statement-needed-2",
           "title": "The statement needed",
-          "line": 5013
+          "line": 5019
         },
         {
           "level": 5,
           "id": "the-carry-bound-at-perfect-square-depths",
           "title": "The carry bound at perfect-square depths",
-          "line": 5031
+          "line": 5037
         },
         {
           "level": 5,
           "id": "what-the-equivalences-establish",
           "title": "What the equivalences establish",
-          "line": 5062
+          "line": 5068
         },
         {
           "level": 4,
           "id": "sec:invent-R5",
           "title": "Sparse and dense supports under the certificate criterion",
-          "line": 5070
+          "line": 5076
         },
         {
           "level": 5,
           "id": "the-statement-needed-3",
           "title": "The statement needed",
-          "line": 5074
+          "line": 5080
         },
         {
           "level": 5,
           "id": "what-kind-of-object-would-furnish-it-1",
           "title": "What kind of object would furnish it",
-          "line": 5096
+          "line": 5102
         },
         {
           "level": 5,
           "id": "the-specific-obstacle-proved",
           "title": "The specific obstacle, proved",
-          "line": 5106
+          "line": 5112
         },
         {
           "level": 4,
           "id": "sec:invent-shape",
           "title": "What the experiments and obstructions do not imply",
-          "line": 5133
+          "line": 5139
         },
         {
           "level": 5,
           "id": "finite-observations-and-their-limits",
           "title": "Finite observations and their limits",
-          "line": 5139
+          "line": 5145
         },
         {
           "level": 5,
           "id": "why-the-support-and-rational-target-problems-remain-distinct",
           "title": "Why the support and rational-target problems remain distinct",
-          "line": 5151
+          "line": 5157
         },
         {
           "level": 5,
           "id": "what-the-evidence-does-and-does-not-determine",
           "title": "What the evidence does and does not determine",
-          "line": 5159
+          "line": 5165
         },
         {
           "level": 1,
           "id": "v.-outstanding-obligations-and-provenance",
           "title": "V. Outstanding obligations and provenance",
-          "line": 5167
+          "line": 5173
         },
         {
           "level": 3,
           "id": "what-is-open-stated-exactly",
           "title": "What is open, stated exactly",
-          "line": 5171
+          "line": 5177
         },
         {
           "level": 4,
           "id": "notation-fixed-for-this-section",
           "title": "Notation fixed for this section",
-          "line": 5177
+          "line": 5183
         },
         {
           "level": 4,
           "id": "the-universal-statement",
           "title": "The universal statement",
-          "line": 5184
+          "line": 5190
         },
         {
           "level": 4,
           "id": "whether-one-half-is-represented",
           "title": "Whether one half is represented",
-          "line": 5213
+          "line": 5219
         },
         {
           "level": 5,
           "id": "conditions-equivalent-to-half-membership",
           "title": "Conditions equivalent to half-membership",
-          "line": 5232
+          "line": 5238
         },
         {
           "level": 4,
           "id": "exact-finite-sums-at-unbounded-depths",
           "title": "Exact finite sums at unbounded depths",
-          "line": 5274
+          "line": 5280
         },
         {
           "level": 5,
           "id": "a-capacity-condition-for-exact-sums-at-unbounded-depths",
           "title": "A capacity condition for exact sums at unbounded depths",
-          "line": 5293
+          "line": 5299
         },
         {
           "level": 4,
           "id": "sec:o4",
           "title": "Reset bounds and runs of right transitions",
-          "line": 5332
+          "line": 5338
         },
         {
           "level": 4,
           "id": "the-remaining--2-1-middle-cell-exclusion",
           "title": "The remaining -2,-1 middle-cell exclusion",
-          "line": 5380
+          "line": 5386
         },
         {
           "level": 4,
           "id": "whether-one-twenty-first-is-represented",
           "title": "Whether one twenty-first is represented",
-          "line": 5399
+          "line": 5405
         },
         {
           "level": 4,
           "id": "sec:v-table",
           "title": "Implication table",
-          "line": 5413
+          "line": 5419
         },
         {
           "level": 4,
           "id": "possible-inputs-and-their-scope",
           "title": "Possible inputs and their scope",
-          "line": 5436
+          "line": 5442
         },
         {
           "level": 4,
           "id": "summary",
           "title": "Summary",
-          "line": 5448
+          "line": 5454
         },
         {
           "level": 3,
           "id": "sec:257-logarithmic-sampling",
           "title": "Logarithmic cost under arithmetic sampling",
-          "line": 5454
+          "line": 5460
         },
         {
           "level": 4,
           "id": "the-two-finite-costs",
           "title": "The two finite costs",
-          "line": 5462
+          "line": 5468
         },
         {
           "level": 4,
           "id": "the-arithmetic-lower-bound-for-every-fractional-cover",
           "title": "The arithmetic lower bound for every fractional cover",
-          "line": 5609
+          "line": 5615
         },
         {
           "level": 4,
           "id": "what-survives-without-arithmetic-restriction",
           "title": "What survives without arithmetic restriction",
-          "line": 5644
+          "line": 5650
         },
         {
           "level": 3,
           "id": "two-proof-details-and-sources",
           "title": "Two proof details and sources",
-          "line": 5681
+          "line": 5687
         },
         {
           "level": 3,
           "id": "acknowledgements",
           "title": "Acknowledgements",
-          "line": 5698
+          "line": 5704
         },
         {
           "level": 3,
           "id": "statements-and-declarations",
           "title": "Statements and declarations",
-          "line": 5704
+          "line": 5710
         },
         {
           "level": 6,
           "id": "artefact-and-data-availability.",
           "title": "Artefact and data availability.",
-          "line": 5708
+          "line": 5714
         },
         {
           "level": 6,
           "id": "scope-of-the-formal-checks.",
           "title": "Scope of the formal checks.",
-          "line": 5714
+          "line": 5720
         },
         {
           "level": 6,
           "id": "funding-and-competing-interests.",
           "title": "Funding and competing interests.",
-          "line": 5720
+          "line": 5726
         }
       ],
       "citations_rendered": 42,
@@ -5528,17 +5534,17 @@
           {
             "id": "sec:257-wall",
             "title": "Limitations of the recorded methods",
-            "line": 723
+            "line": 729
           },
           {
             "id": "sec:257-survivors",
             "title": "Unproved inputs for further arguments",
-            "line": 978
+            "line": 984
           },
           {
             "id": "sec:257-howto",
             "title": "Reading the detailed record",
-            "line": 1117
+            "line": 1123
           }
         ],
         "unresolved_count": 0
@@ -5581,12 +5587,12 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/erdos269-running-lcm-reasoning-surface.md",
       "local_source": "paper/269/erdos269-running-lcm-reasoning-surface.tex",
-      "source_sha256": "sha256:e51b60188e07ef4da04dd0b35d6eacc976a44f3475c149b68a5885aaf105ded9",
+      "source_sha256": "sha256:2e820e39c03a2f0f42a6d2e42054b839769a1e6ef67f41b475a126d314bb09d4",
       "canonical_source_commit": null,
       "canonical_source_pin_status": "local_unpublished",
       "canonical_source_url": null,
       "canonical_source_raw_url": null,
-      "section_count": 60,
+      "section_count": 61,
       "sections": [
         {
           "level": 1,
@@ -5602,351 +5608,357 @@
         },
         {
           "level": 4,
+          "id": "a-route-through-the-record.",
+          "title": "A route through the record.",
+          "line": 61
+        },
+        {
+          "level": 4,
           "id": "what-the-third-prime-changes.",
           "title": "What the third prime changes.",
-          "line": 61
+          "line": 67
         },
         {
           "level": 4,
           "id": "relation-to-the-short-paper.",
           "title": "Relation to the short paper.",
-          "line": 86
+          "line": 92
         },
         {
           "level": 1,
           "id": "long269:sec:lcm",
           "title": "The finite geometry of the running value",
-          "line": 96
+          "line": 102
         },
         {
           "level": 1,
           "id": "long269:sec:two-prime",
           "title": "One Hecke\u2013Mahler value controls both two-prime sums",
-          "line": 205
+          "line": 211
         },
         {
           "level": 1,
           "id": "long269:sec:distinct",
           "title": "The distinct-height sums",
-          "line": 275
+          "line": 281
         },
         {
           "level": 2,
           "id": "long269:sec:distinct-all",
           "title": "Every finite set of primes",
-          "line": 292
+          "line": 298
         },
         {
           "level": 4,
           "id": "words.",
           "title": "Words.",
-          "line": 298
+          "line": 304
         },
         {
           "level": 4,
           "id": "the-torus.",
           "title": "The torus.",
-          "line": 357
+          "line": 363
         },
         {
           "level": 4,
           "id": "the-second-agents-corrections.",
           "title": "The second agent\u2019s corrections.",
-          "line": 404
+          "line": 410
         },
         {
           "level": 4,
           "id": "why-the-two-walls-are-needed.",
           "title": "Why the two walls are needed.",
-          "line": 410
+          "line": 416
         },
         {
           "level": 4,
           "id": "exact-illustrations.",
           "title": "Exact illustrations.",
-          "line": 420
+          "line": 426
         },
         {
           "level": 2,
           "id": "long269:sec:distinct-blocks",
           "title": "Dyadic blocks and affine maps",
-          "line": 426
+          "line": 432
         },
         {
           "level": 2,
           "id": "long269:sec:distinct-235",
           "title": "Proof of Theorem\u00a02",
-          "line": 470
+          "line": 476
         },
         {
           "level": 2,
           "id": "long269:sec:distinct-criterion",
           "title": "A decoding criterion for every finite set of primes",
-          "line": 519
+          "line": 525
         },
         {
           "level": 2,
           "id": "long269:sec:distinct-certificates",
           "title": "Certificates for three and four primes",
-          "line": 557
+          "line": 563
         },
         {
           "level": 2,
           "id": "long269:sec:distinct-stop",
           "title": "Where the argument stops for the repeated sums",
-          "line": 607
+          "line": 613
         },
         {
           "level": 4,
           "id": "the-single-prime-sub-sums.",
           "title": "The single-prime sub-sums.",
-          "line": 615
+          "line": 621
         },
         {
           "level": 1,
           "id": "long269:sec:clock-transfer",
           "title": "Integer-radix words ordered by independent clocks",
-          "line": 682
+          "line": 688
         },
         {
           "level": 1,
           "id": "long269:sec:rank",
           "title": "Why the third prime prevents finite separation",
-          "line": 788
+          "line": 794
         },
         {
           "level": 4,
           "id": "scope-of-the-rank-theorem.",
           "title": "Scope of the rank theorem.",
-          "line": 944
+          "line": 950
         },
         {
           "level": 2,
           "id": "long269:sec:selected-kernel-height",
           "title": "The selected kernel\u2019s integral index and height boundary",
-          "line": 950
+          "line": 956
         },
         {
           "level": 2,
           "id": "the-exact-uniform-approximation-error",
           "title": "The exact uniform approximation error",
-          "line": 988
+          "line": 994
         },
         {
           "level": 1,
           "id": "long269:sec:blocks",
           "title": "The recurrence for tails between powers of two",
-          "line": 1048
+          "line": 1054
         },
         {
           "level": 1,
           "id": "long269:sec:actual-orbit",
           "title": "Bounding the tails and clearing a rational denominator",
-          "line": 1214
+          "line": 1220
         },
         {
           "level": 2,
           "id": "a-smaller-bound-from-the-order-of-the-prime-power-jumps",
           "title": "A smaller bound from the order of the prime-power jumps",
-          "line": 1372
+          "line": 1378
         },
         {
           "level": 4,
           "id": "relation-to-cantor-series-criteria.",
           "title": "Relation to Cantor-series criteria.",
-          "line": 1409
+          "line": 1415
         },
         {
           "level": 1,
           "id": "long269:sec:escape",
           "title": "A residue criterion and the bounds it allows",
-          "line": 1458
+          "line": 1464
         },
         {
           "level": 4,
           "id": "the-exact-growth-restriction-on-a-dominating-bound.",
           "title": "The exact growth restriction on a dominating bound.",
-          "line": 1576
+          "line": 1582
         },
         {
           "level": 2,
           "id": "how-fast-the-window-base-grows",
           "title": "How fast the window base grows",
-          "line": 1620
+          "line": 1626
         },
         {
           "level": 1,
           "id": "long269:sec:evidence",
           "title": "Finite computations and their limits",
-          "line": 1666
+          "line": 1672
         },
         {
           "level": 2,
           "id": "checking-individual-windows",
           "title": "Checking individual windows",
-          "line": 1672
+          "line": 1678
         },
         {
           "level": 2,
           "id": "finite-denominator-bounds",
           "title": "Finite denominator bounds",
-          "line": 1689
+          "line": 1695
         },
         {
           "level": 4,
           "id": "a-denominator-bound-from-twelve-shells.",
           "title": "A denominator bound from twelve shells.",
-          "line": 1693
+          "line": 1699
         },
         {
           "level": 4,
           "id": "long269:res:lead-block-exclusion",
           "title": "Window-128 lattice exclusion.",
-          "line": 1718
+          "line": 1724
         },
         {
           "level": 4,
           "id": "long269:res:cf-exclusion",
           "title": "Continued-fraction exclusion.",
-          "line": 1735
+          "line": 1741
         },
         {
           "level": 1,
           "id": "long269:sec:open",
           "title": "The remaining arithmetic questions",
-          "line": 1743
+          "line": 1749
         },
         {
           "level": 2,
           "id": "long269:sec:weighted-shifts",
           "title": "An exact weighted-shift identity for the repeated series",
-          "line": 1747
+          "line": 1753
         },
         {
           "level": 2,
           "id": "long269:sec:boundary-difference",
           "title": "Why the growing boundary need not cancel",
-          "line": 1793
+          "line": 1799
         },
         {
           "level": 4,
           "id": "what-the-heckemahler-comparison-does-and-does-not-supply.",
           "title": "What the Hecke\u2013Mahler comparison does and does not supply.",
-          "line": 1868
+          "line": 1874
         },
         {
           "level": 4,
           "id": "why-a-finite-alphabet-of-bases-is-not-enough.",
           "title": "Why a finite alphabet of bases is not enough.",
-          "line": 1883
+          "line": 1889
         },
         {
           "level": 2,
           "id": "what-a-function-theoretic-proof-would-require",
           "title": "What a function-theoretic proof would require",
-          "line": 1987
+          "line": 1993
         },
         {
           "level": 4,
           "id": "the-cited-value-theorems-and-their-hypotheses.",
           "title": "The cited value theorems and their hypotheses.",
-          "line": 2010
+          "line": 2016
         },
         {
           "level": 2,
           "id": "what-the-auxiliary-carry-results-assume",
           "title": "What the auxiliary carry results assume",
-          "line": 2022
+          "line": 2028
         },
         {
           "level": 2,
           "id": "where-the-problem-stands",
           "title": "Where the problem stands",
-          "line": 2054
+          "line": 2060
         },
         {
           "level": 2,
           "id": "statements-and-declarations",
           "title": "Statements and declarations",
-          "line": 2062
+          "line": 2068
         },
         {
           "level": 4,
           "id": "proof-sources.",
           "title": "Proof sources.",
-          "line": 2066
+          "line": 2072
         },
         {
           "level": 4,
           "id": "artefact-and-data-availability.",
           "title": "Artefact and data availability.",
-          "line": 2074
+          "line": 2080
         },
         {
           "level": 4,
           "id": "funding-and-competing-interests.",
           "title": "Funding and competing interests.",
-          "line": 2080
+          "line": 2086
         },
         {
           "level": 4,
           "id": "authorship-and-review.",
           "title": "Authorship and review.",
-          "line": 2086
+          "line": 2092
         },
         {
           "level": 4,
           "id": "acknowledgements.",
           "title": "Acknowledgements.",
-          "line": 2092
+          "line": 2098
         },
         {
           "level": 1,
           "id": "long269:long:extended",
           "title": "Further examples, conditional lemmas and source references",
-          "line": 2098
+          "line": 2104
         },
         {
           "level": 2,
           "id": "long269:long:history",
           "title": "The historical and catalogue record",
-          "line": 2104
+          "line": 2110
         },
         {
           "level": 2,
           "id": "long269:long:general-carries",
           "title": "The abstract carry lemmas in their general form",
-          "line": 2118
+          "line": 2124
         },
         {
           "level": 2,
           "id": "long269:long:finite-geometry",
           "title": "Worked finite examples",
-          "line": 2200
+          "line": 2206
         },
         {
           "level": 2,
           "id": "long269:long:experiments",
           "title": "The finite-scan histogram",
-          "line": 2224
+          "line": 2230
         },
         {
           "level": 2,
           "id": "long269:long:sources",
           "title": "Source inventory",
-          "line": 2254
+          "line": 2260
         },
         {
           "level": 1,
           "id": "sec:erdos-269-complete-family-map",
           "title": "What the results use and what they do not prove",
-          "line": 2396
+          "line": 2402
         },
         {
           "level": 2,
           "id": "long269:sec:coverage",
           "title": "What the Lean proof of the two-prime theorem assumes",
-          "line": 2422
+          "line": 2428
         }
       ],
       "citations_rendered": 60,
@@ -5965,17 +5977,17 @@
           {
             "id": "long269:sec:rank",
             "title": "Why the third prime prevents finite separation",
-            "line": 788
+            "line": 794
           },
           {
             "id": "long269:sec:open",
             "title": "The remaining arithmetic questions",
-            "line": 1743
+            "line": 1749
           },
           {
             "id": "sec:erdos-269-complete-family-map",
             "title": "What the results use and what they do not prove",
-            "line": 2396
+            "line": 2402
           }
         ],
         "unresolved_count": 0
@@ -8028,12 +8040,12 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/claim-faithful-publication-systems-paper.md",
       "local_source": "paper/systems/claim-faithful-publication-systems-paper.tex",
-      "source_sha256": "sha256:3af1deaaf478d291f0920667479322c783d9b819871495074c7c5b0a81a59f96",
+      "source_sha256": "sha256:0172d4a0d75c838ee4ef90e2bce741f0ec69d11e04a8c7b876b297308af6777c",
       "canonical_source_commit": null,
       "canonical_source_pin_status": "local_unpublished",
       "canonical_source_url": null,
       "canonical_source_raw_url": null,
-      "section_count": 31,
+      "section_count": 12,
       "sections": [
         {
           "level": 1,
@@ -8044,185 +8056,71 @@
         {
           "level": 1,
           "id": "sec:intro",
-          "title": "A theorem and the explanation it needs",
-          "line": 27
+          "title": "A research record that can become a paper",
+          "line": 13
         },
         {
           "level": 1,
-          "id": "sec:world",
-          "title": "A problem-sized world",
-          "line": 56
-        },
-        {
-          "level": 1,
-          "id": "sec:graph",
-          "title": "The argument graph",
-          "line": 96
-        },
-        {
-          "level": 4,
-          "id": "export.",
-          "title": "Export.",
-          "line": 102
-        },
-        {
-          "level": 4,
-          "id": "the-graph.",
-          "title": "The graph.",
-          "line": 108
-        },
-        {
-          "level": 4,
-          "id": "what-it-shows.",
-          "title": "What it shows.",
-          "line": 132
-        },
-        {
-          "level": 4,
-          "id": "what-a-proof-uses-of-its-input.",
-          "title": "What a proof uses of its input.",
-          "line": 138
-        },
-        {
-          "level": 4,
-          "id": "the-findings-as-library-theorems.",
-          "title": "The findings as library theorems.",
-          "line": 144
-        },
-        {
-          "level": 4,
-          "id": "research-with-the-graph.",
-          "title": "Research with the graph.",
-          "line": 152
-        },
-        {
-          "level": 4,
-          "id": "what-it-does-not-establish.",
-          "title": "What it does not establish.",
-          "line": 160
-        },
-        {
-          "level": 1,
-          "id": "sec:production",
-          "title": "From corpus to insight",
-          "line": 166
-        },
-        {
-          "level": 4,
-          "id": "discovery-and-stewardship.",
-          "title": "Discovery and stewardship.",
-          "line": 176
-        },
-        {
-          "level": 4,
-          "id": "testing-a-proposed-measure-of-value.",
-          "title": "Testing a proposed measure of value.",
-          "line": 188
-        },
-        {
-          "level": 1,
-          "id": "sec:loop",
-          "title": "The research loop as it runs",
-          "line": 219
-        },
-        {
-          "level": 4,
-          "id": "the-research-record.",
-          "title": "The research record.",
-          "line": 229
-        },
-        {
-          "level": 4,
-          "id": "what-the-record-measures.",
-          "title": "What the record measures.",
-          "line": 235
-        },
-        {
-          "level": 4,
-          "id": "replaying-the-record.",
-          "title": "Replaying the record.",
-          "line": 241
-        },
-        {
-          "level": 1,
-          "id": "sec:evaluation",
-          "title": "Testing decisions made from the record",
-          "line": 247
+          "id": "sec:predigestion",
+          "title": "Pre-digestion: selecting a usable result",
+          "line": 23
         },
         {
           "level": 1,
           "id": "sec:checks",
-          "title": "From a proof to a public claim",
-          "line": 263
+          "title": "From verification to a claim",
+          "line": 33
         },
         {
           "level": 1,
-          "id": "sec:cycle",
-          "title": "The contribution cycle",
-          "line": 285
+          "id": "sec:short",
+          "title": "Writing the short paper",
+          "line": 47
         },
         {
-          "level": 4,
-          "id": "credit.",
-          "title": "Credit.",
-          "line": 295
+          "level": 1,
+          "id": "sec:long",
+          "title": "Assembling the long record",
+          "line": 61
         },
         {
-          "level": 2,
-          "id": "sec:example",
-          "title": "Worked example: Problem 1041",
-          "line": 303
+          "level": 1,
+          "id": "sec:loop",
+          "title": "The review and improvement loop",
+          "line": 69
+        },
+        {
+          "level": 1,
+          "id": "sec:evaluation",
+          "title": "Evaluation through ordinary research packets",
+          "line": 87
         },
         {
           "level": 1,
           "id": "sec:instance",
-          "title": "Eight problems in one repository",
-          "line": 309
+          "title": "What the attached snapshot establishes",
+          "line": 97
         },
         {
           "level": 1,
           "id": "sec:related",
-          "title": "Relation to Prove2Me and other systems",
-          "line": 346
-        },
-        {
-          "level": 4,
-          "id": "other-systems.",
-          "title": "Other systems.",
-          "line": 370
-        },
-        {
-          "level": 4,
-          "id": "precedents-for-the-argument-graph.",
-          "title": "Precedents for the argument graph.",
-          "line": 376
-        },
-        {
-          "level": 4,
-          "id": "libraries-grown-from-proofs.",
-          "title": "Libraries grown from proofs.",
-          "line": 386
+          "title": "Relation to prior systems",
+          "line": 105
         },
         {
           "level": 1,
           "id": "sec:limits",
-          "title": "Limits, and what stronger models change",
-          "line": 392
-        },
-        {
-          "level": 1,
-          "id": "sec:conclusion",
-          "title": "Conclusion",
-          "line": 412
+          "title": "Limits and conclusion",
+          "line": 119
         },
         {
           "level": 1,
           "id": "app:repro",
-          "title": "Inspection routes and reproducibility",
-          "line": 418
+          "title": "Inspection routes and reproduction",
+          "line": 137
         }
       ],
-      "citations_rendered": 79,
+      "citations_rendered": 11,
       "local_pdf": "paper/systems/claim-faithful-publication-systems-paper.pdf",
       "pdf_sha256": "sha256:e9462338a644aafc585640f27bacf5df2c23d0c14c14f75aea7d09cba7903ebc",
       "pdf_byte_count": 182306,
@@ -8232,28 +8130,28 @@
         "sections": [
           {
             "id": "sec:intro",
-            "title": "A theorem and the explanation it needs",
-            "line": 27
+            "title": "A research record that can become a paper",
+            "line": 13
           },
           {
-            "id": "sec:world",
-            "title": "A problem-sized world",
-            "line": 56
+            "id": "sec:predigestion",
+            "title": "Pre-digestion: selecting a usable result",
+            "line": 23
           },
           {
-            "id": "sec:production",
-            "title": "From corpus to insight",
-            "line": 166
+            "id": "sec:short",
+            "title": "Writing the short paper",
+            "line": 47
           },
           {
             "id": "sec:checks",
-            "title": "From a proof to a public claim",
-            "line": 263
+            "title": "From verification to a claim",
+            "line": 33
           },
           {
             "id": "sec:limits",
-            "title": "Limits, and what stronger models change",
-            "line": 392
+            "title": "Limits and conclusion",
+            "line": 119
           }
         ],
         "unresolved_count": 0

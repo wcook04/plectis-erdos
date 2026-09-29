@@ -1,0 +1,110 @@
+{
+  "authority": "Candidate authored correspondence manifest; exact span hashes detect changes, not mathematical truth.",
+  "links": [
+    {
+      "long_id": "erdos269-running-lcm-reasoning-surface#long269:res:distinct-height-all",
+      "long_statement_sha256": "sha256:263c7846cdf1b36a23fd50b2bb058ad94ec9545b90a1d1b58a02c49179d0b207",
+      "rationale": "The short and long statements name the same distinct-height-all result. The long proof is explicitly selected here; no implication is inferred from shared keywords.",
+      "relation": "authored_correspondence",
+      "review_status": "Source reports an ordinary proof and project AI checking; this return checks text correspondence and availability, not proof correctness or human review.",
+      "short_id": "erdos-269-three-prime-running-lcm#res:distinct-height-all",
+      "short_statement_sha256": "sha256:10239dfb9fe62a45d21a12770a423dadfea6d9c4cbe15360016e434eee4e8462",
+      "support": {
+        "label": "long269:res:distinct-height-all",
+        "path": "paper/reasoning-parts/erdos269/core.tex",
+        "selector": "proof_of",
+        "sha256": "sha256:fa737708a574ee06e2d1186c0d71459a1233c0a51fc78aa9f26725e4e3efaadd"
+      }
+    },
+    {
+      "long_id": "erdos269-running-lcm-reasoning-surface#long269:res:dp-integral-tails",
+      "long_statement_sha256": "sha256:b9984a155ee94cc451accfd07124a05acaae2fb823cffb643cdd8f44c58ed806",
+      "rationale": "The short and long statements name the same dp-integral-tails result. The long proof is explicitly selected here; no implication is inferred from shared keywords.",
+      "relation": "authored_correspondence",
+      "review_status": "Source reports an ordinary proof and project AI checking; this return checks text correspondence and availability, not proof correctness or human review.",
+      "short_id": "erdos-269-three-prime-running-lcm#res:dp-integral-tails",
+      "short_statement_sha256": "sha256:1060399c6035c22180e21ff602493155e421c8fe2666ce4edb115c9532a4f913",
+      "support": {
+        "label": "long269:res:dp-integral-tails",
+        "path": "paper/reasoning-parts/erdos269/core.tex",
+        "selector": "adjacent_proof",
+        "sha256": "sha256:d78d1f7b88aaaf7d6d19ce763eff7ea85e9a9ae1a2896ee91be136cde6fb60e3"
+      }
+    },
+    {
+      "long_id": "erdos269-running-lcm-reasoning-surface#long269:res:dp-blocks",
+      "long_statement_sha256": "sha256:9c61760e4480378f2d2a9f9760bc5f4d783bbca44377057a660815615ac33996",
+      "rationale": "The short and long statements name the same dp-blocks result. The long proof is explicitly selected here; no implication is inferred from shared keywords.",
+      "relation": "authored_correspondence",
+      "review_status": "Source reports an ordinary proof and project AI checking; this return checks text correspondence and availability, not proof correctness or human review.",
+      "short_id": "erdos-269-three-prime-running-lcm#res:dp-blocks",
+      "short_statement_sha256": "sha256:c0fe7832c9ad50edd448191acb96f6527b16c8a4c4ee4b38edc0af4eabe6afaf",
+      "support": {
+        "label": "long269:res:dp-blocks",
+        "path": "paper/reasoning-parts/erdos269/core.tex",
+        "selector": "adjacent_proof",
+        "sha256": "sha256:919c0270b50f071cc4a018840f5a2b309907a5e1175c086d2f1639f5c12323d1"
+      }
+    },
+    {
+      "long_id": "erdos269-running-lcm-reasoning-surface#long269:res:dp-short",
+      "long_statement_sha256": "sha256:28677b599e4e0485993db56cb03ae70cdd3bdc30719cdc53394f31b16525ab4d",
+      "rationale": "The short and long statements name the same dp-short result. The long proof is explicitly selected here; no implication is inferred from shared keywords.",
+      "relation": "authored_correspondence",
+      "review_status": "Source reports an ordinary proof and project AI checking; this return checks text correspondence and availability, not proof correctness or human review.",
+      "short_id": "erdos-269-three-prime-running-lcm#res:dp-short",
+      "short_statement_sha256": "sha256:c2b70357e78926242da2c77b8bd430b5617d9b5f4cde66bcaf592a6c53eb23b4",
+      "support": {
+        "label": "long269:res:dp-short",
+        "path": "paper/reasoning-parts/erdos269/core.tex",
+        "selector": "adjacent_proof",
+        "sha256": "sha256:7618f49e1281fc7c1203275d96bc64f57a3239badd630e240921fe34a6227f54"
+      }
+    },
+    {
+      "long_id": "erdos269-running-lcm-reasoning-surface#long269:res:dp-two-walls",
+      "long_statement_sha256": "sha256:9828dfb4bc1b3f39ad2f2e4a164d3ff4d45f5d70240579fb60fd3808282fea55",
+      "rationale": "The short and long statements name the same dp-two-walls result. The long proof is explicitly selected here; no implication is inferred from shared keywords.",
+      "relation": "authored_correspondence",
+      "review_status": "Source reports an ordinary proof and project AI checking; this return checks text correspondence and availability, not proof correctness or human review.",
+      "short_id": "erdos-269-three-prime-running-lcm#res:dp-two-walls",
+      "short_statement_sha256": "sha256:6c3011176e3e01591534f4dcf0ab2f4b576883fa570cd0f6f588b3b3389ebe47",
+      "support": {
+        "label": "long269:res:dp-two-walls",
+        "path": "paper/reasoning-parts/erdos269/core.tex",
+        "selector": "adjacent_proof",
+        "sha256": "sha256:42c2a3b1501075c2aab7ac49b550d99953153310b464d27532281ab6fe004628"
+      }
+    },
+    {
+      "long_id": "erdos269-running-lcm-reasoning-surface#long269:res:single-prime-subsums",
+      "long_statement_sha256": "sha256:edc618ea62ebd99cfe77c51945af0c87eacf65e38fe47b7a64c5c7efd4c38a85",
+      "rationale": "The short and long statements name the same single-prime-subsums result. The long proof is explicitly selected here; no implication is inferred from shared keywords.",
+      "relation": "authored_correspondence",
+      "review_status": "Source reports an ordinary proof and project AI checking; this return checks text correspondence and availability, not proof correctness or human review.",
+      "short_id": "erdos-269-three-prime-running-lcm#res:single-prime-subsums",
+      "short_statement_sha256": "sha256:468a77f2ba45a62231ab251fd0a7a02a1102e4616aea0420f836960c89f75751",
+      "support": {
+        "label": "long269:res:single-prime-subsums",
+        "path": "paper/reasoning-parts/erdos269/core.tex",
+        "selector": "adjacent_proof",
+        "sha256": "sha256:bc60ff4546b3960ff6f3f4ac58566ad4c1cc4bd1b2a3163d2d971711d2049c71"
+      }
+    },
+    {
+      "rationale": "The long passage now repeats the short corollary’s union argument with both host hypotheses explicit and points to the existing mixed criterion. The differing printed and Lean constructions remain distinguished. The union argument depends on the short paper’s host-existence proposition; the printed host constructions have not been moved or independently reviewed here.",
+      "relation": "authored_correspondence",
+      "review_status": "Ordinary proof text transferred from the short paper; no independent review recorded.",
+      "short_id": "erdos-257-mersenne-support-subseries#res:strict-mixed-supports",
+      "short_statement_sha256": "sha256:ec8cba3f6409742197fa4fa63d81b4e71f2aba928597821a4600ea8cfa8c3f4a",
+      "support": {
+        "end": "its presence here records no independent proof review.",
+        "path": "paper/reasoning-parts/erdos257/a257_front.tex",
+        "selector": "between",
+        "sha256": "sha256:33ea5b20058fca3bbfe14697925051b40a412d77191298236e9ec65b53c5a53a",
+        "start": "\\paragraph{Why the mixed criterion is strict.}\\label{record257:strict-mixed-proof}"
+      }
+    }
+  ],
+  "schema": "plectis-short-long-links/1"
+}

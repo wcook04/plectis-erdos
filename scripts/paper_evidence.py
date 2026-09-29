@@ -1332,6 +1332,10 @@ def write_atomically(root: Path, files: dict[str, str]) -> None:
 
 
 def main(argv: list[str] | None = None) -> int:
+    requested = list(sys.argv[1:] if argv is None else argv)
+    if requested and requested[0] in ("claim-build", "claim-check", "claim-writer-check"):
+        from paper_claim_evidence import cli
+        return cli(requested)
     parser = argparse.ArgumentParser(description=__doc__.split("\n\n")[0])
     sub = parser.add_subparsers(dest="command", required=True)
     b = sub.add_parser("build")

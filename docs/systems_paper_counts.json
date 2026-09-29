@@ -1,0 +1,65 @@
+{
+  "schema": "systems-paper-counts/2",
+  "classification": "inventory_and_reported_history",
+  "builder": "scripts/build_systems_paper_counts.py::pipeline_values",
+  "values": {
+    "LedgerRows": 710,
+    "LedgerExact": 511,
+    "LedgerSpecialising": 143,
+    "LedgerNamedInput": 25,
+    "LedgerNoLean": 31,
+    "LedgerWithLean": 679,
+    "LedgerFormal": 654,
+    "LedgerCompared": 633,
+    "LedgerQueued": 21,
+    "LeanModules": 1903,
+    "Claims": 160,
+    "ClaimObligations": 19,
+    "ClaimStatuses": "eight",
+    "JournalHead": "9a0a2617ea30",
+    "Rounds": 7,
+    "RoundsSealed": 2,
+    "Returns": 25,
+    "ReturnsAdmitted": 18,
+    "ReturnsUnreviewed": 7,
+    "ProblemWorlds": 8,
+    "RegisteredPapers": 22,
+    "ShortPapers": 8,
+    "LongRecords": 8,
+    "HistoricalEdits": "ten",
+    "HistoricalRejected": "nine",
+    "HistoricalEscaped": "one",
+    "HistoricalNotRerun": "nine"
+  },
+  "inputs": [
+    {
+      "path": "docs/paper_lean_coverage.json",
+      "sha256": "66822deb129b200213bbfe2ab7289e25092c71c9ef41acad91074ba227d4fc4a"
+    },
+    {
+      "path": "docs/claims.json",
+      "sha256": "e139025a2c23905ec32f2937ff82c20b1b0bd9388ecdd891d715eb89ca763f5e"
+    },
+    {
+      "path": "docs/problem_index_source.json",
+      "sha256": "434f7bbcaa5a93da61e4d37291b36dcb634bc705d79222abea6fe2c6c80fd8e3"
+    },
+    {
+      "path": "docs/papers/corpus.json",
+      "sha256": "e576be33146dc80680924961081fb69dd2c42b929a5cd7ebbf63e25c65d61b84"
+    },
+    {
+      "path": "docs/publication_evidence.json",
+      "sha256": "4e350698eed8b4ee10fc629cfb7540ed71bc6ccf4020ee2ede8635f4aae809b3"
+    },
+    {
+      "path": "docs/research-commons/record/journal.jsonl",
+      "sha256": "fd8ee17f16853cd1195bae40eb3d9d3c24234126ebd7a859e9d02903977094ae"
+    }
+  ],
+  "limits": [
+    "Rows count publication occurrences, not distinct theorems.",
+    "Compiled-target and recorded Comparator statuses are not fresh kernel runs.",
+    "Journal returns are not an independent experimental sample."
+  ]
+}

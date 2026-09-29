@@ -539,6 +539,25 @@ def validate_systems_paper(text: str) -> None:
         r"\newcommand{\repobase}{https://github.com/wcook04/plectis-erdos}" in text,
         "systems paper repository links do not use the canonical public repository",
     )
+    # Version 2 preserves the byte budget, entry routes and pinned-link checks,
+    # replacing the old exact-prose scaffold with exhaustive explicit body bindings.
+    # The legacy route below stays available for historical manuscripts.
+    if "% SYSTEMS_PAPER_VERSION 2" in text:
+        import systems_paper_evidence
+        labels=("sec:intro", "sec:predigestion", "sec:checks", "sec:short", "sec:long",
+                "sec:loop", "sec:evaluation", "sec:instance", "sec:related", "sec:limits", "app:repro")
+        positions=[text.find(r"\label{"+label+"}") for label in labels]
+        require(all(p>=0 for p in positions) and positions==sorted(positions),
+                "systems paper lost the version-2 pipeline section order")
+        for target in ("systems-lifecycle", "systems-research-loop", "systems-trust", "systems-scaling"):
+            require(r"\papersectiontarget{"+target+"}" in text, "systems paper lost section target "+target)
+        validate_pinned_evidence_links(text)
+        problems=systems_paper_counts.pipeline_errors(text, ROOT)
+        problems+=systems_paper_evidence.validate_bound_paper(text, ROOT)
+        require(not problems, "systems paper source contract: "+"; ".join(problems))
+        require(SYSTEMS_PDF.is_file(), "rendered systems architecture PDF is missing")
+        return
+
     require(
         text.count("% BEGIN generated_semantic_coverage_macros") == 1
         and text.count("% END generated_semantic_coverage_macros") == 1,

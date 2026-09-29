@@ -1416,6 +1416,8 @@ def print_rows(rows: list[dict[str, Any]]) -> None:
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__,
                                      formatter_class=argparse.RawDescriptionHelpFormatter)
+    parser.add_argument("--claim-evidence", action="store_true",
+                        help="run the structural claim-evidence admission gate, including named gaps")
     parser.add_argument("--json", action="store_true", help="print the full result as JSON")
     parser.add_argument("--restamp", action="store_true",
                         help="rewrite moved source lines, the summary block and the content "
@@ -1423,6 +1425,9 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--rows", metavar="TEXT",
                         help="list the ledger rows whose id, label or declaration names contain TEXT")
     args = parser.parse_args(argv)
+    if args.claim_evidence:
+        from paper_claim_evidence import cli
+        return cli(["claim-check", "--root", str(ROOT)])
     try:
         ledger = read_json(LEDGER)
         baseline = read_json(BASELINE)

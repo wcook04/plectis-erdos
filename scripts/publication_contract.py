@@ -1361,6 +1361,12 @@ def validate_publication_contract(
     except (FileNotFoundError, json.JSONDecodeError, UnicodeError) as error:
         return [f"{CLAIMS_PATH}: {error}"]
 
+    # The new owner contract is enforced against this exact worktree/staged/ref
+    # reader; a historical release without it retains its historical contract.
+    if "paper_claim_evidence" in claims:
+        from paper_claim_evidence import publication_errors
+        errors.extend(publication_errors(reader.read_bytes, claims))
+
     if contract.get("schema") != SCHEMA:
         errors.append(f"{CONTRACT_PATH} must use schema {SCHEMA}")
     if contract.get("authority_posture") != (

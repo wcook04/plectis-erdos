@@ -58,6 +58,12 @@ Section <a href="#long269:sec:two-prime" data-reference-type="ref" data-referen
 
 Steve Fan’s post of 26 June 2026 on the erdosproblems.com forum gives the running-LCM identity for finite prime sets, the two-prime factorisation, the Hecke–Mahler reduction and its transcendence conclusion \[fan2026comment\]. We include the calculation to distinguish repeated from distinct-height sums, without claiming priority for that argument.
 
+<a id="a-route-through-the-record."></a>
+
+#### A route through the record.
+
+For the general distinct-height theorem, start with Section <a href="#long269:sec:distinct-all" data-reference-type="ref" data-reference="long269:sec:distinct-all">4.1</a>: the integral-tail argument leads to rearranged blocks and the two-wall lemma, followed by the proof of the theorem. The separate three-prime proof and its finite-state extensions are in Section <a href="#long269:sec:distinct" data-reference-type="ref" data-reference="long269:sec:distinct">4</a>. For the repeated sum, read the tail recurrence in Section <a href="#long269:sec:blocks" data-reference-type="ref" data-reference="long269:sec:blocks">7</a>, the residue criterion in Section <a href="#long269:sec:escape" data-reference-type="ref" data-reference="long269:sec:escape">9</a>, and the remaining quantifiers in Section <a href="#long269:sec:open" data-reference-type="ref" data-reference="long269:sec:open">11</a>. The rank obstruction in Section <a href="#long269:sec:rank" data-reference-type="ref" data-reference="long269:sec:rank">6</a> concerns finite separation of the kernel; it does not settle that arithmetic question.
+
 <a id="what-the-third-prime-changes."></a>
 
 #### What the third prime changes.

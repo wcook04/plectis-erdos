@@ -357,7 +357,7 @@ Start here (selected for this guide): [Introduction and main results](full-text/
 
 **Reciprocal Mersenne Subseries**
 
-[full text](full-text/erdos257-mersenne-reasoning-surface.md) · [PDF](../../paper/257/erdos257-mersenne-reasoning-surface.pdf) · [LaTeX source](../../paper/257/erdos257-mersenne-reasoning-surface.tex) · 163 sections · `erdos257-mersenne-reasoning-surface` · native to this repository
+[full text](full-text/erdos257-mersenne-reasoning-surface.md) · [PDF](../../paper/257/erdos257-mersenne-reasoning-surface.pdf) · [LaTeX source](../../paper/257/erdos257-mersenne-reasoning-surface.tex) · 164 sections · `erdos257-mersenne-reasoning-surface` · native to this repository
 
 Start here (selected for this guide): [Support criteria and their proofs](full-text/erdos257-mersenne-reasoning-surface.md#sec:257-problem), [Limitations of the recorded methods](full-text/erdos257-mersenne-reasoning-surface.md#sec:257-wall), [Unproved inputs for further arguments](full-text/erdos257-mersenne-reasoning-surface.md#sec:257-survivors), [Reading the detailed record](full-text/erdos257-mersenne-reasoning-surface.md#sec:257-howto).
 
@@ -365,7 +365,7 @@ Start here (selected for this guide): [Support criteria and their proofs](full-t
 
 **The Three-Prime Running LCM: Kernel Rank and Tail Arithmetic**
 
-[full text](full-text/erdos269-running-lcm-reasoning-surface.md) · [PDF](../../paper/269/erdos269-running-lcm-reasoning-surface.pdf) · [LaTeX source](../../paper/269/erdos269-running-lcm-reasoning-surface.tex) · 60 sections · `erdos269-running-lcm-reasoning-surface` · native to this repository
+[full text](full-text/erdos269-running-lcm-reasoning-surface.md) · [PDF](../../paper/269/erdos269-running-lcm-reasoning-surface.pdf) · [LaTeX source](../../paper/269/erdos269-running-lcm-reasoning-surface.tex) · 61 sections · `erdos269-running-lcm-reasoning-surface` · native to this repository
 
 Start here (selected for this guide): [The problem, and what is settled](full-text/erdos269-running-lcm-reasoning-surface.md#long269:sec:problem), [Why the third prime prevents finite separation](full-text/erdos269-running-lcm-reasoning-surface.md#long269:sec:rank), [The remaining arithmetic questions](full-text/erdos269-running-lcm-reasoning-surface.md#long269:sec:open), [What the results use and what they do not prove](full-text/erdos269-running-lcm-reasoning-surface.md#sec:erdos-269-complete-family-map).
 
@@ -428,9 +428,9 @@ Start here (selected for this guide): [The region b^{\mu}<a and the base 31/4](f
 
 **Problem-Sized Lean Worlds**
 
-[full text](full-text/claim-faithful-publication-systems-paper.md) · [PDF](../../paper/systems/claim-faithful-publication-systems-paper.pdf) · [LaTeX source](../../paper/systems/claim-faithful-publication-systems-paper.tex) · 31 sections · `claim-faithful-publication-systems` · native to this repository
+[full text](full-text/claim-faithful-publication-systems-paper.md) · [PDF](../../paper/systems/claim-faithful-publication-systems-paper.pdf) · [LaTeX source](../../paper/systems/claim-faithful-publication-systems-paper.tex) · 12 sections · `claim-faithful-publication-systems` · native to this repository
 
-Start here (selected for this guide): [A theorem and the explanation it needs](full-text/claim-faithful-publication-systems-paper.md#sec:intro), [A problem-sized world](full-text/claim-faithful-publication-systems-paper.md#sec:world), [From corpus to insight](full-text/claim-faithful-publication-systems-paper.md#sec:production), [From a proof to a public claim](full-text/claim-faithful-publication-systems-paper.md#sec:checks), [Limits, and what stronger models change](full-text/claim-faithful-publication-systems-paper.md#sec:limits).
+Start here (selected for this guide): [A research record that can become a paper](full-text/claim-faithful-publication-systems-paper.md#sec:intro), [Pre-digestion: selecting a usable result](full-text/claim-faithful-publication-systems-paper.md#sec:predigestion), [Writing the short paper](full-text/claim-faithful-publication-systems-paper.md#sec:short), [From verification to a claim](full-text/claim-faithful-publication-systems-paper.md#sec:checks), [Limits and conclusion](full-text/claim-faithful-publication-systems-paper.md#sec:limits).
 
 ### How can a reasoning agent comprehend a large Lean corpus before compiling, then cross into replayable proof authority and incremental validation?
 

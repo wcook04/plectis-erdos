@@ -1,0 +1,1692 @@
+{
+  "schema": "systems-paper-sentences/2",
+  "source_commit": "5acddfb2d9b43ad1b876f25700c49b1c39beddde",
+  "boundary": "Source-binding and authored warrants, not machine-proved entailment or independent review.",
+  "sources": [
+    {
+      "id": "index",
+      "path": "scripts/build_problem_index.py",
+      "start_line": 1,
+      "end_line": 33,
+      "sha256": "11ace0c2d7890cfc03de20cb59f82ca86d220a8f7ce1e39b51e264879b2f1560",
+      "excerpt_sha256": "6f59f6ba1eb3c4cfd334b64c20c386563ac04601f1955d0698cb7ef92d233315",
+      "kind": "source"
+    },
+    {
+      "id": "query",
+      "path": "scripts/query_corpus.py",
+      "start_line": 1,
+      "end_line": 140,
+      "sha256": "686b244f5d628d2025a5a103bcef1e00774731752eee6a6bd03546db813f74d4",
+      "excerpt_sha256": "95cf9fd12618b59c568d57f9426929df38d528161070e8310106fd35f6acea31",
+      "kind": "source"
+    },
+    {
+      "id": "claims",
+      "path": "docs/claims.json",
+      "start_line": 1,
+      "end_line": 200,
+      "sha256": "e139025a2c23905ec32f2937ff82c20b1b0bd9388ecdd891d715eb89ca763f5e",
+      "excerpt_sha256": "a4df2a0be5fb45f012643a107bedfca8b05e744ec2c65803b65c51d4907d3b73",
+      "kind": "source"
+    },
+    {
+      "id": "coverage",
+      "path": "docs/paper_lean_coverage.json",
+      "start_line": 1,
+      "end_line": 150,
+      "sha256": "66822deb129b200213bbfe2ab7289e25092c71c9ef41acad91074ba227d4fc4a",
+      "excerpt_sha256": "1a72256aa57b9ea57b5bef2f4b242b00f157912c6266b0f97db4db1bac4de5b9",
+      "kind": "source"
+    },
+    {
+      "id": "paper-evidence",
+      "path": "scripts/paper_evidence.py",
+      "start_line": 1,
+      "end_line": 35,
+      "sha256": "01d197577279cbdc54daeb851579ae02f48c52b6a4b54d5c7d788bcef1936e10",
+      "excerpt_sha256": "092f5385aed67abfbecf5e40480c2b33f896948a842b6c1931dc5f1604466830",
+      "kind": "source"
+    },
+    {
+      "id": "relations",
+      "path": "scripts/relation_registry.py",
+      "start_line": 1,
+      "end_line": 48,
+      "sha256": "7b6d19e3b4b1803c560c564b9bd16b43904af1e3c4b1af67e558aa57ac15b0be",
+      "excerpt_sha256": "8246285c8b3bf4167a9d46816be073aa301f1547cca1d2d9292f576f5c7244e9",
+      "kind": "source"
+    },
+    {
+      "id": "assembler",
+      "path": "scripts/assemble_reasoning_surfaces.py",
+      "start_line": 1,
+      "end_line": 150,
+      "sha256": "0d8f6426d736fd371921e11e7bd2e721413f2d881b10da0be88c6f19b5ffb2b2",
+      "excerpt_sha256": "96b755ed5f7490f1f00da06317879bd9efa73ae257444e6e76c0e22454ea99fe",
+      "kind": "source"
+    },
+    {
+      "id": "record",
+      "path": "scripts/research_record.py",
+      "start_line": 1,
+      "end_line": 115,
+      "sha256": "e099f4e5db1dad0ca42a3421220bd4206f0273108d191b200505d8f0f08af3ed",
+      "excerpt_sha256": "0a07fa2cc8dc9dbd1c2503ab104082123c9ce3101f04927fd29fcc9446ff2755",
+      "kind": "source"
+    },
+    {
+      "id": "packet",
+      "path": "scripts/compile_research_packet.py",
+      "start_line": 1,
+      "end_line": 115,
+      "sha256": "efb6ca923ec038f3d5e2242ce239ff94b93315ca0150f4b7a40ac11ae1c8e980",
+      "excerpt_sha256": "f3486eec1daea1e098b54e492c308fa143470d2a8ee2649f4e9f533f6c5e4d25",
+      "kind": "source"
+    },
+    {
+      "id": "benchmark",
+      "path": "scripts/benchmark_semantic_reasoning.py",
+      "start_line": 17,
+      "end_line": 48,
+      "sha256": "88628ab9b5318721280c28eb210b80887bab0aaeb36e0f173596b3785e9f3ebe",
+      "excerpt_sha256": "e73d20ba12221407d199d6accb886288bc97ff77fa8efeb9b386e197cc4de38e",
+      "kind": "source"
+    },
+    {
+      "id": "reader-study",
+      "path": "scripts/reader_study.py",
+      "start_line": 1,
+      "end_line": 40,
+      "sha256": "48f1834d16705cba5ecce4443c13fd7cda0ee1a47a4f5d2468aadfadbbf1d5f2",
+      "excerpt_sha256": "f1a444d64d71982e34b39e640a5729294df5045cea2137d82895661ea6565ccd",
+      "kind": "source"
+    },
+    {
+      "id": "historical",
+      "path": "docs/publication_evidence.json",
+      "start_line": 1,
+      "end_line": 209,
+      "sha256": "4e350698eed8b4ee10fc629cfb7540ed71bc6ccf4020ee2ede8635f4aae809b3",
+      "excerpt_sha256": "4e350698eed8b4ee10fc629cfb7540ed71bc6ccf4020ee2ede8635f4aae809b3",
+      "kind": "source"
+    },
+    {
+      "id": "counts",
+      "path": "docs/systems_paper_counts.json",
+      "start_line": 1,
+      "end_line": 65,
+      "sha256": "4947c9d63e3429529f3d7046bf010d5bdccb1eb2c4acc6b0ebf4317ad3ad974d",
+      "excerpt_sha256": "4947c9d63e3429529f3d7046bf010d5bdccb1eb2c4acc6b0ebf4317ad3ad974d",
+      "kind": "source"
+    },
+    {
+      "id": "counts-code",
+      "path": "scripts/build_systems_paper_counts.py",
+      "start_line": 265,
+      "end_line": 373,
+      "sha256": "7e200f56d1593bca57e7b609f0953af2df33780526d75ff5a002ba04e8a387bb",
+      "excerpt_sha256": "6574f40ed76c11bfdf26a2497376fbdd91e9346a5f049dd278c14f93751d1f64",
+      "kind": "source"
+    },
+    {
+      "id": "audit-code",
+      "path": "scripts/systems_paper_evidence.py",
+      "start_line": 253,
+      "end_line": 484,
+      "sha256": "ff4d51d47b071fbb5828c7be2db65966b19145f3468e39a750dc7f3c7e537756",
+      "excerpt_sha256": "add54fbfc88e4f0daf9909afa13c3a0e776631dbab94d9996a91d052277d01dc",
+      "kind": "source"
+    },
+    {
+      "id": "257-statement",
+      "path": "paper/257/erdos-257-mersenne-support-subseries.tex",
+      "start_line": 49,
+      "end_line": 148,
+      "sha256": "e0740093fdedf21b91be319010c01f6ef91da81f4fc3ef7f6f2706777e4f2afa",
+      "excerpt_sha256": "3ffa33b51c965c6ca8a3acbbbf7ff4ae78d2e1f59e2eabbe90b8634d7d6572f6",
+      "kind": "source"
+    },
+    {
+      "id": "257-abstract",
+      "path": "paper/257/erdos-257-mersenne-support-subseries.tex",
+      "start_line": 32,
+      "end_line": 45,
+      "sha256": "e0740093fdedf21b91be319010c01f6ef91da81f4fc3ef7f6f2706777e4f2afa",
+      "excerpt_sha256": "1327c8057b6a0829cd04d0fcf79aeaf736b665714200fa542de8c25ff753b5d9",
+      "kind": "source"
+    },
+    {
+      "id": "graph",
+      "path": "scripts/build_argument_continuations.py",
+      "start_line": 1,
+      "end_line": 96,
+      "sha256": "1d44aad26276efab949875edd6c7a7ef219aee6666b4614e245020064b5ef2db",
+      "excerpt_sha256": "b4d49c25005c446855dbfb6adcafe38bb394879dfe7dc8a4f05ec2b85d10df32",
+      "kind": "source"
+    },
+    {
+      "id": "corpus",
+      "path": "docs/papers/corpus.json",
+      "start_line": 1,
+      "end_line": 130,
+      "sha256": "64658ca352b5607c2fa181baa9b1186a7820703615542509c55f607476267c4d",
+      "excerpt_sha256": "432d8231906567d1aa866b52d5681a40454787c7997bb3e1005b9ef9c29b90db",
+      "kind": "source"
+    },
+    {
+      "id": "credit",
+      "path": "docs/research-commons/CREDIT_POLICY.md",
+      "start_line": 1,
+      "end_line": 79,
+      "sha256": "c93c7710b3a6837511f0a720fc798896060a918797654f1e002605fdea627da5",
+      "excerpt_sha256": "c93c7710b3a6837511f0a720fc798896060a918797654f1e002605fdea627da5",
+      "kind": "source"
+    },
+    {
+      "id": "essay-pages",
+      "path": "docs/systems-paper-evidence/essay-pages.txt",
+      "start_line": 1,
+      "end_line": 453,
+      "sha256": "f2518601047a0f8d6297e69713eb1ce67a4cacfc5187c3d8f561d4b70f6286b0",
+      "excerpt_sha256": "f2518601047a0f8d6297e69713eb1ce67a4cacfc5187c3d8f561d4b70f6286b0",
+      "kind": "supplied_snapshot"
+    },
+    {
+      "id": "private-reflection",
+      "path": "docs/systems-paper-evidence/source-excerpts.md",
+      "start_line": 5,
+      "end_line": 53,
+      "sha256": "a989d833e221a7afc2ea91cfb659685e4a36706bfcfc0f68dec0cc6514e149f2",
+      "excerpt_sha256": "f0833ca4f3de7234280d19a25a23ab1b2118b5cf026a10d4b62c5f3ab15e38a3",
+      "kind": "supplied_snapshot"
+    },
+    {
+      "id": "private-writer",
+      "path": "docs/systems-paper-evidence/source-excerpts.md",
+      "start_line": 55,
+      "end_line": 97,
+      "sha256": "a989d833e221a7afc2ea91cfb659685e4a36706bfcfc0f68dec0cc6514e149f2",
+      "excerpt_sha256": "ea6404442a0d1e8e93be0ec4f57c93e4ff6b9f3efbe149a0d57751e22fad12af",
+      "kind": "supplied_snapshot"
+    },
+    {
+      "id": "private-writing-brief",
+      "path": "docs/systems-paper-evidence/source-excerpts.md",
+      "start_line": 99,
+      "end_line": 160,
+      "sha256": "a989d833e221a7afc2ea91cfb659685e4a36706bfcfc0f68dec0cc6514e149f2",
+      "excerpt_sha256": "145c0589a9a90cf7bbfd124168e5dab1da1a37af47219406c6273b0ac9e98180",
+      "kind": "supplied_snapshot"
+    },
+    {
+      "id": "private-custody",
+      "path": "docs/systems-paper-evidence/source-excerpts.md",
+      "start_line": 162,
+      "end_line": 241,
+      "sha256": "a989d833e221a7afc2ea91cfb659685e4a36706bfcfc0f68dec0cc6514e149f2",
+      "excerpt_sha256": "070bc18d4dd4129d5a89af71c35c59be0e2860292c642827617ea80358d7d2b6",
+      "kind": "supplied_snapshot"
+    },
+    {
+      "id": "round10-contract",
+      "path": "docs/systems-paper-evidence/source-excerpts.md",
+      "start_line": 243,
+      "end_line": 316,
+      "sha256": "a989d833e221a7afc2ea91cfb659685e4a36706bfcfc0f68dec0cc6514e149f2",
+      "excerpt_sha256": "f99f540d4793e991a01744f3da1ea5abf1cd0cbe61d6f2684d9a2359ecb58afe",
+      "kind": "supplied_snapshot"
+    },
+    {
+      "id": "round10-state",
+      "path": "docs/systems-paper-evidence/source-excerpts.md",
+      "start_line": 318,
+      "end_line": 357,
+      "sha256": "a989d833e221a7afc2ea91cfb659685e4a36706bfcfc0f68dec0cc6514e149f2",
+      "excerpt_sha256": "92a00dd6ce58ac0ceaa606b429bb6730aba9ed7f44064a08cd801186ba0f05b2",
+      "kind": "supplied_snapshot"
+    },
+    {
+      "id": "lit-alphaevolve",
+      "path": "docs/systems-paper-evidence/source-excerpts.md",
+      "start_line": 359,
+      "end_line": 655,
+      "sha256": "a989d833e221a7afc2ea91cfb659685e4a36706bfcfc0f68dec0cc6514e149f2",
+      "excerpt_sha256": "8947988697a03a66d12e95463415d81caa2adea73626fe088aa158d17506b443",
+      "kind": "supplied_snapshot"
+    },
+    {
+      "id": "lit-etp",
+      "path": "docs/systems-paper-evidence/source-excerpts.md",
+      "start_line": 657,
+      "end_line": 722,
+      "sha256": "a989d833e221a7afc2ea91cfb659685e4a36706bfcfc0f68dec0cc6514e149f2",
+      "excerpt_sha256": "9499d7c42376b2652db6311409ad9b4c06f6d61d824f0c1d40fb9ee01710d58e",
+      "kind": "supplied_snapshot"
+    },
+    {
+      "id": "lit-architect",
+      "path": "docs/systems-paper-evidence/source-excerpts.md",
+      "start_line": 724,
+      "end_line": 795,
+      "sha256": "a989d833e221a7afc2ea91cfb659685e4a36706bfcfc0f68dec0cc6514e149f2",
+      "excerpt_sha256": "85a9da654144c34b02d801dc98ca26ff81dc524472599deb447228e408ef72fb",
+      "kind": "supplied_snapshot"
+    },
+    {
+      "id": "lit-interestingness",
+      "path": "docs/systems-paper-evidence/source-excerpts.md",
+      "start_line": 797,
+      "end_line": 831,
+      "sha256": "a989d833e221a7afc2ea91cfb659685e4a36706bfcfc0f68dec0cc6514e149f2",
+      "excerpt_sha256": "b3d20dccc3062213d7e252f9778871999490727eeda00b3c034eeade668f0e74",
+      "kind": "supplied_snapshot"
+    },
+    {
+      "id": "lit-openh",
+      "path": "docs/systems-paper-evidence/source-excerpts.md",
+      "start_line": 833,
+      "end_line": 870,
+      "sha256": "a989d833e221a7afc2ea91cfb659685e4a36706bfcfc0f68dec0cc6514e149f2",
+      "excerpt_sha256": "206ab80f893f71f5bc9dcbad4f4325967a36fb007160424fd8bcae930756fb5c",
+      "kind": "supplied_snapshot"
+    },
+    {
+      "id": "lit-agenthunt",
+      "path": "docs/systems-paper-evidence/source-excerpts.md",
+      "start_line": 872,
+      "end_line": 927,
+      "sha256": "a989d833e221a7afc2ea91cfb659685e4a36706bfcfc0f68dec0cc6514e149f2",
+      "excerpt_sha256": "a5f731d403b674f838d8265a754f68ce54dd238fe0348cb24a2d61dce02b02b0",
+      "kind": "supplied_snapshot"
+    },
+    {
+      "id": "lit-oprover",
+      "path": "docs/systems-paper-evidence/source-excerpts.md",
+      "start_line": 929,
+      "end_line": 969,
+      "sha256": "a989d833e221a7afc2ea91cfb659685e4a36706bfcfc0f68dec0cc6514e149f2",
+      "excerpt_sha256": "f0c918fb1633cf627ba3288044ba7a95755a3c2741b3d5066616708016c88255",
+      "kind": "supplied_snapshot"
+    },
+    {
+      "id": "lit-circuit",
+      "path": "docs/systems-paper-evidence/source-excerpts.md",
+      "start_line": 971,
+      "end_line": 991,
+      "sha256": "a989d833e221a7afc2ea91cfb659685e4a36706bfcfc0f68dec0cc6514e149f2",
+      "excerpt_sha256": "b921816583646e02dce577112f2cca0e53f493e7a4e6cad545434d8c5ac11694",
+      "kind": "supplied_snapshot"
+    },
+    {
+      "id": "lit-halmos",
+      "path": "docs/systems-paper-evidence/source-excerpts.md",
+      "start_line": 993,
+      "end_line": 1048,
+      "sha256": "a989d833e221a7afc2ea91cfb659685e4a36706bfcfc0f68dec0cc6514e149f2",
+      "excerpt_sha256": "3861531ce367a18c6a3442ea901bf6def2372246e2c98c244131a1b5596cb23c",
+      "kind": "supplied_snapshot"
+    },
+    {
+      "id": "lit-mathlib",
+      "path": "docs/systems-paper-evidence/source-excerpts.md",
+      "start_line": 1050,
+      "end_line": 1085,
+      "sha256": "a989d833e221a7afc2ea91cfb659685e4a36706bfcfc0f68dec0cc6514e149f2",
+      "excerpt_sha256": "50c0ab39a039f6ede58242b19ffda9650dbc5cddf822e8bdaa4dc6a70674e830",
+      "kind": "supplied_snapshot"
+    },
+    {
+      "id": "lit-alpha-math",
+      "path": "docs/systems-paper-evidence/source-excerpts.md",
+      "start_line": 1087,
+      "end_line": 1118,
+      "sha256": "a989d833e221a7afc2ea91cfb659685e4a36706bfcfc0f68dec0cc6514e149f2",
+      "excerpt_sha256": "2e94124f51e4118e87eebb1361e6a4f41ab2655e410e84ef04cf4a48cb37adad",
+      "kind": "supplied_snapshot"
+    },
+    {
+      "id": "lit-rebench",
+      "path": "docs/systems-paper-evidence/primary-access.md",
+      "start_line": 1,
+      "end_line": 9,
+      "sha256": "494278721b84b59056744634565c495a1a53921d8b2cf889c79e26848c0f684c",
+      "excerpt_sha256": "adc8a374211e5a56a99daad0310ea63cd494f3a1168971c5eefec926e21322a9",
+      "kind": "external_record"
+    },
+    {
+      "id": "lit-formal",
+      "path": "docs/systems-paper-evidence/primary-access.md",
+      "start_line": 10,
+      "end_line": 13,
+      "sha256": "494278721b84b59056744634565c495a1a53921d8b2cf889c79e26848c0f684c",
+      "excerpt_sha256": "ade6f1862bee127b624e92817b2a286e464d57b9e0e0b939f2333ce09a79494f",
+      "kind": "external_record"
+    }
+  ],
+  "sentences": [
+    {
+      "id": "p7.001",
+      "text": "Plectis organises mathematical source, evidence and exposition into a persistent problem-sized world whose main reader-facing outputs are a short paper and a complete reasoning record.",
+      "owner": "p7",
+      "class": "implemented",
+      "evidence_refs": [
+        "index",
+        "assembler",
+        "paper-evidence"
+      ],
+      "warrant": "The navigation, assembly and evidence owners jointly implement these record surfaces.",
+      "statement_sha256": "a04bf596aa7b948f7048225ef1055f8cdd5bf23a65dca1fc6060b6d7760229c4"
+    },
+    {
+      "id": "p7.002",
+      "text": "The working route connects authored claims to Lean declarations and selected Comparator receipts, assembles long records from reviewable parts, and preserves returned work with its review and attribution.",
+      "owner": "p7",
+      "class": "implemented",
+      "evidence_refs": [
+        "paper-evidence",
+        "assembler",
+        "record",
+        "credit"
+      ],
+      "warrant": "These are separate existing mechanisms; their presence does not establish an autonomous end-to-end author.",
+      "statement_sha256": "7d232c04a6cbdfb5772b4952a99ba58e23f6c1126f24f9ecc70c6d07c2ecf721"
+    },
+    {
+      "id": "p7.003",
+      "text": "The intended writing route selects a general result, explains its mechanism and hard step, locates the motivating problem as an instance, and preserves the exact evidence boundary.",
+      "owner": "p7",
+      "class": "proposed",
+      "evidence_refs": [
+        "round10-contract",
+        "private-writing-brief"
+      ],
+      "warrant": "This is the supplied editorial objective, rather than an observed reader outcome.",
+      "statement_sha256": "117a7670bae51b720d24167200abcd2b501dd43a445c79907ea31533d2dfb7fb"
+    },
+    {
+      "id": "p7.004",
+      "text": "We describe which parts of that route exist in the attached source snapshot, which require editorial judgement, and which remain interface contracts.",
+      "owner": "p7",
+      "class": "method",
+      "evidence_refs": [
+        "round10-contract",
+        "private-writer",
+        "index"
+      ],
+      "warrant": "Scope statement for the source audit; no completion claim for the parallel packets.",
+      "statement_sha256": "9425e2ef77e8b4c9ab86b9fbc82ba4f517ff32bf8153cbc41782e3336b0bc482"
+    },
+    {
+      "id": "p7.005",
+      "text": "This revision adds source-bound prose auditing and generated inventory counts to make unsupported changes visible during revision.",
+      "owner": "p7",
+      "class": "implemented",
+      "evidence_refs": [
+        "audit-code",
+        "counts-code"
+      ],
+      "warrant": "The delivered native-owner extensions implement byte-bound prose coverage and count generation.",
+      "statement_sha256": "2b52f9a765a61d7eee16a25735a3cf02cd201481b1212c6cb131bd6dfc93c699"
+    },
+    {
+      "id": "p7.006",
+      "text": "A paired-packet protocol evaluates ordinary research-session returns without paid model calls; it has no completed comparative result in this report.",
+      "owner": "p7",
+      "class": "proposed",
+      "evidence_refs": [
+        "round10-contract",
+        "round10-state"
+      ],
+      "warrant": "The protocol is proposed and the supplied state records no completed experiment.",
+      "statement_sha256": "c5bd183428d28964f91df5d6bd4dc786745ea0e4d0d3cb17f62b8095c85c7381"
+    },
+    {
+      "id": "p7.007",
+      "text": "The contribution is an inspectable research-to-paper workflow with explicit evidence limits; improved exposition, discovery and reader understanding remain hypotheses for evaluation.",
+      "owner": "p7",
+      "class": "method",
+      "evidence_refs": [
+        "round10-contract",
+        "reader-study"
+      ],
+      "warrant": "A declared contribution and evaluation boundary, not an empirical superiority claim.",
+      "statement_sha256": "4a00a84f8ec8c2fe42b11d11ba9f608a907bf53c0bc04147604d842881610757"
+    },
+    {
+      "id": "p7.008",
+      "text": "The practical question is how an existing mathematical corpus becomes a paper that another mathematician can understand, check and reuse.",
+      "owner": "p7",
+      "class": "method",
+      "evidence_refs": [
+        "round10-contract"
+      ],
+      "warrant": "Problem definition follows the operator-approved writing objective.",
+      "statement_sha256": "5afd8a64c2c93ba23290c8eb6f224ad25c1ea9ab7287d3657de9ef2e8e08dfe3"
+    },
+    {
+      "id": "p7.009",
+      "text": "For this purpose a problem-sized world contains the problem, established results, scoped failed routes, literature, proof evidence and open obligations, rather than only a list of successful declarations.",
+      "owner": "p7",
+      "class": "implemented",
+      "evidence_refs": [
+        "index",
+        "record",
+        "relations"
+      ],
+      "warrant": "The named owners provide navigation and record structures; completeness is not claimed.",
+      "statement_sha256": "0077d486cf1dc3ccba492af74c373264a85c329d8721e185da1413ca279ef71e"
+    },
+    {
+      "id": "p7.010",
+      "text": "The short paper carries the mathematical argument a reader should remember, while the long record preserves the fuller development and provenance.",
+      "owner": "p7",
+      "class": "method",
+      "evidence_refs": [
+        "assembler",
+        "private-writing-brief"
+      ],
+      "warrant": "This separates intended editorial roles from generated assembly.",
+      "statement_sha256": "ff585675c786efa23cffe78c3ee647bb874b76c9604af9965a5d521f413d4552"
+    },
+    {
+      "id": "p7.011",
+      "text": "Problem 257 supplies a concrete example: for a finite nonempty set of primes $P$, write $h_P(a)=\\prod_{p\\in P}p^{v_p(a)}$ and $X_A(b)=\\sum_{a\\in A}(b^a-1)^{-1}$.",
+      "owner": "p7",
+      "class": "reported",
+      "evidence_refs": [
+        "257-statement"
+      ],
+      "warrant": "Definitions and the finite nonempty premise are copied from the existing short paper.",
+      "statement_sha256": "461051f5de2b818541ad6aa61d59cb3d32433ff13d36c2b42a823448aa3279d2"
+    },
+    {
+      "id": "p7.012",
+      "text": "The short paper states that convergence of $\\sum_{a\\in A}h_P(a)/[a(2^{h_P(a)}-1)]$ implies irrationality of $X_B(b)$ for every integer $b\\ge2$ and every infinite $B\\subseteq A$.",
+      "owner": "p7",
+      "class": "reported",
+      "evidence_refs": [
+        "257-statement"
+      ],
+      "warrant": "This reports the existing general hereditary theorem, without claiming a fresh proof or compilation.",
+      "statement_sha256": "212d527b450d35943c198bdb97c3522a5dae0dd286c1b38519a59c61795d522c"
+    },
+    {
+      "id": "p7.013",
+      "text": "Its proof makes positive displacements small by averaging over multiples of a modulus, with a further dyadic average controlling incomplete periods.",
+      "owner": "p7",
+      "class": "reported",
+      "evidence_refs": [
+        "257-abstract",
+        "257-statement"
+      ],
+      "warrant": "The existing abstract identifies the two averages and the introduction explains the displacement mechanism.",
+      "statement_sha256": "722e3c0c0dbb65024af58030575c3e198a85cbf76a2d8d9bbd5a418ce65e71e3"
+    },
+    {
+      "id": "p7.014",
+      "text": "The universal infinite-support problem remains outside that sufficient criterion, and failure of the criterion is not evidence of rationality.",
+      "owner": "p7",
+      "class": "reported",
+      "evidence_refs": [
+        "257-statement"
+      ],
+      "warrant": "The existing short paper explicitly distinguishes failure of a sufficient condition from the opposite conclusion.",
+      "statement_sha256": "59060960feb1bc8e416781efae2a5a9b7eb6931aec808409244c0c83cddd50b9"
+    },
+    {
+      "id": "p7.015",
+      "text": "This example fixes the writing objective: preserve the general theorem, make the hard step intelligible, distinguish it from antecedents, and state the remaining problem exactly.",
+      "owner": "p7",
+      "class": "method",
+      "evidence_refs": [
+        "257-statement",
+        "round10-contract"
+      ],
+      "warrant": "Editorial objective motivated by the existing worked example.",
+      "statement_sha256": "ae9067d002a2c662362e83f51a5a46ddd2fa5bdaa64bc49e68cf806fab7c8bdd"
+    },
+    {
+      "id": "p7.016",
+      "text": "It supplies no measurement of whether Plectis made the theorem easier to discover or understand.",
+      "owner": "p7",
+      "class": "method",
+      "evidence_refs": [
+        "reader-study",
+        "round10-state"
+      ],
+      "warrant": "A case illustration is not a controlled comparison.",
+      "statement_sha256": "98787db4c4695ac2b502101267e60c1b7ab8b1e27a607c271892a2c4d3d7bcef"
+    },
+    {
+      "id": "p1.001",
+      "text": "The existing problem index joins authored questions and boundaries to derived module paths, paper routes, digests and recorded checking dispositions.",
+      "owner": "p1",
+      "class": "implemented",
+      "evidence_refs": [
+        "index"
+      ],
+      "warrant": "The index docstring explicitly distinguishes authored judgement from derived joins.",
+      "statement_sha256": "67ce289a68093acfe55594b28b51d863992840c7cc88175fe7f7bd69d3231758"
+    },
+    {
+      "id": "p1.002",
+      "text": "The argument-continuation machinery builds a graph from an elaborated export and records the source identity and limits of that export.",
+      "owner": "p1",
+      "class": "implemented",
+      "evidence_refs": [
+        "graph"
+      ],
+      "warrant": "The graph builder consumes exported evidence; this pass does not rerun Lean.",
+      "statement_sha256": "b0f08deb5c0ebea0859479602f8b0dab29d6e3d435934f27ff95973948c4f0f5"
+    },
+    {
+      "id": "p1.003",
+      "text": "A relation row distinguishes a replacement hypothesis, an endpoint route and an equivalence inside the stated context.",
+      "owner": "p1",
+      "class": "implemented",
+      "evidence_refs": [
+        "relations"
+      ],
+      "warrant": "These relation kinds and implication directions are documented by the native registry.",
+      "statement_sha256": "faff62d21abaa729f4e46443e59911aa80408230a71328992673e41a754d4ac8"
+    },
+    {
+      "id": "p1.004",
+      "text": "An atlas listing with a matching signature and a reachable build target is an attestation to the source projection; it does not establish that a particular continuous-integration run compiled the module.",
+      "owner": "p1",
+      "class": "implemented",
+      "evidence_refs": [
+        "relations"
+      ],
+      "warrant": "The registry explicitly states the atlas-versus-execution boundary.",
+      "statement_sha256": "3d3fde0ee400dd3c121aa2fc6c1a2c186d6e74986e789721eb3d98c04fb9a1e4"
+    },
+    {
+      "id": "p1.005",
+      "text": "The round contract proposes a per-problem dossier containing each result's statement, generality, mechanism, hard step, evidence, consumers, attribution and open questions.",
+      "owner": "p1",
+      "class": "proposed",
+      "evidence_refs": [
+        "round10-contract"
+      ],
+      "warrant": "The dossier is a versioned interface in the supplied contract.",
+      "statement_sha256": "3ca64738100231ae8d74c73e16e225947a86d6632d1a0c86b1e1f08d52231cb5"
+    },
+    {
+      "id": "p1.006",
+      "text": "That dossier should be an editorial selection over the existing corpus, with a reason for retaining or excluding each candidate result.",
+      "owner": "p1",
+      "class": "proposed",
+      "evidence_refs": [
+        "round10-contract",
+        "private-writing-brief"
+      ],
+      "warrant": "Proposed selection behaviour; not an implemented complete-corpus optimiser.",
+      "statement_sha256": "c997290e1b8a34c00becc7e7ae3c8af5e82b180e188831da70e9e209625d99a2"
+    },
+    {
+      "id": "p1.007",
+      "text": "Retrieval alone cannot establish that a result is the most useful abstraction or that the literature comparison is complete.",
+      "owner": "p1",
+      "class": "method",
+      "evidence_refs": [
+        "index",
+        "relations"
+      ],
+      "warrant": "Both owners retain authored judgement and limited navigation scope.",
+      "statement_sha256": "a4c916396325b642fd6632f5ede8b92b1331da3e7ff392b0a7fb96507ba19481"
+    },
+    {
+      "id": "p1.008",
+      "text": "The proposed acceptance test therefore requires an exact source statement, a supported generality relation and a named potential consumer, with missing information left explicit.",
+      "owner": "p1",
+      "class": "proposed",
+      "evidence_refs": [
+        "round10-contract"
+      ],
+      "warrant": "Operationalisation of the proposed dossier acceptance standard.",
+      "statement_sha256": "a23a548b829e3e1b195ec2ff3135c01f174e7a95870b7c7189004607a674f46a"
+    },
+    {
+      "id": "p1.009",
+      "text": "This report does not treat the parallel dossier implementation as already delivered.",
+      "owner": "p1",
+      "class": "method",
+      "evidence_refs": [
+        "round10-contract"
+      ],
+      "warrant": "Independent parallel sessions do not expose their returns in this packet.",
+      "statement_sha256": "c56661f38099066bb455a27598ab8c39018b6f801fb6099e10182c1839f5c580"
+    },
+    {
+      "id": "p2.001",
+      "text": "The evidence renderer reads the paper-to-Lean coverage ledger and produces formal-evidence sidecars and result records.",
+      "owner": "p2",
+      "class": "implemented",
+      "evidence_refs": [
+        "paper-evidence"
+      ],
+      "warrant": "These are the three output classes named by paper_evidence.py.",
+      "statement_sha256": "6395576263b5513647c988988bd79c7bffc53ec784e7b968d305a567833b1cf5"
+    },
+    {
+      "id": "p2.002",
+      "text": "A Comparator mark requires all recorded declarations for the result to resolve to a challenge, a solution and an accepted replay receipt with matching source digests.",
+      "owner": "p2",
+      "class": "implemented",
+      "evidence_refs": [
+        "paper-evidence"
+      ],
+      "warrant": "The implementation contract describes an all-declarations condition, not an existence-of-one-receipt test.",
+      "statement_sha256": "cf0ffff35310eb1ab650cb7c832704474fa9e7a96869fd2188ffe96d6d8aca09"
+    },
+    {
+      "id": "p2.003",
+      "text": "It also requires agreement between the declaration statement at the paper's Lean pin and the statement compiled by the compared corpus, after comments and layout are removed.",
+      "owner": "p2",
+      "class": "implemented",
+      "evidence_refs": [
+        "paper-evidence"
+      ],
+      "warrant": "This is the source-statement agreement check documented by the renderer.",
+      "statement_sha256": "0d4b3be9241ad2b3b3e9be2557b9f20a8af3314677d6227a7781dae35d30c6db"
+    },
+    {
+      "id": "p2.004",
+      "text": "The renderer collects failures and writes nothing when resolution fails.",
+      "owner": "p2",
+      "class": "implemented",
+      "evidence_refs": [
+        "paper-evidence"
+      ],
+      "warrant": "Fail-closed build behaviour is explicit in the native owner.",
+      "statement_sha256": "5fb2d65319125eb0df3faaef0002a574025380361f7dd819615d7ccf06b9cc3f"
+    },
+    {
+      "id": "p2.005",
+      "text": "The ledger distinguishes exact correspondence, an exact-or-specialising correspondence, a result depending on a named input, and a result with no Lean statement.",
+      "owner": "p2",
+      "class": "reported",
+      "evidence_refs": [
+        "coverage"
+      ],
+      "warrant": "These are recorded coverage classes, not fresh semantic adjudications.",
+      "statement_sha256": "d3452db687389fb7d9982f15c6e7c5dc804ce387df7994f6874c0972cf49d11e"
+    },
+    {
+      "id": "p2.006",
+      "text": "A statement digest detects a changed assertion; the mathematical judgement that a declaration corresponds to the assertion still needs review.",
+      "owner": "p2",
+      "class": "method",
+      "evidence_refs": [
+        "paper-evidence",
+        "coverage"
+      ],
+      "warrant": "Byte identity is separated from authored semantic correspondence.",
+      "statement_sha256": "23afde0ad94b765577518b766dba84acb5e120601bcb2251a5527d8e9cbdfc08"
+    },
+    {
+      "id": "p2.007",
+      "text": "Lean checks the formal proposition supplied to it, whereas agreement with the intended mathematics and the quality of its explanation remain separate questions.",
+      "owner": "p2",
+      "class": "method",
+      "evidence_refs": [
+        "paper-evidence",
+        "historical"
+      ],
+      "warrant": "The checker's historical escape and correspondence contracts delimit the assurance.",
+      "statement_sha256": "49ab8132e8cafe27ccad6532c28698eb5521f2ff9133d9667f343cd73adc9118"
+    },
+    {
+      "id": "p2.008",
+      "text": "A named open input must remain visible in the prose, and an ordinary argument cannot acquire a Lean or Comparator label merely because it is adjacent to a checked theorem.",
+      "owner": "p2",
+      "class": "method",
+      "evidence_refs": [
+        "coverage",
+        "paper-evidence"
+      ],
+      "warrant": "Required evidence non-promotion rule derived from per-result mappings.",
+      "statement_sha256": "0c61c3d369c5ebbf1a049f1a4301ef9654b29265e48f1175419692ba8e9f2ac6"
+    },
+    {
+      "id": "p2.009",
+      "text": "The historical publication-evidence record reports that \\HistoricalRejected{} of the \\HistoricalEdits{} deliberately false edits were rejected and \\HistoricalEscaped{} escaped.",
+      "owner": "p2",
+      "class": "reported",
+      "evidence_refs": [
+        "historical",
+        "counts"
+      ],
+      "warrant": "Reported historical mutation data, generated from the typed source receipt.",
+      "statement_sha256": "5c72f37b762ed80e69ee5dcc29c0c20b7bc0ffacd4147788645282ab379673cb"
+    },
+    {
+      "id": "p2.010",
+      "text": "The edits were authored by the checker's author, the original run logs were not retained, and the other \\HistoricalNotRerun{} edits were not rerun against the extended checklist.",
+      "owner": "p2",
+      "class": "reported",
+      "evidence_refs": [
+        "historical",
+        "counts"
+      ],
+      "warrant": "All three historical ceilings are retained without converting the record into a fresh experiment.",
+      "statement_sha256": "d6c44a3358c7a248c9ae42b79cc2ec1a41043286f31230b6e4642ac08daeaa3f"
+    },
+    {
+      "id": "p2.011",
+      "text": "This record identifies a missing coverage rule and provides no estimate of general reliability.",
+      "owner": "p2",
+      "class": "method",
+      "evidence_refs": [
+        "historical"
+      ],
+      "warrant": "The source explicitly limits the study to one corpus, author and working style.",
+      "statement_sha256": "617ab5728f49cb7510e9950054481bf75f7a0ffab30dc897303cc02b8fcf360d"
+    },
+    {
+      "id": "p3.001",
+      "text": "The supplied essays motivate this objective from different perspectives: Kra asks what a result teaches, Riehl emphasises explanatory generality, Cohn treats undigested output as a burden on readers, and Sanderson argues for recognising motivated explanations~\\cite{essays}.",
+      "owner": "p3",
+      "class": "literature",
+      "evidence_refs": [
+        "essay-pages"
+      ],
+      "warrant": "Paraphrases of anthology pages 31--32, 39, 41--43 and 73--74, not a claim of consensus or endorsement.",
+      "statement_sha256": "64f33d89f4fe9c2d6466a8d0bfc5d906a371885b6bd18781f206303d834b348b"
+    },
+    {
+      "id": "p3.002",
+      "text": "Gowers distinguishes legitimate problem-solving and theory-building aims, so these views provide editorial questions rather than a unanimous policy about AI-assisted mathematics~\\cite{essays}.",
+      "owner": "p3",
+      "class": "literature",
+      "evidence_refs": [
+        "essay-pages"
+      ],
+      "warrant": "The anthology pages 56 and 59 preserve differences of emphasis.",
+      "statement_sha256": "372b8e9d6d8cbab92021bd1ce98f8e0cf44d1d88353a6288a05649f437a12bde"
+    },
+    {
+      "id": "p3.003",
+      "text": "The supplied private machinery contains a source-frozen editorial packet builder and a writing brief that prioritises the strongest established contribution, its antecedents and its hard idea.",
+      "owner": "p3",
+      "class": "reported",
+      "evidence_refs": [
+        "private-writer",
+        "private-writing-brief"
+      ],
+      "warrant": "The delivered archive contains this builder and its embedded ASK.",
+      "statement_sha256": "a68cd019bbaecdff14f56a71dc5bf818751dffe43b2359ee0ca11ee8a79fc602"
+    },
+    {
+      "id": "p3.004",
+      "text": "This is machinery for assigning and packaging editorial work; the attached source does not establish a complete automatic writer from the new dossier contract.",
+      "owner": "p3",
+      "class": "method",
+      "evidence_refs": [
+        "private-writer",
+        "round10-contract"
+      ],
+      "warrant": "A packet builder is not the p3 draft generator whose implementation the parallel assignment requests.",
+      "statement_sha256": "9da8fedc7f6af6ff4c688635d592814167c18c74f8de5831df9da5296c717fee"
+    },
+    {
+      "id": "p3.005",
+      "text": "The builder also imports a dissemination helper that is absent from the supplied private archive, so this report does not claim a successful offline run of that builder.",
+      "owner": "p3",
+      "class": "reported",
+      "evidence_refs": [
+        "private-writer",
+        "round10-state"
+      ],
+      "warrant": "The import is visible and the archive inventory was inspected; reproducibility gap is recorded separately.",
+      "statement_sha256": "f62bc9205ec84114d550cc6297fe4c3035e87c91123a1990287cb4d987c4400d"
+    },
+    {
+      "id": "p3.006",
+      "text": "The proposed short-paper writer consumes the dossier and claim-evidence rows, then drafts a theorem-led account in which the motivating problem is an application of the general result.",
+      "owner": "p3",
+      "class": "proposed",
+      "evidence_refs": [
+        "round10-contract"
+      ],
+      "warrant": "This is p3 input/output scope, still a proposal here.",
+      "statement_sha256": "adf5b4d403e92ccf1f910af8182b1064990cdd205af7fb9a7d4984bf138c16ef"
+    },
+    {
+      "id": "p3.007",
+      "text": "The drafting order should be mathematical question, general statement with hypotheses, mechanism, hard step, comparison with antecedents, and the exact open boundary.",
+      "owner": "p3",
+      "class": "proposed",
+      "evidence_refs": [
+        "round10-contract",
+        "private-writing-brief"
+      ],
+      "warrant": "Proposed writing standard derived from the supplied contract.",
+      "statement_sha256": "2bf9cea96defe3e0339eb5a1208bd51423c1ff07c3261bc446e727fdd9396a9c"
+    },
+    {
+      "id": "p3.008",
+      "text": "For the weighted-support example, the short paper should explain why incomplete periods require the second average before listing supplementary finite-denominator results.",
+      "owner": "p3",
+      "class": "proposed",
+      "evidence_refs": [
+        "257-abstract",
+        "257-statement"
+      ],
+      "warrant": "An editorial choice over existing mathematics, not an additional result.",
+      "statement_sha256": "9e0dc11253fa42ea097d6395c3ff0a1dbaeea085e65d2fbc2dfc05d6474b6f46"
+    },
+    {
+      "id": "p3.009",
+      "text": "The long record can retain those supplementary developments without making the short paper an inventory of everything that was proved.",
+      "owner": "p3",
+      "class": "proposed",
+      "evidence_refs": [
+        "assembler",
+        "private-writing-brief"
+      ],
+      "warrant": "Proposed allocation of exposition between existing paper roles.",
+      "statement_sha256": "4cf9640574a98323fb357617ccfc9cb9b6bb8f5274f7a0dc5577e6a23fba16b6"
+    },
+    {
+      "id": "p3.010",
+      "text": "A structural linter can detect missing evidence fields, unsupported status changes and forbidden register patterns, while explanatory adequacy still needs a reader.",
+      "owner": "p3",
+      "class": "method",
+      "evidence_refs": [
+        "round10-contract",
+        "audit-code"
+      ],
+      "warrant": "The proposed p3 checks and implemented p7 byte/house-rule checks are explicitly limited.",
+      "statement_sha256": "55dd08060eaff9f7a42cd5821ec8d1de3ecfc12978ffd750be0266b67492fe9e"
+    },
+    {
+      "id": "p3.011",
+      "text": "A successful revision should enable a cold reader to recover the statement, its mechanism, its difficult step and its limitations without consulting the originating conversation.",
+      "owner": "p3",
+      "class": "proposed",
+      "evidence_refs": [
+        "round10-contract"
+      ],
+      "warrant": "Reader outcome to test, not a measured effect.",
+      "statement_sha256": "c49c689cfe16b6d425bf9026979055577c04fcb77e509a661fb41b0fde7c9cfb"
+    },
+    {
+      "id": "p4.001",
+      "text": "The native assembler writes flat long manuscripts from authored reasoning parts and retains a visible marker before each part.",
+      "owner": "p4",
+      "class": "implemented",
+      "evidence_refs": [
+        "assembler"
+      ],
+      "warrant": "This is implemented by assemble_reasoning_surfaces.py.",
+      "statement_sha256": "d137c2f22c45449e3e56576e237a7c75a60519a9316d7815fbc7e3cec4238ada"
+    },
+    {
+      "id": "p4.002",
+      "text": "Its check mode compares the generated manuscript with the assembled result and acts as a freshness gate.",
+      "owner": "p4",
+      "class": "implemented",
+      "evidence_refs": [
+        "assembler"
+      ],
+      "warrant": "Existing --check mode tests assembly freshness.",
+      "statement_sha256": "9c1d727a2a69aee144ae9693f31b2a9f02fe8d2f7f7e972216039b0879583c29"
+    },
+    {
+      "id": "p4.003",
+      "text": "This arrangement lets a reviewer revise a bounded part while keeping a manuscript that ordinary TeX and text-extraction tools can read.",
+      "owner": "p4",
+      "class": "implemented",
+      "evidence_refs": [
+        "assembler"
+      ],
+      "warrant": "The owner states the motivation for flat output and reviewable source parts.",
+      "statement_sha256": "4f95a571a844ea1349388d4e11856a43f82af74955879c8b6c582755ec893d4a"
+    },
+    {
+      "id": "p4.004",
+      "text": "Assembly freshness does not imply that the long record agrees mathematically with the short paper.",
+      "owner": "p4",
+      "class": "method",
+      "evidence_refs": [
+        "assembler",
+        "paper-evidence"
+      ],
+      "warrant": "A byte regeneration test and a semantic cross-paper comparison answer different questions.",
+      "statement_sha256": "8087fa520f91d91da39b3238acee97508b1eb9f3d9928580750978f0def6d99f"
+    },
+    {
+      "id": "p4.005",
+      "text": "The proposed cross-paper check should join stable result identifiers and compare statements, assumptions, evidence classes and open boundaries before either manuscript is released.",
+      "owner": "p4",
+      "class": "proposed",
+      "evidence_refs": [
+        "round10-contract",
+        "coverage"
+      ],
+      "warrant": "Proposed p4 extension using existing evidence and result identifiers.",
+      "statement_sha256": "8d68bf0f4a0c873e0a52188912b201c937a88502e62e63dea5b81306d732ddb5"
+    },
+    {
+      "id": "p4.006",
+      "text": "A deletion from the short paper should preserve the long-record result or record an explicit correction; it should not erase the history of a failed route.",
+      "owner": "p4",
+      "class": "proposed",
+      "evidence_refs": [
+        "record",
+        "assembler"
+      ],
+      "warrant": "Proposed editorial preservation rule supported by distinct record and short-paper roles.",
+      "statement_sha256": "0d340588072ae4c88f0c682b7f35c951306058d785e6b60a74c47b41d39befe3"
+    },
+    {
+      "id": "p4.007",
+      "text": "The short and long versions may use different explanations while citing the same supported mathematical assertion.",
+      "owner": "p4",
+      "class": "method",
+      "evidence_refs": [
+        "coverage"
+      ],
+      "warrant": "The ledger deliberately counts assertions in the two paper forms separately.",
+      "statement_sha256": "c543cbff32d8a79f8d10067c1806d0916f25434e378599925e5f340abab8f777"
+    },
+    {
+      "id": "p5.001",
+      "text": "The public research record maintains an append-only hash-linked journal of packets, returns, reviews and consumer dispositions.",
+      "owner": "p5",
+      "class": "implemented",
+      "evidence_refs": [
+        "record"
+      ],
+      "warrant": "Existing journal operations are separate from theorem authority.",
+      "statement_sha256": "6e55b6031d2377a45f21a373364e8da42197147c80db423d2a4ac63eb1812c94"
+    },
+    {
+      "id": "p5.002",
+      "text": "The supplied private intake tool preserves return bytes before judgement, and its reflection tool consumes outcome records separately from custody.",
+      "owner": "p5",
+      "class": "reported",
+      "evidence_refs": [
+        "private-custody",
+        "private-reflection"
+      ],
+      "warrant": "These are supplied-source implementation descriptions, not a fresh operational trial.",
+      "statement_sha256": "ede34c557ca874ecb4dfe473655c2f7ab6ec7508ad2a632b19bcec01131a69f1"
+    },
+    {
+      "id": "p5.003",
+      "text": "The reflection tool can examine outcomes, policies, mathematics, context, assimilation, infrastructure and objectives, while changes to directives and objectives remain operator proposals.",
+      "owner": "p5",
+      "class": "reported",
+      "evidence_refs": [
+        "private-reflection"
+      ],
+      "warrant": "The private owner states its scope lenses and authority boundary.",
+      "statement_sha256": "ac89fa9fff3a25a632cefb692d3ae210c75086bbe2a2f3505d8f65f5e6254c42"
+    },
+    {
+      "id": "p5.004",
+      "text": "Its documented promotion rule requires a causal-trial contract, evidence from separate batches and a clean replay before a candidate policy becomes active.",
+      "owner": "p5",
+      "class": "reported",
+      "evidence_refs": [
+        "private-reflection"
+      ],
+      "warrant": "This reports an existing guard; enforcement and benefit are not inferred from a docstring alone.",
+      "statement_sha256": "302e00741da9f996ce410940c7aee86c276e719ae17286fa3e36f532aef33ae8"
+    },
+    {
+      "id": "p5.005",
+      "text": "For paper work, the proposed loop is to freeze inputs, commission a bounded revision, preserve its return, check changed claims, review its exposition, and either integrate or reject the change with reasons.",
+      "owner": "p5",
+      "class": "proposed",
+      "evidence_refs": [
+        "round10-contract",
+        "private-reflection"
+      ],
+      "warrant": "A concrete application of the existing loop to the new writing objective.",
+      "statement_sha256": "01faf1dff6ace3b223848c5ec38269bd2dec3c1ecd816ef6045ba3507994c5c3"
+    },
+    {
+      "id": "p5.006",
+      "text": "An accepted component still needs a recorded consumer and an integration decision; acceptance does not itself show that a paper changed or a reader benefited.",
+      "owner": "p5",
+      "class": "method",
+      "evidence_refs": [
+        "record",
+        "private-reflection"
+      ],
+      "warrant": "Admission, downstream use and measured benefit are distinct states.",
+      "statement_sha256": "f54b65ba28fdb41523b4455850db1e8de48bcb8d6d642e45f3a7e2a21b419232"
+    },
+    {
+      "id": "p5.007",
+      "text": "Policy changes should be tested against retained difficult cases as well as the latest successful return, because making a prompt stricter can suppress useful work.",
+      "owner": "p5",
+      "class": "proposed",
+      "evidence_refs": [
+        "private-reflection"
+      ],
+      "warrant": "The owner says replay can veto a rule and cannot alone justify it.",
+      "statement_sha256": "a9fb82199e81b595c3b1b859935cabda7326d54595b1e3838d33dd2191a01948"
+    },
+    {
+      "id": "p5.008",
+      "text": "The existence of repeated rounds is evidence of an iterative process, not evidence that the process improves automatically.",
+      "owner": "p5",
+      "class": "method",
+      "evidence_refs": [
+        "round10-state",
+        "private-reflection"
+      ],
+      "warrant": "No self-improvement effect is inferred from recorded iteration.",
+      "statement_sha256": "f05094048abe932e96ec8f599c60c7fd327818bfd1a9f8a1e0e8191aaf6d3580"
+    },
+    {
+      "id": "p6.001",
+      "text": "The existing semantic benchmark runs fixed queries and checks for expected source handles, statuses and dependency entries.",
+      "owner": "p6",
+      "class": "implemented",
+      "evidence_refs": [
+        "benchmark"
+      ],
+      "warrant": "The task definitions specify required cells, text and edges.",
+      "statement_sha256": "d568ed841bea2c0972d48156c2a79db2157e26f41051005ac0c44346ac02c052"
+    },
+    {
+      "id": "p6.002",
+      "text": "Such a check can reveal broken navigation, but it does not measure reader understanding or the usefulness of a paper.",
+      "owner": "p6",
+      "class": "method",
+      "evidence_refs": [
+        "benchmark"
+      ],
+      "warrant": "Interpretation of the exact-check oracle rather than an empirical reader result.",
+      "statement_sha256": "287d3a626c914f23703e1ab5b1c3740001129279c8c39068e6baa27e1633eb0f"
+    },
+    {
+      "id": "p6.003",
+      "text": "The native reader-study tool prepares digest-bound materials and analysis, and its optional execution path requires a separately authorised provider bridge.",
+      "owner": "p6",
+      "class": "implemented",
+      "evidence_refs": [
+        "reader-study"
+      ],
+      "warrant": "Existing source contains preparation and a conditional bridge; none is invoked here.",
+      "statement_sha256": "5ec079665f2f5ab3a9502661b723bb4939bbe4424a15b55e1c781b925577397a"
+    },
+    {
+      "id": "p6.004",
+      "text": "The operator's revised protocol uses the ordinary Type B research sessions as subjects and requires no paid model calls or new provider runner.",
+      "owner": "p6",
+      "class": "proposed",
+      "evidence_refs": [
+        "round10-contract"
+      ],
+      "warrant": "This is the supplied round decision and prospective evaluation design.",
+      "statement_sha256": "436e2ba35bda155d02b6bfe0296c15734f1b1fa2f308b0307786970b72d4ea20"
+    },
+    {
+      "id": "p6.005",
+      "text": "For a component comparison, both packets receive the same task, source revision, evidence boundary, budget and frozen rubric, with one declared input difference.",
+      "owner": "p6",
+      "class": "proposed",
+      "evidence_refs": [
+        "round10-contract"
+      ],
+      "warrant": "The paired-packet contract specifies the intervention; the detailed measurement files operationalise it.",
+      "statement_sha256": "dd9fafa28da2429800c38f47d6e66f802ce7f93c344d52cbe8f7c6f223e334d4"
+    },
+    {
+      "id": "p6.006",
+      "text": "The corresponding source-only control and structured-dossier treatment should contain the same mathematical facts when the estimand is the effect of organisation.",
+      "owner": "p6",
+      "class": "proposed",
+      "evidence_refs": [
+        "round10-contract",
+        "reader-study"
+      ],
+      "warrant": "A proposed equality-of-information control avoids confounding explanation with additional facts.",
+      "statement_sha256": "37efff272ef7d914afed3d9a8dd8cd9aba69887052bc73d1fbb42348a35aa818"
+    },
+    {
+      "id": "p6.007",
+      "text": "A separate grader receives anonymised outputs in counterbalanced order, together with the frozen answer key and rubric; it receives neither the producing arm label nor the desired result.",
+      "owner": "p6",
+      "class": "proposed",
+      "evidence_refs": [
+        "round10-contract",
+        "reader-study"
+      ],
+      "warrant": "Proposed grading separation using the existing grade-packet role.",
+      "statement_sha256": "a865e74682447d92a057bc061ab4913bff594fe1f439b76601625b98c28a494b"
+    },
+    {
+      "id": "p6.008",
+      "text": "Severe mathematical or evidence-status errors are reported separately from exposition scores and cannot be cancelled by fluent prose.",
+      "owner": "p6",
+      "class": "proposed",
+      "evidence_refs": [
+        "round10-contract",
+        "paper-evidence"
+      ],
+      "warrant": "Proposed validity gate prevents a weighted readability average from hiding a false claim.",
+      "statement_sha256": "8764d095dedd91e95ef4dfa2cab5f457be98baa4117e74f6c0394212995f8e79"
+    },
+    {
+      "id": "p6.009",
+      "text": "The primary observations are whether a reader can state the general result, identify the hard step, locate its evidence and distinguish the remaining open question.",
+      "owner": "p6",
+      "class": "proposed",
+      "evidence_refs": [
+        "round10-contract"
+      ],
+      "warrant": "These are proposed rubric targets, not model-performance data.",
+      "statement_sha256": "a490cba4ddc28be600021df1d350bfadce0abb8fe46282665a236b95c5daae41"
+    },
+    {
+      "id": "p6.010",
+      "text": "Related short and long papers, repeated sessions and equivalent formulations are clustered by mathematical lineage instead of being treated as independent discoveries.",
+      "owner": "p6",
+      "class": "proposed",
+      "evidence_refs": [
+        "reader-study",
+        "relations"
+      ],
+      "warrant": "Dependence protection follows the task-family and equivalence boundary.",
+      "statement_sha256": "f7de0b2a4a7253e5dc52d72b685332fc2df24b3b578f8e40de335ab38edfcc5a"
+    },
+    {
+      "id": "p6.011",
+      "text": "Every issued assignment, missing return, timeout, invalid output and adjudication should remain in the record, together with preparation and review effort.",
+      "owner": "p6",
+      "class": "proposed",
+      "evidence_refs": [
+        "reader-study",
+        "record"
+      ],
+      "warrant": "Proposed intention-to-evaluate accounting; no zero-effort claim.",
+      "statement_sha256": "e079fbb302f75d1d841cab2da4e947c18acd5d16506be8fdbb436d0525068efe"
+    },
+    {
+      "id": "p6.012",
+      "text": "Ordinary session access avoids additional model-call charges in this design, while human time and any existing subscription remain costs.",
+      "owner": "p6",
+      "class": "method",
+      "evidence_refs": [
+        "round10-contract"
+      ],
+      "warrant": "Clarifies the operator phrase free evaluation without inventing monetary totals.",
+      "statement_sha256": "bce8cc2ec046609920d58dd5c1fcd22010208290457432f4b1d2a776db484fd5"
+    },
+    {
+      "id": "p6.013",
+      "text": "A before-and-after writing round can show revision progress, whereas a causal claim about a component requires the matched comparison rather than different tasks assigned to different components.",
+      "owner": "p6",
+      "class": "method",
+      "evidence_refs": [
+        "round10-contract",
+        "reader-study"
+      ],
+      "warrant": "The seven component assignments are not automatically a controlled experiment.",
+      "statement_sha256": "25cdfb29139009db4eab2980b969a6c30e624b08d4607ad4e75d3de5b34e9e27"
+    },
+    {
+      "id": "p6.014",
+      "text": "The protocol would count against the upgrade if source-faithful reader decisions did not improve, if severe errors increased, or if additional preparation outweighed the recorded benefit.",
+      "owner": "p6",
+      "class": "proposed",
+      "evidence_refs": [
+        "round10-contract"
+      ],
+      "warrant": "Explicit disconfirming outcomes for the proposed test.",
+      "statement_sha256": "ee0059b22e8e4b2f856806b5aa9916749234559063502f287970bd29c7cd7856"
+    },
+    {
+      "id": "p6.015",
+      "text": "No comparative scores or reader gains are reported for this revision.",
+      "owner": "p6",
+      "class": "reported",
+      "evidence_refs": [
+        "round10-state"
+      ],
+      "warrant": "The attached state supplies no completed comparative study.",
+      "statement_sha256": "f162d18c3e567c2efe6bc064a9fdf31c5749a6d3374a24b358e70c15bc065213"
+    },
+    {
+      "id": "p7.017",
+      "text": "The attached snapshot indexes \\ProblemWorlds{} problem worlds and registers \\RegisteredPapers{} paper entries, including \\ShortPapers{} short problem papers and \\LongRecords{} long reasoning records.",
+      "owner": "p7",
+      "class": "reported",
+      "evidence_refs": [
+        "counts"
+      ],
+      "warrant": "Counts are derived from the problem-index source and paper registry, with separate denominators.",
+      "statement_sha256": "cca5af3cb69cad9802069ee29beeb375f9ef7bb491cd1dab55ceb5c033f289a9"
+    },
+    {
+      "id": "p7.018",
+      "text": "The paper-to-Lean ledger contains \\LedgerRows{} assertion occurrences: \\LedgerExact{} exact rows, \\LedgerSpecialising{} exact-or-specialising rows, \\LedgerNamedInput{} rows depending on a named input, and \\LedgerNoLean{} rows without a Lean statement.",
+      "owner": "p7",
+      "class": "reported",
+      "evidence_refs": [
+        "counts",
+        "coverage"
+      ],
+      "warrant": "These are publication occurrences, including repeated short/long statements, not unique discoveries.",
+      "statement_sha256": "1961a8bb28504cf6e659db07bc91604ef0c18d606fa02a8f24e14872775e67da"
+    },
+    {
+      "id": "p7.019",
+      "text": "Its recorded Comparator dispositions are \\LedgerCompared{} compared and \\LedgerQueued{} pending among the \\LedgerFormal{} exact and exact-or-specialising rows.",
+      "owner": "p7",
+      "class": "reported",
+      "evidence_refs": [
+        "counts",
+        "coverage"
+      ],
+      "warrant": "Reported source-ledger disposition, not a newly executed Comparator replay.",
+      "statement_sha256": "e4f2504ee7fa53db2b4a7a682724c832b87ebbacf26db2c7aa43dc654388e9e3"
+    },
+    {
+      "id": "p7.020",
+      "text": "These counts are generated by the native counts builder and do not measure mathematical importance, completeness of the literature review or exposition quality.",
+      "owner": "p7",
+      "class": "method",
+      "evidence_refs": [
+        "counts-code",
+        "counts"
+      ],
+      "warrant": "Mechanistic inventory with explicit non-metric boundaries.",
+      "statement_sha256": "da5f8b5a0364c3f2286de747117a8cf965cf3ef75386b2f2da569f3388f3dd3f"
+    },
+    {
+      "id": "p7.021",
+      "text": "At recorded journal head \\texttt{\\JournalHead}, the source journal contains \\Rounds{} opened rounds, \\RoundsSealed{} sealed rounds and \\Returns{} returns, with \\ReturnsAdmitted{} admitted for integration and \\ReturnsUnreviewed{} without a recorded review.",
+      "owner": "p7",
+      "class": "reported",
+      "evidence_refs": [
+        "counts",
+        "record"
+      ],
+      "warrant": "Counts are over the attached public journal rather than every private or historical session.",
+      "statement_sha256": "1185678c9e2055ece71da911f48826deaae35df2a382235c745b71e2e2d6f973"
+    },
+    {
+      "id": "p7.022",
+      "text": "Those journal counts do not claim complete capture of all rounds mentioned in the private history.",
+      "owner": "p7",
+      "class": "method",
+      "evidence_refs": [
+        "counts",
+        "round10-state"
+      ],
+      "warrant": "The snapshot has a narrower counting universe than the whole conversational history.",
+      "statement_sha256": "395ccb978a74e450ab77d89be127811a98b8b599b879be3ddd13d6398c0c7237"
+    },
+    {
+      "id": "p7.023",
+      "text": "The revised paper records its prose as explicit source-bound units and checks for changed text, missing bindings, duplicate identifiers and changed evidence bytes.",
+      "owner": "p7",
+      "class": "implemented",
+      "evidence_refs": [
+        "audit-code"
+      ],
+      "warrant": "New implementation performs these checks without semantic entailment claims.",
+      "statement_sha256": "8ea90dab77effd266575152238a94a024f20fd1075a1682397da920cf19eb51a"
+    },
+    {
+      "id": "p7.024",
+      "text": "The associated source excerpts distinguish the supplied private machinery and literature from local run receipts.",
+      "owner": "p7",
+      "class": "implemented",
+      "evidence_refs": [
+        "audit-code",
+        "private-reflection",
+        "lit-rebench"
+      ],
+      "warrant": "Source kind and provenance fields prevent calling a code excerpt an execution receipt.",
+      "statement_sha256": "e7e2ca1449bb7080091ce713f84b327636646ca24dfb463930316a112c4f1cac"
+    },
+    {
+      "id": "p7.025",
+      "text": "This auditing mechanism is a review aid: a maintainer who changes both an assertion and its supporting annotation can still introduce a shared mistake.",
+      "owner": "p7",
+      "class": "method",
+      "evidence_refs": [
+        "audit-code",
+        "historical"
+      ],
+      "warrant": "Cryptographic binding and coordinated edits do not establish semantic truth.",
+      "statement_sha256": "60276627d34ee29eb05f244525158681ebb2798ce53a27a3d52bbbbd60e4f5ca"
+    },
+    {
+      "id": "p7.026",
+      "text": "LeanArchitect is the nearest listed comparator for synchronising exposition with formal declarations: its annotations and environment data support dependency extraction and generated blueprint text~\\cite{leanarchitect}.",
+      "owner": "p7",
+      "class": "literature",
+      "evidence_refs": [
+        "lit-architect"
+      ],
+      "warrant": "Methods section of the supplied v1 describes the annotation, environment and export pipeline.",
+      "statement_sha256": "9119d82bd22366b857bef88f203af6a029aaade622c601728bb94e06c85bfd87"
+    },
+    {
+      "id": "p7.027",
+      "text": "Plectis adds a different publication path around mixed evidence classes, separately recorded statement comparison, short and long paper roles, and the custody of unresolved returned work.",
+      "owner": "p7",
+      "class": "method",
+      "evidence_refs": [
+        "paper-evidence",
+        "assembler",
+        "record"
+      ],
+      "warrant": "A feature-level comparison to the listed blueprint task, not a claim that no other system has these capabilities.",
+      "statement_sha256": "fa6ca67ab5f1cb3ab71f587ad1c21307d781326c1ea02026ae9873c9456a1d76"
+    },
+    {
+      "id": "p7.028",
+      "text": "This combination has not been shown to produce clearer papers or better formalisation performance than LeanArchitect.",
+      "owner": "p7",
+      "class": "method",
+      "evidence_refs": [
+        "round10-state",
+        "lit-architect"
+      ],
+      "warrant": "No matched comparative result exists in this packet.",
+      "statement_sha256": "dfcdcd41cfaab08daa2873992c3cf380278def55ff765cf23b830f1f069bb6b0"
+    },
+    {
+      "id": "p7.029",
+      "text": "The Equational Theories Project is a stronger precedent for demonstrated collaborative exploration, including implication and non-implication data, Lean validation and shared project management~\\cite{etp}.",
+      "owner": "p7",
+      "class": "literature",
+      "evidence_refs": [
+        "lit-etp"
+      ],
+      "warrant": "The project-management primary text explains why a pre-written blueprint was insufficient for unknown mathematics.",
+      "statement_sha256": "f16ebdfab71c5cd606adc06c1cf05a81b0c175b18c6723f51f3c8518dad68bec"
+    },
+    {
+      "id": "p7.030",
+      "text": "Persistence, correction and formal checking therefore cannot serve as standalone novelty claims for Plectis.",
+      "owner": "p7",
+      "class": "method",
+      "evidence_refs": [
+        "lit-etp",
+        "record"
+      ],
+      "warrant": "Reasoned comparison with a directly relevant existing project.",
+      "statement_sha256": "b9fb6a8d54bd69600834bb66f67a132e3061359a592dae165925351674b8c974"
+    },
+    {
+      "id": "p7.031",
+      "text": "The mathlib community supplies the reusable formal library and maintenance model on which problem-specific developments can build, while Formal Conjectures supplies formal problem statements~\\cite{mathlib,formalconjectures}.",
+      "owner": "p7",
+      "class": "literature",
+      "evidence_refs": [
+        "lit-mathlib",
+        "lit-formal"
+      ],
+      "warrant": "Describes complementary upstream roles without a current per-conjecture status claim.",
+      "statement_sha256": "9e79455d9d60616940fadba488663d5acf22d63268ff72b33a27d9a7841ed1be"
+    },
+    {
+      "id": "p7.032",
+      "text": "AlphaEvolve improves code against executable evaluators and stores evaluated candidates in an evolutionary database, while its mathematical exploration report studies constructions and subsequent mathematical analysis~\\cite{alphaevolve,alphaevolvemath}.",
+      "owner": "p7",
+      "class": "literature",
+      "evidence_refs": [
+        "lit-alphaevolve",
+        "lit-alpha-math"
+      ],
+      "warrant": "Task specification and Evolution in v1, and the supplied v3 exploration report, support this capability comparison.",
+      "statement_sha256": "9d8a9d85e0507d41f3e834c820c20673a34d9fd52ab32e211757799c6446c814"
+    },
+    {
+      "id": "p7.033",
+      "text": "The present paper-writing loop does not demonstrate comparable autonomous optimisation, and grammatical quality alone is not a trustworthy executable evaluator of mathematical exposition.",
+      "owner": "p7",
+      "class": "method",
+      "evidence_refs": [
+        "round10-contract",
+        "private-writer"
+      ],
+      "warrant": "Explicit no-superiority boundary and proposed evaluation rationale.",
+      "statement_sha256": "dcbd0eaaf2a70fd81b4efc1c590c4d5acdd9b7170d179defed2d79936de21f72"
+    },
+    {
+      "id": "p7.034",
+      "text": "Learning to Discover Interesting Mathematics proposes proof-length-based interestingness and studies its relation to downstream utility in formal libraries~\\cite{interestingness}.",
+      "owner": "p7",
+      "class": "literature",
+      "evidence_refs": [
+        "lit-interestingness"
+      ],
+      "warrant": "The supplied primary defines a mathematical proxy; no transfer of its empirical scores is assumed.",
+      "statement_sha256": "9846e4f0121e85cd2ed64dff4280e89b7c2a1f3af22a1de691212e829ffff6b3"
+    },
+    {
+      "id": "p7.035",
+      "text": "Plectis treats such a score as a possible selection signal whose value for a short paper would still need a named consumer and a reader test.",
+      "owner": "p7",
+      "class": "proposed",
+      "evidence_refs": [
+        "round10-contract",
+        "lit-interestingness"
+      ],
+      "warrant": "Proposed use, not an implemented or validated interestingness model.",
+      "statement_sha256": "3122ea5d28b96dde56c2fe7fbe531e47f0fd09af94986e9139cdbd087419cafe"
+    },
+    {
+      "id": "p7.036",
+      "text": "Agent Hunt distributes autoformalisation through bounties, OpenProver maintains planner, worker and verifier state, and OProver incorporates retrieval and compiler feedback into formal proving~\\cite{agenthunt,openprover,oprover}.",
+      "owner": "p7",
+      "class": "literature",
+      "evidence_refs": [
+        "lit-agenthunt",
+        "lit-openh",
+        "lit-oprover"
+      ],
+      "warrant": "These are adjacent agentic proving capabilities reported by their primary descriptions.",
+      "statement_sha256": "90e528bc52f977d17da299d9d3f490640119d8ac8d35bc421177336a65b01a56"
+    },
+    {
+      "id": "p7.037",
+      "text": "CircuitProver explicitly studies reusable proof knowledge in hardware verification, so storing reusable lemmas is also an established direction~\\cite{circuitprover}.",
+      "owner": "p7",
+      "class": "literature",
+      "evidence_refs": [
+        "lit-circuit"
+      ],
+      "warrant": "The supplied primary reports its library ablation; this paper copies no benchmark advantage.",
+      "statement_sha256": "55f4a1e087f37869a684b74bb99f1b3da91cca7b87878aecf06764e284c0ee01"
+    },
+    {
+      "id": "p7.038",
+      "text": "The differentiating question here is how the resulting research record becomes trustworthy exposition, not whether this workflow proves more theorems than those systems.",
+      "owner": "p7",
+      "class": "method",
+      "evidence_refs": [
+        "round10-contract"
+      ],
+      "warrant": "States a distinct evaluation target without a superiority claim.",
+      "statement_sha256": "f15b456bee0824269bfaba7330d97c618bc68723d45d268c488f4db7ef1fe414"
+    },
+    {
+      "id": "p7.039",
+      "text": "RE-Bench illustrates the importance of explicit tasks, budgets and comparators in evaluating research agents; its official versioned abstract is used here because the attached extraction includes an earlier internal draft~\\cite{rebench}.",
+      "owner": "p7",
+      "class": "literature",
+      "evidence_refs": [
+        "lit-rebench"
+      ],
+      "warrant": "The access note records the mismatch instead of citing the internal draft as published v1.",
+      "statement_sha256": "907aed1915bfa9712e1e9cfc7849b1ab1d15ba1c4ec8af9003acb5f27b095923"
+    },
+    {
+      "id": "p7.040",
+      "text": "Halmos\\textquotesingle{} account of mathematical writing supports treating the organisation of an argument as substantive work rather than assuming a proof transcript is already a finished paper~\\cite{halmos}.",
+      "owner": "p7",
+      "class": "literature",
+      "evidence_refs": [
+        "lit-halmos"
+      ],
+      "warrant": "A writing principle, not a numerical reader outcome or a claim of endorsement.",
+      "statement_sha256": "30e23f0304e7e83770e1ada0927788337620a07c374581f19dc9b13796b96fc7"
+    },
+    {
+      "id": "p7.041",
+      "text": "This report is scoped to an attached source snapshot and accompanying records, with no assertion that the snapshot is the present public main branch.",
+      "owner": "p7",
+      "class": "method",
+      "evidence_refs": [
+        "round10-state"
+      ],
+      "warrant": "The packet pin is reliable; its competing prose descriptions of live main are not used.",
+      "statement_sha256": "78a606ab5ef1c3d5b8779342201e5c548a540d7ee44dd6259008f279d9d18376"
+    },
+    {
+      "id": "p7.042",
+      "text": "The ordinary arguments, historical checking receipts and source-index classifications are reported at their own evidence levels; this revision contains no fresh Lean or Comparator result.",
+      "owner": "p7",
+      "class": "method",
+      "evidence_refs": [
+        "coverage",
+        "round10-state"
+      ],
+      "warrant": "No proof executor was used in this work.",
+      "statement_sha256": "aecd6a3f535402c04f93a34d60c4c6faf58a644094517aee4a233b3a81a4e745"
+    },
+    {
+      "id": "p7.043",
+      "text": "The dossier generator, short-paper generator and prospective paired evaluation remain separately owned work until their implementations and returns are available.",
+      "owner": "p7",
+      "class": "method",
+      "evidence_refs": [
+        "round10-contract"
+      ],
+      "warrant": "Prevents treating requested parallel work as delivered capabilities.",
+      "statement_sha256": "929c24b44184efac9cd1af3540a519c5cfd91ded5975e73b40a2f9549a66a268"
+    },
+    {
+      "id": "p7.044",
+      "text": "Better scores within a familiar corpus would still leave transfer to unseen mathematical material and understanding by independent human readers unsettled.",
+      "owner": "p7",
+      "class": "method",
+      "evidence_refs": [
+        "reader-study",
+        "round10-contract"
+      ],
+      "warrant": "Future evaluation boundary and contamination caveat.",
+      "statement_sha256": "7bcc930dffaa49c445a6c7c76cc7e0ca51272fd31bd391a6dba3e5b3122855fc"
+    },
+    {
+      "id": "p7.045",
+      "text": "The useful completed object is a faithful paper together with the evidence needed to inspect it and the record needed to revise it.",
+      "owner": "p7",
+      "class": "method",
+      "evidence_refs": [
+        "paper-evidence",
+        "record",
+        "audit-code"
+      ],
+      "warrant": "Design conclusion, not a reported experimental effect.",
+      "statement_sha256": "269c8fb1934e86c68ea35b4f4f257e91a0a477351a4bcd0fcf53b5ad30dd2e8d"
+    },
+    {
+      "id": "p7.046",
+      "text": "For Plectis, the next test is whether evidence-preserving pre-digestion and editorial revision make the existing mathematics easier to understand and reuse.",
+      "owner": "p7",
+      "class": "proposed",
+      "evidence_refs": [
+        "round10-contract"
+      ],
+      "warrant": "Proposed immediate research question reflecting the operator decision.",
+      "statement_sha256": "431810eb9e14b2d58800438bf7504263e033733e13f88a49db1c6e2bf44d7f97"
+    },
+    {
+      "id": "p7.047",
+      "text": "Additional corpus volume and repeated packet production cannot answer that question by themselves.",
+      "owner": "p7",
+      "class": "method",
+      "evidence_refs": [
+        "counts",
+        "round10-contract"
+      ],
+      "warrant": "A counting universe is not an outcome measure.",
+      "statement_sha256": "f8064e5ef4215331eca5bb09dd15357cb85079a547b7aa6884bc4bb8f76fbfbd"
+    },
+    {
+      "id": "p7.048",
+      "text": "The human entry points are \\texttt{docs/ARCHITECTURE.md}, the problem-paper registry and the selected paper's evidence record.",
+      "owner": "p7",
+      "class": "implemented",
+      "evidence_refs": [
+        "index",
+        "paper-evidence"
+      ],
+      "warrant": "Named source owners offer bounded entry routes rather than a complete manual.",
+      "statement_sha256": "659e9a241e7100be9a92562e0d9e0e2a8ab487f4efd1791b0ca20fc44157f4bb"
+    },
+    {
+      "id": "p7.049",
+      "text": "The local command \\texttt{python3 scripts/build\\_systems\\_paper\\_counts.py} checks the displayed inventory against the current source owners, and its snapshot option records the source digests.",
+      "owner": "p7",
+      "class": "implemented",
+      "evidence_refs": [
+        "counts-code"
+      ],
+      "warrant": "Implemented counts CLI; this sentence does not claim full release validation.",
+      "statement_sha256": "9254c0b274eb61021f1c19900b75c6ca97081df7a5d7c9e9a3b2d764d94766eb"
+    },
+    {
+      "id": "p7.050",
+      "text": "The command \\texttt{python3 scripts/systems\\_paper\\_evidence.py} checks the explicit prose inventory and source bindings without executing any command listed as evidence.",
+      "owner": "p7",
+      "class": "implemented",
+      "evidence_refs": [
+        "audit-code"
+      ],
+      "warrant": "Implemented checker is read-only with respect to commands recorded in evidence.",
+      "statement_sha256": "85a602cc5f75e21643a952c1ec86516b8581ee7b65bf253455a3e9c2ef27bb9c"
+    },
+    {
+      "id": "p7.051",
+      "text": "The section contract assigns pre-digestion, claim evidence, short writing, long assembly, loop and evaluation to their respective component owners, while the whole-paper editor controls the thesis and cross-section consistency.",
+      "owner": "p7",
+      "class": "method",
+      "evidence_refs": [
+        "round10-contract"
+      ],
+      "warrant": "Section ownership is prospective parallel composition.",
+      "statement_sha256": "9fbc692bdae3177487701d6345c235102a0303b11eef99867b66dc107d10c173"
+    },
+    {
+      "id": "p7.052",
+      "text": "The navigation companion should retain clone-to-receipt instructions, the strategy companion should retain participation and resource choices, and the compact evidence-boundary companion should direct readers to a single claim's support.",
+      "owner": "p7",
+      "class": "proposed",
+      "evidence_refs": [
+        "corpus",
+        "round10-contract"
+      ],
+      "warrant": "Editorial companion split is a proposal, not a completed rewrite of those manuscripts.",
+      "statement_sha256": "3618ac54ba39979a2cf431926284d4f15fa1c77bf6ba17825773e51fc284a539"
+    },
+    {
+      "id": "p7.053",
+      "text": "For the external reader, the \\papersectionlink{cold-clone-to-proof-receipt.pdf}{cold-clone-problem}{navigation companion} gives an executable entry route and the \\papersectionlink{open-source-mathematics-strategy.pdf}{strategy-protocol}{strategy companion} describes participation choices.",
+      "owner": "p7",
+      "class": "method",
+      "evidence_refs": [
+        "corpus"
+      ],
+      "warrant": "Existing companion roles and stable named destinations; no claim of completed external evaluation.",
+      "statement_sha256": "b57b1cb8a16cf8e9d2b333e3eec923fcf2828c15d49534cd505379e9677b38c6"
+    }
+  ]
+}

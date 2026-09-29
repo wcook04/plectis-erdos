@@ -969,6 +969,719 @@ def write_outputs(result: Mapping[str, Any], out: Path, replace: bool = False) -
     (out / RECEIPT_NAME).write_bytes(canonical_bytes(result["receipt"]))
 
 
+# ---------------------------------------------------------------------------
+# Pre-digestion. This is a second output mode of the native packet compiler.
+# Source owners remain claims, coverage, evidence, atlas, relations and journal.
+
+DOSSIER_SCHEMA = "dossier/1"
+DOSSIER_AUDIT_PROFILE = "dossier-audit/1"
+DOSSIER_PROBLEMS = (68, 243, 249, 251, 257, 269, 1041, 1049)
+DOSSIER_PATHS = {
+    "claims": "docs/claims.json",
+    "coverage": "docs/paper_lean_coverage.json",
+    "atlas": "docs/declaration_atlas.json",
+    "dependencies": "docs/lean_dependency_index.json",
+    "evidence": "evidence/paper_evidence.json",
+    "relations": "docs/research-commons/record/relations.json",
+    "contrasts": "docs/research-commons/record/contrasts.json",
+    "journal": "docs/research-commons/record/journal.jsonl",
+    "routes": "docs/research-commons/route-memory/route_memory.json",
+}
+DOSSIER_BOUNDARY = (
+    "A dossier inventories registered assertions and source-bound writing material. "
+    "It does not prove their mathematics, completeness over all possible results, novelty, "
+    "or reader benefit. 'lean' means every registered supporting declaration resolves in "
+    "both the pinned source and its dependency export; the Lean build is NOT rerun here. "
+    "'cited' with documentary_only=true means the source asserts the statement, not that "
+    "this compiler has verified a proof. Recorded reviews and Comparator receipts retain "
+    "their original scope. Null writing fields are named gaps, never invented explanations."
+)
+
+
+def dossier_bytes(value: Any) -> bytes:
+    return (json.dumps(value, indent=2, ensure_ascii=False, sort_keys=True) + "\n").encode("utf-8")
+
+
+def json_pointer(value: Any, pointer: str) -> Any:
+    """Resolve an RFC 6901 pointer, with no fuzzy or basename matching."""
+    if pointer == "":
+        return value
+    if not isinstance(pointer, str) or not pointer.startswith("/"):
+        raise SpecError("JSON pointer must be empty or start with /")
+    for part in pointer[1:].split("/"):
+        part = part.replace("~1", "/").replace("~0", "~")
+        if isinstance(value, list):
+            if not re.fullmatch(r"0|[1-9][0-9]*", part):
+                raise SpecError(f"invalid array pointer component: {part}")
+            value = value[int(part)]
+        else:
+            value = value[part]
+    return value
+
+
+class DossierTree(ledger.SourceTree):
+    """Strict immutable reads; disable the native index's worktree fallback."""
+
+    def __init__(self, root: Path | str, ref: str = "HEAD") -> None:
+        if not ref:
+            raise SpecError("a dossier requires an immutable source commit")
+        super().__init__(root, ref=ref, allow_uncommitted=False)
+
+    def find_or_uncommitted(self, path: str) -> ledger.Blob | None:
+        return self.find(path)
+
+
+def verify_dossier_locators(value: Any, tree: DossierTree) -> int:
+    """Re-resolve every structured source locator; cache parsing, never trust it."""
+    documents: dict[str, Any] = {}
+    file_digests: dict[str, str] = {}
+    verified: set[tuple] = set()
+    def visit(part: Any) -> int:
+        count = 0
+        if isinstance(part, dict):
+            if part.get("kind") == "source_locator":
+                blob = tree.read(part["path"])
+                if part["path"] not in file_digests:
+                    file_digests[part["path"]] = blob.sha256
+                if part["commit"] != tree.commit or part["sha256"] != file_digests[part["path"]]:
+                    raise SpecError("stale source locator: " + part["path"])
+                key = (part["path"], part.get("json_pointer"), part.get("start_line"),
+                       part.get("end_line"), part.get("selection"), part["selection_sha256"])
+                if key not in verified:
+                    if part.get("selection") == "file":
+                        digest = file_digests[part["path"]]
+                    elif "json_pointer" in part:
+                        if part["path"] not in documents:
+                            documents[part["path"]] = json.loads(blob.data)
+                        selected = json_pointer(documents[part["path"]], part["json_pointer"])
+                        digest = ledger.sha256_hex(dossier_bytes(selected))
+                    else:
+                        text = ledger.span_text(blob, part["start_line"], part["end_line"])
+                        digest = ledger.sha256_hex(text.encode("utf-8"))
+                    if digest != part["selection_sha256"]:
+                        raise SpecError("source selection changed: " + part["path"])
+                    verified.add(key)
+                count += 1
+            for child in part.values():
+                count += visit(child)
+        elif isinstance(part, list):
+            for child in part:
+                count += visit(child)
+        return count
+    return visit(value)
+
+
+class DossierCompiler:
+    """Join existing source owners without changing their claims or decisions.
+
+    The inventory counts source records, not distinct mathematical discoveries.
+    Dependency edges are read only at the resolved Git cut. They are never used
+    to rank 'importance', and authored argument edges remain separately typed.
+    """
+
+    def __init__(self, root: Path | str, ref: str = "HEAD", annotations: dict | None = None):
+        import hashlib
+        import build_declaration_atlas as atlas_owner
+        import check_lean_paper_propagation as coverage_owner
+        import research_record as record_owner
+
+        self.tree = DossierTree(root, ref)
+        self.docs: dict[str, Any] = {}
+        for key, path in DOSSIER_PATHS.items():
+            blob = self.tree.read(path)  # Missing owners are a refusal, not an empty corpus.
+            if key != "journal":
+                self.docs[key] = json.loads(blob.data)
+        events = record_owner.read_events_bytes(self.tree.read(DOSSIER_PATHS["journal"]).data)
+        replay = record_owner.Replay()
+        for event in events:
+            replay.apply(event)
+        if replay.errors:
+            raise SpecError("pinned research journal: " + "; ".join(replay.errors))
+        self.events, self.replay = events, replay
+        self.json_cache = {DOSSIER_PATHS[k]: v for k, v in self.docs.items()}
+        self.locator_cache: dict[tuple, dict] = {}
+        self.digest_cache: dict[str, str] = {}
+        self.index = ledger.DeclarationIndex(self.tree)
+        self.coverage = self.docs["coverage"]
+        self.claims = self.docs["claims"]["claims"]
+        self.opens = self.docs["claims"].get("remaining_open_propositions", [])
+        self.argument_edges = self.docs["claims"].get("machine_readable_paper", {}).get(
+            "argument_graph", {}).get("edges", [])
+        self.currency, self.paper_texts = coverage_owner.locate_rows(
+            self.coverage, lambda path: self.tree.read(path).data.decode("utf-8"))
+        self.rows = self.coverage["rows"]
+        if len({r["id"] for r in self.rows}) != len(self.rows):
+            raise SpecError("duplicate paper-coverage ids")
+        if len({r["id"] for r in self.claims}) != len(self.claims):
+            raise SpecError("duplicate claim ids")
+        self.coverage_pos = {r["id"]: i for i, r in enumerate(self.rows)}
+        self.claim_pos = {r["id"]: i for i, r in enumerate(self.claims)}
+        self.evidence_rows: dict[str, tuple[dict, str]] = {}
+        for pi, paper in enumerate(self.docs["evidence"]["papers"]):
+            for ri, row in enumerate(paper["results"]):
+                if row["id"] in self.evidence_rows:
+                    raise SpecError("duplicate evidence row: " + row["id"])
+                self.evidence_rows[row["id"]] = (row, f"/papers/{pi}/results/{ri}")
+        self.dep_nodes = self.docs["dependencies"]["nodes"]
+        self.by_handle = {n["handle"]: n for n in self.dep_nodes}
+        if len(self.by_handle) != len(self.dep_nodes):
+            raise SpecError("duplicate dependency handles")
+        self.dep_pos = {n["handle"]: i for i, n in enumerate(self.dep_nodes)}
+        self.by_short: dict[tuple[str, str], list[dict]] = {}
+        self.by_node = {n["node_id"]: n for n in self.dep_nodes}
+        self.reverse_deps: dict[int, list[tuple[int, int]]] = {}
+        for node in self.dep_nodes:
+            self.by_short.setdefault((node["module"], node["handle"].split(".")[-1]), []).append(node)
+        for edge in self.docs["dependencies"]["edges"]:
+            source, target, relation = edge
+            if source not in self.by_node or target not in self.by_node:
+                raise SpecError("dependency edge has an absent endpoint")
+            self.reverse_deps.setdefault(target, []).append((source, relation))
+        self.atlas_at = {(r["module"], r["line"]): r for r in self.docs["atlas"]["declarations"]}
+        # Use the atlas owner's exact byte framing; read the source paths at the cut.
+        inventory = self.tree._git("ls-tree", "-r", "--name-only", self.tree.commit, "--", "lean")
+        if inventory.returncode:
+            raise SpecError("cannot inventory the pinned Lean tree")
+        tracked = inventory.stdout.decode("utf-8").splitlines()
+        paths = []
+        # Match the native inventory: each root file, then Path-sorted descendants.
+        for library in ("Erdos249257", "ErdosProblems"):
+            root_path = f"lean/{library}.lean"
+            if root_path in tracked:
+                paths.append(root_path)
+            paths.extend(sorted((p for p in tracked if p.startswith(f"lean/{library}/") and p.endswith(".lean")),
+                                key=PurePosixPath))
+        self.atlas_inventory_matches = set(paths) == {r["path"] for r in self.docs["atlas"]["modules"]}
+        digest = hashlib.sha256()
+        for path in paths:
+            atlas_owner._update_source_digest(digest, path, self.tree.read(path).data.decode("utf-8"))
+        self.measured_fingerprint = "sha256:" + digest.hexdigest()
+        self.fingerprint_matches = self.atlas_inventory_matches and (
+            self.measured_fingerprint == self.docs["atlas"].get("source_fingerprint")
+            == self.docs["dependencies"].get("source_fingerprint"))
+        self.declaration_cache: dict[tuple[str, str | None], dict] = {}
+        self.lean_files: dict[str, Any] = {}
+        self.claim_problems = self._claim_problem_map()
+        self.annotations = annotations
+        self.annotation_rows: dict[str, dict] = {}
+        if annotations is not None:
+            if annotations.get("schema") != "dossier-annotations/1":
+                raise SpecError("unsupported dossier annotation schema")
+            if annotations.get("source_commit") != self.tree.commit:
+                raise SpecError("annotation source commit differs from dossier cut")
+            for row in annotations.get("rows", []):
+                rid = row["id"]
+                if rid not in self.coverage_pos and not (
+                    rid.startswith("registry:") and rid[9:] in self.claim_pos):
+                    raise SpecError("annotation names unknown result: " + rid)
+                if rid in self.annotation_rows:
+                    raise SpecError("duplicate annotation: " + rid)
+                if row.get("review_state") not in ("candidate_editorial_synthesis", "reviewed_editorial"):
+                    raise SpecError("annotation needs an explicit editorial review state")
+                unknown = set(row) - {"id", "review_state", "generality", "mechanism_sentence",
+                                      "hard_step", "attribution", "open_questions"}
+                if unknown:
+                    raise SpecError("unknown annotation fields: " + str(sorted(unknown)))
+                for field, entry in row.items():
+                    if field in ("id", "review_state"):
+                        continue
+                    if not isinstance(entry, dict) or not isinstance(entry.get("text"), str) \
+                            or not entry["text"].strip() or not entry.get("sources"):
+                        raise SpecError(f"{rid}.{field}: text and nonempty sources required")
+                    for source in entry["sources"]:
+                        self.annotation_source(source)  # Validate every field, even unused ones.
+                self.annotation_rows[rid] = row
+
+    def locator(self, path: str, start: int | None = None, end: int | None = None,
+                pointer: str | None = None) -> dict:
+        key = (path, start, end, pointer)
+        if key in self.locator_cache:
+            return self.locator_cache[key]
+        blob = self.tree.read(path)
+        if path not in self.digest_cache:
+            self.digest_cache[path] = blob.sha256
+        file_digest = self.digest_cache[path]
+        result = {"kind": "source_locator", "commit": self.tree.commit,
+                  "path": path, "sha256": file_digest}
+        if pointer is not None:
+            if path not in self.json_cache:
+                self.json_cache[path] = json.loads(blob.data)
+            selected = json_pointer(self.json_cache[path], pointer)
+            result.update(json_pointer=pointer, selection_sha256=ledger.sha256_hex(dossier_bytes(selected)))
+        elif start is None and end is None:
+            result.update(selection="file", selection_sha256=file_digest)
+        else:
+            start = 1 if start is None else start
+            end = len(blob.lines()) if end is None else end
+            text = ledger.span_text(blob, start, end)
+            result.update(start_line=start, end_line=end,
+                          selection_sha256=ledger.sha256_hex(text.encode("utf-8")))
+        self.locator_cache[key] = result
+        return result
+
+    def annotation_source(self, source: dict) -> dict:
+        if not isinstance(source, dict) or set(source) - {"path", "start_line", "end_line", "must_contain"}:
+            raise SpecError("invalid annotation source")
+        spec = {"id": "annotation", "kind": "source_span", **source}
+        if not spec.get("must_contain"):
+            raise SpecError("annotation source needs a required literal")
+        resource = resolve_resource(spec, self.tree, self.index)
+        return self.locator(resource.path, resource.start_line, resource.end_line)
+
+    @staticmethod
+    def module_path(path: str | None) -> str | None:
+        if path is None:
+            return None
+        if path.startswith(("lean/", "verification/", "research/")):
+            return path
+        if path.endswith(".lean"):
+            return "lean/" + path
+        return "lean/" + path.replace(".", "/") + ".lean"
+
+    def declaration(self, name: str, path: str | None) -> dict:
+        import paper_evidence as evidence_owner
+
+        path = self.module_path(path)
+        key = name, path
+        if key in self.declaration_cache:
+            return self.declaration_cache[key]
+        node = self.by_handle.get(name)
+        # Unqualified native claim names require a unique module-local match.
+        if node is None and path:
+            choices = [candidate for candidate in self.by_short.get((path, name.split(".")[-1]), [])
+                       if candidate["handle"].endswith("." + name)]
+            if len(choices) == 1:
+                node = choices[0]
+        result = {"requested_name": name, "requested_module": path, "locators": [],
+                  "source_present": False, "dependency_index_present": False,
+                  "eligible_lean": False, "gaps": [], "kernel_replay": "UNRUN"}
+        if node and path and node["module"] != path:
+            result["gaps"].append("dependency_module_mismatch")
+            node = None
+        if path is None and node:
+            path = node["module"]
+        if node:
+            result.update(handle=node["handle"], dependency_index_present=True)
+            result["locators"].append(self.locator(DOSSIER_PATHS["dependencies"],
+                                                 pointer=f"/nodes/{self.dep_pos[node['handle']]}"))
+        else:
+            result["gaps"].append("not_in_compact_dependency_export")
+        if path is not None:
+            blob = self.tree.find(path)
+            if blob is None:
+                result["gaps"].append("source_file_missing_at_cut")
+            else:
+                if path not in self.lean_files:
+                    self.lean_files[path] = evidence_owner.LeanFile(blob.data.decode("utf-8"))
+                try:
+                    resolved_name = node["handle"] if node else name
+                    source_index = self.lean_files[path].index
+                    if resolved_name not in source_index:
+                        choices = [key for key in source_index if key.endswith("." + resolved_name)]
+                        if len(choices) == 1:
+                            resolved_name = choices[0]
+                    # Resolve a unique suffix in this module only; never strip a fake prefix.
+                    decl = evidence_owner.lean_declaration(
+                        self.lean_files[path], path, resolved_name, allow_suffix=False)
+                    result["resolved_source_name"] = resolved_name
+                    result.update(source_present=True, source_statement=decl.statement,
+                                  source_docstring=decl.docstring, line=decl.line, module=path,
+                                  source_statement_sha256=ledger.sha256_hex(decl.normalised.encode("utf-8")))
+                    end = min(len(blob.lines()), decl.line + max(1, len(decl.statement.splitlines())) - 1)
+                    result["locators"].append(self.locator(path, decl.line, end))
+                    if node and node["line"] != decl.line:
+                        result["gaps"].append("dependency_coordinate_drift")
+                    result["eligible_lean"] = bool(node and node["line"] == decl.line and self.fingerprint_matches)
+                except (evidence_owner.EvidenceError, ValueError) as exc:
+                    result["gaps"].append("source_declaration_unresolved: " + str(exc))
+        else:
+            result["gaps"].append("no_source_module")
+        if not self.fingerprint_matches:
+            result["gaps"].append("source_atlas_dependency_fingerprint_mismatch")
+        self.declaration_cache[key] = result
+        return result
+
+    def _claim_problem_map(self) -> dict[str, list[int]]:
+        labels: dict[str, set[int]] = {}
+        for row in self.rows:
+            labels.setdefault(row.get("label", ""), set()).add(row["problem"])
+        declared_in_papers: dict[tuple[str, str], set[int]] = {}
+        for row in self.rows:
+            for declaration in row.get("lean", {}).get("declarations", []):
+                key = (self.module_path(declaration.get("file")), declaration["name"].split(".")[-1])
+                declared_in_papers.setdefault(key, set()).add(row["problem"])
+        direct = {}
+        for claim in self.claims:
+            found = set(labels.get(claim.get("paper_label"), ()))
+            for declaration in claim["declarations"]:
+                key = (self.module_path(declaration.get("module")), declaration["name"].split(".")[-1])
+                found.update(declared_in_papers.get(key, ()))
+            texts = [claim["id"], claim["label"], claim["statement"], *claim.get("remaining_open_proposition_ids", [])]
+            texts.extend(d.get("module", "") for d in claim["declarations"])
+            for text in texts:
+                for match in re.finditer(r"(?:erdos[_:/-]?|Erdos|#|erdosproblems\.com/|Erdős\s*#?)(1049|1041|269|257|251|249|243|68)(?!\d)", text, re.I):
+                    found.add(int(match.group(1)))
+            direct[claim["id"]] = found
+        # Only one-hop explicit authored edges, not arbitrary graph transitive closure.
+        seeds = {key: set(value) for key, value in direct.items()}
+        for claim in self.claims:
+            if not direct[claim["id"]]:
+                found = set()
+                for edge in self.argument_edges:
+                    if edge.get("from") == claim["id"]:
+                        found.update(seeds.get(edge.get("to"), ()))
+                if found:
+                    direct[claim["id"]] = found
+        return {key: sorted(value) for key, value in direct.items()}
+
+    def comparator(self, evidence: dict) -> list[dict]:
+        """Check receipt identity fields. No transport or kernel replay is claimed."""
+        answer = []
+        comparator = evidence.get("comparator", {})
+        for item in comparator.get("checks", []):
+            path = item.get("receipt")
+            row = {"entry": item.get("entry"), "declaration": item.get("declaration"),
+                   "reported_status": comparator.get("status"), "locators": [],
+                   "validation": "unresolved", "kernel_replay": "UNRUN",
+                   "external_corpus_bytes_verified": False}
+            if not path or self.tree.find(path) is None:
+                row["gap"] = "receipt_missing_at_cut"
+            else:
+                value = json.loads(self.tree.read(path).data)
+                row["locators"].append(self.locator(path, pointer=""))
+                checks = {
+                    "schema": value.get("schema") == "palomar_replay_receipt_v1",
+                    "entry": value.get("entry") == item.get("entry"),
+                    "commit": value.get("github", {}).get("sha") == comparator.get("commit"),
+                    "run_id": str(value.get("github", {}).get("run_id")) == str(comparator.get("run_id")),
+                    "challenge_theorem": item.get("challenge", {}).get("declaration") in value.get("theorem_names", []),
+                    "recorded_outcome": value.get("verification", {}).get("outcome") == "passed",
+                    "recorded_exit": value.get("exit") == 0 and value.get("process_exit") == 0,
+                }
+                row["identity_checks"] = checks
+                row["validation"] = "receipt_fields_match" if all(checks.values()) else "receipt_fields_mismatch"
+                row["scope"] = "historical recorded check; not a new verification of source-to-challenge correspondence"
+            answer.append(row)
+        return answer
+
+    def _annotations(self, row: dict) -> None:
+        for field in ("generality", "mechanism_sentence", "hard_step", "attribution"):
+            row[field] = None
+        annotation = self.annotation_rows.get(row["id"])
+        if annotation:
+            bindings = {}
+            for field in ("generality", "mechanism_sentence", "hard_step", "attribution", "open_questions"):
+                if field not in annotation:
+                    continue
+                value = annotation[field]
+                bindings[field] = [self.annotation_source(x) for x in value["sources"]]
+                if field == "open_questions":
+                    row[field].append({"statement": value["text"], "basis": "editorial_annotation"})
+                else:
+                    row[field] = value["text"]
+            row["annotation"] = {"review_state": annotation["review_state"], "field_sources": bindings,
+                                 "boundary": "source-bound editorial synthesis; not generated or verified mathematics"}
+        for field in ("generality", "mechanism_sentence", "hard_step", "attribution"):
+            if row[field] is None:
+                row["gaps"].append({"code": "writing_field_unannotated", "field": field})
+
+    def _paper_row(self, item: dict) -> dict:
+        rid = item["id"]
+        locs = [self.locator(DOSSIER_PATHS["coverage"], pointer=f"/rows/{self.coverage_pos[rid]}")]
+        resolved = self.currency.located.get(rid)
+        row = {"id": rid, "kind": "paper_assertion", "problem": item["problem"],
+               "statement": None, "statement_format": "source_tex", "gaps": [],
+               "open_questions": [], "consumers": [], "source_status": item["lean"]["status"],
+               "source_statement_sha256": item["statement_sha256"]}
+        if resolved is None:
+            row["gaps"].append({"code": "current_paper_statement_not_resolved_by_digest"})
+        else:
+            source = self.locator(resolved.path, resolved.line, resolved.end_line)
+            locs.append(source)
+            row["statement"] = ledger.span_text(self.tree.read(resolved.path), resolved.line, resolved.end_line)
+            row["consumers"].append({"kind": item["side"] + "_paper", "paper_id": item["paper_id"],
+                                     "locator": source})
+            # Bounded adjacent text is evidence for a writer to inspect, not an inferred mechanism.
+            lines = self.tree.read(resolved.path).lines()
+            end = min(len(lines), resolved.end_line + 24)
+            row["adjacent_context"] = {"text": ledger.span_text(self.tree.read(resolved.path), resolved.line, end),
+                                       "locator": self.locator(resolved.path, resolved.line, end),
+                                       "interpretation": "exact adjacent excerpt; may belong to another result"}
+        evid, pointer = self.evidence_rows.get(rid, ({}, None))
+        if pointer is not None:
+            locs.append(self.locator(DOSSIER_PATHS["evidence"], pointer=pointer))
+        evidence_current = bool(evid and evid.get("statement_sha256") == item.get("statement_sha256")
+                                and resolved is not None)
+        if evid and not evidence_current:
+            row["gaps"].append({"code": "evidence_projection_statement_mismatch"})
+        row["formal_sources"] = [self.declaration(x["name"], x.get("file"))
+                                  for x in item.get("lean", {}).get("declarations", [])]
+        all_lean = bool(row["formal_sources"]) and all(x["eligible_lean"] for x in row["formal_sources"])
+        # A modulo-input result is never silently promoted to a proved endpoint.
+        all_lean = all_lean and item["lean"]["status"] in ("exact", "exact_or_stronger", "modulo_named_input")
+        all_lean = all_lean and resolved is not None and evidence_current
+        expected = {d["name"]: d for d in evid.get("lean", {}).get("declarations", [])}
+        for formal in row["formal_sources"]:
+            old = expected.get(formal["requested_name"])
+            if not old or old.get("statement_sha256") != formal.get("source_statement_sha256"):
+                row["gaps"].append({"code": "recorded_formal_statement_identity_unconfirmed",
+                                    "name": formal["requested_name"]})
+                all_lean = False
+        for formal in row["formal_sources"]:
+            locs.extend(formal["locators"])
+            if formal["gaps"]:
+                row["gaps"].append({"code": "formal_support_gap", "name": formal["requested_name"],
+                                    "details": formal["gaps"]})
+        row["evidence"] = {
+            "class": "lean" if all_lean else "cited", "documentary_only": not all_lean,
+            "locators": locs, "kernel_replay": "UNRUN",
+            "support_relation": item["lean"]["status"],
+            "named_inputs": item["lean"].get("named_inputs"),
+            "registered_lean_metadata": item["lean"],
+            "recorded_ordinary_proof_note": evid.get("lean", {}).get("reason") if evidence_current else None,
+            "recorded_comparator_checks": self.comparator(evid) if evidence_current else [],
+            "scope": "recorded evidence class with source binding, not a new proof or semantic review",
+        }
+        if item["lean"]["status"] == "modulo_named_input":
+            row["gaps"].append({"code": "named_input_remains", "detail": item["lean"]})
+        row["related_claim_ids"] = [c["id"] for c in self.claims
+                                    if c.get("paper_label") == item.get("label")
+                                    and item["problem"] in self.claim_problems[c["id"]]]
+        for claim_id in row["related_claim_ids"]:
+            claim = self.claims[self.claim_pos[claim_id]]
+            row["open_questions"].extend({"id": x} for x in claim.get("remaining_open_proposition_ids", []))
+        self._annotations(row)
+        return row
+
+    def _claim_row(self, claim: dict, problem: int) -> dict:
+        row = {"id": "registry:" + claim["id"], "kind": "registry_assertion", "problem": problem,
+               "statement": claim["statement"], "statement_format": "registered_prose",
+               "source_status": claim["status"], "gaps": [],
+               "open_questions": [{"id": x} for x in claim.get("remaining_open_proposition_ids", [])],
+               "consumers": [], "formal_sources": [self.declaration(x["name"], x.get("module"))
+                                                    for x in claim["declarations"]]}
+        # Registry prose often combines proved facts, limitations and open targets.
+        # Declaration existence never establishes that the entire prose is proved.
+        row["evidence"] = {"class": "cited", "documentary_only": True,
+                           "locators": [self.locator(DOSSIER_PATHS["claims"], pointer=f"/claims/{self.claim_pos[claim['id']]}")],
+                           "scope": "verbatim status-owner assertion; formal links do not verify the whole prose"}
+        for i, edge in enumerate(self.argument_edges):
+            if edge.get("to") == claim["id"] or edge.get("from") == claim["id"]:
+                row["consumers"].append({"kind": "authored_argument_edge", "edge": edge,
+                                         "locator": self.locator(DOSSIER_PATHS["claims"],
+                                             pointer=f"/machine_readable_paper/argument_graph/edges/{i}")})
+        self._annotations(row)
+        return row
+
+    def build(self, problem: int) -> dict:
+        if problem not in DOSSIER_PROBLEMS:
+            raise SpecError("unsupported dossier problem: " + str(problem))
+        selected_claims = [c for c in self.claims if problem in self.claim_problems[c["id"]]]
+        results = [self._paper_row(row) for row in self.rows if row["problem"] == problem]
+        results.extend(self._claim_row(claim, problem) for claim in selected_claims)
+        results.sort(key=lambda x: x["id"])
+        own_ids = {c["id"] for c in selected_claims}
+        handles = {s["handle"] for r in results for s in r["formal_sources"] if s.get("handle")}
+        relationships = []
+        for i, rel in enumerate(self.docs["relations"].get("rows", [])):
+            if rel.get("problem") == problem:
+                relationships.append({"record": rel,
+                    "locator": self.locator(DOSSIER_PATHS["relations"], pointer=f"/rows/{i}"),
+                    "certificate": self.declaration(rel["certificate"]["declaration"], rel["certificate"]["module"]),
+                    "interpretation": "registered contextual relation; equivalence supplies neither endpoint"})
+        contrasts = []
+        text = "\n".join((r["statement"] or "") for r in results)
+        fired = {x["id"]: x for x in ledger.triggered(self.docs["contrasts"]["rows"],
+                                                    problem, text, sorted(handles))}
+        for i, contrast in enumerate(self.docs["contrasts"]["rows"]):
+            if contrast["id"] in fired:
+                contrasts.append({"record": contrast, "matches": fired[contrast["id"]]["matched_on"],
+                    "locator": self.locator(DOSSIER_PATHS["contrasts"], pointer=f"/rows/{i}"),
+                    "boundary": "keep wrong and corrected readings with their stated scope; not a no-go theorem",
+                    "nested_record_pointers": "reported native metadata; only structured source_locator objects are re-resolved here"})
+        routes = []
+        for i, route in enumerate(self.docs["routes"].get("records", [])):
+            if route.get("problem") == problem:
+                routes.append({"record": route,
+                               "locator": self.locator(DOSSIER_PATHS["routes"], pointer=f"/records/{i}")})
+        failed = [route for route in routes if route["record"].get("status") in ("failed", "refuted", "blocked", "refuted_local")]
+        formal_consumers = []
+        for handle in sorted(handles):
+            node = self.by_handle[handle]
+            for source_id, relation in sorted(self.reverse_deps.get(node["node_id"], [])):
+                source = self.by_node[source_id]
+                formal_consumers.append({"supplier": handle, "consumer": source["handle"],
+                    "relation_bits": relation, "boundary": "recorded direct reference at the source cut; not importance or novelty",
+                    "locator": self.locator(DOSSIER_PATHS["dependencies"], pointer=f"/nodes/{self.dep_pos[source['handle']]}"),
+                    "edge": [source_id, node["node_id"], relation]})
+        events = []
+        for event in self.events:
+            detail = event["detail"]
+            matched = detail.get("problem") == problem or any(
+                c in json.dumps(detail, ensure_ascii=False) for c in own_ids if len(c) > 8)
+            if matched:
+                line = event["sequence"] + 1
+                events.append({"event": event, "locator": self.locator(DOSSIER_PATHS["journal"], line, line),
+                               "boundary": "journal decision, not proof authority"})
+        inventory = []
+        for ai, a in enumerate(self.docs["atlas"]["declarations"]):
+            if a.get("kind") not in ("theorem", "lemma"):
+                continue
+            explicit = bool(re.search(r"/Erdos" + str(problem) + r"(?:/|\.)", a["module"]))
+            claimed = bool(own_ids.intersection(a.get("claim_ids", [])))
+            if explicit or claimed:
+                inventory.append({"id": a["id"], "name": a["name"], "module": a["module"],
+                                  "line": a["line"], "generated_certificate": a.get("generated_certificate", False),
+                                  "route_basis": "problem_module" if explicit else "atlas_claim_link",
+                                  "atlas_pointer": f"/declarations/{ai}",
+                                  "boundary": "navigation candidate; not individually admitted as a paper result"})
+        opens = []
+        for i, item in enumerate(self.opens):
+            if item.get("open_target_claim") in own_ids or re.search(r"erdos_" + str(problem) + r"(?:_|$)", item["id"]):
+                opens.append({"record": item,
+                              "locator": self.locator(DOSSIER_PATHS["claims"], pointer=f"/remaining_open_propositions/{i}")})
+        import collections
+        gap_counts = collections.Counter(g["code"] for r in results for g in r["gaps"])
+        dossier = {
+            "schema": DOSSIER_SCHEMA, "audit_profile": DOSSIER_AUDIT_PROFILE,
+            "problem": problem, "source_commit": self.tree.commit,
+            "status": "dossier_with_named_gaps", "evidence_boundary": DOSSIER_BOUNDARY,
+            "results": results,
+            "landscape": {"routes": routes, "failed_routes_with_scope": failed,
+                          "generalisations": [r for r in relationships if r["record"].get("relation") in ("strictly_stronger", "generalises")],
+                          "relations": relationships, "contrast_guards": contrasts,
+                          "open_questions": opens, "journal_events": events,
+                          "formal_consumers": formal_consumers,
+                          "dependency_relation_legend": self.docs["dependencies"].get("edge_relation_bit_legend", {}),
+                          "failed_route_scope": "registered failed/refuted/blocked route records only; contrast corrections remain separate"},
+            "declaration_inventory": inventory,
+            "sources": [self.locator(path) for key, path in DOSSIER_PATHS.items() if key != "journal"],
+            "coverage": {
+                "paper_rows": sum(r["kind"] == "paper_assertion" for r in results),
+                "registry_rows": len(selected_claims), "source_rows_not_distinct_theorems": len(results),
+                "annotated_rows": sum("annotation" in r for r in results),
+                "lean_index_eligible_paper_rows": sum(r["kind"] == "paper_assertion" and r["evidence"]["class"] == "lean" for r in results),
+                "declaration_candidates": len(inventory), "gap_counts": dict(sorted(gap_counts.items())),
+                "scope": "all registered paper rows and explicitly routed claims; declaration candidates remain uncurated",
+                "unassigned_registry_claim_ids": sorted(c for c, ps in self.claim_problems.items() if not ps),
+                "paper_inventory_scope": "whole registered sixteen-paper portfolio; these diagnostics are global",
+                "paper_inventory_missing": self.currency.missing,
+                "paper_inventory_unrowed": self.currency.unrowed,
+                "paper_inventory_coordinate_drift": self.currency.drift,
+                "completeness_over_all_possible_results": False,
+                "global_shared_declaration_assignment": "unassigned shared declarations retained in global_inventory.json",
+            },
+            "annotation_input_sha256": ledger.sha256_hex(dossier_bytes(self.annotations)) if self.annotations is not None else None,
+            "annotation_boundary": "optional candidate editorial input, produced after the corpus cut; not historical corpus evidence",
+            "validation": {"source_atlas_dependency_fingerprints_match": self.fingerprint_matches,
+                           "atlas_source_inventory_matches": self.atlas_inventory_matches,
+                           "measured_source_fingerprint": self.measured_fingerprint,
+                           "recorded_atlas_fingerprint": self.docs["atlas"].get("source_fingerprint"),
+                           "recorded_dependency_fingerprint": self.docs["dependencies"].get("source_fingerprint"),
+                           "journal_chain_valid": True, "kernel_build": "UNRUN",
+                           "comparator_replay": "UNRUN", "reader_measurement": "UNRUN"},
+        }
+        dossier["validation"]["verified_locator_occurrences"] = verify_dossier_locators(dossier, self.tree)
+        return dossier
+
+    def global_inventory(self) -> dict:
+        """Account for shared declarations without assigning mathematical scope by guess."""
+        shared = [dict(id=a["id"], name=a["name"], module=a["module"], line=a["line"],
+                       claim_ids=a.get("claim_ids", []), generated_certificate=a.get("generated_certificate", False))
+                  for a in self.docs["atlas"]["declarations"]
+                  if a.get("kind") in ("theorem", "lemma") and not any(
+                      re.search(r"/Erdos" + str(p) + r"(?:/|\.)", a["module"]) for p in DOSSIER_PROBLEMS)]
+        return {"schema": "dossier-global-inventory/1", "source_commit": self.tree.commit,
+                "shared_theorem_candidates": shared,
+                "unassigned_registry_claims": [c for c in self.claims if not self.claim_problems[c["id"]]],
+                "boundary": "shared source candidates remain visible; no exhaustive semantic assignment is claimed"}
+
+
+def render_dossier(dossier: dict) -> str:
+    """A bounded writer's entry point; full assertions and gaps remain in JSON."""
+    lines = [f"# Problem {dossier['problem']}: writer dossier", "",
+             f"Source cut: `{dossier['source_commit']}`", "", DOSSIER_BOUNDARY, "",
+             "## Coverage", "", json.dumps(dossier["coverage"], ensure_ascii=False, indent=2), "",
+             "## Source-bound editorial cards", ""]
+    for row in dossier["results"]:
+        if "annotation" not in row:
+            continue
+        lines.extend([f"### {row['id']}", "", f"Status: {row['source_status']}; evidence: {row['evidence']['class']}.", ""])
+        for field in ("generality", "mechanism_sentence", "hard_step", "attribution"):
+            lines.extend([f"**{field.replace('_', ' ').capitalize()}:** {row.get(field) or 'UNANNOTATED'}", ""])
+        lines.extend(["Exact statements, source hashes, declaration checks and scoped limitations are in the same JSON row.", ""])
+    lines.extend(["## Results index", "", "Each entry names a source row, not an independent new result.", ""])
+    for row in dossier["results"]:
+        lines.append(f"- `{row['id']}` | {row['source_status']} | {row['evidence']['class']} | {len(row['gaps'])} named gaps")
+    lines.extend(["", "## Open questions", ""])
+    for entry in dossier["landscape"]["open_questions"]:
+        lines.extend([entry["record"]["statement"], ""])
+    lines.extend(["## Distinctions to retain", ""])
+    for entry in dossier["landscape"]["contrast_guards"]:
+        lines.extend([f"### {entry['record']['title']}", "", entry["record"]["right_reading"], ""])
+    return "\n".join(lines) + "\n"
+
+
+def compile_dossiers(root: Path | str, ref: str = "HEAD", problems: Sequence[int] = DOSSIER_PROBLEMS,
+                     annotations: dict | None = None) -> dict[str, bytes]:
+    if not problems or len(set(problems)) != len(problems) or any(type(p) is not int or p not in DOSSIER_PROBLEMS for p in problems):
+        raise SpecError("dossier problems must be a nonempty distinct subset of the eight supported problems")
+    compiler = DossierCompiler(root, ref, annotations)
+    outputs: dict[str, bytes] = {}
+    summaries = []
+    for problem in sorted(problems):
+        d = compiler.build(problem)
+        outputs[f"{problem}.json"] = dossier_bytes(d)
+        outputs[f"{problem}.md"] = render_dossier(d).encode("utf-8")
+        summaries.append({"problem": problem, **d["coverage"], "validation": d["validation"]})
+    outputs["global_inventory.json"] = dossier_bytes(compiler.global_inventory())
+    outputs["source_manifest.json"] = dossier_bytes({
+        "source_commit": compiler.tree.commit,
+        "files": [{"path": path, "sha256": blob.sha256, "bytes": len(blob.data)}
+                  for path, blob in sorted(compiler.tree._cache.items()) if blob is not None]})
+    receipt = {"schema": "dossier-build-receipt/1", "source_commit": compiler.tree.commit,
+               "compiler_sha256": ledger.sha256_hex(Path(__file__).read_bytes()),
+               "record_owner_sha256": ledger.sha256_hex(Path(__file__).with_name("research_record.py").read_bytes()),
+               "annotation_input_sha256": ledger.sha256_hex(dossier_bytes(annotations)) if annotations is not None else None,
+               "reproducibility": "same source commit, compiler bytes and explicit annotation bytes; no time or absolute paths",
+               "problems": summaries, "evidence_boundary": DOSSIER_BOUNDARY,
+               "output_sha256": {name: ledger.sha256_hex(data) for name, data in sorted(outputs.items())}}
+    outputs["receipt.json"] = dossier_bytes(receipt)
+    return outputs
+
+
+def write_dossiers(outputs: Mapping[str, bytes], out: Path, check: bool = False) -> None:
+    """Refuse existing destinations; check mode is read-only and rejects extra files."""
+    if out.is_symlink():
+        raise SpecError("dossier destination must not be a symlink")
+    if check:
+        if not out.is_dir() or {p.name for p in out.iterdir()} != set(outputs):
+            raise SpecError("dossier output inventory differs")
+        for name, data in outputs.items():
+            path = out / name
+            if path.is_symlink() or not path.is_file() or path.read_bytes() != data:
+                raise SpecError("dossier output differs: " + name)
+        return
+    if out.exists():
+        raise SpecError("dossier destination already exists; use a fresh directory or --check")
+    out.parent.mkdir(parents=True, exist_ok=True)
+    import tempfile
+    import os
+    staging = Path(tempfile.mkdtemp(prefix=".dossier-", dir=out.parent))
+    try:
+        for name, data in outputs.items():
+            if PurePosixPath(name).name != name:
+                raise SpecError("unsafe dossier output name")
+            (staging / name).write_bytes(data)
+        # Avoid overwriting an output created while generation was in flight.
+        if out.exists():
+            raise SpecError("dossier destination appeared during build")
+        os.rename(staging, out)
+    finally:
+        if staging.exists():
+            shutil.rmtree(staging)
+
+
 def main(argv: Sequence[str] | None = None) -> int:
     parser = argparse.ArgumentParser(
         description="Compile a research packet under a byte budget so that every registered "
@@ -988,7 +1701,30 @@ def main(argv: Sequence[str] | None = None) -> int:
     comp.add_argument("--ledger", default=ledger.LEDGER_PATH)
     comp.add_argument("--replace", action="store_true",
                       help="overwrite a previous compile in --out")
+    dossier = sub.add_parser("dossier", help="compile source-pinned writer dossiers without model calls")
+    dossier.add_argument("--root", type=Path, default=ROOT)
+    dossier.add_argument("--ref", default="HEAD")
+    dossier.add_argument("--problem", type=int, action="append", help="repeat to select; defaults to all eight")
+    dossier.add_argument("--out", type=Path, required=True)
+    dossier.add_argument("--annotations", type=Path, help="explicit, source-bound editorial candidate input")
+    dossier.add_argument("--check", action="store_true", help="regenerate and compare without writing")
     args = parser.parse_args(argv)
+    if args.command == "dossier":
+        try:
+            annotations = json.loads(args.annotations.read_bytes()) if args.annotations else None
+            outputs = compile_dossiers(args.root, args.ref, args.problem or DOSSIER_PROBLEMS, annotations)
+            write_dossiers(outputs, args.out, check=args.check)
+            receipt = json.loads(outputs["receipt.json"])
+            print(json.dumps({"source_commit": receipt["source_commit"], "files": len(outputs),
+                              "mode": "checked" if args.check else "written",
+                              "problems": [{"problem": x["problem"], "paper_rows": x["paper_rows"],
+                                            "registry_rows": x["registry_rows"], "annotated_rows": x["annotated_rows"],
+                                            "lean_index_eligible_paper_rows": x["lean_index_eligible_paper_rows"]}
+                                           for x in receipt["problems"]]}, indent=2))
+            return 0
+        except (SpecError, ledger.LedgerError, OSError, ValueError, KeyError, IndexError) as exc:
+            sys.stderr.write(f"compile_research_packet dossier: {exc}\n")
+            return 2
     try:
         spec = load_spec(args.spec)
         result = compile_packet(spec, args.root, ref=None if args.worktree else args.ref,
