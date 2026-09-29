@@ -11029,6 +11029,9 @@ def _append_route_memory_resumes(card: str, route_memory: Any) -> str:
 
 
 def render_card(packet: dict[str, Any]) -> str:
+    if packet.get("kind") == "source_bound_frontier":
+        import corpus_substrate
+        return corpus_substrate.render_frontier(packet).rstrip("\n")
     kind = packet["kind"]
     if kind == "claim":
         claim = packet["claim"]
@@ -11647,6 +11650,8 @@ def query_args_packet(
     """
     parser = argparse.ArgumentParser(description=__doc__)
     group = parser.add_mutually_exclusive_group()
+    group.add_argument("--frontier", type=nonempty_selector, metavar="PROBLEM",
+                       help="source-bound programme statement, obligations and recorded routes")
     group.add_argument("--claim", type=nonempty_selector, metavar="ID")
     group.add_argument("--paper-label", type=nonempty_selector, metavar="LABEL")
     group.add_argument("--paper-source", type=nonempty_selector, metavar="SOURCE_PATH")
@@ -11707,6 +11712,7 @@ def query_args_packet(
             "--dependency-path"
         ),
     )
+    parser.add_argument("--frontier-cursor", help="snapshot-bound continuation from a --frontier result")
     parser.add_argument("--query", default="", help="rank a connection card toward one task")
     parser.add_argument(
         "--format",
@@ -11722,7 +11728,7 @@ def query_args_packet(
     args = parser.parse_args(argv)
     if args.format:
         output_format = args.format
-    elif args.tour or args.papers:
+    elif args.frontier or args.tour or args.papers:
         output_format = "card"
     elif args.ask and not (
         is_repository_overview_query(args.ask)
@@ -11735,7 +11741,12 @@ def query_args_packet(
         parser.error(f"--limit must be between 1 and {MAX_LIMIT}")
     if not 1 <= args.depth <= 8:
         parser.error("--depth must be between 1 and 8")
-    if args.claim:
+    if args.frontier_cursor and not args.frontier:
+        parser.error("--frontier-cursor requires --frontier")
+    if args.frontier:
+        import corpus_substrate
+        packet = corpus_substrate.frontier_packet(ROOT, args.frontier, args.limit, args.frontier_cursor)
+    elif args.claim:
         packet = claim_packet(args.claim)
     elif args.paper_label:
         packet = paper_label_packet(args.paper_label)

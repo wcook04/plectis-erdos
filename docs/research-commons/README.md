@@ -9,6 +9,11 @@ documents how to record the starting commit, evidence and contributor roles,
 and how maintainers record acceptance. The records, examples, validation
 programs and accepted credit pages all live in this repository.
 
+Research readers can inspect the [development relation benchmark](benchmarks/RESTATEMENT_DEVELOPMENT.md)
+and [controlled reader protocol](benchmarks/READER_STUDY.md). These distinguish
+source-bound examples, actual run evidence and independent grading. They do
+not report a measured performance advantage.
+
 Mathematical work and architecture work use the same contribution records. The
 [architecture contribution path](ARCHITECTURE_CONTRIBUTIONS.md) welcomes ideas
 and implementations for workflows, navigation, validation, reproducibility,

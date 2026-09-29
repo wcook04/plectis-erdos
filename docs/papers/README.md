@@ -369,9 +369,9 @@ Start here (selected for this guide): [Support criteria and their proofs](full-t
 
 Start here (selected for this guide): [The problem, and what is settled](full-text/erdos269-running-lcm-reasoning-surface.md#long269:sec:problem), [Why the third prime prevents finite separation](full-text/erdos269-running-lcm-reasoning-surface.md#long269:sec:rank), [The remaining arithmetic questions](full-text/erdos269-running-lcm-reasoning-surface.md#long269:sec:open), [What the results use and what they do not prove](full-text/erdos269-running-lcm-reasoning-surface.md#sec:erdos-269-complete-family-map).
 
-### Why does the Erdős #269 running-LCM kernel admit no finite separable representation, and which residue inequalities remain for {2,3,5}?
+### Why are distinct-height running-LCM sums irrational for finite prime sets of size at least two, and what remains open for the repeated-value Erdős #269 sum?
 
-**No Finite Separable Representation at Three Prime Generators**
+**Irrational Distinct-Height Sums for Finite Prime Sets**
 
 [full text](full-text/erdos-269-three-prime-running-lcm.md) · [PDF](../../paper/269/erdos-269-three-prime-running-lcm.pdf) · [LaTeX source](../../paper/269/erdos-269-three-prime-running-lcm.tex) · 20 sections · `erdos-269-three-prime-running-lcm` · native to this repository
 
@@ -380,7 +380,7 @@ Archived edition: [aiXiv:2609.03283v1](https://aixiv.online/abs/2609.03283v1) ([
 The current source or PDF differs from this frozen edition; the archive record does not cover later changes.
 Archive publication does not establish independent mathematical review.
 
-Start here (selected for this guide): [Introduction](full-text/erdos-269-three-prime-running-lcm.md#sec:problem), [Nonsingular minors of every order](full-text/erdos-269-three-prime-running-lcm.md#sec:rank), [The recurrence for the repeated sum](full-text/erdos-269-three-prime-running-lcm.md#sec:lcm), [A window test and the remaining arithmetic](full-text/erdos-269-three-prime-running-lcm.md#sec:escape).
+Start here (selected for this guide): [Two sums from running least common multiples](full-text/erdos-269-three-prime-running-lcm.md#sec:problem), [Nonsingular minors of every order](full-text/erdos-269-three-prime-running-lcm.md#sec:rank), [The recurrence for the repeated sum](full-text/erdos-269-three-prime-running-lcm.md#sec:lcm), [A window test and the remaining arithmetic](full-text/erdos-269-three-prime-running-lcm.md#sec:escape).
 
 ### Which explicit short paths and critical-value bounds are proved for Erdős #1041, and which hypotheses do they require?
 
@@ -428,7 +428,7 @@ Start here (selected for this guide): [The region b^{\mu}<a and the base 31/4](f
 
 **Problem-Sized Lean Worlds**
 
-[full text](full-text/claim-faithful-publication-systems-paper.md) · [PDF](../../paper/systems/claim-faithful-publication-systems-paper.pdf) · [LaTeX source](../../paper/systems/claim-faithful-publication-systems-paper.tex) · 30 sections · `claim-faithful-publication-systems` · native to this repository
+[full text](full-text/claim-faithful-publication-systems-paper.md) · [PDF](../../paper/systems/claim-faithful-publication-systems-paper.pdf) · [LaTeX source](../../paper/systems/claim-faithful-publication-systems-paper.tex) · 31 sections · `claim-faithful-publication-systems` · native to this repository
 
 Start here (selected for this guide): [A theorem and the explanation it needs](full-text/claim-faithful-publication-systems-paper.md#sec:intro), [A problem-sized world](full-text/claim-faithful-publication-systems-paper.md#sec:world), [From corpus to insight](full-text/claim-faithful-publication-systems-paper.md#sec:production), [From a proof to a public claim](full-text/claim-faithful-publication-systems-paper.md#sec:checks), [Limits, and what stronger models change](full-text/claim-faithful-publication-systems-paper.md#sec:limits).
 

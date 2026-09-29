@@ -4,7 +4,7 @@
 
 # Plectis reading edition: eight Erdős problems
 
-Edition fingerprint `a5d02838b4893e05`. Papers CC-BY-4.0, Will Cook, 2026. Source: <https://github.com/wcook04/plectis-erdos>. Website: <https://wcook04.github.io/plectis/maths/>.
+Edition fingerprint `2854d112bda9da6c`. Papers CC-BY-4.0, Will Cook, 2026. Source: <https://github.com/wcook04/plectis-erdos>. Website: <https://wcook04.github.io/plectis/maths/>.
 
 
 ## How to use this edition
@@ -2770,15 +2770,15 @@ W. van Doorn and V. Kovač, *Lacunary sequences whose reciprocal sums represen
 
 </div>
 
-## Erdős #269: No Finite Separable Representation at Three Prime Generators
+## Erdős #269: Irrational Distinct-Height Sums for Finite Prime Sets
 
-*Why does the Erdős #269 running-LCM kernel admit no finite separable representation, and which residue inequalities remain for {2,3,5}?* [Full text](https://github.com/wcook04/plectis-erdos/blob/main/docs/papers/full-text/erdos-269-three-prime-running-lcm.md) · [PDF](https://github.com/wcook04/plectis-erdos/blob/main/paper/269/erdos-269-three-prime-running-lcm.pdf)
+*Why are distinct-height running-LCM sums irrational for finite prime sets of size at least two, and what remains open for the repeated-value Erdős #269 sum?* [Full text](https://github.com/wcook04/plectis-erdos/blob/main/docs/papers/full-text/erdos-269-three-prime-running-lcm.md) · [PDF](https://github.com/wcook04/plectis-erdos/blob/main/paper/269/erdos-269-three-prime-running-lcm.pdf)
 
 Longer record: [The Three-Prime Running LCM: Kernel Rank and Tail Arithmetic](https://github.com/wcook04/plectis-erdos/blob/main/docs/papers/full-text/erdos269-running-lcm-reasoning-surface.md) (262 KB as text).
 
 <a id="erdos-269-three-prime-running-lcm--erdos-269-three-prime-running-lcm"></a>
 
-### No Finite Separable Representation at Three Prime Generators
+### Irrational Distinct-Height Sums for Finite Prime Sets
 
 <div class="center">
 
@@ -2790,7 +2790,9 @@ For every finite set $`P`$ of at least two primes, the sum of the reciprocals of
 
 <a id="erdos-269-three-prime-running-lcm--sec:problem"></a>
 
-### Introduction
+### Two sums from running least common multiples
+
+The main result is the distinct-height irrationality theorem of Section <a href="#erdos-269-three-prime-running-lcm--sec:distinct" data-reference-type="ref" data-reference="erdos-269-three-prime-running-lcm--sec:distinct">2</a>. It applies to every finite prime set containing at least two primes. It does not settle the irrationality of the repeated-value series that motivated it. We introduce both sums here, keeping that distinction visible before the proof.
 
 For a finite prime set $`P`$, let $`\mathcal S_P`$ consist of the positive integers whose prime factors lie in $`P`$, including $`1`$. We use $`\mathbb{N}=\{0,1,2,\ldots\}`$ for exponent indices. For $`x\ge1`$, put
 ``` math
@@ -2811,11 +2813,11 @@ where $`t`$ runs over the prime powers $`p^n,q^n,r^n`$ with $`n\ge1`$. The two s
 
 Fan used the identity $`\operatorname{L}=\operatorname{H}`$ to separate the two-prime kernel \[fan2026comment\]. With three primes, even a finite sum of separated products is impossible (Section <a href="#erdos-269-three-prime-running-lcm--sec:rank" data-reference-type="ref" data-reference="erdos-269-three-prime-running-lcm--sec:rank">3</a>). That theorem is about the kernel and says nothing about the arithmetic of its sum. Sections <a href="#erdos-269-three-prime-running-lcm--sec:lcm" data-reference-type="ref" data-reference="erdos-269-three-prime-running-lcm--sec:lcm">5</a> and <a href="#erdos-269-three-prime-running-lcm--sec:escape" data-reference-type="ref" data-reference="erdos-269-three-prime-running-lcm--sec:escape">6</a> turn to the repeated $`\{2,3,5\}`$ sum and state exactly what its irrationality still requires.
 
-*Formal proofs.* A result with a kernel-checked Lean proof carries a mark in the margin. *Lean* opens the proof: the declaration itself when one declaration states the whole result, otherwise the list of declarations that together state it. *Comparator* opens the record of an independent check, in which the same statement, written again from Mathlib alone in a separate repository, was compared with our proof by Lean’s Comparator tool, allowing only the three standard axioms. A dagger on the Lean mark means that the Lean proof assumes an input named just below the result. A result without a mark has no Lean proof of its whole statement; what is checked is said below it. The [evidence record](https://github.com/wcook04/plectis-erdos/blob/3cbbd4356dcd713314c0b6ba83ec4db353faa5c2/evidence/erdos-269-three-prime-running-lcm.md) gives every declaration, version and check. These checks show that the stated propositions are proved; whether they are the right propositions is a question the reader can settle by comparing them with the text.
+*Formal proofs.* A result with a kernel-checked Lean proof carries a mark in the margin. *Lean* opens the proof: the declaration itself when one declaration states the whole result, otherwise the list of declarations that together state it. *Comparator* opens the record of an independent check, in which the same statement, written again from Mathlib alone in a separate repository, was compared with our proof by Lean’s Comparator tool, allowing only the three standard axioms. A dagger on the Lean mark means that the Lean proof assumes an input named just below the result. A result without a mark has no Lean proof of its whole statement; what is checked is said below it. The [evidence record](https://github.com/wcook04/plectis-erdos/blob/dcc25c8ab06850ae576fb9de9583ae3bd787cba3/evidence/erdos-269-three-prime-running-lcm.md) gives every declaration, version and check. These checks show that the stated propositions are proved; whether they are the right propositions is a question the reader can settle by comparing them with the text.
 
 <a id="erdos-269-three-prime-running-lcm--sec:distinct"></a>
 
-### The distinct-height sums
+### Irrationality for finite prime sets
 
 Let $`P`$ be a finite set of primes with $`|P|\ge2`$ and put $`\operatorname{H}_P(t)=\prod_{r\in P}r^{\lfloor\log_rt\rfloor}`$. The proof of Proposition <a href="#erdos-269-three-prime-running-lcm--res:lcm" data-reference-type="ref" data-reference="erdos-269-three-prime-running-lcm--res:lcm">12</a> applies to any finite set of primes: the running LCM of the $`P`$-smooth integers up to $`t`$ is $`\operatorname{H}_P(t)`$, and it changes only at the prime powers $`r^n`$ ($`r\in P`$, $`n\ge1`$), where it is multiplied by $`r`$. List these prime powers as $`t_1<t_2<\cdots`$, let $`q_k`$ be the prime of $`t_k`$, and put $`Q_k=q_1\cdots q_k=\operatorname{H}_P(t_k)`$. Then
 ``` math
@@ -2937,7 +2939,7 @@ The Lean proof takes a different route (companion, Sections 4.2 and 4.3): each
 
 <a id="erdos-269-three-prime-running-lcm--sec:rank"></a>
 
-*This entry ends here, at a section boundary. Later sections of the paper, and anything the text above says is given below, are in [the full short paper](https://github.com/wcook04/plectis-erdos/blob/main/docs/papers/full-text/erdos-269-three-prime-running-lcm.md) (66 KB as text) and in `plectis-short-papers.md`.*
+*This entry ends here, at a section boundary. Later sections of the paper, and anything the text above says is given below, are in [the full short paper](https://github.com/wcook04/plectis-erdos/blob/main/docs/papers/full-text/erdos-269-three-prime-running-lcm.md) (67 KB as text) and in `plectis-short-papers.md`.*
 
 #### References cited in this paper
 

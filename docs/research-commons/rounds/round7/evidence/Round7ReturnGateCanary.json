@@ -1,0 +1,32 @@
+{
+  "probe": "research/probes/Round7ReturnGateCanary.lean",
+  "source_sha256": "985bcf58093ec1304328d5758b6ba7019f52aece7bba441b86d5485797e83c83",
+  "evidence_class": "compilation_probe",
+  "exact_target_checked": false,
+  "environment_replayed": false,
+  "exit_code": 0,
+  "timed_out": false,
+  "elapsed_seconds": 3.4,
+  "errors": [],
+  "warnings": [],
+  "uses_sorry": false,
+  "axioms_declared": [],
+  "axioms_printed": {
+    "Round7ReturnGateCanary.singleton_not_joint": [],
+    "Round7ReturnGateCanary.not_all_not_pointwise": [],
+    "Round7ReturnGateCanary.replacement_excludes_separation": [],
+    "Round7ReturnGateCanary.inconsistent_context_equivalence": []
+  },
+  "missing_axiom_prints": [],
+  "nonstandard_axioms": [],
+  "compilation_accepted": true,
+  "accepted": true,
+  "output_tail": "'Round7ReturnGateCanary.singleton_not_joint' does not depend on any axioms\n'Round7ReturnGateCanary.not_all_not_pointwise' does not depend on any axioms\n'Round7ReturnGateCanary.replacement_excludes_separation' does not depend on any axioms\n'Round7ReturnGateCanary.inconsistent_context_equivalence' does not depend on any axioms\n",
+  "requested_axiom_outputs": [
+    "singleton_not_joint",
+    "not_all_not_pointwise",
+    "replacement_excludes_separation",
+    "inconsistent_context_equivalence"
+  ],
+  "missing_requested_axiom_outputs": []
+}

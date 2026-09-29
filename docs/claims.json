@@ -21846,7 +21846,7 @@
       "paper_anchor": {
         "source": "paper/269/erdos-269-three-prime-running-lcm.tex",
         "environment": "section",
-        "title": "Introduction",
+        "title": "Two sums from running least common multiples",
         "line": 71
       }
     },
@@ -21895,7 +21895,7 @@
         "source": "paper/269/erdos-269-three-prime-running-lcm.tex",
         "environment": "problem",
         "title": "no reduced tail is an integer",
-        "line": 848
+        "line": 854
       }
     },
     {
@@ -21907,7 +21907,7 @@
         "source": "paper/269/erdos-269-three-prime-running-lcm.tex",
         "environment": "problem",
         "title": "residue inequalities after every starting index",
-        "line": 854
+        "line": 860
       }
     },
     {

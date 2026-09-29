@@ -543,12 +543,24 @@ def _locked(directory: Path) -> Iterator[None]:
         os.close(fd)
 
 
-def append(root: Path, kind: str, subject: str, detail: dict[str, Any],
-           recorded_at: str | None = None) -> dict[str, Any]:
-    """Validate and append one event; atomic replace under a directory lock."""
+def append_batch(root: Path, changes: list[dict[str, Any]], *,
+                 expected_head: str | None = None,
+                 validate_read_set: Callable[[], None] | None = None,
+                 recorded_at: str | None = None) -> list[dict[str, Any]]:
+    """Validate a whole event batch, then publish it by one atomic replacement.
+
+    `expected_head` is compare-and-swap, checked under the existing writer lock.
+    The optional pure read-set validator runs twice while that lock is held.
+    This serializes cooperating journal writers only. It does not freeze source
+    files or provide a distributed transaction with Git, CI or publications.
+    """
     if "CI" in os.environ:
         raise RecordError("appending is refused when CI is set: the record is written by a maintainer, "
                           "then committed and verified")
+    if not isinstance(changes, list) or not changes:
+        raise RecordError("an event batch must be a non-empty list")
+    if expected_head is not None and not SHA256.fullmatch(expected_head):
+        raise RecordError("expected_head must be a full journal SHA-256")
     path = journal_path(root)
     path.parent.mkdir(parents=True, exist_ok=True)
     with _locked(path.parent):
@@ -559,20 +571,32 @@ def append(root: Path, kind: str, subject: str, detail: dict[str, Any],
         if state.errors:
             raise RecordError("the journal does not verify; repair it before appending: "
                               + "; ".join(state.errors[:5]))
-        body = {"sequence": len(events), "previous": events[-1]["event_sha"] if events else ZERO,
-                "kind": kind, "subject": subject, "detail": detail,
-                "recorded_at": recorded_at or utc_now()}
-        event = dict(body, event_sha=event_hash(body))
-        errors = state.apply(event)
-        # Component deferrals written before reentry existed still verify; a new
-        # one must name who takes it up again and when, like a consumer deferral.
-        if (kind == "component_disposed" and isinstance(detail, dict)
-                and detail.get("decision") == "deferred" and not detail.get("reentry")):
-            errors.append("a new component deferral needs reentry {owner, trigger}")
-        if errors:
-            raise RecordError("; ".join(errors))
+        head = events[-1]["event_sha"] if events else ZERO
+        if expected_head is not None and head != expected_head:
+            raise RecordError("stale journal head; rebase and review the complete plan")
+        if validate_read_set is not None:
+            validate_read_set()
+        appended = []
+        timestamp = recorded_at or utc_now()
+        for change in changes:
+            if not isinstance(change, dict) or set(change) != {"kind", "subject", "detail"}:
+                raise RecordError("each change must have exactly kind, subject and detail")
+            kind, subject, detail = change["kind"], change["subject"], change["detail"]
+            body = {"sequence": len(events) + len(appended), "previous": head,
+                    "kind": kind, "subject": subject, "detail": detail, "recorded_at": timestamp}
+            event = dict(body, event_sha=event_hash(body))
+            errors = state.apply(event)
+            if (kind == "component_disposed" and isinstance(detail, dict)
+                    and detail.get("decision") == "deferred" and not detail.get("reentry")):
+                errors.append("a new component deferral needs reentry {owner, trigger}")
+            if errors:
+                raise RecordError("; ".join(errors))
+            appended.append(event)
+            head = event["event_sha"]
+        if validate_read_set is not None:
+            validate_read_set()
         prior = path.read_bytes() if path.exists() else b""
-        data = prior + canonical(event).encode("utf-8") + b"\n"
+        data = prior + b"".join(canonical(e).encode("utf-8") + b"\n" for e in appended)
         fd, tmp = tempfile.mkstemp(prefix=".journal-", dir=path.parent)
         try:
             with os.fdopen(fd, "wb") as stream:
@@ -589,7 +613,14 @@ def append(root: Path, kind: str, subject: str, detail: dict[str, Any],
         finally:
             if os.path.exists(tmp):
                 os.unlink(tmp)
-    return event
+    return appended
+
+
+def append(root: Path, kind: str, subject: str, detail: dict[str, Any],
+           recorded_at: str | None = None) -> dict[str, Any]:
+    """Compatibility entry point; batch append owns validation and publication."""
+    return append_batch(root, [{"kind": kind, "subject": subject, "detail": detail}],
+                        recorded_at=recorded_at)[0]
 
 
 # --------------------------------------------------------------------------

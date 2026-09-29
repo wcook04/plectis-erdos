@@ -141,7 +141,11 @@ def check_source_coordinate_title_contract() -> None:
         ),
         ("paper/archive/erdos249-257-main-paper.tex", "problem", r"Erd\H{o}s \#249"),
         ("paper/251/erdos-251-prime-gap-dyadic-series.tex", "section", "Introduction"),
-        ("paper/269/erdos-269-three-prime-running-lcm.tex", "section", "Introduction"),
+        (
+            "paper/269/erdos-269-three-prime-running-lcm.tex",
+            "section",
+            "Two sums from running least common multiples",
+        ),
         ("paper/1049/erdos-1049-rational-base-lambert.tex", "section", "Introduction"),
     )
     for source, environment, title in anchors:

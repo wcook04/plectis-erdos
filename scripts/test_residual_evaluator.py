@@ -316,7 +316,7 @@ def check_binders_close_every_probe() -> None:
                        binders="(n : ℕ) (hn : 3 ≤ n)", unfold=["P", "Q", "G"])
     probes = ev.build_probes([sketch], cross=False)
     by_kind = {p.kind: p for p in probes}
-    assert by_kind["soundness"].statement == "∀ (n : ℕ) (hn : 3 ≤ n), P n ∧ Q n → G n"
+    assert by_kind["soundness"].statement == "∀ (n : ℕ) (hn : 3 ≤ n), (P n ∧ Q n) → (G n)"
     assert by_kind["soundness"].intros == ["n", "hn"]
     assert by_kind["refutation"].statement == "¬ (∀ (n : ℕ) (hn : 3 ≤ n), P n ∧ Q n)"
     assert by_kind["refutation"].intros == []
@@ -327,7 +327,7 @@ def check_binders_close_every_probe() -> None:
 def check_dominance_compares_only_under_the_same_binders() -> None:
     same = ev.build_probes(_two_sketches("(n : ℕ)", "(n : ℕ)"), cross=True)
     assert [p.statement for p in same if p.kind == "dominance"] == [
-        "∀ (n : ℕ), R1 → R2", "∀ (n : ℕ), R2 → R1"]
+        "∀ (n : ℕ), (R1) → (R2)", "∀ (n : ℕ), (R2) → (R1)"]
     different = ev.build_probes(_two_sketches("(n : ℕ)", "(m : ℕ)"), cross=True)
     assert not [p for p in different if p.kind == "dominance"]
 

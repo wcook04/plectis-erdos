@@ -1,0 +1,62 @@
+ErdosProblems.Erdos249.PaperCompleteR7.ArbitraryBasePulse.no_bounded_lattice_tail_of_pulses (B q : ℕ) (hB : 2 ≤ B)
+  (hq : 0 < q) (u : ℕ → ℤ) (T : ℕ → ℝ) (C : ℝ) (hCu : ∀ (n : ℕ), |↑(u n)| ≤ C) (hCT : ∀ (n : ℕ), |T n| ≤ C)
+  (hrec : ∀ (n : ℕ), ↑B * T n = ↑(u (n + 1)) + T (n + 1)) (hlattice : ∀ (n : ℕ), ∃ z, ↑q * T n = ↑z)
+  (hpulse : ∀ (L : ℕ), ∃ p, L + 1 < p ∧ u p ≠ 0 ∧ ∀ (j : ℕ), 0 < j → j ≤ L → u (p - j) = 0 ∧ u (p + j) = 0) : False
+'ErdosProblems.Erdos249.PaperCompleteR7.ArbitraryBasePulse.no_bounded_lattice_tail_of_pulses' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+ErdosProblems.Erdos249.PaperCompleteR7.IntegerRadixObservables.irrational_radixValue_of_pulses (B : ℕ) (hB : 2 ≤ B)
+  (a : ℕ → ℤ) (C : ℝ) (hC : ∀ (n : ℕ), |↑(a n)| ≤ C)
+  (hpulse : ∀ (L : ℕ), ∃ p, L + 1 < p ∧ a p ≠ 0 ∧ ∀ (j : ℕ), 0 < j → j ≤ L → a (p - j) = 0 ∧ a (p + j) = 0) :
+  Irrational (ErdosProblems.Erdos249.PaperCompleteR7.IntegerRadixObservables.radixValue B a)
+'ErdosProblems.Erdos249.PaperCompleteR7.IntegerRadixObservables.irrational_radixValue_of_pulses' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+ErdosProblems.Erdos249.PaperCompleteR7.RationalIntegerRadix.radix_residue_series_irrational (B : ℕ) (hB : 2 ≤ B) {m : ℕ}
+  (hm : 3 ≤ m) :
+  Irrational (ErdosProblems.Erdos249.PaperCompleteR7.IntegerRadixObservables.radixValue B fun n => ↑n.totient % ↑m)
+'ErdosProblems.Erdos249.PaperCompleteR7.RationalIntegerRadix.radix_residue_series_irrational' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+ErdosProblems.Erdos269.DistinctHeight235.irrational_tsum_blockTerm {b μ : ℕ → ℕ}
+  (hL : ∀ (a : ℕ), ErdosProblems.Erdos269.DistinctHeight235.BlockLetter (b a) (μ a))
+  (hspace : ∀ (a : ℕ), 5 ∣ b a ∨ 5 ∣ b (a + 1) ∨ 5 ∣ b (a + 2))
+  (hnp : ∀ (a d : ℕ), 0 < d → ∃ j, b (a + d + j) ≠ b (a + j)) :
+  Irrational (∑' (a : ℕ), ErdosProblems.Erdos269.DistinctHeight235.blockTerm b μ a)
+'ErdosProblems.Erdos269.DistinctHeight235.irrational_tsum_blockTerm' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+ErdosProblems.Erdos269.distinctHeightSum235_irrational : Irrational ErdosProblems.Erdos269.distinctHeightSum235
+'ErdosProblems.Erdos269.distinctHeightSum235_irrational' depends on axioms: [propext, Classical.choice, Quot.sound]
+ErdosProblems.Erdos249.PaperCompleteR21.exists_certifiedKill_of_weighted_first_harmonic_gap {h X L : ℕ} (T : Finset ℕ)
+  (a : ℕ → ℝ) (ha : ∀ N ∈ T, 0 ≤ a N) (hTlt : ∀ N ∈ T, N < 2 * X) (hroom : 16 * (2 * X + h + L + 2) ≤ 2 ^ L)
+  (hpos : 0 < ∑ N ∈ T, a N)
+  (hgap : ∑ N ∈ T, a N * Erdos249257.TotientTailPeriodKiller.windowFirstCos h N L ≤ 9 / 10 * ∑ N ∈ T, a N) :
+  ∃ N ∈ T, 0 < a N ∧ Erdos249257.TotientTailPeriodKiller.certifiedKill h N L
+'ErdosProblems.Erdos249.PaperCompleteR21.exists_certifiedKill_of_weighted_first_harmonic_gap' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+ErdosProblems.Erdos249.PaperCompleteR21.irrational_totient_series_of_goodBase_gap
+  (hgap :
+    ∀ (h : ℕ),
+      0 < h →
+        ∀ (A : ℕ),
+          ∃ X,
+            max A 1 ≤ X ∧
+              (∑
+                    N ∈
+                      Erdos249257.TotientTailPeriodKiller.pivotGoodBases X
+                        (ErdosProblems.Erdos249.PaperCompleteR21.minimalDepth h 26 X) 26 (1 / 1000),
+                    Erdos249257.TotientTailPeriodKiller.windowFirstExp h N
+                      (ErdosProblems.Erdos249.PaperCompleteR21.minimalDepth h 26 X)).re ≤
+                603 / 1000 * ↑X) :
+  Irrational (∑' (n : ℕ), ↑n.totient / 2 ^ n)
+'ErdosProblems.Erdos249.PaperCompleteR21.irrational_totient_series_of_goodBase_gap' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+ErdosProblems.Erdos257.DyadicShellSynchronisation.exists_common_sample_of_weighted_sum_lt_one.{u_1} {ι : Type u_1}
+  (s : Finset ι) (μ f g : ι → ℝ) (hμ : ∀ i ∈ s, 0 ≤ μ i) (hf : ∀ i ∈ s, 0 ≤ f i) (hg : ∀ i ∈ s, 0 ≤ g i)
+  (hprob : ∑ i ∈ s, μ i = 1) (hmean : ∑ i ∈ s, μ i * (f i + g i) < 1) : ∃ i ∈ s, f i < 1 ∧ g i < 1
+'ErdosProblems.Erdos257.DyadicShellSynchronisation.exists_common_sample_of_weighted_sum_lt_one' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]

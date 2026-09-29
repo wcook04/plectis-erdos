@@ -253,7 +253,7 @@ class Sketch:
         """The residual conjunction, as a Lean term."""
         if len(self.residuals) == 1:
             return self.residuals[0]
-        return "(" + " ∧ ".join(self.residuals) + ")"
+        return "(" + " ∧ ".join(f"({r})" for r in self.residuals) + ")" if self.residuals else "True"
 
     def unfolds(self) -> list[str]:
         if self.unfold is not None:
@@ -333,7 +333,7 @@ def build_probes(sketches: list[Sketch], *, cross: bool) -> list[Probe]:
         probes.append(
             Probe(
                 f"probe_soundness__{s.sketch_id}", "soundness", s.sketch_id,
-                close(f"{d} → {s.target}", s.binders), s.unfolds(), names,
+                close(f"({d}) → ({s.target})", s.binders), s.unfolds(), names,
             )
         )
         # Laundering is asked per residual, in both directions, never of the
@@ -348,16 +348,16 @@ def build_probes(sketches: list[Sketch], *, cross: bool) -> list[Probe]:
             unfolds = [s.target, r] if s.unfold is None and not s.binders.strip() else s.unfolds()
             probes.append(
                 Probe(f"probe_p2r{k}__{s.sketch_id}", f"p2r{k}", s.sketch_id,
-                      close(f"{s.target} → {r}", s.binders), unfolds, names)
+                      close(f"({s.target}) → ({r})", s.binders), unfolds, names)
             )
             probes.append(
                 Probe(f"probe_r2p{k}__{s.sketch_id}", f"r2p{k}", s.sketch_id,
-                      close(f"{r} → {s.target}", s.binders), unfolds, names)
+                      close(f"({r}) → ({s.target})", s.binders), unfolds, names)
             )
         probes.append(
             Probe(
                 f"probe_refutation__{s.sketch_id}", "refutation", s.sketch_id,
-                close(f"¬ {d}", s.binders) if not s.binders.strip() else f"¬ ({close(d, s.binders)})",
+                close(f"¬ ({d})", s.binders) if not s.binders.strip() else f"¬ ({close(d, s.binders)})",
                 s.residuals if s.unfold is None and not s.binders.strip() else s.unfolds(), [],
             )
         )
@@ -379,7 +379,7 @@ def build_probes(sketches: list[Sketch], *, cross: bool) -> list[Probe]:
                             f"probe_dominance__{a.sketch_id}__over__{b.sketch_id}",
                             "dominance",
                             f"{a.sketch_id}>{b.sketch_id}",
-                            close(f"{a.demand()} → {b.demand()}", a.binders),
+                            close(f"({a.demand()}) → ({b.demand()})", a.binders),
                             unfolds, binder_names(a.binders),
                         )
                     )
@@ -460,19 +460,28 @@ def decide(probes: list[Probe], all_axioms: dict[str, list[str]],
            all_detail: dict[str, str]) -> list[ProbeResult]:
     """Probe results from axiom reports, refusing unless the controls discriminate."""
 
+    # Same policy as paper_evidence.PERMITTED_AXIOMS. A shared low-dependency
+    # policy owner is preferable to importing the entire paper pipeline here.
+    permitted_axioms = {"propext", "Quot.sound", "Classical.choice"}
+
+    def _winner(name: str) -> int | None:
+        for i in range(len(TACTIC_LADDER)):
+            key = f"{name}__t{i}"
+            axioms = all_axioms.get(key)
+            if isinstance(axioms, list) and all(isinstance(a, str) for a in axioms) and set(axioms) <= permitted_axioms:
+                return i
+        return None
+
     def _proved(name: str) -> bool:
-        """True when at least one tactic attempt for this probe closed cleanly."""
-        return any(
-            f"{name}__t{i}" in all_axioms and "sorryAx" not in all_axioms[f"{name}__t{i}"]
-            for i in range(len(TACTIC_LADDER))
-        )
+        return _winner(name) is not None
 
     def _winning_tactic(name: str) -> str:
-        for i, tac in enumerate(TACTIC_LADDER):
-            k2 = f"{name}__t{i}"
-            if k2 in all_axioms and "sorryAx" not in all_axioms[k2]:
-                return tac
-        return ""
+        winner = _winner(name)
+        return TACTIC_LADDER[winner] if winner is not None else ""
+
+    def _winning_axioms(name: str) -> list[str]:
+        winner = _winner(name)
+        return list(all_axioms[f"{name}__t{winner}"]) if winner is not None else []
 
     if not all_axioms:
         raise HarnessNotLiveError(
@@ -491,7 +500,7 @@ def decide(probes: list[Probe], all_axioms: dict[str, list[str]],
             name=pr.name, kind=pr.kind, subject=pr.subject, statement=pr.statement,
             proved=_proved(pr.name),
             detail=_winning_tactic(pr.name) or all_detail.get(pr.name, "not proved within budget"),
-            axioms=all_axioms.get(f"{pr.name}__t0", []),
+            axioms=_winning_axioms(pr.name),
         )
         for pr in probes
     ]
@@ -615,6 +624,11 @@ def classify(sketch: Sketch, results: list[ProbeResult]) -> dict:
             "refutation": refuted_ok,
         },
         "equivalent_residuals": [sketch.residuals[i] for i in equivalent_residuals],
+        "refutation_kind": "negated_universal" if sketch.binders.strip() else "pointwise",
+        "target_implies_all_residuals": all(
+            by_kind.get(f"p2r{i}") is not None and by_kind[f"p2r{i}"].proved
+            for i in range(len(sketch.residuals))
+        ),
         "expect": sketch.expect,
         "agrees_with_expectation": (sketch.expect is None or sketch.expect == verdict),
         "note": sketch.note,

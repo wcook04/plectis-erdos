@@ -198,8 +198,8 @@ class Attestation(unittest.TestCase):
         self.assertIn("Toy.Certs is listed in the atlas", report["errors"][0])
         with contextlib.redirect_stdout(io.StringIO()):
             self.assertEqual(rr.main(["--root", str(fixture.root), "check"]), 1)
-        rows, _ = rr.usable_rows(fixture.root, include_pending=True)
-        self.assertEqual(rows, [])
+        with self.assertRaisesRegex(rr.RegistryError, "listed in the atlas"):
+            rr.usable_rows(fixture.root, include_pending=True)
 
     def test_unreadable_build_inputs_attest_nothing(self) -> None:
         _, report = self.run_check([reg_row("e", "equivalent", "A", "B", "Toy.Certs.eq_view", sha("eq_view"))],
@@ -405,7 +405,7 @@ class ResidualBench(unittest.TestCase):
         self.assertEqual(rows["residualbench:eq"]["relation"], "equivalent")
         self.assertEqual(rows["residualbench:strict"]["relation"], "slot_replacement")
         self.assertEqual(rows["residualbench:strict"]["converse"], "unknown")
-        self.assertEqual(rows["residualbench:strict"]["right"], "R2 ∧ R3")
+        self.assertEqual(rows["residualbench:strict"]["right"], "(R2) ∧ (R3)")
         self.assertEqual(rows["residualbench:ref"]["relation"], "refuted")
         self.assertEqual(rows["residualbench:unk"]["relation"], "unknown")
         self.assertTrue(all(r["evidence_class"] == "kernel_probe_verdict" for r in rows.values()))

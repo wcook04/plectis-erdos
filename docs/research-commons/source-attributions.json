@@ -77,8 +77,8 @@
         },
         {
           "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
-          "line_start": 1547,
-          "line_end": 1550,
+          "line_start": 1548,
+          "line_end": 1551,
           "expected_text": "\\bibitem{formalconjectures}",
           "excerpt_sha256": "sha256:1d891b554cf100c91b2fce4d68b68b3847498ea54355b6d6f9da795c07521527"
         }
@@ -486,8 +486,8 @@
         },
         {
           "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
-          "line_start": 1508,
-          "line_end": 1512,
+          "line_start": 1509,
+          "line_end": 1513,
           "expected_text": "\\bibitem{lean4}",
           "excerpt_sha256": "sha256:a79650c0f50caca8446521a3613124f26f30878a82d4d43715c4bfc4f1b646d1"
         }
@@ -2060,8 +2060,8 @@
         },
         {
           "path": "paper/269/erdos-269-three-prime-running-lcm.tex",
-          "line_start": 976,
-          "line_end": 979,
+          "line_start": 982,
+          "line_end": 985,
           "expected_text": "\\bibitem{loxtonvdp1977}",
           "excerpt_sha256": "sha256:c0c58cb7c064ff51cdf457f20ba15d04a78eb43f30bbf3764f9162de257e6a00"
         },
@@ -4746,10 +4746,16 @@
         "2026"
       ],
       "urls": [
-        "https://doi.org/10.4230/LIPIcs.ITP.2026.25"
+        "https://doi.org/10.4230/LIPIcs.ITP.2026.25",
+        "https://arxiv.org/html/2601.22554v1"
       ],
       "problems": [],
-      "source_locators": [],
+      "source_locators": [
+        {
+          "url": "https://arxiv.org/html/2601.22554v1",
+          "locator": "§3.1 Overview, §3.2 Blueprint Attribute, §3.3 Environment Extension, and Figure 1: annotated Lean declarations own blueprint metadata, inferred dependencies and proof-status projection."
+        }
+      ],
       "artifact_links": [
         {
           "path": "paper/systems/cold-clone-to-proof-receipt.tex",
@@ -4760,14 +4766,21 @@
         },
         {
           "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
-          "line_start": 1588,
-          "line_end": 1593,
+          "line_start": 1589,
+          "line_end": 1594,
           "expected_text": "\\bibitem{leanarchitect}",
           "excerpt_sha256": "sha256:a79881cccf900aa81e79f56667f432a2c78d4fe0ce5caf35422ec16531187624"
+        },
+        {
+          "path": "docs/research-commons/rounds/round7/README.md",
+          "line_start": 61,
+          "line_end": 64,
+          "expected_text": "[LeanArchitect, v1]",
+          "excerpt_sha256": "sha256:874b2be52514deae844bef1f44fcbc81dfb88cf010c98a26bf6bc0cfa4dae767"
         }
       ],
-      "relation": "Cited by the linked public manuscript(s). The bibliography and citation contexts record the paper's use; no tracked primary-source closure currently verifies a stronger source-level relation.",
-      "verification_state": "bibliography_only",
+      "relation": "The round-7 research-commons note cites LeanArchitect as prior art for a blueprint generated from annotated Lean source. Older manuscript citations remain bibliography contexts, not source-verified by this bounded reading.",
+      "verification_state": "source_verified",
       "bibliography_keys": [
         {
           "path": "paper/systems/cold-clone-to-proof-receipt.tex",
@@ -4778,7 +4791,10 @@
           "key": "leanarchitect"
         }
       ],
-      "paper_reported_locators": []
+      "paper_reported_locators": [],
+      "mapping_status": "bounded_round7_source_use",
+      "mapping_note": "Version-1 Methods §§3.1–3.3 and Figure 1 checked for the round-7 README statement.",
+      "verification_scope": "Only the round-7 README passage at lines 55–58 is source-verified against arXiv:2601.22554v1 Methods §§3.1–3.3 and Figure 1. The informal/formal correspondence distinction is a bounded inference from the paper’s stated mechanism, not a claim of a full audit or unique architecture."
     },
     {
       "id": "source-944a1a754b1f3a",
@@ -4806,8 +4822,8 @@
         },
         {
           "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
-          "line_start": 1585,
-          "line_end": 1588,
+          "line_start": 1586,
+          "line_end": 1589,
           "expected_text": "\\bibitem{leanblueprint}",
           "excerpt_sha256": "sha256:7309da2fcaace6abbd9af2aeeb912021812d164e3d40997aa7c1cb4e98c478c8"
         }
@@ -4859,8 +4875,8 @@
         },
         {
           "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
-          "line_start": 1607,
-          "line_end": 1610,
+          "line_start": 1608,
+          "line_end": 1611,
           "expected_text": "\\bibitem{leandojo}",
           "excerpt_sha256": "sha256:80218c80a0b100a8360f88d3e1a3726d130e48747a99ee6ad9750c781000d3d7"
         }
@@ -5001,8 +5017,8 @@
         },
         {
           "path": "paper/269/erdos-269-three-prime-running-lcm.tex",
-          "line_start": 967,
-          "line_end": 970,
+          "line_start": 973,
+          "line_end": 976,
           "expected_text": "\\bibitem{erdos1974letter}",
           "excerpt_sha256": "sha256:c96fc6ec675af873515b2c54bc711717a8fc43e0ef49d8237f9f330492b2bfa1"
         },
@@ -5891,8 +5907,8 @@
         },
         {
           "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
-          "line_start": 1541,
-          "line_end": 1544,
+          "line_start": 1542,
+          "line_end": 1545,
           "expected_text": "\\bibitem{ehp1958}",
           "excerpt_sha256": "sha256:1c7bbff8b9ecf2229080e8b8ba7833142628f64292e1aecef725441fa86f7ef9"
         }
@@ -6458,8 +6474,8 @@
         },
         {
           "path": "paper/269/erdos-269-three-prime-running-lcm.tex",
-          "line_start": 961,
-          "line_end": 964,
+          "line_start": 967,
+          "line_end": 970,
           "expected_text": "\\bibitem{erdosgraham1980}",
           "excerpt_sha256": "sha256:8466f5a9dd4ced1a4f291d5d67e847f3b2fca1cf34f259ca712ff23fe61bbc42"
         },
@@ -6518,8 +6534,8 @@
         },
         {
           "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
-          "line_start": 1512,
-          "line_end": 1515,
+          "line_start": 1513,
+          "line_end": 1516,
           "expected_text": "\\bibitem{erdosgraham}",
           "excerpt_sha256": "sha256:1b937681bd73e372ca1eb2a058ee0578cb99d388132d9fdc186e9ec9fc03e58b"
         }
@@ -7566,8 +7582,8 @@
         },
         {
           "path": "paper/269/erdos-269-three-prime-running-lcm.tex",
-          "line_start": 1013,
-          "line_end": 1016,
+          "line_start": 1019,
+          "line_end": 1022,
           "expected_text": "\\bibitem{kovactao2024}",
           "excerpt_sha256": "sha256:9c3c5db10d94904b54c40a45565db137f38253e6cc98c36fb7f0446f37302911"
         }
@@ -8635,8 +8651,8 @@
         },
         {
           "path": "paper/269/erdos-269-three-prime-running-lcm.tex",
-          "line_start": 986,
-          "line_end": 989,
+          "line_start": 992,
+          "line_end": 995,
           "expected_text": "\\bibitem{erdosstraus1974}",
           "excerpt_sha256": "sha256:38cd73fc723cb87858bf5ad1ff85bc3a6aed38bc336429f816ee84816442c7d9"
         },
@@ -9281,8 +9297,8 @@
         },
         {
           "path": "paper/269/erdos-269-three-prime-running-lcm.tex",
-          "line_start": 964,
-          "line_end": 967,
+          "line_start": 970,
+          "line_end": 973,
           "expected_text": "\\bibitem{erdos1988}",
           "excerpt_sha256": "sha256:a170cdfc562020c04faf65c58a81863df6e925b08eae36eba6e3fe186dbf1eb0"
         },
@@ -10392,8 +10408,8 @@
       "artifact_links": [
         {
           "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
-          "line_start": 1610,
-          "line_end": 1613,
+          "line_start": 1611,
+          "line_end": 1614,
           "expected_text": "\\bibitem{openprover}",
           "excerpt_sha256": "sha256:d05aa1d2493bce7bc302b098d84b1f8fe15b2615cb5122434cd82ac36b15b1d4"
         }
@@ -13154,8 +13170,8 @@
         },
         {
           "path": "paper/269/erdos-269-three-prime-running-lcm.tex",
-          "line_start": 973,
-          "line_end": 976,
+          "line_start": 979,
+          "line_end": 982,
           "expected_text": "\\bibitem{bugeaudlaurent2023}",
           "excerpt_sha256": "sha256:3566f4017e8d66bd416398ee1ff4829b468fbfc27cdd460a22f7d3c1443a3892"
         },
@@ -13409,8 +13425,8 @@
         },
         {
           "path": "paper/269/erdos-269-three-prime-running-lcm.tex",
-          "line_start": 979,
-          "line_end": 982,
+          "line_start": 985,
+          "line_end": 988,
           "expected_text": "\\bibitem{fan2026comment}",
           "excerpt_sha256": "sha256:38d333be83004c73220542c256f0931ce00bb2390b3a5378c76418f76b198689"
         },
@@ -13447,8 +13463,8 @@
         },
         {
           "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
-          "line_start": 1567,
-          "line_end": 1570,
+          "line_start": 1568,
+          "line_end": 1571,
           "expected_text": "\\bibitem{fan269}",
           "excerpt_sha256": "sha256:6974b157493799b4a7767f749fa6d8152750333b471355942174e4bfd947b461"
         }
@@ -13695,8 +13711,8 @@
         },
         {
           "path": "paper/269/erdos-269-three-prime-running-lcm.tex",
-          "line_start": 970,
-          "line_end": 973,
+          "line_start": 976,
+          "line_end": 979,
           "expected_text": "\\bibitem{erdosproblems}",
           "excerpt_sha256": "sha256:1f96b54624b74012e10f2b0eb737b72d04c0a867978035159fb1c8d591f76534"
         },
@@ -13871,15 +13887,15 @@
         },
         {
           "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
-          "line_start": 1538,
-          "line_end": 1541,
+          "line_start": 1539,
+          "line_end": 1542,
           "expected_text": "\\bibitem{erdos1041}",
           "excerpt_sha256": "sha256:62c7f30e6e69a9518a78ce54ec17705c85fe324ecc02ed5ab901a96123bb8909"
         },
         {
           "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
-          "line_start": 1480,
-          "line_end": 1482,
+          "line_start": 1481,
+          "line_end": 1483,
           "expected_text": "\\bibitem{erdosproblems}",
           "excerpt_sha256": "sha256:1ac5357f10c02faa48f742246381cd200e43461ec7bf1ad931f1b9be3964b97b"
         }
@@ -14514,8 +14530,8 @@
         },
         {
           "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
-          "line_start": 1544,
-          "line_end": 1547,
+          "line_start": 1545,
+          "line_end": 1548,
           "expected_text": "\\bibitem{aniforum}",
           "excerpt_sha256": "sha256:4419d8e310bee757279aba1d4fb70c9d9b4ebd270e118ac08c5e49ce48817fbd"
         }
@@ -15994,8 +16010,8 @@
         },
         {
           "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
-          "line_start": 1573,
-          "line_end": 1576,
+          "line_start": 1574,
+          "line_end": 1577,
           "expected_text": "\\bibitem{prove2me}",
           "excerpt_sha256": "sha256:c9a36ce66934887ca2d845c1c21fdca445b85d85fda8067ad6a244acf9f4fbe6"
         }
@@ -16048,10 +16064,16 @@
         "2026"
       ],
       "urls": [
-        "https://arxiv.org/abs/2601.22401"
+        "https://arxiv.org/abs/2601.22401",
+        "https://arxiv.org/html/2601.22401v1"
       ],
       "problems": [],
-      "source_locators": [],
+      "source_locators": [
+        {
+          "url": "https://arxiv.org/html/2601.22401v1",
+          "locator": "§1.1, human evaluation and Table 2: 200 adjudicated responses; 63 technically correct; 13 meaningfully correct; 50 valid under unintended readings."
+        }
+      ],
       "artifact_links": [
         {
           "path": "paper/systems/open-source-mathematics-strategy.tex",
@@ -16062,14 +16084,21 @@
         },
         {
           "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
-          "line_start": 1531,
-          "line_end": 1534,
+          "line_start": 1532,
+          "line_end": 1535,
           "expected_text": "\\bibitem{aletheia}",
           "excerpt_sha256": "sha256:06650ad7fd498dc3411f33be1c9fa8d899b3b07e13190cc806400263d07a88c8"
+        },
+        {
+          "path": "docs/research-commons/rounds/round7/README.md",
+          "line_start": 56,
+          "line_end": 60,
+          "expected_text": "[Feng et al., v1",
+          "excerpt_sha256": "sha256:1d66252ee7cb6baaf5065f96ec3ab4dad3e7296eca6d2c98ed0d5c7e41e08a97"
         }
       ],
-      "relation": "Cited by both public systems papers as prior published evidence (v3, 5 February 2026) that kernel-correct solutions of misread statements are vacuous (63 technically correct, 13 meaningfully correct of 200 graded; the Erdős-75 appendix), that literature identification and intent dominate review effort, for the AI-verifier-then-expert attention funnel, the four-way outcome taxonomy, the subconscious-plagiarism risk, and the rule that humans author mathematics papers. None of this repository's eight problems appears in its results.",
-      "verification_state": "bibliography_only",
+      "relation": "The round-7 research-commons note cites the version-1 human evaluation distinction between technical validity and intended-problem meaning. Older systems-paper citations remain registered as bibliography contexts, without passage-level verification by this round-7 review.",
+      "verification_state": "source_verified",
       "bibliography_keys": [
         {
           "path": "paper/systems/open-source-mathematics-strategy.tex",
@@ -16080,7 +16109,10 @@
           "key": "aletheia"
         }
       ],
-      "paper_reported_locators": []
+      "paper_reported_locators": [],
+      "mapping_status": "bounded_round7_source_use",
+      "mapping_note": "Version-1 §1.1 and Table 2 checked for the round-7 README statement; prior manuscript comparisons are outside this review.",
+      "verification_scope": "Only the round-7 README passage at lines 50–54 is source-verified against arXiv:2601.22401v1 §1.1 and Table 2. No full paper audit, global comparison, or verification of older manuscript claims."
     },
     {
       "id": "source-a028dc6bb31c0c",
@@ -16134,8 +16166,8 @@
         },
         {
           "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
-          "line_start": 1576,
-          "line_end": 1579,
+          "line_start": 1577,
+          "line_end": 1580,
           "expected_text": "\\bibitem{autonomousmath}",
           "excerpt_sha256": "sha256:8390940285e5ebe3fa348b34c283e57cd010fdfb08dc84dbd79db8071c51e094"
         }
@@ -16179,8 +16211,8 @@
         },
         {
           "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
-          "line_start": 1579,
-          "line_end": 1582,
+          "line_start": 1580,
+          "line_end": 1583,
           "expected_text": "\\bibitem{taowiki}",
           "excerpt_sha256": "sha256:b286b09fb9c90ba4049a0069fa8b7698b73f4799d2b73fac1a54fdceef20a7d8"
         }
@@ -16298,8 +16330,8 @@
       "artifact_links": [
         {
           "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
-          "line_start": 1613,
-          "line_end": 1616,
+          "line_start": 1614,
+          "line_end": 1617,
           "expected_text": "\\bibitem{lihai}",
           "excerpt_sha256": "sha256:b82d8ed1c80672ed82ae452a87448ac398ce482d8717aebd2d8eb1d7b21c714d"
         }
@@ -16885,8 +16917,8 @@
         },
         {
           "path": "paper/269/erdos-269-three-prime-running-lcm.tex",
-          "line_start": 995,
-          "line_end": 998,
+          "line_start": 1001,
+          "line_end": 1004,
           "expected_text": "\\bibitem{fan2026strongly}",
           "excerpt_sha256": "sha256:89365f17cd5c9375bfee104214e4355cd14808bfdc25bae5d0d57d71698246ad"
         },
@@ -16906,8 +16938,8 @@
         },
         {
           "path": "paper/269/erdos-269-three-prime-running-lcm.tex",
-          "line_start": 940,
-          "line_end": 940,
+          "line_start": 946,
+          "line_end": 946,
           "expected_text": "{fan2026strongly}",
           "excerpt_sha256": "sha256:45a3e611b0a8480fc41edec592fb5af0e910c1b43461df88eb9a61230578854e"
         }
@@ -17200,8 +17232,8 @@
       "artifact_links": [
         {
           "path": "paper/269/erdos-269-three-prime-running-lcm.tex",
-          "line_start": 989,
-          "line_end": 992,
+          "line_start": 995,
+          "line_end": 998,
           "expected_text": "\\bibitem{hancltijdeman2004}",
           "excerpt_sha256": "sha256:102b617cbf408f358626ce785399d55baf63d64228a12995ce76a5747cad8bfb"
         },
@@ -17271,8 +17303,8 @@
       "artifact_links": [
         {
           "path": "paper/269/erdos-269-three-prime-running-lcm.tex",
-          "line_start": 992,
-          "line_end": 995,
+          "line_start": 998,
+          "line_end": 1001,
           "expected_text": "\\bibitem{erdostaylor1957}",
           "excerpt_sha256": "sha256:a90c5dfbfb8e145cf527f538fca7dae79167bd3b9090eb55e85806bc4d0edba4"
         },
@@ -17379,8 +17411,8 @@
         },
         {
           "path": "paper/269/erdos-269-three-prime-running-lcm.tex",
-          "line_start": 1016,
-          "line_end": 1019,
+          "line_start": 1022,
+          "line_end": 1025,
           "expected_text": "\\bibitem{afperdosstraus2020}",
           "excerpt_sha256": "sha256:997988654d9ef70ccc079da055de714cc3514f6ed4822ee4b84eab7c073da669"
         }
@@ -18569,8 +18601,8 @@
         },
         {
           "path": "paper/269/erdos-269-three-prime-running-lcm.tex",
-          "line_start": 1019,
-          "line_end": 1023,
+          "line_start": 1025,
+          "line_end": 1029,
           "expected_text": "\\bibitem{adamczewskibugeaud2007}",
           "excerpt_sha256": "sha256:2d8e8e60c166ca01ea9461e45af9157b2f035c8a50a7d38749db5dbf50c5e728"
         },
@@ -20376,8 +20408,8 @@
         },
         {
           "path": "paper/269/erdos-269-three-prime-running-lcm.tex",
-          "line_start": 998,
-          "line_end": 1001,
+          "line_start": 1004,
+          "line_end": 1007,
           "expected_text": "\\bibitem{hancltijdeman2008}",
           "excerpt_sha256": "sha256:45604844b23b875721c499f1d941719928dcc2b6bb269b97c8564702e5d3051b"
         },
@@ -21546,8 +21578,8 @@
       "artifact_links": [
         {
           "path": "paper/269/erdos-269-three-prime-running-lcm.tex",
-          "line_start": 1023,
-          "line_end": 1029,
+          "line_start": 1029,
+          "line_end": 1035,
           "expected_text": "\\bibitem{adamczewskifaverjon2026}",
           "excerpt_sha256": "sha256:f0b413584f891c1a725c23699a9efae2e7cbaba89e97347422243d21325f0020"
         },
@@ -21613,8 +21645,8 @@
       "artifact_links": [
         {
           "path": "paper/269/erdos-269-three-prime-running-lcm.tex",
-          "line_start": 1004,
-          "line_end": 1007,
+          "line_start": 1010,
+          "line_end": 1013,
           "expected_text": "\\bibitem{kebis2024echoing}",
           "excerpt_sha256": "sha256:b9e2249bc4d01297697400d9029b3c8e7883b75d69de50546f4bde27319bc74f"
         },
@@ -21679,8 +21711,8 @@
       "artifact_links": [
         {
           "path": "paper/269/erdos-269-three-prime-running-lcm.tex",
-          "line_start": 1010,
-          "line_end": 1013,
+          "line_start": 1016,
+          "line_end": 1019,
           "expected_text": "\\bibitem{languasco2025}",
           "excerpt_sha256": "sha256:4882a3b299d75653e0733b29ff553b0c30bef3f7e4584c239baa2dc69d719f05"
         },
@@ -21744,8 +21776,8 @@
       "artifact_links": [
         {
           "path": "paper/269/erdos-269-three-prime-running-lcm.tex",
-          "line_start": 1001,
-          "line_end": 1004,
+          "line_start": 1007,
+          "line_end": 1010,
           "expected_text": "\\bibitem{lucaouaknineworrell2025}",
           "excerpt_sha256": "sha256:c38b879eb5217d10f2aed8b52d4612ade541384e4d3e5da0fc7060cf204a573b"
         },
@@ -21856,8 +21888,8 @@
       "artifact_links": [
         {
           "path": "paper/269/erdos-269-three-prime-running-lcm.tex",
-          "line_start": 1007,
-          "line_end": 1010,
+          "line_start": 1013,
+          "line_end": 1016,
           "expected_text": "\\bibitem{tijdemanmeijer1974}",
           "excerpt_sha256": "sha256:56c3313573f1c66b97e759caddfa08857ff02beecce742ca74aa60516751dfb8"
         },
@@ -22956,8 +22988,8 @@
       "artifact_links": [
         {
           "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
-          "line_start": 1492,
-          "line_end": 1496,
+          "line_start": 1493,
+          "line_end": 1497,
           "expected_text": "\\bibitem{kra}",
           "excerpt_sha256": "sha256:e32354d6e9dce5beea0bd7639fc428e29239061b36285063968f4c6b438d2b27"
         }
@@ -22990,8 +23022,8 @@
       "artifact_links": [
         {
           "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
-          "line_start": 1496,
-          "line_end": 1499,
+          "line_start": 1497,
+          "line_end": 1500,
           "expected_text": "\\bibitem{cohn}",
           "excerpt_sha256": "sha256:069ff384c13f55f042ef0e445571c6ee28f771d27e9e80ae21ed97ffbf0c2689"
         }
@@ -23024,8 +23056,8 @@
       "artifact_links": [
         {
           "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
-          "line_start": 1499,
-          "line_end": 1501,
+          "line_start": 1500,
+          "line_end": 1502,
           "expected_text": "\\bibitem{taomining}",
           "excerpt_sha256": "sha256:2d82072ecac5b1ee63f9196038f8571e3f41c077968642287239a708bf0838ac"
         }
@@ -23058,8 +23090,8 @@
       "artifact_links": [
         {
           "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
-          "line_start": 1501,
-          "line_end": 1505,
+          "line_start": 1502,
+          "line_end": 1506,
           "expected_text": "\\bibitem{fieldsdecl}",
           "excerpt_sha256": "sha256:89a8572972941dbe073d1556d617df2e0a8d68508abbb26e667f054aa22542c9"
         }
@@ -23092,8 +23124,8 @@
       "artifact_links": [
         {
           "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
-          "line_start": 1505,
-          "line_end": 1508,
+          "line_start": 1506,
+          "line_end": 1509,
           "expected_text": "\\bibitem{sanderson}",
           "excerpt_sha256": "sha256:57b56b3dc98f87e01830ec9d8ad0f84c00156ef9828cf7682e76d145c0ecf451"
         }
@@ -23126,8 +23158,8 @@
       "artifact_links": [
         {
           "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
-          "line_start": 1534,
-          "line_end": 1536,
+          "line_start": 1535,
+          "line_end": 1537,
           "expected_text": "\\bibitem{leanfrocomparator}",
           "excerpt_sha256": "sha256:deb96a200b13f5e87c5d0fd551fcbcf9b199c27d94d72de6039982177c546346"
         }
@@ -23158,8 +23190,8 @@
       "artifact_links": [
         {
           "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
-          "line_start": 1536,
-          "line_end": 1538,
+          "line_start": 1537,
+          "line_end": 1539,
           "expected_text": "\\bibitem{nanodalib}",
           "excerpt_sha256": "sha256:a524c5a22e5fbacade3320260e08f8d57395a112937206a765495b6dfc73eafb"
         }
@@ -23192,8 +23224,8 @@
       "artifact_links": [
         {
           "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
-          "line_start": 1582,
-          "line_end": 1585,
+          "line_start": 1583,
+          "line_end": 1586,
           "expected_text": "\\bibitem{ringer}",
           "excerpt_sha256": "sha256:d26896e824fc6ec4be1ca9fa58e0870913de11aaddf21f73f81231cffa1984d4"
         }
@@ -23226,8 +23258,8 @@
       "artifact_links": [
         {
           "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
-          "line_start": 1695,
-          "line_end": 1697,
+          "line_start": 1696,
+          "line_end": 1698,
           "expected_text": "\\bibitem{litt}",
           "excerpt_sha256": "sha256:be814ce4951f2905b8004c7408ab43e90833c53c2d9b14a310a0db0a25ef9a49"
         }
@@ -23260,8 +23292,8 @@
       "artifact_links": [
         {
           "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
-          "line_start": 1697,
-          "line_end": 1700,
+          "line_start": 1698,
+          "line_end": 1701,
           "expected_text": "\\bibitem{chu}",
           "excerpt_sha256": "sha256:389f1072e7710565d0ac22458d1649687336a06f23358534558210550d8c9d02"
         }
@@ -23294,8 +23326,8 @@
       "artifact_links": [
         {
           "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
-          "line_start": 1700,
-          "line_end": 1705,
+          "line_start": 1701,
+          "line_end": 1706,
           "expected_text": "\\bibitem{greenletter}",
           "excerpt_sha256": "sha256:ac245ce2f2ef2f2b58c37f9d6208461ebddbd9910d265d81108a7b2a80ee0c8d"
         }
@@ -23328,8 +23360,8 @@
       "artifact_links": [
         {
           "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
-          "line_start": 1705,
-          "line_end": 1708,
+          "line_start": 1706,
+          "line_end": 1709,
           "expected_text": "\\bibitem{gowers}",
           "excerpt_sha256": "sha256:3a38116bdc9ac7954a4da9c52e66825e7c058d6e89d5d407cbaa402c7e2c6d4a"
         }
@@ -23362,8 +23394,8 @@
       "artifact_links": [
         {
           "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
-          "line_start": 1708,
-          "line_end": 1711,
+          "line_start": 1709,
+          "line_end": 1712,
           "expected_text": "\\bibitem{koukoulopoulos}",
           "excerpt_sha256": "sha256:78dd6ea8e8ef43d29d302fc8b5de01969a7254476ce7b4f61f7082ea5b1bdea9"
         }
@@ -23396,8 +23428,8 @@
       "artifact_links": [
         {
           "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
-          "line_start": 1711,
-          "line_end": 1713,
+          "line_start": 1712,
+          "line_end": 1714,
           "expected_text": "\\bibitem{antieau}",
           "excerpt_sha256": "sha256:40636bd4181cb1367d332b1f51606f18e04ec37fb1b15e45c260a64dba3ce1ac"
         }
@@ -23528,6 +23560,116 @@
         }
       ],
       "paper_reported_locators": []
+    },
+    {
+      "id": "source-05a4915b796443",
+      "kind": "literature",
+      "title": "ScienceAgentBench: Toward Rigorous Assessment of Language Agents for Data-Driven Scientific Discovery",
+      "authors": [
+        "Ziru Chen",
+        "Shijie Chen",
+        "Yuting Ning",
+        "Qianheng Zhang",
+        "Boshi Wang",
+        "Botao Yu",
+        "Yifei Li",
+        "Zeyi Liao",
+        "Chen Wei",
+        "Zitong Lu",
+        "Vishal Dey",
+        "Mingyi Xue",
+        "Frazier N. Baker",
+        "Benjamin Burns",
+        "Daniel Adu-Ampratwum",
+        "Xuhui Huang",
+        "Xia Ning",
+        "Song Gao",
+        "Yu Su",
+        "Huan Sun"
+      ],
+      "publication_years": [
+        "2024"
+      ],
+      "urls": [
+        "https://arxiv.org/html/2410.05080v2"
+      ],
+      "problems": [],
+      "source_locators": [
+        {
+          "url": "https://arxiv.org/html/2410.05080v2",
+          "locator": "§2.1 Problem Formulation, §2.2 Data Collection, §2.3 Evaluation, §4.1 Main Results: publication-derived scientific coding tasks, self-contained Python outputs, task-specific execution grading and cost accounting."
+        }
+      ],
+      "artifact_links": [
+        {
+          "path": "docs/research-commons/rounds/round7/README.md",
+          "line_start": 65,
+          "line_end": 68,
+          "expected_text": "[ScienceAgentBench, v2]",
+          "excerpt_sha256": "sha256:92b7b9cc64a1acc947637d28189aed2eaf7a81277bae40c024328d6a919e0414"
+        }
+      ],
+      "relation": "The round-7 research-commons note uses the paper’s task construction and grading design as evaluation prior art; the benchmark’s results are not local mathematical-reading measurements.",
+      "verification_state": "source_verified",
+      "bibliography_keys": [],
+      "paper_reported_locators": [],
+      "mapping_status": "bounded_round7_source_use",
+      "mapping_note": "Version-2 methods and evaluation passages checked for the round-7 README design choice.",
+      "verification_scope": "Only the round-7 README passage at lines 59–62 is source-verified against arXiv:2410.05080v2 §§2.1–2.3 and 4.1. No model score transfer, full-paper audit, or claim of local performance."
+    },
+    {
+      "id": "source-cf94fac28d0ff1",
+      "kind": "literature",
+      "title": "AlphaEvolve: A coding agent for scientific and algorithmic discovery",
+      "authors": [
+        "Alexander Novikov",
+        "Ngân Vũ",
+        "Marvin Eisenberger",
+        "Emilien Dupont",
+        "Po-Sen Huang",
+        "Adam Zsolt Wagner",
+        "Sergey Shirobokov",
+        "Borislav Kozlovskii",
+        "Francisco J. R. Ruiz",
+        "Abbas Mehrabian",
+        "M. Pawan Kumar",
+        "Abigail See",
+        "Swarat Chaudhuri",
+        "George Holland",
+        "Alex Davies",
+        "Sebastian Nowozin",
+        "Pushmeet Kohli",
+        "Matej Balog"
+      ],
+      "publication_years": [
+        "2025"
+      ],
+      "urls": [
+        "https://arxiv.org/html/2506.13131v1"
+      ],
+      "problems": [],
+      "source_locators": [
+        {
+          "url": "https://arxiv.org/html/2506.13131v1",
+          "locator": "§2.1 Task specification, §2.4 Evaluation, §2.5 Evolution: supplied program, evolvable regions and automatically computable evaluators bound scored program search."
+        }
+      ],
+      "artifact_links": [
+        {
+          "path": "docs/research-commons/rounds/round7/README.md",
+          "line_start": 69,
+          "line_end": 72,
+          "expected_text": "[AlphaEvolve, v1]",
+          "excerpt_sha256": "sha256:cd2254d00d767097a5253778989b0a7f0e7faeb4113eb8147432197bdcc8ac18"
+        }
+      ],
+      "relation": "The round-7 research-commons note uses evaluator-scoped program evolution as a prior-art comparison for prospective mechanism-transfer experiments.",
+      "verification_state": "source_verified",
+      "bibliography_keys": [],
+      "paper_reported_locators": [],
+      "mapping_status": "bounded_round7_source_use",
+      "mapping_note": "Version-1 task-specification, evaluation and evolution passages checked for the round-7 README design choice.",
+      "verification_scope": "Only the round-7 README passage at lines 63–66 is source-verified against arXiv:2506.13131v1 §§2.1, 2.4 and 2.5. The local target/baseline/disconfirmation requirement is this project’s experimental protocol, not an AlphaEvolve outcome."
     }
   ],
   "lean_reviews": [

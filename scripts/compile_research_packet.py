@@ -18,7 +18,9 @@ obligations, withholding) and the contrast ledger
   contrast whose triggers match the target adds one obligation whose single
   alternative is the whole evidence bundle of that contrast, so both sides of
   the distinction reach the reader. An authored obligation with origin
-  ``contrast:<id>`` replaces the derived one.
+  ``contrast:<id>`` replaces the derived one only in the legacy mode. The
+  dispatch profile sets ``protect_contrasts=true`` and refuses such overrides;
+  extra authored views must be additive, not substitutes for a guard.
 * Withheld resources, resources after the cutoff (or with no availability date
   when a cutoff is set), resources in an excluded family, resources whose span
   overlaps blocked bytes, and everything depending on them are blocked.
@@ -74,7 +76,8 @@ CONTRAST_PREFIX = "contrast-"
 RESOURCE_KINDS = ("source_span", "file", "declaration")
 SPEC_FIELDS = {"schema", "packet_id", "title", "question", "target", "byte_budget", "mandatory",
                "resources", "obligations", "withheld", "excluded_families", "cutoff",
-               "include_triggered_contrasts", "contrasts", "state_budget", "declaration_window"}
+               "include_triggered_contrasts", "contrasts", "state_budget", "declaration_window",
+               "protect_contrasts"}
 RESOURCE_FIELDS = {"id", "kind", "path", "name", "start_line", "end_line", "must_contain",
                    "depends_on", "family", "available_at", "role"}
 EVIDENCE_BOUNDARY = (
@@ -129,6 +132,8 @@ class Resource:
     available_at: str | None = None
     role: str | None = None
     window_capped: bool = False
+    # Hash only the exact selected source text, never its provenance header.
+    payload_sha256: str | None = None
 
     @property
     def excerpt_sha256(self) -> str:
@@ -142,7 +147,8 @@ class Resource:
         row = {"id": self.id, "kind": self.kind, "origin": self.origin, "path": self.path,
                "start_line": self.start_line, "end_line": self.end_line,
                "file_sha256": self.file_sha256, "binding": self.binding,
-               "excerpt_sha256": self.excerpt_sha256, "bytes": self.cost,
+               "excerpt_sha256": self.excerpt_sha256, "payload_sha256": self.payload_sha256,
+               "bytes": self.cost,
                "evidence_class": self.evidence_class, "must_contain": list(self.must_contain),
                "depends_on": list(self.depends_on)}
         if self.name:
@@ -265,7 +271,8 @@ def resolve_resource(row: Mapping[str, Any], tree: ledger.SourceTree,
                     excerpt=excerpt, file_sha256=blob.sha256, binding=blob.binding,
                     evidence_class=evidence_class, origin=origin, name=declaration,
                     must_contain=must_contain, depends_on=depends_on, family=family,
-                    available_at=available_at, role=row.get("role"), window_capped=capped)
+                    available_at=available_at, role=row.get("role"), window_capped=capped,
+                    payload_sha256=ledger.sha256_hex(text.encode("utf-8")))
 
 
 # ---------------------------------------------------------------------------
@@ -334,9 +341,17 @@ def blocked_resources(resources: Mapping[str, Resource], withheld: Sequence[str]
             if rid in blocked:
                 continue
             for other in sorted(blocked):
-                if blocked[other].startswith(("overlaps_", "same_bytes_")):
-                    continue
                 source = resources[other]
+                # An exact copy changes its rendered hash when its path changes.
+                # Equality is a conservative custody taint, not semantic equality.
+                if source.payload_sha256 and source.payload_sha256 == res.payload_sha256:
+                    blocked[rid] = f"same_bytes_as_blocked:{other}"
+                    changed = True
+                    break
+                # Mere interval overlap does not expand the original tainted span.
+                # An exact alias, however, carries its whole copied payload.
+                if blocked[other].startswith("overlaps_"):
+                    continue
                 if source.path == res.path and source.start_line <= res.end_line \
                         and res.start_line <= source.end_line:
                     blocked[rid] = f"overlaps_blocked_material:{other}"
@@ -529,6 +544,8 @@ def validate_spec(spec: Mapping[str, Any]) -> None:
         raise SpecError("obligations must be a list")
     if not isinstance(spec.get("include_triggered_contrasts", False), bool):
         raise SpecError("include_triggered_contrasts must be true or false")
+    if not isinstance(spec.get("protect_contrasts", False), bool):
+        raise SpecError("protect_contrasts must be true or false")
     if spec.get("cutoff") is not None:
         instant(spec["cutoff"], "cutoff")
 
@@ -651,6 +668,9 @@ def compile_packet(spec: Mapping[str, Any], root: Path | str = ROOT, ref: str | 
         if origin != "authored" and not (isinstance(origin, str) and origin.startswith("contrast:")):
             raise SpecError(f"obligation {oid} origin must be 'authored' or 'contrast:<id>'")
         if origin.startswith("contrast:"):
+            if spec.get("protect_contrasts", False):
+                raise SpecError(f"obligation {oid}: protected contrast cannot be replaced; "
+                                "use origin=authored for an additional view")
             overridden.add(origin.split(":", 1)[1])
         alternatives = row.get("alternatives")
         if not isinstance(alternatives, list) or not alternatives or any(
@@ -722,6 +742,7 @@ def compile_packet(spec: Mapping[str, Any], root: Path | str = ROOT, ref: str | 
         "blocked": {rid: blocked[rid] for rid in sorted(blocked)},
         "mandatory_closure": sorted(mandatory),
         "contrast_selection": contrast_log,
+        "protect_contrasts": spec.get("protect_contrasts", False),
         "evidence_boundary": EVIDENCE_BOUNDARY,
     }
 
