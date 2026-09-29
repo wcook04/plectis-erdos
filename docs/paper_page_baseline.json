@@ -7,7 +7,7 @@
   "erdos-243-reciprocal-tail-rigidity": 19,
   "erdos-249-binary-totient-series": 17,
   "erdos-251-prime-gap-dyadic-series": 15,
-  "erdos-257-mersenne-support-subseries": 23,
+  "erdos-257-mersenne-support-subseries": 24,
   "erdos-269-three-prime-running-lcm": 17,
   "erdos-1041-lemniscate-newton-flow": 32,
   "erdos-1049-rational-base-lambert": 21,
@@ -17,10 +17,10 @@
   "erdos251-prime-gap-reasoning-surface": 49,
   "erdos257-mersenne-reasoning-surface": 166,
   "erdos269-running-lcm-reasoning-surface": 69,
-  "erdos1041-lemniscate-reasoning-surface": 83,
-  "erdos1049-rational-base-lambert-reasoning-surface": 75
+  "erdos1041-lemniscate-reasoning-surface": 84,
+  "erdos1049-rational-base-lambert-reasoning-surface": 77
  },
- "total": 883,
+ "total": 887,
  "revisions": [
   {
    "date": "2026-09-26",
@@ -63,6 +63,27 @@
    "from": 73,
    "to": 75,
    "reason": "Round-12 rewrite moved ten short-paper results into the record (declared merges); same typography."
+  },
+  {
+   "date": "2026-09-29",
+   "paper": "erdos-257-mersenne-support-subseries",
+   "from": 23,
+   "to": 24,
+   "reason": "Round-13 supplies complete/incomplete modular-period estimates, distinguishes the dyadic sample count from each length, and makes the shared witness explicit. Same typography; GPT-6.1 Sol and integrating Type A reviewed source delta and native pages 3\u20134."
+  },
+  {
+   "date": "2026-09-29",
+   "paper": "erdos1041-lemniscate-reasoning-surface",
+   "from": 83,
+   "to": 84,
+   "reason": "Round-13 places missing analytic-input qualifications beside the ordinary low-critical-value, isolated-value and topological assertions. Same typography; GPT-6.1 Sol and integrating Type A reviewed source delta and native page 27."
+  },
+  {
+   "date": "2026-09-29",
+   "paper": "erdos1049-rational-base-lambert-reasoning-surface",
+   "from": 75,
+   "to": 77,
+   "reason": "Round-13 separates the checked polynomial-shift proof from the retained broader ordinary ratio-limit argument and gives the finite-convolution calculation of the 8F correction. Same typography; GPT-6.1 Sol and integrating Type A reviewed source delta and native pages 34\u201335."
   }
  ]
 }

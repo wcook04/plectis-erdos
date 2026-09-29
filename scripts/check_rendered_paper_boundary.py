@@ -119,6 +119,47 @@ FIRST_MINUTE_CONTRACT = {
     },
 }
 
+# The unified manuscript has its own reviewed reading windows. The publication
+# contract selects this profile; historical manuscript checks retain their
+# original wording and windows.
+UNIFIED_SYSTEMS_FIRST_MINUTE = {
+    (1, 1): (
+        "problem-sized lean worlds",
+        "from a lean corpus to a short paper",
+        "combining formal mathematics with computations, literature and the questions still open",
+        "a false claim about mathematical scope escaped",
+    ),
+    (4, 5): (
+        "lean verifies that a proof establishes the formal statement",
+        "comparator adds a separately stated challenge",
+        "source-frozen editorial refinement",
+        "share this acceptance boundary",
+        "no measurement of reader benefit or autonomous discovery",
+    ),
+    (6, 7): (
+        "an open route for contributions",
+        "does not certify independent review or increased discovery rate",
+        "no completed external cold-clone use had been recorded",
+        "nine of the ten deliberately false edits were rejected and one escaped",
+    ),
+    (8, 10): (
+        "understanding by independent human readers are unresolved",
+        "openness alone does not equalise resources",
+        "no new lean or comparator execution",
+        "local integration commit rather than public main",
+    ),
+}
+
+
+def unified_systems_profile(pdf: Path) -> bool:
+    if pdf.name != "claim-faithful-publication-systems-paper.pdf":
+        return False
+    contract = json.loads((ROOT / "docs/publication_contract.json").read_text())
+    return any(a.get("systems_paper_profile") == "unified_corpus_to_paper_v1"
+               and Path(a["rendered_path"]).name == pdf.name
+               for a in contract["artifacts"])
+
+
 # \rootword has the same four-argument shape as \lword and, like it, prints only
 # its fourth argument; the module path sits inside the href. Leaving it out of
 # this list made the gateway paper's root-navigation links read as visible
@@ -422,7 +463,8 @@ def semantic_text(text: str) -> str:
 
 def first_minute_errors(pdf: Path, pdftotext: str) -> list[str]:
     errors: list[str] = []
-    contract = FIRST_MINUTE_CONTRACT.get(pdf.name, {})
+    contract = (UNIFIED_SYSTEMS_FIRST_MINUTE if unified_systems_profile(pdf)
+                else FIRST_MINUTE_CONTRACT.get(pdf.name, {}))
     for (first, last), anchors in contract.items():
         try:
             text = semantic_text(rendered_pages(pdf, pdftotext, first, last))
@@ -504,7 +546,7 @@ def architecture_rendered_errors(pdf: Path, text: str) -> list[str]:
             errors.append(
                 f"prints private or score-like shorthand {pattern.pattern!r}"
             )
-    if len(re.findall(r"\bsentence\b", compact)) > 4:
+    if not unified_systems_profile(pdf) and len(re.findall(r"\bsentence\b", compact)) > 4:
         errors.append("has regressed to a sentence-centred case study")
     return [f"{pdf.relative_to(ROOT)}: {error}" for error in errors]
 

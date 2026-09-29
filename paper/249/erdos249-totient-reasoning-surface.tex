@@ -195,23 +195,26 @@
 \paperprovenance
 
 \begin{abstract}
-The series $S=\sum_{n\ge1}\varphi(n)2^{-n}$ admits exact tail identities
-and finite tests excluding specified rational denominators. We give the
-proofs of these tests, the integral relations among totient sections, and
-rational comparison sequences preserving several kinds of coefficient
-data. We also derive sufficient exponential-sum estimates and identify
-the weighted cancellation that remains to be proved. The irrationality
-of $S$ is unresolved.
+Differences of scaled tails convert the irrationality question for
+$S=\sum_{n\ge1}\varphi(n)2^{-n}$ into finite residue inequalities.
+We give the identities, denominator exclusions and comparison
+constructions behind these tests, together with the coefficient relations
+among totient sections. Two weighted exponential sums describe the
+remaining cancellation in one sufficient criterion. The irrationality of
+$S$ remains open; the rational comparisons preserve only their specified
+coefficient data.
 \end{abstract}
 
 \section*{Organisation}
-The short paper, \emph{Integral Relations among Totient Sections}, proves
-that the sections through level $e\ge1$ in base $k\ge2$ have rank $k^e+1$
-and gives all their integral relations. Its
-\shortpaper{short249-proof}{proof of the basis theorem} is independent of
-the irrationality question. Here we develop the tail identities and
-comparison sequences needed to understand the additional arithmetic
-conditions on $S$.
+The coefficient problem and the value problem have different conclusions.
+The \shortpaper{short249-proof}{short paper} determines a basis of rank
+$k^e+1$ for the totient sections through level $e\ge1$ in every base
+$k\ge2$, together with all integral relations. This record concerns the
+further estimates needed to decide whether
+$S=\sum_{n\ge1}\varphi(n)2^{-n}$ is irrational. Tail identities turn that
+question into finite residue inequalities; rational comparison sequences
+show why several kinds of coefficient information do not force those
+inequalities.
 
 We first introduce the residue test of Definition~\ref{defn:sep} and the
 rational comparisons in Section~\ref{sec:wall}. Section~\ref{sec:survivors}
@@ -243,15 +246,15 @@ implication does not establish its hypothesis.
 % ; - part a249_front ; -
 \section{Totient sections and tail differences}
 
-Let $\varphi(0)=0$ and $\N=\{0,1,2,\ldots\}$. The identities
-$\varphi(4n)=2\varphi(2n)$ and $\varphi(4n+2)=\varphi(2n+1)$ reduce the
-seven dyadic sections through level two to five independent sequences.
-At level $e\ge1$ the analogous basis consists of $\varphi(n)$,
-$\varphi(2n)$ and $\varphi(2^jn+r)$ for $1\le j\le e$ and odd
-$0<r<2^j$; its size is $2^e+1$. In base $k\ge2$ the short paper gives
-rank $k^e+1$, integral coordinates, and generators for every relation.
-The positive residues retained in that basis satisfy $k\nmid r$.
-They need not be coprime to $k$.
+Put $\varphi(0)=0$ and $\N=\{0,1,2,\ldots\}$. At base two,
+$\varphi(4n)=2\varphi(2n)$ and $\varphi(4n+2)=\varphi(2n+1)$ leave five
+independent sequences among the seven sections through level two.
+More generally, the sections through level $e\ge1$ have the basis
+$\varphi(n)$, $\varphi(2n)$ and $\varphi(2^jn+r)$ with
+$1\le j\le e$ and odd $0<r<2^j$, of size $2^e+1$.
+The all-base theorem in the short paper gives rank $k^e+1$ and integral
+coordinates. Its retained positive residues satisfy $k\nmid r$;
+coprimality with $k$ is unnecessary.
 
 The question about the series concerns more than these coefficient
 relations. Put
@@ -361,10 +364,12 @@ supplies the required residues.
 
 \subsection{Unconditional results}
 
-We begin with a finite denominator exclusion, then record the rank
-of the totient sections and the positivity of certain tail differences.
-All these results are unconditional. Positivity and coefficient rank
-alone leave open the rationality of the sum.
+The finite denominator exclusion, the ranks of the totient sections
+and the tail-positivity statements below require no additional
+arithmetic hypothesis. To distinguish their conclusions, note that
+positivity excludes a zero tail difference, whereas irrationality
+requires a nonintegral one. The rank calculation concerns the
+coefficients and supplies neither conclusion about the value by itself.
 
 \begin{thm}[Denominator exclusion from a fixed Farey window]
 \label{thm:denom}
@@ -505,16 +510,16 @@ information about $\varphi$.
 \subsection{Reduced coefficients}\label{sub:reduced-coefficients}
 \papersectiontarget{long249-r3-residue-extension}
 
-The bounded sequence $\varphi(n)\bmod m$ behaves differently from
-$\varphi(n)$ itself. For $m\ge3$ its binary series is irrational, and a
-rational-valued function of $\varphi(n)\bmod2^k$ has a rational binary
-series precisely when the function is constant on the even residues.
-To prove this, choose a prime $p$ with a prescribed value of
-$\varphi(p)\bmod m$, and use CRT to make each of the $2L$ neighbours
-$p+j$, $0<|j|\le L$, divisible by a prime congruent to $1\pmod m$.
-Thus a nonzero coefficient is isolated between zero blocks of length
-$L$, for arbitrarily large $L$. The elementary tail argument works in
-any integer base and also permits the dilation results below.
+Reduction modulo $m$ supplies the bound missing for the unreduced
+coefficients. For $m\ge3$ the binary series of $\varphi(n)\bmod m$ is
+irrational. For a rational-valued function of $\varphi(n)\bmod2^k$, its
+binary series is rational precisely when that function is constant on
+the even residues. Both assertions follow by isolating a prime $p$
+with prescribed $\varphi(p)\bmod m$: CRT makes each neighbour $p+j$,
+$0<|j|\le L$, divisible by its own prime congruent to $1\pmod m$,
+so all neighbouring residues vanish. A bound on the remaining tail
+then proves irrationality. The same argument works in any integer
+base and yields the dilation statements below.
 
 \begin{prop}[Residue series in every integer base]
 \label{prop:radixresidue}
@@ -583,13 +588,13 @@ $f_d(r)\ne f_d(0)$; the argument of (a), with $p\equiv r+1\pmod{2^K}$ in
 place of $p\equiv-1\pmod m$, isolates a nonzero coefficient.
 \end{proof}
 
-\begin{prop}[Slowly growing dyadic moduli]
+\begin{rem}[Slowly growing dyadic moduli]
 \label{prop:slowmoduli}
 Let $\kappa:\N\to\N$ satisfy $2^{\kappa(n)}=o(\log n)$, and put
 $a_n=\varphi(n)\bmod2^{\kappa(n)}$. Then $\sum_{n\ge1}a_n2^{-n}$ is
 rational exactly when $a_n=0$ for all large $n$. In particular the sum is
 irrational when $\kappa(3^k)\ge2$ for infinitely many $k$.
-\end{prop}
+\end{rem}
 \evidenceremark{Ordinary proof; not formalised in Lean.}
 
 \begin{proof}
@@ -636,7 +641,7 @@ sign. With both signs present, Lemmas~4 and~4$'$ and Theorem~3
 of~\cite{kst2026} require an additional spacing condition on the negative
 terms, which is not checked here; the isolated coefficient needs none.
 Theorem~3 of~\cite{kst2026}, with $b=0$ and $z_n=\log_2\log x_n$, also
-gives the irrational direction of Proposition~\ref{prop:slowmoduli} once
+gives the irrational direction of Remark~\ref{prop:slowmoduli} once
 the $n<x$ with $v_2(\varphi(n))<\log_2\log x$ are shown to number
 $o(x/\log\log x)$; this record does not write out that density estimate.
 Wong's base-equals-modulus theorem~\cite{wong2015} is the case $t=m$ of
@@ -646,21 +651,21 @@ Proposition~\ref{prop:radixresidue}(a).
 \section{Rational comparison sequences}
 \label{sec:wall}
 
-We compare rational sequences preserving a fixed totient prefix,
-parity at every index, or specified finite linear relations. These are
-different assumptions, and we state the preserved data separately for
-each construction. A conclusion about finite data need not extend to
-nonintegrality at unbounded indices.
+Rational series can agree with the totient series on a fixed prefix,
+on parity at every index, or on specified linear data. The following
+constructions keep these requirements separate. Each gives a rational
+comparison satisfying the data named in its statement, and thus
+identifies what those data alone leave undetermined.
 
-\subsection{What finite information does not determine}
+\subsection{Finite data and rational continuations}
 
-A prescribed prefix, parity, and a carry recurrence impose different
-restrictions on a coefficient sequence. Theorem~\ref{thm:gamma} constructs
-a rational continuation of any fixed prefix. Proposition~\ref{prop:parity}
-retains parity at every index, linear size bounds and aperiodicity.
-The constructions in Propositions~\ref{prop:b5} and~\ref{prop:b6} concern
-the particular carry and linear descriptions stated there; they make no
-assertion about all finite-state or finite-dimensional methods.
+We begin with a rational continuation of an arbitrary finite prefix
+(Theorem~\ref{thm:gamma}). Proposition~\ref{prop:parity} instead
+preserves parity at every index, a linear size bound and aperiodicity.
+The carry and linear descriptions in Propositions~\ref{prop:b5}
+and~\ref{prop:b6} impose different requirements again. Their
+counterexamples concern the displayed descriptions only; they do not
+exclude all finite-state or finite-dimensional arguments.
 
 Two other limitations do not require a rational comparison sequence.
 A congruence construction can increase the index so much that its tail
@@ -819,10 +824,10 @@ stronger example.
 
 \subsection{Limits of specific reductions and estimates}
 
-We next test whether particular congruences, recurrences and estimates
-force the required residue inequality. Each counterexample retains the
-assumptions in its statement, so the conclusion applies only to that
-deduction.
+We test several proposed deductions by retaining their assumptions
+and changing the conclusion. The constructions concern specified
+congruences, recurrences or estimates, so their force is limited to
+the corresponding deductions.
 
 
 \begin{prop}[Three particular equivalences]
@@ -1018,13 +1023,14 @@ The example does not exclude arguments using further totient identities,
 including its multiplicative relations.
 \end{prop}
 
-\subsection{What the counterexamples establish}
+\subsection{Consequences of the comparisons}
 
-These examples show why the residue margin has to be estimated together
-with the tail error. A congruence may enlarge both, and a finite prefix
-leaves all later indices free. Likewise, periodicity modulo an integer
-places no general upper bound on rational rank. The equivalent residue
-conditions still require witnesses with their stated quantifiers.
+The residue margin and the truncation error must be controlled
+together. Enlarging a congruence may enlarge both, while a finite
+prefix constrains no later coefficients. Periodicity modulo an
+integer likewise places no general upper bound on rational rank.
+These comparisons leave the equivalent residue conditions intact,
+with their original requirements for witnesses at unbounded indices.
 
 These are limitations of specified arguments, not an exhaustive
 classification of possible methods. In particular, an averaging estimate is
@@ -1036,14 +1042,18 @@ approaches considered here.
 \section{Conditions that would imply irrationality}
 \label{sec:survivors}
 
-The first three conditions below ask for quantitative estimates and
-would imply irrationality. The fourth is an equivalent reformulation of
-the original problem. We also give the rational counterexample to a
-generic rank assertion, which must therefore be distinguished from the
-open sufficient conditions. The list makes no claim to exhaust the
-possible approaches.
+Below are three quantitative sufficient conditions, an equivalent
+residue formulation, and a proposed generic rank bound. The rank bound
+is false, as its rational counterexample shows. The other arithmetic
+conditions remain open for the totient; the proofs establish their
+stated implications. They are examples of possible approaches, not
+an exhaustive list.
 
 \subsection{Cancellation on a full block}
+
+If every window residue lies close to an endpoint, its complex phase
+lies close to $1$. A saving in the norm of a block sum must therefore
+produce a certificate.
 
 \begin{defn}[The full-block norm condition]
 \label{defn:fh}
@@ -1135,10 +1145,12 @@ equidistribution or the estimate at arbitrarily large scales.
 
 \subsection{A four-term bound for the real part}\label{sub:four-sums}
 
-Write each phase as the product of one selected totient phase and a
-residual weight. We group the selected phases by their cofactors and
-subtract the group mean. Summing this identity over the good and excluded
-indices gives the four sums below.
+For a selected term $\varphi(mp)$ with $p>m$ prime, multiplicativity
+gives the phase associated with $\varphi(m)(p-1)$. We factor that
+phase out of the full window and average it within each cofactor
+group. Adding and subtracting the group mean leaves four sums, two
+requiring cancellation and two estimated by counting the excluded
+indices.
 
 Fix $h,s\ge1$, $L\ge s+h$, $X\ge1$ and $0<\eta<1$, and put
 $t=L-s+1$. For $X\le N<2X$, let $p_N$ be the largest prime factor of
@@ -1262,11 +1274,12 @@ four-term identity supplies no prime-distribution estimate.
 
 \subsection{One bound on the good indices}\label{sub:goodbasegap}
 
-For fixed $h$ and $s$, write $L(X)$ for the least $L$ with $h\le L-s$ and
-$16(2X+h+L+2)\le2^L$; this is the minimal admissible depth of
-Proposition~\ref{prop:dickman}. At $s=26$ and $\eta=1/1000$ the two proved
-counting bounds leave more than $67X/100$ of the indices in $\mathcal G$,
-and a saving on those indices alone gives irrationality.
+Two counting estimates allow us to restrict the cancellation question
+to $\mathcal G$. For fixed $h,s$, let $L(X)$ be the least $L$ satisfying
+$h\le L-s$ and $16(2X+h+L+2)\le2^L$, as in
+Proposition~\ref{prop:dickman}. With $s=26$ and $\eta=1/1000$, more
+than $67X/100$ indices remain in $\mathcal G$ for large $X$.
+A suitable saving on this set alone would therefore imply irrationality.
 
 \begin{thm}[Irrationality from one bound on the good indices]
 \label{thm:goodbasegap}
@@ -1344,6 +1357,10 @@ bound it asks for, $603X/1000$, is weaker than $11X/20$.
 
 \subsection{A fixed separation at prime positions}
 
+Instead of averaging over a block, one may ask for a fixed gap at
+prime positions. The lower bound on the prime ensures that the
+corresponding tail indices lie beyond the required threshold.
+
 \begin{defn}[A fixed gap at prime positions]
 \label{defn:primegap}
 For every $h \ge 1$ and every $N_0$ there is a prime $p$ with
@@ -1369,6 +1386,10 @@ does not supply it.
 
 \subsection{Certificates with depth equal to the shift}
 
+The unrestricted depth can be replaced by a multiple of the shift.
+The propagation argument in Appendix~\ref{long249:r3-ray} explains
+why doing so preserves the equivalence below.
+
 \begin{defn}[Depth equal to a shift multiple]
 \label{defn:apfde}
 For every $d \ge 1$ and every $N$ there is $t \ge 1$ with
@@ -1384,7 +1405,7 @@ It is equivalent to $S\notin\mathbb Q$.
 
 For the actual totient series, the condition in Definition~\ref{defn:apfde} is equivalent to
 irrationality, by the full-depth amplification argument of the short paper
-(Theorem~3.1 there;
+(the propagation theorem in Appendix~\ref{long249:r3-ray};
 \lean{apFullDepthEscape\_iff\_irrational}{ErdosProblems/Erdos249/FullDepthRayAmplifier.lean:406}).
 For a fixed pair $(d,N)$, a nonintegral tail difference supplies a certificate
 in every sufficiently late adjacent pair of multipliers. The missing
@@ -1400,6 +1421,10 @@ irrationality question.
 \noindent Formal sources: \lean{windowDiscrepancy\_self\_eq\_totientBlock\_sub}{ErdosProblems/Erdos249/PeriodMultipleEscape.lean:67}
 
 \subsection{A false generic rank bound}
+
+The coefficient rank might suggest a bound on carries under
+rationality. The next proposed assertion makes that suggestion precise;
+the rational comparison following it disproves both versions.
 
 \begin{defn}[A counterfactual rank criterion]
 \label{defn:rankupper}
@@ -1434,11 +1459,11 @@ Periodicity modulo $v$ alone does not provide the additional rank bound.
 
 \section{Guide to the detailed statements}
 
-For reference, we now give the identities and implications used above
-with their full hypotheses. The repeated formulations allow a tail
-condition to be compared directly with its residue or approximation
-form. None removes the additional arithmetic assumption in a conditional
-result.
+We next collect the identities behind the residue, tail and
+approximation formulations. The repeated statements make their
+hypotheses comparable without changing notation in the middle of an
+argument. In particular, the proof of an implication leaves its
+additional arithmetic assumption to be established.
 
 \paragraph{Quantifiers and hypotheses.} The direct certificate computations cover individual parameters or a
 finite range. Other results hold uniformly or at arbitrarily large scales,
@@ -1453,13 +1478,17 @@ logical implications and the limits of particular estimates; their source
 labels are not extra mathematical hypotheses.
 \section{Series identities and finite exclusions}\label{sec:series}
 
-We express $S$ successively through finite prefixes, scaled tails and
-M\"obius sums. The Farey calculation in Section~\ref{ssec:farey} uses a
-finite interval to exclude a specified range of rational denominators.
-The other identities give alternative expressions for the same number;
-an exclusion of all denominators would require a further estimate.
+The finite prefix separates $S$ into an integer and a scaled tail.
+We use that identity both for residue certificates and, independently,
+for the Farey-interval denominator bound in Section~\ref{ssec:farey}.
+M\"obius inversion supplies further expressions for $S$. These
+identities concern the same value; none of them by itself excludes
+all rational denominators.
 
 \subsection{The series}
+
+We begin with the value and the prefix-tail decomposition used by
+all the subsequent tests.
 
 \begin{defn}[The Erd\H{o}s--249 constant]
 \label{defn:S}
@@ -1485,6 +1514,9 @@ are catalogued here, \S\ref{ssec:certtable}).
 \end{rem}
 
 \subsection{The tail-shift identity}
+
+Multiplying by a power of two makes the finite prefix integral and
+leaves a scaled tail.
 
 \begin{prop}[Digit-shift identity]
 \label{prop:shift}
@@ -1517,10 +1549,10 @@ question through finite residues.
 \label{ssec:farey}
 \papersectiontarget{long249-r3-farey}
 
-Suppose that $S$ were rational. The Farey mediant argument below gives
-a lower bound for its denominator from a finite enclosing interval,
-without using either the tail-period test or the quantified residue
-condition.
+An interval containing $S$ excludes rational numbers whose
+denominators are too small to occur inside it. The Farey argument
+below makes this precise using a finite totient prefix and a bound
+on its tail. It is independent of the period and residue criteria.
 
 \begin{lem}[Farey gap, fully general]
 \label{lem:farey}
@@ -1664,6 +1696,9 @@ $Q_0$ exclusion for $S$.
 \subsection{The M\"obius-weighted identity}
 \label{ssec:mobius}
 
+Subtracting $1/2$ converts the totient series to a M\"obius-weighted
+squared-Lambert series without changing rationality.
+
 \begin{prop}[M\"obius-square reduction]
 \label{prop:mobsq}
 \[
@@ -1723,6 +1758,9 @@ chosen LCM; those terms cannot be discarded when transferring an estimate.
 
 \subsection{A general squared-Lambert identity}
 \label{ssec:lambert}
+
+The same geometric summation applies to any weight with the stated
+linear bound.
 
 \begin{prop}[The squared-Lambert identity]
 \label{prop:lambertengine}
@@ -1790,10 +1828,10 @@ irrational values.
 \subsection{Diagonal certificates through scale 82}
 \label{ssec:certtable}
 
-The table lists finite instances of Definition~\ref{defn:sep}.
-The aggregate theorem includes every integer scale $t\le82$;
-there is no assertion at $83$ or at unbounded scales. The individual
-links give the source computations for the displayed witnesses.
+Each row is a finite instance of Definition~\ref{defn:sep}, with a
+link to the computation producing its witness. The aggregate result
+covers every integer scale $t\le82$. It contains no assertion at
+$t=83$ or at arbitrarily large scales.
 
 \paragraph{Definition of the finite residue test} For $h,N,L : \mathbb{N}$, recall the truncated
 difference $D(h,N,L) := \sum_{j<L} (\varphi(N+h+1+j)-\varphi(N+1+j))\cdot 2^{L-1-j} \in \mathbb{Z}$
@@ -1917,19 +1955,20 @@ record supplies the quantified condition of Definition~\ref{defn:sep}.
 % ; - part a249_p1a ; -
 \section{Detailed statements}
 
-We collect the exact statements behind the preceding arguments,
-beginning with the unconditional identities, rank bounds and finite
-examples. The definitions and elementary implications follow, then the
-quantified residue conditions. A formal declaration for an implication
-includes its hypothesis; it does not establish that hypothesis for the
-totient.
+The following statements give the exact hypotheses of the preceding
+arguments. We begin with unconditional identities, rank bounds and
+finite computations, then pass to the residue and approximation
+conditions. A Lean declaration proving a conditional implication
+retains that condition as a hypothesis; it does not supply the
+missing estimate for $\varphi$.
 
 \subsection{Unconditional structure and finite examples}
 
-The rank bounds hold for every displayed level. The residue computations
-below cover only the specified finite sets of shifts or scales, and the
-Farey calculation excludes only its specified denominator range.
-Unbounded families require the later quantified conditions.
+The rank formulas hold at every stated level. The residue tests and
+Farey interval below instead give conclusions on specified finite
+sets of shifts, scales or denominators. This distinction matters when
+applying the later conditions, which require witnesses at unbounded
+indices.
 
 \begin{thm}[Rationality gives an eventual tail period]\label{catalogue:cert:a9}
 If $S=a/(2^cv)$ with $a\in\mathbb Z$, $c\in\mathbb N$ and $v$ a
@@ -2139,11 +2178,11 @@ holes but supplies neither $P(83)$ nor a cofinal family.
 
 \subsection{Definitions and elementary identities}
 
-We start with the prefix-tail identity and the truncation formula for
-a tail difference. These give soundness and completeness of the finite
-residue test, its LCM specialisation and the rational-approximation
-criteria. M\"obius inversion then gives the alternative coefficient
-weights used in the later estimates.
+The prefix-tail identity and the truncation formula give both
+directions of the finite residue test. We then specialise the test to
+LCM shifts and express it in terms of rational approximation.
+M\"obius inversion provides the alternative coefficient weights used
+in the subsequent estimates.
 
 \subsubsection{Initial implications}
 
@@ -3372,10 +3411,10 @@ finite test; no bound for a successful search depth is asserted.
 
 \subsection{Further exact identities}
 
-We next expand the tail differences and bound their remainders without
-assuming any residue separation. These identities will be used to test
-whether a proposed rational centre is sufficiently far from the
-integers.
+We now bound the errors in expansions of tail differences, without
+assuming residue separation. Such bounds determine whether a
+proposed rational centre stays far enough from the integers after
+the omitted terms are restored.
 
 \begin{prop}[The exact totient difference on an LCM progression]\label{prop:AR-04-inv}
 Put $H=H(t)$. For every $j\ge0$, the arithmetic expression in the piecewise form given below equals $\delta_t(j)=\varphi(2H+j)-\varphi(H+j)$.
@@ -3881,9 +3920,11 @@ binary digits or tail residues used elsewhere in the paper.
 
 \subsection{Counterexamples and limitations}
 
-The examples below concern deductions from specified information about
-coefficients or residues. They leave $S$ unchanged as the open target and
-show which additional property a proposed deduction must use.
+A residue or coefficient condition may hold for a rational comparison
+series as well as for $S$. Each example below records the information
+it preserves and the deduction it disproves. The irrationality of $S$
+remains open, and an argument using further totient identities is
+unaffected by a comparison that does not preserve them.
 
 
 \begin{obs}[The sign of the actual endpoint representative]\label{prop:SGN-02}
@@ -4242,10 +4283,10 @@ remain finite ranges until an unbounded supply is proved.
 % ; - part a249_newdecls ; -
 \subsection{Related structural results}
 
-We turn to the M\"obius-weighted series and its log-concavity, followed
-by integer carry recurrences, rational approximations and factorisations.
-The proofs use the identities already established for each of these
-objects.
+We apply the M\"obius-weighted identities first to log-concavity and
+then to integer carries, rational approximations and factorisations.
+The objects differ, but each proof starts from the identities already
+given for that object.
 
 \subsubsection{Log-concavity of the M\"obius-weighted series}
 
@@ -5143,16 +5184,13 @@ identities do not assert a transcendence result.
 % ; - part a249_p2 ; -
 \section{Parameter ranges and quantifiers}\label{sec:249-scale-ladder}
 
-The table groups results by their quantifiers. Uniform statements hold
-at every value of their parameters, or at all sufficiently large values,
-as a bound of the form $\forall a\ge8$ does. Finite ranges cover a
-bounded range of a parameter, listed examples cover explicitly listed
-values, and cofinal statements have the form
-$\forall N_0\,\exists N\ge N_0$. Uniformity concerns only the
-quantifiers: some uniform statements are implications whose hypotheses
-remain unproved. A bound on a secondary variable, such as the window bound
-$J+(a+6)<2\cdot2^a$ in the positivity row, leaves the scale $a$
-unrestricted, so such results are grouped with the uniform statements.
+The distinction between a finite calculation and an unbounded family
+is in the quantifiers. A statement such as $\forall a\ge8$ is uniform
+in $a$, whereas a list of computed scales is finite and a condition
+$\forall N_0\,\exists N\ge N_0$ asks for witnesses arbitrarily far out.
+The table uses these distinctions even when a uniform statement is
+conditional on an unproved hypothesis. A bound on a secondary variable,
+such as $J+(a+6)<2\cdot2^a$ in the positivity row, does not bound $a$.
 
 
 Some identities have no distinguished scale parameter. They are listed
@@ -5358,13 +5396,13 @@ proved implication from eventual integrality & \lean{eventual\_integral\_tailDif
 \end{landscape}
 \endgroup
 
-\subsection{What extending a finite calculation would require}
+\subsection{Finite extension and cofinal estimates}
 
-Further finite calculations would enlarge the displayed ranges.
-A uniform argument would instead have to produce witnesses with the
-stated quantifiers. We distinguish these possibilities in the examples
-below, without treating the current computational limit as a limit of
-the method.
+Extending a computation supplies more finite witnesses. To reach a
+cofinal statement, an argument must instead produce a witness beyond
+an arbitrary threshold. The examples below specify which of these
+extensions is needed; the largest computed scale is not asserted to
+be a limit of the method.
 
 \begin{enumerate}[leftmargin=*]
 \item \textbf{Finite certificate tables.} Results such as the
@@ -5408,11 +5446,12 @@ residue interval, not positivity at more exponents.
 
 \section{Relations between the representations}
 
-The following identities pass between binary tails, M\"obius sums,
-rational approximations and exponential sums. Before applying a
-counterexample after such a change, one must check its hypotheses for
-the new objects. Finite-state decoding and polynomial denominator
-identities illustrate this requirement in the final subsection.
+Binary tails, M\"obius sums, rational approximations and exponential
+sums express related information about $S$. We give the identities
+that connect them and then check which assumptions survive each
+change. This is necessary before transferring a counterexample to
+another representation, as the finite-state decoding and polynomial
+denominator examples illustrate.
 
 \begin{description}[leftmargin=*,style=nextline]
 
@@ -5572,16 +5611,17 @@ what differs is the information supplied by the particular arguments.
 % ; - part a249_p3 ; -
 \section{Index of unproved conditions}
 
-We collect the arithmetic hypotheses needed by the conditional results.
-For each hypothesis we give its quantifiers and the implication to
-$S\notin\Q$. The implications are proved; the hypotheses required to
-settle the irrationality of $S=\sum_{n\ge0}\varphi(n)2^{-n}$ remain open.
+Every condition in this index is accompanied by the implication that
+would turn it into irrationality of $S=\sum_{n\ge0}\varphi(n)2^{-n}$.
+Those implications are proved. The arithmetic hypotheses still have
+to be established with the displayed quantifiers.
 
-\subsection{How to use the index}
+\subsection{Scope of the index}
 
-Each entry states the extra hypothesis next to the result that uses it.
-Comparisons are between these particular statements. They do not
-establish the prospects or limitations of an entire method.
+The index compares particular quantified hypotheses and the results
+that use them. An unsuccessful implication between two entries
+therefore says nothing by itself about every argument using the same
+method.
 
 Each entry states its quantifiers in full. A cofinal assertion, with a
 quantifier of the form $\forall a_0\ \exists a\ge a_0$, may itself be
@@ -5603,9 +5643,10 @@ further approaches with their individual hypotheses and source references.
 \subsection{The exponential-sum criterion}
 \label{ssec:headline}
 
-We recall the finite discrepancy, the residue test and the associated
-complex phase. We then prove the implications from estimates of that
-phase to the quantified condition in Definition~\ref{defn:sep}.
+We express the truncated tail difference as a phase and ask for
+cancellation when that phase is summed over a block. The following
+implications explain how a saving gives a residue certificate and,
+with the required quantifiers, Definition~\ref{defn:sep}.
 
 \begin{defn}[The truncated difference]
 For $h,N,L\in\mathbb N$,
@@ -5726,11 +5767,12 @@ the required cancellation between them.
 
 \subsection{Proved results and the additional assumptions they need}
 
-After the exponential-sum condition in Section~\ref{ssec:headline}, we
-consider tail signs, endpoint residues, finite approximations, short
+Besides the exponential-sum condition, the sufficient hypotheses
+involve tail signs, endpoint residues, rational approximation, short
 windows, Farey bounds, divisibility, denominator growth and carry rank.
-In each case we state the estimate needed for the application. This
-list is not a classification of all possible approaches to Problem~\#249.
+For each, we state the missing estimate used by the proposed
+application. These are specific possibilities rather than a
+classification of methods for Problem~\#249.
 
 \subsubsection{Positivity and the remaining residue inequality}
 
@@ -6401,13 +6443,13 @@ sections. The $5/4$ comparison shows that this distinction persists for
 a rational coefficient series.
 \end{prop}
 
-\subsection{What the preceding comparisons show}
+\subsection{Relations between the sufficient conditions}
 
-A fixed saving in the real part or norm of the block exponential sum
-would give certificates. The endpoint criteria ask instead for a residue
-or size estimate along an LCM sequence. Proposition~\ref{prop:te-chain}
-relates their sufficient forms; the arithmetic estimates themselves
-remain to be proved.
+A fixed saving for the real part or norm of the block exponential
+sum would give a certificate. The endpoint conditions seek a residue
+or size bound along an LCM sequence instead.
+Proposition~\ref{prop:te-chain} relates the sufficient formulations;
+the arithmetic estimates required by them remain open.
 
 The generic bounded-rank argument fails for a separate reason: the rational
 comparison sequence has unbounded section rank. A totient-specific upper
@@ -6421,11 +6463,12 @@ from their position in the table.
 
 \section{Counterexamples to proposed deductions}
 
-We construct coefficient sequences with specified totient data and
-rational sums, and examine proposed estimates of actual totient sums.
-Each construction identifies the assumptions it preserves. These
-counterexamples leave the irrationality of $S$ open and leave room for
-arguments using further properties of $\varphi$.
+The next constructions produce rational series from coefficients
+satisfying selected totient data. Others test a proposed estimate
+without changing the coefficients. We specify the retained assumptions
+in each case, so that the failed deduction can be distinguished from
+an argument using additional properties of $\varphi$. None decides the
+irrationality of $S$.
 
 
 \subsection{Changing the coefficients after a finite prefix}
@@ -6472,10 +6515,10 @@ number alone gives no assertion at arbitrarily large scales.
 \subsection{A rational series with matching totient parity}
 \label{sec:parity-countermodel}
 
-A bounded sequence can have the totient's parity, satisfy $c(n)\le n$,
-and fail to be eventually periodic while its binary sum is rational.
-The next example proves this and permits arbitrarily many paired
-changes beyond every threshold, with any prescribed minimum separation.
+Matching totient parity and the bound $c(n)\le n$ does not determine
+the rationality of a binary sum. The example below is bounded and
+aperiodic, yet its sum is rational. Its paired changes can be placed
+beyond any threshold with any prescribed minimum separation.
 
 \textbf{Construction.} Start with the sequence
 $0,1,1,2,4,4,4,\ldots$. At each position $m=2^{k+3}$, $k\ge0$, replace
@@ -6521,16 +6564,16 @@ A proposed criterion using only the assumptions of this example must fail;
 a criterion using further arithmetic information is not addressed.
 
 
-\subsection{What the square-CRT construction proves}
+\subsection{Square-CRT factorisations}
 
-For a prime $p$ and $m\ge1$,
+For a prime $p$ and $m\ge1$, the identity
 \[
- \varphi(pm)=(p-1)\varphi(m)+\mathbf1_{p\mid m}\varphi(m).
+ \varphi(pm)=(p-1)\varphi(m)+\mathbf1_{p\mid m}\varphi(m)
 \]
-A congruence modulo $p^2$ can prescribe the cofactor modulo $p$
-and hence remove the second term over a chosen finite range. This
-makes each product formula simpler; it does not imply that differences
-of the resulting values are nonzero.
+separates the coprime and divisible cases. Prescribing a cofactor
+modulo $p$ by a congruence modulo $p^2$ can remove the second term
+over a chosen finite range. It simplifies the product formula, but
+does not show that differences between the resulting values are nonzero.
 
 The examples in Observation~\ref{prop:B8-kill} show both possibilities.
 At $n=52$, the offset pairs $(13,13)$ and $(26,18)$ give respectively
@@ -6580,10 +6623,10 @@ prescribed LCM height.
 \subsection{The cost of clearing a rational denominator}
 \label{sec:adelic-height}
 
-Multiplication by $4$ changes $5/12$ to $5/3$, transferring a factor
-from the denominator to the multiplier. We state the divisibility
-behind this elementary example for arbitrary reduced fractions.
-No property of the totient is assumed.
+Clearing a denominator changes the multiplier as well as the
+fraction. The example $4(5/12)=5/3$ illustrates the divisibility
+relation below for arbitrary reduced fractions; no totient identity
+is needed.
 
 \begin{lem}[Complement divisibility after multiplication]\label{lem:complement-divisibility-after-multiplication}
 Write $x=a/b$ in lowest terms, where $a\in\Z$ and $b\ge1$. Let
@@ -6661,9 +6704,9 @@ it is not a consequence of the scalar lemma alone.
 
 \subsection{Signed moments and parity}
 
-To use a determinant for rational approximation, we need both a nonzero
-numerator and an error estimate. The parity calculation below verifies
-nonvanishing for the stated finite signed sum.
+A signed determinant can serve in rational approximation only with
+both a nonzero numerator and a small error. Here parity proves the
+first requirement for the particular finite signed sum.
 
 \begin{lem}[Nonvanishing from a unique largest denominator exponent]\label{lem:nonvanishing-unique-largest-denominator-exponent}
 Let $I$ be a finite set, let $u_i\in\Z$ and $e_i\in\N$ for $i\in I$,
@@ -6698,7 +6741,7 @@ in \S\ref{sec:mahler-defect}. In another base, the analogous argument
 would require divisibility by a prime factor of that base rather than
 an unchanged appeal to parity.
 
-\subsection{Column rescaling does not certify cancellation}
+\subsection{Column rescaling and cancellation}
 
 A nonzero determinant need not prevent one row from being constant.
 For example,
@@ -6818,8 +6861,8 @@ it does not show that they can never improve a certificate.
 \subsection{Exact dyadic rank and the limits of a rank argument}
 \label{sec:mahler-defect}
 
-We now determine the linear relations among the dyadic sections
-$n\mapsto\varphi(2^jn+r)$. Coons proved nonregularity in every base
+The dyadic case gives an explicit basis for each finite level and
+for the union of all levels. Coons proved nonregularity in every base
 $k\ge2$~\cite[Theorem~3.2]{coons}; here the rank is computed at each
 finite level and the basis is given explicitly. Martin's Theorem~1
 supplies independence for the positive-residue affine forms
@@ -6980,9 +7023,9 @@ of the evaluation determinant.
 
 \subsection{Further counterexamples and sharp bounds}
 
-The table gives additional constructions and bounds, with the hypotheses
-of each deduction and the part that the counterexample leaves untouched.
-The source links distinguish the separate arguments.
+The table records further counterexamples and sharp bounds. For each
+proposed deduction it lists the retained hypotheses and the conclusion
+that fails, together with the source for that argument.
 
 \begin{landscape}
 \small
@@ -7162,13 +7205,15 @@ valuation of their totient combination on every restricted family. \\
 \label{long249:sec:signed-interpolation}
 \papersectiontarget{long249-r3-interpolation}
 
-We construct integer sequences agreeing with $\varphi$ on every odd
-index and preserving its Dirichlet singularities in each fixed
-arithmetic progression, while their values at a reciprocal integer
-base fill an interval. To do this we add widely separated finite
-differences whose orders increase, so that every fixed moment is
-eventually killed. Overlapping integer ranges for their amplitudes
-then provide an interval of possible sums.
+To vary a series value while preserving every fixed moment condition,
+we use disjoint finite differences of increasing order. Their orders
+make the later differences invisible to each fixed moment, while
+overlapping integer ranges for their amplitudes fill an interval of
+values at a reciprocal integer base. The construction below leaves
+every odd totient coefficient fixed and preserves Dirichlet
+singularities on every fixed arithmetic progression. The three
+numbered remarks in this subsection have ordinary proofs; their
+formalisation in Lean remains outstanding.
 
 For a sequence $a$, write $F_a(z)=\sum_{n\ge1}a(n)z^n$. For integers
 $q\ge1$, $0\le c<q$ and $d\ge0$, put
@@ -7180,7 +7225,7 @@ starting at the integers $X\le N<2X$, with mass $1/X$ per start. Upper
 Banach density means the limiting upper density over all intervals of a
 given length, with their starting points unrestricted.
 
-\begin{thm}[Sparse interpolation around the totient]
+\begin{rem}[Sparse interpolation around the totient]
 \label{long249:thm:signed-interpolation}
 Fix integers $\beta\ge2$, $K\ge1$, $P\ge2$, and any function
 $f:\N_{>0}\to(0,\infty)$ with $f(n)\to\infty$. There exist $T>0$ and
@@ -7224,16 +7269,17 @@ For large $X$, $\ell(X)>0$, and one constant $C$, independent of $r$, gives
  \qquad 1\le m\le X.
 \]
 Thus every block length $m=o(\ell(X))$ is preserved asymptotically.
-\end{thm}
+\end{rem}
+\noindent\emph{Ordinary proof; not formalised in Lean.}
+
 
 The allowance can grow as slowly as desired and need not be monotone.
 For $f(n)=(\log(n+3))^\epsilon$, $\epsilon>0$, the allowed block scale
 is $o(\log\log X)$; for $f(n)=(n+3)^\alpha$, $\alpha>0$, it is
 $o(\log X)$. The exact Taylor series, growing moduli, zeros and regular
-parts of Dirichlet functions are not preserved. The correction has both
-signs; this theorem does not retain the one-sided perturbation constraint
-from the earlier constructions. It is an ordinary proof, not a Lean
-formalization or a rationality assertion about $F_\varphi(1/2)$.
+parts of Dirichlet functions are not preserved. The correction has both signs, so the earlier one-sided perturbation
+constraint is not retained. The construction makes no rationality
+assertion about $F_\varphi(1/2)$.
 
 \begin{proof}
 The tail infimum in $g$ is positive, nondecreasing and tends to infinity.
@@ -7382,7 +7428,7 @@ $C_{q,c,d,r}$. These are analytic-continuation values; the original
 ungrouped series need not converge at negative integers.
 \end{proof}
 
-\begin{cor}[Observations that do not determine irrationality]
+\begin{rem}[Observations that do not determine irrationality]
 \label{long249:cor:signed-observations}
 The following data, taken together, do not determine whether
 $F_b(\beta^{-1})$ is rational: the fixed prefix and odd coefficients;
@@ -7393,7 +7439,9 @@ entire functions; and radial germs at all roots of unity modulo smooth
 functions with Taylor coefficients in $\Z[\zeta]$. This remains true
 with exact equality of the first $P$ moment degrees and first $P$
 radial Taylor coefficients at moduli and root orders at most $P$.
-\end{cor}
+\end{rem}
+\noindent\emph{Ordinary proof; not formalised in Lean.}
+
 
 \begin{proof}
 Every constructed sequence has the specified data of $\varphi$, including
@@ -7431,7 +7479,7 @@ Integer nonnegativity forces finite support, and a finite correction at
 an integer reciprocal base cannot change rationality. Signed differences
 are what allow the stronger observation class above.
 
-\begin{prop}[The first-harmonic test on the rational members]
+\begin{rem}[The first-harmonic test on the rational members]
 \label{long249:prop:signed-first-harmonic}
 Let $b(n)$ be integers with $0\le b(n)\le n$ and
 $F_b(1/2)=u/(2^cv)$, where $c\ge0$ and $v$ is odd and positive.
@@ -7442,7 +7490,9 @@ $16(2X+h+L+2)\le2^L$, then for every integer $N\in[X,2X)$,
     [b(N+h+1+j)-b(N+1+j)]2^{L-1-j}\right)
  \ge\cos(\pi/8)>\frac9{10}.
 \]
-\end{prop}
+\end{rem}
+\noindent\emph{Ordinary proof; not formalised in Lean.}
+
 
 \begin{proof}
 The actual tail $R_N=\sum_{j\ge1}b(N+j)2^{-j}$ lies in $[0,N+2]$
@@ -7472,16 +7522,17 @@ for the actual totient is asserted; additional structure, such as its
 exact multiplicative relations at the relevant growing scales, is
 still required.
 
-\section{Why the stated hypotheses cannot be omitted}
+\section{Hypotheses of the conditional implications}
 \label{sec:promotion-audit}
 % The replaced, uncaptioned longtable advanced this counter. Preserve the
 % established number of the later labelled numerical table.
 \stepcounter{table}
 
-An implication may hold at every scale even when its arithmetic
-hypothesis is known at only a few scales, or at none. We examine this
-distinction for the particular implications above. Their limitations
-do not establish failure of every argument using the same objects.
+Uniformity in a parameter does not remove a hypothesis. An implication
+can hold at every scale although the required arithmetic input is known
+at only finitely many scales, or at none. We examine that distinction
+for the displayed implications, without drawing conclusions about all
+arguments that use the same objects.
 
 \subsection*{Implications concerning the totient series}
 
@@ -7536,9 +7587,9 @@ with different boundary conditions.
 
 \subsection*{Related source comparisons for Problem~\#257}
 
-For comparison we include the following statements about Problem~\#257.
-None is used as an input to a proof about $S$, and each is stated with
-the hypotheses of the cited result.
+The following comparisons concern Problem~\#257 and are included
+with the hypotheses of their cited sources. No statement in this
+subsection is an input to a proof about $S$.
 
 The comparison of the middle-carry estimate
 (\lean{one\_third\_lt\_scaledMersenneTail\_floorWall}{HalfCylinderMiddleCarryLowerBound.lean:2308}) with the remainder estimate
@@ -7588,12 +7639,12 @@ source statement does not bridge this difference.
 % ; - part a249_invent ; -
 \section{Additional mathematics required by the sufficient conditions}
 
-We now examine the estimates required in Section~\ref{sec:survivors}.
-The doubling identity relates the exponential sums to exact tail phases;
-the subsequent decompositions isolate the weighted contributions that
-need cancellation. Proposed uses of analytic methods are distinguished
-from the reductions proved here. A failed application does not exclude
-the method itself.
+We turn from the proved reductions to the estimates needed to apply
+them. The doubling identity relates window phases to exact tails;
+the subsequent decompositions separate the weighted sums for which
+cancellation is required. The suggested analytic applications remain
+proposals where those estimates are missing. Failure of one application
+does not exclude the analytic method.
 
 The section contains a doubling-orbit formulation with explicit thresholds,
 a lacunary comparison sequence for the strength of a block estimate,
@@ -8352,7 +8403,7 @@ $h=td$, $t\ge1$, for which the displayed distance exceeds the stated
 threshold. The criterion is not asserted to be equivalent to each individual
 finite certificate. It involves the phase of $S$ itself, and the threshold
 tends to zero exponentially as $t$ grows. The propagation theorem of the
-short paper (Theorem~3.1 there) explains why one nonintegral tail
+short paper (the propagation theorem in Appendix~\ref{long249:r3-ray}) explains why one nonintegral tail
 difference produces late certificates; it does not supply such tail
 differences for all $d,N$.
 
@@ -8392,7 +8443,7 @@ no summability conclusion over all basepoints follows from it. The finite
 experiments are finite evidence; the condition for every $d$ and $N$
 remains unproved.
 
-\subsection{Why rationality does not bound carry rank}
+\subsection{A rational series with unbounded carry rank}
 \label{sub:generic-carry-rank}
 
 For an integer sequence $u$, write $\operatorname{rk}_e(u)$ for the
@@ -8508,11 +8559,11 @@ $5/4$ comparison verifies this directly. Any proposed rank upper bound must
 use additional totient-specific hypotheses not satisfied by the $5/4$
 comparison sequence.
 
-\subsection{What the available results suggest}\label{sub:shape}
+\subsection{Finite observations and quantified conditions}\label{sub:shape}
 
-We compare the quantified conditions with the finite observations.
-Those observations give no asymptotic digit distribution and no ranking
-of the possible proof methods.
+The finite observations can be compared with the quantified
+conditions, but they do not establish an asymptotic digit distribution.
+They also supply no basis for ranking possible proof methods.
 
 \paragraph{Comparison of conditions.}
 The following table records the conditions themselves, rather than
@@ -8583,9 +8634,10 @@ Its exact algebraic decomposition does not establish the required
 correlation bound.
 \section{Remaining arithmetic questions}
 
-The irrationality of $S=\sum_{n\ge0}\varphi(n)2^{-n}$ in Erd\H{o}s
-Problem~\#249 remains open. We finish by gathering the residue and
-exponential-sum conditions that would settle it.
+The remaining questions ask for witnesses with unbounded indices.
+We collect them in residue and exponential-sum form, retaining the
+quantifiers needed to imply irrationality of
+$S=\sum_{n\ge0}\varphi(n)2^{-n}$. Erd\H{o}s Problem~\#249 remains open.
 
 This section collects quantified conditions on the scaled tail
 $R_N=\sum_{j\ge0}\varphi(N+1+j)2^{-(j+1)}$ that suffice for irrationality.
@@ -8642,6 +8694,9 @@ quantified nonintegrality assertions needed for irrationality.
 
 \subsection{The original quantified residue condition}
 
+The threshold quantifier excludes every possible starting point for
+a rational tail period.
+
 \begin{quote}
 
 \textbf{The quantified residue condition.}
@@ -8684,11 +8739,10 @@ actual totient sequence.
 \subsection{Multiples, diagonals, and LCM grids}
 
 
-We may seek a witness among multiples of a period, diagonal tails, or
-an LCM grid. Each condition below is equivalent to irrationality by the
-stated implications and completeness. Different quantifiers permit
-different estimates to be attempted, but the equivalences supply none
-of those estimates.
+Completeness allows the irrationality question to be expressed using
+multiples of a period, diagonal tails or an LCM grid. The implications
+below prove these equivalences. Each formulation permits a different
+estimate to be attempted, but none supplies the witnesses it requires.
 
 \paragraph{Multiples of a period.}
 \[
@@ -8838,10 +8892,11 @@ comparison does not exclude every such argument.
 
 \subsection{The actual tail difference on the LCM diagonal}
 
-Set $H=H_{2^a}$ and examine the actual differences
-$\Omega_a=R_{2H}-R_H$. The following equivalence restricts attention to
-this sparse sequence and removes the auxiliary rational approximation.
-Its nonintegrality requirement is still an arithmetic condition to prove.
+For $H=H_{2^a}$, the actual difference
+$\Omega_a=R_{2H}-R_H$ removes the auxiliary rational approximation
+from the LCM criterion. The equivalence below restricts attention to
+this sparse sequence of tails. Its required nonintegrality is still
+an arithmetic assertion to prove.
 
 \begin{quote}
 \textbf{The exact equivalence.}
@@ -9170,10 +9225,10 @@ would require its own recurrence and tail bounds.
 
 \subsection{Farey growth and the failed generic rank argument}
 
-The Farey growth law below remains unproved. We retain the generic rank
-statement to explain a failed sufficient input: rational comparison
-sequences disprove it. It is therefore not a second open problem supported
-by that argument.
+The Farey growth law is an open sufficient hypothesis. The generic
+rank bound listed beside it is false for rational comparison
+sequences, and is retained to explain that failed input rather than
+as another open problem.
 
 \paragraph{The hypothetical rank bound.}
 Unconditionally, for every level $e\ge1$, the dyadic totient basis of
@@ -9249,37 +9304,8 @@ estimate as $K$ varies is proved here.
 
 \subsection{Summary of implications}
 
-The second column gives the relation to the quantified residue condition
-or to the explicitly named intermediate condition.
-\begin{center}
-\setlength{\tabcolsep}{5pt}
-\begin{longtable}{>{\raggedright\arraybackslash}p{0.29\linewidth} >{\raggedright\arraybackslash}p{0.35\linewidth} >{\footnotesize\raggedright\arraybackslash}p{0.28\linewidth}}
-\textbf{Condition} & \textbf{Proved relation} & \textbf{Statement} \\
-\hline
-\endhead
-Quantified $\mathcal C(h,N,L)$ condition (the base condition) & \textbf{equivalent} to $S\notin\mathbb Q$ & Theorem~\ref{catalogue:cert:a10} \\
-Certificates for multiples of a period & equivalent via the base condition: take multiplier one in one direction and use the cited implication in the other & Theorem~\ref{catalogue:cert:b2} \\
-Diagonal certificates beyond every threshold & \textbf{equivalent} to $S\notin\mathbb Q$; one universally quantified threshold & Theorem~\ref{catalogue:cert:b3} \\
-Certificates on LCM grids beyond every threshold & equivalent via the base condition; diagonal certificates have $q=m=1$ & Theorem~\ref{catalogue:cert:b7} \\
-Quantified finite-grid condition & sufficient; requires each one-sided size bound & Theorem~\ref{catalogue:cert:b10b} \\
-Nonintegral diagonal or LCM-grid tail differences & \textbf{equivalent} to the corresponding unrestricted-depth certificate condition & Corollary~\ref{catalogue:cert:b8} \\
-Block norm condition & sufficient for the quantified residue condition; no converse proved & Theorem~\ref{catalogue:mob:e1} \\
-Bound $603X/1000$ on the good indices & sufficient; no converse proved; needs neither the prime number theorem nor the group means & Theorem~\ref{thm:goodbasegap} \\
-$\Omega_a\notin\mathbb Z$ beyond every threshold & \textbf{equivalent} to $S\notin\mathbb Q$ itself & Proposition~\ref{prop:NI-01} \\
-Short-window certificate condition & sufficient; imposes an additional short-depth restriction at powers of two & Proposition~\ref{prop:AR-07} \\
-Upper-endpoint residue condition beyond every threshold & sufficient for $\Omega_a\notin\mathbb Z$ beyond every threshold & Proposition~\ref{prop:TE-04} \\
-Adjacent-depth residue band, condition (i) & sufficient for the upper-endpoint residue gap & Proposition~\ref{prop:te-chain} \\
-Prescribed-depth residue band, condition (ii) & \textbf{equivalent} to condition (iii) & Proposition~\ref{prop:te-chain} \\
-Prescribed-depth centred magnitude, condition (iii) & \textbf{equivalent} to condition (ii) & Proposition~\ref{prop:te-chain} \\
-Variable-depth centred magnitude, condition (iv) & sufficient for both the midband and the carry exclusion & Proposition~\ref{prop:te-chain} \\
-Terminal comparison, condition (v) & sufficient for carry exclusion; one-sided & Theorem~\ref{thm:proved-implication} \\
-Either terminal-carry exclusion inequality & sufficient; no converse asserted & Proposition~\ref{prop:TE-06} \\
-Real-tail separation with approximation margin & sufficient; fixes the depth and approximation margin & Proposition~\ref{prop:SEP-03} \\
-Carry-rank upper bound & the rational $5/4$ comparison refutes a bound from rationality and the stated coefficient hypotheses alone & \S\ref{sub:generic-carry-rank} \\
-Unbounded certified denominator exclusions & sufficient; the cited result is a single finite exclusion & Proposition~\ref{prop:C2sup} \\
-Shifted short certificate or two-bit residue test & equivalent existence test with unrestricted depth; no a priori search-depth bound follows & Proposition~\ref{prop:TE-03-inv} \\
-\end{longtable}
-\end{center}
+For each condition, the second column states its relation to the
+quantified residue test or to the named intermediate assertion.
 
 \emph{Reading the table.} ``Sufficient'' records only the indicated
 implication. It does not assert a converse or a strict comparison of
@@ -9288,13 +9314,12 @@ or through the base equivalence with $S\notin\mathbb Q$. Logical
 equivalence does not by itself provide a direct construction from the
 finite witnesses in one formulation to those in another.
 
-\subsection{What remains to be proved}
+\subsection{Remaining estimates}
 
-Two remaining estimates can be stated directly for $\varphi$: weighted
-cancellation in the exponential sums, or a residue inequality involving
-the last totient difference. Neither is known here to follow from the
-cited methods, and the alternatives do not exhaust the possible
-approaches.
+Two explicit estimates for $\varphi$ remain: weighted cancellation
+in the exponential sums and a residue inequality involving the final
+totient difference. Neither is derived here from the cited methods.
+Other approaches to the irrationality question are not excluded.
 
 
 
@@ -9333,12 +9358,13 @@ examples at $a=4,6$, do not establish an asymptotic pattern.
 \appendix
 \section{Complementary proofs for the short paper}\label{app:r3-complements}
 \papersectiontarget{long249-r3-complements}
-The \shortpaper{short249-basis}{basis theorem} and the
-\shortpaper{short249-residues}{bounded residue theorem} are proved in the
-short paper. We give here the full propagation and Mersenne-residue
-arguments used in its discussion of $S$, followed by the comparisons
-and the sharp rank-one quotient bound. The residue test denoted by
-$K(h,N,L)$ below is the condition $\mathcal C(h,N,L)$ of the main text.
+The \shortpaper{short249-proof}{basis theorem} and the
+\shortpaper{short249-residues}{bounded residue theorem} have complete
+proofs in the short paper. This appendix supplies the longer arguments
+behind its discussion of $S$: propagation from a nonintegral tail,
+Mersenne residues, rational comparisons and the sharp rank-one bound.
+Throughout, $K(h,N,L)$ is the residue condition
+$\mathcal C(h,N,L)$ defined in the main text.
 
 \subsection{Propagation of nonintegral tail differences}\label{long249:r3-ray}
 \papersectiontarget{long249-r3-ray}
@@ -9428,12 +9454,15 @@ not for every $d,N$.
 
 \subsection{Residues modulo divisors of Mersenne numbers}\label{long249:r3-mersenne}
 \papersectiontarget{long249-r3-mersenne}
-For $c\ge0$, odd $v\ge1$ and a positive multiple $H$ of $\ph(v)$, put
+Fix a hypothetical denominator $2^cv$, with $c\ge0$ and odd $v\ge1$.
+For a positive multiple $H$ of $\varphi(v)$, Euler's theorem makes
 \[
  M=\frac{2^H-1}{v},\qquad
- B_{H,c}=\sum_{j=0}^{H-1}\ph(c+1+j)2^{H-1-j}.
+ B_{H,c}=\sum_{j=0}^{H-1}\varphi(c+1+j)2^{H-1-j}
 \]
-Euler's theorem makes $M$ integral.
+an integer modulus and an integer prefix, respectively. The test below
+asks whether the residue of $-B_{H,c}$ stays away from the endpoints
+by more than the tail error.
 
 \begin{equivform}[A residue test modulo a divisor of $2^H-1$]\label{res:canonicalmersenne}
 The series $S$ is irrational if and only if, for every $c\ge0$ and odd
@@ -9479,10 +9508,10 @@ which is an exact recurrence for searches directed at \eqref{eq:canonical-gap}.
 
 \subsection{LCM tails and rational comparisons}\label{long249:r3-comparisons}
 \papersectiontarget{long249-r3-comparisons}
-The short paper uses the following consequences of the LCM identities
-and comparison constructions. Their source declarations are retained
-beside the formulas; the earlier sections give the constructions and
-the scope of each comparison.
+We first specialise the tail congruence to LCM shifts, then compare
+it with rational series preserving selected coefficient data. The
+source declarations accompany the formulas; references point to the
+complete constructions and their hypotheses in the preceding sections.
 
 \begin{enumerate}
 \item\label{res:actualorbit}
@@ -9551,7 +9580,7 @@ Both properties are
 \mword{Erdos249257/TotientTailCarryPeriod.lean}{224}{not_irrational_totientSeries_implies_mod_period_and_unbounded_rank}{the corresponding theorem for the same carry};
 they are compatible, and neither supplies a contradiction.
 
-Section~\ref{sec:parity-countermodel} constructs a rational
+Section~\ref{sub:generic-carry-rank} constructs a rational
 comparison sequence with
 $c(n)=\ph(n)$ for odd $n$, $|c(n)-\ph(n)|\le2$ for even $n$, $0\le c(n)\le n$,
 and
@@ -9570,8 +9599,9 @@ lower bound, not an exact formula for the full coefficient rank.
 
 \subsection{The sharp rank-one quotient bound}\label{long249:r3-rankone}
 \papersectiontarget{long249-r3-rankone}
-We now consider a particular family of rational approximants. Let $\mu$ be the
-M\"obius function and put
+The quotients below are a particular proposed family of rational
+approximants to a M\"obius-weighted value. We determine their minimum
+and show that they remain a fixed distance above that value. Put
 \[
  \Theta_2=\sum_{d\ge1}\frac{\mu(d)}{(2^d-1)^2}=S-\frac12,
  \qquad
@@ -9588,8 +9618,8 @@ absolutely convergent. Amiram Eldar posted the corresponding formula
 $S=\tfrac12+\sum_{d\ge1}\mu(d)/(2^d-1)^2$, together with its coprimality
 interpretation, to OEIS A256936 on 15 March 2026~\cite{eldar2026oeis}, and
 Steve Fan posted the formula on the problem's forum thread on
-16 May 2026~\cite{fan2026totient}. The lower bound $1/480$ in Section~\ref{rank-one-subrank} is sharpened
-below to the exact extremum.
+16 May 2026~\cite{fan2026totient}. The result below gives the exact extremum for this family, refining
+the earlier lower bound $1/480$ in Section~\ref{rank-one-subrank}.
 
 \begin{theorem}[A lower bound for the rank-one quotients]\label{res:rankonefloor}
 For $e\ge1$ and $Y\ge4$, the denominator of $Q(e,Y)$ is positive, and the
@@ -9682,10 +9712,11 @@ families.
 
 \section{Formal declaration guide}\label{app:r3-declarations}
 \papersectiontarget{long249-r3-declarations}
-The links below group the formal declarations used in the short paper.
-They retain the supplied source revisions and line destinations.
-A conditional declaration includes an assumption; the link does not
-assert that the assumption holds for the totient series.
+The following links give the formal declarations cited by the short
+paper and its complementary proofs, at the supplied source revisions.
+A declaration proving a conditional implication includes its input as
+a hypothesis. The linked source alone does not establish that input
+for $\varphi$, and these references do not report a fresh Lean replay.
 
 \medskip\noindent\textbf{Bases and relations.}\par\smallskip
 \mword{Erdos249257/TotientMahlerDefect.lean}{160}{totientKernel_zero_residue}{reduction of sections with residue zero};

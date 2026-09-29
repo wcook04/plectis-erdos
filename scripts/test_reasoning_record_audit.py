@@ -105,7 +105,7 @@ class CorpusTests(unittest.TestCase):
         if cls.base['status'] == 'refusal':
             raise RuntimeError(cls.base['reason'])
         cls.links = json.loads((audit.ROOT/audit.LINKS).read_text())
-        cls.link = next(x for x in cls.links['links'] if x['short_id'].endswith('#res:distinct-height-all'))
+        cls.link = next(x for x in cls.links['links'] if x['short_id'].endswith('#res:strict-mixed-supports'))
 
     def clone_inputs(self):
         tmp = tempfile.TemporaryDirectory()
@@ -138,8 +138,8 @@ class CorpusTests(unittest.TestCase):
                     if m['support']['kind'] == 'registered_lean_evidence':
                         self.assertIn('UNRUN', m['support']['validation'])
 
-    def test_ordinary_269_status_not_upgraded(self):
-        p = next(p for p in self.base['pairs'] if p['problem']==269)
+    def test_ordinary_authored_status_not_upgraded(self):
+        p = next(p for p in self.base['pairs'] if p['problem']==257)
         c = next(c for c in p['claims'] if c['short_claim']==self.link['short_id'])
         self.assertEqual(c['state'], 'authored_proof_text_linked')
         self.assertEqual(c['ledger_lean_status'], 'none')
@@ -151,13 +151,13 @@ class CorpusTests(unittest.TestCase):
         path = root/loc['path'];lines=path.read_text().splitlines(keepends=True)
         del lines[loc['line']-1:loc['end_line']]
         path.write_text(''.join(lines))
-        value = audit.report(root, [269])
+        value = audit.report(root, [257])
         self.assertNotEqual(value['status'], 'refusal', value.get('reason'))
         findings = value['pairs'][0]['findings']
         self.assertTrue(any(x['code']=='stale_or_missing_proof' and x['short_claim']==self.link['short_id'] for x in findings))
         self.assertEqual(value['status'], 'findings')
         with contextlib.redirect_stderr(io.StringIO()):
-            rc = audit.main(['--root', str(root), '--problem', '269', '--output', str(root/'mutant.json')])
+            rc = audit.main(['--root', str(root), '--problem', '257', '--output', str(root/'mutant.json')])
         self.assertEqual(rc, 1)
 
     def test_real_changed_proof_does_not_get_rehashed_away(self):
@@ -165,16 +165,16 @@ class CorpusTests(unittest.TestCase):
         loc, _ = audit.support_span(audit.Inputs(root), self.link['support'])
         path=root/loc['path'];lines=path.read_text().splitlines(keepends=True)
         lines[loc['line']] += 'Unreviewed change.\n';path.write_text(''.join(lines))
-        value=audit.report(root,[269])
+        value=audit.report(root,[257])
         self.assertTrue(any(x['code']=='stale_or_missing_proof' and 'stale support' in x['detail']
                             for x in value['pairs'][0]['findings']))
 
     def test_real_duplicate_assertion_outside_ledger_is_detected(self):
         root=self.clone_inputs();path=root/'paper/reasoning-parts/erdos269/core.tex'
         text=path.read_text()
-        start=text.index(r'\begin{theorem}[the distinct-height sums]')
+        start=text.index(r'\begin{theorem}[the distinct-height sum at $\{2,3,5\}$]')
         end=text.index(r'\end{theorem}',start)+len(r'\end{theorem}')
-        duplicate=text[start:end].replace('long269:res:distinct-height-all','seed:duplicate')
+        duplicate=text[start:end].replace('long269:res:distinct-height-235','seed:duplicate')
         path.write_text(text+'\n\n'+duplicate+'\n')
         value=audit.report(root,[269])
         self.assertTrue(any(x['code']=='duplicate_statement' for x in value['pairs'][0]['findings']))
@@ -209,7 +209,7 @@ class CorpusTests(unittest.TestCase):
         self.assertIn('short/long audit: findings', result.stdout)
 
     def test_authored_hash_bound_alias_difference_is_accounted_for(self):
-        p=next(p for p in self.base['pairs'] if p['problem']==269)
+        p=next(p for p in self.base['pairs'] if p['problem']==257)
         self.assertFalse(any(f['code']=='possible_stale_passage' and
                              f.get('short_claim')==self.link['short_id'] for f in p['findings']))
 
@@ -222,11 +222,11 @@ class CorpusTests(unittest.TestCase):
             import paper_corpus_renderer as renderer
         finally:
             sys.path.pop(0)
-        pair=next(p for p in self.base['pairs'] if p['problem']==269)
+        pair=next(p for p in self.base['pairs'] if p['problem']==257)
         text=renderer.render_record_navigation(pair,audit.BOUNDARY)
         self.assertIn('No accepted correspondence',text)
-        self.assertIn('paper/reasoning-parts/erdos269/core.tex',text)
-        self.assertIn('proof correctness',text)
+        self.assertIn('paper/reasoning-parts/erdos257/a257_front.tex',text)
+        self.assertIn('correctness of ordinary proofs',text)
 
 
 if __name__ == '__main__':

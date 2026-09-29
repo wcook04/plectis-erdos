@@ -60,8 +60,10 @@ AI or without one; returned work keeps its sources, checks and credit visible.
   gives clone commands and separates no-Lean claim inspection from proof builds.
   The [agent quickstart](docs/agents/README.md#start-with-current-public-work)
   gives a copyable research prompt. The
-  [agent-navigation paper](paper/systems/cold-clone-to-proof-receipt.pdf)
-  explains the workbench design.
+  [systems paper](paper/systems/claim-faithful-publication-systems-paper.pdf)
+  explains the workbench, manuscript workflow and contribution cycle.
+  The earlier [agent-navigation paper](paper/systems/cold-clone-to-proof-receipt.pdf)
+  retains the detailed cold-clone walkthrough.
 - **Read without a clone.** The [reading edition](docs/reading-edition/README.md)
   introduces each problem and its paper. A reader can also ask a question or
   return a correction without running Lean.
@@ -244,8 +246,10 @@ order without asking you to decode Lean declaration names first.
 [Problem-Sized Lean Worlds](paper/systems/claim-faithful-publication-systems-paper.pdf)
 describes the research system: each problem kept as a persistent, checkable
 record, the path from a proof to a public claim, and the contribution cycle.
-[From Spare Compute to Cumulative Mathematics](paper/systems/open-source-mathematics-strategy.pdf)
-explains the collaborative research process. Selected external verification
+The earlier [agent-navigation](paper/systems/cold-clone-to-proof-receipt.pdf)
+and [research-strategy](paper/systems/open-source-mathematics-strategy.pdf)
+manuscripts remain available as [provenance](paper/README.md#project-papers).
+Selected external verification
 entries live in [plectis-erdos-lean](https://github.com/wcook04/plectis-erdos-lean).
 The mathematics and tools in this checkout are self-contained.
 

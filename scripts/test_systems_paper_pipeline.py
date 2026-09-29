@@ -62,7 +62,10 @@ class EvidenceTests(unittest.TestCase):
     def test_unknown_status(self):
         v=copy.deepcopy(self.ledger);v['sentences'][0]['class']='verified-by-vibes';self.assertTrue(self.check(ledger=v))
     def test_proposal_cannot_be_relabelled_code(self):
-        v=copy.deepcopy(self.ledger);r=next(x for x in v['sentences'] if x['class']=='proposed' and x['evidence_refs']==['round10-contract']);r['class']='implemented';self.assertTrue(self.check(ledger=v))
+        v=copy.deepcopy(self.ledger);r=v['sentences'][0]
+        r['class']='proposed';r['evidence_refs']=['round10-contract']
+        self.assertEqual(self.check(ledger=v),[])
+        r['class']='implemented';self.assertTrue(self.check(ledger=v))
     def test_measurement_requires_receipt(self):
         v=copy.deepcopy(self.ledger);v['sentences'][0]['class']='measured';self.assertTrue(self.check(ledger=v))
     def test_unbound_prose_locations(self):

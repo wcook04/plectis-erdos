@@ -6,6 +6,13 @@
 \documentclass[11pt]{article}
 \input{problem-note-preamble}
 \input{evidence/erdos269-running-lcm-reasoning-surface}
+% Number the ordinary-proof remarks so their labels identify the assertion.
+% This local presentation change leaves the shared preamble untouched.
+\theoremstyle{remark}
+\newtheorem{recordremark}[theorem]{Remark}
+\renewenvironment{remark}[1][]{\begin{recordremark}[#1]}{\end{recordremark}}
+\theoremstyle{plain}
+
 \usepackage{longtable}
 \usepackage{colortbl}
 \usepackage[htt]{hyphenat}
