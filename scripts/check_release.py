@@ -706,6 +706,34 @@ def source_map_entry_errors(source_map: str) -> list[str]:
     return errors
 
 
+def ordinary_proof_claim_errors(claim: dict, families: list[dict], root: Path) -> list[str]:
+    """Admit a non-Lean result only with an authored proof and explicit ceiling."""
+    claim_id = claim.get("id")
+    errors: list[str] = []
+    if claim.get("status") != "unconditional progress" or claim.get("declarations"):
+        errors.append(f"claim {claim_id}: ordinary proof has wrong status or declarations")
+    matches = [
+        family for family in families
+        if claim_id in family.get("claim_ids", [])
+        and family.get("status_summary") == (
+            "Reviewed ordinary proof; full infinite statement not formalised "
+            "and independent human review not recorded."
+        )
+    ]
+    if len(matches) != 1:
+        return [*errors, f"claim {claim_id}: no unique reviewed ordinary-proof family"]
+    owner = matches[0].get("primary_narrative_owner")
+    label = claim.get("paper_label")
+    if not isinstance(owner, str) or not owner.startswith("paper/") or ".." in Path(owner).parts:
+        return [*errors, f"claim {claim_id}: invalid ordinary-proof paper owner"]
+    if not isinstance(label, str) or not label:
+        return [*errors, f"claim {claim_id}: missing ordinary-proof paper label"]
+    paper = root / owner
+    if not paper.is_file() or f"\\label{{{label}}}" not in paper.read_text(encoding="utf-8"):
+        errors.append(f"claim {claim_id}: reviewed ordinary-proof label absent from {owner}")
+    return errors
+
+
 def certified_kill_claim_errors(data: dict) -> list[str]:
     """Keep the registered finite #249 frontier aligned with its exact theorem."""
     claim = next(
@@ -1223,6 +1251,7 @@ def proof_trust_violation_bytes(data: bytes) -> str | None:
 
 
 APPROVED_ROOT_FILES = {
+    '.gitattributes',  # preserve hash-bound historical excerpt whitespace
     '.gitignore',
     'AGENTS.md',
     'CITATION.cff',
@@ -1715,12 +1744,18 @@ def main(argv: list[str] | None = None) -> int:
     remaining_open_id_set = {
         row["id"] for row in data["remaining_open_propositions"]
     }
+    ordinary_families = data["machine_readable_paper"]["publication_assembly"][
+        "contribution_families"
+    ]
     for claim in data["claims"]:
         check(claim["status"] in taxonomy,
               f"claim {claim['id']}: status {claim['status']!r} not in taxonomy")
         if claim["status"] in ("cited only", "open"):
             check(not claim["declarations"],
                   f"claim {claim['id']}: {claim['status']!r} claims must not carry declarations")
+        elif not claim["declarations"]:
+            for error in ordinary_proof_claim_errors(claim, ordinary_families, ROOT):
+                check(False, error)
         else:
             check(bool(claim["declarations"]),
                   f"claim {claim['id']}: formal claim carries no declaration")

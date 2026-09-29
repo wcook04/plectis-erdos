@@ -419,9 +419,9 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 ## Theorem 4.3 (the forcing term), page 13
 
 > *Let $`s,B`$ be natural numbers and $`c:\mathbb{N}\to\mathbb{N}`$.*
-> 
+>
 > 1.  *If $`s\ge2`$, $`B\ge1`$ and $`c(N+1)\ge1`$, then $`2^{\,N+1}\le B\,c(N+1)\,s^{\,N+1}`$.*
-> 
+>
 > 2.  *If $`s=1`$, then $`B\,c(N+1)\,s^{\,N+1}=B\,c(N+1)`$.*
 
 The Lean declaration below states this result.
@@ -562,9 +562,9 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 >  \qquad j=n-m-1 .
 > ```
 > Then, for integers $`n,k,m`$:*
-> 
+>
 > 1.  *if $`0\le k\le n`$, the [summand exponent bound](https://github.com/wcook04/plectis-erdos/blob/7380b7871687b6bcc41ca0143c61f232e8af6500/lean/ErdosProblems/Erdos1049/RationalPadeArithmetic.lean#L30) is $`\widetilde{P}(n,k)\le\widetilde{E}_n`$, and the gap factors as $`\widetilde{E}_n-\widetilde{P}(n,k)=(n-k)(3n-k-1)`$;*
-> 
+>
 > 2.  *the [exact gap identity](https://github.com/wcook04/plectis-erdos/blob/7380b7871687b6bcc41ca0143c61f232e8af6500/lean/ErdosProblems/Erdos1049/RationalPadeArithmetic.lean#L52) is $`\widetilde{E}_n-\widetilde{Q}(n,m)=2\bigl(n+m(m-1)\bigr)`$.*
 
 The Lean declaration below states this result or one that implies it. The Lean statement proves $\widetilde E_n-\widetilde P(n,k)=(n-k)(3n-k-1)$ for all integers $n,k$, without $0\le k\le n$, and adds $\widetilde Q(n,m)\le\widetilde E_n$ for $n\ge0$ and $m\ge1$; the printed items are its first three clauses.

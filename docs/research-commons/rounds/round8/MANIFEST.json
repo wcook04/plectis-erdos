@@ -1,0 +1,83 @@
+{
+  "schema": "plectis-round8-source-manifest/1",
+  "round_id": "plectis_round8_20260929",
+  "source_commit": "0268dd8bfb2a556a0c93078337d42c6d07138fa2",
+  "integration_base_commit": "f5e5c4ff131da2d1be9bbc9b59d5bf144181654a",
+  "packets": [
+    {
+      "packet_id": "plectis_round8_p1_rational_base_transfer_20260929",
+      "manifest_sha256": "a55d83a40f4ea96b7884076663c3548049ff998683c84fc63d02f742d86cbc06",
+      "title": "Plectis round 8, packet 1 of 6: Support irrationality beyond integer bases"
+    },
+    {
+      "packet_id": "plectis_round8_p2_ordered_word_transfer_20260929",
+      "manifest_sha256": "3308506321aa2121fd248f7e8ec8563052511adeb40f910105a3127f2aea79cd",
+      "title": "Plectis round 8, packet 2 of 6: A new application of ordered-word tail arguments"
+    },
+    {
+      "packet_id": "plectis_round8_p3_hankel_height_transfer_20260929",
+      "manifest_sha256": "46f3f2ed1119a21857059a9140c12d057c46af448f5d0371604ba70df758ff24",
+      "title": "Plectis round 8, packet 3 of 6: From nonvanishing to irrational values through arithmetic height"
+    },
+    {
+      "packet_id": "plectis_round8_p4_arithmetic_signal_20260929",
+      "manifest_sha256": "7785a8867ac91df187cbb330742b043b7e73713931fe3d290cb4672b0c797a78",
+      "title": "Plectis round 8, packet 4 of 6: Arithmetic information beyond preserved local statistics"
+    },
+    {
+      "packet_id": "plectis_round8_p5_relation_bank_20260929",
+      "manifest_sha256": "231ed7335fc98181124c638691b2d372a3a525bada2d0bd66c86e92ac90c01cd",
+      "title": "Plectis round 8, packet 5 of 6: Build a source-exact candidate relation benchmark"
+    },
+    {
+      "packet_id": "plectis_round8_p6_reader_pilot_20260929",
+      "manifest_sha256": "08df9c7529cdb3a32eb81d2e04f96b3d656d3c042105a1e5b30d79ead2a992cf",
+      "title": "Plectis round 8, packet 6 of 6: Package a small executable controlled reader pilot"
+    }
+  ],
+  "returns": [
+    {
+      "return_id": "p1",
+      "sha256": "716ede484696ae9a3a41cf9afc8ffe93556aefbeb1baf9320ef6c58b2ac7a297",
+      "bytes": 52317,
+      "media_type": "application/zip",
+      "custody": "private original ZIP; hash-bound public record"
+    },
+    {
+      "return_id": "p2",
+      "sha256": "03d95f9f7db58351de1e36736f0103e10d85e5f3f93bcd867f30e2b6cff90eb3",
+      "bytes": 66862,
+      "media_type": "application/zip",
+      "custody": "private original ZIP; hash-bound public record"
+    },
+    {
+      "return_id": "p3",
+      "sha256": "57d14211cd3e7314ef75743ecb03dfff784be386af24c543bc9d089f364e3660",
+      "bytes": 145433,
+      "media_type": "application/zip",
+      "custody": "private original ZIP; hash-bound public record"
+    },
+    {
+      "return_id": "p4",
+      "sha256": "6874c0b45cb03964280b5abd4e30cc88740d1a34177171415af91bdc07e1b46c",
+      "bytes": 70808,
+      "media_type": "application/zip",
+      "custody": "private original ZIP; hash-bound public record"
+    },
+    {
+      "return_id": "p5",
+      "sha256": "8a83af2063d45bf9f8cff8ea5b0e93c9acef33dc7079bf3665f4528c7560c4ff",
+      "bytes": 730998,
+      "media_type": "application/zip",
+      "custody": "private original ZIP; hash-bound public record"
+    },
+    {
+      "return_id": "p6",
+      "sha256": "aa11d14e70f78e73214dcc03dde5253cdf96415e0150a1c6f1b04eef671c3c21",
+      "bytes": 2610838,
+      "media_type": "application/zip",
+      "custody": "private original ZIP; hash-bound public record"
+    }
+  ],
+  "boundary": "Advisory source identities. Ordinary proof review, finite calculation, kernel replay, novelty and empirical outcomes are distinct decisions."
+}

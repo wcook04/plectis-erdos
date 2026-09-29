@@ -42,7 +42,7 @@ from query_corpus import (
     route_memory_problem_number,
     source_coordinate_packet,
 )
-from check_release import MAX_ROUTE_FIRST_CONTACT_BYTES
+from check_release import MAX_ROUTE_FIRST_CONTACT_BYTES, ordinary_proof_claim_errors
 from check_problem_note_sources import (
     declares_at,
     note_pinned_commit,
@@ -2338,6 +2338,7 @@ def validate_mathematical_signal_spine() -> None:
         "weighted_phase_carry_observer",
         "rank_two_kernel_no_go",
         "height_fibre_and_shell",
+        "independent_clock_channel_relations",
         "dyadic_block_alphabet",
         "three_prime_lcm_cells",
     ]
@@ -2345,6 +2346,7 @@ def validate_mathematical_signal_spine() -> None:
         "conditional_endpoint_leverage",
         "deep_mechanism_and_classification",
         "natural_friction_and_no_go",
+        "deep_mechanism_and_classification",
         "deep_mechanism_and_classification",
         "supporting_and_long_tail",
         "supporting_and_long_tail",
@@ -2377,6 +2379,7 @@ def validate_mathematical_signal_spine() -> None:
         "rational_base_tail_recurrence",
         "height_and_pade_arithmetic",
         "coordinatewise_corridor_no_go",
+        "calibrated_rational_hankel_countermodel",
     ]
     assert programme_spines[249][1]["relations"]
     represented_family_ids = {
@@ -2430,6 +2433,7 @@ def validate_mathematical_signal_spine() -> None:
                 "weighted_phase_carry_observer",
                 "rank_two_kernel_no_go",
                 "height_fibre_and_shell",
+                "independent_clock_channel_relations",
                 "dyadic_block_alphabet",
                 "three_prime_lcm_cells",
             ],
@@ -3043,6 +3047,18 @@ def main() -> int:
         source_lines = (ROOT / paper["source"]).read_text(encoding="utf-8").splitlines()
         anchor_window = "\n".join(source_lines[paper["line"] - 1 : paper["line"] + 1])
         assert re.search(rf"\\label\{{{re.escape(row['paper_label'])}\}}", anchor_window)
+        if row["status"] == "unconditional progress" and not row["declarations"]:
+            assert paper["evidence_class"] == "reviewed_ordinary_proof"
+            assert paper["authority_posture"] == (
+                "authored_ordinary_proof_not_Lean_proof_authority"
+            )
+            families = claims_document["machine_readable_paper"][
+                "publication_assembly"
+            ]["contribution_families"]
+            assert not ordinary_proof_claim_errors(row, families, ROOT)
+            false_label = copy.deepcopy(row)
+            false_label["paper_label"] = "missing:ordinary-proof-label"
+            assert ordinary_proof_claim_errors(false_label, families, ROOT)
 
     exported_papers = public_paper_rows({
         "machine_readable_paper": {"paper": {"source": "paper/absent.tex"}},

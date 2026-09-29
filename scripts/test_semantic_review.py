@@ -219,12 +219,19 @@ def main() -> int:
     )
     assert query.returncode == 0, query.stderr
     packet = json.loads(query.stdout)
+    assert not packet.get("truncated"), "review inventory hit the packet budget"
     assert packet["coverage"]["reviewed_statement_nodes"] > 0
     assert packet["coverage"]["reviewed_relations"] > 0
     assert {row["subject_kind"] for row in packet["results"]} == {
         "statement_node",
         "relation",
     }
+    for row in packet["results"]:
+        review = row["review"]
+        if review.get("review_scope_complete") is False:
+            assert "review_scope" not in review
+            assert review["review_scope_sha256"].startswith("sha256:")
+            assert review["review_scope_bytes"] > 4096
 
     print(
         "semantic review test: baseline attached and queryable; all "

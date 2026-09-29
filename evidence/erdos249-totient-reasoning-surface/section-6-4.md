@@ -1261,7 +1261,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 ## Theorem 6.149 (Nondivisors in a short LCM window), page 70
 
 > *Let $`t\ge1`$. If $`1\le j<2t`$ and $`j\nmid H_t`$, then $`j=p^a>t`$ for a prime $`p`$ and an integer $`a\ge1`$. Every integer $`1\le j\le t`$ divides $`H_t`$. To see the first claim, some prime-power divisor $`p^a`$ of $`j`$ exceeds $`t`$; otherwise every prime-power divisor would divide $`H_t`$. Since $`j<2t<2p^a`$, its remaining cofactor is $`1`$.*
-> 
+>
 > *If $`j\mid H_t`$ and every prime divisor of $`j`$ also divides $`H_t/j`$, then, for every integer $`q\ge0`$,
 > ``` math
 > \varphi(qH_t+j)=\varphi(j)\varphi\bigl(q(H_t/j)+1\bigr).
@@ -1396,7 +1396,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 > 1\le k\le d,\qquad mq\mid p^k-1.
 > ```
 > The divisibility forces $`\gcd(p,mq)=1`$. For such $`p`$, existence of $`k`$ in the displayed range is equivalent to $`\operatorname{ord}_{mq}(p)\le d`$. It also gives $`mq<p^d`$. Hence every fixed finite set of primes is disjoint from the prime divisors of $`C(mq)`$ for all sufficiently large prime $`q`$. If, in addition, for all sufficiently large prime $`q`$ one has $`C(mq)>1`$ and $`\gcd(C(mq),mq)=1`$, then for every $`B,N_0`$ there are primes $`q\ge N_0`$ and $`p>B`$ with $`p\mid C(mq)`$.*
-> 
+>
 > *Indeed, the divisibility gives $`mq\le p^k-1<p^k\le p^d`$. For a finite set of primes, take $`q`$ larger than all their $`d`$-th powers; for the last assertion, take a prime divisor of the nontrivial value $`C(mq)`$ after this threshold. The stated coprimality is included in the formal source’s layer hypothesis, although this last extraction argument uses only $`C(mq)>1`$. For $`C(n)=2^n-1`$, the first theorem above supplies the hypothesis with $`m=d=1`$: here $`\operatorname{ord}_q(p)=1`$, whereas $`\operatorname{ord}_p(2)=q`$. For $`C(n)=|\Phi_n(2)|`$ and a general fixed $`m>0`$, the source uses the *eventual* version: the divisibility is required only for prime $`q`$ above a fixed threshold. The same proof then applies after that threshold. It is not valid to replace this by an all-prime assertion: $`\Phi_6(2)=3`$, but $`6\nmid3-1`$. For the binary cyclotomic family, choosing $`q>\max(m,2^m)`$ removes these exceptional indices. Other families require their own proof of the divisibility and nontriviality assumptions.*
 
 The Lean declarations below together state this result.
@@ -1678,7 +1678,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 > Q_{a+b,N}=2^bQ_{a,N}+Q_{b,N+a}.
 > ```
 > In particular, $`Q_{2h,N}=2^hQ_{h,N}+Q_{h,N+h}`$. The corresponding cyclotomic identity is $`\Phi_4(2^h)=2^{2h}+1=\Phi_2(2^{2h})`$: the order-four factor at height $`h`$ is the order-two factor at height $`2h`$.*
-> 
+>
 > *The order-three factor is different: $`\Phi_3(2^h)=2^{2h}+2^h+1`$ comes from tripling the period. It is not generally part of the doubling sequence. For example, $`\Phi_3(2)=7`$ divides none of $`2^{2^j}-1`$, because the order of $`2`$ modulo $`7`$ is $`3`$, which does not divide $`2^j`$. Thus the block identities relate specified period multiples; they do not put all the order-two, order-three and order-four factors into one doubling chain.*
 
 The Lean declarations below together state this result.

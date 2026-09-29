@@ -248,11 +248,11 @@ theorem global_complementary_criterion_nat
 ## Theorem A.1 (rationality and factorial residues), page 13
 
 > *The following statements are equivalent:*
-> 
+>
 > 1.  *$`S\in\mathbb Q`$;*
-> 
+>
 > 2.  *$`(\lfloor m!C\rfloor+2)\bmod m=0`$ for every sufficiently large $`m`$.*
-> 
+>
 > *Consequently,
 > ``` math
 > \begin{equation}

@@ -1,0 +1,19 @@
+
+/-! ## Consequence: the producer implies irrationality -/
+
+/-- The paper's Problem `prob:producer` (9.5), stated for the actual radix
+word, the actual ordered digit and the short bound `B · 90 (n+1)^2`. -/
+def ActualCofinalLocalWindowEscape : Prop :=
+  CofinalLocalWindowEscape dyadicBlockBase235 dyadicOrderedBlockDigit235
+    (fun B n => B * bridgeWidth n)
+
+/-- Under the actual escape producer, the value is not `p/q` for any `q > 0`. -/
+theorem value_ne_rat_of_cofinalLocalWindowEscape
+    (hescape : ActualCofinalLocalWindowEscape) {p q : ℤ} (hq : 0 < q) :
+    dyadicShellTsumTailR235 1 ≠ (p : ℝ) / (q : ℝ) := by
+  intro hval
+  obtain ⟨B, a₀, d, hBpos, hBcop, hrec, hpos, hbound⟩ :=
+    exists_reducedCarry_of_value_eq_rat hq hval
+  exact no_positive_reducedCarry_of_cofinalLocalWindowEscape_onset
+    dyadicBlockBase235 dyadicOrderedBlockDigit235 (fun B n => B * bridgeWidth n)
+    hescape B hBpos hBcop a₀ d hrec hpos hbound

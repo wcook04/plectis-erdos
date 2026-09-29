@@ -1,0 +1,19 @@
+{
+  "schema": "plectis-finite-probe-receipt/1",
+  "probe": "research/probes/Round8MomentPacketFinite.lean",
+  "sha256": "7ddb988f2f9e6b9ac91c46be8d384cac12c87c7cab430db5a6e37194dbfd5943",
+  "lean_toolchain": "leanprover/lean4:v4.29.1",
+  "environment_base": "5acddfb2d9b43ad1b876f25700c49b1c39beddde",
+  "command": "lake env lean research/probes/Round8MomentPacketFinite.lean",
+  "checked_source": "Public checkout full-file replay; exact source bytes match independently checked staged source.",
+  "public_replay_job_id": "cf_847fdff4c168470a8e28",
+  "public_run_id": "cmdrun_20260929T104431Z_42917_498984000_45405bb48c73",
+  "completed_at": "2026-09-29T10:45:18+00:00",
+  "exit_code": 0,
+  "stdout_sha256": "82585095f845260156e0e11a0aad178f777b26584d5ae03e8daa12be3e9aa20a",
+  "stdout": "'PlectisRound8MomentPacket.second_packet_mass' depends on axioms: [propext, Quot.sound]\n'PlectisRound8MomentPacket.second_packet_first_moment' depends on axioms: [propext, Quot.sound]\n'PlectisRound8MomentPacket.second_packet_second_moment' depends on axioms: [propext, Quot.sound]\n'PlectisRound8MomentPacket.second_packet_generating_polynomial' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\nPlectisRound8MomentPacket.second_packet_mass (M d : ℤ) : d * M - 2 * d * M + d * M = 0\nPlectisRound8MomentPacket.second_packet_first_moment (n t M d : ℤ) :\n  d * M * n - 2 * d * M * (n + t) + d * M * (n + 2 * t) = 0\nPlectisRound8MomentPacket.second_packet_second_moment (n t M d : ℤ) :\n  d * M * n ^ 2 - 2 * d * M * (n + t) ^ 2 + d * M * (n + 2 * t) ^ 2 = 2 * d * M * t ^ 2\nPlectisRound8MomentPacket.second_packet_generating_polynomial (n t : ℕ) (M d z : ℚ) :\n  d * M * (z ^ n - 2 * z ^ (n + t) + z ^ (n + t + t)) = d * M * z ^ n * (1 - z ^ t) ^ 2\n",
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "axiom_declaration_count": 4,
+  "checked_type_count": 4,
+  "evidence_limit": "Signed finite moments and generating polynomial only; no infinite interpolation, density, or totient conclusion. No library-root import or paper coverage upgrade."
+}

@@ -11,7 +11,7 @@ Part of the [evidence record](../erdos249-totient-reasoning-surface.md) of the p
 >     \sum_{N\in T}\operatorname{Re}E(h,N,L)\le\tfrac{9}{10}\,\#T.
 >     ```
 >     Then $`S\notin\mathbb{Q}`$ ([`irrational_totient_series_of_support_gap`](https://github.com/wcook04/plectis-erdos/blob/24edbddbe2bd68e920327a701aad0b9dd0d69675/lean/ErdosProblems/ArgumentGraph/Results/Erdos249Endpoint.lean#L44)).*
-> 
+>
 > 2.  *Take $`s=26`$, $`\eta=1/1000`$ and $`L=L(X)`$. Suppose that for every $`h\ge1`$ there are arbitrarily large $`X`$ with
 >     ``` math
 >     \operatorname{Re}\sum_{N\in\mathcal G}E\bigl(h,N,L(X)\bigr)

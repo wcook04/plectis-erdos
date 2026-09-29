@@ -69,25 +69,25 @@
 \newcommand{\AFNamedInputsTraced}{55}
 % END generated_argument_frontier_macros
 % BEGIN generated_record_count_macros
-\newcommand{\LedgerRows}{700}
+\newcommand{\LedgerRows}{710}
 \newcommand{\LedgerExact}{511}
 \newcommand{\LedgerSpecialising}{143}
 \newcommand{\LedgerNamedInput}{25}
-\newcommand{\LedgerNoLean}{21}
+\newcommand{\LedgerNoLean}{31}
 \newcommand{\LedgerWithLean}{679}
 \newcommand{\LedgerFormal}{654}
 \newcommand{\LedgerCompared}{633}
 \newcommand{\LedgerQueued}{21}
 \newcommand{\LeanModules}{1,903}
-\newcommand{\Claims}{155}
+\newcommand{\Claims}{160}
 \newcommand{\ClaimObligations}{19}
 \newcommand{\ClaimStatuses}{eight}
 \newcommand{\FrontierTree}{6410fad4}
-\newcommand{\JournalHead}{41c1ae9ed793}
-\newcommand{\Rounds}{6}
-\newcommand{\RoundsSealed}{1}
-\newcommand{\Returns}{19}
-\newcommand{\ReturnsAdmitted}{12}
+\newcommand{\JournalHead}{e206968c9dfe}
+\newcommand{\Rounds}{7}
+\newcommand{\RoundsSealed}{2}
+\newcommand{\Returns}{25}
+\newcommand{\ReturnsAdmitted}{18}
 \newcommand{\ReturnsUnreviewed}{7}
 \newcommand{\Relations}{8}
 \newcommand{\RelationsAttested}{8}
@@ -906,13 +906,21 @@ Hold out tasks by proof and definition lineage, including aliases and generated
 graph or paper views that could reveal the answer. A task family, not each
 rephrased prompt or repeated seed, is the independent comparison unit.
 
-The offline \texttt{reader\_study.py} prepares explicit file allowlists and
-digest-bound jobs, checks their bytes, and can form grading packets without
-showing their arm labels. It does not run a model, provide an isolated execution
-environment, verify that all answer-bearing aliases were excluded, or judge
-mathematical correctness. Those steps need separate review and execution. A
-completed comparison would report every issued task, including timeouts and
-invalid answers, paired exact-decision accuracy, severe errors, source-use and
+Twelve candidate questions span four dependent clusters and thirty-four
+hash-bound excerpts at one frozen revision. The blind review export includes
+source bytes; a trusted channel pins its manifest. These are development
+materials, not unseen gold: hashes and author labels establish neither
+interpretation nor independent correctness.
+
+The \texttt{reader\_study.py} builds allowlisted, digest-bound jobs and blind
+grading packets. Its controller permits an authorized provider bridge only
+bounded listing, reading and literal search; it records traces, output and
+usage. The bridge and host must enforce model identity, resource limits and
+isolation. A four-task, one-family pilot is specified but
+unrun and ungraded. Excluding answer-bearing aliases and adjudicating keys
+need independent review. A completed comparison would report every issued
+task, including timeouts and invalid answers, paired exact-decision accuracy,
+severe errors, source-use and
 total preparation and review cost. Independent grading must preserve justified
 uncertainty when a converse, witness or source claim is missing. No such
 completed comparison is reported here.

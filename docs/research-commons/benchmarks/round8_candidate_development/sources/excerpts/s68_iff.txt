@@ -1,0 +1,64 @@
+theorem irrational_factorialGapSeries_of_cofinal_nonunit_carries
+    (hmiss : ∀ B : ℕ, ∃ m : ℕ,
+      B < m ∧ factorialGapStepCarry m ≠ 1) :
+    Irrational _root_.Erdos68.factorialGapSeries := by
+  by_contra hrat
+  obtain ⟨r, hr⟩ := exists_rat_of_not_irrational hrat
+  obtain ⟨m, hmLarge, hmMiss⟩ := hmiss (max 2 r.den)
+  apply hmMiss
+  apply factorialGapStepCarry_eq_one_of_series_eq_rat
+    (m := m) (q := r.den) (a := r.num)
+  · omega
+  · exact r.den_pos
+  · omega
+  · rw [hr, Rat.cast_def]
+
+/-- The original irrationality problem is exactly the assertion that
+non-unit carries occur cofinally.  No implication is lost in passing from
+the series to this integer recurrence. -/
+theorem irrational_factorialGapSeries_iff_cofinal_nonunit_carries :
+    Irrational _root_.Erdos68.factorialGapSeries ↔
+      ∀ B : ℕ, ∃ m : ℕ,
+        B < m ∧ factorialGapStepCarry m ≠ 1 := by
+  constructor
+  · intro hirr B
+    by_contra hnone
+    push Not at hnone
+    have hunit :
+        ∃ M : ℕ, ∀ m : ℕ, M ≤ m →
+          factorialGapStepCarry m = 1 := by
+      refine ⟨B + 1, ?_⟩
+      intro m hm
+      exact hnone m (by omega)
+    exact
+      (not_irrational_factorialGapSeries_of_eventually_unit_carries hunit)
+        hirr
+  · exact irrational_factorialGapSeries_of_cofinal_nonunit_carries
+
+/-- The original irrationality problem is equivalently a cofinal failure of
+one purely integral divisibility test on the exact rational prefixes.  No
+prime restriction, real approximation, or rounding-carry hypothesis remains
+in this formulation. -/
+theorem irrational_factorialGapSeries_iff_cofinal_strictFacTopRat_misses :
+    Irrational _root_.Erdos68.factorialGapSeries ↔
+      ∀ B : ℕ, ∃ m : ℕ,
+        B < m ∧
+          ¬(m : ℤ) ∣ strictFacTopRat (factorialGapPrefix m) m := by
+  rw [irrational_factorialGapSeries_iff_cofinal_nonunit_carries]
+  constructor
+  · intro hmiss B
+    obtain ⟨m, hmLarge, hmCarry⟩ := hmiss (max 2 B)
+    have hm3 : 3 ≤ m := by omega
+    refine ⟨m, by omega, ?_⟩
+    intro hmDvd
+    exact hmCarry
+      ((factorialGapStepCarry_eq_one_iff_dvd_strictFacTopRat hm3).2 hmDvd)
+  · intro hmiss B
+    obtain ⟨m, hmLarge, hmDvd⟩ := hmiss (max 2 B)
+    have hm3 : 3 ≤ m := by omega
+    refine ⟨m, by omega, ?_⟩
+    intro hmCarry
+    exact hmDvd
+      ((factorialGapStepCarry_eq_one_iff_dvd_strictFacTopRat hm3).1 hmCarry)
+
+end ErdosProblems.Erdos68

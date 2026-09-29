@@ -53,10 +53,10 @@ MODULE_PACKET_LIMIT = 12
 MAX_SEMANTIC_CELLS = 4
 PROBLEM_READER_RESULT_LIMIT = 3
 # Problem routes preserve every reviewed family and its exact boundary.  Eight
-# public problems currently require just under 78 KB for the largest (#249)
+# public problems currently require about 81 KB for the largest (#249)
 # source-current route, so retain a modest fixed ceiling instead of rejecting
 # the default public command or silently truncating that family inventory.
-OUTPUT_BUDGET_BYTES = 80_000
+OUTPUT_BUDGET_BYTES = 84_000
 # The house agent-packet budget, shared with scripts/proof_state_compiler.py
 # (MAX_PACKET_BYTES) and scripts/build_corpus_descriptor.py
 # (DESCRIPTOR_MAX_BYTES).  OUTPUT_BUDGET_BYTES is the hard CLI ceiling; this is
@@ -3245,6 +3245,47 @@ def paper_label_index() -> dict[str, dict[str, Any]]:
                 f"{index[label]['source_ref']} and {anchor['paper']['source_ref']}"
             )
         index[label] = anchor["paper"]
+    claims = load("docs/claims.json")
+    claim_index = {row["id"]: row for row in claims["claims"]}
+    for family in claims["machine_readable_paper"]["publication_assembly"][
+        "contribution_families"
+    ]:
+        if family.get("status_summary") != (
+            "Reviewed ordinary proof; full infinite statement not formalised "
+            "and independent human review not recorded."
+        ):
+            continue
+        owner = family.get("primary_narrative_owner")
+        if not isinstance(owner, str) or not owner.startswith("paper/") or ".." in Path(owner).parts:
+            continue
+        source = ROOT / owner
+        if not source.is_file():
+            continue
+        lines = source.read_text(encoding="utf-8").splitlines()
+        for claim_id in family.get("claim_ids", []):
+            claim = claim_index.get(claim_id, {})
+            if claim.get("declarations") or claim.get("status") != "unconditional progress":
+                continue
+            label = claim.get("paper_label")
+            if not isinstance(label, str) or label in index:
+                continue
+            line = next(
+                (number for number, text in enumerate(lines, 1)
+                 if f"\\label{{{label}}}" in text),
+                None,
+            )
+            if line is None:
+                continue
+            rendered = str(Path(owner).with_suffix(".pdf"))
+            index[label] = {
+                "label": label,
+                "source": owner,
+                "line": line,
+                "source_ref": f"{owner}:{line}",
+                "rendered": rendered if (ROOT / rendered).is_file() else None,
+                "evidence_class": "reviewed_ordinary_proof",
+                "authority_posture": "authored_ordinary_proof_not_Lean_proof_authority",
+            }
     return index
 
 
@@ -3370,6 +3411,36 @@ def claim_packet(claim_id: str) -> dict[str, Any]:
 
 @lru_cache(maxsize=2_048)
 def paper_anchor_packet(handle: str, kind: str = "paper_anchor") -> dict[str, Any]:
+    coordinate = paper_label_index().get(handle)
+    if coordinate and coordinate.get("evidence_class") == "reviewed_ordinary_proof":
+        claims = load("docs/claims.json")
+        attached = [
+            compact_claim(claim) for claim in claims["claims"]
+            if claim.get("paper_label") == handle
+        ]
+        return {
+            "kind": kind,
+            "authority_posture": "authored_ordinary_proof_not_Lean_proof_authority",
+            "canonical_handle": handle,
+            "paper": coordinate,
+            "anchor_class": "ordinary_proof_theorem_label",
+            "attached_claims": attached,
+            "attached_open_propositions": [],
+            "source_links": [],
+            "evidence_class": "reviewed_ordinary_proof",
+            "attachment_receipt": {
+                "claim_count": len(attached),
+                "open_proposition_count": 0,
+                "source_link_count": 0,
+                "complete": True,
+                "owners": [coordinate["source"], "docs/claims.json"],
+            },
+            "follow": {
+                "claim": "python3 scripts/query_corpus.py --claim <attached_claim_id>",
+                "artifact": "python3 scripts/query_corpus.py --artifact <registered_paper_path>",
+            },
+            "validation": "python3 scripts/check_release.py",
+        }
     matches = [
         row
         for row in paper_anchor_inventory()

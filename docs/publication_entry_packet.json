@@ -107,14 +107,14 @@
   },
   "authority_posture": "navigation_projection_not_Lean_proof_authority_and_not_historical_evidence_authority",
   "content_hashes": {
-    "docs/claims.json": "sha256:11ceac55bcc5acfd8a8b622ac830a41fb543fa98716fe95d7d670c6c6a16c1b7",
+    "docs/claims.json": "sha256:e139025a2c23905ec32f2937ff82c20b1b0bd9388ecdd891d715eb89ca763f5e",
     "docs/methodology.json": "sha256:cef19d9092c49ba9c9b269a4b04c2c6030164bba6b80561117577713f60c3750",
-    "docs/problems.json": "sha256:b7a3f733e9e6cf488a5113e11b8f99cf09df0dbc8baff9580c47873940db0eb6",
-    "docs/publication_contract.json": "sha256:f893c6dbde94af8fe76f37aea2b8cbc512c97f7422dd3d415095d1216d4048fa",
+    "docs/problems.json": "sha256:be3b87f076834f4047f90492acc2ecd3857a4b390aeea1a2385b0f1c6a120e87",
+    "docs/publication_contract.json": "sha256:dc9571b453e920869fb0e59f0bb3f00ec5519e236dbb6284ab0f363249d2301b",
     "docs/publication_entry_source.json": "sha256:a350c6ba5ba1a9828e916301f3148bc9a81d7ca14b175db0eca8c5426b8e5e5d",
     "docs/publication_evidence.json": "sha256:4e350698eed8b4ee10fc629cfb7540ed71bc6ccf4020ee2ede8635f4aae809b3",
-    "paper/systems/claim-faithful-publication-systems-paper.pdf": "sha256:ede7e92156c360ed8eee7468e502f1f29e5bb99e655fb70a09671da93fa8e069",
-    "paper/systems/claim-faithful-publication-systems-paper.tex": "sha256:d1b54faced3676b1a8ddc690794989db2aecfbf0a0c3f4a839d4ff24a17b9b5d",
+    "paper/systems/claim-faithful-publication-systems-paper.pdf": "sha256:e9462338a644aafc585640f27bacf5df2c23d0c14c14f75aea7d09cba7903ebc",
+    "paper/systems/claim-faithful-publication-systems-paper.tex": "sha256:3af1deaaf478d291f0920667479322c783d9b819871495074c7c5b0a81a59f96",
     "research/experiments/publication_mutations.json": "sha256:9243e270257869e7a191c7598e917457cab61194299d1651e21bbc45a2d4c1e3",
     "research_corpus/Erdos1041/CORPUS_MANIFEST.json": "sha256:edc01f9cf6a356e0722e7dc51425fa01be7200720b17cc2a131cd4bb504b31b3",
     "research_corpus/Erdos1041/FRONTIER.md": "sha256:8aef5071a9a2a35de6b2af79bf0a486d97306aa0b6d4b997144e16ba1d112a9a",
@@ -131,8 +131,8 @@
   ],
   "historical_checker_example": {
     "current_owner_snapshot": {
-      "contribution_family_count": 33,
-      "curated_claim_count": 155,
+      "contribution_family_count": 38,
+      "curated_claim_count": 160,
       "remaining_open_proposition_count": 19,
       "snapshot_kind": "current_canonical_owners",
       "status_count": 8
@@ -330,7 +330,7 @@
       "open_target_claim": "universal_257",
       "paper_anchor": {
         "environment": "problem",
-        "line": 1192,
+        "line": 1218,
         "source": "paper/257/erdos-257-mersenne-support-subseries.tex",
         "title": "membership of 1/21 in the Mersenne achievement set"
       },
@@ -426,7 +426,7 @@
       "open_target_claim": "erdos_269",
       "paper_anchor": {
         "environment": "problem",
-        "line": 3195,
+        "line": 3449,
         "source": "paper/269/erdos269-running-lcm-reasoning-surface.tex",
         "title": "an exact function representing the distinct-height sum"
       },
@@ -450,7 +450,7 @@
       "open_target_claim": "erdos_249",
       "paper_anchor": {
         "environment": "problem",
-        "line": 707,
+        "line": 735,
         "source": "paper/249/erdos-249-binary-totient-series.tex",
         "title": "Four estimates for the first-harmonic sum"
       },
@@ -462,7 +462,7 @@
       "open_target_claim": "universal_257",
       "paper_anchor": {
         "environment": "problem",
-        "line": 1208,
+        "line": 1234,
         "source": "paper/257/erdos-257-mersenne-support-subseries.tex",
         "title": "bounded returns of the scaled remainder"
       },
@@ -474,7 +474,7 @@
       "open_target_claim": "universal_257",
       "paper_anchor": {
         "environment": "problem",
-        "line": 1217,
+        "line": 1243,
         "source": "paper/257/erdos-257-mersenne-support-subseries.tex",
         "title": "arithmetic tests for the greedy sequence"
       },
@@ -486,7 +486,7 @@
       "open_target_claim": "universal_257",
       "paper_anchor": {
         "environment": "problem",
-        "line": 1228,
+        "line": 1254,
         "source": "paper/257/erdos-257-mersenne-support-subseries.tex",
         "title": "final-skip Diophantine exclusion"
       },
@@ -531,7 +531,7 @@
     ],
     "reading_rule": "Read FRONTIER.md for dated refutations and open gaps, then STRONGEST_RESULTS.json for source-pinned activation. Premises and falsifiers retain local hypotheses; research rows do not settle historical correspondence or become Comparator claims.",
     "source_index": {
-      "content_digest": "sha256:b7a3f733e9e6cf488a5113e11b8f99cf09df0dbc8baff9580c47873940db0eb6",
+      "content_digest": "sha256:be3b87f076834f4047f90492acc2ecd3857a4b390aeea1a2385b0f1c6a120e87",
       "path": "docs/problems.json"
     },
     "strongest_result_summary": {
@@ -546,7 +546,7 @@
     "formal_source": {
       "public_tag": null,
       "publication_state": "committed_checkpoint_pending_remote_publication",
-      "ref": "436f55ebdafa67e4af0fff79f621c13f2ded12bf",
+      "ref": "2a8c1667566020d123a081b6165e3ee94550566d",
       "ref_kind": "commit",
       "relationship_to_last_tag": "post_tag_checkpoint"
     },

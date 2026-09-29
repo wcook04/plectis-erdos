@@ -1247,6 +1247,15 @@
           ],
           "comparator_disposition": "not_selected_deep_certificate_vocabulary",
           "boundary": "Equivalent producer statements are as hard as the unresolved target."
+        },
+        {
+          "id": "signed_totient_entire_defect_interpolation",
+          "contribution_class": "ordinary paper argument",
+          "summary": "For any integer beta>=2 and positive allowance f(n) tending to infinity, an interval around the totient value is filled by integer sequences b=phi+e with 0<=b(n)<=n and |e(n)|<=f(n). One target-independent even support has upper Banach density zero, leaving any fixed prefix and odd coefficients unchanged. The construction preserves every fixed eventual coefficient and cumulative congruence, gives eventually constant progression moment defects outside common hulls of density zero, entire progression Dirichlet defects, and smooth root-of-unity radial germs with prescribed finite zero jets. The full proof includes the allowance-dependent block bound and first-harmonic rational countermodels. It is an ordinary proof with two AI proof reviews, not a Lean proof of the infinite theorem or independent human review.",
+          "evidence_mode": "ordinary proof; two AI reviews, no independent human review",
+          "comparator_disposition": "not_applicable_without_exact_Lean_statement",
+          "declarations": [],
+          "boundary": "The correction is signed, so it does not subsume the one-sided prime-gap theorem. It preserves singularities and prescribed finite jets, not full analytic functions or all Taylor coefficients. The unperturbed totient and prime series remain unresolved."
         }
       ]
     },
@@ -1485,6 +1494,15 @@
           "evidence_mode": "Lean kernel plus Comparator",
           "comparator_disposition": "targeted",
           "boundary": "Neither membership question is decided; the 2-adic bound is sharp locally, and the two countermodel routes require unconstructed terminal-scaled or cofinal-cylinder antecedents."
+        },
+        {
+          "id": "separated_cut_algebraic_lambert_transcendence",
+          "contribution_class": "ordinary paper argument",
+          "summary": "For an infinite positive-integer host with cuts L_j < M_j, L_j tending to infinity and M_j-L_j tending to infinity, every host exponent at most L_j dividing L_j and every later exponent divisible by M_j, every infinite thinning with bounded positive integer weights has transcendental Lambert sum at every real algebraic base t > 1. This includes all divisibility chains and an explicit host of unbounded divisibility width and divergent reciprocal sum. The full number-field Subspace Theorem argument has two AI proof reviews; it is an ordinary proof with no Lean transcendence theorem, independent human review or asserted historical priority.",
+          "evidence_mode": "ordinary proof; two AI reviews, no independent human review",
+          "comparator_disposition": "not_applicable_without_exact_Lean_statement",
+          "declarations": [],
+          "boundary": "The full support at 3/2 and arbitrary infinite supports at base two remain unresolved. Finite cut arithmetic is not a proof of transcendence."
         }
       ]
     },
@@ -1576,6 +1594,24 @@
           "evidence_mode": "external exact computation",
           "comparator_disposition": "not_applicable_not_a_lean_theorem",
           "boundary": "Finite search is not a cofinal statement."
+        },
+        {
+          "id": "independent_clock_channel_relations",
+          "contribution_class": "ordinary paper argument",
+          "summary": "For positive rationally independent clock rates with no simultaneous positive crossings, and integer radices b_i >= 2, all rational relations among 1 and the channel sums S_i are multiples of (-1,b_1-1,...,b_d-1). The proof uses genuine late swaps with a common infinite suffix in one orbit closure, a fixed rational lattice, and density of the clock section. The explicit rates 1,sqrt(2),sqrt(3),sqrt(6) and radices 2,3,5,7 give rational span dimension four. This is an ordinary proof reviewed by AI agents, without Lean or independent human verification of the infinite theorem.",
+          "evidence_mode": "ordinary proof; two AI reviews, no independent human review",
+          "comparator_disposition": "not_applicable_without_exact_Lean_statement",
+          "declarations": [],
+          "boundary": "No rational independence of the original reciprocal prime logarithms is assumed or proved; the repeated running-LCM endpoint remains open."
+        },
+        {
+          "id": "selected_staircase_integral_height_boundary",
+          "contribution_class": "ordinary paper argument",
+          "summary": "The selected staircase matrix with ones on and below the diagonal and integer r>=2 above it has Smith factors 1,r-1,...,r-1. For the selected {2,3,5} kernel, any entrywise-integral diagonal clearing has determinant magnitude at least 4^(N-1), whereas the reduced rational determinant has numerator one up to sign. A rational single-target border has primitive polynomial plus or minus (tX-s), where s/t is the reduced Schur complement. These ordinary arithmetic arguments were reviewed by AI agents; they are not the existing Lean nonvanishing theorem and have no independent human review.",
+          "evidence_mode": "ordinary proof; two AI reviews, no independent human review",
+          "comparator_disposition": "not_applicable_without_exact_Lean_statement",
+          "declarations": [],
+          "boundary": "The optimality concerns diagonal clearing and one rational target. It does not rule out multi-target, nonlinear, recurrence, or new approximation methods and does not prove running-LCM irrationality."
         }
       ]
     },
@@ -1706,6 +1742,15 @@
             "ErdosProblems.Erdos1049.rectangular_hp_threshold_eq_classical_iff"
           ],
           "boundary": "This is a sharp no-go only for the explicit rectangular two-function exponent model under the stated real hypotheses; it constructs no approximating polynomials or remainders and is not a universal Padé or Hermite-Padé no-go. It proves no irrationality at 3/2 or any general rational-base endpoint, and the analytic remainder/nonvanishing input remains untreated. No novelty, priority, significance, external-review, or endpoint claim is made; Erdős #1049 remains open."
+        },
+        {
+          "id": "calibrated_rational_hankel_countermodel",
+          "contribution_class": "ordinary paper argument",
+          "summary": "An explicit positive atomic moment family and integer formal series have all-rank Hankel order sum_{j<N} j^2 and leading coefficient (N!)^2(N+1)!/2^N, with the same fixed-base asymptotic shape including N^(-8 xi), while xi=G_{2/3}(2/3)=1. For n>=1 the exact reduced moment denominator is 3^(31n+62)(3^(n+1)-2^(n+1))^4; the determinant denominator has logarithmic size Theta(N^3), and a proposed rank-two row-product clearer leaves denominator625. These are ordinary proofs with independent exact finite checks and AI proof reviews, not a Lean proof of the infinite family or human peer review.",
+          "evidence_mode": "ordinary proof; two AI reviews, no independent human review",
+          "comparator_disposition": "not_applicable_without_exact_Lean_statement",
+          "declarations": [],
+          "boundary": "These are not Zudilin's actual moments. They refute an inference from the shared signature alone; they do not settle F(3/2) or refute the attributed divisibility-based criterion."
         }
       ]
     }
@@ -1740,7 +1785,7 @@
     "owner": "docs/problem_index_source.json",
     "owner_digest": "sha256:434f7bbcaa5a93da61e4d37291b36dcb634bc705d79222abea6fe2c6c80fd8e3",
     "projection": "docs/problems.json",
-    "projection_digest": "sha256:b7a3f733e9e6cf488a5113e11b8f99cf09df0dbc8baff9580c47873940db0eb6",
+    "projection_digest": "sha256:be3b87f076834f4047f90492acc2ecd3857a4b390aeea1a2385b0f1c6a120e87",
     "schema": "erdos249257-problem-index/1",
     "problem_count": 8,
     "authority_posture": "navigation_projection_not_Lean_proof_authority_and_not_a_reviewed_claim_registry",
@@ -2237,8 +2282,9 @@
         },
         "external_check": {
           "state": "reviewed",
-          "family_count": 19,
+          "family_count": 20,
           "by_class": {
+            "not_applicable": 1,
             "not_selected": 4,
             "represented_by": 1,
             "targeted": 14
@@ -2262,7 +2308,8 @@
             "totient_carry_rank": "not_selected_deep_orbit_vocabulary",
             "totient_lambert_coefficients": "represented_by_basis_and_rank_targets",
             "eventually_periodic_lambert": "not_selected_prior_result",
-            "totient_certificate_equivalences": "not_selected_deep_certificate_vocabulary"
+            "totient_certificate_equivalences": "not_selected_deep_certificate_vocabulary",
+            "signed_totient_entire_defect_interpolation": "not_applicable_without_exact_Lean_statement"
           }
         }
       },
@@ -2432,9 +2479,9 @@
         },
         "external_check": {
           "state": "reviewed",
-          "family_count": 15,
+          "family_count": 16,
           "by_class": {
-            "not_applicable": 1,
+            "not_applicable": 2,
             "targeted": 14
           },
           "dispositions": {
@@ -2452,7 +2499,8 @@
             "squarefree_support": "not_applicable_to_external_irrationality_input",
             "achievement_set_geometry": "targeted_measure_theorem",
             "restricted_achievement_sets": "targeted_measure_dichotomy",
-            "half_and_twenty_one_frontiers": "targeted"
+            "half_and_twenty_one_frontiers": "targeted",
+            "separated_cut_algebraic_lambert_transcendence": "not_applicable_without_exact_Lean_statement"
           }
         }
       },
@@ -2603,9 +2651,9 @@
         },
         "external_check": {
           "state": "reviewed",
-          "family_count": 8,
+          "family_count": 10,
           "by_class": {
-            "not_applicable": 2,
+            "not_applicable": 4,
             "represented_by": 2,
             "targeted": 4
           },
@@ -2617,7 +2665,9 @@
             "dyadic_block_alphabet": "represented_by_three_prime_structure_target",
             "conditional_carry_escape": "targeted",
             "weighted_phase_carry_observer": "targeted",
-            "three_prime_finite_search": "not_applicable_not_a_lean_theorem"
+            "three_prime_finite_search": "not_applicable_not_a_lean_theorem",
+            "independent_clock_channel_relations": "not_applicable_without_exact_Lean_statement",
+            "selected_staircase_integral_height_boundary": "not_applicable_without_exact_Lean_statement"
           }
         }
       },
@@ -2914,9 +2964,9 @@
         },
         "external_check": {
           "state": "reviewed",
-          "family_count": 7,
+          "family_count": 8,
           "by_class": {
-            "not_applicable": 1,
+            "not_applicable": 2,
             "not_selected": 3,
             "targeted": 3
           },
@@ -2927,7 +2977,8 @@
             "coordinatewise_corridor_no_go": "targeted",
             "rational_base_tail_recurrence": "targeted",
             "seven_halves_irrationality": "not_applicable_to_external_irrationality_conclusion",
-            "height_and_pade_arithmetic": "targeted"
+            "height_and_pade_arithmetic": "targeted",
+            "calibrated_rational_hankel_countermodel": "not_applicable_without_exact_Lean_statement"
           }
         }
       }

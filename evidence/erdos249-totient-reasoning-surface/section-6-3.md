@@ -1100,7 +1100,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 > \end{aligned}
 > ```
 > The construction uses $`2K-1`$ distinct auxiliary primes congruent to $`1\pmod{2^K}`$: one for $`p+H`$, and two for each of the $`K-1`$ preceding positions. Choose them larger than $`\max(H+K,2^K)`$. For the first prime impose $`p\equiv-H`$; for the pair at position $`j`$ impose $`p\equiv j`$ and $`p\equiv j-H`$, respectively. These nonzero residues, together with the displayed odd residue modulo $`2^K`$, combine by the Chinese remainder theorem into a reduced progression. Dirichlet’s theorem then supplies arbitrarily large prime values of $`p`$. Each auxiliary prime contributes the required factor $`2^K`$ to the corresponding totient.*
-> 
+>
 > *Thus the first $`K-1`$ totient differences in the window starting at $`p-K`$ vanish modulo $`2^K`$, while the last is $`2^{K-1}`$ modulo $`2^K`$. Consequently
 > ``` math
 > D(H,p-K,K)\equiv2^{K-1}\pmod{2^K}.

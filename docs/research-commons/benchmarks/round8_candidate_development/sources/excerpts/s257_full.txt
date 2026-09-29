@@ -1,0 +1,39 @@
+    Nat.mul_le_mul_left q hNle
+  have hdist : q * ((b ^ (L - K) * (2 * ∑ d ∈ Finset.Icc 1 S, (A / d + 1))) / A
+        + (x + y * A + L + 2))
+      = q * ((b ^ (L - K) * (2 * ∑ d ∈ Finset.Icc 1 S, (A / d + 1))) / A)
+        + q * (x + y * A + L + 2) := by ring
+  omega
+
+/-- **Full-support (Erdős–Borwein) irrationality, unconditional.**  For every
+base `b ≥ 2` the series `∑_{n≥1} 1/(b^n - 1)` is irrational — Erdős (1948),
+through the certificate machine: bounded Bertrand/CRT first-block frame,
+middle-window divisor-pair average with pigeonhole selection, and explicit
+parameter closure. -/
+theorem irrational_erdosSum_full_support (b : ℕ) (hb : 2 ≤ b) :
+    Irrational (∑' k : ℕ, (1 : ℝ) / ((b : ℝ) ^ (k + 1) - 1)) :=
+  irrational_erdosSum_full_support_of_weighted_block_certificates b hb
+    (exists_weighted_block_certificates b hb)
+
+/-- **The Erdős–Borwein constant is irrational.**  Base-2 instance of the
+full-support theorem: `∑_{n≥1} 1/(2^n - 1)` is irrational. -/
+theorem irrational_erdosBorwein_series :
+    Irrational (∑' k : ℕ, (1 : ℝ) / ((2 : ℝ) ^ (k + 1) - 1)) := by
+  have h := irrational_erdosSum_full_support 2 (by norm_num)
+  have hcast : ((2 : ℕ) : ℝ) = (2 : ℝ) := by norm_num
+  rwa [hcast] at h
+
+/-! ## Support-coefficient calculus (wave 8)
+
+The full-support theorem `irrational_erdosSum_full_support` is a statement
+about the coefficient `τ(n) = n.divisors.card`.  Erdős #257 is a statement
+about the coefficient `f_A(n) = #{d ∣ n : d ∈ A}` for an arbitrary support
+`A ⊆ ℕ` — the Dirichlet incidence `1_A * 1`.  This section factors the
+landed proof into that language: a *generic* weighted-coefficient
+certificate engine (any `c : ℕ → ℕ` with `c m ≤ m`), a weighted Lambert
+transform, the support coefficient `supportCoeff`, and the support series
+`erdosSupportSeries`.  Full support is recovered as the `A = Set.univ`
+instance; the multiples supports `A = dℕ` land as the first non-trivial
+support classes.  Arbitrary-support Erdős #257 is NOT claimed: for a
+general infinite `A`, certificate existence for `supportCoeff A` is an
+open obligation, isolated here as an explicit hypothesis. -/

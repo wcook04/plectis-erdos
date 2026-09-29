@@ -661,9 +661,9 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 >  \frac{q(m-1)}{q+m-1}<R<\frac{qm}{q+m}.
 > ```
 > Clearing the positive denominators proves the equivalence. The interval has width $`q^2/((q+m)(q+m-1))`$.*
-> 
+>
 > *For a single skipped rank, $`c=b+2`$ and $`m=2q+2`$. The width is then $`q^2/((3q+1)(3q+2))<1/9`$, and the interval lies inside $`2q<3R<2q+2/3`$. In this single-skip case, the cited corollaries exclude integral $`R`$ and show that a reduced pre-take residual $`p/(2D)`$ with $`p,D,q`$ odd can be unsafe only if $`p\ge7`$. The latter conclusion uses the divisibility by $`4`$ of $`6D-2pq`$ under the unsafe-band inequalities.*
-> 
+>
 > *These are local transition statements, not bounds on the actual half-greedy orbit. Dyadic safety is only sufficient for the current tail test. The odd-coprime data $`(p,D,b)=(17,41,3)`$ give an unsafe single-skip example; no conclusion that the half-greedy orbit avoids such data follows from the band calculation.*
 
 The Lean declaration below states this result.
@@ -720,7 +720,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 > 2u\le3a
 > ```
 > ensures $`\rho<R_k`$, by comparison with $`2^{-k}+(3\cdot4^k)^{-1}+(7\cdot8^k)^{-1}<R_k`$. This conclusion excludes a fatal tail-mass deficit at the current step; it does not assert that $`\rho`$ is representable by the remaining weights, or that all future greedy steps survive.*
-> 
+>
 > *The containment of these sufficient conditions is strict even for valid rational data: $`(k,u,L,a)=(2,7,13,5)`$ gives $`1/4<7/26<R_2`$. In contrast, the scalar pair $`(u,a)=(3,2)`$ in the linked inequality lemma does not arise from integral $`L`$ under the present parity relation. Unit numerators are nonfatal at such a skipped step, since then $`a\ge1`$. Conversely, a fatal step requires $`3a<2u`$, hence $`u\ge2`$, or $`u\ge3`$ when $`u`$ is odd.*
 
 The Lean declaration below states this result.
@@ -1151,7 +1151,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 > X_u(2)+R_{d+1}<\frac12<X_u(2)+w_{d+1}.
 > ```
 > One implication is Lemma 6.37. For the other, follow the greedy prefixes: nonmembership forces a first failure of the tail inequality, hence one of these gaps. The endpoint equalities are excluded by Lemma 6.38.*
-> 
+>
 > *A finite prefix and strict gap provide a nonmembership witness. The tail inequality can be certified by rational truncation bounds as in Theorem 2.11. Membership, in contrast, asserts that no such witness exists; failure to find one in a finite search is not a proof. The reduction uses $`w_n>R_n`$, not compactness alone. The totient weights fail this hypothesis, as the example after Lemma 6.34 shows.*
 
 The Lean declarations below together state this result or one that implies it. The Lean statement has the same hypotheses and conclusion as the printed one, in the form $1/2\in\mathcal A$ exactly when no such $d$ and $u$ exist. A second Lean statement records the direction from nonmembership to a gap as the disjunction that $1/2\in\mathcal A$ or such a gap exists.
@@ -1392,7 +1392,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 >  \end{aligned}
 > ```
 > The first condition implies that the integer in the next two lines is nonnegative. The second specifies the binary value of the upper half of the row, the third bounds that value by its available number of bits, and the fourth is the exact quotient equation. The maximum in the first line records natural-number subtraction at the case $`c_{D_n}(n)=0`$.*
-> 
+>
 > *These are the finite hypotheses of the compatible-limit construction. The bit condition fixes coordinate $`d`$ from row $`2d`$ onward. Unlike the independent finite supports in Definition 6.66, the rows therefore have a prescribed common limit. This extra structure is not, by itself, a proof of strictness between the corresponding existence statements.*
 
 The Lean declarations below together state this result.

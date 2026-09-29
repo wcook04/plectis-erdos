@@ -198,6 +198,8 @@ This is a case study of one repository at one audited revision. Its projection s
 
 The audit was author-operated. No external contributor had yet completed the tour, attempted the documented return path, or reported where the first-contact explanation failed. Cold-clone usability and maintainer burden are therefore open empirical questions, not properties established by the internal replay.
 
+The repository also carries a source-frozen four-task reader pilot and a controller that checks material membership and captured trace accounting. Those artifacts make an experiment more reproducible, but no reader run or independent grade accompanies them. All four tasks share one mathematical family, so they cannot support an estimate of transfer across problem families. The study’s conditions and evidence limits are described in the companion systems paper’s evaluation section.
+
 Counts describe artifact coverage, not mathematical understanding. Direct dependency edges are not proof explanations. Authored semantic nodes may be wrong or incomplete. Maintainer-reviewed claims may also be wrong; automation preserves recorded relationships but does not judge unrestricted prose.
 
 Receipted reasoning is auditable rather than necessarily good. A model may choose unproductive probes, omit a relevant source, or rationalise a dead end. Replay detects environment drift in stored probes but not every flaw in the surrounding interpretation. Context-blind historical experiments also cannot establish training-data blindness.

@@ -1871,6 +1871,66 @@
           "source_route": "python3 scripts/query_corpus.py --claim ani_degree_seven_total_variation_counterexample",
           "consumer_or_open_obligation": "Independent human review of correspondence with the 1958 curve-length wording remains open; the exact Formal Conjectures Hausdorff-length statement is checked and refuted.",
           "view_decision": "problem_note_reference_detail"
+        },
+        {
+          "id": "separated_cut_algebraic_lambert_transcendence_family",
+          "claim_ids": [
+            "separated_cut_algebraic_lambert_transcendence"
+          ],
+          "status_summary": "Reviewed ordinary proof; full infinite statement not formalised and independent human review not recorded.",
+          "prior_art_posture": "Uses Evertse-Ferretti normalization of the number-field Subspace Theorem and the Corvaja-Zannier approximation method; no historical priority claim.",
+          "primary_narrative_owner": "paper/synthesis/optimal-sparse-perturbations.tex",
+          "source_route": "python3 scripts/query_corpus.py --claim separated_cut_algebraic_lambert_transcendence",
+          "consumer_or_open_obligation": "The full support at 3/2 and arbitrary infinite supports at base two remain unresolved. Finite cut arithmetic is not a proof of transcendence.",
+          "view_decision": "retain_in_companion"
+        },
+        {
+          "id": "independent_clock_channel_relations_family",
+          "claim_ids": [
+            "independent_clock_channel_relations"
+          ],
+          "status_summary": "Reviewed ordinary proof; full infinite statement not formalised and independent human review not recorded.",
+          "prior_art_posture": "The integer-radix recurrence and torus-density argument are standard ingredients; the stated clock-channel combination has no asserted historical priority. Bugeaud-Laurent is a distinct two-letter comparison.",
+          "primary_narrative_owner": "paper/269/erdos269-running-lcm-reasoning-surface.tex",
+          "source_route": "python3 scripts/query_corpus.py --claim independent_clock_channel_relations",
+          "consumer_or_open_obligation": "No rational independence of the original reciprocal prime logarithms is assumed or proved; the repeated running-LCM endpoint remains open.",
+          "view_decision": "retain_in_companion"
+        },
+        {
+          "id": "calibrated_rational_hankel_countermodel_family",
+          "claim_ids": [
+            "calibrated_rational_hankel_countermodel"
+          ],
+          "status_summary": "Reviewed ordinary proof; full infinite statement not formalised and independent human review not recorded.",
+          "prior_art_posture": "Reuses standard positive-moment/Christoffel machinery and the existing geometric-universality theorem. Exact construction and arithmetic controls carry no historical priority claim.",
+          "primary_narrative_owner": "paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex",
+          "source_route": "python3 scripts/query_corpus.py --claim calibrated_rational_hankel_countermodel",
+          "consumer_or_open_obligation": "These are not Zudilin's actual moments. They refute an inference from the shared signature alone; they do not settle F(3/2) or refute the attributed divisibility-based criterion.",
+          "view_decision": "retain_in_companion"
+        },
+        {
+          "id": "selected_staircase_integral_height_boundary_family",
+          "claim_ids": [
+            "selected_staircase_integral_height_boundary"
+          ],
+          "status_summary": "Reviewed ordinary proof; full infinite statement not formalised and independent human review not recorded.",
+          "prior_art_posture": "Smith form and the Schur-complement identity are standard; Stanley is the attributed Smith-form reference. This is subordinate arithmetic for the existing selected kernel.",
+          "primary_narrative_owner": "paper/269/erdos269-running-lcm-reasoning-surface.tex",
+          "source_route": "python3 scripts/query_corpus.py --claim selected_staircase_integral_height_boundary",
+          "consumer_or_open_obligation": "The optimality concerns diagonal clearing and one rational target. It does not rule out multi-target, nonlinear, recurrence, or new approximation methods and does not prove running-LCM irrationality.",
+          "view_decision": "retain_in_companion"
+        },
+        {
+          "id": "signed_totient_entire_defect_interpolation_family",
+          "claim_ids": [
+            "signed_totient_entire_defect_interpolation"
+          ],
+          "status_summary": "Reviewed ordinary proof; full infinite statement not formalised and independent human review not recorded.",
+          "prior_art_posture": "Finite-difference moment cancellation is standard. Comparisons cite Crmaric-Kovac, Coons with version-specific numbering, and Habiro; no historical priority is asserted. The arbitrary divergent allowance strengthens the returned polylogarithmic/power cases.",
+          "primary_narrative_owner": "paper/249/erdos249-totient-reasoning-surface.tex",
+          "source_route": "python3 scripts/query_corpus.py --claim signed_totient_entire_defect_interpolation",
+          "consumer_or_open_obligation": "The correction is signed, so it does not subsume the one-sided prime-gap theorem. It preserves singularities and prescribed finite jets, not full analytic functions or all Taylor coefficients. The unperturbed totient and prime series remain unresolved.",
+          "view_decision": "retain_in_companion"
         }
       ]
     },
@@ -20191,7 +20251,7 @@
     "lean_toolchain": "leanprover/lean4:v4.29.1",
     "repository": "https://github.com/wcook04/plectis-erdos",
     "formal_source": {
-      "ref": "436f55ebdafa67e4af0fff79f621c13f2ded12bf",
+      "ref": "2a8c1667566020d123a081b6165e3ee94550566d",
       "ref_kind": "commit",
       "publication_state": "committed_checkpoint_pending_remote_publication",
       "relationship_to_last_tag": "post_tag_checkpoint",
@@ -21265,6 +21325,15 @@
             ],
             "comparator_disposition": "not_selected_deep_certificate_vocabulary",
             "boundary": "Equivalent producer statements are as hard as the unresolved target."
+          },
+          {
+            "id": "signed_totient_entire_defect_interpolation",
+            "contribution_class": "ordinary paper argument",
+            "summary": "For any integer beta>=2 and positive allowance f(n) tending to infinity, an interval around the totient value is filled by integer sequences b=phi+e with 0<=b(n)<=n and |e(n)|<=f(n). One target-independent even support has upper Banach density zero, leaving any fixed prefix and odd coefficients unchanged. The construction preserves every fixed eventual coefficient and cumulative congruence, gives eventually constant progression moment defects outside common hulls of density zero, entire progression Dirichlet defects, and smooth root-of-unity radial germs with prescribed finite zero jets. The full proof includes the allowance-dependent block bound and first-harmonic rational countermodels. It is an ordinary proof with two AI proof reviews, not a Lean proof of the infinite theorem or independent human review.",
+            "evidence_mode": "ordinary proof; two AI reviews, no independent human review",
+            "comparator_disposition": "not_applicable_without_exact_Lean_statement",
+            "declarations": [],
+            "boundary": "The correction is signed, so it does not subsume the one-sided prime-gap theorem. It preserves singularities and prescribed finite jets, not full analytic functions or all Taylor coefficients. The unperturbed totient and prime series remain unresolved."
           }
         ]
       },
@@ -21503,6 +21572,15 @@
             "evidence_mode": "Lean kernel plus Comparator",
             "comparator_disposition": "targeted",
             "boundary": "Neither membership question is decided; the 2-adic bound is sharp locally, and the two countermodel routes require unconstructed terminal-scaled or cofinal-cylinder antecedents."
+          },
+          {
+            "id": "separated_cut_algebraic_lambert_transcendence",
+            "contribution_class": "ordinary paper argument",
+            "summary": "For an infinite positive-integer host with cuts L_j < M_j, L_j tending to infinity and M_j-L_j tending to infinity, every host exponent at most L_j dividing L_j and every later exponent divisible by M_j, every infinite thinning with bounded positive integer weights has transcendental Lambert sum at every real algebraic base t > 1. This includes all divisibility chains and an explicit host of unbounded divisibility width and divergent reciprocal sum. The full number-field Subspace Theorem argument has two AI proof reviews; it is an ordinary proof with no Lean transcendence theorem, independent human review or asserted historical priority.",
+            "evidence_mode": "ordinary proof; two AI reviews, no independent human review",
+            "comparator_disposition": "not_applicable_without_exact_Lean_statement",
+            "declarations": [],
+            "boundary": "The full support at 3/2 and arbitrary infinite supports at base two remain unresolved. Finite cut arithmetic is not a proof of transcendence."
           }
         ]
       },
@@ -21594,6 +21672,24 @@
             "evidence_mode": "external exact computation",
             "comparator_disposition": "not_applicable_not_a_lean_theorem",
             "boundary": "Finite search is not a cofinal statement."
+          },
+          {
+            "id": "independent_clock_channel_relations",
+            "contribution_class": "ordinary paper argument",
+            "summary": "For positive rationally independent clock rates with no simultaneous positive crossings, and integer radices b_i >= 2, all rational relations among 1 and the channel sums S_i are multiples of (-1,b_1-1,...,b_d-1). The proof uses genuine late swaps with a common infinite suffix in one orbit closure, a fixed rational lattice, and density of the clock section. The explicit rates 1,sqrt(2),sqrt(3),sqrt(6) and radices 2,3,5,7 give rational span dimension four. This is an ordinary proof reviewed by AI agents, without Lean or independent human verification of the infinite theorem.",
+            "evidence_mode": "ordinary proof; two AI reviews, no independent human review",
+            "comparator_disposition": "not_applicable_without_exact_Lean_statement",
+            "declarations": [],
+            "boundary": "No rational independence of the original reciprocal prime logarithms is assumed or proved; the repeated running-LCM endpoint remains open."
+          },
+          {
+            "id": "selected_staircase_integral_height_boundary",
+            "contribution_class": "ordinary paper argument",
+            "summary": "The selected staircase matrix with ones on and below the diagonal and integer r>=2 above it has Smith factors 1,r-1,...,r-1. For the selected {2,3,5} kernel, any entrywise-integral diagonal clearing has determinant magnitude at least 4^(N-1), whereas the reduced rational determinant has numerator one up to sign. A rational single-target border has primitive polynomial plus or minus (tX-s), where s/t is the reduced Schur complement. These ordinary arithmetic arguments were reviewed by AI agents; they are not the existing Lean nonvanishing theorem and have no independent human review.",
+            "evidence_mode": "ordinary proof; two AI reviews, no independent human review",
+            "comparator_disposition": "not_applicable_without_exact_Lean_statement",
+            "declarations": [],
+            "boundary": "The optimality concerns diagonal clearing and one rational target. It does not rule out multi-target, nonlinear, recurrence, or new approximation methods and does not prove running-LCM irrationality."
           }
         ]
       },
@@ -21724,6 +21820,15 @@
               "ErdosProblems.Erdos1049.rectangular_hp_threshold_eq_classical_iff"
             ],
             "boundary": "This is a sharp no-go only for the explicit rectangular two-function exponent model under the stated real hypotheses; it constructs no approximating polynomials or remainders and is not a universal Padé or Hermite-Padé no-go. It proves no irrationality at 3/2 or any general rational-base endpoint, and the analytic remainder/nonvanishing input remains untreated. No novelty, priority, significance, external-review, or endpoint claim is made; Erdős #1049 remains open."
+          },
+          {
+            "id": "calibrated_rational_hankel_countermodel",
+            "contribution_class": "ordinary paper argument",
+            "summary": "An explicit positive atomic moment family and integer formal series have all-rank Hankel order sum_{j<N} j^2 and leading coefficient (N!)^2(N+1)!/2^N, with the same fixed-base asymptotic shape including N^(-8 xi), while xi=G_{2/3}(2/3)=1. For n>=1 the exact reduced moment denominator is 3^(31n+62)(3^(n+1)-2^(n+1))^4; the determinant denominator has logarithmic size Theta(N^3), and a proposed rank-two row-product clearer leaves denominator625. These are ordinary proofs with independent exact finite checks and AI proof reviews, not a Lean proof of the infinite family or human peer review.",
+            "evidence_mode": "ordinary proof; two AI reviews, no independent human review",
+            "comparator_disposition": "not_applicable_without_exact_Lean_statement",
+            "declarations": [],
+            "boundary": "These are not Zudilin's actual moments. They refute an inference from the shared signature alone; they do not settle F(3/2) or refute the attributed divisibility-based criterion."
           }
         ]
       }
@@ -21823,7 +21928,7 @@
         "source": "paper/257/erdos-257-mersenne-support-subseries.tex",
         "environment": "problem",
         "title": "membership of 1/21 in the Mersenne achievement set",
-        "line": 1192
+        "line": 1218
       }
     },
     {
@@ -21919,7 +22024,7 @@
         "source": "paper/269/erdos269-running-lcm-reasoning-surface.tex",
         "environment": "problem",
         "title": "an exact function representing the distinct-height sum",
-        "line": 3195
+        "line": 3449
       }
     },
     {
@@ -21943,7 +22048,7 @@
         "source": "paper/249/erdos-249-binary-totient-series.tex",
         "environment": "problem",
         "title": "Four estimates for the first-harmonic sum",
-        "line": 707
+        "line": 735
       }
     },
     {
@@ -21955,7 +22060,7 @@
         "source": "paper/257/erdos-257-mersenne-support-subseries.tex",
         "environment": "problem",
         "title": "bounded returns of the scaled remainder",
-        "line": 1208
+        "line": 1234
       }
     },
     {
@@ -21967,7 +22072,7 @@
         "source": "paper/257/erdos-257-mersenne-support-subseries.tex",
         "environment": "problem",
         "title": "arithmetic tests for the greedy sequence",
-        "line": 1217
+        "line": 1243
       }
     },
     {
@@ -21979,7 +22084,7 @@
         "source": "paper/257/erdos-257-mersenne-support-subseries.tex",
         "environment": "problem",
         "title": "final-skip Diophantine exclusion",
-        "line": 1228
+        "line": 1254
       }
     }
   ],
@@ -26312,6 +26417,51 @@
           "line": 449
         }
       ]
+    },
+    {
+      "id": "separated_cut_algebraic_lambert_transcendence",
+      "label": "Algebraic-base transcendence on separated divisibility supports",
+      "statement": "For an infinite positive-integer host with cuts L_j < M_j, L_j tending to infinity and M_j-L_j tending to infinity, every host exponent at most L_j dividing L_j and every later exponent divisible by M_j, every infinite thinning with bounded positive integer weights has transcendental Lambert sum at every real algebraic base t > 1. This includes all divisibility chains and an explicit host of unbounded divisibility width and divergent reciprocal sum. The full number-field Subspace Theorem argument has two AI proof reviews; it is an ordinary proof with no Lean transcendence theorem, independent human review or asserted historical priority.",
+      "paper_label": "thm:separated-cuts",
+      "status": "unconditional progress",
+      "declarations": [],
+      "readme_headline": false
+    },
+    {
+      "id": "independent_clock_channel_relations",
+      "label": "Complete rational relations for integer-radix independent-clock sums",
+      "statement": "For positive rationally independent clock rates with no simultaneous positive crossings, and integer radices b_i >= 2, all rational relations among 1 and the channel sums S_i are multiples of (-1,b_1-1,...,b_d-1). The proof uses genuine late swaps with a common infinite suffix in one orbit closure, a fixed rational lattice, and density of the clock section. The explicit rates 1,sqrt(2),sqrt(3),sqrt(6) and radices 2,3,5,7 give rational span dimension four. This is an ordinary proof reviewed by AI agents, without Lean or independent human verification of the infinite theorem.",
+      "paper_label": "long269:thm:clock-relations",
+      "status": "unconditional progress",
+      "declarations": [],
+      "readme_headline": false
+    },
+    {
+      "id": "calibrated_rational_hankel_countermodel",
+      "label": "Rational-value countermodel to a Hankel-signature inference",
+      "statement": "An explicit positive atomic moment family and integer formal series have all-rank Hankel order sum_{j<N} j^2 and leading coefficient (N!)^2(N+1)!/2^N, with the same fixed-base asymptotic shape including N^(-8 xi), while xi=G_{2/3}(2/3)=1. For n>=1 the exact reduced moment denominator is 3^(31n+62)(3^(n+1)-2^(n+1))^4; the determinant denominator has logarithmic size Theta(N^3), and a proposed rank-two row-product clearer leaves denominator625. These are ordinary proofs with independent exact finite checks and AI proof reviews, not a Lean proof of the infinite family or human peer review.",
+      "paper_label": "long1049:thm:calibrated-model",
+      "status": "unconditional progress",
+      "declarations": [],
+      "readme_headline": false
+    },
+    {
+      "id": "selected_staircase_integral_height_boundary",
+      "label": "Smith index and primitive one-target border boundary",
+      "statement": "The selected staircase matrix with ones on and below the diagonal and integer r>=2 above it has Smith factors 1,r-1,...,r-1. For the selected {2,3,5} kernel, any entrywise-integral diagonal clearing has determinant magnitude at least 4^(N-1), whereas the reduced rational determinant has numerator one up to sign. A rational single-target border has primitive polynomial plus or minus (tX-s), where s/t is the reduced Schur complement. These ordinary arithmetic arguments were reviewed by AI agents; they are not the existing Lean nonvanishing theorem and have no independent human review.",
+      "paper_label": "long269:lem:staircase-smith",
+      "status": "unconditional progress",
+      "declarations": [],
+      "readme_headline": false
+    },
+    {
+      "id": "signed_totient_entire_defect_interpolation",
+      "label": "Arbitrarily slow signed interpolation preserving Dirichlet singularities",
+      "statement": "For any integer beta>=2 and positive allowance f(n) tending to infinity, an interval around the totient value is filled by integer sequences b=phi+e with 0<=b(n)<=n and |e(n)|<=f(n). One target-independent even support has upper Banach density zero, leaving any fixed prefix and odd coefficients unchanged. The construction preserves every fixed eventual coefficient and cumulative congruence, gives eventually constant progression moment defects outside common hulls of density zero, entire progression Dirichlet defects, and smooth root-of-unity radial germs with prescribed finite zero jets. The full proof includes the allowance-dependent block bound and first-harmonic rational countermodels. It is an ordinary proof with two AI proof reviews, not a Lean proof of the infinite theorem or independent human review.",
+      "paper_label": "long249:thm:signed-interpolation",
+      "status": "unconditional progress",
+      "declarations": [],
+      "readme_headline": false
     }
   ],
   "non_claims": [

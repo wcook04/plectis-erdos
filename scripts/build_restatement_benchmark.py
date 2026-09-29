@@ -21,6 +21,7 @@ import relation_binding
 import relation_registry
 import run_kernel_probes
 
+
 SCHEMA = "plectis-restatement-development/1"
 RELATIONS = {
     "equivalent": "restatement",
@@ -191,7 +192,51 @@ def write_bundle(out: Path, docs: tuple[dict[str, Any], dict[str, Any], dict[str
         path.write_bytes(_canonical(document) + b"\n")
 
 
+def candidate_main(argv: list[str]) -> int:
+    """Handle the disclosed historical 0268 candidate bank through this native owner."""
+    import restatement_candidate_support as candidate
+    parser = argparse.ArgumentParser(description="Disclosed candidate development bank; no gold")
+    sub = parser.add_subparsers(dest="command", required=True)
+    s = sub.add_parser("validate"); s.add_argument("--source-root", type=Path)
+    s = sub.add_parser("parse-responses"); s.add_argument("path", type=Path)
+    s = sub.add_parser("parse-reviews"); s.add_argument("path", type=Path)
+    s = sub.add_parser("export-review"); s.add_argument("responses", type=Path)
+    s.add_argument("--out", type=Path, required=True); s.add_argument("--source-root", type=Path)
+    s = sub.add_parser("verify-review-export"); s.add_argument("path", type=Path)
+    s.add_argument("--expected-manifest-sha256", required=True)
+    sub.add_parser("seal-gold")
+    args = parser.parse_args(argv)
+    try:
+        if args.command == "seal-gold":
+            raise candidate.Invalid("disclosed author proposals cannot seal mathematical gold")
+        if args.command == "validate":
+            result = candidate.validate(args.source_root)
+        elif args.command == "verify-review-export":
+            result = candidate.verify_review_export(
+                args.path, args.expected_manifest_sha256, candidate.binding_index())
+        else:
+            bank = candidate.load_bank(); handles = candidate.binding_index()
+            # Every import/export route verifies the bundled historical source excerpts.
+            candidate.validate_sources(None, handles)
+            if args.command == "parse-responses":
+                result = candidate.parse_responses(candidate.read_json(args.path), bank, handles)
+            elif args.command == "parse-reviews":
+                result = candidate.parse_reviews(candidate.read_json(args.path), bank, handles)
+            else:
+                parsed = candidate.parse_responses(candidate.read_json(args.responses), bank, handles)
+                result = candidate.export_review(parsed, bank, handles, args.out,
+                                                 source_root=args.source_root)
+        print(json.dumps(result, indent=2, ensure_ascii=False)); return 0
+    except (candidate.Invalid, OSError, ValueError, KeyError, TypeError) as exc:
+        print(json.dumps({"status": "refused", "reason": str(exc),
+                          "gold_assigned": False}, ensure_ascii=False), file=sys.stderr)
+        return 2
+
+
 def main(argv: list[str] | None = None) -> int:
+    argv = sys.argv[1:] if argv is None else list(argv)
+    if argv and argv[0] == "candidate":
+        return candidate_main(argv[1:])
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--root", type=Path, default=Path(__file__).resolve().parents[1])
     parser.add_argument("--out", type=Path, required=True)

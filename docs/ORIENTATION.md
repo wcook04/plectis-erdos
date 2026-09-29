@@ -188,7 +188,7 @@ order, never a significance proxy.
 The descriptor exposes the authored flagship spine, broader gateway cohort,
 and lower-signal dispositions with their reasons and open obligations.
 
-Flagship families: 7; gateway cohort: 15; lower-signal families: 18;
+Flagship families: 7; gateway cohort: 15; lower-signal families: 23;
 these are visibility tiers, not significance rankings.
 Use `python3 scripts/query_corpus.py --publication-architecture` for the
 selection decisions and `--publication-family <family_id>` for each full

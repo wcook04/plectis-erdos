@@ -287,7 +287,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 ## Proposition 9.14 (Five sufficient conditions), page 89
 
 > *Each of the five conditions below suffices for irrationality; none of them is proved. The first four imply the upper-endpoint condition; the fifth gives nonintegrality directly by the endpoint identity. These are not asserted to form a linear hierarchy. Here $`H=H(2^a)`$, and every condition quantifies over arbitrarily large exponents $`a`$.*
-> 
+>
 > 1.  **Adjacent-suffix band*:
 >     ``` math
 >     \forall a_0\ \exists a,m,\ a_0\le a \wedge 8\le a \wedge m{+}1{+}(a{+}6)<2\cdot 2^a \wedge
@@ -297,19 +297,19 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 >     2H{+}m{+}2 \le \text{suffix residue}(2^a)\,0\,m \le 2^m - (2H{+}m{+}2)
 >     ```
 >     (a two-sided band on the adjacent-suffix residue directly, one candidate depth $`m`$).*
-> 
+>
 > 2.  **Guarded odd-prefix band*: at the odd guarded depth $`2q{+}1`$, a two-sided band of half-width $`H{+}q{+}2`$ on the half-word residue modulo $`4^q`$. The depth is fixed by the stated guard; it cannot be chosen independently of $`a`$.*
-> 
+>
 > 3.  **Guarded centred-magnitude bound*, *proved equivalent* to the previous one:
 >     ``` math
 >     \forall a_0\ \exists a,q,\ \max(14,a_0)\le a \wedge q=q_a
 >           \wedge H{+}q{+}2 \le |u_{a,q}| .
 >     ```*
-> 
+>
 > 4.  **Flexible centred-magnitude bound*: the same magnitude bound with the depth restriction relaxed from “canonical guarded” to any odd $`2q{+}1`$ satisfying the half-cell fit $`2(H{+}q{+}2)\le 4^q`$ and the sign-corridor room $`2q{+}2{+}(a{+}6)<2\cdot 2^a`$.*
-> 
+>
 > 5.  **Terminal dominance*: under the same bounds as item 4, $`\delta_{2^a}(2q+2)\le2u_{a,q}`$. This is a different one-sided comparison, treated immediately below.*
-> 
+>
 > *For the first four conditions, the relevant implications into the upper-endpoint condition are as follows: adjacent-suffix band $`\to`$ upper-endpoint condition; guarded odd-prefix band $`\to`$ adjacent-suffix band; guarded centred-magnitude bound $`\Leftrightarrow`$ guarded odd-prefix band; flexible centred-magnitude bound $`\to`$ adjacent-suffix band; guarded centred-magnitude bound $`\to`$ flexible centred-magnitude bound.*
 
 The Lean declarations below together state this result.
@@ -1514,7 +1514,7 @@ theorem exists_upperHalf_channel_paper {t : ℕ} (ht : 5 ≤ t) :
 >  \qquad \operatorname{den}(u_t)|S-u_t|\longrightarrow0.
 > ```
 > This is the rational-separation criterion of Proposition 6.22: if $`S=a/b`$ were reduced, every unequal $`u_t`$ would instead satisfy $`\operatorname{den}(u_t)|S-u_t|\ge1/b`$. An upper bound tending to zero for this product is needed. A lower bound for the denominator cannot establish it; improving a lower bound does not change the actual approximation error.*
-> 
+>
 > *A different argument could deduce a residue certificate from the surviving divisor and further information about the complementary term. The denominator theorem alone contains no such separation statement. Neither sufficient argument is established by its lower bound, and these are not claimed to exhaust possible approaches.*
 
 The Lean declarations below together state this result.

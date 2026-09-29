@@ -110,7 +110,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 > 0<t\le c-3,\qquad c-2\le2^{c-t-3},
 > ```
 > then the precritical suffix bound at $`c`$ holds. It yields sharp capacity and hence an exact row at depth $`2c-2`$. The case $`t=1`$ includes Theorem 6.73; the proof also permits longer selected blocks. The arithmetic condition is precisely $`t\le c-3-\lceil\log_2(c-2)\rceil`$. Its role in the proof is to make the dyadic allowance $`2^{c-t-3}`$ cover the bound $`|D|\le c-2`$ for the earlier selected support.*
-> 
+>
 > *To obtain cofinal exact rows by this result, the stated gap condition must hold at cofinally many skipped ranks $`c`$, not just at one rank or throughout a finite sample. A finite empirical skip frequency alone gives no such pointwise gap bound.*
 
 The Lean declarations below together state this result.
@@ -606,7 +606,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 >        =2\lfloor\sqrt M\rfloor+4.
 > ```
 > Then some infinite $`A\subseteq\mathbb{N}_{>0}`$ satisfies $`X_A(2)=1/2`$. No compatibility between different finite supports or bound on their earlier carries is required.*
-> 
+>
 > *These are not the exact-row conditions of Definition 6.66. For such a finite support,
 > ``` math
 > \operatorname{ihc}(D,M-1)=2^{M-1}-Q(D,M),
@@ -741,7 +741,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 > 2^{-J}F_k(J)=\sum_{i=1}^{J}c_D(k+1+i)2^{-i}-C_D(k).
 > ```
 > This normalised expression, not necessarily $`F_k(J)`$ itself, is nondecreasing in $`J`$. Its limit is $`1-2^{k+1}r_k(1/2)`$, by the finite-support Lambert identity. This is positive exactly under the strict dyadic inequality on the left. At positive $`k`$, oddness of the reduced excess numerator excludes equality at zero.*
-> 
+>
 > *The result supplies some finite horizon, not the horizon $`J=c-3`$ required in the crossing application. More quantitatively, write $`\eta=1-2^{k+1}r_k(1/2)>0`$. Since $`\sum_{r\ge1}c_D(m+r)2^{-r}\le m+2`$, the omitted tail shows that $`(k+J+3)2^{-J}<\eta`$ suffices for $`F_k(J)>0`$. The value $`\eta`$ is rational for the finite support $`D`$, so this is an effective sufficient test. Proving it at the prescribed horizon is a separate arithmetic obligation.*
 
 The Lean declarations below together state this result or one that implies it. The Lean tail bound $\sum_{r\ge1}c_A(m+r)2^{-r}\le m+2$ holds for every set $A\subseteq\N$, of which $D$ is a case, and the normalised value, its monotonicity and limit, the positivity criterion, the effective test and the rationality of $\eta$ are proved for every $k\ge0$; the equivalence and the exclusion of $r_k(1/2)=2^{-(k+1)}$ assume $k\ge1$ as printed.

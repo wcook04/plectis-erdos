@@ -1,0 +1,13 @@
+/-- **The Erdős #257 support series** `∑_{a ∈ A} 1/(b^a - 1)`, as an
+indicator series over ℕ.  The `a = 0` term is `1/(1-1) = 0` under real
+division-by-zero conventions, so supports containing `0` contribute
+nothing spurious. -/
+noncomputable def erdosSupportSeries (b : ℕ) (A : Set ℕ) : ℝ :=
+  ∑' a : ℕ, Set.indicator A (fun a => (1 : ℝ) / ((b : ℝ) ^ a - 1)) a
+
+/-- Summability of the support-series terms, uniformly in `A`: dominated
+by the geometric envelope `2·(1/b)^a`. -/
+theorem summable_erdosSupport_indicator (b : ℕ) (A : Set ℕ) (hb : 2 ≤ b) :
+    Summable (fun a : ℕ =>
+      Set.indicator A (fun a => (1 : ℝ) / ((b : ℝ) ^ a - 1)) a) := by
+  have hb2 : (2 : ℝ) ≤ (b : ℝ) := by exact_mod_cast hb

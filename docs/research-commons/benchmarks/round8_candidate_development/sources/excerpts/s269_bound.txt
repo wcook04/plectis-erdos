@@ -1,0 +1,30 @@
+/-- An explicit finite box for every bounded-length escape against the exact long cap. -/
+theorem escaping_start_lt_thirty_pow {B H lo len : ℕ}
+    (hB : 0 < B) (hlen : len ≤ H)
+    (hesc : longPaperCap B (lo + len) <
+      leastPositiveResidue (Int.natAbs (actualWindowBase lo len))
+        (-((B : ℤ) * actualWindowForcing lo len))) : lo < 30 ^ H := by
+  have hp : 0 < Int.natAbs (actualWindowBase lo len) :=
+    Int.natAbs_pos.mpr (windowBase235_pos lo len).ne'
+  have hres := (leastPositiveResidue_pos_le hp
+    (-((B : ℤ) * actualWindowForcing lo len))).2
+  have hcap := start_le_longPaperCap (a := lo + len) hB
+  have hnat : Int.natAbs (actualWindowBase lo len) ≤ 30 ^ H := by
+    rw [actualWindowBase_eq_product, Int.natAbs_natCast]
+    exact (actualWindowProduct_le_thirty_pow lo len).trans
+      (Nat.pow_le_pow_right (by norm_num) hlen)
+  omega
+
+/-- Full long-record `res:no-bounded-length`, with a stronger explicit finite enclosure. -/
+theorem long_no_bounded_length {B H : ℕ} (hB : 0 < B)
+    (_hcop : Nat.Coprime B 30) (_hH : 1 ≤ H) :
+    Set.Finite {lo : ℕ | ∃ len : ℕ, 1 ≤ len ∧ len ≤ H ∧
+      longPaperCap B (lo + len) <
+        leastPositiveResidue (Int.natAbs (actualWindowBase lo len))
+          (-((B : ℤ) * actualWindowForcing lo len))} := by
+  apply (Finset.finite_toSet (Finset.range (30 ^ H))).subset
+  intro lo hlo
+  obtain ⟨len, _, hlen, hesc⟩ := hlo
+  exact Finset.mem_range.mpr (escaping_start_lt_thirty_pow hB hlen hesc)
+
+end ErdosProblems.Erdos269.PaperR7

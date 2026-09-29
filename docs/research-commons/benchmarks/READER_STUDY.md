@@ -58,34 +58,37 @@ study directories. It randomizes jobs and separates their material from the
 private arm mapping and gold identities. This protects byte identity; it does
 not prove that the supplied material lacks semantic answer leakage.
 
-## Execute with a separate runner
+## Execute and capture with a trusted bridge
 
-The controller reads each job's `job_spec_sha256` from the trusted
-`private_control.json`, then checks it before launch:
+`study verify-job JOB --expected-spec-sha256 DIGEST` checks the exact mounted
+material inventory and all bytes. It refuses unlisted files, links and special
+files as well as changed allowed files.
 
-```sh
-python3 scripts/benchmark_semantic_reasoning.py study verify-job \
-  sealed-study/agent_jobs/JOB_ID --expected-spec-sha256 TRUSTED_DIGEST
-```
+The native `study execute` subcommand runs one job through an operator-supplied
+provider bridge. It requires an externally retained SHA-256 for both the study
+specification and private control manifest, the exact job ID and deployment
+file, and a fresh output directory. Real runs additionally require a reviewed,
+model-matched deployment bound by the study specification and the explicit
+`--authorize-provider-run` flag. The bridge receives one JSON request per
+exchange and must enforce the remaining token cap before a paid call. Only
+list/read/literal-search tools over the frozen material allowlist are exposed
+by the native broker. A fresh provider session, no-network boundary, output
+custody, and honest bridge usage reporting remain operator responsibilities;
+this Python controller is not an OS sandbox or provider attestation.
 
-Do not obtain that digest from the job being checked. A changed prompt or
-allowlist is rejected even when its replacement material hashes agree.
+`study capture` takes an index of controller receipt paths and externally
+retained receipt hashes. It checks the complete cohort, job/source/model/control
+identity, exact trace bytes, start/stop events, ordered request/response/assistant
+identities, usage totals and accepted final against the bridge output, and
+nonreuse of traces and receipts. It refuses empty control cohorts. A bare
+structured-output attachment is not an execution receipt. The output is an
+execution array for `study blind`; mathematical correctness and grader
+independence remain unverified. `scripts/reader_trace_adapter.py` supplies
+trace normalization, with unknown costs retained as null.
 
-The executor must enforce a fresh environment, a read-only material mount, a
-writable output directory, no parent/gold/other-arm access, and no network.
-Run harmless denied-access canaries before collecting scored outcomes. Use
-only caches built from the allowed source cut. Fix model, effort and resource
-limits prospectively; a prompt asking the model to respect a budget is not
-enforcement. Preserve all attempts, accepted final outputs, exits, costs,
-timestamps, isolation receipts and configuration digests. This repository's
-preparer does not implement provider execution or certify isolation.
-
-`scripts/reader_trace_adapter.py` normalizes the supported Claude JSONL shape,
-deduplicates usage by message identity, and distinguishes accepted structured
-output attachments from attempted tool calls. Its default output excludes
-answer text. Other trace formats require a separately tested adapter. Missing
-usage or billing is unknown, not zero. Keep raw confidential traces in their
-original custody and publish only reviewed derivatives with original digests.
+The proposed historical 0268 materials are separately documented in
+[round8_reader_pilot/README.md](round8_reader_pilot/README.md). They are
+provider-unbound development candidates and have not been executed.
 
 ## Grade and analyze
 

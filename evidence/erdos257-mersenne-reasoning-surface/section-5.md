@@ -298,7 +298,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 > ```
 > The tail bounds $`2^{-(n-1)}<R_{n-1}\le
 > 2^{-(n-1)}+\tfrac23 4^{-(n-1)}`$ and $`|D_n|\le n-2`$ show $`0<\eta_n<n+2/3<2n+2`$.*
-> 
+>
 > ***Use of the error bound.** For $`H>2n+2`$, the condition $`|\sum_{d\in\mathrm{Skip}_n}x_d-C|>(H+2n+2)/4^n`$ is sufficient for $`|\Delta_n|>H`$. Conversely, $`|\Delta_n|>H`$ implies $`|\sum_{d\in\mathrm{Skip}_n}x_d-C|>(H-2n-2)/4^n`$. Thus a square-root-exponential deviation corresponds to a separation of order $`2^{-3n/2}`$, with the displayed additive error retained. This is not an exact equivalence after simply discarding that error.\
 > **Note:** $`C = E - 3/2`$ is Mersenne-specific, but the shape “scaled deviation $`=`$ $`4^n \cdot`$(finite skip-sum $`-`$ target constant) $`+ O(n)`$” is a template, not yet matched to any analogous constant on the \#249 side.*
 

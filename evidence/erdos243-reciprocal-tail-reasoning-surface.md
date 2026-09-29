@@ -2482,19 +2482,19 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 ## Theorem 12.1 (bounded negative part), page 47
 
 > *Let $`a,C,D:\mathbb{N}\to\mathbb{N}`$ and $`E:\mathbb{N}\to\mathbb{Z}`$ satisfy*
-> 
+>
 > 1.  *$`a_n>1`$ and $`C_n>0`$ for every $`n`$;*
-> 
+>
 > 2.  *the exact dynamics $`C_{n+1}+D_n=a_nC_n`$ and $`D_{n+1}=a_nD_n`$;*
-> 
+>
 > 3.  *$`E_n=D_n-(a_n-1)C_n`$ for every $`n`$;*
-> 
+>
 > 4.  **eventual strict centring*: $`|E_n|<C_n`$ for all large $`n`$;*
-> 
+>
 > 5.  **eventually bounded negative part*: $`-B\le E_n`$ for all large $`n`$, for some integer $`B\ge0`$;*
-> 
+>
 > 6.  **vanishing relative error*: for every integer $`K\ge1`$ there is an $`N`$ with $`K\,|E_n|<C_n`$ for all $`n\ge N`$.*
-> 
+>
 > *Then $`E_n=0`$ for all sufficiently large $`n`$.*
 
 The Lean declaration below states this result or one that implies it. The Lean statement omits hypothesis (4), eventual strict centring $|E_n|<C_n$, which the printed theorem adds (it is also the case $K=1$ of (6)); hypotheses (1), (2), (3), (5) and (6) are as printed.
