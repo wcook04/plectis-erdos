@@ -33,6 +33,8 @@ COMMANDS = (
     ('-O', 'scripts/test_research_episode.py'),
     ('scripts/test_relation_binding.py',),
     ('-O', 'scripts/test_relation_binding.py'),
+    ('scripts/test_probe_semantics.py',),
+    ('-O', 'scripts/test_probe_semantics.py'),
     ('scripts/test_research_return_gate.py',),
     ('-O', 'scripts/test_research_return_gate.py'),
     ('scripts/test_native_adapter_regressions.py',),
