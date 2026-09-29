@@ -68,7 +68,7 @@ We now solve $`V_2=\cdots=V_D=0`$ in integer vectors, allowing either sign of $`
 To see the elimination in a small case, take $`4e_3-e_4`$. Its factorial moment vanishes, and the only nonzero weighted sums are $`V_2=6`$ and $`V_4=23`$: the floor exponent changes only when $`d`$ divides $`4`$. Subtracting $`6(2e_1-e_2)`$ removes $`V_2`$ without changing $`V_4`$. We apply the same procedure successively to all proper divisors.
 
 <div id="res:divisor-channel-coordinates" class="theorem">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos68/PaperCompleteDivisorCoordinates.lean#L260">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/ce368994f355cdf8b00595bfd72e71796e941f20/evidence/erdos-68-factorial-denominator-irrationality.md#res-divisor-channel-coordinates-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos68/PaperCompleteDivisorCoordinates.lean#L260">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/897f55801d7d184aaa2ce8fb19e7b701c9c23d94/evidence/erdos-68-factorial-denominator-irrationality.md#res-divisor-channel-coordinates-comparator">Comparator</a></p>
 
 **Theorem 2** (an integer basis with prescribed weighted sums). *Set
 ``` math
@@ -175,7 +175,7 @@ u_2=2,\qquad
 Induction gives $`u_n=0`$ at odd indices. At twice a prime it gives $`u_{2p}=-(2p)!/2^{p-1}\ne0`$, including $`p=2`$, so the tail contains a nonzero coefficient and $`g_D>0`$. To compute this infinite gcd, we show that a specified finite interval already forces divisibility of every later coefficient.
 
 <div id="res:finite-channel-moment-certificate" class="theorem">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/ce368994f355cdf8b00595bfd72e71796e941f20/evidence/erdos-68-factorial-denominator-irrationality.md#res-finite-channel-moment-certificate">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/ce368994f355cdf8b00595bfd72e71796e941f20/evidence/erdos-68-factorial-denominator-irrationality.md#res-finite-channel-moment-certificate-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/897f55801d7d184aaa2ce8fb19e7b701c9c23d94/evidence/erdos-68-factorial-denominator-irrationality.md#res-finite-channel-moment-certificate">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/897f55801d7d184aaa2ce8fb19e7b701c9c23d94/evidence/erdos-68-factorial-denominator-irrationality.md#res-finite-channel-moment-certificate-comparator">Comparator</a></p>
 
 **Theorem 3** (a finite formula for the gcd). *Choose a prime $`\ell`$ with $`D/2<\ell\le D`$ and put $`H=D(2\ell-1)`$. Then
 ``` math
@@ -268,7 +268,7 @@ The least positive moment can be larger; at $`D=6`$ it is $`24L_6`$. Also, $`9\n
 To understand the support restriction, consider an interval on which the floor exponent in a fixed weight is constant.
 
 <div id="res:bandbreakpoint" class="theorem">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/ce368994f355cdf8b00595bfd72e71796e941f20/evidence/erdos-68-factorial-denominator-irrationality.md#res-bandbreakpoint">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/ce368994f355cdf8b00595bfd72e71796e941f20/evidence/erdos-68-factorial-denominator-irrationality.md#res-bandbreakpoint-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/897f55801d7d184aaa2ce8fb19e7b701c9c23d94/evidence/erdos-68-factorial-denominator-irrationality.md#res-bandbreakpoint">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/897f55801d7d184aaa2ce8fb19e7b701c9c23d94/evidence/erdos-68-factorial-denominator-irrationality.md#res-bandbreakpoint-comparator">Comparator</a></p>
 
 **Theorem 4** (constant values of the floor in the weights). *Let $`\lambda`$ be a finitely supported integer vector, let $`d\ge2`$ and $`k\ge0`$ be integers, and suppose each index $`n`$ in its support satisfies $`kd\le n<(k+1)d`$. Then
 ``` math
@@ -403,7 +403,7 @@ and for $`m\ge3`$ put $`b_m=mZ_{m-1}+1-Z_m`$. The definition always takes the ne
 It is $`m!S`$ that is integral in this argument; no integrality of $`m!H_m`$ is assumed. Thus a non-unit carry excludes every divisor of $`(m-1)!`$, in particular every positive denominator below $`m`$.
 
 <div id="res:carry-characterization" class="theorem">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos68/PaperCompleteExisting.lean#L45">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/ce368994f355cdf8b00595bfd72e71796e941f20/evidence/erdos-68-factorial-denominator-irrationality.md#res-carry-characterization-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos68/PaperCompleteExisting.lean#L45">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/897f55801d7d184aaa2ce8fb19e7b701c9c23d94/evidence/erdos-68-factorial-denominator-irrationality.md#res-carry-characterization-comparator">Comparator</a></p>
 
 **Theorem 5** (exact carry characterisation). *<span id="res:strict-successor-complete-characterization" label="res:strict-successor-complete-characterization"></span> The following conditions are equivalent:
 ``` math
@@ -497,7 +497,7 @@ L_p^{\rm blk}=\operatorname{lcm}(F_p,d_2,\ldots,d_{2p-1}),\quad
 For a prime dividing $`R_p`$, exactly one summand of $`T_p`$ is a unit modulo that prime. Hence $`\gcd(T_p,R_p)=1`$, so $`R_p=\operatorname{den}(C_pH_{2p-1})`$. The factors $`C_p`$ and $`R_p`$ need not be coprime. When $`R_p>1`$, the strict gap to the next integer is $`\rho_p/R_p>0`$; when $`R_p=1`$, that gap is one, even though $`\rho_p=0`$.
 
 <div id="res:global-complementary-criterion" class="proposition">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos68/PaperCompleteExisting.lean#L154">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/ce368994f355cdf8b00595bfd72e71796e941f20/evidence/erdos-68-factorial-denominator-irrationality.md#res-global-complementary-criterion-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos68/PaperCompleteExisting.lean#L154">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/897f55801d7d184aaa2ce8fb19e7b701c9c23d94/evidence/erdos-68-factorial-denominator-irrationality.md#res-global-complementary-criterion-comparator">Comparator</a></p>
 
 **Proposition 6** (a sufficient tail inequality). *If arbitrarily large natural parameters $`p\ge3`$ satisfy
 ``` math
@@ -550,7 +550,7 @@ d_m(C)=\lfloor m!C\rfloor-m\lfloor(m-1)!C\rfloor,\qquad 0\le d_m(C)<m.
 This floor convention selects $`1/2!`$ rather than the eventually maximal expansion $`1/2=\sum_{m\ge3}(m-1)/m!`$. Cantor’s criterion \[cantor1869\] says that a rational number has eventually zero canonical digits. In the present decomposition, rationality of $`S`$ corresponds to the eventual digit $`m-2`$ for $`C`$.
 
 <div id="res:companion-orbit-rationality-boundary" class="theorem">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos68/PaperCompleteExisting.lean#L27">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/ce368994f355cdf8b00595bfd72e71796e941f20/evidence/erdos-68-factorial-denominator-irrationality.md#res-companion-orbit-rationality-boundary-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos68/PaperCompleteExisting.lean#L27">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/897f55801d7d184aaa2ce8fb19e7b701c9c23d94/evidence/erdos-68-factorial-denominator-irrationality.md#res-companion-orbit-rationality-boundary-comparator">Comparator</a></p>
 
 **Theorem 7** (rationality and factorial residues). *The following statements are equivalent:*
 
@@ -615,7 +615,7 @@ When $`\{m!C\}=\delta_m`$, the prefix is integral and $`\sigma_m=0`$. For a smal
 
 # Verification and related estimates
 
-*Formal proofs.* A result with a kernel-checked Lean proof carries a mark in the margin. *Lean* opens the proof: the declaration itself when one declaration states the whole result, otherwise the list of declarations that together state it. *Comparator* opens the record of an independent check, in which the same statement, written again from Mathlib alone in a separate repository, was compared with our proof by Lean’s Comparator tool, allowing only the three standard axioms. A dagger on the Lean mark means that the Lean proof assumes an input named just below the result. A result without a mark has no Lean proof of its whole statement; what is checked is said below it. The [evidence record](https://github.com/wcook04/plectis-erdos/blob/ce368994f355cdf8b00595bfd72e71796e941f20/evidence/erdos-68-factorial-denominator-irrationality.md) gives every declaration, version and check. These checks show that the stated propositions are proved; whether they are the right propositions is a question the reader can settle by comparing them with the text.
+*Formal proofs.* A result with a kernel-checked Lean proof carries a mark in the margin. *Lean* opens the proof: the declaration itself when one declaration states the whole result, otherwise the list of declarations that together state it. *Comparator* opens the record of an independent check, in which the same statement, written again from Mathlib alone in a separate repository, was compared with our proof by Lean’s Comparator tool, allowing only the three standard axioms. A dagger on the Lean mark means that the Lean proof assumes an input named just below the result. A result without a mark has no Lean proof of its whole statement; what is checked is said below it. The [evidence record](https://github.com/wcook04/plectis-erdos/blob/897f55801d7d184aaa2ce8fb19e7b701c9c23d94/evidence/erdos-68-factorial-denominator-irrationality.md) gives every declaration, version and check. These checks show that the stated propositions are proved; whether they are the right propositions is a question the reader can settle by comparing them with the text.
 
 The margin marks identify the recorded statements and comparisons. The value $`1380`$ and the full-tail divisibility <a href="#eq:channel-lcm-envelope" data-reference-type="eqref" data-reference="eq:channel-lcm-envelope">[eq:channel-lcm-envelope]</a> have ordinary proofs with exact arithmetic checks; the generic formal gcd lemmas take that divisibility as an input. The individual declarations and their original revisions are listed in the [companion source concordance](../../../paper/68/erdos68-factorial-reasoning-surface.pdf#nameddest=r12-short-sources). Section <a href="#sec:finite" data-reference-type="ref" data-reference="sec:finite">7</a> distinguishes the two recorded large computations from kernel checks.
 
