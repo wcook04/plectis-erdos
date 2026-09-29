@@ -472,6 +472,7 @@ class ExternalVerificationContractTest(unittest.TestCase):
                 "rational_base_tail_recurrence",
                 "height_and_pade_arithmetic",
                 "coordinatewise_corridor_no_go",
+                "calibrated_rational_hankel_countermodel",
             ],
         )
         self.assertTrue(rows_by_problem[249][1]["relations"])

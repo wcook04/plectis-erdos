@@ -486,39 +486,44 @@ This is Palomar's source-current reader order, not review-matrix or Comparator r
    - **Source authority.** Canonical review family `eventually_periodic_lambert` in [claims](../docs/claims.json)
    - **Boundary.** The totient-derived weights are not eventually periodic.
 
-11. **Fixed precision transport no go** (`fixed_precision_transport_no_go`; natural friction and no-go; source disposition `represented`)
+11. **Signed totient entire defect interpolation** (`signed_totient_entire_defect_interpolation`; deep mechanism and classification; source disposition `represented`)
+   - **Why here.** The ordinary proof constructs a sparse signed perturbation with strong defect control for every divergent allowance, but it does not settle the unperturbed totient series or the one-sided prime-gap route; no infinite Lean or Comparator theorem is claimed.
+   - **Source authority.** Canonical review family `signed_totient_entire_defect_interpolation` in [claims](../docs/claims.json)
+   - **Boundary.** The correction is signed, so it does not subsume the one-sided prime-gap theorem. It preserves singularities and prescribed finite jets, not full analytic functions or all Taylor coefficients. The unperturbed totient and prime series remain unresolved.
+
+12. **Fixed precision transport no go** (`fixed_precision_transport_no_go`; natural friction and no-go; source disposition `represented`)
    - **Why here.** The committed representative unconditionally retires fixed-positive-precision local valuation/unit-word escape for every finite odd-unit word through centred completions, while its synthetic unrestricted high-quotient and finite-word scope supplies no actual totient endpoint.
    - **Source.** <code>Erdos249257.ExternalVerification.fixedPrecisionTropicalNoGo</code> in [Lean](../lean/Erdos249257/TropicalCurvatureCarry.lean)
    - **Boundary.** This is a synthetic finite-word construction with unrestricted incoming/high quotient states. It does not impose the actual totient-difference relation or provide growing-precision/global correlation, and it gives no Erdős #249 endpoint or irrationality result. No novelty or priority claim is made. The one-step and finite-word completion theorems are subordinate mechanisms, not separate families.
    - **Relation.** `contrary_evidence_for` `actual_foreign_residue_projection`: Fixed local precision admits synthetic completions, so any successful projection must use growing precision or global correlation.
 
-12. **Lcm factor ideal shift algebra no go** (`lcm_factor_ideal_shift_algebra_no_go`; natural friction and no-go; source disposition `rejected`)
+13. **Lcm factor ideal shift algebra no go** (`lcm_factor_ideal_shift_algebra_no_go`; natural friction and no-go; source disposition `rejected`)
    - **Why here.** A synthetic finite-shift obstruction retires one algebraic route while explicitly leaving actual totient forcing and the unbounded supply open.
    - **Source.** <code>Erdos249257.ExternalVerification.lcm_factorIdeal_finiteRank_shiftAlgebra_not_sufficient</code> in [Lean](../lean/Erdos249257/LcmFactorIdealPulseObstruction.lean)
    - **Boundary.** The witness is synthetic: it does not assert that its forcing letters are actual totient differences, does not address nonlinear combinations, and leaves the unbounded certificate supply for Erdős #249 open.
 
-13. **Actual foreign residue projection** (`actual_foreign_residue_projection`; conditional endpoint leverage; source disposition `represented`)
+14. **Actual foreign residue projection** (`actual_foreign_residue_projection`; conditional endpoint leverage; source disposition `represented`)
    - **Why here.** The committed representative exposes the exact finite foreign/divisor partition, geometric tail control, and generic separated-projection consumer for the canonical actual_foreign_residue_projection family; its controlled-projection bridge and unbounded supply remain open, so it is represented conditional evidence rather than a #249 endpoint.
    - **Source.** <code>Erdos249257.ExternalVerification.scaleFullTarget_miss_of_projected_separation</code> in [Lean](../lean/Erdos249257/ActualForeignResidueProjection.lean)
    - **Boundary.** This is only a finite partition/geometric-majorant reduction feeding a generic complement-noncancellation consumer. The ControlledForeignProjection analytic bridge and any unbounded supply of separated projections remain unproved; no Erdős #249 endpoint, novelty, significance, priority, or external-review claim follows.
    - **Relation.** `contrary_evidence_for` `fixed_precision_transport_no_go`: Fixed local precision admits synthetic completions, so any successful projection must use growing precision or global correlation.
 
-14. **Totient lambert coefficients** (`totient_lambert_coefficients`; supporting and long tail; source disposition `represented`)
+15. **Totient lambert coefficients** (`totient_lambert_coefficients`; supporting and long tail; source disposition `represented`)
    - **Why here.** The Lambert rewrite and prime-power coefficient structure orient the programme but provide no irrationality producer.
    - **Source authority.** Canonical review family `totient_lambert_coefficients` in [claims](../docs/claims.json)
    - **Boundary.** The coefficient identities do not prove irrationality.
 
-15. **Squared lambert gcd moments** (`squared_lambert_gcd_moments`; supporting and long tail; source disposition `represented`)
+16. **Squared lambert gcd moments** (`squared_lambert_gcd_moments`; supporting and long tail; source disposition `represented`)
    - **Why here.** A precise gcd-moment transfer identity, but it supplies no irrationality conclusion for the binary totient series.
    - **Source.** <code>Erdos249257.ExternalVerification.tsum_totient_div_mersenne_sq_eq_gcd_moment_series</code> in [Lean](../lean/Erdos249257/GcdMomentCalculus.lean)
    - **Boundary.** This exact transfer identity does not prove irrationality of the binary totient series; the cited constant-weight q-Padé result remains external and no #249 endpoint follows.
 
-16. **Stern brocot cylinder law** (`stern_brocot_cylinder_law`; supporting and long tail; source disposition `represented`)
+17. **Stern brocot cylinder law** (`stern_brocot_cylinder_law`; supporting and long tail; source disposition `represented`)
    - **Why here.** Exact Stern–Brocot telescoping is reusable geometry, not an irrationality theorem or novelty claim.
    - **Source.** <code>Erdos249257.ExternalVerification.cylinderMass_split</code> in [Lean](../lean/Erdos249257/GcdMomentCalculus.lean)
    - **Boundary.** This exact telescoping recursion and its geometric interpretation do not prove irrationality of the binary totient series or novelty; the #249 endpoint remains open.
 
-17. **Totient visible coprime lattice mass** (`totient_visible_coprime_lattice_mass`; supporting and long tail; source disposition `represented`)
+18. **Totient visible coprime lattice mass** (`totient_visible_coprime_lattice_mass`; supporting and long tail; source disposition `represented`)
    - **Why here.** Exact visible-lattice normalization explains a mass term but is rational and does not settle Erdős #249.
    - **Source.** <code>Erdos249257.ExternalVerification.tsum_pos_coprime_inv_mersenne_eq_one</code> in [Lean](../lean/Erdos249257/GcdMomentCalculus.lean)
    - **Boundary.** This rational normalization identity does not prove irrationality of the binary totient series or settle #249.
@@ -882,33 +887,38 @@ This is Palomar's source-current reader order, not review-matrix or Comparator r
    - **Source.** <code>Erdos249257.ExternalVerification.exists_shifted_odd_tail_nat_states_of_support_fraction</code> in [Lean](../lean/Erdos249257/RationalSupportCarrySkeleton.lean)
    - **Boundary.** The state-extraction theorem does not exclude rational infinite supports or settle universal Erdős #257; the support and rational-value hypotheses remain explicit.
 
-9. **Boolean mobius carry** (`boolean_mobius_carry`; deep mechanism and classification; source disposition `represented`)
+9. **Separated cut algebraic lambert transcendence** (`separated_cut_algebraic_lambert_transcendence`; deep mechanism and classification; source disposition `represented`)
+   - **Why here.** The ordinary proof transfers algebraic-base transcendence through a separated-cut host and an explicit non-chain example, while full support at 3/2 and unrestricted base-two supports remain open; finite Lean cut lemmas are not its infinite proof.
+   - **Source authority.** Canonical review family `separated_cut_algebraic_lambert_transcendence` in [claims](../docs/claims.json)
+   - **Boundary.** The full support at 3/2 and arbitrary infinite supports at base two remain unresolved. Finite cut arithmetic is not a proof of transcendence.
+
+10. **Boolean mobius carry** (`boolean_mobius_carry`; deep mechanism and classification; source disposition `represented`)
    - **Why here.** The committed representative preserves the existence-level quotient certificate, Boolean Möbius support reconstruction, positivity, and square-root bound; it supplies no universal irrationality contradiction or actual-recurrence producer.
    - **Source.** <code>Erdos249257.ExternalVerification.exists_normalized_support_fraction_iff_exists_booleanMobiusCarry</code> in [Lean](../lean/Erdos249257/BooleanMobiusCarry.lean)
    - **Boundary.** The equivalence is stated at the existence level with q > 0, 0 ∉ A, and a positive support witness; it gives no contradiction, no universal Erdős #257 irrationality result, and no producer of cofinally nonintegral shifts for the actual recurrence. The generic tempered-orbit theorem and the reciprocal-mass, unbounded-tail, and zero-window results are subordinate consequences, not separate families; the zero-window constant depends on the support and numerator and is not uniform. This does not settle every infinite support, and no novelty, priority, significance, external-review, or unrestricted #257 endpoint claim is made.
    - **Relation.** `reconstruction_support_for` `boolean_mobius_exact_row_dynamics`: The Boolean–Möbius certificate reconstructs support, while exact rows still require a cofinal skip producer.
 
-10. **Achievement set geometry** (`achievement_set_geometry`; deep mechanism and classification; source disposition `represented`)
+11. **Achievement set geometry** (`achievement_set_geometry`; deep mechanism and classification; source disposition `represented`)
    - **Why here.** The full-measure achievement-set theorem is consequential geometry, but it does not classify rational points or settle infinite-support irrationality.
    - **Source.** <code>Erdos249257.ExternalVerification.volume_mersenneAchievementSet</code> in [Lean](../lean/Erdos249257/GreedyAchievementSet.lean)
    - **Boundary.** Geometry of the full set does not decide irrationality of every coded point.
 
-11. **Restricted achievement sets** (`restricted_achievement_sets`; deep mechanism and classification; source disposition `represented`)
+12. **Restricted achievement sets** (`restricted_achievement_sets`; deep mechanism and classification; source disposition `represented`)
    - **Why here.** The restricted-set measure dichotomy is structurally useful but does not classify rational values or prove universal irrationality.
    - **Source.** <code>Erdos249257.ExternalVerification.volume_supportedMersenneAchievementSet_dichotomy</code> in [Lean](../lean/ErdosProblems/Erdos257/MersenneSubseriesRigidity.lean)
    - **Boundary.** The measure dichotomy does not classify rational points.
 
-12. **Half and twenty one frontiers** (`half_and_twenty_one_frontiers`; natural friction and no-go; source disposition `subordinate`)
+13. **Half and twenty one frontiers** (`half_and_twenty_one_frontiers`; natural friction and no-go; source disposition `subordinate`)
    - **Why here.** Sharp local 2-adic band arithmetic excludes small odd numerators under stated hypotheses, but does not decide reachability or half-membership.
    - **Source.** <code>Erdos249257.ExternalVerification.seven_le_of_intBand_odd</code> in [Lean](../lean/Erdos249257/HalfGreedyTwoThirdsBand.lean)
    - **Boundary.** Neither membership question is decided; the 2-adic bound is sharp locally, and the two countermodel routes require unconstructed terminal-scaled or cofinal-cylinder antecedents.
 
-13. **Composite dilation defect identity** (`composite_dilation_defect_identity`; supporting and long tail; source disposition `represented`)
+14. **Composite dilation defect identity** (`composite_dilation_defect_identity`; supporting and long tail; source disposition `represented`)
    - **Why here.** The exact composite-dilation defect exposes a real obstruction, but it supplies neither a tail selector nor an unconditional irrationality result.
    - **Source.** <code>Erdos249257.ExternalVerification.supportCoeff_mul_eq_add_defect</code> in [Lean](../lean/Erdos249257/CompositeDilationDefect.lean)
    - **Boundary.** The exact defect is not bounded for arbitrary supports and supplies no tail selector or irrationality theorem; the bouquet budget remains conditional on its structural hypotheses.
 
-14. **Finite period noncollapse** (`finite_period_noncollapse`; supporting and long tail; source disposition `represented`)
+15. **Finite period noncollapse** (`finite_period_noncollapse`; supporting and long tail; source disposition `represented`)
    - **Why here.** The finite-period order interface is exact denominator infrastructure, but finite support cannot decide an infinite-support sum.
    - **Source.** <code>Erdos249257.ExternalVerification.finite_period_noncollapse_rat_den_interface</code> in [Lean](../lean/Erdos249257/CertificateKernel.lean)
    - **Boundary.** A finite-support denominator theorem does not settle an infinite-support sum.
@@ -1108,12 +1118,17 @@ This is Palomar's source-current reader order, not review-matrix or Comparator r
    - **Source authority.** Canonical review family `height_fibre_and_shell` in [claims](../docs/claims.json)
    - **Boundary.** These fibre bounds are counting input, not an escape producer. The separate actual-series divisibility bridge is established.
 
-5. **Dyadic block alphabet** (`dyadic_block_alphabet`; supporting and long tail; source disposition `represented`)
+5. **Independent clock channel relations** (`independent_clock_channel_relations`; deep mechanism and classification; source disposition `represented`)
+   - **Why here.** The ordinary proof classifies rational relations for independent clock channels by a swap-and-lattice mechanism, but it does not establish the needed independence for the original running-LCM rates or its endpoint.
+   - **Source authority.** Canonical review family `independent_clock_channel_relations` in [claims](../docs/claims.json)
+   - **Boundary.** No rational independence of the original reciprocal prime logarithms is assumed or proved; the repeated running-LCM endpoint remains open.
+
+6. **Dyadic block alphabet** (`dyadic_block_alphabet`; supporting and long tail; source disposition `represented`)
    - **Why here.** The exact four-symbol block alphabet is a useful finite interface, subordinate to the carry consumer, weighted observer, and rank obstruction.
    - **Source authority.** Canonical review family `dyadic_block_alphabet` in [claims](../docs/claims.json)
    - **Boundary.** The finite alphabet does not supply the needed carry escape.
 
-6. **Three prime lcm cells** (`three_prime_lcm_cells`; supporting and long tail; source disposition `represented`)
+7. **Three prime lcm cells** (`three_prime_lcm_cells`; supporting and long tail; source disposition `represented`)
    - **Why here.** The smooth-prefix LCM identity is exact three-prime structure, but it does not supply the missing irrationality bridge.
    - **Source.** <code>Erdos249257.ExternalVerification.smoothPrefixLcm_eq_threePrimeHeight</code> in [Lean](../lean/ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean)
    - **Boundary.** Cell structure alone does not prove irrationality.
@@ -1369,6 +1384,11 @@ This is Palomar's source-current reader order, not review-matrix or Comparator r
    - **Source.** <code>Erdos249257.ExternalVerification.threeHalves_no_coordinatewiseCorridor</code> in [Lean](../lean/ErdosProblems/Erdos1049/RationalBaseLambert.lean)
    - **Boundary.** This excludes one proof architecture and proves no irrationality statement.
    - **Relation.** `stronger_natural_friction_than` `height_and_pade_arithmetic`: The sharp rectangular threshold analysis carries deeper model-specific information than the coordinatewise transfer obstruction, while neither proves the endpoint.
+
+4. **Calibrated rational hankel countermodel** (`calibrated_rational_hankel_countermodel`; natural friction and no-go; source disposition `represented`)
+   - **Why here.** The ordinary positive-moment countermodel blocks inference from an all-rank Hankel signature alone; these are not Zudilin's moments, and neither F(3/2) nor the actual arithmetic input is settled.
+   - **Source authority.** Canonical review family `calibrated_rational_hankel_countermodel` in [claims](../docs/claims.json)
+   - **Boundary.** These are not Zudilin's actual moments. They refute an inference from the shared signature alone; they do not settle F(3/2) or refute the attributed divisibility-based criterion.
 
 <details>
 <summary>Contribution families (8)</summary>

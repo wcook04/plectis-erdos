@@ -121802,7 +121802,7 @@
     "public_source_credit": "Names and direct citations are retained for published literature, software and public contributions. Source identity, exact local use, and mathematical correspondence are separate."
   },
   "source_registry": "docs/research-commons/source-attributions.json",
-  "source_registry_sha256": "sha256:35b1ea46a57e009ea0f3ac982da08325bfa76def2fc8805875932c423d1f5eb4",
+  "source_registry_sha256": "sha256:3c0033dfc0c57c87ac150d8bd7863cef4133e42d20488d592d28c5c82e1bfe3c",
   "sources": [
     {
       "artifact_coordinates": [
@@ -122755,7 +122755,7 @@
           "line_end": 14,
           "line_start": 4,
           "path": "docs/EXTERNAL_VERIFICATION.md",
-          "sha256": "sha256:cc54a28bfd2b832a23e0c8199f9333e88dfe81243b109fdf25c27ab8e4deea76"
+          "sha256": "sha256:786fb7fdde7748dcbd1b8af882b22316a5fba42c1b83938dad002a8f9569a665"
         }
       ],
       "artifact_links": [
@@ -122858,10 +122858,10 @@
         },
         {
           "excerpt_sha256": "sha256:cb49ade0a57a20d0355d24a8ebc443b2be0b82e0f3c2bdd61f361abe2913a17b",
-          "line_end": 539,
-          "line_start": 529,
+          "line_end": 544,
+          "line_start": 534,
           "path": "docs/EXTERNAL_VERIFICATION.md",
-          "sha256": "sha256:cc54a28bfd2b832a23e0c8199f9333e88dfe81243b109fdf25c27ab8e4deea76"
+          "sha256": "sha256:786fb7fdde7748dcbd1b8af882b22316a5fba42c1b83938dad002a8f9569a665"
         }
       ],
       "artifact_links": [
@@ -122897,8 +122897,8 @@
         },
         {
           "excerpt_sha256": "sha256:cb49ade0a57a20d0355d24a8ebc443b2be0b82e0f3c2bdd61f361abe2913a17b",
-          "line_end": 539,
-          "line_start": 529,
+          "line_end": 544,
+          "line_start": 534,
           "path": "docs/EXTERNAL_VERIFICATION.md"
         }
       ],
