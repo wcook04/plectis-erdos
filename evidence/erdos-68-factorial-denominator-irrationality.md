@@ -61,7 +61,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="res-finite-channel-moment-certificate"></a>
 
-## Theorem 3.1 (a finite formula for the gcd), page 4
+## Theorem 3.1 (a finite formula for the gcd), page 5
 
 > *Choose a prime $`\ell`$ with $`D/2<\ell\le D`$ and put $`H=D(2\ell-1)`$. Then
 > ``` math
@@ -153,7 +153,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="res-carry-characterization"></a>
 
-## Theorem 7.1 (exact carry characterisation), page 9
+## Theorem 7.1 (exact carry characterisation), page 10
 
 > *<span id="res:strict-successor-complete-characterization" label="res:strict-successor-complete-characterization"></span> The following conditions are equivalent:
 > ``` math
@@ -197,7 +197,7 @@ theorem carry_characterisation :
 
 <a id="res-global-complementary-criterion"></a>
 
-## Proposition A.1 (a sufficient tail inequality), page 11
+## Proposition A.1 (a sufficient tail inequality), page 12
 
 > *If arbitrarily large natural parameters $`p\ge3`$ satisfy
 > ``` math
@@ -245,7 +245,7 @@ theorem global_complementary_criterion_nat
 
 <a id="res-companion-orbit-rationality-boundary"></a>
 
-## Theorem B.1 (rationality and factorial residues), page 11
+## Theorem B.1 (rationality and factorial residues), page 13
 
 > *The following statements are equivalent:*
 >

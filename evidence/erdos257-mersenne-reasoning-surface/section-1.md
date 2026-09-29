@@ -106,7 +106,7 @@ theorem finite_monotone_witness_rule_realised
 
 <a id="thm-257-variable-fractional-cover"></a>
 
-## Theorem 1.3 (A summable family of divisor majorants), page 14
+## Theorem 1.3 (A summable family of divisor majorants), page 15
 
 > *For each $`j\ge1`$, let $`F_j\subseteq\mathbb{N}_{>0}`$ be finite, let $`0<\alpha_j\le1`$, and let $`c_{j,d}\ge0`$ satisfy
 > ``` math

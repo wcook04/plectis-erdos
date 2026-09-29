@@ -232,7 +232,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long243-res-squarespec"></a>
 
-## Lemma 2.7 (square specialisation), page 6
+## Lemma 2.7 (square specialisation), page 5
 
 > *Let $`f\in\mathbb{Q}[T]`$ be irreducible with root $`\alpha`$, and let $`H\in\mathbb{Q}[T]`$ satisfy $`H(\alpha)\ne0`$. If for all but finitely many primes $`\ell`$ every root $`r\in\mathbb{F}_\ell`$ of the reduction of $`f`$ has $`H(r)`$ a square in $`\mathbb{F}_\ell^\times`$, then $`H(\alpha)`$ is a square in $`\mathbb{Q}(\alpha)^\times`$.*
 

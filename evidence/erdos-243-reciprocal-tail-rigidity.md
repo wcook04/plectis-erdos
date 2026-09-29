@@ -75,7 +75,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="res-bounded"></a>
 
-## Theorem 4.1 (bounded negative part), page 6
+## Theorem 4.1 (bounded negative part), page 7
 
 > *Let $`a,C,D:\mathbb{N}\to\mathbb{N}`$ satisfy $`a_n>1`$, $`C_n>0`$, and
 > ``` math
@@ -185,7 +185,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="res-step"></a>
 
-## Corollary 4.4 (two zero errors), page 7
+## Corollary 4.4 (two zero errors), page 8
 
 > *<span id="res:eventual" label="res:eventual"></span> If $`E_n=E_{n+1}=0`$ and $`C_{n+1}\ne0`$, then $`a_{n+1}=a_n^2-a_n+1`$. Thus eventual zero error in a positive exact state implies the eventual Sylvester recurrence.*
 
@@ -329,7 +329,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="res-cor"></a>
 
-## Corollary 4.8, page 8
+## Corollary 4.8, page 9
 
 > *Under Theorem 4.1, the multipliers satisfy $`a_{n+1}=a_n^2-a_n+1`$ eventually.*
 
@@ -399,7 +399,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="res-inclusiveone"></a>
 
-## Corollary 4.10 (an inclusive one-sided $`1/n`$ bound), page 9
+## Corollary 4.10 (an inclusive one-sided $`1/n`$ bound), page 10
 
 > *Let $`a_1<a_2<\cdots`$ be positive integers with $`a_{n+1}/a_n^2\to1`$ and $`\sum_n1/a_n\in\mathbb{Q}`$. Suppose that for some $`K\ge0`$ and $`\varepsilon>0`$,
 > ``` math
@@ -496,7 +496,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="res-weightedrecord"></a>
 
-## Theorem 6.1 (a convergent weighted sum over new maxima), page 11
+## Theorem 6.1 (a convergent weighted sum over new maxima), page 12
 
 > *Assume the growth and rationality hypotheses of Problem 1.1. Let $`f:[1,\infty)\to[0,\infty)`$ be finite and nonincreasing, with $`\int_1^\infty f(t)\,dt=\infty`$. Then the sequence is eventually Sylvester if and only if, for some integer $`B\ge0`$,
 > ``` math
@@ -612,7 +612,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="res-weights"></a>
 
-## Lemma 7.2 (weights and linear density), page 14
+## Lemma 7.2 (weights and linear density), page 15
 
 > *Let $`u_j`$ be positive integers, let $`w_j\ge0`$, and put $`F(X)=\sum_{u_j\le X}w_j`$, with the sum allowed a priori to be $`+\infty`$. Then $`\liminf_{X\to\infty}F(X)/X=0`$ if and only if there is a finite nonincreasing $`f:[1,\infty)\to[0,\infty)`$ with $`\int_1^\infty f(t)\,dt=\infty`$ and $`\sum_jw_jf(u_j)<\infty`$.*
 

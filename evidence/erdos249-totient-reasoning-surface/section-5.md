@@ -34,7 +34,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="lem-farey"></a>
 
-## Lemma 5.4 (Farey gap, fully general), page 21
+## Lemma 5.4 (Farey gap, fully general), page 22
 
 > *For integers $`a,b,c,d,r,s`$ with $`b>0`$, $`d>0`$, $`bc-ad=1`$ (i.e. $`a/b`$ and $`c/d`$ are unimodular Farey neighbours), and $`as < rb`$, $`rd < cs`$ (i.e. $`r/s`$ lies strictly between them): $`b+d \le s`$.*
 
@@ -346,7 +346,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="prop-lambertengine"></a>
 
-## Proposition 5.16 (The squared-Lambert identity), page 24
+## Proposition 5.16 (The squared-Lambert identity), page 25
 
 > *For $`w:\mathbb{N}\to\mathbb{R}`$ with $`|w(d)|\le d`$ for all $`d>0`$, and $`0\le r<1`$:
 > ``` math

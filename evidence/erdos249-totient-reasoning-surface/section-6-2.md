@@ -39,7 +39,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="catalogue-mob-b4"></a>
 
-## Proposition 6.40 (A cyclotomic congruence), page 36
+## Proposition 6.40 (A cyclotomic congruence), page 37
 
 > *Let $`r`$ be squarefree and $`m\mid r`$. In $`\mathbb Z[X]`$,
 > ``` math
@@ -117,7 +117,7 @@ theorem mobiusNumerator_mod_cyclotomicEval
 
 <a id="catalogue-mob-b8a"></a>
 
-## Proposition 6.41 (Adjoining a prime: new divisors), page 36
+## Proposition 6.41 (Adjoining a prime: new divisors), page 37
 
 > *Let $`r\ge1`$, let $`p\nmid r`$ be prime, and let $`m\mid r`$. Then
 > ``` math
@@ -181,7 +181,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="catalogue-cert-d7"></a>
 
-## Proposition 6.43 (Lambert-series identities), page 37
+## Proposition 6.43 (Lambert-series identities), page 38
 
 > *For an arithmetic function $`f`$ for which the sums converge absolutely, write $`L(f)=\sum_{n\ge1}f(n)/(2^n-1)`$. Expanding each geometric series gives
 > ``` math
@@ -628,7 +628,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="catalogue-cert-b3"></a>
 
-## Theorem 6.49 (The diagonal condition is equivalent to irrationality), page 40
+## Theorem 6.49 (The diagonal condition is equivalent to irrationality), page 41
 
 > *$`\big(\forall t_0:\mathbb{N},\ \exists t\ge t_0,\ \exists L,\ \mathcal{C}({H}(t), {H}(t), L)\big) \leftrightarrow S\notin\mathbb Q`$. For a fixed hypothetical rational value, sufficiently large $`t`$ makes both its dyadic denominator and its odd-part period admissible at $`N=h={H}(t)`$. Conversely, irrationality and pointwise completeness supply a witness for every prescribed $`t`$. This is an equivalent condition with one scale parameter; the verified cases $`t\le82`$ do not establish it at arbitrarily large scales.*
 
@@ -655,7 +655,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="catalogue-cert-b4"></a>
 
-## Lemma 6.50 (Nondivisors in a short LCM window), page 40
+## Lemma 6.50 (Nondivisors in a short LCM window), page 41
 
 > *Let $`t\ge1`$ and $`1\le j<2t`$ be integers. If $`j\nmid H(t)`$, then $`j=p^a>t`$ for a prime $`p`$ and an integer $`a\ge1`$. Indeed, a prime-power divisor of $`j`$ must exceed $`t`$, and $`j<2t`$ leaves no room for a cofactor larger than $`1`$. This classifies the exceptional offsets in this short window; it does not bound their contribution to a weighted sum of totient differences.*
 
@@ -681,7 +681,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="catalogue-cert-b5"></a>
 
-## Proposition 6.51 (Totient factorisation on an LCM progression), page 40
+## Proposition 6.51 (Totient factorisation on an LCM progression), page 41
 
 > *Let $`t\ge1`$, $`j\ge1`$ and $`q\ge0`$ be integers. Suppose $`j\mid H(t)`$ and every prime divisor of $`j`$ also divides $`H(t)/j`$. Then
 > ``` math
@@ -724,7 +724,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="catalogue-cert-b6"></a>
 
-## Theorem 6.52 (Rationality forces tail integrality on an LCM grid), page 40
+## Theorem 6.52 (Rationality forces tail integrality on an LCM grid), page 41
 
 > *If $`S\in\mathbb Q`$, there is $`t_1\in\mathbb N`$ such that for all $`t\ge t_1`$, $`q\ge1`$ and $`m\ge0`$,
 > ``` math
@@ -827,7 +827,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="catalogue-cert-b8"></a>
 
-## Corollary 6.54 (Equivalent conditions stated without certificates), page 41
+## Corollary 6.54 (Equivalent conditions stated without certificates), page 42
 
 > *The series $`S`$ is irrational if and only if
 > ``` math
@@ -891,7 +891,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="catalogue-cert-b9a"></a>
 
-## Proposition 6.55 (Soundness of a second-difference certificate), page 41
+## Proposition 6.55 (Soundness of a second-difference certificate), page 42
 
 > *Let $`h,N,L\in\mathbb N`$. If
 > ``` math
@@ -958,7 +958,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="catalogue-cert-b10a"></a>
 
-## Theorem 6.56 (A finite-grid condition gives a nonintegral pair), page 41
+## Theorem 6.56 (A finite-grid condition gives a nonintegral pair), page 42
 
 > *Let $`Q\subseteq\mathbb N_{>0}`$ be finite and nonempty. Suppose that $`B_q<2^L`$ for every $`q\in Q`$ and that
 > ``` math
@@ -999,7 +999,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="catalogue-cert-b10b"></a>
 
-## Theorem 6.57 (A sufficient quantified finite-grid condition), page 42
+## Theorem 6.57 (A sufficient quantified finite-grid condition), page 43
 
 > *Suppose that for every $`t_0`$ there are $`t\ge t_0`$, a depth $`L`$, and a finite nonempty $`Q\subseteq\mathbb N_{>0}`$ such that, with $`H=H_t`$, all the hypotheses of Theorem 6.56 hold. Then $`S\notin\mathbb Q`$. Indeed, rationality would make all tail differences on every sufficiently large LCM grid integral, whereas the finite-grid theorem supplies a nonintegral pair on such a grid. The example above verifies one grid; it does not establish the quantified hypothesis.*
 
@@ -1036,7 +1036,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="catalogue-cert-b12"></a>
 
-## Proposition 6.58 (A finite carry test implies nonintegrality), page 42
+## Proposition 6.58 (A finite carry test implies nonintegrality), page 43
 
 > *For each integer $`z`$ with $`|z|\le N+h+1`$, define
 > ``` math
@@ -1162,7 +1162,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="catalogue-mob-e2"></a>
 
-## Theorem 6.60 (A four-tail residue criterion), page 43
+## Theorem 6.60 (A four-tail residue criterion), page 44
 
 > *For nonnegative integers $`H,p,L`$, define the four-tail combination, its finite numerator and its error bound by
 > ``` math
@@ -1299,7 +1299,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="prop-ni-01"></a>
 
-## Proposition 6.61 (An equivalent diagonal nonintegrality condition), page 44
+## Proposition 6.61 (An equivalent diagonal nonintegrality condition), page 45
 
 > *The following statements are equivalent:
 > ``` math
@@ -1333,7 +1333,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="prop-ar-07"></a>
 
-## Proposition 6.62 (A sufficient short-window condition), page 44
+## Proposition 6.62 (A sufficient short-window condition), page 45
 
 > *Suppose that for every $`a_0\in\mathbb N`$ there are $`a\ge a_0`$ and $`L<2\cdot2^a`$ with $`\mathcal C(H_{2^a},H_{2^a},L)`$. Then $`S\notin\mathbb Q`$. Writing out the certificate, the required inequality is
 > ``` math
@@ -1456,7 +1456,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="prop-te-04"></a>
 
-## Proposition 6.64 (A sufficient upper-endpoint separation), page 45
+## Proposition 6.64 (A sufficient upper-endpoint separation), page 46
 
 > *Let $`a,J,K,m\in\mathbb N`$, $`a\ge8`$, and $`H=H(2^a)`$. Assume
 > ``` math
@@ -1536,7 +1536,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="prop-te-05"></a>
 
-## Proposition 6.65 (Relations among the sufficient conditions), page 45
+## Proposition 6.65 (Relations among the sufficient conditions), page 46
 
 > *The sufficient conditions do not form a single linear chain. The proved implications are
 > ``` math
@@ -1683,7 +1683,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="prop-sk-02"></a>
 
-## Proposition 6.67 (A sufficient extension of the examples through exponent 6), page 46
+## Proposition 6.67 (A sufficient extension of the examples through exponent 6), page 47
 
 > *The supplied finite result is
 > ``` math
@@ -1724,7 +1724,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="prop-fr-01"></a>
 
-## Proposition 6.68 (A sufficient extremal-order condition), page 46
+## Proposition 6.68 (A sufficient extremal-order condition), page 47
 
 > *Let $`H\ge1`$ and $`j\ge0`$. If
 > ``` math
@@ -1779,7 +1779,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="prop-cp-06"></a>
 
-## Proposition 6.69 (A directed certificate condition), page 46
+## Proposition 6.69 (A directed certificate condition), page 47
 
 > *For fixed $`h,N\in\mathbb{N}`$, a depth $`L\in\mathbb{N}`$ satisfying
 > ``` math
@@ -1878,7 +1878,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="prop-a10"></a>
 
-## Proposition 6.71 (The full quantified condition), page 47
+## Proposition 6.71 (The full quantified condition), page 48
 
 > *``` math
 > \big(\forall h\ge 1,\ \forall N_0,\ \exists N\ge N_0,\ \exists L,\ \mathcal{C}\ h\ N\ L\big)

@@ -4,7 +4,7 @@ Part of the [evidence record](../erdos249-totient-reasoning-surface.md) of the p
 
 <a id="catalogue-cert-a9"></a>
 
-## Theorem 6.1 (Rationality gives an eventual tail period), page 27
+## Theorem 6.1 (Rationality gives an eventual tail period), page 28
 
 > *If $`S=a/(2^cv)`$ with $`a\in\mathbb Z`$, $`c\in\mathbb N`$ and $`v`$ a positive odd integer, then
 > ``` math
@@ -38,7 +38,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="catalogue-cert-d5"></a>
 
-## Theorem 6.2 (Rationality forces unbounded carry rank), page 27
+## Theorem 6.2 (Rationality forces unbounded carry rank), page 28
 
 > *If $`S\in\mathbb Q`$, there are an integer $`v>0`$ and an integer sequence $`u`$ such that
 > ``` math
@@ -154,7 +154,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="catalogue-mob-b5"></a>
 
-## Proposition 6.5 (A cyclotomic factor remains after cancellation), page 28
+## Proposition 6.5 (A cyclotomic factor remains after cancellation), page 29
 
 > *If $`r`$ is squarefree, then
 > ``` math
@@ -370,7 +370,7 @@ theorem upper_half_product_denominator_bounds {t : ℕ} (ht : 5 ≤ t) :
 
 <a id="catalogue-mob-b7b"></a>
 
-## Proposition 6.8 (The exact reduced denominator), page 29
+## Proposition 6.8 (The exact reduced denominator), page 30
 
 > *At every integer scale $`t\ge0`$,
 > ``` math
@@ -437,7 +437,7 @@ theorem lcmHeight_five_scaledMobiusShadow_den_exact :
 
 <a id="catalogue-mob-d3"></a>
 
-## Proposition 6.9 (Nonvanishing of a signed dyadic sum), page 29
+## Proposition 6.9 (Nonvanishing of a signed dyadic sum), page 30
 
 > *Let $`I`$ be finite, let $`u_i\in\mathbb Z`$ and $`e_i\in\mathbb N`$, and suppose that $`m\in I`$ is the unique index with maximal exponent $`e_m`$. If $`u_m`$ is odd, then
 > ``` math
@@ -666,7 +666,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="catalogue-cert-a5"></a>
 
-## Lemma 6.17 (The necessary depth inequality), page 31
+## Lemma 6.17 (The necessary depth inequality), page 32
 
 > *For $`h,N,L\in\mathbb{N}`$, the condition $`\mathcal C(h,N,L)`$ implies
 > ``` math
@@ -711,7 +711,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="catalogue-cert-a6"></a>
 
-## Proposition 6.18 (A certificate implies nonintegrality), page 31
+## Proposition 6.18 (A certificate implies nonintegrality), page 32
 
 > *For all $`h,N,L\in\mathbb N`$,
 > ``` math
@@ -749,7 +749,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="catalogue-cert-a7"></a>
 
-## Theorem 6.19 (Nonintegrality gives a certificate at some depth), page 31
+## Theorem 6.19 (Nonintegrality gives a certificate at some depth), page 32
 
 > *For every $`h,N\in\mathbb N`$,
 > ``` math
@@ -844,7 +844,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="catalogue-cert-d2"></a>
 
-## Proposition 6.23 (An irrationality criterion from near integers), page 32
+## Proposition 6.23 (An irrationality criterion from near integers), page 33
 
 > *Let $`\xi\in\mathbb R`$. Suppose that for every integer $`q\ge1`$ there are integers $`m,z`$ with
 > ``` math
@@ -1046,7 +1046,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="catalogue-cert-d3"></a>
 
-## Proposition 6.24 (A nonzero evaluation minor gives independence), page 32
+## Proposition 6.24 (A nonzero evaluation minor gives independence), page 33
 
 > *Let $`I`$ be a finite index set and let $`f_j:\mathbb N\to\mathbb Q`$ for $`j\in I`$. If there are evaluation points $`n_i\in\mathbb N`$ such that
 > ``` math
@@ -1178,7 +1178,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="catalogue-mob-a1b"></a>
 
-## Corollary 6.27 (An equivalent irrationality question), page 33
+## Corollary 6.27 (An equivalent irrationality question), page 34
 
 > *Subtracting the rational number $`1/2`$ gives
 > ``` math
@@ -1211,7 +1211,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="catalogue-mob-a2"></a>
 
-## Proposition 6.28 (The squared-Lambert identity), page 33
+## Proposition 6.28 (The squared-Lambert identity), page 34
 
 > *Let $`w:\mathbb N\to\mathbb R`$ satisfy $`|w(d)|\le d`$ for $`d\ge1`$, and let $`0\le r<1`$. Then
 > ``` math
@@ -1369,7 +1369,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="catalogue-mob-a7"></a>
 
-## Proposition 6.33 (The weight of pairs divisible by a fixed integer), page 34
+## Proposition 6.33 (The weight of pairs divisible by a fixed integer), page 35
 
 > *Let $`X,Y`$ be independent random variables with $`\mathbb P(X=n)=\mathbb P(Y=n)=2^{-n}`$ for $`n\ge1`$. For every $`d\ge1`$,
 > ``` math
@@ -1418,7 +1418,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="catalogue-mob-a8"></a>
 
-## Proposition 6.34 (The sum over coprime directions), page 34
+## Proposition 6.34 (The sum over coprime directions), page 35
 
 > *The sum over positive coprime pairs satisfies
 > ``` math
@@ -1555,7 +1555,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="catalogue-mob-a9b"></a>
 
-## Proposition 6.36 (Convergence with an explicit error), page 35
+## Proposition 6.36 (Convergence with an explicit error), page 36
 
 > *In the splitting identity of Proposition 6.35, the sum of the two child terms is at most $`2/3`$ of the parent term. If $`M_d(a,b)`$ is the sum of the contributions removed during the first $`d`$ levels, then
 > ``` math
@@ -1604,7 +1604,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="catalogue-mob-b1"></a>
 
-## Proposition 6.37 (A numerator polynomial and its coefficients), page 35
+## Proposition 6.37 (A numerator polynomial and its coefficients), page 36
 
 > *For squarefree $`r\ge1`$, the polynomial defined above has coefficients
 > ``` math
@@ -1647,7 +1647,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="catalogue-mob-b2"></a>
 
-## Proposition 6.38 (Evaluation at two), page 35
+## Proposition 6.38 (Evaluation at two), page 36
 
 > *For squarefree $`r\ge1`$, evaluation of $`P_r`$ at two gives the integer
 > ``` math

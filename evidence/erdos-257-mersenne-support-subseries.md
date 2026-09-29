@@ -116,7 +116,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="res-mixed-supports"></a>
 
-## Theorem 3.2 (mixed weighted and cover supports), page 7
+## Theorem 3.2 (mixed weighted and cover supports), page 8
 
 > *Let $`E,V\subseteq\mathbb{N}_{>0}`$. Suppose $`E`$ satisfies ({W}) for a finite nonempty prime set $`P`$, and $`V\subseteq\bigcup_jF_j`$ for finite sets and nonnegative majorants satisfying the hypotheses of Theorem 3.1, with either ({V}) or its positive-weight variant. Then $`X_A(b)`$ is irrational for every infinite $`A\subseteq E\cup V`$ and every integer $`b\ge2`$.*
 
@@ -161,7 +161,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="res-weighted-cover-incomparability"></a>
 
-## Proposition 4.1 (incomparable support criteria), page 9
+## Proposition 4.1 (incomparable support criteria), page 10
 
 > *There are infinite positive supports $`E`$ and $`V`$ such that
 > ``` math
@@ -201,7 +201,7 @@ theorem exists_strengthened_not_old_or_weighted_host :
 
 <a id="res-strict-mixed-supports"></a>
 
-## Corollary 4.2 (a host requiring the mixed criterion), page 10
+## Corollary 4.2 (a host requiring the mixed criterion), page 11
 
 > *There is an infinite positive support $`U`$ with $`U\notin\mathcal C`$ and $`U\notin\mathcal W_b`$ for every integer $`b\ge2`$, such that $`X_A(b)`$ is irrational for every infinite $`A\subseteq U`$ and every integer $`b\ge2`$.*
 
@@ -209,7 +209,7 @@ theorem exists_strengthened_not_old_or_weighted_host :
 
 <a id="res-reciprocal-support"></a>
 
-## Theorem A.1 (reciprocal-summable supports), page 12
+## Theorem A.1 (reciprocal-summable supports), page 13
 
 > *Let $`A\subseteq\mathbb{N}_{>0}`$ be infinite. If
 > ``` math
@@ -338,7 +338,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="res-one-over-twenty-one-frontier"></a>
 
-## Theorem D.1 (integer-quotient tests for $`1/21`$), page 17
+## Theorem D.1 (integer-quotient tests for $`1/21`$), page 18
 
 > *The following statements hold.*
 >

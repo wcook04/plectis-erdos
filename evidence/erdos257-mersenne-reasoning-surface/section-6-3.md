@@ -1511,7 +1511,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="record-257bm-i2"></a>
 
-## Theorem 6.104 (An upper bound for a binary coefficient tail), page 71
+## Theorem 6.104 (An upper bound for a binary coefficient tail), page 72
 
 > *Let $`c:\mathbb{N}\to\mathbb{N}`$ satisfy $`c(n)\le n`$ for every $`n`$. Then
 > ``` math

@@ -4,28 +4,13 @@ This record belongs to the paper [erdos-1049-rational-base-lambert.pdf](../paper
 
 - **Lean.** Every declaration is quoted from [plectis-erdos](https://github.com/wcook04/plectis-erdos) at commit [`436f55ebdafa`](https://github.com/wcook04/plectis-erdos/tree/436f55ebdafa67e4af0fff79f621c13f2ded12bf) and is checked there by Lean's kernel (`leanprover/lean4:v4.29.1`, Mathlib `5e932f97dd25`).
 - **Comparator.** For a compared result, each declaration was stated a second time, from Mathlib alone, as a *Challenge* in [plectis-erdos-lean](https://github.com/wcook04/plectis-erdos-lean), and a *Solution* that uses our proof was checked against it by [Comparator](https://github.com/leanprover/comparator), which also confirms that only the axioms `propext`, `Quot.sound`, `Classical.choice` are used. All checks below come from replay run [35935225572](https://github.com/wcook04/plectis-erdos-lean/actions/runs/35935225572) at corpus commit [`cc7e541cf208`](https://github.com/wcook04/plectis-erdos-lean/tree/cc7e541cf2081c6fef5a5e377d52e365e33b01eb) (tag `paper-evidence-2026-09-24`); both the default Lean kernel and the independent `nanoda` kernel accepted every entry. The replay's own report for each entry is kept in this repository and linked from each check. A Challenge shows `sorry` because it states the target without proving it.
-- **Counts.** 7 results: 6 with a Lean proof of the whole statement, 0 whose Lean proof assumes a named input (marked with a dagger), 1 without a Lean proof of the whole statement; 6 compared.
+- **Counts.** 7 results: 7 with a Lean proof of the whole statement, 0 whose Lean proof assumes a named input (marked with a dagger), 0 without a Lean proof of the whole statement; 6 compared.
 
 These checks establish that the stated propositions are proved. Whether each is the right proposition is for the reader to judge against the paper's statement, which is reproduced below.
 
-<a id="thm-geometric-moments"></a>
-
-## Theorem 1.1 (geometric moment determinants), page 1
-
-> *Let $`0<q<1`$ and let $`a_k>0`$ for $`k\ge0`$ satisfy $`a_{k+1}/a_k\to\rho\in(0,q^{-1})`$ as $`k\to\infty`$. For the moments $`M_m=\sum_{k\ge0}a_kq^{(m+1)k}`$, define $`D_N=\det(M_{i+j})_{0\le i,j<N}`$. Then, as $`N\to\infty`$,
-> ``` math
-> \begin{equation}
-> \label{eq:geometric-limit}
->  D_N\sim \mathcal M(1;q)^2\mathcal M(\rho;q)\,
->  q^{B_N}P^{2N}\prod_{k=0}^{N-1}a_k.
-> \end{equation}
-> ```*
-
-**No Lean proof of the whole statement.** In Lean, the general adjacent-ratio theorem (a_{k+1}/a_k -> rho in (0,1/q), constant M(1;q)^2 M(rho;q)) is not formalised; geometric_universality proves only the rho=1 case and additionally assumes the polynomial shift bound a_{k+h}/a_k <= C(1+h)^kappa.
-
 <a id="res-sharp-fixed-base"></a>
 
-## Theorem 1.2 (the size of $`V_N^*`$ at a fixed base), page 2
+## Theorem 1.1 (the size of $`V_N^*`$ at a fixed base), page 1
 
 > *Fix $`0<q<1`$ and write $`P=(q;q)_\infty`$, $`B_N=N(N-1)(2N-1)/6`$ and $`C_N=(N!)^2(N+1)!/2^N`$. There is a $`K(q)>0`$ with
 > ``` math
@@ -64,6 +49,50 @@ theorem sharp_fixed_base_exists {q : ℝ} (hq0 : 0 < q) (hq1 : q < 1) :
           qPochhammerInfinity q q ^ (2 * N) *
           (N : ℝ) ^ (-8 * lambert q))) atTop (𝓝 1) := by sorry
 ```
+
+<a id="thm-geometric-moments"></a>
+
+## Theorem 2.1 (geometric moment determinants), page 2
+
+> *Let $`0<q<1`$ and $`a_k>0`$ for $`k\ge0`$. Suppose that, for fixed constants $`C>0`$ and $`\kappa\ge0`$,
+> ``` math
+> \begin{equation}
+> \label{eq:automatic-shift-bound}
+>  \frac{a_{k+h}}{a_k}\longrightarrow1\quad(k\to\infty)
+>  \text{ for each fixed }h\ge0,
+>  \qquad
+>  \frac{a_{k+h}}{a_k}\le C(1+h)^\kappa\quad(k,h\ge0).
+> \end{equation}
+> ```
+> For $`M_m=\sum_{k\ge0}a_kq^{(m+1)k}`$ and $`D_N=\det(M_{i+j})_{0\le i,j<N}`$, we have
+> ``` math
+> \begin{equation}
+> \label{eq:geometric-limit}
+>  D_N\sim\mathcal M(q)^3q^{B_N}P^{2N}\prod_{k=0}^{N-1}a_k
+>  \qquad(N\to\infty).
+> \end{equation}
+> ```*
+
+The Lean declaration below states this result or one that implies it. geometric_universality assumes positivity, 0 < q < 1, the fixed-shift ratio limit and the displayed uniform polynomial shift bound. It proves summability and the determinant ratio tending to one. gramM is the displayed MacMahon product, qPochhammerInfinity is P, and the finite sum of j squared is N(N-1)(2N-1)/6. The paper restricts kappa to nonnegative values; the declaration also accepts real kappa. No support is attached to the broader long-record ratio-limit remark.
+
+[`ErdosProblems.Erdos1049.PaperCompleteR21.GeometricUniversality.geometric_universality`](https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos1049/PaperCompleteR21/GeometricUniversality.lean#L1324)
+
+```lean
+theorem geometric_universality (hq0 : 0 < q) (hq1 : q < 1)
+    {a : ℕ → ℝ} (ha : ∀ k, 0 < a k) {C κ : ℝ}
+    (hlim : ∀ h : ℕ, Tendsto (fun k => a (k + h) / a k) atTop (𝓝 1))
+    (hbd : ∀ k h : ℕ, a (k + h) / a k ≤ C * (1 + (h : ℝ)) ^ κ) :
+    HasProd (fun d : ℕ => ((1 - q ^ (d + 1)) ^ (d + 1))⁻¹) (gramM q) ∧ 0 < gramM q ∧
+    (∀ m : ℕ, Summable fun k => a k * q ^ ((m + 1) * k)) ∧
+    Tendsto (fun N : ℕ => geomHankelDet q a N /
+        (gramM q ^ 3 * q ^ (∑ j ∈ range N, j ^ 2) * qPochhammerInfinity q q ^ (2 * N) *
+          ∏ k ∈ range N, a k))
+      atTop (𝓝 1)
+```
+
+<a id="thm-geometric-moments-comparator"></a>
+
+**Comparator:** not yet compared.
 
 <a id="prop-weight-factorisation"></a>
 
@@ -129,7 +158,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="res-zudilin-sharp-qorder"></a>
 
-## Theorem 3.2 (the first nonzero term of the Hankel determinant), page 6
+## Theorem 3.2 (the first nonzero term of the Hankel determinant), page 7
 
 > *For every $`N\ge1`$,
 > ``` math
@@ -173,7 +202,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="res-rational-base-threshold"></a>
 
-## Theorem 4.1 (rational-base region for Zudilin’s forms), page 9
+## Theorem 4.1 (rational-base region for Zudilin’s forms), page 8
 
 > *Let $`a>b\ge1`$ be coprime integers with
 > ``` math

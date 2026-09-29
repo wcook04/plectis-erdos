@@ -8,17 +8,9 @@ This record belongs to the paper [erdos269-running-lcm-reasoning-surface.pdf](..
 
 These checks establish that the stated propositions are proved. Whether each is the right proposition is for the reader to judge against the paper's statement, which is reproduced below.
 
-<a id="long269-res-distinct-height-all"></a>
-
-## Theorem 1.1 (the distinct-height sums), page 1
-
-> *For every finite set $`P`$ of primes with $`|P|\ge2`$, the sum $`\mathcal D_P`$ is irrational.*
-
-**No Lean proof of the whole statement.** In Lean, ordinary proof, checked step by step by a second, independent AI agent within the project on 26 September 2026, no human review; not formalised: a Lean proof would need Kronecker's theorem on the closure of a line in a torus (density of the forward orbit in the subtorus it generates) and the Euler-characteristic count for line arrangements on a two-dimensional subtorus.
-
 <a id="long269-res-distinct-height-235"></a>
 
-## Theorem 1.2 (the distinct-height sum at $`\{2,3,5\}`$), page 2
+## Theorem 1.1 (the distinct-height sum at $`\{2,3,5\}`$), page 1
 
 > *The sum $`\mathcal D_{\{2,3,5\}}`$ is irrational.*
 
@@ -36,7 +28,7 @@ theorem distinctHeightSum235_irrational : Irrational distinctHeightSum235
 
 <a id="long269-res-lead-two-prime"></a>
 
-## Theorem 1.3 (two-prime transcendence), page 2
+## Theorem 1.2 (two-prime transcendence), page 2
 
 > *Let $`p`$ and $`q`$ be distinct primes. Then $`\mathcal R_{\{p,q\}}`$ and $`\mathcal D_{\{p,q\}}`$ are transcendental.*
 
@@ -96,7 +88,7 @@ def BugeaudLaurentTranscendence : Prop :=
 
 <a id="long269-res-lcm"></a>
 
-## Theorem 2.1 (the running least common multiple), page 3
+## Theorem 3.1 (the running least common multiple), page 5
 
 > *Let $`p,q,r`$ be pairwise distinct primes and $`x\ge1`$. Then $`\operatorname{L}(x)=\operatorname{H}(x)`$.*
 
@@ -124,7 +116,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long269-res-cell"></a>
 
-## Proposition 2.2 (constancy and jump ratios), page 4
+## Proposition 3.2 (constancy and jump ratios), page 6
 
 > *If $`x,y\ge1`$ lie in the same logarithmic cell then $`\operatorname{L}(x)=\operatorname{L}(y)`$, and the same holds for the kernel at two smooth points of one cell. If $`\lfloor\log_p y\rfloor=\lfloor\log_p x\rfloor+1`$ while the other two logarithms agree, then $`\operatorname{L}(y)=p\,\operatorname{L}(x)`$, and similarly with $`q`$ or $`r`$ in place of $`p`$.*
 
@@ -208,7 +200,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long269-res-count"></a>
 
-## Proposition 2.3 (jump count), page 4
+## Proposition 3.3 (jump count), page 6
 
 > *Let $`n\ge0`$. The set of the first $`n`$ positive powers of $`p`$, of $`q`$ and of $`r`$ has exactly $`3n`$ elements, and adjoining the common origin $`1`$ gives exactly $`3n+1`$.*
 
@@ -236,7 +228,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long269-res-fibre"></a>
 
-## Proposition 2.4 (grouping equal heights), page 4
+## Proposition 3.4 (grouping equal heights), page 6
 
 > *For every box $`\mathcal B`$,
 > ``` math
@@ -269,7 +261,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long269-res-short"></a>
 
-## Lemma 2.5 (uniqueness in a short interval), page 5
+## Lemma 3.5 (uniqueness in a short interval), page 6
 
 > *Let $`b\ge1`$ and $`\eta\le b\,\lambda`$. If $`b^{a}w`$ and $`b^{a'}w`$ both lie in $`[\lambda,\eta)`$ then $`a=a'`$.*
 
@@ -299,7 +291,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long269-res-drop"></a>
 
-## Proposition 2.6 (counting a shell by two coordinates), page 5
+## Proposition 3.6 (counting a shell by two coordinates), page 7
 
 > *<span id="long269:res:shell" label="long269:res:shell"></span> If $`\eta\le r\,\lambda`$ then $`\#\mathcal S\le(h_p+1)(h_q+1)`$, and if $`\eta\le p\,\lambda`$ then $`\#\mathcal S\le(h_q+1)(h_r+1)`$. If moreover $`\eta\le r\,\lambda`$ and $`h_p\le h_q\le h_r`$ with $`h_p+h_q+h_r=j`$, then $`9\,\#\mathcal S\le(j+3)^{2}`$.*
 
@@ -332,130 +324,138 @@ For each Lean declaration: the Challenge (the target, stated from Mathlib alone)
 
 Each Challenge states the same proposition as the Lean declaration it targets, with every definition it uses restated from Mathlib alone.
 
+<a id="long269-res-distinct-height-all"></a>
+
+## Passage (beginning “long269:res:distinct-height-all…”), page 9
+
+> *Remark 9* (the distinct-height sums). For every finite set $`P`$ of primes with $`|P|\ge2`$, the sum $`\mathcal D_P`$ is irrational.
+
+**No Lean proof of the whole statement.** In Lean, ordinary proof, checked step by step by a second, independent AI agent within the project on 26 September 2026, no human review; not formalised: a Lean proof would need Kronecker's theorem on the closure of a line in a torus (density of the forward orbit in the subtorus it generates) and the Euler-characteristic count for line arrangements on a two-dimensional subtorus.
+
 <a id="long269-res-dp-integral-tails"></a>
 
-## Lemma 4.1 (integral tails), page 8
+## Passage (beginning “long269:res:dp-integral-tails…”), page 10
 
-> *If $`\mathcal D_P=N/K`$ with integers $`N`$ and $`K\ge1`$, then $`Kx_k`$ is an integer for every $`k\ge1`$.*
+> *Remark 10* (integral tails). If $`\mathcal D_P=N/K`$ with integers $`N`$ and $`K\ge1`$, then $`Kx_k`$ is an integer for every $`k\ge1`$.
 
 **No Lean proof of the whole statement.** In Lean, ordinary proof, part of the agent-checked proof that D_P is irrational for every finite P; not formalised: the surrounding argument would need Kronecker's theorem on subtori and an Euler-characteristic count, which are not formalised here.
 
 <a id="long269-res-dp-blocks"></a>
 
-## Lemma 4.2 (rearranged blocks), page 8
+## Passage (beginning “long269:res:dp-blocks…”), page 10
 
-> *Let $`u=\sigma_1\sigma_2\cdots`$ and $`u'=\sigma'_1\sigma'_2\cdots`$ be infinite words, where each $`\sigma_i`$ is a nonempty finite word and $`\sigma'_i`$ is a rearrangement of it, and suppose that every suffix of $`u`$ or $`u'`$ starting at a block boundary has value in $`(0,1)`$.*
+> *Remark 11* (rearranged blocks). Let $`u=\sigma_1\sigma_2\cdots`$ and $`u'=\sigma'_1\sigma'_2\cdots`$ be infinite words, where each $`\sigma_i`$ is a nonempty finite word and $`\sigma'_i`$ is a rearrangement of it, and suppose that every suffix of $`u`$ or $`u'`$ starting at a block boundary has value in $`(0,1)`$.
 >
-> 1.  *If $`V(u)=V(u')`$, then $`f(\sigma_i)=f(\sigma'_i)`$ for every $`i`$.*
+> 1.  If $`V(u)=V(u')`$, then $`f(\sigma_i)=f(\sigma'_i)`$ for every $`i`$.
 >
-> 2.  *If $`\sigma_i=\sigma'_i`$ for every $`i<i_0`$, then $`|V(u)-V(u')|<1/\Pi(\sigma_1\cdots\sigma_{i_0-1})`$.*
+> 2.  If $`\sigma_i=\sigma'_i`$ for every $`i<i_0`$, then $`|V(u)-V(u')|<1/\Pi(\sigma_1\cdots\sigma_{i_0-1})`$.
 
 **No Lean proof of the whole statement.** In Lean, ordinary proof, part of the agent-checked proof that D_P is irrational for every finite P; not formalised: the surrounding argument would need Kronecker's theorem on subtori and an Euler-characteristic count, which are not formalised here.
 
 <a id="long269-res-dp-short"></a>
 
-## Lemma 4.3 (short rearrangements), page 8
+## Passage (beginning “long269:res:dp-short…”), page 10
 
-> *The map $`f`$ is injective on the orderings of any set of at most three distinct primes.*
+> *Remark 12* (short rearrangements). The map $`f`$ is injective on the orderings of any set of at most three distinct primes.
 
 **No Lean proof of the whole statement.** In Lean, ordinary proof, part of the agent-checked proof that D_P is irrational for every finite P; not formalised: the surrounding argument would need Kronecker's theorem on subtori and an Euler-characteristic count, which are not formalised here.
 
 <a id="long269-res-dp-two-walls"></a>
 
-## Lemma 4.4 (two walls), page 9
+## Passage (beginning “long269:res:dp-two-walls…”), page 11
 
-> *If $`|P|\ge4`$, there is $`x\in T_0`$ with $`\theta_q(x)=0`$ for exactly two primes $`q\in P`$.*
+> *Remark 13* (two walls). If $`|P|\ge4`$, there is $`x\in T_0`$ with $`\theta_q(x)=0`$ for exactly two primes $`q\in P`$.
 
 **No Lean proof of the whole statement.** In Lean, ordinary proof, part of the agent-checked proof that D_P is irrational for every finite P; not formalised: the surrounding argument would need Kronecker's theorem on subtori and an Euler-characteristic count, which are not formalised here.
 
 <a id="long269-res-distinct-height-blocks"></a>
 
-## Lemma 4.5 (blocks, tails and integrality), page 12
+## Passage (beginning “long269:res:distinct-height-blocks…”), page 14
 
-> *Let $`P`$ be a finite set of at least two primes with least element $`p`$.*
+> *Remark 14* (blocks, tails and integrality). Let $`P`$ be a finite set of at least two primes with least element $`p`$.
 >
-> 1.  *Block $`a`$ ends with the jump at $`p^{a+1}`$ and contains at most one power of each prime $`q\in P\smallsetminus\{p\}`$, lying strictly inside it. The power $`q^f`$ with $`f\ge1`$ lies in block $`\lfloor f\log_pq\rfloor`$.*
+> 1.  Block $`a`$ ends with the jump at $`p^{a+1}`$ and contains at most one power of each prime $`q\in P\smallsetminus\{p\}`$, lying strictly inside it. The power $`q^f`$ with $`f\ge1`$ lies in block $`\lfloor f\log_pq\rfloor`$.
 >
-> 2.  *If block $`a`$ has type $`\tau=(r_1,\ldots,r_v)`$, then $`Y_a=G_\tau(Y_{a+1})`$, where
+> 2.  If block $`a`$ has type $`\tau=(r_1,\ldots,r_v)`$, then $`Y_a=G_\tau(Y_{a+1})`$, where
 >     ``` math
 >     G_\tau(y)=\frac{\mu_\tau+y}{b_\tau},\qquad b_\tau=pr_1\cdots r_v,\qquad
 >      \mu_\tau=1+b_\tau\sum_{j=1}^{v}\frac1{r_1\cdots r_j}.
 >     ```
->     Each $`G_\tau`$ is increasing with slope $`1/b_\tau\le1/p`$ and maps $`[0,1/(p-1)]`$ into itself, and $`0<Y_a\le1/(p-1)`$.*
+>     Each $`G_\tau`$ is increasing with slope $`1/b_\tau\le1/p`$ and maps $`[0,1/(p-1)]`$ into itself, and $`0<Y_a\le1/(p-1)`$.
 >
-> 3.  *If $`\mathcal D_P=N/K`$ with integers $`N`$ and $`K\ge1`$, then $`KY_a`$ is an integer for every $`a\ge0`$.*
+> 3.  If $`\mathcal D_P=N/K`$ with integers $`N`$ and $`K\ge1`$, then $`KY_a`$ is an integer for every $`a\ge0`$.
 
 **No Lean proof of the whole statement.** In Lean, the lemma is stated for every finite set of primes; only its {2,3,5} case is checked in Lean, inside the proof of the {2,3,5} theorem.
 
 <a id="long269-res-distinct-height-criterion"></a>
 
-## Theorem 4.6 (a decoding criterion), page 14
+## Passage (beginning “long269:res:distinct-height-criterion…”), page 15
 
-> *Let $`P`$ be a finite set of at least two primes, and for every state $`s`$ let $`J(s)`$ be a closed interval containing the values of all infinite paths from $`s`$. For $`k\ge1`$ and each type $`\tau`$, let $`U_\tau`$ be the union of the intervals $`G_{u_1}\circ\cdots\circ G_{u_k}\bigl(J(s_k)\bigr)`$ over all states $`s`$ and all paths $`(u_1,s_1),\ldots,(u_k,s_k)`$ from $`s`$ with $`u_1=\tau`$. If the sets $`U_\tau`$ are pairwise disjoint, then $`\mathcal D_P`$ is irrational.*
+> *Remark 15* (a decoding criterion). Let $`P`$ be a finite set of at least two primes, and for every state $`s`$ let $`J(s)`$ be a closed interval containing the values of all infinite paths from $`s`$. For $`k\ge1`$ and each type $`\tau`$, let $`U_\tau`$ be the union of the intervals $`G_{u_1}\circ\cdots\circ G_{u_k}\bigl(J(s_k)\bigr)`$ over all states $`s`$ and all paths $`(u_1,s_1),\ldots,(u_k,s_k)`$ from $`s`$ with $`u_1=\tau`$. If the sets $`U_\tau`$ are pairwise disjoint, then $`\mathcal D_P`$ is irrational.
 
 **No Lean proof of the whole statement.** In Lean, the criterion for every finite set of primes is not formalised; Lean checks its {2,3,5} case at depth one with the single interval [3/10,13/15] (irrational_tsum_blockTerm).
 
 <a id="long269-res-distinct-height-sets"></a>
 
-## Corollary 4.7 (three and four primes up to $`31`$), page 15
+## Passage (beginning “long269:res:distinct-height-sets…”), page 16
 
-> *Let $`P`$ be a set of primes, each at most $`31`$.*
+> *Remark 16* (three and four primes up to $`31`$). Let $`P`$ be a set of primes, each at most $`31`$.
 >
-> 1.  *If $`|P|=3`$, then $`\mathcal D_P`$ is irrational.*
+> 1.  If $`|P|=3`$, then $`\mathcal D_P`$ is irrational.
 >
-> 2.  *If $`|P|=4`$ and $`P`$ is not one of the $`38`$ sets listed below, then $`\mathcal D_P`$ is irrational.*
+> 2.  If $`|P|=4`$ and $`P`$ is not one of the $`38`$ sets listed below, then $`\mathcal D_P`$ is irrational.
 
 **No Lean proof of the whole statement.** In Lean, ordinary proof from the decoding criterion and an exact finite computation for each set (research/experiments/erdos269/distinct_height); neither is formalised.
 
 <a id="long269-res-single-prime-identities"></a>
 
-## Proposition 4.8 (sub-sums and the catalogue sum), page 17
+## Passage (beginning “long269:res:single-prime-identities…”), page 18
 
-> *Let $`P`$ be a finite set of primes with $`|P|\ge2`$.*
+> *Remark 17* (sub-sums and the catalogue sum). Let $`P`$ be a finite set of primes with $`|P|\ge2`$.
 >
-> 1.  *$`\mathcal D_P=\sum_{q\in P}E_q-(|P|-1)`$.*
+> 1.  $`\mathcal D_P=\sum_{q\in P}E_q-(|P|-1)`$.
 >
-> 2.  *If $`P=\{p,q\}`$, then $`\operatorname{H}_P(p^iq^j)=\operatorname{H}_P(p^i)\operatorname{H}_P(q^j)`$ for all $`i,j\ge0`$, and $`\mathcal R_P=E_pE_q`$.*
+> 2.  If $`P=\{p,q\}`$, then $`\operatorname{H}_P(p^iq^j)=\operatorname{H}_P(p^i)\operatorname{H}_P(q^j)`$ for all $`i,j\ge0`$, and $`\mathcal R_P=E_pE_q`$.
 >
-> 3.  *If $`P=\{p,q,r\}`$, then $`\operatorname{H}_P(p^iq^jr^k)=\operatorname{H}_P(p^i)\operatorname{H}_P(q^j)\operatorname{H}_P(r^k)\,
+> 3.  If $`P=\{p,q,r\}`$, then $`\operatorname{H}_P(p^iq^jr^k)=\operatorname{H}_P(p^i)\operatorname{H}_P(q^j)\operatorname{H}_P(r^k)\,
 >     p^{\kappa_p(j,k)}q^{\kappa_q(i,k)}r^{\kappa_r(i,j)}`$, where $`\kappa_p(j,k)=\lfloor j\log_pq+k\log_pr\rfloor-\lfloor j\log_pq\rfloor-\lfloor
->     k\log_pr\rfloor\in\{0,1\}`$ and $`\kappa_q,\kappa_r`$ are defined in the same way. For a general finite $`P`$ the corresponding exponents lie in $`\{0,\ldots,|P|-2\}`$.*
+>     k\log_pr\rfloor\in\{0,1\}`$ and $`\kappa_q,\kappa_r`$ are defined in the same way. For a general finite $`P`$ the corresponding exponents lie in $`\{0,\ldots,|P|-2\}`$.
 
 **No Lean proof of the whole statement.** In Lean, ordinary proof (floor-sum carries of the height exponents); checked in exact arithmetic on finite ranges by research/experiments/erdos269/distinct_height/two_tail.py; not formalised.
 
 <a id="long269-res-single-prime-subsums"></a>
 
-## Theorem 4.9 (the single-prime sub-sums), page 18
+## Passage (beginning “long269:res:single-prime-subsums…”), page 19
 
-> *Let $`P`$ be a finite set of primes with $`|P|\ge2`$ and let $`p\in P`$. Then $`E_p`$ is irrational.*
+> *Remark 18* (the single-prime sub-sums). Let $`P`$ be a finite set of primes with $`|P|\ge2`$ and let $`p\in P`$. Then $`E_p`$ is irrational.
 
 **No Lean proof of the whole statement.** In Lean, ordinary proof, checked step by step by a second, independent AI agent within the project on 26 September 2026, no human review; not formalised: a Lean proof would need Kronecker's theorem on the closure of a line in a torus and the density of its forward orbit.
 
 <a id="long269-lem-late-swap"></a>
 
-## Lemma 5.1 (the suffix lattice and a late interchange), page 20
+## Passage (beginning “long269:lem:late-swap…”), page 21
 
-> *Suppose $`V_c(w)`$ is rational. If for distinct letters $`a,b`$ and arbitrarily long words $`u`$ there is a common infinite suffix $`z`$ such that both $`uabz`$ and $`ubaz`$ belong to $`X_w`$, then
+> *Remark 19* (the suffix lattice and a late interchange). Suppose $`V_c(w)`$ is rational. If for distinct letters $`a,b`$ and arbitrarily long words $`u`$ there is a common infinite suffix $`z`$ such that both $`uabz`$ and $`ubaz`$ belong to $`X_w`$, then
 > ``` math
 > c_a(b_b-1)=c_b(b_a-1).
 > ```
-> If such interchanges join every pair of letters along a connected graph, $`V_c(w)`$ is rational precisely when there is $`\lambda\in\mathbb{Q}`$ with $`c_a=\lambda(b_a-1)`$ for all $`a`$; in that case $`V_c(w)=\lambda`$.*
+> If such interchanges join every pair of letters along a connected graph, $`V_c(w)`$ is rational precisely when there is $`\lambda\in\mathbb{Q}`$ with $`c_a=\lambda(b_a-1)`$ for all $`a`$; in that case $`V_c(w)=\lambda`$.
 
 **No Lean proof of the whole statement.** In Lean, no proof of the full statement is recorded; the paper gives an ordinary proof reviewed by AI agents. Finite auxiliary checks have narrower scope, and independent human review is not recorded.
 
 <a id="long269-lem-clock-swaps"></a>
 
-## Lemma 5.2 (isolated interchanges in a clock word), page 21
+## Passage (beginning “long269:lem:clock-swaps…”), page 21
 
-> *Every pair of distinct clock labels satisfies the late-interchange hypothesis of Lemma 5.1 for $`X_w`$.*
+> *Remark 20* (isolated interchanges in a clock word). Every pair of distinct clock labels satisfies the late-interchange hypothesis of Remark 6.1 for $`X_w`$.
 
 **No Lean proof of the whole statement.** In Lean, no proof of the full statement is recorded; the paper gives an ordinary proof reviewed by AI agents. Finite auxiliary checks have narrower scope, and independent human review is not recorded.
 
 <a id="long269-thm-clock-relations"></a>
 
-## Theorem 5.3 (rational relations among independent-clock channels), page 21
+## Passage (beginning “long269:thm:clock-relations…”), page 22
 
-> *Under the preceding clock hypotheses, choose integers $`b_i\ge2`$, put $`Q_n=\prod_{k\le n}b_{w_k}`$ and
+> *Remark 21* (rational relations among independent-clock channels). Under the preceding clock hypotheses, choose integers $`b_i\ge2`$, put $`Q_n=\prod_{k\le n}b_{w_k}`$ and
 > ``` math
 > S_i=\sum_{n:\,w_n=i}\frac1{Q_n}\qquad(1\le i\le d).
 > ```
@@ -465,13 +465,13 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 >  \quad\Longleftrightarrow\quad
 >  c_i=\lambda(b_i-1)\quad\hbox{for all $i$ and some $\lambda\in\mathbb{Q}$}.
 > ```
-> The rational value is $`\lambda`$. Equivalently, all rational relations $`a_0+\sum_i a_iS_i=0`$ are multiples of $`(-1,b_1-1,\ldots,b_d-1)`$. Thus the span of $`1,S_1,\ldots,S_d`$ has dimension $`d`$; each channel and each nonempty proper unweighted sub-sum is irrational. The full unweighted sum is irrational exactly when the radices are not all equal.*
+> The rational value is $`\lambda`$. Equivalently, all rational relations $`a_0+\sum_i a_iS_i=0`$ are multiples of $`(-1,b_1-1,\ldots,b_d-1)`$. Thus the span of $`1,S_1,\ldots,S_d`$ has dimension $`d`$; each channel and each nonempty proper unweighted sub-sum is irrational. The full unweighted sum is irrational exactly when the radices are not all equal.
 
 **No Lean proof of the whole statement.** In Lean, no proof of the full statement is recorded; the paper gives an ordinary proof reviewed by AI agents. Finite auxiliary checks have narrower scope, and independent human review is not recorded.
 
 <a id="long269-res-two-prime-rank"></a>
 
-## Proposition 6.1 (two generators separate), page 22
+## Proposition 7.1 (two generators separate), page 23
 
 > *For real $`p,q>1`$, with $`L_{p,q}(t)=p^{\lfloor\log_p t\rfloor}q^{\lfloor\log_q t\rfloor}`$ as above, and all integers $`i,j\ge0`$, the two-prime kernel $`\operatorname{K}_2(i,j)=1/L_{p,q}(p^iq^j)`$ is the outer product
 > ``` math
@@ -507,7 +507,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long269-res-rank"></a>
 
-## Proposition 6.2 (non-separability at $`\{2,3,5\}`$), page 23
+## Proposition 7.2 (non-separability at $`\{2,3,5\}`$), page 23
 
 > *With $`(p,q,r)=(2,3,5)`$,
 > ``` math
@@ -545,7 +545,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long269-res-infinite-rank"></a>
 
-## Theorem 6.3 (no finite separation of the kernel), page 23
+## Theorem 7.3 (no finite separation of the kernel), page 24
 
 > *<span id="long269:res:lead-infinite-rank" label="long269:res:lead-infinite-rank"></span> Let $`p,q,r`$ be primes with $`p\ne q`$, $`p\ne r`$ and $`q\ne r`$. For every $`n\ge1`$ there are injective maps $`I,J:\{0,\ldots,n-1\}\to\mathbb{N}`$ such that, for every $`k\ge0`$,
 > ``` math
@@ -581,7 +581,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long269-res-finite-cut-rank"></a>
 
-## Proposition 6.4 (rank of threshold columns), page 24
+## Proposition 7.4 (rank of threshold columns), page 25
 
 > *Let $`m\ge1`$ and let $`c`$ lie in a field with $`c\ne0,1`$. For $`0\le h\le m`$, let $`v_h`$ be the length-$`m`$ column whose first $`h`$ entries are $`1`$ and whose remaining entries are $`c`$. If the distinct columns of a matrix are the $`v_h`$ with $`h`$ in a nonempty set $`E\subseteq\{0,\ldots,m\}`$, then its rank is
 > ``` math
@@ -622,17 +622,17 @@ theorem rank_cutMatrix {F : Type*} [Field F] {ι : Type*} [Fintype ι]
 
 <a id="long269-lem-staircase-smith"></a>
 
-## Lemma 6.5 (Smith factors of the selected staircase), page 25
+## Passage (beginning “long269:lem:staircase-smith…”), page 26
 
-> *The Smith factors of $`A_N(r)`$ are $`1,r-1,\ldots,r-1`$, and $`\det A_N(r)=(1-r)^{N-1}`$.*
+> *Remark 26* (Smith factors of the selected staircase). The Smith factors of $`A_N(r)`$ are $`1,r-1,\ldots,r-1`$, and $`\det A_N(r)=(1-r)^{N-1}`$.
 
 **No Lean proof of the whole statement.** In Lean, no proof of the full statement is recorded; the paper gives an ordinary proof reviewed by AI agents. Finite auxiliary checks have narrower scope, and independent human review is not recorded.
 
 <a id="long269-res-uniform-rank"></a>
 
-## Theorem 6.6 (distance from matrices of finite separated rank), page 27
+## Theorem 7.6 (distance from matrices of finite separated rank), page 27
 
-> *Let $`p,q,r`$ be pairwise distinct primes and let $`C`$ be as in (8). Then
+> *Let $`p,q,r`$ be pairwise distinct primes and let $`C`$ be as in (11). Then
 > ``` math
 > \inf_{A}\ \sup_{i,j\ge0}\ |C(i,j)-A(i,j)|=\frac{1-t}{2}=\frac{r-1}{2r},
 > ```
@@ -668,7 +668,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long269-res-dyadic-alphabet"></a>
 
-## Proposition 7.1 (four possible bases), page 28
+## Proposition 8.1 (four possible bases), page 29
 
 > *For every $`a`$,
 > ``` math
@@ -761,7 +761,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long269-res-actual-orbit"></a>
 
-## Theorem 7.2 (the tail recurrence), page 29
+## Theorem 8.2 (the tail recurrence), page 30
 
 > *The shell masses are summable and $`S=\sum_{a\ge0}s_a`$. For every $`a\ge0`$,
 > ``` math
@@ -807,7 +807,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long269-res-literal-triangle"></a>
 
-## Lemma 7.3 (the shell numerator as a weighted lattice count), page 30
+## Lemma 8.3 (the shell numerator as a weighted lattice count), page 30
 
 > *Put $`\lambda_3=\log_2 3`$, $`\lambda_5=\log_2 5`$ and $`\theta_p=1/\lambda_p`$ for $`p=3,5`$. For $`j,k\ge0`$ write $`w_{j,k}=j\lambda_3+k\lambda_5`$ and $`t_{j,k}=\{w_{j,k}\}`$. The shell numerator is
 > ``` math
@@ -851,7 +851,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long269-res-actual-dichotomy"></a>
 
-## Proposition 7.4 (integer tails or repeated separation from the integers), page 30
+## Proposition 8.4 (integer tails or repeated separation from the integers), page 31
 
 > *For every integer $`B\ge1`$, either $`BX_a\in\mathbb{Z}`$ for some $`a\ge0`$ and every later $`a`$, or for every $`a_0`$ there is $`a\ge a_0`$ with $`|BX_a-z|\ge1/31`$ for every $`z\in\mathbb{Z}`$.*
 
@@ -879,7 +879,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long269-res-actual-tail-bound"></a>
 
-## Theorem 8.1 (a quadratic upper bound), page 31
+## Theorem 9.1 (a quadratic upper bound), page 32
 
 > *For every $`a\ge0`$, $`0<X_a\le Q(n_a)`$.*
 
@@ -905,7 +905,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long269-res-all-scale-lattice"></a>
 
-## Lemma 8.2 (finite denominator clearing), page 32
+## Lemma 9.2 (finite denominator clearing), page 33
 
 > *For all integers $`0\le u\le b`$ the window mass $`h_b\sum_{a=u}^{b-1}s_a`$ is a natural number. If $`S=N/D`$ with $`N\in\mathbb{Z}`$ and $`D\in\mathbb{N}_{>0}`$, then $`DX_a\in\mathbb{Z}`$ for every $`a\ge1`$, and there are indices $`1\le i<j\le D+1`$ for which $`X_i-X_j\in\mathbb{Z}`$.*
 
@@ -937,7 +937,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long269-res-actual-cancellation"></a>
 
-## Theorem 8.3 (rationality gives positive integer tails), page 33
+## Theorem 9.3 (rationality gives positive integer tails), page 33
 
 > *<span id="long269:res:lead-carry-bridge" label="long269:res:lead-carry-bridge"></span> <span id="long269:res:actual-carry-bound" label="long269:res:actual-carry-bound"></span><span id="long269:res:denominator-reduction" label="long269:res:denominator-reduction"></span> Suppose $`S=N/D`$ with $`N\in\mathbb{Z}`$, $`D\in\mathbb{N}_{>0}`$, and write
 > ``` math
@@ -986,7 +986,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long269-res-exact-denominator"></a>
 
-## Proposition 8.4 (exact denominators and minimal clearing), page 33
+## Proposition 9.4 (exact denominators and minimal clearing), page 34
 
 > *Suppose $`S=N/(MB)`$ is in lowest terms, with $`M=2^u3^v5^w`$ and $`\gcd(B,30)=1`$. For every $`a\ge1`$,
 > ``` math
@@ -1082,7 +1082,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long269-res-pinning"></a>
 
-## Proposition 8.5 (propagation of integrality and uniqueness of a small solution), page 34
+## Proposition 9.5 (propagation of integrality and uniqueness of a small solution), page 34
 
 > *For every $`a`$, $`X_a=(m_a+X_{a+1})/b_a>0`$, and if $`X_a\in\mathbb{Z}`$ then $`X_n\in\mathbb{Z}`$ for every $`n\ge a`$. Moreover, fix $`A`$, a positive width function $`w`$ with $`w(A+k)/8^{k}\to0`$, and a real sequence $`(y_n)_{n\ge A}`$ satisfying $`y_{n+1}=b_ny_n-m_n`$. If $`y_n`$ and $`X_n`$ both lie in $`(m_n/b_n,\;m_n/b_n+w(n)]`$ for every $`n\ge A`$, then $`y_A=X_A`$.*
 
@@ -1124,7 +1124,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long269-res-jump-constrained-bound"></a>
 
-## Proposition 8.6 (a smaller quadratic bound), page 35
+## Proposition 9.6 (a smaller quadratic bound), page 35
 
 > *For every $`a\ge0`$,
 > ``` math
@@ -1156,7 +1156,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long269-res-consumer"></a>
 
-## Proposition 9.1 (least positive residues), page 37
+## Proposition 10.1 (least positive residues), page 38
 
 > *Let $`C>0`$ and let $`c`$ be an integer with $`0<c`$ and $`|c|\le K`$. If $`c\equiv N\pmod C`$ and $`K<\operatorname{lpr}_C(N)`$, then the hypotheses are contradictory.*
 
@@ -1187,13 +1187,13 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long269-res-actual-escape-endpoint"></a>
 
-## Theorem 9.2 (a residue criterion for every dominating bound of size $`o(8^a)`$), page 38
+## Theorem 10.2 (a residue criterion for every dominating bound of size $`o(8^a)`$), page 38
 
 > *<span id="long269:res:lead-escape-equivalence" label="long269:res:lead-escape-equivalence"></span><span id="long269:res:windowconsumer" label="long269:res:windowconsumer"></span> Let $`G:\mathbb{N}_{>0}\times\mathbb{N}\to\mathbb{N}`$ satisfy $`K(B,a)\le G(B,a)`$ for all $`B`$ and $`a`$, and $`G(B,a)/8^{a}\to0`$ as $`a\to\infty`$ for each fixed $`B`$. Then
 > ``` math
 > \mathsf E(G)\quad\Longleftrightarrow\quad S\notin\mathbb{Q}.
 > ```
-> Both $`K`$ of (15) and $`K_0(B,a)=90B(a+1)^{2}`$ satisfy these hypotheses, so $`\mathsf E(K)`$, $`\mathsf E(K_0)`$ and irrationality of $`S`$ are mutually equivalent. By contrast, $`\mathsf E(0)`$ holds automatically, since every least positive residue is at least $`1`$; its truth alone therefore provides no contradiction to an integral tail.*
+> Both $`K`$ of (18) and $`K_0(B,a)=90B(a+1)^{2}`$ satisfy these hypotheses, so $`\mathsf E(K)`$, $`\mathsf E(K_0)`$ and irrationality of $`S`$ are mutually equivalent. By contrast, $`\mathsf E(0)`$ holds automatically, since every least positive residue is at least $`1`$; its truth alone therefore provides no contradiction to an integral tail.*
 
 The Lean declaration below states this result or one that implies it. The Lean statement has the same hypotheses and conclusion as the printed one.
 
@@ -1251,7 +1251,7 @@ theorem octic_escape_whole :
 
 <a id="long269-res-residue-limit"></a>
 
-## Proposition 9.3 (the fixed-start residue limit), page 39
+## Proposition 10.3 (the fixed-start residue limit), page 39
 
 > *For fixed integers $`B,\ell\ge1`$, write
 > ``` math
@@ -1323,7 +1323,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long269-res-window-growth"></a>
 
-## Proposition 9.4 (growth of the window product), page 41
+## Proposition 10.4 (growth of the window product), page 41
 
 > *Put $`\theta_3=\log_32`$ and $`\theta_5=\log_52`$. For all $`\ell\ge0`$ and $`h\ge1`$,
 > ``` math
@@ -1362,7 +1362,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long269-res-no-bounded-length"></a>
 
-## Corollary 9.5 (a fixed maximum length cannot cover arbitrarily late starts), page 41
+## Corollary 10.5 (a fixed maximum length cannot cover arbitrarily late starts), page 41
 
 > *Fix $`B\ge1`$ coprime to $`30`$ and $`H\ge1`$. Only finitely many starts $`\ell`$ admit an escaping window of length at most $`H`$ against the bound $`K`$.*
 
@@ -1391,7 +1391,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long269-res-weighted-shift-identity"></a>
 
-## Lemma 11.1 (weighted shifts preserve the actual value), page 44
+## Lemma 12.1 (weighted shifts preserve the actual value), page 45
 
 > *Fix integers $`c_0,\ldots,c_\sigma`$, not all zero, independently of the positive integer shift $`r`$. Put
 > ``` math
@@ -1445,7 +1445,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long269-res-strip-decomposition"></a>
 
-## Proposition 11.2 (an exact interior-and-strip decomposition), page 45
+## Proposition 12.2 (an exact interior-and-strip decomposition), page 46
 
 > *For a fixed operator $`c_0,\ldots,c_\sigma`$ and $`r\ge1`$, let $`E_0=\mathcal T_a`$ and $`E_s=\mathcal T_{a+sr}\smallsetminus \mathcal T_{a+(s-1)r}`$ for $`1\le s\le\sigma`$. Then
 > ``` math
@@ -1503,7 +1503,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long269-res-fixed-base-recoding"></a>
 
-## Proposition 11.4 (what direct fixed-base recoding preserves), page 48
+## Proposition 12.4 (what direct fixed-base recoding preserves), page 48
 
 > *The following identities converge absolutely:
 > ``` math
@@ -1545,9 +1545,9 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long269-res-tails-equivalence"></a>
 
-## Proposition 11.6 (irrationality is equivalent to nonintegrality of every reduced tail), page 50
+## Proposition 12.6 (irrationality is equivalent to nonintegrality of every reduced tail), page 50
 
-> *Statement (19), quantified over every $`B\ge1`$ coprime to $`30`$ and every $`a\ge1`$, is equivalent to irrationality of $`S`$.*
+> *Statement (22), quantified over every $`B\ge1`$ coprime to $`30`$ and every $`a\ge1`$, is equivalent to irrationality of $`S`$.*
 
 The Lean declaration below states this result or one that implies it. The Lean statement has the same hypotheses and conclusion as the printed one.
 
@@ -1570,7 +1570,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long269-long-denominator-reduction"></a>
 
-## Proposition 12.1 (conditional denominator reduction), page 56
+## Proposition 13.1 (conditional denominator reduction), page 57
 
 > *If $`c_n=D_{\mathrm{sm}}d_n`$ for every $`n`$, with $`D_{\mathrm{sm}}>0`$, then the recurrence and window identity for $`(d_n)`$ have multiplier $`B`$ in place of $`D`$. Moreover, for every $`n`$ and every real $`t`$,
 > ``` math
@@ -1606,9 +1606,9 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long269-long-windowconsumer"></a>
 
-## Proposition 12.2 (escaping windows exclude a positive bounded integer solution), page 57
+## Proposition 13.2 (escaping windows exclude a positive bounded integer solution), page 58
 
-> *Let $`(b_n)`$ and $`(m_n)`$ be sequences of nonnegative integers, let $`G:\mathbb{N}_{>0}\times\mathbb{N}\to\mathbb{N}`$, and assume the residue condition (17) for these sequences and $`G`$, using $`|W_{\ell,h}|>0`$ as the modulus. Fix $`B>0`$ coprime to $`30`$. There is no integral sequence $`(d_n)`$ satisfying simultaneously $`d_{n+1}=b_nd_n-Bm_n`$, $`d_n>0`$ and $`|d_n|\le G(B,n)`$ for every $`n\ge0`$.*
+> *Let $`(b_n)`$ and $`(m_n)`$ be sequences of nonnegative integers, let $`G:\mathbb{N}_{>0}\times\mathbb{N}\to\mathbb{N}`$, and assume the residue condition (20) for these sequences and $`G`$, using $`|W_{\ell,h}|>0`$ as the modulus. Fix $`B>0`$ coprime to $`30`$. There is no integral sequence $`(d_n)`$ satisfying simultaneously $`d_{n+1}=b_nd_n-Bm_n`$, $`d_n>0`$ and $`|d_n|\le G(B,n)`$ for every $`n\ge0`$.*
 
 The Lean declaration below states this result or one that implies it. The Lean statement has the same hypotheses and conclusion as the printed one.
 

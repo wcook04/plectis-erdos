@@ -281,7 +281,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="res-irr-equivalence"></a>
 
-## Corollary 4.2 (exact irrationality reformulation), page 6
+## Corollary 4.2 (exact irrationality reformulation), page 7
 
 > *The prime-value dyadic series is irrational if and only if the prime-gap dyadic series is. Both series converge by the polynomial bound proved above; neither side is proved irrational.*
 
@@ -321,7 +321,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="res-true-tail"></a>
 
-## Lemma 4.3 (the boundary condition identifying a true tail), page 6
+## Lemma 4.3 (the boundary condition identifying a true tail), page 7
 
 > *Let $`\sum_{j\ge1}|a_j|2^{-j}<\infty`$ and $`U_{N+1}=2U_N-a_{N+1}`$. Then $`U_N=\sum_{j\ge1}a_{N+j}2^{-j}`$ for every $`N`$ if and only if $`2^{-N}U_N\to0`$.*
 
@@ -400,7 +400,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="res-signedwindow"></a>
 
-## Proposition 5.1 (two consecutive differences of absolute value less than one), page 7
+## Proposition 5.1 (two consecutive differences of absolute value less than one), page 8
 
 > *Let $`D,D'\in\mathbb{R}`$, $`\delta\in2\mathbb{Z}`$ and $`D'=2D-\delta`$. The conditions $`|D|<1`$, $`|D'|<1`$ and $`\delta\ne0`$ hold exactly when, for some $`s\in\{-1,1\}`$,
 > ``` math
@@ -444,7 +444,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="res-truncation"></a>
 
-## Proposition 5.3 (finite separation criterion), page 8
+## Proposition 5.3 (finite separation criterion), page 9
 
 > *If for every $`h\ge1`$ and every cutoff $`N_0`$ there are $`N\ge N_0,L\ge1`$ with
 > ``` math
@@ -480,7 +480,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="res-gap-nonperiodic"></a>
 
-## Proposition 6.1 (prime gaps do not become periodic), page 9
+## Proposition 6.1 (prime gaps do not become periodic), page 10
 
 > *For every positive $`h`$, the actual consecutive-prime-gap sequence is not eventually periodic with period $`h`$.*
 

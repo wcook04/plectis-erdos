@@ -75,7 +75,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="thm-cd-neg3-impossible"></a>
 
-## Theorem 10.6 ($`C_D=-3`$ is impossible at the final middle transition, $`D\ge 13`$), page 114
+## Theorem 10.6 ($`C_D=-3`$ is impossible at the final middle transition, $`D\ge 13`$), page 113
 
 > *Consider a hypothetical *final middle transition*: a middle transition at row $`D\ge 13`$ ($`\lnot\mathrm{carries}`$, and the middle-branch inequality $`4\mathrm{rem}(D)+\mathrm{gap}-\mathrm{belowPulse} < \mathrm{terminalWeight}`$ holds at $`D`$), followed by an all-right tail forever after ($`\forall s\ge D{+}1`$, $`\mathrm{seamGreedyWord}(s+1) =
 > \mathrm{seamGreedyWord}(s).\mathrm{extend}\ \mathrm{true}`$). Under these assumptions,

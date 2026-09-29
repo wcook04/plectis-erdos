@@ -225,7 +225,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long251-res-infinite"></a>
 
-## Theorem 4.3 (infinite prime-gap identity), page 10
+## Theorem 4.3 (infinite prime-gap identity), page 11
 
 > *Both series converge and
 > ``` math
@@ -286,7 +286,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long251-res-block"></a>
 
-## Theorem 5.2 (block identity), page 11
+## Theorem 5.2 (block identity), page 12
 
 > *For every $`N`$ and $`h`$,
 > ``` math
@@ -318,7 +318,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long251-res-escape-irrational"></a>
 
-## Theorem 5.3 (exact rationality classification), page 12
+## Theorem 5.3 (exact rationality classification), page 13
 
 > *Let $`T:\mathbb{N}\to\mathbb{R}`$ satisfy $`T_{N+1}=2T_N-g_{N+1}`$ with integer coefficients $`g`$. The following are equivalent:*
 >
@@ -359,7 +359,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long251-res-true-tail"></a>
 
-## Lemma 5.4 (the boundary condition identifying a true tail), page 12
+## Lemma 5.4 (the boundary condition identifying a true tail), page 13
 
 > *Let $`a_1,a_2,\ldots`$ be real numbers with $`\sum_{j\ge1}|a_j|2^{-j}<\infty`$, and let $`U_{N+1}=2U_N-a_{N+1}`$. Then
 > ``` math
@@ -391,7 +391,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long251-res-freepair"></a>
 
-## Theorem 5.5 (pairs of congruent indices), page 13
+## Theorem 5.5 (pairs of congruent indices), page 14
 
 > *$`S`$ is irrational if and only if for every $`t\ge1`$ and every $`N_0`$ there are $`N,M\ge N_0`$ with $`M\equiv N\pmod t`$ and $`T_M-T_N\notin\mathbb{Z}`$.*
 
@@ -446,7 +446,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long251-res-smallpair"></a>
 
-## Theorem 6.1 (adjacent small-shift obstruction), page 14
+## Theorem 6.1 (adjacent small-shift obstruction), page 15
 
 > *Let $`T`$ satisfy the dyadic tail recurrence with integer coefficients $`g`$, and fix $`h`$ and $`N`$. If
 > ``` math
@@ -485,7 +485,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long251-res-smallpair-real"></a>
 
-## Corollary 6.2 (real form and the sufficient condition), page 14
+## Corollary 6.2 (real form and the sufficient condition), page 15
 
 > *The same statement holds for a real orbit, with the same proof. If for every $`h\ge1`$ and every cutoff some later $`N`$ satisfies the three displayed conditions for the actual prime gaps, then $`\Pi`$ is irrational.*
 
@@ -589,7 +589,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long251-res-explicit-remainder"></a>
 
-## Proposition 6.5 (explicit remainder), page 15
+## Proposition 6.5 (explicit remainder), page 16
 
 > *For integers $`h,N\ge0`$ and $`L\ge1`$ put
 > ``` math
@@ -657,7 +657,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long251-res-one-tail-certificate"></a>
 
-## Proposition 6.7 (a one-tail signed certificate), page 16
+## Proposition 6.7 (a one-tail signed certificate), page 17
 
 > *Let $`D_{N+1}=2D_N-\delta_N`$ with real $`D_N`$, and suppose $`\delta_N=2s`$ for $`s\in\{-1,1\}`$. If integers $`A,B,Q`$ satisfy $`Q>0`$, $`B\ge0`$, $`|QD_N-A|\le B`$, and
 > ``` math
@@ -724,7 +724,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long251-res-cfexclusion"></a>
 
-## Theorem 7.2 (certified continued-fraction exclusion), page 17
+## Theorem 7.2 (certified continued-fraction exclusion), page 18
 
 > *Every rational equal to $`\Pi`$, and hence every rational equal to $`S`$, has reduced denominator $`q\ge2^{39997}`$, and therefore $`q>10^{12040}`$.*
 
@@ -745,7 +745,7 @@ theorem denominator_floor_both (a : ℤ) (b : ℕ) (hb : 0 < b)
 
 <a id="long251-res-boundedperturbation"></a>
 
-## Theorem 8.1 (bounded-perturbation obstruction), page 19
+## Theorem 8.1 (bounded-perturbation obstruction), page 20
 
 > *Let $`a_n`$ be natural numbers with $`\sum_{n\ge0}a_n2^{-(n+1)}`$ convergent. For every integer $`M\ge1`$ and every cutoff $`K`$ there are digits $`\varepsilon_n\in\{0,1\}`$, zero for $`n<K`$, such that $`\sum_{n\ge0}(a_n+M\varepsilon_n)2^{-(n+1)}`$ is rational.*
 
@@ -805,7 +805,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long251-res-nonconcentration"></a>
 
-## Theorem 8.3 (nonconcentration is perturbation-stable), page 20
+## Theorem 8.3 (nonconcentration is perturbation-stable), page 21
 
 > *Let $`a:\mathbb{N}\to\mathbb{Z}`$ have fixed-block nonconcentration, let $`E\subset\mathbb{Z}`$ be finite, and let $`b_n=a_n+e_n`$ with $`e_n\in E`$ for every $`n`$. Then $`b`$ has fixed-block nonconcentration.*
 
@@ -923,7 +923,7 @@ def SchlagePuchtaLemma4 : Prop :=
 
 <a id="long251-res-sparse-nonconcentration"></a>
 
-## Proposition 8.5 (nonconcentration under sparse changes), page 21
+## Proposition 8.5 (nonconcentration under sparse changes), page 22
 
 > *Let $`a,b:\mathbb{N}\to\mathbb{Z}`$ agree off a set $`S`$ of ordinary density zero. If $`a`$ has fixed-block nonconcentration, then so does $`b`$. No boundedness assumption on $`a-b`$ is needed.*
 
@@ -1129,7 +1129,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long251-res-polynomialcountermodel"></a>
 
-## Proposition 8.9 (quadratic polynomial-shift countermodel), page 26
+## Proposition 8.9 (quadratic polynomial-shift countermodel), page 27
 
 > *Put $`c_n=2(n^2+4n+2)`$ and $`U_n=2(n+4)^2`$. Then $`c_n`$ is positive, even and strictly increasing, $`U_{n+1}=2U_n-c_{n+1}`$, every shift $`U_{N+h}-U_N`$ is integral, $`c_{n+1}-c_n=4n+10`$ is never $`\pm2`$, and
 > ``` math
@@ -1218,7 +1218,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long251-xr-propagate"></a>
 
-## Proposition D.2 (propagation), page 33
+## Proposition D.2 (propagation), page 34
 
 > *Let $`T:\mathbb{N}\to\mathbb{R}`$ satisfy $`T_{n+1}=2T_n-a_{n+1}`$ with integer coefficients, and define $`\sigma_h(N)=T_{N+h}-T_N`$. For fixed $`h,N\ge0`$, if $`\sigma_h(N)`$ is an integer, then $`\sigma_h(N+k)`$ is an integer for every $`k\ge0`$.*
 
@@ -1246,7 +1246,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long251-xr-truncation"></a>
 
-## Proposition D.3 (finite truncation), page 33
+## Proposition D.3 (finite truncation), page 34
 
 > *Let $`M:\mathbb{N}\to\mathbb{R}`$ satisfy $`M(n)\ge g_n`$ for every $`n`$ and $`\sum_{n\ge0}M(n)2^{-n}<\infty`$, and put
 > ``` math
@@ -1288,7 +1288,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long251-res-complete-truncation"></a>
 
-## Proposition D.4 (completeness of finite separation), page 34
+## Proposition D.4 (completeness of finite separation), page 35
 
 > *Suppose $`D\in\mathbb{R}`$, $`S_L\in\mathbb{R}`$ and $`R_L\ge0`$ satisfy $`|D-S_L|\le R_L`$ and $`R_L\to0`$. Then
 > ``` math
@@ -1320,7 +1320,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long251-xr-boundedpolignac"></a>
 
-## Proposition D.6 (bounded recurring-values countermodel), page 36
+## Proposition D.6 (bounded recurring-values countermodel), page 37
 
 > *Put $`U_0=4`$ and, for $`n\ge1`$, $`U_n=6`$ when $`n=k!`$ for some $`k\ge3`$ and $`U_n=4`$ otherwise, and set $`a_n=2U_{n-1}-U_n`$ for $`n\ge1`$. Then $`a_n\in\{2,4,8\}`$. For every $`k\ge3`$, the value $`2`$ occurs at index $`k!`$ and the value $`4`$ at index $`2\,k!`$, so both recur infinitely often at indices divisible by any fixed $`t\ge1`$. The series $`\sum_{n\ge1}a_n2^{-n}`$ equals $`4`$ and every tail $`\sum_{j\ge1}a_{N+j}2^{-j}`$ equals the integer $`U_N`$.*
 
@@ -1353,7 +1353,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long251-res-affinecollapse"></a>
 
-## Theorem E.1 (equivalent arithmetic-progression tests), page 38
+## Theorem E.1 (equivalent arithmetic-progression tests), page 39
 
 > *For every rational dyadic tail recurrence and all $`h,N,r\ge0`$,
 > ``` math

@@ -4,7 +4,7 @@ Part of the [evidence record](../erdos249-totient-reasoning-surface.md) of the p
 
 <a id="prop-rational-series-preserving-totient-parity"></a>
 
-## Proposition 10.1 (A rational series preserving totient parity and the stated separation properties), page 99
+## Proposition 10.1 (A rational series preserving totient parity and the stated separation properties), page 100
 
 > *There exists $`c:\mathbb N\to\mathbb N`$ such that: $`c(n)\le6`$ for all $`n`$; $`c(n)\le n`$; $`c(n)\equiv\varphi(n)\pmod2`$ for every $`n`$; for every $`N,G,K`$ there is a block of $`K`$ explicit $`(6,0)`$ carry-pulse pairs beyond $`N`$, each pair separated by more than $`G`$; and $`\sum_n c(n)/2^n = 3/2`$.*
 
@@ -67,7 +67,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="lem-complement-divisibility-after-multiplication"></a>
 
-## Lemma 10.2 (Complement divisibility after multiplication), page 100
+## Lemma 10.2 (Complement divisibility after multiplication), page 102
 
 > *Write $`x=a/b`$ in lowest terms, where $`a\in\mathbb{Z}`$ and $`b\ge1`$. Let $`c\in\mathbb{Z}`$ and let $`H`$ be a positive divisor of $`b`$. If the reduced denominator of $`cx`$ divides $`H`$, then
 > ``` math
@@ -97,7 +97,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="lem-nonvanishing-unique-largest-denominator-exponent"></a>
 
-## Lemma 10.3 (Nonvanishing from a unique largest denominator exponent), page 101
+## Lemma 10.3 (Nonvanishing from a unique largest denominator exponent), page 103
 
 > *Let $`I`$ be a finite set, let $`u_i\in\mathbb{Z}`$ and $`e_i\in\mathbb{N}`$ for $`i\in I`$, and suppose that $`m\in I`$ satisfies $`e_i<e_m`$ for every $`i\ne m`$. If $`u_m`$ is odd, then
 > ``` math
@@ -152,7 +152,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="prop-nonzero-minor-survives-inverse-phase"></a>
 
-## Proposition 10.4 (A nonzero minor survives inverse-phase column weights), page 102
+## Proposition 10.4 (A nonzero minor survives inverse-phase column weights), page 103
 
 > *Let $`d\ge1`$ be an integer, let $`e_0,\ldots,e_{d-1}`$ be nonnegative integers, and let $`z_0,\ldots,z_{d-1}`$ be nonzero complex numbers. Write $`P_{ij}=z_j^{e_i}`$, and suppose $`e_{i_0}=1`$ for some $`i_0`$. Multiplying column $`j`$ by $`W_j=z_j^{-1}`$ gives
 > ``` math
@@ -191,7 +191,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="prop-tail-integrality-lcm-grid"></a>
 
-## Proposition 10.5 (Tail integrality on an LCM grid), page 103
+## Proposition 10.5 (Tail integrality on an LCM grid), page 104
 
 > *$`S\in\mathbb Q \implies \exists t_1,\ \forall t\ge t_1,\
 > \forall q,m:\mathbb N,\ 0<q \implies {R}(q\cdot
@@ -223,7 +223,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="prop-finite-grid-certificate-gives-nonintegral"></a>
 
-## Proposition 10.6 (A finite-grid certificate gives a nonintegral pair), page 103
+## Proposition 10.6 (A finite-grid certificate gives a nonintegral pair), page 104
 
 > *Let $`Q\subseteq\mathbb N_{>0}`$ be finite and nonempty. For each $`q\in Q`$, put $`A_q=\sum_{j=1}^{L}\varphi(qH+j)2^{L-j}`$ and $`B_q=qH+L+2`$. Suppose $`B_q<2^L`$ for every $`q\in Q`$ and
 > ``` math
@@ -264,7 +264,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="thm-exact-dyadic-rank-infinite-dimensionality"></a>
 
-## Theorem 10.7 (Exact dyadic rank and infinite-dimensionality), page 104
+## Theorem 10.7 (Exact dyadic rank and infinite-dimensionality), page 105
 
 > *For every $`e\ge1`$, the family
 > ``` math
@@ -313,30 +313,30 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long249-thm-signed-interpolation"></a>
 
-## Theorem 10.8 (Sparse interpolation around the totient), page 111
+## Passage (beginning “long249:thm:signed-interpolation…”), page 112
 
-> *Fix integers $`\beta\ge2`$, $`K\ge1`$, $`P\ge2`$, and any function $`f:\mathbb{N}_{>0}\to(0,\infty)`$ with $`f(n)\to\infty`$. There exist $`T>0`$ and target-independent sets $`S\subseteq H\subseteq\{n>K\}`$, with every element of $`S`$ even, such that every
+> *Remark 273* (Sparse interpolation around the totient). Fix integers $`\beta\ge2`$, $`K\ge1`$, $`P\ge2`$, and any function $`f:\mathbb{N}_{>0}\to(0,\infty)`$ with $`f(n)\to\infty`$. There exist $`T>0`$ and target-independent sets $`S\subseteq H\subseteq\{n>K\}`$, with every element of $`S`$ even, such that every
 > ``` math
 > r\in[F_\varphi(\beta^{-1})-T,F_\varphi(\beta^{-1})+T]
 > ```
-> equals $`F_b(\beta^{-1})`$ for an integer sequence $`b=\varphi+e`$ satisfying:*
+> equals $`F_b(\beta^{-1})`$ for an integer sequence $`b=\varphi+e`$ satisfying:
 >
-> 1.  *$`0\le b(n)\le n`$, $`|e(n)|\le f(n)`$, and $`\operatorname{supp}(e)\subseteq S`$. In particular the prefix through $`K`$ and every odd coefficient are unchanged.*
+> 1.  $`0\le b(n)\le n`$, $`|e(n)|\le f(n)`$, and $`\operatorname{supp}(e)\subseteq S`$. In particular the prefix through $`K`$ and every odd coefficient are unchanged.
 >
-> 2.  *For every fixed $`q\ge1`$, both $`e(n)`$ and $`\sum_{i<n}e(i)`$ are divisible by $`q`$ eventually, with a cutoff independent of $`r`$.*
+> 2.  For every fixed $`q\ge1`$, both $`e(n)`$ and $`\sum_{i<n}e(i)`$ are divisible by $`q`$ eventually, with a cutoff independent of $`r`$.
 >
-> 3.  *For every fixed $`(q,c,d)`$, the defect $`M_{q,c,d}(b;N)-M_{q,c,d}(\varphi;N)`$ equals an integer $`C_{q,c,d,r}`$ for all sufficiently large $`N\notin H`$. The cutoff is independent of $`r`$. If $`q\le P`$ and $`d<P`$, this defect is zero at every $`N\notin H`$.*
+> 3.  For every fixed $`(q,c,d)`$, the defect $`M_{q,c,d}(b;N)-M_{q,c,d}(\varphi;N)`$ equals an integer $`C_{q,c,d,r}`$ for all sufficiently large $`N\notin H`$. The cutoff is independent of $`r`$. If $`q\le P`$ and $`d<P`$, this defect is zero at every $`N\notin H`$.
 >
-> 4.  *For each root of unity $`\zeta`$, the radial function $`x\mapsto F_b(x\zeta)-F_\varphi(x\zeta)`$ extends smoothly to $`x=1`$. Its Taylor coefficients there lie in $`\mathbb{Z}[\zeta]`$. The coefficients of orders $`u<P`$ are zero if the order of $`\zeta`$ is at most $`P`$.*
+> 4.  For each root of unity $`\zeta`$, the radial function $`x\mapsto F_b(x\zeta)-F_\varphi(x\zeta)`$ extends smoothly to $`x=1`$. Its Taylor coefficients there lie in $`\mathbb{Z}[\zeta]`$. The coefficients of orders $`u<P`$ are zero if the order of $`\zeta`$ is at most $`P`$.
 >
-> 5.  *For every fixed $`(q,c)`$ the absolutely convergent series
+> 5.  For every fixed $`(q,c)`$ the absolutely convergent series
 >     ``` math
 >     D_{q,c,r}(s)=\sum_{\substack{n\ge1\\n\equiv c\pmod q}}e(n)n^{-s},
 >      \qquad \operatorname{Re}s>3/2,
 >     ```
->     extends to an entire function, and $`D_{q,c,r}(-d)=C_{q,c,d,r}`$.*
+>     extends to an entire function, and $`D_{q,c,r}(-d)=C_{q,c,d,r}`$.
 >
-> *The set $`S`$ has upper Banach density zero. The set $`H`$ has ordinary density zero and upper Banach density one. Define
+> The set $`S`$ has upper Banach density zero. The set $`H`$ has ordinary density zero and upper Banach density one. Define
 > ``` math
 > g(n)=\min\left(\inf_{k\ge n}f(k),(n/2)^{1/4}\right),\qquad
 >  \ell(X)=2\left\lfloor\frac{\log_\beta g(\lfloor X/4\rfloor)}8\right\rfloor.
@@ -347,27 +347,27 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 >  \le\min\left(1,C\left[\frac m{\ell(X)}+\ell(X)^{-1/2}\right]\right),
 >  \qquad 1\le m\le X.
 > ```
-> Thus every block length $`m=o(\ell(X))`$ is preserved asymptotically.*
+> Thus every block length $`m=o(\ell(X))`$ is preserved asymptotically.
 
 **No Lean proof of the whole statement.** In Lean, no proof of the full statement is recorded; the paper gives an ordinary proof reviewed by AI agents. Finite auxiliary checks have narrower scope, and independent human review is not recorded.
 
 <a id="long249-cor-signed-observations"></a>
 
-## Corollary 10.9 (Observations that do not determine irrationality), page 114
+## Passage (beginning “long249:cor:signed-observations…”), page 115
 
-> *The following data, taken together, do not determine whether $`F_b(\beta^{-1})`$ is rational: the fixed prefix and odd coefficients; every fixed eventual coefficient and cumulative congruence; the block laws on scales $`o(\ell(X))`$; fixed progression moments modulo eventual integer constants outside $`H`$; progression Dirichlet functions modulo entire functions; and radial germs at all roots of unity modulo smooth functions with Taylor coefficients in $`\mathbb{Z}[\zeta]`$. This remains true with exact equality of the first $`P`$ moment degrees and first $`P`$ radial Taylor coefficients at moduli and root orders at most $`P`$.*
+> *Remark 274* (Observations that do not determine irrationality). The following data, taken together, do not determine whether $`F_b(\beta^{-1})`$ is rational: the fixed prefix and odd coefficients; every fixed eventual coefficient and cumulative congruence; the block laws on scales $`o(\ell(X))`$; fixed progression moments modulo eventual integer constants outside $`H`$; progression Dirichlet functions modulo entire functions; and radial germs at all roots of unity modulo smooth functions with Taylor coefficients in $`\mathbb{Z}[\zeta]`$. This remains true with exact equality of the first $`P`$ moment degrees and first $`P`$ radial Taylor coefficients at moduli and root orders at most $`P`$.
 
 **No Lean proof of the whole statement.** In Lean, no proof of the full statement is recorded; the paper gives an ordinary proof reviewed by AI agents. Finite auxiliary checks have narrower scope, and independent human review is not recorded.
 
 <a id="long249-prop-signed-first-harmonic"></a>
 
-## Proposition 10.10 (The first-harmonic test on the rational members), page 115
+## Passage (beginning “long249:prop:signed-first-harmonic…”), page 116
 
-> *Let $`b(n)`$ be integers with $`0\le b(n)\le n`$ and $`F_b(1/2)=u/(2^cv)`$, where $`c\ge0`$ and $`v`$ is odd and positive. Choose $`h\ge1`$ with $`v\mid2^h-1`$. If $`X\ge\max(c,1)`$ and $`16(2X+h+L+2)\le2^L`$, then for every integer $`N\in[X,2X)`$,
+> *Remark 275* (The first-harmonic test on the rational members). Let $`b(n)`$ be integers with $`0\le b(n)\le n`$ and $`F_b(1/2)=u/(2^cv)`$, where $`c\ge0`$ and $`v`$ is odd and positive. Choose $`h\ge1`$ with $`v\mid2^h-1`$. If $`X\ge\max(c,1)`$ and $`16(2X+h+L+2)\le2^L`$, then for every integer $`N\in[X,2X)`$,
 > ``` math
 > \cos\left(2\pi\,2^{-L}\sum_{j=0}^{L-1}
 >     [b(N+h+1+j)-b(N+1+j)]2^{L-1-j}\right)
 >  \ge\cos(\pi/8)>\frac9{10}.
-> ```*
+> ```
 
 **No Lean proof of the whole statement.** In Lean, no proof of the full statement is recorded; the paper gives an ordinary proof reviewed by AI agents. Finite auxiliary checks have narrower scope, and independent human review is not recorded.

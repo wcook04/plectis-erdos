@@ -10,7 +10,7 @@ These checks establish that the stated propositions are proved. Whether each is 
 
 <a id="long68-res-normalform"></a>
 
-## Theorem 1.1 (divisibility of the difference), page 2
+## Theorem 1.1 (divisibility of the difference), page 3
 
 > *For every finite integer support and every $`d\ge2`$ there is an integer $`k`$ with $`V_{d}(c)=M(c)+(d!-1)k`$.*
 
@@ -198,7 +198,7 @@ theorem residual_transparency {D : ℕ} (hD : 2 ≤ D) (t : ℤ)
 
 <a id="long68-res-channel-radius"></a>
 
-## Theorem 1.5 (a lower bound for the support parameter), page 8
+## Theorem 1.5 (a lower bound for the support parameter), page 9
 
 > *Let $`t,M,R\in\mathbb{N}`$ satisfy
 > ``` math
@@ -409,7 +409,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long68-res-wilson-cofinality"></a>
 
-## Proposition 2.2 (cofinal first prime occurrences), page 13
+## Proposition 2.2 (cofinal first prime occurrences), page 14
 
 > *For every integer $`B\ge0`$ there are a prime $`q`$ and an integer $`m>B`$ with $`m<q`$, $`q\mid m!-1`$ and $`\gcd(q,k!-1)=1`$ for every $`k`$ with $`2\le k<m`$.*
 
@@ -469,7 +469,7 @@ theorem product_lcm_pairwise_gcd (xs : List ℕ) :
 
 <a id="long68-res-gap-gcd"></a>
 
-## Lemma 3.2 (factorial-gap gcd), page 14
+## Lemma 3.2 (factorial-gap gcd), page 15
 
 > *For $`2\le i<j`$, the integer $`g=\gcd(i!-1,j!-1)`$ divides $`j!/i!-1`$, and $`g\le j!/i!-1<j^{\,j-i}`$.*
 
@@ -497,7 +497,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long68-res-segment"></a>
 
-## Lemma 3.3 (segment inequality), page 14
+## Lemma 3.3 (segment inequality), page 15
 
 > *For $`2\le k\le N-1`$,
 > ``` math
@@ -572,7 +572,7 @@ theorem common_denominator_growth_liminf :
 
 <a id="long68-res-carry-equivalence"></a>
 
-## Theorem 4.1 (an exact criterion from successive partial sums), page 17
+## Theorem 4.1 (an exact criterion from successive partial sums), page 18
 
 > *For $`m\ge3`$,
 > ``` math
@@ -769,7 +769,7 @@ theorem lower_interval_criterion :
 
 <a id="long68-res-shift-family"></a>
 
-## Theorem 4.4 (a criterion for the shifts $`t\ge-1`$), page 21
+## Theorem 4.4 (a criterion for the shifts $`t\ge-1`$), page 22
 
 > *For every integer $`t\ge-1`$, the series $`S_t`$ is rational exactly when
 > ``` math

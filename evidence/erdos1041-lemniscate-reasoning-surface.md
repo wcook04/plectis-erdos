@@ -1,4 +1,4 @@
-# Formal evidence: Paths in Polynomial Lemniscates:\\A Degree-Seven Counterexample and Two Short-Path Criteria
+# Formal evidence: Paths in Polynomial Lemniscates:\\A Degree-Seven Counterexample and Radial Connections
 
 This record belongs to the paper [erdos1041-lemniscate-reasoning-surface.pdf](../paper/1041/erdos1041-lemniscate-reasoning-surface.pdf). For every result it lists the Lean declarations that state it, and the independent Comparator check where there is one. The margin marks in the paper link here.
 
@@ -153,17 +153,13 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="res-low-critical-thirteen-twentyfifths"></a>
 
-## Theorem 4.1 (a small least critical value forces a short connector), page 9
-
-> *Let $`f`$ be squarefree and monic of degree $`n\ge2`$ with $`\mu\le13/25`$. Then two distinct roots of $`f`$ are joined inside $`\{|f|<1\}`$ by a rectifiable curve of length strictly below $`2`$. No hypothesis is placed on the locations of the roots, on the number of roots in any component, or on the capacity of any component.*
+## Passage (beginning “res:low-critical-thirteen-twentyfifths…”), page 9
 
 **No Lean proof of the whole statement.** In Lean, the degree-two case and the closing inequality $(13/25)e^X<1$ at the recorded stopping time $X=635762889599/10^{12}$ are checked; the computation that certifies $X$ and the analytic argument in higher degrees are not.
 
 <a id="res-low-critical-scale-free"></a>
 
-## Corollary 4.2 (scale-free form), page 10
-
-> *Every squarefree monic $`f`$ of degree $`n\ge2`$ has two distinct roots joined inside $`\{|f|<(25/13)\mu\}`$ by a curve of length below $`2\bigl((25/13)\mu\bigr)^{1/n}`$.*
+## Passage (beginning “res:low-critical-scale-free…”), page 9
 
 The Lean proof assumes Theorem 4.1 as stated. Lean takes this input as a hypothesis (`LowCriticalThirteenTwentyFifths`); it is not proved in Lean.
 
@@ -276,16 +272,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="res-dual-arity-floor"></a>
 
-## Theorem 4.4 (a lower bound for the number of roots), page 12
-
-> *Fix radii $`r_1,\ldots,r_p>0`$ and weights $`\sigma_1,\ldots,\sigma_p\ge0`$, put $`\Sigma=\sum_i\sigma_i`$ and
-> ``` math
-> U=\sup_{d\ge d_{\mathrm{low}}(a)}
->    \Bigl[\lambda(d)-\sum_i\sigma_i\,w(d,r_i)\Bigr],
->  \qquad
->  \lambda\bigl(d_{\mathrm{low}}(a)\bigr)=\frac{\delta(a)}2 .
-> ```
-> If $`U>0`$, then failure forces $`k\ge(x-\pi\Sigma)/U`$.*
+## Passage (beginning “res:dual-arity-floor…”), page 12
 
 The Lean proof assumes the separation bound (7) and the radius and budget bounds (8), which this proof derives from the standing failure hypothesis. Lean takes this input as a hypothesis (`hsep`, `hrad`, `hbudget`); it is not proved in Lean.
 
@@ -359,9 +346,7 @@ theorem dual_arity_floor_abstract {P : Type*} [PseudoMetricSpace P] (pt : ℝ �
 
 <a id="res-scaled-low-critical-path"></a>
 
-## Corollary 4.5 (scaled low-critical connection), page 17
-
-> *Every squarefree monic polynomial $`f`$ of degree $`n\ge2`$ has two distinct zeros joined by a rectifiable curve of length less than $`(5/2)\mu^{1/n}`$ in $`\{|f|<(25/13)\mu\}`$, where $`\mu=\min_{f'(c)=0}|f(c)|`$.*
+## Passage (beginning “res:scaled-low-critical-path…”), page 17
 
 The Lean proof assumes Theorem 4.1 as stated, and only in degrees above two. Lean takes this input as a hypothesis (`LowCriticalThirteenTwentyFifths`); it is not proved in Lean.
 
@@ -396,13 +381,7 @@ def LowCriticalThirteenTwentyFifths : Prop :=
 
 <a id="res-constant-factor-path"></a>
 
-## Theorem 5.1 (a uniform path bound at level $`2\mu`$), page 17
-
-> *For every monic polynomial $`f`$ of degree $`n\ge2`$, two zero occurrences are joined by a possibly degenerate path of length at most
-> ``` math
-> \frac{71}{10}\,\rho
-> ```
-> inside $`K_{2\mu}`$. If $`f`$ is squarefree, their locations are distinct. If $`\mu\le1/2`$, the construction may be chosen inside $`\{|f|<1\}`$ with length at most $`5.7`$.*
+## Passage (beginning “res:constant-factor-path…”), page 17
 
 The Lean proof assumes the level and direction averaging construction that this proof produces. Lean takes this input as a hypothesis (`CFAPathConstruction`); it is not proved in Lean.
 
@@ -493,14 +472,7 @@ def CFAPathConstruction : Prop :=
 
 <a id="res-constant-factor-arity"></a>
 
-## Corollary 5.2 (a criterion using the number of roots at the first merger), page 19
-
-> *Let $`f`$ be monic with every root in the open unit disc, let $`c_*`$ be a critical point with $`|f(c_*)|=\mu`$, and let $`k_0`$ be the number of roots, counted with multiplicity, in the component of $`K_\mu`$ containing $`c_*`$. Then Erdős #1041 holds for $`f`$ in each of the three cases
-> ``` math
-> \mu\le\tfrac12\ \text{and}\ k_0\ge17,\qquad
->  \mu\le\tfrac14\ \text{and}\ k_0\ge12,\qquad
->  \mu\le\tfrac18\ \text{and}\ k_0\ge10 .
-> ```*
+## Passage (beginning “res:constant-factor-arity…”), page 20
 
 The Lean proof assumes the level and direction averaging construction in the proof of Theorem 5.1. Lean takes this input as a hypothesis (`CFAArityConstruction`); it is not proved in Lean.
 
@@ -574,14 +546,7 @@ def CFAArityConstruction (n : ℕ) (f : ℂ[X]) (z : Fin n → ℂ) (k₀ : ℕ)
 
 <a id="res-constant-factor-capacity"></a>
 
-## Corollary 5.3 (a criterion using component capacity), page 20
-
-> *Keep the hypotheses of Corollary 5.2 with $`0<\mu\le1/2`$, let $`C`$ be the component of $`\{|f|<2\mu\}`$ containing $`c_*`$, and put $`\kappa=\operatorname{cap}(\overline C)/(2\mu)^{1/n}`$. If $`\kappa\le\tau_{k_0}`$, where
-> ``` math
-> \tau_k=\frac{\sqrt{2k}-A}{B},\qquad
->  A=\frac{283}{3610},\qquad B=\frac{52029}{9100},
-> ```
-> then Erdős #1041 holds for $`f`$. In particular $`\kappa\le1/3`$ suffices for every root count $`k_0\ge2`$, and the rational cutoffs $`2/5,\,12/25,\,1/2,\,7/12,\,16/25,\,2/3,\,7/10`$ suffice at $`k_0=3,\ldots,9`$, rising to $`39/40`$ at $`k_0=16`$.*
+## Passage (beginning “res:constant-factor-capacity…”), page 20
 
 The Lean proof assumes the level and direction averaging construction in the proof of Theorem 5.1, together with the area-capacity inequality. Lean takes this input as a hypothesis (`CFACapacityConstruction`); it is not proved in Lean.
 
@@ -689,13 +654,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="res-conjecture-p-consumer"></a>
 
-## Theorem 5.6 (a path from a subcritical perimeter bound), page 23
-
-> *Let $`f`$ be squarefree and monic of degree $`n\ge2`$, and put $`\mu=\min_{f'(c)=0}|f(c)|>0`$. Suppose $`\beta>0`$ satisfies
-> ``` math
-> \mathcal H^1(\partial C)\le\beta\sigma^{1/n}
-> ```
-> for every $`0<\sigma<\mu`$ and every component $`C`$ of $`\{|f|\le\sigma\}`$. Then two distinct roots of $`f`$ are joined inside $`K_\mu=\{|f|\le\mu\}`$ by a rectifiable path of length at most $`\beta\mu^{1/n}`$.*
+## Passage (beginning “res:conjecture-p-consumer…”), page 23
 
 The Lean proof assumes the two-component split at the first critical level that this proof constructs. Lean takes this input as a hypothesis (`SubcriticalSplitExists`); it is not proved in Lean.
 
@@ -868,33 +827,7 @@ theorem cubic_paper_complete (p : ℂ[X]) (z : Fin 3 → ℂ)
 
 <a id="res-critical-value-separation"></a>
 
-## Theorem 7.1 (separation of one simple critical value), page 26
-
-> *Let $`P`$ be a polynomial of degree $`n\ge3`$ whose leading coefficient has modulus one, with
-> ``` math
-> P(0)=1,\qquad P'(0)=0,\qquad P''(0)\ne0.
-> ```
-> Fix $`w_0\in[0,1]`$ and $`S>\max(w_0,1-w_0)`$. Suppose every other critical point $`d\ne0`$ satisfies
-> ``` math
-> |P(d)-w_0|\ge S.                                      \tag{4}
-> ```
-> Put $`p=w_0(1-w_0)`$. The two local solutions of $`P(Z(\xi))=1-\xi^2`$, $`Z(0)=0`$, continue along the real segment to one injective root-to-root connector $`\Gamma`$. Its endpoints are distinct roots, $`\Gamma\subseteq\{|P|\le1\}`$, and
-> ``` math
-> \begin{equation*}
-> \label{eq:disk-family-length}
->  \operatorname{length}(\Gamma)^2
->  \le 2\Bigl(\frac{S}{n-1}\Bigr)^{2/n}
->  \log\!\frac{S^2+S+p}{S^2-S+p}.                       \tag{5}
-> \end{equation*}
-> ```
-> Consequently the connector is shorter than $`2`$ whenever
-> ``` math
-> \begin{equation*}
-> \label{eq:disk-family-coefficient}
->  \Bigl(\frac{S}{n-1}\Bigr)^{2/n}
->  \log\!\frac{S^2+S+p}{S^2-S+p}<2.                    \tag{6}
-> \end{equation*}
-> ```*
+## Passage (beginning “res:critical-value-separation…”), page 27
 
 The Lean proof assumes the connector and area construction that this proof produces. Lean takes this input as a hypothesis (`DiscSepBergmanArea`); it is not proved in Lean.
 
@@ -973,13 +906,7 @@ def DiscSepBergmanArea : Prop :=
 
 <a id="res-critical-value-thresholds"></a>
 
-## Corollary 7.2 (uniform radius $`4/3`$), page 29
-
-> *Inequality ({6}) holds for every $`n\ge3`$, every $`w_0\in[0,1]`$, and every $`4/3\le S\le2`$. Thus, if $`f`$ is monic with roots in the open unit disc, $`c`$ is a simple critical point with $`v=f(c)\ne0`$ and $`|v|<1`$, and
-> ``` math
-> \left|\frac{f(d)}v-w_0\right|\ge\frac43
-> ```
-> for every other critical point $`d`$, then two roots of $`f`$ are joined inside $`\{|f|<1\}`$ by a curve of length strictly below $`2`$.*
+## Passage (beginning “res:critical-value-thresholds…”), page 30
 
 The Lean proof assumes the connector and area construction in the proof of Theorem 7.1. Lean takes this input as a hypothesis (`DiscSepBergmanArea`); it is not proved in Lean.
 
@@ -1043,7 +970,7 @@ def DiscSepBergmanArea : Prop :=
 
 <a id="res-sep-or-false"></a>
 
-## Proposition 8.1 (failure of two critical-value criteria to cover all polynomials), page 31
+## Proposition 8.1 (failure of two critical-value criteria to cover all polynomials), page 32
 
 > *Let $`f(z)=z^3+(3/100)z-3/4`$. Every root lies in the open unit disc, both critical points are simple, the critical values lie on distinct positive rays, $`\mu>13/25`$, and
 > ``` math
@@ -1149,7 +1076,7 @@ def LemniscateTransfiniteDiameter : Prop :=
 
 <a id="prop-sharp-collinear-chebyshev-comparator"></a>
 
-## Theorem 9.1 (Chebyshev comparison), page 32
+## Theorem 9.1 (Chebyshev comparison), page 33
 
 > *Let $`m\ge0`$, let $`p\in\mathbb R[X]`$ be monic of degree $`m+2`$, and let
 > ``` math
@@ -1327,7 +1254,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="cor-collinear-erdos-1041"></a>
 
-## Corollary 9.3 (collinear Erdős case), page 33
+## Corollary 9.3 (collinear Erdős case), page 34
 
 > *If the zero occurrences of a monic polynomial of degree $`n\ge2`$ lie on one line in the open unit disc, two of them are joined by a curve of length strictly below $`2`$ inside $`\{|f|<1\}`$.*
 
@@ -1689,7 +1616,7 @@ theorem complete_translated_cubic_quotient_fibres
 
 <a id="res-complementary-binomial-chords"></a>
 
-## Theorem 10.1 (complementary binomial chords), page 40
+## Theorem 10.1 (complementary binomial chords), page 41
 
 > *Two adjacent zeros of $`z^n-a`$ can be joined by an explicit polygonal path inside $`\{|z^n-a|<1\}`$ of length strictly below $`2`$. For $`r<r_*`$ the adjacent-root chord itself works. For $`r\ge r_*`$, two radial legs and an inner adjacent crossing chord work after an arbitrarily small radial contraction. These two constructions meet at $`r=r_*`$, where the outer chord attains $`|f|=1`$ at its midpoint and therefore lies only in the closed lemniscate. Open containment at and above the switch uses the inner chord after a radial contraction.*
 
@@ -1809,7 +1736,7 @@ theorem binomial_chords_above_threshold {n : ℕ} (hn : 3 ≤ n) {r : ℝ} (hr0 
 
 <a id="res-critical-value-budget"></a>
 
-## Theorem 10.2 (a mean bound for critical values), page 47
+## Theorem 10.2 (a mean bound for critical values), page 48
 
 > *Let $`f`$ be monic of degree $`n\ge2`$, with roots in a closed disc of radius $`R\ge0`$. If $`c_1,\ldots,c_{n-1}`$ are its critical points counted with multiplicity, then
 > ``` math
@@ -1946,7 +1873,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="res-fp-weighted-all-degree"></a>
 
-## Theorem 10.4 (a weighted inequality for points in a disc), page 49
+## Theorem 10.4 (a weighted inequality for points in a disc), page 50
 
 > *Let $`c_1,\ldots,c_m\in\overline{\mathbb D}`$ and let $`w_j>0`$ satisfy $`\sum_j w_j=1`$. Set
 > ``` math
@@ -2003,7 +1930,7 @@ theorem paper_weighted_free_point : WeightedFreePoint := by sorry
 
 <a id="res-critical-proximity"></a>
 
-## Theorem 10.5 (a geometric-mean bound for distances to a critical point), page 54
+## Theorem 10.5 (a geometric-mean bound for distances to a critical point), page 55
 
 > *Let $`n\ge2`$, let $`z_1,\ldots,z_n,c\in\mathbb C`$ with $`c\ne z_k`$ for every $`k`$, and suppose
 > ``` math
@@ -2043,7 +1970,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="res-two-nearest-roots"></a>
 
-## Corollary 10.6 (two nearest roots), page 54
+## Corollary 10.6 (two nearest roots), page 55
 
 > *If the roots lie in the open unit disc and $`c`$ is a non-root critical point, the two nearest roots to $`c`$ have total distance strictly below $`2`$.*
 
@@ -2088,7 +2015,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="res-straight-no-go"></a>
 
-## Proposition 10.7 (two counterexamples to straight-path assertions), page 55
+## Proposition 10.7 (two counterexamples to straight-path assertions), page 56
 
 > *There is a monic quintic with all roots in the open unit disc and a non-root critical point $`c`$ whose unique nearest root has a point on the straight spoke to $`c`$ outside $`\{|f|<1\}`$. There is also a monic cubic with all roots in the open unit disc such that the midpoint of every pair of distinct roots lies outside $`\{|f|<1\}`$.*
 
@@ -2121,7 +2048,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="res-orlicz-currency"></a>
 
-## Theorem 10.8 (the relation between two merger-scale integrals), page 62
+## Theorem 10.8 (the relation between two merger-scale integrals), page 63
 
 > *Define
 > ``` math
@@ -2225,7 +2152,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="res-value"></a>
 
-## Theorem 11.1 (value equation), page 64
+## Theorem 11.1 (value equation), page 65
 
 > *For a polynomial $`f`$ and a differentiable curve $`z:I\to\mathbb C`$ on an interval $`I`$, assume $`f'(z(t))\ne0`$ and $`z'(t)=-f(z(t))/f'(z(t))`$ throughout $`I`$. Then $`w=f\circ z`$ satisfies $`w'=-w`$, and
 > ``` math
@@ -2260,7 +2187,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="res-ray"></a>
 
-## Corollary 11.2 (ray separation), page 64
+## Corollary 11.2 (ray separation), page 65
 
 > *Let $`a<b`$ and let the value trajectory $`t\mapsto f(z(t))`$ be continuous on $`[a,b]`$. Assume the Newton equation and $`f'(z(t))\ne0`$ on $`(a,b)`$ only. Then
 > ``` math
@@ -2296,7 +2223,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="res-locus"></a>
 
-## Theorem 12.1 (ray-collision locus), page 65
+## Theorem 12.1 (ray-collision locus), page 66
 
 > *Let $`a\ne b`$ be complex. Every common translation $`\beta`$ for which $`a+\beta`$ and $`b+\beta`$ lie on the same positive ray has the form
 > ``` math
@@ -2328,18 +2255,6 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="res-attachment-aware-reeb"></a>
 
-## Theorem 13.1 (inverse sheets with distinct critical-value arguments), page 68
-
-> *Let $`f`$ be monic, and let $`U`$ be a component of $`\{|f|<1\}`$ containing $`k\ge2`$ roots, counted with multiplicity. Suppose every critical point of $`f`$ in $`U`$ is simple, its critical value is nonzero, and these critical values have pairwise distinct arguments and pairwise distinct moduli. All preimages and sheets below are taken inside $`U`$, and only critical points in $`U`$ determine the cuts. Then:*
->
-> 1.  *$`-\log|f|:U\mathbin{\backslash}f^{-1}(0)\to(0,\infty)`$ is a proper excellent Morse function, with exactly $`k-1`$ nondegenerate saddles;*
->
-> 2.  *cutting $`\mathbb D\smallsetminus\{0\}`$ along the critical-value rays decomposes its preimage in $`U`$ into conformal strips;*
->
-> 3.  *cutting each ray only from its critical value to the unit circle gives $`k`$ conformal sheets, one per root, whose critical transpositions form a tree;*
->
-> 4.  *for each critical point $`c\in U`$, the two inverse lifts of $`[0,f(c)]`$ join two roots through $`c`$ inside $`U\cap\{|f|\le|f(c)|\}`$, and the union of these arcs is an embedded geometric realisation of that tree.*
->
-> *Small neighbourhoods of the saddles can be chosen with diameter $`O(\sqrt\delta)`$ at value radius $`\delta`$.*
+## Passage (beginning “res:attachment-aware-reeb…”), page 69
 
 **No Lean proof of the whole statement.** In Lean, the ray-disjointness, level-separation and saddle-scale steps of the proof are checked, and the Morse, monodromy and strip statements are not.

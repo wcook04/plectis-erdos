@@ -50,7 +50,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="record-257bm-i-bridge"></a>
 
-## Theorem 6.107 (The support series as a coefficient series), page 72
+## Theorem 6.107 (The support series as a coefficient series), page 73
 
 > *For $`A\subseteq\mathbb{N}_{>0}`$,
 > ``` math
@@ -290,7 +290,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="record-257rig-i5"></a>
 
-## Proposition 6.112 (Two distinct prime-power differences commute), page 73
+## Proposition 6.112 (Two distinct prime-power differences commute), page 74
 
 > *Lemma 6.57 gives the four-term expansion and its divisor-count interpretation. Commutation is elementary for arbitrary positive multipliers. The extraction formula uses distinct primes, *positive* exponents $`e,f`$ and $`\gcd(n,pq)=1`$. The example $`A=\{12\}`$ shows the extracted coefficient explicitly. No rationality statement about multiplicative subsequences follows from commutation alone.*
 
@@ -1054,7 +1054,7 @@ theorem prefixChoice_eq_below {α : Type*} (F : PerturbedFamily α) {C : ℕ}
 
 <a id="record-257bm-i16"></a>
 
-## Theorem 6.125 (Spacing of compatible reverse-carry words), page 76
+## Theorem 6.125 (Spacing of compatible reverse-carry words), page 77
 
 > *Consider two integer carry recurrences $`b_i(m)+2u_i(m)=a_i(m)+u_i(m+1)`$, $`i=1,2`$. If $`a_1(k)=a_2(k)`$ and the output bits at $`k`$ are $`1`$ and $`0`$, then the carry difference at $`k+1`$ is odd. If the coefficients and bits agree for the following $`L`$ positions, the difference at $`k+L+1`$ is $`2^L`$ times that odd integer. Consequently absolute terminal bounds $`B_1,B_2`$ give $`2^L\le B_1+B_2`$. Lemma 6.46 states the exact identity and proves it by subtraction. The linked formal statements encode these agreements; they do not supply terminal bounds for an unrelated digit system.*
 
@@ -1322,7 +1322,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="record-257bm-k2"></a>
 
-## Proposition 6.129 (A sufficient fractional-mass bound need not hold), page 77
+## Proposition 6.129 (A sufficient fractional-mass bound need not hold), page 78
 
 > *Take $`D=\{2,3\}`$ and $`c=5`$. Direct calculation gives
 > ``` math
@@ -1480,7 +1480,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="record-257bm-k9"></a>
 
-## Theorem 6.136 (Vanishing of the specified linear-channel determinant), page 79
+## Theorem 6.136 (Vanishing of the specified linear-channel determinant), page 80
 
 > *Let $`V`$ be a vector space over $`\mathbb{Q}`$, let $`e:V\to\mathbb{Q}`$ be linear, and let $`(\ell_j)_{j\in\iota}`$ be a finite family of linear functionals vanishing on $`\ker e`$. For any vectors $`(v_i)_{i\in\iota}`$, the matrix $`(\ell_j(v_i))_{i,j\in\iota}`$ has rank at most one, so every square minor of size at least two vanishes. Indeed, the functionals descend to $`V/\ker e`$, which has dimension at most one. This elementary linear-algebra argument applies at every matrix size. It does not cover additional functionals that fail to vanish on $`\ker e`$.*
 
@@ -1808,7 +1808,7 @@ theorem paper_shared_prefix_family_strip_witness_after_feedback_of_all_depths
 
 <a id="prop-exact-lebesgue-measure-dichotomy"></a>
 
-## Proposition 6.146 (Exact Lebesgue-measure dichotomy), page 84
+## Proposition 6.146 (Exact Lebesgue-measure dichotomy), page 85
 
 > *Either $`J=F^c`$ for a finite $`F`$, and $`\mathrm{vol}(\mathcal A_J)=2^{-|F|}`$ exactly, or $`J^c`$ is infinite and the volume is exactly $`0`$.*
 

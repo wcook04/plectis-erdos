@@ -1,4 +1,4 @@
-# Formal evidence: Paths in Polynomial Lemniscates:\\A Degree-Seven Counterexample\\and Two Short-Path Criteria
+# Formal evidence: Paths in Polynomial Lemniscates:\\A Degree-Seven Counterexample\\and Radial Connections
 
 This record belongs to the paper [erdos-1041-lemniscate-newton-flow.pdf](../paper/1041/erdos-1041-lemniscate-newton-flow.pdf). For every result it lists the Lean declarations that state it, and the independent Comparator check where there is one. The margin marks in the paper link here.
 
@@ -64,14 +64,14 @@ theorem erdos1041_hausdorff_answer_false :
 
 <a id="lem-two-sheet-bottleneck"></a>
 
-## Lemma 2.1, page 3
+## Lemma 2.1, page 2
 
-> *Let $`p`$ be a polynomial and $`U`$ a component of $`\{|p|<1\}`$ on which $`p`$ has degree two, with one simple critical point $`c`$ and $`v=p(c)\ne0`$. Write $`p(c+z)-v=z^2A(z)`$ and put $`M=|A(0)|`$, $`\delta=1-|v|`$. If $`|A(z)/A(0)-1|\le1/4`$ for $`|z|\le h`$ and $`\delta<Mh^2/4`$, then every connected subset $`K`$ of $`U`$ containing its two roots $`a,b`$ satisfies
+> *Let $`p`$ be a polynomial and $`U`$ a component of $`\{|p|<1\}`$ on which $`p`$ has degree two, with one simple critical point $`c`$ and $`v=p(c)\ne0`$. Write $`p(c+z)-v=z^2A(z)`$ and put $`M=|A(0)|`$, $`\delta=1-|v|`$. Let $`h>0`$. If $`|A(z)/A(0)-1|\le1/4`$ for $`|z|\le h`$ and $`\delta<Mh^2/4`$, then every connected subset $`K`$ of $`U`$ containing its two roots $`a,b`$ satisfies
 > ``` math
 > \mathcal H^1(K)\ge |a-c|+|b-c|-\frac83\sqrt{\delta/M}.
 > ```*
 
-The Lean declaration below states this result or one that implies it. `s3_bottleneck_hausdorff` is stated for any nonzero normaliser $\hat a$ with $|A(z)/\hat a-1|\le1/4$ on $|z|\le h$ and $\delta<|\hat a|h^2/4$; take $\hat a=A(0)$, nonzero because $c$ is simple. Its hypotheses that $a\ne b$ are the only zeros and $c$ the only critical point in the component are what the degree-two hypothesis supplies; it allows preconnected $K$, and $\mathrm{ofReal}(x)\le\mathcal H^1(K)$ is the printed bound.
+The Lean declaration below states this result or one that implies it. Take the nonzero normaliser aHat = A(0), with M = |A(0)| and h > 0, as required by hh in s3_bottleneck_hausdorff. The degree-two and unique-simple-critical-point hypotheses supply its two-zero component assumptions. The theorem allows preconnected sets and gives the same Hausdorff lower bound.
 
 [`Erdos1041.Counterexample.s3_bottleneck_hausdorff`](https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos1041/Counterexample/HausdorffLength.lean#L187)
 
@@ -181,21 +181,13 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="res-low-critical-thirteen-twentyfifths"></a>
 
-## Theorem 4.1 (a small critical value), page 5
-
-> *Let $`f`$ be squarefree and monic of degree $`n\ge2`$, and let $`\mu`$ be its least critical-value modulus. If $`\mu\le13/25`$, then two distinct roots are joined inside $`\{|f|<1\}`$ by a rectifiable curve of length strictly less than $`2`$.*
+## Passage (beginning “res:low-critical-thirteen-twentyfifths…”), page 5
 
 **No Lean proof of the whole statement.** In Lean, the degree-two case and the closing inequality $(13/25)e^X<1$ at the recorded stopping time $X=635762889599/10^{12}$ are checked; the computation that certifies $X$ and the analytic argument in higher degrees are not.
 
 <a id="res-scaled-low-critical"></a>
 
-## Corollary 4.2 (scale-free connection), page 5
-
-> *Every squarefree monic polynomial of degree $`n\ge2`$ has two distinct roots joined in $`\{|f|<(25/13)\mu\}`$ by a curve of length less than
-> ``` math
-> 2\bigl((25/13)\mu\bigr)^{1/n}.
-> ```
-> In every degree the length can be chosen less than $`(5/2)\mu^{1/n}`$.*
+## Passage (beginning “res:scaled-low-critical…”), page 6
 
 The Lean proof assumes Theorem 4.1 as stated. Lean takes this input as a hypothesis (`LowCriticalThirteenTwentyFifths`); it is not proved in Lean.
 
@@ -247,21 +239,7 @@ def LowCriticalThirteenTwentyFifths : Prop :=
 
 <a id="res-critical-value-separation"></a>
 
-## Theorem 5.1 (separation of one simple critical value), page 8
-
-> *Let $`f`$ be monic of degree $`n\ge3`$, let $`c`$ be a simple critical point, and put $`v=f(c)\ne0`$. Fix $`w_0\in[0,1]`$ and $`S>\max(w_0,1-w_0)`$. Suppose every other critical point $`d`$ satisfies
-> ``` math
-> \left|\frac{f(d)}v-w_0\right|\ge S .
-> ```
-> Put $`p=w_0(1-w_0)`$. Then two distinct roots are joined inside $`\{|f|\le|v|\}`$ by a curve $`\Gamma`$ satisfying
-> ``` math
-> \begin{equation}
-> \label{eq:disk-family-length}
->  \operatorname{length}(\Gamma)^2
->  \le 2|v|^{2/n}\Bigl(\frac{S}{n-1}\Bigr)^{2/n}
->  \log\!\frac{S^2+S+p}{S^2-S+p}.
-> \end{equation}
-> ```*
+## Passage (beginning “res:critical-value-separation…”), page 7
 
 The Lean proof assumes the connector and area construction that this proof produces. Lean takes this input as a hypothesis (`DiscSepBergmanArea`); it is not proved in Lean.
 
@@ -353,13 +331,7 @@ def DiscSepBergmanArea : Prop :=
 
 <a id="res-critical-value-thresholds"></a>
 
-## Corollary 5.2 (uniform radius $`4/3`$), page 8
-
-> *Let $`f`$ be monic of degree $`n\ge3`$ with all roots in the open unit disc. If $`c`$ is a simple critical point with $`0<|f(c)|<1`$ and, for some $`w_0\in[0,1]`$, every other critical point $`d`$ satisfies
-> ``` math
-> \left|\frac{f(d)}{f(c)}-w_0\right|\ge\frac43,
-> ```
-> then two roots are joined inside $`\{|f|<1\}`$ by a curve of length strictly below $`2`$. In degree three the branch-centred choice $`w_0=1`$ already works with $`4/3`$ replaced by $`6/5`$.*
+## Passage (beginning “res:critical-value-thresholds…”), page 8
 
 The Lean proof assumes the connector and area construction in the proof of Theorem 5.1; for the absorbed S>=4/3 corollary (SeparationParent), Theorem 5.1 as stated. Lean takes this input as a hypothesis (`DiscSepBergmanArea`, `CriticalValueSeparationTheorem`); it is not proved in Lean.
 
