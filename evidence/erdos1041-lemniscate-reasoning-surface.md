@@ -1311,7 +1311,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 > |bw_i+c|\le1.                                    \tag{11}
 > ```
 > If $`a\ne0`$, two indices can be chosen with strict inequalities. If $`a=0`$, every index satisfies *(11)*, and equality holds exactly when $`|w_i|=1`$.*
-> 
+>
 > *For open-disc zeros, two zero occurrences are joined inside $`\{|p|<1\}`$ by a curve of length below $`2`$: use the two radial spokes through $`0`$ when their values are distinct, and the constant path when the selected occurrences have the same value.*
 
 The Lean declarations below together state this result.
@@ -1698,15 +1698,15 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 ## Theorem 11.1 (inverse sheets with distinct critical-value arguments), page 59
 
 > *Let $`f`$ be monic, and let $`U`$ be a component of $`\{|f|<1\}`$ containing $`k\ge2`$ roots, counted with multiplicity. Suppose every critical point of $`f`$ in $`U`$ is simple, its critical value is nonzero, and these critical values have pairwise distinct arguments and pairwise distinct moduli. All preimages and sheets below are taken inside $`U`$, and only critical points in $`U`$ determine the cuts. Then:*
-> 
+>
 > 1.  *$`-\log|f|:U\mathbin{\backslash}f^{-1}(0)\to(0,\infty)`$ is a proper excellent Morse function, with exactly $`k-1`$ nondegenerate saddles;*
-> 
+>
 > 2.  *cutting $`\mathbb D\smallsetminus\{0\}`$ along the critical-value rays decomposes its preimage in $`U`$ into conformal strips;*
-> 
+>
 > 3.  *cutting each ray only from its critical value to the unit circle gives $`k`$ conformal sheets, one per root, whose critical transpositions form a tree;*
-> 
+>
 > 4.  *for each critical point $`c\in U`$, the two inverse lifts of $`[0,f(c)]`$ join two roots through $`c`$ inside $`U\cap\{|f|\le|f(c)|\}`$, and the union of these arcs is an embedded geometric realisation of that tree.*
-> 
+>
 > *Small neighbourhoods of the saddles can be chosen with diameter $`O(\sqrt\delta)`$ at value radius $`\delta`$.*
 
 **No Lean proof of the whole statement.** In Lean, the ray-disjointness, level-separation and saddle-scale steps of the proof are checked, and the Morse, monodromy and strip statements are not.

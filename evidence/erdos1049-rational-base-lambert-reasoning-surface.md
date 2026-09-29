@@ -317,23 +317,23 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 ## Theorem 2.5 (a degree restriction for estimates valid at every base), page 14
 
 > *Let $`(U_n,V_n)\in\mathbb{Z}[x]^{2}`$ be a sequence such that, for constants $`\sigma,\delta>0`$ and $`h\ge0`$ independent of $`n`$ and of the base,*
-> 
+>
 > 1.  *$`\Lambda_n(x):=U_n(x)F(x)-V_n(x)\ne0`$ for every real $`x>1`$;*
-> 
+>
 > 2.  *$`\deg U_n,\deg V_n\le\delta n^{2}(1+o(1))`$;*
-> 
+>
 > 3.  *the coefficient heights satisfy
 >     ``` math
 >     \log\max\bigl(H(U_n),H(V_n)\bigr)\le hn^{2}(1+o(1)),
 >     ```
 >     where $`H(P)`$ is the largest absolute value of a coefficient of $`P`$;*
-> 
+>
 > 4.  *the remainders satisfy
 >     ``` math
 >     \log|\Lambda_n(x)|=-\sigma n^{2}\log x\,(1+o(1))
 >     ```
 >     for every real $`x>1`$.*
-> 
+>
 > *Put $`d_n:=\max(\deg U_n,\deg V_n)`$. Then $`\sigma\le\delta`$, and for every fixed rational base $`a/b>1`$,
 > ``` math
 > \limsup_{n\to\infty}n^{-2}\log\bigl|b^{d_n}\Lambda_n(a/b)\bigr|
@@ -910,21 +910,49 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long1049-thm-calibrated-model"></a>
 
-## Theorem 3.9, page 33
+## Theorem 3.9 (calibrated rational-value Hankel model), page 33
 
-**No Lean proof of the whole statement.** In Lean, Full ordinary proof reviewed by AI agents. Finite auxiliary checks do not formalise this infinite or arithmetic statement; independent human review is not recorded..
+> *All the weights in (14) are positive for $`0<q\le2/3`$. The two moment banks $`\mu_m`$ and $`\nu_m`$ have positive Hankel determinants of every rank, $`G_q`$ is not a rational function, and $`G_q(q)=1`$. Their formal Hankel determinants both begin with
+> ``` math
+> C_Nq^{B_N},\qquad B_N=\sum_{j<N}j^2,\quad
+>  C_N=\frac{(N!)^2(N+1)!}{2^N}\qquad(N\ge1).
+> ```
+> At the fixed base $`q_0=2/3`$, with $`P(q)=\prod_{j\ge1}(1-q^j)`$ and $`\mathcal M(q)=\prod_{j\ge1}(1-q^j)^{-j}`$, there is an explicit $`\mathcal A>0`$ such that
+> ``` math
+> \det(\mu_{i+j}(q_0))_{0\le i,j<N}
+>  \sim\mathcal A\mathcal M(q_0)^3 C_Nq_0^{B_N}
+>              P(q_0)^{2N}N^{-8\xi},\qquad \xi=G_{q_0}(q_0)=1.
+> ```*
+
+**No Lean proof of the whole statement.** In Lean, no proof of the full statement is recorded; the paper gives an ordinary proof reviewed by AI agents. Finite auxiliary checks have narrower scope, and independent human review is not recorded.
 
 <a id="long1049-thm-calibrated-denominators"></a>
 
-## Theorem 3.10, page 35
+## Theorem 3.10 (exact denominators of the calibrated moments), page 35
 
-**No Lean proof of the whole statement.** In Lean, Full ordinary proof reviewed by AI agents. Finite auxiliary checks do not formalise this infinite or arithmetic statement; independent human review is not recorded..
+> *Let $`q_0=2/3`$ and $`\delta_n=3^{n+1}-2^{n+1}`$. For every $`n\ge1`$, the reduced denominators are
+> ``` math
+> \operatorname{den}\mu_n(q_0)=3^{31n+62}\delta_n^4,
+>  \qquad
+>  \operatorname{den}(q_0^n\mu_n(q_0))=3^{32n+62}\delta_n^4.
+> ```
+> The least integer clearing both rational coefficients in $`\mu_n=q_0^{-n}\xi-q_0^{-n}S_{n-1}`$ is $`2^n3^{31n+62}\delta_n^4`$. At $`n=0`$ the moment and tail equal one.*
+
+**No Lean proof of the whole statement.** In Lean, no proof of the full statement is recorded; the paper gives an ordinary proof reviewed by AI agents. Finite auxiliary checks have narrower scope, and independent human review is not recorded.
 
 <a id="long1049-prop-calibrated-height"></a>
 
-## Proposition 3.11, page 35
+## Proposition 3.11 (the determinant height and a failed row clearer), page 35
 
-**No Lean proof of the whole statement.** In Lean, Full ordinary proof reviewed by AI agents. Finite auxiliary checks do not formalise this infinite or arithmetic statement; independent human review is not recorded..
+> *For $`D_N=\operatorname{den}H_N(q_0)`$ in lowest terms,
+> ``` math
+> \liminf_{N\to\infty}\frac{\log D_N}{N^3}
+>        \ge\frac{\log(3/2)}3,
+>  \qquad \log D_N=O(N^3).
+> ```
+> Already at rank two, multiplying $`H_2=\mu_2-\mu_1^2`$ by $`\operatorname{den}\mu_1\operatorname{den}\mu_2`$ leaves reduced denominator $`625`$.*
+
+**No Lean proof of the whole statement.** In Lean, no proof of the full statement is recorded; the paper gives an ordinary proof reviewed by AI agents. Finite auxiliary checks have narrower scope, and independent human review is not recorded.
 
 <a id="long1049-res-finite-pencil"></a>
 
@@ -1450,9 +1478,9 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 ## Theorem 7.2 (the forcing term), page 54
 
 > *Let $`s,B`$ be natural numbers and $`c:\mathbb{N}\to\mathbb{N}`$.*
-> 
+>
 > 1.  *If $`s\ge2`$, $`B\ge1`$ and $`c(N+1)\ge1`$, then $`2^{\,N+1}\le B\,c(N+1)\,s^{\,N+1}`$.*
-> 
+>
 > 2.  *If $`s=1`$, then $`B\,c(N+1)\,s^{\,N+1}=B\,c(N+1)`$.*
 
 The Lean declaration below states this result.
@@ -1519,11 +1547,11 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 >  \qquad j=n-m-1 .
 > ```
 > Then, for integers $`n,k,m`$:*
-> 
+>
 > 1.  *if $`0\le k\le n`$, then $`\widetilde{P}(n,k)\le\widetilde{E}_n`$, and the gap factors as $`\widetilde{E}_n-\widetilde{P}(n,k)=(n-k)(3n-k-1)`$;*
-> 
+>
 > 2.  *$`\widetilde{E}_n-\widetilde{Q}(n,m)=2\bigl(n+m(m-1)\bigr)`$ identically;*
-> 
+>
 > 3.  *if $`n\ge0`$ and $`m\ge1`$, then $`\widetilde{Q}(n,m)\le\widetilde{E}_n`$.*
 
 The Lean declaration below states this result.

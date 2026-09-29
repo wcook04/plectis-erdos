@@ -45,7 +45,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 > u(N+1)=2u(N)-v\varphi(N+1),\qquad u(N)/2^N\longrightarrow0,
 > ```
 > and, for every $`e\ge0`$, the sequences $`n\mapsto u(2^jn+r)`$ with $`1\le j\le e`$ and $`0\le r<2^j`$ span a space of $`\mathbb Q`$-dimension at least $`2^e-1`$.*
-> 
+>
 > *The recurrence is the one obtained from the scaled tails after clearing a hypothetical denominator of $`S`$. The formal term *tempered* means exactly $`u(N)/2^N\to0`$ here, not a separate assumption of subexponential growth. This rank lower bound is a necessary consequence of rationality, not a contradiction. An upper bound using additional properties of the actual totient coefficients would be needed; the later rational comparison rules out such a bound for arbitrary rational coefficient series.*
 
 The Lean declaration below states this result.
@@ -96,7 +96,7 @@ theorem not_irrational_totientSeries_implies_unbounded_carryRank_unconditional
 >  \varphi(2^jn+r)\quad(1\le j\le e,\ 0<r<2^j,\ r\text{ odd})
 > ```
 > is linearly independent over $`\mathbb Q`$ and has $`2^e+1`$ members. At $`e=0`$ this family still contains $`\varphi(2n)`$; it is not the full level-zero truncation, which consists only of $`\varphi(n)`$. For $`e\ge1`$ it is the basis of the full truncated dyadic family.*
-> 
+>
 > *The proof separates one section at a time: the Chinese remainder theorem forces suitable prime divisors in the other affine arguments, while Dirichlet’s theorem makes the selected argument prime. This proves independence, not just the displayed cardinality. In particular, the span of all dyadic sections is infinite-dimensional; that conclusion alone says nothing about rationality of their weighted sum.*
 
 The Lean declaration below states this result.
@@ -495,7 +495,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 ## Proposition 6.10 (Small certificates), page 30
 
 > *For each integer $`1\le h\le8`$, the finite test $`\mathcal C(h,12,16)`$ holds. Each discrepancy uses two 16-term windows. Across all eight shifts, only the 24 distinct totient values at $`13\le n\le36`$ are needed, since the windows overlap. The source verifies the eight integer residue inequalities by exact computation.*
-> 
+>
 > *Consequently, if $`a/b`$ is a reduced fraction with $`b>0`$ and $`b\mid2^{12}(2^h-1)`$ for at least one $`1\le h\le8`$, then $`S\ne a/b`$. This follows from Propositions 6.18 and 6.4.*
 
 The Lean declarations below together state this result.
@@ -577,7 +577,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 > t=1,2,3,4,5,7,8,9,11,13,16,17,\ldots,
 > ```
 > the corresponding depths begin $`6,5,7,7,9,14,15,14,21,22,23,26,\ldots`$. Each entry is a finite kernel computation on explicit totient values. The factorisations use checked prime-power blocks and Lucas primality certificates. Thus the table proves a finite list of instances of $`P(t)`$; it does not prove that $`P(t)`$ holds for infinitely many $`t`$.*
-> 
+>
 > *The historical 28 examples are now a strict subset of the aggregate theorem $`\forall t\le82,\ P(t)`$. That theorem closes the finite interval without holes but supplies neither $`P(83)`$ nor a cofinal family.*
 
 The Lean declarations below together state this result.
@@ -851,7 +851,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 > 0<|m\xi-z|<1/q.
 > ```
 > Then $`\xi`$ is irrational: if $`\xi=a/b`$ with $`b\ge1`$, every nonzero such difference is at least $`1/b`$. Restricting the multiplier to powers $`m=b_0^n`$ of a fixed integer base $`b_0\ge2`$ gives a sufficient special case, not a hypothesis satisfied by every irrational number. The strict lower bound excludes exact integer hits; the upper bound must be available for arbitrarily large $`q`$.*
-> 
+>
 > *For a binary example, form a number by concatenating the blocks $`10`$ at square indices $`k\ge1`$ and $`01`$ at the other indices. Its binary expansion is not eventually periodic, since the block sequence has increasingly long gaps between the square indices, so the number is irrational. There are no three consecutive equal digits. Every fractional part after a binary shift therefore lies in $`[1/8,7/8]`$, and the multiples $`2^n\xi`$ do not approach the integers. This verifies that the restriction to base powers is genuinely stronger. This example is an ordinary mathematical argument, not an additional claim about the linked formalisation.*
 
 The Lean declarations below together state this result or one that implies it. The Lean lower bound $|m\xi-z|\ge1/\operatorname{den}(\xi)$ uses the reduced denominator of $\xi$, which divides $b$ whenever $\xi=a/b$, so the printed bound $1/b$ follows. The near-integer criterion, its base-power case and the square-block example (irrationality, no three consecutive equal digits, fractional parts of $2^n\xi$ in $[1/8,7/8]$) are the remaining Lean statements as printed.
@@ -1460,7 +1460,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 > M(a,b)=\frac1{2^{a+b}-1}+M(a+b,b)+M(a,a+b).
 > ```
 > Multiplication by the common denominator proves the identity. At the root $`(1,1)`$, the three terms on the right are each $`1/3`$, and $`M(1,1)=1`$.*
-> 
+>
 > *The first term is a mass retained at the current node, not passed to either child. Thus the probabilistic interpretation is a branching process with stopping: after division by $`M(a,b)`$, the stopping and two transition probabilities are, respectively,
 > ``` math
 > \frac{(2^a-1)(2^b-1)}{2^{a+b}-1},\qquad

@@ -341,11 +341,11 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 ## Theorem 9.1 (integer-quotient tests for $`1/21`$), page 18
 
 > *The following statements hold.*
-> 
+>
 > 1.  *$`1/21\in\mathcal A`$ if and only if $`\mathcal F_{21}`$ does not hold.*
-> 
+>
 > 2.  *If there is an unbounded sequence of ranks $`R`$ with $`s_R\le 2^R`$, then $`1/21\in\mathcal A`$.*
-> 
+>
 > 3.  *On $`\mathcal F_{21}`$, eventually $`s_R>2^R`$, the boundary rank $`R+1`$ belongs to $`D_{R+1}`$, and, for all sufficiently large $`R`$,
 >     ``` math
 >     \begin{aligned}

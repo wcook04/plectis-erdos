@@ -313,18 +313,61 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long249-thm-signed-interpolation"></a>
 
-## Theorem 10.8, page 112
+## Theorem 10.8 (Sparse interpolation around the totient), page 112
 
-**No Lean proof of the whole statement.** In Lean, Full ordinary proof reviewed by AI agents. Finite auxiliary checks do not formalise this infinite or arithmetic statement; independent human review is not recorded..
+> *Fix integers $`\beta\ge2`$, $`K\ge1`$, $`P\ge2`$, and any function $`f:\mathbb{N}_{>0}\to(0,\infty)`$ with $`f(n)\to\infty`$. There exist $`T>0`$ and target-independent sets $`S\subseteq H\subseteq\{n>K\}`$, with every element of $`S`$ even, such that every
+> ``` math
+> r\in[F_\varphi(\beta^{-1})-T,F_\varphi(\beta^{-1})+T]
+> ```
+> equals $`F_b(\beta^{-1})`$ for an integer sequence $`b=\varphi+e`$ satisfying:*
+>
+> 1.  *$`0\le b(n)\le n`$, $`|e(n)|\le f(n)`$, and $`\operatorname{supp}(e)\subseteq S`$. In particular the prefix through $`K`$ and every odd coefficient are unchanged.*
+>
+> 2.  *For every fixed $`q\ge1`$, both $`e(n)`$ and $`\sum_{i<n}e(i)`$ are divisible by $`q`$ eventually, with a cutoff independent of $`r`$.*
+>
+> 3.  *For every fixed $`(q,c,d)`$, the defect $`M_{q,c,d}(b;N)-M_{q,c,d}(\varphi;N)`$ equals an integer $`C_{q,c,d,r}`$ for all sufficiently large $`N\notin H`$. The cutoff is independent of $`r`$. If $`q\le P`$ and $`d<P`$, this defect is zero at every $`N\notin H`$.*
+>
+> 4.  *For each root of unity $`\zeta`$, the radial function $`x\mapsto F_b(x\zeta)-F_\varphi(x\zeta)`$ extends smoothly to $`x=1`$. Its Taylor coefficients there lie in $`\mathbb{Z}[\zeta]`$. The coefficients of orders $`u<P`$ are zero if the order of $`\zeta`$ is at most $`P`$.*
+>
+> 5.  *For every fixed $`(q,c)`$ the absolutely convergent series
+>     ``` math
+>     D_{q,c,r}(s)=\sum_{\substack{n\ge1\\n\equiv c\pmod q}}e(n)n^{-s},
+>      \qquad \operatorname{Re}s>3/2,
+>     ```
+>     extends to an entire function, and $`D_{q,c,r}(-d)=C_{q,c,d,r}`$.*
+>
+> *The set $`S`$ has upper Banach density zero. The set $`H`$ has ordinary density zero and upper Banach density one. Define
+> ``` math
+> g(n)=\min\left(\inf_{k\ge n}f(k),(n/2)^{1/4}\right),\qquad
+>  \ell(X)=2\left\lfloor\frac{\log_\beta g(\lfloor X/4\rfloor)}8\right\rfloor.
+> ```
+> For large $`X`$, $`\ell(X)>0`$, and one constant $`C`$, independent of $`r`$, gives
+> ``` math
+> d_{\rm TV}(\mu_{\varphi,X,m},\mu_{b,X,m})
+>  \le\min\left(1,C\left[\frac m{\ell(X)}+\ell(X)^{-1/2}\right]\right),
+>  \qquad 1\le m\le X.
+> ```
+> Thus every block length $`m=o(\ell(X))`$ is preserved asymptotically.*
+
+**No Lean proof of the whole statement.** In Lean, no proof of the full statement is recorded; the paper gives an ordinary proof reviewed by AI agents. Finite auxiliary checks have narrower scope, and independent human review is not recorded.
 
 <a id="long249-cor-signed-observations"></a>
 
-## Corollary 10.9, page 115
+## Corollary 10.9 (Observations that do not determine irrationality), page 115
 
-**No Lean proof of the whole statement.** In Lean, Full ordinary proof reviewed by AI agents. Finite auxiliary checks do not formalise this infinite or arithmetic statement; independent human review is not recorded..
+> *The following data, taken together, do not determine whether $`F_b(\beta^{-1})`$ is rational: the fixed prefix and odd coefficients; every fixed eventual coefficient and cumulative congruence; the block laws on scales $`o(\ell(X))`$; fixed progression moments modulo eventual integer constants outside $`H`$; progression Dirichlet functions modulo entire functions; and radial germs at all roots of unity modulo smooth functions with Taylor coefficients in $`\mathbb{Z}[\zeta]`$. This remains true with exact equality of the first $`P`$ moment degrees and first $`P`$ radial Taylor coefficients at moduli and root orders at most $`P`$.*
+
+**No Lean proof of the whole statement.** In Lean, no proof of the full statement is recorded; the paper gives an ordinary proof reviewed by AI agents. Finite auxiliary checks have narrower scope, and independent human review is not recorded.
 
 <a id="long249-prop-signed-first-harmonic"></a>
 
-## Proposition 10.10, page 116
+## Proposition 10.10 (The first-harmonic test on the rational members), page 116
 
-**No Lean proof of the whole statement.** In Lean, Full ordinary proof reviewed by AI agents. Finite auxiliary checks do not formalise this infinite or arithmetic statement; independent human review is not recorded..
+> *Let $`b(n)`$ be integers with $`0\le b(n)\le n`$ and $`F_b(1/2)=u/(2^cv)`$, where $`c\ge0`$ and $`v`$ is odd and positive. Choose $`h\ge1`$ with $`v\mid2^h-1`$. If $`X\ge\max(c,1)`$ and $`16(2X+h+L+2)\le2^L`$, then for every integer $`N\in[X,2X)`$,
+> ``` math
+> \cos\left(2\pi\,2^{-L}\sum_{j=0}^{L-1}
+>     [b(N+h+1+j)-b(N+1+j)]2^{L-1-j}\right)
+>  \ge\cos(\pi/8)>\frac9{10}.
+> ```*
+
+**No Lean proof of the whole statement.** In Lean, no proof of the full statement is recorded; the paper gives an ordinary proof reviewed by AI agents. Finite auxiliary checks have narrower scope, and independent human review is not recorded.

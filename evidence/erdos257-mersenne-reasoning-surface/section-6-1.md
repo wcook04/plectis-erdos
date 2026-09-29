@@ -183,7 +183,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 >  \left|P_n-\frac13\right|\qquad\text{for every }n\ge1,
 > ```
 > then $`1/2\in\mathcal A`$. These are exact rational inequalities because the target and every finite greedy remainder are rational. The cited finite calculation establishes them for $`1\le n\le6`$; it therefore suffices to prove them for every $`n\ge7`$.*
-> 
+>
 > *Unlike Theorem 6.3, this hypothesis concerns every positive rank, not only skipped ranks. It excludes an explicit interval around $`1/3`$. For example, $`P_n\notin(0,1)`$ implies the displayed inequality when $`n\ge2`$, but no such avoidance theorem for the whole orbit is proved here.*
 
 The Lean declarations below together state this result.
@@ -268,7 +268,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 >  2(s+1)<3d\quad\text{or}\quad s\notin D_{s+1}.
 > ```
 > Then $`1/2\in\mathcal A`$. The hypothesis says that either the same omitted rank remains beyond two thirds of the next row, or the next row omits its terminal rank. The latter alternative is exactly an upper or middle transition in the preceding classification.*
-> 
+>
 > *The cited finite calculation establishes the initial inequality at row $`14`$. The displayed implication then preserves the inequality by induction and supplies omitted ranks tending to infinity. It is an unproved condition on every later row; the verified base case alone does not establish it.*
 
 The Lean declarations below together state this result.
@@ -674,13 +674,13 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 > F_k(J)=\sum_{i=1}^{J}c_D(k+1+i)2^{J-i}-2^J C_D(k).
 > ```
 > This is a finite integer expression: it compares the next $`J`$ divisor counts of the fixed prefix with its centred carry. Let $`s_n`$ denote the integer greedy remainder at depth $`2n`$, with weights $`q(2n,d)`$ for $`2\le d<n`$ and target $`2^{2n-1}-2^n`$. The following conditions each imply $`1/2\in\mathcal A`$:*
-> 
+>
 > 1.  *For every skipped rank $`n\ge3`$, $`F_{n-1}(n)\ge0`$.*
-> 
+>
 > 2.  *For every skipped rank $`n\ge3`$ at which the real and integer greedy words agree on $`\{2,\ldots,n-1\}`$, $`s_n=0`$.*
-> 
+>
 > 3.  *For every skipped rank $`n\ge3`$, $`B(2n)<s_n`$.*
-> 
+>
 > *Conditions (i) and (ii) are equivalent. Condition (iii) implies them; no converse or strict separation is established here. These hypotheses must hold at every indicated skipped rank, not merely through a finite computed range.*
 
 The Lean declarations below together state this result.
@@ -925,7 +925,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 ## Theorem 6.20 (Periodic-support irrationality), page 48
 
 > *Let $`b\ge2`$ and $`m\ge1`$ be integers. Suppose $`A\subseteq\mathbb{N}_{>0}`$ is nonempty and satisfies $`n\in A`$ if and only if $`n+m\in A`$ for every $`n\ge1`$. Then $`X_A(b)`$ is irrational.*
-> 
+>
 > *The indicator of $`A`$ is a nonzero purely periodic integer weight, so this follows from Luca and Tachiya’s theorem stated above. The linked declaration supplies a separate formal proof. At $`m=1`$ the only nonempty periodic support is full support; residue classes and unions of residue classes give the other immediate examples.*
 
 The Lean declaration below states this result or one that implies it. The Lean statement takes a set $A\subseteq\N$ with a positive element and asks for $n+m\in A\iff n\in A$ at every $n\ge1$. The printed support is such a set, since it is nonempty and lies in $\Npos$, so the Lean theorem gives the printed conclusion. It is more general only in allowing $0\in A$, whose term is $0$ under the convention $1/0=0$.
@@ -1430,19 +1430,19 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 ## Theorem 6.32 (Equivalent descriptions of half-membership), page 51
 
 > *Each of the following is equivalent to $`1/2\in\mathcal A`$:*
-> 
+>
 > 1.  *The integer-greedy sequence is not eventually always on branch $`\mathrm R`$.*
-> 
+>
 > 2.  *There are arbitrarily large $`s\ge5`$ with $`s\notin D_{s+1}`$.*
-> 
+>
 > 3.  *Upper or middle transitions occur at arbitrarily large rows.*
-> 
+>
 > 4.  *Some sequence $`s_j\to\infty`$ satisfies $`s_j\notin D_{s_j+1}`$ for every $`j`$.*
-> 
+>
 > 5.  *There are rows $`s_j\to\infty`$ and omitted ranks $`d_j\in\{2,\ldots,s_j-1\}\smallsetminus D_{s_j}`$ with $`d_j\to\infty`$.*
-> 
+>
 > 6.  *The positive ranks omitted by the real half-greedy rule form an infinite set.*
-> 
+>
 > 7.  *The real half-greedy rule has no last omitted positive rank.*
 
 The Lean declarations below together state this result or one that implies it. Items (1) to (5) and (7) are each proved equivalent to $1/2\in\mathcal A$, with branch $\mathrm R$ at row $s$ written as $D_{s+1}=D_s\cup\{s\}$ and the omitted ranks in (5) read off the greedy word of row $s_j$. Item (6) follows by combining the equivalence for (2) with the Lean equivalence between (2) and (6).
@@ -1578,7 +1578,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 >  2^{-n}<R_n\le2w_{n+1}<w_n.
 > ```
 > For the upper bound, compare each tail term with $`2^{1-j}w_{n+1}`$ at index $`n+j`$, $`j\ge1`$, and sum the geometric series. The last inequality follows by comparing $`2/(2^{n+1}-1)`$ with $`1/(2^n-1)`$. This strict term-versus-tail inequality is the separation hypothesis used in the greedy arguments.*
-> 
+>
 > *It is not available for the totient weights $`\varphi(n)/2^n`$: the terms at indices $`4`$ and $`5`$ already sum to $`2/16+4/32=1/4=\varphi(3)/2^3`$, and the remaining tail is positive. A general strict-tail argument therefore cannot be transferred to that sequence without a different hypothesis or proof.*
 
 The Lean declarations below together state this result or one that implies it. The Lean lower bound is $2^{-n}+\tfrac13\,4^{-n}<R_n$, sharper than the printed $2^{-n}<R_n$, and this bound, the identity $R_n=w_{n+1}+R_{n+1}$ and $R_n\le2w_{n+1}$ hold for every $n\ge0$; the printed statement takes $n\ge1$, where $2w_{n+1}<w_n$ and $R_n<w_n$ are as printed. The remark on the totient weights is the arithmetic $\varphi(4)/2^4+\varphi(5)/2^5=\frac14=\varphi(3)/2^3$, outside the Lean statements.

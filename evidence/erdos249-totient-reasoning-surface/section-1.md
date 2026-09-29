@@ -489,9 +489,9 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 ## Proposition 1.10 (Residue series in every integer base), page 7
 
 > *Let $`t\ge2`$ be an integer.*
-> 
+>
 > 1.  *For every $`m\ge3`$, $`\sum_{n\ge1}(\varphi(n)\bmod m)\,t^{-n}`$ is irrational ([`radix_residue_series_irrational`](https://github.com/wcook04/plectis-erdos/blob/24edbddbe2bd68e920327a701aad0b9dd0d69675/lean/ErdosProblems/Erdos249/PaperCompleteR7/RationalIntegerRadixClassification.lean#L128)).*
-> 
+>
 > 2.  *For $`k\ge1`$ and $`f:\mathbb{Z}/2^k\mathbb{Z}\to\mathbb{Q}`$, the series $`\sum_{n\ge1}f(\varphi(n)\bmod2^k)\,t^{-n}`$ is rational exactly when $`f`$ is constant on the even residue classes, and its value is then $`(t+1)f(1)/t^2+f(0)/\bigl(t^2(t-1)\bigr)`$ ([`rational_zmod_radix_observable_iff`](https://github.com/wcook04/plectis-erdos/blob/24edbddbe2bd68e920327a701aad0b9dd0d69675/lean/ErdosProblems/Erdos249/PaperCompleteR7/RationalIntegerRadixClassification.lean#L145), [`positiveRadixValue_eq_of_even_constant`](https://github.com/wcook04/plectis-erdos/blob/24edbddbe2bd68e920327a701aad0b9dd0d69675/lean/ErdosProblems/Erdos249/PaperCompleteR7/IntegerRadixObservables.lean#L303)).*
 
 The Lean declarations below together state this result.
@@ -537,9 +537,9 @@ theorem positiveRadixValue_eq_of_even_constant
 ## Proposition 1.11 (Finitely many dilations), page 7
 
 > *Let $`t\ge2`$ be an integer.*
-> 
+>
 > 1.  *For every $`m\ge3`$, the numbers $`1`$ and $`\sum_{n\ge1}(\varphi(n)\bmod m)\,t^{-dn}`$, $`d=1,2,\ldots`$, are linearly independent over $`\mathbb{Q}`$ ([`linearIndependent_one_and_least_residue_values`](https://github.com/wcook04/plectis-erdos/blob/24edbddbe2bd68e920327a701aad0b9dd0d69675/lean/ErdosProblems/Erdos249/FiniteDilationLinearIndependent.lean#L42)).*
-> 
+>
 > 2.  *Let $`D`$ be a finite set of positive integers, and for $`d\in D`$ let $`k_d\ge1`$ and $`f_d:\mathbb{Z}/2^{k_d}\mathbb{Z}\to\mathbb{Q}`$. For every $`c\in\mathbb{Q}`$, the number
 >     ``` math
 >     c+\sum_{d\in D}\sum_{n\ge1}f_d\bigl(\varphi(n)\bmod2^{k_d}\bigr)\,t^{-dn}

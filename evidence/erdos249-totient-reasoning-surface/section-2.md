@@ -95,15 +95,15 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 >   \ \ (n > B).
 > ```
 > Then:*
-> 
+>
 > 1.  *$`\gamma(n) \le n`$ for all $`n`$, so $`\gamma`$ lies in the same coefficient class as $`\varphi`$;*
-> 
+>
 > 2.  *$`\gamma(n) = \varphi(n)`$ for every $`n \le B`$, and consequently $`D_\gamma(h,N,L) = D_\varphi(h,N,L)`$ for every $`(h,N,L)`$ with $`N + h + L \le B`$;*
-> 
+>
 > 3.  *$`T_\gamma = 2-\sum_{n\le B}(n-\varphi(n))/2^n-1/(2^P-1)\in\mathbb{Q}`$, and the odd part of its reduced denominator is *exactly* $`2^P-1`$;*
-> 
+>
 > 4.  *$`\mathrm{Sep}_\gamma`$ is false; indeed it fails already at $`h = P`$.*
-> 
+>
 > *Hence for every $`B`$ there is a coefficient sequence in the same class, agreeing with $`\varphi`$ on all of $`[1,B]`$, whose quantified condition is false.*
 
 The Lean declarations below together state this result.
@@ -233,20 +233,20 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 ## Proposition 2.7 (Three particular equivalences), page 11
 
 > 1.  **Certificate completeness.* The complete residue tests considered here are equivalent to the corresponding nonintegrality assertions. Rewriting the quantified condition using one of these equivalences does not weaken it.*
-> 
+>
 > 2.  **A selectable two-point sample.* The condition is as follows. For every $`h\ge1`$ and $`X_0`$, choose $`X,L\in\mathbb{N}`$ with $`X\ge\max(X_0,1)`$ and $`16(2X+h+L+2)\le2^L`$, a nonempty set $`T\subseteq[X,2X)\cap\mathbb{N}`$, a set $`P\subseteq T\times T`$ of ordered pairs, and a real number $`\delta\ge0`$. With $`E_N=\exp(2\pi iD(h,N,L)/2^L)`$, require
 >     ``` math
 >     |E_i-E_j|\ge\delta\quad((i,j)\in P),\qquad
 >        \frac{2|T|^2}{5}\le |P|\delta^2.
 >     ```
 >     This condition is equivalent to irrationality. For the converse, irrationality and the doubling map allow $`T=\{N,N+1\}`$ and $`P=\{(N,N+1),(N+1,N)\}`$ at arbitrarily large $`N`$, with $`\delta=9/10`$. The numerical requirement is then $`8/5\le2(9/10)^2`$. The freedom to select $`T`$ matters: this is not an estimate on a sample prescribed in advance, such as all prime positions.*
-> 
+>
 > 3.  **Four integral tail differences.* For $`H\ge0`$ and positive integers $`p,q`$, the conjunction
 >     ``` math
 >     R_{2kH}-R_{kH}\in\mathbb{Z}\qquad(k\in\{1,p,q,pq\})
 >     ```
 >     is equivalent to $`R_{2H}-R_H\in\mathbb{Z}`$ alone. The affine transport identity for $`H\mapsto kH`$ preserves integrality, so the three additional conditions add no restriction. Neither $`p`$ nor $`q`$ need be prime.*
-> 
+>
 > *These three equivalences explain why these particular reformulations retain the original arithmetic question. They do not rule out useful weaker intermediate lemmas. The full-block and fixed-margin conditions in §3 ask for additional quantitative information that the three arguments above do not supply.*
 
 The Lean declarations below together state this result.
@@ -336,16 +336,16 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 ## Proposition 2.11 (Information lost by specific carry descriptions), page 12
 
 > 1.  *Fix $`m\ge2`$ and write $`R=\lfloor(m+1)/2\rfloor`$. For $`r=0,\ldots,R`$, let $`c_r`$ vanish except at $`c_r(m)=R-r`$ and $`c_r(m+1)=2r`$. Each sequence satisfies $`0\le c_r(n)\le n`$, has the same binary sum $`R2^{-m}`$, and has the same coefficients and scaled tails before position $`m`$. Its scaled tail at position $`m`$ is $`r`$. The common history therefore does not determine that tail. A finite set of labels that determines the tail for each member of this family must contain at least $`R+1=\lfloor(m+1)/2\rfloor+1`$ elements, one for each value of $`r`$.*
-> 
+>
 > 2.  *Reduction modulo $`2^L`$ forgets the initial value after the same $`L`$ recurrence steps: two affine binary orbits with different seeds satisfy $`\mathrm{orbit}_u(L) - \mathrm{orbit}_v(L) = 2^{L}(u_0 - v_0)`$, so the endpoint residue mod $`2^{L}`$ is independent of the initial carry.*
-> 
+>
 > 3.  *Fix a precision $`u\ge1`$, a finite list of nonnegative valuations $`\nu_j`$ and odd integers $`a_j`$, and an initial integer $`e_0`$. There are integers $`z_j`$ such that
 >     ``` math
 >     c_j=2^{\nu_j}(a_j+2^u z_j),\qquad
 >        e_{j+1}=2e_j+c_j,\qquad |e_{j+1}|\le2^{\nu_j+u-1}.
 >     ```
 >     At each step, choose the centred representative of $`2e_j+2^{\nu_j}a_j`$ modulo $`2^{\nu_j+u}`$. The unrestricted integers $`z_j`$ are essential: the assertion does not prescribe the full coefficients $`c_j`$.*
-> 
+>
 > *These statements exclude decoders using only the specified common history, distinctions using only the endpoint residue, and contradictions using only the stated local symbols. They do not prove that the actual totient expansion cannot be studied by automata. A proposed application must verify that it uses no additional arithmetic information that the comparison families fail to preserve.*
 
 The Lean declarations below together state this result.
@@ -441,23 +441,23 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 ## Proposition 2.12 (Four limits of particular linear constructions), page 13
 
 > *The following four constructions have different limitations. They must not be read as a claim that every finite family of totient sections is independent: the full family has the explicit relations described in the short paper.*
-> 
+>
 > 1.  **Dyadic sections and an integer identity.* The retained family of $`2^e+1`$ dyadic sections is linearly independent over $`\mathbb{Q}`$ for $`e\ge1`$ (Proposition 1.6). Separately, positive integers $`Q,v`$ and integers $`A,b`$ cannot satisfy
 >     ``` math
 >     A\ne0,\qquad QvA=b,\qquad |b|<Qv,
 >     ```
 >     because $`|A|\ge1`$ gives $`|b|\ge Qv`$. This elementary incompatibility concerns the displayed requirements; it does not exclude every argument using an adjugate matrix.*
-> 
+>
 > 2.  **Möbius incidence.* $`U_N(i,j) = \mu((i{+}1)/(j{+}1))`$ when $`(j{+}1) \mid (i{+}1)`$ and $`0`$ otherwise is lower triangular with unit diagonal, so $`\det U_N = 1`$ for every $`N`$. Hence multiplication by $`U_N`$ is injective; the corresponding coefficient transformation cannot create a nonzero vector in its kernel.*
-> 
+>
 > 3.  **Adjugate reconstruction.* Let $`w_i\in\mathbb{Q}`$ and $`x_i\in\mathbb{N}`$ be finite families with $`\sum_i w_i\varphi(x_i)=1`$. Reconstructing each value from two tails and bounding them separately gives the error bound $`\sum_i|w_i|(3x_i+4)`$. It is at least $`3`$, since
 >     ``` math
 >     1\le\sum_i|w_i|\varphi(x_i)\le\sum_i|w_i|x_i.
 >     ```
 >     Consequently this particular bound cannot be less than $`1`$, whatever the size of the evaluation matrix.*
-> 
+>
 > 4.  **Finite combinations of shifts.* The synthetic sequence in Observation 6.115 has the prescribed differences $`a_{(q-1)H-1}=\varphi(H)`$ for $`2\le q<t`$, where $`H=\operatorname{lcm}(1,\ldots,t)`$. It is of the form $`a_i=2c_i-c_{i+1}`$, and every finite integer combination of its shifts has the same form with a correspondingly shifted state. Thus these linear operations alone do not remove the compatible carry recurrence. Their uniform bounds depend on the absolute coefficient sum, as made explicit in that observation. The construction does not assert that $`a_i`$ equals the actual totient difference at other indices.*
-> 
+>
 > *A further limitation concerns quotients of the finite sums $`t(Y,r)=\sum_{d=1}^{Y}\mu(d)/(2^d-1)^r`$. For $`e\ge1`$ and $`Y\ge4`$,
 > ``` math
 > \frac{t(Y,e+2)^2}{t(Y,2e+2)}-(S-\tfrac12)>\frac1{480}.

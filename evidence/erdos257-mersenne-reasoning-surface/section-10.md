@@ -83,7 +83,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 > \mathrm{belowPulse}(D) + 2 \;\le\; 4\cdot\mathrm{rem}(D),
 > ```
 > i.e. $`C_D \ge -2`$ ; the cell $`C_D=-3`$ (and every more negative value) is excluded.*
-> 
+>
 > ***Proof of the bound.** The all-right-tail assumption puts the terminal-augmented finite prefix strictly above $`1/2`$. Consequently the producer carry is below its complete incidence tail, or equivalently $`Z_D<1+1/(2^D-1)`$, where $`Z_D=\mathrm{rem}(D)-\mathrm{seamWordFloorError}(D)`$. The lower bound uses the other endpoint: under the same tail assumption, the finite value at $`D`$ plus the complete Mersenne tail remains below $`1/2`$. The exact scaled remainder identity therefore gives
 > ``` math
 > Z_D>4^D\sum_{e>D}\frac1{2^e-1}-2^D>\frac13.
@@ -94,7 +94,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 >  \ge4(\mathrm{rem}(D)-E_D)=4Z_D>\frac43.
 > ```
 > The left side is an integer, hence is at least $`2`$, as required. The upper threshold inequality alone would not give this lower bound.*
-> 
+>
 > ***Scope.** This excludes $`C_D=-3`$ at a middle row $`D\ge13`$ under the additional all-right-tail assumption. The general induction requires exclusion of all three cells at every middle row, not just under this extra hypothesis, together with its right-branch bound. The two statements share the same coordinate $`C_D`$ but have different hypotheses. Theorem 10.6 is universal over rows satisfying the additional all-right-tail assumption; it does not assert that such a row exists. The induction hypothesis concerns every middle row, without that tail assumption. Excluding $`C_D=-3`$ in the former statement therefore does not supply the exclusion required in the latter. **Object or representation:** about the *object* under the stated hypothesis ; a genuine arithmetic consequence of the all-right-tail assumption via the fatal-gap orbit, not a coordinate artifact.*
 
 The Lean declaration below states this result.
@@ -179,7 +179,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 ## Proposition 10.9 (A finite-state restriction for the stated pulse family), page 114
 
 > *For a “balanced pulse” family at location $`m\ge2`$ (radius $`\rho=\lfloor(m{+}1)/2\rfloor`$, parameters $`0\le r\le\rho`$, moving mass between positions $`m`$ and $`m{+}1`$ with the weighted total $`2c(m)+c(m{+}1)=2\rho`$ of the two coefficients fixed), if a predecessor state is constant across the whole family, then no function $`\mathrm{decode}:\mathrm{State}\to\mathbb N`$ can recover the parameter $`r`$ from $`\mathrm{state}(r)`$ for every $`r`$. The family has exactly $`\rho+1=\lfloor(m{+}1)/2\rfloor+1`$ members, so the fan-out is unbounded in $`m`$. More strongly, any finite set of states carrying an exact decoder for the family has at least $`\rho+1`$ elements, unbounded in $`m`$.*
-> 
+>
 > ***Scope.** Excludes bounded-state encodings of pre-$`m`$ history that must distinguish every member of the displayed balanced-pulse family, whether the coefficients are $`\varphi`$ or a Möbius-support indicator. Applying it to \#249 or \#257 requires showing that the relevant orbit realises that family, and it does not rule out every finite-state proof strategy. **Object or representation:** about a *representation* class, the encodings of history that separate the balanced-pulse family; it says nothing about $`C`$ or $`\mathcal A`$ directly.*
 
 The Lean declarations below together state this result or one that implies it. The Lean count of exactly $\rho+1$ family members and the bound $|\mathrm{State}|\ge\rho+1$ for a finite state set carrying an exact decoder hold for every $m\ge0$; the printed statement takes $m\ge2$, where the impossibility of decoding from a constant predecessor state is stated as printed.
@@ -258,7 +258,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 > *The signed Lambert identity $`\sum_{d\ge1}\mu(d)/(2^d-1) = 1/2`$ is exact. Writing $`N:=\{d:\mu(d)=-1\}`$: $`\sum_{d\in N}1/(2^d-1) = 1/2 + \sum_{d\in P}1/(2^d-1)`$ where $`P:=\{d\ge2:
 > \mu(d)=1\}`$, and quantitatively $`1/2 + 1/63 \le \sum_{d\in N}1/(2^d-1)`$ (using the first positive tail term $`d=6`$, $`\mu(6)=1`$) ; the negative-Möbius support strictly *overshoots* $`1/2`$ by at least $`1/63`$.*
-> 
+>
 > ***Scope.** Rules out exactly one natural candidate infinite Boolean support (the negative-Möbius set) as a witness for $`1/2\in\mathcal A`$. A route-sufficiency no-go only ; it says nothing about whether *some other* infinite Boolean support sums to $`1/2`$. **Object or representation:** about the *object* ; a genuine value inequality for one specific candidate set, not a coordinate artifact. Margin $`1/63`$ is the concrete number any repair attempt (adding/removing finitely many elements) must close or exceed.*
 
 The Lean declarations below together state this result.
@@ -299,7 +299,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 ## Proposition 10.11 (Finite computation and half-membership), page 114
 
 > *No finite positive-index Boolean support has value exactly $`1/2`$: the reduced denominator of any finite Mersenne subset-sum is provably **odd** (each $`2^n-1`$ is odd), while $`1/2`$ needs an even denominator. Separately, $`\mathsf{CertifiedGreedyMersenneDeath}`$ is a finite-depth certificate of $`x\notin\mathcal A`$, obtained by decidable tests on rational input. For example, the supplied source excludes $`3/4`$ at level $`1`$ with lookahead $`0`$. Failure to find such a certificate at a given depth does not establish membership. It records survival of that finite test, not survival at every depth.*
-> 
+>
 > ***Scope.** Any support representing $`1/2`$, if it exists, must be infinite. This follows from denominator parity, independently of the certificate search. The search supplies a different fact: a successful exclusion certificate proves nonmembership, whereas its absence in a bounded search does not prove membership or rationality. The same distinction must be checked separately for any other certificate family.*
 
 The Lean declaration below states this result.
@@ -335,9 +335,9 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 ## Proposition 10.12 (Period exclusion for the totient series), page 114
 
 > *For $`\sum_n\varphi(n)/2^n`$, the cited finite test proves that $`\mathrm{totientTail}(N+h)-\mathrm{totientTail}(N)`$ is not an integer by excluding every possible integer state in a bounded range within finitely many steps. If the series were rational, some positive period $`h_0`$ would make these tail differences integral for every sufficiently large $`N`$. Telescoping would then give integrality also for every positive multiple $`mh_0`$.*
-> 
+>
 > *Consequently, the required certificate supply is: for every $`h_0\ge1`$ and every lower bound $`N_0`$, there exist $`m\ge1`$, $`N\ge N_0`$ and a finite test length $`K`$ excluding integrality for $`(mh_0,N)`$. The unbounded choice of $`N`$ is essential; a counterexample before the unknown eventual threshold does not exclude an eventual period. It is sufficient instead to obtain such certificates for $`h=\mathrm{lcm}(1,\ldots,t)`$ with both $`t`$ and $`N`$ exceeding arbitrary prescribed lower bounds. The supplied finite theorem excludes the tail differences for $`1\le h\le16`$ at $`(N,L)=(14,9)`$, and hence excludes rational values whose reduced denominator divides $`2^{14}(2^h-1)`$ for one of those $`h`$. It does not establish the unbounded certificate supply.*
-> 
+>
 > ***Scope.** The Lean declarations used in this comparison concern the totient series of Problem 249. Their carry recurrences may suggest constructions for Problem 257, but applying them there requires a new argument for the divisor transform of its chosen support. The totient-specific theorems do not supply that argument.*
 
 The Lean declarations below together state this result.
@@ -397,7 +397,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 > H\mid x.\mathrm{den} \ \land\ (c\cdot x).\mathrm{den}\mid H \implies x.\mathrm{den}/H \mid |c|.
 > ```
 > Equivalently, writing $`D=x.\mathrm{den}/H`$, we have $`D\mid c`$, so $`t=c/D`$ is an integer and $`Hcx=t\,x.\mathrm{num}`$. Here $`H>0`$ follows from $`H\mid x.\mathrm{den}`$, since the reduced denominator is positive.*
-> 
+>
 > ***Scope.** This is elementary rational arithmetic, independent of the problem. If $`c\ne0`$, divisibility gives the size bound $`|c|\ge x.\mathrm{den}/H`$. The nonzero condition is essential: $`c=0`$ clears every denominator and satisfies the divisibility conclusion without any positive lower bound on $`|c|`$. The lemma therefore constrains denominator clearing by a nonzero bounded multiplier, not arbitrary multiplication. **Object or representation:** about a *representation* ; pure denominator bookkeeping for $`\mathbb Q`$, with zero problem-specific content; the upstream primitive is the domain-neutral extraction this lemma builds on.*
 
 The Lean declarations below together state this result.

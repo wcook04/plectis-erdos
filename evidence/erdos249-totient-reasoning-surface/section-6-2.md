@@ -237,13 +237,13 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 > K_d(mH)=\frac{mH}{d(2^d-1)}+\frac{2^d}{(2^d-1)^2}.
 > ```
 > This is affine in $`m`$. Consequently, for any finite family of real coefficients $`c_i`$ and nonnegative integers $`m_i`$ with $`\sum_i c_i=\sum_i c_i m_i=0`$, one has $`\sum_i c_i K_d(m_iH)=0`$.*
-> 
+>
 > *For the four multipliers $`(1,3,5,15)`$ and coefficients $`(4,-3,-2,1)`$,
 > ``` math
 > K_d(15H)-3K_d(3H)-2K_d(5H)+4K_d(H)=0.
 > ```
 > The zeroth and first moments are zero, while the second is $`15^2-3\cdot3^2-2\cdot5^2+4=152`$. Equivalently, $`XY-3X-2Y+4`$ takes the values $`0,0,152`$ at $`(1,1),(3,5),(9,25)`$. This explains the coefficients: they cancel the affine contribution of each divisor of $`H`$, without cancelling a general quadratic function of the multiplier.*
-> 
+>
 > *For a finite truncation of depth $`L\ge0`$, write
 > ``` math
 > U=\sum_{j=1}^{L}
@@ -388,7 +388,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 >        +\#\{d\mid ax:d\in A,\ d\nmid x,\ d\ne a\}.
 > ```
 > Indeed, partition the divisors of $`ax`$ into those already dividing $`x`$, the possible new divisor $`a`$, and all other new divisors. If every element of $`A`$ is prime, the last set is empty, since a prime dividing $`ax`$ but not $`x`$ must equal the prime $`a`$. For composite $`a`$ it can be nonempty: at $`A=\mathbb N`$, $`a=6`$, $`x=1`$, the other new divisors are $`2`$ and $`3`$.*
-> 
+>
 > *This is an unweighted counting identity. The associated Lambert series satisfies
 > ``` math
 > \sum_{\substack{a\in A\\a\ge1}}\frac1{2^a-1}
@@ -793,7 +793,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 > \mathcal C(mH_t,qH_t,L).
 > ```
 > Then $`S\notin\mathbb Q`$. Rationality would make the corresponding tail difference integral at every sufficiently large scale, contradicting Proposition 6.18. A successful certificate necessarily has $`m>0`$, since the discrepancy vanishes at shift zero.*
-> 
+>
 > *The diagonal choice is $`q=m=1`$; consecutive grid points have $`m=1`$, and for $`p\ge2`$ the pair $`(H_t,pH_t)`$ has $`(q,m)=(1,p-1)`$. The diagonal equivalence in Theorem 6.49 also gives the converse from irrationality to the displayed quantified condition; that condition remains unproved.*
 
 The Lean declarations below together state this result.
@@ -1181,7 +1181,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 > B(H,p,L)<W(H,p,L)\bmod2^L<2^L-B(H,p,L)
 > ```
 > implies $`J(H,p)\notin\mathbb Z`$. If, for every $`t_0\in\mathbb N`$, there are $`t\ge t_0`$, $`p\ge1`$ and $`L\ge0`$ satisfying this condition with $`H=H(t)`$, then $`S\notin\mathbb Q`$. Rationality would instead make both diagonal differences in $`J(H(t),p)`$ integral for every sufficiently large $`t`$.*
-> 
+>
 > *The error bound groups the remainder as
 > ``` math
 > (R_{2pH+L}+pR_{H+L})-(R_{pH+L}+pR_{2H+L}).
@@ -1471,7 +1471,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 >  \end{aligned}
 > ```
 > Then $`\mathcal G_a(J,K,m)`$ implies $`R_{2H+J}-R_{H+J}\notin\mathbb Z`$. In particular, irrationality follows if for every $`a_0`$ there are $`a\ge\max(a_0,8)`$ and $`K,m`$ satisfying $`K+(a+6)<2\cdot2^a`$ and $`\mathcal G_a(0,K,m)`$.*
-> 
+>
 > *The sign theorem forces an integral tail to give a residue in the upper endpoint interval. This one-sided test excludes that interval; it does not require a lower residue bound. Both the sign-range hypothesis and the strict modulus bound are essential premises of this implication. The required unbounded family is not established.*
 
 The Lean declarations below together state this result.
@@ -1735,7 +1735,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 > \varphi(3H+j)-2\varphi(2H+j)+\varphi(H+j)>0.
 > ```
 > If instead the middle value is strictly larger than both outer values, the displayed second difference is negative. In each case the claim follows by adding the two strict differences. No lower bound on their sizes is needed.*
-> 
+>
 > *For $`H=H_{2^a}`$, this reduces nonvanishing of one second difference to an ordering of three totient values. For a prescribed $`j`$, the remaining question is whether either strict ordering occurs for arbitrarily large $`a`$. The elementary implication does not establish those occurrences.*
 
 The Lean declarations below together state this result.
@@ -1837,7 +1837,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 > |c_{4h,p,z}(i)|\ge p+i+4h+2.
 > ```
 > Then $`S\notin\mathbb Q`$. Under a hypothetical eventual period $`h`$, the proved congruence argument at a sufficiently large such prime forces $`R_{p+4h}-R_p`$ to be an integer in the tested residue class. The finite test excludes every candidate in that class, a contradiction.*
-> 
+>
 > *The mod-four congruence is supplied by Proposition 6.91; exclusion at the same prime is not. Restricting to $`2\pmod4`$ retains one residue class out of four, not necessarily exactly one quarter of the candidates in a finite interval. The quantifier over every bound $`B`$ cannot be replaced by one fixed prime for each $`h`$.*
 
 The Lean declarations below together state this result.

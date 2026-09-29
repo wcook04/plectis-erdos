@@ -532,7 +532,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 >  =\frac{2t-3}{21t^3(3t-1)}>0.
 > ```
 > The inequality $`2u\le3a`$ gives $`\rho\le3/(3t-1)`$, proving the claim. The first two terms alone would not prove this comparison. This is a sufficient exclusion of the current tail-mass deficit, not an exact test for membership in the remaining achievement set.*
-> 
+>
 > *The sufficient condition is weaker than $`u\le a`$. A realizable example is $`(k,u,L,a)=(2,7,13,5)`$; it passes $`2u\le3a`$ but not $`u\le a`$. The linked scalar example $`(u,a)=(3,2)`$ proves strict containment of the inequalities, but is not integral rational data for this substitution. For comparison, the exact mass threshold is $`a/u\ge R_k^{-1}-(2^k-1)`$; its right-hand side lies strictly between $`0`$ and $`2/3`$. None of these comparisons asserts that the half-greedy orbit satisfies the sufficient inequality at every skipped rank.*
 
 The Lean declarations below together state this result.
@@ -862,7 +862,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 ## Theorem 6.124 (A general perturbed greedy recurrence), page 76
 
 > *Let the old integer values be separated by at least $`g\ge1`$, and let the update be $`t(x)=4s(x)+p(x)`$ with $`0\le p(x)\le B<g`$. Suppose $`x_-`$ and $`x_+`$ are the adjacent old values on either side of capacity $`C`$. Theorem 6.62 gives the largest admissible updated value at capacity $`4C+g`$ and the exact three-branch remainder after testing the extra weight $`2g+4`$.*
-> 
+>
 > *The underlying structure in Definition 6.61 assumes only $`B<3g`$; that suffices for order preservation, but the cited maximality application has the additional hypothesis $`B<g`$. The counterexample after Theorem 6.62 shows what can fail without it. For a maximum over both choices of the extra weight, rather than the stated two-stage rule, one also needs a separation argument; $`4g-B\ge2g+4`$ suffices, as shown after that theorem.*
 
 The Lean declarations below together state this result.

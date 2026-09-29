@@ -321,13 +321,13 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 ## Theorem 5.3 (exact rationality classification), page 14
 
 > *Let $`T:\mathbb{N}\to\mathbb{R}`$ satisfy $`T_{N+1}=2T_N-g_{N+1}`$ with integer coefficients $`g`$. The following are equivalent:*
-> 
+>
 > 1.  *$`T_0`$ is rational;*
-> 
+>
 > 2.  *$`\sigma_h(N)`$ is an integer for some $`h\ge1`$ and some $`N`$;*
-> 
+>
 > 3.  *for some fixed $`h\ge1`$, $`\sigma_h(N)`$ is an integer at every sufficiently large $`N`$.*
-> 
+>
 > *Consequently $`T_0`$ is irrational if and only if every positive-length shift is nonintegral at every index, equivalently if and only if for every $`h\ge1`$ and every cutoff some later $`N`$ has $`\sigma_h(N)\notin\mathbb{Z}`$.*
 
 The Lean declaration below states this result.
@@ -1374,7 +1374,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 > \label{eq:affinecofinal}\ltx@label{long251:eq:affinecofinal}
 > \end{equation}
 > ```*
-> 
+>
 > *There is a second equivalence. Let $`b:\mathbb{N}\to\mathbb{Q}`$ satisfy $`|D_N|\le b(N)`$ for every $`N`$, and suppose that for every $`N`$ and every positive integer $`q`$ there is an $`r`$ with
 > ``` math
 > \begin{equation}

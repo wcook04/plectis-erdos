@@ -345,9 +345,9 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 ## Lemma 4.2 (rearranged blocks), page 9
 
 > *Let $`u=\sigma_1\sigma_2\cdots`$ and $`u'=\sigma'_1\sigma'_2\cdots`$ be infinite words, where each $`\sigma_i`$ is a nonempty finite word and $`\sigma'_i`$ is a rearrangement of it, and suppose that every suffix of $`u`$ or $`u'`$ starting at a block boundary has value in $`(0,1)`$.*
-> 
+>
 > 1.  *If $`V(u)=V(u')`$, then $`f(\sigma_i)=f(\sigma'_i)`$ for every $`i`$.*
-> 
+>
 > 2.  *If $`\sigma_i=\sigma'_i`$ for every $`i<i_0`$, then $`|V(u)-V(u')|<1/\Pi(\sigma_1\cdots\sigma_{i_0-1})`$.*
 
 **No Lean proof of the whole statement.** In Lean, ordinary proof, part of the agent-checked proof that D_P is irrational for every finite P; not formalised: the surrounding argument would need Kronecker's theorem on subtori and an Euler-characteristic count, which are not formalised here.
@@ -373,16 +373,16 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 ## Lemma 4.5 (blocks, tails and integrality), page 13
 
 > *Let $`P`$ be a finite set of at least two primes with least element $`p`$.*
-> 
+>
 > 1.  *Block $`a`$ ends with the jump at $`p^{a+1}`$ and contains at most one power of each prime $`q\in P\smallsetminus\{p\}`$, lying strictly inside it. The power $`q^f`$ with $`f\ge1`$ lies in block $`\lfloor f\log_pq\rfloor`$.*
-> 
+>
 > 2.  *If block $`a`$ has type $`\tau=(r_1,\ldots,r_v)`$, then $`Y_a=G_\tau(Y_{a+1})`$, where
 >     ``` math
 >     G_\tau(y)=\frac{\mu_\tau+y}{b_\tau},\qquad b_\tau=pr_1\cdots r_v,\qquad
 >      \mu_\tau=1+b_\tau\sum_{j=1}^{v}\frac1{r_1\cdots r_j}.
 >     ```
 >     Each $`G_\tau`$ is increasing with slope $`1/b_\tau\le1/p`$ and maps $`[0,1/(p-1)]`$ into itself, and $`0<Y_a\le1/(p-1)`$.*
-> 
+>
 > 3.  *If $`\mathcal D_P=N/K`$ with integers $`N`$ and $`K\ge1`$, then $`KY_a`$ is an integer for every $`a\ge0`$.*
 
 **No Lean proof of the whole statement.** In Lean, the lemma is stated for every finite set of primes; only its {2,3,5} case is checked in Lean, inside the proof of the {2,3,5} theorem.
@@ -400,9 +400,9 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 ## Corollary 4.7 (three and four primes up to $`31`$), page 16
 
 > *Let $`P`$ be a set of primes, each at most $`31`$.*
-> 
+>
 > 1.  *If $`|P|=3`$, then $`\mathcal D_P`$ is irrational.*
-> 
+>
 > 2.  *If $`|P|=4`$ and $`P`$ is not one of the $`38`$ sets listed below, then $`\mathcal D_P`$ is irrational.*
 
 **No Lean proof of the whole statement.** In Lean, ordinary proof from the decoding criterion and an exact finite computation for each set (research/experiments/erdos269/distinct_height); neither is formalised.
@@ -412,11 +412,11 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 ## Proposition 4.8 (sub-sums and the catalogue sum), page 19
 
 > *Let $`P`$ be a finite set of primes with $`|P|\ge2`$.*
-> 
+>
 > 1.  *$`\mathcal D_P=\sum_{q\in P}E_q-(|P|-1)`$.*
-> 
+>
 > 2.  *If $`P=\{p,q\}`$, then $`\operatorname{H}_P(p^iq^j)=\operatorname{H}_P(p^i)\operatorname{H}_P(q^j)`$ for all $`i,j\ge0`$, and $`\mathcal R_P=E_pE_q`$.*
-> 
+>
 > 3.  *If $`P=\{p,q,r\}`$, then $`\operatorname{H}_P(p^iq^jr^k)=\operatorname{H}_P(p^i)\operatorname{H}_P(q^j)\operatorname{H}_P(r^k)\,
 >     p^{\kappa_p(j,k)}q^{\kappa_q(i,k)}r^{\kappa_r(i,j)}`$, where $`\kappa_p(j,k)=\lfloor j\log_pq+k\log_pr\rfloor-\lfloor j\log_pq\rfloor-\lfloor
 >     k\log_pr\rfloor\in\{0,1\}`$ and $`\kappa_q,\kappa_r`$ are defined in the same way. For a general finite $`P`$ the corresponding exponents lie in $`\{0,\ldots,|P|-2\}`$.*
@@ -433,21 +433,41 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long269-lem-late-swap"></a>
 
-## Lemma 5.1, page 21
+## Lemma 5.1 (the suffix lattice and a late interchange), page 21
 
-**No Lean proof of the whole statement.** In Lean, Full ordinary proof reviewed by AI agents. Finite auxiliary checks do not formalise this infinite or arithmetic statement; independent human review is not recorded..
+> *Suppose $`V_c(w)`$ is rational. If for distinct letters $`a,b`$ and arbitrarily long words $`u`$ there is a common infinite suffix $`z`$ such that both $`uabz`$ and $`ubaz`$ belong to $`X_w`$, then
+> ``` math
+> c_a(b_b-1)=c_b(b_a-1).
+> ```
+> If such interchanges join every pair of letters along a connected graph, $`V_c(w)`$ is rational precisely when there is $`\lambda\in\mathbb{Q}`$ with $`c_a=\lambda(b_a-1)`$ for all $`a`$; in that case $`V_c(w)=\lambda`$.*
+
+**No Lean proof of the whole statement.** In Lean, no proof of the full statement is recorded; the paper gives an ordinary proof reviewed by AI agents. Finite auxiliary checks have narrower scope, and independent human review is not recorded.
 
 <a id="long269-lem-clock-swaps"></a>
 
-## Lemma 5.2, page 22
+## Lemma 5.2 (isolated interchanges in a clock word), page 22
 
-**No Lean proof of the whole statement.** In Lean, Full ordinary proof reviewed by AI agents. Finite auxiliary checks do not formalise this infinite or arithmetic statement; independent human review is not recorded..
+> *Every pair of distinct clock labels satisfies the late-interchange hypothesis of Lemma 5.1 for $`X_w`$.*
+
+**No Lean proof of the whole statement.** In Lean, no proof of the full statement is recorded; the paper gives an ordinary proof reviewed by AI agents. Finite auxiliary checks have narrower scope, and independent human review is not recorded.
 
 <a id="long269-thm-clock-relations"></a>
 
-## Theorem 5.3, page 23
+## Theorem 5.3 (rational relations among independent-clock channels), page 23
 
-**No Lean proof of the whole statement.** In Lean, Full ordinary proof reviewed by AI agents. Finite auxiliary checks do not formalise this infinite or arithmetic statement; independent human review is not recorded..
+> *Under the preceding clock hypotheses, choose integers $`b_i\ge2`$, put $`Q_n=\prod_{k\le n}b_{w_k}`$ and
+> ``` math
+> S_i=\sum_{n:\,w_n=i}\frac1{Q_n}\qquad(1\le i\le d).
+> ```
+> For every $`c_i\in\mathbb{Q}`$,
+> ``` math
+> \sum_{i=1}^dc_iS_i\in\mathbb{Q}
+>  \quad\Longleftrightarrow\quad
+>  c_i=\lambda(b_i-1)\quad\hbox{for all $i$ and some $\lambda\in\mathbb{Q}$}.
+> ```
+> The rational value is $`\lambda`$. Equivalently, all rational relations $`a_0+\sum_i a_iS_i=0`$ are multiples of $`(-1,b_1-1,\ldots,b_d-1)`$. Thus the span of $`1,S_1,\ldots,S_d`$ has dimension $`d`$; each channel and each nonempty proper unweighted sub-sum is irrational. The full unweighted sum is irrational exactly when the radices are not all equal.*
+
+**No Lean proof of the whole statement.** In Lean, no proof of the full statement is recorded; the paper gives an ordinary proof reviewed by AI agents. Finite auxiliary checks have narrower scope, and independent human review is not recorded.
 
 <a id="long269-res-two-prime-rank"></a>
 
@@ -602,9 +622,11 @@ theorem rank_cutMatrix {F : Type*} [Field F] {ι : Type*} [Fintype ι]
 
 <a id="long269-lem-staircase-smith"></a>
 
-## Lemma 6.5, page 27
+## Lemma 6.5 (Smith factors of the selected staircase), page 27
 
-**No Lean proof of the whole statement.** In Lean, Full ordinary proof reviewed by AI agents. Finite auxiliary checks do not formalise this infinite or arithmetic statement; independent human review is not recorded..
+> *The Smith factors of $`A_N(r)`$ are $`1,r-1,\ldots,r-1`$, and $`\det A_N(r)=(1-r)^{N-1}`$.*
+
+**No Lean proof of the whole statement.** In Lean, no proof of the full statement is recorded; the paper gives an ordinary proof reviewed by AI agents. Finite auxiliary checks have narrower scope, and independent human review is not recorded.
 
 <a id="long269-res-uniform-rank"></a>
 

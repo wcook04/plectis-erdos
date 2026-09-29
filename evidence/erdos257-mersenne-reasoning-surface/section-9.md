@@ -7,7 +7,7 @@ Part of the [evidence record](../erdos257-mersenne-reasoning-surface.md) of the 
 ## Theorem 9.46 (A: a sufficient lower bound at every reset), page 107
 
 > *Assume that $`|\mathrm{rem}(r+1)-2^{r+1}|>2^{(r+5)/2}`$ for every upper or middle reset $`r\ge10`$. Then $`1/2\in\mathcal A`$.*
-> 
+>
 > *Here is the role of the constants. Put
 > ``` math
 > B(r)=2^{\lfloor(r+4)/2\rfloor}+2r+3.
@@ -75,7 +75,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 ## Theorem 9.48 (C: the one-sided finite decision boundary), page 108
 
 > *The equivalence of Theorem 5.10 separates two logically different kinds of evidence. A fatal greedy gap found at a finite rank is a finite certificate that $`1/2\notin\mathcal A`$. By contrast, membership requires survival at every rank; this paper supplies no finite certificate that the orbit survives forever and no completion theorem turning a long surviving prefix into membership.*
-> 
+>
 > *The reset-crossing hypotheses, truncation-rung ladder, and sharp-capacity inequalities feed sufficient conditions for membership. They are not proved equivalent to one another, nor is failure to find one at a given depth evidence of survival. Consequently these searches give at most a semi-decision procedure for *nonmembership of the specific value $`1/2`$*. Halting does not prove the universal statement in \#257, and non-halting does not prove that $`1/2`$ is represented. In particular, neither truth nor falsity of the universal problem is shown semi-decidable here. Deeper negative search alone establishes nothing beyond the tested finite ranks; this is the quantifier boundary of Theorem 2.11.*
 
 The Lean declaration below states this result or one that implies it. The Lean statement gives the mathematical facts behind the theorem, for every real $x$: the survival equivalence, that a rank with $r_n(x)>R_n$ certifies $x\notin\mathcal A$, and that membership forces $r_n(x)\le R_n$ at every rank. The remaining sentences describe what the corpus and its searches establish and have no Lean counterpart.

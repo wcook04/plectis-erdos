@@ -1,7 +1,7 @@
 {
   "schema": "plectis-paper-lean-coverage/1",
   "lean_pin": "436f55ebdafa67e4af0fff79f621c13f2ded12bf",
-  "content_digest": "sha256:9ebe327186905984cd4adfc08de9266b3532a4dd5c55d7037ffde32e38c84647",
+  "content_digest": "sha256:c7e13ea59306c925ab66e6c7ca326812423361dfdc9965ddd1a30448f94f483c",
   "authority": "Generated projection of the maintainer coverage count. Proof authority stays with the Lean source checked by the pinned kernel, and docs/claims.json owns claim status. Each row records which Lean declarations state one asserting paper environment and how far the row has travelled toward independent Comparator replay and Palomar preparation.",
   "row_rule": "One row per closed asserting theorem-like environment (and per registered labelled claim span) of the sixteen problem papers, short and long counted separately even when their statements agree. statement_sha256 is the sha256 of the environment body after TeX comments are removed; source is the authored file and line of its opening.",
   "status_rule": {
@@ -29490,7 +29490,7 @@
         "status": "none",
         "counted": true,
         "declarations": [],
-        "reason": "Full ordinary proof reviewed by AI agents. Finite auxiliary checks do not formalise this infinite or arithmetic statement; independent human review is not recorded."
+        "reason": "no proof of the full statement is recorded; the paper gives an ordinary proof reviewed by AI agents. Finite auxiliary checks have narrower scope, and independent human review is not recorded"
       },
       "comparator": {
         "status": "not_applicable"
@@ -29513,7 +29513,7 @@
         "status": "none",
         "counted": true,
         "declarations": [],
-        "reason": "Full ordinary proof reviewed by AI agents. Finite auxiliary checks do not formalise this infinite or arithmetic statement; independent human review is not recorded."
+        "reason": "no proof of the full statement is recorded; the paper gives an ordinary proof reviewed by AI agents. Finite auxiliary checks have narrower scope, and independent human review is not recorded"
       },
       "comparator": {
         "status": "not_applicable"
@@ -29536,7 +29536,7 @@
         "status": "none",
         "counted": true,
         "declarations": [],
-        "reason": "Full ordinary proof reviewed by AI agents. Finite auxiliary checks do not formalise this infinite or arithmetic statement; independent human review is not recorded."
+        "reason": "no proof of the full statement is recorded; the paper gives an ordinary proof reviewed by AI agents. Finite auxiliary checks have narrower scope, and independent human review is not recorded"
       },
       "comparator": {
         "status": "not_applicable"
@@ -29559,7 +29559,7 @@
         "status": "none",
         "counted": true,
         "declarations": [],
-        "reason": "Full ordinary proof reviewed by AI agents. Finite auxiliary checks do not formalise this infinite or arithmetic statement; independent human review is not recorded."
+        "reason": "no proof of the full statement is recorded; the paper gives an ordinary proof reviewed by AI agents. Finite auxiliary checks have narrower scope, and independent human review is not recorded"
       },
       "comparator": {
         "status": "not_applicable"
@@ -29582,7 +29582,7 @@
         "status": "none",
         "counted": true,
         "declarations": [],
-        "reason": "Full ordinary proof reviewed by AI agents. Finite auxiliary checks do not formalise this infinite or arithmetic statement; independent human review is not recorded."
+        "reason": "no proof of the full statement is recorded; the paper gives an ordinary proof reviewed by AI agents. Finite auxiliary checks have narrower scope, and independent human review is not recorded"
       },
       "comparator": {
         "status": "not_applicable"
@@ -29605,7 +29605,7 @@
         "status": "none",
         "counted": true,
         "declarations": [],
-        "reason": "Full ordinary proof reviewed by AI agents. Finite auxiliary checks do not formalise this infinite or arithmetic statement; independent human review is not recorded."
+        "reason": "no proof of the full statement is recorded; the paper gives an ordinary proof reviewed by AI agents. Finite auxiliary checks have narrower scope, and independent human review is not recorded"
       },
       "comparator": {
         "status": "not_applicable"
@@ -29628,7 +29628,7 @@
         "status": "none",
         "counted": true,
         "declarations": [],
-        "reason": "Full ordinary proof reviewed by AI agents. Finite auxiliary checks do not formalise this infinite or arithmetic statement; independent human review is not recorded."
+        "reason": "no proof of the full statement is recorded; the paper gives an ordinary proof reviewed by AI agents. Finite auxiliary checks have narrower scope, and independent human review is not recorded"
       },
       "comparator": {
         "status": "not_applicable"
@@ -29651,7 +29651,7 @@
         "status": "none",
         "counted": true,
         "declarations": [],
-        "reason": "Full ordinary proof reviewed by AI agents. Finite auxiliary checks do not formalise this infinite or arithmetic statement; independent human review is not recorded."
+        "reason": "no proof of the full statement is recorded; the paper gives an ordinary proof reviewed by AI agents. Finite auxiliary checks have narrower scope, and independent human review is not recorded"
       },
       "comparator": {
         "status": "not_applicable"
@@ -29674,7 +29674,7 @@
         "status": "none",
         "counted": true,
         "declarations": [],
-        "reason": "Full ordinary proof reviewed by AI agents. Finite auxiliary checks do not formalise this infinite or arithmetic statement; independent human review is not recorded."
+        "reason": "no proof of the full statement is recorded; the paper gives an ordinary proof reviewed by AI agents. Finite auxiliary checks have narrower scope, and independent human review is not recorded"
       },
       "comparator": {
         "status": "not_applicable"
@@ -29697,7 +29697,7 @@
         "status": "none",
         "counted": true,
         "declarations": [],
-        "reason": "Full ordinary proof reviewed by AI agents. Finite auxiliary checks do not formalise this infinite or arithmetic statement; independent human review is not recorded."
+        "reason": "no proof of the full statement is recorded; the paper gives an ordinary proof reviewed by AI agents. Finite auxiliary checks have narrower scope, and independent human review is not recorded"
       },
       "comparator": {
         "status": "not_applicable"

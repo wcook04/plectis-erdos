@@ -224,7 +224,7 @@ theorem common_denominator_growth_liminf :
 >  \iff 1+\varepsilon_m<m\Delta_m\le2+\varepsilon_m .
 > \end{equation}
 > ```*
-> 
+>
 > *Moreover
 > ``` math
 > \begin{align}

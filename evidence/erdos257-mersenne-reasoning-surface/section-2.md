@@ -7,13 +7,13 @@ Part of the [evidence record](../erdos257-mersenne-reasoning-surface.md) of the 
 ## Proposition 2.2 (Uniqueness under the stated finite conditions), page 25
 
 > *Put $`G=\mathrm{greedyMersenneSupport}(1/2)`$, $`w_n=(2^n-1)^{-1}`$ and $`R_d=\sum_{n>d}w_n`$. The following are three separate uniqueness statements.*
-> 
+>
 > 1.  *If $`D\subseteq\{1,\ldots,d\}`$ and $`X_D(2)\le1/2\le X_D(2)+R_d`$, then $`D=G\cap\{1,\ldots,d\}`$.*
-> 
+>
 > 2.  *If $`c\ge4`$, $`D\subseteq\{2,\ldots,c-1\}`$ and $`0<1/2-X_D(2)<w_c`$, then $`D=G\cap\{1,\ldots,c-1\}`$.*
-> 
+>
 > 3.  *Let positive integer weights $`v_1,\ldots,v_k`$ satisfy $`v_i\ge g+\sum_{j>i}v_j`$ for a positive integer $`g`$. For a nonnegative integer target $`T`$, let $`y^*`$ be the word obtained by visiting these weights in order and taking each when it fits. An admissible Boolean word $`y`$ has $`0\le T-\sum_i y_iv_i<g`$ if and only if $`y=y^*`$ and $`0\le T-\sum_i y_i^*v_i<g`$.*
-> 
+>
 > *Part (iii) gives uniqueness under the small-remainder condition, not existence. Theorem 6.100 gives a one-weight counterexample to dropping that condition.*
 
 The Lean declarations below together state this result or one that implies it. Items (i), (ii) and (iii) are, in order, `IsStraddlePrefix.half_agrees_greedy`, `eq_halfGreedyPrefixSupport_of_critical_crossing` and `remainder_lt_gap_iff_eq_integerGreedyBits`, with the printed hypotheses. In (ii) the Lean conclusion is equality with the greedy prefix for $1/2$ computed in exact rational arithmetic through $c-1$; `paper_halfGreedyPrefixSupport_eq_greedy_inter_Icc` identifies that prefix with $G\cap\{2,\ldots,c-1\}$, which equals $G\cap\{1,\ldots,c-1\}$ because $w_1=1>1/2$ keeps $1$ out of $G$.
@@ -193,19 +193,19 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 ## Proposition 2.7 (Six equivalent membership conditions), page 27
 
 > *Each of the following is logically *equivalent* to $`1/2 \in \mathcal{A}`$, not strictly weaker:*
-> 
+>
 > 1.  *$`C_G(N)\le2\sqrt N+4`$ for every $`N\ge0`$;*
-> 
+>
 > 2.  *there are arbitrarily large positive exponents outside $`G`$;*
-> 
+>
 > 3.  *at arbitrarily large depths $`n`$, some $`D\subseteq\{2,\ldots,n\}`$ satisfies $`Q(D,n)=2^{n-1}-1`$; no agreement between the sets $`D`$ at different depths is required;*
-> 
+>
 > 4.  *at arbitrarily large $`M`$, $`\operatorname{ihc}(G,M)\le B(M+1)`$;*
-> 
+>
 > 5.  *at arbitrarily large positive depths $`M`$, some $`D\subseteq\{2,\ldots,M\}`$ satisfies $`|\operatorname{ihc}(D,M-1)|\le B(M)`$;*
-> 
+>
 > 6.  *the half-target greedy remainder never exceeds the full remaining tail, so no finite fatal gap exists; the seven equivalent forms in the later classification express this same condition.*
-> 
+>
 > *For (d) and (e), the reverse directions use the square depths in Lemma 2.6. For (a), membership gives $`C_G(N)\le2\sqrt{N+1}+3\le2\sqrt N+4`$ when $`N\ge1`$, and $`C_G(0)=0`$. The forward implication still needs the greedy inequality $`x_G\le1/2`$.*
 
 The Lean declaration below states this result.

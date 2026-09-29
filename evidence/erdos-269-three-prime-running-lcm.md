@@ -29,9 +29,9 @@ These checks establish that the stated propositions are proved. Whether each is 
 ## Lemma 2.3 (rearranged blocks), page 3
 
 > *Let $`u=\sigma_1\sigma_2\cdots`$ and $`u'=\sigma'_1\sigma'_2\cdots`$ be infinite words, where each $`\sigma_i`$ is a nonempty finite word and $`\sigma'_i`$ is a rearrangement of it, and suppose that every suffix of $`u`$ or $`u'`$ starting at a block boundary has value in $`(0,1)`$.*
-> 
+>
 > 1.  *If $`V(u)=V(u')`$, then $`f(\sigma_i)=f(\sigma'_i)`$ for every $`i`$.*
-> 
+>
 > 2.  *If $`\sigma_i=\sigma'_i`$ for every $`i<i_0`$, then $`|V(u)-V(u')|<1/\Pi(\sigma_1\cdots\sigma_{i_0-1})`$.*
 
 **No Lean proof of the whole statement.** In Lean, ordinary proof, part of the agent-checked proof that D_P is irrational for every finite P; not formalised: the surrounding argument would need Kronecker's theorem on subtori and an Euler-characteristic count, which are not formalised here.

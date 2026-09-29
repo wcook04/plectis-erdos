@@ -1145,7 +1145,8 @@ def render_results(evidence: dict, results: list[dict], up: str) -> list[str]:
         out.append(f"## {result_heading(r)}")
         out.append("")
         if r.get("statement_markdown"):
-            out.append("> " + r["statement_markdown"].replace("\n", "\n> "))
+            out.append("\n".join("> " + line if line else ">"
+                                 for line in r["statement_markdown"].split("\n")))
             out.append("")
         status = lean["status"]
         decls = lean["declarations"]
