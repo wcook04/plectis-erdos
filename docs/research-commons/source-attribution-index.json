@@ -121020,7 +121020,7 @@
     "public_source_credit": "Names and direct citations are retained for published literature, software and public contributions. Source identity, exact local use, and mathematical correspondence are separate."
   },
   "source_registry": "docs/research-commons/source-attributions.json",
-  "source_registry_sha256": "sha256:883853c4bad903dec46a6342c360a232d958f2e1b8af34a88d6d85c2d76bcc5f",
+  "source_registry_sha256": "sha256:0f92e2c4199c97470b8e0a55e78e5780ee602ea5bec321d4b1d037773caf062f",
   "sources": [
     {
       "artifact_coordinates": [
@@ -126108,18 +126108,18 @@
         {
           "excerpt_sha256": "sha256:92b7b9cc64a1acc947637d28189aed2eaf7a81277bae40c024328d6a919e0414",
           "expected_text": "[ScienceAgentBench, v2]",
-          "line_end": 62,
-          "line_start": 59,
+          "line_end": 68,
+          "line_start": 65,
           "path": "docs/research-commons/rounds/round7/README.md",
-          "sha256": "sha256:d8f012b1ff9a76cb606b87260b478a15b9112f44da1b224740113374e39472b1"
+          "sha256": "sha256:bde8010e1017d8e7de6af6cc9fd3778977c360b5a16d43a2760a0a2607979050"
         }
       ],
       "artifact_links": [
         {
           "excerpt_sha256": "sha256:92b7b9cc64a1acc947637d28189aed2eaf7a81277bae40c024328d6a919e0414",
           "expected_text": "[ScienceAgentBench, v2]",
-          "line_end": 62,
-          "line_start": 59,
+          "line_end": 68,
+          "line_start": 65,
           "path": "docs/research-commons/rounds/round7/README.md"
         }
       ],
@@ -143491,10 +143491,10 @@
         {
           "excerpt_sha256": "sha256:1d66252ee7cb6baaf5065f96ec3ab4dad3e7296eca6d2c98ed0d5c7e41e08a97",
           "expected_text": "[Feng et al., v1",
-          "line_end": 54,
-          "line_start": 50,
+          "line_end": 60,
+          "line_start": 56,
           "path": "docs/research-commons/rounds/round7/README.md",
-          "sha256": "sha256:d8f012b1ff9a76cb606b87260b478a15b9112f44da1b224740113374e39472b1"
+          "sha256": "sha256:bde8010e1017d8e7de6af6cc9fd3778977c360b5a16d43a2760a0a2607979050"
         }
       ],
       "artifact_links": [
@@ -143515,8 +143515,8 @@
         {
           "excerpt_sha256": "sha256:1d66252ee7cb6baaf5065f96ec3ab4dad3e7296eca6d2c98ed0d5c7e41e08a97",
           "expected_text": "[Feng et al., v1",
-          "line_end": 54,
-          "line_start": 50,
+          "line_end": 60,
+          "line_start": 56,
           "path": "docs/research-commons/rounds/round7/README.md"
         }
       ],
@@ -144963,10 +144963,10 @@
         {
           "excerpt_sha256": "sha256:874b2be52514deae844bef1f44fcbc81dfb88cf010c98a26bf6bc0cfa4dae767",
           "expected_text": "[LeanArchitect, v1]",
-          "line_end": 58,
-          "line_start": 55,
+          "line_end": 64,
+          "line_start": 61,
           "path": "docs/research-commons/rounds/round7/README.md",
-          "sha256": "sha256:d8f012b1ff9a76cb606b87260b478a15b9112f44da1b224740113374e39472b1"
+          "sha256": "sha256:bde8010e1017d8e7de6af6cc9fd3778977c360b5a16d43a2760a0a2607979050"
         }
       ],
       "artifact_links": [
@@ -144987,8 +144987,8 @@
         {
           "excerpt_sha256": "sha256:874b2be52514deae844bef1f44fcbc81dfb88cf010c98a26bf6bc0cfa4dae767",
           "expected_text": "[LeanArchitect, v1]",
-          "line_end": 58,
-          "line_start": 55,
+          "line_end": 64,
+          "line_start": 61,
           "path": "docs/research-commons/rounds/round7/README.md"
         }
       ],
@@ -155248,18 +155248,18 @@
         {
           "excerpt_sha256": "sha256:cd2254d00d767097a5253778989b0a7f0e7faeb4113eb8147432197bdcc8ac18",
           "expected_text": "[AlphaEvolve, v1]",
-          "line_end": 66,
-          "line_start": 63,
+          "line_end": 72,
+          "line_start": 69,
           "path": "docs/research-commons/rounds/round7/README.md",
-          "sha256": "sha256:d8f012b1ff9a76cb606b87260b478a15b9112f44da1b224740113374e39472b1"
+          "sha256": "sha256:bde8010e1017d8e7de6af6cc9fd3778977c360b5a16d43a2760a0a2607979050"
         }
       ],
       "artifact_links": [
         {
           "excerpt_sha256": "sha256:cd2254d00d767097a5253778989b0a7f0e7faeb4113eb8147432197bdcc8ac18",
           "expected_text": "[AlphaEvolve, v1]",
-          "line_end": 66,
-          "line_start": 63,
+          "line_end": 72,
+          "line_start": 69,
           "path": "docs/research-commons/rounds/round7/README.md"
         }
       ],
