@@ -1,0 +1,453 @@
+# Supplied AI essays: inspected pages
+
+Original PDF SHA256: `d96125f1a82e3af6467ddbf3b1ff84439a5d092e8184092bec03125cecc63e99`. The page labels below refer to that supplied anthology, not to verified original publication pages.
+
+
+## Anthology page 31
+
+WRITINGS ON AI AND MATHEMATICS                                   31
+
+
+9 Deep theorems were scarce and difficult and so became an
+  effective mechanism to identify deep thought. AI has broken
+  this system. - Bryna Kra - 13th September
+For generations, mathematicians have treated the production of theorems as a clear measure of
+success. The stronger the theorem, the deeper the proof, the more surprising the connections,
+the greater the achievement. Positions and prizes are based on these theorems and the
+mathematicians making the breakthroughs set the directions for future research.
+   But theorem production was only part of what we cared about. It was a proxy for something
+harder to measure: understanding. A major breakthrough meant that years were invested in
+learning a subject and uncovering hidden aspects, accompanied by work to make the answer
+apparent to the community. Deep theorems were scarce and difficult and so became an
+effective mechanism to identify deep thought.
+  AI has broken this system.
+    Artificial intelligence has lowered the cost of producing sophisticated proofs. As the models
+improve, the list of deep conjectures that fall will grow. Someone with little knowledge in a
+field can now generate a manuscript that reads like a polished article, cites the literature, and
+combines techniques that would have taken years to master. The machines are producing
+solutions faster than the mathematical community can read them, much less digest them.
+    This week the changes arrived in my field. The Nivat conjecture is a beautiful problem at
+the intersection of combinatorics and dynamical systems. Imagine an infinite grid of square
+tiles, with each tile colored either red or blue. Look at every rectangular window of a fixed
+size, say n tiles wide and m tiles high, and count how many different color patterns show
+up in that window. The conjecture says that if there are at most nm such patterns, then
+the entire coloring repeats under some fixed, nonzero shift of the grid. In other words, some
+precise limit on local behavior gives rise to simple global behavior, periodicity.
+  Though this statement can be explained without formulas or higher mathematics, the
+conjecture resisted our efforts for nearly three decades.
+   In work that we first circulated in 2012, Van Cyr and I proved a partial result, showing
+that periodicity holds when the number of patterns is at most half the area of the window.
+We translated the combinatorial question into one about the geometry of dynamical systems,
+studying ways in which information in the system does (or does not) propagate. Progress
+on challenging problems does not happen in a vacuum, and our work began by studying
+and building on earlier results in the literature [1, 2, 3]. Soon after, Jarkko Kari and Michal
+Szabados developed a different approach, viewing the combinatorial question as an algebraic
+object, using certain types of polynomials to find the infinite patterns.
+   To those of us who worked in the area, this was a tantalizing situation. Two different
+methods to approach the same problem seemed to shout to us: find the conceptual bridge
+between them. We tried, without success, and moved on to other problems. Colleagues
+continued pushing the boundaries of what we knew, combining the varied techniques in
+increasingly powerful ways [1, 2, 3].
+   But synthesizing different approaches is one of the ways in which frontier models excel.
+A machine does not need years to absorb distinct areas of mathematics before it can find
+the connections. It can translate notation, compare partial results, and try thousands of
+
+
+## Anthology page 32
+
+32                             WRITINGS ON AI AND MATHEMATICS
+
+combinations without being discouraged. The Nivat conjecture has been proposed for inclusion
+in Google DeepMind’s Formal Conjectures project, turning the problem into a target for
+automated reasoning and making more people aware of the question.
+   The manuscripts have started to arrive. This week I received several purported proofs of the
+full conjecture from researchers making their first foray into the subject. Some acknowledged
+using AI, but only for polishing the English or checking the proof. When I asked if the authors
+would meet over Zoom to explain their arguments, none accepted the invite.
+   Silence does not mean that the authors used AI and a proposed proof is not a theorem.
+But merely disclosing AI use and checking correctness of the proof, both of which are essential,
+miss the point. Suppose these results are correct. That is a mathematical contribution. Yet it
+opens more questions. What did we learn? What did the authors contribute? What impact
+will this result have?
+   A proof is more than a certificate that something is true. Instead, it is a story, a picture, an
+insight, an explanation. A proof highlights novel ideas and opens new directions for what we
+should ask next. It becomes part of the toolkit of the community. A deep theorem changes how
+we think, not because of its statement, but because of what it teaches us. As Bill Thurston
+wrote on MathOverflow in a 2010 response to a question about what mathematicians do:
+“The product of mathematics is clarity and understanding. Not theorems, by themselves.”
+   These new texts certainly contain knowledge, just as a data file of bits of 0’s and 1’s
+contains information. But human authorship is more than the string of words that prove
+something. It is intellectual responsibility, understanding of a new concept, the ability to
+respond to questions, the sorting of new ideas from existing scaffolding. And perhaps most
+importantly, it is incorporating the result into the corpus of our understanding.
+   I welcome AI-generated proofs and believe that human-only proofs will become rare. This
+is a profound change of perspective, but mathematicians have always used external tools
+and machines. AI is already a powerful mathematical instrument and we, as a community,
+need to incorporate it responsibly into our practice of mathematics. The question is not if
+machines should participate in discovery. They already do. The question our community
+needs to address is what we value in our mathematics now that certain kinds of discovery are
+no longer a scarce resource.
+   The tradition of journals publishing novel results, hiring committees rewarding those
+publications, and prize committees recognizing the person who completed the result do not
+suffice. Peer review is a slow process that relies on the unpaid expertise of a small group of
+overworked researchers. Any single submission can be handled, but the current volume is
+drowning the reviewers. The careers of young researchers depend on producing theorems, with
+incentive to produce as much as possible as quickly as possible. The time for deep reflection,
+necessary for deep understanding, does not happen when someone types the question into a
+model and quickly produces a manuscript.
+   All of these issues existed before AI entered our field. Unfortunately, we no longer have the
+luxury of addressing them in a leisurely manner.
+   Mathematics is at a watershed moment. Our incentive structures are misaligned with
+the prolific output of highly accessible AI models. Careful verification and stellar exposition
+will not happen when there is no reward for those tasks. Producing a paper is no longer
+enough: authors must be able to explain the proof’s mechanism and how they arrived at
+this point. Journals need to distinguish and credit the roles of discovery, proof, formalization
+
+
+## Anthology page 39
+
+WRITINGS ON AI AND MATHEMATICS                                     39
+
+
+11 Why I do mathematical research - Emily Riehl - 14th
+   September
+Like many mathematicians, I was drawn to the field as a little girl by its aesthetics: questions
+that I found endlessly fascinating and arguments that struck me as delightful and elegant.
+As I grew older, I came to appreciate how personal mathematical aesthetics are. One of the
+great strengths of our community is the breadth of our collective view of what mathematics
+is. (Even better: those views are not static. My sense of what mathematics is has changed
+considerably in the 15 years since my PhD, but that’s a story for another time.)
+   The point of this preamble is to clarify that what follows is a personal view of the purpose
+of mathematical research, or more precisely one aspect of it. It would be too strong to speak
+of “the” purpose of mathematics, even using category theorists’ “the”, so I’ll instead describe
+a purpose of mathematics, focusing on one particular perspective.
+   Of the many purposes of mathematics, my favorite is to search for the simplest explanation
+of a particular phenomenon. This often requires inventing a clarifying abstract language to
+isolate a common pattern from distracting specifics: not necessarily the maximal level of
+generality but the “right” one. As with mathematical aesthetics, the simplest proof, most
+clarifying abstraction, and right level of generality are also matters of taste — and that’s
+a good thing! While mathematicians tend to agree about what’s true and false, we have
+countless different opinions about what is intuitive or interesting. (I take a similar relativist
+view of the foundations of mathematics, preferring to occupy a mathematical multiverse —
+again a topic for another time.)
+   To give an example, when I was first learning about sets and functions, it really bothered
+me that the inverse image preserves both unions and intersections of subsets, while the direct
+image preserves only unions. The direct image seemed simpler to define, so why was its
+behavior more complicated? Several years later I learned that the inverse image can be
+regarded as a functor between powersets, and that functor admits both right and left adjoints,
+while the direct image only admits a right adjoint. Since left adjoints preserve colimits and
+right adjoints preserve limits — by a proof that strikes me as straight from the book, expressed
+exactly at the right level of generality — I now consider my set-theoretic confusion resolved.
+(Your mileage may vary.)
+   My mathematical tastes tend towards this sort of “abstract nonsense” (a phrase that,
+like “queer,” is often used affectionately by insiders). Mathematics like this is sometimes
+called “theory building,” whose aim is to make it easier for more people to hold increasingly
+complicated mathematical thoughts in their heads. (Bill Thurston, in his famous essay “On
+proof and progress in mathematics,” offers manifolds as an example of a unifying definition
+that makes insights easier to communicate to non-experts.) As Michael Atiyah put it in “How
+research is carried out“:
+   The aim of theory really is, to a great extent, that of systematically organizing past experience
+in such a way that the next generation, our students and their students and so on, will be able
+to absorb the essential aspects in as painless a way as possible, and this is the only way in
+which you can go on cumulatively building up any kind of scientific activity without eventually
+coming to a dead end.
+  It’s not always obvious from the outset what the long-term aesthetic value of a newly
+proposed theory will be. The two contributions that I am most proud of are the theory of
+∞-cosmoi, developed with Dominic Verity, and simplicial type theory, introduced in joint
+
+
+## Anthology page 41
+
+WRITINGS ON AI AND MATHEMATICS                                  41
+
+
+12 The technical debt of AI-generated mathematics - Henry
+   Cohn - 15th September
+In this essay I’d like to discuss the role of AI-generated solutions in mathematics and why
+many mathematicians are justifiably concerned about a mismatch of values. Let’s start with
+the groundwork, so we’re all on the same page regarding what mathematics is and what is
+needed for progress.
+
+
+12.1 The role of understanding
+Academic mathematics is about understanding, not just about getting answers. Answers can
+be useful, but they are not the goal or the primary value of this endeavor.
+   Why do we care so much about understanding? Humans are naturally curious, and
+understanding how the world works is part of what makes life meaningful, but there’s a deeper
+reason. Thousands of years of intellectual history have shown that understanding and utility
+are inseparable. You might think you can draw a sharp line separating mathematics from its
+implications, where you ask mathematicians what you want to know and they tell you the
+answer you need without having to explain why, but you can’t.
+   This is a universal pattern, not about you personally. Nobody can figure out what they
+need to know if they are missing crucial understanding. When non-mathematicians formulate
+a mathematical question, it’s not likely to be the question that would actually most help them.
+When mathematicians propose an answer in isolation, it’s also not likely to be what the rest
+of the world truly needs. This is why applied mathematics often requires deep collaboration
+between people with different expertise.
+   Of course we’re all finite beings, with limited time and abilities, and we can’t understand
+everything. We have to work together, and even when we do, human knowledge consists of
+patchwork with enormous gaps. These gaps are unavoidable, and AI knowledge will be no
+different, because you can’t fill infinite space in a finite amount of time.
+   What gives all of this knowledge value is understanding, not just facts. Understanding lets
+us make use of knowledge in meaningful ways and extend it more broadly.
+
+
+12.2 How do we develop understanding?
+You can’t be taught to understand anything deeply by passively absorbing knowledge. It’s
+just not possible. It can’t be done by a skilled teacher, a personal tutor, a book, a video, or
+any other form of instruction. These can all help guide you in the right direction, but nobody
+can lead you passively through the process. Ultimately, achieving more than a superficial
+understanding requires engaging deeply with ideas and exploring them yourself.
+   This is what math teachers mean when they say math isn’t a spectator sport, and what
+Euclid meant when he apocryphally told King Ptolemy that there is no royal road to geometry.
+It’s why math classes assign problem sets and PhD students write dissertations. Learning
+facts isn’t enough: you have to investigate them actively, question them, reconstruct them
+yourself, and build your own understanding.
+   When you make a discovery, the knowledge doesn’t transfer seamlessly to everyone else. It’s
+not simply a matter of explaining what you did and letting everyone else read it. It can take a
+shockingly large amount of work to document your discovery in a form that is truly useful for
+
+
+## Anthology page 43
+
+WRITINGS ON AI AND MATHEMATICS                                  43
+
+    Part of the reason this work is unpleasant is social: the community gives less credit for
+following up on or polishing a discovery, even if you understand it better. I expect these norms
+will evolve over time, perhaps quickly. Part of the reason is psychological: I just don’t enjoy
+reading poorly explained mathematics, even if with considerable effort I can extract something
+much more appealing, and I’m not the only one. And of course there’s the legitimate extra
+work of carefully examining the slop, which is difficult and time consuming whether or not
+you enjoy it.
+   Furthermore, there are coordination issues in how the field should organize this examination
+process. Traditional refereeing can’t handle limitless slop, and chaos is not a viable solution,
+either. The field’s procedures will of course have to evolve, but this will work best if everyone
+does their part to minimize the communal workload.
+  I hope future AI models get better at avoiding slop, and I expect they will, but it’s
+unclear whether they will ever be as good at communication as they are at problem solving.
+Mathematical truth may be easier to train for than effective communication with humans,
+which is more subtle and less objective.
+   This communication issue is why many mathematicians are unhappy when someone has AI
+solve an open problem, dumps a slop proof on the internet, and then abandons it, without
+any attempt to understand it themselves or communicate it effectively to others. They believe
+they are making a contribution, but often they are primarily creating unpleasant work for
+other people.
+   Of course it doesn’t always work this way. I’ve interacted with a number of non-
+mathematicians who have done a very responsible job of documenting AI-assisted work
+in a productive way, and I’m delighted that AI is broadening who is able to contribute to
+mathematics. Anyone who works to make a meaningful contribution is welcome to participate,
+and this aspect of AI is unambiguously good. But I’ve also seen examples on the internet
+that make me roll my eyes, where AI companies and individuals are loudly taking credit for
+slop contributions that are genuinely counterproductive for progress in the field.
+
+
+12.4 Technical debt
+The equivalent of this problem in software engineering is well understood; it’s called technical
+debt. Sometimes you can rush to write a program that works, but it’s poorly engineered.
+The architectural decisions are unwise, the documentation is inadequate, and the testing
+framework is minimal. The code accomplishes the narrowly stated goals you were aiming at,
+in the sense that it functions, but it’s not written in a way that can be extended and built on
+the way you’d hoped. This technical debt will have to be paid if you want to make further
+progress, and paying it may take lots of work. You can’t necessarily do it by patching up the
+existing system; instead, parts of it may have to be redesigned and rewritten from scratch.
+    Math slop causes technical debt in mathematics, and in some ways it’s even more insidious.
+In software engineering, a functioning program with technical debt still works, and deliberately
+accepting technical debt may be justified if you truly need it to work immediately. In
+mathematics, my experience is that getting the answer is usually a negligible form of “working.”
+There are cases where humanity can benefit from a factual answer whether or not we understand
+it. For example, knowing that a cryptosystem is insecure tells us to stop relying on it, and
+knowing that a counterexample exists keeps us from wasting time looking for a proof. But
+even in these cases understanding is important, and in most cases it’s crucial.
+
+
+## Anthology page 56
+
+56                           WRITINGS ON AI AND MATHEMATICS
+
+several times, I have a group in Cambridge devoted to automatic theorem proving. However,
+that is actually more of a reason to be anti-AI, since our group has been trying to attack
+the problem of getting computers to prove interesting theorems by understanding as well
+as possible how humans prove interesting theorems, so now that LLMs can clearly do it
+without the help of such insights as we have had, one of the main motivations for our work
+has disappeared. To put it another way, we have had to swallow the bitter lesson (which of
+course we were always aware was a distinct possibility, even if the speed at which it happened
+has taken us by surprise). I do in fact think that it is still a very interesting and valuable
+intellectual exercise to try to gain this understanding, even if we can use LLMs as black boxes,
+but that’s a topic for another blog post.
+  So why didn’t I sign the letter? Let me extract a couple of sentences from it that express
+what I see as the principal argument being put forward.
+   But solving problems is only a tool and proxy for achieving the primary goal of conceptual
+understanding and insight. Forgetting this in the world of AI may turn the tool against the
+primary goal. Indeed, the mass production at faster and faster pace of “true/false” statements
+could destroy fertile ground instead of breathing life into new ideas.
+   Perhaps the main reason I didn’t sign is that I don’t fully subscribe to this view. Instead,
+I have a more complicated view, which I actually expressed in my essay The Two Cultures
+of Mathematics a quarter of a century ago, and which can be summarized by saying that
+there is a spectrum of attitudes in mathematics to the relationship between problem-solving
+and conceptual understanding. At one end of the spectrum you have mathematicians who
+are primarily motivated by the wish to solve problems, who see conceptual understanding
+as a very important means to that end. At the other you have mathematicians who are
+primarily motivated by the wish to attain conceptual understanding, who see problem-solving
+as a very important means to that end. I worry that the severe-misalignment letter could
+be seen as saying that the “right” attitude is to focus on conceptual understanding as the
+main priority — indeed, the above sentences say that more or less directly. But I think that
+there are mathematicians all across the spectrum, and that that is a good thing (or perhaps I
+should say that it has been a good thing up to now — the future is much less certain), and
+I don’t want to suggest to a large fraction of mathematicians, including myself, that their
+mathematical temperament is somehow “wrong”.
+   My own particular mathematical attitude is very similar to one that was beautifully
+articulated in a Twitter post by Jacob Tsimerman (another non-signatory of the letter), which,
+now that I look at it, says a lot of what I will be saying here. And that post in turn is a
+response to Daniel Litt, who is in my opinion one of the wisest commentators on mathematics
+and AI. His views are expressed in a later post here, which I deliberately didn’t read until
+finishing this one, and then found, as I expected, that there was significant overlap. I would
+also like to take this opportunity to recommend an excellent post by Noah Smith entitled
+The End of the Age of Heroes, in case you haven’t read it.
+   I have been talking so far about individual mathematical understanding, but I suspect
+that what concerns most of the signatories is less that than the collective understanding that
+results at least in part from the human activity of problem solving. My guess is that they
+would argue, completely coherently, that even if collective understanding is the primary goal,
+if many individuals are primarily motivated by the wish to solve problems, that’s absolutely
+fine and contributes to that collective understanding.
+
+
+## Anthology page 59
+
+WRITINGS ON AI AND MATHEMATICS                                    59
+
+  In this context, it is worth thinking about the huge volume of output of human math-
+ematicians, which seems to have been increasing recently, even before AI. While I have
+sometimes heard complaints about this, I have certainly not heard suggestions that human
+mathematicians should slow down the rate at which they prove interesting theorems. That
+may be partly because the authors of those theorems take the trouble to write their papers
+well and give good talks. But what about the large quantity of papers, including important
+ones, that are not written well and whose authors give incomprehensible talks? That can be
+annoying, but it is a familiar annoyance and not one that we think of as a crisis.
+   A third point is that even if the volume of AI output is too big for us to be able to digest it
+properly, that is not necessarily a bad thing. To draw an imperfect analogy, there is now more
+content available on streaming services than anyone could possibly watch, with the result that
+there is almost certainly some very good content out there that is hardly watched at all. But
+that isn’t obviously a worse situation than if there were far less content and all of it received
+the attention it deserved. Returning to mathematics, if there were too much AI-generated
+content for us to be able to digest it, then we could choose which parts of it we wanted to
+digest.
+   For that we would need to have some idea what was there (a situation a little similar to
+how human mathematicians typically learn quite a lot about what results are known in their
+area even when they do not understand their proofs in any detail). One way one could try
+to achieve that would be to create a well-designed database, probably with AI help. But
+perhaps that would be unnecessary, and instead one could simply talk to an LLM and ask it
+to give a bird’s-eye view of whatever area of mathematics one wanted to understand in that
+knowing-what’s-there way.
+   The fear seems to be that some very interesting and important parts of mathematics
+will be discovered by AI and then overlooked, when had they been discovered by human
+mathematicians they would not have been overlooked. And that may even be the case, but
+what matters is whether the amount of interesting and important mathematics discovered by
+AI that is not overlooked will exceed the amount of interesting and important mathematics
+that would have been discovered and properly digested by humans with AI having played a
+more modest role.
+   In short, it seems to me that while a flood of “big” AI results would be likely to increase
+the amount of important mathematics that was not properly digested, it would also be likely
+to increase the amount that was properly digested, which seems like a pretty good bargain.
+   Let me quickly discuss the problem of AI not properly crediting human mathematicians. I
+agree that this is a serious problem right now, but it is another problem that I see as temporary.
+Very soon, the whole “credit system” will surely collapse, since finding an amazing proof will
+be no more of an intellectual achievement than when a citizen scientist spots through their
+telescope an object that turns out to be a new comet. Until that happens, it is important
+to give humans the credit they deserve, since careers can depend on it, but that will soon
+cease to be the case as well. I have to say that I’m puzzled that this problem exists, since I
+would have thought that if you asked an LLM to look at a proof and tell you which ideas
+in it are close to ideas that are in the literature already, it would be extremely good at that
+task. I hope the answer to this conundrum is not that people have been in such a hurry that
+they have simply not taken the trouble to do this, but I fear that it might be, at least in
+some cases. If so, then those who have been careless deserve to be criticized, but it is a minor
+
+
+## Anthology page 73
+
+WRITINGS ON AI AND MATHEMATICS                                  73
+
+
+20 If math is more than proof, we need to better celebrate the
+   rest of it - Grant Sanderson - 18th September
+A sentiment echoing throughout the mathematics community right now is that solving problems
+and generating proofs have always served as proxies for the true goal of mathematicians, which
+is to further human understanding. When proofs can be generated without that understanding,
+it undermines their value as a proxy.
+  This immediately raises a question: What other proxies should we use instead?
+  I want to propose that we more firmly define a notion of a “motivated explanation” and
+that we give novel and compelling motivated explanations academic credit similar to what
+generating new proofs of open problems has had historically.
+
+
+
+
+   Further, I believe this is an important step to help those outside of math better understand
+what it is that mathematicians contribute. If outsiders believe that proof-generating machines
+render mathematicians obsolete, while insiders see that as a misconception of what researchers
+add, it’s incumbent on this community to better project its true values through the kind
+of work that it rewards. Outsiders can be forgiven for this misunderstanding if the work
+most celebrated skews heavily toward generating proofs, while clarification and exposition are
+treated as second-class.
+   I should acknowledge up front an obvious personal bias. I have a non-traditional career
+in math, focused on producing videos about the topic. This shares the goal of “furthering
+human understanding”, but my focus has been on explanations and intuitions that resonate
+with the public, not on solving outstanding problems. A cynic could easily read this proposal
+as shamelessly self-elevating.
+    As a practical matter, though, my own career and funding exist outside academia, and I
+have no skin in the game for what this community assigns credit to. Moreover, in proposing
+that we elevate the status of motivated explanations, I don’t mean popularization. I mean
+any work which primarily aims to answer the question “how would you think of that?”, even
+if the subject matter requires deep expertise to appreciate.
+   The examples I highlight below show this is nothing new. Practicing mathematicians
+already devote a meaningful amount of mindshare to work like this. The proposal here is
+mainly to 1) more clearly define this work, and 2) elevate its status.
+
+
+## Anthology page 74
+
+74                             WRITINGS ON AI AND MATHEMATICS
+
+
+20.1 What defines a motivated explanation?
+Although it might be clear what this phrase “motivated explanation” is intended to mean,
+it’s worth briefly contrasting it with proof.
+  In a proof, definitions sit at the start. It is common and expected to begin with a new
+construction and proceed by analyzing its properties.
+   In a motivated explanation, definitions sit in the middle. New constructions are only allowed
+to enter the vocabulary if the problem they are addressing has been clearly established.
+   In a proof, all statements must be correct, each claim following as a necessary implication
+from what comes before.
+  In a motivated explanation, it is okay and often desirable to start with an idea that is not
+quite right and requires correction, but whose origins are relatable.
+   A genre of motivated explanation I’m fond of is “discovery fiction”, a term coined by
+Michael Nielsen. You develop an idea with a narrative that starts with a simple-but-wrong
+solution to a problem, see where it breaks down, fix that problem, discover a new problem,
+and so on.
+     The scope of a proof is to explain why a particular theorem is true.
+   The scope of a motivated explanation is not only to clarify why a theorem is true, but why
+the theorem is the right one to pose in the first place, and how it is used in the surrounding
+context.
+   One clear shortcoming of a motivated explanation is that its validity is not binary the way
+a proof’s is. This is a big reason proof is so useful a way to measure progress: You can clearly
+define what does and does not have a proof yet. There will never be Lean for motivated
+explanations.
+    If we’re serious about the goal of advancing human understanding, there’s no way around
+the fact that this aim is intrinsically squishier than that of finding proofs, because defining
+human understanding itself is squishier. To shy away from metrics which are more subjective
+is to shy away from the more human aspects of the field.
+   The reason I’m leaning on the word “motivated”, as opposed to other potential choices like
+“lucid” or “demystifying”, is that this is a more verifiable property. It’s not quite as rigidly
+verifiable as a proof; almost nothing is. But it’s enough to be a practical measure. In my own
+work, I often repeat the phrase “I want this to feel like you could have discovered it yourself”.
+I say this not just to placate a viewer, but because it’s an actionable guideline for myself to
+assess whether an explanation feels complete or not. For each new idea introduced, you can
+ask whether it’s clear where that idea comes from. The answer is not quite a binary yes or no,
+but it’s close enough for practical purposes.
+
+20.2 Exemplars of motivated explanations
+One of the best repositories I can think of for motivated explanations is Part IV of the
+Princeton Companion to Mathematics. It covers over two dozen active fields of research, each
+one introduced by an expert with a talent for clear communication.
+   Whether it’s Andrew Granville explaining analytic number theory, or David Ben-Zvi
+introducing moduli spaces, these articles offer a level of intuition and motivation more
+typically found in one-on-one conversation at a blackboard.

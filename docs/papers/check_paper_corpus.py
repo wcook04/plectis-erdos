@@ -92,6 +92,34 @@ def reading_route_errors(paper: dict, markdown: str) -> list[str]:
     return errors
 
 
+
+def record_navigation_errors(root: Path, *, require_links: bool = False) -> list[str]:
+    """Verify navigator inputs/outputs; strict mode reruns the structural link audit."""
+    sys.path.insert(0, str(root / "scripts"))
+    try:
+        import reasoning_record_audit as records
+    finally:
+        sys.path.pop(0)
+    path = root / records.REPORT
+    if not path.is_file():
+        return ["record navigation report missing"] if require_links else []
+    try:
+        report = json.loads(path.read_text(encoding="utf-8"))
+        errors = records.freshness_errors(root, report)
+        for rel, expected in report.get("navigation_sha256", {}).items():
+            if records.digest(records.safe_path(root, rel).read_bytes()) != expected:
+                errors.append("stale record navigator: " + rel)
+        live = records.report(root)
+        if {k: report.get(k) for k in live} != live:
+            errors.append("saved record audit differs from a live recomputation")
+        if not report.get("navigation_sha256"):
+            errors.append("record audit has no navigator outputs")
+        if require_links and live["status"] != "structurally_linked":
+            errors.append("short/long audit: " + live["status"] + "; see --audit report")
+        return errors
+    except (OSError, ValueError, KeyError, TypeError) as exc:
+        return ["record navigation unreadable: " + str(exc)]
+
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument(
@@ -99,7 +127,8 @@ def main(argv: list[str] | None = None) -> int:
         action="store_true",
         help=argparse.SUPPRESS,
     )
-    parser.parse_args(argv)
+    parser.add_argument("--record-links", action="store_true", help="also require all registered short/long links")
+    args = parser.parse_args(argv)
     repo_root = Path(__file__).resolve().parents[2]
     corpus_path = repo_root / CORPUS_REL
     try:
@@ -198,6 +227,11 @@ def main(argv: list[str] | None = None) -> int:
                     f"    corpus was built from {expected_pdf}\n"
                     f"    the file now hashes to {actual_pdf}"
                 )
+
+    if (repo_root / "scripts/reasoning_record_audit.py").is_file():
+        incomplete.extend(record_navigation_errors(repo_root, require_links=args.record_links))
+    elif args.record_links:
+        incomplete.append("native record audit implementation missing")
 
     if missing:
         for rel in missing:

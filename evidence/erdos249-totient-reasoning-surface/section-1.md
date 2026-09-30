@@ -442,7 +442,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="prop-parity"></a>
 
-## Proposition 1.9 (A rational sequence preserving size bounds, parity and aperiodicity), page 6
+## Proposition 1.9 (A rational sequence preserving size bounds, parity and aperiodicity), page 7
 
 > *There is $`c : \mathbb{N}\to \mathbb{N}`$ with $`c(n) \le 6`$ and $`c(n) \le n`$ for all $`n`$, $`c(n) \equiv \varphi(n) \pmod 2`$ for *every* $`n`$, and $`c`$ not eventually periodic; indeed for every $`N, G, K`$ there are $`K`$ explicit carry pulses beyond $`N`$, pairwise separated by more than $`G`$; and yet $`\sum_n c(n)/2^{n} = 3/2 \in \mathbb{Q}`$.*
 
@@ -580,8 +580,8 @@ theorem rational_mixed_moduli_with_constant_iff
 
 <a id="prop-slowmoduli"></a>
 
-## Proposition 1.12 (Slowly growing dyadic moduli), page 7
+## Passage (beginning “prop:slowmoduli…”), page 8
 
-> *Let $`\kappa:\mathbb{N}\to\mathbb{N}`$ satisfy $`2^{\kappa(n)}=o(\log n)`$, and put $`a_n=\varphi(n)\bmod2^{\kappa(n)}`$. Then $`\sum_{n\ge1}a_n2^{-n}`$ is rational exactly when $`a_n=0`$ for all large $`n`$. In particular the sum is irrational when $`\kappa(3^k)\ge2`$ for infinitely many $`k`$.*
+> *Remark 12* (Slowly growing dyadic moduli). Let $`\kappa:\mathbb{N}\to\mathbb{N}`$ satisfy $`2^{\kappa(n)}=o(\log n)`$, and put $`a_n=\varphi(n)\bmod2^{\kappa(n)}`$. Then $`\sum_{n\ge1}a_n2^{-n}`$ is rational exactly when $`a_n=0`$ for all large $`n`$. In particular the sum is irrational when $`\kappa(3^k)\ge2`$ for infinitely many $`k`$.
 
 **No Lean proof of the whole statement.** In Lean, ordinary proof in the record; the block construction from prime factors of Fermat numbers and the tail estimate are not formalised.

@@ -2,21 +2,15 @@
 # SPDX-License-Identifier: Apache-2.0
 cff-version: 1.2.0
 type: software
-message: "If you use this release, cite the software metadata below; for later work on main, also record the commit used. For a mathematical result, cite the relevant per-problem paper linked from README.md and its original sources; see docs/PRIOR_ART.md and docs/research-commons/SOURCE_ATTRIBUTIONS.md for attribution; paper/archive/erdos249-257-main-paper.tex is the archival joint #249/#257 manuscript."
+message: "This metadata describes the current repository. Cite the software metadata below and record the commit used; for a tagged release, use the CITATION.cff from that tag. For a mathematical result, cite the relevant per-problem paper linked from README.md and its original sources; see docs/PRIOR_ART.md and docs/research-commons/SOURCE_ATTRIBUTIONS.md for attribution; paper/archive/erdos249-257-main-paper.tex is the archival joint #249/#257 manuscript."
 title: "Plectis: research on eight Erdős problems"
-version: "0.10.0"
-date-released: "2026-09-11"
 authors:
   - family-names: "Cook"
     given-names: "Will"
 license: Apache-2.0
-abstract: "Using ani's explicit monic degree-seven polynomial, Lean proves that every preconnected subset of its strict unit lemniscate containing two distinct roots has one-dimensional Hausdorff measure greater than 2. This refutes the exact Formal Conjectures path-image-length statement; the separate total-variation bound is also checked. A Lean 4 / Mathlib corpus of kernel-checked results around eight Erdős problems (#68, #243, #249, #251, #257, #269, #1041, #1049), with #249 and #257 as the reviewed core: exact finite-period noncollapse for every finite support and every base b ≥ 2, an explicit rational basis of dimension 2^e+1 for the dyadic sections of Euler's totient, Mersenne achievement-set geometry including the measure-one clause, six exact characterisations of #249 irrationality, unconditional denominator exclusions, diagonal certificates through t=82, and checked reductions, equivalences, and obstructions for the six expansion problems, bound to source by a reviewed claim registry. It does not solve Erdős #249 or the universal #257 problem. The other seven targets remain open. No independent human mathematical review, including review of correspondence with the 1958 wording, has been recorded."
+abstract: "Using ani's explicit monic degree-seven polynomial, Lean proves that every preconnected subset of its strict unit lemniscate containing two distinct roots has one-dimensional Hausdorff measure greater than 2. This refutes the exact Formal Conjectures path-image-length statement; the separate total-variation bound is also checked. A Lean 4 / Mathlib corpus of kernel-checked results around eight Erdős problems (#68, #243, #249, #251, #257, #269, #1041, #1049): exact finite-period noncollapse for every finite support and every base b ≥ 2, an explicit rational basis of dimension 2^e+1 for the dyadic sections of Euler's totient, Mersenne achievement-set geometry including the measure-one clause, six exact characterisations of #249 irrationality, unconditional denominator exclusions, diagonal certificates through t=82, and checked reductions, equivalences, and obstructions for the six expansion problems, bound to source by a self-assessed and agent-checked claim registry. It does not solve Erdős #249 or the universal #257 problem. The other seven targets remain open. No independent human mathematical review, including review of correspondence with the 1958 wording, has been recorded."
 repository-code: "https://github.com/wcook04/plectis-erdos"
 url: "https://github.com/wcook04/plectis-erdos"
-identifiers:
-  - type: url
-    value: "https://github.com/wcook04/plectis-erdos/releases/tag/v0.10.0"
-    description: "The tagged release this metadata describes"
 keywords:
   - "Lean 4"
   - "mathlib"
