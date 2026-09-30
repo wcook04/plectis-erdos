@@ -219,7 +219,12 @@
       "task_cues": [
         "external verification replay",
         "reproduce the #257 weighted theorem",
-        "verify the #257 weighted theorem independently"
+        "verify the #257 weighted theorem independently",
+        "independent comparator replay",
+        "comparator replay independently",
+        "replay independently with comparator",
+        "replay with comparator independently",
+        "independent comparator review"
       ],
       "task_intents": [
         {
@@ -986,8 +991,14 @@
             "readme",
             "links",
             "routes",
-            "entry"
+            "entry",
+            "documentation",
+            "architecture"
           ]
+        },
+        {
+          "actions": ["review"],
+          "objects": ["architecture"]
         },
         {
           "actions": [

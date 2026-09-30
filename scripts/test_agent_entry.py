@@ -47,6 +47,44 @@ ROUTE_CASES = {
     "I want to reproduce the #257 weighted theorem with Comparator using the README": (
         "comparator_replay", "explain-public-system",
     ),
+    # An explicit independent Comparator journey reaches its healthy replay
+    # plan. Review of proofs, architecture or returned work keeps its own lane.
+    "Review the #257 weighted theorem with an independent Comparator replay": (
+        "comparator_replay", "explain-public-system",
+    ),
+    "Replay independently with Comparator the selected weighted theorem from its pinned commit": (
+        "comparator_replay", "explain-public-system",
+    ),
+    "Perform a Comparator replay independently for the selected weighted theorem": (
+        "comparator_replay", "explain-public-system",
+    ),
+    "Request an independent Comparator review of the selected #257 theorem": (
+        "comparator_replay", "explain-public-system",
+    ),
+    "Review the proof of the #257 weighted theorem": (
+        "bounded_research", "mine-open-problem",
+    ),
+    "Review the Comparator architecture": (
+        "repository_architecture", "maintain-public-infrastructure",
+    ),
+    "Review architecture for an independent Comparator replay": (
+        "repository_architecture", "maintain-public-infrastructure",
+    ),
+    "Improve the documentation for an independent Comparator replay": (
+        "repository_architecture", "maintain-public-infrastructure",
+    ),
+    "Audit the Comparator replay README for contributor readiness": (
+        "repository_architecture", "maintain-public-infrastructure",
+    ),
+    "Prove the weighted theorem in Lean before an independent Comparator replay": (
+        "bounded_research", "mine-open-problem",
+    ),
+    "Submit my mathematical proof for review": (
+        "return_research", "erdos-research-return",
+    ),
+    "Review the #257 theorem in the paper without running Comparator": (
+        "understand_repository", "explain-public-system",
+    ),
     "test whether 189/388 is a reciprocal-Mersenne subsum with exact rational arithmetic": (
         "rational_subsum_probe", "explain-public-system",
     ),
