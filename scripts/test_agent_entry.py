@@ -22,6 +22,77 @@ from agent_skill_catalog import ROOT, load_catalog
 
 
 ROUTE_CASES = {
+    # Ordinary metadata/release/status journeys need their existing owners;
+    # mentioning citation, release or claim alone must not select maintenance.
+    'Update the repository citation metadata and refresh its generated views': (
+        'repository_architecture', 'maintain-public-infrastructure',
+    ),
+    'Refresh the public repository citations and regenerate their views': (
+        'repository_architecture', 'maintain-public-infrastructure',
+    ),
+    'Correct the repository citation record': (
+        'repository_architecture', 'maintain-public-infrastructure',
+    ),
+    'Fix stale CFF author information': (
+        'repository_architecture', 'maintain-public-infrastructure',
+    ),
+    'Check the release before publishing this repository': (
+        'repository_architecture', 'maintain-public-infrastructure',
+    ),
+    'Validate the candidate release before publishing this repository': (
+        'repository_architecture', 'maintain-public-infrastructure',
+    ),
+    'Audit the candidate releases before publishing this repository': (
+        'repository_architecture', 'maintain-public-infrastructure',
+    ),
+    'Run the repository release checks': (
+        'repository_architecture', 'maintain-public-infrastructure',
+    ),
+    'Inspect the current claim boundary for Erdős 1041': (
+        'mathematical_status', 'explain-public-system',
+    ),
+    'Inspect the exact current claim boundaries for Erdős 257': (
+        'mathematical_status', 'explain-public-system',
+    ),
+    'Explain the registered claims and their remaining assumptions': (
+        'mathematical_status', 'explain-public-system',
+    ),
+    'Query the current status of a mathematical claim': (
+        'mathematical_status', 'explain-public-system',
+    ),
+    'Revise the mathematical paper citation metadata': (
+        'public_writing', 'public-mathematical-writing',
+    ),
+    'Prove a theorem using the citation in this paper': (
+        'bounded_research', 'mine-open-problem',
+    ),
+    'Prove a theorem beyond the current claim boundary': (
+        'bounded_research', 'mine-open-problem',
+    ),
+    'Submit my proof of this claim for review and credit': (
+        'return_research', 'erdos-research-return',
+    ),
+    'Validate Lean on the latest toolchain release': (
+        'lean_validation', 'lean-concurrent-validation',
+    ),
+    'Check the latest Lean release notes': (
+        'understand_repository', 'explain-public-system',
+    ),
+    'Check the release of an unrelated software package': (
+        'understand_repository', 'explain-public-system',
+    ),
+    'Explain the repository citation metadata': (
+        'understand_repository', 'explain-public-system',
+    ),
+    'citation': (
+        'understand_repository', 'explain-public-system',
+    ),
+    'release': (
+        'understand_repository', 'explain-public-system',
+    ),
+    'claim': (
+        'understand_repository', 'explain-public-system',
+    ),
     "test whether 189/388 is a reciprocal-Mersenne subsum with exact rational arithmetic": (
         "rational_subsum_probe", "explain-public-system",
     ),

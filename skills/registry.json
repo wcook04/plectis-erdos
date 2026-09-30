@@ -308,6 +308,12 @@
         "strongest theorem",
         "current frontier"
       ],
+      "task_intents": [
+        {
+          "actions": ["inspect", "explain", "query"],
+          "objects": ["claim", "claims"]
+        }
+      ],
       "skills": [
         "explain-public-system"
       ],
@@ -967,7 +973,11 @@
         "organise docs",
         "documentation layout",
         "cli error recovery",
-        "research session creation"
+        "research session creation",
+        "release before publishing this repository",
+        "releases before publishing this repository",
+        "repository release checks",
+        "repository release validation"
       ],
       "task_intents": [
         {
@@ -1023,6 +1033,10 @@
             "session",
             "sessions"
           ]
+        },
+        {
+          "actions": ["update", "refresh", "correct", "fix", "repair", "maintain"],
+          "objects": ["citation", "citations", "cff"]
         }
       ],
       "skills": [
