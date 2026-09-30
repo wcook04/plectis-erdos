@@ -4169,9 +4169,10 @@ def main() -> int:
         if reviewed_fixed:
             assert fixed_family["paper_route"]["matching_anchors"]
             assert any(
-                anchor["source_ref"].startswith(
-                    "paper/249/erdos-249-binary-totient-series.tex:"
-                )
+                anchor["source_ref"] == "paper/249/erdos249-totient-reasoning-surface.tex:4185"
+                and anchor["destination_source"] == "paper/249/erdos249-totient-reasoning-surface.tex"
+                and anchor["relation_origin"] == "visible_companion_authored_source_link"
+                and anchor["visible_hop"] == "registered_visible_companion_pdf_link"
                 for anchor in fixed_family["paper_route"]["matching_anchors"]
             )
             assert fixed_family["representative"] == (
