@@ -135,7 +135,7 @@ UNIFIED_SYSTEMS_FIRST_MINUTE = {
         "source-frozen editorial refinement",
     ),
     (5, 6): (
-        "share this acceptance boundary",
+        "either arrangement leaves mathematical acceptance with the integrating reviewer",
         "no measurement of reader benefit or autonomous discovery",
     ),
     (6, 7): (

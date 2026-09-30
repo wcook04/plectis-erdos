@@ -19,6 +19,7 @@ import contextlib
 import io
 import hashlib
 import json
+import os
 import subprocess
 import tempfile
 from pathlib import Path
@@ -662,8 +663,34 @@ def test_support_identity_is_not_presentation_limited() -> None:
             "a field beyond a blank line or display limit was absent from identity")
 
 
+
+def test_unchanged_generation_preserves_render_input_timestamp():
+    with tempfile.TemporaryDirectory() as folder:
+        root = Path(folder)
+        pe.write_atomically(root, {"paper/evidence/note.tex": "same evidence\n"})
+        source = root / "paper/evidence/note.tex"
+        os.utime(source, ns=(1_000_000_000, 1_000_000_000))
+        before = source.stat()
+        pe.write_atomically(root, {"paper/evidence/note.tex": "same evidence\n"})
+        after = source.stat()
+        assert after.st_mtime_ns == before.st_mtime_ns
+        assert after.st_ino == before.st_ino
+
+
+def test_changed_generation_replaces_the_render_input():
+    with tempfile.TemporaryDirectory() as folder:
+        root = Path(folder)
+        pe.write_atomically(root, {"paper/evidence/note.tex": "old evidence\n"})
+        source = root / "paper/evidence/note.tex"
+        os.utime(source, ns=(1_000_000_000, 1_000_000_000))
+        pe.write_atomically(root, {"paper/evidence/note.tex": "new evidence\n"})
+        assert source.read_text() == "new evidence\n"
+        assert source.stat().st_mtime_ns > 1_000_000_000
+
 def main() -> int:
     tests = [
+        test_unchanged_generation_preserves_render_input_timestamp,
+        test_changed_generation_replaces_the_render_input,
         test_complete_support_chain_and_unrelated_module,
         test_structure_field_mutation_invalidates_support,
         test_inherited_requirement_mutation_invalidates_support,

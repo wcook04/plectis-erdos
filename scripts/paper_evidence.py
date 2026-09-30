@@ -1330,6 +1330,9 @@ def write_atomically(root: Path, files: dict[str, str]) -> None:
     staged = []
     for rel, text in files.items():
         target = root / rel
+        # Unchanged TeX inputs must not become newer than their reviewed PDFs.
+        if target.is_file() and target.read_bytes() == text.encode("utf-8"):
+            continue
         target.parent.mkdir(parents=True, exist_ok=True)
         fd, tmp = tempfile.mkstemp(dir=target.parent, prefix=".paper_evidence.")
         with os.fdopen(fd, "w", encoding="utf-8") as handle:

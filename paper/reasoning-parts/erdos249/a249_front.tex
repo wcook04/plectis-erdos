@@ -115,7 +115,7 @@ $R_N := \sum_{j \ge 0} \varphi(N+1+j)/2^{j+1} \in [0,\infty)$
 If $S=a/(2^cv)$ with $c\ge0$ and $v\ge1$ odd, Euler's theorem gives
 $h=\varphi(v)>0$ and $N_0=c$ such that $R_{N+h}-R_N\in\Z$ for every
 $N\ge N_0$
-(\lean{Erdos249257.eventual\_period\_of\_not\_irrational}{TotientTailPeriodKiller.lean:358}).
+(\lean{Erdos249257.TotientTailPeriodKiller.eventual_period_of_not_irrational}{TotientTailPeriodKiller.lean:358}).
 Indeed,
 \[
  R_{N+h}-R_N\equiv 2^N(2^h-1)S\pmod\Z,
@@ -146,7 +146,7 @@ The error bound $N{+}h{+}L{+}2$ comes from
 $\varphi(m) \le m$, so a certificate is sound: it forces
 $R_{N+h} - R_N \notin \Z$, and in fact certificates are \emph{complete} for
 non-integrality
-(\lean{Erdos249257.exists\_certifiedKill\_iff\_tail\_diff\_notMem\_int}{LcmConeFlatness.lean:316}).
+(\lean{Erdos249257.TotientTailPeriodKiller.exists_certifiedKill_iff_tail_diff_notMem_int}{LcmConeFlatness.lean:316}).
 The resulting quantified condition is the following.
 
 \begin{defn}[The quantified residue condition]
@@ -172,7 +172,7 @@ Its depth must grow: the two strict residue inequalities imply
 $2(N+h+L+2)<2^L$. Keeping $L$ fixed cannot provide certificates as $N$ grows.
 Neither this necessary size condition nor a finite list of successful tests
 supplies the required residues.
-\lean{Erdos249257.certifiedKill\_depth\_floor}{TotientTailPeriodKiller.lean:79}
+\lean{Erdos249257.TotientTailPeriodKiller.certifiedKill_depth_floor}{TotientTailPeriodKiller.lean:79}
 
 
 \subsection{Unconditional results}
@@ -528,9 +528,9 @@ Both tails on the right are nonnegative, and
 $R^c_M\le\sum_{j\ge1}(M+j)2^{-j}=M+2$. Their difference therefore has
 absolute value at most $N+h+L+2$. The corresponding totient bound is
 formalised at
-\lean{Erdos249257.tail\_after\_le}{TotientTailPeriodKiller.lean:198} and used
+\lean{Erdos249257.TotientTailPeriodKiller.tail_after_le}{TotientTailPeriodKiller.lean:198} and used
 there to prove
-\lean{Erdos249257.tail\_diff\_notMem\_int\_of\_certifiedKill}{TotientTailPeriodKiller.lean:262}.
+\lean{Erdos249257.TotientTailPeriodKiller.tail_diff_notMem_int_of_certifiedKill}{TotientTailPeriodKiller.lean:262}.
 If $R^{c}_{N+h} - R^{c}_{N} = k \in \Z$ then $2^{L}k \equiv 0 \pmod{2^{L}}$
 and $D_c$ lies within $N{+}h{+}L{+}2$ of $2^{L}k$, so
 $D_c \bmod 2^{L}$ lies within $N{+}h{+}L{+}2$ of $0$ or of $2^{L}$,
@@ -717,7 +717,7 @@ Two related results concern particular prescribed patterns. Under the
 stated room condition, the complete terminal divisibility pattern is
 impossible: its last totient difference would be positive, below a modulus,
 and divisible by that modulus
-(\lean{Erdos257PeriodNoncollapse.not\_actualLcmTerminalDyadicStaircase\_of\_room}{TotientActualLcmTopEdgeStaircase.lean:251}).
+(\lean{Erdos249257.DiagonalFreshLossBridge.PowerTwoOddWindowAffine.not_actualLcmTerminalDyadicStaircase_of_room}{TotientActualLcmTopEdgeStaircase.lean:251}).
 For the pattern with the last condition
 removed, the penultimate difference is forced to be $2^{m-1}$, with
 $2^m<2(2H+J+K+2)$.
@@ -883,15 +883,15 @@ The block norm condition asserts that
   \le \tfrac{21}{25}X .
 \]
 It implies $S\notin\mathbb Q$.
-\lean{Erdos249257.DTWFirstHarmonicNormGap}{FirstHarmonicPivot.lean:75}
-\lean{Erdos249257.irrational\_totient\_series\_of\_first\_harmonic\_norm\_gap}{FirstHarmonicPivot.lean:83}
+\lean{Erdos249257.TotientTailPeriodKiller.DTWFirstHarmonicNormGap}{FirstHarmonicPivot.lean:75}
+\lean{Erdos249257.TotientTailPeriodKiller.irrational_totient_series_of_first_harmonic_norm_gap}{FirstHarmonicPivot.lean:83}
 \end{defn}
 
 A bound on the real part also suffices: it is enough that
 $\sum_{N \in [X,2X)} \operatorname{Re}E(h,N,L) \le \tfrac{9}{10}X$
-(\lean{Erdos249257.exists\_certifiedKill\_of\_first\_harmonic\_gap}{FirstHarmonicGap.lean:128};
+(\lean{Erdos249257.TotientTailPeriodKiller.exists_certifiedKill_of_first_harmonic_gap}{FirstHarmonicGap.lean:128};
 for the implication from $21/25$ to $9/10$,
-\lean{Erdos249257.exists\_certifiedKill\_of\_first\_harmonic\_norm\_gap}{FirstHarmonicPivot.lean:53}).
+\lean{Erdos249257.TotientTailPeriodKiller.exists_certifiedKill_of_first_harmonic_norm_gap}{FirstHarmonicPivot.lean:53}).
 Unpacked, the required object is a constant-saving cancellation estimate for
 the dyadically weighted totient-difference exponential sum
 \[
@@ -933,8 +933,8 @@ do not settle it.
   for the totient phases.
 \end{itemize}
 
-Formal sources for these implications: \lean{Erdos249257.windowFirstCos\_gt\_of\_not\_certifiedKill}{FirstHarmonicGap.lean:44}
-\lean{Erdos249257.exists\_certifiedKill\_of\_first\_harmonic\_gap\_subset}{FirstHarmonicGap.lean:104}
+Formal sources for these implications: \lean{Erdos249257.TotientTailPeriodKiller.windowFirstCos_gt_of_not_certifiedKill}{FirstHarmonicGap.lean:44}
+\lean{Erdos249257.TotientTailPeriodKiller.exists_certifiedKill_of_first_harmonic_gap_subset}{FirstHarmonicGap.lean:104}
 
 
 \begin{rem}[The finite-prefix example does not choose a method]
@@ -1031,8 +1031,8 @@ $16(2X{+}h{+}L{+}2) \le 2^{L}$, and all four of
 \end{aligned}
 \]
 It implies $S\notin\mathbb Q$.
-\lean{Erdos249257.DTWPivotResidualDecorrelation}{FirstHarmonicPivot.lean:569}
-\lean{Erdos249257.irrational\_totient\_series\_of\_pivotResidualDecorrelation}{FirstHarmonicPivot.lean:577}
+\lean{Erdos249257.TotientTailPeriodKiller.DTWPivotResidualDecorrelation}{FirstHarmonicPivot.lean:569}
+\lean{Erdos249257.TotientTailPeriodKiller.irrational_totient_series_of_pivotResidualDecorrelation}{FirstHarmonicPivot.lean:577}
 \end{defn}
 
 The four bounds must hold for the same $X,L,s,\eta$, not along four
@@ -1050,9 +1050,9 @@ an equivalent restatement of the norm estimate.
 
 
 The decomposition is an exact identity, proved in Lean
-(\lean{Erdos249257.windowFirstExp\_sum\_eq\_pivot\_decomposition}{FirstHarmonicPivot.lean:514}),
+(\lean{Erdos249257.TotientTailPeriodKiller.windowFirstExp_sum_eq_pivot_decomposition}{FirstHarmonicPivot.lean:514}),
 as is the implication from the four bounds to the real-part bound
-(\lean{Erdos249257.first\_harmonic\_gap\_of\_pivotBudgetAt}{FirstHarmonicPivot.lean:549}).
+(\lean{Erdos249257.TotientTailPeriodKiller.first_harmonic_gap_of_pivotBudgetAt}{FirstHarmonicPivot.lean:549}).
 The mean being subtracted is the mean of $z_N$, not of the residual
 weight $w_N$. On each cofactor group, $\sum_N(z_N-\bar z_m)=0$, but
 $\sum_Nw_N(z_N-\bar z_m)$ need not vanish because $w_N$ varies with $N$.
@@ -1062,7 +1062,7 @@ For $X\ge4$ and $s=L-h$, the assigned indices \emph{with cofactor
 $m_N=1$} are exactly those for which $N+h+1$ is prime. This describes
 one cofactor group, not all assigned indices. The source proves this
 membership equality
-(\lean{Erdos249257.mem\_pivotFiber\_one\_overlap\_iff}{FirstHarmonicPivot.lean:423}),
+(\lean{Erdos249257.TotientTailPeriodKiller.mem_pivotFiber_one_overlap_iff}{FirstHarmonicPivot.lean:423}),
 using $\varphi(mp)=\varphi(m)(p-1)$ and $p>m$.
 This special choice has $s=L-h$ varying with $L$; it illustrates the
 arithmetic of the groups but does not establish the condition with $s$
@@ -1080,7 +1080,7 @@ bound on the indices in $\mathcal G$.
 
 A nonzero determinant alone does not prove the needed correlation
 estimate. The comparison in the linked source
-(\lean{Erdos249257.locked\_reconstruction\_preserves\_nonzero\_minor}{ResidualGaugeObstruction.lean:94})
+(\lean{Erdos249257.ResidualGaugeObstruction.locked_reconstruction_preserves_nonzero_minor}{ResidualGaugeObstruction.lean:94})
 preserves such a determinant
 while fixing an entire row of weighted phases to $1$. A successful
 application must distinguish that comparison, for example by additional
@@ -1122,7 +1122,7 @@ A suitable saving on this set alone would therefore imply irrationality.
 (a) At a depth satisfying the room inequality, a nonempty set of indices
 below $2X$ whose average of $\operatorname{Re}E(h,N,L)$ is at most $9/10$
 contains an index $N$ with $\mathcal C(h,N,L)$
-(\lean{Erdos249257.exists\_certifiedKill\_of\_first\_harmonic\_gap\_subset}{FirstHarmonicGap.lean:104}).
+(\lean{Erdos249257.TotientTailPeriodKiller.exists_certifiedKill_of_first_harmonic_gap_subset}{FirstHarmonicGap.lean:104}).
 The hypothesis therefore supplies, for every $h\ge1$, certificates beyond
 every threshold, which is Definition~\ref{defn:sep}; that condition is
 equivalent to $S\notin\Q$.
@@ -6296,7 +6296,7 @@ certificates beyond every starting index. A finite computation can check
 many instances, but one fixed inspection bound cannot establish these
 quantifiers. The following comparison explains this limitation without
 making any claim about all possible irrationality arguments.
-\lean{Erdos249257.irrational\_totient\_series\_iff\_certificate\_supply}{LcmConeFlatness.lean:412}
+\lean{Erdos249257.TotientTailPeriodKiller.irrational_totient_series_iff_certificate_supply}{LcmConeFlatness.lean:412}
 
 
 \textbf{Counterexample.} Theorem~\ref{thm:gamma} gives an explicit splice
@@ -6327,7 +6327,7 @@ prefix; the latter preserves parity and has separated nonperiodic blocks.
 Each shows why its own list of assumptions is insufficient. The recorded
 finite diagonal examples remain useful individual certificates, but their
 number alone gives no assertion at arbitrarily large scales.
-\lean{Erdos249257.certifiedKill\_diagonal\_all\_imported\_through\_t64}{DiagonalPincerCertificatesT64.lean:1967}
+\lean{Erdos249257.TotientTailPeriodKiller.certifiedKill_diagonal_all_imported_through_t64}{DiagonalPincerCertificatesT64.lean:1967}
 
 
 \subsection{A rational series with matching totient parity}
@@ -6608,7 +6608,7 @@ hypotheses.
 \subsection{Tail integrality on an LCM grid}
 
 \textbf{The comparison.} The diagonal condition
-(\lean{Erdos249257.irrational\_totient\_series\_iff\_lcm\_diagonal\_certificate\_supply}{LcmConeFlatness.lean:426})
+(\lean{Erdos249257.TotientTailPeriodKiller.irrational_totient_series_iff_lcm_diagonal_certificate_supply}{LcmConeFlatness.lean:426})
 uses the pair $(H_t,2H_t)$. Under rationality, the same fractional part
 occurs at every positive multiple of $H_t$ once $t$ is sufficiently
 large. A finite set of these multiples therefore gives another possible
@@ -6894,7 +6894,7 @@ $R_{2kH}-R_{kH}\in\Z$ for every $k\in\{1,p,q,pq\}$ is equivalent to
 requiring only $R_{2H}-R_H\in\Z$. Neither multiplier need be prime.
 The affine transport formula along $H\mapsto kH$ carries integrality at
 the first scale to each of the other three.
-\lean{Erdos249257.fullTarget\_primeAdjunction\_diamond\_iff\_root}{FullTargetPrimeAdjunctionNoGo.lean:196}.
+\lean{Erdos249257.FullTargetPrimeAdjunctionNoGo.fullTarget_primeAdjunction_diamond_iff_root}{FullTargetPrimeAdjunctionNoGo.lean:196}.
 &
 Adding these three integrality assertions does not strengthen the first
 one. A different test involving part of the tail would need an estimate
@@ -6975,7 +6975,7 @@ combination &
 For any finite \(w:\iota\to\mathbb Q\), \(x:\iota\to\mathbb N\) with
 \(\sum w_i\varphi(x_i)=1\) (exact isolation), the crude two-tail cost
 \(\sum|w_i|(2(x_i+1)+(x_i+2))\ge3\), using only \(\varphi(x)\le x\).
-\lean{Erdos257PeriodNoncollapse.three\_le\_totientAdjugateTailCost}{TotientTailCarryPeriod.lean:266}
+\lean{Erdos249257.three_le_totientAdjugateTailCost}{TotientTailCarryPeriod.lean:266}
 (see also \lean{not\_totientAdjugateTailCost\_lt\_one}{TotientTailCarryPeriod.lean:307}). &
 The displayed termwise absolute-value estimate cannot be less than $1$.
 The same inequality holds for any coefficients $0\le c(n)\le n$ with
@@ -8472,7 +8472,7 @@ every threshold, and an implication does not establish its antecedent.
 
 
 Recall that $H_t=H(t)=\operatorname{lcm}(1,\dots,t)$
-(\lean{Erdos249257.CarrySurvivorExtinction.periodLcm}{CarrySurvivorExtinction.lean:515}).
+(\lean{Erdos249257.TotientTailPeriodKiller.periodLcm}{CarrySurvivorExtinction.lean:515}).
 For nonnegative integers $h,N,L$, put
 \[
 D(h,N,L)=\sum_{j=0}^{L-1}
@@ -8497,7 +8497,7 @@ depth exists exactly when the tail difference is nonintegral:
  \bigl(\exists L\ge0,\ \mathcal C(h,N,L)\bigr)
  \quad\Longleftrightarrow\quad R_{N+h}-R_N\notin\mathbb Z.
 \]
-\lean{Erdos249257.exists_certifiedKill_iff_tail_diff_notMem_int}{LcmConeFlatness.lean:316}
+\lean{Erdos249257.TotientTailPeriodKiller.exists_certifiedKill_iff_tail_diff_notMem_int}{LcmConeFlatness.lean:316}
 (The same equivalence is also stated at
 \lean{Erdos249257.totient\_tail\_window\_kill\_exists\_iff\_tail\_diff\_not\_int}{CertificateKernel.lean:19025}.)
 
@@ -8527,17 +8527,17 @@ a rational tail period.
 Here $\mathcal C(h,N,L)$ is the finite residue test defined earlier;
 the universal quantifiers over $h$ and $N_0$ belong to the displayed
 assertion, not to that finite test.
-\lean{Erdos249257.irrational_totient_series_iff_certificate_supply}{LcmConeFlatness.lean:412}
+\lean{Erdos249257.TotientTailPeriodKiller.irrational_totient_series_iff_certificate_supply}{LcmConeFlatness.lean:412}
 The equivalence is proved; the quantified existence assertion is not proved.
 
 The reverse direction is by contradiction against the tail-period law: if $S$ were
 rational, the eventual-period theorem
-(\lean{Erdos249257.eventual_period_of_not_irrational}{TotientTailPeriodKiller.lean:358},
+(\lean{Erdos249257.TotientTailPeriodKiller.eventual_period_of_not_irrational}{TotientTailPeriodKiller.lean:358},
 unconditional) supplies a period $h>0$ and pre-period $N_0$ with
 $R_{N+h}-R_N\in\mathbb{Z}$ for all $N\ge N_0$; the certificate hypothesis
 instantiated at that $(h,N_0)$ produces an $N\ge N_0$ where
 $R_{N+h}-R_N\notin\mathbb{Z}$, a contradiction via nonintegrality from a certificate
-(\lean{Erdos249257.tail_diff_notMem_int_of_certifiedKill}{TotientTailPeriodKiller.lean:262}).
+(\lean{Erdos249257.TotientTailPeriodKiller.tail_diff_notMem_int_of_certifiedKill}{TotientTailPeriodKiller.lean:262}).
 
 For the forward direction, irrationality gives pointwise non-integrality of
 every positive tail shift and certificate completeness supplies a witness
@@ -8567,7 +8567,7 @@ estimate to be attempted, but none supplies the witnesses it requires.
     \mathcal{C}(m\cdot h_0, N, L)
   \ \Longrightarrow\ S\notin\mathbb Q.
 \]
-\lean{Erdos249257.irrational_totient_series_of_multiple_certificate_supply}{CarrySurvivorExtinction.lean:502}
+\lean{Erdos249257.TotientTailPeriodKiller.irrational_totient_series_of_multiple_certificate_supply}{CarrySurvivorExtinction.lean:502}
 
 The preceding residue condition implies this one by taking $m=1$.
 Conversely, a hypothetical period $h_0$ also makes every positive
@@ -8583,14 +8583,14 @@ assertion remains equivalent to irrationality.
   \forall t_0,\ \exists t\ge t_0,\ \exists L,\
     \mathcal{C}(H_t, H_t, L).
 \]
-\lean{Erdos249257.irrational_totient_series_iff_lcm_diagonal_certificate_supply}{LcmConeFlatness.lean:426}
+\lean{Erdos249257.TotientTailPeriodKiller.irrational_totient_series_iff_lcm_diagonal_certificate_supply}{LcmConeFlatness.lean:426}
 
 The two parameters in a hypothetical rational tail period are absorbed
 by one LCM index. For $t\ge\max(h_0,N_0)$, both $h_0\mid H_t$ and
 $H_t\ge t\ge N_0$ hold. A diagonal certificate then contradicts
 periodicity through the multiple-period argument; the precise
 intermediate implication is proved in Lean
-(\lean{Erdos249257.irrational_totient_series_of_lcm_certificate_supply}{LcmDiagonalReduction.lean:92}).
+(\lean{Erdos249257.TotientTailPeriodKiller.irrational_totient_series_of_lcm_certificate_supply}{LcmDiagonalReduction.lean:92}).
 Conversely, irrationality and pointwise completeness give a diagonal
 certificate already at $t=t_0$.
 
@@ -8600,9 +8600,9 @@ is verified for every $t\le82$
 The historical list contained 28 explicit values through $t=64$, with
 depths $[6,5,7,7,9,14,15,14,21,22,23,26,\dots]$ for
 $t\in\{1,2,3,4,5,7,8,9,11,13,16,17,\dots\}$
-(\lean{Erdos249257.certifiedKill_diagonal_all_imported}{DiagonalPincerCertificates.lean:2870};
+(\lean{Erdos249257.TotientTailPeriodKiller.certifiedKill_diagonal_all_imported}{DiagonalPincerCertificates.lean:2870};
 endpoint
-\lean{Erdos249257.certifiedKill_diagonal_t64}{DiagonalPincerCertificateT64Endpoint.lean:1928}).
+\lean{Erdos249257.TotientTailPeriodKiller.certifiedKill_diagonal_t64}{DiagonalPincerCertificateT64Endpoint.lean:1928}).
 These are finite computations. The current contiguous
 range is still finite and does not establish witnesses at arbitrarily
 large indices; no certificate at $t=83$ is claimed here.
@@ -8666,13 +8666,13 @@ residue condition. With $e(x)=\exp(2\pi i x)$, the assertion is
   16\,(2X+h+L+2)\le 2^L\ \wedge\
   \Bigl\|\sum_{N\in[X,2X)} e\bigl(D(h,N,L)/2^L\bigr)\Bigr\| \le \tfrac{21}{25}X.
 \]
-\lean{Erdos249257.DTWFirstHarmonicNormGap}{FirstHarmonicPivot.lean:75}
+\lean{Erdos249257.TotientTailPeriodKiller.DTWFirstHarmonicNormGap}{FirstHarmonicPivot.lean:75}
 The universally quantified assertion is not proved.
 
 \[
   \text{block norm condition} \ \Longrightarrow\ S\notin\mathbb Q.
 \]
-\lean{Erdos249257.irrational_totient_series_of_first_harmonic_norm_gap}{FirstHarmonicPivot.lean:83}
+\lean{Erdos249257.TotientTailPeriodKiller.irrational_totient_series_of_first_harmonic_norm_gap}{FirstHarmonicPivot.lean:83}
 The threshold is $X_0$, while $X$ and $L$ are chosen witnesses and may
 depend on both $h$ and $X_0$. Taking $X_0=N_0$ gives a certificate
 at some $N\in[X,2X)$, hence at $N\ge N_0$. The elementary reason is
@@ -8687,7 +8687,7 @@ finite $T\subseteq[0,2X)$ with the stated size bound and
 $\|\sum_{N\in T}e(D(h,N,L)/2^L)\|\le(21/25)|T|$.
 Taking $T=[X,2X)$ gives the full-block implication. Allowing a chosen
 subset weakens the hypothesis; it does not strengthen it. The Lean proof
-(\lean{Erdos249257.exists_certifiedKill_of_first_harmonic_norm_gap}{FirstHarmonicPivot.lean:53})
+(\lean{Erdos249257.TotientTailPeriodKiller.exists_certifiedKill_of_first_harmonic_norm_gap}{FirstHarmonicPivot.lean:53})
 uses the elementary block lemma of Theorem~\ref{thm:hgap-real}, which is
 unconditional as an implication. The real-part version uses
 $\operatorname{Re}\sum_{N\in T}e(D(h,N,L)/2^L)\le(9/10)|T|$.
@@ -8723,11 +8723,11 @@ an arithmetic assertion to prove.
   \forall a_0,\ \exists a\ge a_0,\ \Omega_a\notin\mathbb{Z}.
 \]
 \end{quote}
-\lean{Erdos257PeriodNoncollapse.DiagonalFreshLossBridge.PowerTwoOddWindowAffine.irrational_totientSeries_iff_actualLcmOrbitNonintegralitySupply}{TotientActualLcmOrbitNonintegrality.lean:37}
+\lean{Erdos249257.DiagonalFreshLossBridge.PowerTwoOddWindowAffine.irrational_totientSeries_iff_actualLcmOrbitNonintegralitySupply}{TotientActualLcmOrbitNonintegrality.lean:37}
 This is an unconditional equivalence, where
 $\Omega_a := 2^H(2^H-1)S - (\Phi_{2H}-\Phi_H)$,
 $H=H_{2^a}$
-(\lean{Erdos257PeriodNoncollapse.DiagonalFreshLossBridge.PowerTwoOddWindowAffine.actualLcmTailOrbit_eq_scaled_totientSeries_sub_prefix}{TotientActualLcmOrbitSeparation.lean:68}).
+(\lean{Erdos249257.DiagonalFreshLossBridge.PowerTwoOddWindowAffine.actualLcmTailOrbit_eq_scaled_totientSeries_sub_prefix}{TotientActualLcmOrbitSeparation.lean:68}).
 The right-hand side is an equivalent reformulation of irrationality,
 not a weaker hypothesis already established by the finite examples.
 The following sufficient conditions are attempts to prove it.
@@ -8744,14 +8744,14 @@ It is impossible that
  2^{r+1}\mid\delta_{2^a}(J+K-m+r+1)
               \quad\text{for every }0\le r<m.
 \]
-\lean{Erdos257PeriodNoncollapse.DiagonalFreshLossBridge.PowerTwoOddWindowAffine.not_actualLcmTerminalDyadicStaircase_of_room}{TotientActualLcmTopEdgeStaircase.lean:251}
+\lean{Erdos249257.DiagonalFreshLossBridge.PowerTwoOddWindowAffine.not_actualLcmTerminalDyadicStaircase_of_room}{TotientActualLcmTopEdgeStaircase.lean:251}
 Indeed, the last requirement would make $\delta_{2^a}(J+K)$ a
 multiple of $2^m$, whereas the short-window bounds give
 $0<\delta_{2^a}(J+K)<B<2^m$. The positivity input is
 \[
  \delta_{2^a}(j)>0\qquad(a\ge8,\ 0<j<2\cdot2^a),
 \]
-\lean{Erdos257PeriodNoncollapse.DiagonalFreshLossBridge.PowerTwoOddWindowAffine.lcmRayArithmeticLetter_pos_of_lt_two_mul}{TotientActualLcmOrbitArithmetic.lean:1703}, without a rationality hypothesis.
+\lean{Erdos249257.DiagonalFreshLossBridge.PowerTwoOddWindowAffine.lcmRayArithmeticLetter_pos_of_lt_two_mul}{TotientActualLcmOrbitArithmetic.lean:1703}, without a rationality hypothesis.
 
 Omitting only the last divisibility requirement leaves the partial
 pattern in Proposition~\ref{prop:TE-02-inv}. It additionally requires
@@ -8760,7 +8760,7 @@ $\delta_{2^a}(J+K)\le2^m-B$. The resulting necessary equality is
 \[
  \delta_{2^a}(J+K-1)=2^{m-1},\qquad B<2^m<2B.
 \]
-\lean{Erdos257PeriodNoncollapse.DiagonalFreshLossBridge.PowerTwoOddWindowAffine.puncturedDyadicStaircase_penultimate_eq_half}{TotientActualLcmTopEdgeStaircase.lean:1187}
+\lean{Erdos249257.DiagonalFreshLossBridge.PowerTwoOddWindowAffine.puncturedDyadicStaircase_penultimate_eq_half}{TotientActualLcmTopEdgeStaircase.lean:1187}
 The terminal difference is not pinned to $2^{m-1}$. Neither this
 necessary restriction nor the full-pattern impossibility supplies an
 unbounded family of successful partial patterns.
@@ -8772,7 +8772,7 @@ unbounded family of successful partial patterns.
   2H+J+K+2 < 2^m\ \wedge\
   D(H,\,H+J,\,K) \bmod 2^m \le 2^m - (2H+J+K+2).
 \]
-\lean{Erdos257PeriodNoncollapse.DiagonalFreshLossBridge.PowerTwoOddWindowAffine.ActualLcmTopEdgeResidueGap}{TotientActualLcmTopEdgeStaircase.lean:900}
+\lean{Erdos249257.DiagonalFreshLossBridge.PowerTwoOddWindowAffine.ActualLcmTopEdgeResidueGap}{TotientActualLcmTopEdgeStaircase.lean:900}
 No unbounded family satisfying this condition is known.
 
 The positivity theorem gives
@@ -8780,7 +8780,7 @@ The positivity theorem gives
  R_{2H+J}-R_{H+J}>0
  \quad\text{if }a\ge8\text{ and }J+a+6<2\cdot2^a.
 \]
-\lean{Erdos257PeriodNoncollapse.DiagonalFreshLossBridge.PowerTwoOddWindowAffine.actualLcmTailDiff_shift_pos}{TotientActualLcmOrbitSign.lean:39}
+\lean{Erdos249257.DiagonalFreshLossBridge.PowerTwoOddWindowAffine.actualLcmTailDiff_shift_pos}{TotientActualLcmOrbitSign.lean:39}
 For $a\ge8$, the residue test at depth $K$ uses the stronger bound
 $J+K+a+6<2\cdot2^a$. Under these hypotheses, an integral initial
 tail difference would give an integer terminal carry
@@ -8790,7 +8790,7 @@ $e=R_{2H+J+K}-R_{H+J+K}$ with $0<e<2H+J+K+2$. The tail identity is
 \]
 Hence, when $2H+J+K+2<2^K$, it is the residue of $D(H,H+J,K)$,
 not of $e$, that equals $2^K-e$
-(\lean{Erdos257PeriodNoncollapse.DiagonalFreshLossBridge.PowerTwoOddWindowAffine.actualLcm_integral_forces_topEdgeResidue}{TotientActualLcmOrbitSign.lean:211}).
+(\lean{Erdos249257.DiagonalFreshLossBridge.PowerTwoOddWindowAffine.actualLcm_integral_forces_topEdgeResidue}{TotientActualLcmOrbitSign.lean:211}).
 More generally, the bounds $m\le K$ and $2H+J+K+2<2^m$ give
 \[
  D(H,H+J,K)\bmod2^m=2^m-e>2^m-(2H+J+K+2),
@@ -8802,7 +8802,7 @@ $J+K+a+6<2\cdot2^a$,
  \mathcal G_a(J,K,m)\quad\Longrightarrow\quad
        R_{2H+J}-R_{H+J}\notin\mathbb Z.
 \]
-\lean{Erdos257PeriodNoncollapse.DiagonalFreshLossBridge.PowerTwoOddWindowAffine.actualLcmTailDiff_notMem_int_of_topEdgeResidueGap}{TotientActualLcmTopEdgeStaircase.lean:1260}
+\lean{Erdos249257.DiagonalFreshLossBridge.PowerTwoOddWindowAffine.actualLcmTailDiff_notMem_int_of_topEdgeResidueGap}{TotientActualLcmTopEdgeStaircase.lean:1260}
 The one-sided inequality excludes the upper-endpoint interval forced
 by integrality. Positivity alone does not establish that inequality.
 
@@ -8813,12 +8813,12 @@ The cofinal target built from it is
   a_0\le a\ \wedge\ 8\le a\ \wedge\ K+(a{+}6)<2\cdot 2^a\ \wedge\
   \mathcal G_a(0,K,m).
 \]
-\lean{Erdos257PeriodNoncollapse.DiagonalFreshLossBridge.PowerTwoOddWindowAffine.PowerTwoActualLcmTopEdgeResidueGapSupply}{TotientActualLcmTopEdgeStaircase.lean:1325}
+\lean{Erdos249257.DiagonalFreshLossBridge.PowerTwoOddWindowAffine.PowerTwoActualLcmTopEdgeResidueGapSupply}{TotientActualLcmTopEdgeStaircase.lean:1325}
 This condition is unproved; its implication is proved:
 \[
   \text{cofinal upper-endpoint condition} \Longrightarrow S\notin\mathbb Q.
 \]
-\lean{Erdos257PeriodNoncollapse.DiagonalFreshLossBridge.PowerTwoOddWindowAffine.irrational_totientSeries_of_topEdgeResidueGapSupply}{TotientActualLcmTopEdgeStaircase.lean:2184}
+\lean{Erdos249257.DiagonalFreshLossBridge.PowerTwoOddWindowAffine.irrational_totientSeries_of_topEdgeResidueGapSupply}{TotientActualLcmTopEdgeStaircase.lean:2184}
 
 \paragraph{Five sufficient conditions for that residue inequality}
 The next five quantified conditions each imply irrationality. Conditions
@@ -8840,10 +8840,10 @@ where $\delta_{2^a}(j)=\varphi(2H+j)-\varphi(H+j)$.
 The size condition includes the larger depth $m+1$, so the conclusion
 remains valid whichever of the two adjacent depths gives the certificate.
 This condition is unproved
-(\lean{Erdos257PeriodNoncollapse.DiagonalFreshLossBridge.PowerTwoOddWindowAffine.PowerTwoAdjacentSuffixMidbandSupply}{TotientActualLcmTopEdgeStaircase.lean:1334});
+(\lean{Erdos249257.DiagonalFreshLossBridge.PowerTwoOddWindowAffine.PowerTwoAdjacentSuffixMidbandSupply}{TotientActualLcmTopEdgeStaircase.lean:1334});
 its sufficiency is proved
-(\lean{Erdos257PeriodNoncollapse.DiagonalFreshLossBridge.PowerTwoOddWindowAffine.powerTwoActualLcmTopEdgeResidueGapSupply_of_adjacentSuffixMidband}{TotientActualLcmTopEdgeStaircase.lean:2108},
-\lean{Erdos257PeriodNoncollapse.DiagonalFreshLossBridge.PowerTwoOddWindowAffine.irrational_totientSeries_of_adjacentSuffixMidbandSupply}{TotientActualLcmTopEdgeStaircase.lean:2191}).
+(\lean{Erdos249257.DiagonalFreshLossBridge.PowerTwoOddWindowAffine.powerTwoActualLcmTopEdgeResidueGapSupply_of_adjacentSuffixMidband}{TotientActualLcmTopEdgeStaircase.lean:2108},
+\lean{Erdos249257.DiagonalFreshLossBridge.PowerTwoOddWindowAffine.irrational_totientSeries_of_adjacentSuffixMidbandSupply}{TotientActualLcmTopEdgeStaircase.lean:2191}).
 
 \item[(ii)] For every $a_0$, there is $a\ge\max(a_0,14)$ with the
 following property. Put $H=H_{2^a}$ and choose $q$ so that $2q+1$ is the
@@ -8866,11 +8866,11 @@ At depth $m=2q+1$, the residue in (i) equals
 $2(W_{a,q}\bmod4^q)$. Dividing its two endpoint bounds by $2$ and using
 integrality gives exactly the threshold $H+q+2$.
 This condition is unproved
-(\lean{Erdos257PeriodNoncollapse.DiagonalFreshLossBridge.PowerTwoOddWindowAffine.PowerTwoOddGuardTopEdgeHalfWordBandSupply}{TotientActualLcmTopEdgeStaircase.lean:1349}).
+(\lean{Erdos249257.DiagonalFreshLossBridge.PowerTwoOddWindowAffine.PowerTwoOddGuardTopEdgeHalfWordBandSupply}{TotientActualLcmTopEdgeStaircase.lean:1349}).
 The width is $H+q+2$ and the depth is the prescribed guarded depth;
 both must be retained when comparing this with a fixed-fraction band. Its
 sufficiency is proved
-(\lean{Erdos257PeriodNoncollapse.DiagonalFreshLossBridge.PowerTwoOddWindowAffine.powerTwoAdjacentSuffixMidbandSupply_of_oddGuardTopEdgeHalfWordBand}{TotientActualLcmTopEdgeStaircase.lean:2057}).
+(\lean{Erdos249257.DiagonalFreshLossBridge.PowerTwoOddWindowAffine.powerTwoAdjacentSuffixMidbandSupply_of_oddGuardTopEdgeHalfWordBand}{TotientActualLcmTopEdgeStaircase.lean:2057}).
 
 
 \item[(iii)] Use exactly the quantifiers and prescribed depth of (ii).
@@ -8887,12 +8887,12 @@ representative is used. The equivalent inequality is
  H+q+2\le |u_{a,q}|.
 \]
 This condition is unproved
-(\lean{Erdos257PeriodNoncollapse.DiagonalFreshLossBridge.PowerTwoOddWindowAffine.PowerTwoActualFinalTopEdgeMagnitudeSupply}{TotientActualLcmTopEdgeStaircase.lean:1471}).
+(\lean{Erdos249257.DiagonalFreshLossBridge.PowerTwoOddWindowAffine.PowerTwoActualFinalTopEdgeMagnitudeSupply}{TotientActualLcmTopEdgeStaircase.lean:1471}).
 At the prescribed depth the size bound $2(H+q+2)\le4^q$ holds.
 For a residue in $[0,4^q)$, the band in (ii) is therefore exactly
 this absolute-value condition. The equivalence, including its
 quantifiers, is proved
-(\lean{Erdos257PeriodNoncollapse.DiagonalFreshLossBridge.PowerTwoOddWindowAffine.topEdgeHalfWordBandSupply_iff_actualFinalCenteredMagnitudeSupply}{TotientActualLcmTopEdgeStaircase.lean:1479}).
+(\lean{Erdos249257.DiagonalFreshLossBridge.PowerTwoOddWindowAffine.topEdgeHalfWordBandSupply_iff_actualFinalCenteredMagnitudeSupply}{TotientActualLcmTopEdgeStaircase.lean:1479}).
 
 \item[(iv)] Allow the odd depth to vary, but retain both size bounds.
 For every $a_0$, require $a\ge\max(a_0,8)$ and $q\in\mathbb N$ with
@@ -8903,13 +8903,13 @@ For every $a_0$, require $a\ge\max(a_0,8)$ and $q\in\mathbb N$ with
 \end{gathered}
 \]
 This condition is unproved
-(\lean{Erdos257PeriodNoncollapse.DiagonalFreshLossBridge.PowerTwoOddWindowAffine.PowerTwoFlexibleActualTopEdgeMagnitudeSupply}{TotientActualLcmTopEdgeStaircase.lean:1927}).
+(\lean{Erdos249257.DiagonalFreshLossBridge.PowerTwoOddWindowAffine.PowerTwoFlexibleActualTopEdgeMagnitudeSupply}{TotientActualLcmTopEdgeStaircase.lean:1927}).
 The first bound keeps the adjacent depth inside the short window;
 the second makes the required residue band nonempty. One implication
 passes through (i), and another gives the two-sided carry exclusion
 below
-(\lean{Erdos257PeriodNoncollapse.DiagonalFreshLossBridge.PowerTwoOddWindowAffine.powerTwoAdjacentSuffixMidbandSupply_of_flexibleActualTopEdgeMagnitude}{TotientActualLcmTopEdgeStaircase.lean:2007},
-\lean{Erdos257PeriodNoncollapse.DiagonalFreshLossBridge.PowerTwoOddWindowAffine.irrational_totientSeries_of_flexibleActualTopEdgeMagnitudeSupply}{TotientActualLcmTopEdgeStaircase.lean:2213}).
+(\lean{Erdos249257.DiagonalFreshLossBridge.PowerTwoOddWindowAffine.powerTwoAdjacentSuffixMidbandSupply_of_flexibleActualTopEdgeMagnitude}{TotientActualLcmTopEdgeStaircase.lean:2007},
+\lean{Erdos249257.DiagonalFreshLossBridge.PowerTwoOddWindowAffine.irrational_totientSeries_of_flexibleActualTopEdgeMagnitudeSupply}{TotientActualLcmTopEdgeStaircase.lean:2213}).
 
 \item[(v)] Retain the full quantifiers and the two size bounds in
 (iv), but replace its absolute-value inequality by
@@ -8919,9 +8919,9 @@ below
 This compares the signed centred residue with the terminal totient
 difference. It is not an unrestricted assertion at an arbitrary $q$.
 This condition is unproved
-(\lean{Erdos257PeriodNoncollapse.DiagonalFreshLossBridge.PowerTwoOddWindowAffine.PowerTwoFlexibleActualTerminalDominanceSupply}{TotientActualLcmTopEdgeStaircase.lean:1908});
+(\lean{Erdos249257.DiagonalFreshLossBridge.PowerTwoOddWindowAffine.PowerTwoFlexibleActualTerminalDominanceSupply}{TotientActualLcmTopEdgeStaircase.lean:1908});
 its sufficiency is proved
-(\lean{Erdos257PeriodNoncollapse.DiagonalFreshLossBridge.PowerTwoOddWindowAffine.irrational_totientSeries_of_flexibleActualTerminalDominanceSupply}{TotientActualLcmTopEdgeStaircase.lean:2221}).
+(\lean{Erdos249257.DiagonalFreshLossBridge.PowerTwoOddWindowAffine.irrational_totientSeries_of_flexibleActualTerminalDominanceSupply}{TotientActualLcmTopEdgeStaircase.lean:2221}).
 \end{enumerate}
 
 \paragraph{A further sufficient terminal-carry condition}
@@ -8934,23 +8934,23 @@ With $H=H_{2^a}$, the unproved quantified condition is
        \quad\hbox{or}\quad \delta_{2^a}(2q+2)\le2u_{a,q}.
 \end{aligned}
 \]
-\lean{Erdos257PeriodNoncollapse.DiagonalFreshLossBridge.PowerTwoOddWindowAffine.PowerTwoFlexibleActualTerminalCarryCorridorEscapeSupply}{TotientActualLcmTopEdgeStaircase.lean:1895}
+\lean{Erdos249257.DiagonalFreshLossBridge.PowerTwoOddWindowAffine.PowerTwoFlexibleActualTerminalCarryCorridorEscapeSupply}{TotientActualLcmTopEdgeStaircase.lean:1895}
 Either alternative gives nonintegrality at that scale, so the
 quantified condition implies irrationality
-(\lean{Erdos257PeriodNoncollapse.DiagonalFreshLossBridge.PowerTwoOddWindowAffine.irrational_totientSeries_of_flexibleActualTerminalCarryCorridorEscapeSupply}{TotientActualLcmTopEdgeStaircase.lean:2230}).
+(\lean{Erdos249257.DiagonalFreshLossBridge.PowerTwoOddWindowAffine.irrational_totientSeries_of_flexibleActualTerminalCarryCorridorEscapeSupply}{TotientActualLcmTopEdgeStaircase.lean:2230}).
 
 The proof assumes an integer $z=\Omega_a$ and uses
 \[
  2u_{a,q}=\delta_{2^a}(2q+2)-c_{H,H,z}(2q+1).
 \]
-\lean{Erdos257PeriodNoncollapse.DiagonalFreshLossBridge.PowerTwoOddWindowAffine.two_mul_actualOddHalfCenteredLift_eq_terminal_sub_trueCarry}{TotientActualLcmTopEdgeStaircase.lean:1678}
+\lean{Erdos249257.DiagonalFreshLossBridge.PowerTwoOddWindowAffine.two_mul_actualOddHalfCenteredLift_eq_terminal_sub_trueCarry}{TotientActualLcmTopEdgeStaircase.lean:1678}
 The carry is then a positive tail difference, strictly smaller than
 $2H+2q+3$. The negative endpoint representative is \emph{minus} this
 carry
-(\lean{Erdos257PeriodNoncollapse.DiagonalFreshLossBridge.PowerTwoOddWindowAffine.actualLcm_trueEndpointSurvivor_neg}{TotientActualLcmOrbitSign.lean:172}).
+(\lean{Erdos249257.DiagonalFreshLossBridge.PowerTwoOddWindowAffine.actualLcm_trueEndpointSurvivor_neg}{TotientActualLcmOrbitSign.lean:172}).
 The first alternative contradicts the upper bound; the second
 contradicts positivity, which is the terminal-dominance argument
-(\lean{Erdos257PeriodNoncollapse.DiagonalFreshLossBridge.PowerTwoOddWindowAffine.actualLcmTailOrbit_notMem_int_of_actualTerminalDominance}{TotientActualLcmTopEdgeStaircase.lean:1880}).
+(\lean{Erdos249257.DiagonalFreshLossBridge.PowerTwoOddWindowAffine.actualLcmTailOrbit_notMem_int_of_actualTerminalDominance}{TotientActualLcmTopEdgeStaircase.lean:1880}).
 
 Both arguments are conditional contradictions, not evidence against
 either unproved estimate. No converse from nonintegrality to either
@@ -8965,21 +8965,21 @@ progression is exactly
  \delta_t(j)=\varphi(2H_t+j)-\varphi(H_t+j).
 \]
 No coprimality restriction on $j$ is needed
-(\lean{Erdos257PeriodNoncollapse.DiagonalFreshLossBridge.PowerTwoOddWindowAffine.lcmRayArithmeticLetter_eq_deltaTotient}{TotientActualLcmOrbitArithmetic.lean:298}). Consequently the corresponding window
+(\lean{Erdos249257.DiagonalFreshLossBridge.PowerTwoOddWindowAffine.lcmRayArithmeticLetter_eq_deltaTotient}{TotientActualLcmOrbitArithmetic.lean:298}). Consequently the corresponding window
 numerator is
 \[
  D(H_t,H_t,L)=\sum_{j=1}^{L}\delta_t(j)2^{L-j},
 \]
 and applying the same residue and error bounds gives precisely the
-test $\mathcal C(H_t,H_t,L)$ (\lean{Erdos257PeriodNoncollapse.DiagonalFreshLossBridge.PowerTwoOddWindowAffine.lcmDiagonalArithmeticKill_iff_certifiedKill}{TotientActualLcmOrbitArithmetic.lean:2045}).
+test $\mathcal C(H_t,H_t,L)$ (\lean{Erdos249257.DiagonalFreshLossBridge.PowerTwoOddWindowAffine.lcmDiagonalArithmeticKill_iff_certifiedKill}{TotientActualLcmOrbitArithmetic.lean:2045}).
 Thus the quantified assertion
 \[
  \forall a_0\ \exists a\ge a_0\ \exists L<2\cdot2^a,
  \qquad\mathcal C(H_{2^a},H_{2^a},L)
 \]
 implies irrationality
-(\lean{Erdos257PeriodNoncollapse.DiagonalFreshLossBridge.PowerTwoOddWindowAffine.PowerTwoActualLcmShortArithmeticKillSupply}{TotientActualLcmOrbitArithmetic.lean:2107},
-\lean{Erdos257PeriodNoncollapse.DiagonalFreshLossBridge.PowerTwoOddWindowAffine.actualLcmOrbitNonintegralitySupply_of_shortArithmeticKill}{TotientActualLcmOrbitArithmetic.lean:2152});
+(\lean{Erdos249257.DiagonalFreshLossBridge.PowerTwoOddWindowAffine.PowerTwoActualLcmShortArithmeticKillSupply}{TotientActualLcmOrbitArithmetic.lean:2107},
+\lean{Erdos249257.DiagonalFreshLossBridge.PowerTwoOddWindowAffine.actualLcmOrbitNonintegralitySupply_of_shortArithmeticKill}{TotientActualLcmOrbitArithmetic.lean:2152});
 the assertion itself is unproved.
 It restricts the diagonal indices to powers of two and imposes the
 additional bound $L<2\cdot2^a$. Pointwise completeness allows an
@@ -8987,7 +8987,7 @@ unspecified finite depth; it does not imply a witness within this
 short window.
 
 The displayed certified examples have $a=4$, $L=23$ and $a=6$, $L=93$
-(\lean{Erdos257PeriodNoncollapse.DiagonalFreshLossBridge.PowerTwoOddWindowAffine.actualLcmTailOrbit_four_and_six_notMem_int}{TotientActualLcmShortKill.lean:35});
+(\lean{Erdos249257.DiagonalFreshLossBridge.PowerTwoOddWindowAffine.actualLcmTailOrbit_four_and_six_notMem_int}{TotientActualLcmShortKill.lean:35});
 these are finite computations.
 The bounded statement of
 Theorem~\ref{thm:short-window-examples-through-exponent} uses the single
@@ -9007,7 +9007,7 @@ For every $a,q\in\mathbb N$,
 \[
  |\Omega_a-\rho_{a,q}|<\varepsilon_{a,q}.
 \]
-\lean{Erdos257PeriodNoncollapse.DiagonalFreshLossBridge.PowerTwoOddWindowAffine.abs_actualLcmTailOrbit_sub_rawApprox_lt}{TotientActualLcmOrbitSeparation.lean:141}
+\lean{Erdos249257.DiagonalFreshLossBridge.PowerTwoOddWindowAffine.abs_actualLcmTailOrbit_sub_rawApprox_lt}{TotientActualLcmOrbitSeparation.lean:141}
 Let $2q_a+1$ be the least odd integer not smaller than
 $\lfloor\log_2H\rfloor+10$, as in condition (ii). The sufficient
 quantified separation condition is
@@ -9016,7 +9016,7 @@ quantified separation condition is
  \qquad \tfrac1{32}+\varepsilon_{a,q_a}\le|\Omega_a-z|.
 \]
 This condition is unproved; its sufficiency is proved
-(\lean{Erdos257PeriodNoncollapse.DiagonalFreshLossBridge.PowerTwoOddWindowAffine.irrational_totientSeries_of_actualLcmOrbitSeparationSupply}{TotientActualLcmOrbitSeparation.lean:305}).
+(\lean{Erdos249257.DiagonalFreshLossBridge.PowerTwoOddWindowAffine.irrational_totientSeries_of_actualLcmOrbitSeparationSupply}{TotientActualLcmOrbitSeparation.lean:305}).
 The triangle inequality then gives
 $|\rho_{a,q_a}-z|>1/32$ for every integer $z$.
 The hypothesis concerns the real tail $\Omega_a$, not merely its
@@ -9033,7 +9033,7 @@ $\mathcal C(h,N+s,b+1)$ holds, or both
  N+s+h+b+4<2^b,\qquad
  2^b\le D(h,N+s,b+2)\bmod2^{b+2}<3\cdot2^b.
 \]
-\lean{Erdos257PeriodNoncollapse.DiagonalFreshLossBridge.PowerTwoOddWindowAffine.exists_certifiedKill_iff_guardCylinderWitness}{TotientActualLcmTopEdgeStaircase.lean:844}
+\lean{Erdos249257.TotientTailPeriodKiller.exists_certifiedKill_iff_guardCylinderWitness}{TotientActualLcmTopEdgeStaircase.lean:844}
 The forward proof selects $b$ using the depth $L$ of the first
 certificate, so this is an encoding of a witness rather than a bound
 on how far one must search. Existence for the actual totient sequence
@@ -9096,7 +9096,7 @@ This bound is
 \emph{sharp} at $K=240$; the mediant denominator
 $q=79639646646701375323355774875831054$ is the exact first failing
 denominator
-(\lean{Erdos249257.gap_check_window_1_240_first_failure}{GapFareyBound.lean:225}); so the same interval cannot exclude every rational at the next
+(\lean{GapFareyBound.gap_check_window_1_240_first_failure}{GapFareyBound.lean:225}); so the same interval cannot exclude every rational at the next
 denominator. A different window requires a new certificate or a
 uniform argument; the fixed-window calculation supplies neither.
 

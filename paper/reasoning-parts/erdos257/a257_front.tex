@@ -8327,14 +8327,14 @@ is a failure of two proof schemas on a value already known to be irrational.
 The dependence on the choice of support is exact.  Adjoin $1$ to the support.  The series
 changes by the rational number $(b-1)^{-1}$, so its irrationality is
 unchanged, while the incidence becomes $2^{\omega(n)}$:
-\lean{ErdosProblems.Erdos257.SquarefreeSupportIncidence.supportCoeff_squarefreeShiftedSupport}{ErdosProblems/Erdos257/SquarefreeSupportIncidence.lean:314}
+\lean{ErdosProblems.Erdos257.supportCoeff_squarefreeShiftedSupport}{ErdosProblems/Erdos257/SquarefreeSupportIncidence.lean:314}
 and
-\lean{ErdosProblems.Erdos257.SquarefreeSupportIncidence.irrational_erdosSupportSeries_squarefreeSupport_iff_shifted}{ErdosProblems/Erdos257/SquarefreeSupportIncidence.lean:335}.
+\lean{ErdosProblems.Erdos257.irrational_erdosSupportSeries_squarefreeSupport_iff_shifted}{ErdosProblems/Erdos257/SquarefreeSupportIncidence.lean:335}.
 At base $2$, CRT then supplies arbitrarily long opening blocks with
 $\omega(N+r)\ge r$:
-\lean{ErdosProblems.Erdos257.SquarefreeSupportIncidence.exists_omega_ge_block}{ErdosProblems/Erdos257/SquarefreeSupportIncidence.lean:441}
+\lean{ErdosProblems.Erdos257.exists_omega_ge_block}{ErdosProblems/Erdos257/SquarefreeSupportIncidence.lean:441}
 and
-\lean{ErdosProblems.Erdos257.SquarefreeSupportIncidence.exists_digitwise_block_squarefreeShiftedSupport}{ErdosProblems/Erdos257/SquarefreeSupportIncidence.lean:485}.
+\lean{ErdosProblems.Erdos257.exists_digitwise_block_squarefreeShiftedSupport}{ErdosProblems/Erdos257/SquarefreeSupportIncidence.lean:485}.
 The middle-window and height conditions remain; no certificate or new
 irrationality proof follows.  The durable conclusion is methodological:
 test a no-go statement under rational finite changes before attributing it
@@ -8473,7 +8473,7 @@ $\mathrm{O1'}$ is actually false.  For
 $A=\{n\ge2:n\text{ squarefree}\}$ the incidence is
 $2^{\omega(n)}-1$, hence odd for every $n\ge2$, and the digitwise
 certificate schema has no instance at any even base
-(\lean{ErdosProblems.Erdos257.SquarefreeSupportIncidence.not_exists_digitwise_certificates_squarefreeSupport}{ErdosProblems/Erdos257/SquarefreeSupportIncidence.lean:292}).
+(\lean{ErdosProblems.Erdos257.not_exists_digitwise_certificates_squarefreeSupport}{ErdosProblems/Erdos257/SquarefreeSupportIncidence.lean:292}).
 This is a limit of the method, not a counterexample to irrationality:
 Duverney--Tachiya prove the squarefree value irrational at every
 power-of-two base.  Likewise the pairwise-coprime theorem does not cover the

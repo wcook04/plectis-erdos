@@ -24,6 +24,7 @@ from unittest.mock import patch
 
 import query_corpus
 import query_semantic
+from lean_source import qualified_declaration_lines
 from query_corpus import (
     agent_tour_packet,
     all_entrypoints,
@@ -45,7 +46,6 @@ from query_corpus import (
 from check_release import MAX_ROUTE_FIRST_CONTACT_BYTES, ordinary_proof_claim_errors
 from check_release import module_lines, name_at_line, paper_macro_coordinates
 from check_problem_note_sources import (
-    declares_at,
     note_pinned_commit,
     pinned_commit as corpus_pinned_commit,
     snapshot_lines,
@@ -54,6 +54,50 @@ from check_problem_note_sources import (
 from refresh_source_coordinates import PAPERS as LIVE_COORDINATE_PAPERS
 
 ROOT = Path(__file__).resolve().parent.parent
+
+
+def pinned_link_commit(link: dict) -> str:
+    """Each emitted source link owns its immutable revision."""
+    return link["source_identity"]["ref"]
+
+
+def exact_qualified_head(names: dict[str, list[int]], declaration: str, line: int) -> bool:
+    """Allow unique namespace-prefix aliases, never drop a requested namespace."""
+    matches = names.get(declaration)
+    if matches is None:
+        candidates = [positions for name, positions in names.items()
+                      if name.endswith("." + declaration)]
+        if len(candidates) != 1:
+            return False
+        matches = candidates[0]
+    return matches == [line]
+
+
+def check_pinned_coordinate_fixtures() -> None:
+    source = ('namespace Actual\n'
+              'theorem target : True := by trivial\n'
+              'theorem\n'
+              '  multiline : True := by trivial\n'
+              'end Actual\n'
+              '/-\n'
+              'theorem fakeComment : True := by trivial\n'
+              '-/\n'
+              'def text := "\n'
+              'theorem fakeString : True := by trivial\n'
+              '"\n')
+    names = qualified_declaration_lines(source)
+    assert exact_qualified_head(names, "Actual.target", 2)
+    assert exact_qualified_head(names, "target", 2)
+    assert not exact_qualified_head(names, "Wrong.target", 2)
+    assert not exact_qualified_head(names, "Actual.target", 3)
+    assert exact_qualified_head(names, "Actual.multiline", 3)
+    assert not exact_qualified_head(names, "Actual.multiline", 4)
+    assert not exact_qualified_head(names, "fakeComment", 7)
+    assert not exact_qualified_head(names, "fakeString", 10)
+    assert not exact_qualified_head({"target": [1]}, "Wrong.target", 1)
+    assert not exact_qualified_head({"A.target": [1], "B.target": [2]}, "target", 1)
+    assert not exact_qualified_head({"Actual.target": [1, 2]}, "Actual.target", 1)
+    assert pinned_link_commit({"source_identity": {"ref": "link-pin"}}) == "link-pin"
 SCRIPT = ROOT / "scripts" / "query_corpus.py"
 SEMANTIC_SCRIPT = ROOT / "scripts" / "query_semantic.py"
 # Keep programme packets bounded without making a six-byte formatting change a
@@ -2625,7 +2669,7 @@ def check_pinned_source_link_layouts() -> None:
 
 
 def validate_registered_claim_paper_routes() -> None:
-    source = "paper/68/erdos-68-factorial-denominator-irrationality.tex"
+    source = "paper/68/erdos68-factorial-reasoning-surface.tex"
     qualified = "Erdos68.factorialMoment_eq_factorial_pow_mul_channelNumerator_band"
     routes = query_corpus.paper_anchor_routes_for_declarations(source, [qualified])
     matched = next(row for row in routes if row["relation_origin"] == "registered_claim_anchor")
@@ -2832,6 +2876,7 @@ def validate_release_word_link_coordinates() -> None:
 
 
 def main() -> int:
+    check_pinned_coordinate_fixtures()
     validate_release_word_link_coordinates()
     validate_current_source_identities()
     validate_problem_route_anchor_transport()
@@ -4168,8 +4213,13 @@ def main() -> int:
         )
         if reviewed_fixed:
             assert fixed_family["paper_route"]["matching_anchors"]
+            fixed_source = "paper/249/erdos249-totient-reasoning-surface.tex"
+            fixed_lines = (ROOT / fixed_source).read_text(encoding="utf-8").splitlines()
+            fixed_label_lines = [i + 1 for i, line in enumerate(fixed_lines)
+                                 if r"\label{prop:B5-kill}" in line]
+            assert len(fixed_label_lines) == 1
             assert any(
-                anchor["source_ref"] == "paper/249/erdos249-totient-reasoning-surface.tex:4185"
+                anchor["source_ref"] == f"{fixed_source}:{fixed_label_lines[0]}"
                 and anchor["destination_source"] == "paper/249/erdos249-totient-reasoning-surface.tex"
                 and anchor["relation_origin"] == "visible_companion_authored_source_link"
                 and anchor["visible_hop"] == "registered_visible_companion_pdf_link"
@@ -4271,7 +4321,11 @@ def main() -> int:
         assert coefficient_module["module_handle_resolution"]["resolved"] == (
             "ErdosProblems/Erdos251/PrimeGapDyadicTail.lean"
         )
-        assert coefficient_module["paper_sigil"] == "PriGapDyaTai"
+        # R5 cites this source directly; its former module macro is no longer
+        # used, so the source-owned alias registry retires its paper sigil.
+        # Both ordinary module handles must still resolve and serve the same
+        # reviewed problem families below.
+        assert coefficient_module["paper_sigil"] is None
         coefficient_problem = next(
             row
             for row in coefficient_module["problem_routes"]
@@ -4317,22 +4371,27 @@ def main() -> int:
             "ErdosProblems.Erdos251.carryCoeff_natCast_not_eventually_periodic",
             "ErdosProblems.Erdos251.primeGap0_not_eventually_periodic",
         ]
-        coefficient_paper = "paper/251/erdos-251-prime-gap-dyadic-series.tex"
-        # These declarations now have a dedicated exposition section. Bind the
-        # route to that authored section while allowing earlier prose to grow.
+        coefficient_paper = "paper/251/erdos251-prime-gap-reasoning-surface.tex"
+        # R5 keeps the short counterexample explanation and sends readers to
+        # the companion. Its authored source index supplies all three exact
+        # declaration links; the short gap proposition supplies only one.
         carry_section_lines = [
             line_number
             for line_number, line in enumerate(
                 (ROOT / coefficient_paper).read_text(encoding="utf-8").splitlines(),
                 start=1,
             )
-            if r"\label{sec:carry}" in line
+            if r"\label{long251:app:short-source-index}" in line
         ]
         assert len(carry_section_lines) == 1
         coefficient_anchor = f"{coefficient_paper}:{carry_section_lines[0]}"
         assert any(
             anchor["source_ref"]
             == coefficient_anchor
+            and anchor["canonical_handle"] == "long251:app:short-source-index"
+            and anchor["relation_origin"] == "visible_companion_authored_source_link"
+            and anchor["visible_hop"] == "registered_visible_companion_pdf_link"
+            and anchor["destination_source"] == coefficient_paper
             and set(anchor["matched_declarations"])
             == {
                 "carryPartialSum_natCast_eq",
@@ -4553,6 +4612,7 @@ def main() -> int:
     corpus_default_commit = corpus_pinned_commit()
     anchors = paper_anchor_inventory()
     snapshot_cache: dict[tuple[str, str], list[str]] = {}
+    qualified_snapshot_cache: dict[tuple[str, str], dict[str, list[int]]] = {}
     pinned_snapshot_requests = set()
     for anchor in anchors:
         paper_source = anchor["paper"]["source"]
@@ -4565,7 +4625,7 @@ def main() -> int:
         for link in anchor["source_links"]:
             if link["declaration"]:
                 module, _, _line_text = link["source_ref"].rpartition(":")
-                pinned_snapshot_requests.add((note_commit, module))
+                pinned_snapshot_requests.add((pinned_link_commit(link), module))
     snapshot_lines_batch(pinned_snapshot_requests, snapshot_cache)
     live_link_count = 0
     pinned_link_count = 0
@@ -4605,6 +4665,7 @@ def main() -> int:
             if not link["declaration"]:
                 continue
             pinned_link_count += 1
+            note_commit = pinned_link_commit(link)
             module, _, line_text = link["source_ref"].rpartition(":")
             lines = snapshot_lines(note_commit, module, snapshot_cache)
             assert lines, (
@@ -4617,7 +4678,16 @@ def main() -> int:
                 f"{module} at its pinned commit {note_commit} "
                 f"({len(lines)} lines)"
             )
-            assert declares_at(lines, index, link["declaration"]), (
+            if link["macro"] == "lean" and link["declaration"].endswith(".lean"):
+                # The two-argument long-record macro ignores its first
+                # argument. A filename there denotes source navigation,
+                # including a proof-body line, rather than a theorem name.
+                assert Path(link["declaration"]).name == Path(module).name
+                continue
+            cache_key = (note_commit, module)
+            if cache_key not in qualified_snapshot_cache:
+                qualified_snapshot_cache[cache_key] = qualified_declaration_lines("\n".join(lines))
+            assert exact_qualified_head(qualified_snapshot_cache[cache_key], link["declaration"], index + 1), (
                 f"{paper_source} links {link['source_ref']} for "
                 f"{link['declaration']!r}, but at its pinned commit "
                 f"{note_commit} that line reads {lines[index].strip()!r}"

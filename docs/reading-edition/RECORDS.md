@@ -6,11 +6,11 @@ Checks registered asserting environments and registered claim spans. Unregistere
 
 The navigators show both located evidence and unresolved correspondences. Generating them does not declare the papers consistent.
 
-- [Erdős #68](records/erdos68.md): 2 linked, 4 unresolved short assertions.
-- [Erdős #243](records/erdos243.md): 7 linked, 11 unresolved short assertions.
-- [Erdős #249](records/erdos249.md): 2 linked, 6 unresolved short assertions.
-- [Erdős #251](records/erdos251.md): 2 linked, 7 unresolved short assertions.
-- [Erdős #257](records/erdos257.md): 3 linked, 8 unresolved short assertions.
-- [Erdős #269](records/erdos269.md): 5 linked, 9 unresolved short assertions.
-- [Erdős #1041](records/erdos1041.md): 2 linked, 6 unresolved short assertions.
-- [Erdős #1049](records/erdos1049.md): 4 linked, 3 unresolved short assertions.
+- [Erdős #68](records/erdos68.md): 0 linked, 0 unresolved short assertions.
+- [Erdős #243](records/erdos243.md): 7 linked, 0 unresolved short assertions.
+- [Erdős #249](records/erdos249.md): 2 linked, 0 unresolved short assertions.
+- [Erdős #251](records/erdos251.md): 2 linked, 0 unresolved short assertions.
+- [Erdős #257](records/erdos257.md): 4 linked, 0 unresolved short assertions.
+- [Erdős #269](records/erdos269.md): 5 linked, 0 unresolved short assertions.
+- [Erdős #1041](records/erdos1041.md): 8 linked, 0 unresolved short assertions.
+- [Erdős #1049](records/erdos1049.md): 4 linked, 0 unresolved short assertions.

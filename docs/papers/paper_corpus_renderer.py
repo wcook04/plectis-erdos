@@ -1777,7 +1777,9 @@ def render_record_navigation(pair: dict[str, Any], boundary: str) -> str:
              f"Start with [{short['title']}]({paper_link(short)}). "
              f"The longer account is [{long['title']}]({paper_link(long)}).", '',
              f"Registered assertions: {s['short_claims']} short, {s['long_claims']} long. "
-             f"Located links: {s['linked_short_claims']}. Correspondences needing review: {s['unresolved_short_claims']}.", '',
+             f"Located long-record links: {s['linked_short_claims']}. "
+             f"Proofs retained in the short paper: {s.get('explained_in_short', 0)}. "
+             f"Long correspondences still open: {s.get('long_correspondence_open', s['unresolved_short_claims'])}.", '',
              boundary, '', '## Reading routes', '',
              'These are the existing paper-corpus editorial routes. Their headings retain the authors’ scope; '
              'a section about a failed route is not an impossibility result for the parent problem.', '']
@@ -1786,7 +1788,8 @@ def render_record_navigation(pair: dict[str, Any], boundary: str) -> str:
     lines += ['', '## Claim to support', '',
               'A complete registered-evidence match locates the same full declaration set in the long record. '
               'It does not independently prove that two differently worded statements are equivalent. '
-              'An authored proof link checks the pinned passage exists unchanged, without reviewing the proof.', '']
+              'An authored proof link checks the pinned passage exists unchanged, without reviewing the proof. '
+              'An explained-in-short disposition locates its accepted short-paper argument and keeps the long correspondence open.', '']
     for claim in pair['claims']:
         lines += [f"### {claim['label']}", '', f"State: **{claim['state']}**.", '']
         if claim['short_location']:
@@ -1803,7 +1806,13 @@ def render_record_navigation(pair: dict[str, Any], boundary: str) -> str:
                 for loc in support['locators']:
                     lines += [f"- `{loc['declaration']}`: {file_link(loc)}."]
                 lines += ['']
-        if claim['state'] == 'unresolved':
+        if claim.get('short_proof'):
+            support = claim['short_proof']
+            lines += ['Retained short-paper argument: ' + file_link(support['locator']) + '.', '',
+                      support['rationale'], '', 'Review status: ' + support['review_status'] + '.', '',
+                      'This hash-bound passage records proof availability; its mathematical correctness is not checked by this audit. '
+                      'No accepted long-record correspondence is established by this disposition.', '']
+        if claim['state'] in ('unresolved', 'short_proof_explained_long_link_open'):
             lines += ['No accepted correspondence is recorded. Check the candidates below; '
                       'none is silently treated as a proof of this short statement.', '']
             for candidate in claim['candidates']:

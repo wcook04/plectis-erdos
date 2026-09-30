@@ -71,8 +71,8 @@
       "path": "docs/systems_paper_counts.json",
       "start_line": 1,
       "end_line": 65,
-      "sha256": "f8ddef1b0726eded4e9b1dd1c0e86a0726f86d1f39992a48092af40e7daa8da5",
-      "excerpt_sha256": "f8ddef1b0726eded4e9b1dd1c0e86a0726f86d1f39992a48092af40e7daa8da5",
+      "sha256": "7ca4455b702030090b221c1a2a6f2ea4300a00c25e986e4fd93ebe8ec429ea99",
+      "excerpt_sha256": "7ca4455b702030090b221c1a2a6f2ea4300a00c25e986e4fd93ebe8ec429ea99",
       "kind": "source"
     },
     {
@@ -133,10 +133,10 @@
       "id": "credit-registry",
       "path": "docs/research-commons/source-attributions.json",
       "start_line": 1,
-      "end_line": 36230,
+      "end_line": 36178,
       "kind": "supplied_snapshot",
-      "sha256": "caff41363c39bf10c18768790d043549399283d9e18e23eee099055cc88861c4",
-      "excerpt_sha256": "caff41363c39bf10c18768790d043549399283d9e18e23eee099055cc88861c4"
+      "sha256": "32cfdc7349069a3c878c511dc1cd7f00b6ed4cca98317760a6635fda8fd2a1a4",
+      "excerpt_sha256": "32cfdc7349069a3c878c511dc1cd7f00b6ed4cca98317760a6635fda8fd2a1a4"
     },
     {
       "id": "essay-pages",
@@ -214,19 +214,19 @@
       "id": "paper-evidence",
       "path": "scripts/paper_evidence.py",
       "start_line": 1,
-      "end_line": 1524,
-      "sha256": "08785c8eeecd58a2212778bfc868d07bca1fd1829dd5e79936734f23e6483098",
-      "excerpt_sha256": "08785c8eeecd58a2212778bfc868d07bca1fd1829dd5e79936734f23e6483098",
+      "end_line": 1527,
+      "sha256": "e0877691f942c137a73f89eb0a38939ee77735da23257e66ee9492e86309e0bc",
+      "excerpt_sha256": "e0877691f942c137a73f89eb0a38939ee77735da23257e66ee9492e86309e0bc",
       "kind": "source"
     },
     {
       "id": "paper-resolver",
       "path": "scripts/paper_evidence.py",
       "kind": "source",
-      "sha256": "08785c8eeecd58a2212778bfc868d07bca1fd1829dd5e79936734f23e6483098",
+      "sha256": "e0877691f942c137a73f89eb0a38939ee77735da23257e66ee9492e86309e0bc",
       "start_line": 1,
-      "end_line": 1524,
-      "excerpt_sha256": "08785c8eeecd58a2212778bfc868d07bca1fd1829dd5e79936734f23e6483098"
+      "end_line": 1527,
+      "excerpt_sha256": "e0877691f942c137a73f89eb0a38939ee77735da23257e66ee9492e86309e0bc"
     },
     {
       "id": "private-writer",
