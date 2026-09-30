@@ -18,7 +18,7 @@ contribution and do not silently transfer authorship of the surrounding corpus.
 
 ## Architecture contribution path
 
-1. Open an [architecture proposal](../../.github/ISSUE_TEMPLATE/architecture_proposal.yml)
+1. Open an [architecture proposal](https://github.com/wcook04/plectis-erdos/issues/new?template=architecture_proposal.yml)
    for an idea, or fork the repository and open a focused pull request for a
    bounded implementation. Early proposals are welcome; a polished patch is
    not an entrance requirement.
@@ -110,6 +110,6 @@ On pull requests, the research-return intake check validates an architecture
 its route-memory sidecar. Both tracks must pass submitted-return and Git
 validation; neither check records acceptance or adds a credit receipt.
 
-If you use the [structured research return form](../../.github/ISSUE_TEMPLATE/research_return.yml),
+If you use the [structured research return form](https://github.com/wcook04/plectis-erdos/issues/new?template=research_return.yml),
 name the architecture area in its frontier field, leave the optional
 route-memory field empty, and attach or link the complete recoverable package.
