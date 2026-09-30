@@ -655,12 +655,20 @@ def contributor_gate_posture_errors(contributing: str) -> list[str]:
     """Reject contributor guidance that understates cold-reader validation."""
     flat = " ".join(contributing.split())
     errors: list[str] = []
-    if "combined baseline-plus-adversarial release-gate check" not in flat:
+    descriptions = (
+        "combined baseline-plus-adversarial release-gate check",
+        "The cold-clone comprehension program tests a bounded set of public questions "
+        "and checks that deliberately broken statements or links are detected.",
+    )
+    if not any(description in flat for description in descriptions):
         errors.append(
             "CONTRIBUTING.md must identify the cold-clone adversarial program "
             "as a release-gate check"
         )
-    if "A failure therefore blocks the release gate" not in flat:
+    if not any(sentence in flat for sentence in (
+        "A failure therefore blocks the release gate",
+        "A failure blocks the release gate",
+    )):
         errors.append(
             "CONTRIBUTING.md must state that cold-clone comprehension failures "
             "block the release gate"

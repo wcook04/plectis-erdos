@@ -5,7 +5,7 @@ import json
 import re
 from pathlib import Path
 
-from check_release import has_release_status_boundary
+from check_release import contributor_gate_posture_errors, has_release_status_boundary
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -29,6 +29,23 @@ def release_status_boundary() -> str:
 
 
 def main() -> None:
+    contributing = " ".join(read("CONTRIBUTING.md").split())
+    require(not contributor_gate_posture_errors(contributing),
+            "current contributor prose must preserve the release-gate policy")
+    for old, new in (
+        ("deliberately broken statements or links are detected",
+         "deliberately broken statements or links are not tested"),
+        ("A failure blocks the release gate", "A failure does not block a release"),
+    ):
+        require(old in contributing, f"contributor-policy fixture missing: {old}")
+        require(bool(contributor_gate_posture_errors(contributing.replace(old, new, 1))),
+                f"contributor guidance understated validation without rejection: {new}")
+    legacy = ("combined baseline-plus-adversarial release-gate check. "
+              "A failure therefore blocks the release gate.")
+    require(not contributor_gate_posture_errors(legacy),
+            "the equivalent earlier gate description must remain accepted")
+    require(bool(contributor_gate_posture_errors(contributing + " diagnostic (not a gate)")),
+            "contradictory diagnostic-only wording must be rejected")
     claims = json.loads(read("docs/claims.json"))
     boundary = release_status_boundary()
     require(has_release_status_boundary(boundary.replace(". ", ".\n"), claims),
