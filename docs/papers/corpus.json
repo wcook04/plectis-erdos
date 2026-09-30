@@ -97,7 +97,7 @@
     "repository_citation_metadata": {
       "source": "CITATION.cff",
       "describes": "this repository as released software, not the individual manuscripts it carries",
-      "title": "Plectis: research on eight open Erd\u0151s problems",
+      "title": "Plectis: research on eight Erd\u0151s problems",
       "version": "0.10.0",
       "date_released": "2026-09-11",
       "license": "Apache-2.0",
