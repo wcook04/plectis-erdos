@@ -69,9 +69,9 @@
       "software_paper": 1
     },
     "by_manuscript_status": {
-      "technical_report": 13,
+      "technical_report": 11,
       "working_research_record": 8,
-      "retired_provenance": 1
+      "retired_provenance": 3
     },
     "peer_review": {
       "externally_reviewed_paper_count": 0,
@@ -8267,10 +8267,10 @@
       "form": "Agent navigation",
       "owns": "the agent-navigation architecture: layered corpus projections, bounded intent routing, kernel-authored session receipts, focused builds, and exact dependency-index cache receipts",
       "not_authority_for": "proof validity, optimal reasoning, external mathematical novelty, or demonstrated transfer to another formalisation project",
-      "publication_state": "active",
+      "publication_state": "retired",
       "publication_class": "methods_paper",
       "publication_class_basis": "owns names 'architecture'",
-      "manuscript_status": "technical_report",
+      "manuscript_status": "retired_provenance",
       "peer_review_state": "not_externally_reviewed",
       "doi": null,
       "doi_absence_reason": "no_archival_deposit_yet",
@@ -8279,11 +8279,11 @@
         "year": "2026",
         "title": "From a Cold Clone to a Proof Receipt",
         "repository": "plectis-erdos",
-        "canonical_source_commit": null,
-        "canonical_source_url": null,
+        "canonical_source_commit": "40008384cb6e343c5a93841701ecc25b97974141",
+        "canonical_source_url": "https://github.com/wcook04/plectis-erdos/blob/40008384cb6e343c5a93841701ecc25b97974141/paper/systems/cold-clone-to-proof-receipt.tex",
         "licence": "CC-BY-4.0",
-        "identifier_kind": "unversioned_source",
-        "text": "Will Cook (2026). From a Cold Clone to a Proof Receipt. plectis-erdos. CC-BY-4.0.",
+        "identifier_kind": "commit_pinned_source",
+        "text": "Will Cook (2026). From a Cold Clone to a Proof Receipt. plectis-erdos, commit 40008384cb6e343c5a93841701ecc25b97974141. CC-BY-4.0. https://github.com/wcook04/plectis-erdos/blob/40008384cb6e343c5a93841701ecc25b97974141/paper/systems/cold-clone-to-proof-receipt.tex",
         "derived_from": [
           "docs/papers/corpus.json: title, copyright, home_repository, canonical_source_commit, canonical_source_url, licence"
         ]
@@ -8295,10 +8295,10 @@
       "local_full_text": "docs/papers/full-text/cold-clone-to-proof-receipt.md",
       "local_source": "paper/systems/cold-clone-to-proof-receipt.tex",
       "source_sha256": "sha256:b49322acf67d58f7018ce742206bd3ed00fe3446fb71b269a6774cd178dd568b",
-      "canonical_source_commit": null,
-      "canonical_source_pin_status": "local_unpublished",
-      "canonical_source_url": null,
-      "canonical_source_raw_url": null,
+      "canonical_source_commit": "40008384cb6e343c5a93841701ecc25b97974141",
+      "canonical_source_pin_status": "immutable_commit",
+      "canonical_source_url": "https://github.com/wcook04/plectis-erdos/blob/40008384cb6e343c5a93841701ecc25b97974141/paper/systems/cold-clone-to-proof-receipt.tex",
+      "canonical_source_raw_url": "https://raw.githubusercontent.com/wcook04/plectis-erdos/40008384cb6e343c5a93841701ecc25b97974141/paper/systems/cold-clone-to-proof-receipt.tex",
       "section_count": 20,
       "sections": [
         {
@@ -8457,7 +8457,8 @@
           }
         ],
         "unresolved_count": 0
-      }
+      },
+      "superseded_by": "claim-faithful-publication-systems"
     },
     {
       "paper_id": "open-source-mathematics-strategy",
@@ -8469,10 +8470,10 @@
       "form": "Open-source research strategy",
       "owns": "the open-source strategy: how outside compute, mathematics, architecture improvements, review, and credit enter one bounded commons",
       "not_authority_for": "a solution to any Erd\u0151s problem, measured discovery-rate improvement, human peer review, novelty, significance, or community endorsement",
-      "publication_state": "active",
+      "publication_state": "retired",
       "publication_class": "methods_paper",
       "publication_class_basis": "owns names 'architecture'",
-      "manuscript_status": "technical_report",
+      "manuscript_status": "retired_provenance",
       "peer_review_state": "not_externally_reviewed",
       "doi": null,
       "doi_absence_reason": "no_archival_deposit_yet",
@@ -8481,11 +8482,11 @@
         "year": "2026",
         "title": "From Spare Compute to Cumulative Mathematics",
         "repository": "plectis-erdos",
-        "canonical_source_commit": null,
-        "canonical_source_url": null,
+        "canonical_source_commit": "40008384cb6e343c5a93841701ecc25b97974141",
+        "canonical_source_url": "https://github.com/wcook04/plectis-erdos/blob/40008384cb6e343c5a93841701ecc25b97974141/paper/systems/open-source-mathematics-strategy.tex",
         "licence": "CC-BY-4.0",
-        "identifier_kind": "unversioned_source",
-        "text": "Will Cook (2026). From Spare Compute to Cumulative Mathematics. plectis-erdos. CC-BY-4.0.",
+        "identifier_kind": "commit_pinned_source",
+        "text": "Will Cook (2026). From Spare Compute to Cumulative Mathematics. plectis-erdos, commit 40008384cb6e343c5a93841701ecc25b97974141. CC-BY-4.0. https://github.com/wcook04/plectis-erdos/blob/40008384cb6e343c5a93841701ecc25b97974141/paper/systems/open-source-mathematics-strategy.tex",
         "derived_from": [
           "docs/papers/corpus.json: title, copyright, home_repository, canonical_source_commit, canonical_source_url, licence"
         ]
@@ -8497,10 +8498,10 @@
       "local_full_text": "docs/papers/full-text/open-source-mathematics-strategy.md",
       "local_source": "paper/systems/open-source-mathematics-strategy.tex",
       "source_sha256": "sha256:85a59805caf7ff351e026227710d5b63758dcba02297e09b1270966cec15edd0",
-      "canonical_source_commit": null,
-      "canonical_source_pin_status": "local_unpublished",
-      "canonical_source_url": null,
-      "canonical_source_raw_url": null,
+      "canonical_source_commit": "40008384cb6e343c5a93841701ecc25b97974141",
+      "canonical_source_pin_status": "immutable_commit",
+      "canonical_source_url": "https://github.com/wcook04/plectis-erdos/blob/40008384cb6e343c5a93841701ecc25b97974141/paper/systems/open-source-mathematics-strategy.tex",
+      "canonical_source_raw_url": "https://raw.githubusercontent.com/wcook04/plectis-erdos/40008384cb6e343c5a93841701ecc25b97974141/paper/systems/open-source-mathematics-strategy.tex",
       "section_count": 32,
       "sections": [
         {
@@ -8731,7 +8732,8 @@
           }
         ],
         "unresolved_count": 0
-      }
+      },
+      "superseded_by": "claim-faithful-publication-systems"
     },
     {
       "paper_id": "plectis-public-system",

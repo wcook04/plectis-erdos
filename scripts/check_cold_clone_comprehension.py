@@ -1210,11 +1210,10 @@ def validate_human_first_contact(
 
     require(
         re.search(
-            r"\[agent-navigation paper\]\(paper/systems/cold-clone-to-proof-receipt\.pdf\)"
-            r"|\[agent-navigation paper\]\(cold-clone-to-proof-receipt\.pdf\)",
+            r"\[[^\]]+\]\(paper/systems/claim-faithful-publication-systems-paper\.pdf\)",
             readme_prefix,
         ),
-        "README no longer exposes the cold-clone-to-proof-receipt paper",
+        "README no longer exposes the current unified systems paper",
     )
     def readme_exposes_pdf(filename: str) -> bool:
         return bool(re.search(rf"\]\([^)\n]*{re.escape(filename)}\)", readme_prefix))

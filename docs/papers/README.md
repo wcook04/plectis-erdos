@@ -8,19 +8,20 @@ PDFs and LaTeX source. Both public repositories include the active papers.
 Older, retired papers are kept only in the repository that published them.
 Some papers may be available in the repository before they appear on the website.
 
-This checkout contains 20 active papers and 1 retired paper and 1 paper awaiting website publication.
+This checkout contains 18 active papers and 3 retired papers and 1 paper awaiting website publication.
 
-## Project papers
+## Systems paper
 
 - [Problem-Sized Lean Worlds](full-text/claim-faithful-publication-systems-paper.md)
-- [From a Cold Clone to a Proof Receipt](full-text/cold-clone-to-proof-receipt.md)
-- [From Spare Compute to Cumulative Mathematics](full-text/open-source-mathematics-strategy.md)
-- [Plectis: What a Stranger Can Check](full-text/plectis-public-system.md)
 
 The mathematical papers are listed below, [by Erdős problem number](#problem-portfolio).
 
 The links above open the full papers as text. The catalogue below
 also links to PDFs, LaTeX sources and individual sections.
+
+Earlier systems papers are retained below as historical background.
+Their dates, superseding paper and source records distinguish them
+from the current account and instructions.
 
 ## Mathematical signal first
 
@@ -432,22 +433,6 @@ Start here (selected for this guide): [The region b^{\mu}<a and the base 31/4](f
 
 Start here (selected for this guide): [A theorem and the explanation it needs](full-text/claim-faithful-publication-systems-paper.md#sec:intro), [A problem-sized world](full-text/claim-faithful-publication-systems-paper.md#sec:world), [From corpus to insight](full-text/claim-faithful-publication-systems-paper.md#sec:production), [From a proof to a public claim](full-text/claim-faithful-publication-systems-paper.md#sec:checks), [Limits, and what stronger models change](full-text/claim-faithful-publication-systems-paper.md#sec:limits).
 
-### How can a reasoning agent comprehend a large Lean corpus before compiling, then cross into replayable proof authority and incremental validation?
-
-**From a Cold Clone to a Proof Receipt**
-
-[full text](full-text/cold-clone-to-proof-receipt.md) · [PDF](../../paper/systems/cold-clone-to-proof-receipt.pdf) · [LaTeX source](../../paper/systems/cold-clone-to-proof-receipt.tex) · 20 sections · `cold-clone-to-proof-receipt` · native to this repository
-
-Start here (selected for this guide): [The cold-clone problem](full-text/cold-clone-to-proof-receipt.md#sec:problem), [A short tour with exact follow-up queries](full-text/cold-clone-to-proof-receipt.md#sec:tour), [From navigation to proof authority](full-text/cold-clone-to-proof-receipt.md#sec:authority), [A replayed case study](full-text/cold-clone-to-proof-receipt.md#sec:dogfood), [Limits and transfer conditions](full-text/cold-clone-to-proof-receipt.md#sec:limits).
-
-### How can outsiders contribute compute, mathematical direction, architecture, or review without receiving authority to declare a proof?
-
-**From Spare Compute to Cumulative Mathematics**
-
-[full text](full-text/open-source-mathematics-strategy.md) · [PDF](../../paper/systems/open-source-mathematics-strategy.pdf) · [LaTeX source](../../paper/systems/open-source-mathematics-strategy.tex) · 32 sections · `open-source-mathematics-strategy` · native to this repository
-
-Start here (selected for this guide): [The strategy](full-text/open-source-mathematics-strategy.md#sec:strategy), [The contribution protocol](full-text/open-source-mathematics-strategy.md#sec:protocol), [From an agent claim to mathematical attention](full-text/open-source-mathematics-strategy.md#sec:attention), [The local-to-general track](full-text/open-source-mathematics-strategy.md#sec:local-to-general), [Limits and governance](full-text/open-source-mathematics-strategy.md#sec:limits).
-
 ### What may a stranger conclude from public evidence when the author chose both what to publish and what counts as a pass?
 
 **Plectis: What a Stranger Can Check**
@@ -462,7 +447,7 @@ Start here (selected for this guide): [The problem](full-text/plectis-public-sys
 
 [full text](full-text/erdos249-257-main-paper.md) · [PDF](../../paper/archive/erdos249-257-main-paper.pdf) · [LaTeX source](../../paper/archive/erdos249-257-main-paper.tex) · 161 sections · `erdos249-257-main` · native to this repository
 
-The author recommends starting with [The two exact reductions](full-text/erdos249-257-main-paper.md#sec:spines), [One transform and the limit of finite evidence](full-text/erdos249-257-main-paper.md#sec:architecture), [The unresolved statements](full-text/erdos249-257-main-paper.md#sec:unresolved).
+Selected sections of this historical account: [The two exact reductions](full-text/erdos249-257-main-paper.md#sec:spines), [One transform and the limit of finite evidence](full-text/erdos249-257-main-paper.md#sec:architecture), [The unresolved statements](full-text/erdos249-257-main-paper.md#sec:unresolved).
 
 ### When do choices of digits and supports fill intervals or force irrationality, and what do the resulting constructions reveal about methods used across the Erdős programmes?
 
@@ -471,6 +456,26 @@ The author recommends starting with [The two exact reductions](full-text/erdos24
 [full text](full-text/optimal-sparse-perturbations.md) · [PDF](../../paper/synthesis/optimal-sparse-perturbations.pdf) · [LaTeX source](../../paper/synthesis/optimal-sparse-perturbations.tex) · 38 sections · `optimal-sparse-perturbations` · native to this repository
 
 Start here (selected for this guide): [From individual problems to reusable questions](full-text/optimal-sparse-perturbations.md#sec:map), [An exact capacity criterion](full-text/optimal-sparse-perturbations.md#capacity:sec:criterion), [Lambert subsums across bases](full-text/optimal-sparse-perturbations.md#sec:results), [Further questions](full-text/optimal-sparse-perturbations.md#sec:questions).
+
+### How can a reasoning agent comprehend a large Lean corpus before compiling, then cross into replayable proof authority and incremental validation?
+
+**From a Cold Clone to a Proof Receipt** · **retired manuscript**
+
+[full text](full-text/cold-clone-to-proof-receipt.md) · [PDF](../../paper/systems/cold-clone-to-proof-receipt.pdf) · [LaTeX source](../../paper/systems/cold-clone-to-proof-receipt.tex) · 20 sections · `cold-clone-to-proof-receipt` · native to this repository
+
+Superseded by [Problem-Sized Lean Worlds](full-text/claim-faithful-publication-systems-paper.md). Retained for historical context; use the current paper and repository guides for present practice.
+
+Selected sections of this historical account: [The cold-clone problem](full-text/cold-clone-to-proof-receipt.md#sec:problem), [A short tour with exact follow-up queries](full-text/cold-clone-to-proof-receipt.md#sec:tour), [From navigation to proof authority](full-text/cold-clone-to-proof-receipt.md#sec:authority), [A replayed case study](full-text/cold-clone-to-proof-receipt.md#sec:dogfood), [Limits and transfer conditions](full-text/cold-clone-to-proof-receipt.md#sec:limits).
+
+### How can outsiders contribute compute, mathematical direction, architecture, or review without receiving authority to declare a proof?
+
+**From Spare Compute to Cumulative Mathematics** · **retired manuscript**
+
+[full text](full-text/open-source-mathematics-strategy.md) · [PDF](../../paper/systems/open-source-mathematics-strategy.pdf) · [LaTeX source](../../paper/systems/open-source-mathematics-strategy.tex) · 32 sections · `open-source-mathematics-strategy` · native to this repository
+
+Superseded by [Problem-Sized Lean Worlds](full-text/claim-faithful-publication-systems-paper.md). Retained for historical context; use the current paper and repository guides for present practice.
+
+Selected sections of this historical account: [The strategy](full-text/open-source-mathematics-strategy.md#sec:strategy), [The contribution protocol](full-text/open-source-mathematics-strategy.md#sec:protocol), [From an agent claim to mathematical attention](full-text/open-source-mathematics-strategy.md#sec:attention), [The local-to-general track](full-text/open-source-mathematics-strategy.md#sec:local-to-general), [Limits and governance](full-text/open-source-mathematics-strategy.md#sec:limits).
 
 ## Evidence and limitations
 

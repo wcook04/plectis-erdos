@@ -82,15 +82,22 @@ it is not the entry point for either problem.
 
 ## Project papers
 
-These papers explain how the work is organised, how an agent uses the public
-checkout, and how another researcher can take part. Start with the question
-that interests you.
+Start with [Problem-Sized Lean Worlds](systems/claim-faithful-publication-systems-paper.pdf)
+([source](systems/claim-faithful-publication-systems-paper.tex)). This is the main
+systems paper: it follows a result from its mathematical argument through
+formal support, written explanation, review and contribution.
 
-| Question | Paper |
+Two earlier papers are retained as historical background. Their account is
+superseded by the main paper; their observations and cross-references belong
+to the revisions they describe.
+
+| Earlier paper | Detail retained |
 |---|---|
-| How do formal proofs, public claims and release checks fit together? | [Problem-Sized Lean Worlds](systems/claim-faithful-publication-systems-paper.pdf) ([source](systems/claim-faithful-publication-systems-paper.tex)) |
-| How does an agent find a task, use the tools and record what was checked? | [From a Cold Clone to a Proof Receipt](systems/cold-clone-to-proof-receipt.pdf) ([source](systems/cold-clone-to-proof-receipt.tex)) |
-| How can people contribute research or compute while keeping evidence and credit? | [From Spare Compute to Cumulative Mathematics](systems/open-source-mathematics-strategy.pdf) ([source](systems/open-source-mathematics-strategy.tex)) |
+| [From a Cold Clone to a Proof Receipt](systems/cold-clone-to-proof-receipt.pdf) ([source](systems/cold-clone-to-proof-receipt.tex)) | Navigation, recorded proof checks and incremental validation. |
+| [From Spare Compute to Cumulative Mathematics](systems/open-source-mathematics-strategy.pdf) ([source](systems/open-source-mathematics-strategy.tex)) | Contribution protocol, compute, credit and governance. |
+
+For current use, follow [the reading guide](../docs/READING_GUIDE.md),
+[agent instructions](../AGENTS.md) or [Contributing](../CONTRIBUTING.md).
 
 For the repository layout, sources of truth, build path, and release
 infrastructure, see [`docs/ARCHITECTURE.md`](../docs/ARCHITECTURE.md).

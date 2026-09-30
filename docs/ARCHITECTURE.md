@@ -46,8 +46,8 @@ Plectis keeps arguments, sources and failed routes together. The
 in; [contributions](../CONTRIBUTING.md) include explanations of existing results.
 An explanation still needs a reader to work through it and assess its use.
 Whether this record helps more than papers, source and an on-demand model remains
-untested. [From Spare Compute to Cumulative Mathematics](../paper/systems/open-source-mathematics-strategy.pdf)
-describes the contribution process.
+untested. [Problem-Sized Lean Worlds](../paper/systems/claim-faithful-publication-systems-paper.pdf)
+describes the contribution process and its evidence boundaries.
 
 ## The architecture in one page
 

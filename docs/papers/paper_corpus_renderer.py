@@ -1614,12 +1614,14 @@ def _readme(
         "",
     ]
     system_papers = sorted(
-        (record for record in active_records if record.get("subject_kind") == "system"),
+        (record for record in active_records
+         if record.get("subject_kind") == "system"
+         and record.get("relation_to_this_repository") == "native"),
         key=lambda record: record["paper_id"],
     )
     if system_papers:
         lines += [
-            "## Project papers",
+            "## Systems paper" if len(system_papers) == 1 else "## Systems papers",
             "",
         ]
         lines += [
@@ -1636,6 +1638,17 @@ def _readme(
         lines += [
             "The links above open the full papers as text. The catalogue below",
             "also links to PDFs, LaTeX sources and individual sections.",
+            "",
+        ]
+    earlier_systems = [record for record in non_active_records
+                       if record.get("subject_kind") == "system"
+                       and record.get("publication_state") == "retired"
+                       and record.get("relation_to_this_repository") == "native"]
+    if earlier_systems:
+        lines += [
+            "Earlier systems papers are retained below as historical background.",
+            "Their dates, superseding paper and source records distinguish them",
+            "from the current account and instructions.",
             "",
         ]
     lines.extend(_signal_hierarchy_lines(records, target_repo, repo_root))
@@ -1683,6 +1696,16 @@ def _readme(
             f"`{record['paper_id']}` · {record['relation_to_this_repository']} to this repository"
         )
         lines.append("")
+        superseding = next((row for row in records
+                            if row["paper_id"] == record.get("superseded_by")), None)
+        if superseding:
+            lines += [
+                f"Superseded by [{superseding['title']}]"
+                f"({_relative_to_corpus(superseding['local_full_text'])}). "
+                "Retained for historical context; use the current paper and "
+                "repository guides for present practice.",
+                "",
+            ]
         for archived in record.get("archived_versions", []):
             label = f"{archived['identifier']}v{archived['version']}"
             source_url = (f"{archived['source_repository']}/blob/"
@@ -1704,6 +1727,9 @@ def _readme(
             entries = route["sections"]
             named = ", ".join(f"[{e['title']}]({_section_link(record, e)})" for e in entries)
             lead = (
+                "Selected sections of this historical account:"
+                if state == "retired"
+                else
                 "The author recommends starting with"
                 if route["stated_by_the_paper"]
                 else "Start here (selected for this guide):"

@@ -120,8 +120,8 @@ The [cross-problem paper, Reading Eight Erdős Problems Together](paper/synthesi
 develops connections through factorial series, Lambert subsums and the limits
 of shared methods. Its main theorems are ordinary proofs; Lean checks specified
 ingredients. The [synthesis guide](paper/synthesis/README.md) identifies ways to
-continue that work. The [agent-navigation paper](paper/systems/cold-clone-to-proof-receipt.pdf)
-explains the workbench; [all papers](paper/README.md) includes the system papers.
+continue that work. The [paper index](paper/README.md) also identifies the main
+systems paper and the earlier accounts retained for historical context.
 
 <a id="what-the-checks-establish"></a>
 
