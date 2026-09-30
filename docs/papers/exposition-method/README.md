@@ -26,6 +26,23 @@ and [long](../../../paper/exposition/writing-mathematics-from-reviewed-revisions
 LaTeX sources, the companion's five inputs and their shared style are included
 in the [version manifest](version.json) with the guidance.
 
+## Keep the papers and agent instructions consistent
+
+An edit to either writing paper includes a review of the
+[mathematical-writing skill](../../../skills/public-mathematical-writing/SKILL.md).
+Carry changed advice, examples and limits into its instructions in the same
+change. If an edit leaves those instructions applicable, record the reason;
+updating file hashes alone does not establish agreement.
+
+After rebuilding the paper and its full-text copy, update the edition and file
+hashes in [version.json](version.json). Its `paper_skill_review` binds the review
+to the current paper inputs and skill, with an `updated` or
+`verified_unchanged` disposition and a substantive reason. Run
+`python3 scripts/sync_writing_skill.py --write`, then `--check`. This copies both
+guides into the skill folder for independent installation. Projection and
+release checks reject stale review bindings or bundled guides. Change the
+paper sources and skill instructions, then regenerate their copies.
+
 ## Read the kind of paper you are writing
 
 Choose a small set of human-authored papers close in subject and purpose. For

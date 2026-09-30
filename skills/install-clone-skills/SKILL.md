@@ -52,12 +52,31 @@ that replacement. Copy mode can be removed by deleting the installed skill
 directories. Symlink mode can be removed by deleting the links. Neither action
 changes this repository.
 
+## Install the writing skill for another project
+
+The writing skill includes both writing guides and a self-contained mode for
+manuscripts in another repository. Preview only that skill, then install and
+check the selected copy:
+
+```sh
+python3 scripts/install_agent_skills.py --target codex --skill public-mathematical-writing
+python3 scripts/install_agent_skills.py --target codex --skill public-mathematical-writing --apply
+python3 scripts/install_agent_skills.py --target codex --skill public-mathematical-writing --check
+```
+
+Use `--target claude` or your loader's `--target-dir` instead if appropriate.
+You can also copy the `skills/public-mathematical-writing` folder yourself.
+In another project, follow its **Use in another repository** section and the
+destination project's own instructions. The general review needs no Plectis
+commands or sibling skills; its further reading is optional.
+
 ## Boundary
 
 Installing a skill installs instructions, not dependencies, models, credits,
-or mathematical authority. It also does not make repository commands runnable
-from an unrelated directory: locate the intended Plectis Lean checkout and run
-the workflow from its root. A harness may use a different skill convention; in
+or mathematical authority. Plectis-specific workflows still require the
+intended Plectis checkout and must run from its root. The writing skill's
+portable mode uses the destination project's sources and checks instead.
+A harness may use a different skill convention; in
 that case keep the workflows repo-local and point the agent at
 `AGENTS.md`. Never claim support for a provider that has not loaded
 and executed the installed skill.

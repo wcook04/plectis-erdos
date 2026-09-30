@@ -10657,6 +10657,14 @@ def paper_reading_guide_packet() -> dict[str, Any]:
             if full_text_available
             else local_pdf or row.get("local_source")
         )
+        first_pass = copy.deepcopy(row.get("first_pass", []))
+        if isinstance(first_pass, dict):
+            # The inventory retains full editorial provenance and route audits.
+            # This reading guide needs the sections and any unresolved count.
+            if first_pass.get("unresolved_count") == 0:
+                first_pass.pop("unresolved_count")
+            if first_pass.get("provenance") == "editorial selection for this guide":
+                first_pass["provenance"] = "editorial selection"
         papers.append(
             {
                 "paper_id": row["paper_id"],
@@ -10692,7 +10700,7 @@ def paper_reading_guide_packet() -> dict[str, Any]:
                 "full_text_available_in_checkout": full_text_available,
                 "pdf_available_in_checkout": pdf_available,
                 "local_source": row.get("local_source"),
-                "first_pass": row.get("first_pass", []),
+                "first_pass": first_pass,
                 "not_authority_for": row["not_authority_for"],
             }
         )
@@ -12299,15 +12307,19 @@ def main() -> int:
     if output_format == "card":
         print(render_card(packet))
     else:
+        # The complete paper guide has a tighter first-read budget than other
+        # query packets. Compact formatting retains every edition and handle.
+        output_budget = (80_000 if packet.get("kind") == "paper_reading_guide"
+                         else OUTPUT_BUDGET_BYTES)
         encoded = json.dumps(packet, ensure_ascii=False, indent=2) + "\n"
-        if len(encoded.encode("utf-8")) > OUTPUT_BUDGET_BYTES:
+        if len(encoded.encode("utf-8")) > output_budget:
             encoded = json.dumps(packet, ensure_ascii=False, separators=(",", ":")) + "\n"
-        if len(encoded.encode("utf-8")) > OUTPUT_BUDGET_BYTES and packet.get("kind") == "problem_route":
+        if len(encoded.encode("utf-8")) > output_budget and packet.get("kind") == "problem_route":
             packet = compact_problem_route_anchor_transport(packet)
             encoded = json.dumps(packet, ensure_ascii=False, separators=(",", ":")) + "\n"
-        if len(encoded.encode("utf-8")) > OUTPUT_BUDGET_BYTES:
+        if len(encoded.encode("utf-8")) > output_budget:
             print(
-                f"query_corpus: response exceeds {OUTPUT_BUDGET_BYTES} bytes; use --format card",
+                f"query_corpus: response exceeds {output_budget} bytes; use --format card",
                 file=sys.stderr,
             )
             return 2

@@ -105,6 +105,10 @@ BUILDERS = (
     # Normalize the paper corpus before the problem index reads its paper
     # routes and fingerprints it in docs/problem_library.json.
     "docs/papers/build_publication_taxonomy.py",
+    # The portable writing skill follows both writing papers. This owner
+    # refuses to copy text until manuscript/PDF bindings and the authored
+    # paper-to-skill reconciliation record are current.
+    "scripts/sync_writing_skill.py",
     # The no-clone reading edition is assembled from the normalized paper
     # corpus, the generated paper text and the shared research instruction in
     # skills/explore-the-corpus/SKILL.md. Listing it here makes the release
@@ -142,6 +146,7 @@ BUILDERS = (
 # argument parser and fails when a builder that declares --write is missing
 # from this table.
 WRITE_FLAGS: dict[str, tuple[str, ...]] = {
+    "scripts/sync_writing_skill.py": ("--write",),
     "scripts/corpus_substrate.py": ("--write",),
     "scripts/reanchor_source_attributions.py": ("--write", "--preserve-excerpts", "--base", "HEAD"),
     "scripts/build_off_diagonal_certificate_roster.py": ("--write",),

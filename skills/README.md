@@ -60,7 +60,7 @@ Return work from any clone, preserve attribution, reconcile it with current main
 
 Explain checked mathematics in reader-facing prose without outrunning the evidence.
 
-- [public-mathematical-writing](public-mathematical-writing/SKILL.md): Write or revise reader-facing mathematics in this public Lean repository without outrunning checked source, claim status, or the exact open boundary.
+- [public-mathematical-writing](public-mathematical-writing/SKILL.md): Write or revise mathematical papers using nearby literature and exact evidence, either in another repository or with the public Plectis source and claim records.
   Routed by: Read the corpus and decide what to develop, Land a Lean proof of a paper statement in the papers and the Comparator queue, Write reader-facing mathematics
 
 ## Infrastructure stewardship

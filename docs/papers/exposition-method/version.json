@@ -1,6 +1,6 @@
 {
   "schema": "exposition-method-version/1",
-  "version": "2026-09-30.2",
+  "version": "2026-09-30.3",
   "required_roles": [
     "guidance",
     "skill",
@@ -19,12 +19,12 @@
   "files": [
     {
       "path": "docs/papers/exposition-method/README.md",
-      "sha256": "b62bc5bc571d87d9276b08cd2b76b64e9d35b842f698036e73df362b2bc4ae95",
+      "sha256": "e925fe2bcc74b734cc926b3609e8473501aec9d546d45c04c2e38d5f990e76b8",
       "role": "guidance"
     },
     {
       "path": "skills/public-mathematical-writing/SKILL.md",
-      "sha256": "917045b368319632166f8c3f8e34fb7528d8442627a16e3eb215f4c9fd946a2b",
+      "sha256": "24e9b5f71e7a22827628b04a85e8e810d4ef6e2de6047ce97c3ab44053fa8d52",
       "role": "skill"
     },
     {
@@ -112,5 +112,11 @@
       "sha256": "adab6091806c70f7e05367b79353c4971dcbbfaf7a4f9bba12b437966dbbd21f",
       "role": "compact_guide_pdf"
     }
-  ]
+  ],
+  "paper_skill_review": {
+    "paper_inputs_sha256": "a114477261462f52f1f31ff4dee083c73b13552ec54fb369508156c7f62fe1cb",
+    "skill_sha256": "24e9b5f71e7a22827628b04a85e8e810d4ef6e2de6047ce97c3ab44053fa8d52",
+    "disposition": "updated",
+    "reason": "Reviewed both writing papers and all companion inputs against the instructions. Added a self-contained workflow for other repositories, retained the papers' distinctions between expository models and proof evidence, and required same-change review of a paper's associated skill. Bundled both guides and preserved the Plectis-specific claim and publication workflow separately."
+  }
 }

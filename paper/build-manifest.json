@@ -285,9 +285,9 @@
         "paper/module-aliases.tex": "sha256:6d6d9640a9b7f04d003ebbffb78db279f5af838a2afc99ba6b5b247cc67b6954",
         "paper/paper-house-style.sty": "sha256:1b4630ead32bfb407a2f29f5953fbb8d4140a659f6500799282a4805ba54a883",
         "paper/problem-note-preamble.tex": "sha256:088d36d7ba3d3ee0cee2df99e8915927999698f19889f8ea0b8d55b3721ec778",
-        "paper/systems/claim-faithful-publication-systems-paper.tex": "sha256:3d83804d8e0a97914e009f07656ab7c7d6cb460bcbda554b9063e68ef1b2b688"
+        "paper/systems/claim-faithful-publication-systems-paper.tex": "sha256:713c307c0d021d013309aed49679631a414ce71c8b5a602a51e67fafba971797"
       },
-      "rendered_content_digest": "sha256:c7016cb1100c5f36c3ae6a23920ef6337de38cab814139173f2fb1be544770a5",
+      "rendered_content_digest": "sha256:df40cf12a3a281834a7cd9f681abcce0d3a84475a56eb64d168013b60d9db1e1",
       "source_path": "paper/systems/claim-faithful-publication-systems-paper.tex",
       "storage_path": "paper/systems/claim-faithful-publication-systems-paper.pdf"
     }
