@@ -67,7 +67,7 @@ def checked_builders(source: str) -> set[str]:
 
 
 def check_check_only_dispatch() -> None:
-    """The freshness scheduler must dispatch every authoritative builder once."""
+    """Dispatch each authoritative builder and its registered output variants."""
     calls: list[tuple[str, ...]] = []
     original = refresh_projections.run
 
@@ -81,10 +81,14 @@ def check_check_only_dispatch() -> None:
         require(refresh_projections.check_only() == 0, "mocked check-only run failed")
     finally:
         refresh_projections.run = original
-    dispatched = [Path(args[1]).relative_to(ROOT).as_posix() for args in calls]
+    dispatched = [(Path(args[1]).relative_to(ROOT).as_posix(), tuple(args[2:])) for args in calls]
+    expected = [(builder, tuple(refresh_projections.check_command(builder)[2:]))
+                for builder in (*refresh_projections.BUILDERS, *refresh_projections.CHECK_ONLY_BUILDERS)]
+    expected += [(builder, (*flags, "--check"))
+                 for builder, variants in refresh_projections.BUILD_VARIANTS.items() for flags in variants]
     require(
-        sorted(dispatched) == sorted((*refresh_projections.BUILDERS, *refresh_projections.CHECK_ONLY_BUILDERS)),
-        "check-only dispatch dropped or duplicated a projection builder",
+        sorted(dispatched) == sorted(expected),
+        "check-only dispatch dropped or duplicated a projection variant",
     )
     require(
         all("--tracked-only" in args for args in calls if Path(args[1]).name in (
@@ -92,6 +96,24 @@ def check_check_only_dispatch() -> None:
         )),
         "portable evidence check can fall back to local receipts",
     )
+
+
+def check_record_variant_failure_is_not_ignored() -> None:
+    """A current ordinary reading edition cannot hide a stale record audit."""
+    for operation in (refresh_projections.refresh, refresh_projections.check_only,
+                      refresh_projections.preflight):
+        calls = []
+        def fake_run(args, cwd):
+            calls.append(args)
+            failed = "--records" in args
+            return subprocess.CompletedProcess(args, int(failed), "", "stale record audit" if failed else "")
+        with patch.object(refresh_projections, "run", side_effect=fake_run), \
+             patch.object(refresh_projections, "tracked_diff", return_value=set()):
+            require(operation() == 1, "projection owner ignored its stale record variant")
+        variants = [args for args in calls if "--records" in args]
+        require(bool(variants), "projection owner never invoked the record variant")
+        require(all(("--check" in args) == (operation != refresh_projections.refresh)
+                    for args in variants), "record variant used the wrong mutation/check mode")
 
 
 def check_external_evidence_is_not_silently_omitted() -> None:
@@ -206,6 +228,7 @@ def main() -> int:
         "order a full refresh cannot converge",
     )
     check_check_only_dispatch()
+    check_record_variant_failure_is_not_ignored()
     check_external_evidence_is_not_silently_omitted()
 
     print(

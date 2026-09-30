@@ -1,0 +1,7 @@
+# Archived prerequisite source
+
+This directory preserves the exact existing source used by the component-local prerequisite paragraph in the Erdős1041 papers. The original commit is recorded in provenance.json; its public branch is no longer available. The bytes and line numbers are unchanged.
+
+The archive is read-only proof-source evidence. It is not an additional native Lean import, a new whole-statement coverage association, or a new Comparator result. This editorial pass does not claim a fresh compilation. The broader attachment-aware conclusion retains its separate ordinary-proof boundary.
+
+The declarations and proof scripts were audited as source. No retained successful kernel-check receipt for this module was located, and these archived bytes do not confer checked-proof status.

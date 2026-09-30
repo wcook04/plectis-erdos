@@ -4,7 +4,7 @@ Part of the [evidence record](../erdos249-totient-reasoning-surface.md) of the p
 
 <a id="prop-shift"></a>
 
-## Proposition 5.3 (Digit-shift identity), page 21
+## Proposition 5.3 (Digit-shift identity), page 22
 
 > *For every $`N : \mathbb{N}`$,
 > ``` math
@@ -34,7 +34,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="lem-farey"></a>
 
-## Lemma 5.4 (Farey gap, fully general), page 21
+## Lemma 5.4 (Farey gap, fully general), page 22
 
 > *For integers $`a,b,c,d,r,s`$ with $`b>0`$, $`d>0`$, $`bc-ad=1`$ (i.e. $`a/b`$ and $`c/d`$ are unimodular Farey neighbours), and $`as < rb`$, $`rd < cs`$ (i.e. $`r/s`$ lies strictly between them): $`b+d \le s`$.*
 
@@ -127,7 +127,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="thm-denom-record"></a>
 
-## Theorem 5.6 (Denominator exclusion), page 22
+## Theorem 5.6 (Denominator exclusion), page 23
 
 > *For every $`p\in\mathbb{Q}`$ whose reduced denominator is at most $`Q_0`$,
 > ``` math
@@ -199,7 +199,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="prop-gcdlayer"></a>
 
-## Proposition 5.10 (The gcd-layer normalisation), page 23
+## Proposition 5.10 (The gcd-layer normalisation), page 24
 
 > *For independent fair-coin waiting times as above, $`\sum_{g\ge1}\Pr(\gcd(X,Y)=g)=1`$ exactly; and for every $`d>0`$, $`\Pr(d\mid X \wedge d\mid Y) = 1/(2^d-1)^2`$.*
 
@@ -237,7 +237,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="thm-denomcoprime"></a>
 
-## Theorem 5.11 (Denominator exclusion for the coprimality-probability form), page 23
+## Theorem 5.11 (Denominator exclusion for the coprimality-probability form), page 24
 
 > *Let
 > ``` math
@@ -269,7 +269,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="thm-denommobsq"></a>
 
-## Theorem 5.12 (Denominator exclusion for the Möbius-square form), page 23
+## Theorem 5.12 (Denominator exclusion for the Möbius-square form), page 24
 
 > *With $`Q_1`$ as in Theorem 5.11: for every $`a\in\mathbb{Z}`$, $`d\in\mathbb{N}`$ with $`0<d\le Q_1`$, the signed series $`T := \sum_{m\ge1} \mu(m)/(2^m-1)^2 = S - \tfrac12`$ (see §5.5) is not equal to $`a/d`$.*
 
@@ -346,7 +346,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="prop-lambertengine"></a>
 
-## Proposition 5.16 (The squared-Lambert identity), page 24
+## Proposition 5.16 (The squared-Lambert identity), page 25
 
 > *For $`w:\mathbb{N}\to\mathbb{R}`$ with $`|w(d)|\le d`$ for all $`d>0`$, and $`0\le r<1`$:
 > ``` math
@@ -436,7 +436,7 @@ theorem exists_irrational_pair_with_rational_difference :
 
 <a id="prop-pillai"></a>
 
-## Proposition 5.18 (The gcd-moment identity), page 25
+## Proposition 5.18 (The gcd-moment identity), page 26
 
 > *``` math
 > \sum_{d\ge1} \frac{\varphi(d)}{(2^d-1)^2} \;=\; \sum_{n\ge1} \bigl(P(n)-n\bigr)\cdot 2^{-n} \;=\; \mathbb{E}[\gcd(X,Y)],

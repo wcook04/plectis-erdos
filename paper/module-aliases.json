@@ -3,7 +3,7 @@
   "artifact_role": "paper_sigil_to_lean_module_navigation_crosswalk",
   "authority_posture": "generated_navigation_projection_not_proof_authority",
   "heuristic": "Each CamelCase component contributes at most its first three characters.",
-  "alias_count": 125,
+  "alias_count": 100,
   "aliases": [
     {
       "sigil": "ActForResPro",
@@ -291,11 +291,6 @@
       "path": "lean/Erdos249257/LcmConeNonflat.lean"
     },
     {
-      "sigil": "LcmFacIdePulObs",
-      "module": "lean/Erdos249257/LcmFactorIdealPulseObstruction.lean",
-      "path": "lean/Erdos249257/LcmFactorIdealPulseObstruction.lean"
-    },
-    {
       "sigil": "MaxOmeLay",
       "module": "lean/Erdos249257/MaximalOmegaLayer.lean",
       "path": "lean/Erdos249257/MaximalOmegaLayer.lean"
@@ -466,49 +461,14 @@
       "path": "lean/Erdos249257/Totient827ParitySocketCeiling.lean"
     },
     {
-      "sigil": "TotActLcmOrbNon",
-      "module": "lean/Erdos249257/TotientActualLcmOrbitNonintegrality.lean",
-      "path": "lean/Erdos249257/TotientActualLcmOrbitNonintegrality.lean"
-    },
-    {
-      "sigil": "TotActLcmOrbSep",
-      "module": "lean/Erdos249257/TotientActualLcmOrbitSeparation.lean",
-      "path": "lean/Erdos249257/TotientActualLcmOrbitSeparation.lean"
-    },
-    {
       "sigil": "TotActLcmOrbSig",
       "module": "lean/Erdos249257/TotientActualLcmOrbitSign.lean",
       "path": "lean/Erdos249257/TotientActualLcmOrbitSign.lean"
     },
     {
-      "sigil": "TotActLcmShoKil",
-      "module": "lean/Erdos249257/TotientActualLcmShortKill.lean",
-      "path": "lean/Erdos249257/TotientActualLcmShortKill.lean"
-    },
-    {
-      "sigil": "TotActLcmTopEdgSta",
-      "module": "lean/Erdos249257/TotientActualLcmTopEdgeStaircase.lean",
-      "path": "lean/Erdos249257/TotientActualLcmTopEdgeStaircase.lean"
-    },
-    {
       "sigil": "TotCarKerRig",
       "module": "lean/Erdos249257/TotientCarryKernelRigidity.lean",
       "path": "lean/Erdos249257/TotientCarryKernelRigidity.lean"
-    },
-    {
-      "sigil": "TotKerCon",
-      "module": "lean/Erdos249257/TotientKernelConditional.lean",
-      "path": "lean/Erdos249257/TotientKernelConditional.lean"
-    },
-    {
-      "sigil": "TotKerInd",
-      "module": "lean/Erdos249257/TotientKernelIndex.lean",
-      "path": "lean/Erdos249257/TotientKernelIndex.lean"
-    },
-    {
-      "sigil": "TotKerRed",
-      "module": "lean/Erdos249257/TotientKernelReduction.lean",
-      "path": "lean/Erdos249257/TotientKernelReduction.lean"
     },
     {
       "sigil": "TotMahDef",
@@ -524,11 +484,6 @@
       "sigil": "TotTaiPerKil",
       "module": "lean/Erdos249257/TotientTailPeriodKiller.lean",
       "path": "lean/Erdos249257/TotientTailPeriodKiller.lean"
-    },
-    {
-      "sigil": "TroCurCar",
-      "module": "lean/Erdos249257/TropicalCurvatureCarry.lean",
-      "path": "lean/Erdos249257/TropicalCurvatureCarry.lean"
     },
     {
       "sigil": "FinHorRes",
@@ -549,86 +504,6 @@
       "sigil": "SpaResRec",
       "module": "lean/ErdosProblems/Erdos243/SparseResetRecovery.lean",
       "path": "lean/ErdosProblems/Erdos243/SparseResetRecovery.lean"
-    },
-    {
-      "sigil": "CycAncKil",
-      "module": "lean/ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean",
-      "path": "lean/ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean"
-    },
-    {
-      "sigil": "FinEulSie",
-      "module": "lean/ErdosProblems/Erdos249/FiniteEulerSieve.lean",
-      "path": "lean/ErdosProblems/Erdos249/FiniteEulerSieve.lean"
-    },
-    {
-      "sigil": "FulDepRayAmp",
-      "module": "lean/ErdosProblems/Erdos249/FullDepthRayAmplifier.lean",
-      "path": "lean/ErdosProblems/Erdos249/FullDepthRayAmplifier.lean"
-    },
-    {
-      "sigil": "PerMulEsc",
-      "module": "lean/ErdosProblems/Erdos249/PeriodMultipleEscape.lean",
-      "path": "lean/ErdosProblems/Erdos249/PeriodMultipleEscape.lean"
-    },
-    {
-      "sigil": "PriRayCycCur",
-      "module": "lean/ErdosProblems/Erdos249/PrimeRayCyclotomicCurvature.lean",
-      "path": "lean/ErdosProblems/Erdos249/PrimeRayCyclotomicCurvature.lean"
-    },
-    {
-      "sigil": "RanOneShaFlo",
-      "module": "lean/ErdosProblems/Erdos249/RankOneSharpFloor.lean",
-      "path": "lean/ErdosProblems/Erdos249/RankOneSharpFloor.lean"
-    },
-    {
-      "sigil": "TotStrPriEsc",
-      "module": "lean/ErdosProblems/Erdos249/TotientStrictPrimeEscape.lean",
-      "path": "lean/ErdosProblems/Erdos249/TotientStrictPrimeEscape.lean"
-    },
-    {
-      "sigil": "PriGapDyaTai",
-      "module": "lean/ErdosProblems/Erdos251/PrimeGapDyadicTail.lean",
-      "path": "lean/ErdosProblems/Erdos251/PrimeGapDyadicTail.lean"
-    },
-    {
-      "sigil": "BouRadTaiEsc",
-      "module": "lean/ErdosProblems/Erdos269/BoundedRadixTailEscape.lean",
-      "path": "lean/ErdosProblems/Erdos269/BoundedRadixTailEscape.lean"
-    },
-    {
-      "sigil": "CarLifExt",
-      "module": "lean/ErdosProblems/Erdos269/CarryLiftExtinction.lean",
-      "path": "lean/ErdosProblems/Erdos269/CarryLiftExtinction.lean"
-    },
-    {
-      "sigil": "ResEsc",
-      "module": "lean/ErdosProblems/Erdos269/ResidueEscape.lean",
-      "path": "lean/ErdosProblems/Erdos269/ResidueEscape.lean"
-    },
-    {
-      "sigil": "ResFloSum",
-      "module": "lean/ErdosProblems/Erdos269/RestrictedFloorSum.lean",
-      "path": "lean/ErdosProblems/Erdos269/RestrictedFloorSum.lean"
-    },
-    {
-      "sigil": "ThrChaBloRig",
-      "module": "lean/ErdosProblems/Erdos269/ThreeChannelBlockRigidity.lean",
-      "path": "lean/ErdosProblems/Erdos269/ThreeChannelBlockRigidity.lean"
-    },
-    {
-      "sigil": "ThrPriRunLcm",
-      "module": "lean/ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean",
-      "path": "lean/ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean"
-    },
-    {
-      "sigil": "WeiPhaCar",
-      "module": "lean/ErdosProblems/Erdos269/WeightedPhaseCarry.lean",
-      "path": "lean/ErdosProblems/Erdos269/WeightedPhaseCarry.lean"
-    },
-    {
-      "sigil": "LadT67",
-      "module": "lean/ErdosProblems/Skip/LadderT67.lean",
-      "path": "lean/ErdosProblems/Skip/LadderT67.lean"
     }
   ],
   "validation": "python3 scripts/build_paper_module_aliases.py --check"

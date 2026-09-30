@@ -530,15 +530,41 @@ def validate_systems_paper(text: str) -> None:
         f"(budget {byte_budget} for {artifact_count} governed artifacts)"
     ))
 
-    require(
-        "Problem-Sized Lean Worlds" in text
-        and "Persistent, checkable research records for AI-assisted mathematics"
-        in text
-    , "systems paper lost its plain architecture title")
+    artifact = next(a for a in contract['artifacts'] if a['id']=='repository_architecture_guide')
+    unified = artifact.get('systems_paper_profile') == 'unified_corpus_to_paper_v1'
+    subtitle = ('From a Lean corpus to a short paper, open to outside contribution'
+                if unified else 'Persistent, checkable research records for AI-assisted mathematics')
+    require('Problem-Sized Lean Worlds' in text and subtitle in text,
+            'systems paper title differs from its registered architecture profile')
     require(
         r"\newcommand{\repobase}{https://github.com/wcook04/plectis-erdos}" in text,
         "systems paper repository links do not use the canonical public repository",
     )
+    # Version 2 preserves the byte budget, entry routes and pinned-link checks,
+    # replacing the old exact-prose scaffold with exhaustive explicit body bindings.
+    # The legacy route below stays available for historical manuscripts.
+    if "% SYSTEMS_PAPER_VERSION 2" in text:
+        import systems_paper_evidence
+        labels=(("sec:intro", "sec:world", "sec:example", "sec:checks", "sec:paper",
+                 "sec:contribute", "sec:evaluation", "sec:related", "sec:limits", "app:repro")
+                if unified else ("sec:intro", "sec:predigestion", "sec:checks", "sec:short", "sec:long",
+                                 "sec:instance", "sec:loop", "sec:evaluation", "sec:related", "sec:limits", "app:repro"))
+        positions=[text.find(r"\label{"+label+"}") for label in labels]
+        require(all(p>=0 for p in positions) and positions==sorted(positions),
+                "systems paper lost the version-2 pipeline section order")
+        if unified:
+            for label in ('sec:short','sec:long','sec:predigestion','sec:loop'):
+                require(r'\label{'+label+'}' in text,
+                        'systems paper lost compatibility reading anchor '+label)
+        for target in ("systems-lifecycle", "systems-research-loop", "systems-trust", "systems-scaling"):
+            require(r"\papersectiontarget{"+target+"}" in text, "systems paper lost section target "+target)
+        validate_pinned_evidence_links(text)
+        problems=systems_paper_counts.pipeline_errors(text, ROOT)
+        problems+=systems_paper_evidence.validate_bound_paper(text, ROOT)
+        require(not problems, "systems paper source contract: "+"; ".join(problems))
+        require(SYSTEMS_PDF.is_file(), "rendered systems architecture PDF is missing")
+        return
+
     require(
         text.count("% BEGIN generated_semantic_coverage_macros") == 1
         and text.count("% END generated_semantic_coverage_macros") == 1,

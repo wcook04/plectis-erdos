@@ -23,6 +23,9 @@ def require(condition: bool, message: str) -> None:
 
 def main() -> int:
     text = counts.PAPER.read_text(encoding="utf-8")
+    if counts.VERSION_TWO in text:
+        from test_systems_paper_pipeline import run_counts
+        return run_counts()
     require(counts.errors(text) == [], f"the committed paper disagrees with the checkout: {counts.errors(text)}")
     checks = 1
 

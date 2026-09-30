@@ -106,7 +106,7 @@ theorem finite_monotone_witness_rule_realised
 
 <a id="thm-257-variable-fractional-cover"></a>
 
-## Theorem 1.3 (A summable family of divisor majorants), page 14
+## Theorem 1.3 (A summable family of divisor majorants), page 15
 
 > *For each $`j\ge1`$, let $`F_j\subseteq\mathbb{N}_{>0}`$ be finite, let $`0<\alpha_j\le1`$, and let $`c_{j,d}\ge0`$ satisfy
 > ``` math
@@ -150,7 +150,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="thm-257-mixed-supports"></a>
 
-## Theorem 1.4 (mixed weighted and cover supports), page 16
+## Theorem 1.4 (mixed weighted and cover supports), page 17
 
 > *Let $`E,V\subseteq\mathbb{N}_{>0}`$. Suppose $`E`$ has finite weighted mass (1) at $`b=2`$ for a finite nonempty prime set $`\mathcal P`$. Suppose also that $`V\subseteq\bigcup_jF_j`$ for sets and majorants satisfying Theorem 1.3, with (14) or its positive-weight variant. Then $`X_A(b)`$ is irrational for every infinite $`A\subseteq E\cup V`$ and every integer $`b\ge2`$.*
 
@@ -195,7 +195,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="thm-geometry"></a>
 
-## Theorem 1.8 (Achievement-set geometry), page 21
+## Theorem 1.8 (Achievement-set geometry), page 22
 
 > *$`\mathcal{A}`$ is compact, closed, perfect, totally disconnected and nowhere dense, and $`\operatorname{volume}(\mathcal{A}) = 1`$. Thus its measure is positive although it contains no interval. Its convex hull is $`[0,E]`$, where $`E=\sum_{n\ge1}w_n`$. The positive-index digit coding onto $`\mathcal{A}`$ is injective: each achievable real has *exactly one* support.*
 
@@ -226,7 +226,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="thm-supported-dichotomy"></a>
 
-## Theorem 1.9 (Support-restricted refinement), page 21
+## Theorem 1.9 (Support-restricted refinement), page 22
 
 > *Use zero-based indices in this statement: coordinate $`j\in\mathbb{N}`$ carries weight $`w_{j+1}`$. For $`J\subseteq\mathbb{N}`$, consider the sums that use only coordinates in $`J`$. If $`\mathbb{N}\smallsetminus J`$ is finite, this achievement set has measure $`2^{-|\mathbb{N}\smallsetminus J|}`$; if infinitely many coordinates are omitted, its measure is zero. Injectivity survives every restriction; perfectness is proved when $`J`$ is infinite. No perfectness claim is made for finite $`J`$, whose coding range is finite.*
 
@@ -282,7 +282,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="thm-greedy-survival"></a>
 
-## Theorem 1.11 (Membership equals greedy survival; the fatal-gap dichotomy), page 22
+## Theorem 1.11 (Membership equals greedy survival; the fatal-gap dichotomy), page 23
 
 > *For a real target $`x\ge0`$, let $`r_n(x)`$ be the remainder after the greedy rule has processed weights $`w_1,\ldots,w_n`$, and let $`R_n=\sum_{j>n}w_j`$, with $`r_0(x)=x`$ and $`R_0=E`$. Then
 > ``` math

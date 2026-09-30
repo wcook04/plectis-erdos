@@ -1,16 +1,16 @@
 # Formal evidence: Reciprocal-Tail Rigidity: Theorems, Proofs and Questions
 
-This record belongs to the paper [erdos243-reciprocal-tail-reasoning-surface.pdf](../paper/243/erdos243-reciprocal-tail-reasoning-surface.pdf). For every result it lists the Lean declarations that state it, and the independent Comparator check where there is one. The margin marks in the paper link here.
+This record belongs to the paper [erdos243-reciprocal-tail-reasoning-surface.pdf](../paper/243/erdos243-reciprocal-tail-reasoning-surface.pdf). For every result it lists the Lean declarations that state it, and the recorded Comparator check where there is one. The inline links and margin marks in the paper use the same result mapping.
 
 - **Lean.** Every declaration is quoted from [plectis-erdos](https://github.com/wcook04/plectis-erdos) at commit [`436f55ebdafa`](https://github.com/wcook04/plectis-erdos/tree/436f55ebdafa67e4af0fff79f621c13f2ded12bf) and is checked there by Lean's kernel (`leanprover/lean4:v4.29.1`, Mathlib `5e932f97dd25`).
 - **Comparator.** For a compared result, each declaration was stated a second time, from Mathlib alone, as a *Challenge* in [plectis-erdos-lean](https://github.com/wcook04/plectis-erdos-lean), and a *Solution* that uses our proof was checked against it by [Comparator](https://github.com/leanprover/comparator), which also confirms that only the axioms `propext`, `Quot.sound`, `Classical.choice` are used. All checks below come from replay run [35935225572](https://github.com/wcook04/plectis-erdos-lean/actions/runs/35935225572) at corpus commit [`cc7e541cf208`](https://github.com/wcook04/plectis-erdos-lean/tree/cc7e541cf2081c6fef5a5e377d52e365e33b01eb) (tag `paper-evidence-2026-09-24`); both the default Lean kernel and the independent `nanoda` kernel accepted every entry. The replay's own report for each entry is kept in this repository and linked from each check. A Challenge shows `sorry` because it states the target without proving it.
 - **Counts.** 53 results: 53 with a Lean proof of the whole statement, 0 whose Lean proof assumes a named input (marked with a dagger), 0 without a Lean proof of the whole statement; 51 compared.
 
-These checks establish that the stated propositions are proved. Whether each is the right proposition is for the reader to judge against the paper's statement, which is reproduced below.
+These checks establish that the stated propositions are proved. Whether each is the right proposition is for the reader to judge against the paper's statement, which is reproduced below. Comparator checks separately declared statements, the axiom budget and kernel acceptance; it does not establish novelty, significance or peer review.
 
 <a id="long243-res-cubicrate"></a>
 
-## Theorem 2.1 (cubic-rate irrationality), page 3
+## Theorem 2.1 (cubic-rate irrationality), page 2
 
 > *If strictly increasing positive integers satisfy $`a_n^2/a_{n+1}=1+3/n+o(n^{-3})`$, then $`\sum_n1/a_n`$ is irrational.*
 
@@ -64,7 +64,7 @@ theorem nonintegral_regular_rate_irrational
 
 <a id="long243-res-cubicexclusion"></a>
 
-## Theorem 2.3 (rising-factorial cubic exclusion), page 4
+## Theorem 2.3 (rising-factorial cubic exclusion), page 3
 
 > *Let $`a,C,D:\mathbb{N}\to\mathbb{Z}_{>0}`$ satisfy
 > ``` math
@@ -110,7 +110,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long243-res-periodicobstruction"></a>
 
-## Lemma 2.4 (periodic obstruction principle), page 5
+## Lemma 2.4 (periodic obstruction principle), page 4
 
 > *Let $`h,L`$ be positive integers and let $`j_1,\ldots,j_L`$ be fixed integer offsets. Suppose that for every sufficiently large $`n`$ in one residue class modulo $`h`$ at least one of $`n+j_1,\ldots,n+j_L`$ lies in $`S`$. Then $`\underline d(S)\ge1/(Lh)`$.*
 
@@ -196,7 +196,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long243-res-reduciblecase"></a>
 
-## Lemma 2.6 (the multiplier supply, and the reducible case), page 6
+## Lemma 2.6 (the multiplier supply, and the reducible case), page 5
 
 > *On the primitive tail, $`\gcd(a_n,v_n)=1`$, the multipliers at distinct indices are pairwise coprime, infinitely many of them exceed $`1`$, and the cubic $`Q_{m,c}`$ of (3) is irreducible over $`\mathbb{Q}`$.*
 
@@ -319,7 +319,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long243-res-scaletwelve"></a>
 
-## Lemma 2.9 (classification of the scales), page 8
+## Lemma 2.9 (classification of the scales), page 7
 
 > *Let $`m`$ be a positive integer, let $`c\in\{-1,1\}`$ and $`\eta=6c/m`$, and suppose $`T^3-T+\eta`$ is irreducible over $`\mathbb{Q}`$ with a root $`\alpha`$ such that $`\alpha^2-1`$ is a square in $`\mathbb{Q}(\alpha)^\times`$. Then $`m=12`$.*
 
@@ -354,7 +354,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long243-res-modseven"></a>
 
-## Lemma 2.10 (the two forbidden words), page 9
+## Lemma 2.10 (the two forbidden words), page 8
 
 > *For $`Q_{12,1}`$, every sufficiently late four-index window beginning at $`n\equiv0\pmod7`$ contains an exceptional index. For $`Q_{12,-1}`$, the same holds for windows beginning at $`n\equiv1\pmod7`$. In either case, $`\underline d(S)\ge1/7`$. No phase-free four-index obstruction is asserted.*
 
@@ -482,7 +482,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long243-res-update"></a>
 
-## Proposition 4.1 (update law), page 17
+## Proposition 4.1 (update law), page 16
 
 > *For all $`a,D,C\in\mathbb{Z}`$,
 > ``` math
@@ -545,7 +545,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long243-res-defect"></a>
 
-## Theorem 5.1 (defect identity), page 19
+## Theorem 5.1 (defect identity), page 18
 
 > *For all $`a,a',D,C\in\mathbb{Z}`$,
 > ``` math
@@ -615,7 +615,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long243-res-secondorder"></a>
 
-## Theorem 5.4 (eliminating the denominator from two steps), page 20
+## Theorem 5.4 (eliminating the denominator from two steps), page 19
 
 > *Let $`a,a_1,u,u_1,u_2,v,v_1,h,h_1`$ be integers satisfying
 > ``` math
@@ -681,7 +681,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long243-res-oldmodulussaturation"></a>
 
-## Lemma 5.6 (saturation modulo an old denominator), page 21
+## Lemma 5.6 (saturation modulo an old denominator), page 20
 
 > *Let $`M\ge2`$. Any finite word $`r_0,\ldots,r_k`$ of units modulo $`M`$ is compatible with the cancellation-free recurrences modulo $`M`$, with all reduced denominator residues equal to zero. Consequently the eliminated two-step identity alone imposes no further restriction on such unit words when the multiplier residues are free.*
 
@@ -743,7 +743,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long243-res-absorb"></a>
 
-## Theorem 5.8 (zero is absorbing), page 22
+## Theorem 5.8 (zero is absorbing), page 21
 
 > *Let $`a,C,D:\mathbb{N}\to\mathbb{N}`$ be an exact orbit of natural numbers, so $`C_{n+1}+D_n=a_nC_n`$ and $`D_{n+1}=a_nD_n`$, and let $`E_n=D_n-(a_n-1)C_n`$. Suppose the centring is strict, $`|E_n|<C_n`$ for every $`n`$. If $`E_n=0`$ then $`E_{n+1}=0`$.*
 
@@ -774,7 +774,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long243-res-arithmeticrecord"></a>
 
-## Theorem 6.1 (boundedness and a weighted sum over new maxima), page 23
+## Theorem 6.1 (boundedness and a weighted sum over new maxima), page 22
 
 > *Let $`a_n,L_n,U_n`$ be positive integers and $`V_n`$ integers satisfying
 > ``` math
@@ -821,7 +821,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long243-res-weightedrecord"></a>
 
-## Theorem 6.2 (a convergent weighted sum over new maxima), page 24
+## Theorem 6.2 (a convergent weighted sum over new maxima), page 23
 
 > *Assume the growth and rationality hypotheses of Problem 1.1, and let $`f`$ be as in Theorem 6.1. The sequence is eventually Sylvester if and only if, for some integer $`B\ge0`$,
 > ``` math
@@ -858,7 +858,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long243-res-valuationtransition"></a>
 
-## Lemma 7.1 (the denominator valuation transition), page 27
+## Lemma 7.1 (the denominator valuation transition), page 26
 
 > *Let $`u,v,a`$ be positive integers, $`\gcd(u,v)=1`$, and $`w=au-v>0`$. Put $`h=\gcd(w,av)`$ and $`v'=av/h`$. For a prime $`p`$, write $`r=\nu_p(a)`$, $`s=\nu_p(v)`$ and $`t=\nu_p(w)`$. Then
 > ``` math
@@ -967,7 +967,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long243-res-recorddichotomy"></a>
 
-## Theorem 7.3 (increments of the running maximum), page 28
+## Theorem 7.3 (increments of the running maximum), page 27
 
 > *Let $`\Theta=\limsup_n(H_{n+1}-H_n)/\ell(H_n)`$ on a rational-tail orbit under the standing hypotheses, and suppose $`E_n`$ is not eventually zero. Then either $`G_n`$ is unbounded and $`\Theta`$ is infinite, or $`G_n`$ stabilises at a value $`g`$ and $`\Theta\ge g\,v_T/\varphi(v_T)`$ for every late $`T`$, so that $`\Theta>g\ge1`$. For any orbit under the standing hypotheses, therefore, $`\Theta=0`$ or $`\Theta>1`$, and $`\Theta\le1`$ forces the eventual Sylvester recurrence.*
 
@@ -1042,7 +1042,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long243-res-loglogboundary"></a>
 
-## Corollary 7.4 (the double-logarithmic bound), page 28
+## Corollary 7.4 (the double-logarithmic bound), page 27
 
 > *If
 > ``` math
@@ -1359,7 +1359,7 @@ theorem R_le_of_u_le (O : StandingOrbit) {c N : ℕ} (h : ∀ n, N ≤ n → O.u
 
 <a id="long243-res-oddpowersupply"></a>
 
-## Lemma 7.7 (large odd prime powers in the reduced denominator), page 32
+## Lemma 7.7 (large odd prime powers in the reduced denominator), page 31
 
 > *Under the standing hypotheses, for every fixed $`A>0`$ and every sufficiently large $`n`$, the reduced denominator $`v_n`$ has an odd prime-power divisor $`Q=p^k`$ with
 > ``` math
@@ -1461,7 +1461,7 @@ theorem unitRecordIncrement_criterion (O : StandingOrbit) :
 
 <a id="long243-res-epochenergy"></a>
 
-## Theorem 7.9 (counting crossings before a prime power is lost), page 33
+## Theorem 7.9 (counting crossings before a prime power is lost), page 32
 
 > *Let the orbit satisfy the reduced recurrences of this section, with $`2|\tilde e_n|<u_n`$ from an index $`s`$. Let $`p\ge3`$ be prime, $`Q=p^{\ell}`$ divide $`v_s`$ with $`Q\ge16`$, put $`L=pQ/2`$, and assume $`R_s<L/2`$. Assume that $`u_t\ge L`$ for some $`t>s`$, and let $`\tau`$ be the first such index, let $`J`$ be the set of steps in $`[s,\tau)`$ that first cross at least one odd multiple of $`p`$ in $`(L/2,L]`$, and put $`X=\sum_{n\in J}(d_n-2)`$. Then every $`n\in J`$ is a record step with $`h_n=1`$ and $`d_n\ge3`$, and $`pQ\le(8p+8)\lvert J\rvert+4X+8p`$.*
 
@@ -1785,7 +1785,7 @@ theorem exists_multiplier_ge_four (a C D : ℕ → ℕ) (E : ℕ → ℤ)
 
 <a id="long243-res-strausbounded"></a>
 
-## Theorem 7.12 (bounded or slowly growing increments of the product ratio), page 35
+## Theorem 7.12 (bounded or slowly growing increments of the product ratio), page 34
 
 > *Let $`a_1<a_2<\cdots`$ be positive integers with $`a_{n+1}/a_n^2\to1`$ and $`\sum_{n\ge1}1/a_n=p/q`$, where $`p,q`$ are positive integers. Put
 > ``` math
@@ -1946,7 +1946,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long243-res-classicalhalfspace"></a>
 
-## Proposition 7.14 (comparison of the two signs), page 38
+## Proposition 7.14 (comparison of the two signs), page 37
 
 > *The factor $`M_n=D_n/L_n`$ divides $`G_n=\gcd(C_n,D_n)`$. Thus $`G_n/M_n`$ is a positive integer and $`E_n/M_n=(G_n/M_n)\tilde e_n`$ is an integer with the same sign as $`E_n`$. The sign of the growth ratio minus one also depends on a correction term. The exact recurrences give, whenever $`a_{n+1}C_nC_{n+1}\ne0`$,
 > ``` math
@@ -2208,7 +2208,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long243-res-descent"></a>
 
-## Theorem 8.1 (descent), page 40
+## Theorem 8.1 (descent), page 39
 
 > *Let $`C,E:\mathbb{N}\to\mathbb{N}`$ satisfy $`C_{n+1}+E_n=C_n`$ for every $`n`$. Then $`E_n=0`$ for all sufficiently large $`n`$.*
 
@@ -2234,7 +2234,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long243-res-constant"></a>
 
-## Theorem 9.2 (no constant negative magnitude), page 41
+## Theorem 9.2 (no constant negative magnitude), page 40
 
 > *For any $`m,c\in\mathbb{N}`$ with $`m>0`$, there is no pair of sequences $`a,D:\mathbb{N}\to\mathbb{N}`$ with $`a_n\ge2`$ for all $`n`$ satisfying $`D_{n+1}=a_nD_n`$ and ({5.1}). The same holds if the shape equation only begins at some index.*
 
@@ -2275,7 +2275,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long243-res-periodic"></a>
 
-## Theorem 10.1 (no periodic negative magnitude), page 42
+## Theorem 10.1 (no periodic negative magnitude), page 41
 
 > *Let $`a,D,C,e:\mathbb{N}\to\mathbb{N}`$ with $`a_n\ge2`$, $`e_n>0`$ and $`e_n<a_n`$ for every $`n`$, satisfying
 > ``` math
@@ -2342,7 +2342,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long243-res-barrier"></a>
 
-## Theorem 11.3 (bounded increases and coprimality to earlier moduli), page 44
+## Theorem 11.3 (bounded increases and coprimality to earlier moduli), page 43
 
 > *Let $`u:\mathbb{N}\to\mathbb{N}`$ tend to infinity with $`u_{n+1}\le u_n+B`$ for a fixed integer $`B\ge1`$. Then $`u`$ cannot remain coprime to infinitely many fresh pairwise coprime moduli: there is no family of pairwise coprime $`m_i\ge2`$, one for each index, such that $`\gcd(m_i,u_t)=1`$ whenever $`i<t`$.*
 
@@ -2373,7 +2373,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long243-res-reduced"></a>
 
-## Proposition 11.4 (reduced tails are pairwise coprime), page 45
+## Proposition 11.4 (reduced tails are pairwise coprime), page 44
 
 > *In a reduced exact tail, $`a_n`$ is coprime to $`v_n`$; the multipliers at distinct indices are pairwise coprime; and every earlier multiplier is coprime to every later numerator.*
 
@@ -2440,7 +2440,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long243-res-gcdsparse"></a>
 
-## Proposition 11.7 (vanishing relative error makes strict gcd changes sparse), page 46
+## Proposition 11.7 (vanishing relative error makes strict gcd changes sparse), page 45
 
 > *Let $`a,C,D:\mathbb{N}\to\mathbb{N}`$ satisfy $`C_{n+1}+D_n=a_nC_n`$ and $`D_{n+1}=a_nD_n`$ with $`C_n>0`$, and put $`E_n=D_n-(a_n-1)C_n`$, $`G_n=\gcd(C_n,D_n)`$ and $`\Gamma(N)=\#\{0\le j<N:G_j<G_{j+1}\}`$. If $`|E_n|/C_n\to0`$, then $`\Gamma(N)=o(N)`$. Moreover, for every starting bound $`B`$ and block length $`L`$, some $`n\ge B`$ satisfies
 > ``` math
@@ -2479,25 +2479,21 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long243-res-bounded"></a>
 
-## Theorem 12.1 (bounded negative part), page 47
+## Theorem 12.1 (bounded negative part), page 46
 
-> *Let $`a,C,D:\mathbb{N}\to\mathbb{N}`$ and $`E:\mathbb{N}\to\mathbb{Z}`$ satisfy*
->
-> 1.  *$`a_n>1`$ and $`C_n>0`$ for every $`n`$;*
->
-> 2.  *the exact dynamics $`C_{n+1}+D_n=a_nC_n`$ and $`D_{n+1}=a_nD_n`$;*
->
-> 3.  *$`E_n=D_n-(a_n-1)C_n`$ for every $`n`$;*
->
-> 4.  **eventual strict centring*: $`|E_n|<C_n`$ for all large $`n`$;*
->
-> 5.  **eventually bounded negative part*: $`-B\le E_n`$ for all large $`n`$, for some integer $`B\ge0`$;*
->
-> 6.  **vanishing relative error*: for every integer $`K\ge1`$ there is an $`N`$ with $`K\,|E_n|<C_n`$ for all $`n\ge N`$.*
->
-> *Then $`E_n=0`$ for all sufficiently large $`n`$.*
+> *Let $`a,C,D:\mathbb{N}\to\mathbb{N}`$ satisfy $`a_n>1`$, $`C_n>0`$, and
+> ``` math
+> C_{n+1}+D_n=a_nC_n,\qquad D_{n+1}=a_nD_n
+>  \quad(n\ge0).
+> ```
+> Put $`E_n=D_n-(a_n-1)C_n`$. If
+> ``` math
+> \frac{E_n}{C_n}\longrightarrow0
+>  \quad\text{and}\quad E_n\ge-B\quad\text{for all sufficiently large }n
+> ```
+> for some integer $`B\ge0`$, then $`E_n=0`$ for all sufficiently large $`n`$.*
 
-The Lean declaration below states this result or one that implies it. The Lean statement omits hypothesis (4), eventual strict centring $|E_n|<C_n$, which the printed theorem adds (it is also the case $K=1$ of (6)); hypotheses (1), (2), (3), (5) and (6) are as printed.
+The Lean declaration below states this result or one that implies it. `eventuallyBoundedNegativePart_eventually_zero` takes the vanishing hypothesis as: for every $K$ there is $N$ with $K|E_n|<C_n$ for $n\ge N$. Since $C_n>0$, $E_n/C_n\to0$ gives this with $\varepsilon=1/K$; $E_n\ge-B$ for large $n$ is `hbound`, and the conclusion $E_n=0$ for large $n$ is the same.
 
 [`ErdosProblems.Erdos243.eventuallyBoundedNegativePart_eventually_zero`](https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean#L2360)
 
@@ -2527,11 +2523,11 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long243-res-cor"></a>
 
-## Corollary 12.2, page 47
+## Corollary 12.2, page 46
 
-> *Under the hypotheses of Theorem 12.1, together with $`C_{n+1}\ne0`$ for all large $`n`$, the multipliers satisfy $`a_{n+1}=a_n^{2}-a_n+1`$ for all sufficiently large $`n`$.*
+> *Under the hypotheses of Theorem 12.1, the multipliers satisfy $`a_{n+1}=a_n^{2}-a_n+1`$ for all sufficiently large $`n`$.*
 
-The Lean declaration below states this result or one that implies it. The Lean statement drops both eventual strict centring $|E_n|<C_n$ and the extra hypothesis $C_{n+1}\ne0$ for large $n$, which the printed corollary adds (the latter already follows from $C_n>0$); its conclusion $a_{n+1}=a_n^2-a_n+1$ for all large $n$ is the printed one.
+The Lean declaration below states this result or one that implies it. `boundedNegativePart_sylvesterNext_eventually` has the hypotheses of `eventuallyBoundedNegativePart_eventually_zero` (with $E_n/C_n\to0$ unfolded as there) and concludes $a_{n+1}=a_n^2-a_n+1$ (`sylvesterNext`) for all large $n$; it assumes nothing about $C_{n+1}\ne0$.
 
 [`ErdosProblems.Erdos243.boundedNegativePart_sylvesterNext_eventually`](https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean#L2412)
 
@@ -2562,7 +2558,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long243-res-mass"></a>
 
-## Theorem 13.1 (finite sum of relative increases), page 48
+## Theorem 13.1 (finite sum of relative increases), page 47
 
 > *Let $`C_n\in\mathbb{N}_{>0}`$ and $`E_n\in\mathbb{Z}`$ satisfy $`C_{n+1}=C_n-E_n`$. If
 > ``` math
@@ -2603,7 +2599,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long243-res-frontier"></a>
 
-## Proposition 14.1 (necessary conditions on a counterexample), page 49
+## Proposition 14.1 (necessary conditions on a counterexample), page 48
 
 > *For the integer tail attached to any counterexample to Problem 1.1,
 > ``` math
@@ -2653,7 +2649,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long243-res-variablerise"></a>
 
-## Proposition 14.6 (small increases when the prime moduli are sparse), page 54
+## Proposition 14.6 (small increases when the prime moduli are sparse), page 53
 
 > *There exist strictly increasing primes $`p_i`$ and a strictly increasing positive integer sequence $`u_n\to\infty`$ such that $`\gcd(u_n,p_i)=1`$ for all $`i,n`$ and
 > ``` math
@@ -2690,7 +2686,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long243-res-gapconstant"></a>
 
-## Theorem 14.7 (largest gaps between integers avoiding given multiples), page 55
+## Theorem 14.7 (largest gaps between integers avoiding given multiples), page 53
 
 > *Let $`m_0<m_1<\cdots`$ be pairwise coprime integers at least $`2`$ with $`\ell(m_j)=j+O(1)`$, where $`\ell(x)=\log_2\log_2\max(4,x)`$. Let $`\sigma=\prod_j(1-1/m_j)>0`$ and enumerate the positive integers divisible by no $`m_j`$ in increasing order as $`(u_n)`$. Then
 > ``` math

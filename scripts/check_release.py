@@ -72,7 +72,10 @@ from functools import lru_cache
 from pathlib import Path
 from typing import Any
 
-from check_problem_note_sources import note_pinned_commit, snapshot_lines_batch
+from check_problem_note_sources import (
+    RENDERED_MACRO_RE, note_pinned_commit, snapshot_lines_batch,
+    strip_comments, strip_unrendered,
+)
 from methodology_contract import (
     PROGRAMME_TARGET_STATUSES,
     mutation_fixture_errors,
@@ -95,7 +98,7 @@ from publication_contract import (
     mutation_fixture_failures as publication_mutation_fixture_failures,
     validate_publication_contract,
 )
-from query_corpus import canonical_paper_anchor_key, paper_anchor_inventory
+from query_corpus import canonical_paper_anchor_key, paper_anchor_inventory, printed_macro_sources
 from systems_paper_evidence import (
     mutation_fixture_failures as systems_paper_mutation_fixture_failures,
     validate_systems_paper_evidence,
@@ -1035,6 +1038,51 @@ def name_at_line(lines: list[str], name: str, line: int) -> bool:
     lo = max(0, line - 1 - LINE_WINDOW)
     hi = min(len(lines), line - 1 + LINE_WINDOW + 1)
     return any(name in lines[i] for i in range(lo, hi))
+
+
+def paper_macro_coordinates(
+    paper_text: str, formal_ref: str,
+) -> tuple[list[tuple[str, str, int, str, str]], list[str]]:
+    """Keep a word link's rendered body identity, through the native link owner.
+
+    The query adapter expands declared PK bodies using rendered_link_targets;
+    it rejects unresolved or ambiguous bodies instead of guessing their pin.
+    Other legacy coordinate macros retain their existing release checks.
+    """
+    printed = printed_macro_sources(paper_text)
+    visible_keys = {
+        (match.group("macro"), match.group("file"))
+        for match in RENDERED_MACRO_RE.finditer(strip_unrendered(strip_comments(paper_text)))
+    }
+    source_ref = note_pinned_commit(paper_text, formal_ref)
+    coordinates = []
+    problems = []
+    for macro, fname, line_s, name in re.findall(
+        r"\\((?:[lm](?:refx?|word|loc)|rootword))\{([^}]+)\}\{(\d+)\}(?:\{([^}]*)\})?(?:\{[^}]*\})?",
+        paper_text,
+    ):
+        if macro in ("lword", "mword"):
+            target = printed.get((macro, fname))
+            if target is None and (macro, fname) not in visible_keys:
+                # Legacy source-manifest checks also validate hidden coordinates.
+                # Resolve only this invocation against the declared macro bodies;
+                # this supplies no reader-visible route for the original row.
+                invocation = f"\\{macro}{{{fname}}}{{{line_s}}}{{{name}}}{{source}}"
+                target = printed_macro_sources(paper_text + "\n" + invocation).get((macro, fname))
+            if target is None:
+                problems.append(f"\\{macro}: unresolved printed source for {fname}")
+                continue
+            pin, rel = target
+        else:
+            pin = source_ref
+            if fname.startswith(("Erdos249257/", "ErdosProblems/")):
+                rel = fname
+            elif "\\input{problem-note-preamble}" in paper_text:
+                rel = f"ErdosProblems/{fname}"
+            else:
+                rel = f"Erdos249257/{fname}"
+        coordinates.append((macro, rel, int(line_s), name, pin))
+    return coordinates, problems
 
 
 def internal_imports(path: Path) -> list[str]:
@@ -2239,17 +2287,8 @@ def main(argv: list[str] | None = None) -> int:
         for decl in claim["declarations"]
     }
     for _paper_path, paper_text in paper_sources:
-        for _macro, fname, _line_s, _name in re.findall(
-            r"\\((?:[lm](?:refx?|word|loc)|rootword))\{([^}]+)\}\{(\d+)\}(?:\{([^}]*)\})?(?:\{[^}]*\})?",
-            paper_text,
-        ):
-            if fname.startswith(("Erdos249257/", "ErdosProblems/")):
-                rel = fname
-            elif "\\input{problem-note-preamble}" in paper_text:
-                rel = f"ErdosProblems/{fname}"
-            else:
-                rel = f"Erdos249257/{fname}"
-            pinned_requests.add((note_pinned_commit(paper_text, formal_ref), rel))
+        coordinates, _problems = paper_macro_coordinates(paper_text, formal_ref)
+        pinned_requests.update((pin, rel) for _macro, rel, _line, _name, pin in coordinates)
     pinned_cache: dict[tuple[str, str], list[str]] = {}
     snapshot_lines_batch(
         pinned_requests,
@@ -2278,20 +2317,14 @@ def main(argv: list[str] | None = None) -> int:
 
     # --- 4. paper source links ----------------------------------------------
     for paper_path, paper_text in paper_sources:
-        source_ref = note_pinned_commit(paper_text, formal_ref)
-        for macro, fname, line_s, name in re.findall(
-                r"\\((?:[lm](?:refx?|word|loc)|rootword))\{([^}]+)\}\{(\d+)\}(?:\{([^}]*)\})?(?:\{[^}]*\})?", paper_text):
-            if fname.startswith(("Erdos249257/", "ErdosProblems/")):
-                rel = fname
-            elif "\\input{problem-note-preamble}" in paper_text:
-                rel = f"ErdosProblems/{fname}"
-            else:
-                rel = f"Erdos249257/{fname}"
+        coordinates, problems = paper_macro_coordinates(paper_text, formal_ref)
+        for problem in problems:
+            fail(f"{paper_path} {problem}")
+        for macro, rel, line, name, source_ref in coordinates:
             lines = module_lines(cache, rel, source_ref)
             if lines is None:
                 fail(f"{paper_path} \\{macro}: file {rel} not found at {source_ref}")
                 continue
-            line = int(line_s)
             check(line <= len(lines), f"{paper_path} \\{macro}: {rel}:{line} beyond end of file")
             if macro in ("lref", "lrefx", "lword", "mref", "mword", "rootword") and name and line <= len(lines):
                 check(name_at_line(lines, name, line),

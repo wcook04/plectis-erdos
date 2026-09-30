@@ -335,7 +335,17 @@ def read_events(path: Path) -> list[dict[str, Any]]:
     """Parse and structurally verify the journal: lines, canonical form, sequence, chain, hashes."""
     if not path.exists():
         return []
-    raw = path.read_bytes()
+    return read_events_bytes(path.read_bytes())
+
+
+def read_events_bytes(raw: bytes) -> list[dict[str, Any]]:
+    """Verify an immutable journal blob with the same checks as a checkout file.
+
+    Source-pinned consumers must not silently read today's working-tree journal.
+    This function adds no event types and grants no new mathematical authority.
+    """
+    if not isinstance(raw, bytes):
+        raise RecordError("journal input must be bytes")
     if not raw:
         return []
     if not raw.endswith(b"\n"):
