@@ -43,6 +43,7 @@ from query_corpus import (
     source_coordinate_packet,
 )
 from check_release import MAX_ROUTE_FIRST_CONTACT_BYTES, ordinary_proof_claim_errors
+from check_release import module_lines, name_at_line, paper_macro_coordinates
 from check_problem_note_sources import (
     declares_at,
     note_pinned_commit,
@@ -2784,7 +2785,54 @@ def validate_current_source_identities() -> None:
     assert query_corpus.printed_macro_sources(fixture.replace(r"\newcommand{\PK}{Erdos249257}", "")) == {}
 
 
+def validate_release_word_link_coordinates() -> None:
+    """Release declaration checks follow the same printed body as navigation."""
+    formal_ref = load("docs/claims.json")["release"]["formal_source"]["ref"]
+    cache = {}
+    repaired_count = 0
+    for source in ("paper/249/erdos249-totient-reasoning-surface.tex",
+                   "paper/257/erdos257-mersenne-reasoning-surface.tex"):
+        text = (ROOT / source).read_text()
+        coordinates, problems = paper_macro_coordinates(text, formal_ref)
+        assert not problems, (source, problems)
+        printed = query_corpus.printed_macro_sources(text)
+        for macro, path, line, name, pin in coordinates:
+            if macro != "lword" or not path.startswith("ErdosProblems/"):
+                continue
+            assert (pin, path) == printed[(macro, path.removeprefix("ErdosProblems/"))]
+            lines = module_lines(cache, path, pin)
+            assert lines is not None and 0 < line <= len(lines)
+            assert name_at_line(lines, name, line), (source, path, line, name, pin)
+            old_guessed_path = "Erdos249257/" + path.removeprefix("ErdosProblems/")
+            assert module_lines(cache, old_guessed_path, pin) is None
+            repaired_count += 1
+    assert repaired_count == 37
+
+    paper_pin, body_pin = "a" * 40, "b" * 40
+    fixture = (r"\newcommand{\commit}{" + paper_pin + r"}"
+               r"\newcommand{\lword}[4]{\href{https://github.com/wcook04/plectis-erdos/blob/"
+               + body_pin + r"/ErdosProblems/#1\#L#2}{#4}}"
+               r"\lword{Exact.lean}{7}{result}{source}")
+    coordinates, problems = paper_macro_coordinates(fixture, formal_ref)
+    assert not problems
+    assert coordinates == [("lword", "ErdosProblems/Exact.lean", 7, "result", body_pin)]
+    # A nonexistent body pin must stay nonexistent even if the main pin is real.
+    stale = fixture.replace(paper_pin, formal_ref)
+    stale_coordinates, problems = paper_macro_coordinates(stale, formal_ref)
+    assert not problems and stale_coordinates[0][-1] == body_pin
+    assert module_lines({}, stale_coordinates[0][1], body_pin) is None
+    unresolved = fixture.replace("/ErdosProblems/#1", r"/\UNKNOWN/#1")
+    coordinates, problems = paper_macro_coordinates(unresolved, formal_ref)
+    assert not coordinates and problems
+    hidden = fixture.replace(r"\lword{Exact.lean}", r"\iffalse\lword{Exact.lean}") + r"\fi"
+    assert query_corpus.printed_macro_sources(hidden) == {}
+    coordinates, problems = paper_macro_coordinates(hidden, formal_ref)
+    assert not problems and coordinates[0][-1] == body_pin
+    assert query_corpus.printed_macro_sources(hidden) == {}  # still no reader route
+
+
 def main() -> int:
+    validate_release_word_link_coordinates()
     validate_current_source_identities()
     validate_problem_route_anchor_transport()
     validate_registered_claim_paper_routes()
@@ -4096,7 +4144,9 @@ def main() -> int:
         assert fixed_module["module_handle_resolution"]["resolved"] == (
             "Erdos249257/TropicalCurvatureCarry.lean"
         )
-        assert fixed_module["paper_sigil"] == "TroCurCar"
+        # The stable module is still routable, but the current paper no longer
+        # assigns it a source sigil. Do not invent an alias from its stem.
+        assert fixed_module["paper_sigil"] is None
         assert [row["id"] for row in fixed_module["attached_claims"]] == [
             "fixed_precision_transport_no_go"
         ]
