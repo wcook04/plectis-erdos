@@ -1119,8 +1119,8 @@
       ],
       "citations_rendered": 55,
       "local_pdf": "paper/archive/erdos249-257-main-paper.pdf",
-      "pdf_sha256": "sha256:0e589419b42fd21c910082c48e84bbda915da6dc3300f46e2d0ec481a095115b",
-      "pdf_byte_count": 457639,
+      "pdf_sha256": "sha256:04f902d2eda82bd0e15fba27a7aea0f502e1eed7097163112a5fe8615e07a407",
+      "pdf_byte_count": 457637,
       "first_pass": {
         "stated_by_the_paper": true,
         "provenance": "the paper's own stated reading route",
@@ -1333,8 +1333,8 @@
         "manuscript_title": "Integer Linear Forms for a Factorial Reciprocal Series"
       },
       "local_pdf": "paper/68/erdos-68-factorial-denominator-irrationality.pdf",
-      "pdf_sha256": "sha256:813b4f1f253be7b0dc55606b168a0c9a04aa70dc9f27cea4050e6350f7a68078",
-      "pdf_byte_count": 116781,
+      "pdf_sha256": "sha256:262a682c85b60a253886bd42a6bc000a1e28a5ab27b61ccfd5099537a1f3d2cb",
+      "pdf_byte_count": 116779,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection for this guide",
@@ -1660,8 +1660,8 @@
         "manuscript_title": "Factorial Linear Forms and Denominators Detailed Proofs and Rationality Criteria"
       },
       "local_pdf": "paper/68/erdos68-factorial-reasoning-surface.pdf",
-      "pdf_sha256": "sha256:f01a281a160bbd0fb0a8640d6be38b4694fd25cd64519d6d433414e33a5bb702",
-      "pdf_byte_count": 313948,
+      "pdf_sha256": "sha256:83816d4a4879dd6744911f894edab9fb301e0e29954c49aa4a695d2b9901477d",
+      "pdf_byte_count": 313945,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection for this guide",
@@ -1889,7 +1889,7 @@
       ],
       "citations_rendered": 23,
       "local_pdf": "paper/243/erdos-243-reciprocal-tail-rigidity.pdf",
-      "pdf_sha256": "sha256:27e9de9f9391d1cb42e330eef266e55e7a89aff34656b32578a5ba704ce7a870",
+      "pdf_sha256": "sha256:aa1642437159c1d4ecc7ea3d0920714e2fde7bdef4f8f0d3d4515ca7b10eec33",
       "pdf_byte_count": 138265,
       "first_pass": {
         "stated_by_the_paper": false,
@@ -1956,7 +1956,7 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/erdos243-reciprocal-tail-reasoning-surface.md",
       "local_source": "paper/243/erdos243-reciprocal-tail-reasoning-surface.tex",
-      "source_sha256": "sha256:cae822946b56f9c7656bdbffaf1f91e7883f7f28769a0f8accaec44cb356571a",
+      "source_sha256": "sha256:a7d0d5ee3ace260900ea56a5462255e7d67f351c18d894cdee7425f1a682b240",
       "canonical_source_commit": null,
       "canonical_source_pin_status": "local_unpublished",
       "canonical_source_url": null,
@@ -2332,8 +2332,8 @@
       ],
       "citations_rendered": 62,
       "local_pdf": "paper/243/erdos243-reciprocal-tail-reasoning-surface.pdf",
-      "pdf_sha256": "sha256:0ca63c7c43fb8539e00864b16fdc245945800ef5f8ea243d1fb83939106e3a40",
-      "pdf_byte_count": 374455,
+      "pdf_sha256": "sha256:37ebf8573d90eaf553baa98a4a7c2f68f86fb6e3ace4f6080d91ce97d2b3cb68",
+      "pdf_byte_count": 375070,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection for this guide",
@@ -2511,8 +2511,8 @@
         "manuscript_title": "Integral Relations among Totient Sections"
       },
       "local_pdf": "paper/249/erdos-249-binary-totient-series.pdf",
-      "pdf_sha256": "sha256:a74cb486eb410b5256cb3fc3d5ae694541759875fbc5596a5bae9661a5bb21d4",
-      "pdf_byte_count": 111820,
+      "pdf_sha256": "sha256:8827005eaa33b13399834d0c492b462144de6181449171f8de0b9288129b1dac",
+      "pdf_byte_count": 111819,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection for this guide",
@@ -3614,8 +3614,8 @@
       ],
       "citations_rendered": 57,
       "local_pdf": "paper/249/erdos249-totient-reasoning-surface.pdf",
-      "pdf_sha256": "sha256:b8ce435b4f766323aed2273be03559ce5f2e7445d94f9964a6f90b16a9b54a04",
-      "pdf_byte_count": 837695,
+      "pdf_sha256": "sha256:e30d23858268629fb379aaaeee6d6d98a1c2e3954a0ed1cf75614b04b7a1d501",
+      "pdf_byte_count": 837691,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection for this guide",
@@ -3789,8 +3789,8 @@
       ],
       "citations_rendered": 23,
       "local_pdf": "paper/251/erdos-251-prime-gap-dyadic-series.pdf",
-      "pdf_sha256": "sha256:e3959acc3b52f4be912963e5f7dc45a557369723bd7ab6574d53ed2fdee007ee",
-      "pdf_byte_count": 107917,
+      "pdf_sha256": "sha256:cc03548e325e7ee23fd801cf218411a65c1567038d5f7ee3c12980c0952e0278",
+      "pdf_byte_count": 107916,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection for this guide",
@@ -4178,7 +4178,7 @@
       ],
       "citations_rendered": 68,
       "local_pdf": "paper/251/erdos251-prime-gap-reasoning-surface.pdf",
-      "pdf_sha256": "sha256:e1f4588179c8e74ff240353be7112933fcc7acc0b3979fd9b0cdbcf4195692be",
+      "pdf_sha256": "sha256:633f4cc206d5119aeed5f4ed70f42ac6ac5f866eaa8a4eaf80c67df736080384",
       "pdf_byte_count": 295896,
       "first_pass": {
         "stated_by_the_paper": false,
@@ -4441,8 +4441,8 @@
       ],
       "citations_rendered": 24,
       "local_pdf": "paper/257/erdos-257-mersenne-support-subseries.pdf",
-      "pdf_sha256": "sha256:f90f127f1e8f91a895d9cc49f1b969b1059765addca5d5afdc2e74328c410e25",
-      "pdf_byte_count": 181282,
+      "pdf_sha256": "sha256:c3c23a65c80da1b681b9b6474daf3a1ade4161a05472c7dccc7be7e6637359e6",
+      "pdf_byte_count": 181284,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection for this guide",
@@ -5490,8 +5490,8 @@
       ],
       "citations_rendered": 42,
       "local_pdf": "paper/257/erdos257-mersenne-reasoning-surface.pdf",
-      "pdf_sha256": "sha256:68614b361c040d9306e0421fddf886e15be550be6de836e699dcd71f6c5bfce6",
-      "pdf_byte_count": 816728,
+      "pdf_sha256": "sha256:a22ca2256202b6a2d7246dbcbe19f0e36fe1427a7c15232bb7e84b553d5ad750",
+      "pdf_byte_count": 816725,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection for this guide",
@@ -5915,8 +5915,8 @@
       ],
       "citations_rendered": 59,
       "local_pdf": "paper/269/erdos269-running-lcm-reasoning-surface.pdf",
-      "pdf_sha256": "sha256:c3ec78c4eeb88bf2578b4d6e0ce58412135a2dc070d72820af84148b4130bdc6",
-      "pdf_byte_count": 417038,
+      "pdf_sha256": "sha256:183160595b07311c6364a96239d159d8b8f190329ce8c718282a831f74e8f277",
+      "pdf_byte_count": 417039,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection for this guide",
@@ -6102,8 +6102,8 @@
       ],
       "citations_rendered": 23,
       "local_pdf": "paper/269/erdos-269-three-prime-running-lcm.pdf",
-      "pdf_sha256": "sha256:f7c127b73b8b51ca6e4f006fc6281d6d44af589c4000b12a9debb049c9fff698",
-      "pdf_byte_count": 124323,
+      "pdf_sha256": "sha256:eae60db7ac8c31d16d9475f3346ce5bc899c03383291a5706c54468bea45bbf3",
+      "pdf_byte_count": 124315,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection for this guide",
@@ -6349,8 +6349,8 @@
       ],
       "citations_rendered": 28,
       "local_pdf": "paper/1041/erdos-1041-lemniscate-newton-flow.pdf",
-      "pdf_sha256": "sha256:bf529573b6c6728bef1dd51ab7322bad02e973c309ead462c66bb557bd75d250",
-      "pdf_byte_count": 127061,
+      "pdf_sha256": "sha256:6621bbb4b29f493f9ceadbad6704f70502d169e6b8863e877daa055337922c60",
+      "pdf_byte_count": 127060,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection for this guide",
@@ -6864,8 +6864,8 @@
       ],
       "citations_rendered": 74,
       "local_pdf": "paper/1041/erdos1041-lemniscate-reasoning-surface.pdf",
-      "pdf_sha256": "sha256:a1cfc85ccabe0bbd1f9edc0d28c4d7cf1fb2650d27504669ad68883e8db32ced",
-      "pdf_byte_count": 482536,
+      "pdf_sha256": "sha256:377266a62a1c95e9140ea71d0149ff14d07c2db0b78621553264d2df213202c9",
+      "pdf_byte_count": 482537,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection for this guide",
@@ -7067,8 +7067,8 @@
         "manuscript_title": "Hankel Determinants of Geometric Moments and Rational Lambert Values"
       },
       "local_pdf": "paper/1049/erdos-1049-rational-base-lambert.pdf",
-      "pdf_sha256": "sha256:61560e74229796ba9e57e2f3a39c836fa05a91a72525194069a452aa19d4aa70",
-      "pdf_byte_count": 138264,
+      "pdf_sha256": "sha256:51d68c1cb0fc6ab187d3bccafe0d0f3be48c4aca8b57e57a57e47ae23d89ca95",
+      "pdf_byte_count": 138266,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection for this guide",
@@ -7532,7 +7532,7 @@
         "manuscript_title": "Geometric Moments and Rational Lambert Values: Proofs and Further Results"
       },
       "local_pdf": "paper/1049/erdos1049-rational-base-lambert-reasoning-surface.pdf",
-      "pdf_sha256": "sha256:87fca11b0fdcabbb4dec7da4a337d3fa4129cb0afc55a25c69dfaafb96e54822",
+      "pdf_sha256": "sha256:59aa50831b2b30ff5cd01888896dd038fc3999ad89199b92732b978894db3d1f",
       "pdf_byte_count": 456283,
       "first_pass": {
         "stated_by_the_paper": false,
@@ -7908,7 +7908,7 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/claim-faithful-publication-systems-paper.md",
       "local_source": "paper/systems/claim-faithful-publication-systems-paper.tex",
-      "source_sha256": "sha256:27e71976d015cfb36988817e01765e48d5f83477cfba076b82fda6e69de88878",
+      "source_sha256": "sha256:95436d1428ad7f14951efe56e2d4d34485c1e8ef2f7e095112308bb39a5f20b1",
       "canonical_source_commit": null,
       "canonical_source_pin_status": "local_unpublished",
       "canonical_source_url": null,
@@ -7931,67 +7931,67 @@
           "level": 1,
           "id": "sec:world",
           "title": "A problem-sized Lean world",
-          "line": 30
+          "line": 34
         },
         {
           "level": 1,
           "id": "sec:example",
           "title": "One theorem, end to end",
-          "line": 47
+          "line": 51
         },
         {
           "level": 1,
           "id": "sec:checks",
           "title": "Proof and publication checks",
-          "line": 91
+          "line": 95
         },
         {
           "level": 1,
           "id": "sec:paper",
           "title": "From a Lean corpus to a paper",
-          "line": 108
+          "line": 114
         },
         {
           "level": 2,
           "id": "source-frozen-editorial-refinement",
           "title": "Source-frozen editorial refinement",
-          "line": 114
+          "line": 120
         },
         {
           "level": 1,
           "id": "sec:contribute",
           "title": "An open route for contributions",
-          "line": 129
+          "line": 137
         },
         {
           "level": 1,
           "id": "sec:instance",
           "title": "Recorded observations",
-          "line": 156
+          "line": 164
         },
         {
           "level": 1,
           "id": "sec:related",
           "title": "Related work",
-          "line": 189
+          "line": 197
         },
         {
           "level": 1,
           "id": "sec:limits",
           "title": "Limits",
-          "line": 202
+          "line": 210
         },
         {
           "level": 1,
           "id": "app:repro",
           "title": "Inspection and reproduction",
-          "line": 210
+          "line": 218
         }
       ],
-      "citations_rendered": 19,
+      "citations_rendered": 21,
       "local_pdf": "paper/systems/claim-faithful-publication-systems-paper.pdf",
-      "pdf_sha256": "sha256:4978fbfb7417458fc0450e11b99080bf92acdb21374c6c93f433eccacd0c4802",
-      "pdf_byte_count": 143079,
+      "pdf_sha256": "sha256:0634f3d640cbb4125a181c81b1bd322e1564c4bcd15cca9fad85dd3bbda9b864",
+      "pdf_byte_count": 145098,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection for this guide",
@@ -8004,22 +8004,22 @@
           {
             "id": "sec:example",
             "title": "One theorem, end to end",
-            "line": 47
+            "line": 51
           },
           {
             "id": "sec:paper",
             "title": "From a Lean corpus to a paper",
-            "line": 108
+            "line": 114
           },
           {
             "id": "sec:checks",
             "title": "Proof and publication checks",
-            "line": 91
+            "line": 95
           },
           {
             "id": "sec:limits",
             "title": "Limits",
-            "line": 202
+            "line": 210
           }
         ],
         "unresolved_count": 0
@@ -8192,8 +8192,8 @@
       ],
       "citations_rendered": 12,
       "local_pdf": "paper/systems/cold-clone-to-proof-receipt.pdf",
-      "pdf_sha256": "sha256:1a728d21c68e28f51cf8a46708023313c82bf788515fce49077368e301bb49ce",
-      "pdf_byte_count": 89155,
+      "pdf_sha256": "sha256:f809dda757bf7dbe59a6d9342a60221e3937c0a0e6b315fb511950225fd50bc9",
+      "pdf_byte_count": 89148,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection for this guide",

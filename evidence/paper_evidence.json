@@ -12926,7 +12926,7 @@
      "printed_kind": "Theorem",
      "number": "B.1",
      "page": "56",
-     "source": "paper/reasoning-parts/erdos243/core.tex:3849",
+     "source": "paper/reasoning-parts/erdos243/core.tex:3857",
      "statement_sha256": "sha256:64aad411421b1bd3f7ad791d5a6bd7a30363d1a7494f71815d444509843b0947",
      "statement_key": "sha256:712dc02d9531255597b10791d584afabd7067bcd302233fd371fe0f3582e660b",
      "title": "factorial residue reduction",

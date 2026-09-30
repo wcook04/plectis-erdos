@@ -8,6 +8,6 @@
     "workflow": "palomar-replay.yml",
     "receipts": "evidence/comparator/replay-35935225572"
   },
-  "record_commit": "897f55801d7d184aaa2ce8fb19e7b701c9c23d94",
+  "record_commit": "d517799db88339aa5d3953d2ef7d52a289cf955d",
   "record_commit_overrides": {}
 }

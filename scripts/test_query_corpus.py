@@ -2753,7 +2753,39 @@ def validate_problem_route_anchor_transport() -> None:
     assert query_corpus.expand_problem_route_anchor_transport({"kind": "other"}) == {"kind": "other"}
 
 
+def validate_current_source_identities() -> None:
+    """Historical printed links and current atlas routes have distinct owners."""
+    claims = load("docs/claims.json")
+    global_identity = query_corpus.formal_source_identity(claims)
+    historical = query_corpus.claim_packet("adelic_height_obstruction")
+    assert historical["paper"]["source"] == "paper/archive/erdos249-257-main-paper.tex"
+    manuscript = (ROOT / historical["paper"]["source"]).read_text()
+    pin = re.search(r"\\newcommand\{\\commit\}\{([0-9a-f]{40})\}", manuscript).group(1)
+    assert historical["lean_source_identity"]["ref"] == pin
+    for name in ("square_crt_correction_suppression", "signed_dyadic_moment_substrate", "denominator_exclusion"):
+        assert query_corpus.claim_packet(name)["lean_source_identity"] == historical["lean_source_identity"]
+    assert query_corpus.claim_packet("transport_curvature_reductions")["lean_source_identity"] == global_identity
+    name = "tsum_totient_div_pow_two_ne_ratCast_of_den_le_79639646646701375323355774875831053"
+    assert query("--declaration", name)["matches"][0]["lean_source_identity"] == global_identity
+    assert query("--source", "Erdos249257/CertificateKernel.lean:18383")["source"]["lean_source_identity"] == global_identity
+    farey = query_corpus.paper_anchor_packet("res:farey")
+    assert farey["lean_source_identity"] == historical["lean_source_identity"]
+    assert farey["source_links"][0]["printed_path"] == "Erdos249257/CertificateKernel.lean"
+    assert farey["source_links"][0]["source_identity"]["ref"] == pin
+    fixture = r"\newcommand{\commit}{" + pin + r"}\newcommand{\PK}{Erdos249257}" + \
+              r"\newcommand{\lword}[4]{\href{\repobase/\PK/#1\#L#2}{#4}}" + \
+              r"\newcommand{\lref}[3]{\href{\repobase/\PK/#1\#L#2}{\leanlabel{#3}}}" + \
+              r"\newcommand{\lloc}[2]{\href{\repobase/\PK/#1\#L#2}{Lean source}}" + \
+              r"\lword{Exact.lean}{7}{result}{source}\lref{Exact.lean}{7}{result}\lloc{Exact.lean}{7}"
+    expected = {("lword", "Exact.lean"): (pin, "Erdos249257/Exact.lean"),
+                ("lref", "Exact.lean"): (pin, "Erdos249257/Exact.lean"),
+                ("lloc", "Exact.lean"): (pin, "Erdos249257/Exact.lean")}
+    assert query_corpus.printed_macro_sources(fixture) == expected
+    assert query_corpus.printed_macro_sources(fixture.replace(r"\newcommand{\PK}{Erdos249257}", "")) == {}
+
+
 def main() -> int:
+    validate_current_source_identities()
     validate_problem_route_anchor_transport()
     validate_registered_claim_paper_routes()
     validate_visible_companion_paper_routes()
@@ -3239,10 +3271,9 @@ def main() -> int:
     assert adelic["claim"]["declarations"][0]["module"] == (
         "Erdos249257/AdelicHeightObstruction.lean"
     )
-    assert adelic["lean_source_identity"] == {
-        **formal_source,
-        "repository": claims_document["release"]["repository"],
-    }
+    assert adelic["lean_source_identity"] == lean_source_identity_for_paper(
+        claims_document, adelic["paper"]["source"]
+    )
 
     square_crt_claim = query("--claim", "square_crt_correction_suppression")
     assert square_crt_claim["claim"]["status"] == "proved here"
@@ -3569,7 +3600,7 @@ def main() -> int:
         + formal_source["ref"]
         + "/lean/"
     )
-    assert declaration["matches"][0]["lean_source_identity"] == adelic["lean_source_identity"]
+    assert declaration["matches"][0]["lean_source_identity"] == query_corpus.formal_source_identity(claims_document)
     assert declaration["matches"][0]["attached_claims"][0]["paper"]["label"] == "res:farey"
     assert "res:farey" in {
         row["canonical_handle"]
@@ -3607,7 +3638,7 @@ def main() -> int:
     assert source_coordinate["source"]["source_url"].endswith(
         "/Erdos249257/CertificateKernel.lean#L18383"
     )
-    assert source_coordinate["source"]["lean_source_identity"] == adelic["lean_source_identity"]
+    assert source_coordinate["source"]["lean_source_identity"] == query_corpus.formal_source_identity(claims_document)
     source_declaration = source_coordinate["nearby_declarations"][0]
     assert source_declaration["name"] == (
         "tsum_totient_div_pow_two_ne_ratCast_of_den_le_79639646646701375323355774875831053"
@@ -3901,12 +3932,19 @@ def main() -> int:
         "boolean_mobius_exact_row_dynamics registers no declarations, so the "
         "anchor cross-check below would compare against nothing"
     )
+    from check_problem_note_sources import reachable_companion_sources
+    exact_row_destinations = {exact_row_paper_source, *reachable_companion_sources(
+        exact_row_paper_source, (ROOT / exact_row_paper_source).read_text(encoding="utf-8")
+    )}
     for anchor in exact_row_paper_route["matching_anchors"]:
-        assert anchor["source_ref"].startswith(f"{exact_row_paper_source}:"), (
-            "boolean_mobius_exact_row_dynamics matched an anchor outside its "
-            f"own paper: {anchor['source_ref']!r} is not in "
-            f"{exact_row_paper_source}"
-        )
+        destination = anchor["destination_source"]
+        assert destination in exact_row_destinations
+        assert anchor["source_ref"].startswith(destination + ":")
+        if destination != exact_row_paper_source:
+            assert anchor["visible_hop"] == "registered_visible_companion_pdf_link"
+            assert anchor["relation_origin"].startswith("visible_companion_")
+        else:
+            assert anchor["visible_hop"] is None
         assert anchor["command"] == (
             "python3 scripts/query_corpus.py --paper-anchor "
             f"{anchor['canonical_handle']}"
@@ -4620,6 +4658,18 @@ def main() -> int:
                 targets, errors = note_owner.rendered_link_targets(
                     manuscript, claims_document["release"]["formal_source"]["ref"], None,
                     px.group(1) if px else note_owner.LIBRARY_PREFIX)
+                pk = note_owner.NOTE_PK_RE.search(note_owner.strip_comments(manuscript))
+                targets = [(pin, pk.group(1) + path[len(r"\PK"):] if pk and path.startswith(r"\PK/") else path)
+                           for pin, path in targets]
+                # The archive also declares lref/lloc with that same literal
+                # PK URL body; the inherited problem-note PX is not their URL.
+                if source == "paper/archive/erdos249-257-main-paper.tex":
+                    assert r"\newcommand{\PK}{Erdos249257}" in manuscript
+                    macro_rows = list(note_owner.RENDERED_MACRO_RE.finditer(note_owner.strip_unrendered(note_owner.strip_comments(manuscript))))
+                    archive_pin = note_owner.note_pinned_commit(manuscript, claims_document["release"]["formal_source"]["ref"])
+                    targets = [(archive_pin, "Erdos249257/" + macro.group("file"))
+                               if macro.group("macro") in {"lref", "lrefx", "lloc"} else target
+                               for macro, target in zip(macro_rows, targets)]
                 printed_source_context[source] = (manuscript, set(targets), errors)
             manuscript, targets, errors = printed_source_context[source]
             if link["macro"] != "lean":

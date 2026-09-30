@@ -25,7 +25,11 @@ A formal theorem can outlive the session in which it was proved, yet its hypothe
 <figcaption>The life of one claim: arrows name the objects exchanged, the short and long accounts remain linked, and colours distinguish kinds of responsibility throughout the paper.</figcaption>
 </figure>
 
-Erdős Problems supplies the questions and their public discussion, while Lean and mathlib supply the formal language and library \[erdosproblems; lean4; mathlib\]. Blueprints already connect exposition to declarations \[leanblueprint; leanarchitect\], and persistent problem records and open agent collaboration have antecedents in ETP and Prove2Me \[etp; prove2me\]. Our publication tools add a check of the complete registered support set and bind the surrounding prose, including explanations and limitations, to specified source bytes. The following sections describe the world, trace a weighted-support theorem through those records, and separate the checks from the judgements made when contributions enter the corpus.
+Erdős Problems supplies the questions and their public discussion, while Lean and mathlib supply the formal language and library \[erdosproblems; lean4; mathlib\]. Blueprints already connect exposition to declarations \[leanblueprint; leanarchitect\], and persistent problem records and open agent collaboration have antecedents in ETP and Prove2Me \[etp; prove2me\]. Our publication tools add a check of the complete registered support set and bind the surrounding prose, including explanations and limitations, to specified source bytes.
+
+The Advisory Group on Mathematics and Artificial Intelligence at IAS recommends distinguishing papers fully understood by a responsible mathematician from AI output that its human prompters do not understand, and asks AI laboratories to support subsequent community-led understanding \[agmai2026\]. Its 29 September 2026 statement gives concrete release expectations for attribution, exposition, formalization and disclosure of the research process.
+
+The following sections describe the world, trace a weighted-support theorem through those records, and separate the checks from the judgements made when contributions enter the corpus.
 
 <a id="sec:world"></a>
 
@@ -105,6 +109,8 @@ For prose, we retain the exact sentence and source span together with an evidenc
 
 An atlas entry with a matching signature and a reachable target attests to that source projection; it does not establish that any particular continuous-integration run compiled the module. The notary interface derives probe verdicts from the pinned Lean process, so a caller cannot submit its own verdict through that interface. This interface rule does not prevent an actor with filesystem access from changing the implementation or stored record. The protocol distinguishes contributor and reviewer roles but does not technically force a second independent mathematician.
 
+Several of these proposed release practices have counterparts in the records described here \[agmai2026, Section 2.B, Step I\]: the short paper and long record explain and attribute the argument, the paper-to-Lean ledger records formal correspondence and its limits, and the challenge files and generated `formalization.yaml` expose the comparison inputs. Those records make the result inspectable; they do not certify a mathematician’s understanding. The architecture alone does not establish complete per-result model, prompt, time and cost disclosure, an account of campaign-wide selection and unsuccessful attempts, or an independent scholarly deposit. The further recommendations on funding community-led understanding and equitable model access address AI laboratories; this prototype does not demonstrate those institutional outcomes.
+
 <a id="sec:paper"></a>
 
 # From a Lean corpus to a paper
@@ -116,6 +122,8 @@ An atlas entry with a matching signature and a reachable target attests to that 
 ## Source-frozen editorial refinement
 
 We first prepare a dossier from the current corpus: candidate results, their antecedents, the difficult proof transitions and the exact questions left unresolved. The author chooses the principal argument; the dossier supplies source locations and evidence, while the native manuscript checker audits source consistency and the specified manuscript rules. For a further revision, we freeze the selected short paper and long record together with their input closure, coverage ledger and native audit rules in a packet whose manifest identifies the exact source bytes. The writer may be an advisory model returning a proposed revision, or a tool-enabled agent doing the same authoring work in a checkout; either arrangement leaves mathematical acceptance with the integrating reviewer.
+
+We call an agent that can alter the live repository Type A and an advisory agent returning proposals against supplied sources Type B. These terms describe access to the substrate; the assignment separately chooses mathematical research, proof or claim audit, literature and attribution review, or exposition. Research returns candidate arguments, an audit returns source-located findings, a literature review returns attribution proposals, and exposition returns a clearer manuscript; each product has its own review and acceptance criteria. An exposition assignment preserves the established hypotheses, conclusions and evidence status; a suspected mathematical defect is returned for a separate audit or research assignment.
 
 <figure id="fig:refinement" data-latex-placement="htbp">
 
@@ -240,6 +248,8 @@ T. Tao, thread on mining open problems, Mathstodon, 8 September 2026, [thread](
 Twenty-five Fields Medallists, *A severe misalignment of AI in mathematics*, declaration posted on *What’s new*, 11 September 2026, [blog post](https://terrytao.wordpress.com/2026/09/11/a-severe-misalignment-of-ai-in-mathematics/).
 
 G. Sanderson, *If math is more than proof, we need to better celebrate the rest of it*, guest post on *What’s new*, 18 September 2026, [blog post](https://terrytao.wordpress.com/2026/09/18/if-math-is-more-than-proof-we-need-to-better-celebrate-the-rest-of-it/).
+
+Advisory Group on Mathematics and Artificial Intelligence at IAS, *Responsible Release of AI-Generated Mathematics*, 29 September 2026, [recommendations](https://agmai.org/general-sep29/), [PDF](https://agmai.org/wp-content/uploads/2026/09/recommendations.pdf).
 
 L. de Moura and S. Ullrich, *The Lean 4 Theorem Prover and Programming Language*, in *Automated Deduction, CADE 28*, Lecture Notes in Computer Science 12699, 2021, pp. 625–635, [DOI](https://doi.org/10.1007/978-3-030-79876-5_37).
 

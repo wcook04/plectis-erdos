@@ -235,7 +235,7 @@ Ledger evidence: Lean `exact`; Comparator `compared`. These statuses are copied 
 
 No accepted correspondence is recorded. Check the candidates below; none is silently treated as a proof of this short statement.
 
-- `label_alias`: [paper/reasoning-parts/erdos243/core.tex](../../../paper/reasoning-parts/erdos243/core.tex) lines 3849-3852.
+- `label_alias`: [paper/reasoning-parts/erdos243/core.tex](../../../paper/reasoning-parts/erdos243/core.tex) lines 3857-3860.
 
 ## Long-record material retained outside these links
 
@@ -286,7 +286,7 @@ These registered long assertions are not used by an accepted short-paper link. T
 - `long243:res:cor`: [paper/reasoning-parts/erdos243/core.tex](../../../paper/reasoning-parts/erdos243/core.tex) lines 3062-3065.
 - `long243:res:variablerise`: [paper/reasoning-parts/erdos243/core.tex](../../../paper/reasoning-parts/erdos243/core.tex) lines 3479-3491.
 - `long243:res:gapconstant`: [paper/reasoning-parts/erdos243/core.tex](../../../paper/reasoning-parts/erdos243/core.tex) lines 3519-3529.
-- `long243:res:residue`: [paper/reasoning-parts/erdos243/core.tex](../../../paper/reasoning-parts/erdos243/core.tex) lines 3849-3852.
+- `long243:res:residue`: [paper/reasoning-parts/erdos243/core.tex](../../../paper/reasoning-parts/erdos243/core.tex) lines 3857-3860.
 
 ## Passage-review queue
 

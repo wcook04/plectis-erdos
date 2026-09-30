@@ -3107,8 +3107,30 @@ def printed_macro_sources(manuscript: str) -> dict[tuple[str, str], tuple[str, s
     macros = list(owner.RENDERED_MACRO_RE.finditer(owner.strip_unrendered(owner.strip_comments(manuscript))))
     if problems or len(targets) < len(macros):
         return {}
+    pk = owner.NOTE_PK_RE.search(owner.strip_comments(manuscript))
+    explicit_pk_macros = set(re.findall(
+        r"\\(?:re)?newcommand\{\\(lref|lrefx|lloc)\}\[(?:2|3)\]"
+        r"\{\\href\{\\repobase/\\PK/#1\\#L#2\}",
+        owner.strip_comments(manuscript),
+    ))
     mapping = {}
     for macro, target in zip(macros, targets):
+        target_pin, target_path = target
+        if macro.group("macro") in explicit_pk_macros:
+            if pk is None:
+                return {}
+            target_pin = owner.note_pinned_commit(manuscript, default)
+            target_path = pk.group(1) + "/" + macro.group("file")
+        # The archived manuscript's word-link body explicitly uses \PK.
+        # Expand that declared literal prefix, retaining its historical pin;
+        # an unresolved TeX variable is not a repository path.
+        if target_path.startswith(r"\PK/"):
+            if pk is None:
+                return {}
+            target_path = pk.group(1) + target_path[len(r"\PK"):]
+        if "\\" in target_path:
+            return {}
+        target = (target_pin, target_path)
         key = (macro.group("macro"), macro.group("file"))
         if key in mapping and mapping[key] != target:
             return {}  # an ambiguous render convention is no navigation warrant

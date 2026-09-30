@@ -133,14 +133,18 @@ UNIFIED_SYSTEMS_FIRST_MINUTE = {
         "lean verifies that a proof establishes the formal statement",
         "comparator adds a separately stated challenge",
         "source-frozen editorial refinement",
+    ),
+    (5, 6): (
         "share this acceptance boundary",
         "no measurement of reader benefit or autonomous discovery",
     ),
     (6, 7): (
         "an open route for contributions",
         "does not certify independent review or increased discovery rate",
-        "no completed external cold-clone use had been recorded",
         "nine of the ten deliberately false edits were rejected and one escaped",
+    ),
+    (7, 8): (
+        "no completed external cold-clone use had been recorded",
     ),
     (8, 10): (
         "understanding by independent human readers are unresolved",
