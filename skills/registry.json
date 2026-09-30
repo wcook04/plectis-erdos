@@ -967,7 +967,10 @@
         "organise docs",
         "documentation layout",
         "cli error recovery",
-        "research session creation"
+        "research session creation",
+        "github inspection",
+        "repository readiness",
+        "contributor readiness"
       ],
       "task_intents": [
         {
@@ -1022,6 +1025,22 @@
             "contributor",
             "session",
             "sessions"
+          ]
+        },
+        {
+          "actions": [
+            "audit",
+            "inspect",
+            "inspection"
+          ],
+          "objects": [
+            "readme",
+            "license",
+            "licence",
+            "licensing",
+            "contributing",
+            "contribution",
+            "contributions"
           ]
         }
       ],

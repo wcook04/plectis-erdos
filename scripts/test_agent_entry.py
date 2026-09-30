@@ -22,6 +22,31 @@ from agent_skill_catalog import ROOT, load_catalog
 
 
 ROUTE_CASES = {
+    # Inspecting repository readiness is a maintenance journey. The observed
+    # noun-form prompt previously fell through to the corpus explanation tour.
+    "repository GitHub inspection readiness README setup replay contribution licence correction working routes": (
+        "repository_architecture", "maintain-public-infrastructure",
+    ),
+    "Audit the repository README and licence for contributor readiness": (
+        "repository_architecture", "maintain-public-infrastructure",
+    ),
+    "Inspect the contribution guide and licence in the public Lean repository": (
+        "repository_architecture", "maintain-public-infrastructure",
+    ),
+    "Inspect this repository's README for missing setup commands": (
+        "repository_architecture", "maintain-public-infrastructure",
+    ),
+    # Reader-surface nouns alone do not request maintenance or override an
+    # explicit proof or replay request.
+    "Prove the Lean theorem described in the README": (
+        "bounded_research", "mine-open-problem",
+    ),
+    "Explain the licence used by this repository": (
+        "understand_repository", "explain-public-system",
+    ),
+    "I want to reproduce the #257 weighted theorem with Comparator using the README": (
+        "comparator_replay", "explain-public-system",
+    ),
     "test whether 189/388 is a reciprocal-Mersenne subsum with exact rational arithmetic": (
         "rational_subsum_probe", "explain-public-system",
     ),
