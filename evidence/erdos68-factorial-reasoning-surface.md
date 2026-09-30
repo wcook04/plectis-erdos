@@ -1,12 +1,12 @@
 # Formal evidence: Factorial Linear Forms and Denominators\\Detailed Proofs and Rationality Criteria
 
-This record belongs to the paper [erdos68-factorial-reasoning-surface.pdf](../paper/68/erdos68-factorial-reasoning-surface.pdf). For every result it lists the Lean declarations that state it, and the independent Comparator check where there is one. The margin marks in the paper link here.
+This record belongs to the paper [erdos68-factorial-reasoning-surface.pdf](../paper/68/erdos68-factorial-reasoning-surface.pdf). For every result it lists the Lean declarations that state it, and the recorded Comparator check where there is one. The inline links and margin marks in the paper use the same result mapping.
 
 - **Lean.** Every declaration is quoted from [plectis-erdos](https://github.com/wcook04/plectis-erdos) at commit [`436f55ebdafa`](https://github.com/wcook04/plectis-erdos/tree/436f55ebdafa67e4af0fff79f621c13f2ded12bf) and is checked there by Lean's kernel (`leanprover/lean4:v4.29.1`, Mathlib `5e932f97dd25`).
 - **Comparator.** For a compared result, each declaration was stated a second time, from Mathlib alone, as a *Challenge* in [plectis-erdos-lean](https://github.com/wcook04/plectis-erdos-lean), and a *Solution* that uses our proof was checked against it by [Comparator](https://github.com/leanprover/comparator), which also confirms that only the axioms `propext`, `Quot.sound`, `Classical.choice` are used. All checks below come from replay run [35935225572](https://github.com/wcook04/plectis-erdos-lean/actions/runs/35935225572) at corpus commit [`cc7e541cf208`](https://github.com/wcook04/plectis-erdos-lean/tree/cc7e541cf2081c6fef5a5e377d52e365e33b01eb) (tag `paper-evidence-2026-09-24`); both the default Lean kernel and the independent `nanoda` kernel accepted every entry. The replay's own report for each entry is kept in this repository and linked from each check. A Challenge shows `sorry` because it states the target without proving it.
 - **Counts.** 18 results: 18 with a Lean proof of the whole statement, 0 whose Lean proof assumes a named input (marked with a dagger), 0 without a Lean proof of the whole statement; 18 compared.
 
-These checks establish that the stated propositions are proved. Whether each is the right proposition is for the reader to judge against the paper's statement, which is reproduced below.
+These checks establish that the stated propositions are proved. Whether each is the right proposition is for the reader to judge against the paper's statement, which is reproduced below. Comparator checks separately declared statements, the axiom budget and kernel acceptance; it does not establish novelty, significance or peer review.
 
 <a id="long68-res-normalform"></a>
 
@@ -127,7 +127,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long68-res-residual-transparency"></a>
 
-## Theorem 1.4 (how the coefficient choices change the remainder), page 7
+## Theorem 1.4 (how the coefficient choices change the remainder), page 8
 
 > *For the vector in (2),
 > ``` math
@@ -284,7 +284,7 @@ theorem radius_not_littleO (M R : ℕ → ℕ)
 
 <a id="long68-res-radius-constant"></a>
 
-## Corollary 1.6 (the asymptotic lower bound), page 9
+## Corollary 1.6 (the asymptotic lower bound), page 10
 
 > *Let $`M(t),R(t)`$ satisfy $`M(t)>0`$, $`L_{2t^2}\mid M(t)`$ and $`M(t)<(R(t)+1)!-1`$ for all sufficiently large $`t`$. Then
 > ``` math
@@ -369,7 +369,7 @@ theorem prime_channel_corrector {p : ℕ} (hp : p.Prime) :
 
 <a id="long68-res-prime-pole"></a>
 
-## Theorem 2.1 (maximal prime-power survival), page 12
+## Theorem 2.1 (maximal prime-power survival), page 13
 
 > *Let $`M\ge2`$, let $`p`$ be a prime dividing $`L_M`$, and put $`e=v_p(L_M)`$. Let $`J=\{n:2\le n\le M,\ v_p(d_n)=e\}`$ and write $`d_n=p^eu_n`$ for $`n\in J`$. Then, with inverses in $`\mathbb F_p`$,
 > ``` math
@@ -436,7 +436,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long68-res-product-lcm"></a>
 
-## Lemma 3.1 (product, least common multiple, pairwise gcd), page 14
+## Lemma 3.1 (product, least common multiple, pairwise gcd), page 15
 
 > *For positive integers $`x_1,\ldots,x_k`$,
 > ``` math
@@ -655,7 +655,7 @@ theorem strict_successor_characterisation :
 
 <a id="long68-res-companion-orbit"></a>
 
-## Proposition 4.2 (rationality and factorial residues), page 19
+## Proposition 4.2 (rationality and factorial residues), page 20
 
 > *``` math
 > S\in\mathbb{Q}
@@ -694,7 +694,7 @@ theorem companion_orbit :
 
 <a id="long68-res-lower-escape"></a>
 
-## Proposition 4.3 (lower-interval criterion), page 20
+## Proposition 4.3 (lower-interval criterion), page 21
 
 > *``` math
 > \begin{equation}
@@ -713,7 +713,7 @@ theorem companion_orbit :
 >  1+\varepsilon_m+\frac2m\le m\Delta_m
 > \end{equation}
 > ```
-> implies the escape inequality in (17). Cofinally many instances of (18) therefore imply $`S\notin\mathbb{Q}`$.*
+> implies the escape inequality in (20). Cofinally many instances of (21) therefore imply $`S\notin\mathbb{Q}`$.*
 
 The Lean declaration below states this result.
 
@@ -769,7 +769,7 @@ theorem lower_interval_criterion :
 
 <a id="long68-res-shift-family"></a>
 
-## Theorem 4.4 (a criterion for the shifts $`t\ge-1`$), page 22
+## Theorem 4.4 (a criterion for the shifts $`t\ge-1`$), page 23
 
 > *For every integer $`t\ge-1`$, the series $`S_t`$ is rational exactly when
 > ``` math
@@ -826,7 +826,7 @@ theorem uniform_family_members :
 
 <a id="long68-res-global-residue"></a>
 
-## Theorem 5.1 (a sufficient tail inequality), page 23
+## Theorem 5.1 (a sufficient tail inequality), page 24
 
 > *Suppose that for every $`B`$ there is a natural parameter $`p\ge3`$ with $`p>B`$, $`R_p>1`$, and
 > ``` math

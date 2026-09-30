@@ -1,12 +1,12 @@
 # Formal evidence: Reciprocal-Tail Rigidity: Theorems, Proofs and Questions
 
-This record belongs to the paper [erdos243-reciprocal-tail-reasoning-surface.pdf](../paper/243/erdos243-reciprocal-tail-reasoning-surface.pdf). For every result it lists the Lean declarations that state it, and the independent Comparator check where there is one. The margin marks in the paper link here.
+This record belongs to the paper [erdos243-reciprocal-tail-reasoning-surface.pdf](../paper/243/erdos243-reciprocal-tail-reasoning-surface.pdf). For every result it lists the Lean declarations that state it, and the recorded Comparator check where there is one. The inline links and margin marks in the paper use the same result mapping.
 
 - **Lean.** Every declaration is quoted from [plectis-erdos](https://github.com/wcook04/plectis-erdos) at commit [`436f55ebdafa`](https://github.com/wcook04/plectis-erdos/tree/436f55ebdafa67e4af0fff79f621c13f2ded12bf) and is checked there by Lean's kernel (`leanprover/lean4:v4.29.1`, Mathlib `5e932f97dd25`).
 - **Comparator.** For a compared result, each declaration was stated a second time, from Mathlib alone, as a *Challenge* in [plectis-erdos-lean](https://github.com/wcook04/plectis-erdos-lean), and a *Solution* that uses our proof was checked against it by [Comparator](https://github.com/leanprover/comparator), which also confirms that only the axioms `propext`, `Quot.sound`, `Classical.choice` are used. All checks below come from replay run [35935225572](https://github.com/wcook04/plectis-erdos-lean/actions/runs/35935225572) at corpus commit [`cc7e541cf208`](https://github.com/wcook04/plectis-erdos-lean/tree/cc7e541cf2081c6fef5a5e377d52e365e33b01eb) (tag `paper-evidence-2026-09-24`); both the default Lean kernel and the independent `nanoda` kernel accepted every entry. The replay's own report for each entry is kept in this repository and linked from each check. A Challenge shows `sorry` because it states the target without proving it.
 - **Counts.** 53 results: 53 with a Lean proof of the whole statement, 0 whose Lean proof assumes a named input (marked with a dagger), 0 without a Lean proof of the whole statement; 51 compared.
 
-These checks establish that the stated propositions are proved. Whether each is the right proposition is for the reader to judge against the paper's statement, which is reproduced below.
+These checks establish that the stated propositions are proved. Whether each is the right proposition is for the reader to judge against the paper's statement, which is reproduced below. Comparator checks separately declared statements, the axiom budget and kernel acceptance; it does not establish novelty, significance or peer review.
 
 <a id="long243-res-cubicrate"></a>
 
@@ -232,7 +232,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long243-res-squarespec"></a>
 
-## Lemma 2.7 (square specialisation), page 5
+## Lemma 2.7 (square specialisation), page 6
 
 > *Let $`f\in\mathbb{Q}[T]`$ be irreducible with root $`\alpha`$, and let $`H\in\mathbb{Q}[T]`$ satisfy $`H(\alpha)\ne0`$. If for all but finitely many primes $`\ell`$ every root $`r\in\mathbb{F}_\ell`$ of the reduction of $`f`$ has $`H(r)`$ a square in $`\mathbb{F}_\ell^\times`$, then $`H(\alpha)`$ is a square in $`\mathbb{Q}(\alpha)^\times`$.*
 
@@ -1359,7 +1359,7 @@ theorem R_le_of_u_le (O : StandingOrbit) {c N : ℕ} (h : ∀ n, N ≤ n → O.u
 
 <a id="long243-res-oddpowersupply"></a>
 
-## Lemma 7.7 (large odd prime powers in the reduced denominator), page 30
+## Lemma 7.7 (large odd prime powers in the reduced denominator), page 31
 
 > *Under the standing hypotheses, for every fixed $`A>0`$ and every sufficiently large $`n`$, the reduced denominator $`v_n`$ has an odd prime-power divisor $`Q=p^k`$ with
 > ``` math
@@ -1946,7 +1946,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long243-res-classicalhalfspace"></a>
 
-## Proposition 7.14 (comparison of the two signs), page 36
+## Proposition 7.14 (comparison of the two signs), page 37
 
 > *The factor $`M_n=D_n/L_n`$ divides $`G_n=\gcd(C_n,D_n)`$. Thus $`G_n/M_n`$ is a positive integer and $`E_n/M_n=(G_n/M_n)\tilde e_n`$ is an integer with the same sign as $`E_n`$. The sign of the growth ratio minus one also depends on a correction term. The exact recurrences give, whenever $`a_{n+1}C_nC_{n+1}\ne0`$,
 > ``` math
@@ -2234,7 +2234,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long243-res-constant"></a>
 
-## Theorem 9.2 (no constant negative magnitude), page 39
+## Theorem 9.2 (no constant negative magnitude), page 40
 
 > *For any $`m,c\in\mathbb{N}`$ with $`m>0`$, there is no pair of sequences $`a,D:\mathbb{N}\to\mathbb{N}`$ with $`a_n\ge2`$ for all $`n`$ satisfying $`D_{n+1}=a_nD_n`$ and ({5.1}). The same holds if the shape equation only begins at some index.*
 
@@ -2342,7 +2342,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long243-res-barrier"></a>
 
-## Theorem 11.3 (bounded increases and coprimality to earlier moduli), page 42
+## Theorem 11.3 (bounded increases and coprimality to earlier moduli), page 43
 
 > *Let $`u:\mathbb{N}\to\mathbb{N}`$ tend to infinity with $`u_{n+1}\le u_n+B`$ for a fixed integer $`B\ge1`$. Then $`u`$ cannot remain coprime to infinitely many fresh pairwise coprime moduli: there is no family of pairwise coprime $`m_i\ge2`$, one for each index, such that $`\gcd(m_i,u_t)=1`$ whenever $`i<t`$.*
 
@@ -2440,7 +2440,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long243-res-gcdsparse"></a>
 
-## Proposition 11.7 (vanishing relative error makes strict gcd changes sparse), page 44
+## Proposition 11.7 (vanishing relative error makes strict gcd changes sparse), page 45
 
 > *Let $`a,C,D:\mathbb{N}\to\mathbb{N}`$ satisfy $`C_{n+1}+D_n=a_nC_n`$ and $`D_{n+1}=a_nD_n`$ with $`C_n>0`$, and put $`E_n=D_n-(a_n-1)C_n`$, $`G_n=\gcd(C_n,D_n)`$ and $`\Gamma(N)=\#\{0\le j<N:G_j<G_{j+1}\}`$. If $`|E_n|/C_n\to0`$, then $`\Gamma(N)=o(N)`$. Moreover, for every starting bound $`B`$ and block length $`L`$, some $`n\ge B`$ satisfies
 > ``` math
@@ -2558,7 +2558,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long243-res-mass"></a>
 
-## Theorem 13.1 (finite sum of relative increases), page 46
+## Theorem 13.1 (finite sum of relative increases), page 47
 
 > *Let $`C_n\in\mathbb{N}_{>0}`$ and $`E_n\in\mathbb{Z}`$ satisfy $`C_{n+1}=C_n-E_n`$. If
 > ``` math
@@ -2722,7 +2722,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long243-res-residue"></a>
 
-## Theorem B.1 (factorial residue reduction), page 56
+## Theorem B.1 (factorial residue reduction), page 57
 
 > *For all $`h`$ and all integers $`a\equiv b \pmod{(h+1)!}`$, the orbit from $`a`$ survives $`h`$ forced updates exactly when the orbit from $`b`$ does.*
 

@@ -1,12 +1,12 @@
 # Formal evidence: Distinct running least common multiples
 
-This record belongs to the paper [erdos-269-three-prime-running-lcm.pdf](../paper/269/erdos-269-three-prime-running-lcm.pdf). For every result it lists the Lean declarations that state it, and the independent Comparator check where there is one. The margin marks in the paper link here.
+This record belongs to the paper [erdos-269-three-prime-running-lcm.pdf](../paper/269/erdos-269-three-prime-running-lcm.pdf). For every result it lists the Lean declarations that state it, and the recorded Comparator check where there is one. The inline links and margin marks in the paper use the same result mapping.
 
 - **Lean.** Every declaration is quoted from [plectis-erdos](https://github.com/wcook04/plectis-erdos) at commit [`436f55ebdafa`](https://github.com/wcook04/plectis-erdos/tree/436f55ebdafa67e4af0fff79f621c13f2ded12bf) and is checked there by Lean's kernel (`leanprover/lean4:v4.29.1`, Mathlib `5e932f97dd25`).
 - **Comparator.** For a compared result, each declaration was stated a second time, from Mathlib alone, as a *Challenge* in [plectis-erdos-lean](https://github.com/wcook04/plectis-erdos-lean), and a *Solution* that uses our proof was checked against it by [Comparator](https://github.com/leanprover/comparator), which also confirms that only the axioms `propext`, `Quot.sound`, `Classical.choice` are used. All checks below come from replay run [35935225572](https://github.com/wcook04/plectis-erdos-lean/actions/runs/35935225572) at corpus commit [`cc7e541cf208`](https://github.com/wcook04/plectis-erdos-lean/tree/cc7e541cf2081c6fef5a5e377d52e365e33b01eb) (tag `paper-evidence-2026-09-24`); both the default Lean kernel and the independent `nanoda` kernel accepted every entry. The replay's own report for each entry is kept in this repository and linked from each check. A Challenge shows `sorry` because it states the target without proving it.
 - **Counts.** 14 results: 13 with a Lean proof of the whole statement, 1 whose Lean proof assumes a named input (marked with a dagger), 0 without a Lean proof of the whole statement; 12 compared.
 
-These checks establish that the stated propositions are proved. Whether each is the right proposition is for the reader to judge against the paper's statement, which is reproduced below.
+These checks establish that the stated propositions are proved. Whether each is the right proposition is for the reader to judge against the paper's statement, which is reproduced below. Comparator checks separately declared statements, the axiom budget and kernel acceptance; it does not establish novelty, significance or peer review.
 
 <a id="res-distinct-height-235"></a>
 
@@ -166,7 +166,7 @@ def BugeaudLaurentTranscendence : Prop :=
 
 <a id="res-lcm"></a>
 
-## Proposition 4.1 (the running least common multiple), page 5
+## Proposition 4.1 (the running least common multiple), page 6
 
 > *Let $`p,q,r`$ be pairwise distinct primes and $`x\ge1`$. Then the running LCM equals the three-prime height: $`\operatorname{L}(x)=\operatorname{H}(x)`$.*
 
@@ -194,7 +194,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="res-cell"></a>
 
-## Proposition 4.2 (cells and jumps), page 5
+## Proposition 4.2 (cells and jumps), page 6
 
 > *The running LCM is constant when the three integer logarithms are constant. A jump in exactly one logarithm multiplies it by the corresponding prime. The first $`n`$ positive powers of each prime, together with $`1`$, form $`3n+1`$ distinct points.*
 
@@ -311,7 +311,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="res-dyadic-alphabet"></a>
 
-## Lemma 4.4 (integer coefficients and four possible bases), page 6
+## Lemma 4.4 (integer coefficients and four possible bases), page 7
 
 > *For every $`a\ge0`$, $`m_a`$ is a positive integer and $`b_a\in\{2,6,10,30\}`$. The word “numerator” does not impose the positional-digit restriction $`m_a<b_a`$; that restriction need not hold.*
 
@@ -341,7 +341,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="res-actual-orbit"></a>
 
-## Proposition 4.5 (the tail recurrence and a quadratic bound), page 6
+## Proposition 4.5 (the tail recurrence and a quadratic bound), page 7
 
 > *The series defining $`S,T_a`$ converge. For every $`a\ge0`$,
 > ``` math
@@ -385,7 +385,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="res-denominator-reduction"></a>
 
-## Theorem 4.6 (rationality gives positive integer tails), page 7
+## Theorem 4.6 (rationality gives positive integer tails), page 8
 
 > *If $`S=A/D`$ in lowest terms, where $`D=2^u3^v5^wB`$ and $`\gcd(B,30)=1`$, then for every $`a\ge a_0=u+1+2v+3w`$,
 > ``` math
@@ -422,7 +422,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="res-exact-onset"></a>
 
-## Corollary 4.7 (the first index at which the denominator clears), page 7
+## Corollary 4.7 (the first index at which the denominator clears), page 8
 
 > *Under the same lowest-terms hypothesis, put $`M=2^u3^v5^w`$ and let $`\operatorname{den}`$ denote the positive reduced denominator. For $`a\ge1`$,
 > ``` math
@@ -489,7 +489,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="res-consumer"></a>
 
-## Lemma 5.1 (least positive residues), page 8
+## Lemma 5.1 (least positive residues), page 9
 
 > *If $`d`$ is a positive integer with $`d\le K`$ and $`d\equiv -BF\pmod W`$, where $`W\ge1`$, then $`\operatorname{lpr}_W(-BF)\le K`$.*
 
@@ -516,7 +516,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="res-windowconsumer"></a>
 
-## Theorem 5.2 (a residue criterion for irrationality), page 8
+## Theorem 5.2 (a residue criterion for irrationality), page 9
 
 > *The number $`S`$ is irrational if and only if
 > ``` math
@@ -552,7 +552,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="res-infinite-rank"></a>
 
-## Theorem A.1 (no finite separation of the kernel), page 9
+## Theorem A.1 (no finite separation of the kernel), page 10
 
 > *Let $`p,q,r`$ be primes with $`p\ne q`$, $`p\ne r`$ and $`q\ne r`$. For every $`n\ge0`$ there are injective maps $`I,J:\{0,\ldots,n-1\}\to\mathbb{N}`$ such that, for every $`k\ge0`$,
 > ``` math
@@ -592,7 +592,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="res-admissible-modular-minors"></a>
 
-## Corollary A.2 (the same minors modulo integers coprime to $`30`$), page 10
+## Corollary A.2 (the same minors modulo integers coprime to $`30`$), page 11
 
 > *For $`(p,q,r)=(2,3,5)`$ and every $`n\ge1`$, there are injective maps $`I,J:\{0,\ldots,n-1\}\to\mathbb{N}`$, chosen independently of $`B`$ and $`k`$, such that for every $`B\ge2`$ coprime to $`30`$ and every $`k\ge0`$, the selected $`n\times n`$ kernel matrix has unit determinant over $`\mathbb Z/B\mathbb Z`$, with each reciprocal prime power interpreted by its modular inverse.*
 

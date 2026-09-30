@@ -95,6 +95,7 @@ unit fractions; Lean~4.
 \qquad
 \textbf{MSC 2020.} 11J72 (primary); 11B37, 11D68, 68V20 (secondary).
 
+\papersectiontarget{243-long-cubic}
 \section{Irrationality at the cubic rate}\label{long243:sec:cubicrate}
 
 A sufficiently precise rate constrains an integer tail more strongly
@@ -539,9 +540,16 @@ and for \eqref{long243:eq:wordminus} it is $d_1=2d_0(d_0+5)$, with values
 \[
  (0,5,0,6,2,2,6).
 \]
-Both images are $\{0,2,5,6\}$, which misses $\{3,4\}$.  All seven initial
-denominator residues have been displayed, so the calculation is exhaustive and
-rests on no unreported search.
+The incompatibility also follows without enumerating $d_0$. Completing
+the square gives
+\[
+ d_1+2=(d_0+3)^2\quad(c=1),\qquad
+ d_1+2=2(d_0-1)^2\quad(c=-1).
+\]
+Since $2$ is a square modulo $7$, either update makes $d_1+2$ a square.
+The required values $d_1=3,4$ instead give the nonsquares $5,6$.
+The two displayed lists provide the same exhaustive check: both images
+are $\{0,2,5,6\}$, disjoint from $\{3,4\}$.
 
 Hence every sufficiently late window $[7k,7k+3]$ for the plus profile,
 and every sufficiently late window $[1+7k,4+7k]$ for the minus profile,
@@ -799,21 +807,23 @@ criterion of the same kind for Ahmes series with positive integer numerators,
 weighted by the least common multiple of the earlier denominators
 \cite{tijdemanyuan2002}.
 
-Duverney's signed criterion gives a further comparison. Let $(a_n)$
-be positive integers tending to infinity and $\epsilon_n\in\{-1,1\}$.
-Under the sufficient hypothesis
-$\sum_{n\ge0}|a_{n+1}/a_n^{2}-1|<\infty$, the sum
+Duverney's signed criterion gives a further comparison. For positive
+integers $a_n\to\infty$ and signs $\epsilon_n\in\{-1,1\}$, its printed
+hypothesis (3.6) is the one-sided condition
+\[
+ \sum_{n\ge0}\left(\frac{a_{n+1}}{a_n^2}-1\right)<\infty,
+\]
+without absolute values. The stated conclusion is that
 $\sum_{n\ge0}\epsilon_n/a_n$ is rational if and only if
 \[
  a_{n+1}=a_n^2-(\epsilon_{n+1}/\epsilon_n)a_n
              +\epsilon_{n+2}/\epsilon_{n+1}
 \]
 for all large $n$~\cite[Corollary~3.2, p.~287]{duverney2001}.
-The all-positive specialisation is the form relevant here.
-
-There is a qualification concerning the convergence assumption.
-Display~(3.6) in that corollary has no absolute values. In the proof on
-pp.~299--300, the reduced auxiliary fractions $p'_n/q'_n$ satisfy
+For the comparison here we impose the stronger sufficient hypothesis
+$\sum_{n\ge0}|a_{n+1}/a_n^2-1|<\infty$ and take all signs positive.
+The distinction concerns one step of the printed proof. On pp.~299--300,
+the reduced auxiliary fractions $p'_n/q'_n$ satisfy
 $p'_{n+1}\mid q'_n$ and
 \[
  p'_n\le p'_N\prod_{k=N}^{n-1}\frac{q'_k}{p'_k}.
@@ -979,6 +989,7 @@ unclassified. The two recurrence proofs below are independent of the
 cubic argument: one uses a stable gcd and CRT, the other an infinite
 product and integer descent.
 
+\papersectiontarget{243-long-integer-tails}
 \section{Integer numerators, denominators and errors}\label{long243:sec:state}
 
 We retain an unreduced fraction $C_n/D_n$ for each rational tail.
@@ -1364,6 +1375,7 @@ the special all-negative case. The mixed-sign analysis in
 Sections~\ref{long243:sec:bounded} and~\ref{long243:sec:mass} separates
 arbitrarily late negative errors from an eventually nonnegative tail.
 
+\papersectiontarget{243-long-weighted-records}
 \section{LCM numerators and weighted records}\label{long243:sec:lcmrecords}
 
 The least common multiple clears a rational tail while removing
@@ -3009,6 +3021,7 @@ uses only vanishing relative error and yields arbitrarily late constant blocks o
 each prescribed finite length. This proof does not establish eventual
 constancy under that hypothesis, nor does it bound the negative magnitudes.
 
+\papersectiontarget{243-long-bounded-increases}
 \section{Bounded negative part}\label{long243:sec:bounded}
 
 The lower bound $E_n\ge-B$ has two uses. At negative indices it
@@ -3085,6 +3098,7 @@ $e_n\ge-B$. Neither Koizumi's construction nor the constant and periodic
 exclusions above establish this bound for every rational sum in the
 problem. The result therefore remains conditional.
 
+\papersectiontarget{243-long-relative-increase}
 \section{Finite total relative increase}\label{long243:sec:mass}
 
 We can bound a positive integer sequence by multiplying the relative
@@ -3174,6 +3188,7 @@ which is why the hypothesis of Theorem~\ref{long243:res:mass} is summability of
 $(-E_n)_+/C_n$ and not a bound on it.
 \end{example}
 
+\papersectiontarget{243-long-open-questions}
 \section{Further questions}\label{long243:sec:open}
 
 We collect the restrictions on a possible counterexample and the
@@ -3454,7 +3469,7 @@ Theorem~\ref{long243:res:weightedrecord} uses only steps where the LCM
 numerator exceeds its previous maximum. It subtracts $B$ from each upward
 jump, takes the positive part and weights it by $f(U_n)$.
 
-\begin{remark}
+\begin{remark}\label{long243:rem:relative-error-boundary}
 One further question is not left open here, since it is answered
 in~\cite{koizumi2025}: whether vanishing relative error follows from
 $a_{n+1}/a_n^{2}\to1$ and rationality.  It does.  After
@@ -3470,8 +3485,9 @@ $-c_n/2\le e_n<c_n/2$ at every index of that expansion. Thus
 $|E_n|<C_n$ holds beyond the restart, as required by
 Theorem~\ref{long243:res:bounded}; it need not hold at every original
 index. Eventual strict centring also follows directly from vanishing
-relative error with $K=1$.  What remains unsupplied is hypothesis~(5), the bound
-on the negative part, which is why the theorem is still conditional.
+relative error with $K=1$. What remains unsupplied is the eventual
+lower bound on $E_n$ in Theorem~\ref{long243:res:bounded}.
+That additional hypothesis is why the theorem is still conditional.
 \end{remark}
 
 \subsection{Unbounded upward increments}
@@ -3649,6 +3665,7 @@ for each natural $K$; strict centring is its $K=1$ case.
 Sections~\ref{long243:sec:priorwork} and~\ref{long243:sec:bounded} give the
 construction from a rational reciprocal sum.
 
+\papersectiontarget{243-long-indexing}
 \subsection*{Indexing of the regular-rate theorems}
 \noindent\emph{Index translation for the Lean statements.} Both Lean
 declarations use $b:\N\to\N$, including a positive $b_0$, whereas the

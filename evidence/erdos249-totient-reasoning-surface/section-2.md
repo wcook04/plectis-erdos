@@ -49,7 +49,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="lem-gperiod"></a>
 
-## Lemma 2.2 (Generic tail-period law), page 9
+## Lemma 2.2 (Generic tail-period law), page 10
 
 > *Let $`c:\mathbb{N}\to\mathbb{N}`$ satisfy $`c(n)\le n`$ for all $`n`$. If $`T_c = p/(2^{e}m)`$ with $`p\in\mathbb{Z}`$, $`e\ge0`$ and $`m`$ a positive odd integer, and if $`h\ge1`$ satisfies $`m\mid 2^h-1`$, then $`R^{c}_{N+h} - R^{c}_{N} \in \mathbb{Z}`$ for every $`N \ge e`$.*
 
@@ -198,7 +198,7 @@ theorem no_certificate_after_prefix (B P : ℕ) (hBP : B < P) :
 
 <a id="cor-b1"></a>
 
-## Corollary 2.5 (The limit of a finite-prefix argument), page 10
+## Corollary 2.5 (The limit of a finite-prefix argument), page 11
 
 > *No proof rule uniform over all $`c:\mathbb{N}\to\mathbb{N}`$ with $`c(n)\le n`$ can establish $`\mathrm{Sep}`$ from a single fixed prefix $`\{c(n):n\le B\}`$: Theorem 2.4 supplies a rational countermodel with that same prefix. This does *not* invalidate an argument that uses the fixed arithmetic sequence $`\varphi`$ together with compatible information at arbitrarily large horizons; the theorem gives a different $`\gamma_B`$ for each $`B`$, not one sequence agreeing with $`\varphi`$ at every $`B`$.*
 

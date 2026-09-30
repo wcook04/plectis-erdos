@@ -4,7 +4,7 @@ Part of the [evidence record](../erdos257-mersenne-reasoning-surface.md) of the 
 
 <a id="thm-fatal-absorbing"></a>
 
-## Theorem 6.1 (Infinitely many greedy skips force membership), page 43
+## Theorem 6.1 (Infinitely many greedy skips force membership), page 44
 
 > *Fix $`x\ge0`$. If $`r_n(x)>R_n`$ at some rank $`n`$, every later rank is selected and $`r_{n+k}(x)>R_{n+k}`$ for every $`k\ge0`$. Consequently, infinitely many omitted positive ranks imply $`x\in\mathcal A`$.*
 
@@ -32,7 +32,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="thm-seam-limit"></a>
 
-## Theorem 6.2 (The quotient remainders converge to the greedy deficit), page 43
+## Theorem 6.2 (The quotient remainders converge to the greedy deficit), page 44
 
 > *Let $`G`$ be the real greedy support for $`1/2`$, and let $`D_s`$ be the integer-greedy support at row $`s`$. Then
 > ``` math
@@ -175,7 +175,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="thm-second-channel"></a>
 
-## Theorem 6.4 (Second-channel phase separation sufficiency), page 44
+## Theorem 6.4 (Second-channel phase separation sufficiency), page 45
 
 > *Define $`P_n=4^n\bigl(2r_n(1/2)-2^{-n}\bigr)`$. If
 > ``` math
@@ -219,7 +219,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="thm-straddle-closed-set"></a>
 
-## Theorem 6.5 (Straddle-prefix closed-set criterion), page 44
+## Theorem 6.5 (Straddle-prefix closed-set criterion), page 45
 
 > *Suppose that for every $`d\ge0`$ there is a finite support $`D_d\subseteq\{1,\ldots,d\}`$ such that
 > ``` math
@@ -260,7 +260,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="thm-largest-skip-late"></a>
 
-## Theorem 6.6 (Keeping the largest skipped rank beyond two thirds), page 44
+## Theorem 6.6 (Keeping the largest skipped rank beyond two thirds), page 45
 
 > *Let $`D_s\subseteq\{2,\ldots,s-1\}`$ be the support of the integer-greedy row defined in Section 5.4. Assume the following implication for every $`s\ge14`$ and every largest omitted rank $`d=\max(\{2,\ldots,s-1\}\smallsetminus D_s)`$:
 > ``` math
@@ -358,7 +358,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="thm-middle-allright-defect"></a>
 
-## Theorem 6.8 (The tail inequality at a final middle transition), page 45
+## Theorem 6.8 (The tail inequality at a final middle transition), page 46
 
 > *Suppose row $`D\ge13`$ is middle and all rows after it are right. Let $`F_D=D_D\cup\{D\}`$ and put
 > ``` math
@@ -454,7 +454,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="thm-two-sided-dyadic"></a>
 
-## Theorem 6.9 (A conditional two-sided dyadic bound), page 45
+## Theorem 6.9 (A conditional two-sided dyadic bound), page 46
 
 > *Assume the following two conditions for every row $`s\ge5`$:
 > ``` math
@@ -564,7 +564,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="thm-mobius-centred-nonneg"></a>
 
-## Theorem 6.11 (Möbius-centred carry nonnegativity below $`1/2`$), page 46
+## Theorem 6.11 (Möbius-centred carry nonnegativity below $`1/2`$), page 47
 
 > *If $`1\notin A`$ and $`X_A(2)<1/2`$, then $`C_A(N)\ge0`$ for every $`N`$. Indeed,
 > ``` math
@@ -608,7 +608,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="thm-sqrt-bound-route"></a>
 
-## Theorem 6.12 (A square-root bound on the greedy carry), page 46
+## Theorem 6.12 (A square-root bound on the greedy carry), page 47
 
 > *For the greedy support $`G=G_{1/2}`$, the centred carry is nonnegative. If in addition
 > ``` math
@@ -667,7 +667,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="thm-frozen-margin"></a>
 
-## Theorem 6.13 (Equivalent sign and vanishing conditions), page 46
+## Theorem 6.13 (Equivalent sign and vanishing conditions), page 47
 
 > *For the prefix $`D=G\cap\{1,\ldots,k\}`$ define
 > ``` math
@@ -775,7 +775,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="thm-weighted-coeff-engine"></a>
 
-## Theorem 6.16 (Irrationality from divisible coefficient blocks), page 47
+## Theorem 6.16 (Irrationality from divisible coefficient blocks), page 48
 
 > *Let $`b\ge2`$ be an integer and let $`c:\mathbb N\to\mathbb N`$ satisfy $`c(n)\le n`$ for every $`n`$. Suppose that for every integer $`q\ge1`$ there are nonnegative integers $`N,K,L,C`$, with $`K\le L`$, such that
 > ``` math
@@ -815,7 +815,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="thm-lcm-gap-engine"></a>
 
-## Theorem 6.17 (Irrationality from a gap beyond the preceding least common multiple), page 47
+## Theorem 6.17 (Irrationality from a gap beyond the preceding least common multiple), page 48
 
 > *For an integer base $`b\ge2`$ and strictly increasing support $`a:\mathbb N\to\mathbb N`$ with $`a(0)\ge
 > 1`$: if $`a(k)-\mathrm{lcm}(a(0),\dots,a(k-1))\to\infty`$, then $`\sum'_k 1/(b^{a(k)}-1)`$ is irrational. The base may vary over the integers, but the denominators remain $`b^{a(k)}-1`$. Applying the argument to another denominator sequence would require its own divisibility and tail estimates.*
@@ -883,7 +883,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="thm-multiples-support"></a>
 
-## Theorem 6.19 (Multiples-support irrationality via dilation), page 48
+## Theorem 6.19 (Multiples-support irrationality via dilation), page 49
 
 > *For integers $`b\ge2`$ and $`d\ge1`$,
 > ``` math
@@ -922,7 +922,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="thm-periodic-support"></a>
 
-## Theorem 6.20 (Periodic-support irrationality), page 48
+## Theorem 6.20 (Periodic-support irrationality), page 49
 
 > *Let $`b\ge2`$ and $`m\ge1`$ be integers. Suppose $`A\subseteq\mathbb{N}_{>0}`$ is nonempty and satisfies $`n\in A`$ if and only if $`n+m\in A`$ for every $`n\ge1`$. Then $`X_A(b)`$ is irrational.*
 >
@@ -944,9 +944,13 @@ theorem irrational_erdosSupportSeries_positivePeriodic
 
 **Comparator:** not yet compared.
 
+No exact Comparator interface or replay is bound for the positive-index theorem. The existing periodic interface assumes periodicity also at n = 0; the existing eventuallyPeriodic interface assumes infinitude. This paper theorem requires periodicity only at positive indices and derives infinitude from a positive member.
+
+Next check: In the next governed corpus build, transport lean/ErdosProblems/Erdos257/PaperCompleteR20/PositivePeriodicSupport.lean from public paper commit 7f79e63d0b36b5b4f0b47b6368342b4a50824f4e (SHA-256 322da3b9cfa18a8b9ecd145c4a1a9935f8cbaf3ad7dd8c230857f118efee4572; Lean v4.29.1). Build its module, probe the exact declaration closure, prepare its independent Challenge and checked Solution, and run Comparator. Add an association for irrational_erdosSupportSeries_positivePeriodic only after a matching source-bound replay passes, then regenerate paper evidence.
+
 <a id="thm-eventually-periodic"></a>
 
-## Theorem 6.21 (Eventually-periodic support irrationality), page 48
+## Theorem 6.21 (Eventually-periodic support irrationality), page 49
 
 > *Let $`b\ge2`$ and $`m\ge1`$ be integers. An infinite support whose membership is $`m`$-periodic from some threshold $`N_0`$ onward has irrational $`X_A(b)`$.*
 
@@ -974,7 +978,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="thm-residue-odd"></a>
 
-## Theorem 6.22 (Residue-class and odd-support irrationality), page 48
+## Theorem 6.22 (Residue-class and odd-support irrationality), page 49
 
 > *For integers $`b\ge2`$, $`m\ge1`$ and a residue $`c`$, $`\sum_{\substack{n\ge1\\n\equiv c\pmod m}}(b^n-1)^{-1}`$ is irrational. Specializing $`m=2,c=1`$: $`\sum_{n\text{ odd}} 1/(b^n-1)`$ is irrational for every $`b\ge 2`$, the case treated explicitly in \[lucatachiya2017, Example 2, p. 140\].*
 
@@ -1008,7 +1012,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="thm-signed-periodic"></a>
 
-## Theorem 6.23 (A formal dichotomy for signed periodic weights), page 48
+## Theorem 6.23 (A formal dichotomy for signed periodic weights), page 49
 
 > *Let $`b\ge2`$ and $`m\ge1`$ be integers, and let $`w:\mathbb{N}_{>0}\to\mathbb{Z}`$ be $`m`$-periodic. Put
 > ``` math
@@ -1065,7 +1069,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="thm-mersenne-channel-survival"></a>
 
-## Theorem 6.24 (Denominators of finite Mersenne sums), page 49
+## Theorem 6.24 (Denominators of finite Mersenne sums), page 50
 
 > *Let $`t\ge1`$ and $`h\ge1`$ be integers, and let $`r\ge1`$ be squarefree with every prime factor at most $`t`$. Let $`P`$ be a set of prime divisors of $`r`$ such that $`t<2p`$ for each $`p\in P`$, and put $`C=\prod_{p\in P}(2^p-1)`$. Then
 > ``` math
@@ -1232,7 +1236,7 @@ theorem upperHalfChannel_survivorProduct_dvd_den_of_one_le
 
 <a id="thm-mersenne-channel-growth"></a>
 
-## Theorem 6.25 (Exponential growth of the reduced denominators), page 49
+## Theorem 6.25 (Exponential growth of the reduced denominators), page 50
 
 > *For an integer $`t\ge5`$, put
 > ``` math
@@ -1319,7 +1323,7 @@ theorem lcmHeight_scaledMobiusShadow_den_exact (t : ℕ) :
 
 <a id="thm-mobius-lambert-identity"></a>
 
-## Theorem 6.28 (The Lambert-series identity for the Möbius function), page 50
+## Theorem 6.28 (The Lambert-series identity for the Möbius function), page 51
 
 > *The absolutely convergent signed series satisfies
 > ``` math
@@ -1348,7 +1352,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="cor-negative-mobius-overshoot"></a>
 
-## Corollary 6.29 (Negative-Möbius Boolean support overshoots $`1/2`$), page 50
+## Corollary 6.29 (Negative-Möbius Boolean support overshoots $`1/2`$), page 51
 
 > *Let $`N=\{d\ge2:\mu(d)=-1\}`$. Isolating the $`d=1`$ term in Theorem 6.28 gives
 > ``` math
@@ -1388,7 +1392,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="thm-half-skip-dichotomy"></a>
 
-## Theorem 6.31 (The half-skip dichotomy via Erdős–Borwein irrationality), page 51
+## Theorem 6.31 (The half-skip dichotomy via Erdős–Borwein irrationality), page 52
 
 > *The half target satisfies
 > ``` math
@@ -1427,7 +1431,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="thm-nine-way-hub"></a>
 
-## Theorem 6.32 (Equivalent descriptions of half-membership), page 51
+## Theorem 6.32 (Equivalent descriptions of half-membership), page 52
 
 > *Each of the following is equivalent to $`1/2\in\mathcal A`$:*
 >
@@ -1521,7 +1525,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="lem-eventually-right-impossible"></a>
 
-## Lemma 6.33 (The values on either side of an eventual right continuation), page 52
+## Lemma 6.33 (The values on either side of an eventual right continuation), page 53
 
 > *If the seam eventually always extends “true” (right branch) from some row $`S`$ on with a fixed lower prefix $`u`$, the resulting cofinite-support value stays strictly below $`1/2`$; the matching alternative “upper competitor” word gives a strict excess *above* $`1/2`$. Neither of these two cofinite continuations represents $`1/2`$. This does not rule out an eventually-right integer orbit; it describes the two values in that case. The inequalities are used in Theorem 6.44.*
 
@@ -1570,7 +1574,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="lem-mersenne-tail-weight"></a>
 
-## Lemma 6.34 (Each Mersenne weight exceeds its remaining tail), page 52
+## Lemma 6.34 (Each Mersenne weight exceeds its remaining tail), page 53
 
 > *For $`n\ge1`$, let $`w_n=(2^n-1)^{-1}`$ and $`R_n=\sum_{j>n}w_j`$. Then
 > ``` math

@@ -916,7 +916,9 @@ def resolve(root: Path, corpus: Repo | None, aux_dir: Path | None,
                     comparator = {"status": "compared", "commit": corpus_commit, "run_id": run_id,
                                   "checks": checks}
             elif row["comparator"]["status"] == "pending":
-                comparator = {"status": "pending"}
+                comparator = {key: row["comparator"][key] for key in
+                              ("status", "queued_at", "pending_reason", "next_action")
+                              if key in row["comparator"]}
             supporting = []
             for item in row["lean"].get("supporting_declarations", []):
                 d = pin_decl(item["name"], item["file"], where)
@@ -1063,6 +1065,9 @@ def render_sidecar(evidence: dict, paper: dict, record_commit: str) -> str:
         f"\\newcommand{{\\evidencerecordurl}}{{{tex_url(f'{REPO_URL}/blob/{record_commit}/{RECORD_DIR}/{pid}.md')}}}",
     ]
     for r in paper["results"]:
+        record = record_url(record_commit, r.get("record") or f"{RECORD_DIR}/{pid}.md", r["anchor"])
+        lines.append(f"\\DeclareResultEvidenceRecord{{{r['label']}}}{{{tex_url(record)}}}"
+                     f"{{{r['lean']['status']}}}{{{r['comparator']['status']}}}")
         mark = r["lean"]["mark"]
         if mark is None:
             continue
@@ -1108,8 +1113,8 @@ def record_header(evidence: dict, paper: dict, title: str, pdf_path: str, up: st
         f"# Formal evidence: {title}",
         "",
         f"This record belongs to the paper [{Path(pdf_path).name}]({up}{pdf_path}). For every result it lists "
-        "the Lean declarations that state it, and the independent Comparator check where there is one. "
-        "The margin marks in the paper link here.",
+        "the Lean declarations that state it, and the recorded Comparator check where there is one. "
+        "The inline links and margin marks in the paper use the same result mapping.",
         "",
         f"- **Lean.** Every declaration is quoted from [plectis-erdos]({REPO_URL}) at commit "
         f"[`{pin[:12]}`]({REPO_URL}/tree/{pin}) and is checked there by Lean's kernel "
@@ -1128,7 +1133,9 @@ def record_header(evidence: dict, paper: dict, title: str, pdf_path: str, up: st
         f"{counts[None]} without a Lean proof of the whole statement; {compared} compared.",
         "",
         "These checks establish that the stated propositions are proved. Whether each is the right "
-        "proposition is for the reader to judge against the paper's statement, which is reproduced below.",
+        "proposition is for the reader to judge against the paper's statement, which is reproduced below. "
+        "Comparator checks separately declared statements, the axiom budget and kernel acceptance; "
+        "it does not establish novelty, significance or peer review.",
         "",
     ]
 
@@ -1224,6 +1231,10 @@ def render_results(evidence: dict, results: list[dict], up: str) -> list[str]:
         elif cmp["status"] == "pending":
             out.append("**Comparator:** not yet compared.")
             out.append("")
+            if cmp.get("pending_reason"):
+                out.extend([cmp["pending_reason"], ""])
+            if cmp.get("next_action"):
+                out.extend(["Next check: " + cmp["next_action"], ""])
         else:
             out.append("**Comparator:** not applicable (no unconditional Lean proof of the whole statement).")
             out.append("")

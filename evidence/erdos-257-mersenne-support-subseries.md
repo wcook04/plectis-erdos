@@ -1,12 +1,12 @@
 # Formal evidence: Weighted and Covered Supports for Mersenne Subseries
 
-This record belongs to the paper [erdos-257-mersenne-support-subseries.pdf](../paper/257/erdos-257-mersenne-support-subseries.pdf). For every result it lists the Lean declarations that state it, and the independent Comparator check where there is one. The margin marks in the paper link here.
+This record belongs to the paper [erdos-257-mersenne-support-subseries.pdf](../paper/257/erdos-257-mersenne-support-subseries.pdf). For every result it lists the Lean declarations that state it, and the recorded Comparator check where there is one. The inline links and margin marks in the paper use the same result mapping.
 
 - **Lean.** Every declaration is quoted from [plectis-erdos](https://github.com/wcook04/plectis-erdos) at commit [`436f55ebdafa`](https://github.com/wcook04/plectis-erdos/tree/436f55ebdafa67e4af0fff79f621c13f2ded12bf) and is checked there by Lean's kernel (`leanprover/lean4:v4.29.1`, Mathlib `5e932f97dd25`).
 - **Comparator.** For a compared result, each declaration was stated a second time, from Mathlib alone, as a *Challenge* in [plectis-erdos-lean](https://github.com/wcook04/plectis-erdos-lean), and a *Solution* that uses our proof was checked against it by [Comparator](https://github.com/leanprover/comparator), which also confirms that only the axioms `propext`, `Quot.sound`, `Classical.choice` are used. All checks below come from replay run [35935225572](https://github.com/wcook04/plectis-erdos-lean/actions/runs/35935225572) at corpus commit [`cc7e541cf208`](https://github.com/wcook04/plectis-erdos-lean/tree/cc7e541cf2081c6fef5a5e377d52e365e33b01eb) (tag `paper-evidence-2026-09-24`); both the default Lean kernel and the independent `nanoda` kernel accepted every entry. The replay's own report for each entry is kept in this repository and linked from each check. A Challenge shows `sorry` because it states the target without proving it.
 - **Counts.** 11 results: 10 with a Lean proof of the whole statement, 0 whose Lean proof assumes a named input (marked with a dagger), 1 without a Lean proof of the whole statement; 8 compared.
 
-These checks establish that the stated propositions are proved. Whether each is the right proposition is for the reader to judge against the paper's statement, which is reproduced below.
+These checks establish that the stated propositions are proved. Whether each is the right proposition is for the reader to judge against the paper's statement, which is reproduced below. Comparator checks separately declared statements, the axiom budget and kernel acceptance; it does not establish novelty, significance or peer review.
 
 <a id="res-weighted-support"></a>
 
@@ -471,6 +471,10 @@ theorem paper_terminalhalf_iff :
 <a id="res-terminalhalf-comparator"></a>
 
 **Comparator:** not yet compared.
+
+Comparator entry E257_47 (replay 35935225572 at corpus commit cc7e541cf2081c6fef5a5e377d52e365e33b01eb) checks paper_terminalhalf, which is the right-to-left direction of the equivalence alone. No Challenge, Solution or replay is bound for paper_terminalhalf_iff.
+
+Next check: In the next governed corpus build, transport lean/ErdosProblems/Erdos257/PaperCompleteR20/TerminalSetCorrespondence.lean from public paper commit 4db6150ed53492363079661a68bed4d181eb56dd (SHA-256 6daff7f2777bede7e0831ba83061add33f7cbe520cb07ccf840f0b34e1ffcc8e; Lean v4.29.1). Build its module, probe the exact declaration closure, prepare an independent Challenge for paper_terminalhalf_iff with terminalPaperCarry and erdosSupportSeries restated from Mathlib, and its checked Solution, and run Comparator. Add an association for paper_terminalhalf_iff only after a matching source-bound replay passes, then regenerate paper evidence.
 
 <a id="res-cylinderhalf"></a>
 

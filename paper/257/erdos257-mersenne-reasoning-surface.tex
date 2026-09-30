@@ -564,8 +564,11 @@ and therefore
  \sum_{\substack{a\in A\\a>QT}}d_a(tQ)\le\frac4T.
 \end{equation}
 
-Finally, let $\alpha_a\ge0$ with $\sum_a\alpha_a/a<\infty$.  For $Q,M\ge1$,
-finite rearrangement and a geometric sum give
+The incomplete-period term in~\eqref{eq:257-weighted-gcd-average}
+has no factor $1/a$. To sum these errors over the observed exponents,
+we average over dyadic lengths; for a fixed exponent, the admissible
+lengths form a geometric tail. Let $\alpha_a\ge0$ with
+$\sum_a\alpha_a/a<\infty$. For $Q,M\ge1$, finite rearrangement gives
 \begin{equation}\label{eq:257-weighted-dyadic-average}
  \sum_{j=M}^{2M-1}\frac1{2^j}
        \sum_{a\le Q2^j}\alpha_a
@@ -794,6 +797,13 @@ For $1<B\le2$, positive integers $L,d,M$, and an integer $R\ge0$, put
  =\frac1M\sum_{j=R}^{R+M-1}\frac1{2^j}
       \sum_{m=1}^{2^j}F(Lm).
 \]
+To read this as sampling, first choose $j$ uniformly from
+$R,\ldots,R+M-1$. Conditional on that scale, choose $m$ uniformly from
+$1,\ldots,2^j$ and observe $N=Lm$. The scales have equal total weight;
+the observations within a longer scale have smaller individual weights.
+Repeated occurrences of an integer $N$ retain their contributions to the
+sum. This is the distribution used for both parts of the mixed proof.
+
 The finite estimate
 \begin{equation}
  \mathscr D_{L;R,M}w_{B,d}
@@ -802,7 +812,9 @@ The finite estimate
 \end{equation}
 equivalently bounds $(B-1)\mathscr D_{L;R,M}w_{B,d}$ by
 $(1+4L/M)/d$.  This normalised bound is uniform as $B\downarrow1$.
-The unnormalised right side grows like $(B-1)^{-1}$.
+The unnormalised right side grows like $(B-1)^{-1}$. In the cover
+argument $B=2^\alpha$ can approach $1$, so the factor
+$(2^\alpha-1)^{-1}$ must remain in the summability condition.
 The ratio $L/M$ measures the cost of incomplete modular periods.
 
 Fix $T=2^j$. We separate the complete-orbit range $d\le LT$ from
@@ -816,9 +828,14 @@ and total weight $1/(B^g-1)$.  Complete cycles and one remaining piece give
 \]
 Across dyadic lengths satisfying $d\le L2^j$, the reciprocal-length
 errors sum to at most $2L/[d(B-1)]$.
+\par
+\begin{samepage}
+\noindent
 When $d>2LT$, there is no wrap and $2Lm\le d-1$; hence
 $\sum_{i=0}^{d-1}B^i\ge dB^{(d-1)/2}\ge dB^{Lm}$.
 Each atom is then at most $1/[d(B-1)]$.
+\par
+\end{samepage}
 Finally, at most one dyadic length satisfies $LT<d\le2LT$.
 For that length the geometric sum and convexity give
 \[
@@ -877,13 +894,19 @@ fractional power.  Subadditivity and the divisor majorant give
        \sum_{\substack{r\ge1\\d\mid N+r}}B_j^{-r}
  =V_j(N).
 \]
+\par\noindent
+\begin{minipage}{\linewidth}
 The last identity sums a geometric progression in each residue class.
 The geometric-series identity also gives
 \[
  \Delta_{2,F_j}(N)=U_j(N)-X_{F_j}(2)\le U_j(N).
 \]
-Consequently, once the first $J$ covering sets have zero displacement, nonnegativity
-bounds the displacement of their union by $\sum_{j>J}U_j(N)$.
+\end{minipage}
+\par
+For the first $J$ covering sets we will impose divisibility, making
+$\Delta_{2,F_j}(N)$ vanish. At those indices the identity above gives
+$U_j(N)=X_{F_j}(2)$, which need not be zero. We bound only the remaining
+displacements by the corresponding tails $U_j(N)$.
 
 Fix $\varepsilon>0$, set $t_j=\varepsilon2^{-j}$, and choose $J$ with
 \[
@@ -919,11 +942,12 @@ replace $2^{j\alpha_j}$ in~\eqref{eq:257-strengthened-cover} by
 $\eta_j^{-\alpha_j}$ and take $t_j=\varepsilon\eta_j$.
 \subsection{Combining the two support criteria}
 \papersectiontarget{record257:mixed-proof}
-We use the weighted proof to choose a finite distribution, then apply
-the cover estimate~\eqref{eq:257-mixed-finite-kernel} on that distribution.
-Its uniformity in the moving modulus is essential. Separate sequences
-of small weighted and covered displacements would not give a small
-sum: their small values could occur on disjoint sets of indices.
+We use the weighted proof to choose a finite distribution and apply
+the cover estimate~\eqref{eq:257-mixed-finite-kernel} to it. The explicit
+modulus dependence lets us check that the cover error also tends to zero
+with this choice. Separate sequences of small weighted and covered
+displacements would not give a small sum: their small values could occur
+on disjoint sets of indices.
 \begin{thm}[mixed weighted and cover supports]\label{thm:257-mixed-supports}
 Let $E,V\subseteq\Npos$.  Suppose $E$ has finite weighted mass
 \eqref{eq:257-weighted-mass} at $b=2$ for a finite nonempty prime set
@@ -950,6 +974,9 @@ parameters
  Q=L\prod_{p\in\mathcal P}p^{\lfloor\log_pH\rfloor},\qquad
  G=\lfloor H/\max\mathcal P\rfloor,\qquad M=\lfloor2^{G/2}\rfloor.
 \]
+We use $\mathscr D_{Q;M,M}$ throughout the following estimates. Its
+scales run from $M$ to $2M-1$, and both quantities are evaluated at the
+same sampled multiple $N=Qm$.
 The finite estimate~\eqref{eq:257-weighted-final-diagonal}, with complementary
 weighted mass $\kappa$, remains valid for this $L$: its proof requires only
 that every member of $F$ divide $L$.  It also applies to finite or empty $E$, since positivity was
@@ -963,12 +990,13 @@ nonnegative interchange give
  \mathscr D_{Q;M,M}S_J\le(1+4Q/M)K_J<\frac18,
  \qquad S_J=\sum_{j>J}t_j^{-\alpha_j}V_j,
 \]
-because $Q/M\to0$. Adding the two expectations gives a number below
-$1/4$, so at some sampled index $N=Qm$ we have
-$\Delta_{2,E}(N)/\rho+S_J(N)<1$. Nonnegativity then gives the two
-inequalities we need at this same index: $\Delta_{2,E}(N)<\rho$ and
-$U_j(N)<t_j$ for every $j>J$.  The earlier terms vanish because every
-exponent in their finite sets divides $L$, and hence divides $N$.  Therefore
+because $Q/M\to0$. Add the quantities before selecting the index:
+the mean of $\Delta_{2,E}/\rho+S_J$ is below $1/4$, so some sampled
+$N=Qm$ satisfies $\Delta_{2,E}(N)/\rho+S_J(N)<1$.
+Nonnegativity of both quantities and of every summand of $S_J$ gives
+$\Delta_{2,E}(N)<\rho$ and $U_j(N)<t_j$ for every $j>J$.
+For $j\le J$, it is the displacement $\Delta_{2,F_j}(N)$ that vanishes,
+since every exponent in $F_j$ divides $L$ and hence divides $N$. Therefore
 \[
  \Delta_{2,A}(N)\le\Delta_{2,E}(N)+\Delta_{2,V}(N)<2\rho<\varepsilon,
  \qquad N\ge Q\ge L\ge N_0.

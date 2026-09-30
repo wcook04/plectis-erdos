@@ -60,22 +60,22 @@ Any further change of starting index adds a rational number. The
 expectation for all integer shifts remains unproved here.
 The problem number follows Bloom's catalogue \cite{bloom}.
 
-The accompanying short paper centres on the coefficient construction in
-\S\ref{long68:sec:channels}. Starting from $n(n-1)!=n!$, we subtract
-adjacent factorial weights. The resulting vector has moment zero and
-weighted sums supported only on divisors of $n$. Eliminating the proper
-divisors isolates one weighted sum at each step. Because the triangular
-coordinate changes have unit determinants, the construction gives an
-integral basis for every finite coefficient vector. Restricting support
-to indices at least two then leaves one Diophantine equation.
+The accompanying short paper develops the integral basis and finite
+moment ideal in \S\ref{long68:sec:basis}, then derives a depth-four
+vector from those coordinates. The argument starts with adjacent
+factorial differences, eliminates proper divisors, and uses the unit
+determinants of the two triangular changes of basis. Removing the
+auxiliary index-one coefficient leaves a single Diophantine equation.
+The short paper includes both this argument and the divisibility
+induction that makes its gcd finite.
 
-Here we give the finite-gcd argument in full and distinguish three
-optimisation questions at depth four: the least positive moment, the
-least support size, and the least coefficient norm. The first is $1380$;
-the latter two depend on the permitted support horizon and on which
-weighted sums must vanish. We also develop the denominator and digit
-arguments needed to compare the resulting real linear forms with
-integers.
+This record gives the support and coefficient-norm refinements, the
+primitive progression construction, and the carry, digit and reduced-
+denominator arguments. At depth four the least positive moment is
+$1380$; sparsity and coefficient norm depend additionally on the allowed
+support horizon and the weighted sums required to vanish. The arithmetic
+criteria later in the record describe what is still needed to compare
+the resulting real linear forms with integers.
 
 Throughout, write
 \[
@@ -91,7 +91,8 @@ must produce a nonintegral form with $q\mid M$. Both properties must
 hold for the same vector; cancellation and growth of $M$ alone do not
 establish this.
 
-The table below locates the arguments used in the short paper.
+The table below separates the short paper's main argument from the
+additional material retained here.
 After the coefficient theory, \S\ref{long68:sec:prime-powers} treats
 reduction of finite sums and \S\ref{long68:sec:lcm} proves
 $\liminf\log\Lc_N/(N^{3/2}\log N)\ge2\sqrt2/3$.
@@ -105,7 +106,7 @@ the concordance with the formal sources.
 \begin{tabular}{p{.46\linewidth}p{.43\linewidth}}
 \toprule
 \papertablehead
-Argument in the short paper & Full account here\\
+Argument or supplementary topic & Full account here\\
 \midrule
 Integral basis and finite gcd & \S\ref{long68:sec:basis}\\
 Moment $1380$ and its nonintegral remainder &
@@ -355,6 +356,24 @@ Since $L_4=115$ and $a_4=-55$, we obtain
 The vector $12K_4+253U_6-11U_8$ attains this value: its coefficient at
 index $1$ is $12(-55)+253(-180)-11(-4200)=0$.
 
+The five-term vector used in the short paper is obtained from the same
+coordinates. The equality $12(-55)-27(-180)-4200=0$ first gives
+$12K_4-27U_6+U_8$. Its coefficients at indices four and seven are
+removed by $-26U_5+8U_7$, respectively. Both corrections leave the first
+coordinate zero. Consequently
+\begin{equation}
+\begin{split}
+ 12K_4-26U_5-27U_6+8U_7+U_8
+ &=1482e_2-784e_3-136e_5\\
+ &\quad+83e_6-e_8.
+\end{split}
+\label{long68:eq:constructed-depth-four}
+\end{equation}
+Its remainder is $1380(S-H_4)-44$, since the coefficients of the $U_n$
+in this expansion sum to $-44$. The exact interval calculation appears
+in \S\ref{long68:sec:ext-certificates}. The coordinate calculation gives
+the moment and cancellations independently of a search over supports.
+
 If support is additionally restricted to $n\le6$, only $u_5=0$ and
 $u_6=-180$ remain available in \eqref{long68:eq:low-channel-support}.
 The least positive moment is then $115\cdot180/\gcd(180,55)=4140$.
@@ -362,6 +381,7 @@ Thus a restriction on the largest supported index can increase the
 least attainable moment. The following refinements keep the horizon
 explicit.
 
+\papersectiontarget{r5-depth-refinements}
 There is also a direct congruence proof using only the second and
 fourth weighted sums. For every $n\ge2$,
 \begin{equation}
@@ -704,7 +724,8 @@ formula establishes the existence of a representative in the stated
 interval; it does not independently certify that this representative is
 nonzero.
 
-\paragraph{A primitive solution on an arithmetic progression.}
+\paragraph{A primitive solution on an arithmetic progression.}\label{long68:sec:progression}
+\papersectiontarget{r5-progression}
 To extend the example $-6e_2+e_4$ to cancellation at larger $D$, place
 the support on an arithmetic progression with its first index prescribed.
 Let $D,r\ge2$ and let $\ell$ be a positive multiple of $2,\ldots,D$. Equal
@@ -1152,6 +1173,7 @@ established here.  This paragraph compares the two methods; no $p$-adic
 theorem is applied to $\Ser$.
 
 \section{Carries and factorial digits}\label{long68:sec:carry}
+\papersectiontarget{r5-carry}
 
 Suppose first that $S$ is rational. For all sufficiently large $m$,
 the number $m!S$ is an integer, and $0<m!(S-H_m)<1$ identifies it
@@ -1267,7 +1289,8 @@ valuations. Such an obstruction would need information not already
 implied by the pair assumption; it need not take the form of a bound on
 the preceding gap $\Delta_m$.
 
-\subsection{Factorial digits of \texorpdfstring{$S-e+2$}{S-e+2}}
+\subsection{Factorial digits of \texorpdfstring{$S-e+2$}{S-e+2}}\label{long68:sec:companion-digits}
+\papersectiontarget{r5-digits}
 
 Subtracting $\sum_{n\ge2}1/n!=e-2$ leaves the absolutely convergent
 series $C=\sum_{n\ge2}\bigl(n!(n!-1)\bigr)^{-1}$. The termwise
@@ -1328,6 +1351,39 @@ indices. The proof works for any real $C$: it holds exactly when
 $C+e-2$ is rational. For example, $C=2-e$ gives a rational sum, whereas
 $C=0$ gives the irrational number $e-2$. The issue here is to decide the
 condition for the particular positive series defining $C$.
+
+Negating the eventual congruence gives the equivalent formulation
+\begin{equation}
+ S\notin\mathbb Q\quad\Longleftrightarrow\quad
+ (\forall B)(\exists m>B)\ (\lfloor m!C\rfloor+2)\bmod m\ne0.
+ \label{long68:eq:companion-cofinal}
+\end{equation}
+It remains to prove failures of this congruence at arbitrarily large
+indices for this particular $C$. A finite list of failures does not
+settle this question, and the equivalence gives no distribution estimate.
+
+\paragraph{Recovering the finite carries.}\label{long68:sec:floor-correction}
+To compare canonical digits with the carries, we must account for the
+tail removed before taking a floor. Set
+\[
+ \delta_m=m!\sum_{n>m}\frac1{n!(n!-1)},\qquad
+ \sigma_m=\mathbf1_{\{\{m!C\}<\delta_m\}}.
+\]
+Here $\{x\}=x-\lfloor x\rfloor$. The factorial-tail bound gives
+$0<\delta_m<1/((m+1)!-1)<1$. Subtracting $\delta_m$ from $m!C$
+lowers its floor by one exactly when $\{m!C\}<\delta_m$. Therefore
+\[
+ Z_m=m!\sum_{n=2}^m\frac1{n!}+\lfloor m!C\rfloor+1-\sigma_m.
+\]
+Substitution in \eqref{long68:eq:carry-recurrence} gives
+\begin{equation}
+ b_m=m-1-a_m(C)+\sigma_m-m\sigma_{m-1}\qquad(m\ge3).
+ \label{long68:eq:companion-wrap}
+\end{equation}
+When $\{m!C\}=\delta_m$, the prefix is integral and $\sigma_m=0$.
+For a smaller fractional part, subtracting even this small tail crosses
+an integer. Tail size alone therefore permits neither correction term
+to be omitted.
 
 \subsection{Escape from a smaller interval}
 
@@ -1476,6 +1532,7 @@ This is a statement about the scope of the present argument, not an assertion
 that every other member has the same current literature status.
 
 \section{A complementary-denominator criterion}\label{long68:sec:residue}
+\papersectiontarget{r5-complement}
 
 We choose a multiplier that removes all prime-power levels shared
 by two denominators. Each remaining maximal level belongs to a unique
@@ -2335,6 +2392,17 @@ They remain hypotheses when a declaration link is followed.
 % is kept because the complete record owns the subsidiary arguments, the
 % superseded deductions, and the failed routes with their exact boundaries.
 
+
+\paragraph{Earlier links for the consolidated criteria.}\label{long68:sec:short-criteria-sources}
+The four criteria treated here retain the short paper's earlier source
+and comparison links below. These identify historical declarations and
+recorded comparisons; they are not new executions.
+\begin{itemize}
+\item The constant-floor support statement: \href{https://github.com/wcook04/plectis-erdos/blob/897f55801d7d184aaa2ce8fb19e7b701c9c23d94/evidence/erdos-68-factorial-denominator-irrationality.md#res-bandbreakpoint}{the recorded declaration list}, \href{https://github.com/wcook04/plectis-erdos/blob/897f55801d7d184aaa2ce8fb19e7b701c9c23d94/evidence/erdos-68-factorial-denominator-irrationality.md#res-bandbreakpoint-comparator}{the comparison record}.
+\item The carry characterisation: \href{https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos68/FactorialZeroPlateau.lean#L953}{the earlier non-unit-carry implication}, \href{https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos68/FactorialZeroPlateau.lean#L1090}{the next-integer criterion}, \href{https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos68/PaperCompleteExisting.lean#L27}{the recorded combined statement}, \href{https://github.com/wcook04/plectis-erdos/blob/897f55801d7d184aaa2ce8fb19e7b701c9c23d94/evidence/erdos-68-factorial-denominator-irrationality.md#res-carry-characterization-comparator}{the comparison record}.
+\item The complementary-denominator criterion: \href{https://github.com/wcook04/plectis-erdos/blob/897f55801d7d184aaa2ce8fb19e7b701c9c23d94/evidence/erdos-68-factorial-denominator-irrationality.md#res-global-complementary-criterion-comparator}{the comparison record}.
+\item The companion-digit criterion: \href{https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos68/PaperCompleteExisting.lean#L45}{the recorded formal statement}, \href{https://github.com/wcook04/plectis-erdos/blob/897f55801d7d184aaa2ce8fb19e7b701c9c23d94/evidence/erdos-68-factorial-denominator-irrationality.md#res-companion-orbit-rationality-boundary-comparator}{the comparison record}.
+\end{itemize}
 
 \section{Further deductions and limitations}\label{long68:sec:extended-record}
 

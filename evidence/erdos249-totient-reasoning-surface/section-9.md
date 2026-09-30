@@ -4,7 +4,7 @@ Part of the [evidence record](../erdos249-totient-reasoning-surface.md) of the p
 
 <a id="thm-hgap-real"></a>
 
-## Theorem 9.4 (A real-part bound gives a certificate), page 88
+## Theorem 9.4 (A real-part bound gives a certificate), page 89
 
 > *For all $`h,X,L`$ with $`0<X`$ and the room condition $`16(2X{+}h{+}L{+}2)\le 2^L`$, if
 > ``` math
@@ -50,7 +50,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="thm-hgap-subset"></a>
 
-## Theorem 9.5 (The same implication for a nonempty subset), page 88
+## Theorem 9.5 (The same implication for a nonempty subset), page 89
 
 > *For any nonempty finite $`T\subseteq\mathbb N`$ with $`T\subset[0,2X)`$ and the same room condition, if
 > ``` math
@@ -103,7 +103,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="thm-hgap-norm"></a>
 
-## Theorem 9.6 (A norm bound gives the real-part criterion), page 88
+## Theorem 9.6 (A norm bound gives the real-part criterion), page 89
 
 > *The complex norm bound implies the real-part bound ($`|z|\ge\mathrm{Re}(z)`$, and $`21/25 < 9/10`$ absorbs the slack), so it composes through Theorem 9.4 to the same certificate. Define
 > ``` math
@@ -174,7 +174,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="thm-positivity-remaining-residue-inequality"></a>
 
-## Theorem 9.10, page 89
+## Theorem 9.10, page 90
 
 > *For every $`a\ge 8`$ and every $`J`$ with $`J+(a{+}6) < 2\cdot 2^a`$,
 > ``` math
@@ -224,7 +224,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="thm-proved-implications"></a>
 
-## Theorem 9.12 (The proved implications), page 90
+## Theorem 9.12 (The proved implications), page 91
 
 > *For every $`a\ge 8`$ and every $`J,K,m`$ inside the sign corridor ($`J{+}K{+}(a{+}6) < 2\cdot 2^a`$), a one-sided residue gap at precision $`m\le K`$ (room $`2H{+}J{+}K{+}2 < 2^m`$ and $`D(H,H+J,K)\bmod 2^m \le 2^m - (2H{+}J{+}K{+}2)`$) already forces $`{R}(2H{+}J) - {R}(H{+}J)\notin\mathbb Z`$. No lower margin at all is demanded. The proof chain is complete: the theorem holds for every $`a\ge 8`$, and *$`\text{cofinal upper-endpoint condition}`$ $`\Rightarrow`$ Irrational $`S`$* is proved.*
 
@@ -284,7 +284,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="prop-te-chain"></a>
 
-## Proposition 9.14 (Five sufficient conditions), page 90
+## Proposition 9.14 (Five sufficient conditions), page 91
 
 > *Each of the five conditions below suffices for irrationality; none of them is proved. The first four imply the upper-endpoint condition; the fifth gives nonintegrality directly by the endpoint identity. These are not asserted to form a linear hierarchy. Here $`H=H(2^a)`$, and every condition quantifies over arbitrarily large exponents $`a`$.*
 >
@@ -557,7 +557,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="thm-proved-implication"></a>
 
-## Theorem 9.16 (The proved implication), page 91
+## Theorem 9.16 (The proved implication), page 92
 
 > *The dominance hypothesis at a single odd rank already excludes integrality of $`\Omega_a`$, and the terminal dominance condition implies $`S\notin\mathbb Q`$.*
 
@@ -596,7 +596,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="prop-sufficient-extension"></a>
 
-## Proposition 9.18 (A sufficient extension), page 91
+## Proposition 9.18 (A sufficient extension), page 92
 
 > *Either of the following suffices: (i) the lower-escape branch cofinally, as displayed just above; or (ii) the two-sided magnitude form (item 4 of Proposition 9.14), which asks only $`H{+}q{+}2 \le
 > |u_{a,q}|`$ and which the Lean source proves implies corridor escape via a clean sign split (positive branch escapes above the terminal letter, negative branch escapes below the directed bound), without prescribing the sign of the centred representative. Neither branch is supplied by the conditional sign identity itself.*
@@ -653,7 +653,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="thm-separation-rational-approximation"></a>
 
-## Theorem 9.19, page 92
+## Theorem 9.19, page 93
 
 > *Unconditionally, for every $`a`$ and $`q`$,
 > ``` math
@@ -717,7 +717,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="thm-short-window-examples-through-exponent"></a>
 
-## Theorem 9.22, page 92
+## Theorem 9.22, page 93
 
 > *``` math
 > \forall a_0\le 6,\ \exists a,L,\ a_0\le a \wedge L < 2\cdot 2^a \wedge
@@ -765,7 +765,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="thm-diagonal-certificate-table"></a>
 
-## Theorem 9.24, page 93
+## Theorem 9.24, page 94
 
 > *``` math
 > \forall t\in\{1,2,3,4,5,7,8,9,11,13,16,17\},\ \exists L,\
@@ -847,7 +847,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="prop-sufficient-extension-2"></a>
 
-## Proposition 9.26 (A sufficient extension), page 93
+## Proposition 9.26 (A sufficient extension), page 94
 
 > *``` math
 > \exists C\ \forall t_0\ \exists t\ge t_0\ \exists L\le \log_2(4\cdot{H}\ t)+C,\quad
@@ -889,7 +889,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="thm-one-common-certificate-sixteen-shifts"></a>
 
-## Theorem 9.27, page 93
+## Theorem 9.27, page 94
 
 > *``` math
 > \mathcal C(h,14,9)\qquad(h\in\{1,\ldots,16\}).
@@ -935,7 +935,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="prop-simultaneous-certificates-unrestricted-depth"></a>
 
-## Proposition 9.29 (Simultaneous certificates with unrestricted depth), page 94
+## Proposition 9.29 (Simultaneous certificates with unrestricted depth), page 95
 
 > *The existence of a function $`f:\mathbb{N}\to\mathbb{N}`$ with $`f(N)\to\infty`$ such that
 > ``` math
@@ -987,7 +987,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="thm-fixed-farey-bound"></a>
 
-## Theorem 9.30, page 94
+## Theorem 9.30, page 95
 
 > *If $`S`$ is rational, its reduced denominator exceeds $`7.963\,964\,664\,670\,137\,532\,335\allowbreak\,577\,487\,583\,105\,3\times 10^{34}`$. This is the finite denominator exclusion in the corpus, logically independent of the certificate-supply reduction.*
 
@@ -1050,7 +1050,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="prop-sufficient-extension-3"></a>
 
-## Proposition 9.33 (A sufficient extension), page 95
+## Proposition 9.33 (A sufficient extension), page 96
 
 > *Suppose $`g(K)\to\infty`$ and, for every $`K`$, the $`(N=1,K)`$ gap check excludes every rational of reduced denominator at most $`g(K)`$. Then $`S`$ is irrational: any rational value of $`S`$ would have a fixed finite denominator, contradicted at a sufficiently large $`K`$. Only unbounded exclusion bounds along a sequence of windows are needed for this argument. No equivalence with a bound for the continued-fraction denominators of $`S`$ is asserted; such a comparison would require its own proof connecting those convergents to the certified intervals.*
 
@@ -1089,7 +1089,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="thm-two-adic-congruence-that-does"></a>
 
-## Theorem 9.34, page 95
+## Theorem 9.34, page 96
 
 > *The theorem is unconditional and holds for *every* $`K`$, $`H`$, $`B`$. For every $`K\ge 2`$, every $`H>K`$, and every bound $`B`$, there are primes $`p>B`$ with a length-$`(K{-}1)`$ zero prefix and a terminal half-modulus, giving
 > ``` math
@@ -1137,7 +1137,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="prop-sufficient-accumulated-residue-condition"></a>
 
-## Proposition 9.36 (A sufficient accumulated-residue condition), page 96
+## Proposition 9.36 (A sufficient accumulated-residue condition), page 97
 
 > *Suppose that for every integer $`h\ge1`$ and every $`N_0\in\mathbb N`$ there are $`N\ge N_0`$ and $`L\ge1`$ such that
 > ``` math
@@ -1188,7 +1188,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="thm-arbitrarily-large-prime-power-lcm"></a>
 
-## Theorem 9.37 (Arbitrarily large prime-power LCM jumps), page 96
+## Theorem 9.37 (Arbitrarily large prime-power LCM jumps), page 97
 
 > *For every $`t_0\in\mathbb N`$ there is $`t\ge t_0`$ with $`H(t)<H(t+1)`$. One may take $`t=p-1`$ for any prime $`p>t_0`$. The positions $`t=2^a-1`$ are also strict LCM jumps for $`a\ge1`$: $`2^a`$ is the next required power of $`2`$. The restriction excludes $`a=0`$, since $`H(0)=H(1)=1`$. The second condition in the next definition asks for the additional residue margin along this explicit sequence. Knowing these jump positions does not establish that margin.*
 
@@ -1238,7 +1238,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="prop-sufficient-inequality"></a>
 
-## Proposition 9.40 (A sufficient inequality), page 97
+## Proposition 9.40 (A sufficient inequality), page 98
 
 > *If, for every $`a_0\in\mathbb N`$, there is $`a\ge\max(2,a_0)`$ with $`\sigma_{2^a}\ge0`$, then $`S\notin\mathbb Q`$. This is the sufficient condition defined above, not a claim that the inequality holds at arbitrarily large indices. Equality at the edge is allowed: the condition is nonnegativity, not strict positivity.*
 
@@ -1286,7 +1286,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="thm-certificate-four-tail-combination"></a>
 
-## Theorem 9.41, page 97
+## Theorem 9.41, page 98
 
 > *Use $`J(H,p)`$, $`W(H,p,L)`$ and $`B(H,p,L)`$ from Theorem 6.60. For all $`H,p,L\in\mathbb N`$,
 > ``` math
@@ -1343,7 +1343,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="thm-one-explicit-witness"></a>
 
-## Theorem 9.42 (One explicit witness), page 97
+## Theorem 9.42 (One explicit witness), page 98
 
 > *For $`H=H(4)=12`$, $`p=5`$ and $`L=15`$, direct integer evaluation gives
 > ``` math
@@ -1401,7 +1401,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="thm-denominators-mobius-sums"></a>
 
-## Theorem 9.44, page 97
+## Theorem 9.44, page 98
 
 > *For every integer $`t\ge5`$, with $`\mathcal P_t=\{p\text{ prime}:t/2<p\le t\}`$ as above,
 > ``` math
@@ -1506,7 +1506,7 @@ theorem exists_upperHalf_channel_paper {t : ℕ} (ht : 5 ≤ t) :
 
 <a id="prop-additional-approximation-hypothesis"></a>
 
-## Proposition 9.46 (The additional approximation hypothesis), page 98
+## Proposition 9.46 (The additional approximation hypothesis), page 99
 
 > *A sequence of rationals $`u_t`$ proves irrationality of $`S`$ if
 > ``` math
@@ -1552,7 +1552,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="thm-rationality-carry-rank"></a>
 
-## Theorem 9.47, page 98
+## Theorem 9.47, page 99
 
 > *For every $`e\ge1`$, the retained dyadic totient sections form a basis for all sections through level $`e`$, of dimension $`2^e+1`$. The proof uses the Chinese remainder theorem and Dirichlet’s theorem. The complete level-zero truncation, consisting only of $`\varphi`$, has dimension one.*
 
@@ -1605,7 +1605,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="thm-rationality-carry-rank-2"></a>
 
-## Theorem 9.48, page 98
+## Theorem 9.48, page 99
 
 > *If $`S\in\mathbb{Q}`$, choose an integer $`v>0`$ with $`vS\in\mathbb{Z}`$ and put $`u_N=vR_N`$. Then $`u_N\in\mathbb{Z}`$, $`u_{N+1}=2u_N-v\varphi(N+1)`$, and $`0\le u_N\le v(N+2)`$. For every $`e\ge0`$,
 > ``` math
@@ -1643,7 +1643,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="prop-additional-hypothesis-totient-specific-rank"></a>
 
-## Proposition 9.50 (An additional hypothesis for a totient-specific rank argument), page 99
+## Proposition 9.50 (An additional hypothesis for a totient-specific rank argument), page 100
 
 > *A rank bound that contradicts the lower bound $`2^e-1`$ would have to use additional arithmetic of the actual totient coefficients. The generic proposal that every rational coefficient series has bounded tempered-carry rank is ruled out by the rational control recorded in the short paper: its carry rank is at least $`2^e-1`$ at every level. It is therefore not a remaining general lemma from which totient irrationality follows. The conditional Proposition 1.7 records eventual periodicity modulo $`v`$ together with unbounded rational rank. Periodicity of the residue sequences concerns values in a finite quotient; it does not bound the rational span of the integer-valued sections. The $`5/4`$ comparison shows that this distinction persists for a rational coefficient series.*
 

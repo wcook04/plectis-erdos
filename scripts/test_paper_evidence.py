@@ -380,6 +380,29 @@ def test_paper_record_pin_override(f: Fixture) -> None:
             "the default pin leaked into an overridden paper")
 
 
+@with_fixture
+def test_pending_boundary_reaches_inline_links_and_record(f: Fixture) -> None:
+    row = f.ledger["rows"][0]
+    row["comparator"] = {"status": "pending", "queued_at": "2026-09-30",
+                         "pending_reason": "The full equivalence has no recorded Challenge.",
+                         "next_action": "Compare both implications before marking the equivalence."}
+    row["palomar"] = {"status": "pending"}
+    f.materialise()
+    problems = pe.Problems()
+    evidence = pe.resolve(f.root, pe.Repo(f.corpus), None, None, problems,
+                          require_relations=False)
+    require(not problems.items, f"pending evidence failed: {problems.items}")
+    got = evidence["papers"][0]["results"][0]
+    require(got["comparator"] == row["comparator"], "pending detail was lost from the mapping")
+    files = pe.outputs(f.root, evidence, "d" * 40)
+    sidecar = files[f"paper/evidence/{PAPER_ID}.tex"]
+    require(f"\\DeclareResultEvidenceRecord{{{row['label']}}}" in sidecar and "{exact}{pending}" in sidecar,
+            "the inline pending link has no owner-generated status/record target")
+    record = files[f"evidence/{PAPER_ID}.md"]
+    require(row["comparator"]["pending_reason"] in record and row["comparator"]["next_action"] in record,
+            "the pending link would hide the precise comparison boundary")
+
+
 def test_statement_with_let_is_read_whole() -> None:
     text = ("theorem t (a : Nat) :\n    let C := a + 1\n    C = a + 1 ∧\n    letI := 0\n"
             "    True := by\n  exact ⟨rfl, trivial⟩\n")
@@ -671,6 +694,7 @@ def main() -> int:
         test_partial_aux_keeps_other_papers_numbered,
         test_no_aux_refreshes_changed_explanations,
         test_paper_record_pin_override,
+        test_pending_boundary_reaches_inline_links_and_record,
         test_statement_with_let_is_read_whole,
         test_quoted_references_use_the_paper_numbers,
     ]

@@ -141,9 +141,11 @@ multiple; smooth numbers; Cantor series; separated rank.
 
 \section{Recovering the prime-power jumps}\label{long269:sec:distinct-235}
 \papersectiontarget{r3-five-maps}
-Throughout this section $P=\{2,3,5\}$. The argument uses only the height
-formula and the spacing of powers of $3$ and $5$; its definitions and
-prefix-integrality calculation are given here in full.
+Throughout this section $P=\{2,3,5\}$. We recover the prime-power jumps
+from a single normalised tail. Rationality then forces that tail to repeat,
+so recovery would make the jump sequence eventually periodic. The spacing
+of powers of $5$ supplies the tail bound needed for recovery, and the
+frequency of powers of $3$ rules out periodicity.
 
 We group the prime-power jumps into the right-closed intervals
 $(2^a,2^{a+1}]$. Each contains its terminal power of $2$, at most one power
@@ -177,15 +179,21 @@ $1/3+1/15+1/30=13/30$ to the normalised tail.
 The same calculation for type $53$ gives $1/5+1/15+1/30=9/30$.
 Thus the order of the two interior jumps changes the constant term of the map.
 
-We need a narrower interval than $(0,1)$ to recover that order from a
-tail value. The table gives $Y_a\ge3/10$. A power $5^f$ belongs to block
-$\lfloor f\log_2 5\rfloor$; these block indices start at $2$, and their
-successive differences are $2$ or $3$. Every three consecutive blocks
-therefore include a power of $5$. At such a block, the bound $Y_{a+1}<1$
-gives $Y_a\le G_{35}(1)=7/15$, which also bounds $G_5(1)$ and $G_{53}(1)$.
-Before the next such block there are at most two maps, each equal to
-$G_\varnothing$ or $G_3$. Since
-$G_3(y)\le G_\varnothing(y)=(1+y)/2$ for $y\ge0$, we obtain
+To use a repeated tail value, we must first recover the following block
+from that value alone. The bound $0<Y_{a+1}<1$ does not yet permit this:
+for example, $G_{53}([0,1])=[3/10,1/3]$ lies inside
+$G_5([0,1])=[3/10,2/5]$. We therefore use the spacing of powers of $5$
+to narrow the range of the actual tails.
+
+The table gives $Y_a\ge3/10$. A power $5^f$ belongs to block
+$\lfloor f\log_2 5\rfloor$; these indices start at $2$, and their successive
+differences are $2$ or $3$. Thus every three consecutive blocks contain
+a power of $5$. Given $a$, let $j\in\{a,a+1,a+2\}$ be the first such
+block. At $j$, the bound $Y_{j+1}<1$ gives $Y_j\le7/15$, since
+$G_{35}(1)=7/15$ also bounds $G_5(1)$ and $G_{53}(1)$.
+To bound $Y_a$, we work backwards from $j$ through at most two blocks.
+Their maps are $G_\varnothing$ or $G_3$, and
+$G_3(y)\le G_\varnothing(y)=(1+y)/2$ for $y\ge0$. Consequently
 \begin{equation}\label{long269:eq:five-interval}
  Y_a\in I=\left[\frac3{10},\frac{13}{15}\right],\qquad
  G_\varnothing\bigl(G_\varnothing(7/15)\bigr)=\frac{13}{15}.
@@ -207,11 +215,13 @@ order, are
  \end{array}
 \]
 The consecutive gaps are $1/900,17/300,79/900,1/180$.
-The two smallest gaps depend on
-$3(3/10)-13/15=1/30>0$, so the preliminary upper bound $1$ would not
-suffice. Since $Y_{a+1}\in I$, the value $Y_a$ identifies $\tau_a$ uniquely.
-We can then calculate $Y_{a+1}=b_{\tau_a}Y_a-\mu_{\tau_a}$ and repeat the
-argument to recover every later block.
+The two smallest depend on $3(3/10)-13/15=1/30>0$, which explains why
+the narrower bound matters. Since $Y_{a+1}\in I$, the actual tail $Y_a$
+belongs to exactly one image interval, identifying $\tau_a$. For example,
+$Y_a\in[31/100,74/225]$ forces $\tau_a=53$ and gives $Y_{a+1}=30Y_a-9$.
+In general, after calculating $Y_{a+1}=b_{\tau_a}Y_a-\mu_{\tau_a}$, we
+identify its image interval and continue. These are the successive
+arithmetic tails, each in $I$; no invariance for arbitrary words is used.
 
 Suppose that $\mathcal D_{\{2,3,5\}}=N/K$, with integers $N$ and $K\ge1$.
 Every height at or before $2^a$ divides $P_a$. Consequently
@@ -220,9 +230,11 @@ Every height at or before $2^a$ divides $P_a$. Consequently
         \sum_{\substack{t\le2^a\\t=2^n,3^n\text{ or }5^n,\ n\ge1}}
                  \frac{P_a}{\hgt_{\{2,3,5\}}(t)}\right)\in\mathbb Z.
 \]
-There are only finitely many integers in $[3K/10,13K/15]$, so two tail
-values agree. Recovery of all subsequent blocks then makes $(\tau_a)$
-eventually periodic.
+There are only finitely many integers in $[3K/10,13K/15]$, so
+$Y_u=Y_v$ for some $u<v$. Recovery gives $\tau_u=\tau_v$ and then
+$Y_{u+1}=Y_{v+1}$. Repeating this step gives
+$\tau_{u+j}=\tau_{v+j}$ for every $j\ge0$, so the block word has eventual
+period $v-u$.
 
 To exclude this possibility, let $\alpha=\log2/\log3$. The number of powers
 of $3$ in block $a$ is

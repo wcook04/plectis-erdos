@@ -12,6 +12,8 @@
 \documentclass[11pt]{article}
 \usepackage{longtable}
 \input{problem-note-preamble}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta}
 % Number remarks locally so their retained labels have distinct destinations.
 % The shared preamble defines an unnumbered remark environment.
 \let\remark\relax
@@ -158,9 +160,9 @@ We now use connectedness without choosing a parametrisation of $K$.
 If $r_0<t<|a-c|$ and $K\cap U_1$ missed the circle $|z-c|=t$, then
 $K\cap U_1\cap\{|z-c|>t\}$ would be both open and closed in $K$:
 outside $B(c,r_0)$, the boundary of $U_1$ cannot meet $U$.
-This set contains $a$ and excludes $b$, a contradiction. The radial
-projection $z\mapsto|z-c|$ thus maps $K\cap U_1$ onto an interval of
-length at least $(|a-c|-r_0)_+$. It is $1$-Lipschitz, whence
+This set contains $a$ and excludes $b$, a contradiction. Hence the image
+of $K\cap U_1$ under $z\mapsto|z-c|$ contains $(r_0,|a-c|)$ whenever
+that interval is nonempty. This radial projection is $1$-Lipschitz, whence
 \[
  \mathcal H^1(K\cap U_1)\ge(|a-c|-r_0)_+.
 \]
@@ -168,6 +170,71 @@ Add the corresponding inequality on $U_2$. Hausdorff outer measure is
 additive across disjoint open sets, so this step needs no measurability
 assumption on $K$ and gives the stated lower bound.
 \end{proof}
+
+\begin{figure}[!htbp]
+\centering
+\papersectiontarget{bottleneck-geometry}
+\begin{tikzpicture}[x=1cm,y=1cm,font=\small,
+    >=Stealth, line cap=round, line join=round]
+  % Schematic only. No coordinates are data for the degree-seven polynomial.
+  \node at (1.55,1.58) {Value plane};
+  \draw[thin] (1.55,0) circle (1.08);
+  \fill (1.55,0) circle (1.5pt) node[below left] {$0$};
+  \fill (2.14,0) circle (1.5pt) node[below] {$v$};
+  \draw[line width=1.2pt] (2.14,0) -- (2.63,0);
+  \draw[fill=white] (2.63,0) circle (1.6pt);
+  \node[above] at (2.39,.08) {$J$};
+  \node at (1.55,-1.43) {$|w|<1$};
+  \draw[->] (4.72,.18) -- (3.35,.18) node[midway,above] {$p$};
+  \node[align=center] at (4.04,-.36) {degree two};
+
+  \node at (8.7,1.58) {Component $U$};
+  % The two shaded regions represent inverse sheets, not a parametrised set K.
+  \path[fill=black!6]
+    (8.7,.25) .. controls (7.95,.27) and (7.7,1.06) .. (6.8,1.06)
+    .. controls (5.15,1.06) and (5.15,-1.06) .. (6.8,-1.06)
+    .. controls (7.7,-1.06) and (7.95,-.27) .. (8.7,-.25) -- cycle;
+  \draw[thin]
+    (8.7,.25) .. controls (7.95,.27) and (7.7,1.06) .. (6.8,1.06)
+    .. controls (5.15,1.06) and (5.15,-1.06) .. (6.8,-1.06)
+    .. controls (7.7,-1.06) and (7.95,-.27) .. (8.7,-.25)
+    .. controls (9.45,-.27) and (9.7,-1.06) .. (10.6,-1.06)
+    .. controls (12.25,-1.06) and (12.25,1.06) .. (10.6,1.06)
+    .. controls (9.7,1.06) and (9.45,.27) .. (8.7,.25);
+  \draw[densely dashed] (8.7,0) circle (.63);
+  \draw[line width=1.2pt] (8.7,-.25) -- (8.7,.25);
+  \fill (8.7,0) circle (1.6pt) node[left] {$c$};
+  \draw[thin] (8.7,0) -- (9.20,.38) node[midway,above left] {$r_0$};
+  \node at (8.7,.99) {$B(c,r_0)$};
+  \fill (6.12,-.06) circle (1.6pt) node[below] {$a$};
+  \fill (11.25,.06) circle (1.6pt) node[below] {$b$};
+  \node at (6.95,.38) {$U_1$};
+  \node at (10.42,.38) {$U_2$};
+  \node at (8.7,-1.43) {$p^{-1}(J)\cap U\subset B(c,r_0)$};
+
+  % These are one-dimensional radial images, not curves in U.
+  \node[align=center] at (1.85,-2.18) {Radial images\\under $z\mapsto|z-c|$};
+  \node[above] at (6.9,-2.07) {$K\cap U_1$};
+  \draw[densely dotted,line width=.8pt] (5.77,-2.27) -- (8.02,-2.27);
+  \draw[fill=white] (5.77,-2.27) circle (1.6pt);
+  \fill (8.02,-2.27) circle (1.6pt);
+  \node[below] at (5.77,-2.30) {$r_0$};
+  \node[below] at (8.02,-2.30) {$|a-c|$};
+  \node[above] at (10.52,-2.07) {$K\cap U_2$};
+  \draw[densely dotted,line width=.8pt] (9.40,-2.27) -- (11.65,-2.27);
+  \draw[fill=white] (9.40,-2.27) circle (1.6pt);
+  \fill (11.65,-2.27) circle (1.6pt);
+  \node[below] at (9.40,-2.30) {$r_0$};
+  \node[below] at (11.65,-2.30) {$|b-c|$};
+\end{tikzpicture}
+\caption{The slit and its preimage in Lemma~\ref{lem:two-sheet-bottleneck}.
+The component and radii are schematic, with both zeros drawn outside the
+small disc. Connectedness forces the radial image on each sheet to contain
+the indicated interval. The two $1$-Lipschitz projections give the lower
+bound $|a-c|+|b-c|-2r_0$. The dotted intervals are radial images, not paths
+in $U$; no parametrisation of $K$ is assumed.}
+\label{fig:two-sheet-bottleneck}
+\end{figure}
 
 \subsection{The polynomial}
 To apply the lemma we need the two zeros to be almost opposite and
@@ -717,19 +784,27 @@ its proof are retained in the companion's
 
 \subsection{Inverse rays and perturbation}\label{sec:newton}\label{sec:arguments}\label{sec:reciprocal}
 \noindent\phantomsection\label{res:value}
-The Newton flow $\dot z=-f(z)/f'(z)$ satisfies
-$f(z(t))=f(z(0))e^{-t}$. Thus its image in the value plane follows a
-fixed ray. This identity and the Newtonian graph of Shub, Tischler and
-Williams are used in the form given by Kozen and Stef\'ansson
+Along a Newton trajectory $\dot z=-f(z)/f'(z)$ on a real interval,
+with $f'(z(t))\ne0$, the chain rule gives $(f\circ z)'=-f\circ z$.
+Integrating this scalar equation yields
+$f(z(t))=e^{-(t-t_0)}f(z(t_0))$ for times in that interval. Thus the
+image in the value plane follows a fixed ray. This identity and the
+Newtonian graph of Shub, Tischler and Williams are used in the form
+given by Kozen and Stef\'ansson
 \cite[Lemmas~2.1--2.2 and \S2]{kozen-stefansson1997}. The companion
-retains the
+also records local complex-parameter identities for $(f\circ z)'$ and
+$(e^t f(z(t)))'$. These are pointwise derivative statements; the
+integration above concerns an existing real-interval trajectory.
+The companion retains the
 \recordlink{erdos1041-lemniscate-reasoning-surface.pdf}{newton-value-proof}
 {value and finite-endpoint theorems}.
 
 \noindent\phantomsection\label{res:ray}
-For a finite interval $[a,b]$, continuity of $f(z(t))$ up to the endpoints
-extends the interior identity to $f(z(b))=e^{a-b}f(z(a))$. Nonzero
-endpoint values therefore lie on the same positive ray. Critical values
+For a finite interval $[a,b]$, assume the Newton equation only for
+$a<t<b$ and continuity of $f(z(t))$ up to both endpoints. The interior
+identity then extends to $f(z(b))=e^{a-b}f(z(a))$, without evaluating
+$f/f'$ at an endpoint. Nonzero endpoint values therefore lie on the
+same positive ray. Critical values
 with distinct arguments exclude such a connection; distinct moduli are
 insufficient.
 
@@ -744,6 +819,27 @@ that preserves a near-extremal path inequality. The
 {forbidden-ray locus calculation} and the local logarithmic expansion,
 with remainder $nq^{N+1}/((N+1)(1-q))$ for $q<1$, specify the available
 control. At the nearest-root radius that expansion is inapplicable.
+
+\paragraph{Inverse-branch prerequisites.}
+\label{res:component-local-covering}
+For a nonconstant complex polynomial, each component of $\{|f|<1\}$
+\href{https://github.com/wcook04/plectis-erdos/blob/8bf96bdcae6b9201c670fff3037c49c70ec6de8d/lean/ErdosProblems/Erdos1041/OutwardSlitDomain.lean\#L349}{contains a root}.
+The restriction to that component is
+\href{https://github.com/wcook04/plectis-erdos/blob/8bf96bdcae6b9201c670fff3037c49c70ec6de8d/lean/ErdosProblems/Erdos1041/OutwardSlitDomain.lean\#L211}{onto the unit disc} and has
+\href{https://github.com/wcook04/plectis-erdos/blob/8bf96bdcae6b9201c670fff3037c49c70ec6de8d/lean/ErdosProblems/Erdos1041/OutwardSlitDomain.lean\#L233}{finite fibres}.
+Over values avoiding the critical values attained in that component,
+it is a \href{https://github.com/wcook04/plectis-erdos/blob/8bf96bdcae6b9201c670fff3037c49c70ec6de8d/lean/ErdosProblems/Erdos1041/OutwardSlitDomain.lean\#L250}{covering map}.
+Choose finitely many nonzero slit starts that include every critical
+value attained in the component, and remove the outward rays beginning
+at those starts from the value disc. On the remaining domain, each root
+in the component determines a
+\href{https://github.com/wcook04/plectis-erdos/blob/8bf96bdcae6b9201c670fff3037c49c70ec6de8d/lean/ErdosProblems/Erdos1041/OutwardSlitDomain.lean\#L359}{unique continuous inverse branch}, taking $0$ to that root.
+The archived Lean source states these prerequisites and supplies proof
+scripts; a kernel-check receipt for this module is not supplied here.
+The full conformal
+sheet decomposition, sheet count, monodromy and embedded-tree assertions
+remain ordinary arguments in the companion; the prerequisites give no
+length estimate.
 
 \subsection{The failed tree estimate}\label{sec:gap}\label{sec:finite}
 For the Cassini polynomial $z^2-(9/10)^2$, any connected set containing
@@ -820,11 +916,11 @@ identified in the companion's
 \recordlink{erdos1041-lemniscate-reasoning-surface.pdf}{verification-notes}
 {verification notes}. No fresh Lean build or independent human review
 is reported here, including review of the correspondence with the 1958
-wording. The preceding revision's full rational replay on 29 September 2026
+wording. The recorded full rational replay on 29 September 2026
 reproduced the stopping time and $126$ dual certificates; those are
 the computational results cited here. The analytic assertions in Remarks~\ref{res:low-critical-thirteen-twentyfifths}--\ref{res:critical-value-thresholds},
 the fourth-power mean and the later topological and compactness arguments
-remain outside the formal conclusions. The margin links retain the
+remain outside the formal conclusions. The links beside each statement and in the margin retain the
 original statement identifiers and their conditional dependencies;
 they do not promote these remarks to unconditional Lean theorems.
 \evidenceparagraph{\evidencerecordurl}

@@ -1,12 +1,12 @@
 # Formal evidence: Prime-Gap Dyadic Series:\\Perturbations, Exact Criteria and Certificates
 
-This record belongs to the paper [erdos251-prime-gap-reasoning-surface.pdf](../paper/251/erdos251-prime-gap-reasoning-surface.pdf). For every result it lists the Lean declarations that state it, and the independent Comparator check where there is one. The margin marks in the paper link here.
+This record belongs to the paper [erdos251-prime-gap-reasoning-surface.pdf](../paper/251/erdos251-prime-gap-reasoning-surface.pdf). For every result it lists the Lean declarations that state it, and the recorded Comparator check where there is one. The inline links and margin marks in the paper use the same result mapping.
 
 - **Lean.** Every declaration is quoted from [plectis-erdos](https://github.com/wcook04/plectis-erdos) at commit [`436f55ebdafa`](https://github.com/wcook04/plectis-erdos/tree/436f55ebdafa67e4af0fff79f621c13f2ded12bf) and is checked there by Lean's kernel (`leanprover/lean4:v4.29.1`, Mathlib `5e932f97dd25`).
 - **Comparator.** For a compared result, each declaration was stated a second time, from Mathlib alone, as a *Challenge* in [plectis-erdos-lean](https://github.com/wcook04/plectis-erdos-lean), and a *Solution* that uses our proof was checked against it by [Comparator](https://github.com/leanprover/comparator), which also confirms that only the axioms `propext`, `Quot.sound`, `Classical.choice` are used. All checks below come from replay run [35935225572](https://github.com/wcook04/plectis-erdos-lean/actions/runs/35935225572) at corpus commit [`cc7e541cf208`](https://github.com/wcook04/plectis-erdos-lean/tree/cc7e541cf2081c6fef5a5e377d52e365e33b01eb) (tag `paper-evidence-2026-09-24`); both the default Lean kernel and the independent `nanoda` kernel accepted every entry. The replay's own report for each entry is kept in this repository and linked from each check. A Challenge shows `sorry` because it states the target without proving it.
 - **Counts.** 36 results: 33 with a Lean proof of the whole statement, 3 whose Lean proof assumes a named input (marked with a dagger), 0 without a Lean proof of the whole statement; 32 compared.
 
-These checks establish that the stated propositions are proved. Whether each is the right proposition is for the reader to judge against the paper's statement, which is reproduced below.
+These checks establish that the stated propositions are proved. Whether each is the right proposition is for the reader to judge against the paper's statement, which is reproduced below. Comparator checks separately declared statements, the axiom budget and kernel acceptance; it does not establish novelty, significance or peer review.
 
 <a id="long251-res-sparse-rationalisation"></a>
 
@@ -195,7 +195,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long251-res-parts"></a>
 
-## Theorem 4.2 (prime-gap reformulation), page 10
+## Theorem 4.2 (prime-gap reformulation), page 11
 
 > *Let $`p_0=2,p_1=3,\ldots`$ be the primes in increasing order and $`g_i=p_{i+1}-p_i`$. For every $`n\ge0`$,
 > ``` math
@@ -417,7 +417,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long251-res-lcmdiagonal"></a>
 
-## Theorem 5.6 ([criterion using least common multiples](https://github.com/wcook04/plectis-erdos/blob/3d6d938d696fed0fb71dd55115a18a73738ff223/lean/ErdosProblems/Erdos251/OrderLatticeDiagonal.lean#L153)), page 14
+## Theorem 5.6 ([criterion using least common multiples](https://github.com/wcook04/plectis-erdos/blob/3d6d938d696fed0fb71dd55115a18a73738ff223/lean/ErdosProblems/Erdos251/OrderLatticeDiagonal.lean#L153)), page 15
 
 > *Let $`g:\mathbb{N}\to\mathbb{Z}`$ and $`T:\mathbb{N}\to\mathbb{R}`$ satisfy $`T_{N+1}=2T_N-g_{N+1}`$. Then $`T_0`$ is irrational if and only if $`T_{2L_j}-T_{L_j}\notin\mathbb{Z}`$ for every $`j\ge0`$.*
 
@@ -551,7 +551,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long251-res-signedwindow"></a>
 
-## Theorem 6.4 ([an equivalent signed interval test](https://github.com/wcook04/plectis-erdos/blob/3d6d938d696fed0fb71dd55115a18a73738ff223/lean/ErdosProblems/Erdos251/AffineShiftEscape.lean#L113)), page 15
+## Theorem 6.4 ([an equivalent signed interval test](https://github.com/wcook04/plectis-erdos/blob/3d6d938d696fed0fb71dd55115a18a73738ff223/lean/ErdosProblems/Erdos251/AffineShiftEscape.lean#L113)), page 16
 
 > *Assume $`\delta_N`$ is even. The conjunction $`-1<D_N<1`$, $`-1<D_{N+1}<1`$, $`\delta_N\ne0`$ is equivalent to
 > ``` math
@@ -626,7 +626,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long251-res-finite-smallpair"></a>
 
-## Proposition 6.6 (a certified adjacent pair), page 16
+## Proposition 6.6 (a certified adjacent pair), page 17
 
 > *For the actual prime gaps, $`h=1`$ and $`N=2`$ satisfy the three hypotheses of Theorem 6.1: both $`\sigma_1(2)`$ and $`\sigma_1(3)`$ lie in $`(-1,1)`$ and are nonintegral, and $`g_4=2\ne4=g_3`$.*
 
@@ -691,7 +691,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long251-res-denominatorfloor"></a>
 
-## Theorem 7.1 (a denominator bound checked by exact integer comparisons), page 17
+## Theorem 7.1 (a denominator bound checked by exact integer comparisons), page 18
 
 > *Let $`a\in\mathbb{Z}`$ and let $`b`$ be a positive integer. If $`\Pi=a/b`$ then $`b\ge2^{589}>10^{177}`$, and the same floor holds for every rational equal to $`S`$.*
 
@@ -775,7 +775,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long251-res-shiftedcount"></a>
 
-## Proposition 8.2 (finite counting for shifted gap differences), page 20
+## Proposition 8.2 (finite counting for shifted gap differences), page 21
 
 > *Write $`p_n`$ for the primes indexed from $`p_0=2`$ and $`g_n=p_{n+1}-p_n`$. For $`h\ge2`$ and $`r\in\mathbb{Z}`$, let $`M_{h,r}(N)`$ count $`n<N`$ with $`g_{n+h}-g_n=r`$. Let $`Q_{N,H,r}`$ count triples $`(x,d,s)`$ with $`x<p_N`$, $`0<d<s\le H`$, $`d+r>0`$, and all four integers $`x,x+d,x+s,x+s+d+r`$ prime. Then, for every $`N,H\ge0`$,
 > ``` math
@@ -841,7 +841,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long251-res-nonconc-primes"></a>
 
-## Corollary 8.4 (nonconcentration does not force irrationality), page 21
+## Corollary 8.4 (nonconcentration does not force irrationality), page 22
 
 > *Fix $`M\ge1`$ and $`K\ge0`$, and let $`b`$ be the perturbed sequence supplied by Theorem 8.1 at the actual prime gaps. Then $`\sum_{n\ge0}b_n2^{-(n+1)}`$ is rational, $`b_n=g_n`$ for $`n<K`$, $`b_n-g_n\in\{0,M\}`$ and $`b_n\equiv g_n\pmod M`$ for every $`n`$, $`b`$ has fixed-block nonconcentration, and the cumulative sequence $`P_n=2+\sum_{i<n}b_i`$ satisfies $`p_n\le P_n\le p_n+Mn`$ and hence $`P_n\sim n\log n`$.*
 
@@ -949,7 +949,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long251-res-jointcountermodel"></a>
 
-## Corollary 8.6 (simultaneous prime-gap countermodel), page 22
+## Corollary 8.6 (simultaneous prime-gap countermodel), page 23
 
 > *For every prescribed finite prime-gap prefix and $`0<\varepsilon\le1`$, there is an altered sequence $`b=g+e`$, with $`P_n=2+\sum_{i<n}b_i`$, for which one can simultaneously impose a rational dyadic value, nonnegative integer corrections eventually at most $`(\log(n+3))^\varepsilon`$, all fixed eventual coefficient and cumulative congruences, fixed-block polynomial nonconcentration, and vanishing total variation distance between unnormalised block distributions for lengths $`o(\log\log X)`$. The cumulative positions satisfy
 > ``` math
@@ -1042,7 +1042,7 @@ def SchlagePuchtaLemma4 : Prop :=
 
 <a id="long251-res-sparse"></a>
 
-## Theorem 8.7 (sparsity of the two-window event), page 23
+## Theorem 8.7 (sparsity of the two-window event), page 24
 
 > *Fix $`h\ge1`$. The set of $`N\ge1`$ at which the three hypotheses of Theorem 6.1 hold for the actual prime gaps has density zero. For the same $`h`$, the set of $`N`$ with $`g_{N+h+1}=g_{N+1}`$ also has density zero.*
 
@@ -1091,7 +1091,7 @@ def SchlagePuchtaLemma4 : Prop :=
 
 <a id="long251-res-polignacfail"></a>
 
-## Theorem 8.8 (recurring values are not enough), page 24
+## Theorem 8.8 (recurring values are not enough), page 25
 
 > *There is a sequence $`(a_n)_{n\ge1}`$ of positive even integers with the following properties. The values $`2`$ and $`4`$ each occur infinitely often at indices divisible by every fixed $`t\ge1`$. The sequence is unbounded, not eventually periodic, and satisfies $`a_n=O(\log n)`$. The series $`\sum_{n\ge1}a_n2^{-n}`$ equals $`6`$, and every scaled tail $`\sum_{j\ge1}a_{N+j}2^{-j}`$ is an integer, so every tail shift is integral. The increasing odd sequence $`P_n=3+\sum_{j\le n}a_j`$ satisfies $`P_n\sim n\log n`$.*
 
@@ -1165,7 +1165,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long251-res-telescope"></a>
 
-## Proposition 8.10 (exact telescoping), page 27
+## Proposition 8.10 (exact telescoping), page 28
 
 > *For every $`n\ge0`$, $`\sum_{i=0}^{n-1}\kappa_i2^{-(i+1)}=K_0-K_n2^{-n}`$.*
 
@@ -1190,7 +1190,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long251-xr-totient"></a>
 
-## Proposition D.1 (a shift of totient length), page 33
+## Proposition D.1 (a shift of totient length), page 34
 
 > *Let $`T:\mathbb{N}\to\mathbb{Q}`$ satisfy the dyadic tail recurrence with integer coefficients. If the reduced denominator $`d`$ of $`T_N`$ is odd, then $`\sigma_{\varphi(d)}(N)`$ is an integer.*
 
@@ -1246,7 +1246,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long251-xr-truncation"></a>
 
-## Proposition D.3 (finite truncation), page 34
+## Proposition D.3 (finite truncation), page 35
 
 > *Let $`M:\mathbb{N}\to\mathbb{R}`$ satisfy $`M(n)\ge g_n`$ for every $`n`$ and $`\sum_{n\ge0}M(n)2^{-n}<\infty`$, and put
 > ``` math
@@ -1320,7 +1320,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long251-xr-boundedpolignac"></a>
 
-## Proposition D.6 (bounded recurring-values countermodel), page 37
+## Proposition D.6 (bounded recurring-values countermodel), page 38
 
 > *Put $`U_0=4`$ and, for $`n\ge1`$, $`U_n=6`$ when $`n=k!`$ for some $`k\ge3`$ and $`U_n=4`$ otherwise, and set $`a_n=2U_{n-1}-U_n`$ for $`n\ge1`$. Then $`a_n\in\{2,4,8\}`$. For every $`k\ge3`$, the value $`2`$ occurs at index $`k!`$ and the value $`4`$ at index $`2\,k!`$, so both recur infinitely often at indices divisible by any fixed $`t\ge1`$. The series $`\sum_{n\ge1}a_n2^{-n}`$ equals $`4`$ and every tail $`\sum_{j\ge1}a_{N+j}2^{-j}`$ equals the integer $`U_N`$.*
 
@@ -1353,7 +1353,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long251-res-affinecollapse"></a>
 
-## Theorem E.1 (equivalent arithmetic-progression tests), page 39
+## Theorem E.1 (equivalent arithmetic-progression tests), page 40
 
 > *For every rational dyadic tail recurrence and all $`h,N,r\ge0`$,
 > ``` math

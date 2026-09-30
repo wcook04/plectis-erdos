@@ -1,12 +1,12 @@
 # Formal evidence: Paths in Polynomial Lemniscates:\\A Degree-Seven Counterexample and Radial Connections
 
-This record belongs to the paper [erdos1041-lemniscate-reasoning-surface.pdf](../paper/1041/erdos1041-lemniscate-reasoning-surface.pdf). For every result it lists the Lean declarations that state it, and the independent Comparator check where there is one. The margin marks in the paper link here.
+This record belongs to the paper [erdos1041-lemniscate-reasoning-surface.pdf](../paper/1041/erdos1041-lemniscate-reasoning-surface.pdf). For every result it lists the Lean declarations that state it, and the recorded Comparator check where there is one. The inline links and margin marks in the paper use the same result mapping.
 
 - **Lean.** Every declaration is quoted from [plectis-erdos](https://github.com/wcook04/plectis-erdos) at commit [`436f55ebdafa`](https://github.com/wcook04/plectis-erdos/tree/436f55ebdafa67e4af0fff79f621c13f2ded12bf) and is checked there by Lean's kernel (`leanprover/lean4:v4.29.1`, Mathlib `5e932f97dd25`).
 - **Comparator.** For a compared result, each declaration was stated a second time, from Mathlib alone, as a *Challenge* in [plectis-erdos-lean](https://github.com/wcook04/plectis-erdos-lean), and a *Solution* that uses our proof was checked against it by [Comparator](https://github.com/leanprover/comparator), which also confirms that only the axioms `propext`, `Quot.sound`, `Classical.choice` are used. All checks below come from replay run [35935225572](https://github.com/wcook04/plectis-erdos-lean/actions/runs/35935225572) at corpus commit [`cc7e541cf208`](https://github.com/wcook04/plectis-erdos-lean/tree/cc7e541cf2081c6fef5a5e377d52e365e33b01eb) (tag `paper-evidence-2026-09-24`); both the default Lean kernel and the independent `nanoda` kernel accepted every entry. The replay's own report for each entry is kept in this repository and linked from each check. A Challenge shows `sorry` because it states the target without proving it.
 - **Counts.** 37 results: 25 with a Lean proof of the whole statement, 10 whose Lean proof assumes a named input (marked with a dagger), 2 without a Lean proof of the whole statement; 23 compared.
 
-These checks establish that the stated propositions are proved. Whether each is the right proposition is for the reader to judge against the paper's statement, which is reproduced below.
+These checks establish that the stated propositions are proved. Whether each is the right proposition is for the reader to judge against the paper's statement, which is reproduced below. Comparator checks separately declared statements, the axiom budget and kernel acceptance; it does not establish novelty, significance or peer review.
 
 <a id="res-ani-degree-seven-counterexample-long"></a>
 
@@ -106,6 +106,8 @@ theorem s3_bottleneck_hausdorff
 
 **Comparator:** not yet compared.
 
+s3_bottleneck_hausdorff has no Comparator association; the lemma was isolated as a paper statement in round 12
+
 <a id="res-trinomial-all-degree"></a>
 
 ## Theorem 3.1 (trinomial root connections), page 8
@@ -159,7 +161,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="res-low-critical-scale-free"></a>
 
-## Passage (beginning “res:low-critical-scale-free…”), page 9
+## Passage (beginning “res:low-critical-scale-free…”), page 10
 
 The Lean proof assumes Theorem 4.1 as stated. Lean takes this input as a hypothesis (`LowCriticalThirteenTwentyFifths`); it is not proved in Lean.
 
@@ -2257,4 +2259,4 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 ## Passage (beginning “res:attachment-aware-reeb…”), page 69
 
-**No Lean proof of the whole statement.** In Lean, the ray-disjointness, level-separation and saddle-scale steps of the proof are checked, and the Morse, monodromy and strip statements are not.
+**No Lean proof of the whole statement.** In Lean, Component-local surjectivity, finite fibres, covering and unique continuous root-labelled branches on a finite outward-slit domain are checked in OutwardSlitDomain at public commit 8bf96bdcae6b9201c670fff3037c49c70ec6de8d, alongside ray-disjointness, level-separation and saddle-scale prerequisites. The complete theorem still lacks a Lean proof of component sheet count, conformality, Morse, monodromy and embedded-tree assertions; prerequisite checking does not establish the complete theorem..

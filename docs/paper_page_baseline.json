@@ -1,26 +1,26 @@
 {
  "schema": "plectis-paper-page-baseline/1",
- "rule": "Page count of each of the sixteen problem papers as published at the frozen release base, same typography. No rebuilt paper may be longer; scripts/check_paper_evidence_pdfs.py enforces it.",
+ "rule": "Frozen release page limits with individually reviewed revisions recorded below. scripts/check_paper_evidence_pdfs.py enforces the current per-paper limits.",
  "base": "147f3f1da400a84dcb3013ea6cef75dc8f382b09",
  "pages": {
   "erdos-68-factorial-denominator-irrationality": 19,
-  "erdos-243-reciprocal-tail-rigidity": 19,
+  "erdos-243-reciprocal-tail-rigidity": 20,
   "erdos-249-binary-totient-series": 17,
   "erdos-251-prime-gap-dyadic-series": 15,
   "erdos-257-mersenne-support-subseries": 24,
   "erdos-269-three-prime-running-lcm": 17,
   "erdos-1041-lemniscate-newton-flow": 32,
   "erdos-1049-rational-base-lambert": 21,
-  "erdos68-factorial-reasoning-surface": 49,
-  "erdos243-reciprocal-tail-reasoning-surface": 65,
+  "erdos68-factorial-reasoning-surface": 50,
+  "erdos243-reciprocal-tail-reasoning-surface": 60,
   "erdos249-totient-reasoning-surface": 164,
   "erdos251-prime-gap-reasoning-surface": 49,
   "erdos257-mersenne-reasoning-surface": 166,
   "erdos269-running-lcm-reasoning-surface": 69,
-  "erdos1041-lemniscate-reasoning-surface": 84,
+  "erdos1041-lemniscate-reasoning-surface": 85,
   "erdos1049-rational-base-lambert-reasoning-surface": 77
  },
- "total": 887,
+ "total": 885,
  "revisions": [
   {
    "date": "2026-09-26",
@@ -84,6 +84,38 @@
    "from": 75,
    "to": 77,
    "reason": "Round-13 separates the checked polynomial-shift proof from the retained broader ordinary ratio-limit argument and gives the finite-convolution calculation of the 8F correction. Same typography; GPT-6.1 Sol and integrating Type A reviewed source delta and native pages 34\u201335."
+  },
+  {
+   "date": "2026-09-30",
+   "paper": "erdos68-factorial-reasoning-surface",
+   "from": 49,
+   "to": 50,
+   "reason": "Full inline Lean/Comparator support pairs use the same targets as the margin; final reviewed R5 native layout is50pages with zero overfull boxes.",
+   "review_capture": "cap_quick_r5_full_inline_evidence_requires_reviewe_06a3f322d6d7"
+  },
+  {
+   "date": "2026-09-30",
+   "paper": "erdos-243-reciprocal-tail-rigidity",
+   "from": 19,
+   "to": 20,
+   "reason": "Full inline Lean/Comparator support pairs and complete R5 proof narration; final reviewed native layout is20pages with zero overfull boxes.",
+   "review_capture": "cap_quick_r5_full_inline_evidence_requires_reviewe_06a3f322d6d7"
+  },
+  {
+   "date": "2026-09-30",
+   "paper": "erdos243-reciprocal-tail-reasoning-surface",
+   "from": 65,
+   "to": 60,
+   "reason": "R5 prose refinement and full inline evidence reflow produce a reviewed60-page record; retain a tightened regression limit at the complete current layout.",
+   "review_capture": "cap_quick_r5_full_inline_evidence_requires_reviewe_06a3f322d6d7"
+  },
+  {
+   "date": "2026-09-30",
+   "paper": "erdos1041-lemniscate-reasoning-surface",
+   "from": 84,
+   "to": 85,
+   "reason": "Full inline Lean/Comparator support and bounded existing checked component-local prerequisites; final reviewed native layout is85pages with zero overfull boxes.",
+   "review_capture": "cap_quick_r5_full_inline_evidence_requires_reviewe_06a3f322d6d7"
   }
  ]
 }

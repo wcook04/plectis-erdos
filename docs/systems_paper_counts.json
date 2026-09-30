@@ -3,20 +3,20 @@
   "classification": "inventory_and_reported_history",
   "builder": "scripts/build_systems_paper_counts.py::pipeline_values",
   "values": {
-    "LedgerRows": 710,
-    "LedgerExact": 511,
-    "LedgerSpecialising": 143,
-    "LedgerNamedInput": 25,
-    "LedgerNoLean": 31,
-    "LedgerWithLean": 679,
-    "LedgerFormal": 654,
-    "LedgerCompared": 633,
-    "LedgerQueued": 21,
+    "LedgerRows": 689,
+    "LedgerExact": 498,
+    "LedgerSpecialising": 142,
+    "LedgerNamedInput": 23,
+    "LedgerNoLean": 26,
+    "LedgerWithLean": 663,
+    "LedgerFormal": 640,
+    "LedgerCompared": 616,
+    "LedgerQueued": 24,
     "LeanModules": 1903,
     "Claims": 160,
     "ClaimObligations": 19,
     "ClaimStatuses": "eight",
-    "JournalHead": "9a0a2617ea30",
+    "JournalHead": "d3ad85269386",
     "Rounds": 7,
     "RoundsSealed": 2,
     "Returns": 25,
@@ -34,19 +34,19 @@
   "inputs": [
     {
       "path": "docs/paper_lean_coverage.json",
-      "sha256": "66822deb129b200213bbfe2ab7289e25092c71c9ef41acad91074ba227d4fc4a"
+      "sha256": "c73e4f9cdd8930dd94a4e9505b431f822be8bbaf6fb20e25b4d23e80cb5e1867"
     },
     {
       "path": "docs/claims.json",
-      "sha256": "e139025a2c23905ec32f2937ff82c20b1b0bd9388ecdd891d715eb89ca763f5e"
+      "sha256": "7d445352b38ffb192b2de564fae89a786505f02d30c113023dea8cf7e7c9d8e5"
     },
     {
       "path": "docs/problem_index_source.json",
-      "sha256": "434f7bbcaa5a93da61e4d37291b36dcb634bc705d79222abea6fe2c6c80fd8e3"
+      "sha256": "d651478e6b7908e49517009f4cf575bf0f3fd64184974c52db9ac57be1491c8a"
     },
     {
       "path": "docs/papers/corpus.json",
-      "sha256": "e576be33146dc80680924961081fb69dd2c42b929a5cd7ebbf63e25c65d61b84"
+      "sha256": "3359740fecbc7fb1d90c91a70cd6d42afadaa96d06cd8de1faa9465b7b233ac9"
     },
     {
       "path": "docs/publication_evidence.json",
@@ -54,7 +54,7 @@
     },
     {
       "path": "docs/research-commons/record/journal.jsonl",
-      "sha256": "fd8ee17f16853cd1195bae40eb3d9d3c24234126ebd7a859e9d02903977094ae"
+      "sha256": "de18bf20e4cc26674a2520212f38573dd0b079921f2cfb37417704b88227ac0d"
     }
   ],
   "limits": [

@@ -176,9 +176,10 @@ $1,\ldots,T$ into full orbits and a remainder gives
  \frac1T\sum_{t=1}^T d_a(tQ)
  \le \frac{g}{a(b^g-1)}+\frac1{T(b^g-1)}.
 \end{equation}
-Indeed, the orbit has length $a/g$ and
-$\sum_{t=1}^{a/g}b^{tQ\bmod a}/(b^a-1)=1/(b^g-1)$; an incomplete orbit costs
-at most one more complete orbit.  Also, for $Y=QT$,
+The sum over one orbit is
+$\sum_{t=1}^{a/g}b^{tQ\bmod a}/(b^a-1)=1/(b^g-1)$.
+The first term in~\eqref{eq:weighted-finite-orbit} accounts for complete
+orbits; the second allows one extra orbit for the remaining indices.  Also, for $Y=QT$,
 \begin{equation}\label{eq:weighted-outer-short}
  \frac1T\sum_{t=1}^T\sum_{\substack{a\in A\\a>Y}}d_a(tQ)
  \le\frac4T,
@@ -186,9 +187,11 @@ at most one more complete orbit.  Also, for $Y=QT$,
 because $d_a(tQ)\le2\,2^{tQ-a}$ when $a>QT$ and
 $\sum_{t=1}^T2^{tQ-QT}\le2$.
 
-To sum the incomplete-orbit errors while $Q$ grows, we average over
-dyadic lengths before choosing the observation. If $Q,M\ge1$ are integers and $\alpha_a\ge0$
-with $\sum_a\alpha_a/a<\infty$, then
+The incomplete-orbit term has no factor $1/a$, so summing it over
+$a\le QT$ requires a further estimate. We recover that factor by
+averaging over dyadic lengths before choosing an observation. If
+$Q,M\ge1$ are integers and $\alpha_a\ge0$ with
+$\sum_a\alpha_a/a<\infty$, then
 \begin{equation}\label{eq:weighted-dyadic-short}
  \sum_{j=M}^{2M-1}\frac1{2^j}\sum_{a\le Q2^j}\alpha_a
  \le2Q\sum_{a\ge1}\frac{\alpha_a}{a};
@@ -238,11 +241,14 @@ $\alpha_a={\bf1}_A(a)/(b^{h(a)}-1)$ yields
  \le \varepsilon+\frac{2QW_{b,P}(A)}M
  +\frac{G(1+\log Q+2M\log2)+Q}{b^G-1}+4\,2^{-M}.
 \end{equation}
-With $F$ and $L$ fixed and $Q,G,M$ chosen as above, every term after
-$\varepsilon$ tends to zero as $H\to\infty$. For sufficiently large $H$, the finite average is
-less than $2\varepsilon$, and one sampled displacement is therefore
-less than $2\varepsilon$. This selection gives no asserted rate of decay
-in the observation index $N=Qt$.
+On the right, $\varepsilon$ bounds the weighted mass outside $F$;
+the next term comes from the dyadic incomplete-orbit estimate. The
+fraction bounds the large-gcd terms, and the last term bounds exponents
+beyond the observation range. With $F$ and $L$ fixed, every term after
+$\varepsilon$ tends to zero as $H\to\infty$. The finite average is thus
+less than $2\varepsilon$ for sufficiently large $H$, so one sampled
+displacement is less than $2\varepsilon$. This selection gives no asserted
+rate of decay in the observation index $N=Qt$.
 Since $\varepsilon$ is arbitrary, this contradicts the lower bound $1/q$
 under rationality.  Finally
 $W_{b,P}(A)\le W_{2,P}(A)$ for $b\ge2$, and weighted mass decreases on taking
@@ -295,11 +301,9 @@ infinite subset is irrational at every base.  The construction is given in
 {Section~1.3 of the long record}.
 
 \section{Divisor covers and a common average}\label{sec:common-kernel}
-The weighted proof chose both its modulus and its observation window.
-To add a divisor-covered support, we need an estimate that is valid on
-that same window. We prove such a bound first, retaining its dependence
-on the modulus. This will allow the finite part of a cover to be added
-to the divisibility requirements on $Q$.
+To combine the criteria, the cover estimate must hold on the observation
+window already chosen by the weighted proof. We retain the dependence
+on the modulus, which must also accommodate the finite part of the cover.
 
 For $1<B\le2$, positive integers $L,d,M$, and an integer $R\ge0$, put
 \[
@@ -308,6 +312,12 @@ For $1<B\le2$, positive integers $L,d,M$, and an integer $R\ge0$, put
  =\frac1M\sum_{j=R}^{R+M-1}\frac1{2^j}
       \sum_{m=1}^{2^j}F(Lm).
 \]
+This is a two-stage average: choose the scale $j$ uniformly from
+$R,\ldots,R+M-1$, then choose $m$ uniformly from $1,\ldots,2^j$ and
+observe $N=Lm$. Each scale receives equal total weight, although the
+longer scales contain more observations. The same integer $N$ can occur
+at several scales, with its contributions added in the displayed sum.
+
 The finite estimate
 \begin{equation*}
  \mathscr D_{L;R,M}w_{B,d}
@@ -317,7 +327,9 @@ The finite estimate
 equivalently bounds $(B-1)\mathscr D_{L;R,M}w_{B,d}$ by
 $(1+4L/M)/d$.  This normalised bound is uniform as $B\downarrow1$;
 the unnormalised right side grows like $(B-1)^{-1}$.
-The ratio $L/M$ measures the cost of incomplete modular periods.
+This distinction matters when the cover uses bases $B=2^\alpha$ with
+small positive $\alpha$: the factor $(2^\alpha-1)^{-1}$ remains in its
+cost. The ratio $L/M$ measures the cost of incomplete modular periods.
 
 Fix $T=2^j$. We divide the proof according to how $d$ compares with
 $LT$, which is the largest sampled multiple.
@@ -399,8 +411,10 @@ For the displacement itself, the geometric-series identity gives
 \[
  \Delta_{2,F_j}(N)=U_j(N)-X_{F_j}(2)\le U_j(N).
 \]
-Consequently, once the first $J$ finite sets have zero displacement, nonnegativity
-bounds the displacement of their union by $\sum_{j>J}U_j(N)$.
+We will make the displacements of the first $J$ finite sets vanish by
+divisibility, then use $U_j(N)$ to bound the terms from the remaining
+sets. The early tails themselves need not vanish: the displayed identity
+then gives $U_j(N)=X_{F_j}(2)$ for $j\le J$.
 
 Fix $\varepsilon>0$, set $t_j=\varepsilon2^{-j}$, and choose $J$ with
 \[
@@ -471,6 +485,9 @@ Keeping $J$, $F$ and $L$ fixed, we use the base-two choices
  Q=L\prod_{p\in P}p^{\lfloor\log_pH\rfloor},\qquad
  G=\lfloor H/\max P\rfloor,\qquad M=\lfloor2^{G/2}\rfloor.
 \]
+Both estimates below use $\mathscr D_{Q;M,M}$: the scale runs from $M$
+to $2M-1$, and each observation is a multiple $N=Qm$. We keep this
+average fixed while estimating the two contributions.
 The proof of~\eqref{eq:weighted-main-bound} allows any multiple of $F$
 as $L$, including the extra divisors imposed by the cover. The estimate
 also holds for finite or empty $E$, since infinitude was used only to
@@ -484,11 +501,13 @@ nonnegative interchange give
  \mathscr D_{Q;M,M}S_J\le(1+4Q/M)K_J<\frac18,
  \qquad S_J=\sum_{j>J}t_j^{-\alpha_j}V_j,
 \]
-because $Q/M\to0$.  Adding the two estimates bounds the mean of
-$\Delta_{2,E}/\rho+S_J$ by $1/4$. We choose a sample $N=Qm$ at which
-this sum is less than $1$. Positivity then gives both
-$\Delta_{2,E}(N)<\rho$ and $U_j(N)<t_j$ for every $j>J$.  The displacement terms from the first $J$ finite sets vanish because
-their exponents divide $L$, and hence divide $N$.  Therefore
+because $Q/M\to0$. We now add the two quantities before selecting an
+index. Their mean is below $1/4$, so some sampled $N=Qm$ satisfies
+$\Delta_{2,E}(N)/\rho+S_J(N)<1$. Both quantities and every summand of
+$S_J$ are nonnegative. Thus this single choice gives
+$\Delta_{2,E}(N)<\rho$ and $U_j(N)<t_j$ for every $j>J$.
+The displacement terms from the first $J$ finite sets vanish because
+their exponents divide $L$, and hence divide $N$. Therefore
 \[
  \Delta_{2,A}(N)\le\Delta_{2,E}(N)+\Delta_{2,V}(N)<2\rho<\varepsilon,
  \qquad N\ge Q\ge L\ge N_0.

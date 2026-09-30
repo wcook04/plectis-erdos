@@ -62,6 +62,15 @@ class SpanTests(unittest.TestCase):
                       r'\begin{theorem}B\end{theorem}\begin{proof}B proof\end{proof}',
                       {'selector': 'adjacent_proof', 'label': 'a'})
 
+    def test_adjacent_proof_skips_nested_display_end(self):
+        loc, text = self.read(r'\begin{theorem}\label{a}'
+                              r'\begin{equation*}A\end{equation*}'
+                              r'\begin{equation*}B\end{equation*}\end{theorem}'
+                              r'\begin{proof}Whole argument.\end{proof}',
+                              {'selector': 'adjacent_proof', 'label': 'a'})
+        self.assertIn('Whole argument.', text)
+        self.assertNotIn('equation*', text)
+
     def test_bounded_span_requires_both_delimiters(self):
         with self.assertRaisesRegex(audit.RecordInputError, 'closing'):
             self.read('Start reason', {'selector': 'between', 'start': 'Start', 'end': 'End'})
@@ -91,6 +100,44 @@ class SpanTests(unittest.TestCase):
         def row(*names):
             return {'lean': {'declarations': [{'file': 'a.lean', 'name': n} for n in names]}}
         self.assertNotEqual(audit.declaration_set(row('A', 'B')), audit.declaration_set(row('A')))
+
+    def short_disposition(self):
+        path = 'paper/269/short.tex'
+        target = self.root/path
+        target.parent.mkdir(parents=True, exist_ok=True)
+        body = r'\begin{proof}A complete retained argument.\end{proof}'
+        target.write_text(body)
+        row = {'statement_sha256': 'sha256:statement', 'problem': 269}
+        disposition = {'action': 'explained_in_short', 'rationale': 'The proof is retained here.',
+                       'review_status': 'Type A source-reading; no independent mathematical review.',
+                       'short_statement_sha256': row['statement_sha256'],
+                       'support': {'path': path, 'selector': 'between', 'start': r'\begin{proof}',
+                                   'end': r'\end{proof}', 'sha256': audit.digest(body)}}
+        return path, row, disposition
+
+    def test_retained_short_proof_does_not_certify_long_correspondence(self):
+        path, row, disposition = self.short_disposition()
+        support = audit.short_proof_support(audit.Inputs(self.root), disposition, row, [path])
+        self.assertTrue(support['long_correspondence'].startswith('open;'))
+        self.assertIn('proof_correctness_not_checked', support['validation'])
+
+    def test_changed_short_proof_refused(self):
+        path, row, disposition = self.short_disposition()
+        (self.root/path).write_text(r'\begin{proof}Unreviewed changed argument.\end{proof}')
+        with self.assertRaisesRegex(audit.RecordInputError, 'stale short proof'):
+            audit.short_proof_support(audit.Inputs(self.root), disposition, row, [path])
+
+    def test_changed_short_statement_refused(self):
+        path, row, disposition = self.short_disposition()
+        row['statement_sha256'] = 'sha256:changed'
+        with self.assertRaisesRegex(audit.RecordInputError, 'short statement changed'):
+            audit.short_proof_support(audit.Inputs(self.root), disposition, row, [path])
+
+    def test_short_proof_cannot_come_from_another_problem(self):
+        path, row, disposition = self.short_disposition()
+        row['problem'] = 251
+        with self.assertRaisesRegex(audit.RecordInputError, 'another problem'):
+            audit.short_proof_support(audit.Inputs(self.root), disposition, row, [path])
 
     def test_statement_removal_remains_in_delta(self):
         c = {'short_claim': 'a', 'state': 'unresolved', 'statement_sha256': 'x', 'long_locations': []}
@@ -123,11 +170,11 @@ class CorpusTests(unittest.TestCase):
                          len(json.loads((audit.ROOT/'docs/paper_lean_coverage.json').read_text())['rows']))
 
     def test_real_gaps_are_not_turned_into_success(self):
-        self.assertGreater(self.base['summary']['unresolved_short_claims'], 0)
-        self.assertEqual(self.base['status'], 'findings')
+        self.assertGreater(self.base['summary']['long_correspondence_open'], 0)
+        self.assertNotEqual(self.base['status'], 'refusal')
         for pair in self.base['pairs']:
             for c in pair['claims']:
-                if c['state'] == 'unresolved':
+                if c['state'] in ('unresolved', 'short_proof_explained_long_link_open'):
                     self.assertEqual(c['matches'], [])
                     self.assertIsNotNone(c['short_location'])
 
@@ -202,11 +249,14 @@ class CorpusTests(unittest.TestCase):
                 "sys.path.insert(0, str(Path.cwd()/'docs/papers')); "
                 "import check_paper_corpus as c; "
                 "errors=c.record_navigation_errors(Path.cwd(),require_links=True); "
-                "print(errors)")
+                "import reasoning_record_audit as records; "
+                "import json; print(json.dumps({'errors':errors,'live_status':records.report()['status']}))")
         result=subprocess.run([sys.executable, '-c', code], cwd=audit.ROOT,
                               capture_output=True, text=True, timeout=20)
         self.assertEqual(result.returncode, 0, result.stderr)
-        self.assertIn('short/long audit: findings', result.stdout)
+        value = json.loads(result.stdout)
+        self.assertEqual(value['live_status'], self.base['status'])
+        self.assertFalse(any('unreadable' in e for e in value['errors']))
 
     def test_authored_hash_bound_alias_difference_is_accounted_for(self):
         p=next(p for p in self.base['pairs'] if p['problem']==257)
@@ -227,6 +277,8 @@ class CorpusTests(unittest.TestCase):
         self.assertIn('No accepted correspondence',text)
         self.assertIn('paper/reasoning-parts/erdos257/a257_front.tex',text)
         self.assertIn('correctness of ordinary proofs',text)
+        self.assertIn('Retained short-paper argument:',text)
+        self.assertIn('No accepted long-record correspondence is established by this disposition.',text)
 
 
 if __name__ == '__main__':

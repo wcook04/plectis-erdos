@@ -3,38 +3,43 @@
 \paperprovenance
 
 \begin{abstract}
-Differences of scaled tails convert the irrationality question for
-$S=\sum_{n\ge1}\varphi(n)2^{-n}$ into finite residue inequalities.
-We give the identities, denominator exclusions and comparison
-constructions behind these tests, together with the coefficient relations
-among totient sections. Two weighted exponential sums describe the
-remaining cancellation in one sufficient criterion. The irrationality of
-$S$ remains open; the rational comparisons preserve only their specified
-coefficient data.
+The integral relations among totient sections determine their coefficient
+module, but leave open the irrationality of
+$S=\sum_{n\ge1}\varphi(n)2^{-n}$. We give the tail identities and
+complete proofs behind the residue criteria for this value. Finite
+exclusions and rational comparison sequences distinguish the hypotheses
+of those criteria. In one sufficient criterion, two weighted
+exponential-sum estimates remain unproved. The comparisons preserve
+only the coefficient data stated in their constructions.
 \end{abstract}
 
 \section*{Organisation}
-The coefficient problem and the value problem have different conclusions.
-The \shortpaper{short249-proof}{short paper} determines a basis of rank
-$k^e+1$ for the totient sections through level $e\ge1$ in every base
-$k\ge2$, together with all integral relations. This record concerns the
-further estimates needed to decide whether
-$S=\sum_{n\ge1}\varphi(n)2^{-n}$ is irrational. Tail identities turn that
-question into finite residue inequalities; rational comparison sequences
-show why several kinds of coefficient information do not force those
-inequalities.
+The \shortpaper{short249-basis}{short paper} treats the coefficient
+module first. In every base $k\ge2$ it retains $k^e+1$ sections through
+level $e\ge1$, gives their integral coordinates, and describes every
+relation among the original indexed sections. Its
+\shortpaper{short249-base-six}{base-six example and integral relation proof}
+explain the distinction between a repeated section and a repeated index.
+The present record develops the arguments about the value
+$S=\sum_{n\ge1}\varphi(n)2^{-n}$. Tail identities convert that question
+into residue inequalities. The rational comparisons show why the
+specified coefficient information alone does not force those inequalities.
 
-We first introduce the residue test of Definition~\ref{defn:sep} and the
-rational comparisons in Section~\ref{sec:wall}. Section~\ref{sec:survivors}
-states the resulting irrationality criteria. The proofs and exact
-finite computations begin in Section~\ref{sec:series}; the dyadic basis
-and relation module are treated in Section~\ref{sec:mahler-defect}.
-For the two remaining weighted sums, see Section~\ref{sub:pivot} and the
-\shortpaper{short249-first-harmonic}{four-estimate problem in the short
-paper}. Appendix~\ref{app:r3-complements} contains the propagation and
-Mersenne-residue arguments and the sharp rank-one quotient bound.
-Appendix~\ref{app:r3-declarations} collects the formal declarations cited
-in the short paper.
+For the residue criteria, begin with Definition~\ref{defn:sep} and
+Section~\ref{sec:survivors}; the detailed proofs and finite computations
+start in Section~\ref{sec:series}. For the coefficient-to-value question,
+Section~\ref{sec:mahler-defect} gives the dyadic integral relations and
+Section~\ref{sub:generic-carry-rank} constructs the rational $5/4$ series
+with unbounded carry rank. Section~\ref{sec:wall} supplies the other
+rational comparisons. For the unresolved exponential-sum estimates,
+Section~\ref{sub:pivot} gives the two weighted sums and their common
+parameter requirements; the
+\shortpaper{short249-first-harmonic}{four-estimate problem} is in the
+short paper's final appendix.
+
+Appendix~\ref{app:r3-complements} contains the complete propagation,
+Mersenne-residue and sharp rank-one arguments cited there.
+Appendix~\ref{app:r3-declarations} collects the formal declarations.
 
 Throughout, a cofinal condition means that a witness exists beyond each
 threshold. It need not hold at every sufficiently large index. Each
@@ -182,7 +187,9 @@ coefficients and supplies neither conclusion about the value by itself.
 \begin{thm}[Denominator exclusion from a fixed Farey window]
 \label{thm:denom}
 If $S \in \Q$ then its reduced denominator exceeds
-$Q_0 := 79\,639\,646\,646\,701\,375\,323\,355\,774\,875\,831\,053 \approx 7.96 \times 10^{34}$.
+\[
+Q_0 := 79\,639\,646\,646\,701\,375\,323\,355\,774\,875\,831\,053 \approx 7.96 \times 10^{34}.
+\]
 Equivalently, $S$ differs from every rational number whose reduced
 denominator is at most $Q_0$.
 The bound is sharp for this window: $q = Q_0 + 1$ is the exact first failing
@@ -2229,7 +2236,10 @@ compares the two choices of weight.
 linear independence theorem of Postelmans and Van Assche.}
 
 \begin{prop}[Totient weight and gcd moments]\label{catalogue:mob:a5}
-$\sum_{d:\mathbb{N}^+}' \varphi(d)/(2^d-1)^2 = \sum_{n:\mathbb{N}^+}' (P(n)-n)\cdot(1/2)^n$, where $P = \varphi * \mathrm{Id}$ (Pillai's gcd-sum function). It also equals $\mathbb E[\gcd(X,Y)]$ when $X,Y$ are independent and
+\[
+\sum_{d:\mathbb{N}^+}' \varphi(d)/(2^d-1)^2 = \sum_{n:\mathbb{N}^+}' (P(n)-n)\cdot(1/2)^n,
+\]
+where $P = \varphi * \mathrm{Id}$ (Pillai's gcd-sum function). It also equals $\mathbb E[\gcd(X,Y)]$ when $X,Y$ are independent and
 $\mathbb P(X=n)=\mathbb P(Y=n)=2^{-n}$ for $n\ge1$; see
 Proposition~\ref{prop:pillai}.
 This is a different weighted series. Its rationality is not settled by
@@ -5070,7 +5080,7 @@ integrality from denominator divisibility & \lean{tail\_diff\_int\_of\_den\_dvd}
 tail-period law & \lean{eventual\_period\_of\_not\_irrational}{TotientTailPeriodKiller.lean:358} & $\lnot\mathrm{Irrational}\,S\to\exists h{>}0\,\exists N_0\,\forall N{\ge}N_0$ & binary-weighted series\\
 least common multiple $H(t)$ & \lean{periodLcm}{CarrySurvivorExtinction.lean:515} & $\forall t$ & LCM periods\\
 a nondivisor below $2t$ is a prime power & \lean{eq\_prime\_pow\_of\_not\_dvd\_periodLcm}{LcmDiagonalReduction.lean:137} & $\forall t\,\forall j\,(0{<}j{<}2t)$, given $j\nmid{H}\,t$ & LCM offsets\\
-totient factorisation at divisor offsets & \lean{totient\_periodLcm\_ray\_split}{LcmDiagonalReduction.lean:208} & $j\mid H(t)$, with the prime-divisor hypotheses of Proposition~\ref{catalogue:cert:b2} & totient factorisation\\
+totient factorisation at divisor offsets & \lean{totient\_periodLcm\_ray\_split}{LcmDiagonalReduction.lean:208} & $j\mid H(t)$, with the prime-divisor hypotheses of Proposition~\ref{catalogue:cert:b5} & totient factorisation\\
 integrality on the LCM grid under rationality & \lean{rational\_totient\_series\_forces\_lcm\_cone\_flatness}{CertificateKernel.lean:19002} & $\lnot\mathrm{Irrational}\,S\to\exists t_1\,\forall t{\ge}t_1\,\forall q{>}0\,\forall m$ & LCM grids\\
 second-difference residue test & \lean{second\_diff\_notMem\_int\_of\_certifiedRank2Kill}{LcmConeFlatness.lean:493} & $\forall h\,\forall N\,\forall L$, given \ensuremath{\text{second-difference residue condition}} & finite binary sums\\
 a nonintegral pair on a finite grid & \lean{exists\_nonintegral\_pair\_of\_coneNonflatCert}{LcmConeNonflat.lean:126} & finite $Q\ne\emptyset$; all size and residue hypotheses of Theorem~\ref{catalogue:cert:b10a} & finite LCM grids\\
@@ -5527,7 +5537,7 @@ Theorem~\ref{thm:hgap-real} to the same certificate. Define
 \[
   \Bigl\|\ \sum_{N=X}^{2X-1}E(h,N,L)\ \Bigr\| \;\le\; \tfrac{21}{25}\,X .
 \]
-This condition is unproved; it is the open target itself. Then
+This sufficient condition is unproved. Then
 \[
   \text{block norm condition} \;\Longrightarrow\; \mathrm{Irrational}\Bigl(\sum_{n\ge 0}
   \tfrac{\varphi(n)}{2^n}\Bigr),
@@ -6675,9 +6685,9 @@ $k\ge2$~\cite[Theorem~3.2]{coons}; here the rank is computed at each
 finite level and the basis is given explicitly. Martin's Theorem~1
 supplies independence for the positive-residue affine forms
 \cite[Theorem~1]{martin-phi-inequalities}, leaving the two zero-residue
-sections to be treated separately. The
-\shortpaper{short249-proof}{all-base proof in the short paper}
-also gives the integral relations.
+sections to be treated separately. The \shortpaper{short249-proof}{all-base independence proof} and the
+\shortpaper{short249-base-six}{integral relation proof} are given separately
+in the short paper.
 
 \textbf{Construction.}
 \begin{thm}[Exact dyadic rank and infinite-dimensionality]\label{thm:exact-dyadic-rank-infinite-dimensionality}
@@ -6746,8 +6756,8 @@ $E_i$ in $\sum_{h\notin J_e}b_hR_h$ is exactly $b_i$, proving uniqueness.
 The decisive feature is the unit pivot $1$ in each omitted coordinate
 (or $-1$ if a relation is oriented oppositely).  Elimination uses no division;
 it therefore identifies the integral relation lattice, not merely its
-rational span.  The depth-two example in the short paper illustrates these
-two-term rows.  The distinction between the retained basis and the redundant
+rational span.  The \shortpaper{short249-base-six}{depth-two base-six example}
+in the short paper illustrates these two-term rows.  The distinction between the retained basis and the redundant
 spanning family of all sections already matters for $k$-regular sequences
 that are not eventually zero: their growth exponent is the base-$k$
 logarithm of the joint spectral radius of their section matrices in a
@@ -8210,10 +8220,9 @@ $d\ge1$ and $N\ge0$, it is enough to find
 $h=td$, $t\ge1$, for which the displayed distance exceeds the stated
 threshold. The criterion is not asserted to be equivalent to each individual
 finite certificate. It involves the phase of $S$ itself, and the threshold
-tends to zero exponentially as $t$ grows. The propagation theorem of the
-short paper (the propagation theorem in Appendix~\ref{long249:r3-ray}) explains why one nonintegral tail
-difference produces late certificates; it does not supply such tail
-differences for all $d,N$.
+tends to zero exponentially as $t$ grows. The propagation theorem in Appendix~\ref{long249:r3-ray} explains why
+one nonintegral tail difference produces late certificates. It does not
+supply such tail differences for all $d,N$.
 
 \paragraph{Comparison with digit complexity.}
 The phase inequality above is a quantitative statement at specified
@@ -9166,7 +9175,8 @@ examples at $a=4,6$, do not establish an asymptotic pattern.
 \appendix
 \section{Complementary proofs for the short paper}\label{app:r3-complements}
 \papersectiontarget{long249-r3-complements}
-The \shortpaper{short249-proof}{basis theorem} and the
+The \shortpaper{short249-proof}{basis theorem}, the
+\shortpaper{short249-base-six}{integral relation theorem} and the
 \shortpaper{short249-residues}{bounded residue theorem} have complete
 proofs in the short paper. This appendix supplies the longer arguments
 behind its discussion of $S$: propagation from a nonintegral tail,
@@ -9972,4 +9982,3 @@ Theorem~1.2(b), p.~2528; logarithmic height in Section~1.1.1, p.~2527.
   Theorem 5.2, p.~1138.
 
 \end{thebibliography}
-

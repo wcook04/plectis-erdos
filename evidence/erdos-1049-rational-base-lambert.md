@@ -1,12 +1,12 @@
 # Formal evidence: Hankel Determinants of Geometric Moments\\and Rational Lambert Values
 
-This record belongs to the paper [erdos-1049-rational-base-lambert.pdf](../paper/1049/erdos-1049-rational-base-lambert.pdf). For every result it lists the Lean declarations that state it, and the independent Comparator check where there is one. The margin marks in the paper link here.
+This record belongs to the paper [erdos-1049-rational-base-lambert.pdf](../paper/1049/erdos-1049-rational-base-lambert.pdf). For every result it lists the Lean declarations that state it, and the recorded Comparator check where there is one. The inline links and margin marks in the paper use the same result mapping.
 
 - **Lean.** Every declaration is quoted from [plectis-erdos](https://github.com/wcook04/plectis-erdos) at commit [`436f55ebdafa`](https://github.com/wcook04/plectis-erdos/tree/436f55ebdafa67e4af0fff79f621c13f2ded12bf) and is checked there by Lean's kernel (`leanprover/lean4:v4.29.1`, Mathlib `5e932f97dd25`).
 - **Comparator.** For a compared result, each declaration was stated a second time, from Mathlib alone, as a *Challenge* in [plectis-erdos-lean](https://github.com/wcook04/plectis-erdos-lean), and a *Solution* that uses our proof was checked against it by [Comparator](https://github.com/leanprover/comparator), which also confirms that only the axioms `propext`, `Quot.sound`, `Classical.choice` are used. All checks below come from replay run [35935225572](https://github.com/wcook04/plectis-erdos-lean/actions/runs/35935225572) at corpus commit [`cc7e541cf208`](https://github.com/wcook04/plectis-erdos-lean/tree/cc7e541cf2081c6fef5a5e377d52e365e33b01eb) (tag `paper-evidence-2026-09-24`); both the default Lean kernel and the independent `nanoda` kernel accepted every entry. The replay's own report for each entry is kept in this repository and linked from each check. A Challenge shows `sorry` because it states the target without proving it.
 - **Counts.** 7 results: 7 with a Lean proof of the whole statement, 0 whose Lean proof assumes a named input (marked with a dagger), 0 without a Lean proof of the whole statement; 6 compared.
 
-These checks establish that the stated propositions are proved. Whether each is the right proposition is for the reader to judge against the paper's statement, which is reproduced below.
+These checks establish that the stated propositions are proved. Whether each is the right proposition is for the reader to judge against the paper's statement, which is reproduced below. Comparator checks separately declared statements, the axiom budget and kernel acceptance; it does not establish novelty, significance or peer review.
 
 <a id="res-sharp-fixed-base"></a>
 
@@ -93,6 +93,8 @@ theorem geometric_universality (hq0 : 0 < q) (hq1 : q < 1)
 <a id="thm-geometric-moments-comparator"></a>
 
 **Comparator:** not yet compared.
+
+Polynomial shift-bound specialisation matched to the existing Lean declaration; no Comparator association is recorded.
 
 <a id="prop-weight-factorisation"></a>
 
@@ -202,7 +204,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="res-rational-base-threshold"></a>
 
-## Theorem 4.1 (rational-base region for Zudilin’s forms), page 8
+## Theorem 4.1 (rational-base region for Zudilin’s forms), page 9
 
 > *Let $`a>b\ge1`$ be coprime integers with
 > ``` math

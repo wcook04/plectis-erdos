@@ -150,9 +150,20 @@ For a digit $0\le d_j\le D_j$, define
  e_{n_j-1}=c_j,\qquad e_{n_j}=M_jd_j,\qquad
  e_{n_j+1}=M_j(D_j-d_j),
 \end{equation}
-and set $e_n=0$ elsewhere.  Each triple has total $c_j+M_jD_j$,
-independently of $d_j$, so the recursion determines all $C_j$ and $c_j$
-before we choose any digits.  After the entry at $n_j-1$ has cleared the
+and set $e_n=0$ elsewhere.  The ordinary and dyadic totals of this
+triple are
+\[
+ \begin{aligned}
+  \sum_{r=n_j-1}^{n_j+1}e_r
+     &=c_j+M_jD_j,\\
+  \sum_{r=n_j-1}^{n_j+1}e_r2^{-r-1}
+     &=c_j2^{-n_j}+M_j(D_j+d_j)2^{-n_j-2}.
+ \end{aligned}
+\]
+The first total is independent of $d_j$, so the recursion determines
+all $C_j$ and $c_j$ before any digits are chosen.  The second total
+increases by $M_j2^{-n_j-2}$ when $d_j$ increases by one.
+After the entry at $n_j-1$ has cleared the
 residue, the two multiples of $M_j$ preserve it.  Thus the cumulative
 sum is divisible by $M_j$ from index $n_j$ through the end of the triple.
 
@@ -200,6 +211,7 @@ the dyadic contribution by $w_j=M_j2^{-n_j-2}$.  Write
  \beta=\sum_{j\ge0}\bigl(c_j2^{-n_j}+D_jw_j\bigr),\qquad
  F_j=\sum_{i\ge j}D_iw_i.
 \]
+Thus $\sum_ne_n2^{-n-1}=\beta+\sum_jd_jw_j$.
 Here $\beta$ is the contribution with all digits zero, and $F_j$ is the
 sum of the maximal digit contributions from stage $j$ onwards.
 The bounds above give $\beta>0$, $0<F_0<\infty$ and $F_j\to0$.
@@ -209,8 +221,15 @@ was chosen for the identity
 \[
  D_iw_i=M_i\bigl(2^{-n_{i-1}-2}-2^{-n_i-2}\bigr).
 \]
-For $i>j$, replacing $M_i$ by $M_j$ gives a lower bound whose sum
-telescopes.  Since $n_i\to\infty$, we obtain
+For $i>j$ we have $M_i\ge M_j$.  Keeping this one modulus fixed gives,
+for every $J>j$,
+\[
+ \sum_{i=j+1}^{J}D_iw_i
+ \ge M_j\sum_{i=j+1}^{J}
+       \bigl(2^{-n_{i-1}-2}-2^{-n_i-2}\bigr)
+ =M_j\bigl(2^{-n_j-2}-2^{-n_J-2}\bigr).
+\]
+Letting $J\to\infty$, we obtain
 \begin{equation}\label{eq:overlap}
  F_{j+1}\ge M_j2^{-n_j-2}=w_j.
 \end{equation}
@@ -270,19 +289,13 @@ of the complete infinite tails.  The companion's
 also distinguishes upper Banach density from ordinary density.
 
 \section{Application to prime gaps}\label{sec:prime-application}
-The elementary bound $p_n\le1250(n+1)^4$ ensures convergence of the prime
-and gap series.  For completeness, the central-binomial argument of
-Erd\H{o}s \cite[pp.~194--196]{erdos1932} gives, for $m\ge4$,
-\[
- 4^m<m\binom{2m}{m}\le m(2m)^{\pi(2m)}.
-\]
-The left inequality follows by induction.  For the right inequality, the
-full power of any prime in $\binom{2m}{m}$ is at most $2m$.  If
-$m=(n+5)^4$ and $\pi(2m)\le n$, these inequalities would give
-$4^m<m(2m)^n\le4^m$: with $x=n+5$, use $x\le2^x$ and
-$n+4(n+1)x\le2x^4$ for the last inequality.  Thus
-$p_n\le2(n+5)^4\le1250(n+1)^4$.  The full prime-power calculation is in
-\href{erdos251-prime-gap-reasoning-surface.pdf\#prime-bound}{Appendix~A of the companion}.
+The elementary bound $p_n\le1250(n+1)^4$ suffices for convergence of
+the prime and gap series.  We use the central-binomial argument of
+Erd\H{o}s \cite[pp.~194--196]{erdos1932};
+\href{erdos251-prime-gap-reasoning-surface.pdf\#prime-bound}{Appendix~A of the companion}
+derives this bound, including the prime-power estimate.  This supplies
+the convergence hypothesis needed to apply
+Proposition~\ref{res:sparserationalisation} to the prime gaps.
 
 \begin{corollary}[a rational sum with the stated prime-gap statistics]\label{res:jointcountermodel}
 Let $p_0=2,p_1=3,\ldots$ be the primes and $g_n=p_{n+1}-p_n$.
@@ -562,7 +575,7 @@ pair leaves the quantifiers in Problem~\ref{prob:smallpair} unresolved.
 We can place the interval in Proposition~\ref{res:sparserationalisation}
 inside $(A,A+\eta)$ for any $\eta>0$.  Choose $K'\ge K$ such that
 $(K'+1)2^{-K'}<\eta$, and start the construction after $K'$.
-The bound $e_n\le n$ from the proof gives  Then
+The bound $e_n\le n$ from the proof gives
 \[
  0<\sum_ne_n2^{-(n+1)}\le(K'+1)2^{-K'}<\eta.
 \]

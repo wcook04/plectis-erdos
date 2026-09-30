@@ -6,28 +6,28 @@
     {
       "id": "257-example",
       "path": "paper/257/erdos-257-mersenne-support-subseries.tex",
-      "start_line": 252,
-      "end_line": 282,
+      "start_line": 258,
+      "end_line": 288,
       "kind": "source",
-      "sha256": "e5a25816630775b2c79b89bd9187f3c3a44646493256d478a0990f1c37c76fb7",
+      "sha256": "f07463dca0107a0f11dc4b824ed570de94891ae63331fddfae331b672aa4dcf9",
       "excerpt_sha256": "6d178254dd733cfbf94fe0f3eb9000ba42c9bdbaaae28d90b0b4be04d2be55a2"
     },
     {
       "id": "257-proof",
       "path": "paper/257/erdos-257-mersenne-support-subseries.tex",
       "start_line": 117,
-      "end_line": 250,
+      "end_line": 256,
       "kind": "source",
-      "sha256": "e5a25816630775b2c79b89bd9187f3c3a44646493256d478a0990f1c37c76fb7",
-      "excerpt_sha256": "8e386a653e2afb584d160fa47ada65655b168463a887f350bf004396ee41fc91"
+      "sha256": "f07463dca0107a0f11dc4b824ed570de94891ae63331fddfae331b672aa4dcf9",
+      "excerpt_sha256": "8e53b1a93e16cf0fb5661a07252b8506925bb11f873ef6e05796b99cf166ed02"
     },
     {
       "id": "257-reciprocal",
       "path": "paper/257/erdos-257-mersenne-support-subseries.tex",
-      "start_line": 791,
-      "end_line": 818,
+      "start_line": 810,
+      "end_line": 837,
       "kind": "source",
-      "sha256": "e5a25816630775b2c79b89bd9187f3c3a44646493256d478a0990f1c37c76fb7",
+      "sha256": "f07463dca0107a0f11dc4b824ed570de94891ae63331fddfae331b672aa4dcf9",
       "excerpt_sha256": "07b08dc8e23653a1bea2c48b087571857616d9e98726c98f080aee58c20cd6cf"
     },
     {
@@ -36,7 +36,7 @@
       "start_line": 63,
       "end_line": 82,
       "kind": "source",
-      "sha256": "e5a25816630775b2c79b89bd9187f3c3a44646493256d478a0990f1c37c76fb7",
+      "sha256": "f07463dca0107a0f11dc4b824ed570de94891ae63331fddfae331b672aa4dcf9",
       "excerpt_sha256": "a770742d3aa8e149c4d4cc1c5fa650e2f1e17f23ad65ac9e9acdb7e4b37ce151"
     },
     {
@@ -71,8 +71,8 @@
       "path": "docs/systems_paper_counts.json",
       "start_line": 1,
       "end_line": 65,
-      "sha256": "4947c9d63e3429529f3d7046bf010d5bdccb1eb2c4acc6b0ebf4317ad3ad974d",
-      "excerpt_sha256": "4947c9d63e3429529f3d7046bf010d5bdccb1eb2c4acc6b0ebf4317ad3ad974d",
+      "sha256": "f8ddef1b0726eded4e9b1dd1c0e86a0726f86d1f39992a48092af40e7daa8da5",
+      "excerpt_sha256": "f8ddef1b0726eded4e9b1dd1c0e86a0726f86d1f39992a48092af40e7daa8da5",
       "kind": "source"
     },
     {
@@ -88,37 +88,37 @@
       "id": "coverage",
       "path": "docs/paper_lean_coverage.json",
       "start_line": 1,
-      "end_line": 29323,
-      "sha256": "67e94e572ca529a1264cc6b64d4644505601d12ad0359321212c5b6b24c2bddf",
-      "excerpt_sha256": "67e94e572ca529a1264cc6b64d4644505601d12ad0359321212c5b6b24c2bddf",
+      "end_line": 29162,
+      "sha256": "c73e4f9cdd8930dd94a4e9505b431f822be8bbaf6fb20e25b4d23e80cb5e1867",
+      "excerpt_sha256": "c73e4f9cdd8930dd94a4e9505b431f822be8bbaf6fb20e25b4d23e80cb5e1867",
       "kind": "source"
     },
     {
       "id": "coverage-1041",
       "path": "docs/paper_lean_coverage.json",
       "start_line": 1,
-      "end_line": 29323,
+      "end_line": 29162,
       "kind": "supplied_snapshot",
-      "sha256": "67e94e572ca529a1264cc6b64d4644505601d12ad0359321212c5b6b24c2bddf",
-      "excerpt_sha256": "67e94e572ca529a1264cc6b64d4644505601d12ad0359321212c5b6b24c2bddf"
+      "sha256": "c73e4f9cdd8930dd94a4e9505b431f822be8bbaf6fb20e25b4d23e80cb5e1867",
+      "excerpt_sha256": "c73e4f9cdd8930dd94a4e9505b431f822be8bbaf6fb20e25b4d23e80cb5e1867"
     },
     {
       "id": "coverage-reciprocal",
       "path": "docs/paper_lean_coverage.json",
       "start_line": 1,
-      "end_line": 29323,
+      "end_line": 29162,
       "kind": "supplied_snapshot",
-      "sha256": "67e94e572ca529a1264cc6b64d4644505601d12ad0359321212c5b6b24c2bddf",
-      "excerpt_sha256": "67e94e572ca529a1264cc6b64d4644505601d12ad0359321212c5b6b24c2bddf"
+      "sha256": "c73e4f9cdd8930dd94a4e9505b431f822be8bbaf6fb20e25b4d23e80cb5e1867",
+      "excerpt_sha256": "c73e4f9cdd8930dd94a4e9505b431f822be8bbaf6fb20e25b4d23e80cb5e1867"
     },
     {
       "id": "coverage-weighted",
       "path": "docs/paper_lean_coverage.json",
       "start_line": 1,
-      "end_line": 29323,
+      "end_line": 29162,
       "kind": "supplied_snapshot",
-      "sha256": "67e94e572ca529a1264cc6b64d4644505601d12ad0359321212c5b6b24c2bddf",
-      "excerpt_sha256": "67e94e572ca529a1264cc6b64d4644505601d12ad0359321212c5b6b24c2bddf"
+      "sha256": "c73e4f9cdd8930dd94a4e9505b431f822be8bbaf6fb20e25b4d23e80cb5e1867",
+      "excerpt_sha256": "c73e4f9cdd8930dd94a4e9505b431f822be8bbaf6fb20e25b4d23e80cb5e1867"
     },
     {
       "id": "credit",
@@ -214,19 +214,19 @@
       "id": "paper-evidence",
       "path": "scripts/paper_evidence.py",
       "start_line": 1,
-      "end_line": 1513,
-      "sha256": "01d197577279cbdc54daeb851579ae02f48c52b6a4b54d5c7d788bcef1936e10",
-      "excerpt_sha256": "01d197577279cbdc54daeb851579ae02f48c52b6a4b54d5c7d788bcef1936e10",
+      "end_line": 1524,
+      "sha256": "08785c8eeecd58a2212778bfc868d07bca1fd1829dd5e79936734f23e6483098",
+      "excerpt_sha256": "08785c8eeecd58a2212778bfc868d07bca1fd1829dd5e79936734f23e6483098",
       "kind": "source"
     },
     {
       "id": "paper-resolver",
       "path": "scripts/paper_evidence.py",
       "kind": "source",
-      "sha256": "01d197577279cbdc54daeb851579ae02f48c52b6a4b54d5c7d788bcef1936e10",
+      "sha256": "08785c8eeecd58a2212778bfc868d07bca1fd1829dd5e79936734f23e6483098",
       "start_line": 1,
-      "end_line": 1513,
-      "excerpt_sha256": "01d197577279cbdc54daeb851579ae02f48c52b6a4b54d5c7d788bcef1936e10"
+      "end_line": 1524,
+      "excerpt_sha256": "08785c8eeecd58a2212778bfc868d07bca1fd1829dd5e79936734f23e6483098"
     },
     {
       "id": "private-writer",
@@ -586,16 +586,17 @@
     },
     {
       "id": "r4.intro1.01",
-      "text": "A formal theorem can outlive the session in which it was proved, yet its hypotheses, motivation and relation to an open question may be lost when it is turned into prose.",
+      "text": "The weighted criterion in Section~\\ref{sec:example} concerns reciprocal Mersenne subseries. A summary that drops its support hypothesis would claim a solution of the arbitrary-support question, which remains open, even with the Lean theorem and its source link unchanged.",
       "owner": "systems",
       "class": "method",
       "evidence_refs": [
-        "world-views",
-        "strategy-goals",
-        "record"
+        "257-statement",
+        "257-proof",
+        "packet-support",
+        "audit-code"
       ],
-      "warrant": "Motivates the persistent problem object and depicts the documented contribution cycle; no effect size or external uptake is inferred.",
-      "statement_sha256": "d570257f410fa5a259db9d49574751faf6f5fd151bfc2bfcc3ef0a14f43cbc59",
+      "warrant": "Counterfactual explanation of the source theorem's sufficient support hypothesis and the open arbitrary-support question. No new mutation experiment or formal-to-prose equivalence check is asserted.",
+      "statement_sha256": "d5ba08717d69e546d9b8b4fb51a69b441e215d56641b7944b514a5189523caa1",
       "section": "sec:intro"
     },
     {
@@ -628,7 +629,7 @@
     },
     {
       "id": "r4.fig.lifecycle",
-      "text": "\\begin{figure}[htbp]\n\\centering\n\\begin{tikzpicture}[x=1cm,y=1cm]\n\\node[paper stage,draw=MidnightBlue,fill=MidnightBlue!5,text width=2.05cm] (w) at (0,0) {Problem world\\\\\\small sources and results};\n\\node[paper stage,draw=MidnightBlue,fill=MidnightBlue!5,text width=2.05cm] (c) at (2.9,0) {Registered claim\\\\\\small status and supports};\n\\node[paper stage,draw=ForestGreen,fill=ForestGreen!5,text width=2.05cm] (j) at (5.8,0) {Evidence join\\\\\\small Lean and Comparator};\n\\node[paper stage,draw=BurntOrange,fill=BurntOrange!5,text width=2.05cm] (p) at (8.7,0) {Short paper\\\\$\\updownarrow$\\\\Long record};\n\\node[paper stage,draw=Violet,fill=Violet!5,text width=2.05cm] (r) at (11.6,0) {Readers\\\\\\small review and reuse};\n\\draw[paper arrow] (w)--(c);\n\\draw[paper arrow] (c)--(j);\n\\draw[paper arrow] (j)--(p);\n\\draw[paper arrow] (p)--(r);\n\\node[paper label,align=center] at (1.45,.9) {source span};\n\\node[paper label,align=center] at (4.35,.9) {one revision};\n\\node[paper label,align=center] at (7.25,.9) {bound text};\n\\node[paper label,align=center] at (10.15,.9) {linked PDF};\n\\draw[paper feedback] (r.south)--++(0,-.7)-| (w.south);\n\\node[paper label] at (5.8,-1.25) {accepted return: change, evidence, limits, credit};\n\\node[paper badge,fill=MidnightBlue!7,text=MidnightBlue] at (5.8,-1.75) {append-only, hash-linked research journal};\n\\node[font=\\small,align=center] at (5.8,-2.4) {\\textcolor{ForestGreen}{Formal check}\\quad\n\\textcolor{MidnightBlue}{Publication check}\\quad\n\\textcolor{BurntOrange}{Authored account}\\quad\n\\textcolor{Violet}{Review and judgement}};\n\\end{tikzpicture}\n\\caption{The life of one claim: arrows name the objects exchanged, the short and long accounts remain linked, and colours distinguish kinds of responsibility throughout the paper.}\n\\label{fig:lifecycle}\n\\end{figure}",
+      "text": "\\begin{figure}[htbp]\n\\centering\n\\begin{tikzpicture}[x=1cm,y=1cm]\n\\node[paper stage,draw=MidnightBlue,fill=MidnightBlue!5,text width=2.05cm] (w) at (0,0) {Problem world\\\\\\small sources and results};\n\\node[paper stage,draw=MidnightBlue,fill=MidnightBlue!5,text width=2.05cm] (c) at (2.9,0) {Registered claim\\\\\\small status and supports};\n\\node[paper stage,draw=MidnightBlue,fill=MidnightBlue!5,text width=2.05cm] (j) at (5.8,0) {Evidence join\\\\\\small all registered supports};\n\\node[paper stage,draw=BurntOrange,fill=BurntOrange!5,text width=2.05cm] (p) at (8.7,0) {Short paper\\\\$\\updownarrow$\\\\Long record};\n\\node[paper stage,draw=Violet,fill=Violet!5,text width=2.05cm] (r) at (11.6,0) {Readers\\\\\\small review and reuse};\n\\draw[paper arrow] (w)--(c);\n\\draw[paper arrow] (c)--(j);\n\\draw[paper arrow] (j)--(p);\n\\draw[paper arrow] (p)--(r);\n\\node[paper label,align=center] at (1.45,.9) {source span};\n\\node[paper label,align=center] at (4.35,.9) {one revision};\n\\node[paper label,align=center] at (7.25,.9) {bound text};\n\\node[paper label,align=center] at (10.15,.9) {linked PDF};\n\\draw[paper feedback] (r.south)--++(0,-.7)-| (w.south);\n\\node[paper label] at (5.8,-1.25) {accepted return: change, evidence, limits, credit};\n\\node[paper badge,fill=MidnightBlue!7,text=MidnightBlue] at (5.8,-1.75) {append-only, hash-linked research journal};\n\\node[font=\\small,align=center] at (5.8,-2.4) {\\textcolor{ForestGreen}{Formal check}\\quad\n\\textcolor{MidnightBlue}{Publication check}\\quad\n\\textcolor{BurntOrange}{Authored account}\\quad\n\\textcolor{Violet}{Review and judgement}};\n\\end{tikzpicture}\n\\caption{The life of one claim: arrows name the objects exchanged, and the blue evidence join checks the recorded support relation rather than executing a new formal proof; the short and long accounts remain linked.}\n\\label{fig:lifecycle}\n\\end{figure}",
       "owner": "systems",
       "class": "reported",
       "evidence_refs": [
@@ -639,11 +640,11 @@
         "credit",
         "strategy-protocol"
       ],
-      "warrant": "Diagram of documented records and intended review responsibilities; colour identifies evidence type, not a certification that a particular contribution received independent review.",
-      "statement_sha256": "35d55c4621c70ffeecbad915a16c84ff66e2d22a40d13455532664d487e1c8aa",
+      "warrant": "The evidence join is coloured as publication/source accounting rather than kernel execution. Arrows show documented exchanged records. No particular contribution is thereby certified as independently reviewed.",
+      "statement_sha256": "472209d78425929f2a1ca3c653dc502c0ccd74dd8876df93570bba2b33f1678a",
       "section": "sec:intro",
       "unit_type": "figure",
-      "caption": "The life of one claim: arrows name the objects exchanged, the short and long accounts remain linked, and colours distinguish kinds of responsibility throughout the paper.",
+      "caption": "The life of one claim: arrows name the objects exchanged, and the blue evidence join checks the recorded support relation rather than executing a new formal proof; the short and long accounts remain linked.",
       "figure_title": "The life of one claim"
     },
     {
@@ -680,7 +681,7 @@
     },
     {
       "id": "r4.intro2.03",
-      "text": "Our publication tools add a check of the complete registered support set and bind the surrounding prose, including explanations and limitations, to specified source bytes.",
+      "text": "The publication tools check whether the supplied evidence covers every registered support at the required revision, and bind the surrounding explanations and limitations to specified source bytes.",
       "owner": "systems",
       "class": "reported",
       "evidence_refs": [
@@ -690,8 +691,8 @@
         "packet-support",
         "audit-code"
       ],
-      "warrant": "States the inherited roles and the concrete documented publication operations; it makes no priority or performance claim.",
-      "statement_sha256": "5fc758d41c492b657ca2850d3610946772d979b4213a39b6ec16be28c4759526",
+      "warrant": "The compiler iterates over the full recorded declaration set, requires current statement identities, and reports gaps; the sentence checker binds declared prose and source bytes. This describes the checks, not a successful join for the supplied snapshot.",
+      "statement_sha256": "375ab09b91d79b821d2bed8a4e2ed9793740f6dbeadb66be81def00b15c2064f",
       "section": "sec:intro"
     },
     {
@@ -876,15 +877,16 @@
     },
     {
       "id": "r4.example1.04",
-      "text": "The paper also gives a fixed-base version with $2$ replaced by $b$ in the hypothesis; the recorded Lean support for both clauses is shown in Figure~\\ref{fig:theorem}.",
+      "text": "The paper also gives a fixed-base version with $2$ replaced by $b$ in the hypothesis. Figure~\\ref{fig:theorem} shows both registered Lean supports; their recorded status is not a fresh join, build or Comparator replay.",
       "owner": "systems",
       "class": "reported",
       "evidence_refs": [
         "257-statement",
-        "coverage-weighted"
+        "coverage-weighted",
+        "packet-support"
       ],
-      "warrant": "Quotes the current source theorem with domains, finite-prime hypothesis, all-base and hereditary clauses intact. The publication ledger records formal support; no new Lean replay is claimed.",
-      "statement_sha256": "694a52fcef87a4ef5520c6c97a12de9d794f8ca43c72e5ff9de21d37e0174853",
+      "warrant": "The native coverage row lists both named declarations, exact_or_stronger status, two recorded Comparator entries and prepared Palomar status. The two Lean source files confirm the descriptive clause labels. Completeness is relative to the registered set, not a claim of logical minimality. The figure is a documentary trace, not a fresh common-pin join, Lean build, Comparator replay or executed false-paraphrase test.",
+      "statement_sha256": "0f2ba4245213c7427484b884651d854f8d686457271661ac2435d8784cfc9fa9",
       "section": "sec:example"
     },
     {
@@ -902,7 +904,7 @@
     },
     {
       "id": "r4.fig.theorem",
-      "text": "\\begin{figure}[htbp]\n\\centering\n\\begin{tikzpicture}[x=1cm,y=1cm]\n\\node[paper box,text width=3.5cm,draw=BurntOrange,fill=BurntOrange!5,minimum height=2.2cm] (s) at (1.9,0) {Paper statement\\\\\\medskip\n$W_{2,P}(A)<\\infty$\\\\$\\Longrightarrow X_B(b)\\notin\\mathbb Q$\\\\\n$B\\subseteq A$ infinite, $b\\ge2$};\n\\node[paper box,text width=3.35cm,draw=MidnightBlue,fill=MidnightBlue!5,minimum height=2.2cm] (l) at (6.55,0) {Ledger row\\\\\\texttt{res:weighted-support}\\\\\\medskip\nexact or stronger\\\\both declarations retained};\n\\node[paper box,text width=3.85cm,draw=ForestGreen,fill=ForestGreen!5] (a) at (11.2,.68) {\\repolink{lean/ErdosProblems/Erdos257/PaperCompleteR8/WeightedReturn.lean}{divisibilityWeighted}\\\\\\repolink{lean/ErdosProblems/Erdos257/PaperCompleteR8/WeightedReturn.lean}{Claim}};\n\\node[paper box,text width=3.85cm,draw=ForestGreen,fill=ForestGreen!5] (b) at (11.2,-.67) {\\repolink{lean/ErdosProblems/Erdos257/PaperCompleteR8/WeightedHereditaryClaim.lean}{finitePrimeWeighted\\_}\\\\\\repolink{lean/ErdosProblems/Erdos257/PaperCompleteR8/WeightedHereditaryClaim.lean}{fixedBase\\_hereditary}};\n\\draw[paper arrow] (s)--(l);\n\\draw[paper arrow] (l.east)--(a.west);\n\\draw[paper arrow] (l.east)--(b.west);\n\\node[paper badge,fill=ForestGreen!8,align=center] at (8.85,-1.65) {Comparator: PalomarCorpus/E257 and E257bc, recorded as compared};\n\\node[paper label] at (8.85,-2.18) {Palomar: prepared; no submission recorded};\n\\node[paper box,text width=6.25cm,draw=BurntOrange,minimum height=1.5cm] at (3.4,-3.3) {Rationality: $\\Delta(N)\\ge1/q$\\\\Averaging: some $\\Delta(N)<1/q$\\\\Incomplete periods require a second average};\n\\node[paper box,text width=6.25cm,draw=Violet,fill=Violet!4,minimum height=1.5cm] at (10.6,-3.3) {False illustrative paraphrase:\\\\``solves Problem 257''\\\\The missing hypothesis needs semantic review};\n\\end{tikzpicture}\n\\caption{The weighted-support statement is joined to both registered declarations; the false paraphrase at lower right illustrates a meaning error and is distinct from the historical edit~8 in Table~\\ref{tab:mutations}.}\n\\label{fig:theorem}\n\\end{figure}",
+      "text": "\\begin{figure}[htbp]\n\\centering\n\\begin{tikzpicture}[x=1cm,y=1cm]\n\\node[paper box,text width=3.5cm,draw=BurntOrange,fill=BurntOrange!5,minimum height=2.3cm] (s) at (1.9,0) {Paper statement\\\\\\medskip\n$W_{2,P}(A)<\\infty$\\\\$\\Longrightarrow X_B(b)\\notin\\mathbb Q$\\\\\n$B\\subseteq A$ infinite, $b\\ge2$};\n\\node[paper box,text width=3.4cm,draw=MidnightBlue,fill=MidnightBlue!5,minimum height=2.3cm] (l) at (6.45,0) {Coverage row\\\\\\texttt{res:weighted-support}\\\\\\medskip\nRecorded status:\\\\exact or stronger\\\\Both listed supports};\n\\node[paper box,text width=3.9cm,draw=ForestGreen,fill=ForestGreen!5,minimum height=1.15cm] (a) at (11.25,.8) {Weighted criterion\\\\fixed-base and all-base\\\\\\repolink{lean/ErdosProblems/Erdos257/PaperCompleteR8/WeightedReturn.lean}{Lean source}};\n\\node[paper box,text width=3.9cm,draw=ForestGreen,fill=ForestGreen!5,minimum height=1.15cm] (b) at (11.25,-.8) {Hereditary criterion\\\\for a fixed base\\\\\\repolink{lean/ErdosProblems/Erdos257/PaperCompleteR8/WeightedHereditaryClaim.lean}{Lean source}};\n\\draw[paper arrow] (s)--(l);\n\\draw[paper arrow] (l.east)--(a.west);\n\\draw[paper arrow] (l.east)--(b.west);\n\\node[paper label] at (4.17,.4) {statement};\n\n\\node[paper badge,fill=ForestGreen!8,align=center] at (7,-1.65) {Comparator: PalomarCorpus/E257 and E257bc, recorded as compared};\n\\node[paper label] at (7,-2.1) {Palomar: prepared, not submitted; full declaration names in Appendix~\\ref{app:repro}};\n\\node[paper box,text width=6.25cm,draw=BurntOrange,minimum height=1.55cm] at (3.4,-3.15) {Rationality: $\\Delta(N)\\ge1/q$\\\\Averaging: some $\\Delta(N)<1/q$\\\\Incomplete periods require\\\\a second average};\n\\node[paper box,text width=6.25cm,draw=Violet,fill=Violet!4,minimum height=1.55cm] at (10.6,-3.15) {False illustrative paraphrase:\\\\``solves Problem 257''\\\\The support hypothesis is missing};\n\\end{tikzpicture}\n\\caption{Both arrows out of the coverage row represent registered supports, with recorded status distinguished from a fresh check; the false paraphrase illustrates a meaning error separate from historical edit~8 in Table~\\ref{tab:mutations}.}\n\\label{fig:theorem}\n\\end{figure}",
       "owner": "systems",
       "class": "reported",
       "evidence_refs": [
@@ -912,11 +914,11 @@
         "packet-support",
         "historical"
       ],
-      "warrant": "Copies declaration paths, status and Comparator entries from the frozen coverage row; the false paraphrase is an explicitly labelled illustration, not an executed mutation.",
-      "statement_sha256": "0a983800ea549cac1cf315fbfde73f0b04f9ffc6542c8c20b1fc3568038d23aa",
+      "warrant": "The native coverage row lists both named declarations, exact_or_stronger status, two recorded Comparator entries and prepared Palomar status. The two Lean source files confirm the descriptive clause labels. Completeness is relative to the registered set, not a claim of logical minimality. The figure is a documentary trace, not a fresh common-pin join, Lean build, Comparator replay or executed false-paraphrase test.",
+      "statement_sha256": "2934aa0daf16696c45d5f77b6ea36c4a0b99a88f4bce7145044ca896e76d531e",
       "section": "sec:example",
       "unit_type": "figure",
-      "caption": "The weighted-support statement is joined to both registered declarations; the false paraphrase at lower right illustrates a meaning error and is distinct from the historical edit M8 in Table~\\ref{tab:mutations}.",
+      "caption": "Both arrows out of the coverage row represent registered supports, with recorded status distinguished from a fresh check; the false paraphrase illustrates a meaning error separate from historical edit~8 in Table~\\ref{tab:mutations}.",
       "figure_title": "One theorem and its recorded support"
     },
     {
@@ -1501,8 +1503,8 @@
     },
     {
       "id": "r13.fig.refinement",
-      "text": "\\begin{figure}[htbp]\n\\centering\n\\begin{tikzpicture}[x=1cm,y=1cm]\n\\node[paper stage,text width=3.65cm,draw=MidnightBlue,fill=MidnightBlue!5] (freeze) at (0,0) {Freeze the inputs\\\\\\small short paper, long record,\\\\statement and source records};\n\\node[paper stage,text width=3.65cm,draw=BurntOrange,fill=BurntOrange!5] (write) at (5.0,0) {Revise the argument\\\\\\small examples, hard step,\\\\proof and reading order};\n\\node[paper stage,text width=3.65cm,draw=Violet,fill=Violet!5] (review) at (10.0,0) {Review and decide\\\\\\small scope and support,\\\\statement relations,\\\\decision and credit};\n\\node[paper stage,text width=3.65cm,draw=MidnightBlue,fill=MidnightBlue!5] (record) at (0,-2.6) {Record the outcome\\\\\\small accepted changes,\\\\reusable lessons and limits};\n\\node[paper stage,text width=3.65cm,draw=MidnightBlue,fill=MidnightBlue!5] (render) at (5.0,-2.6) {Render and inspect\\\\\\small regenerate evidence,\\\\PDFs and reading links};\n\\node[paper stage,text width=3.65cm,draw=MidnightBlue,fill=MidnightBlue!5] (bind) at (10.0,-2.6) {Integrate the sources\\\\\\small restore native parts,\\\\rebind changed statements};\n\\draw[paper arrow] (freeze)--node[paper label,above]{packet} (write);\n\\draw[paper arrow] (write)--node[paper label,above]{proposal} (review);\n\\draw[paper arrow] (review)--node[paper label,right]{reviewed delta} (bind);\n\\draw[paper arrow] (bind)--node[paper label,above]{current records} (render);\n\\draw[paper arrow] (render)--node[paper label,above]{checked artefacts} (record);\n\\draw[paper feedback] (record)--node[paper label,left]{next revision} (freeze);\n\\end{tikzpicture}\n\\caption{The writer returns a proposal against frozen sources. Review precedes integration; rendering and inspection precede the recorded outcome and next revision. Advisory and tool-enabled writers share this acceptance boundary.}\n\\label{fig:refinement}\n\\end{figure}",
-      "statement_sha256": "feffcea8af608ac252eda33f48f3661f79ce9029afc38fe5e7ceaf745129c403",
+      "text": "\\begin{figure}[htbp]\n\\centering\n\\begin{tikzpicture}[x=1cm,y=1cm]\n\\node[paper stage,text width=3.65cm,draw=MidnightBlue,fill=MidnightBlue!5] (freeze) at (0,0) {Freeze the inputs\\\\\\small papers, statements\\\\and source records};\n\\node[paper stage,text width=3.65cm,draw=BurntOrange,fill=BurntOrange!5] (write) at (5.0,0) {Expository revision\\\\\\small wording and order,\\\\examples and figures};\n\\node[paper stage,text width=3.65cm,draw=Violet,fill=Violet!5] (review) at (10.0,0) {Review and decide\\\\\\small meaning and scope,\\\\support and credit};\n\\node[paper stage,text width=3.65cm,draw=MidnightBlue,fill=MidnightBlue!5] (record) at (0,-2.6) {Record the outcome\\\\\\small accepted changes,\\\\reusable lessons and limits};\n\\node[paper stage,text width=3.65cm,draw=MidnightBlue,fill=MidnightBlue!5] (render) at (5.0,-2.6) {Render and inspect\\\\\\small regenerate evidence,\\\\PDFs and reading links};\n\\node[paper stage,text width=3.65cm,draw=MidnightBlue,fill=MidnightBlue!5] (bind) at (10.0,-2.6) {Integrate the sources\\\\\\small restore native parts,\\\\rebind changed statements};\n\\draw[paper arrow] (freeze)--node[paper label,above]{packet} (write);\n\\draw[paper arrow] (write)--node[paper label,above]{edits} (review);\n\\draw[paper arrow] (review)--node[paper label,right]{reviewed delta} (bind);\n\\draw[paper arrow] (bind)--node[paper label,above]{current records} (render);\n\\draw[paper arrow] (render)--node[paper label,above]{checked artefacts} (record);\n\\draw[paper feedback] (record)--node[paper label,left]{next revision} (freeze);\n\\end{tikzpicture}\n\\caption{An exposition assignment returns focused source changes and optional figures for review; the stages describe responsibilities, not necessarily different people, and integration, rendering and the recorded outcome remain separate.}\n\\label{fig:refinement}\n\\end{figure}",
+      "statement_sha256": "2c6a1ae3256431da3182b0e77b012842b77522b0b0a9fea13c0c8e6ea9fb73fe",
       "class": "method",
       "evidence_refs": [
         "writing-contract",
@@ -1510,7 +1512,11 @@
         "native-refinement",
         "packet-dossier"
       ],
-      "warrant": "Reviewed against the public packet/dossier/writer implementations and editorial contract. The figure and role split describe method; code checks exact bytes and edit accounting. Mathematical interpretation, reader benefit and publication acceptance are separate obligations."
+      "warrant": "Depicts the exposition-specific proposal route already stated in the adjacent assignment paragraphs and public writing contract. The writer proposes source changes and optional explanatory figures; review and integration remain distinct responsibilities, without asserting distinct people, fresh mathematics, or a measured reader benefit.",
+      "unit_type": "figure",
+      "caption": "An exposition assignment returns focused source changes and optional figures for review; the stages describe responsibilities, not necessarily different people, and integration, rendering and the recorded outcome remain separate.",
+      "figure_title": "Source-frozen expository refinement",
+      "section": "sec:paper"
     },
     {
       "id": "r13.paper.05",
@@ -1947,14 +1953,14 @@
     },
     {
       "id": "r4.table.mutations",
-      "text": "\\begin{table}[htbp]\n\\centering\\small\n\\begin{tabular}{@{}lp{6.0cm}p{3.5cm}l@{}}\n\\toprule\nEdit & Change & First detector & Outcome\\\\\n\\midrule\nedit~1 & Conditional result labelled proved & Projection freshness & rejected\\\\\nedit~2 & Open-boundary clause deleted & Boundary wording & rejected\\\\\nedit~3 & Declaration coordinate moved & Source coordinates & rejected\\\\\nedit~4 & Paper source link retargeted & Source coordinates & rejected\\\\\nedit~5 & Claim assigned to two families & Registry structure & rejected\\\\\nedit~6 & Module count hand-edited & Projection freshness & rejected\\\\\nedit~7 & \\texttt{native\\_decide} introduced & Proof-trust policy & rejected\\\\\n\\rowcolor{Violet!9}\nedit~8 & ``does not supply\\textquotesingle\\textquotesingle\\ changed to ``completes\\textquotesingle\\textquotesingle & None & escaped\\\\\nedit~9 & Open-problem title mangled & Paper anchoring & rejected\\\\\nedit~10 & Orientation byte budget exceeded & Byte budget & rejected\\\\\n\\bottomrule\n\\end{tabular}\n\\caption{The \\HistoricalEdits{} historical edits and their recorded first detectors; ``proof-trust policy'' refers to this repository's permitted proof mechanisms, not to a general unsoundness claim about \\texttt{native\\_decide}.}\n\\label{tab:mutations}\n\\end{table}",
+      "text": "\\begin{table}[htbp]\n\\centering\\small\n\\begin{tabular}{@{}lp{6.0cm}p{3.5cm}l@{}}\n\\toprule\nEdit & Change & First detector & Outcome\\\\\n\\midrule\nedit~1 & Conditional result labelled proved & Projection freshness & rejected\\\\\nedit~2 & Open-boundary clause deleted & Boundary wording & rejected\\\\\nedit~3 & Declaration coordinate moved & Source coordinates & rejected\\\\\nedit~4 & Paper source link retargeted & Source coordinates & rejected\\\\\nedit~5 & Claim assigned to two families & Registry structure & rejected\\\\\nedit~6 & Module count hand-edited & Projection freshness & rejected\\\\\nedit~7 & \\texttt{native\\_decide} introduced & Proof-trust policy & rejected\\\\\n\\rowcolor{Violet!9}\nedit~8 & ``does not supply\\textquotesingle\\textquotesingle\\ changed to ``completes\\textquotesingle\\textquotesingle & None & \\textbf{escaped}\\\\\nedit~9 & Open-problem title mangled & Paper anchoring & rejected\\\\\nedit~10 & Orientation byte budget exceeded & Byte budget & rejected\\\\\n\\bottomrule\n\\end{tabular}\n\\par\\medskip\n\\begin{minipage}[t]{.45\\linewidth}\n\\textbf{Historical trial: edit 8}\\\\\nThe false completion clause passed all recorded checks.\n\\end{minipage}\\hfill\n\\begin{minipage}[t]{.45\\linewidth}\n\\textbf{Later witness: baseline and edit 8}\\\\\nBaseline accepted, edit 8 rejected; the other \\HistoricalNotRerun{} edits were not rerun.\n\\end{minipage}\n\\caption{The \\HistoricalEdits{} historical edits and their recorded first detectors; ``proof-trust policy'' refers to this repository's permitted proof mechanisms, not to a general unsoundness claim about \\texttt{native\\_decide}.}\n\\label{tab:mutations}\n\\end{table}",
       "owner": "systems",
       "class": "reported",
       "evidence_refs": [
         "historical"
       ],
-      "warrant": "Ten outcomes and first detectors copied from the historical JSON, with short faithful description labels. Additional detectors and times remain in the linked record.",
-      "statement_sha256": "2782a2ba631f9105cddf9929b57f5e47a574d78d98d867e1708a86894d0aa228",
+      "warrant": "The ten outcomes and first detectors remain those in the historical JSON. The adjacent callouts distinguish the escaped historical M8 trial (gate_result all_checks_passed) from the reported later intact-baseline/M8 retest, with the other nine explicitly unrerun. No current sentence-hash pass, fresh execution, general reliability rate or post-repair ten-of-ten result is inferred.",
+      "statement_sha256": "81a3eeff6beec67c3e6c5bc67f5527c924f00664bdb6f11967dc225568f45bbd",
       "section": "sec:instance",
       "unit_type": "table"
     },
@@ -2423,7 +2429,7 @@
     },
     {
       "id": "r4.repro1.01",
-      "text": "This revision builds on the frozen manuscript and evidence packet recorded at \\texttt{ced96e58b337}, a local integration commit rather than public main.",
+      "text": "The initial unified manuscript was prepared from the frozen packet at \\texttt{ced96e58b337}, a local integration commit rather than public main.",
       "owner": "systems",
       "class": "reported",
       "evidence_refs": [
@@ -2432,8 +2438,8 @@
         "world-limits",
         "strategy-limits"
       ],
-      "warrant": "Reports packet source identity and inherited URL pin as distinct. The return manifest checks the packet-level commit assertion; existing hyperlinks are not evidence of public landing.",
-      "statement_sha256": "89525be9c72198ed7232573700ae143ec4a2cec1ad2c14d395d1e452e7830a0e",
+      "warrant": "Clarifies the historical provenance already carried by the incoming manuscript and ledger. The initial unified manuscript derives from ced96e58; that identifier is not presented as the current packet commit, a fresh execution pin or a public-landing receipt. Current packet identity is recorded in the returned manifest accounting.",
+      "statement_sha256": "e04a86cf5af640917a43a4accc40489673e911d0af77b50a9f68316124643e22",
       "section": "app:repro"
     },
     {
@@ -2453,7 +2459,7 @@
     },
     {
       "id": "r4.repro1.03",
-      "text": "The two companion manuscripts remain unchanged provenance inputs for this consolidation.",
+      "text": "The two companion manuscripts are retained as unchanged provenance for the unified account.",
       "owner": "systems",
       "class": "reported",
       "evidence_refs": [
@@ -2462,8 +2468,8 @@
         "world-limits",
         "strategy-limits"
       ],
-      "warrant": "Reports packet source identity and inherited URL pin as distinct. The return manifest checks the packet-level commit assertion; existing hyperlinks are not evidence of public landing.",
-      "statement_sha256": "20dd046ab4f6fd3f0b5232b996cf222aee59aa7294b1d65b41c67fe61d4874c4",
+      "warrant": "The incoming unified account retains two companion provenance sources; they remain unchanged in this focused editorial return, which does not repeat their consolidation or perform corpus retirement.",
+      "statement_sha256": "481840bf8bc6b3e44b5bbf90f2c0927fe3ddd9b5b81b88c2baa610a35dd8565d",
       "section": "app:repro"
     },
     {
@@ -2579,7 +2585,7 @@
     },
     {
       "id": "r4.repro3.04",
-      "text": "The frozen packet omits the Lean checkout and several full-repository inputs, so source-binding validation here is not a replay of those broader checks.",
+      "text": "The editorial packet supplies selected Lean sources, rather than a complete buildable checkout; source-binding validation does not replay the Lean build, Comparator or the full repository release checks.",
       "owner": "systems",
       "class": "method",
       "evidence_refs": [
@@ -2589,8 +2595,8 @@
         "world-authority",
         "strategy-protocol"
       ],
-      "warrant": "Names actual reproduction roles and preserves all nine required evidence anchors as meaningful links. Packet omissions and command results are independently recorded in the return audit.",
-      "statement_sha256": "62a74b4554b3e1b1ea006549a81f75785f6e93f92745725a2bed4f4d2ad41ad2",
+      "warrant": "The supplied packet inventory includes selected Lean files but is not a complete buildable repository. The sentence checker only validates declared bytes and support records; it runs no Lean, Comparator or repository release process. Exact local execution and unavailable-check details belong to RETURN.json, not to inherited formal status.",
+      "statement_sha256": "227c92b2cf90dad93e3f1b43ef18b3080001fa952205e4da06aee80d211ceb98",
       "section": "app:repro"
     },
     {
@@ -2663,7 +2669,7 @@
       "id": "lifecycle",
       "title": "The life of one claim",
       "sentence_unit": "r4.fig.lifecycle",
-      "caption": "The life of one claim: arrows name the objects exchanged, the short and long accounts remain linked, and colours distinguish kinds of responsibility throughout the paper.",
+      "caption": "The life of one claim: arrows name the objects exchanged, and the blue evidence join checks the recorded support relation rather than executing a new formal proof; the short and long accounts remain linked.",
       "source_refs": [
         "packet-dossier",
         "packet-support",
@@ -2672,7 +2678,7 @@
         "credit",
         "strategy-protocol"
       ],
-      "body_sha256": "21c9e9171e2aa80c534a08f11cffe922eda061bcab817eb8b7ff9ec37968d951"
+      "body_sha256": "36fd0326a97587c5ffc6ba70d7853dc20b88883e2261c47b74e9eae2489f7267"
     },
     {
       "id": "world",
@@ -2691,7 +2697,7 @@
       "id": "theorem",
       "title": "One theorem and its recorded support",
       "sentence_unit": "r4.fig.theorem",
-      "caption": "The weighted-support statement is joined to both registered declarations; the false paraphrase at lower right illustrates a meaning error and is distinct from the historical edit M8 in Table~\\ref{tab:mutations}.",
+      "caption": "Both arrows out of the coverage row represent registered supports, with recorded status distinguished from a fresh check; the false paraphrase illustrates a meaning error separate from historical edit~8 in Table~\\ref{tab:mutations}.",
       "source_refs": [
         "257-statement",
         "257-proof",
@@ -2699,7 +2705,7 @@
         "packet-support",
         "historical"
       ],
-      "body_sha256": "7ba9bb25ef9df7f213264f140ca3887702eef04ed8936114de7b22a3671d8138"
+      "body_sha256": "7b97d622e4672750522ceced12a51327a05cc5df18eb5ba12daed9b4b126536d"
     },
     {
       "id": "checks",
@@ -2714,6 +2720,19 @@
         "world-authority"
       ],
       "body_sha256": "46409ef33633d2a77362c2419746e46918ec6f145498aae5c1f1e09bc1b4992e"
+    },
+    {
+      "id": "refinement",
+      "title": "Source-frozen expository refinement",
+      "sentence_unit": "r13.fig.refinement",
+      "caption": "An exposition assignment returns focused source changes and optional figures for review; the stages describe responsibilities, not necessarily different people, and integration, rendering and the recorded outcome remain separate.",
+      "source_refs": [
+        "writing-contract",
+        "native-writer",
+        "native-refinement",
+        "packet-dossier"
+      ],
+      "body_sha256": "11235689db6c70bb1ae2a4c645b3a2dc4027a9dd9cca732b3298cb089a0c4918"
     },
     {
       "id": "contribute",

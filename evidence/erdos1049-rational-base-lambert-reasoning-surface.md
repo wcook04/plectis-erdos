@@ -1,12 +1,12 @@
 # Formal evidence: Geometric Moments and Rational Lambert Values:\\Proofs and Further Results
 
-This record belongs to the paper [erdos1049-rational-base-lambert-reasoning-surface.pdf](../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.pdf). For every result it lists the Lean declarations that state it, and the independent Comparator check where there is one. The margin marks in the paper link here.
+This record belongs to the paper [erdos1049-rational-base-lambert-reasoning-surface.pdf](../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.pdf). For every result it lists the Lean declarations that state it, and the recorded Comparator check where there is one. The inline links and margin marks in the paper use the same result mapping.
 
 - **Lean.** Every declaration is quoted from [plectis-erdos](https://github.com/wcook04/plectis-erdos) at commit [`436f55ebdafa`](https://github.com/wcook04/plectis-erdos/tree/436f55ebdafa67e4af0fff79f621c13f2ded12bf) and is checked there by Lean's kernel (`leanprover/lean4:v4.29.1`, Mathlib `5e932f97dd25`).
 - **Comparator.** For a compared result, each declaration was stated a second time, from Mathlib alone, as a *Challenge* in [plectis-erdos-lean](https://github.com/wcook04/plectis-erdos-lean), and a *Solution* that uses our proof was checked against it by [Comparator](https://github.com/leanprover/comparator), which also confirms that only the axioms `propext`, `Quot.sound`, `Classical.choice` are used. All checks below come from replay run [35935225572](https://github.com/wcook04/plectis-erdos-lean/actions/runs/35935225572) at corpus commit [`cc7e541cf208`](https://github.com/wcook04/plectis-erdos-lean/tree/cc7e541cf2081c6fef5a5e377d52e365e33b01eb) (tag `paper-evidence-2026-09-24`); both the default Lean kernel and the independent `nanoda` kernel accepted every entry. The replay's own report for each entry is kept in this repository and linked from each check. A Challenge shows `sorry` because it states the target without proving it.
 - **Counts.** 41 results: 37 with a Lean proof of the whole statement, 0 whose Lean proof assumes a named input (marked with a dagger), 4 without a Lean proof of the whole statement; 37 compared.
 
-These checks establish that the stated propositions are proved. Whether each is the right proposition is for the reader to judge against the paper's statement, which is reproduced below.
+These checks establish that the stated propositions are proved. Whether each is the right proposition is for the reader to judge against the paper's statement, which is reproduced below. Comparator checks separately declared statements, the axiom budget and kernel acceptance; it does not establish novelty, significance or peer review.
 
 <a id="long1049-res-omega-indicator"></a>
 
@@ -965,7 +965,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long1049-thm-calibrated-denominators"></a>
 
-## Passage (beginning “long1049:thm:calibrated-denominators…”), page 37
+## Passage (beginning “long1049:thm:calibrated-denominators…”), page 38
 
 > *Remark 3* (exact denominators of the calibrated moments). Let $`q_0=2/3`$ and $`\delta_n=3^{n+1}-2^{n+1}`$. For every $`n\ge1`$, the reduced denominators are
 > ``` math
@@ -1041,7 +1041,7 @@ theorem coefficientPencil_finitePencil {p : ℝ} (hp : 1 < p) :
 
 <a id="long1049-res-content"></a>
 
-## Theorem 4.1 (rescaling rows and their determinant), page 46
+## Theorem 4.1 (rescaling rows and their determinant), page 47
 
 > *Let $`S`$ be real, let $`(U_n,V_n)`$ and $`(U_m,V_m)`$ be pairs of integers, and let $`c_n,c_m`$ be integers. Then
 > ``` math
@@ -1086,7 +1086,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long1049-res-endpoints"></a>
 
-## Theorem 5.1 (endpoint residues), page 47
+## Theorem 5.1 (endpoint residues), page 48
 
 > *Let $`P=\sum_ip_iX^i\in\mathbb{Z}[X]`$ and let $`W\ge0`$. Then
 > ``` math
@@ -1121,7 +1121,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long1049-res-commonmult"></a>
 
-## Proposition 5.3 (common divisor), page 48
+## Proposition 5.3 (common divisor), page 49
 
 > *Let $`U,V\in\mathbb{Z}[X]`$ and let $`W\ge0`$. If $`U`$ has unit top endpoint, $`V`$ has unit constant endpoint, and an integer $`c`$ divides both $`H_W(U)`$ and $`H_W(V)`$, then
 > ``` math
@@ -1239,7 +1239,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long1049-res-jetkernel"></a>
 
-## Theorem 5.8 (equal residues for two subset sums), page 50
+## Theorem 5.8 (equal residues for two subset sums), page 51
 
 > *Fix a truncation index $`W`$ and depths $`R,S`$, and let $`(U_j,V_j)_{j<M}`$ be any $`M`$ pairs of integral polynomials. Represent each subset of $`\{0,\dots,M-1\}`$ by its indicator vector in $`\{0,1\}^M`$. If the $`2^M`$ subsets outnumber the possible residue vectors in
 > ``` math
@@ -1310,7 +1310,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long1049-res-boundedfibre"></a>
 
-## Theorem 5.10 (equal residues with different values), page 51
+## Theorem 5.10 (equal residues with different values), page 52
 
 > *Let $`A`$ and $`B`$ be finite sets, let $`f:A\to B`$, and let $`g:A\to C`$ be any map into a set $`C`$. Suppose every fibre of $`g`$ has at most $`k`$ elements. If
 > ``` math
@@ -1388,7 +1388,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long1049-res-plucker-collapse"></a>
 
-## Theorem 5.12 (vanishing minors and a residue count), page 52
+## Theorem 5.12 (vanishing minors and a residue count), page 53
 
 > *Let $`R_0`$ be a commutative ring and let $`w_n=(A_n,B_n)\in R_0^2`$. Suppose that each row is unimodular, meaning that $`u_nA_n+v_nB_n=1`$ for some $`u_n,v_n\in R_0`$, and that every adjacent minor vanishes:
 > ``` math
@@ -1466,7 +1466,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long1049-res-corridorbound"></a>
 
-## Theorem 6.2 (a necessary inequality for clearing), page 55
+## Theorem 6.2 (a necessary inequality for clearing), page 56
 
 > *If $`(a,b,N,K,Q,D)`$ satisfies the clearing conditions, then
 > ``` math
@@ -1496,7 +1496,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long1049-res-exp"></a>
 
-## Proposition 6.4, page 56
+## Proposition 6.4, page 57
 
 > *For every natural number $`x\ge2`$ we have $`3x<2^{\,x+1}`$.*
 
@@ -1521,7 +1521,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long1049-res-nocorridor"></a>
 
-## Theorem 6.5 (failure of the stated clearing conditions at $`3/2`$), page 56
+## Theorem 6.5 (failure of the stated clearing conditions at $`3/2`$), page 57
 
 > *For all $`N\ge1`$ and $`K\ge1`$ and all natural $`Q,D`$, the tuple $`(3,2,N,K,Q,D)`$ does not satisfy the clearing conditions.*
 
@@ -1639,7 +1639,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long1049-res-pade"></a>
 
-## Proposition 9.1 (exponent model: summand bound and exact gap), page 59
+## Proposition 9.1 (exponent model: summand bound and exact gap), page 60
 
 > *Let $`\widetilde{E}_n=3n^{2}-n`$ and put
 > ``` math
@@ -1685,7 +1685,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long1049-res-tail-lattice"></a>
 
-## Proposition 10.3 (the prefix lattice of the tails), page 65
+## Proposition 10.3 (the prefix lattice of the tails), page 66
 
 > *Every $`Q_m`$ is coprime to $`ab`$, and $`b`$ divides every $`P_m`$. For every prefix containing $`m=0`$ and $`m=1`$,
 > ``` math

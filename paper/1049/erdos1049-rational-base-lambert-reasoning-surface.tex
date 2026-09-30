@@ -1831,10 +1831,18 @@ The tuple $k_i=i$ contributes
  q^{B_N}\Delta_N\prod_{i<N}a_i,\qquad
  \Delta_N=\prod_{d=1}^{N-1}(1-q^d)^{2(N-d)}.
 \]
-For any other tuple, write $k_i=i+\lambda_i$ and put
-$\mu_j=\lambda_{N-j}$ for $1\le j\le N$. Then
+Subtracting the baseline tuple gives shifts $\lambda_i=k_i-i$.
+They are nonnegative and weakly increasing, since
+$k_{i+1}\ge k_i+1$. Reversing them gives a partition. For example,
+at rank four,
+\[
+ \underbrace{(0,1,3,5)}_{(k_i)}
+ \longmapsto\underbrace{(0,0,1,2)}_{(\lambda_i)}
+ \longmapsto\underbrace{(2,1,0,0)}_{(\mu_j)}.
+\]
+In general, put $\mu_j=\lambda_{N-j}$ for $1\le j\le N$, so that
 $\mu_1\ge\cdots\ge\mu_N\ge0$. Division by the contribution of
-$k_i=i$ turns its summand into
+$k_i=i$ turns the summand for this tuple into
 \begin{equation}\label{long1049:eq:polynomial-partition}
 \begin{split}
  W_N(\mu)={}&q^{\sum_{j\le N}(2j-1)\mu_j}
@@ -1845,6 +1853,11 @@ $k_i=i$ turns its summand into
 \end{equation}
 Set $W_N(\mu)=0$ when $\mu$ has more than $N$ positive parts,
 so that the index set of the sum is independent of $N$.
+A fixed partition shifts only the last indices of the baseline tuple:
+$(2,1)$ shifts its last two indices, whatever the rank $N\ge2$.
+The fixed-shift hypothesis will therefore give a limit for each
+partition. To pass to the sum, we first use the uniform polynomial
+bound in the other hypothesis.
 
 For a partition of length $\ell$, only the factors with $j\le\ell$
 can differ from $1$. For each such $j$, the denominator product in
@@ -1863,11 +1876,15 @@ Dropping the ordering of the positive parts, we obtain
  &\le(CP^{-2}A)^\ell q^{\ell^2}.
 \end{align*}
 The last inequality follows from
-$q^{(2j-1)u}\le q^{2j-1}q^{u-1}$. Summing over $\ell$ gives a
-finite bound, uniform in the determinant rank.
+$q^{(2j-1)u}\le q^{2j-1}q^{u-1}$ and
+$1+3+\cdots+(2\ell-1)=\ell^2$. Thus the cost of having $\ell$
+positive parts gives a factor $q^{\ell^2}$, and summing over $\ell$
+gives a finite bound, uniform in the determinant rank.
 
-For each fixed partition, all the weight ratios in
-\eqref{long1049:eq:polynomial-partition} tend to $1$. Its Vandermonde quotient
+For a fixed partition of length $\ell$, the shifts $\mu_j$
+are fixed and the indices $N-j$ tend to infinity for $j\le\ell$.
+Hence all the weight ratios in \eqref{long1049:eq:polynomial-partition} tend to $1$.
+Its Vandermonde quotient
 also converges: there are only finitely many nontrivial first indices,
 and the logarithms of the remaining factors have geometric tails.
 Dominated convergence therefore reduces the limit of
@@ -2074,6 +2091,9 @@ It follows that
 \[
  b_k^{(3)}=E^3\left(\binom{k+2}{2}-3L(k+1)\right)+O_q(1).
 \]
+Dividing the correction $-3L(k+1)$ by the leading term
+$\binom{k+2}{2}$ gives the relative correction $-6L/(k+2)$.
+The two-fold convolution contributes $-2L/(k+1)$ in the same way.
 Since $(q;q)_k=P(1+O_q(q^k))$ and
 $c_k=(k+1)^2(k+2)/2$, multiplication yields
 \begin{align*}
@@ -2092,7 +2112,10 @@ Theorem~\ref{long1049:thm:geometric-universality} applies.
 Positivity of $a_k$ and summability of
 $\log(a_k/c_k)+8L/(k+1)=O_q((k+1)^{-2})$
 show that $\mathcal A(q)$ converges to a positive number.
-Using $\sum_{k<N}(k+1)^{-1}=\log N+\gamma_{\!E}+o(1)$, we obtain
+In the logarithm of the product, the first-order term contributes
+$-8L\sum_{k<N}(k+1)^{-1}$, while the summable remainder contributes
+a finite constant. Using
+$\sum_{k<N}(k+1)^{-1}=\log N+\gamma_{\!E}+o(1)$, we obtain
 \[
  \prod_{k<N}a_k\sim\mathcal A(q)C_NN^{-8L}.
 \]
@@ -4844,8 +4867,8 @@ mathematical review or endorsement of the results here.
 \appendix
 \section{Guide to the formal sources}\label{long1049:app:index}
 
-The margin links identify the supplied Lean declarations and their
-recorded Comparator comparisons. The
+The links beside each statement and in the margin identify the supplied
+Lean declarations and their recorded Comparator comparisons. The
 \href{\evidencerecordurl}{evidence record} lists those checks;
 no fresh execution or independent review of this revision is
 reported. Theorem~\ref{long1049:thm:geometric-universality}

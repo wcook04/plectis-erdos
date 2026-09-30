@@ -19,14 +19,14 @@
 \author{Will Cook}
 \date{29 September 2026}
 % BEGIN generated_pipeline_counts
-\newcommand{\LedgerRows}{693}
-\newcommand{\LedgerExact}{502}
+\newcommand{\LedgerRows}{689}
+\newcommand{\LedgerExact}{498}
 \newcommand{\LedgerSpecialising}{142}
 \newcommand{\LedgerNamedInput}{23}
 \newcommand{\LedgerNoLean}{26}
-\newcommand{\LedgerWithLean}{667}
-\newcommand{\LedgerFormal}{644}
-\newcommand{\LedgerCompared}{620}
+\newcommand{\LedgerWithLean}{663}
+\newcommand{\LedgerFormal}{640}
+\newcommand{\LedgerCompared}{616}
 \newcommand{\LedgerQueued}{24}
 \newcommand{\LeanModules}{1,903}
 \newcommand{\Claims}{160}
@@ -85,7 +85,7 @@ We locate the resulting division between automated checks and the interpretation
 \section{Introduction}\label{sec:intro}
 \papersectiontarget{systems-lifecycle}
 % SENTENCE r4.intro1.01
-A formal theorem can outlive the session in which it was proved, yet its hypotheses, motivation and relation to an open question may be lost when it is turned into prose.
+The weighted criterion in Section~\ref{sec:example} concerns reciprocal Mersenne subseries. A summary that drops its support hypothesis would claim a solution of the arbitrary-support question, which remains open, even with the Lean theorem and its source link unchanged.
 % END SENTENCE r4.intro1.01
 % SENTENCE r4.intro1.02
 We organise the research around a persistent problem world: the question, its sources, the formal and computational work already done, and the precise obligations that survive.
@@ -100,7 +100,7 @@ Figure~\ref{fig:lifecycle} follows one claim from that world to a paper and back
 \begin{tikzpicture}[x=1cm,y=1cm]
 \node[paper stage,draw=MidnightBlue,fill=MidnightBlue!5,text width=2.05cm] (w) at (0,0) {Problem world\\\small sources and results};
 \node[paper stage,draw=MidnightBlue,fill=MidnightBlue!5,text width=2.05cm] (c) at (2.9,0) {Registered claim\\\small status and supports};
-\node[paper stage,draw=ForestGreen,fill=ForestGreen!5,text width=2.05cm] (j) at (5.8,0) {Evidence join\\\small Lean and Comparator};
+\node[paper stage,draw=MidnightBlue,fill=MidnightBlue!5,text width=2.05cm] (j) at (5.8,0) {Evidence join\\\small all registered supports};
 \node[paper stage,draw=BurntOrange,fill=BurntOrange!5,text width=2.05cm] (p) at (8.7,0) {Short paper\\$\updownarrow$\\Long record};
 \node[paper stage,draw=Violet,fill=Violet!5,text width=2.05cm] (r) at (11.6,0) {Readers\\\small review and reuse};
 \draw[paper arrow] (w)--(c);
@@ -119,7 +119,7 @@ Figure~\ref{fig:lifecycle} follows one claim from that world to a paper and back
 \textcolor{BurntOrange}{Authored account}\quad
 \textcolor{Violet}{Review and judgement}};
 \end{tikzpicture}
-\caption{The life of one claim: arrows name the objects exchanged, the short and long accounts remain linked, and colours distinguish kinds of responsibility throughout the paper.}
+\caption{The life of one claim: arrows name the objects exchanged, and the blue evidence join checks the recorded support relation rather than executing a new formal proof; the short and long accounts remain linked.}
 \label{fig:lifecycle}
 \end{figure}
 % END SENTENCE r4.fig.lifecycle
@@ -131,7 +131,7 @@ Erd\H{o}s Problems supplies the questions and their public discussion, while Lea
 Blueprints already connect exposition to declarations~\cite{leanblueprint,leanarchitect}, and persistent problem records and open agent collaboration have antecedents in ETP and Prove2Me~\cite{etp,prove2me}.
 % END SENTENCE r4.intro2.02
 % SENTENCE r4.intro2.03
-Our publication tools add a check of the complete registered support set and bind the surrounding prose, including explanations and limitations, to specified source bytes.
+The publication tools check whether the supplied evidence covers every registered support at the required revision, and bind the surrounding explanations and limitations to specified source bytes.
 % END SENTENCE r4.intro2.03
 
 % SENTENCE r14.agmai.intro
@@ -213,7 +213,7 @@ The weighted-support theorem of the Problem~257 paper states that, if
 then $X_B(b)$ is irrational for every integer $b\ge2$ and every infinite $B\subseteq A$~\cite[Theorem~1.2]{paper257}.
 % END SENTENCE r4.example1.03
 % SENTENCE r4.example1.04
-The paper also gives a fixed-base version with $2$ replaced by $b$ in the hypothesis; the recorded Lean support for both clauses is shown in Figure~\ref{fig:theorem}.
+The paper also gives a fixed-base version with $2$ replaced by $b$ in the hypothesis. Figure~\ref{fig:theorem} shows both registered Lean supports; their recorded status is not a fresh join, build or Comparator replay.
 % END SENTENCE r4.example1.04
 % SENTENCE r4.example1.05
 The arbitrary infinite-support question in base two remains open.
@@ -223,22 +223,24 @@ The arbitrary infinite-support question in base two remains open.
 \begin{figure}[htbp]
 \centering
 \begin{tikzpicture}[x=1cm,y=1cm]
-\node[paper box,text width=3.5cm,draw=BurntOrange,fill=BurntOrange!5,minimum height=2.2cm] (s) at (1.9,0) {Paper statement\\\medskip
+\node[paper box,text width=3.5cm,draw=BurntOrange,fill=BurntOrange!5,minimum height=2.3cm] (s) at (1.9,0) {Paper statement\\\medskip
 $W_{2,P}(A)<\infty$\\$\Longrightarrow X_B(b)\notin\mathbb Q$\\
 $B\subseteq A$ infinite, $b\ge2$};
-\node[paper box,text width=3.35cm,draw=MidnightBlue,fill=MidnightBlue!5,minimum height=2.2cm] (l) at (6.55,0) {Ledger row\\\texttt{res:weighted-support}\\\medskip
-exact or stronger\\both declarations retained};
-\node[paper box,text width=3.85cm,draw=ForestGreen,fill=ForestGreen!5] (a) at (11.2,.68) {\repolink{lean/ErdosProblems/Erdos257/PaperCompleteR8/WeightedReturn.lean}{divisibilityWeighted}\\\repolink{lean/ErdosProblems/Erdos257/PaperCompleteR8/WeightedReturn.lean}{Claim}};
-\node[paper box,text width=3.85cm,draw=ForestGreen,fill=ForestGreen!5] (b) at (11.2,-.67) {\repolink{lean/ErdosProblems/Erdos257/PaperCompleteR8/WeightedHereditaryClaim.lean}{finitePrimeWeighted\_}\\\repolink{lean/ErdosProblems/Erdos257/PaperCompleteR8/WeightedHereditaryClaim.lean}{fixedBase\_hereditary}};
+\node[paper box,text width=3.4cm,draw=MidnightBlue,fill=MidnightBlue!5,minimum height=2.3cm] (l) at (6.45,0) {Coverage row\\\texttt{res:weighted-support}\\\medskip
+Recorded status:\\exact or stronger\\Both listed supports};
+\node[paper box,text width=3.9cm,draw=ForestGreen,fill=ForestGreen!5,minimum height=1.15cm] (a) at (11.25,.8) {Weighted criterion\\fixed-base and all-base\\\repolink{lean/ErdosProblems/Erdos257/PaperCompleteR8/WeightedReturn.lean}{Lean source}};
+\node[paper box,text width=3.9cm,draw=ForestGreen,fill=ForestGreen!5,minimum height=1.15cm] (b) at (11.25,-.8) {Hereditary criterion\\for a fixed base\\\repolink{lean/ErdosProblems/Erdos257/PaperCompleteR8/WeightedHereditaryClaim.lean}{Lean source}};
 \draw[paper arrow] (s)--(l);
 \draw[paper arrow] (l.east)--(a.west);
 \draw[paper arrow] (l.east)--(b.west);
-\node[paper badge,fill=ForestGreen!8,align=center] at (8.85,-1.65) {Comparator: PalomarCorpus/E257 and E257bc, recorded as compared};
-\node[paper label] at (8.85,-2.18) {Palomar: prepared; no submission recorded};
-\node[paper box,text width=6.25cm,draw=BurntOrange,minimum height=1.5cm] at (3.4,-3.3) {Rationality: $\Delta(N)\ge1/q$\\Averaging: some $\Delta(N)<1/q$\\Incomplete periods require a second average};
-\node[paper box,text width=6.25cm,draw=Violet,fill=Violet!4,minimum height=1.5cm] at (10.6,-3.3) {False illustrative paraphrase:\\``solves Problem 257''\\The missing hypothesis needs semantic review};
+\node[paper label] at (4.17,.4) {statement};
+
+\node[paper badge,fill=ForestGreen!8,align=center] at (7,-1.65) {Comparator: PalomarCorpus/E257 and E257bc, recorded as compared};
+\node[paper label] at (7,-2.1) {Palomar: prepared, not submitted; full declaration names in Appendix~\ref{app:repro}};
+\node[paper box,text width=6.25cm,draw=BurntOrange,minimum height=1.55cm] at (3.4,-3.15) {Rationality: $\Delta(N)\ge1/q$\\Averaging: some $\Delta(N)<1/q$\\Incomplete periods require\\a second average};
+\node[paper box,text width=6.25cm,draw=Violet,fill=Violet!4,minimum height=1.55cm] at (10.6,-3.15) {False illustrative paraphrase:\\``solves Problem 257''\\The support hypothesis is missing};
 \end{tikzpicture}
-\caption{The weighted-support statement is joined to both registered declarations; the false paraphrase at lower right illustrates a meaning error and is distinct from the historical edit~8 in Table~\ref{tab:mutations}.}
+\caption{Both arrows out of the coverage row represent registered supports, with recorded status distinguished from a fresh check; the false paraphrase illustrates a meaning error separate from historical edit~8 in Table~\ref{tab:mutations}.}
 \label{fig:theorem}
 \end{figure}
 % END SENTENCE r4.fig.theorem
@@ -432,20 +434,20 @@ An exposition assignment preserves the established hypotheses, conclusions and e
 \begin{figure}[htbp]
 \centering
 \begin{tikzpicture}[x=1cm,y=1cm]
-\node[paper stage,text width=3.65cm,draw=MidnightBlue,fill=MidnightBlue!5] (freeze) at (0,0) {Freeze the inputs\\\small short paper, long record,\\statement and source records};
-\node[paper stage,text width=3.65cm,draw=BurntOrange,fill=BurntOrange!5] (write) at (5.0,0) {Revise the argument\\\small examples, hard step,\\proof and reading order};
-\node[paper stage,text width=3.65cm,draw=Violet,fill=Violet!5] (review) at (10.0,0) {Review and decide\\\small scope and support,\\statement relations,\\decision and credit};
+\node[paper stage,text width=3.65cm,draw=MidnightBlue,fill=MidnightBlue!5] (freeze) at (0,0) {Freeze the inputs\\\small papers, statements\\and source records};
+\node[paper stage,text width=3.65cm,draw=BurntOrange,fill=BurntOrange!5] (write) at (5.0,0) {Expository revision\\\small wording and order,\\examples and figures};
+\node[paper stage,text width=3.65cm,draw=Violet,fill=Violet!5] (review) at (10.0,0) {Review and decide\\\small meaning and scope,\\support and credit};
 \node[paper stage,text width=3.65cm,draw=MidnightBlue,fill=MidnightBlue!5] (record) at (0,-2.6) {Record the outcome\\\small accepted changes,\\reusable lessons and limits};
 \node[paper stage,text width=3.65cm,draw=MidnightBlue,fill=MidnightBlue!5] (render) at (5.0,-2.6) {Render and inspect\\\small regenerate evidence,\\PDFs and reading links};
 \node[paper stage,text width=3.65cm,draw=MidnightBlue,fill=MidnightBlue!5] (bind) at (10.0,-2.6) {Integrate the sources\\\small restore native parts,\\rebind changed statements};
 \draw[paper arrow] (freeze)--node[paper label,above]{packet} (write);
-\draw[paper arrow] (write)--node[paper label,above]{proposal} (review);
+\draw[paper arrow] (write)--node[paper label,above]{edits} (review);
 \draw[paper arrow] (review)--node[paper label,right]{reviewed delta} (bind);
 \draw[paper arrow] (bind)--node[paper label,above]{current records} (render);
 \draw[paper arrow] (render)--node[paper label,above]{checked artefacts} (record);
 \draw[paper feedback] (record)--node[paper label,left]{next revision} (freeze);
 \end{tikzpicture}
-\caption{The writer returns a proposal against frozen sources. Review precedes integration; rendering and inspection precede the recorded outcome and next revision. Advisory and tool-enabled writers share this acceptance boundary.}
+\caption{An exposition assignment returns focused source changes and optional figures for review; the stages describe responsibilities, not necessarily different people, and integration, rendering and the recorded outcome remain separate.}
 \label{fig:refinement}
 \end{figure}
 % END SENTENCE r13.fig.refinement
@@ -593,11 +595,20 @@ edit~5 & Claim assigned to two families & Registry structure & rejected\\
 edit~6 & Module count hand-edited & Projection freshness & rejected\\
 edit~7 & \texttt{native\_decide} introduced & Proof-trust policy & rejected\\
 \rowcolor{Violet!9}
-edit~8 & ``does not supply\textquotesingle\textquotesingle\ changed to ``completes\textquotesingle\textquotesingle & None & escaped\\
+edit~8 & ``does not supply\textquotesingle\textquotesingle\ changed to ``completes\textquotesingle\textquotesingle & None & \textbf{escaped}\\
 edit~9 & Open-problem title mangled & Paper anchoring & rejected\\
 edit~10 & Orientation byte budget exceeded & Byte budget & rejected\\
 \bottomrule
 \end{tabular}
+\par\medskip
+\begin{minipage}[t]{.45\linewidth}
+\textbf{Historical trial: edit 8}\\
+The false completion clause passed all recorded checks.
+\end{minipage}\hfill
+\begin{minipage}[t]{.45\linewidth}
+\textbf{Later witness: baseline and edit 8}\\
+Baseline accepted, edit 8 rejected; the other \HistoricalNotRerun{} edits were not rerun.
+\end{minipage}
 \caption{The \HistoricalEdits{} historical edits and their recorded first detectors; ``proof-trust policy'' refers to this repository's permitted proof mechanisms, not to a general unsoundness claim about \texttt{native\_decide}.}
 \label{tab:mutations}
 \end{table}
@@ -743,13 +754,13 @@ The present contribution is an inspectable route through the records: a reader c
 \appendix
 \section{Inspection and reproduction}\label{app:repro}
 % SENTENCE r4.repro1.01
-This revision builds on the frozen manuscript and evidence packet recorded at \texttt{ced96e58b337}, a local integration commit rather than public main.
+The initial unified manuscript was prepared from the frozen packet at \texttt{ced96e58b337}, a local integration commit rather than public main.
 % END SENTENCE r4.repro1.01
 % SENTENCE r4.repro1.02
 Source links in this revision point to \texttt{7308896010e6b527d283dfdd0687a717a6183fb6}; the Comparator links below identify their separate recorded runs.
 % END SENTENCE r4.repro1.02
 % SENTENCE r4.repro1.03
-The two companion manuscripts remain unchanged provenance inputs for this consolidation.
+The two companion manuscripts are retained as unchanged provenance for the unified account.
 % END SENTENCE r4.repro1.03
 
 % SENTENCE r4.repro2.01
@@ -779,7 +790,7 @@ The record at \repolink{docs/publication_evidence.json}{docs/publication\_eviden
 Formal entry points include \repolink{lean/Erdos249257.lean}{Erdos249257.lean} and \repolink{.github/workflows/lean.yml}{.github/workflows/lean.yml}; the curated assertions are in \repolink{docs/claims.json}{docs/claims.json}, and \repolink{scripts/check_release.py}{scripts/check\_release.py} runs the release gate.
 % END SENTENCE r4.repro3.03
 % SENTENCE r4.repro3.04
-The frozen packet omits the Lean checkout and several full-repository inputs, so source-binding validation here is not a replay of those broader checks.
+The editorial packet supplies selected Lean sources, rather than a complete buildable checkout; source-binding validation does not replay the Lean build, Comparator or the full repository release checks.
 % END SENTENCE r4.repro3.04
 
 % SENTENCE r4.repro4.01

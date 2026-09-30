@@ -1,12 +1,12 @@
 # Formal evidence: Running least common multiples:\\distinct heights and repeated sums
 
-This record belongs to the paper [erdos269-running-lcm-reasoning-surface.pdf](../paper/269/erdos269-running-lcm-reasoning-surface.pdf). For every result it lists the Lean declarations that state it, and the independent Comparator check where there is one. The margin marks in the paper link here.
+This record belongs to the paper [erdos269-running-lcm-reasoning-surface.pdf](../paper/269/erdos269-running-lcm-reasoning-surface.pdf). For every result it lists the Lean declarations that state it, and the recorded Comparator check where there is one. The inline links and margin marks in the paper use the same result mapping.
 
 - **Lean.** Every declaration is quoted from [plectis-erdos](https://github.com/wcook04/plectis-erdos) at commit [`436f55ebdafa`](https://github.com/wcook04/plectis-erdos/tree/436f55ebdafa67e4af0fff79f621c13f2ded12bf) and is checked there by Lean's kernel (`leanprover/lean4:v4.29.1`, Mathlib `5e932f97dd25`).
 - **Comparator.** For a compared result, each declaration was stated a second time, from Mathlib alone, as a *Challenge* in [plectis-erdos-lean](https://github.com/wcook04/plectis-erdos-lean), and a *Solution* that uses our proof was checked against it by [Comparator](https://github.com/leanprover/comparator), which also confirms that only the axioms `propext`, `Quot.sound`, `Classical.choice` are used. All checks below come from replay run [35935225572](https://github.com/wcook04/plectis-erdos-lean/actions/runs/35935225572) at corpus commit [`cc7e541cf208`](https://github.com/wcook04/plectis-erdos-lean/tree/cc7e541cf2081c6fef5a5e377d52e365e33b01eb) (tag `paper-evidence-2026-09-24`); both the default Lean kernel and the independent `nanoda` kernel accepted every entry. The replay's own report for each entry is kept in this repository and linked from each check. A Challenge shows `sorry` because it states the target without proving it.
 - **Counts.** 48 results: 33 with a Lean proof of the whole statement, 1 whose Lean proof assumes a named input (marked with a dagger), 14 without a Lean proof of the whole statement; 32 compared.
 
-These checks establish that the stated propositions are proved. Whether each is the right proposition is for the reader to judge against the paper's statement, which is reproduced below.
+These checks establish that the stated propositions are proved. Whether each is the right proposition is for the reader to judge against the paper's statement, which is reproduced below. Comparator checks separately declared statements, the axiom budget and kernel acceptance; it does not establish novelty, significance or peer review.
 
 <a id="long269-res-distinct-height-235"></a>
 
@@ -88,7 +88,7 @@ def BugeaudLaurentTranscendence : Prop :=
 
 <a id="long269-res-lcm"></a>
 
-## Theorem 3.1 (the running least common multiple), page 5
+## Theorem 3.1 (the running least common multiple), page 6
 
 > *Let $`p,q,r`$ be pairwise distinct primes and $`x\ge1`$. Then $`\operatorname{L}(x)=\operatorname{H}(x)`$.*
 
@@ -261,7 +261,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long269-res-short"></a>
 
-## Lemma 3.5 (uniqueness in a short interval), page 6
+## Lemma 3.5 (uniqueness in a short interval), page 7
 
 > *Let $`b\ge1`$ and $`\eta\le b\,\lambda`$. If $`b^{a}w`$ and $`b^{a'}w`$ both lie in $`[\lambda,\eta)`$ then $`a=a'`$.*
 
@@ -354,7 +354,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long269-res-dp-short"></a>
 
-## Passage (beginning “long269:res:dp-short…”), page 10
+## Passage (beginning “long269:res:dp-short…”), page 11
 
 > *Remark 12* (short rearrangements). The map $`f`$ is injective on the orderings of any set of at most three distinct primes.
 
@@ -807,7 +807,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long269-res-literal-triangle"></a>
 
-## Lemma 8.3 (the shell numerator as a weighted lattice count), page 30
+## Lemma 8.3 (the shell numerator as a weighted lattice count), page 31
 
 > *Put $`\lambda_3=\log_2 3`$, $`\lambda_5=\log_2 5`$ and $`\theta_p=1/\lambda_p`$ for $`p=3,5`$. For $`j,k\ge0`$ write $`w_{j,k}=j\lambda_3+k\lambda_5`$ and $`t_{j,k}=\{w_{j,k}\}`$. The shell numerator is
 > ``` math
@@ -937,7 +937,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long269-res-actual-cancellation"></a>
 
-## Theorem 9.3 (rationality gives positive integer tails), page 33
+## Theorem 9.3 (rationality gives positive integer tails), page 34
 
 > *<span id="long269:res:lead-carry-bridge" label="long269:res:lead-carry-bridge"></span> <span id="long269:res:actual-carry-bound" label="long269:res:actual-carry-bound"></span><span id="long269:res:denominator-reduction" label="long269:res:denominator-reduction"></span> Suppose $`S=N/D`$ with $`N\in\mathbb{Z}`$, $`D\in\mathbb{N}_{>0}`$, and write
 > ``` math
@@ -1082,7 +1082,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long269-res-pinning"></a>
 
-## Proposition 9.5 (propagation of integrality and uniqueness of a small solution), page 34
+## Proposition 9.5 (propagation of integrality and uniqueness of a small solution), page 35
 
 > *For every $`a`$, $`X_a=(m_a+X_{a+1})/b_a>0`$, and if $`X_a\in\mathbb{Z}`$ then $`X_n\in\mathbb{Z}`$ for every $`n\ge a`$. Moreover, fix $`A`$, a positive width function $`w`$ with $`w(A+k)/8^{k}\to0`$, and a real sequence $`(y_n)_{n\ge A}`$ satisfying $`y_{n+1}=b_ny_n-m_n`$. If $`y_n`$ and $`X_n`$ both lie in $`(m_n/b_n,\;m_n/b_n+w(n)]`$ for every $`n\ge A`$, then $`y_A=X_A`$.*
 
@@ -1187,7 +1187,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long269-res-actual-escape-endpoint"></a>
 
-## Theorem 10.2 (a residue criterion for every dominating bound of size $`o(8^a)`$), page 38
+## Theorem 10.2 (a residue criterion for every dominating bound of size $`o(8^a)`$), page 39
 
 > *<span id="long269:res:lead-escape-equivalence" label="long269:res:lead-escape-equivalence"></span><span id="long269:res:windowconsumer" label="long269:res:windowconsumer"></span> Let $`G:\mathbb{N}_{>0}\times\mathbb{N}\to\mathbb{N}`$ satisfy $`K(B,a)\le G(B,a)`$ for all $`B`$ and $`a`$, and $`G(B,a)/8^{a}\to0`$ as $`a\to\infty`$ for each fixed $`B`$. Then
 > ``` math
@@ -1251,7 +1251,7 @@ theorem octic_escape_whole :
 
 <a id="long269-res-residue-limit"></a>
 
-## Proposition 10.3 (the fixed-start residue limit), page 39
+## Proposition 10.3 (the fixed-start residue limit), page 40
 
 > *For fixed integers $`B,\ell\ge1`$, write
 > ``` math
@@ -1362,7 +1362,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long269-res-no-bounded-length"></a>
 
-## Corollary 10.5 (a fixed maximum length cannot cover arbitrarily late starts), page 41
+## Corollary 10.5 (a fixed maximum length cannot cover arbitrarily late starts), page 42
 
 > *Fix $`B\ge1`$ coprime to $`30`$ and $`H\ge1`$. Only finitely many starts $`\ell`$ admit an escaping window of length at most $`H`$ against the bound $`K`$.*
 
@@ -1503,7 +1503,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long269-res-fixed-base-recoding"></a>
 
-## Proposition 12.4 (what direct fixed-base recoding preserves), page 48
+## Proposition 12.4 (what direct fixed-base recoding preserves), page 49
 
 > *The following identities converge absolutely:
 > ``` math
@@ -1545,7 +1545,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long269-res-tails-equivalence"></a>
 
-## Proposition 12.6 (irrationality is equivalent to nonintegrality of every reduced tail), page 50
+## Proposition 12.6 (irrationality is equivalent to nonintegrality of every reduced tail), page 51
 
 > *Statement (22), quantified over every $`B\ge1`$ coprime to $`30`$ and every $`a\ge1`$, is equivalent to irrationality of $`S`$.*
 

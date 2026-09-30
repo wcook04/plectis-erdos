@@ -33,7 +33,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="thm-purely-periodic-support"></a>
 
-## Theorem 5.5 (Purely periodic support), page 37
+## Theorem 5.5 (Purely periodic support), page 38
 
 > *For integers $`b\ge2`$ and $`m\ge1`$, and every $`m`$-periodic $`A\subseteq\mathbb N`$ (i.e. $`n+m \in A \Leftrightarrow n \in A`$ for all $`n`$) containing a positive element, the support series $`\sum_{a\in A,\ a\ge1}(b^a-1)^{-1}`$ is irrational. **Hypotheses:** $`b \ge 2`$, $`m \ge 1`$, $`A`$ $`m`$-periodic, $`\exists a > 0,\ a \in A`$.*
 
@@ -61,7 +61,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="thm-eventually-periodic-support"></a>
 
-## Theorem 5.6 (Eventually periodic support), page 37
+## Theorem 5.6 (Eventually periodic support), page 38
 
 > *For integers $`b\ge2`$ and $`m\ge1`$, if $`A\subseteq\mathbb N`$ is infinite and its membership is $`m`$-periodic from some threshold $`N_0`$ on (i.e. $`n+m \in A \Leftrightarrow n \in A`$ for all $`n \ge N_0`$), then $`\sum_{a\in A,\ a\ge1}(b^a-1)^{-1}`$ is irrational, by transferring irrationality across the finite symmetric difference from the shifted purely periodic set $`A_{\mathrm{pure}} := \{n : n + m N_0 \in
 > A\}`$. **Hypotheses:** $`b \ge 2`$, $`m \ge 1`$, $`N_0 \in \mathbb{N}`$, eventual $`m`$-periodicity from $`N_0`$, $`A`$ infinite.*
@@ -90,7 +90,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="thm-residue-class-support"></a>
 
-## Theorem 5.7 (Residue-class support), page 37
+## Theorem 5.7 (Residue-class support), page 38
 
 > *For integers $`b\ge2`$, $`m\ge1`$ and $`c`$, the series $`\sum_{n\ge1,\ n\equiv c\pmod m}(b^n-1)^{-1}`$ is irrational.*
 
@@ -117,7 +117,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="thm-odd-support"></a>
 
-## Theorem 5.8 (Odd support), page 37
+## Theorem 5.8 (Odd support), page 38
 
 > *For every integer $`b\ge2`$, the series $`\sum_{n\ge1,\ n\text{ odd}}(b^n-1)^{-1}`$ is irrational. This density-$`1/2`$ support is the case treated explicitly by Luca and Tachiya \[lucatachiya2017, Example 2, p. 140\].*
 
@@ -184,7 +184,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="thm-greedy-survival-record"></a>
 
-## Theorem 5.10 (Membership equals greedy survival at every level), page 38
+## Theorem 5.10 (Membership equals greedy survival at every level), page 39
 
 > *For a real $`x`$, let $`r_n(x)`$ be its greedy remainder after rank $`n`$, and let $`R_n=\sum_{j>n}w_j`$, as in the initial notation. Then
 > ``` math
@@ -233,7 +233,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="thm-master-identity"></a>
 
-## Theorem 5.14 (Decomposition of the integer remainder), page 39
+## Theorem 5.14 (Decomposition of the integer remainder), page 40
 
 > *For every quotient row $`n \ge 6`$,
 > ``` math
@@ -277,7 +277,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="thm-real-form"></a>
 
-## Theorem 5.15 (Real (non-integer) form of the quotient identity), page 40
+## Theorem 5.15 (Real (non-integer) form of the quotient identity), page 41
 
 > *Let $`x_d := 1/(2^d-1)`$ and define the constant
 > ``` math
@@ -359,7 +359,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="thm-dynamics"></a>
 
-## Theorem 5.16 (Exact recurrences for the three branches), page 40
+## Theorem 5.16 (Exact recurrences for the three branches), page 41
 
 > *Fix $`n\ge5`$. Among the quotient sums over subsets of $`\{2,\ldots,n-1\}`$, let $`D_n`$ give the largest sum at most $`T_n`$ and let $`B_n`$ give the smallest sum strictly greater than $`T_n`$. Thus $`D_n`$ is the greedy support already defined. Put
 > ``` math

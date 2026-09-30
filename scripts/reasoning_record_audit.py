@@ -112,10 +112,12 @@ def label_key(label: str) -> str:
     return re.sub(r'^long\d+:', '', label).removesuffix('-long')
 
 
-def support_span(inputs: Inputs, spec: dict) -> tuple[dict, str]:
+def support_span(inputs: Inputs, spec: dict, *, short_path: str | None = None) -> tuple[dict, str]:
     """Select exact closed proof or exact bounded authored text. Never use line-only pins."""
     path = spec['path']
-    if not path.startswith('paper/reasoning-parts/'):
+    if short_path is not None and path != short_path:
+        raise RecordInputError('short proof support belongs to another source')
+    if short_path is None and not path.startswith('paper/reasoning-parts/'):
         raise RecordInputError('support span must be in authored reasoning parts')
     text = coverage.counter_view(inputs.read(path))
     mode = spec['selector']
@@ -145,7 +147,10 @@ def support_span(inputs: Inputs, spec: dict) -> tuple[dict, str]:
         if text.count(label) != 1:
             raise RecordInputError('proof statement label is missing or ambiguous')
         at = text.index(label)
-        end_statement = re.search(r'\\end\{[^{}]+\}', text[at:])
+        # A display or enumerate inside the statement is not its closing boundary.
+        heads = list(re.finditer(r'\\begin\{(theorem|proposition|lemma|corollary|thm|prop|lem|cor|claim|equivform|remark|example)\}', text[:at]))
+        closing = r'\\end\{' + re.escape(heads[-1].group(1)) + r'\}' if heads else r'\\end\{[^{}]+\}'
+        end_statement = re.search(closing, text[at:])
         if end_statement is None:
             raise RecordInputError('unclosed statement before proof')
         at += end_statement.end()
@@ -166,6 +171,25 @@ def support_span(inputs: Inputs, spec: dict) -> tuple[dict, str]:
     if not normalized(re.sub(r'\\(?:begin|end)\{proof\}', '', body)):
         raise RecordInputError('empty proof span')
     return locator(path, coverage.line_of(text, start), coverage.line_of(text, end)), body
+
+
+def short_proof_support(inputs: Inputs, disposition: dict, row: dict, sources: list[str]) -> dict:
+    """Bind a retained short proof without asserting a long-record correspondence."""
+    if disposition.get('action') != 'explained_in_short' or not disposition.get('rationale'):
+        raise RecordInputError('explicit explained_in_short disposition and rationale required')
+    if disposition.get('short_statement_sha256') != row['statement_sha256']:
+        raise RecordInputError('short statement changed; proof disposition needs review')
+    spec = disposition['support']
+    if spec['path'] not in sources or not spec['path'].startswith(f"paper/{row['problem']}/"):
+        raise RecordInputError('short proof support belongs to another problem or source')
+    loc, body = support_span(inputs, spec, short_path=spec['path'])
+    if digest(body) != spec['sha256']:
+        raise RecordInputError('stale short proof span; text changed after disposition review')
+    return {'kind': 'ordinary_proof_text', 'availability': 'located', 'locator': loc,
+            'sha256': digest(body), 'review_status': disposition['review_status'],
+            'rationale': disposition['rationale'],
+            'validation': 'text_presence_and_digest_only; proof_correctness_not_checked',
+            'long_correspondence': 'open; this disposition does not establish a long-record link'}
 
 
 def registered_support(row: dict, inputs: Inputs, margin_links: dict, decl_cache: dict) -> dict:
@@ -219,6 +243,7 @@ def _report(root: Path = ROOT, problems: list[int] | None = None) -> dict:
                 'input_sha256': dict(sorted(inputs.hashes.items()))}
     rows = {r['id']: r for r in ledger['rows']}
     authored: dict[str, dict] = {}
+    dispositions: dict[str, dict] = {}
     try:
         for link in links['links']:
             sid = link['short_id']
@@ -227,6 +252,13 @@ def _report(root: Path = ROOT, problems: list[int] | None = None) -> dict:
             if not link.get('rationale') or link.get('relation') != 'authored_correspondence':
                 raise RecordInputError(f'{sid}: explicit relation and rationale required')
             authored[sid] = link
+        for disposition in links.get('dispositions', []):
+            sid = disposition['short_id']
+            if sid in dispositions or sid not in rows or rows[sid]['side'] != 'short':
+                raise RecordInputError(f'duplicate or unknown short proof disposition {sid}')
+            if disposition.get('action') != 'explained_in_short' or not disposition.get('rationale'):
+                raise RecordInputError(f'{sid}: explained_in_short action and rationale required')
+            dispositions[sid] = disposition
     except (KeyError, TypeError, ValueError) as exc:
         return {'schema': SCHEMA, 'status': 'refusal', 'boundary': BOUNDARY,
                 'reason': str(exc), 'pairs': [], 'summary': {},
@@ -331,6 +363,23 @@ def _report(root: Path = ROOT, problems: list[int] | None = None) -> dict:
                     findings.append({'code': 'stale_or_missing_proof', 'severity': 'error',
                         'short_claim': sid, 'short_location': item['short_location'],
                         'long_location': explicit.get('support'), 'detail': str(exc)})
+            disposition = dispositions.get(sid)
+            if disposition:
+                try:
+                    short_paper = next(p for p in ledger['papers'] if p['paper_id'] == shortid)
+                    item['short_proof'] = short_proof_support(inputs, disposition, s, short_paper['sources'])
+                    if item['state'] == 'unresolved':
+                        item['state'] = 'short_proof_explained_long_link_open'
+                        findings.append({'code': 'short_proof_explained_long_link_open', 'severity': 'warning',
+                            'short_claim': sid, 'short_location': item['short_location'],
+                            'detail': 'A hash-bound complete proof is retained in the short paper. '
+                                      'No long-record correspondence is asserted by this disposition.'})
+                except (KeyError, TypeError, OSError, ValueError) as exc:
+                    item['state'] = 'unresolved'
+                    item['matches'] = []
+                    item['long_locations'] = []
+                    findings.append({'code': 'stale_or_missing_short_proof', 'severity': 'error',
+                        'short_claim': sid, 'short_location': item['short_location'], 'detail': str(exc)})
             if item['state'] == 'unresolved':
                 findings.append({'code': 'unresolved_short_long_link', 'severity': 'error',
                     'short_claim': sid, 'short_location': item['short_location'],
@@ -403,14 +452,17 @@ def _report(root: Path = ROOT, problems: list[int] | None = None) -> dict:
             'status': 'structural_findings' if any(x['severity'] == 'error' for x in findings) else 'structurally_linked',
             'claims': claims, 'long_only_or_unmatched': long_only, 'findings': findings,
             'summary': {'short_claims': len(short), 'long_claims': len(long),
-                        'linked_short_claims': sum(c['state'] != 'unresolved' for c in claims),
+                        'linked_short_claims': sum(c['state'] in ('registered_evidence_linked', 'authored_proof_text_linked') for c in claims),
+                        'explained_in_short': sum('short_proof' in c for c in claims),
+                        'long_correspondence_open': sum(c['state'] in ('unresolved', 'short_proof_explained_long_link_open') for c in claims),
                         'unresolved_short_claims': sum(c['state'] == 'unresolved' for c in claims),
                         'duplicates': sum(x['code'] == 'duplicate_statement' for x in findings),
                         'duplicate_passages': sum(x['code'] == 'duplicate_passage' for x in findings),
                         'possible_stale_passages': sum(x['code'] == 'possible_stale_passage' for x in findings)}})
     summary = {k: sum(p['summary'][k] for p in pairs) for k in pairs[0]['summary']}
     summary.update(pairs=len(pairs), global_findings=len(global_findings),
-                   explicit_links=len(authored), evidence_lean_pin=ledger['lean_pin'])
+                   explicit_links=len(authored), explicit_short_proof_dispositions=len(dispositions),
+                   evidence_lean_pin=ledger['lean_pin'])
     for pair in pairs:
         # Paper metadata is a projection. Keep only navigation fields; no duplicated registry authority.
         for key in ('short_paper', 'long_paper'):

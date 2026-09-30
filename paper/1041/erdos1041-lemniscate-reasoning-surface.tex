@@ -191,6 +191,10 @@ additive across these disjoint open sheets, giving the asserted lower
 bound. This proof applies to connected sets without a chosen parametrisation.
 \end{proof}
 
+The \href{erdos-1041-lemniscate-newton-flow.pdf\#bottleneck-geometry}
+{diagram in the short paper} distinguishes the value-plane slit from
+the two radial projections used above.
+
 \subsection{Polynomial and roots}\label{subsec:counterexample-polynomial}
 \papersectiontarget{counterexample-certificate}
 
@@ -1002,8 +1006,8 @@ certifies
  \qquad \frac{13}{25}e^{X}<1,
 \]
 which gives Remark~\ref{res:low-critical-thirteen-twentyfifths}.
-The preceding revision records a full replay on 29 September 2026
-from the immutable program cited above. It accepted all $126$ dual
+The full replay recorded on 29 September 2026 used
+the immutable program cited above. It accepted all $126$ dual
 certificates and reproduced this value of $X$; no new replay is claimed
 for the present editorial revision. The retained certificate data give the exact radii and nonnegative
 weights, together with their sums and certified upper bounds. The program's Git blob identifier is
@@ -4480,12 +4484,37 @@ Small neighbourhoods of the saddles can be chosen with diameter
 $O(\sqrt\delta)$ at value radius $\delta$.
 \end{remark}
 \evidenceremark{No supplied Lean theorem proves the whole decomposition.
-The sources check finite ray, level-separation and saddle-scale facts;
-the Morse, covering and strip constructions below remain an ordinary
-topological argument.}
+The sources check finite ray, level-separation and saddle-scale facts.
+The linked component-local declarations below also prove covering and
+continuous inverse-branch prerequisites. The Morse, conformal strip,
+sheet-count, monodromy and embedded-tree assertions remain ordinary
+arguments.}
+
+\paragraph{Inverse-branch prerequisites.}
+\label{res:component-local-covering-long}
+For a nonconstant complex polynomial, each component of $\{|f|<1\}$
+\href{https://github.com/wcook04/plectis-erdos/blob/8bf96bdcae6b9201c670fff3037c49c70ec6de8d/lean/ErdosProblems/Erdos1041/OutwardSlitDomain.lean\#L349}{contains a root}.
+The restriction to that component is
+\href{https://github.com/wcook04/plectis-erdos/blob/8bf96bdcae6b9201c670fff3037c49c70ec6de8d/lean/ErdosProblems/Erdos1041/OutwardSlitDomain.lean\#L211}{onto the unit disc} and has
+\href{https://github.com/wcook04/plectis-erdos/blob/8bf96bdcae6b9201c670fff3037c49c70ec6de8d/lean/ErdosProblems/Erdos1041/OutwardSlitDomain.lean\#L233}{finite fibres}.
+Over values avoiding the critical values attained in that component,
+it is a \href{https://github.com/wcook04/plectis-erdos/blob/8bf96bdcae6b9201c670fff3037c49c70ec6de8d/lean/ErdosProblems/Erdos1041/OutwardSlitDomain.lean\#L250}{covering map}.
+Choose finitely many nonzero slit starts that include every critical
+value attained in the component, and remove the outward rays beginning
+at those starts from the value disc. On the remaining domain, each root
+in the component determines a
+\href{https://github.com/wcook04/plectis-erdos/blob/8bf96bdcae6b9201c670fff3037c49c70ec6de8d/lean/ErdosProblems/Erdos1041/OutwardSlitDomain.lean\#L359}{unique continuous inverse branch}, taking $0$ to that root.
+The archived Lean source states these prerequisites and supplies proof
+scripts; a kernel-check receipt for this module is not supplied here.
+The full conformal
+sheet decomposition, sheet count, monodromy and embedded-tree assertions
+remain ordinary arguments here; the prerequisites give no
+length estimate.
 
 
-\begin{proof}
+
+
+\begin{proof}[Proof of Remark~\ref{res:attachment-aware-reeb}]
 The map $f:U\to\mathbb D$ is proper of degree $k$, and $U$ is simply
 connected. To apply the count from the proof of
 \cite[Proposition~2.1]{eks2010} only at a regular level, join all roots and
@@ -5197,7 +5226,7 @@ The independent ordinary reconstruction in
 Section~\ref{sec:counterexample-proof} uses Rouch\'e's theorem, the
 component degree and Hausdorff measure. Its Cayley signs, critical-disc
 estimates and all four Bernstein tests were recomputed with rational
-arithmetic in the preceding revision; the present edit retains those
+arithmetic in an earlier revision; the present edit retains those
 finite calculations. Independent human review of the construction and its
 correspondence with the 1958 wording is not recorded.
 

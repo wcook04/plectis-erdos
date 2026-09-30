@@ -1,12 +1,12 @@
 # Formal evidence: Cubic-Rate Irrationality and Reciprocal-Tail Rigidity
 
-This record belongs to the paper [erdos-243-reciprocal-tail-rigidity.pdf](../paper/243/erdos-243-reciprocal-tail-rigidity.pdf). For every result it lists the Lean declarations that state it, and the independent Comparator check where there is one. The margin marks in the paper link here.
+This record belongs to the paper [erdos-243-reciprocal-tail-rigidity.pdf](../paper/243/erdos-243-reciprocal-tail-rigidity.pdf). For every result it lists the Lean declarations that state it, and the recorded Comparator check where there is one. The inline links and margin marks in the paper use the same result mapping.
 
 - **Lean.** Every declaration is quoted from [plectis-erdos](https://github.com/wcook04/plectis-erdos) at commit [`436f55ebdafa`](https://github.com/wcook04/plectis-erdos/tree/436f55ebdafa67e4af0fff79f621c13f2ded12bf) and is checked there by Lean's kernel (`leanprover/lean4:v4.29.1`, Mathlib `5e932f97dd25`).
 - **Comparator.** For a compared result, each declaration was stated a second time, from Mathlib alone, as a *Challenge* in [plectis-erdos-lean](https://github.com/wcook04/plectis-erdos-lean), and a *Solution* that uses our proof was checked against it by [Comparator](https://github.com/leanprover/comparator), which also confirms that only the axioms `propext`, `Quot.sound`, `Classical.choice` are used. All checks below come from replay run [35935225572](https://github.com/wcook04/plectis-erdos-lean/actions/runs/35935225572) at corpus commit [`cc7e541cf208`](https://github.com/wcook04/plectis-erdos-lean/tree/cc7e541cf2081c6fef5a5e377d52e365e33b01eb) (tag `paper-evidence-2026-09-24`); both the default Lean kernel and the independent `nanoda` kernel accepted every entry. The replay's own report for each entry is kept in this repository and linked from each check. A Challenge shows `sorry` because it states the target without proving it.
 - **Counts.** 18 results: 18 with a Lean proof of the whole statement, 0 whose Lean proof assumes a named input (marked with a dagger), 0 without a Lean proof of the whole statement; 18 compared.
 
-These checks establish that the stated propositions are proved. Whether each is the right proposition is for the reader to judge against the paper's statement, which is reproduced below.
+These checks establish that the stated propositions are proved. Whether each is the right proposition is for the reader to judge against the paper's statement, which is reproduced below. Comparator checks separately declared statements, the axiom budget and kernel acceptance; it does not establish novelty, significance or peer review.
 
 <a id="res-cubicrate"></a>
 
@@ -119,7 +119,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="res-update"></a>
 
-## Proposition 4.2 (error identities), page 7
+## Proposition 4.2 (error identities), page 8
 
 > *<span id="res:defect" label="res:defect"></span> For an exact integer state,
 > ``` math
@@ -151,7 +151,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="res-absorb"></a>
 
-## Theorem 4.3 (absorption and descent), page 7
+## Theorem 4.3 (absorption and descent), page 8
 
 > *<span id="res:descent" label="res:descent"></span> For a positive exact state with strict centring, $`E_n=0`$ implies $`E_{n+1}=0`$. For any positive integer state with $`C_{n+1}=C_n-E_n`$, eventual nonnegativity of $`E_n`$ implies its eventual vanishing.*
 
@@ -265,7 +265,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="res-crt"></a>
 
-## Lemma 4.6 (consecutive multiples), page 8
+## Lemma 4.6 (consecutive multiples), page 9
 
 > *For pairwise coprime integers $`m_0,\ldots,m_{B-1}\ge2`$ and every lower bound, there is a larger $`t`$ such that $`m_i\mid t+i`$ for each $`i<B`$.*
 
@@ -295,7 +295,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="res-barrier"></a>
 
-## Theorem 4.7 (Chinese remainder theorem and first crossing), page 8
+## Theorem 4.7 (Chinese remainder theorem and first crossing), page 9
 
 > *Let $`u:\mathbb{N}\to\mathbb{N}`$ tend to infinity and let $`B\ge1`$ be an integer with $`u_{n+1}\le u_n+B`$ for every $`n`$. There is no sequence of pairwise coprime integers $`m_i\ge2`$ for which $`\gcd(m_i,u_t)=1`$ whenever $`i<t`$.*
 
@@ -362,7 +362,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="res-originalbounded"></a>
 
-## Corollary 4.9 (bounded increments of $`P_n/a_n`$), page 9
+## Corollary 4.9 (bounded increments of $`P_n/a_n`$), page 10
 
 > *Let $`a_1<a_2<\cdots`$ be positive integers, $`a_{n+1}/a_n^2\to1`$, and $`\sum_{n\ge1}1/a_n\in\mathbb{Q}`$. Put $`P_n=\prod_{j<n}a_j`$. If
 > ``` math
@@ -455,7 +455,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="res-massscalar"></a>
 
-## Theorem 5.1 (a convergent sum of relative increases), page 10
+## Theorem 5.1 (a convergent sum of relative increases), page 11
 
 > *<span id="res:mass" label="res:mass"></span> Let $`C_n`$ be positive integers and $`E_n`$ integers satisfying $`C_{n+1}=C_n-E_n`$. If
 > ``` math
@@ -533,7 +533,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="res-lcmbounded"></a>
 
-## Corollary 6.2 (a bound using the least common multiple), page 13
+## Corollary 6.2 (a bound using the least common multiple), page 14
 
 > *Assume the hypotheses of Problem 1.1. Write $`A_n=\operatorname{lcm}(a_1,\ldots,a_{n-1})`$ with $`A_1=1`$. If
 > ``` math
@@ -570,7 +570,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="res-frontier"></a>
 
-## Proposition 7.1 (necessary profile), page 14
+## Proposition 7.1 (necessary profile), page 15
 
 > *The integer tail of a sequence satisfying Problem 1.1’s hypotheses but not its conclusion has $`E_n\ne0`$ eventually, $`|E_n|/C_n\to0`$, unbounded negative magnitudes along negative indices, and
 > ``` math
@@ -612,7 +612,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="res-weights"></a>
 
-## Lemma 7.2 (weights and linear density), page 15
+## Lemma 7.2 (weights and linear density), page 16
 
 > *Let $`u_j`$ be positive integers, let $`w_j\ge0`$, and put $`F(X)=\sum_{u_j\le X}w_j`$, with the sum allowed a priori to be $`+\infty`$. Then $`\liminf_{X\to\infty}F(X)/X=0`$ if and only if there is a finite nonincreasing $`f:[1,\infty)\to[0,\infty)`$ with $`\int_1^\infty f(t)\,dt=\infty`$ and $`\sum_jw_jf(u_j)<\infty`$.*
 
@@ -654,7 +654,7 @@ theorem real_lowerDensityZero_iff_exists_admissible_real_weight
 
 <a id="res-residue"></a>
 
-## Theorem A.2 (factorial residue reduction), page 16
+## Theorem A.2 (factorial residue reduction), page 17
 
 > *For all $`h`$ and all integers $`a\equiv b \pmod{(h+1)!}`$, the orbit from $`a`$ survives $`h`$ forced updates exactly when the orbit from $`b`$ does.*
 

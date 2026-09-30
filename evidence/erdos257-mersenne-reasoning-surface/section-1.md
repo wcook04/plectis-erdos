@@ -226,7 +226,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="thm-supported-dichotomy"></a>
 
-## Theorem 1.9 (Support-restricted refinement), page 21
+## Theorem 1.9 (Support-restricted refinement), page 22
 
 > *Use zero-based indices in this statement: coordinate $`j\in\mathbb{N}`$ carries weight $`w_{j+1}`$. For $`J\subseteq\mathbb{N}`$, consider the sums that use only coordinates in $`J`$. If $`\mathbb{N}\smallsetminus J`$ is finite, this achievement set has measure $`2^{-|\mathbb{N}\smallsetminus J|}`$; if infinitely many coordinates are omitted, its measure is zero. Injectivity survives every restriction; perfectness is proved when $`J`$ is infinite. No perfectness claim is made for finite $`J`$, whose coding range is finite.*
 
@@ -282,7 +282,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="thm-greedy-survival"></a>
 
-## Theorem 1.11 (Membership equals greedy survival; the fatal-gap dichotomy), page 22
+## Theorem 1.11 (Membership equals greedy survival; the fatal-gap dichotomy), page 23
 
 > *For a real target $`x\ge0`$, let $`r_n(x)`$ be the remainder after the greedy rule has processed weights $`w_1,\ldots,w_n`$, and let $`R_n=\sum_{j>n}w_j`$, with $`r_0(x)=x`$ and $`R_0=E`$. Then
 > ``` math
