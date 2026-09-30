@@ -940,17 +940,20 @@
       "claim_anchor_field": "paper_label",
       "companion_sources": [
         {
-          "title": "Factorial Denominator Series: a complete working record of Erdős Problem 68",
+          "title": "Two Incomparable Denominator Exclusions for ∑_{n≥2}(n!−1)⁻¹",
           "source": "paper/68/erdos-68-factorial-denominator-irrationality.tex",
           "rendered": "paper/68/erdos-68-factorial-denominator-irrationality.pdf",
           "formal_source_ref": "99f4bf47422abbd8757cbb22b50ba079d764d3a7",
-          "role": "Standalone theorem-led problem note for Erdős #68 and the factorial-channel breakpoint boundary.",
+          "role": "Standalone theorem-led problem note for Erdős #68: two finite denominator exclusions and exact carry, divisor-channel and moment criteria; irrationality remains open.",
           "anchor_label_allowlist": [
-            "res:bandbreakpoint"
+            "res:bandbreakpoint",
+            "res:carry-characterization",
+            "res:divisor-channel-coordinates",
+            "res:finite-channel-moment-certificate"
           ]
         },
         {
-          "title": "Running LCM Reciprocal Sums for Finite Prime Sets",
+          "title": "Irrational Distinct-Height Sums for Finite Prime Sets",
           "source": "paper/269/erdos-269-three-prime-running-lcm.tex",
           "rendered": "paper/269/erdos-269-three-prime-running-lcm.pdf",
           "formal_source_ref": "99f4bf47422abbd8757cbb22b50ba079d764d3a7",
@@ -965,50 +968,60 @@
           ]
         },
         {
-          "title": "An Integral-Shift Criterion for Dyadic Tail Recurrences",
+          "title": "Sparse Congruence-Preserving Perturbations of Dyadic Series",
           "source": "paper/251/erdos-251-prime-gap-dyadic-series.tex",
           "rendered": null,
           "formal_source_ref": "99f4bf47422abbd8757cbb22b50ba079d764d3a7",
-          "role": "Standalone theorem-led problem note for Erdős #251 and the prime-gap tail-shift boundary.",
+          "role": "Standalone theorem-led problem note for Erdős #251: sparse rationalising perturbations, their congruence and block-statistical limits, and exact prime-gap criteria; cumulative positions are not asserted to be prime, and the actual prime series remains open.",
           "anchor_label_allowlist": [
             "res:irr-equivalence",
-            "res:gap-nonperiodic"
+            "res:gap-nonperiodic",
+            "res:sparserationalisation",
+            "res:jointcountermodel"
           ]
         },
         {
-          "title": "Newton Flow and Ray Separation in Polynomial Lemniscates",
+          "title": "Paths in Polynomial Lemniscates: A Degree-Seven Counterexample and Two Short-Path Criteria",
           "source": "paper/1041/erdos-1041-lemniscate-newton-flow.tex",
           "rendered": "paper/1041/erdos-1041-lemniscate-newton-flow.pdf",
           "formal_source_ref": "7380b7871687b6bcc41ca0143c61f232e8af6500",
-          "role": "Standalone theorem-led problem note for Erdős #1041 and the finite ray-separation boundary.",
+          "role": "Standalone theorem-led problem note for Erdős #1041: ani’s degree-seven formal-statement refutation, the trinomial short-path theorem and an ordinary low-critical-value criterion; historical correspondence awaits human review.",
           "anchor_label_allowlist": [
-            "res:ray"
+            "res:ray",
+            "res:ani-degree-seven-counterexample",
+            "res:trinomial-all-degree",
+            "res:low-critical-thirteen-twentyfifths"
           ]
         },
         {
-          "title": "Arithmetic Boundaries at Base 3/2 for Erdős Problem 1049",
+          "title": "Zudilin's Forms at Rational Bases and the Exact Normalised Hankel Order",
           "source": "paper/1049/erdos-1049-rational-base-lambert.tex",
           "rendered": "paper/1049/erdos-1049-rational-base-lambert.pdf",
           "formal_source_ref": "7380b7871687b6bcc41ca0143c61f232e8af6500",
-          "role": "Standalone theorem-led problem note for Erdős #1049 and the coordinatewise-corridor and cleared-tail boundaries.",
+          "role": "Standalone theorem-led problem note for Erdős #1049: Zudilin's forms specialised to rational bases, their irrationality-measure bound, the exact normalised Hankel order and fixed-base asymptotic, with supplementary finite coefficient-pencil and tail criteria; irrationality at 3/2 remains open.",
           "anchor_label_allowlist": [
             "res:nocorridor",
             "res:tailrec",
-            "res:forcing"
+            "res:forcing",
+            "cor:rational-base-measure",
+            "res:sharp-fixed-base"
           ]
         },
         {
-          "title": "Reciprocal-Tail Rigidity for Erdős Problem 243",
+          "title": "Cubic-Rate Irrationality and Reciprocal-Tail Rigidity",
           "source": "paper/243/erdos-243-reciprocal-tail-rigidity.tex",
           "rendered": "paper/243/erdos-243-reciprocal-tail-rigidity.pdf",
           "formal_source_ref": "7380b7871687b6bcc41ca0143c61f232e8af6500",
-          "role": "Standalone theorem-led problem note for Erdős #243 and the bounded-rise fresh-modulus barrier.",
+          "role": "Standalone theorem-led problem note for Erdős #243: cubic-rate irrationality; reciprocal-tail rigidity under bounded upward increments; the unrestricted problem remains open.",
           "anchor_label_allowlist": [
-            "res:barrier"
+            "res:barrier",
+            "res:originalbounded",
+            "res:bounded",
+            "res:cubicrate"
           ]
         },
         {
-          "title": "A Basis for the 2-Kernel of Euler's Totient",
+          "title": "Bases and Integral Relations for the k-Kernel of Euler's Totient",
           "source": "paper/249/erdos-249-binary-totient-series.tex",
           "rendered": "paper/249/erdos-249-binary-totient-series.pdf",
           "formal_source_ref": "99f4bf47422abbd8757cbb22b50ba079d764d3a7",
@@ -1018,7 +1031,8 @@
             "thm:kkernelrank",
             "res:factorideal",
             "res:actualorbit",
-            "res:actualsign"
+            "res:actualsign",
+            "cor:integral-normal-form"
           ]
         },
         {

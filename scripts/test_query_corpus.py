@@ -2627,7 +2627,69 @@ def check_pinned_source_link_layouts() -> None:
                 assert query_corpus.formal_source_url(claims, path, 1) is None
 
 
+def validate_principal_paper_query_metadata() -> None:
+    """The principal paper results stay reachable without promoting proof status."""
+    expected = {
+        "paper/68/erdos-68-factorial-denominator-irrationality.tex": (
+            "Two Incomparable Denominator Exclusions for ∑_{n≥2}(n!−1)⁻¹",
+            {"res:carry-characterization", "res:divisor-channel-coordinates",
+             "res:finite-channel-moment-certificate"},
+            "irrationality remains open",
+        ),
+        "paper/269/erdos-269-three-prime-running-lcm.tex": (
+            "Irrational Distinct-Height Sums for Finite Prime Sets",
+            {"res:distinct-height-all", "res:distinct-height-235"},
+            "Lean-checked at {2,3,5}",
+        ),
+        "paper/1049/erdos-1049-rational-base-lambert.tex": (
+            "Zudilin's Forms at Rational Bases and the Exact Normalised Hankel Order",
+            {"cor:rational-base-measure", "res:sharp-fixed-base"},
+            "irrationality at 3/2 remains open",
+        ),
+        "paper/249/erdos-249-binary-totient-series.tex": (
+            "Bases and Integral Relations for the k-Kernel of Euler's Totient",
+            {"thm:kkernelrank", "cor:integral-normal-form"},
+            "dyadic/all-base totient-kernel boundary",
+        ),
+        "paper/243/erdos-243-reciprocal-tail-rigidity.tex": (
+            "Cubic-Rate Irrationality and Reciprocal-Tail Rigidity",
+            {"res:originalbounded", "res:bounded", "res:cubicrate"},
+            "unrestricted problem remains open",
+        ),
+        "paper/251/erdos-251-prime-gap-dyadic-series.tex": (
+            "Sparse Congruence-Preserving Perturbations of Dyadic Series",
+            {"res:sparserationalisation", "res:jointcountermodel"},
+            "positions are not asserted to be prime",
+        ),
+        "paper/1041/erdos-1041-lemniscate-newton-flow.tex": (
+            "Paths in Polynomial Lemniscates: A Degree-Seven Counterexample and Two Short-Path Criteria",
+            {"res:ani-degree-seven-counterexample", "res:trinomial-all-degree",
+             "res:low-critical-thirteen-twentyfifths"},
+            "historical correspondence awaits human review",
+        ),
+    }
+    for source, (title, labels, boundary) in expected.items():
+        packet = query("--paper-source", source)
+        assert packet["paper"]["title"] == title
+        assert boundary in packet["paper"]["role"]
+        assert labels <= {anchor["label"] for anchor in packet["anchors"]}
+        for label in labels:
+            anchor = query("--paper-label", label)
+            assert anchor["authority_posture"] == "navigation_projection_not_proof_authority"
+            assert anchor["paper"]["source"] == source
+            lines = (ROOT / source).read_text(encoding="utf-8").splitlines()
+            line = anchor["paper"]["line"]
+            assert f"\\label{{{label}}}" in "\n".join(lines[line - 1:line + 2])
+    # These query anchors expose authored results. They do not create registry
+    # claims or turn the ordinary analytic criterion into a Lean-checked theorem.
+    assert query("--paper-label", "res:low-critical-thirteen-twentyfifths")["attached_claims"] == []
+    assert query("--claim", "erdos_243")["claim"]["status"] == "open"
+    assert query("--claim", "erdos_251")["claim"]["status"] == "open"
+    assert query("--claim", "erdos_1041")["claim"]["status"] == "formal statement refuted"
+
+
 def main() -> int:
+    validate_principal_paper_query_metadata()
     check_pinned_source_link_layouts()
     validate_in_process_query_dispatch()
     validate_blank_selectors()
