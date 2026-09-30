@@ -330,6 +330,7 @@
         "skills/explain-public-system/SKILL.md#inspect-a-source-or-external-record"
       ],
       "commands": [
+        "python3 scripts/query_corpus.py --ask \"<question>\"",
         "python3 scripts/query_corpus.py --route trace_prior_art",
         "python3 scripts/build_source_attributions.py --query \"<name-or-problem-or-id>\"",
         "python3 scripts/query_corpus.py --papers --format json"

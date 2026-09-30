@@ -577,6 +577,13 @@ def main() -> int:
                 "skills/propagate-research-consequences/SKILL.md",
             ], (task, "cold author must receive writing then propagation instructions")
 
+    declaration_lookup = entry_packet(
+        catalog, "Find the Lean declaration supporting the weighted Erdős 257 theorem"
+    )
+    assert declaration_lookup["primary_lane"]["commands"][0] == (
+        'python3 scripts/query_corpus.py --ask "<question>"'
+    ), "A declaration lookup must lead to its source query, not only bibliography commands"
+
     operational = entry_packet(
         catalog, "speed up the public Lean repo clone and build commands"
     )
