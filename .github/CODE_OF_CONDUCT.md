@@ -32,8 +32,8 @@ maintainer may edit or remove comments, close contributions, limit interaction,
 or block an account when needed to enforce it. Decisions should identify the
 conduct at issue without exposing confidential reports.
 
-Report a possible violation privately through
-[GitHub Private Vulnerability Reporting](https://github.com/wcook04/plectis-erdos/security/advisories/new).
-Say that the report concerns conduct rather than software security. Reports get
-a best-effort response from a solo maintainer, normally within a week. Do not
-put sensitive details in a public issue.
+Report a possible violation privately by
+[emailing Will](mailto:williamwkcook@gmail.com). Reports get a best-effort response
+from a solo maintainer, normally within a week. Do not put sensitive details in
+a public issue. For software security vulnerabilities, follow the
+[security policy](SECURITY.md).

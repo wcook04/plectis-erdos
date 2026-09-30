@@ -242,6 +242,51 @@ def fixture_cli(root: Path, *args: str) -> tuple[int, str]:
     return code, output.getvalue()
 
 
+def check_declaration_identity() -> None:
+    """The real claim CLI must resolve a declaration, never merely mention it."""
+    cases = (
+        ("comment", "namespace Sample\n-- theorem gone : True := by trivial\nend Sample\n", 2),
+        ("string", 'namespace Sample\ndef narration : String := "theorem gone : True := by trivial"\nend Sample\n', 2),
+        ("call site", "namespace Sample\ntheorem neighbor : True := by\n  exact gone\nend Sample\n", 3),
+        ("wrong namespace", "namespace Other\ntheorem gone : True := by trivial\nend Other\n", 2),
+        ("invented namespace", "theorem gone : True := by trivial\n", 1),
+    )
+    original_root, original_claims = verify_claims.REPO_ROOT, verify_claims.CLAIMS_PATH
+    with tempfile.TemporaryDirectory(prefix="claim-declaration-identity-") as tmp:
+        root = Path(tmp)
+        for label, source, line in cases:
+            (root / "Sample.lean").write_text(source, encoding="utf-8")
+            register = build_register([claim("Sample.gone", line)])
+            run_case(root, register)
+            code, output = fixture_cli(root, "--claim", "sample_claim", "--json")
+            result = json.loads(output)
+            require(code == 1 and not result["result"]["current_records_verified"],
+                    f"{label} was accepted as a real declaration")
+            require(result["claim"]["declarations"][0]["status"] == "declaration_missing",
+                    f"{label} failure did not name the missing declaration")
+
+        # Short aliases are allowed only when the shared resolver finds one identity.
+        (root / "Sample.lean").write_text(
+            "namespace First\ntheorem gone : True := by trivial\nend First\n"
+            "namespace Second\ntheorem gone : True := by trivial\nend Second\n",
+            encoding="utf-8",
+        )
+        require(not run_case(root, build_register([claim("gone", 2)]))["verified"],
+                "ambiguous basename was accepted as one declaration")
+
+        (root / "Sample.lean").write_text(SAMPLE_MODULE, encoding="utf-8")
+        for name, line in (("Sample.alpha", ALPHA_KEYWORD_LINE), ("Sample.beta", BETA_LINE)):
+            report = run_case(root, build_register([claim(name, line)]))
+            require(report["verified"], f"real declaration rejected: {name}")
+        wrapped = verify_claims.resolve_declaration(
+            {"name": "Sample.alpha", "module": "Sample.lean", "line": ALPHA_KEYWORD_LINE}
+        )
+        require(wrapped["resolved_line"] == ALPHA_KEYWORD_LINE
+                and "Wrapped declaration" in (wrapped["docstring"] or ""),
+                "wrapped declaration did not land at its keyword and attached explanation")
+    verify_claims.REPO_ROOT, verify_claims.CLAIMS_PATH = original_root, original_claims
+
+
 def check_history_scope_contract() -> None:
     """Replay record checks and history gates in real, network-free Git fixtures."""
     def git(root: Path, *args: str) -> str:
@@ -578,4 +623,5 @@ def main() -> int:
 
 if __name__ == "__main__":
     check_safe_read_boundary()
+    check_declaration_identity()
     raise SystemExit(main())

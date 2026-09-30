@@ -22,6 +22,25 @@ from agent_skill_catalog import ROOT, load_catalog
 
 
 ROUTE_CASES = {
+    'Check a documentation change without installing Lean': ('repository_architecture', 'maintain-public-infrastructure'),
+    'Check this documentation patch before opening a pull request': ('repository_architecture', 'maintain-public-infrastructure'),
+    'Validate a documentation change with the existing public checks': ('repository_architecture', 'maintain-public-infrastructure'),
+    'Prove this Lean theorem before checking a documentation change': ('bounded_research', 'mine-open-problem'),
+    'Report theorem status recorded in the documentation': ('mathematical_status', 'explain-public-system'),
+    'I have cloned the repository, now install its agent skills': ('install_skills', 'install-clone-skills'),
+    'Install selected public workflows into my coding agent harness': ('install_skills', 'install-clone-skills'),
+    'Install these repository skills into a custom directory': ('install_skills', 'install-clone-skills'),
+    'Use installed agent skills to prove this Lean theorem': ('bounded_research', 'mine-open-problem'),
+    'Report theorem status using the installed skills': ('mathematical_status', 'explain-public-system'),
+    'Correct public repository security documentation and inspect GitHub community norms without changing mathematics': ('repository_architecture', 'maintain-public-infrastructure'),
+    'Audit GitHub community health and the security policy': ('repository_architecture', 'maintain-public-infrastructure'),
+    'Help me contribute a documentation correction': ('repository_architecture', 'maintain-public-infrastructure'),
+    'Correct the repository documentation before preparing a pull request': ('repository_architecture', 'maintain-public-infrastructure'),
+    'Find contribution guidelines for this release repository': ('submit_change', 'submit-pull-request'),
+    'Where is the contribution guide?': ('submit_change', 'submit-pull-request'),
+    'Prove the Lean theorem while following the contribution guide': ('bounded_research', 'mine-open-problem'),
+    'Report theorem status before reading the contribution guidelines': ('mathematical_status', 'explain-public-system'),
+    'Package a returned proof using the contribution guide': ('return_research', 'erdos-research-return'),
     # Ordinary requests observed during the public README/AGENTS review.
     "Find the Lean declaration supporting the weighted Erdős 257 theorem": (
         "source_inspection", "explain-public-system",

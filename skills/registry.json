@@ -999,7 +999,12 @@
         "prepare pr",
         "commit contribution",
         "push branch",
-        "send patch"
+        "send patch",
+        "report a correction",
+        "find contribution guidelines",
+        "find the contribution guide",
+        "where is the contribution guide",
+        "how to contribute"
       ],
       "skills": [
         "submit-pull-request"
@@ -1038,7 +1043,20 @@
       "commands": [
         "python3 scripts/install_agent_skills.py --list"
       ],
-      "boundary": "Installation copies instructions, not dependencies, proof authority, or private context."
+      "boundary": "Installation copies instructions, not dependencies, proof authority, or private context.",
+      "task_intents": [
+        {
+          "actions": [
+            "install"
+          ],
+          "objects": [
+            "skill",
+            "skills",
+            "workflow",
+            "workflows"
+          ]
+        }
+      ]
     },
     {
       "id": "repository_architecture",
@@ -1110,7 +1128,16 @@
         "organise docs",
         "documentation layout",
         "cli error recovery",
-        "research session creation"
+        "research session creation",
+        "community norms",
+        "community health",
+        "security documentation",
+        "security policy",
+        "contributor guidelines",
+        "documentation correction",
+        "check a documentation change",
+        "check this documentation patch",
+        "validate a documentation change"
       ],
       "task_intents": [
         {
@@ -1119,14 +1146,16 @@
             "improve",
             "fix",
             "repair",
-            "link"
+            "link",
+            "correct"
           ],
           "objects": [
             "navigation",
             "readme",
             "links",
             "routes",
-            "entry"
+            "entry",
+            "documentation"
           ]
         },
         {
@@ -1165,6 +1194,20 @@
             "contributor",
             "session",
             "sessions"
+          ]
+        },
+        {
+          "actions": [
+            "audit",
+            "inspect",
+            "review",
+            "correct",
+            "repair",
+            "fix"
+          ],
+          "objects": [
+            "security",
+            "governance"
           ]
         }
       ],
