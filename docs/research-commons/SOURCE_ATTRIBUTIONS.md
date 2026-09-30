@@ -11,7 +11,7 @@ Private correspondence appears only under a neutral anonymous identity until pub
 
 ## Coverage and anonymous implementation credits
 
-The registry contains `310` curated sources across `22` registered papers and `1903` Lean library files.
+The registry contains `310` curated sources across `24` registered papers and `1903` Lean library files.
 
 Source review states: `bibliography_only`: `97`; `existing_source_closure`: `31`; `external_claim_unverified`: `1`; `implemented_advice`: `3`; `source_verified`: `178`.
 
@@ -24,8 +24,8 @@ Implemented advice whose identity is awaiting confirmation:
 - [Prior-art comparison advice](#source-correspondence-003) — Implemented a received pointer by comparing the cited q-Apéry construction with the #1049 rational-base programme. The public source closure verifies that the paper targets the same Lambert value, identifies the q-WZ operator and the integer-base denominator-clearing boundary, and credits both published authors in the ordinary literature row. The local Lean module separately proves that Van Assche’s different moving diagonal has a nonzero n=0 residual for the cited operator. This correspondence row credits only the private prior-art pointer; it does not claim the correspondent checked the comparison, calculations, Lean, or #1049 mathematics.
 
 - Unmatched citation keys: `0`
-- Bibliography entries awaiting curated links: `93`
-- Lean candidates awaiting review: `793` (`3` direct URL/DOI/arXiv rows; `1644` surname/key rows; categories may overlap).
+- Bibliography entries awaiting curated links: `101`
+- Lean candidates awaiting review: `827` (`3` direct URL/DOI/arXiv rows; `1678` surname/key rows; categories may overlap).
 
 ## Browse by problem
 
@@ -2723,6 +2723,7 @@ Paper citation usages:
 
 - `erdos-269-three-prime-running-lcm`: [cite at paper/269/erdos-269-three-prime-running-lcm.tex:426](../../paper/269/erdos-269-three-prime-running-lcm.tex#L426-L426), [cite at paper/269/erdos-269-three-prime-running-lcm.tex:916](../../paper/269/erdos-269-three-prime-running-lcm.tex#L916-L916)
 - `erdos269-running-lcm-reasoning-surface`: [cite at paper/269/erdos269-running-lcm-reasoning-surface.tex:371](../../paper/269/erdos269-running-lcm-reasoning-surface.tex#L371-L371), [cite at paper/269/erdos269-running-lcm-reasoning-surface.tex:2511](../../paper/269/erdos269-running-lcm-reasoning-surface.tex#L2511-L2511), [cite at paper/269/erdos269-running-lcm-reasoning-surface.tex:3860](../../paper/269/erdos269-running-lcm-reasoning-surface.tex#L3860-L3860), [cite at paper/reasoning-parts/erdos269/core.tex:313](../../paper/reasoning-parts/erdos269/core.tex#L313-L313), [cite at paper/reasoning-parts/erdos269/core.tex:2453](../../paper/reasoning-parts/erdos269/core.tex#L2453-L2453), [cite at paper/reasoning-parts/erdos269/core.tex:3802](../../paper/reasoning-parts/erdos269/core.tex#L3802-L3802)
+- `writing-mathematics-from-reviewed-revisions`: [cite at paper/exposition/parts/revisions.tex:62](../../paper/exposition/parts/revisions.tex#L62-L62)
 
 <a id="source-source-1b9324cc5f4641"></a>
 
@@ -3800,6 +3801,7 @@ Paper citation usages:
 - `erdos243-reciprocal-tail-reasoning-surface`: [cite at paper/243/erdos243-reciprocal-tail-reasoning-surface.tex:1016](../../paper/243/erdos243-reciprocal-tail-reasoning-surface.tex#L1016-L1016), [cite at paper/reasoning-parts/erdos243/core.tex:977](../../paper/reasoning-parts/erdos243/core.tex#L977-L977)
 - `erdos249-totient-reasoning-surface`: [cite at paper/249/erdos249-totient-reasoning-surface.tex:7374](../../paper/249/erdos249-totient-reasoning-surface.tex#L7374-L7374), [cite at paper/reasoning-parts/erdos249/a249\_front.tex:7182](../../paper/reasoning-parts/erdos249/a249_front.tex#L7182-L7182)
 - `erdos251-prime-gap-reasoning-surface`: [cite at paper/251/erdos251-prime-gap-reasoning-surface.tex:366](../../paper/251/erdos251-prime-gap-reasoning-surface.tex#L366-L366), [cite at paper/251/erdos251-prime-gap-reasoning-surface.tex:569](../../paper/251/erdos251-prime-gap-reasoning-surface.tex#L569-L569), [cite at paper/reasoning-parts/erdos251/core.tex:324](../../paper/reasoning-parts/erdos251/core.tex#L324-L324), [cite at paper/reasoning-parts/erdos251/core.tex:527](../../paper/reasoning-parts/erdos251/core.tex#L527-L527)
+- `writing-mathematics-from-reviewed-revisions`: [cite at paper/exposition/parts/revisions.tex:34](../../paper/exposition/parts/revisions.tex#L34-L34)
 
 <a id="source-source-43a734be32736f"></a>
 
@@ -8395,6 +8397,7 @@ Paper citation usages:
 
 - `erdos-1049-rational-base-lambert`: [cite at paper/1049/erdos-1049-rational-base-lambert.tex:1004](../../paper/1049/erdos-1049-rational-base-lambert.tex#L1004-L1004)
 - `erdos1049-rational-base-lambert-reasoning-surface`: [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:2815](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L2815-L2815), [cite at paper/reasoning-parts/erdos1049/core.tex:2784](../../paper/reasoning-parts/erdos1049/core.tex#L2784-L2784)
+- `writing-mathematics-from-reviewed-revisions`: [cite at paper/exposition/parts/reading.tex:100](../../paper/exposition/parts/reading.tex#L100-L100)
 
 <a id="source-source-e553241a97e580"></a>
 
@@ -9353,10 +9356,10 @@ Paper citation usages:
 
 These gaps are shown explicitly so the catalogue cannot be mistaken for complete historical knowledge.
 
-- Registered papers scanned: `22`; TeX source files scanned after local includes: `91`.
+- Registered papers scanned: `24`; TeX source files scanned after local includes: `98`.
 - Citation keys without a local bibliography definition: `0`
-- Bibliography entries without a curated source link: `93`
-- Lean lexical candidates awaiting review: `793`
+- Bibliography entries without a curated source link: `101`
+- Lean lexical candidates awaiting review: `827`
 - Unresolved local TeX includes: `0`
 
 Machine-readable inventories, hashes, unresolved keys, and lexical candidates: [source-attribution-index.json](source-attribution-index.json).

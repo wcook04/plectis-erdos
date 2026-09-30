@@ -23,7 +23,7 @@
     "ReturnsAdmitted": 18,
     "ReturnsUnreviewed": 7,
     "ProblemWorlds": 8,
-    "RegisteredPapers": 22,
+    "RegisteredPapers": 24,
     "ShortPapers": 8,
     "LongRecords": 8,
     "HistoricalEdits": "ten",
@@ -38,7 +38,7 @@
     },
     {
       "path": "docs/claims.json",
-      "sha256": "5ba69f6d6a562a7b6e9640ba795c8a68e8bef8d974277adbf81895ec17e71553"
+      "sha256": "d55b0185ce8b243628ba7d75f51795c8c40291de52f19a3a38adfb19e623a154"
     },
     {
       "path": "docs/problem_index_source.json",
@@ -46,7 +46,7 @@
     },
     {
       "path": "docs/papers/corpus.json",
-      "sha256": "788d6b05c22e7a061253a5d093434141f4739524519552daa65be94310cf3a81"
+      "sha256": "72f3eb6492cfe704a9c2dd68ea31a2debece6f260c3236f8a6ef8686c2a850d6"
     },
     {
       "path": "docs/publication_evidence.json",
