@@ -36,7 +36,54 @@ def local_markdown_links(path: str) -> list[Path]:
     return links
 
 
+def check_discrepancy_intake() -> None:
+    # Exercise the tracked GitHub form's required-field boundary. The report
+    # identifies a statement and mismatch; a reader need not clone or know a tag.
+    form = text(".github/ISSUE_TEMPLATE/math_discrepancy.yml")
+    fields = {}
+    for block in re.split(r"(?m)^  - type: ", form)[1:]:
+        field_id = re.search(r"(?m)^    id: ([a-z_]+)$", block)
+        require(field_id is not None, "discrepancy form has an unidentified field")
+        fields[field_id.group(1)] = block
+    require({"claim", "discrepancy", "release"} <= fields.keys(),
+            "discrepancy form lost its statement, mismatch or source identity field")
+    required_fields = {
+        name for name, block in fields.items()
+        if re.search(r"(?m)^      required: true$", block)
+    }
+    require(required_fields == {"claim", "discrepancy"},
+            f"discrepancy intake requires more than a statement and mismatch: {required_fields}")
+    source = fields["release"]
+    require(source.startswith("input\n"),
+            "source identity must accept a free-text tag, edition, commit or link")
+    for term in ("edition", "commit", "link", "known"):
+        require(term in source.lower(), f"source identity guidance omits {term}")
+    require("v0.10.0" in source, "source identity guidance lost the known release tag example")
+    require(not re.search(r"(?m)^      value:", source),
+            "discrepancy form invents a source identity for the reporter")
+
+    statement = {
+        "claim": "README statement",
+        "discrepancy": "The stated assumptions differ from the referenced source.",
+    }
+    for identity in (
+        "",  # A correction read without a clone, edition or tag.
+        "v0.10.0",  # Existing historical edition remains a valid answer.
+        "https://github.com/wcook04/plectis-erdos/blob/main/README.md",
+        # Public main observed when this intake regression was captured.
+        "bdcce7f85835b8d6a18c22a3bc90eeaf0064ddb6",
+    ):
+        answers = {**statement, "release": identity}
+        missing = {name for name in required_fields if not answers.get(name, "").strip()}
+        require(not missing, f"valid discrepancy report blocked for identity {identity!r}: {missing}")
+    for absent in ("claim", "discrepancy"):
+        answers = {**statement, absent: "", "release": "v0.10.0"}
+        missing = {name for name in required_fields if not answers.get(name, "").strip()}
+        require(missing == {absent}, f"source identity bypasses required {absent}")
+
+
 def main() -> int:
+    check_discrepancy_intake()
     catalog = load_catalog()
     for task, lane in (
         ("I want to work on problem 257 using the existing papers and Lean sources", "bounded_research"),
