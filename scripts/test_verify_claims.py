@@ -63,6 +63,40 @@ def require(condition: bool, message: str) -> None:
         raise AssertionError(message)
 
 
+def check_comparator_context_scope() -> None:
+    """A selected claim must identify a broader packet's unrelated context."""
+    selected = claim("Sample.alpha", ALPHA_KEYWORD_LINE)
+    selected["declarations"] = []
+    row = {
+        "id": "selected_interface",
+        "claim_id": "sample_claim",
+        "original_declaration": "Sample.alpha",
+        "wrapper_declaration": "Challenge.alpha",
+        "boundary": "This selected interface has a restricted conclusion.",
+    }
+    register = build_register([selected], main_results=[row])
+    packet_context = "A different programme supplies the packet's headline result."
+    register["external_verification_packet"]["boundary"] = packet_context
+    for rows, expected in (([row], "bound"), ([], "not_bound")):
+        register["external_verification_packet"]["main_results"] = rows
+        report = verify_claims.follow_claim("sample_claim", register, {})
+        rendered = verify_claims.render_claim(report)
+        require(report["comparator"]["status"] == expected, "interface binding changed")
+        heading = "  packet-wide context (may concern other claims):"
+        require(heading in rendered, "selected claim did not identify packet-wide context")
+        require(rendered.index(heading) < rendered.index(packet_context),
+                "packet scope label did not precede its unrelated account")
+        require("what Comparator does and does not settle:" not in rendered,
+                "packet-wide account was still presented as the selected claim's explanation")
+        if rows:
+            require(row["boundary"] in rendered, "selected interface boundary disappeared")
+            require(rendered.index(row["boundary"]) < rendered.index(heading),
+                    "selected and packet boundaries lost their separate scopes")
+    register.pop("external_verification_packet")
+    rendered = verify_claims.render_claim(verify_claims.follow_claim("sample_claim", register, {}))
+    require("packet-wide context" not in rendered, "absent packet acquired invented context")
+
+
 def check_safe_read_boundary() -> None:
     original_root = verify_claims.REPO_ROOT
     with tempfile.TemporaryDirectory(prefix="claims-input-") as raw_workspace:
@@ -622,6 +656,7 @@ def main() -> int:
 
 
 if __name__ == "__main__":
+    check_comparator_context_scope()
     check_safe_read_boundary()
     check_declaration_identity()
     raise SystemExit(main())

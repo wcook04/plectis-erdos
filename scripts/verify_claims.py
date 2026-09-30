@@ -570,7 +570,7 @@ def render_claim(report: dict[str, Any]) -> str:
                 f"{comparator['bound_total']} carry a claim id"
             )
             out.extend(quoted(comparator["unregistered_contract"]))
-        out.append("  what Comparator does and does not settle:")
+        out.append("  packet-wide context (may concern other claims):")
         out.extend(quoted(comparator["boundary"], "           "))
         out.append("")
 
