@@ -23,7 +23,8 @@ PAPERS = erdos1041-lemniscate-reasoning-surface \
   erdos-243-reciprocal-tail-rigidity erdos-251-prime-gap-dyadic-series \
   erdos-269-three-prime-running-lcm erdos-1041-lemniscate-newton-flow \
   erdos-1049-rational-base-lambert \
-  optimal-sparse-perturbations
+  optimal-sparse-perturbations writing-mathematics-from-reviewed-revisions \
+  writing-a-good-mathematical-paper
 NOTES = erdos-68-factorial-denominator-irrationality \
   erdos-249-binary-totient-series erdos-257-mersenne-support-subseries \
   erdos-243-reciprocal-tail-rigidity erdos-251-prime-gap-dyadic-series \
@@ -38,8 +39,9 @@ REASONING_ASSEMBLER = ../scripts/assemble_reasoning_surfaces.py
 REASONING_COORDINATES = ../scripts/refresh_reasoning_source_coordinates.py
 REASONING_249_PARTS = $(wildcard reasoning-parts/erdos249/*.tex)
 REASONING_257_PARTS = $(wildcard reasoning-parts/erdos257/*.tex)
+EXPOSITION_PARTS = $(wildcard exposition/parts/*.tex)
 EVIDENCE_PAPERS = $(patsubst evidence/%.tex,%.pdf,$(wildcard evidence/*.tex))
-VPATH = 68:243:249:251:257:269:1041:1049:synthesis:systems:archive:.
+VPATH = 68:243:249:251:257:269:1041:1049:synthesis:systems:exposition:archive:.
 
 .PHONY: all check clean sync-root
 
@@ -67,6 +69,7 @@ check: all
 # Short and long problem papers and synthesis publications track the preamble.
 $(NOTES:%=%.pdf) $(SYNTHESIS:%=%.pdf) $(filter %-reasoning-surface.pdf,$(PAPERS:%=%.pdf)): $(PREAMBLE)
 $(PAPERS:%=%.pdf): paper-house-style.sty
+writing-mathematics-from-reviewed-revisions.pdf: $(EXPOSITION_PARTS)
 # Evidence marks and their placement code are included by the TeX sources.
 # Rebuild their PDFs when the evidence owner changes an included sidecar,
 # including a record-commit pin, even if the authored manuscript is unchanged.

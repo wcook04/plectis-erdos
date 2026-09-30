@@ -1,0 +1,1359 @@
+{
+  "schema": "exposition-return-index/1",
+  "returns": [
+    {
+      "id": "short-20260930-r5-1041",
+      "round": 5,
+      "problem": "1041",
+      "archive_name": "1041.zip",
+      "archive_sha256": "ced4d1d01933d2d1a6a7e101cb8396c6fdf7637a301901018d3d0ae13ae5d9c9",
+      "documents": {
+        "STYLE_RULES.json": {
+          "member": "erdos1041_short_refinement_r5_20260929_return/STYLE_RULES.json",
+          "sha256": "3d2cf5e7037804cb742013a6e0ce380c03bebbf574883eda2b4e3eec45131907"
+        },
+        "GENERALIZED_LESSONS.json": {
+          "member": "erdos1041_short_refinement_r5_20260929_return/GENERALIZED_LESSONS.json",
+          "sha256": "3d394b09f9e27de4f118d98dd720218d95a45219d4ba4a4b44fb7add4f5eb33c"
+        },
+        "LITERATURE_READING.json": {
+          "member": "erdos1041_short_refinement_r5_20260929_return/LITERATURE_READING.json",
+          "sha256": "877fe2379ee9f2c1b932a0e2a4e0bcee98e90f215a424002895ed0a705d3f17d"
+        },
+        "EDITORIAL_REPORT.md": {
+          "member": "erdos1041_short_refinement_r5_20260929_return/EDITORIAL_REPORT.md",
+          "sha256": "ba1c3b2943736cb7ceec5675fd11a2b499a54cd7dfd00d6e1efa7c5955b890ba"
+        },
+        "REGISTER_REPORT.json": {
+          "member": "erdos1041_short_refinement_r5_20260929_return/REGISTER_REPORT.json",
+          "sha256": "3090a6b62978e4641df4f07db6c2a1f194aebc6d14397c4a7a8eba2ed2f332d3"
+        },
+        "RETURN.json": {
+          "member": "erdos1041_short_refinement_r5_20260929_return/RETURN.json",
+          "sha256": "31e942fd70a5c7b65db3543fb8da955a0cceeda9bb9bc124f17238b4c31e7fec"
+        }
+      },
+      "native_receipt_identities": [
+        {
+          "name": "integration.json",
+          "sha256": "e40096927a30bc40b622604174d25b27e7e59b063bb228c4c0041769d2df0431"
+        },
+        {
+          "name": "OUTCOME.md",
+          "sha256": "f3c4e73e76e52ea5bf4a80cdfdbd7ed8d8da4f04b7346f7e3235f79cb61f32b6"
+        },
+        {
+          "name": "dispositions.json",
+          "sha256": "4351f3ff3cb0ce068c36225b420a7ffd55c63ff3db97dee4f44d7fa0188f8133"
+        },
+        {
+          "name": "FINAL_AUTHORITY.json",
+          "sha256": "174703db5e2f7e4ce5778cfc2e3451ceb970f3010e1da8f739ff99457c45599d"
+        }
+      ],
+      "native_status": "accepted_revision_with_recorded_native_changes",
+      "status_boundary": "Acceptance of a manuscript delta does not adopt each proposed writing rule or certify a source reading. Originals remain in maintainer custody; these hashes identify them."
+    },
+    {
+      "id": "short-20260930-r5-1049",
+      "round": 5,
+      "problem": "1049",
+      "archive_name": "1049.zip",
+      "archive_sha256": "d319f9790bee71d9ad753d3cdf8e1b877b491e3b3a6aa03da3b4b7c70c2e207d",
+      "documents": {
+        "STYLE_RULES.json": {
+          "member": "erdos1049_refined_r5/STYLE_RULES.json",
+          "sha256": "db63ed0f5fe0b874e0aea44908132f857528016eb656adf2069a223a413d9bc0"
+        },
+        "GENERALIZED_LESSONS.json": {
+          "member": "erdos1049_refined_r5/GENERALIZED_LESSONS.json",
+          "sha256": "2575a7e060f43e0e389205317d798cd1d15d3ce091ca489f746a5c87f466e964"
+        },
+        "LITERATURE_READING.json": {
+          "member": "erdos1049_refined_r5/LITERATURE_READING.json",
+          "sha256": "123f62c660d2acb6428faba23b90791078d47541b9ea7fff245a5b7e4aca7608"
+        },
+        "EDITORIAL_REPORT.md": {
+          "member": "erdos1049_refined_r5/EDITORIAL_REPORT.md",
+          "sha256": "7e384bb3dc73697e2e0723fed72a5740ad4410c6373511190c16357237228b98"
+        },
+        "REGISTER_REPORT.json": {
+          "member": "erdos1049_refined_r5/REGISTER_REPORT.json",
+          "sha256": "de02e58740244f64e6ac2e8a0d464cb86242a0be0ba17d1d66eca85fd6d5bf7e"
+        },
+        "RETURN.json": {
+          "member": "erdos1049_refined_r5/RETURN.json",
+          "sha256": "7d7736ea42fbcf28bb73934b24926299159ba0a918b1a02e4b221733fe6c8d51"
+        }
+      },
+      "native_receipt_identities": [
+        {
+          "name": "integration.json",
+          "sha256": "9e529ce3dc220ac810f58fd46781cf6a8b530ef29a7514d813bbf03e42a3f7bf"
+        },
+        {
+          "name": "OUTCOME.md",
+          "sha256": "b674259163dabe5138680001b6643ee0d4b91f97b0e9511d23bddeedd7e2a8e8"
+        },
+        {
+          "name": "dispositions.json",
+          "sha256": "ec964faca3f4d72c2ccfec88e14948808d6f16b3319af5f2086775dd9d79f87a"
+        },
+        {
+          "name": "FINAL_AUTHORITY.json",
+          "sha256": "7236468bdfa6ff1b764058baa3f4e9269332d7f5408e8ef7fc25d5380c754b07"
+        }
+      ],
+      "native_status": "accepted_revision_with_recorded_native_changes",
+      "status_boundary": "Acceptance of a manuscript delta does not adopt each proposed writing rule or certify a source reading. Originals remain in maintainer custody; these hashes identify them."
+    },
+    {
+      "id": "short-20260930-r5-243",
+      "round": 5,
+      "problem": "243",
+      "archive_name": "243.zip",
+      "archive_sha256": "74e10720019831fc96ac6096ea0d520896cd90399d2c8479bfb0e29c020da867",
+      "documents": {
+        "STYLE_RULES.json": {
+          "member": "erdos243_short_refinement_r5_20260929_return/STYLE_RULES.json",
+          "sha256": "c93e40371f6991482d972e260c4465194cc818d7fedd7d6076fa5adaf8f83e7c"
+        },
+        "GENERALIZED_LESSONS.json": {
+          "member": "erdos243_short_refinement_r5_20260929_return/GENERALIZED_LESSONS.json",
+          "sha256": "563df045a977b59fa9bd002211b0b36850a1c027f59edf586dc83677ab2d2cd9"
+        },
+        "LITERATURE_READING.json": {
+          "member": "erdos243_short_refinement_r5_20260929_return/LITERATURE_READING.json",
+          "sha256": "f2bc00c24ab5d1df052d95c86b9d790e04ba2c5c4fa358e86bc2fbbd8e3d1d05"
+        },
+        "EDITORIAL_REPORT.md": {
+          "member": "erdos243_short_refinement_r5_20260929_return/EDITORIAL_REPORT.md",
+          "sha256": "7953474dd39001e838666ba71f6e1de3913f377cc7ad29b496eab6162fb98342"
+        },
+        "REGISTER_REPORT.json": {
+          "member": "erdos243_short_refinement_r5_20260929_return/REGISTER_REPORT.json",
+          "sha256": "09b5b4ca03b9b7823bc4d48861776a50de313946d53818176a6839e57b9059f2"
+        },
+        "RETURN.json": {
+          "member": "erdos243_short_refinement_r5_20260929_return/RETURN.json",
+          "sha256": "d1d7fa0a428e7e939141ecef1d2f086d488cc87b1d895a6bf55c09308b1d656b"
+        }
+      },
+      "native_receipt_identities": [
+        {
+          "name": "integration-report.json",
+          "sha256": "6ce25abe9f591e6b22f4246ff4a8a1a863ba1c652c0d1f67bcaab1b387a9f97a"
+        },
+        {
+          "name": "OUTCOME.md",
+          "sha256": "513395fcf3443a1ab2497122e6d5ae6da11ebc9e16342f0e1ba4f63182e13368"
+        },
+        {
+          "name": "FINAL_AUTHORITY.json",
+          "sha256": "72efffaf8c4e89e624debbfda431d78c5b2a2006e3925d95e08bff49805a92f9"
+        }
+      ],
+      "native_status": "accepted_revision_with_recorded_native_changes",
+      "status_boundary": "Acceptance of a manuscript delta does not adopt each proposed writing rule or certify a source reading. Originals remain in maintainer custody; these hashes identify them."
+    },
+    {
+      "id": "short-20260930-r5-249",
+      "round": 5,
+      "problem": "249",
+      "archive_name": "249.zip",
+      "archive_sha256": "d13df0c4ba685fb2505f63a3a0817b37b087343c9c3fe033846d2c37b1d2b254",
+      "documents": {
+        "STYLE_RULES.json": {
+          "member": "erdos249_short_refinement_r5_20260929_return/STYLE_RULES.json",
+          "sha256": "533b6d2382e065f8401a7af06df333ab7dbabdfe3f692f4b366430d9b5d744f5"
+        },
+        "GENERALIZED_LESSONS.json": {
+          "member": "erdos249_short_refinement_r5_20260929_return/GENERALIZED_LESSONS.json",
+          "sha256": "d57aa362cf15aa5770e2f5ef5a1736075477ad3651b09c80079e527e72605d67"
+        },
+        "LITERATURE_READING.json": {
+          "member": "erdos249_short_refinement_r5_20260929_return/LITERATURE_READING.json",
+          "sha256": "d7efed400ea8e9ad9d7bc5fa1bd734b893908acf836dd7ebdd37113cd576b046"
+        },
+        "EDITORIAL_REPORT.md": {
+          "member": "erdos249_short_refinement_r5_20260929_return/EDITORIAL_REPORT.md",
+          "sha256": "7f553ecc59e6eb9652ffb21bdfe0b0f884fbf9d2dbf1ec1e4248655c4f00f636"
+        },
+        "REGISTER_REPORT.json": {
+          "member": "erdos249_short_refinement_r5_20260929_return/REGISTER_REPORT.json",
+          "sha256": "d8b167db457931cc339037efd1ae7cf6e34a838ae908a5f3f9ccb970d97e43ac"
+        },
+        "RETURN.json": {
+          "member": "erdos249_short_refinement_r5_20260929_return/RETURN.json",
+          "sha256": "2b2a4fd3830a1d0445cd9dbf82dbd222860ff40dc6fe2f11b23992ee3a51b80f"
+        }
+      },
+      "native_receipt_identities": [
+        {
+          "name": "integration-report.json",
+          "sha256": "57d2ac3ce31087341f61b78b7ae880b26ba0eeab3a32c6678ff49681c9d36af1"
+        },
+        {
+          "name": "OUTCOME.md",
+          "sha256": "bd6ce756270bb005e1d3a52fbe5e4c01923325ccb5ebaf4bb50b76be308be10d"
+        },
+        {
+          "name": "FINAL_AUTHORITY.json",
+          "sha256": "85531d54ce913158f8a0a1efc06533134d7986de0841a584722cfec487c6aee6"
+        }
+      ],
+      "native_status": "accepted_revision_with_recorded_native_changes",
+      "status_boundary": "Acceptance of a manuscript delta does not adopt each proposed writing rule or certify a source reading. Originals remain in maintainer custody; these hashes identify them."
+    },
+    {
+      "id": "short-20260930-r5-251",
+      "round": 5,
+      "problem": "251",
+      "archive_name": "251.zip",
+      "archive_sha256": "ffca8d0d870169cd40965205b956e26652bf4e5a318c657e598d0b30b199f15d",
+      "documents": {
+        "STYLE_RULES.json": {
+          "member": "erdos251_short_refinement_r5_20260929_return/STYLE_RULES.json",
+          "sha256": "764bb30d6d59f8c7ae58649b54507688bbae02ba0ba616505f39453e101f8f1c"
+        },
+        "GENERALIZED_LESSONS.json": {
+          "member": "erdos251_short_refinement_r5_20260929_return/GENERALIZED_LESSONS.json",
+          "sha256": "035c01498551e14f9377f2628a8eea0bac7210f33a7a8fb379482507ea4566b7"
+        },
+        "LITERATURE_READING.json": {
+          "member": "erdos251_short_refinement_r5_20260929_return/LITERATURE_READING.json",
+          "sha256": "c7f55d2b4097671c79a79ceb26a068f47f6a0eb391e9708665ca45a51cb050ea"
+        },
+        "EDITORIAL_REPORT.md": {
+          "member": "erdos251_short_refinement_r5_20260929_return/EDITORIAL_REPORT.md",
+          "sha256": "09a740df3d88dc3e2b9bcca23fcc20af2c3a090b0dc214e4e5faa6b2b5b8fbde"
+        },
+        "REGISTER_REPORT.json": {
+          "member": "erdos251_short_refinement_r5_20260929_return/REGISTER_REPORT.json",
+          "sha256": "804c4d36cb20ea65f962bc2a6eb3706f5dc77ddad96060d586e94b96b7e46291"
+        },
+        "RETURN.json": {
+          "member": "erdos251_short_refinement_r5_20260929_return/RETURN.json",
+          "sha256": "c0497495df3e8430b841de3a836d7625197a6a23ca19fad2757558c4394f926f"
+        }
+      },
+      "native_receipt_identities": [
+        {
+          "name": "integration.json",
+          "sha256": "75f6fefc7e907172866bf65b3b737f1baa863664ba2ebc0912775fcc5b96a795"
+        },
+        {
+          "name": "OUTCOME.md",
+          "sha256": "566fe2d6eb86c185795445cfb3240a1aaaf628d991b19fd6af350793c33abcd0"
+        },
+        {
+          "name": "FINAL_AUTHORITY.json",
+          "sha256": "e84c5c8b8c9ed65cb1271127018d37bd409ce5c5d5d06fb5f3882296319317fa"
+        }
+      ],
+      "native_status": "accepted_revision_with_recorded_native_changes",
+      "status_boundary": "Acceptance of a manuscript delta does not adopt each proposed writing rule or certify a source reading. Originals remain in maintainer custody; these hashes identify them."
+    },
+    {
+      "id": "short-20260930-r5-257",
+      "round": 5,
+      "problem": "257",
+      "archive_name": "257.zip",
+      "archive_sha256": "0a50fa42058d68a9f908d0c53cc1bac33e8075ae0f493920697eafb61a9dd557",
+      "documents": {
+        "STYLE_RULES.json": {
+          "member": "erdos257_short_refinement_r5_20260929_return/STYLE_RULES.json",
+          "sha256": "df269afb49a7bb9c5c10b1c74a49566ae7c900231e58a6a0f93fe03f588365a1"
+        },
+        "GENERALIZED_LESSONS.json": {
+          "member": "erdos257_short_refinement_r5_20260929_return/GENERALIZED_LESSONS.json",
+          "sha256": "ea7d73a5239643541e2c32bcc5ffd0537fe5e9f828ccb2f1a0124612d4ac1a5d"
+        },
+        "LITERATURE_READING.json": {
+          "member": "erdos257_short_refinement_r5_20260929_return/LITERATURE_READING.json",
+          "sha256": "be64574d23dfec28a5ac066c32b18eea5c1df3aad5fa74c4b5ae035d1856bab6"
+        },
+        "EDITORIAL_REPORT.md": {
+          "member": "erdos257_short_refinement_r5_20260929_return/EDITORIAL_REPORT.md",
+          "sha256": "8bbc1c570b33db0237c953368d3f9e25fdca6b8fc5fce0ac4d73d6768a7a11f1"
+        },
+        "REGISTER_REPORT.json": {
+          "member": "erdos257_short_refinement_r5_20260929_return/REGISTER_REPORT.json",
+          "sha256": "00b105523f3894bd8143b487d9d74f99aba79b6893501e7fcb59a34c1f795852"
+        },
+        "RETURN.json": {
+          "member": "erdos257_short_refinement_r5_20260929_return/RETURN.json",
+          "sha256": "42813fa3d8027a2c33cab826ac565b210991f8bceb42f1f2d73ff589245ff0fc"
+        }
+      },
+      "native_receipt_identities": [
+        {
+          "name": "integration.json",
+          "sha256": "87fdcdaa3b6f4e6572f150a5a3bcc98d07afdc587c691165c2494d8d8f61b031"
+        },
+        {
+          "name": "OUTCOME.md",
+          "sha256": "7b5a56ca15af3ac6f7c0ca952c6a6667f24d55f3b0ce5a00949bdde663409311"
+        },
+        {
+          "name": "FINAL_AUTHORITY.json",
+          "sha256": "8bb7b9becf5895e0a6b56b8de79751913371a2d23be1514fae93f1288f58896e"
+        }
+      ],
+      "native_status": "accepted_revision_with_recorded_native_changes",
+      "status_boundary": "Acceptance of a manuscript delta does not adopt each proposed writing rule or certify a source reading. Originals remain in maintainer custody; these hashes identify them."
+    },
+    {
+      "id": "short-20260930-r5-269",
+      "round": 5,
+      "problem": "269",
+      "archive_name": "269.zip",
+      "archive_sha256": "3d68c8138089b4ec0f966d42d79c60885aa1c2c3f67a69ca1d2abad90cb451c2",
+      "documents": {
+        "STYLE_RULES.json": {
+          "member": "erdos269_short_refinement_r5_20260929_return/STYLE_RULES.json",
+          "sha256": "18cb310a58d9ba90a22c7959c60a0ee2cc68b423085562e9984ae8a940e08c5b"
+        },
+        "GENERALIZED_LESSONS.json": {
+          "member": "erdos269_short_refinement_r5_20260929_return/GENERALIZED_LESSONS.json",
+          "sha256": "8d373d41bbe0010ac092659527d805e2734a709548534ad46c9bfa20c2fd0dcf"
+        },
+        "LITERATURE_READING.json": {
+          "member": "erdos269_short_refinement_r5_20260929_return/LITERATURE_READING.json",
+          "sha256": "5ddb01d39e231f560c0fa90ab8104660ff1e8386ade1474a419394196d91ddba"
+        },
+        "EDITORIAL_REPORT.md": {
+          "member": "erdos269_short_refinement_r5_20260929_return/EDITORIAL_REPORT.md",
+          "sha256": "4f2a7f85fb5a5345b6583586ae25e55588632c6664e0fe6a3379ea37f3d75e4b"
+        },
+        "REGISTER_REPORT.json": {
+          "member": "erdos269_short_refinement_r5_20260929_return/REGISTER_REPORT.json",
+          "sha256": "018616eed14114335dcbdf6c6099b5e10df99ce158e3b9ff89ccde481920049e"
+        },
+        "RETURN.json": {
+          "member": "erdos269_short_refinement_r5_20260929_return/RETURN.json",
+          "sha256": "6089582aaa521f82969791254a164a1e6cbb77859a05268e5bc07c053604a579"
+        }
+      },
+      "native_receipt_identities": [
+        {
+          "name": "integration.json",
+          "sha256": "4f8406f13a5e525ea090b954b649fc4588f6642778e445c3e11c68d4e18be1ac"
+        },
+        {
+          "name": "OUTCOME.md",
+          "sha256": "6fa14255ad7ace22c34b1b57af9d16bec6881b4dabf087c52e6d6363d5e4cecf"
+        },
+        {
+          "name": "FINAL_AUTHORITY.json",
+          "sha256": "200de2ebd9fc63d3902dee4a2a2a673556375bc63da46e267288464d06845cc8"
+        }
+      ],
+      "native_status": "accepted_revision_with_recorded_native_changes",
+      "status_boundary": "Acceptance of a manuscript delta does not adopt each proposed writing rule or certify a source reading. Originals remain in maintainer custody; these hashes identify them."
+    },
+    {
+      "id": "short-20260930-r5-68",
+      "round": 5,
+      "problem": "68",
+      "archive_name": "68.zip",
+      "archive_sha256": "db7fd688f8660166dbb29936209fbd3b27411a0431589dec0bd37d3bc2be9105",
+      "documents": {
+        "STYLE_RULES.json": {
+          "member": "erdos68_short_refinement_r5_20260929_return/STYLE_RULES.json",
+          "sha256": "0642ba71940293eefc3670e2875f4c2fb6bc6dd74fa5c1944fddda216dbfe5ac"
+        },
+        "GENERALIZED_LESSONS.json": {
+          "member": "erdos68_short_refinement_r5_20260929_return/GENERALIZED_LESSONS.json",
+          "sha256": "d470d19be4b2acc27fa3028f245a9c1cea63fc73d6cf48e198a5aa5ccd1637e0"
+        },
+        "LITERATURE_READING.json": {
+          "member": "erdos68_short_refinement_r5_20260929_return/LITERATURE_READING.json",
+          "sha256": "fefa4850a01d1bd9f410b17baf70a6ee64418f10ee540243c7f5c28ea5817aec"
+        },
+        "EDITORIAL_REPORT.md": {
+          "member": "erdos68_short_refinement_r5_20260929_return/EDITORIAL_REPORT.md",
+          "sha256": "cb2104715d12b81d83e056698267e576529bd0865c14bd3578f2c0f5a28412f1"
+        },
+        "REGISTER_REPORT.json": {
+          "member": "erdos68_short_refinement_r5_20260929_return/REGISTER_REPORT.json",
+          "sha256": "79327db184a19878b66b2e1d744db7a4d1960583f4b69e9ca8829b9ffb57191c"
+        },
+        "RETURN.json": {
+          "member": "erdos68_short_refinement_r5_20260929_return/RETURN.json",
+          "sha256": "ca8594043aedfd06249a8ffe732b09eadef65563ddb657823083fe9273ec19b1"
+        }
+      },
+      "native_receipt_identities": [
+        {
+          "name": "integration-report.json",
+          "sha256": "914a8af12da6a9df7cf13287c274f1e7801fcb262f728c4af0f1b5f17c6919c8"
+        },
+        {
+          "name": "OUTCOME.md",
+          "sha256": "ad2e51ffbe20a8773e4cac3bedd130855017dc81a2c82798aedd8c11878226c9"
+        },
+        {
+          "name": "FINAL_AUTHORITY.json",
+          "sha256": "71ef200c8812097a17146fd69440d586ceceec33e9f166530fe080f0013292d4"
+        }
+      ],
+      "native_status": "accepted_revision_with_recorded_native_changes",
+      "status_boundary": "Acceptance of a manuscript delta does not adopt each proposed writing rule or certify a source reading. Originals remain in maintainer custody; these hashes identify them."
+    },
+    {
+      "id": "short-20260930-r5-systems",
+      "round": 5,
+      "problem": "systems",
+      "archive_name": "systems.zip",
+      "archive_sha256": "52a752cbc76e8f3c2487846dde416ef5f3846e9ed5c23685863eed3a0cb03967",
+      "documents": {
+        "STYLE_RULES.json": {
+          "member": "systems_short_refinement_r5_return/STYLE_RULES.json",
+          "sha256": "e47894fb43f766d832a6bb17f4b880ccda27c451093ffad914ca8138448d5b51"
+        },
+        "GENERALIZED_LESSONS.json": {
+          "member": "systems_short_refinement_r5_return/GENERALIZED_LESSONS.json",
+          "sha256": "9d007143dba89c3f904fce894076f7de67157fdc09a9581b0990144997fdda10"
+        },
+        "LITERATURE_READING.json": {
+          "member": "systems_short_refinement_r5_return/LITERATURE_READING.json",
+          "sha256": "e86651332568c9b8ecfca8aa9da37cc7b5c1832940f7db446212c1cc065b34e3"
+        },
+        "EDITORIAL_REPORT.md": {
+          "member": "systems_short_refinement_r5_return/EDITORIAL_REPORT.md",
+          "sha256": "5e09a72848d6c9eafeed59fff48be7b8e9babaf501737e5a6ac348884bbccb6f"
+        },
+        "REGISTER_REPORT.json": {
+          "member": "systems_short_refinement_r5_return/REGISTER_REPORT.json",
+          "sha256": "a49fc4e8a3169a99b9c6730540aead9d7fe654d9ab2deffb2366fd63cafa06a6"
+        },
+        "RETURN.json": {
+          "member": "systems_short_refinement_r5_return/RETURN.json",
+          "sha256": "1569132a1509f54a24e44d8206686ce26af57c52cf344f562c369866f984631a"
+        }
+      },
+      "native_receipt_identities": [
+        {
+          "name": "OUTCOME.md",
+          "sha256": "daa0f33314ff385cf9106c8ab40f9e32b9531f4ad76b6353a438832404ecd6ce"
+        },
+        {
+          "name": "FINAL_AUTHORITY.json",
+          "sha256": "d6c68e339eba311f3e0a68e582431394ceec5a56831fb60c3128a46f110a9441"
+        }
+      ],
+      "native_status": "accepted_revision_with_recorded_native_changes",
+      "status_boundary": "Acceptance of a manuscript delta does not adopt each proposed writing rule or certify a source reading. Originals remain in maintainer custody; these hashes identify them."
+    },
+    {
+      "id": "short-20260930-r6-1041",
+      "round": 6,
+      "problem": "1041",
+      "archive_name": "erdos1041_short_refinement_r6_20260930_return.zip",
+      "archive_sha256": "c1c30908f04e6068f9f0abd5d1fa3b721e24d12b51f600a8bf50fe0eca7a5c3f",
+      "documents": {
+        "STYLE_RULES.json": {
+          "member": "erdos1041_short_refinement_r6_20260930_return/STYLE_RULES.json",
+          "sha256": "80652b756abb8fed85c9723e2ba69773012af56cc54bce4a9c2eb053436b68ad"
+        },
+        "GENERALIZED_LESSONS.json": {
+          "member": "erdos1041_short_refinement_r6_20260930_return/GENERALIZED_LESSONS.json",
+          "sha256": "510cede9bc5598875a1f623450399db602235aab703ab2012d27efa0135fec7a"
+        },
+        "LITERATURE_READING.json": {
+          "member": "erdos1041_short_refinement_r6_20260930_return/LITERATURE_READING.json",
+          "sha256": "085eb6c43ae3382430d7f36ccd97686defd3370f9b5949820fc57a1797908b3a"
+        },
+        "EDITORIAL_REPORT.md": {
+          "member": "erdos1041_short_refinement_r6_20260930_return/EDITORIAL_REPORT.md",
+          "sha256": "ddd352b68289a86dd318dbc3f99b0c3f0c2285ec6bc10ee7b8236e80c3eb4e8f"
+        },
+        "REGISTER_REPORT.json": {
+          "member": "erdos1041_short_refinement_r6_20260930_return/REGISTER_REPORT.json",
+          "sha256": "77f9a25b7303be47792b486cc9e12e8461d78246c6f0923378e7117850d417e3"
+        },
+        "RETURN.json": {
+          "member": "erdos1041_short_refinement_r6_20260930_return/RETURN.json",
+          "sha256": "26bb5004a052f92c9c24ab045347f0124bbcf3c1e1b66965f42823c4820d76c8"
+        }
+      },
+      "native_receipt_identities": [
+        {
+          "name": "integration.json",
+          "sha256": "9f20d9b34865147de44f33bc7b5b5e82907962f80002736e82fbd03f4b90564b"
+        },
+        {
+          "name": "OUTCOME.md",
+          "sha256": "7d194cea5c91c07f0d70157d796e1dfcbdb7977bca7d1eba9469b3e96c9b0a43"
+        },
+        {
+          "name": "dispositions.json",
+          "sha256": "e99359a4a007bafd4f9785f6617fc5459ddce421b6a7956f8e50f75808b8c19c"
+        },
+        {
+          "name": "FINAL_AUTHORITY.json",
+          "sha256": "4200d27f94e284ffd645c3472f99e1cafc87481aee2f448673ff97616d283748"
+        }
+      ],
+      "native_status": "accepted_revision_with_recorded_native_changes",
+      "status_boundary": "Acceptance of a manuscript delta does not adopt each proposed writing rule or certify a source reading. Originals remain in maintainer custody; these hashes identify them."
+    },
+    {
+      "id": "short-20260930-r6-1049",
+      "round": 6,
+      "problem": "1049",
+      "archive_name": "erdos1049_refined_r6_return.zip",
+      "archive_sha256": "67105256fe64f7cd812131de730731a6f979542f0c8b029a1d92d2f416a9fc1b",
+      "documents": {
+        "STYLE_RULES.json": {
+          "member": "erdos1049_refined_r6/STYLE_RULES.json",
+          "sha256": "a3ac5d04276dfcb6465d17b7ad79719084b32b07784357adcb18499ea5f8ff84"
+        },
+        "GENERALIZED_LESSONS.json": {
+          "member": "erdos1049_refined_r6/GENERALIZED_LESSONS.json",
+          "sha256": "1c09eedf883a44a25e02fa50c6b078360277ea7c51d6a979ba51d1c347d9bf10"
+        },
+        "LITERATURE_READING.json": {
+          "member": "erdos1049_refined_r6/LITERATURE_READING.json",
+          "sha256": "10a2ca44e7c1c7768b3743577a982c1b2d539da7d407954ac3de1d04b4fc4d00"
+        },
+        "EDITORIAL_REPORT.md": {
+          "member": "erdos1049_refined_r6/EDITORIAL_REPORT.md",
+          "sha256": "eb13bccdd54be2ac780762a59eef60e17ca1492b855382e963415218fe36bec9"
+        },
+        "REGISTER_REPORT.json": {
+          "member": "erdos1049_refined_r6/REGISTER_REPORT.json",
+          "sha256": "52d3b36509440f01299bf4388f54ac1d9801223ee3dc64615e87b4ec6e06a227"
+        },
+        "RETURN.json": {
+          "member": "erdos1049_refined_r6/RETURN.json",
+          "sha256": "bc00e24ef197846280fa56bb04431cb2cf05963ebb128da1d63d0751c5eb86e9"
+        }
+      },
+      "native_receipt_identities": [
+        {
+          "name": "integration.json",
+          "sha256": "9e39dc2de377bad398952cec4c3be5ac68aa3b7d3b42802354f3192141766653"
+        },
+        {
+          "name": "OUTCOME.md",
+          "sha256": "00707eab282f8b414e7f3fee20fcfdb74cccdddb2ef1cd4ec1ab9f5a24b20346"
+        },
+        {
+          "name": "dispositions.json",
+          "sha256": "5a9c9e05767008cb4d9705723d9d82f635dafc93cc2ab1885cb9467b809f2134"
+        },
+        {
+          "name": "FINAL_AUTHORITY.json",
+          "sha256": "f75e13de3a6959b7597ca9eb78b898ff73d76429742f64402b1071853dcaacc4"
+        }
+      ],
+      "native_status": "accepted_revision_with_recorded_native_changes",
+      "status_boundary": "Acceptance of a manuscript delta does not adopt each proposed writing rule or certify a source reading. Originals remain in maintainer custody; these hashes identify them."
+    },
+    {
+      "id": "short-20260930-r6-243",
+      "round": 6,
+      "problem": "243",
+      "archive_name": "erdos243_short_refinement_r6_20260930_return.zip",
+      "archive_sha256": "a02bf5aa2c91f2333d52816aac93ad5e3dff691ffec37ff7c25f5f24fdf67938",
+      "documents": {
+        "STYLE_RULES.json": {
+          "member": "erdos243_short_refinement_r6_20260930_return/STYLE_RULES.json",
+          "sha256": "9bee4ad4cd17e5d67dce42eb20daf0420abe0546ca6b5e74cfebcad6a2c9606b"
+        },
+        "GENERALIZED_LESSONS.json": {
+          "member": "erdos243_short_refinement_r6_20260930_return/GENERALIZED_LESSONS.json",
+          "sha256": "bc9e7f1881b559d524313bf68a7ac734933b05bbc0ca832fd9d6be33d2d36109"
+        },
+        "LITERATURE_READING.json": {
+          "member": "erdos243_short_refinement_r6_20260930_return/LITERATURE_READING.json",
+          "sha256": "46a3b26f471c662b209a60d7a55330c94ff43351f34f546582989fa0f0d59d31"
+        },
+        "EDITORIAL_REPORT.md": {
+          "member": "erdos243_short_refinement_r6_20260930_return/EDITORIAL_REPORT.md",
+          "sha256": "f4476e18a33a91568de4599a327d8ebbd06426617ebe1df49e1be151b86385d4"
+        },
+        "REGISTER_REPORT.json": {
+          "member": "erdos243_short_refinement_r6_20260930_return/REGISTER_REPORT.json",
+          "sha256": "5028983959bc9f9959584ac541f276d596ee79da90530a01d9036775cfa89969"
+        },
+        "RETURN.json": {
+          "member": "erdos243_short_refinement_r6_20260930_return/RETURN.json",
+          "sha256": "dd43aea12951d06d2a1ec262971e44eb44bd6685fe6045da7cb9cd79b56f56ce"
+        }
+      },
+      "native_receipt_identities": [
+        {
+          "name": "integration.json",
+          "sha256": "9e73929093ebc40c75cee779f4be7938674abe890d72a5678491f14a6f41c3b9"
+        },
+        {
+          "name": "OUTCOME.md",
+          "sha256": "dfd4ccc78a563505ee0ee9ab5585a1ffb2b069165fab370384413d1c8b625907"
+        },
+        {
+          "name": "dispositions.json",
+          "sha256": "ba12380f214f2c600ef635c69a102001fbbb82d992d8aedee99c9be323d2c41d"
+        },
+        {
+          "name": "FINAL_AUTHORITY.json",
+          "sha256": "0dff753b3479ffd7cc1a0b648e68ac05852ac11365685ac09e929a80dbe6cf0d"
+        }
+      ],
+      "native_status": "accepted_revision_with_recorded_native_changes",
+      "status_boundary": "Acceptance of a manuscript delta does not adopt each proposed writing rule or certify a source reading. Originals remain in maintainer custody; these hashes identify them."
+    },
+    {
+      "id": "short-20260930-r6-249",
+      "round": 6,
+      "problem": "249",
+      "archive_name": "erdos249_short_refinement_r6_20260930_return.zip",
+      "archive_sha256": "1a57b92f61a6ae7ad40f9820ed2077c3a2c5f02af85fc5bef78388626579525b",
+      "documents": {
+        "STYLE_RULES.json": {
+          "member": "erdos249_short_refinement_r6_20260930_return/STYLE_RULES.json",
+          "sha256": "c95d1d64d71df7e5fc8d49ed70a2658ae44f8b698fcb93902f0f5708dd18fdba"
+        },
+        "GENERALIZED_LESSONS.json": {
+          "member": "erdos249_short_refinement_r6_20260930_return/GENERALIZED_LESSONS.json",
+          "sha256": "32a5e2895f311a53b124af3e09ecbaa757f8f11bbf0f2f77efc00f61ded5b274"
+        },
+        "LITERATURE_READING.json": {
+          "member": "erdos249_short_refinement_r6_20260930_return/LITERATURE_READING.json",
+          "sha256": "3aab1bbb4b34de2d8cb87cfa7c3dd7bbbc1d1c2e2acc96320365e7d04a03a833"
+        },
+        "EDITORIAL_REPORT.md": {
+          "member": "erdos249_short_refinement_r6_20260930_return/EDITORIAL_REPORT.md",
+          "sha256": "1e93a29c03aa9765af4dc1ec9996679c985110dcfde2acd0e47aa22e018d3e0d"
+        },
+        "REGISTER_REPORT.json": {
+          "member": "erdos249_short_refinement_r6_20260930_return/REGISTER_REPORT.json",
+          "sha256": "45fa36b337e652d5a03e2be41cfede0c90bd0442ef8b3030c77be4fa6c57d9d5"
+        },
+        "RETURN.json": {
+          "member": "erdos249_short_refinement_r6_20260930_return/RETURN.json",
+          "sha256": "22602b1c670fcbbea4cb71ab7d397bbc5f12fcea4d43bda55ad926d61466a6f8"
+        }
+      },
+      "native_receipt_identities": [
+        {
+          "name": "integration.json",
+          "sha256": "0be30a2b149ed771c9110e91d01165fb2e64aa3338ee060276bb82537fad5a80"
+        },
+        {
+          "name": "OUTCOME.md",
+          "sha256": "eeb1987f08886430975318073cd361b021f8571ca1ec94a7b5643f2b60cda31b"
+        },
+        {
+          "name": "dispositions.json",
+          "sha256": "4e322d04c98b82ae4717305f2d7d0943b85fbefe9882223f9359e3a1b0607588"
+        },
+        {
+          "name": "FINAL_AUTHORITY.json",
+          "sha256": "e82511201fee0a0a623df64b9112c0161c48a5268486309ddf7de19951b33f6a"
+        }
+      ],
+      "native_status": "accepted_revision_with_recorded_native_changes",
+      "status_boundary": "Acceptance of a manuscript delta does not adopt each proposed writing rule or certify a source reading. Originals remain in maintainer custody; these hashes identify them."
+    },
+    {
+      "id": "short-20260930-r6-251",
+      "round": 6,
+      "problem": "251",
+      "archive_name": "erdos251_short_refinement_r6_20260930_return.zip",
+      "archive_sha256": "bf167338a972f319b6a97bf714485c091cbd10ab7d1d9ad5c89b30e7ef84373d",
+      "documents": {
+        "STYLE_RULES.json": {
+          "member": "erdos251_short_refinement_r6_20260930_return/STYLE_RULES.json",
+          "sha256": "e333d7a57d2f5c9818686251a2bfcd39c206f7a2cdaade5ec6b5a73dd6c6384e"
+        },
+        "GENERALIZED_LESSONS.json": {
+          "member": "erdos251_short_refinement_r6_20260930_return/GENERALIZED_LESSONS.json",
+          "sha256": "77eb9c22e0cbf68155080bc2d70fe196f02d91034dfb6e69de650cdd127019a9"
+        },
+        "LITERATURE_READING.json": {
+          "member": "erdos251_short_refinement_r6_20260930_return/LITERATURE_READING.json",
+          "sha256": "ebdff8cc80c82b5fbd9519007a64a4f43b1e0d791884911ad2f3794efcb8d224"
+        },
+        "EDITORIAL_REPORT.md": {
+          "member": "erdos251_short_refinement_r6_20260930_return/EDITORIAL_REPORT.md",
+          "sha256": "a2c7ddc9ae3dc7eab6dcd9d09df9c8e653480b7c3aae7ca777107c27820ee1bf"
+        },
+        "REGISTER_REPORT.json": {
+          "member": "erdos251_short_refinement_r6_20260930_return/REGISTER_REPORT.json",
+          "sha256": "1805ce6e643750f9524e735981af65b2b5acb0b27ae6b144981e13d0114a930c"
+        },
+        "RETURN.json": {
+          "member": "erdos251_short_refinement_r6_20260930_return/RETURN.json",
+          "sha256": "caf50a74315b780f5d075eb747ce08a8749b5a6b5cadd0aba217f73f0834d225"
+        }
+      },
+      "native_receipt_identities": [
+        {
+          "name": "integration.json",
+          "sha256": "d4de4d11064a9a57878b48aef67b5f1d86d88eefa9ce9a65eb352e55aab5a471"
+        },
+        {
+          "name": "OUTCOME.md",
+          "sha256": "7a52995a5e12aed128375b5d4e3d10dde17c091e0d0eab0fe69c6b3854672ba7"
+        },
+        {
+          "name": "dispositions.json",
+          "sha256": "06a7dc4496b3047b792c3332d76f3c3303d68d18f0451f2282a0bf16c8d696d0"
+        },
+        {
+          "name": "FINAL_AUTHORITY.json",
+          "sha256": "4d007183edecac1cb0fee63ffc49c8e5ca64ac4105492c3f84ae0dfd1f3cc40f"
+        }
+      ],
+      "native_status": "accepted_revision_with_recorded_native_changes",
+      "status_boundary": "Acceptance of a manuscript delta does not adopt each proposed writing rule or certify a source reading. Originals remain in maintainer custody; these hashes identify them."
+    },
+    {
+      "id": "short-20260930-r6-257",
+      "round": 6,
+      "problem": "257",
+      "archive_name": "erdos257_short_refinement_r6_20260930_return.zip",
+      "archive_sha256": "18013ddef5efa5a21aeef583c29214199b6b2e6d8ecbb3a112690818be4c6960",
+      "documents": {
+        "STYLE_RULES.json": {
+          "member": "erdos257_short_refinement_r6_20260930_return/STYLE_RULES.json",
+          "sha256": "40a0397775214ca96363f81def67e72b0632b7d6e195ea80f9f81e0e64fd6c7b"
+        },
+        "GENERALIZED_LESSONS.json": {
+          "member": "erdos257_short_refinement_r6_20260930_return/GENERALIZED_LESSONS.json",
+          "sha256": "1f736ace7340ae31050c255913b211f4015e1e5c3a9a8616356f0c7a9064883d"
+        },
+        "LITERATURE_READING.json": {
+          "member": "erdos257_short_refinement_r6_20260930_return/LITERATURE_READING.json",
+          "sha256": "590d339c10c54413cf28a8e230e56a3d3ad52e2cdc89928e3ce42b7eb759289a"
+        },
+        "EDITORIAL_REPORT.md": {
+          "member": "erdos257_short_refinement_r6_20260930_return/EDITORIAL_REPORT.md",
+          "sha256": "17fb0f9000896d8f89a7d2b6c34309686b4895968f70a2a1a52c989a53a98aae"
+        },
+        "REGISTER_REPORT.json": {
+          "member": "erdos257_short_refinement_r6_20260930_return/REGISTER_REPORT.json",
+          "sha256": "abf2e64e9a31667b65e7f8dc73b7473aa2ad82d571580d4cfba5fc9b3c904d67"
+        },
+        "RETURN.json": {
+          "member": "erdos257_short_refinement_r6_20260930_return/RETURN.json",
+          "sha256": "4d201c39ba58ddb435c18428403f177ded3b93667aae206b48bfc927e7a1f124"
+        }
+      },
+      "native_receipt_identities": [
+        {
+          "name": "integration.json",
+          "sha256": "6e1e8138d26ec60d0092e2969bedc273e9d5c57ad34f3c106c0ca68efe509545"
+        },
+        {
+          "name": "OUTCOME.md",
+          "sha256": "8708a6f7f3e3ddab2e770e8db784c6f035dd2e1ed6bb5c5d8586fda4373881c9"
+        },
+        {
+          "name": "dispositions.json",
+          "sha256": "c8845a15b83856be58032c2cdfa2fcacd9076469c0a5c9d5f74468914bef6f6e"
+        },
+        {
+          "name": "FINAL_AUTHORITY.json",
+          "sha256": "034311cc91fde40c5931274ec8c77a5a98bb76be129b5dcc337da0a85a4c3367"
+        }
+      ],
+      "native_status": "accepted_revision_with_recorded_native_changes",
+      "status_boundary": "Acceptance of a manuscript delta does not adopt each proposed writing rule or certify a source reading. Originals remain in maintainer custody; these hashes identify them."
+    },
+    {
+      "id": "short-20260930-r6-269",
+      "round": 6,
+      "problem": "269",
+      "archive_name": "erdos269_short_refinement_r6_20260930_return.zip",
+      "archive_sha256": "b29c742b7a10cad3370ef00c3173556cb46059436af07434c33241fcefb6d645",
+      "documents": {
+        "STYLE_RULES.json": {
+          "member": "erdos269_short_refinement_r6_20260930_return/STYLE_RULES.json",
+          "sha256": "d383057278228eef89d4accbddd9174698bab6caa74dda2ea8afeb4848296520"
+        },
+        "GENERALIZED_LESSONS.json": {
+          "member": "erdos269_short_refinement_r6_20260930_return/GENERALIZED_LESSONS.json",
+          "sha256": "95ee1eccacc0827ddb90185bda3a2f9d7bbfc83b38cb075132784ff557930749"
+        },
+        "LITERATURE_READING.json": {
+          "member": "erdos269_short_refinement_r6_20260930_return/LITERATURE_READING.json",
+          "sha256": "a336883791993a7a1fbd127385ad8e80ee0d8f20ab1743a3eaea671d55df77ae"
+        },
+        "EDITORIAL_REPORT.md": {
+          "member": "erdos269_short_refinement_r6_20260930_return/EDITORIAL_REPORT.md",
+          "sha256": "5f01d1fe76240ebb0b7a276c99b6b05b462502d190da832abd466992a33d8d64"
+        },
+        "REGISTER_REPORT.json": {
+          "member": "erdos269_short_refinement_r6_20260930_return/REGISTER_REPORT.json",
+          "sha256": "a142944ffc34933fd54da77aa675579083b784f21eff207eb271f1386905cd90"
+        },
+        "RETURN.json": {
+          "member": "erdos269_short_refinement_r6_20260930_return/RETURN.json",
+          "sha256": "50737d775a77193f2f5911b641ade53df8560e32f6de4dfc25175d3a017c886c"
+        }
+      },
+      "native_receipt_identities": [
+        {
+          "name": "integration.json",
+          "sha256": "ca57e79ebd38061c6e607c29d35770edceecb440579e6b636f12200e2bfd611a"
+        },
+        {
+          "name": "OUTCOME.md",
+          "sha256": "fad2a6034b01c19b57dec903c3bdaae95afa812aa8b7f239f9c77ffaf05b2fe3"
+        },
+        {
+          "name": "dispositions.json",
+          "sha256": "f2593c4126554a9b145bf541b539abc0b578514f6b47cd56a762d03ad757a1c1"
+        },
+        {
+          "name": "FINAL_AUTHORITY.json",
+          "sha256": "31d9c878034c83532743536a85ea276a0c4d287d95c29e46e6ff29154bf576a1"
+        }
+      ],
+      "native_status": "accepted_revision_with_recorded_native_changes",
+      "status_boundary": "Acceptance of a manuscript delta does not adopt each proposed writing rule or certify a source reading. Originals remain in maintainer custody; these hashes identify them."
+    },
+    {
+      "id": "short-20260930-r6-68",
+      "round": 6,
+      "problem": "68",
+      "archive_name": "erdos68_short_refinement_r6_20260930_return.zip",
+      "archive_sha256": "c22768dffe2ab55c0eac212d4ca8198e5669b45e9697717e708f5ccac695639c",
+      "documents": {
+        "STYLE_RULES.json": {
+          "member": "erdos68_short_refinement_r6_20260930_return/STYLE_RULES.json",
+          "sha256": "a94f2d33dbb2a27b7fdf28f6d5c071887a708f732e677ddb8a080bbf4c717d95"
+        },
+        "GENERALIZED_LESSONS.json": {
+          "member": "erdos68_short_refinement_r6_20260930_return/GENERALIZED_LESSONS.json",
+          "sha256": "31194c0ce63b9d48c1e03a60a6a406cd40d5251bd74396b97d2d3fbe33274c8a"
+        },
+        "LITERATURE_READING.json": {
+          "member": "erdos68_short_refinement_r6_20260930_return/LITERATURE_READING.json",
+          "sha256": "4360a179900510c4255286def101979551b6964af8d6abc5b3fbe65d37c07a1c"
+        },
+        "EDITORIAL_REPORT.md": {
+          "member": "erdos68_short_refinement_r6_20260930_return/EDITORIAL_REPORT.md",
+          "sha256": "5c11fb6a093cf75340ac9091de6bc33acf98bca07fd1d9d582af48d85aea1de9"
+        },
+        "REGISTER_REPORT.json": {
+          "member": "erdos68_short_refinement_r6_20260930_return/REGISTER_REPORT.json",
+          "sha256": "199a22abc47f80e976b013c1b49f99e2f98b130ee8e0ffd0ffd60c05d1225748"
+        },
+        "RETURN.json": {
+          "member": "erdos68_short_refinement_r6_20260930_return/RETURN.json",
+          "sha256": "1601dab92a4af3d33c86dd471e5c6193a1dc6d74ef0cf9c33a7738a4e8b20d30"
+        }
+      },
+      "native_receipt_identities": [
+        {
+          "name": "integration.json",
+          "sha256": "29a4af25f1ccc4d62c6460f64e018da1cb81060b6648013976a2220956201351"
+        },
+        {
+          "name": "OUTCOME.md",
+          "sha256": "759dd313ef462d30b2b39f0cffa70333ba2db1b894988f6541ab9e6ab9872422"
+        },
+        {
+          "name": "dispositions.json",
+          "sha256": "6e3678039db03f5168f45e2af3845b17e6e0e77845910f3fb9e97f9847421e1f"
+        },
+        {
+          "name": "FINAL_AUTHORITY.json",
+          "sha256": "4d67045c676bc5a4180e3b06e7aa7b6f8fd6fbf290b9a4d67d271338280b326f"
+        }
+      ],
+      "native_status": "accepted_revision_with_recorded_native_changes",
+      "status_boundary": "Acceptance of a manuscript delta does not adopt each proposed writing rule or certify a source reading. Originals remain in maintainer custody; these hashes identify them."
+    },
+    {
+      "id": "short-20260930-r6-systems",
+      "round": 6,
+      "problem": "systems",
+      "archive_name": "systems_short_refinement_r6_return.zip",
+      "archive_sha256": "0faa622d7b8a2ffab6bd5df77bb8303fa2beb0271bd5d3f8b3c3498d539490e3",
+      "documents": {
+        "STYLE_RULES.json": {
+          "member": "systems_short_refinement_r6_return/STYLE_RULES.json",
+          "sha256": "b11429dc2206a8b20aed670dace0fce95eb4df8cf061753a80bc2b91acdef9e7"
+        },
+        "GENERALIZED_LESSONS.json": {
+          "member": "systems_short_refinement_r6_return/GENERALIZED_LESSONS.json",
+          "sha256": "fe460a6e182b6b440dd92d26626d15dc717846c787fb7017f77a0c08d6fd06cb"
+        },
+        "LITERATURE_READING.json": {
+          "member": "systems_short_refinement_r6_return/LITERATURE_READING.json",
+          "sha256": "f372f794e5dfd64585a0033ff976629b00efd03c5d7565f7fb92c636c23e7ea0"
+        },
+        "EDITORIAL_REPORT.md": {
+          "member": "systems_short_refinement_r6_return/EDITORIAL_REPORT.md",
+          "sha256": "98bbef5cfb49a3e511193650d1eda84b1cf7f9d4cd95dd48aca9beb37ca2858f"
+        },
+        "REGISTER_REPORT.json": {
+          "member": "systems_short_refinement_r6_return/REGISTER_REPORT.json",
+          "sha256": "ede1d2e71e7b450c69828a76ec9884a014f8051599fdb83d9df65bccd314cba1"
+        },
+        "RETURN.json": {
+          "member": "systems_short_refinement_r6_return/RETURN.json",
+          "sha256": "37be82709561e681dff9f454574f71f5c78cc0222b40070f4f46de471ed51ce6"
+        }
+      },
+      "native_receipt_identities": [
+        {
+          "name": "integration.json",
+          "sha256": "d49b37df67e21b70c2d89006d7d4f4ca0f9b91d13d5bc3b5e779d5f3b78ffd44"
+        },
+        {
+          "name": "OUTCOME.md",
+          "sha256": "0b00ab4cf4c56853e2e22201364f86f33b76ca5f918ff0a33fc5f89adb90c1c3"
+        },
+        {
+          "name": "dispositions.json",
+          "sha256": "76533ec78c2ae41c7941efc1664442c0034ee8395400f1f63aa2675c65e534ae"
+        },
+        {
+          "name": "FINAL_AUTHORITY.json",
+          "sha256": "7cc17fd7b1120ff1862f986b6b8f5236e334e5dd9fd756540285e53ea98daf34"
+        }
+      ],
+      "native_status": "accepted_revision_with_recorded_native_changes",
+      "status_boundary": "Acceptance of a manuscript delta does not adopt each proposed writing rule or certify a source reading. Originals remain in maintainer custody; these hashes identify them."
+    },
+    {
+      "id": "short-20260930-r7-1041",
+      "round": 7,
+      "problem": "1041",
+      "archive_name": "erdos1041_short_refinement_r7_20260930_return.zip",
+      "archive_sha256": "679c1e22a988f50e67a8a009e4873cc8f8fc46e7e612fe3efc0a5c5c9ba470fd",
+      "documents": {
+        "STYLE_RULES.json": {
+          "member": "erdos1041_short_refinement_r7_20260930_return/STYLE_RULES.json",
+          "sha256": "ef3ceafe2536bc593b89a4d537675e73ef6f600b137686cf12d26e3210235d9c"
+        },
+        "GENERALIZED_LESSONS.json": {
+          "member": "erdos1041_short_refinement_r7_20260930_return/GENERALIZED_LESSONS.json",
+          "sha256": "3238c74cbe4cbd577ad016e23465535e57f2bd90bde6b0abf4e3fac2a19b15eb"
+        },
+        "LITERATURE_READING.json": {
+          "member": "erdos1041_short_refinement_r7_20260930_return/LITERATURE_READING.json",
+          "sha256": "b03f782b25c7c3dbb74bd1a774acbba9218d8a9fcacc9ea6ae1b851d51fd335d"
+        },
+        "EDITORIAL_REPORT.md": {
+          "member": "erdos1041_short_refinement_r7_20260930_return/EDITORIAL_REPORT.md",
+          "sha256": "1c217cd00369f7aa8fb0fa59065c30caadd5801d4779b7380c0ff3251aba59a6"
+        },
+        "REGISTER_REPORT.json": {
+          "member": "erdos1041_short_refinement_r7_20260930_return/REGISTER_REPORT.json",
+          "sha256": "ccea5d5ee5e865c7bba5a6d0695bb41c6946337e59d4f1962f8f9b9dee2b65d3"
+        },
+        "RETURN.json": {
+          "member": "erdos1041_short_refinement_r7_20260930_return/RETURN.json",
+          "sha256": "742ff6ed57edcb9dc495eba46f5389c07e8d1b134fa503f650ffd6a99f027d22"
+        }
+      },
+      "native_receipt_identities": [
+        {
+          "name": "integration.json",
+          "sha256": "1ccd6bbcc194495c4fcc99b48d8430cee8b43e805fc08491dbbd668e82546ac8"
+        },
+        {
+          "name": "STATEMENT_ACCOUNTING.json",
+          "sha256": "4038e059452db6c79c08d32814f59e153db7c9cdebb50c12f0a699da564d57ab"
+        },
+        {
+          "name": "STYLE_LESSONS.json",
+          "sha256": "786566157ccb8b532889076c9f793359be3780499e384bc53b56e84ca1dc48be"
+        },
+        {
+          "name": "OUTCOME.md",
+          "sha256": "f6ccf9bf824ed3e2dcd5b07807537701b91556d85df6345f010be3d7b9037b9e"
+        }
+      ],
+      "native_status": "selected_after_editorial_review_native_render_and_release_pending",
+      "status_boundary": "Acceptance of a manuscript delta does not adopt each proposed writing rule or certify a source reading. Originals remain in maintainer custody; these hashes identify them.",
+      "native_decision_summary": "Select the four TeX sources with one semantic precision correction. The degree-two fibre exhaustion, planar-sheet addition, Hausdorff-measure formulation, fixed coefficient scales and separation of Formal Conjectures from the historical 1958 wording remain intact."
+    },
+    {
+      "id": "short-20260930-r7-1049",
+      "round": 7,
+      "problem": "1049",
+      "archive_name": "erdos1049_refined_r7_return.zip",
+      "archive_sha256": "ca8bd7976463d23042ebf735a526e6672199a2e4680879d62ad5400ea6da994e",
+      "documents": {
+        "STYLE_RULES.json": {
+          "member": "erdos1049_refined_r7/STYLE_RULES.json",
+          "sha256": "bbea1424d6f7b488a8a4832a22485c038957cccca37d2d27ceb63f9b9fab7d59"
+        },
+        "GENERALIZED_LESSONS.json": {
+          "member": "erdos1049_refined_r7/GENERALIZED_LESSONS.json",
+          "sha256": "6c15a95ae7c8712236dda7b08d049999df422a9281c310c7727075bb4270baa1"
+        },
+        "LITERATURE_READING.json": {
+          "member": "erdos1049_refined_r7/LITERATURE_READING.json",
+          "sha256": "589616e00e599682cc91be567d6f95d00a21a9ea497762334e375867ea6163f9"
+        },
+        "EDITORIAL_REPORT.md": {
+          "member": "erdos1049_refined_r7/EDITORIAL_REPORT.md",
+          "sha256": "01fc356e6584b9d2ded45bed82547b2c3c473ae65e9a92ab658325c9987fb92a"
+        },
+        "REGISTER_REPORT.json": {
+          "member": "erdos1049_refined_r7/REGISTER_REPORT.json",
+          "sha256": "6bdf03bfd4600c7c55d8c71d7fe240de5382dce2f677076d904e0ea9ad7c2bb9"
+        },
+        "RETURN.json": {
+          "member": "erdos1049_refined_r7/RETURN.json",
+          "sha256": "a5997294c1df480884dfb5e3df47c41169c014f6349e05e6f148477917540b6e"
+        }
+      },
+      "native_receipt_identities": [
+        {
+          "name": "integration.json",
+          "sha256": "4052f39e4b268fe2174112ffa198de04c3b979a50543af7ffabc28f21413f94f"
+        },
+        {
+          "name": "STATEMENT_ACCOUNTING.json",
+          "sha256": "b414d74ce457ec8857adf762ad6e8f268efc747f24396c095607eb6768e82575"
+        },
+        {
+          "name": "STYLE_LESSONS.json",
+          "sha256": "3ca65177da7e2c740bac3d0126d5e9405e18b17fe0ffc6b6732ba093eb054648"
+        },
+        {
+          "name": "OUTCOME.md",
+          "sha256": "26017fc85a47b0c411beba315ffaa2931e12e49ec3d219dad67981c0e3ca957f"
+        }
+      ],
+      "native_status": "selected_after_editorial_review_native_render_and_release_pending",
+      "status_boundary": "Acceptance of a manuscript delta does not adopt each proposed writing rule or certify a source reading. Originals remain in maintainer custody; these hashes identify them.",
+      "native_decision_summary": "Select the four TeX sources with one semantic precision correction. The Cauchy evaluation, fixed-partition versus dominated-sum steps, two- and three-fold coefficient convolutions, and rational-base degree balance remain explicit."
+    },
+    {
+      "id": "short-20260930-r7-243",
+      "round": 7,
+      "problem": "243",
+      "archive_name": "erdos243_short_refinement_r7_20260930_return.zip",
+      "archive_sha256": "ce19f9718a161afc61fdcf22f3f76fecc7b9c0004edaa118517f45b28be0f6f7",
+      "documents": {
+        "STYLE_RULES.json": {
+          "member": "erdos243_short_refinement_r7_20260930_return/STYLE_RULES.json",
+          "sha256": "f98fdb053364d044ecc64bbdfada9601505cae3193b761d736ccd32c083b6603"
+        },
+        "GENERALIZED_LESSONS.json": {
+          "member": "erdos243_short_refinement_r7_20260930_return/GENERALIZED_LESSONS.json",
+          "sha256": "934e8ca9cd1b5ba04666d2d98f77489440e3ca2b27d74fcef0204cbbd7235b4e"
+        },
+        "LITERATURE_READING.json": {
+          "member": "erdos243_short_refinement_r7_20260930_return/LITERATURE_READING.json",
+          "sha256": "b7e833c81afef45086f086ad1cb39826e69e66ba43d7c5be009958cffb90758f"
+        },
+        "EDITORIAL_REPORT.md": {
+          "member": "erdos243_short_refinement_r7_20260930_return/EDITORIAL_REPORT.md",
+          "sha256": "cf4154c9f10b53dcff0519c562a60971a3a0bf97b9c46a72b17e8774e2157cf9"
+        },
+        "REGISTER_REPORT.json": {
+          "member": "erdos243_short_refinement_r7_20260930_return/REGISTER_REPORT.json",
+          "sha256": "d82203fe2fff1256516104338a2d24f6271777e008cff272479464402e64662c"
+        },
+        "RETURN.json": {
+          "member": "erdos243_short_refinement_r7_20260930_return/RETURN.json",
+          "sha256": "844833b2e255215c94267a2cbe59a772425eb1f8e91a77e63e58f2d7c07b0ad3"
+        }
+      },
+      "native_receipt_identities": [
+        {
+          "name": "integration.json",
+          "sha256": "324dcae6acf71c7b5dc0d193b08c8b6c3d7ca1d388ee2d161001980bf65e3504"
+        },
+        {
+          "name": "STATEMENT_ACCOUNTING.json",
+          "sha256": "927eaba0da831235a316f58add2e0fc1b63ea9c372e2fc993f12402c1c4adab4"
+        },
+        {
+          "name": "STYLE_LESSONS.json",
+          "sha256": "560158867b03b0f27095f81cec9f2ef4a60f8e6d2d134858a84e133890207a9c"
+        },
+        {
+          "name": "OUTCOME.md",
+          "sha256": "9a236d2a1e6c465e709d34f73231d7c854e198b58521c4545cc8f4c5af08e5ac"
+        }
+      ],
+      "native_status": "selected_after_editorial_review_native_render_and_release_pending",
+      "status_boundary": "Acceptance of a manuscript delta does not adopt each proposed writing rule or certify a source reading. Originals remain in maintainer custody; these hashes identify them.",
+      "native_decision_summary": "Selected two TeX sources are in `public/paper/243/`. They include two narrow reviewer wording corrections to the donor. The 71 inventoried result identities remain at their R6 authority and logical ceilings; declared restatements are accounted for in `STATEMENT_ACCOUNTING.json`."
+    },
+    {
+      "id": "short-20260930-r7-249",
+      "round": 7,
+      "problem": "249",
+      "archive_name": "erdos249_short_refinement_r7_20260930_return.zip",
+      "archive_sha256": "e3c89d3aaf3ee1ae548592c1ed5147c087e509ea5f7b70d87a7926e1a51f7c4c",
+      "documents": {
+        "STYLE_RULES.json": {
+          "member": "erdos249_short_refinement_r7_20260930_return/STYLE_RULES.json",
+          "sha256": "8577e4e7ad48243c849d2a46f6e91fc72065c54e1287763951f1edfd9200453b"
+        },
+        "GENERALIZED_LESSONS.json": {
+          "member": "erdos249_short_refinement_r7_20260930_return/GENERALIZED_LESSONS.json",
+          "sha256": "c6ddc2e23b05e76d15bb160056605eda62ec9c4be8c442bc48e2ff298ea2eaea"
+        },
+        "LITERATURE_READING.json": {
+          "member": "erdos249_short_refinement_r7_20260930_return/LITERATURE_READING.json",
+          "sha256": "1f092eca462c28a4f59499e570793b46bcc527273882bfa36fa04d66c5f98e58"
+        },
+        "EDITORIAL_REPORT.md": {
+          "member": "erdos249_short_refinement_r7_20260930_return/EDITORIAL_REPORT.md",
+          "sha256": "6622f44ad428f8f5d291c2f6b742949a28982d83288518bae47f40fc6cba5bcc"
+        },
+        "REGISTER_REPORT.json": {
+          "member": "erdos249_short_refinement_r7_20260930_return/REGISTER_REPORT.json",
+          "sha256": "0d39ce6c1c9efaf5e3e2824954a07357102a8b790bcaeabd6645769bc9266694"
+        },
+        "RETURN.json": {
+          "member": "erdos249_short_refinement_r7_20260930_return/RETURN.json",
+          "sha256": "329cd86a43d4a886cfcd3afdc4bdb44719101cce2a55c00086756c341816b38d"
+        }
+      },
+      "native_receipt_identities": [
+        {
+          "name": "integration.json",
+          "sha256": "5c472a1fc8df6f44313c4366e6f1f16435867321145b8824dd2d24927f12f38a"
+        },
+        {
+          "name": "STATEMENT_ACCOUNTING.json",
+          "sha256": "520a7ddd77b76bc6d69f2a0d6f1bd27be261f01a8e5de11e5bea7e9b946fc927"
+        },
+        {
+          "name": "STYLE_LESSONS.json",
+          "sha256": "3d901aaaa6e50b0dfebcb2ad8d53afe702092f907b1448f04bcc1f1e769b2ad1"
+        },
+        {
+          "name": "OUTCOME.md",
+          "sha256": "8b7308a3e93d8e49d779a5a4914662474d25a5fcdc4a2b21a2700d67c3a0b566"
+        }
+      ],
+      "native_status": "selected_after_editorial_review_native_render_and_release_pending",
+      "status_boundary": "Acceptance of a manuscript delta does not adopt each proposed writing rule or certify a source reading. Originals remain in maintainer custody; these hashes identify them.",
+      "native_decision_summary": "Selected two TeX sources are in `public/paper/249/`. They match the donor bytes. The 241 inventoried result identities remain at their R6 authority and logical ceilings; declared restatements are accounted for in `STATEMENT_ACCOUNTING.json`."
+    },
+    {
+      "id": "short-20260930-r7-251",
+      "round": 7,
+      "problem": "251",
+      "archive_name": "erdos251_short_refinement_r7_20260930_return.zip",
+      "archive_sha256": "1094fc8d7f45a8eac7020e42c56db1f7b904db693fa3b3ec7355e879b5c07afe",
+      "documents": {
+        "STYLE_RULES.json": {
+          "member": "erdos251_short_refinement_r7_20260930_return/STYLE_RULES.json",
+          "sha256": "d949064586e22c783a75bcc019dc34b72a0a81e68246e6f3fb1ab00cd1d961e0"
+        },
+        "GENERALIZED_LESSONS.json": {
+          "member": "erdos251_short_refinement_r7_20260930_return/GENERALIZED_LESSONS.json",
+          "sha256": "dfea3dd5359ef1a393a680858592913338af79f04169b43f4df00ee191e0cbf3"
+        },
+        "LITERATURE_READING.json": {
+          "member": "erdos251_short_refinement_r7_20260930_return/LITERATURE_READING.json",
+          "sha256": "3708a0bf788179c74c852d21fa9944f7862303a851e89cb4198f479ed305ada8"
+        },
+        "EDITORIAL_REPORT.md": {
+          "member": "erdos251_short_refinement_r7_20260930_return/EDITORIAL_REPORT.md",
+          "sha256": "22e4a787db4fda8a1be8a09085e8e25a4ae67d6275489b1d839e11b541d5f224"
+        },
+        "REGISTER_REPORT.json": {
+          "member": "erdos251_short_refinement_r7_20260930_return/REGISTER_REPORT.json",
+          "sha256": "adf3bd8bd792027c4274e40e466f44eb4b48f8413b14951d086c60e3faad86b3"
+        },
+        "RETURN.json": {
+          "member": "erdos251_short_refinement_r7_20260930_return/RETURN.json",
+          "sha256": "15c363b26c4dd048cf21e3bad74a55469eed51f0c4245225a9131bdf66402cd2"
+        }
+      },
+      "native_receipt_identities": [
+        {
+          "name": "integration.json",
+          "sha256": "b754d8bcc348a8ca5f24de5e42186708d418e2544a704e5961f88957c1bb92f0"
+        },
+        {
+          "name": "STATEMENT_ACCOUNTING.json",
+          "sha256": "b43d6f3ba18a56f180723ae8e5ad486eda4094698d0cfe38ef1cf229d08fc9dd"
+        },
+        {
+          "name": "STYLE_LESSONS.json",
+          "sha256": "bce530e6c2a39946ff9308c5d1be7e3cf39315b0027fd26d68c0bafc656db743"
+        },
+        {
+          "name": "OUTCOME.md",
+          "sha256": "92500bfeb398aef50850ea8ec25b1a65e6878d07120f5111e1c5159b6a7c601c"
+        }
+      ],
+      "native_status": "selected_after_editorial_review_native_render_and_release_pending",
+      "status_boundary": "Acceptance of a manuscript delta does not adopt each proposed writing rule or certify a source reading. Originals remain in maintainer custody; these hashes identify them.",
+      "native_decision_summary": "**Decision:** accept_both_with_no_source_edit. Selected source copies are under `public/paper/251/`; the root integrator can use `integration.json` and `hash_manifest.json`."
+    },
+    {
+      "id": "short-20260930-r7-257",
+      "round": 7,
+      "problem": "257",
+      "archive_name": "erdos257_short_refinement_r7_20260930_return.zip",
+      "archive_sha256": "6f7fb7be62dff4c96e780280501d80a7e19b67623ae5a44fd34d7aae7f13a024",
+      "documents": {
+        "STYLE_RULES.json": {
+          "member": "erdos257_short_refinement_r7_20260930_return/STYLE_RULES.json",
+          "sha256": "18398a43b6f7a624f08e2c43ecd58a62f6abbe51fd9d2149fcc61fe641d1f123"
+        },
+        "GENERALIZED_LESSONS.json": {
+          "member": "erdos257_short_refinement_r7_20260930_return/GENERALIZED_LESSONS.json",
+          "sha256": "55b34e1fbdf864dcc866f6ea7d1ca6a21d32f2fa21e2ea5927cc6ecb72483b30"
+        },
+        "LITERATURE_READING.json": {
+          "member": "erdos257_short_refinement_r7_20260930_return/LITERATURE_READING.json",
+          "sha256": "bebe9bb0687450e1584d4517eea2ac9c87f373b0aa46c95a114daf0f2513b73c"
+        },
+        "EDITORIAL_REPORT.md": {
+          "member": "erdos257_short_refinement_r7_20260930_return/EDITORIAL_REPORT.md",
+          "sha256": "e31c4b497faa3414b00e4320b66613eaf52354c8ec1553954a4dce36a8715d40"
+        },
+        "REGISTER_REPORT.json": {
+          "member": "erdos257_short_refinement_r7_20260930_return/REGISTER_REPORT.json",
+          "sha256": "4ec7814ab9c14881c2370bb3847f5774ab85500767be4d6d363defa68b3f1e13"
+        },
+        "RETURN.json": {
+          "member": "erdos257_short_refinement_r7_20260930_return/RETURN.json",
+          "sha256": "fa70bcf818432e41fb9546c0c9759faa7c528fce66a73d0db0c466e5d5291ce4"
+        }
+      },
+      "native_receipt_identities": [
+        {
+          "name": "integration.json",
+          "sha256": "e71dc4c49566ea4e46feca39e91a2dac4cecba2388a9b61f646269ad8a6c2c8a"
+        },
+        {
+          "name": "STATEMENT_ACCOUNTING.json",
+          "sha256": "e5d495a621bab501a744128fafcc89590339aa9583e7c6f6d5e0e2f457875ca5"
+        },
+        {
+          "name": "STYLE_LESSONS.json",
+          "sha256": "d5940b21a49084a7b5ca303c36b1e9f26b890ac00c584a780b0b82fa4186780b"
+        },
+        {
+          "name": "OUTCOME.md",
+          "sha256": "ecce691b7e859ad83d71ede85de6df401a3b3f8a58d2d05f581aa74b2681edf0"
+        }
+      ],
+      "native_status": "selected_after_editorial_review_native_render_and_release_pending",
+      "status_boundary": "Acceptance of a manuscript delta does not adopt each proposed writing rule or certify a source reading. Originals remain in maintainer custody; these hashes identify them.",
+      "native_decision_summary": "**Decision:** accept_both_with_no_source_edit. Selected source copies are under `public/paper/257/`; the root integrator can use `integration.json` and `hash_manifest.json`."
+    },
+    {
+      "id": "short-20260930-r7-269",
+      "round": 7,
+      "problem": "269",
+      "archive_name": "erdos269_short_refinement_r7_20260930_return.zip",
+      "archive_sha256": "9acadd0b0c347b68f9a535ce3b74184115f301646f5e6efa1628814e75089270",
+      "documents": {
+        "STYLE_RULES.json": {
+          "member": "erdos269_short_refinement_r7_20260930_return/STYLE_RULES.json",
+          "sha256": "bc2466ae5277c150fad1dfa9c9bfec1e8adaada85837d7afe35eec62db047918"
+        },
+        "GENERALIZED_LESSONS.json": {
+          "member": "erdos269_short_refinement_r7_20260930_return/GENERALIZED_LESSONS.json",
+          "sha256": "b0663a7d1ce0111f8979070404a38cc5d88285f19f452488c85849537fd40735"
+        },
+        "LITERATURE_READING.json": {
+          "member": "erdos269_short_refinement_r7_20260930_return/LITERATURE_READING.json",
+          "sha256": "f31ba50edd06d39c6d9f69fbb9c020d2c9a326af351627cfbc78ffaf80d63411"
+        },
+        "EDITORIAL_REPORT.md": {
+          "member": "erdos269_short_refinement_r7_20260930_return/EDITORIAL_REPORT.md",
+          "sha256": "41ad6e80d54c3545c89350bdb5a46a36a07a125b1ad81d55b3a27cf3823db887"
+        },
+        "REGISTER_REPORT.json": {
+          "member": "erdos269_short_refinement_r7_20260930_return/REGISTER_REPORT.json",
+          "sha256": "08389e594e18728698ea0c6006e46ee67c73a307397380076c0c4c19be1b4ee9"
+        },
+        "RETURN.json": {
+          "member": "erdos269_short_refinement_r7_20260930_return/RETURN.json",
+          "sha256": "b46ea942ed2bfb9c4f5766a8595cde79a2a6fb21b149f2bee1760f569688b081"
+        }
+      },
+      "native_receipt_identities": [
+        {
+          "name": "integration.json",
+          "sha256": "1022e7c6d9682625f365c7fa048c2969336115191fb2392999c4df8e927c6a59"
+        },
+        {
+          "name": "STATEMENT_ACCOUNTING.json",
+          "sha256": "16d869db33089f57fe15f1a36d44b21fb7b1b0ccd62a3b36560e3216f57d7c00"
+        },
+        {
+          "name": "STYLE_LESSONS.json",
+          "sha256": "57385c0f1e7467c9a0f474612fcbfbeff1ffe3b58cee3cb763df0601600acd09"
+        },
+        {
+          "name": "OUTCOME.md",
+          "sha256": "0fa926b18e9e7a158ac8c691ba02fef068c37cfcc245015326dc4291e171c671"
+        }
+      ],
+      "native_status": "selected_after_editorial_review_native_render_and_release_pending",
+      "status_boundary": "Acceptance of a manuscript delta does not adopt each proposed writing rule or certify a source reading. Originals remain in maintainer custody; these hashes identify them.",
+      "native_decision_summary": "**Decision:** accept_both_with_two_local_wording_corrections. Selected source copies are under `public/paper/269/`; the root integrator can use `integration.json` and `hash_manifest.json`."
+    },
+    {
+      "id": "short-20260930-r7-68",
+      "round": 7,
+      "problem": "68",
+      "archive_name": "erdos68_short_refinement_r7_20260930_return.zip",
+      "archive_sha256": "e3759bdd08bf2d1741a791c410ebbe715224aa9ec3ad9fc4abd250c481d6bc86",
+      "documents": {
+        "STYLE_RULES.json": {
+          "member": "erdos68_short_refinement_r7_20260930_return/STYLE_RULES.json",
+          "sha256": "2d7120e88f62ef7850951fe93075d1d19574db4151606385b377b1db1228873f"
+        },
+        "GENERALIZED_LESSONS.json": {
+          "member": "erdos68_short_refinement_r7_20260930_return/GENERALIZED_LESSONS.json",
+          "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+        },
+        "LITERATURE_READING.json": {
+          "member": "erdos68_short_refinement_r7_20260930_return/LITERATURE_READING.json",
+          "sha256": "6e7e2d65e43f0ce40bafec29d7620058e3436c21e50fe0913e1a8a05f37930ec"
+        },
+        "EDITORIAL_REPORT.md": {
+          "member": "erdos68_short_refinement_r7_20260930_return/EDITORIAL_REPORT.md",
+          "sha256": "cae4706394170e514235c865d6428b82b232de9bca407722f969f3029c5edcc5"
+        },
+        "REGISTER_REPORT.json": {
+          "member": "erdos68_short_refinement_r7_20260930_return/REGISTER_REPORT.json",
+          "sha256": "031c7f13eb8bb9b55117bca5e2d6c20d2cce0b5ebc43a9babc3a2460c128048e"
+        },
+        "RETURN.json": {
+          "member": "erdos68_short_refinement_r7_20260930_return/RETURN.json",
+          "sha256": "7590d3c1ecd443a1468831a1205f897ee1c478e7b802133fb35cdaee39fe033f"
+        }
+      },
+      "native_receipt_identities": [
+        {
+          "name": "integration.json",
+          "sha256": "9be01a49fb0313c38b4d32c98cf972df1b3b4b3e9db580592bc21b5017feedae"
+        },
+        {
+          "name": "STATEMENT_ACCOUNTING.json",
+          "sha256": "7bc7bd327cdcf915506754ae9b2cad82514445d7650e7d421da279d0aa083431"
+        },
+        {
+          "name": "STYLE_LESSONS.json",
+          "sha256": "e596b464412f47abb0bc43fc7cda8aed943e4f8511f5539dc1bf0bb44c218c1c"
+        },
+        {
+          "name": "OUTCOME.md",
+          "sha256": "f488c9751cc7667ff7de7a2b71943145378e569b9b007eaae7e8af954f6db222"
+        }
+      ],
+      "native_status": "selected_after_editorial_review_native_render_and_release_pending",
+      "status_boundary": "Acceptance of a manuscript delta does not adopt each proposed writing rule or certify a source reading. Originals remain in maintainer custody; these hashes identify them.",
+      "native_decision_summary": "Selected two TeX sources are in `public/paper/68/`. They match the donor bytes. The 20 inventoried result identities remain at their R6 authority and logical ceilings; declared restatements are accounted for in `STATEMENT_ACCOUNTING.json`."
+    }
+  ]
+}

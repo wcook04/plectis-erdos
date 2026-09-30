@@ -219,6 +219,33 @@
       "source_path": "paper/68/erdos68-factorial-reasoning-surface.tex",
       "storage_path": "paper/68/erdos68-factorial-reasoning-surface.pdf"
     },
+    "exposition_compact_guide": {
+      "inputs": {
+        "paper/exposition/writing-a-good-mathematical-paper.tex": "sha256:d04872e1d9e1901b0f0527409cba1b8bca78826dbf12d34a028c5948529d8a45",
+        "paper/module-aliases.tex": "sha256:6d6d9640a9b7f04d003ebbffb78db279f5af838a2afc99ba6b5b247cc67b6954",
+        "paper/paper-house-style.sty": "sha256:1b4630ead32bfb407a2f29f5953fbb8d4140a659f6500799282a4805ba54a883",
+        "paper/problem-note-preamble.tex": "sha256:088d36d7ba3d3ee0cee2df99e8915927999698f19889f8ea0b8d55b3721ec778"
+      },
+      "rendered_content_digest": "sha256:8668072599947b67d9bb30b86b097ed53ad778969dd66d6db9460db1c32a6e54",
+      "source_path": "paper/exposition/writing-a-good-mathematical-paper.tex",
+      "storage_path": "paper/exposition/writing-a-good-mathematical-paper.pdf"
+    },
+    "exposition_method_companion": {
+      "inputs": {
+        "paper/exposition/parts/practice.tex": "sha256:85cc755f729d94c28ff5c22bfdc3c83e8ce5c4107229f0e452232159f19d7bbd",
+        "paper/exposition/parts/reading.tex": "sha256:477010c009bd03a8d59bc72ecc23e8b4cfe0c026b2b682aff4f564f1a07301c9",
+        "paper/exposition/parts/references.tex": "sha256:c29967605033655277ae7d19183a3bb1358cf74a4c4a4304a8df3fd85c3ae848",
+        "paper/exposition/parts/review.tex": "sha256:dca2d08fae2f8d872c40242fb1bb251c9aa3680d0f93e6558da6c00acdd870d3",
+        "paper/exposition/parts/revisions.tex": "sha256:61ad2530f25d1a3299d3df850c112c19fe6c2de88248a4cdb4db6808e77b9c2f",
+        "paper/exposition/writing-mathematics-from-reviewed-revisions.tex": "sha256:28dbfb994dab4e4dd415758ec391c3f8f48eafa54a5cc2b7e11130f81bd67af4",
+        "paper/module-aliases.tex": "sha256:6d6d9640a9b7f04d003ebbffb78db279f5af838a2afc99ba6b5b247cc67b6954",
+        "paper/paper-house-style.sty": "sha256:1b4630ead32bfb407a2f29f5953fbb8d4140a659f6500799282a4805ba54a883",
+        "paper/problem-note-preamble.tex": "sha256:088d36d7ba3d3ee0cee2df99e8915927999698f19889f8ea0b8d55b3721ec778"
+      },
+      "rendered_content_digest": "sha256:d8f3fdfa7a47121f1ff5fc120b6fc5fe57faeb4965d6cadad6135ccf29524f11",
+      "source_path": "paper/exposition/writing-mathematics-from-reviewed-revisions.tex",
+      "storage_path": "paper/exposition/writing-mathematics-from-reviewed-revisions.pdf"
+    },
     "factorial_gap_threshold_synthesis": {
       "inputs": {
         "paper/module-aliases.tex": "sha256:6d6d9640a9b7f04d003ebbffb78db279f5af838a2afc99ba6b5b247cc67b6954",
