@@ -52,7 +52,7 @@ theorem sharp_fixed_base_exists {q : ℝ} (hq0 : 0 < q) (hq1 : q < 1) :
 
 <a id="thm-geometric-moments"></a>
 
-## Theorem 2.1 (geometric moment determinants), page 2
+## Theorem 2.1 (geometric moment determinants), page 3
 
 > *Let $`0<q<1`$ and $`a_k>0`$ for $`k\ge0`$. Suppose that, for fixed constants $`C>0`$ and $`\kappa\ge0`$,
 > ``` math
@@ -160,7 +160,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="res-zudilin-sharp-qorder"></a>
 
-## Theorem 3.2 (the first nonzero term of the Hankel determinant), page 7
+## Theorem 3.2 (the first nonzero term of the Hankel determinant), page 8
 
 > *For every $`N\ge1`$,
 > ``` math
@@ -204,7 +204,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="res-rational-base-threshold"></a>
 
-## Theorem 4.1 (rational-base region for Zudilin’s forms), page 9
+## Theorem 4.1 (rational-base region for Zudilin’s forms), page 10
 
 > *Let $`a>b\ge1`$ be coprime integers with
 > ``` math
@@ -321,7 +321,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="res-thirtyone-four"></a>
 
-## Corollary 4.2, page 12
+## Corollary 4.2, page 13
 
 > *$`F\bigl((31/4)^r\bigr)`$ is irrational for every integer $`r\ge1`$.*
 
@@ -346,7 +346,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="cor-rational-base-measure"></a>
 
-## Corollary 4.3 (an irrationality measure uniform over powers), page 12
+## Corollary 4.3 (an irrationality measure uniform over powers), page 13
 
 > *For coprime $`a>b\ge1`$ with $`\theta=\log b/\log a<\theta^*`$ and every integer $`r\ge1`$,
 > ``` math

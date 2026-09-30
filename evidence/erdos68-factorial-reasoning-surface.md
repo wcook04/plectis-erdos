@@ -327,7 +327,7 @@ theorem asymptotic_radius_constant_liminf (M R : ℕ → ℕ)
 
 <a id="long68-res-translator"></a>
 
-## Theorem 1.7 (changing just one weighted sum), page 10
+## Theorem 1.7 (changing just one weighted sum), page 11
 
 > *Let $`p\ge3`$ be prime and let $`c_{p-1}=p`$, $`c_p=-1`$, with every other coefficient zero. Then $`M(c)=0`$, $`V_{p}(c)=p!-1`$, and $`V_{d}(c)=0`$ for every $`d\ge2`$ with $`d\ne p`$.*
 
@@ -533,7 +533,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long68-res-lcm-growth"></a>
 
-## Theorem 3.4 (common-denominator growth), page 15
+## Theorem 3.4 (common-denominator growth), page 16
 
 > *``` math
 > \liminf_{N\to\infty}\frac{\log L_N}{N^{3/2}\log N}

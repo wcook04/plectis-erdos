@@ -64,7 +64,7 @@ theorem erdos1041_hausdorff_answer_false :
 
 <a id="lem-two-sheet-bottleneck"></a>
 
-## Lemma 2.1, page 2
+## Lemma 2.1, page 3
 
 > *Let $`p`$ be a polynomial and $`U`$ a component of $`\{|p|<1\}`$ on which $`p`$ has degree two, with one simple critical point $`c`$ and $`v=p(c)\ne0`$. Write $`p(c+z)-v=z^2A(z)`$ and put $`M=|A(0)|`$, $`\delta=1-|v|`$. Let $`h>0`$. If $`|A(z)/A(0)-1|\le1/4`$ for $`|z|\le h`$ and $`\delta<Mh^2/4`$, then every connected subset $`K`$ of $`U`$ containing its two roots $`a,b`$ satisfies
 > ``` math
@@ -106,7 +106,7 @@ s3_bottleneck_hausdorff has no Comparator association; the lemma was isolated as
 
 <a id="res-trinomial-all-degree"></a>
 
-## Theorem 3.1 (all-degree monic trinomials), page 5
+## Theorem 3.1 (all-degree monic trinomials), page 6
 
 > *Let $`1\le m<n`$ and
 > ``` math
@@ -150,7 +150,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="res-sextic-spoke"></a>
 
-## Proposition 3.2 (failure of a prescribed radial segment), page 5
+## Proposition 3.2 (failure of a prescribed radial segment), page 6
 
 > *There exist $`r\in(0,1)`$ for which every zero of
 > ``` math
@@ -183,13 +183,13 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="res-low-critical-thirteen-twentyfifths"></a>
 
-## Passage (beginning “res:low-critical-thirteen-twentyfifths…”), page 6
+## Passage (beginning “res:low-critical-thirteen-twentyfifths…”), page 7
 
 **No Lean proof of the whole statement.** In Lean, the degree-two case and the closing inequality $(13/25)e^X<1$ at the recorded stopping time $X=635762889599/10^{12}$ are checked; the computation that certifies $X$ and the analytic argument in higher degrees are not.
 
 <a id="res-scaled-low-critical"></a>
 
-## Passage (beginning “res:scaled-low-critical…”), page 6
+## Passage (beginning “res:scaled-low-critical…”), page 7
 
 The Lean proof assumes Theorem 4.1 as stated. Lean takes this input as a hypothesis (`LowCriticalThirteenTwentyFifths`); it is not proved in Lean.
 
@@ -241,7 +241,7 @@ def LowCriticalThirteenTwentyFifths : Prop :=
 
 <a id="res-critical-value-separation"></a>
 
-## Passage (beginning “res:critical-value-separation…”), page 8
+## Passage (beginning “res:critical-value-separation…”), page 9
 
 The Lean proof assumes the connector and area construction that this proof produces. Lean takes this input as a hypothesis (`DiscSepBergmanArea`); it is not proved in Lean.
 
@@ -333,7 +333,7 @@ def DiscSepBergmanArea : Prop :=
 
 <a id="res-critical-value-thresholds"></a>
 
-## Passage (beginning “res:critical-value-thresholds…”), page 8
+## Passage (beginning “res:critical-value-thresholds…”), page 9
 
 The Lean proof assumes the connector and area construction in the proof of Theorem 5.1; for the absorbed S>=4/3 corollary (SeparationParent), Theorem 5.1 as stated. Lean takes this input as a hypothesis (`DiscSepBergmanArea`, `CriticalValueSeparationTheorem`); it is not proved in Lean.
 

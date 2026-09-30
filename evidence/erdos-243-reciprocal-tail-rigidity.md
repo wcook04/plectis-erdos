@@ -44,7 +44,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="res-reduced"></a>
 
-## Proposition 2.1 (persistent coprimality), page 3
+## Proposition 3.1 (persistent coprimality), page 4
 
 > *In a reduced exact tail, $`\gcd(a_n,v_n)=1`$. Distinct multipliers are pairwise coprime, and every earlier multiplier is coprime to every later numerator.*
 
@@ -75,7 +75,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="res-bounded"></a>
 
-## Theorem 4.1 (bounded negative part), page 7
+## Theorem 4.1 (bounded negative part), page 8
 
 > *Let $`a,C,D:\mathbb{N}\to\mathbb{N}`$ satisfy $`a_n>1`$, $`C_n>0`$, and
 > ``` math
@@ -151,7 +151,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="res-absorb"></a>
 
-## Theorem 4.3 (absorption and descent), page 8
+## Theorem 4.3 (absorption and descent), page 9
 
 > *<span id="res:descent" label="res:descent"></span> For a positive exact state with strict centring, $`E_n=0`$ implies $`E_{n+1}=0`$. For any positive integer state with $`C_{n+1}=C_n-E_n`$, eventual nonnegativity of $`E_n`$ implies its eventual vanishing.*
 
@@ -185,7 +185,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="res-step"></a>
 
-## Corollary 4.4 (two zero errors), page 8
+## Corollary 4.4 (two zero errors), page 9
 
 > *<span id="res:eventual" label="res:eventual"></span> If $`E_n=E_{n+1}=0`$ and $`C_{n+1}\ne0`$, then $`a_{n+1}=a_n^2-a_n+1`$. Thus eventual zero error in a positive exact state implies the eventual Sylvester recurrence.*
 
@@ -229,7 +229,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="res-gcdstab"></a>
 
-## Proposition 4.5 (gcd stabilisation), page 8
+## Proposition 4.5 (gcd stabilisation), page 9
 
 > *For a positive exact state, suppose that some fixed integer $`B\ge1`$ satisfies $`-B\le E_n<0`$ at infinitely many indices. Then $`G_n=\gcd(C_n,D_n)`$ is eventually constant. Division by its stable value gives a reduced exact tail.*
 
@@ -329,7 +329,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="res-cor"></a>
 
-## Corollary 4.8, page 9
+## Corollary 4.8, page 10
 
 > *Under Theorem 4.1, the multipliers satisfy $`a_{n+1}=a_n^2-a_n+1`$ eventually.*
 
@@ -399,7 +399,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="res-inclusiveone"></a>
 
-## Corollary 4.10 (an inclusive one-sided $`1/n`$ bound), page 10
+## Corollary 4.10 (an inclusive one-sided $`1/n`$ bound), page 11
 
 > *Let $`a_1<a_2<\cdots`$ be positive integers with $`a_{n+1}/a_n^2\to1`$ and $`\sum_n1/a_n\in\mathbb{Q}`$. Suppose that for some $`K\ge0`$ and $`\varepsilon>0`$,
 > ``` math
@@ -455,7 +455,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="res-massscalar"></a>
 
-## Theorem 5.1 (a convergent sum of relative increases), page 11
+## Theorem 5.1 (a convergent sum of relative increases), page 12
 
 > *<span id="res:mass" label="res:mass"></span> Let $`C_n`$ be positive integers and $`E_n`$ integers satisfying $`C_{n+1}=C_n-E_n`$. If
 > ``` math
@@ -496,7 +496,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="res-weightedrecord"></a>
 
-## Theorem 6.1 (a convergent weighted sum over new maxima), page 12
+## Theorem 6.1 (a convergent weighted sum over new maxima), page 13
 
 > *Assume the growth and rationality hypotheses of Problem 1.1. Let $`f:[1,\infty)\to[0,\infty)`$ be finite and nonincreasing, with $`\int_1^\infty f(t)\,dt=\infty`$. Then the sequence is eventually Sylvester if and only if, for some integer $`B\ge0`$,
 > ``` math
@@ -533,7 +533,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="res-lcmbounded"></a>
 
-## Corollary 6.2 (a bound using the least common multiple), page 14
+## Corollary 6.2 (a bound using the least common multiple), page 15
 
 > *Assume the hypotheses of Problem 1.1. Write $`A_n=\operatorname{lcm}(a_1,\ldots,a_{n-1})`$ with $`A_1=1`$. If
 > ``` math
@@ -570,7 +570,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="res-frontier"></a>
 
-## Proposition 7.1 (necessary profile), page 15
+## Proposition 7.1 (necessary profile), page 16
 
 > *The integer tail of a sequence satisfying Problem 1.1’s hypotheses but not its conclusion has $`E_n\ne0`$ eventually, $`|E_n|/C_n\to0`$, unbounded negative magnitudes along negative indices, and
 > ``` math
@@ -654,7 +654,7 @@ theorem real_lowerDensityZero_iff_exists_admissible_real_weight
 
 <a id="res-residue"></a>
 
-## Theorem A.2 (factorial residue reduction), page 17
+## Theorem A.2 (factorial residue reduction), page 18
 
 > *For all $`h`$ and all integers $`a\equiv b \pmod{(h+1)!}`$, the orbit from $`a`$ survives $`h`$ forced updates exactly when the orbit from $`b`$ does.*
 

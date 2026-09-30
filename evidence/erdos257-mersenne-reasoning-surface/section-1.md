@@ -150,7 +150,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="thm-257-mixed-supports"></a>
 
-## Theorem 1.4 (mixed weighted and cover supports), page 16
+## Theorem 1.4 (mixed weighted and cover supports), page 17
 
 > *Let $`E,V\subseteq\mathbb{N}_{>0}`$. Suppose $`E`$ has finite weighted mass (1) at $`b=2`$ for a finite nonempty prime set $`\mathcal P`$. Suppose also that $`V\subseteq\bigcup_jF_j`$ for sets and majorants satisfying Theorem 1.3, with (14) or its positive-weight variant. Then $`X_A(b)`$ is irrational for every infinite $`A\subseteq E\cup V`$ and every integer $`b\ge2`$.*
 
@@ -195,7 +195,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="thm-geometry"></a>
 
-## Theorem 1.8 (Achievement-set geometry), page 21
+## Theorem 1.8 (Achievement-set geometry), page 22
 
 > *$`\mathcal{A}`$ is compact, closed, perfect, totally disconnected and nowhere dense, and $`\operatorname{volume}(\mathcal{A}) = 1`$. Thus its measure is positive although it contains no interval. Its convex hull is $`[0,E]`$, where $`E=\sum_{n\ge1}w_n`$. The positive-index digit coding onto $`\mathcal{A}`$ is injective: each achievable real has *exactly one* support.*
 

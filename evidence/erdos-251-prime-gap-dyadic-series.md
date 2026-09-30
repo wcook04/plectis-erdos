@@ -115,7 +115,7 @@ theorem polylogarithmic_word_interval_uniform (a : ℕ → ℕ) {A ε : ℝ}
 
 <a id="res-jointcountermodel"></a>
 
-## Corollary 3.1 (a rational sum with the stated prime-gap statistics), page 5
+## Corollary 3.1 (a rational sum with the stated prime-gap statistics), page 7
 
 > *Let $`p_0=2,p_1=3,\ldots`$ be the primes and $`g_n=p_{n+1}-p_n`$. Given $`K\in\mathbb{N}`$ and $`0<\varepsilon\le1`$, there is $`b:\mathbb{N}\to\mathbb{N}`$ with rational dyadic sum such that $`b_n=g_n`$ for $`n<K`$, $`b_n\ge g_n`$, and $`b_n-g_n\le(\log(n+3))^\varepsilon`$ eventually. For every fixed positive modulus, both the coefficients and the cumulative positions eventually retain their corresponding residues. The empirical distributions of unnormalised blocks have total variation distance tending to zero for lengths $`o(\log\log X)`$, and for every fixed nonzero $`F\in\mathbb{Z}[x_0,\ldots,x_k]`$,
 > ``` math
@@ -206,7 +206,7 @@ def SchlagePuchtaLemma4 : Prop :=
 
 <a id="res-infinite"></a>
 
-## Theorem 4.1 (prime-to-gap identity), page 6
+## Theorem 4.1 (prime-to-gap identity), page 8
 
 > *The actual prime and gap series satisfy $`\Pi=2+G`$. Their complete tails
 > ``` math
@@ -281,7 +281,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="res-irr-equivalence"></a>
 
-## Corollary 4.2 (exact irrationality reformulation), page 7
+## Corollary 4.2 (exact irrationality reformulation), page 8
 
 > *The prime-value dyadic series is irrational if and only if the prime-gap dyadic series is. Both series converge by the polynomial bound proved above; neither side is proved irrational.*
 
@@ -321,7 +321,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="res-true-tail"></a>
 
-## Lemma 4.3 (the boundary condition identifying a true tail), page 7
+## Lemma 4.3 (the boundary condition identifying a true tail), page 8
 
 > *Let $`\sum_{j\ge1}|a_j|2^{-j}<\infty`$ and $`U_{N+1}=2U_N-a_{N+1}`$. Then $`U_N=\sum_{j\ge1}a_{N+j}2^{-j}`$ for every $`N`$ if and only if $`2^{-N}U_N\to0`$.*
 
@@ -349,7 +349,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="res-escape-irrational"></a>
 
-## Theorem 4.4 (exact rationality classification), page 7
+## Theorem 4.4 (exact rationality classification), page 9
 
 > *For a real integer-coefficient recurrence, the following are equivalent: $`U_0\in\mathbb{Q}`$; $`D_h(N)\in\mathbb{Z}`$ for some $`h\ge1,N\ge0`$; and, for some fixed $`h\ge1`$, $`D_h(N)\in\mathbb{Z}`$ at every sufficiently large $`N`$. More precisely, if $`U_0=u/(2^sd)`$ is in lowest terms, with $`d`$ odd, then
 > ``` math
@@ -400,7 +400,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="res-signedwindow"></a>
 
-## Proposition 5.1 (two consecutive differences of absolute value less than one), page 8
+## Proposition 5.1 (two consecutive differences of absolute value less than one), page 9
 
 > *Let $`D,D'\in\mathbb{R}`$, $`\delta\in2\mathbb{Z}`$ and $`D'=2D-\delta`$. The conditions $`|D|<1`$, $`|D'|<1`$ and $`\delta\ne0`$ hold exactly when, for some $`s\in\{-1,1\}`$,
 > ``` math
@@ -444,7 +444,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="res-truncation"></a>
 
-## Proposition 5.3 (finite separation criterion), page 9
+## Proposition 5.3 (finite separation criterion), page 10
 
 > *If for every $`h\ge1`$ and every cutoff $`N_0`$ there are $`N\ge N_0,L\ge1`$ with
 > ``` math
@@ -480,7 +480,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="res-gap-nonperiodic"></a>
 
-## Proposition 6.1 (prime gaps do not become periodic), page 10
+## Proposition 6.1 (prime gaps do not become periodic), page 12
 
 > *For every positive $`h`$, the actual consecutive-prime-gap sequence is not eventually periodic with period $`h`$.*
 

@@ -28,7 +28,7 @@ theorem distinctHeightSum235_irrational : Irrational distinctHeightSum235
 
 <a id="res-two-prime-transcendence"></a>
 
-## Theorem 3.1 (both two-prime sums), page 4
+## Theorem 5.1 (both two-prime sums), page 9
 
 > *<span id="res:two-prime-repeated-transcendence" label="res:two-prime-repeated-transcendence"></span> Let $`p<q`$ be distinct primes. Put $`\theta=\log p/\log q`$ and $`A=\sum_{n\ge0}p^{-n}q^{-\lfloor n\theta\rfloor}`$. Let $`\mathcal R_{p,q}`$ sum the reciprocal running LCM at every positive $`\{p,q\}`$-smooth integer, and let $`\mathcal D_{p,q}`$ count each distinct running LCM once. Then
 > ``` math
@@ -166,7 +166,7 @@ def BugeaudLaurentTranscendence : Prop :=
 
 <a id="res-lcm"></a>
 
-## Proposition 4.1 (the running least common multiple), page 6
+## Proposition A.1 (the running least common multiple), page 10
 
 > *Let $`p,q,r`$ be pairwise distinct primes and $`x\ge1`$. Then the running LCM equals the three-prime height: $`\operatorname{L}(x)=\operatorname{H}(x)`$.*
 
@@ -194,7 +194,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="res-cell"></a>
 
-## Proposition 4.2 (cells and jumps), page 6
+## Proposition A.2 (cells and jumps), page 10
 
 > *The running LCM is constant when the three integer logarithms are constant. A jump in exactly one logarithm multiplies it by the corresponding prime. The first $`n`$ positive powers of each prime, together with $`1`$, form $`3n+1`$ distinct points.*
 
@@ -276,7 +276,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="res-fibre-prop"></a>
 
-## Proposition 4.3 (grouping terms with the same height), page 6
+## Proposition A.3 (grouping terms with the same height), page 10
 
 > *For a finite exponent box $`\mathcal B`$, set $`F(H)=\{(i,j,k)\in\mathcal B:\operatorname{H}(p^iq^jr^k)=H\}`$. Then
 > ``` math
@@ -311,7 +311,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="res-dyadic-alphabet"></a>
 
-## Lemma 4.4 (integer coefficients and four possible bases), page 7
+## Lemma 3.1 (integer coefficients and four possible bases), page 6
 
 > *For every $`a\ge0`$, $`m_a`$ is a positive integer and $`b_a\in\{2,6,10,30\}`$. The word “numerator” does not impose the positional-digit restriction $`m_a<b_a`$; that restriction need not hold.*
 
@@ -341,7 +341,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="res-actual-orbit"></a>
 
-## Proposition 4.5 (the tail recurrence and a quadratic bound), page 7
+## Proposition 3.2 (the tail recurrence and a quadratic bound), page 6
 
 > *The series defining $`S,T_a`$ converge. For every $`a\ge0`$,
 > ``` math
@@ -385,7 +385,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="res-denominator-reduction"></a>
 
-## Theorem 4.6 (rationality gives positive integer tails), page 8
+## Theorem 3.3 (rationality gives positive integer tails), page 6
 
 > *If $`S=A/D`$ in lowest terms, where $`D=2^u3^v5^wB`$ and $`\gcd(B,30)=1`$, then for every $`a\ge a_0=u+1+2v+3w`$,
 > ``` math
@@ -422,7 +422,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="res-exact-onset"></a>
 
-## Corollary 4.7 (the first index at which the denominator clears), page 8
+## Corollary 3.4 (the first index at which the denominator clears), page 7
 
 > *Under the same lowest-terms hypothesis, put $`M=2^u3^v5^w`$ and let $`\operatorname{den}`$ denote the positive reduced denominator. For $`a\ge1`$,
 > ``` math
@@ -489,7 +489,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="res-consumer"></a>
 
-## Lemma 5.1 (least positive residues), page 9
+## Lemma 4.1 (least positive residues), page 8
 
 > *If $`d`$ is a positive integer with $`d\le K`$ and $`d\equiv -BF\pmod W`$, where $`W\ge1`$, then $`\operatorname{lpr}_W(-BF)\le K`$.*
 
@@ -516,7 +516,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="res-windowconsumer"></a>
 
-## Theorem 5.2 (a residue criterion for irrationality), page 9
+## Theorem 4.2 (a residue criterion for irrationality), page 8
 
 > *The number $`S`$ is irrational if and only if
 > ``` math
@@ -552,7 +552,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="res-infinite-rank"></a>
 
-## Theorem A.1 (no finite separation of the kernel), page 10
+## Theorem B.2 (no finite separation of the kernel), page 11
 
 > *Let $`p,q,r`$ be primes with $`p\ne q`$, $`p\ne r`$ and $`q\ne r`$. For every $`n\ge0`$ there are injective maps $`I,J:\{0,\ldots,n-1\}\to\mathbb{N}`$ such that, for every $`k\ge0`$,
 > ``` math
@@ -592,7 +592,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="res-admissible-modular-minors"></a>
 
-## Corollary A.2 (the same minors modulo integers coprime to $`30`$), page 11
+## Corollary B.3 (the same minors modulo integers coprime to $`30`$), page 12
 
 > *For $`(p,q,r)=(2,3,5)`$ and every $`n\ge1`$, there are injective maps $`I,J:\{0,\ldots,n-1\}\to\mathbb{N}`$, chosen independently of $`B`$ and $`k`$, such that for every $`B\ge2`$ coprime to $`30`$ and every $`k\ge0`$, the selected $`n\times n`$ kernel matrix has unit determinant over $`\mathbb Z/B\mathbb Z`$, with each reciprocal prime power interpreted by its modular inverse.*
 
@@ -622,7 +622,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="res-finite-cut-rank"></a>
 
-## Proposition A.4 (rank of a matrix of threshold columns), page 11
+## Proposition B.4 (rank of a matrix of threshold columns), page 12
 
 > *Let $`m\ge1`$ and let $`c`$ lie in a field with $`c\ne 0,1`$. For $`0\le k\le m`$ write $`v_k`$ for the length-$`m`$ column with a $`1`$ in each of the first $`k`$ coordinates and $`c`$ thereafter. A matrix whose distinct columns are $`v_k`$ for $`k`$ in a nonempty set $`E`$ has rank $`|E|-\mathbf 1_{\{0,m\}\subseteq E}`$.*
 

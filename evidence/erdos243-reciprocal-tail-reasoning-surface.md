@@ -40,7 +40,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long243-res-nonintegralrate"></a>
 
-## Theorem 2.2 (nonintegral regular-rate irrationality), page 2
+## Theorem 2.2 (nonintegral regular-rate irrationality), page 3
 
 > *Let $`\lambda>1`$ be a real number that is not an integer. If strictly increasing positive integers satisfy $`a_n^2/a_{n+1}=1+\lambda/n+o(n^{-\lambda})`$, then $`\sum_n1/a_n`$ is irrational.*
 
@@ -138,7 +138,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long243-res-gcdshape"></a>
 
-## Lemma 2.5 (gcd stabilisation and the primitive shape), page 4
+## Lemma 2.5 (gcd stabilisation and the primitive shape), page 5
 
 > *Write $`G_n=\gcd(C_n,D_n)`$. Then $`6A`$ is a positive integer, $`G_n`$ divides $`6A`$ for every $`n`$, and $`G_n`$ is eventually equal to a positive integer $`g`$. On the tail where $`G_n=g`$, put $`u_n=C_n/g`$, $`v_n=D_n/g`$ and $`Q(n)=P(n)/g`$. Then
 > ``` math
@@ -284,7 +284,7 @@ theorem squareSpecialisation_holds :
 
 <a id="long243-res-transportsquare"></a>
 
-## Proposition 2.8 (the square forced by the numerator recurrence), page 6
+## Proposition 2.8 (the square forced by the numerator recurrence), page 7
 
 > *Write $`\kappa=m/6`$ and $`\eta=6c/m`$, so that $`Q_{m,c}(n)=\kappa f(n+1)`$ for $`f(T)=T^3-T+\eta`$. Then $`\alpha^2-1`$ is a square in $`\mathbb{Q}(\alpha)^\times`$ for a root $`\alpha`$ of $`f`$.*
 
@@ -395,7 +395,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long243-res-extraction"></a>
 
-## Lemma 2.11 (integer extraction at a regular rate), page 9
+## Lemma 2.11 (integer extraction at a regular rate), page 10
 
 > *Let $`\lambda>1`$ and let $`C_n`$ be positive integers with
 > ``` math
@@ -443,7 +443,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long243-res-tailratio"></a>
 
-## Lemma 2.12 (the tail ratio reads the growth defect), page 10
+## Lemma 2.12 (the tail ratio reads the growth defect), page 11
 
 > *Let $`a_n`$ be strictly increasing positive integers with $`a_{n+1}/a_n^2\to1`$ and $`\sum_n1/a_n`$ rational, and let $`(C_n,D_n)`$ be the integer tail. Write $`\gamma_n=a_n^2/a_{n+1}-1`$. Then
 > ``` math
@@ -511,7 +511,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long243-res-scale"></a>
 
-## Proposition 4.3 (scaling the numerator and denominator), page 17
+## Proposition 4.3 (scaling the numerator and denominator), page 18
 
 > *For every $`s,a,D,C\in\mathbb{Z}`$,
 > ``` math
@@ -581,7 +581,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long243-res-step"></a>
 
-## Theorem 5.3 (two vanishing errors force the step), page 18
+## Theorem 5.3 (two vanishing errors force the step), page 19
 
 > *Let $`a,a',D,C\in\mathbb{Z}`$ with $`aC-D\ne0`$. If
 > ``` math
@@ -649,7 +649,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long243-res-curvature"></a>
 
-## Theorem 5.5 (a square identity without cancellation), page 19
+## Theorem 5.5 (a square identity without cancellation), page 20
 
 > *Let $`a,a_1,p,p_1,p_2,q`$ be integers with $`q=ap-p_1`$ and $`p_2+a^2p=(a+a_1)p_1`$. Then
 > ``` math
@@ -713,7 +713,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long243-res-eventual"></a>
 
-## Theorem 5.7 (sequence form), page 20
+## Theorem 5.7 (sequence form), page 21
 
 > *Let $`a,D,C:\mathbb{N}\to\mathbb{Z}`$ satisfy $`D_{n+1}=a_nD_n`$ and $`C_{n+1}=a_nC_n-D_n`$. If $`E_n=0`$ for all sufficiently large $`n`$ and $`C_{n+1}\ne0`$ for all sufficiently large $`n`$, then $`a_{n+1}=a_n^{2}-a_n+1`$ for all sufficiently large $`n`$.*
 
@@ -931,7 +931,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long243-res-powerpersistence"></a>
 
-## Corollary 7.2 (persistence of a prime power), page 26
+## Corollary 7.2 (persistence of a prime power), page 27
 
 > *Suppose $`p^k\mid v_s`$. If $`w_n<p^{k+1}`$ at every step from $`s`$ through $`t-1`$, then $`p^k\mid v_t`$.*
 
@@ -967,7 +967,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long243-res-recorddichotomy"></a>
 
-## Theorem 7.3 (increments of the running maximum), page 26
+## Theorem 7.3 (increments of the running maximum), page 27
 
 > *Let $`\Theta=\limsup_n(H_{n+1}-H_n)/\ell(H_n)`$ on a rational-tail orbit under the standing hypotheses, and suppose $`E_n`$ is not eventually zero. Then either $`G_n`$ is unbounded and $`\Theta`$ is infinite, or $`G_n`$ stabilises at a value $`g`$ and $`\Theta\ge g\,v_T/\varphi(v_T)`$ for every late $`T`$, so that $`\Theta>g\ge1`$. For any orbit under the standing hypotheses, therefore, $`\Theta=0`$ or $`\Theta>1`$, and $`\Theta\le1`$ forces the eventual Sylvester recurrence.*
 
@@ -1098,7 +1098,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long243-res-recordamplified"></a>
 
-## Theorem 7.5 (bounds allowing for previous decreases), page 29
+## Theorem 7.5 (bounds allowing for previous decreases), page 30
 
 > *Under the standing hypotheses, the following are equivalent: eventual Sylvester behaviour; $`\limsup_n\mathcal A_n<\infty`$; $`\limsup_nR_n\delta_n<\infty`$. Each of those two limits superior is $`0`$ or $`+\infty`$.*
 
@@ -1287,7 +1287,7 @@ theorem R_delta_sub_amp_tendsto_zero (O : StandingOrbit) :
 
 <a id="long243-res-criticalrate"></a>
 
-## Corollary 7.6 (the critical rate), page 29
+## Corollary 7.6 (the critical rate), page 30
 
 > *Under the standing hypotheses and $`\delta_n=O(1/n)`$, with no convergence of $`n\delta_n`$ assumed, eventual Sylvester behaviour is equivalent to $`u_n=O(n)`$ and to $`(-\tilde e_n)_+=O(1)`$. A counterexample at the critical rate therefore has $`\limsup_nu_n/n=\infty`$ and $`\limsup_n(-\tilde e_n)_+=\infty`$.*
 
@@ -1412,7 +1412,7 @@ theorem oddPrimePower_supply_nat (O : StandingOrbit) (A : ℕ) :
 
 <a id="long243-res-unitrecord"></a>
 
-## Theorem 7.8 (unit record increments), page 31
+## Theorem 7.8 (unit record increments), page 32
 
 > *Under the standing hypotheses, if $`R_{n+1}-R_n\le1`$ for all large $`n`$, then $`a_{n+1}=a_n^2-a_n+1`$ for all large $`n`$. Hence the sequence is eventually Sylvester if and only if $`\#\{n:R_{n+1}-R_n\ge2\}`$ is finite. No hypothesis is placed on drawdowns, on record-setting jumps, or on the cancellation factors $`h_n`$.*
 
@@ -1515,7 +1515,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long243-res-energycriterion"></a>
 
-## Theorem 7.10 (two convergence criteria for large record jumps), page 32
+## Theorem 7.10 (two convergence criteria for large record jumps), page 33
 
 > *Under the standing hypotheses, the sum $`\mathcal E=\sum_{n\ \mathrm{record}}\bigl(\mathbf 1_{d_n\ge3}u_n^{-1/2}
 > +(d_n-2)_+u_n^{-1}\bigr)`$ is finite if and only if the sequence is eventually Sylvester; and $`\sum_{n\ \mathrm{record}}(d_n-2)_+u_n^{-1/2}`$ is finite if and only if the sequence is eventually Sylvester.*
@@ -1629,7 +1629,7 @@ theorem exists_late_energy_window (O : StandingOrbit) (hunb : ∀ M : ℕ, ∃ n
 
 <a id="long243-res-slownegative"></a>
 
-## Theorem 7.11 (slow negative part), page 33
+## Theorem 7.11 (slow negative part), page 34
 
 > *Let $`(a,C,D)`$ be an exact orbit of natural numbers with $`a_n>1`$, $`C_n>0`$, $`D_0\ge1`$, under vanishing relative error. Suppose that for some $`\delta\in(0,1)`$ and all large $`n`$ with $`E_n<0`$ one has $`-E_n\le(1-\delta)\ell(C_n)`$. Then $`E_n=0`$ for all large $`n`$, and $`a_{n+1}=a_n^2-a_n+1`$ for all large $`n`$.*
 
@@ -1869,7 +1869,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long243-res-onethreshold"></a>
 
-## Corollary 7.13 (the $`1/n`$ threshold), page 35
+## Corollary 7.13 (the $`1/n`$ threshold), page 36
 
 > *Let $`a_1<a_2<\cdots`$ be positive integers with $`a_{n+1}/a_n^2\to1`$ and $`\sum_n1/a_n\in\mathbb{Q}`$. If
 > ``` math
@@ -2156,7 +2156,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long243-res-coprimalitycap"></a>
 
-## Proposition 7.15 (an elementary interval bound), page 37
+## Proposition 7.15 (an elementary interval bound), page 38
 
 > *Let $`m_0<m_1<\cdots`$ be pairwise coprime integers at least $`2`$ with $`\theta=\sum_i1/m_i<1`$. For all integers $`x\ge1`$ and $`L\ge1`$ satisfying $`L>k/(1-\theta)`$, where $`k=\#\{i:m_i\le x+L\}`$, the interval $`[x,x+L)`$ contains an integer divisible by no $`m_i`$. If also $`\ell(m_i)=i+O(1)`$, then for every $`\epsilon>0`$ there are an index $`T`$ and a strictly increasing sequence of positive integers $`(u_n)`$ such that
 > ``` math
@@ -2313,7 +2313,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long243-res-crt"></a>
 
-## Lemma 11.1 (shifted blocks of consecutive multiples), page 42
+## Lemma 11.1 (shifted blocks of consecutive multiples), page 43
 
 > *Let $`m_0,\ldots,m_{B-1}`$ be pairwise coprime and at least $`2`$. For every bound there is a $`t`$ beyond it with $`m_i\mid t+i`$ for each $`i<B`$.*
 
@@ -2373,7 +2373,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long243-res-reduced"></a>
 
-## Proposition 11.4 (reduced tails are pairwise coprime), page 43
+## Proposition 11.4 (reduced tails are pairwise coprime), page 44
 
 > *In a reduced exact tail, $`a_n`$ is coprime to $`v_n`$; the multipliers at distinct indices are pairwise coprime; and every earlier multiplier is coprime to every later numerator.*
 
@@ -2404,7 +2404,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long243-res-gcdstab"></a>
 
-## Proposition 11.6 (the tail gcd stabilises), page 44
+## Proposition 11.6 (the tail gcd stabilises), page 45
 
 > *Let $`(a,D,C)`$ be an exact orbit of natural numbers, that is, a triple of $`\mathbb{N}`$-valued sequences with $`C_{n+1}+D_n=a_nC_n`$ and $`D_{n+1}=a_nD_n`$, whose error is $`E_n=D_n-(a_n-1)C_n`$. Suppose some fixed integer $`B\ge1`$ satisfies $`-B\le E_n<0`$ at infinitely many indices. Then $`\gcd(C_n,D_n)`$ is eventually constant, and beyond that index the orbit divided by the stable gcd is a reduced exact tail.*
 
@@ -2479,7 +2479,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long243-res-bounded"></a>
 
-## Theorem 12.1 (bounded negative part), page 45
+## Theorem 12.1 (bounded negative part), page 46
 
 > *Let $`a,C,D:\mathbb{N}\to\mathbb{N}`$ satisfy $`a_n>1`$, $`C_n>0`$, and
 > ``` math
@@ -2649,7 +2649,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long243-res-variablerise"></a>
 
-## Proposition 14.6 (small increases when the prime moduli are sparse), page 52
+## Proposition 14.6 (small increases when the prime moduli are sparse), page 53
 
 > *There exist strictly increasing primes $`p_i`$ and a strictly increasing positive integer sequence $`u_n\to\infty`$ such that $`\gcd(u_n,p_i)=1`$ for all $`i,n`$ and
 > ``` math

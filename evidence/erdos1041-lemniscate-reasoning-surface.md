@@ -64,7 +64,7 @@ theorem erdos1041_hausdorff_answer_false :
 
 <a id="lem-two-sheet-bottleneck-long"></a>
 
-## Lemma 2.1 (a bottleneck estimate), page 2
+## Lemma 2.1 (a bottleneck estimate), page 3
 
 > *Let $`p`$ be a polynomial and $`U`$ a component of $`\{|p|<1\}`$ on which $`p`$ is a proper map of degree two. Suppose its only critical point $`c`$ is simple and $`v=p(c)\ne0`$. Write
 > ``` math
@@ -155,7 +155,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="res-low-critical-thirteen-twentyfifths"></a>
 
-## Passage (beginning “res:low-critical-thirteen-twentyfifths…”), page 9
+## Passage (beginning “res:low-critical-thirteen-twentyfifths…”), page 10
 
 **No Lean proof of the whole statement.** In Lean, the degree-two case and the closing inequality $(13/25)e^X<1$ at the recorded stopping time $X=635762889599/10^{12}$ are checked; the computation that certifies $X$ and the analytic argument in higher degrees are not.
 
@@ -383,7 +383,7 @@ def LowCriticalThirteenTwentyFifths : Prop :=
 
 <a id="res-constant-factor-path"></a>
 
-## Passage (beginning “res:constant-factor-path…”), page 17
+## Passage (beginning “res:constant-factor-path…”), page 18
 
 The Lean proof assumes the level and direction averaging construction that this proof produces. Lean takes this input as a hypothesis (`CFAPathConstruction`); it is not proved in Lean.
 
@@ -548,7 +548,7 @@ def CFAArityConstruction (n : ℕ) (f : ℂ[X]) (z : Fin n → ℂ) (k₀ : ℕ)
 
 <a id="res-constant-factor-capacity"></a>
 
-## Passage (beginning “res:constant-factor-capacity…”), page 20
+## Passage (beginning “res:constant-factor-capacity…”), page 21
 
 The Lean proof assumes the level and direction averaging construction in the proof of Theorem 5.1, together with the area-capacity inequality. Lean takes this input as a hypothesis (`CFACapacityConstruction`); it is not proved in Lean.
 
@@ -624,7 +624,7 @@ def CFACapacityConstruction (n : ℕ) (f : ℂ[X]) (z : Fin n → ℂ) (κ : ℝ
 
 <a id="res-one-root-gamma-false"></a>
 
-## Proposition 5.5 (a counterexample to the proposed one-root perimeter bound), page 22
+## Proposition 5.5 (a counterexample to the proposed one-root perimeter bound), page 23
 
 > *Let $`p(z)=z^8-(3/2)z`$ and let $`C`$ be the component of $`\{|p|\le1\}`$ containing the origin. Then $`C`$ contains exactly one zero and a neighbourhood of the closed disc of radius $`5/8`$, so $`\mathcal H^1(\partial C)>5\pi/4`$. The constant $`\Gamma(1/4)^2/(2\sqrt{\pi})`$ is at most $`(\pi/2)(1+\sqrt2)<5\pi/4`$.*
 
@@ -656,7 +656,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="res-conjecture-p-consumer"></a>
 
-## Passage (beginning “res:conjecture-p-consumer…”), page 23
+## Passage (beginning “res:conjecture-p-consumer…”), page 24
 
 The Lean proof assumes the two-component split at the first critical level that this proof constructs. Lean takes this input as a hypothesis (`SubcriticalSplitExists`); it is not proved in Lean.
 
@@ -1009,7 +1009,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="res-arity-not-capacity"></a>
 
-## Proposition 8.2 (root count does not force a capacity gap), page 32
+## Proposition 8.2 (root count does not force a capacity gap), page 33
 
 > *Let $`g(z)=z^3-(3/400)z-3/32`$. All roots lie in the open unit disc and $`\mu=187/2000\le1/2`$. The first merger joins two root components, so $`k_0=2`$, but the component at level $`2\mu`$ containing that pair has normalised capacity $`1`$.*
 
@@ -1078,7 +1078,7 @@ def LemniscateTransfiniteDiameter : Prop :=
 
 <a id="prop-sharp-collinear-chebyshev-comparator"></a>
 
-## Theorem 9.1 (Chebyshev comparison), page 33
+## Theorem 9.1 (Chebyshev comparison), page 34
 
 > *Let $`m\ge0`$, let $`p\in\mathbb R[X]`$ be monic of degree $`m+2`$, and let
 > ``` math
@@ -1117,7 +1117,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="thm-sharp-collinear-diameter"></a>
 
-## Theorem 9.2 (a sharp bound for collinear roots), page 33
+## Theorem 9.2 (a sharp bound for collinear roots), page 34
 
 > *Let $`f`$ be a monic polynomial of degree $`n\ge2`$ whose zero occurrences are collinear, and let $`D`$ be their diameter. Some two adjacent zero occurrences are joined by a segment of length at most $`D`$ on which
 > ``` math
@@ -1256,7 +1256,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="cor-collinear-erdos-1041"></a>
 
-## Corollary 9.3 (collinear Erdős case), page 34
+## Corollary 9.3 (collinear Erdős case), page 35
 
 > *If the zero occurrences of a monic polynomial of degree $`n\ge2`$ lie on one line in the open unit disc, two of them are joined by a curve of length strictly below $`2`$ inside $`\{|f|<1\}`$.*
 
@@ -1346,7 +1346,7 @@ theorem collinear_erdos_1041_monic {n : ℕ} (hn : 2 ≤ n) (f : ℂ[X])
 
 <a id="prop-primitive-quintic-two-tail-energy-selector"></a>
 
-## Theorem 9.4 (a consequence of three moment identities), page 35
+## Theorem 9.4 (a consequence of three moment identities), page 36
 
 > *Suppose
 > ``` math
@@ -1413,7 +1413,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="thm-primitive-quintic-two-tail"></a>
 
-## Theorem 9.5 (a quintic with two missing coefficients), page 35
+## Theorem 9.5 (a quintic with two missing coefficients), page 36
 
 > *Let
 > ``` math
@@ -1530,7 +1530,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="lem-cubic-safe-root-spoke"></a>
 
-## Theorem 9.6 (a contained radial segment for a cubic), page 37
+## Theorem 9.6 (a contained radial segment for a cubic), page 38
 
 > *If $`r,s,v\in\mathbb C`$ have modulus below one, at least one $`u\in\{r,s,v\}`$ satisfies
 > ``` math
@@ -1565,7 +1565,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="thm-translated-cubic-quotient-fibres"></a>
 
-## Theorem 9.7 (a cubic composed with a power map), page 37
+## Theorem 9.7 (a cubic composed with a power map), page 38
 
 > *Let $`q\ge2`$, $`h\in\mathbb C`$, $`P`$ be monic cubic, and
 > ``` math
@@ -1836,7 +1836,7 @@ theorem paper_critical_value_mean (n : ℕ) (p : ℂ[X]) (c : Fin (n - 1) → �
 
 <a id="res-reflected-critical-value"></a>
 
-## Lemma 10.3 (reflected-derivative bound), page 48
+## Lemma 10.3 (reflected-derivative bound), page 49
 
 > *If $`f`$ is monic of degree $`n\ge2`$ with roots in the closed unit disk, and $`c_1,\ldots,c_{n-1}`$ list its critical points with multiplicity, then
 > ``` math
@@ -1972,7 +1972,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="res-two-nearest-roots"></a>
 
-## Corollary 10.6 (two nearest roots), page 55
+## Corollary 10.6 (two nearest roots), page 56
 
 > *If the roots lie in the open unit disc and $`c`$ is a non-root critical point, the two nearest roots to $`c`$ have total distance strictly below $`2`$.*
 
@@ -2050,7 +2050,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="res-orlicz-currency"></a>
 
-## Theorem 10.8 (the relation between two merger-scale integrals), page 63
+## Theorem 10.8 (the relation between two merger-scale integrals), page 64
 
 > *Define
 > ``` math
