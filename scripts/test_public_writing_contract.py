@@ -49,8 +49,8 @@ def main() -> None:
     prose = " ".join(human.split())
     boundaries = (
         release_status_boundary(),
-        "The other seven target problems are not resolved here",
-        "Independent human review of correspondence with the historical curve-length formulation has not been recorded",
+        "The other seven targets remain open",
+        "Independent human review of correspondence with the 1958 wording has not been recorded",
         "peer review",
     )
     for boundary in boundaries:
