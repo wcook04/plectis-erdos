@@ -451,6 +451,33 @@ ROUTE_CASES = {
 }
 
 
+def validate_finished_patch_routes() -> None:
+    """Separate returning finished patches from authoring changes or proofs."""
+    catalog = load_catalog()
+    cases = {
+        "send my finished tooling patch to maintainers": "submit_change",
+        "submit my finished documentation patch": "submit_change",
+        "prepare my completed tooling change for review": "submit_change",
+        "send these completed documentation patches to maintainers": "submit_change",
+        "prepare these finished commits for review": "submit_change",
+        "make a documentation correction": "repository_architecture",
+        "Check this documentation patch before opening a pull request": "repository_architecture",
+        "submit my finished proof": "return_research",
+        "send this proof patch for review": "return_research",
+        "Prove the Lean theorem while following the contribution guide": "bounded_research",
+    }
+    for task, expected in cases.items():
+        packet = entry_packet(catalog, task)
+        if packet["primary_lane"]["id"] != expected:
+            raise AssertionError((task, expected, packet["primary_lane"]))
+        if packet["task"] != task:
+            raise AssertionError("finished patch route lost the original request")
+        if expected == "submit_change":
+            for handle in ("CONTRIBUTING.md", "skills/submit-pull-request/SKILL.md"):
+                if handle not in packet["primary_lane"]["read"]:
+                    raise AssertionError((task, "missing submission handle", handle))
+
+
 def run_cli(root: Path, *args: str) -> subprocess.CompletedProcess[str]:
     return subprocess.run(
         [sys.executable, str(root / "scripts" / "agent_entry.py"), *args],
@@ -495,6 +522,7 @@ def validate_blank_selectors() -> None:
 
 
 def main() -> int:
+    validate_finished_patch_routes()
     validate_blank_selectors()
 
     # Real temporary repositories exercise clone, fork, tag, dirty-tree and

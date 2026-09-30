@@ -1014,7 +1014,27 @@
         "skills/submit-pull-request/SKILL.md"
       ],
       "commands": [],
-      "boundary": "Local preparation is allowed; pushing or opening the pull request requires explicit authorisation."
+      "boundary": "Local preparation is allowed; pushing or opening the pull request requires explicit authorisation.",
+      "task_intents": [
+        {
+          "actions": [
+            "send",
+            "sending",
+            "submit",
+            "submitting",
+            "prepare",
+            "preparing"
+          ],
+          "objects": [
+            "patch",
+            "patches",
+            "change",
+            "changes",
+            "commit",
+            "commits"
+          ]
+        }
+      ]
     },
     {
       "id": "install_skills",
