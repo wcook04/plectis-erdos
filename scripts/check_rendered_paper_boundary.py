@@ -121,8 +121,8 @@ FIRST_MINUTE_CONTRACT = {
 
 # The unified manuscript has its own reviewed reading windows. The publication
 # contract selects this profile; historical manuscript checks retain their
-# original wording and windows. The R6 exposition puts refinement on page 6
-# and historical observations on page 8. Match the accepted human prose while
+# original wording and windows. The reviewed unified edition puts refinement
+# on pages 6–7 and historical observations on pages 8–9. Match its prose while
 # retaining the escaped-edit, review, source-freeze and unmeasured-benefit limits.
 UNIFIED_SYSTEMS_FIRST_MINUTE = {
     (1, 1): (
