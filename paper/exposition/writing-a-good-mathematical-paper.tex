@@ -16,9 +16,8 @@
 \maketitle
 \paperprovenance
 \papersectiontarget{compact-writing-guide}
-Write for a reader who knows the field but has not seen your argument. Let that
-reader identify the result, understand why the proof works, and recover every
-step. Spend words where they reduce mathematical difficulty.
+Enable a reader who knows the field to identify the result, understand why the
+proof works and recover every step. Spend words where they reduce difficulty.
 
 \instruction{1. Decide what the paper contributes}{
 Choose a coherent principal result. Say what it establishes, why it matters,
@@ -31,8 +30,7 @@ result and mechanism.}
 Read nearby human-authored papers in the same subject and genre. Study complete
 local arguments: terminology, hypothesis placement, sentence connections,
 notation, proof order, pace and attribution. Borrow the reason for a choice;
-write your own sentences. Check the edition and passage; ``our main result''
-teaches little without the theorem that follows it.}
+write your own sentences. Check the edition and passage.}
 
 \instruction{3. Fix the statement before polishing its prose}{
 Check domains, quantifiers, signs, endpoints, constants, parameter dependencies and the
@@ -47,9 +45,9 @@ $\exists x\,\forall n\;(x>n)$.}
 \instruction{4. Organise by logical dependence}{
 Give the reader the question, a useful example when needed, the result and the
 proof's main idea before technical detail accumulates. State a lemma's purpose
-before proving it. Put prerequisites before their use. Give subordinate results
-a clear place; cut repeated derivations. Choose length to suit the argument;
-there is no universal first-page proof or page quota.}
+before proving it. Put prerequisites before use. Let headings name the object,
+result or operation. Place subordinate results clearly; cut repeated derivations. Choose length to suit the argument;
+there is no universal page quota.}
 
 \instruction{5. Explain the hard transition}{
 Name the quantity to control and the accuracy required before constructing an
@@ -61,8 +59,9 @@ algebra while skipping the decisive inference. Make a proof paragraph advance
 a clear goal through an operation to what is now established or remains to prove.}
 
 \instruction{6. Separate construction from completion}{
-Account for every chosen coordinate, correction and error term; state what each
-choice preserves. Then justify convergence, interchange of limits and sums,
+Account for each choice, correction and error term, including what it preserves.
+For a classification, prove both that constructed objects qualify and that every
+admissible object is obtained. Justify convergence, interchange of limits and sums,
 attainment, or passage to an infinite object. Specify which parameters stay
 fixed and the order of successive limits. For example,
 $r_n=x-S_n$, $0\le r_n\le\varepsilon_n$ and $\varepsilon_n\to0$ give
@@ -73,8 +72,8 @@ pointwise convergence from the bound that permits interchanging a limit and a su
 Use a small example to reveal a definition, choice, invariant, obstruction or
 difference between hypotheses. Show the operation and its consequence. Say
 where the example stops. A finite check establishes an infinite claim only
-through a proved reduction. A diagram must identify its objects, maps, quantities and conventions;
-do not draw an arbitrary connected set as a smooth path without justification.
+through a proved reduction. Check that a witness belongs to the claimed object,
+not just a larger model. A diagram must identify its objects, maps and conventions.
 Put the explanation beside the example it explains.}
 
 \instruction{8. Use the field's words and purposeful notation}{
@@ -82,8 +81,9 @@ Keep established technical terms when their definitions fit: ``moment sequences'
 not ``moment banks''. Replace private labels with the actual object or condition:
 write $u_n/2^n\to0$ if that is what
 the adjective means; do not silently strengthen it to subexponential growth.
-Define symbols before use, keep their roles stable and remove notation that
-saves no repeated work. Distinguish a sum, its partial sums and its remainders.}
+Define symbols before use, keep their roles stable and remove unused notation.
+Translate indices, coordinates and normalisations when borrowing an argument.
+Distinguish a sum, its partial sums and its remainders.}
 
 \instruction{9. Make sentences express the argument}{
 Replace ``We proceed with the estimate'' by a mathematical reason:
@@ -98,7 +98,7 @@ Do not manufacture sentence variety or replace precise terms merely to avoid rep
 Distinguish applied theorems, adapted constructions, historical attribution,
 terminology and expository models. Check the original's hypotheses, version
 and passage. Credit supplied ideas and corrections locally. A stylistic analogy
-supplies no proof. Inspect the passage behind a search hit. Report only reading
+supplies no proof. Report only reading
 and checks actually performed.}
 
 \instruction{11. State what has actually been established}{
@@ -120,6 +120,7 @@ Do not invent the history of discovery to motivate a proof.}
 
 \instruction{13. Review changes as claims, then as prose}{
 Compare old and new meanings, including words inside theorem statements.
+Repair overclaims and stale underclaims.
 Removing a shorthand must not remove its hypotheses. Accept, repair or reject each substantive
 proposal for a stated reason. Generalise a lesson only as far as its evidence
 supports; keep its limit. Preserve useful unsuccessful revisions.}
@@ -135,9 +136,9 @@ difficulties to revise; do not substitute a successful build for that judgement.
 \par\medskip\noindent\small
 \textit{Further reading.}
 Halmos, \href{https://doi.org/10.5169/seals-43857}{\emph{How to write mathematics}}, \S\S3--5 (1970);
-Knuth, Larrabee and Roberts, \href{https://cs.stanford.edu/~knuth/klr.html}{\emph{Mathematical Writing}}, \S1 (1988);
+Knuth et al., \href{https://cs.stanford.edu/~knuth/klr.html}{\emph{Mathematical Writing}}, \S1 (1988);
 Gowers, \href{https://gowers.wordpress.com/2007/10/19/my-favourite-pedagogical-principle-examples-first/}{\emph{Examples first!}} (2007);
 Tao, \href{https://terrytao.wordpress.com/advice-on-writing-papers/}{\emph{On writing}}.
-Worked mathematical cases, sources and revision history:
-\href{https://github.com/wcook04/plectis-erdos/blob/main/paper/exposition/writing-mathematics-from-reviewed-revisions.pdf}{\emph{Writing Mathematics from the Literature and Reviewed Revisions}}.
+Worked cases, sources and revision history: the
+\href{https://github.com/wcook04/plectis-erdos/blob/main/paper/exposition/writing-mathematics-from-reviewed-revisions.pdf}{\emph{long companion}}.
 \end{document}
