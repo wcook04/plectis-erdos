@@ -1308,6 +1308,46 @@ def validate_natural_language_search() -> None:
             "explicit_number_excludes_other_problem_results_routes_and_open_records"
         ),
     }
+    # A problem number constrains the source but must not erase the requested
+    # reading task. Cards expose the next step; JSON preserves the full route.
+    facet_cases = (
+        ("Inspect the prior art behind the Erdos 1041 sharp gap theorem",
+         "source_attribution", "--query 1041"),
+        ("What assumptions does the Erdos 1041 sharp gap theorem use?",
+         "formal_statement", "--declaration <Lean_name>"),
+        ("Give me one hint for the proof of the Erdos 249 theorem",
+         "guided_reading", "--route erdos_249 --format json"),
+    )
+    for question, facet_id, command_fragment in facet_cases:
+        with patch("query_corpus.ranked_declaration_search_rows",
+                   side_effect=AssertionError("constrained facet reopened global ranking")):
+            facet_packet = query_corpus.semantic_slice_packet(question, 3)
+        constraint = facet_packet["query_interpretation"]["problem_constraint"]
+        synthesis = facet_packet["operator_synthesis"]
+        assert synthesis["reader_answer"]["problem_route"] == constraint["route_id"]
+        facet = next(row for row in synthesis["requested_facets"] if row["id"] == facet_id)
+        assert any(command_fragment in command for command in facet["commands"])
+        card = query_corpus.render_card(facet_packet)
+        assert f"requested facet | {facet_id}" in card
+        assert command_fragment in card
+        assert "order=Palomar programme signal" not in card
+        if facet_id == "formal_statement":
+            assert facet["status"] == "needs_declaration"
+        if facet_id == "source_attribution":
+            assert "--route trace_prior_art" in card
+    assert "requested_facets" not in problem_bound["operator_synthesis"]
+    constraint = problem_bound["query_interpretation"]["problem_constraint"]
+    family_name = route_packet("erdos_1041")["route"]["result_families"][0]["declarations"][0]
+    selected = query_corpus.problem_query_facets(
+        f"Inspect assumptions of {family_name} for Erdos 1041", constraint
+    )[0]
+    assert selected["status"] == "declaration_selected"
+    assert selected["commands"] == [f"python3 scripts/query_corpus.py --declaration {family_name}"]
+    unknown = query_corpus.problem_query_facets(
+        "Inspect assumptions of NotARealDeclaration for Erdos 1041", constraint
+    )[0]
+    assert unknown["status"] == "needs_declaration"
+
     problem_route_cell = problem_cells[0]
     assert problem_route_cell["content"]["route"]["id"] == "erdos_1041"
     assert problem_route_cell["content"]["route"]["erdos_number"] == 1041

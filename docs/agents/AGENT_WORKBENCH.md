@@ -11,32 +11,26 @@ contract in the [agent guide](AGENT_GUIDE.md). Reader introductions belong in th
 For clone setup and a copyable task prompt, see the
 [agent quickstart](README.md#start-with-current-public-work).
 
-## Design thesis
+## What the workbench records
 
-Every mechanized proof-search policy we examined ends the same way: an
-exact core it can fully justify (a kernel receipt, an algebra of
-supports and cuts, a leakage-controlled evaluator) wrapped around a
-policy layer it cannot (which candidate to probe next, which bridge
-shape to invent, which representation to abandon). Systems ordinarily
-fill that second slot with heuristics and then defend the heuristics.
-We leave the slot open on purpose. The policy slot is occupied by an
-agent with actual intelligence, and everything around it is built so
-that the agent's work is exact where it must be and auditable
-everywhere else.
+The researcher chooses which conjecture to test, which representation to try
+and when to change direction. The workbench records the submitted inputs,
+Lean probes and results so that someone else can check the work. A successful
+probe establishes its Lean statement; it does not show that the research
+choice was useful or that a reader understands the argument.
 
-Three consequences fall out of this inversion:
+The tools can be composed directly or through helpers such as
+[`continue_research.py`](../../scripts/continue_research.py), which combines
+corpus lookup with a recorded session. Within the proof workbench, a formal
+claim must cite a kernel-accepted probe before the notary will record it.
+The receipt preserves that connection; it does not certify every observation
+or conjecture in the session.
 
-1. **Instruments, not pipelines.** Each tool here answers one question
-   exactly and refuses to answer neighbouring questions it cannot
-   ground. Nothing chains them automatically; the agent composes them.
-2. **The unit of progress is the receipted session.** A session of
-   reasoning — observations, conjectures with declared falsifiers,
-   kernel probes, revisions, claims — is recorded as a durable artifact
-   that a third party can replay end to end. The repository accumulates
-   not just theorems but the audited cognition that produced them.
-3. **Authority is structural, not rhetorical.** An agent cannot author
-   a kernel verdict. Claims must cite kernel-accepted probe receipts,
-   and the notary refuses the record otherwise.
+Recorded sessions are optional for ordinary contributions. An issue or pull
+request can supply an ordinary proof, a correction, exposition or an exact
+finite computation, with its evidence and limits stated under the
+[methodology](../METHODOLOGY.md). The [systems paper](../../paper/systems/cold-clone-to-proof-receipt.tex)
+explains the workbench's scope and its relation to other Lean tools.
 
 ## Eight-problem cold-start route
 

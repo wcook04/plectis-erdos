@@ -148,12 +148,21 @@ and [Gowers's examples-first principle](https://gowers.wordpress.com/2007/10/19/
   gives the reader a useful mental model. Identify where the analogy stops.
 - Supply the proof's map and explain the hard transition; choose detail and notation
   for this reader. Delete notation that does no repeated work.
+- Motivate a decisive construction by the difficulty it fixes. A tempting failed
+  approach can help, provided its failure is shown. Label a reconstructed route
+  as an explanation; do not invent the history of how the result was found.
 - Read from a cold start, resolve unexplained jumps, proofread, and compile the final
   document. Preserve an effective authorial voice instead of enforcing a formula.
 
 These are practical adaptations, not endorsements or a claim that a passing
 check establishes good mathematical writing. Credit supplied examples, directions,
 proof ideas and corrections at their actual points of use.
+
+The motivation test also draws on Grant Sanderson's
+[essay on explanations](https://terrytao.wordpress.com/2026/09/18/if-math-is-more-than-proof-we-need-to-better-celebrate-the-rest-of-it/).
+An expository contribution can clarify a known theorem. Judge it for its named
+audience; distinguish actual reader feedback from an agent's assessment of
+the prose. Fluency alone does not establish understanding.
 
 ## Prose pass
 

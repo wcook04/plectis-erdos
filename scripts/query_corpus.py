@@ -8541,6 +8541,67 @@ def best_reading_route_result(query: str) -> dict[str, Any] | None:
     }
 
 
+def problem_query_facets(query: str, constraint: dict[str, Any]) -> list[dict[str, Any]]:
+    """Keep a named problem's requested reading task visible after routing.
+
+    These are source-bound next steps, not answers inferred from a programme's
+    highest-ranked theorem. An ambiguous assumptions request needs a declaration.
+    """
+    text = query.casefold()
+    tokens = set(re.findall(r"[\w]+", text))
+    number = constraint["erdos_number"]
+    route_id = constraint["route_id"]
+    facets: list[dict[str, Any]] = []
+    if "prior art" in text or tokens & {"citation", "citations", "attribution", "references"}:
+        facets.append({
+            "id": "source_attribution",
+            "status": "source_lookup_required",
+            "instruction": "Inspect the credited sources and their exact local uses for this problem.",
+            "commands": [
+                f"python3 scripts/build_source_attributions.py --query {number}",
+                "python3 scripts/query_corpus.py --route trace_prior_art",
+            ],
+        })
+    if tokens & {"assumption", "assumptions", "hypothesis", "hypotheses", "premise", "premises", "declaration", "declarations"}:
+        route = route_packet(route_id)["route"]
+        # Only accept a named handle from this problem's own result families.
+        names = list(dict.fromkeys(
+            name for family in route["result_families"] for name in family["declarations"]
+        ))
+        named = [
+            name for name in names
+            if re.search(r"(?<![\w.'])" + re.escape(name) + r"(?![\w.'])", query)
+        ]
+        commands = [
+            f"python3 scripts/query_corpus.py --declaration {name}" for name in named
+        ] or [
+            f"python3 scripts/query_corpus.py --route {route_id} --format json",
+            "python3 scripts/query_corpus.py --declaration <Lean_name>",
+        ]
+        facets.append({
+            "id": "formal_statement",
+            "status": "declaration_selected" if named else "needs_declaration",
+            "instruction": (
+                "Read the named declaration's complete statement and source."
+                if named else
+                "Choose the intended declaration from this problem's result families, then inspect its complete statement and source; programme summaries do not list every hypothesis."
+            ),
+            "commands": commands,
+        })
+    if tokens & {"hint", "hints"}:
+        facets.append({
+            "id": "guided_reading",
+            "status": "reader_depth_requested",
+            "instruction": "Use the named paper; give one hint and wait when requested.",
+            "read": [
+                "skills/explain-public-system/SKILL.md#help-a-reader-work-through-an-argument",
+                "docs/READING_GUIDE.md#work-through-an-argument",
+            ],
+            "commands": [f"python3 scripts/query_corpus.py --route {route_id} --format json"],
+        })
+    return facets
+
+
 def semantic_slice_packet(query: str, limit: int) -> dict[str, Any]:
     """Compile a question into a bounded, witness-carrying semantic subgraph."""
     replay_packet = finite_computation_replay_packet(query)
@@ -8963,6 +9024,9 @@ def semantic_slice_packet(query: str, limit: int) -> dict[str, Any]:
         synthesis["reader_answer"] = problem_reader_answer(
             interpretation["problem_constraint"]["route_id"]
         )
+        facets = problem_query_facets(query, interpretation["problem_constraint"])
+        if facets:
+            synthesis["requested_facets"] = facets
     if goal_support["availability"] == "available":
         synthesis = {
             **synthesis,
@@ -9335,7 +9399,7 @@ def problem_reader_answer(route_id: str) -> dict[str, Any]:
         ),
         "authority_boundary": (
             "Registry evidence and source handles; this query does not run Lean. "
-            "Conditional premises remain premises, and the problem remains open."
+            "Conditional premises remain premises; consult the recorded target status."
         ),
     }
 
@@ -11374,8 +11438,14 @@ def render_card(packet: dict[str, Any]) -> str:
             for command in _route_memory_resume_commands(route_memory):
                 line += f" | resume={command}"
             rows.append(line)
+        facets = packet["operator_synthesis"].get("requested_facets", [])
+        for facet in facets:
+            rows.append(f"requested facet | {facet['id']} | {facet['status']}")
+            rows.append(facet["instruction"])
+            rows.extend(f"read | {path}" for path in facet.get("read", []))
+            rows.extend(f"next | {command}" for command in facet["commands"])
         reader_answer = packet["operator_synthesis"].get("reader_answer")
-        if reader_answer:
+        if reader_answer and not facets:
             rows.extend(render_problem_reader_answer(reader_answer))
         rows.extend(
             f"semantic_node | {row['node_id']} | authored_semantic_followup"

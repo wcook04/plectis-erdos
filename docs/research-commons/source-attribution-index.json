@@ -121802,7 +121802,7 @@
     "public_source_credit": "Names and direct citations are retained for published literature, software and public contributions. Source identity, exact local use, and mathematical correspondence are separate."
   },
   "source_registry": "docs/research-commons/source-attributions.json",
-  "source_registry_sha256": "sha256:498b8e5502b2c1dfadc0c14f0f1a690ac2601923a633e52217f135ea1fce22e1",
+  "source_registry_sha256": "sha256:9e85d1cf3f46dc7ab806696352b7b6aa9575f2e2534540523f22eab5d0ca7452",
   "sources": [
     {
       "artifact_coordinates": [
@@ -122951,7 +122951,7 @@
           "line_end": 393,
           "line_start": 389,
           "path": "docs/PRIOR_ART.md",
-          "sha256": "sha256:cdb0b2cd3cf95b91892571adce96db040f389de26dc479368eb4eb10459fbb89"
+          "sha256": "sha256:da3391cb4b3ebd0308569046774412c88593a2e444ddf32a67aac3af8b64fd33"
         },
         {
           "excerpt_sha256": "sha256:2869c3db2da5857a4c9fc56be272d52f5a7b1242f3633bd8ed0b01f0da016724",
@@ -123198,7 +123198,7 @@
           "line_end": 82,
           "line_start": 78,
           "path": "docs/PRIOR_ART.md",
-          "sha256": "sha256:cdb0b2cd3cf95b91892571adce96db040f389de26dc479368eb4eb10459fbb89"
+          "sha256": "sha256:da3391cb4b3ebd0308569046774412c88593a2e444ddf32a67aac3af8b64fd33"
         },
         {
           "excerpt_sha256": "sha256:e84a307e279c842107b65ddf94e864ecb813914844df302a5f2c28509b7ee1db",
@@ -123272,7 +123272,7 @@
           "line_end": 282,
           "line_start": 272,
           "path": "docs/PRIOR_ART.md",
-          "sha256": "sha256:cdb0b2cd3cf95b91892571adce96db040f389de26dc479368eb4eb10459fbb89"
+          "sha256": "sha256:da3391cb4b3ebd0308569046774412c88593a2e444ddf32a67aac3af8b64fd33"
         },
         {
           "excerpt_sha256": "sha256:6126bfd0669f6bbbaf09f65bc95f02fb185baddaac42274887a3cba79bdb3118",
@@ -123489,7 +123489,7 @@
           "line_end": 290,
           "line_start": 286,
           "path": "docs/PRIOR_ART.md",
-          "sha256": "sha256:cdb0b2cd3cf95b91892571adce96db040f389de26dc479368eb4eb10459fbb89"
+          "sha256": "sha256:da3391cb4b3ebd0308569046774412c88593a2e444ddf32a67aac3af8b64fd33"
         },
         {
           "excerpt_sha256": "sha256:1fdbe78f7474100bd312810adac9f1ef95fe6de93652e252348899dffa4e15c6",
@@ -123686,7 +123686,7 @@
           "line_end": 160,
           "line_start": 156,
           "path": "docs/PRIOR_ART.md",
-          "sha256": "sha256:cdb0b2cd3cf95b91892571adce96db040f389de26dc479368eb4eb10459fbb89"
+          "sha256": "sha256:da3391cb4b3ebd0308569046774412c88593a2e444ddf32a67aac3af8b64fd33"
         },
         {
           "excerpt_sha256": "sha256:afa5eea7ce02b26464e36300842105a356651d8f78c7fafa103c54075c0b9979",
@@ -123914,7 +123914,7 @@
           "line_end": 346,
           "line_start": 330,
           "path": "docs/PRIOR_ART.md",
-          "sha256": "sha256:cdb0b2cd3cf95b91892571adce96db040f389de26dc479368eb4eb10459fbb89"
+          "sha256": "sha256:da3391cb4b3ebd0308569046774412c88593a2e444ddf32a67aac3af8b64fd33"
         }
       ],
       "artifact_links": [
@@ -123974,7 +123974,7 @@
           "line_end": 14,
           "line_start": 13,
           "path": "docs/PRIOR_ART.md",
-          "sha256": "sha256:cdb0b2cd3cf95b91892571adce96db040f389de26dc479368eb4eb10459fbb89"
+          "sha256": "sha256:da3391cb4b3ebd0308569046774412c88593a2e444ddf32a67aac3af8b64fd33"
         },
         {
           "excerpt_sha256": "sha256:f4a1bd463f398d1bcf67d88f273df4a9fc0dc2d42efadf85db1519f432cadfb5",
@@ -125387,10 +125387,10 @@
         },
         {
           "excerpt_sha256": "sha256:20ed248984e0372fbfcc616d3d61f895f70cb37bf9a5e14498b7618a6f5f137b",
-          "line_end": 188,
-          "line_start": 174,
+          "line_end": 182,
+          "line_start": 168,
           "path": "CITATION.cff",
-          "sha256": "sha256:9eebab6ffb620b6d5c9d9e7b106316a08ef2a00a8f3c6befc482a32eca6b669e"
+          "sha256": "sha256:0d538f9b7faca90b61eefeea93937edc49afb427165ef82f0fff549a82410466"
         }
       ],
       "artifact_links": [
@@ -125402,8 +125402,8 @@
         },
         {
           "excerpt_sha256": "sha256:20ed248984e0372fbfcc616d3d61f895f70cb37bf9a5e14498b7618a6f5f137b",
-          "line_end": 188,
-          "line_start": 174,
+          "line_end": 182,
+          "line_start": 168,
           "path": "CITATION.cff"
         }
       ],
@@ -125477,10 +125477,10 @@
         },
         {
           "excerpt_sha256": "sha256:b732cf902522394d45614cbb39c73530e2cde6315917ace5f34708b2e268bdb8",
-          "line_end": 193,
-          "line_start": 189,
+          "line_end": 187,
+          "line_start": 183,
           "path": "CITATION.cff",
-          "sha256": "sha256:9eebab6ffb620b6d5c9d9e7b106316a08ef2a00a8f3c6befc482a32eca6b669e"
+          "sha256": "sha256:0d538f9b7faca90b61eefeea93937edc49afb427165ef82f0fff549a82410466"
         }
       ],
       "artifact_links": [
@@ -125498,8 +125498,8 @@
         },
         {
           "excerpt_sha256": "sha256:b732cf902522394d45614cbb39c73530e2cde6315917ace5f34708b2e268bdb8",
-          "line_end": 193,
-          "line_start": 189,
+          "line_end": 187,
+          "line_start": 183,
           "path": "CITATION.cff"
         }
       ],
@@ -142996,7 +142996,7 @@
           "line_end": 166,
           "line_start": 166,
           "path": "docs/PRIOR_ART.md",
-          "sha256": "sha256:cdb0b2cd3cf95b91892571adce96db040f389de26dc479368eb4eb10459fbb89"
+          "sha256": "sha256:da3391cb4b3ebd0308569046774412c88593a2e444ddf32a67aac3af8b64fd33"
         },
         {
           "excerpt_sha256": "sha256:48a3dc935a9efd4f525b4196ade8751cfd054cab2285d0b3acf1c074f18578f9",

@@ -3,14 +3,14 @@
     "decision_boundary": "Lean checks formal proofs; people review public meaning; release software preserves only relationships that people explicitly recorded.",
     "five_parts": [
       "Lean source",
-      "human-reviewed public claims",
+      "self-assessed and agent-checked public claims",
       "authored reader documents",
       "generated navigation views",
       "release checks and GitHub continuous integration"
     ],
     "human_start": "docs/ARCHITECTURE.md",
     "printable_start": "paper/systems/claim-faithful-publication-systems-paper.pdf",
-    "purpose": "This public repository separates five parts: Lean source, a human-reviewed record of selected public claims, authored reader documents, generated navigation views, and a release workflow that checks the relationships people explicitly recorded."
+    "purpose": "This public repository separates five parts: Lean source, a self-assessed and agent-checked record of selected public claims, authored reader documents, generated navigation views, and a release workflow that checks the relationships people explicitly recorded."
   },
   "artifact_owners": {
     "entry_packet": "docs/publication_entry_packet.json",
@@ -111,7 +111,7 @@
     "docs/methodology.json": "sha256:cef19d9092c49ba9c9b269a4b04c2c6030164bba6b80561117577713f60c3750",
     "docs/problems.json": "sha256:725d809c0efdda29dac4620c5ec9be41083a620084837c6cf52f32779c91dce8",
     "docs/publication_contract.json": "sha256:dc9571b453e920869fb0e59f0bb3f00ec5519e236dbb6284ab0f363249d2301b",
-    "docs/publication_entry_source.json": "sha256:a350c6ba5ba1a9828e916301f3148bc9a81d7ca14b175db0eca8c5426b8e5e5d",
+    "docs/publication_entry_source.json": "sha256:42d7d0097c961fb3fd06a061a5c226f3b91761dfd3e96eaab05c198a65c1470e",
     "docs/publication_evidence.json": "sha256:4e350698eed8b4ee10fc629cfb7540ed71bc6ccf4020ee2ede8635f4aae809b3",
     "paper/systems/claim-faithful-publication-systems-paper.pdf": "sha256:e9462338a644aafc585640f27bacf5df2c23d0c14c14f75aea7d09cba7903ebc",
     "paper/systems/claim-faithful-publication-systems-paper.tex": "sha256:3af1deaaf478d291f0920667479322c783d9b819871495074c7c5b0a81a59f96",
@@ -124,8 +124,8 @@
   },
   "five_sentence_summary": [
     "Lean checks formal statements and proofs; it does not read the README or papers that explain them.",
-    "A mathematician reviews what selected formal results mean, how the public pages may describe them, and what remains open.",
-    "The reviewed result record is docs/claims.json, while docs/publication_contract.json separately inventories the papers and docs/publication_evidence.json separately retains historical checker evidence.",
+    "Will Cook takes responsibility for public wording and source correspondence; independent human mathematical review has not been recorded.",
+    "The selected result record is docs/claims.json, while docs/publication_contract.json separately inventories the papers and docs/publication_evidence.json separately retains historical checker evidence.",
     "Generated views reorganise those records, and the release program plus GitHub workflow stop publication when a written relationship fails.",
     "A passing release means the recorded comparisons succeeded; it does not mean software understood every public statement or proved that the list is complete."
   ],
@@ -190,7 +190,7 @@
         "Every repository file is governed by one universal owner."
       ],
       "id": "public_release_architecture_is_explicit",
-      "statement": "The repository names separate owners for formal proof, reviewed public meaning, paper identity, generated navigation, historical evidence, and release checks."
+      "statement": "The repository names separate owners for formal proof, public claim scope, paper identity, generated navigation, historical evidence, and release checks."
     },
     {
       "evidence_refs": [
@@ -558,7 +558,7 @@
     "revision_embedding_boundary": "A tracked file cannot contain its own Git commit id without self-reference. Content freshness is enforced by the owner hashes below; agents query the checkout revision at runtime."
   },
   "schema": "erdos249257-publication-entry-packet/1",
-  "thesis": "This public repository separates five parts: Lean source, a human-reviewed record of selected public claims, authored reader documents, generated navigation views, and a release workflow that checks the relationships people explicitly recorded.",
+  "thesis": "This public repository separates five parts: Lean source, a self-assessed and agent-checked record of selected public claims, authored reader documents, generated navigation views, and a release workflow that checks the relationships people explicitly recorded.",
   "validation_commands": [
     "python3 scripts/build_publication_entry_packet.py --check",
     "python3 scripts/check_publication_contract.py",

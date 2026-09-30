@@ -2,7 +2,7 @@
   "schema": "erdos249257-publication-entry-source/1",
   "packet_path": "docs/publication_entry_packet.json",
   "packet_max_bytes": 32768,
-  "thesis": "This public repository separates five parts: Lean source, a human-reviewed record of selected public claims, authored reader documents, generated navigation views, and a release workflow that checks the relationships people explicitly recorded.",
+  "thesis": "This public repository separates five parts: Lean source, a self-assessed and agent-checked record of selected public claims, authored reader documents, generated navigation views, and a release workflow that checks the relationships people explicitly recorded.",
   "research_frontier_route": {
     "problem_id": "erdos_1041",
     "query": "python3 scripts/query_corpus.py --route erdos_1041",
@@ -16,15 +16,15 @@
   },
   "five_sentence_summary": [
     "Lean checks formal statements and proofs; it does not read the README or papers that explain them.",
-    "A mathematician reviews what selected formal results mean, how the public pages may describe them, and what remains open.",
-    "The reviewed result record is docs/claims.json, while docs/publication_contract.json separately inventories the papers and docs/publication_evidence.json separately retains historical checker evidence.",
+    "Will Cook takes responsibility for public wording and source correspondence; independent human mathematical review has not been recorded.",
+    "The selected result record is docs/claims.json, while docs/publication_contract.json separately inventories the papers and docs/publication_evidence.json separately retains historical checker evidence.",
     "Generated views reorganise those records, and the release program plus GitHub workflow stop publication when a written relationship fails.",
     "A passing release means the recorded comparisons succeeded; it does not mean software understood every public statement or proved that the list is complete."
   ],
   "publication_claims": [
     {
       "id": "public_release_architecture_is_explicit",
-      "statement": "The repository names separate owners for formal proof, reviewed public meaning, paper identity, generated navigation, historical evidence, and release checks.",
+      "statement": "The repository names separate owners for formal proof, public claim scope, paper identity, generated navigation, historical evidence, and release checks.",
       "evidence_refs": [
         "docs/claims.json::release",
         "docs/publication_contract.json::artifacts",

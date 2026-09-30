@@ -9,8 +9,9 @@ This script verifies that every other public surface agrees with it:
   1. claims.json is well formed, every claim status is in the taxonomy, typed
      remaining-open propositions resolve, and the machine-readable paper graph
      resolves to real public files and claim ids.
-  2. Release identity: lakefile.toml and CITATION.cff state the last tagged
-     release, while the main exposition pin agrees with the exact committed
+  2. Release identity: lakefile.toml states the last tagged release; current
+     CITATION.cff omits historical version/date fields. The main exposition
+     pin agrees with the exact committed
      formal-source checkpoint named in the registry.
   3. Every claimed Lean declaration exists in the stated module at the
      stated line.
@@ -2127,10 +2128,9 @@ def main(argv: list[str] | None = None) -> int:
     cff = read(ROOT / "CITATION.cff")
     check(re.search(r"^type: software\s*$", cff, re.M) is not None,
           "CITATION.cff: top-level type must be exactly 'software' (CFF 1.2.0)")
-    check(re.search(rf'^version: "?{re.escape(version)}"?\s*$', cff, re.M) is not None,
-          f"CITATION.cff: version does not state {version}")
-    check(re.search(rf"""^date-released: ["']?{re.escape(release['date'])}["']?\s*$""", cff, re.M) is not None,
-          f"CITATION.cff: date-released does not state {release['date']}")
+    for key in ("version", "date-released", "identifiers"):
+        check(re.search(rf"^{key}:", cff, re.M) is None,
+              f"CITATION.cff: current metadata must omit top-level {key}")
     check("Erdős" in cff, "CITATION.cff: title/keywords should use Unicode 'Erdős'")
 
     toolchain = read(ROOT / "lean-toolchain").strip()

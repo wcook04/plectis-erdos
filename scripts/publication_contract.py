@@ -1009,7 +1009,7 @@ def build_publication_entry_packet(reader: RepositoryReader) -> dict[str, Any]:
             "purpose": source["thesis"],
             "five_parts": [
                 "Lean source",
-                "human-reviewed public claims",
+                "self-assessed and agent-checked public claims",
                 "authored reader documents",
                 "generated navigation views",
                 "release checks and GitHub continuous integration",

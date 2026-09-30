@@ -215,7 +215,7 @@ def rank_lanes(catalog: dict[str, Any], task: str) -> list[dict[str, Any]]:
     normalized_task = normalize(task)
     task_tokens = set(normalized_task.split())
     proof_intent = bool(
-        task_tokens & {"attack", "counterexample", "prove", "proof", "research", "solve"}
+        task_tokens & {"attack", "counterexample", "prove", "solve"}
     )
     lean_context = bool(task_tokens & {"lean", "theorem"})
     ranked: list[dict[str, Any]] = []
