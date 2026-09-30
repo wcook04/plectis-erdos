@@ -134,6 +134,14 @@ the corpus through `python3 scripts/corpus_substrate.py --write`. Run
 `python3 scripts/refresh_projections.py --preflight` before exact-head release
 admission. Never hand-edit the generated attribution index or register.
 
+The systems paper also binds source bytes in the authored
+`docs/systems_paper_sentences.json` ledger. After changing one of its sources,
+run `python3 scripts/systems_paper_evidence.py`; projection preflight alone
+does not establish that these bindings are current. Review the affected
+sentences and warrants before updating only the relevant source spans and
+digests. Preserve evidence classes, reported execution limits and historical
+identity; a new digest cannot supply new semantic or empirical evidence.
+
 ## Classify before changing
 
 Choose the first matching class:
