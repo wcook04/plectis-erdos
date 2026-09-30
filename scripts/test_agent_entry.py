@@ -41,6 +41,76 @@ ROUTE_CASES = {
     'Prove the Lean theorem while following the contribution guide': ('bounded_research', 'mine-open-problem'),
     'Report theorem status before reading the contribution guidelines': ('mathematical_status', 'explain-public-system'),
     'Package a returned proof using the contribution guide': ('return_research', 'erdos-research-return'),
+    "Check the prior art for the Erdos 1041 theorem": (
+        "source_inspection", "explain-public-system",
+    ),
+    "Check the assumptions of the Erdos 1041 theorem": (
+        "source_inspection", "explain-public-system",
+    ),
+    # Read, inspect, check, repair and return are distinct requests.
+    'Give me one hint for the proof of the Erdos 249 theorem.': (
+        'read_mathematics', 'explain-public-system',
+    ),
+    'I want to prove the Erdos 249 theorem myself; please offer a hint.': (
+        'read_mathematics', 'explain-public-system',
+    ),
+    'Write a clearer explanation of the weighted-support theorem and credit the original ideas': (
+        'public_writing', 'public-mathematical-writing',
+    ),
+    'Check the prior art for a new proposed lemma about Erdos 257': (
+        'source_inspection', 'explain-public-system',
+    ),
+    'Inspect the assumptions behind the Erdos 1041 theorem': (
+        'source_inspection', 'explain-public-system',
+    ),
+    'Correct the README if it overstates a Lean-checked result': (
+        'public_writing', 'public-mathematical-writing',
+    ),
+    # Content overstatement is mathematical writing; generic README repairs
+    # retain the infrastructure lane even when both use 'correct + readme'.
+    'Correct the README wording about an overstated theorem': (
+        'public_writing', 'public-mathematical-writing',
+    ),
+    'Revise the README to remove an overstatement of the checked results': (
+        'public_writing', 'public-mathematical-writing',
+    ),
+    'Correct the README installation links': (
+        'repository_architecture', 'maintain-public-infrastructure',
+    ),
+    'Correct repository documentation before submitting a finished patch': (
+        'repository_architecture', 'maintain-public-infrastructure',
+    ),
+    'Reproduce the #257 weighted theorem using Lean': (
+        'lean_validation', 'lean-concurrent-validation',
+    ),
+    'Verify the proof of Erdos 249': (
+        'reproduce_claim', 'explain-public-system',
+    ),
+    'Verify the Erdos 249 theorem using its recorded source and Lean evidence': (
+        'reproduce_claim', 'explain-public-system',
+    ),
+    'Return a correction to the proof and attribution in the Erdos 257 research packet': (
+        'return_research', 'erdos-research-return',
+    ),
+    'Return my correction to the existing theorem proof': (
+        'return_research', 'erdos-research-return',
+    ),
+    'Repair this Lean proof': (
+        'bounded_research', 'mine-open-problem',
+    ),
+    # Learning requests must not launch autonomous proof search.
+    "Help me understand the weighted Erdős 257 theorem with hints, without giving me the proof.": (
+        "read_mathematics", "explain-public-system",
+    ),
+    "Help me work through this theorem, one hint at a time": (
+        "read_mathematics", "explain-public-system",
+    ),
+    "Explain why this hypothesis is needed in the argument": (
+        "read_mathematics", "explain-public-system",
+    ),
+    "I want to understand the proof of the weighted theorem": (
+        "read_mathematics", "explain-public-system",
+    ),
     # Ordinary requests observed during the public README/AGENTS review.
     "Find the Lean declaration supporting the weighted Erdős 257 theorem": (
         "source_inspection", "explain-public-system",
@@ -82,7 +152,7 @@ ROUTE_CASES = {
         "comparator_replay", "explain-public-system",
     ),
     "How can I verify the #257 weighted theorem independently from the public repository?": (
-        "comparator_replay", "explain-public-system",
+        "reproduce_claim", "explain-public-system",
     ),
     "Check the external verification Comparator replay receipt for one theorem": (
         "comparator_replay", "explain-public-system",

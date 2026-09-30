@@ -15,10 +15,9 @@ Run commands from the repository root. Route the actual request:
 python3 scripts/agent_entry.py --entry "<task in ordinary language>"
 ```
 
-Open the returned skill and smallest relevant source set, then do the work.
-Follow any more specific instructions for files you change.
-`python3 scripts/agent_entry.py --skills` lists the catalog from `skills/registry.json`.
-Open the relevant `skills/<id>/SKILL.md`. Routes locate evidence; they do not prove it.
+Open the returned `skills/<id>/SKILL.md` and smallest source set; follow local instructions.
+`python3 scripts/agent_entry.py --skills` lists `skills/registry.json`.
+Routes locate evidence; they do not prove it.
 
 Entry reports revision and edits. For latest-work tasks, run
 `python3 scripts/agent_entry.py --checkout --check-upstream`. Record the starting
@@ -38,9 +37,11 @@ For corpus-wide questions, use
 a flagship or theorem count does not stand for the corpus. If free text misses
 the question, use `python3 scripts/query_corpus.py --routes` to find a stable route.
 
-Follow returned claim, paper and source handles.
+Follow returned claim, paper and source handles. For learning, respect the
+requested depth: a hint request is not permission to reveal the proof or start
+proof search. [Reading guidance](skills/explain-public-system/SKILL.md#help-a-reader-work-through-an-argument).
 
-Choose the research workflow that fits the request:
+For research:
 
 - **Find what is worth developing:** [explore the corpus](skills/explore-the-corpus/SKILL.md).
   Compare several papers and explain the selected direction.
@@ -64,8 +65,8 @@ provide runnable examples. Preserve inputs, bounds, outputs and a recheck comman
 A finite search establishes only its finite conclusion. [Returned research](research_corpus/README.md)
 preserves dated investigations; check current status before relying on an old return.
 
-If delegating, give subagents bounded questions and disjoint write scopes.
-The integrating agent verifies their evidence and makes the final decisions.
+If delegating, give subagents bounded questions and disjoint write scopes. The integrating
+agent verifies their evidence and makes the final decisions.
 
 ## Work with Lean or reproduce a check
 
@@ -112,7 +113,7 @@ emitted contract. This organises evidence; it does not prove a theorem.
 ## Improve tools, documentation or agent routes
 
 Use [infrastructure maintenance](skills/maintain-public-infrastructure/SKILL.md)
-and the [architecture guide](docs/ARCHITECTURE.md). [Repository tools](scripts/README.md)
+and the [plain-language human guide](docs/ARCHITECTURE.md). [Repository tools](scripts/README.md)
 map tasks to commands. Reproduce a bad route before changing its owner;
 update affected links and checks. The [workbench](docs/agents/AGENT_WORKBENCH.md) holds details.
 Use `python3 scripts/proof_cockpit.py --format card` for a compact evidence view.

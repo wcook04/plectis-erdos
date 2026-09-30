@@ -363,6 +363,52 @@ def test_printed_links_are_checked_exactly_as_rendered() -> None:
     require(bool(foreign), "an unrecognised \\repobase override passed silently")
 
 
+def test_standalone_semantic_word_bodies_keep_their_actual_pin_and_prefix() -> None:
+    commit, literal, fallback = "a" * 40, "b" * 40, "c" * 40
+    for command in ("newcommand", "renewcommand"):
+        note = (
+            "\\" + command + r"{\commit}{" + commit + "}\n"
+            + "\\" + command + r"{\PX}{lean/ErdosProblems}" "\n"
+            + "\\" + command + r"{\repobase}{https://github.com/wcook04/plectis-erdos/blob/\commit}" "\n"
+            + r"\lref{Synthetic/A.lean}{1}{a}" "\n"
+            + r"\newcommand{\lword}[4]{\href{\repobase/ErdosProblems/#1\#L#2}{#4}}" "\n"
+            + r"\lword{Synthetic/B.lean}{2}{b}{body}" "\n"
+            + r"\newcommand{\mword}[4]{\href{https://github.com/wcook04/plectis-erdos/blob/"
+            + literal + r"/#1\#L#2}{#4}}" "\n"
+            + r"\mword{Erdos249257/C.lean}{3}{c}{literal body}"
+        )
+        targets, problems = scanner.rendered_link_targets(note, fallback, None, "WrongDefault")
+        require(not problems, repr(problems))
+        require((commit, "lean/ErdosProblems/Synthetic/A.lean") in targets, "local pin/PX ignored")
+        require((commit, "ErdosProblems/Synthetic/B.lean") in targets, "actual word body prefix ignored")
+        require((literal, "Erdos249257/C.lean") in targets, "literal word-body pin ignored")
+        require(not any(pin == fallback for pin, _path in targets), "standalone body uses inherited pin")
+    foreign = r"\newcommand{\lword}[4]{\href{https://example.org/#1\#L#2}{#4}}\lword{X.lean}{1}{x}{x}"
+    _targets, problems = scanner.rendered_link_targets(foreign, fallback, None, "ErdosProblems")
+    require(bool(problems), "foreign semantic word body passed silently")
+    foreign_base = r"\newcommand{\repobase}{https://example.org/\commit}\lref{X.lean}{1}{x}"
+    _targets, problems = scanner.rendered_link_targets(foreign_base, fallback, None, "ErdosProblems")
+    require(bool(problems), "foreign standalone source base passed silently")
+
+
+def test_standalone_word_body_nonexistent_pin_or_path_is_rejected() -> None:
+    existing, absent = "a" * 40, "b" * 40
+    for pin, path in ((absent, "ErdosProblems/Exists.lean"), (existing, "ErdosProblems/Missing.lean")):
+        note = (r"\newcommand{\lword}[4]{\href{https://github.com/wcook04/plectis-erdos/blob/"
+                + pin + r"/ErdosProblems/#1\#L#2}{#4}}\lword{"
+                + path.removeprefix("ErdosProblems/") + r"}{1}{target}{target}")
+        def fake_text(source):
+            return r"\newcommand{\PX}{Erdos249257}" if source == scanner.PREAMBLE else note
+        def fake_present(keys):
+            return {key for key in keys if key == (existing, "ErdosProblems/Exists.lean")}
+        with patch.object(scanner, "ledger_sources", return_value=["paper/synthetic.tex"]), \
+                patch.object(scanner, "safe_worktree_text", side_effect=fake_text), \
+                patch.object(scanner, "objects_present", side_effect=fake_present):
+            failures, checked = scanner.rendered_link_failures(existing, None)
+        require(checked >= 1 and bool(failures), "missing body pin/path passed")
+        require(any("404" in row and pin[:12] in row for row in failures), repr(failures))
+
+
 def test_printed_path_absent_at_pin_fails_with_relocation_hint() -> None:
     commit = "a" * 40
     note = r"\renewcommand{\commit}{" + commit + r"}\lword{Erdos243/Tail.lean}{3}{tail}{the tail}"
@@ -449,9 +495,9 @@ def test_late_pin_links_are_checked_at_their_own_pin() -> None:
 def test_margin_marks_reach_their_declarations_only_for_marked_results() -> None:
     evidence = {"papers": [
         {"paper_id": "note-a", "results": [
-            {"lean": {"mark": "lean", "declarations": [
+            {"label": "visible", "lean": {"mark": "lean", "declarations": [
                 {"name": "Erdos249257.Outer.inner_lemma", "path": "lean/Erdos249257/Mod.lean"}]}},
-            {"lean": {"mark": None, "declarations": [
+            {"label": "unmarked", "lean": {"mark": None, "declarations": [
                 {"name": "Erdos249257.unmarked", "path": "lean/Erdos249257/Mod.lean"}]}},
         ]},
         {"paper_id": "note-b", "results": [
@@ -459,12 +505,149 @@ def test_margin_marks_reach_their_declarations_only_for_marked_results() -> None
                 {"name": "Erdos249257.other", "path": "lean/Erdos249257/Mod.lean"}]}},
         ]},
     ]}
-    keys = scanner.margin_mark_declaration_keys("paper/x/note-a.tex", evidence)
+    note = r"\input{evidence/note-a}\label{visible}\label{unmarked}"
+    with patch.object(scanner, "safe_worktree_text", return_value=r"\DeclareResultEvidence{visible}{Lean}{proof}{comparison}"):
+        keys = scanner.margin_mark_declaration_keys(
+            "paper/x/note-a.tex", evidence, note_text=note, native_validated=True
+        )
     relative = scanner.library_relative("Erdos249257/Mod.lean")
     require((relative, "Outer.inner_lemma") in keys and (relative, "inner_lemma") in keys,
             f"a marked declaration was not reached under its declared name: {sorted(keys)}")
     require((relative, "unmarked") not in keys, "a result without a mark reached its declaration")
     require((relative, "other") not in keys, "another paper's mark counted for this note")
+
+
+def test_visible_registered_companion_reachability() -> None:
+    """A route must be invoked visibly, registered, and local to this problem."""
+    contract = {"artifacts": [
+        {"artifact_class": "mathematical_companion", "source_path": "paper/x/record.tex",
+         "rendered_path": "paper/x/record.pdf"},
+        {"artifact_class": "mathematical_companion", "source_path": "paper/y/other.tex",
+         "rendered_path": "paper/y/other.pdf"},
+    ]}
+    helper = r"\newcommand{\longrecord}[2]{\href{record.pdf\##1}{#2}}"
+    with patch.object(scanner, "safe_worktree_text", return_value=json.dumps(contract)):
+        source = "paper/x/note.tex"
+        require(scanner.reachable_companion_sources(source, helper+r"\longrecord{guide}{proof}")
+                == ["paper/x/record.tex"], "invoked local record helper was not followed")
+        require(scanner.reachable_companion_sources(source, r"\papersectionlink{record.pdf}{guide}{proof}")
+                == ["paper/x/record.tex"], "shared section helper was not followed")
+        for text in ["record.pdf", helper,
+                     r"\newcommand{\optional}[1][default]{\href{record.pdf}{#1}}",
+                     r"\def\unused#1{\href{record.pdf}{#1}}",
+                     helper+r"\iffalse\longrecord{guide}{proof}\fi",
+                     helper+"\n% \\longrecord{guide}{proof}\n",
+                     r"\href{unregistered.pdf}{proof}",
+                     r"\href{../y/other.pdf}{proof}"]:
+            require(not scanner.reachable_companion_sources(source, text),
+                    f"unlinked, unused, hidden or unrelated record counted: {text}")
+
+
+def test_reached_authored_coordinates_use_the_companion_pin() -> None:
+    short_pin, record_pin = "a"*40, "b"*40
+    note = r"\href{record.pdf}{proof}"
+    record = (r"\renewcommand{\commit}{"+record_pin+r"}"+
+              r"\lword{Synthetic/Headline.lean}{1}{headline}{proof}")
+    key = ("ErdosProblems/Synthetic/Headline.lean", "headline")
+    with patch.object(scanner, "reachable_companion_sources", return_value=["paper/x/record.tex"]), \
+         patch.object(scanner, "safe_worktree_text", return_value=record), \
+         patch.object(scanner, "snapshot_lines", return_value=["theorem headline : True := by trivial"]) as snapshots:
+        keys, failures = scanner.reachable_note_declaration_keys(
+            "paper/x/note.tex", note, {}, short_pin, native_validated=False)
+        require(key in keys and not failures, "valid companion coordinate was not reached")
+        require(snapshots.call_args.args[0] == record_pin, "companion inherited the short-paper pin")
+    with patch.object(scanner, "reachable_companion_sources", return_value=["paper/x/record.tex"]), \
+         patch.object(scanner, "safe_worktree_text", return_value=record), \
+         patch.object(scanner, "snapshot_lines", return_value=["theorem unrelated : True := by trivial"]):
+        keys, failures = scanner.reachable_note_declaration_keys(
+            "paper/x/note.tex", note, {}, short_pin, native_validated=False)
+        require(key not in keys and failures, "invalid companion coordinate conferred coverage")
+
+
+def test_generated_reach_requires_actual_labels_and_native_currency() -> None:
+    evidence = {"papers": [{"paper_id": "note", "results": [
+        {"label": "result", "lean": {"declarations": [
+            {"name": "ErdosProblems.Synthetic.support", "path": "lean/ErdosProblems/Synthetic.lean"}]}}
+    ]}]}
+    note = r"\input{evidence/note}\label{result}"
+    generated = r"\DeclareResultEvidence{result}{Lean}{proof}{comparison}"
+    key = ("ErdosProblems/Synthetic.lean", "support")
+    with patch.object(scanner, "safe_worktree_text", return_value=generated):
+        def keys(text: str, valid: bool):
+            return scanner.margin_mark_declaration_keys(
+                "paper/x/note.tex", evidence, note_text=text, native_validated=valid)
+        require(key in keys(note, True), "actual declared native label required an obsolete mark flag")
+        require(not keys(note, False), "stale or incomplete native evidence counted")
+        require(not keys(r"\label{result}", True), "unloaded generated evidence counted")
+        require(not keys(r"\input{evidence/note}\iffalse\label{result}\fi", True),
+                "unrendered result label counted")
+    with patch.object(scanner, "safe_worktree_text", return_value=r"\DeclareResultEvidence{other}"):
+        require(not scanner.margin_mark_declaration_keys(
+            "paper/x/note.tex", evidence, note_text=note, native_validated=True),
+            "an undeclared result acquired support from JSON alone")
+    for generated in [r"\DeclareResultEvidence{result}{}{proof}{}",
+                      r"\DeclareResultEvidence{result}{Lean}{}{}",
+                      r"\iffalse\DeclareResultEvidence{result}{Lean}{proof}{}\fi"]:
+        with patch.object(scanner, "safe_worktree_text", return_value=generated):
+            require(not scanner.margin_mark_declaration_keys(
+                "paper/x/note.tex", evidence, note_text=note, native_validated=True),
+                "an empty or hidden generated marker conferred coverage")
+    import check_lean_paper_propagation as propagation
+    with patch.object(propagation, "read_json", return_value={}), \
+         patch.object(propagation, "LeanSources", return_value=object()), \
+         patch.object(propagation, "evaluate") as evaluate:
+        evaluate.return_value.failed.return_value = True
+        require(not scanner.native_evidence_valid(), "a failed native currency gate was accepted")
+
+
+def test_native_currency_rejects_stale_map_and_sidecar() -> None:
+    """A passing propagation ledger cannot bless stale generated evidence."""
+    import check_lean_paper_propagation as propagation
+    import paper_evidence as owner
+    from test_paper_evidence import Fixture, commit_all, write
+
+    with tempfile.TemporaryDirectory(prefix="problem-note-evidence-currency-") as raw:
+        fixture = Fixture(Path(raw))
+        fixture.materialise()
+        problems = owner.Problems()
+        evidence = owner.resolve(fixture.root, owner.Repo(fixture.corpus), None, None,
+                                 problems, require_relations=False)
+        require(not problems.items, f"invalid native evidence fixture: {problems.items}")
+        for rel, text in owner.outputs(fixture.root, evidence, "d"*40).items():
+            write(fixture.root, rel, text)
+        # Records do not contain their own pin: commit them first, then bind
+        # the generated reader links to that real immutable snapshot.
+        record_pin = commit_all(fixture.root, "evidence records")
+        config_path = fixture.root / owner.CONFIG
+        config = json.loads(config_path.read_text())
+        config["record_commit"] = record_pin
+        config_path.write_text(json.dumps(config), encoding="utf-8")
+        for rel, text in owner.outputs(fixture.root, evidence, record_pin).items():
+            write(fixture.root, rel, text)
+
+        with patch.object(scanner, "ROOT", fixture.root), \
+             patch.object(propagation, "read_json", return_value={}), \
+             patch.object(propagation, "LeanSources", return_value=object()), \
+             patch.object(propagation, "evaluate") as evaluate:
+            evaluate.return_value.failed.return_value = False
+            require(scanner.native_evidence_valid(), "current native evidence did not pass without PDFs")
+
+            map_path = fixture.root / owner.EVIDENCE_MAP
+            current_map = map_path.read_text(encoding="utf-8")
+            stale = json.loads(current_map)
+            stale["papers"][0]["results"][0]["lean"]["declarations"][0]["name"] = "Syn.forged"
+            map_path.write_text(json.dumps(stale, indent=1)+"\n", encoding="utf-8")
+            require(not scanner.native_evidence_valid(),
+                    "a forged declaration for a real declared label passed a current ledger")
+            map_path.write_text(current_map, encoding="utf-8")
+
+            sidecar = fixture.root / owner.SIDECAR_DIR / (evidence["papers"][0]["paper_id"]+".tex")
+            current_sidecar = sidecar.read_text(encoding="utf-8")
+            sidecar.write_text(current_sidecar.replace("{Lean}", "{Lean-stale}", 1), encoding="utf-8")
+            require(not scanner.native_evidence_valid(),
+                    "a stale declared margin passed a current ledger and evidence map")
+            sidecar.write_text(current_sidecar, encoding="utf-8")
+            require(scanner.native_evidence_valid(), "restored generated evidence did not pass")
 
 
 def test_worded_pinned_link_reaches_the_declaration_at_its_line() -> None:
@@ -483,6 +666,8 @@ def test_worded_pinned_link_reaches_the_declaration_at_its_line() -> None:
 
 def main() -> int:
     test_printed_links_are_checked_exactly_as_rendered()
+    test_standalone_semantic_word_bodies_keep_their_actual_pin_and_prefix()
+    test_standalone_word_body_nonexistent_pin_or_path_is_rejected()
     test_printed_path_absent_at_pin_fails_with_relocation_hint()
     test_late_pin_links_are_checked_at_their_own_pin()
     test_explicit_immutable_headline_links_require_exact_source()
@@ -500,6 +685,10 @@ def main() -> int:
     test_git_snapshot_batch_uses_one_clean_bounded_process()
     test_nested_layout_snapshot_falls_back_from_identity_path()
     test_margin_marks_reach_their_declarations_only_for_marked_results()
+    test_visible_registered_companion_reachability()
+    test_reached_authored_coordinates_use_the_companion_pin()
+    test_generated_reach_requires_actual_labels_and_native_currency()
+    test_native_currency_rejects_stale_map_and_sidecar()
     test_worded_pinned_link_reaches_the_declaration_at_its_line()
     print(
         "test_problem_note_sources: comment injection, split heads, module "

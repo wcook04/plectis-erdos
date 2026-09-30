@@ -822,11 +822,12 @@
         {
           "kind": "source_span",
           "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
-          "start_line": 969,
-          "end_line": 973,
+          "start_line": 378,
+          "end_line": 381,
           "must_contain": [
-            "Comparator cannot",
-            "Comparator-checked"
+            "it does not verify whether that statement captures the intended mathematics",
+            "Comparator adds a separately stated challenge",
+            "permitted axioms"
           ]
         }
       ],
@@ -835,6 +836,11 @@
           "kind": "note",
           "ref": "docs/external_verification_packet.json",
           "detail": "The forbidden wording is recorded where the packet defines Comparator's public wording."
+        },
+        {
+          "kind": "note",
+          "ref": "docs/statement_migrations/round13_20260929.json",
+          "detail": "Round-13 editorial integration relocates this distinction to r4.checks2.01–02; the external-verification record retains the exact permitted and forbidden public wording."
         }
       ],
       "triggers": {

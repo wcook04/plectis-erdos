@@ -387,6 +387,15 @@ def main() -> int:
     diagnostic.validate_human_first_contact(summary, human_surfaces)
     checks = 4
 
+    historical_only = human_surfaces.copy()
+    historical_only["README.md"] = historical_only["README.md"].replace(
+        "paper/systems/claim-faithful-publication-systems-paper.pdf",
+        "paper/systems/cold-clone-to-proof-receipt.pdf",
+    )
+    require(historical_only != human_surfaces, "current systems-paper route fixture lost its anchor")
+    assert_human_rejected(summary, historical_only, "historical paper substituted for current systems paper")
+    checks += 1
+
     mutated_command_block = human_surfaces.copy()
     mutated_command_block["README.md"] = mutated_command_block["README.md"].replace(
         "## Read or verify locally",

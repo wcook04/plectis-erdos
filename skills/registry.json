@@ -229,8 +229,8 @@
       "title": "Reproduce a selected theorem with the external Comparator",
       "task_cues": [
         "external verification replay",
-        "reproduce the #257 weighted theorem",
-        "verify the #257 weighted theorem independently"
+        "external replay",
+        "external verification"
       ],
       "task_intents": [
         {
@@ -241,9 +241,7 @@
             "run"
           ],
           "objects": [
-            "comparator",
-            "verification",
-            "weighted"
+            "comparator"
           ]
         }
       ],
@@ -287,6 +285,21 @@
       "boundary": "Verify the recorded claim trail at the reported checkout commit; this does not run Lean, prove a new theorem, or establish novelty.",
       "entry_purposes": [
         "reproduce"
+      ],
+      "task_intents": [
+        {
+          "actions": [
+            "verify",
+            "check"
+          ],
+          "objects": [
+            "proof",
+            "theorem",
+            "claim",
+            "claims",
+            "evidence"
+          ]
+        }
       ]
     },
     {
@@ -301,7 +314,8 @@
         "aixiv edition",
         "arxiv edition",
         "prove2me packet",
-        "prove2me proof packet"
+        "prove2me proof packet",
+        "prior art"
       ],
       "task_intents": [
         {
@@ -319,7 +333,12 @@
             "citations",
             "edition",
             "editions",
-            "attribution"
+            "attribution",
+            "assumptions",
+            "hypotheses",
+            "literature",
+            "references",
+            "art"
           ]
         }
       ],
@@ -335,7 +354,8 @@
         "python3 scripts/build_source_attributions.py --query \"<name-or-problem-or-id>\"",
         "python3 scripts/query_corpus.py --papers --format json"
       ],
-      "boundary": "Choose the source-lookup branch matching the question: declaration, prior art, credit, edition or proof packet. Finding a record is not a new proof, a novelty judgement or a fresh platform check."
+      "boundary": "Choose the source-lookup branch matching the question: declaration, prior art, credit, edition or proof packet. Finding a record is not a new proof, a novelty judgement or a fresh platform check.",
+      "priority": 20
     },
     {
       "id": "external_records",
@@ -374,6 +394,60 @@
         "python3 scripts/query_corpus.py --route palomar_qualification"
       ],
       "boundary": "Choose the route for the requested statement or service. Inspect correspondence, recorded outcomes or repository-local readiness only. Preparation neither submits to a service nor establishes registration, acceptance or human review; any external submission needs explicit authorisation."
+    },
+    {
+      "id": "read_mathematics",
+      "title": "Read an argument or learn with hints",
+      "task_cues": [
+        "give me a hint",
+        "one hint at a time",
+        "with hints",
+        "without giving me the proof",
+        "read actively",
+        "work through this theorem",
+        "hint",
+        "hints"
+      ],
+      "task_intents": [
+        {
+          "actions": [
+            "learn",
+            "understand",
+            "explain"
+          ],
+          "objects": [
+            "proof",
+            "theorem",
+            "argument",
+            "hypothesis",
+            "hypotheses"
+          ]
+        },
+        {
+          "actions": [
+            "give",
+            "offer",
+            "want",
+            "need",
+            "help"
+          ],
+          "objects": [
+            "hint",
+            "hints"
+          ]
+        }
+      ],
+      "skills": [
+        "explain-public-system"
+      ],
+      "read": [
+        "skills/explain-public-system/SKILL.md#help-a-reader-work-through-an-argument",
+        "docs/READING_GUIDE.md#work-through-an-argument"
+      ],
+      "commands": [
+        "python3 scripts/query_corpus.py --ask \"<question>\""
+      ],
+      "boundary": "Use the named paper and supporting evidence. Respect the requested depth; give one hint and wait when asked. Learning an existing argument is not a request to solve an open problem, and an explanation does not demonstrate the reader's understanding."
     },
     {
       "id": "understand_repository",
@@ -646,6 +720,16 @@
             "question",
             "lemma"
           ]
+        },
+        {
+          "actions": [
+            "repair",
+            "fix"
+          ],
+          "objects": [
+            "proof",
+            "proofs"
+          ]
         }
       ]
     },
@@ -698,7 +782,9 @@
         "concurrent validation",
         "build the lean",
         "build my lean",
-        "build modified lean"
+        "build modified lean",
+        "using lean",
+        "with lean"
       ],
       "skills": [
         "lean-concurrent-validation",
@@ -709,13 +795,16 @@
         "docs/agents/AGENT_GUIDE.md#validation"
       ],
       "commands": [
+        "python3 scripts/query_corpus.py --ask \"<theorem or declaration>\"",
         "python3 scripts/lean_fast_build.py --plan --changed-from HEAD"
       ],
-      "boundary": "A validation queue coordinates builds; only the pinned Lean kernel supplies proof authority.",
+      "boundary": "Locate the named declaration and select its exact build target; --changed-from HEAD only plans uncommitted changes. A validation queue coordinates builds; only the pinned Lean kernel supplies proof authority.",
       "task_intents": [
         {
           "actions": [
-            "validate"
+            "validate",
+            "reproduce",
+            "verify"
           ],
           "objects": [
             "lean"
@@ -837,7 +926,10 @@
         "theorem hypothesis",
         "correcting a proof",
         "repair attribution",
-        "evidence wording"
+        "evidence wording",
+        "overstates",
+        "overstated",
+        "overstatement"
       ],
       "skills": [
         "public-mathematical-writing",
@@ -858,7 +950,10 @@
             "proofread",
             "refine",
             "revise",
-            "rewrite"
+            "rewrite",
+            "write",
+            "draft",
+            "correct"
           ],
           "objects": [
             "abstract",
@@ -866,7 +961,13 @@
             "manuscript",
             "manuscripts",
             "paper",
-            "papers"
+            "papers",
+            "readme",
+            "explanation",
+            "explanations",
+            "exposition",
+            "prose",
+            "wording"
           ]
         }
       ],
@@ -946,7 +1047,9 @@
           "objects": [
             "contribution",
             "patch",
-            "receipt"
+            "receipt",
+            "correction",
+            "corrections"
           ]
         },
         {

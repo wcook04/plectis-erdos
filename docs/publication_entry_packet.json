@@ -3,14 +3,14 @@
     "decision_boundary": "Lean checks formal proofs; people review public meaning; release software preserves only relationships that people explicitly recorded.",
     "five_parts": [
       "Lean source",
-      "human-reviewed public claims",
+      "self-assessed and agent-checked public claims",
       "authored reader documents",
       "generated navigation views",
       "release checks and GitHub continuous integration"
     ],
     "human_start": "docs/ARCHITECTURE.md",
     "printable_start": "paper/systems/claim-faithful-publication-systems-paper.pdf",
-    "purpose": "This public repository separates five parts: Lean source, a human-reviewed record of selected public claims, authored reader documents, generated navigation views, and a release workflow that checks the relationships people explicitly recorded."
+    "purpose": "This public repository separates five parts: Lean source, a self-assessed and agent-checked record of selected public claims, authored reader documents, generated navigation views, and a release workflow that checks the relationships people explicitly recorded."
   },
   "artifact_owners": {
     "entry_packet": "docs/publication_entry_packet.json",
@@ -107,14 +107,14 @@
   },
   "authority_posture": "navigation_projection_not_Lean_proof_authority_and_not_historical_evidence_authority",
   "content_hashes": {
-    "docs/claims.json": "sha256:e139025a2c23905ec32f2937ff82c20b1b0bd9388ecdd891d715eb89ca763f5e",
+    "docs/claims.json": "sha256:5ba69f6d6a562a7b6e9640ba795c8a68e8bef8d974277adbf81895ec17e71553",
     "docs/methodology.json": "sha256:cef19d9092c49ba9c9b269a4b04c2c6030164bba6b80561117577713f60c3750",
-    "docs/problems.json": "sha256:725d809c0efdda29dac4620c5ec9be41083a620084837c6cf52f32779c91dce8",
-    "docs/publication_contract.json": "sha256:dc9571b453e920869fb0e59f0bb3f00ec5519e236dbb6284ab0f363249d2301b",
-    "docs/publication_entry_source.json": "sha256:a350c6ba5ba1a9828e916301f3148bc9a81d7ca14b175db0eca8c5426b8e5e5d",
+    "docs/problems.json": "sha256:553907337707395dc747cb01ef2309e1e0f0dcb5c7689dbaf27c571fe210a486",
+    "docs/publication_contract.json": "sha256:945cec14dc98e0cff605f59c197f3f9cf6c59483c4695f0e325c7a615edc5074",
+    "docs/publication_entry_source.json": "sha256:42d7d0097c961fb3fd06a061a5c226f3b91761dfd3e96eaab05c198a65c1470e",
     "docs/publication_evidence.json": "sha256:4e350698eed8b4ee10fc629cfb7540ed71bc6ccf4020ee2ede8635f4aae809b3",
-    "paper/systems/claim-faithful-publication-systems-paper.pdf": "sha256:e9462338a644aafc585640f27bacf5df2c23d0c14c14f75aea7d09cba7903ebc",
-    "paper/systems/claim-faithful-publication-systems-paper.tex": "sha256:3af1deaaf478d291f0920667479322c783d9b819871495074c7c5b0a81a59f96",
+    "paper/systems/claim-faithful-publication-systems-paper.pdf": "sha256:c7016cb1100c5f36c3ae6a23920ef6337de38cab814139173f2fb1be544770a5",
+    "paper/systems/claim-faithful-publication-systems-paper.tex": "sha256:3d83804d8e0a97914e009f07656ab7c7d6cb460bcbda554b9063e68ef1b2b688",
     "research/experiments/publication_mutations.json": "sha256:9243e270257869e7a191c7598e917457cab61194299d1651e21bbc45a2d4c1e3",
     "research_corpus/Erdos1041/CORPUS_MANIFEST.json": "sha256:6f456a92e30ed2318d6c342f2e80dbbc77be39a14e051828ef215ffb8b001bbd",
     "research_corpus/Erdos1041/FRONTIER.md": "sha256:8aef5071a9a2a35de6b2af79bf0a486d97306aa0b6d4b997144e16ba1d112a9a",
@@ -124,8 +124,8 @@
   },
   "five_sentence_summary": [
     "Lean checks formal statements and proofs; it does not read the README or papers that explain them.",
-    "A mathematician reviews what selected formal results mean, how the public pages may describe them, and what remains open.",
-    "The reviewed result record is docs/claims.json, while docs/publication_contract.json separately inventories the papers and docs/publication_evidence.json separately retains historical checker evidence.",
+    "Will Cook takes responsibility for public wording and source correspondence; independent human mathematical review has not been recorded.",
+    "The selected result record is docs/claims.json, while docs/publication_contract.json separately inventories the papers and docs/publication_evidence.json separately retains historical checker evidence.",
     "Generated views reorganise those records, and the release program plus GitHub workflow stop publication when a written relationship fails.",
     "A passing release means the recorded comparisons succeeded; it does not mean software understood every public statement or proved that the list is complete."
   ],
@@ -190,7 +190,7 @@
         "Every repository file is governed by one universal owner."
       ],
       "id": "public_release_architecture_is_explicit",
-      "statement": "The repository names separate owners for formal proof, reviewed public meaning, paper identity, generated navigation, historical evidence, and release checks."
+      "statement": "The repository names separate owners for formal proof, public claim scope, paper identity, generated navigation, historical evidence, and release checks."
     },
     {
       "evidence_refs": [
@@ -270,9 +270,9 @@
       "open_target_claim": "erdos_68",
       "paper_anchor": {
         "environment": "problem",
-        "line": 33,
+        "line": 51,
         "source": "paper/68/erdos-68-factorial-denominator-irrationality.tex",
-        "title": "Erdős #68"
+        "title": "Erdős Problem~#68"
       },
       "statement": "Prove that S = ∑_{n≥2} 1/(n! − 1) is irrational.",
       "status": "open"
@@ -294,7 +294,7 @@
       "open_target_claim": "erdos_251",
       "paper_anchor": {
         "environment": "section",
-        "line": 50,
+        "line": 43,
         "source": "paper/251/erdos-251-prime-gap-dyadic-series.tex",
         "title": "Introduction"
       },
@@ -330,7 +330,7 @@
       "open_target_claim": "universal_257",
       "paper_anchor": {
         "environment": "problem",
-        "line": 1218,
+        "line": 1373,
         "source": "paper/257/erdos-257-mersenne-support-subseries.tex",
         "title": "membership of 1/21 in the Mersenne achievement set"
       },
@@ -354,7 +354,7 @@
       "open_target_claim": "erdos_269",
       "paper_anchor": {
         "environment": "section",
-        "line": 71,
+        "line": 56,
         "source": "paper/269/erdos-269-three-prime-running-lcm.tex",
         "title": "Two sums from running least common multiples"
       },
@@ -366,7 +366,7 @@
       "open_target_claim": "erdos_1041",
       "paper_anchor": {
         "environment": "problem",
-        "line": 66,
+        "line": 74,
         "source": "paper/1041/erdos-1041-lemniscate-newton-flow.tex",
         "title": "Erdős #1041"
       },
@@ -378,7 +378,7 @@
       "open_target_claim": "erdos_1049",
       "paper_anchor": {
         "environment": "section",
-        "line": 62,
+        "line": 46,
         "source": "paper/1049/erdos-1049-rational-base-lambert.tex",
         "title": "Introduction"
       },
@@ -390,9 +390,9 @@
       "open_target_claim": "erdos_243",
       "paper_anchor": {
         "environment": "problem",
-        "line": 156,
+        "line": 59,
         "source": "paper/243/erdos-243-reciprocal-tail-rigidity.tex",
-        "title": "Erdős #243"
+        "title": "Erdős Problem 243"
       },
       "statement": "Prove the Erdős #243 assertion: if 1 ≤ a₁ < a₂ < ··· has aₙ/aₙ₋₁² → 1 and rational reciprocal sum, then aₙ = aₙ₋₁² − aₙ₋₁ + 1 eventually; the checked barrier does not settle the mixed-sign unbounded regime.",
       "status": "open"
@@ -402,7 +402,7 @@
       "open_target_claim": "erdos_269",
       "paper_anchor": {
         "environment": "problem",
-        "line": 854,
+        "line": 575,
         "source": "paper/269/erdos-269-three-prime-running-lcm.tex",
         "title": "no reduced tail is an integer"
       },
@@ -414,7 +414,7 @@
       "open_target_claim": "erdos_269",
       "paper_anchor": {
         "environment": "problem",
-        "line": 860,
+        "line": 581,
         "source": "paper/269/erdos-269-three-prime-running-lcm.tex",
         "title": "residue inequalities after every starting index"
       },
@@ -426,7 +426,7 @@
       "open_target_claim": "erdos_269",
       "paper_anchor": {
         "environment": "problem",
-        "line": 3449,
+        "line": 3503,
         "source": "paper/269/erdos269-running-lcm-reasoning-surface.tex",
         "title": "an exact function representing the distinct-height sum"
       },
@@ -438,7 +438,7 @@
       "open_target_claim": "erdos_243",
       "paper_anchor": {
         "environment": "problem",
-        "line": 851,
+        "line": 1072,
         "source": "paper/243/erdos-243-reciprocal-tail-rigidity.tex",
         "title": "growth of repeated denominator factors"
       },
@@ -450,7 +450,7 @@
       "open_target_claim": "erdos_249",
       "paper_anchor": {
         "environment": "problem",
-        "line": 735,
+        "line": 730,
         "source": "paper/249/erdos-249-binary-totient-series.tex",
         "title": "Four estimates for the first-harmonic sum"
       },
@@ -462,7 +462,7 @@
       "open_target_claim": "universal_257",
       "paper_anchor": {
         "environment": "problem",
-        "line": 1234,
+        "line": 1389,
         "source": "paper/257/erdos-257-mersenne-support-subseries.tex",
         "title": "bounded returns of the scaled remainder"
       },
@@ -474,7 +474,7 @@
       "open_target_claim": "universal_257",
       "paper_anchor": {
         "environment": "problem",
-        "line": 1243,
+        "line": 1398,
         "source": "paper/257/erdos-257-mersenne-support-subseries.tex",
         "title": "arithmetic tests for the greedy sequence"
       },
@@ -486,7 +486,7 @@
       "open_target_claim": "universal_257",
       "paper_anchor": {
         "environment": "problem",
-        "line": 1254,
+        "line": 1409,
         "source": "paper/257/erdos-257-mersenne-support-subseries.tex",
         "title": "final-skip Diophantine exclusion"
       },
@@ -531,7 +531,7 @@
     ],
     "reading_rule": "Read FRONTIER.md for dated refutations and open gaps, then STRONGEST_RESULTS.json for source-pinned activation. Premises and falsifiers retain local hypotheses; research rows do not settle historical correspondence or become Comparator claims.",
     "source_index": {
-      "content_digest": "sha256:725d809c0efdda29dac4620c5ec9be41083a620084837c6cf52f32779c91dce8",
+      "content_digest": "sha256:553907337707395dc747cb01ef2309e1e0f0dcb5c7689dbaf27c571fe210a486",
       "path": "docs/problems.json"
     },
     "strongest_result_summary": {
@@ -558,7 +558,7 @@
     "revision_embedding_boundary": "A tracked file cannot contain its own Git commit id without self-reference. Content freshness is enforced by the owner hashes below; agents query the checkout revision at runtime."
   },
   "schema": "erdos249257-publication-entry-packet/1",
-  "thesis": "This public repository separates five parts: Lean source, a human-reviewed record of selected public claims, authored reader documents, generated navigation views, and a release workflow that checks the relationships people explicitly recorded.",
+  "thesis": "This public repository separates five parts: Lean source, a self-assessed and agent-checked record of selected public claims, authored reader documents, generated navigation views, and a release workflow that checks the relationships people explicitly recorded.",
   "validation_commands": [
     "python3 scripts/build_publication_entry_packet.py --check",
     "python3 scripts/check_publication_contract.py",

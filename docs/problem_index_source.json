@@ -6,7 +6,7 @@
   "authority_posture": "authored_navigation_source_not_Lean_proof_authority_and_not_a_reviewed_claim_registry",
   "index_max_bytes": 73728,
   "note_coverage_floor": 0.6,
-  "note_coverage_rule": "A note pins its links so they cannot break when the library moves; the cost is that it can fall silently behind. check_problem_note_sources.py --coverage measures the gap as the fraction of declarations that exist now which the note actually links, and fails below this floor. Lower it only as a deliberate, recorded decision.",
+  "note_coverage_rule": "A note pins its links so they cannot break when the library moves; the cost is that it can fall silently behind. check_problem_note_sources.py --coverage measures the fraction of current declarations a reader can reach from the note, including a directly linked, registered same-problem companion. Authored coordinates are validated at each manuscript's own immutable pin. Generated evidence counts only actual declared labels after the native statement-correspondence and complete-support gate passes. Reader access does not establish proof correspondence. The existing floors remain unchanged; lower one only as a deliberate, recorded decision.",
   "upstream_ref": "codex/problem-centric-erdos",
   "upstream_rule": "The branch the expansion library is developed on. Coverage is gated against this checkout, which is what the notes are built from; the distance to this ref is reported and never gated, because failing on another branch's motion would make the check red through no fault of this tree.",
   "library_roots": [

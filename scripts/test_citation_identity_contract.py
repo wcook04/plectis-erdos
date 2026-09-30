@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # SPDX-FileCopyrightText: 2026 Will Cook
 # SPDX-License-Identifier: Apache-2.0
-"""Keep citation metadata bound to the registered public release identity."""
+"""Keep current citation metadata distinct from historical release identity."""
 
 from __future__ import annotations
 
@@ -52,10 +52,9 @@ def citation_identity_errors(
     cff: str,
     release: dict[str, object],
 ) -> list[str]:
-    """Return semantic citation/release identity failures."""
+    """Return current-repository citation identity failures."""
     errors: list[str] = []
     repository = str(release["repository"])
-    tag = str(release["tag"])
     require_scalar(errors, cff, "cff-version", "1.2.0")
     require_scalar(errors, cff, "type", "software")
     require_scalar(
@@ -63,21 +62,18 @@ def citation_identity_errors(
         cff,
         "title",
         # The current software name is status-neutral. Historical tags retain
-        # their own CFF bytes; version, date and tagged identity stay exact below.
+        # their own CFF bytes; main does not borrow their version or date.
         CURRENT_SOFTWARE_TITLE,
     )
-    require_scalar(errors, cff, "version", str(release["version"]))
-    require_scalar(errors, cff, "date-released", str(release["date"]))
     require_scalar(errors, cff, "repository-code", repository)
     require_scalar(errors, cff, "url", repository)
-
-    tag_url = f"{repository}/releases/tag/{tag}"
-    if cff.count(f'value: "{tag_url}"') != 1:
-        errors.append("CITATION.cff lost its unique exact tagged-release identifier")
-    if cff.count(
-        'description: "The tagged release this metadata describes"'
-    ) != 1:
-        errors.append("CITATION.cff lost the tagged-release identifier boundary")
+    # Main changes between releases. A current abstract must not inherit an
+    # older tag's edition identity. Use the tagged file for historical work.
+    for key in ("version", "date-released"):
+        if re.search(rf"^{key}:", cff, re.MULTILINE):
+            errors.append(f"CITATION.cff current metadata must omit top-level {key}")
+    if re.search(r"^identifiers:", cff, re.MULTILINE):
+        errors.append("CITATION.cff current metadata must not claim a release identifier")
 
     abstracts = top_level_values(cff, "abstract")
     if len(abstracts) != 1 or OPEN_BOUNDARY not in abstracts[0]:
@@ -180,27 +176,18 @@ def main() -> int:
         "wrong repository fixture was not rejected",
     )
 
-    wrong_tag = cff.replace(str(release["tag"]), "v0.5.0", 1)
-    require(
-        any(
-            "tagged-release identifier" in error
-            for error in citation_identity_errors(wrong_tag, release)
-        ),
-        "wrong tag fixture was not rejected",
-    )
-
-    duplicated_version = cff.replace(
-        f'version: "{release["version"]}"',
-        f'version: "{release["version"]}"\nversion: "{release["version"]}"',
-        1,
-    )
-    require(
-        any(
-            "top-level version" in error
-            for error in citation_identity_errors(duplicated_version, release)
-        ),
-        "duplicated version fixture was not rejected",
-    )
+    for field, error_fragment in (
+        (f'version: "{release["version"]}"', "top-level version"),
+        (f'date-released: "{release["date"]}"', "top-level date-released"),
+        ('identifiers:\n  - type: url\n    value: "' + str(release["repository"])
+         + '/releases/tag/' + str(release["tag"]) + '"', "release identifier"),
+    ):
+        historical_identity = cff + "\n" + field + "\n"
+        require(
+            any(error_fragment in error
+                for error in citation_identity_errors(historical_identity, release)),
+            f"historical identity fixture was not rejected: {field}",
+        )
 
     overstated_abstract = cff.replace(
         OPEN_BOUNDARY,
@@ -235,8 +222,8 @@ def main() -> int:
 
     print(
         "test_citation_identity_contract: citation metadata retains the exact "
-        "repository, tag, paper route, and open boundary; "
-        "14 identity and attribution negative fixtures rejected"
+        "repository, current-edition boundary, paper route, and open boundary; "
+        "15 identity and attribution negative fixtures rejected"
     )
     return 0
 

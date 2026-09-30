@@ -1,12 +1,12 @@
 # Formal evidence: Prime-Gap Dyadic Series:\\Perturbations, Exact Criteria and Certificates
 
-This record belongs to the paper [erdos251-prime-gap-reasoning-surface.pdf](../paper/251/erdos251-prime-gap-reasoning-surface.pdf). For every result it lists the Lean declarations that state it, and the independent Comparator check where there is one. The margin marks in the paper link here.
+This record belongs to the paper [erdos251-prime-gap-reasoning-surface.pdf](../paper/251/erdos251-prime-gap-reasoning-surface.pdf). For every result it lists the Lean declarations that state it, and the recorded Comparator check where there is one. The inline links and margin marks in the paper use the same result mapping.
 
 - **Lean.** Every declaration is quoted from [plectis-erdos](https://github.com/wcook04/plectis-erdos) at commit [`436f55ebdafa`](https://github.com/wcook04/plectis-erdos/tree/436f55ebdafa67e4af0fff79f621c13f2ded12bf) and is checked there by Lean's kernel (`leanprover/lean4:v4.29.1`, Mathlib `5e932f97dd25`).
 - **Comparator.** For a compared result, each declaration was stated a second time, from Mathlib alone, as a *Challenge* in [plectis-erdos-lean](https://github.com/wcook04/plectis-erdos-lean), and a *Solution* that uses our proof was checked against it by [Comparator](https://github.com/leanprover/comparator), which also confirms that only the axioms `propext`, `Quot.sound`, `Classical.choice` are used. All checks below come from replay run [35935225572](https://github.com/wcook04/plectis-erdos-lean/actions/runs/35935225572) at corpus commit [`cc7e541cf208`](https://github.com/wcook04/plectis-erdos-lean/tree/cc7e541cf2081c6fef5a5e377d52e365e33b01eb) (tag `paper-evidence-2026-09-24`); both the default Lean kernel and the independent `nanoda` kernel accepted every entry. The replay's own report for each entry is kept in this repository and linked from each check. A Challenge shows `sorry` because it states the target without proving it.
 - **Counts.** 36 results: 33 with a Lean proof of the whole statement, 3 whose Lean proof assumes a named input (marked with a dagger), 0 without a Lean proof of the whole statement; 32 compared.
 
-These checks establish that the stated propositions are proved. Whether each is the right proposition is for the reader to judge against the paper's statement, which is reproduced below.
+These checks establish that the stated propositions are proved. Whether each is the right proposition is for the reader to judge against the paper's statement, which is reproduced below. Comparator checks separately declared statements, the axiom budget and kernel acceptance; it does not establish novelty, significance or peer review.
 
 <a id="long251-res-sparse-rationalisation"></a>
 
@@ -163,7 +163,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long251-res-abel"></a>
 
-## Proposition 4.1 (finite summation by parts), page 12
+## Proposition 4.1 (finite summation by parts), page 11
 
 > *For every rational sequence $`P`$ and every $`n\ge0`$,
 > ``` math
@@ -256,7 +256,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long251-res-irr-equivalence"></a>
 
-## Corollary 4.4 (exact irrationality reformulation), page 13
+## Corollary 4.4 (exact irrationality reformulation), page 12
 
 > *<span id="res:irr-equivalence" label="res:irr-equivalence"></span> $`\Pi`$ is irrational if and only if $`S=\sum_{n\ge0}g_n2^{-(n+1)}`$ is irrational. The corresponding zero-based series with denominator $`2^n`$ equals $`4+2S`$ and has the same irrationality status.*
 
@@ -359,7 +359,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long251-res-true-tail"></a>
 
-## Lemma 5.4 (the boundary condition identifying a true tail), page 15
+## Lemma 5.4 (the boundary condition identifying a true tail), page 14
 
 > *Let $`a_1,a_2,\ldots`$ be real numbers with $`\sum_{j\ge1}|a_j|2^{-j}<\infty`$, and let $`U_{N+1}=2U_N-a_{N+1}`$. Then
 > ``` math
@@ -485,7 +485,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long251-res-smallpair-real"></a>
 
-## Corollary 6.2 (real form and the sufficient condition), page 17
+## Corollary 6.2 (real form and the sufficient condition), page 16
 
 > *The same statement holds for a real orbit, with the same proof. If for every $`h\ge1`$ and every cutoff some later $`N`$ satisfies the three displayed conditions for the actual prime gaps, then $`\Pi`$ is irrational.*
 
@@ -1190,7 +1190,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long251-xr-totient"></a>
 
-## Proposition D.1 (a shift of totient length), page 34
+## Proposition D.1 (a shift of totient length), page 35
 
 > *Let $`T:\mathbb{N}\to\mathbb{Q}`$ satisfy the dyadic tail recurrence with integer coefficients. If the reduced denominator $`d`$ of $`T_N`$ is odd, then $`\sigma_{\varphi(d)}(N)`$ is an integer.*
 
@@ -1218,7 +1218,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long251-xr-propagate"></a>
 
-## Proposition D.2 (propagation), page 34
+## Proposition D.2 (propagation), page 35
 
 > *Let $`T:\mathbb{N}\to\mathbb{R}`$ satisfy $`T_{n+1}=2T_n-a_{n+1}`$ with integer coefficients, and define $`\sigma_h(N)=T_{N+h}-T_N`$. For fixed $`h,N\ge0`$, if $`\sigma_h(N)`$ is an integer, then $`\sigma_h(N+k)`$ is an integer for every $`k\ge0`$.*
 
@@ -1246,7 +1246,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long251-xr-truncation"></a>
 
-## Proposition D.3 (finite truncation), page 35
+## Proposition D.3 (finite truncation), page 36
 
 > *Let $`M:\mathbb{N}\to\mathbb{R}`$ satisfy $`M(n)\ge g_n`$ for every $`n`$ and $`\sum_{n\ge0}M(n)2^{-n}<\infty`$, and put
 > ``` math
@@ -1288,7 +1288,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long251-res-complete-truncation"></a>
 
-## Proposition D.4 (completeness of finite separation), page 35
+## Proposition D.4 (completeness of finite separation), page 36
 
 > *Suppose $`D\in\mathbb{R}`$, $`S_L\in\mathbb{R}`$ and $`R_L\ge0`$ satisfy $`|D-S_L|\le R_L`$ and $`R_L\to0`$. Then
 > ``` math
@@ -1320,7 +1320,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long251-xr-boundedpolignac"></a>
 
-## Proposition D.6 (bounded recurring-values countermodel), page 38
+## Proposition D.6 (bounded recurring-values countermodel), page 39
 
 > *Put $`U_0=4`$ and, for $`n\ge1`$, $`U_n=6`$ when $`n=k!`$ for some $`k\ge3`$ and $`U_n=4`$ otherwise, and set $`a_n=2U_{n-1}-U_n`$ for $`n\ge1`$. Then $`a_n\in\{2,4,8\}`$. For every $`k\ge3`$, the value $`2`$ occurs at index $`k!`$ and the value $`4`$ at index $`2\,k!`$, so both recur infinitely often at indices divisible by any fixed $`t\ge1`$. The series $`\sum_{n\ge1}a_n2^{-n}`$ equals $`4`$ and every tail $`\sum_{j\ge1}a_{N+j}2^{-j}`$ equals the integer $`U_N`$.*
 
@@ -1353,7 +1353,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long251-res-affinecollapse"></a>
 
-## Theorem E.1 (equivalent arithmetic-progression tests), page 40
+## Theorem E.1 (equivalent arithmetic-progression tests), page 41
 
 > *For every rational dyadic tail recurrence and all $`h,N,r\ge0`$,
 > ``` math

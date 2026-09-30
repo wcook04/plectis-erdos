@@ -1739,6 +1739,8 @@ def build_outputs(
 def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--check", action="store_true")
+    parser.add_argument("--claim-evidence", action="store_true",
+                        help="check paper-level structural evidence instead of claiming a new replay")
     parser.add_argument(
         "--only",
         choices=tuple(OUTPUTS),
@@ -1747,6 +1749,9 @@ def main() -> int:
         help="check or write only the named projection(s); repeat for a disjoint refresh",
     )
     args = parser.parse_args()
+    if args.claim_evidence:
+        from paper_claim_evidence import cli
+        return cli(["claim-check", "--root", str(ROOT)])
     _, packet, problem_source, problem_projection = load_owner()
     signal_authority = load_signal_authority()
     closure, errors = validate(packet, problem_source)
