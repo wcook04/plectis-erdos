@@ -17,7 +17,7 @@
     {
       "id": "E02",
       "title": "Make an example explain a choice",
-      "guidance": "Place a small example before unfamiliar notation when it makes the definition, construction or obstruction intelligible. Show the relevant operation and preserved quantities. Say what the example does not establish.",
+      "guidance": "Place a small example before unfamiliar notation when it makes the definition, construction or obstruction intelligible. Show the relevant operation and preserved quantities. Say what the example does not establish. Check that an example or witness satisfies the claimed object’s defining conditions, rather than only those of a larger model.",
       "limit": "A familiar definition need not acquire another example; a finite check establishes an infinite claim only through a proved reduction."
     },
     {
@@ -29,13 +29,13 @@
     {
       "id": "E04",
       "title": "Name the mathematical object",
-      "guidance": "Prefer established terminology, an exact property or the displayed inequality to private compounds. Introduce symbols by their role. Retain useful technical vocabulary and stable formal identifiers.",
+      "guidance": "Prefer established terminology, an exact property or the displayed inequality to private compounds. Introduce symbols by their role. Retain useful technical vocabulary and stable formal identifiers. Translate source indices, coordinates and normalisations explicitly when adapting an argument; let headings name a mathematical object, result or operation.",
       "limit": "Do not replace a precise uncommon term by an inaccurate familiar term or rename code for prose convenience."
     },
     {
       "id": "E05",
       "title": "Preserve statement meaning",
-      "guidance": "Compare domains, codomains, signs, endpoints, quantifiers, shared witnesses, implication directions parameter dependencies and hypotheses in every compressed occurrence. Wording inside a theorem belongs to statement accounting. In limiting arguments, state which parameters stay fixed and the order of successive limits.",
+      "guidance": "Compare domains, codomains, signs, endpoints, quantifiers, shared witnesses, implication directions, parameter dependencies and hypotheses in every compressed occurrence. Wording inside a theorem belongs to statement accounting. In limiting arguments, state which parameters stay fixed and the order of successive limits. A classification must show both validity of constructed objects and exhaustion of all admissible objects.",
       "limit": "Unchanged formulae, labels or declaration lists do not prove equivalence of prose."
     },
     {
@@ -47,7 +47,7 @@
     {
       "id": "E07",
       "title": "Distinguish evidence from explanation",
-      "guidance": "Keep ordinary proof, exact formal statement, named unproved input, selected Comparator outcome, computation and citation separate. Explain the proof on the page and preserve pending status. Logical scope and evidence are separate: a conditional implication can have an ordinary or formal proof.",
+      "guidance": "Keep ordinary proof, exact formal statement, named unproved input, selected Comparator outcome, computation and citation separate. Explain the proof on the page and preserve pending status. Logical scope and evidence are separate: a conditional implication can have an ordinary or formal proof. Correct stale underclaims as well as overclaims against current reviewed evidence.",
       "limit": "A nearby checked endpoint does not check a different prose argument; a metadata or spelling check does not prove meaning."
     },
     {
@@ -71,7 +71,7 @@
     {
       "id": "E11",
       "title": "Report review and reading honestly",
-      "guidance": "Separate source availability, donor-declared reading, later source inspection, accepted edits and measured reader responses. Counts and rates may describe a detector; include denominators and regressions.",
+      "guidance": "Separate source availability, donor-declared reading, later source inspection, accepted edits and measured reader responses. Counts and rates may describe a detector; identify versions and genre, and include denominators and regressions.",
       "limit": "Do not call an agent reread independent human review, or a lower detector rate improved comprehension."
     },
     {
