@@ -121,34 +121,44 @@ FIRST_MINUTE_CONTRACT = {
 
 # The unified manuscript has its own reviewed reading windows. The publication
 # contract selects this profile; historical manuscript checks retain their
-# original wording and windows.
+# original wording and windows. The R6 exposition puts refinement on page 6
+# and historical observations on page 8. Match the accepted human prose while
+# retaining the escaped-edit, review, source-freeze and unmeasured-benefit limits.
 UNIFIED_SYSTEMS_FIRST_MINUTE = {
     (1, 1): (
         "problem-sized lean worlds",
         "from a lean corpus to a short paper",
-        "combining formal mathematics with computations, literature and the questions still open",
-        "a false claim about mathematical scope escaped",
+        "question, prior sources, computations, proofs and unresolved steps together",
+        "a historical test rejected nine of ten false edits but accepted a false claim of completion",
     ),
     (4, 5): (
         "lean verifies that a proof establishes the formal statement",
         "comparator adds a separately stated challenge",
-        "source-frozen editorial refinement",
     ),
     (5, 6): (
-        "either arrangement leaves mathematical acceptance with the integrating reviewer",
+        "in either case the integrating reviewer decides whether the mathematics and its description remain faithful",
         "no measurement of reader benefit or autonomous discovery",
     ),
     (6, 7): (
         "an open route for contributions",
         "does not certify independent review or increased discovery rate",
-        "nine of the ten deliberately false edits were rejected and one escaped",
+        "source-frozen editorial refinement",
+        "under a manifest of their exact bytes",
+        "it neither applies the proposal nor executes returned programs",
     ),
     (7, 8): (
         "no completed external cold-clone use had been recorded",
+        "nine of the ten deliberately false edits were rejected and one escaped",
     ),
     (8, 10): (
-        "understanding by independent human readers are unresolved",
+        # This sentence straddles pages 9–10; use its intact concluding clause
+        # and preceding subject rather than admitting a page header inside
+        # a semantic anchor.
+        "transfer to unseen mathematics and understanding by",
+        "independent human readers are unresolved",
+        "no comparative reader result is reported",
         "openness alone does not equalise resources",
+        "broad mathematical acceptance is exogenous to this repository and cannot be granted by its maintainer",
         "no new lean or comparator execution",
         "local integration commit rather than public main",
     ),

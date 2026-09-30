@@ -4,7 +4,7 @@
 % Unified editorial return from the frozen round-13 packet; not a publication assertion.
 \documentclass[10pt]{article}
 \usepackage{paper-house-style}
-\usepackage{textcomp,tikz,booktabs,array,float,placeins,tabularx,xurl}
+\usepackage{needspace,textcomp,tikz,booktabs,array,float,placeins,tabularx,xurl}
 \usetikzlibrary{arrows.meta,positioning,calc,fit,matrix}
 \usepackage[colorlinks=true,linkcolor=linkinternal,urlcolor=linkexternal,citecolor=linkinternal]{hyperref}
 \hypersetup{pdftitle={Problem-Sized Lean Worlds},pdfauthor={Will Cook},
@@ -63,35 +63,37 @@
 % END SENTENCE r4.provenance
 \begin{abstract}
 % SENTENCE r4.abstract.01
-Plectis is a public Lean repository organised into problem-sized research worlds, each combining formal mathematics with computations, literature and the questions still open.
+A correct Lean theorem can acquire a false meaning when its hypotheses disappear from a paper.
 % END SENTENCE r4.abstract.01
 % SENTENCE r4.abstract.02
-We describe how a result reaches a short paper through records of its statement, every registered support and the source bytes used in its explanation.
+Plectis records the passage from formal results to prose within a repository organised around individual problems.
 % END SENTENCE r4.abstract.02
 % SENTENCE r4.abstract.03
-A weighted-support criterion for reciprocal Mersenne series provides a worked example of this passage.
+We follow a weighted-support criterion for reciprocal Mersenne series through its proof, its two registered Lean supports and its written explanation.
 % END SENTENCE r4.abstract.03
 % SENTENCE r4.abstract.04
-The same records admit outside contributions and preserve credit when work is revised.
+The publication checks compare every registered support with the supplied evidence and detect changes to source bytes; the same records retain limitations and contributor credit through revision.
 % END SENTENCE r4.abstract.04
 % SENTENCE r4.abstract.05
-In a historical test, \HistoricalRejected{} of \HistoricalEdits{} false edits were rejected, while a false claim about mathematical scope escaped.
+A historical test rejected \HistoricalRejected{} of \HistoricalEdits{} false edits but accepted a false claim of completion.
 % END SENTENCE r4.abstract.05
 % SENTENCE r4.abstract.06
-We locate the resulting division between automated checks and the interpretation required of authors and reviewers.
+This case identifies the remaining task for authors and reviewers: deciding whether the recorded sources justify the words the reader sees.
 % END SENTENCE r4.abstract.06
 
 \end{abstract}
 \section{Introduction}\label{sec:intro}
 \papersectiontarget{systems-lifecycle}
 % SENTENCE r4.intro1.01
-The weighted criterion in Section~\ref{sec:example} concerns reciprocal Mersenne subseries. A summary that drops its support hypothesis would claim a solution of the arbitrary-support question, which remains open, even with the Lean theorem and its source link unchanged.
+Consider a theorem asserting that
+\(\sum_{a\in A}(2^a-1)^{-1}\) is irrational under a summability condition on the set of exponents~$A$ (Section~\ref{sec:example}). Two faults in publishing this result require different checks. The paper might retain only one of its two registered Lean supports. Or it might retain both links but omit the summability hypothesis, thereby asserting a solution of the arbitrary-support problem, which remains open.
 % END SENTENCE r4.intro1.01
+
 % SENTENCE r4.intro1.02
-We organise the research around a persistent problem world: the question, its sources, the formal and computational work already done, and the precise obligations that survive.
+For each mathematical problem, Plectis keeps the question, prior sources, computations, proofs and unresolved steps together; we call this collection a problem world. It records which Lean results support a paper statement and which source passages explain it, so that a reviewer can make these comparisons at a specified revision.
 % END SENTENCE r4.intro1.02
 % SENTENCE r4.intro1.03
-Figure~\ref{fig:lifecycle} follows one claim from that world to a paper and back through a contribution.
+Figure~\ref{fig:lifecycle} shows where these records enter: a mathematical claim is selected from the accumulated work, all its registered supports are compared with the supplied evidence, and an author turns it into a paper that readers may question or extend.
 % END SENTENCE r4.intro1.03
 
 % SENTENCE r4.fig.lifecycle
@@ -100,7 +102,7 @@ Figure~\ref{fig:lifecycle} follows one claim from that world to a paper and back
 \begin{tikzpicture}[x=1cm,y=1cm]
 \node[paper stage,draw=MidnightBlue,fill=MidnightBlue!5,text width=2.05cm] (w) at (0,0) {Problem world\\\small sources and results};
 \node[paper stage,draw=MidnightBlue,fill=MidnightBlue!5,text width=2.05cm] (c) at (2.9,0) {Registered claim\\\small status and supports};
-\node[paper stage,draw=MidnightBlue,fill=MidnightBlue!5,text width=2.05cm] (j) at (5.8,0) {Evidence join\\\small all registered supports};
+\node[paper stage,draw=MidnightBlue,fill=MidnightBlue!5,text width=2.05cm] (j) at (5.8,0) {Support comparison\\\small all registered supports};
 \node[paper stage,draw=BurntOrange,fill=BurntOrange!5,text width=2.05cm] (p) at (8.7,0) {Short paper\\$\updownarrow$\\Long record};
 \node[paper stage,draw=Violet,fill=Violet!5,text width=2.05cm] (r) at (11.6,0) {Readers\\\small review and reuse};
 \draw[paper arrow] (w)--(c);
@@ -119,7 +121,7 @@ Figure~\ref{fig:lifecycle} follows one claim from that world to a paper and back
 \textcolor{BurntOrange}{Authored account}\quad
 \textcolor{Violet}{Review and judgement}};
 \end{tikzpicture}
-\caption{The life of one claim: arrows name the objects exchanged, and the blue evidence join checks the recorded support relation rather than executing a new formal proof; the short and long accounts remain linked.}
+\caption{The life of one claim: arrows name the objects exchanged, and the support comparison checks the complete recorded set without executing a new formal proof; the short and long accounts remain linked.}
 \label{fig:lifecycle}
 \end{figure}
 % END SENTENCE r4.fig.lifecycle
@@ -128,39 +130,32 @@ Figure~\ref{fig:lifecycle} follows one claim from that world to a paper and back
 Erd\H{o}s Problems supplies the questions and their public discussion, while Lean and mathlib supply the formal language and library~\cite{erdosproblems,lean4,mathlib}.
 % END SENTENCE r4.intro2.01
 % SENTENCE r4.intro2.02
-Blueprints already connect exposition to declarations~\cite{leanblueprint,leanarchitect}, and persistent problem records and open agent collaboration have antecedents in ETP and Prove2Me~\cite{etp,prove2me}.
+Formalisation blueprints link a written mathematical argument to named Lean declarations~\cite{leanblueprint,leanarchitect}. Persistent problem records and open agent collaboration have antecedents in the Equational Theories Project and Prove2Me~\cite{etp,prove2me}.
 % END SENTENCE r4.intro2.02
 % SENTENCE r4.intro2.03
-The publication tools check whether the supplied evidence covers every registered support at the required revision, and bind the surrounding explanations and limitations to specified source bytes.
+The additional relation described here records a statement together with all its registered supports and the source passages used to explain it.
 % END SENTENCE r4.intro2.03
 
-% SENTENCE r14.agmai.intro
-The Advisory Group on Mathematics and Artificial Intelligence at IAS
-recommends distinguishing papers fully understood by a responsible
-mathematician from AI output that its human prompters do not understand,
-and asks AI laboratories to support subsequent community-led
-understanding~\cite{agmai2026}. Its 29 September 2026 statement gives
-concrete release expectations for attribution, exposition, formalization
-and disclosure of the research process.
-% END SENTENCE r14.agmai.intro
+
 
 % SENTENCE r4.intro2.04
-The following sections describe the world, trace a weighted-support theorem through those records, and separate the checks from the judgements made when contributions enter the corpus.
+We first describe what a problem world lets a reader recover. The worked example then supplies the mathematical reason for its support hypothesis, before we follow the theorem into the publication checks, editorial revisions and contribution record. The historical false-edit test returns to the distinction that opened the paper.
 % END SENTENCE r4.intro2.04
 
 \section{A problem-sized Lean world}\label{sec:world}
 \papersectiontarget{systems-scaling}
 % SENTENCE r4.world1.01
-A world has one endpoint question and many possible contributions: a proof, a counterexample, an exact experiment, a corrected reference or an explanation of a failed method.
+Within this collection, a reader may want a proof, a counterexample to a proposed extension, or the argument behind a failed approach. Exact experiments and corrected references remain beside the original question as contributions in their own right.
 % END SENTENCE r4.world1.01
 % SENTENCE r4.world1.02
-We expose four views of the existing mathematics before asking a reader to compile Lean (Figure~\ref{fig:world}).
+The first task is to find the relevant work without compiling the whole repository. Four views answer different parts of that question (Figure~\ref{fig:world}).
 % END SENTENCE r4.world1.02
+
 % SENTENCE r4.world1.03
-The declaration atlas locates every declaration in its inventory; the dependency index records exact edges for its loaded roots.
+A declaration is a named Lean definition, theorem or lemma. The declaration index locates its source; the dependency index records which earlier declarations the selected results use.
 % END SENTENCE r4.world1.03
 % SENTENCE r4.world1.04
-The semantic graph adds authored interpretation, and the claim registry selects assertions with their status and open obligations.
+A separate graph records authored interpretations of those declarations and their connections, while a claim registry records selected mathematical assertions, their status and the obligations still open.
 % END SENTENCE r4.world1.04
 
 % SENTENCE r4.fig.world
@@ -175,7 +170,7 @@ The semantic graph adds authored interpretation, and the claim registry selects 
 \node[paper card,minimum height=1.1cm,text width=3.95cm,draw=BurntOrange] at (7.0,-1.5) {Failed approaches};
 \node[paper card,minimum height=1.1cm,text width=3.95cm,draw=BurntOrange] at (11.85,-1.5) {Paper and supporting record};
 \node[paper eyebrow,anchor=west] at (0,-2.4) {FOUR VIEWS, NO LEAN BUILD NEEDED};
-\node[paper box,anchor=west,text width=13.5cm,draw=MidnightBlue,fill=MidnightBlue!5] at (0,-2.95) {Declaration atlas: exhaustive source locations};
+\node[paper box,anchor=west,text width=13.5cm,draw=MidnightBlue,fill=MidnightBlue!5] at (0,-2.95) {Declaration index: exhaustive source locations};
 \node[paper box,anchor=west,text width=13.5cm,draw=MidnightBlue] at (0,-3.75) {Dependency index: exact edges for loaded roots};
 \node[paper box,anchor=west,text width=13.5cm,draw=BurntOrange] at (0,-4.55) {Semantic graph: \SemanticAuthoredInterpreted{} of \SemanticAuthoredTheoremLike{} interpreted (\SemanticAuthoredPercent\%)};
 \node[paper box,anchor=west,text width=13.5cm,draw=Violet] at (0,-5.35) {Claim registry: \Claims{} claims, \ClaimStatuses{} statuses, \ClaimObligations{} open obligations};
@@ -189,22 +184,30 @@ The semantic graph adds authored interpretation, and the claim registry selects 
 % END SENTENCE r4.fig.world
 
 % SENTENCE r4.world2.01
-A query can therefore start with a paper claim and return its source location or dependency neighbourhood without treating an authored summary as a proof.
+Starting from a recorded assertion, a reader can therefore locate its declarations, follow the recorded dependencies and request the specified lines of source needed for a particular question.
 % END SENTENCE r4.world2.01
 % SENTENCE r4.world2.02
-An interpretation record may supply context rather than a proof-level explanation; these counts do not record an individual human reading of every declaration.
+The declaration index is exhaustive within its inventory, and the dependency edges are exact for the selected starting declarations. The recorded interpretations are selective and largely contextual; they do not document an individual reading of every proof.
 % END SENTENCE r4.world2.02
 % SENTENCE r4.world2.03
-After locating the relevant source, a contributor can request a focused build and inspect its receipt rather than infer compilation from navigation.
+A source link by itself records no successful execution. When a question requires a Lean check, the reader can request a focused build and inspect its recorded result.
+\FloatBarrier
 % END SENTENCE r4.world2.03
 
-\section{One theorem, end to end}\label{sec:example}\label{sec:predigestion}
+\section{A theorem and the reason for its hypothesis}\label{sec:example}\label{sec:predigestion}
 % SENTENCE r4.example1.01
-For an infinite set $A$ of positive integers and an integer $b\ge2$, write $X_A(b)=\sum_{a\in A}(b^a-1)^{-1}$.
+For an infinite set $A$ of positive integers and an integer $b\ge2$, write
+\[
+ X_A(b)=\sum_{a\in A}\frac1{b^a-1}.
+\]
+The question is when a condition on the exponents forces this number, and the corresponding sum over every infinite subset of~$A$, to be irrational.
 % END SENTENCE r4.example1.01
+
 % SENTENCE r4.example1.02
-Given a finite nonempty set $P$ of primes, let $h_P(a)=\prod_{p\in P}p^{v_p(a)}$ be the part of $a$ supported on those primes.
+The condition below rewards exponents divisible by large powers of a fixed collection of primes. For the prime $2$ alone, the relevant part of $a=2^km$, with $m$ odd, is $2^k$. For a finite nonempty set $P$ of primes, this becomes $h_P(a)=\prod_{p\in P}p^{v_p(a)}$.
+\par\Needspace{7\baselineskip}
 % END SENTENCE r4.example1.02
+
 % SENTENCE r4.example1.03
 The weighted-support theorem of the Problem~257 paper states that, if
 \begin{equation}\label{eq:worked-condition}
@@ -212,12 +215,107 @@ The weighted-support theorem of the Problem~257 paper states that, if
 \end{equation}
 then $X_B(b)$ is irrational for every integer $b\ge2$ and every infinite $B\subseteq A$~\cite[Theorem~1.2]{paper257}.
 % END SENTENCE r4.example1.03
+
 % SENTENCE r4.example1.04
-The paper also gives a fixed-base version with $2$ replaced by $b$ in the hypothesis. Figure~\ref{fig:theorem} shows both registered Lean supports; their recorded status is not a fresh join, build or Comparator replay.
+There is also a fixed-base version, with $2$ replaced by $b$ in the hypothesis. We explain the weighted condition and its proof first, then locate both registered Lean supports in Figure~\ref{fig:theorem}. Their recorded status does not report a new comparison of source revisions, Lean build or Comparator run. Comparator checks a selected Lean implementation against a separately stated challenge, as described in Section~\ref{sec:checks}.
 % END SENTENCE r4.example1.04
 % SENTENCE r4.example1.05
-The arbitrary infinite-support question in base two remains open.
+This is a sufficient condition on the support; the question for an arbitrary infinite set of exponents in base two remains open.
 % END SENTENCE r4.example1.05
+
+
+% SENTENCE r4.example2.01
+Erd\H{o}s had already stated that $\sum_{a\in A}1/a<\infty$ suffices for this all-base irrationality conclusion~\cite[p.~222]{erdos1968}.
+% END SENTENCE r4.example2.01
+% SENTENCE r4.example2.03
+The source paper credits Duverney and Tachiya for an arithmetic-progression averaging argument of the kind used to select a small positive displacement~\cite[Section~2, (2.3)--(2.9)]{duverneytachiya}.
+% END SENTENCE r4.example2.03
+
+% SENTENCE r4.example3.01
+The distinction from the reciprocal-summability criterion is visible in the source paper's example
+\[
+ A_\star=\{2^km:k\ge1,\ m\text{ odd},\ 1\le m\le2^{2^k}\},\qquad P=\{2\}.
+\]
+Within the layer $v_2(a)=k$, reciprocal summation discounts each odd $m$ by $2^{-k}$; weighted summation discounts it by $(2^{2^k}-1)^{-1}$.
+% END SENTENCE r4.example3.01
+
+% SENTENCE r4.example3.02
+To compare the layers, put $S_r=\sum_{1\le m\le2^r,\ m\ \mathrm{odd}}1/m$. Grouping the odd integers into intervals $[2^j,2^{j+1})$ gives $r/4\le S_r\le r$ for integers $r\ge2$.
+% END SENTENCE r4.example3.02
+% SENTENCE r4.example3.03
+The reciprocal contribution of each disjoint layer is at least $2^{-k}S_{2^k}\ge1/4$. Its weighted contribution satisfies
+\[
+ \frac{S_{2^k}}{2^{2^k}-1}\le\frac{2^k}{2^{2^k}-1}\le2^{1-k},
+\]
+so the layer contributions have a convergent geometric majorant in the weighted sum.
+% END SENTENCE r4.example3.03
+% SENTENCE r4.example3.04
+Thus $A_\star$ lies beyond the reciprocal-summability criterion but satisfies~\eqref{eq:worked-condition}. This is the source paper's ordinary calculation, with no separate entry in the paper-to-Lean ledger~\cite[calculation following the weighted proof]{paper257}.
+% END SENTENCE r4.example3.04
+
+% SENTENCE r4.example4.01
+\Needspace{9\baselineskip}
+\paragraph{A positive displacement.}
+Suppose that $X_A(b)=p/q$ with integers $p,q$ and $q>0$. For a positive integer $N$, multiplication by $b^N-1$ removes the complete geometric blocks from each summand, leaving
+\begin{equation}\label{eq:worked-displacement}
+ \Delta_{b,A}(N)=\sum_{a\in A}\frac{b^{N\bmod a}-1}{b^a-1}
+ =(b^N-1)X_A(b)-J_{b,A}(N),\qquad N\ge1,
+\end{equation}
+where $J_{b,A}(N)=\sum_{a\in A,\,a\le N}\sum_{j=1}^{\lfloor N/a\rfloor}b^{N-ja}$ is an integer.
+% END SENTENCE r4.example4.01
+% SENTENCE r4.example4.02
+Every summand is nonnegative, and one is positive because the infinite set~$A$ contains an exponent larger than~$N$. Hence $q\Delta_{b,A}(N)$ is a positive integer, and
+\(\Delta_{b,A}(N)\ge1/q\).
+% END SENTENCE r4.example4.02
+
+% SENTENCE r4.example4.03
+We obtain a contradiction by finding a multiple $N=tQ$ with smaller displacement. Divisibility helps because the summand indexed by $a$ vanishes whenever $a\mid Q$.
+% END SENTENCE r4.example4.03
+% SENTENCE r4.example4.04
+Choose a finite nonempty $F\subset A$ outside which the weighted sum is less than $\varepsilon$, and make $Q$ a multiple of every element of~$F$. Those terms then disappear for every~$t$; we must control the remaining terms on average.
+% END SENTENCE r4.example4.04
+
+% SENTENCE r4.example4.05
+\paragraph{A finite orbit and its unfinished end.}
+With $b=2$, $Q=4$ and $a=6$, the residues $tQ\bmod a$ are $4,2,0$, and their mean displacement is
+\[
+ \frac13\left(\frac{15}{63}+\frac3{63}+0\right)=\frac2{21}\le\frac19
+ .
+\]
+For a general exponent $a$, put $g=\gcd(a,Q)$. The residues run through the multiples of~$g$ in a cycle of length $a/g$. Summing the geometric progression over complete cycles, and bounding one unfinished cycle, gives
+\begin{equation}\label{eq:worked-orbit}
+ \frac1T\sum_{t=1}^T\frac{b^{tQ\bmod a}-1}{b^a-1}
+ \le \underbrace{\frac{g}{a(b^g-1)}}_{\text{complete cycles}}
+    +\underbrace{\frac1{T(b^g-1)}}_{\text{unfinished cycle}}.
+\end{equation}
+% END SENTENCE r4.example4.05
+
+% SENTENCE r4.example4.06
+The first term has the shape of the weighted hypothesis once suitable prime powers have been put into~$Q$. The second has lost the factor $1/a$. Summability of the first therefore gives no licence to sum the unfinished-cycle bounds over all exponents. This is the difficulty that a single progression average leaves unresolved.
+% END SENTENCE r4.example4.06
+
+% SENTENCE r4.example4.07
+\paragraph{A second average restores the missing factor.}
+The source proof averages over $T=2^j$, $M\le j<2M$, for a large integer $M$. For nonnegative weights $\alpha_a$ indexed by positive integers, with $\sum_a\alpha_a/a<\infty$, it uses
+\begin{equation}\label{eq:worked-dyadic}
+ \sum_{j=M}^{2M-1}2^{-j}\sum_{a\le Q2^j}\alpha_a
+ \le 2Q\sum_a\frac{\alpha_a}{a}.
+\end{equation}
+Indeed, a fixed $a$ enters only when $2^j\ge a/Q$, and the sum of the admissible $2^{-j}$ is at most $2Q/a$. The missing factor is recovered by changing the length of the average, before summing over~$a$.
+% END SENTENCE r4.example4.07
+
+% SENTENCE r6.example.balance
+To see why both averages can be made small, let $p_*=\max P$, take $L$ divisible by~$F$, and, for $H\ge2p_*$, set
+\[
+ Q=L\prod_{p\in P}p^{\lfloor\log_p H\rfloor},\qquad
+ G=\lfloor H/p_*\rfloor,\qquad M=\lfloor b^{G/2}\rfloor.
+\]
+If $h_P(a)\le H$, then $h_P(a)\mid Q$; otherwise $\gcd(a,Q)\ge G$. Thus the small-$h_P(a)$ terms are controlled by the weighted sum and~\eqref{eq:worked-dyadic}, while the large-$h_P(a)$ terms gain a denominator $b^G-1$. With $F$ and its common multiple $L$ fixed, $Q\le LH^{|P|}$, whereas $M$ grows exponentially in~$H$. Consequently $Q/M\to0$ and $GM/b^G\to0$. The finite mean is bounded by $\varepsilon$ plus terms tending to zero; the exponents $a>QT$ contribute at most $4/T$. These are the two scale choices in the source proof~\cite[Section~2]{paper257}.
+% END SENTENCE r6.example.balance
+
+% SENTENCE r4.example4.08
+Since $\varepsilon$ is arbitrary, one of the displacements is smaller than $1/q$, a contradiction. Passing to an infinite $B\subseteq A$ only decreases the weighted sum, and $b^{h_P(a)}-1\ge2^{h_P(a)}-1$ gives the all-base conclusion from the binary hypothesis~\cite[Section~2]{paper257}.
+% END SENTENCE r4.example4.08
 
 % SENTENCE r4.fig.theorem
 \begin{figure}[htbp]
@@ -227,7 +325,7 @@ The arbitrary infinite-support question in base two remains open.
 $W_{2,P}(A)<\infty$\\$\Longrightarrow X_B(b)\notin\mathbb Q$\\
 $B\subseteq A$ infinite, $b\ge2$};
 \node[paper box,text width=3.4cm,draw=MidnightBlue,fill=MidnightBlue!5,minimum height=2.3cm] (l) at (6.45,0) {Coverage row\\\texttt{res:weighted-support}\\\medskip
-Recorded status:\\exact or stronger\\Both listed supports};
+Recorded status:\\exact or stronger\\Both listed supports required};
 \node[paper box,text width=3.9cm,draw=ForestGreen,fill=ForestGreen!5,minimum height=1.15cm] (a) at (11.25,.8) {Weighted criterion\\fixed-base and all-base\\\repolink{lean/ErdosProblems/Erdos257/PaperCompleteR8/WeightedReturn.lean}{Lean source}};
 \node[paper box,text width=3.9cm,draw=ForestGreen,fill=ForestGreen!5,minimum height=1.15cm] (b) at (11.25,-.8) {Hereditary criterion\\for a fixed base\\\repolink{lean/ErdosProblems/Erdos257/PaperCompleteR8/WeightedHereditaryClaim.lean}{Lean source}};
 \draw[paper arrow] (s)--(l);
@@ -237,85 +335,26 @@ Recorded status:\\exact or stronger\\Both listed supports};
 
 \node[paper badge,fill=ForestGreen!8,align=center] at (7,-1.65) {Comparator: PalomarCorpus/E257 and E257bc, recorded as compared};
 \node[paper label] at (7,-2.1) {Palomar: prepared, not submitted; full declaration names in Appendix~\ref{app:repro}};
-\node[paper box,text width=6.25cm,draw=BurntOrange,minimum height=1.55cm] at (3.4,-3.15) {Rationality: $\Delta(N)\ge1/q$\\Averaging: some $\Delta(N)<1/q$\\Incomplete periods require\\a second average};
+\node[paper box,text width=6.25cm,draw=BurntOrange,minimum height=1.55cm] at (3.4,-3.15) {Authored explanation\\$\Delta(N)\ge1/q$ under rationality\\Finite orbit: an end correction\\Dyadic lengths recover $1/a$};
 \node[paper box,text width=6.25cm,draw=Violet,fill=Violet!4,minimum height=1.55cm] at (10.6,-3.15) {False illustrative paraphrase:\\``solves Problem 257''\\The support hypothesis is missing};
 \end{tikzpicture}
-\caption{Both arrows out of the coverage row represent registered supports, with recorded status distinguished from a fresh check; the false paraphrase illustrates a meaning error separate from historical edit~8 in Table~\ref{tab:mutations}.}
+\caption{Both registered supports are required for the coverage row, while the authored explanation must justify the hypothesis and its use; omitting that hypothesis can change the claim without breaking either link, as the illustrative paraphrase shows (a different example from historical edit~8 in Table~\ref{tab:mutations}).}
 \label{fig:theorem}
 \end{figure}
+\FloatBarrier
 % END SENTENCE r4.fig.theorem
-
-% SENTENCE r4.example2.01
-Erd\H{o}s had already stated that $\sum_{a\in A}1/a<\infty$ suffices for this all-base irrationality conclusion~\cite[p.~222]{erdos1968}.
-% END SENTENCE r4.example2.01
-% SENTENCE r4.example2.02
-The corresponding formal declaration is \repolink{lean/Erdos249257/AllBaseReciprocalSupportIrrationality.lean}{irrational\_erdosSupportSeries\_}\allowbreak\repolink{lean/Erdos249257/AllBaseReciprocalSupportIrrationality.lean}{of\_summable\_reciprocal}, with Comparator entry \texttt{PalomarCorpus/E257av} recorded as compared.
-% END SENTENCE r4.example2.02
-% SENTENCE r4.example2.03
-The source paper credits Duverney and Tachiya for an arithmetic-progression averaging argument of the kind used to select a small positive displacement~\cite[Section~2, (2.3)--(2.9)]{duverneytachiya}.
-% END SENTENCE r4.example2.03
-
-% SENTENCE r4.example3.01
-To see what the weighted hypothesis adds, consider the source paper\textquotesingle s calculation
-\[
- A_\star=\{2^km:k\ge1,\ m\text{ odd},\ 1\le m\le2^{2^k}\},\qquad P=\{2\}.
-\]
-% END SENTENCE r4.example3.01
-% SENTENCE r4.example3.02
-Put $S_r=\sum_{1\le m\le2^r,\ m\ \mathrm{odd}}1/m$; grouping the odd integers into intervals $[2^j,2^{j+1})$ gives $r/4\le S_r\le r$ for integers $r\ge2$.
-% END SENTENCE r4.example3.02
-% SENTENCE r4.example3.03
-The disjoint layer with $v_2(a)=k$ therefore contributes at least $2^{-k}S_{2^k}\ge1/4$ to the reciprocal sum, whereas its weighted contribution is at most
-\[
- \frac{S_{2^k}}{2^{2^k}-1}\le\frac{2^k}{2^{2^k}-1}\le2^{1-k}.
-\]
-% END SENTENCE r4.example3.03
-% SENTENCE r4.example3.04
-Thus $\sum_{a\in A_\star}1/a$ diverges but $W_{2,\{2\}}(A_\star)$ converges; this calculation is supplied in the paper\textquotesingle s example and has no separate Lean-ledger row~\cite[calculation following the weighted proof]{paper257}.
-% END SENTENCE r4.example3.04
-
-% SENTENCE r4.example4.01
-The proof uses the nonnegative displacement
-\begin{equation}\label{eq:worked-displacement}
- \Delta_{b,A}(N)=\sum_{a\in A}\frac{b^{N\bmod a}-1}{b^a-1}
- =(b^N-1)X_A(b)-J_{b,A}(N),\qquad N\ge1,
-\end{equation}
-where the finite sum $J_{b,A}(N)=\sum_{a\in A,\,a\le N}\sum_{j=1}^{\lfloor N/a\rfloor}b^{N-ja}$ is an integer.
-% END SENTENCE r4.example4.01
-% SENTENCE r4.example4.02
-If $X_A(b)=p/q$ with $q>0$, then $\Delta_{b,A}(N)>0$, because $A$ contains an exponent larger than $N$, and integrality in~\eqref{eq:worked-displacement} gives $\Delta_{b,A}(N)\ge1/q$.
-% END SENTENCE r4.example4.02
-
-% SENTENCE r4.example4.03
-We seek a multiple $N=tQ$ at which this displacement is smaller.
-% END SENTENCE r4.example4.03
-% SENTENCE r4.example4.04
-A finite part of $A$ accounts for all but an arbitrarily small weighted tail, and taking $Q$ divisible by that finite part makes its displacement terms vanish.
-% END SENTENCE r4.example4.04
-% SENTENCE r4.example4.05
-Enlarging $Q$ by suitable powers of the primes in $P$ controls the orbit averages of the other terms through $\gcd(a,Q)$.
-% END SENTENCE r4.example4.05
-
-% SENTENCE r4.example4.06
-The difficulty is that a finite average usually ends partway through an orbit: bounds for those incomplete periods need not sum over all exponents.
-% END SENTENCE r4.example4.06
-% SENTENCE r4.example4.07
-The source proof takes a second average over lengths $2^j$, with $M\le j<2M$, choosing $M$ large relative to the polynomial size of $Q$ and small relative to the exponential orbit saving.
-% END SENTENCE r4.example4.07
-% SENTENCE r4.example4.08
-Both boundary errors then tend to zero, so one term contradicts the rational lower bound; the weighted sum decreases on passing to $B\subseteq A$, and $b^{h_P(a)}-1\ge2^{h_P(a)}-1$ transfers the binary hypothesis to every $b\ge2$~\cite[Section~2]{paper257}.
-% END SENTENCE r4.example4.08
 
 \section{Proof and publication checks}\label{sec:checks}\label{sec:graph}
 \papersectiontarget{systems-trust}
 % SENTENCE r4.checks1.01
-We bind a paper statement to an identified source revision and compare its complete registered support set, including named inputs, with the evidence supplied for it.
+Figure~\ref{fig:theorem} now gives a concrete test for the publication checks. Its coverage record names two supporting Lean results. Evidence for the weighted criterion alone does not supply the complete registered set while the hereditary support is missing.
 % END SENTENCE r4.checks1.01
 % SENTENCE r4.checks1.02
-A record for one supporting lemma cannot stand for a result that requires several, and a changed source or statement requires the corresponding records to be checked again.
+The comparison includes every registered support and the additional hypotheses on which a conditional result depends, recorded as named inputs. It uses an identified source revision. A changed statement or source must be checked against its records again; a source file from one revision cannot silently borrow the evidence attached to another.
 % END SENTENCE r4.checks1.02
+
 % SENTENCE r4.checks1.03
-Figure~\ref{fig:checks} distinguishes the relations checked by the kernel, Comparator and publication tools.
+These checks concern different relations from the correctness of the formal proof and the meaning of the prose (Figure~\ref{fig:checks}).
 % END SENTENCE r4.checks1.03
 
 % SENTENCE r4.fig.checks
@@ -348,23 +387,25 @@ Comparator adds a separately stated challenge and a check of its selected Lean i
 % END SENTENCE r4.checks2.02
 
 % SENTENCE r4.checks2.03
-For prose, we retain the exact sentence and source span together with an evidence class and an authored warrant explaining the connection.
+For each prose passage we record its text, specified source lines, the kind of evidence and an author's explanation of why those lines support the passage.
 % END SENTENCE r4.checks2.03
+
 % SENTENCE r4.checks2.04
-The sentence checker compares those digests and rejects missing bindings or unbound prose.
+For example, the last paragraph of Section~\ref{sec:example} attributes heredity to the decrease of a nonnegative sum under restriction. Its record points to the weighted proof and explains that step. The checker compares cryptographic hashes of the text and source passage, and rejects missing records or passages without a binding.
 % END SENTENCE r4.checks2.04
+
 % SENTENCE r4.checks2.05
-An author may revise a sentence and its warrant together while keeping the hashes current, so agreement of the bytes still leaves the meaning to be reviewed.
+That check detects an unrecorded edit. If an author changes both the sentence and its recorded explanation and updates the digests, the record becomes current again, but the claimed implication still needs review.
 % END SENTENCE r4.checks2.05
 % SENTENCE r4.checks2.06
-Dropping the support condition from an abstract then asserts more than the theorem proves, even though its Lean links remain intact.
+In particular, every Lean link in Figure~\ref{fig:theorem} can remain correct after the support condition has disappeared from an abstract. The reviewer must compare the hypothesis and quantifiers, not merely follow the links.
 % END SENTENCE r4.checks2.06
 
 % SENTENCE r4.checks3.01
-An atlas entry with a matching signature and a reachable target attests to that source projection; it does not establish that any particular continuous-integration run compiled the module.
+An entry in the declaration index with a matching type and a reachable source link identifies the recorded source; it does not establish that any particular continuous-integration run compiled the module.
 % END SENTENCE r4.checks3.01
 % SENTENCE r4.checks3.02
-The notary interface derives probe verdicts from the pinned Lean process, so a caller cannot submit its own verdict through that interface.
+In the recorded design, the checking interface obtains each verdict from the specified Lean process, so callers cannot supply verdicts through that interface.
 % END SENTENCE r4.checks3.02
 % SENTENCE r4.checks3.03
 This interface rule does not prevent an actor with filesystem access from changing the implementation or stored record.
@@ -373,61 +414,39 @@ This interface rule does not prevent an actor with filesystem access from changi
 The protocol distinguishes contributor and reviewer roles but does not technically force a second independent mathematician.
 % END SENTENCE r4.checks3.04
 
-% SENTENCE r14.agmai.limits
-Several of these proposed release practices have counterparts in the
-records described here~\cite[Section 2.B, Step I]{agmai2026}: the short
-paper and long record explain and attribute the argument, the paper-to-Lean
-ledger records formal correspondence and its limits, and the challenge
-files and generated \texttt{formalization.yaml} expose the comparison inputs.
-Those records make the result inspectable; they do not certify a
-mathematician's understanding. The architecture alone does not establish
-complete per-result model, prompt, time and cost disclosure, an account of
-campaign-wide selection and unsuccessful attempts, or an independent
-scholarly deposit. The further recommendations on funding community-led
-understanding and equitable model access address AI laboratories; this
-prototype does not demonstrate those institutional outcomes.
-% END SENTENCE r14.agmai.limits
+
+
+
 
 \section{From a Lean corpus to a paper}\label{sec:paper}\label{sec:short}\label{sec:long}\label{sec:production}
 % SENTENCE r4.paper1.01
-We use the dependency graph to locate the argument and then decide which contribution deserves the short paper, taking account of its natural generality and antecedents.
+The worked example also suggests how to write the short account: give the support condition, show a set that it reaches, and explain why incomplete periods force a second average.
 % END SENTENCE r4.paper1.01
 % SENTENCE r4.paper1.02
-The author supplies the proof strategy and explains the difficult step beside the registered statement.
+A dependency graph locates the ingredients, but choosing this order and identifying the loss of $1/a$ are expository decisions made from the argument.
 % END SENTENCE r4.paper1.02
 % SENTENCE r4.paper1.03
-The long record provides the complete argument and subsidiary cases, and an accepted correspondence identifies the passage supporting a particular short-paper claim.
+The long record retains the complete proof and subsidiary cases. A correspondence link names the passage supporting a particular short-paper claim, so the reader can move from the explanation to the calculation without searching the whole record.
 % END SENTENCE r4.paper1.03
 % SENTENCE r4.paper1.04
-The assembler combines these authored parts and preserves their cross-references, without supplying a new mathematical argument.
+The assembler preserves these authored parts and their cross-references; it supplies no missing mathematical step.
 % END SENTENCE r4.paper1.04
 
 \subsection{Source-frozen editorial refinement}
 % SENTENCE r13.paper.01
-We first prepare a dossier from the current corpus: candidate results, their antecedents, the difficult proof transitions and the exact questions left unresolved.
+A revision begins by collecting candidate results, antecedents, difficult proof transitions and unresolved questions with their source locations.
 % END SENTENCE r13.paper.01
 % SENTENCE r13.paper.02
-The author chooses the principal argument; the dossier supplies source locations and evidence, while the native manuscript checker audits source consistency and the specified manuscript rules.
+The author decides which argument deserves the short paper; the checker audits source consistency and the specified manuscript rules.
 % END SENTENCE r13.paper.02
 % SENTENCE r13.paper.03
-For a further revision, we freeze the selected short paper and long record together with their input closure, coverage ledger and native audit rules in a packet whose manifest identifies the exact source bytes.
+We freeze the selected manuscripts, input closure, coverage ledger and audit rules under a manifest of their exact bytes, so the writer and integrating reviewer can identify what the proposed changes were based on.
 % END SENTENCE r13.paper.03
+
 % SENTENCE r13.paper.04
-The writer may be an advisory model returning a proposed revision, or a tool-enabled agent doing the same authoring work in a checkout; either arrangement leaves mathematical acceptance with the integrating reviewer.
+An advisory model can return a proposal against those sources; a tool-enabled agent can prepare it in a checkout. In either case the integrating reviewer decides whether the mathematics and its description remain faithful.
 % END SENTENCE r13.paper.04
 
-% SENTENCE r14.assignment.authority
-We call an agent that can alter the live repository Type A and an advisory agent returning proposals against supplied sources Type B.
-% END SENTENCE r14.assignment.authority
-% SENTENCE r14.assignment.jobs
-These terms describe access to the substrate; the assignment separately chooses mathematical research, proof or claim audit, literature and attribution review, or exposition.
-% END SENTENCE r14.assignment.jobs
-% SENTENCE r14.assignment.products
-Research returns candidate arguments, an audit returns source-located findings, a literature review returns attribution proposals, and exposition returns a clearer manuscript; each product has its own review and acceptance criteria.
-% END SENTENCE r14.assignment.products
-% SENTENCE r14.assignment.exposition
-An exposition assignment preserves the established hypotheses, conclusions and evidence status; a suspected mathematical defect is returned for a separate audit or research assignment.
-% END SENTENCE r14.assignment.exposition
 
 
 % SENTENCE r13.fig.refinement
@@ -439,7 +458,7 @@ An exposition assignment preserves the established hypotheses, conclusions and e
 \node[paper stage,text width=3.65cm,draw=Violet,fill=Violet!5] (review) at (10.0,0) {Review and decide\\\small meaning and scope,\\support and credit};
 \node[paper stage,text width=3.65cm,draw=MidnightBlue,fill=MidnightBlue!5] (record) at (0,-2.6) {Record the outcome\\\small accepted changes,\\reusable lessons and limits};
 \node[paper stage,text width=3.65cm,draw=MidnightBlue,fill=MidnightBlue!5] (render) at (5.0,-2.6) {Render and inspect\\\small regenerate evidence,\\PDFs and reading links};
-\node[paper stage,text width=3.65cm,draw=MidnightBlue,fill=MidnightBlue!5] (bind) at (10.0,-2.6) {Integrate the sources\\\small restore native parts,\\rebind changed statements};
+\node[paper stage,text width=3.65cm,draw=MidnightBlue,fill=MidnightBlue!5] (bind) at (10.0,-2.6) {Integrate the sources\\\small restore authored parts,\\rebind changed statements};
 \draw[paper arrow] (freeze)--node[paper label,above]{packet} (write);
 \draw[paper arrow] (write)--node[paper label,above]{edits} (review);
 \draw[paper arrow] (review)--node[paper label,right]{reviewed delta} (bind);
@@ -453,25 +472,18 @@ An exposition assignment preserves the established hypotheses, conclusions and e
 % END SENTENCE r13.fig.refinement
 
 % SENTENCE r13.paper.05
-The native return checker verifies packet identity, permitted edit paths, statement-change declarations and preservation of labels, citations and bibliography, then reports the manuscript audit on a temporary source overlay.
+Before that decision, the return checker tests packet identity, permitted paths, statement-change declarations, labels and credit, and runs the manuscript audit on a temporary overlay of the proposed sources.
 % END SENTENCE r13.paper.05
 % SENTENCE r13.paper.06
-It neither applies the proposal nor executes returned programs, and a declared statement change remains a mathematical review obligation.
+It neither applies the proposal nor executes returned programs. Declaring a statement change makes the review obligation explicit; it does not discharge it.
 % END SENTENCE r13.paper.06
-% SENTENCE r13.paper.07
-The reviewer checks changed hypotheses and implication directions against the whole statement and its registered declarations, retaining an ordinary argument with its actual evidence class when formalisation is incomplete.
-% END SENTENCE r13.paper.07
-% SENTENCE r13.paper.08
-After that review, we restore the long record\textquotesingle s authored parts, regenerate evidence and navigation, compile the manuscripts and inspect the resulting figures and proof links.
-% END SENTENCE r13.paper.08
-% SENTENCE r13.paper.09
-A useful returned writing rule enters the next revision as a candidate with its example and limits; adoption requires a reviewed improvement to the owning writing contract.
-% END SENTENCE r13.paper.09
+
 % SENTENCE r13.paper.10
-Figure~\ref{fig:refinement} describes this reproducible workflow, whose packet and audit stages are implemented by \repolink{scripts/short_paper_writer.py}{short\_paper\_writer.py}; it supplies no measurement of reader benefit or autonomous discovery.
+The packet and audit stages in Figure~\ref{fig:refinement} are implemented by \repolink{scripts/short_paper_writer.py}{short\_paper\_writer.py}. Appendix~\ref{app:repro} specifies the protocol roles and the acceptance steps. This procedure supplies no measurement of reader benefit or autonomous discovery.
 % END SENTENCE r13.paper.10
 
 % SENTENCE r4.paper2.01
+\Needspace{7\baselineskip}
 The relation to the motivating problem must also survive compression: the Problem~269 record distinguishes distinct running-LCM heights from the heights counted with multiplicity in the original question~\cite{paper269}.
 % END SENTENCE r4.paper2.01
 % SENTENCE r4.paper2.02
@@ -564,7 +576,7 @@ The frozen inventory contains \LedgerRows{} paper occurrences, of which \LedgerF
 Of the \LedgerFormal{} exact-or-specialising occurrences, \LedgerCompared{} are recorded as compared and \LedgerQueued{} as queued.
 % END SENTENCE r4.obs1.02
 % SENTENCE r4.obs1.03
-These are classifications of statement occurrences, with the named-input and unsupported entries exposed separately from the fully covered entries.
+These counts classify statement occurrences. Exact and specialising support match a paper statement directly or establish it by specialization. Named-input entries retain an additional assumed result; an entry without Lean support may still have an ordinary mathematical proof. Neither group is counted among the fully covered entries.
 % END SENTENCE r4.obs1.03
 
 % SENTENCE r4.obs2.01
@@ -651,7 +663,7 @@ General reliability, reader understanding and mathematical transfer remain unmea
 
 \section{Related work}\label{sec:related}\label{app:credit}
 % SENTENCE r4.related1.01
-Figure~\ref{fig:credit} locates the inherited components and the wider literature retained from the three source accounts.
+The comparison with earlier systems is clearest at the relations they record. Lean and mathlib provide formal statements and proofs; blueprints link declarations to exposition; Prove2Me organises formalisation missions, reusable statements and contributions~\cite{lean4,mathlib,leanblueprint,prove2me}. The additional records here follow all registered supports and the source passages used in prose. Appendix~\ref{app:source-map} preserves the wider source map of the three original accounts.
 % END SENTENCE r4.related1.01
 % SENTENCE r4.related1.02
 Prove2Me\textquotesingle s first arXiv version appeared on 28 August 2026, before the first public version of this paper, and already described public agent contributions, task decomposition, reusable statements and credit for reuse~\cite{prove2me}.
@@ -663,41 +675,6 @@ Its hosted verification service and this repository-based record provide differe
 Polymath, BOINC and GIMPS supply precedents for small mathematical contributions and donated compute~\cite{polymath,boinc,gimps}, while the Carleson blueprint shows formalisation organised into publicly claimable tasks~\cite{carleson}.
 % END SENTENCE r4.related1.04
 
-% SENTENCE r4.fig.credit
-\begin{figure}[p]
-\centering
-\begin{tikzpicture}
-\node[paper box,inner sep=6pt] {\begin{minipage}{13.7cm}\small
-\begin{tabularx}{\linewidth}{@{}p{3.2cm}X@{}}
-\toprule
-Source family & Role in the three source accounts\\
-\midrule
-Formal foundations & Lean and mathlib; library maintenance and contributor practice~\cite{lean4,mathlib,growingmathlib,mathlibcontrib}\\
-Source and statement checks & Comparator, kernel replay, vacuity, linters and property tests~\cite{leanfrocomparator,nanodalib,beyondvacuity,batteries,plausible}\\
-Formal-to-prose tools & Blueprints, source documentation, translation and refactoring~\cite{leanblueprint,leanarchitect,hattori,leanmarathon,proofrefactor,p3docagent}\\
-Retrieval and interaction & Premises, proof states and exact declaration neighbourhoods~\cite{leandojo,pantograph,leanexplore,leansearchv2,theoremgraph,leanatlas}\\
-Proof automation & Premise selection and tactic search~\cite{leanhammer,aesop,judgementday}\\
-Library structure & Declaration networks and repository knowledge graphs~\cite{mathlibnetwork,huch,repokg}\\
-Assumptions and reuse & Proof mining, generalisation, lemma mining and theory exploration~\cite{kohlenbach,gandhi,lemmamining,hipster}\\
-Growing proof knowledge & Library learning, evolving procedures and candidate statements~\cite{dreamcoder,legoprover,dreamprover,proofevolve,leanconjecturer,circuitprover}\\
-Research agents & Executable objectives, proof cost and evolving tasks~\cite{alphaevolve,alphaevolvemath,interestingness,patel,dreamrsi,berlotattwell}\\
-Agent collaboration & Bounties, planner/worker state, retrieval and compiler feedback~\cite{agenthunt,openprover,oprover,prove2me,axle,etp}\\
-Evaluation & Research budgets, proof engineering and documentation tasks~\cite{rebench,p6-swd,p6-ape,p6-poiroux,documentationtest,henkel,openproofcorpus}\\
-Validity and intended meaning & Research case studies, interactive proving and public accounting~\cite{aletheia,autonomousmath,lihai,taowiki}\\
-Public infrastructure & Problem sources, formal conjectures, verification and collaboration~\cite{erdosproblems,formalconjectures,palomar,carleson,polymath,boinc,gimps,credit,githubsecurity}\\
-Writing and maintenance & Mathematical exposition, build dependencies and provenance~\cite{halmos,knuth,buildsystems,dekleer,workflowprovenance}\\
-Understanding and reuse & Explanatory generality, digestion and research possibilities~\cite{kra,cohn,sanderson,essays,taomining,litt,tao2026}\\
-Different community views & Declarations, dissent, benchmarks, research infrastructure and pace~\cite{fieldsdecl,chu,greenletter,gowers,ringer,koukoulopoulos,antieau}\\
-Mathematical antecedents & Weighted support, totient ranks and arithmetic separation~\cite{paper257,erdos1968,duverneytachiya,paper249,coons,martin,yazdani}\\
-Other mathematical records & Running LCM, lemniscates and cross-problem connections~\cite{paper269,fan269,loxtonvdp1977,bugeaudlaurent2023,erdosgraham,akiyamakaneko,ehp1958,erdos1041,aniforum,fcpr,synthesis}\\
-\bottomrule
-\end{tabularx}
-\end{minipage}};
-\end{tikzpicture}
-\caption{Sources grouped by the roles for which the original accounts cite them, rather than by a performance ranking; the accompanying mathematical attribution distinguishes original results, refinements and independent rediscovery.}
-\label{fig:credit}
-\end{figure}
-% END SENTENCE r4.fig.credit
 
 % SENTENCE r4.related2.01
 The totient record refines Coons\textquotesingle s non-$k$-regularity antecedent and distinguishes Martin\textquotesingle s separation theorem from its own Chinese-remainder and Dirichlet argument traced to Yazdani~\cite{paper249,coons,martin,yazdani}.
@@ -744,6 +721,32 @@ Returned code is untrusted, and expensive or privileged continuous-integration j
 % SENTENCE r4.limits2.04
 A volunteer-compute service and extensions to physical science remain proposals requiring their own validation, resource and safety governance.
 % END SENTENCE r4.limits2.04
+
+% SENTENCE r14.agmai.intro
+The Advisory Group on Mathematics and Artificial Intelligence at IAS
+recommends distinguishing papers fully understood by a responsible
+mathematician from AI output that its human prompters do not understand,
+and asks AI laboratories to support subsequent community-led
+understanding~\cite{agmai2026}. Its 29 September 2026 statement gives
+concrete release expectations for attribution, exposition, formalisation
+and disclosure of the research process.
+% END SENTENCE r14.agmai.intro
+
+% SENTENCE r14.agmai.limits
+Several of these proposed release practices have counterparts in the
+records described here~\cite[Section 2.B, Step I]{agmai2026}: the short
+paper and long record explain and attribute the argument, the paper-to-Lean
+ledger records formal correspondence and its limits, and the challenge
+files and generated \texttt{formalization.yaml} expose the comparison inputs.
+Those records make the result inspectable; they do not certify a
+mathematician's understanding. The architecture alone does not establish
+complete per-result model, prompt, time and cost disclosure, an account of
+campaign-wide selection and unsuccessful attempts, or an independent
+scholarly deposit. The further recommendations on funding community-led
+understanding and equitable model access address AI laboratories; this
+prototype does not demonstrate those institutional outcomes.
+% END SENTENCE r14.agmai.limits
+
 % SENTENCE r4.limits2.05
 The present contribution is an inspectable route through the records: a reader can recover the hypothesis, argument and support of a stated result, and identify where a source check ends and mathematical review begins.
 % END SENTENCE r4.limits2.05
@@ -753,6 +756,7 @@ The present contribution is an inspectable route through the records: a reader c
 % END SENTENCE r4.layout.endbody
 \appendix
 \section{Inspection and reproduction}\label{app:repro}
+
 % SENTENCE r4.repro1.01
 The initial unified manuscript was prepared from the frozen packet at \texttt{ced96e58b337}, a local integration commit rather than public main.
 % END SENTENCE r4.repro1.01
@@ -772,6 +776,11 @@ Its Comparator records are \href{https://github.com/wcook04/plectis-erdos-lean/a
 % SENTENCE r4.repro2.03
 Both runs are recorded as compared; Palomar is prepared and not submitted.
 % END SENTENCE r4.repro2.03
+
+% SENTENCE r4.example2.02
+For Erd\H{o}s's reciprocal-summability criterion, the formal declaration is \href{\repobase/blob/7308896010e6b527d283dfdd0687a717a6183fb6/lean/Erdos249257/AllBaseReciprocalSupportIrrationality.lean}{\nolinkurl{Erdos249257.irrational_erdosSupportSeries_of_summable_reciprocal}}, with Comparator entry \texttt{PalomarCorpus/E257av} recorded as compared.
+% END SENTENCE r4.example2.02
+
 
 % SENTENCE r4.repro1041.01
 The four declarations supporting the reported 1041 refutation have namespace \nolinkurl{Erdos1041.Counterexample}: \repolink{lean/ErdosProblems/Erdos1041/Counterexample/Assembly.lean}{erdos1041\_counterexample}, and the \repolink{lean/ErdosProblems/Erdos1041/Counterexample/HausdorffLength.lean}{HausdorffLength.lean} declarations \nolinkurl{erdos1041_counterexample_hausdorff}, \nolinkurl{erdos1041_hausdorff_negation} and \nolinkurl{erdos1041_hausdorff_answer_false}.
@@ -805,6 +814,75 @@ The semantic counts in Figure~\ref{fig:world} are the supplied interpretation in
 % SENTENCE r4.repro4.04
 Public reading begins with \repolink{docs/READING_GUIDE.md}{the reading guide}; \repolink{CONTRIBUTING.md}{CONTRIBUTING.md} describes contribution channels under the existing \repolink{docs/research-commons/CREDIT_POLICY.md}{credit policy}.
 % END SENTENCE r4.repro4.04
+
+\subsection{Editorial roles and acceptance}
+% SENTENCE r14.assignment.authority
+We call an agent that can alter the live repository Type A and an advisory agent returning proposals against supplied sources Type B.
+% END SENTENCE r14.assignment.authority
+
+% SENTENCE r14.assignment.jobs
+This distinction concerns access to the repository. The assigned work is a separate choice: mathematical research, proof or claim audit, literature and attribution review, or exposition.
+% END SENTENCE r14.assignment.jobs
+
+% SENTENCE r14.assignment.products
+Research returns candidate arguments, an audit returns source-located findings, a literature review returns attribution proposals, and exposition returns a clearer manuscript; each product has its own review and acceptance criteria.
+% END SENTENCE r14.assignment.products
+
+% SENTENCE r14.assignment.exposition
+An exposition assignment preserves the established hypotheses, conclusions and evidence status; a suspected mathematical defect is returned for a separate audit or research assignment.
+% END SENTENCE r14.assignment.exposition
+
+% SENTENCE r13.paper.07
+The reviewer compares hypotheses and implication directions with the whole statement and all its registered declarations. An ordinary argument retains its actual evidence class where formalisation is incomplete.
+% END SENTENCE r13.paper.07
+
+% SENTENCE r13.paper.08
+After acceptance, the long record's authored sections are restored, evidence and navigation are regenerated, and the compiled pages are inspected, including figures and proof links.
+% END SENTENCE r13.paper.08
+
+% SENTENCE r13.paper.09
+A writing rule learned from the revision travels with its example and limits as a candidate. Its adoption requires a reviewed change to the owning writing contract.
+% END SENTENCE r13.paper.09
+
+% SENTENCE r6.layout.credit
+\FloatBarrier
+% END SENTENCE r6.layout.credit
+\section{Sources by role}\label{app:source-map}
+% SENTENCE r4.fig.credit
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}
+\node[paper box,inner sep=6pt] {\begin{minipage}{13.7cm}\small
+\begin{tabularx}{\linewidth}{@{}p{3.2cm}X@{}}
+\toprule
+Source family & Role in the three source accounts\\
+\midrule
+Formal foundations & Lean and mathlib; library maintenance and contributor practice~\cite{lean4,mathlib,growingmathlib,mathlibcontrib}\\
+Source and statement checks & Comparator, kernel replay, vacuity, linters and property tests~\cite{leanfrocomparator,nanodalib,beyondvacuity,batteries,plausible}\\
+Formal-to-prose tools & Blueprints, source documentation, translation and refactoring~\cite{leanblueprint,leanarchitect,hattori,leanmarathon,proofrefactor,p3docagent}\\
+Retrieval and interaction & Premises, proof states and exact declaration neighbourhoods~\cite{leandojo,pantograph,leanexplore,leansearchv2,theoremgraph,leanatlas}\\
+Proof automation & Premise selection and tactic search~\cite{leanhammer,aesop,judgementday}\\
+Library structure & Declaration networks and repository knowledge graphs~\cite{mathlibnetwork,huch,repokg}\\
+Assumptions and reuse & Proof mining, generalisation, lemma mining and theory exploration~\cite{kohlenbach,gandhi,lemmamining,hipster}\\
+Growing proof knowledge & Library learning, evolving procedures and candidate statements~\cite{dreamcoder,legoprover,dreamprover,proofevolve,leanconjecturer,circuitprover}\\
+Research agents & Executable objectives, proof cost and evolving tasks~\cite{alphaevolve,alphaevolvemath,interestingness,patel,dreamrsi,berlotattwell}\\
+Agent collaboration & Bounties, planner/worker state, retrieval and compiler feedback~\cite{agenthunt,openprover,oprover,prove2me,axle,etp}\\
+Evaluation & Research budgets, proof engineering and documentation tasks~\cite{rebench,p6-swd,p6-ape,p6-poiroux,documentationtest,henkel,openproofcorpus}\\
+Validity and intended meaning & Research case studies, interactive proving and public accounting~\cite{aletheia,autonomousmath,lihai,taowiki}\\
+Public infrastructure & Problem sources, formal conjectures, verification and collaboration~\cite{erdosproblems,formalconjectures,palomar,carleson,polymath,boinc,gimps,credit,githubsecurity}\\
+Writing and maintenance & Mathematical exposition, build dependencies and provenance~\cite{halmos,knuth,buildsystems,dekleer,workflowprovenance}\\
+Understanding and reuse & Explanatory generality, digestion and research possibilities~\cite{kra,cohn,sanderson,essays,taomining,litt,tao2026}\\
+Different community views & Declarations, dissent, benchmarks, research infrastructure and pace~\cite{fieldsdecl,chu,greenletter,gowers,ringer,koukoulopoulos,antieau}\\
+Mathematical antecedents & Weighted support, totient ranks and arithmetic separation~\cite{paper257,erdos1968,duverneytachiya,paper249,coons,martin,yazdani}\\
+Other mathematical records & Running LCM, lemniscates and cross-problem connections~\cite{paper269,fan269,loxtonvdp1977,bugeaudlaurent2023,erdosgraham,akiyamakaneko,ehp1958,erdos1041,aniforum,fcpr,synthesis}\\
+\bottomrule
+\end{tabularx}
+\end{minipage}};
+\end{tikzpicture}
+\caption{Sources grouped by the roles for which the original accounts cite them, rather than by a performance ranking; the accompanying mathematical attribution distinguishes original results, refinements and independent rediscovery.}
+\label{fig:credit}
+\end{figure}
+% END SENTENCE r4.fig.credit
 
 % END audited_body
 \clearpage

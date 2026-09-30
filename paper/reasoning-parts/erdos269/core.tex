@@ -141,30 +141,55 @@ multiple; smooth numbers; Cantor series; separated rank.
 
 \section{Recovering the prime-power jumps}\label{long269:sec:distinct-235}
 \papersectiontarget{r3-five-maps}
-Throughout this section $P=\{2,3,5\}$. We recover the prime-power jumps
-from a single normalised tail. Rationality then forces that tail to repeat,
-so recovery would make the jump sequence eventually periodic. The spacing
-of powers of $5$ supplies the tail bound needed for recovery, and the
-frequency of powers of $3$ rules out periodicity.
-
-We group the prime-power jumps into the right-closed intervals
-$(2^a,2^{a+1}]$. Each contains its terminal power of $2$, at most one power
-of $3$ and at most one power of $5$. We write $\tau_a$ for the sequence of
-interior prime labels, so that
-$\tau_a\in\{\varnothing,3,5,35,53\}$. Both orders occur: the block
-$(16,32]$ contains $25<27$, whereas $(64,128]$ contains $81<125$.
-We omit the terminal $2$ from $\tau_a$.
+The proof has the same two requirements as the long-division argument
+for eventual periodicity: finitely many remainders, and a remainder that
+determines the next step. Rationality will give the first requirement.
+For the second, a bound using the spacing of powers of $5$ will separate
+the five possible next-block images. The irrational frequency of powers
+of $3$ will then rule out the forced periodicity.
 
 \begin{proof}[Proof of Theorem~\ref{long269:res:distinct-height-235}]
-To remove the denominators of an initial segment, put $P_a=\hgt_{\{2,3,5\}}(2^a)$
-and define
+\emph{Finitely many tails under rationality.}
+Write $\hgt=\hgt_{\{2,3,5\}}$ in this proof and put $P_a=\hgt(2^a)$.
+Every height at or before $2^a$ divides $P_a$. We therefore normalise
+the tail after $2^a$ by
 \begin{equation}\label{long269:eq:five-tail}
  Y_a=P_a\sum_{\substack{t>2^a\\t=2^n,3^n\text{ or }5^n,\ n\ge1}}
-                   \frac1{\hgt_{\{2,3,5\}}(t)}.
+                   \frac1{\hgt(t)}.
 \end{equation}
-Every subsequent jump multiplies the height by at least $2$, and a jump
-by $3$ eventually occurs. Comparison with $\sum_{j\ge1}2^{-j}$ therefore
-gives $0<Y_a<1$. Splitting off one block gives
+Each subsequent jump multiplies the height by at least $2$, and a jump
+by $3$ eventually occurs. Comparison with $\sum_{j\ge1}2^{-j}$ gives
+$0<Y_a<1$.
+
+Suppose that $\mathcal D_{\{2,3,5\}}=N/K$, where $N$ is an integer and
+$K\ge1$ is an integer. Clearing the finite prefix gives
+\[
+ KY_a=P_aN-K\left(P_a+
+        \sum_{\substack{t\le2^a\\t=2^n,3^n\text{ or }5^n,\ n\ge1}}
+                 \frac{P_a}{\hgt(t)}\right)\in\mathbb Z.
+\]
+Thus the $Y_a$ lie in the finite set $(K^{-1}\mathbb Z)\cap(0,1)$.
+It remains to show why equality of two tails propagates.
+
+\medskip
+\emph{Recovering a block from its tail.}
+Consider the jumps between $16$ and $32$, including the last endpoint.
+They occur at $25,27,32$, multiplying the height successively by $5,3,2$.
+After normalisation at $16$, their contribution is
+$1/5+1/15+1/30$. The remaining tail is normalised at a height $30$
+times as large, so
+\[
+ Y_4=\frac15+\frac1{15}+\frac1{30}+\frac{Y_5}{30}
+     =\frac{9+Y_5}{30}.
+\]
+In the block $(64,128]$, the interior jumps occur in the opposite order,
+at $81,125$. Its constant term is $1/3+1/15+1/30=13/30$.
+The order of the jumps is therefore visible in the affine recurrence.
+
+In general, $(2^a,2^{a+1}]$ contains its terminal power of $2$, at most
+one power of $3$ and at most one power of $5$. Let $\tau_a$ denote the
+sequence of interior prime labels, omitting the terminal $2$. Splitting
+off the block gives
 \begin{equation}\label{long269:eq:five-maps}
  Y_a=G_{\tau_a}(Y_{a+1}),\qquad
  G_\tau(y)=\frac{\mu_\tau+y}{b_\tau},\qquad
@@ -174,36 +199,45 @@ gives $0<Y_a<1$. Splitting off one block gives
  \mu_\tau&1&3&3&13&9
  \end{array}
 \end{equation}
-For example, a block of type $35$ contributes
-$1/3+1/15+1/30=13/30$ to the normalised tail.
-The same calculation for type $53$ gives $1/5+1/15+1/30=9/30$.
-Thus the order of the two interior jumps changes the constant term of the map.
+Here $b_\tau$ is the factor by which the height increases across the
+block, and $\mu_\tau/b_\tau$ is the block's normalised contribution.
 
-To use a repeated tail value, we must first recover the following block
-from that value alone. The bound $0<Y_{a+1}<1$ does not yet permit this:
-for example, $G_{53}([0,1])=[3/10,1/3]$ lies inside
-$G_5([0,1])=[3/10,2/5]$. We therefore use the spacing of powers of $5$
-to narrow the range of the actual tails.
+The five formulae alone do not recover $\tau_a$ from $Y_a$.
+The coarse images $G_{53}([0,1])=[3/10,1/3]$ and
+$G_5([0,1])=[3/10,2/5]$ overlap. We need a smaller interval known to
+contain the next \emph{arithmetic} tail. The table gives the lower bound
+$Y_a\ge3/10$. With that lower endpoint, separating these two images
+requires an upper endpoint $U$ satisfying
+\[
+ G_{53}(U)<G_5(3/10),\qquad
+ \frac{9+U}{30}<\frac{33}{100},\qquad U<\frac9{10}.
+\]
+This specifies the improvement needed from the arithmetic sequence.
 
-The table gives $Y_a\ge3/10$. A power $5^f$ belongs to block
-$\lfloor f\log_2 5\rfloor$; these indices start at $2$, and their successive
-differences are $2$ or $3$. Thus every three consecutive blocks contain
-a power of $5$. Given $a$, let $j\in\{a,a+1,a+2\}$ be the first such
-block. At $j$, the bound $Y_{j+1}<1$ gives $Y_j\le7/15$, since
-$G_{35}(1)=7/15$ also bounds $G_5(1)$ and $G_{53}(1)$.
-To bound $Y_a$, we work backwards from $j$ through at most two blocks.
-Their maps are $G_\varnothing$ or $G_3$, and
-$G_3(y)\le G_\varnothing(y)=(1+y)/2$ for $y\ge0$. Consequently
+A power $5^f$ belongs to block $\lfloor f\log_2 5\rfloor$. These
+indices start at $2$ and their successive differences are $2$ or $3$.
+Every three consecutive blocks therefore contain a power of $5$.
+Given $a$, let $j\in\{a,a+1,a+2\}$ be the first such block. The maps
+for blocks containing $5$ give $Y_j\le7/15$, since $Y_{j+1}<1$ and
+$G_{35}(1)=7/15$ bounds $G_5(1)$ and $G_{53}(1)$ as well.
+We now work \emph{backwards} from $j$ to $a$. Each intervening block
+has map $G_\varnothing$ or $G_3$, and
+$G_3(y)\le G_\varnothing(y)=(1+y)/2$ for $y\ge0$.
+At most two backward steps give the successive bounds
+$7/15$, $11/15$, $13/15$. Hence
 \begin{equation}\label{long269:eq:five-interval}
  Y_a\in I=\left[\frac3{10},\frac{13}{15}\right],\qquad
- G_\varnothing\bigl(G_\varnothing(7/15)\bigr)=\frac{13}{15}.
+ G_\varnothing\bigl(G_\varnothing(7/15)\bigr)=\frac{13}{15}<\frac9{10}.
 \end{equation}
-The spacing condition was needed to bound the arithmetic tails.
-The interval $I$ is not invariant under arbitrary compositions of the
-five maps, since $G_\varnothing(13/15)=14/15$.
+The bound uses the occurrence of a power of $5$ within three blocks.
+It does not assert invariance under arbitrary words in the five maps:
+indeed, $G_\varnothing(13/15)=14/15$ lies outside $I$.
 
-On $I$ the five images are disjoint. Their endpoints, listed in increasing
-order, are
+The following table gives the exact images of $I$. They
+are pairwise disjoint, with successive gaps
+$1/900,17/300,79/900,1/180$. The two smallest gaps come from
+$3(3/10)-13/15=1/30>0$.
+
 \[
  \begin{array}{c|c}
  \tau&G_\tau(I)\\\hline
@@ -214,27 +248,22 @@ order, are
  \varnothing&[13/20,14/15]
  \end{array}
 \]
-The consecutive gaps are $1/900,17/300,79/900,1/180$.
-The two smallest depend on $3(3/10)-13/15=1/30>0$, which explains why
-the narrower bound matters. Since $Y_{a+1}\in I$, the actual tail $Y_a$
-belongs to exactly one image interval, identifying $\tau_a$. For example,
-$Y_a\in[31/100,74/225]$ forces $\tau_a=53$ and gives $Y_{a+1}=30Y_a-9$.
-In general, after calculating $Y_{a+1}=b_{\tau_a}Y_a-\mu_{\tau_a}$, we
-identify its image interval and continue. These are the successive
-arithmetic tails, each in $I$; no invariance for arbitrary words is used.
 
-Suppose that $\mathcal D_{\{2,3,5\}}=N/K$, with integers $N$ and $K\ge1$.
-Every height at or before $2^a$ divides $P_a$. Consequently
-\[
- KY_a=P_aN-K\left(P_a+
-        \sum_{\substack{t\le2^a\\t=2^n,3^n\text{ or }5^n,\ n\ge1}}
-                 \frac{P_a}{\hgt_{\{2,3,5\}}(t)}\right)\in\mathbb Z.
-\]
-There are only finitely many integers in $[3K/10,13K/15]$, so
-$Y_u=Y_v$ for some $u<v$. Recovery gives $\tau_u=\tau_v$ and then
-$Y_{u+1}=Y_{v+1}$. Repeating this step gives
-$\tau_{u+j}=\tau_{v+j}$ for every $j\ge0$, so the block word has eventual
-period $v-u$.
+Since $Y_{a+1}\in I$, the actual tail $Y_a$ belongs to exactly one of
+these five image intervals, identifying $\tau_a$. For instance,
+$Y_a\in[31/100,74/225]$ forces $\tau_a=53$ and gives $Y_{a+1}=30Y_a-9$.
+In general we calculate $Y_{a+1}=b_{\tau_a}Y_a-\mu_{\tau_a}$, identify its
+image interval, and continue. Each recovered value is the next arithmetic
+tail, so the same bound $I$ remains available at every step.
+
+\medskip
+\emph{Repetition would give a rational frequency.}
+The finitely many tail values obtained above include a repeated value
+$Y_u=Y_v$ with $u<v$. Since the image intervals are disjoint, this
+forces $\tau_u=\tau_v$. Applying the corresponding inverse map gives
+$Y_{u+1}=Y_{v+1}$. Induction yields
+$\tau_{u+j}=\tau_{v+j}$ for every $j\ge0$. Thus the entire later block
+word has period $v-u$.
 
 To exclude this possibility, let $\alpha=\log2/\log3$. The number of powers
 of $3$ in block $a$ is
@@ -580,9 +609,19 @@ For every finite set $P$ of primes with $|P|\ge2$, the sum $\mathcal D_P$
 is irrational.
 \end{remark}
 
-We begin with the lattice of normalised tails. A long common prefix makes
-two such tails equal under rationality; the rest of the proof constructs
-a later pair of jumps whose reversal is incompatible with that equality.
+Rationality again confines the normalised tails to a lattice. We shall
+force two of them to be equal by arranging a long common initial word.
+Equality then requires the same integer numerator in every pair of
+corresponding rearranged blocks. The remaining task is to produce a
+block whose order changes and whose numerator changes with it.
+
+For two or three primes, every changed ordering has this property.
+With four or more primes it can fail, so recovering arbitrary blocks
+would ask too much. We instead use a torus construction to isolate two
+neighbouring jumps of distinct primes and reverse their order. Other
+chains may also be rearranged; this one two-letter chain is enough to
+contradict equality of the tails. The word calculation comes first,
+followed by the construction of the two arithmetic tails.
 
 \paragraph{Words and tails.}\label{long269:sec:words}
 For an infinite word $u=u_1u_2\cdots$ over $P$, define
@@ -592,7 +631,11 @@ $\sigma=\sigma_1\cdots\sigma_n$, put
  \Pi(\sigma)=\sigma_1\cdots\sigma_n,\qquad
  f(\sigma)=\sum_{j=1}^{n}\sigma_{j+1}\cdots\sigma_n.
 \]
-The final term in $f$ is $1$. Removing a prefix gives
+The final term in $f$ is $1$. Thus $f$ is the numerator of the block
+contribution when its denominator is the product of the block letters.
+For two distinct letters $a,b$, we have $f(ab)=b+1$ and $f(ba)=a+1$.
+Reversing this pair changes $f$ by the nonzero integer $b-a$.
+Removing a prefix gives
 \begin{equation}\label{long269:eq:word-shift}
  V(\sigma u)=\frac{f(\sigma)+V(u)}{\Pi(\sigma)}.
 \end{equation}
@@ -916,7 +959,12 @@ $q$-power have indices $\lfloor f\log_p q\rfloor$ and
 $\lfloor(f+1)\log_p q\rfloor$, by
 Remark~\ref{long269:res:distinct-height-blocks}(i). Their difference is
 $g_q$ or $g_q+1$. These gap constraints provide finite memory for a
-state-dependent interval construction.
+state-dependent interval construction. The intervals will enclose all
+paths allowed by these constraints. Every sufficiently late arithmetic
+block sequence is such a path, but we do not assume that every allowed
+path is realised by prime powers. Separation on this larger domain is
+sufficient for recovery; failure of separation there need not give two
+equal arithmetic tails.
 
 These constraints define a finite automaton.  Its states are the tuples
 $s=(s_q)_{q\in Q}$ with $1\le s_q\le g_q+1$; the entry $s_q$ counts the blocks
@@ -1873,17 +1921,23 @@ sum is rational.
 \section{The recurrence for tails between powers of two}\label{long269:sec:blocks}
 
 We now return to the repeated sum $S=\mathcal R_{\{2,3,5\}}$ and set
-$P=\{2,3,5\}$. Its dyadic blocks are the half-open intervals
-$[2^a,2^{a+1})$. At their endpoints we put $P_a=\hgt(2^a)$ and
-$h_a=P_a/2$, so that multiplication by $h_a$ clears the heights strictly
-before $2^a$.
+$P=\{2,3,5\}$. The block $(16,32]$ used in the distinct-height proof
+contained three jumps. The half-open interval $[16,32)$ contains seven
+smooth integers: $16,18,20,24,25,27,30$. Their heights are respectively
+$720,720,720,720,3600,10800,10800$. The recurrence for $S$ must retain
+these multiplicities as well as the height changes.
+
+We group the terms of $S$ into $[2^a,2^{a+1})$, including the left
+endpoint. The prefix to be cleared is therefore strictly before $2^a$:
+it excludes the jump by $2$ at that boundary. Put $P_a=\hgt(2^a)$ and
+$h_a=P_a/2$. Every height in that prefix divides $h_a$.
 Here $h_0=1/2$, and $h_a$ is an integer for $a\ge1$.
 The powers of $3$ and $5$ selected at $2^a$ exceed $2^a/3$ and $2^a/5$,
 respectively, while the power of $2$ is $2^a$ itself. Thus
 \[
  \frac{8^a}{15}<P_a\le8^a\qquad(a\ge0).
 \]
-We group the repeated terms in half-open shells and define
+With this normalisation, define the shell masses and tails by
 \begin{equation}\label{long269:eq:actual-tail}
  s_a=\sum_{\substack{i,j,k\ge0\\2^a\le2^i3^j5^k<2^{a+1}}}
          \frac1{\hgt(2^i3^j5^k)},\qquad
@@ -1929,8 +1983,9 @@ The first four pairs $(b_a,m_a)$, starting at $a=1$, are
 $(6,4)$, $(10,7)$, $(6,7)$ and $(30,65)$.
 In particular $m_3>b_3$: these coefficients are not positional digits.
 
-The shell $[16,32)$ shows why the order of the jumps matters.  Its
-internal jumps are $25$ and $27$, in that order.  The four smooth numbers
+In the shell $[16,32)$, the internal jumps are $25$ and $27$, in that
+order. Multiplication by $h_5=10800$ gives the weights for the seven
+points listed above.  The four smooth numbers
 $16,18,20,24$ precede both jumps and have weight $15$; $25$ precedes only
 the jump at $27$ and has weight $3$; and $27,30$ have weight $1$.  Thus
 \[
@@ -2488,11 +2543,13 @@ residue:
  X_2=6X_1-4,\qquad X_3=10X_2-7=60X_1-47.
 \]
 Whenever $BX_1$ is integral, $BX_3\equiv-47B\pmod{60}$.
-We obtain a lower bound on any positive integral tail by taking the
-least positive representative of this class. Comparing it with the
-quadratic upper bound gives a contradiction whenever the two bounds
-are incompatible. To test every possible denominator, we need windows
-starting beyond an arbitrary prescribed index.
+Thus an integral starting tail puts the terminal tail in an arithmetic
+progression. Its positivity and quadratic upper bound restrict it to a
+finite interval. If the least positive term of that progression exceeds
+the bound, no terminal tail is possible. In the zero residue class we
+must use the modulus itself, since zero is excluded by positivity.
+To test every possible rational denominator, we need such windows after
+an arbitrary prescribed starting index.
 
 A window starts at $\ell\ge0$ and consists of $h\ge0$ steps.  Its product
 of bases and accumulated numerator are integers, even when the tails are
@@ -2540,6 +2597,11 @@ inequality are finite integers.  The quantifiers over denominators and
 prescribed onsets are nevertheless unbounded; a search over a finite
 rectangle of $(B,\ell)$ does not verify them.  Every $b_a>0$, so
 $W_{\ell,h}>0$ is automatic.
+
+Here $K$ is the integer bound obtained above from the jump count.
+The short paper uses the coarser bound $90B(a+1)^2$ instead. The
+argument needs the upper-bound property and the stated growth
+condition, rather than a particular numerical choice.
 
 The two hypotheses on $G$ in the next theorem serve different purposes.
 Domination of $K$ lets a residue above $G$ exclude a positive integer tail.

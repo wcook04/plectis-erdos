@@ -6,6 +6,7 @@
 % `tectonic erdos-251-prime-gap-dyadic-series.tex` or `make`.
 \documentclass[11pt]{article}
 \input{problem-note-preamble}
+\usepackage{tikz}
 \input{evidence/erdos-251-prime-gap-dyadic-series}
 % Problem-specific source pin: #251 advances independently of the corpus
 % default, while the #249/#257 notes retain their own reviewed snapshot.
@@ -69,14 +70,24 @@ digits and decreasing weights.  Crmari\'{c} and Kova\v{c}
 \cite[Lemma~4]{crmarickovac2025} give the finite-choice form used here,
 and Kova\v{c} and Tao \cite[Lemma~5.1]{kovactao2024} use analogous
 intervals of reciprocal choices.  We must arrange these choices on a sparse set while preserving cumulative
-congruences.  To do so, we vary two adjacent corrections with a fixed
-ordinary total.  For example, the pairs $(0,6),(2,4),(4,2),(6,0)$ at
-indices $n,n+1$ contribute $6,8,10,12$ divided by $2^{n+2}$, and each
-pair has total $6$.  A correction at $n-1$ first fixes the cumulative
-residue, after which the choice of pair leaves all later residue corrections
-unchanged.  Sparsity requires the triples to move apart.  We choose their
-spacing and the range of each pair together, so that later choices still
-cover the gaps between the current ones.
+congruences.  To do so, we redistribute a fixed correction between two adjacent
+indices.  The simplest useful calculation is
+\[
+ \begin{array}{c|rrrr}
+ (e_n,e_{n+1}) &(0,6)&(2,4)&(4,2)&(6,0)\\
+ e_n+e_{n+1} &6&6&6&6\\
+ 2^{n+2}\bigl(e_n2^{-n-1}+e_{n+1}2^{-n-2}\bigr)&6&8&10&12.
+ \end{array}
+\]
+Moving $2$ from the later index to the earlier one changes the weighted
+sum while leaving the ordinary sum fixed.  If the cumulative correction
+before the pair is odd, an additional $1$ at $n-1$ clears its residue
+modulo $2$.  The choice among the four pairs then has no effect on any
+cumulative residue beyond the pair.  This is only the local calculation: we still
+have to accommodate every fixed modulus and an arbitrarily small density
+of permitted indices.  Increasing the spacing inserts a smaller power of $2$ into the
+weighted contribution.  We increase the range of choices in each pair just enough for
+later choices to cover the spacing between the present ones.
 
 Throughout, $\N=\{0,1,\ldots\}$, intervals of indices contain integers,
 and $\log$ is natural unless a base is displayed.  A set $S\subseteq\N$
@@ -131,152 +142,242 @@ dyadic coefficient sequences.
 
 \section{Proof of Proposition~\ref{res:sparserationalisation}}\label{sec:construction}
 \begin{proof}
-We first arrange the congruences so that choosing a weighted contribution
-will not change any later residue correction.  We then choose the spacing
-and moduli to satisfy the size bound and fill an interval.
+\emph{Fixed totals.}
+At stage $j$ we put a correction at $n_j-1$ and a variable pair at
+$n_j,n_j+1$.  We keep the pair's ordinary sum fixed, so that its choice leaves the
+residue to be cleared at every later stage unchanged.
+Let $n_{-1}\ge K$, write $s_j=n_j-n_{j-1}\ge4$, and take positive
+integers $M_j$ with $M_j\mid M_{j+1}$.  The actual centres and moduli
+will be chosen below.  Put $D_j=2^{s_j}-1$; we will see shortly why
+this digit range compensates for the spacing $s_j$.
 
-Let $n_j$, $j\ge0$, be centres following an initial index $n_{-1}\ge K$,
-with separations $s_j=n_j-n_{j-1}\ge4$.  We use positive integers $M_j$
-satisfying $M_j\mid M_{j+1}$ and allow digits up to $D_j=2^{s_j}-1$.
-This range will compensate for the factor $2^{s_j}$ lost by moving the
-next choice farther out.  If $C_j$ is the total correction before
-$n_j-1$, we clear its residue modulo $M_j$ by setting, from $C_0=0$,
+Starting from $C_0=0$, define
 \[
  c_j=(-C_j)\bmod M_j\quad(0\le c_j<M_j),\qquad
  C_{j+1}=C_j+c_j+M_jD_j.
 \]
-For a digit $0\le d_j\le D_j$, define
+For integers $0\le d_j\le D_j$, set
 \begin{equation}\label{eq:correction-triple}
  e_{n_j-1}=c_j,\qquad e_{n_j}=M_jd_j,\qquad
  e_{n_j+1}=M_j(D_j-d_j),
 \end{equation}
-and set $e_n=0$ elsewhere.  The ordinary and dyadic totals of this
-triple are
+and put $e_n=0$ elsewhere.  The two sums of a triple are
 \[
  \begin{aligned}
-  \sum_{r=n_j-1}^{n_j+1}e_r
-     &=c_j+M_jD_j,\\
-  \sum_{r=n_j-1}^{n_j+1}e_r2^{-r-1}
-     &=c_j2^{-n_j}+M_j(D_j+d_j)2^{-n_j-2}.
+ \sum_{r=n_j-1}^{n_j+1}e_r
+    &=c_j+M_jD_j,\\
+ \sum_{r=n_j-1}^{n_j+1}e_r2^{-r-1}
+    &=c_j2^{-n_j}+M_jD_j2^{-n_j-2}+d_jM_j2^{-n_j-2}.
  \end{aligned}
 \]
-The first total is independent of $d_j$, so the recursion determines
-all $C_j$ and $c_j$ before any digits are chosen.  The second total
-increases by $M_j2^{-n_j-2}$ when $d_j$ increases by one.
-After the entry at $n_j-1$ has cleared the
-residue, the two multiples of $M_j$ preserve it.  Thus the cumulative
-sum is divisible by $M_j$ from index $n_j$ through the end of the triple.
+The first identity verifies that $C_j$ is the cumulative correction
+before $n_j-1$, whatever the digits are.  Thus all $C_j$ and $c_j$
+can be computed before choosing a single $d_j$.  The second identity
+shows that increasing $d_j$ by one transfers $M_j$ from $n_j+1$ to
+$n_j$ and increases the weighted sum by
+\[
+ w_j=M_j2^{-n_j-2}.
+\]
 
-For a fixed $q\mid M_J$, the cumulative sum is divisible by $q$ at
-$n_J$.  At each later triple, divisibility of $C_j$ and $M_j$ implies
-$q\mid c_j$, and both entries of the pair are again multiples of $q$.
-Induction through the triples and the intervening zeros gives
-$q\mid e_n$ and $q\mid\sum_{i<n}e_i$ for every $n\ge n_J$.
-The entry $c_J$ itself lies at $n_J-1$, outside this range.
-We therefore need moduli eventually divisible by every fixed $q$, with
-spacings that leave enough weighted choices for interval covering.
+After $c_j$ has been inserted, the cumulative correction is divisible
+by $M_j$; the two entries of the pair preserve this divisibility.
+Fix $q\mid M_J$.  At index $n_J$ both the coefficient correction and
+the cumulative correction are divisible by $q$.  At every later
+triple, $q$ divides $C_j$ and $M_j$, so it also divides $c_j$ and
+both pair entries.  The intervening corrections are zero.  Hence
+\[
+ q\mid e_n,\qquad q\mid\sum_{i<n}e_i\qquad(n\ge n_J).
+\]
+The entry $c_J$ lies at $n_J-1$, just before this cutoff; it need not
+itself be divisible by $q$.  This explains both the placement of the
+residue correction and the target independence of the cutoff.
 
-To fit even a nonmonotone allowance, we replace it by the lower envelope
+\par\medskip\noindent\emph{Spacing and size.}
+The variable part at stage $j$ has spacing $w_j$ and maximum $D_jw_j$.
+We arrange that the later variable parts have enough total range
+to cover one spacing $w_j$.  Our choice $D_i=2^{s_i}-1$ gives
+\[
+ D_iw_i=M_i\bigl(2^{-n_{i-1}-2}-2^{-n_i-2}\bigr).
+\]
+Because $M_i\ge M_j$ for $i>j$, replacing every later modulus by $M_j$
+gives the finite estimate
+\begin{equation}\label{eq:finite-overlap}
+ \begin{aligned}
+ \sum_{i=j+1}^{J}D_iw_i
+ &\ge M_j\sum_{i=j+1}^{J}
+       \bigl(2^{-n_{i-1}-2}-2^{-n_i-2}\bigr)\\
+ &=w_j-M_j2^{-n_J-2}\qquad(J>j).
+ \end{aligned}
+\end{equation}
+Thus increasing the spacing does not destroy interval covering, provided
+we pay for the corresponding digit range.  Every entry of
+\eqref{eq:correction-triple} is at most $M_j2^{s_j}$.  It remains to fit that
+quantity below the allowance while making the spacings tend to infinity
+and the moduli eventually divisible by each fixed integer.
+
+For a possibly nonmonotone allowance use
 \[
  h(n)=\inf_{m\ge n}\min(f(m),m).
 \]
-Since $f(n)\to\infty$, this envelope is finite, nondecreasing and tends
-to infinity.  The additional bound $h(n)\le n$ will ensure summability.
-We choose $n_{-1}$ with $h(n_{-1})\ge32$ and set recursively
+This nondecreasing lower envelope tends to infinity.  A bound chosen
+using $h(n_{j-1})$ is therefore valid at each of the later coordinates
+of the triple.  The extra cap by $m$ serves a separate purpose:
+$e_n\le n$ will make the weighted corrections summable.
+Choose $n_{-1}$ with $h(n_{-1})\ge32$, and set
 \[
  k_j=\max\{k\ge2:k!2^{k+2}\le h(n_{j-1})\},\qquad
  M_j=k_j!,\qquad s_j=k_j+2,\qquad n_j=n_{j-1}+s_j.
 \]
-The set defining $k_j$ is nonempty because $2!2^4=32$, and it is finite
-because factorials tend to infinity.  As $h$ is nondecreasing and
-$n_j\to\infty$, the integers $k_j$ are nondecreasing and tend to infinity.  Hence every
-fixed modulus eventually divides $M_j$, while $s_j\to\infty$.
-At a coordinate $n$ of the $j$th triple, every entry of
-\eqref{eq:correction-triple} is bounded by
-$M_j2^{s_j}\le h(n_{j-1})\le\min(f(n),n)$.
-This proves the required correction bound and convergence of all the
-weighted correction sums.
+The single parameter $k_j$ now controls both requirements: $k_j!$
+absorbs each fixed modulus once $k_j$ is large enough, while $k_j+2$
+separates the triples.  We choose the largest such parameter whose cost
+$k_j!2^{k_j+2}$ fits the available bound.  The choice exists because
+$2!2^4=32$, is finite, and is nondecreasing with $j$.  Since
+$n_j\to\infty$ and $h(n_j)\to\infty$, we also have $k_j\to\infty$.
+Consequently the moduli are nested, every fixed $q$ divides all
+sufficiently late $M_j$, and $s_j\to\infty$.  At each supported
+coordinate $n$ of the $j$th triple,
+\[
+ 0\le e_n\le M_j2^{s_j}\le h(n_{j-1})\le\min(f(n),n).
+\]
+This proves the size bound and convergence for every choice of digits.
 
-Let $S$ be the union of these triples.  Given $R$, we discard the finitely
-many centres preceding the point where all separations are at least $R$.
-Any interval of length $H$ then meets at most $3(H/R+2)$ permitted
-indices, in addition to a fixed finite set.  We may take the supremum over
-translates, let $H\to\infty$, and then let $R\to\infty$.
-Thus $S$ has upper Banach density zero.
+Let $S=\bigcup_{j\ge0}\{n_j-1,n_j,n_j+1\}$.  For any $R$, all but
+finitely many successive centres are at least $R$ apart.  An interval
+of length $H$ therefore meets at most $3(H/R+2)$ permitted indices,
+in addition to a fixed finite set.  The bound is uniform in the
+position of the interval.  Divide by $H$, take the supremum over
+positions and let $H\to\infty$; then let $R\to\infty$.
+This proves upper Banach density zero.
 
-We now calculate the range of possible weighted sums.  Increasing $d_j$
-by one transfers $M_j$ from index $n_j+1$ to index $n_j$, so it increases
-the dyadic contribution by $w_j=M_j2^{-n_j-2}$.  Write
+\par\medskip\noindent\emph{Attaining the interval.}
+We have now fixed the centres, moduli, digit ranges and residue
+corrections, but have left every digit free.  Define
 \[
  \beta=\sum_{j\ge0}\bigl(c_j2^{-n_j}+D_jw_j\bigr),\qquad
  F_j=\sum_{i\ge j}D_iw_i.
 \]
-Thus $\sum_ne_n2^{-n-1}=\beta+\sum_jd_jw_j$.
-Here $\beta$ is the contribution with all digits zero, and $F_j$ is the
-sum of the maximal digit contributions from stage $j$ onwards.
-The bounds above give $\beta>0$, $0<F_0<\infty$ and $F_j\to0$.
-To represent every value in that range, the later choices must cover the
-spacing $w_j$ between successive current choices.  Our definition of $D_i$
-was chosen for the identity
+The first quantity is the contribution with all digits zero.  The
+second is the maximum possible variable contribution from stage $j$
+onwards.  Both are finite by the bounds just proved, with $\beta>0$,
+$F_0>0$ and $F_j\to0$.  The total correction is
 \[
- D_iw_i=M_i\bigl(2^{-n_{i-1}-2}-2^{-n_i-2}\bigr).
+ \sum_ne_n2^{-n-1}=\beta+\sum_jd_jw_j.
 \]
-For $i>j$ we have $M_i\ge M_j$.  Keeping this one modulus fixed gives,
-for every $J>j$,
-\[
- \sum_{i=j+1}^{J}D_iw_i
- \ge M_j\sum_{i=j+1}^{J}
-       \bigl(2^{-n_{i-1}-2}-2^{-n_i-2}\bigr)
- =M_j\bigl(2^{-n_j-2}-2^{-n_J-2}\bigr).
-\]
-Letting $J\to\infty$, we obtain
+Taking $J\to\infty$ in \eqref{eq:finite-overlap} now gives
 \begin{equation}\label{eq:overlap}
  F_{j+1}\ge M_j2^{-n_j-2}=w_j.
 \end{equation}
-The intervals
+For a remaining target in $[0,F_j]$, choosing digit $d$ leaves a
+remainder in $[0,F_{j+1}]$ exactly when that target belongs to
 \[
- [dw_j,dw_j+F_{j+1}],\qquad d=0,\ldots,D_j,
+ [dw_j,dw_j+F_{j+1}],\qquad d=0,\ldots,D_j.
 \]
-therefore overlap or meet at their endpoints.  Their union is $[0,F_j]$,
-because $F_j=D_jw_j+F_{j+1}$.  Given $x\in[0,F_0]$, we choose $d_0$
-so that $x-d_0w_0\in[0,F_1]$ and repeat this choice for each successive
-remainder.  After stage $j$ the remainder belongs to $[0,F_{j+1}]$,
-which shrinks to zero, and hence $x=\sum_jd_jw_j$.
-Adding the fixed contribution $\beta$ proves the interval assertion with
-$I=(A+\beta,A+\beta+F_0)$.  This is the
-finite-choice covering argument of \cite[Lemma~4]{crmarickovac2025}.
-In particular, the permitted set, the interval and every congruence cutoff
-were chosen before the target $x$.
+These intervals meet or overlap by \eqref{eq:overlap}, and their union
+is $[0,F_j]$ because $F_j=D_jw_j+F_{j+1}$.  Figure~\ref{fig:correction-and-overlap}
+shows the two calculations.
+\begin{figure}[t]
+\centering
+\begin{tikzpicture}[x=1cm,y=1cm,font=\small]
+ \node[anchor=west] at (-.2,2.65) {\textbf{A fixed ordinary total}};
+ \draw (-.15,1.72)--(9.5,1.72);
+ \foreach \x in {1.05,4.4,7.85} {\draw (\x,1.64)--(\x,1.80);}
+ \node at (1.05,2.0) {$n_j-1$};
+ \node at (4.4,2.0) {$n_j$};
+ \node at (7.85,2.0) {$n_j+1$};
+ \node at (1.05,1.37) {$c_j$};
+ \node at (4.4,1.37) {$M_jd_j$};
+ \node at (7.85,1.37) {$M_j(D_j-d_j)$};
+ \draw[->] (7.05,.88)--(5.10,.88);
+ \node[anchor=east] at (4.93,.88) {transfer $M_j$};
+ \node[anchor=west] at (-.2,.36)
+   {$\text{ordinary total}=c_j+M_jD_j,\qquad
+     \text{weighted increment}=w_j=M_j2^{-n_j-2}$};
+ \node[anchor=west] at (-.2,-.30) {\textbf{Consecutive target intervals}};
+ \draw[line width=.8pt] (0,-1.30)--(5.35,-1.30);
+ \draw (0,-.94)--(0,-1.38) (5.35,-.94)--(5.35,-1.38);
+ \draw[line width=.8pt] (3.3,-2.22)--(8.65,-2.22);
+ \draw (3.3,-2.14)--(3.3,-2.30) (8.65,-2.14)--(8.65,-2.30);
+ \draw[densely dashed] (3.3,-.96)--(3.3,-2.26);
+ \draw[densely dashed] (5.35,-.96)--(5.35,-2.26);
+ \node[anchor=south] at (0,-.93) {$dw_j$};
+ \node[anchor=south] at (5.35,-.93) {$dw_j+F_{j+1}$};
+ \node[anchor=north] at (3.3,-2.35) {$(d+1)w_j$};
+ \node[anchor=north] at (8.65,-2.35) {$(d+1)w_j+F_{j+1}$};
+ \node at (4.325,-1.76) {$F_{j+1}\ge w_j$};
+\end{tikzpicture}
+\caption{Redistributing $M_j$ between adjacent entries keeps their ordinary
+sum fixed and increases the dyadic sum by $w_j$.  The candidate target
+intervals in the lower panel cover without gaps when $F_{j+1}\ge w_j$.
+The sketch shows strict overlap; the proof also allows equality and
+establishes attainment by keeping the remainder in $[0,F_j]$ as $F_j\to0$.}
+\label{fig:correction-and-overlap}
+\end{figure}
+Given $x\in[0,F_0]$, start with $\rho_0=x$.  Having chosen the first
+$j$ digits, choose $d_j$ so that
+\[
+ \rho_{j+1}=\rho_j-d_jw_j\in[0,F_{j+1}].
+\]
+The covering just proved makes this possible at every stage.  The
+invariant $0\le\rho_j\le F_j$ and $F_j\to0$ then give
+\[
+ x-\sum_{i=0}^{j}d_iw_i=\rho_{j+1}\longrightarrow0.
+\]
+Thus every $x\in[0,F_0]$ is attained, and we may take
+$I=(A+\beta,A+\beta+F_0)$.  The target $r\in I$ determines only the
+digits, through $x=r-A-\beta$; it changes neither $S$, $I$ nor the
+cutoff $N_q=n_J$ chosen using $q\mid M_J$.
+This last selection is the standard finite-choice covering argument
+of \cite[Lemma~4]{crmarickovac2025}.  The construction above supplies
+its summability and overlap hypotheses while imposing the congruences
+and the small permitted set.
 
-For the quantitative assertion, we choose separations of order
-$\log\log n$ so that the number of triples can also be bounded.  Replace
-the preceding schedule by
+\par\medskip\noindent\emph{The logarithmic scale.}
+For $f(n)=(\log(n+3))^\varepsilon$, we can choose the separations
+explicitly at the scale $\log\log n$.  Keep the same triples and
+$D_j=2^{s_j}-1$, but replace the schedule by
 \[
- s_j=\left\lfloor\frac{\varepsilon}{2}
-               \log_2\log(n_{j-1}+3)\right\rfloor,\qquad
- k_j=\max\{k\ge2:k!\le(\log(n_{j-1}+3))^{\varepsilon/4}\},
+ \begin{aligned}
+ s_j&=\left\lfloor\frac{\varepsilon}{2}
+               \log_2\log(n_{j-1}+3)\right\rfloor,\\
+ k_j&=\max\{k\ge2:k!\le(\log(n_{j-1}+3))^{\varepsilon/4}\},
+ \end{aligned}
 \]
-and again put $M_j=k_j!$, $n_j=n_{j-1}+s_j$ and $D_j=2^{s_j}-1$.
-Choose the initial index large enough that $s_j\ge4$ and all these
-choices exist.  Then
+with $M_j=k_j!$ and $n_j=n_{j-1}+s_j$.  Start far enough out that
+$s_j\ge4$ and all choices exist.  Allocating exponents $\varepsilon/4$
+to the modulus and $\varepsilon/2$ to $2^{s_j}$ leaves room within
+the prescribed allowance:
 \[
  M_j2^{s_j}\le(\log(n_{j-1}+3))^{3\varepsilon/4}
              \le(\log(n+3))^\varepsilon
 \]
-at each coordinate $n$ of the triple.  This bound is also at most $n$
-after increasing the initial index.  The moduli are again nested and tend through factorials of unbounded
-order, and the linear bound still gives summability.  The congruence
-induction and telescoping estimate therefore apply to this schedule too.
-Now $s_j\asymp_\varepsilon\log\log n_j$, so an interval $[X,2X)$
-contains $O_\varepsilon(X/\log\log X)$ permitted indices.
+at each coordinate $n$ of the triple.  After enlarging the initial
+index, this is also at most $n$.  The moduli remain nested and absorb
+every fixed integer; summability, the congruence induction and
+\eqref{eq:finite-overlap} therefore apply without change.  Here
+$s_j\asymp_\varepsilon\log\log n_j$, so
+\[
+ |S\cap[X,2X)|=O_\varepsilon(X/\log\log X).
+\]
 
-We couple the two block distributions by choosing the same starting
-index.  A changed coordinate belongs to at most $m$ of the sampled
-blocks, so the probability that the blocks differ is at most
-$m|S\cap[X,2X+m)|/X$.  This proves the stated total variation bound.
-When $m\le X$, the interval $[X,2X+m)$ is contained in $[X,4X)$, and the
-support estimate on two dyadic intervals bounds the probability by
-$O_\varepsilon(m/\log\log X)$.  The required uniform convergence follows.
+Choose the same uniform starting index $n\in[X,2X)$ for the two blocks.
+A changed coordinate $t$ can affect only the starts
+$n\in[t-m+1,t]$, of which there are at most $m$.
+Only $t\in S\cap[X,2X+m)$ can occur in a sampled block.  The union
+bound consequently gives
+\[
+ \begin{aligned}
+ d_{\rm TV}(\mu_{a,X,m},\mu_{a+e,X,m})
+ &\le\mathbb P\bigl(e_{n+i}\ne0\text{ for some }0\le i<m\bigr)\\
+ &\le\frac{m|S\cap[X,2X+m)|}{X}.
+ \end{aligned}
+\]
+For $m\le X$, two dyadic bands cover $[X,2X+m)$ and give the bound
+$O_\varepsilon(m/\log\log X)$.  In particular it tends to zero when
+$m=o(\log\log X)$, uniformly over targets since the permitted set
+$S$ is common to all of them.  The block length enters solely through
+the number of starts that one altered coordinate can affect.
+
 \end{proof}
 
 The coupling also applies to tests depending on the starting index.
@@ -424,11 +525,14 @@ $2^{-N}U_N=\sum_{k>N}a_k2^{-k}\to0$ by absolute convergence.
 \end{proof}
 
 \subsection{Integral shifts}\label{sec:tail}
-For the recurrence $U_{N+1}=2U_N-a_{N+1}$ with $a_n\in\Z$, we
-write $D_h(N)=U_{N+h}-U_N$.  Subtracting the integer $a_{N+1}$ has no
-effect modulo $\Z$, so after $N$ steps we have the same fractional part
-as $2^NU_0$.  Integral shifts are consequently determined by the
-denominator of $U_0$, independently of the coefficient sequence.
+For the recurrence $U_{N+1}=2U_N-a_{N+1}$ with $a_n\in\Z$, write
+$D_h(N)=U_{N+h}-U_N$.  Modulo integers, each step is doubling:
+$U_N$ has the fractional part of $2^NU_0$.  An integral shift means
+that a fractional part has returned to an earlier value.  Such a return
+makes $2^N(2^h-1)U_0$ an integer and forces rationality when $h>0$.
+Conversely, doubling a rational number eventually gives periodic
+fractional parts.  The next theorem records the denominator calculation
+and the exact quantifiers.
 
 \begin{theorem}[exact rationality classification]\label{res:escape-irrational}
 For a real integer-coefficient recurrence, the following are equivalent:

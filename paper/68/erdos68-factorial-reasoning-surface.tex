@@ -26,7 +26,7 @@
 \title{Factorial Linear Forms and Denominators\\Detailed Proofs and Rationality Criteria}
 \subtitle{Detailed proofs and further deductions for Erd\H{o}s Problem~\#68}
 \author{Will Cook}
-\date{1 September 2026; revised 29 September 2026}
+\date{1 September 2026; revised 30 September 2026}
 
 \setlength{\emergencystretch}{3em}
 % Permit breaks inside long declaration names in the generated catalogue.
@@ -60,22 +60,23 @@ Any further change of starting index adds a rational number. The
 expectation for all integer shifts remains unproved here.
 The problem number follows Bloom's catalogue \cite{bloom}.
 
-The accompanying short paper develops the integral basis and finite
-moment ideal in \S\ref{long68:sec:basis}, then derives a depth-four
-vector from those coordinates. The argument starts with adjacent
-factorial differences, eliminates proper divisors, and uses the unit
-determinants of the two triangular changes of basis. Removing the
-auxiliary index-one coefficient leaves a single Diophantine equation.
-The short paper includes both this argument and the divisibility
-induction that makes its gcd finite.
+The coefficient problem treated first asks which factorial moments can
+occur when a finite integer vector cancels its first weighted sums.
+The answer is an explicitly computable ideal of $\mathbb Z$.
+Adjacent factorial differences isolate the divisors of their index;
+correcting proper divisors then gives an integral basis. Prescribing
+cancellation fixes its lower coordinates, and excluding index one
+leaves a single Diophantine equation. The accompanying short paper
+gives this argument, the finite-gcd proof, and the construction of a
+vector with least positive moment $1380$ at depth four.
 
-This record gives the support and coefficient-norm refinements, the
-primitive progression construction, and the carry, digit and reduced-
-denominator arguments. At depth four the least positive moment is
-$1380$; sparsity and coefficient norm depend additionally on the allowed
-support horizon and the weighted sums required to vanish. The arithmetic
-criteria later in the record describe what is still needed to compare
-the resulting real linear forms with integers.
+This record also studies restrictions on the support, coefficient norms,
+and a primitive progression construction. These ask more of a vector
+than merely having a permitted moment. The later carry, digit and
+reduced-denominator arguments concern the real value of the resulting
+form. In particular, changing coefficients at a fixed moment can change
+its integer part, but cannot change whether it is integral. The separate
+nonintegrality requirement is retained throughout.
 
 Throughout, write
 \[
@@ -247,9 +248,11 @@ For the basis claim, restrict to indices $1,\ldots,N$. The matrix with
 columns $e_1,T_2,\ldots,T_N$ is triangular over $\mathbb Z$ with
 diagonal $1,-1,\ldots,-1$. The change from $T_n$ to $U_n$ is
 triangular with diagonal one. Both determinants are units in $\Z$,
-so both inverses have integer entries. Thus $e_1,U_2,\ldots,U_N$
-represents every integer vector uniquely. Applying $M$ and each $V_d$
-to that expansion determines the coordinates:
+so both inverses have integer entries. In back-substitution the only
+divisors are $1$ and $-1$; no rational coefficients are needed.
+Thus $e_1,U_2,\ldots,U_N$ represents every integer vector uniquely.
+If this expansion is $b e_1+\sum z_dU_d$, then $M(c)=b$ and
+$V_d(c)=b+(d!-1)z_d$. These identities determine the coordinates:
 \[
  c=M(c)e_1+\sum_{d\ge2}\frac{V_d(c)-M(c)}{d!-1}U_d.
 \]
@@ -257,7 +260,10 @@ The congruence \eqref{long68:eq:channel-congruence} also verifies the
 integrality of the displayed coefficients. They vanish for $d>N$,
 since then $V_d(c)=M(c)$, so the expansion is finite.
 
-Cancellation through $D$ forces $\Lc_D\mid M(c)$. Define
+Cancellation through $D$ forces $\Lc_D\mid M(c)$. To attain this
+moment in the enlarged space, start with $\Lc_De_1$, whose weighted
+sums all equal $\Lc_D$. The vector $U_d$ changes only the $d$th sum,
+by $d!-1$. Hence define
 \[
  K_D=\Lc_De_1-\sum_{d=2}^D\frac{\Lc_D}{d!-1}U_d.
 \]
@@ -268,11 +274,16 @@ unique form
  c=tK_D+\sum_{n>D}z_nU_n,\qquad M(c)=tL_D,
 \end{equation}
 where $t,z_n$ are integers and only finitely many $z_n$ are nonzero.
-Write $a_D=(K_D)_1$ and $u_n=(U_n)_1$. Support on indices at least $2$
+The only forbidden coefficient is now the one at index $1$.
+Write $a_D=(K_D)_1$ and $u_n=(U_n)_1$. Removing this coefficient
 is equivalent to
 \begin{equation}\label{long68:eq:low-channel-support}
  ta_D+\sum_{n>D}z_nu_n=0.
 \end{equation}
+The free higher coordinates can change the first coefficient by every
+multiple of $\gcd\{u_n:n>D\}$, and only by such a multiple. Thus the
+gcd gives the exact solvability condition. We next show how to compute
+it using a bounded list of coefficients.
 Here $u_2=2$, whereas for $n>2$ the recurrence reads
 \[
  u_n=-\sum_{\substack{d\mid n\\2\le d<n}}W_{d,n}u_d.
@@ -287,21 +298,28 @@ We claim that
 \begin{equation}\label{long68:eq:finite-horizon}
  \gcd\{u_n:n>D\}=\gcd(u_{D+1},\ldots,u_H)>0,\qquad H<2D^2.
 \end{equation}
-Let $g$ be the finite gcd on the right. The index $2p$ lies in the
-interval, so its nonzero coefficient shows that $g>0$ and $g\mid(2p)!$.
-We prove by strong induction that $g\mid u_n$ for every $n>D$.
-The definition proves this through $H$.
+Let $g$ be the finite gcd on the right. Its value could in principle
+decrease if we included later coefficients. To rule this out, we prove
+$g\mid u_n$ for every $n>D$ by strong induction.
+The index $2p$ lies in the finite interval and has a nonzero coefficient,
+so $g>0$ and $g\mid(2p)!$. The definition proves the induction claim
+through $H$.
 
-Suppose $n>H$, and split the proper divisors of $n$ at $D$.
-For $d\le D$, the integer $k=n/d$ satisfies $k\ge2p$.
-The quotient $n!/((d!)^k k!)$ counts partitions of $n$ labelled
-objects into $k$ unordered blocks of size $d$. Hence
-$(2p)!\mid k!\mid W_{d,n}$, and $g\mid W_{d,n}$.
-For $D<d<n$, the induction hypothesis gives $g\mid u_d$ instead.
-Thus every term $W_{d,n}u_d$ in the recurrence is divisible by $g$,
-completing the induction. The finite gcd divides the entire tail,
-and inclusion of the finite interval gives the reverse divisibility.
-Finally, $p\le D$ implies $H<2D^2$.
+For $n>H$, each term of the recurrence is $W_{d,n}u_d$ with $d<n$.
+If $d>D$, divisibility comes from $u_d$ by induction. If $d\le D$,
+we cannot use that hypothesis and instead use the weight. Put $k=n/d$.
+The cutoff was chosen so that $n>D(2p-1)$ forces $k\ge2p$ for
+every such divisor. Also,
+\[
+ \frac{W_{d,n}}{k!}=\frac{n!}{(d!)^k k!}\in\mathbb Z,
+\]
+because the quotient counts partitions of $n$ labelled objects into
+$k$ unordered blocks of size $d$. Hence
+$g\mid(2p)!\mid k!\mid W_{d,n}$. Thus every product in the recurrence
+is divisible by $g$, completing the induction.
+The finite gcd divides the entire tail, and inclusion of the finite
+interval gives the reverse divisibility. Finally,
+$H\le D(2D-1)<2D^2$.
 
 \begin{theorem}[the set of attainable moments]\label{long68:res:moment-ideal}
 Fix $D\ge2$ and a prime $p$ with $D/2<p\le D$.  Put

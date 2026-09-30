@@ -123,6 +123,21 @@ Pad\'e approximation; Lean~4.
 
 \section{The region \texorpdfstring{$b^{\mu}<a$}{b\textasciicircum mu < a} and the base \texorpdfstring{$31/4$}{31/4}}\label{long1049:sec:region}
 
+The rational-base calculation compares a gain in the remainder
+with the cost of making its coefficients integral. If the original
+coefficient has degree $K_n$ and the cancelled coefficient has
+degree $W_n$, the leading balance is
+\begin{equation}\label{long1049:eq:degree-balance}
+ b^{W_n}(a/b)^{-(K_n-W_n)}
+ =b^{K_n}a^{-(K_n-W_n)}.
+\end{equation}
+The polynomial identities and remainder estimates below justify
+this balance, including its lower-order factors. With
+$K_n/n^2\to C_1$ and $(K_n-W_n)/n^2\to C_0$, the cleared
+remainder tends to zero when $C_1\log b<C_0\log a$.
+This is why the degree after cancellation must be known before
+rational evaluation.
+
 We evaluate Zudilin's 2004 forms at $a/b$ after cancelling their
 common polynomial factors. His direction $(14,12,14;27)$
 \cite[Sec.~5, pp.~161--162]{zudilin2004} gives the constants below;
@@ -1768,6 +1783,31 @@ The estimates in this subsection concern real determinants at fixed
 $q$. Denominator valuations for the 2004 forms were treated separately
 in Section~\ref{long1049:sec:region}.
 
+For $a_k=1$, the moments are $(1-q^{m+1})^{-1}$, so Cauchy's
+determinant formula gives the model calculation
+\begin{equation}\label{long1049:eq:cauchy-model}
+ D_N^{(0)}:=\det\left(\frac1{1-q^{i+j+1}}\right)_{0\le i,j<N}
+ =\frac{q^{B_N}\Delta_N}{\prod_{0\le i,j<N}(1-q^{i+j+1})},
+ \qquad
+ \Delta_N=\prod_{d=1}^{N-1}(1-q^d)^{2(N-d)}.
+\end{equation}
+The denominator has limiting multiplicity $d$ at $1-q^d$, while
+\[
+ \frac{\Delta_N}{P^{2N}}
+ =\prod_{d<N}(1-q^d)^{-2d}\prod_{d\ge N}(1-q^d)^{-2N}
+ \longrightarrow\mathcal M(q)^2.
+\]
+The convergence follows from $\sum d|\log(1-q^d)|<\infty$ and the
+bound $O_q(Nq^N)$ for the logarithm of the second product. Hence
+\begin{equation}\label{long1049:eq:cauchy-model-limit}
+ D_N^{(0)}\sim\mathcal M(q)^3q^{B_N}P^{2N}.
+\end{equation}
+Two copies of $\mathcal M(q)$ come from the squared Vandermonde
+and one from the Cauchy denominator. We shall compare general
+weights with this exact model. Fixed displacements of the last
+few node indices have weight ratios tending to $1$; the polynomial
+bound in the theorem controls the sum over all displacements.
+
 \begin{theorem}[determinants of geometric moments]
 \label{long1049:thm:geometric-universality}
 Let $a_k>0$ satisfy, for fixed constants $C$ and $\kappa$,
@@ -1795,11 +1835,20 @@ permits passage to the limit in the sum, giving
  \prod_{i<N}a_{k_i}q^{k_i}
  \prod_{i<j<N}(q^{k_i}-q^{k_j})^2.
 \end{equation}
-The tuple $k_i=i$ contributes
-\[
- q^{B_N}\Delta_N\prod_{i<N}a_i,\qquad
- \Delta_N=\prod_{d=1}^{N-1}(1-q^d)^{2(N-d)}.
-\]
+The tuple $k_i=i$ contributes $q^{B_N}\Delta_N\prod_{i<N}a_i$.
+It does not account for the whole asymptotic. For example, replace
+$(0,1,\ldots,N-2,N-1)$ by $(0,1,\ldots,N-2,N)$. The ratio of
+its contribution to that of the original tuple is
+\begin{equation}\label{long1049:eq:last-node-shift}
+ q\frac{a_N}{a_{N-1}}
+ \prod_{d=1}^{N-1}\left(\frac{1-q^{d+1}}{1-q^d}\right)^2
+ =q\frac{a_N}{a_{N-1}}\left(\frac{1-q^N}{1-q}\right)^2
+ \longrightarrow\frac{q}{(1-q)^2}.
+\end{equation}
+Only pairs involving the moved node change, so the product
+telescopes. At $q=1/2$ the limiting ratio is $2$.
+We must therefore retain the displaced tuples, even at large rank.
+
 Subtracting the baseline tuple gives shifts $\lambda_i=k_i-i$.
 They are nonnegative and weakly increasing, since
 $k_{i+1}\ge k_i+1$. Reversing them gives a partition. For example,
@@ -1820,13 +1869,19 @@ $k_i=i$ turns the summand for this tuple into
  \left(\frac{1-q^{k-j+\mu_j-\mu_k}}{1-q^{k-j}}\right)^2.
 \end{split}
 \end{equation}
-Set $W_N(\mu)=0$ when $\mu$ has more than $N$ positive parts,
-so that the index set of the sum is independent of $N$.
+The exponent $2j-1$ has a direct meaning. The $j$th index from
+the right contributes once through its mass $q^{k_i}$ and twice
+through each of its $j-1$ pairs with later indices in the squared
+Vandermonde. This gives $1+2(j-1)$.
+
+Set $W_N(\mu)=0$ when $\mu$ has more than $N$ positive parts.
+The sum now has an index set independent of $N$.
 A fixed partition shifts only the last indices of the baseline tuple:
 $(2,1)$ shifts its last two indices, whatever the rank $N\ge2$.
-The fixed-shift hypothesis will therefore give a limit for each
-partition. To pass to the sum, we first use the uniform polynomial
-bound in the other hypothesis.
+These indices tend to infinity with $N$, so the fixed-shift
+hypothesis removes the weights from each limiting summand.
+The remaining issue is the total contribution of partitions with
+many or large parts. We use the polynomial bound for this step.
 
 For a partition of length $\ell$, only the factors with $j\le\ell$
 can differ from $1$. For each such $j$, the denominator product in
@@ -1856,23 +1911,17 @@ Hence all the weight ratios in \eqref{long1049:eq:polynomial-partition} tend to 
 Its Vandermonde quotient
 also converges: there are only finitely many nontrivial first indices,
 and the logarithms of the remaining factors have geometric tails.
-Dominated convergence therefore reduces the limit of
-$\sum_\mu W_N(\mu)$ to the case $a_k=1$.
-For these weights $M_m=(1-q^{m+1})^{-1}$, and Cauchy's determinant
-formula gives
+Dominated convergence shows that $\sum_\mu W_N(\mu)$ has the
+same limit as for $a_k=1$. This common limit is positive, since the
+empty partition contributes $1$. Restoring the reference-tuple
+factors, we obtain
 \[
- D_N=\frac{q^{B_N}\Delta_N}
- {\prod_{0\le i,j<N}(1-q^{i+j+1})}.
+ \frac{D_N}{D_N^{(0)}\prod_{k<N}a_k}\longrightarrow1.
 \]
-The multiplicity of $1-q^d$ in the denominator increases to $d$,
-so the normalised sum tends to $\mathcal M(q)$. Finally,
-\[
- \frac{\Delta_N}{P^{2N}}
- =\prod_{d<N}(1-q^d)^{-2d}\prod_{d\ge N}(1-q^d)^{-2N}
- \longrightarrow\mathcal M(q)^2,
-\]
-since the logarithm of the second product is $O_q(Nq^N)$.
-Combining these two limits proves the assertion.
+The model asymptotic \eqref{long1049:eq:cauchy-model-limit} now proves
+the theorem. The comparison explains why the normalised limit
+retains the geometric spacing of the nodes but loses the individual
+weights.
 \end{proof}
 
 We return to the actual weights $a_k=P^4\gamma_k$. A product formula
@@ -1911,10 +1960,20 @@ Theorem~\ref{long1049:thm:geometric-universality} hold with $\kappa=3$.
 \end{proposition}
 
 \begin{proof}
-Write $\mathcal E(z)=(z;q)_\infty^{-1}$ and
-$\partial_qf(z)=(f(z)-f(qz))/z$, so that $\partial_q\mathcal E=\mathcal E$ and
-$\mathcal E(z)^r=\sum_{n\ge0}R_n^{(r)}z^n/(q;q)_n$ by Euler's expansion. The
-$q$-Leibniz rule, which follows by induction from the product rule, is
+Write $\mathcal E(z)=(z;q)_\infty^{-1}$. Euler's expansion gives
+$\mathcal E(z)^r=\sum_{n\ge0}R_n^{(r)}z^n/(q;q)_n$.
+The product of coefficient sums can be obtained by shifting the
+coefficients of $\mathcal E^3$ and then collecting equal total
+indices in two variables. For the shift, use
+$\partial_qf(z)=(f(z)-f(qz))/z$: the factor $1-q^j$ in
+$\partial_qz^j=(1-q^j)z^{j-1}$ cancels the last factor of
+$(q;q)_j$. Consequently
+\[
+ \partial_q\mathcal E=\mathcal E,\qquad
+ \partial_q^n\mathcal E(z)^3
+ =\sum_{j\ge0}\frac{R_{n+j}^{(3)}}{(q;q)_j}z^j.
+\]
+The $q$-Leibniz rule, obtained by induction from the product rule, is
 \[
  \partial_q^n(fg)(z)=\sum_{j=0}^n\genfrac{[}{]}{0pt}{}{n}{j}_q
  (\partial_q^jf)(q^{n-j}z)\,(\partial_q^{n-j}g)(z).
@@ -1935,9 +1994,13 @@ the power of $\mathcal E$ being $3$ and not $2$ here. Hence
  =\mathcal E(w)\mathcal E(z)^3
   \sum_{k\ge0}\frac{w^k(z;q)_k}{(q;q)_k}h_k(z).
 \]
-Put $z=w$. On the left the coefficient of $w^n$ is
-$R_n^{(3)}\sum_{j\le n}\bigl((q;q)_j(q;q)_{n-j}\bigr)^{-1}
-=R_n^{(2)}R_n^{(3)}/(q;q)_n$. On the right, expand $h_k$ and set $k=j+t$; the
+The left-hand side is
+$\sum_{n,j\ge0}R_{n+j}^{(3)}w^nz^j/((q;q)_n(q;q)_j)$.
+On setting $z=w$, all pairs with the same sum contribute to a
+single coefficient. Thus the coefficient of $w^k$ is
+$R_k^{(3)}\sum_{j\le k}\bigl((q;q)_j(q;q)_{k-j}\bigr)^{-1}
+=R_k^{(2)}R_k^{(3)}/(q;q)_k$.
+On the right, expand $h_k$ and set $k=j+t$; the
 inner sum is evaluated by the $q$-binomial theorem as
 \[
  \sum_{t\ge0}\frac{(wq^j;q)_t}{(q;q)_t}w^t
@@ -2020,7 +2083,16 @@ equivalently
 
 \begin{proof}[Proof of Theorem~\ref{long1049:thm:sharp-fixed-base}]
 Put $L=F(1/q)$, $e_k=(q;q)_k^{-1}$ and $E=P^{-1}$.
-We need the first correction to the limiting value $e_k\to E$.
+Replacing every $e_k$ by $E$ in the two convolution sums gives
+$E^2(k+1)$ and $E^3\binom{k+2}{2}$. These count, respectively,
+the nonnegative pairs and triples with sum $k$. They explain the
+leading cubic term of $a_k$, but we also need its first correction.
+For a fixed index $i$, there is one pair $(i,k-i)$ and there are
+$k-i+1$ triples whose first coordinate is $i$. Thus a summable
+deficit in the sequence $e_i$ produces a constant correction in the
+two-fold sum and a linear correction in the three-fold sum.
+We calculate that deficit and bound the terms containing it twice.
+
 Writing $d_k=E-e_k$, the identity
 $e_{k+1}-e_k=q^{k+1}e_{k+1}$ gives
 \[

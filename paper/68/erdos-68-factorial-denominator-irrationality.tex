@@ -25,21 +25,21 @@
 \title{Integer Linear Forms for a\\Factorial Reciprocal Series}
 \subtitle{Cancellation and attainable moments for Erd\H{o}s Problem~\#68}
 \author{Will Cook}
-\date{31 August 2026; revised 29 September 2026}
+\date{31 August 2026; revised 30 September 2026}
 
 \begin{document}
 \maketitle
 \noteprovenance
 
 \begin{abstract}
-We give integral coordinates for finitely supported integer vectors under
-factorial-weighted cancellation. Removing an auxiliary first coordinate
-reduces the attainable moments to one Diophantine equation. Its infinite
-gcd is determined by a finite interval ending below $2D^2$, where $D$
-is the cancellation depth. At depth four we use the coordinates to construct
-a vector with least positive moment $1380$ and a nonintegral remainder.
-The remainder condition needed to deduce irrationality of
-$S=\sum_{n\ge2}(n!-1)^{-1}$ remains open.
+We classify the finite integer vectors that cancel the first weighted
+summands of a factorial reciprocal series. An integral basis turns these
+cancellations into prescribed coordinates; excluding index one leaves a
+single Diophantine equation. We determine its attainable factorial
+moments by a gcd taken over fewer than $2D^2$ indices, where $D$ is the
+cancellation depth. A worked construction attains the least positive
+moment $1380$ at depth four. The additional nonintegrality condition
+required for an irrationality proof remains open.
 \end{abstract}
 
 \section{Introduction}\label{sec:problem}
@@ -56,29 +56,37 @@ Is
 irrational?
 \end{problem}
 
-The usual proof for $e$ compares a factorial multiple of the tail with
-an integer. For $S$, that multiplier need not clear the partial sum:
-already $3!H_3=36/5$, where $H_m=\sum_{n=2}^m(n!-1)^{-1}$.
-We instead choose integral weights congruent to $n!$ modulo $d!-1$.
-A finite integer combination of these weights gives a remainder that
-differs from $MS$ by an integer, with $M$ the corresponding factorial
-moment. We solve the equations that cancel its first weighted summands.
+The elementary proof that $e$ is irrational uses two properties of
+factorials: they clear every earlier denominator, and they leave a small
+positive tail. The first property fails here. If
+$H_m=\sum_{n=2}^m(n!-1)^{-1}$, then already $3!H_3=36/5$.
+We shall instead construct linear forms $MS+k$, with $M,k\in\mathbb Z$,
+in which several initial summands cancel. A nonintegral form excludes
+every rational value $S=a/q$ for which $q\mid M$.
 
-Theorem~\ref{res:divisor-channel-coordinates} describes every finite integer
-solution. An adjacent factorial difference affects only the divisors of
-its index; eliminating the proper divisors isolates one weighted sum.
-Two triangular changes with unit determinant make this an integral
-basis. Removing an auxiliary index-one coefficient then leaves one
-Diophantine equation. Theorem~\ref{res:finite-channel-moment-certificate}
-reduces its infinite gcd to a specified finite interval, giving the
-moment ideal and a vector attaining its generator.
+The cancellation problem admits an exact solution. We give an integral
+basis in which each basis vector changes just one weighted sum
+(Theorem~\ref{res:divisor-channel-coordinates}). Thus cancellation
+amounts to prescribing coordinates. The basis temporarily allows an
+index-one coefficient; removing it leaves one linear Diophantine
+equation. Its solvability determines all possible factorial moments,
+and Theorem~\ref{res:finite-channel-moment-certificate} computes the
+resulting ideal by a finite gcd.
 
-These conclusions do not assume anything about $S$. Their application to
-irrationality requires one further property: for each proposed denominator
-$q>0$, a vector with $q\mid M$ must have a nonintegral remainder.
-The depth-four example supplies this property for the divisors of $1380$.
-Primitive vectors with moments eventually divisible by every fixed $q$
-are available, but their remainders are not known to be nonintegral.
+The construction begins with $n(n-1)!-n!=0$. For our weights, this
+adjacent difference is still zero except when a floor exponent changes,
+which happens at divisors of $n$. Correcting the proper divisors in
+increasing order isolates the weighted sum at $n$. The corrections are
+integral and triangular, so they give every integer solution, with no
+search for suitable coefficients.
+
+At depth four the least positive moment is $1380$. We derive an
+attaining vector and place its remainder between consecutive integers.
+The algebraic classification holds independently of whether $S$ is
+rational. To prove irrationality, one would need a nonintegral form with
+$q\mid M$ for each prescribed $q>0$. Primitive vectors whose moments
+eventually have this divisibility are available, but nonintegrality of
+their remainders remains unproved.
 
 Han\v{c}l and Tijdeman's tail-integrality lemma treats factorial series
 with integer coefficients \cite[Lemma~2.1 and the following remark,
@@ -98,17 +106,20 @@ arithmetic criteria developed in the companion.
 
 \section{An integral basis}\label{sec:channels}
 
-We seek integral weights congruent to $n!$ modulo $d!-1$. For integers
-$d\ge2$ and $n\ge1$, take
+Modulo $d!-1$, a factor $d!$ can be removed from a numerator without
+changing its residue. We use this freedom to replace $n!$ by a smaller
+integer whose change from $n-1$ to $n$ is easy to follow. For $d\ge2$
+and $n\ge1$, put
 \[
  W_{d,n}=\frac{n!}{(d!)^{\lfloor n/d\rfloor}}.
 \]
-Write $n=kd+r$, where $0\le r<d$. The quotient is $r!$ times the
-multinomial coefficient $n!/((d!)^k r!)$, and is therefore an integer.
-Since $n!=(d!)^kW_{d,n}$ and $d!\equiv1\pmod{d!-1}$, it also satisfies
-$W_{d,n}\equiv n!\pmod{d!-1}$. Thus replacing $n!$ by $W_{d,n}$ in a
-numerator changes the fraction with denominator $d!-1$ by an integer. For instance,
-$W_{3,4}=4$, and the change is $(24-4)/5=4$.
+Writing $n=kd+r$, $0\le r<d$, shows that $W_{d,n}$ is $r!$ times the
+multinomial coefficient $n!/((d!)^k r!)$. In particular it is an integer,
+and $n!=(d!)^kW_{d,n}$ gives
+$W_{d,n}\equiv n!\pmod{d!-1}$. For example, $W_{3,4}=4$ and
+$(4!-W_{3,4})/(3!-1)=4$.
+The exponent counts complete blocks of $d$ indices. It is this choice
+that makes its jumps occur exactly at multiples of $d$.
 
 For a finitely supported integer vector $\lambda=(\lambda_n)_{n\ge1}$,
 we define its factorial moment and weighted sums by
@@ -129,14 +140,6 @@ weight congruence gives
  =\sum_{d=2}^N\frac{V_d(\lambda)-M(\lambda)}{d!-1}\in\mathbb Z.
  \label{eq:integer-linear-form}
 \end{equation}
-For later use, $(n+1)!-1>(n+1)(n!-1)$ gives the geometric tail bound
-\begin{equation}
- 0<S-H_N<\frac{N+2}{(N+1)((N+1)!-1)}
-          <\frac{2}{(N+1)!-1}\qquad(N\ge2).
- \label{eq:series-tail-bound}
-\end{equation}
-The majorant starts with $1/((N+1)!-1)$ and has ratio $1/(N+2)$.
-
 We now solve $V_2=\cdots=V_D=0$ in integer vectors, allowing either sign
 of $M$. Write $e_n$ for the unit vector at index $n$. The auxiliary
 coordinate at index one will make the basis triangular. It occurs only
@@ -144,11 +147,23 @@ in the coefficient vector: the series still starts at $d=2$, so no term
 $1/(1!-1)$ is introduced. We impose $\lambda_1=0$ in
 Section~\ref{sec:moments}.
 
-To see the elimination in a small case, take $4e_3-e_4$. Its factorial
-moment vanishes, and the only nonzero weighted sums are $V_2=6$ and
-$V_4=23$: the floor exponent changes only when $d$ divides $4$.
-Subtracting $6(2e_1-e_2)$ removes $V_2$ without changing $V_4$.
-We apply the same procedure successively to all proper divisors.
+The identity $n(n-1)!-n!=0$ suggests starting with
+$T_n=ne_{n-1}-e_n$. At $n=2$, the vector $U_2=2e_1-e_2$ has
+$V_2=1$ and every other weighted sum zero. At $n=4$, the difference
+$T_4=4e_3-e_4$ has two nonzero weighted sums. One correction suffices:
+\begin{center}
+\begin{tabular}{lrrrr}
+\papertablehead Vector & $M$ & $V_2$ & $V_3$ & $V_4$\\
+\hline
+$T_4$       & $0$ & $6$ & $0$ & $23$\\
+$6U_2$      & $0$ & $6$ & $0$ & $0$\\
+$T_4-6U_2$  & $0$ & $0$ & $0$ & $23$\\
+\end{tabular}
+\end{center}
+All later weighted sums are zero because the moment is zero. The last
+row defines $U_4$: it isolates $V_4=4!-1$ without changing the moment.
+For a general $n$, the unwanted sums are precisely those at proper
+divisors of $n$, and their correcting vectors have already been built.
 
 \begin{theorem}[an integer basis with prescribed weighted sums]\label{res:divisor-channel-coordinates}
 Set
@@ -171,27 +186,30 @@ has the unique finite expansion
 \end{theorem}
 
 \begin{proof}
-First, $M(T_n)=n(n-1)!-n!=0$. For a fixed $d$, the floor exponents
-at $n-1$ and $n$ differ by one precisely when $d\mid n$. We therefore
-have
+The moment of $T_n$ is zero. If $d\nmid n$, the floor exponents at
+$n-1$ and $n$ agree, so $nW_{d,n-1}=W_{d,n}$. If $d\mid n$, the
+exponent increases by one, so $nW_{d,n-1}=d!W_{d,n}$. Hence
 \[
  V_d(T_n)=(d!-1)W_{d,n}\mathbf1_{d\mid n}.
 \]
-Suppose the identities hold below $n$. For each proper divisor $d$,
-subtracting $W_{d,n}U_d$ cancels the weighted sum at $d$ and changes
-none of the others. The weighted sum at $n$ remains $n!-1$, since
-$W_{n,n}=1$. This proves the two identities by induction.
+Suppose the asserted identities hold below $n$. For each proper divisor
+$d$, subtracting $W_{d,n}U_d$ cancels the sum at $d$ and changes none
+of the others. The sum at $n$ remains $n!-1$, since $W_{n,n}=1$.
+This proves the identities by induction.
 
-It remains to show that these vectors give all integer solutions.
-Restrict to indices $1,\ldots,N$. The columns $e_1,T_2,\ldots,T_N$
-form a triangular integer matrix with diagonal $1,-1,\ldots,-1$.
-Passing from the $T_n$ to the $U_n$ is another triangular integer
-change, now with diagonal one. Both matrices have determinant a unit,
-so their inverses have integer entries. We may therefore expand any
-integer vector uniquely in $e_1,U_2,\ldots,U_N$. Applying $M$ and
-$V_d$ determines its coefficients as in
-\eqref{eq:channel-basis-expansion}. The coefficients with $d>N$ are
-zero because $V_d=M$.
+To see that no integer vectors are missed, restrict to indices
+$1,\ldots,N$. The columns $e_1,T_2,\ldots,T_N$ form a triangular
+integer matrix with diagonal $1,-1,\ldots,-1$. The correction from
+$T_n$ to $U_n$ uses only earlier columns and leaves its diagonal entry
+unchanged. This second change is triangular with diagonal one.
+Both changes therefore have integer inverses. Equivalently, one can
+recover the coefficients by back-substitution, dividing only by $1$ or
+$-1$.
+
+In the resulting expansion, applying $M$ gives the coefficient of $e_1$.
+If the coefficient of $U_d$ is $c_d$, applying $V_d$ gives
+$V_d=M+(d!-1)c_d$, which proves \eqref{eq:channel-basis-expansion}. For $d>N$ that
+coefficient is zero because $V_d=M$.
 \end{proof}
 
 For a prime $p\ge3$ the divisor sum is empty, and
@@ -208,27 +226,35 @@ cancellation equations from the eventual nonintegrality question.
 
 \section{Attainable moments}\label{sec:moments}
 
-We first allow the auxiliary coordinate $\lambda_1$ and classify all
-vectors cancelling through a fixed depth $D\ge2$. Put
-\[
- L_D=\operatorname{lcm}_{2\le d\le D}(d!-1),\qquad
- K_D=L_De_1-\sum_{d=2}^D\frac{L_D}{d!-1}U_d.
-\]
-The integral coordinates in \eqref{eq:channel-basis-expansion} imply
+Fix a cancellation depth $D\ge2$. The basis separates the equations
+$V_2=\cdots=V_D=0$ from the restriction $\lambda_1=0$.
+We first solve the equations with index one still allowed.
+The weight congruence, or the coordinates in
+\eqref{eq:channel-basis-expansion}, gives
 \begin{equation}
  V_d(\lambda)\equiv M(\lambda)\pmod{d!-1}.
  \label{res:congruence}
 \end{equation}
-When $V_2=\cdots=V_D=0$, these congruences force $L_D\mid M$.
-Substituting $M=tL_D$ into the basis expansion gives
+Cancellation through $D$ therefore forces the moment to be divisible by
+\[
+ L_D=\operatorname{lcm}_{2\le d\le D}(d!-1).
+\]
+This necessary condition is sufficient while index one is allowed:
+$L_De_1$ has every weighted sum equal to $L_D$, and subtracting
+$L_D/(d!-1)$ copies of $U_d$ sets the $d$th sum to zero. Thus put
+\[
+ K_D=L_De_1-\sum_{d=2}^D\frac{L_D}{d!-1}U_d.
+\]
+Uniqueness of the coordinates now gives the complete solution
 \begin{equation}
  V_2=\cdots=V_D=0
  \quad\Longleftrightarrow\quad
  \lambda=tK_D+\sum_{n>D}z_nU_n,\qquad M=tL_D,
  \label{eq:low-channel-classification}
 \end{equation}
-where the integers $z_n$ have finite support. Since
-$\mathcal R(e_1)=S$ and $\mathcal R(U_n)=1$, their remainders are
+with $t\in\mathbb Z$ and finitely many nonzero integers $z_n$.
+The lower coordinates are fixed by $t$; all higher coordinates remain
+free. Since $\mathcal R(e_1)=S$ and $\mathcal R(U_n)=1$, we also have
 \begin{equation}
  \mathcal R\left(tK_D+\sum_{n>D}z_nU_n\right)
  =tL_D(S-H_D)+\sum_{n>D}z_n,
@@ -236,26 +262,35 @@ $\mathcal R(e_1)=S$ and $\mathcal R(U_n)=1$, their remainders are
  \label{eq:residual-transparency}
 \end{equation}
 
-We now require support on $n\ge2$. Write $a_D=[e_1]K_D$ and
-$u_n=[e_1]U_n$ for the first coordinates. Setting $\lambda_1=0$ gives
+It remains to remove index one. Write $a_D$ for its coefficient in
+$K_D$, and $u_n$ for its coefficient in $U_n$. All other coordinates
+already lie in the permitted range $n\ge2$, so the only remaining
+equation is
 \begin{equation}
- ta_D+\sum_{n>D}z_nu_n=0.\label{eq:support-equation}
+ ta_D+\sum_{n>D}z_nu_n=0.
+ \label{eq:support-equation}
 \end{equation}
-Let $g_D=\gcd\{u_n:n>D\}$. Since the $z_n$ may be arbitrary integers
-of finite support, their sums $\sum z_nu_n$ form the ideal
-$g_D\mathbb Z$. The moments of the admissible vectors are consequently
+The higher corrections can change this coefficient by exactly the
+integer multiples of
+$g_D=\gcd\{u_n:n>D\}$. Thus the equation is soluble precisely when
+$g_D\mid ta_D$.
+For example, at depth four we shall find $a_4=-55$ and $g_4=60$.
+Removing index one then requires $60\mid55t$, or $12\mid t$;
+the moment $115t$ must be a multiple of $1380$.
+
+The same calculation in general shows that the attainable moments are
 \begin{equation}
  \mu_D\mathbb Z,\qquad
  \mu_D=L_D\frac{g_D}{\gcd(g_D,a_D)}.
  \label{eq:attainable-moment-ideal}
 \end{equation}
-Indeed, \eqref{eq:support-equation} has a solution exactly when
-$g_D\mid ta_D$, or equivalently when $g_D/\gcd(g_D,a_D)$ divides $t$.
-B\'ezout's identity uses finitely many $u_n$, so the generator is attained
-by a finite vector. We show next that $g_D>0$. Any vector attaining
-$\mu_D$ is primitive: dividing its coefficients by a common factor
-greater than one would preserve the cancellations and give a smaller
-positive moment.
+Indeed, division by $\gcd(g_D,a_D)$ leaves two coprime integers, so
+$g_D\mid ta_D$ holds exactly when $g_D/\gcd(g_D,a_D)\mid t$.
+B\'ezout's identity supplies the required finite combination of the
+$u_n$. The next theorem proves $g_D>0$ and bounds the indices needed
+for this combination. A vector attaining the least positive moment
+$\mu_D$ is automatically primitive: a common factor of its coefficients
+would give a smaller positive moment after division.
 
 \subsection{A finite gcd calculation}\label{sec:finite-gcd}
 
@@ -270,6 +305,11 @@ nonzero coefficient and $g_D>0$. To compute this infinite gcd, we show
 that a specified finite interval already forces divisibility of every
 later coefficient.
 
+A finite calculation can miss a later drop in the gcd. Here the
+recurrence prevents such a drop beyond a controlled index. Large proper
+divisors inherit divisibility from earlier coefficients; for the
+remaining small divisors, the weights themselves supply it.
+
 \begin{theorem}[a finite formula for the gcd]
 \label{res:finite-channel-moment-certificate}
 Choose a prime $\ell$ with $D/2<\ell\le D$ and put $H=D(2\ell-1)$.
@@ -280,24 +320,27 @@ g_D=\gcd(u_{D+1},\ldots,u_H),\qquad H<2D^2.
 \end{theorem}
 
 \begin{proof}
-Let $g=\gcd(u_{D+1},\ldots,u_H)$. The interval contains $2\ell$, so
-$u_{2\ell}=-(2\ell)!/2^{\ell-1}$ shows that $g>0$ and
-$g\mid(2\ell)!$. We prove by strong induction that $g\mid u_n$ for
-all $n>D$.
+Let $g=\gcd(u_{D+1},\ldots,u_H)$. The index $2\ell$ belongs to this
+interval, and $u_{2\ell}=-(2\ell)!/2^{\ell-1}\ne0$. Consequently
+$g>0$ and $g\mid(2\ell)!$.
 
-The assertion holds through $H$ by definition. For $n>H$ split the
-proper divisors in the recurrence at $D$. If $d\le D$ and $d\mid n$,
-then $n/d\ge2\ell$. We also have
+We prove $g\mid u_n$ for every $n>D$ by strong induction. This is true
+up to $H$ by definition. For $n>H$, consider a proper divisor $d\ge2$
+in the recurrence for $u_n$. If $d>D$, the induction hypothesis gives
+$g\mid u_d$. If $d\le D$, put $k=n/d$. The choice
+$H=D(2\ell-1)$ ensures $k\ge2\ell$. Moreover,
 \[
- (n/d)!\mid W_{d,n}\qquad(d\mid n),
+ \frac{W_{d,n}}{k!}=\frac{n!}{(d!)^k k!}\in\mathbb Z:
 \]
-because the quotient counts partitions into $n/d$ unordered blocks of
-size $d$. Hence $(2\ell)!\mid W_{d,n}$, and therefore $g\mid W_{d,n}$,
-for each small divisor. If $D<d<n$, the induction hypothesis instead
-gives $g\mid u_d$. Every summand of the recurrence is divisible by
-$g$, completing the induction. The finite gcd thus divides the whole
-tail, while the reverse divisibility follows from inclusion of the
-finite interval. Finally, $H\le D(2D-1)<2D^2$.
+this quotient counts partitions of $n$ labelled objects into $k$
+unordered blocks of size $d$. Hence $(2\ell)!\mid k!\mid W_{d,n}$,
+so $g\mid W_{d,n}$ in the small-divisor case as well.
+Every product $W_{d,n}u_d$ in the recurrence is therefore divisible
+by $g$.
+
+Thus $g$ divides the whole tail. Conversely, every common divisor of
+the tail divides its finite subfamily $u_{D+1},\ldots,u_H$. The two
+gcds are equal, and $H\le D(2D-1)<2D^2$.
 \end{proof}
 
 Bertrand's postulate supplies the prime $\ell$ when $D\ge3$; for
@@ -381,9 +424,11 @@ Table~\ref{tab:depth-four} verifies all four sums directly.
 5 &-136 &120 &30 &20 &5\\
 6 &83 &720 &90 &20 &30\\
 8 &-1 &40320 &2520 &1120 &70\\
+\hline
+\multicolumn{2}{l}{Weighted totals} & $1380$ & $0$ & $0$ & $0$\\
 \end{tabular}
-\caption{The depth-four vector. Multiplying the last four columns by
-$\lambda_n$ and summing gives $1380,0,0,0$.}
+\caption{The depth-four vector and its checks. To obtain the last row,
+multiply each of the final four columns by $\lambda_n$ before summing.}
 \label{tab:depth-four}
 \end{table}
 
@@ -394,6 +439,14 @@ $-26-27+8+1=-44$. Thus
 \[
  \mathcal R(\lambda)=1380(S-H_4)-44.
 \]
+To test this remainder, we use a tail estimate. $(n+1)!-1>(n+1)(n!-1)$ gives the geometric tail bound
+\begin{equation}
+ 0<S-H_N<\frac{N+2}{(N+1)((N+1)!-1)}
+          <\frac{2}{(N+1)!-1}\qquad(N\ge2).
+ \label{eq:series-tail-bound}
+\end{equation}
+The majorant starts with $1/((N+1)!-1)$ and has ratio $1/(N+2)$.
+
 Exact rational arithmetic gives
 \[
  -31+\frac45
@@ -425,7 +478,7 @@ By \eqref{eq:series-tail-bound}, $0<S-H_N<2/((N+1)!-1)$. We can prove
 nonintegrality by comparing its upper bound with the distance from $A_N$
 to the next integer:
 \begin{equation}
- \frac{2M}{(N+1)!-1}<\lfloor A_N\rfloor+1-A_N
+ \frac{2M}{(N+1)!-1}<\lfloor A_N\rfloor+1-A_N.
  \label{eq:signed-block-gap}
 \end{equation}
 Under this inequality, $\mathcal R(\lambda)$ lies strictly between

@@ -221,10 +221,12 @@ and later stated a criterion assuming only convergence of
 $\sum_{a\in A}1/a$; the periodic-support results belong to Luca and
 Tachiya. We begin with these antecedents and prove two hereditary
 criteria which also admit supports of divergent reciprocal sum.
-Their proofs use positive displacements from a rational lattice. The
-finite mean must remain controlled while its modulus changes, since
-combining the criteria requires both estimates at the same observation
-index.
+Their proofs use positive displacements from a rational lattice.
+The obstruction appears already in a finite mean: the error from an
+incomplete residue period lacks the reciprocal-exponent factor needed
+for summation. A second average over window lengths restores that factor.
+Keeping its modulus dependence explicit then permits both criteria to
+use the same observation index.
 
 Part~I gives the support theorems and the proofs followed by the short
 paper, \emph{Weighted and Covered Supports for Mersenne Subseries}.
@@ -565,9 +567,12 @@ and therefore
 \end{equation}
 
 The incomplete-period term in~\eqref{eq:257-weighted-gcd-average}
-has no factor $1/a$. To sum these errors over the observed exponents,
-we average over dyadic lengths; for a fixed exponent, the admissible
-lengths form a geometric tail. Let $\alpha_a\ge0$ with
+has no factor $1/a$. Although it tends to zero for a fixed exponent,
+there are more observed exponents as the window grows. To recover a
+summable bound, average over lengths and sum in the other order.
+An exponent $a$ first enters when the window reaches $a/Q$; choosing
+geometrically spaced lengths makes the sum of their later reciprocals
+at most $2Q/a$. Let $\alpha_a\ge0$ with
 $\sum_a\alpha_a/a<\infty$. For $Q,M\ge1$, finite rearrangement gives
 \begin{equation}\label{eq:257-weighted-dyadic-average}
  \sum_{j=M}^{2M-1}\frac1{2^j}
@@ -581,8 +586,9 @@ Indeed, for each fixed $a$ the admissible indices satisfy $2^j\ge a/Q$ and
 Only finitely many terms occur on the left, so no infinite interchange is
 hidden here.
 
-We now choose the modulus and the observation lengths.  Fix $\varepsilon>0$ and a lower bound
-$N$.  Select a finite $F\subseteq A$ such that
+We now choose the modulus. It will first absorb a finite subset of the
+support, then contain all prime powers from $\mathcal P$ up to a
+growing threshold. Fix $\varepsilon>0$ and a lower bound $N$.  Select a finite $F\subseteq A$ such that
 \begin{equation}\label{eq:257-weighted-tail-choice}
  \sum_{a\in A\mathbin{\backslash} F}
  \frac{h(a)}{a(b^{h(a)}-1)}<\varepsilon,
@@ -636,10 +642,12 @@ Combining \eqref{eq:257-weighted-outer},
        \frac1{b^{h(a)}-1}
  +\frac{G(1+\log(QT))+Q}{b^G-1}+\frac4T.
 \end{equation}
-After the second average, the competing errors will be of orders
-$Q/M$ and $GM/b^G$.  With $L$ fixed, $Q$ grows polynomially in $H$
-and $G$ grows linearly, so an intermediate exponential scale makes
-both errors tend to zero.  Choose
+Increasing the number $M$ of dyadic lengths reduces the incomplete-period
+error to order $Q/M$. It also makes $\log T$ of order $M$ on the largest
+window, increasing the large-gcd contribution to order $GM/b^G$.
+Thus the two quantities must be made small together. With $L$ fixed,
+$Q$ grows polynomially in $H$ and $G$ grows linearly, so an intermediate
+exponential choice of $M$ has both properties.  Choose
 \[
  M=\left\lfloor b^{G/2}\right\rfloor
 \]
@@ -786,9 +794,11 @@ novelty of this arithmetic realisation has not been assessed.
 
 \subsection{A finite estimate on common observation scales}\label{sec:257-common-kernel}
 \papersectiontarget{record257:common-kernel}
-The cover argument must work on the window chosen by the weighted proof.
-We therefore keep the modulus, the first dyadic scale and the number of
-scales as separate parameters in the following estimate.
+The cover argument raises a shifted tail to a fractional power $\alpha$,
+replacing its base $2$ by $B=2^\alpha$. The following estimate therefore
+allows $1<B\le2$. It also keeps the modulus, first dyadic scale and
+number of scales separate, because the mixed theorem must use the
+windows already chosen by the weighted proof.
 
 For $1<B\le2$, positive integers $L,d,M$, and an integer $R\ge0$, put
 \[
@@ -852,8 +862,22 @@ with $\sum_dc_d/d<\infty$.
 
 \subsection{Positive divisor majorants}
 For a finite set $F\subseteq\Npos$, put
-$f_F(n)=\#\{a\in F:a\mid n\}$.  The next theorem bounds a fractional power
-of this count by a nonnegative sum over divisors.
+$f_F(n)=\#\{a\in F:a\mid n\}$. The simplest divisor cube with two
+independent prime choices is $F=\{2,6,10,30\}$. For $0<\alpha\le1$
+and $z=2^\alpha-1$, its count has the exact expansion
+\[
+ f_F(n)^\alpha
+ =\mathbf1_{2\mid n}+z\mathbf1_{6\mid n}
+  +z\mathbf1_{10\mid n}+z^2\mathbf1_{30\mid n}.
+\]
+Indeed, conditional on $2\mid n$, each of $3$ and $5$ dividing $n$
+doubles $f_F(n)$ and multiplies its fractional power by $1+z$.
+The coefficient sum weighted by reciprocal divisors is
+$(1+z/3)(1+z/5)/2$. This illustrates the general positive expansion
+used in the separating constructions. The extra factor
+$(2^\alpha-1)^{-1}$ from the kernel must still be paid; making
+$\alpha$ small does not by itself give a cheap cover.
+The theorem permits a different fractional power for each finite set.
 
 \begin{thm}[A summable family of divisor majorants]\label{thm:257-variable-fractional-cover}
 For each $j\ge1$, let $F_j\subseteq\Npos$ be finite, let
@@ -990,9 +1014,13 @@ nonnegative interchange give
  \mathscr D_{Q;M,M}S_J\le(1+4Q/M)K_J<\frac18,
  \qquad S_J=\sum_{j>J}t_j^{-\alpha_j}V_j,
 \]
-because $Q/M\to0$. Add the quantities before selecting the index:
-the mean of $\Delta_{2,E}/\rho+S_J$ is below $1/4$, so some sampled
-$N=Qm$ satisfies $\Delta_{2,E}(N)/\rho+S_J(N)<1$.
+because $Q/M\to0$. Here the cover estimate is applied with modulus
+$Q$, not merely with the fixed divisor $L$; this is why its explicit
+modulus dependence was needed. On this one distribution,
+\[
+ \mathscr D_{Q;M,M}(\Delta_{2,E}/\rho+S_J)<\frac14.
+\]
+Choose a sampled $N=Qm$ at which the nonnegative sum is less than $1$.
 Nonnegativity of both quantities and of every summand of $S_J$ gives
 $\Delta_{2,E}(N)<\rho$ and $U_j(N)<t_j$ for every $j>J$.
 For $j\le J$, it is the displacement $\Delta_{2,F_j}(N)$ that vanishes,

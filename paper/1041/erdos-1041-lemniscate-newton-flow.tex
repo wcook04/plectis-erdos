@@ -59,6 +59,9 @@ additional inputs.
 
 \section{Introduction}\label{sec:problem}
 
+Two points in the open unit disc are less than $2$ apart. The extra
+condition in the following question is that the whole connecting curve
+stay where a given polynomial has modulus less than $1$.
 For a monic polynomial $f$, write
 \[
  \Omega_f=\{z:|f(z)|<1\},\qquad K_t(f)=\{z:|f(z)|\le t\}.
@@ -91,17 +94,23 @@ two of its zeros satisfies $\mathcal H^1(K)>2$.
 
 Here $\mathcal H^1$ is one-dimensional Hausdorff measure. Applied to a
 path image, the theorem also rules out a rectifiable path of total
-variation less than $2$. Its proof uses one component of $\Omega_f$
-containing two zeros; the other five components each contain one.
-On the selected component, $f$ is a double cover of the value disc.
-We remove an outward slit from its critical value and show that the
-whole preimage of the slit lies near the critical point. Any connection
-between the two zeros must therefore approach that point on both inverse
-sheets. Their combined radial distances, even after the small loss at
-the slit, exceed $2$.
+variation less than $2$.
 
-We first prove this geometric estimate, then choose the coefficients
-needed to apply it. Section~\ref{sec:trinomial} gives the contrasting
+The construction leaves only one pair of zeros available: five
+components of $\Omega_f$ contain one zero each, and the sixth contains
+two. On that last component, $f$ is a double cover of the value disc.
+Its two roots have combined distance from the critical point slightly
+greater than $2$. Cut the value disc from the critical value out to the
+unit circle. We prove that the \emph{whole} preimage of this slit lies
+in a small disc about the critical point. Outside that disc the two
+inverse sheets are separated, so a connected set containing both roots
+must approach the disc on each sheet. Radial projection counts the two
+contributions separately. The loss at the small disc is less than the
+excess of the root distances over $2$.
+
+A quadratic model first shows what a narrow neck does and what it
+leaves to achieve. We then prove the two-sheet estimate and explain the
+two scales in the degree-seven polynomial. Section~\ref{sec:trinomial} gives the contrasting
 positive result: for $z^n+az^m+b$, the root equation bounds the polynomial
 on every root-to-origin segment. Four nonzero terms can already defeat
 a prescribed segment. Sections~\ref{sec:constant-factor} and \ref{sec:separation} collect
@@ -122,11 +131,30 @@ arguments underlying Sections~\ref{sec:other-results}--\ref{sec:open}.
 
 \section{A component with a narrow bottleneck}\label{sec:counterexample}
 
+\subsection{A quadratic model}
+Consider $p(z)=z^2-r^2$ with $0<r<1$. Its critical point is $0$,
+its critical value is $-r^2$, and the outward slit in the value disc is
+$J=(-1,-r^2]$. We can compute its preimage without choosing a branch:
+\[
+ p^{-1}(J)=\{iy:|y|<\sqrt{1-r^2}\}.
+\]
+This vertical interval separates the two inverse sheets containing $r$
+and $-r$. It shrinks to the critical point as $r\uparrow1$. Yet the
+horizontal segment $[-r,r]$ stays in $\{|p|<1\}$ and has length $2r<2$.
+A narrow neck alone therefore does not give the desired counterexample.
+For the radial-distance estimate below to exceed $2$, the two root
+distances from the critical point must themselves have sum greater than $2$.
+
 \subsection{A length estimate for a double cover}
-Suppose that a component contains only two zeros and one simple critical
-point. Cutting the value disc from the critical value out to its boundary
-separates the component into two inverse sheets. We will make the preimage
-of that cut small by controlling the quadratic term at the critical point.
+Near a simple critical point $c$, write $p(c+z)-p(c)=z^2A(z)$.
+The quadratic model suggests the spatial scale
+$\sqrt{\delta/M}$, where $\delta=1-|p(c)|$ is the length of the
+remaining value slit and $M=|A(0)|=|p''(c)|/2$. The next lemma makes
+that comparison uniform on a disc of radius $h$.
+Its degree-two hypothesis has a separate role: the two local inverse
+images found near $c$ must account for \emph{every} inverse image in the
+chosen component. Otherwise a local estimate would leave a possible
+connection elsewhere in the component.
 
 \begin{lemma}\label{lem:two-sheet-bottleneck}
 Let $p$ be a polynomial and $U$ a component of $\{|p|<1\}$ on which $p$
@@ -141,34 +169,50 @@ two roots $a,b$ satisfies
 \end{lemma}
 
 \begin{proof}
-Put $r_0=(4/3)\sqrt{\delta/M}<2h/3$ and cut the value disc along
-$J=\{tv:1\le t<1/|v|\}$. Its complement is simply connected and contains
-no critical value, so the preimage in $U$ has two inverse sheets
-$U_1,U_2$, one containing each zero. On $|z|=r_0$ we have
-\[
- |p(c+z)-v|\ge\tfrac34Mr_0^2=\tfrac43\delta.
-\]
-Rouch\'e's theorem gives exactly two preimages in $B(c,r_0)$ of every
-point of $J$. To see that they are the preimages belonging to $U$,
-continue them from the double zero at $c$ as the value moves from $v$
-out along the slit. They cannot cross the circle just estimated, and
-their values remain in the unit disc. They therefore stay in $U$ and,
-since $p|_U$ has degree two, exhaust its fibre. In particular,
-$p^{-1}(J)\cap U\subset B(c,r_0)$.
+Cut the value disc along $J=\{tv:1\le t<1/|v|\}$. The slit avoids
+$0$ and removes the only critical value of $p|_U$. Over its simply
+connected complement, the double cover splits into two inverse sheets
+$U_1,U_2$, containing $a,b$ respectively.
 
-We now use connectedness without choosing a parametrisation of $K$.
-If $r_0<t<|a-c|$ and $K\cap U_1$ missed the circle $|z-c|=t$, then
-$K\cap U_1\cap\{|z-c|>t\}$ would be both open and closed in $K$:
-outside $B(c,r_0)$, the boundary of $U_1$ cannot meet $U$.
-This set contains $a$ and excludes $b$, a contradiction. Hence the image
-of $K\cap U_1$ under $z\mapsto|z-c|$ contains $(r_0,|a-c|)$ whenever
-that interval is nonempty. This radial projection is $1$-Lipschitz, whence
+We next confine their common boundary inside $U$. Put
+$r_0=(4/3)\sqrt{\delta/M}<2h/3$. On $|z|=r_0$, the quadratic estimate
+gives
+\[
+ |p(c+z)-v|\ge\tfrac34Mr_0^2=\tfrac43\delta>\delta.
+\]
+Every value on $J$ is less than $\delta$ from $v$. Rouch\'e's theorem
+therefore gives exactly two preimages in $B(c,r_0)$, counted with
+multiplicity. Continue them from the double zero at $c$ as the value
+moves outward along $J$. They cannot cross the circle just estimated;
+their values remain in the unit disc, so they stay in $U$.
+The degree-two hypothesis now identifies these local preimages with the
+entire fibre in $U$. Thus
+\[
+ p^{-1}(J)\cap U\subset B(c,r_0).
+\]
+
+It remains to count how much of $K$ lies on each sheet. For
+$r_0<t<|a-c|$, suppose $K\cap U_1$ missed the circle $|z-c|=t$.
+Then $K\cap U_1\cap\{|z-c|>t\}$ would be both open and closed in $K$:
+the boundary of $U_1$ inside $U$ lies in $B(c,r_0)$, and the remaining
+boundary is on the missing circle. This set contains $a$ and excludes
+$b$, contradicting connectedness. Hence the radial image of $K\cap U_1$
+contains $(r_0,|a-c|)$ whenever this interval is nonempty. The map
+$z\mapsto|z-c|$ is $1$-Lipschitz, and therefore
 \[
  \mathcal H^1(K\cap U_1)\ge(|a-c|-r_0)_+.
 \]
-Add the corresponding inequality on $U_2$. Hausdorff outer measure is
-additive across disjoint open sets, so this step needs no measurability
-assumption on $K$ and gives the stated lower bound.
+The same argument on $U_2$ gives the contribution from $b$. The radial
+intervals may overlap on the real line; it is the disjointness of the
+\emph{sheets in the plane} that permits addition. Hausdorff outer
+measure adds across disjoint open sets, without a measurability
+assumption on $K$, so
+\begin{align*}
+ \mathcal H^1(K)
+ &\ge (|a-c|-r_0)_+ + (|b-c|-r_0)_+\\
+ &\ge |a-c|+|b-c|-2r_0.
+\end{align*}
+This is the required bound. No parametrisation of $K$ has been used.
 \end{proof}
 
 \begin{figure}[!htbp]
@@ -228,19 +272,25 @@ assumption on $K$ and gives the stated lower bound.
   \node[below] at (11.65,-2.30) {$|b-c|$};
 \end{tikzpicture}
 \caption{The slit and its preimage in Lemma~\ref{lem:two-sheet-bottleneck}.
-The component and radii are schematic, with both zeros drawn outside the
-small disc. Connectedness forces the radial image on each sheet to contain
-the indicated interval. The two $1$-Lipschitz projections give the lower
-bound $|a-c|+|b-c|-2r_0$. The dotted intervals are radial images, not paths
-in $U$; no parametrisation of $K$ is assumed.}
+The component and radii are schematic, with both zeros outside the small
+disc. Connectedness forces the radial image on each sheet to contain the
+dotted interval. These intervals are displayed separately, although they
+may overlap as subsets of the real line. The two measure contributions
+add because $U_1$ and $U_2$ are disjoint in the plane, giving
+$|a-c|+|b-c|-2r_0$. The dotted intervals are not paths in $U$.}
 \label{fig:two-sheet-bottleneck}
 \end{figure}
 
 \subsection{The polynomial}
-To apply the lemma we need the two zeros to be almost opposite and
-the critical value to be close enough to the unit circle that the loss
-at the slit is smaller than the excess in their combined distances.
-The following coefficients achieve this at one fixed scale.
+The polynomial must accomplish two things at once: place its roots in
+the unit disc and arrange the critical geometry so that the distance
+surplus survives the loss in the lemma. We start near $z^7-1$, whose
+roots lie on the unit circle, and perturb its multiple critical point
+at the origin. The powers of $\varepsilon$ below are chosen so that the
+linear, quadratic and cubic perturbations all have order
+$\varepsilon^7$ at $z=\varepsilon w$. Thus coefficients that are small
+at the root circle can change the geometry at the critical-point scale.
+The following fixed coefficients are those of \texttt{ani}'s construction.
 Put $s=10^{-6}$, $\varepsilon=s^2=10^{-12}$ and $\rho=1-s^{16}$, and let
 \begin{gather*}
  A=-\frac{329507}{1600},\qquad B=\frac{551827}{800},\qquad
@@ -254,12 +304,15 @@ Define
       +\varepsilon^6(c_0z-\bar c_0z^6),\label{eq:ani-F}\\
  f(z)&=\rho^7F(z/\rho).\label{eq:ani-f}
 \end{align}
-Since $F(z)=-z^7\overline{F(1/\bar z)}$, we locate its roots by
-applying the Cayley substitution $z=(1+ix)/(1-ix)$ and checking the
-signs of a real polynomial at fourteen rational endpoints. The seven
+The identity $F(z)=-z^7\overline{F(1/\bar z)}$ reduces the Cayley
+substitution $z=(1+ix)/(1-ix)$ to a real polynomial. It does not by
+itself put the roots on the circle: we check signs at fourteen rational
+endpoints. The seven
 resulting intervals account for all zeros $\zeta_j$ of $F$, which are
 therefore distinct and have modulus one. Thus $b_j=\rho\zeta_j$ lies
-strictly inside the disc, as required.
+strictly inside the disc, as required. At the chosen parameter,
+$1-\rho=\varepsilon^8$; the finite estimates below show that this
+contraction does not erase the excess in the selected root distances.
 
 To resolve the critical points near the origin, we pass to the scale
 $z=\rho\varepsilon w$. Write
@@ -275,7 +328,14 @@ less than one. It satisfies
  |w_s-(0.0000000039+0.8232474662i)|<10^{-6}.
 \]
 Let $c_s=\rho\varepsilon w_s$, $v=f(c_s)$, $\delta=1-|v|$, and write
-$f(c_s+z)-v=z^2A_s(z)$. The finite estimates needed below are
+$f(c_s+z)-v=z^2A_s(z)$. Since $|\zeta_j|=1$,
+\[
+ |b_j-c_s|^2=\rho^2\bigl(1-2\varepsilon\operatorname{Re}
+ (w_s\bar\zeta_j)+\varepsilon^2|w_s|^2\bigr).
+\]
+The displacement enters through a term proportional to $\varepsilon$,
+whereas $1-\rho=\varepsilon^8$. The finite estimates below fix the
+sign and the margin for the chosen pair:
 \begin{align}
  M:=|A_s(0)|&>180\rho^5\varepsilon^5,&
  \delta&<\frac{36}{5\cdot10^6}\rho^7\varepsilon^7,
@@ -288,8 +348,13 @@ $f(c_s+z)-v=z^2A_s(z)$. The finite estimates needed below are
 \end{align}
 The subscripts $3,6$ refer to Cayley roots in the intervals
 $(43812,43813)/10^4$ and $(-4816,-4815)/10^4$.
+The last inequality is the feature absent from the quadratic model:
+measured from $c_s$, these two root distances have sum greater than $2$.
+The first two estimates make $\sqrt{\delta/M}<\rho\varepsilon/5000$,
+so the neck costs only a small fraction of this surplus.
 
-To identify the two-root component, we join a small disc about $w_s$
+We must also place these two roots in the same component; distance
+estimates alone do not identify that pair. We join a small disc about $w_s$
 to points close to $8\zeta_3$ and $8\zeta_6$ by polygonal arcs in the
 $w$-plane. Containment of the four inner segments follows by writing
 \[
@@ -334,9 +399,12 @@ suffice.
 
 \section{Trinomials and radial segments}\label{sec:trinomial}
 
-The trinomial identity makes a prescribed path available. At a zero,
-the constant term and the leading monomial determine every partial sum;
-both have modulus less than one.
+If $f(z)=z^n+b$ has a zero $\zeta$ in the open unit disc, then
+$|b|=|\zeta|^n<1$. The identity $f(t\zeta)=b(1-t^n)$, $0\le t\le1$,
+keeps the whole segment $[0,\zeta]$ in the lemniscate.
+A middle monomial does not destroy this argument: the equation
+$f(\zeta)=0$ lets us eliminate its contribution before taking absolute
+values. Only $b$ and $-\zeta^n$ remain, both of modulus less than one.
 
 \begin{theorem}[all-degree monic trinomials]
 \label{res:trinomial-all-degree}
@@ -373,7 +441,10 @@ $S_j=\sum_{k=0}^j a_k\zeta^k$. Abel summation gives
 For $t<1$, division by $1-t^n$ expresses the value as a convex
 combination of the $S_j$. In the trinomial case these are $b$ and
 $-\zeta^n$. Additional coefficients introduce further partial sums, whose
-moduli need not be controlled by the root locations.
+moduli need not be controlled by the root locations. The theorem controls
+segments ending at zeros; it makes no assertion that the whole
+lemniscate is star-shaped. The next polynomial shows where the
+partial-sum argument can fail after a further term is added.
 
 \begin{proposition}[failure of a prescribed radial segment]
 \label{res:sextic-spoke}
@@ -400,12 +471,18 @@ two missing coefficients select a suitable pair of segments.
 \section{A small least critical value}\label{sec:constant-factor}
 \papersectiontarget{low-critical-short}
 
-For a squarefree polynomial, let
-$\mu=\min_{f'(c)=0}|f(c)|>0$. Its root components are separate below
-that level, so we follow a component from its first merger and ask how
-fast its area must grow if every connection between roots is long.
-The ordinary argument in the companion compares that growth with
-P\'olya's area bound and gives the following unformalised criterion.
+A small critical value leaves room to enlarge a component before
+reaching the level $1$. For a squarefree polynomial, put
+$\mu=\min_{f'(c)=0}|f(c)|>0$ and follow a component from its first
+merger at level $\mu$. If all root connections were long, the roots
+would have to be far apart in its hyperbolic metric. Packing then forces
+many roots into the growing component, and a boundary-length estimate
+forces its area to grow too fast. The available range of logarithmic
+levels is $\log(1/\mu)$.
+
+The ordinary argument in the companion makes this contradiction
+quantitative using P\'olya's area bound. It gives the following
+unformalised criterion, which requires no restriction on root locations.
 
 \begin{remark}[unformalised small-critical-value assertion]
 \label{res:low-critical-thirteen-twentyfifths}
@@ -539,6 +616,12 @@ map, Bergman estimate and component-area bound are combined in the
 unformalised input \texttt{DiscSepBergmanArea}; the formal algebraic
 consequences are conditional on that construction.
 
+After dividing values by $v$, the chosen critical value is $1$ and the
+roots still lie over $0$. We need a disc containing both $0$ and $1$
+but no other critical value. Its centre $w_0\in[0,1]$ and radius $S$
+therefore satisfy $S>\max(w_0,1-w_0)$. These are the parameters in the
+following statement.
+
 \begin{remark}[unformalised isolated-value assertion]
 \label{res:critical-value-separation}
 Let $f$ be monic of degree $n\ge3$, let $c$ be a simple critical point, and
@@ -645,6 +728,9 @@ strictly less than $2$. Both arguments and their precise statements are
 in the companion's
 \recordlink{erdos1041-lemniscate-reasoning-surface.pdf}{root-distance-proofs}
 {root-distance estimates}.
+The nearest pair is chosen among all roots of $f$. It need not be the
+pair in the two-root component of the degree-seven example, where
+containment restricts which pair can be joined.
 
 \noindent\phantomsection\label{res:straight-no-go}
 These distance estimates alone do not imply containment. For the quintic

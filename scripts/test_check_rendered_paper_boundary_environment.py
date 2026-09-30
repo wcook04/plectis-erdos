@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # SPDX-FileCopyrightText: 2026 Will Cook
 # SPDX-License-Identifier: Apache-2.0
-"""Keep Poppler boundary checks independent of ambient process state."""
+"""Protect reader-facing limits and keep Poppler independent of ambient state."""
 
 from __future__ import annotations
 
@@ -59,8 +59,83 @@ def check_rendered_file_boundary() -> None:
             boundary.ROOT = original_root
 
 
+def check_unified_systems_limits() -> None:
+    """Scope/benefit promotions and displaced limits must fail the R6 profile.
+
+    These excerpts come from the accepted native systems PDF. Poppler is mocked
+    here so the negative fixtures also run in the stdlib-only release gate.
+    The full rendered check separately verifies the actual PDF and page bands.
+    """
+    pages = {
+        1: """Problem-Sized Lean Worlds
+From a Lean corpus to a short paper, open to outside contribution.
+For each mathematical problem, Plectis keeps the question, prior sources,
+computations, proofs and unresolved steps together.
+A historical test rejected nine of ten false edits but accepted a false claim
+of completion.""",
+        5: """Lean verifies that a proof establishes the formal statement written
+in the source. Comparator adds a separately stated challenge and a check of its
+selected Lean implementation under the permitted axioms.""",
+        6: """Source-frozen editorial refinement
+We freeze the selected manuscripts, input closure, coverage ledger and audit
+rules under a manifest of their exact bytes.
+In either case the integrating reviewer decides whether the mathematics and
+its description remain faithful.
+It neither applies the proposal nor executes returned programs.
+This procedure supplies no measurement of reader benefit or autonomous discovery.""",
+        7: """An open route for contributions
+The feedback arrow records an adopted change and does not certify independent
+review or increased discovery rate.""",
+        8: """The historical publication-evidence record reports that nine of the
+ten deliberately false edits were rejected and one escaped.
+As of 14 September 2026, no completed external cold-clone use had been recorded.
+No comparative reader result is reported.""",
+        10: """Transfer to unseen mathematics and understanding by
+independent human readers are unresolved.
+Openness alone does not equalise resources or resolve conflicts and appeals.
+Broad mathematical acceptance is exogenous to this repository and cannot be
+granted by its maintainer.
+This paper reports no new Lean or Comparator execution.
+The frozen packet was a local integration commit rather than public main.""",
+    }
+    pdf = boundary.ROOT / "paper/systems/claim-faithful-publication-systems-paper.pdf"
+
+    def check(candidate: dict[int, str]) -> list[str]:
+        def render(_pdf, _tool, first, last):
+            return " ".join(candidate.get(page, "") for page in range(first, last + 1))
+        with patch.object(boundary, "unified_systems_profile", return_value=True):
+            with patch.object(boundary, "rendered_pages", side_effect=render):
+                return boundary.first_minute_errors(pdf, "fixture-pdftotext")
+
+    require(check(pages) == [], "accepted systems excerpts fail the reader contract")
+    mutations = (
+        (1, "accepted a false claim\nof completion", "detected every false claim", "false claim of completion"),
+        (8, "nine of the\nten deliberately false edits were rejected and one escaped", "all ten deliberately false edits were rejected", "nine of the ten deliberately false edits"),
+        (6, "the integrating reviewer decides", "the automated checker decides", "integrating reviewer decides"),
+        (6, "no measurement of reader benefit", "a measurement of reader benefit", "no measurement of reader benefit"),
+        (6, "neither applies the proposal nor executes", "applies the proposal and executes", "neither applies the proposal nor executes"),
+        (10, "understanding by", "speed of", "transfer to unseen mathematics and understanding by"),
+        (10, "independent human readers are unresolved", "independent human readers are fully understood", "independent human readers are unresolved"),
+        (10, "exogenous to this repository and cannot be", "supplied by this repository and can be", "acceptance is exogenous"),
+        (8, "No comparative reader result is reported", "A comparative reader result is established", "no comparative reader result"),
+    )
+    for page, old, new, missing in mutations:
+        require(old in pages[page], f"negative fixture target missing: {old}")
+        changed = dict(pages)
+        changed[page] = changed[page].replace(old, new, 1)
+        errors = check(changed)
+        require(any(missing in error for error in errors), f"claim promotion escaped: {new}")
+    moved = dict(pages)
+    moved[9] = moved.pop(8)
+    require(
+        any("pages 7-8" in error and "nine of the ten" in error for error in check(moved)),
+        "historical limit outside its reviewed page band was accepted",
+    )
+
+
 def main() -> int:
     check_rendered_file_boundary()
+    check_unified_systems_limits()
     hostile_environment = {
         "GIT_DIR": "/private/wrong-git-dir",
         "GIT_NAMESPACE": "refs/namespaces/wrong-release",
@@ -123,7 +198,8 @@ def main() -> int:
     )
     print(
         "test_check_rendered_paper_boundary_environment: Poppler checks use a "
-        "clean snapshot environment and bounded subprocesses"
+        "clean snapshot environment and bounded subprocesses; systems scope "
+        "and benefit promotions are rejected"
     )
     return 0
 

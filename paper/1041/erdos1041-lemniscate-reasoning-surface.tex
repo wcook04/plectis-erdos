@@ -110,13 +110,17 @@ lemniscate containing two roots has one-dimensional Hausdorff measure
 greater than $2$.
 \end{theorem}
 
-Section~\ref{sec:counterexample-proof} proves the statement. A local
-quadratic estimate confines the preimage of an outward critical-value
-slit to a small disc. The global degree of the selected component is
-two, so no other preimage can bypass that disc. Radial projections on
-the two inverse sheets then bound Hausdorff measure itself. This applies
-to the image of a continuous path and also excludes a rectifiable path
-of total variation less than $2$.
+Only one component can contain a pair of zeros: it has degree two,
+whereas the other five components contain one zero each. In that
+component, a local quadratic estimate confines the \emph{whole}
+preimage of an outward critical-value slit to a small disc.
+The word ``whole'' uses the degree: the two local inverse images
+exhaust the fibre, so none remains elsewhere in the component.
+Radial projections on the resulting two inverse sheets then count
+two disjoint contributions to Hausdorff measure. Their sum exceeds $2$.
+Section~\ref{sec:counterexample-proof} supplies the estimates and proof.
+Applied to a continuous path image, this also excludes a rectifiable
+path of total variation less than $2$.
 
 The theorem concerns a fixed polynomial. The small-parameter family
 reported by \texttt{ani} is not proved here, and independent human review
@@ -135,15 +139,28 @@ means alone makes no choice of a contained path.
 \section{The degree-seven construction}\label{sec:counterexample-proof}
 \papersectiontarget{counterexample-proof}
 
-We arrange a component of degree two whose critical value is just inside
-the unit circle. The quadratic term at the critical point then confines
-the preimage of an outward slit to a small disc. If the two roots are
-far enough from that disc, every connection between them has measure
-greater than $2$. Lemma~\ref{lem:two-sheet-bottleneck-long} quantifies the
-required distances before we choose the polynomial.
+The construction has two separate quantitative requirements. The two
+roots in the selected component must have combined distance from its
+critical point greater than $2$, and the preimage of an outward value
+slit must be small enough to preserve that surplus. A narrow neck alone
+would not suffice: for $p(z)=z^2-r^2$, $0<r<1$, the slit
+$(-1,-r^2]$ has preimage $\{iy:|y|<\sqrt{1-r^2}\}$, while the root
+segment $[-r,r]$ still has length $2r<2$ and lies in $\{|p|<1\}$.
+
+We first prove the estimate that separates these requirements. We then
+verify root locations, critical values and the membership of the chosen
+pair in one component. The final fixed-parameter estimates compare the root-distance
+surplus with the neck loss, and distinguish both from the radial
+contraction $1-\rho=\varepsilon^8$.
 
 \subsection{A two-sheeted component}\label{subsec:two-sheet-bottleneck}
 \papersectiontarget{two-sheet-bottleneck}
+
+The quantity $\delta=1-|p(c)|$ measures the remaining length of the
+slit in the value plane. The local quadratic coefficient converts it
+into the spatial scale $\sqrt{\delta/M}$. The radius $h$ records where
+that quadratic comparison is valid. Degree two will turn the local
+preimage estimate into a statement about the whole component.
 
 \begin{lemma}[a bottleneck estimate]\label{lem:two-sheet-bottleneck-long}
 Let $p$ be a polynomial and $U$ a component of $\{|p|<1\}$ on which $p$
@@ -186,9 +203,19 @@ nonempty. This map is $1$-Lipschitz, so
 \[
  \mathcal H^1(K\cap U_1)\ge (|a-c|-r_0)_+.
 \]
-The same argument applies to $b$ and $U_2$. Hausdorff outer measure is
-additive across these disjoint open sheets, giving the asserted lower
-bound. This proof applies to connected sets without a chosen parametrisation.
+The same argument applies to $b$ and $U_2$. Although the two radial
+intervals can overlap on the real line, the sets $K\cap U_1$ and
+$K\cap U_2$ lie in disjoint open subsets of the plane. Hausdorff outer
+measure adds across that separation, even when $K$ is not assumed
+measurable. Consequently
+\begin{align*}
+ \mathcal H^1(K)
+ &\ge\mathcal H^1(K\cap U_1)+\mathcal H^1(K\cap U_2)\\
+ &\ge(|a-c|-r_0)_+ + (|b-c|-r_0)_+\\
+ &\ge |a-c|+|b-c|-2r_0.
+\end{align*}
+Substituting the value of $r_0$ proves the bound. Connectedness supplied
+the intervals; no path or parametrisation of $K$ was required.
 \end{proof}
 
 The \href{erdos-1041-lemniscate-newton-flow.pdf\#bottleneck-geometry}
@@ -198,9 +225,16 @@ the two radial projections used above.
 \subsection{Polynomial and roots}\label{subsec:counterexample-polynomial}
 \papersectiontarget{counterexample-certificate}
 
-The antisymmetry of the coefficients will reduce root location to real
-sign tests. We choose all constants rationally so that those tests and
-the local critical-point estimates can be checked without rounding. Set
+The perturbation of $z^7-1$ is small on the unit circle but has a
+nontrivial shape at $z=\varepsilon w$: the terms
+$\varepsilon^4az^3$, $\varepsilon^5bz^2$ and
+$\varepsilon^6c_0z$ all become order $\varepsilon^7$ there.
+The paired conjugate terms give the antisymmetry used to locate the
+roots. These two features let us control roots near the unit circle
+and critical points near the origin by different tests.
+
+All constants are rational, so both sets of tests can be made without
+rounding. Set
 \[
  s=10^{-6},\qquad \varepsilon=s^2=10^{-12},\qquad
  \rho=1-s^{16}=1-10^{-96},

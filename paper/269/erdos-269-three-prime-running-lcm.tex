@@ -34,7 +34,7 @@
 \title{Distinct running least common multiples}
 \subtitle{Affine tails and Erd\H{o}s Problem~\#269}
 \author{Will Cook}
-\date{July 2026; revised 29 September 2026}
+\date{July 2026; revised 30 September 2026}
 
 
 % A local PDF link uses its destination name directly. The shared web-style
@@ -78,13 +78,12 @@ of the successive heights gives convergence. We use $\N=\{0,1,2,\ldots\}$.
 The number $\mathcal D_{\{2,3,5\}}$ is irrational.
 \end{theorem}
 
-We group the jumps into intervals between successive powers of $2$ and
-express their contributions by five affine maps. To recover the jumps
-from a tail value, we use the spacing of powers of $5$ to find a bound on
-which the five images are disjoint. Under rationality the normalised
-tails take only finitely many values, so a repeated value would force
-periodicity of the later jumps, contradicting the irrational frequency
-of the powers of $3$.
+The proof turns on whether a normalised tail determines the jumps that
+follow it. Rationality would confine the tails to a finite set. Five
+affine maps describe the possible blocks of jumps, and the spacing of
+powers of $5$ puts their images in disjoint intervals. A repeated tail
+would therefore repeat the entire later block sequence. Powers of $3$
+occur with an irrational frequency, which excludes that periodicity.
 
 Erd\H{o}s asserted irrationality of $\mathcal D_P$ for every finite
 $P$ with $|P|\ge2$ in a letter dated 1 January 1973, without printing a
@@ -105,33 +104,65 @@ $2/60$ in $\mathcal R_P$ and $1/60$ in $\mathcal D_P$. The theorem treats
 a related, distinct target. Our arguments leave the repeated sum unresolved
 for finite $P$ with $|P|\ge3$. For $P=\{p\}$ both sums equal $p/(p-1)$.
 
-Section~\ref{sec:distinct-235} gives the five-map proof. For two primes,
-Fan's factorisation~\cite{fan2026comment} reduces both sums to a
-Hecke--Mahler value and yields transcendence (Section~\ref{sec:two-prime}).
-We then derive the recurrence for the repeated three-prime sum and its
-residue criterion in Sections~\ref{sec:lcm} and~\ref{sec:escape}.
-Appendix~\ref{sec:rank} explains why the two-prime factorisation has no
-finite separated analogue for the three-prime kernel.
+Section~\ref{sec:distinct-235} proves the theorem. We then retain the
+multiplicities and examine what changes: the tails satisfy an integer
+recurrence, but their values are unbounded. Sections~\ref{sec:lcm}
+and~\ref{sec:escape} derive that recurrence and a residue criterion for
+the repeated sum. For two primes, Fan's factorisation~\cite{fan2026comment}
+reduces both sums to a Hecke--Mahler value and yields transcendence
+(Section~\ref{sec:two-prime}). Appendix~\ref{sec:height-identities} collects
+the elementary height identities, and Appendix~\ref{sec:rank} explains
+why the three-prime kernel has no finite separated factorisation.
 
 \section{Recovering the prime-power jumps}\label{sec:distinct}\label{sec:distinct-235}
-We group the prime-power jumps into the right-closed intervals
-$(2^a,2^{a+1}]$. Each contains its terminal power of $2$, at most one power
-of $3$ and at most one power of $5$. We write $\tau_a$ for the sequence of
-interior prime labels, so that
-$\tau_a\in\{\varnothing,3,5,35,53\}$. Both orders occur: the block
-$(16,32]$ contains $25<27$, whereas $(64,128]$ contains $81<125$.
-We omit the terminal $2$ from $\tau_a$.
+In long division, rationality leaves only finitely many possible
+remainders. A repeated remainder then repeats the later digits because
+it determines the next step. We use the same distinction here: first
+obtain finitely many tail values under rationality, then show that a
+tail value determines the next block of prime-power jumps.
 
 \begin{proof}[Proof of Theorem~\ref{res:distinct-height-235}]
-To remove the denominators of an initial segment, put $P_a=\hgt_{\{2,3,5\}}(2^a)$
-and define
+\emph{Finitely many tails under rationality.}
+Write $\hgt=\hgt_{\{2,3,5\}}$ in this proof and put $P_a=\hgt(2^a)$.
+Every height at or before $2^a$ divides $P_a$. We therefore normalise
+the tail after $2^a$ by
 \begin{equation}\label{eq:five-tail}
  Y_a=P_a\sum_{\substack{t>2^a\\t=2^n,3^n\text{ or }5^n,\ n\ge1}}
-                   \frac1{\hgt_{\{2,3,5\}}(t)}.
+                   \frac1{\hgt(t)}.
 \end{equation}
-Every subsequent jump multiplies the height by at least $2$, and a jump
-by $3$ eventually occurs. Comparison with $\sum_{j\ge1}2^{-j}$ therefore
-gives $0<Y_a<1$. Splitting off one block gives
+Each subsequent jump multiplies the height by at least $2$, and a jump
+by $3$ eventually occurs. Comparison with $\sum_{j\ge1}2^{-j}$ gives
+$0<Y_a<1$.
+
+Suppose that $\mathcal D_{\{2,3,5\}}=N/K$, where $N$ is an integer and
+$K\ge1$ is an integer. Clearing the finite prefix gives
+\[
+ KY_a=P_aN-K\left(P_a+
+        \sum_{\substack{t\le2^a\\t=2^n,3^n\text{ or }5^n,\ n\ge1}}
+                 \frac{P_a}{\hgt(t)}\right)\in\mathbb Z.
+\]
+Thus the $Y_a$ lie in the finite set $(K^{-1}\mathbb Z)\cap(0,1)$.
+It remains to show why equality of two tails propagates.
+
+\medskip
+\emph{Recovering a block from its tail.}
+Consider the jumps between $16$ and $32$, including the last endpoint.
+They occur at $25,27,32$, multiplying the height successively by $5,3,2$.
+After normalisation at $16$, their contribution is
+$1/5+1/15+1/30$. The remaining tail is normalised at a height $30$
+times as large, so
+\[
+ Y_4=\frac15+\frac1{15}+\frac1{30}+\frac{Y_5}{30}
+     =\frac{9+Y_5}{30}.
+\]
+In the block $(64,128]$, the interior jumps occur in the opposite order,
+at $81,125$. Its constant term is $1/3+1/15+1/30=13/30$.
+The order of the jumps is therefore visible in the affine recurrence.
+
+In general, $(2^a,2^{a+1}]$ contains its terminal power of $2$, at most
+one power of $3$ and at most one power of $5$. Let $\tau_a$ denote the
+sequence of interior prime labels, omitting the terminal $2$. Splitting
+off the block gives
 \begin{equation}\label{eq:five-maps}
  Y_a=G_{\tau_a}(Y_{a+1}),\qquad
  G_\tau(y)=\frac{\mu_\tau+y}{b_\tau},\qquad
@@ -141,38 +172,44 @@ gives $0<Y_a<1$. Splitting off one block gives
  \mu_\tau&1&3&3&13&9
  \end{array}
 \end{equation}
-For example, a block of type $35$ contributes
-$1/3+1/15+1/30=13/30$ to the normalised tail.
-The same calculation for type $53$ gives $1/5+1/15+1/30=9/30$.
-Thus the order of the two interior jumps changes the constant term of the map.
+Here $b_\tau$ is the factor by which the height increases across the
+block, and $\mu_\tau/b_\tau$ is the block's normalised contribution.
 
-To use a repeated tail value, we must first recover the following block
-from that value alone. The bound $0<Y_{a+1}<1$ does not yet permit this:
-for example, $G_{53}([0,1])=[3/10,1/3]$ lies inside
-$G_5([0,1])=[3/10,2/5]$. We therefore use the spacing of powers of $5$
-to narrow the range of the actual tails.
+The five formulae alone do not recover $\tau_a$ from $Y_a$.
+The coarse images $G_{53}([0,1])=[3/10,1/3]$ and
+$G_5([0,1])=[3/10,2/5]$ overlap. We need a smaller interval known to
+contain the next \emph{arithmetic} tail. The table gives the lower bound
+$Y_a\ge3/10$. With that lower endpoint, separating these two images
+requires an upper endpoint $U$ satisfying
+\[
+ G_{53}(U)<G_5(3/10),\qquad
+ \frac{9+U}{30}<\frac{33}{100},\qquad U<\frac9{10}.
+\]
+This specifies the improvement needed from the arithmetic sequence.
 
-The table gives $Y_a\ge3/10$. A power $5^f$ belongs to block
-$\lfloor f\log_2 5\rfloor$; these indices start at $2$, and their successive
-differences are $2$ or $3$. Thus every three consecutive blocks contain
-a power of $5$. Given $a$, let $j\in\{a,a+1,a+2\}$ be the first such
-block. At $j$, the bound $Y_{j+1}<1$ gives $Y_j\le7/15$, since
-$G_{35}(1)=7/15$ also bounds $G_5(1)$ and $G_{53}(1)$.
-To bound $Y_a$, we work backwards from $j$ through at most two blocks.
-Their maps are $G_\varnothing$ or $G_3$, and
-$G_3(y)\le G_\varnothing(y)=(1+y)/2$ for $y\ge0$. Consequently
+A power $5^f$ belongs to block $\lfloor f\log_2 5\rfloor$. These
+indices start at $2$ and their successive differences are $2$ or $3$.
+Every three consecutive blocks therefore contain a power of $5$.
+Given $a$, let $j\in\{a,a+1,a+2\}$ be the first such block. The maps
+for blocks containing $5$ give $Y_j\le7/15$, since $Y_{j+1}<1$ and
+$G_{35}(1)=7/15$ bounds $G_5(1)$ and $G_{53}(1)$ as well.
+We now work \emph{backwards} from $j$ to $a$. Each intervening block
+has map $G_\varnothing$ or $G_3$, and
+$G_3(y)\le G_\varnothing(y)=(1+y)/2$ for $y\ge0$.
+At most two backward steps give the successive bounds
+$7/15$, $11/15$, $13/15$. Hence
 \begin{equation}\label{eq:five-interval}
  Y_a\in I=\left[\frac3{10},\frac{13}{15}\right],\qquad
- G_\varnothing\bigl(G_\varnothing(7/15)\bigr)=\frac{13}{15}.
+ G_\varnothing\bigl(G_\varnothing(7/15)\bigr)=\frac{13}{15}<\frac9{10}.
 \end{equation}
-The spacing condition was needed to bound the arithmetic tails.
-The interval $I$ is not invariant under arbitrary compositions of the
-five maps, since $G_\varnothing(13/15)=14/15$.
+The bound uses the occurrence of a power of $5$ within three blocks.
+It does not assert invariance under arbitrary words in the five maps:
+indeed, $G_\varnothing(13/15)=14/15$ lies outside $I$.
 
-The exact image intervals in Figure~\ref{fig:five-map-images} are pairwise
-disjoint. In their displayed order, the gaps are
-$1/900,17/300,79/900,1/180$. The two smallest depend on
-$3(3/10)-13/15=1/30>0$, which explains why the narrower bound matters.
+Figure~\ref{fig:five-map-images} gives the exact images of $I$. They
+are pairwise disjoint, with successive gaps
+$1/900,17/300,79/900,1/180$. The two smallest gaps come from
+$3(3/10)-13/15=1/30>0$.
 
 \begin{figure}[!htbp]
 \centering
@@ -243,18 +280,14 @@ In general we calculate $Y_{a+1}=b_{\tau_a}Y_a-\mu_{\tau_a}$, identify its
 image interval, and continue. Each recovered value is the next arithmetic
 tail, so the same bound $I$ remains available at every step.
 
-Suppose that $\mathcal D_{\{2,3,5\}}=N/K$, with integers $N$ and $K\ge1$.
-Every height at or before $2^a$ divides $P_a$. Consequently
-\[
- KY_a=P_aN-K\left(P_a+
-        \sum_{\substack{t\le2^a\\t=2^n,3^n\text{ or }5^n,\ n\ge1}}
-                 \frac{P_a}{\hgt_{\{2,3,5\}}(t)}\right)\in\mathbb Z.
-\]
-There are only finitely many integers in $[3K/10,13K/15]$, so
-$Y_u=Y_v$ for some $u<v$. Recovery gives $\tau_u=\tau_v$ and then
-$Y_{u+1}=Y_{v+1}$. Repeating this step gives
-$\tau_{u+j}=\tau_{v+j}$ for every $j\ge0$, so the block word has eventual
-period $v-u$.
+\medskip
+\emph{Repetition would give a rational frequency.}
+The finitely many tail values obtained above include a repeated value
+$Y_u=Y_v$ with $u<v$. Since the image intervals are disjoint, this
+forces $\tau_u=\tau_v$. Applying the corresponding inverse map gives
+$Y_{u+1}=Y_{v+1}$. Induction yields
+$\tau_{u+j}=\tau_{v+j}$ for every $j\ge0$. Thus the entire later block
+word has period $v-u$.
 
 To exclude this possibility, let $\alpha=\log2/\log3$. The number of powers
 of $3$ in block $a$ is
@@ -280,154 +313,57 @@ at every subsequent refinement, preventing that automaton from recovering
 its first block. This identity does not establish a collision between two
 words realised by the arithmetic sequence.
 
-\section{Two-prime transcendence}\label{sec:two-prime}
-For two primes we can retain the multiplicities and still evaluate the
-sum through one Hecke--Mahler value. Fan gave the factorisation of the
-repeated sum and its transcendence consequence in his post of 26 June
-2026~\cite{fan2026comment}. The following calculation also expresses the
-distinct-height sum in that value.
-
-\begin{theorem}[both two-prime sums]
-\label{res:two-prime-transcendence}
-\label{res:two-prime-repeated-transcendence}
-Let $p<q$ be distinct primes.  Put $\theta=\log p/\log q$ and
-$A=\sum_{n\ge0}p^{-n}q^{-\lfloor n\theta\rfloor}$.  Let
-$\mathcal R_{p,q}$ sum the reciprocal running LCM at every positive
-$\{p,q\}$-smooth integer, and let $\mathcal D_{p,q}$ count each distinct
-running LCM once.  Then
-\begin{equation}\label{eq:two-prime-affine}
- \mathcal D_{p,q}=\frac{(q-p)A+p}{q-1},\qquad
- \mathcal R_{p,q}=\frac{(p+q-1)A-(p-1)A^2}{q-1}.
-\end{equation}
-Both numbers are transcendental.
-\end{theorem}
-\evidenceremark{The Lean proof assumes the transcendence theorem of Bugeaud
-and Laurent; the two identities in~\eqref{eq:two-prime-affine} are proved
-in Lean without it.}
-\begin{proof}
-Write $x=1/p$, $y=1/q$, $m_n=\lfloor n\theta\rfloor$ and
-$\delta_n=m_{n+1}-m_n$.  Unique factorisation makes $\theta$ irrational,
-and $0<\theta<1$ gives $\delta_n\in\{0,1\}$.  The initial value and the
-positive powers of $p$ contribute $A=\sum_{n\ge0}x^ny^{m_n}$.  There is
-one $q$-power strictly between $p^n$ and $p^{n+1}$ exactly when
-$\delta_n=1$, so the positive powers of $q$ contribute
-\[
- B=\sum_{n\ge0}\delta_nx^ny^{m_n+1},\qquad \mathcal D_{p,q}=A+B.
-\]
-Since $0<x,y<1$, these series converge absolutely.  The identity
-$y^{m_{n+1}}-y^{m_n}=\delta_ny^{m_n}(y-1)$ and an index shift in $A$
-give $A-1-xA=x(y-1)B/y$.  Therefore
-\[
- B=\frac{p-(p-1)A}{q-1}.
-\]
-We compute the repeated sum from the height
-$p^{i+\lfloor j/\theta\rfloor}q^{j+m_i}$ at $p^iq^j$, obtaining
-\[
- \mathcal R_{p,q}
- =A\sum_{j\ge0}y^jx^{\lfloor j/\theta\rfloor}=A(1+B).
-\]
-For the last equality, each $j\ge1$ corresponds to
-$n=\lfloor j/\theta\rfloor$ with $m_n=j-1$ and $\delta_n=1$.
-Substitution proves~\eqref{eq:two-prime-affine}.
-
-To apply the transcendence theorem, we express $A$ in terms of the
-Hecke--Mahler series $F_\theta(x,y)=\sum_{n\ge1}\sum_{k=1}^{m_n}x^ny^k$.
-Geometric summation gives
-\begin{equation}\label{eq:hecke-mahler-boundary}
- A=\frac1{1-x}-\frac{1-y}{y}F_\theta(x,y).
-\end{equation}
-Bugeaud and Laurent's theorem \cite[Theorem~1.1]{bugeaudlaurent2023} applies
-with intercept $\rho=0$, $\beta=x$ and $\alpha=y$: the slope $\theta$ is
-irrational and lies in $(0,1)$, $x$ and $y$ are nonzero algebraic numbers,
-$|x|<1$ and $|xy^\theta|=p^{-2}<1$.  Thus $F_\theta(x,y)$ is transcendental;
-this case $\rho=0$ is due to Loxton and van der Poorten
-\cite[Theorem~8, p.~40]{loxtonvdp1977}.  Thus $A$ is transcendental.
-The displayed affine and quadratic polynomials are nonconstant, so an
-algebraic value of either would force $A$ to be algebraic.
-\end{proof}
-
-The \longrecord{r3-two-prime}{companion's two-prime calculation} records
-an ordinary extension to the monoid generated by coprime integers
-$1<p<q$, such as $4,9$. That monoid need not contain all integers
-supported on the prime divisors of $pq$; multiplicatively dependent
-generators such as $4,8$ require a different calculation.
-
-For larger prime sets, the sums over pure powers
-$E_p=\sum_{\alpha\ge0}\Lprefix(p^\alpha)^{-1}$ satisfy
-$\mathcal D_P=\sum_{p\in P}E_p-(|P|-1)$. The
-\longrecord{r3-prime-subseries}{companion's prime-power subseries argument}
-treats their irrationality as a remark with an ordinary proof awaiting
-formalisation. The source record contains no separate priority search for
-this claim. Irrationality of the individual subseries would not imply
-irrationality of their sum. The repeated series also contains mixed
-products of primes, whose multiplicities change the tail estimates.
-
 \section{The repeated three-prime sum}
-\label{sec:lcm}\label{sec:cells}\label{sec:fibre}\label{sec:shell}
-\label{sec:actual-orbit}
-We now count the smooth integers contributing each height. For three
-pairwise distinct primes $p,q,r$, write $\hgt=\hgt_{\{p,q,r\}}$ and
-$\Kernel(i,j,k)=\hgt(p^iq^jr^k)^{-1}$. The next identities identify the
-heights and their multiplicities before we group the repeated series into
-intervals between powers of $2$.
+\label{sec:lcm}\label{sec:shell}\label{sec:actual-orbit}
+We return to the sum in which every smooth integer contributes. Put
+$P=\{2,3,5\}$, $S=\mathcal R_P$ and $\hgt=\hgt_P$ throughout this
+section. The height still changes only at prime powers, but smooth
+integers between consecutive jumps also contribute to $S$.
 
-\begin{proposition}[the running least common multiple]\label{res:lcm}
-Let $p,q,r$ be pairwise distinct primes and $x\ge1$.  Then the running LCM equals the three-prime height:
-$\Lprefix(x)=\hgt(x)$.
-\end{proposition}
-\begin{proof}
-We have $u\mid\hgt(x)$ for every supported $u\le x$. For the reverse
-divisibility, take the maximal powers of $p,q,r$ below $x$: they belong
-to the prefix and are pairwise coprime, so their product divides its LCM.
-\end{proof}
-For each prime, $x/p<p^{\lfloor\log_p x\rfloor}\le x$. Multiplying gives
-\begin{equation}\label{res:cube}
- x^3/(pqr)<\hgt(x)\le x^3.
-\end{equation}
+For example, $[16,32)$ contains the seven smooth integers
+$16,18,20,24,25,27,30$. Grouping them by their height gives
+\[
+ \begin{array}{c|c|c}
+ \text{smooth integers}&\text{height}&\text{contribution}\\\hline
+ 16,18,20,24&720&4/720\\
+ 25&3600&1/3600\\
+ 27,30&10800&2/10800
+ \end{array}
+\]
+The factors $4$ and $2$ record information that is absent from the
+sequence of distinct heights. Appendix~\ref{sec:height-identities}
+gives the finite grouping identity for general three-prime sets.
 
-\begin{proposition}[cells and jumps]\label{res:cell}
-The running LCM is constant when the three integer logarithms are constant.
-A jump in exactly one logarithm multiplies it by the corresponding prime.
-The first $n$ positive powers of each prime, together with $1$, form
-$3n+1$ distinct points.
-\end{proposition}
-\begin{proof}
-The height is a product of the three maximal pure powers, which proves
-the constancy and jump assertions. Unique factorisation separates the
-$3n$ positive pure powers from one another and from $1$.
-\end{proof}
-
-\begin{proposition}[grouping terms with the same height]\label{res:fibre-prop}
-For a finite exponent box $\mathcal B$, set
-$F(H)=\{(i,j,k)\in\mathcal B:\hgt(p^iq^jr^k)=H\}$.  Then
-\begin{equation}\label{res:fibre}
- \sum_{(i,j,k)\in\mathcal B}\Kernel(i,j,k)=\sum_H\frac{\#F(H)}H.
-\end{equation}
-\end{proposition}
-\begin{proof}
-Partition the finite exponent box by the value of the height. The terms
-in the part $F(H)$ all equal $1/H$.
-\end{proof}
-
-Henceforth $P=\{2,3,5\}$ and $S=\mathcal R_P$. Every smooth integer now
-contributes a term, including those between consecutive prime powers.
-We group these terms into half-open intervals $[2^a,2^{a+1})$. To clear
-the prefix strictly before $2^a$, we normalise by half the height at that
-endpoint. This accounts for both the endpoint convention and the factor
-$1/2$, which differ from Section~\ref{sec:distinct-235}. Put
+We use the half-open blocks $[2^a,2^{a+1})$, so the tail starts at
+$2^a$ rather than just after it. Its finite prefix excludes the jump
+by $2$ at that endpoint. Half the height therefore clears that prefix:
+write
 \[
  s_a=\sum_{\substack{x\in\mathcal S_P\\2^a\le x<2^{a+1}}}\frac1{\hgt(x)},
  \qquad T_a=\sum_{j\ge0}s_{a+j},\qquad
  h_a=\frac{\hgt(2^a)}2,\qquad X_a=h_aT_a.
 \]
-The factor $1/2$ makes $h_a$ a common multiple of the heights strictly
-before $2^a$. Indeed, each such height has exponent of $2$ at most $a-1$.
-Here $h_0=1/2$, and $h_a$ is an integer for $a\ge1$. Put
+Indeed, a height strictly before $2^a$ has exponent of $2$ at most
+$a-1$ and divides $h_a$. Here $h_0=1/2$, while $h_a$ is an integer for
+$a\ge1$. This endpoint convention explains the factor $1/2$ and the
+difference from the tails in Section~\ref{sec:distinct-235}.
+
+The change in normalisation is
+$b_a=\hgt(2^{a+1})/\hgt(2^a)$. Splitting off $s_a$ will give
+$X_{a+1}=b_aX_a-h_{a+1}s_a$, so we name the integer block contribution
+$m_a=h_{a+1}s_a$. Explicitly,
 \begin{equation}\label{eq:actual-digit}
  b_a=\frac{\hgt(2^{a+1})}{\hgt(2^a)},\qquad
  m_a=\sum_{\substack{x\in\mathcal S_P\\2^a\le x<2^{a+1}}}
        \frac{\hgt(2^{a+1})}{2\hgt(x)}.
 \end{equation}
+For $[2,4)$, the heights at $2,3$ are $2,6$ and $h_2=6$, giving
+$m_1=6(1/2+1/6)=4$ and $b_1=6$. For the block displayed above,
+$h_5=10800$ and
+\[
+ m_4=4\cdot15+3+2\cdot1=65,\qquad b_4=30.
+\]
+Thus $m_a$ need not be smaller than $b_a$.
 
 \begin{lemma}[integer coefficients and four possible bases]
 \label{res:dyadic-alphabet}
@@ -443,12 +379,9 @@ at most one power of $5$. Along with the final factor $2$, these give
 $b_a\in\{2,6,10,30\}$.
 \end{proof}
 
-For example, $[2,4)$ contains $2,3$ and gives $(b_1,m_1)=(6,4)$.
-At $[16,32)$ we obtain $(b_4,m_4)=(30,65)$, so these coefficients cannot
-be treated as positional digits. The four possible bases record the
-height changes; the numerators also count the smooth integers between
-those changes. Thus the finite list of bases does not give the five-map
-description used for the distinct-height sum.
+The four bases describe height changes. The numerators also count all
+smooth integers between those changes, so the four choices of $b_a$
+do not supply a finite list of affine maps for $X_a$.
 
 \begin{proposition}[the tail recurrence and a quadratic bound]
 \label{res:actual-orbit}
@@ -537,9 +470,16 @@ is $11$. The \longrecord{r3-denominator}{companion's denominator calculation}
 also determines the reduced denominator of $X_a$ itself.
 
 \section{A residue criterion}\label{sec:escape}\label{sec:open}
-Iterating the recurrence gives
+A hypothetical rational value of $S$ produces positive integer tails
+$d_a=BX_a$ bounded by $90B(a+1)^2$. Over several steps, the recurrence
+also places the terminal tail in a single residue class. The useful
+question is whether that class has any positive representative below
+the bound.
+
+For two steps the recurrence reads
 $X_{\ell+2}=b_{\ell+1}b_\ell X_\ell-(b_{\ell+1}m_\ell+m_{\ell+1})$.
-For a window of $h$ steps starting at $\ell$, define
+To keep track of the multiplicative and additive terms over $h$ steps,
+write
 \[
  W_{\ell,0}=1,\quad F_{\ell,0}=0,\qquad
  W_{\ell,h+1}=b_{\ell+h}W_{\ell,h},\quad
@@ -549,12 +489,16 @@ Induction yields
 \begin{equation}\label{eq:actual-tail}
  X_{\ell+h}=W_{\ell,h}X_\ell-F_{\ell,h}.
 \end{equation}
-Under rationality, this determines the residue of a positive integer tail
-modulo $W_{\ell,h}$. We compare that residue with its quadratic bound.
-For integers $W\ge1,t$, let
-$\operatorname{lpr}_W(t)=1+((t-1)\bmod W)$, taking the remainder in
-$\{0,\ldots,W-1\}$. Thus $\operatorname{lpr}_W(0)=W$. Throughout this
-section set
+When $BX_\ell$ is integral, the positive integer $BX_{\ell+h}$ must
+therefore be congruent to $-BF_{\ell,h}$ modulo $W_{\ell,h}$.
+If its least positive representative is already too large, no such
+tail exists. Positivity matters here: in the zero residue class the
+first permitted value is the modulus itself.
+
+For integers $W\ge1,t$, define
+$\operatorname{lpr}_W(t)=1+((t-1)\bmod W)$, with the remainder in
+$\{0,\ldots,W-1\}$. Thus $\operatorname{lpr}_W(0)=W$.
+Throughout this section let
 \begin{equation}\label{eq:actual-bound}
  K(B,a)=90B(a+1)^2.
 \end{equation}
@@ -596,18 +540,24 @@ $d_{\ell+h}\equiv-BF_{\ell,h}\pmod{W_{\ell,h}}$, contrary to
 Lemma~\ref{res:consumer} and \eqref{eq:escape}.
 
 Conversely, suppose that $S$ is irrational and fix $B,\ell\ge1$.
-By \eqref{eq:prefix-lattice}, $BX_\ell$ is nonintegral. Write
-$\delta=\lceil BX_\ell\rceil-BX_\ell\in(0,1)$. Since
-$W_{\ell,h}\ge2^h$ and $X_{\ell+h}=O((\ell+h+1)^2)$,
+Equation~\eqref{eq:prefix-lattice} makes $BX_\ell$ nonintegral.
+The distance upwards to the next integer,
+$\delta=\lceil BX_\ell\rceil-BX_\ell\in(0,1)$, is now fixed as the
+window length $h$ grows. We have $W_{\ell,h}\ge2^h$, whereas
+$X_{\ell+h}$ has only quadratic growth. Consequently
 $\delta+BX_{\ell+h}/W_{\ell,h}$ lies in $(0,1)$ for sufficiently large
-$h$. The window identity then shows that
+$h$. This ensures that the following representative lies strictly
+between $0$ and the modulus, so it is the least positive one:
 \[
  \operatorname{lpr}_{W_{\ell,h}}(-BF_{\ell,h})
  =\lceil BX_\ell\rceil W_{\ell,h}-BF_{\ell,h}
  =\delta W_{\ell,h}+BX_{\ell+h}.
 \]
-The first term eventually exceeds $K(B,\ell+h)$. This proves the required
-inequality from every fixed start.
+The positive constant $\delta$ multiplies an exponentially growing
+$W_{\ell,h}$, so the first term eventually exceeds $K(B,\ell+h)$.
+This proves the inequality from every fixed start, and hence after
+every prescribed onset $a_0$. No bound uniform in $B$ or $\ell$ is
+needed for this direction.
 \end{proof}
 
 The upper-bound property of $K$ is essential: choosing the zero function
@@ -639,7 +589,135 @@ unproved for $S$. The \longrecord{r3-open}{companion's discussion of the
 repeated sum} records the finite calculations and the hypotheses missing
 from proposed finite-difference and function-theoretic arguments.
 
+\section{Two-prime transcendence}\label{sec:two-prime}
+For two primes we can retain the multiplicities and still evaluate the
+sum through one Hecke--Mahler value. Fan gave the factorisation of the
+repeated sum and its transcendence consequence in his post of 26 June
+2026~\cite{fan2026comment}. The following calculation also expresses the
+distinct-height sum in that value.
+
+\begin{theorem}[both two-prime sums]
+\label{res:two-prime-transcendence}
+\label{res:two-prime-repeated-transcendence}
+Let $p<q$ be distinct primes.  Put $\theta=\log p/\log q$ and
+$A=\sum_{n\ge0}p^{-n}q^{-\lfloor n\theta\rfloor}$.  Let
+$\mathcal R_{p,q}$ sum the reciprocal running LCM at every positive
+$\{p,q\}$-smooth integer, and let $\mathcal D_{p,q}$ count each distinct
+running LCM once.  Then
+\begin{equation}\label{eq:two-prime-affine}
+ \mathcal D_{p,q}=\frac{(q-p)A+p}{q-1},\qquad
+ \mathcal R_{p,q}=\frac{(p+q-1)A-(p-1)A^2}{q-1}.
+\end{equation}
+Both numbers are transcendental.
+\end{theorem}
+\evidenceremark{The Lean proof assumes the transcendence theorem of Bugeaud
+and Laurent; the two identities in~\eqref{eq:two-prime-affine} are proved
+in Lean without it.}
+\begin{proof}
+Write $x=1/p$, $y=1/q$, $m_n=\lfloor n\theta\rfloor$ and
+$\delta_n=m_{n+1}-m_n$.  Unique factorisation makes $\theta$ irrational,
+and $0<\theta<1$ gives $\delta_n\in\{0,1\}$.  The initial value and the
+positive powers of $p$ contribute $A=\sum_{n\ge0}x^ny^{m_n}$.  There is
+one $q$-power strictly between $p^n$ and $p^{n+1}$ exactly when
+$\delta_n=1$, so the positive powers of $q$ contribute
+\[
+ B=\sum_{n\ge0}\delta_nx^ny^{m_n+1},\qquad \mathcal D_{p,q}=A+B.
+\]
+Since $0<x,y<1$, these series converge absolutely.  The identity
+$y^{m_{n+1}}-y^{m_n}=\delta_ny^{m_n}(y-1)$ and an index shift in $A$
+give $A-1-xA=x(y-1)B/y$.  Therefore
+\[
+ B=\frac{p-(p-1)A}{q-1}.
+\]
+We compute the repeated sum from the height
+$p^{i+\lfloor j/\theta\rfloor}q^{j+m_i}$ at $p^iq^j$, obtaining
+\[
+ \mathcal R_{p,q}
+ =A\sum_{j\ge0}y^jx^{\lfloor j/\theta\rfloor}=A(1+B).
+\]
+For the last equality, each $j\ge1$ corresponds to
+$n=\lfloor j/\theta\rfloor$ with $m_n=j-1$ and $\delta_n=1$.
+Substitution proves~\eqref{eq:two-prime-affine}.
+
+To apply the transcendence theorem, we express $A$ in terms of the
+Hecke--Mahler series $F_\theta(x,y)=\sum_{n\ge1}\sum_{k=1}^{m_n}x^ny^k$.
+Geometric summation gives
+\begin{equation}\label{eq:hecke-mahler-boundary}
+ A=\frac1{1-x}-\frac{1-y}{y}F_\theta(x,y).
+\end{equation}
+Bugeaud and Laurent's theorem \cite[Theorem~1.1]{bugeaudlaurent2023} applies
+with intercept $\rho=0$, $\beta=x$ and $\alpha=y$: the slope $\theta$ is
+irrational and lies in $(0,1)$, $x$ and $y$ are nonzero algebraic numbers,
+$|x|<1$ and $|xy^\theta|=p^{-2}<1$.  Thus $F_\theta(x,y)$ is transcendental;
+this case $\rho=0$ is due to Loxton and van der Poorten
+\cite[Theorem~8, p.~40]{loxtonvdp1977}.  Thus $A$ is transcendental.
+The displayed affine and quadratic polynomials are nonconstant, so an
+algebraic value of either would force $A$ to be algebraic.
+\end{proof}
+
+The \longrecord{r3-two-prime}{companion's two-prime calculation} records
+an ordinary extension to the monoid generated by coprime integers
+$1<p<q$, such as $4,9$. That monoid need not contain all integers
+supported on the prime divisors of $pq$; multiplicatively dependent
+generators such as $4,8$ require a different calculation.
+
+For larger prime sets, the sums over pure powers
+$E_p=\sum_{\alpha\ge0}\Lprefix(p^\alpha)^{-1}$ satisfy
+$\mathcal D_P=\sum_{p\in P}E_p-(|P|-1)$. The
+\longrecord{r3-prime-subseries}{companion's prime-power subseries argument}
+treats their irrationality as a remark with an ordinary proof awaiting
+formalisation. The source record contains no separate priority search for
+this claim. Irrationality of the individual subseries would not imply
+irrationality of their sum. The repeated series also contains mixed
+products of primes, whose multiplicities change the tail estimates.
+
 \appendix
+\section{Height identities and multiplicities}\label{sec:height-identities}
+\label{sec:cells}\label{sec:fibre}
+Let $p,q,r$ be pairwise distinct primes. Write
+$\hgt=\hgt_{\{p,q,r\}}$ and
+$\Kernel(i,j,k)=\hgt(p^iq^jr^k)^{-1}$ throughout this appendix and
+the next. The following identities underlie the grouping of the
+repeated series in Section~\ref{sec:lcm}.
+
+\begin{proposition}[the running least common multiple]\label{res:lcm}
+Let $p,q,r$ be pairwise distinct primes and $x\ge1$.  Then the running LCM equals the three-prime height:
+$\Lprefix(x)=\hgt(x)$.
+\end{proposition}
+\begin{proof}
+We have $u\mid\hgt(x)$ for every supported $u\le x$. For the reverse
+divisibility, take the maximal powers of $p,q,r$ below $x$: they belong
+to the prefix and are pairwise coprime, so their product divides its LCM.
+\end{proof}
+For each prime, $x/p<p^{\lfloor\log_p x\rfloor}\le x$. Multiplying gives
+\begin{equation}\label{res:cube}
+ x^3/(pqr)<\hgt(x)\le x^3.
+\end{equation}
+
+\begin{proposition}[cells and jumps]\label{res:cell}
+The running LCM is constant when the three integer logarithms are constant.
+A jump in exactly one logarithm multiplies it by the corresponding prime.
+The first $n$ positive powers of each prime, together with $1$, form
+$3n+1$ distinct points.
+\end{proposition}
+\begin{proof}
+The height is a product of the three maximal pure powers, which proves
+the constancy and jump assertions. Unique factorisation separates the
+$3n$ positive pure powers from one another and from $1$.
+\end{proof}
+
+\begin{proposition}[grouping terms with the same height]\label{res:fibre-prop}
+For a finite exponent box $\mathcal B$, set
+$F(H)=\{(i,j,k)\in\mathcal B:\hgt(p^iq^jr^k)=H\}$.  Then
+\begin{equation}\label{res:fibre}
+ \sum_{(i,j,k)\in\mathcal B}\Kernel(i,j,k)=\sum_H\frac{\#F(H)}H.
+\end{equation}
+\end{proposition}
+\begin{proof}
+Partition the finite exponent box by the value of the height. The terms
+in the part $F(H)$ all equal $1/H$.
+\end{proof}
+
 \section{The three-prime kernel}\label{sec:rank}
 We ask whether the two-prime factorisation can be replaced, for three
 primes, by a finite sum of products separating one exponent from the
@@ -648,6 +726,15 @@ out. Diagonal rescaling reduces the question to a matrix with entries
 $1$ and $1/r$; separate choices of row and column indices then give
 nonzero minors of every order.
 
+
+\begin{example}\label{res:rank}
+For $(p,q,r)=(2,3,5)$, the leading two-by-two determinant is $-1/15$:
+its four entries are $1,1/6,1/2,1/60$, so it equals $1/60-1/12$.
+\end{example}
+
+A single nonzero minor rules out rank one. The theorem below requires
+minors of every order, with rows and columns chosen to suit the order.
+The same choices will work in every layer $k$.
 
 \begin{theorem}[no finite separation of the kernel]\label{res:infinite-rank}
 Let $p,q,r$ be primes with $p\ne q$, $p\ne r$ and $q\ne r$.  For every
@@ -747,10 +834,7 @@ with $30$ makes both the reciprocal entries and the determinant units:
 the latter introduces only a power of $4$ in its numerator.
 
 
-\begin{example}\label{res:rank}
-For $(p,q,r)=(2,3,5)$, the leading two-by-two determinant is $-1/15$:
-its four entries are $1,1/6,1/2,1/60$, so it equals $1/60-1/12$.
-\end{example}
+
 
 
 \paragraph{Leading minors.}
@@ -866,6 +950,8 @@ unnecessary notation and restrictive hypotheses. His advice concerned a
 note on Problem~\#243; he has not reviewed this paper's mathematics.
 
 \begin{thebibliography}{99}
+\setlength{\itemsep}{3pt plus .5pt minus .5pt}
+\setlength{\parsep}{0pt}\setlength{\parskip}{0pt}
 \bibitem{erdosgraham1980} Paul Erd\H{o}s and Ronald L. Graham,
   \emph{Old and New Problems and Results in Combinatorial Number Theory}, Monographies de L'Enseignement Math\'{e}matique \textbf{28}, L'Enseignement Math\'{e}matique (1980),
   \href{https://mathweb.ucsd.edu/~ronspubs/80_11_number_theory.pdf}{source}.

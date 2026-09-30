@@ -7,7 +7,7 @@
   "erdos-243-reciprocal-tail-rigidity": 20,
   "erdos-249-binary-totient-series": 17,
   "erdos-251-prime-gap-dyadic-series": 15,
-  "erdos-257-mersenne-support-subseries": 24,
+  "erdos-257-mersenne-support-subseries": 25,
   "erdos-269-three-prime-running-lcm": 17,
   "erdos-1041-lemniscate-newton-flow": 32,
   "erdos-1049-rational-base-lambert": 21,
@@ -16,11 +16,11 @@
   "erdos249-totient-reasoning-surface": 164,
   "erdos251-prime-gap-reasoning-surface": 49,
   "erdos257-mersenne-reasoning-surface": 166,
-  "erdos269-running-lcm-reasoning-surface": 69,
+  "erdos269-running-lcm-reasoning-surface": 71,
   "erdos1041-lemniscate-reasoning-surface": 85,
-  "erdos1049-rational-base-lambert-reasoning-surface": 77
+  "erdos1049-rational-base-lambert-reasoning-surface": 78
  },
- "total": 885,
+ "total": 889,
  "revisions": [
   {
    "date": "2026-09-26",
@@ -116,6 +116,36 @@
    "to": 85,
    "reason": "Full inline Lean/Comparator support and bounded existing checked component-local prerequisites; final reviewed native layout is85pages with zero overfull boxes.",
    "review_capture": "cap_quick_r5_full_inline_evidence_requires_reviewe_06a3f322d6d7"
+  },
+  {
+   "date": "2026-09-30",
+   "paper": "erdos-257-mersenne-support-subseries",
+   "from": 24,
+   "to": 25,
+   "reason": "Reviewed R6 exposition additions preserve mathematical statements and typography; independent initial grayscale review and final native compile pass. Flexible proof explanation is the operator requirement.",
+   "review_capture": "cap_quick_refresh_reviewed_pdf_length_baselines_af_b66f0a403d4f",
+   "source_sha256": "69d394b5af4878100d9ae1bebdebfa8059dd9ab0124100f443906ecdb47c38ae",
+   "pdf_sha256": "77f7bc84a3e1f225cdb3d4b5314bddbec62a10ac8d41ada61f7167af5ccf93c8"
+  },
+  {
+   "date": "2026-09-30",
+   "paper": "erdos269-running-lcm-reasoning-surface",
+   "from": 69,
+   "to": 71,
+   "reason": "Reviewed R6 exposition additions preserve mathematical statements and typography; independent initial grayscale review and final native compile pass. Flexible proof explanation is the operator requirement.",
+   "review_capture": "cap_quick_refresh_reviewed_pdf_length_baselines_af_b66f0a403d4f",
+   "source_sha256": "ffa13b92eb6cd062a1605044676927ad665e2c8807c4582761e4a6b8524fb633",
+   "pdf_sha256": "f4869075727d6219f5b2997e22ee91afdd82bd2abf636313cd2c0cc07166c9f6"
+  },
+  {
+   "date": "2026-09-30",
+   "paper": "erdos1049-rational-base-lambert-reasoning-surface",
+   "from": 77,
+   "to": 78,
+   "reason": "Reviewed R6 exposition additions preserve mathematical statements and typography; independent initial grayscale review and final native compile pass. Flexible proof explanation is the operator requirement.",
+   "review_capture": "cap_quick_refresh_reviewed_pdf_length_baselines_af_b66f0a403d4f",
+   "source_sha256": "335826ba9916688d6b6ad9c45dd2a9eb632960c457b187dd94206916f051483d",
+   "pdf_sha256": "660d1c56dac943b5a596f9f830443ca9af4054035452cca2c5e3eb4f4a9afa45"
   }
  ]
 }

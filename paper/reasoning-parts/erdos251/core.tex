@@ -170,164 +170,212 @@ interval is filled and their lengths are unbounded.  The hypothesis rules out th
 apart those intervals lie.
 
 \begin{proof}
-We first arrange the congruences so that choosing a weighted contribution
-will not change any later residue correction.  We then choose the spacing
-and moduli to satisfy the size bound and fill an interval.
+\emph{Fixed totals.}
+At stage $j$ we put a correction at $n_j-1$ and a variable pair at
+$n_j,n_j+1$.  We keep the pair's ordinary sum fixed, so that its choice leaves the
+residue to be cleared at every later stage unchanged.
+Let $n_{-1}\ge K$, write $s_j=n_j-n_{j-1}\ge4$, and take positive
+integers $M_j$ with $M_j\mid M_{j+1}$.  The actual centres and moduli
+will be chosen below.  Put $D_j=2^{s_j}-1$; we will see shortly why
+this digit range compensates for the spacing $s_j$.
 
-Let $n_j$, $j\ge0$, be centres following an initial index $n_{-1}\ge K$,
-with separations $s_j=n_j-n_{j-1}\ge4$.  We use positive integers $M_j$
-satisfying $M_j\mid M_{j+1}$ and allow digits up to $D_j=2^{s_j}-1$.
-This range will compensate for the factor $2^{s_j}$ lost by moving the
-next choice farther out.  If $C_j$ is the total correction before
-$n_j-1$, we clear its residue modulo $M_j$ by setting, from $C_0=0$,
+Starting from $C_0=0$, define
 \[
  c_j=(-C_j)\bmod M_j\quad(0\le c_j<M_j),\qquad
  C_{j+1}=C_j+c_j+M_jD_j.
 \]
-For a digit $0\le d_j\le D_j$, define
+For integers $0\le d_j\le D_j$, set
 \begin{equation}\label{long251:eq:sparse-triple}
  e_{n_j-1}=c_j,\qquad e_{n_j}=M_jd_j,\qquad
  e_{n_j+1}=M_j(D_j-d_j),
 \end{equation}
-and set $e_n=0$ elsewhere.  The ordinary and dyadic totals of this
-triple are
+and put $e_n=0$ elsewhere.  The two sums of a triple are
 \[
  \begin{aligned}
-  \sum_{r=n_j-1}^{n_j+1}e_r
-     &=c_j+M_jD_j,\\
-  \sum_{r=n_j-1}^{n_j+1}e_r2^{-r-1}
-     &=c_j2^{-n_j}+M_j(D_j+d_j)2^{-n_j-2}.
+ \sum_{r=n_j-1}^{n_j+1}e_r
+    &=c_j+M_jD_j,\\
+ \sum_{r=n_j-1}^{n_j+1}e_r2^{-r-1}
+    &=c_j2^{-n_j}+M_jD_j2^{-n_j-2}+d_jM_j2^{-n_j-2}.
  \end{aligned}
 \]
-The first total is independent of $d_j$, so the recursion determines
-all $C_j$ and $c_j$ before any digits are chosen.  The second total
-increases by $M_j2^{-n_j-2}$ when $d_j$ increases by one.
-After the entry at $n_j-1$ has cleared the
-residue, the two multiples of $M_j$ preserve it.  Thus the cumulative
-sum is divisible by $M_j$ from index $n_j$ through the end of the triple.
+The first identity verifies that $C_j$ is the cumulative correction
+before $n_j-1$, whatever the digits are.  Thus all $C_j$ and $c_j$
+can be computed before choosing a single $d_j$.  The second identity
+shows that increasing $d_j$ by one transfers $M_j$ from $n_j+1$ to
+$n_j$ and increases the weighted sum by
+\[
+ w_j=M_j2^{-n_j-2}.
+\]
 
-For a fixed $q\mid M_J$, the cumulative sum is divisible by $q$ at
-$n_J$.  At each later triple, divisibility of $C_j$ and $M_j$ implies
-$q\mid c_j$, and both entries of the pair are again multiples of $q$.
-Induction through the triples and the intervening zeros gives
-$q\mid e_n$ and $q\mid\sum_{i<n}e_i$ for every $n\ge n_J$.
-The entry $c_J$ itself lies at $n_J-1$, outside this range.
-We therefore need moduli eventually divisible by every fixed $q$, with
-spacings that leave enough weighted choices for interval covering.
+After $c_j$ has been inserted, the cumulative correction is divisible
+by $M_j$; the two entries of the pair preserve this divisibility.
+Fix $q\mid M_J$.  At index $n_J$ both the coefficient correction and
+the cumulative correction are divisible by $q$.  At every later
+triple, $q$ divides $C_j$ and $M_j$, so it also divides $c_j$ and
+both pair entries.  The intervening corrections are zero.  Hence
+\[
+ q\mid e_n,\qquad q\mid\sum_{i<n}e_i\qquad(n\ge n_J).
+\]
+The entry $c_J$ lies at $n_J-1$, just before this cutoff; it need not
+itself be divisible by $q$.  This explains both the placement of the
+residue correction and the target independence of the cutoff.
 
-To fit even a nonmonotone allowance, we replace it by the lower envelope
+\par\medskip\noindent\emph{Spacing and size.}
+The variable part at stage $j$ has spacing $w_j$ and maximum $D_jw_j$.
+We arrange that the later variable parts have enough total range
+to cover one spacing $w_j$.  Our choice $D_i=2^{s_i}-1$ gives
+\[
+ D_iw_i=M_i\bigl(2^{-n_{i-1}-2}-2^{-n_i-2}\bigr).
+\]
+Because $M_i\ge M_j$ for $i>j$, replacing every later modulus by $M_j$
+gives the finite estimate
+\begin{equation}\label{long251:eq:finite-overlap}
+ \begin{aligned}
+ \sum_{i=j+1}^{J}D_iw_i
+ &\ge M_j\sum_{i=j+1}^{J}
+       \bigl(2^{-n_{i-1}-2}-2^{-n_i-2}\bigr)\\
+ &=w_j-M_j2^{-n_J-2}\qquad(J>j).
+ \end{aligned}
+\end{equation}
+Thus increasing the spacing does not destroy interval covering, provided
+we pay for the corresponding digit range.  Every entry of
+\eqref{long251:eq:sparse-triple} is at most $M_j2^{s_j}$.  It remains to fit that
+quantity below the allowance while making the spacings tend to infinity
+and the moduli eventually divisible by each fixed integer.
+
+For a possibly nonmonotone allowance use
 \[
  h(n)=\inf_{m\ge n}\min(f(m),m).
 \]
-Since $f(n)\to\infty$, this envelope is finite, nondecreasing and tends
-to infinity.  The additional bound $h(n)\le n$ will ensure summability.
-We choose $n_{-1}$ with $h(n_{-1})\ge32$ and set recursively
+This nondecreasing lower envelope tends to infinity.  A bound chosen
+using $h(n_{j-1})$ is therefore valid at each of the later coordinates
+of the triple.  The extra cap by $m$ serves a separate purpose:
+$e_n\le n$ will make the weighted corrections summable.
+Choose $n_{-1}$ with $h(n_{-1})\ge32$, and set
 \begin{equation}\label{long251:eq:sparse-general-schedule}
  \begin{split}
  k_j&=\max\{k\ge2:k!2^{k+2}\le h(n_{j-1})\},\\
  M_j&=k_j!,\qquad s_j=k_j+2,\qquad n_j=n_{j-1}+s_j.
  \end{split}
 \end{equation}
-The set defining $k_j$ is nonempty because $2!2^4=32$, and it is finite
-because factorials tend to infinity.  As $h$ is nondecreasing and
-$n_j\to\infty$, the integers $k_j$ are nondecreasing and tend to infinity.  Hence every
-fixed modulus eventually divides $M_j$, while $s_j\to\infty$.
-At a coordinate $n$ of the $j$th triple, every entry of
-\eqref{long251:eq:sparse-triple} is bounded by
-$M_j2^{s_j}\le h(n_{j-1})\le\min(f(n),n)$.
-This proves the required correction bound and convergence of all the
-weighted correction sums.
+The single parameter $k_j$ now controls both requirements: $k_j!$
+absorbs each fixed modulus once $k_j$ is large enough, while $k_j+2$
+separates the triples.  We choose the largest such parameter whose cost
+$k_j!2^{k_j+2}$ fits the available bound.  The choice exists because
+$2!2^4=32$, is finite, and is nondecreasing with $j$.  Since
+$n_j\to\infty$ and $h(n_j)\to\infty$, we also have $k_j\to\infty$.
+Consequently the moduli are nested, every fixed $q$ divides all
+sufficiently late $M_j$, and $s_j\to\infty$.  At each supported
+coordinate $n$ of the $j$th triple,
+\[
+ 0\le e_n\le M_j2^{s_j}\le h(n_{j-1})\le\min(f(n),n).
+\]
+This proves the size bound and convergence for every choice of digits.
 
-Let $S$ be the union of these triples.  Given $R$, we discard the finitely
-many centres preceding the point where all separations are at least $R$.
-Any interval of length $H$ then meets at most $3(H/R+2)$ permitted
-indices, in addition to a fixed finite set.  We may take the supremum over
-translates, let $H\to\infty$, and then let $R\to\infty$.
-Thus $S$ has upper Banach density zero.
+Let $S=\bigcup_{j\ge0}\{n_j-1,n_j,n_j+1\}$.  For any $R$, all but
+finitely many successive centres are at least $R$ apart.  An interval
+of length $H$ therefore meets at most $3(H/R+2)$ permitted indices,
+in addition to a fixed finite set.  The bound is uniform in the
+position of the interval.  Divide by $H$, take the supremum over
+positions and let $H\to\infty$; then let $R\to\infty$.
+This proves upper Banach density zero.
 
-We next compute the possible weighted contributions.  Increasing $d_j$
-by one moves $M_j$ from index $n_j+1$ to index $n_j$, and hence adds
-$w_j=M_j2^{-n_j-2}$ to the dyadic sum.  Define
+\par\medskip\noindent\emph{Attaining the interval.}
+We have now fixed the centres, moduli, digit ranges and residue
+corrections, but have left every digit free.  Define
 \[
  \beta=\sum_{j\ge0}\bigl(c_j2^{-n_j}+D_jw_j\bigr),\qquad
  F_j=\sum_{i\ge j}D_iw_i.
 \]
-The first quantity is the contribution with all digits zero; the second
-is the sum of the maximal digit contributions from stage $j$ onwards.
-Including the preceding residue corrections, we have
+The first quantity is the contribution with all digits zero.  The
+second is the maximum possible variable contribution from stage $j$
+onwards.  Both are finite by the bounds just proved, with $\beta>0$,
+$F_0>0$ and $F_j\to0$.  The total correction is
 \begin{equation}\label{long251:eq:sparse-baseline}
  \sum_ne_n2^{-n-1}=\beta+\sum_jd_jw_j.
 \end{equation}
-The bounds already proved give $\beta>0$, $0<F_0<\infty$ and $F_j\to0$.
-To obtain an interval of sums we must show that the subsequent choices
-cover the spacing $w_j$.  The definition of $D_i$ gives
-\[
- D_iw_i=M_i\bigl(2^{-n_{i-1}-2}-2^{-n_i-2}\bigr).
-\]
-For $i>j$ we have $M_i\ge M_j$.  Keeping this one modulus fixed gives,
-for every $J>j$,
-\[
- \sum_{i=j+1}^{J}D_iw_i
- \ge M_j\sum_{i=j+1}^{J}
-       \bigl(2^{-n_{i-1}-2}-2^{-n_i-2}\bigr)
- =M_j\bigl(2^{-n_j-2}-2^{-n_J-2}\bigr).
-\]
-Letting $J\to\infty$, we obtain
+Taking $J\to\infty$ in \eqref{long251:eq:finite-overlap} now gives
 \begin{equation}\label{long251:eq:sparse-overlap}
  F_{j+1}\ge M_j2^{-n_j-2}=w_j.
 \end{equation}
-The intervals
+For a remaining target in $[0,F_j]$, choosing digit $d$ leaves a
+remainder in $[0,F_{j+1}]$ exactly when that target belongs to
 \[
- [dw_j,dw_j+F_{j+1}],\qquad d=0,\ldots,D_j,
+ [dw_j,dw_j+F_{j+1}],\qquad d=0,\ldots,D_j.
 \]
-therefore overlap or meet at their endpoints, and their union is
-$[0,F_j]$ because $F_j=D_jw_j+F_{j+1}$.  Starting from any
-$x\in[0,F_0]$, we choose $d_0$ with $x-d_0w_0\in[0,F_1]$ and repeat
-this choice for the successive remainders.  After stage $j$ the remainder
-belongs to $[0,F_{j+1}]$ and therefore tends to zero.  Hence
-$x=\sum_jd_jw_j$, and adding the fixed contribution $\beta$ gives
-$I=(A+\beta,A+\beta+F_0)$.  This is the
-finite-choice covering argument of \cite[Lemma~4]{crmarickovac2025}:
-the $j$th choice set has largest gap $w_j$ and diameter $D_jw_j$,
-its maxima are summable, and the sum of subsequent diameters is at least
-$w_j$.  Equality is allowed.  Fridy's generalised-base lemma
+These intervals meet or overlap by \eqref{long251:eq:sparse-overlap}, and their union
+is $[0,F_j]$ because $F_j=D_jw_j+F_{j+1}$.
+
+Given $x\in[0,F_0]$, start with $\rho_0=x$.  Having chosen the first
+$j$ digits, choose $d_j$ so that
+\[
+ \rho_{j+1}=\rho_j-d_jw_j\in[0,F_{j+1}].
+\]
+The covering just proved makes this possible at every stage.  The
+invariant $0\le\rho_j\le F_j$ and $F_j\to0$ then give
+\[
+ x-\sum_{i=0}^{j}d_iw_i=\rho_{j+1}\longrightarrow0.
+\]
+Thus every $x\in[0,F_0]$ is attained, and we may take
+$I=(A+\beta,A+\beta+F_0)$.  The target $r\in I$ determines only the
+digits, through $x=r-A-\beta$; it changes neither $S$, $I$ nor the
+cutoff $N_q=n_J$ chosen using $q\mid M_J$.
+This is the finite-choice covering argument of
+\cite[Lemma~4]{crmarickovac2025}: the $j$th choice set has largest gap
+$w_j$ and diameter $D_jw_j$, its maxima are summable, and the sum of
+subsequent diameters is at least $w_j$.  Equality is allowed.
+Fridy's generalised-base lemma
 \cite[p.~194]{fridy1966} and the reciprocal-choice argument in
 \cite[Lemma~5.1]{kovactao2024} are antecedents.  Increasing the centres
-alone need not make $w_j$ decrease, since $M_j$ also increases.
-The finite-choice proof needs only \eqref{long251:eq:sparse-overlap}.
-Notice that $S$, $I$ and each cutoff $n_J$ were fixed before $x$.
+alone need not make $w_j$ decrease, since $M_j$ also increases.  The finite-choice argument uses
+\eqref{long251:eq:sparse-overlap}, without a monotonicity assumption
+on the weights.
 
-For the quantitative assertion, we choose separations of order
-$\log\log n$ so that the number of triples can also be bounded.  Replace
-the preceding schedule by
+\par\medskip\noindent\emph{The logarithmic scale.}
+For $f(n)=(\log(n+3))^\varepsilon$, we can choose the separations
+explicitly at the scale $\log\log n$.  Keep the same triples and
+$D_j=2^{s_j}-1$, but replace the schedule by
 \begin{equation}\label{long251:eq:sparse-polylog-schedule}
- \begin{split}
+ \begin{aligned}
  s_j&=\left\lfloor\frac{\varepsilon}{2}
                \log_2\log(n_{j-1}+3)\right\rfloor,\\
- k_j&=\max\{k\ge2:k!\le(\log(n_{j-1}+3))^{\varepsilon/4}\}.
- \end{split}
+ k_j&=\max\{k\ge2:k!\le(\log(n_{j-1}+3))^{\varepsilon/4}\},
+ \end{aligned}
 \end{equation}
-and again put $M_j=k_j!$, $n_j=n_{j-1}+s_j$ and $D_j=2^{s_j}-1$.
-Choose the initial index large enough that $s_j\ge4$ and all these
-choices exist.  Then
+with $M_j=k_j!$ and $n_j=n_{j-1}+s_j$.  Start far enough out that
+$s_j\ge4$ and all choices exist.  Allocating exponents $\varepsilon/4$
+to the modulus and $\varepsilon/2$ to $2^{s_j}$ leaves room within
+the prescribed allowance:
 \[
  M_j2^{s_j}\le(\log(n_{j-1}+3))^{3\varepsilon/4}
              \le(\log(n+3))^\varepsilon
 \]
-at each coordinate $n$ of the triple.  This bound is also at most $n$
-after increasing the initial index.  The moduli are again nested and tend through factorials of unbounded
-order, and the linear bound still gives summability.  The congruence
-induction and telescoping estimate therefore apply to this schedule too.
-Now $s_j\asymp_\varepsilon\log\log n_j$, so an interval $[X,2X)$
-contains $O_\varepsilon(X/\log\log X)$ permitted indices.
+at each coordinate $n$ of the triple.  After enlarging the initial
+index, this is also at most $n$.  The moduli remain nested and absorb
+every fixed integer; summability, the congruence induction and
+\eqref{long251:eq:finite-overlap} therefore apply without change.  Here
+$s_j\asymp_\varepsilon\log\log n_j$, so
+\[
+ |S\cap[X,2X)|=O_\varepsilon(X/\log\log X).
+\]
 
-We couple the two block distributions by choosing the same starting
-index.  A changed coordinate belongs to at most $m$ of the sampled
-blocks, so the probability that the blocks differ is at most
-$m|S\cap[X,2X+m)|/X$.  This proves the stated total variation bound.
-When $m\le X$, the interval $[X,2X+m)$ is contained in $[X,4X)$, and the
-support estimate on two dyadic intervals bounds the probability by
-$O_\varepsilon(m/\log\log X)$.  The required uniform convergence follows.
+Choose the same uniform starting index $n\in[X,2X)$ for the two blocks.
+A changed coordinate $t$ can affect only the starts
+$n\in[t-m+1,t]$, of which there are at most $m$.
+Only $t\in S\cap[X,2X+m)$ can occur in a sampled block.  The union
+bound consequently gives
+\[
+ \begin{aligned}
+ d_{\rm TV}(\mu_{a,X,m},\mu_{a+e,X,m})
+ &\le\mathbb P\bigl(e_{n+i}\ne0\text{ for some }0\le i<m\bigr)\\
+ &\le\frac{m|S\cap[X,2X+m)|}{X}.
+ \end{aligned}
+\]
+For $m\le X$, two dyadic bands cover $[X,2X+m)$ and give the bound
+$O_\varepsilon(m/\log\log X)$.  In particular it tends to zero when
+$m=o(\log\log X)$, uniformly over targets since the permitted set
+$S$ is common to all of them.  The block length enters solely through
+the number of starts that one altered coordinate can affect.
 For a test bounded in absolute value by $B_0$ that also depends on the
 starting index, the coupled values agree at unchanged blocks and differ
 by at most $2B_0$ elsewhere.  Their mean difference is consequently at
@@ -602,9 +650,21 @@ separate these remaining questions from the algebraic equivalences.
 
 \section{Summation by parts, with the endpoint retained}\label{long251:sec:parts}
 
+We return to the actual prime gaps
+$g_n=p_{n+1}-p_n$, with $p_0=2$ and $g_0=1$.  We write
+\[
+ \Pi=\sum_{n\ge0}p_n2^{-n-1},\qquad
+ S=\sum_{n\ge0}g_n2^{-n-1}.
+\]
+Here $S$ denotes the gap sum; the permitted index set in
+Section~\ref{long251:sec:paired-corrections} is no longer in use.
+The short paper calls this same sum $G$.  The two calculations below
+have different jobs: summation by parts gives $\Pi=2+S$, and deleting
+the first gap gives the initial tail $T_0=2S-1$.
+
 We begin with a finite identity, so no convergence hypothesis is needed.
-Keeping its endpoint identifies the estimate required before we can pass
-to the infinite prime series.  The linked definitions are the
+Its endpoint identifies the estimate required before passing to the
+infinite series.  The linked definitions are the
 \href{https://github.com/wcook04/plectis-erdos/blob/3d6d938d696fed0fb71dd55115a18a73738ff223/lean/ErdosProblems/Erdos251/PrimeGapDyadicTail.lean\#L101}{dyadic partial sum}
 and the
 \href{https://github.com/wcook04/plectis-erdos/blob/3d6d938d696fed0fb71dd55115a18a73738ff223/lean/ErdosProblems/Erdos251/PrimeGapDyadicTail.lean\#L121}{weighted sum of consecutive differences}.
@@ -699,18 +759,26 @@ if and only if $S=1.674643966\ldots$ is.  Neither irrationality statement is est
 
 \section{The tail recurrence and the exact criteria}\label{long251:sec:tail}
 
-Suppose $\sum_{i\ge0}a_i2^{-(i+1)}$ converges and $a_i\in\Z$.
-We rescale the tails so that shifting the starting index produces an
-integer-coefficient recurrence.  Set
+We rescale each tail so that its first denominator is again $2$.
+For a convergent series $\sum_{i\ge0}a_i2^{-i-1}$ with $a_i\in\Z$,
+put
 \[
- T_N=2^{\,N+1}\sum_{i>N}\frac{a_i}{2^{\,i+1}}
-    =\sum_{j\ge1}\frac{a_{N+j}}{2^{\,j}} .
+ T_N=2^{N+1}\sum_{i>N}a_i2^{-i-1}
+    =\frac{a_{N+1}}2+\frac{a_{N+2}}4+\cdots.
 \]
-Removing the first summand gives $T_{N+1}=2T_N-a_{N+1}$, and
-$T_0=2\sum_{i\ge0}a_i2^{-(i+1)}-a_0$ has the same rationality status
-as the original sum.  We first analyse the recurrence for arbitrary
-integer coefficients, then identify which of its solutions are the
-complete tails.  The prime-gap instance follows at the end of the section.
+Thus $T_N$ starts with coefficient $a_{N+1}$, not $a_N$.  Doubling
+and removing that first coefficient gives
+$T_{N+1}=2T_N-a_{N+1}$.  Modulo integers, a step is simply doubling;
+the detailed values of the integer coefficients disappear.  This is
+why the recurrence gives a rationality criterion for arbitrary integer
+coefficients.
+
+At $N=0$ we have
+$T_0=2\sum_{i\ge0}a_i2^{-i-1}-a_0$.  In particular, for the prime
+gaps $T_0=2S-1=2\Pi-5$, so $T_0$, $S$ and $\Pi$ have the same
+rationality status.  We first analyse the recurrence abstractly.
+We then impose the vanishing boundary condition that singles out
+complete tails and apply the criterion to these prime-gap tails.
 
 \begin{definition}\label{long251:def:rec}\compatlabel{def:rec}
 Let $g:\N\to\Z$ and $T:\N\to\Q$ or $T:\N\to\R$.  Say $T$ satisfies the

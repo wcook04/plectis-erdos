@@ -80,18 +80,26 @@ $C_Nq^{B_N}$. These are different limiting questions: multiplying
 by $(1-q)^{N^3}$ preserves that first term and changes the fixed-base
 logarithm by a cubic quantity. No uniformity as $q\to1$ is asserted.
 
-We first express $v_m^*$ as a positive moment on
-$1,q,q^2,\ldots$. Heine's identity then expands $V_N^*$ into squared
-Vandermonde products, as in \cite[\S2, (2)--(5)]{zudilin2017det}.
-After division by the contribution from the first $N$ nodes,
-the remaining tuples are indexed by partitions. A summable bound
-uniform in $N$ reduces their limit to a Cauchy determinant.
-The weight calculation supplies the remaining factor:
-$a_k/c_k=1-8F(1/q)/(k+1)+O_q((k+1)^{-2})$.
-Its product over $k<N$ accounts for $N^{-8F(1/q)}$.
-The geometric-moment argument is stated independently in
-Theorem~\ref{thm:geometric-moments}; for example, it also evaluates
-the determinant with entries $(1-q^{i+j+1})^{-2}$.
+The determinant becomes tractable when we write $v_m^*$ as a
+positive moment on $1,q,q^2,\ldots$. Heine's identity expresses it
+as a sum over choices of $N$ nodes, with a squared Vandermonde for
+each choice \cite[\S2, (2)--(5)]{zudilin2017det}.
+The first $N$ nodes give the scale $q^{B_N}P^{2N}\prod_{k<N}a_k$.
+Other choices still contribute at that scale: even shifting the last
+node by one place gives a term of comparable size. Partitions record
+these displacements. For a fixed partition, the weight ratios tend
+to $1$, so its limiting contribution is the same as for constant
+weights, where a Cauchy determinant gives an exact answer.
+The main estimate makes this comparison uniform over all partitions.
+
+The remaining calculation concerns the weights themselves.
+They are a product of two finite convolution sums, of lengths two
+and three. Their first relative corrections are $-2F(1/q)/(k+1)$ and
+$-6F(1/q)/(k+2)$. Adding these corrections and then multiplying the
+weights over $k<N$ gives the power $N^{-8F(1/q)}$.
+Theorem~\ref{thm:geometric-moments} isolates the determinant argument
+from this coefficient calculation; it also evaluates the determinant
+with entries $(1-q^{i+j+1})^{-2}$.
 
 Chowla's conjecture, recorded by Erd\H{o}s
 \cite[p.~102]{erdos1988}, asks whether $F(t)$ is irrational for every
@@ -121,17 +129,40 @@ on the fixed $q$.
 
 \section{Geometric moment determinants}\label{sec:geometric-moments}
 
-The determinant argument depends on the relative growth of the
-weights. The following hypotheses allow polynomial growth, including
-decaying powers, and suffice for the weights in
-\eqref{eq:normalised-moments}. Put
+For constant weights, the moments are geometric series:
+$M_m=\sum_{k\ge0}q^{(m+1)k}=(1-q^{m+1})^{-1}$.
+Cauchy's determinant formula evaluates their determinant exactly.
+Writing
 \[
  P=(q;q)_\infty,\qquad
  \mathcal M(q)=\prod_{d\ge1}(1-q^d)^{-d},\qquad
- B_N=\frac{N(N-1)(2N-1)}6.
+ B_N=\sum_{j<N}j^2,
 \]
-The infinite products are positive and finite because their
-logarithms have summable tails.
+we obtain
+\begin{equation}\label{eq:cauchy-model}
+ D_N^{(0)}:=\det\left(\frac1{1-q^{i+j+1}}\right)_{0\le i,j<N}
+ =\frac{q^{B_N}\Delta_N}{\prod_{0\le i,j<N}(1-q^{i+j+1})},
+ \qquad
+ \Delta_N=\prod_{d=1}^{N-1}(1-q^d)^{2(N-d)}.
+\end{equation}
+For each fixed $d$, the multiplicity of $1-q^d$ in the denominator
+increases to $d$, giving the factor $\mathcal M(q)$ in the limit.
+The numerator supplies two more copies:
+\[
+ \frac{\Delta_N}{P^{2N}}
+ =\prod_{d<N}(1-q^d)^{-2d}\prod_{d\ge N}(1-q^d)^{-2N}
+ \longrightarrow\mathcal M(q)^2.
+\]
+Indeed, $\sum d|\log(1-q^d)|<\infty$, and the logarithm of the
+second product is $O_q(Nq^N)$. Thus
+\begin{equation}\label{eq:cauchy-model-limit}
+ D_N^{(0)}\sim\mathcal M(q)^3q^{B_N}P^{2N}.
+\end{equation}
+The next theorem shows that positive weights satisfying the two
+shift conditions below alter this answer only by their first $N$ factors. Its second hypothesis
+controls large displacements of the nodes; its first says that a
+fixed displacement eventually has negligible effect on a weight.
+Both hypotheses allow $a_k=(k+1)^s$ for every real $s$.
 
 \begin{theorem}[geometric moment determinants]\label{thm:geometric-moments}
 Let $0<q<1$ and $a_k>0$ for $k\ge0$. Suppose that, for fixed
@@ -168,11 +199,20 @@ permits passage to the limit in the sum, giving
  \prod_{i<N}a_{k_i}q^{k_i}
  \prod_{i<j<N}(q^{k_i}-q^{k_j})^2.
 \end{equation}
-The tuple $k_i=i$ contributes
-\[
- q^{B_N}\Delta_N\prod_{i<N}a_i,\qquad
- \Delta_N=\prod_{d=1}^{N-1}(1-q^d)^{2(N-d)}.
-\]
+The tuple $k_i=i$ contributes $q^{B_N}\Delta_N\prod_{i<N}a_i$.
+It does not account for the whole asymptotic. For example, replace
+$(0,1,\ldots,N-2,N-1)$ by $(0,1,\ldots,N-2,N)$. The ratio of
+its contribution to that of the original tuple is
+\begin{equation}\label{eq:last-node-shift}
+ q\frac{a_N}{a_{N-1}}
+ \prod_{d=1}^{N-1}\left(\frac{1-q^{d+1}}{1-q^d}\right)^2
+ =q\frac{a_N}{a_{N-1}}\left(\frac{1-q^N}{1-q}\right)^2
+ \longrightarrow\frac{q}{(1-q)^2}.
+\end{equation}
+Only pairs involving the moved node change, so the product
+telescopes. At $q=1/2$ the limiting ratio is $2$.
+We must therefore retain the displaced tuples, even at large rank.
+
 Subtracting the baseline tuple gives shifts $\lambda_i=k_i-i$.
 They are nonnegative and weakly increasing, since
 $k_{i+1}\ge k_i+1$. Reversing them gives a partition. For example,
@@ -193,13 +233,19 @@ $k_i=i$ turns the summand for this tuple into
  \left(\frac{1-q^{k-j+\mu_j-\mu_k}}{1-q^{k-j}}\right)^2.
 \end{split}
 \end{equation}
-Set $W_N(\mu)=0$ when $\mu$ has more than $N$ positive parts,
-so that the index set of the sum is independent of $N$.
+The exponent $2j-1$ has a direct meaning. The $j$th index from
+the right contributes once through its mass $q^{k_i}$ and twice
+through each of its $j-1$ pairs with later indices in the squared
+Vandermonde. This gives $1+2(j-1)$.
+
+Set $W_N(\mu)=0$ when $\mu$ has more than $N$ positive parts.
+The sum now has an index set independent of $N$.
 A fixed partition shifts only the last indices of the baseline tuple:
 $(2,1)$ shifts its last two indices, whatever the rank $N\ge2$.
-The fixed-shift hypothesis will therefore give a limit for each
-partition. To pass to the sum, we first use the uniform polynomial
-bound in the other hypothesis.
+These indices tend to infinity with $N$, so the fixed-shift
+hypothesis removes the weights from each limiting summand.
+The remaining issue is the total contribution of partitions with
+many or large parts. We use the polynomial bound for this step.
 
 For a partition of length $\ell$, only the factors with $j\le\ell$
 can differ from $1$. For each such $j$, the denominator product in
@@ -229,23 +275,17 @@ Hence all the weight ratios in \eqref{eq:partition-summand} tend to $1$.
 Its Vandermonde quotient
 also converges: there are only finitely many nontrivial first indices,
 and the logarithms of the remaining factors have geometric tails.
-Dominated convergence therefore reduces the limit of
-$\sum_\mu W_N(\mu)$ to the case $a_k=1$.
-For these weights $M_m=(1-q^{m+1})^{-1}$, and Cauchy's determinant
-formula gives
+Dominated convergence shows that $\sum_\mu W_N(\mu)$ has the
+same limit as for $a_k=1$. This common limit is positive, since the
+empty partition contributes $1$. Restoring the reference-tuple
+factors, we obtain
 \[
- D_N=\frac{q^{B_N}\Delta_N}
- {\prod_{0\le i,j<N}(1-q^{i+j+1})}.
+ \frac{D_N}{D_N^{(0)}\prod_{k<N}a_k}\longrightarrow1.
 \]
-The multiplicity of $1-q^d$ in the denominator increases to $d$,
-so the normalised sum tends to $\mathcal M(q)$. Finally,
-\[
- \frac{\Delta_N}{P^{2N}}
- =\prod_{d<N}(1-q^d)^{-2d}\prod_{d\ge N}(1-q^d)^{-2N}
- \longrightarrow\mathcal M(q)^2,
-\]
-since the logarithm of the second product is $O_q(Nq^N)$.
-These two limits prove \eqref{eq:geometric-limit}.
+The model asymptotic \eqref{eq:cauchy-model-limit} now proves
+the theorem. The comparison explains why the normalised limit
+retains the geometric spacing of the nodes but loses the individual
+weights.
 \end{proof}
 
 \section{The weights of Zudilin's moments}\label{sec:weights}
@@ -305,9 +345,20 @@ At fixed $0<q<1$ these weights satisfy
 We use the Gaussian binomial coefficients
 $\genfrac{[}{]}{0pt}{}{n}{j}_q=(q;q)_n/((q;q)_j(q;q)_{n-j})$ for
 $0\le j\le n$, and put $\mathcal E(z)=(z;q)_\infty^{-1}$.
-For $\partial_qf(z)=(f(z)-f(qz))/z$ we have $\partial_q\mathcal E=\mathcal E$ and
-$\mathcal E(z)^r=\sum_{n\ge0}R_n^{(r)}z^n/(q;q)_n$ by Euler's expansion. The
-$q$-Leibniz rule, which follows by induction from the product rule, is
+Euler's expansion gives
+$\mathcal E(z)^r=\sum_{n\ge0}R_n^{(r)}z^n/(q;q)_n$.
+To obtain the product $R_k^{(2)}R_k^{(3)}$, we need to shift the
+coefficients of $\mathcal E^3$ and then sum over all splittings of
+the index. The operator
+$\partial_qf(z)=(f(z)-f(qz))/z$ does this without introducing
+extra factorials: $\partial_qz^j=(1-q^j)z^{j-1}$ cancels the last
+factor of $(q;q)_j$. In particular,
+\[
+ \partial_q\mathcal E=\mathcal E,\qquad
+ \partial_q^n\mathcal E(z)^3
+ =\sum_{j\ge0}\frac{R_{n+j}^{(3)}}{(q;q)_j}z^j.
+\]
+The $q$-Leibniz rule, obtained by induction from the product rule, is
 \[
  \partial_q^n(fg)(z)=\sum_{j=0}^n\genfrac{[}{]}{0pt}{}{n}{j}_q
  (\partial_q^jf)(q^{n-j}z)\,(\partial_q^{n-j}g)(z).
@@ -328,9 +379,13 @@ and hence
  =\mathcal E(w)\mathcal E(z)^3
   \sum_{k\ge0}\frac{w^k(z;q)_k}{(q;q)_k}h_k(z).
 \]
-We now put $z=w$. The coefficient of $w^n$ on the left is
-$R_n^{(3)}\sum_{j\le n}\bigl((q;q)_j(q;q)_{n-j}\bigr)^{-1}
-=R_n^{(2)}R_n^{(3)}/(q;q)_n$. To evaluate the right-hand side, we expand
+The left-hand side is
+$\sum_{n,j\ge0}R_{n+j}^{(3)}w^nz^j/((q;q)_n(q;q)_j)$.
+Putting $z=w$ collects all pairs with the same sum $n+j$.
+The coefficient of $w^k$ is consequently
+$R_k^{(3)}\sum_{j\le k}\bigl((q;q)_j(q;q)_{k-j}\bigr)^{-1}
+=R_k^{(2)}R_k^{(3)}/(q;q)_k$.
+To evaluate the right-hand side, we expand
 $h_k$, put $k=j+t$, and use the $q$-binomial theorem in the form
 \[
  \sum_{t\ge0}\frac{(wq^j;q)_t}{(q;q)_t}w^t
@@ -363,7 +418,16 @@ and the power of $N$ in Theorem~\ref{res:sharp-fixed-base}.
 
 \begin{proof}[Proof of Theorem~\ref{res:sharp-fixed-base}]
 Put $L=F(1/q)$, $e_k=(q;q)_k^{-1}$ and $E=P^{-1}$.
-We need the first correction to the limiting value $e_k\to E$.
+Replacing every $e_k$ by $E$ in the two convolution sums gives
+$E^2(k+1)$ and $E^3\binom{k+2}{2}$. These count, respectively,
+the nonnegative pairs and triples with sum $k$. They explain the
+leading cubic term of $a_k$, but we also need its first correction.
+For a fixed index $i$, there is one pair $(i,k-i)$ and there are
+$k-i+1$ triples whose first coordinate is $i$. Thus a summable
+deficit in the sequence $e_i$ produces a constant correction in the
+two-fold sum and a linear correction in the three-fold sum.
+We calculate that deficit and bound the terms containing it twice.
+
 Writing $d_k=E-e_k$, the identity
 $e_{k+1}-e_k=q^{k+1}e_{k+1}$ gives
 \[
@@ -452,8 +516,12 @@ would lose both corrections and hence the factor $N^{-8F(1/q)}$.
 \subsection{The first nonzero formal term}\label{sec:hankel-order}
 
 The order of a nonzero formal series is the least exponent with
-nonzero coefficient. In Heine's expansion for $V_N^*$, a single tuple
-attains the least order.
+nonzero coefficient. We now let $q$ tend formally to zero at fixed
+rank, rather than increasing the rank at fixed $q$. The shifted
+term in \eqref{eq:last-node-shift} then has an extra factor of $q$.
+More generally, every nonempty partition has positive displacement
+exponent. Thus a single tuple determines the first formal term,
+although all partitions were needed for the fixed-base constant.
 
 \begin{theorem}[the first nonzero term of the Hankel determinant]
 \label{res:zudilin-sharp-qorder}
@@ -511,8 +579,22 @@ integer coefficients. A common polynomial factor should therefore be
 cancelled first. For example, at $3/2$ the pair
 $(X+1)(X+2),(X+1)(X+3)$ gives $(35,45)$ after clearing to degree $2$.
 After cancelling $X+1$, clearing to degree $1$ gives $(7,9)$.
-For Zudilin's forms, cyclotomic cancellation has a degree of quadratic
-order, and this degree determines the rational-base criterion.
+For Zudilin's forms, the degrees are of quadratic order in the
+index $n$. Write $K_n$ for the degree of the original coefficient
+and $W_n$ for its degree after cancellation. The cancelled remainder
+has leading size $x^{-(K_n-W_n)}$ at a fixed real base $x>1$.
+At $x=a/b$, clearing the coefficients therefore has the balance
+\begin{equation}\label{eq:degree-balance}
+ b^{W_n}(a/b)^{-(K_n-W_n)}
+ =\frac{b^{K_n}}{a^{K_n-W_n}}.
+\end{equation}
+This is the degree contribution; the proof below also controls the
+remaining factors. The quadratic limits
+$K_n/n^2\to C_1$ and $(K_n-W_n)/n^2\to C_0$ yield the
+sufficient inequality $C_1\log b<C_0\log a$ once the remaining
+factors have been bounded. The work is to
+justify cancellation over $\Z[X]$ and calculate the two degrees
+before specialising $X$ to $a/b$.
 
 We use the parameter direction from Zudilin's construction
 \cite[\S5, pp.~161--162]{zudilin2004}, together with its thirteen
@@ -560,9 +642,12 @@ At equality $\log b/\log a=\theta^*$ the quadratic exponent vanishes,
 so the estimates below give no conclusion.
 
 \begin{proof}[Proof of Theorem~\ref{res:rational-base-threshold}]
-We shall calculate the degree $W_n$ of the cancelled coefficient
-and show that $b^{W_n}\Lambda_n(a/b)$ is positive and tends to zero.
-We fix $n\ge1$ and set
+We first identify the integral polynomials obtained by cancellation.
+We then compute their degrees and the size of the cleared remainder,
+which will justify \eqref{eq:degree-balance} to quadratic order.
+
+\emph{The source forms and polynomial cancellation.}
+Fix $n\ge1$ and set
 \[
  a_0=14n+1,\quad a_1=12n+1,\quad a_2=14n+1,\quad\beta=27n+2,
  \qquad N=15n.
@@ -653,6 +738,7 @@ $F(e^h)=h^{-1}\log(1/h)+O(h^{-1})$, which has no rational-function
 pole order at $X=1$. The cancelled remainder is positive for $x>1$,
 since $D_N/\Omega_n$ is a product of cyclotomic polynomials positive there.
 
+\emph{The degrees after cancellation.}
 The Gaussian binomial polynomial
 $\genfrac{[}{]}{0pt}{}{m}{k}_X=\prod_{j=1}^k(1-X^{m-k+j})/(1-X^j)$
 is monic of degree $k(m-k)$ for integers $0\le k\le m$. The source's~(8) and~(10)
@@ -694,11 +780,11 @@ the least common clearing denominator for this pair. Every common integer diviso
 coprime to $b$. This leaves common factors at other primes and
 savings from combinations of different rows to be analysed separately.
 
-Having computed the degree by keeping $n$ fixed and letting
-$x\to\infty$, we now estimate decay with $x$ fixed and $n\to\infty$.
-
-
-It remains to find the quadratic part of the degree removed by cancellation.
+\emph{The quadratic degree limits.}
+The degree calculation kept $n$ fixed and let $x\to\infty$.
+For the irrationality argument we now keep $x$ fixed and let
+$n\to\infty$. We first find the quadratic part of the degree
+removed by cancellation.
 The limits below are the cyclotomic limits of
 \cite[Lemmas~1--2, p.~155]{zudilin2004}.  The proof uses the argument through
 reciprocal intervals, the summatory totient estimate and the trigamma function
@@ -737,6 +823,7 @@ Consequently
  (K_n-W_n)/n^2\longrightarrow C_0.
 \]
 
+\emph{The cleared remainder.}
 We return to a fixed real base $x>1$ and estimate the cyclotomic
 product. Writing $\mu_{\rm Mob}$ for the M\"obius function, we have
 \[

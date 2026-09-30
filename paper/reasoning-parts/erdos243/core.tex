@@ -48,14 +48,17 @@ can also be written $C_{n+1}=C_n-E_n$, where
 $E_n=D_n-(a_n-1)C_n$. Quadratic growth makes $E_n/C_n\to0$.
 To deduce a Sylvester tail we must make the integer error itself vanish.
 
-We use the multiplicative denominator update in two different ways.
-At a prescribed regular rate, finite differences turn $C_n$ into a
-polynomial and divisibility restricts its coefficients. With bounded
-upward increments, a stable gcd instead gives coprimality with earlier
-multipliers. The Chinese remainder theorem then produces a block which
-an unbounded numerator cannot cross. When reduction keeps cancelling
-factors, we require additional estimates for the prime powers that
-survive.
+The two principal arguments control different features of this integer
+numerator. A precise regular rate controls its finite differences:
+although $C_n$ grows, a sufficiently high difference tends to zero and
+therefore vanishes. The resulting polynomial must still satisfy the
+exact denominator recurrence, which imposes congruences on its values.
+A bound on upward steps gives a different use of integrality. After a
+common divisor stabilises, every earlier multiplier is coprime to every
+later numerator. The Chinese remainder theorem then produces a block
+that an unbounded numerator with bounded upward steps cannot cross.
+When common factors keep being cancelled, the later criteria instead
+estimate the prime powers that survive.
 
 We prove the cubic and nonintegral-rate theorems first
 (Section~\ref{long243:sec:cubicrate}). Their rate assumptions exclude
@@ -158,20 +161,27 @@ In particular no such orbit satisfies $C_n=A\,n(n+1)(n+2)+B$ for all
 large $n$.
 \end{theorem}
 
-We prove this positive-density statement, although eventual disagreement
-alone suffices for irrationality. The lower density may depend on the
-orbit and the cubic; no uniform numerical constant is claimed.
+The short paper needs only to exclude eventual equality with a cubic.
+Here we keep track of where each congruence fails and obtain positive
+lower density of disagreement. The bound may depend on the orbit and
+the cubic; no uniform numerical constant is claimed.
 
-We argue by assuming that the disagreement set has lower density zero.
-It must then leave arbitrarily late four-term blocks untouched.
-On each such block, a third difference bounds
-$G_n=\gcd(C_n,D_n)$. After this gcd stabilises, we divide it out and
-obtain the proposed numerator $m n(n+1)(n+2)/6+c$, with $m>0$ integral
-and $c=\pm1$. The recurrence forces a square at each root modulo
-almost every prime. A square in the cubic field follows, and its traces
-give $m=12$. Four consecutive terms modulo seven exclude both signs.
-At each stage, failure of a congruence repeats on an arithmetic
-progression, giving the positive lower density we seek.
+Suppose, then, that the disagreement set has lower density zero. It
+leaves arbitrarily late four-term blocks intact. On each such block,
+a third difference bounds $G_n=\gcd(C_n,D_n)$; the divisibility chain
+therefore stabilises. Dividing it out leaves the proposed numerator
+$m n(n+1)(n+2)/6+c$, with $m>0$ integral and $c=\pm1$.
+If the middle of three consecutive numerators vanishes modulo a prime,
+the recurrence makes the negative product of its neighbours a square.
+Applied to the polynomial, this forces a square at every root modulo
+almost every prime. A square in the cubic field follows, and traces
+leave $m=12$. Four-term blocks modulo seven exclude the two signs.
+
+The density assertion comes from the same finite tests. A failed test
+recurs on an arithmetic progression, and each occurrence forces a
+disagreement in a window of bounded length. The next lemma counts
+those disagreements. After proving the arithmetic exclusion, we return
+to the rate assumption in Lemma~\ref{long243:res:extraction}.
 
 \paragraph{The integer tail.}
 Suppose $\sum_{n\ge1}1/a_n=p/q$ with positive integers $p,q$, and write
@@ -309,11 +319,15 @@ $\underline d(S)\ge1/\ell$.
 
 \subsection{Square specialisation}
 
-If a prime divides the middle of three consecutive numerators, the
-two-step recurrence makes the negative product of its neighbours a
-square. Applied to the proposed cubic, this requires $r^2-1$ to be a
-square at every root $r$ modulo almost every prime. We use the following
-general lemma to pass from those residue fields to the number field.
+For the proposed cubic $f(T)=T^3-T+6c/m$, the recurrence will force
+$r^2-1$ to be a square whenever $r$ is a root modulo a good prime.
+We need the same conclusion for an algebraic root $\alpha$ in
+$\Q(\alpha)$. The issue is that a putative square root could lie in a
+quadratic extension of this field. Its nontrivial automorphism would
+fix $\alpha$ and change the sign of the square root. Chebotarev supplies
+a prime with exactly that behaviour, contradicting the finite-field
+condition. The following lemma isolates this passage; in the cubic
+application we take $H(T)=T^2-1$.
 
 \begin{lemma}[square specialisation]\label{long243:res:squarespec}
 Let $f\in\Q[T]$ be irreducible with root $\alpha$, and let $H\in\Q[T]$ satisfy
@@ -421,10 +435,9 @@ in $\Q(\alpha)^\times$.  Then $m=12$.
 \end{lemma}
 
 \begin{proof}
-Choose $\beta\in\Q(\alpha)$ with $\beta^2=\alpha^2-1$. The substitution
-$z=\alpha+\beta$ is useful because its inverse is already in the same
-field and expresses $\alpha$ symmetrically in $z,z^{-1}$.
-Then $(\alpha+\beta)(\alpha-\beta)=1$, so
+Choose $\beta\in\Q(\alpha)$ with $\beta^2=\alpha^2-1$. The identity
+$(\alpha+\beta)(\alpha-\beta)=1$ gives a reciprocal pair in the cubic
+field. Taking $z=\alpha+\beta$, we obtain
 \begin{equation}\label{long243:eq:zalpha}
  z^{-1}=\alpha-\beta,\qquad \alpha=\tfrac12(z+z^{-1}),
 \end{equation}
@@ -573,12 +586,16 @@ $\underline d(S)\ge1/7$, the final contradiction.
 
 \subsection{Polynomial extraction at a regular rate}
 
-We now recover the polynomial numerator from the rate assumption.
-The comparison sequence $\Gamma(n+\lambda)/\Gamma(n)$ has ratio
-exactly $1+\lambda/n$. Subtracting its recurrence controls differences
-of the error, which its size alone would not control. A sufficiently
-high difference of $C_n$ then tends to zero. Integrality turns this
-asymptotic conclusion into eventual polynomial equality.
+It remains to connect the arithmetic exclusion with an asymptotic
+rate. For the cubic rate, the natural comparison is $n(n+1)(n+2)$;
+its successive ratio is exactly $1+3/n$. For a real parameter
+$\lambda>1$, the corresponding comparison sequence is
+$\Gamma(n+\lambda)/\Gamma(n)$, with ratio $1+\lambda/n$.
+The argument first leaves an error $o(n)$. Subtracting the two
+recurrences then shows that the first difference of that error tends
+to zero. A sufficiently high difference of the original integer
+sequence is therefore a small integer and must vanish. Its eventual
+polynomial growth also forces $\lambda$ to be integral.
 
 \begin{lemma}[integer extraction at a regular rate]\label{long243:res:extraction}
 Let $\lambda>1$ and let $C_n$ be positive integers with
@@ -1423,6 +1440,19 @@ $U_{n+1}\le3U_n/4$ when $\rho_n\ge2$.
 At a sufficiently late LCM record, $\rho_n=1$ and the actual jump is
 $d_n=U_{n+1}-U_n=-V_n>0$. At a contracting step with $\rho_n\ge2$ this
 identity need not hold.
+
+For $B=0$, divergence under unbounded growth can already be seen by
+comparing a record step with the interval of new heights it covers:
+\[
+ \int_{R_n}^{R_{n+1}}f(t)\,dt
+ \le (R_{n+1}-R_n)f(U_n)
+ \le (U_{n+1}-U_n)f(U_n).
+\]
+The last expression is $(-V_n)f(U_n)$ at a record. The theorem retains
+this divergence after subtracting a fixed $B$ at every record. That is
+where the congruences enter: they select a progression of heights whose
+first crossings necessarily have an excess jump. For the divergence direction, unboundedness of $U_n$ suffices; no
+limit $U_n\to\infty$ is assumed.
 
 \begin{theorem}[boundedness and a weighted sum over new maxima]\label{long243:res:arithmeticrecord}
 Let $a_n,L_n,U_n$ be positive integers and $V_n$ integers satisfying

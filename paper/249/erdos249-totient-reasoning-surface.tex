@@ -186,7 +186,7 @@
 \title{The Binary Totient Series}
 \subtitle{Totient sections, rational comparisons and arithmetic conditions}
 \author{Will Cook}
-\date{July 2026; revised 29 September 2026}
+\date{July 2026; revised 30 September 2026}
 
 \begin{document}
 % ---- part a249_front ----
@@ -195,49 +195,50 @@
 \paperprovenance
 
 \begin{abstract}
-The integral relations among totient sections determine their coefficient
-module, but leave open the irrationality of
-$S=\sum_{n\ge1}\varphi(n)2^{-n}$. We give the tail identities and
-complete proofs behind the residue criteria for this value. Finite
-exclusions and rational comparison sequences distinguish the hypotheses
-of those criteria. In one sufficient criterion, two weighted
-exponential-sum estimates remain unproved. The comparisons preserve
-only the coefficient data stated in their constructions.
+If $S=\sum_{n\ge1}\varphi(n)2^{-n}$ is rational, some positive shift
+makes every sufficiently late difference of scaled tails an integer.
+We give finite residue tests for detecting a noninteger difference,
+with the complete proofs of their equivalences and propagation laws.
+Rational comparison sequences distinguish these conditions from
+coefficient complexity and finite data. The irrationality of $S$
+remains open. In one sufficient criterion, two weighted exponential-sum
+estimates remain unproved; the comparisons preserve only the properties
+stated in their constructions.
 \end{abstract}
 
 \section*{Organisation}
-The \shortpaper{short249-basis}{short paper} treats the coefficient
-module first. In every base $k\ge2$ it retains $k^e+1$ sections through
-level $e\ge1$, gives their integral coordinates, and describes every
-relation among the original indexed sections. Its
-\shortpaper{short249-base-six}{base-six example and integral relation proof}
-explain the distinction between a repeated section and a repeated index.
-The present record develops the arguments about the value
-$S=\sum_{n\ge1}\varphi(n)2^{-n}$. Tail identities convert that question
-into residue inequalities. The rational comparisons show why the
-specified coefficient information alone does not force those inequalities.
+The starting point is the decomposition $2^NS=\Phi_N+R_N$, where
+$\Phi_N$ is an integer and $R_N$ is the remaining scaled tail.
+A rational value of $S$ forces a fixed positive shift $h$ for which
+$R_{N+h}-R_N$ is an integer whenever $N$ is sufficiently large.
+Truncating the tails gives a finite residue test for a failure of this
+integrality. The main questions are how to find such failures and
+which proposed ways of finding them require information not yet known.
 
-For the residue criteria, begin with Definition~\ref{defn:sep} and
-Section~\ref{sec:survivors}; the detailed proofs and finite computations
-start in Section~\ref{sec:series}. For the coefficient-to-value question,
-Section~\ref{sec:mahler-defect} gives the dyadic integral relations and
-Section~\ref{sub:generic-carry-rank} constructs the rational $5/4$ series
-with unbounded carry rank. Section~\ref{sec:wall} supplies the other
-rational comparisons. For the unresolved exponential-sum estimates,
-Section~\ref{sub:pivot} gives the two weighted sums and their common
-parameter requirements; the
-\shortpaper{short249-first-harmonic}{four-estimate problem} is in the
-short paper's final appendix.
+Exact identities between coefficient sequences answer a different
+question. The \shortpaper{short249-basis}{short paper} gives a basis
+of $k^e+1$ totient sections through level $e\ge1$ in every base
+$k\ge2$. Its
+\shortpaper{short249-base-six}{base-six example and integral relation proof}
+turn an identity among the original indexed sections into an explicit
+test on their coefficients. Its prime-isolation proof also yields
+irrationality for bounded residue series. The present record explains
+the additional difficulty posed by the unbounded coefficients of $S$
+and keeps the rational comparisons alongside the deductions they test.
+
+For the residue criteria, see Definition~\ref{defn:sep} and
+Sections~\ref{sec:survivors} and~\ref{sec:series}.
+Section~\ref{sec:mahler-defect} gives the dyadic integral relations;
+Section~\ref{sub:generic-carry-rank} constructs the rational $5/4$
+series with unbounded carry rank. Other rational comparisons are in
+Section~\ref{sec:wall}. Section~\ref{sub:pivot} gives the unresolved
+weighted exponential sums and their common parameter requirements,
+corresponding to the \shortpaper{short249-first-harmonic}{four-estimate problem}
+in the short paper's final appendix.
 
 Appendix~\ref{app:r3-complements} contains the complete propagation,
 Mersenne-residue and sharp rank-one arguments cited there.
 Appendix~\ref{app:r3-declarations} collects the formal declarations.
-
-Throughout, a cofinal condition means that a witness exists beyond each
-threshold. It need not hold at every sufficiently large index. Each
-comparison sequence is used only for the properties it preserves;
-agreement with a fixed totient prefix, for example, imposes no
-multiplicativity condition on the continuation.
 
 \setcounter{tocdepth}{1}
 \clearpage
@@ -276,6 +277,12 @@ below explain several ways that a passage from coefficient structure to the
 sum can fail. Each excludes its stated assumptions; they do not establish a
 single obstruction theorem covering all possible methods.
 
+Throughout, a cofinal condition means that a witness exists beyond each
+threshold. It need not hold at every sufficiently large index. Each
+comparison sequence is used only for the properties it preserves;
+agreement with a fixed totient prefix, for example, imposes no
+multiplicativity condition on the continuation.
+
 \begin{rem}[Earlier coefficient results]
 Erd\H{o}s and Graham record the irrationality question for
 $S$~\cite[p.~61]{erdosgraham1980}. An integer sequence is $k$-regular
@@ -298,8 +305,8 @@ Ex.~4 and Rem.~7]{allouche-shallit-yassawi}.
 
 \end{rem}
 
-The following identity relates the series to finite sums. It also explains
-which finite inequalities would suffice for irrationality. Write $2^{N} S = \Phi_N + R_N$
+To test rationality, we remove the finite prefix, which becomes an
+integer after multiplication by $2^N$. Write $2^{N} S = \Phi_N + R_N$
 with $\Phi_N := \sum_{n=1}^{N} \varphi(n) 2^{N-n} \in \N$ and
 $R_N := \sum_{j \ge 0} \varphi(N+1+j)/2^{j+1} \in [0,\infty)$
 (\lean{Erdos249257.TotientTailPeriodKiller.totientTail}{TotientTailPeriodKiller.lean:57},
@@ -334,10 +341,14 @@ a decidable condition
 (\lean{Erdos249257.TotientTailPeriodKiller.windowDiscrepancy}{TotientTailPeriodKiller.lean:66},
 \lean{Erdos249257.TotientTailPeriodKiller.certifiedKill}{TotientTailPeriodKiller.lean:72}).
 
-The error bound $N{+}h{+}L{+}2$ comes from
-$\varphi(m) \le m$, so a certificate is sound: it forces
-$R_{N+h} - R_N \notin \Z$, and in fact certificates are \emph{complete} for
-non-integrality
+The truncation error is at most $N{+}h{+}L{+}2$, by
+$\varphi(m)\le m$. The two strict inequalities defining
+$\mathcal C(h,N,L)$ keep the entire error interval between consecutive
+multiples of $2^L$. The true value $2^L(R_{N+h}-R_N)$ therefore cannot
+be such a multiple, so $R_{N+h}-R_N\notin\Z$.
+Conversely, any noninteger difference has positive distance from
+$\Z$, and a sufficiently deep truncation detects it. Thus the finite
+tests detect exactly the noninteger differences
 (\lean{Erdos249257.TotientTailPeriodKiller.exists_certifiedKill_iff_tail_diff_notMem_int}{LcmConeFlatness.lean:316}).
 The resulting quantified condition is the following.
 
@@ -6891,16 +6902,21 @@ For every $e\ge1$, the family
 is linearly independent over $\Q$. It contains $2^e+1$ sequences and spans
 the sections through level $e$ by the zero- and even-residue reductions.
 \end{thm}
-The forms $n$ and $2n$ are proportional, so their coefficients need a
-separate argument. Restrict a proposed relation to $n=2m+1$, where $\ph(2n)=\ph(n)$.
-The odd-residue sections and $\ph(n)$ then correspond to pairwise
-nonproportional forms. CRT and Dirichlet's theorem separate them by
-an evaluation matrix: make the primitive part of one form prime and
-force suitable prime divisors into the others. This kills the
-positive-residue coefficients and gives $A+B=0$ for the two remaining
-coefficients. Evaluating their relation at $n=2$ gives $A+2B=0$.
-Hence both vanish. This gives the dyadic specialization of the proof
-in the short paper. The Lean proof is unconditional; it uses the Chinese
+The two zero-residue sections need separate treatment because their
+arguments $n$ and $2n$ are proportional. Restrict a proposed relation
+to $n=2m+1$, where $\ph(2n)=\ph(n)$. The odd-residue sections,
+together with $\ph(n)$, now have pairwise nonproportional affine
+arguments. The \shortpaper{short249-proof}{evaluation-matrix construction}
+chooses one input per row. At that input a selected primitive form is
+prime, while each competing form has a prime divisor whose predecessor
+is divisible by a fixed auxiliary prime. The matrix is diagonal and
+nonzero on the diagonal modulo that auxiliary prime. The check that
+the selected prime progression is reduced is part of the construction.
+
+Independence removes the positive-residue coefficients and leaves
+$A+B=0$. The same remaining relation at $n=2$ gives $A+2B=0$, so
+both coefficients vanish. This is the dyadic specialisation of the
+short paper's proof. The Lean proof is unconditional; it uses the Chinese
 remainder theorem and Dirichlet's theorem on primes in arithmetic
 progressions from Mathlib. Consequently the full
 infinite family spans an infinite-dimensional \(\mathbb Q\)-space
@@ -6941,14 +6957,15 @@ For each omitted index put $R_i=E_i-a_iE_{j(i)}$.  Then
  \qquad
  \operatorname{rank}_{\mathbb Z}\ker(\operatorname{ev}_e)=2^e-2.
 $}\]
-Indeed, subtracting $\sum_{i\notin J_e}c_iR_i$ from a relation removes
-all omitted coordinates.  The remainder is a relation among retained
-sections, so independence makes it zero.  Conversely, the coefficient of
-$E_i$ in $\sum_{h\notin J_e}b_hR_h$ is exactly $b_i$, proving uniqueness.
-The decisive feature is the unit pivot $1$ in each omitted coordinate
-(or $-1$ if a relation is oriented oppositely).  Elimination uses no division;
-it therefore identifies the integral relation lattice, not merely its
-rational span.  The \shortpaper{short249-base-six}{depth-two base-six example}
+Indeed, subtracting $\sum_{i\notin J_e}c_iR_i$ removes all omitted
+coordinates. At a retained index $j$, the remaining coefficient is
+$c_j+\sum_{i\notin J_e,\,j(i)=j}a_i c_i$. These are the integral
+coordinates of the original combination. If it is a relation,
+independence makes every one of them zero. Conversely, the coefficient
+of $E_i$ in $\sum_{h\notin J_e}b_hR_h$ is exactly $b_i$, proving
+uniqueness. Each relation row has coefficient $1$ in its own omitted
+coordinate and $0$ in every other omitted coordinate. No division is
+needed, so the conclusion holds over $\Z$.  The \shortpaper{short249-base-six}{depth-two base-six example}
 in the short paper illustrates these two-term rows.  The distinction between the retained basis and the redundant
 spanning family of all sections already matters for $k$-regular sequences
 that are not eventually zero: their growth exponent is the base-$k$
