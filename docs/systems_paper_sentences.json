@@ -62,8 +62,8 @@
       "path": "docs/papers/corpus.json",
       "start_line": 1,
       "end_line": 8837,
-      "sha256": "f0bd0ed494d2ca456d74d41c2ccca932c628040ad7ff8ee9b6e975b9637727af",
-      "excerpt_sha256": "f0bd0ed494d2ca456d74d41c2ccca932c628040ad7ff8ee9b6e975b9637727af",
+      "sha256": "788d6b05c22e7a061253a5d093434141f4739524519552daa65be94310cf3a81",
+      "excerpt_sha256": "788d6b05c22e7a061253a5d093434141f4739524519552daa65be94310cf3a81",
       "kind": "source"
     },
     {
@@ -71,8 +71,8 @@
       "path": "docs/systems_paper_counts.json",
       "start_line": 1,
       "end_line": 65,
-      "sha256": "22e543c5f4b2b3006dc83ef26bfa85f9ea74d3d77d952b8c8316595f8c41de3d",
-      "excerpt_sha256": "22e543c5f4b2b3006dc83ef26bfa85f9ea74d3d77d952b8c8316595f8c41de3d",
+      "sha256": "91a9b165c293710953572f33a0460a9e50c5f5d18e7be1e218f37919bd6585cd",
+      "excerpt_sha256": "91a9b165c293710953572f33a0460a9e50c5f5d18e7be1e218f37919bd6585cd",
       "kind": "source"
     },
     {
@@ -440,9 +440,9 @@
       "kind": "source",
       "path": "docs/papers/SHORT_PAPER_CONTRACT.md",
       "start_line": 1,
-      "end_line": 125,
-      "sha256": "f5df38def0eeabb64a0046c0ff31d5371ac560b3dda36d5cd1e373cba167ebd7",
-      "excerpt_sha256": "f5df38def0eeabb64a0046c0ff31d5371ac560b3dda36d5cd1e373cba167ebd7"
+      "end_line": 132,
+      "sha256": "c97208060d2732399f14ace4008166ea30b05f797fd0c6ac19d829b3f6ddf9aa",
+      "excerpt_sha256": "c97208060d2732399f14ace4008166ea30b05f797fd0c6ac19d829b3f6ddf9aa"
     },
     {
       "id": "refinement-tests",
@@ -710,7 +710,7 @@
     },
     {
       "id": "r4.fig.lifecycle",
-      "text": "\\begin{figure}[htbp]\n\\centering\n\\begin{tikzpicture}[x=1cm,y=1cm]\n\\node[sys box,text width=2.7cm,minimum height=1.8cm] (c) at (0,0) {Problem collection\\\\sources, results\\\\and open questions};\n\\node[sys box,text width=2.7cm,minimum height=1.8cm] (s) at (3.6,0) {Paper coverage row\\\\compare all listed\\\\formal supports};\n\\node[sys box,text width=2.7cm,minimum height=1.8cm] (p) at (7.2,0) {Authored paper\\\\statement, argument\\\\and limitations};\n\\node[sys box,text width=2.7cm,minimum height=1.8cm] (r) at (10.8,0) {Readers\\\\inspect, question\\\\and extend};\n\\draw[sys arrow] (c)--(s);\n\\draw[sys arrow] (s)--(p);\n\\draw[sys arrow] (p)--(r);\n\\draw[sys arrow,dashed] (r.south)--++(0,-.85)-| (c.south);\n\\node[sys label,text width=11.6cm] at (5.4,-2.5) {Corrections and contributions return after review and adoption (Figure~\\ref{fig:contribute}).\\\\The research journal records returns and their dispositions.};\n\\end{tikzpicture}\n\\caption{From accumulated work to a paper and subsequent revision. Solid arrows show the publication sequence, not logical implication or automatic approval. Comparing the complete registered support set does not execute a new formal proof or establish that the prose has the intended meaning.}\n\\label{fig:lifecycle}\n\\end{figure}",
+      "text": "\\begin{figure}[htbp]\n\\centering\n\\begin{tikzpicture}[x=1cm,y=1cm]\n\\node[sys box,text width=2.7cm,minimum height=1.8cm] (c) at (0,0) {Problem collection\\\\sources, results\\\\and open questions};\n\\node[sys box,text width=2.7cm,minimum height=1.8cm] (s) at (3.6,0) {\\mbox{Paper coverage}\\\\row\\\\compare all listed\\\\formal supports};\n\\node[sys box,text width=2.7cm,minimum height=1.8cm] (p) at (7.2,0) {Authored paper\\\\statement, argument\\\\and limitations};\n\\node[sys box,text width=2.7cm,minimum height=1.8cm] (r) at (10.8,0) {Readers\\\\inspect, question\\\\and extend};\n\\draw[sys arrow] (c)--(s);\n\\draw[sys arrow] (s)--(p);\n\\draw[sys arrow] (p)--(r);\n\\draw[sys arrow,dashed] (r.south)--++(0,-.85)-| (c.south);\n\\node[sys label,text width=11.6cm] at (5.4,-2.5) {Corrections and contributions return after review and adoption (Figure~\\ref{fig:contribute}).\\\\The research journal records returns and their dispositions.};\n\\end{tikzpicture}\n\\caption{From accumulated work to a paper and subsequent revision. Solid arrows show the publication sequence, not logical implication or automatic approval. Comparing the complete registered support set does not execute a new formal proof or establish that the prose has the intended meaning.}\n\\label{fig:lifecycle}\n\\end{figure}",
       "owner": "systems",
       "class": "reported",
       "evidence_refs": [
@@ -723,7 +723,7 @@
         "coverage-weighted"
       ],
       "warrant": "The forward sequence separates support-set comparison from authored interpretation. The conditional return path requires review and adoption, and the journal is explicitly limited to returns/dispositions; no new formal execution or automatic semantic validation is depicted. The complete paper support list belongs to the paper coverage row, which is distinct from the selected-claim registry.",
-      "statement_sha256": "aeb74b791775e79e5b02168bf9d9aa68c1777f001c620e440e6bbd1bf715b980",
+      "statement_sha256": "ff1bd53dfb7caec519b99703e5ae560b864428e1efa481f9cadbe1df1750f779",
       "section": "sec:intro",
       "unit_type": "figure",
       "caption": "From accumulated work to a paper and subsequent revision. Solid arrows show the publication sequence, not logical implication or automatic approval. Comparing the complete registered support set does not execute a new formal proof or establish that the prose has the intended meaning.",
@@ -1523,8 +1523,8 @@
     },
     {
       "id": "r13.fig.refinement",
-      "text": "\\begin{figure}[htbp]\n\\centering\n\\begin{tikzpicture}[x=1cm,y=1cm]\n\\node[sys box,text width=3.55cm,minimum height=1.5cm] (freeze) at (0,0) {\\textbf{1. Freeze inputs}\\\\Manuscripts, statements\\\\and source records};\n\\node[sys box,text width=3.55cm,minimum height=1.5cm] (write) at (4.75,0) {\\textbf{2. Propose revisions}\\\\Wording, organisation,\\\\examples and figures};\n\\node[sys box,text width=3.55cm,minimum height=1.5cm] (review) at (9.5,0) {\\textbf{3. Check and review}\\\\Source checks;\\\\meaning, scope and credit};\n\\node[sys box,text width=3.55cm,minimum height=1.5cm] (record) at (0,-2.8) {\\textbf{6. Record outcome}\\\\Accepted changes,\\\\lessons and limitations};\n\\node[sys box,text width=3.55cm,minimum height=1.5cm] (render) at (4.75,-2.8) {\\textbf{5. Render and inspect}\\\\Regenerate evidence,\\\\PDFs and reading links};\n\\node[sys box,text width=3.55cm,minimum height=1.5cm] (bind) at (9.5,-2.8) {\\textbf{4. Integrate changes}\\\\Restore authored text;\\\\update source bindings};\n\\draw[sys arrow] (freeze)--(write);\n\\draw[sys arrow] (write)--(review);\n\\draw[sys arrow] (review)--node[sys label,right,fill=none]{if accepted} (bind);\n\\draw[sys arrow] (bind)--(render);\n\\draw[sys arrow] (render)--(record);\n\\draw[sys arrow,dashed] (record)--node[sys label,left,fill=none]{next revision} (freeze);\n\\end{tikzpicture}\n\\caption{The exposition workflow, read in numerical order. A proposal may be revised or declined at step~3; only accepted changes proceed to integration. The steps name responsibilities, which may be performed by the same agent. Rendering and inspection remain separate from source checks.}\n\\label{fig:refinement}\n\\end{figure}",
-      "statement_sha256": "48f2fef0a0a340d906ed89555623830551d9b967edbb045e229246c93151146a",
+      "text": "\\begin{figure}[H]\n\\centering\n\\begin{tikzpicture}[x=1cm,y=1cm]\n\\node[sys box,text width=3.55cm,minimum height=1.5cm] (freeze) at (0,0) {\\textbf{1. Freeze inputs}\\\\Manuscripts, statements\\\\and source records};\n\\node[sys box,text width=3.55cm,minimum height=1.5cm] (write) at (4.75,0) {\\textbf{2. Propose revisions}\\\\Wording, organisation,\\\\examples and figures};\n\\node[sys box,text width=3.55cm,minimum height=1.5cm] (review) at (9.5,0) {\\textbf{3. Check and review}\\\\Source checks;\\\\meaning, scope and credit};\n\\node[sys box,text width=3.55cm,minimum height=1.5cm] (record) at (0,-2.8) {\\textbf{6. Record outcome}\\\\Accepted changes,\\\\lessons and limitations};\n\\node[sys box,text width=3.55cm,minimum height=1.5cm] (render) at (4.75,-2.8) {\\textbf{5. Render and inspect}\\\\Regenerate evidence,\\\\PDFs and reading links};\n\\node[sys box,text width=3.55cm,minimum height=1.5cm] (bind) at (9.5,-2.8) {\\textbf{4. Integrate changes}\\\\Restore authored text;\\\\update source bindings};\n\\draw[sys arrow] (freeze)--(write);\n\\draw[sys arrow] (write)--(review);\n\\draw[sys arrow] (review)--node[sys label,right,fill=none]{if accepted} (bind);\n\\draw[sys arrow] (bind)--(render);\n\\draw[sys arrow] (render)--(record);\n\\draw[sys arrow,dashed] (record)--node[sys label,left,fill=none]{next revision} (freeze);\n\\end{tikzpicture}\n\\caption{The exposition workflow, read in numerical order. A proposal may be revised or declined at step~3; only accepted changes proceed to integration. The steps name responsibilities, which may be performed by the same agent. Rendering and inspection remain separate from source checks.}\n\\label{fig:refinement}\n\\end{figure}",
+      "statement_sha256": "cc00ef9c9fdd561f96ffdb96338d6e732dc086d5a2fcb09d03015228717150fe",
       "class": "method",
       "evidence_refs": [
         "writing-contract",
@@ -1696,7 +1696,7 @@
     },
     {
       "id": "r4.fig.contribute",
-      "text": "\\begin{figure}[htbp]\n\\centering\n\\begin{tikzpicture}[x=1cm,y=1cm]\n\\node[sys box,text width=5.85cm,minimum height=1.4cm] (idea) at (0,0) {\\textbf{Idea, reference or review}\\\\State the relevant problem and proposal.\\\\No checkout is required.};\n\\node[sys box,text width=5.85cm,minimum height=1.4cm] (patch) at (7,0) {\\textbf{Executable result or patch}\\\\Return the base revision, change,\\\\evidence and limitations.};\n\\node[sys box,text width=12.85cm,minimum height=1.3cm] (review) at (3.5,-2.1) {\\textbf{Triage and review}\\\\Assess the proposal; reproduce executable evidence where applicable.\\\\Decide whether to adopt, request revision or decline.};\n\\draw[sys arrow] (idea.south)--(idea.south|-review.north);\n\\draw[sys arrow] (patch.south)--(patch.south|-review.north);\n\\node[sys box,text width=3.65cm,minimum height=1.25cm] (math) at (-1,-4.15) {\\textbf{Adopted mathematics}\\\\Proofs, corrections,\\\\scoped negative results};\n\\node[sys box,text width=3.65cm,minimum height=1.25cm] (tool) at (3.5,-4.15) {\\textbf{Adopted methods}\\\\Navigation, validation,\\\\exposition or software};\n\\node[sys box,text width=3.65cm,minimum height=1.25cm] (revise) at (8,-4.15) {\\textbf{Revision or rejection}\\\\Record the reason;\\\\resubmit if appropriate.};\n\\draw[sys arrow] (math.north|-review.south)--(math.north);\n\\draw[sys arrow] (tool.north|-review.south)--(tool.north);\n\\draw[sys arrow] (revise.north|-review.south)--(revise.north);\n\\node[sys box,text width=8.15cm,minimum height=1.05cm] (record) at (1.25,-6.05) {Record evidence, limitations, role credit and correction history.\\\\Both kinds of adopted work inform subsequent tasks.};\n\\draw[sys arrow] (math.south)--(math.south|-record.north);\n\\draw[sys arrow] (tool.south)--(tool.south|-record.north);\n\\end{tikzpicture}\n\\caption{Two entry routes and three possible review outcomes. Repository adoption applies to mathematical and methodological contributions; it establishes neither independent review nor acceptance by the wider mathematical community.}\n\\label{fig:contribute}\n\\end{figure}",
+      "text": "\\begin{figure}[H]\n\\centering\n\\begin{tikzpicture}[x=1cm,y=1cm]\n\\node[sys box,text width=5.85cm,minimum height=1.4cm] (idea) at (0,0) {\\textbf{Idea, reference or review}\\\\State the relevant problem and proposal.\\\\No checkout is required.};\n\\node[sys box,text width=5.85cm,minimum height=1.4cm] (patch) at (7,0) {\\textbf{Executable result or patch}\\\\Return the base revision, change,\\\\evidence and limitations.};\n\\node[sys box,text width=12.85cm,minimum height=1.3cm] (review) at (3.5,-2.1) {\\textbf{Triage and review}\\\\Assess the proposal; reproduce executable evidence where applicable.\\\\Decide whether to adopt, request revision or decline.};\n\\draw[sys arrow] (idea.south)--(idea.south|-review.north);\n\\draw[sys arrow] (patch.south)--(patch.south|-review.north);\n\\node[sys box,text width=3.65cm,minimum height=1.25cm] (math) at (-1,-4.15) {\\textbf{Adopted mathematics}\\\\Proofs, corrections,\\\\scoped negative results};\n\\node[sys box,text width=3.65cm,minimum height=1.25cm] (tool) at (3.5,-4.15) {\\textbf{Adopted methods}\\\\Navigation, validation,\\\\exposition or software};\n\\node[sys box,text width=3.65cm,minimum height=1.25cm] (revise) at (8,-4.15) {\\textbf{Revision or rejection}\\\\Record the reason;\\\\resubmit if appropriate.};\n\\draw[sys arrow] (math.north|-review.south)--(math.north);\n\\draw[sys arrow] (tool.north|-review.south)--(tool.north);\n\\draw[sys arrow] (revise.north|-review.south)--(revise.north);\n\\node[sys box,text width=8.15cm,minimum height=1.05cm] (record) at (1.25,-6.05) {Record evidence, limitations, role credit and correction history.\\\\Both kinds of adopted work inform subsequent tasks.};\n\\draw[sys arrow] (math.south)--(math.south|-record.north);\n\\draw[sys arrow] (tool.south)--(tool.south|-record.north);\n\\end{tikzpicture}\n\\caption{Two entry routes and three possible review outcomes. Repository adoption applies to mathematical and methodological contributions; it establishes neither independent review nor acceptance by the wider mathematical community.}\n\\label{fig:contribute}\n\\end{figure}",
       "owner": "systems",
       "class": "reported",
       "evidence_refs": [
@@ -1709,7 +1709,7 @@
         "architecture-contribution-guide"
       ],
       "warrant": "CONTRIBUTING allows idea/reference submissions without clone or code; the architecture guide requires a base only for patches. The figure separates these routes, shows adoption/revision/rejection, and carries mathematical and methodological adoption into subsequent tasks without asserting outside acceptance or independent review.",
-      "statement_sha256": "e8cdb8ebf544c321c99e60f4ffac0d9f01e892651559b883889714bebf68d4ad",
+      "statement_sha256": "5a362adc47a703b7dff2641fd1f5b97f914f908c11c174f6525cbceab59e8bed",
       "section": "sec:contribute",
       "unit_type": "figure",
       "caption": "Two entry routes and three possible review outcomes. Repository adoption applies to mathematical and methodological contributions; it establishes neither independent review nor acceptance by the wider mathematical community.",
@@ -2788,7 +2788,7 @@
         "strategy-protocol",
         "coverage-weighted"
       ],
-      "body_sha256": "aeb74b791775e79e5b02168bf9d9aa68c1777f001c620e440e6bbd1bf715b980"
+      "body_sha256": "ff1bd53dfb7caec519b99703e5ae560b864428e1efa481f9cadbe1df1750f779"
     },
     {
       "id": "world",
@@ -2842,7 +2842,7 @@
         "native-refinement",
         "packet-dossier"
       ],
-      "body_sha256": "48f2fef0a0a340d906ed89555623830551d9b967edbb045e229246c93151146a"
+      "body_sha256": "cc00ef9c9fdd561f96ffdb96338d6e732dc086d5a2fcb09d03015228717150fe"
     },
     {
       "id": "contribute",
@@ -2858,7 +2858,7 @@
         "contribution-guide",
         "architecture-contribution-guide"
       ],
-      "body_sha256": "e8cdb8ebf544c321c99e60f4ffac0d9f01e892651559b883889714bebf68d4ad"
+      "body_sha256": "5a362adc47a703b7dff2641fd1f5b97f914f908c11c174f6525cbceab59e8bed"
     },
     {
       "id": "credit",

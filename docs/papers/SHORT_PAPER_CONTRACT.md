@@ -123,3 +123,10 @@ Machine failure blocks the affected draft. A machine pass permits semantic revie
 The test `test_semantic_canary_is_not_misrepresented_as_verified` deliberately replaces the relation paragraph with the false claim that the distinct-height theorem settles the repeated-value problem. It passes structural rendering and is still explicitly marked as semantically unverified. That surviving mutant is a limitation of this implementation, not evidence of understanding. The separate Type B reader/grader packets test the failure mode.
 
 The renderer uses a restricted TeX fragment convention. It rejects several source-I/O and macro-definition operations, but it is not a TeX security sandbox. Compile trusted, reviewed input only, without shell escape. Full release, arbitrary macro semantics, all prose entailment, autonomous theorem selection and readership gains are outside the demonstrated capability.
+
+## Review the compiled pages
+
+Inspect figures at reading size and in grayscale. Read across adjacent pages:
+a figure or table must not interrupt a word or paragraph. Check labels, captions
+and arrow meanings against the surrounding argument. Successful compilation and
+source checks do not replace this visual review.

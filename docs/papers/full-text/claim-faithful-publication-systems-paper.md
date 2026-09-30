@@ -251,7 +251,7 @@ A revision begins by collecting candidate results, antecedents, difficult proof 
 
 An advisory model can return a proposal against those sources; a tool-enabled agent can prepare it in a checkout. In either case the integrating reviewer decides whether the mathematics and its description remain faithful.
 
-<figure id="fig:refinement" data-latex-placement="htbp">
+<figure id="fig:refinement" data-latex-placement="H">
 
 <figcaption>The exposition workflow, read in numerical order. A proposal may be revised or declined at step 3; only accepted changes proceed to integration. The steps name responsibilities, which may be performed by the same agent. Rendering and inspection remain separate from source checks.</figcaption>
 </figure>
@@ -268,7 +268,7 @@ The relation to the motivating problem must also survive compression: the Proble
 
 <span id="sec:loop" label="sec:loop"></span><span id="sec:cycle" label="sec:cycle"></span> <span id="systems-public"></span> <span id="systems-job-lifecycle"></span> A contributor may send a mathematical idea or reference without a clone, or return a patch from a recorded public commit. For executable work the return identifies the changed files, commands, results, resource use and surviving limitations, with the people and tools responsible. Figure <a href="#fig:contribute" data-reference-type="ref" data-reference="fig:contribute">6</a> separates the proposed change from replay, review and adoption. The return protocol calls for reproduction at the submitted base before reconciliation with current main, with separate credit for a substantive integration repair.
 
-<figure id="fig:contribute" data-latex-placement="htbp">
+<figure id="fig:contribute" data-latex-placement="H">
 
 <figcaption>Two entry routes and three possible review outcomes. Repository adoption applies to mathematical and methodological contributions; it establishes neither independent review nor acceptance by the wider mathematical community.</figcaption>
 </figure>
