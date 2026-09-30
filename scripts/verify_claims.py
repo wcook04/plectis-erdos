@@ -513,7 +513,11 @@ def comparator_for(claim_id: str, claims: dict[str, Any]) -> dict[str, Any]:
         "unregistered_contract": packet.get("claim_status_contract", {}).get(
             "unregistered_interface"
         ),
+        # Retain packet context in JSON, with its corpus-wide scope explicit.
         "boundary": packet.get("boundary"),
+        "boundary_scope": packet.get("scope"),
+        "registered_contract": packet.get("claim_status_contract", {}).get("registered_claim"),
+        "novelty_contract": packet.get("claim_status_contract", {}).get("novelty"),
     }
 
 
@@ -624,8 +628,12 @@ def render_claim(report: dict[str, Any]) -> str:
                 f"{comparator['bound_total']} carry a claim id"
             )
             out.extend(quoted(comparator["unregistered_contract"]))
-        out.append("  what Comparator does and does not settle:")
-        out.extend(quoted(comparator["boundary"], "           "))
+        # A packet-wide narrative can describe another problem. The selected
+        # interfaces above own this claim's limits; quote only shared typed
+        # claim-status contracts here, never the corpus-wide packet boundary.
+        if comparator["status"] == "bound":
+            out.extend(quoted(comparator.get("registered_contract")))
+        out.extend(quoted(comparator.get("novelty_contract")))
         out.append("")
 
     exposition = report["exposition"]
