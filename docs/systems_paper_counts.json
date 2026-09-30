@@ -34,7 +34,7 @@
   "inputs": [
     {
       "path": "docs/paper_lean_coverage.json",
-      "sha256": "d7a419e492825ee10021578f6af586760f3c9df8a41cc2ffb81b94dea22a5ce0"
+      "sha256": "6c0cd17b661d927a494bb363a797549db093d8020bf9c388bec09e97d9e089cb"
     },
     {
       "path": "docs/claims.json",

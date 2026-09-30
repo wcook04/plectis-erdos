@@ -6,37 +6,37 @@
     {
       "id": "257-example",
       "path": "paper/257/erdos-257-mersenne-support-subseries.tex",
-      "start_line": 269,
-      "end_line": 300,
+      "start_line": 267,
+      "end_line": 298,
       "kind": "source",
-      "sha256": "69d394b5af4878100d9ae1bebdebfa8059dd9ab0124100f443906ecdb47c38ae",
-      "excerpt_sha256": "a1db825f85046a0439c67a883e73b4320a9b5a0f5accf3735917ec75c437804a"
+      "sha256": "63111bbbaf6469fe8c9d142a671eb4b5ed74644144947c3d2d81f899ad2af65b",
+      "excerpt_sha256": "670a9de7ffd16c1ba2caccf5afc6bebe99ec3e1e81ee4336dc47769c8e6f4605"
     },
     {
       "id": "257-proof",
       "path": "paper/257/erdos-257-mersenne-support-subseries.tex",
-      "start_line": 123,
-      "end_line": 267,
+      "start_line": 121,
+      "end_line": 265,
       "kind": "source",
-      "sha256": "69d394b5af4878100d9ae1bebdebfa8059dd9ab0124100f443906ecdb47c38ae",
-      "excerpt_sha256": "c0389bc913937ef9f02a12a94674aa4988e9c21531cfd3d21675e327786a6473"
+      "sha256": "63111bbbaf6469fe8c9d142a671eb4b5ed74644144947c3d2d81f899ad2af65b",
+      "excerpt_sha256": "1082103b90649529574e74b7858e6119099a5f0faa9014cc38fe67ca9a589e77"
     },
     {
       "id": "257-reciprocal",
       "path": "paper/257/erdos-257-mersenne-support-subseries.tex",
-      "start_line": 872,
-      "end_line": 899,
+      "start_line": 883,
+      "end_line": 910,
       "kind": "source",
-      "sha256": "69d394b5af4878100d9ae1bebdebfa8059dd9ab0124100f443906ecdb47c38ae",
+      "sha256": "63111bbbaf6469fe8c9d142a671eb4b5ed74644144947c3d2d81f899ad2af65b",
       "excerpt_sha256": "07b08dc8e23653a1bea2c48b087571857616d9e98726c98f080aee58c20cd6cf"
     },
     {
       "id": "257-statement",
       "path": "paper/257/erdos-257-mersenne-support-subseries.tex",
-      "start_line": 70,
-      "end_line": 86,
+      "start_line": 69,
+      "end_line": 85,
       "kind": "source",
-      "sha256": "69d394b5af4878100d9ae1bebdebfa8059dd9ab0124100f443906ecdb47c38ae",
+      "sha256": "63111bbbaf6469fe8c9d142a671eb4b5ed74644144947c3d2d81f899ad2af65b",
       "excerpt_sha256": "76093fcff9c86ff532b2182837e7c4e191e9806f477c420bc2602d706c643e17"
     },
     {
@@ -89,8 +89,8 @@
       "path": "docs/paper_lean_coverage.json",
       "start_line": 1,
       "end_line": 29162,
-      "sha256": "d7a419e492825ee10021578f6af586760f3c9df8a41cc2ffb81b94dea22a5ce0",
-      "excerpt_sha256": "d7a419e492825ee10021578f6af586760f3c9df8a41cc2ffb81b94dea22a5ce0",
+      "sha256": "6c0cd17b661d927a494bb363a797549db093d8020bf9c388bec09e97d9e089cb",
+      "excerpt_sha256": "6c0cd17b661d927a494bb363a797549db093d8020bf9c388bec09e97d9e089cb",
       "kind": "source"
     },
     {
@@ -99,8 +99,8 @@
       "start_line": 1,
       "end_line": 29162,
       "kind": "supplied_snapshot",
-      "sha256": "d7a419e492825ee10021578f6af586760f3c9df8a41cc2ffb81b94dea22a5ce0",
-      "excerpt_sha256": "d7a419e492825ee10021578f6af586760f3c9df8a41cc2ffb81b94dea22a5ce0"
+      "sha256": "6c0cd17b661d927a494bb363a797549db093d8020bf9c388bec09e97d9e089cb",
+      "excerpt_sha256": "6c0cd17b661d927a494bb363a797549db093d8020bf9c388bec09e97d9e089cb"
     },
     {
       "id": "coverage-reciprocal",
@@ -108,8 +108,8 @@
       "start_line": 1,
       "end_line": 29162,
       "kind": "supplied_snapshot",
-      "sha256": "d7a419e492825ee10021578f6af586760f3c9df8a41cc2ffb81b94dea22a5ce0",
-      "excerpt_sha256": "d7a419e492825ee10021578f6af586760f3c9df8a41cc2ffb81b94dea22a5ce0"
+      "sha256": "6c0cd17b661d927a494bb363a797549db093d8020bf9c388bec09e97d9e089cb",
+      "excerpt_sha256": "6c0cd17b661d927a494bb363a797549db093d8020bf9c388bec09e97d9e089cb"
     },
     {
       "id": "coverage-weighted",
@@ -117,8 +117,8 @@
       "start_line": 1,
       "end_line": 29162,
       "kind": "supplied_snapshot",
-      "sha256": "d7a419e492825ee10021578f6af586760f3c9df8a41cc2ffb81b94dea22a5ce0",
-      "excerpt_sha256": "d7a419e492825ee10021578f6af586760f3c9df8a41cc2ffb81b94dea22a5ce0"
+      "sha256": "6c0cd17b661d927a494bb363a797549db093d8020bf9c388bec09e97d9e089cb",
+      "excerpt_sha256": "6c0cd17b661d927a494bb363a797549db093d8020bf9c388bec09e97d9e089cb"
     },
     {
       "id": "credit",
@@ -135,8 +135,8 @@
       "start_line": 1,
       "end_line": 36178,
       "kind": "supplied_snapshot",
-      "sha256": "f488d68ee3344a31701cb26922ac34c103fbdff03d51b464596a60dc1276f8a6",
-      "excerpt_sha256": "f488d68ee3344a31701cb26922ac34c103fbdff03d51b464596a60dc1276f8a6"
+      "sha256": "988342aeb63d3ac8c47193715d845fa14b879ad164b3dd74021a385890982a48",
+      "excerpt_sha256": "988342aeb63d3ac8c47193715d845fa14b879ad164b3dd74021a385890982a48"
     },
     {
       "id": "essay-pages",

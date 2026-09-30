@@ -1,4 +1,4 @@
-# Formal evidence: Weighted and Covered Supports for Mersenne Subseries
+# Formal evidence: Irrationality criteria for Lambert subseries
 
 This record belongs to the paper [erdos-257-mersenne-support-subseries.pdf](../paper/257/erdos-257-mersenne-support-subseries.pdf). For every result it lists the Lean declarations that state it, and the recorded Comparator check where there is one. The inline links and margin marks in the paper use the same result mapping.
 
@@ -116,7 +116,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="res-mixed-supports"></a>
 
-## Theorem 4.1 (mixed weighted and cover supports), page 9
+## Theorem 4.1 (mixed weighted and cover supports), page 8
 
 > *Let $`E,V\subseteq\mathbb{N}_{>0}`$. Suppose $`E`$ satisfies ({W}) for a finite nonempty prime set $`P`$, and $`V\subseteq\bigcup_jF_j`$ for finite sets and nonnegative majorants satisfying the hypotheses of Theorem 3.1, with either ({V}) or its positive-weight variant. Then $`X_A(b)`$ is irrational for every infinite $`A\subseteq E\cup V`$ and every integer $`b\ge2`$.*
 

@@ -400,7 +400,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="res-signedwindow"></a>
 
-## Proposition 5.1 (two consecutive differences of absolute value less than one), page 9
+## Proposition 5.1 (two consecutive differences of absolute value less than one), page 10
 
 > *Let $`D,D'\in\mathbb{R}`$, $`\delta\in2\mathbb{Z}`$ and $`D'=2D-\delta`$. The conditions $`|D|<1`$, $`|D'|<1`$ and $`\delta\ne0`$ hold exactly when, for some $`s\in\{-1,1\}`$,
 > ``` math

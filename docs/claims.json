@@ -21929,7 +21929,7 @@
         "source": "paper/257/erdos-257-mersenne-support-subseries.tex",
         "environment": "problem",
         "title": "membership of 1/21 in the Mersenne achievement set",
-        "line": 1373
+        "line": 1385
       }
     },
     {
@@ -22001,7 +22001,7 @@
         "source": "paper/269/erdos-269-three-prime-running-lcm.tex",
         "environment": "problem",
         "title": "no reduced tail is an integer",
-        "line": 575
+        "line": 579
       }
     },
     {
@@ -22013,7 +22013,7 @@
         "source": "paper/269/erdos-269-three-prime-running-lcm.tex",
         "environment": "problem",
         "title": "residue inequalities after every starting index",
-        "line": 581
+        "line": 585
       }
     },
     {
@@ -22025,7 +22025,7 @@
         "source": "paper/269/erdos269-running-lcm-reasoning-surface.tex",
         "environment": "problem",
         "title": "an exact function representing the distinct-height sum",
-        "line": 3503
+        "line": 3506
       }
     },
     {
@@ -22037,7 +22037,7 @@
         "source": "paper/243/erdos-243-reciprocal-tail-rigidity.tex",
         "environment": "problem",
         "title": "growth of repeated denominator factors",
-        "line": 1072
+        "line": 1075
       }
     },
     {
@@ -22049,7 +22049,7 @@
         "source": "paper/249/erdos-249-binary-totient-series.tex",
         "environment": "problem",
         "title": "Four estimates for the first-harmonic sum",
-        "line": 730
+        "line": 737
       }
     },
     {
@@ -22061,7 +22061,7 @@
         "source": "paper/257/erdos-257-mersenne-support-subseries.tex",
         "environment": "problem",
         "title": "bounded returns of the scaled remainder",
-        "line": 1389
+        "line": 1401
       }
     },
     {
@@ -22073,7 +22073,7 @@
         "source": "paper/257/erdos-257-mersenne-support-subseries.tex",
         "environment": "problem",
         "title": "arithmetic tests for the greedy sequence",
-        "line": 1398
+        "line": 1410
       }
     },
     {
@@ -22085,7 +22085,7 @@
         "source": "paper/257/erdos-257-mersenne-support-subseries.tex",
         "environment": "problem",
         "title": "final-skip Diophantine exclusion",
-        "line": 1409
+        "line": 1421
       }
     }
   ],

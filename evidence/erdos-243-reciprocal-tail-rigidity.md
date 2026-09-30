@@ -1,4 +1,4 @@
-# Formal evidence: Cubic-Rate Irrationality and Reciprocal-Tail Rigidity
+# Formal evidence: Reciprocal Sums and the Sylvester Recurrence
 
 This record belongs to the paper [erdos-243-reciprocal-tail-rigidity.pdf](../paper/243/erdos-243-reciprocal-tail-rigidity.pdf). For every result it lists the Lean declarations that state it, and the recorded Comparator check where there is one. The inline links and margin marks in the paper use the same result mapping.
 
@@ -151,7 +151,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="res-absorb"></a>
 
-## Theorem 4.3 (absorption and descent), page 9
+## Theorem 4.3 (absorption and descent), page 8
 
 > *<span id="res:descent" label="res:descent"></span> For a positive exact state with strict centring, $`E_n=0`$ implies $`E_{n+1}=0`$. For any positive integer state with $`C_{n+1}=C_n-E_n`$, eventual nonnegativity of $`E_n`$ implies its eventual vanishing.*
 

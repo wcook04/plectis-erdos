@@ -1,4 +1,4 @@
-# Formal evidence: Running least common multiples:\\distinct heights and repeated sums
+# Formal evidence: Running least common multiples:\\distinct values and multiplicities
 
 This record belongs to the paper [erdos269-running-lcm-reasoning-surface.pdf](../paper/269/erdos269-running-lcm-reasoning-surface.pdf). For every result it lists the Lean declarations that state it, and the recorded Comparator check where there is one. The inline links and margin marks in the paper use the same result mapping.
 
@@ -507,7 +507,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long269-res-rank"></a>
 
-## Proposition 7.2 (non-separability at $`\{2,3,5\}`$), page 24
+## Proposition 7.2 (non-separability at $`\{2,3,5\}`$), page 25
 
 > *With $`(p,q,r)=(2,3,5)`$,
 > ``` math
@@ -1391,7 +1391,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long269-res-weighted-shift-identity"></a>
 
-## Lemma 12.1 (weighted shifts preserve the actual value), page 46
+## Lemma 12.1 (weighted shifts preserve the actual value), page 47
 
 > *Fix integers $`c_0,\ldots,c_\sigma`$, not all zero, independently of the positive integer shift $`r`$. Put
 > ``` math
@@ -1570,7 +1570,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long269-long-denominator-reduction"></a>
 
-## Proposition 13.1 (conditional denominator reduction), page 58
+## Proposition 13.1 (conditional denominator reduction), page 59
 
 > *If $`c_n=D_{\mathrm{sm}}d_n`$ for every $`n`$, with $`D_{\mathrm{sm}}>0`$, then the recurrence and window identity for $`(d_n)`$ have multiplier $`B`$ in place of $`D`$. Moreover, for every $`n`$ and every real $`t`$,
 > ``` math
@@ -1606,7 +1606,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long269-long-windowconsumer"></a>
 
-## Proposition 13.2 (escaping windows exclude a positive bounded integer solution), page 59
+## Proposition 13.2 (escaping windows exclude a positive bounded integer solution), page 60
 
 > *Let $`(b_n)`$ and $`(m_n)`$ be sequences of nonnegative integers, let $`G:\mathbb{N}_{>0}\times\mathbb{N}\to\mathbb{N}`$, and assume the residue condition (20) for these sequences and $`G`$, using $`|W_{\ell,h}|>0`$ as the modulus. Fix $`B>0`$ coprime to $`30`$. There is no integral sequence $`(d_n)`$ satisfying simultaneously $`d_{n+1}=b_nd_n-Bm_n`$, $`d_n>0`$ and $`|d_n|\le G(B,n)`$ for every $`n\ge0`$.*
 

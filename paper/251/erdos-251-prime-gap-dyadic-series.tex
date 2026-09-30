@@ -30,13 +30,13 @@
 
 \begin{abstract}
 For each convergent dyadic series with nonnegative integer coefficients,
-we construct nonnegative integer perturbations whose sums fill an interval,
-with one sparse permitted set for all targets.
+we construct nonnegative integer perturbations whose sums fill an interval
+and whose supports lie in one set of upper Banach density zero.
 The corrections obey any prescribed bound tending to infinity and eventually
 preserve coefficient and partial-sum residues modulo every fixed integer.
-Pairs with a fixed ordinary sum provide the weighted choices for interval
-covering.  For prime gaps we also preserve growing-block statistics and
-cumulative size.  The cumulative positions need not be prime, and the
+The construction varies adjacent corrections while keeping their ordinary
+sum fixed.  For prime gaps it also preserves growing-block distributions
+and cumulative size.  The cumulative positions need not be prime, and the
 irrationality question remains open.
 \end{abstract}
 
@@ -53,9 +53,10 @@ Section~\ref{sec:parts}.  We study which properties of the gaps survive
 when the latter sum is changed to a prescribed value.
 
 We prove a perturbation theorem for arbitrary convergent dyadic series
-with nonnegative integer coefficients.  A single sparse set of permitted
-indices allows every target in an interval, even when the corrections must
-obey an arbitrarily slowly growing bound.  We also prescribe, before choosing
+with nonnegative integer coefficients.  All corrections are supported on
+one sparse set, chosen before the value of the sum.  Their sizes may be
+eventually bounded by any prescribed function tending to infinity, while the sums
+still fill an interval.  We also prescribe, before choosing
 the target, a cutoff for each modulus beyond which both the corrections and
 their partial sums are divisible by that modulus.  For prime gaps the same
 construction retains the distributions of blocks of length
@@ -82,12 +83,12 @@ indices.  The simplest useful calculation is
 Moving $2$ from the later index to the earlier one changes the weighted
 sum while leaving the ordinary sum fixed.  If the cumulative correction
 before the pair is odd, an additional $1$ at $n-1$ clears its residue
-modulo $2$.  The choice among the four pairs then has no effect on any
-cumulative residue beyond the pair.  This is only the local calculation: we still
-have to accommodate every fixed modulus and an arbitrarily small density
-of permitted indices.  Increasing the spacing inserts a smaller power of $2$ into the
-weighted contribution.  We increase the range of choices in each pair just enough for
-later choices to cover the spacing between the present ones.
+modulo $2$.  Since the four pairs have the same sum, the choice of pair leaves every
+later cumulative residue unchanged.  We repeat this operation with
+nested moduli and increasingly separated pairs.  The larger separations
+make the weighted contributions smaller, so we enlarge the range of each
+pair until the later contributions fill the gaps between consecutive
+present choices.
 
 Throughout, $\N=\{0,1,\ldots\}$, intervals of indices contain integers,
 and $\log$ is natural unless a base is displayed.  A set $S\subseteq\N$
@@ -126,8 +127,8 @@ $m=m(X)\ge1$ with $m(X)=o(\log\log X)$, uniformly over target values.
 
 The support of $e$ may depend on $r$ and occupy only part of $S$.
 Polynomially growing nonnegative integer sequences satisfy the convergence
-hypothesis, whereas $a_n=2^n$ does not.  The allowance may grow as slowly as
-$\log\log(n+3)$.  A bounded allowance would force every correction to vanish:
+hypothesis, whereas $a_n=2^n$ does not.  The prescribed bound may grow as slowly as
+$\log\log(n+3)$.  A bounded correction would have to vanish identically:
 a modulus exceeding the bound makes $e$ eventually zero, and its constant
 cumulative sum must then be divisible by every positive integer.
 
@@ -144,12 +145,11 @@ dyadic coefficient sequences.
 \begin{proof}
 \emph{Fixed totals.}
 At stage $j$ we put a correction at $n_j-1$ and a variable pair at
-$n_j,n_j+1$.  We keep the pair's ordinary sum fixed, so that its choice leaves the
-residue to be cleared at every later stage unchanged.
+$n_j,n_j+1$.  We keep the pair's ordinary sum fixed.  Consequently, the residue to be
+cancelled at a later stage is independent of all earlier pair choices.
 Let $n_{-1}\ge K$, write $s_j=n_j-n_{j-1}\ge4$, and take positive
-integers $M_j$ with $M_j\mid M_{j+1}$.  The actual centres and moduli
-will be chosen below.  Put $D_j=2^{s_j}-1$; we will see shortly why
-this digit range compensates for the spacing $s_j$.
+integers $M_j$ with $M_j\mid M_{j+1}$.  We shall choose the centres and moduli below.  Put $D_j=2^{s_j}-1$.
+This choice of digit range will give the telescoping estimate below.
 
 Starting from $C_0=0$, define
 \[
@@ -188,9 +188,9 @@ both pair entries.  The intervening corrections are zero.  Hence
 \[
  q\mid e_n,\qquad q\mid\sum_{i<n}e_i\qquad(n\ge n_J).
 \]
-The entry $c_J$ lies at $n_J-1$, just before this cutoff; it need not
-itself be divisible by $q$.  This explains both the placement of the
-residue correction and the target independence of the cutoff.
+The entry $c_J$ need not be divisible by $q$, which is why it is placed at
+$n_J-1$, before the cutoff.  The index $n_J$ depends on $q$ and the chosen
+moduli, but not on the digits or the value to be attained.
 
 \par\medskip\noindent\emph{Spacing and size.}
 The variable part at stage $j$ has spacing $w_j$ and maximum $D_jw_j$.
@@ -209,13 +209,14 @@ gives the finite estimate
  &=w_j-M_j2^{-n_J-2}\qquad(J>j).
  \end{aligned}
 \end{equation}
-Thus increasing the spacing does not destroy interval covering, provided
-we pay for the corresponding digit range.  Every entry of
-\eqref{eq:correction-triple} is at most $M_j2^{s_j}$.  It remains to fit that
-quantity below the allowance while making the spacings tend to infinity
-and the moduli eventually divisible by each fixed integer.
+The digit range $D_j=2^{s_j}-1$ therefore gives the required overlap
+estimate even when the separations increase.  Every entry of
+\eqref{eq:correction-triple} is at most $M_j2^{s_j}$, so we must keep this
+quantity below the prescribed bound at the three indices.  We must also
+have $s_j\to\infty$ and ensure that every fixed positive integer divides
+all sufficiently late $M_j$.
 
-For a possibly nonmonotone allowance use
+To allow a nonmonotone bound $f$, put
 \[
  h(n)=\inf_{m\ge n}\min(f(m),m).
 \]
@@ -228,10 +229,10 @@ Choose $n_{-1}$ with $h(n_{-1})\ge32$, and set
  k_j=\max\{k\ge2:k!2^{k+2}\le h(n_{j-1})\},\qquad
  M_j=k_j!,\qquad s_j=k_j+2,\qquad n_j=n_{j-1}+s_j.
 \]
-The single parameter $k_j$ now controls both requirements: $k_j!$
-absorbs each fixed modulus once $k_j$ is large enough, while $k_j+2$
-separates the triples.  We choose the largest such parameter whose cost
-$k_j!2^{k_j+2}$ fits the available bound.  The choice exists because
+Every fixed positive integer divides $k_j!$ for all sufficiently large
+$k_j$, while the separation $k_j+2$ tends to infinity with $k_j$.
+The defining inequality bounds all three corrections by $h(n_{j-1})$.
+The choice exists because
 $2!2^4=32$, is finite, and is nondecreasing with $j$.  Since
 $n_j\to\infty$ and $h(n_j)\to\infty$, we also have $k_j\to\infty$.
 Consequently the moduli are nested, every fixed $q$ divides all
@@ -244,7 +245,7 @@ This proves the size bound and convergence for every choice of digits.
 
 Let $S=\bigcup_{j\ge0}\{n_j-1,n_j,n_j+1\}$.  For any $R$, all but
 finitely many successive centres are at least $R$ apart.  An interval
-of length $H$ therefore meets at most $3(H/R+2)$ permitted indices,
+of length $H$ therefore contains at most $3(H/R+2)$ points of $S$,
 in addition to a fixed finite set.  The bound is uniform in the
 position of the interval.  Divide by $H$, take the supremum over
 positions and let $H\to\infty$; then let $R\to\infty$.
@@ -318,8 +319,7 @@ $j$ digits, choose $d_j$ so that
 \[
  \rho_{j+1}=\rho_j-d_jw_j\in[0,F_{j+1}].
 \]
-The covering just proved makes this possible at every stage.  The
-invariant $0\le\rho_j\le F_j$ and $F_j\to0$ then give
+The covering just proved makes this possible at every stage.  Since $0\le\rho_j\le F_j$ and $F_j\to0$, we obtain
 \[
  x-\sum_{i=0}^{j}d_iw_i=\rho_{j+1}\longrightarrow0.
 \]
@@ -330,12 +330,12 @@ cutoff $N_q=n_J$ chosen using $q\mid M_J$.
 This last selection is the standard finite-choice covering argument
 of \cite[Lemma~4]{crmarickovac2025}.  The construction above supplies
 its summability and overlap hypotheses while imposing the congruences
-and the small permitted set.
+and requiring the support to lie in $S$.
 
 \par\medskip\noindent\emph{The logarithmic scale.}
 For $f(n)=(\log(n+3))^\varepsilon$, we can choose the separations
 explicitly at the scale $\log\log n$.  Keep the same triples and
-$D_j=2^{s_j}-1$, but replace the schedule by
+$D_j=2^{s_j}-1$, and now choose
 \[
  \begin{aligned}
  s_j&=\left\lfloor\frac{\varepsilon}{2}
@@ -344,16 +344,16 @@ $D_j=2^{s_j}-1$, but replace the schedule by
  \end{aligned}
 \]
 with $M_j=k_j!$ and $n_j=n_{j-1}+s_j$.  Start far enough out that
-$s_j\ge4$ and all choices exist.  Allocating exponents $\varepsilon/4$
-to the modulus and $\varepsilon/2$ to $2^{s_j}$ leaves room within
-the prescribed allowance:
+$s_j\ge4$ and all choices exist.  The exponents $\varepsilon/4$ and
+$\varepsilon/2$ add to $3\varepsilon/4<\varepsilon$, so the corrections
+satisfy the prescribed bound:
 \[
  M_j2^{s_j}\le(\log(n_{j-1}+3))^{3\varepsilon/4}
              \le(\log(n+3))^\varepsilon
 \]
 at each coordinate $n$ of the triple.  After enlarging the initial
-index, this is also at most $n$.  The moduli remain nested and absorb
-every fixed integer; summability, the congruence induction and
+index, this is also at most $n$.  The moduli remain nested, and every fixed positive integer divides all
+sufficiently late moduli.  Summability, the congruence induction and
 \eqref{eq:finite-overlap} therefore apply without change.  Here
 $s_j\asymp_\varepsilon\log\log n_j$, so
 \[
@@ -374,8 +374,8 @@ bound consequently gives
 \]
 For $m\le X$, two dyadic bands cover $[X,2X+m)$ and give the bound
 $O_\varepsilon(m/\log\log X)$.  In particular it tends to zero when
-$m=o(\log\log X)$, uniformly over targets since the permitted set
-$S$ is common to all of them.  The block length enters solely through
+$m=o(\log\log X)$, uniformly over the values attained, since the same set $S$ contains
+every correction support.  The block length enters solely through
 the number of starts that one altered coordinate can affect.
 
 \end{proof}
@@ -511,7 +511,7 @@ Adding the rational number $2$ preserves rationality and irrationality.
 The recurrence alone does not identify the infinite tails: adding $C2^N$
 to any solution gives another solution.  We distinguish the actual tails
 by the vanishing condition in the next lemma.
-\begin{lemma}[the boundary condition identifying a true tail]\label{res:true-tail}
+\begin{lemma}[the boundary condition for the tail recurrence]\label{res:true-tail}
 Let $\sum_{j\ge1}|a_j|2^{-j}<\infty$ and $U_{N+1}=2U_N-a_{N+1}$.
 Then $U_N=\sum_{j\ge1}a_{N+j}2^{-j}$ for every $N$ if and only if
 $2^{-N}U_N\to0$.
@@ -565,8 +565,8 @@ This shift works for every $N\ge s$.  Negating the pointwise and eventual
 criteria gives the two assertions about irrationality.
 \end{proof}
 
-The theorem requires neither a true-tail boundary condition nor prime-gap
-coefficients.  The eventual periodicity is that of fractional parts,
+The theorem applies to the recurrence itself, without the boundary
+condition of Lemma~\ref{res:true-tail} or any assumption of primality.  The eventual periodicity is that of fractional parts,
 and need not hold for the full tails.  For instance, the positive even
 coefficients $2,4,2,4,\ldots$ starting at $n=1$ give tails $8/3,10/3$
 alternately.  Every shift of length $1$ is nonintegral and every shift of
@@ -720,7 +720,7 @@ $m$, contradicting boundedness.
 
 The results on bounded prime gaps \cite{zhang2014}, clusters of each
 fixed size \cite{maynard2015,polymath2014}, and extreme large gaps
-\cite{fgkmt2018} leave the signed weighted-tail windows above uncontrolled.
+\cite{fgkmt2018} do not give the simultaneous inequalities in \eqref{eq:smallpair}.
 This remains so with Polymath's bound $\liminf_n g_n\le246$
 \cite[Theorem~1.4(i)]{polymath2014}.  At a logarithmic truncation depth
 the explicit remainder tends to zero, but the finite sum must still be
@@ -736,8 +736,8 @@ using primality or quantitative rare-event estimates untouched.
 The linked Lean declarations use Lean~4 \cite{lean4} and mathlib
 \cite{mathlib}.  The formal proof of
 Proposition~\ref{res:sparserationalisation} changes one coordinate at each
-stage, whereas the proof here uses triples.  Both fix the permitted set,
-the interval and the congruence cutoffs before choosing the target.
+stage, whereas the proof here uses triples.  Both choose the set containing the supports,
+the interval and the congruence cutoffs before the value of the sum.
 For Corollary~\ref{res:jointcountermodel}, the formal statement covers
 every $\varepsilon>0$ and assumes Schlage-Puchta's lemma only for
 nonconcentration and the prime number theorem only for the asymptotic

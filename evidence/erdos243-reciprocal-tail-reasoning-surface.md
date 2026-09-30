@@ -1,4 +1,4 @@
-# Formal evidence: Reciprocal-Tail Rigidity: Theorems, Proofs and Questions
+# Formal evidence: Reciprocal Sums and the Sylvester Recurrence:\newline Further Results and Proofs
 
 This record belongs to the paper [erdos243-reciprocal-tail-reasoning-surface.pdf](../paper/243/erdos243-reciprocal-tail-reasoning-surface.pdf). For every result it lists the Lean declarations that state it, and the recorded Comparator check where there is one. The inline links and margin marks in the paper use the same result mapping.
 
@@ -2313,7 +2313,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long243-res-crt"></a>
 
-## Lemma 11.1 (shifted blocks of consecutive multiples), page 43
+## Lemma 11.1 (shifted blocks of consecutive multiples), page 42
 
 > *Let $`m_0,\ldots,m_{B-1}`$ be pairwise coprime and at least $`2`$. For every bound there is a $`t`$ beyond it with $`m_i\mid t+i`$ for each $`i<B`$.*
 
@@ -2404,7 +2404,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long243-res-gcdstab"></a>
 
-## Proposition 11.6 (the tail gcd stabilises), page 45
+## Proposition 11.6 (the tail gcd stabilises), page 44
 
 > *Let $`(a,D,C)`$ be an exact orbit of natural numbers, that is, a triple of $`\mathbb{N}`$-valued sequences with $`C_{n+1}+D_n=a_nC_n`$ and $`D_{n+1}=a_nD_n`$, whose error is $`E_n=D_n-(a_n-1)C_n`$. Suppose some fixed integer $`B\ge1`$ satisfies $`-B\le E_n<0`$ at infinitely many indices. Then $`\gcd(C_n,D_n)`$ is eventually constant, and beyond that index the orbit divided by the stable gcd is a reduced exact tail.*
 

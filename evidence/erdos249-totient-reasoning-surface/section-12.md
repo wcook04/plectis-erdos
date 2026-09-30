@@ -382,7 +382,7 @@ def PrimeNumberTheorem : Prop :=
 
 <a id="prop-route4"></a>
 
-## Proposition 12.9, page 132
+## Proposition 12.9, page 131
 
 > *$`\mathcal{C}(h,N,h)`$ holds whenever $`\bigl\|2^{N+h}S-2^{N}S\bigr\|_{\mathbb{R}/\mathbb{Z}}>2(N+2h+2)/2^{h}`$.*
 

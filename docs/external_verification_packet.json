@@ -1785,7 +1785,7 @@
     "owner": "docs/problem_index_source.json",
     "owner_digest": "sha256:d651478e6b7908e49517009f4cf575bf0f3fd64184974c52db9ac57be1491c8a",
     "projection": "docs/problems.json",
-    "projection_digest": "sha256:553907337707395dc747cb01ef2309e1e0f0dcb5c7689dbaf27c571fe210a486",
+    "projection_digest": "sha256:b30823a1b64bb199ea78958500b0fc497b7d23086ceded751f1bea1df87b3ea4",
     "schema": "erdos249257-problem-index/1",
     "problem_count": 8,
     "authority_posture": "navigation_projection_not_Lean_proof_authority_and_not_a_reviewed_claim_registry",
@@ -2108,7 +2108,7 @@
         ],
         "note": {
           "artifact_id": "erdos_243_note",
-          "title": "Cubic-Rate Irrationality and Reciprocal-Tail Rigidity",
+          "title": "Reciprocal Sums and the Sylvester Recurrence",
           "source_path": "paper/243/erdos-243-reciprocal-tail-rigidity.tex",
           "rendered_path": "paper/243/erdos-243-reciprocal-tail-rigidity.pdf",
           "authority_posture": "authored_mathematical_exposition_not_Lean_proof_authority; public_status_is_owned_per_claim_by_docs/claims.json"
@@ -2443,7 +2443,7 @@
         ],
         "note": {
           "artifact_id": "erdos_257_note",
-          "title": "Weighted and Covered Supports for Mersenne Subseries",
+          "title": "Irrationality criteria for Lambert subseries",
           "source_path": "paper/257/erdos-257-mersenne-support-subseries.tex",
           "rendered_path": "paper/257/erdos-257-mersenne-support-subseries.pdf",
           "authority_posture": "authored_mathematical_exposition_not_Lean_proof_authority; public_status_is_owned_per_claim_by_docs/claims.json"
