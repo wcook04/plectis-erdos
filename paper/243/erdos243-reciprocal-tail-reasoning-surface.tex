@@ -309,15 +309,16 @@ On the primitive tail, $\gcd(u_n,v_n)=1$ by construction, and a prime dividing
 $u_n$ and $u_{n+1}$ would divide $v_n=a_nu_n-u_{n+1}$, which gives
 $\gcd(u_n,u_{n+1})=1$.
 
-The polynomial $Q$ is integer-valued: it takes an integer value at every
-integer argument, although its coefficients need not all be integers. Indeed,
-let $N$ clear the denominators of its coefficients, so $NQ\in\Z[X]$ and
-$Q(n+N)-Q(n)\in\Z$ for every $n$.  A non-integral value at one argument would
-therefore force an exception at every late argument in one residue class modulo
-$N$, and Lemma~\ref{long243:res:periodicobstruction} with $L=1$ would contradict
-$\underline d(S)=0$.  Now $Q(-1)=Q(0)=B/g$, so $c:=B/g\in\Z$, and
-$m:=Q(1)-Q(0)=6A/g$ is a positive integer, which is \eqref{long243:eq:Qmc} with
-$c\in\Z$.
+Since $g\mid6A$, the number $m:=6A/g$ is a positive integer. Put
+$c=B/g$, so
+\[
+ Q(n)=m\binom{n+2}{3}+c.
+\]
+Choose any sufficiently late $n\notin S$. Then $Q(n)=u_n\in\Z$, and the
+binomial term is an integer, so $c\in\Z$. This proves
+\eqref{long243:eq:Qmc} with $c\in\Z$. It also shows that $Q$ is
+integer-valued: its values at integer arguments are integers, even
+though its coefficients need not all be integers.
 
 It remains to exclude $c=0$ and every $c$ with a prime factor.  Let $\ell$ be a
 prime dividing $c$, or any prime if $c=0$.  For $n\equiv-1\pmod{6\ell}$, write
@@ -482,9 +483,16 @@ field. Taking $z=\alpha+\beta$, we obtain
  z^{-1}=\alpha-\beta,\qquad \alpha=\tfrac12(z+z^{-1}),
 \end{equation}
 and $z$ generates $\Q(\alpha)$. Write its minimal polynomial as
-$Z^3+bZ^2+dZ+w$ with $b,d,w\in\Q$ and $w\ne0$. We use the first two
-traces of $\alpha$ to restrict these coefficients, then the third trace
-to impose $\eta=6c/m$. All traces below are from $\Q(\alpha)$ to $\Q$.
+$p(Z)=Z^3+bZ^2+dZ+w$ with $b,d,w\in\Q$ and $w\ne0$. The minimal
+polynomial of $z^{-1}$ is
+\[
+ \frac{Z^3p(Z^{-1})}{w}
+   =Z^3+\frac dwZ^2+\frac bwZ+\frac1w.
+\]
+Thus Newton's identities apply directly to both $z$ and its inverse.
+We use the first two traces of $\alpha$ to restrict these coefficients,
+then the third trace to impose $\eta=6c/m$. All traces below are from
+$\Q(\alpha)$ to $\Q$.
 The polynomial $T^3-T+\eta$ gives
 \begin{equation}\label{long243:eq:alphatraces}
  \Tr\alpha=0,\qquad \Tr\alpha^2=2,\qquad \Tr\alpha^3=-3\eta .
@@ -1528,9 +1536,12 @@ Chinese remainder theorem. Select the heights $\tau=x+B+kP>R_T$,
 $k\in\Z$. At the first crossing of any selected height we have
 $U_n\le R_n<\tau\le U_n+d_n$, so the crossing is a record step.
 Here $d_n=U_{n+1}-U_n$ is the full jump from the current numerator.
-If $d_n\le B$, then
-$U_n\in[\tau-B,\tau)$, so some $m_i$ divides $U_n$. It also divides
-$L_n$, hence divides $d_n=(a_n-1)U_n-L_n$, contradicting
+If $d_n\le B$, then $U_n\in[\tau-B,\tau)$, so
+\[
+ U_n=\tau-B+i=x+kP+i\qquad\text{for some }0\le i<B.
+\]
+The choice of $x$ gives $m_i\mid U_n$. Since $m_i\mid L_n$ as well,
+we obtain $m_i\mid d_n=(a_n-1)U_n-L_n$, contradicting
 $0<d_n\le B<m_i$.
 
 Every crossing therefore has $d_n>B$. If it first crosses $h\ge1$
@@ -1570,7 +1581,10 @@ eventually Sylvester if and only if, for some integer $B\ge0$,
 \begin{proof}
 If the sequence is not eventually Sylvester, zero error is never reached on a sufficiently late
 tail. Integrality gives $1/U_n\le|V_n|/U_n=|E_n|/C_n\to0$, so $U_n$ is
-unbounded. Theorem~\ref{long243:res:arithmeticrecord}, applied after $|V_n|<U_n$ begins to hold at every index, forces divergence for every $B$. Once the running maximum of
+unbounded. The same relative-error limit gives $2|V_n|<U_n$ at every
+sufficiently large index, and hence the bound $-U_n\le2V_n$ required
+by Theorem~\ref{long243:res:arithmeticrecord}. Applying that theorem to
+this tail forces divergence for every $B$. Once the running maximum of
 the retained tail exceeds the omitted prefix maximum, deleting that
 prefix no longer changes which steps set new records. Unboundedness
 ensures that this crossing occurs. Conversely, a sequence satisfying
@@ -1652,7 +1666,7 @@ end of the block is a high record step, so $\rho_n=1$.
 Its positive jump is at most $B$, hence the preceding numerator $U_n$
 lies in the block. The corresponding multiplier divides both $U_n$ and
 $L_n$, hence divides the jump $(a_n-1)U_n-b_nL_n$. A positive jump at most $B$ cannot have a divisor
-larger than $B$. This proves boundedness without a growth assumption or a bound on the relative error and without a relative-error limit.
+larger than $B$. No growth or relative-error hypothesis was used.
 
 With the additional limit $V_n/U_n\to0$, choose an integer $K$ bounding
 $U_n$. Eventually $|V_n|<U_n/K\le1$, so the integer $V_n$ is zero.

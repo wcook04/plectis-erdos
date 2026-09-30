@@ -112,7 +112,7 @@ Argument or supplementary topic & Full account here\\
 \midrule
 Integral basis and finite gcd & \S\ref{long68:sec:basis}\\
 The example $M=1380$ and its remainder &
-\S\ref{long68:sec:basis}, \S\ref{long68:sec:ext-certificates}\\
+\S\ref{long68:sec:basis-examples}, \S\ref{long68:sec:ext-certificates}\\
 Common-denominator growth & \S\ref{long68:sec:lcm}\\
 Carries and factorial digits & \S\ref{long68:sec:carry}\\
 Exact finite denominator exclusions & \S\ref{long68:sec:finite}\\
@@ -350,6 +350,38 @@ values of $M$ is intrinsic to the cancellation equations, so its positive
 generator is independent of the eligible prime $p$.
 \end{proof}
 
+The support equation determines which basis coefficients are admissible.
+The same coefficients give the remainder explicitly. This identifies
+what remains to be proved after constructing a vector: its fractional
+part is fixed by $M$, whereas the free higher coordinates change only
+its integer part.
+
+\begin{theorem}[how the coefficient choices change the remainder]\label{long68:res:residual-transparency}
+For the vector in \eqref{long68:eq:low-channel-basis},
+\[
+ \mathcal R\!\left(tK_D+\sum_{n>D}z_nU_n\right)
+ =tL_D(\Ser-H_D)+\sum_{n>D}z_n.
+\]
+The remainder series converges for every finite vector supported away from
+index zero.  A vector with $M=0$ has integral remainder, and any two finite
+vectors with the same value of $M$ have remainders differing by an integer.
+\end{theorem}
+
+\begin{proof}
+For $d>D$, we have $V_d(K_D)=L_D$ and
+$V_d(U_n)/(d!-1)=\mathbf1_{d=n}$. Summing these identities gives
+$tL_D(S-H_D)+\sum_{n>D}z_n$, as claimed. The first series converges and
+the second sum is finite.
+
+Absolute convergence and the general integer-difference identity were
+proved at the start of \S\ref{long68:sec:channels}, including for the
+auxiliary index $1$. Taking $M=0$ proves integrality;
+subtracting the identities for two vectors with equal $M$ proves the
+last assertion.
+\end{proof}
+
+\subsection{Examples and support refinements}\label{long68:sec:basis-examples}
+
 For $D=4$ we need a common divisor of the entire coefficient tail,
 as well as a finite combination attaining it. Put
 $\Lambda_n=\lcm(1,\ldots,n)$. We first prove $\Lambda_n\mid u_n$.
@@ -443,9 +475,7 @@ $M=1380$ give $11=3\lambda_6+21\lambda_7+238\lambda_8$.
 Modulo $3$ this yields $\lambda_8=-1+3t$, then
 $\lambda_6+7\lambda_7=83-238t$. Set $x=\lambda_5$ and
 $y=\lambda_7$; solving $V_2=V_3=V_4=0$ for the coefficients at indices
-$2,3,4$ gives \eqref{long68:eq:depth-four-family}. The coefficient
-matrix is
-$\left(\begin{smallmatrix}1&3&6\\2&1&4\\2&6&1\end{smallmatrix}\right)$,
+$2,3,4$ gives \eqref{long68:eq:depth-four-family}. The~coefficient~matrix~is~$\left(\begin{smallmatrix}1&3&6\\2&1&4\\2&6&1\end{smallmatrix}\right)$,
 with determinant $55$, and substitution verifies the converse.
 Indices $2,3,8$ are nonzero for every integral $t$; neither the pair
 $(\lambda_4,\lambda_5)$ nor $(\lambda_6,\lambda_7)$ can vanish
@@ -499,7 +529,17 @@ $-290e_3-136e_5-e_6+12e_7-e_8$, with norm $440$.
 These optima concern the depth-four problem on the stated finite
 support. They give no irrationality conclusion for the infinite series.
 
-The factor beyond $L_D$ is not always $12$. At $D=6$, the same recurrence
+There is a uniform restriction $12L_D\mid M$ on support $n\ge2$.
+For $n=2,3$ one has $n!=2W_{2,n}$. For $n\ge4$, both $n!$ and
+$2W_{2,n}$ are divisible by $12$: if $n=2k$ or $2k+1$, then
+$W_{2,2k}=k!\prod_{j=1}^k(2j-1)$ is divisible by $6$ for $k\ge2$.
+Thus $12\mid M(c)-2V_2(c)$. Every $d!-1$ is coprime to $6$, so
+$V_2=\cdots=V_D=0$ implies $12L_D\mid M(c)$.
+This factor is attained at $D=2$ and $D=3$ by
+$-6e_2+e_4$ and $-6e_2-8e_3+5e_4$, respectively.
+The next example shows that this need not be the whole restriction.
+
+At $D=6$, the same recurrence
 gives
 \[
  L_6=9839515,\qquad a_6=-2242555,\qquad G_6=840.
@@ -512,44 +552,7 @@ not $12L_6$. It is attained by $24K_6-16240U_8+U_{12}$: the coefficient
 at index $1$ is zero and the coefficient at $12$ is $-1$. The finite-gcd formula thus detects the extra factor at depth six,
 which the uniform divisibility by $12L_D$ misses.
 
-We can now express the remainder using the basis coefficients in
-\eqref{long68:eq:low-channel-basis}. This refines the integer-difference
-identity at the start of \S\ref{long68:sec:channels} by giving its integer
-term explicitly for the classified vectors.
-
-\begin{theorem}[how the coefficient choices change the remainder]\label{long68:res:residual-transparency}
-For the vector in \eqref{long68:eq:low-channel-basis},
-\[
- \mathcal R\!\left(tK_D+\sum_{n>D}z_nU_n\right)
- =tL_D(\Ser-H_D)+\sum_{n>D}z_n.
-\]
-The remainder series converges for every finite vector supported away from
-index zero.  A vector with $M=0$ has integral remainder, and any two finite
-vectors with the same value of $M$ have remainders differing by an integer.
-\end{theorem}
-
-\begin{proof}
-For $d>D$, we have $V_d(K_D)=L_D$ and
-$V_d(U_n)/(d!-1)=\mathbf1_{d=n}$. Summing these identities gives
-$tL_D(S-H_D)+\sum_{n>D}z_n$, as claimed. The first series converges and
-the second sum is finite.
-
-Absolute convergence and the general integer-difference identity were
-proved at the start of \S\ref{long68:sec:channels}, including for the
-auxiliary index $1$. Taking $M=0$ proves integrality;
-subtracting the identities for two vectors with equal $M$ proves the
-last assertion.
-\end{proof}
-
-The factor $12$ used below follows directly on support $n\ge2$.
-For $n=2,3$ one has $n!=2W_{2,n}$. For $n\ge4$, both $n!$ and
-$2W_{2,n}$ are divisible by $12$: if $n=2k$ or $2k+1$, then
-$W_{2,2k}=k!\prod_{j=1}^k(2j-1)$ is divisible by $6$ for $k\ge2$.
-Thus $12\mid M(c)-2V_2(c)$. Every $d!-1$ is coprime to $6$, so
-$V_2=\cdots=V_D=0$ implies $12L_D\mid M(c)$.
-This factor is attained at $D=2$ and $D=3$ by
-$-6e_2+e_4$ and $-6e_2-8e_3+5e_4$, respectively.
-The depth-$6$ example above shows why it is not always the whole restriction.
+\subsection{Support bounds and nonintegrality}\label{long68:sec:support-and-remainder}
 
 The basis formula \eqref{long68:eq:low-channel-basis} describes all solutions
 of the weighted-sum equations, and \eqref{long68:eq:low-channel-support}
@@ -743,7 +746,7 @@ formula establishes the existence of a representative in the stated
 interval; it does not independently certify that this representative is
 nonzero.
 
-\paragraph{A primitive solution on an arithmetic progression.}\label{long68:sec:progression}
+\subsection{A primitive solution on an arithmetic progression}\label{long68:sec:progression}
 \papersectiontarget{r5-progression}
 To extend the example $-6e_2+e_4$ to cancellation at larger $D$, place
 the support on an arithmetic progression with its first index prescribed.
@@ -1207,7 +1210,10 @@ scaled partial sum is integral. Define the integer carry $b_m$ by
 \begin{equation}\label{long68:eq:carry-recurrence}
  Z_m=mZ_{m-1}+1-b_m .
 \end{equation}
-
+For example, $2!H_2=2$ and $3!H_3=36/5$, so $Z_2=3$ and
+$Z_3=8$, giving $b_3=3\cdot3+1-8=2$. We use
+$\lfloor x\rfloor+1$, not $\lceil x\rceil$: at the integral value
+$2!H_2=2$, the required strict successor is $3$.
 
 Call $b_m=1$ a \emph{unit carry}.  Put
 $E_m=m!(\Ser-H_m)$ and $\varepsilon_m=1/(m!-1)$.  Since
@@ -2922,30 +2928,35 @@ $\min(Q_1,Q_2)\le T$: otherwise both residues would equal $T$.
 
 \subsection{Finite vectors and exact numerical examples}\label{long68:sec:ext-certificates}
 
-The vector $12K_4+253U_6-11U_8$ constructed in
-\S\ref{long68:sec:channels} has $M=1380$. By
-Theorem~\ref{long68:res:residual-transparency}, its remainder is
-$242+1380(S-H_4)$. The five-term vector in the short paper has the
-same value of $M$ and remainder $1380(S-H_4)-44$, smaller by $286$.
-We can bound both using the same finite rational calculation:
+The three depth-four vectors below all have $M=1380$. By
+Theorem~\ref{long68:res:residual-transparency}, their remainders differ
+only by integers. A single finite calculation therefore tests all three:
 \[
  255+\frac45
  <242+1380\sum_{d=5}^{8}\frac1{d!-1}
  <255+\frac56,
  \qquad \frac{2\cdot1380}{9!-1}<\frac1{100}.
 \]
-The tail bound therefore places the remainder strictly between $255$ and
-$256$. The fractional part excludes denominators dividing $1380$, regardless
-of this remainder's integer part. This illustrates the signed-sum test
-in the short paper; the larger finite exclusions already imply the same
-denominator restriction.
-The five-term vector in \S\ref{long68:sec:channels} has the same value of $M$
-and remainder $1380(S-H_4)-44$, exactly $286$ less than the preceding
-remainder, hence strictly between $-31$ and $-30$.
-The norm-minimising vector with support in $\{2,\ldots,8\}$ has remainder $1380(S-H_4)-56$,
-strictly between $-43$ and $-42$. These integer translations give the
-same fractional obstruction with smaller coefficients; they do not
-settle the irrationality of $S$. The exact offsets are reproduced by
+The first remainder lies strictly between $255$ and $256$. Subtracting
+the corresponding integer offsets gives the other two intervals.
+\begin{center}\small
+\begin{tabular}{p{.53\linewidth}rr}
+\papertablehead Vector & $k$ & Interval for $\mathcal R$\\
+\hline
+$12K_4+253U_6-11U_8$ & $242$ & $(255,256)$\\
+The five-term vector \eqref{long68:eq:constructed-depth-four}
+ & $-44$ & $(-31,-30)$\\
+The norm minimizer on $\{2,\ldots,8\}$
+ & $-56$ & $(-43,-42)$\\
+\end{tabular}
+\end{center}
+Here $\mathcal R=1380(S-H_4)+k$. The five-term remainder is $286$
+less than the first, and the norm-minimising remainder is another $12$
+less. All three exclude exactly the same divisors of $1380$ by this
+argument. The coefficient and support improvements in
+\S\ref{long68:sec:basis-examples} do not enlarge that set of exclusions;
+the larger finite computations in \S\ref{long68:sec:finite} already
+imply it. The exact offsets are reproduced by
 \texttt{scripts/check\_erdos68\_channel\_moment.py}.
 
 The finite-support vector $\lambda=2e_3-e_4$ has, by kernel check,

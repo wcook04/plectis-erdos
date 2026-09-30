@@ -161,7 +161,9 @@ times as large, so
 \]
 In the block $(64,128]$, the interior jumps occur in the opposite order,
 at $81,125$. Its constant term is $1/3+1/15+1/30=13/30$.
-The order of the jumps is therefore visible in the affine recurrence.
+The two blocks have the same multiplier $30$, but different numerators,
+$9$ and $13$. To recover the order from a tail value, we must still
+separate the possible values of the block maps.
 
 Every block $(2^a,2^{a+1}]$ contains its terminal power of $2$, at most
 one power of $3$ and at most one power of $5$. We record the interior
@@ -213,8 +215,13 @@ for example, $G_\varnothing(13/15)=14/15$ lies outside $I$.
 
 Figure~\ref{fig:five-map-images} gives the exact images of $I$. They
 are pairwise disjoint, with successive gaps
-$1/900,17/300,79/900,1/180$. The two smallest gaps come from
-$3(3/10)-13/15=1/30>0$.
+$1/900,17/300,79/900,1/180$. Writing $L=3/10$ and $U=13/15$, the two
+narrow gaps are
+\[
+ G_5(L)-G_{53}(U)=\frac{3L-U}{30}=\frac1{900},\qquad
+ G_\varnothing(L)-G_3(U)=\frac{3L-U}{6}=\frac1{180}.
+\]
+Thus the same inequality $U<3L=9/10$ separates both pairs.
 
 \begin{figure}[!htbp]
 \centering
@@ -307,17 +314,6 @@ Dividing by $n$ and taking the limit gives $\ell\alpha=c$, contrary to
 unique factorisation, since it would imply $2^\ell=3^c$.
 \end{proof}
 
-The \longrecord{r3-five-maps}{companion's account of this proof} also
-compares one-jump and dyadic bounds. Its finite-state extension uses
-intervals depending on earlier blocks. The saved exact computations
-satisfy that criterion for every set of three primes at most $31$ and for
-$292$ of the $330$ four-prime sets in that range. The general criterion
-and those computations are recorded as remarks awaiting formalisation.
-For $\{2,3,5,7\}$ two admissible automaton words give the same affine map
-at every subsequent refinement, preventing that automaton from recovering
-its first block. This identity does not establish a collision between two
-words realised by the arithmetic sequence.
-
 \section{The repeated three-prime sum}
 \label{sec:lcm}\label{sec:shell}\label{sec:actual-orbit}
 We return to the sum in which every smooth integer contributes. Put
@@ -335,9 +331,11 @@ $16,18,20,24,25,27,30$. Grouping them by their running LCM gives
  27,30&10800&2/10800
  \end{array}
 \]
-The factors $4$ and $2$ record information that is absent from the
-sequence of distinct running LCMs. Appendix~\ref{sec:height-identities}
-gives the finite grouping identity for general three-prime sets.
+Each of these three running LCMs contributes only once to $\mathcal D_P$.
+In the repeated sum their coefficients are $4,1,2$, so the same jumps
+no longer give the same block contribution.
+Appendix~\ref{sec:height-identities} gives the finite grouping identity
+for general three-prime sets.
 
 We use the half-open blocks $[2^a,2^{a+1})$, so the tail starts at
 $2^a$ rather than just after it. Its finite prefix excludes the jump
@@ -564,12 +562,18 @@ every prescribed onset $a_0$. No bound uniform in $B$ or $\ell$ is
 needed for this direction.
 \end{proof}
 
+The converse gives no estimate for the gap $\delta$. It explains why a
+long enough segment succeeds once $BX_\ell$ is known to be nonintegral.
+To use the forward implication, we must prove~\eqref{eq:escape} for the
+actual coefficients without assuming that nonintegrality.
+
 The upper-bound property of $K$ is essential: choosing the zero function
 would make every residue inequality automatic. The
 \longrecord{r3-residue}{companion's residue analysis} treats smaller bounds
 and identifies when more general bounds give the same criterion.
 Finite searches cover only finitely many multipliers and starts.
 
+\noindent\begin{minipage}{\linewidth}
 The repeated three-prime question can therefore be written in three
 equivalent forms.
 \begin{problem}[the repeated three-prime target]
@@ -585,6 +589,7 @@ Prove that for every $a\ge1$ and every integer $B\ge1$ coprime to $30$,
 \begin{problem}[residue inequalities after every starting index]\label{prob:producer}
 Prove~\eqref{eq:escape}.
 \end{problem}
+\end{minipage}
 
 An integral $BX_a$ makes $S$ rational by \eqref{eq:prefix-lattice};
 Theorem~\ref{res:denominator-reduction} proves the converse implication.
@@ -633,8 +638,11 @@ give $A-1-xA=x(y-1)B/y$.  Therefore
 \[
  B=\frac{p-(p-1)A}{q-1}.
 \]
-We compute the repeated sum from the running LCM
-$p^{i+\lfloor j/\theta\rfloor}q^{j+m_i}$ at $p^iq^j$, obtaining
+For the repeated sum, the running LCM at $p^iq^j$ is
+$p^{i+\lfloor j/\theta\rfloor}q^{j+m_i}$. Its reciprocal is the product
+of $x^iy^{m_i}$, which depends only on $i$, and
+$y^jx^{\lfloor j/\theta\rfloor}$, which depends only on $j$. Absolute
+convergence therefore gives
 \[
  \mathcal R_{p,q}
  =A\sum_{j\ge0}y^jx^{\lfloor j/\theta\rfloor}=A(1+B).
@@ -907,6 +915,18 @@ two-prime transcendence stays beside that theorem.
 The \href{\distinctheighturl}{programs for sums over distinct values} calculate the
 interval endpoints and finite-state examples using exact arithmetic;
 the proof in Section~\ref{sec:distinct-235} derives its constants directly.
+
+The \longrecord{r3-five-maps}{companion's account of this proof} also
+compares one-jump and dyadic bounds. Its finite-state extension uses
+intervals depending on earlier blocks. The saved exact computations
+satisfy that criterion for every set of three primes at most $31$ and for
+$292$ of the $330$ four-prime sets in that range. The general criterion
+and those computations are recorded as remarks awaiting formalisation.
+For $\{2,3,5,7\}$ two admissible automaton words give the same affine map
+at every subsequent refinement, preventing that automaton from recovering
+its first block. This identity does not establish a collision between two
+words realised by the arithmetic sequence.
+
 The \longrecord{r3-source-inventory}{companion's source inventory} also
 covers the ordinary general and subseries arguments. Its historical note
 reports a second AI agent's check on 26 September 2026 and the incorporation

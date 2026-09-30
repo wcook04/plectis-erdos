@@ -55,8 +55,8 @@
 \begin{abstract}
 We give the rational estimates and geometric proof for the degree-seven
 counterexample to Erd\H{o}s Problem~1041 constructed by \texttt{ani}.
-A double-cover argument bounds Hausdorff measure of every connection
-between the two roots in its nontrivial component. For trinomials,
+A double-cover argument gives a Hausdorff-measure lower bound for every
+connected set joining the two roots in its unique two-root component. For trinomials,
 collinear roots and two sparse families we describe contained paths.
 We also retain ordinary analytic arguments for critical-value criteria,
 with their unformalised inputs identified beside the statements.
@@ -778,6 +778,10 @@ Together these estimates give
 \end{equation}
 
 \paragraph{A lower bound for the number of roots.}
+Equation~\eqref{eq:lc-radius-and-budget} already gives
+$k\ge2x/\delta(a)$: the required sum is at least $x$, and each root
+contributes at most $\delta(a)/2$. Improving this estimate requires the
+pairwise separation, not just the distance of each root from the origin.
 Testing only consecutive pairs in angular order loses essential information.
 For $k=2m$, put $m$ points at hyperbolic radius $d_{\mathrm{low}}$ and
 $m$ at radius $d_{\mathrm{low}}+D$, alternating in cyclic order. The
@@ -4066,11 +4070,13 @@ the triangle inequality. The two radial segments attain that length.  The corres
 The lower-semicontinuity argument is proved in
 \href{https://github.com/wcook04/plectis-erdos/blob/f36a98bf3d3e6f65f1074e3b800e3293d5b8a51a/ErdosProblems/Erdos1041/GenericSufficiencyClosure.md}{the compactness proof}.
 
-The displayed universal inequality is recorded to explain the earlier
-reduction, not proposed here as a remaining open assertion. A counterexample
-to the original problem would also refute this inequality and, by the same
-compactness argument, any dense-class estimate implying it. The reduction
-can still be used for separately specified polynomial classes.
+The displayed universal inequality is false in degree seven. Indeed,
+if it held throughout $\mathcal K_7$, the scaling step above would give
+a path of length less than $2$ inside the open lemniscate of the
+polynomial in Theorem~\ref{res:ani-degree-seven-counterexample-long}.
+That theorem excludes such a path. Thus no estimate on a dense class can
+imply the displayed universal inequality by this compactness argument.
+The reduction remains valid for separately specified polynomial classes.
 
 \subsection*{Unformalised remark: Blaschke products and varying degree}
 \hypertarget{blaschke-product-examples}{}
@@ -4129,10 +4135,10 @@ The obstruction to two straight segments through a critical point does
 not by itself prove or disprove this curved-arc estimate.  Examples in which another critical point gives a shorter curve do not
 prove the estimate universally. The critical value bound, containment and
 length bound must hold for the same curve. The displayed universal
-inequality is recorded as a historical sufficient condition, not proposed
-as an open assertion: a counterexample to the original question would
-refute it as well. The reduction remains useful on separately specified
-polynomial classes.
+inequality is a historical sufficient condition, not an open assertion:
+together with the stated compactness and scaling argument it would
+contradict Theorem~\ref{res:ani-degree-seven-counterexample-long}.
+The reduction remains useful on separately specified polynomial classes.
 
 \subsection*{An integral for successive merger scales}\label{subsec:merger-integral}
 \papersectiontarget{merger-integral-proof}
@@ -5081,11 +5087,12 @@ pieces. The quadratic example settles
 the uncut-orbit-space question negatively; it does not obstruct a
 construction that retains the required separate boundary copies.
 
-This record does not establish the unrestricted conclusion of
-Erd\H{o}s~\#1041.  Its sufficient conditions have different hypotheses and
-containment levels: low critical value, separated simple critical value,
-and the individually proved polynomial families are not a cover of the
-remaining class.  In particular, the scaled $(5/2)\mu^{1/n}$ bound is at
+The unrestricted assertion in Erd\H{o}s~\#1041 is false by
+Theorem~\ref{res:ani-degree-seven-counterexample-long}. The positive
+results do not give a classification of the polynomials that admit a
+short connection. Their hypotheses and containment levels differ:
+low critical value, separated simple critical value, and the individually
+proved polynomial families treat separate sufficient conditions.  In particular, the scaled $(5/2)\mu^{1/n}$ bound is at
 level $(25/13)\mu$, which is smaller than $2\mu$; it therefore improves
 both the constant and the level of the $71/10$ construction.  The latter
 is retained for its independent proof and component-sensitive estimates.

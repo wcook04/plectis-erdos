@@ -354,7 +354,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long243-res-modseven"></a>
 
-## Lemma 2.10 (the two forbidden words), page 8
+## Lemma 2.10 (the two forbidden words), page 9
 
 > *For $`Q_{12,1}`$, every sufficiently late four-index window beginning at $`n\equiv0\pmod7`$ contains an exceptional index. For $`Q_{12,-1}`$, the same holds for windows beginning at $`n\equiv1\pmod7`$. In either case, $`\underline d(S)\ge1/7`$. No phase-free four-index obstruction is asserted.*
 

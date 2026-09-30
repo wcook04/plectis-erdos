@@ -4410,10 +4410,11 @@ clearing that denominator gives an odd numerator
 
 \subsubsection{Integer recurrences and rational binary series}
 
-An integer-coefficient binary series is rational exactly when a suitable
-integer carry satisfies a subexponential growth condition relative to
-$2^N$. We include the elementary recurrence proof to fix the normalisation
-used later.
+For coefficients $0\le c(n)\le n$, rationality is equivalent to the
+existence of an integer carry with $u(N)/2^N\to0$. The recurrence alone
+is not restrictive: every integer initial value produces an integer
+sequence. The limit condition selects the initial value that represents
+the infinite sum.
 
 
 \begin{thm}[Integer recurrence criterion for a binary series]
@@ -4435,12 +4436,14 @@ Iterating the recurrence gives the finite identity
 \[
  \frac{u(N)}{2^N}=u(0)-v\sum_{n=1}^N\frac{c(n)}{2^n}.
 \]
-The boundary condition therefore forces the series to equal $u(0)/v$;
-subtracting the prefix gives $u(N)=vR^c_N$. Conversely, when the series
-is rational, choose an integer $v>0$ making its product with $v$ an
-integer, use this product as $u(0)$, and iterate the recurrence.
-The displayed identity identifies the resulting integer sequence with
-$vR^c_N$. Since $0\le R^c_N\le N+2$, its ratio to $2^N$ tends to zero.
+Taking $N\to\infty$ gives $S_c=u(0)/v$, where
+$S_c=\sum_{n\ge1}c(n)2^{-n}$. Subtracting the finite prefix then gives
+$u(N)=vR^c_N$.
+
+Conversely, suppose $S_c$ is rational. Choose an integer $v>0$ with
+$vS_c\in\Z$, set $u(0)=vS_c$, and iterate the recurrence. The terms
+are integers by construction; the displayed identity gives
+$u(N)=vR^c_N$. Finally $0\le R^c_N\le N+2$ proves the required limit.
 \end{proof}
 
 Without the boundary condition, any integer $u(0)$ gives an integer
@@ -7315,6 +7318,11 @@ constraint is not retained. The construction makes no rationality
 assertion about $F_\varphi(1/2)$.
 
 \begin{proof}
+We use signed finite-difference blocks. Their order will increase to
+preserve each fixed moment and each prescribed boundary derivative;
+their positions and amplitudes will leave room to choose the value of
+the series. All blocks are chosen beyond the prescribed prefix.
+
 The tail infimum in $g$ is positive, nondecreasing and tends to infinity.
 The cap gives $g(n)\le(n/2)^{1/4}$, while $g(n)\le f(k)$ for every
 $k\ge n$. Choose a large even $n_{-1}>K$ so that $g\ge1$ thereafter
@@ -7334,6 +7342,10 @@ For digits $d_j\in\{-A_j,\ldots,A_j\}$, form
 \[
  P_j(z)=d_jM_jz^{n_j}(1-z^{t_j})^{k_j},\qquad E(z)=\sum_{j\ge0}P_j(z).
 \]
+The factor $(1-z^{t_j})^{k_j}$ supplies cancellation of moments;
+$M_j$ supplies divisibility; and the even $n_j,t_j$ leave every odd
+coefficient unchanged. The digit $d_j$ remains free to adjust the value
+at $z=1/\beta$.
 Let $S$ consist of all $n_j+lt_j$, $0\le l\le k_j$, and let $H$ be
 the union of their full integer hulls $[n_j,n_j+W_j]$. These hulls are
 disjoint and all points of $S$ are even.
@@ -7366,10 +7378,14 @@ Bernoulli's inequality gives $3/4\le a_j\le1$. Since $M_{j+1}\ge M_j$,
  \ge3M_j\beta^{-n_j}\ge3w_j.
 \]
 The sum $T=\sum_j A_jw_j$ is positive and finite, by
-\eqref{long249:eq:signed-budget}. If $T_j=\sum_{i>j}A_iw_i$, the
-intervals $[dw_j-T_j,dw_j+T_j]$, $-A_j\le d\le A_j$, overlap and
-cover $[-A_jw_j-T_j,A_jw_j+T_j]$. Successive digit choices therefore
-represent every value in $[-T,T]$, since $T_j\to0$. This is the
+\eqref{long249:eq:signed-budget}. After choosing $d_j$, the remaining
+digits have total allowance $T_j=\sum_{i>j}A_iw_i$. Consecutive choices
+of $d_j$ change the current contribution by $w_j$, while
+$T_j\ge A_{j+1}w_{j+1}\ge3w_j$. Hence the intervals
+$[dw_j-T_j,dw_j+T_j]$, $-A_j\le d\le A_j$, overlap and cover
+$[-A_jw_j-T_j,A_jw_j+T_j]$. Successively choose a digit whose interval
+contains the remaining target. The residual tends to zero with $T_j$,
+so the digits represent every value in $[-T,T]$. This is the
 finite-choice interval principle of Crmari\'{c} and Kova\v{c}
 \cite[Lemma~4(a), Remark~5]{crmarickovac2025signed}, here verified for
 signed finite differences. It also shows $T$ can be made arbitrarily
@@ -7386,10 +7402,11 @@ and every partial block sum vanish modulo $q$. Complete blocks have
 mass zero, giving the cumulative assertion. Eventually also $q\mid t_j$
 and $k_j>d$. Each such block lies in one residue class modulo $q$ and
 its moment of degree $d$ is zero by \eqref{long249:eq:signed-difference}.
-Outside the common hull set $H$, only complete blocks have been summed,
-so the defect equals the integer contribution of finitely many early
-packets. If $q\le P$ and $d<P$, there are no exceptional early blocks.
-These cutoffs do not depend on the digits.
+A cutoff outside $H$ cannot split a block. Its moment sum therefore
+contains only complete blocks, so the defect is the integer contribution
+of the finitely many early blocks. If $q\le P$ and $d<P$, there are no
+exceptional early blocks. These cutoffs depend on the block parameters,
+not on the later choice of digits.
 
 \emph{Sparsity and blocks.} Within the $j$th block the gaps in $S$ are
 $t_j\to\infty$; between blocks they are at least
@@ -7412,8 +7429,10 @@ The hull estimate at $m=1$, followed by dyadic summation, gives ordinary
 density zero for $H$. But $W_j\to\infty$, so $H$ contains arbitrarily
 long solid intervals and its upper Banach density is one.
 
-\emph{Radial smoothness.} Fix a root $\zeta$ of order $q$, and integers
-$u,A\ge0$. Choose $B\ge u+A+2$. For all sufficiently late blocks,
+\emph{Radial smoothness.} The number of differences increases with the
+block index, so any fixed derivative order is eventually controlled.
+Fix a root $\zeta$ of order $q$, and integers $u,A\ge0$. Choose
+$B\ge u+A+2$. For all sufficiently late blocks,
 $q\mid t_j$ and $k_j\ge B$. Factor
 \[
  P_j(x\zeta)=(1-x)^B R_j(x),\qquad
@@ -7440,10 +7459,11 @@ at $\zeta$ is $\sum c_n\binom nu\zeta^n\in\Z[\zeta]$.
 Every such coefficient stabilizes after finitely many blocks. The
 first $P$ vanish at roots of order at most $P$.
 
-\emph{Entire Dirichlet continuation.} Fix $(q,c)$ and a compact set of
-complex $s$, with $\operatorname{Re}s\ge-R$. Choose an integer
-$B>R+3/2$. All sufficiently late blocks align modulo $q$ and have
-$k_j\ge B$. The derivative of $y^{-s}$ of order $B$ is
+\emph{Entire Dirichlet continuation.} Here we apply the same finite
+differences to $y^{-s}$ rather than to a polynomial. Fix $(q,c)$ and a
+compact set of complex $s$, with $\operatorname{Re}s\ge-R$. Choose an
+integer $B>R+3/2$. All sufficiently late blocks align modulo $q$ and
+have $k_j\ge B$. The derivative of $y^{-s}$ of order $B$ is
 $(-1)^B(s)(s+1)\cdots(s+B-1)y^{-s-B}$. Repeated integration expresses
 its $B$th finite difference as an integral over $[0,t_j]^B$.
 The remaining differences contribute at most $2^{k_j-B}$, so the
@@ -8038,6 +8058,12 @@ These inequalities are unproved; together they imply irrationality
 \lean{Erdos249257.\allowbreak irrational_totient_\allowbreak series_of_pivotResidualDecorrelation}{FirstHarmonicPivot.lean:577}).
 The decomposition is an exact identity
 (\lean{Erdos249257.\allowbreak TotientTailPeriodKiller.\allowbreak windowFirstExp_sum_\allowbreak eq_pivot_decomposition}{FirstHarmonicPivot.lean:514}).
+It separates two different tasks. The last two sums can be bounded by
+counting their indices, since every phase has modulus one. The first
+two retain the weight $w_N$: subtracting the group mean does not remove
+its correlation with the selected prime phase. The parameters $s,\eta$
+must be fixed before $X_0$, and the estimates must hold for the same
+$X,L$; separate successful blocks do not suffice.
 For $X\ge4$ and $s=L-h$, the single cofactor group
 $m_N=1$, not the full assigned set, consists of the indices for which
 $N+h+1$ is prime
@@ -8496,8 +8522,12 @@ carry would contradict the lower bound of Proposition~\ref{prop:rank},
 but the following rational comparison already has that lower bound.
 
 \paragraph{The comparison with value $5/4$.}
-Use a centred base-four expansion. The elementary bounds $9/8\le S\le3/2$ follow respectively from the first four terms
-and from $\ph(n)\le n-1$ for $n\ge2$. Put $x_0=5/4-S$ and, for $m\ge1$, define
+We alter only even coefficients, whose weights are
+$2^{-2m}=4^{-m}$. Thus a base-four expansion of $5/4-S$ gives the
+required correction while leaving every odd totient unchanged.
+The elementary bounds $9/8\le S\le3/2$ follow respectively from the
+first four terms and from $\ph(n)\le n-1$ for $n\ge2$.
+Put $x_0=5/4-S$ and, for $m\ge1$, define
 \[
  d_m=\left\lfloor4x_{m-1}+\frac23\right\rfloor,
  \qquad x_m=4x_{m-1}-d_m.
@@ -8523,9 +8553,11 @@ Thus $|c(n)-\ph(n)|\le2$ and
 This is the centred base-four construction in the Lean
 \href{https://github.com/wcook04/plectis-erdos-lean/blob/52f29ad173b04e3bac941b3663f2b9aebe5de0bb/ErdosProblems/Erdos249/ParityPerturbedRationalControl.lean#L379}{comparison-series theorem}.
 
-Take $v=4$ and $u_N=4\sum_{j\ge1}c(N+j)2^{-j}$. The rational sum makes
-$u_N$ integral; the coefficient bound gives $0\le u_N\le4(N+2)$.
-Since $c$ agrees with $\ph$ at every odd index, for odd $r$,
+The even coefficients have set the value of the sum. The unchanged
+odd coefficients now give the rank lower bound. Take $v=4$ and
+$u_N=4\sum_{j\ge1}c(N+j)2^{-j}$. The rational sum makes $u_N$ integral;
+the coefficient bound gives $0\le u_N\le4(N+2)$. For odd $r$, the
+carry recurrence and $c(2^jn+r)=\ph(2^jn+r)$ give
 \[
  4\ph(2^j n+r)=2u_{2^j n+r-1}-u_{2^j n+r}.
 \]
@@ -9439,7 +9471,10 @@ Thus
 \begin{equation}\label{long249:r3-tail-error}
  |2^L\Delta_h(N)-D_{h,N,L}|\le B.
 \end{equation}
-A certificate $K(h,N,L)$ therefore forces $\Delta_h(N)\notin\Z$.
+If $K(h,N,L)$ holds, the interval
+$[D_{h,N,L}-B,D_{h,N,L}+B]$ lies strictly between two consecutive
+multiples of $2^L$. It contains $2^L\Delta_h(N)$, so
+$\Delta_h(N)\notin\Z$.
 Conversely, write $\|x\|_{\R/\Z}=\min_{z\in\Z}|x-z|$ for the distance to
 the nearest integer. If $\Delta_h(N)\notin\Z$, choose $L$ so that
 $2^L\|\Delta_h(N)\|_{\R/\Z}>2B$. Such a choice exists: $h,N$ are fixed,
@@ -9466,17 +9501,27 @@ of each sufficiently late pair of successive multipliers.
 
 \begin{proof}
 Set $F_t=\Delta_{td}(N)$. Equation~\eqref{long249:r3-tail-phase} yields
-$F_{t+1}\equiv2^dF_t+F_1\pmod\Z$. If $K(td,N,td)$ fails,
+$F_{t+1}\equiv2^dF_t+F_1\pmod\Z$. This recurrence expresses the fixed
+$F_1$ in terms of two adjacent differences. A failed certificate makes
+one of those differences close to an integer: if $K(td,N,td)$ fails,
 \eqref{long249:r3-tail-error} gives
 \[
  \|F_t\|_{\R/\Z}\le\epsilon_t,
  \qquad \epsilon_t=2(N+2td+2)2^{-td}.
 \]
-Two adjacent failures would imply
-$\|F_1\|_{\R/\Z}\le2^d\epsilon_t+\epsilon_{t+1}$, impossible for all sufficiently
-large $t$ because the left side is positive and the right side tends to zero.
-Conversely, if $F_1$ is integral, then every $F_t$ is integral by the same
-recurrence, so no certificate exists. Finally, \eqref{long249:r3-tail-phase} is
+If the test also fails at $t+1$, the triangle inequality on $\R/\Z$
+and the recurrence give
+\[
+ \|F_1\|_{\R/\Z}
+ \le \|F_{t+1}\|_{\R/\Z}+2^d\|F_t\|_{\R/\Z}
+ \le\epsilon_{t+1}+2^d\epsilon_t.
+\]
+The left side is fixed and positive; the right side tends to zero.
+Thus two adjacent failures are impossible once $t$ is large enough.
+Conversely, if $F_1$ is integral, every $F_t$ is integral by the same
+recurrence, so no certificate exists.
+
+Finally, \eqref{long249:r3-tail-phase} is
 nonintegral for every $d,N$ when $S$ is irrational. If
 $S=a/(2^cv)$ with $v$ odd, take $N=c$ and $d=\ph(v)$ to make it integral.
 \end{proof}
@@ -9663,7 +9708,9 @@ nonempty finite positive weighted average of such quotients satisfies
 The uniform bound $Q-\Theta_2>1/15$ is false already at $(1,5)$.
 \end{theorem}
 \begin{proof}
-We compare finite prefixes with geometric bounds for their tails. Put
+We first bound every denominator away from zero. We then compare
+$Q(1,5)$ with the whole range $e\ge2$ using one uniform estimate,
+and with $e=1$ using a seven-term prefix. Put
 \[
  P_Y(r)=\sum_{d=1}^{Y}\frac{\mu(d)}{(2^d-1)^r},\quad
  \Theta_r=\sum_{d\ge1}\frac{\mu(d)}{(2^d-1)^r},\quad
@@ -9692,7 +9739,9 @@ $(\mu(1),\ldots,\mu(7))=(1,-1,-1,0,-1,1,-1)$ gives
 \[
  q_* = \frac{35076077250375200}{37573118933633199}.
 \]
-The same seven terms verify the following exact rational inequalities:
+The following four comparisons cover, respectively, $e\ge2$,
+$(e,Y)=(1,4)$, $(1,6)$, and $e=1,Y\ge7$. They are exact rational
+inequalities:
 \begin{align*}
  \frac{(\alpha-\varepsilon)^2}{1+\varepsilon}&>q_*,\\
  Q(1,4)=\frac{79049881}{84671559}&>q_*,\\
@@ -9706,7 +9755,9 @@ with $Z=7$ imply the last inequality is a lower bound for $Q(1,Y)$;
 its numerator lower bound is positive. The cases $Y=4,5,6$ are displayed
 explicitly. Therefore $(1,5)$ is the unique minimiser.
 
-Finally the same tail estimate at $r=2$ gives
+It remains to compare the minimum with $\Theta_2$. An upper bound
+for $\Theta_2$ proves the stated gap; a lower bound disproves the
+stronger proposed gap. The same tail estimate at $r=2$ gives
 \[
  P_6(2)-\frac1{3072}\le\Theta_2\le P_7(2)+\frac1{12288}.
 \]
@@ -9731,10 +9782,11 @@ separate arguments. For rational approximants $p_j/q_j$ in lowest terms, with $q
 \[
  0<q_j\left|\Theta_2-p_j/q_j\right|\longrightarrow0.
 \]
-Convergence alone does not give this estimate. The elementary dyadic
-prefix bounds give only $q_j|S-p_j/q_j|\le N+2$ at depth $N$, not a
-quantity tending to zero. A prescribed approximation family therefore
-needs a sharper error or reduced-denominator bound. When approximants
+The denominator sets the scale of the required error. Convergence alone
+does not control their product. For the elementary dyadic prefixes,
+the available bound is only $q_j|S-p_j/q_j|\le N+2$ at depth $N$,
+not a quantity tending to zero. A prescribed approximation family
+therefore needs a sharper error or reduced-denominator bound. When approximants
 may be chosen freely, continued-fraction convergents show that the
 criterion is equivalent to irrationality, just as
 \eqref{eq:canonical-gap} is. The theorem above excludes the displayed

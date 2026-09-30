@@ -149,7 +149,9 @@ cancellation estimates relevant to $S$. Their longer proofs are in
 \section{Proof of the basis theorem}\label{sec:rank}
 \papersectiontarget{short249-proof}
 \subsection*{Scalar reductions}
-We first apply the product formula for the totient. The multiplier
+There are two parts to the proof. The product formula reduces every
+omitted section to a retained one; independence then shows that no
+further reductions are possible. In the first part, the multiplier
 depends only on which prime divisors of $k$ divide the argument.
 For a zero residue, $kn$ and $k^jn$ have the same prime divisors when
 $n>0$. Hence
@@ -176,8 +178,10 @@ with nonzero determinant. Let
 $L_i(n)=a_i n+b_i$ for $1\le i\le s$, where $a_i>0$ and
 $a_i b_j-a_j b_i\ne0$ for $i\ne j$. A shift of $n$ makes all the
 $b_i$ positive and leaves these cross determinants unchanged.
-Write $g_i=\gcd(a_i,b_i)$ and $A_i=L_i/g_i$, so $A_i$ is primitive.
-We will choose a prime $\ell$ and points $n_1,\ldots,n_s$ for which
+Write $g_i=\gcd(a_i,b_i)$ and $A_i=L_i/g_i$. If $g_i>1$, the
+values of $L_i$ have a fixed divisor, so it is the primitive form
+$A_i$, not $L_i$, that we will make prime. We will choose a prime
+$\ell$ and points $n_1,\ldots,n_s$ for which
 \begin{equation}\label{eq:diagonal-evaluation}
  E=\bigl(\varphi(L_j(n_i))\bigr)_{1\le i,j\le s}
  \equiv
@@ -238,10 +242,11 @@ assertion is required. The construction proves
 threshold.
 
 \subsection*{The two zero-residue sections}
-It remains to separate $\varphi(n)$ and $\varphi(kn)$, whose affine
-arguments are proportional. On the progression $n=km+1$ we have
-$\varphi(kn)=\varphi(k)\varphi(n)$, so a proposed relation contains
-only one zero-residue term after this restriction.
+The affine-independence argument does not separate $\varphi(n)$ and
+$\varphi(kn)$, because their arguments are proportional. We use two
+different values of their ratio. On $n=km+1$ the ratio is
+$\varphi(k)$, so a proposed relation contains only one zero-residue
+term after this restriction.
 The positive-residue sections become the forms
 \[
  k^{j+1}m+k^j+r\quad(k\nmid r),
@@ -289,9 +294,11 @@ coefficient at $F_{1,2}$ after substitution is $x_{1,2}+4x_{2,12}$.
 Meanwhile $x_{2,12}$ is the coefficient of
 $E_{2,12}-4E_{1,2}$ in the expression for the relation, where
 $E_{j,r}$ is the generator of the free abelian group at index $(j,r)$.
-At base two and level two the corresponding relations are
-$E_{2,0}-2E_{1,0}$ and $E_{2,2}-E_{1,1}$. Applying the same
-calculation at each omitted index gives the following general statement.
+The two kinds of coefficient have different roles: the retained
+coefficients test whether the combination vanishes, while the omitted
+coefficients give its expression as a sum of relations. At base two
+and level two those relations are $E_{2,0}-2E_{1,0}$ and
+$E_{2,2}-E_{1,1}$. The same elimination works at every omitted index.
 
 \begin{corollary}[Integral coordinates and all integral relations]\label{cor:integral-normal-form}
 Let $k\ge2$ and $e\ge1$. The retained family is a $\Z$-basis of the
@@ -572,16 +579,20 @@ Since $0\le R_M\le M+2$, we have
  2^L\Delta_h(N)-D_{h,N,L}=R_{N+h+L}-R_{N+L},\qquad
  |2^L\Delta_h(N)-D_{h,N,L}|\le B.
 \end{equation}
-The difference is bounded by the larger tail bound. Hence the finite
-inequality
+The two tails are nonnegative, so their difference is bounded in
+absolute value by the larger tail bound, not the sum of the bounds.
+An integral $\Delta_h(N)$ would put $D_{h,N,L}$ within distance $B$
+of a multiple of $2^L$. Hence the finite inequality
 \begin{equation}\label{eq:r3-certificate}
  B<D_{h,N,L}\bmod2^L<2^L-B
 \end{equation}
 forces $\Delta_h(N)\notin\Z$.
-Conversely, if its distance to $\Z$ is positive, choose $L$ so that
-$2^L\|\Delta_h(N)\|_{\R/\Z}>2B$; the same error estimate gives
-\eqref{eq:r3-certificate}. Thus allowing an unrestricted depth loses
-no nonintegral difference.
+Conversely, hold $h,N$ fixed and suppose that
+$\|\Delta_h(N)\|_{\R/\Z}>0$. Choose $L$ so that
+$2^L\|\Delta_h(N)\|_{\R/\Z}>2B$: the left side grows exponentially,
+whereas $B=N+h+L+2$ grows linearly. The same error estimate gives
+\eqref{eq:r3-certificate}. This detects every nonintegral difference
+at some depth; it does not produce such a difference for each $h$.
 For example, $D_{1,12,16}=-143140$ has residue $53468$ modulo $2^{16}$,
 and $B=31$, so it excludes denominators dividing $2^{12}$.
 
@@ -597,9 +608,12 @@ Consequently
 \]
 Requiring this for every $d\ge1,N\ge0$ is equivalent to $S\notin\Q$.
 \end{theorem}
-The proof uses the recurrence
-$\Delta_{(t+1)d}(N)\equiv2^d\Delta_{td}(N)+\Delta_d(N)\pmod\Z$;
-it is given in \longrecord{long249-r3-ray}{Appendix A of the long record}.
+Here the depth is no longer free: it must equal the shift. The recurrence
+$\Delta_{(t+1)d}(N)\equiv2^d\Delta_{td}(N)+\Delta_d(N)\pmod\Z$
+prevents two consecutive large shifts from both failing the test.
+Two failures would force the fixed nonintegral $\Delta_d(N)$ arbitrarily
+close to an integer. The estimates are in
+\longrecord{long249-r3-ray}{Appendix A of the long record}.
 A single pair $d,N$ need not imply irrationality; the final assertion
 requires every positive $d$ and every $N\ge0$.
 
@@ -668,8 +682,10 @@ nonempty finite positive weighted average of such quotients satisfies
 \]
 The uniform bound $Q-\Theta_2>1/15$ is false already at $(1,5)$.
 \end{theorem}
-The \longrecord{long249-r3-rankone}{proof} bounds geometric tails
-and compares seven-term rational prefixes. The averaging assertion concerns averages of the quotients themselves.
+The \longrecord{long249-r3-rankone}{proof} first makes the denominator
+uniformly positive. A geometric bound handles all $e\ge2$; at $e=1$,
+seven-term prefixes leave only $Y=4,5,6$ to compare directly.
+The averaging assertion concerns averages of the quotients themselves.
 It leaves open signed combinations, quotients formed after combining
 the sums, and higher-rank kernels. A proposed family
 $p_j/q_j$ in lowest terms would need
@@ -728,11 +744,14 @@ We seek the four bounds
 \end{aligned}
 \end{equation}
 Before taking real parts and absolute values, the four sums add to
-$\sum E_N$, and hence their bounds imply the real-part estimate
-$9X/10$ in \eqref{eq:r3-harmonic}. We have only added and subtracted
-the group means, without any independence assumption. The resulting
-bound concerns the real part, and does not give a $21X/25$ bound
-for the absolute value of the full sum.
+$\sum E_N$, so their bounds imply the real-part estimate $9X/10$
+in \eqref{eq:r3-harmonic}. Subtracting $\bar z_m$ cancels the
+unweighted sum within its cofactor group, but the factors $w_N$ may
+vary within that group. Thus centering alone does not bound the first
+sum. The second sum must also be estimated with those same weights.
+No independence has been assumed. The conclusion concerns the real
+part; it does not give a $21X/25$ bound for the absolute value of the
+full sum.
 
 \begin{problem}[Four estimates for the first-harmonic sum]
 \label{prob:firstharmonic}
@@ -745,8 +764,10 @@ $X_0$, there are $X,L$ with
 for which those four bounds hold?
 \end{problem}
 
-All four estimates must hold on the same block with the same parameters.
-For each fixed $h,s$, take the least admissible $L$ satisfying the size
+The parameters $s$ and $\eta$ may depend on $h$, but must be fixed
+before the threshold $X_0$ is given. All four estimates must then hold
+for one common choice of $X,L$. For each fixed $h,s$, take the least
+admissible $L$ satisfying the size
 inequality in \eqref{eq:r3-harmonic} and $L\ge s+h$. The
 \longrecord{long249-r3-counts}{smooth-number and small-cofactor estimates}
 give the last two bounds for all sufficiently large $X$ when

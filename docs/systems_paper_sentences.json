@@ -6,28 +6,28 @@
     {
       "id": "257-example",
       "path": "paper/257/erdos-257-mersenne-support-subseries.tex",
-      "start_line": 267,
-      "end_line": 298,
+      "start_line": 271,
+      "end_line": 302,
       "kind": "source",
-      "sha256": "63111bbbaf6469fe8c9d142a671eb4b5ed74644144947c3d2d81f899ad2af65b",
+      "sha256": "49dde5b195930bca30b6de1b56dff407a0e70559b8495cd33fa46d74822279dc",
       "excerpt_sha256": "670a9de7ffd16c1ba2caccf5afc6bebe99ec3e1e81ee4336dc47769c8e6f4605"
     },
     {
       "id": "257-proof",
       "path": "paper/257/erdos-257-mersenne-support-subseries.tex",
       "start_line": 121,
-      "end_line": 265,
+      "end_line": 269,
       "kind": "source",
-      "sha256": "63111bbbaf6469fe8c9d142a671eb4b5ed74644144947c3d2d81f899ad2af65b",
-      "excerpt_sha256": "1082103b90649529574e74b7858e6119099a5f0faa9014cc38fe67ca9a589e77"
+      "sha256": "49dde5b195930bca30b6de1b56dff407a0e70559b8495cd33fa46d74822279dc",
+      "excerpt_sha256": "71de54a61ece9a2464875ee0b75a97d9bbce84946530ec1847080d3657b0c920"
     },
     {
       "id": "257-reciprocal",
       "path": "paper/257/erdos-257-mersenne-support-subseries.tex",
-      "start_line": 883,
-      "end_line": 910,
+      "start_line": 899,
+      "end_line": 926,
       "kind": "source",
-      "sha256": "63111bbbaf6469fe8c9d142a671eb4b5ed74644144947c3d2d81f899ad2af65b",
+      "sha256": "49dde5b195930bca30b6de1b56dff407a0e70559b8495cd33fa46d74822279dc",
       "excerpt_sha256": "07b08dc8e23653a1bea2c48b087571857616d9e98726c98f080aee58c20cd6cf"
     },
     {
@@ -36,7 +36,7 @@
       "start_line": 69,
       "end_line": 85,
       "kind": "source",
-      "sha256": "63111bbbaf6469fe8c9d142a671eb4b5ed74644144947c3d2d81f899ad2af65b",
+      "sha256": "49dde5b195930bca30b6de1b56dff407a0e70559b8495cd33fa46d74822279dc",
       "excerpt_sha256": "76093fcff9c86ff532b2182837e7c4e191e9806f477c420bc2602d706c643e17"
     },
     {
@@ -89,8 +89,8 @@
       "path": "docs/paper_lean_coverage.json",
       "start_line": 1,
       "end_line": 29162,
-      "sha256": "6c0cd17b661d927a494bb363a797549db093d8020bf9c388bec09e97d9e089cb",
-      "excerpt_sha256": "6c0cd17b661d927a494bb363a797549db093d8020bf9c388bec09e97d9e089cb",
+      "sha256": "18d2717c30eb3fc49dc6467ba197978a65534b39bb574260ce1314a7738c7e0e",
+      "excerpt_sha256": "18d2717c30eb3fc49dc6467ba197978a65534b39bb574260ce1314a7738c7e0e",
       "kind": "source"
     },
     {
@@ -99,8 +99,8 @@
       "start_line": 1,
       "end_line": 29162,
       "kind": "supplied_snapshot",
-      "sha256": "6c0cd17b661d927a494bb363a797549db093d8020bf9c388bec09e97d9e089cb",
-      "excerpt_sha256": "6c0cd17b661d927a494bb363a797549db093d8020bf9c388bec09e97d9e089cb"
+      "sha256": "18d2717c30eb3fc49dc6467ba197978a65534b39bb574260ce1314a7738c7e0e",
+      "excerpt_sha256": "18d2717c30eb3fc49dc6467ba197978a65534b39bb574260ce1314a7738c7e0e"
     },
     {
       "id": "coverage-reciprocal",
@@ -108,8 +108,8 @@
       "start_line": 1,
       "end_line": 29162,
       "kind": "supplied_snapshot",
-      "sha256": "6c0cd17b661d927a494bb363a797549db093d8020bf9c388bec09e97d9e089cb",
-      "excerpt_sha256": "6c0cd17b661d927a494bb363a797549db093d8020bf9c388bec09e97d9e089cb"
+      "sha256": "18d2717c30eb3fc49dc6467ba197978a65534b39bb574260ce1314a7738c7e0e",
+      "excerpt_sha256": "18d2717c30eb3fc49dc6467ba197978a65534b39bb574260ce1314a7738c7e0e"
     },
     {
       "id": "coverage-weighted",
@@ -117,8 +117,8 @@
       "start_line": 1,
       "end_line": 29162,
       "kind": "supplied_snapshot",
-      "sha256": "6c0cd17b661d927a494bb363a797549db093d8020bf9c388bec09e97d9e089cb",
-      "excerpt_sha256": "6c0cd17b661d927a494bb363a797549db093d8020bf9c388bec09e97d9e089cb"
+      "sha256": "18d2717c30eb3fc49dc6467ba197978a65534b39bb574260ce1314a7738c7e0e",
+      "excerpt_sha256": "18d2717c30eb3fc49dc6467ba197978a65534b39bb574260ce1314a7738c7e0e"
     },
     {
       "id": "credit",
@@ -135,8 +135,8 @@
       "start_line": 1,
       "end_line": 36178,
       "kind": "supplied_snapshot",
-      "sha256": "988342aeb63d3ac8c47193715d845fa14b879ad164b3dd74021a385890982a48",
-      "excerpt_sha256": "988342aeb63d3ac8c47193715d845fa14b879ad164b3dd74021a385890982a48"
+      "sha256": "5767c7609439c7e5a1ce5e9513561d9a71096daad8da68180732ec97f9ca43ab",
+      "excerpt_sha256": "5767c7609439c7e5a1ce5e9513561d9a71096daad8da68180732ec97f9ca43ab"
     },
     {
       "id": "essay-pages",

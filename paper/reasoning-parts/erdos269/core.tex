@@ -189,7 +189,9 @@ times as large, so
 \]
 In the block $(64,128]$, the interior jumps occur in the opposite order,
 at $81,125$. Its constant term is $1/3+1/15+1/30=13/30$.
-The order of the jumps is therefore visible in the affine recurrence.
+The two blocks have the same multiplier $30$, but different numerators,
+$9$ and $13$. To recover the order from a tail value, we must still
+separate the possible values of the block maps.
 
 In general, $(2^a,2^{a+1}]$ contains its terminal power of $2$, at most
 one power of $3$ and at most one power of $5$. Let $\tau_a$ denote the
@@ -240,8 +242,13 @@ indeed, $G_\varnothing(13/15)=14/15$ lies outside $I$.
 
 The following table gives the exact images of $I$. They
 are pairwise disjoint, with successive gaps
-$1/900,17/300,79/900,1/180$. The two smallest gaps come from
-$3(3/10)-13/15=1/30>0$.
+$1/900,17/300,79/900,1/180$. Writing $L=3/10$ and $U=13/15$, the two
+narrow gaps are
+\[
+ G_5(L)-G_{53}(U)=\frac{3L-U}{30}=\frac1{900},\qquad
+ G_\varnothing(L)-G_3(U)=\frac{3L-U}{6}=\frac1{180}.
+\]
+Both are positive because $U<3L=9/10$.
 
 \[
  \begin{array}{c|c}
@@ -614,19 +621,25 @@ For every finite set $P$ of primes with $|P|\ge2$, the sum $\mathcal D_P$
 is irrational.
 \end{remark}
 
-Rationality again confines the normalised tails to a lattice. We shall
-force two of them to be equal by arranging a long common initial word.
-Equality then requires the same integer numerator in every pair of
-corresponding rearranged blocks. The remaining task is to produce a
-block whose order changes and whose numerator changes with it.
+The proof uses discreteness twice. If the sum is rational with denominator
+$K$, its normalised tails lie in $K^{-1}\mathbb Z$. A sufficiently long
+common initial word makes two such tails differ by less than $1/K$, so
+they must be equal.
 
-For two or three primes, every changed ordering has this property.
-With four or more primes it can fail, so recovering arbitrary blocks
-would ask too much. We instead use a torus construction to isolate two
-neighbouring jumps of distinct primes and reverse their order. Other
-chains may also be rearranged; this one two-letter chain is enough to
-contradict equality of the tails. The word calculation comes first,
-followed by the construction of the two arithmetic tails.
+We then compare the words block by block. Corresponding blocks contain
+the same letters in possibly different orders, hence have the same
+denominator product. After clearing it, a difference of block numerators
+is an integer, whereas the difference of the remaining tails lies in
+$(-1,1)$. Equality therefore forces both differences to vanish, and this
+conclusion propagates through every block.
+
+It remains to construct one block with a changed numerator. For two or
+three distinct primes, changing the order always changes that numerator.
+For four or more it need not. We use a torus construction to isolate two
+neighbouring jumps and reverse their order. Other blocks may also be
+rearranged, but the equality just proved constrains every one of them;
+one changed two-letter block is enough for a contradiction. We first give
+the word calculation, then construct the two arithmetic tails.
 
 \paragraph{Words and tails.}\label{long269:sec:words}
 For an infinite word $u=u_1u_2\cdots$ over $P$, define
@@ -742,6 +755,11 @@ factorisation. In particular,
 $(\log b)\varphi_b-(\log a)\varphi_a$ is a nonzero form on $L$.
 We write it as $\theta_b-\theta_a$ when using real representatives.
 
+To interchange just two jumps, we seek a phase at which exactly those
+two crossings coincide. The next argument finds such a phase inside
+$T_0$; it does not require this orbit closure to be the whole torus
+$\mathbb T$.
+
 \begin{remark}[two walls]\label{long269:res:dp-two-walls}
 If $|P|\ge4$, there is $x\in T_0$ with $\theta_q(x)=0$ for exactly two
 primes $q\in P$.
@@ -769,19 +787,23 @@ Together these imply
 \[
  \sum_v(k_v-3)=E-3V\le0.
 \]
-The origin belongs to all $|P|\ge4$ families. If every other vertex also
-belonged to at least three, the last sum would be positive. Hence some
-vertex belongs to exactly two families, as required.
+Every vertex belongs to at least two wall families, and the last
+inequality says that the average number of families through a vertex is
+at most three. The origin belongs to all $|P|\ge4$ families. Another
+vertex must therefore belong to exactly two, as required.
 \end{proof}
 
 \paragraph{Comparison of two tails.}\label{long269:sec:tail-comparison}
 \begin{proof}[Proof of Remark~\ref{long269:res:distinct-height-all}]
 Suppose that $\mathcal D_P=N/K$, with $K\ge1$. Fix $p\in P$ and a jump
 $t_k$ which is a power of $p$. We shall compare the tails after $t_k$ and
-$t_m=t_kp^n$, choosing $n$ so that multiplication by $p^n$ moves all
-logarithmic phases very little.
+$t_m=t_kp^n$. We choose $n$ so that multiplication by $p^n$ preserves a
+long initial crossing word. A later block will be rearranged in a way
+that changes its numerator.
 
-Choose $T>0$ so that the number $\nu$ of crossings in $(0,T]$ satisfies
+For the initial word to force equality of the tails, its reciprocal
+product must be at most $1/K$. Choose $T>0$ so that the number $\nu$ of
+crossings in $(0,T]$ satisfies
 $2^\nu\ge K$, and let $g>0$ be the minimum gap between distinct crossings
 in $[0,T+1]$. Put
 $\beta=\min_{q\ne p}\operatorname{dist}(\theta_{k,q},0)>0$.
@@ -2671,10 +2693,12 @@ $G(B,a)=o(8^a)$.  The zero-bound example explains why a size comparison
 with the possible integer tail is needed in the contradiction, not why
 this particular $K$ is indispensable.
 
-The reverse implication gives more than existence: at any fixed start
-with $BX_\ell$ nonintegral, the least positive residue eventually occupies
-a fixed positive fraction of the whole modulus.  The next proposition
-states this without assuming that $S$ is irrational.
+At a fixed start, the same identity distinguishes two behaviours. If
+$BX_\ell$ is nonintegral, the least positive residue eventually occupies
+a fixed positive fraction of the modulus. If $BX_\ell$ is integral, the
+residue eventually equals the normalised tail $BX_{\ell+h}$ itself.
+The next proposition gives both conclusions without assuming that $S$
+is irrational.
 
 \begin{proposition}[the fixed-start residue limit]
 \label{long269:res:residue-limit}
@@ -3101,13 +3125,14 @@ cancellation of $D_{r,a}$.
 
 \subsection{Boundary terms in weighted finite differences}
 \label{long269:sec:boundary-difference}
-A finite difference of weighted triangle counts has contributions from
-both the common interior and the newly added strips. With coefficients
-$(1,-3,3,-1)$, an interior point of unchanged weight cancels. A point
-entering in the last three, last two or last triangle has coefficient
-$-1$, $2$ or $-1$. We separate these strip contributions from changes
-of weight at floor crossings. Absence of a floor crossing alone will
-not force the whole difference to vanish.
+Follow one lattice point through four successive triangles. If it lies
+in all four and its weight is unchanged, the coefficients $(1,-3,3,-1)$
+sum to zero. If it first enters the second triangle, its coefficient is
+$-3+3-1=-1$; entry in the third gives $3-1=2$, and entry in the fourth
+gives $-1$. Thus a finite difference depends both on which triangles
+contain the point and on changes of its weight. We separate these two
+effects below. Avoiding floor crossings controls the weights, but does
+not remove the newly added strips.
 
 Recall that
 $w_{j,k}=j\log_2 3+k\log_2 5$, $t_{j,k}=\{w_{j,k}\}$ and
@@ -3839,7 +3864,7 @@ $D_{\mathrm{sm}}=2^u3^v5^w$, $u,v,w\in\N$ and $\gcd(B,30)=1$.
 Let $(c_n)$ be an integer sequence satisfying $c_{n+1}=b_nc_n-Dm_n$
 for integer sequences $(b_n)$ and $(m_n)$.  For these general sequences,
 form $W$ and $F$ by the recursions in Section~\ref{long269:sec:escape};
-an segment satisfying the residue inequality must have $W\ne0$, and its modulus is $|W|$.
+a segment satisfying the residue inequality must have $W\ne0$, and its modulus is $|W|$.
 In the factorisation below the quotients $d_n$ are required to be integers;
 writing $c_n=D_{\mathrm{sm}}d_n$ asserts divisibility, not just an identity
 in $\mathbb Q$.

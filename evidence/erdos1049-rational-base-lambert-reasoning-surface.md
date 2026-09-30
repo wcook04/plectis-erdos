@@ -808,7 +808,7 @@ theorem geometric_universality {N : ℕ} {q : ℝ} (hq0 : 0 < q) (hq1 : q < 1)
 
 <a id="long1049-prop-rogers-factorisation"></a>
 
-## Proposition 3.7 (the moment weights as a product of two finite sums), page 29
+## Proposition 3.7 (the moment weights as a product of two finite sums), page 30
 
 > *For $`r\ge1`$ and $`k\ge0`$ set
 > ``` math
@@ -876,7 +876,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long1049-thm-sharp-fixed-base"></a>
 
-## Theorem 3.8 (the size of $`V_N^*`$ at a fixed base), page 31
+## Theorem 3.8 (the size of $`V_N^*`$ at a fixed base), page 32
 
 > *Let $`\gamma_{\!E}`$ be Euler’s constant. The product
 > ``` math
@@ -949,7 +949,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 ## Passage (beginning “long1049:thm:calibrated-model…”), page 37
 
-> *Remark 2* (calibrated rational-value Hankel model). All the weights in (24) are positive for $`0<q\le2/3`$. The two moment banks $`\mu_m`$ and $`\nu_m`$ have positive Hankel determinants of every rank, $`G_q`$ is not a rational function, and $`G_q(q)=1`$. Their formal Hankel determinants both begin with
+> *Remark 2* (calibrated rational-value Hankel model). All the weights in (25) are positive for $`0<q\le2/3`$. The two moment banks $`\mu_m`$ and $`\nu_m`$ have positive Hankel determinants of every rank, $`G_q`$ is not a rational function, and $`G_q(q)=1`$. Their formal Hankel determinants both begin with
 > ``` math
 > C_Nq^{B_N},\qquad B_N=\sum_{j<N}j^2,\quad
 >  C_N=\frac{(N!)^2(N+1)!}{2^N}\qquad(N\ge1).
@@ -965,7 +965,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long1049-thm-calibrated-denominators"></a>
 
-## Passage (beginning “long1049:thm:calibrated-denominators…”), page 38
+## Passage (beginning “long1049:thm:calibrated-denominators…”), page 39
 
 > *Remark 3* (exact denominators of the calibrated moments). Let $`q_0=2/3`$ and $`\delta_n=3^{n+1}-2^{n+1}`$. For every $`n\ge1`$, the reduced denominators are
 > ``` math
@@ -979,7 +979,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long1049-prop-calibrated-height"></a>
 
-## Passage (beginning “long1049:prop:calibrated-height…”), page 39
+## Passage (beginning “long1049:prop:calibrated-height…”), page 40
 
 > *Remark 4* (the determinant height and a failed row clearer). For $`D_N=\operatorname{den}H_N(q_0)`$ in lowest terms,
 > ``` math
@@ -1041,7 +1041,7 @@ theorem coefficientPencil_finitePencil {p : ℝ} (hp : 1 < p) :
 
 <a id="long1049-res-content"></a>
 
-## Theorem 4.1 (rescaling rows and their determinant), page 47
+## Theorem 4.1 (rescaling rows and their determinant), page 48
 
 > *Let $`S`$ be real, let $`(U_n,V_n)`$ and $`(U_m,V_m)`$ be pairs of integers, and let $`c_n,c_m`$ be integers. Then
 > ``` math
@@ -1086,7 +1086,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long1049-res-endpoints"></a>
 
-## Theorem 5.1 (endpoint residues), page 48
+## Theorem 5.1 (endpoint residues), page 49
 
 > *Let $`P=\sum_ip_iX^i\in\mathbb{Z}[X]`$ and let $`W\ge0`$. Then
 > ``` math
@@ -1121,7 +1121,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long1049-res-commonmult"></a>
 
-## Proposition 5.3 (common divisor), page 49
+## Proposition 5.3 (common divisor), page 50
 
 > *Let $`U,V\in\mathbb{Z}[X]`$ and let $`W\ge0`$. If $`U`$ has unit top endpoint, $`V`$ has unit constant endpoint, and an integer $`c`$ divides both $`H_W(U)`$ and $`H_W(V)`$, then
 > ``` math
@@ -1239,7 +1239,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long1049-res-jetkernel"></a>
 
-## Theorem 5.8 (equal residues for two subset sums), page 51
+## Theorem 5.8 (equal residues for two subset sums), page 52
 
 > *Fix a truncation index $`W`$ and depths $`R,S`$, and let $`(U_j,V_j)_{j<M}`$ be any $`M`$ pairs of integral polynomials. Represent each subset of $`\{0,\dots,M-1\}`$ by its indicator vector in $`\{0,1\}^M`$. If the $`2^M`$ subsets outnumber the possible residue vectors in
 > ``` math
@@ -1310,7 +1310,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long1049-res-boundedfibre"></a>
 
-## Theorem 5.10 (equal residues with different values), page 52
+## Theorem 5.10 (equal residues with different values), page 53
 
 > *Let $`A`$ and $`B`$ be finite sets, let $`f:A\to B`$, and let $`g:A\to C`$ be any map into a set $`C`$. Suppose every fibre of $`g`$ has at most $`k`$ elements. If
 > ``` math
@@ -1388,7 +1388,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long1049-res-plucker-collapse"></a>
 
-## Theorem 5.12 (vanishing minors and a residue count), page 53
+## Theorem 5.12 (vanishing minors and a residue count), page 54
 
 > *Let $`R_0`$ be a commutative ring and let $`w_n=(A_n,B_n)\in R_0^2`$. Suppose that each row is unimodular, meaning that $`u_nA_n+v_nB_n=1`$ for some $`u_n,v_n\in R_0`$, and that every adjacent minor vanishes:
 > ``` math
@@ -1466,7 +1466,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long1049-res-corridorbound"></a>
 
-## Theorem 6.2 (a necessary inequality for clearing), page 56
+## Theorem 6.2 (a necessary inequality for clearing), page 57
 
 > *If $`(a,b,N,K,Q,D)`$ satisfies the clearing conditions, then
 > ``` math
@@ -1496,7 +1496,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long1049-res-exp"></a>
 
-## Proposition 6.4, page 57
+## Proposition 6.4, page 58
 
 > *For every natural number $`x\ge2`$ we have $`3x<2^{\,x+1}`$.*
 
@@ -1521,7 +1521,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long1049-res-nocorridor"></a>
 
-## Theorem 6.5 (failure of the stated clearing conditions at $`3/2`$), page 57
+## Theorem 6.5 (failure of the stated clearing conditions at $`3/2`$), page 58
 
 > *For all $`N\ge1`$ and $`K\ge1`$ and all natural $`Q,D`$, the tuple $`(3,2,N,K,Q,D)`$ does not satisfy the clearing conditions.*
 
@@ -1685,7 +1685,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long1049-res-tail-lattice"></a>
 
-## Proposition 10.3 (the prefix lattice of the tails), page 66
+## Proposition 10.3 (the prefix lattice of the tails), page 67
 
 > *Every $`Q_m`$ is coprime to $`ab`$, and $`b`$ divides every $`P_m`$. For every prefix containing $`m=0`$ and $`m=1`$,
 > ``` math

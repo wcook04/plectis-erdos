@@ -260,11 +260,14 @@ Write the polynomial for $u_n$ as
 \begin{equation}\label{eq:normal-cubic}
  Q(n)=\frac m6 n(n+1)(n+2)+c.
 \end{equation}
-The third difference $m=6A/g$ is a positive integer. The constant $c$
-is also integral: choose a common denominator $H$ for the coefficients
-of $Q$. For any integer $t$, the difference $Q(t+kH)-Q(t)$ is an
-integer. Taking $k$ sufficiently large transfers integrality from the
-known tail values to $Q(t)$, and in particular to $Q(0)=c$.
+The third difference $m=6A/g$ is a positive integer. Since
+$n(n+1)(n+2)/6=\binom{n+2}{3}$ is an integer, any sufficiently late
+value $u_n=Q(n)$ gives
+\[
+ c=u_n-m\binom{n+2}{3}\in\Z.
+\]
+Thus $Q$ is integer-valued, although its coefficients need not all be
+integers.
 If a prime $\ell$ divides $c$, choose an arbitrarily late
 $n\equiv-1\pmod{6\ell}$. Both $Q(n)$ and $Q(n+1)$ would be divisible
 by $\ell$, contradicting adjacent coprimality. This also excludes $c=0$.
@@ -365,7 +368,16 @@ The square relation gives a pair of reciprocal elements:
 Put $z=\alpha+\beta$. Then $z^{-1}=\alpha-\beta$ and
 $2\alpha=z+z^{-1}$. Since $z\in K$ and $\alpha\in\Q(z)$, we have
 $\Q(z)=K$. Write the minimal polynomial of $z$ as
-$z^3+bz^2+dz+w$, where $b,d,w\in\Q$ and $w\ne0$.
+\[
+ p(T)=T^3+bT^2+dT+w,\qquad b,d,w\in\Q,\quad w\ne0.
+\]
+The minimal polynomial of $z^{-1}$ is the monic reciprocal polynomial
+\[
+ \frac{T^3p(T^{-1})}{w}
+   =T^3+\frac dwT^2+\frac bwT+\frac1w.
+\]
+These two polynomials give the traces of $z$ and $z^{-1}$ by the same
+Newton identities. All traces below are from $K$ to $\Q$.
 
 The cubic for $\alpha$ determines its first three traces:
 \[
@@ -395,7 +407,8 @@ mixed terms in $(z+z^{-1})^3$ have trace
 $3\operatorname{Tr}(z+z^{-1})=0$. These give the other two equalities
 in \eqref{eq:cubic-traces}.
 
-The middle equation factors as $(bw-1)(b+w)=0$. Write $w=r/s$ in
+Multiplying the middle equation by $w$ and bringing all terms to one
+side gives $(bw-1)(b+w)=0$. Write $w=r/s$ in
 lowest terms, with $r\ne0$, $s>0$. Substituting $b=-w$ or $b=1/w$
 into the last equation and using $\eta=6c/m$ gives respectively
 \[
@@ -854,9 +867,12 @@ from $5$ to $12$, then it first crosses $11$, but its starting point is
 $5$, not $10$. The jump is $7$, although the record increases by only
 $2$. These numbers illustrate the distinction between the two
 increments; no denominator sequence satisfying \eqref{eq:recurrences} is asserted.
-If $d_n\le B$, then
-$U_n\in[\tau-B,\tau)$, so some $m_i$ divides $U_n$. It also divides
-$L_n$, hence divides $d_n=(a_n-1)U_n-L_n$, contradicting
+If $d_n\le B$, then $U_n\in[\tau-B,\tau)$, so
+\[
+ U_n=\tau-B+i=x+kP+i\qquad\text{for some }0\le i<B.
+\]
+The choice of $x$ gives $m_i\mid U_n$. Since $m_i\mid L_n$ as well,
+we obtain $m_i\mid d_n=(a_n-1)U_n-L_n$, contradicting
 $0<d_n\le B<m_i$.
 
 It follows that every crossing has $d_n>B$. If one step first

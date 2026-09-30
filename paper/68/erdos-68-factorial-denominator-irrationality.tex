@@ -64,24 +64,24 @@ We shall instead construct linear forms $MS+k$, with $M,k\in\mathbb Z$,
 in which several initial summands cancel. A nonintegral form excludes
 every rational value $S=a/q$ for which $q\mid M$.
 
-We solve the cancellation equations by constructing an integral basis
-whose vectors isolate the weighted sums
-(Theorem~\ref{res:divisor-channel-coordinates}). We seek coefficient
-vectors supported on indices at least two. Allowing index one temporarily
-makes the basis construction triangular; setting that coefficient to
-zero then leaves a single linear Diophantine equation. Its solvability
-determines the possible values of $M$. Theorem~\ref{res:finite-channel-moment-certificate}
-shows that the gcd in this equation can be computed on a finite interval.
+We classify the integer coefficient vectors that cancel the first
+$D-1$ weighted sums. Starting with adjacent factorial differences, we
+correct each vector using those already constructed at its proper
+divisors. The resulting basis isolates each weighted sum
+(Theorem~\ref{res:divisor-channel-coordinates}). The triangular change
+of basis is invertible over $\mathbb Z$, so it gives coordinates for
+every integer solution, not just a way to construct some solutions.
 
-The starting identity is $n(n-1)!-n!=0$. The corresponding weighted
-difference vanishes unless the floor exponent changes, that is, unless
-the weight index divides $n$. Subtracting the previously constructed
-vectors for the proper divisors leaves only the weighted sum at $n$.
-All these operations are integral, and both triangular changes of basis
-have diagonal entries $1$ or $-1$. Their inverses are therefore integral
-as well, which is why the construction gives every integer solution.
+The desired vectors are supported on indices at least two. Temporarily
+allowing index one makes the basis construction possible; removing it
+then amounts to one linear Diophantine equation. Its solvability
+determines the possible values of $M$. The gcd that occurs in this
+equation is defined by an infinite sequence, but
+Theorem~\ref{res:finite-channel-moment-certificate} computes it on a
+specified finite interval.
 
-When $V_2,V_3,V_4$ vanish, the least positive value of $M$ is $1380$.
+When cancellation is imposed through $D=4$, the least positive value
+of $M$ is $1380$.
 We derive a vector attaining this value and bound its remainder between
 consecutive integers. The classification itself does not assume that
 $S$ is rational. An irrationality proof would require, for each $q>0$,
@@ -92,8 +92,10 @@ property; nonintegrality of their remainders remains unproved.
 Han\v{c}l and Tijdeman's tail-integrality lemma treats factorial series
 with integer coefficients \cite[Lemma~2.1 and the following remark,
 p.~385]{hancl-tijdeman}. Their factorial-scaled partial sums are integers.
-For the partial sums $H_m$, the identity \eqref{eq:integer-linear-form}
-below supplies the integer needed for the denominator argument. Koepf and Schmersau's factorial-digit
+Here the scaled partial sum need not be integral. Instead, the weight
+congruences give $\mathcal R-MS\in\mathbb Z$
+\eqref{eq:integer-linear-form}; the assumption $S=a/q$ and $q\mid M$
+then makes $\mathcal R$ integral. Koepf and Schmersau's factorial-digit
 criterion \cite[Example~3.2, p.~121]{koepf-schmersau} is used in the
 \href{erdos68-factorial-reasoning-surface.pdf\#r5-digits}{companion's digit argument}
 to give an equivalent eventual-pattern condition for $S-e+2$. Failure
@@ -254,7 +256,9 @@ Uniqueness of the coordinates now gives the complete solution
 \end{equation}
 with $t\in\mathbb Z$ and finitely many nonzero integers $z_n$.
 The lower coordinates are fixed by $t$; all higher coordinates remain
-free. Since $\mathcal R(e_1)=S$ and $\mathcal R(U_n)=1$, we also have
+free. These free coordinates help impose the support restriction, but
+they change the remainder only by an integer. Indeed,
+$\mathcal R(e_1)=S$ and $\mathcal R(U_n)=1$ give
 \begin{equation}
  \mathcal R\left(tK_D+\sum_{n>D}z_nU_n\right)
  =tL_D(S-H_D)+\sum_{n>D}z_n,
@@ -474,15 +478,17 @@ signed sum from the positive tail:
  A_N=\sum_{d=D+1}^N\frac{V_d(\lambda)}{d!-1},\qquad
  \mathcal R(\lambda)=A_N+M(S-H_N).
 \]
-By \eqref{eq:series-tail-bound}, $0<S-H_N<2/((N+1)!-1)$. We can prove
-nonintegrality by comparing its upper bound with the distance from $A_N$
-to the next integer:
+The remainder lies above $A_N$. To place it below the next integer,
+it is enough that the omitted tail be shorter than the gap
+$\lfloor A_N\rfloor+1-A_N$. By \eqref{eq:series-tail-bound}, a sufficient
+condition is
 \begin{equation}
  \frac{2M}{(N+1)!-1}<\lfloor A_N\rfloor+1-A_N.
  \label{eq:signed-block-gap}
 \end{equation}
-Under this inequality, $\mathcal R(\lambda)$ lies strictly between
-consecutive integers, excluding every denominator dividing $M$.
+Indeed, the positive tail and this comparison give
+$\lfloor A_N\rfloor<\mathcal R(\lambda)<\lfloor A_N\rfloor+1$,
+excluding every denominator dividing $M$.
 The argument allows either sign of $A_N$. Its strict gap is one when
 $A_N$ is integral and can be arbitrarily small when $A_N$ approaches
 an integer from below.

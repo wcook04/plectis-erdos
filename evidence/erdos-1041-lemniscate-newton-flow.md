@@ -150,7 +150,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="res-sextic-spoke"></a>
 
-## Proposition 3.2 (failure of a prescribed radial segment), page 6
+## Proposition 3.2 (failure of a prescribed radial segment), page 7
 
 > *There exist $`r\in(0,1)`$ for which every zero of
 > ``` math
@@ -333,7 +333,7 @@ def DiscSepBergmanArea : Prop :=
 
 <a id="res-critical-value-thresholds"></a>
 
-## Passage (beginning “res:critical-value-thresholds…”), page 9
+## Passage (beginning “res:critical-value-thresholds…”), page 10
 
 The Lean proof assumes the connector and area construction in the proof of Theorem 5.1; for the absorbed S>=4/3 corollary (SeparationParent), Theorem 5.1 as stated. Lean takes this input as a hypothesis (`DiscSepBergmanArea`, `CriticalValueSeparationTheorem`); it is not proved in Lean.
 

@@ -218,8 +218,10 @@ At stage $j$ we put a correction at $n_j-1$ and a variable pair at
 $n_j,n_j+1$.  We keep the pair's ordinary sum fixed.  Consequently, the residue to be
 cancelled at a later stage is independent of all earlier pair choices.
 Let $n_{-1}\ge K$, write $s_j=n_j-n_{j-1}\ge4$, and take positive
-integers $M_j$ with $M_j\mid M_{j+1}$.  We shall choose the centres and moduli below.  Put $D_j=2^{s_j}-1$.
-This choice of digit range will give the telescoping estimate below.
+integers $M_j$ with $M_j\mid M_{j+1}$.  For now let $D_j$ be a positive
+integer bounding the digit at stage $j$.  We first describe the corrections
+for these parameters, then choose them to obtain both sparsity and an
+interval of sums.
 
 Starting from $C_0=0$, define
 \[
@@ -263,11 +265,14 @@ $n_J-1$, before the cutoff.  The index $n_J$ depends on $q$ and the chosen
 moduli, but not on the digits or the value to be attained.
 
 \par\medskip\noindent\emph{Spacing and size.}
-The variable part at stage $j$ has spacing $w_j$ and maximum $D_jw_j$.
-We arrange that the later variable parts have enough total range
-to cover one spacing $w_j$.  Our choice $D_i=2^{s_i}-1$ gives
+The variable part at stage $j$ takes the values $0,w_j,\ldots,D_jw_j$.
+To fill the gaps between these choices, we need the later variable parts
+to have total range at least $w_j$.  This suggests making each later
+range a difference of successive dyadic scales.  We therefore choose
+$D_i=2^{s_i}-1$, for which
 \[
- D_iw_i=M_i\bigl(2^{-n_{i-1}-2}-2^{-n_i-2}\bigr).
+ D_iw_i=(2^{n_i-n_{i-1}}-1)M_i2^{-n_i-2}
+       =M_i\bigl(2^{-n_{i-1}-2}-2^{-n_i-2}\bigr).
 \]
 Because $M_i\ge M_j$ for $i>j$, replacing every later modulus by $M_j$
 gives the finite estimate
@@ -301,15 +306,13 @@ Choose $n_{-1}$ with $h(n_{-1})\ge32$, and set
  M_j&=k_j!,\qquad s_j=k_j+2,\qquad n_j=n_{j-1}+s_j.
  \end{split}
 \end{equation}
-Every fixed positive integer divides $k_j!$ for all sufficiently large
-$k_j$, while the separation $k_j+2$ tends to infinity with $k_j$.
-The defining inequality bounds all three corrections by $h(n_{j-1})$.
-The choice exists because
-$2!2^4=32$, is finite, and is nondecreasing with $j$.  Since
-$n_j\to\infty$ and $h(n_j)\to\infty$, we also have $k_j\to\infty$.
-Consequently the moduli are nested, every fixed $q$ divides all
-sufficiently late $M_j$, and $s_j\to\infty$.  At each supported
-coordinate $n$ of the $j$th triple,
+The maximum exists: $k=2$ is admissible because $2!2^4=32$, and
+$k!2^{k+2}$ tends to infinity.  Since $h$ is nondecreasing, so is $k_j$.
+Moreover $n_j\to\infty$, hence $h(n_j)\to\infty$ and $k_j\to\infty$.
+It follows that $M_j\mid M_{j+1}$, every fixed $q$ divides all sufficiently
+late $M_j=k_j!$, and the separations $s_j=k_j+2$ tend to infinity.
+The same choice gives the size estimate: at each supported coordinate
+$n$ of the $j$th triple,
 \[
  0\le e_n\le M_j2^{s_j}\le h(n_{j-1})\le\min(f(n),n).
 \]
@@ -341,8 +344,10 @@ Taking $J\to\infty$ in \eqref{long251:eq:finite-overlap} now gives
 \begin{equation}\label{long251:eq:sparse-overlap}
  F_{j+1}\ge M_j2^{-n_j-2}=w_j.
 \end{equation}
-For a remaining target in $[0,F_j]$, choosing digit $d$ leaves a
-remainder in $[0,F_{j+1}]$ exactly when that target belongs to
+Every variable sum from stage $j$ onwards lies in $[0,F_j]$; we must
+still show that every point of this interval is attained.  A target in
+$[0,F_j]$ leaves a remainder in $[0,F_{j+1}]$ after choosing digit $d$
+exactly when it belongs to
 \[
  [dw_j,dw_j+F_{j+1}],\qquad d=0,\ldots,D_j.
 \]
@@ -1250,8 +1255,10 @@ Appendix~\ref{long251:app:certificates} satisfy
  v+v'\ge2^{589},
 \]
 all four being integer comparisons after clearing the positive denominators.
-If $\Pi=a/b$ then $av-bu\ge1$ and $bu'-av'\ge1$, and the determinant identity
-gives
+If $\Pi=a/b$, the strict lower and upper bounds make $av-bu$ and
+$bu'-av'$ positive integers.  Each is therefore at least $1$.
+The determinant identity expresses $b$ as their positive integer
+combination of $v'$ and $v$:
 \[
  b=b(u'v-uv')=(av-bu)v'+(bu'-av')v\ge v+v' \ge 2^{589}.
 \]

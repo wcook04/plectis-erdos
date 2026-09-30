@@ -50,9 +50,11 @@ constructed by \texttt{ani}}
 A monic polynomial of degree seven can have all its zeros in the open unit
 disc while every connected subset of $\{|f|<1\}$ containing two zeros has
 Hausdorff measure greater than $2$. We give the polynomial constructed by
-\texttt{ani} and prove the estimate by confining the cut between two inverse
-sheets to a small disc. For monic trinomials whose zeros lie in the open unit disc, the root
-equation keeps every root-to-origin segment inside the lemniscate. Further remarks
+\texttt{ani}. The proof confines the slit preimage within the two-root
+component to a small disc about a critical point; radial projection on
+each of its two inverse sheets then gives the measure bound. For monic
+trinomials whose zeros lie in the open unit disc, the root equation
+keeps every root-to-origin segment inside the lemniscate. Further remarks
 record analytic short-path criteria whose formal proofs still require
 additional inputs.
 \end{abstract}
@@ -100,7 +102,10 @@ Five components of $\Omega_f$ contain one zero each, and the sixth
 contains two. Thus only the last component can contain a connected set
 joining two zeros. On this component, $f$ is a double cover of the value
 disc, and the sum of the distances from its critical point to its two
-zeros is slightly greater than $2$.
+zeros is slightly greater than $2$. Distance estimates alone do not
+show that the roots nearest to that critical point lie in a common
+component; Section~\ref{sec:critical-proximity} supplies no such
+component-selection argument.
 
 We cut the value disc from the critical value to the unit circle and
 confine the \emph{whole} preimage of the slit to a small disc about the
@@ -286,11 +291,11 @@ $|a-c|+|b-c|-2r_0$. The dotted intervals are not paths in $U$.}
 \end{figure}
 
 \subsection{The polynomial}
-The polynomial must accomplish two things at once: place its roots in
-the unit disc and arrange the critical geometry so that the distance
-surplus survives the loss in the lemma. We start near $z^7-1$, whose
-roots lie on the unit circle, and perturb its multiple critical point
-at the origin. The powers of $\varepsilon$ below are chosen so that the
+The construction must satisfy three requirements: all roots lie in the
+unit disc, the only component containing more than one root has degree
+two, and the lower bound in Lemma~\ref{lem:two-sheet-bottleneck} exceeds
+$2$ for its two roots. We start near $z^7-1$, whose roots lie on the
+unit circle, and perturb its multiple critical point at the origin. The powers of $\varepsilon$ below are chosen so that the
 linear, quadratic and cubic perturbations all have order
 $\varepsilon^7$ at $z=\varepsilon w$. Thus coefficients that are small
 at the root circle can change the geometry at the critical-point scale.
@@ -353,10 +358,12 @@ their combined effect for the chosen pair:
 \end{align}
 The subscripts $3,6$ refer to Cayley roots in the intervals
 $(43812,43813)/10^4$ and $(-4816,-4815)/10^4$.
-The last inequality gives a sum of root distances from $c_s$ greater
-than $2$, as required by the double-cover estimate. The first two give
+The Taylor estimate gives the uniform quadratic control required by
+Lemma~\ref{lem:two-sheet-bottleneck}. The first two inequalities give
 $\sqrt{\delta/M}<\rho\varepsilon/5000$, which bounds the term subtracted
-in Lemma~\ref{lem:two-sheet-bottleneck}.
+there. The last inequality supplies the sum of root distances from
+$c_s$; the final comparison below shows that its excess over $2$
+survives this subtraction.
 
 We must also place these two roots in the same component; distance
 estimates alone do not identify that pair. We join a small disc about $w_s$
@@ -443,9 +450,9 @@ $S_j=\sum_{k=0}^j a_k\zeta^k$. Abel summation gives
 \[
  f(t\zeta)=\sum_{j=0}^{n-1}(t^j-t^{j+1})S_j.
 \]
-For $t<1$, division by $1-t^n$ expresses the value as a convex
-combination of the $S_j$. In the trinomial case these are $b$ and
-$-\zeta^n$. Additional coefficients introduce further partial sums, whose
+For $0\le t<1$, the weights are nonnegative and sum to $1-t^n$.
+Thus $f(t\zeta)/(1-t^n)$ is a convex combination of the $S_j$.
+In the trinomial case these are $b$ and $-\zeta^n$. Additional coefficients introduce further partial sums, whose
 moduli need not be controlled by the root locations. The theorem controls
 segments ending at zeros; it makes no assertion that the whole
 lemniscate is star-shaped. The next polynomial shows where the
@@ -545,6 +552,10 @@ one-root Bergman estimate and the finite Blaschke product for $f/t$ give
  \lambda(d)=-\log\tanh(d/2),\quad
  \delta(a)=-\log(1-e^{-1/a}).
 \]
+The Blaschke product requires a total contribution of at least $x$,
+while each root contributes at most $\delta(a)/2$. This already gives
+$k\ge2x/\delta(a)$. The pairwise separation gives additional information,
+which the following packing estimate uses to improve this lower bound.
 The passage through a first merger, including simultaneous mergers, is
 part of the analytic input still to be formalised.
 
@@ -597,9 +608,11 @@ the expression by
 $\lambda(u)-\sum_i\sigma_i\min(w(u,r_i),w(v,r_i))$; the tail is
 bounded directly by $\lambda$. Numerical optimisation proposes the
 weights, while rational inequalities bound the whole half-line.
-The recorded comparison gives $(13/25)e^X<0.982000386<1$.
-It also gives $(529/1000)e^X<0.998996547$, so the ordinary argument
-supports that sharper threshold as well. Neither threshold is claimed
+Since $t=\mu e^x$, the contradiction $a>1$ occurs before level $1$
+provided that $\mu e^X<1$. The recorded comparison gives
+$(13/25)e^X<0.982000386<1$. It also gives
+$(529/1000)e^X<0.998996547$, so the ordinary argument supports that
+sharper threshold as well. Neither threshold is claimed
 optimal, and this arithmetic does not formalise the analytic reduction.
 
 \noindent\phantomsection\label{res:constant-factor-path}
@@ -679,7 +692,8 @@ component $U$ above $D(w_0,S)$ containing $0$ has degree two, as follows
 by exhausting with regular discs and applying Riemann--Hurwitz.
 The square root $\xi=\sqrt{1-P}$ then maps $U$ biholomorphically onto
 $V=\{\xi:|\xi^2-(1-w_0)|<S\}$, and its inverse maps $[-1,1]$ to
-the proposed connection.
+the proposed connection. Along this interval $P=1-\xi^2\in[0,1]$,
+which gives the required containment.
 
 Put $a=1-w_0$ and $p=w_0(1-w_0)$. The coordinate
 \[
@@ -691,8 +705,10 @@ $q^2=S/(S^2+p)$. The Bergman estimate is consequently
  L^2\le\frac2\pi\log\frac{S^2+S+p}{S^2-S+p}\,
                     \operatorname{Area}(U).
 \]
-For the remaining area estimate, the companion uses an exterior map
-of a regular component $W$ containing $k<n$ roots. Reflecting the
+The remaining estimate uses the fact that $U$ contains only two of the
+$n$ roots. An area bound for the whole lemniscate would lose this
+information. The companion therefore first treats a regular component
+$W$ containing $k<n$ roots, using an exterior map. Reflecting the
 $n-k$ exterior-root factors into the disc gives a Blaschke product
 $B$ with $|B(0)|=\operatorname{cap}(\overline W)^n/t$ and
 $|B'|<n$ on the boundary. Summing reciprocal derivatives over the fibre

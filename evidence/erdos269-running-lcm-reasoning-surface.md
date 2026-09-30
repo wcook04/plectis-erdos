@@ -116,7 +116,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long269-res-cell"></a>
 
-## Proposition 3.2 (constancy and jump ratios), page 6
+## Proposition 3.2 (constancy and jump ratios), page 7
 
 > *If $`x,y\ge1`$ lie in the same logarithmic cell then $`\operatorname{L}(x)=\operatorname{L}(y)`$, and the same holds for the kernel at two smooth points of one cell. If $`\lfloor\log_p y\rfloor=\lfloor\log_p x\rfloor+1`$ while the other two logarithms agree, then $`\operatorname{L}(y)=p\,\operatorname{L}(x)`$, and similarly with $`q`$ or $`r`$ in place of $`p`$.*
 
@@ -291,7 +291,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long269-res-drop"></a>
 
-## Proposition 3.6 (counting a shell by two coordinates), page 7
+## Proposition 3.6 (counting a shell by two coordinates), page 8
 
 > *<span id="long269:res:shell" label="long269:res:shell"></span> If $`\eta\le r\,\lambda`$ then $`\#\mathcal S\le(h_p+1)(h_q+1)`$, and if $`\eta\le p\,\lambda`$ then $`\#\mathcal S\le(h_q+1)(h_r+1)`$. If moreover $`\eta\le r\,\lambda`$ and $`h_p\le h_q\le h_r`$ with $`h_p+h_q+h_r=j`$, then $`9\,\#\mathcal S\le(j+3)^{2}`$.*
 
@@ -354,7 +354,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long269-res-dp-short"></a>
 
-## Passage (beginning “long269:res:dp-short…”), page 11
+## Passage (beginning “long269:res:dp-short…”), page 12
 
 > *Remark 12* (short rearrangements). The map $`f`$ is injective on the orderings of any set of at most three distinct primes.
 
@@ -362,7 +362,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long269-res-dp-two-walls"></a>
 
-## Passage (beginning “long269:res:dp-two-walls…”), page 12
+## Passage (beginning “long269:res:dp-two-walls…”), page 13
 
 > *Remark 13* (two walls). If $`|P|\ge4`$, there is $`x\in T_0`$ with $`\theta_q(x)=0`$ for exactly two primes $`q\in P`$.
 
@@ -409,7 +409,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long269-res-single-prime-identities"></a>
 
-## Passage (beginning “long269:res:single-prime-identities…”), page 19
+## Passage (beginning “long269:res:single-prime-identities…”), page 20
 
 > *Remark 17* (sub-sums and the catalogue sum). Let $`P`$ be a finite set of primes with $`|P|\ge2`$.
 >
@@ -445,7 +445,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long269-lem-clock-swaps"></a>
 
-## Passage (beginning “long269:lem:clock-swaps…”), page 22
+## Passage (beginning “long269:lem:clock-swaps…”), page 23
 
 > *Remark 20* (isolated interchanges in a clock word). Every pair of distinct clock labels satisfies the late-interchange hypothesis of Remark 6.1 for $`X_w`$.
 
@@ -453,7 +453,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long269-thm-clock-relations"></a>
 
-## Passage (beginning “long269:thm:clock-relations…”), page 23
+## Passage (beginning “long269:thm:clock-relations…”), page 24
 
 > *Remark 21* (rational relations among independent-clock channels). Under the preceding clock hypotheses, choose integers $`b_i\ge2`$, put $`Q_n=\prod_{k\le n}b_{w_k}`$ and
 > ``` math
@@ -471,7 +471,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long269-res-two-prime-rank"></a>
 
-## Proposition 7.1 (two generators separate), page 24
+## Proposition 7.1 (two generators separate), page 25
 
 > *For real $`p,q>1`$, with $`L_{p,q}(t)=p^{\lfloor\log_p t\rfloor}q^{\lfloor\log_q t\rfloor}`$ as above, and all integers $`i,j\ge0`$, the two-prime kernel $`\operatorname{K}_2(i,j)=1/L_{p,q}(p^iq^j)`$ is the outer product
 > ``` math
@@ -581,7 +581,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long269-res-finite-cut-rank"></a>
 
-## Proposition 7.4 (rank of threshold columns), page 26
+## Proposition 7.4 (rank of threshold columns), page 27
 
 > *Let $`m\ge1`$ and let $`c`$ lie in a field with $`c\ne0,1`$. For $`0\le h\le m`$, let $`v_h`$ be the length-$`m`$ column whose first $`h`$ entries are $`1`$ and whose remaining entries are $`c`$. If the distinct columns of a matrix are the $`v_h`$ with $`h`$ in a nonempty set $`E\subseteq\{0,\ldots,m\}`$, then its rank is
 > ``` math
@@ -622,7 +622,7 @@ theorem rank_cutMatrix {F : Type*} [Field F] {ι : Type*} [Fintype ι]
 
 <a id="long269-lem-staircase-smith"></a>
 
-## Passage (beginning “long269:lem:staircase-smith…”), page 27
+## Passage (beginning “long269:lem:staircase-smith…”), page 28
 
 > *Remark 26* (Smith factors of the selected staircase). The Smith factors of $`A_N(r)`$ are $`1,r-1,\ldots,r-1`$, and $`\det A_N(r)=(1-r)^{N-1}`$.
 
@@ -630,7 +630,7 @@ theorem rank_cutMatrix {F : Type*} [Field F] {ι : Type*} [Fintype ι]
 
 <a id="long269-res-uniform-rank"></a>
 
-## Theorem 7.6 (distance from matrices of finite separated rank), page 28
+## Theorem 7.6 (distance from matrices of finite separated rank), page 29
 
 > *Let $`p,q,r`$ be pairwise distinct primes and let $`C`$ be as in (11). Then
 > ``` math
@@ -851,7 +851,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long269-res-actual-dichotomy"></a>
 
-## Proposition 8.4 (integer tails or repeated separation from the integers), page 32
+## Proposition 8.4 (integer tails or repeated separation from the integers), page 33
 
 > *For every integer $`B\ge1`$, either $`BX_a\in\mathbb{Z}`$ for some $`a\ge0`$ and every later $`a`$, or for every $`a_0`$ there is $`a\ge a_0`$ with $`|BX_a-z|\ge1/31`$ for every $`z\in\mathbb{Z}`$.*
 
@@ -879,7 +879,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long269-res-actual-tail-bound"></a>
 
-## Theorem 9.1 (a quadratic upper bound), page 33
+## Theorem 9.1 (a quadratic upper bound), page 34
 
 > *For every $`a\ge0`$, $`0<X_a\le Q(n_a)`$.*
 
@@ -905,7 +905,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long269-res-all-scale-lattice"></a>
 
-## Lemma 9.2 (finite denominator clearing), page 34
+## Lemma 9.2 (finite denominator clearing), page 35
 
 > *For all integers $`0\le u\le b`$ the window mass $`h_b\sum_{a=u}^{b-1}s_a`$ is a natural number. If $`S=N/D`$ with $`N\in\mathbb{Z}`$ and $`D\in\mathbb{N}_{>0}`$, then $`DX_a\in\mathbb{Z}`$ for every $`a\ge1`$, and there are indices $`1\le i<j\le D+1`$ for which $`X_i-X_j\in\mathbb{Z}`$.*
 
@@ -986,7 +986,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long269-res-exact-denominator"></a>
 
-## Proposition 9.4 (exact denominators and minimal clearing), page 35
+## Proposition 9.4 (exact denominators and minimal clearing), page 36
 
 > *Suppose $`S=N/(MB)`$ is in lowest terms, with $`M=2^u3^v5^w`$ and $`\gcd(B,30)=1`$. For every $`a\ge1`$,
 > ``` math
@@ -1156,7 +1156,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long269-res-consumer"></a>
 
-## Proposition 10.1 (least positive residues), page 39
+## Proposition 10.1 (least positive residues), page 40
 
 > *Let $`C>0`$ and let $`c`$ be an integer with $`0<c`$ and $`|c|\le K`$. If $`c\equiv N\pmod C`$ and $`K<\operatorname{lpr}_C(N)`$, then the hypotheses are contradictory.*
 

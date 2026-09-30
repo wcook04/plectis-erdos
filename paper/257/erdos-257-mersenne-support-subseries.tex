@@ -177,7 +177,11 @@ $1,\ldots,T$ into full orbits and a remainder gives
 The sum over one orbit is
 $\sum_{t=1}^{a/g}b^{tQ\bmod a}/(b^a-1)=1/(b^g-1)$.
 The first term in~\eqref{eq:weighted-finite-orbit} accounts for complete
-orbits; the second allows one extra orbit for the remaining indices.  Also, for $Y=QT$,
+orbits; the second allows one extra orbit for the remaining indices.
+The complete-orbit bound explains the weight in the theorem: replacing
+$g$ by the $P$-part $h(a)$ gives its summand. The modulus chosen below
+will permit this replacement for $h(a)\le H$; the remaining exponents
+need a separate estimate. Also, for $Y=QT$,
 \begin{equation}\label{eq:weighted-outer-short}
  \frac1T\sum_{t=1}^T\sum_{\substack{a\in A\\a>Y}}d_a(tQ)
  \le\frac4T,
@@ -382,11 +386,18 @@ is summability of the entire sequence of costs. Section~\ref{sec:comparison}
 gives a necessary condition that applies to every possible cover.
 
 \subsection{A finite mean for shifted divisor tails}
-Raising a base-two tail to the power $\alpha$ changes its geometric
-factor to $B=2^\alpha$. Thus the proof needs a bound valid for all
-$1<B\le2$, including $B$ close to $1$. To combine this criterion with
-the weighted one later, we also need an explicit dependence on the
-modulus and freedom to choose the starting scale.
+A divisor majorant becomes a sum of geometric tails, one for each
+divisor. Indeed, the positive offsets $r$ with $d\mid N+r$ are
+$d-(N\bmod d),2d-(N\bmod d),\ldots$, so
+\[
+ \sum_{\substack{r\ge1\\d\mid N+r}}B^{-r}
+ =\frac{B^{N\bmod d}}{B^d-1}.
+\]
+Raising a base-two tail to the power $\alpha$ replaces its geometric
+factor by $B=2^\alpha$. We therefore need to estimate this expression
+for $1<B\le2$, including $B$ close to $1$. The weighted proof has already
+chosen its modulus and dyadic lengths; to use the same observations,
+the estimate must keep both choices explicit.
 
 For $1<B\le2$, positive integers $L,d,M$, and an integer $R\ge0$, put
 \[
@@ -438,7 +449,9 @@ one dyadic length, for which the geometric sum and convexity give
  \le\frac{LB^L}{d(B^L-1)}
  \le\frac{2L}{d(B-1)}.
 \]
-For the last inequality we used
+The first inequality uses the convexity of $x\mapsto B^x-1$ and its
+value $0$ at the origin to bound the ratio by $LT/d$. For the last
+inequality we used
 $(B^L-1)/(B-1)=\sum_{i=0}^{L-1}B^i\ge B^{L-1}$ and $B\le2$.
 Summing the main terms and the two error bounds proves~\eqref{eq:mixed-finite-kernel}.
 The corresponding \href{https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos257/PaperCompleteR8/DyadicKernel.lean\#L206}{source estimate} uses the same finite average.
@@ -472,7 +485,10 @@ divisibility, then use $U_j(N)$ to bound the terms from the remaining
 sets. The early tails themselves need not vanish: the displayed identity
 then gives $U_j(N)=X_{F_j}(2)$ for $j\le J$.
 
-Fix $\varepsilon>0$, set $t_j=\varepsilon2^{-j}$, and choose $J$ with
+Fix $\varepsilon>0$ and allot $t_j=\varepsilon2^{-j}$ to the $j$th tail;
+these allowances sum to $\varepsilon$. Since $U_j^{\alpha_j}\le V_j$,
+it suffices to make $t_j^{-\alpha_j}V_j<1$. This normalisation explains
+the factor $2^{j\alpha_j}$ in the cover condition. Choose $J$ with
 \[
  K_J:=\sum_{j>J}\frac{C_jt_j^{-\alpha_j}}{B_j-1}<\frac14.
 \]

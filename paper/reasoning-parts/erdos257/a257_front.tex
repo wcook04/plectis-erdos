@@ -347,8 +347,12 @@ Complete periods and at most one incomplete period therefore give
  \frac1T\sum_{t=1}^{T}d_a(tQ)
  \le \frac{g}{a(b^g-1)}+\frac1{T(b^g-1)}.
 \end{equation}
-We shall also use that $n/(b^n-1)$ decreases for positive integers $n$;
-indeed
+The complete-period term explains the weight in
+\eqref{eq:257-weighted-mass}: replacing $g$ by the $\mathcal P$-part
+$h(a)$ gives its summand. The modulus below will permit this replacement
+for $h(a)\le H$; larger prime parts require a separate estimate.
+For this comparison we use that $n/(b^n-1)$ decreases for positive
+integers $n$; indeed
 \[
  n(b^{n+1}-1)-(n+1)(b^n-1)
  =b^n\bigl(n(b-1)-1\bigr)+1>0.
@@ -599,10 +603,17 @@ novelty of this arithmetic realisation has not been assessed.
 
 \subsection{A finite estimate on common observation scales}\label{sec:257-common-kernel}
 \papersectiontarget{record257:common-kernel}
-The cover argument raises a shifted tail to a fractional power $\alpha$,
-replacing its base $2$ by $B=2^\alpha$. The following estimate therefore
-allows $1<B\le2$. It also keeps the modulus, first dyadic scale and
-number of scales separate, because the mixed theorem must use the
+A divisor majorant becomes a sum of geometric tails, one for each
+divisor. The positive offsets $r$ with $d\mid N+r$ are
+$d-(N\bmod d),2d-(N\bmod d),\ldots$, and hence
+\[
+ \sum_{\substack{r\ge1\\d\mid N+r}}B^{-r}
+ =\frac{B^{N\bmod d}}{B^d-1}.
+\]
+The cover argument raises a base-two tail to a fractional power $\alpha$,
+replacing its geometric factor by $B=2^\alpha$. The estimate must
+therefore allow $1<B\le2$. It must also keep the modulus, first dyadic
+scale and number of scales separate: the mixed theorem will use the
 windows already chosen by the weighted proof.
 
 For $1<B\le2$, positive integers $L,d,M$, and an integer $R\ge0$, put
@@ -632,11 +643,13 @@ argument $B=2^\alpha$ can approach $1$, so the factor
 $(2^\alpha-1)^{-1}$ must remain in the summability condition.
 The ratio $L/M$ measures the cost of incomplete modular periods.
 
-Fix $T=2^j$. We distinguish $d\le LT$, where a complete residue
-period occurs, from $d>2LT$, where no residue is reduced modulo $d$.
-The remaining range $LT<d\le2LT$ contains at most one dyadic length.
+Fix $T=2^j$. We compare $d$ with the largest sampled multiple $LT$.
+For $d\le LT$ we use a complete-orbit bound with a remainder term;
+for $d>2LT$ no residue is reduced modulo $d$. The intervening range
+$LT<d\le2LT$ contains at most one dyadic length.
 When $d\le LT$, the complete orbit has length $d/g$, with $g=(L,d)$,
-and total weight $1/(B^g-1)$.  Complete cycles and one remaining piece give
+and total weight $1/(B^g-1)$. Splitting the sample into complete
+cycles---possibly none---and one remaining piece gives
 \[
  \frac1T\sum_{m=1}^T w_{B,d}(Lm)
  \le\frac{g}{d(B^g-1)}+\frac1{T(B^g-1)}
@@ -660,6 +673,9 @@ For that length the geometric sum and convexity give
  \le\frac{LB^L}{d(B^L-1)}
  \le\frac{2L}{d(B-1)}.
 \]
+The first inequality follows from convexity of $x\mapsto B^x-1$,
+which vanishes at $0$: the ratio is at most $LT/d$. The last uses
+$(B^L-1)/(B-1)=\sum_{i=0}^{L-1}B^i\ge B^{L-1}$ and $B\le2$.
 Summing the main terms and the two error bounds proves~\eqref{eq:257-mixed-finite-kernel}.
 The argument displayed here is an ordinary proof; the estimate is also
 \href{https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos257/PaperCompleteR8/DyadicKernel.lean\#L206}{proved in Lean}.
@@ -739,7 +755,10 @@ $\Delta_{2,F_j}(N)$ vanish. At those indices the identity above gives
 $U_j(N)=X_{F_j}(2)$, which need not be zero. We bound only the remaining
 displacements by the corresponding tails $U_j(N)$.
 
-Fix $\varepsilon>0$, set $t_j=\varepsilon2^{-j}$, and choose $J$ with
+Fix $\varepsilon>0$ and allot $t_j=\varepsilon2^{-j}$ to the $j$th tail;
+these allowances sum to $\varepsilon$. Since $U_j^{\alpha_j}\le V_j$,
+it suffices to make $t_j^{-\alpha_j}V_j<1$. This normalisation explains
+the factor $2^{j\alpha_j}$ in the cover condition. Choose $J$ with
 \[
  K_J:=\sum_{j>J}\frac{C_jt_j^{-\alpha_j}}{B_j-1}<\frac14.
 \]
@@ -864,14 +883,9 @@ Theorem~\ref{thm:257-variable-fractional-cover}, with its hereditary
 all-base conclusion, also has a
 \href{https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos257/PaperCompleteR8/ArbitraryWeightMixedClaim.lean#L19}{kernel-checked Lean proof}.
 Theorem~\ref{thm:257-mixed-supports} alone does not exhibit a support
-outside both individual classes. The short paper supplies ordinary
-constructions of two sets with complementary properties: one satisfies the weighted
-condition at base two but has no strengthened positive cover; the
-other has such a cover but fails the weighted condition for every
-finite prime set at every integer base.  Their union
-satisfies neither individual criterion, and this theorem gives every
-infinite subset an irrational sum at every integer base.  The existence of
-the two separating sets has a
+outside both individual classes; the preceding strictness argument also
+uses the two separating constructions. Existence of two sets with those
+properties has a
 \href{https://github.com/wcook04/plectis-erdos/blob/3973d3b10bce72017b8f60093f0d6c3f4f592d80/lean/ErdosProblems/Erdos257/PaperCompleteR8/AnalyticIncomparability.lean#L53}{Lean proof}
 whose second set is formed from squarefree divisor sets with a different
 choice of parameters.  The printed fresh-prime construction and the strictness corollary
@@ -1265,14 +1279,13 @@ infinitely often in the binary expansion of $E$, and Campbell proves that it
 does~\cite[Theorem~1, p.~12]{campbell2026}.
 \end{rem}
 
-The cited digit results establish the occurrence of particular patterns.
-An irrationality-measure estimate gives a different kind of information:
-a run of $L$ equal digits after position $N$ approximates $E$ by a dyadic
-rational with denominator at most $2^N$, giving
+The digit results concern particular patterns. An irrationality-measure
+bound controls lengths: a run of $L$ equal digits after position $N$
+gives a dyadic approximation to $E$ with denominator at most $2^N$, hence
 $L<(\mu(E)-1+\varepsilon)N$ for all sufficiently large $N$.
-The reset argument considered here needs a bound for runs in its own
-inhomogeneous recurrence, not simply in the binary digits of $E$.
-No implication from the cited digit results to that bound is proved here.
+The reset argument needs a run bound for its inhomogeneous recurrence,
+not for the binary digits of $E$; no implication from the cited digit
+results to that bound is proved here.
 Such a bound is an input to this particular approach to (H), not a
 necessary ingredient of every possible proof of membership.
 
@@ -8785,8 +8798,7 @@ argument, and it does \emph{not} by itself exclude the two pinned values; an iso
 short run is untouched by this theorem.
 \end{obs}
 
-\subsection{The remaining
-\texorpdfstring{\(-2,-1\)}{negative-two, negative-one} middle-cell exclusion}
+\subsection{Three middle-cell exclusions and the right-branch bound}
 
 \begin{defn}
 The \emph{two-sided cell condition} excludes three integer values of the middle coordinate,
@@ -8797,12 +8809,27 @@ $\mathrm{overshoot}(s)\le2^s$ (\lean{SeamTwoSidedDyadicCellEscape}{HalfCylinderM
 Granted this, induction from a base case at row $5$, checked by direct computation, propagates
 $\forall s\ge5,\ \mathrm{rem}(s)\le2^s\vee\mathrm{overshoot}(s)\le2^s$
 (\lean{SeamTwoSidedDyadicCellEscape.twoSided}{HalfCylinderMiddleCarryLowerBound.lean:4448},
-given the hypothesis). One of the three cells, $-3$, is already
-closed unconditionally in the all-right-tail configuration
+given the hypothesis). The final-middle theorem excludes $-3$ at a
+middle row $D\ge13$ followed by an all-right tail
 (\lean{finalMiddleCell_neg_three_not_last}{HalfCylinderFinalMiddleCellEscape.lean:587}).
-The two remaining cells, $-2$ and $-1$, are not excluded: what would complete this route is their
-exclusion for the
-actual quotient-greedy orbit (not a hypothetical one), together with the right-pulse-leak inequality. This excludes specified integer values in one coordinate.  The
+It does not supply the $-3$ exclusion on each eligible non-carry
+middle branch required by this induction. To complete this route, the
+three exclusions must hold on those branches of the actual orbit,
+without an all-right-tail assumption, and the right-branch bound must
+hold under its own antecedents. Explicitly, at every row $s\ge5$
+where the upper carry does not occur, that is,
+$4o_s+p_s^+>2^{s+1}$, the required implications are
+\[
+ \begin{gathered}
+ 4\,\mathrm{rem}(s)+2^{s+1}-p_s^-<2^{s+2}+4
+ \quad\Longrightarrow\quad C_s\notin\{-3,-2,-1\};\\[3pt]
+ 4\,\mathrm{rem}(s)+2^{s+1}-p_s^-\ge2^{s+2}+4,\quad o_s\le2^s
+ \quad\Longrightarrow\quad 4o_s+p_s^+\le2^{s+2}.
+ \end{gathered}
+\]
+Here $C_s=4\,\mathrm{rem}(s)-p_s^- -4$, and $o_s,p_s^-,p_s^+$
+are the overshoot and correction terms of Theorem~\ref{thm:dynamics}.
+These conditions exclude specified integer values in one coordinate. The
 square-root reset condition instead bounds the magnitude of a
 different quantity by a rank-dependent threshold.  Their numerical
 widths do not order the two hypotheses, and no implication between
