@@ -502,10 +502,10 @@
       "id": "contribution-guide",
       "path": "CONTRIBUTING.md",
       "start_line": 1,
-      "end_line": 263,
+      "end_line": 264,
       "kind": "source",
-      "sha256": "38b49f80fec071362ab13bfe88e1f84b2bc03a357d453f649b8949e41f32ca1f",
-      "excerpt_sha256": "38b49f80fec071362ab13bfe88e1f84b2bc03a357d453f649b8949e41f32ca1f"
+      "sha256": "ccd19754ec63b12f4a1558f2ba10f90cc48002c6e5a896bd2b0030f239b86989",
+      "excerpt_sha256": "ccd19754ec63b12f4a1558f2ba10f90cc48002c6e5a896bd2b0030f239b86989"
     },
     {
       "id": "software-citation",
