@@ -592,9 +592,15 @@ def execute(
         temporary = tempfile.TemporaryDirectory(prefix="external-verification-replay-")
         workspace = Path(temporary.name)
     else:
-        if workspace.exists() and any(workspace.iterdir()):
-            raise ReplayError(f"workspace must be absent or empty: {workspace}")
-        workspace.mkdir(parents=True, exist_ok=True)
+        try:
+            if workspace.exists():
+                if not workspace.is_dir():
+                    raise ReplayError(f"workspace must be absent or an empty directory: {workspace}")
+                if any(workspace.iterdir()):
+                    raise ReplayError(f"workspace must be absent or empty: {workspace}")
+            workspace.mkdir(parents=True, exist_ok=True)
+        except OSError as exc:
+            raise ReplayError(f"workspace cannot be opened or created: {workspace}: {exc}") from exc
     receipt: dict[str, Any] = {
         "schema": SCHEMA,
         "result": "fail",

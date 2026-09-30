@@ -35,23 +35,41 @@ def same_tree(left: Path, right: Path) -> bool:
     if not left.is_dir() or not right.is_dir():
         return False
     comparison = filecmp.dircmp(left, right)
-    if comparison.left_only or comparison.right_only or comparison.funny_files:
+    if comparison.left_only or comparison.right_only or comparison.common_funny:
         return False
-    if comparison.diff_files:
+    # dircmp compares stat signatures by default. A copied skill can retain
+    # its timestamp and byte count after an edit, so compare instruction bytes
+    # directly; this also avoids filecmp's metadata-keyed result cache.
+    try:
+        if any(
+            (left / name).read_bytes() != (right / name).read_bytes()
+            for name in comparison.common_files
+        ):
+            return False
+    except OSError:
         return False
     return all(same_tree(left / name, right / name) for name in comparison.common_dirs)
 
 
 def target_directory(args: argparse.Namespace) -> Path:
     if args.target_dir is not None:
-        return args.target_dir.expanduser().resolve()
-    if args.target == "codex":
+        directory = args.target_dir.expanduser().resolve()
+    elif args.target == "codex":
         codex_root = Path(os.environ.get("CODEX_HOME", Path.home() / ".codex"))
-        return (codex_root / "skills").expanduser().resolve()
-    if args.target == "claude":
+        directory = (codex_root / "skills").expanduser().resolve()
+    elif args.target == "claude":
         claude_root = Path(os.environ.get("CLAUDE_CONFIG_DIR", Path.home() / ".claude"))
-        return (claude_root / "skills").expanduser().resolve()
-    raise ValueError("choose --target codex|claude or provide --target-dir")
+        directory = (claude_root / "skills").expanduser().resolve()
+    else:
+        raise ValueError("choose --target codex|claude or provide --target-dir")
+    # Preview must not call an impossible destination "missing". The nearest
+    # existing ancestor must be a directory before any skill is inspected.
+    for ancestor in (directory, *directory.parents):
+        if ancestor.exists():
+            if not ancestor.is_dir():
+                raise ValueError(f"skills destination must be a directory; {ancestor} is not a directory")
+            break
+    return directory
 
 
 def selected_skills(

@@ -63,6 +63,40 @@ def require(condition: bool, message: str) -> None:
         raise AssertionError(message)
 
 
+def check_comparator_context_scope() -> None:
+    """A selected claim must identify a broader packet's unrelated context."""
+    selected = claim("Sample.alpha", ALPHA_KEYWORD_LINE)
+    selected["declarations"] = []
+    row = {
+        "id": "selected_interface",
+        "claim_id": "sample_claim",
+        "original_declaration": "Sample.alpha",
+        "wrapper_declaration": "Challenge.alpha",
+        "boundary": "This selected interface has a restricted conclusion.",
+    }
+    register = build_register([selected], main_results=[row])
+    packet_context = "A different programme supplies the packet's headline result."
+    register["external_verification_packet"]["boundary"] = packet_context
+    for rows, expected in (([row], "bound"), ([], "not_bound")):
+        register["external_verification_packet"]["main_results"] = rows
+        report = verify_claims.follow_claim("sample_claim", register, {})
+        rendered = verify_claims.render_claim(report)
+        require(report["comparator"]["status"] == expected, "interface binding changed")
+        heading = "  packet-wide context (may concern other claims):"
+        require(heading in rendered, "selected claim did not identify packet-wide context")
+        require(rendered.index(heading) < rendered.index(packet_context),
+                "packet scope label did not precede its unrelated account")
+        require("what Comparator does and does not settle:" not in rendered,
+                "packet-wide account was still presented as the selected claim's explanation")
+        if rows:
+            require(row["boundary"] in rendered, "selected interface boundary disappeared")
+            require(rendered.index(row["boundary"]) < rendered.index(heading),
+                    "selected and packet boundaries lost their separate scopes")
+    register.pop("external_verification_packet")
+    rendered = verify_claims.render_claim(verify_claims.follow_claim("sample_claim", register, {}))
+    require("packet-wide context" not in rendered, "absent packet acquired invented context")
+
+
 def check_safe_read_boundary() -> None:
     original_root = verify_claims.REPO_ROOT
     with tempfile.TemporaryDirectory(prefix="claims-input-") as raw_workspace:
@@ -240,6 +274,51 @@ def fixture_cli(root: Path, *args: str) -> tuple[int, str]:
     ):
         code = verify_claims.main()
     return code, output.getvalue()
+
+
+def check_declaration_identity() -> None:
+    """The real claim CLI must resolve a declaration, never merely mention it."""
+    cases = (
+        ("comment", "namespace Sample\n-- theorem gone : True := by trivial\nend Sample\n", 2),
+        ("string", 'namespace Sample\ndef narration : String := "theorem gone : True := by trivial"\nend Sample\n', 2),
+        ("call site", "namespace Sample\ntheorem neighbor : True := by\n  exact gone\nend Sample\n", 3),
+        ("wrong namespace", "namespace Other\ntheorem gone : True := by trivial\nend Other\n", 2),
+        ("invented namespace", "theorem gone : True := by trivial\n", 1),
+    )
+    original_root, original_claims = verify_claims.REPO_ROOT, verify_claims.CLAIMS_PATH
+    with tempfile.TemporaryDirectory(prefix="claim-declaration-identity-") as tmp:
+        root = Path(tmp)
+        for label, source, line in cases:
+            (root / "Sample.lean").write_text(source, encoding="utf-8")
+            register = build_register([claim("Sample.gone", line)])
+            run_case(root, register)
+            code, output = fixture_cli(root, "--claim", "sample_claim", "--json")
+            result = json.loads(output)
+            require(code == 1 and not result["result"]["current_records_verified"],
+                    f"{label} was accepted as a real declaration")
+            require(result["claim"]["declarations"][0]["status"] == "declaration_missing",
+                    f"{label} failure did not name the missing declaration")
+
+        # Short aliases are allowed only when the shared resolver finds one identity.
+        (root / "Sample.lean").write_text(
+            "namespace First\ntheorem gone : True := by trivial\nend First\n"
+            "namespace Second\ntheorem gone : True := by trivial\nend Second\n",
+            encoding="utf-8",
+        )
+        require(not run_case(root, build_register([claim("gone", 2)]))["verified"],
+                "ambiguous basename was accepted as one declaration")
+
+        (root / "Sample.lean").write_text(SAMPLE_MODULE, encoding="utf-8")
+        for name, line in (("Sample.alpha", ALPHA_KEYWORD_LINE), ("Sample.beta", BETA_LINE)):
+            report = run_case(root, build_register([claim(name, line)]))
+            require(report["verified"], f"real declaration rejected: {name}")
+        wrapped = verify_claims.resolve_declaration(
+            {"name": "Sample.alpha", "module": "Sample.lean", "line": ALPHA_KEYWORD_LINE}
+        )
+        require(wrapped["resolved_line"] == ALPHA_KEYWORD_LINE
+                and "Wrapped declaration" in (wrapped["docstring"] or ""),
+                "wrapped declaration did not land at its keyword and attached explanation")
+    verify_claims.REPO_ROOT, verify_claims.CLAIMS_PATH = original_root, original_claims
 
 
 def check_history_scope_contract() -> None:
@@ -577,5 +656,7 @@ def main() -> int:
 
 
 if __name__ == "__main__":
+    check_comparator_context_scope()
     check_safe_read_boundary()
+    check_declaration_identity()
     raise SystemExit(main())

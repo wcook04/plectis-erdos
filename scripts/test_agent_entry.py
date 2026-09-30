@@ -22,6 +22,25 @@ from agent_skill_catalog import ROOT, load_catalog
 
 
 ROUTE_CASES = {
+    'Check a documentation change without installing Lean': ('repository_architecture', 'maintain-public-infrastructure'),
+    'Check this documentation patch before opening a pull request': ('repository_architecture', 'maintain-public-infrastructure'),
+    'Validate a documentation change with the existing public checks': ('repository_architecture', 'maintain-public-infrastructure'),
+    'Prove this Lean theorem before checking a documentation change': ('bounded_research', 'mine-open-problem'),
+    'Report theorem status recorded in the documentation': ('mathematical_status', 'explain-public-system'),
+    'I have cloned the repository, now install its agent skills': ('install_skills', 'install-clone-skills'),
+    'Install selected public workflows into my coding agent harness': ('install_skills', 'install-clone-skills'),
+    'Install these repository skills into a custom directory': ('install_skills', 'install-clone-skills'),
+    'Use installed agent skills to prove this Lean theorem': ('bounded_research', 'mine-open-problem'),
+    'Report theorem status using the installed skills': ('mathematical_status', 'explain-public-system'),
+    'Correct public repository security documentation and inspect GitHub community norms without changing mathematics': ('repository_architecture', 'maintain-public-infrastructure'),
+    'Audit GitHub community health and the security policy': ('repository_architecture', 'maintain-public-infrastructure'),
+    'Help me contribute a documentation correction': ('repository_architecture', 'maintain-public-infrastructure'),
+    'Correct the repository documentation before preparing a pull request': ('repository_architecture', 'maintain-public-infrastructure'),
+    'Find contribution guidelines for this release repository': ('submit_change', 'submit-pull-request'),
+    'Where is the contribution guide?': ('submit_change', 'submit-pull-request'),
+    'Prove the Lean theorem while following the contribution guide': ('bounded_research', 'mine-open-problem'),
+    'Report theorem status before reading the contribution guidelines': ('mathematical_status', 'explain-public-system'),
+    'Package a returned proof using the contribution guide': ('return_research', 'erdos-research-return'),
     "Check the prior art for the Erdos 1041 theorem": (
         "source_inspection", "explain-public-system",
     ),
@@ -46,6 +65,20 @@ ROUTE_CASES = {
     ),
     'Correct the README if it overstates a Lean-checked result': (
         'public_writing', 'public-mathematical-writing',
+    ),
+    # Content overstatement is mathematical writing; generic README repairs
+    # retain the infrastructure lane even when both use 'correct + readme'.
+    'Correct the README wording about an overstated theorem': (
+        'public_writing', 'public-mathematical-writing',
+    ),
+    'Revise the README to remove an overstatement of the checked results': (
+        'public_writing', 'public-mathematical-writing',
+    ),
+    'Correct the README installation links': (
+        'repository_architecture', 'maintain-public-infrastructure',
+    ),
+    'Correct repository documentation before submitting a finished patch': (
+        'repository_architecture', 'maintain-public-infrastructure',
     ),
     'Reproduce the #257 weighted theorem using Lean': (
         'lean_validation', 'lean-concurrent-validation',
@@ -488,6 +521,33 @@ ROUTE_CASES = {
 }
 
 
+def validate_finished_patch_routes() -> None:
+    """Separate returning finished patches from authoring changes or proofs."""
+    catalog = load_catalog()
+    cases = {
+        "send my finished tooling patch to maintainers": "submit_change",
+        "submit my finished documentation patch": "submit_change",
+        "prepare my completed tooling change for review": "submit_change",
+        "send these completed documentation patches to maintainers": "submit_change",
+        "prepare these finished commits for review": "submit_change",
+        "make a documentation correction": "repository_architecture",
+        "Check this documentation patch before opening a pull request": "repository_architecture",
+        "submit my finished proof": "return_research",
+        "send this proof patch for review": "return_research",
+        "Prove the Lean theorem while following the contribution guide": "bounded_research",
+    }
+    for task, expected in cases.items():
+        packet = entry_packet(catalog, task)
+        if packet["primary_lane"]["id"] != expected:
+            raise AssertionError((task, expected, packet["primary_lane"]))
+        if packet["task"] != task:
+            raise AssertionError("finished patch route lost the original request")
+        if expected == "submit_change":
+            for handle in ("CONTRIBUTING.md", "skills/submit-pull-request/SKILL.md"):
+                if handle not in packet["primary_lane"]["read"]:
+                    raise AssertionError((task, "missing submission handle", handle))
+
+
 def run_cli(root: Path, *args: str) -> subprocess.CompletedProcess[str]:
     return subprocess.run(
         [sys.executable, str(root / "scripts" / "agent_entry.py"), *args],
@@ -532,6 +592,7 @@ def validate_blank_selectors() -> None:
 
 
 def main() -> int:
+    validate_finished_patch_routes()
     validate_blank_selectors()
 
     # Real temporary repositories exercise clone, fork, tag, dirty-tree and

@@ -11,9 +11,13 @@ packages, and the continuous-integration configuration.
 ## Before you run anything
 
 Cloning downloads tracked files but does not run this project's Python or Lean
-code. The repository defines no submodules, Git LFS filters, or repository
-hooks. You can read the papers, claim records, open boundaries, and source
-map on GitHub or the maths site before executing a project command.
+code. The repository defines no submodules or Git LFS filters. It ships an
+opt-in pre-push validation hook in `.githooks/pre-push`. The documented command
+`python3 scripts/check_push.py --install` activates it for a worktree through
+Git's `core.hooksPath`; a normal clone does not install it. The separate
+`--install-shared` option installs a managed publication guard for the
+repository's worktrees. You can read the papers, claim records, open boundaries,
+and source map on GitHub or the maths site before executing a project command.
 
 The trust boundary changes when you run code. The read-only query commands
 execute tracked Python. A Lean build also installs or invokes the exact Lean
