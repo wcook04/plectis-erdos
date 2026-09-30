@@ -22,6 +22,34 @@ from agent_skill_catalog import ROOT, load_catalog
 
 
 ROUTE_CASES = {
+    # Ordinary requests observed during the public README/AGENTS review.
+    "Find the Lean declaration supporting the weighted Erdős 257 theorem": (
+        "source_inspection", "explain-public-system",
+    ),
+    "Check the citations and prior art for the #1041 paper": (
+        "source_inspection", "explain-public-system",
+    ),
+    "Check which aiXiv edition corresponds to this paper": (
+        "source_inspection", "explain-public-system",
+    ),
+    "Inspect the Prove2Me proof packet for #243": (
+        "source_inspection", "explain-public-system",
+    ),
+    "Compare a Formal Conjectures challenge statement with its Lean solution": (
+        "external_records", "explain-public-system",
+    ),
+    "Prepare a Palomar submission for a checked theorem": (
+        "external_records", "explain-public-system",
+    ),
+    "Validate the Lean files I changed": (
+        "lean_validation", "lean-concurrent-validation",
+    ),
+    "Add an open problem to the corpus": (
+        "add_problem", "add-open-problem",
+    ),
+    "Update a paper after landing a Lean proof": (
+        "land_lean_proof", "land-lean-proofs",
+    ),
     "test whether 189/388 is a reciprocal-Mersenne subsum with exact rational arithmetic": (
         "rational_subsum_probe", "explain-public-system",
     ),

@@ -9,6 +9,10 @@ These records have their own dates and evidence boundaries. Their presence in
 the checkout does not give every statement the status of a published claim or
 every Lean file the status of a checked proof.
 
+The original [#1041 agent instructions](Erdos1041/AGENTS.md.txt) are retained as
+an archival text file. Use the current root [AGENTS.md](../AGENTS.md) for work
+in this public checkout.
+
 | Collection | Start here | Then inspect |
 |---|---|---|
 | Erdős #1041 | [Frontier and corrections](Erdos1041/FRONTIER.md) | [Result records](Erdos1041/STRONGEST_RESULTS.json), the [file manifest](Erdos1041/CORPUS_MANIFEST.json), and the [export checkpoint](Erdos1041/PUBLIC_CORPUS_CHECKPOINT.json). |

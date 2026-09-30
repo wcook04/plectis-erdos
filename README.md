@@ -241,6 +241,7 @@ The [paper catalogue](docs/papers/README.md) links versioned aiXiv editions;
 the [verification guides](docs/verification/README.md) explain submission and
 registry records. An archived edition may differ from the current paper.
 This main checkout contains the mathematics and tools needed to work with the corpus.
+Do not infer results from private or unreleased work.
 
 ## Citation and licence
 

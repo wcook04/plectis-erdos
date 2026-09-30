@@ -16,7 +16,7 @@
   "files": [
     {
       "source_path": "source-provenance://formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/AGENTS.md",
-      "public_path": "research_corpus/Erdos1041/AGENTS.md",
+      "public_path": "research_corpus/Erdos1041/AGENTS.md.txt",
       "source_sha256": "1d4d0b0aa6b4ab1df88f6c2584efb2ce997285600451087928cfe791f150bbfd",
       "published_sha256": "165231ec8e101cdbaa287e7808f22138fef6e0fbca1ce067aae2f7b67a8e4f45",
       "relation": "source_faithful_public_sanitized_copy",
