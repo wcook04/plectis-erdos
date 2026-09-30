@@ -124,6 +124,23 @@ Expose the exact source, paper section, declaration, or contributor route
 behind each important statement so that the reader can inspect as much or as
 little of the evidence as they want.
 
+## Help a reader work through an argument
+
+Find the named statement with `python3 scripts/query_corpus.py --ask "<question>"`
+and open its paper and relevant source. Work at the depth the reader requested:
+a complete explanation, an example, feedback on an attempt, or hints. If they
+ask for hints, give one and wait for their attempt or request for more; do not
+reveal the full argument in a later paragraph. Use their stated background,
+and ask only when an unknown prerequisite would change the explanation.
+
+Identify the difficulty that makes the decisive construction useful. Keep a
+pedagogical reconstruction distinct from the recorded discovery history. When
+checking a reader's attempt, point to the first unsupported step and preserve
+what works. Do not turn a request to learn an existing argument into autonomous
+research on an open problem. The [reading guide](../../docs/READING_GUIDE.md#work-through-an-argument)
+offers a learner-facing entry. An explanation or successful navigation check
+does not demonstrate that a reader has understood the result.
+
 ## Match the reader
 
 For a lay reader, define Lean, a formal statement, a problem frontier, and a

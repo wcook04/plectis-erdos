@@ -463,6 +463,13 @@ def reanchor(root: Path, commit: str, registry: dict[str, Any]) -> Report:
                     report.moved.append(Change(anchor.label, path, recorded, span, "relocated", new[span[0] - 1]))
                     changed.add(id(row))
                     continue
+                # Coordinates already stale at base but the excerpt is there by digest: resolve from where it was.
+                base_span = relocate_by_digest(old, row) if old is not None and align is not None else None
+                if base_span is not None:
+                    if resolve_anchor(anchor, {**row, "line_start": base_span[0], "line_end": base_span[1]},
+                                      old, new, align, report):
+                        changed.add(id(row))
+                    continue
                 if prior_rows is None:
                     prior_rows = base_registry_anchors(root, commit)
                 prior = prior_rows.get(anchor.label)

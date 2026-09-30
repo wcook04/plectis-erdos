@@ -1,0 +1,20 @@
+{
+  "schema": "claim_evidence/1",
+  "rows": [
+    {
+      "paper_id": "erdos-269-three-prime-running-lcm",
+      "claim_locator": "res:distinct-height-all",
+      "statement_hash": "sha256:e09c471adb804f75fe17b3a002def996076e82574bf86ad029a8dc6ae4356d08",
+      "evidence_class": "ordinary_reviewed",
+      "lean_declaration": null,
+      "comparator_receipt": null,
+      "ordinary_proof_locator": {
+        "path": "paper/269/erdos-269-three-prime-running-lcm.tex",
+        "start_line": 267,
+        "end_line": 287,
+        "sha256": "sha256:334c4985077004bb5349b894dacfa03df9bb0bc8452b22281df80e13381d2074"
+      },
+      "status_phrase_required": "Ordinary proof in the companion record, Section~4.1. The source reports a second AI-agent check and no human review. This general statement has no Lean proof; Comparator does not apply."
+    }
+  ]
+}

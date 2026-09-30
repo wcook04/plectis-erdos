@@ -1,60 +1,16 @@
-# Formal evidence: Irrational Distinct-Height Sums\\for Finite Prime Sets
+# Formal evidence: Distinct running least common multiples
 
-This record belongs to the paper [erdos-269-three-prime-running-lcm.pdf](../paper/269/erdos-269-three-prime-running-lcm.pdf). For every result it lists the Lean declarations that state it, and the independent Comparator check where there is one. The margin marks in the paper link here.
+This record belongs to the paper [erdos-269-three-prime-running-lcm.pdf](../paper/269/erdos-269-three-prime-running-lcm.pdf). For every result it lists the Lean declarations that state it, and the recorded Comparator check where there is one. The inline links and margin marks in the paper use the same result mapping.
 
 - **Lean.** Every declaration is quoted from [plectis-erdos](https://github.com/wcook04/plectis-erdos) at commit [`436f55ebdafa`](https://github.com/wcook04/plectis-erdos/tree/436f55ebdafa67e4af0fff79f621c13f2ded12bf) and is checked there by Lean's kernel (`leanprover/lean4:v4.29.1`, Mathlib `5e932f97dd25`).
 - **Comparator.** For a compared result, each declaration was stated a second time, from Mathlib alone, as a *Challenge* in [plectis-erdos-lean](https://github.com/wcook04/plectis-erdos-lean), and a *Solution* that uses our proof was checked against it by [Comparator](https://github.com/leanprover/comparator), which also confirms that only the axioms `propext`, `Quot.sound`, `Classical.choice` are used. All checks below come from replay run [35935225572](https://github.com/wcook04/plectis-erdos-lean/actions/runs/35935225572) at corpus commit [`cc7e541cf208`](https://github.com/wcook04/plectis-erdos-lean/tree/cc7e541cf2081c6fef5a5e377d52e365e33b01eb) (tag `paper-evidence-2026-09-24`); both the default Lean kernel and the independent `nanoda` kernel accepted every entry. The replay's own report for each entry is kept in this repository and linked from each check. A Challenge shows `sorry` because it states the target without proving it.
-- **Counts.** 20 results: 13 with a Lean proof of the whole statement, 1 whose Lean proof assumes a named input (marked with a dagger), 6 without a Lean proof of the whole statement; 12 compared.
+- **Counts.** 14 results: 13 with a Lean proof of the whole statement, 1 whose Lean proof assumes a named input (marked with a dagger), 0 without a Lean proof of the whole statement; 12 compared.
 
-These checks establish that the stated propositions are proved. Whether each is the right proposition is for the reader to judge against the paper's statement, which is reproduced below.
-
-<a id="res-distinct-height-all"></a>
-
-## Theorem 2.1 (the distinct-height sums), page 3
-
-> *For every finite set $`P`$ of primes with $`|P|\ge2`$, the number $`\mathcal D_P`$ is irrational.*
-
-**No Lean proof of the whole statement.** In Lean, ordinary proof, checked step by step by a second, independent AI agent within the project on 26 September 2026, no human review; not formalised: a Lean proof would need Kronecker's theorem on the closure of a line in a torus (density of the forward orbit in the subtorus it generates) and the Euler-characteristic count for line arrangements on a two-dimensional subtorus.
-
-<a id="res-dp-integral-tails"></a>
-
-## Lemma 2.2 (integral tails), page 3
-
-> *If $`\mathcal D_P=N/K`$ with integers $`N`$ and $`K\ge1`$, then $`Kx_k`$ is an integer for every $`k\ge1`$.*
-
-**No Lean proof of the whole statement.** In Lean, ordinary proof, part of the agent-checked proof that D_P is irrational for every finite P; not formalised: the surrounding argument would need Kronecker's theorem on subtori and an Euler-characteristic count, which are not formalised here.
-
-<a id="res-dp-blocks"></a>
-
-## Lemma 2.3 (rearranged blocks), page 3
-
-> *Let $`u=\sigma_1\sigma_2\cdots`$ and $`u'=\sigma'_1\sigma'_2\cdots`$ be infinite words, where each $`\sigma_i`$ is a nonempty finite word and $`\sigma'_i`$ is a rearrangement of it, and suppose that every suffix of $`u`$ or $`u'`$ starting at a block boundary has value in $`(0,1)`$.*
->
-> 1.  *If $`V(u)=V(u')`$, then $`f(\sigma_i)=f(\sigma'_i)`$ for every $`i`$.*
->
-> 2.  *If $`\sigma_i=\sigma'_i`$ for every $`i<i_0`$, then $`|V(u)-V(u')|<1/\Pi(\sigma_1\cdots\sigma_{i_0-1})`$.*
-
-**No Lean proof of the whole statement.** In Lean, ordinary proof, part of the agent-checked proof that D_P is irrational for every finite P; not formalised: the surrounding argument would need Kronecker's theorem on subtori and an Euler-characteristic count, which are not formalised here.
-
-<a id="res-dp-short"></a>
-
-## Lemma 2.4 (short rearrangements), page 4
-
-> *The map $`f`$ is injective on the orderings of any set of at most three distinct primes.*
-
-**No Lean proof of the whole statement.** In Lean, ordinary proof, part of the agent-checked proof that D_P is irrational for every finite P; not formalised: the surrounding argument would need Kronecker's theorem on subtori and an Euler-characteristic count, which are not formalised here.
-
-<a id="res-dp-two-walls"></a>
-
-## Lemma 2.5 (two walls), page 4
-
-> *If $`|P|\ge4`$, there is $`x\in T_0`$ with $`\theta_q(x)=0`$ for exactly two primes $`q\in P`$.*
-
-**No Lean proof of the whole statement.** In Lean, ordinary proof, part of the agent-checked proof that D_P is irrational for every finite P; not formalised: the surrounding argument would need Kronecker's theorem on subtori and an Euler-characteristic count, which are not formalised here.
+These checks establish that the stated propositions are proved. Whether each is the right proposition is for the reader to judge against the paper's statement, which is reproduced below. Comparator checks separately declared statements, the axiom budget and kernel acceptance; it does not establish novelty, significance or peer review.
 
 <a id="res-distinct-height-235"></a>
 
-## Theorem 2.6 (the distinct-height sum for $`\{2,3,5\}`$), page 5
+## Theorem 1.1 (the distinct-height sum for $`\{2,3,5\}`$), page 1
 
 > *The number $`\mathcal D_{\{2,3,5\}}`$ is irrational.*
 
@@ -70,117 +26,9 @@ theorem distinctHeightSum235_irrational : Irrational distinctHeightSum235
 
 **Comparator:** not yet compared.
 
-<a id="res-infinite-rank"></a>
-
-## Theorem 3.1 (no finite separation of the kernel), page 5
-
-> *Let $`p,q,r`$ be primes with $`p\ne q`$, $`p\ne r`$ and $`q\ne r`$. For every $`n\ge0`$ there are injective maps $`I,J:\{0,\ldots,n-1\}\to\mathbb{N}`$ such that, for every $`k\ge0`$,
-> ``` math
-> \det\bigl(\operatorname{K}(I(a),J(b),k)\bigr)_{0\le a,b<n}\ne0.
-> ```
-> Consequently, for no finite $`d`$ do there exist rational-valued functions $`f_\ell(i)`$ and $`G_\ell(j,k)`$, $`0\le\ell<d`$, satisfying
-> ``` math
-> \operatorname{K}(i,j,k)=\sum_{\ell<d}f_\ell(i)G_\ell(j,k)
->  \qquad\hbox{for all }i,j,k.
-> ```*
-
-The Lean declaration below states this result or one that implies it. The Lean statement has the same hypotheses and conclusion as the printed one.
-
-[`ErdosProblems.Erdos269.PaperR7.paper_uniform_rank_and_nonseparation`](https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos269/PaperR7BasicAssembly.lean#L22)
-
-```lean
-theorem paper_uniform_rank_and_nonseparation {p q r : ℕ}
-    (hp : p.Prime) (hq : q.Prime) (hr : r.Prime)
-    (_hpq : p ≠ q) (hpr : p ≠ r) (hqr : q ≠ r) :
-    (∀ n : ℕ, ∃ I J : Fin n → ℕ,
-      Function.Injective I ∧ Function.Injective J ∧
-      ∀ k : ℕ, (Matrix.det fun a b : Fin n =>
-        threePrimeKernelQ p q r (I a) (J b) k) ≠ 0) ∧
-    (∀ d : ℕ, ¬ ∃ (f : Fin d → ℕ → ℚ) (G : Fin d → ℕ → ℕ → ℚ),
-      ∀ i j k, threePrimeKernelQ p q r i j k = ∑ l : Fin d, f l i * G l j k)
-```
-
-<a id="res-infinite-rank-comparator"></a>
-
-**Comparator: passed** (run 35935225572, corpus commit `cc7e541cf208`).
-
-For each Lean declaration: the Challenge (the target, stated from Mathlib alone), the Solution (our proof) and the replay report.
-
-- `paper_uniform_rank_and_nonseparation`: [Challenge](https://github.com/wcook04/plectis-erdos-lean/blob/cc7e541cf2081c6fef5a5e377d52e365e33b01eb/PalomarCorpus/E269_02/Challenge.lean#L85) (E269_02, line 85), [Solution](https://github.com/wcook04/plectis-erdos-lean/blob/cc7e541cf2081c6fef5a5e377d52e365e33b01eb/Solutions/PalomarCorpus/E269_02/PaperStatementsA.lean#L252) (PaperStatementsA.lean, line 252), [replay report](../evidence/comparator/replay-35935225572/receipt-E269_02.json) (E269_02)
-
-Each Challenge states the same proposition as the Lean declaration it targets, with every definition it uses restated from Mathlib alone.
-
-<a id="res-admissible-modular-minors"></a>
-
-## Corollary 3.2 (the same minors modulo integers coprime to $`30`$), page 6
-
-> *For $`(p,q,r)=(2,3,5)`$ and every $`n\ge1`$, there are injective maps $`I,J:\{0,\ldots,n-1\}\to\mathbb{N}`$, chosen independently of $`B`$ and $`k`$, such that for every $`B\ge2`$ coprime to $`30`$ and every $`k\ge0`$, the selected $`n\times n`$ kernel matrix has unit determinant over $`\mathbb Z/B\mathbb Z`$, with each reciprocal prime power interpreted by its modular inverse.*
-
-The Lean declaration below states this result or one that implies it. The Lean statement holds for every $n\ge0$ and, for the same $I,J$, also gives nonzero rational determinants at every $k$ and an invertible kernel matrix modulo $B$; its unit-determinant clause for $n\ge1$ is the printed statement.
-
-[`ErdosProblems.Erdos269.PaperR7.admissible_modular_minors`](https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos269/PaperR7ModularMinors.lean#L133)
-
-```lean
-theorem admissible_modular_minors (n : ℕ) :
-    ∃ I J : Fin n → ℕ, Function.Injective I ∧ Function.Injective J ∧
-      (∀ k : ℕ,
-        (Matrix.det fun i j : Fin n => threePrimeKernelQ 2 3 5 (I i) (J j) k) ≠ 0) ∧
-      (∀ B : ℕ, 2 ≤ B → Nat.Coprime B 30 → ∀ k : ℕ,
-        IsUnit (Matrix.det fun i j : Fin n => kernelMod235 B (I i) (J j) k) ∧
-        IsUnit (Matrix.of fun i j : Fin n => kernelMod235 B (I i) (J j) k))
-```
-
-<a id="res-admissible-modular-minors-comparator"></a>
-
-**Comparator: passed** (run 35935225572, corpus commit `cc7e541cf208`).
-
-For each Lean declaration: the Challenge (the target, stated from Mathlib alone), the Solution (our proof) and the replay report.
-
-- `admissible_modular_minors`: [Challenge](https://github.com/wcook04/plectis-erdos-lean/blob/cc7e541cf2081c6fef5a5e377d52e365e33b01eb/PalomarCorpus/E269_08/Challenge.lean#L103) (E269_08, line 103), [Solution](https://github.com/wcook04/plectis-erdos-lean/blob/cc7e541cf2081c6fef5a5e377d52e365e33b01eb/Solutions/PalomarCorpus/E269_08/PaperStatementsA.lean#L238) (PaperStatementsA.lean, line 238), [replay report](../evidence/comparator/replay-35935225572/receipt-E269_08.json) (E269_08)
-
-Each Challenge states the same proposition as the Lean declaration it targets, with every definition it uses restated from Mathlib alone.
-
-<a id="res-finite-cut-rank"></a>
-
-## Proposition 3.4 (rank of a matrix of threshold columns), page 7
-
-> *Let $`m\ge1`$ and let $`c`$ lie in a field with $`c\ne 0,1`$. For $`0\le k\le m`$ write $`v_k`$ for the length-$`m`$ column with a $`1`$ in each of the first $`k`$ coordinates and $`c`$ thereafter. A matrix whose distinct columns are $`v_k`$ for $`k`$ in a nonempty set $`E`$ has rank $`|E|-\mathbf 1_{\{0,m\}\subseteq E}`$.*
-
-The Lean declaration below states this result or one that implies it. The Lean statement drops the hypothesis that $E$ is nonempty; for nonempty $E\subseteq\{0,\ldots,m\}$ and any finite matrix whose set of columns is $\{v_k:k\in E\}$ it gives the printed rank $|E|-\mathbf 1_{\{0,m\}\subseteq E}$.
-
-[`ErdosProblems.Erdos269.PaperR7.rank_cutMatrix`](https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos269/PaperR7FiniteCutRank.lean#L182)
-
-```lean
-theorem rank_cutMatrix {ι : Type*} [Fintype ι]
-    (c : F) (hc0 : c ≠ 0) (hc1 : c ≠ 1) {m : ℕ} (hm : 0 < m)
-    (E : Finset ℕ) (hbound : ∀ k ∈ E, k ≤ m)
-    (A : Matrix (Fin m) ι F)
-    (hcols : Set.range A.col = Set.range (fun k : E => cutVector c m k)) :
-    A.rank = E.card - if 0 ∈ E ∧ m ∈ E then 1 else 0
-```
-
-<a id="res-finite-cut-rank-comparator"></a>
-
-**Comparator: passed** (run 35935225572, corpus commit `cc7e541cf208`).
-
-For each Lean declaration: the Challenge (the target, stated from Mathlib alone), the Solution (our proof) and the replay report.
-
-- `rank_cutMatrix`: [Challenge](https://github.com/wcook04/plectis-erdos-lean/blob/cc7e541cf2081c6fef5a5e377d52e365e33b01eb/PalomarCorpus/E269_02/Challenge.lean#L146) (E269_02, line 146), [Solution](https://github.com/wcook04/plectis-erdos-lean/blob/cc7e541cf2081c6fef5a5e377d52e365e33b01eb/Solutions/PalomarCorpus/E269_02/PaperStructuresH.lean#L18) (PaperStructuresH.lean, line 18), [replay report](../evidence/comparator/replay-35935225572/receipt-E269_02.json) (E269_02)
-
-Challenge for `rank_cutMatrix`:
-
-```lean
-theorem rank_cutMatrix {F : Type*} [Field F] {ι : Type*} [Fintype ι]
-    (c : F) (hc0 : c ≠ 0) (hc1 : c ≠ 1) {m : ℕ} (hm : 0 < m)
-    (E : Finset ℕ) (hbound : ∀ k ∈ E, k ≤ m)
-    (A : Matrix (Fin m) ι F)
-    (hcols : Set.range A.col = Set.range (fun k : E => cutVector c m k)) :
-    A.rank = E.card - if 0 ∈ E ∧ m ∈ E then 1 else 0 := by sorry
-```
-
 <a id="res-two-prime-transcendence"></a>
 
-## Theorem 4.1 (both two-prime sums), page 8
+## Theorem 5.1 (both two-prime sums), page 9
 
 > *<span id="res:two-prime-repeated-transcendence" label="res:two-prime-repeated-transcendence"></span> Let $`p<q`$ be distinct primes. Put $`\theta=\log p/\log q`$ and $`A=\sum_{n\ge0}p^{-n}q^{-\lfloor n\theta\rfloor}`$. Let $`\mathcal R_{p,q}`$ sum the reciprocal running LCM at every positive $`\{p,q\}`$-smooth integer, and let $`\mathcal D_{p,q}`$ count each distinct running LCM once. Then
 > ``` math
@@ -318,7 +166,7 @@ def BugeaudLaurentTranscendence : Prop :=
 
 <a id="res-lcm"></a>
 
-## Proposition 5.1 (the running least common multiple), page 9
+## Proposition A.1 (the running least common multiple), page 10
 
 > *Let $`p,q,r`$ be pairwise distinct primes and $`x\ge1`$. Then the running LCM equals the three-prime height: $`\operatorname{L}(x)=\operatorname{H}(x)`$.*
 
@@ -346,7 +194,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="res-cell"></a>
 
-## Proposition 5.2 (cells and jumps), page 9
+## Proposition A.2 (cells and jumps), page 10
 
 > *The running LCM is constant when the three integer logarithms are constant. A jump in exactly one logarithm multiplies it by the corresponding prime. The first $`n`$ positive powers of each prime, together with $`1`$, form $`3n+1`$ distinct points.*
 
@@ -428,7 +276,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="res-fibre-prop"></a>
 
-## Proposition 5.3 (grouping terms with the same height), page 9
+## Proposition A.3 (grouping terms with the same height), page 10
 
 > *For a finite exponent box $`\mathcal B`$, set $`F(H)=\{(i,j,k)\in\mathcal B:\operatorname{H}(p^iq^jr^k)=H\}`$. Then
 > ``` math
@@ -463,7 +311,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="res-dyadic-alphabet"></a>
 
-## Lemma 5.4 (integer coefficients and four possible bases), page 9
+## Lemma 3.1 (integer coefficients and four possible bases), page 6
 
 > *For every $`a\ge0`$, $`m_a`$ is a positive integer and $`b_a\in\{2,6,10,30\}`$. The word “numerator” does not impose the positional-digit restriction $`m_a<b_a`$; that restriction need not hold.*
 
@@ -493,7 +341,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="res-actual-orbit"></a>
 
-## Proposition 5.5 (the tail recurrence and a quadratic bound), page 10
+## Proposition 3.2 (the tail recurrence and a quadratic bound), page 6
 
 > *The series defining $`S,T_a`$ converge. For every $`a\ge0`$,
 > ``` math
@@ -537,7 +385,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="res-denominator-reduction"></a>
 
-## Theorem 5.6 (rationality gives positive integer tails), page 10
+## Theorem 3.3 (rationality gives positive integer tails), page 6
 
 > *If $`S=A/D`$ in lowest terms, where $`D=2^u3^v5^wB`$ and $`\gcd(B,30)=1`$, then for every $`a\ge a_0=u+1+2v+3w`$,
 > ``` math
@@ -574,7 +422,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="res-exact-onset"></a>
 
-## Corollary 5.7 (the first index at which the denominator clears), page 11
+## Corollary 3.4 (the first index at which the denominator clears), page 7
 
 > *Under the same lowest-terms hypothesis, put $`M=2^u3^v5^w`$ and let $`\operatorname{den}`$ denote the positive reduced denominator. For $`a\ge1`$,
 > ``` math
@@ -639,17 +487,9 @@ For each Lean declaration: the Challenge (the target, stated from Mathlib alone)
 
 Each Challenge states the same proposition as the Lean declaration it targets, with every definition it uses restated from Mathlib alone.
 
-<a id="res-single-prime-subsums"></a>
-
-## Theorem 5.8 (the single-prime sub-sums), page 11
-
-> *For every finite set $`P`$ of primes with $`|P|\ge2`$ and every $`p\in P`$, the number $`E_p`$ is irrational.*
-
-**No Lean proof of the whole statement.** In Lean, ordinary proof, checked step by step by a second, independent AI agent within the project on 26 September 2026, no human review; not formalised: a Lean proof would need Kronecker's theorem on the closure of a line in a torus and the density of its forward orbit.
-
 <a id="res-consumer"></a>
 
-## Lemma 6.1 (least positive residues), page 12
+## Lemma 4.1 (least positive residues), page 8
 
 > *If $`d`$ is a positive integer with $`d\le K`$ and $`d\equiv -BF\pmod W`$, where $`W\ge1`$, then $`\operatorname{lpr}_W(-BF)\le K`$.*
 
@@ -676,7 +516,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="res-windowconsumer"></a>
 
-## Theorem 6.2 (a residue criterion for irrationality), page 12
+## Theorem 4.2 (a residue criterion for irrationality), page 8
 
 > *The number $`S`$ is irrational if and only if
 > ``` math
@@ -709,3 +549,111 @@ For each Lean declaration: the Challenge (the target, stated from Mathlib alone)
 - `short_window_equivalence`: [Challenge](https://github.com/wcook04/plectis-erdos-lean/blob/cc7e541cf2081c6fef5a5e377d52e365e33b01eb/PalomarCorpus/E269_08/Challenge.lean#L217) (E269_08, line 217), [Solution](https://github.com/wcook04/plectis-erdos-lean/blob/cc7e541cf2081c6fef5a5e377d52e365e33b01eb/Solutions/PalomarCorpus/E269_08/PaperStatementsG.lean#L134) (PaperStatementsG.lean, line 134), [replay report](../evidence/comparator/replay-35935225572/receipt-E269_08.json) (E269_08)
 
 Each Challenge states the same proposition as the Lean declaration it targets, with every definition it uses restated from Mathlib alone.
+
+<a id="res-infinite-rank"></a>
+
+## Theorem B.2 (no finite separation of the kernel), page 11
+
+> *Let $`p,q,r`$ be primes with $`p\ne q`$, $`p\ne r`$ and $`q\ne r`$. For every $`n\ge0`$ there are injective maps $`I,J:\{0,\ldots,n-1\}\to\mathbb{N}`$ such that, for every $`k\ge0`$,
+> ``` math
+> \det\bigl(\operatorname{K}(I(a),J(b),k)\bigr)_{0\le a,b<n}\ne0.
+> ```
+> Consequently, for no finite $`d`$ do there exist rational-valued functions $`f_\ell(i)`$ and $`G_\ell(j,k)`$, $`0\le\ell<d`$, satisfying
+> ``` math
+> \operatorname{K}(i,j,k)=\sum_{\ell<d}f_\ell(i)G_\ell(j,k)
+>  \qquad\hbox{for all }i,j,k.
+> ```*
+
+The Lean declaration below states this result or one that implies it. The Lean statement has the same hypotheses and conclusion as the printed one.
+
+[`ErdosProblems.Erdos269.PaperR7.paper_uniform_rank_and_nonseparation`](https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos269/PaperR7BasicAssembly.lean#L22)
+
+```lean
+theorem paper_uniform_rank_and_nonseparation {p q r : ℕ}
+    (hp : p.Prime) (hq : q.Prime) (hr : r.Prime)
+    (_hpq : p ≠ q) (hpr : p ≠ r) (hqr : q ≠ r) :
+    (∀ n : ℕ, ∃ I J : Fin n → ℕ,
+      Function.Injective I ∧ Function.Injective J ∧
+      ∀ k : ℕ, (Matrix.det fun a b : Fin n =>
+        threePrimeKernelQ p q r (I a) (J b) k) ≠ 0) ∧
+    (∀ d : ℕ, ¬ ∃ (f : Fin d → ℕ → ℚ) (G : Fin d → ℕ → ℕ → ℚ),
+      ∀ i j k, threePrimeKernelQ p q r i j k = ∑ l : Fin d, f l i * G l j k)
+```
+
+<a id="res-infinite-rank-comparator"></a>
+
+**Comparator: passed** (run 35935225572, corpus commit `cc7e541cf208`).
+
+For each Lean declaration: the Challenge (the target, stated from Mathlib alone), the Solution (our proof) and the replay report.
+
+- `paper_uniform_rank_and_nonseparation`: [Challenge](https://github.com/wcook04/plectis-erdos-lean/blob/cc7e541cf2081c6fef5a5e377d52e365e33b01eb/PalomarCorpus/E269_02/Challenge.lean#L85) (E269_02, line 85), [Solution](https://github.com/wcook04/plectis-erdos-lean/blob/cc7e541cf2081c6fef5a5e377d52e365e33b01eb/Solutions/PalomarCorpus/E269_02/PaperStatementsA.lean#L252) (PaperStatementsA.lean, line 252), [replay report](../evidence/comparator/replay-35935225572/receipt-E269_02.json) (E269_02)
+
+Each Challenge states the same proposition as the Lean declaration it targets, with every definition it uses restated from Mathlib alone.
+
+<a id="res-admissible-modular-minors"></a>
+
+## Corollary B.3 (the same minors modulo integers coprime to $`30`$), page 12
+
+> *For $`(p,q,r)=(2,3,5)`$ and every $`n\ge1`$, there are injective maps $`I,J:\{0,\ldots,n-1\}\to\mathbb{N}`$, chosen independently of $`B`$ and $`k`$, such that for every $`B\ge2`$ coprime to $`30`$ and every $`k\ge0`$, the selected $`n\times n`$ kernel matrix has unit determinant over $`\mathbb Z/B\mathbb Z`$, with each reciprocal prime power interpreted by its modular inverse.*
+
+The Lean declaration below states this result or one that implies it. The Lean statement holds for every $n\ge0$ and, for the same $I,J$, also gives nonzero rational determinants at every $k$ and an invertible kernel matrix modulo $B$; its unit-determinant clause for $n\ge1$ is the printed statement.
+
+[`ErdosProblems.Erdos269.PaperR7.admissible_modular_minors`](https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos269/PaperR7ModularMinors.lean#L133)
+
+```lean
+theorem admissible_modular_minors (n : ℕ) :
+    ∃ I J : Fin n → ℕ, Function.Injective I ∧ Function.Injective J ∧
+      (∀ k : ℕ,
+        (Matrix.det fun i j : Fin n => threePrimeKernelQ 2 3 5 (I i) (J j) k) ≠ 0) ∧
+      (∀ B : ℕ, 2 ≤ B → Nat.Coprime B 30 → ∀ k : ℕ,
+        IsUnit (Matrix.det fun i j : Fin n => kernelMod235 B (I i) (J j) k) ∧
+        IsUnit (Matrix.of fun i j : Fin n => kernelMod235 B (I i) (J j) k))
+```
+
+<a id="res-admissible-modular-minors-comparator"></a>
+
+**Comparator: passed** (run 35935225572, corpus commit `cc7e541cf208`).
+
+For each Lean declaration: the Challenge (the target, stated from Mathlib alone), the Solution (our proof) and the replay report.
+
+- `admissible_modular_minors`: [Challenge](https://github.com/wcook04/plectis-erdos-lean/blob/cc7e541cf2081c6fef5a5e377d52e365e33b01eb/PalomarCorpus/E269_08/Challenge.lean#L103) (E269_08, line 103), [Solution](https://github.com/wcook04/plectis-erdos-lean/blob/cc7e541cf2081c6fef5a5e377d52e365e33b01eb/Solutions/PalomarCorpus/E269_08/PaperStatementsA.lean#L238) (PaperStatementsA.lean, line 238), [replay report](../evidence/comparator/replay-35935225572/receipt-E269_08.json) (E269_08)
+
+Each Challenge states the same proposition as the Lean declaration it targets, with every definition it uses restated from Mathlib alone.
+
+<a id="res-finite-cut-rank"></a>
+
+## Proposition B.4 (rank of a matrix of threshold columns), page 12
+
+> *Let $`m\ge1`$ and let $`c`$ lie in a field with $`c\ne 0,1`$. For $`0\le k\le m`$ write $`v_k`$ for the length-$`m`$ column with a $`1`$ in each of the first $`k`$ coordinates and $`c`$ thereafter. A matrix whose distinct columns are $`v_k`$ for $`k`$ in a nonempty set $`E`$ has rank $`|E|-\mathbf 1_{\{0,m\}\subseteq E}`$.*
+
+The Lean declaration below states this result or one that implies it. The Lean statement drops the hypothesis that $E$ is nonempty; for nonempty $E\subseteq\{0,\ldots,m\}$ and any finite matrix whose set of columns is $\{v_k:k\in E\}$ it gives the printed rank $|E|-\mathbf 1_{\{0,m\}\subseteq E}$.
+
+[`ErdosProblems.Erdos269.PaperR7.rank_cutMatrix`](https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos269/PaperR7FiniteCutRank.lean#L182)
+
+```lean
+theorem rank_cutMatrix {ι : Type*} [Fintype ι]
+    (c : F) (hc0 : c ≠ 0) (hc1 : c ≠ 1) {m : ℕ} (hm : 0 < m)
+    (E : Finset ℕ) (hbound : ∀ k ∈ E, k ≤ m)
+    (A : Matrix (Fin m) ι F)
+    (hcols : Set.range A.col = Set.range (fun k : E => cutVector c m k)) :
+    A.rank = E.card - if 0 ∈ E ∧ m ∈ E then 1 else 0
+```
+
+<a id="res-finite-cut-rank-comparator"></a>
+
+**Comparator: passed** (run 35935225572, corpus commit `cc7e541cf208`).
+
+For each Lean declaration: the Challenge (the target, stated from Mathlib alone), the Solution (our proof) and the replay report.
+
+- `rank_cutMatrix`: [Challenge](https://github.com/wcook04/plectis-erdos-lean/blob/cc7e541cf2081c6fef5a5e377d52e365e33b01eb/PalomarCorpus/E269_02/Challenge.lean#L146) (E269_02, line 146), [Solution](https://github.com/wcook04/plectis-erdos-lean/blob/cc7e541cf2081c6fef5a5e377d52e365e33b01eb/Solutions/PalomarCorpus/E269_02/PaperStructuresH.lean#L18) (PaperStructuresH.lean, line 18), [replay report](../evidence/comparator/replay-35935225572/receipt-E269_02.json) (E269_02)
+
+Challenge for `rank_cutMatrix`:
+
+```lean
+theorem rank_cutMatrix {F : Type*} [Field F] {ι : Type*} [Fintype ι]
+    (c : F) (hc0 : c ≠ 0) (hc1 : c ≠ 1) {m : ℕ} (hm : 0 < m)
+    (E : Finset ℕ) (hbound : ∀ k ∈ E, k ≤ m)
+    (A : Matrix (Fin m) ι F)
+    (hcols : Set.range A.col = Set.range (fun k : E => cutVector c m k)) :
+    A.rank = E.card - if 0 ∈ E ∧ m ∈ E then 1 else 0 := by sorry
+```

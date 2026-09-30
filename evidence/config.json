@@ -1,13 +1,13 @@
 {
- "schema": "plectis-paper-evidence-config/1",
- "rule": "The pins the paper evidence is resolved against. corpus_commit is the plectis-erdos-lean commit whose Challenge and Solution files the Comparator marks open; replay names the run that checked every linked entry at that commit, and receipts the directory holding that run's per-entry reports. record_commit is the default plectis-erdos commit holding the evidence records the rendered papers link to; record_commit_overrides selects a newer record commit for an individual paper.",
- "corpus_commit": "cc7e541cf2081c6fef5a5e377d52e365e33b01eb",
- "corpus_archive_tag": "paper-evidence-2026-09-24",
- "replay": {
-  "run_id": "35935225572",
-  "workflow": "palomar-replay.yml",
-  "receipts": "evidence/comparator/replay-35935225572"
- },
- "record_commit": "cd83a19f8002856293310f4d71358b2f9d72a24e",
- "record_commit_overrides": {}
+  "schema": "plectis-paper-evidence-config/1",
+  "rule": "The pins the paper evidence is resolved against. corpus_commit is the plectis-erdos-lean commit whose Challenge and Solution files the Comparator marks open; replay names the run that checked every linked entry at that commit, and receipts the directory holding that run's per-entry reports. record_commit is the default plectis-erdos commit holding the evidence records the rendered papers link to; record_commit_overrides selects a newer record commit for an individual paper.",
+  "corpus_commit": "cc7e541cf2081c6fef5a5e377d52e365e33b01eb",
+  "corpus_archive_tag": "paper-evidence-2026-09-24",
+  "replay": {
+    "run_id": "35935225572",
+    "workflow": "palomar-replay.yml",
+    "receipts": "evidence/comparator/replay-35935225572"
+  },
+  "record_commit": "1d16f2ddf78e7c4c850246f67bf8ce79b19deb3c",
+  "record_commit_overrides": {}
 }

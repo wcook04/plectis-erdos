@@ -79,7 +79,10 @@ def pdf(links: list[tuple[list[float], str]], pages: int = 1, heading_y: float =
 
 PAPER = {"results": [{"label": "res:a", "page": "1", "number": "1.1", "printed_kind": "Theorem"}]}
 MARKS = {"res:a": ("Lean", LEAN, CMP)}
-SOUND = [([519.8, HEAD_Y - 2.6, 538.1, HEAD_Y + 10.6], LEAN), ([519.8, HEAD_Y - 15.0, 565.0, HEAD_Y - 1.8], CMP)]
+SOUND = [([519.8, HEAD_Y - 2.6, 538.1, HEAD_Y + 10.6], LEAN),
+         ([519.8, HEAD_Y - 15.0, 565.0, HEAD_Y - 1.8], CMP),
+         ([175.0, HEAD_Y - 2.6, 200.0, HEAD_Y + 8.0], LEAN),
+         ([210.0, HEAD_Y - 2.6, 260.0, HEAD_Y + 8.0], CMP)]
 
 
 def problems(links: list[tuple[list[float], str]], *, marks=MARKS, paper=PAPER, baseline: int | None = 1,
@@ -104,6 +107,33 @@ def test_mark_away_from_its_heading_fails() -> None:
 
 def test_missing_comparator_fails() -> None:
     require(any("no Comparator mark" in p for p in problems(SOUND[:1])), "a missing Comparator mark passed")
+
+
+def test_margin_only_does_not_satisfy_inline_coverage() -> None:
+    found = problems(SOUND[:2])
+    require(any("no inline Lean" in p for p in found) and
+            any("no inline Comparator" in p for p in found),
+            f"margin links alone passed full inline coverage: {found}")
+
+
+def test_inline_cannot_disagree_with_margin() -> None:
+    wrong = SOUND[:2] + [(r, u + "-wrong") for r, u in SOUND[2:]]
+    found = problems(wrong)
+    require(any("no inline Lean" in p for p in found) and
+            any("no inline Comparator" in p for p in found),
+            f"inline links with opposing targets passed: {found}")
+
+
+def test_pending_comparator_must_open_its_own_record() -> None:
+    record = CMP.removesuffix("-comparator")
+    pending = SOUND[:1] + SOUND[2:]
+    marks = {"res:a": ("Lean", LEAN, "")}
+    records = {"res:a": (record, "exact", "pending")}
+    require(check.check_paper(pdf(pending), PAPER, marks, 1, records) == [],
+            "a correct inline pending link failed")
+    bad = pending[:-1]
+    require(any("Comparator-pending" in p for p in check.check_paper(pdf(bad), PAPER, marks, 1, records)),
+            "a pending result without its pending link passed")
 
 
 def test_unexplained_margin_link_fails() -> None:
@@ -153,6 +183,9 @@ def main() -> int:
         test_wrong_target_fails,
         test_mark_away_from_its_heading_fails,
         test_missing_comparator_fails,
+        test_margin_only_does_not_satisfy_inline_coverage,
+        test_inline_cannot_disagree_with_margin,
+        test_pending_comparator_must_open_its_own_record,
         test_unexplained_margin_link_fails,
         test_colliding_marks_fail,
         test_workflow_run_link_fails,

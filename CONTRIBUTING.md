@@ -16,6 +16,11 @@ for the short and long accounts, a source result to inspect, and current
 questions. You can send an ordinary mathematical argument without cloning,
 using Lean, or using an AI.
 
+An explanation is useful work in its own right. For example, help a reader of
+the #257 paper see why the first average needs a second one. Name the intended
+reader and the step you want to clarify. A worked example or a better-motivated
+construction can help without changing the theorem.
+
 **Develop a reusable method.** Start from the [synthesis papers](paper/synthesis/README.md)
 or the [admissible-choice experiment](research/experiments/sparse_interpolation/README.md).
 A connection, obstruction, new question, construction or useful intermediate
@@ -78,12 +83,10 @@ friction, unclear instructions, broken links, agent-skill portability, unsafe
 defaults, or unnecessary steps are substantive architecture contributions, not
 housekeeping beneath the project's notice.
 
-A cold reader is part of the validation surface. The cold-clone comprehension
-program runs as a combined baseline-plus-adversarial release-gate check: it
-reconstructs what a fresh clone can answer from the public files alone, and it
-plants mutations that a comprehending reader would catch. A failure therefore
-blocks the release gate, in the same way a broken claim link or a stale
-projection does.
+The cold-clone comprehension program tests a bounded set of public questions
+and checks that deliberately broken statements or links are detected. A failure
+blocks the release gate. These automated checks do not establish that a person
+understood an argument or could use it; that needs actual reader feedback.
 
 There are two first-class tracks:
 
@@ -125,6 +128,11 @@ problem, or has been accepted by mathematicians. Work that survives internal
 triage can be prepared for Comparator and Palomar and placed before the Erdős
 Problems community or another appropriate research audience. Those external
 routes do not transfer their authority back to a repository status field.
+
+For a proposed proof, explain the decisive step and the part you have checked
+yourself. Mark what you cannot yet explain, and help resolve questions and
+corrections in the same issue or pull request. Unfinished work is welcome when
+its remaining work is clear; a large transcript is no substitute for that account.
 
 ## What happens to returned work
 

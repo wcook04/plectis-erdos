@@ -6,6 +6,13 @@
 \documentclass[11pt]{article}
 \input{problem-note-preamble}
 \input{evidence/erdos269-running-lcm-reasoning-surface}
+% Number the ordinary-proof remarks so their labels identify the assertion.
+% This local presentation change leaves the shared preamble untouched.
+\theoremstyle{remark}
+\newtheorem{recordremark}[theorem]{Remark}
+\renewenvironment{remark}[1][]{\begin{recordremark}[#1]}{\end{recordremark}}
+\theoremstyle{plain}
+
 \usepackage{longtable}
 \usepackage{colortbl}
 \usepackage[htt]{hyphenat}
@@ -24,7 +31,7 @@
 \newcommand{\distinctheightlean}{https://github.com/wcook04/plectis-erdos/blob/5154f4c46fa5d5ab2cff8df857a0b10f310cbeeb/lean/ErdosProblems/Erdos269/DistinctHeightIrrationality.lean}
 \newcommand{\distinctheightblocklean}{https://github.com/wcook04/plectis-erdos/blob/5154f4c46fa5d5ab2cff8df857a0b10f310cbeeb/lean/ErdosProblems/Erdos269/DistinctHeightBlockRadix.lean}
 \hypersetup{
-  pdftitle={The Three-Prime Running LCM: Kernel Rank and Tail Arithmetic (Erdős Problem 269)},
+  pdftitle={Running least common multiples: distinct heights and repeated sums},
   pdfsubject={Erdős Problem Notes: Problem 269},
   pdfkeywords={irrationality, transcendence, Hecke-Mahler values, least common multiple, smooth numbers, Cantor series, lattice sums, Lean 4},
 }
@@ -38,11 +45,11 @@
 \newcommand{\lpr}{\operatorname{lpr}}
 \newcommand{\Esc}{\mathsf E}
 
-\runninghead{Erd\H{o}s \#269: kernel rank and tail arithmetic}
-\title{The Three-Prime Running LCM: Kernel Rank and Tail Arithmetic}
+\runninghead{Running least common multiples}
+\title{Running least common multiples:\\distinct heights and repeated sums}
 \subtitle{Erd\H{o}s Problem~\#269}
 \author{Will Cook}
-\date{July 2026; revised 26 September 2026}
+\date{July 2026; revised 30 September 2026}
 
 \setlength{\emergencystretch}{2em}
 % Permit breaks inside long declaration names in the generated catalogue.

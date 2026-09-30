@@ -119,6 +119,59 @@ FIRST_MINUTE_CONTRACT = {
     },
 }
 
+# The unified manuscript has its own reviewed reading windows. The publication
+# contract selects this profile; historical manuscript checks retain their
+# original wording and windows. The reviewed unified edition puts refinement
+# on pages 6–7 and historical observations on pages 8–9. Match its prose while
+# retaining the escaped-edit, review, source-freeze and unmeasured-benefit limits.
+UNIFIED_SYSTEMS_FIRST_MINUTE = {
+    (1, 1): (
+        "publishing mathematical results from a lean repository",
+        "evidence, exposition and revision in eight",
+        "question, prior sources, computations, proofs and unresolved steps together",
+        "a historical test rejected nine of ten false edits but accepted a false claim of completion",
+    ),
+    (5, 6): (
+        "lean verifies that a proof establishes the formal statement",
+        "comparator adds a separately stated challenge",
+        "does not require a second independent mathematician",
+        "no independent human mathematical review of the corpus is recorded",
+        "in either case the integrating reviewer decides whether the mathematics and its description remain faithful",
+    ),
+    (6, 8): (
+        "an open route for contributions",
+        "neither independent review nor acceptance by the wider mathematical community",
+        "source-frozen editorial refinement",
+        "under a manifest of their exact bytes",
+        "it neither applies the proposal nor executes returned programs",
+        "no measurement of reader benefit or autonomous discovery",
+    ),
+    (8, 9): (
+        "nine of the ten deliberately false edits were rejected and one escaped",
+        "the contributor and reviewer were the same agent",
+        "no public pull request, human review or independent outside clone replay",
+    ),
+    (9, 11): (
+        "transfer to unseen mathematics and understanding by",
+        "independent human readers are unresolved",
+        "no comparative reader result is reported",
+        "openness alone does not equalise resources",
+        "broad mathematical acceptance is exogenous to this repository and cannot be granted by its maintainer",
+        "no new lean or comparator execution",
+        "local integration commit rather than public main",
+    ),
+}
+
+
+def unified_systems_profile(pdf: Path) -> bool:
+    if pdf.name != "claim-faithful-publication-systems-paper.pdf":
+        return False
+    contract = json.loads((ROOT / "docs/publication_contract.json").read_text())
+    return any(a.get("systems_paper_profile") == "unified_corpus_to_paper_v1"
+               and Path(a["rendered_path"]).name == pdf.name
+               for a in contract["artifacts"])
+
+
 # \rootword has the same four-argument shape as \lword and, like it, prints only
 # its fourth argument; the module path sits inside the href. Leaving it out of
 # this list made the gateway paper's root-navigation links read as visible
@@ -422,7 +475,8 @@ def semantic_text(text: str) -> str:
 
 def first_minute_errors(pdf: Path, pdftotext: str) -> list[str]:
     errors: list[str] = []
-    contract = FIRST_MINUTE_CONTRACT.get(pdf.name, {})
+    contract = (UNIFIED_SYSTEMS_FIRST_MINUTE if unified_systems_profile(pdf)
+                else FIRST_MINUTE_CONTRACT.get(pdf.name, {}))
     for (first, last), anchors in contract.items():
         try:
             text = semantic_text(rendered_pages(pdf, pdftotext, first, last))
@@ -504,7 +558,7 @@ def architecture_rendered_errors(pdf: Path, text: str) -> list[str]:
             errors.append(
                 f"prints private or score-like shorthand {pattern.pattern!r}"
             )
-    if len(re.findall(r"\bsentence\b", compact)) > 4:
+    if not unified_systems_profile(pdf) and len(re.findall(r"\bsentence\b", compact)) > 4:
         errors.append("has regressed to a sentence-centred case study")
     return [f"{pdf.relative_to(ROOT)}: {error}" for error in errors]
 

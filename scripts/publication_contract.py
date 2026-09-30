@@ -508,6 +508,15 @@ def validate_systems_evidence_source(
             r"test copy containing the false clause"
         ),
     }
+    if artifact.get('systems_paper_profile') == 'unified_corpus_to_paper_v1':
+        required_patterns.update({
+            'plain architecture title': r'publishing mathematical results from a lean repository',
+            'human judgement boundary': r'does not require a second independent mathematician',
+            'post-repair example': (
+                r'post-repair witness accepts the intact baseline readme and rejects a '
+                r'test copy containing the false clause'
+            ),
+        })
     for label, pattern in required_patterns.items():
         if not re.search(pattern, normalized):
             errors.append(
@@ -1009,7 +1018,7 @@ def build_publication_entry_packet(reader: RepositoryReader) -> dict[str, Any]:
             "purpose": source["thesis"],
             "five_parts": [
                 "Lean source",
-                "human-reviewed public claims",
+                "self-assessed and agent-checked public claims",
                 "authored reader documents",
                 "generated navigation views",
                 "release checks and GitHub continuous integration",
@@ -1360,6 +1369,12 @@ def validate_publication_contract(
         claims = claims_override or load_json(reader, CLAIMS_PATH)
     except (FileNotFoundError, json.JSONDecodeError, UnicodeError) as error:
         return [f"{CLAIMS_PATH}: {error}"]
+
+    # The new owner contract is enforced against this exact worktree/staged/ref
+    # reader; a historical release without it retains its historical contract.
+    if "paper_claim_evidence" in claims:
+        from paper_claim_evidence import publication_errors
+        errors.extend(publication_errors(reader.read_bytes, claims))
 
     if contract.get("schema") != SCHEMA:
         errors.append(f"{CONTRACT_PATH} must use schema {SCHEMA}")

@@ -24,6 +24,7 @@ from unittest.mock import patch
 
 import query_corpus
 import query_semantic
+from lean_source import qualified_declaration_lines
 from query_corpus import (
     agent_tour_packet,
     all_entrypoints,
@@ -43,8 +44,8 @@ from query_corpus import (
     source_coordinate_packet,
 )
 from check_release import MAX_ROUTE_FIRST_CONTACT_BYTES, ordinary_proof_claim_errors
+from check_release import module_lines, name_at_line, paper_macro_coordinates
 from check_problem_note_sources import (
-    declares_at,
     note_pinned_commit,
     pinned_commit as corpus_pinned_commit,
     snapshot_lines,
@@ -53,6 +54,50 @@ from check_problem_note_sources import (
 from refresh_source_coordinates import PAPERS as LIVE_COORDINATE_PAPERS
 
 ROOT = Path(__file__).resolve().parent.parent
+
+
+def pinned_link_commit(link: dict) -> str:
+    """Each emitted source link owns its immutable revision."""
+    return link["source_identity"]["ref"]
+
+
+def exact_qualified_head(names: dict[str, list[int]], declaration: str, line: int) -> bool:
+    """Allow unique namespace-prefix aliases, never drop a requested namespace."""
+    matches = names.get(declaration)
+    if matches is None:
+        candidates = [positions for name, positions in names.items()
+                      if name.endswith("." + declaration)]
+        if len(candidates) != 1:
+            return False
+        matches = candidates[0]
+    return matches == [line]
+
+
+def check_pinned_coordinate_fixtures() -> None:
+    source = ('namespace Actual\n'
+              'theorem target : True := by trivial\n'
+              'theorem\n'
+              '  multiline : True := by trivial\n'
+              'end Actual\n'
+              '/-\n'
+              'theorem fakeComment : True := by trivial\n'
+              '-/\n'
+              'def text := "\n'
+              'theorem fakeString : True := by trivial\n'
+              '"\n')
+    names = qualified_declaration_lines(source)
+    assert exact_qualified_head(names, "Actual.target", 2)
+    assert exact_qualified_head(names, "target", 2)
+    assert not exact_qualified_head(names, "Wrong.target", 2)
+    assert not exact_qualified_head(names, "Actual.target", 3)
+    assert exact_qualified_head(names, "Actual.multiline", 3)
+    assert not exact_qualified_head(names, "Actual.multiline", 4)
+    assert not exact_qualified_head(names, "fakeComment", 7)
+    assert not exact_qualified_head(names, "fakeString", 10)
+    assert not exact_qualified_head({"target": [1]}, "Wrong.target", 1)
+    assert not exact_qualified_head({"A.target": [1], "B.target": [2]}, "target", 1)
+    assert not exact_qualified_head({"Actual.target": [1, 2]}, "Actual.target", 1)
+    assert pinned_link_commit({"source_identity": {"ref": "link-pin"}}) == "link-pin"
 SCRIPT = ROOT / "scripts" / "query_corpus.py"
 SEMANTIC_SCRIPT = ROOT / "scripts" / "query_semantic.py"
 # Keep programme packets bounded without making a six-byte formatting change a
@@ -148,7 +193,8 @@ def query(*args: str) -> dict[str, object]:
         args = (*args, "--format", "json")
     completed = invoke_main(query_corpus.main, SCRIPT, args)
     completed.check_returncode()
-    return json.loads(completed.stdout)
+    assert len(completed.stdout.encode("utf-8")) <= query_corpus.OUTPUT_BUDGET_BYTES
+    return query_corpus.expand_problem_route_anchor_transport(json.loads(completed.stdout))
 
 
 def validate_in_process_query_dispatch() -> None:
@@ -549,9 +595,8 @@ def validate_indexed_problem_routes() -> None:
     for problem in problems:
         route_id = problem["problem_id"]
         packet = query("--route", route_id)
-        assert len(json.dumps(packet, ensure_ascii=False, indent=2).encode("utf-8")) <= (
-            query_corpus.OUTPUT_BUDGET_BYTES
-        )
+        # The wire budget is checked by query(); the lossless shared-anchor
+        # transport may expand beyond that ceiling when reconstructed here.
         assert packet["kind"] == "problem_route"
         route = packet["route"]
         assert route["id"] == route_id
@@ -614,10 +659,18 @@ def validate_indexed_problem_routes() -> None:
                 assert actual["paper_route"]["matching_anchors"], (
                     f"{route_id}/{expected['id']} lost its exact paper return route"
                 )
-                assert all(
-                    anchor["source_ref"].startswith(actual["paper_route"]["source"] + ":")
-                    for anchor in actual["paper_route"]["matching_anchors"]
-                )
+                from check_problem_note_sources import reachable_companion_sources
+                ingress = actual["paper_route"]["source"]
+                reachable = set(reachable_companion_sources(ingress, (ROOT / ingress).read_text(encoding="utf-8")))
+                for anchor in actual["paper_route"]["matching_anchors"]:
+                    destination = anchor["destination_source"]
+                    assert destination in {ingress, *reachable}
+                    assert anchor["source_ref"].startswith(destination + ":")
+                    if destination != ingress:
+                        assert anchor["visible_hop"] == "registered_visible_companion_pdf_link"
+                        assert anchor["relation_origin"].startswith("visible_companion_")
+                    else:
+                        assert anchor["visible_hop"] is None
                 assert all(
                     query_corpus.paper_anchor_packet(anchor["canonical_handle"])[
                         "paper"
@@ -626,28 +679,18 @@ def validate_indexed_problem_routes() -> None:
                     for anchor in actual["paper_route"]["matching_anchors"]
                 )
             if expected["id"] == "actual_lcm_orbit_separation":
-                assert "res:actualorbit" in {
-                    anchor["canonical_handle"]
+                assert "irrational_totientSeries_iff_actualLcmOrbitNonintegralitySupply" in {
+                    declaration
                     for anchor in actual["paper_route"]["matching_anchors"]
+                    for declaration in anchor["matched_declarations"]
                 }
             if expected["id"] == "totient_carry_anti_compression":
-                carry_anchor = next(
-                    anchor
-                    for anchor in actual["paper_route"]["matching_anchors"]
-                    if set(anchor["matched_declarations"])
-                    >= {
+                assert {
                         "not_irrational_totientSeries_implies_mod_period_and_unbounded_rank",
                         "totient_forcing_vanishes_mod_of_dvd_multiplier",
                         "totient_carry_modEq_geometric_of_dvd_multiplier",
-                    }
-                )
-                # The margin marks carry the per-result Lean links; the three carry
-                # declarations are cited together in the note's formal-sources appendix.
-                carry_path, carry_line = carry_anchor["source_ref"].rsplit(":", 1)
-                assert carry_path == "paper/249/erdos-249-binary-totient-series.tex"
-                assert "\\label{app:sources}" in (ROOT / carry_path).read_text(
-                    encoding="utf-8"
-                ).splitlines()[int(carry_line) - 1]
+                    } <= {declaration for anchor in actual["paper_route"]["matching_anchors"]
+                          for declaration in anchor["matched_declarations"]}
             if expected["id"] == "weighted_phase_carry_observer":
                 weighted_anchors = {
                     anchor["canonical_handle"]
@@ -663,10 +706,8 @@ def validate_indexed_problem_routes() -> None:
                 # this paper and one of them carries the carry-observer
                 # declarations.
                 assert weighted_anchors
-                assert all(
-                    handle.startswith("paper/269/erdos-269-three-prime-running-lcm.tex:")
-                    for handle in weighted_anchors
-                )
+                # Exact destination membership was checked above; the receiver
+                # may follow the visible short-to-record hop after relocation.
                 weighted_detail = next(
                     anchor
                     for anchor in actual["paper_route"]["matching_anchors"]
@@ -1308,6 +1349,46 @@ def validate_natural_language_search() -> None:
             "explicit_number_excludes_other_problem_results_routes_and_open_records"
         ),
     }
+    # A problem number constrains the source but must not erase the requested
+    # reading task. Cards expose the next step; JSON preserves the full route.
+    facet_cases = (
+        ("Inspect the prior art behind the Erdos 1041 sharp gap theorem",
+         "source_attribution", "--query 1041"),
+        ("What assumptions does the Erdos 1041 sharp gap theorem use?",
+         "formal_statement", "--declaration <Lean_name>"),
+        ("Give me one hint for the proof of the Erdos 249 theorem",
+         "guided_reading", "--route erdos_249 --format json"),
+    )
+    for question, facet_id, command_fragment in facet_cases:
+        with patch("query_corpus.ranked_declaration_search_rows",
+                   side_effect=AssertionError("constrained facet reopened global ranking")):
+            facet_packet = query_corpus.semantic_slice_packet(question, 3)
+        constraint = facet_packet["query_interpretation"]["problem_constraint"]
+        synthesis = facet_packet["operator_synthesis"]
+        assert synthesis["reader_answer"]["problem_route"] == constraint["route_id"]
+        facet = next(row for row in synthesis["requested_facets"] if row["id"] == facet_id)
+        assert any(command_fragment in command for command in facet["commands"])
+        card = query_corpus.render_card(facet_packet)
+        assert f"requested facet | {facet_id}" in card
+        assert command_fragment in card
+        assert "order=Palomar programme signal" not in card
+        if facet_id == "formal_statement":
+            assert facet["status"] == "needs_declaration"
+        if facet_id == "source_attribution":
+            assert "--route trace_prior_art" in card
+    assert "requested_facets" not in problem_bound["operator_synthesis"]
+    constraint = problem_bound["query_interpretation"]["problem_constraint"]
+    family_name = route_packet("erdos_1041")["route"]["result_families"][0]["declarations"][0]
+    selected = query_corpus.problem_query_facets(
+        f"Inspect assumptions of {family_name} for Erdos 1041", constraint
+    )[0]
+    assert selected["status"] == "declaration_selected"
+    assert selected["commands"] == [f"python3 scripts/query_corpus.py --declaration {family_name}"]
+    unknown = query_corpus.problem_query_facets(
+        "Inspect assumptions of NotARealDeclaration for Erdos 1041", constraint
+    )[0]
+    assert unknown["status"] == "needs_declaration"
+
     problem_route_cell = problem_cells[0]
     assert problem_route_cell["content"]["route"]["id"] == "erdos_1041"
     assert problem_route_cell["content"]["route"]["erdos_number"] == 1041
@@ -2631,25 +2712,25 @@ def validate_principal_paper_query_metadata() -> None:
     """The principal paper results stay reachable without promoting proof status."""
     expected = {
         "paper/68/erdos-68-factorial-denominator-irrationality.tex": (
-            "Two Incomparable Denominator Exclusions for ∑_{n≥2}(n!−1)⁻¹",
-            {"res:carry-characterization", "res:divisor-channel-coordinates",
+            "Integer Linear Forms for a Factorial Reciprocal Series",
+            {"res:divisor-channel-coordinates",
              "res:finite-channel-moment-certificate"},
             "irrationality remains open",
         ),
         "paper/269/erdos-269-three-prime-running-lcm.tex": (
-            "Irrational Distinct-Height Sums for Finite Prime Sets",
-            {"res:distinct-height-all", "res:distinct-height-235"},
-            "Lean-checked at {2,3,5}",
+            "Distinct running least common multiples",
+            {"res:distinct-height-235"},
+            "distinct-height {2,3,5} theorem",
         ),
         "paper/1049/erdos-1049-rational-base-lambert.tex": (
-            "Zudilin's Forms at Rational Bases and the Exact Normalised Hankel Order",
+            "Hankel Determinants of Geometric Moments and Rational Lambert Values",
             {"cor:rational-base-measure", "res:sharp-fixed-base"},
             "irrationality at 3/2 remains open",
         ),
         "paper/249/erdos-249-binary-totient-series.tex": (
-            "Bases and Integral Relations for the k-Kernel of Euler's Totient",
+            "Integral Relations among Totient Sections",
             {"thm:kkernelrank", "cor:integral-normal-form"},
-            "dyadic/all-base totient-kernel boundary",
+            "original unreduced totient-series irrationality remains open",
         ),
         "paper/243/erdos-243-reciprocal-tail-rigidity.tex": (
             "Cubic-Rate Irrationality and Reciprocal-Tail Rigidity",
@@ -2662,7 +2743,7 @@ def validate_principal_paper_query_metadata() -> None:
             "positions are not asserted to be prime",
         ),
         "paper/1041/erdos-1041-lemniscate-newton-flow.tex": (
-            "Paths in Polynomial Lemniscates: A Degree-Seven Counterexample and Two Short-Path Criteria",
+            "Paths in Polynomial Lemniscates: A Degree-Seven Counterexample and Radial Connections",
             {"res:ani-degree-seven-counterexample", "res:trinomial-all-degree",
              "res:low-critical-thirteen-twentyfifths"},
             "historical correspondence awaits human review",
@@ -2680,6 +2761,27 @@ def validate_principal_paper_query_metadata() -> None:
             lines = (ROOT / source).read_text(encoding="utf-8").splitlines()
             line = anchor["paper"]["line"]
             assert f"\\label{{{label}}}" in "\n".join(lines[line - 1:line + 2])
+    # The revised papers deliberately move some registered results to long
+    # records; obsolete short labels must not be restored by a branch merge.
+    long_routes = {
+        "long68:res:bandbreakpoint": "paper/68/erdos68-factorial-reasoning-surface.tex",
+        "long269:res:distinct-height-all": "paper/269/erdos269-running-lcm-reasoning-surface.tex",
+        "long269:res:single-prime-subsums": "paper/269/erdos269-running-lcm-reasoning-surface.tex",
+    }
+    for label, source in long_routes.items():
+        packet = query("--paper-label", label)
+        assert packet["paper"]["source"] == source
+        assert packet["authority_posture"] == "navigation_projection_not_proof_authority"
+        lines = (ROOT / source).read_text(encoding="utf-8").splitlines()
+        line = packet["paper"]["line"]
+        assert f"\\label{{{label}}}" in "\n".join(lines[line - 1:line + 2])
+    for programme, obsolete in {
+        68: {"res:carry-characterization", "res:bandbreakpoint"},
+        269: {"res:distinct-height-all", "res:distinct-height-triples", "res:single-prime-subsums"},
+        1049: {"res:nocorridor", "res:tailrec", "res:forcing"},
+    }.items():
+        source = next(source for source in expected if source.startswith(f"paper/{programme}/"))
+        assert not obsolete.intersection(anchor["label"] for anchor in query("--paper-source", source)["anchors"])
     # These query anchors expose authored results. They do not create registry
     # claims or turn the ordinary analytic criterion into a Lean-checked theorem.
     assert query("--paper-label", "res:low-critical-thirteen-twentyfifths")["attached_claims"] == []
@@ -2688,8 +2790,221 @@ def validate_principal_paper_query_metadata() -> None:
     assert query("--claim", "erdos_1041")["claim"]["status"] == "formal statement refuted"
 
 
+def validate_registered_claim_paper_routes() -> None:
+    source = "paper/68/erdos68-factorial-reasoning-surface.tex"
+    qualified = "Erdos68.factorialMoment_eq_factorial_pow_mul_channelNumerator_band"
+    routes = query_corpus.paper_anchor_routes_for_declarations(source, [qualified])
+    matched = next(row for row in routes if row["relation_origin"] == "registered_claim_anchor")
+    assert matched["matched_claim_ids"] == ["channel_quotient_band_breakpoint"]
+    assert matched["matched_declarations"] == [qualified.rsplit(".", 1)[-1]]
+    assert query_corpus.paper_anchor_packet(matched["canonical_handle"])["paper"]["source"] == source
+
+    anchor = {"paper": {"source": source, "source_ref": source + ":396"},
+              "canonical_handle": source + ":396", "label": "res:bandbreakpoint",
+              "source_links": [], "attached_claims": [{"id": "registered"}]}
+    claim = {"id": "registered", "paper_label": "res:bandbreakpoint",
+             "declarations": [{"module": "Exact.lean", "name": "result"}]}
+    with patch.object(query_corpus, "paper_anchor_inventory", return_value=[anchor]), \
+         patch.object(query_corpus, "load", return_value={"claims": [claim]}), \
+         patch.object(query_corpus, "declaration_for_module_name", return_value={"name": "result"}), \
+         patch.object(query_corpus, "qualified_declaration_name", return_value="Exact.result"):
+        assert query_corpus.paper_anchor_routes_for_declarations(source, ["Exact.result"])
+        assert not query_corpus.paper_anchor_routes_for_declarations(source, ["Unrelated.result"])
+        assert not query_corpus.paper_anchor_routes_for_declarations("paper/249/other.tex", ["Exact.result"])
+        with patch.object(query_corpus, "load", return_value={"claims": []}):
+            assert not query_corpus.paper_anchor_routes_for_declarations(source, ["Exact.result"])
+        with patch.object(query_corpus, "load", return_value={"claims": [{**claim, "paper_label": "other"}]}):
+            assert not query_corpus.paper_anchor_routes_for_declarations(source, ["Exact.result"])
+        with patch.object(query_corpus, "declaration_for_module_name", return_value=None):
+            assert not query_corpus.paper_anchor_routes_for_declarations(source, ["Exact.result"])
+        authored = {**anchor, "attached_claims": [], "source_links": [{"declaration": "result"}]}
+        with patch.object(query_corpus, "paper_anchor_inventory", return_value=[authored]):
+            routes = query_corpus.paper_anchor_routes_for_declarations(source, ["Exact.result"])
+            assert routes[0]["relation_origin"] == "authored_source_link"
+            assert routes[0]["matched_claim_ids"] == []
+
+
+def validate_visible_companion_paper_routes() -> None:
+    import check_problem_note_sources as owner
+    ingress = "paper/249/erdos-249-binary-totient-series.tex"
+    destination = "paper/249/erdos249-totient-reasoning-surface.tex"
+    original_read = owner.safe_worktree_text
+    for invisible in [r"\iffalse\href{erdos249-totient-reasoning-surface.pdf}{record}\fi",
+                      r"\newcommand{\unused}{\href{erdos249-totient-reasoning-surface.pdf}{record}}",
+                      r"\href{../251/erdos251-prime-gap-reasoning-surface.pdf}{other problem}"]:
+        query_corpus.visible_companion_support.cache_clear()
+        with patch.object(query_corpus, "native_reader_evidence", return_value=(True, {})), \
+             patch.object(owner, "safe_worktree_text", side_effect=lambda path: invisible if Path(path) == ROOT / ingress else original_read(path)):
+            assert query_corpus.visible_companion_support(ingress) == {}
+    query_corpus.visible_companion_support.cache_clear()
+    with patch.object(query_corpus, "native_reader_evidence", return_value=(False, {})):
+        assert query_corpus.visible_companion_support(ingress) == {}
+    query_corpus.native_reader_evidence.cache_clear()
+    with patch.object(owner, "native_evidence_valid", return_value=False):
+        assert query_corpus.native_reader_evidence() == (False, {})
+    query_corpus.native_reader_evidence.cache_clear()
+    query_corpus.visible_companion_support.cache_clear()
+
+    visible = r"\href{erdos249-totient-reasoning-surface.pdf}{record}"
+    bad_pin_record = r"\newcommand{\commit}{" + "0" * 40 + "}" + \
+                     r"\mword{Erdos249257/CertificateKernel.lean}{1}{result}{source}"
+    with patch.object(query_corpus, "native_reader_evidence", return_value=(True, {})), \
+         patch.object(owner, "safe_worktree_text", side_effect=lambda path: visible if Path(path) == ROOT / ingress else bad_pin_record if Path(path) == ROOT / destination else original_read(path)):
+        support = query_corpus.visible_companion_support(ingress)
+        assert destination in support and support[destination]["coordinates"] == set()
+    query_corpus.visible_companion_support.cache_clear()
+
+    pin = "a" * 40
+    link = {"module": "Exact.lean", "line": 7, "declaration": "result", "source_identity": {"ref": pin}}
+    anchor = {"paper": {"source": destination, "source_ref": destination + ":12"},
+              "canonical_handle": destination + ":12", "label": "result-label",
+              "source_links": [link], "attached_claims": []}
+    context = {"pin": pin, "coordinates": {("Exact.lean", 7, "result", pin)}, "margin_keys": set(),
+               "result_declarations": {}, "visible_hop": {"source": ingress, "destination_source": destination,
+                                                          "kind": "registered_visible_companion_pdf_link"}}
+    with patch.object(query_corpus, "paper_anchor_inventory", return_value=[anchor]), \
+         patch.object(query_corpus, "load", return_value={"claims": []}), \
+         patch.object(query_corpus, "declaration_for_module_name", return_value={"name": "result"}), \
+         patch.object(query_corpus, "qualified_declaration_name", return_value="Exact.result"):
+        with patch.object(query_corpus, "visible_companion_support", return_value={destination: context}):
+            routes = query_corpus.paper_anchor_routes_for_declarations(ingress, ["Exact.result"])
+            assert routes[0]["destination_source"] == destination
+            assert routes[0]["relation_origin"] == "visible_companion_authored_source_link"
+            assert not query_corpus.paper_anchor_routes_for_declarations(ingress, ["Unrelated.result"])
+        for rejected in [{}, {destination: {**context, "coordinates": set()}},
+                         {destination: {**context, "coordinates": {("Exact.lean", 7, "result", "b" * 40)}}}]:
+            with patch.object(query_corpus, "visible_companion_support", return_value=rejected):
+                assert not query_corpus.paper_anchor_routes_for_declarations(ingress, ["Exact.result"])
+        marked = {**anchor, "source_links": []}
+        with patch.object(query_corpus, "paper_anchor_inventory", return_value=[marked]), \
+             patch.object(query_corpus, "visible_companion_support", return_value={destination: {
+                 **context, "result_declarations": {"result-label": [{"name": "Exact.result"}]}}}):
+            assert query_corpus.paper_anchor_routes_for_declarations(ingress, ["Exact.result"])[0]["relation_origin"] == \
+                "visible_companion_native_declared_evidence_anchor"
+
+    # Source masking retains exact line coordinates and hides unrendered links.
+    hidden = "visible\n\\iffalse\n\\lean{hidden}{File.lean:7}\n\\fi\n"
+    masked = query_corpus.visible_paper_source(hidden)
+    assert masked.count("\n") == hidden.count("\n") and r"\lean" not in masked
+    manuscript = r"\newcommand{\lean}[2]{\leanlink{#2}}\newcommand{\commit}{" + pin + r"}\newcommand{\PK}{Erdos249257}" + \
+                 r"\newcommand{\latecommit}{" + "b" * 40 + "}"
+    links = query_corpus.visible_lean_links(r"\lean{Exact.result}{File.lean:7}\lean{Later.result}{lean/ErdosProblems/Later.lean:9}", manuscript)
+    assert [(x["module"], x["line"], x["source_identity"]["ref"]) for x in links] == [
+        ("Erdos249257/File.lean", 7, pin), ("ErdosProblems/Later.lean", 9, "b" * 40)]
+    assert query_corpus.visible_lean_links(r"\lean{Exact.result}{File.lean:7}", "") == []
+    assert r"\lean" not in query_corpus.visible_paper_source(r"\newcommand{\unused}{\lean{Exact.result}{File.lean:7}}")
+
+
+def validate_problem_route_anchor_transport() -> None:
+    """Repeated anchors retain independent family matches and exact metadata."""
+    anchor = {"canonical_handle": "paper/68/note.tex::result", "source_ref": "paper/68/note.tex:9",
+              "command": "python3 scripts/query_corpus.py --paper-anchor paper/68/note.tex::result",
+              "destination_source": "paper/68/note.tex", "relation_origin": "registered_claim_anchor",
+              "visible_hop": None, "matched_claim_ids": ["claim"], "matched_declarations": ["first"]}
+    packet = {"kind": "problem_route", "route": {"result_families": [
+        {"paper_route": {"matching_anchors": [anchor]}},
+        {"paper_route": {"matching_anchors": [{**anchor, "matched_declarations": ["second"]}]}}]}}
+    compact = query_corpus.compact_problem_route_anchor_transport(packet)
+    assert len(compact["paper_anchor_route_transport"]["table"]) == 1
+    assert query_corpus.expand_problem_route_anchor_transport(compact) == packet
+    assert "paper_anchor_route_transport" not in packet
+    for invalid in (-1, 1, True, "0"):
+        broken = copy.deepcopy(compact)
+        broken["route"]["result_families"][0]["paper_route"]["matching_anchors"][0]["anchor_route_index"] = invalid
+        try:
+            query_corpus.expand_problem_route_anchor_transport(broken)
+        except ValueError:
+            pass
+        else:
+            raise AssertionError("invalid shared-anchor index accepted")
+    assert query_corpus.expand_problem_route_anchor_transport({"kind": "other"}) == {"kind": "other"}
+
+
+def validate_current_source_identities() -> None:
+    """Historical printed links and current atlas routes have distinct owners."""
+    claims = load("docs/claims.json")
+    global_identity = query_corpus.formal_source_identity(claims)
+    historical = query_corpus.claim_packet("adelic_height_obstruction")
+    assert historical["paper"]["source"] == "paper/archive/erdos249-257-main-paper.tex"
+    manuscript = (ROOT / historical["paper"]["source"]).read_text()
+    pin = re.search(r"\\newcommand\{\\commit\}\{([0-9a-f]{40})\}", manuscript).group(1)
+    assert historical["lean_source_identity"]["ref"] == pin
+    for name in ("square_crt_correction_suppression", "signed_dyadic_moment_substrate", "denominator_exclusion"):
+        assert query_corpus.claim_packet(name)["lean_source_identity"] == historical["lean_source_identity"]
+    assert query_corpus.claim_packet("transport_curvature_reductions")["lean_source_identity"] == global_identity
+    name = "tsum_totient_div_pow_two_ne_ratCast_of_den_le_79639646646701375323355774875831053"
+    assert query("--declaration", name)["matches"][0]["lean_source_identity"] == global_identity
+    assert query("--source", "Erdos249257/CertificateKernel.lean:18383")["source"]["lean_source_identity"] == global_identity
+    farey = query_corpus.paper_anchor_packet("res:farey")
+    assert farey["lean_source_identity"] == historical["lean_source_identity"]
+    assert farey["source_links"][0]["printed_path"] == "Erdos249257/CertificateKernel.lean"
+    assert farey["source_links"][0]["source_identity"]["ref"] == pin
+    fixture = r"\newcommand{\commit}{" + pin + r"}\newcommand{\PK}{Erdos249257}" + \
+              r"\newcommand{\lword}[4]{\href{\repobase/\PK/#1\#L#2}{#4}}" + \
+              r"\newcommand{\lref}[3]{\href{\repobase/\PK/#1\#L#2}{\leanlabel{#3}}}" + \
+              r"\newcommand{\lloc}[2]{\href{\repobase/\PK/#1\#L#2}{Lean source}}" + \
+              r"\lword{Exact.lean}{7}{result}{source}\lref{Exact.lean}{7}{result}\lloc{Exact.lean}{7}"
+    expected = {("lword", "Exact.lean"): (pin, "Erdos249257/Exact.lean"),
+                ("lref", "Exact.lean"): (pin, "Erdos249257/Exact.lean"),
+                ("lloc", "Exact.lean"): (pin, "Erdos249257/Exact.lean")}
+    assert query_corpus.printed_macro_sources(fixture) == expected
+    assert query_corpus.printed_macro_sources(fixture.replace(r"\newcommand{\PK}{Erdos249257}", "")) == {}
+
+
+def validate_release_word_link_coordinates() -> None:
+    """Release declaration checks follow the same printed body as navigation."""
+    formal_ref = load("docs/claims.json")["release"]["formal_source"]["ref"]
+    cache = {}
+    repaired_count = 0
+    for source in ("paper/249/erdos249-totient-reasoning-surface.tex",
+                   "paper/257/erdos257-mersenne-reasoning-surface.tex"):
+        text = (ROOT / source).read_text()
+        coordinates, problems = paper_macro_coordinates(text, formal_ref)
+        assert not problems, (source, problems)
+        printed = query_corpus.printed_macro_sources(text)
+        for macro, path, line, name, pin in coordinates:
+            if macro != "lword" or not path.startswith("ErdosProblems/"):
+                continue
+            assert (pin, path) == printed[(macro, path.removeprefix("ErdosProblems/"))]
+            lines = module_lines(cache, path, pin)
+            assert lines is not None and 0 < line <= len(lines)
+            assert name_at_line(lines, name, line), (source, path, line, name, pin)
+            old_guessed_path = "Erdos249257/" + path.removeprefix("ErdosProblems/")
+            assert module_lines(cache, old_guessed_path, pin) is None
+            repaired_count += 1
+    assert repaired_count == 37
+
+    paper_pin, body_pin = "a" * 40, "b" * 40
+    fixture = (r"\newcommand{\commit}{" + paper_pin + r"}"
+               r"\newcommand{\lword}[4]{\href{https://github.com/wcook04/plectis-erdos/blob/"
+               + body_pin + r"/ErdosProblems/#1\#L#2}{#4}}"
+               r"\lword{Exact.lean}{7}{result}{source}")
+    coordinates, problems = paper_macro_coordinates(fixture, formal_ref)
+    assert not problems
+    assert coordinates == [("lword", "ErdosProblems/Exact.lean", 7, "result", body_pin)]
+    # A nonexistent body pin must stay nonexistent even if the main pin is real.
+    stale = fixture.replace(paper_pin, formal_ref)
+    stale_coordinates, problems = paper_macro_coordinates(stale, formal_ref)
+    assert not problems and stale_coordinates[0][-1] == body_pin
+    assert module_lines({}, stale_coordinates[0][1], body_pin) is None
+    unresolved = fixture.replace("/ErdosProblems/#1", r"/\UNKNOWN/#1")
+    coordinates, problems = paper_macro_coordinates(unresolved, formal_ref)
+    assert not coordinates and problems
+    hidden = fixture.replace(r"\lword{Exact.lean}", r"\iffalse\lword{Exact.lean}") + r"\fi"
+    assert query_corpus.printed_macro_sources(hidden) == {}
+    coordinates, problems = paper_macro_coordinates(hidden, formal_ref)
+    assert not problems and coordinates[0][-1] == body_pin
+    assert query_corpus.printed_macro_sources(hidden) == {}  # still no reader route
+
+
 def main() -> int:
     validate_principal_paper_query_metadata()
+    check_pinned_coordinate_fixtures()
+    validate_release_word_link_coordinates()
+    validate_current_source_identities()
+    validate_problem_route_anchor_transport()
+    validate_registered_claim_paper_routes()
+    validate_visible_companion_paper_routes()
     check_pinned_source_link_layouts()
     validate_in_process_query_dispatch()
     validate_blank_selectors()
@@ -3172,10 +3487,9 @@ def main() -> int:
     assert adelic["claim"]["declarations"][0]["module"] == (
         "Erdos249257/AdelicHeightObstruction.lean"
     )
-    assert adelic["lean_source_identity"] == {
-        **formal_source,
-        "repository": claims_document["release"]["repository"],
-    }
+    assert adelic["lean_source_identity"] == lean_source_identity_for_paper(
+        claims_document, adelic["paper"]["source"]
+    )
 
     square_crt_claim = query("--claim", "square_crt_correction_suppression")
     assert square_crt_claim["claim"]["status"] == "proved here"
@@ -3502,7 +3816,7 @@ def main() -> int:
         + formal_source["ref"]
         + "/lean/"
     )
-    assert declaration["matches"][0]["lean_source_identity"] == adelic["lean_source_identity"]
+    assert declaration["matches"][0]["lean_source_identity"] == query_corpus.formal_source_identity(claims_document)
     assert declaration["matches"][0]["attached_claims"][0]["paper"]["label"] == "res:farey"
     assert "res:farey" in {
         row["canonical_handle"]
@@ -3540,7 +3854,7 @@ def main() -> int:
     assert source_coordinate["source"]["source_url"].endswith(
         "/Erdos249257/CertificateKernel.lean#L18383"
     )
-    assert source_coordinate["source"]["lean_source_identity"] == adelic["lean_source_identity"]
+    assert source_coordinate["source"]["lean_source_identity"] == query_corpus.formal_source_identity(claims_document)
     source_declaration = source_coordinate["nearby_declarations"][0]
     assert source_declaration["name"] == (
         "tsum_totient_div_pow_two_ne_ratCast_of_den_le_79639646646701375323355774875831053"
@@ -3834,12 +4148,19 @@ def main() -> int:
         "boolean_mobius_exact_row_dynamics registers no declarations, so the "
         "anchor cross-check below would compare against nothing"
     )
+    from check_problem_note_sources import reachable_companion_sources
+    exact_row_destinations = {exact_row_paper_source, *reachable_companion_sources(
+        exact_row_paper_source, (ROOT / exact_row_paper_source).read_text(encoding="utf-8")
+    )}
     for anchor in exact_row_paper_route["matching_anchors"]:
-        assert anchor["source_ref"].startswith(f"{exact_row_paper_source}:"), (
-            "boolean_mobius_exact_row_dynamics matched an anchor outside its "
-            f"own paper: {anchor['source_ref']!r} is not in "
-            f"{exact_row_paper_source}"
-        )
+        destination = anchor["destination_source"]
+        assert destination in exact_row_destinations
+        assert anchor["source_ref"].startswith(destination + ":")
+        if destination != exact_row_paper_source:
+            assert anchor["visible_hop"] == "registered_visible_companion_pdf_link"
+            assert anchor["relation_origin"].startswith("visible_companion_")
+        else:
+            assert anchor["visible_hop"] is None
         assert anchor["command"] == (
             "python3 scripts/query_corpus.py --paper-anchor "
             f"{anchor['canonical_handle']}"
@@ -3991,7 +4312,9 @@ def main() -> int:
         assert fixed_module["module_handle_resolution"]["resolved"] == (
             "Erdos249257/TropicalCurvatureCarry.lean"
         )
-        assert fixed_module["paper_sigil"] == "TroCurCar"
+        # The stable module is still routable, but the current paper no longer
+        # assigns it a source sigil. Do not invent an alias from its stem.
+        assert fixed_module["paper_sigil"] is None
         assert [row["id"] for row in fixed_module["attached_claims"]] == [
             "fixed_precision_transport_no_go"
         ]
@@ -4013,10 +4336,16 @@ def main() -> int:
         )
         if reviewed_fixed:
             assert fixed_family["paper_route"]["matching_anchors"]
+            fixed_source = "paper/249/erdos249-totient-reasoning-surface.tex"
+            fixed_lines = (ROOT / fixed_source).read_text(encoding="utf-8").splitlines()
+            fixed_label_lines = [i + 1 for i, line in enumerate(fixed_lines)
+                                 if r"\label{prop:B5-kill}" in line]
+            assert len(fixed_label_lines) == 1
             assert any(
-                anchor["source_ref"].startswith(
-                    "paper/249/erdos-249-binary-totient-series.tex:"
-                )
+                anchor["source_ref"] == f"{fixed_source}:{fixed_label_lines[0]}"
+                and anchor["destination_source"] == "paper/249/erdos249-totient-reasoning-surface.tex"
+                and anchor["relation_origin"] == "visible_companion_authored_source_link"
+                and anchor["visible_hop"] == "registered_visible_companion_pdf_link"
                 for anchor in fixed_family["paper_route"]["matching_anchors"]
             )
             assert fixed_family["representative"] == (
@@ -4115,7 +4444,11 @@ def main() -> int:
         assert coefficient_module["module_handle_resolution"]["resolved"] == (
             "ErdosProblems/Erdos251/PrimeGapDyadicTail.lean"
         )
-        assert coefficient_module["paper_sigil"] == "PriGapDyaTai"
+        # R5 cites this source directly; its former module macro is no longer
+        # used, so the source-owned alias registry retires its paper sigil.
+        # Both ordinary module handles must still resolve and serve the same
+        # reviewed problem families below.
+        assert coefficient_module["paper_sigil"] is None
         coefficient_problem = next(
             row
             for row in coefficient_module["problem_routes"]
@@ -4161,22 +4494,27 @@ def main() -> int:
             "ErdosProblems.Erdos251.carryCoeff_natCast_not_eventually_periodic",
             "ErdosProblems.Erdos251.primeGap0_not_eventually_periodic",
         ]
-        coefficient_paper = "paper/251/erdos-251-prime-gap-dyadic-series.tex"
-        # These declarations now have a dedicated exposition section. Bind the
-        # route to that authored section while allowing earlier prose to grow.
+        coefficient_paper = "paper/251/erdos251-prime-gap-reasoning-surface.tex"
+        # R5 keeps the short counterexample explanation and sends readers to
+        # the companion. Its authored source index supplies all three exact
+        # declaration links; the short gap proposition supplies only one.
         carry_section_lines = [
             line_number
             for line_number, line in enumerate(
                 (ROOT / coefficient_paper).read_text(encoding="utf-8").splitlines(),
                 start=1,
             )
-            if r"\label{sec:carry}" in line
+            if r"\label{long251:app:short-source-index}" in line
         ]
         assert len(carry_section_lines) == 1
         coefficient_anchor = f"{coefficient_paper}:{carry_section_lines[0]}"
         assert any(
             anchor["source_ref"]
             == coefficient_anchor
+            and anchor["canonical_handle"] == "long251:app:short-source-index"
+            and anchor["relation_origin"] == "visible_companion_authored_source_link"
+            and anchor["visible_hop"] == "registered_visible_companion_pdf_link"
+            and anchor["destination_source"] == coefficient_paper
             and set(anchor["matched_declarations"])
             == {
                 "carryPartialSum_natCast_eq",
@@ -4397,6 +4735,7 @@ def main() -> int:
     corpus_default_commit = corpus_pinned_commit()
     anchors = paper_anchor_inventory()
     snapshot_cache: dict[tuple[str, str], list[str]] = {}
+    qualified_snapshot_cache: dict[tuple[str, str], dict[str, list[int]]] = {}
     pinned_snapshot_requests = set()
     for anchor in anchors:
         paper_source = anchor["paper"]["source"]
@@ -4409,7 +4748,7 @@ def main() -> int:
         for link in anchor["source_links"]:
             if link["declaration"]:
                 module, _, _line_text = link["source_ref"].rpartition(":")
-                pinned_snapshot_requests.add((note_commit, module))
+                pinned_snapshot_requests.add((pinned_link_commit(link), module))
     snapshot_lines_batch(pinned_snapshot_requests, snapshot_cache)
     live_link_count = 0
     pinned_link_count = 0
@@ -4449,6 +4788,7 @@ def main() -> int:
             if not link["declaration"]:
                 continue
             pinned_link_count += 1
+            note_commit = pinned_link_commit(link)
             module, _, line_text = link["source_ref"].rpartition(":")
             lines = snapshot_lines(note_commit, module, snapshot_cache)
             assert lines, (
@@ -4461,7 +4801,16 @@ def main() -> int:
                 f"{module} at its pinned commit {note_commit} "
                 f"({len(lines)} lines)"
             )
-            assert declares_at(lines, index, link["declaration"]), (
+            if link["macro"] == "lean" and link["declaration"].endswith(".lean"):
+                # The two-argument long-record macro ignores its first
+                # argument. A filename there denotes source navigation,
+                # including a proof-body line, rather than a theorem name.
+                assert Path(link["declaration"]).name == Path(module).name
+                continue
+            cache_key = (note_commit, module)
+            if cache_key not in qualified_snapshot_cache:
+                qualified_snapshot_cache[cache_key] = qualified_declaration_lines("\n".join(lines))
+            assert exact_qualified_head(qualified_snapshot_cache[cache_key], link["declaration"], index + 1), (
                 f"{paper_source} links {link['source_ref']} for "
                 f"{link['declaration']!r}, but at its pinned commit "
                 f"{note_commit} that line reads {lines[index].strip()!r}"
@@ -4535,15 +4884,46 @@ def main() -> int:
             "remaining_open_proposition_anchor"
         )
 
+    printed_source_context = {}
     for anchor_row in paper_anchor_inventory():
         anchor_view = paper_anchor_packet(anchor_row["canonical_handle"])
         closure_checks += 1
         assert anchor_view["anchor_class"] == anchor_row["anchor_class"]
         assert anchor_view["lean_source_identity"] == anchor_row["paper"]["lean_source_identity"]
-        assert all(
-            link["source_identity"] == anchor_view["lean_source_identity"]
-            for link in anchor_view["source_links"]
-        )
+        for link in anchor_view["source_links"]:
+            # A long record can print a literal historical macro base or a
+            # separately declared late pin. Its destinations must retain those
+            # pins rather than be silently assigned the manuscript's main pin.
+            import check_problem_note_sources as note_owner
+            source = anchor_row["paper"]["source"]
+            if source not in printed_source_context:
+                manuscript = (ROOT / source).read_text(encoding="utf-8")
+                px = note_owner.PX_RE.search(note_owner.strip_comments(note_owner.safe_worktree_text(note_owner.PREAMBLE)))
+                targets, errors = note_owner.rendered_link_targets(
+                    manuscript, claims_document["release"]["formal_source"]["ref"], None,
+                    px.group(1) if px else note_owner.LIBRARY_PREFIX)
+                pk = note_owner.NOTE_PK_RE.search(note_owner.strip_comments(manuscript))
+                targets = [(pin, pk.group(1) + path[len(r"\PK"):] if pk and path.startswith(r"\PK/") else path)
+                           for pin, path in targets]
+                # The archive also declares lref/lloc with that same literal
+                # PK URL body; the inherited problem-note PX is not their URL.
+                if source == "paper/archive/erdos249-257-main-paper.tex":
+                    assert r"\newcommand{\PK}{Erdos249257}" in manuscript
+                    macro_rows = list(note_owner.RENDERED_MACRO_RE.finditer(note_owner.strip_unrendered(note_owner.strip_comments(manuscript))))
+                    archive_pin = note_owner.note_pinned_commit(manuscript, claims_document["release"]["formal_source"]["ref"])
+                    targets = [(archive_pin, "Erdos249257/" + macro.group("file"))
+                               if macro.group("macro") in {"lref", "lrefx", "lloc"} else target
+                               for macro, target in zip(macro_rows, targets)]
+                printed_source_context[source] = (manuscript, set(targets), errors)
+            manuscript, targets, errors = printed_source_context[source]
+            if link["macro"] != "lean":
+                assert not errors
+                assert (link["source_identity"]["ref"], link["printed_path"]) in targets
+            else:
+                expected_pin = note_owner.note_pinned_commit(manuscript, claims_document["release"]["formal_source"]["ref"])
+                if link["printed_path"].startswith("lean/"):
+                    expected_pin = note_owner.LATE_COMMIT_RE.search(note_owner.strip_comments(manuscript)).group(1)
+                assert link["source_identity"]["ref"] == expected_pin
 
     for artifact_row in artifact_inventory():
         for handle in (artifact_row["artifact_handle"], artifact_row["content_digest"]):

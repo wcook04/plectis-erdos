@@ -55,11 +55,12 @@ Give the agent this prompt, replacing the bracketed task:
 > remaining assumptions or unresolved step. Preserve unrelated work. Prepare
 > proposed contributions using this repository's contribution workflow.
 
-Start with one of these tasks. The first two are the two ways to begin research:
-with a listed question, or with the mathematics itself.
+Start with a task below. For research, you can begin with a listed question
+or with the mathematics itself. For learning, specify how much help you want.
 
 | Task to give your agent | Useful result |
 |---|---|
+| Help me work through the #257 weighted theorem, one hint at a time | The named statement and one hint matched to your background, followed by space for your attempt. [Reading guidance](../READING_GUIDE.md#work-through-an-argument) |
 | Show me the open questions and help me choose one | The list from `python3 scripts/query_corpus.py --open`, one chosen row, and the checked results that bear on it |
 | Read the corpus and decide what is worth developing | A direction stated early with its reason, the sources it rests on, what was proved, computed or conjectured, the prior work found, and the next question. [One investigation](../../research/experiments/choices_contraction/README.md) shows the shape |
 | Explain how this repo works to a newcomer | A source-linked map and one relevant next action |

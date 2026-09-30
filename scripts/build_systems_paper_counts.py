@@ -36,7 +36,6 @@ import argparse
 import json
 import re
 import sys
-from functools import lru_cache
 from pathlib import Path
 from typing import Any
 
@@ -223,8 +222,8 @@ def replace_region(text: str, region: str) -> str:
     return text[:start] + region + text[stop + len(END):]
 
 
-@lru_cache(maxsize=4)
 def _expected_region(root: str, head: str) -> str:
+    # A root path and journal head do not identify mutable ledger/registry bytes.
     return render(expected_values(Path(root), head))
 
 
@@ -262,30 +261,111 @@ def errors(text: str, root: Path = ROOT) -> list[str]:
     return found
 
 
+
+PIPELINE_BEGIN = "% BEGIN generated_pipeline_counts"
+PIPELINE_END = "% END generated_pipeline_counts"
+VERSION_TWO = "% SYSTEMS_PAPER_VERSION 2"
+
+
+def pipeline_values(root: Path) -> dict[str, Any]:
+    """Inventory, never a claim that the compiler/kernel/model was rerun.
+
+    This uses the existing ledger/registry/frontier/journal owners. Counts of
+    publication occurrences, unique claims and journal returns remain separate.
+    The old uncommitted argument-export totals are deliberately not imported.
+    """
+    values = ledger_values(root)
+    values.update(registry_values(root))
+    values.update(journal_values(root, None))
+    corpus = _json(root, "docs/papers/corpus.json")["papers"]
+    source = _json(root, "docs/problem_index_source.json")["problems"]
+    values.update({
+        "ProblemWorlds": len(source),
+        "RegisteredPapers": len(corpus),
+        "ShortPapers": sum(p["form"] == "Problem note" for p in corpus),
+        "LongRecords": sum(p["form"] == "Reasoning surface" for p in corpus),
+    })
+    historical = _json(root, "docs/publication_evidence.json")
+    summary = historical["evaluation"]["summary"]
+    total = summary["authored_mutation_count"]
+    rejected = summary["rejected_mutation_count"]
+    escaped = len(summary["escaped_mutation_ids"])
+    if rejected + escaped != total or len(historical["evaluation"]["mutations"]) != total:
+        raise CountError("historical mutation outcomes do not partition the recorded cases")
+    values.update({"HistoricalEdits": word(total), "HistoricalRejected": word(rejected),
+                   "HistoricalEscaped": word(escaped),
+                   "HistoricalNotRerun": word(total-len(historical["post_repair"]["rerun_mutation_ids"]))})
+    return values
+
+
+def pipeline_render(values: dict[str, Any]) -> str:
+    return render(values).replace(BEGIN, PIPELINE_BEGIN).replace(END, PIPELINE_END)
+
+
+def pipeline_errors(text: str, root: Path = ROOT) -> list[str]:
+    """Recompute once per invocation; missing, duplicate and extra macros fail."""
+    try:
+        stated = region_values(text, PIPELINE_BEGIN, PIPELINE_END)
+        region = text[text.index(PIPELINE_BEGIN):text.index(PIPELINE_END)]
+        names = re.findall(r"\\newcommand\{\\([A-Za-z]+)\}", region)
+        if len(names) != len(set(names)):
+            return ["duplicate pipeline count macro"]
+        expected = region_values(pipeline_render(pipeline_values(root)), PIPELINE_BEGIN, PIPELINE_END)
+    except (OSError, ValueError, KeyError, TypeError, research_record.RecordError) as exc:
+        return [f"pipeline source error: {exc}"]
+    return [f"\\{name}: paper={stated.get(name)!r}; source={expected.get(name)!r}"
+            for name in sorted(set(stated) | set(expected)) if stated.get(name) != expected.get(name)]
+
+
+def pipeline_snapshot(root: Path) -> dict[str, Any]:
+    """A content-addressed reproduction recipe for the inventory table."""
+    import hashlib
+    paths = ["docs/paper_lean_coverage.json", "docs/claims.json",
+             "docs/problem_index_source.json", "docs/papers/corpus.json",
+             "docs/publication_evidence.json",
+             research_record.journal_path(root).relative_to(root).as_posix()]
+    return {"schema": "systems-paper-counts/2", "classification": "inventory_and_reported_history",
+            "builder": "scripts/build_systems_paper_counts.py::pipeline_values",
+            "values": pipeline_values(root),
+            "inputs": [{"path": name, "sha256": hashlib.sha256((root/name).read_bytes()).hexdigest()}
+                       for name in paths],
+            "limits": ["Rows count publication occurrences, not distinct theorems.",
+                       "Compiled-target and recorded Comparator statuses are not fresh kernel runs.",
+                       "Journal returns are not an independent experimental sample."]}
+
+
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    parser.add_argument("--write", action="store_true", help="rewrite the region from the checkout")
-    parser.add_argument("--journal-head", help="with --write: an event_sha prefix to count the journal up to")
+    parser.add_argument("--write", action="store_true", help="rewrite the appropriate generated region")
+    parser.add_argument("--journal-head", help="legacy mode: count an earlier journal prefix")
     parser.add_argument("--paper", type=Path, default=PAPER)
+    parser.add_argument("--root", type=Path, default=ROOT)
+    parser.add_argument("--snapshot", type=Path, help="write the v2 inventory and source digests as JSON")
     args = parser.parse_args(argv)
-    text = args.paper.read_text(encoding="utf-8")
-    if args.write:
-        try:
-            region = render(expected_values(ROOT, args.journal_head))
-            updated = replace_region(text, region)
-        except (CountError, research_record.RecordError) as exc:
-            print(f"no counts written: {exc}", file=sys.stderr)
-            return 2
-        args.paper.write_text(updated, encoding="utf-8")
-        text = updated
-    found = errors(text)
-    if found:
-        print("systems-paper record counts differ from the checkout:", file=sys.stderr)
-        for line in found:
-            print(f"  {line}", file=sys.stderr)
-        print("run: python3 scripts/build_systems_paper_counts.py --write", file=sys.stderr)
-        return 1
-    print("systems-paper record counts: every generated count matches the checkout")
+    try:
+        text = args.paper.read_text(encoding="utf-8")
+        v2 = VERSION_TWO in text
+        if args.write:
+            if v2:
+                if args.journal_head:
+                    raise CountError("v2 inventory counts the attached journal; no implicit historical prefix")
+                region_values(text, PIPELINE_BEGIN, PIPELINE_END)
+                start, end = text.index(PIPELINE_BEGIN), text.index(PIPELINE_END)+len(PIPELINE_END)
+                text = text[:start] + pipeline_render(pipeline_values(args.root)) + text[end:]
+            else:
+                text = replace_region(text, render(expected_values(args.root, args.journal_head)))
+            args.paper.write_text(text, encoding="utf-8")
+        found = pipeline_errors(text, args.root) if v2 else errors(text, args.root)
+        if found:
+            print("systems-paper counts: " + "; ".join(found), file=sys.stderr)
+            return 1
+        if args.snapshot:
+            args.snapshot.parent.mkdir(parents=True, exist_ok=True)
+            args.snapshot.write_text(json.dumps(pipeline_snapshot(args.root), indent=2)+"\n", encoding="utf-8")
+    except (OSError, ValueError, KeyError, TypeError, research_record.RecordError) as exc:
+        print(f"systems-paper counts: {exc}", file=sys.stderr)
+        return 2
+    print("systems-paper counts: all generated values match their source owners")
     return 0
 
 
