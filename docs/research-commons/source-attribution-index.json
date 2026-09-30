@@ -121802,7 +121802,7 @@
     "public_source_credit": "Names and direct citations are retained for published literature, software and public contributions. Source identity, exact local use, and mathematical correspondence are separate."
   },
   "source_registry": "docs/research-commons/source-attributions.json",
-  "source_registry_sha256": "sha256:498b8e5502b2c1dfadc0c14f0f1a690ac2601923a633e52217f135ea1fce22e1",
+  "source_registry_sha256": "sha256:b9c65db23f512d71a068e5cd9a06aa7f1fe18b8252b6f9d9e7eca772c21d1562",
   "sources": [
     {
       "artifact_coordinates": [
@@ -122751,11 +122751,11 @@
           "sha256": "sha256:43aca5f4da7f5f42baf826e53324c045e4fa11acd20ffd1743609e20b5084157"
         },
         {
-          "excerpt_sha256": "sha256:d38bbf38909250ed6425efc908bf466dd7da14f8cbd8020fdd3021ef1548b592",
+          "excerpt_sha256": "sha256:841f2dd16d4a52b7d08408468dd3f4f231b7d8aeb174d9ffad383abbde1acfe9",
           "line_end": 14,
           "line_start": 4,
           "path": "docs/EXTERNAL_VERIFICATION.md",
-          "sha256": "sha256:786fb7fdde7748dcbd1b8af882b22316a5fba42c1b83938dad002a8f9569a665"
+          "sha256": "sha256:47184e48546e05683695d30d72cdfa02fefba99a65cc8fc83913a6cfba36d8e1"
         }
       ],
       "artifact_links": [
@@ -122778,7 +122778,7 @@
           "path": "verification/comparator-negative-mismatch.json"
         },
         {
-          "excerpt_sha256": "sha256:d38bbf38909250ed6425efc908bf466dd7da14f8cbd8020fdd3021ef1548b592",
+          "excerpt_sha256": "sha256:841f2dd16d4a52b7d08408468dd3f4f231b7d8aeb174d9ffad383abbde1acfe9",
           "line_end": 14,
           "line_start": 4,
           "path": "docs/EXTERNAL_VERIFICATION.md"
@@ -122861,7 +122861,7 @@
           "line_end": 544,
           "line_start": 534,
           "path": "docs/EXTERNAL_VERIFICATION.md",
-          "sha256": "sha256:786fb7fdde7748dcbd1b8af882b22316a5fba42c1b83938dad002a8f9569a665"
+          "sha256": "sha256:47184e48546e05683695d30d72cdfa02fefba99a65cc8fc83913a6cfba36d8e1"
         }
       ],
       "artifact_links": [

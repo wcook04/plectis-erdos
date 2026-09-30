@@ -119,6 +119,21 @@ explicit module-specific immutable pin that has been checked this way.  Do not
 move the global pin merely to repair that link unless every pin-relative link
 in the paper has been audited at the proposed revision.
 
+When a producer regenerates text cited by `source-attributions.json`, its own
+`--check` does not validate that attribution anchor. Run
+`python3 scripts/reanchor_source_attributions.py --base <previous-accepted-commit>`
+first as a dry run and review each changed excerpt against its recorded
+relation. Unchanged excerpts may move with their original digest; changed
+implementation evidence needs semantic review before the owner recomputes its
+digest. Keep the original advice, identity and credit, and preserve its historical
+edition. Do not relabel a quotation or silently extend a reviewed claim.
+`--preserve-excerpts` refuses changed content; it is not a way to approve it.
+After review, use the same explicit base with `--write`, run
+`python3 scripts/build_source_attributions.py` and its `--check`, then refresh
+the corpus through `python3 scripts/corpus_substrate.py --write`. Run
+`python3 scripts/refresh_projections.py --preflight` before exact-head release
+admission. Never hand-edit the generated attribution index or register.
+
 ## Classify before changing
 
 Choose the first matching class:

@@ -15865,7 +15865,7 @@
           "path": "docs/EXTERNAL_VERIFICATION.md",
           "line_start": 4,
           "line_end": 14,
-          "excerpt_sha256": "sha256:d38bbf38909250ed6425efc908bf466dd7da14f8cbd8020fdd3021ef1548b592"
+          "excerpt_sha256": "sha256:841f2dd16d4a52b7d08408468dd3f4f231b7d8aeb174d9ffad383abbde1acfe9"
         }
       ],
       "relation": "Implemented advice to classify each selected result, expose exact statements, proof provenance, novelty status, sorry count, axiom budget, and boundaries in formalization.yaml, and to provide a cheap Comparator inspection route with an altered-statement rejection fixture. The current public surface has evolved beyond the original interface count; the durable implementation is the manifest-plus-Comparator pattern and its explicit scope ceiling.",
