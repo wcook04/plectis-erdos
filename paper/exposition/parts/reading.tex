@@ -1,0 +1,109 @@
+% SPDX-FileCopyrightText: 2026 Will Cook
+% SPDX-License-Identifier: CC-BY-4.0
+\section{Learning to explain a particular argument}\label{sec:reading}
+\papersectiontarget{exposition-reading}
+
+Suppose a proof constructs a sequence by repeatedly choosing a digit. A sentence
+saying that the choice can be repeated explains how to obtain every finite
+prefix. It may leave the reader to supply the reason why the resulting infinite
+series has the prescribed sum. Replacing the sentence by smoother prose does
+not address that difficulty. The explanation needs the invariant for the
+remainder and the fact that its bound tends to zero.
+
+This example, developed in Section~\ref{sec:remainder}, suggests where to look
+for a useful model. Another paper that constructs an infinite sum through
+controlled finite remainders can show how to separate the choice from the
+limiting argument. It need not study the same sequence. Its relevance lies in
+an identifiable part of the proof, and the comparison ends where the arguments
+differ. The model contributes an expository choice; the new paper must supply
+its own mathematics.
+
+General advice remains useful. Halmos discusses audience, organization and the
+selection of examples~\cite[\S\S3--4]{halmos}. Knuth, Larrabee and Roberts discuss
+the introduction of symbols, the connection between sentences and the reader's
+need to know why a step is being taken~\cite[\S1]{knuth}. Gowers examines the
+placement of examples relative to unfamiliar abstractions~\cite{gowers}, while
+Tao cautions against sacrificing usefulness to excessive optimization of a
+paper~\cite{tao}. Such advice identifies questions to ask. A nearby mathematical
+argument shows how an author has answered them in a particular setting.
+
+The method described here grew out of revisions to short papers and longer
+research records for eight Erd\H{o}s problems. Most research and drafting in
+this project was performed by AI agents. Some agents worked from frozen packets;
+others had access to the live repository and integrated proposed changes.
+Their judgements are editorial evidence, with the limitations described below.
+They are not observations of how an independent mathematical audience read the
+papers. The examples support an inspectable procedure for revision rather than
+a claim that the procedure has already been shown to produce better readers or
+better mathematics.
+
+\subsection{Choose sources by the work the prose must do}
+
+Before collecting stylistic examples, identify the manuscript's subject, genre
+and reader. An irrationality note may need a compact route from an assumed
+rational sum to a positive integer smaller than one. A geometric paper may need
+to explain which component is being measured and why a map preserves the
+quantity under discussion. A survey has to distinguish several viewpoints; a
+short theorem paper may need to develop just one. These differences affect
+terminology, notation and the amount of preparation a proof needs.
+
+Choose a small group of human-authored papers that addresses these needs.
+Include a paper close in subject for vocabulary and attribution, and, when
+useful, one close in proof structure for the explanation of a construction or
+estimate. A famous paper from a remote field can offer a comparison, but it
+cannot settle the conventions of the target field. Nor does frequent usage
+make a term appropriate when its definition differs from the object at hand.
+
+Read the original passage in a named version. An abstract can establish the
+name used for an object; it seldom reveals the pacing of the proof. For that,
+read the argument around the sentence, including the statement it proves and
+the hypotheses it invokes. Record the section, theorem or equation label and
+page. Preprint versions can have different numbering from a published article,
+and a source archive may differ from the accompanying PDF. The file's digest
+identifies the supplied bytes; a public link tells the reader where to seek
+the work. Neither should silently stand in for the other.
+
+The record should distinguish three acts. A packet may contain a source. Its
+recipient may declare that particular pages were read. An integrating reviewer
+may later inspect the quoted passage. These are different facts. Later
+inspection can verify a locator or expose a poor analogy; it cannot establish
+what the earlier recipient actually read.
+
+\subsection{Read sentences as mathematical relations}
+
+A useful reading pass asks what each choice allows the reader to infer.
+Consider the placement of a hypothesis. A theorem statement should quantify
+the objects and state the assumptions needed for its conclusion. Inside the
+proof, recalling one of those assumptions can explain a step that would
+otherwise look automatic. A phrase such as ``by positivity'' helps only if
+the reader can identify the positive quantity and the inference that uses it.
+
+Connective words deserve the same attention. ``Since'' introduces a reason;
+``hence'' asserts that the conclusion follows; ``provided that'' makes a
+condition visible; ``it remains to prove'' identifies unfinished work. These
+words are not interchangeable devices for varying a paragraph. A revision
+that changes ``provided that'' to ``hence'' can change the logical force of
+the sentence while leaving every displayed formula intact.
+
+Parallel syntax helps compare parallel claims. A subordinate clause can keep
+a dependency beside the assertion that uses it. There is no preferred ratio
+of short to long sentences: a short sentence may hide its antecedent, while
+a longer one can keep a condition attached to its consequence. The point of
+studying an author's construction is to understand that relation, then write
+original prose appropriate to the new argument.
+
+Notation should receive this close reading as well. Ask when a symbol first
+becomes necessary, what repeated work it saves and which nearby quantities
+the reader might confuse with it. A new name for a standard object creates an
+additional translation. Conversely, removing an established term such as
+``Stieltjes moment sequence'' can make a manuscript less connected to its
+literature~\cite{wangzhu}. A vocabulary pass should compare definitions and
+uses, rather than delete unfamiliar words merely because they are technical.
+
+Proof pacing is the allocation of explanation to mathematical difficulty.
+The reader may need to see the accuracy required of an estimate before its
+derivation, or the obstruction that motivates a parameter choice. Several
+lines of routine substitution can be shorter than one indispensable sentence
+about why a limit exists. The manuscript should give the latter its space.
+These choices can be examined in actual passages, without imitating an
+author's voice or turning a preferred cadence into a rule.

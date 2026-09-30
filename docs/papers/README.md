@@ -8,7 +8,7 @@ PDFs and LaTeX source. Both public repositories include the active papers.
 Older, retired papers are kept only in the repository that published them.
 Some papers may be available in the repository before they appear on the website.
 
-This checkout contains 18 active papers and 3 retired papers and 1 paper awaiting website publication.
+This checkout contains 18 active papers and 3 retired papers and 3 papers awaiting website publication.
 
 ## Systems paper
 
@@ -251,7 +251,7 @@ not currently earn scarce first-contact attention.
 
 <a id="problem-portfolio"></a>
 
-## All papers (22)
+## All papers (24)
 
 The mathematical papers cover Erdős #68, Erdős #243, Erdős #249, Erdős #251, Erdős #257, Erdős #269, Erdős #1041, Erdős #1049. They state the results obtained and what remains unproved. Retired papers are marked below.
 
@@ -477,6 +477,20 @@ Superseded by [Publishing Mathematical Results from a Lean Repository](full-text
 
 Selected sections of this historical account: [The strategy](full-text/open-source-mathematics-strategy.md#sec:strategy), [The contribution protocol](full-text/open-source-mathematics-strategy.md#sec:protocol), [From an agent claim to mathematical attention](full-text/open-source-mathematics-strategy.md#sec:attention), [The local-to-general track](full-text/open-source-mathematics-strategy.md#sec:local-to-general), [Limits and governance](full-text/open-source-mathematics-strategy.md#sec:limits).
 
+### How can reading nearby papers and reviewed revisions improve the explanation of a particular mathematical argument?
+
+**Writing Mathematics from the Literature and Reviewed Revisions** · **included here; not yet published on the website**
+
+[full text](full-text/writing-mathematics-from-reviewed-revisions.md) · [PDF](../../paper/exposition/writing-mathematics-from-reviewed-revisions.pdf) · [LaTeX source](../../paper/exposition/writing-mathematics-from-reviewed-revisions.tex) · 19 sections · `writing-mathematics-from-reviewed-revisions` · native to this repository
+
+Start here (selected for this guide): [Learning to explain a particular argument](full-text/writing-mathematics-from-reviewed-revisions.md#sec:reading), [Two revisions and the mathematics that permits them](full-text/writing-mathematics-from-reviewed-revisions.md#sec:revisions), [What the integrating reviewer must decide](full-text/writing-mathematics-from-reviewed-revisions.md#sec:review), [Keeping a useful practice small](full-text/writing-mathematics-from-reviewed-revisions.md#sec:practice).
+
+### How should an AI write a clear and mathematically faithful paper?
+
+**Writing a Good Mathematical Paper** · **included here; not yet published on the website**
+
+[full text](full-text/writing-a-good-mathematical-paper.md) · [PDF](../../paper/exposition/writing-a-good-mathematical-paper.pdf) · [LaTeX source](../../paper/exposition/writing-a-good-mathematical-paper.tex) · 1 sections · `writing-a-good-mathematical-paper` · native to this repository
+
 ## Evidence and limitations
 
 The papers explain the results. To verify a formal proof, use the linked
@@ -507,6 +521,8 @@ responsibility for proof verification, status and explanation as follows:
 - `cold-clone-to-proof-receipt` is not authority for proof validity, optimal reasoning, external mathematical novelty, or demonstrated transfer to another formalisation project.
 - `open-source-mathematics-strategy` is not authority for a solution to any Erdős problem, measured discovery-rate improvement, human peer review, novelty, significance, or community endorsement.
 - `plectis-public-system` is not authority for the private system's internal state, which is not public, and the mathematical results it cites as evidence.
+- `writing-mathematics-from-reviewed-revisions` is not authority for the example mathematics, independent mathematical review, or a measured improvement in reader understanding.
+- `writing-a-good-mathematical-paper` is not authority for a mathematical result, independent review, or a measured improvement in writing.
 
 ## For agents
 

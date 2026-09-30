@@ -28,6 +28,36 @@ handle. Lean source checked by the pinned Lean kernel is proof authority;
 route; papers and Markdown explain. No private checkout, memory, prompt packet,
 provider trace, or private artifact is an input to public prose.
 
+## Read nearby mathematical prose before a substantial rewrite
+
+Start with [Writing a Good Mathematical Paper](../../paper/exposition/writing-a-good-mathematical-paper.pdf)
+for the compact, general instructions. Use the
+[long companion](../../paper/exposition/writing-mathematics-from-reviewed-revisions.pdf)
+and [literature and reviewed-revision guide](../../docs/papers/exposition-method/README.md)
+for worked cases, review history and a manuscript-scale or cross-paper pass. Choose a small set of human papers
+close in subfield and genre, then read the relevant original arguments, with
+exact version and passage locators. Inspect terminology, hypothesis and
+quantifier placement, the reasons expressed by sentence connections, notation
+on first use, proof pacing and local attribution. Write original prose using
+those conventions; do not copy sentences or imitate a named voice.
+
+For each proposed transfer, identify both the source's writing choice and the
+local mathematical fact that licenses the new sentence. A stylistic specimen
+does not prove the target argument. Keep established technical terms; replace
+private compounds by the actual object, bound or property when that reduces
+unnecessary decoding. Use subordinate clauses for dependencies and parallel
+syntax for parallel claims, without optimizing sentence counts or detector rates.
+
+Record the actual before/after passage, source locator, native decision and
+limit in the existing review record. The public [lesson ledger](../../docs/papers/exposition-method/lessons.json)
+preserves examples and corrections; its proposals are not universal commands.
+Keep supplied sources, donor-declared reading and your later inspection distinct.
+Adopt a new general rule only when the case warrants it; otherwise record an
+application of the existing rule. A frozen next packet must include the chosen
+version of this skill, both writing papers, its guidance and the primary originals it asks its reader
+to study. This updates repository practice, not model weights, and claims no
+measured reader benefit.
+
 ## Begin from the claim, not the draft
 
 Before changing mathematical prose, read the exact current result from its
@@ -56,6 +86,10 @@ Compare the exact mathematical domains as well: a local complex-parameter
 chain rule does not itself formalise an integrated real-time trajectory or its
 endpoint behaviour. State separately the checked lemma and any ordinary
 argument that supplies the advertised conclusion.
+
+Logical scope and evidence are separate: a conditional implication can have
+an ordinary or formally checked proof. A finite verification supports an
+infinite claim only through a proved reduction that covers every case.
 
 An ordinary proof can establish a theorem before its full formalization exists.
 Check that argument on its own terms, including limiting steps, endpoints and

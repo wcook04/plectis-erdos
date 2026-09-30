@@ -1,0 +1,116 @@
+{
+  "schema": "exposition-method-version/1",
+  "version": "2026-09-30.1",
+  "required_roles": [
+    "guidance",
+    "skill",
+    "rules",
+    "lessons",
+    "history",
+    "returns",
+    "sources",
+    "companion_source",
+    "companion_pdf",
+    "companion_input",
+    "shared_input",
+    "compact_guide_source",
+    "compact_guide_pdf"
+  ],
+  "files": [
+    {
+      "path": "docs/papers/exposition-method/README.md",
+      "sha256": "b62bc5bc571d87d9276b08cd2b76b64e9d35b842f698036e73df362b2bc4ae95",
+      "role": "guidance"
+    },
+    {
+      "path": "skills/public-mathematical-writing/SKILL.md",
+      "sha256": "917045b368319632166f8c3f8e34fb7528d8442627a16e3eb215f4c9fd946a2b",
+      "role": "skill"
+    },
+    {
+      "path": "docs/papers/exposition-method/rules.json",
+      "sha256": "3e38266110481642f228bf729c51d03abcb44a1b6872675180a88bc5c62aaaf1",
+      "role": "rules"
+    },
+    {
+      "path": "docs/papers/exposition-method/lessons.json",
+      "sha256": "fb5742e7e80feec7a6cc41152c70e514d89e7b48472a821c40399eac0778f1e3",
+      "role": "lessons"
+    },
+    {
+      "path": "docs/papers/exposition-method/history.json",
+      "sha256": "3477e341c98565a1492ba74fdd714dfdb65aaf56060cc7220d9f8d167fc62461",
+      "role": "history"
+    },
+    {
+      "path": "docs/papers/exposition-method/returns.json",
+      "sha256": "b090cdb7f4da5fa4aafecb45a845e4a105ac1926214dfdb77b63e45fa34899ba",
+      "role": "returns"
+    },
+    {
+      "path": "docs/papers/exposition-method/sources.json",
+      "sha256": "4ee6674d64c59c2968df3f2504594caee006b99160142ba62017efec01b83ca9",
+      "role": "sources"
+    },
+    {
+      "path": "paper/exposition/writing-mathematics-from-reviewed-revisions.tex",
+      "sha256": "28dbfb994dab4e4dd415758ec391c3f8f48eafa54a5cc2b7e11130f81bd67af4",
+      "role": "companion_source"
+    },
+    {
+      "path": "paper/exposition/writing-mathematics-from-reviewed-revisions.pdf",
+      "sha256": "d8f3fdfa7a47121f1ff5fc120b6fc5fe57faeb4965d6cadad6135ccf29524f11",
+      "role": "companion_pdf"
+    },
+    {
+      "path": "paper/exposition/parts/reading.tex",
+      "sha256": "477010c009bd03a8d59bc72ecc23e8b4cfe0c026b2b682aff4f564f1a07301c9",
+      "role": "companion_input"
+    },
+    {
+      "path": "paper/exposition/parts/revisions.tex",
+      "sha256": "61ad2530f25d1a3299d3df850c112c19fe6c2de88248a4cdb4db6808e77b9c2f",
+      "role": "companion_input"
+    },
+    {
+      "path": "paper/exposition/parts/review.tex",
+      "sha256": "dca2d08fae2f8d872c40242fb1bb251c9aa3680d0f93e6558da6c00acdd870d3",
+      "role": "companion_input"
+    },
+    {
+      "path": "paper/exposition/parts/practice.tex",
+      "sha256": "85cc755f729d94c28ff5c22bfdc3c83e8ce5c4107229f0e452232159f19d7bbd",
+      "role": "companion_input"
+    },
+    {
+      "path": "paper/exposition/parts/references.tex",
+      "sha256": "c29967605033655277ae7d19183a3bb1358cf74a4c4a4304a8df3fd85c3ae848",
+      "role": "companion_input"
+    },
+    {
+      "path": "paper/paper-house-style.sty",
+      "sha256": "1b4630ead32bfb407a2f29f5953fbb8d4140a659f6500799282a4805ba54a883",
+      "role": "shared_input"
+    },
+    {
+      "path": "paper/problem-note-preamble.tex",
+      "sha256": "088d36d7ba3d3ee0cee2df99e8915927999698f19889f8ea0b8d55b3721ec778",
+      "role": "shared_input"
+    },
+    {
+      "path": "paper/module-aliases.tex",
+      "sha256": "6d6d9640a9b7f04d003ebbffb78db279f5af838a2afc99ba6b5b247cc67b6954",
+      "role": "shared_input"
+    },
+    {
+      "path": "paper/exposition/writing-a-good-mathematical-paper.tex",
+      "sha256": "d04872e1d9e1901b0f0527409cba1b8bca78826dbf12d34a028c5948529d8a45",
+      "role": "compact_guide_source"
+    },
+    {
+      "path": "paper/exposition/writing-a-good-mathematical-paper.pdf",
+      "sha256": "8668072599947b67d9bb30b86b097ed53ad778969dd66d6db9460db1c32a6e54",
+      "role": "compact_guide_pdf"
+    }
+  ]
+}
