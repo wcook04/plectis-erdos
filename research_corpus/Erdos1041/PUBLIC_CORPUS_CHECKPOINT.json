@@ -6,7 +6,7 @@
   "exported_source_file_count": 952,
   "status": "source_current_problem_snapshot",
   "corpus_manifest_path": "research_corpus/Erdos1041/CORPUS_MANIFEST.json",
-  "corpus_manifest_sha256": "edc01f9cf6a356e0722e7dc51425fa01be7200720b17cc2a131cd4bb504b31b3",
+  "corpus_manifest_sha256": "6f456a92e30ed2318d6c342f2e80dbbc77be39a14e051828ef215ffb8b001bbd",
   "strongest_result_map_path": "research_corpus/Erdos1041/STRONGEST_RESULTS.json",
   "strongest_result_map_sha256": "a5f888560836a710024bd6079538cbd62b39c1544a19514903ac57f9789d7e24"
 }

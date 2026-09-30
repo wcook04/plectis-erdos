@@ -94,6 +94,29 @@ def test_public_bytes_rejects_special_file() -> None:
             checker.ROOT = original_root
 
 
+def test_returned_instructions_cannot_override_public_entry() -> None:
+    with tempfile.TemporaryDirectory() as raw:
+        root = Path(raw)
+        corpus = root / checker.PUBLIC_PREFIX
+        corpus.mkdir(parents=True)
+        original_root = checker.ROOT
+        checker.ROOT = root
+        try:
+            for name in checker.AGENT_INSTRUCTION_NAMES:
+                (corpus / name).write_text("private authoring instructions\n")
+                rel = f"{checker.PUBLIC_PREFIX}/{name}"
+                try:
+                    checker.safe_public_path(rel)
+                except checker.CorpusError as error:
+                    require("inert text" in str(error), str(error))
+                else:
+                    require(False, f"active instructions admitted: {name}")
+                (corpus / name).rename(corpus / (name + ".txt"))
+                require(checker.safe_public_path(rel + ".txt")[1].is_file(), rel)
+        finally:
+            checker.ROOT = original_root
+
+
 def test_legacy_and_generic_schema_identities_are_distinct() -> None:
     legacy = checker.envelope_version(
         {"schema": "erdos1041_public_research_corpus_manifest_v1"},
@@ -191,6 +214,7 @@ def main() -> int:
     test_private_path_variants()
     test_public_path_rejects_symlinked_parent()
     test_public_bytes_rejects_special_file()
+    test_returned_instructions_cannot_override_public_entry()
     test_legacy_and_generic_schema_identities_are_distinct()
     test_mixed_schema_envelope_is_rejected()
     test_generic_empty_authority_requires_explicit_source_only_posture()

@@ -75,6 +75,20 @@ For the full claim inventory, use `python3 scripts/verify_claims.py --verify-all
 This mode also uses the current checkout. It additionally reports missing
 paper labels and references to claim IDs absent from the inventory.
 
+To inspect the weighted #257 result introduced in the README, run:
+
+```sh
+python3 scripts/verify_claims.py --claim finite_prime_weighted_support
+```
+
+This prints the weighted-summability hypothesis, the all-base conclusion for
+infinite subsets of a positive host, and the declarations
+`weightedDyadicMeanTarget` and `divisibilityWeightedClaim`. Its paper reference
+is the current #257 short paper, at `res:weighted-support`. The command checks
+the recorded links in your checkout; it does not run Lean or Comparator.
+To rerun that formal comparison, use the
+[#257 theorem replay](verification/EXTERNAL_VERIFICATION_REPLAY.md#reviewer-replay).
+
 ### Reproduce the #257 exact-rational example
 
 Run this from the repository root with Python 3.11 or later. It uses only the

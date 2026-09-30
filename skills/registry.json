@@ -199,11 +199,22 @@
       ],
       "task_intents": [
         {
-          "actions": ["test", "check", "probe", "classify"],
-          "objects": ["rational", "fraction", "subsum"]
+          "actions": [
+            "test",
+            "check",
+            "probe",
+            "classify"
+          ],
+          "objects": [
+            "rational",
+            "fraction",
+            "subsum"
+          ]
         }
       ],
-      "skills": ["explain-public-system"],
+      "skills": [
+        "explain-public-system"
+      ],
       "read": [
         "skills/explain-public-system/SKILL.md#test-one-rational-subsum-candidate",
         "research/experiments/choices_contraction/README.md#the-probe"
@@ -223,11 +234,22 @@
       ],
       "task_intents": [
         {
-          "actions": ["reproduce", "verify", "check", "run"],
-          "objects": ["comparator", "verification", "weighted"]
+          "actions": [
+            "reproduce",
+            "verify",
+            "check",
+            "run"
+          ],
+          "objects": [
+            "comparator",
+            "verification",
+            "weighted"
+          ]
         }
       ],
-      "skills": ["explain-public-system"],
+      "skills": [
+        "explain-public-system"
+      ],
       "read": [
         "skills/explain-public-system/SKILL.md#reproduce-a-selected-comparator-theorem",
         "docs/verification/EXTERNAL_VERIFICATION_REPLAY.md",
@@ -266,6 +288,92 @@
       "entry_purposes": [
         "reproduce"
       ]
+    },
+    {
+      "id": "source_inspection",
+      "title": "Locate a proof source, citation or recorded research edition",
+      "task_cues": [
+        "supporting declaration",
+        "source lookup",
+        "check prior art",
+        "check the citations",
+        "source attribution",
+        "aixiv edition",
+        "arxiv edition",
+        "prove2me packet",
+        "prove2me proof packet"
+      ],
+      "task_intents": [
+        {
+          "actions": [
+            "find",
+            "locate",
+            "trace",
+            "inspect",
+            "check"
+          ],
+          "objects": [
+            "declaration",
+            "declarations",
+            "citation",
+            "citations",
+            "edition",
+            "editions",
+            "attribution"
+          ]
+        }
+      ],
+      "skills": [
+        "explain-public-system"
+      ],
+      "read": [
+        "skills/explain-public-system/SKILL.md#inspect-a-source-or-external-record"
+      ],
+      "commands": [
+        "python3 scripts/query_corpus.py --ask \"<question>\"",
+        "python3 scripts/query_corpus.py --route trace_prior_art",
+        "python3 scripts/build_source_attributions.py --query \"<name-or-problem-or-id>\"",
+        "python3 scripts/query_corpus.py --papers --format json"
+      ],
+      "boundary": "Choose the source-lookup branch matching the question: declaration, prior art, credit, edition or proof packet. Finding a record is not a new proof, a novelty judgement or a fresh platform check."
+    },
+    {
+      "id": "external_records",
+      "title": "Inspect external statements or prepare qualification evidence",
+      "task_cues": [
+        "formal conjectures challenge",
+        "formal conjectures crosswalk",
+        "palomar readiness",
+        "palomar qualification",
+        "registry receipt"
+      ],
+      "task_intents": [
+        {
+          "actions": [
+            "compare",
+            "inspect",
+            "check",
+            "prepare"
+          ],
+          "objects": [
+            "challenge",
+            "comparator",
+            "palomar"
+          ]
+        }
+      ],
+      "skills": [
+        "explain-public-system"
+      ],
+      "read": [
+        "skills/explain-public-system/SKILL.md#inspect-a-source-or-external-record",
+        "docs/verification/README.md"
+      ],
+      "commands": [
+        "python3 scripts/query_corpus.py --route comparator_assurance",
+        "python3 scripts/query_corpus.py --route palomar_qualification"
+      ],
+      "boundary": "Choose the route for the requested statement or service. Inspect correspondence, recorded outcomes or repository-local readiness only. Preparation neither submits to a service nor establishes registration, acceptance or human review; any external submission needs explicit authorisation."
     },
     {
       "id": "understand_repository",
@@ -587,7 +695,10 @@
         "lake build",
         "build failure",
         "changed lean",
-        "concurrent validation"
+        "concurrent validation",
+        "build the lean",
+        "build my lean",
+        "build modified lean"
       ],
       "skills": [
         "lean-concurrent-validation",
@@ -600,7 +711,17 @@
       "commands": [
         "python3 scripts/lean_fast_build.py --plan --changed-from HEAD"
       ],
-      "boundary": "A validation queue coordinates builds; only the pinned Lean kernel supplies proof authority."
+      "boundary": "A validation queue coordinates builds; only the pinned Lean kernel supplies proof authority.",
+      "task_intents": [
+        {
+          "actions": [
+            "validate"
+          ],
+          "objects": [
+            "lean"
+          ]
+        }
+      ]
     },
     {
       "id": "propagate_delta",
@@ -657,7 +778,8 @@
         "waiting for comparator",
         "stale paper links",
         "declaration was renamed",
-        "label docstring"
+        "label docstring",
+        "landing a lean proof"
       ],
       "task_intents": [
         {
@@ -758,7 +880,7 @@
       "task_cues": [
         "add problem",
         "new problem",
-        "another erd\u0151s problem",
+        "another erdős problem",
         "register problem",
         "register its paper",
         "expand problem roster",
@@ -774,7 +896,20 @@
         "docs/problem_index_source.json"
       ],
       "commands": [],
-      "boundary": "Sourcing and incubation do not silently create a reviewed public claim."
+      "boundary": "Sourcing and incubation do not silently create a reviewed public claim.",
+      "task_intents": [
+        {
+          "actions": [
+            "add",
+            "register",
+            "incubate"
+          ],
+          "objects": [
+            "problem",
+            "problems"
+          ]
+        }
+      ]
     },
     {
       "id": "return_research",
@@ -803,8 +938,16 @@
       ],
       "task_intents": [
         {
-          "actions": ["return", "package", "assimilate"],
-          "objects": ["contribution", "patch", "receipt"]
+          "actions": [
+            "return",
+            "package",
+            "assimilate"
+          ],
+          "objects": [
+            "contribution",
+            "patch",
+            "receipt"
+          ]
         },
         {
           "actions": [
