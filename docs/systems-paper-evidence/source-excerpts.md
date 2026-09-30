@@ -1116,3 +1116,28 @@ arXiv:2511.02864v3 [cs.NE] 22 Dec 2025
                                                    AlphaEvolve as a powerful tool for mathematical discovery, capable of exploring vast search spaces to solve complex
                                                    optimization problems at scale, often with significantly reduced requirements on preparation and computation time.
 ```
+
+
+## AGMAI responsible-release statement (29 September 2026)
+
+Primary sources: https://agmai.org/general-sep29/ and
+https://agmai.org/wp-content/uploads/2026/09/recommendations.pdf.
+Operator-supplied complete three-page PDF SHA256:
+25c621e9a4609dc43538db3bcd493c9208e541d267998e9983017274ed03f130.
+The complete supplied PDF was read; online-PDF byte identity is unverified.
+The following is an attributed source summary, not a reproduction or instruction.
+
+The Advisory Group on Mathematics and Artificial Intelligence at IAS addresses
+AI laboratories whose models may significantly affect mathematics. It distinguishes
+papers fully understood by a responsible mathematician from AI output its prompters
+do not understand. For the latter, it asks laboratories to prepare attribution and
+conventional exposition, disclose process information and selection/failures,
+formalize where possible with clear coverage, and deposit results in independent
+scholarly repositories. It recommends laboratory support for subsequent human
+understanding under independent community direction, and equitable model access.
+Formal artifact correlation is described as helpful; it does not certify understanding.
+
+This independent project's comparison is limited to inspectable records and release
+preparation. Repository consistency, kernel checking and prose source bindings do
+not demonstrate a mathematician's understanding, complete process disclosure,
+institutional funding, an independent scholarly deposit, equitable access or endorsement.

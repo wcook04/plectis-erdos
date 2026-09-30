@@ -2377,7 +2377,7 @@
     }
   ],
   "all_other_supports_preserved": true,
-  "current_ledger_sha256": "sha256:f16c82495652b9cb1733e3fd67ac6dbe0b98864f09e322472f61c997489ec18f",
+  "current_ledger_sha256": "sha256:67e94e572ca529a1264cc6b64d4644505601d12ad0359321212c5b6b24c2bddf",
   "support_conservation": "Every retained occurrence preserves all previously registered declarations. Six removed short duplicates had no Lean declarations; their long destinations and ordinary proofs remain registered.",
   "retired_correspondences": [
     "erdos-269-three-prime-running-lcm#res:distinct-height-all",

@@ -363,6 +363,52 @@ def test_printed_links_are_checked_exactly_as_rendered() -> None:
     require(bool(foreign), "an unrecognised \\repobase override passed silently")
 
 
+def test_standalone_semantic_word_bodies_keep_their_actual_pin_and_prefix() -> None:
+    commit, literal, fallback = "a" * 40, "b" * 40, "c" * 40
+    for command in ("newcommand", "renewcommand"):
+        note = (
+            "\\" + command + r"{\commit}{" + commit + "}\n"
+            + "\\" + command + r"{\PX}{lean/ErdosProblems}" "\n"
+            + "\\" + command + r"{\repobase}{https://github.com/wcook04/plectis-erdos/blob/\commit}" "\n"
+            + r"\lref{Synthetic/A.lean}{1}{a}" "\n"
+            + r"\newcommand{\lword}[4]{\href{\repobase/ErdosProblems/#1\#L#2}{#4}}" "\n"
+            + r"\lword{Synthetic/B.lean}{2}{b}{body}" "\n"
+            + r"\newcommand{\mword}[4]{\href{https://github.com/wcook04/plectis-erdos/blob/"
+            + literal + r"/#1\#L#2}{#4}}" "\n"
+            + r"\mword{Erdos249257/C.lean}{3}{c}{literal body}"
+        )
+        targets, problems = scanner.rendered_link_targets(note, fallback, None, "WrongDefault")
+        require(not problems, repr(problems))
+        require((commit, "lean/ErdosProblems/Synthetic/A.lean") in targets, "local pin/PX ignored")
+        require((commit, "ErdosProblems/Synthetic/B.lean") in targets, "actual word body prefix ignored")
+        require((literal, "Erdos249257/C.lean") in targets, "literal word-body pin ignored")
+        require(not any(pin == fallback for pin, _path in targets), "standalone body uses inherited pin")
+    foreign = r"\newcommand{\lword}[4]{\href{https://example.org/#1\#L#2}{#4}}\lword{X.lean}{1}{x}{x}"
+    _targets, problems = scanner.rendered_link_targets(foreign, fallback, None, "ErdosProblems")
+    require(bool(problems), "foreign semantic word body passed silently")
+    foreign_base = r"\newcommand{\repobase}{https://example.org/\commit}\lref{X.lean}{1}{x}"
+    _targets, problems = scanner.rendered_link_targets(foreign_base, fallback, None, "ErdosProblems")
+    require(bool(problems), "foreign standalone source base passed silently")
+
+
+def test_standalone_word_body_nonexistent_pin_or_path_is_rejected() -> None:
+    existing, absent = "a" * 40, "b" * 40
+    for pin, path in ((absent, "ErdosProblems/Exists.lean"), (existing, "ErdosProblems/Missing.lean")):
+        note = (r"\newcommand{\lword}[4]{\href{https://github.com/wcook04/plectis-erdos/blob/"
+                + pin + r"/ErdosProblems/#1\#L#2}{#4}}\lword{"
+                + path.removeprefix("ErdosProblems/") + r"}{1}{target}{target}")
+        def fake_text(source):
+            return r"\newcommand{\PX}{Erdos249257}" if source == scanner.PREAMBLE else note
+        def fake_present(keys):
+            return {key for key in keys if key == (existing, "ErdosProblems/Exists.lean")}
+        with patch.object(scanner, "ledger_sources", return_value=["paper/synthetic.tex"]), \
+                patch.object(scanner, "safe_worktree_text", side_effect=fake_text), \
+                patch.object(scanner, "objects_present", side_effect=fake_present):
+            failures, checked = scanner.rendered_link_failures(existing, None)
+        require(checked >= 1 and bool(failures), "missing body pin/path passed")
+        require(any("404" in row and pin[:12] in row for row in failures), repr(failures))
+
+
 def test_printed_path_absent_at_pin_fails_with_relocation_hint() -> None:
     commit = "a" * 40
     note = r"\renewcommand{\commit}{" + commit + r"}\lword{Erdos243/Tail.lean}{3}{tail}{the tail}"
@@ -620,6 +666,8 @@ def test_worded_pinned_link_reaches_the_declaration_at_its_line() -> None:
 
 def main() -> int:
     test_printed_links_are_checked_exactly_as_rendered()
+    test_standalone_semantic_word_bodies_keep_their_actual_pin_and_prefix()
+    test_standalone_word_body_nonexistent_pin_or_path_is_rejected()
     test_printed_path_absent_at_pin_fails_with_relocation_hint()
     test_late_pin_links_are_checked_at_their_own_pin()
     test_explicit_immutable_headline_links_require_exact_source()

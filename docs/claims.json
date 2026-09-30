@@ -991,11 +991,7 @@
           "rendered": "paper/1049/erdos-1049-rational-base-lambert.pdf",
           "formal_source_ref": "7380b7871687b6bcc41ca0143c61f232e8af6500",
           "role": "Standalone theorem-led problem note for Erdős #1049 and the coordinatewise-corridor and cleared-tail boundaries.",
-          "anchor_label_allowlist": [
-            "res:nocorridor",
-            "res:tailrec",
-            "res:forcing"
-          ]
+          "anchor_label_allowlist": []
         },
         {
           "title": "Reciprocal-Tail Rigidity for Erdős Problem 243",
@@ -1015,10 +1011,7 @@
           "role": "Standalone theorem-led problem note for Erdős #249 and the dyadic/all-base totient-kernel boundary.",
           "anchor_label_allowlist": [
             "res:basis",
-            "thm:kkernelrank",
-            "res:factorideal",
-            "res:actualorbit",
-            "res:actualsign"
+            "thm:kkernelrank"
           ]
         },
         {
@@ -1028,7 +1021,10 @@
           "formal_source_ref": "99f4bf47422abbd8757cbb22b50ba079d764d3a7",
           "role": "Full problem-specific reasoning record for Erdős #249.",
           "anchor_label_allowlist": [
-            "thm:goodbasegap"
+            "thm:goodbasegap",
+            "res:factorideal",
+            "res:actualorbit",
+            "res:actualsign"
           ]
         },
         {
@@ -1075,6 +1071,11 @@
           "source": "paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex",
           "rendered": "paper/1049/erdos1049-rational-base-lambert-reasoning-surface.pdf",
           "role": "Historical full reasoning record for Erdős #1049.",
+          "anchor_label_allowlist": [
+            "long1049:res:nocorridor",
+            "long1049:res:tailrec",
+            "long1049:res:forcing"
+          ],
           "formal_source_ref": "7380b7871687b6bcc41ca0143c61f232e8af6500"
         },
         {
@@ -25732,7 +25733,7 @@
       "remaining_open_proposition_ids": [
         "remaining_open.erdos_1049_irrationality"
       ],
-      "paper_label": "res:nocorridor",
+      "paper_label": "long1049:res:nocorridor",
       "readme_headline": false,
       "declarations": [
         {
@@ -25750,7 +25751,7 @@
       "remaining_open_proposition_ids": [
         "remaining_open.erdos_1049_irrationality"
       ],
-      "paper_label": "res:tailrec",
+      "paper_label": "long1049:res:tailrec",
       "readme_headline": false,
       "declarations": [
         {
@@ -25768,7 +25769,7 @@
       "remaining_open_proposition_ids": [
         "remaining_open.erdos_1049_irrationality"
       ],
-      "paper_label": "res:forcing",
+      "paper_label": "long1049:res:forcing",
       "readme_headline": false,
       "declarations": [
         {

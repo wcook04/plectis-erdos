@@ -3780,6 +3780,14 @@ argument.
 \lword{Erdos243/SparseResetRecovery.lean}{612}{eventually_zero_of_summable_negativeRelativeMass_scalar}{the eventual vanishing for a positive integer sequence};
 its exact-orbit consequence is
 \lword{Erdos243/SparseResetRecovery.lean}{690}{sylvesterNext_eventually_of_summable_negativeRelativeMass_scalar}{the scalar recurrence from a convergent sum}.
+A separate exact-orbit formulation retains the denominator and tail update
+equations, positivity, the centered-step identity and division-free normalized
+vanishing. With summable normalized negative mass, the checked results give
+\lword{Erdos243/SparseResetRecovery.lean}{378}{tail_growth_le_one_add_negativeRelativeMass}{a bound on numerator growth},
+\lword{Erdos243/SparseResetRecovery.lean}{488}{eventually_zero_of_summable_negativeRelativeMass}{eventual zero error}, and
+\lword{Erdos243/SparseResetRecovery.lean}{510}{sylvesterNext_eventually_of_summable_negativeRelativeMass}{the Sylvester recurrence}.
+These are conditional hypotheses, not properties proved here for the original
+orbit.
 The \texttt{plectis-erdos-lean} repository contains a
 \href{https://github.com/wcook04/plectis-erdos-lean/blob/52f29ad173b04e3bac941b3663f2b9aebe5de0bb/ErdosProblems/Erdos243/PaperCompleteR8/CanonicalNegativeMass.lean\#L19}{formulation for the rational-tail numerators using a convergent sum},
 not covered by the evidence record. Summability remains

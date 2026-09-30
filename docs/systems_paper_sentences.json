@@ -89,8 +89,8 @@
       "path": "docs/paper_lean_coverage.json",
       "start_line": 1,
       "end_line": 29323,
-      "sha256": "f16c82495652b9cb1733e3fd67ac6dbe0b98864f09e322472f61c997489ec18f",
-      "excerpt_sha256": "f16c82495652b9cb1733e3fd67ac6dbe0b98864f09e322472f61c997489ec18f",
+      "sha256": "67e94e572ca529a1264cc6b64d4644505601d12ad0359321212c5b6b24c2bddf",
+      "excerpt_sha256": "67e94e572ca529a1264cc6b64d4644505601d12ad0359321212c5b6b24c2bddf",
       "kind": "source"
     },
     {
@@ -99,8 +99,8 @@
       "start_line": 1,
       "end_line": 29323,
       "kind": "supplied_snapshot",
-      "sha256": "f16c82495652b9cb1733e3fd67ac6dbe0b98864f09e322472f61c997489ec18f",
-      "excerpt_sha256": "f16c82495652b9cb1733e3fd67ac6dbe0b98864f09e322472f61c997489ec18f"
+      "sha256": "67e94e572ca529a1264cc6b64d4644505601d12ad0359321212c5b6b24c2bddf",
+      "excerpt_sha256": "67e94e572ca529a1264cc6b64d4644505601d12ad0359321212c5b6b24c2bddf"
     },
     {
       "id": "coverage-reciprocal",
@@ -108,8 +108,8 @@
       "start_line": 1,
       "end_line": 29323,
       "kind": "supplied_snapshot",
-      "sha256": "f16c82495652b9cb1733e3fd67ac6dbe0b98864f09e322472f61c997489ec18f",
-      "excerpt_sha256": "f16c82495652b9cb1733e3fd67ac6dbe0b98864f09e322472f61c997489ec18f"
+      "sha256": "67e94e572ca529a1264cc6b64d4644505601d12ad0359321212c5b6b24c2bddf",
+      "excerpt_sha256": "67e94e572ca529a1264cc6b64d4644505601d12ad0359321212c5b6b24c2bddf"
     },
     {
       "id": "coverage-weighted",
@@ -117,8 +117,8 @@
       "start_line": 1,
       "end_line": 29323,
       "kind": "supplied_snapshot",
-      "sha256": "f16c82495652b9cb1733e3fd67ac6dbe0b98864f09e322472f61c997489ec18f",
-      "excerpt_sha256": "f16c82495652b9cb1733e3fd67ac6dbe0b98864f09e322472f61c997489ec18f"
+      "sha256": "67e94e572ca529a1264cc6b64d4644505601d12ad0359321212c5b6b24c2bddf",
+      "excerpt_sha256": "67e94e572ca529a1264cc6b64d4644505601d12ad0359321212c5b6b24c2bddf"
     },
     {
       "id": "credit",
@@ -133,10 +133,10 @@
       "id": "credit-registry",
       "path": "docs/research-commons/source-attributions.json",
       "start_line": 1,
-      "end_line": 36195,
+      "end_line": 36230,
       "kind": "supplied_snapshot",
-      "sha256": "45c2b56717c18487ae363ecc632dfcebdf33e364b2a1bd11d6530267616a0f42",
-      "excerpt_sha256": "45c2b56717c18487ae363ecc632dfcebdf33e364b2a1bd11d6530267616a0f42"
+      "sha256": "caff41363c39bf10c18768790d043549399283d9e18e23eee099055cc88861c4",
+      "excerpt_sha256": "caff41363c39bf10c18768790d043549399283d9e18e23eee099055cc88861c4"
     },
     {
       "id": "essay-pages",
@@ -170,7 +170,7 @@
       "path": "docs/systems-paper-evidence/source-excerpts.md",
       "start_line": 359,
       "end_line": 655,
-      "sha256": "a989d833e221a7afc2ea91cfb659685e4a36706bfcfc0f68dec0cc6514e149f2",
+      "sha256": "8b11f16bf7ba42d8ef857870b58fa43b5df74c0444d58d10b62415049960bef9",
       "excerpt_sha256": "8947988697a03a66d12e95463415d81caa2adea73626fe088aa158d17506b443",
       "kind": "supplied_snapshot"
     },
@@ -179,7 +179,7 @@
       "path": "docs/systems-paper-evidence/source-excerpts.md",
       "start_line": 657,
       "end_line": 722,
-      "sha256": "a989d833e221a7afc2ea91cfb659685e4a36706bfcfc0f68dec0cc6514e149f2",
+      "sha256": "8b11f16bf7ba42d8ef857870b58fa43b5df74c0444d58d10b62415049960bef9",
       "excerpt_sha256": "9499d7c42376b2652db6311409ad9b4c06f6d61d824f0c1d40fb9ee01710d58e",
       "kind": "supplied_snapshot"
     },
@@ -188,7 +188,7 @@
       "path": "docs/systems-paper-evidence/source-excerpts.md",
       "start_line": 797,
       "end_line": 831,
-      "sha256": "a989d833e221a7afc2ea91cfb659685e4a36706bfcfc0f68dec0cc6514e149f2",
+      "sha256": "8b11f16bf7ba42d8ef857870b58fa43b5df74c0444d58d10b62415049960bef9",
       "excerpt_sha256": "b3d20dccc3062213d7e252f9778871999490727eeda00b3c034eeade668f0e74",
       "kind": "supplied_snapshot"
     },
@@ -233,7 +233,7 @@
       "path": "docs/systems-paper-evidence/source-excerpts.md",
       "start_line": 55,
       "end_line": 97,
-      "sha256": "a989d833e221a7afc2ea91cfb659685e4a36706bfcfc0f68dec0cc6514e149f2",
+      "sha256": "8b11f16bf7ba42d8ef857870b58fa43b5df74c0444d58d10b62415049960bef9",
       "excerpt_sha256": "ea6404442a0d1e8e93be0ec4f57c93e4ff6b9f3efbe149a0d57751e22fad12af",
       "kind": "supplied_snapshot"
     },
@@ -242,7 +242,7 @@
       "path": "docs/systems-paper-evidence/source-excerpts.md",
       "start_line": 99,
       "end_line": 160,
-      "sha256": "a989d833e221a7afc2ea91cfb659685e4a36706bfcfc0f68dec0cc6514e149f2",
+      "sha256": "8b11f16bf7ba42d8ef857870b58fa43b5df74c0444d58d10b62415049960bef9",
       "excerpt_sha256": "145c0589a9a90cf7bbfd124168e5dab1da1a37af47219406c6273b0ac9e98180",
       "kind": "supplied_snapshot"
     },
@@ -269,7 +269,7 @@
       "path": "docs/systems-paper-evidence/source-excerpts.md",
       "start_line": 243,
       "end_line": 316,
-      "sha256": "a989d833e221a7afc2ea91cfb659685e4a36706bfcfc0f68dec0cc6514e149f2",
+      "sha256": "8b11f16bf7ba42d8ef857870b58fa43b5df74c0444d58d10b62415049960bef9",
       "excerpt_sha256": "f99f540d4793e991a01744f3da1ea5abf1cd0cbe61d6f2684d9a2359ecb58afe",
       "kind": "supplied_snapshot"
     },
@@ -278,7 +278,7 @@
       "path": "docs/systems-paper-evidence/source-excerpts.md",
       "start_line": 318,
       "end_line": 357,
-      "sha256": "a989d833e221a7afc2ea91cfb659685e4a36706bfcfc0f68dec0cc6514e149f2",
+      "sha256": "8b11f16bf7ba42d8ef857870b58fa43b5df74c0444d58d10b62415049960bef9",
       "excerpt_sha256": "92a00dd6ce58ac0ceaa606b429bb6730aba9ed7f44064a08cd801186ba0f05b2",
       "kind": "supplied_snapshot"
     },
@@ -440,9 +440,9 @@
       "kind": "source",
       "path": "docs/papers/SHORT_PAPER_CONTRACT.md",
       "start_line": 1,
-      "end_line": 106,
-      "sha256": "592703ebb15bb414a9f70cdba5f946e3189059c4fd653c4eb9ccc885c0e09348",
-      "excerpt_sha256": "592703ebb15bb414a9f70cdba5f946e3189059c4fd653c4eb9ccc885c0e09348"
+      "end_line": 125,
+      "sha256": "f5df38def0eeabb64a0046c0ff31d5371ac560b3dda36d5cd1e373cba167ebd7",
+      "excerpt_sha256": "f5df38def0eeabb64a0046c0ff31d5371ac560b3dda36d5cd1e373cba167ebd7"
     },
     {
       "id": "refinement-tests",
@@ -452,6 +452,15 @@
       "end_line": 76,
       "sha256": "f6dc140fc71949d4148416e6666979ec6ef60006556804d9b9438b17825ac88a",
       "excerpt_sha256": "f6dc140fc71949d4148416e6666979ec6ef60006556804d9b9438b17825ac88a"
+    },
+    {
+      "id": "lit-agmai",
+      "kind": "supplied_snapshot",
+      "path": "docs/systems-paper-evidence/source-excerpts.md",
+      "start_line": 1121,
+      "end_line": 1144,
+      "sha256": "8b11f16bf7ba42d8ef857870b58fa43b5df74c0444d58d10b62415049960bef9",
+      "excerpt_sha256": "e10b2e3c51e7c53d0747ea09b4fc20fe4372978b4950c5992b7c805070fff262"
     }
   ],
   "sentences": [
@@ -684,6 +693,19 @@
       "warrant": "States the inherited roles and the concrete documented publication operations; it makes no priority or performance claim.",
       "statement_sha256": "5fc758d41c492b657ca2850d3610946772d979b4213a39b6ec16be28c4759526",
       "section": "sec:intro"
+    },
+    {
+      "id": "r14.agmai.intro",
+      "text": "The Advisory Group on Mathematics and Artificial Intelligence at IAS\nrecommends distinguishing papers fully understood by a responsible\nmathematician from AI output that its human prompters do not understand,\nand asks AI laboratories to support subsequent community-led\nunderstanding~\\cite{agmai2026}. Its 29 September 2026 statement gives\nconcrete release expectations for attribution, exposition, formalization\nand disclosure of the research process.",
+      "statement_sha256": "8cec1803b0e6972c9b9a3cd4987e8cf7602cf053cc55583a5c6372a039a2a891",
+      "class": "literature",
+      "evidence_refs": [
+        "lit-agmai",
+        "paper-evidence",
+        "coverage",
+        "writing-contract"
+      ],
+      "warrant": "Attributed dated recommendations and a bounded comparison to the records described here. Inspectability does not establish human understanding, endorsement, complete disclosure or laboratory institutional outcomes."
     },
     {
       "id": "r4.intro2.04",
@@ -1305,6 +1327,19 @@
       "section": "sec:checks"
     },
     {
+      "id": "r14.agmai.limits",
+      "text": "Several of these proposed release practices have counterparts in the\nrecords described here~\\cite[Section 2.B, Step I]{agmai2026}: the short\npaper and long record explain and attribute the argument, the paper-to-Lean\nledger records formal correspondence and its limits, and the challenge\nfiles and generated \\texttt{formalization.yaml} expose the comparison inputs.\nThose records make the result inspectable; they do not certify a\nmathematician's understanding. The architecture alone does not establish\ncomplete per-result model, prompt, time and cost disclosure, an account of\ncampaign-wide selection and unsuccessful attempts, or an independent\nscholarly deposit. The further recommendations on funding community-led\nunderstanding and equitable model access address AI laboratories; this\nprototype does not demonstrate those institutional outcomes.",
+      "statement_sha256": "7d840a4a9646c7c5f095091b383d52d15b0745bf9f4fc90b498a44c9a3ce8ae4",
+      "class": "literature",
+      "evidence_refs": [
+        "lit-agmai",
+        "paper-evidence",
+        "coverage",
+        "writing-contract"
+      ],
+      "warrant": "Attributed dated recommendations and a bounded comparison to the records described here. Inspectability does not establish human understanding, endorsement, complete disclosure or laboratory institutional outcomes."
+    },
+    {
       "id": "r4.paper1.01",
       "text": "We use the dependency graph to locate the argument and then decide which contribution deserves the short paper, taking account of its natural generality and antecedents.",
       "owner": "systems",
@@ -1415,6 +1450,54 @@
         "packet-dossier"
       ],
       "warrant": "Reviewed against the public packet/dossier/writer implementations and editorial contract. The figure and role split describe method; code checks exact bytes and edit accounting. Mathematical interpretation, reader benefit and publication acceptance are separate obligations."
+    },
+    {
+      "id": "r14.assignment.authority",
+      "text": "We call an agent that can alter the live repository Type A and an advisory agent returning proposals against supplied sources Type B.",
+      "statement_sha256": "0eb19bcc91c5a4f4be838ba77b8160585bb1ddcf0b8f963a645d37ec607afa06",
+      "class": "method",
+      "evidence_refs": [
+        "writing-contract",
+        "native-writer",
+        "native-refinement"
+      ],
+      "warrant": "Type A/B is the substrate-authority axis. Task-specific requested products and acceptance are separately stated in the existing authoring contract. Exposition preserves established mathematics; new research, audit and attribution assignments retain their own scope."
+    },
+    {
+      "id": "r14.assignment.jobs",
+      "text": "These terms describe access to the substrate; the assignment separately chooses mathematical research, proof or claim audit, literature and attribution review, or exposition.",
+      "statement_sha256": "8d6c8a76ed37502362f743b5c0e26db5887c12ab1d2bc7cb7ed33a781ae5654d",
+      "class": "method",
+      "evidence_refs": [
+        "writing-contract",
+        "native-writer",
+        "native-refinement"
+      ],
+      "warrant": "Type A/B is the substrate-authority axis. Task-specific requested products and acceptance are separately stated in the existing authoring contract. Exposition preserves established mathematics; new research, audit and attribution assignments retain their own scope."
+    },
+    {
+      "id": "r14.assignment.products",
+      "text": "Research returns candidate arguments, an audit returns source-located findings, a literature review returns attribution proposals, and exposition returns a clearer manuscript; each product has its own review and acceptance criteria.",
+      "statement_sha256": "921554178a476cce6519907a73cf551872985a2ff1fc6ff36461f1b1a129b229",
+      "class": "method",
+      "evidence_refs": [
+        "writing-contract",
+        "native-writer",
+        "native-refinement"
+      ],
+      "warrant": "Type A/B is the substrate-authority axis. Task-specific requested products and acceptance are separately stated in the existing authoring contract. Exposition preserves established mathematics; new research, audit and attribution assignments retain their own scope."
+    },
+    {
+      "id": "r14.assignment.exposition",
+      "text": "An exposition assignment preserves the established hypotheses, conclusions and evidence status; a suspected mathematical defect is returned for a separate audit or research assignment.",
+      "statement_sha256": "06004c4e62b32a8f9cdfffcc0653be9d67efd1748e3a310db767a2f6eecf909c",
+      "class": "method",
+      "evidence_refs": [
+        "writing-contract",
+        "native-writer",
+        "native-refinement"
+      ],
+      "warrant": "Type A/B is the substrate-authority axis. Task-specific requested products and acceptance are separately stated in the existing authoring contract. Exposition preserves established mathematics; new research, audit and attribution assignments retain their own scope."
     },
     {
       "id": "r13.fig.refinement",

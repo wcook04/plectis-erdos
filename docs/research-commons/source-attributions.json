@@ -77,8 +77,8 @@
         },
         {
           "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
-          "line_start": 1062,
-          "line_end": 1063,
+          "line_start": 1108,
+          "line_end": 1109,
           "expected_text": "\\bibitem{formalconjectures}",
           "excerpt_sha256": "sha256:ed477db421c75bd2bf0fc9a8324059f75c74acbb2096b75ffc57c88c0fabd274"
         }
@@ -194,15 +194,15 @@
       "artifact_links": [
         {
           "path": "paper/243/erdos243-reciprocal-tail-reasoning-surface.tex",
-          "line_start": 4062,
-          "line_end": 4067,
+          "line_start": 4070,
+          "line_end": 4075,
           "expected_text": "\\bibitem{formalconjectures243}",
           "excerpt_sha256": "sha256:1aefcf6f7f768fe29af3e6054e3b0cd92df53c67a5b2082873142c699135431c"
         },
         {
           "path": "paper/reasoning-parts/erdos243/core.tex",
-          "line_start": 4023,
-          "line_end": 4028,
+          "line_start": 4031,
+          "line_end": 4036,
           "expected_text": "\\bibitem{formalconjectures243}",
           "excerpt_sha256": "sha256:1aefcf6f7f768fe29af3e6054e3b0cd92df53c67a5b2082873142c699135431c"
         },
@@ -486,8 +486,8 @@
         },
         {
           "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
-          "line_start": 798,
-          "line_end": 803,
+          "line_start": 844,
+          "line_end": 849,
           "expected_text": "\\bibitem{lean4}",
           "excerpt_sha256": "sha256:c5fd8bab00b679d203057c594bf20120be28a4b4637d2f3f497872234e129474"
         }
@@ -1842,15 +1842,15 @@
         },
         {
           "path": "paper/243/erdos243-reciprocal-tail-reasoning-surface.tex",
-          "line_start": 4009,
-          "line_end": 4014,
+          "line_start": 4017,
+          "line_end": 4022,
           "expected_text": "\\bibitem{badea1993}",
           "excerpt_sha256": "sha256:ee897c806cc6764f8001bdbab28ecd44a7ae784f93c8b76cdca0c229578e334b"
         },
         {
           "path": "paper/reasoning-parts/erdos243/core.tex",
-          "line_start": 3970,
-          "line_end": 3975,
+          "line_start": 3978,
+          "line_end": 3983,
           "expected_text": "\\bibitem{badea1993}",
           "excerpt_sha256": "sha256:ee897c806cc6764f8001bdbab28ecd44a7ae784f93c8b76cdca0c229578e334b"
         },
@@ -4018,15 +4018,15 @@
         },
         {
           "path": "paper/243/erdos243-reciprocal-tail-reasoning-surface.tex",
-          "line_start": 4005,
-          "line_end": 4009,
+          "line_start": 4013,
+          "line_end": 4017,
           "expected_text": "\\bibitem{duverney2001}",
           "excerpt_sha256": "sha256:7e406b0aaf4be781c7d44c0d88c7d8424cafe45f2e1ee6201c506e6e8ce0de06"
         },
         {
           "path": "paper/reasoning-parts/erdos243/core.tex",
-          "line_start": 3966,
-          "line_end": 3970,
+          "line_start": 3974,
+          "line_end": 3978,
           "expected_text": "\\bibitem{duverney2001}",
           "excerpt_sha256": "sha256:7e406b0aaf4be781c7d44c0d88c7d8424cafe45f2e1ee6201c506e6e8ce0de06"
         },
@@ -4429,15 +4429,15 @@
         },
         {
           "path": "paper/243/erdos243-reciprocal-tail-reasoning-surface.tex",
-          "line_start": 4053,
-          "line_end": 4059,
+          "line_start": 4061,
+          "line_end": 4067,
           "expected_text": "\\bibitem{koizumi2025}",
           "excerpt_sha256": "sha256:eb7d5ec7e254bbf424e424d7b70e149f642ec316eed5ca8d2357045a54b32cc6"
         },
         {
           "path": "paper/reasoning-parts/erdos243/core.tex",
-          "line_start": 4014,
-          "line_end": 4020,
+          "line_start": 4022,
+          "line_end": 4028,
           "expected_text": "\\bibitem{koizumi2025}",
           "excerpt_sha256": "sha256:eb7d5ec7e254bbf424e424d7b70e149f642ec316eed5ca8d2357045a54b32cc6"
         },
@@ -4766,8 +4766,8 @@
         },
         {
           "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
-          "line_start": 1052,
-          "line_end": 1054,
+          "line_start": 1098,
+          "line_end": 1100,
           "expected_text": "\\bibitem{leanarchitect}",
           "excerpt_sha256": "sha256:2791c8042dc468854cefb24a74e27b8ce018aa3c98bb4987cd94e39599e9c97d"
         },
@@ -4822,8 +4822,8 @@
         },
         {
           "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
-          "line_start": 894,
-          "line_end": 896,
+          "line_start": 940,
+          "line_end": 942,
           "expected_text": "\\bibitem{leanblueprint}",
           "excerpt_sha256": "sha256:9f7cd13126bc86bb2e14538da4a22cac99dbf4eaaabadfd3aba8c94ea897364f"
         }
@@ -4875,8 +4875,8 @@
         },
         {
           "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
-          "line_start": 915,
-          "line_end": 917,
+          "line_start": 961,
+          "line_end": 963,
           "expected_text": "\\bibitem{leandojo}",
           "excerpt_sha256": "sha256:5c3c73cac106465de37f6b0d206a52293b5061ddb965921d239f718eb722db0e"
         }
@@ -5907,8 +5907,8 @@
         },
         {
           "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
-          "line_start": 842,
-          "line_end": 846,
+          "line_start": 888,
+          "line_end": 892,
           "expected_text": "\\bibitem{ehp1958}",
           "excerpt_sha256": "sha256:30a59f5e096ba7505dd35cd675d019c9ca2baccd756374cea58317676ce9b011"
         }
@@ -6439,8 +6439,8 @@
         },
         {
           "path": "paper/243/erdos243-reciprocal-tail-reasoning-surface.tex",
-          "line_start": 4018,
-          "line_end": 4022,
+          "line_start": 4026,
+          "line_end": 4030,
           "expected_text": "\\bibitem{erdosgraham1980}",
           "excerpt_sha256": "sha256:8d04873393ce01957978e7bf822e3411f2a23947e1a44f04f81a2db2f17c6332"
         },
@@ -6481,8 +6481,8 @@
         },
         {
           "path": "paper/reasoning-parts/erdos243/core.tex",
-          "line_start": 3979,
-          "line_end": 3983,
+          "line_start": 3987,
+          "line_end": 3991,
           "expected_text": "\\bibitem{erdosgraham1980}",
           "excerpt_sha256": "sha256:8d04873393ce01957978e7bf822e3411f2a23947e1a44f04f81a2db2f17c6332"
         },
@@ -6534,8 +6534,8 @@
         },
         {
           "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
-          "line_start": 803,
-          "line_end": 807,
+          "line_start": 849,
+          "line_end": 853,
           "expected_text": "\\bibitem{erdosgraham}",
           "excerpt_sha256": "sha256:c7af11de01a79bee87792f38e60e01a33a92d2d405b795add20fcd5ae0faa6bd"
         }
@@ -7388,8 +7388,8 @@
         },
         {
           "path": "paper/243/erdos243-reciprocal-tail-reasoning-surface.tex",
-          "line_start": 4027,
-          "line_end": 4034,
+          "line_start": 4035,
+          "line_end": 4042,
           "expected_text": "\\bibitem{kovactao2024}",
           "excerpt_sha256": "sha256:cc6aca2237133e921cd97b74d25252bfe07f4ac85f0f29888f9c09d741fbe072"
         },
@@ -7443,8 +7443,8 @@
         },
         {
           "path": "paper/reasoning-parts/erdos243/core.tex",
-          "line_start": 3988,
-          "line_end": 3995,
+          "line_start": 3996,
+          "line_end": 4003,
           "expected_text": "\\bibitem{kovactao2024}",
           "excerpt_sha256": "sha256:cc6aca2237133e921cd97b74d25252bfe07f4ac85f0f29888f9c09d741fbe072"
         },
@@ -7694,15 +7694,15 @@
       "artifact_links": [
         {
           "path": "paper/243/erdos243-reciprocal-tail-reasoning-surface.tex",
-          "line_start": 4049,
-          "line_end": 4053,
+          "line_start": 4057,
+          "line_end": 4061,
           "expected_text": "\\bibitem{vandoornlitang2026}",
           "excerpt_sha256": "sha256:d1521927de67d3175dadffc4db2ca2b2786b8297ec43e4eec74b73a350d2d98c"
         },
         {
           "path": "paper/reasoning-parts/erdos243/core.tex",
-          "line_start": 4010,
-          "line_end": 4014,
+          "line_start": 4018,
+          "line_end": 4022,
           "expected_text": "\\bibitem{vandoornlitang2026}",
           "excerpt_sha256": "sha256:d1521927de67d3175dadffc4db2ca2b2786b8297ec43e4eec74b73a350d2d98c"
         },
@@ -8297,8 +8297,8 @@
         },
         {
           "path": "paper/243/erdos243-reciprocal-tail-reasoning-surface.tex",
-          "line_start": 4001,
-          "line_end": 4005,
+          "line_start": 4009,
+          "line_end": 4013,
           "expected_text": "\\bibitem{erdosstraus1964}",
           "excerpt_sha256": "sha256:0cc9c4e626bc8d78dd9f17ee6ad68a9e292db82c4def750c27e314466c80af1b"
         },
@@ -8311,8 +8311,8 @@
         },
         {
           "path": "paper/reasoning-parts/erdos243/core.tex",
-          "line_start": 3962,
-          "line_end": 3966,
+          "line_start": 3970,
+          "line_end": 3974,
           "expected_text": "\\bibitem{erdosstraus1964}",
           "excerpt_sha256": "sha256:0cc9c4e626bc8d78dd9f17ee6ad68a9e292db82c4def750c27e314466c80af1b"
         },
@@ -8703,15 +8703,15 @@
         },
         {
           "path": "paper/243/erdos243-reciprocal-tail-reasoning-surface.tex",
-          "line_start": 4067,
-          "line_end": 4071,
+          "line_start": 4075,
+          "line_end": 4079,
           "expected_text": "\\bibitem{erdosstraus1974}",
           "excerpt_sha256": "sha256:7534aa59bb234c308a55714341b32d4a03d5c73d5381c36bf619a6d8cdc5e0c4"
         },
         {
           "path": "paper/reasoning-parts/erdos243/core.tex",
-          "line_start": 4028,
-          "line_end": 4032,
+          "line_start": 4036,
+          "line_end": 4040,
           "expected_text": "\\bibitem{erdosstraus1974}",
           "excerpt_sha256": "sha256:7534aa59bb234c308a55714341b32d4a03d5c73d5381c36bf619a6d8cdc5e0c4"
         }
@@ -9265,8 +9265,8 @@
         },
         {
           "path": "paper/243/erdos243-reciprocal-tail-reasoning-surface.tex",
-          "line_start": 4022,
-          "line_end": 4027,
+          "line_start": 4030,
+          "line_end": 4035,
           "expected_text": "\\bibitem{erdos1988}",
           "excerpt_sha256": "sha256:eaf6cb9470a050bc0ac5978773ab824fd5e2486d1c128ad600ecc049ec5e1863"
         },
@@ -9327,8 +9327,8 @@
         },
         {
           "path": "paper/reasoning-parts/erdos243/core.tex",
-          "line_start": 3983,
-          "line_end": 3988,
+          "line_start": 3991,
+          "line_end": 3996,
           "expected_text": "\\bibitem{erdos1988}",
           "excerpt_sha256": "sha256:eaf6cb9470a050bc0ac5978773ab824fd5e2486d1c128ad600ecc049ec5e1863"
         },
@@ -10400,8 +10400,8 @@
       "artifact_links": [
         {
           "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
-          "line_start": 1080,
-          "line_end": 1082,
+          "line_start": 1126,
+          "line_end": 1128,
           "expected_text": "\\bibitem{openprover}",
           "excerpt_sha256": "sha256:c66e4c643708ca23615d9d6c9473c802267b432d3f477cb5deb758c7fb5f7d69"
         }
@@ -10739,15 +10739,15 @@
         },
         {
           "path": "paper/243/erdos243-reciprocal-tail-reasoning-surface.tex",
-          "line_start": 4034,
-          "line_end": 4039,
+          "line_start": 4042,
+          "line_end": 4047,
           "expected_text": "\\bibitem{bado2026}",
           "excerpt_sha256": "sha256:0b698c4756fa8f99456ed34f52b4cf9be3600160caf3f3dec408e04cc0d7d111"
         },
         {
           "path": "paper/reasoning-parts/erdos243/core.tex",
-          "line_start": 3995,
-          "line_end": 4000,
+          "line_start": 4003,
+          "line_end": 4008,
           "expected_text": "\\bibitem{bado2026}",
           "excerpt_sha256": "sha256:0b698c4756fa8f99456ed34f52b4cf9be3600160caf3f3dec408e04cc0d7d111"
         }
@@ -13455,8 +13455,8 @@
         },
         {
           "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
-          "line_start": 870,
-          "line_end": 874,
+          "line_start": 916,
+          "line_end": 920,
           "expected_text": "\\bibitem{fan269}",
           "excerpt_sha256": "sha256:b41b2811598b55fde36f7dc6b7e396d5cd3f5f9fea25411ab4689bfbf0303bb0"
         }
@@ -13675,8 +13675,8 @@
         },
         {
           "path": "paper/243/erdos243-reciprocal-tail-reasoning-surface.tex",
-          "line_start": 4059,
-          "line_end": 4062,
+          "line_start": 4067,
+          "line_end": 4070,
           "expected_text": "\\bibitem{erdosproblems}",
           "excerpt_sha256": "sha256:1dca12f343679fed7cbdd1c9c2c6875092a3fc3a72e5f2d5a7e3c53e88c81bad"
         },
@@ -13777,8 +13777,8 @@
         },
         {
           "path": "paper/reasoning-parts/erdos243/core.tex",
-          "line_start": 4020,
-          "line_end": 4023,
+          "line_start": 4028,
+          "line_end": 4031,
           "expected_text": "\\bibitem{erdosproblems}",
           "excerpt_sha256": "sha256:1dca12f343679fed7cbdd1c9c2c6875092a3fc3a72e5f2d5a7e3c53e88c81bad"
         },
@@ -13879,15 +13879,15 @@
         },
         {
           "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
-          "line_start": 838,
-          "line_end": 842,
+          "line_start": 884,
+          "line_end": 888,
           "expected_text": "\\bibitem{erdos1041}",
           "excerpt_sha256": "sha256:33dec8bc1acd3ac4b9b6a3607c65aa0df85e610d6c5b426244f817177fde3b78"
         },
         {
           "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
-          "line_start": 761,
-          "line_end": 764,
+          "line_start": 801,
+          "line_end": 804,
           "expected_text": "\\bibitem{erdosproblems}",
           "excerpt_sha256": "sha256:507423e1148db720895123a914d00e9e16103a80b3d42dfcd31bcd5b050a0109"
         }
@@ -14522,8 +14522,8 @@
         },
         {
           "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
-          "line_start": 846,
-          "line_end": 848,
+          "line_start": 892,
+          "line_end": 894,
           "expected_text": "\\bibitem{aniforum}",
           "excerpt_sha256": "sha256:4e4234729ca246120c50642f617d7062a456fa5a1f0900f82ed49b3a7e16a132"
         }
@@ -16002,8 +16002,8 @@
         },
         {
           "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
-          "line_start": 878,
-          "line_end": 882,
+          "line_start": 924,
+          "line_end": 928,
           "expected_text": "\\bibitem{prove2me}",
           "excerpt_sha256": "sha256:f1a3aeaeeeae0343e3ac3f2056c0987792e2a1fcc155d61514b74881c3a74206"
         }
@@ -16076,8 +16076,8 @@
         },
         {
           "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
-          "line_start": 828,
-          "line_end": 832,
+          "line_start": 874,
+          "line_end": 878,
           "expected_text": "\\bibitem{aletheia}",
           "excerpt_sha256": "sha256:10b6425a7219ff0ff262d8974728a77849f4d7543b958b9923084c67335ca1f3"
         },
@@ -16158,8 +16158,8 @@
         },
         {
           "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
-          "line_start": 882,
-          "line_end": 886,
+          "line_start": 928,
+          "line_end": 932,
           "expected_text": "\\bibitem{autonomousmath}",
           "excerpt_sha256": "sha256:2595846643eaeb52b16f7156659896435256034246319719e7ecd470260c4445"
         }
@@ -16203,8 +16203,8 @@
         },
         {
           "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
-          "line_start": 886,
-          "line_end": 890,
+          "line_start": 932,
+          "line_end": 936,
           "expected_text": "\\bibitem{taowiki}",
           "excerpt_sha256": "sha256:fea9fc446cc883ee74a3abe2b9d747aa1da68232d0315a8d8bef6e40e8b574ed"
         }
@@ -16322,8 +16322,8 @@
       "artifact_links": [
         {
           "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
-          "line_start": 919,
-          "line_end": 923,
+          "line_start": 965,
+          "line_end": 969,
           "expected_text": "\\bibitem{lihai}",
           "excerpt_sha256": "sha256:efda1bcea3bdd260e4c65a32ee535929550041f56b1b8d4bea22ef144c19c9b4"
         }
@@ -17385,15 +17385,15 @@
         },
         {
           "path": "paper/243/erdos243-reciprocal-tail-reasoning-surface.tex",
-          "line_start": 4089,
-          "line_end": 4094,
+          "line_start": 4097,
+          "line_end": 4102,
           "expected_text": "\\bibitem{kouli2020}",
           "excerpt_sha256": "sha256:24a478d3e71a9e5ce6ab2dcf8084cf9ba533270acd0b15cdfd19710d0c338733"
         },
         {
           "path": "paper/reasoning-parts/erdos243/core.tex",
-          "line_start": 4050,
-          "line_end": 4055,
+          "line_start": 4058,
+          "line_end": 4063,
           "expected_text": "\\bibitem{kouli2020}",
           "excerpt_sha256": "sha256:24a478d3e71a9e5ce6ab2dcf8084cf9ba533270acd0b15cdfd19710d0c338733"
         },
@@ -19207,15 +19207,15 @@
         },
         {
           "path": "paper/243/erdos243-reciprocal-tail-reasoning-surface.tex",
-          "line_start": 4014,
-          "line_end": 4018,
+          "line_start": 4022,
+          "line_end": 4026,
           "expected_text": "\\bibitem{tijdemanyuan2002}",
           "excerpt_sha256": "sha256:8a847cb8c6d7ed0d59130cbc1d2e6cc75ca5363d7b766e4b4549f87e237f59d6"
         },
         {
           "path": "paper/reasoning-parts/erdos243/core.tex",
-          "line_start": 3975,
-          "line_end": 3979,
+          "line_start": 3983,
+          "line_end": 3987,
           "expected_text": "\\bibitem{tijdemanyuan2002}",
           "excerpt_sha256": "sha256:8a847cb8c6d7ed0d59130cbc1d2e6cc75ca5363d7b766e4b4549f87e237f59d6"
         }
@@ -19282,15 +19282,15 @@
         },
         {
           "path": "paper/243/erdos243-reciprocal-tail-reasoning-surface.tex",
-          "line_start": 4039,
-          "line_end": 4043,
+          "line_start": 4047,
+          "line_end": 4051,
           "expected_text": "\\bibitem{erdosproblemaday243}",
           "excerpt_sha256": "sha256:40aecd254891fc812f0e8980ec61fe681a524880f510bb6cfc26f94b02d1b732"
         },
         {
           "path": "paper/reasoning-parts/erdos243/core.tex",
-          "line_start": 4000,
-          "line_end": 4004,
+          "line_start": 4008,
+          "line_end": 4012,
           "expected_text": "\\bibitem{erdosproblemaday243}",
           "excerpt_sha256": "sha256:40aecd254891fc812f0e8980ec61fe681a524880f510bb6cfc26f94b02d1b732"
         }
@@ -19344,15 +19344,15 @@
       "artifact_links": [
         {
           "path": "paper/243/erdos243-reciprocal-tail-reasoning-surface.tex",
-          "line_start": 4043,
-          "line_end": 4049,
+          "line_start": 4051,
+          "line_end": 4057,
           "expected_text": "\\bibitem{stevenhagenlenstra1996}",
           "excerpt_sha256": "sha256:114c6c590cc9d93a8ef21180697160ce21e5fd0ef2e6801cfa8c3bd3dc16e78c"
         },
         {
           "path": "paper/reasoning-parts/erdos243/core.tex",
-          "line_start": 4004,
-          "line_end": 4010,
+          "line_start": 4012,
+          "line_end": 4018,
           "expected_text": "\\bibitem{stevenhagenlenstra1996}",
           "excerpt_sha256": "sha256:114c6c590cc9d93a8ef21180697160ce21e5fd0ef2e6801cfa8c3bd3dc16e78c"
         },
@@ -20193,15 +20193,15 @@
         },
         {
           "path": "paper/243/erdos243-reciprocal-tail-reasoning-surface.tex",
-          "line_start": 4083,
-          "line_end": 4089,
+          "line_start": 4091,
+          "line_end": 4097,
           "expected_text": "\\bibitem{crmarickovac2025}",
           "excerpt_sha256": "sha256:94123b672bbe246ca5a1da5c42f627ccc32ae5d9d6727e40019a7798db0120de"
         },
         {
           "path": "paper/reasoning-parts/erdos243/core.tex",
-          "line_start": 4044,
-          "line_end": 4050,
+          "line_start": 4052,
+          "line_end": 4058,
           "expected_text": "\\bibitem{crmarickovac2025}",
           "excerpt_sha256": "sha256:94123b672bbe246ca5a1da5c42f627ccc32ae5d9d6727e40019a7798db0120de"
         },
@@ -20311,15 +20311,15 @@
         },
         {
           "path": "paper/243/erdos243-reciprocal-tail-reasoning-surface.tex",
-          "line_start": 4094,
-          "line_end": 4097,
+          "line_start": 4102,
+          "line_end": 4105,
           "expected_text": "\\bibitem{dlmf_gamma}",
           "excerpt_sha256": "sha256:68ea153c3563a568a2f8dd959b99f6641b703032a1460306b051df5a3a19d4f9"
         },
         {
           "path": "paper/reasoning-parts/erdos243/core.tex",
-          "line_start": 4055,
-          "line_end": 4058,
+          "line_start": 4063,
+          "line_end": 4066,
           "expected_text": "\\bibitem{dlmf_gamma}",
           "excerpt_sha256": "sha256:68ea153c3563a568a2f8dd959b99f6641b703032a1460306b051df5a3a19d4f9"
         }
@@ -20379,15 +20379,15 @@
         },
         {
           "path": "paper/243/erdos243-reciprocal-tail-reasoning-surface.tex",
-          "line_start": 4077,
-          "line_end": 4083,
+          "line_start": 4085,
+          "line_end": 4091,
           "expected_text": "\\bibitem{duverneykurosawashiokawa2020}",
           "excerpt_sha256": "sha256:c6ad3b74ba433b2451bb8a22ac558445aec5cb56ecfef0b9118236d8dbc841ac"
         },
         {
           "path": "paper/reasoning-parts/erdos243/core.tex",
-          "line_start": 4038,
-          "line_end": 4044,
+          "line_start": 4046,
+          "line_end": 4052,
           "expected_text": "\\bibitem{duverneykurosawashiokawa2020}",
           "excerpt_sha256": "sha256:c6ad3b74ba433b2451bb8a22ac558445aec5cb56ecfef0b9118236d8dbc841ac"
         }
@@ -20452,15 +20452,15 @@
         },
         {
           "path": "paper/243/erdos243-reciprocal-tail-reasoning-surface.tex",
-          "line_start": 4071,
-          "line_end": 4077,
+          "line_start": 4079,
+          "line_end": 4085,
           "expected_text": "\\bibitem{hancltijdeman2008}",
           "excerpt_sha256": "sha256:fdc72e5f8bd263e4a323f5c9a3cde8b9b721106fee45e5666a814b1163e3a605"
         },
         {
           "path": "paper/reasoning-parts/erdos243/core.tex",
-          "line_start": 4032,
-          "line_end": 4038,
+          "line_start": 4040,
+          "line_end": 4046,
           "expected_text": "\\bibitem{hancltijdeman2008}",
           "excerpt_sha256": "sha256:fdc72e5f8bd263e4a323f5c9a3cde8b9b721106fee45e5666a814b1163e3a605"
         },
@@ -23018,8 +23018,8 @@
       "artifact_links": [
         {
           "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
-          "line_start": 777,
-          "line_end": 782,
+          "line_start": 817,
+          "line_end": 822,
           "expected_text": "\\bibitem{kra}",
           "excerpt_sha256": "sha256:e61243701770aa4a88c533a5d157859a8aa852eed7eaa9c15ea1f717f235830c"
         }
@@ -23052,8 +23052,8 @@
       "artifact_links": [
         {
           "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
-          "line_start": 782,
-          "line_end": 786,
+          "line_start": 822,
+          "line_end": 826,
           "expected_text": "\\bibitem{cohn}",
           "excerpt_sha256": "sha256:1f3c81b19f794be86d53650e08f9626446c906889d77d4da17985117e7947f30"
         }
@@ -23086,8 +23086,8 @@
       "artifact_links": [
         {
           "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
-          "line_start": 786,
-          "line_end": 789,
+          "line_start": 826,
+          "line_end": 829,
           "expected_text": "\\bibitem{taomining}",
           "excerpt_sha256": "sha256:96881ad1e94a3efbaf8da36596bf04f78b3013bdcaa5fe8fb4f4e218e14bf4c0"
         }
@@ -23120,8 +23120,8 @@
       "artifact_links": [
         {
           "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
-          "line_start": 789,
-          "line_end": 794,
+          "line_start": 829,
+          "line_end": 834,
           "expected_text": "\\bibitem{fieldsdecl}",
           "excerpt_sha256": "sha256:553ba84c17dccb37ab70dd4506f101c56d8b207258ef5f556721aa2d84a92767"
         }
@@ -23154,10 +23154,10 @@
       "artifact_links": [
         {
           "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
-          "line_start": 794,
-          "line_end": 798,
+          "line_start": 834,
+          "line_end": 838,
           "expected_text": "\\bibitem{sanderson}",
-          "excerpt_sha256": "sha256:9f7ae1208995fa7f543ff6b994a339f48206b9be649607ae7268700040c015d1"
+          "excerpt_sha256": "sha256:a1bece4a654c92fc6c6c1c2396621144c9c8eb394e2c5b5ec7d7bfc65fb34896"
         }
       ],
       "relation": "Cited by the linked public manuscript(s). The bibliography and citation contexts record the paper's use; no tracked primary-source closure currently verifies a stronger source-level relation.",
@@ -23188,8 +23188,8 @@
       "artifact_links": [
         {
           "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
-          "line_start": 832,
-          "line_end": 835,
+          "line_start": 878,
+          "line_end": 881,
           "expected_text": "\\bibitem{leanfrocomparator}",
           "excerpt_sha256": "sha256:a0dabd3a68ddafea15a4462241af10cb793e90e59c6324a84b883eac434e638d"
         }
@@ -23220,8 +23220,8 @@
       "artifact_links": [
         {
           "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
-          "line_start": 835,
-          "line_end": 838,
+          "line_start": 881,
+          "line_end": 884,
           "expected_text": "\\bibitem{nanodalib}",
           "excerpt_sha256": "sha256:decf3e535ef53dc9a412ddb4ade7e5eae7af85a715a810421802b58ffa0eec49"
         }
@@ -23254,8 +23254,8 @@
       "artifact_links": [
         {
           "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
-          "line_start": 890,
-          "line_end": 894,
+          "line_start": 936,
+          "line_end": 940,
           "expected_text": "\\bibitem{ringer}",
           "excerpt_sha256": "sha256:92b92f334ac258aae259af8de72a10cc1aa303685716b7dbf5e840cead2d885c"
         }
@@ -23288,8 +23288,8 @@
       "artifact_links": [
         {
           "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
-          "line_start": 1018,
-          "line_end": 1021,
+          "line_start": 1064,
+          "line_end": 1067,
           "expected_text": "\\bibitem{litt}",
           "excerpt_sha256": "sha256:ee9093a8c86cbeb2eb9fab28c7202c32fd65ef7cfab1714fde3545451c0fb674"
         }
@@ -23322,8 +23322,8 @@
       "artifact_links": [
         {
           "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
-          "line_start": 1021,
-          "line_end": 1025,
+          "line_start": 1067,
+          "line_end": 1071,
           "expected_text": "\\bibitem{chu}",
           "excerpt_sha256": "sha256:5136e66cbb7aa726a4eba02e1ee74ebc36796ad2770d611cf4e96b785da6ef25"
         }
@@ -23356,8 +23356,8 @@
       "artifact_links": [
         {
           "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
-          "line_start": 1025,
-          "line_end": 1031,
+          "line_start": 1071,
+          "line_end": 1077,
           "expected_text": "\\bibitem{greenletter}",
           "excerpt_sha256": "sha256:ddd868bf0de48975e181eeb67636c48b7e6b2302a12ac524c3140adace3bd8e3"
         }
@@ -23390,8 +23390,8 @@
       "artifact_links": [
         {
           "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
-          "line_start": 1031,
-          "line_end": 1035,
+          "line_start": 1077,
+          "line_end": 1081,
           "expected_text": "\\bibitem{gowers}",
           "excerpt_sha256": "sha256:30a6ad65c6c978c4097cc16f982b354864ca71e82129c8fa9065966a7a99cbc7"
         }
@@ -23424,8 +23424,8 @@
       "artifact_links": [
         {
           "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
-          "line_start": 1035,
-          "line_end": 1039,
+          "line_start": 1081,
+          "line_end": 1085,
           "expected_text": "\\bibitem{koukoulopoulos}",
           "excerpt_sha256": "sha256:b315d91d429f123ac74c77414dc4454141f8d52412fece95c0b8c814e70403ab"
         }
@@ -23458,8 +23458,8 @@
       "artifact_links": [
         {
           "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
-          "line_start": 1039,
-          "line_end": 1040,
+          "line_start": 1085,
+          "line_end": 1086,
           "expected_text": "\\bibitem{antieau}",
           "excerpt_sha256": "sha256:e6c89924a4cd473044338ab4fc20aab3daf6d1b197c0f08b9472a7eb66e2f7cd"
         }
@@ -24066,6 +24066,41 @@
       "verification_scope": "Exact edition is in local source custody; the named locus is return-reported and is not certified here as an independent full-text review.",
       "mapping_status": "exact_bibliographic_use",
       "mapping_note": "Round8 manuscript transfer; ordinary proof and citation authority remain separate.",
+      "paper_reported_locators": []
+    },
+    {
+      "id": "agmai_20260929_responsible_release",
+      "kind": "literature",
+      "title": "Responsible Release of AI-Generated Mathematics",
+      "authors": [
+        "Advisory Group on Mathematics and Artificial Intelligence at IAS"
+      ],
+      "publication_years": [
+        "2026"
+      ],
+      "urls": [
+        "https://agmai.org/general-sep29/",
+        "https://agmai.org/wp-content/uploads/2026/09/recommendations.pdf"
+      ],
+      "problems": [],
+      "source_locators": [],
+      "artifact_links": [
+        {
+          "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
+          "line_start": 838,
+          "line_end": 844,
+          "expected_text": "\\bibitem{agmai2026}",
+          "excerpt_sha256": "sha256:0a56177bf9ee04c7eb8c56e6cdf4582861b8073e14f40dffc4804702603020b0"
+        }
+      ],
+      "relation": "Dated recommendations motivating technical release practices and the distinction between inspection and human understanding. Not endorsement or evidence that this project fulfils laboratory-scale obligations.",
+      "verification_state": "bibliography_only",
+      "bibliography_keys": [
+        {
+          "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
+          "key": "agmai2026"
+        }
+      ],
       "paper_reported_locators": []
     }
   ],

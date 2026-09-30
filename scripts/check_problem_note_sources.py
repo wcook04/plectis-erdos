@@ -69,7 +69,7 @@ SIBLING_LIBRARIES = ("Erdos249257",)
 LEDGER_ARTIFACT_CLASSES = (NOTE_ARTIFACT_CLASS, "mathematical_companion")
 COMMIT_RE = re.compile(r"\\newcommand\{\\commit\}\{([0-9a-f]{40})\}")
 LEDGER_COMMIT_RE = re.compile(r"\\newcommand\{\\ledgercommit\}\{([0-9a-f]{40})\}")
-NOTE_LEDGER_COMMIT_RE = re.compile(r"\\renewcommand\{\\ledgercommit\}\{([0-9a-f]{40})\}")
+NOTE_LEDGER_COMMIT_RE = re.compile(r"\\(?:re)?newcommand\{\\ledgercommit\}\{([0-9a-f]{40})\}")
 # The generated statement note.  Its file is named below lean/ and resolves at
 # \ledgercommit, which is the revision the coverage ledger read its declarations
 # from; a note-wide \commit predates the nested layout and does not carry them.
@@ -77,13 +77,13 @@ LPROOF_RE = re.compile(
     r"\\lproof\{(?P<file>[^{}]+)\}\{(?P<line>\d+)\}\{(?P<decl>[^{}]+)\}"
 )
 NOTE_COMMIT_RE = re.compile(
-    r"\\renewcommand\{\\commit\}\{([0-9a-f]{40})\}"
+    r"\\(?:re)?newcommand\{\\commit\}\{([0-9a-f]{40})\}"
 )
 COMMIT_SHORT_RE = re.compile(
     r"\\newcommand\{\\commitshort\}\{([0-9a-f]{12})\}"
 )
 NOTE_COMMIT_SHORT_RE = re.compile(
-    r"\\renewcommand\{\\commitshort\}\{([0-9a-f]{12})\}"
+    r"\\(?:re)?newcommand\{\\commitshort\}\{([0-9a-f]{12})\}"
 )
 
 
@@ -334,9 +334,9 @@ def generated_note_failures(default_ledger: str | None) -> tuple[list[str], int]
 # pinned a commit that keeps the Lean roots under lean/, \lword printed the root
 # spelling, and 110 links answered 404 while every declaration check passed.
 PX_RE = re.compile(r"\\newcommand\{\\PX\}\{([^{}]+)\}")
-NOTE_PX_RE = re.compile(r"\\renewcommand\{\\PX\}\{([^{}]+)\}")
+NOTE_PX_RE = re.compile(r"\\(?:re)?newcommand\{\\PX\}\{([^{}]+)\}")
 NOTE_PK_RE = re.compile(r"\\(?:re)?newcommand\{\\PK\}\{([^{}]+)\}")
-NOTE_REPOBASE_RE = re.compile(r"\\renewcommand\{\\repobase\}\{([^{}]+)\}")
+NOTE_REPOBASE_RE = re.compile(r"\\(?:re)?newcommand\{\\repobase\}\{([^{}]+)\}")
 STANDARD_REPOBASE = r"https://github.com/wcook04/plectis-erdos/blob/\commit"
 RENDERED_MACRO_RE = re.compile(
     r"\\(?P<macro>lword|lrefx|lref|lloc|mword|mref|mloc|lproof)"
@@ -449,9 +449,31 @@ def rendered_link_targets(
     px_override = NOTE_PX_RE.search(text)
     px = px_override.group(1) if px_override else default_px
     pk = NOTE_PK_RE.search(text)
+    # Standalone long records define semantic word links themselves, sometimes
+    # with a literal historical URL. Check that body rather than the inherited
+    # problem-note prefix: declaration lookup aliases cannot repair a printed URL.
+    word_bases = {}
+    word_definition = re.compile(
+        r"\\(?:re)?newcommand\{\\(lword|mword)\}\[4\]"
+        r"\{\\href\{([^{}]+)#1\\#L#2\}\{#4\}\}"
+    )
+    for definition in word_definition.finditer(text):
+        macro, base = definition.groups()
+        base = base.replace(r"\repobase", STANDARD_REPOBASE.replace(r"\commit", commit))
+        base = base.replace(r"\PX", px)
+        rendered = re.fullmatch(
+            r"https://github\.com/wcook04/plectis-erdos/blob/([0-9a-f]{40})/(.*)", base
+        )
+        if rendered is None:
+            problems.append(f"\\{macro} has an unrecognised printed source base {base!r}")
+            continue
+        word_bases[macro] = (rendered.group(1), rendered.group(2))
     for match in RENDERED_MACRO_RE.finditer(text):
         macro, name = match.group("macro"), match.group("file")
-        if macro in ("lword", "lref", "lloc"):
+        if macro in word_bases:
+            word_commit, prefix = word_bases[macro]
+            targets.append((word_commit, prefix + name))
+        elif macro in ("lword", "lref", "lloc"):
             targets.append((commit, f"{px}/{name}"))
         elif macro in ("mword", "mref", "mloc"):
             targets.append((commit, name))

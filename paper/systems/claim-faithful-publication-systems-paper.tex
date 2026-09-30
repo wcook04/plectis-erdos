@@ -133,6 +133,17 @@ Blueprints already connect exposition to declarations~\cite{leanblueprint,leanar
 % SENTENCE r4.intro2.03
 Our publication tools add a check of the complete registered support set and bind the surrounding prose, including explanations and limitations, to specified source bytes.
 % END SENTENCE r4.intro2.03
+
+% SENTENCE r14.agmai.intro
+The Advisory Group on Mathematics and Artificial Intelligence at IAS
+recommends distinguishing papers fully understood by a responsible
+mathematician from AI output that its human prompters do not understand,
+and asks AI laboratories to support subsequent community-led
+understanding~\cite{agmai2026}. Its 29 September 2026 statement gives
+concrete release expectations for attribution, exposition, formalization
+and disclosure of the research process.
+% END SENTENCE r14.agmai.intro
+
 % SENTENCE r4.intro2.04
 The following sections describe the world, trace a weighted-support theorem through those records, and separate the checks from the judgements made when contributions enter the corpus.
 % END SENTENCE r4.intro2.04
@@ -360,6 +371,21 @@ This interface rule does not prevent an actor with filesystem access from changi
 The protocol distinguishes contributor and reviewer roles but does not technically force a second independent mathematician.
 % END SENTENCE r4.checks3.04
 
+% SENTENCE r14.agmai.limits
+Several of these proposed release practices have counterparts in the
+records described here~\cite[Section 2.B, Step I]{agmai2026}: the short
+paper and long record explain and attribute the argument, the paper-to-Lean
+ledger records formal correspondence and its limits, and the challenge
+files and generated \texttt{formalization.yaml} expose the comparison inputs.
+Those records make the result inspectable; they do not certify a
+mathematician's understanding. The architecture alone does not establish
+complete per-result model, prompt, time and cost disclosure, an account of
+campaign-wide selection and unsuccessful attempts, or an independent
+scholarly deposit. The further recommendations on funding community-led
+understanding and equitable model access address AI laboratories; this
+prototype does not demonstrate those institutional outcomes.
+% END SENTENCE r14.agmai.limits
+
 \section{From a Lean corpus to a paper}\label{sec:paper}\label{sec:short}\label{sec:long}\label{sec:production}
 % SENTENCE r4.paper1.01
 We use the dependency graph to locate the argument and then decide which contribution deserves the short paper, taking account of its natural generality and antecedents.
@@ -387,6 +413,20 @@ For a further revision, we freeze the selected short paper and long record toget
 % SENTENCE r13.paper.04
 The writer may be an advisory model returning a proposed revision, or a tool-enabled agent doing the same authoring work in a checkout; either arrangement leaves mathematical acceptance with the integrating reviewer.
 % END SENTENCE r13.paper.04
+
+% SENTENCE r14.assignment.authority
+We call an agent that can alter the live repository Type A and an advisory agent returning proposals against supplied sources Type B.
+% END SENTENCE r14.assignment.authority
+% SENTENCE r14.assignment.jobs
+These terms describe access to the substrate; the assignment separately chooses mathematical research, proof or claim audit, literature and attribution review, or exposition.
+% END SENTENCE r14.assignment.jobs
+% SENTENCE r14.assignment.products
+Research returns candidate arguments, an audit returns source-located findings, a literature review returns attribution proposals, and exposition returns a clearer manuscript; each product has its own review and acceptance criteria.
+% END SENTENCE r14.assignment.products
+% SENTENCE r14.assignment.exposition
+An exposition assignment preserves the established hypotheses, conclusions and evidence status; a suspected mathematical defect is returned for a separate audit or research assignment.
+% END SENTENCE r14.assignment.exposition
+
 
 % SENTENCE r13.fig.refinement
 \begin{figure}[htbp]
@@ -794,6 +834,12 @@ misalignment of AI in mathematics}, declaration posted on \emph{What's new},
 \bibitem{sanderson} G.~Sanderson, \emph{If math is more than proof, we need to
 better celebrate the rest of it}, guest post on \emph{What's new}, 18 September
 2026, \href{https://terrytao.wordpress.com/2026/09/18/if-math-is-more-than-proof-we-need-to-better-celebrate-the-rest-of-it/}{blog post}.
+
+\bibitem{agmai2026} Advisory Group on Mathematics and Artificial Intelligence
+at IAS, \emph{Responsible Release of AI-Generated Mathematics},
+29 September 2026,
+\href{https://agmai.org/general-sep29/}{recommendations},
+\href{https://agmai.org/wp-content/uploads/2026/09/recommendations.pdf}{PDF}.
 
 \bibitem{lean4} L.~de Moura and S.~Ullrich, \emph{The Lean 4 Theorem Prover
 and Programming Language}, in \emph{Automated Deduction, CADE 28}, Lecture

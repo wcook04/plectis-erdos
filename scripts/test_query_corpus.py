@@ -148,7 +148,8 @@ def query(*args: str) -> dict[str, object]:
         args = (*args, "--format", "json")
     completed = invoke_main(query_corpus.main, SCRIPT, args)
     completed.check_returncode()
-    return json.loads(completed.stdout)
+    assert len(completed.stdout.encode("utf-8")) <= query_corpus.OUTPUT_BUDGET_BYTES
+    return query_corpus.expand_problem_route_anchor_transport(json.loads(completed.stdout))
 
 
 def validate_in_process_query_dispatch() -> None:
@@ -549,9 +550,8 @@ def validate_indexed_problem_routes() -> None:
     for problem in problems:
         route_id = problem["problem_id"]
         packet = query("--route", route_id)
-        assert len(json.dumps(packet, ensure_ascii=False, indent=2).encode("utf-8")) <= (
-            query_corpus.OUTPUT_BUDGET_BYTES
-        )
+        # The wire budget is checked by query(); the lossless shared-anchor
+        # transport may expand beyond that ceiling when reconstructed here.
         assert packet["kind"] == "problem_route"
         route = packet["route"]
         assert route["id"] == route_id
@@ -614,10 +614,18 @@ def validate_indexed_problem_routes() -> None:
                 assert actual["paper_route"]["matching_anchors"], (
                     f"{route_id}/{expected['id']} lost its exact paper return route"
                 )
-                assert all(
-                    anchor["source_ref"].startswith(actual["paper_route"]["source"] + ":")
-                    for anchor in actual["paper_route"]["matching_anchors"]
-                )
+                from check_problem_note_sources import reachable_companion_sources
+                ingress = actual["paper_route"]["source"]
+                reachable = set(reachable_companion_sources(ingress, (ROOT / ingress).read_text(encoding="utf-8")))
+                for anchor in actual["paper_route"]["matching_anchors"]:
+                    destination = anchor["destination_source"]
+                    assert destination in {ingress, *reachable}
+                    assert anchor["source_ref"].startswith(destination + ":")
+                    if destination != ingress:
+                        assert anchor["visible_hop"] == "registered_visible_companion_pdf_link"
+                        assert anchor["relation_origin"].startswith("visible_companion_")
+                    else:
+                        assert anchor["visible_hop"] is None
                 assert all(
                     query_corpus.paper_anchor_packet(anchor["canonical_handle"])[
                         "paper"
@@ -626,28 +634,18 @@ def validate_indexed_problem_routes() -> None:
                     for anchor in actual["paper_route"]["matching_anchors"]
                 )
             if expected["id"] == "actual_lcm_orbit_separation":
-                assert "res:actualorbit" in {
-                    anchor["canonical_handle"]
+                assert "irrational_totientSeries_iff_actualLcmOrbitNonintegralitySupply" in {
+                    declaration
                     for anchor in actual["paper_route"]["matching_anchors"]
+                    for declaration in anchor["matched_declarations"]
                 }
             if expected["id"] == "totient_carry_anti_compression":
-                carry_anchor = next(
-                    anchor
-                    for anchor in actual["paper_route"]["matching_anchors"]
-                    if set(anchor["matched_declarations"])
-                    >= {
+                assert {
                         "not_irrational_totientSeries_implies_mod_period_and_unbounded_rank",
                         "totient_forcing_vanishes_mod_of_dvd_multiplier",
                         "totient_carry_modEq_geometric_of_dvd_multiplier",
-                    }
-                )
-                # The margin marks carry the per-result Lean links; the three carry
-                # declarations are cited together in the note's formal-sources appendix.
-                carry_path, carry_line = carry_anchor["source_ref"].rsplit(":", 1)
-                assert carry_path == "paper/249/erdos-249-binary-totient-series.tex"
-                assert "\\label{app:sources}" in (ROOT / carry_path).read_text(
-                    encoding="utf-8"
-                ).splitlines()[int(carry_line) - 1]
+                    } <= {declaration for anchor in actual["paper_route"]["matching_anchors"]
+                          for declaration in anchor["matched_declarations"]}
             if expected["id"] == "weighted_phase_carry_observer":
                 weighted_anchors = {
                     anchor["canonical_handle"]
@@ -663,10 +661,8 @@ def validate_indexed_problem_routes() -> None:
                 # this paper and one of them carries the carry-observer
                 # declarations.
                 assert weighted_anchors
-                assert all(
-                    handle.startswith("paper/269/erdos-269-three-prime-running-lcm.tex:")
-                    for handle in weighted_anchors
-                )
+                # Exact destination membership was checked above; the receiver
+                # may follow the visible short-to-record hop after relocation.
                 weighted_detail = next(
                     anchor
                     for anchor in actual["paper_route"]["matching_anchors"]
@@ -2627,7 +2623,140 @@ def check_pinned_source_link_layouts() -> None:
                 assert query_corpus.formal_source_url(claims, path, 1) is None
 
 
+def validate_registered_claim_paper_routes() -> None:
+    source = "paper/68/erdos-68-factorial-denominator-irrationality.tex"
+    qualified = "Erdos68.factorialMoment_eq_factorial_pow_mul_channelNumerator_band"
+    routes = query_corpus.paper_anchor_routes_for_declarations(source, [qualified])
+    matched = next(row for row in routes if row["relation_origin"] == "registered_claim_anchor")
+    assert matched["matched_claim_ids"] == ["channel_quotient_band_breakpoint"]
+    assert matched["matched_declarations"] == [qualified.rsplit(".", 1)[-1]]
+    assert query_corpus.paper_anchor_packet(matched["canonical_handle"])["paper"]["source"] == source
+
+    anchor = {"paper": {"source": source, "source_ref": source + ":396"},
+              "canonical_handle": source + ":396", "label": "res:bandbreakpoint",
+              "source_links": [], "attached_claims": [{"id": "registered"}]}
+    claim = {"id": "registered", "paper_label": "res:bandbreakpoint",
+             "declarations": [{"module": "Exact.lean", "name": "result"}]}
+    with patch.object(query_corpus, "paper_anchor_inventory", return_value=[anchor]), \
+         patch.object(query_corpus, "load", return_value={"claims": [claim]}), \
+         patch.object(query_corpus, "declaration_for_module_name", return_value={"name": "result"}), \
+         patch.object(query_corpus, "qualified_declaration_name", return_value="Exact.result"):
+        assert query_corpus.paper_anchor_routes_for_declarations(source, ["Exact.result"])
+        assert not query_corpus.paper_anchor_routes_for_declarations(source, ["Unrelated.result"])
+        assert not query_corpus.paper_anchor_routes_for_declarations("paper/249/other.tex", ["Exact.result"])
+        with patch.object(query_corpus, "load", return_value={"claims": []}):
+            assert not query_corpus.paper_anchor_routes_for_declarations(source, ["Exact.result"])
+        with patch.object(query_corpus, "load", return_value={"claims": [{**claim, "paper_label": "other"}]}):
+            assert not query_corpus.paper_anchor_routes_for_declarations(source, ["Exact.result"])
+        with patch.object(query_corpus, "declaration_for_module_name", return_value=None):
+            assert not query_corpus.paper_anchor_routes_for_declarations(source, ["Exact.result"])
+        authored = {**anchor, "attached_claims": [], "source_links": [{"declaration": "result"}]}
+        with patch.object(query_corpus, "paper_anchor_inventory", return_value=[authored]):
+            routes = query_corpus.paper_anchor_routes_for_declarations(source, ["Exact.result"])
+            assert routes[0]["relation_origin"] == "authored_source_link"
+            assert routes[0]["matched_claim_ids"] == []
+
+
+def validate_visible_companion_paper_routes() -> None:
+    import check_problem_note_sources as owner
+    ingress = "paper/249/erdos-249-binary-totient-series.tex"
+    destination = "paper/249/erdos249-totient-reasoning-surface.tex"
+    original_read = owner.safe_worktree_text
+    for invisible in [r"\iffalse\href{erdos249-totient-reasoning-surface.pdf}{record}\fi",
+                      r"\newcommand{\unused}{\href{erdos249-totient-reasoning-surface.pdf}{record}}",
+                      r"\href{../251/erdos251-prime-gap-reasoning-surface.pdf}{other problem}"]:
+        query_corpus.visible_companion_support.cache_clear()
+        with patch.object(query_corpus, "native_reader_evidence", return_value=(True, {})), \
+             patch.object(owner, "safe_worktree_text", side_effect=lambda path: invisible if Path(path) == ROOT / ingress else original_read(path)):
+            assert query_corpus.visible_companion_support(ingress) == {}
+    query_corpus.visible_companion_support.cache_clear()
+    with patch.object(query_corpus, "native_reader_evidence", return_value=(False, {})):
+        assert query_corpus.visible_companion_support(ingress) == {}
+    query_corpus.native_reader_evidence.cache_clear()
+    with patch.object(owner, "native_evidence_valid", return_value=False):
+        assert query_corpus.native_reader_evidence() == (False, {})
+    query_corpus.native_reader_evidence.cache_clear()
+    query_corpus.visible_companion_support.cache_clear()
+
+    visible = r"\href{erdos249-totient-reasoning-surface.pdf}{record}"
+    bad_pin_record = r"\newcommand{\commit}{" + "0" * 40 + "}" + \
+                     r"\mword{Erdos249257/CertificateKernel.lean}{1}{result}{source}"
+    with patch.object(query_corpus, "native_reader_evidence", return_value=(True, {})), \
+         patch.object(owner, "safe_worktree_text", side_effect=lambda path: visible if Path(path) == ROOT / ingress else bad_pin_record if Path(path) == ROOT / destination else original_read(path)):
+        support = query_corpus.visible_companion_support(ingress)
+        assert destination in support and support[destination]["coordinates"] == set()
+    query_corpus.visible_companion_support.cache_clear()
+
+    pin = "a" * 40
+    link = {"module": "Exact.lean", "line": 7, "declaration": "result", "source_identity": {"ref": pin}}
+    anchor = {"paper": {"source": destination, "source_ref": destination + ":12"},
+              "canonical_handle": destination + ":12", "label": "result-label",
+              "source_links": [link], "attached_claims": []}
+    context = {"pin": pin, "coordinates": {("Exact.lean", 7, "result", pin)}, "margin_keys": set(),
+               "result_declarations": {}, "visible_hop": {"source": ingress, "destination_source": destination,
+                                                          "kind": "registered_visible_companion_pdf_link"}}
+    with patch.object(query_corpus, "paper_anchor_inventory", return_value=[anchor]), \
+         patch.object(query_corpus, "load", return_value={"claims": []}), \
+         patch.object(query_corpus, "declaration_for_module_name", return_value={"name": "result"}), \
+         patch.object(query_corpus, "qualified_declaration_name", return_value="Exact.result"):
+        with patch.object(query_corpus, "visible_companion_support", return_value={destination: context}):
+            routes = query_corpus.paper_anchor_routes_for_declarations(ingress, ["Exact.result"])
+            assert routes[0]["destination_source"] == destination
+            assert routes[0]["relation_origin"] == "visible_companion_authored_source_link"
+            assert not query_corpus.paper_anchor_routes_for_declarations(ingress, ["Unrelated.result"])
+        for rejected in [{}, {destination: {**context, "coordinates": set()}},
+                         {destination: {**context, "coordinates": {("Exact.lean", 7, "result", "b" * 40)}}}]:
+            with patch.object(query_corpus, "visible_companion_support", return_value=rejected):
+                assert not query_corpus.paper_anchor_routes_for_declarations(ingress, ["Exact.result"])
+        marked = {**anchor, "source_links": []}
+        with patch.object(query_corpus, "paper_anchor_inventory", return_value=[marked]), \
+             patch.object(query_corpus, "visible_companion_support", return_value={destination: {
+                 **context, "result_declarations": {"result-label": [{"name": "Exact.result"}]}}}):
+            assert query_corpus.paper_anchor_routes_for_declarations(ingress, ["Exact.result"])[0]["relation_origin"] == \
+                "visible_companion_native_declared_evidence_anchor"
+
+    # Source masking retains exact line coordinates and hides unrendered links.
+    hidden = "visible\n\\iffalse\n\\lean{hidden}{File.lean:7}\n\\fi\n"
+    masked = query_corpus.visible_paper_source(hidden)
+    assert masked.count("\n") == hidden.count("\n") and r"\lean" not in masked
+    manuscript = r"\newcommand{\lean}[2]{\leanlink{#2}}\newcommand{\commit}{" + pin + r"}\newcommand{\PK}{Erdos249257}" + \
+                 r"\newcommand{\latecommit}{" + "b" * 40 + "}"
+    links = query_corpus.visible_lean_links(r"\lean{Exact.result}{File.lean:7}\lean{Later.result}{lean/ErdosProblems/Later.lean:9}", manuscript)
+    assert [(x["module"], x["line"], x["source_identity"]["ref"]) for x in links] == [
+        ("Erdos249257/File.lean", 7, pin), ("ErdosProblems/Later.lean", 9, "b" * 40)]
+    assert query_corpus.visible_lean_links(r"\lean{Exact.result}{File.lean:7}", "") == []
+    assert r"\lean" not in query_corpus.visible_paper_source(r"\newcommand{\unused}{\lean{Exact.result}{File.lean:7}}")
+
+
+def validate_problem_route_anchor_transport() -> None:
+    """Repeated anchors retain independent family matches and exact metadata."""
+    anchor = {"canonical_handle": "paper/68/note.tex::result", "source_ref": "paper/68/note.tex:9",
+              "command": "python3 scripts/query_corpus.py --paper-anchor paper/68/note.tex::result",
+              "destination_source": "paper/68/note.tex", "relation_origin": "registered_claim_anchor",
+              "visible_hop": None, "matched_claim_ids": ["claim"], "matched_declarations": ["first"]}
+    packet = {"kind": "problem_route", "route": {"result_families": [
+        {"paper_route": {"matching_anchors": [anchor]}},
+        {"paper_route": {"matching_anchors": [{**anchor, "matched_declarations": ["second"]}]}}]}}
+    compact = query_corpus.compact_problem_route_anchor_transport(packet)
+    assert len(compact["paper_anchor_route_transport"]["table"]) == 1
+    assert query_corpus.expand_problem_route_anchor_transport(compact) == packet
+    assert "paper_anchor_route_transport" not in packet
+    for invalid in (-1, 1, True, "0"):
+        broken = copy.deepcopy(compact)
+        broken["route"]["result_families"][0]["paper_route"]["matching_anchors"][0]["anchor_route_index"] = invalid
+        try:
+            query_corpus.expand_problem_route_anchor_transport(broken)
+        except ValueError:
+            pass
+        else:
+            raise AssertionError("invalid shared-anchor index accepted")
+    assert query_corpus.expand_problem_route_anchor_transport({"kind": "other"}) == {"kind": "other"}
+
+
 def main() -> int:
+    validate_problem_route_anchor_transport()
+    validate_registered_claim_paper_routes()
+    validate_visible_companion_paper_routes()
     check_pinned_source_link_layouts()
     validate_in_process_query_dispatch()
     validate_blank_selectors()
@@ -4473,15 +4602,34 @@ def main() -> int:
             "remaining_open_proposition_anchor"
         )
 
+    printed_source_context = {}
     for anchor_row in paper_anchor_inventory():
         anchor_view = paper_anchor_packet(anchor_row["canonical_handle"])
         closure_checks += 1
         assert anchor_view["anchor_class"] == anchor_row["anchor_class"]
         assert anchor_view["lean_source_identity"] == anchor_row["paper"]["lean_source_identity"]
-        assert all(
-            link["source_identity"] == anchor_view["lean_source_identity"]
-            for link in anchor_view["source_links"]
-        )
+        for link in anchor_view["source_links"]:
+            # A long record can print a literal historical macro base or a
+            # separately declared late pin. Its destinations must retain those
+            # pins rather than be silently assigned the manuscript's main pin.
+            import check_problem_note_sources as note_owner
+            source = anchor_row["paper"]["source"]
+            if source not in printed_source_context:
+                manuscript = (ROOT / source).read_text(encoding="utf-8")
+                px = note_owner.PX_RE.search(note_owner.strip_comments(note_owner.safe_worktree_text(note_owner.PREAMBLE)))
+                targets, errors = note_owner.rendered_link_targets(
+                    manuscript, claims_document["release"]["formal_source"]["ref"], None,
+                    px.group(1) if px else note_owner.LIBRARY_PREFIX)
+                printed_source_context[source] = (manuscript, set(targets), errors)
+            manuscript, targets, errors = printed_source_context[source]
+            if link["macro"] != "lean":
+                assert not errors
+                assert (link["source_identity"]["ref"], link["printed_path"]) in targets
+            else:
+                expected_pin = note_owner.note_pinned_commit(manuscript, claims_document["release"]["formal_source"]["ref"])
+                if link["printed_path"].startswith("lean/"):
+                    expected_pin = note_owner.LATE_COMMIT_RE.search(note_owner.strip_comments(manuscript)).group(1)
+                assert link["source_identity"]["ref"] == expected_pin
 
     for artifact_row in artifact_inventory():
         for handle in (artifact_row["artifact_handle"], artifact_row["content_digest"]):

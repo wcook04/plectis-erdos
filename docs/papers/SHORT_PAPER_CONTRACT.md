@@ -45,6 +45,25 @@ The theorem renderer currently accepts a lead with existing whole-statement form
 
 ## Editorial revision exchange
 
+Type A and Type B describe access to the live substrate. The assignment is a
+separate choice: mathematical research, proof or claim audit, literature and
+attribution review, or exposition. State the requested product, allowed
+mathematical changes and acceptance criteria before preparing a packet.
+Research returns candidate statements and arguments; an audit returns located
+findings; a literature review returns source comparisons and credit proposals;
+exposition returns revised manuscript sources. A Type B return requires the
+assigned review and native integration before becoming authoritative state.
+
+For an exposition assignment, reconstruct and explain established mathematics.
+Preserve logical reach, hypotheses, conclusions, proof status and attribution.
+Equivalent restatements and short/long relocation still require complete source
+and support accounting; declaring equivalence does not prove it. Report a
+suspected substantive mathematical defect as a blocker for a separately
+assigned audit or research task. This assignment does not commission a new
+proof, a stronger theorem or new Lean development. Other task modes retain
+their own mathematical scope rather than inheriting exposition's limits.
+
+
 The native writer can freeze selected manuscript sources for a further
 editorial pass. Give it the short paper and complete long record together:
 
