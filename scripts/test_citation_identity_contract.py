@@ -12,6 +12,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 MAIN_PAPER = "paper/archive/erdos249-257-main-paper.tex"
+CURRENT_SOFTWARE_TITLE = "Plectis: research on eight Erdős problems"
 OPEN_BOUNDARY = (
     "It does not solve Erdős #249 or the universal #257 problem."
 )
@@ -61,9 +62,9 @@ def citation_identity_errors(
         errors,
         cff,
         "title",
-        # CITATION.cff describes the tagged release, whose immutable historical
-        # title is independent of the current README's corrected status wording.
-        "Plectis: research on eight open Erdős problems",
+        # The current software name is status-neutral. Historical tags retain
+        # their own CFF bytes; version, date and tagged identity stay exact below.
+        CURRENT_SOFTWARE_TITLE,
     )
     require_scalar(errors, cff, "version", str(release["version"]))
     require_scalar(errors, cff, "date-released", str(release["date"]))
@@ -148,6 +149,24 @@ def main() -> int:
         require(bool(citation_attribution_errors(cff.replace(old, replacement, 1), registry)),
                 f"attribution drift fixture was not rejected: {old}")
 
+    for title in ("Plectis: research on eight open Erdős problems", "Unrelated software"):
+        wrong_title = cff.replace(CURRENT_SOFTWARE_TITLE, title, 1)
+        require(
+            any("top-level title" in error
+                for error in citation_identity_errors(wrong_title, release)),
+            f"wrong current software title fixture was not rejected: {title}",
+        )
+    duplicate_title = cff.replace(
+        f'title: "{CURRENT_SOFTWARE_TITLE}"',
+        f'title: "{CURRENT_SOFTWARE_TITLE}"\ntitle: "{CURRENT_SOFTWARE_TITLE}"',
+        1,
+    )
+    require(
+        any("top-level title" in error
+            for error in citation_identity_errors(duplicate_title, release)),
+        "duplicated current software title fixture was not rejected",
+    )
+
     wrong_repository = cff.replace(
         str(release["repository"]),
         "https://github.com/example/wrong-repository",
@@ -217,7 +236,7 @@ def main() -> int:
     print(
         "test_citation_identity_contract: citation metadata retains the exact "
         "repository, tag, paper route, and open boundary; "
-        "11 identity and attribution negative fixtures rejected"
+        "14 identity and attribution negative fixtures rejected"
     )
     return 0
 
