@@ -236,9 +236,10 @@ clone-local [research-return skill](skills/erdos-research-return/SKILL.md), and
 the [consequence-propagation skill](skills/propagate-research-consequences/SKILL.md)
 after a stable result, and
 the [pull-request submission skill](skills/submit-pull-request/SKILL.md) when
-turning owned work into commits and a proposed GitHub return. That skill stops
-before pushing or opening the pull request unless the contributor explicitly
-authorises those external actions. Maintainers should preserve the
+turning owned work into commits and a proposed GitHub return. Follow the
+contributor's request and standing instructions through validation and submission;
+ask again only when a concrete issue requires a new decision. Respect requests
+limited to review, drafting or local preparation. Maintainers should preserve the
 contributor's prose rather than replacing it with machine field names.
 
 To open and package a bounded, attributable structured research session, use
