@@ -74,46 +74,15 @@ from pathlib import Path
 from typing import Any
 
 import validation_singleflight as singleflight
-from lean_source import library_storage_path
+from lean_source import library_storage_path, qualified_declaration_lines
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
 CLAIMS_PATH = REPO_ROOT / "docs" / "claims.json"
 
-# Declarations wrap in this corpus: `theorem` frequently sits on its own line
-# with the name indented beneath it. A locator is therefore accepted when the
-# name appears within a short window of the recorded line, provided a
-# declaration keyword introduces it.
+# Coordinates may point at a wrapped declaration's keyword or name line.
+# The shared source resolver owns identity; this window only classifies drift.
 LOCATOR_WINDOW_BEFORE = 2
 LOCATOR_WINDOW_AFTER = 3
-DECLARATION_KEYWORDS = frozenset(
-    {
-        "theorem",
-        "lemma",
-        "def",
-        "abbrev",
-        "instance",
-        "structure",
-        "inductive",
-        "example",
-        "class",
-    }
-)
-
-# Modifiers that may precede the declaration keyword. Missing one of these is
-# what makes a naive matcher report a live declaration as absent.
-DECLARATION_MODIFIERS = frozenset(
-    {
-        "private",
-        "protected",
-        "noncomputable",
-        "partial",
-        "unsafe",
-        "scoped",
-        "local",
-        "nonrec",
-        "@[simp]",
-    }
-)
 
 # Gates that read pinned history. Without that history these fail for a reason
 # that has nothing to do with the mathematics, so they are reported as blocked
@@ -351,56 +320,33 @@ def resolve_declaration(declaration: dict[str, Any]) -> dict[str, Any]:
         return result
     lines = content.splitlines()
 
-    # A declaration inside `namespace Foo` is registered as `Foo.bar` but written
-    # as `bar`, so the final component is an accepted spelling of the same name.
-    spellings = [name] + ([name.rsplit(".", 1)[-1]] if "." in name else [])
-    patterns = [
-        re.compile(r"(?<![A-Za-z0-9_.'])" + re.escape(spelling) + r"(?![A-Za-z0-9_.'])")
-        for spelling in spellings
-    ]
-
-    def mentions(index: int) -> bool:
-        return any(pattern.search(lines[index]) for pattern in patterns)
-
-    def introduces(index: int) -> bool:
-        """Does a declaration keyword introduce the name at or just above `index`?"""
-        start = max(0, index - LOCATOR_WINDOW_BEFORE)
-        for probe in range(index, start - 1, -1):
-            stripped = lines[probe].lstrip()
-            while stripped.startswith("@["):
-                close = stripped.find("]")
-                if close == -1:
-                    break
-                stripped = stripped[close + 1 :].lstrip()
-            tokens = stripped.split()
-            cursor = 0
-            while cursor < len(tokens) and tokens[cursor] in DECLARATION_MODIFIERS:
-                cursor += 1
-            if cursor < len(tokens) and tokens[cursor] in DECLARATION_KEYWORDS:
-                return True
-        return False
-
-    found: int | None = None
-    if isinstance(recorded, int) and 1 <= recorded <= len(lines):
-        window_end = min(len(lines), recorded + LOCATOR_WINDOW_AFTER)
-        for probe in range(recorded - 1, window_end):
-            if mentions(probe):
-                found = probe + 1
-                break
-    if found is not None:
-        result["status"] = "exact" if found == recorded else "in_window"
-        result["resolved_line"] = found
-    else:
-        # Outside the recorded window, require a declaration keyword so that a
-        # call site is never mistaken for the definition.
-        for index in range(len(lines)):
-            if mentions(index) and introduces(index):
-                result["status"] = "drifted"
-                result["resolved_line"] = index + 1
-                break
-        else:
+    # Resolve the actual namespace-qualified declaration through the existing
+    # comment/string-aware source owner before considering its recorded position.
+    declarations = qualified_declaration_lines(content)
+    hits = declarations.get(name)
+    if hits is None:
+        # Claim records may use a short name, but it must identify exactly one
+        # source declaration. An invented namespace cannot qualify a global name.
+        candidates = {qualified: positions for qualified, positions in declarations.items()
+                      if qualified.endswith(f".{name}")}
+        if len(candidates) != 1:
             result["status"] = "declaration_missing"
+            result["resolution_error"] = f"{name}: " + (", ".join(sorted(candidates)) or "no match")
             return result
+        hits = next(iter(candidates.values()))
+    if len(hits) != 1:
+        result["status"] = "declaration_missing"
+        result["resolution_error"] = f"{name}: declared on lines {', '.join(map(str, hits))}"
+        return result
+    found = hits[0]
+    result["resolved_line"] = found
+    if found == recorded:
+        result["status"] = "exact"
+    elif (isinstance(recorded, int) and 1 <= recorded <= len(lines)
+          and recorded - LOCATOR_WINDOW_BEFORE <= found <= recorded + LOCATOR_WINDOW_AFTER):
+        result["status"] = "in_window"
+    else:
+        result["status"] = "drifted"
 
     anchor = (result["resolved_line"] or 1) - 1
     signature: list[str] = []
@@ -624,7 +570,7 @@ def render_claim(report: dict[str, Any]) -> str:
                 f"{comparator['bound_total']} carry a claim id"
             )
             out.extend(quoted(comparator["unregistered_contract"]))
-        out.append("  what Comparator does and does not settle:")
+        out.append("  packet-wide context (may concern other claims):")
         out.extend(quoted(comparator["boundary"], "           "))
         out.append("")
 
