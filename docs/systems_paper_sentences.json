@@ -62,8 +62,8 @@
       "path": "docs/papers/corpus.json",
       "start_line": 1,
       "end_line": 8837,
-      "sha256": "b5b9dbc02e8fd87fc4429272855c7e0fda7f5018fb001c7055b26bcb3879e67a",
-      "excerpt_sha256": "b5b9dbc02e8fd87fc4429272855c7e0fda7f5018fb001c7055b26bcb3879e67a",
+      "sha256": "f0bd0ed494d2ca456d74d41c2ccca932c628040ad7ff8ee9b6e975b9637727af",
+      "excerpt_sha256": "f0bd0ed494d2ca456d74d41c2ccca932c628040ad7ff8ee9b6e975b9637727af",
       "kind": "source"
     },
     {
@@ -71,8 +71,8 @@
       "path": "docs/systems_paper_counts.json",
       "start_line": 1,
       "end_line": 65,
-      "sha256": "587610b06f7f4aa62607c0d8178978b18b5af2c838fa4082e0203cfb2eef5cfc",
-      "excerpt_sha256": "587610b06f7f4aa62607c0d8178978b18b5af2c838fa4082e0203cfb2eef5cfc",
+      "sha256": "22e543c5f4b2b3006dc83ef26bfa85f9ea74d3d77d952b8c8316595f8c41de3d",
+      "excerpt_sha256": "22e543c5f4b2b3006dc83ef26bfa85f9ea74d3d77d952b8c8316595f8c41de3d",
       "kind": "source"
     },
     {
@@ -135,8 +135,8 @@
       "start_line": 1,
       "end_line": 36178,
       "kind": "supplied_snapshot",
-      "sha256": "7ebffa16fadc2a23eb087ac3b4ce0832ddc149446d63a0947d0cc98b8a9905e0",
-      "excerpt_sha256": "7ebffa16fadc2a23eb087ac3b4ce0832ddc149446d63a0947d0cc98b8a9905e0"
+      "sha256": "f488d68ee3344a31701cb26922ac34c103fbdff03d51b464596a60dc1276f8a6",
+      "excerpt_sha256": "f488d68ee3344a31701cb26922ac34c103fbdff03d51b464596a60dc1276f8a6"
     },
     {
       "id": "essay-pages",
@@ -461,6 +461,87 @@
       "end_line": 1144,
       "sha256": "8b11f16bf7ba42d8ef857870b58fa43b5df74c0444d58d10b62415049960bef9",
       "excerpt_sha256": "e10b2e3c51e7c53d0747ea09b4fc20fe4372978b4950c5992b7c805070fff262"
+    },
+    {
+      "id": "reader-guide",
+      "path": "docs/READING_GUIDE.md",
+      "start_line": 1,
+      "end_line": 146,
+      "kind": "source",
+      "sha256": "1996d83b320807116e6d70ac051c2483a0705a5549f292aa8f146a71c033d4b1",
+      "excerpt_sha256": "1996d83b320807116e6d70ac051c2483a0705a5549f292aa8f146a71c033d4b1"
+    },
+    {
+      "id": "explanation-depth",
+      "path": "skills/explain-public-system/SKILL.md",
+      "start_line": 1,
+      "end_line": 192,
+      "kind": "source",
+      "sha256": "91c8e240abe1e68f69985f027c8e470b5bc1e68841d6e9c1fc9e9cf0186d2cb4",
+      "excerpt_sha256": "91c8e240abe1e68f69985f027c8e470b5bc1e68841d6e9c1fc9e9cf0186d2cb4"
+    },
+    {
+      "id": "agent-entry",
+      "path": "AGENTS.md",
+      "start_line": 1,
+      "end_line": 161,
+      "kind": "source",
+      "sha256": "fd4d5d246731891853c4bf6dfa921637a28fb0a1c808213bae88f57c36cc37cb",
+      "excerpt_sha256": "fd4d5d246731891853c4bf6dfa921637a28fb0a1c808213bae88f57c36cc37cb"
+    },
+    {
+      "id": "workbench-guide",
+      "path": "docs/agents/AGENT_WORKBENCH.md",
+      "start_line": 1,
+      "end_line": 477,
+      "kind": "source",
+      "sha256": "b2c276c755b8ba301fbd43323ddcd379a5f29523ae07cf9eab438d0bccbf0544",
+      "excerpt_sha256": "b2c276c755b8ba301fbd43323ddcd379a5f29523ae07cf9eab438d0bccbf0544"
+    },
+    {
+      "id": "contribution-guide",
+      "path": "CONTRIBUTING.md",
+      "start_line": 1,
+      "end_line": 255,
+      "kind": "source",
+      "sha256": "d364b1ae2501d7a55ac113ae9f4b6ff9ae64928a5b7fddf89e410d5518307b0f",
+      "excerpt_sha256": "d364b1ae2501d7a55ac113ae9f4b6ff9ae64928a5b7fddf89e410d5518307b0f"
+    },
+    {
+      "id": "software-citation",
+      "path": "CITATION.cff",
+      "start_line": 1,
+      "end_line": 327,
+      "kind": "source",
+      "sha256": "0d538f9b7faca90b61eefeea93937edc49afb427165ef82f0fff549a82410466",
+      "excerpt_sha256": "0d538f9b7faca90b61eefeea93937edc49afb427165ef82f0fff549a82410466"
+    },
+    {
+      "id": "return-protocol",
+      "path": "skills/erdos-research-return/SKILL.md",
+      "start_line": 1,
+      "end_line": 178,
+      "kind": "source",
+      "sha256": "328296763a16a17a8ae0f70d58aae9ba4fed5228b9bc1f9b0473e22e4c157982",
+      "excerpt_sha256": "328296763a16a17a8ae0f70d58aae9ba4fed5228b9bc1f9b0473e22e4c157982"
+    },
+    {
+      "id": "architecture-return",
+      "path": "docs/research-commons/returns/rr-public-return-routing-20260923.json",
+      "start_line": 1,
+      "end_line": 223,
+      "kind": "source",
+      "sha256": "c0445b253348adb770d1f2fd4aa018f4e48b6919619669ea0676edb9d40435e4",
+      "excerpt_sha256": "c0445b253348adb770d1f2fd4aa018f4e48b6919619669ea0676edb9d40435e4"
+    },
+    {
+      "id": "architecture-contribution-guide",
+      "path": "docs/research-commons/ARCHITECTURE_CONTRIBUTIONS.md",
+      "start_line": 1,
+      "end_line": 115,
+      "kind": "source",
+      "sha256": "eac175d13281d2923f776295219677a76d82098e6f73b9abb51be15d824193a2",
+      "excerpt_sha256": "eac175d13281d2923f776295219677a76d82098e6f73b9abb51be15d824193a2"
     }
   ],
   "sentences": [
@@ -532,7 +613,7 @@
     },
     {
       "id": "r4.abstract.04",
-      "text": "The publication checks compare every registered support with the supplied evidence and detect changes to source bytes; the same records retain limitations and contributor credit through revision.",
+      "text": "The publication checks compare registered support sets with the supplied evidence and detect changes to source bytes; linked claim and contribution records retain limitations and credit through revision.",
       "owner": "systems",
       "class": "reported",
       "evidence_refs": [
@@ -544,8 +625,8 @@
         "credit",
         "historical"
       ],
-      "warrant": "Summarises the supplied implementation and dated historical record, without a fresh run, universal reliability claim or reader-benefit assertion.",
-      "statement_sha256": "9bc7593e2b55c588841240e904c4969f870a034376c8713043852ef2d640a059",
+      "warrant": "The supplied checks compare registered support identities and source bytes. Separate claim and contribution records retain limitations and attribution. This does not assert proof replay, semantic entailment, independent review or measured reader benefit.",
+      "statement_sha256": "379ec827c0f4f6bf065955b5767e047756aec87c2b0c2922149efe4e0482a926",
       "section": "frontmatter"
     },
     {
@@ -601,7 +682,7 @@
     },
     {
       "id": "r4.intro1.02",
-      "text": "For each mathematical problem, Plectis keeps the question, prior sources, computations, proofs and unresolved steps together; we call this collection a problem world. It records which Lean results support a paper statement and which source passages explain it, so that a reviewer can make these comparisons at a specified revision.",
+      "text": "For each mathematical problem, Plectis keeps the question, prior sources, computations, proofs and unresolved steps together in a problem-centred collection. It records which Lean results support a paper statement and which source passages explain it, so that a reviewer can make these comparisons at a specified revision.",
       "owner": "systems",
       "class": "method",
       "evidence_refs": [
@@ -610,7 +691,7 @@
         "record"
       ],
       "warrant": "Motivates the persistent problem object and depicts the documented contribution cycle; no effect size or external uptake is inferred.",
-      "statement_sha256": "14f902772cf286f05dcf02991690bea23314e3dbc65e2eb0b2e815c3b43383a6",
+      "statement_sha256": "d0f1b7fb978cbfda1d93b4c3c815fc8b0202cfd78b814b1f3625a36dfab5eaa2",
       "section": "sec:intro"
     },
     {
@@ -629,7 +710,7 @@
     },
     {
       "id": "r4.fig.lifecycle",
-      "text": "\\begin{figure}[htbp]\n\\centering\n\\begin{tikzpicture}[x=1cm,y=1cm]\n\\node[paper stage,draw=MidnightBlue,fill=MidnightBlue!5,text width=2.05cm] (w) at (0,0) {Problem world\\\\\\small sources and results};\n\\node[paper stage,draw=MidnightBlue,fill=MidnightBlue!5,text width=2.05cm] (c) at (2.9,0) {Registered claim\\\\\\small status and supports};\n\\node[paper stage,draw=MidnightBlue,fill=MidnightBlue!5,text width=2.05cm] (j) at (5.8,0) {Support comparison\\\\\\small all registered supports};\n\\node[paper stage,draw=BurntOrange,fill=BurntOrange!5,text width=2.05cm] (p) at (8.7,0) {Short paper\\\\$\\updownarrow$\\\\Long record};\n\\node[paper stage,draw=Violet,fill=Violet!5,text width=2.05cm] (r) at (11.6,0) {Readers\\\\\\small review and reuse};\n\\draw[paper arrow] (w)--(c);\n\\draw[paper arrow] (c)--(j);\n\\draw[paper arrow] (j)--(p);\n\\draw[paper arrow] (p)--(r);\n\\node[paper label,align=center] at (1.45,.9) {source span};\n\\node[paper label,align=center] at (4.35,.9) {one revision};\n\\node[paper label,align=center] at (7.25,.9) {bound text};\n\\node[paper label,align=center] at (10.15,.9) {linked PDF};\n\\draw[paper feedback] (r.south)--++(0,-.7)-| (w.south);\n\\node[paper label] at (5.8,-1.25) {accepted return: change, evidence, limits, credit};\n\\node[paper badge,fill=MidnightBlue!7,text=MidnightBlue] at (5.8,-1.75) {append-only, hash-linked research journal};\n\\node[font=\\small,align=center] at (5.8,-2.4) {\\textcolor{ForestGreen}{Formal check}\\quad\n\\textcolor{MidnightBlue}{Publication check}\\quad\n\\textcolor{BurntOrange}{Authored account}\\quad\n\\textcolor{Violet}{Review and judgement}};\n\\end{tikzpicture}\n\\caption{The life of one claim: arrows name the objects exchanged, and the support comparison checks the complete recorded set without executing a new formal proof; the short and long accounts remain linked.}\n\\label{fig:lifecycle}\n\\end{figure}",
+      "text": "\\begin{figure}[htbp]\n\\centering\n\\begin{tikzpicture}[x=1cm,y=1cm]\n\\node[sys box,text width=2.7cm,minimum height=1.8cm] (c) at (0,0) {Problem collection\\\\sources, results\\\\and open questions};\n\\node[sys box,text width=2.7cm,minimum height=1.8cm] (s) at (3.6,0) {Paper coverage row\\\\compare all listed\\\\formal supports};\n\\node[sys box,text width=2.7cm,minimum height=1.8cm] (p) at (7.2,0) {Authored paper\\\\statement, argument\\\\and limitations};\n\\node[sys box,text width=2.7cm,minimum height=1.8cm] (r) at (10.8,0) {Readers\\\\inspect, question\\\\and extend};\n\\draw[sys arrow] (c)--(s);\n\\draw[sys arrow] (s)--(p);\n\\draw[sys arrow] (p)--(r);\n\\draw[sys arrow,dashed] (r.south)--++(0,-.85)-| (c.south);\n\\node[sys label,text width=11.6cm] at (5.4,-2.5) {Corrections and contributions return after review and adoption (Figure~\\ref{fig:contribute}).\\\\The research journal records returns and their dispositions.};\n\\end{tikzpicture}\n\\caption{From accumulated work to a paper and subsequent revision. Solid arrows show the publication sequence, not logical implication or automatic approval. Comparing the complete registered support set does not execute a new formal proof or establish that the prose has the intended meaning.}\n\\label{fig:lifecycle}\n\\end{figure}",
       "owner": "systems",
       "class": "reported",
       "evidence_refs": [
@@ -638,13 +719,14 @@
         "assembler",
         "record",
         "credit",
-        "strategy-protocol"
+        "strategy-protocol",
+        "coverage-weighted"
       ],
-      "warrant": "The evidence join is coloured as publication/source accounting rather than kernel execution. Arrows show documented exchanged records. No particular contribution is thereby certified as independently reviewed.",
-      "statement_sha256": "11d4371fdf564baa7e6e309548bd04725e0f1a44cc7e8bc4bf415c47a2370e88",
+      "warrant": "The forward sequence separates support-set comparison from authored interpretation. The conditional return path requires review and adoption, and the journal is explicitly limited to returns/dispositions; no new formal execution or automatic semantic validation is depicted. The complete paper support list belongs to the paper coverage row, which is distinct from the selected-claim registry.",
+      "statement_sha256": "aeb74b791775e79e5b02168bf9d9aa68c1777f001c620e440e6bbd1bf715b980",
       "section": "sec:intro",
       "unit_type": "figure",
-      "caption": "The life of one claim: arrows name the objects exchanged, and the support comparison checks the complete recorded set without executing a new formal proof; the short and long accounts remain linked.",
+      "caption": "From accumulated work to a paper and subsequent revision. Solid arrows show the publication sequence, not logical implication or automatic approval. Comparing the complete registered support set does not execute a new formal proof or establish that the prose has the intended meaning.",
       "figure_title": "The life of one claim"
     },
     {
@@ -697,7 +779,7 @@
     },
     {
       "id": "r4.intro2.04",
-      "text": "We first describe what a problem world lets a reader recover. The worked example then supplies the mathematical reason for its support hypothesis, before we follow the theorem into the publication checks, editorial revisions and contribution record. The historical false-edit test returns to the distinction that opened the paper.",
+      "text": "We first describe what a problem collection lets a reader recover. The worked example then supplies the mathematical reason for its support hypothesis, before we follow the theorem into the publication checks, editorial revisions and contribution record. The historical false-edit test returns to the distinction that opened the paper.",
       "owner": "systems",
       "class": "reported",
       "evidence_refs": [
@@ -708,7 +790,7 @@
         "audit-code"
       ],
       "warrant": "States the inherited roles and the concrete documented publication operations; it makes no priority or performance claim.",
-      "statement_sha256": "7294d4cf8e63a51ee7521299e453fa0d22ffa3537675c20e799f8901e5adfa97",
+      "statement_sha256": "fcc3670110c377ac700e94c5ce8b9cf77814da5c519afd52b8798f1fe94ace43",
       "section": "sec:intro"
     },
     {
@@ -765,7 +847,7 @@
     },
     {
       "id": "r4.fig.world",
-      "text": "\\begin{figure}[htbp]\n\\centering\n\\begin{tikzpicture}[x=1cm,y=1cm]\n\\node[paper eyebrow,anchor=west] at (0,.65) {ONE PROBLEM WORLD};\n\\node[paper card,minimum height=1.1cm,text width=3.95cm,draw=BurntOrange] at (2.15,-.15) {Question and literature};\n\\node[paper card,minimum height=1.1cm,text width=3.95cm,draw=ForestGreen] at (7.0,-.15) {Lean statements and proofs};\n\\node[paper card,minimum height=1.1cm,text width=3.95cm,draw=MidnightBlue] at (11.85,-.15) {Claims and open obligations};\n\\node[paper card,minimum height=1.1cm,text width=3.95cm,draw=MidnightBlue] at (2.15,-1.5) {Computations and certificates};\n\\node[paper card,minimum height=1.1cm,text width=3.95cm,draw=BurntOrange] at (7.0,-1.5) {Failed approaches};\n\\node[paper card,minimum height=1.1cm,text width=3.95cm,draw=BurntOrange] at (11.85,-1.5) {Paper and supporting record};\n\\node[paper eyebrow,anchor=west] at (0,-2.4) {FOUR VIEWS, NO LEAN BUILD NEEDED};\n\\node[paper box,anchor=west,text width=13.5cm,draw=MidnightBlue,fill=MidnightBlue!5] at (0,-2.95) {Declaration index: exhaustive source locations};\n\\node[paper box,anchor=west,text width=13.5cm,draw=MidnightBlue] at (0,-3.75) {Dependency index: exact edges for loaded roots};\n\\node[paper box,anchor=west,text width=13.5cm,draw=BurntOrange] at (0,-4.55) {Semantic graph: \\SemanticAuthoredInterpreted{} of \\SemanticAuthoredTheoremLike{} interpreted (\\SemanticAuthoredPercent\\%)};\n\\node[paper box,anchor=west,text width=13.5cm,draw=Violet] at (0,-5.35) {Claim registry: \\Claims{} claims, \\ClaimStatuses{} statuses, \\ClaimObligations{} open obligations};\n\\node[font=\\small,align=left,anchor=west] at (0,-6.25) {68 factorial series\\quad 243 reciprocal tails\\quad 249 totient series\\quad 251 prime gaps\\\\\n257 Mersenne subseries\\quad 269 running LCM\\quad 1041 lemniscates\\quad 1049 rational-base series};\n\\node[paper badge,fill=MidnightBlue!6] at (7,-7.05) {Corpus snapshot: \\ProblemWorlds{} worlds, \\LeanModules{} Lean modules, \\RegisteredPapers{} registered papers};\n\\end{tikzpicture}\n\\caption{A world contains the evidence and unresolved work for one question; the counts describe the whole recorded corpus, and exhaustive declaration locations do not imply exhaustive mathematical interpretation.}\n\\label{fig:world}\n\\end{figure}",
+      "text": "\\begin{figure}[htbp]\n\\centering\\small\n\\begin{minipage}{\\linewidth}\n\\textbf{For each problem:} the question and literature, Lean statements and proofs,\ncomputations and certificates, claims and open obligations, failed approaches,\nand the paper with its supporting record.\n\\par\\medskip\n\\begin{tabularx}{\\linewidth}{@{}>{\\raggedright\\arraybackslash}p{3.25cm}>{\\raggedright\\arraybackslash}X@{}}\n\\toprule\nView available without a Lean build & What it records\\\\\n\\midrule\nDeclaration index & Source locations, exhaustive within its inventory.\\\\[3pt]\nDependency index & Exact dependency edges for the selected starting declarations.\\\\[3pt]\nInterpretation graph & Selective, largely contextual accounts of declarations and their connections; not an individual reading of every proof.\\\\[3pt]\nClaim registry & Selected assertions, their status and remaining obligations.\\\\\n\\bottomrule\n\\end{tabularx}\n\\par\\medskip\nAcross the corpus: \\ProblemWorlds{} problems, \\LeanModules{} Lean modules and\n\\RegisteredPapers{} registered papers. The claim registry contains \\Claims{}\nclaims in \\ClaimStatuses{} statuses, with \\ClaimObligations{} open obligations.\n\\end{minipage}\n\\caption{Contents of a problem collection and the four ways to inspect the recorded work. The counts refer to the whole corpus. Source locations, dependency edges, interpretations and claim statuses answer different questions.}\n\\label{fig:world}\n\\end{figure}",
       "owner": "systems",
       "class": "reported",
       "evidence_refs": [
@@ -774,12 +856,12 @@
         "semantic-coverage",
         "strategy-goals"
       ],
-      "warrant": "All inventory numbers use protected source macros; the eight identifiers label themes and make no blanket open/solved claim.",
-      "statement_sha256": "bba5f4a696be34723b9f5ff80adc5e8614e896798b2c390df60d3febcba63d49",
+      "warrant": "The four source-access views retain their different scopes. Generated counts are corpus-wide; interpretations are selective and largely contextual, not a proof-reading coverage metric.",
+      "statement_sha256": "7362fbfe2d1d6adc91c3aea469cd96d87ff343bbc29b349c4edf4c2578a6591b",
       "section": "sec:world",
       "unit_type": "figure",
-      "caption": "A world contains the evidence and unresolved work for one question; the counts describe the whole recorded corpus, and exhaustive declaration locations do not imply exhaustive mathematical interpretation.",
-      "figure_title": "A problem world and its views"
+      "caption": "Contents of a problem collection and the four ways to inspect the recorded work. The counts refer to the whole corpus. Source locations, dependency edges, interpretations and claim statuses answer different questions.",
+      "figure_title": "A problem collection and its inspection routes"
     },
     {
       "id": "r4.world2.01",
@@ -1083,7 +1165,7 @@
     },
     {
       "id": "r4.fig.theorem",
-      "text": "\\begin{figure}[htbp]\n\\centering\n\\begin{tikzpicture}[x=1cm,y=1cm]\n\\node[paper box,text width=3.5cm,draw=BurntOrange,fill=BurntOrange!5,minimum height=2.3cm] (s) at (1.9,0) {Paper statement\\\\\\medskip\n$W_{2,P}(A)<\\infty$\\\\$\\Longrightarrow X_B(b)\\notin\\mathbb Q$\\\\\n$B\\subseteq A$ infinite, $b\\ge2$};\n\\node[paper box,text width=3.4cm,draw=MidnightBlue,fill=MidnightBlue!5,minimum height=2.3cm] (l) at (6.45,0) {Coverage row\\\\\\texttt{res:weighted-support}\\\\\\medskip\nRecorded status:\\\\exact or stronger\\\\Both listed supports required};\n\\node[paper box,text width=3.9cm,draw=ForestGreen,fill=ForestGreen!5,minimum height=1.15cm] (a) at (11.25,.8) {Weighted criterion\\\\fixed-base and all-base\\\\\\repolink{lean/ErdosProblems/Erdos257/PaperCompleteR8/WeightedReturn.lean}{Lean source}};\n\\node[paper box,text width=3.9cm,draw=ForestGreen,fill=ForestGreen!5,minimum height=1.15cm] (b) at (11.25,-.8) {Hereditary criterion\\\\for a fixed base\\\\\\repolink{lean/ErdosProblems/Erdos257/PaperCompleteR8/WeightedHereditaryClaim.lean}{Lean source}};\n\\draw[paper arrow] (s)--(l);\n\\draw[paper arrow] (l.east)--(a.west);\n\\draw[paper arrow] (l.east)--(b.west);\n\\node[paper label] at (4.17,.4) {statement};\n\n\\node[paper badge,fill=ForestGreen!8,align=center] at (7,-1.65) {Comparator: PalomarCorpus/E257 and E257bc, recorded as compared};\n\\node[paper label] at (7,-2.1) {Palomar: prepared, not submitted; full declaration names in Appendix~\\ref{app:repro}};\n\\node[paper box,text width=6.25cm,draw=BurntOrange,minimum height=1.55cm] at (3.4,-3.15) {Authored explanation\\\\$\\Delta(N)\\ge1/q$ under rationality\\\\Finite orbit: an end correction\\\\Dyadic lengths recover $1/a$};\n\\node[paper box,text width=6.25cm,draw=Violet,fill=Violet!4,minimum height=1.55cm] at (10.6,-3.15) {False illustrative paraphrase:\\\\``solves Problem 257''\\\\The support hypothesis is missing};\n\\end{tikzpicture}\n\\caption{Both registered supports are required for the coverage row, while the authored explanation must justify the hypothesis and its use; omitting that hypothesis can change the claim without breaking either link, as the illustrative paraphrase shows (a different example from historical edit~8 in Table~\\ref{tab:mutations}).}\n\\label{fig:theorem}\n\\end{figure}\n\\FloatBarrier",
+      "text": "\\begin{figure}[htbp]\n\\centering\n\\begin{tikzpicture}[x=1cm,y=1cm]\n\\node[sys box,text width=12.7cm,minimum height=1cm] (s) at (0,0) {\\textbf{Paper statement, with the notation and assumptions of Section~\\ref{sec:example}}\\\\\n$W_{2,P}(A)<\\infty\\ \\Longrightarrow\\ X_B(b)\\notin\\mathbb Q$\n\\quad for every infinite $B\\subseteq A$ and integer $b\\ge2$.};\n\\node[sys box,text width=4.55cm,minimum height=2.2cm] (l) at (-3.9,-2.1) {\\textbf{Registered coverage row}\\\\\\texttt{res:weighted-support}\\\\[3pt]\nExact or stronger support.\\\\Both entries required.};\n\\node[sys box,text width=5.5cm,minimum height=.9cm] (a) at (3.35,-1.45) {Weighted criterion: fixed-base and all-base\\\\\\repolink{lean/ErdosProblems/Erdos257/PaperCompleteR8/WeightedReturn.lean}{WeightedReturn.lean}};\n\\node[sys box,text width=5.5cm,minimum height=.9cm] (b) at (3.35,-2.75) {Hereditary criterion for a fixed base\\\\\\repolink{lean/ErdosProblems/Erdos257/PaperCompleteR8/WeightedHereditaryClaim.lean}{WeightedHereditaryClaim.lean}};\n\\draw[sys arrow] (s.south -| l.north)--(l.north);\n\\draw[sys arrow] (l.east)--++(.55,0)|-(a.west);\n\\draw[sys arrow] (l.east)--++(.55,0)|-(b.west);\n\\node[sys label,text width=12.8cm] at (0,-4.05) {Comparator: \\texttt{PalomarCorpus/E257} and \\texttt{E257bc}, recorded as compared.\\\\Palomar submission: prepared, not submitted. Declaration names: Appendix~\\ref{app:repro}.};\n\\node[sys box,text width=5.95cm,minimum height=1.5cm] at (-3.45,-5.6) {\\textbf{Authored explanation}\\\\$\\Delta(N)\\ge1/q$ under rationality;\\\\a finite orbit gives an end correction;\\\\dyadic lengths recover $1/a$.};\n\\node[sys box,text width=5.95cm,minimum height=1.5cm] at (3.45,-5.6) {\\textbf{False illustrative paraphrase}\\\\``Solves Problem 257.''\\\\This drops the support hypothesis\\\\even if both source links remain.};\n\\end{tikzpicture}\n\\caption{The arrows associate a paper statement with its coverage row and the two registered supports; they do not represent deductions between these records. The support hypothesis still needs mathematical explanation. The false paraphrase is illustrative, distinct from historical edit~8 in Table~\\ref{tab:mutations}.}\n\\label{fig:theorem}\n\\end{figure}\n\\FloatBarrier",
       "owner": "systems",
       "class": "reported",
       "evidence_refs": [
@@ -1093,11 +1175,11 @@
         "packet-support",
         "historical"
       ],
-      "warrant": "The native coverage row lists both named declarations, exact_or_stronger status, two recorded Comparator entries and prepared Palomar status. The two Lean source files confirm the descriptive clause labels. Completeness is relative to the registered set, not a claim of logical minimality. The figure is a documentary trace, not a fresh common-pin join, Lean build, Comparator replay or executed false-paraphrase test.",
-      "statement_sha256": "96ac7f29f5ce1a6632cf84bf7c5a5f7bf45ec59668fafbec1a09ff0aebab5541",
+      "warrant": "The unchanged weighted-support statement refers to the hypotheses and notation in the worked example. Both coverage-row supports and their recorded Comparator status are retained. Arrows associate records, not logical deductions. Palomar remains prepared, not submitted; the false paraphrase is explicitly illustrative.",
+      "statement_sha256": "defe9c534a170c7bd492e85c47ba17b3ee993be09a1a3f542b331070cbc46914",
       "section": "sec:example",
       "unit_type": "figure",
-      "caption": "Both registered supports are required for the coverage row, while the authored explanation must justify the hypothesis and its use; omitting that hypothesis can change the claim without breaking either link, as the illustrative paraphrase shows (a different example from historical edit~8 in Table~\\ref{tab:mutations}).",
+      "caption": "The arrows associate a paper statement with its coverage row and the two registered supports; they do not represent deductions between these records. The support hypothesis still needs mathematical explanation. The false paraphrase is illustrative, distinct from historical edit~8 in Table~\\ref{tab:mutations}.",
       "figure_title": "One theorem and its recorded support"
     },
     {
@@ -1144,7 +1226,7 @@
     },
     {
       "id": "r4.fig.checks",
-      "text": "\\begin{figure}[htbp]\n\\centering\n\\begin{tikzpicture}\n\\node[paper box,inner sep=7pt] {\\begin{tabular}{@{}p{5.4cm}ccccc@{}}\n\\toprule\nRelation & Lean & Comparator & Tools & Author & Review\\\\\n\\midrule\nFormal statement and proof & \\textcolor{ForestGreen}{$\\bullet$} &&&&\\\\\nChallenge and formal statement &&\\textcolor{ForestGreen}{$\\bullet$}&&&\\\\\nSentence and declared source bytes &&&\\textcolor{MidnightBlue}{$\\bullet$}&&\\\\\nSentence and mathematical meaning &&&&\\textcolor{BurntOrange}{$\\circ$}&\\textcolor{Violet}{$\\circ$}\\\\\nResult and motivating question &&&&\\textcolor{BurntOrange}{$\\circ$}&\\textcolor{Violet}{$\\circ$}\\\\\nNovelty, significance and acceptance &&&&&\\textcolor{Violet}{$\\circ$}\\\\\n\\bottomrule\n\\end{tabular}};\n\\end{tikzpicture}\n\\caption{Filled circles denote machine checks and open circles denote judgements; a source binding concerns declared bytes, while the relation between a sentence and its mathematical meaning remains a separate review question.}\n\\label{fig:checks}\n\\end{figure}",
+      "text": "\\begin{figure}[htbp]\n\\centering\\small\n\\begin{tabularx}{\\linewidth}{@{}>{\\raggedright\\arraybackslash}p{5.35cm}>{\\raggedright\\arraybackslash}X@{}}\n\\toprule\nRelation being assessed & Check or judgement required\\\\\n\\midrule\nFormal statement and proof & Lean kernel checking.\\\\[3pt]\nChallenge and formal statement & Comparator checking against the selected challenge.\\\\[3pt]\nSentence and declared source bytes & Publication tools check the registered source binding.\\\\\n\\midrule\nSentence and mathematical meaning & Author and reviewer judgement about what the sources establish.\\\\[3pt]\nResult and motivating question & Author and reviewer judgement about the scope of the result.\\\\[3pt]\nNovelty, significance and acceptance & Assessment by reviewers and the mathematical community.\\\\\n\\bottomrule\n\\end{tabularx}\n\\caption{Three mechanically checked relations and three questions of judgement. The lower rows describe responsibilities, not evidence that independent review has occurred. Source-byte agreement alone cannot settle the meaning of a sentence.}\n\\label{fig:checks}\n\\end{figure}",
       "owner": "systems",
       "class": "reported",
       "evidence_refs": [
@@ -1154,12 +1236,12 @@
         "strategy-protocol",
         "world-authority"
       ],
-      "warrant": "The grid is an explanatory division of responsibilities, not a claim that the formal checker proves natural-language entailment or an outcome map for individual mutations.",
-      "statement_sha256": "960d9039fdeda43958ded0737a1934bbd900bb8b1f64d8634581ab20f57fe3c3",
+      "warrant": "Text replaces colour-coded marks while preserving the boundary between machine checks of formal proof, challenge and declared source bytes, and judgements about meaning, scope and community acceptance. Responsibility does not assert independent review occurred.",
+      "statement_sha256": "b432cc82ad28533bc3acd602f5fd83647b66b2b22168e5cc8e46b340db635560",
       "section": "sec:checks",
       "unit_type": "figure",
-      "caption": "Filled circles denote machine checks and open circles denote judgements; a source binding concerns declared bytes, while the relation between a sentence and its mathematical meaning remains a separate review question.",
-      "figure_title": "Responsibility for six relations"
+      "caption": "Three mechanically checked relations and three questions of judgement. The lower rows describe responsibilities, not evidence that independent review has occurred. Source-byte agreement alone cannot settle the meaning of a sentence.",
+      "figure_title": "Machine checks and mathematical judgement"
     },
     {
       "id": "r4.checks2.01",
@@ -1195,18 +1277,14 @@
     },
     {
       "id": "r4.checks2.03",
-      "text": "For each prose passage we record its text, specified source lines, the kind of evidence and an author's explanation of why those lines support the passage.",
+      "text": "For each marked passage in this systems paper we record its text, specified source lines, the kind of evidence and the rationale for citing those sources.",
       "owner": "systems",
       "class": "reported",
       "evidence_refs": [
-        "audit-code",
-        "paper-evidence",
-        "paper-resolver",
-        "257-statement",
-        "world-authority"
+        "audit-code"
       ],
-      "warrant": "Preserves the corpus authority sentence and exact co-edit/meaning limits; the checker implementation supports mechanical binding only.",
-      "statement_sha256": "98ac13d55a9962b945b4a1952a920921651228a4827ba7b4c70d6a9f3772ee74",
+      "warrant": "The v2 checker inventories marked SENTENCE units in this systems paper and checks their source bindings. It does not inventory every passage in the repository or determine whether an authored rationale entails the prose.",
+      "statement_sha256": "53f1b44e434965afab5c69df42d4f05aae2196077b896d5e0be1a280157ab476",
       "section": "sec:checks"
     },
     {
@@ -1301,16 +1379,17 @@
     },
     {
       "id": "r4.checks3.04",
-      "text": "The protocol distinguishes contributor and reviewer roles but does not technically force a second independent mathematician.",
+      "text": "The protocol distinguishes contributor and reviewer roles but does not require a second independent mathematician. No independent human mathematical review of the corpus is recorded.",
       "owner": "systems",
       "class": "reported",
       "evidence_refs": [
         "world-authority",
         "world-limits",
-        "strategy-protocol"
+        "strategy-protocol",
+        "corpus"
       ],
-      "warrant": "Attributes the notary design to the supplied companion; preserves filesystem tampering and the absence of enforced independent review.",
-      "statement_sha256": "d5c02fe24c05dcbf99a2fc0ec2fb57afc89ebf837927b97f4e023ce7aef49a6c",
+      "warrant": "Protocol roles do not require separate actors; the paper-corpus peer-review record reports no external mathematical review. No reader or institutional acceptance is inferred.",
+      "statement_sha256": "074fc404fa437703083144e6f3df4da88433ca46360a892425e9af8a04dc6c3a",
       "section": "sec:checks"
     },
     {
@@ -1374,6 +1453,19 @@
       "section": "sec:paper"
     },
     {
+      "id": "reader.guidance",
+      "owner": "systems",
+      "class": "method",
+      "section": "sec:paper",
+      "evidence_refs": [
+        "reader-guide",
+        "explanation-depth"
+      ],
+      "warrant": "The reading guide asks readers to reconstruct the decisive step or change a hypothesis; the explanation skill respects a requested hint or full argument. These are authoring instructions, with no measured learning or comprehension outcome.",
+      "text": "Readers may need a hint, a worked example or the full argument. The reading guide invites them to reconstruct a decisive step or change a hypothesis, and the explanation instructions require an agent to respect the requested depth. These are authoring rules; they do not establish that a reader has understood the proof.",
+      "statement_sha256": "f70e838a307ede11d843df71e8c325d51e11c9d9c8d636177d6eaa0934eb5050"
+    },
+    {
       "id": "r13.paper.01",
       "text": "A revision begins by collecting candidate results, antecedents, difficult proof transitions and unresolved questions with their source locations.",
       "statement_sha256": "c273eacc71d5d3b14397abadbdf28af20a7e5a70d63f21cc3346627deb85e4c9",
@@ -1403,8 +1495,8 @@
     },
     {
       "id": "r13.paper.03",
-      "text": "We freeze the selected manuscripts, input closure, coverage ledger and audit rules under a manifest of their exact bytes, so the writer and integrating reviewer can identify what the proposed changes were based on.",
-      "statement_sha256": "45f9b8e977a0e0ffdf16967260d40ba178185e570493af3bf9e917f647d24b2a",
+      "text": "We freeze the selected manuscripts, their required input files, coverage ledger and audit rules under a manifest of their exact bytes, so the writer and integrating reviewer can identify what the proposed changes were based on.",
+      "statement_sha256": "a34032639db44cf496f7f963eaf71f288a0c9084fc861f5ec02960f10c406fc9",
       "class": "implemented",
       "evidence_refs": [
         "writing-contract",
@@ -1431,8 +1523,8 @@
     },
     {
       "id": "r13.fig.refinement",
-      "text": "\\begin{figure}[htbp]\n\\centering\n\\begin{tikzpicture}[x=1cm,y=1cm]\n\\node[paper stage,text width=3.65cm,draw=MidnightBlue,fill=MidnightBlue!5] (freeze) at (0,0) {Freeze the inputs\\\\\\small papers, statements\\\\and source records};\n\\node[paper stage,text width=3.65cm,draw=BurntOrange,fill=BurntOrange!5] (write) at (5.0,0) {Expository revision\\\\\\small wording and order,\\\\examples and figures};\n\\node[paper stage,text width=3.65cm,draw=Violet,fill=Violet!5] (review) at (10.0,0) {Review and decide\\\\\\small meaning and scope,\\\\support and credit};\n\\node[paper stage,text width=3.65cm,draw=MidnightBlue,fill=MidnightBlue!5] (record) at (0,-2.6) {Record the outcome\\\\\\small accepted changes,\\\\reusable lessons and limits};\n\\node[paper stage,text width=3.65cm,draw=MidnightBlue,fill=MidnightBlue!5] (render) at (5.0,-2.6) {Render and inspect\\\\\\small regenerate evidence,\\\\PDFs and reading links};\n\\node[paper stage,text width=3.65cm,draw=MidnightBlue,fill=MidnightBlue!5] (bind) at (10.0,-2.6) {Integrate the sources\\\\\\small restore authored parts,\\\\rebind changed statements};\n\\draw[paper arrow] (freeze)--node[paper label,above]{packet} (write);\n\\draw[paper arrow] (write)--node[paper label,above]{edits} (review);\n\\draw[paper arrow] (review)--node[paper label,right]{reviewed delta} (bind);\n\\draw[paper arrow] (bind)--node[paper label,above]{current records} (render);\n\\draw[paper arrow] (render)--node[paper label,above]{checked artefacts} (record);\n\\draw[paper feedback] (record)--node[paper label,left]{next revision} (freeze);\n\\end{tikzpicture}\n\\caption{An exposition assignment returns focused source changes and optional figures for review; the stages describe responsibilities, not necessarily different people, and integration, rendering and the recorded outcome remain separate.}\n\\label{fig:refinement}\n\\end{figure}",
-      "statement_sha256": "72eaf06f146052fee38483a935c10dd14f81879d71827f0d4b6749c80fbca94c",
+      "text": "\\begin{figure}[htbp]\n\\centering\n\\begin{tikzpicture}[x=1cm,y=1cm]\n\\node[sys box,text width=3.55cm,minimum height=1.5cm] (freeze) at (0,0) {\\textbf{1. Freeze inputs}\\\\Manuscripts, statements\\\\and source records};\n\\node[sys box,text width=3.55cm,minimum height=1.5cm] (write) at (4.75,0) {\\textbf{2. Propose revisions}\\\\Wording, organisation,\\\\examples and figures};\n\\node[sys box,text width=3.55cm,minimum height=1.5cm] (review) at (9.5,0) {\\textbf{3. Check and review}\\\\Source checks;\\\\meaning, scope and credit};\n\\node[sys box,text width=3.55cm,minimum height=1.5cm] (record) at (0,-2.8) {\\textbf{6. Record outcome}\\\\Accepted changes,\\\\lessons and limitations};\n\\node[sys box,text width=3.55cm,minimum height=1.5cm] (render) at (4.75,-2.8) {\\textbf{5. Render and inspect}\\\\Regenerate evidence,\\\\PDFs and reading links};\n\\node[sys box,text width=3.55cm,minimum height=1.5cm] (bind) at (9.5,-2.8) {\\textbf{4. Integrate changes}\\\\Restore authored text;\\\\update source bindings};\n\\draw[sys arrow] (freeze)--(write);\n\\draw[sys arrow] (write)--(review);\n\\draw[sys arrow] (review)--node[sys label,right,fill=none]{if accepted} (bind);\n\\draw[sys arrow] (bind)--(render);\n\\draw[sys arrow] (render)--(record);\n\\draw[sys arrow,dashed] (record)--node[sys label,left,fill=none]{next revision} (freeze);\n\\end{tikzpicture}\n\\caption{The exposition workflow, read in numerical order. A proposal may be revised or declined at step~3; only accepted changes proceed to integration. The steps name responsibilities, which may be performed by the same agent. Rendering and inspection remain separate from source checks.}\n\\label{fig:refinement}\n\\end{figure}",
+      "statement_sha256": "48f2fef0a0a340d906ed89555623830551d9b967edbb045e229246c93151146a",
       "class": "method",
       "evidence_refs": [
         "writing-contract",
@@ -1440,24 +1532,23 @@
         "native-refinement",
         "packet-dossier"
       ],
-      "warrant": "Depicts the exposition-specific proposal route already stated in the adjacent assignment paragraphs and public writing contract. The writer proposes source changes and optional explanatory figures; review and integration remain distinct responsibilities, without asserting distinct people, fresh mathematics, or a measured reader benefit.",
+      "warrant": "The numbered workflow separates packet checking and semantic review, conditions integration on acceptance, and permits revision or rejection. Distinct responsibilities do not require distinct people; rendering is not supplied by source checks.",
       "unit_type": "figure",
-      "caption": "An exposition assignment returns focused source changes and optional figures for review; the stages describe responsibilities, not necessarily different people, and integration, rendering and the recorded outcome remain separate.",
-      "figure_title": "Source-frozen expository refinement",
+      "caption": "The exposition workflow, read in numerical order. A proposal may be revised or declined at step~3; only accepted changes proceed to integration. The steps name responsibilities, which may be performed by the same agent. Rendering and inspection remain separate from source checks.",
+      "figure_title": "Expository revision at a fixed source revision",
       "section": "sec:paper"
     },
     {
       "id": "r13.paper.05",
-      "text": "Before that decision, the return checker tests packet identity, permitted paths, statement-change declarations, labels and credit, and runs the manuscript audit on a temporary overlay of the proposed sources.",
-      "statement_sha256": "e922409a52ca2463953186c51a0b82356f3e29f9d01608d3eca8c4ef7893ba9b",
+      "text": "Before that decision, the return checker tests packet identity, permitted paths, declared statement changes and retained labels, citation keys and bibliography entries. It also audits the proposed manuscript in a temporary overlay of the sources.",
+      "statement_sha256": "e0b945d101aa48fe535ee2833c477858ffb5560c3af9785d8220459998126184",
       "class": "implemented",
       "evidence_refs": [
-        "writing-contract",
-        "native-writer",
         "native-refinement",
-        "packet-dossier"
+        "native-writer",
+        "writing-contract"
       ],
-      "warrant": "Reviewed against the public packet/dossier/writer implementations and editorial contract. The figure and role split describe method; code checks exact bytes and edit accounting. Mathematical interpretation, reader benefit and publication acceptance are separate obligations.",
+      "warrant": "check_return validates frozen input and return identities, scoped paths and statement-change declarations, compares labels/citation keys/bibliography entries, and invokes static manuscript audit in a temporary source overlay. It does not verify the completeness or justice of contributor credit.",
       "section": "sec:paper"
     },
     {
@@ -1592,21 +1683,20 @@
     },
     {
       "id": "r4.contribute1.04",
-      "text": "We first reproduce an older branch at its original base and then reconcile it with current main, assigning separate credit to any substantive integration repair.",
+      "text": "The return protocol calls for reproduction at the submitted base before reconciliation with current main, with separate credit for a substantive integration repair.",
       "owner": "systems",
-      "class": "reported",
+      "class": "method",
       "evidence_refs": [
-        "strategy-protocol",
-        "strategy-security",
+        "return-protocol",
         "credit"
       ],
-      "warrant": "Summarises the public idea/patch route and two-stage integration policy; external submissions are not made in this editorial task.",
-      "statement_sha256": "6b0e8878ea42d94679559c0eebfc115b8cf4c16a49c1e2d63228085b8f02805f",
+      "warrant": "The return skill prescribes original-base reproduction followed by reconciliation and separate integration credit. This is a method requirement, not a claim that every contribution followed it.",
+      "statement_sha256": "94080a9a4cc60c9ca10b0f03e9111747032c3c5cafaf073957bbebedb8755f45",
       "section": "sec:contribute"
     },
     {
       "id": "r4.fig.contribute",
-      "text": "\\begin{figure}[htbp]\n\\centering\n\\begin{tikzpicture}[x=1cm,y=1cm]\n\\node[paper eyebrow,anchor=west] at (0,.3) {INDEPENDENTLY USEFUL INPUTS};\n\\node[paper box,text width=13.5cm,draw=BurntOrange,align=center] (in) at (7,-.35) {Direction\\quad Compute\\quad Formalisation\\quad Software\\quad Review\\quad New world};\n\\node[paper stage,text width=2.7cm,draw=BurntOrange] (t) at (1.65,-1.65) {Bounded task\\\\evidence and stop condition};\n\\node[paper stage,text width=3.0cm,draw=MidnightBlue] (r) at (6.15,-1.65) {Return\\\\base, change, evidence, limits};\n\\node[paper stage,text width=3.1cm,draw=Violet] (v) at (11.1,-1.65) {Replay and review\\\\challenge, triage, decision};\n\\draw[paper arrow] (in.south)--(t.north);\n\\draw[paper arrow] (t)--(r);\n\\draw[paper arrow] (r)--(v);\n\\node[paper stage,text width=4.25cm,draw=MidnightBlue,fill=MidnightBlue!5] (math) at (3.1,-3.65) {Accepted mathematics\\\\proofs, corrections, scoped negative results};\n\\node[paper stage,text width=4.25cm,draw=MidnightBlue,fill=MidnightBlue!5] (tool) at (10.75,-3.65) {Accepted architecture\\\\navigation, validation, exposition, tools};\n\\draw[paper arrow] (v.south)--++(0,-.4)-|(math.north);\n\\draw[paper arrow] (v.south)--++(0,-.4)-|(tool.north);\n\\node[paper badge,fill=Violet!7] at (7,-4.7) {Role credit and correction lineage; community acceptance remains external};\n\\draw[paper feedback] (math.west)--++(-.8,0)|-(t.west);\n\\end{tikzpicture}\n\\caption{The contribution route accepts mathematical and architectural work under their own evidence classes; the feedback arrow records an adopted change and does not certify independent review or increased discovery rate.}\n\\label{fig:contribute}\n\\end{figure}",
+      "text": "\\begin{figure}[htbp]\n\\centering\n\\begin{tikzpicture}[x=1cm,y=1cm]\n\\node[sys box,text width=5.85cm,minimum height=1.4cm] (idea) at (0,0) {\\textbf{Idea, reference or review}\\\\State the relevant problem and proposal.\\\\No checkout is required.};\n\\node[sys box,text width=5.85cm,minimum height=1.4cm] (patch) at (7,0) {\\textbf{Executable result or patch}\\\\Return the base revision, change,\\\\evidence and limitations.};\n\\node[sys box,text width=12.85cm,minimum height=1.3cm] (review) at (3.5,-2.1) {\\textbf{Triage and review}\\\\Assess the proposal; reproduce executable evidence where applicable.\\\\Decide whether to adopt, request revision or decline.};\n\\draw[sys arrow] (idea.south)--(idea.south|-review.north);\n\\draw[sys arrow] (patch.south)--(patch.south|-review.north);\n\\node[sys box,text width=3.65cm,minimum height=1.25cm] (math) at (-1,-4.15) {\\textbf{Adopted mathematics}\\\\Proofs, corrections,\\\\scoped negative results};\n\\node[sys box,text width=3.65cm,minimum height=1.25cm] (tool) at (3.5,-4.15) {\\textbf{Adopted methods}\\\\Navigation, validation,\\\\exposition or software};\n\\node[sys box,text width=3.65cm,minimum height=1.25cm] (revise) at (8,-4.15) {\\textbf{Revision or rejection}\\\\Record the reason;\\\\resubmit if appropriate.};\n\\draw[sys arrow] (math.north|-review.south)--(math.north);\n\\draw[sys arrow] (tool.north|-review.south)--(tool.north);\n\\draw[sys arrow] (revise.north|-review.south)--(revise.north);\n\\node[sys box,text width=8.15cm,minimum height=1.05cm] (record) at (1.25,-6.05) {Record evidence, limitations, role credit and correction history.\\\\Both kinds of adopted work inform subsequent tasks.};\n\\draw[sys arrow] (math.south)--(math.south|-record.north);\n\\draw[sys arrow] (tool.south)--(tool.south|-record.north);\n\\end{tikzpicture}\n\\caption{Two entry routes and three possible review outcomes. Repository adoption applies to mathematical and methodological contributions; it establishes neither independent review nor acceptance by the wider mathematical community.}\n\\label{fig:contribute}\n\\end{figure}",
       "owner": "systems",
       "class": "reported",
       "evidence_refs": [
@@ -1614,14 +1704,16 @@
         "strategy-credit",
         "strategy-goals",
         "credit",
-        "record"
+        "record",
+        "contribution-guide",
+        "architecture-contribution-guide"
       ],
-      "warrant": "Depicts documented contribution roles, candidate/review/adoption transitions and the two tracks without collapsing maintainer adoption into outside acceptance.",
-      "statement_sha256": "d7b086c8dc33a4e83374213c7bd0cfd063737f19f75e31c7fdd97703425dd468",
+      "warrant": "CONTRIBUTING allows idea/reference submissions without clone or code; the architecture guide requires a base only for patches. The figure separates these routes, shows adoption/revision/rejection, and carries mathematical and methodological adoption into subsequent tasks without asserting outside acceptance or independent review.",
+      "statement_sha256": "e8cdb8ebf544c321c99e60f4ffac0d9f01e892651559b883889714bebf68d4ad",
       "section": "sec:contribute",
       "unit_type": "figure",
-      "caption": "The contribution route accepts mathematical and architectural work under their own evidence classes; the feedback arrow records an adopted change and does not certify independent review or increased discovery rate.",
-      "figure_title": "Contribution and revision"
+      "caption": "Two entry routes and three possible review outcomes. Repository adoption applies to mathematical and methodological contributions; it establishes neither independent review nor acceptance by the wider mathematical community.",
+      "figure_title": "Contribution routes and review outcomes"
     },
     {
       "id": "r4.contribute2.01",
@@ -1741,7 +1833,7 @@
     },
     {
       "id": "r4.contribute3.05",
-      "text": "A new world likewise needs a sourced question, explicit status, inspection routes and a review owner, which must still be assembled in several steps.",
+      "text": "A new problem collection likewise needs a sourced question, explicit status, inspection routes and a review owner, which must still be assembled in several steps.",
       "owner": "systems",
       "class": "reported",
       "evidence_refs": [
@@ -1751,7 +1843,7 @@
         "credit"
       ],
       "warrant": "Preserves the local-to-general nonautomation/no-upstream-result limits, role/ownership boundaries and multi-stage add-world requirement.",
-      "statement_sha256": "9b25c16e4c116da2d1867efb5b59df1123e2af725184efd3c95d77fef16f24cb",
+      "statement_sha256": "7056d3ea30e6472bc99b85b084e92d4827f03a46df64ff9be48ef078c995a16c",
       "section": "sec:contribute"
     },
     {
@@ -1843,14 +1935,14 @@
     },
     {
       "id": "r4.table.mutations",
-      "text": "\\begin{table}[htbp]\n\\centering\\small\n\\begin{tabular}{@{}lp{6.0cm}p{3.5cm}l@{}}\n\\toprule\nEdit & Change & First detector & Outcome\\\\\n\\midrule\nedit~1 & Conditional result labelled proved & Projection freshness & rejected\\\\\nedit~2 & Open-boundary clause deleted & Boundary wording & rejected\\\\\nedit~3 & Declaration coordinate moved & Source coordinates & rejected\\\\\nedit~4 & Paper source link retargeted & Source coordinates & rejected\\\\\nedit~5 & Claim assigned to two families & Registry structure & rejected\\\\\nedit~6 & Module count hand-edited & Projection freshness & rejected\\\\\nedit~7 & \\texttt{native\\_decide} introduced & Proof-trust policy & rejected\\\\\n\\rowcolor{Violet!9}\nedit~8 & ``does not supply\\textquotesingle\\textquotesingle\\ changed to ``completes\\textquotesingle\\textquotesingle & None & \\textbf{escaped}\\\\\nedit~9 & Open-problem title mangled & Paper anchoring & rejected\\\\\nedit~10 & Orientation byte budget exceeded & Byte budget & rejected\\\\\n\\bottomrule\n\\end{tabular}\n\\par\\medskip\n\\begin{minipage}[t]{.45\\linewidth}\n\\textbf{Historical trial: edit 8}\\\\\nThe false completion clause passed all recorded checks.\n\\end{minipage}\\hfill\n\\begin{minipage}[t]{.45\\linewidth}\n\\textbf{Later witness: baseline and edit 8}\\\\\nBaseline accepted, edit 8 rejected; the other \\HistoricalNotRerun{} edits were not rerun.\n\\end{minipage}\n\\caption{The \\HistoricalEdits{} historical edits and their recorded first detectors; ``proof-trust policy'' refers to this repository's permitted proof mechanisms, not to a general unsoundness claim about \\texttt{native\\_decide}.}\n\\label{tab:mutations}\n\\end{table}",
+      "text": "\\begin{table}[htbp]\n\\centering\\small\n\\begin{tabular}{@{}lp{6.0cm}p{3.5cm}l@{}}\n\\toprule\nEdit & Change & First detector & Outcome\\\\\n\\midrule\nedit~1 & Conditional result labelled proved & Projection freshness & rejected\\\\\nedit~2 & Open-boundary clause deleted & Boundary wording & rejected\\\\\nedit~3 & Declaration coordinate moved & Source coordinates & rejected\\\\\nedit~4 & Paper source link retargeted & Source coordinates & rejected\\\\\nedit~5 & Claim assigned to two families & Registry structure & rejected\\\\\nedit~6 & Module count hand-edited & Projection freshness & rejected\\\\\nedit~7 & \\texttt{native\\_decide} introduced & Proof-trust policy & rejected\\\\\n\\rowcolor{black!6}\nedit~8 & ``does not supply\\textquotesingle\\textquotesingle\\ changed to ``completes\\textquotesingle\\textquotesingle & None & \\textbf{escaped}\\\\\nedit~9 & Open-problem title mangled & Paper anchoring & rejected\\\\\nedit~10 & Orientation byte budget exceeded & Byte budget & rejected\\\\\n\\bottomrule\n\\end{tabular}\n\\par\\medskip\n\\begin{minipage}[t]{.45\\linewidth}\n\\textbf{Historical trial: edit 8}\\\\\nThe false completion clause passed all recorded checks.\n\\end{minipage}\\hfill\n\\begin{minipage}[t]{.45\\linewidth}\n\\textbf{Later witness: baseline and edit 8}\\\\\nBaseline accepted, edit 8 rejected; the other \\HistoricalNotRerun{} edits were not rerun.\n\\end{minipage}\n\\caption{The \\HistoricalEdits{} historical edits and their recorded first detectors; ``proof-trust policy'' refers to this repository's permitted proof mechanisms, not to a general unsoundness claim about \\texttt{native\\_decide}.}\n\\label{tab:mutations}\n\\end{table}",
       "owner": "systems",
       "class": "reported",
       "evidence_refs": [
         "historical"
       ],
       "warrant": "The ten outcomes and first detectors remain those in the historical JSON. The adjacent callouts distinguish the escaped historical M8 trial (gate_result all_checks_passed) from the reported later intact-baseline/M8 retest, with the other nine explicitly unrerun. No current sentence-hash pass, fresh execution, general reliability rate or post-repair ten-of-ten result is inferred.",
-      "statement_sha256": "81a3eeff6beec67c3e6c5bc67f5527c924f00664bdb6f11967dc225568f45bbd",
+      "statement_sha256": "d0ad739cedf5a59e45af1138a4cb40e8e27d5821c098978d7d68098cd4585126",
       "section": "sec:instance",
       "unit_type": "table"
     },
@@ -1868,14 +1960,14 @@
     },
     {
       "id": "r4.obs3.02",
-      "text": "The post-repair witness accepts the current README and rejects a test copy containing the false clause.",
+      "text": "The post-repair witness accepts the intact baseline README and rejects a test copy containing the false clause.",
       "owner": "systems",
       "class": "reported",
       "evidence_refs": [
         "historical"
       ],
-      "warrant": "Retains the exact required follow-up and reliability anchors. Here current README means the baseline of the recorded post-repair witness, not this editorial environment or public main.",
-      "statement_sha256": "60959d43f4fadb3a2bcbd119b75c54d59d216fe9e2df0ca384469cd3d540e152",
+      "warrant": "The post-repair record concerns its intact baseline and one mutated test copy. The baseline is historical; the sentence makes no claim about executing that witness against the present README.",
+      "statement_sha256": "0063ea7a676fdd6afa000adaef974c513b458de7342a8828fc86b4e4978016b1",
       "section": "sec:instance"
     },
     {
@@ -1904,44 +1996,26 @@
     },
     {
       "id": "r4.obs4.01",
-      "text": "One architecture return was accepted on 23 September 2026 after focused checks of the ordinary-language return route and an architecture-packaging case.",
+      "text": "On 23 September 2026, a maintainer-operated agent accepted one architecture handoff into a local integration history after focused checks of return routing and architecture packaging.",
       "owner": "systems",
       "class": "reported",
       "evidence_refs": [
-        "strategy-protocol",
-        "strategy-limits",
-        "world-limits"
+        "architecture-return"
       ],
-      "warrant": "Keeps the dated negative observation and later same-agent adoption distinct; the latter is not evidence of independent first use.",
-      "statement_sha256": "ccf696eca50ceaff1a6024d178912e6ede5f32e372e27013fe41b40c048a110a",
+      "warrant": "The dated accepted_handoff receipt reports local integration of one architecture return after focused checks. It expressly identifies the reviewer as maintainer-operated and the same agent as the contributor.",
+      "statement_sha256": "39bf7aca7c403ac920707d108a97a80d76f9d3d3bfd7846f71a556389c2bb31c",
       "section": "sec:instance"
     },
     {
       "id": "r4.obs4.02",
-      "text": "The contributor and maintainer-operated reviewer were the same agent; neither the receipt nor this paper claims an independent outside clone replay.",
+      "text": "The contributor and reviewer were the same agent. The receipt records no public pull request, human review or independent outside clone replay.",
       "owner": "systems",
       "class": "reported",
       "evidence_refs": [
-        "strategy-protocol",
-        "strategy-limits",
-        "world-limits"
+        "architecture-return"
       ],
-      "warrant": "Keeps the dated negative observation and later same-agent adoption distinct; the latter is not evidence of independent first use.",
-      "statement_sha256": "bafe8225a29fa4b0a31af6025f63ce23d592683f85ce71d9937adca8854269e6",
-      "section": "sec:instance"
-    },
-    {
-      "id": "r4.obs4.03",
-      "text": "As of 14 September 2026, no completed external cold-clone use had been recorded.",
-      "owner": "systems",
-      "class": "reported",
-      "evidence_refs": [
-        "strategy-protocol",
-        "strategy-limits",
-        "world-limits"
-      ],
-      "warrant": "Keeps the dated negative observation and later same-agent adoption distinct; the latter is not evidence of independent first use.",
-      "statement_sha256": "4c04bfc812f6b249d9ca26897d61d0ebdbda839a3f06bf4448e91a2e5eba5d9d",
+      "warrant": "The accepted_handoff review fields record same-agent contributor/reviewer roles, no public pull request and no independent outside clone replay or human mathematical review. Acceptance is local to the recorded integration history.",
+      "statement_sha256": "817115a6f0a06ced8230f7e5a472a0f7e4617e15fe30defaf1d37062b69aeea5",
       "section": "sec:instance"
     },
     {
@@ -2339,32 +2413,28 @@
     },
     {
       "id": "r4.repro1.02",
-      "text": "Source links in this revision point to \\texttt{7308896010e6b527d283dfdd0687a717a6183fb6}; the Comparator links below identify their separate recorded runs.",
+      "text": "Repository links in this revision use commit \\texttt{992cf60a27ef}; the Comparator links below identify their separate recorded runs.",
       "owner": "systems",
       "class": "reported",
       "evidence_refs": [
-        "corpus",
-        "coverage",
-        "world-limits",
-        "strategy-limits"
+        "corpus"
       ],
-      "warrant": "Reports packet source identity and inherited URL pin as distinct. The return manifest checks the packet-level commit assertion; existing hyperlinks are not evidence of public landing.",
-      "statement_sha256": "2848281ec07f0db6a87e0656e368ac93409f87f13bf87e02501611cb02e66dad",
+      "warrant": "The repository-link macro is pinned to the committed integration basis named here. Comparator URLs retain their own recorded run identities; neither pin asserts a new proof replay.",
+      "statement_sha256": "817deba5efdf655d1d0b134231e47a1ee5ce390e2185b39c47ff70843d96197a",
       "section": "app:repro"
     },
     {
       "id": "r4.repro1.03",
-      "text": "The two companion manuscripts are retained as unchanged provenance for the unified account.",
+      "text": "This paper supersedes \\emph{From a Cold Clone to a Proof Receipt} and \\emph{From Spare Compute to Cumulative Mathematics}. Their manuscripts remain available as historical accounts of navigation, proof-check records, contribution protocol and governance.",
       "owner": "systems",
       "class": "reported",
       "evidence_refs": [
         "corpus",
-        "coverage",
         "world-limits",
         "strategy-limits"
       ],
-      "warrant": "The incoming unified account retains two companion provenance sources; they remain unchanged in this focused editorial return, which does not repeat their consolidation or perform corpus retirement.",
-      "statement_sha256": "481840bf8bc6b3e44b5bbf90f2c0927fe3ddd9b5b81b88c2baa610a35dd8565d",
+      "warrant": "The corpus marks both named earlier systems manuscripts retired and names this unified paper as successor. The unchanged historical sources remain available; their counts and cross-references are not asserted as current practice.",
+      "statement_sha256": "229df6ea3a2602d08a1e0eb50c70c673e93a3c750de81cac2454f12f3e7450aa",
       "section": "app:repro"
     },
     {
@@ -2494,18 +2564,16 @@
     },
     {
       "id": "r4.repro3.04",
-      "text": "The editorial packet supplies selected Lean sources, rather than a complete buildable checkout; source-binding validation does not replay the Lean build, Comparator or the full repository release checks.",
+      "text": "The native writing packet freezes manuscript inputs, selected records and the tools used to inspect them. It supplies no Lean source tree; source-binding validation does not replay Lean, Comparator or the full repository release checks.",
       "owner": "systems",
       "class": "method",
       "evidence_refs": [
+        "native-refinement",
         "audit-code",
-        "counts-code",
-        "historical",
-        "world-authority",
-        "strategy-protocol"
+        "counts-code"
       ],
-      "warrant": "The supplied packet inventory includes selected Lean files but is not a complete buildable repository. The sentence checker only validates declared bytes and support records; it runs no Lean, Comparator or repository release process. Exact local execution and unavailable-check details belong to RETURN.json, not to inherited formal status.",
-      "statement_sha256": "227c92b2cf90dad93e3f1b43ef18b3080001fa952205e4da06aee80d211ceb98",
+      "warrant": "paper_refinement.freeze collects manuscript input closure and its explicitly enumerated audit/evidence files, with no Lean source tree. These source-binding checks perform no Lean, Comparator or full repository release execution. This narrow native writing packet is distinct from a full mathematical research packet.",
+      "statement_sha256": "5ba8b6ea33b79293af56a8722ef1ea97beeab1d55ed9d51dd23f15b018964272",
       "section": "app:repro"
     },
     {
@@ -2542,7 +2610,7 @@
     },
     {
       "id": "r4.repro4.03",
-      "text": "The semantic counts in Figure~\\ref{fig:world} are the supplied interpretation inventory, not a count of individually reviewed proofs.",
+      "text": "The interpretation inventory covers \\SemanticAuthoredInterpreted{} of \\SemanticAuthoredTheoremLike{} authored theorem-like declarations (\\SemanticAuthoredPercent\\%). These are selective, largely contextual interpretations, not individually reviewed proofs.",
       "owner": "systems",
       "class": "reported",
       "evidence_refs": [
@@ -2552,24 +2620,25 @@
         "strategy-protocol",
         "credit"
       ],
-      "warrant": "Retains macro-driven inventories, denominator definitions, incomplete historical capture and public entry points without equating activity with discoveries.",
-      "statement_sha256": "620e543bbb67d2b77ac7be5db93975c4f23fbb5f9dfe64589b9517a9bd16b319",
+      "warrant": "Generated semantic inventory counts are relocated from the crowded figure to this appendix sentence; they count selective contextual interpretations and do not establish individual proof review.",
+      "statement_sha256": "3f5281bee3e93f42f717754586430771811cdf9262ea3031575cdee01410081c",
       "section": "app:repro"
     },
     {
       "id": "r4.repro4.04",
-      "text": "Public reading begins with \\repolink{docs/READING_GUIDE.md}{the reading guide}; \\repolink{CONTRIBUTING.md}{CONTRIBUTING.md} describes contribution channels under the existing \\repolink{docs/research-commons/CREDIT_POLICY.md}{credit policy}.",
+      "text": "Public reading starts at the \\repolink{docs/READING_GUIDE.md}{reading guide}. \\repolink{AGENTS.md}{Agent instructions} route source inspection, explanation and reproduction; the \\repolink{docs/agents/AGENT_WORKBENCH.md}{workbench guide} describes optional recorded sessions. \\repolink{CONTRIBUTING.md}{Contributing} and the \\repolink{docs/research-commons/CREDIT_POLICY.md}{credit policy} govern returns. Cite repository software using \\repolink{CITATION.cff}{CITATION.cff} at the chosen commit or release tag; cite mathematical results by the paper and version actually used.",
       "owner": "systems",
       "class": "reported",
       "evidence_refs": [
-        "counts",
-        "record",
-        "semantic-coverage",
-        "strategy-protocol",
-        "credit"
+        "reader-guide",
+        "agent-entry",
+        "workbench-guide",
+        "contribution-guide",
+        "credit",
+        "software-citation"
       ],
-      "warrant": "Retains macro-driven inventories, denominator definitions, incomplete historical capture and public entry points without equating activity with discoveries.",
-      "statement_sha256": "0f8b49c185b9bf87a50351864da3c82f4c837a1283b172d3bfeca726433451d2",
+      "warrant": "These public entry files supply the stated reading, agent, optional session, contribution and software-citation routes. A software citation identifies the selected repository version; mathematical attribution remains attached to the actual paper and edition used.",
+      "statement_sha256": "e7bb32596ce949b27ccc428cca55567de52197e7edb413911795db32f6e77973",
       "section": "app:repro"
     },
     {
@@ -2640,9 +2709,9 @@
     },
     {
       "id": "r13.paper.08",
-      "text": "After acceptance, the long record's authored sections are restored, evidence and navigation are regenerated, and the compiled pages are inspected, including figures and proof links.",
-      "statement_sha256": "f31df7aee2eda141f5c464a60dd58fab5306070210e7df13c4d94ea8330d515e",
-      "class": "implemented",
+      "text": "After acceptance, integration requires restoring the long record's authored sections, regenerating evidence and navigation, and inspecting the compiled pages, figures and proof links.",
+      "statement_sha256": "f6174003a733ae04268ca9a13abaf8477b80673b84894832db293177e9be476f",
+      "class": "method",
       "evidence_refs": [
         "writing-contract",
         "native-writer",
@@ -2651,7 +2720,7 @@
         "assembler",
         "paper-evidence"
       ],
-      "warrant": "Reviewed against the public packet/dossier/writer implementations and editorial contract. The figure and role split describe method; code checks exact bytes and edit accounting. Mathematical interpretation, reader benefit and publication acceptance are separate obligations.",
+      "warrant": "The editorial integration protocol requires restoring authored long records, refreshing projections and inspecting the rendered result. Visual inspection is a review action, not a guarantee of the static return checker.",
       "section": "app:repro"
     },
     {
@@ -2682,7 +2751,7 @@
     },
     {
       "id": "r4.fig.credit",
-      "text": "\\begin{figure}[H]\n\\centering\n\\begin{tikzpicture}\n\\node[paper box,inner sep=6pt] {\\begin{minipage}{13.7cm}\\small\n\\begin{tabularx}{\\linewidth}{@{}p{3.2cm}X@{}}\n\\toprule\nSource family & Role in the three source accounts\\\\\n\\midrule\nFormal foundations & Lean and mathlib; library maintenance and contributor practice~\\cite{lean4,mathlib,growingmathlib,mathlibcontrib}\\\\\nSource and statement checks & Comparator, kernel replay, vacuity, linters and property tests~\\cite{leanfrocomparator,nanodalib,beyondvacuity,batteries,plausible}\\\\\nFormal-to-prose tools & Blueprints, source documentation, translation and refactoring~\\cite{leanblueprint,leanarchitect,hattori,leanmarathon,proofrefactor,p3docagent}\\\\\nRetrieval and interaction & Premises, proof states and exact declaration neighbourhoods~\\cite{leandojo,pantograph,leanexplore,leansearchv2,theoremgraph,leanatlas}\\\\\nProof automation & Premise selection and tactic search~\\cite{leanhammer,aesop,judgementday}\\\\\nLibrary structure & Declaration networks and repository knowledge graphs~\\cite{mathlibnetwork,huch,repokg}\\\\\nAssumptions and reuse & Proof mining, generalisation, lemma mining and theory exploration~\\cite{kohlenbach,gandhi,lemmamining,hipster}\\\\\nGrowing proof knowledge & Library learning, evolving procedures and candidate statements~\\cite{dreamcoder,legoprover,dreamprover,proofevolve,leanconjecturer,circuitprover}\\\\\nResearch agents & Executable objectives, proof cost and evolving tasks~\\cite{alphaevolve,alphaevolvemath,interestingness,patel,dreamrsi,berlotattwell}\\\\\nAgent collaboration & Bounties, planner/worker state, retrieval and compiler feedback~\\cite{agenthunt,openprover,oprover,prove2me,axle,etp}\\\\\nEvaluation & Research budgets, proof engineering and documentation tasks~\\cite{rebench,p6-swd,p6-ape,p6-poiroux,documentationtest,henkel,openproofcorpus}\\\\\nValidity and intended meaning & Research case studies, interactive proving and public accounting~\\cite{aletheia,autonomousmath,lihai,taowiki}\\\\\nPublic infrastructure & Problem sources, formal conjectures, verification and collaboration~\\cite{erdosproblems,formalconjectures,palomar,carleson,polymath,boinc,gimps,credit,githubsecurity}\\\\\nWriting and maintenance & Mathematical exposition, build dependencies and provenance~\\cite{halmos,knuth,buildsystems,dekleer,workflowprovenance}\\\\\nUnderstanding and reuse & Explanatory generality, digestion and research possibilities~\\cite{kra,cohn,sanderson,essays,taomining,litt,tao2026}\\\\\nDifferent community views & Declarations, dissent, benchmarks, research infrastructure and pace~\\cite{fieldsdecl,chu,greenletter,gowers,ringer,koukoulopoulos,antieau}\\\\\nMathematical antecedents & Weighted support, totient ranks and arithmetic separation~\\cite{paper257,erdos1968,duverneytachiya,paper249,coons,martin,yazdani}\\\\\nOther mathematical records & Running LCM, lemniscates and cross-problem connections~\\cite{paper269,fan269,loxtonvdp1977,bugeaudlaurent2023,erdosgraham,akiyamakaneko,ehp1958,erdos1041,aniforum,fcpr,synthesis}\\\\\n\\bottomrule\n\\end{tabularx}\n\\end{minipage}};\n\\end{tikzpicture}\n\\caption{Sources grouped by the roles for which the original accounts cite them, rather than by a performance ranking; the accompanying mathematical attribution distinguishes original results, refinements and independent rediscovery.}\n\\label{fig:credit}\n\\end{figure}",
+      "text": "\\begin{figure}[H]\n\\centering\\small\n\\begin{tabularx}{\\linewidth}{@{}>{\\raggedright\\arraybackslash}p{3.8cm}>{\\raggedright\\arraybackslash}X@{}}\n\\toprule\nSource family & Role in the three source accounts\\\\\n\\midrule\nFormal foundations & Lean and mathlib; library maintenance and contributor practice~\\cite{lean4,mathlib,growingmathlib,mathlibcontrib}\\\\\nSource and statement checks & Comparator, kernel replay, vacuity, linters and property tests~\\cite{leanfrocomparator,nanodalib,beyondvacuity,batteries,plausible}\\\\\nFormal-to-prose tools & Blueprints, source documentation, translation and refactoring~\\cite{leanblueprint,leanarchitect,hattori,leanmarathon,proofrefactor,p3docagent}\\\\\nRetrieval and interaction & Premises, proof states and exact declaration neighbourhoods~\\cite{leandojo,pantograph,leanexplore,leansearchv2,theoremgraph,leanatlas}\\\\\nProof automation & Premise selection and tactic search~\\cite{leanhammer,aesop,judgementday}\\\\\nLibrary structure & Declaration networks and repository knowledge graphs~\\cite{mathlibnetwork,huch,repokg}\\\\\nAssumptions and reuse & Proof mining, generalisation, lemma mining and theory exploration~\\cite{kohlenbach,gandhi,lemmamining,hipster}\\\\\nGrowing proof knowledge & Library learning, evolving procedures and candidate statements~\\cite{dreamcoder,legoprover,dreamprover,proofevolve,leanconjecturer,circuitprover}\\\\\nResearch agents & Executable objectives, proof cost and evolving tasks~\\cite{alphaevolve,alphaevolvemath,patel,dreamrsi,berlotattwell}\\\\\nAgent collaboration & Bounties, planner/worker state, retrieval and compiler feedback~\\cite{agenthunt,openprover,oprover,prove2me,axle,etp}\\\\\nEvaluation & Research budgets, proof engineering and documentation tasks~\\cite{rebench,p6-swd,p6-ape,p6-poiroux,documentationtest,henkel,openproofcorpus}\\\\\nValidity and intended meaning & Research case studies, interactive proving and public accounting~\\cite{aletheia,autonomousmath,lihai,taowiki}\\\\\nPublic infrastructure & Problem sources, formal conjectures, verification and collaboration~\\cite{erdosproblems,formalconjectures,palomar,carleson,polymath,boinc,gimps,credit,githubsecurity}\\\\\nWriting and maintenance & Mathematical exposition, build dependencies and provenance~\\cite{halmos,knuth,buildsystems,dekleer,workflowprovenance}\\\\\nUnderstanding and reuse & Explanatory generality, digestion and research possibilities~\\cite{kra,cohn,sanderson,essays,taomining,litt,tao2026}\\\\\nDifferent community views & Declarations, dissent, benchmarks, research infrastructure and pace~\\cite{fieldsdecl,chu,greenletter,gowers,ringer,koukoulopoulos,antieau}\\\\\nMathematical antecedents & Weighted support, totient ranks and arithmetic separation~\\cite{paper257,erdos1968,duverneytachiya,paper249,coons,martin,yazdani}\\\\\nOther mathematical records & Running LCM, lemniscates and cross-problem connections~\\cite{paper269,fan269,loxtonvdp1977,bugeaudlaurent2023,erdosgraham,akiyamakaneko,ehp1958,erdos1041,aniforum,fcpr,synthesis}\\\\\n\\bottomrule\n\\end{tabularx}\n\\caption{Sources grouped by the roles for which the original accounts cite them, rather than by a performance ranking; the accompanying mathematical attribution distinguishes original results, refinements and independent rediscovery.}\n\\label{fig:credit}\n\\end{figure}",
       "owner": "systems",
       "class": "reported",
       "evidence_refs": [
@@ -2696,8 +2765,8 @@
         "lit-interestingness",
         "essay-pages"
       ],
-      "warrant": "Credit-preservation map of source manuscript citation roles, not a claim of full-paper reading or equal applicability of every source. Prose below retains the specific mathematical priority and correction relations.",
-      "statement_sha256": "6c1fb01221860482682e88d0acb62b15cb220db2bc07c867d0f3e7b09ae10c27",
+      "warrant": "Credit-preservation map of source manuscript citation roles, not a claim of full-paper reading or equal applicability of every source. Prose below retains the specific mathematical priority and correction relations. The duplicate bibliography keys patel/interestingness name the same version2609.28603v1 and are consolidated under patel, retaining the research-agent role and all unique references.",
+      "statement_sha256": "f9ef77aa1cdd043f9d2ed63d6539fb7d978716ca19a2d234b7c2f9d4e568733d",
       "section": "app:source-map",
       "unit_type": "figure",
       "caption": "Sources grouped by the roles for which the original accounts cite them, rather than by a performance ranking; the accompanying mathematical attribution distinguishes original results, refinements and independent rediscovery.",
@@ -2709,35 +2778,36 @@
       "id": "lifecycle",
       "title": "The life of one claim",
       "sentence_unit": "r4.fig.lifecycle",
-      "caption": "The life of one claim: arrows name the objects exchanged, and the support comparison checks the complete recorded set without executing a new formal proof; the short and long accounts remain linked.",
+      "caption": "From accumulated work to a paper and subsequent revision. Solid arrows show the publication sequence, not logical implication or automatic approval. Comparing the complete registered support set does not execute a new formal proof or establish that the prose has the intended meaning.",
       "source_refs": [
         "packet-dossier",
         "packet-support",
         "assembler",
         "record",
         "credit",
-        "strategy-protocol"
+        "strategy-protocol",
+        "coverage-weighted"
       ],
-      "body_sha256": "11d4371fdf564baa7e6e309548bd04725e0f1a44cc7e8bc4bf415c47a2370e88"
+      "body_sha256": "aeb74b791775e79e5b02168bf9d9aa68c1777f001c620e440e6bbd1bf715b980"
     },
     {
       "id": "world",
-      "title": "A problem world and its views",
+      "title": "A problem collection and its inspection routes",
       "sentence_unit": "r4.fig.world",
-      "caption": "A world contains the evidence and unresolved work for one question; the counts describe the whole recorded corpus, and exhaustive declaration locations do not imply exhaustive mathematical interpretation.",
+      "caption": "Contents of a problem collection and the four ways to inspect the recorded work. The counts refer to the whole corpus. Source locations, dependency edges, interpretations and claim statuses answer different questions.",
       "source_refs": [
         "world-views",
         "counts",
         "semantic-coverage",
         "strategy-goals"
       ],
-      "body_sha256": "bba5f4a696be34723b9f5ff80adc5e8614e896798b2c390df60d3febcba63d49"
+      "body_sha256": "7362fbfe2d1d6adc91c3aea469cd96d87ff343bbc29b349c4edf4c2578a6591b"
     },
     {
       "id": "theorem",
       "title": "One theorem and its recorded support",
       "sentence_unit": "r4.fig.theorem",
-      "caption": "Both registered supports are required for the coverage row, while the authored explanation must justify the hypothesis and its use; omitting that hypothesis can change the claim without breaking either link, as the illustrative paraphrase shows (a different example from historical edit~8 in Table~\\ref{tab:mutations}).",
+      "caption": "The arrows associate a paper statement with its coverage row and the two registered supports; they do not represent deductions between these records. The support hypothesis still needs mathematical explanation. The false paraphrase is illustrative, distinct from historical edit~8 in Table~\\ref{tab:mutations}.",
       "source_refs": [
         "257-statement",
         "257-proof",
@@ -2745,13 +2815,13 @@
         "packet-support",
         "historical"
       ],
-      "body_sha256": "96ac7f29f5ce1a6632cf84bf7c5a5f7bf45ec59668fafbec1a09ff0aebab5541"
+      "body_sha256": "defe9c534a170c7bd492e85c47ba17b3ee993be09a1a3f542b331070cbc46914"
     },
     {
       "id": "checks",
-      "title": "Responsibility for six relations",
+      "title": "Machine checks and mathematical judgement",
       "sentence_unit": "r4.fig.checks",
-      "caption": "Filled circles denote machine checks and open circles denote judgements; a source binding concerns declared bytes, while the relation between a sentence and its mathematical meaning remains a separate review question.",
+      "caption": "Three mechanically checked relations and three questions of judgement. The lower rows describe responsibilities, not evidence that independent review has occurred. Source-byte agreement alone cannot settle the meaning of a sentence.",
       "source_refs": [
         "audit-code",
         "paper-evidence",
@@ -2759,34 +2829,36 @@
         "strategy-protocol",
         "world-authority"
       ],
-      "body_sha256": "960d9039fdeda43958ded0737a1934bbd900bb8b1f64d8634581ab20f57fe3c3"
+      "body_sha256": "b432cc82ad28533bc3acd602f5fd83647b66b2b22168e5cc8e46b340db635560"
     },
     {
       "id": "refinement",
-      "title": "Source-frozen expository refinement",
+      "title": "Expository revision at a fixed source revision",
       "sentence_unit": "r13.fig.refinement",
-      "caption": "An exposition assignment returns focused source changes and optional figures for review; the stages describe responsibilities, not necessarily different people, and integration, rendering and the recorded outcome remain separate.",
+      "caption": "The exposition workflow, read in numerical order. A proposal may be revised or declined at step~3; only accepted changes proceed to integration. The steps name responsibilities, which may be performed by the same agent. Rendering and inspection remain separate from source checks.",
       "source_refs": [
         "writing-contract",
         "native-writer",
         "native-refinement",
         "packet-dossier"
       ],
-      "body_sha256": "72eaf06f146052fee38483a935c10dd14f81879d71827f0d4b6749c80fbca94c"
+      "body_sha256": "48f2fef0a0a340d906ed89555623830551d9b967edbb045e229246c93151146a"
     },
     {
       "id": "contribute",
-      "title": "Contribution and revision",
+      "title": "Contribution routes and review outcomes",
       "sentence_unit": "r4.fig.contribute",
-      "caption": "The contribution route accepts mathematical and architectural work under their own evidence classes; the feedback arrow records an adopted change and does not certify independent review or increased discovery rate.",
+      "caption": "Two entry routes and three possible review outcomes. Repository adoption applies to mathematical and methodological contributions; it establishes neither independent review nor acceptance by the wider mathematical community.",
       "source_refs": [
         "strategy-protocol",
         "strategy-credit",
         "strategy-goals",
         "credit",
-        "record"
+        "record",
+        "contribution-guide",
+        "architecture-contribution-guide"
       ],
-      "body_sha256": "d7b086c8dc33a4e83374213c7bd0cfd063737f19f75e31c7fdd97703425dd468"
+      "body_sha256": "e8cdb8ebf544c321c99e60f4ffac0d9f01e892651559b883889714bebf68d4ad"
     },
     {
       "id": "credit",
@@ -2804,7 +2876,7 @@
         "lit-interestingness",
         "essay-pages"
       ],
-      "body_sha256": "6c1fb01221860482682e88d0acb62b15cb220db2bc07c867d0f3e7b09ae10c27"
+      "body_sha256": "f9ef77aa1cdd043f9d2ed63d6539fb7d978716ca19a2d234b7c2f9d4e568733d"
     }
   ],
   "supplemental_binding_contract": {
@@ -2812,5 +2884,6 @@
     "figure_scope": "Whole figure including caption and labels; one grammatical sentence per caption.",
     "formal_status": "Quoted existing theorem is class reported, linked to coverage rows; no formal class is recognised by this checker.",
     "external_reading": "External register reading is described in the return, not imported as evidence of implementation."
-  }
+  },
+  "revision_source_commit": "992cf60a27efd8c34f437e347c413bb781d75c32"
 }

@@ -126,34 +126,32 @@ FIRST_MINUTE_CONTRACT = {
 # retaining the escaped-edit, review, source-freeze and unmeasured-benefit limits.
 UNIFIED_SYSTEMS_FIRST_MINUTE = {
     (1, 1): (
-        "problem-sized lean worlds",
-        "from a lean corpus to a short paper",
+        "publishing mathematical results from a lean repository",
+        "evidence, exposition and revision in eight",
         "question, prior sources, computations, proofs and unresolved steps together",
         "a historical test rejected nine of ten false edits but accepted a false claim of completion",
     ),
-    (4, 5): (
+    (5, 6): (
         "lean verifies that a proof establishes the formal statement",
         "comparator adds a separately stated challenge",
-    ),
-    (5, 6): (
+        "does not require a second independent mathematician",
+        "no independent human mathematical review of the corpus is recorded",
         "in either case the integrating reviewer decides whether the mathematics and its description remain faithful",
-        "no measurement of reader benefit or autonomous discovery",
     ),
-    (6, 7): (
+    (6, 8): (
         "an open route for contributions",
-        "does not certify independent review or increased discovery rate",
+        "neither independent review nor acceptance by the wider mathematical community",
         "source-frozen editorial refinement",
         "under a manifest of their exact bytes",
         "it neither applies the proposal nor executes returned programs",
+        "no measurement of reader benefit or autonomous discovery",
     ),
-    (7, 8): (
-        "no completed external cold-clone use had been recorded",
+    (8, 9): (
         "nine of the ten deliberately false edits were rejected and one escaped",
+        "the contributor and reviewer were the same agent",
+        "no public pull request, human review or independent outside clone replay",
     ),
-    (8, 10): (
-        # This sentence straddles pages 9–10; use its intact concluding clause
-        # and preceding subject rather than admitting a page header inside
-        # a semantic anchor.
+    (9, 11): (
         "transfer to unseen mathematics and understanding by",
         "independent human readers are unresolved",
         "no comparative reader result is reported",

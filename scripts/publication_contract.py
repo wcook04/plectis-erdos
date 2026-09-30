@@ -508,6 +508,15 @@ def validate_systems_evidence_source(
             r"test copy containing the false clause"
         ),
     }
+    if artifact.get('systems_paper_profile') == 'unified_corpus_to_paper_v1':
+        required_patterns.update({
+            'plain architecture title': r'publishing mathematical results from a lean repository',
+            'human judgement boundary': r'does not require a second independent mathematician',
+            'post-repair example': (
+                r'post-repair witness accepts the intact baseline readme and rejects a '
+                r'test copy containing the false clause'
+            ),
+        })
     for label, pattern in required_patterns.items():
         if not re.search(pattern, normalized):
             errors.append(

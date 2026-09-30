@@ -3,7 +3,7 @@
 
 # The systems paper
 
-Read [Problem-Sized Lean Worlds](claim-faithful-publication-systems-paper.pdf)
+Read [Publishing Mathematical Results from a Lean Repository](claim-faithful-publication-systems-paper.pdf)
 ([LaTeX source](claim-faithful-publication-systems-paper.tex)) first. It is the
 current account of the research architecture: how a mathematical result keeps
 its hypotheses, explanation, formal support and credit as people revise it.

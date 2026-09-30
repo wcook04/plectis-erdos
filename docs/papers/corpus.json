@@ -7907,13 +7907,13 @@
     },
     {
       "paper_id": "claim-faithful-publication-systems",
-      "title": "Problem-Sized Lean Worlds",
+      "title": "Publishing Mathematical Results from a Lean Repository",
       "title_source": "manuscript",
       "question_this_paper_answers": "How can AI-assisted work on an open problem persist as a record that people and models can check, understand and extend?",
       "subject": "Systems paper",
       "subject_kind": "system",
       "form": "Research architecture",
-      "owns": "the research architecture: problem-sized worlds, the path from a proof to a public claim, and the contribution cycle",
+      "owns": "the research architecture: problem-centred collections, the path from a proof to a public claim, and the contribution cycle",
       "not_authority_for": "the mathematics it uses as examples, which the problem papers own, or the novelty and significance of those results",
       "publication_state": "active",
       "publication_class": "methods_paper",
@@ -7925,13 +7925,13 @@
       "preferred_citation": {
         "author": "Will Cook",
         "year": "2026",
-        "title": "Problem-Sized Lean Worlds",
+        "title": "Publishing Mathematical Results from a Lean Repository",
         "repository": "plectis-erdos",
         "canonical_source_commit": null,
         "canonical_source_url": null,
         "licence": "CC-BY-4.0",
         "identifier_kind": "unversioned_source",
-        "text": "Will Cook (2026). Problem-Sized Lean Worlds. plectis-erdos. CC-BY-4.0.",
+        "text": "Will Cook (2026). Publishing Mathematical Results from a Lean Repository. plectis-erdos. CC-BY-4.0.",
         "derived_from": [
           "docs/papers/corpus.json: title, copyright, home_repository, canonical_source_commit, canonical_source_url, licence"
         ]
@@ -7942,7 +7942,7 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/claim-faithful-publication-systems-paper.md",
       "local_source": "paper/systems/claim-faithful-publication-systems-paper.tex",
-      "source_sha256": "sha256:d1a3c2c4be2d65186a795c43a2bacefd522bfa742074a3613b47286874da66b7",
+      "source_sha256": "sha256:41b214d74cd6aba9d97a994e3b91b27a52f4b5f1dcbea26ee414fa2a57dfd9b4",
       "canonical_source_commit": null,
       "canonical_source_pin_status": "local_unpublished",
       "canonical_source_url": null,
@@ -7952,7 +7952,7 @@
         {
           "level": 1,
           "id": "claim-faithful-publication-systems-paper",
-          "title": "Problem-Sized Lean Worlds",
+          "title": "Publishing Mathematical Results from a Lean Repository",
           "line": 1
         },
         {
@@ -7964,98 +7964,98 @@
         {
           "level": 1,
           "id": "sec:world",
-          "title": "A problem-sized Lean world",
+          "title": "A repository organised around problems",
           "line": 34
         },
         {
           "level": 1,
           "id": "sec:example",
           "title": "A theorem and the reason for its hypothesis",
-          "line": 53
+          "line": 82
         },
         {
           "level": 4,
           "id": "a-positive-displacement.",
           "title": "A positive displacement.",
-          "line": 90
+          "line": 119
         },
         {
           "level": 4,
           "id": "a-finite-orbit-and-its-unfinished-end.",
           "title": "A finite orbit and its unfinished end.",
-          "line": 106
+          "line": 135
         },
         {
           "level": 4,
           "id": "a-second-average-restores-the-missing-factor.",
           "title": "A second average restores the missing factor.",
-          "line": 127
+          "line": 156
         },
         {
           "level": 1,
           "id": "sec:checks",
           "title": "Proof and publication checks",
-          "line": 155
+          "line": 184
         },
         {
           "level": 1,
           "id": "sec:paper",
           "title": "From a Lean corpus to a paper",
-          "line": 178
+          "line": 240
         },
         {
           "level": 2,
           "id": "source-frozen-editorial-refinement",
           "title": "Source-frozen editorial refinement",
-          "line": 184
+          "line": 246
         },
         {
           "level": 1,
           "id": "sec:contribute",
           "title": "An open route for contributions",
-          "line": 203
+          "line": 265
         },
         {
           "level": 1,
           "id": "sec:instance",
           "title": "Recorded observations",
-          "line": 230
+          "line": 292
         },
         {
           "level": 1,
           "id": "sec:related",
           "title": "Related work",
-          "line": 277
+          "line": 339
         },
         {
           "level": 1,
           "id": "sec:limits",
           "title": "Limits",
-          "line": 285
+          "line": 347
         },
         {
           "level": 1,
           "id": "app:repro",
           "title": "Inspection and reproduction",
-          "line": 299
+          "line": 361
         },
         {
           "level": 2,
           "id": "editorial-roles-and-acceptance",
           "title": "Editorial roles and acceptance",
-          "line": 315
+          "line": 377
         },
         {
           "level": 1,
           "id": "app:source-map",
           "title": "Sources by role",
-          "line": 333
+          "line": 395
         }
       ],
-      "citations_rendered": 23,
+      "citations_rendered": 41,
       "local_pdf": "paper/systems/claim-faithful-publication-systems-paper.pdf",
-      "pdf_sha256": "sha256:7ed1f8d775d073a62ca1465164eaae1078e229f49059bcf604c5064cc06a4bce",
-      "pdf_byte_count": 157720,
+      "pdf_sha256": "sha256:e41889b9689c86f3ac5a6f16be73913c850cc2386774d9b7eca7b1bd346c7fcb",
+      "pdf_byte_count": 144522,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection for this guide",
@@ -8068,22 +8068,22 @@
           {
             "id": "sec:example",
             "title": "A theorem and the reason for its hypothesis",
-            "line": 53
+            "line": 82
           },
           {
             "id": "sec:paper",
             "title": "From a Lean corpus to a paper",
-            "line": 178
+            "line": 240
           },
           {
             "id": "sec:checks",
             "title": "Proof and publication checks",
-            "line": 155
+            "line": 184
           },
           {
             "id": "sec:limits",
             "title": "Limits",
-            "line": 285
+            "line": 347
           }
         ],
         "unresolved_count": 0
@@ -8291,7 +8291,7 @@
         "unresolved_count": 0
       },
       "superseded_by": "claim-faithful-publication-systems",
-      "retirement_reason": "Consolidated into Problem-Sized Lean Worlds; source manuscript retained unchanged for provenance and detailed historical records."
+      "retirement_reason": "Consolidated into the current systems paper; source manuscript retained unchanged for provenance and detailed historical records."
     },
     {
       "paper_id": "open-source-mathematics-strategy",
@@ -8567,7 +8567,7 @@
         "unresolved_count": 0
       },
       "superseded_by": "claim-faithful-publication-systems",
-      "retirement_reason": "Consolidated into Problem-Sized Lean Worlds; source manuscript retained unchanged for provenance and detailed historical records."
+      "retirement_reason": "Consolidated into the current systems paper; source manuscript retained unchanged for provenance and detailed historical records."
     },
     {
       "paper_id": "plectis-public-system",

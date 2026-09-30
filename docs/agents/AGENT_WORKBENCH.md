@@ -29,7 +29,7 @@ or conjecture in the session.
 Recorded sessions are optional for ordinary contributions. An issue or pull
 request can supply an ordinary proof, a correction, exposition or an exact
 finite computation, with its evidence and limits stated under the
-[methodology](../METHODOLOGY.md). [Problem-Sized Lean Worlds](../../paper/systems/claim-faithful-publication-systems-paper.pdf)
+[methodology](../METHODOLOGY.md). The [systems paper](../../paper/systems/claim-faithful-publication-systems-paper.pdf)
 explains the current design; the [earlier technical account](../../paper/systems/cold-clone-to-proof-receipt.pdf)
 is retained as historical background.
 

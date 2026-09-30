@@ -532,9 +532,11 @@ def validate_systems_paper(text: str) -> None:
 
     artifact = next(a for a in contract['artifacts'] if a['id']=='repository_architecture_guide')
     unified = artifact.get('systems_paper_profile') == 'unified_corpus_to_paper_v1'
-    subtitle = ('From a Lean corpus to a short paper, open to outside contribution'
+    title = ('Publishing Mathematical Results from a Lean Repository'
+             if unified else 'Problem-Sized Lean Worlds')
+    subtitle = (r'Evidence, exposition and revision in eight Erd\H{o}s problems'
                 if unified else 'Persistent, checkable research records for AI-assisted mathematics')
-    require('Problem-Sized Lean Worlds' in text and subtitle in text,
+    require(title in text and subtitle in text,
             'systems paper title differs from its registered architecture profile')
     require(
         r"\newcommand{\repobase}{https://github.com/wcook04/plectis-erdos}" in text,

@@ -7,17 +7,24 @@
 \usepackage{needspace,textcomp,tikz,booktabs,array,float,placeins,tabularx,xurl}
 \usetikzlibrary{arrows.meta,positioning,calc,fit,matrix}
 \usepackage[colorlinks=true,linkcolor=linkinternal,urlcolor=linkexternal,citecolor=linkinternal]{hyperref}
-\hypersetup{pdftitle={Problem-Sized Lean Worlds},pdfauthor={Will Cook},
- pdfsubject={From a Lean corpus to a short paper, open to outside contribution},pdflang={en-GB},
+\hypersetup{pdftitle={Publishing Mathematical Results from a Lean Repository},pdfauthor={Will Cook},
+ pdfsubject={Evidence, exposition and revision in eight Erd\H{o}s problems},pdflang={en-GB},
  bookmarksnumbered=true,bookmarksopen=true,bookmarksopenlevel=1}
 \newcommand{\repobase}{https://github.com/wcook04/plectis-erdos}
-\newcommand{\repolink}[2]{\href{\repobase/blob/7308896010e6b527d283dfdd0687a717a6183fb6/#1}{\texttt{#2}}}
+\newcommand{\repolink}[2]{\href{\repobase/blob/992cf60a27efd8c34f437e347c413bb781d75c32/#1}{\texttt{#2}}}
+% Local figure styles: no information is encoded only by colour.
+\tikzset{
+ sys box/.style={draw=black!65,line width=.5pt,fill=black!2,
+   inner sep=5pt,align=center,font=\small},
+ sys arrow/.style={-{Stealth[length=2mm,width=1.4mm]},line width=.6pt,draw=black!75},
+ sys label/.style={font=\small,align=center,inner sep=2pt,fill=white}
+}
 \emergencystretch=1.7em
-\runninghead{Problem-sized Lean worlds}
-\title{Problem-Sized Lean Worlds}
-\subtitle{From a Lean corpus to a short paper, open to outside contribution}
+\runninghead{Publishing mathematical results from Lean}
+\title{Publishing Mathematical Results from a Lean Repository}
+\subtitle{Evidence, exposition and revision in eight Erd\H{o}s problems}
 \author{Will Cook}
-\date{29 September 2026}
+\date{30 September 2026}
 % BEGIN generated_pipeline_counts
 \newcommand{\LedgerRows}{689}
 \newcommand{\LedgerExact}{498}
@@ -72,7 +79,7 @@ Plectis records the passage from formal results to prose within a repository org
 We follow a weighted-support criterion for reciprocal Mersenne series through its proof, its two registered Lean supports and its written explanation.
 % END SENTENCE r4.abstract.03
 % SENTENCE r4.abstract.04
-The publication checks compare every registered support with the supplied evidence and detect changes to source bytes; the same records retain limitations and contributor credit through revision.
+The publication checks compare registered support sets with the supplied evidence and detect changes to source bytes; linked claim and contribution records retain limitations and credit through revision.
 % END SENTENCE r4.abstract.04
 % SENTENCE r4.abstract.05
 A historical test rejected \HistoricalRejected{} of \HistoricalEdits{} false edits but accepted a false claim of completion.
@@ -90,7 +97,7 @@ Consider a theorem asserting that
 % END SENTENCE r4.intro1.01
 
 % SENTENCE r4.intro1.02
-For each mathematical problem, Plectis keeps the question, prior sources, computations, proofs and unresolved steps together; we call this collection a problem world. It records which Lean results support a paper statement and which source passages explain it, so that a reviewer can make these comparisons at a specified revision.
+For each mathematical problem, Plectis keeps the question, prior sources, computations, proofs and unresolved steps together in a problem-centred collection. It records which Lean results support a paper statement and which source passages explain it, so that a reviewer can make these comparisons at a specified revision.
 % END SENTENCE r4.intro1.02
 % SENTENCE r4.intro1.03
 Figure~\ref{fig:lifecycle} shows where these records enter: a mathematical claim is selected from the accumulated work, all its registered supports are compared with the supplied evidence, and an author turns it into a paper that readers may question or extend.
@@ -100,28 +107,17 @@ Figure~\ref{fig:lifecycle} shows where these records enter: a mathematical claim
 \begin{figure}[htbp]
 \centering
 \begin{tikzpicture}[x=1cm,y=1cm]
-\node[paper stage,draw=MidnightBlue,fill=MidnightBlue!5,text width=2.05cm] (w) at (0,0) {Problem world\\\small sources and results};
-\node[paper stage,draw=MidnightBlue,fill=MidnightBlue!5,text width=2.05cm] (c) at (2.9,0) {Registered claim\\\small status and supports};
-\node[paper stage,draw=MidnightBlue,fill=MidnightBlue!5,text width=2.05cm] (j) at (5.8,0) {Support comparison\\\small all registered supports};
-\node[paper stage,draw=BurntOrange,fill=BurntOrange!5,text width=2.05cm] (p) at (8.7,0) {Short paper\\$\updownarrow$\\Long record};
-\node[paper stage,draw=Violet,fill=Violet!5,text width=2.05cm] (r) at (11.6,0) {Readers\\\small review and reuse};
-\draw[paper arrow] (w)--(c);
-\draw[paper arrow] (c)--(j);
-\draw[paper arrow] (j)--(p);
-\draw[paper arrow] (p)--(r);
-\node[paper label,align=center] at (1.45,.9) {source span};
-\node[paper label,align=center] at (4.35,.9) {one revision};
-\node[paper label,align=center] at (7.25,.9) {bound text};
-\node[paper label,align=center] at (10.15,.9) {linked PDF};
-\draw[paper feedback] (r.south)--++(0,-.7)-| (w.south);
-\node[paper label] at (5.8,-1.25) {accepted return: change, evidence, limits, credit};
-\node[paper badge,fill=MidnightBlue!7,text=MidnightBlue] at (5.8,-1.75) {append-only, hash-linked research journal};
-\node[font=\small,align=center] at (5.8,-2.4) {\textcolor{ForestGreen}{Formal check}\quad
-\textcolor{MidnightBlue}{Publication check}\quad
-\textcolor{BurntOrange}{Authored account}\quad
-\textcolor{Violet}{Review and judgement}};
+\node[sys box,text width=2.7cm,minimum height=1.8cm] (c) at (0,0) {Problem collection\\sources, results\\and open questions};
+\node[sys box,text width=2.7cm,minimum height=1.8cm] (s) at (3.6,0) {Paper coverage row\\compare all listed\\formal supports};
+\node[sys box,text width=2.7cm,minimum height=1.8cm] (p) at (7.2,0) {Authored paper\\statement, argument\\and limitations};
+\node[sys box,text width=2.7cm,minimum height=1.8cm] (r) at (10.8,0) {Readers\\inspect, question\\and extend};
+\draw[sys arrow] (c)--(s);
+\draw[sys arrow] (s)--(p);
+\draw[sys arrow] (p)--(r);
+\draw[sys arrow,dashed] (r.south)--++(0,-.85)-| (c.south);
+\node[sys label,text width=11.6cm] at (5.4,-2.5) {Corrections and contributions return after review and adoption (Figure~\ref{fig:contribute}).\\The research journal records returns and their dispositions.};
 \end{tikzpicture}
-\caption{The life of one claim: arrows name the objects exchanged, and the support comparison checks the complete recorded set without executing a new formal proof; the short and long accounts remain linked.}
+\caption{From accumulated work to a paper and subsequent revision. Solid arrows show the publication sequence, not logical implication or automatic approval. Comparing the complete registered support set does not execute a new formal proof or establish that the prose has the intended meaning.}
 \label{fig:lifecycle}
 \end{figure}
 % END SENTENCE r4.fig.lifecycle
@@ -139,10 +135,10 @@ The additional relation described here records a statement together with all its
 
 
 % SENTENCE r4.intro2.04
-We first describe what a problem world lets a reader recover. The worked example then supplies the mathematical reason for its support hypothesis, before we follow the theorem into the publication checks, editorial revisions and contribution record. The historical false-edit test returns to the distinction that opened the paper.
+We first describe what a problem collection lets a reader recover. The worked example then supplies the mathematical reason for its support hypothesis, before we follow the theorem into the publication checks, editorial revisions and contribution record. The historical false-edit test returns to the distinction that opened the paper.
 % END SENTENCE r4.intro2.04
 
-\section{A problem-sized Lean world}\label{sec:world}
+\section{A repository organised around problems}\label{sec:world}
 \papersectiontarget{systems-scaling}
 % SENTENCE r4.world1.01
 Within this collection, a reader may want a proof, a counterexample to a proposed extension, or the argument behind a failed approach. Exact experiments and corrected references remain beside the original question as contributions in their own right.
@@ -160,25 +156,28 @@ A separate graph records authored interpretations of those declarations and thei
 
 % SENTENCE r4.fig.world
 \begin{figure}[htbp]
-\centering
-\begin{tikzpicture}[x=1cm,y=1cm]
-\node[paper eyebrow,anchor=west] at (0,.65) {ONE PROBLEM WORLD};
-\node[paper card,minimum height=1.1cm,text width=3.95cm,draw=BurntOrange] at (2.15,-.15) {Question and literature};
-\node[paper card,minimum height=1.1cm,text width=3.95cm,draw=ForestGreen] at (7.0,-.15) {Lean statements and proofs};
-\node[paper card,minimum height=1.1cm,text width=3.95cm,draw=MidnightBlue] at (11.85,-.15) {Claims and open obligations};
-\node[paper card,minimum height=1.1cm,text width=3.95cm,draw=MidnightBlue] at (2.15,-1.5) {Computations and certificates};
-\node[paper card,minimum height=1.1cm,text width=3.95cm,draw=BurntOrange] at (7.0,-1.5) {Failed approaches};
-\node[paper card,minimum height=1.1cm,text width=3.95cm,draw=BurntOrange] at (11.85,-1.5) {Paper and supporting record};
-\node[paper eyebrow,anchor=west] at (0,-2.4) {FOUR VIEWS, NO LEAN BUILD NEEDED};
-\node[paper box,anchor=west,text width=13.5cm,draw=MidnightBlue,fill=MidnightBlue!5] at (0,-2.95) {Declaration index: exhaustive source locations};
-\node[paper box,anchor=west,text width=13.5cm,draw=MidnightBlue] at (0,-3.75) {Dependency index: exact edges for loaded roots};
-\node[paper box,anchor=west,text width=13.5cm,draw=BurntOrange] at (0,-4.55) {Semantic graph: \SemanticAuthoredInterpreted{} of \SemanticAuthoredTheoremLike{} interpreted (\SemanticAuthoredPercent\%)};
-\node[paper box,anchor=west,text width=13.5cm,draw=Violet] at (0,-5.35) {Claim registry: \Claims{} claims, \ClaimStatuses{} statuses, \ClaimObligations{} open obligations};
-\node[font=\small,align=left,anchor=west] at (0,-6.25) {68 factorial series\quad 243 reciprocal tails\quad 249 totient series\quad 251 prime gaps\\
-257 Mersenne subseries\quad 269 running LCM\quad 1041 lemniscates\quad 1049 rational-base series};
-\node[paper badge,fill=MidnightBlue!6] at (7,-7.05) {Corpus snapshot: \ProblemWorlds{} worlds, \LeanModules{} Lean modules, \RegisteredPapers{} registered papers};
-\end{tikzpicture}
-\caption{A world contains the evidence and unresolved work for one question; the counts describe the whole recorded corpus, and exhaustive declaration locations do not imply exhaustive mathematical interpretation.}
+\centering\small
+\begin{minipage}{\linewidth}
+\textbf{For each problem:} the question and literature, Lean statements and proofs,
+computations and certificates, claims and open obligations, failed approaches,
+and the paper with its supporting record.
+\par\medskip
+\begin{tabularx}{\linewidth}{@{}>{\raggedright\arraybackslash}p{3.25cm}>{\raggedright\arraybackslash}X@{}}
+\toprule
+View available without a Lean build & What it records\\
+\midrule
+Declaration index & Source locations, exhaustive within its inventory.\\[3pt]
+Dependency index & Exact dependency edges for the selected starting declarations.\\[3pt]
+Interpretation graph & Selective, largely contextual accounts of declarations and their connections; not an individual reading of every proof.\\[3pt]
+Claim registry & Selected assertions, their status and remaining obligations.\\
+\bottomrule
+\end{tabularx}
+\par\medskip
+Across the corpus: \ProblemWorlds{} problems, \LeanModules{} Lean modules and
+\RegisteredPapers{} registered papers. The claim registry contains \Claims{}
+claims in \ClaimStatuses{} statuses, with \ClaimObligations{} open obligations.
+\end{minipage}
+\caption{Contents of a problem collection and the four ways to inspect the recorded work. The counts refer to the whole corpus. Source locations, dependency edges, interpretations and claim statuses answer different questions.}
 \label{fig:world}
 \end{figure}
 % END SENTENCE r4.fig.world
@@ -321,24 +320,21 @@ Since $\varepsilon$ is arbitrary, one of the displacements is smaller than $1/q$
 \begin{figure}[htbp]
 \centering
 \begin{tikzpicture}[x=1cm,y=1cm]
-\node[paper box,text width=3.5cm,draw=BurntOrange,fill=BurntOrange!5,minimum height=2.3cm] (s) at (1.9,0) {Paper statement\\\medskip
-$W_{2,P}(A)<\infty$\\$\Longrightarrow X_B(b)\notin\mathbb Q$\\
-$B\subseteq A$ infinite, $b\ge2$};
-\node[paper box,text width=3.4cm,draw=MidnightBlue,fill=MidnightBlue!5,minimum height=2.3cm] (l) at (6.45,0) {Coverage row\\\texttt{res:weighted-support}\\\medskip
-Recorded status:\\exact or stronger\\Both listed supports required};
-\node[paper box,text width=3.9cm,draw=ForestGreen,fill=ForestGreen!5,minimum height=1.15cm] (a) at (11.25,.8) {Weighted criterion\\fixed-base and all-base\\\repolink{lean/ErdosProblems/Erdos257/PaperCompleteR8/WeightedReturn.lean}{Lean source}};
-\node[paper box,text width=3.9cm,draw=ForestGreen,fill=ForestGreen!5,minimum height=1.15cm] (b) at (11.25,-.8) {Hereditary criterion\\for a fixed base\\\repolink{lean/ErdosProblems/Erdos257/PaperCompleteR8/WeightedHereditaryClaim.lean}{Lean source}};
-\draw[paper arrow] (s)--(l);
-\draw[paper arrow] (l.east)--(a.west);
-\draw[paper arrow] (l.east)--(b.west);
-\node[paper label] at (4.17,.4) {statement};
-
-\node[paper badge,fill=ForestGreen!8,align=center] at (7,-1.65) {Comparator: PalomarCorpus/E257 and E257bc, recorded as compared};
-\node[paper label] at (7,-2.1) {Palomar: prepared, not submitted; full declaration names in Appendix~\ref{app:repro}};
-\node[paper box,text width=6.25cm,draw=BurntOrange,minimum height=1.55cm] at (3.4,-3.15) {Authored explanation\\$\Delta(N)\ge1/q$ under rationality\\Finite orbit: an end correction\\Dyadic lengths recover $1/a$};
-\node[paper box,text width=6.25cm,draw=Violet,fill=Violet!4,minimum height=1.55cm] at (10.6,-3.15) {False illustrative paraphrase:\\``solves Problem 257''\\The support hypothesis is missing};
+\node[sys box,text width=12.7cm,minimum height=1cm] (s) at (0,0) {\textbf{Paper statement, with the notation and assumptions of Section~\ref{sec:example}}\\
+$W_{2,P}(A)<\infty\ \Longrightarrow\ X_B(b)\notin\mathbb Q$
+\quad for every infinite $B\subseteq A$ and integer $b\ge2$.};
+\node[sys box,text width=4.55cm,minimum height=2.2cm] (l) at (-3.9,-2.1) {\textbf{Registered coverage row}\\\texttt{res:weighted-support}\\[3pt]
+Exact or stronger support.\\Both entries required.};
+\node[sys box,text width=5.5cm,minimum height=.9cm] (a) at (3.35,-1.45) {Weighted criterion: fixed-base and all-base\\\repolink{lean/ErdosProblems/Erdos257/PaperCompleteR8/WeightedReturn.lean}{WeightedReturn.lean}};
+\node[sys box,text width=5.5cm,minimum height=.9cm] (b) at (3.35,-2.75) {Hereditary criterion for a fixed base\\\repolink{lean/ErdosProblems/Erdos257/PaperCompleteR8/WeightedHereditaryClaim.lean}{WeightedHereditaryClaim.lean}};
+\draw[sys arrow] (s.south -| l.north)--(l.north);
+\draw[sys arrow] (l.east)--++(.55,0)|-(a.west);
+\draw[sys arrow] (l.east)--++(.55,0)|-(b.west);
+\node[sys label,text width=12.8cm] at (0,-4.05) {Comparator: \texttt{PalomarCorpus/E257} and \texttt{E257bc}, recorded as compared.\\Palomar submission: prepared, not submitted. Declaration names: Appendix~\ref{app:repro}.};
+\node[sys box,text width=5.95cm,minimum height=1.5cm] at (-3.45,-5.6) {\textbf{Authored explanation}\\$\Delta(N)\ge1/q$ under rationality;\\a finite orbit gives an end correction;\\dyadic lengths recover $1/a$.};
+\node[sys box,text width=5.95cm,minimum height=1.5cm] at (3.45,-5.6) {\textbf{False illustrative paraphrase}\\``Solves Problem 257.''\\This drops the support hypothesis\\even if both source links remain.};
 \end{tikzpicture}
-\caption{Both registered supports are required for the coverage row, while the authored explanation must justify the hypothesis and its use; omitting that hypothesis can change the claim without breaking either link, as the illustrative paraphrase shows (a different example from historical edit~8 in Table~\ref{tab:mutations}).}
+\caption{The arrows associate a paper statement with its coverage row and the two registered supports; they do not represent deductions between these records. The support hypothesis still needs mathematical explanation. The false paraphrase is illustrative, distinct from historical edit~8 in Table~\ref{tab:mutations}.}
 \label{fig:theorem}
 \end{figure}
 \FloatBarrier
@@ -359,22 +355,21 @@ These checks concern different relations from the correctness of the formal proo
 
 % SENTENCE r4.fig.checks
 \begin{figure}[htbp]
-\centering
-\begin{tikzpicture}
-\node[paper box,inner sep=7pt] {\begin{tabular}{@{}p{5.4cm}ccccc@{}}
+\centering\small
+\begin{tabularx}{\linewidth}{@{}>{\raggedright\arraybackslash}p{5.35cm}>{\raggedright\arraybackslash}X@{}}
 \toprule
-Relation & Lean & Comparator & Tools & Author & Review\\
+Relation being assessed & Check or judgement required\\
 \midrule
-Formal statement and proof & \textcolor{ForestGreen}{$\bullet$} &&&&\\
-Challenge and formal statement &&\textcolor{ForestGreen}{$\bullet$}&&&\\
-Sentence and declared source bytes &&&\textcolor{MidnightBlue}{$\bullet$}&&\\
-Sentence and mathematical meaning &&&&\textcolor{BurntOrange}{$\circ$}&\textcolor{Violet}{$\circ$}\\
-Result and motivating question &&&&\textcolor{BurntOrange}{$\circ$}&\textcolor{Violet}{$\circ$}\\
-Novelty, significance and acceptance &&&&&\textcolor{Violet}{$\circ$}\\
+Formal statement and proof & Lean kernel checking.\\[3pt]
+Challenge and formal statement & Comparator checking against the selected challenge.\\[3pt]
+Sentence and declared source bytes & Publication tools check the registered source binding.\\
+\midrule
+Sentence and mathematical meaning & Author and reviewer judgement about what the sources establish.\\[3pt]
+Result and motivating question & Author and reviewer judgement about the scope of the result.\\[3pt]
+Novelty, significance and acceptance & Assessment by reviewers and the mathematical community.\\
 \bottomrule
-\end{tabular}};
-\end{tikzpicture}
-\caption{Filled circles denote machine checks and open circles denote judgements; a source binding concerns declared bytes, while the relation between a sentence and its mathematical meaning remains a separate review question.}
+\end{tabularx}
+\caption{Three mechanically checked relations and three questions of judgement. The lower rows describe responsibilities, not evidence that independent review has occurred. Source-byte agreement alone cannot settle the meaning of a sentence.}
 \label{fig:checks}
 \end{figure}
 % END SENTENCE r4.fig.checks
@@ -387,7 +382,7 @@ Comparator adds a separately stated challenge and a check of its selected Lean i
 % END SENTENCE r4.checks2.02
 
 % SENTENCE r4.checks2.03
-For each prose passage we record its text, specified source lines, the kind of evidence and an author's explanation of why those lines support the passage.
+For each marked passage in this systems paper we record its text, specified source lines, the kind of evidence and the rationale for citing those sources.
 % END SENTENCE r4.checks2.03
 
 % SENTENCE r4.checks2.04
@@ -411,7 +406,7 @@ In the recorded design, the checking interface obtains each verdict from the spe
 This interface rule does not prevent an actor with filesystem access from changing the implementation or stored record.
 % END SENTENCE r4.checks3.03
 % SENTENCE r4.checks3.04
-The protocol distinguishes contributor and reviewer roles but does not technically force a second independent mathematician.
+The protocol distinguishes contributor and reviewer roles but does not require a second independent mathematician. No independent human mathematical review of the corpus is recorded.
 % END SENTENCE r4.checks3.04
 
 
@@ -431,6 +426,9 @@ The long record retains the complete proof and subsidiary cases. A correspondenc
 % SENTENCE r4.paper1.04
 The assembler preserves these authored parts and their cross-references; it supplies no missing mathematical step.
 % END SENTENCE r4.paper1.04
+% SENTENCE reader.guidance
+Readers may need a hint, a worked example or the full argument. The reading guide invites them to reconstruct a decisive step or change a hypothesis, and the explanation instructions require an agent to respect the requested depth. These are authoring rules; they do not establish that a reader has understood the proof.
+% END SENTENCE reader.guidance
 
 \subsection{Source-frozen editorial refinement}
 % SENTENCE r13.paper.01
@@ -440,7 +438,7 @@ A revision begins by collecting candidate results, antecedents, difficult proof 
 The author decides which argument deserves the short paper; the checker audits source consistency and the specified manuscript rules.
 % END SENTENCE r13.paper.02
 % SENTENCE r13.paper.03
-We freeze the selected manuscripts, input closure, coverage ledger and audit rules under a manifest of their exact bytes, so the writer and integrating reviewer can identify what the proposed changes were based on.
+We freeze the selected manuscripts, their required input files, coverage ledger and audit rules under a manifest of their exact bytes, so the writer and integrating reviewer can identify what the proposed changes were based on.
 % END SENTENCE r13.paper.03
 
 % SENTENCE r13.paper.04
@@ -453,26 +451,26 @@ An advisory model can return a proposal against those sources; a tool-enabled ag
 \begin{figure}[htbp]
 \centering
 \begin{tikzpicture}[x=1cm,y=1cm]
-\node[paper stage,text width=3.65cm,draw=MidnightBlue,fill=MidnightBlue!5] (freeze) at (0,0) {Freeze the inputs\\\small papers, statements\\and source records};
-\node[paper stage,text width=3.65cm,draw=BurntOrange,fill=BurntOrange!5] (write) at (5.0,0) {Expository revision\\\small wording and order,\\examples and figures};
-\node[paper stage,text width=3.65cm,draw=Violet,fill=Violet!5] (review) at (10.0,0) {Review and decide\\\small meaning and scope,\\support and credit};
-\node[paper stage,text width=3.65cm,draw=MidnightBlue,fill=MidnightBlue!5] (record) at (0,-2.6) {Record the outcome\\\small accepted changes,\\reusable lessons and limits};
-\node[paper stage,text width=3.65cm,draw=MidnightBlue,fill=MidnightBlue!5] (render) at (5.0,-2.6) {Render and inspect\\\small regenerate evidence,\\PDFs and reading links};
-\node[paper stage,text width=3.65cm,draw=MidnightBlue,fill=MidnightBlue!5] (bind) at (10.0,-2.6) {Integrate the sources\\\small restore authored parts,\\rebind changed statements};
-\draw[paper arrow] (freeze)--node[paper label,above]{packet} (write);
-\draw[paper arrow] (write)--node[paper label,above]{edits} (review);
-\draw[paper arrow] (review)--node[paper label,right]{reviewed delta} (bind);
-\draw[paper arrow] (bind)--node[paper label,above]{current records} (render);
-\draw[paper arrow] (render)--node[paper label,above]{checked artefacts} (record);
-\draw[paper feedback] (record)--node[paper label,left]{next revision} (freeze);
+\node[sys box,text width=3.55cm,minimum height=1.5cm] (freeze) at (0,0) {\textbf{1. Freeze inputs}\\Manuscripts, statements\\and source records};
+\node[sys box,text width=3.55cm,minimum height=1.5cm] (write) at (4.75,0) {\textbf{2. Propose revisions}\\Wording, organisation,\\examples and figures};
+\node[sys box,text width=3.55cm,minimum height=1.5cm] (review) at (9.5,0) {\textbf{3. Check and review}\\Source checks;\\meaning, scope and credit};
+\node[sys box,text width=3.55cm,minimum height=1.5cm] (record) at (0,-2.8) {\textbf{6. Record outcome}\\Accepted changes,\\lessons and limitations};
+\node[sys box,text width=3.55cm,minimum height=1.5cm] (render) at (4.75,-2.8) {\textbf{5. Render and inspect}\\Regenerate evidence,\\PDFs and reading links};
+\node[sys box,text width=3.55cm,minimum height=1.5cm] (bind) at (9.5,-2.8) {\textbf{4. Integrate changes}\\Restore authored text;\\update source bindings};
+\draw[sys arrow] (freeze)--(write);
+\draw[sys arrow] (write)--(review);
+\draw[sys arrow] (review)--node[sys label,right,fill=none]{if accepted} (bind);
+\draw[sys arrow] (bind)--(render);
+\draw[sys arrow] (render)--(record);
+\draw[sys arrow,dashed] (record)--node[sys label,left,fill=none]{next revision} (freeze);
 \end{tikzpicture}
-\caption{An exposition assignment returns focused source changes and optional figures for review; the stages describe responsibilities, not necessarily different people, and integration, rendering and the recorded outcome remain separate.}
+\caption{The exposition workflow, read in numerical order. A proposal may be revised or declined at step~3; only accepted changes proceed to integration. The steps name responsibilities, which may be performed by the same agent. Rendering and inspection remain separate from source checks.}
 \label{fig:refinement}
 \end{figure}
 % END SENTENCE r13.fig.refinement
 
 % SENTENCE r13.paper.05
-Before that decision, the return checker tests packet identity, permitted paths, statement-change declarations, labels and credit, and runs the manuscript audit on a temporary overlay of the proposed sources.
+Before that decision, the return checker tests packet identity, permitted paths, declared statement changes and retained labels, citation keys and bibliography entries. It also audits the proposed manuscript in a temporary overlay of the sources.
 % END SENTENCE r13.paper.05
 % SENTENCE r13.paper.06
 It neither applies the proposal nor executes returned programs. Declaring a statement change makes the review obligation explicit; it does not discharge it.
@@ -509,29 +507,29 @@ For executable work the return identifies the changed files, commands, results, 
 Figure~\ref{fig:contribute} separates the proposed change from replay, review and adoption.
 % END SENTENCE r4.contribute1.03
 % SENTENCE r4.contribute1.04
-We first reproduce an older branch at its original base and then reconcile it with current main, assigning separate credit to any substantive integration repair.
+The return protocol calls for reproduction at the submitted base before reconciliation with current main, with separate credit for a substantive integration repair.
 % END SENTENCE r4.contribute1.04
 
 % SENTENCE r4.fig.contribute
 \begin{figure}[htbp]
 \centering
 \begin{tikzpicture}[x=1cm,y=1cm]
-\node[paper eyebrow,anchor=west] at (0,.3) {INDEPENDENTLY USEFUL INPUTS};
-\node[paper box,text width=13.5cm,draw=BurntOrange,align=center] (in) at (7,-.35) {Direction\quad Compute\quad Formalisation\quad Software\quad Review\quad New world};
-\node[paper stage,text width=2.7cm,draw=BurntOrange] (t) at (1.65,-1.65) {Bounded task\\evidence and stop condition};
-\node[paper stage,text width=3.0cm,draw=MidnightBlue] (r) at (6.15,-1.65) {Return\\base, change, evidence, limits};
-\node[paper stage,text width=3.1cm,draw=Violet] (v) at (11.1,-1.65) {Replay and review\\challenge, triage, decision};
-\draw[paper arrow] (in.south)--(t.north);
-\draw[paper arrow] (t)--(r);
-\draw[paper arrow] (r)--(v);
-\node[paper stage,text width=4.25cm,draw=MidnightBlue,fill=MidnightBlue!5] (math) at (3.1,-3.65) {Accepted mathematics\\proofs, corrections, scoped negative results};
-\node[paper stage,text width=4.25cm,draw=MidnightBlue,fill=MidnightBlue!5] (tool) at (10.75,-3.65) {Accepted architecture\\navigation, validation, exposition, tools};
-\draw[paper arrow] (v.south)--++(0,-.4)-|(math.north);
-\draw[paper arrow] (v.south)--++(0,-.4)-|(tool.north);
-\node[paper badge,fill=Violet!7] at (7,-4.7) {Role credit and correction lineage; community acceptance remains external};
-\draw[paper feedback] (math.west)--++(-.8,0)|-(t.west);
+\node[sys box,text width=5.85cm,minimum height=1.4cm] (idea) at (0,0) {\textbf{Idea, reference or review}\\State the relevant problem and proposal.\\No checkout is required.};
+\node[sys box,text width=5.85cm,minimum height=1.4cm] (patch) at (7,0) {\textbf{Executable result or patch}\\Return the base revision, change,\\evidence and limitations.};
+\node[sys box,text width=12.85cm,minimum height=1.3cm] (review) at (3.5,-2.1) {\textbf{Triage and review}\\Assess the proposal; reproduce executable evidence where applicable.\\Decide whether to adopt, request revision or decline.};
+\draw[sys arrow] (idea.south)--(idea.south|-review.north);
+\draw[sys arrow] (patch.south)--(patch.south|-review.north);
+\node[sys box,text width=3.65cm,minimum height=1.25cm] (math) at (-1,-4.15) {\textbf{Adopted mathematics}\\Proofs, corrections,\\scoped negative results};
+\node[sys box,text width=3.65cm,minimum height=1.25cm] (tool) at (3.5,-4.15) {\textbf{Adopted methods}\\Navigation, validation,\\exposition or software};
+\node[sys box,text width=3.65cm,minimum height=1.25cm] (revise) at (8,-4.15) {\textbf{Revision or rejection}\\Record the reason;\\resubmit if appropriate.};
+\draw[sys arrow] (math.north|-review.south)--(math.north);
+\draw[sys arrow] (tool.north|-review.south)--(tool.north);
+\draw[sys arrow] (revise.north|-review.south)--(revise.north);
+\node[sys box,text width=8.15cm,minimum height=1.05cm] (record) at (1.25,-6.05) {Record evidence, limitations, role credit and correction history.\\Both kinds of adopted work inform subsequent tasks.};
+\draw[sys arrow] (math.south)--(math.south|-record.north);
+\draw[sys arrow] (tool.south)--(tool.south|-record.north);
 \end{tikzpicture}
-\caption{The contribution route accepts mathematical and architectural work under their own evidence classes; the feedback arrow records an adopted change and does not certify independent review or increased discovery rate.}
+\caption{Two entry routes and three possible review outcomes. Repository adoption applies to mathematical and methodological contributions; it establishes neither independent review nor acceptance by the wider mathematical community.}
 \label{fig:contribute}
 \end{figure}
 % END SENTENCE r4.fig.contribute
@@ -565,7 +563,7 @@ We distinguish credit for an idea from credit for its implementation, formalisat
 Later use adds an attributed dependency or correction, with neither a scalar impact score nor a financial contract inferred from that entry.
 % END SENTENCE r4.contribute3.04
 % SENTENCE r4.contribute3.05
-A new world likewise needs a sourced question, explicit status, inspection routes and a review owner, which must still be assembled in several steps.
+A new problem collection likewise needs a sourced question, explicit status, inspection routes and a review owner, which must still be assembled in several steps.
 % END SENTENCE r4.contribute3.05
 
 \section{Recorded observations}\label{sec:instance}\label{sec:evaluation}
@@ -606,7 +604,7 @@ edit~4 & Paper source link retargeted & Source coordinates & rejected\\
 edit~5 & Claim assigned to two families & Registry structure & rejected\\
 edit~6 & Module count hand-edited & Projection freshness & rejected\\
 edit~7 & \texttt{native\_decide} introduced & Proof-trust policy & rejected\\
-\rowcolor{Violet!9}
+\rowcolor{black!6}
 edit~8 & ``does not supply\textquotesingle\textquotesingle\ changed to ``completes\textquotesingle\textquotesingle & None & \textbf{escaped}\\
 edit~9 & Open-problem title mangled & Paper anchoring & rejected\\
 edit~10 & Orientation byte budget exceeded & Byte budget & rejected\\
@@ -629,7 +627,7 @@ Baseline accepted, edit 8 rejected; the other \HistoricalNotRerun{} edits were n
 After the escape, the follow-up checked the intact baseline and that particular edit against an added check, leaving the other edits untested under the repair and supplying no post-repair ten-of-ten result.
 % END SENTENCE r4.obs3.01
 % SENTENCE r4.obs3.02
-The post-repair witness accepts the current README and rejects a test copy containing the false clause.
+The post-repair witness accepts the intact baseline README and rejects a test copy containing the false clause.
 % END SENTENCE r4.obs3.02
 % SENTENCE r4.obs3.03
 The sample comes from one corpus and one author\textquotesingle s selection of errors, with neither a manual-review control nor an ordinary continuous-integration comparator.
@@ -639,14 +637,11 @@ The study locates a coverage boundary. Its nine rejections do not estimate how r
 % END SENTENCE r4.obs3.04
 
 % SENTENCE r4.obs4.01
-One architecture return was accepted on 23 September 2026 after focused checks of the ordinary-language return route and an architecture-packaging case.
+On 23 September 2026, a maintainer-operated agent accepted one architecture handoff into a local integration history after focused checks of return routing and architecture packaging.
 % END SENTENCE r4.obs4.01
 % SENTENCE r4.obs4.02
-The contributor and maintainer-operated reviewer were the same agent; neither the receipt nor this paper claims an independent outside clone replay.
+The contributor and reviewer were the same agent. The receipt records no public pull request, human review or independent outside clone replay.
 % END SENTENCE r4.obs4.02
-% SENTENCE r4.obs4.03
-As of 14 September 2026, no completed external cold-clone use had been recorded.
-% END SENTENCE r4.obs4.03
 
 % SENTENCE r4.obs5.01
 For readers, the proposed comparison holds the mathematical task fixed and contrasts an ordinary repository, an information-equivalent static briefing and the navigation tools.
@@ -761,10 +756,10 @@ The present contribution is an inspectable route through the records: a reader c
 The initial unified manuscript was prepared from the frozen packet at \texttt{ced96e58b337}, a local integration commit rather than public main.
 % END SENTENCE r4.repro1.01
 % SENTENCE r4.repro1.02
-Source links in this revision point to \texttt{7308896010e6b527d283dfdd0687a717a6183fb6}; the Comparator links below identify their separate recorded runs.
+Repository links in this revision use commit \texttt{992cf60a27ef}; the Comparator links below identify their separate recorded runs.
 % END SENTENCE r4.repro1.02
 % SENTENCE r4.repro1.03
-The two companion manuscripts are retained as unchanged provenance for the unified account.
+This paper supersedes \emph{From a Cold Clone to a Proof Receipt} and \emph{From Spare Compute to Cumulative Mathematics}. Their manuscripts remain available as historical accounts of navigation, proof-check records, contribution protocol and governance.
 % END SENTENCE r4.repro1.03
 
 % SENTENCE r4.repro2.01
@@ -799,7 +794,7 @@ The record at \repolink{docs/publication_evidence.json}{docs/publication\_eviden
 Formal entry points include \repolink{lean/Erdos249257.lean}{Erdos249257.lean} and \repolink{.github/workflows/lean.yml}{.github/workflows/lean.yml}; the curated assertions are in \repolink{docs/claims.json}{docs/claims.json}, and \repolink{scripts/check_release.py}{scripts/check\_release.py} runs the release gate.
 % END SENTENCE r4.repro3.03
 % SENTENCE r4.repro3.04
-The editorial packet supplies selected Lean sources, rather than a complete buildable checkout; source-binding validation does not replay the Lean build, Comparator or the full repository release checks.
+The native writing packet freezes manuscript inputs, selected records and the tools used to inspect them. It supplies no Lean source tree; source-binding validation does not replay Lean, Comparator or the full repository release checks.
 % END SENTENCE r4.repro3.04
 
 % SENTENCE r4.repro4.01
@@ -809,10 +804,10 @@ The protected snapshot partitions \LedgerRows{} occurrences into \LedgerExact{} 
 The journal summary at head \texttt{\JournalHead} records \Rounds{} rounds (\RoundsSealed{} sealed), \Returns{} returns (\ReturnsAdmitted{} admitted and \ReturnsUnreviewed{} unreviewed); earlier private-history rounds are not a complete public journal.
 % END SENTENCE r4.repro4.02
 % SENTENCE r4.repro4.03
-The semantic counts in Figure~\ref{fig:world} are the supplied interpretation inventory, not a count of individually reviewed proofs.
+The interpretation inventory covers \SemanticAuthoredInterpreted{} of \SemanticAuthoredTheoremLike{} authored theorem-like declarations (\SemanticAuthoredPercent\%). These are selective, largely contextual interpretations, not individually reviewed proofs.
 % END SENTENCE r4.repro4.03
 % SENTENCE r4.repro4.04
-Public reading begins with \repolink{docs/READING_GUIDE.md}{the reading guide}; \repolink{CONTRIBUTING.md}{CONTRIBUTING.md} describes contribution channels under the existing \repolink{docs/research-commons/CREDIT_POLICY.md}{credit policy}.
+Public reading starts at the \repolink{docs/READING_GUIDE.md}{reading guide}. \repolink{AGENTS.md}{Agent instructions} route source inspection, explanation and reproduction; the \repolink{docs/agents/AGENT_WORKBENCH.md}{workbench guide} describes optional recorded sessions. \repolink{CONTRIBUTING.md}{Contributing} and the \repolink{docs/research-commons/CREDIT_POLICY.md}{credit policy} govern returns. Cite repository software using \repolink{CITATION.cff}{CITATION.cff} at the chosen commit or release tag; cite mathematical results by the paper and version actually used.
 % END SENTENCE r4.repro4.04
 
 \subsection{Editorial roles and acceptance}
@@ -837,7 +832,7 @@ The reviewer compares hypotheses and implication directions with the whole state
 % END SENTENCE r13.paper.07
 
 % SENTENCE r13.paper.08
-After acceptance, the long record's authored sections are restored, evidence and navigation are regenerated, and the compiled pages are inspected, including figures and proof links.
+After acceptance, integration requires restoring the long record's authored sections, regenerating evidence and navigation, and inspecting the compiled pages, figures and proof links.
 % END SENTENCE r13.paper.08
 
 % SENTENCE r13.paper.09
@@ -850,10 +845,8 @@ A writing rule learned from the revision travels with its example and limits as 
 \section{Sources by role}\label{app:source-map}
 % SENTENCE r4.fig.credit
 \begin{figure}[H]
-\centering
-\begin{tikzpicture}
-\node[paper box,inner sep=6pt] {\begin{minipage}{13.7cm}\small
-\begin{tabularx}{\linewidth}{@{}p{3.2cm}X@{}}
+\centering\small
+\begin{tabularx}{\linewidth}{@{}>{\raggedright\arraybackslash}p{3.8cm}>{\raggedright\arraybackslash}X@{}}
 \toprule
 Source family & Role in the three source accounts\\
 \midrule
@@ -865,7 +858,7 @@ Proof automation & Premise selection and tactic search~\cite{leanhammer,aesop,ju
 Library structure & Declaration networks and repository knowledge graphs~\cite{mathlibnetwork,huch,repokg}\\
 Assumptions and reuse & Proof mining, generalisation, lemma mining and theory exploration~\cite{kohlenbach,gandhi,lemmamining,hipster}\\
 Growing proof knowledge & Library learning, evolving procedures and candidate statements~\cite{dreamcoder,legoprover,dreamprover,proofevolve,leanconjecturer,circuitprover}\\
-Research agents & Executable objectives, proof cost and evolving tasks~\cite{alphaevolve,alphaevolvemath,interestingness,patel,dreamrsi,berlotattwell}\\
+Research agents & Executable objectives, proof cost and evolving tasks~\cite{alphaevolve,alphaevolvemath,patel,dreamrsi,berlotattwell}\\
 Agent collaboration & Bounties, planner/worker state, retrieval and compiler feedback~\cite{agenthunt,openprover,oprover,prove2me,axle,etp}\\
 Evaluation & Research budgets, proof engineering and documentation tasks~\cite{rebench,p6-swd,p6-ape,p6-poiroux,documentationtest,henkel,openproofcorpus}\\
 Validity and intended meaning & Research case studies, interactive proving and public accounting~\cite{aletheia,autonomousmath,lihai,taowiki}\\
@@ -877,8 +870,6 @@ Mathematical antecedents & Weighted support, totient ranks and arithmetic separa
 Other mathematical records & Running LCM, lemniscates and cross-problem connections~\cite{paper269,fan269,loxtonvdp1977,bugeaudlaurent2023,erdosgraham,akiyamakaneko,ehp1958,erdos1041,aniforum,fcpr,synthesis}\\
 \bottomrule
 \end{tabularx}
-\end{minipage}};
-\end{tikzpicture}
 \caption{Sources grouped by the roles for which the original accounts cite them, rather than by a performance ranking; the accompanying mathematical attribution distinguishes original results, refinements and independent rediscovery.}
 \label{fig:credit}
 \end{figure}
@@ -890,8 +881,7 @@ Other mathematical records & Running LCM, lemniscates and cross-problem connecti
 \bibitem{erdosproblems} T.~F.~Bloom, \emph{Erd\H{o}s problems},
 \href{https://www.erdosproblems.com}{erdosproblems.com}, accessed September 2026.
 
-\bibitem{paper257} W.~Cook, \emph{Weighted Support Criteria for Reciprocal
-Mersenne Subseries}, short paper on Erd\H{o}s Problem~257, September 2026,
+\bibitem{paper257} W.~Cook, \emph{Weighted and Covered Supports for Mersenne Subseries}, short paper on Erd\H{o}s Problem~257, September 2026,
 \repolink{paper/257/erdos-257-mersenne-support-subseries.pdf}{PDF}.
 
 \bibitem{erdos1968} P.~Erd\H{o}s, \emph{On the irrationality of certain
@@ -939,9 +929,8 @@ Notes in Computer Science 12699, 2021, pp.~625--635,
 Problems and Results in Combinatorial Number Theory}, Monographies de
 L'Enseignement Math\'ematique 28, 1980, p.~61.
 
-\bibitem{paper249} W.~Cook, \emph{Bases and Integral Relations for the
-$k$-Kernel of Euler's Totient}, short paper on Erd\H{o}s Problem~249, revised
-18 September 2026,
+\bibitem{paper249} W.~Cook, \emph{Integral Relations among Totient Sections}, short paper on Erd\H{o}s Problem~249, revised
+30 September 2026,
 \repolink{paper/249/erdos-249-binary-totient-series.pdf}{PDF}.
 
 \bibitem{coons} M.~Coons, \emph{(Non)Automaticity of number theoretic
@@ -998,7 +987,7 @@ Math. Soc. \textbf{16} (1977), 15--47.
 continued fraction expansion of values of Hecke--Mahler series}, Acta Arith.
 \textbf{209} (2023), 59--90.
 
-\bibitem{paper269} W.~Cook, \emph{The Three-Prime Running LCM}, short paper on
+\bibitem{paper269} W.~Cook, \emph{Distinct running least common multiples}, short paper on
 Erd\H{o}s Problem~269, September 2026,
 \repolink{paper/269/erdos-269-three-prime-running-lcm.pdf}{PDF}.
 
@@ -1008,7 +997,7 @@ forum, 26 June 2026,
 
 \bibitem{patel} N.~Patel, A.~Rammal, A.~Hayat, R.~Munos, and J.~Kempe,
 \emph{Learning to Discover Interesting Mathematics}, arXiv:2609.28603v1,
-2026, \url{https://arxiv.org/abs/2609.28603}.
+2026, \href{https://arxiv.org/abs/2609.28603v1}{arXiv:2609.28603v1}.
 
 \bibitem{prove2me} S.~Chen, K.~Marwaha, X.~Lu, H.~Yuen, and T.~Peng,
 \emph{Prove2Me: An Open Collaborative Platform for Scaling Math
@@ -1204,10 +1193,6 @@ CPP 2020. DOI: \href{https://doi.org/10.1145/3372885.3373824}{10.1145/3372885.33
 \emph{Mathematical exploration and discovery at scale}.
 \href{https://arxiv.org/abs/2511.02864v3}{arXiv:2511.02864v3}, 2025.
 
-\bibitem{interestingness} N. Patel, A. Rammal, A. Hayat, R. Munos and J. Kempe.
-\emph{Learning to Discover Interesting Mathematics}.
-\href{https://arxiv.org/abs/2609.28603v1}{arXiv:2609.28603v1}, 2026, Interestingness-Driven Mathematical Discovery.
-
 \bibitem{agenthunt} C. E. Brown, C. Kaliszyk and J. Urban.
 \emph{Agent Hunt: Bounty Based Collaborative Autoformalization With LLM Agents}.
 \href{https://arxiv.org/abs/2603.06737v1}{arXiv:2603.06737v1}, 2026.
@@ -1233,6 +1218,8 @@ L'Enseignement Math\'ematique 16 (1970), 123--152; sections on organising a math
 Supplied anthology, \texttt{AI\_ESSAYS\_SOURCE.pdf}, snapshot 22 September 2026;
 Kra, pp.\ 31--33; Riehl, pp.\ 39--40; Cohn, pp.\ 41--44;
 Gowers, pp.\ 55--60; Sanderson, pp.\ 73--77.
+Riehl's essay is also available as
+\href{https://terrytao.wordpress.com/2026/09/14/why-i-do-mathematical-research/}{Why I do mathematical research}.
 
 \bibitem{carleson} L.~Becker et al., \emph{A Blueprint for the Formalization
 of Carleson's Theorem on Convergence of Fourier Series}, 2025,

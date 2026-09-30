@@ -12,7 +12,7 @@ This checkout contains 18 active papers and 3 retired papers and 1 paper awaitin
 
 ## Systems paper
 
-- [Problem-Sized Lean Worlds](full-text/claim-faithful-publication-systems-paper.md)
+- [Publishing Mathematical Results from a Lean Repository](full-text/claim-faithful-publication-systems-paper.md)
 
 The mathematical papers are listed below, [by Erdős problem number](#problem-portfolio).
 
@@ -427,7 +427,7 @@ Start here (selected for this guide): [The region b^{\mu}<a and the base 31/4](f
 
 ### How can AI-assisted work on an open problem persist as a record that people and models can check, understand and extend?
 
-**Problem-Sized Lean Worlds**
+**Publishing Mathematical Results from a Lean Repository**
 
 [full text](full-text/claim-faithful-publication-systems-paper.md) · [PDF](../../paper/systems/claim-faithful-publication-systems-paper.pdf) · [LaTeX source](../../paper/systems/claim-faithful-publication-systems-paper.tex) · 17 sections · `claim-faithful-publication-systems` · native to this repository
 
@@ -463,7 +463,7 @@ Start here (selected for this guide): [From individual problems to reusable ques
 
 [full text](full-text/cold-clone-to-proof-receipt.md) · [PDF](../../paper/systems/cold-clone-to-proof-receipt.pdf) · [LaTeX source](../../paper/systems/cold-clone-to-proof-receipt.tex) · 20 sections · `cold-clone-to-proof-receipt` · native to this repository
 
-Superseded by [Problem-Sized Lean Worlds](full-text/claim-faithful-publication-systems-paper.md). Retained for historical context; use the current paper and repository guides for present practice.
+Superseded by [Publishing Mathematical Results from a Lean Repository](full-text/claim-faithful-publication-systems-paper.md). Retained for historical context; use the current paper and repository guides for present practice.
 
 Selected sections of this historical account: [The cold-clone problem](full-text/cold-clone-to-proof-receipt.md#sec:problem), [A short tour with exact follow-up queries](full-text/cold-clone-to-proof-receipt.md#sec:tour), [From navigation to proof authority](full-text/cold-clone-to-proof-receipt.md#sec:authority), [A replayed case study](full-text/cold-clone-to-proof-receipt.md#sec:dogfood), [Limits and transfer conditions](full-text/cold-clone-to-proof-receipt.md#sec:limits).
 
@@ -473,7 +473,7 @@ Selected sections of this historical account: [The cold-clone problem](full-text
 
 [full text](full-text/open-source-mathematics-strategy.md) · [PDF](../../paper/systems/open-source-mathematics-strategy.pdf) · [LaTeX source](../../paper/systems/open-source-mathematics-strategy.tex) · 32 sections · `open-source-mathematics-strategy` · native to this repository
 
-Superseded by [Problem-Sized Lean Worlds](full-text/claim-faithful-publication-systems-paper.md). Retained for historical context; use the current paper and repository guides for present practice.
+Superseded by [Publishing Mathematical Results from a Lean Repository](full-text/claim-faithful-publication-systems-paper.md). Retained for historical context; use the current paper and repository guides for present practice.
 
 Selected sections of this historical account: [The strategy](full-text/open-source-mathematics-strategy.md#sec:strategy), [The contribution protocol](full-text/open-source-mathematics-strategy.md#sec:protocol), [From an agent claim to mathematical attention](full-text/open-source-mathematics-strategy.md#sec:attention), [The local-to-general track](full-text/open-source-mathematics-strategy.md#sec:local-to-general), [Limits and governance](full-text/open-source-mathematics-strategy.md#sec:limits).
 

@@ -46,7 +46,7 @@ Plectis keeps arguments, sources and failed routes together. The
 in; [contributions](../CONTRIBUTING.md) include explanations of existing results.
 An explanation still needs a reader to work through it and assess its use.
 Whether this record helps more than papers, source and an on-demand model remains
-untested. [Problem-Sized Lean Worlds](../paper/systems/claim-faithful-publication-systems-paper.pdf)
+untested. The [systems paper](../paper/systems/claim-faithful-publication-systems-paper.pdf)
 describes the contribution process and its evidence boundaries.
 
 ## The architecture in one page
@@ -282,7 +282,7 @@ also does not prove that every important sentence was selected for checking.
 comparisons and their limits.
 
 The printable
-[Problem-Sized Lean Worlds](../paper/systems/claim-faithful-publication-systems-paper.pdf)
+[systems paper](../paper/systems/claim-faithful-publication-systems-paper.pdf)
 explains the publication architecture in more depth. Its historical checker
 example is documented in [docs/publication_evidence.json](publication_evidence.json);
 it illustrates the checks recorded for that exercise.
