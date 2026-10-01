@@ -113,7 +113,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 > ``` math
 > \Bigl\|\ \sum_{N=X}^{2X-1}E(h,N,L)\ \Bigr\| \;\le\; \tfrac{21}{25}\,X .
 > ```
-> This condition is unproved; it is the open target itself. Then
+> This sufficient condition is unproved. Then
 > ``` math
 > \text{block norm condition} \;\Longrightarrow\; \mathrm{Irrational}\Bigl(\sum_{n\ge 0}
 >   \tfrac{\varphi(n)}{2^n}\Bigr),

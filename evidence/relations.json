@@ -25,7 +25,7 @@
     },
     "erdos-1041-lemniscate-newton-flow#res:sextic-spoke": {
       "note": "The Lean statement finds a point $tr$ of the spoke, $0<t<1$, with $|f_r(tr)|>1$, so the spoke leaves even the closed set $\\{|f_r|\\le1\\}$; the printed statement needs only a point with $|f_r|\\ge1$.",
-      "statement_key": "sha256:e46479916e113d0f115f34189923c12a74a82b1e148ad8832ef934a4c1bad3a1",
+      "statement_key": "sha256:d587bf697b3fb033fea652ad86e6e5e61a843d913b648f67c23fb3d579be6097",
       "lean_statements": {
         "ErdosProblems.Erdos1041.PaperCompleteR20.sextic_spoke_counterexample_whole": "59213391611614c40e7fe3d426834d6d6ba5e40af3498c0ccfca948264024ef0"
       }
@@ -177,7 +177,7 @@
     },
     "erdos-269-three-prime-running-lcm#res:actual-orbit": {
       "note": "The dichotomy is proved for every integer $B$, and the printed statement takes $B\\ge1$; convergence of $S$ and $T_a$, the recurrence and the bounds $0<X_a\\le\\frac{8640}{343}(a+1)^2<90(a+1)^2$ are stated as printed. In the recurrence $b_a$ and $m_a$ enter through closed forms that `threePrimeHeight_dyadicBlock_succ` and `literalForcing235_eq_digit` identify with $\\hgt(2^{a+1})/\\hgt(2^a)$ and the printed sum defining $m_a$.",
-      "statement_key": "sha256:437b2e0fd785711cb7e7079d2f01f2a8474bda9dbff79275f3938b0baebb0110",
+      "statement_key": "sha256:16e1b2ccc2af076d4d321ee3edb7fa3cfb98ba9d7ebbe33ba19e434caca7027d",
       "lean_statements": {
         "ErdosProblems.Erdos269.PaperR7.short_actual_orbit": "df173e4cc2759feee89e7013f70bcf7828b82b5506444cb2e9842208ffd64842"
       }
@@ -237,7 +237,7 @@
     },
     "erdos-269-three-prime-running-lcm#res:lcm": {
       "note": "The Lean statement has the same hypotheses and conclusion as the printed one.",
-      "statement_key": "sha256:f077aea00861a971a3353017942efa8fe594df9ed2b89ec8f83069a5e75c61be",
+      "statement_key": "sha256:49d282141af1ac24460a7f2bf13f9b8b18236e830ea68a3f93b5ecc185921d3a",
       "lean_statements": {
         "ErdosProblems.Erdos269.PaperCompleteR20.running_lcm_real_cutoff_exact": "63d774e4b34f19e1b52d2033434edf3602db542697e66c60eafc282e3f81ebcd"
       }
@@ -392,7 +392,7 @@
     },
     "erdos249-totient-reasoning-surface#prop:additional-hypothesis-totient-specific-rank": {
       "note": "For the rational $5/4$ comparison the Lean statement gives the eventual periodicity modulo $v$ explicitly, with period $2$ from index $2$ on every dyadic section, together with rank at least $2^e-1$ at every level $e$ and $0\\le c(n)\\le n$; the conditional totient statement (rationality of $S$ gives a tempered orbit with eventual periodicity modulo $v$ and rank at least $2^e-1$ at every level) is as printed.",
-      "statement_key": "sha256:af1acb8529470c479e6852ba920f6bfe37c576c3f2b6b2503426c067bfe21fa1",
+      "statement_key": "sha256:de308585dd9728edfbd3ca83d78d09da3351709d4ae30ed676dc49d331f946ee",
       "lean_statements": {
         "ErdosProblems.Erdos249.PaperCompleteR21.rationalControl_periodic_with_unbounded_carry_rank": "0926cf971dbb204789ccc2f4caa32c0f12c3fe1e56d24cf289f10cac6fff1e80",
         "ErdosProblems.Erdos249.PaperCompleteR21.rationality_gives_mod_period_and_unbounded_rank": "bc0e5f466b5841567907d53d19de28081818bce024ccda7c69131e9a84379e1c"
@@ -963,7 +963,7 @@
     },
     "erdos269-running-lcm-reasoning-surface#long269:long:denominator-reduction": {
       "note": "The Lean statement allows any positive integer factor $s$ in place of $D_{\\mathrm{sm}}=2^u3^v5^w$ and any integer $B$, without $B>0$ or $\\gcd(B,30)=1$; with $s=D_{\\mathrm{sm}}$ and $D=sB$ its three conclusions (the recurrence with multiplier $B$, the window identity, and $0<c_n\\le Dt\\Leftrightarrow0<d_n\\le Bt$) are the printed ones.",
-      "statement_key": "sha256:de21db02bd2065bca9aad45f37694a3e26c3c1e7c01b6de37c04a8f398716e3b",
+      "statement_key": "sha256:72136961d12ec5fa7f2206cdbae566345f179f4cfbeeb2be2504d15bcae727f1",
       "lean_statements": {
         "ErdosProblems.Erdos269.PaperCompleteR20.conditional_denominator_reduction_real_bound": "630e3090373906728c34465902490c5358d7c3f0d80e5b0e611454cc1221a4a3"
       }
@@ -1006,7 +1006,7 @@
     },
     "erdos269-running-lcm-reasoning-surface#long269:res:all-scale-lattice": {
       "note": "The Lean statement has the same hypotheses and conclusion as the printed one.",
-      "statement_key": "sha256:b0f5b0ebcf68f14c88b39424579952ff4436bf3deef13830bd06613eedd47842",
+      "statement_key": "sha256:7e6a3bf32cc1e3239666d836f3b662a75679c808e52c3f57e4380b55aed6a7c4",
       "lean_statements": {
         "ErdosProblems.Erdos269.PaperCompleteR20.long_all_scale_lattice_exact": "8832c163188e7b7b60a4a0bba93e9280e11e372e4a0f97620cb79adb82c7a146"
       }
@@ -1073,14 +1073,14 @@
     },
     "erdos269-running-lcm-reasoning-surface#long269:res:literal-triangle": {
       "note": "The Lean statement has the same hypotheses and conclusion as the printed one.",
-      "statement_key": "sha256:5d56ea1182ee346b0f5dc184ae6cbfd55eb2936dcaf7a3f63f1b56e94c8075bd",
+      "statement_key": "sha256:194b4b3469b4c553bd4d1c8070c1df93b6a25b343180c367010537a31a80a363",
       "lean_statements": {
         "ErdosProblems.Erdos269.PaperCompleteR20.literal_triangle_whole": "8497ad86ebe0cee0fe12e83b3fa285204988d9e78be43ff8ca1b145da70e1306"
       }
     },
     "erdos269-running-lcm-reasoning-surface#long269:res:no-bounded-length": {
       "note": "The Lean statement has the same hypotheses and conclusion as the printed one.",
-      "statement_key": "sha256:742dc743c87b448342bdff91b366506532ad851dfb027615f5a1b7bfb0873681",
+      "statement_key": "sha256:8e1db5584aac72968bd6cfddef1d537b458bc7535f9fb520f4bab5981e8d8aab",
       "lean_statements": {
         "ErdosProblems.Erdos269.PaperR7.long_no_bounded_length": "8dee8d85780a220517dbdb888b280876ca25d40bace1109592282f1e4f8f5219"
       }
