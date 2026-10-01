@@ -1614,18 +1614,22 @@ Public implementation or evidence coordinates:
 - Author or public identity: The Formal Conjectures Authors, Will Cook (coverage audit author)
 - Kind: `software`
 - Problems: #68, #243, #249, #251, #257, #269, #1041, #1049
-- Relationship and boundary: Direct paper citations exist for #243, #251, #269, #1049. Local compatibility declarations exist for #68, #249, #251, #257, #1049. No exact #1041 Formal Conjectures reuse/citation was found; absence is a coverage boundary, not negative authority.
+- Relationship and boundary: Direct paper citations exist for #243, #251, #269, #1049. Local compatibility declarations exist for #68, #249, #251, #257, #1049. For #1041, the local fcLength definition explicitly restates the Formal Conjectures Hausdorff path-image-length vocabulary; the case study records the merged upstream statement correction and external proof link. This is statement reuse and contribution provenance, not independent mathematical review or recorded human review of correspondence with the 1958 wording.
 - Source verification: `source\_verified` — The cited webpage/source identity, displayed authorship, date, and quoted claim were directly checked. This does not certify the mathematics or imply local adoption.
 - Local mapping: `coverage\_audit` — Derived from exact cited paths and adapter declarations.
 
 Exact source locations:
 
 - [Repository-level formal statement corpus](https://github.com/google-deepmind/formal-conjectures)
+- [Merged #1041 statement correction and external proof link; current public case-study provenance.](https://github.com/google-deepmind/formal-conjectures/blob/a01ad23474c14781e4f16f48f6e5a430895e10a0/FormalConjectures/ErdosProblems/1041.lean)
 
 Public implementation or evidence coordinates:
 
 - [research/adapters/FormalConjecturesAdapter.lean](../../research/adapters/FormalConjecturesAdapter.lean#L10-L42) — lines `10–42`; excerpt `sha256:a09ac08e4260951af6627cc74ccc029207e6497eb1840a65bda22888010525ed`
 - [lakefile.toml](../../lakefile.toml#L67-L79) — lines `67–79`; excerpt `sha256:831b7c7270f57c8606e4effd1314f87cfd4b9ad0eee57b89a546b5457b16aa78`
+- [lean/ErdosProblems/Erdos1041/Counterexample/HausdorffLength.lean](../../lean/ErdosProblems/Erdos1041/Counterexample/HausdorffLength.lean#L390-L390) — lines `390–390`; excerpt `sha256:cbe13cbf9d5041738aecdb7bbe0abff35d2f946ed3567c4098ec6ce11c206613`
+- [docs/case-studies/formal-conjectures-1041.md](../../docs/case-studies/formal-conjectures-1041.md#L12-L12) — lines `12–12`; excerpt `sha256:92f1c74787cba286feffec250ded2fbf4944d6ac40f80c655b6b9370623f920c`
+- [docs/case-studies/formal-conjectures-1041.md](../../docs/case-studies/formal-conjectures-1041.md#L74-L74) — lines `74–74`; excerpt `sha256:630e2b08b1fc43aaea823cabc9d314e0e96ad4d7a5d571d1203febbcb140df69`
 
 <a id="source-lean4-toolchain-v4-29-1"></a>
 
