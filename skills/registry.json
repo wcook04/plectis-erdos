@@ -505,7 +505,20 @@
       "commands": [
         "python3 scripts/query_corpus.py --ask \"<question>\""
       ],
-      "boundary": "Read source-current problem and claim status from the indexed public authorities; query results route to evidence but do not create proof or claim authority."
+      "boundary": "Read source-current problem and claim status from the indexed public authorities; query results route to evidence but do not create proof or claim authority.",
+      "task_intents": [
+        {
+          "actions": [
+            "inspect",
+            "explain",
+            "query"
+          ],
+          "objects": [
+            "claim",
+            "claims"
+          ]
+        }
+      ]
     },
     {
       "id": "result_summary_audit",
@@ -1268,7 +1281,11 @@
         "validate a documentation change",
         "github inspection",
         "repository readiness",
-        "contributor readiness"
+        "contributor readiness",
+        "release before publishing this repository",
+        "releases before publishing this repository",
+        "repository release checks",
+        "repository release validation"
       ],
       "task_intents": [
         {
@@ -1381,6 +1398,21 @@
             "contributing",
             "contribution",
             "contributions"
+          ]
+        },
+        {
+          "actions": [
+            "update",
+            "refresh",
+            "correct",
+            "fix",
+            "repair",
+            "maintain"
+          ],
+          "objects": [
+            "citation",
+            "citations",
+            "cff"
           ]
         }
       ],
