@@ -5,6 +5,14 @@ description: Run Lean validation from one or more public cold clones without dup
 
 # Concurrent Lean validation
 
+Before following references or running repository commands below, locate the
+intended Plectis public checkout and read its `AGENTS.md`. If this skill was
+opened from an installed skills directory, open
+`<checkout>/skills/lean-concurrent-validation/SKILL.md` in that checkout first.
+Follow relative references from that clone-local file and run repository
+commands from the checkout root. If the intended checkout is unavailable,
+report that prerequisite before continuing.
+
 Use this skill for Lean builds, focused module checks, changed-source checks,
 cache hydration, or a trace where two agents appear ready to compile. The
 implementation is entirely tracked in this public repository. It does not

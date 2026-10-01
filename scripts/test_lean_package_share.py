@@ -242,6 +242,72 @@ class LeanPackageShareTests(unittest.TestCase):
                     package_share.clone_tree(source, target)
             self.assertEqual((source / "artifact.olean").read_bytes(), b"source")
 
+    def test_plan_and_apply_share_cross_device_seed_refusal(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            base = Path(directory)
+            root = self.make_root(base)
+            source = base / "seed"
+            source.mkdir()
+            original_stat = Path.stat
+
+            def different_seed_volume(path, *args, **kwargs):
+                value = original_stat(path, *args, **kwargs)
+                if path == source:
+                    fields = list(value)
+                    fields[2] += 1
+                    return os.stat_result(fields)
+                return value
+
+            with mock.patch.object(
+                package_share, "load_seed", return_value=(source, {"mathlib": "abc123"})
+            ), mock.patch.object(
+                package_share, "lean_process_is_live", return_value=False
+            ), mock.patch.object(
+                Path, "stat", autospec=True, side_effect=different_seed_volume
+            ), mock.patch.object(package_share, "clone_tree") as clone:
+                planned = package_share.plan_workspace(root, base / "state")
+                self.assertFalse((root / ".lake").exists())
+                applied = package_share.prepare_workspace(root, base / "state")
+                self.assertEqual(planned["status"], applied["status"])
+                self.assertEqual(planned["status"], "unsupported_cross_device_seed")
+                self.assertEqual(planned["action"], "preserve")
+                self.assertFalse((root / ".lake/packages").exists())
+                clone.assert_not_called()
+
+    def test_current_local_lineage_reuses_after_seed_moves_volumes(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            base = Path(directory)
+            root = self.make_root(base)
+            (root / ".lake/packages").mkdir(parents=True)
+            source = base / "seed"
+            source.mkdir()
+            original_stat = Path.stat
+
+            def different_seed_volume(path, *args, **kwargs):
+                value = original_stat(path, *args, **kwargs)
+                if path == source:
+                    fields = list(value)
+                    fields[2] += 1
+                    return os.stat_result(fields)
+                return value
+
+            heads = {"mathlib": "abc123"}
+            with mock.patch.object(
+                package_share, "load_seed", return_value=(source, heads)
+            ), mock.patch.object(
+                package_share, "package_heads", return_value=heads
+            ), mock.patch.object(
+                package_share, "workspace_receipt_current", return_value=True
+            ), mock.patch.object(
+                Path, "stat", autospec=True, side_effect=different_seed_volume
+            ), mock.patch.object(package_share, "clone_tree") as clone:
+                planned = package_share.plan_workspace(root, base / "state")
+                applied = package_share.prepare_workspace(root, base / "state")
+                self.assertEqual(planned["status"], "reused_shared_package_lineage")
+                self.assertEqual(planned["status"], applied["status"])
+                self.assertEqual(planned["action"], "reuse")
+                clone.assert_not_called()
+
     def test_setup_compression_is_explicitly_optional_off_macos(self) -> None:
         with tempfile.TemporaryDirectory() as directory, mock.patch.object(
             package_share.sys, "platform", "linux"

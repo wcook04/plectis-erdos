@@ -5,6 +5,14 @@ description: Read the public papers and proofs as one body of mathematics, decid
 
 # Explore the corpus
 
+Before following references or running repository commands below, locate the
+intended Plectis public checkout and read its `AGENTS.md`. If this skill was
+opened from an installed skills directory, open
+`<checkout>/skills/explore-the-corpus/SKILL.md` in that checkout first.
+Follow relative references from that clone-local file and run repository
+commands from the checkout root. If the intended checkout is unavailable,
+report that prerequisite before continuing.
+
 Use this skill when the request is open: read the mathematics and find what
 comes next. The starting point is the corpus, and the question is an output of
 the work. When the person already names a problem or an open statement, use

@@ -5,6 +5,14 @@ description: Explain this public mathematical research system to a lay reader, m
 
 # Explain the public system
 
+Before following references or running repository commands below, locate the
+intended Plectis public checkout and read its `AGENTS.md`. If this skill was
+opened from an installed skills directory, open
+`<checkout>/skills/explain-public-system/SKILL.md` in that checkout first.
+Follow relative references from that clone-local file and run repository
+commands from the checkout root. If the intended checkout is unavailable,
+report that prerequisite before continuing.
+
 Use this skill when a reader asks what the repository is, how it works, what it
 has proved, or how they can take part. Base repository facts on tracked public
 files; follow cited primary sources where the question requires them. Never

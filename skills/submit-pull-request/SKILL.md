@@ -5,14 +5,24 @@ description: Prepare, validate, commit, and submit a mathematical, architecture,
 
 # Submit a pull request
 
+Before following references or running repository commands below, locate the
+intended Plectis public checkout and read its `AGENTS.md`. If this skill was
+opened from an installed skills directory, open
+`<checkout>/skills/submit-pull-request/SKILL.md` in that checkout first.
+Follow relative references from that clone-local file and run repository
+commands from the checkout root. If the intended checkout is unavailable,
+report that prerequisite before continuing.
+
 A pull request asks the upstream repository to pull a proposed branch from a
 contributor's fork. Use this skill when a contributor wants an agent to turn
 finished work into a reviewable return. Use the contributor's request and
-standing instructions to determine the submission scope. A request to submit
-or publish authorises the ordinary branch push and pull-request creation;
-standing authorisation carries forward without another confirmation. Complete
-validation and submission when those steps sensibly finish the requested work.
-Respect an instruction to review, draft or prepare locally only.
+standing instructions to determine the submission scope and verified destination.
+A request to submit or publish authorises the ordinary branch push and
+pull-request creation; standing authorisation carries forward without another
+confirmation. Complete validation and submission when those steps sensibly
+finish the requested work. Respect an instruction to review, draft or prepare
+locally only. Ask only when authorisation, scope or destination is missing,
+or a new decision is required.
 
 ## Establish the return boundary
 
@@ -184,7 +194,8 @@ private material whose disclosure is not authorised, an unrepairable validation
 failure, or a proposed destructive or materially broader action. Explain that
 specific issue and the decision needed; ordinary preparation and repair continue.
 
-Push the named branch to the verified contribution remote:
+With existing or newly given explicit authorisation covering the work and
+verified destination, push the named branch to the contribution remote:
 
 ```sh
 git push -u <fork-remote> <branch>

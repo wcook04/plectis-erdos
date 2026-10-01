@@ -575,6 +575,12 @@ def migrate_seed_to_durable_reference(root: Path, state_root: Path) -> dict[str,
     }
 
 
+def workspace_cache_device(root: Path) -> int:
+    """Inspect the package destination volume without creating its directory."""
+    lake = root / ".lake"
+    return (lake if lake.exists() else root).stat().st_dev
+
+
 def attach_seed(
     root: Path,
     source: Path,
@@ -584,7 +590,7 @@ def attach_seed(
     lake = root / ".lake"
     target = lake / "packages"
     lake.mkdir(parents=True, exist_ok=True)
-    if lake.stat().st_dev != source.stat().st_dev:
+    if workspace_cache_device(root) != source.stat().st_dev:
         return {
             "schema": SCHEMA,
             "status": "unsupported_cross_device_seed",
@@ -900,6 +906,9 @@ def plan_workspace(root: Path, state_root: Path) -> dict[str, Any]:
         if action != "reuse" and lean_process_is_live(root):
             action = "defer"
             status = "deferred_live_lean_process"
+        elif action != "reuse" and workspace_cache_device(root) != _source.stat().st_dev:
+            action = "preserve"
+            status = "unsupported_cross_device_seed"
         return {
             "schema": SCHEMA,
             "status": status,
