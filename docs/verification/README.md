@@ -32,6 +32,20 @@ qualification record shows what was prepared and what still needs an external
 decision.
 
 The runnable interfaces and certificates live in [verification/](../../verification/).
+
+Fresh `#print axioms` output can be checked with
+`python3 scripts/check_axiom_audit.py axiom-audit.log`. The auditor requires
+declaration reports and checks every reported transitive axiom against the
+existing Comparator budget: `propext`, `Quot.sound`, and `Classical.choice`.
+Repeat `--audit-source <AxiomAudit.lean>` for each source to require its complete
+literal declaration roster; missing, extra or duplicate reports are refused.
+The roster reader resolves the owners' literal commands and namespace scopes;
+it does not elaborate Lean names or interpret command-generating macros.
+In the pinned Lean 4.29 toolchain, native evaluators such as `native_decide`
+and `bv_decide` can introduce dedicated axioms; checking only the older
+`Lean.trustCompiler` name would miss them. An arbitrary saved log is not proof
+evidence: the audit sources must first be elaborated in the recorded environment.
+
 [Methodology](../METHODOLOGY.md) explains the responsibilities of Lean,
 repository checks and human mathematical review. Judging whether a statement
 captures the intended mathematics, whether an argument is useful, and how it
