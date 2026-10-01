@@ -250,4 +250,7 @@ class StudyTests(unittest.TestCase):
         c,e,g = self.cohort(); c['jobs'][2]['family_id'] = 'f0'
         with self.assertRaises(ValueError): study.analyze(c,e,g,bootstrap=100)
 
+# This owner is registered in check_ci_release.py in ordinary and optimized Python.
+from test_reader_paper_protocol import PaperProtocolTests
+
 if __name__ == '__main__': unittest.main()

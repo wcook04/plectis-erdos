@@ -44,6 +44,10 @@ SCHEMA_ENVELOPES = {
 }
 SHA256_RE = re.compile(r"^[0-9a-f]{64}$")
 COMMIT_RE = re.compile(r"^[0-9a-f]{40}$")
+AGENT_INSTRUCTION_NAMES = {
+    "AGENTS.md", "AGENTS.override.md", "CLAUDE.md", "CLAUDE.local.md",
+    "GEMINI.md", "CODEX.md",
+}
 PRIVATE_PATH_MARKERS = (
     ("/Users/", b"/Users/"),
     ("/home/", b"/home/"),
@@ -144,6 +148,10 @@ def safe_public_path(raw: Any) -> tuple[str, Path]:
     pure = PurePosixPath(raw)
     require(not pure.is_absolute() and ".." not in pure.parts, f"unsafe public path: {raw}")
     require(raw.startswith(f"{PUBLIC_PREFIX}/"), f"path escapes corpus prefix: {raw}")
+    require(
+        pure.name not in AGENT_INSTRUCTION_NAMES,
+        f"returned agent instructions must be archived as inert text: {raw}",
+    )
     path = ROOT.joinpath(*pure.parts)
     return raw, safe_public_file(path, raw)
 

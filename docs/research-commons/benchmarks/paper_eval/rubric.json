@@ -1,0 +1,139 @@
+{
+  "schema": "rubric/1",
+  "version": "2026-09-29.p6.1",
+  "status": "authored_frozen_development_rubric_not_independently_validated",
+  "score_values": [
+    0,
+    1,
+    2
+  ],
+  "safety_items": [
+    "evidence",
+    "faithfulness"
+  ],
+  "primary_endpoint": "eight-item editorial score, total 0..16, accompanied by uncompensated safety gate",
+  "aggregation": "one short-paper endpoint per problem; long records and systems paper reported separately",
+  "missing_rule": "missing artifacts/grades are pending; inapplicable artifacts excluded prospectively by profile, never assigned zero after inspection",
+  "agreement_tolerance": {
+    "minimum_exact": 0.75,
+    "maximum_mean_absolute": 0.25,
+    "maximum_item_difference": 1,
+    "safety_items_require_exact": true,
+    "disagreement_requires_adjudication": true
+  },
+  "calibration_boundary": "Examples are author-scored real source windows, not independent gold or scores for their containing papers.",
+  "items": [
+    {
+      "id": "generality",
+      "title": "A reusable statement",
+      "anchors": {
+        "0": "Only a target question, slogan, or individual output is stated; no bounded reusable assertion.",
+        "1": "A concrete assertion is stated, but its reusable scope or essential hypotheses must be reconstructed.",
+        "2": "A reusable mathematical or system assertion is explicit, with domain, quantifiers and essential hypotheses."
+      },
+      "profiles": {
+        "short": "State the general result the existing evidence supports; do not invent a generalization.",
+        "long": "Organize general statements and their specialized or failed routes.",
+        "systems": "State the reusable workflow contract and the conditions under which it applies."
+      }
+    },
+    {
+      "id": "mechanism",
+      "title": "Why it works",
+      "anchors": {
+        "0": "No causal or mathematical explanation is given in the assessed region.",
+        "1": "A technique or component is named but the decisive relationship is implicit.",
+        "2": "An explicit explanation connects the input, decisive operation, and resulting assertion."
+      },
+      "profiles": {
+        "short": "Explain the proof idea in ordinary mathematics before administrative detail.",
+        "long": "Explain why the successful route works and why alternatives fail in their stated scope.",
+        "systems": "Explain how implemented operations enforce the stated behavior."
+      }
+    },
+    {
+      "id": "hard_step",
+      "title": "The decisive difficulty",
+      "anchors": {
+        "0": "No hard step, failure mode, or remaining obligation is identified.",
+        "1": "A difficulty is named without its exact condition or the role it plays.",
+        "2": "The decisive lemma, boundary, failure mode or remaining obligation is stated precisely and located."
+      },
+      "profiles": {
+        "short": "Locate the decisive lemma and separate proved work from open inputs.",
+        "long": "Give exact scoped residuals and the witnesses that would change a route verdict.",
+        "systems": "Name implementation failure modes and the checks or external obligations that address them."
+      }
+    },
+    {
+      "id": "instance",
+      "title": "Instantiation and transfer",
+      "anchors": {
+        "0": "No usable connection between a general assertion and a concrete case is supplied.",
+        "1": "An application is named but the substitution or hypotheses are implicit.",
+        "2": "An explicit instance or worked trace identifies the substitutions, assumptions and limits."
+      },
+      "profiles": {
+        "short": "Show how the named problem instantiates the general statement.",
+        "long": "Trace general statements into named consumers and separate surviving siblings.",
+        "systems": "Show a real corpus example with inputs, outputs, boundaries and replay coordinates."
+      }
+    },
+    {
+      "id": "evidence",
+      "title": "Evidence at the claim",
+      "anchors": {
+        "0": "An affirmative claim has no checkable support in the supplied assessment scope, or its support is misrepresented.",
+        "1": "Support is named or linked, but its exact statement, assumptions, receipt status or claim binding is incomplete.",
+        "2": "Each assessed material claim is tied to the supplied exact proof, checked declaration, receipt, computation or citation, with its actual status."
+      },
+      "profiles": {
+        "short": "A citation or Lean hyperlink alone is not evidence that a build or correspondence review ran.",
+        "long": "Distinguish source text, computations, checked claims and reviewed ordinary proofs.",
+        "systems": "Bind implementation claims to code and executed receipts; label unrun evaluations."
+      }
+    },
+    {
+      "id": "faithfulness",
+      "title": "Scope and attribution",
+      "anchors": {
+        "0": "The assessed claim conflicts with its supplied source or erases a necessary qualification.",
+        "1": "No established contradiction, but proof/computation status, attribution or scope is ambiguous.",
+        "2": "The statement preserves hypotheses, quantifiers, attribution and the boundary between established and open."
+      },
+      "profiles": {
+        "short": "Finite exclusions, conditional reductions and reformulations must not become solutions.",
+        "long": "Failed routes are local; unknown is distinct from false and untested is distinct from failed.",
+        "systems": "Prepared, tested, deployed and independently evaluated are separate states."
+      }
+    },
+    {
+      "id": "navigation",
+      "title": "A reader can find the argument",
+      "anchors": {
+        "0": "The assessed claim or evidence cannot be located from the supplied region.",
+        "1": "Headings or pointers exist, but the decisive statement or evidence requires avoidable searching.",
+        "2": "A bounded route leads from the principal statement to its proof, evidence, limitations and relevant long record."
+      },
+      "profiles": {
+        "short": "The main thread is readable without a repository tour.",
+        "long": "Provide a result map, stable crosslinks and a route to each unresolved obligation.",
+        "systems": "Provide a traceable component-to-code-to-evidence route, not an inventory alone."
+      }
+    },
+    {
+      "id": "register",
+      "title": "Mathematical prose",
+      "anchors": {
+        "0": "The assessed region is obstructed by unexplained jargon, promotion or misleading rhetoric.",
+        "1": "Readable prose still contains unnecessary machinery language, avoidable density or house-rule violations.",
+        "2": "Precise ordinary prose, defined notation, economical explanation and the house register are maintained."
+      },
+      "profiles": {
+        "short": "Mathematics comes first; avoid unsupported novelty, em dashes and not-X-but-Y constructions.",
+        "long": "Technical depth is allowed; repetition and audit clutter must serve navigation.",
+        "systems": "Describe tested behavior directly, without promotional claims or synthetic-result inflation."
+      }
+    }
+  ]
+}

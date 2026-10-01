@@ -124,7 +124,7 @@ def prepare(spec: dict, source_root: Path, destination: Path) -> dict:
             raise ValueError('development or pilot task in confirmatory plan')
         if not re.fullmatch('[a-f0-9]{64}', task.get('gold_sha256', '')):
             raise ValueError('task lacks frozen gold digest')
-        if not task.get('prompt') or task.get('kind') not in ('frontier', 'restatement', 'status', 'transfer'):
+        if not task.get('prompt') or task.get('kind') not in ('frontier', 'restatement', 'status', 'transfer', 'paper'):
             raise ValueError('invalid task')
         for arm in arms:
             selected = task.get('material', {}).get(arm, [])
@@ -897,6 +897,12 @@ def capture_jobs(control_path: Path, spec_path: Path, expected_control_sha256: s
 
 
 def main(argv: list[str] | None = None) -> None:
+    import sys
+    actual = list(sys.argv[1:] if argv is None else argv)
+    if actual and actual[0].startswith('paper-'):
+        from reader_paper_protocol import main as paper_main
+        paper_main(actual)
+        return
     ap = argparse.ArgumentParser(description=__doc__); sub = ap.add_subparsers(dest='command', required=True)
     s = sub.add_parser('prepare'); s.add_argument('--spec', type=Path, required=True)
     s.add_argument('--source-root', type=Path, required=True); s.add_argument('--out', type=Path, required=True)

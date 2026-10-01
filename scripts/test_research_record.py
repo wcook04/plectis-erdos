@@ -686,5 +686,19 @@ class StrandedEndpointOnRealCheckout(Base):
         self.assertIn(ENDPOINT_MODULE, compiled)
 
 
+class PinnedJournalBytesTests(unittest.TestCase):
+    def test_bytes_equal_the_native_file_reader(self):
+        path = ROOT / "docs/research-commons/record/journal.jsonl"
+        self.assertEqual(rec.read_events_bytes(path.read_bytes()), rec.read_events(path))
+
+    def test_empty_bytes_are_empty_journal(self):
+        self.assertEqual(rec.read_events_bytes(b""), [])
+
+    def test_truncated_pinned_journal_is_rejected(self):
+        raw = (ROOT / "docs/research-commons/record/journal.jsonl").read_bytes()
+        with self.assertRaises(rec.RecordError):
+            rec.read_events_bytes(raw[:-1])
+
+
 if __name__ == "__main__":
     unittest.main()

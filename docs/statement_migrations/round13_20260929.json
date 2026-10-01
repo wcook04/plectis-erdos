@@ -1,0 +1,2390 @@
+{
+  "schema": "paper-editorial-integration/1",
+  "base": "ced96e58b3373c728044f6861013c21fd2225a78",
+  "boundary": "Reviewed manuscript relations and static declaration-type matching; no fresh Lean build, Comparator replay or independent human review.",
+  "reviewed": [
+    {
+      "row": "erdos-1041-lemniscate-newton-flow#res:low-critical-thirteen-twentyfifths",
+      "old_statement_sha256": "sha256:8132b5f192ffb4943dbbc755763520b240dc5451b2cd14a95ddfc17d27d43a64",
+      "new_statement_sha256": "sha256:f9944c88fc6bf2d06ca0c07da2e354de89ecfb24704d57f3306be4f375e0b444",
+      "old_lean": {
+        "status": "none",
+        "counted": true,
+        "declarations": [],
+        "reason": "the degree-two case and the closing inequality $(13/25)e^X<1$ at the recorded stopping time $X=635762889599/10^{12}$ are checked; the computation that certifies $X$ and the analytic argument in higher degrees are not"
+      },
+      "new_lean": {
+        "status": "none",
+        "counted": true,
+        "declarations": [],
+        "reason": "the degree-two case and the closing inequality $(13/25)e^X<1$ at the recorded stopping time $X=635762889599/10^{12}$ are checked; the computation that certifies $X$ and the analytic argument in higher degrees are not"
+      },
+      "reason": "Registered statement retains its mathematical content and formal support; presentation changes to an explicitly unformalised remark.",
+      "declared_changes": [
+        {
+          "label": "res:low-critical-thirteen-twentyfifths",
+          "change": "restated",
+          "new_labels": [
+            "res:low-critical-thirteen-twentyfifths"
+          ],
+          "relation": "equivalent",
+          "reason": "Retain the mathematical content and label but present the assertion as an explicitly unformalised remark. The current evidence does not prove the full polynomial/topological conclusion in Lean. All existing declarations and their conditional hypotheses are retained for the narrower deductions they actually check; the ordinary argument is preserved. This is an evidence-status demotion, not a claim that the assertion is false. References to other demoted results are updated from Theorem/Corollary to Remark without changing their meaning.",
+          "lean": [],
+          "lean_new": [],
+          "occurrences": [
+            {
+              "label": "res:low-critical-thirteen-twentyfifths",
+              "path": "public/paper/1041/erdos-1041-lemniscate-newton-flow.tex",
+              "old_kind": "theorem",
+              "new_kind": "remark",
+              "original_statement_sha256": "966ec633600088d94598b9ffe75d1a4e8149bd46a2394cf66997977cc6b92de6",
+              "new_statement_sha256": "25d5737258a1abc0c8f4b1bf74017b82c9ea5ad3fc6ac6bf387ee03fce3f4391"
+            },
+            {
+              "label": "res:low-critical-thirteen-twentyfifths",
+              "path": "public/paper/1041/erdos1041-lemniscate-reasoning-surface.tex",
+              "old_kind": "theorem",
+              "new_kind": "remark",
+              "original_statement_sha256": "00fe2d0633617c5b0ae5f5e68bc99b5cdc285716c9554491b85e0fa786af6904",
+              "new_statement_sha256": "0c350f9b81f4cbb781fdc56981d054da4b63bee2e26675b341984fc0aa74fa8a"
+            }
+          ]
+        }
+      ],
+      "changed_fields": [
+        "statement_sha256",
+        "environment",
+        "span",
+        "presentation"
+      ],
+      "old_presentation": {
+        "environment": "theorem",
+        "span": null,
+        "presentation": null
+      },
+      "new_presentation": {
+        "environment": null,
+        "span": {
+          "start": "\\label{res:low-critical-thirteen-twentyfifths}",
+          "end": "least\ncritical-value modulus.  If $\\mu\\le13/25$, then two distinct roots are joined\ninside $\\{|f|<1\\}$ by a rectifiable curve of length strictly less than $2$.\n"
+        },
+        "presentation": "unformalised_remark"
+      }
+    },
+    {
+      "row": "erdos-1041-lemniscate-newton-flow#res:scaled-low-critical",
+      "old_statement_sha256": "sha256:b4167fee20eeaab3509dd819dfd59f3f8a3866dd18b67c294011613b5eebe7a2",
+      "new_statement_sha256": "sha256:3bcaca52c17595a88a444ea5a493ebac7d19a005ec664c342784a8e95840da57",
+      "old_lean": {
+        "status": "modulo_named_input",
+        "declarations": [
+          {
+            "name": "ErdosProblems.Erdos1041.PaperCompleteR21.scaledLowCritical_of_lowCritical",
+            "file": "lean/ErdosProblems/Erdos1041/PaperCompleteR21/LowCriticalScaleTransport.lean"
+          },
+          {
+            "name": "ErdosProblems.Erdos1041.PaperCompleteR21.scaledLowCriticalFiveHalves_of_lowCritical",
+            "file": "lean/ErdosProblems/Erdos1041/PaperCompleteR21/LowCriticalScaleTransport.lean"
+          }
+        ],
+        "named_inputs": [
+          "ErdosProblems.Erdos1041.PaperAnalyticTargets.LowCriticalThirteenTwentyFifths"
+        ],
+        "scope": "Theorem~\\ref{res:low-critical-thirteen-twentyfifths} as stated"
+      },
+      "new_lean": {
+        "status": "modulo_named_input",
+        "declarations": [
+          {
+            "name": "ErdosProblems.Erdos1041.PaperCompleteR21.scaledLowCritical_of_lowCritical",
+            "file": "lean/ErdosProblems/Erdos1041/PaperCompleteR21/LowCriticalScaleTransport.lean"
+          },
+          {
+            "name": "ErdosProblems.Erdos1041.PaperCompleteR21.scaledLowCriticalFiveHalves_of_lowCritical",
+            "file": "lean/ErdosProblems/Erdos1041/PaperCompleteR21/LowCriticalScaleTransport.lean"
+          }
+        ],
+        "named_inputs": [
+          "ErdosProblems.Erdos1041.PaperAnalyticTargets.LowCriticalThirteenTwentyFifths"
+        ],
+        "scope": "Theorem~\\ref{res:low-critical-thirteen-twentyfifths} as stated"
+      },
+      "reason": "Registered statement retains its mathematical content and formal support; presentation changes to an explicitly unformalised remark.",
+      "declared_changes": [
+        {
+          "label": "res:scaled-low-critical",
+          "change": "restated",
+          "new_labels": [
+            "res:scaled-low-critical"
+          ],
+          "relation": "equivalent",
+          "reason": "Retain the mathematical content and label but present the assertion as an explicitly unformalised remark. The current evidence does not prove the full polynomial/topological conclusion in Lean. All existing declarations and their conditional hypotheses are retained for the narrower deductions they actually check; the ordinary argument is preserved. This is an evidence-status demotion, not a claim that the assertion is false. References to other demoted results are updated from Theorem/Corollary to Remark without changing their meaning.",
+          "lean": [
+            "ErdosProblems.Erdos1041.PaperCompleteR21.scaledLowCritical_of_lowCritical",
+            "ErdosProblems.Erdos1041.PaperCompleteR21.scaledLowCriticalFiveHalves_of_lowCritical"
+          ],
+          "lean_new": [],
+          "occurrences": [
+            {
+              "label": "res:scaled-low-critical",
+              "path": "public/paper/1041/erdos-1041-lemniscate-newton-flow.tex",
+              "old_kind": "corollary",
+              "new_kind": "remark",
+              "original_statement_sha256": "d4c96b1b3989efcc66c220dfda33b1b5bb5c3fd4d82693c347a56a09f845ac02",
+              "new_statement_sha256": "bef22c5fedcd7877de309febee35fe85818022d06c3bfac31d4d7a7b0f2860dd"
+            }
+          ]
+        }
+      ],
+      "changed_fields": [
+        "statement_sha256",
+        "environment",
+        "span",
+        "presentation"
+      ],
+      "old_presentation": {
+        "environment": "corollary",
+        "span": null,
+        "presentation": null
+      },
+      "new_presentation": {
+        "environment": null,
+        "span": {
+          "start": "\\label{res:scaled-low-critical}",
+          "end": " $\\{|f|<(25/13)\\mu\\}$ by a curve of length less than\n\\[\n 2\\bigl((25/13)\\mu\\bigr)^{1/n}.\n\\]\nIn every degree the length can be chosen less than $(5/2)\\mu^{1/n}$.\n"
+        },
+        "presentation": "unformalised_remark"
+      }
+    },
+    {
+      "row": "erdos-1041-lemniscate-newton-flow#res:critical-value-separation",
+      "old_statement_sha256": "sha256:53bca44a6bc720aebcea87201a82e9b4afc60ebc21b6bd739d82fa302d34d2b0",
+      "new_statement_sha256": "sha256:0a8308f34a34e46d3f0b53b8a9286123a34556add09348dab9163ea36036efb6",
+      "old_lean": {
+        "status": "modulo_named_input",
+        "declarations": [
+          {
+            "name": "ErdosProblems.Erdos1041.PaperCompleteR21.discSep_separation_short",
+            "file": "lean/ErdosProblems/Erdos1041/PaperCompleteR21/CriticalValueSeparationTransport.lean"
+          },
+          {
+            "name": "ErdosProblems.Erdos1041.PaperCompleteR21.discSepNormalise_spec",
+            "file": "lean/ErdosProblems/Erdos1041/PaperCompleteR21/CriticalValueSeparationTransport.lean"
+          },
+          {
+            "name": "ErdosProblems.Erdos1041.PaperCompleteR21.discSep_transport",
+            "file": "lean/ErdosProblems/Erdos1041/PaperCompleteR21/CriticalValueSeparationTransport.lean"
+          },
+          {
+            "name": "ErdosProblems.Erdos1041.PaperCompleteR21.discSep_squared_length_le",
+            "file": "lean/ErdosProblems/Erdos1041/PaperCompleteR21/CriticalValueSeparationTransport.lean"
+          },
+          {
+            "name": "ErdosProblems.Erdos1041.PaperCompleteR21.discSep_bergman_factor",
+            "file": "lean/ErdosProblems/Erdos1041/PaperCompleteR21/CriticalValueSeparationTransport.lean"
+          }
+        ],
+        "named_inputs": [
+          "ErdosProblems.Erdos1041.PaperCompleteR21.DiscSepBergmanArea"
+        ],
+        "scope": "the connector and area construction that this proof produces"
+      },
+      "new_lean": {
+        "status": "modulo_named_input",
+        "declarations": [
+          {
+            "name": "ErdosProblems.Erdos1041.PaperCompleteR21.discSep_separation_short",
+            "file": "lean/ErdosProblems/Erdos1041/PaperCompleteR21/CriticalValueSeparationTransport.lean"
+          },
+          {
+            "name": "ErdosProblems.Erdos1041.PaperCompleteR21.discSepNormalise_spec",
+            "file": "lean/ErdosProblems/Erdos1041/PaperCompleteR21/CriticalValueSeparationTransport.lean"
+          },
+          {
+            "name": "ErdosProblems.Erdos1041.PaperCompleteR21.discSep_transport",
+            "file": "lean/ErdosProblems/Erdos1041/PaperCompleteR21/CriticalValueSeparationTransport.lean"
+          },
+          {
+            "name": "ErdosProblems.Erdos1041.PaperCompleteR21.discSep_squared_length_le",
+            "file": "lean/ErdosProblems/Erdos1041/PaperCompleteR21/CriticalValueSeparationTransport.lean"
+          },
+          {
+            "name": "ErdosProblems.Erdos1041.PaperCompleteR21.discSep_bergman_factor",
+            "file": "lean/ErdosProblems/Erdos1041/PaperCompleteR21/CriticalValueSeparationTransport.lean"
+          }
+        ],
+        "named_inputs": [
+          "ErdosProblems.Erdos1041.PaperCompleteR21.DiscSepBergmanArea"
+        ],
+        "scope": "the connector and area construction that this proof produces"
+      },
+      "reason": "Registered statement retains its mathematical content and formal support; presentation changes to an explicitly unformalised remark.",
+      "declared_changes": [
+        {
+          "label": "res:critical-value-separation",
+          "change": "restated",
+          "new_labels": [
+            "res:critical-value-separation"
+          ],
+          "relation": "equivalent",
+          "reason": "Retain the mathematical content and label but present the assertion as an explicitly unformalised remark. The current evidence does not prove the full polynomial/topological conclusion in Lean. All existing declarations and their conditional hypotheses are retained for the narrower deductions they actually check; the ordinary argument is preserved. This is an evidence-status demotion, not a claim that the assertion is false. References to other demoted results are updated from Theorem/Corollary to Remark without changing their meaning.",
+          "lean": [
+            "ErdosProblems.Erdos1041.PaperCompleteR21.discSep_separation_short",
+            "ErdosProblems.Erdos1041.PaperCompleteR21.discSepNormalise_spec",
+            "ErdosProblems.Erdos1041.PaperCompleteR21.discSep_transport",
+            "ErdosProblems.Erdos1041.PaperCompleteR21.discSep_squared_length_le",
+            "ErdosProblems.Erdos1041.PaperCompleteR21.discSep_bergman_factor",
+            "ErdosProblems.Erdos1041.PaperCompleteR21.discSep_separation_long",
+            "ErdosProblems.Erdos1041.PaperCompleteR21.discSep_length_lt_two",
+            "ErdosProblems.Erdos1041.PaperCompleteR21.discSep_target_starShaped",
+            "ErdosProblems.Erdos1041.PaperCompleteR21.discSep_mobius_norm_lt"
+          ],
+          "lean_new": [],
+          "occurrences": [
+            {
+              "label": "res:critical-value-separation",
+              "path": "public/paper/1041/erdos-1041-lemniscate-newton-flow.tex",
+              "old_kind": "theorem",
+              "new_kind": "remark",
+              "original_statement_sha256": "45cfc3a4f673eb22b8da837547144573232672890c763e1d61dda317953d81ae",
+              "new_statement_sha256": "1b3a9a049b47b4d058b621971f1247acd9d2546edb0ac2751f88abe570f828f1"
+            },
+            {
+              "label": "res:critical-value-separation",
+              "path": "public/paper/1041/erdos1041-lemniscate-reasoning-surface.tex",
+              "old_kind": "theorem",
+              "new_kind": "remark",
+              "original_statement_sha256": "b4beea7320e936e15b75b7692d3fb68934be757fb2daf094e0d5da1acb3a7f0c",
+              "new_statement_sha256": "b9118ad47771f1ebabebf164103ac770a317cfcc58ae56c065853ea11e15c7ae"
+            }
+          ]
+        }
+      ],
+      "changed_fields": [
+        "statement_sha256",
+        "environment",
+        "span",
+        "presentation"
+      ],
+      "old_presentation": {
+        "environment": "theorem",
+        "span": null,
+        "presentation": null
+      },
+      "new_presentation": {
+        "environment": null,
+        "span": {
+          "start": "\\label{res:critical-value-separation}",
+          "end": "on}\\label{eq:disk-family-length}\n \\operatorname{length}(\\Gamma)^2\n \\le 2|v|^{2/n}\\Bigl(\\frac{S}{n-1}\\Bigr)^{2/n}\n \\log\\!\\frac{S^2+S+p}{S^2-S+p}.\n\\end{equation}\n"
+        },
+        "presentation": "unformalised_remark"
+      }
+    },
+    {
+      "row": "erdos-1041-lemniscate-newton-flow#res:critical-value-thresholds",
+      "old_statement_sha256": "sha256:b6c19cd59ee8bbf12b7215d9a96ca4fd3202764038199670af19371001077065",
+      "new_statement_sha256": "sha256:177308fb4878b200d00f27b684b4be33b29f9e10f52c7f37bf896537382ed568",
+      "old_lean": {
+        "status": "modulo_named_input",
+        "declarations": [
+          {
+            "name": "ErdosProblems.Erdos1041.PaperCompleteR21.discSep_uniform_radius",
+            "file": "lean/ErdosProblems/Erdos1041/PaperCompleteR21/CriticalValueSeparationTransport.lean"
+          },
+          {
+            "name": "ErdosProblems.Erdos1041.PaperCompleteR21.discSep_cubic_six_fifths",
+            "file": "lean/ErdosProblems/Erdos1041/PaperCompleteR21/CriticalValueSeparationTransport.lean"
+          },
+          {
+            "name": "ErdosProblems.Erdos1041.PaperCompleteR21.discSepCoefficient_lt_two",
+            "file": "lean/ErdosProblems/Erdos1041/PaperCompleteR21/CriticalValueSeparationTransport.lean"
+          },
+          {
+            "name": "ErdosProblems.Erdos1041.PaperCompleteR21.discSepCoefficient_three_six_fifths",
+            "file": "lean/ErdosProblems/Erdos1041/PaperCompleteR21/CriticalValueSeparationTransport.lean"
+          },
+          {
+            "name": "ErdosProblems.Erdos1041.PaperCompleteR21.SeparationParent.separation_parent",
+            "file": "lean/ErdosProblems/Erdos1041/PaperCompleteR21/SeparationParent.lean"
+          },
+          {
+            "name": "ErdosProblems.Erdos1041.PaperCompleteR21.SeparationParent.separationCoefficient_lt_two",
+            "file": "lean/ErdosProblems/Erdos1041/PaperCompleteR21/SeparationParent.lean"
+          },
+          {
+            "name": "ErdosProblems.Erdos1041.PaperCompleteR21.SeparationParent.squared_bound_lt_four",
+            "file": "lean/ErdosProblems/Erdos1041/PaperCompleteR21/SeparationParent.lean"
+          },
+          {
+            "name": "ErdosProblems.Erdos1041.PaperCompleteR21.SeparationParent.connectedBelow_of_connectedAtMost",
+            "file": "lean/ErdosProblems/Erdos1041/PaperCompleteR21/SeparationParent.lean"
+          }
+        ],
+        "named_inputs": [
+          "ErdosProblems.Erdos1041.PaperCompleteR21.DiscSepBergmanArea",
+          "ErdosProblems.Erdos1041.PaperCompleteR21.SeparationParent.CriticalValueSeparationTheorem"
+        ],
+        "scope": "the connector and area construction in the proof of Theorem~\\ref{res:critical-value-separation}; for the absorbed S>=4/3 corollary (SeparationParent), Theorem~\\ref{res:critical-value-separation} as stated"
+      },
+      "new_lean": {
+        "status": "modulo_named_input",
+        "declarations": [
+          {
+            "name": "ErdosProblems.Erdos1041.PaperCompleteR21.discSep_uniform_radius",
+            "file": "lean/ErdosProblems/Erdos1041/PaperCompleteR21/CriticalValueSeparationTransport.lean"
+          },
+          {
+            "name": "ErdosProblems.Erdos1041.PaperCompleteR21.discSep_cubic_six_fifths",
+            "file": "lean/ErdosProblems/Erdos1041/PaperCompleteR21/CriticalValueSeparationTransport.lean"
+          },
+          {
+            "name": "ErdosProblems.Erdos1041.PaperCompleteR21.discSepCoefficient_lt_two",
+            "file": "lean/ErdosProblems/Erdos1041/PaperCompleteR21/CriticalValueSeparationTransport.lean"
+          },
+          {
+            "name": "ErdosProblems.Erdos1041.PaperCompleteR21.discSepCoefficient_three_six_fifths",
+            "file": "lean/ErdosProblems/Erdos1041/PaperCompleteR21/CriticalValueSeparationTransport.lean"
+          },
+          {
+            "name": "ErdosProblems.Erdos1041.PaperCompleteR21.SeparationParent.separation_parent",
+            "file": "lean/ErdosProblems/Erdos1041/PaperCompleteR21/SeparationParent.lean"
+          },
+          {
+            "name": "ErdosProblems.Erdos1041.PaperCompleteR21.SeparationParent.separationCoefficient_lt_two",
+            "file": "lean/ErdosProblems/Erdos1041/PaperCompleteR21/SeparationParent.lean"
+          },
+          {
+            "name": "ErdosProblems.Erdos1041.PaperCompleteR21.SeparationParent.squared_bound_lt_four",
+            "file": "lean/ErdosProblems/Erdos1041/PaperCompleteR21/SeparationParent.lean"
+          },
+          {
+            "name": "ErdosProblems.Erdos1041.PaperCompleteR21.SeparationParent.connectedBelow_of_connectedAtMost",
+            "file": "lean/ErdosProblems/Erdos1041/PaperCompleteR21/SeparationParent.lean"
+          }
+        ],
+        "named_inputs": [
+          "ErdosProblems.Erdos1041.PaperCompleteR21.DiscSepBergmanArea",
+          "ErdosProblems.Erdos1041.PaperCompleteR21.SeparationParent.CriticalValueSeparationTheorem"
+        ],
+        "scope": "the connector and area construction in the proof of Theorem~\\ref{res:critical-value-separation}; for the absorbed S>=4/3 corollary (SeparationParent), Theorem~\\ref{res:critical-value-separation} as stated"
+      },
+      "reason": "Registered statement retains its mathematical content and formal support; presentation changes to an explicitly unformalised remark.",
+      "declared_changes": [
+        {
+          "label": "res:critical-value-thresholds",
+          "change": "restated",
+          "new_labels": [
+            "res:critical-value-thresholds"
+          ],
+          "relation": "equivalent",
+          "reason": "Retain the mathematical content and label but present the assertion as an explicitly unformalised remark. The current evidence does not prove the full polynomial/topological conclusion in Lean. All existing declarations and their conditional hypotheses are retained for the narrower deductions they actually check; the ordinary argument is preserved. This is an evidence-status demotion, not a claim that the assertion is false. References to other demoted results are updated from Theorem/Corollary to Remark without changing their meaning.",
+          "lean": [
+            "ErdosProblems.Erdos1041.PaperCompleteR21.discSep_uniform_radius",
+            "ErdosProblems.Erdos1041.PaperCompleteR21.discSep_cubic_six_fifths",
+            "ErdosProblems.Erdos1041.PaperCompleteR21.discSepCoefficient_lt_two",
+            "ErdosProblems.Erdos1041.PaperCompleteR21.discSepCoefficient_three_six_fifths",
+            "ErdosProblems.Erdos1041.PaperCompleteR21.SeparationParent.separation_parent",
+            "ErdosProblems.Erdos1041.PaperCompleteR21.SeparationParent.separationCoefficient_lt_two",
+            "ErdosProblems.Erdos1041.PaperCompleteR21.SeparationParent.squared_bound_lt_four",
+            "ErdosProblems.Erdos1041.PaperCompleteR21.SeparationParent.connectedBelow_of_connectedAtMost",
+            "ErdosProblems.Erdos1041.PaperCompleteR21.discSep_ratio_le_branch",
+            "ErdosProblems.Erdos1041.PaperCompleteR21.discSep_branch_le_seven"
+          ],
+          "lean_new": [],
+          "occurrences": [
+            {
+              "label": "res:critical-value-thresholds",
+              "path": "public/paper/1041/erdos-1041-lemniscate-newton-flow.tex",
+              "old_kind": "corollary",
+              "new_kind": "remark",
+              "original_statement_sha256": "0a2aedf4488ee72337e163c307e03e243a827aef5850cd5e2064e77f60a2f6a1",
+              "new_statement_sha256": "31fe51cba84cd4f7edcee29cee3cd67bfcae6c7a44313bb688cbce88c944b9ef"
+            },
+            {
+              "label": "res:critical-value-thresholds",
+              "path": "public/paper/1041/erdos1041-lemniscate-reasoning-surface.tex",
+              "old_kind": "corollary",
+              "new_kind": "remark",
+              "original_statement_sha256": "38389b3a23ba55535465b29939145933fd09110fbe89cc46d4514f3fb807cd5c",
+              "new_statement_sha256": "aa4b8a857530d007610cdfb11b5ca55696430fa156f29293a99e29575f1b392a"
+            }
+          ]
+        }
+      ],
+      "changed_fields": [
+        "statement_sha256",
+        "environment",
+        "span",
+        "presentation"
+      ],
+      "old_presentation": {
+        "environment": "corollary",
+        "span": null,
+        "presentation": null
+      },
+      "new_presentation": {
+        "environment": null,
+        "span": {
+          "start": "\\label{res:critical-value-thresholds}",
+          "end": "ined inside $\\{|f|<1\\}$ by a curve of length strictly\nbelow $2$.  In degree three the branch-centred choice $w_0=1$ already works\nwith $4/3$ replaced by $6/5$.\n"
+        },
+        "presentation": "unformalised_remark"
+      }
+    },
+    {
+      "row": "erdos249-totient-reasoning-surface#prop:slowmoduli",
+      "old_statement_sha256": "sha256:88215c042310d2e856eeb36dc2ea6ada4b1e96b590f8db60df9da1a614d2cf5c",
+      "new_statement_sha256": "sha256:5d98a0aeb738ffd27bf05537a8fcaf467ff0e63b7fa486a1c6ca800a21138dc8",
+      "old_lean": {
+        "status": "none",
+        "counted": true,
+        "declarations": [],
+        "reason": "ordinary proof in the record; the block construction from prime factors of Fermat numbers and the tail estimate are not formalised"
+      },
+      "new_lean": {
+        "status": "none",
+        "counted": true,
+        "declarations": [],
+        "reason": "ordinary proof in the record; the block construction from prime factors of Fermat numbers and the tail estimate are not formalised"
+      },
+      "reason": "Registered statement retains its mathematical content and formal support; presentation changes to an explicitly unformalised remark.",
+      "declared_changes": [
+        {
+          "label": "prop:slowmoduli",
+          "change": "restated",
+          "new_labels": [
+            "prop:slowmoduli"
+          ],
+          "relation": "equivalent",
+          "lean": [],
+          "reason": "The mathematical body, hypotheses, conclusion and ordinary proof are retained. Only the environment changes to a remark, with an explicit unformalised-evidence note, because pipeline/LEAN_GAPS.md and the supplied coverage ledger give status none. This is a presentation demotion, not a conjecture or a new mathematical claim.",
+          "original_path": "public/paper/249/erdos249-totient-reasoning-surface.tex",
+          "destination_path": "public/paper/249/erdos249-totient-reasoning-surface.tex"
+        }
+      ],
+      "changed_fields": [
+        "statement_sha256",
+        "environment",
+        "span",
+        "presentation"
+      ],
+      "old_presentation": {
+        "environment": "prop",
+        "span": null,
+        "presentation": null
+      },
+      "new_presentation": {
+        "environment": null,
+        "span": {
+          "start": "\\label{prop:slowmoduli}",
+          "end": "$\\sum_{n\\ge1}a_n2^{-n}$ is\nrational exactly when $a_n=0$ for all large $n$. In particular the sum is\nirrational when $\\kappa(3^k)\\ge2$ for infinitely many $k$.\n"
+        },
+        "presentation": "unformalised_remark"
+      }
+    },
+    {
+      "row": "erdos269-running-lcm-reasoning-surface#long269:res:distinct-height-all",
+      "reason": "Reviewed presentation changes while conserving the full registered support set and its evidence class.",
+      "changed_fields": [
+        "environment",
+        "span",
+        "presentation"
+      ],
+      "old_presentation": {
+        "environment": "theorem",
+        "span": null,
+        "presentation": null
+      },
+      "new_presentation": {
+        "environment": null,
+        "span": {
+          "start": "\\label{long269:res:distinct-height-all}",
+          "end": "\\label{long269:res:distinct-height-all}\nFor every finite set $P$ of primes with $|P|\\ge2$, the sum $\\mathcal D_P$\nis irrational.\n"
+        },
+        "presentation": "unformalised_remark"
+      }
+    },
+    {
+      "row": "erdos269-running-lcm-reasoning-surface#long269:res:distinct-height-blocks",
+      "reason": "Reviewed presentation changes while conserving the full registered support set and its evidence class.",
+      "changed_fields": [
+        "environment",
+        "span",
+        "presentation"
+      ],
+      "old_presentation": {
+        "environment": "lemma",
+        "span": null,
+        "presentation": null
+      },
+      "new_presentation": {
+        "environment": null,
+        "span": {
+          "start": "\\label{long269:res:distinct-height-blocks}",
+          "end": ")]$ into itself, and $0<Y_a\\le1/(p-1)$.\n\\item If $\\mathcal D_P=N/K$ with integers $N$ and $K\\ge1$, then $KY_a$ is\nan integer for every $a\\ge0$.\n\\end{enumerate}\n"
+        },
+        "presentation": "unformalised_remark"
+      }
+    },
+    {
+      "row": "erdos269-running-lcm-reasoning-surface#long269:res:dp-integral-tails",
+      "reason": "Reviewed presentation changes while conserving the full registered support set and its evidence class.",
+      "changed_fields": [
+        "environment",
+        "span",
+        "presentation"
+      ],
+      "old_presentation": {
+        "environment": "lemma",
+        "span": null,
+        "presentation": null
+      },
+      "new_presentation": {
+        "environment": null,
+        "span": {
+          "start": "\\label{long269:res:dp-integral-tails}",
+          "end": "\\label{long269:res:dp-integral-tails}\nIf $\\mathcal D_P=N/K$ with integers $N$ and $K\\ge1$, then $Kx_k$ is an\ninteger for every $k\\ge1$.\n"
+        },
+        "presentation": "unformalised_remark"
+      }
+    },
+    {
+      "row": "erdos269-running-lcm-reasoning-surface#long269:res:dp-blocks",
+      "reason": "Reviewed presentation changes while conserving the full registered support set and its evidence class.",
+      "changed_fields": [
+        "environment",
+        "span",
+        "presentation"
+      ],
+      "old_presentation": {
+        "environment": "lemma",
+        "span": null,
+        "presentation": null
+      },
+      "new_presentation": {
+        "environment": null,
+        "span": {
+          "start": "\\label{long269:res:dp-blocks}",
+          "end": "sigma_i)=f(\\sigma'_i)$ for every $i$.\n\\item If $\\sigma_i=\\sigma'_i$ for every $i<i_0$, then\n$|V(u)-V(u')|<1/\\Pi(\\sigma_1\\cdots\\sigma_{i_0-1})$.\n\\end{enumerate}\n"
+        },
+        "presentation": "unformalised_remark"
+      }
+    },
+    {
+      "row": "erdos269-running-lcm-reasoning-surface#long269:res:dp-short",
+      "reason": "Reviewed presentation changes while conserving the full registered support set and its evidence class.",
+      "changed_fields": [
+        "environment",
+        "span",
+        "presentation"
+      ],
+      "old_presentation": {
+        "environment": "lemma",
+        "span": null,
+        "presentation": null
+      },
+      "new_presentation": {
+        "environment": null,
+        "span": {
+          "start": "\\label{long269:res:dp-short}",
+          "end": "\\label{long269:res:dp-short}\nThe map $f$ is injective on the orderings of any set of at most three\ndistinct primes.\n"
+        },
+        "presentation": "unformalised_remark"
+      }
+    },
+    {
+      "row": "erdos269-running-lcm-reasoning-surface#long269:res:dp-two-walls",
+      "reason": "Reviewed presentation changes while conserving the full registered support set and its evidence class.",
+      "changed_fields": [
+        "environment",
+        "span",
+        "presentation"
+      ],
+      "old_presentation": {
+        "environment": "lemma",
+        "span": null,
+        "presentation": null
+      },
+      "new_presentation": {
+        "environment": null,
+        "span": {
+          "start": "\\label{long269:res:dp-two-walls}",
+          "end": "\\label{long269:res:dp-two-walls}\nIf $|P|\\ge4$, there is $x\\in T_0$ with $\\theta_q(x)=0$ for exactly two\nprimes $q\\in P$.\n"
+        },
+        "presentation": "unformalised_remark"
+      }
+    },
+    {
+      "row": "erdos269-running-lcm-reasoning-surface#long269:res:distinct-height-criterion",
+      "reason": "Reviewed presentation changes while conserving the full registered support set and its evidence class.",
+      "changed_fields": [
+        "environment",
+        "span",
+        "presentation"
+      ],
+      "old_presentation": {
+        "environment": "theorem",
+        "span": null,
+        "presentation": null
+      },
+      "new_presentation": {
+        "environment": null,
+        "span": {
+          "start": "\\label{long269:res:distinct-height-criterion}",
+          "end": "states\n$s$ and all paths $(u_1,s_1),\\ldots,(u_k,s_k)$ from $s$ with $u_1=\\tau$.  If\nthe sets $U_\\tau$ are pairwise disjoint, then $\\mathcal D_P$ is irrational.\n"
+        },
+        "presentation": "unformalised_remark"
+      }
+    },
+    {
+      "row": "erdos269-running-lcm-reasoning-surface#long269:res:distinct-height-sets",
+      "reason": "Reviewed presentation changes while conserving the full registered support set and its evidence class.",
+      "changed_fields": [
+        "environment",
+        "span",
+        "presentation"
+      ],
+      "old_presentation": {
+        "environment": "corollary",
+        "span": null,
+        "presentation": null
+      },
+      "new_presentation": {
+        "environment": null,
+        "span": {
+          "start": "\\label{long269:res:distinct-height-sets}",
+          "end": "P|=3$, then $\\mathcal D_P$ is irrational.\n\\item If $|P|=4$ and $P$ is not one of the $38$ sets listed below, then\n$\\mathcal D_P$ is irrational.\n\\end{enumerate}\n"
+        },
+        "presentation": "unformalised_remark"
+      }
+    },
+    {
+      "row": "erdos269-running-lcm-reasoning-surface#long269:res:single-prime-identities",
+      "reason": "Reviewed presentation changes while conserving the full registered support set and its evidence class.",
+      "changed_fields": [
+        "environment",
+        "span",
+        "presentation"
+      ],
+      "old_presentation": {
+        "environment": "proposition",
+        "span": null,
+        "presentation": null
+      },
+      "new_presentation": {
+        "environment": null,
+        "span": {
+          "start": "\\label{long269:res:single-prime-identities}",
+          "end": "{0,1\\}$ and $\\kappa_q,\\kappa_r$ are defined in the same\nway.  For a general finite $P$ the corresponding exponents lie in\n$\\{0,\\ldots,|P|-2\\}$.\n\\end{enumerate}\n"
+        },
+        "presentation": "unformalised_remark"
+      }
+    },
+    {
+      "row": "erdos269-running-lcm-reasoning-surface#long269:res:single-prime-subsums",
+      "reason": "Reviewed presentation changes while conserving the full registered support set and its evidence class.",
+      "changed_fields": [
+        "environment",
+        "span",
+        "presentation"
+      ],
+      "old_presentation": {
+        "environment": "theorem",
+        "span": null,
+        "presentation": null
+      },
+      "new_presentation": {
+        "environment": null,
+        "span": {
+          "start": "\\label{long269:res:single-prime-subsums}",
+          "end": "\\label{long269:res:single-prime-subsums}\nLet $P$ be a finite set of primes with $|P|\\ge2$ and let $p\\in P$.  Then\n$E_p$ is irrational.\n"
+        },
+        "presentation": "unformalised_remark"
+      }
+    },
+    {
+      "row": "erdos1041-lemniscate-reasoning-surface#res:low-critical-thirteen-twentyfifths",
+      "old_statement_sha256": "sha256:0f5dc87c086941db087f3e864b5979c94f442de2fe83d2352e4a0d656e11fc94",
+      "new_statement_sha256": "sha256:88f3c91f0579361d8928d823f2f172413bf6785fc89db1cdff64bbcdabdcb39a",
+      "old_lean": {
+        "status": "none",
+        "counted": true,
+        "declarations": [],
+        "reason": "the degree-two case and the closing inequality $(13/25)e^X<1$ at the recorded stopping time $X=635762889599/10^{12}$ are checked; the computation that certifies $X$ and the analytic argument in higher degrees are not"
+      },
+      "new_lean": {
+        "status": "none",
+        "counted": true,
+        "declarations": [],
+        "reason": "the degree-two case and the closing inequality $(13/25)e^X<1$ at the recorded stopping time $X=635762889599/10^{12}$ are checked; the computation that certifies $X$ and the analytic argument in higher degrees are not"
+      },
+      "reason": "Registered statement retains its mathematical content and formal support; presentation changes to an explicitly unformalised remark.",
+      "declared_changes": [
+        {
+          "label": "res:low-critical-thirteen-twentyfifths",
+          "change": "restated",
+          "new_labels": [
+            "res:low-critical-thirteen-twentyfifths"
+          ],
+          "relation": "equivalent",
+          "reason": "Retain the mathematical content and label but present the assertion as an explicitly unformalised remark. The current evidence does not prove the full polynomial/topological conclusion in Lean. All existing declarations and their conditional hypotheses are retained for the narrower deductions they actually check; the ordinary argument is preserved. This is an evidence-status demotion, not a claim that the assertion is false. References to other demoted results are updated from Theorem/Corollary to Remark without changing their meaning.",
+          "lean": [],
+          "lean_new": [],
+          "occurrences": [
+            {
+              "label": "res:low-critical-thirteen-twentyfifths",
+              "path": "public/paper/1041/erdos-1041-lemniscate-newton-flow.tex",
+              "old_kind": "theorem",
+              "new_kind": "remark",
+              "original_statement_sha256": "966ec633600088d94598b9ffe75d1a4e8149bd46a2394cf66997977cc6b92de6",
+              "new_statement_sha256": "25d5737258a1abc0c8f4b1bf74017b82c9ea5ad3fc6ac6bf387ee03fce3f4391"
+            },
+            {
+              "label": "res:low-critical-thirteen-twentyfifths",
+              "path": "public/paper/1041/erdos1041-lemniscate-reasoning-surface.tex",
+              "old_kind": "theorem",
+              "new_kind": "remark",
+              "original_statement_sha256": "00fe2d0633617c5b0ae5f5e68bc99b5cdc285716c9554491b85e0fa786af6904",
+              "new_statement_sha256": "0c350f9b81f4cbb781fdc56981d054da4b63bee2e26675b341984fc0aa74fa8a"
+            }
+          ]
+        }
+      ],
+      "changed_fields": [
+        "statement_sha256",
+        "environment",
+        "span",
+        "presentation"
+      ],
+      "old_presentation": {
+        "environment": "theorem",
+        "span": null,
+        "presentation": null
+      },
+      "new_presentation": {
+        "environment": null,
+        "span": {
+          "start": "\\label{res:low-critical-thirteen-twentyfifths}",
+          "end": "ength strictly below $2$.  No hypothesis is placed on the locations\nof the roots, on the number of roots in any component, or on the capacity of\nany component.\n"
+        },
+        "presentation": "unformalised_remark"
+      }
+    },
+    {
+      "row": "erdos1041-lemniscate-reasoning-surface#res:low-critical-scale-free",
+      "old_statement_sha256": "sha256:2f0fb3d99f040e387517f6ff5b1dfe31c242c8b094600aa2d09e86d9b777a388",
+      "new_statement_sha256": "sha256:2c0bf8baefeaf76f674fbf872bea4c6c419acd5b16696ad0306aefb00a7e4000",
+      "old_lean": {
+        "status": "modulo_named_input",
+        "declarations": [
+          {
+            "name": "ErdosProblems.Erdos1041.PaperCompleteR21.scaledLowCritical_of_lowCritical",
+            "file": "lean/ErdosProblems/Erdos1041/PaperCompleteR21/LowCriticalScaleTransport.lean"
+          }
+        ],
+        "named_inputs": [
+          "ErdosProblems.Erdos1041.PaperAnalyticTargets.LowCriticalThirteenTwentyFifths"
+        ],
+        "scope": "Theorem~\\ref{res:low-critical-thirteen-twentyfifths} as stated"
+      },
+      "new_lean": {
+        "status": "modulo_named_input",
+        "declarations": [
+          {
+            "name": "ErdosProblems.Erdos1041.PaperCompleteR21.scaledLowCritical_of_lowCritical",
+            "file": "lean/ErdosProblems/Erdos1041/PaperCompleteR21/LowCriticalScaleTransport.lean"
+          }
+        ],
+        "named_inputs": [
+          "ErdosProblems.Erdos1041.PaperAnalyticTargets.LowCriticalThirteenTwentyFifths"
+        ],
+        "scope": "Theorem~\\ref{res:low-critical-thirteen-twentyfifths} as stated"
+      },
+      "reason": "Registered statement retains its mathematical content and formal support; presentation changes to an explicitly unformalised remark.",
+      "declared_changes": [
+        {
+          "label": "res:low-critical-scale-free",
+          "change": "restated",
+          "new_labels": [
+            "res:low-critical-scale-free"
+          ],
+          "relation": "equivalent",
+          "reason": "Retain the mathematical content and label but present the assertion as an explicitly unformalised remark. The current evidence does not prove the full polynomial/topological conclusion in Lean. All existing declarations and their conditional hypotheses are retained for the narrower deductions they actually check; the ordinary argument is preserved. This is an evidence-status demotion, not a claim that the assertion is false. References to other demoted results are updated from Theorem/Corollary to Remark without changing their meaning.",
+          "lean": [
+            "ErdosProblems.Erdos1041.PaperCompleteR21.scaledLowCritical_of_lowCritical"
+          ],
+          "lean_new": [],
+          "occurrences": [
+            {
+              "label": "res:low-critical-scale-free",
+              "path": "public/paper/1041/erdos1041-lemniscate-reasoning-surface.tex",
+              "old_kind": "corollary",
+              "new_kind": "remark",
+              "original_statement_sha256": "3893f80b1df04b35871b5b7b27b41422f1f7a686a033ecf5969203d20eb95d06",
+              "new_statement_sha256": "c19a2f8ce09b24d8e126bf91f1bbead7a82244ae3e9daafcad710d323fae0df9"
+            }
+          ]
+        }
+      ],
+      "changed_fields": [
+        "statement_sha256",
+        "environment",
+        "span",
+        "presentation"
+      ],
+      "old_presentation": {
+        "environment": "corollary",
+        "span": null,
+        "presentation": null
+      },
+      "new_presentation": {
+        "environment": null,
+        "span": {
+          "start": "\\label{res:low-critical-scale-free}",
+          "end": "ry squarefree monic $f$ of degree $n\\ge2$ has two distinct roots joined\ninside $\\{|f|<(25/13)\\mu\\}$ by a curve of length below\n$2\\bigl((25/13)\\mu\\bigr)^{1/n}$.\n"
+        },
+        "presentation": "unformalised_remark"
+      }
+    },
+    {
+      "row": "erdos1041-lemniscate-reasoning-surface#res:dual-arity-floor",
+      "reason": "Reviewed presentation changes while conserving the full registered support set and its evidence class.",
+      "changed_fields": [
+        "environment",
+        "span",
+        "presentation"
+      ],
+      "old_presentation": {
+        "environment": "theorem",
+        "span": null,
+        "presentation": null
+      },
+      "new_presentation": {
+        "environment": null,
+        "span": {
+          "start": "\\label{res:dual-arity-floor}",
+          "end": "(d)-\\sum_i\\sigma_i\\,w(d,r_i)\\Bigr],\n \\qquad\n \\lambda\\bigl(d_{\\mathrm{low}}(a)\\bigr)=\\frac{\\delta(a)}2 .\n\\]\nIf $U>0$, then failure forces $k\\ge(x-\\pi\\Sigma)/U$.\n"
+        },
+        "presentation": "unformalised_remark"
+      }
+    },
+    {
+      "row": "erdos1041-lemniscate-reasoning-surface#res:scaled-low-critical-path",
+      "reason": "Reviewed presentation changes while conserving the full registered support set and its evidence class.",
+      "changed_fields": [
+        "environment",
+        "span",
+        "presentation"
+      ],
+      "old_presentation": {
+        "environment": "corollary",
+        "span": null,
+        "presentation": null
+      },
+      "new_presentation": {
+        "environment": null,
+        "span": {
+          "start": "\\label{res:scaled-low-critical-path}",
+          "end": "ee $n\\ge2$ has two distinct\nzeros joined by a rectifiable curve of length less than\n$(5/2)\\mu^{1/n}$ in $\\{|f|<(25/13)\\mu\\}$, where\n$\\mu=\\min_{f'(c)=0}|f(c)|$.\n"
+        },
+        "presentation": "unformalised_remark"
+      }
+    },
+    {
+      "row": "erdos1041-lemniscate-reasoning-surface#res:constant-factor-path",
+      "old_statement_sha256": "sha256:830717a7165a2c2289118678d75ed660c3b480d52dfd72a0965ad9a9b16278c6",
+      "new_statement_sha256": "sha256:4f18065a4ed0710d084182f010ce6908cf4e3c8c4969fb421b56002ba11e2ac0",
+      "old_lean": {
+        "status": "modulo_named_input",
+        "declarations": [
+          {
+            "name": "ErdosProblems.Erdos1041.PaperCompleteR21.cfa_constant_factor_path",
+            "file": "lean/ErdosProblems/Erdos1041/PaperCompleteR21/ConstantFactorAreaCriteria.lean"
+          },
+          {
+            "name": "ErdosProblems.Erdos1041.PaperCompleteR21.cfaBracket_two_three_twentieths_lt",
+            "file": "lean/ErdosProblems/Erdos1041/PaperCompleteR21/ConstantFactorAreaCriteria.lean"
+          },
+          {
+            "name": "ErdosProblems.Erdos1041.PaperCompleteR21.cfaBracket_five_point_seven",
+            "file": "lean/ErdosProblems/Erdos1041/PaperCompleteR21/ConstantFactorAreaCriteria.lean"
+          },
+          {
+            "name": "ErdosProblems.Erdos1041.PaperCompleteR21.cfa_degenerate",
+            "file": "lean/ErdosProblems/Erdos1041/PaperCompleteR21/ConstantFactorAreaCriteria.lean"
+          },
+          {
+            "name": "ErdosProblems.Erdos1041.PaperCompleteR21.cfa_degree_two_mu",
+            "file": "lean/ErdosProblems/Erdos1041/PaperCompleteR21/ConstantFactorAreaCriteria.lean"
+          },
+          {
+            "name": "ErdosProblems.Erdos1041.PaperCompleteR21.cfa_degree_two_below",
+            "file": "lean/ErdosProblems/Erdos1041/PaperCompleteR21/ConstantFactorAreaCriteria.lean"
+          },
+          {
+            "name": "ErdosProblems.Erdos1041.PaperCompleteR21.cfaTwoRpow_le",
+            "file": "lean/ErdosProblems/Erdos1041/PaperCompleteR21/ConstantFactorAreaCriteria.lean"
+          }
+        ],
+        "named_inputs": [
+          "ErdosProblems.Erdos1041.PaperCompleteR21.CFAPathConstruction"
+        ],
+        "scope": "the level and direction averaging construction that this proof produces"
+      },
+      "new_lean": {
+        "status": "modulo_named_input",
+        "declarations": [
+          {
+            "name": "ErdosProblems.Erdos1041.PaperCompleteR21.cfa_constant_factor_path",
+            "file": "lean/ErdosProblems/Erdos1041/PaperCompleteR21/ConstantFactorAreaCriteria.lean"
+          },
+          {
+            "name": "ErdosProblems.Erdos1041.PaperCompleteR21.cfaBracket_two_three_twentieths_lt",
+            "file": "lean/ErdosProblems/Erdos1041/PaperCompleteR21/ConstantFactorAreaCriteria.lean"
+          },
+          {
+            "name": "ErdosProblems.Erdos1041.PaperCompleteR21.cfaBracket_five_point_seven",
+            "file": "lean/ErdosProblems/Erdos1041/PaperCompleteR21/ConstantFactorAreaCriteria.lean"
+          },
+          {
+            "name": "ErdosProblems.Erdos1041.PaperCompleteR21.cfa_degenerate",
+            "file": "lean/ErdosProblems/Erdos1041/PaperCompleteR21/ConstantFactorAreaCriteria.lean"
+          },
+          {
+            "name": "ErdosProblems.Erdos1041.PaperCompleteR21.cfa_degree_two_mu",
+            "file": "lean/ErdosProblems/Erdos1041/PaperCompleteR21/ConstantFactorAreaCriteria.lean"
+          },
+          {
+            "name": "ErdosProblems.Erdos1041.PaperCompleteR21.cfa_degree_two_below",
+            "file": "lean/ErdosProblems/Erdos1041/PaperCompleteR21/ConstantFactorAreaCriteria.lean"
+          },
+          {
+            "name": "ErdosProblems.Erdos1041.PaperCompleteR21.cfaTwoRpow_le",
+            "file": "lean/ErdosProblems/Erdos1041/PaperCompleteR21/ConstantFactorAreaCriteria.lean"
+          }
+        ],
+        "named_inputs": [
+          "ErdosProblems.Erdos1041.PaperCompleteR21.CFAPathConstruction"
+        ],
+        "scope": "the level and direction averaging construction that this proof produces"
+      },
+      "reason": "Registered statement retains its mathematical content and formal support; presentation changes to an explicitly unformalised remark.",
+      "declared_changes": [
+        {
+          "label": "res:constant-factor-path",
+          "change": "restated",
+          "new_labels": [
+            "res:constant-factor-path"
+          ],
+          "relation": "equivalent",
+          "reason": "Retain the mathematical content and label but present the assertion as an explicitly unformalised remark. The current evidence does not prove the full polynomial/topological conclusion in Lean. All existing declarations and their conditional hypotheses are retained for the narrower deductions they actually check; the ordinary argument is preserved. This is an evidence-status demotion, not a claim that the assertion is false. References to other demoted results are updated from Theorem/Corollary to Remark without changing their meaning.",
+          "lean": [
+            "ErdosProblems.Erdos1041.PaperCompleteR21.cfa_constant_factor_path",
+            "ErdosProblems.Erdos1041.PaperCompleteR21.cfaBracket_two_three_twentieths_lt",
+            "ErdosProblems.Erdos1041.PaperCompleteR21.cfaBracket_five_point_seven",
+            "ErdosProblems.Erdos1041.PaperCompleteR21.cfa_degenerate",
+            "ErdosProblems.Erdos1041.PaperCompleteR21.cfa_degree_two_mu",
+            "ErdosProblems.Erdos1041.PaperCompleteR21.cfa_degree_two_below",
+            "ErdosProblems.Erdos1041.PaperCompleteR21.cfaTwoRpow_le"
+          ],
+          "lean_new": [],
+          "occurrences": [
+            {
+              "label": "res:constant-factor-path",
+              "path": "public/paper/1041/erdos1041-lemniscate-reasoning-surface.tex",
+              "old_kind": "theorem",
+              "new_kind": "remark",
+              "original_statement_sha256": "cb19ce84882d1b8ffbcc916de6e021e051b4391908403f4c1e45acee0bfa0574",
+              "new_statement_sha256": "28f48916925091343dde9dcd17170ee64632f60a42c817885305f93ad6f4b57b"
+            }
+          ]
+        }
+      ],
+      "changed_fields": [
+        "statement_sha256",
+        "environment",
+        "span",
+        "presentation"
+      ],
+      "old_presentation": {
+        "environment": "theorem",
+        "span": null,
+        "presentation": null
+      },
+      "new_presentation": {
+        "environment": null,
+        "span": {
+          "start": "\\label{res:constant-factor-path}",
+          "end": "e $K_{2\\mu}$.  If $f$ is squarefree, their locations are distinct.\nIf $\\mu\\le1/2$, the construction may be chosen inside $\\{|f|<1\\}$ with\nlength at most $5.7$.\n"
+        },
+        "presentation": "unformalised_remark"
+      }
+    },
+    {
+      "row": "erdos1041-lemniscate-reasoning-surface#res:constant-factor-arity",
+      "old_statement_sha256": "sha256:954b0c0989a759a35aafe7a3492473d003fefc96453f0abacb80e59a0f081f4a",
+      "new_statement_sha256": "sha256:1728a1cf3bc6e8057d33bacd1ac09cbb5e07c9e6e9b929e1e03b5815a58e9603",
+      "old_lean": {
+        "status": "modulo_named_input",
+        "declarations": [
+          {
+            "name": "ErdosProblems.Erdos1041.PaperCompleteR21.cfa_arity_criterion",
+            "file": "lean/ErdosProblems/Erdos1041/PaperCompleteR21/ConstantFactorAreaCriteria.lean"
+          },
+          {
+            "name": "ErdosProblems.Erdos1041.PaperCompleteR21.cfaArityBracket_case_one",
+            "file": "lean/ErdosProblems/Erdos1041/PaperCompleteR21/ConstantFactorAreaCriteria.lean"
+          },
+          {
+            "name": "ErdosProblems.Erdos1041.PaperCompleteR21.cfaArityBracket_case_two",
+            "file": "lean/ErdosProblems/Erdos1041/PaperCompleteR21/ConstantFactorAreaCriteria.lean"
+          },
+          {
+            "name": "ErdosProblems.Erdos1041.PaperCompleteR21.cfaArityBracket_case_three",
+            "file": "lean/ErdosProblems/Erdos1041/PaperCompleteR21/ConstantFactorAreaCriteria.lean"
+          },
+          {
+            "name": "ErdosProblems.Erdos1041.PaperCompleteR21.cfaArity_length_le",
+            "file": "lean/ErdosProblems/Erdos1041/PaperCompleteR21/ConstantFactorAreaCriteria.lean"
+          },
+          {
+            "name": "ErdosProblems.Erdos1041.PaperCompleteR21.cfa_degenerate",
+            "file": "lean/ErdosProblems/Erdos1041/PaperCompleteR21/ConstantFactorAreaCriteria.lean"
+          }
+        ],
+        "named_inputs": [
+          "ErdosProblems.Erdos1041.PaperCompleteR21.CFAArityConstruction"
+        ],
+        "scope": "the level and direction averaging construction in the proof of Theorem~\\ref{res:constant-factor-path}"
+      },
+      "new_lean": {
+        "status": "modulo_named_input",
+        "declarations": [
+          {
+            "name": "ErdosProblems.Erdos1041.PaperCompleteR21.cfa_arity_criterion",
+            "file": "lean/ErdosProblems/Erdos1041/PaperCompleteR21/ConstantFactorAreaCriteria.lean"
+          },
+          {
+            "name": "ErdosProblems.Erdos1041.PaperCompleteR21.cfaArityBracket_case_one",
+            "file": "lean/ErdosProblems/Erdos1041/PaperCompleteR21/ConstantFactorAreaCriteria.lean"
+          },
+          {
+            "name": "ErdosProblems.Erdos1041.PaperCompleteR21.cfaArityBracket_case_two",
+            "file": "lean/ErdosProblems/Erdos1041/PaperCompleteR21/ConstantFactorAreaCriteria.lean"
+          },
+          {
+            "name": "ErdosProblems.Erdos1041.PaperCompleteR21.cfaArityBracket_case_three",
+            "file": "lean/ErdosProblems/Erdos1041/PaperCompleteR21/ConstantFactorAreaCriteria.lean"
+          },
+          {
+            "name": "ErdosProblems.Erdos1041.PaperCompleteR21.cfaArity_length_le",
+            "file": "lean/ErdosProblems/Erdos1041/PaperCompleteR21/ConstantFactorAreaCriteria.lean"
+          },
+          {
+            "name": "ErdosProblems.Erdos1041.PaperCompleteR21.cfa_degenerate",
+            "file": "lean/ErdosProblems/Erdos1041/PaperCompleteR21/ConstantFactorAreaCriteria.lean"
+          }
+        ],
+        "named_inputs": [
+          "ErdosProblems.Erdos1041.PaperCompleteR21.CFAArityConstruction"
+        ],
+        "scope": "the level and direction averaging construction in the proof of Theorem~\\ref{res:constant-factor-path}"
+      },
+      "reason": "Registered statement retains its mathematical content and formal support; presentation changes to an explicitly unformalised remark.",
+      "declared_changes": [
+        {
+          "label": "res:constant-factor-arity",
+          "change": "restated",
+          "new_labels": [
+            "res:constant-factor-arity"
+          ],
+          "relation": "equivalent",
+          "reason": "Retain the mathematical content and label but present the assertion as an explicitly unformalised remark. The current evidence does not prove the full polynomial/topological conclusion in Lean. All existing declarations and their conditional hypotheses are retained for the narrower deductions they actually check; the ordinary argument is preserved. This is an evidence-status demotion, not a claim that the assertion is false. References to other demoted results are updated from Theorem/Corollary to Remark without changing their meaning.",
+          "lean": [
+            "ErdosProblems.Erdos1041.PaperCompleteR21.cfa_arity_criterion",
+            "ErdosProblems.Erdos1041.PaperCompleteR21.cfaArityBracket_case_one",
+            "ErdosProblems.Erdos1041.PaperCompleteR21.cfaArityBracket_case_two",
+            "ErdosProblems.Erdos1041.PaperCompleteR21.cfaArityBracket_case_three",
+            "ErdosProblems.Erdos1041.PaperCompleteR21.cfaArity_length_le",
+            "ErdosProblems.Erdos1041.PaperCompleteR21.cfa_degenerate"
+          ],
+          "lean_new": [],
+          "occurrences": [
+            {
+              "label": "res:constant-factor-arity",
+              "path": "public/paper/1041/erdos1041-lemniscate-reasoning-surface.tex",
+              "old_kind": "corollary",
+              "new_kind": "remark",
+              "original_statement_sha256": "477acb0342cde8dbf56575f4d352c1c528030331827ce7fa049c395081295ec8",
+              "new_statement_sha256": "fa854f392792f88709c0d684ae9849fd2d0a1f0c86ec63c7ed9e81237a3ee4f7"
+            }
+          ]
+        }
+      ],
+      "changed_fields": [
+        "statement_sha256",
+        "environment",
+        "span",
+        "presentation"
+      ],
+      "old_presentation": {
+        "environment": "corollary",
+        "span": null,
+        "presentation": null
+      },
+      "new_presentation": {
+        "environment": null,
+        "span": {
+          "start": "\\label{res:constant-factor-arity}",
+          "end": "each of the three cases\n\\[\n \\mu\\le\\tfrac12\\ \\text{and}\\ k_0\\ge17,\\qquad\n \\mu\\le\\tfrac14\\ \\text{and}\\ k_0\\ge12,\\qquad\n \\mu\\le\\tfrac18\\ \\text{and}\\ k_0\\ge10 .\n\\]\n"
+        },
+        "presentation": "unformalised_remark"
+      }
+    },
+    {
+      "row": "erdos1041-lemniscate-reasoning-surface#res:constant-factor-capacity",
+      "old_statement_sha256": "sha256:bd505b18f8c4e244f63924eff31cdfdee2c40a8fe8df68328be8ca4a35fa0921",
+      "new_statement_sha256": "sha256:7b6a77667348eab75494e16dfab6669155fe512bf33aa58ca86ee1c9e7bb2c10",
+      "old_lean": {
+        "status": "modulo_named_input",
+        "declarations": [
+          {
+            "name": "ErdosProblems.Erdos1041.PaperCompleteR21.cfa_capacity_criterion",
+            "file": "lean/ErdosProblems/Erdos1041/PaperCompleteR21/ConstantFactorAreaCriteria.lean"
+          },
+          {
+            "name": "ErdosProblems.Erdos1041.PaperCompleteR21.cfaTau_third",
+            "file": "lean/ErdosProblems/Erdos1041/PaperCompleteR21/ConstantFactorAreaCriteria.lean"
+          },
+          {
+            "name": "ErdosProblems.Erdos1041.PaperCompleteR21.cfaTau_cutoffs",
+            "file": "lean/ErdosProblems/Erdos1041/PaperCompleteR21/ConstantFactorAreaCriteria.lean"
+          },
+          {
+            "name": "ErdosProblems.Erdos1041.PaperCompleteR21.cfaTau_ge_of_sq",
+            "file": "lean/ErdosProblems/Erdos1041/PaperCompleteR21/ConstantFactorAreaCriteria.lean"
+          },
+          {
+            "name": "ErdosProblems.Erdos1041.PaperCompleteR21.cfaA_bound",
+            "file": "lean/ErdosProblems/Erdos1041/PaperCompleteR21/ConstantFactorAreaCriteria.lean"
+          },
+          {
+            "name": "ErdosProblems.Erdos1041.PaperCompleteR21.cfaB_bound",
+            "file": "lean/ErdosProblems/Erdos1041/PaperCompleteR21/ConstantFactorAreaCriteria.lean"
+          }
+        ],
+        "named_inputs": [
+          "ErdosProblems.Erdos1041.PaperCompleteR21.CFACapacityConstruction"
+        ],
+        "scope": "the level and direction averaging construction in the proof of Theorem~\\ref{res:constant-factor-path}, together with the area-capacity inequality"
+      },
+      "new_lean": {
+        "status": "modulo_named_input",
+        "declarations": [
+          {
+            "name": "ErdosProblems.Erdos1041.PaperCompleteR21.cfa_capacity_criterion",
+            "file": "lean/ErdosProblems/Erdos1041/PaperCompleteR21/ConstantFactorAreaCriteria.lean"
+          },
+          {
+            "name": "ErdosProblems.Erdos1041.PaperCompleteR21.cfaTau_third",
+            "file": "lean/ErdosProblems/Erdos1041/PaperCompleteR21/ConstantFactorAreaCriteria.lean"
+          },
+          {
+            "name": "ErdosProblems.Erdos1041.PaperCompleteR21.cfaTau_cutoffs",
+            "file": "lean/ErdosProblems/Erdos1041/PaperCompleteR21/ConstantFactorAreaCriteria.lean"
+          },
+          {
+            "name": "ErdosProblems.Erdos1041.PaperCompleteR21.cfaTau_ge_of_sq",
+            "file": "lean/ErdosProblems/Erdos1041/PaperCompleteR21/ConstantFactorAreaCriteria.lean"
+          },
+          {
+            "name": "ErdosProblems.Erdos1041.PaperCompleteR21.cfaA_bound",
+            "file": "lean/ErdosProblems/Erdos1041/PaperCompleteR21/ConstantFactorAreaCriteria.lean"
+          },
+          {
+            "name": "ErdosProblems.Erdos1041.PaperCompleteR21.cfaB_bound",
+            "file": "lean/ErdosProblems/Erdos1041/PaperCompleteR21/ConstantFactorAreaCriteria.lean"
+          }
+        ],
+        "named_inputs": [
+          "ErdosProblems.Erdos1041.PaperCompleteR21.CFACapacityConstruction"
+        ],
+        "scope": "the level and direction averaging construction in the proof of Theorem~\\ref{res:constant-factor-path}, together with the area-capacity inequality"
+      },
+      "reason": "Registered statement retains its mathematical content and formal support; presentation changes to an explicitly unformalised remark.",
+      "declared_changes": [
+        {
+          "label": "res:constant-factor-capacity",
+          "change": "restated",
+          "new_labels": [
+            "res:constant-factor-capacity"
+          ],
+          "relation": "equivalent",
+          "reason": "Retain the mathematical content and label but present the assertion as an explicitly unformalised remark. The current evidence does not prove the full polynomial/topological conclusion in Lean. All existing declarations and their conditional hypotheses are retained for the narrower deductions they actually check; the ordinary argument is preserved. This is an evidence-status demotion, not a claim that the assertion is false. References to other demoted results are updated from Theorem/Corollary to Remark without changing their meaning.",
+          "lean": [
+            "ErdosProblems.Erdos1041.PaperCompleteR21.cfa_capacity_criterion",
+            "ErdosProblems.Erdos1041.PaperCompleteR21.cfaTau_third",
+            "ErdosProblems.Erdos1041.PaperCompleteR21.cfaTau_cutoffs",
+            "ErdosProblems.Erdos1041.PaperCompleteR21.cfaTau_ge_of_sq",
+            "ErdosProblems.Erdos1041.PaperCompleteR21.cfaA_bound",
+            "ErdosProblems.Erdos1041.PaperCompleteR21.cfaB_bound"
+          ],
+          "lean_new": [],
+          "occurrences": [
+            {
+              "label": "res:constant-factor-capacity",
+              "path": "public/paper/1041/erdos1041-lemniscate-reasoning-surface.tex",
+              "old_kind": "corollary",
+              "new_kind": "remark",
+              "original_statement_sha256": "0444dd623f7d3bbc24851f4e1f857381788f5cbcfd282ee72946adf51fdd619b",
+              "new_statement_sha256": "6c11c0918d0061ef42c131d5ffbd12da29c567bd7c0f35e19937044087165a2a"
+            }
+          ]
+        }
+      ],
+      "changed_fields": [
+        "statement_sha256",
+        "environment",
+        "span",
+        "presentation"
+      ],
+      "old_presentation": {
+        "environment": "corollary",
+        "span": null,
+        "presentation": null
+      },
+      "new_presentation": {
+        "environment": null,
+        "span": {
+          "start": "\\label{res:constant-factor-capacity}",
+          "end": "very root count $k_0\\ge2$, and the rational cutoffs\n$2/5,\\,12/25,\\,1/2,\\,7/12,\\,16/25,\\,2/3,\\,7/10$ suffice at\n$k_0=3,\\ldots,9$, rising to $39/40$ at $k_0=16$.\n"
+        },
+        "presentation": "unformalised_remark"
+      }
+    },
+    {
+      "row": "erdos1041-lemniscate-reasoning-surface#res:conjecture-p-consumer",
+      "old_statement_sha256": "sha256:b97e98bfda62d2c8a442055903e94bd29b9dd3a99952f0865546c9c61ee7c145",
+      "new_statement_sha256": "sha256:f23fd31e88b4480fde244c9ebef33039fa4dc14fcb6d9f4724d11b110cc3fc12",
+      "old_lean": {
+        "status": "modulo_named_input",
+        "declarations": [
+          {
+            "name": "ErdosProblems.Erdos1041.PaperCompleteR21.subcritical_perimeter_path_paper",
+            "file": "lean/ErdosProblems/Erdos1041/PaperCompleteR21/SubcriticalPerimeterPath.lean"
+          },
+          {
+            "name": "ErdosProblems.Erdos1041.PaperCompleteR21.subcritical_perimeter_path",
+            "file": "lean/ErdosProblems/Erdos1041/PaperCompleteR21/SubcriticalPerimeterPath.lean"
+          },
+          {
+            "name": "ErdosProblems.Erdos1041.PaperCompleteR21.connectedAtMost_half_perimeter",
+            "file": "lean/ErdosProblems/Erdos1041/PaperCompleteR21/SubcriticalPerimeterPath.lean"
+          },
+          {
+            "name": "ErdosProblems.Erdos1041.PaperCompleteR21.halfPerimeterJoin_of_jordanArcDatum",
+            "file": "lean/ErdosProblems/Erdos1041/PaperCompleteR21/SubcriticalPerimeterPath.lean"
+          },
+          {
+            "name": "ErdosProblems.Erdos1041.PaperCompleteR21.half_perimeter_selection",
+            "file": "lean/ErdosProblems/Erdos1041/PaperCompleteR21/SubcriticalPerimeterPath.lean"
+          },
+          {
+            "name": "ErdosProblems.Erdos1041.PaperCompleteR21.connectedAtMost_trans",
+            "file": "lean/ErdosProblems/Erdos1041/PaperCompleteR21/SubcriticalPerimeterPath.lean"
+          },
+          {
+            "name": "ErdosProblems.Erdos1041.PaperCompleteR21.connectedAtMost_symm",
+            "file": "lean/ErdosProblems/Erdos1041/PaperCompleteR21/SubcriticalPerimeterPath.lean"
+          },
+          {
+            "name": "ErdosProblems.Erdos1041.PaperCompleteR21.connectedAtMost_mono",
+            "file": "lean/ErdosProblems/Erdos1041/PaperCompleteR21/SubcriticalPerimeterPath.lean"
+          }
+        ],
+        "named_inputs": [
+          "ErdosProblems.Erdos1041.PaperCompleteR21.SubcriticalSplitExists"
+        ],
+        "scope": "the two-component split at the first critical level that this proof constructs"
+      },
+      "new_lean": {
+        "status": "modulo_named_input",
+        "declarations": [
+          {
+            "name": "ErdosProblems.Erdos1041.PaperCompleteR21.subcritical_perimeter_path_paper",
+            "file": "lean/ErdosProblems/Erdos1041/PaperCompleteR21/SubcriticalPerimeterPath.lean"
+          },
+          {
+            "name": "ErdosProblems.Erdos1041.PaperCompleteR21.subcritical_perimeter_path",
+            "file": "lean/ErdosProblems/Erdos1041/PaperCompleteR21/SubcriticalPerimeterPath.lean"
+          },
+          {
+            "name": "ErdosProblems.Erdos1041.PaperCompleteR21.connectedAtMost_half_perimeter",
+            "file": "lean/ErdosProblems/Erdos1041/PaperCompleteR21/SubcriticalPerimeterPath.lean"
+          },
+          {
+            "name": "ErdosProblems.Erdos1041.PaperCompleteR21.halfPerimeterJoin_of_jordanArcDatum",
+            "file": "lean/ErdosProblems/Erdos1041/PaperCompleteR21/SubcriticalPerimeterPath.lean"
+          },
+          {
+            "name": "ErdosProblems.Erdos1041.PaperCompleteR21.half_perimeter_selection",
+            "file": "lean/ErdosProblems/Erdos1041/PaperCompleteR21/SubcriticalPerimeterPath.lean"
+          },
+          {
+            "name": "ErdosProblems.Erdos1041.PaperCompleteR21.connectedAtMost_trans",
+            "file": "lean/ErdosProblems/Erdos1041/PaperCompleteR21/SubcriticalPerimeterPath.lean"
+          },
+          {
+            "name": "ErdosProblems.Erdos1041.PaperCompleteR21.connectedAtMost_symm",
+            "file": "lean/ErdosProblems/Erdos1041/PaperCompleteR21/SubcriticalPerimeterPath.lean"
+          },
+          {
+            "name": "ErdosProblems.Erdos1041.PaperCompleteR21.connectedAtMost_mono",
+            "file": "lean/ErdosProblems/Erdos1041/PaperCompleteR21/SubcriticalPerimeterPath.lean"
+          }
+        ],
+        "named_inputs": [
+          "ErdosProblems.Erdos1041.PaperCompleteR21.SubcriticalSplitExists"
+        ],
+        "scope": "the two-component split at the first critical level that this proof constructs"
+      },
+      "reason": "Registered statement retains its mathematical content and formal support; presentation changes to an explicitly unformalised remark.",
+      "declared_changes": [
+        {
+          "label": "res:conjecture-p-consumer",
+          "change": "restated",
+          "new_labels": [
+            "res:conjecture-p-consumer"
+          ],
+          "relation": "equivalent",
+          "reason": "Retain the mathematical content and label but present the assertion as an explicitly unformalised remark. The current evidence does not prove the full polynomial/topological conclusion in Lean. All existing declarations and their conditional hypotheses are retained for the narrower deductions they actually check; the ordinary argument is preserved. This is an evidence-status demotion, not a claim that the assertion is false. References to other demoted results are updated from Theorem/Corollary to Remark without changing their meaning.",
+          "lean": [
+            "ErdosProblems.Erdos1041.PaperCompleteR21.subcritical_perimeter_path_paper",
+            "ErdosProblems.Erdos1041.PaperCompleteR21.subcritical_perimeter_path",
+            "ErdosProblems.Erdos1041.PaperCompleteR21.connectedAtMost_half_perimeter",
+            "ErdosProblems.Erdos1041.PaperCompleteR21.halfPerimeterJoin_of_jordanArcDatum",
+            "ErdosProblems.Erdos1041.PaperCompleteR21.half_perimeter_selection",
+            "ErdosProblems.Erdos1041.PaperCompleteR21.connectedAtMost_trans",
+            "ErdosProblems.Erdos1041.PaperCompleteR21.connectedAtMost_symm",
+            "ErdosProblems.Erdos1041.PaperCompleteR21.connectedAtMost_mono"
+          ],
+          "lean_new": [],
+          "occurrences": [
+            {
+              "label": "res:conjecture-p-consumer",
+              "path": "public/paper/1041/erdos1041-lemniscate-reasoning-surface.tex",
+              "old_kind": "theorem",
+              "new_kind": "remark",
+              "original_statement_sha256": "7c6f2877fda835fc74e98adbf553b042af3f2b3db3d8f9a6a59180a0697ed247",
+              "new_statement_sha256": "9d551da43350f3e0423199b196d3119dad9a63148307e26f15aa110fbe5711ce"
+            }
+          ]
+        }
+      ],
+      "changed_fields": [
+        "statement_sha256",
+        "environment",
+        "span",
+        "presentation"
+      ],
+      "old_presentation": {
+        "environment": "theorem",
+        "span": null,
+        "presentation": null
+      },
+      "new_presentation": {
+        "environment": null,
+        "span": {
+          "start": "\\label{res:conjecture-p-consumer}",
+          "end": "ent $C$ of $\\{|f|\\le\\sigma\\}$.\nThen two distinct roots of $f$ are joined inside $K_\\mu=\\{|f|\\le\\mu\\}$\nby a rectifiable path of length at most $\\beta\\mu^{1/n}$.\n"
+        },
+        "presentation": "unformalised_remark"
+      }
+    },
+    {
+      "row": "erdos1041-lemniscate-reasoning-surface#res:critical-value-separation",
+      "old_statement_sha256": "sha256:a0455858318798e79402d280065a27d362ef53a487cde3ad2034e34d5bac5014",
+      "new_statement_sha256": "sha256:bce36fa7061715a85f1cd1fb526c3c9f5d300634bca8ac61fd02d7f4b0eef6be",
+      "old_lean": {
+        "status": "modulo_named_input",
+        "declarations": [
+          {
+            "name": "ErdosProblems.Erdos1041.PaperCompleteR21.discSep_separation_long",
+            "file": "lean/ErdosProblems/Erdos1041/PaperCompleteR21/CriticalValueSeparationTransport.lean"
+          },
+          {
+            "name": "ErdosProblems.Erdos1041.PaperCompleteR21.discSep_squared_length_le",
+            "file": "lean/ErdosProblems/Erdos1041/PaperCompleteR21/CriticalValueSeparationTransport.lean"
+          },
+          {
+            "name": "ErdosProblems.Erdos1041.PaperCompleteR21.discSep_length_lt_two",
+            "file": "lean/ErdosProblems/Erdos1041/PaperCompleteR21/CriticalValueSeparationTransport.lean"
+          },
+          {
+            "name": "ErdosProblems.Erdos1041.PaperCompleteR21.discSep_bergman_factor",
+            "file": "lean/ErdosProblems/Erdos1041/PaperCompleteR21/CriticalValueSeparationTransport.lean"
+          },
+          {
+            "name": "ErdosProblems.Erdos1041.PaperCompleteR21.discSep_target_starShaped",
+            "file": "lean/ErdosProblems/Erdos1041/PaperCompleteR21/CriticalValueSeparationTransport.lean"
+          },
+          {
+            "name": "ErdosProblems.Erdos1041.PaperCompleteR21.discSep_mobius_norm_lt",
+            "file": "lean/ErdosProblems/Erdos1041/PaperCompleteR21/CriticalValueSeparationTransport.lean"
+          }
+        ],
+        "named_inputs": [
+          "ErdosProblems.Erdos1041.PaperCompleteR21.DiscSepBergmanArea"
+        ],
+        "scope": "the connector and area construction that this proof produces"
+      },
+      "new_lean": {
+        "status": "modulo_named_input",
+        "declarations": [
+          {
+            "name": "ErdosProblems.Erdos1041.PaperCompleteR21.discSep_separation_long",
+            "file": "lean/ErdosProblems/Erdos1041/PaperCompleteR21/CriticalValueSeparationTransport.lean"
+          },
+          {
+            "name": "ErdosProblems.Erdos1041.PaperCompleteR21.discSep_squared_length_le",
+            "file": "lean/ErdosProblems/Erdos1041/PaperCompleteR21/CriticalValueSeparationTransport.lean"
+          },
+          {
+            "name": "ErdosProblems.Erdos1041.PaperCompleteR21.discSep_length_lt_two",
+            "file": "lean/ErdosProblems/Erdos1041/PaperCompleteR21/CriticalValueSeparationTransport.lean"
+          },
+          {
+            "name": "ErdosProblems.Erdos1041.PaperCompleteR21.discSep_bergman_factor",
+            "file": "lean/ErdosProblems/Erdos1041/PaperCompleteR21/CriticalValueSeparationTransport.lean"
+          },
+          {
+            "name": "ErdosProblems.Erdos1041.PaperCompleteR21.discSep_target_starShaped",
+            "file": "lean/ErdosProblems/Erdos1041/PaperCompleteR21/CriticalValueSeparationTransport.lean"
+          },
+          {
+            "name": "ErdosProblems.Erdos1041.PaperCompleteR21.discSep_mobius_norm_lt",
+            "file": "lean/ErdosProblems/Erdos1041/PaperCompleteR21/CriticalValueSeparationTransport.lean"
+          }
+        ],
+        "named_inputs": [
+          "ErdosProblems.Erdos1041.PaperCompleteR21.DiscSepBergmanArea"
+        ],
+        "scope": "the connector and area construction that this proof produces"
+      },
+      "reason": "Registered statement retains its mathematical content and formal support; presentation changes to an explicitly unformalised remark.",
+      "declared_changes": [
+        {
+          "label": "res:critical-value-separation",
+          "change": "restated",
+          "new_labels": [
+            "res:critical-value-separation"
+          ],
+          "relation": "equivalent",
+          "reason": "Retain the mathematical content and label but present the assertion as an explicitly unformalised remark. The current evidence does not prove the full polynomial/topological conclusion in Lean. All existing declarations and their conditional hypotheses are retained for the narrower deductions they actually check; the ordinary argument is preserved. This is an evidence-status demotion, not a claim that the assertion is false. References to other demoted results are updated from Theorem/Corollary to Remark without changing their meaning.",
+          "lean": [
+            "ErdosProblems.Erdos1041.PaperCompleteR21.discSep_separation_short",
+            "ErdosProblems.Erdos1041.PaperCompleteR21.discSepNormalise_spec",
+            "ErdosProblems.Erdos1041.PaperCompleteR21.discSep_transport",
+            "ErdosProblems.Erdos1041.PaperCompleteR21.discSep_squared_length_le",
+            "ErdosProblems.Erdos1041.PaperCompleteR21.discSep_bergman_factor",
+            "ErdosProblems.Erdos1041.PaperCompleteR21.discSep_separation_long",
+            "ErdosProblems.Erdos1041.PaperCompleteR21.discSep_length_lt_two",
+            "ErdosProblems.Erdos1041.PaperCompleteR21.discSep_target_starShaped",
+            "ErdosProblems.Erdos1041.PaperCompleteR21.discSep_mobius_norm_lt"
+          ],
+          "lean_new": [],
+          "occurrences": [
+            {
+              "label": "res:critical-value-separation",
+              "path": "public/paper/1041/erdos-1041-lemniscate-newton-flow.tex",
+              "old_kind": "theorem",
+              "new_kind": "remark",
+              "original_statement_sha256": "45cfc3a4f673eb22b8da837547144573232672890c763e1d61dda317953d81ae",
+              "new_statement_sha256": "1b3a9a049b47b4d058b621971f1247acd9d2546edb0ac2751f88abe570f828f1"
+            },
+            {
+              "label": "res:critical-value-separation",
+              "path": "public/paper/1041/erdos1041-lemniscate-reasoning-surface.tex",
+              "old_kind": "theorem",
+              "new_kind": "remark",
+              "original_statement_sha256": "b4beea7320e936e15b75b7692d3fb68934be757fb2daf094e0d5da1acb3a7f0c",
+              "new_statement_sha256": "b9118ad47771f1ebabebf164103ac770a317cfcc58ae56c065853ea11e15c7ae"
+            }
+          ]
+        }
+      ],
+      "changed_fields": [
+        "statement_sha256",
+        "environment",
+        "span",
+        "presentation"
+      ],
+      "old_presentation": {
+        "environment": "theorem",
+        "span": null,
+        "presentation": null
+      },
+      "new_presentation": {
+        "environment": null,
+        "span": {
+          "start": "\\label{res:critical-value-separation}",
+          "end": "egin{equation*}\\label{eq:disk-family-coefficient}\n \\Bigl(\\frac{S}{n-1}\\Bigr)^{2/n}\n \\log\\!\\frac{S^2+S+p}{S^2-S+p}<2.                    \\tag{6}\n\\end{equation*}\n"
+        },
+        "presentation": "unformalised_remark"
+      }
+    },
+    {
+      "row": "erdos1041-lemniscate-reasoning-surface#res:critical-value-thresholds",
+      "old_statement_sha256": "sha256:1c8005c9113f7acad09141592124eb320f837c37576d0feecbd4a6ba6424e156",
+      "new_statement_sha256": "sha256:b6641e578bdb485054f67d71a3210ed5d78d0bc66b309c0eb0c0a8443acae527",
+      "old_lean": {
+        "status": "modulo_named_input",
+        "declarations": [
+          {
+            "name": "ErdosProblems.Erdos1041.PaperCompleteR21.discSepCoefficient_lt_two",
+            "file": "lean/ErdosProblems/Erdos1041/PaperCompleteR21/CriticalValueSeparationTransport.lean"
+          },
+          {
+            "name": "ErdosProblems.Erdos1041.PaperCompleteR21.discSep_uniform_radius",
+            "file": "lean/ErdosProblems/Erdos1041/PaperCompleteR21/CriticalValueSeparationTransport.lean"
+          },
+          {
+            "name": "ErdosProblems.Erdos1041.PaperCompleteR21.discSep_ratio_le_branch",
+            "file": "lean/ErdosProblems/Erdos1041/PaperCompleteR21/CriticalValueSeparationTransport.lean"
+          },
+          {
+            "name": "ErdosProblems.Erdos1041.PaperCompleteR21.discSep_branch_le_seven",
+            "file": "lean/ErdosProblems/Erdos1041/PaperCompleteR21/CriticalValueSeparationTransport.lean"
+          }
+        ],
+        "named_inputs": [
+          "ErdosProblems.Erdos1041.PaperCompleteR21.DiscSepBergmanArea"
+        ],
+        "scope": "the connector and area construction in the proof of Theorem~\\ref{res:critical-value-separation}"
+      },
+      "new_lean": {
+        "status": "modulo_named_input",
+        "declarations": [
+          {
+            "name": "ErdosProblems.Erdos1041.PaperCompleteR21.discSepCoefficient_lt_two",
+            "file": "lean/ErdosProblems/Erdos1041/PaperCompleteR21/CriticalValueSeparationTransport.lean"
+          },
+          {
+            "name": "ErdosProblems.Erdos1041.PaperCompleteR21.discSep_uniform_radius",
+            "file": "lean/ErdosProblems/Erdos1041/PaperCompleteR21/CriticalValueSeparationTransport.lean"
+          },
+          {
+            "name": "ErdosProblems.Erdos1041.PaperCompleteR21.discSep_ratio_le_branch",
+            "file": "lean/ErdosProblems/Erdos1041/PaperCompleteR21/CriticalValueSeparationTransport.lean"
+          },
+          {
+            "name": "ErdosProblems.Erdos1041.PaperCompleteR21.discSep_branch_le_seven",
+            "file": "lean/ErdosProblems/Erdos1041/PaperCompleteR21/CriticalValueSeparationTransport.lean"
+          }
+        ],
+        "named_inputs": [
+          "ErdosProblems.Erdos1041.PaperCompleteR21.DiscSepBergmanArea"
+        ],
+        "scope": "the connector and area construction in the proof of Theorem~\\ref{res:critical-value-separation}"
+      },
+      "reason": "Registered statement retains its mathematical content and formal support; presentation changes to an explicitly unformalised remark.",
+      "declared_changes": [
+        {
+          "label": "res:critical-value-thresholds",
+          "change": "restated",
+          "new_labels": [
+            "res:critical-value-thresholds"
+          ],
+          "relation": "equivalent",
+          "reason": "Retain the mathematical content and label but present the assertion as an explicitly unformalised remark. The current evidence does not prove the full polynomial/topological conclusion in Lean. All existing declarations and their conditional hypotheses are retained for the narrower deductions they actually check; the ordinary argument is preserved. This is an evidence-status demotion, not a claim that the assertion is false. References to other demoted results are updated from Theorem/Corollary to Remark without changing their meaning.",
+          "lean": [
+            "ErdosProblems.Erdos1041.PaperCompleteR21.discSep_uniform_radius",
+            "ErdosProblems.Erdos1041.PaperCompleteR21.discSep_cubic_six_fifths",
+            "ErdosProblems.Erdos1041.PaperCompleteR21.discSepCoefficient_lt_two",
+            "ErdosProblems.Erdos1041.PaperCompleteR21.discSepCoefficient_three_six_fifths",
+            "ErdosProblems.Erdos1041.PaperCompleteR21.SeparationParent.separation_parent",
+            "ErdosProblems.Erdos1041.PaperCompleteR21.SeparationParent.separationCoefficient_lt_two",
+            "ErdosProblems.Erdos1041.PaperCompleteR21.SeparationParent.squared_bound_lt_four",
+            "ErdosProblems.Erdos1041.PaperCompleteR21.SeparationParent.connectedBelow_of_connectedAtMost",
+            "ErdosProblems.Erdos1041.PaperCompleteR21.discSep_ratio_le_branch",
+            "ErdosProblems.Erdos1041.PaperCompleteR21.discSep_branch_le_seven"
+          ],
+          "lean_new": [],
+          "occurrences": [
+            {
+              "label": "res:critical-value-thresholds",
+              "path": "public/paper/1041/erdos-1041-lemniscate-newton-flow.tex",
+              "old_kind": "corollary",
+              "new_kind": "remark",
+              "original_statement_sha256": "0a2aedf4488ee72337e163c307e03e243a827aef5850cd5e2064e77f60a2f6a1",
+              "new_statement_sha256": "31fe51cba84cd4f7edcee29cee3cd67bfcae6c7a44313bb688cbce88c944b9ef"
+            },
+            {
+              "label": "res:critical-value-thresholds",
+              "path": "public/paper/1041/erdos1041-lemniscate-reasoning-surface.tex",
+              "old_kind": "corollary",
+              "new_kind": "remark",
+              "original_statement_sha256": "38389b3a23ba55535465b29939145933fd09110fbe89cc46d4514f3fb807cd5c",
+              "new_statement_sha256": "aa4b8a857530d007610cdfb11b5ca55696430fa156f29293a99e29575f1b392a"
+            }
+          ]
+        }
+      ],
+      "changed_fields": [
+        "statement_sha256",
+        "environment",
+        "span",
+        "presentation"
+      ],
+      "old_presentation": {
+        "environment": "corollary",
+        "span": null,
+        "presentation": null
+      },
+      "new_presentation": {
+        "environment": null,
+        "span": {
+          "start": "\\label{res:critical-value-thresholds}",
+          "end": "f(d)}v-w_0\\right|\\ge\\frac43\n\\]\nfor every other critical point $d$, then two roots of $f$ are joined inside\n$\\{|f|<1\\}$ by a curve of length strictly below $2$.\n"
+        },
+        "presentation": "unformalised_remark"
+      }
+    },
+    {
+      "row": "erdos1041-lemniscate-reasoning-surface#res:attachment-aware-reeb",
+      "old_statement_sha256": "sha256:6f538928433a90705e8075c74ac84d2b922be22055d897ebbc69d3759ceda71e",
+      "new_statement_sha256": "sha256:16f89bfadaa774554a2ff48e10477f9257a45e510358784a1ed61c6608370f52",
+      "old_lean": {
+        "status": "none",
+        "counted": true,
+        "declarations": [],
+        "reason": "the ray-disjointness, level-separation and saddle-scale steps of the proof are checked, and the Morse, monodromy and strip statements are not"
+      },
+      "new_lean": {
+        "status": "none",
+        "counted": true,
+        "declarations": [],
+        "reason": "the ray-disjointness, level-separation and saddle-scale steps of the proof are checked, and the Morse, monodromy and strip statements are not"
+      },
+      "reason": "Registered statement retains its mathematical content and formal support; presentation changes to an explicitly unformalised remark.",
+      "declared_changes": [
+        {
+          "label": "res:attachment-aware-reeb",
+          "change": "restated",
+          "new_labels": [
+            "res:attachment-aware-reeb"
+          ],
+          "relation": "equivalent",
+          "reason": "Retain the mathematical content and label but present the assertion as an explicitly unformalised remark. The current evidence does not prove the full polynomial/topological conclusion in Lean. All existing declarations and their conditional hypotheses are retained for the narrower deductions they actually check; the ordinary argument is preserved. This is an evidence-status demotion, not a claim that the assertion is false. References to other demoted results are updated from Theorem/Corollary to Remark without changing their meaning.",
+          "lean": [],
+          "lean_new": [],
+          "occurrences": [
+            {
+              "label": "res:attachment-aware-reeb",
+              "path": "public/paper/1041/erdos1041-lemniscate-reasoning-surface.tex",
+              "old_kind": "theorem",
+              "new_kind": "remark",
+              "original_statement_sha256": "e1e92b109c80149f77c82e2f7d5cde8e6f7708016421143928aa3958fa7aeb91",
+              "new_statement_sha256": "6561e29c9cb6a21ce388d01a427bfd47fe3dc99322e7f71edcfc485c628396eb"
+            }
+          ]
+        }
+      ],
+      "changed_fields": [
+        "statement_sha256",
+        "environment",
+        "span",
+        "presentation"
+      ],
+      "old_presentation": {
+        "environment": "theorem",
+        "span": null,
+        "presentation": null
+      },
+      "new_presentation": {
+        "environment": null,
+        "span": {
+          "start": "\\label{res:attachment-aware-reeb}",
+          "end": "\ngeometric realisation of that tree.\n\\end{enumerate}\nSmall neighbourhoods of the saddles can be chosen with diameter\n$O(\\sqrt\\delta)$ at value radius $\\delta$.\n"
+        },
+        "presentation": "unformalised_remark"
+      }
+    },
+    {
+      "row": "erdos249-totient-reasoning-surface#long249:thm:signed-interpolation",
+      "old_statement_sha256": "sha256:1f6c1bbaa120808447b472bf30a5b074f40e7594310c6bd0e7282a33d86f50f4",
+      "new_statement_sha256": "sha256:86d4b6fe73aa958906af1c0ec13e4e87b1b90b1f6e2f5ed6d032117ddac440e0",
+      "old_lean": {
+        "status": "none",
+        "counted": true,
+        "declarations": [],
+        "reason": "no proof of the full statement is recorded; the paper gives an ordinary proof reviewed by AI agents. Finite auxiliary checks have narrower scope, and independent human review is not recorded"
+      },
+      "new_lean": {
+        "status": "none",
+        "counted": true,
+        "declarations": [],
+        "reason": "no proof of the full statement is recorded; the paper gives an ordinary proof reviewed by AI agents. Finite auxiliary checks have narrower scope, and independent human review is not recorded"
+      },
+      "reason": "Registered statement retains its mathematical content and formal support; presentation changes to an explicitly unformalised remark.",
+      "declared_changes": [
+        {
+          "label": "long249:thm:signed-interpolation",
+          "change": "restated",
+          "new_labels": [
+            "long249:thm:signed-interpolation"
+          ],
+          "relation": "equivalent",
+          "lean": [],
+          "reason": "The mathematical body, hypotheses, conclusion and ordinary proof are retained. Only the environment changes to a remark, with an explicit unformalised-evidence note, because pipeline/LEAN_GAPS.md and the supplied coverage ledger give status none. This is a presentation demotion, not a conjecture or a new mathematical claim.",
+          "original_path": "public/paper/249/erdos249-totient-reasoning-surface.tex",
+          "destination_path": "public/paper/249/erdos249-totient-reasoning-surface.tex"
+        }
+      ],
+      "changed_fields": [
+        "statement_sha256",
+        "environment",
+        "span",
+        "presentation"
+      ],
+      "old_presentation": {
+        "environment": "thm",
+        "span": null,
+        "presentation": null
+      },
+      "new_presentation": {
+        "environment": null,
+        "span": {
+          "start": "\\label{long249:thm:signed-interpolation}",
+          "end": "le\\min\\left(1,C\\left[\\frac m{\\ell(X)}+\\ell(X)^{-1/2}\\right]\\right),\n \\qquad 1\\le m\\le X.\n\\]\nThus every block length $m=o(\\ell(X))$ is preserved asymptotically.\n"
+        },
+        "presentation": "unformalised_remark"
+      }
+    },
+    {
+      "row": "erdos249-totient-reasoning-surface#long249:cor:signed-observations",
+      "old_statement_sha256": "sha256:53d903b7fe8f6f509c87de04d1a076c94191095729c08f6a618d4da51937f722",
+      "new_statement_sha256": "sha256:f547cc8b6cc502fe7d8c3c2666358a5c1fcc6753a6fe57ee795176d81cfcee85",
+      "old_lean": {
+        "status": "none",
+        "counted": true,
+        "declarations": [],
+        "reason": "no proof of the full statement is recorded; the paper gives an ordinary proof reviewed by AI agents. Finite auxiliary checks have narrower scope, and independent human review is not recorded"
+      },
+      "new_lean": {
+        "status": "none",
+        "counted": true,
+        "declarations": [],
+        "reason": "no proof of the full statement is recorded; the paper gives an ordinary proof reviewed by AI agents. Finite auxiliary checks have narrower scope, and independent human review is not recorded"
+      },
+      "reason": "Registered statement retains its mathematical content and formal support; presentation changes to an explicitly unformalised remark.",
+      "declared_changes": [
+        {
+          "label": "long249:cor:signed-observations",
+          "change": "restated",
+          "new_labels": [
+            "long249:cor:signed-observations"
+          ],
+          "relation": "equivalent",
+          "lean": [],
+          "reason": "The mathematical body, hypotheses, conclusion and ordinary proof are retained. Only the environment changes to a remark, with an explicit unformalised-evidence note, because pipeline/LEAN_GAPS.md and the supplied coverage ledger give status none. This is a presentation demotion, not a conjecture or a new mathematical claim.",
+          "original_path": "public/paper/249/erdos249-totient-reasoning-surface.tex",
+          "destination_path": "public/paper/249/erdos249-totient-reasoning-surface.tex"
+        }
+      ],
+      "changed_fields": [
+        "statement_sha256",
+        "environment",
+        "span",
+        "presentation"
+      ],
+      "old_presentation": {
+        "environment": "cor",
+        "span": null,
+        "presentation": null
+      },
+      "new_presentation": {
+        "environment": null,
+        "span": {
+          "start": "\\label{long249:cor:signed-observations}",
+          "end": "[\\zeta]$. This remains true\nwith exact equality of the first $P$ moment degrees and first $P$\nradial Taylor coefficients at moduli and root orders at most $P$.\n"
+        },
+        "presentation": "unformalised_remark"
+      }
+    },
+    {
+      "row": "erdos249-totient-reasoning-surface#long249:prop:signed-first-harmonic",
+      "old_statement_sha256": "sha256:3d16e08279461a0b2063dfeae0ade865bb2eef41ce29711c4438202506e81b5f",
+      "new_statement_sha256": "sha256:f732fdf80ae014d3fde9be40a703504b2926be90c2d1f791179dab142bb5ff42",
+      "old_lean": {
+        "status": "none",
+        "counted": true,
+        "declarations": [],
+        "reason": "no proof of the full statement is recorded; the paper gives an ordinary proof reviewed by AI agents. Finite auxiliary checks have narrower scope, and independent human review is not recorded"
+      },
+      "new_lean": {
+        "status": "none",
+        "counted": true,
+        "declarations": [],
+        "reason": "no proof of the full statement is recorded; the paper gives an ordinary proof reviewed by AI agents. Finite auxiliary checks have narrower scope, and independent human review is not recorded"
+      },
+      "reason": "Registered statement retains its mathematical content and formal support; presentation changes to an explicitly unformalised remark.",
+      "declared_changes": [
+        {
+          "label": "long249:prop:signed-first-harmonic",
+          "change": "restated",
+          "new_labels": [
+            "long249:prop:signed-first-harmonic"
+          ],
+          "relation": "equivalent",
+          "lean": [],
+          "reason": "The mathematical body, hypotheses, conclusion and ordinary proof are retained. Only the environment changes to a remark, with an explicit unformalised-evidence note, because pipeline/LEAN_GAPS.md and the supplied coverage ledger give status none. This is a presentation demotion, not a conjecture or a new mathematical claim.",
+          "original_path": "public/paper/249/erdos249-totient-reasoning-surface.tex",
+          "destination_path": "public/paper/249/erdos249-totient-reasoning-surface.tex"
+        }
+      ],
+      "changed_fields": [
+        "statement_sha256",
+        "environment",
+        "span",
+        "presentation"
+      ],
+      "old_presentation": {
+        "environment": "prop",
+        "span": null,
+        "presentation": null
+      },
+      "new_presentation": {
+        "environment": null,
+        "span": {
+          "start": "\\label{long249:prop:signed-first-harmonic}",
+          "end": "e2^L$, then for every integer $N\\in[X,2X)$,\n\\[\n \\cos\\left(2\\pi\\,2^{-L}\\sum_{j=0}^{L-1}\n    [b(N+h+1+j)-b(N+1+j)]2^{L-1-j}\\right)\n \\ge\\cos(\\pi/8)>\\frac9{10}.\n\\]\n"
+        },
+        "presentation": "unformalised_remark"
+      }
+    },
+    {
+      "row": "erdos269-running-lcm-reasoning-surface#long269:lem:late-swap",
+      "old_statement_sha256": "sha256:6e83d73abd3f934277b13afb4c8e7cece322d82b34adc6311bc2d6746eb1f121",
+      "new_statement_sha256": "sha256:95b34c50975e7ec4b3e5e41c256b3b10506e7ee88fdc859c62c2382f41f5f2be",
+      "old_lean": {
+        "status": "none",
+        "counted": true,
+        "declarations": [],
+        "reason": "no proof of the full statement is recorded; the paper gives an ordinary proof reviewed by AI agents. Finite auxiliary checks have narrower scope, and independent human review is not recorded"
+      },
+      "new_lean": {
+        "status": "none",
+        "counted": true,
+        "declarations": [],
+        "reason": "no proof of the full statement is recorded; the paper gives an ordinary proof reviewed by AI agents. Finite auxiliary checks have narrower scope, and independent human review is not recorded"
+      },
+      "reason": "Registered statement retains its mathematical content and formal support; presentation changes to an explicitly unformalised remark.",
+      "declared_changes": [
+        {
+          "label": "long269:lem:late-swap",
+          "change": "restated",
+          "new_labels": [
+            "long269:lem:late-swap"
+          ],
+          "relation": "equivalent",
+          "reason": "Presentation changes from an asserting result environment to a remark because the supplied Lean-gap ledger records no formal proof. The complete mathematical statement and its ordinary proof are retained; no Lean declaration is dropped or claimed."
+        }
+      ],
+      "changed_fields": [
+        "statement_sha256",
+        "environment",
+        "span",
+        "presentation"
+      ],
+      "old_presentation": {
+        "environment": "lemma",
+        "span": null,
+        "presentation": null
+      },
+      "new_presentation": {
+        "environment": null,
+        "span": {
+          "start": "\\label{long269:lem:late-swap}",
+          "end": "ters along a connected graph,\n$V_c(w)$ is rational precisely when there is $\\lambda\\in\\Q$ with\n$c_a=\\lambda(b_a-1)$ for all $a$; in that case $V_c(w)=\\lambda$.\n"
+        },
+        "presentation": "unformalised_remark"
+      }
+    },
+    {
+      "row": "erdos269-running-lcm-reasoning-surface#long269:lem:clock-swaps",
+      "old_statement_sha256": "sha256:85107854ffae71fabb7abe707255dbb2bb7a9b4139e64dd1f79cc93543a10b68",
+      "new_statement_sha256": "sha256:6b6edbfd1a0f217a498e2bf52a63a8ac551e14448f9ada31f129a752fc26f3e1",
+      "old_lean": {
+        "status": "none",
+        "counted": true,
+        "declarations": [],
+        "reason": "no proof of the full statement is recorded; the paper gives an ordinary proof reviewed by AI agents. Finite auxiliary checks have narrower scope, and independent human review is not recorded"
+      },
+      "new_lean": {
+        "status": "none",
+        "counted": true,
+        "declarations": [],
+        "reason": "no proof of the full statement is recorded; the paper gives an ordinary proof reviewed by AI agents. Finite auxiliary checks have narrower scope, and independent human review is not recorded"
+      },
+      "reason": "Registered statement retains its mathematical content and formal support; presentation changes to an explicitly unformalised remark.",
+      "declared_changes": [
+        {
+          "label": "long269:lem:clock-swaps",
+          "change": "restated",
+          "new_labels": [
+            "long269:lem:clock-swaps"
+          ],
+          "relation": "equivalent",
+          "reason": "The enclosing lemma is converted to a numbered remark awaiting formalisation. Inside the statement, the reference kind Lemma is changed to Remark for long269:lem:late-swap, which was also converted; the referenced label and all mathematical content are unchanged. The complete ordinary proof remains."
+        }
+      ],
+      "changed_fields": [
+        "statement_sha256",
+        "environment",
+        "span",
+        "presentation"
+      ],
+      "old_presentation": {
+        "environment": "lemma",
+        "span": null,
+        "presentation": null
+      },
+      "new_presentation": {
+        "environment": null,
+        "span": {
+          "start": "\\label{long269:lem:clock-swaps}",
+          "end": "\\label{long269:lem:clock-swaps}\nEvery pair of distinct clock labels satisfies the late-interchange\nhypothesis of Remark~\\ref{long269:lem:late-swap} for $X_w$.\n"
+        },
+        "presentation": "unformalised_remark"
+      }
+    },
+    {
+      "row": "erdos269-running-lcm-reasoning-surface#long269:thm:clock-relations",
+      "old_statement_sha256": "sha256:030dd540544fddcb879980073903e2d98da96cc84013b0ea7d0c59c5a63b4106",
+      "new_statement_sha256": "sha256:a7b5b29536a018a7f32a8cb1f1561cac9228160593b949b9ca2d3006c54166f1",
+      "old_lean": {
+        "status": "none",
+        "counted": true,
+        "declarations": [],
+        "reason": "no proof of the full statement is recorded; the paper gives an ordinary proof reviewed by AI agents. Finite auxiliary checks have narrower scope, and independent human review is not recorded"
+      },
+      "new_lean": {
+        "status": "none",
+        "counted": true,
+        "declarations": [],
+        "reason": "no proof of the full statement is recorded; the paper gives an ordinary proof reviewed by AI agents. Finite auxiliary checks have narrower scope, and independent human review is not recorded"
+      },
+      "reason": "Registered statement retains its mathematical content and formal support; presentation changes to an explicitly unformalised remark.",
+      "declared_changes": [
+        {
+          "label": "long269:thm:clock-relations",
+          "change": "restated",
+          "new_labels": [
+            "long269:thm:clock-relations"
+          ],
+          "relation": "equivalent",
+          "reason": "Presentation changes from an asserting result environment to a remark because the supplied Lean-gap ledger records no formal proof. The complete mathematical statement and its ordinary proof are retained; no Lean declaration is dropped or claimed."
+        }
+      ],
+      "changed_fields": [
+        "statement_sha256",
+        "environment",
+        "span",
+        "presentation"
+      ],
+      "old_presentation": {
+        "environment": "theorem",
+        "span": null,
+        "presentation": null
+      },
+      "new_presentation": {
+        "environment": null,
+        "span": {
+          "start": "\\label{long269:thm:clock-relations}",
+          "end": "$d$; each channel and each nonempty\nproper unweighted sub-sum is irrational.  The full unweighted sum is\nirrational exactly when the radices are not all equal.\n"
+        },
+        "presentation": "unformalised_remark"
+      }
+    },
+    {
+      "row": "erdos269-running-lcm-reasoning-surface#long269:lem:staircase-smith",
+      "old_statement_sha256": "sha256:19eb07e7446ac12dc15b2568379e0443797a0eb947eeb75d3e9155b633180dc3",
+      "new_statement_sha256": "sha256:a030e1246f38811434a778a9773980fb497e05c450defa0ce630cd8a723e8c22",
+      "old_lean": {
+        "status": "none",
+        "counted": true,
+        "declarations": [],
+        "reason": "no proof of the full statement is recorded; the paper gives an ordinary proof reviewed by AI agents. Finite auxiliary checks have narrower scope, and independent human review is not recorded"
+      },
+      "new_lean": {
+        "status": "none",
+        "counted": true,
+        "declarations": [],
+        "reason": "no proof of the full statement is recorded; the paper gives an ordinary proof reviewed by AI agents. Finite auxiliary checks have narrower scope, and independent human review is not recorded"
+      },
+      "reason": "Registered statement retains its mathematical content and formal support; presentation changes to an explicitly unformalised remark.",
+      "declared_changes": [
+        {
+          "label": "long269:lem:staircase-smith",
+          "change": "restated",
+          "new_labels": [
+            "long269:lem:staircase-smith"
+          ],
+          "relation": "equivalent",
+          "reason": "Presentation changes from an asserting result environment to a remark because the supplied Lean-gap ledger records no formal proof. The complete mathematical statement and its ordinary proof are retained; no Lean declaration is dropped or claimed."
+        }
+      ],
+      "changed_fields": [
+        "statement_sha256",
+        "environment",
+        "span",
+        "presentation"
+      ],
+      "old_presentation": {
+        "environment": "lemma",
+        "span": null,
+        "presentation": null
+      },
+      "new_presentation": {
+        "environment": null,
+        "span": {
+          "start": "\\label{long269:lem:staircase-smith}",
+          "end": "\\label{long269:lem:staircase-smith}\nThe Smith factors of $A_N(r)$ are\n$1,r-1,\\ldots,r-1$, and\n$\\det A_N(r)=(1-r)^{N-1}$.\n"
+        },
+        "presentation": "unformalised_remark"
+      }
+    },
+    {
+      "row": "erdos1049-rational-base-lambert-reasoning-surface#long1049:thm:calibrated-model",
+      "old_statement_sha256": "sha256:286b9915668cbb07f6097d15291594a173c5014198cd4c167877760ce58f79cb",
+      "new_statement_sha256": "sha256:98f4ad2d04b376aed474c0b17cff8714652bd12c53969186ad89c207c675b413",
+      "old_lean": {
+        "status": "none",
+        "counted": true,
+        "declarations": [],
+        "reason": "no proof of the full statement is recorded; the paper gives an ordinary proof reviewed by AI agents. Finite auxiliary checks have narrower scope, and independent human review is not recorded"
+      },
+      "new_lean": {
+        "status": "none",
+        "counted": true,
+        "declarations": [],
+        "reason": "no proof of the full statement is recorded; the paper gives an ordinary proof reviewed by AI agents. Finite auxiliary checks have narrower scope, and independent human review is not recorded"
+      },
+      "reason": "Registered statement retains its mathematical content and formal support; presentation changes to an explicitly unformalised remark.",
+      "declared_changes": [
+        {
+          "label": "long1049:thm:calibrated-model",
+          "change": "restated",
+          "new_labels": [
+            "long1049:thm:calibrated-model"
+          ],
+          "relation": "equivalent",
+          "reason": "Change of presentation from an asserting theorem/proposition to an explicitly unformalised remark. The mathematical statement and complete ordinary argument are retained. No Lean verification is claimed.",
+          "lean": []
+        }
+      ],
+      "changed_fields": [
+        "statement_sha256",
+        "environment",
+        "span",
+        "presentation"
+      ],
+      "old_presentation": {
+        "environment": "theorem",
+        "span": null,
+        "presentation": null
+      },
+      "new_presentation": {
+        "environment": null,
+        "span": {
+          "start": "\\label{long1049:thm:calibrated-model}",
+          "end": "$ such that\n\\[\n \\det(\\mu_{i+j}(q_0))_{0\\le i,j<N}\n \\sim\\mathcal A\\mathcal M(q_0)^3 C_Nq_0^{B_N}\n             P(q_0)^{2N}N^{-8\\xi},\\qquad \\xi=G_{q_0}(q_0)=1.\n\\]\n"
+        },
+        "presentation": "unformalised_remark"
+      }
+    },
+    {
+      "row": "erdos1049-rational-base-lambert-reasoning-surface#long1049:thm:calibrated-denominators",
+      "old_statement_sha256": "sha256:005309d1082ff0e05e29eea23a3b70dbce80d8043c172c9ec91d899037faf926",
+      "new_statement_sha256": "sha256:7775f0e12e786794d204077e38b9065da25cac5be833de14d7f13bfc90e5f439",
+      "old_lean": {
+        "status": "none",
+        "counted": true,
+        "declarations": [],
+        "reason": "no proof of the full statement is recorded; the paper gives an ordinary proof reviewed by AI agents. Finite auxiliary checks have narrower scope, and independent human review is not recorded"
+      },
+      "new_lean": {
+        "status": "none",
+        "counted": true,
+        "declarations": [],
+        "reason": "no proof of the full statement is recorded; the paper gives an ordinary proof reviewed by AI agents. Finite auxiliary checks have narrower scope, and independent human review is not recorded"
+      },
+      "reason": "Registered statement retains its mathematical content and formal support; presentation changes to an explicitly unformalised remark.",
+      "declared_changes": [
+        {
+          "label": "long1049:thm:calibrated-denominators",
+          "change": "restated",
+          "new_labels": [
+            "long1049:thm:calibrated-denominators"
+          ],
+          "relation": "equivalent",
+          "reason": "Change of presentation from an asserting theorem/proposition to an explicitly unformalised remark. The mathematical statement and complete ordinary argument are retained. No Lean verification is claimed.",
+          "lean": []
+        }
+      ],
+      "changed_fields": [
+        "statement_sha256",
+        "environment",
+        "span",
+        "presentation"
+      ],
+      "old_presentation": {
+        "environment": "theorem",
+        "span": null,
+        "presentation": null
+      },
+      "new_presentation": {
+        "environment": null,
+        "span": {
+          "start": "\\label{long1049:thm:calibrated-denominators}",
+          "end": "least integer clearing both rational coefficients in\n$\\mu_n=q_0^{-n}\\xi-q_0^{-n}S_{n-1}$ is\n$2^n3^{31n+62}\\delta_n^4$.  At $n=0$ the moment and tail equal one.\n"
+        },
+        "presentation": "unformalised_remark"
+      }
+    },
+    {
+      "row": "erdos1049-rational-base-lambert-reasoning-surface#long1049:prop:calibrated-height",
+      "old_statement_sha256": "sha256:4d29e4b0c18f4101c28531d67a6c8ff942a4019b3f707bfa752a000e77d7622c",
+      "new_statement_sha256": "sha256:12112672b2cd7423b8e0c86281f97b35aa7f7c0168b4edbdf4ac3f90995b65ea",
+      "old_lean": {
+        "status": "none",
+        "counted": true,
+        "declarations": [],
+        "reason": "no proof of the full statement is recorded; the paper gives an ordinary proof reviewed by AI agents. Finite auxiliary checks have narrower scope, and independent human review is not recorded"
+      },
+      "new_lean": {
+        "status": "none",
+        "counted": true,
+        "declarations": [],
+        "reason": "no proof of the full statement is recorded; the paper gives an ordinary proof reviewed by AI agents. Finite auxiliary checks have narrower scope, and independent human review is not recorded"
+      },
+      "reason": "Registered statement retains its mathematical content and formal support; presentation changes to an explicitly unformalised remark.",
+      "declared_changes": [
+        {
+          "label": "long1049:prop:calibrated-height",
+          "change": "restated",
+          "new_labels": [
+            "long1049:prop:calibrated-height"
+          ],
+          "relation": "equivalent",
+          "reason": "Change of presentation from an asserting theorem/proposition to an explicitly unformalised remark. The mathematical statement and complete ordinary argument are retained. No Lean verification is claimed.",
+          "lean": []
+        }
+      ],
+      "changed_fields": [
+        "statement_sha256",
+        "environment",
+        "span",
+        "presentation"
+      ],
+      "old_presentation": {
+        "environment": "proposition",
+        "span": null,
+        "presentation": null
+      },
+      "new_presentation": {
+        "environment": null,
+        "span": {
+          "start": "\\label{long1049:prop:calibrated-height}",
+          "end": " \\log D_N=O(N^3).\n\\]\nAlready at rank two, multiplying $H_2=\\mu_2-\\mu_1^2$ by\n$\\operatorname{den}\\mu_1\\operatorname{den}\\mu_2$ leaves reduced\ndenominator $625$.\n"
+        },
+        "presentation": "unformalised_remark"
+      }
+    },
+    {
+      "row": "erdos-1041-lemniscate-newton-flow#lem:two-sheet-bottleneck",
+      "old_statement_sha256": "sha256:02e855c146da954368c9515b2c71bb20fdf14521ba23d21d3c46ca3dcd5c385a",
+      "new_statement_sha256": "sha256:8dc842bf734aff0b3c148fe68de43cd3b9cd73c67152e59c25d8505c018f19ad",
+      "old_lean": {
+        "status": "exact_or_stronger",
+        "declarations": [
+          {
+            "name": "Erdos1041.Counterexample.s3_bottleneck_hausdorff",
+            "file": "lean/ErdosProblems/Erdos1041/Counterexample/HausdorffLength.lean"
+          }
+        ]
+      },
+      "new_lean": {
+        "status": "exact_or_stronger",
+        "declarations": [
+          {
+            "name": "Erdos1041.Counterexample.s3_bottleneck_hausdorff",
+            "file": "lean/ErdosProblems/Erdos1041/Counterexample/HausdorffLength.lean"
+          }
+        ]
+      },
+      "reason": "Restored h > 0 matches hh : 0 < h in s3_bottleneck_hausdorff; all other hypotheses and the Hausdorff lower bound are preserved.",
+      "declared_changes": [
+        {
+          "label": "lem:two-sheet-bottleneck",
+          "change": "weakened",
+          "new_labels": [
+            "lem:two-sheet-bottleneck"
+          ],
+          "relation": "old_implies_new",
+          "reason": "Restore the explicit hypothesis h>0 omitted from the short-paper statement. The long-record counterpart already states it, and Counterexample/HausdorffLength.lean::s3_bottleneck_hausdorff takes hh : 0 < h. The previous h-free assertion is stronger as a logical formula and does not supply a valid radius assumption for the displayed argument. The application has h=rho*epsilon/10>0. No new proof status or strengthened conclusion is claimed.",
+          "lean": [
+            "Erdos1041.Counterexample.s3_bottleneck_hausdorff"
+          ],
+          "lean_new": [],
+          "occurrences": [
+            {
+              "label": "lem:two-sheet-bottleneck",
+              "path": "public/paper/1041/erdos-1041-lemniscate-newton-flow.tex",
+              "old_kind": "lemma",
+              "new_kind": "lemma",
+              "original_statement_sha256": "fe73449c01d79b15a6d128090b9d84499717da3fbd3c8ee498319e5770669656",
+              "new_statement_sha256": "bba822820700e10a8bfb9e62206010b93f6345d2183a77ce7e7935cf676643e8"
+            }
+          ]
+        }
+      ],
+      "changed_fields": [
+        "statement_sha256"
+      ],
+      "old_presentation": {
+        "environment": "lemma",
+        "span": null,
+        "presentation": null
+      },
+      "new_presentation": {
+        "environment": "lemma",
+        "span": null,
+        "presentation": null
+      }
+    },
+    {
+      "row": "erdos-1049-rational-base-lambert#thm:geometric-moments",
+      "old_statement_sha256": "sha256:f9c685262da0710c2e0fdd0749103ed7ec04d6b5fccb32aebc9df94420f9415a",
+      "new_statement_sha256": "sha256:649a149ecd5911f40f3a1f04155a08b92b1264271301634a947ccf4d5116b094",
+      "old_lean": {
+        "status": "none",
+        "counted": true,
+        "declarations": [],
+        "reason": "the general adjacent-ratio theorem (a_{k+1}/a_k -> rho in (0,1/q), constant M(1;q)^2 M(rho;q)) is not formalised; geometric_universality proves only the rho=1 case and additionally assumes the polynomial shift bound a_{k+h}/a_k <= C(1+h)^kappa"
+      },
+      "new_lean": {
+        "status": "exact_or_stronger",
+        "declarations": [
+          {
+            "name": "ErdosProblems.Erdos1049.PaperCompleteR21.GeometricUniversality.geometric_universality",
+            "file": "lean/ErdosProblems/Erdos1049/PaperCompleteR21/GeometricUniversality.lean"
+          }
+        ]
+      },
+      "reason": "The polynomial shift bound and fixed-shift ratio limit match geometric_universality. Its Tendsto ratio states this asymptotic, with sum j^2 = B_N; broader ratio cases remain in the long record without a formal mark.",
+      "declared_changes": [
+        {
+          "label": "thm:geometric-moments",
+          "change": "specialised",
+          "new_labels": [
+            "thm:geometric-moments"
+          ],
+          "relation": "old_implies_new",
+          "reason": "The short theorem is restricted to the polynomial shift-bound case proved by the existing Lean geometric_universality theorem. The broader ratio-limit statement and its full ordinary argument remain in the long record as an explicitly unformalised remark. No mathematical extension is lost.",
+          "lean": [
+            "ErdosProblems.Erdos1049.PaperCompleteR21.GeometricUniversality.geometric_universality"
+          ]
+        }
+      ],
+      "changed_fields": [
+        "statement_sha256",
+        "lean",
+        "comparator",
+        "palomar"
+      ],
+      "old_presentation": {
+        "environment": "theorem",
+        "span": null,
+        "presentation": null
+      },
+      "new_presentation": {
+        "environment": "theorem",
+        "span": null,
+        "presentation": null
+      }
+    },
+    {
+      "row": "erdos1049-rational-base-lambert-reasoning-surface#long1049:thm:geometric-ratio",
+      "reason": "Reviewed presentation changes while conserving the full registered support set and its evidence class.",
+      "changed_fields": [
+        "environment",
+        "span",
+        "presentation"
+      ],
+      "old_presentation": {
+        "environment": "theorem",
+        "span": null,
+        "presentation": null
+      },
+      "new_presentation": {
+        "environment": null,
+        "span": {
+          "start": "\\label{long1049:thm:geometric-ratio}",
+          "end": "$N\\to\\infty$,\n\\begin{equation}\\label{long1049:eq:ratio-limit}\n D_N\\sim \\mathcal M(1;q)^2\\mathcal M(\\rho;q)\\,\n q^{B_N}P^{2N}\\prod_{k=0}^{N-1}a_k.\n\\end{equation}\n"
+        },
+        "presentation": "unformalised_remark"
+      }
+    }
+  ],
+  "consolidated": [
+    {
+      "row": "erdos-269-three-prime-running-lcm#res:distinct-height-all",
+      "destination": "erdos269-running-lcm-reasoning-surface#long269:res:distinct-height-all",
+      "reason": "The short occurrence is consolidated with this matching long-record statement and its complete ordinary proof. The destination is now a numbered remark awaiting formalisation; the logical claim is preserved. See STATEMENT_CHANGES.json.",
+      "lean_support_preserved": true
+    },
+    {
+      "row": "erdos-269-three-prime-running-lcm#res:dp-integral-tails",
+      "destination": "erdos269-running-lcm-reasoning-surface#long269:res:dp-integral-tails",
+      "reason": "The short occurrence is consolidated with this matching long-record statement and its complete ordinary proof. The destination is now a numbered remark awaiting formalisation; the logical claim is preserved. See STATEMENT_CHANGES.json.",
+      "lean_support_preserved": true
+    },
+    {
+      "row": "erdos-269-three-prime-running-lcm#res:dp-blocks",
+      "destination": "erdos269-running-lcm-reasoning-surface#long269:res:dp-blocks",
+      "reason": "The short occurrence is consolidated with this matching long-record statement and its complete ordinary proof. The destination is now a numbered remark awaiting formalisation; the logical claim is preserved. See STATEMENT_CHANGES.json.",
+      "lean_support_preserved": true
+    },
+    {
+      "row": "erdos-269-three-prime-running-lcm#res:dp-short",
+      "destination": "erdos269-running-lcm-reasoning-surface#long269:res:dp-short",
+      "reason": "The short occurrence is consolidated with this matching long-record statement and its complete ordinary proof. The destination is now a numbered remark awaiting formalisation; the logical claim is preserved. See STATEMENT_CHANGES.json.",
+      "lean_support_preserved": true
+    },
+    {
+      "row": "erdos-269-three-prime-running-lcm#res:dp-two-walls",
+      "destination": "erdos269-running-lcm-reasoning-surface#long269:res:dp-two-walls",
+      "reason": "The short occurrence is consolidated with this matching long-record statement and its complete ordinary proof. The destination is now a numbered remark awaiting formalisation; the logical claim is preserved. See STATEMENT_CHANGES.json.",
+      "lean_support_preserved": true
+    },
+    {
+      "row": "erdos-269-three-prime-running-lcm#res:single-prime-subsums",
+      "destination": "erdos269-running-lcm-reasoning-surface#long269:res:single-prime-subsums",
+      "reason": "The short occurrence is consolidated with this matching long-record statement and its complete ordinary proof. The destination is now a numbered remark awaiting formalisation; the logical claim is preserved. See STATEMENT_CHANGES.json.",
+      "lean_support_preserved": true
+    }
+  ],
+  "all_other_supports_preserved": true,
+  "current_ledger_sha256": "sha256:67e94e572ca529a1264cc6b64d4644505601d12ad0359321212c5b6b24c2bddf",
+  "support_conservation": "Every retained occurrence preserves all previously registered declarations. Six removed short duplicates had no Lean declarations; their long destinations and ordinary proofs remain registered.",
+  "retired_correspondences": [
+    "erdos-269-three-prime-running-lcm#res:distinct-height-all",
+    "erdos-269-three-prime-running-lcm#res:dp-integral-tails",
+    "erdos-269-three-prime-running-lcm#res:dp-blocks",
+    "erdos-269-three-prime-running-lcm#res:dp-short",
+    "erdos-269-three-prime-running-lcm#res:dp-two-walls",
+    "erdos-269-three-prime-running-lcm#res:single-prime-subsums"
+  ]
+}

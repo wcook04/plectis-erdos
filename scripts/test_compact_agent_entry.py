@@ -53,10 +53,7 @@ def main() -> int:
     for required in (
         'query_corpus.py --ask "<question>"',
         "query_corpus.py --overview --format card",
-        "--route instant_orientation",
-        "--route erdos249_certificate_story",
-        "--route erdos257_half_story",
-        "--route browse_claim_status",
+        "query_corpus.py --routes",
         'query_corpus.py --goal-support "<Lean or mathematical goal>"',
         "proof_cockpit.py --format card",
         'agent_entry.py --entry "<task in ordinary language>"',

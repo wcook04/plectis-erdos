@@ -6,14 +6,38 @@ description: Explain this public mathematical research system to a lay reader, m
 # Explain the public system
 
 Use this skill when a reader asks what the repository is, how it works, what it
-has proved, or how they can take part. Work only from tracked public files.
-Never infer private state or turn an agent summary into proof authority.
+has proved, or how they can take part. Base repository facts on tracked public
+files; follow cited primary sources where the question requires them. Never
+infer private state or turn an agent summary into proof authority.
 
 When asked whether summaries show the **best results or actual nontrivial
 progress**, first use the audit mode in
 [`propagate-research-consequences`](../propagate-research-consequences/SKILL.md).
 Do not simply repeat the overview's ranking or the current result guide. A
 plain explanation of one already selected theorem does not need a corpus audit.
+
+## Inspect a source or external record
+
+For a bounded lookup, use the relevant row below before the whole-system
+explanation. Follow only the selected record and its cited sources.
+
+| Question | Route |
+|---|---|
+| Which declaration supports this result? | Query the claim with `python3 scripts/query_corpus.py --ask "<question>"`; follow its paper label or declaration handle into the source. [SOURCE_MAP](../../docs/SOURCE_MAP.md) explains those links. |
+| Who proved this, and what should I cite? | Use `python3 scripts/query_corpus.py --route trace_prior_art`, then `python3 scripts/build_source_attributions.py --query "<name-or-problem-or-id>"`. Read the original statement and distinguish mathematical authorship, formalisation and local use. |
+| Which paper edition or proof packet is recorded? | [Paper editions](../../docs/papers/README.md), [archive versions](../../docs/papers/archive_versions.json), and [Prove2Me packets](../../docs/research-commons/README.md#native-prove2me-theorems) identify the particular objects. Do not equate an archived edition with today's manuscript. |
+| How does a formal statement match the upstream question? | Read the [Formal Conjectures crosswalk](../../docs/verification/FORMAL_CONJECTURES_CROSSWALK.md) and run `python3 scripts/query_corpus.py --route comparator_assurance` for the configured evidence. Compare the actual hypotheses and conclusions. |
+| What can be prepared for Palomar? | Read [qualification](../../docs/verification/PALOMAR_QUALIFICATION.md) and run `python3 scripts/query_corpus.py --route palomar_qualification`. Follow its current candidate and remaining requirements. |
+
+Record the exact source revision, declaration or edition, what it establishes
+and what remains unchecked. When asked for current external status, verify the
+original service or upstream record and distinguish it from the checkout's
+dated receipt. Neither local readiness nor a stored success means a new
+submission occurred. External submission requires explicit authorisation.
+
+Return the requested source trail. A declaration lookup does not require a
+Lean build; a correspondence review does not require a new Comparator run.
+Use the reproduction branches below when the user requests those checks.
 
 ## Test one rational subsum candidate
 
@@ -100,6 +124,23 @@ Expose the exact source, paper section, declaration, or contributor route
 behind each important statement so that the reader can inspect as much or as
 little of the evidence as they want.
 
+## Help a reader work through an argument
+
+Find the named statement with `python3 scripts/query_corpus.py --ask "<question>"`
+and open its paper and relevant source. Work at the depth the reader requested:
+a complete explanation, an example, feedback on an attempt, or hints. If they
+ask for hints, give one and wait for their attempt or request for more; do not
+reveal the full argument in a later paragraph. Use their stated background,
+and ask only when an unknown prerequisite would change the explanation.
+
+Identify the difficulty that makes the decisive construction useful. Keep a
+pedagogical reconstruction distinct from the recorded discovery history. When
+checking a reader's attempt, point to the first unsupported step and preserve
+what works. Do not turn a request to learn an existing argument into autonomous
+research on an open problem. The [reading guide](../../docs/READING_GUIDE.md#work-through-an-argument)
+offers a learner-facing entry. An explanation or successful navigation check
+does not demonstrate that a reader has understood the result.
+
 ## Match the reader
 
 For a lay reader, define Lean, a formal statement, a problem frontier, and a
@@ -129,14 +170,14 @@ mathematical claim.
 
 ## Required shape
 
-Answer four questions:
+For a whole-system explanation, answer four questions:
 
 1. What is this repository trying to test?
 2. What mathematical and technical objects are already here?
 3. What can this reader do next, using one exact command or file?
 4. What does that action not establish?
 
-End with one copyable natural-language prompt appropriate to the reader, for
+For that explanation, end with one copyable natural-language prompt, for
 example: “Explain this repository to me as a mathematician and show me the
 strongest result and exact remaining boundary,” or “Run one coupled research
 cycle on a bounded frontier and return the evidence, consumer dispositions,

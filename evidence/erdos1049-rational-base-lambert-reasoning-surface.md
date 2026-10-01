@@ -1,12 +1,12 @@
-# Formal evidence: Zudilin's Forms at Rational Bases:\\Proofs and Research Record
+# Formal evidence: Geometric Moments and Rational Lambert Values:\\Proofs and Further Results
 
-This record belongs to the paper [erdos1049-rational-base-lambert-reasoning-surface.pdf](../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.pdf). For every result it lists the Lean declarations that state it, and the independent Comparator check where there is one. The margin marks in the paper link here.
+This record belongs to the paper [erdos1049-rational-base-lambert-reasoning-surface.pdf](../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.pdf). For every result it lists the Lean declarations that state it, and the recorded Comparator check where there is one. The inline links and margin marks in the paper use the same result mapping.
 
 - **Lean.** Every declaration is quoted from [plectis-erdos](https://github.com/wcook04/plectis-erdos) at commit [`436f55ebdafa`](https://github.com/wcook04/plectis-erdos/tree/436f55ebdafa67e4af0fff79f621c13f2ded12bf) and is checked there by Lean's kernel (`leanprover/lean4:v4.29.1`, Mathlib `5e932f97dd25`).
 - **Comparator.** For a compared result, each declaration was stated a second time, from Mathlib alone, as a *Challenge* in [plectis-erdos-lean](https://github.com/wcook04/plectis-erdos-lean), and a *Solution* that uses our proof was checked against it by [Comparator](https://github.com/leanprover/comparator), which also confirms that only the axioms `propext`, `Quot.sound`, `Classical.choice` are used. All checks below come from replay run [35935225572](https://github.com/wcook04/plectis-erdos-lean/actions/runs/35935225572) at corpus commit [`cc7e541cf208`](https://github.com/wcook04/plectis-erdos-lean/tree/cc7e541cf2081c6fef5a5e377d52e365e33b01eb) (tag `paper-evidence-2026-09-24`); both the default Lean kernel and the independent `nanoda` kernel accepted every entry. The replay's own report for each entry is kept in this repository and linked from each check. A Challenge shows `sorry` because it states the target without proving it.
-- **Counts.** 38 results: 35 with a Lean proof of the whole statement, 0 whose Lean proof assumes a named input (marked with a dagger), 3 without a Lean proof of the whole statement; 35 compared.
+- **Counts.** 41 results: 37 with a Lean proof of the whole statement, 0 whose Lean proof assumes a named input (marked with a dagger), 4 without a Lean proof of the whole statement; 37 compared.
 
-These checks establish that the stated propositions are proved. Whether each is the right proposition is for the reader to judge against the paper's statement, which is reproduced below.
+These checks establish that the stated propositions are proved. Whether each is the right proposition is for the reader to judge against the paper's statement, which is reproduced below. Comparator checks separately declared statements, the axiom budget and kernel acceptance; it does not establish novelty, significance or peer review.
 
 <a id="long1049-res-omega-indicator"></a>
 
@@ -341,9 +341,9 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 > ```
 > Consequently the homogenised forms tend to zero whenever $`\log b/\log a<\sigma/(\sigma+\delta)`$, a sufficient region whose cutoff is at most $`1/2`$. If the actual degrees satisfy $`d_n/n^{2}\to d`$, then $`d\ge\sigma`$ and the limit exists and equals $`d\log b-\sigma\log(a/b)`$; in that case the forms tend to zero below $`\log b/\log a=\sigma/(\sigma+d)`$ and their absolute values tend to infinity above it, so the exact-degree case has no decaying homogenised forms at $`3/2`$.*
 
-The Lean declaration below states this result or one that implies it. The Lean statement holds for every real function $F$ in place of the Lambert series and requires $\Lambda_n(x)\ne0$ only for all sufficiently large $n$ at each real $x>1$; it reads the bounds in (2) and (3) as $\le(\delta+\varepsilon)n^2$ and $\le(h+\varepsilon)n^2$ for all large $n$, for each $\varepsilon>0$. For integers $a>b\ge1$ its conclusions are the printed ones, including $\sigma\le\delta$, the limsup bound, the cutoff bound $1/2$, the exact-degree limit with decay below and divergence above $\sigma/(\sigma+d)$, and the divergence at $a/b=3/2$.
+The Lean declarations below together state this result or one that implies it. The Lean statement holds for every real function $F$ in place of the Lambert series and requires $\Lambda_n(x)\ne0$ only for all sufficiently large $n$ at each real $x>1$; it reads the bounds in (2) and (3) as $\le(\delta+\varepsilon)n^2$ and $\le(h+\varepsilon)n^2$ for all large $n$, for each $\varepsilon>0$. For integers $a>b\ge1$ its conclusions are the printed ones, including $\sigma\le\delta$, the limsup bound, the cutoff bound $1/2$, the exact-degree limit with decay below and divergence above $\sigma/(\sigma+d)$, and the divergence at $a/b=3/2$. `short_note_archimedean_cap` states the version with the $\ell^1$ height absorbed from the short paper; an $\ell^1$ height bound implies the maximum-height bound with the same $h$.
 
-[`ErdosProblems.Erdos1049.PaperR9.long_record_archcap`](https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos1049/PaperLongCapR9.lean#L411)
+1. [`ErdosProblems.Erdos1049.PaperR9.long_record_archcap`](https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos1049/PaperLongCapR9.lean#L411)
 
 ```lean
 theorem long_record_archcap (U V : ℕ → Polynomial ℤ) (F : ℝ → ℝ)
@@ -375,6 +375,18 @@ theorem long_record_archcap (U V : ℕ → Polynomial ℤ) (F : ℝ → ℝ)
           polynomialRemainder U V F ((3 : ℝ) / 2) n|) atTop atTop)
 ```
 
+2. [`ErdosProblems.Erdos1049.PaperR9.short_note_archimedean_cap`](https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos1049/PaperShortCapR9.lean#L162)
+
+```lean
+theorem short_note_archimedean_cap (U V : ℕ → Polynomial ℤ) (F : ℝ → ℝ)
+    (σ δ h : ℝ) (H : CapHypotheses U V F σ δ h) :
+    σ / (σ + δ) ≤ (1 : ℝ) / 2 ∧
+    ∀ a b : ℕ, 1 ≤ b → b < a →
+      Real.log b / Real.log a < σ / (σ + δ) →
+      Tendsto (fun n => (b : ℝ) ^ pairWidth U V n *
+        polynomialRemainder U V F ((a : ℝ) / b) n) atTop (𝓝 0)
+```
+
 <a id="long1049-res-archcap-comparator"></a>
 
 **Comparator: passed** (run 35935225572, corpus commit `cc7e541cf208`).
@@ -382,6 +394,7 @@ theorem long_record_archcap (U V : ℕ → Polynomial ℤ) (F : ℝ → ℝ)
 For each Lean declaration: the Challenge (the target, stated from Mathlib alone), the Solution (our proof) and the replay report.
 
 - `long_record_archcap`: [Challenge](https://github.com/wcook04/plectis-erdos-lean/blob/cc7e541cf2081c6fef5a5e377d52e365e33b01eb/PalomarCorpus/E1049_02/Challenge.lean#L71) (E1049_02, line 71), [Solution](https://github.com/wcook04/plectis-erdos-lean/blob/cc7e541cf2081c6fef5a5e377d52e365e33b01eb/Solutions/PalomarCorpus/E1049_02/PaperStructuresD.lean#L30) (PaperStructuresD.lean, line 30), [replay report](../evidence/comparator/replay-35935225572/receipt-E1049_02.json) (E1049_02)
+- `short_note_archimedean_cap`: [Challenge](https://github.com/wcook04/plectis-erdos-lean/blob/cc7e541cf2081c6fef5a5e377d52e365e33b01eb/PalomarCorpus/E1049_07/Challenge.lean#L132) (E1049_07, line 132), [Solution](https://github.com/wcook04/plectis-erdos-lean/blob/cc7e541cf2081c6fef5a5e377d52e365e33b01eb/Solutions/PalomarCorpus/E1049_07/PaperStructuresR.lean#L30) (PaperStructuresR.lean, line 30), [replay report](../evidence/comparator/replay-35935225572/receipt-E1049_07.json) (E1049_07)
 
 Each Challenge states the same proposition as the Lean declaration it targets, with every definition it uses restated from Mathlib alone.
 
@@ -436,7 +449,7 @@ theorem cleared_below_square_not_tendsto_zero
 
 ## Lemma 2.7 (coefficient heights of the constructed polynomials), page 16
 
-> *There is a constant $`h`$ with $`\log\max\bigl(H(U_n),H(V_n)\bigr)\le hn^{2}`$ for every $`n\ge1`$, where $`U_n`$ and $`V_n`$ are the polynomials of (6).*
+> *There is a constant $`h`$ with $`\log\max\bigl(H(U_n),H(V_n)\bigr)\le hn^{2}`$ for every $`n\ge1`$, where $`U_n`$ and $`V_n`$ are the polynomials of (7).*
 
 The Lean declarations below together state this result.
 
@@ -527,7 +540,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long1049-res-sharpgaps"></a>
 
-## Corollary 3.2 (gaps between the stated logarithmic thresholds), page 21
+## Corollary 3.2 (gaps between the stated logarithmic thresholds), page 20
 
 > *For every $`\rho,\sigma\in\mathbb{R}`$ with $`0\le\rho`$ and $`1+\rho\le\sigma`$,
 > ``` math
@@ -646,7 +659,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long1049-res-allrowinitial"></a>
 
-## Lemma 3.5 (a coefficient of each transformed row), page 23
+## Lemma 3.5 (a coefficient of each transformed row), page 22
 
 > *For $`m\ge j\ge0`$ one has $`D_jW_m(t)\in q^{E(m,j)}A`$ and
 > ``` math
@@ -908,11 +921,35 @@ For each Lean declaration: the Challenge (the target, stated from Mathlib alone)
 
 Each Challenge states the same proposition as the Lean declaration it targets, with every definition it uses restated from Mathlib alone.
 
+<a id="long1049-thm-geometric-ratio"></a>
+
+## Passage (beginning “long1049:thm:geometric-ratio…”), page 34
+
+> *Remark 1* (limiting weight ratios; unformalised). Let $`0<q<1`$ and $`0<\rho<q^{-1}`$. Suppose that $`a_k>0`$ for $`k\ge0`$ and
+> ``` math
+> \frac{a_{k+1}}{a_k}\longrightarrow\rho\qquad(k\to\infty).
+> ```
+> Define
+> ``` math
+> M_m=\sum_{k\ge0}a_kq^{(m+1)k},\qquad
+>  D_N=\det(M_{i+j})_{0\le i,j<N}.
+> ```
+> Then, as $`N\to\infty`$,
+> ``` math
+> \begin{equation}
+> \label{long1049:eq:ratio-limit}
+>  D_N\sim \mathcal M(1;q)^2\mathcal M(\rho;q)\,
+>  q^{B_N}P^{2N}\prod_{k=0}^{N-1}a_k.
+> \end{equation}
+> ```
+
+**No Lean proof of the whole statement.** In Lean, the general adjacent-ratio theorem (a_{k+1}/a_k -> rho in (0,1/q), constant M(1;q)^2 M(rho;q)) is not formalised; geometric_universality proves only the rho=1 case and additionally assumes the polynomial shift bound a_{k+h}/a_k <= C(1+h)^kappa.
+
 <a id="long1049-thm-calibrated-model"></a>
 
-## Theorem 3.9 (calibrated rational-value Hankel model), page 33
+## Passage (beginning “long1049:thm:calibrated-model…”), page 37
 
-> *All the weights in (14) are positive for $`0<q\le2/3`$. The two moment banks $`\mu_m`$ and $`\nu_m`$ have positive Hankel determinants of every rank, $`G_q`$ is not a rational function, and $`G_q(q)=1`$. Their formal Hankel determinants both begin with
+> *Remark 2* (calibrated rational-value Hankel model). All the weights in (24) are positive for $`0<q\le2/3`$. The two moment banks $`\mu_m`$ and $`\nu_m`$ have positive Hankel determinants of every rank, $`G_q`$ is not a rational function, and $`G_q(q)=1`$. Their formal Hankel determinants both begin with
 > ``` math
 > C_Nq^{B_N},\qquad B_N=\sum_{j<N}j^2,\quad
 >  C_N=\frac{(N!)^2(N+1)!}{2^N}\qquad(N\ge1).
@@ -922,41 +959,41 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 > \det(\mu_{i+j}(q_0))_{0\le i,j<N}
 >  \sim\mathcal A\mathcal M(q_0)^3 C_Nq_0^{B_N}
 >              P(q_0)^{2N}N^{-8\xi},\qquad \xi=G_{q_0}(q_0)=1.
-> ```*
+> ```
 
 **No Lean proof of the whole statement.** In Lean, no proof of the full statement is recorded; the paper gives an ordinary proof reviewed by AI agents. Finite auxiliary checks have narrower scope, and independent human review is not recorded.
 
 <a id="long1049-thm-calibrated-denominators"></a>
 
-## Theorem 3.10 (exact denominators of the calibrated moments), page 35
+## Passage (beginning “long1049:thm:calibrated-denominators…”), page 38
 
-> *Let $`q_0=2/3`$ and $`\delta_n=3^{n+1}-2^{n+1}`$. For every $`n\ge1`$, the reduced denominators are
+> *Remark 3* (exact denominators of the calibrated moments). Let $`q_0=2/3`$ and $`\delta_n=3^{n+1}-2^{n+1}`$. For every $`n\ge1`$, the reduced denominators are
 > ``` math
 > \operatorname{den}\mu_n(q_0)=3^{31n+62}\delta_n^4,
 >  \qquad
 >  \operatorname{den}(q_0^n\mu_n(q_0))=3^{32n+62}\delta_n^4.
 > ```
-> The least integer clearing both rational coefficients in $`\mu_n=q_0^{-n}\xi-q_0^{-n}S_{n-1}`$ is $`2^n3^{31n+62}\delta_n^4`$. At $`n=0`$ the moment and tail equal one.*
+> The least integer clearing both rational coefficients in $`\mu_n=q_0^{-n}\xi-q_0^{-n}S_{n-1}`$ is $`2^n3^{31n+62}\delta_n^4`$. At $`n=0`$ the moment and tail equal one.
 
 **No Lean proof of the whole statement.** In Lean, no proof of the full statement is recorded; the paper gives an ordinary proof reviewed by AI agents. Finite auxiliary checks have narrower scope, and independent human review is not recorded.
 
 <a id="long1049-prop-calibrated-height"></a>
 
-## Proposition 3.11 (the determinant height and a failed row clearer), page 35
+## Passage (beginning “long1049:prop:calibrated-height…”), page 39
 
-> *For $`D_N=\operatorname{den}H_N(q_0)`$ in lowest terms,
+> *Remark 4* (the determinant height and a failed row clearer). For $`D_N=\operatorname{den}H_N(q_0)`$ in lowest terms,
 > ``` math
 > \liminf_{N\to\infty}\frac{\log D_N}{N^3}
 >        \ge\frac{\log(3/2)}3,
 >  \qquad \log D_N=O(N^3).
 > ```
-> Already at rank two, multiplying $`H_2=\mu_2-\mu_1^2`$ by $`\operatorname{den}\mu_1\operatorname{den}\mu_2`$ leaves reduced denominator $`625`$.*
+> Already at rank two, multiplying $`H_2=\mu_2-\mu_1^2`$ by $`\operatorname{den}\mu_1\operatorname{den}\mu_2`$ leaves reduced denominator $`625`$.
 
 **No Lean proof of the whole statement.** In Lean, no proof of the full statement is recorded; the paper gives an ordinary proof reviewed by AI agents. Finite auxiliary checks have narrower scope, and independent human review is not recorded.
 
 <a id="long1049-res-finite-pencil"></a>
 
-## Proposition 3.12 (finite coefficient positivity and pencil roots), page 39
+## Proposition 3.9 (finite coefficient positivity and pencil roots), page 43
 
 > *For every real $`p>1`$ and $`1\le N\le8`$, $`A_N`$ is positive definite and all roots of $`\det(YA_N-B_N)`$ are real and strictly less than $`F(p)`$. The roots at consecutive ranks $`N,N+1\le8`$ interlace non-strictly.*
 
@@ -1004,7 +1041,7 @@ theorem coefficientPencil_finitePencil {p : ℝ} (hp : 1 < p) :
 
 <a id="long1049-res-content"></a>
 
-## Theorem 4.1 (rescaling rows and their determinant), page 43
+## Theorem 4.1 (rescaling rows and their determinant), page 47
 
 > *Let $`S`$ be real, let $`(U_n,V_n)`$ and $`(U_m,V_m)`$ be pairs of integers, and let $`c_n,c_m`$ be integers. Then
 > ``` math
@@ -1049,7 +1086,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long1049-res-endpoints"></a>
 
-## Theorem 5.1 (endpoint residues), page 45
+## Theorem 5.1 (endpoint residues), page 48
 
 > *Let $`P=\sum_ip_iX^i\in\mathbb{Z}[X]`$ and let $`W\ge0`$. Then
 > ``` math
@@ -1084,7 +1121,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long1049-res-commonmult"></a>
 
-## Proposition 5.3 (common divisor), page 46
+## Proposition 5.3 (common divisor), page 49
 
 > *Let $`U,V\in\mathbb{Z}[X]`$ and let $`W\ge0`$. If $`U`$ has unit top endpoint, $`V`$ has unit constant endpoint, and an integer $`c`$ divides both $`H_W(U)`$ and $`H_W(V)`$, then
 > ``` math
@@ -1117,7 +1154,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long1049-res-nomult"></a>
 
-## Corollary 5.5 (limits of rescaling and common-divisor cancellation at $`3/2`$), page 46
+## Corollary 5.5 (limits of rescaling and common-divisor cancellation at $`3/2`$), page 50
 
 > *Under the endpoint hypotheses of Proposition 5.3, every common divisor of the unscaled evaluations $`H_W(U)`$ and $`H_W(V)`$ is coprime to $`6`$. Multiplying two integer rows by nonzero integers $`c_n,c_m`$ multiplies their determinant by $`c_nc_m`$ and its absolute value by $`|c_nc_m|`$. Cancelling this introduced scalar factor therefore leaves the original comparison between divisor and determinant size unchanged.*
 
@@ -1149,7 +1186,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long1049-res-cyclounit"></a>
 
-## Proposition 5.6 (coprimality of homogenised cyclotomic values), page 46
+## Proposition 5.6 (coprimality of homogenised cyclotomic values), page 50
 
 > *Let $`a>b\ge1`$ with $`\gcd(a,b)=1`$ and let $`m\ge1`$. Then $`\gcd(\Phi_m(a,b),ab)=1`$. In particular $`\gcd(\Phi_m(3,2),6)=1`$ for every $`m`$.*
 
@@ -1175,9 +1212,34 @@ For each Lean declaration: the Challenge (the target, stated from Mathlib alone)
 
 Each Challenge states the same proposition as the Lean declaration it targets, with every definition it uses restated from Mathlib alone.
 
+<a id="res-bottomjet"></a>
+
+## Lemma 5.7 (a residue and divisibility by $`3^R`$), page 51
+
+> *Vanishing of the [residue modulo $`3^R`$](https://github.com/wcook04/plectis-erdos/blob/7380b7871687b6bcc41ca0143c61f232e8af6500/lean/ErdosProblems/Erdos1049/ZudilinConeArithmetic.lean#L191) is exactly divisibility by the corresponding power of three: $`J_{3,R}(P)=0`$ if and only if $`3^R\mid H_W(P)`$.*
+
+The Lean declaration below states this result.
+
+[`ErdosProblems.Erdos1049.bottomJet3_eq_zero_iff_dvd`](https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos1049/ZudilinConeArithmetic.lean#L191)
+
+```lean
+theorem bottomJet3_eq_zero_iff_dvd (R W : ℕ) (P : Polynomial ℤ) :
+    bottomJet3 R W P = 0 ↔ ((3 ^ R : ℕ) : ℤ) ∣ homEvalThreeTwo W P
+```
+
+<a id="res-bottomjet-comparator"></a>
+
+**Comparator: passed** (run 35935225572, corpus commit `cc7e541cf208`).
+
+For each Lean declaration: the Challenge (the target, stated from Mathlib alone), the Solution (our proof) and the replay report.
+
+- `bottomJet3_eq_zero_iff_dvd`: [Challenge](https://github.com/wcook04/plectis-erdos-lean/blob/cc7e541cf2081c6fef5a5e377d52e365e33b01eb/PalomarCorpus/E1049_07/Challenge.lean#L151) (E1049_07, line 151), [Solution](https://github.com/wcook04/plectis-erdos-lean/blob/cc7e541cf2081c6fef5a5e377d52e365e33b01eb/Solutions/PalomarCorpus/E1049_07/PaperStatementsF.lean#L19) (PaperStatementsF.lean, line 19), [replay report](../evidence/comparator/replay-35935225572/receipt-E1049_07.json) (E1049_07)
+
+Each Challenge states the same proposition as the Lean declaration it targets, with every definition it uses restated from Mathlib alone.
+
 <a id="long1049-res-jetkernel"></a>
 
-## Theorem 5.7 (equal residues for two subset sums), page 47
+## Theorem 5.8 (equal residues for two subset sums), page 51
 
 > *Fix a truncation index $`W`$ and depths $`R,S`$, and let $`(U_j,V_j)_{j<M}`$ be any $`M`$ pairs of integral polynomials. Represent each subset of $`\{0,\dots,M-1\}`$ by its indicator vector in $`\{0,1\}^M`$. If the $`2^M`$ subsets outnumber the possible residue vectors in
 > ``` math
@@ -1213,7 +1275,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long1049-res-rankfortyone"></a>
 
-## Corollary 5.8 (the exact count at depth $`41`$), page 48
+## Corollary 5.9 (the exact count at depth $`41`$), page 52
 
 > *Let $`T>0`$. At modulus $`3^{R}`$ with $`R=41T`$, any family of $`M\ge130T+2S`$ integral polynomial pairs has two distinct binary selectors with the same residue vector. For $`T=1`$ the coefficient $`130`$ is exact for this counting argument:
 > ``` math
@@ -1248,7 +1310,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long1049-res-boundedfibre"></a>
 
-## Theorem 5.9 (equal residues with different values), page 49
+## Theorem 5.10 (equal residues with different values), page 52
 
 > *Let $`A`$ and $`B`$ be finite sets, let $`f:A\to B`$, and let $`g:A\to C`$ be any map into a set $`C`$. Suppose every fibre of $`g`$ has at most $`k`$ elements. If
 > ``` math
@@ -1283,9 +1345,50 @@ For each Lean declaration: the Challenge (the target, stated from Mathlib alone)
 
 Each Challenge states the same proposition as the Lean declaration it targets, with every definition it uses restated from Mathlib alone.
 
+<a id="res-boundedfibre"></a>
+
+## Theorem 5.11 (equal residues with close, distinct values), page 53
+
+> *Let $`A,B,J`$ be finite sets and let $`f:A\to B`$, $`g:A\to\mathbb R`$ and $`\iota:A\to J`$. Suppose that each simultaneous fibre of $`(f,g)`$ has at most $`k`$ elements and that, for some $`\delta>0`$,
+> ``` math
+> \iota(x)=\iota(y)\quad\Longrightarrow\quad |g(x)-g(y)|<\delta.
+> ```
+> If $`|B||J|k<|A|`$, then some distinct $`x,y\in A`$ satisfy
+> ``` math
+> f(x)=f(y),\qquad 0<|g(x)-g(y)|<\delta.
+> ```*
+
+The Lean declaration below states this result.
+
+[`ErdosProblems.Erdos1049.exists_small_real_escape_of_conditional_multiplicity`](https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos1049/QuantitativeSelectorEscape.lean#L79)
+
+```lean
+theorem exists_small_real_escape_of_conditional_multiplicity
+    {α β ι : Type*}
+    [Fintype α] [Fintype β] [Fintype ι]
+    [DecidableEq α] [DecidableEq β] [DecidableEq ι]
+    (f : α → β) (g : α → ℝ) (bin : α → ι) (k : ℕ) (δ : ℝ)
+    (hg : ∀ x : α,
+      (Finset.univ.filter fun y => f y = f x ∧ g y = g x).card ≤ k)
+    (hdiam : ∀ x y : α, bin x = bin y → |g x - g y| < δ)
+    (hcard : (Fintype.card β * Fintype.card ι) * k < Fintype.card α) :
+    ∃ x y : α, x ≠ y ∧ f x = f y ∧
+      0 < |g x - g y| ∧ |g x - g y| < δ
+```
+
+<a id="res-boundedfibre-comparator"></a>
+
+**Comparator: passed** (run 35935225572, corpus commit `cc7e541cf208`).
+
+For each Lean declaration: the Challenge (the target, stated from Mathlib alone), the Solution (our proof) and the replay report.
+
+- `exists_small_real_escape_of_conditional_multiplicity`: [Challenge](https://github.com/wcook04/plectis-erdos-lean/blob/cc7e541cf2081c6fef5a5e377d52e365e33b01eb/PalomarCorpus/E1049_07/Challenge.lean#L160) (E1049_07, line 160), [Solution](https://github.com/wcook04/plectis-erdos-lean/blob/cc7e541cf2081c6fef5a5e377d52e365e33b01eb/Solutions/PalomarCorpus/E1049_07/PaperStructuresP.lean#L14) (PaperStructuresP.lean, line 14), [replay report](../evidence/comparator/replay-35935225572/receipt-E1049_07.json) (E1049_07)
+
+Each Challenge states the same proposition as the Lean declaration it targets, with every definition it uses restated from Mathlib alone.
+
 <a id="long1049-res-plucker-collapse"></a>
 
-## Theorem 5.10 (vanishing minors and a residue count), page 49
+## Theorem 5.12 (vanishing minors and a residue count), page 53
 
 > *Let $`R_0`$ be a commutative ring and let $`w_n=(A_n,B_n)\in R_0^2`$. Suppose that each row is unimodular, meaning that $`u_nA_n+v_nB_n=1`$ for some $`u_n,v_n\in R_0`$, and that every adjacent minor vanishes:
 > ``` math
@@ -1328,7 +1431,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long1049-res-scalar"></a>
 
-## Theorem 5.12 (a restriction on the two scalar exponents), page 50
+## Theorem 5.14 (a restriction on the two scalar exponents), page 55
 
 > *Let $`C_1>0`$. If $`C_0\le0`$ or $`2C_0\le C_1`$, then
 > ``` math
@@ -1363,7 +1466,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long1049-res-corridorbound"></a>
 
-## Theorem 6.2 (a necessary inequality for clearing), page 52
+## Theorem 6.2 (a necessary inequality for clearing), page 56
 
 > *If $`(a,b,N,K,Q,D)`$ satisfies the clearing conditions, then
 > ``` math
@@ -1393,7 +1496,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long1049-res-exp"></a>
 
-## Proposition 6.4, page 53
+## Proposition 6.4, page 57
 
 > *For every natural number $`x\ge2`$ we have $`3x<2^{\,x+1}`$.*
 
@@ -1418,7 +1521,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long1049-res-nocorridor"></a>
 
-## Theorem 6.5 (failure of the stated clearing conditions at $`3/2`$), page 53
+## Theorem 6.5 (failure of the stated clearing conditions at $`3/2`$), page 57
 
 > *For all $`N\ge1`$ and $`K\ge1`$ and all natural $`Q,D`$, the tuple $`(3,2,N,K,Q,D)`$ does not satisfy the clearing conditions.*
 
@@ -1444,7 +1547,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long1049-res-tailrec"></a>
 
-## Theorem 7.1 (recurrence for the scaled remainder), page 53
+## Theorem 7.1 (recurrence for the scaled remainder), page 58
 
 > *Let $`r,s,B,\xi\in\mathbb{Q}`$ with $`r\ne0`$, let $`c:\mathbb{N}\to\mathbb{Q}`$, and let $`P_N`$ and $`U_N`$ be as in ({$\ast $}). Then for every $`N`$,
 > ``` math
@@ -1475,7 +1578,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long1049-res-forcing"></a>
 
-## Theorem 7.2 (the forcing term), page 54
+## Theorem 7.2 (the forcing term), page 58
 
 > *Let $`s,B`$ be natural numbers and $`c:\mathbb{N}\to\mathbb{N}`$.*
 >
@@ -1506,7 +1609,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long1049-res-sevenhalves"></a>
 
-## Theorem 8.1 (the $`7/2`$ height condition), page 54
+## Theorem 8.1 (the $`7/2`$ height condition), page 59
 
 > *``` math
 > \frac{\log 7}{\log(7/2)}
@@ -1536,7 +1639,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long1049-res-pade"></a>
 
-## Proposition 9.1 (exponent model: summand bound and exact gap), page 56
+## Proposition 9.1 (exponent model: summand bound and exact gap), page 61
 
 > *Let $`\widetilde{E}_n=3n^{2}-n`$ and put
 > ``` math
@@ -1582,7 +1685,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long1049-res-tail-lattice"></a>
 
-## Proposition 10.3 (the prefix lattice of the tails), page 62
+## Proposition 10.3 (the prefix lattice of the tails), page 66
 
 > *Every $`Q_m`$ is coprime to $`ab`$, and $`b`$ divides every $`P_m`$. For every prefix containing $`m=0`$ and $`m=1`$,
 > ``` math
@@ -1630,7 +1733,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long1049-res-nomahler"></a>
 
-## Proposition 10.5 (no finite simultaneous $`2/3`$-system), page 64
+## Proposition 10.5 (no finite simultaneous $`2/3`$-system), page 68
 
 > *Let
 > ``` math

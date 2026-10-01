@@ -473,5 +473,255 @@ class HandoffBuilderTests(unittest.TestCase):
         self.assertFalse((Path(repo.tmp) / "pkt").exists())
 
 
+class DossierTests(unittest.TestCase):
+    """Source-cut, authority and writing-gap regressions on a tiny real Git tree."""
+
+    def setUp(self):
+        import hashlib
+        import check_lean_paper_propagation as propagation
+        import paper_evidence
+        self.tmp = tempfile.TemporaryDirectory()
+        self.addCleanup(self.tmp.cleanup)
+        self.root = Path(self.tmp.name)
+        self.path = "lean/ErdosProblems/Erdos257/Demo.lean"
+        self.lean = "namespace Demo\n/-- A transparent test fact. -/\ntheorem fact (n : Nat) (h : 0 < n) : 0 < n := h\nend Demo\n"
+        self.paper_path = "paper/257/demo.tex"
+        self.paper = "\\begin{theorem}\\label{res:demo}\nIf n is positive, n is positive.\n\\end{theorem}\n"
+        write(self.root, self.path, self.lean)
+        write(self.root, self.paper_path, self.paper)
+        digest = hashlib.sha256()
+        digest.update(self.path.encode() + b"\0" + self.lean.encode() + b"\0")
+        fp = "sha256:" + digest.hexdigest()
+        self.rid = "demo#res:demo"
+        assertion = propagation.inventory([(self.paper_path, self.paper)], [])[0]
+        self.row = {"id": self.rid, "problem": 257, "paper_id": "demo", "side": "short",
+                    "source": self.paper_path + ":1", "environment": "theorem", "label": "res:demo",
+                    "statement_sha256": assertion["statement_sha256"],
+                    "lean": {"status": "exact", "declarations": [{"name": "Demo.fact", "file": self.path}]}}
+        declaration = paper_evidence.lean_declaration(paper_evidence.LeanFile(self.lean), self.path,
+                                                     "Demo.fact", allow_suffix=False)
+        self.documents = {
+            "claims": {"claims": [{"id": "erdos_257_demo", "label": "Demo", "statement": "A conditional fact.",
+                                    "status": "conditional reduction", "paper_label": "res:demo",
+                                    "declarations": [{"name": "fact", "module": self.path}]}],
+                       "remaining_open_propositions": [], "machine_readable_paper": {"argument_graph": {"edges": []}}},
+            "coverage": {"rows": [self.row], "papers": [{"paper_id": "demo", "problem": 257,
+                                                          "side": "short", "sources": [self.paper_path]}]},
+            "atlas": {"source_fingerprint": fp, "modules": [{"path": self.path}],
+                      "declarations": [{"id": "Demo.fact", "name": "fact", "kind": "theorem", "module": self.path,
+                                        "line": 3, "signature": declaration.statement, "claim_ids": ["erdos_257_demo"]}]},
+            "dependencies": {"source_fingerprint": fp, "nodes": [{"node_id": 0, "handle": "Demo.fact",
+                                       "module": self.path, "line": 3}], "edges": []},
+            "evidence": {"papers": [{"results": [{"id": self.rid, "statement_sha256": assertion["statement_sha256"],
+                        "lean": {"status": "exact", "declarations": [{"name": "Demo.fact",
+                                "statement_sha256": hashlib.sha256(declaration.normalised.encode()).hexdigest()}]},
+                        "comparator": {"status": "not_applicable"}}]}]},
+            "relations": {"rows": []}, "contrasts": {"rows": []}, "routes": {"records": []}}
+        for key, value in self.documents.items():
+            self.put(key, value)
+        write(self.root, crp.DOSSIER_PATHS["journal"], "")
+        self.git("init", "-q")
+        self.git("config", "user.email", "fixture@example.invalid")
+        self.git("config", "user.name", "Fixture")
+        self.commit = self.commit_all()
+
+    def git(self, *args):
+        return subprocess.check_output(["git", "-C", str(self.root), *args], stderr=subprocess.STDOUT).decode().strip()
+
+    def put(self, key, value):
+        write(self.root, crp.DOSSIER_PATHS[key], json.dumps(value, ensure_ascii=False) + "\n")
+
+    def commit_all(self):
+        self.git("add", ".")
+        self.git("commit", "-qm", "fixture")
+        return self.git("rev-parse", "HEAD")
+
+    def compiler(self, ref=None, annotations=None):
+        return crp.DossierCompiler(self.root, ref or self.commit, annotations)
+
+    def result(self, compiler=None):
+        return (compiler or self.compiler()).build(257)["results"][0]
+
+    def annotations(self):
+        return {"schema": "dossier-annotations/1", "source_commit": self.commit, "rows": [
+            {"id": self.rid, "review_state": "candidate_editorial_synthesis",
+             "mechanism_sentence": {"text": "The hypothesis supplies the conclusion.", "sources": [
+                 {"path": self.path, "start_line": 3, "end_line": 3, "must_contain": [":= h"]}]}}]}
+
+    def test_source_bound_lean_class_is_not_a_new_build(self):
+        row = self.result()
+        self.assertEqual(row["evidence"]["class"], "lean")
+        self.assertFalse(row["evidence"]["documentary_only"])
+        self.assertEqual(row["evidence"]["kernel_replay"], "UNRUN")
+
+    def test_missing_writing_fields_are_explicit(self):
+        row = self.result()
+        self.assertIsNone(row["mechanism_sentence"])
+        self.assertEqual({g["field"] for g in row["gaps"] if "field" in g},
+                         {"generality", "mechanism_sentence", "hard_step", "attribution"})
+
+    def test_same_inputs_are_byte_identical(self):
+        first = crp.compile_dossiers(self.root, self.commit, [257])
+        second = crp.compile_dossiers(self.root, self.commit, [257])
+        self.assertEqual(first, second)
+
+    def test_worktree_edits_and_untracked_files_cannot_leak(self):
+        first = crp.compile_dossiers(self.root, self.commit, [257])
+        write(self.root, self.path, "FUTURE FALSE THEOREM\n")
+        write(self.root, crp.DOSSIER_PATHS["journal"], "corrupt future journal")
+        write(self.root, "future.txt", "future")
+        self.assertEqual(first, crp.compile_dossiers(self.root, self.commit, [257]))
+
+    def test_later_committed_dependency_edges_cannot_leak(self):
+        first = crp.compile_dossiers(self.root, self.commit, [257])
+        d = self.documents["dependencies"]
+        d["nodes"].append({"node_id": 1, "handle": "Demo.future", "module": self.path, "line": 3})
+        d["edges"].append([1, 0, 2])
+        self.put("dependencies", d)
+        self.commit_all()
+        self.assertEqual(first, crp.compile_dossiers(self.root, self.commit, [257]))
+
+    def test_missing_dependency_node_does_not_become_lean_or_failed_proof(self):
+        self.documents["dependencies"]["nodes"] = []
+        self.put("dependencies", self.documents["dependencies"])
+        c = self.compiler(self.commit_all())
+        row = self.result(c)
+        self.assertEqual(row["evidence"]["class"], "cited")
+        self.assertTrue(row["formal_sources"][0]["source_present"])
+        self.assertIn("not_in_compact_dependency_export", row["formal_sources"][0]["gaps"])
+
+    def test_stale_source_fingerprint_blocks_promotion(self):
+        write(self.root, self.path, self.lean + "-- changed after export\n")
+        c = self.compiler(self.commit_all())
+        self.assertFalse(c.fingerprint_matches)
+        self.assertEqual(self.result(c)["evidence"]["class"], "cited")
+
+    def test_new_lean_file_is_in_fingerprint_not_hidden_by_old_atlas(self):
+        write(self.root, "lean/ErdosProblems/Erdos257/Future.lean", "theorem future : True := trivial\n")
+        c = self.compiler(self.commit_all())
+        self.assertFalse(c.atlas_inventory_matches)
+        self.assertFalse(c.fingerprint_matches)
+
+    def test_namespace_collision_does_not_link_a_wrong_theorem(self):
+        self.documents["dependencies"]["nodes"][0]["handle"] = "Other.fact"
+        self.put("dependencies", self.documents["dependencies"])
+        row = self.result(self.compiler(self.commit_all()))
+        self.assertFalse(row["formal_sources"][0]["dependency_index_present"])
+        self.assertEqual(row["evidence"]["class"], "cited")
+
+    def test_changed_paper_body_has_no_invented_current_statement(self):
+        write(self.root, self.paper_path, self.paper.replace("positive, n is positive", "positive, n is negative"))
+        row = self.result(self.compiler(self.commit_all()))
+        self.assertIsNone(row["statement"])
+        self.assertEqual(row["evidence"]["class"], "cited")
+
+    def test_corrupt_pinned_journal_refuses(self):
+        import research_record
+        write(self.root, crp.DOSSIER_PATHS["journal"], '{"broken":true}\n')
+        commit = self.commit_all()
+        with self.assertRaises(research_record.RecordError):
+            self.compiler(commit)
+
+    def test_missing_owner_refuses_instead_of_empty_success(self):
+        (self.root / crp.DOSSIER_PATHS["relations"]).unlink()
+        commit = self.commit_all()
+        with self.assertRaises(cl.SourceError):
+            self.compiler(commit)
+
+    def test_annotation_is_bound_but_still_candidate_editorial(self):
+        annotation = self.annotations()
+        row = self.result(self.compiler(annotations=annotation))
+        self.assertEqual(row["mechanism_sentence"], "The hypothesis supplies the conclusion.")
+        self.assertEqual(row["annotation"]["review_state"], "candidate_editorial_synthesis")
+        self.assertIsNone(row["hard_step"])
+
+    def test_wrong_annotation_literal_refuses(self):
+        annotation = self.annotations()
+        annotation["rows"][0]["mechanism_sentence"]["sources"][0]["must_contain"] = ["not in these bytes"]
+        with self.assertRaises((crp.SpecError, cl.LedgerError)):
+            self.compiler(annotations=annotation)
+
+    def test_wrong_annotation_cut_refuses(self):
+        annotation = self.annotations()
+        annotation["source_commit"] = "0" * 40
+        with self.assertRaises(crp.SpecError):
+            self.compiler(annotations=annotation)
+
+    def test_unknown_annotation_result_refuses(self):
+        annotation = self.annotations()
+        annotation["rows"][0]["id"] = "absent"
+        with self.assertRaises(crp.SpecError):
+            self.compiler(annotations=annotation)
+
+    def test_locator_tampering_is_detected(self):
+        c = self.compiler()
+        loc = c.locator(self.path, 3, 3)
+        loc = dict(loc, selection_sha256="0" * 64)
+        with self.assertRaises(crp.SpecError):
+            crp.verify_dossier_locators(loc, c.tree)
+
+    def test_writes_refuse_overwrite_and_check_rejects_extra_files(self):
+        out = self.root / "outputs"
+        outputs = {"257.json": b"{}\n"}
+        crp.write_dossiers(outputs, out)
+        crp.write_dossiers(outputs, out, check=True)
+        with self.assertRaises(crp.SpecError):
+            crp.write_dossiers(outputs, out)
+        write(out, "unexpected", "x")
+        with self.assertRaises(crp.SpecError):
+            crp.write_dossiers(outputs, out, check=True)
+
+    def test_all_eight_dossier_ids_are_emitted(self):
+        outputs = crp.compile_dossiers(self.root, self.commit)
+        self.assertTrue(all(f"{p}.json" in outputs for p in crp.DOSSIER_PROBLEMS))
+
+    def test_json_pointer_escaping_and_range_are_strict(self):
+        self.assertEqual(crp.json_pointer({"a/b": {"~": [9]}}, "/a~1b/~0/0"), 9)
+        with self.assertRaises(crp.SpecError):
+            crp.json_pointer([0], "/-1")
+
+    def test_receipt_theorem_mismatch_is_not_success(self):
+        c = self.compiler()
+        receipt_path = "receipt.json"
+        receipt = {"schema": "palomar_replay_receipt_v1", "entry": "e", "github": {"sha": "abc", "run_id": "1"},
+                   "theorem_names": ["Other.fact"], "verification": {"outcome": "passed"}, "exit": 0, "process_exit": 0}
+        write(self.root, receipt_path, json.dumps(receipt))
+        commit = self.commit_all()
+        c = self.compiler(commit)
+        evidence = {"comparator": {"status": "compared", "commit": "abc", "run_id": "1", "checks": [
+            {"receipt": receipt_path, "entry": "e", "declaration": "Demo.fact", "challenge": {"declaration": "Demo.fact"}}]}}
+        result = c.comparator(evidence)[0]
+        self.assertEqual(result["validation"], "receipt_fields_mismatch")
+        self.assertFalse(result["identity_checks"]["challenge_theorem"])
+
+    def test_partial_support_does_not_promote_conjunction(self):
+        self.documents["coverage"]["rows"][0]["lean"]["declarations"].append({"name": "Demo.missing", "file": self.path})
+        self.put("coverage", self.documents["coverage"])
+        row = self.result(self.compiler(self.commit_all()))
+        self.assertEqual(row["evidence"]["class"], "cited")
+
+    def test_registered_prose_is_documentary_even_with_lean_links(self):
+        rows = self.compiler().build(257)["results"]
+        registry = next(r for r in rows if r["kind"] == "registry_assertion")
+        self.assertEqual(registry["evidence"]["class"], "cited")
+        self.assertTrue(registry["evidence"]["documentary_only"])
+
+
+    def test_partial_namespace_resolves_uniquely_inside_source_module(self):
+        write(self.root, self.path, self.lean.replace("namespace Demo", "namespace Outer.Demo").replace("end Demo", "end Outer.Demo"))
+        self.documents["dependencies"]["nodes"][0]["handle"] = "Outer.Demo.fact"
+        self.put("dependencies", self.documents["dependencies"])
+        c = self.compiler(self.commit_all())
+        f = c.declaration("Demo.fact", self.path)
+        self.assertTrue(f["source_present"])
+        self.assertTrue(f["dependency_index_present"])
+        self.assertEqual(f["resolved_source_name"], "Outer.Demo.fact")
+
+    def test_fake_extra_namespace_is_never_stripped(self):
+        f = self.compiler().declaration("Wrong.Demo.fact", self.path)
+        self.assertFalse(f["source_present"])
+        self.assertFalse(f["dependency_index_present"])
+
+
 if __name__ == "__main__":
     unittest.main()

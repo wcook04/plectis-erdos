@@ -8,6 +8,7 @@ paper/evidence/<paper>.tex and evidence/paper_evidence.json:
 
   * every declared result has a "Lean" link in the right margin whose target is the
     declared one, and a "Comparator" link just below it when one is declared;
+  * the inline links beside that result use the same targets as its margin marks;
   * the mark sits level with the result's printed heading ("Theorem 2.1", ...) on the page
     where its label is set, so it cannot be attached to the wrong result;
   * no margin link is unexplained, no two marks overlap, and none runs off the page;
@@ -31,6 +32,7 @@ ROOT = Path(__file__).resolve().parents[1]
 EVIDENCE_MAP = ROOT / "evidence/paper_evidence.json"
 BASELINE = ROOT / "docs/paper_page_baseline.json"
 DECLARE = re.compile(r"\\DeclareResultEvidence\{([^}]*)\}\{((?:[^{}]|\{[^{}]*\})*)\}\{([^}]*)\}\{([^}]*)\}")
+RECORD = re.compile(r"\\DeclareResultEvidenceRecord\{([^}]*)\}\{([^}]*)\}\{([^}]*)\}\{([^}]*)\}")
 RUN_URL = re.compile(r"/actions/runs/\d+")
 TOLERANCE = 7.0  # points between the mark's first baseline and the heading's baseline
 HYPERREF_LINK_MARGIN = 1.0
@@ -43,6 +45,11 @@ def untex(url: str) -> str:
 def declared(paper_id: str) -> dict[str, tuple[str, str, str]]:
     text = (ROOT / "paper/evidence" / f"{paper_id}.tex").read_text(encoding="utf-8")
     return {m.group(1): (m.group(2), untex(m.group(3)), untex(m.group(4))) for m in DECLARE.finditer(text)}
+
+
+def recorded(paper_id: str) -> dict[str, tuple[str, str, str]]:
+    text = (ROOT / "paper/evidence" / f"{paper_id}.tex").read_text(encoding="utf-8")
+    return {m.group(1): (untex(m.group(2)), m.group(3), m.group(4)) for m in RECORD.finditer(text)}
 
 
 def page_links(reader) -> list[tuple[int, list[float], str]]:
@@ -74,7 +81,8 @@ def heading_lines(page) -> list[tuple[float, float, str]]:
     return runs
 
 
-def check_paper(pdf: Path, paper: dict, marks: dict, baseline: int | None) -> list[str]:
+def check_paper(pdf: Path, paper: dict, marks: dict, baseline: int | None,
+                records: dict | None = None) -> list[str]:
     from pypdf import PdfReader
 
     problems: list[str] = []
@@ -122,6 +130,18 @@ def check_paper(pdf: Path, paper: dict, marks: dict, baseline: int | None) -> li
             continue
         used.add(chosen)
         n, rect, _u = margin[chosen]
+        inline = [(r, u) for m, r, u in links if m == n and r[0] < text_right
+                  and abs(r[1] - rect[1]) <= TOLERANCE + (rect[3] - rect[1])]
+        if not any(u == lean for _r, u in inline):
+            problems.append(f"{label}: no inline Lean link with its margin target beside the heading on page {n}")
+        if comparator and not any(u == comparator for _r, u in inline):
+            problems.append(f"{label}: no inline Comparator link with its margin target beside the heading on page {n}")
+        if records is not None:
+            record = records.get(label)
+            if record is None:
+                problems.append(f"{label}: no generated evidence record/status mapping")
+            elif record[2] == "pending" and not any(u == record[0] + "-comparator" for _r, u in inline):
+                problems.append(f"{label}: no inline Comparator-pending link to its evidence record on page {n}")
         # A mark such as "Lean" with a superscript dagger can be written as two link pieces.
         for i, (m, r, u) in enumerate(margin):
             if i not in used and m == n and u == lean and abs(r[1] - rect[1]) < 4 and r[0] <= rect[2] + 4:
@@ -183,7 +203,7 @@ def main(argv: list[str] | None = None) -> int:
             print(f"FAIL {pid}: no PDF at {pdf}")
             failures += 1
             continue
-        problems = check_paper(pdf, paper, declared(pid), baseline.get(pid))
+        problems = check_paper(pdf, paper, declared(pid), baseline.get(pid), recorded(pid))
         for p in problems:
             print(f"FAIL {pid}: {p}")
         failures += len(problems)

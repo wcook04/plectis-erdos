@@ -6,6 +6,7 @@ from __future__ import annotations
 import json
 import re
 from pathlib import Path
+from urllib.parse import parse_qs, urljoin, urlparse
 
 import repository_identity
 
@@ -36,7 +37,39 @@ def local_markdown_links(path: str) -> list[Path]:
     return links
 
 
+def check_issue_form_link(form: str, target: str) -> None:
+    """Resolve links where GitHub renders the form, not beside the YAML file."""
+    origin = repository_identity.load_identity()["current"]["origin"]
+    resolved = urlparse(urljoin(f"{origin}/issues/new?template={form}", target))
+    file_prefix = urlparse(origin).path + "/blob/main/"
+    if resolved.scheme == "https" and resolved.netloc == "github.com":
+        if resolved.path.startswith(file_prefix):
+            path = resolved.path.removeprefix(file_prefix)
+            require((ROOT / path).is_file(), f"{form}: hosted link has no public file: {target}")
+            return
+        if resolved.path == urlparse(origin).path + "/issues/new":
+            templates = parse_qs(resolved.query).get("template", [])
+            require(len(templates) == 1 and Path(templates[0]).name == templates[0],
+                    f"{form}: hosted link has no exact form selector: {target}")
+            require((ROOT / ".github/ISSUE_TEMPLATE" / templates[0]).is_file(),
+                    f"{form}: hosted link names a missing form: {target}")
+            return
+    raise AssertionError(f"{form}: hosted link leaves the public contribution routes: {target}")
+
+
 def main() -> int:
+    # Both source-relative variants looked valid locally but GitHub rendered
+    # them as /wcook04/CONTRIBUTING.md and /issues/research_progress.yml.
+    for target in ("../../CONTRIBUTING.md", "research_progress.yml"):
+        try:
+            check_issue_form_link("research_return.yml", target)
+        except AssertionError:
+            pass
+        else:
+            raise AssertionError(f"incorrect hosted form route was accepted: {target}")
+    for source in sorted((ROOT / ".github/ISSUE_TEMPLATE").glob("*.yml")):
+        for target in re.findall(r"\[[^]]+\]\(([^)]+)\)", source.read_text(encoding="utf-8")):
+            check_issue_form_link(source.name, target)
     catalog = load_catalog()
     for task, lane in (
         ("I want to work on problem 257 using the existing papers and Lean sources", "bounded_research"),
@@ -58,7 +91,6 @@ def main() -> int:
     require(packet["primary_lane"]["id"] == "repository_architecture" and packet["scope"] == "problem:257", "explicit purpose or scope lost")
     require(packet["task"] == "Refine the proof paper", "original request lost")
     guide = text("docs/CONTRIBUTE_BY_PAPER.md")
-    from urllib.parse import parse_qs, urlparse
     for row in json.loads(text("docs/problems.json"))["problems"]:
         number = row["erdos_number"]
         require(f"## Problem {number}" in guide, f"missing paper entry {number}")
@@ -149,6 +181,18 @@ def main() -> int:
     for field in ("id: area", "id: problem", "id: proposal", "id: replay", "id: credit", "id: roles"):
         require(field in architecture_issue, f"architecture proposal form omits {field}")
     architecture_guide = text("docs/research-commons/ARCHITECTURE_CONTRIBUTIONS.md")
+    for label, form in (
+        ("architecture proposal", "architecture_proposal.yml"),
+        ("structured research return form", "research_return.yml"),
+    ):
+        targets = re.findall(r"\[" + re.escape(label) + r"\]\(([^)]+)\)", architecture_guide)
+        require(len(targets) == 1, f"architecture guide omits actionable {label} route")
+        route = urlparse(targets[0])
+        origin = urlparse(repository_identity.load_identity()["current"]["origin"])
+        require(route.scheme == origin.scheme and route.netloc == origin.netloc
+                and route.path == origin.path + "/issues/new"
+                and parse_qs(route.query).get("template") == [form],
+                f"architecture guide sends {label} readers to source instead of a form")
     for concept in ("idea", "accepted receipt", "conceptualization", "software", "validation", "non-scalar"):
         require(concept in architecture_guide.lower(), f"architecture contribution path omits {concept!r}")
     receipt_schema = text(repository_identity.load_identity()["contracts"]["current_schema_path"])
