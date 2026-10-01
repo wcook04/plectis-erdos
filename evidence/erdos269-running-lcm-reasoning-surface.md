@@ -10,7 +10,7 @@ These checks establish that the stated propositions are proved. Whether each is 
 
 <a id="long269-res-distinct-height-235"></a>
 
-## Theorem 1.1 (the distinct-height sum at $`\{2,3,5\}`$), page 1
+## Theorem 1.1 (the sum over distinct running LCMs at $`\{2,3,5\}`$), page 1
 
 > *The sum $`\mathcal D_{\{2,3,5\}}`$ is irrational.*
 
@@ -228,7 +228,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long269-res-fibre"></a>
 
-## Proposition 3.4 (grouping equal heights), page 7
+## Proposition 3.4 (grouping equal running LCMs), page 7
 
 > *For every box $`\mathcal B`$,
 > ``` math
@@ -291,7 +291,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long269-res-drop"></a>
 
-## Proposition 3.6 (counting a shell by two coordinates), page 8
+## Proposition 3.6 (counting a block by two coordinates), page 8
 
 > *<span id="long269:res:shell" label="long269:res:shell"></span> If $`\eta\le r\,\lambda`$ then $`\#\mathcal S\le(h_p+1)(h_q+1)`$, and if $`\eta\le p\,\lambda`$ then $`\#\mathcal S\le(h_q+1)(h_r+1)`$. If moreover $`\eta\le r\,\lambda`$ and $`h_p\le h_q\le h_r`$ with $`h_p+h_q+h_r=j`$, then $`9\,\#\mathcal S\le(j+3)^{2}`$.*
 
@@ -807,7 +807,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long269-res-literal-triangle"></a>
 
-## Lemma 8.3 (the shell numerator as a weighted lattice count), page 32
+## Lemma 8.3 (the block numerator as a weighted lattice count), page 32
 
 > *Put $`\lambda_3=\log_2 3`$, $`\lambda_5=\log_2 5`$ and $`\theta_p=1/\lambda_p`$ for $`p=3,5`$. For $`j,k\ge0`$ write $`w_{j,k}=j\lambda_3+k\lambda_5`$ and $`t_{j,k}=\{w_{j,k}\}`$. The shell numerator is
 > ``` math
@@ -1323,7 +1323,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long269-res-window-growth"></a>
 
-## Proposition 10.4 (growth of the window product), page 43
+## Proposition 10.4 (growth of the product of consecutive bases), page 43
 
 > *Put $`\theta_3=\log_32`$ and $`\theta_5=\log_52`$. For all $`\ell\ge0`$ and $`h\ge1`$,
 > ``` math
@@ -1606,7 +1606,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long269-long-windowconsumer"></a>
 
-## Proposition 13.2 (escaping windows exclude a positive bounded integer solution), page 60
+## Proposition 13.2 (segments satisfying the residue inequality exclude a positive bounded integer solution), page 60
 
 > *Let $`(b_n)`$ and $`(m_n)`$ be sequences of nonnegative integers, let $`G:\mathbb{N}_{>0}\times\mathbb{N}\to\mathbb{N}`$, and assume the residue condition (20) for these sequences and $`G`$, using $`|W_{\ell,h}|>0`$ as the modulus. Fix $`B>0`$ coprime to $`30`$. There is no integral sequence $`(d_n)`$ satisfying simultaneously $`d_{n+1}=b_nd_n-Bm_n`$, $`d_n>0`$ and $`|d_n|\le G(B,n)`$ for every $`n\ge0`$.*
 

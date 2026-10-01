@@ -1046,7 +1046,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="catalogue-cert-d3"></a>
 
-## Proposition 6.24 (A nonzero evaluation minor gives independence), page 33
+## Proposition 6.24 (A nonsingular evaluation matrix gives independence), page 33
 
 > *Let $`I`$ be a finite index set and let $`f_j:\mathbb N\to\mathbb Q`$ for $`j\in I`$. If there are evaluation points $`n_i\in\mathbb N`$ such that
 > ``` math

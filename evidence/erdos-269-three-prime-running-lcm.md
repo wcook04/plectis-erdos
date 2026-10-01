@@ -10,7 +10,7 @@ These checks establish that the stated propositions are proved. Whether each is 
 
 <a id="res-distinct-height-235"></a>
 
-## Theorem 1.1 (the distinct-height sum for $`\{2,3,5\}`$), page 1
+## Theorem 1.1 (the sum over distinct running LCMs for $`\{2,3,5\}`$), page 1
 
 > *The number $`\mathcal D_{\{2,3,5\}}`$ is irrational.*
 
@@ -517,7 +517,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="res-fibre-prop"></a>
 
-## Proposition A.3 (grouping terms with the same height), page 10
+## Proposition A.3 (grouping terms with the same running LCM), page 10
 
 > *For a finite exponent box $`\mathcal B`$, set $`F(H)=\{(i,j,k)\in\mathcal B:\operatorname{H}(p^iq^jr^k)=H\}`$. Then
 > ``` math

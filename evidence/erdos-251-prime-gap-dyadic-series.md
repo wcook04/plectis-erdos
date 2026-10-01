@@ -321,7 +321,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="res-true-tail"></a>
 
-## Lemma 4.3 (the boundary condition identifying a true tail), page 9
+## Lemma 4.3 (the boundary condition for the tail recurrence), page 9
 
 > *Let $`\sum_{j\ge1}|a_j|2^{-j}<\infty`$ and $`U_{N+1}=2U_N-a_{N+1}`$. Then $`U_N=\sum_{j\ge1}a_{N+j}2^{-j}`$ for every $`N`$ if and only if $`2^{-N}U_N\to0`$.*
 

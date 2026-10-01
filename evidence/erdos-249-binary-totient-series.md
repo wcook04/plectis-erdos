@@ -113,7 +113,7 @@ theorem displayed_integral_normal_form (k e : ℕ) (hk : 2 ≤ k) (he : 1 ≤ e)
 
 <a id="res-residueseries"></a>
 
-## Theorem 4.1 (Residue series and dyadic observables), page 6
+## Theorem 4.1 (Series of totient residues), page 6
 
 > *For every $`m\ge3`$,
 > ``` math

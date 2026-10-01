@@ -201,7 +201,7 @@ theorem exists_strengthened_not_old_or_weighted_host :
 
 <a id="res-strict-mixed-supports"></a>
 
-## Corollary 5.2 (a host requiring the mixed criterion), page 12
+## Corollary 5.2 (a support requiring the mixed criterion), page 12
 
 > *There is an infinite positive support $`U`$ with $`U\notin\mathcal C`$ and $`U\notin\mathcal W_b`$ for every integer $`b\ge2`$, such that $`X_A(b)`$ is irrational for every infinite $`A\subseteq U`$ and every integer $`b\ge2`$.*
 
@@ -478,7 +478,7 @@ Next check: In the next governed corpus build, transport lean/ErdosProblems/Erdo
 
 <a id="res-cylinderhalf"></a>
 
-## Theorem D.3 (unbounded shared-prefix families imply a half-support), page 22
+## Theorem D.3 (unbounded shared-prefix families represent one half), page 22
 
 > *Suppose that for every $`N`$ there are $`M,K`$ with $`\max\{N,1\}\le M`$, $`0\le K\le M`$, and a family satisfying all the conditions in the preceding paragraph. Then $`X_A(2)=1/2`$ for some infinite set $`A\subseteq\mathbb{N}_{>0}`$.*
 

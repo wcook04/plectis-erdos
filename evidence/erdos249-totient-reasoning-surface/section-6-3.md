@@ -1088,7 +1088,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="prop-ta-inv"></a>
 
-## Proposition 6.92 (An arbitrarily long zero prefix followed by a two-adic pulse), page 54
+## Proposition 6.92 (A prescribed residue after a long divisibility block), page 54
 
 > *Let $`K\ge2`$ and $`H>K`$ be integers. For every $`B\in\mathbb N`$ there is a prime $`p>\max(B,H+K)`$ such that
 > ``` math

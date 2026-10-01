@@ -82,7 +82,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long68-res-moment-ideal"></a>
 
-## Theorem 1.3 (the set of attainable moments), page 5
+## Theorem 1.3 (the set of attainable values of $`M`$), page 5
 
 > *Fix $`D\ge2`$ and a prime $`p`$ with $`D/2<p\le D`$. Put
 > ``` math

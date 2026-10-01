@@ -1543,7 +1543,7 @@
      "source": "paper/249/erdos-249-binary-totient-series.tex:369",
      "statement_sha256": "sha256:b117882faa4839ccd8505e8b344750c516f78fe60433d73109f0ec2906c375cf",
      "statement_key": "sha256:157e0d33f917677c952209ca6acf61c438b2a6b5d22a237407ffac27e4c157c7",
-     "title": "Residue series and dyadic observables",
+     "title": "Series of totient residues",
      "statement_markdown": "*For every $`m\\ge3`$,\n``` math\n\\sum_{n\\ge1}\\frac{\\varphi(n)\\bmod m}{2^n}\\notin\\mathbb{Q}.\n```\nFor $`k\\ge1`$ and $`f:\\mathbb{Z}/2^k\\mathbb{Z}\\to\\mathbb{Q}`$, the series $`\\sum_{n\\ge1}f(\\varphi(n)\\bmod2^k)2^{-n}`$ is rational exactly when $`f`$ is constant on the even residue classes. If that constant is $`c`$, its value is $`3f(1)/4+c/4`$.*",
      "lean": {
       "status": "exact",
@@ -2551,7 +2551,7 @@
      "source": "paper/251/erdos-251-prime-gap-dyadic-series.tex:519",
      "statement_sha256": "sha256:63bb00d45cf55c92ebdc836d288655abebb6ac847fdebf2a111e80df099e2ee6",
      "statement_key": "sha256:a82c40758462ff2f1efbccaeaa12563d0c5f5a736c024094da8c5cde872280fc",
-     "title": "the boundary condition identifying a true tail",
+     "title": "the boundary condition for the tail recurrence",
      "statement_markdown": "*Let $`\\sum_{j\\ge1}|a_j|2^{-j}<\\infty`$ and $`U_{N+1}=2U_N-a_{N+1}`$. Then $`U_N=\\sum_{j\\ge1}a_{N+j}2^{-j}`$ for every $`N`$ if and only if $`2^{-N}U_N\\to0`$.*",
      "lean": {
       "status": "exact",
@@ -3259,7 +3259,7 @@
      "source": "paper/257/erdos-257-mersenne-support-subseries.tex:752",
      "statement_sha256": "sha256:ec8cba3f6409742197fa4fa63d81b4e71f2aba928597821a4600ea8cfa8c3f4a",
      "statement_key": "sha256:e593aae89286611333df000c890fd8abb91c23a587c2ad5b1a1dffeed8f3c943",
-     "title": "a host requiring the mixed criterion",
+     "title": "a support requiring the mixed criterion",
      "statement_markdown": "*There is an infinite positive support $`U`$ with $`U\\notin\\mathcal C`$ and $`U\\notin\\mathcal W_b`$ for every integer $`b\\ge2`$, such that $`X_A(b)`$ is irrational for every infinite $`A\\subseteq U`$ and every integer $`b\\ge2`$.*",
      "lean": {
       "status": "none",
@@ -3770,7 +3770,7 @@
      "source": "paper/257/erdos-257-mersenne-support-subseries.tex:1381",
      "statement_sha256": "sha256:5c22fc2b248124c7ac79ba7ded11c0c5f6865cb3f991e496cb9796a06a1286f5",
      "statement_key": "sha256:7dad5a6420c979571305e709e3a13505d4e887659cea387ae7ecb7a41e818176",
-     "title": "unbounded shared-prefix families imply a half-support",
+     "title": "unbounded shared-prefix families represent one half",
      "statement_markdown": "*Suppose that for every $`N`$ there are $`M,K`$ with $`\\max\\{N,1\\}\\le M`$, $`0\\le K\\le M`$, and a family satisfying all the conditions in the preceding paragraph. Then $`X_A(2)=1/2`$ for some infinite set $`A\\subseteq\\mathbb{N}_{>0}`$.*",
      "lean": {
       "status": "exact_or_stronger",
@@ -3841,7 +3841,7 @@
      "source": "paper/269/erdos-269-three-prime-running-lcm.tex:79",
      "statement_sha256": "sha256:a02a4cba884b472dfc06e8fae73980185ba2f02230bd5857d127de25424b0cd9",
      "statement_key": "sha256:0a8e02e344ac3d7c511bcfe54c70d17ddb0c7ca4713cce11ad2ff8a01f9983c6",
-     "title": "the distinct-height sum for $`\\{2,3,5\\}`$",
+     "title": "the sum over distinct running LCMs for $`\\{2,3,5\\}`$",
      "statement_markdown": "*The number $`\\mathcal D_{\\{2,3,5\\}}`$ is irrational.*",
      "lean": {
       "status": "exact",
@@ -4739,7 +4739,7 @@
      "source": "paper/269/erdos-269-three-prime-running-lcm.tex:721",
      "statement_sha256": "sha256:5d520287ff9279c0a3e5592290a43e54485f3b26f17bb25ec2e977718d53c917",
      "statement_key": "sha256:f5e13222885f95504b3d5931aaf7ad6c7c142f1178c8e7e63be8fd99d960528d",
-     "title": "grouping terms with the same height",
+     "title": "grouping terms with the same running LCM",
      "statement_markdown": "*For a finite exponent box $`\\mathcal B`$, set $`F(H)=\\{(i,j,k)\\in\\mathcal B:\\operatorname{H}(p^iq^jr^k)=H\\}`$. Then\n``` math\n\\begin{equation}\n\\label{res:fibre}\n \\sum_{(i,j,k)\\in\\mathcal B}\\operatorname{K}(i,j,k)=\\sum_H\\frac{\\#F(H)}H.\n\\end{equation}\n```*",
      "lean": {
       "status": "exact",
@@ -6613,7 +6613,7 @@
      "source": "paper/reasoning-parts/erdos68/core.tex:290",
      "statement_sha256": "sha256:e8bc2826d4870a8b0cb2c928d8a1b25d0b2d0e6fceff7043591679cbb82dc3f3",
      "statement_key": "sha256:25b0e71bbd00cab65b70eff6cdd136319d9926c04db0f5f348fc547a4701f59a",
-     "title": "the set of attainable moments",
+     "title": "the set of attainable values of $`M`$",
      "statement_markdown": "*Fix $`D\\ge2`$ and a prime $`p`$ with $`D/2<p\\le D`$. Put\n``` math\nH=D(2p-1),\\qquad\n G_D=\\gcd\\{|u_n|:D<n\\le H\\},\\qquad\n \\mu_D=L_D\\frac{G_D}{\\gcd(G_D,a_D)}.\n```\nThe moments of finite integer vectors supported on $`n\\ge2`$ and cancelling all weighted sums $`2,\\ldots,D`$ are exactly $`\\mu_D\\mathbb{Z}`$. The integer $`\\mu_D`$ is positive, is independent of the eligible prime $`p`$, and is attained by a vector of coefficients with gcd one, that is, by a primitive vector.*",
      "lean": {
       "status": "exact",
@@ -8081,7 +8081,7 @@
      "source": "paper/reasoning-parts/erdos243/core.tex:245",
      "statement_sha256": "sha256:85157615a9de04c3e8ac89642c4475b2c41ce544bccf4afed9bd12632cb9aaca",
      "statement_key": "sha256:61601e886b296e1d8d4a3389e191ff61e7915e20e402bb86bc7d65981dfee357",
-     "title": "gcd stabilisation and the primitive shape",
+     "title": "gcd stabilisation and the reduced polynomial",
      "statement_markdown": "*Write $`G_n=\\gcd(C_n,D_n)`$. Then $`6A`$ is a positive integer, $`G_n`$ divides $`6A`$ for every $`n`$, and $`G_n`$ is eventually equal to a positive integer $`g`$. On the tail where $`G_n=g`$, put $`u_n=C_n/g`$, $`v_n=D_n/g`$ and $`Q(n)=P(n)/g`$. Then\n``` math\n\\begin{equation}\n\\label{long243:eq:primitivetail}\n u_{n+1}=a_nu_n-v_n,\\qquad v_{n+1}=a_nv_n,\\qquad \\gcd(u_n,v_n)=1,\n \\qquad\\gcd(u_n,u_{n+1})=1,\n\\end{equation}\n```\nand there are $`m\\in\\mathbb{Z}_{>0}`$ and $`c\\in\\{-1,1\\}`$ with\n``` math\n\\begin{equation}\n\\label{long243:eq:Qmc}\n Q(n)=\\frac m6n(n+1)(n+2)+c .\n\\end{equation}\n```*",
      "lean": {
       "status": "exact",
@@ -8145,7 +8145,7 @@
      "source": "paper/reasoning-parts/erdos243/core.tex:299",
      "statement_sha256": "sha256:6a3c3ac1fde0d5e0552e215eb9655a802e2476a2d2dd82ec29002b5cb71be844",
      "statement_key": "sha256:257b8f02dc860627257a0fca6e0689939052b847a8b4cabad14029d266d7efd7",
-     "title": "the multiplier supply, and the reducible case",
+     "title": "coprimality and irreducibility",
      "statement_markdown": "*On the primitive tail, $`\\gcd(a_n,v_n)=1`$, the multipliers at distinct indices are pairwise coprime, infinitely many of them exceed $`1`$, and the cubic $`Q_{m,c}`$ of (3) is irreducible over $`\\mathbb{Q}`$.*",
      "lean": {
       "status": "exact",
@@ -8396,7 +8396,7 @@
      "source": "paper/reasoning-parts/erdos243/core.tex:523",
      "statement_sha256": "sha256:9a4774f4d146e49b151737da6ff722198334a273ac1917d00d4a73841f645b4f",
      "statement_key": "sha256:7bfe2755d4c572094106fd4207a0256a52ec2b2440dbf97a1596920998d80f2d",
-     "title": "the two forbidden words",
+     "title": "two incompatible four-term residue patterns",
      "statement_markdown": "*For $`Q_{12,1}`$, every sufficiently late four-index window beginning at $`n\\equiv0\\pmod7`$ contains an exceptional index. For $`Q_{12,-1}`$, the same holds for windows beginning at $`n\\equiv1\\pmod7`$. In either case, $`\\underline d(S)\\ge1/7`$. No phase-free four-index obstruction is asserted.*",
      "lean": {
       "status": "exact",
@@ -8582,7 +8582,7 @@
      "source": "paper/reasoning-parts/erdos243/core.tex:681",
      "statement_sha256": "sha256:3ec047c06085ff93803394dbc906e4c2552c66e246b2e559c44ca59bced6ad59",
      "statement_key": "sha256:27ea2e440b8cd20ae1a59078bd156910738d6b58b5b9f973d03f281096d7b485",
-     "title": "the tail ratio reads the growth defect",
+     "title": "comparison of the numerator and denominator ratios",
      "statement_markdown": "*Let $`a_n`$ be strictly increasing positive integers with $`a_{n+1}/a_n^2\\to1`$ and $`\\sum_n1/a_n`$ rational, and let $`(C_n,D_n)`$ be the integer tail. Write $`\\gamma_n=a_n^2/a_{n+1}-1`$. Then\n``` math\n\\frac{C_{n+1}}{C_n}=1+\\gamma_n+O(a_n^{-1}),\n \\qquad a_n\\ge\\exp(c\\,2^n)\\ \\text{eventually for some }c>0 .\n```*",
      "lean": {
       "status": "exact_or_stronger",
@@ -12051,7 +12051,7 @@
      "source": "paper/reasoning-parts/erdos243/core.tex:2937",
      "statement_sha256": "sha256:152d15c590a706a844087dd1e6d234e54b163a1355396a601338695258c9d858",
      "statement_key": "sha256:399593d83e5f8052e6d9a603d614ae13ce668bce95d5ebe14d81a281a3966262",
-     "title": "reduced tails are pairwise coprime",
+     "title": "persistent coprimality",
      "statement_markdown": "*In a reduced exact tail, $`a_n`$ is coprime to $`v_n`$; the multipliers at distinct indices are pairwise coprime; and every earlier multiplier is coprime to every later numerator.*",
      "lean": {
       "status": "exact",
@@ -18756,7 +18756,7 @@
      "source": "paper/reasoning-parts/erdos249/a249_front.tex:2160",
      "statement_sha256": "sha256:bfe7f58b88904a873d65148a4cd455a2a8f5e9f217b9d52eaafd768a53b65d91",
      "statement_key": "sha256:bf519d790dabbdecf9f4c974d5928db3dd6886f8949cf28b708802aae0393ca6",
-     "title": "A nonzero evaluation minor gives independence",
+     "title": "A nonsingular evaluation matrix gives independence",
      "statement_markdown": "*Let $`I`$ be a finite index set and let $`f_j:\\mathbb N\\to\\mathbb Q`$ for $`j\\in I`$. If there are evaluation points $`n_i\\in\\mathbb N`$ such that\n``` math\n\\det\\bigl(f_j(n_i)\\bigr)_{i,j\\in I}\\ne0,\n```\nthen the family $`(f_j)_{j\\in I}`$ is linearly independent over $`\\mathbb Q`$. A relation among the functions, evaluated at the $`n_i`$, gives a vector in the kernel of this nonsingular matrix, so all coefficients vanish. Finiteness is required to form the displayed determinant. In the totient application the arithmetic work is to construct these evaluation points; the implication itself is ordinary linear algebra.*",
      "lean": {
       "status": "exact",
@@ -26200,7 +26200,7 @@
      "source": "paper/reasoning-parts/erdos249/a249_front.tex:3488",
      "statement_sha256": "sha256:f5e2d2abf1d86c8e96af8316e58e158d39d2375f5d585d8f54e037e85c36cc42",
      "statement_key": "sha256:c2bb6d1de5cac06fcecb98c51d9f2d324d3aea5a04d8d8160da1c9b8e66387c8",
-     "title": "An arbitrarily long zero prefix followed by a two-adic pulse",
+     "title": "A prescribed residue after a long divisibility block",
      "statement_markdown": "*Let $`K\\ge2`$ and $`H>K`$ be integers. For every $`B\\in\\mathbb N`$ there is a prime $`p>\\max(B,H+K)`$ such that\n``` math\n\\begin{aligned}\n p&\\equiv1+2^{K-1}\\pmod{2^K},&\n 2^K&\\mid\\varphi(p+H),\\\\\n 2^K&\\mid\\varphi(p-j),&\n 2^K&\\mid\\varphi(p-j+H)\\qquad(1\\le j<K).\n\\end{aligned}\n```\nThe construction uses $`2K-1`$ distinct auxiliary primes congruent to $`1\\pmod{2^K}`$: one for $`p+H`$, and two for each of the $`K-1`$ preceding positions. Choose them larger than $`\\max(H+K,2^K)`$. For the first prime impose $`p\\equiv-H`$; for the pair at position $`j`$ impose $`p\\equiv j`$ and $`p\\equiv j-H`$, respectively. These nonzero residues, together with the displayed odd residue modulo $`2^K`$, combine by the Chinese remainder theorem into a reduced progression. Dirichlet’s theorem then supplies arbitrarily large prime values of $`p`$. Each auxiliary prime contributes the required factor $`2^K`$ to the corresponding totient.*\n\n*Thus the first $`K-1`$ totient differences in the window starting at $`p-K`$ vanish modulo $`2^K`$, while the last is $`2^{K-1}`$ modulo $`2^K`$. Consequently\n``` math\nD(H,p-K,K)\\equiv2^{K-1}\\pmod{2^K}.\n```\nIf $`R_{N+H}-R_N\\in\\mathbb Z`$ for every $`N\\ge N_0`$, choose such a prime with $`p\\ge N_0+K`$. Iterating the carry recurrence from $`p-K`$ then gives\n``` math\nR_{p+H}-R_p\\in\\mathbb Z,\\qquad\n R_{p+H}-R_p\\equiv2^{K-1}\\pmod{2^K}.\n```\nThe initial integer is multiplied by $`2^K`$ and disappears only after reduction modulo $`2^K`$. This does not bound its higher quotient. The condition $`H>K`$ is part of the construction; it does not provide arbitrarily large $`K`$ for one fixed shift $`H`$.*",
      "lean": {
       "status": "exact",
@@ -38736,7 +38736,7 @@
      "source": "paper/reasoning-parts/erdos251/core.tex:896",
      "statement_sha256": "sha256:daac26b9e84e858b367eb31f13d972e30e9ae87cdb0d794324e396713d9ec160",
      "statement_key": "sha256:f315a4b6defe786f9d87e706605a3ff95e85afab8c64ab98580b437b1337ee28",
-     "title": "the boundary condition identifying a true tail",
+     "title": "the boundary condition for the tail recurrence",
      "statement_markdown": "*Let $`a_1,a_2,\\ldots`$ be real numbers with $`\\sum_{j\\ge1}|a_j|2^{-j}<\\infty`$, and let $`U_{N+1}=2U_N-a_{N+1}`$. Then\n``` math\nU_N=\\sum_{j\\ge1}a_{N+j}2^{-j}\\quad\\hbox{for every }N\n \\quad\\Longleftrightarrow\\quad 2^{-N}U_N\\longrightarrow0.\n```*",
      "lean": {
       "status": "exact",
@@ -38928,7 +38928,7 @@
      "source": "paper/reasoning-parts/erdos251/core.tex:1013",
      "statement_sha256": "sha256:8ae71b394b58778e3dd449dae3f765fb7c9013e48151c4962106c973a6a5bf1b",
      "statement_key": "sha256:fc3cd333853773464d3f6dfd5068cb70f772dd4700cb3e33f6d87c3e00d4ae68",
-     "title": "adjacent small-shift obstruction",
+     "title": "two consecutive small tail differences",
      "statement_markdown": "*Let $`T`$ satisfy the dyadic tail recurrence with integer coefficients $`g`$, and fix $`h`$ and $`N`$. If\n``` math\n-1<\\sigma_h(N)<1,\\qquad -1<\\sigma_h(N+1)<1,\n \\qquad g_{N+h+1}\\ne g_{N+1},\n```\nthen $`\\sigma_h(N)`$ and $`\\sigma_h(N+1)`$ cannot both be integers. Consequently, if such a pair occurs beyond every threshold, the $`h`$-shift is not eventually integral.*",
      "lean": {
       "status": "exact",
@@ -39312,7 +39312,7 @@
      "source": "paper/reasoning-parts/erdos251/core.tex:1156",
      "statement_sha256": "sha256:01b42789d4feb58d2351cea8c940dc15c4c58d7ee490abc3d51f6fc1239f578a",
      "statement_key": "sha256:21605c7d16393e67136b8d33bd4a85bb4a6978a6e180f361489dc10d57c79d60",
-     "title": "a one-tail signed certificate",
+     "title": "certifying two small differences from one enclosure",
      "statement_markdown": "*Let $`D_{N+1}=2D_N-\\delta_N`$ with real $`D_N`$, and suppose $`\\delta_N=2s`$ for $`s\\in\\{-1,1\\}`$. If integers $`A,B,Q`$ satisfy $`Q>0`$, $`B\\ge0`$, $`|QD_N-A|\\le B`$, and\n``` math\n2sA-Q>2B,\\qquad Q-sA>B,\n```\nthen $`1/2<sD_N<1`$, $`|D_{N+1}|<1`$, and both $`D_N,D_{N+1}`$ are nonintegral. In particular the adjacent small-shift obstruction is certified from just one tail enclosure.*",
      "lean": {
       "status": "exact",
@@ -39511,7 +39511,7 @@
      "source": "paper/reasoning-parts/erdos251/core.tex:1344",
      "statement_sha256": "sha256:b58606a07ac3535dbbba0663a6cb3c507bff5195b1643217768df55877f6ac92",
      "statement_key": "sha256:68e364a4f62060208337ec08e40429949163471a7b4095b8f8e926156f43ac75",
-     "title": "bounded-perturbation obstruction",
+     "title": "bounded perturbations preserving congruences",
      "statement_markdown": "*Let $`a_n`$ be natural numbers with $`\\sum_{n\\ge0}a_n2^{-(n+1)}`$ convergent. For every integer $`M\\ge1`$ and every cutoff $`K`$ there are digits $`\\varepsilon_n\\in\\{0,1\\}`$, zero for $`n<K`$, such that $`\\sum_{n\\ge0}(a_n+M\\varepsilon_n)2^{-(n+1)}`$ is rational.*",
      "lean": {
       "status": "exact",
@@ -39871,7 +39871,7 @@
      "source": "paper/reasoning-parts/erdos251/core.tex:1529",
      "statement_sha256": "sha256:c45fdbf6801104ea979bd4e8a80cb0b66cfe828024d9b3176a14d32f49ce0036",
      "statement_key": "sha256:252a6d78e394761243e6fbedd9378ef7fcb2a458fdda9424f576285876622065",
-     "title": "simultaneous prime-gap countermodel",
+     "title": "a rational sum with the stated prime-gap statistics",
      "statement_markdown": "*For every prescribed finite prime-gap prefix and $`0<\\varepsilon\\le1`$, there is an altered sequence $`b=g+e`$, with $`P_n=2+\\sum_{i<n}b_i`$, for which one can simultaneously impose a rational dyadic value, nonnegative integer corrections eventually at most $`(\\log(n+3))^\\varepsilon`$, all fixed eventual coefficient and cumulative congruences, fixed-block polynomial nonconcentration, and vanishing total variation distance between unnormalised block distributions for lengths $`o(\\log\\log X)`$. The cumulative positions satisfy\n``` math\n0\\le P_n-p_n=O_\\varepsilon\\left(\n    \\frac{n(\\log(n+3))^\\varepsilon}{\\log\\log n}\\right),\n \\qquad P_n\\sim n\\log n.\n```*",
      "lean": {
       "status": "modulo_named_input",
@@ -39948,7 +39948,7 @@
      "source": "paper/reasoning-parts/erdos251/core.tex:1606",
      "statement_sha256": "sha256:a6627fe367fa7daefb60c87ac3f765d08e934217e5fdb3987b08be1c64f0bb22",
      "statement_key": "sha256:05bf7ab56a3a88f6aad2b96b023c1632e15080a9593e4fd85afd076582856674",
-     "title": "sparsity of the two-window event",
+     "title": "density zero for the small-difference condition",
      "statement_markdown": "*Fix $`h\\ge1`$. The set of $`N\\ge1`$ at which the three hypotheses of Theorem 6.1 hold for the actual prime gaps has density zero. For the same $`h`$, the set of $`N`$ with $`g_{N+h+1}=g_{N+1}`$ also has density zero.*",
      "lean": {
       "status": "modulo_named_input",
@@ -40082,7 +40082,7 @@
      "source": "paper/reasoning-parts/erdos251/core.tex:1843",
      "statement_sha256": "sha256:679111e1b497cf2f472627a5da6def6d7a3dd4821b4bef51da77ba38fa51591b",
      "statement_key": "sha256:cfc1b33567f7b875af91fb86337096fd5b99d6d0cf3c6b6665d47ed49fba7340",
-     "title": "quadratic polynomial-shift countermodel",
+     "title": "a quadratic sequence with integral tails",
      "statement_markdown": "*Put $`c_n=2(n^2+4n+2)`$ and $`U_n=2(n+4)^2`$. Then $`c_n`$ is positive, even and strictly increasing, $`U_{n+1}=2U_n-c_{n+1}`$, every shift $`U_{N+h}-U_N`$ is integral, $`c_{n+1}-c_n=4n+10`$ is never $`\\pm2`$, and\n``` math\n\\sum_{j\\ge1}\\frac{c_j}{2^{\\,j}}=32 .\n```*",
      "lean": {
       "status": "exact",
@@ -40473,7 +40473,7 @@
      "source": "paper/reasoning-parts/erdos251/core.tex:2611",
      "statement_sha256": "sha256:e3e40bd17d5ecd97606ee570f38e242154ab2f075a82abb2016a4eddfdef20ba",
      "statement_key": "sha256:3d0e6c382e2351c87f82e2520b458bc75b3d8e24393d6863e092786e8b883304",
-     "title": "bounded recurring-values countermodel",
+     "title": "recurring values with integral tails",
      "statement_markdown": "*Put $`U_0=4`$ and, for $`n\\ge1`$, $`U_n=6`$ when $`n=k!`$ for some $`k\\ge3`$ and $`U_n=4`$ otherwise, and set $`a_n=2U_{n-1}-U_n`$ for $`n\\ge1`$. Then $`a_n\\in\\{2,4,8\\}`$. For every $`k\\ge3`$, the value $`2`$ occurs at index $`k!`$ and the value $`4`$ at index $`2\\,k!`$, so both recur infinitely often at indices divisible by any fixed $`t\\ge1`$. The series $`\\sum_{n\\ge1}a_n2^{-n}`$ equals $`4`$ and every tail $`\\sum_{j\\ge1}a_{N+j}2^{-j}`$ equals the integer $`U_N`$.*",
      "lean": {
       "status": "exact_or_stronger",
@@ -41777,7 +41777,7 @@
      "source": "paper/reasoning-parts/erdos257/a257_front.tex:1605",
      "statement_sha256": "sha256:6da56400b6eb756cb6540fe0a666d7b29ba7c77cadb9ab1af6e71a823831781a",
      "statement_key": "sha256:fa5a0610123f7c8e10f687b2452ff7caf1aa650c2f83a789f45682e004bb4b08",
-     "title": "Weighted denominator budget",
+     "title": "A bound for the reduced denominator",
      "statement_markdown": "*Let $`n\\ge2`$, let $`\\mathrm{Skip}_n\\subseteq\\{2,\\ldots,n-1\\}`$, and let $`D_n`$ be the reduced denominator of the associated finite sum. Since $`D_n`$ divides the product of its Mersenne denominators,\n``` math\n\\log_2D_n\\le\\sum_{d\\in\\mathrm{Skip}_n}\\log_2(2^d-1)\n \\le\\sum_{d\\in\\mathrm{Skip}_n}d\\le\\frac{n(n-1)}2-1.\n```\nThe middle inequality is strict when the skip set is nonempty; for an empty skip set both sums are zero. This is an upper bound, not a quadratic asymptotic for $`D_n`$. Combined with the cited fixed irrationality-measure exponent, it does not supply the required $`2^{-3n/2}`$-scale estimate. Even an asymptotic for the exponent sum would need additional information about the skip distribution.*",
      "lean": {
       "status": "exact",
@@ -59460,7 +59460,7 @@
      "printed_kind": "Theorem",
      "number": "13.1",
      "page": "142",
-     "source": "paper/reasoning-parts/erdos257/a257_front.tex:9035",
+     "source": "paper/reasoning-parts/erdos257/a257_front.tex:9047",
      "statement_sha256": "sha256:1608690852b38cdcf432dcb9cb2bbf06e3317278647255653739821be87c33b8",
      "statement_key": "sha256:109ff5aa86987d9a63e46a82353496cbda54bdd3c2bb5f6fe504a58097493da4",
      "title": "arithmetic logarithmic counterexample",
@@ -59553,7 +59553,7 @@
      "printed_kind": "Corollary",
      "number": "13.2",
      "page": "144",
-     "source": "paper/reasoning-parts/erdos257/a257_front.tex:9193",
+     "source": "paper/reasoning-parts/erdos257/a257_front.tex:9205",
      "statement_sha256": "sha256:177a9d8c7b8df8b6f00d6e3e01729e46f14cd0cb880be7a56b61914cfa160530",
      "statement_key": "sha256:25dc3e6ab5bd8735ab2d52250b5d9006585a56f4ce9e2daa288a5f7906520090",
      "title": "finite-functional separation",
@@ -59675,7 +59675,7 @@
      "printed_kind": "Proposition",
      "number": "13.3",
      "page": "145",
-     "source": "paper/reasoning-parts/erdos257/a257_front.tex:9234",
+     "source": "paper/reasoning-parts/erdos257/a257_front.tex:9246",
      "statement_sha256": "sha256:120ddbe88665e55839f46fb2b0825e72470ebe726d2d1132d3d38a69e98afcc1",
      "statement_key": "sha256:5ae819aa189646cc5f7c86a4dca6e248692f4b2c1132f43154f8e3e512c041fa",
      "title": "ordinary initial intervals",
@@ -59749,7 +59749,7 @@
      "source": "paper/reasoning-parts/erdos269/core.tex:34",
      "statement_sha256": "sha256:de9e607a7640b23bcbd7cd6904332b11b5b72883b512b1489c08e349526a522e",
      "statement_key": "sha256:eb976bc5961f5049ea5077f8cc6626c48b0b197adb3c4f7e06d4615eea0f9b12",
-     "title": "the distinct-height sum at $`\\{2,3,5\\}`$",
+     "title": "the sum over distinct running LCMs at $`\\{2,3,5\\}`$",
      "statement_markdown": "*The sum $`\\mathcal D_{\\{2,3,5\\}}`$ is irrational.*",
      "lean": {
       "status": "exact",
@@ -60189,7 +60189,7 @@
      "source": "paper/reasoning-parts/erdos269/core.tex:414",
      "statement_sha256": "sha256:ba5924fe61033f492869534e98b260fa95ff5b3b06ec05fc95b5234c1ce3fe65",
      "statement_key": "sha256:81c091f20725d14b767a9dceba762acd7ea13f827243432ebe34b713911705e3",
-     "title": "grouping equal heights",
+     "title": "grouping equal running LCMs",
      "statement_markdown": "*For every box $`\\mathcal B`$,\n``` math\n\\sum_{(i,j,k)\\in\\mathcal B}\\operatorname{K}(i,j,k)=\\sum_{H}\\#F(H)/H,\n```\nthe outer sum ranging over the heights attained on $`\\mathcal B`$.*",
      "lean": {
       "status": "exact",
@@ -60317,7 +60317,7 @@
      "source": "paper/reasoning-parts/erdos269/core.tex:449",
      "statement_sha256": "sha256:15125c47f4643afc2e34c5388dc889053209f945e42423267c9c4455c9078879",
      "statement_key": "sha256:a50298b2a20ca2e4e23081ea7fc049153f43c806c76cc68eac1be65ef295a74e",
-     "title": "counting a shell by two coordinates",
+     "title": "counting a block by two coordinates",
      "statement_markdown": "*<span id=\"long269:res:shell\" label=\"long269:res:shell\"></span> If $`\\eta\\le r\\,\\lambda`$ then $`\\#\\mathcal S\\le(h_p+1)(h_q+1)`$, and if $`\\eta\\le p\\,\\lambda`$ then $`\\#\\mathcal S\\le(h_q+1)(h_r+1)`$. If moreover $`\\eta\\le r\\,\\lambda`$ and $`h_p\\le h_q\\le h_r`$ with $`h_p+h_q+h_r=j`$, then $`9\\,\\#\\mathcal S\\le(j+3)^{2}`$.*",
      "lean": {
       "status": "exact_or_stronger",
@@ -61423,7 +61423,7 @@
      "source": "paper/reasoning-parts/erdos269/core.tex:2092",
      "statement_sha256": "sha256:e7538b28dab9634a325e50c59fe5bd5ea825069436b271f07abca857e2337559",
      "statement_key": "sha256:194b4b3469b4c553bd4d1c8070c1df93b6a25b343180c367010537a31a80a363",
-     "title": "the shell numerator as a weighted lattice count",
+     "title": "the block numerator as a weighted lattice count",
      "statement_markdown": "*Put $`\\lambda_3=\\log_2 3`$, $`\\lambda_5=\\log_2 5`$ and $`\\theta_p=1/\\lambda_p`$ for $`p=3,5`$. For $`j,k\\ge0`$ write $`w_{j,k}=j\\lambda_3+k\\lambda_5`$ and $`t_{j,k}=\\{w_{j,k}\\}`$. The shell numerator is\n``` math\nm_a=\\sum_{\\substack{j,k\\ge0\\\\w_{j,k}<a+1}}\n 3^{\\lfloor(a+1)\\theta_3\\rfloor-\\lfloor(a+t_{j,k})\\theta_3\\rfloor}\n 5^{\\lfloor(a+1)\\theta_5\\rfloor-\\lfloor(a+t_{j,k})\\theta_5\\rfloor}.\n```\nEvery summand is in $`\\{1,3,5,15\\}`$. In particular, for $`a\\ge0`$,\n``` math\n\\bigl(\\lfloor a/(2\\lambda_3)\\rfloor+1\\bigr)\n \\bigl(\\lfloor a/(2\\lambda_5)\\rfloor+1\\bigr)\n \\le m_a\\le15(a+1)^2.\n```\nThus $`m_a=\\Theta((a+1)^2)`$ and the numerator sequence is unbounded. These are integer numerators, not positional digits restricted to $`\\{0,\\ldots,b_a-1\\}`$.*",
      "lean": {
       "status": "exact_or_stronger",
@@ -62359,7 +62359,7 @@
      "source": "paper/reasoning-parts/erdos269/core.tex:2828",
      "statement_sha256": "sha256:91dcc8746272e5d6015b6ecbaed4775820818f5cdda70ccad9f1750fe0d25e3a",
      "statement_key": "sha256:22d67408a445b97db1adff9c449a2823a5870bc7c08a24ec96463a3bbc8002ec",
-     "title": "growth of the window product",
+     "title": "growth of the product of consecutive bases",
      "statement_markdown": "*Put $`\\theta_3=\\log_32`$ and $`\\theta_5=\\log_52`$. For all $`\\ell\\ge0`$ and $`h\\ge1`$,\n``` math\nW_{\\ell,h}=2^{h}\\,\n 3^{\\lfloor(\\ell+h)\\theta_3\\rfloor-\\lfloor\\ell\\theta_3\\rfloor}\\,\n 5^{\\lfloor(\\ell+h)\\theta_5\\rfloor-\\lfloor\\ell\\theta_5\\rfloor},\n \\qquad\n \\frac{8^{h}}{15}<W_{\\ell,h}<15\\cdot8^{h} .\n```*",
      "lean": {
       "status": "exact_or_stronger",
@@ -62836,7 +62836,7 @@
      "source": "paper/reasoning-parts/erdos269/core.tex:3937",
      "statement_sha256": "sha256:b95d64e6b86ff6fdeed0379671df69617a86640c2871dde8290f755ac18850cd",
      "statement_key": "sha256:78158b9af0be41d44557b469a4fc802888db0477104238ab521f9c89cb2e47df",
-     "title": "escaping windows exclude a positive bounded integer solution",
+     "title": "segments satisfying the residue inequality exclude a positive bounded integer solution",
      "statement_markdown": "*Let $`(b_n)`$ and $`(m_n)`$ be sequences of nonnegative integers, let $`G:\\mathbb{N}_{>0}\\times\\mathbb{N}\\to\\mathbb{N}`$, and assume the residue condition (20) for these sequences and $`G`$, using $`|W_{\\ell,h}|>0`$ as the modulus. Fix $`B>0`$ coprime to $`30`$. There is no integral sequence $`(d_n)`$ satisfying simultaneously $`d_{n+1}=b_nd_n-Bm_n`$, $`d_n>0`$ and $`|d_n|\\le G(B,n)`$ for every $`n\\ge0`$.*",
      "lean": {
       "status": "exact_or_stronger",

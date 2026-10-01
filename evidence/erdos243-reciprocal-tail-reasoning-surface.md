@@ -138,7 +138,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long243-res-gcdshape"></a>
 
-## Lemma 2.5 (gcd stabilisation and the primitive shape), page 5
+## Lemma 2.5 (gcd stabilisation and the reduced polynomial), page 5
 
 > *Write $`G_n=\gcd(C_n,D_n)`$. Then $`6A`$ is a positive integer, $`G_n`$ divides $`6A`$ for every $`n`$, and $`G_n`$ is eventually equal to a positive integer $`g`$. On the tail where $`G_n=g`$, put $`u_n=C_n/g`$, $`v_n=D_n/g`$ and $`Q(n)=P(n)/g`$. Then
 > ``` math
@@ -196,7 +196,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long243-res-reduciblecase"></a>
 
-## Lemma 2.6 (the multiplier supply, and the reducible case), page 5
+## Lemma 2.6 (coprimality and irreducibility), page 5
 
 > *On the primitive tail, $`\gcd(a_n,v_n)=1`$, the multipliers at distinct indices are pairwise coprime, infinitely many of them exceed $`1`$, and the cubic $`Q_{m,c}`$ of (3) is irreducible over $`\mathbb{Q}`$.*
 
@@ -354,7 +354,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long243-res-modseven"></a>
 
-## Lemma 2.10 (the two forbidden words), page 9
+## Lemma 2.10 (two incompatible four-term residue patterns), page 9
 
 > *For $`Q_{12,1}`$, every sufficiently late four-index window beginning at $`n\equiv0\pmod7`$ contains an exceptional index. For $`Q_{12,-1}`$, the same holds for windows beginning at $`n\equiv1\pmod7`$. In either case, $`\underline d(S)\ge1/7`$. No phase-free four-index obstruction is asserted.*
 
@@ -443,7 +443,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long243-res-tailratio"></a>
 
-## Lemma 2.12 (the tail ratio reads the growth defect), page 11
+## Lemma 2.12 (comparison of the numerator and denominator ratios), page 11
 
 > *Let $`a_n`$ be strictly increasing positive integers with $`a_{n+1}/a_n^2\to1`$ and $`\sum_n1/a_n`$ rational, and let $`(C_n,D_n)`$ be the integer tail. Write $`\gamma_n=a_n^2/a_{n+1}-1`$. Then
 > ``` math
@@ -2373,7 +2373,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long243-res-reduced"></a>
 
-## Proposition 11.4 (reduced tails are pairwise coprime), page 44
+## Proposition 11.4 (persistent coprimality), page 44
 
 > *In a reduced exact tail, $`a_n`$ is coprime to $`v_n`$; the multipliers at distinct indices are pairwise coprime; and every earlier multiplier is coprime to every later numerator.*
 

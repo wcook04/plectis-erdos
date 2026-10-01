@@ -336,7 +336,7 @@ theorem balancedPulse_common_history (m : ℕ) (hm : 2 ≤ m) (r : ℕ)
 
 <a id="prop-exponent-gap"></a>
 
-## Proposition 2.9 (Weighted denominator budget), page 30
+## Proposition 2.9 (A bound for the reduced denominator), page 30
 
 > *Let $`n\ge2`$, let $`\mathrm{Skip}_n\subseteq\{2,\ldots,n-1\}`$, and let $`D_n`$ be the reduced denominator of the associated finite sum. Since $`D_n`$ divides the product of its Mersenne denominators,
 > ``` math
