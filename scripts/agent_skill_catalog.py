@@ -167,9 +167,11 @@ def load_catalog() -> dict[str, Any]:
         if not isinstance(task_intents, list):
             raise SkillCatalogError(f"lane {lane_id} task_intents must be a list")
         for intent in task_intents:
-            if not isinstance(intent, dict) or set(intent) != {"actions", "objects"}:
+            if (not isinstance(intent, dict) or
+                    not {"actions", "objects"} <= set(intent) or
+                    not set(intent) <= {"actions", "objects", "qualifiers"}):
                 raise SkillCatalogError(f"lane {lane_id} task intent needs actions and objects")
-            for field in ("actions", "objects"):
+            for field in intent:
                 terms = intent[field]
                 if (
                     not isinstance(terms, list) or not terms
@@ -211,6 +213,84 @@ def normalize(text: str) -> str:
     return " ".join(TOKEN_RE.findall(text.casefold()))
 
 
+def bound_installed_skill_actions(
+    task: str, intent: dict[str, Any], skill_ids: list[str], *, proof_intent: bool = False,
+) -> list[tuple[str, tuple[int, int]]]:
+    """Bind installed actions and identify their object span for cue isolation."""
+    if proof_intent:
+        return []
+    boundaries = "and|then|using|with|after|before|from|for|in|into|to|at"
+    named_heads = {" ".join(re.findall(r"[a-z0-9]+", value.casefold())) for value in skill_ids}
+    heads = set(intent["objects"]) | named_heads
+    head_pattern = "|".join(re.escape(value) for value in sorted(heads, key=len, reverse=True))
+    if named_heads:
+        generic_pattern = "|".join(re.escape(value) for value in sorted(intent["objects"]))
+        named_pattern = "|".join(re.escape(value) for value in sorted(named_heads, key=len, reverse=True))
+        # Consume "skill NAME" before a generic head leaves NAME in the tail.
+        head_pattern = rf"(?:{generic_pattern})\s+(?:{named_pattern})|{head_pattern}"
+    object_pattern = re.compile(
+        rf"(?P<modifiers>(?:(?!(?:{boundaries})\b)[a-z0-9]+\s+)*?)"
+        rf"(?P<head>{head_pattern})(?:\s+skills?)?\b(?P<tail>.*)"
+    )
+    action_pattern = re.compile(rf"\b({'|'.join(map(re.escape, intent['actions']))})\s+")
+    destinations = "|".join(re.escape(value) for value in intent.get("qualifiers", []) if value != "installed")
+    destination_prepositions = "from" if set(intent["actions"]) & {"remove", "uninstall"} else "in|into|for|at"
+    destination_pattern = re.compile(
+        rf"\s+(?:{destination_prepositions})\s+"
+        rf"(?:(?:the|my|our|your|a|an|this|custom|local|agent|coding|skills?)\s+)*"
+        rf"(?:{destinations})\b"
+    )
+    content_objects = {"paper", "papers", "abstract", "abstracts", "manuscript", "manuscripts",
+                       "readme", "guide", "guides", "example", "examples", "prose", "wording",
+                       "table", "tables", "list", "lists", "documentation", "docs"}
+    matches = []
+    for action in action_pattern.finditer(task):
+        candidate = object_pattern.match(task, action.end())
+        if candidate is None:
+            continue
+        removal = bool(set(intent["actions"]) & {"remove", "uninstall"})
+        content_pattern = "|".join(sorted(content_objects))
+        if removal and (re.match(r"\s+s\b", candidate["tail"]) or
+                        re.match(rf"\s+(?:{content_pattern})\b", candidate["tail"])):
+            continue  # Removal must name the installed folder, not its content.
+        object_words = set(candidate["modifiers"].split())
+        if object_words & content_objects:
+            continue
+        if ("qualifiers" not in intent or "installed" in object_words or
+                destination_pattern.match(candidate["tail"])):
+            matches.append((f"{action[1]} + installed skill", candidate.span("head")))
+    return matches
+
+
+def matched_task_intents(
+    lane: dict[str, Any], task_tokens: set[str], *, proof_intent: bool = False,
+    task: str = "", skill_ids: list[str] | None = None,
+) -> list[str]:
+    matches = []
+    for intent in lane.get("task_intents", []):
+        # An installed skill used while editing a paper is not the object of
+        # that edit. Bind only qualified installed-skill actions.
+        if lane["id"] == "install_skills" and "qualifiers" in intent:
+            bound_actions = bound_installed_skill_actions(
+                task, intent, skill_ids or [], proof_intent=proof_intent,
+            )
+            matches.extend(label for label, _ in bound_actions)
+            continue
+        # Adding a guide-editing object must not displace the proof stage in
+        # "prove a theorem, then revise the writing guide". Preserve existing
+        # paper-authoring rules; qualified guide and skill-documentation rules
+        # remain subordinate to proof research.
+        if lane["id"] in {"public_writing", "repository_architecture"} and proof_intent and "qualifiers" in intent:
+            continue
+        components = [task_tokens.intersection(intent[field])
+                      for field in ("actions", "objects")]
+        if "qualifiers" in intent:
+            components.append(task_tokens.intersection(intent["qualifiers"]))
+        if all(components):
+            matches.append(" + ".join(sorted(component)[0] for component in components))
+    return matches
+
+
 def rank_lanes(catalog: dict[str, Any], task: str) -> list[dict[str, Any]]:
     normalized_task = normalize(task)
     task_tokens = set(normalized_task.split())
@@ -218,32 +298,84 @@ def rank_lanes(catalog: dict[str, Any], task: str) -> list[dict[str, Any]]:
         task_tokens & {"attack", "counterexample", "prove", "solve"}
     )
     lean_context = bool(task_tokens & {"lean", "theorem"})
+    # Preserve explicit installation and Plectis authoring when a request
+    # also mentions the portable guide. Their action/object rules stay owned
+    # by the registry rather than being duplicated here.
+    skill_ids = [row["id"] for row in catalog["skills"]]
+    installation = next(lane for lane in catalog["lanes"] if lane["id"] == "install_skills")
+    installation_matches = matched_task_intents(
+        installation, task_tokens, proof_intent=proof_intent, task=normalized_task, skill_ids=skill_ids,
+    )
+    semantic_task = normalized_task
+    installed_objects = [match
+        for intent in installation.get("task_intents", [])
+        for match in bound_installed_skill_actions(normalized_task, intent, skill_ids)]
+    # Only names bound as managed objects are masked. A real later request to
+    # submit a pull request remains visible, even if those words name a skill.
+    object_spans: list[tuple[int, int]] = []
+    for start, end in sorted({span for _, span in installed_objects}):
+        if object_spans and start < object_spans[-1][1]:
+            # An action word inside a registered name can bind an inner head.
+            # Replace overlapping spans once to preserve later offsets.
+            prior_start, prior_end = object_spans[-1]
+            object_spans[-1] = (prior_start, max(prior_end, end))
+        else:
+            object_spans.append((start, end))
+    for start, end in reversed(object_spans):
+        semantic_task = semantic_task[:start] + "skill" + semantic_task[end:]
+    semantic_tokens = set(semantic_task.split())
+    intent_matches = {lane["id"]: (installation_matches if lane["id"] == "install_skills" else
+        matched_task_intents(lane, semantic_tokens, proof_intent=proof_intent,
+                             task=semantic_task, skill_ids=skill_ids)) for lane in catalog["lanes"]}
+    matched_intents = {lane_id for lane_id, matches in intent_matches.items() if matches}
+    plectis_context = "plectis" in task_tokens or bool(
+        re.search(r"\bthis (?:repository|repo|checkout)\b", normalized_task)
+    )
+    reuse_excluded = (
+        proof_intent or "install_skills" in matched_intents or
+        (plectis_context and "public_writing" in matched_intents)
+    )
+    reuse_method = bool(intent_matches.get("reuse_writing_guidance")) and not reuse_excluded
     ranked: list[dict[str, Any]] = []
     for order, lane in enumerate(catalog["lanes"]):
         matches: list[str] = []
         score = 0
+        cue_task = normalized_task if lane["id"] == "install_skills" else semantic_task
+        cue_task_tokens = task_tokens if lane["id"] == "install_skills" else semantic_tokens
         for cue in lane["task_cues"]:
             normalized_cue = normalize(cue)
             cue_tokens = normalized_cue.split()
             if not normalized_cue:
                 continue
-            if " " in normalized_cue and normalized_cue in normalized_task:
+            if " " in normalized_cue and normalized_cue in cue_task:
                 matches.append(cue)
                 score += 4 + len(cue_tokens)
-            elif len(cue_tokens) == 1 and cue_tokens[0] in task_tokens:
+            elif len(cue_tokens) == 1 and cue_tokens[0] in cue_task_tokens:
                 matches.append(cue)
                 score += 2
         # An explicit action and object can be separated by modifiers, e.g.
         # "refine the short mathematical papers". Require both: the object
         # alone must not turn a status or propagation request into authoring.
-        for intent in lane.get("task_intents", []):
-            actions = task_tokens.intersection(intent["actions"])
-            objects = task_tokens.intersection(intent["objects"])
-            if actions and objects:
-                matches.append(f"{sorted(actions)[0]} + {sorted(objects)[0]}")
-                # Two explicit intent components outweigh a generic later
-                # stage such as "propagate the downstream consequences".
-                score += 12
+        if intent_matches[lane["id"]]:
+            matches.extend(intent_matches[lane["id"]])
+            # Explicit intent components outweigh a generic later stage such
+            # as "propagate the downstream consequences". A qualifier can
+            # disambiguate a generic object such as "guide" or "skill".
+            # Alternative object rules describe the same intent; counting
+            # both a paper and a writing guide would displace installation.
+            score += 12
+        # Guide mentions cannot replace a proof request, explicit installation,
+        # or authoring in this checkout with the independent-project workflow.
+        if lane["id"] == "reuse_writing_guidance":
+            if reuse_excluded:
+                score = 0
+                matches = []
+        if lane["id"] == "public_writing" and reuse_method:
+            # Applying the guide supplies the method for editing the host
+            # project. Counting both "revise papers" and "writing guides"
+            # must not send that request back to the Plectis paper corpus.
+            score = 0
+            matches = []
         # "Lean" names both a proof environment and an operational toolchain.
         # A genuine proof verb must keep proof search primary while the Lean
         # validation lane remains visible as a scored alternative.

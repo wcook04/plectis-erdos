@@ -31,6 +31,21 @@ not just whether one relevant skill appears. Test natural modifiers and plural
 objects as well as the exact failed wording. Registry `task_intents` can require
 an action token and an object token without requiring adjacent words; keep both
 conditions so merely mentioning a paper does not select manuscript editing.
+For an ambiguous object such as a guide, an optional `qualifiers` token group
+can require its subject as well. All supplied groups must match; modifiers may
+separate their words. A guide being edited and a guide being applied to another
+project are different tasks.
+Recognize a registered name before or after the word “skill” before checking
+its destination or whether the request edits its content. Preserve both name
+orders as task fixtures. Words in the managed skill's name must not supply a
+second action, but a real later request must remain visible.
+Refreshing or removing an installed skill belongs to installation; revising its canonical
+instructions belongs to maintenance. Bind an update or refresh to the skill
+being updated and its installed or harness context. An installed skill merely
+used while editing a paper must not select installation. Tables, lists and
+documentation about installed skills also retain their reading or maintenance
+route. Preserve proof-first requests and test both named skills and generic
+skill descriptions.
 Check neighboring tasks that should retain their original lane. Keep purpose and scope separate: a problem or paper identifies the object,
 while research, method development or infrastructure work identifies the action.
 An existing mathematical proof offered for review belongs to the research-return
@@ -224,6 +239,40 @@ For skill installation, content identity must survive an edit that preserves
 file size and timestamp. Exercise the actual preview, check, refused collision
 and explicitly forced replacement; metadata equality is not content equality.
 Keep the repair compatible with the minimum supported Python version.
+Compare every copied entry, including names normally ignored by generic
+comparison tools. An installed nested link is different in copy mode even
+when its target bytes match; forced copying must materialize independent
+content without changing the target. Test file, directory, dangling and
+recursive links, and recheck the copy after its former target disappears.
+Reject source and destination overlaps before preview or mutation. Inspect
+source aliases through parent links and link targets, and compare existing
+entry identities where different spellings can name the same directory.
+Treat an existing destination symlink as an entry to replace, so its target
+remains intact. Exercise safe aliases as well as refused overlaps.
+In symlink mode, compare the resolved target by physical entry identity;
+case aliases can retain different path spellings. A current link must remain
+untouched during preview, check, ordinary apply and forced apply. Exercise
+the alias on supported filesystems and simulate it on case-sensitive CI.
+Treat an identical physical copy as current before traversing its contents.
+Report file and directory inspection failures without replacing the affected
+installation, even with force. Exercise every CLI mode and both looping and
+dangling links; a path-resolution exception must not escape as a traceback.
+Prepare a replacement before moving an installed skill. Exercise preparation,
+promotion and restoration failures, including symlinks, and keep a recoverable
+backup if restoration fails. A multi-file generated refresh must also restore
+its previous outputs when an ordinary write or promotion fails; validate inputs
+before preparing any output.
+
+For the writing papers, audit literal inputs using the exporter's `paper/`
+working directory, including nested includes and actually loaded local styles.
+Require each loaded fragment in semantic review and bind loaded styles through
+the separate style-input digest; a style can define procedural prose. Unused
+shared resources are not loaded guidance. Refuse unsupported loaders such as
+`\subfile`, dynamic filenames, conflicting
+lookup paths and dependencies the existing export receipt does not cover.
+Test fresh text with a stale review, prose-changing styles, comments, verbatim
+examples and unused preambles. A current exporter receipt or an arbitrary
+`shared_input` label cannot establish complete semantic review.
 
 For publication growth, conservation means preserving each existing artifact's
 identity and download name while admitting newly registered papers. Test a

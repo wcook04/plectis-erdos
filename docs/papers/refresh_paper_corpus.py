@@ -11,7 +11,12 @@ import copy
 import hashlib
 import json
 import posixpath
+import sys
 from pathlib import Path
+
+# Reuse the publication owner's complete TeX-input identity for exported text.
+sys.path.insert(0, str(Path(__file__).resolve().parents[2] / "scripts"))
+from sync_publication_pdfs import source_input_closure_digest
 
 if __package__:
     from . import paper_corpus_renderer as renderer
@@ -123,7 +128,17 @@ def refresh(root: Path, *, write: bool, paper_ids: list[str] | None = None) -> d
         errors = reading_route_errors(record, markdown)
         if errors:
             raise ValueError(f"{record['paper_id']}: {'; '.join(errors)}")
-        plan.append((output, markdown.encode()))
+        text_bytes = markdown.encode("utf-8")
+        record.update(
+            full_text_sha256=digest(text_bytes),
+            full_text_source_sha256=source_digest,
+            full_text_inputs_sha256=source_input_closure_digest(
+                root, {"source_path": record["local_source"]}
+            ),
+        )
+        if record.get("local_pdf"):
+            record["full_text_pdf_sha256"] = record["pdf_sha256"]
+        plan.append((output, text_bytes))
     corpus = taxonomy.build(corpus, root)
     records = corpus["papers"]
     plan.extend([

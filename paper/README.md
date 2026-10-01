@@ -80,6 +80,22 @@ versions for browsing. The PDFs and `.tex` files above are the authored
 manuscripts. The older joint #249/#257 paper is retained for provenance;
 it is not the entry point for either problem.
 
+## Writing guides
+
+[Writing a Good Mathematical Paper](exposition/writing-a-good-mathematical-paper.pdf)
+([source](exposition/writing-a-good-mathematical-paper.tex)) gives two pages of
+instructions for authors and AI assistants. You can use it with your own
+manuscript without cloning this repository.
+
+[Writing Mathematics from the Literature and Reviewed Revisions](exposition/writing-mathematics-from-reviewed-revisions.pdf)
+([source](exposition/writing-mathematics-from-reviewed-revisions.tex)) explains
+the examples, sources and review decisions behind the instructions. The
+[method guide](../docs/papers/exposition-method/README.md) keeps the supporting
+records; the [writing skill](../skills/public-mathematical-writing/SKILL.md)
+can be used in this checkout or copied to another project. These are writing
+guides drawn from this mathematical work, with no measured claim of improved
+reader understanding.
+
 ## Project papers
 
 Start with [A Repository-Based System for Research and Publication](systems/claim-faithful-publication-systems-paper.pdf)

@@ -10,12 +10,14 @@ import subprocess
 import sys
 import tempfile
 import unittest
+from unittest.mock import patch
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "docs/papers"))
 import build_publication_taxonomy as taxonomy
 import check_publication_taxonomy as checker
+import query_corpus
 
 
 class ArchiveVersionTests(unittest.TestCase):
@@ -103,6 +105,26 @@ class ArchiveVersionTests(unittest.TestCase):
         self.assertEqual(set(visible), set(self.source["papers"]))
         self.assertEqual(sum(map(len, visible.values())),
                          sum(map(len, self.source["papers"].values())))
+        originals = {paper["paper_id"]: paper for paper in self.corpus["papers"]}
+        for paper in packet["papers"]:
+            route = originals[paper["paper_id"]].get("first_pass")
+            if not route:
+                continue
+            self.assertEqual(paper["first_pass"]["sections"], route["sections"])
+            self.assertEqual(paper["first_pass"].get("stated_at"), route.get("stated_at"))
+            self.assertEqual(paper["first_pass"]["stated_by_the_paper"], route["stated_by_the_paper"])
+            self.assertEqual(paper["first_pass"].get("unresolved_count", 0), route["unresolved_count"])
+
+    def test_unresolved_reading_route_warning_remains_visible(self):
+        corpus = copy.deepcopy(self.corpus)
+        paper = next(row for row in corpus["papers"] if row.get("first_pass"))
+        paper["first_pass"]["unresolved_count"] = 2
+        original_load = query_corpus.load
+        with patch.object(query_corpus, "load", side_effect=lambda path:
+                          corpus if path == "docs/papers/corpus.json" else original_load(path)):
+            packet = query_corpus.paper_reading_guide_packet()
+        visible = next(row for row in packet["papers"] if row["paper_id"] == paper["paper_id"])
+        self.assertEqual(visible["first_pass"]["unresolved_count"], 2)
 
     def test_projection_is_idempotent(self):
         result = taxonomy.build(self.corpus, ROOT)
