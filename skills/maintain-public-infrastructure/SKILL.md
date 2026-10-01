@@ -228,11 +228,22 @@ For skill installation, content identity must survive an edit that preserves
 file size and timestamp. Exercise the actual preview, check, refused collision
 and explicitly forced replacement; metadata equality is not content equality.
 Keep the repair compatible with the minimum supported Python version.
+Reject source and destination overlaps before preview or mutation. Inspect
+source aliases through parent links and link targets, and compare existing
+entry identities where different spellings can name the same directory.
+Treat an existing destination symlink as an entry to replace, so its target
+remains intact. Exercise safe aliases as well as refused overlaps.
 Prepare a replacement before moving an installed skill. Exercise preparation,
 promotion and restoration failures, including symlinks, and keep a recoverable
 backup if restoration fails. A multi-file generated refresh must also restore
 its previous outputs when an ordinary write or promotion fails; validate inputs
 before preparing any output.
+
+For the writing papers, require every discovered manuscript include to appear
+in the version manifest's semantic review digest, including nested includes
+and compact-guide fragments. A current exporter receipt does not establish
+that the skill review covered every input. Only the canonical shared paper
+resources are exempt; an arbitrary `shared_input` label cannot exempt guidance.
 
 For publication growth, conservation means preserving each existing artifact's
 identity and download name while admitting newly registered papers. Test a

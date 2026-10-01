@@ -97,7 +97,61 @@ def status(source: Path, destination: Path, mode: str) -> str:
     return "current" if same_tree(source, destination) else "different"
 
 
+def same_entry(left: Path, right: Path) -> bool:
+    if left == right:
+        return True
+    try:
+        left_stat, right_stat = left.lstat(), right.lstat()
+    except (FileNotFoundError, NotADirectoryError):
+        return False
+    return (left_stat.st_dev, left_stat.st_ino) == (right_stat.st_dev, right_stat.st_ino)
+
+
+def overlapping_entries(left: Path, right: Path) -> bool:
+    # Path.resolve() preserves spelling on a case-insensitive filesystem.
+    # Compare existing entry identities as well as ancestor path strings,
+    # without following a leaf symlink that is safe to replace.
+    return any(same_entry(left, parent) for parent in (right, *right.parents)) or any(
+        same_entry(right, parent) for parent in left.parents
+    )
+
+
+def source_access_entries(source: Path) -> set[Path]:
+    """Include links traversed through other links' targets, not just parents."""
+    entries = {source.resolve(), source.parent.resolve() / source.name}
+    pending = [source]
+    seen_links = set()
+    while pending:
+        access = pending.pop()
+        for part in (access, *access.parents):
+            if part.is_symlink():
+                entry = part.parent.resolve() / part.name
+                entries.add(entry)
+                if entry not in seen_links:
+                    seen_links.add(entry)
+                    target = part.readlink()
+                    pending.append(target if target.is_absolute() else part.parent / target)
+    return entries
+
+
+def validate_destination(source: Path, destination: Path, mode: str) -> None:
+    source_path = source.resolve()
+    # Replacement moves the destination entry, not a symlink's target. Resolve
+    # its parent so aliases cannot conceal an overlap with the source tree.
+    destination_path = destination.parent.resolve() / destination.name
+    if same_entry(source_path, destination_path) and mode == "copy":
+        return
+    if any(
+        overlapping_entries(candidate, destination_path)
+        for candidate in source_access_entries(source)
+    ):
+        raise ValueError(
+            f"skill source and destination must not overlap: {source} -> {destination} ({mode})"
+        )
+
+
 def install_one(source: Path, destination: Path, mode: str, force: bool) -> None:
+    validate_destination(source, destination, mode)
     state = status(source, destination, mode)
     if state == "current":
         return
@@ -183,7 +237,10 @@ def main() -> int:
     try:
         target = target_directory(args)
         chosen = selected_skills(args, available)
-    except ValueError as exc:
+        # Validate every selection before printing or installing any of them.
+        for name, source in chosen.items():
+            validate_destination(source, target / name, args.mode)
+    except (OSError, ValueError) as exc:
         print(f"error: {exc}", file=sys.stderr)
         return 2
 

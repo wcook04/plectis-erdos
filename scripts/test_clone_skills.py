@@ -140,6 +140,113 @@ def check_invalid_destination_cli() -> None:
                     raise AssertionError("invalid destination advertised a skill or changed user material")
 
 
+def check_overlapping_installation_paths() -> None:
+    """Invalid selections must fail before preview, staging, or replacement."""
+    with tempfile.TemporaryDirectory(prefix="plectis-skill-overlap-") as temp:
+        root = Path(temp)
+        name = "writing"
+        source = root / name
+        source.mkdir()
+        original = b"source instructions\n"
+        (source / "SKILL.md").write_bytes(original)
+        parent_alias = root / "source-alias"
+        parent_alias.symlink_to(source, target_is_directory=True)
+        ancestor = root / "ancestor" / name
+        nested_source = ancestor / "nested"
+        nested_source.mkdir(parents=True)
+        (ancestor / "SKILL.md").write_bytes(b"ancestor material\n")
+        (nested_source / "SKILL.md").write_bytes(original)
+        source_alias = ancestor / "source-alias"
+        source_alias.symlink_to(source, target_is_directory=True)
+        checkout_alias = ancestor / "checkout-alias"
+        checkout_alias.symlink_to(root, target_is_directory=True)
+        chained_alias = root / "chained-alias"
+        chained_alias.symlink_to(checkout_alias / name, target_is_directory=True)
+
+        cases = (
+            (source, source / "references"),
+            (source, parent_alias / "references"),
+            (nested_source, ancestor.parent),
+            (source_alias, ancestor.parent),
+            (checkout_alias / name, ancestor.parent),
+            (chained_alias, ancestor.parent),
+        )
+        # Linux commonly uses case-sensitive filesystems; macOS commonly does
+        # not. Exercise the real alias only where both spellings are one entry.
+        case_alias = root / name.upper()
+        if case_alias.exists() and os.path.samefile(source, case_alias):
+            cases += ((source, case_alias / "references"),)
+        for mode in ("copy", "symlink"):
+            for selected, target in cases:
+                destination = target / name
+                for options in ((), ("--check",), ("--apply",), ("--force", "--apply")):
+                    stdout, stderr = io.StringIO(), io.StringIO()
+                    args = [str(INSTALLER), "--target-dir", str(target), "--skill", name,
+                            "--mode", mode, *options]
+                    with patch.object(sys, "argv", args), \
+                            patch.object(installer, "skill_directories", return_value={name: selected}), \
+                            contextlib.redirect_stdout(stdout), contextlib.redirect_stderr(stderr):
+                        assert installer.main() == 2
+                    assert not stdout.getvalue(), stdout.getvalue()
+                    assert "must not overlap" in stderr.getvalue() and "Traceback" not in stderr.getvalue()
+                    assert (selected / "SKILL.md").read_bytes() == original
+                    assert (ancestor / "SKILL.md").read_bytes() == b"ancestor material\n"
+                    assert parent_alias.is_symlink()
+                    assert source_alias.is_symlink()
+                    assert checkout_alias.is_symlink()
+                    assert chained_alias.is_symlink()
+                with patch.object(installer.tempfile, "mkdtemp", side_effect=AssertionError("staged unsafe install")):
+                    try:
+                        installer.install_one(selected, destination, mode, True)
+                    except ValueError as error:
+                        assert "must not overlap" in str(error)
+                    else:
+                        raise AssertionError("direct unsafe installation accepted")
+
+        # The source itself is already a current copy. Replacing it with a
+        # symlink would delete the tree and point the installed link at itself.
+        with patch.object(installer.tempfile, "mkdtemp", side_effect=AssertionError("staged current copy")):
+            installer.install_one(source, source, "copy", True)
+        for options in ((), ("--check",), ("--apply",), ("--force", "--apply")):
+            stdout, stderr = io.StringIO(), io.StringIO()
+            args = [str(INSTALLER), "--target-dir", str(root), "--skill", name,
+                    "--mode", "symlink", *options]
+            with patch.object(sys, "argv", args), \
+                    patch.object(installer, "skill_directories", return_value={name: source}), \
+                    contextlib.redirect_stdout(stdout), contextlib.redirect_stderr(stderr):
+                assert installer.main() == 2
+            assert not stdout.getvalue() and "must not overlap" in stderr.getvalue()
+            assert (source / "SKILL.md").read_bytes() == original
+        if case_alias.exists() and os.path.samefile(source, case_alias):
+            with patch.object(installer.tempfile, "mkdtemp", side_effect=AssertionError("staged case alias")):
+                installer.install_one(source, case_alias, "copy", True)
+                try:
+                    installer.install_one(source, case_alias, "symlink", True)
+                except ValueError as error:
+                    assert "must not overlap" in str(error)
+                else:
+                    raise AssertionError("case alias replaced the source")
+
+        # A leaf symlink may legitimately be replaced by a copy. Its target
+        # must remain intact; resolving the leaf would wrongly reject this.
+        destination = root / "installed" / name
+        destination.parent.mkdir()
+        destination.symlink_to(source, target_is_directory=True)
+        installer.install_one(source, destination, "copy", True)
+        assert not destination.is_symlink()
+        assert (source / "SKILL.md").read_bytes() == original
+        assert (destination / "SKILL.md").read_bytes() == original
+        safe_alias = root / "outside-checkout-alias"
+        safe_alias.symlink_to(root, target_is_directory=True)
+        for mode in ("copy", "symlink"):
+            safe_destination = root / f"safe-{mode}" / name
+            installer.install_one(safe_alias / name, safe_destination, mode, True)
+            assert (safe_destination / "SKILL.md").read_bytes() == original
+            assert safe_alias.is_symlink()
+        assert not (source / "references").exists()
+        assert not list(root.rglob(".writing.install-*"))
+
+
 def check_failed_installation_preserves_material() -> None:
     with tempfile.TemporaryDirectory(prefix="plectis-failed-skill-test-") as temp:
         root = Path(temp)
@@ -246,6 +353,7 @@ def check_failed_installation_preserves_material() -> None:
 
 def main() -> int:
     check_invalid_destination_cli()
+    check_overlapping_installation_paths()
     check_failed_installation_preserves_material()
     readme = (ROOT / "README.md").read_text(encoding="utf-8")
     skill_index = (ROOT / "skills" / "README.md").read_text(encoding="utf-8")

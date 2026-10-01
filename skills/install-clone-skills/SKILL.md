@@ -32,6 +32,10 @@ python3 scripts/install_agent_skills.py --target-dir /absolute/path/to/skills
 ```
 
 The preview reports `missing`, `current`, or `different`. It does not write.
+Choose a destination outside the selected source skill directories. The
+installer rejects ancestor or descendant overlaps before preview or apply,
+including paths reached through a parent symlink. A copy onto its own source
+is already current; replacing that source with a symlink is refused.
 
 ## Install and verify
 

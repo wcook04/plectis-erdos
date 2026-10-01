@@ -13,7 +13,9 @@ non-procedural changes whose recorded reason explains why no instruction changed
 The paper-input digest is SHA256 of UTF-8 compact JSON: selected manifest rows
 reduced to {path, sha256, role}, sorted by (path, role, sha256), with sorted object
 keys, ensure_ascii=True and separators=(",", ":"). Only compact_guide_source,
-companion_source and companion_input participate; shared style is excluded.
+compact_guide_input, companion_source and companion_input participate; the
+canonical shared paper resources are excluded. Every discovered manuscript
+input outside those shared resources must have a participating manifest row.
 
 This owner copies existing generated Markdown without exporting or rewriting it.
 Exporter receipts must bind that Markdown to its byte digest, current source,
@@ -32,13 +34,17 @@ import shutil
 import tempfile
 from pathlib import Path
 
-from sync_publication_pdfs import source_input_closure_digest
+from sync_publication_pdfs import (
+    SHARED_PAPER_RESOURCES, manuscript_input_paths, source_input_closure_digest,
+)
 
 ROOT = Path(__file__).resolve().parents[1]
 MANIFEST = "docs/papers/exposition-method/version.json"
 CORPUS = "docs/papers/corpus.json"
 SKILL = "skills/public-mathematical-writing/SKILL.md"
-PAPER_INPUT_ROLES = frozenset({"compact_guide_source", "companion_source", "companion_input"})
+PAPER_INPUT_ROLES = frozenset({
+    "compact_guide_source", "compact_guide_input", "companion_source", "companion_input",
+})
 PAPERS = (
     ("writing-a-good-mathematical-paper", "compact_guide_source", "compact_guide_pdf", "writing-guide.md"),
     ("writing-mathematics-from-reviewed-revisions", "companion_source", "companion_pdf", "worked-companion.md"),
@@ -136,6 +142,15 @@ def validated_manifest(root: Path) -> dict:
     skill_rows = [row for row in files if row["role"] == "skill"]
     if len(skill_rows) != 1 or skill_rows[0]["path"] != SKILL:
         fail(f"{MANIFEST}: the skill role must bind exactly {SKILL}")
+    semantic_paths = {row["path"] for row in files if row["role"] in PAPER_INPUT_ROLES}
+    for paper_id, _, _, _ in PAPERS:
+        source = f"paper/exposition/{paper_id}.tex"
+        inputs = set(manuscript_input_paths(root, source)) - set(SHARED_PAPER_RESOURCES)
+        if inputs - semantic_paths:
+            fail(
+                f"{MANIFEST}: manuscript inputs missing from semantic review: "
+                f"{sorted(inputs - semantic_paths)}"
+            )
     review = manifest.get("paper_skill_review")
     if not isinstance(review, dict):
         fail(f"{MANIFEST}: missing paper_skill_review reconciliation record")

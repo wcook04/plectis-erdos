@@ -71,6 +71,7 @@ class WritingSkillSyncTests(unittest.TestCase):
         inputs = [source, "paper/paper-house-style.sty"]
         if paper_id == COMPANION:
             inputs.append("paper/exposition/parts/lesson.tex")
+        inputs.extend(getattr(self, "extra_inputs", {}).get(paper_id, ()))
         # Known fixture inputs certify the receipt independently of the
         # production input-discovery helper used by the exporter and checker.
         input_record = "\n".join(
@@ -105,7 +106,8 @@ class WritingSkillSyncTests(unittest.TestCase):
         # owner being tested to certify its own input or its review record.
         inputs = [{key: row[key] for key in ("path", "sha256", "role")}
                   for row in self.manifest["files"]
-                  if row["role"] in ("compact_guide_source", "companion_source", "companion_input")]
+                  if row["role"] in ("compact_guide_source", "compact_guide_input",
+                                     "companion_source", "companion_input")]
         inputs.sort(key=lambda row: (row["path"], row["role"], row["sha256"]))
         encoded = json.dumps(inputs, sort_keys=True, separators=(",", ":"), ensure_ascii=True).encode()
         self.manifest["paper_skill_review"] = {
@@ -245,6 +247,76 @@ class WritingSkillSyncTests(unittest.TestCase):
         self.refresh_bindings()
         self.save()
         self.assert_refusal_preserves_outputs("stale paper_skill_review.paper_inputs_sha256")
+
+    def add_unlisted_inputs(self, paper_id, *, nested=False):
+        source = f"paper/exposition/{paper_id}.tex"
+        stem = f"new-guidance-{paper_id}"
+        new_input = f"paper/exposition/parts/{stem}.tex"
+        self.put(source, (self.root / source).read_bytes() + f"\\input{{parts/{stem}}}\n".encode())
+        self.put(new_input, b"New writing procedure.\n")
+        if not hasattr(self, "extra_inputs"):
+            self.extra_inputs = {}
+        self.extra_inputs[paper_id] = [new_input]
+        if nested:
+            inner = "paper/exposition/parts/nested/decision.sty"
+            self.put(new_input, b"\\include{nested/decision.sty}\n")
+            self.put(inner, b"A nested writing decision.\n")
+            self.extra_inputs[paper_id].append(inner)
+        self.refresh_bindings()
+        self.reconcile()
+        return new_input
+
+    def check_unlisted_include_with_fresh_exporter_receipts(self, paper_id):
+        self.run_owner("--write")
+        relative = self.add_unlisted_inputs(paper_id)
+        self.assert_refusal_preserves_outputs("manuscript inputs missing from semantic review")
+        self.assertIn(relative, self.run_owner("--check", expected=2).stderr)
+
+    def test_unlisted_companion_include_is_rejected_with_fresh_exporter_receipts(self):
+        self.check_unlisted_include_with_fresh_exporter_receipts(COMPANION)
+
+    def test_unlisted_guide_include_is_rejected_with_fresh_exporter_receipts(self):
+        self.check_unlisted_include_with_fresh_exporter_receipts(GUIDE)
+
+    def test_included_guidance_cannot_be_exempted_by_assigning_shared_input(self):
+        self.run_owner("--write")
+        relative = self.add_unlisted_inputs(COMPANION)
+        self.manifest["files"].append({
+            "path": relative, "role": "shared_input",
+            "sha256": digest((self.root / relative).read_bytes()),
+        })
+        self.reconcile()
+        self.assert_refusal_preserves_outputs("manuscript inputs missing from semantic review")
+
+    def test_nested_include_requires_semantic_coverage_even_with_non_tex_extension(self):
+        self.run_owner("--write")
+        relative = self.add_unlisted_inputs(COMPANION, nested=True)
+        self.manifest["files"].append({
+            "path": relative, "role": "companion_input",
+            "sha256": digest((self.root / relative).read_bytes()),
+        })
+        self.reconcile()
+        self.assert_refusal_preserves_outputs("parts/nested/decision.sty")
+
+    def test_registered_new_input_edit_requires_new_skill_review_for_each_paper(self):
+        for paper_id, role in ((GUIDE, "compact_guide_input"), (COMPANION, "companion_input")):
+            with self.subTest(paper=paper_id):
+                relative = self.add_unlisted_inputs(paper_id)
+                existing = next((row for row in self.manifest["files"] if row["path"] == relative), None)
+                if existing is None:
+                    self.manifest["files"].append({"path": relative, "role": role,
+                                                  "sha256": digest((self.root / relative).read_bytes())})
+                else:
+                    existing["role"] = role
+                self.reconcile()
+                self.run_owner("--write")
+                self.put(relative, f"Changed procedure for {paper_id}.\n".encode())
+                self.refresh_bindings()
+                self.save()
+                self.assert_refusal_preserves_outputs("stale paper_skill_review.paper_inputs_sha256")
+                self.reconcile()
+                self.run_owner("--write")
+                self.run_owner("--check")
 
     def test_skill_edit_requires_manifest_and_review_refresh(self):
         self.run_owner("--write")
