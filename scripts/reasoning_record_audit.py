@@ -93,8 +93,9 @@ def normalized(text: str) -> str:
     return re.sub(r'\s+', ' ', text).strip()
 
 
-def statement_text(loc: coverage.Located, source: str) -> str:
-    text = '\n'.join(coverage.counter_view(source).splitlines()[loc.line - 1:loc.end_line])
+def statement_text(loc: coverage.Located, source: str, *, counter_lines: list[str] | None = None) -> str:
+    lines = coverage.counter_view(source).splitlines() if counter_lines is None else counter_lines
+    text = '\n'.join(lines[loc.line - 1:loc.end_line])
     env = loc.row.get('environment')
     if env:
         begin, end = '\\begin{' + env + '}', '\\end{' + env + '}'
@@ -223,6 +224,13 @@ def registered_support(row: dict, inputs: Inputs, margin_links: dict, decl_cache
 
 def _report(root: Path = ROOT, problems: list[int] | None = None) -> dict:
     inputs = Inputs(root)
+    # Each report reads an immutable local input snapshot. Strip comments and
+    # split each file once, rather than once per assertion in a long paper.
+    statement_lines: dict[str, list[str]] = {}
+    def assertion_text(loc: coverage.Located) -> str:
+        if loc.path not in statement_lines:
+            statement_lines[loc.path] = coverage.counter_view(inputs.read(loc.path)).splitlines()
+        return statement_text(loc, '', counter_lines=statement_lines[loc.path])
     for rel in ('scripts/reasoning_record_audit.py', 'scripts/assemble_reasoning_surfaces.py',
                 'scripts/check_lean_paper_propagation.py', 'scripts/lean_source.py',
                 'scripts/build_reading_edition.py', 'docs/papers/paper_corpus_renderer.py'):
@@ -397,7 +405,7 @@ def _report(root: Path = ROOT, problems: list[int] | None = None) -> dict:
             labels = found['labels']
             pseudo = coverage.Located({'id': (labels or ['unlabelled'])[0], 'environment': found['environment']},
                                       found['path'], found['line'], found['end_line'])
-            body = statement_text(pseudo, inputs.read(found['path']))
+            body = assertion_text(pseudo)
             buckets[normalized(body)].append(found)
         for key, group in buckets.items():
             if len(group) > 1:
@@ -432,12 +440,12 @@ def _report(root: Path = ROOT, problems: list[int] | None = None) -> dict:
             sloc = currency.located.get(c['short_claim'])
             if sloc is None:
                 continue
-            a = normalized(statement_text(sloc, texts[sloc.path]))
+            a = normalized(assertion_text(sloc))
             for candidate in c['candidates']:
                 if candidate['basis'] != 'label_alias':
                     continue
                 gloc = currency.located[candidate['long_claim']]
-                b = normalized(statement_text(gloc, texts[gloc.path]))
+                b = normalized(assertion_text(gloc))
                 ratio = difflib.SequenceMatcher(None, a, b, autojunk=False).ratio()
                 if a != b and ratio >= .88:
                     findings.append({'code': 'possible_stale_passage', 'severity': 'review',
