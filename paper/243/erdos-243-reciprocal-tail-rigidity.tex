@@ -166,8 +166,14 @@ $1/a_{n+1}$ sum to at most $2/a_{n+2}\le4/a_{n+1}^2$, so
  \qquad
  \frac{C_{n+1}}{C_n}=\frac{a_n^2}{a_{n+1}}+O(1/a_n).
 \end{equation}
-For the second estimate, use $C_{n+1}/C_n=a_nx_{n+1}/x_n$ in the
-first. Quadratic growth makes $1/a_n=o(n^{-k})$ for every fixed $k$,
+For the second estimate, the first gives $a_nx_n=1+O(1/a_n)$. Use this in
+\[
+ \frac{C_{n+1}}{C_n}
+ =\frac{a_n^2}{a_{n+1}}\,
+  \frac{a_{n+1}x_{n+1}}{a_nx_n}.
+\]
+The last factor is $1+O(1/a_n)$, and $a_n^2/a_{n+1}\to1$, giving the
+stated additive error. Quadratic growth makes $1/a_n=o(n^{-k})$ for every fixed $k$,
 so this error preserves the precision required in the cubic theorem.
 We keep the original index $n$ throughout that proof. Although an
 eventual recurrence survives removal of a finite prefix, the expression
@@ -915,7 +921,8 @@ gives
  \frac{(1-\theta_n)(a_n-1+\theta_{n+1})}{a_{n+1}},
  \qquad 0<\gamma_n+\theta_n<3/a_n
 \]
-eventually. Thus the two nonnegative summands
+eventually. Taking positive parts cannot increase the absolute difference.
+Since $V_n=U_n\theta_n$, the two nonnegative summands
 $U_nf(U_n)(\gamma_n-B/U_n)_+$ and $(-V_n-B)_+f(U_n)$ differ by at most
 $3U_nf(U_n)/a_n$. We verify that this comparison error is summable. Since $a_nx_n\to1$, we have $C_n/a_n\sim qP_n/a_n^2$, and
 \[
@@ -1225,15 +1232,15 @@ The companion's
 \href{erdos243-reciprocal-tail-reasoning-surface.pdf\#243-long-indexing}{indexing subsection}
 gives this finite-prefix bridge.
 
-\paragraph{Verification.}
-The margin marks link statements to fixed-revision Lean declarations
-and recorded Comparator evidence. The printed cubic argument uses
-Chebotarev, while the supplied formal square-specialisation proof uses
-a Dedekind-zeta pole comparison. Agreement of their conclusions does
-not verify each step of the printed argument. No Lean build, Comparator
-replay or independent review was performed for this revision, and the
-evidence records retain source-pin and index gaps.
-The estimate in Section~\ref{sec:open} remains open.
+\section{Verification and reproducibility}\label{app:verification}
+\evidenceparagraph{\evidencerecordurl}
+The links identify fixed-revision Lean declarations and recorded
+Comparator checks. The printed cubic argument uses Chebotarev; the
+formal square-specialisation proof uses a Dedekind-zeta pole comparison.
+Their common conclusion does not check each step of the printed proof.
+This revision includes no new Lean build, Comparator replay or independent
+review. The evidence record retains source-pin and index gaps, and the
+estimate in Section~\ref{sec:open} remains open.
 
 \noindent The formal
 \lword{Erdos243/FiniteHorizonResidue.lean}{134}{forcedSurvives_iff_of_modEq_factorial}{factorial

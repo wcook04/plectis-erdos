@@ -61,6 +61,24 @@ alternatives and counterexamples where they explain the scope or a failed
 method. Material that serves only the revision history can remain in the
 editorial record rather than interrupting the mathematical argument.
 
+\subsection{Put verification details where they can be checked}
+
+The mathematical argument should state its hypotheses and explain the
+inference. An exact computation may be part of that inference; give its
+mathematical input, output and finite scope at the point of use. Put the
+software version, source identifiers, replay commands and review history in
+one verification and reproducibility section or appendix. Refer there from
+a theorem when its evidence class matters. This keeps proof status available
+without making a reader decode repository machinery between proof steps.
+
+Give a single account of a shared limitation, then repeat it only when a
+different claim would otherwise appear unconditional. A conditional premise
+belongs beside the statement it conditions; an editorial disclaimer does
+not need to recur after every equation. For an omitted proof, name its
+mathematical destination by section or theorem and cite the original source
+where an external result is used. A reference to a file or a ``long record''
+alone does not tell a reader which argument to inspect.
+
 \subsection{How the practice developed}
 
 The recorded process began with reviewers proposing changes to particular
@@ -258,6 +276,11 @@ are maintained in the public repository~\cite{ledger,skill}. The accompanying
 editorial return documents the new-return examples separately from the accepted
 historical cases. The public writing method and its review ledger record
 selected guidance, with source-reading and acceptance boundaries preserved.
+The worked revisions were made across papers on eight Erd\H{o}s problems.
+Some agents worked from frozen packets; others integrated changes against the
+live repository. Their editorial judgements do not measure how independent
+mathematical readers understood the papers. The method has not been tested
+for improved reader comprehension.
 Will Cook built and directed the research infrastructure and reviewed
 the claims when he could. AI agents did most of the research and drafting.
 Cook did not independently verify every claim.

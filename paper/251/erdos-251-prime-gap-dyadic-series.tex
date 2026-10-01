@@ -618,16 +618,16 @@ For every integer $h\ge1$ and every cutoff $N_0$, exhibit $N\ge N_0$ with
 
 A solution would give a nonintegral shift arbitrarily late for every
 $h$, and hence irrationality by Theorem~\ref{res:escape-irrational}.
-All three conditions must hold at the same index; witnesses for the
-separate conditions cannot be combined without further information.
+All three conditions must hold at the same index; separate infinite
+sets of small-difference and mismatch witnesses do not suffice.
+
 By Proposition~\ref{res:signedwindow}, such an index must have
 $\delta_N=\pm2$.  Schlage-Puchta's lemma
 \cite[Lemma~4]{schlagepuchta2011}, applied to $x_h-x_0\pm2$, shows that
 these eligible indices already have density zero.  Thus the required
-witnesses concern a rare event.  The absolute block comparison in
-Proposition~\ref{res:sparserationalisation} does not control its relative
-frequency, and separate infinite sets of small-difference and mismatch
-witnesses would not suffice.
+witnesses concern a rare event whose relative frequency is not controlled
+by the absolute block comparison in
+Proposition~\ref{res:sparserationalisation}.
 
 \subsection{Finite separation from the integers}
 To decide nonintegrality from finitely many gaps, we bound the part of
@@ -637,8 +637,23 @@ $\sum_nM(n)2^{-n}<\infty$, and write
  S_{h,N,L}=\sum_{j=1}^L(g_{N+h+j}-g_{N+j})2^{-j},\qquad
  R_{h,N,L}(M)=\sum_{j>L}(M(N+h+j)+M(N+j))2^{-j}.
 \]
-Then $|D_N-S_{h,N,L}|\le R_{h,N,L}(M)$.  A general real majorant need
-not give an effective remainder bound, but the polynomial choice below does.
+Splitting the complete tails after $L$ terms gives
+\[
+ D_N=S_{h,N,L}+2^{-L}D_{N+L},\qquad
+ |D_N-S_{h,N,L}|\le R_{h,N,L}(M).
+\]
+The uncomputed part is another complete tail difference, with the same
+shift $h$.  The criterion below uses only the displayed bound; a general
+real majorant need not make that bound computable.
+
+For the actual prime gaps, one computable choice is $M(n)=1250(n+2)^4$.
+For $P(x)=x^4+8x^3+36x^2+104x+150$, summing the identity
+$2P(x)=(x+1)^4+P(x+1)$ with dyadic weights gives
+$\sum_{j\ge1}(x+j)^4 2^{-j}=P(x)$ and hence
+\[
+ R_{h,N,L}(M)=1250\,2^{-L}
+             \bigl(P(N+h+L+2)+P(N+L+2)\bigr).
+\]
 
 \begin{proposition}[finite separation criterion]\label{res:truncation}
 If for every $h\ge1$ and every cutoff $N_0$ there are $N\ge N_0,L\ge1$ with
@@ -667,14 +682,6 @@ The companion, Appendix~D.2, gives an explicit example distinguishing
 refinement at a fixed value from enclosures of changing values.
 \end{remark}
 
-We obtain a computable bound by taking $M(n)=1250(n+2)^4$.
-For $P(x)=x^4+8x^3+36x^2+104x+150$, summing the identity
-$2P(x)=(x+1)^4+P(x+1)$ with dyadic weights gives
-$\sum_{j\ge1}(x+j)^4 2^{-j}=P(x)$ and hence
-\[
- R_{h,N,L}(M)=1250\,2^{-L}
-             \bigl(P(N+h+L+2)+P(N+L+2)\bigr).
-\]
 Separation from $\Z$ does not specify either interval in
 Proposition~\ref{res:signedwindow}.  To certify \eqref{eq:smallpair},
 suppose $\delta_N=2s$, where $s\in\{-1,1\}$, and $|QD_N-A|\le B$,
@@ -744,16 +751,18 @@ The results on bounded prime gaps \cite{zhang2014}, clusters of each
 fixed size \cite{maynard2015,polymath2014}, and extreme large gaps
 \cite{fgkmt2018} do not give the simultaneous inequalities in \eqref{eq:smallpair}.
 This remains so with Polymath's bound $\liminf_n g_n\le246$
-\cite[Theorem~1.4(i)]{polymath2014}.  At a logarithmic truncation depth
-the explicit remainder tends to zero, but the finite sum must still be
-separated from the relevant boundary by a larger margin.
+\cite[Theorem~1.4(i)]{polymath2014}.  For fixed $h$ and $\varepsilon>0$,
+taking $L=\lceil(4+\varepsilon)\log_2(N+2)\rceil$ in the polynomial
+remainder gives an error $O_{h,\varepsilon}(N^{-\varepsilon})$.
+The finite sum must still be separated from the relevant boundary by
+more than this error.
 For the actual prime series, nonintegral shifts are needed arbitrarily
 late for every positive length.  Problem~\ref{prob:smallpair} would
 supply them.  The perturbation theorem concerns the insufficiency of the
 specified congruences and block statistics, and leaves possible arguments
 using primality or quantitative rare-event estimates untouched.
 
-\section{Sources and further comparisons}\label{sec:pinned-lean-sources}
+\section{Verification and reproducibility}\label{sec:pinned-lean-sources}
 \evidenceparagraph{\evidencerecordurl}
 The linked Lean declarations use Lean~4 \cite{lean4} and mathlib
 \cite{mathlib}.  The formal proof of

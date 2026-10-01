@@ -160,7 +160,9 @@ For an omitted positive residue $r=k^tu$ with $t\ge1$ and $k\nmid u$,
 we have $t<j$ because $0<r<k^j$. Put $m=k^{j-t}n+u$. A prime $p\mid k$ divides $m$ exactly when it divides
 $u$. The product formula for $\varphi(k^tm)/\varphi(m)$ therefore
 contributes $k^t$ and one factor $1-1/p$ for each prime $p\mid k$
-absent from $u$. This gives $C_k(t,u)$ and proves that the stated family spans $V_{k,e}$.
+absent from $u$. The multiplier is an integer: its denominator is a
+product of distinct primes dividing $k$, and therefore divides $k^t$.
+This gives $C_k(t,u)$ and proves that the stated family spans $V_{k,e}$.
 
 \subsection*{Affine independence}
 Independence follows from Martin's theorem. For any ordering of
@@ -600,7 +602,10 @@ $\|\Delta_h(N)\|_{\R/\Z}>0$. Choose $L$ so that
 $2^L\|\Delta_h(N)\|_{\R/\Z}>2B$: the left side grows exponentially,
 whereas $B=N+h+L+2$ grows linearly. The same error estimate gives
 \eqref{eq:r3-certificate}. This detects every nonintegral difference
-at some depth; it does not produce such a difference for each $h$.
+at some depth. A failed test at one depth proves no integrality:
+the error interval may simply be too wide to separate the value from
+$\Z$. Increasing the depth eventually detects each fixed nonintegral
+difference, but does not produce such a difference for each $h$.
 For example, $D_{1,12,16}=-143140$ has residue $53468$ modulo $2^{16}$,
 and $B=31$, so it excludes denominators dividing $2^{12}$.
 
@@ -621,7 +626,7 @@ $\Delta_{(t+1)d}(N)\equiv2^d\Delta_{td}(N)+\Delta_d(N)\pmod\Z$
 prevents two consecutive large shifts from both failing the test.
 Two failures would force the fixed nonintegral $\Delta_d(N)$ arbitrarily
 close to an integer. The estimates are in
-\longrecord{long249-r3-ray}{Appendix A of the long record}.
+\longrecord{long249-r3-ray}{Appendix A of the companion paper}.
 A single pair $d,N$ need not imply irrationality; the final assertion
 requires every positive $d$ and every $N\ge0$.
 
@@ -635,8 +640,12 @@ $v\ge1$, some positive multiple $H$ of $\ph(v)$ satisfies
  c+H+1<(-B_{H,c})\bmod M<M-(c+H+1).
 \end{equation}
 \end{equivform}
-The \longrecord{long249-r3-mersenne}{proof and residue recurrence} use
-$B_{H,c}=M(vR_c)-\Delta_H(c)$ and the linear tail bound.
+The choice of modulus makes
+$B_{H,c}=M(vR_c)-\Delta_H(c)$. Under the hypothetical rationality
+assumption, $vR_c$ is an integer, so the first term is a multiple of
+$M$ and only the small tail difference remains modulo $M$.
+The \longrecord{long249-r3-mersenne}{proof and residue recurrence}
+also give the converse by keeping $c,v$ fixed and letting $H$ grow.
 The required residues have not been shown to exist for every choice
 of the parameters in either test. A separate
 \longrecord{long249-r3-farey}{Farey-interval calculation} at depth $240$
@@ -646,8 +655,18 @@ excludes $S=a/q$ for $0<q\le Q_0\approx7.96\times10^{34}$.
 Large ranks alone cannot settle the series question. There is an integer
 sequence $c$ with $0\le c(n)\le n$, unchanged odd totients and
 $|c(n)-\varphi(n)|\le2$ at even indices, for which
-$\sum c(n)2^{-n}=5/4$. Its integral carry still has dyadic rank at least
-$2^e-1$ through every positive level.
+$\sum c(n)2^{-n}=5/4$. Its carry is the integer sequence
+\[
+ u_N=4\sum_{j\ge1}c(N+j)2^{-j}
+     =5\cdot2^N-4\sum_{n=1}^{N}c(n)2^{N-n}.
+\]
+For $j\ge1$ and odd $0<r<2^j$, the recurrence gives
+\[
+ 4\varphi(2^jn+r)=2u_{2^jn+r-1}-u_{2^jn+r}.
+\]
+Thus the $2^e-1$ independent odd-residue totient sections lie in the
+span of the carry sections through level $e$. This explains how the
+rank lower bound survives even though the sum is rational.
 The \longrecord{long249-r3-comparisons}{construction and its limitations}
 explain why it fails the exact prime-dilation laws of $\varphi$.
 The same section retains the cofinal LCM-diagonal criterion, its endpoint
@@ -804,14 +823,15 @@ other totient values in the window. That correlation theorem supplies
 neither of the two remaining estimates. Establishing them for the
 actual totient is the unresolved arithmetic step.
 
-\paragraph{Verification.}
+\section*{Verification and reproducibility}
 \evidenceparagraph{\evidencerecordurl}
-The \longrecord{long249-r3-declarations}{declaration guide} preserves
-the individual formal-source links for the short paper, including the
-three results whose full proofs appear in Appendix~A of the long record. The displayed arguments and the signed interpolation proof
-are to be read as ordinary mathematical proofs. Recorded Lean and
-Comparator checks refer to their exact declarations and source versions;
-this revision makes no claim of a new formal run or independent review.
+The \longrecord{long249-r3-declarations}{declaration guide} links the
+formal sources for this paper. Complete proofs of three cited results
+appear in Appendix~A of the companion paper. The displayed arguments,
+including signed interpolation, require ordinary mathematical review;
+the recorded Lean and Comparator checks cover their specified
+declarations and source versions. No new formal run or independent
+review was performed for this revision.
 
 \paragraph{Acknowledgement.}
 I thank Wouter van Doorn for advice on writing for a first-time reader

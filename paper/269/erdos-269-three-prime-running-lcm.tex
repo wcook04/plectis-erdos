@@ -782,9 +782,17 @@ $f_\ell(i)$ and $G_\ell(j,k)$, $0\le\ell<d$, satisfying
 \end{theorem}
 
 \begin{proof}
-For fixed $k$, we rescale rows and columns to obtain a matrix independent
-of $k$.  Put $c=r^{-1}$, $x_i=\{i\log_r p\}$ and $y_j=\{j\log_r q\}$,
-where braces denote fractional parts.  Splitting the floor exponents gives
+For fixed $k$, the powers of $p$ and $q$ split into a row factor and a
+column factor, as in the two-prime case. The power of $r$ has one remaining
+interaction between the indices. Put $c=r^{-1}$, $x_i=\{i\log_r p\}$ and
+$y_j=\{j\log_r q\}$, where braces denote fractional parts. Then
+\[
+ \lfloor i\log_r p+j\log_r q\rfloor
+ =\lfloor i\log_r p\rfloor+\lfloor j\log_r q\rfloor
+   +\mathbf1_{\{x_i+y_j\ge1\}}.
+\]
+The last term is the carry when the two fractional parts are added.
+Putting all the other prime powers into row and column factors gives
 \[
  \Kernel(i,j,k)=U_i(k)^{-1}C_{ij}V_j(k)^{-1},\qquad
  C_{ij}=c^{\mathbf1_{\{x_i+y_j\ge1\}}},
@@ -798,8 +806,9 @@ where
             r^{\lfloor\log_r q^j\rfloor}.
 \end{aligned}
 \]
-These positive factors preserve nonvanishing of minors. The remaining
-entry records whether $x_i+y_j\ge1$.  Distinct primes make $\log_r p$ and
+These positive factors preserve nonvanishing of minors. In column $j$,
+the entry changes from $1$ to $c$ when $x_i$ reaches $1-y_j$.
+Distinct primes make $\log_r p$ and
 $\log_r q$ irrational, so each fractional-part orbit is dense in $[0,1]$.
 We choose row and column indices independently, using only these two
 one-dimensional density statements.  For $n\ge1$, choose distinct rows with
@@ -826,8 +835,10 @@ minor to
  \end{pmatrix},\qquad
  \det T_n(c)=c(c-1)^{n-1}.
 \]
-Indeed, subtracting each preceding row from the next, working upwards from
-the last row, leaves diagonal entries $c,c-1,\ldots,c-1$.
+Indeed, subtract each preceding row from the next, working upwards from
+the last row. Each row difference has just one nonzero entry, $c-1$, in
+its own column. The resulting triangular matrix has diagonal entries
+$c,c-1,\ldots,c-1$.
 The original determinant is therefore
 \[
  c(c-1)^{n-1}
@@ -920,15 +931,13 @@ proves both assertions for their stated norms. Neither the rank theorem
 nor the approximation bound implies irrationality of the scalar sum.
 
 
-\section{Proof sources and further comparisons}\label{app:sources}
-The margin marks link to the recorded Lean declarations and, where
-present, Comparator comparisons. For the five-map proof the declarations
-are in \href{\distinctheightlean}{the distinct-value development} and
-\href{\distinctheightblocklean}{its block-series criterion}; no comparison
-is recorded. The \href{\evidencerecordurl}{evidence record} gives the
-versions. Neither checker was rerun for this revision, and the public
-links may precede this manuscript's local revision. The named input for
-two-prime transcendence stays beside that theorem.
+\section{Verification, reproducibility and sources}\label{app:sources}
+\evidenceparagraph{\evidencerecordurl}
+The five-map proof is in \href{\distinctheightlean}{the distinct-value
+development} and \href{\distinctheightblocklean}{its block-series
+criterion}. Its statement has no recorded Comparator comparison. The
+evidence record fixes the source versions; the named input for
+two-prime transcendence is stated beside that theorem.
 
 The \href{\distinctheighturl}{programs for sums over distinct values} calculate the
 interval endpoints and finite-state examples using exact arithmetic;
@@ -947,8 +956,10 @@ words realised by the arithmetic sequence.
 
 The \longrecord{r3-source-inventory}{companion's source inventory} also
 covers the ordinary general and subseries arguments. Its historical note
-reports a second AI agent's check on 26 September 2026 and the incorporation
-of its corrections. No human mathematical review is reported.
+records the 26 September 2026 AI check and the corrections made from it;
+independent human mathematical review has not been reported.
+
+\subsection*{Further comparisons}
 
 The classical criteria of Erd\H{o}s--Straus~\cite{erdosstraus1974},
 Han\v{c}l--Tijdeman~\cite{hancltijdeman2004} and

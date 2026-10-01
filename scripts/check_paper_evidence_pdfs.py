@@ -141,6 +141,11 @@ def check_paper(pdf: Path, paper: dict, marks: dict, baseline: int | None,
     used: set[int] = set()
     results = {r["label"]: r for r in paper["results"]}
     text_cache: dict[int, list] = {}
+    # A named destination binds each concordance row to its original statement.
+    # Legacy PDFs retain the heading-placement check; new PDFs must contain
+    # every row, with the correct target and number, in the final concordance.
+    destinations = reader.named_destinations
+    concordance = any(name.startswith("verification-result.") for name in destinations)
     for label, (text, lean, comparator) in marks.items():
         result = results.get(label)
         if result is None:
@@ -150,7 +155,16 @@ def check_paper(pdf: Path, paper: dict, marks: dict, baseline: int | None,
             problems.append(f"{label}: no generated evidence record/status mapping")
         hits = [i for i, (n, r, u) in enumerate(links)
                 if u == lean and r[0] < text_right and i not in used]
-        if result and result.get("page"):
+        row_destination = destinations.get("verification-result." + label)
+        if concordance:
+            if row_destination is None:
+                problems.append(f"{label}: missing verification concordance row")
+                continue
+            row_page = reader.get_destination_page_number(row_destination) + 1
+            row_top = float(row_destination.top)
+            hits = [i for i in hits if links[i][0] == row_page
+                    and abs(links[i][1][1] - row_top) <= 22.0]
+        elif result and result.get("page"):
             hits = [i for i in hits if links[i][0] == int(result["page"])]
         if not hits:
             problems.append(f"{label}: no inline Lean link with its target beside the heading"
@@ -163,7 +177,8 @@ def check_paper(pdf: Path, paper: dict, marks: dict, baseline: int | None,
                 if n not in text_cache:
                     text_cache[n] = heading_lines(reader.pages[n - 1])
                 # Text extraction may drop the space inside a bold heading ("Theorem1.3").
-                want = f"{result['printed_kind']}{result['number']}"
+                want = (f"Result{result['number']}" if concordance
+                        else f"{result['printed_kind']}{result['number']}")
                 level = [t for t in text_cache[n]
                          if abs(t[1] - rect[1]) <= TOLERANCE + max(rect[3] - rect[1], HEADING_LINE_STEP)
                          and t[0] < text_right
@@ -200,6 +215,14 @@ def check_paper(pdf: Path, paper: dict, marks: dict, baseline: int | None,
             if (rect[0] < 4 or rect[1] < 4 or rect[2] > width - 4
                     or rect[3] > float(reader.pages[n - 1].mediabox.height) - 4):
                 problems.append(f"page {n}: evidence link to {uri} runs off the page")
+    if concordance:
+        row_pages = [reader.get_destination_page_number(destination) + 1
+                     for name, destination in destinations.items()
+                     if name.startswith("verification-result.")]
+        if row_pages and not any("Verification concordance" in
+                                 reader.pages[n - 1].extract_text()
+                                 for n in range(1, min(row_pages) + 1)):
+            problems.append("verification rows have no concordance section")
     # hyperref pads every link rectangle by 1pt (\Hy@linkmargin); two marks collide when
     # the text inside those rectangles would touch.
     pad = HYPERREF_LINK_MARGIN

@@ -27,6 +27,7 @@ from pypdf.generic import (
     DictionaryObject,
     FloatObject,
     NameObject,
+    NullObject,
     TextStringObject,
 )
 
@@ -55,7 +56,8 @@ def link(rect: list[float], uri: str) -> DictionaryObject:
 
 
 def pdf(links: list[tuple[list[float], str]], pages: int = 1, heading_y: float = HEAD_Y,
-        headings: list[tuple[float, str]] | None = None) -> Path:
+        headings: list[tuple[float, str]] | None = None,
+        concordance_labels: tuple[str, ...] = ()) -> Path:
     writer = PdfWriter()
     for index in range(pages):
         page = writer.add_blank_page(595.28, 841.89)
@@ -74,6 +76,11 @@ def pdf(links: list[tuple[list[float], str]], pages: int = 1, heading_y: float =
                                       for y, text in runs).encode())
             page[NameObject("/Contents")] = writer._add_object(stream)
             page[NameObject("/Annots")] = ArrayObject([writer._add_object(link(r, u)) for r, u in links])
+            for label in concordance_labels:
+                writer.add_named_destination_array(
+                    TextStringObject("verification-result." + label),
+                    ArrayObject([page.indirect_reference, NameObject("/XYZ"),
+                                 NullObject(), FloatObject(heading_y), NullObject()]))
     handle = tempfile.NamedTemporaryFile(suffix=".pdf", delete=False)
     buffer = io.BytesIO()
     writer.write(buffer)
@@ -265,6 +272,22 @@ def test_unknown_paper_id_cannot_pass_without_checks() -> None:
             "an unknown paper selection passed without checking any PDF")
 
 
+def test_concordance_rows_preserve_statement_and_target() -> None:
+    headings = [(730.0, "Verification concordance"), (HEAD_Y, "Result 1.1")]
+    def checked(links=SOUND, rows=("res:a",), title=headings):
+        return check.check_paper(pdf(links, headings=title, concordance_labels=rows),
+                                 PAPER, MARKS, 1)
+    require(checked() == [], f"sound concordance failed: {checked()}")
+    require(checked([(SOUND[0][0], LEAN + "-wrong"), SOUND[1]]),
+            "concordance with wrong Lean target passed")
+    require(checked(SOUND[:1]), "concordance with missing Comparator passed")
+    require(checked(rows=("res:other",)), "missing statement row passed")
+    require(checked(title=[(HEAD_Y, "Result 1.2")]), "wrong statement number passed")
+    require(checked(SOUND + MARGIN), "duplicate margin presentation passed")
+    displaced = [([r[0], r[1] - 100, r[2], r[3] - 100], u) for r, u in SOUND]
+    require(checked(displaced), "links displaced from their concordance row passed")
+
+
 def main() -> int:
     tests = [
         test_sound_page_passes,
@@ -291,6 +314,7 @@ def main() -> int:
         test_paper_longer_than_baseline_fails,
         test_dagger_mark_declaration_parses,
         test_unknown_paper_id_cannot_pass_without_checks,
+        test_concordance_rows_preserve_statement_and_target,
     ]
     for test in tests:
         test()

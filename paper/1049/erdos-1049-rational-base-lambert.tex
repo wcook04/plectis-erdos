@@ -759,15 +759,33 @@ on p.~156 give the coefficient whose degree we need:
  \genfrac{[}{]}{0pt}{}{k-1}{a_1-1}_X
  \genfrac{[}{]}{0pt}{}{\beta-a_2-1}{\beta-k-1}_X.
 \]
-On comparing successive summands, we find that the degree increases
-by $40n+1-k>0$ for $a_2\le k\le\beta-2$. The last summand alone
+Let $d_{n,k}$ be the degree of the $k$th summand. Adding the monomial
+exponent and the degrees of the two Gaussian factors gives
+\[
+ \begin{aligned}
+ d_{n,k}
+ &=a_0k+\binom{a_1}{2}-\binom{\beta-a_2}{2}+\binom{\beta-k}{2}\\
+ &\quad +(a_1-1)(k-a_1)+(\beta-k-1)(k-a_2)\\
+ &=\frac{-k^2+80kn+3k-340n^2-26n}{2}.
+ \end{aligned}
+\]
+Hence $d_{n,k+1}-d_{n,k}=40n+1-k>0$ for
+$a_2\le k\le\beta-2=27n$. The last summand alone
 therefore determines the leading term, giving
 \[
  K_n:=\deg A_n=\frac{1091n^2+81n+2}{2},\qquad
  W_n:=\deg U_n=K_n-M_n+\sum_{\ell\le15n}(1-\nu_\ell)\varphi(\ell).
 \]
 Here $\varphi(\ell)=\deg\Phi_\ell$ is Euler's totient function, and
-$\nu_1=\omega(n)=0$. The bounds for $H_n$ are uniform for $x\ge2$:
+$\nu_1=\omega(n)=0$. In particular,
+\[
+ K_n-W_n=M_n-\deg(D_N/\Omega_n).
+\]
+The factor $X^{-M_n}$ lowers the degree by $M_n$, whereas the
+remaining cyclotomic factors increase it by $\deg(D_N/\Omega_n)$.
+Their difference will determine the decay of the cancelled remainder.
+
+The bounds for $H_n$ are uniform for $x\ge2$:
 then $P\ge\prod_{j\ge1}(1-2^{-j})>0$ and
 $(1-x^{-a_0})^{-1}\le2$. For fixed $n$, therefore,
 $H_n(x)=O(1)$ and $\Lambda_n(x)=O(x^{W_n-K_n})$ as $x\to\infty$.
@@ -1058,7 +1076,13 @@ these real remainders.
 For example, suppose that $M$ integral rows $(A_j,B_j)$ have remainders
 $e_j=A_jF(3/2)-B_j$, and that the subset sums take $Q$ residue values
 modulo a positive integer $D$. Put $T=\sum_j|e_j|$ and suppose that
-at most $k$ subsets give any fixed remainder within a residue class. For each positive integer $n$, the sufficient inequality
+at most $k$ subsets give any fixed remainder within a residue class.
+The least and greatest subset remainders are
+\[
+ \sum_{e_j<0}e_j\quad\text{and}\quad\sum_{e_j>0}e_j;
+\]
+their difference is $T$. Thus $T$ bounds the width of the range in
+each residue class as well. For each positive integer $n$, the inequality
 \begin{equation}\label{eq:quantitative-selector-budget}
  2^M>Qk\left(\left\lfloor\frac{nT}{D}\right\rfloor+1\right)
 \end{equation}
@@ -1066,8 +1090,12 @@ gives two subsets with the same residue vector whose remainder
 values differ by an amount strictly between $0$ and $D/n$ in absolute value.
 Indeed, in each residue class divide the range of remainders into
 half-open intervals of width $D/n$, starting at its least value.
-If each interval contained only one remainder value, it would contain
-at most $k$ subsets, contrary to \eqref{eq:quantitative-selector-budget}.
+At most $\lfloor nT/D\rfloor+1$ intervals are needed, including a
+last interval when the greatest value is an endpoint. If each interval
+contained only one remainder value, it would contain at most $k$
+subsets, contrary to \eqref{eq:quantitative-selector-budget}.
+Thus some interval contains two different remainder values;
+the half-open convention makes their separation strictly less than $D/n$.
 Subtracting the two subset sums and dividing their coefficients by
 $D$ gives an integral linear form of nonzero absolute value less
 than $1/n$. The
@@ -1120,11 +1148,11 @@ cutoff is also unresolved by the estimates of
 Section~\ref{sec:rational-base-irrationality}.
 
 \appendix
-\section{Proofs and source records}\label{app:index}
+\section{Verification and reproducibility}\label{app:index}
 
-The links beside each statement and in the margin give the existing
-Lean proofs and recorded Comparator comparisons, indexed in the \href{\evidencerecordurl}{evidence record}
-at the \href{\sourceurl}{source revision}.
+The \href{\evidencerecordurl}{evidence record} indexes the existing
+Lean proofs and recorded Comparator comparisons at the
+\href{\sourceurl}{source revision}.
 Theorem~\ref{thm:geometric-moments} is the polynomial-bound
 specialisation of the
 \href{\laterepobase/lean/ErdosProblems/Erdos1049/PaperCompleteR21/GeometricUniversality.lean\#L1324}{geometric-moment proof}
@@ -1132,6 +1160,7 @@ cited in the long record; its Comparator association remains pending.
 The broader ratio-limit argument and rational-value model there have
 ordinary proofs only. This revision has had no fresh Lean or
 Comparator run and no independent review.
+\evidenceparagraph{\evidencerecordurl}
 
 \paragraph{Data availability.}
 The cited source revision contains the Lean sources, toolchain and
@@ -1146,8 +1175,7 @@ competing interests.
 The problem numbering follows the catalogue maintained by Thomas
 Bloom~\cite{erdosproblems}. I thank Wouter van Doorn for advice on
 writing for a first-time reader and explaining the force of a
-hypothesis. This advice concerned another note and does not imply
-mathematical review or endorsement of the present results.
+hypothesis.
 
 \begin{thebibliography}{99}
 \small

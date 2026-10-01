@@ -135,10 +135,11 @@ and let
 \[
  \mathcal R(\lambda)=\sum_{d\ge2}\frac{V_d(\lambda)}{d!-1}.
 \]
-Choose $N\ge2$ beyond the support of $\lambda$. For $d>N$ the floor
-exponents are zero, so $V_d=M$ and the series converges absolutely.
-Only the first $N-1$ terms can differ from those of $MS$, and the
-weight congruence gives
+Here $n$ indexes the chosen coefficients, whereas $d$ indexes the
+summands of the remainder. If $\lambda$ is supported on $n\le N$, with
+$N\ge2$, then $d>N$ makes every floor exponent zero. Hence $V_d=M$
+throughout this tail, and the series converges absolutely. Only the
+first $N-1$ terms can differ from those of $MS$; the weight congruence gives
 \begin{equation}
  \mathcal R(\lambda)-M(\lambda)S
  =\sum_{d=2}^N\frac{V_d(\lambda)-M(\lambda)}{d!-1}\in\mathbb Z.
@@ -270,6 +271,9 @@ $\mathcal R(e_1)=S$ and $\mathcal R(U_n)=1$ give
  \qquad H_D=\sum_{d=2}^D\frac1{d!-1}.
  \label{eq:residual-transparency}
 \end{equation}
+Since $M=tL_D$ clears the denominators of $H_D$, the integer in
+$\mathcal R=MS+k$ is $k=-MH_D+\sum_{n>D}z_n$. Thus the sum of the
+free coordinates is the offset from $M(S-H_D)$, not from $MS$.
 
 It remains to remove index one. Write $a_D$ for its coefficient in
 $K_D$, and $u_n$ for its coefficient in $U_n$. All other coordinates
@@ -443,12 +447,11 @@ multiply each of the final four columns by $\lambda_n$ before summing.}
 \label{tab:depth-four}
 \end{table}
 
-The coordinates already give $M=1380$ and the three cancellations.
-They also determine the integer term in \eqref{eq:residual-transparency},
-namely
-$-26-27+8+1=-44$. Thus
+The coordinates give $M=1380$, the three cancellations, and the offset
+$-26-27+8+1=-44$ in \eqref{eq:residual-transparency}. Since
+$H_4=143/115$, the original linear form is
 \[
- \mathcal R(\lambda)=1380(S-H_4)-44.
+ \mathcal R(\lambda)=1380(S-H_4)-44=1380S-1760.
 \]
 For the remainder estimate, the inequality
 $(n+1)!-1>(n+1)(n!-1)$ gives the geometric bound
@@ -497,14 +500,17 @@ condition is
 Indeed, the positive tail and this comparison give
 $\lfloor A_N\rfloor<\mathcal R(\lambda)<\lfloor A_N\rfloor+1$,
 excluding every denominator dividing $M$.
-The argument allows either sign of $A_N$. Its strict gap is one when
-$A_N$ is integral and can be arbitrarily small when $A_N$ approaches
-an integer from below.
+Failure of this sufficient comparison is inconclusive. Either sign of
+$A_N$ is allowed: its strict gap is one when $A_N$ is integral and
+can be arbitrarily small when $A_N$ approaches an integer from below.
 
-First keep the vector fixed and increase only the cutoff. For
-$-6e_2+e_4$ the support ends at four, where the test fails because
-$9/115<24/119$. At $N=5$ it succeeds because
-$13376/13685>24/719$. More generally, for a fixed vector with $M>0$,
+First keep the vector fixed and increase only the cutoff. The vector
+$-6e_2+e_4$ has $M=12$. At $N=4$, its finite part
+$A_4=-239/115$ lies just below $-2$, and its gap $9/115$ is smaller
+than the bound $24/119$. At $N=5$, the finite part
+$A_5=-27061/13685$ has crossed $-2$: the next integer is now $-1$,
+and the gap $13376/13685$ exceeds $24/719$.
+More generally, for a fixed vector with $M>0$,
 the quantities $A_N$ increase to $\mathcal R$. If this limit is
 nonintegral, their gaps to the next integer tend to a positive number,
 so the test eventually succeeds. If the limit is integral, the eventual

@@ -21,6 +21,7 @@
 
 \makeatletter
 \newcommand*{\ev@all}{}
+\newcommand*{\ev@rows}{}
 \newcommand{\DeclareResultEvidence}[4]{%
   \ifcsname ev@map@#1\endcsname
     \PackageError{paper-evidence}{Evidence declared twice for label #1}%
@@ -29,6 +30,7 @@
     \expandafter\gdef\csname ev@map@#1\endcsname{\ev@marks{#1}{#2}{#3}{#4}}%
     \expandafter\gdef\csname ev@inline@#1\endcsname{\ev@inline{#1}{#2}{#3}{#4}}%
     \g@addto@macro\ev@all{\do{#1}}%
+    \g@addto@macro\ev@rows{\ev@row{#1}{#2}{#3}{#4}}%
   \fi}
 % Generated record targets also cover statements without a complete Lean proof.
 % They let an authored inline reference use the very same result identity as
@@ -71,8 +73,8 @@
       \PackageError{paper-evidence}{No Lean target for #1}%
         {Regenerate the paper's evidence file with scripts/paper_evidence.py.}%
     \else
-      \leavevmode\allowbreak\hspace{0.4em}\ev@inline{#1}{#2}{#3}{#4}%
-      \allowbreak\hspace{0.6em}%
+      % The label establishes the result identity; evidence is printed once
+      % in the verification concordance, away from the mathematical argument.
     \fi
   \fi}
 % The links sit on the line where the label is set, which is the result's
@@ -92,29 +94,35 @@
   \def\do#1{\ifcsname ev@placed@#1\endcsname\else
     \PackageError{paper-evidence}{The evidence mark for #1 was never placed}%
       {Its label does not occur in this paper; regenerate the evidence file.}\fi}%
-  \ev@all}
+  \ev@all
+  \ifx\ev@rows\@empty\else
+    \section*{Verification concordance}
+    \addcontentsline{toc}{section}{Verification concordance}
+    \begingroup\small
+    \begin{longtable}{@{}p{0.32\linewidth}p{0.62\linewidth}@{}}
+    \textbf{Statement} & \textbf{Formal proof and comparison}\\\hline
+    \endhead
+    \ev@rows
+    \end{longtable}
+    \endgroup
+  \fi}
+\newcommand{\ev@row}[4]{%
+  \hypertarget{verification-result.#1}{}%
+  \hyperref[#1]{Result \ref*{#1}} & \ev@inline{#1}{#2}{#3}{#4}\\}
 \makeatother
 
 % Once per paper: what the marks mean.  #1 is the URL of the paper's evidence
 % record.
 \newcommand{\evidenceparagraph}[1]{%
-  \par\smallskip\noindent\emph{Formal proofs.}
-  A result with a kernel-checked Lean proof carries links beside its heading.
-  \emph{Lean} opens the proof: the declaration itself when one declaration
-  states the whole result, otherwise the list of declarations that together
-  state it. Inline citations to individual declarations elsewhere may identify
-  ingredients of a proof. \emph{Comparator} opens the recorded comparison, in
-  which the same statement, written again from Mathlib alone in a separate
-  repository, was compared with our proof by Lean's Comparator tool, allowing
-  only the three standard axioms. \emph{Comparator pending} means that the
-  complete statement has no recorded comparison yet. A dagger on the Lean mark means that the
-  Lean proof assumes an input named just below the result.  A result without a
-  mark has no Lean proof of its whole statement; what is checked is said below
-  it.  The \href{#1}{evidence record} gives every declaration, version and
-  check. Comparator checks statements, axioms and kernel acceptance; it does
-  not establish novelty or peer review. These checks show that the stated propositions are proved; whether
-  they are the right propositions is a question the reader can settle by
-  comparing them with the text.}
+  \par\smallskip\noindent
+  The verification concordance lists the formal proofs by result number.
+  \emph{Lean} links to the supporting declarations; a dagger identifies a
+  proof that assumes a named input. \emph{Comparator} links to a recorded
+  kernel check against a separately written statement; \emph{pending} means
+  that this comparison has not been recorded. The
+  \href{#1}{verification record} gives the precise correspondence,
+  dependencies and reproducible checks, including results supported only
+  in part.}
 
 % A plain remark after a result, for what its mark alone cannot say: the input
 % a conditional Lean proof assumes, or what is and is not checked for a result

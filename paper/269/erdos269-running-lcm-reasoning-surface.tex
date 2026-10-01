@@ -1710,9 +1710,11 @@ $\Kernel(i,j,k)=\sum_{\ell<d}f_\ell(i)G_\ell(j,k)$ for all $i,j,k$.
 \end{theorem}
 
 \begin{proof}
-Put $\alpha=\log_r p$, $\beta=\log_r q$, $x_i=\{i\alpha\}$ and
-$y_j=\{j\beta\}$.  Write $v_p(N)$ for the exponent of the prime $p$ in
-the positive integer $N$.  The three prime exponents are
+For fixed $k$, the $p$- and $q$-exponents still split into row and column
+terms. The $r$-exponent also includes the carry from adding two fractional
+parts. To isolate it, put $\alpha=\log_r p$, $\beta=\log_r q$,
+$x_i=\{i\alpha\}$ and $y_j=\{j\beta\}$. Write $v_p(N)$ for the exponent
+of the prime $p$ in the positive integer $N$. The three prime exponents are
 \[
  \begin{split}
  v_p(\hgt(p^iq^jr^k))&=i+\lfloor j\log_pq+k\log_pr\rfloor,\\
@@ -1727,8 +1729,8 @@ alone, so with positive rational $R_i(k)$ and $C_j(k)$,
  \Kernel(i,j,k)=R_i(k)\,C_j(k)\,t^{\lfloor x_i+y_j\rfloor},
  \qquad t=r^{-1} .
 \end{equation}
-The remaining matrix is independent of $k$, and $x_i+y_j\in[0,2)$, so its
-entries are $1$ and $t$.
+The remaining matrix is independent of $k$. Since $x_i+y_j\in[0,2)$,
+its entry is $1$ when there is no carry and $t$ when there is one.
 
 Each of $\alpha$ and $\beta$ is irrational, since a rational value would give
 an equality of positive powers of distinct primes, so each fractional-part
@@ -1863,13 +1865,13 @@ running-LCM interpretation, not for the two independent dense orbits.
 
 \subsection{Smith factors of the selected staircase}
 \label{long269:sec:selected-kernel-height}
-To examine what the selected minors say about integer denominators, we
-clear their diagonal factors and compute the resulting Smith form. For integers $N\ge1,r\ge2$, let $A_N(r)$ have
-entry $1$ on and below the diagonal and $r$ above it. This is the
-staircase used in Theorem~\ref{long269:res:infinite-rank}.
-Its Smith factors determine the lattice index. They supply no bound on
-the height of a small integral linear form, which is a separate requirement
-in an irrationality argument.
+The preceding argument only uses that a determinant is nonzero. An
+irrationality argument would also need control of integer coefficients
+after denominators are cleared. We examine that separate question for the
+selected minors. For integers $N\ge1,r\ge2$, let $A_N(r)$ have entry $1$
+on and below the diagonal and $r$ above it. This is the staircase used in
+Theorem~\ref{long269:res:infinite-rank}. Its Smith factors determine the
+lattice index; they do not by themselves give a small integral linear form.
 
 \begin{remark}[Smith factors of the selected staircase]
 \label{long269:lem:staircase-smith}
@@ -1878,9 +1880,9 @@ $1,r-1,\ldots,r-1$, and
 $\det A_N(r)=(1-r)^{N-1}$.
 \end{remark}
 
-The Smith calculation and its height consequence are ordinary arguments
-here; the existing Lean result proves nonvanishing of the selected minors,
-not these arithmetic statements.
+The Smith calculation and its consequence for integral coefficients are
+ordinary arguments here; the existing Lean result proves nonvanishing of
+the selected minors, not these arithmetic statements.
 
 \begin{proof}
 Working from bottom to top, subtract row $i-1$ from row $i$ for every
@@ -1891,7 +1893,7 @@ unimodular integral operations, and $1$ divides $r-1$, so this is its
 Smith form up to signs.  Its determinant has the displayed sign.
 \end{proof}
 
-In the source-selected $\{2,3,5\}$ minor, the positive integers $U_i,V_j$ give
+For the selected $\{2,3,5\}$ minor, the positive integers $U_i,V_j$ give
 \[
  K=\operatorname{diag}(U_i)^{-1}A_N(5)\operatorname{diag}(5V_j)^{-1}.
 \]
@@ -1907,28 +1909,30 @@ $(-4)^{N-1}\prod_i z_i$.  Its absolute determinant is therefore at
 least $4^{N-1}$, attained by $s_i=5U_i$, $t_j=V_j$.
 This optimality is restricted to diagonal entrywise clearings.
 
-For the selected carry pattern, the source's injective nonnegative
-index families $I,J$ satisfy
+For the selected carry pattern, the injective nonnegative index families
+$I,J$ satisfy
 $v_2(W)\ge\sum_iI(i)+\sum_jJ(j)\ge N(N-1)\ge2(N-1)$.
 Thus $4^{N-1}$ divides $W$, and the \emph{reduced} determinant is
 $\pm1/D$, where $D=W/4^{N-1}\in\N_{>0}$.
-The Smith index explains the numerator before reduction, while the
-reduced scalar has no numerator left to spend on a one-value
-denominator clearing.  A bordered determinant with one target $X$
-illustrates the same limit: for $K\in\mathrm{GL}_N(\Q)$ and rational
+Thus the factor $4^{N-1}$ in the integer determinant is absorbed entirely
+by its denominator. For a linear form in one target value, a small
+rational prefactor likewise disappears when the coefficients are reduced
+to coprime integers. Indeed, for $K\in\mathrm{GL}_N(\Q)$ and rational
 $u,v$, the Schur complement gives
 \[
  \det\begin{pmatrix}K&u\\v^T&X\end{pmatrix}
  =\det K\bigl(X-v^TK^{-1}u\bigr).
 \]
-If $v^TK^{-1}u=s/t$ in lowest terms, an integral scalar multiple
-of $\det K(X-s/t)$ must have its linear coefficient divisible by $t$.
-Its primitive integral coefficient polynomial is therefore
-$\pm(tX-s)$, regardless of the smallness of
-$\det K$ or a compatible rational change of basis.  This is a
-one-target, diagonal-clearing boundary, not a prohibition on new
-recurrences, multiple target values, or stronger approximation data;
-it does not settle the repeated running-LCM problem.  Smith form is
+Write $v^TK^{-1}u=s/t$ in lowest terms, with $t>0$. If a nonzero
+rational scalar multiple of $\det K(X-s/t)$ has integer coefficients
+$aX+b$, then $b=-as/t$. Since $\gcd(s,t)=1$, we have $t\mid a$.
+Dividing the two coefficients by their common factor therefore leaves
+$\pm(tX-s)$. This is the primitive integral coefficient polynomial,
+regardless of the smallness of $\det K$ or a compatible rational change
+of basis. The conclusion concerns this construction with one target and
+the diagonal clearings above. It does not exclude new recurrences,
+multiple target values or stronger approximation data, and it does not
+settle the repeated running-LCM problem. Smith form is
 used here in its standard sense~\cite{stanley2016}.
 
 \subsection{Uniform approximation of the rescaled kernel}\label{long269:sec:approximation}
@@ -3144,12 +3148,20 @@ function-theoretic approach. The irrationality of $S$ remains open here.
 
 \subsection{An exact weighted-shift identity for the repeated series}
 \label{long269:sec:weighted-shifts}
-Set $\alpha=S/2$ and retain the boundary running LCMs $P_a$. We combine
-shifted tails after subtracting their finite rational corrections. Since
-the denominators change under a shift, the resulting identity has weights
-as well as shifted numerators. It concerns the repeated sum $S$ only.
-In this subsection and the next, $r$ is a positive integer shift; the
-prime-generator notation is no longer in use.
+Set $\alpha=S/2$ and retain the boundary running LCMs $P_a$. To combine
+shifted tails, we first express them with the same denominators. After
+multiplication by $P_t$, the term with index $a+t$ becomes
+\[
+ \frac{P_t m_{a+t}}{P_{a+t+1}}
+ =\frac{P_tP_{a+1}}{P_{a+t+1}}\,
+   \frac{m_{a+t}}{P_{a+1}}.
+\]
+The first factor on the right is the weight $\gamma_{a,t}$ below. It is
+forced by the change of denominator, rather than chosen to produce
+cancellation. The removed finite prefix supplies the rational correction.
+The identity concerns the repeated sum $S$ only. In this subsection and
+the next, $r$ is a positive integer shift; the prime-generator notation is
+no longer in use.
 
 \begin{lemma}[weighted shifts preserve the actual value]
 \label{long269:res:weighted-shift-identity}
@@ -3753,17 +3765,13 @@ support do not close the remaining argument.  The settled two-prime case
 uses Fan's earlier reduction to the cited Hecke--Mahler value theorem.
 
 \pdfbookmark[1]{Statements and declarations}{statements-declarations}
-\subsection*{Proof sources and declarations}\label{long269:sec:proof-sources}
+\subsection*{Verification and reproducibility}\label{long269:sec:proof-sources}
+\evidenceparagraph{\evidencerecordurl}
 
 \paragraph{Proof sources.}
-The margin marks retain the supplied formal-source links. A Lean mark
-identifies the declaration or declarations associated with a statement;
-a Comparator mark opens its recorded comparison. These are records of
-earlier checks, not fresh runs for this revision. The
-\href{\evidencerecordurl}{evidence record} gives the versions and individual
-associations. A missing mark makes no claim of a Lean proof of the whole
-statement. The checks concern the propositions linked there, without
-establishing novelty or resolving the repeated-sum problem.
+The evidence record fixes the source versions and individual statement
+associations. These are earlier checks; this revision makes no fresh
+formal-verification claim.
 
 The general distinct-value assertion and its four word-and-torus
 arguments are stated as remarks with complete ordinary proofs in

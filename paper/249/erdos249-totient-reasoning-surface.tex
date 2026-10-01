@@ -244,11 +244,6 @@ Appendix~\ref{app:r3-declarations} collects the formal declarations.
 \clearpage
 \tableofcontents
 \clearpage
-\evidenceparagraph{\evidencerecordurl}
-A small-capital \textsc{Lean source} link beside a step, a definition or an
-observation opens the Lean declaration for that step. A checked
-implication does not establish its hypothesis.
-
 % ; - part a249_front ; -
 \section{Totient sections and tail differences}
 
@@ -641,7 +636,11 @@ $T_N=\sum_{j\ge1}a_{N+j}2^{-j}$ lies in $v^{-1}\Z$ for every $N$. For
 $1\le j\le L$ let $q_j$ be a prime factor of the Fermat number
 $2^{2^j}+1$; then $q_j\equiv1\pmod{2^{j+1}}$, and the $q_j$ are distinct
 because distinct Fermat numbers are coprime. Put $Q=q_1\cdots q_L$, so
-$Q<2^{2^{L+1}}$. Given $M$, the Chinese remainder theorem gives
+$Q<2^{2^{L+1}}$. These factors give a size bound as well as the needed
+divisibility: $\log Q=O(2^L)$. The factor $2^{-L}$ in the remaining
+tail will offset this growth, leaving the arbitrarily small constant
+from $2^{\kappa(n)}=o(\log n)$.
+Given $M$, the Chinese remainder theorem gives
 $N\in[M,M+Q)$ with $q_j\mid N+j$ for $1\le j\le L$. Then
 $2^{j+1}\mid\varphi(N+j)$, so $2^j\mid a_{N+j}$: either
 $\kappa(N+j)\le j$ and $a_{N+j}=0$, or $2^j$ divides both $\varphi(N+j)$
@@ -7528,9 +7527,11 @@ values contains both rational and irrational numbers.
 \end{proof}
 
 Taking finite linear combinations of the Dirichlet series on arithmetic
-progressions shows that every fixed periodic twist preserves the poles
-and Laurent principal parts wherever the original Dirichlet series has
-meromorphic continuation. In the untwisted case the classical identity
+progressions shows that every fixed periodic twist changes by an entire
+function. An entire summand has no negative Laurent coefficients: it
+therefore preserves every pole and its principal part wherever the
+original series has meromorphic continuation. The regular part and
+zeros need not be preserved. In the untwisted case the classical identity
 gives
 \[
  \sum_{n\ge1}b(n)n^{-s}=\frac{\zeta(s-1)}{\zeta(s)}+D_{1,0,r}(s),
@@ -8547,6 +8548,15 @@ an upper bound that is $o(2^e)$. Such a bound for the actual totient
 carry would contradict the lower bound of Proposition~\ref{prop:rank},
 but the following rational comparison already has that lower bound.
 
+The limit condition fixes the value of the series. Dividing the
+recurrence by $2^{n+1}$ and summing gives
+\[
+ v\sum_{n=1}^{N}c(n)2^{-n}=u_0-2^{-N}u_N.
+\]
+Thus $u_N/2^N\to0$ identifies the sum as $u_0/v$; it imposes no
+finite-dimensional description of the carry sections. In the
+construction below $u_0=5$ and $v=4$.
+
 \paragraph{The comparison with value $5/4$.}
 We alter only even coefficients, whose weights are
 $2^{-2m}=4^{-m}$. Thus we need a base-four expansion of $5/4-S$,
@@ -9509,7 +9519,10 @@ $2^L\|\Delta_h(N)\|_{\R/\Z}>2B$. Such a choice exists: $h,N$ are fixed,
 the distance is positive, and $B=N+h+L+2$ grows only linearly in $L$.
 The error estimate then puts the residue of $D_{h,N,L}$ more than $B$
 from either endpoint. Thus nonintegrality is equivalent to a certificate
-at some unrestricted depth.
+at some unrestricted depth. This is a one-sided finite test: success
+proves nonintegrality, but failure at a particular depth does not prove
+integrality. The converse guarantees eventual success only after a
+fixed nonintegral difference has been supplied.
 
 \begin{theorem}[Propagation of one nonintegral tail difference]\label{res:fulldepth}
 Fix $d\ge1$ and $N\ge0$. If $\Delta_d(N)\notin\Z$, then every sufficiently
@@ -9831,13 +9844,14 @@ rank-one quotients and their positive averages, not other approximation
 families.
 
 
-\section{Formal declaration guide}\label{app:r3-declarations}
+\section{Verification and reproducibility}\label{app:r3-declarations}
 \papersectiontarget{long249-r3-declarations}
-The following links give the formal declarations cited by the short
-paper and its complementary proofs, at the supplied source revisions.
-A declaration proving a conditional implication includes its input as
-a hypothesis. The linked source alone does not establish that input
-for $\varphi$, and these references do not report a fresh Lean replay.
+\evidenceparagraph{\evidencerecordurl}
+The links below identify formal declarations at the supplied source
+revisions. A checked conditional implication retains its hypothesis;
+the linked source alone does not establish that input for $\varphi$.
+The record gives the available Lean and Comparator status and does not
+report a new replay or independent review of the printed proofs.
 
 \medskip\noindent\textbf{Bases and relations.}\par\smallskip
 \mword{Erdos249257/TotientMahlerDefect.lean}{160}{totientKernel_zero_residue}{reduction of sections with residue zero};

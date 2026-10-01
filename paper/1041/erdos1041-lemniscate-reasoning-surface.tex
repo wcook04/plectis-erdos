@@ -2549,8 +2549,10 @@ in every degree $3q\ge6$.
 \end{theorem}
 
 \begin{proof}
-Fix a $q$th root $y$ of a quotient root and a primitive $q$th root of unity
-$\zeta$.  The full fibre consists of $h+y\zeta^k$.  Since every fibre point
+One nonzero root of $P$ will supply both endpoints of the path through
+$h$. Before selecting it, we check that every zero of $P$ lies in the
+open unit disc. Fix a $q$th root $y$ of a zero of $P$ and a primitive
+$q$th root of unity $\zeta$. The full fibre consists of $h+y\zeta^k$.  Since every fibre point
 lies in the open unit disc,
 \[
  \frac1q\sum_{k=0}^{q-1}|h+y\zeta^k|^2
@@ -3262,10 +3264,16 @@ Let $r\uparrow1$.  This also handles boundary critical points and all
 multiplicities without selecting local branches.
 \end{proof}
 
-Set $m=n-1$.  The weighted Poisson proof below gives the quadratic finite
-inequality for every $m\ge1$.  Gauss--Lucas and
-Lemma~\ref{res:reflected-critical-value} then give
-$\sum_j|f(c_j)|^{2/m}\le m$ on the unit disc.  Applying this to
+First suppose the zeros of $f$ lie in the closed unit disc, and set
+$m=n-1$. Gauss--Lucas puts the critical points in the same disc.
+Lemma~\ref{res:reflected-critical-value} gives the first inequality below;
+the weighted Poisson inequality, proved next and applied with equal
+weights $1/m$, gives the second:
+\[
+ \sum_{j=1}^m|f(c_j)|^{2/m}
+ \le\sum_{j=1}^m\left(\prod_{k=1}^m
+             |1-\overline{c_j}c_k|\right)^{2/m}\le m.
+\]  Applying this to
 $R^{-n}f(h+Rz)$ and scaling back proves
 \eqref{eq:critical-value-quadratic-budget} for $R>0$; if $R=0$, all critical
 values vanish.
@@ -3639,9 +3647,16 @@ then there are distinct indices $i,j$ such that
 \]
 \end{theorem}
 \begin{proof}
-Order the distances $d_1\le d_2\le\cdots\le d_n$. Isolating the nearest
-term in the reciprocal balance gives $d_2\le(n-1)d_1$, while
-$d_1d_2^{n-1}\le r^n$. For $t=d_2/d_1\in[1,n-1]$,
+Relabel the points so that their distances satisfy
+$d_1\le d_2\le\cdots\le d_n$. The reciprocal balance and the triangle
+inequality give
+\[
+ \frac1{d_1}
+ =\left|\sum_{j=2}^n\frac1{c-z_j}\right|
+ \le\sum_{j=2}^n\frac1{d_j}\le\frac{n-1}{d_2}.
+\]
+Thus $d_2\le(n-1)d_1$. Also $d_1d_2^{n-1}\le r^n$, since every
+remaining distance is at least $d_2$. For $t=d_2/d_1\in[1,n-1]$,
 \[
  \frac{d}{dt}\log\frac{2t^{(n-1)/n}}{1+t}
        =\frac{n-1-t}{nt(1+t)}\ge0.
@@ -5352,10 +5367,6 @@ Morse, monodromy and strip statements are not checked.
 \item[\ref{res:arity-not-capacity}.] The formal capacity conclusion takes
 as input the classical transfinite-diameter formula for a filled monic
 lemniscate. The root count at the first merger does not require that input.
-\item[Statement locations.] Formal associations are retained at each
-statement's current location. The changes in this revision concern
-presentation and the explicit qualifications just listed; no new Lean
-proof or independent review is claimed.
 \end{description}
 
 No supplied proof establishes the reported Runge construction of
