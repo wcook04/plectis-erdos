@@ -127,6 +127,33 @@ class ValidationSingleflightTests(unittest.TestCase):
             "command": command,
         }
 
+    def test_release_timeout_is_positive_source_bound_and_part_of_cache_key(self):
+        state = Path('/tmp/release-timeout-fixture')
+        with mock.patch.object(singleflight, 'git_output', return_value=b'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\n'), \
+                mock.patch.object(singleflight, 'regular_digest_rows', return_value=[]), \
+                mock.patch.object(singleflight, 'worktree_fingerprint', return_value={'fixture': True}):
+            short = singleflight.validator_spec('release', [], 'HEAD', state, release_timeout_seconds=5)
+            long = singleflight.validator_spec('release', [], 'HEAD', state, release_timeout_seconds=9)
+            self.assertIn('--singleflight-worker', short['command'])
+            i = short['command'].index('--timeout-seconds')
+            self.assertEqual(short['command'][i + 1], '5')
+            self.assertNotEqual(short['key'], long['key'])
+            self.assertEqual(short['inputs']['normalized_command'], short['command'])
+            for timeout in (0, -1, 1.5, True):
+                with self.subTest(timeout=timeout), self.assertRaises(singleflight.ValidationError):
+                    singleflight.validator_spec('release', [], 'HEAD', state, release_timeout_seconds=timeout)
+
+    def test_release_cli_threads_owner_timeout_without_changing_observer_timeout(self):
+        with mock.patch.object(singleflight, 'validator_spec', return_value={'key': 'a' * 64}) as spec, \
+                mock.patch.object(singleflight, 'submit', return_value={'key': 'a' * 64}), \
+                mock.patch.object(singleflight, 'collect', return_value=({'state': 'running'}, 75)) as collect, \
+                mock.patch.object(singleflight, 'emit'):
+            code = singleflight.main(['run', '--class', 'release', '--ref', 'HEAD',
+                                     '--release-timeout-seconds', '37', '--timeout-seconds', '2'])
+        self.assertEqual(code, 75)
+        self.assertEqual(spec.call_args.kwargs['release_timeout_seconds'], 37)
+        self.assertEqual(collect.call_args.args[3], 2)
+
     def test_default_state_root_is_host_shared_and_repository_scoped(self) -> None:
         with tempfile.TemporaryDirectory() as directory, mock.patch.dict(
             os.environ,
