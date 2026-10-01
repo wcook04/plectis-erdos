@@ -17,7 +17,10 @@ A pull request asks the upstream repository to pull a proposed branch from a
 contributor's fork. Use this skill when a contributor wants an agent to turn
 finished work into a reviewable return. Preparation is local. Pushing a branch
 and opening the pull request are external actions and require explicit
-authorisation at that point.
+authorisation for the work and destination. Reuse authorisation already given
+for that scope; do not ask again merely because preparation is complete. Ask
+only when authorisation, scope or destination is missing, or a new decision
+is required.
 
 ## Establish the return boundary
 
@@ -185,7 +188,8 @@ Without explicit authorisation to publish, stop after the commits, validation
 receipt, proposed title, and draft body are ready. Tell the contributor which
 remote branch and upstream base would be used.
 
-After explicit authorisation, push the named branch to the contributor's fork:
+With existing or newly given explicit authorisation covering the work and
+verified destination, push the named branch to the contributor's fork:
 
 ```sh
 git push -u <fork-remote> <branch>
