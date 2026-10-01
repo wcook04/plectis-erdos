@@ -368,13 +368,20 @@ survives this subtraction.
 We must also place these two roots in the same component; distance
 estimates alone do not identify that pair. We join a small disc about $w_s$
 to points close to $8\zeta_3$ and $8\zeta_6$ by polygonal arcs in the
-$w$-plane. Containment of the four inner segments follows by writing
+$w$-plane. For the four inner segments we use
 \[
- 7\varepsilon+\operatorname{Re}Q(w)
-                       -\tfrac12\varepsilon^7|Q(w)|^2
+ 1-|f(\rho\varepsilon w)|^2\ge
+ 2\rho^{14}\varepsilon^7
+ \left(7\varepsilon+\operatorname{Re}Q(w)
+                       -\tfrac12\varepsilon^7|Q(w)|^2\right).
 \]
-in the Bernstein basis of degree fourteen and checking that all fifteen
-coefficients are positive on each segment. For the remaining radial
+This follows by expanding the square and using
+$1-\rho^{14}\ge14\rho^{14}\varepsilon^8$.
+On each segment, the expression in parentheses is a polynomial of degree
+at most fourteen in the segment parameter. All fifteen coefficients in
+its degree-fourteen Bernstein basis are positive. The basis polynomials
+are nonnegative and sum to one, so the expression is positive along the
+whole segment, which therefore stays inside $\{|f|<1\}$ after scaling. For the remaining radial
 portions we use the root identity
 \[
  F(t\zeta)=t^7-1+
@@ -384,9 +391,10 @@ portions we use the root identity
 which gives $|F(t\zeta)|<1$ for $8\varepsilon\le t\le1$.
 All rational intervals, vertices and coefficient tests are specified in
 \recordlink{erdos1041-lemniscate-reasoning-surface.pdf}{counterexample-certificate}
-{the companion's finite verification}. Riemann--Hurwitz now shows that
-this component contains exactly two roots and every other component
-contains one.
+{the companion's finite verification}. At the regular level $|f|=1$,
+Riemann--Hurwitz gives $k-1$ critical points in a component with $k$
+zeros, counted with multiplicity. Thus the component containing $c_s$
+has exactly two roots, while every other component contains one.
 
 
 \begin{proof}[Proof of Theorem~\ref{res:ani-degree-seven-counterexample}]
@@ -690,16 +698,19 @@ Here is the ordinary argument behind the two remarks. Choose
 $\alpha^n=v$ and normalise to $P(z)=v^{-1}f(c+\alpha z)$. The
 component $U$ above $D(w_0,S)$ containing $0$ has degree two, as follows
 by exhausting with regular discs and applying Riemann--Hurwitz.
-The square root $\xi=\sqrt{1-P}$ then maps $U$ biholomorphically onto
-$V=\{\xi:|\xi^2-(1-w_0)|<S\}$, and its inverse maps $[-1,1]$ to
-the proposed connection. Along this interval $P=1-\xi^2\in[0,1]$,
+Since $U$ is simply connected and $1-P$ has only a double zero at $0$
+there, it has a single-valued analytic square root $\xi$.
+The resulting map is a proper local biholomorphism onto
+$V=\{\xi:|\xi^2-(1-w_0)|<S\}$, which is star-shaped and hence
+simply connected. It is therefore biholomorphic, and its inverse maps
+$[-1,1]$ to the proposed connection. Along this interval $P=1-\xi^2\in[0,1]$,
 which gives the required containment.
 
-Put $a=1-w_0$ and $p=w_0(1-w_0)$. The coordinate
+Put $a=1-w_0$ and $p=w_0(1-w_0)$. We map $V$ to the unit disc by
 \[
- \zeta=\xi\sqrt{\frac{S}{S^2+a\xi^2-a^2}}
+ \zeta=\xi\sqrt{\frac{S}{S^2+a\xi^2-a^2}}.
 \]
-sends $V$ to the unit disc and $\xi=\pm1$ to $\zeta=\pm q$, where
+The endpoints $\xi=\pm1$ map to $\zeta=\pm q$, where
 $q^2=S/(S^2+p)$. The Bergman estimate is consequently
 \[
  L^2\le\frac2\pi\log\frac{S^2+S+p}{S^2-S+p}\,

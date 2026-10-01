@@ -1881,6 +1881,549 @@
       "native_receipt_identities": [],
       "native_status": "R8_source_reviewed; final native guide render and release binding pending",
       "status_boundary": "Original ZIP and member hashes identify donor proposals, not verified reading or automatic acceptance. See R8 native review and selected public source. The guide self-research requirement remains a next-round task."
+    },
+    {
+      "id": "short-20261001-r9-exposition",
+      "round": 9,
+      "problem": "exposition",
+      "archive_name": "exposition_guides_r9_final_20261001.zip",
+      "archive_sha256": "d2c9b1e7cbdf4cf70e308d549ef684deee9529518177ba73b52b1bc6496dbb0c",
+      "documents": {
+        "BLOCKERS.md": {
+          "member": "exposition_guides_r9_final_20261001/BLOCKERS.md",
+          "sha256": "a3c35407a917141fac0a7a9095be2f9076e9102db8b84810e25826b5537d9ec3"
+        },
+        "EDITORIAL_REPORT.md": {
+          "member": "exposition_guides_r9_final_20261001/EDITORIAL_REPORT.md",
+          "sha256": "f7acb9fe858c0cd883975ef76a2168fa5b1da2b90be1ea7a78e6a30a39865e4a"
+        },
+        "FEEDBACK_UPTAKE.json": {
+          "member": "exposition_guides_r9_final_20261001/FEEDBACK_UPTAKE.json",
+          "sha256": "4682d6d1e84eaea3007b1f7c98f262733c222d2c1439765244842aca307e670a"
+        },
+        "GENERALIZED_LESSONS.json": {
+          "member": "exposition_guides_r9_final_20261001/GENERALIZED_LESSONS.json",
+          "sha256": "51361e32d2aa88c6155c65c9665ba0ddbd202b6aa3d51e7e398ef293348de0a8"
+        },
+        "GUIDE_REVISION_REPORT.json": {
+          "member": "exposition_guides_r9_final_20261001/GUIDE_REVISION_REPORT.json",
+          "sha256": "ecab8711a558ac20c601c39c3a429cff549a46c4d65088afbb5c4f7dc42d185a"
+        },
+        "LITERATURE_READING.json": {
+          "member": "exposition_guides_r9_final_20261001/LITERATURE_READING.json",
+          "sha256": "8c920653bd68ac5faec09ff41b07856b01eef0a017a3c2c97e8395a6689c722f"
+        },
+        "READER_VALUE_REPORT.json": {
+          "member": "exposition_guides_r9_final_20261001/READER_VALUE_REPORT.json",
+          "sha256": "e324f47cc1f980e9a2aed7a1471e93e1d54505cda509ace528f2d8ed739f0106"
+        },
+        "REGISTER_REPORT.json": {
+          "member": "exposition_guides_r9_final_20261001/REGISTER_REPORT.json",
+          "sha256": "dd7cd92baab7a00a1a412b8f1d5139377f85447267aa7e2eb93a08b18c7f4f13"
+        },
+        "RETURN.json": {
+          "member": "exposition_guides_r9_final_20261001/RETURN.json",
+          "sha256": "117b1602315b755c01caa17283b495ee8765cad8e76c50c6081a238c42356f93"
+        },
+        "STATEMENT_CHANGES.json": {
+          "member": "exposition_guides_r9_final_20261001/STATEMENT_CHANGES.json",
+          "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+        },
+        "STYLE_RULES.json": {
+          "member": "exposition_guides_r9_final_20261001/STYLE_RULES.json",
+          "sha256": "60dfe8ce42225f77c64d10dbc6f1a1a8dfaa1eed6235e36cd43c1ba643024ee0"
+        }
+      },
+      "native_status": "source_reviewed_selective_integration",
+      "status_boundary": "Original archive identity is custody, not acceptance or proof. Donor reading declarations remain donor claims. See clone-local R9 review record for selected changes and validation boundaries."
+    },
+    {
+      "id": "short-20261001-r9-systems",
+      "round": 9,
+      "problem": "systems",
+      "archive_name": "systems_short_refinement_r9_return_20261001.zip",
+      "archive_sha256": "4ff0ae49f65ec7a08c5fec6a2a49da7582991da8faa69d023eaaade14a3b2021",
+      "documents": {
+        "BLOCKERS.md": {
+          "member": "systems_short_refinement_r9_return_20261001/BLOCKERS.md",
+          "sha256": "ed235816215b45baa5f1b451b1c1b987c52e3ef1c2e0579c96fc04d151bb7455"
+        },
+        "EDITORIAL_REPORT.md": {
+          "member": "systems_short_refinement_r9_return_20261001/EDITORIAL_REPORT.md",
+          "sha256": "be864cb10a665d6139c51e9ec3f78c7dfc7b782e4df759d3fab4bce1c553246e"
+        },
+        "FEEDBACK_UPTAKE.json": {
+          "member": "systems_short_refinement_r9_return_20261001/FEEDBACK_UPTAKE.json",
+          "sha256": "47801228fa915716b59de07e8dadcb652bec4e3191e41f383432d2b07731031f"
+        },
+        "GENERALIZED_LESSONS.json": {
+          "member": "systems_short_refinement_r9_return_20261001/GENERALIZED_LESSONS.json",
+          "sha256": "07c07eb88ee1d75c67e62ea541f6b7ecf85777dc3f6af58547d7719565f906c7"
+        },
+        "LITERATURE_READING.json": {
+          "member": "systems_short_refinement_r9_return_20261001/LITERATURE_READING.json",
+          "sha256": "e5f7893112ce1eb227f1df36a09806e18070bdb0609c80dab76b077f18a0f213"
+        },
+        "READER_VALUE_REPORT.json": {
+          "member": "systems_short_refinement_r9_return_20261001/READER_VALUE_REPORT.json",
+          "sha256": "176529f8ce57aad2912f2af1f81d8305d99de4c709792886ce8fd9d19a54256a"
+        },
+        "REGISTER_REPORT.json": {
+          "member": "systems_short_refinement_r9_return_20261001/REGISTER_REPORT.json",
+          "sha256": "4a8a6a59bbd6bb3aef0ae77ac8174f818882f658520c451181b53c7ba1a1b921"
+        },
+        "RETURN.json": {
+          "member": "systems_short_refinement_r9_return_20261001/RETURN.json",
+          "sha256": "62e3416c619cd4a180eae89850eaf8c6a5b9f7d238d50d900388ecb5b871ae1a"
+        },
+        "STATEMENT_CHANGES.json": {
+          "member": "systems_short_refinement_r9_return_20261001/STATEMENT_CHANGES.json",
+          "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+        },
+        "STYLE_RULES.json": {
+          "member": "systems_short_refinement_r9_return_20261001/STYLE_RULES.json",
+          "sha256": "3a3e832b9cf107cd2457acb738117ee9585a20bd601002dcaa79f68ebc4eef0d"
+        }
+      },
+      "native_status": "source_reviewed_selective_integration",
+      "status_boundary": "Original archive identity is custody, not acceptance or proof. Donor reading declarations remain donor claims. See clone-local R9 review record for selected changes and validation boundaries."
+    },
+    {
+      "id": "short-20261001-r9-1049",
+      "round": 9,
+      "problem": "1049",
+      "archive_name": "erdos1049_short_refinement_r10_20261001.zip",
+      "archive_sha256": "e75e79cf1d12fb4ba9d401d3b010276aa3bc02f496eb6c61f63990d3b5a0f30e",
+      "documents": {
+        "BLOCKERS.md": {
+          "member": "erdos1049_short_refinement_r10_20261001/BLOCKERS.md",
+          "sha256": "f46b95f227166cf2e4b0602d3471243520eab3799805ca4294982530a02fd729"
+        },
+        "EDITORIAL_REPORT.md": {
+          "member": "erdos1049_short_refinement_r10_20261001/EDITORIAL_REPORT.md",
+          "sha256": "e0b49a24449c0bf306b17ab47951a702d7c54fd6515992e53a2e94185a06145a"
+        },
+        "FEEDBACK_UPTAKE.json": {
+          "member": "erdos1049_short_refinement_r10_20261001/FEEDBACK_UPTAKE.json",
+          "sha256": "3126e3a528523e0080f500a10a31e1424470f80cf53bcb987597fa9a1d9b2bde"
+        },
+        "GENERALIZED_LESSONS.json": {
+          "member": "erdos1049_short_refinement_r10_20261001/GENERALIZED_LESSONS.json",
+          "sha256": "c27f87bd68ffb967ea35e188923740610972a7997f7378abfebb0bee684e1faf"
+        },
+        "LITERATURE_READING.json": {
+          "member": "erdos1049_short_refinement_r10_20261001/LITERATURE_READING.json",
+          "sha256": "cc590b64aa67b29a1ae06460225d120c5dd2968d3495b7378619e5b5b9f64f06"
+        },
+        "READER_VALUE_REPORT.json": {
+          "member": "erdos1049_short_refinement_r10_20261001/READER_VALUE_REPORT.json",
+          "sha256": "0d752d9f01d142733f3f9cda3d9db00948d16512e652b6da652e95df3bc3fed6"
+        },
+        "REGISTER_REPORT.json": {
+          "member": "erdos1049_short_refinement_r10_20261001/REGISTER_REPORT.json",
+          "sha256": "161329a55e76aacd78afdccd1ac6476abbe2e353b292f7b28bebae8ca395b2ff"
+        },
+        "RETURN.json": {
+          "member": "erdos1049_short_refinement_r10_20261001/RETURN.json",
+          "sha256": "df81428170f5cb7c34eb23ac48d40a031f573c43b55b64fa8251c28abf83c37f"
+        },
+        "STATEMENT_CHANGES.json": {
+          "member": "erdos1049_short_refinement_r10_20261001/STATEMENT_CHANGES.json",
+          "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+        },
+        "STYLE_RULES.json": {
+          "member": "erdos1049_short_refinement_r10_20261001/STYLE_RULES.json",
+          "sha256": "1fce4f0f2f421dbf3813295187900988452b8be2a09bd29814bc46485c98a2af"
+        }
+      },
+      "native_status": "source_reviewed_selective_integration",
+      "status_boundary": "Original archive identity is custody, not acceptance or proof. Donor reading declarations remain donor claims. See clone-local R9 review record for selected changes and validation boundaries.",
+      "filename_boundary": "R10 filename; RETURN.json identifies the frozen R9 assignment."
+    },
+    {
+      "id": "short-20261001-r9-1041",
+      "round": 9,
+      "problem": "1041",
+      "archive_name": "erdos1041_r9_complete_return_20261001.zip",
+      "archive_sha256": "927ed10a093949c55bd86f57377ed2cf97c6b1d00c9a25213dfcfa4e8527fe8f",
+      "documents": {
+        "BLOCKERS.md": {
+          "member": "erdos1041_r9_return_20261001/BLOCKERS.md",
+          "sha256": "3197a5df5d7210df89387cc4beff9a56bd890681ec8b913e06b777e97934c13c"
+        },
+        "EDITORIAL_REPORT.md": {
+          "member": "erdos1041_r9_return_20261001/EDITORIAL_REPORT.md",
+          "sha256": "431c853f3c0c3890a1a7eeffd82a832ae63a47b42918047e024c38fd0ce09afd"
+        },
+        "FEEDBACK_UPTAKE.json": {
+          "member": "erdos1041_r9_return_20261001/FEEDBACK_UPTAKE.json",
+          "sha256": "11d490e3d854ddc516ed8d9fc0241349e29c74b3d79a1bf8dc1f05471b0f9c80"
+        },
+        "GENERALIZED_LESSONS.json": {
+          "member": "erdos1041_r9_return_20261001/GENERALIZED_LESSONS.json",
+          "sha256": "464139c0bc659e019f51d3aedc15f9a84443b12300814825ec73f1ea437c7cb7"
+        },
+        "LITERATURE_READING.json": {
+          "member": "erdos1041_r9_return_20261001/LITERATURE_READING.json",
+          "sha256": "88930f06164c64793d51d9ac25a5fb75cf45dc0d51937e8059f95eac80ab87a6"
+        },
+        "READER_VALUE_REPORT.json": {
+          "member": "erdos1041_r9_return_20261001/READER_VALUE_REPORT.json",
+          "sha256": "88d9d8c0a1c8836cb6cd6e80eef90c2f2c98ec2e0898020bf8167bfa024d3c0d"
+        },
+        "REGISTER_REPORT.json": {
+          "member": "erdos1041_r9_return_20261001/REGISTER_REPORT.json",
+          "sha256": "474eb9009887dd518061626eb9f925530cfc6d1abfe3d6710919dd46d54a34da"
+        },
+        "RETURN.json": {
+          "member": "erdos1041_r9_return_20261001/RETURN.json",
+          "sha256": "8cb62950f38efd40301017e31c2239237b548ff13c79204f0a835a9eecfb1667"
+        },
+        "STATEMENT_CHANGES.json": {
+          "member": "erdos1041_r9_return_20261001/STATEMENT_CHANGES.json",
+          "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+        },
+        "STYLE_RULES.json": {
+          "member": "erdos1041_r9_return_20261001/STYLE_RULES.json",
+          "sha256": "15ed94643fd1bfa928966f37458e0a247bc8995b32bc16477926da807d41960e"
+        }
+      },
+      "native_status": "source_reviewed_selective_integration",
+      "status_boundary": "Original archive identity is custody, not acceptance or proof. Donor reading declarations remain donor claims. See clone-local R9 review record for selected changes and validation boundaries."
+    },
+    {
+      "id": "short-20261001-r9-269",
+      "round": 9,
+      "problem": "269",
+      "archive_name": "erdos269_short_refinement_r9_return_20261001.zip",
+      "archive_sha256": "06d23009211a8b43ace73483fd502cc9783d095294c5961a0713c06607a6fd2e",
+      "documents": {
+        "BLOCKERS.md": {
+          "member": "erdos269_short_refinement_r9_return_20261001/BLOCKERS.md",
+          "sha256": "396b398ec966fe26bb2558c662ca815351b0eae4a4fa9805170d9262b9988e96"
+        },
+        "EDITORIAL_REPORT.md": {
+          "member": "erdos269_short_refinement_r9_return_20261001/EDITORIAL_REPORT.md",
+          "sha256": "a72bebdd93ba9be55b6e0551ec15238433e86958b10d431c5f8ca7e98e1ac705"
+        },
+        "FEEDBACK_UPTAKE.json": {
+          "member": "erdos269_short_refinement_r9_return_20261001/FEEDBACK_UPTAKE.json",
+          "sha256": "6c73e8b5a9ced0d9e33e194d2e84c3e02eb30c76a248bbc188eb5a5a256810b2"
+        },
+        "GENERALIZED_LESSONS.json": {
+          "member": "erdos269_short_refinement_r9_return_20261001/GENERALIZED_LESSONS.json",
+          "sha256": "60a7c6adbad6ed222736b347aecd6683c65ca38f762cdccf305f9df262dc2fe6"
+        },
+        "LITERATURE_READING.json": {
+          "member": "erdos269_short_refinement_r9_return_20261001/LITERATURE_READING.json",
+          "sha256": "09e2c42a8de51631aaa401a23d51089608351c2974f5f54186910c6d4b2b62eb"
+        },
+        "READER_VALUE_REPORT.json": {
+          "member": "erdos269_short_refinement_r9_return_20261001/READER_VALUE_REPORT.json",
+          "sha256": "874bd54253f7d4a1ea16a68db520f761ba2521d71882da0923e1019d86ba389a"
+        },
+        "REGISTER_REPORT.json": {
+          "member": "erdos269_short_refinement_r9_return_20261001/REGISTER_REPORT.json",
+          "sha256": "0d5153e32384119918e2adaa8d10cde14e413dae2aeaea201a803d31edb89254"
+        },
+        "RETURN.json": {
+          "member": "erdos269_short_refinement_r9_return_20261001/RETURN.json",
+          "sha256": "d6fb877709853c4dc79154c6ede7717e261ad5bef56552967033cb7b6e029ed4"
+        },
+        "STATEMENT_CHANGES.json": {
+          "member": "erdos269_short_refinement_r9_return_20261001/STATEMENT_CHANGES.json",
+          "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+        },
+        "STYLE_RULES.json": {
+          "member": "erdos269_short_refinement_r9_return_20261001/STYLE_RULES.json",
+          "sha256": "c469cddde08cd218c18026c74be44cae95065444a9bf1ad2a07463d08f94f876"
+        }
+      },
+      "native_status": "source_reviewed_selective_integration",
+      "status_boundary": "Original archive identity is custody, not acceptance or proof. Donor reading declarations remain donor claims. See clone-local R9 review record for selected changes and validation boundaries."
+    },
+    {
+      "id": "short-20261001-r9-257",
+      "round": 9,
+      "problem": "257",
+      "archive_name": "erdos257_r9_recovered_work.zip",
+      "archive_sha256": "0515b945a88c4b8d8b73b4bff34a3dfc6a1f566b4b1e9431bdae02bcc0f6f29c",
+      "documents": {
+        "RECOVERY_README.md": {
+          "member": "RECOVERY_README.md",
+          "sha256": "566cdf63fa9d32c04fabe1e4a6853449a83b723731acc9faf8598b36c46f617a"
+        },
+        "RECOVERY_STATUS.json": {
+          "member": "RECOVERY_STATUS.json",
+          "sha256": "edf5ba69294d3b8e743acc3beda44ff9d59132e2e8512b039681febae58ae46b"
+        }
+      },
+      "native_status": "recovery_only_no_revised_manuscript",
+      "status_boundary": "Original archive identity is custody, not acceptance or proof. Donor reading declarations remain donor claims. See clone-local R9 review record for selected changes and validation boundaries."
+    },
+    {
+      "id": "short-20261001-r9-251",
+      "round": 9,
+      "problem": "251",
+      "archive_name": "erdos251_short_refinement_r9_20261001_return.zip",
+      "archive_sha256": "da8ca0bd104de31211de1af61c04bd028dfe18ab88afe53c07d95eb2d5241988",
+      "documents": {
+        "BLOCKERS.md": {
+          "member": "erdos251_short_refinement_r9_20261001_return/BLOCKERS.md",
+          "sha256": "bb47b79bbce391b397a5ccc9ac6abcd79bc12c58d8563677bafe972de0c79ffe"
+        },
+        "EDITORIAL_REPORT.md": {
+          "member": "erdos251_short_refinement_r9_20261001_return/EDITORIAL_REPORT.md",
+          "sha256": "ab7cd7e77154bdc2dc4f7bc9da8a58a88f3cfb2b4bbca8fb090cf43948d6fcb7"
+        },
+        "FEEDBACK_UPTAKE.json": {
+          "member": "erdos251_short_refinement_r9_20261001_return/FEEDBACK_UPTAKE.json",
+          "sha256": "1a58f333ced1d356d90b6d3f4b7a4a66ad7fa406ff542060097139331baf5afb"
+        },
+        "GENERALIZED_LESSONS.json": {
+          "member": "erdos251_short_refinement_r9_20261001_return/GENERALIZED_LESSONS.json",
+          "sha256": "aed573f87b93f4cc7a11f2e05085777ca3c4d424b1a854daaedc3f0913b376fd"
+        },
+        "LITERATURE_READING.json": {
+          "member": "erdos251_short_refinement_r9_20261001_return/LITERATURE_READING.json",
+          "sha256": "70f3e6ba6a559ac703dc63d90cabeb451d9c1d8bddc1d74c2dd0e310dcd1ab29"
+        },
+        "READER_VALUE_REPORT.json": {
+          "member": "erdos251_short_refinement_r9_20261001_return/READER_VALUE_REPORT.json",
+          "sha256": "e339f7e891c931976438ff3aeb828efd9775d8da4d2567c4391267dbd36fbc8c"
+        },
+        "REGISTER_REPORT.json": {
+          "member": "erdos251_short_refinement_r9_20261001_return/REGISTER_REPORT.json",
+          "sha256": "5084ec63125a038e8628b2c3a99e307c0d22de656e7ddab4dcf099696ad846e4"
+        },
+        "RETURN.json": {
+          "member": "erdos251_short_refinement_r9_20261001_return/RETURN.json",
+          "sha256": "dd95d9aae4264b1308698b7b9089e651a9eaae6fbae2c3c98621f64f49b728e2"
+        },
+        "STATEMENT_CHANGES.json": {
+          "member": "erdos251_short_refinement_r9_20261001_return/STATEMENT_CHANGES.json",
+          "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+        },
+        "STYLE_RULES.json": {
+          "member": "erdos251_short_refinement_r9_20261001_return/STYLE_RULES.json",
+          "sha256": "ee4b7a178fe9918f8c66ac904ff66e78ced13bd5f0e294d87abbb06b9ea8ddd9"
+        }
+      },
+      "native_status": "source_reviewed_selective_integration",
+      "status_boundary": "Original archive identity is custody, not acceptance or proof. Donor reading declarations remain donor claims. See clone-local R9 review record for selected changes and validation boundaries."
+    },
+    {
+      "id": "short-20261001-r9-249",
+      "round": 9,
+      "problem": "249",
+      "archive_name": "erdos249_r9_return.zip",
+      "archive_sha256": "42dcdede77788415cd5f4fcbb49edcc2c21d1ae63eb3cf3dd2333bc217be961f",
+      "documents": {
+        "BLOCKERS.md": {
+          "member": "erdos249_r9_return/BLOCKERS.md",
+          "sha256": "cb76afaad6dc5539313b5c07728aa50110028d479562607d1236efc689ead584"
+        },
+        "EDITORIAL_REPORT.md": {
+          "member": "erdos249_r9_return/EDITORIAL_REPORT.md",
+          "sha256": "26d58607462d6d11ba77fb0bf0da57ac65769c32345e50ccb5c0a528c24d6b67"
+        },
+        "FEEDBACK_UPTAKE.json": {
+          "member": "erdos249_r9_return/FEEDBACK_UPTAKE.json",
+          "sha256": "49e90908eb1507f5439c793d57e21b740c5a01ec875de14e41b4e8220d31385e"
+        },
+        "GENERALIZED_LESSONS.json": {
+          "member": "erdos249_r9_return/GENERALIZED_LESSONS.json",
+          "sha256": "d1ee97b48ab0c457e6d8dda908dea010a63753c7e5595b526e7ba5c533c1fd21"
+        },
+        "LITERATURE_READING.json": {
+          "member": "erdos249_r9_return/LITERATURE_READING.json",
+          "sha256": "616864bed488dd80f5e2979afb4bb882181252407cc0f17fdf79e672e6ae0bff"
+        },
+        "READER_VALUE_REPORT.json": {
+          "member": "erdos249_r9_return/READER_VALUE_REPORT.json",
+          "sha256": "c4e3cee61f3f9d4407f34e17bb64e90346d2f46eee3fee425219979beb4a68d5"
+        },
+        "REGISTER_REPORT.json": {
+          "member": "erdos249_r9_return/REGISTER_REPORT.json",
+          "sha256": "d629ed83cb263f01156cd175eee7c8f92875ba4996e406afd0199664cecd04b2"
+        },
+        "RETURN.json": {
+          "member": "erdos249_r9_return/RETURN.json",
+          "sha256": "b3b31c07e74d8479a3f13643e2dfeea9df2e520dcd4a14f165b8b34a8732fc31"
+        },
+        "STATEMENT_CHANGES.json": {
+          "member": "erdos249_r9_return/STATEMENT_CHANGES.json",
+          "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+        },
+        "STYLE_RULES.json": {
+          "member": "erdos249_r9_return/STYLE_RULES.json",
+          "sha256": "fb0358624206d1533811a3dcaf1fd1b5f5b34561ac80ef321c064431dd56ef8b"
+        }
+      },
+      "native_status": "source_reviewed_selective_integration",
+      "status_boundary": "Original archive identity is custody, not acceptance or proof. Donor reading declarations remain donor claims. See clone-local R9 review record for selected changes and validation boundaries."
+    },
+    {
+      "id": "short-20261001-r9-243",
+      "round": 9,
+      "problem": "243",
+      "archive_name": "erdos243_short_refinement_r9_return_20261001.zip",
+      "archive_sha256": "354bf67948387b086fe2e70ed846f2cc91a2ff39ee0d9a6c3b971fde9d5b251b",
+      "documents": {
+        "BLOCKERS.md": {
+          "member": "erdos243_r9_return/BLOCKERS.md",
+          "sha256": "632fdb88dcff717d885d211d3f76425f4ce5d997645909d7e2e42cce98a8e7db"
+        },
+        "EDITORIAL_REPORT.md": {
+          "member": "erdos243_r9_return/EDITORIAL_REPORT.md",
+          "sha256": "8a21da30552c6d86f8a615ace7a317b6bba4f9b5cceaccee1cb900e3f3ce242d"
+        },
+        "FEEDBACK_UPTAKE.json": {
+          "member": "erdos243_r9_return/FEEDBACK_UPTAKE.json",
+          "sha256": "9afa0c034c5aa61fe1411a6b49885c76db43ba4baf42f3e8e0cd8e193bbf4348"
+        },
+        "GENERALIZED_LESSONS.json": {
+          "member": "erdos243_r9_return/GENERALIZED_LESSONS.json",
+          "sha256": "59127487f4a19c8bbbfd9b2570859002b88b1a68335f2a3ffe43ff77280efc94"
+        },
+        "LITERATURE_READING.json": {
+          "member": "erdos243_r9_return/LITERATURE_READING.json",
+          "sha256": "9c8c005239406c4878d24e46aeca5bd646b420387a9e608805686f8b88865339"
+        },
+        "READER_VALUE_REPORT.json": {
+          "member": "erdos243_r9_return/READER_VALUE_REPORT.json",
+          "sha256": "b7ad4817b83fa075b5564515119a9208c9709d372b12540d77083601fae22cec"
+        },
+        "REGISTER_REPORT.json": {
+          "member": "erdos243_r9_return/REGISTER_REPORT.json",
+          "sha256": "d36a95e9db0e4cb7dc6d7856d4f3ea58c4aa9718e1a4a205f80ec725f2869532"
+        },
+        "RETURN.json": {
+          "member": "erdos243_r9_return/RETURN.json",
+          "sha256": "5be6b18e461e8e0a3dfb1e5584a2f94301dba7db24580ea8ee74c5b110ffe8dc"
+        },
+        "STATEMENT_CHANGES.json": {
+          "member": "erdos243_r9_return/STATEMENT_CHANGES.json",
+          "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+        },
+        "STYLE_RULES.json": {
+          "member": "erdos243_r9_return/STYLE_RULES.json",
+          "sha256": "ed4d30b1c265b6faf66991e60743057a2a9193e50ef33252031582f0c72a2ee5"
+        }
+      },
+      "native_status": "source_reviewed_selective_integration",
+      "status_boundary": "Original archive identity is custody, not acceptance or proof. Donor reading declarations remain donor claims. See clone-local R9 review record for selected changes and validation boundaries."
+    },
+    {
+      "id": "short-20261001-r9-68",
+      "round": 9,
+      "problem": "68",
+      "archive_name": "erdos68_r9_exposition_return_20261001.zip",
+      "archive_sha256": "b4325a14be4f07bf17f84dfd8f3c8525020e5fe596ced03fb050bef848fe53f1",
+      "documents": {
+        "BLOCKERS.md": {
+          "member": "erdos68_r9_exposition_return_20261001/BLOCKERS.md",
+          "sha256": "2ee5d88130f2bd1a64fbb69476e2ef47714fddddf3675cc7c4a7299ffc4f188b"
+        },
+        "EDITORIAL_REPORT.md": {
+          "member": "erdos68_r9_exposition_return_20261001/EDITORIAL_REPORT.md",
+          "sha256": "21b1b08849300f69504a099d6edcdb3e2dafbda52414960035dca0bfd4f03c1a"
+        },
+        "FEEDBACK_UPTAKE.json": {
+          "member": "erdos68_r9_exposition_return_20261001/FEEDBACK_UPTAKE.json",
+          "sha256": "6ce7c1d0ee4c45a0bfdb8602d1fef35b6458b43e83c4c0f35f6446461374ac32"
+        },
+        "GENERALIZED_LESSONS.json": {
+          "member": "erdos68_r9_exposition_return_20261001/GENERALIZED_LESSONS.json",
+          "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+        },
+        "LITERATURE_READING.json": {
+          "member": "erdos68_r9_exposition_return_20261001/LITERATURE_READING.json",
+          "sha256": "818b6cf10fc9514711ecb67727026784a016d843e32817c7baf922dcf165b12a"
+        },
+        "READER_VALUE_REPORT.json": {
+          "member": "erdos68_r9_exposition_return_20261001/READER_VALUE_REPORT.json",
+          "sha256": "ae9e21c4a0bb27e61c9341fe440caf91305c05d11bb79bc5f274d4ff5ac1a598"
+        },
+        "REGISTER_REPORT.json": {
+          "member": "erdos68_r9_exposition_return_20261001/REGISTER_REPORT.json",
+          "sha256": "0b8f980602ad4fe1cbf53787514cb446fec5783b158be70f966e0ca47f5133f8"
+        },
+        "RETURN.json": {
+          "member": "erdos68_r9_exposition_return_20261001/RETURN.json",
+          "sha256": "d77207d7d446bcc57275a104c7530bbd83aad802bb0745c91ec85d239bc4e2ea"
+        },
+        "STATEMENT_CHANGES.json": {
+          "member": "erdos68_r9_exposition_return_20261001/STATEMENT_CHANGES.json",
+          "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+        },
+        "STYLE_RULES.json": {
+          "member": "erdos68_r9_exposition_return_20261001/STYLE_RULES.json",
+          "sha256": "ddf43a5711cc2c34bdcbb9c7ff99163f2947e6ba6db5b6647d60889aaa74a695"
+        }
+      },
+      "native_status": "source_reviewed_selective_integration",
+      "status_boundary": "Original archive identity is custody, not acceptance or proof. Donor reading declarations remain donor claims. See clone-local R9 review record for selected changes and validation boundaries."
+    },
+    {
+      "id": "short-20261001-r9-257-correction",
+      "round": 9,
+      "problem": "257",
+      "archive_name": "erdos257_r9_final_return.zip",
+      "archive_sha256": "e7753cd734ee6a281ceae947a8b75b23dc8ef8a0bc14d0646317858af8e3baf7",
+      "documents": {
+        "BLOCKERS.md": {
+          "member": "erdos257_r9_final_return/BLOCKERS.md",
+          "sha256": "159c24da32df5130dd5df79908689060de543caeabd0dde8ab5bda0d8d1b84b6"
+        },
+        "CORRESPONDENCE.json": {
+          "member": "erdos257_r9_final_return/CORRESPONDENCE.json",
+          "sha256": "46b2af67a19ecd70ee64362e2671f8338a2da31b8bfbeeac74574467b47abb2f"
+        },
+        "EDITORIAL_REPORT.md": {
+          "member": "erdos257_r9_final_return/EDITORIAL_REPORT.md",
+          "sha256": "7c756fb2d639576c71a3ddb754f8e6fb45ef08717ecea249c23c2789caaf660c"
+        },
+        "FEEDBACK_UPTAKE.json": {
+          "member": "erdos257_r9_final_return/FEEDBACK_UPTAKE.json",
+          "sha256": "8bd3fce33c9e8590fb94432df5fd2fd457ae5f382adc1cee8e60fad95e477d96"
+        },
+        "GENERALIZED_LESSONS.json": {
+          "member": "erdos257_r9_final_return/GENERALIZED_LESSONS.json",
+          "sha256": "c18cca2a533ee3685a40bdedba55cf7f0a76226f373f07f4b0a28f17d59da472"
+        },
+        "LITERATURE_READING.json": {
+          "member": "erdos257_r9_final_return/LITERATURE_READING.json",
+          "sha256": "81e1a017a8458c64bf290cb481b7e87a5e42868aee44a9086d57b0c7815572f2"
+        },
+        "MOVES.md": {
+          "member": "erdos257_r9_final_return/MOVES.md",
+          "sha256": "cad7e5f6cb9138ce8b1e743da5c4f9b47028d6759052f8884d537907444782c9"
+        },
+        "READER_VALUE_REPORT.json": {
+          "member": "erdos257_r9_final_return/READER_VALUE_REPORT.json",
+          "sha256": "69744e3371b28d045cbbef8e8170079f1dc1317fa84cc16734a414278908267d"
+        },
+        "REGISTER_REPORT.json": {
+          "member": "erdos257_r9_final_return/REGISTER_REPORT.json",
+          "sha256": "7d82e11d3f9093cf26af053aeb7008439a76cf7eea1403a9e86015d405888d23"
+        },
+        "RETURN.json": {
+          "member": "erdos257_r9_final_return/RETURN.json",
+          "sha256": "8d709f7959f29d0d107d97c18cbb1850d20709b1cf0dcac11ff711a50ff3dd01"
+        },
+        "STATEMENT_CHANGES.json": {
+          "member": "erdos257_r9_final_return/STATEMENT_CHANGES.json",
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "STYLE_RULES.json": {
+          "member": "erdos257_r9_final_return/STYLE_RULES.json",
+          "sha256": "e805df7b6e74dab26534e0d4bfbe0d3a0e5e86a64d06f27a33bdfbec4e1d6fc1"
+        }
+      },
+      "native_status": "source_reviewed_selective_integration",
+      "correction_of": "short-20261001-r9-257",
+      "status_boundary": "Separate later original correction; the earlier recovery-only arrival is preserved. Type A selected manuscript changes are recorded in the native review. Archive custody and donor reading claims are not proof, full reading, or automatic rule adoption."
     }
   ]
 }

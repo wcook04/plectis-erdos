@@ -22,7 +22,7 @@
 \title{Integral Relations among Totient Sections}
 \subtitle{Finite-level bases and bounded residue series}
 \author{Will Cook}
-\date{July 2026; revised 30 September 2026}
+\date{July 2026; revised 1 October 2026}
 
 
 % Named destinations are outside all theorem bodies.
@@ -284,21 +284,22 @@ $1\le r<36$ and $6\nmid r$. The omitted sections satisfy
 \]
 Thus an integral combination of the $43$ sections vanishes precisely
 when these six substitutions leave all $37$ retained coefficients zero.
-The six differences obtained by moving the right-hand sides to the
-left give every integral relation. Indeed, subtracting the original
-coefficient of each omitted section times its difference removes
-all six omitted coordinates. The remaining retained coordinates must
-then vanish by Theorem~\ref{thm:kkernelrank}.
-Writing $x_{j,r}$ for the original coefficient of $F_{j,r}$, the
-coefficient at $F_{1,2}$ after substitution is $x_{1,2}+4x_{2,12}$.
-Meanwhile $x_{2,12}$ is the coefficient of
-$E_{2,12}-4E_{1,2}$ in the expression for the relation, where
-$E_{j,r}$ is the generator of the free abelian group at index $(j,r)$.
-The two kinds of coefficient have different roles: the retained
-coefficients test whether the combination vanishes, while the omitted
-coefficients give its expression as a sum of relations. At base two
-and level two those relations are $E_{2,0}-2E_{1,0}$ and
-$E_{2,2}-E_{1,1}$. The same elimination works at every omitted index.
+To recover the relation itself, keep track of what each substitution
+removes. Let $E_{j,r}$ denote the generator at index $(j,r)$ in the
+free abelian group on all section indices. The substitution
+$F_{2,12}=4F_{1,2}$ corresponds to the decomposition
+\[
+ x_{1,2}E_{1,2}+x_{2,12}E_{2,12}
+ = (x_{1,2}+4x_{2,12})E_{1,2}
+   +x_{2,12}(E_{2,12}-4E_{1,2}).
+\]
+The first coefficient tests whether the retained component vanishes;
+the second records the multiple of the relation removed. Doing this
+at all six omitted indices gives every integral relation, since the
+retained sections are independent. At base two and level two the
+relations are $E_{2,0}-2E_{1,0}$ and $E_{2,2}-E_{1,1}$.
+The following corollary expresses the same calculation at arbitrary
+base and level.
 
 \begin{corollary}[Integral coordinates and all integral relations]\label{cor:integral-normal-form}
 Let $k\ge2$ and $e\ge1$. The retained family is a $\Z$-basis of the
@@ -322,18 +323,19 @@ $C_k(t,u)$ is an integer. The retained family therefore spans the
 section module over $\Z$, and its rational independence makes it a
 $\Z$-basis.
 
-For any vector $x=\sum_i x_iE_i$, subtracting
-$\sum_{i\text{ omitted}}x_iR_i$ leaves only retained coordinates.
-At a retained index $j$, the new coefficient is
+For any vector $x=\sum_i x_iE_i$, substitute
+$E_i=R_i+a_iE_{j(i)}$ at each omitted index and collect terms:
 \[
- x_j+\sum_{\substack{i\text{ omitted}\\j(i)=j}}a_i x_i.
+ x=\sum_{j\text{ retained}}
+       \left(x_j+\sum_{\substack{i\text{ omitted}\\j(i)=j}}a_i x_i\right)E_j
+       +\sum_{i\text{ omitted}}x_iR_i.
 \]
-Thus the substitutions give the integral coordinates explicitly.
-If $x$ evaluates to zero, these new coefficients all vanish by
-independence, so $x=\sum_{i\text{ omitted}}x_iR_i$.
-Conversely, the coefficient at omitted index $i$ in
-$\sum_h c_hR_h$ is $c_i$ itself, so we recover every coefficient
-without division. This proves both independence and uniqueness.
+Evaluation kills the second sum. Independence of the retained sections
+therefore says that $x$ is a relation exactly when every coefficient
+in the first sum is zero. In that case the second sum is its expression
+in the $R_i$. This expression is unique: the coefficient at omitted
+index $i$ in $\sum_h c_hR_h$ is $c_i$ itself. The unit coefficient
+at that index is also why no division is needed.
 Counting omitted indices gives
 $(1+k+\cdots+k^e)-(k^e+1)=\sum_{j=1}^{e-1}k^j$.
 \end{proof}
@@ -348,13 +350,14 @@ An alternative is to test equality at finitely many inputs. Return
 to base six and level two. Order the retained columns as above, with
 residues increasing within each level, and evaluate at
 $n=0,\ldots,36$ to obtain a $37\times37$ matrix.
-Its determinant is $17$ modulo $101$, so it is nonsingular over $\Q$
-and detects every nonzero retained combination at one of these inputs.
+Its determinant is $17$ modulo $101$, so it is nonsingular over $\Q$.
+Consequently a retained combination is zero if and only if all $37$
+of its integer evaluations are zero. Here reduction modulo $101$
+certifies the matrix, not the equality of a proposed combination:
+$101F_{2,2}$ would vanish modulo $101$ at every input, although its
+integer value at $n=0$ is $101$.
 The script \texttt{scripts/totient\_kernel\_normal\_form.py} calculates
-the coordinates and the first such input using integer arithmetic.
-The equality test uses the integer evaluations. Reducing the proposed
-combination modulo $101$ would miss $101F_{2,2}$, for example,
-although its value at $n=0$ is $101$.
+the coordinates and the first nonzero evaluation using integer arithmetic.
 
 \section{Bounded functions of totient residues}\label{sec:family}
 \papersectiontarget{short249-residues}
@@ -443,8 +446,10 @@ $c$ and we obtain $3f(1)/4+c/4$.
 
 The first assertion is also an application of Erd\H{o}s's sparse-series
 criterion~\cite[Lem.~1, p.~213]{erdos1957}, and of Kaneko, Suzuki and
-Tachiya~\cite[Thm.~3]{kst2026}. The nonzero residues occur on a set of
-density zero: an integer in that set has no prime divisor
+Tachiya~\cite[Thm.~3]{kst2026}. The residues are bounded and nonnegative,
+and the prime construction above makes their support infinite.
+The nonzero residues occur on a set of density zero: an integer in that
+set has no prime divisor
 $p\equiv1\pmod m$. Wong gave the case in which the base equals the
 modulus~\cite{wong2015}. The isolated-coefficient argument above also
 treats signed values of $f-f(0)$, for which those nonnegative
@@ -581,8 +586,11 @@ Since $0\le R_M\le M+2$, we have
 \end{equation}
 The two tails are nonnegative, so their difference is bounded in
 absolute value by the larger tail bound, not the sum of the bounds.
-An integral $\Delta_h(N)$ would put $D_{h,N,L}$ within distance $B$
-of a multiple of $2^L$. Hence the finite inequality
+Thus $D_{h,N,L}/2^L$ approximates $\Delta_h(N)$ with error at most
+$B/2^L$. To exclude an integer value, the approximation must lie
+farther than this error from every integer. Equivalently, the residue
+of $D_{h,N,L}$ must avoid both ends of the interval $[0,2^L)$.
+Thus the finite inequality
 \begin{equation}\label{eq:r3-certificate}
  B<D_{h,N,L}\bmod2^L<2^L-B
 \end{equation}
@@ -743,13 +751,16 @@ We seek the four bounds
        &\le\tfrac8{25}X.
 \end{aligned}
 \end{equation}
-Before taking real parts and absolute values, the four sums add to
-$\sum E_N$, so their bounds imply the real-part estimate $9X/10$
-in \eqref{eq:r3-harmonic}. Subtracting $\bar z_m$ cancels the
-unweighted sum within its cofactor group, but the factors $w_N$ may
-vary within that group. Thus centering alone does not bound the first
-sum. The second sum must also be estimated with those same weights.
-No independence has been assumed. The conclusion concerns the real
+The last two sums cover the indices outside $\mathcal G$.
+On $\mathcal G$, the identity
+$w_Nz_N=w_N(z_N-\bar z_{m_N})+w_N\bar z_{m_N}$ gives the first two.
+The four sums therefore add to $\sum E_N$ before any estimates are
+taken, and their bounds give $(14/25+1/100+1/100+8/25)X=9X/10$.
+Subtracting $\bar z_m$ cancels the unweighted sum over the whole
+cofactor group, but $w_N$ varies with the same index $N$. That
+cancellation does not persist automatically after multiplication by
+$w_N$. Both of the first two sums still require weighted estimates;
+no independence has been assumed. The conclusion concerns the real
 part; it does not give a $21X/25$ bound for the absolute value of the
 full sum.
 

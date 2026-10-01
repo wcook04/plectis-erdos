@@ -33,7 +33,7 @@ A repeated root allows a constant curve between two occurrences, so we consider 
 </div>
 
 <div id="res:ani-degree-seven-counterexample" class="theorem">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/d93e7408aed0b0c73ad5ea98116c7dc0dce3cf7b/evidence/erdos-1041-lemniscate-newton-flow.md#res-ani-degree-seven-counterexample">Lean</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/1865f2ba5def0ed9e85ebed53f4b6c7b3f6c053f/evidence/erdos-1041-lemniscate-newton-flow.md#res-ani-degree-seven-counterexample">Lean</a></p>
 
 **Theorem 2** (`ani`’s degree-seven example). *The monic polynomial $`f`$ in <a href="#eq:ani-f" data-reference-type="eqref" data-reference="eq:ani-f">[eq:ani-f]</a> has seven distinct zeros in the open unit disc. Every connected set $`K\subset\Omega_f`$ containing two of its zeros satisfies $`\mathcal H^1(K)>2`$.*
 
@@ -168,18 +168,20 @@ The term proportional to $`\varepsilon`$ measures the effect of moving the criti
 ```
 The subscripts $`3,6`$ refer to Cayley roots in the intervals $`(43812,43813)/10^4`$ and $`(-4816,-4815)/10^4`$. The Taylor estimate gives the uniform quadratic control required by Lemma <a href="#lem:two-sheet-bottleneck" data-reference-type="ref" data-reference="lem:two-sheet-bottleneck">3</a>. The first two inequalities give $`\sqrt{\delta/M}<\rho\varepsilon/5000`$, which bounds the term subtracted there. The last inequality supplies the sum of root distances from $`c_s`$; the final comparison below shows that its excess over $`2`$ survives this subtraction.
 
-We must also place these two roots in the same component; distance estimates alone do not identify that pair. We join a small disc about $`w_s`$ to points close to $`8\zeta_3`$ and $`8\zeta_6`$ by polygonal arcs in the $`w`$-plane. Containment of the four inner segments follows by writing
+We must also place these two roots in the same component; distance estimates alone do not identify that pair. We join a small disc about $`w_s`$ to points close to $`8\zeta_3`$ and $`8\zeta_6`$ by polygonal arcs in the $`w`$-plane. For the four inner segments we use
 ``` math
-7\varepsilon+\operatorname{Re}Q(w)
-                       -\tfrac12\varepsilon^7|Q(w)|^2
+1-|f(\rho\varepsilon w)|^2\ge
+ 2\rho^{14}\varepsilon^7
+ \left(7\varepsilon+\operatorname{Re}Q(w)
+                       -\tfrac12\varepsilon^7|Q(w)|^2\right).
 ```
-in the Bernstein basis of degree fourteen and checking that all fifteen coefficients are positive on each segment. For the remaining radial portions we use the root identity
+This follows by expanding the square and using $`1-\rho^{14}\ge14\rho^{14}\varepsilon^8`$. On each segment, the expression in parentheses is a polynomial of degree at most fourteen in the segment parameter. All fifteen coefficients in its degree-fourteen Bernstein basis are positive. The basis polynomials are nonnegative and sum to one, so the expression is positive along the whole segment, which therefore stays inside $`\{|f|<1\}`$ after scaling. For the remaining radial portions we use the root identity
 ``` math
 F(t\zeta)=t^7-1+
        \sum_{k=1}^6\varepsilon^{7-k}q_k\zeta^k(t^k-t^7),
  \qquad Q(w)=\sum_{k=1}^7q_kw^k,
 ```
-which gives $`|F(t\zeta)|<1`$ for $`8\varepsilon\le t\le1`$. All rational intervals, vertices and coefficient tests are specified in [the companion’s finite verification](../../../paper/1041/erdos1041-lemniscate-reasoning-surface.pdf#nameddest=counterexample-certificate). Riemann–Hurwitz now shows that this component contains exactly two roots and every other component contains one.
+which gives $`|F(t\zeta)|<1`$ for $`8\varepsilon\le t\le1`$. All rational intervals, vertices and coefficient tests are specified in [the companion’s finite verification](../../../paper/1041/erdos1041-lemniscate-reasoning-surface.pdf#nameddest=counterexample-certificate). At the regular level $`|f|=1`$, Riemann–Hurwitz gives $`k-1`$ critical points in a component with $`k`$ zeros, counted with multiplicity. Thus the component containing $`c_s`$ has exactly two roots, while every other component contains one.
 
 <div class="proof">
 
@@ -201,7 +203,7 @@ The choice $`s=10^{-6}`$ is fixed throughout. Extending these estimates to the s
 If $`f(z)=z^n+b`$ has a zero $`\zeta`$ in the open unit disc, then $`|b|=|\zeta|^n<1`$. The identity $`f(t\zeta)=b(1-t^n)`$, $`0\le t\le1`$, keeps the whole segment $`[0,\zeta]`$ in the lemniscate. A middle monomial does not destroy this argument: the equation $`f(\zeta)=0`$ lets us eliminate its contribution before taking absolute values. Only $`b`$ and $`-\zeta^n`$ remain, both of modulus less than one.
 
 <div id="res:trinomial-all-degree" class="theorem">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos1041/PaperTrinomialWholeR21.lean#L23">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d93e7408aed0b0c73ad5ea98116c7dc0dce3cf7b/evidence/erdos-1041-lemniscate-newton-flow.md#res-trinomial-all-degree-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos1041/PaperTrinomialWholeR21.lean#L23">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/1865f2ba5def0ed9e85ebed53f4b6c7b3f6c053f/evidence/erdos-1041-lemniscate-newton-flow.md#res-trinomial-all-degree-comparator">Comparator</a></p>
 
 **Theorem 4** (all-degree monic trinomials). *Let $`1\le m<n`$ and
 ``` math
@@ -232,7 +234,7 @@ f(t\zeta)=\sum_{j=0}^{n-1}(t^j-t^{j+1})S_j.
 For $`0\le t<1`$, the weights are nonnegative and sum to $`1-t^n`$. Thus $`f(t\zeta)/(1-t^n)`$ is a convex combination of the $`S_j`$. In the trinomial case these are $`b`$ and $`-\zeta^n`$. Additional coefficients introduce further partial sums, whose moduli need not be controlled by the root locations. The theorem controls segments ending at zeros; it makes no assertion that the whole lemniscate is star-shaped. The next polynomial shows where the partial-sum argument can fail after a further term is added.
 
 <div id="res:sextic-spoke" class="proposition">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos1041/PaperCompleteR20/SexticSpokeWhole.lean#L9">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d93e7408aed0b0c73ad5ea98116c7dc0dce3cf7b/evidence/erdos-1041-lemniscate-newton-flow.md#res-sextic-spoke-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos1041/PaperCompleteR20/SexticSpokeWhole.lean#L9">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/1865f2ba5def0ed9e85ebed53f4b6c7b3f6c053f/evidence/erdos-1041-lemniscate-newton-flow.md#res-sextic-spoke-comparator">Comparator</a></p>
 
 **Proposition 5** (failure of a prescribed radial segment). *There exist $`r\in(0,1)`$ for which every zero of
 ``` math
@@ -272,7 +274,7 @@ This assertion has an ordinary analytic argument and an exact rational compariso
 ```
 In every degree the length can be chosen less than $`(5/2)\mu^{1/n}`$.
 
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/d93e7408aed0b0c73ad5ea98116c7dc0dce3cf7b/evidence/erdos-1041-lemniscate-newton-flow.md#res-scaled-low-critical">Lean†</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/1865f2ba5def0ed9e85ebed53f4b6c7b3f6c053f/evidence/erdos-1041-lemniscate-newton-flow.md#res-scaled-low-critical">Lean†</a></p>
 
 Lean checks this scaling implication under the named input `LowCriticalThirteenTwentyFifths`, the unformalised assertion in Remark <a href="#res:low-critical-thirteen-twentyfifths" data-reference-type="ref" data-reference="res:low-critical-thirteen-twentyfifths">[res:low-critical-thirteen-twentyfifths]</a>.
 
@@ -364,7 +366,7 @@ Put $`p=w_0(1-w_0)`$. Then two distinct roots are joined inside $`\{|f|\le|v|\}`
 \end{equation}
 ```
 
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/d93e7408aed0b0c73ad5ea98116c7dc0dce3cf7b/evidence/erdos-1041-lemniscate-newton-flow.md#res-critical-value-separation">Lean†</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/1865f2ba5def0ed9e85ebed53f4b6c7b3f6c053f/evidence/erdos-1041-lemniscate-newton-flow.md#res-critical-value-separation">Lean†</a></p>
 
 Lean assumes `DiscSepBergmanArea`: existence of the square-root connector, its Bergman length bound and the area bound for the two-sheeted component. The complete ordinary argument is in the [companion’s separation proof](../../../paper/1041/erdos1041-lemniscate-reasoning-surface.pdf#nameddest=critical-value-separation-proof).
 
@@ -376,7 +378,7 @@ For example, $`f(z)=z^3-3a^2z`$ with $`0<a<1/\sqrt3`$ has zeros $`0,\pm\sqrt3a`$
 ```
 then two roots are joined inside $`\{|f|<1\}`$ by a curve of length strictly below $`2`$. In degree three the branch-centred choice $`w_0=1`$ already works with $`4/3`$ replaced by $`6/5`$.
 
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/d93e7408aed0b0c73ad5ea98116c7dc0dce3cf7b/evidence/erdos-1041-lemniscate-newton-flow.md#res-critical-value-thresholds">Lean†</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/1865f2ba5def0ed9e85ebed53f4b6c7b3f6c053f/evidence/erdos-1041-lemniscate-newton-flow.md#res-critical-value-thresholds">Lean†</a></p>
 
 The geometric conclusion assumes the construction in Remark <a href="#res:critical-value-separation" data-reference-type="ref" data-reference="res:critical-value-separation">[res:critical-value-separation]</a>. Lean checks the numerical inequalities for $`4/3`$ and $`6/5`$ without that input.
 
@@ -384,13 +386,13 @@ The geometric conclusion assumes the construction in Remark <a href="#res:criti
 
 ## Square roots and component area
 
-Here is the ordinary argument behind the two remarks. Choose $`\alpha^n=v`$ and normalise to $`P(z)=v^{-1}f(c+\alpha z)`$. The component $`U`$ above $`D(w_0,S)`$ containing $`0`$ has degree two, as follows by exhausting with regular discs and applying Riemann–Hurwitz. The square root $`\xi=\sqrt{1-P}`$ then maps $`U`$ biholomorphically onto $`V=\{\xi:|\xi^2-(1-w_0)|<S\}`$, and its inverse maps $`[-1,1]`$ to the proposed connection. Along this interval $`P=1-\xi^2\in[0,1]`$, which gives the required containment.
+Here is the ordinary argument behind the two remarks. Choose $`\alpha^n=v`$ and normalise to $`P(z)=v^{-1}f(c+\alpha z)`$. The component $`U`$ above $`D(w_0,S)`$ containing $`0`$ has degree two, as follows by exhausting with regular discs and applying Riemann–Hurwitz. Since $`U`$ is simply connected and $`1-P`$ has only a double zero at $`0`$ there, it has a single-valued analytic square root $`\xi`$. The resulting map is a proper local biholomorphism onto $`V=\{\xi:|\xi^2-(1-w_0)|<S\}`$, which is star-shaped and hence simply connected. It is therefore biholomorphic, and its inverse maps $`[-1,1]`$ to the proposed connection. Along this interval $`P=1-\xi^2\in[0,1]`$, which gives the required containment.
 
-Put $`a=1-w_0`$ and $`p=w_0(1-w_0)`$. The coordinate
+Put $`a=1-w_0`$ and $`p=w_0(1-w_0)`$. We map $`V`$ to the unit disc by
 ``` math
-\zeta=\xi\sqrt{\frac{S}{S^2+a\xi^2-a^2}}
+\zeta=\xi\sqrt{\frac{S}{S^2+a\xi^2-a^2}}.
 ```
-sends $`V`$ to the unit disc and $`\xi=\pm1`$ to $`\zeta=\pm q`$, where $`q^2=S/(S^2+p)`$. The Bergman estimate is consequently
+The endpoints $`\xi=\pm1`$ map to $`\zeta=\pm q`$, where $`q^2=S/(S^2+p)`$. The Bergman estimate is consequently
 ``` math
 L^2\le\frac2\pi\log\frac{S^2+S+p}{S^2-S+p}\,
                     \operatorname{Area}(U).
@@ -529,7 +531,7 @@ Eremenko and Hayman’s bound $`\mathcal H^1\{|p|=1\}<9.173\deg p`$ \[eremenko-h
 
 The supplied Lean sources prove the fixed counterexample for preconnected sets, the negation and `answer(False)` forms of the Formal Conjectures statement, and the total-variation formulation. They also prove the trinomial theorem and the other formally supported estimates identified in the companion’s [verification notes](../../../paper/1041/erdos1041-lemniscate-reasoning-surface.pdf#nameddest=verification-notes). No fresh Lean build or independent human review is reported here, including review of the correspondence with the 1958 wording. The recorded full rational replay on 29 September 2026 reproduced the stopping time and $`126`$ dual certificates; those are the computational results cited here. The analytic assertions in Remarks <a href="#res:low-critical-thirteen-twentyfifths" data-reference-type="ref" data-reference="res:low-critical-thirteen-twentyfifths">[res:low-critical-thirteen-twentyfifths]</a>–<a href="#res:critical-value-thresholds" data-reference-type="ref" data-reference="res:critical-value-thresholds">[res:critical-value-thresholds]</a>, the fourth-power mean and the later topological and compactness arguments remain outside the formal conclusions. The links beside each statement and in the margin retain the original statement identifiers and their conditional dependencies; they do not promote these remarks to unconditional Lean theorems.
 
-*Formal proofs.* A result with a kernel-checked Lean proof carries links beside its heading and in the margin; both open the same evidence. *Lean* opens the proof: the declaration itself when one declaration states the whole result, otherwise the list of declarations that together state it. Inline citations to individual declarations elsewhere may identify ingredients of a proof. *Comparator* opens the recorded comparison, in which the same statement, written again from Mathlib alone in a separate repository, was compared with our proof by Lean’s Comparator tool, allowing only the three standard axioms. *Comparator pending* means that the complete statement has no recorded comparison yet. A dagger on the Lean mark means that the Lean proof assumes an input named just below the result. A result without a mark has no Lean proof of its whole statement; what is checked is said below it. The [evidence record](https://github.com/wcook04/plectis-erdos/blob/d93e7408aed0b0c73ad5ea98116c7dc0dce3cf7b/evidence/erdos-1041-lemniscate-newton-flow.md) gives every declaration, version and check. Comparator checks statements, axioms and kernel acceptance; it does not establish novelty or peer review. These checks show that the stated propositions are proved; whether they are the right propositions is a question the reader can settle by comparing them with the text.
+*Formal proofs.* A result with a kernel-checked Lean proof carries links beside its heading. *Lean* opens the proof: the declaration itself when one declaration states the whole result, otherwise the list of declarations that together state it. Inline citations to individual declarations elsewhere may identify ingredients of a proof. *Comparator* opens the recorded comparison, in which the same statement, written again from Mathlib alone in a separate repository, was compared with our proof by Lean’s Comparator tool, allowing only the three standard axioms. *Comparator pending* means that the complete statement has no recorded comparison yet. A dagger on the Lean mark means that the Lean proof assumes an input named just below the result. A result without a mark has no Lean proof of its whole statement; what is checked is said below it. The [evidence record](https://github.com/wcook04/plectis-erdos/blob/1865f2ba5def0ed9e85ebed53f4b6c7b3f6c053f/evidence/erdos-1041-lemniscate-newton-flow.md) gives every declaration, version and check. Comparator checks statements, axioms and kernel acceptance; it does not establish novelty or peer review. These checks show that the stated propositions are proved; whether they are the right propositions is a question the reader can settle by comparing them with the text.
 
 <a id="acknowledgements"></a>
 

@@ -8,7 +8,7 @@
 
 </div>
 
-We describe a repository-based research system that connects questions, proofs, computations and failed approaches to reviewed claims and publications. The public Plectis prototype implements this workflow for eight mathematical programmes using structured records, Python command-line tools and Lean. Task routing and source indexes locate relevant work; optional recorded proof sessions retain submitted inputs and Lean results. Maintainers review proposed changes, update evidence bindings, regenerate derived files and inspect the publications; a contribution journal retains explicitly recorded outcomes, limitations and credit. A conditional theorem supplies a worked case: publication checks can detect missing evidence records while a paraphrase that drops a condition still requires mathematical judgement. A historical author-run test rejected nine of ten false edits and accepted one false completion claim. Reader benefit, discovery rate and adoption by independent laboratories remain unmeasured.
+We describe a repository-based research system that connects questions, proofs, computations and failed approaches to reviewed claims and publications. The public Plectis prototype implements this workflow for eight mathematical programmes using structured records, Python command-line tools and Lean. Task routing and source indexes locate relevant work; optional recorded proof sessions retain submitted inputs and Lean results. Maintainers review proposed changes, update evidence bindings, regenerate derived files and inspect the publications; a contribution journal retains explicitly recorded outcomes, limitations and credit. A worked theorem distinguishes publication checks from mathematical review: its registered formal supports can remain linked after a paraphrase drops an essential hypothesis. A historical author-run test rejected nine of ten false edits and accepted one false completion claim. Reader benefit, discovery rate and adoption by independent laboratories remain unmeasured.
 
 <a id="sec:intro"></a>
 
@@ -22,10 +22,10 @@ A research repository must support several activities: choosing a question, reco
 
 <figure id="fig:lifecycle" data-latex-placement="htbp">
 
-<figcaption>From accumulated work to a paper and subsequent revision. Solid arrows show a sequence of responsibilities rather than logical implication or automatic approval. The source and evidence records support review; they do not establish the intended meaning of the prose.</figcaption>
+<figcaption>From accumulated work to a paper and subsequent revision. Labels name what passes between the stages; the arrows imply neither logical deduction nor automatic approval. The source and evidence records support review; they do not establish the intended meaning of the prose.</figcaption>
 </figure>
 
-Erdős Problems supplies the questions and their public discussion, while Lean and mathlib supply the formal language and library \[erdosproblems; lean4; mathlib\]. Formalisation blueprints link a written mathematical argument to named Lean declarations \[leanblueprint; leanarchitect\]. Persistent problem records and open agent collaboration have antecedents in the Equational Theories Project and Prove2Me \[etp; prove2me\]. The records described here connect a selected public assertion with all its registered formal supports, the passages used to explain it, and the contribution history that changes it. They let a reviewer recover the basis of a claim at a specified revision. We describe the components and their responsibilities, then trace a conditional theorem through the evidence checks. The revision and contribution workflows explain how accepted changes return to the repository. Recorded observations and limits distinguish implemented procedures from their unmeasured effects; Appendix <a href="#app:worked-proof" data-reference-type="ref" data-reference="app:worked-proof">11</a> retains the mathematical calculation.
+Erdős Problems supplies the questions and their public discussion, while Lean and mathlib supply the formal language and library \[erdosproblems; lean4; mathlib\]. Formalisation blueprints link a written mathematical argument to named Lean declarations \[leanblueprint; leanarchitect\]. Persistent problem records and open agent collaboration have antecedents in the Equational Theories Project and Prove2Me \[etp; prove2me\]. For a selected paper statement, the paper-to-Lean ledger records its registered formal supports and their stated relation to it. A separate sentence ledger records the source passages and rationale used in an explanation. Together with the claim registry and contribution history, these records let a reviewer recover the basis of a public assertion at a specified revision. We describe the components and their responsibilities, then trace a conditional theorem through the evidence checks. The revision and contribution workflows explain how accepted changes return to the repository. Recorded observations and limits distinguish implemented procedures from their unmeasured effects; Appendix <a href="#app:worked-proof" data-reference-type="ref" data-reference="app:worked-proof">11</a> retains the mathematical calculation.
 
 <a id="sec:world"></a>
 
@@ -79,7 +79,7 @@ Starting from a recorded assertion, a reader can therefore locate its declaratio
 
 ## Stored artifacts and executable tools
 
-The checkout contains authored Lean and manuscript sources, JSON records for selected claims and their evidence, and a journal of research returns. Indexes, source coordinates and status summaries are derived from those records. Authors edit the sources; builders regenerate the derived views. The claim review keeps a finite computation’s tested range distinct from a general theorem, and a failed attempt distinct from a proof that every approach must fail. This distinction makes a changed proof or paper traceable without treating a generated index as a proof. The [`architecture guide`](https://github.com/wcook04/plectis-erdos/blob/992cf60a27efd8c34f437e347c413bb781d75c32/docs/ARCHITECTURE.md) describes this ownership.
+The checkout contains authored Lean and manuscript sources, JSON records for selected claims and their evidence, and a journal of research returns. Indexes, source coordinates and status summaries are derived from those records. Authors edit the sources; builders regenerate the derived views. This division gives a reviewer a source to inspect when a generated view changes. In reviewing a claim, the maintainer must still distinguish a finite computation’s tested range from a general theorem, or a failed attempt from an argument that every approach must fail. The [`architecture guide`](https://github.com/wcook04/plectis-erdos/blob/992cf60a27efd8c34f437e347c413bb781d75c32/docs/ARCHITECTURE.md) identifies the source files and their derived views.
 
 The command-line tools have bounded jobs:
 
@@ -99,6 +99,8 @@ The command-line tools have bounded jobs:
 
 A separate self-audit, [`systems_paper_evidence.py`](https://github.com/wcook04/plectis-erdos/blob/992cf60a27efd8c34f437e347c413bb781d75c32/scripts/systems_paper_evidence.py), checks this systems manuscript’s text and cited source bindings. These are inspectable software responsibilities, not measurements of research quality or new execution results.
 
+The tools retain state in repository files rather than in the agent’s conversation. An optional proof session appends notes, probe receipts and its closing outcome to a ledger, with the exact submitted Lean inputs stored beside it. These session claims remain distinct from the reviewed public claim registry. The research journal separately retains entered returns and review dispositions and checks their sequence and hash chain. A human or agent chooses the next task and invokes these tools; recording the sequence does not make the workbench an autonomous search policy.
+
 <a id="researcher-agent-and-maintainer-responsibilities"></a>
 
 ## Researcher, agent and maintainer responsibilities
@@ -113,17 +115,17 @@ A typical iteration starts with a question and the recorded work that bears on i
 
 <span id="sec:predigestion" label="sec:predigestion"></span>
 
-The worked case concerns a theorem that establishes a result for a restricted family of infinite sums. The paper must retain the restriction: removing it would assert a solution of a more general problem that remains open. Its evidence record lists two formal supports. A checker can require both records and verify their source bindings, yet a sentence retaining both links can still omit the condition. Appendix <a href="#app:worked-proof" data-reference-type="ref" data-reference="app:worked-proof">11</a> gives the exact statement and calculation for specialists.
+The worked case concerns a theorem about infinite sums of reciprocals over a restricted set of positive integer exponents. A base-two weighted convergence condition restricts the allowable sets; under it, every infinite subset gives an irrational sum at every integer base at least two. Removing the condition would assert a solution of a more general problem that remains open. Appendix <a href="#app:worked-proof" data-reference-type="ref" data-reference="app:worked-proof">11</a> gives the exact statement and calculation.
 
-These failures assign different tasks to the tools and the reviewer. A missing support record is an accounting failure that the publication tools can report. Dropping a condition changes the meaning of the claim and requires comparison with the complete source statement. The historical false-completion edit in Section <a href="#sec:instance" data-reference-type="ref" data-reference="sec:instance">7</a> illustrates another semantic failure: replacing a limitation by a claim that the unresolved step is complete. Source links and current hashes do not, by themselves, establish what those words mean.
+The example uses two records with different jobs. In [`paper_lean_coverage.json`](https://github.com/wcook04/plectis-erdos/blob/992cf60a27efd8c34f437e347c413bb781d75c32/docs/paper_lean_coverage.json), a row identifies the weighted-support theorem’s occurrence in the mathematical paper, its statement digest, source location and two Lean supports. A separate [`sentence ledger`](https://github.com/wcook04/plectis-erdos/blob/992cf60a27efd8c34f437e347c413bb781d75c32/docs/systems_paper_sentences.json) binds this systems paper’s explanation to specified source passages and an authored rationale. For example, the appendix’s hereditary conclusion is bound to both the ordinary proof and its formal declaration. These records make the two correspondences inspectable; deciding whether the explanation preserves the condition remains a review task.
 
 <a id="sec:checks"></a>
 
 # Proof and publication checks
 
-<span id="sec:graph" label="sec:graph"></span> <span id="systems-trust"></span> The worked case has two registered formal results: one proves the restricted theorem, and the other proves its consequence for every subset (Appendix <a href="#app:worked-proof" data-reference-type="ref" data-reference="app:worked-proof">11</a>, Figure <a href="#fig:theorem" data-reference-type="ref" data-reference="fig:theorem">6</a>). Supplying only one leaves the evidence record incomplete. Requiring both records is a publication check, not an additional hypothesis of the mathematical theorem. The comparison includes every registered support and the additional hypotheses on which a conditional result depends, recorded as named inputs. It uses an identified source revision. A changed statement or source must be checked against its records again; a source file from one revision cannot silently borrow the evidence attached to another.
+<span id="sec:graph" label="sec:graph"></span> <span id="systems-trust"></span> The example has two registered formal supports (Figure <a href="#fig:theorem" data-reference-type="ref" data-reference="fig:theorem">6</a>). One gives fixed-base irrationality and the all-base conclusion for every infinite subset; the other makes the fixed-base hereditary conclusion explicit. Their roles overlap. The publication check requires the registered set, even if one declaration suffices for the clause under discussion. This is an accounting requirement, not an additional hypothesis of the theorem. The resolver also follows any registered named inputs and checks the identified source revisions. A result dependent on an additional named input retains that dependency; the weighted theorem above illustrates a different issue, a restriction within the proved statement. A changed statement or source must be checked against its records again. Evidence attached to one revision cannot silently support another.
 
-These checks concern different relations from the correctness of the formal proof and the meaning of the prose (Figure <a href="#fig:checks" data-reference-type="ref" data-reference="fig:checks">3</a>).
+These checks make omissions and changes inspectable. Figure <a href="#fig:checks" data-reference-type="ref" data-reference="fig:checks">3</a> separates them from proof checking and from the judgements needed to publish a faithful account.
 
 <figure id="fig:checks" data-latex-placement="htbp">
 <table>
@@ -143,8 +145,12 @@ These checks concern different relations from the correctness of the formal proo
 <td style="text-align: left;">Comparator checking against the selected challenge.</td>
 </tr>
 <tr>
+<td style="text-align: left;">Paper occurrence and registered support set</td>
+<td style="text-align: left;">Coverage audit: all registered declarations and their recorded revisions.</td>
+</tr>
+<tr>
 <td style="text-align: left;">Sentence and declared source bytes</td>
-<td style="text-align: left;">Publication tools check the registered source binding.</td>
+<td style="text-align: left;">Sentence audit: text and source digests, with a recorded rationale.</td>
 </tr>
 <tr>
 <td style="text-align: left;">Sentence and mathematical meaning</td>
@@ -160,16 +166,16 @@ These checks concern different relations from the correctness of the formal proo
 </tr>
 </tbody>
 </table>
-<figcaption>Three mechanically checked relations and three questions of judgement. The lower rows describe responsibilities, not evidence that independent review has occurred. Source-byte agreement alone cannot settle the meaning of a sentence.</figcaption>
+<figcaption>Four checks with different objects, followed by three questions of judgement. The upper rows identify checking mechanisms, not new executions reported here. The lower rows identify review responsibilities, not evidence of independent review. A recorded rationale still requires assessment of its meaning.</figcaption>
 </figure>
 
 Lean verifies that a proof establishes the formal statement written in the source; it does not verify whether that statement captures the intended mathematics or whether the paper describes it well. Comparator adds a separately stated challenge and a check of its selected Lean implementation under the permitted axioms \[leanfrocomparator; nanodalib\].
 
-For each marked passage in this systems paper we record its text, specified source lines, the kind of evidence and the rationale for citing those sources.
+Each marked passage in this systems paper has a recorded text, specified source lines, an evidence class and an authored rationale for citing those sources.
 
-For example, the worked case concludes that the same restricted result holds for every subset. Its record points to the source proof and explains why the condition is preserved. The checker compares cryptographic hashes of the text and source passage, and rejects missing records or passages without a binding.
+For the appendix’s hereditary conclusion, the cited sources explain why restriction to an infinite subset preserves the weighted condition. The sentence checker compares cryptographic hashes of the marked text and its declared source passages; it also rejects missing records or passages without a binding.
 
-That check detects an unrecorded edit. If an author changes both the sentence and its recorded explanation and updates the digests, the record becomes current again, but the claimed implication still needs review. In particular, every Lean link in Figure <a href="#fig:theorem" data-reference-type="ref" data-reference="fig:theorem">6</a> can remain correct after the support condition has disappeared from an abstract. The reviewer must compare the hypothesis and quantifiers, not merely follow the links.
+Changing the sentence alone therefore makes its recorded digest stale. Changing the sentence and updating its record can restore byte agreement without restoring the implication claimed by the prose. For example, a paraphrase could drop the support hypothesis while retaining both correct Lean links in Figure <a href="#fig:theorem" data-reference-type="ref" data-reference="fig:theorem">6</a>. A reviewer must compare its hypothesis and quantifiers with the source statement. This is an illustrative editing failure, distinct from historical edit 8, which replaced a limitation by a false completion claim (Table <a href="#tab:mutations" data-reference-type="ref" data-reference="tab:mutations">1</a>).
 
 An entry in the declaration index with a matching type and a reachable source link identifies the recorded source; it does not establish that any particular continuous-integration run compiled the module. In the recorded design, the checking interface obtains each verdict from the specified Lean process, so callers cannot supply verdicts through that interface. This interface rule does not prevent an actor with filesystem access from changing the implementation or stored record. The protocol distinguishes contributor and reviewer roles but does not technically force a second independent mathematician. No independent human mathematical review of the corpus is recorded.
 
@@ -183,7 +189,9 @@ An entry in the declaration index with a matching type and a reachable source li
 
 ## Work assignments and review
 
-This distinction concerns access to the repository. The assigned work is a separate choice: mathematical research, proof or claim audit, literature and attribution review, or exposition.
+We call an agent that can alter the live repository Type A and an advisory agent returning proposals against supplied sources Type B.
+
+Repository authority and the assigned task are separate choices. The task may be mathematical research, proof or claim audit, literature and attribution review, or exposition.
 
 Research returns candidate arguments, an audit returns source-located findings, a literature review returns attribution proposals, and exposition returns a clearer manuscript; each product has its own review and acceptance criteria.
 
@@ -201,14 +209,14 @@ A writing rule learned from the revision travels with its example and limits as 
 
 A revision begins by collecting candidate results, antecedents, difficult proof transitions and unresolved questions with their source locations. The author decides which argument deserves the short paper; the checker audits source consistency and the specified manuscript rules. We freeze the selected manuscripts, their required input files, coverage ledger and audit rules under a manifest of their exact bytes, so the writer and integrating reviewer can identify what the proposed changes were based on.
 
-An advisory model can return a proposal against those sources; a tool-enabled agent can prepare it in a checkout. In either case the integrating reviewer decides whether the mathematics and its description remain faithful. The packet declares which manuscript paths may change; its evidence records and checking tools remain read-only inputs to this editorial exchange.
+An advisory model can return a proposal against those sources; a tool-enabled agent can prepare it in a checkout. In either case the integrating reviewer decides whether the mathematics and its description remain faithful. The public writer’s packet declares which manuscript paths may change and supplies its evidence records and checking tools as read-only inputs.
 
 <figure id="fig:refinement" data-latex-placement="H">
 
-<figcaption>The exposition workflow, read in numerical order. A proposal may be revised or declined at step 3; only accepted changes proceed to integration. The steps name responsibilities, which may be performed by the same agent. Rendering and inspection remain separate from source checks.</figcaption>
+<figcaption>The exposition workflow, read in numerical order, with the exchanged objects labelled. A proposal may be revised or declined at step 3; only accepted changes proceed to integration. The steps name responsibilities, which may be performed by the same agent. Rendering and inspection remain separate from source checks.</figcaption>
 </figure>
 
-Before that decision, the return checker tests packet identity, permitted paths, declared statement changes and retained labels, citation keys and bibliography entries. It also audits the proposed manuscript in a temporary overlay of the sources. It neither applies the proposal nor executes returned programs. Declaring a statement change makes the review obligation explicit; it does not discharge it.
+Before that decision, the return checker tests packet identity, permitted paths, declared statement changes and retained labels, citation keys and bibliography entries. It audits the proposed manuscript in a temporary copy of the frozen sources, leaving the live repository unchanged. It neither applies the proposal nor executes returned programs. Declaring a statement change makes the review obligation explicit; it does not discharge it.
 
 The packet and audit stages in Figure <a href="#fig:refinement" data-reference-type="ref" data-reference="fig:refinement">4</a> are implemented by [`short_paper_writer.py`](https://github.com/wcook04/plectis-erdos/blob/992cf60a27efd8c34f437e347c413bb781d75c32/scripts/short_paper_writer.py) and [`paper_refinement.py`](https://github.com/wcook04/plectis-erdos/blob/992cf60a27efd8c34f437e347c413bb781d75c32/scripts/paper_refinement.py).
 
@@ -233,7 +241,7 @@ A return has two possible lasting effects: accepted text changes the paper; an a
 
 </div>
 
-The research journal records explicitly entered returns and dispositions in an append-only, hash-linked history, while a correction may withdraw something previously endorsed. Ordinary issues and pull requests need not become journal events. Discovery investigates a question, while stewardship compares the return with prior work, groups related results, reconciles affected papers and selects the next question. The proposed coupling is event-driven: a stable result or changed appraisal prompts work, whereas an unchanged repository supplies no reason for another run. The journal establishes what happened; judging what was learned requires the comparison with earlier work.
+The research journal records explicitly entered returns and dispositions in an append-only, hash-linked history, while a correction may withdraw something previously endorsed. Ordinary issues and pull requests need not become journal events. Discovery investigates a question, while stewardship compares the return with prior work, groups related results, reconciles affected papers and selects the next question. The proposed coupling is event-driven: a stable result or changed appraisal prompts work, whereas an unchanged repository supplies no reason for another run. The journal preserves the entered return and its recorded disposition. Judging what was learned requires comparison with earlier work and inspection of the returned evidence.
 
 <div id="systems-mathloop">
 
@@ -334,8 +342,6 @@ In a complete checkout, `python3 scripts/systems_paper_evidence.py` checks this 
 
 The protected snapshot partitions 689 occurrences into 498 exact, 142 specialising, 23 named-input and 26 unsupported-by-Lean entries. The journal summary at head `d3ad85269386` records 7 rounds (2 sealed), 25 returns (18 admitted and 7 unreviewed); earlier private-history rounds are not a complete public journal. The interpretation inventory covers 139,818 of 152,386 authored theorem-like declarations (91.8%). These are selective, largely contextual interpretations, not individually reviewed proofs. Public reading starts at the [`reading guide`](https://github.com/wcook04/plectis-erdos/blob/992cf60a27efd8c34f437e347c413bb781d75c32/docs/READING_GUIDE.md). [`Agent instructions`](https://github.com/wcook04/plectis-erdos/blob/992cf60a27efd8c34f437e347c413bb781d75c32/AGENTS.md) route source inspection, explanation and reproduction; the [`workbench guide`](https://github.com/wcook04/plectis-erdos/blob/992cf60a27efd8c34f437e347c413bb781d75c32/docs/agents/AGENT_WORKBENCH.md) describes optional recorded sessions. [`Contributing`](https://github.com/wcook04/plectis-erdos/blob/992cf60a27efd8c34f437e347c413bb781d75c32/CONTRIBUTING.md) and the [`credit policy`](https://github.com/wcook04/plectis-erdos/blob/992cf60a27efd8c34f437e347c413bb781d75c32/docs/research-commons/CREDIT_POLICY.md) govern returns. Cite repository software using [`CITATION.cff`](https://github.com/wcook04/plectis-erdos/blob/992cf60a27efd8c34f437e347c413bb781d75c32/CITATION.cff) at the chosen commit or release tag; cite mathematical results by the paper and version actually used.
 
-We call an agent that can alter the live repository Type A and an advisory agent returning proposals against supplied sources Type B.
-
 <a id="app:worked-proof"></a>
 
 # Calculation for the worked theorem
@@ -357,7 +363,7 @@ The weighted-support theorem of the Problem 257 paper states that, if
 ```
 then $`X_B(b)`$ is irrational for every integer $`b\ge2`$ and every infinite $`B\subseteq A`$ \[paper257, Theorem 1.2\].
 
-For a fixed base $`b`$, write $`W_{b,P}(A)`$ for the sum in <a href="#eq:worked-condition" data-reference-type="eqref" data-reference="eq:worked-condition">[eq:worked-condition]</a> with $`2`$ replaced by $`b`$. The fixed-base version assumes $`W_{b,P}(A)<\infty`$ and gives the same hereditary conclusion at that base. Figure <a href="#fig:theorem" data-reference-type="ref" data-reference="fig:theorem">6</a> locates the two registered Lean supports; Appendix <a href="#app:worked-proof" data-reference-type="ref" data-reference="app:worked-proof">11</a> explains the ordinary argument. Their recorded status does not report a new comparison of source revisions, Lean build or Comparator run. Comparator checks a selected Lean implementation against a separately stated challenge, as described in Section <a href="#sec:checks" data-reference-type="ref" data-reference="sec:checks">4</a>.
+For a fixed base $`b`$, write $`W_{b,P}(A)`$ for the sum in <a href="#eq:worked-condition" data-reference-type="eqref" data-reference="eq:worked-condition">[eq:worked-condition]</a> with $`2`$ replaced by $`b`$. The fixed-base version assumes $`W_{b,P}(A)<\infty`$ and gives the same hereditary conclusion at that base. Figure <a href="#fig:theorem" data-reference-type="ref" data-reference="fig:theorem">6</a> locates the two registered Lean supports; the calculation below gives the ordinary argument. Their recorded status does not report a new comparison of source revisions, Lean build or Comparator run. Comparator checks a selected Lean implementation against a separately stated challenge, as described in Section <a href="#sec:checks" data-reference-type="ref" data-reference="sec:checks">4</a>.
 
 This is a sufficient condition on the support; the question for an arbitrary infinite set of exponents in base two remains open.
 

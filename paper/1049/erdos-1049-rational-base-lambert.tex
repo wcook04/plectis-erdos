@@ -906,6 +906,7 @@ Zudilin at integer bases \cite[p.~162]{zudilin2004}. Applying the
 estimates separately at each fixed base $(a/b)^r$ will give a bound
 independent of $r$. We use the polynomials $U_n,V_n$ from
 Theorem~\ref{res:rational-base-threshold}, with $W_n=\deg U_n$.
+The additional estimate we need is a growth bound for their coefficients.
 In that construction the coefficient of $F$ before cancellation is a
 sum of $O(n)$ Laurent monomials times two Gaussian binomial polynomials.
 Each Gaussian polynomial has nonnegative coefficients summing to at
@@ -927,6 +928,10 @@ $P_n=b^{W_n}V_n(a/b)$.  With
 we have $\log(Q_n\xi-P_n)=-\tau n^2+o(n^2)$ and
 $|Q_n|\le\exp(\alpha n^2+o(n^2))$.
 
+For a rational approximation with denominator $q$, we will choose a
+remainder at most $1/(2q)$ without letting $|Q_n|$ grow unnecessarily.
+The decay rate suggests taking $n^2$ near $(\log q)/\tau$.
+The reason for this choice is the following integer comparison.
 For integers $A,B,p,q$ with $q>0$, if $L=A\xi-B$ and $2q|L|\le1$, then
 \[
  |L|\le |A|\,|\xi-p/q|.
@@ -938,12 +943,13 @@ We fix $0<\eta<\tau$ and use the preceding estimates in the form
  e^{-(\tau+\eta)n^2}\le Q_n\xi-P_n\le e^{-(\tau-\eta)n^2},
  \qquad |Q_n|\le e^{(\alpha+\eta)n^2}
 \]
-for all sufficiently large $n$. Given a sufficiently large denominator
-$q$, we choose $n=\lceil\sqrt{\log(2q)/(\tau-\eta)}\rceil$, so that
+for all sufficiently large $n$. The upper remainder bound determines
+our choice: for a sufficiently large denominator $q$, take
+$n=\lceil\sqrt{\log(2q)/(\tau-\eta)}\rceil$. Then
 $2q(Q_n\xi-P_n)\le1$. The preceding integer argument now applies to
 $(A,B)=(Q_n,P_n)$ for every numerator $p$. Also $Q_n\ne0$: otherwise
 $Q_n\xi-P_n$ would be an integer strictly between $0$ and $1$.
-It follows that
+The lower remainder bound and the coefficient bound now give
 \[
  |\xi-p/q|\ge e^{-(\alpha+\tau+2\eta)n^2}
              =q^{-(\alpha+\tau+2\eta)/(\tau-\eta)-o(1)},
@@ -1094,13 +1100,24 @@ For the 2004 family one can instead ask whether a parameter direction
 improves $\theta^*$. The
 \shortrecordlink{erdos1049-rational-base-lambert-reasoning-surface.pdf}
 {long1049-region-extensions}{all-base degree restriction}
-proves the upper bound $1/2$ for the degree cutoff under its stated
-uniform-in-base hypotheses. Thus this sufficient criterion does not
-include $3/2$. When the degrees have a quadratic limit, the stronger
-conclusion there excludes decay of the undivided forms at $3/2$.
-Division by additional base-dependent content and other families
-remain unclassified. Equality in the rational-base cutoff is also unresolved by
-the estimates of Section~\ref{sec:rational-base-irrationality}.
+proves an upper bound of $1/2$ for the degree cutoff. Its hypotheses
+require one polynomial family, with common leading constants in its
+degree, coefficient-height and remainder estimates at every fixed real
+base $x>1$; the error terms may depend on $x$. Merely having estimates
+at $3/2$ does not suffice.
+
+Under those hypotheses, the
+\shortrecordlink{erdos1049-rational-base-lambert-reasoning-surface.pdf}
+{long1049-no-decay}{nondecay corollary}
+goes beyond the failure of a sufficient criterion: after denominator
+clearing, the undivided forms cannot tend to zero at any rational base $a/b$
+with $b<a<b^2$,
+including $3/2$, even without a quadratic degree limit. If that limit
+exists, their absolute values tend to infinity in this strict region.
+Division by additional base-dependent content and families outside
+these hypotheses remain unclassified. Equality in the rational-base
+cutoff is also unresolved by the estimates of
+Section~\ref{sec:rational-base-irrationality}.
 
 \appendix
 \section{Proofs and source records}\label{app:index}

@@ -25,11 +25,11 @@ A complete registered-evidence match locates the same full declaration set in th
 
 State: **authored_proof_text_linked**.
 
-Short statement: [paper/1041/erdos-1041-lemniscate-newton-flow.tex](../../../paper/1041/erdos-1041-lemniscate-newton-flow.tex) lines 421-431.
+Short statement: [paper/1041/erdos-1041-lemniscate-newton-flow.tex](../../../paper/1041/erdos-1041-lemniscate-newton-flow.tex) lines 429-439.
 
 Ledger evidence: Lean `exact_or_stronger`; Comparator `compared`. These statuses are copied from the evidence ledger; this build reruns neither checker.
 
-Long-record location: [paper/reasoning-parts/erdos1041/core.tex](../../../paper/reasoning-parts/erdos1041/core.tex) lines 499-512.
+Long-record location: [paper/reasoning-parts/erdos1041/core.tex](../../../paper/reasoning-parts/erdos1041/core.tex) lines 503-516.
 
 The existing statement and its proof eliminate the middle coefficient at a root and express f(tz) using nonnegative weights summing to one. They retain the open-unit-disc root hypothesis and obtain the strict two-spoke length bound. This is a source-reading link proposal; the short whole-statement declaration and the long ingredient declarations are not merged.
 
@@ -39,7 +39,7 @@ Review status: R5 Type A source-reading review; no independent human mathematica
 
 State: **unresolved**.
 
-Short statement: [paper/1041/erdos-1041-lemniscate-newton-flow.tex](../../../paper/1041/erdos-1041-lemniscate-newton-flow.tex) lines 461-469.
+Short statement: [paper/1041/erdos-1041-lemniscate-newton-flow.tex](../../../paper/1041/erdos-1041-lemniscate-newton-flow.tex) lines 469-477.
 
 Ledger evidence: Lean `exact_or_stronger`; Comparator `compared`. These statuses are copied from the evidence ledger; this build reruns neither checker.
 
@@ -66,48 +66,48 @@ Long-record location: [paper/reasoning-parts/erdos1041/core.tex](../../../paper/
 
 State: **unresolved**.
 
-Short statement: [paper/1041/erdos-1041-lemniscate-newton-flow.tex](../../../paper/1041/erdos-1041-lemniscate-newton-flow.tex) lines 502-506.
+Short statement: [paper/1041/erdos-1041-lemniscate-newton-flow.tex](../../../paper/1041/erdos-1041-lemniscate-newton-flow.tex) lines 510-514.
 
 Ledger evidence: Lean `none`; Comparator `not_applicable`. These statuses are copied from the evidence ledger; this build reruns neither checker.
 
 No accepted correspondence is recorded. Check the candidates below; none is silently treated as a proof of this short statement.
 
-- `label_alias`: [paper/reasoning-parts/erdos1041/core.tex](../../../paper/reasoning-parts/erdos1041/core.tex) lines 582-588.
+- `label_alias`: [paper/reasoning-parts/erdos1041/core.tex](../../../paper/reasoning-parts/erdos1041/core.tex) lines 586-592.
 
 ### res:scaled-low-critical
 
 State: **unresolved**.
 
-Short statement: [paper/1041/erdos-1041-lemniscate-newton-flow.tex](../../../paper/1041/erdos-1041-lemniscate-newton-flow.tex) lines 513-520.
+Short statement: [paper/1041/erdos-1041-lemniscate-newton-flow.tex](../../../paper/1041/erdos-1041-lemniscate-newton-flow.tex) lines 521-528.
 
 Ledger evidence: Lean `modulo_named_input`; Comparator `not_applicable`. These statuses are copied from the evidence ledger; this build reruns neither checker.
 
 No accepted correspondence is recorded. Check the candidates below; none is silently treated as a proof of this short statement.
 
-- `partial_declaration_overlap`: [paper/reasoning-parts/erdos1041/core.tex](../../../paper/reasoning-parts/erdos1041/core.tex) lines 605-609.
-- `partial_declaration_overlap`: [paper/reasoning-parts/erdos1041/core.tex](../../../paper/reasoning-parts/erdos1041/core.tex) lines 1091-1096.
+- `partial_declaration_overlap`: [paper/reasoning-parts/erdos1041/core.tex](../../../paper/reasoning-parts/erdos1041/core.tex) lines 609-613.
+- `partial_declaration_overlap`: [paper/reasoning-parts/erdos1041/core.tex](../../../paper/reasoning-parts/erdos1041/core.tex) lines 1095-1100.
 
 ### res:critical-value-separation
 
 State: **unresolved**.
 
-Short statement: [paper/1041/erdos-1041-lemniscate-newton-flow.tex](../../../paper/1041/erdos-1041-lemniscate-newton-flow.tex) lines 646-660.
+Short statement: [paper/1041/erdos-1041-lemniscate-newton-flow.tex](../../../paper/1041/erdos-1041-lemniscate-newton-flow.tex) lines 654-668.
 
 Ledger evidence: Lean `modulo_named_input`; Comparator `not_applicable`. These statuses are copied from the evidence ledger; this build reruns neither checker.
 
 No accepted correspondence is recorded. Check the candidates below; none is silently treated as a proof of this short statement.
 
-- `label_alias`: [paper/reasoning-parts/erdos1041/core.tex](../../../paper/reasoning-parts/erdos1041/core.tex) lines 1761-1786.
+- `label_alias`: [paper/reasoning-parts/erdos1041/core.tex](../../../paper/reasoning-parts/erdos1041/core.tex) lines 1765-1790.
 
 ### res:critical-value-thresholds
 
 State: **authored_proof_text_linked**.
 
-Short statement: [paper/1041/erdos-1041-lemniscate-newton-flow.tex](../../../paper/1041/erdos-1041-lemniscate-newton-flow.tex) lines 673-683.
+Short statement: [paper/1041/erdos-1041-lemniscate-newton-flow.tex](../../../paper/1041/erdos-1041-lemniscate-newton-flow.tex) lines 681-691.
 
 Ledger evidence: Lean `modulo_named_input`; Comparator `not_applicable`. These statuses are copied from the evidence ledger; this build reruns neither checker.
 
-Long-record location: [paper/reasoning-parts/erdos1041/core.tex](../../../paper/reasoning-parts/erdos1041/core.tex) lines 1960-2006.
+Long-record location: [paper/reasoning-parts/erdos1041/core.tex](../../../paper/reasoning-parts/erdos1041/core.tex) lines 1965-2011.
 
 The long remark and proof give the 4/3 threshold with roots in the open unit disc, a simple critical point and 0<|v|<1. The following paragraph gives the branch-centred cubic 6/5 case via (3/5)^(2/3) log(11)<2. The geometric conclusion still assumes the unformalised construction of res:critical-value-separation; checking the numerical inequality alone does not construct the path.
 
@@ -129,39 +129,39 @@ Long-record location: [paper/reasoning-parts/erdos1041/core.tex](../../../paper/
 
 These registered long assertions are not used by an accepted short-paper link. They may be supporting lemmas, broader results, route-local obstructions, or unresolved matches. They are retained and are not deletion candidates.
 
-- `res:circle-slice-packing`: [paper/reasoning-parts/erdos1041/core.tex](../../../paper/reasoning-parts/erdos1041/core.tex) lines 751-759.
-- `res:degree-three`: [paper/reasoning-parts/erdos1041/core.tex](../../../paper/reasoning-parts/erdos1041/core.tex) lines 1652-1658.
-- `prop:sharp-collinear-chebyshev-comparator`: [paper/reasoning-parts/erdos1041/core.tex](../../../paper/reasoning-parts/erdos1041/core.tex) lines 2181-2192.
-- `thm:sharp-collinear-diameter`: [paper/reasoning-parts/erdos1041/core.tex](../../../paper/reasoning-parts/erdos1041/core.tex) lines 2203-2215.
-- `cor:collinear-erdos-1041`: [paper/reasoning-parts/erdos1041/core.tex](../../../paper/reasoning-parts/erdos1041/core.tex) lines 2257-2262.
-- `prop:primitive-quintic-two-tail-energy-selector`: [paper/reasoning-parts/erdos1041/core.tex](../../../paper/reasoning-parts/erdos1041/core.tex) lines 2333-2343.
-- `thm:primitive-quintic-two-tail`: [paper/reasoning-parts/erdos1041/core.tex](../../../paper/reasoning-parts/erdos1041/core.tex) lines 2354-2373.
-- `lem:cubic-safe-root-spoke`: [paper/reasoning-parts/erdos1041/core.tex](../../../paper/reasoning-parts/erdos1041/core.tex) lines 2470-2478.
-- `thm:translated-cubic-quotient-fibres`: [paper/reasoning-parts/erdos1041/core.tex](../../../paper/reasoning-parts/erdos1041/core.tex) lines 2480-2494.
-- `res:critical-value-budget`: [paper/reasoning-parts/erdos1041/core.tex](../../../paper/reasoning-parts/erdos1041/core.tex) lines 3136-3156.
-- `res:reflected-critical-value`: [paper/reasoning-parts/erdos1041/core.tex](../../../paper/reasoning-parts/erdos1041/core.tex) lines 3168-3174.
-- `res:value`: [paper/reasoning-parts/erdos1041/core.tex](../../../paper/reasoning-parts/erdos1041/core.tex) lines 4190-4198.
-- `res:ray`: [paper/reasoning-parts/erdos1041/core.tex](../../../paper/reasoning-parts/erdos1041/core.tex) lines 4222-4232.
-- `res:locus`: [paper/reasoning-parts/erdos1041/core.tex](../../../paper/reasoning-parts/erdos1041/core.tex) lines 4282-4289.
-- `res:critical-proximity`: [paper/reasoning-parts/erdos1041/core.tex](../../../paper/reasoning-parts/erdos1041/core.tex) lines 3571-3586.
-- `res:two-nearest-roots`: [paper/reasoning-parts/erdos1041/core.tex](../../../paper/reasoning-parts/erdos1041/core.tex) lines 3601-3604.
-- `res:straight-no-go`: [paper/reasoning-parts/erdos1041/core.tex](../../../paper/reasoning-parts/erdos1041/core.tex) lines 3646-3653.
-- `res:sep-or-false`: [paper/reasoning-parts/erdos1041/core.tex](../../../paper/reasoning-parts/erdos1041/core.tex) lines 2100-2108.
-- `res:one-root-gamma-false`: [paper/reasoning-parts/erdos1041/core.tex](../../../paper/reasoning-parts/erdos1041/core.tex) lines 1482-1489.
-- `res:arity-not-capacity`: [paper/reasoning-parts/erdos1041/core.tex](../../../paper/reasoning-parts/erdos1041/core.tex) lines 2126-2132.
-- `res:complementary-binomial-chords`: [paper/reasoning-parts/erdos1041/core.tex](../../../paper/reasoning-parts/erdos1041/core.tex) lines 2712-2721.
-- `res:fp-weighted-all-degree`: [paper/reasoning-parts/erdos1041/core.tex](../../../paper/reasoning-parts/erdos1041/core.tex) lines 3242-3255.
-- `res:orlicz-currency`: [paper/reasoning-parts/erdos1041/core.tex](../../../paper/reasoning-parts/erdos1041/core.tex) lines 4109-4133.
-- `res:low-critical-thirteen-twentyfifths`: [paper/reasoning-parts/erdos1041/core.tex](../../../paper/reasoning-parts/erdos1041/core.tex) lines 582-588.
-- `res:low-critical-scale-free`: [paper/reasoning-parts/erdos1041/core.tex](../../../paper/reasoning-parts/erdos1041/core.tex) lines 605-609.
-- `res:dual-arity-floor`: [paper/reasoning-parts/erdos1041/core.tex](../../../paper/reasoning-parts/erdos1041/core.tex) lines 774-784.
-- `res:scaled-low-critical-path`: [paper/reasoning-parts/erdos1041/core.tex](../../../paper/reasoning-parts/erdos1041/core.tex) lines 1091-1096.
-- `res:constant-factor-path`: [paper/reasoning-parts/erdos1041/core.tex](../../../paper/reasoning-parts/erdos1041/core.tex) lines 1137-1146.
-- `res:constant-factor-arity`: [paper/reasoning-parts/erdos1041/core.tex](../../../paper/reasoning-parts/erdos1041/core.tex) lines 1285-1295.
-- `res:constant-factor-capacity`: [paper/reasoning-parts/erdos1041/core.tex](../../../paper/reasoning-parts/erdos1041/core.tex) lines 1331-1344.
-- `res:conjecture-p-consumer`: [paper/reasoning-parts/erdos1041/core.tex](../../../paper/reasoning-parts/erdos1041/core.tex) lines 1528-1537.
-- `res:critical-value-separation`: [paper/reasoning-parts/erdos1041/core.tex](../../../paper/reasoning-parts/erdos1041/core.tex) lines 1761-1786.
-- `res:attachment-aware-reeb`: [paper/reasoning-parts/erdos1041/core.tex](../../../paper/reasoning-parts/erdos1041/core.tex) lines 4465-4486.
+- `res:circle-slice-packing`: [paper/reasoning-parts/erdos1041/core.tex](../../../paper/reasoning-parts/erdos1041/core.tex) lines 755-763.
+- `res:degree-three`: [paper/reasoning-parts/erdos1041/core.tex](../../../paper/reasoning-parts/erdos1041/core.tex) lines 1656-1662.
+- `prop:sharp-collinear-chebyshev-comparator`: [paper/reasoning-parts/erdos1041/core.tex](../../../paper/reasoning-parts/erdos1041/core.tex) lines 2186-2197.
+- `thm:sharp-collinear-diameter`: [paper/reasoning-parts/erdos1041/core.tex](../../../paper/reasoning-parts/erdos1041/core.tex) lines 2208-2220.
+- `cor:collinear-erdos-1041`: [paper/reasoning-parts/erdos1041/core.tex](../../../paper/reasoning-parts/erdos1041/core.tex) lines 2262-2267.
+- `prop:primitive-quintic-two-tail-energy-selector`: [paper/reasoning-parts/erdos1041/core.tex](../../../paper/reasoning-parts/erdos1041/core.tex) lines 2338-2348.
+- `thm:primitive-quintic-two-tail`: [paper/reasoning-parts/erdos1041/core.tex](../../../paper/reasoning-parts/erdos1041/core.tex) lines 2359-2378.
+- `lem:cubic-safe-root-spoke`: [paper/reasoning-parts/erdos1041/core.tex](../../../paper/reasoning-parts/erdos1041/core.tex) lines 2475-2483.
+- `thm:translated-cubic-quotient-fibres`: [paper/reasoning-parts/erdos1041/core.tex](../../../paper/reasoning-parts/erdos1041/core.tex) lines 2485-2499.
+- `res:critical-value-budget`: [paper/reasoning-parts/erdos1041/core.tex](../../../paper/reasoning-parts/erdos1041/core.tex) lines 3140-3160.
+- `res:reflected-critical-value`: [paper/reasoning-parts/erdos1041/core.tex](../../../paper/reasoning-parts/erdos1041/core.tex) lines 3172-3178.
+- `res:value`: [paper/reasoning-parts/erdos1041/core.tex](../../../paper/reasoning-parts/erdos1041/core.tex) lines 4194-4202.
+- `res:ray`: [paper/reasoning-parts/erdos1041/core.tex](../../../paper/reasoning-parts/erdos1041/core.tex) lines 4226-4236.
+- `res:locus`: [paper/reasoning-parts/erdos1041/core.tex](../../../paper/reasoning-parts/erdos1041/core.tex) lines 4286-4293.
+- `res:critical-proximity`: [paper/reasoning-parts/erdos1041/core.tex](../../../paper/reasoning-parts/erdos1041/core.tex) lines 3575-3590.
+- `res:two-nearest-roots`: [paper/reasoning-parts/erdos1041/core.tex](../../../paper/reasoning-parts/erdos1041/core.tex) lines 3605-3608.
+- `res:straight-no-go`: [paper/reasoning-parts/erdos1041/core.tex](../../../paper/reasoning-parts/erdos1041/core.tex) lines 3650-3657.
+- `res:sep-or-false`: [paper/reasoning-parts/erdos1041/core.tex](../../../paper/reasoning-parts/erdos1041/core.tex) lines 2105-2113.
+- `res:one-root-gamma-false`: [paper/reasoning-parts/erdos1041/core.tex](../../../paper/reasoning-parts/erdos1041/core.tex) lines 1486-1493.
+- `res:arity-not-capacity`: [paper/reasoning-parts/erdos1041/core.tex](../../../paper/reasoning-parts/erdos1041/core.tex) lines 2131-2137.
+- `res:complementary-binomial-chords`: [paper/reasoning-parts/erdos1041/core.tex](../../../paper/reasoning-parts/erdos1041/core.tex) lines 2717-2726.
+- `res:fp-weighted-all-degree`: [paper/reasoning-parts/erdos1041/core.tex](../../../paper/reasoning-parts/erdos1041/core.tex) lines 3246-3259.
+- `res:orlicz-currency`: [paper/reasoning-parts/erdos1041/core.tex](../../../paper/reasoning-parts/erdos1041/core.tex) lines 4113-4137.
+- `res:low-critical-thirteen-twentyfifths`: [paper/reasoning-parts/erdos1041/core.tex](../../../paper/reasoning-parts/erdos1041/core.tex) lines 586-592.
+- `res:low-critical-scale-free`: [paper/reasoning-parts/erdos1041/core.tex](../../../paper/reasoning-parts/erdos1041/core.tex) lines 609-613.
+- `res:dual-arity-floor`: [paper/reasoning-parts/erdos1041/core.tex](../../../paper/reasoning-parts/erdos1041/core.tex) lines 778-788.
+- `res:scaled-low-critical-path`: [paper/reasoning-parts/erdos1041/core.tex](../../../paper/reasoning-parts/erdos1041/core.tex) lines 1095-1100.
+- `res:constant-factor-path`: [paper/reasoning-parts/erdos1041/core.tex](../../../paper/reasoning-parts/erdos1041/core.tex) lines 1141-1150.
+- `res:constant-factor-arity`: [paper/reasoning-parts/erdos1041/core.tex](../../../paper/reasoning-parts/erdos1041/core.tex) lines 1289-1299.
+- `res:constant-factor-capacity`: [paper/reasoning-parts/erdos1041/core.tex](../../../paper/reasoning-parts/erdos1041/core.tex) lines 1335-1348.
+- `res:conjecture-p-consumer`: [paper/reasoning-parts/erdos1041/core.tex](../../../paper/reasoning-parts/erdos1041/core.tex) lines 1532-1541.
+- `res:critical-value-separation`: [paper/reasoning-parts/erdos1041/core.tex](../../../paper/reasoning-parts/erdos1041/core.tex) lines 1765-1790.
+- `res:attachment-aware-reeb`: [paper/reasoning-parts/erdos1041/core.tex](../../../paper/reasoning-parts/erdos1041/core.tex) lines 4469-4490.
 
 ## Passage-review queue
 

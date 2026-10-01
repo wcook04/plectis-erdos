@@ -87,6 +87,25 @@ primary advice on guide-writing itself, as well as close human examples of
 mathematical, systems and scientific exposition, and report exact locators and
 what was actually inspected.
 
+A systems paper for laboratory readers should explain the design before the
+technical case: components and interfaces, persistent state, task sequencing,
+responsibilities, review and publication. A worked case should make those
+choices concrete. Inspect both the implementation and the diagrams; a correct
+theorem in the case does not show that the architecture has been explained.
+Keep detailed mathematics in the case's own paper or an optional appendix.
+
+## Carry a reviewed revision into the next pass
+
+Preserve the original return and give its proposed changes individual decisions.
+Separate acceptance of a passage from adoption of a general rule. A return can
+contain useful prose while its audit files or reading declarations need repair;
+record both outcomes and validate the selected manuscript against its current
+owners. Check the source version after concurrent revisions, then rebuild its
+PDF, citation coordinates and evidence links. Freeze the resulting guide and
+skill together with their exact source and return records for the next review.
+This loop revises documents and instructions. It supplies no evidence of a
+change to model weights or of improved reader comprehension.
+
 ## Let the proof determine the explanation
 
 The model passage and the new argument must be compared in two separate ways.

@@ -9,7 +9,7 @@ what a reader meets:
 
 * paper/evidence/<paper>.tex  one \\DeclareResultEvidence line per result with a Lean
                               proof, read by paper/paper-evidence.tex, which places the
-                              "Lean" and "Comparator" links in the margin beside it;
+                              "Lean" and "Comparator" links beside its heading;
 * evidence/<paper>.md         the paper's evidence record: for every result, the Lean
                               declarations that state it (with their statements), how they
                               relate to the printed statement, and the Comparator check;
@@ -1053,7 +1053,7 @@ def record_url(record_commit: str, record: str, anchor: str) -> str:
 
 
 # A record larger than this is split into one file per section of the paper, so that each
-# page the margin marks open stays quick to load and within what GitHub renders.
+# page the result links open stays quick to load and within what GitHub renders.
 SPLIT_BYTES = 300_000
 
 
@@ -1114,7 +1114,7 @@ def record_header(evidence: dict, paper: dict, title: str, pdf_path: str, up: st
         "",
         f"This record belongs to the paper [{Path(pdf_path).name}]({up}{pdf_path}). For every result it lists "
         "the Lean declarations that state it, and the recorded Comparator check where there is one. "
-        "The inline links and margin marks in the paper use the same result mapping.",
+        "The inline links beside each result heading use this result mapping.",
         "",
         f"- **Lean.** Every declaration is quoted from [plectis-erdos]({REPO_URL}) at commit "
         f"[`{pin[:12]}`]({REPO_URL}/tree/{pin}) and is checked there by Lean's kernel "

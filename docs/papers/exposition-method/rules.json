@@ -5,7 +5,7 @@
     {
       "id": "E00",
       "title": "Read nearby mathematical literature",
-      "guidance": "Choose human-authored papers close in subject, proof structure and genre. Read a complete local argument in an identified original version. Examine established terminology, hypothesis and quantifier placement, sentence connections, attribution, notation and proof pacing. Adapt the reason for a choice in original prose, then check the local mathematics that licenses it.",
+      "guidance": "Choose human-authored papers close in subject, proof structure and genre. Read a complete local argument in an identified original version. Examine established terminology, hypothesis and quantifier placement, sentence connections, attribution, notation and proof pacing. Adapt the reason for a choice in original prose, then check the local mathematics that licenses it. For an infrastructure paper, select the systems genre before composing its opening; explain architecture and responsibility before a subordinate technical example.",
       "limit": "A distant stylistic model does not establish field usage; a supplied file is not a reading claim; another author’s composition does not prove the target argument or guarantee reader benefit."
     },
     {
@@ -17,13 +17,13 @@
     {
       "id": "E02",
       "title": "Make an example explain a choice",
-      "guidance": "Place a small example before unfamiliar notation when it makes the definition, construction or obstruction intelligible. Show the relevant operation and preserved quantities. Say what the example does not establish. Check that an example or witness satisfies the claimed object’s defining conditions, rather than only those of a larger model.",
+      "guidance": "Place a small example before unfamiliar notation when it makes the definition, construction or obstruction intelligible. Show the relevant operation and preserved quantities. Say what the example does not establish. Check that an example or witness satisfies the claimed object’s defining conditions, rather than only those of a larger model. Define an unfamiliar operation before presenting the table or witness that illustrates it.",
       "limit": "A familiar definition need not acquire another example; a finite check establishes an infinite claim only through a proved reduction."
     },
     {
       "id": "E03",
       "title": "Explain the difficult inference",
-      "guidance": "State the quantity to control and the accuracy required. When a preliminary estimate is too weak, explain its loss and the operation or hypothesis used to recover it. Explain the target of a parameter choice before its schedule. Use connective prose to identify actual dependencies.",
+      "guidance": "State the quantity to control and the accuracy required. When a preliminary estimate is too weak, explain its loss and the operation or hypothesis used to recover it. Explain the target of a parameter choice before its schedule. Use connective prose to identify actual dependencies. Connect a certificate to the conclusion it licenses throughout the object, name the witnesses in a contradiction, and separate local constructions from the conditions making them global.",
       "limit": "A writing model supplies no missing estimate or mathematical implication."
     },
     {
@@ -47,7 +47,7 @@
     {
       "id": "E07",
       "title": "Distinguish evidence from explanation",
-      "guidance": "Keep ordinary proof, exact formal statement, named unproved input, selected Comparator outcome, computation and citation separate. Explain the proof on the page and preserve pending status. Logical scope and evidence are separate: a conditional implication can have an ordinary or formal proof. Correct stale underclaims as well as overclaims against current reviewed evidence.",
+      "guidance": "Keep ordinary proof, exact formal statement, named unproved input, selected Comparator outcome, computation and citation separate. Explain the proof on the page and preserve pending status. Logical scope and evidence are separate: a conditional implication can have an ordinary or formal proof. Correct stale underclaims as well as overclaims against current reviewed evidence. Separate a positive certificate, an inconclusive failed test and eventual detection for a fixed input. Describe the statuses actually recorded by an evidence ledger, including gaps.",
       "limit": "A nearby checked endpoint does not check a different prose argument; a metadata or spelling check does not prove meaning."
     },
     {
@@ -77,7 +77,7 @@
     {
       "id": "E12",
       "title": "Amend a rule only as far as the case warrants",
-      "guidance": "Record the proposal, before/after passage, original source, native decision, applicability and counterexample or limit. Reuse an existing rule when it already covers the lesson. Freeze the resulting files for the next packet.",
+      "guidance": "Record the proposal, before/after passage, original source, native decision, applicability and counterexample or limit. Reuse an existing rule when it already covers the lesson. Freeze the resulting files for the next packet. Keep a case-specific sufficient condition in its example unless the evidence licenses a general requirement.",
       "limit": "Accepted document revisions do not train model weights, prove general effectiveness or license unrelated work."
     }
   ]

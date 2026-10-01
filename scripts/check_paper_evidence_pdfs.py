@@ -6,12 +6,12 @@
 For each of the sixteen papers, against its generated evidence file
 paper/evidence/<paper>.tex and evidence/paper_evidence.json:
 
-  * every declared result has a "Lean" link in the right margin whose target is the
-    declared one, and a "Comparator" link just below it when one is declared;
-  * the inline links beside that result use the same targets as its margin marks;
-  * the mark sits level with the result's printed heading ("Theorem 2.1", ...) on the page
+  * every declared result has one inline "Lean" link with its declared target, and
+    one inline "Comparator" link when compared, or its own pending-record link;
+  * the links sit level with the result's printed heading ("Theorem 2.1", ...) on the page
     where its label is set, so it cannot be attached to the wrong result;
-  * no margin link is unexplained, no two marks overlap, and none runs off the page;
+  * no evidence links repeat in the margin, no margin link is unexplained, no two
+    inline marks overlap, and no evidence link runs off the page;
   * no link in the paper points at a workflow run page;
   * the paper is no longer than its frozen baseline (docs/paper_page_baseline.json).
 
@@ -35,7 +35,11 @@ DECLARE = re.compile(r"\\DeclareResultEvidence\{([^}]*)\}\{((?:[^{}]|\{[^{}]*\})
 RECORD = re.compile(r"\\DeclareResultEvidenceRecord\{([^}]*)\}\{([^}]*)\}\{([^}]*)\}\{([^}]*)\}")
 RUN_URL = re.compile(r"/actions/runs/\d+")
 TOLERANCE = 7.0  # points between the mark's first baseline and the heading's baseline
+# The 11pt article baseline (13.6 TeX points), with paper-house-style's 1.045
+# linespread, in PDF points. A long title can put its inline links on the next line.
+HEADING_LINE_STEP = 13.6 * 1.045 * 72.0 / 72.27
 HYPERREF_LINK_MARGIN = 1.0
+LINK_PIECE_GAP = 4.0
 
 
 def untex(url: str) -> str:
@@ -81,6 +85,34 @@ def heading_lines(page) -> list[tuple[float, float, str]]:
     return runs
 
 
+def link_groups(indices: list[int], links: list, split: str = "") -> list[list[int]]:
+    """Count presentations, allowing a dagger or a wrapped pending label to split.
+
+    Hyperref can make a superscript dagger a second annotation.  A pending label
+    can break at its space.  Complete, repeated labels must remain separate groups.
+    """
+    def joins(a: list[float], b: list[float]) -> bool:
+        short_piece = min(a[2] - a[0], b[2] - b[0])
+        beside = (abs(a[1] - b[1]) <= TOLERANCE
+                  and -2 * HYPERREF_LINK_MARGIN <= b[0] - a[2] <= LINK_PIECE_GAP)
+        wrapped = (0 < a[1] - b[1] <= TOLERANCE + a[3] - a[1] and b[0] < a[0])
+        return ((split == "dagger" and short_piece <= 8.0 and beside)
+                or (split == "pending" and short_piece <= 32.0 and (beside or wrapped)))
+
+    groups: list[list[int]] = []
+    for i in indices:
+        matches = [group for group in groups
+                   if any(joins(links[j][1], links[i][1]) or joins(links[i][1], links[j][1])
+                          for j in group)]
+        if matches:
+            merged = [i] + [j for group in matches for j in group]
+            groups = [group for group in groups if group not in matches]
+            groups.append(merged)
+        else:
+            groups.append([i])
+    return groups
+
+
 def check_paper(pdf: Path, paper: dict, marks: dict, baseline: int | None,
                 records: dict | None = None) -> list[str]:
     from pypdf import PdfReader
@@ -97,76 +129,87 @@ def check_paper(pdf: Path, paper: dict, marks: dict, baseline: int | None,
         if RUN_URL.search(uri):
             problems.append(f"page {number}: links a workflow run ({uri})")
     margin = [(n, r, u) for n, r, u in links if r[0] >= text_right]
+    evidence_uris = {u for _text, lean, comparator in marks.values()
+                     for u in (lean, comparator) if u}
+    evidence_uris.update(record[0] + "-comparator" for record in (records or {}).values()
+                         if record[2] == "pending")
+    for n, _rect, uri in margin:
+        if uri in evidence_uris:
+            problems.append(f"page {n}: margin evidence presentation is forbidden ({uri})")
+        else:
+            problems.append(f"page {n}: margin link to {uri} belongs to no declared result")
     used: set[int] = set()
     results = {r["label"]: r for r in paper["results"]}
     text_cache: dict[int, list] = {}
     for label, (text, lean, comparator) in marks.items():
         result = results.get(label)
-        hits = [i for i, (n, r, u) in enumerate(margin) if u == lean and i not in used]
+        if result is None:
+            problems.append(f"{label}: no result in the evidence mapping")
+        record = records.get(label) if records is not None else None
+        if records is not None and record is None:
+            problems.append(f"{label}: no generated evidence record/status mapping")
+        hits = [i for i, (n, r, u) in enumerate(links)
+                if u == lean and r[0] < text_right and i not in used]
         if result and result.get("page"):
-            hits = [i for i in hits if margin[i][0] == int(result["page"])]
+            hits = [i for i in hits if links[i][0] == int(result["page"])]
         if not hits:
-            problems.append(f"{label}: no Lean mark with its target in the margin"
+            problems.append(f"{label}: no inline Lean link with its target beside the heading"
                             + (f" of page {result['page']}" if result and result.get('page') else ""))
             continue
         chosen = None
         for i in hits:
-            n, rect, _u = margin[i]
+            n, rect, _u = links[i]
             if result and result.get("number"):
                 if n not in text_cache:
                     text_cache[n] = heading_lines(reader.pages[n - 1])
                 # Text extraction may drop the space inside a bold heading ("Theorem1.3").
                 want = f"{result['printed_kind']}{result['number']}"
                 level = [t for t in text_cache[n]
-                         if abs(t[1] - rect[1]) <= TOLERANCE + (rect[3] - rect[1]) and t[0] < text_right
-                         and "".join(t[2].split()).startswith(want)]
+                         if abs(t[1] - rect[1]) <= TOLERANCE + max(rect[3] - rect[1], HEADING_LINE_STEP)
+                         and t[0] < text_right
+                         and re.match(re.escape(want) + r"(?:\D|$)", "".join(t[2].split()))]
                 if not level:
                     continue
             chosen = i
             break
         if chosen is None:
-            problems.append(f"{label}: its Lean mark is not level with the heading "
+            problems.append(f"{label}: its inline Lean link is not level with the heading "
                             f"{result['printed_kind']} {result['number']}")
             continue
-        used.add(chosen)
-        n, rect, _u = margin[chosen]
-        inline = [(r, u) for m, r, u in links if m == n and r[0] < text_right
+        n, rect, _u = links[chosen]
+        inline = [i for i, (m, r, _u) in enumerate(links)
+                  if m == n and r[0] < text_right and i not in used
                   and abs(r[1] - rect[1]) <= TOLERANCE + (rect[3] - rect[1])]
-        if not any(u == lean for _r, u in inline):
-            problems.append(f"{label}: no inline Lean link with its margin target beside the heading on page {n}")
-        if comparator and not any(u == comparator for _r, u in inline):
-            problems.append(f"{label}: no inline Comparator link with its margin target beside the heading on page {n}")
-        if records is not None:
-            record = records.get(label)
-            if record is None:
-                problems.append(f"{label}: no generated evidence record/status mapping")
-            elif record[2] == "pending" and not any(u == record[0] + "-comparator" for _r, u in inline):
-                problems.append(f"{label}: no inline Comparator-pending link to its evidence record on page {n}")
-        # A mark such as "Lean" with a superscript dagger can be written as two link pieces.
-        for i, (m, r, u) in enumerate(margin):
-            if i not in used and m == n and u == lean and abs(r[1] - rect[1]) < 4 and r[0] <= rect[2] + 4:
-                used.add(i)
+
+        def require_inline(name: str, uri: str, split: str = "") -> None:
+            candidates = [i for i in inline if links[i][2] == uri]
+            groups = link_groups(candidates, links, split)
+            if not groups:
+                problems.append(f"{label}: no inline {name} link with its target beside the heading on page {n}")
+            elif len(groups) != 1 or any(len(group) > 2 for group in groups):
+                problems.append(f"{label}: duplicate inline {name} presentation on page {n}")
+            used.update(candidates)
+
+        require_inline("Lean", lean, "dagger" if "dag" in text else "")
         if comparator:
-            below = [i for i, (m, r, u) in enumerate(margin)
-                     if i not in used and m == n and u == comparator and 0 < rect[1] - r[1] <= 16]
-            if not below:
-                problems.append(f"{label}: no Comparator mark just below its Lean mark on page {n}")
-            else:
-                used.add(below[0])
-    for i, (n, rect, uri) in enumerate(margin):
-        if i not in used:
-            problems.append(f"page {n}: margin link to {uri} belongs to no declared result")
-        if rect[2] > width - 4 or rect[1] < 4:
-            problems.append(f"page {n}: margin link to {uri} runs off the page")
+            require_inline("Comparator", comparator)
+        if record is not None and record[2] == "pending":
+            require_inline("Comparator-pending", record[0] + "-comparator", "pending")
+    for n, rect, uri in links:
+        if uri in evidence_uris or rect[0] >= text_right:
+            if (rect[0] < 4 or rect[1] < 4 or rect[2] > width - 4
+                    or rect[3] > float(reader.pages[n - 1].mediabox.height) - 4):
+                problems.append(f"page {n}: evidence link to {uri} runs off the page")
     # hyperref pads every link rectangle by 1pt (\Hy@linkmargin); two marks collide when
     # the text inside those rectangles would touch.
     pad = HYPERREF_LINK_MARGIN
     by_page: dict[int, list[tuple[list[float], str]]] = {}
-    for n, rect, uri in margin:
+    for i in sorted(used):
+        n, rect, uri = links[i]
         inner = [rect[0] + pad, rect[1] + pad, rect[2] - pad, rect[3] - pad]
         for other, other_uri in by_page.get(n, []):
             if inner[0] < other[2] and other[0] < inner[2] and inner[1] < other[3] and other[1] < inner[3]:
-                problems.append(f"page {n}: margin marks collide ({other_uri} and {uri})")
+                problems.append(f"page {n}: inline evidence marks collide ({other_uri} and {uri})")
         by_page.setdefault(n, []).append((inner, uri))
     return problems
 

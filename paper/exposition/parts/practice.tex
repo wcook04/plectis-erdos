@@ -3,23 +3,13 @@
 \section{Keeping a useful practice small}\label{sec:practice}
 \papersectiontarget{exposition-practice}
 
-The public implementation extends the repository's existing mathematical
-writing skill~\cite{skill}. It adds a literature-reading pass before a
-substantial rewrite and places the detailed cases in a linked guide and
-lesson records. The two-page \emph{Writing a Good Mathematical Paper}~\cite{compact}
-distils the instructions for use without this repository. The present companion
-explains their evidence and limits. The skill remains a set of working instructions; the records
-make its examples and exceptions recoverable. A writer need not read every
-past return before deciding how to explain a particular proof.
-
-The compact rule set asks writers to select a coherent result, use examples
-for a stated purpose, explain difficult inferences, name the actual
-mathematical objects and preserve statement meaning. It also covers the
-relation between short and long papers, evidence, citation roles, informative
-failures, rendering and honest reporting of review. These topics are not
-scores to optimize. Each rule states a limit that matters to its use: an
-example does not prove an infinite result; a shorter sentence need not preserve
-quantifiers; a rendered PDF need not explain its mathematics well.
+Use the two-page \emph{Writing a Good Mathematical Paper}~\cite{compact} as a
+working guide; use this companion when a particular instruction needs an
+example or a limit. The repository's writing skill~\cite{skill} incorporates
+the literature-reading pass, while its records retain the detailed cases and
+exceptions. A writer need not read every past return before explaining a proof.
+The next revision should resolve a specific difficulty, not demonstrate that
+every rule has been mentioned.
 
 \subsection{Revise in an order that preserves the argument}\label{sec:revision-order}
 
@@ -177,9 +167,15 @@ introduction and main statements: recover the contribution and its boundary
 without importing private knowledge. Second, reconstruct the proof: identify
 where each hypothesis is used and explain the difficult inference in your own
 words. Third, try to use a result: check its assumptions on an example, locate
-an excluded case and find the cited input needed for an application. These
-routes expose different failures, so a successful scan should not stand in for
-a proof reading.
+an excluded case and find the cited input needed for an application.
+
+For the examples here, these tasks have specific answers. In
+Section~\ref{sec:certificate}, the certificate places a value in $(1/2,1)$;
+its two inequalities come from the two endpoint gaps; the value $D=3/4$ with
+the loose enclosure $[1/2,1]$ shows why a failed test is inconclusive. A reader
+who can repeat ``compare both endpoints'' but cannot explain that failure has
+not yet recovered how to use the certificate. This identifies a passage to
+revisit, not a numerical score for understanding.
 
 When an independent reader is available, ask for the exact place where their
 reconstruction stopped and what they believed had been established there.
@@ -208,12 +204,12 @@ different proof may warrant a different choice.
 The common task is to make the relation between a claim and its warrant
 legible. What counts as a warrant depends on the field and the sentence.
 For a mathematical theorem, state the domain and hypotheses, then explain
-the proof's hard implication. A systems paper may instead claim that a
-particular mechanism works under a specified workload, compare it with a
-baseline, or describe a reproducible failure. Give the implementation, test
-conditions, comparator and observed result before drawing that conclusion.
-A build or artifact check can support a statement about those tested objects;
-it cannot prove an unrestricted performance or usability claim.
+the proof's hard implication. A systems paper may describe a design, report an
+implemented mechanism or compare performance under a workload. Identify which
+of these is being claimed. An empirical comparison needs the tested
+implementation, conditions, comparator and observed result; a proposed design
+must not be presented as an implemented one. A build or artifact check concerns
+the tested objects, not unrestricted performance or usability.
 
 Levin and Redell distinguish papers about implemented systems, proposed
 systems and theoretical work, and caution that evaluation criteria vary across
@@ -224,16 +220,23 @@ These are genre-specific primary sources, not proof authority for any
 particular system. A nearby systems paper's opening and evaluation should also
 be read at their actual passages before transferring a sentence pattern.
 
-The companion systems paper in this repository describes a source-to-publication
-workflow and one mathematical case~\cite{systems}. A useful reading question
-is whether a sentence concerns the checked declaration, the authored argument,
-the release procedure or a reader's understanding. Those four claims need
-different evidence. In an expository scientific paper, similarly identify the
-underlying study or derivation, the population or model, the observed or cited
-result, and the author's synthesis. If the paper contributes no new experiment,
-say so. Compare each inference with the cited primary study and with nearby
-expositions in that field; do not turn a source's reported association into
-causation or a model's prediction into an observation.
+The repository's systems manuscript gives a concrete example. It reports nine
+rejections among ten deliberately false, author-selected edits in a historical
+trial. After one edit escaped, a follow-up checked the intact baseline and
+that escaped edit against a repair; the other nine edits were not rerun
+\cite[recorded observations]{systems}. The first report describes those ten
+trials, not a general $90\%$ reliability rate. The second describes the tested
+repair, not a post-repair ten-out-of-ten result. The manuscript also records
+missing original logs and the absence of an independent comparison. Those
+qualifications determine which conclusion the observations can support; they
+are not incidental implementation details.
+
+In an expository scientific paper, similarly identify the underlying study or
+derivation, the population or model, the observed or cited result, and the
+author's synthesis. If the paper contributes no new experiment, say so.
+Compare each inference with the cited primary study and with nearby expositions
+in that field; do not turn a reported association into causation or a model's
+prediction into an observation.
 
 Sentence structure should expose these dependencies. Put the condition before
 its consequence when the condition controls the claim; name the measured

@@ -435,13 +435,20 @@ Proposition~\ref{res:sparserationalisation} to $a=g$.  Choose a rational
 $r$ in its nondegenerate interval $I$ and put $b=g+e$.
 The proposition gives all the correction and congruence assertions,
 together with the comparison of growing blocks.
-Schlage-Puchta \cite[Lemma~4]{schlagepuchta2011} proved that the zero set
-of each fixed nonzero polynomial in a fixed block of prime gaps has
-density zero.  Outside $\bigcup_{i=0}^k(S-i)$ the two blocks are equal, so a zero of
-$F(b_n,\ldots,b_{n+k})$ is already a zero for the original gaps.
-The additional exceptional set has density zero, being a finite union of
-translates of $S$.  This proves the required count without estimating
-the values of $F$.
+Fix $k$ and a nonzero $F\in\Z[x_0,\ldots,x_k]$.  A new zero can occur
+only in a block meeting $S$, so
+\[
+ \begin{aligned}
+ &\bigl|\{n<N:F(b_n,\ldots,b_{n+k})=0\}\bigr|\\
+ &\quad\le\bigl|\{n<N:F(g_n,\ldots,g_{n+k})=0\}\bigr|
+       +\sum_{i=0}^k|S\cap[i,N+i)|.
+ \end{aligned}
+\]
+The first count is $o(N)$ by Schlage-Puchta's Lemma~4
+\cite{schlagepuchta2011}; the finitely many support counts are $o(N)$
+because $S$ has density zero.  Only changed blocks are counted, so the
+values of $F$ need not be bounded.  Since $b$ was chosen before $F,k$,
+the same sequence satisfies every fixed-polynomial condition.
 
 To estimate $P_n-p_n=\sum_{i<n}e_i$, first observe that
 $|S\cap[0,n)|=O_\varepsilon(n/\log\log n)$.  Indeed, the indices below
@@ -668,16 +675,18 @@ $\sum_{j\ge1}(x+j)^4 2^{-j}=P(x)$ and hence
  R_{h,N,L}(M)=1250\,2^{-L}
              \bigl(P(N+h+L+2)+P(N+L+2)\bigr).
 \]
-To certify the conditions in \eqref{eq:smallpair}, suppose $\delta_N=2s$, where
-$s\in\{-1,1\}$, and $|QD_N-A|\le B$, with $A\in\Z$, $Q>0$, $B\ge0$
-integers.  Then $sD_N$ lies in $[(sA-B)/Q,(sA+B)/Q]$.  This whole
+Separation from $\Z$ does not specify either interval in
+Proposition~\ref{res:signedwindow}.  To certify \eqref{eq:smallpair},
+suppose $\delta_N=2s$, where $s\in\{-1,1\}$, and $|QD_N-A|\le B$,
+with $A\in\Z$, $Q>0$, $B\ge0$ integers.  Then $sD_N$ lies in $[(sA-B)/Q,(sA+B)/Q]$.  This whole
 interval lies in $(1/2,1)$ precisely when its lower endpoint exceeds
 $1/2$ and its upper endpoint is less than $1$, that is,
 \[
  2sA-Q>2B,\qquad Q-sA>B.
 \]
-The numerator $A$ is signed: multiplying the enclosure by $s$ accounts
-for the direction of the gap difference.
+Reducing $A$ modulo $Q$ would preserve its distance to $Q\Z$ but lose
+the enclosure's location.  We retain the signed numerator and use the
+sign $s$ fixed by the gap difference.
 At $h=1,N=2,L=40$, one has $\delta_2=g_4-g_3=-2$ and
 \[
  Q=2^{40},\qquad A=-662838684750,\qquad B=11764181250,\qquad s=-1.

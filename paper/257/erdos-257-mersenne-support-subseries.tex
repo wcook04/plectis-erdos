@@ -8,6 +8,8 @@
 % extensions and their mathematical boundaries, then the actual target.
 \documentclass[11pt]{article}
 \input{problem-note-preamble}
+% The selected math font supplies the standard small set-difference glyph.
+\AtBeginDocument{\let\setminus\smallsetminus}
 \input{evidence/erdos-257-mersenne-support-subseries}
 \renewcommand{\commit}{99f4bf47422abbd8757cbb22b50ba079d764d3a7}
 \renewcommand{\commitshort}{99f4bf47422a}
@@ -633,7 +635,8 @@ subsets of $E$.
 For finite $F$, let $\mathbb E_F$ denote
 the uniform mean modulo $\operatorname{lcm}(F)$, with
 $\operatorname{lcm}(\varnothing)=1$ and $f_{\varnothing}=0$.
-More generally allow weights $\eta_j>0$ with $\sum_j\eta_j=1$, and set
+Allow arbitrary weights $\eta_j>0$ with $\sum_j\eta_j=1$, so that the
+lower bound also survives reweighting the cover. Set
 \[
  K=\sum_j\frac{C_j\eta_j^{-\alpha_j}}{2^{\alpha_j}-1},\qquad
  \Psi(0)=0,\quad
@@ -645,15 +648,21 @@ $\bigcup_jF_j$,
  K\ge\mathbb E_F\Psi(f_F)\ge e\,\mathbb E_F\log^+f_F.
  \label{eq:cover-log-obstruction}
 \end{equation}
-Indeed, at a point where $f_F(n)=t>0$, some covering set $F_j$ satisfies
-$f_{F_j}(n)\ge\eta_jt$.  Otherwise summing contradicts coverage.
-The corresponding weighted majorant is at least $\Psi(t)$.
-Average first over $1\le n\le X$, using
-$\lfloor X/d\rfloor/X\le1/d$, and let $X\to\infty$.
-The periodic left side tends to $\mathbb E_F\Psi(f_F)$, proving
-the first inequality; the covering moduli need not divide
-$\operatorname{lcm}(F)$.  Convexity gives $2^\alpha-1\le\alpha$, and
-$e^u/u\ge e$ proves the second.  The scalar inequality
+Indeed, if $f_F(n)=t>0$, coverage gives
+$\sum_jf_{F_j}(n)\ge t$, so some $j$ satisfies
+$f_{F_j}(n)\ge\eta_jt$. Its weighted majorant is at least
+$t^{\alpha_j}/(2^{\alpha_j}-1)\ge\Psi(t)$.
+The index $j$ may depend on $n$: it is the sum of all weighted
+majorants that bounds $\Psi(f_F(n))$ at every $n$.
+Average this pointwise inequality over $1\le n\le X$.
+Each divisor indicator has mean $\lfloor X/d\rfloor/X\le1/d$,
+so the mean of the sum of majorants is at most $K$.
+As $X\to\infty$, the mean of $\Psi(f_F)$ tends to
+$\mathbb E_F\Psi(f_F)$. Only this finite-support function needs a
+period; the covering moduli need not divide $\operatorname{lcm}(F)$.
+This proves the first inequality. The second is immediate for $t=0,1$;
+for $t>1$, use $2^\alpha-1\le\alpha$ and $e^u/u\ge e$ with
+$u=\alpha\log t$.  The scalar inequality
 $t^\alpha/(2^\alpha-1)\ge e\log t$ also has a
 \href{https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos257/PaperCompleteR7/CoverKernel.lean\#L170}{corresponding source theorem}.
 
@@ -767,10 +776,12 @@ gives irrationality for every infinite subset of $U$ at every integer
 base $b\ge2$.
 \end{proof}
 The fixed-dyadic cover class in (V) is closed under finite unions.
-For two covers, place their $j$th finite sets at positions $2j-1,2j$,
-halve each exponent, and retain the coefficients of the corresponding
-majorants. The inequalities persist since $f^{\alpha/2}\le f^\alpha$
-for every nonnegative integer $f$. Writing
+When interleaving two covers, we must control the index-dependent
+factor $2^{j\alpha_j}$. Place their $j$th finite sets at positions
+$2j-1,2j$ and halve each exponent; this factor then does not increase.
+The old majorant coefficients still work, since
+$f^{\alpha/2}\le f^\alpha$ for every nonnegative integer $f$.
+It remains to compare the denominators in the cost. Writing
 $T_j=C_j2^{j\alpha_j}/(2^{\alpha_j}-1)$ for the original $j$th cost,
 its new cost is at most
 \[
@@ -1037,6 +1048,10 @@ $1/63$, from the exponent $6$. This will distinguish finite and infinite
 representations in the next appendix.
 
 \section{Rational membership}\label{sec:rational-membership}
+We now fix a target value rather than impose a condition on its support.
+The first recurrence is forced by rationality; the later greedy
+recurrence tests whether a specified target is represented.
+
 \subsection{Rational values and scaled tails}\label{sec:forced}
 Suppose $X_A(2)=p/v$, where $p\in\Z$ and $v\ge1$ is an integer.
 Multiplying the coefficient-series identity by $v2^N$ gives
@@ -1119,6 +1134,13 @@ $2^NX_{A_x}(2)\le2^Nx$, so $Q_N\ge0$.  These integer remainders obey
  \label{eq:actual-repair-recurrence}
 \end{equation}
 
+The reason to test for nonincreases is a difference in growth rates.
+For a represented target, $Q_N$ is bounded by a scaled coefficient tail
+of order $\sqrt N$; integrality prevents strict increase throughout a
+sufficiently long window. For an unrepresented target, the positive
+deficit $x-X_{A_x}(2)$ contributes exponential growth, and the
+recurrence eventually forces strict increase.
+
 \begin{theorem}[membership and nonincreasing integer remainders]\label{res:general-repair}
 For every real $x\ge0$, the following are equivalent:
 \[
@@ -1153,9 +1175,8 @@ Equation~\eqref{eq:actual-repair-recurrence} then makes $Q_N$ strictly
 increasing, contradicting cofinal nonincreases.
 \end{proof}
 
-The theorem supplies a test for membership. Applying it requires
-nonincreases along the actual greedy sequence of the target.  For $x=0$, no exponent is selected and $Q_N=0$ at every
-rank.  A finite subseries sum is likewise represented and satisfies the
+The nonincreases must occur along the target's own greedy sequence.
+For $x=0$, no exponent is selected and $Q_N=0$ at every rank.  A finite subseries sum is likewise represented and satisfies the
 criterion.  The target $x=3/4$ lies strictly between $R_1<2/3$ and
 $w_1=1$, so it is not represented and its integer remainders eventually
 increase strictly.  For $1/2$ and $1/21$, the theorem does not establish

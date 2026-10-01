@@ -91,13 +91,26 @@ and a source archive may differ from the accompanying PDF. The file's digest
 identifies the supplied bytes; a public link tells the reader where to seek
 the work. Neither should silently stand in for the other.
 
-For a difficult passage, reconstruct the local argument in your own notation
-before borrowing its presentation. Identify the point at which the source
-makes a choice intelligible or a conclusion unavoidable. Then ask which fact
-in the target proof could do the same work. In the opening example, that fact
-is a remainder bound tending to zero. When the target proof contains no such
-fact, the comparison has exposed a mathematical obligation; it has not supplied
-an explanation that can safely be inserted.
+For a difficult passage, reconstruct the local argument before borrowing its
+presentation. Knuth, Larrabee and Roberts give a useful worked
+comparison~\cite[\S\S2--3, pp.~7--8]{knuth}. Their example considers vectors
+$c+kb$ whose coordinates are nonincreasing for every nonnegative integer $k$.
+Fix the vectors $c,b$ and coordinates $i<j$. Rearranging the coordinate
+inequality gives
+\[
+                 c_i-c_j\ge k(b_j-b_i)\qquad(k\ge0).
+\]
+The left side is fixed. If $b_j-b_i$ were positive, the right side would grow
+without bound; hence $b_j\le b_i$. The source compares a proof choosing a
+particular $k$ for a contradiction with a direct proof using this dependence.
+Reading the two shows why the phrase ``for arbitrarily large $k$'' matters.
+It is not a reason to ban proof by contradiction elsewhere.
+
+Now ask which fact in the target proof could make its own conclusion equally
+unavoidable. In the opening construction, that fact is a remainder bound tending
+to zero. When the target proof contains no such fact, the comparison has exposed
+a mathematical obligation; it has not supplied an explanation that can safely
+be inserted.
 
 The record should distinguish three acts. A packet may contain a source. Its
 recipient may declare that particular pages were read. An integrating reviewer

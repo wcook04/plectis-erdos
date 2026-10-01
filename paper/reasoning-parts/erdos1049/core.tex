@@ -622,12 +622,11 @@ $|\xi-p/q|<q^{-\nu}$ has infinitely many reduced rational solutions.
 In particular, $\mu_{\rm irr}(F((31/4)^r))<301$ for every $r\ge1$.
 \end{corollary}
 \begin{proof}
-The coefficient $A_n$ in~\eqref{long1049:eq:A-explicit} is a sum of
-$O(n)$ Laurent monomials times two Gaussian binomial polynomials.
-Each Gaussian polynomial has nonnegative coefficients summing to at
-most $2^{27n+2}$. Hence the sum of the absolute coefficients of $A_n$
-is $\exp(O(n))$. Since its largest exponent is $K_n$,
-$|A_n(x)|\le x^{K_n}\exp(O(n))$ for each fixed $x>1$.
+For the irrationality exponent, bound $A_n$ in~\eqref{long1049:eq:A-explicit}:
+its $O(n)$ Laurent monomials multiply two Gaussian binomial polynomials,
+each with nonnegative coefficients summing to at most $2^{27n+2}$.
+Thus its absolute coefficient sum is $\exp(O(n))$, and its largest
+exponent $K_n$ gives $|A_n(x)|\le x^{K_n}\exp(O(n))$ for fixed $x>1$.
 The cyclotomic estimate in Section~\ref{long1049:sec:integer-forms}
 bounds the multiplier $x^{-M_n}D_N(x)/\Omega_n(x)$ by
 $x^{W_n-K_n}\exp(O_x(n))$. Therefore
@@ -654,12 +653,13 @@ Fix $0<\eta<\tau$. For all sufficiently large $n$, the estimates above give
  e^{-(\tau+\eta)n^2}\le Q_n\xi-P_n\le e^{-(\tau-\eta)n^2},
  \qquad |Q_n|\le e^{(\alpha+\eta)n^2}.
 \]
-For every sufficiently large denominator $q$, choose
+For every sufficiently large denominator $q$, the upper remainder bound
+suggests choosing
 $n=\lceil\sqrt{\log(2q)/(\tau-\eta)}\rceil$. Then
 $2q(Q_n\xi-P_n)\le1$, so the preceding integer argument applies to
 $(A,B)=(Q_n,P_n)$ for every numerator $p$. Also $Q_n\ne0$: otherwise
 $Q_n\xi-P_n$ would be an integer strictly between $0$ and $1$.
-It follows that
+The lower remainder bound and the coefficient bound now give
 \[
  |\xi-p/q|\ge e^{-(\alpha+\tau+2\eta)n^2}
              =q^{-(\alpha+\tau+2\eta)/(\tau-\eta)-o(1)},
@@ -935,9 +935,11 @@ For every fixed $p>1$,
 Here $\log(d_n+1)=o(n^2)$ by the degree bound. This is where the
 coefficient-height hypothesis is needed.
 
-Suppose $\sigma>\delta$ and choose an integer $p\ge2$ such that
-$(\sigma-\delta)\log p>h$. Put $u_n=U_n(p)$, $v_n=V_n(p)$ and
-$\ell_n=u_nF(p)-v_n$. The evaluation bound and hypothesis~(4) give
+Suppose $\sigma>\delta$. To make remainder decay beat coefficient growth,
+choose an integer $p\ge2$ with $(\sigma-\delta)\log p>h$ and put
+$u_n=U_n(p)$, $v_n=V_n(p)$ and $\ell_n=u_nF(p)-v_n$.
+The integer determinant eliminates $F(p)$; the evaluation bound
+and hypothesis~(4) give
 \[
  u_nv_{n+1}-u_{n+1}v_n=u_{n+1}\ell_n-u_n\ell_{n+1}=o(1).
 \]
@@ -967,6 +969,7 @@ both assertions away from equality. At $3/2$ this sign is positive
 because $\log2/\log3>1/2\ge\sigma/(\sigma+d)$.
 \end{proof}
 
+\papersectiontarget{long1049-no-decay}
 \begin{corollary}[nondecay when $b<a<b^2$]
 \label{long1049:cor:no-decay-below-square}
 Under the hypotheses of Theorem~\ref{long1049:res:archcap}, for positive integers
@@ -975,20 +978,18 @@ tend to zero.  No limit of $d_n/n^2$ is assumed.
 \end{corollary}
 \begin{proof}
 Write $x=a/b$ and suppose $C_n=b^{d_n}\Lambda_n(x)\to0$.
-Eventual nonvanishing gives
-$\log|C_n|=d_n\log b+\log|\Lambda_n(x)|$ for all sufficiently large $n$.
-Also $|C_n|\le1$ eventually.  The lower side of the remainder asymptotic
-therefore implies
+Since $C_n\ne0$ and $|C_n|\le1$ eventually, logarithms and the
+remainder asymptotic at $x$ give the degree bound
 \[
  d_n\log b\le-\log|\Lambda_n(x)|
        =\sigma\log x\,n^2+o(n^2).
 \]
 Set $c=\sigma\log x/\log b$.  Since $1<x<b$, we have $0<c<\sigma$,
 and the displayed inequality gives $d_n\le(c+\varepsilon)n^2$ eventually
-for each $\varepsilon>0$. Apply Theorem~\ref{long1049:res:archcap}
-to the same family with degree upper rate $c$. Its height bound,
-nonvanishing and remainder asymptotics at every real base greater than
-one are unchanged. The theorem gives $\sigma\le c$, a contradiction.
+for each $\varepsilon>0$. Apply Theorem~\ref{long1049:res:archcap} to
+the same polynomial family with degree upper rate $c$: its height bound,
+nonvanishing and all-base remainder asymptotics are unchanged. This gives
+$\sigma\le c$, contradicting $c<\sigma$.
 \end{proof}
 
 

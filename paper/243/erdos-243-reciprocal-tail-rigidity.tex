@@ -115,7 +115,7 @@ The proof in Section~\ref{sec:secondaryrate} follows this order.
 For the recurrence criteria we use the integer tail numerators of
 Koizumi \cite[Lemma~4]{koizumi2025}. In Section~\ref{sec:bounded}, a
 stable gcd and the Chinese remainder theorem exclude a rational tail
-whose $P_n/a_n$ has bounded upward increments. An elementary infinite
+whose quotient $a_1\cdots a_{n-1}/a_n$ has bounded upward increments. An elementary infinite
 product argument gives the separate summability criterion of
 Section~\ref{sec:mass}. We then clear the tails by a least common
 multiple and count crossings of new maxima
@@ -694,11 +694,11 @@ Then the sequence is eventually Sylvester. In particular, the conclusion
 holds under the pointwise eventual bound $\gamma_n\le1/n$.
 \end{corollary}
 \begin{proof}
-The hypothesis bounds the positive part of $\gamma_n$ eventually by
-$1/n+K/n^{1+\varepsilon}$. Since $t_{n+1}/t_n=1+\gamma_n$, comparison
-with $n$ and the convergent product of
-$1+K/n^{1+\varepsilon}$ gives $t_n=O(n)$.
-Hence $t_n\gamma_n\le t_n(\gamma_n)_+=O(1)$, and
+Since $t_{n+1}/t_n=1+\gamma_n$, division by the comparison sequence $n$ gives
+$(t_{n+1}/(n+1))/(t_n/n)=(1+\gamma_n)/(1+1/n)
+\le1+K/[n^\varepsilon(n+1)]$.
+The upper bounds have a convergent product, so $t_n=O(n)$ and
+$t_n\gamma_n\le t_n(\gamma_n)_+=O(1)$.
 Corollary~\ref{res:originalbounded} applies.
 \end{proof}
 
@@ -780,11 +780,11 @@ new maximum. First crossings of selected heights will then control
 these sums even with a decreasing weight. Put
 \[
  L_n=\operatorname{lcm}(q,a_1,\ldots,a_{n-1}),\quad
- M_n=D_n/L_n,\quad U_n=C_n/M_n,\quad V_n=E_n/M_n.
+ M_n=D_n/L_n,\quad U_n=L_nx_n=C_n/M_n,\quad V_n=E_n/M_n.
 \]
-The rational tail has denominator dividing $L_n$, so $U_n$ and $V_n$ are
-integers. This need not be a reduced fraction: $U_n$ and $L_n$ may share
-a factor. With $\rho_n=\gcd(L_n,a_n)$, the exact updates are
+The denominator of $x_n$ divides $L_n$, so $U_n\in\Z$ and
+$V_n=L_n-(a_n-1)U_n\in\Z$. The fraction $U_n/L_n$ need not be reduced.
+With $\rho_n=\gcd(L_n,a_n)$, the exact updates are
 \[
  M_{n+1}=M_n\rho_n,\qquad
  \rho_nU_{n+1}=U_n-V_n,\qquad V_n=L_n-(a_n-1)U_n.
@@ -884,9 +884,10 @@ $U_n$, so monotonicity gives
  \sum_{\substack{\tau\text{ first crossed}\\\text{at step }n}}f(\tau)
  \le(d_n-B)f(U_n).
 \]
-Each selected height above $R_T$ has exactly one first crossing. The first
-selected height is at most $R_T+P$; each later height is $P$ further on.
-For $R_N\ge R_T+P$, comparison of each interval with its left endpoint gives
+Each selected height above $R_T$ has one first crossing. The heights are
+$P$ apart, with the first at most $R_T+P$. For $R_N\ge R_T+P$, the
+intervals $[\tau,\min\{\tau+P,R_N\}]$ with $\tau\le R_N$ cover $[R_T+P,R_N]$.
+Monotonicity bounds each integral by $P f(\tau)$, so the crossing bounds give
 \begin{equation}\label{eq:weightedcrossing}
  \sum_{\substack{T\le n<N\\n\in\mathcal R}}(-V_n-B)_+f(U_n)
  \ge\frac1P\int_{R_T+P}^{R_N} f(t)\,dt.

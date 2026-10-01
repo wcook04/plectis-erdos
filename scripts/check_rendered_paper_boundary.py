@@ -121,9 +121,10 @@ FIRST_MINUTE_CONTRACT = {
 
 # The unified manuscript has its own reviewed reading windows. The publication
 # contract selects this profile; historical manuscript checks retain their
-# original wording and windows. In the reviewed 21-page lab edition, repository
-# roles occupy pages 2–3, checks 4–5, revision and contributions 5–7, recorded
-# observations 7–8, limits 9 and reproduction notes 10. Keep the escaped-edit,
+# original wording and windows. In the reviewed 22-page lab edition, repository
+# roles occupy pages 2–4, checks 4–5, revision and contributions 6–8, recorded
+# observations 9, limits 10 and reproduction notes 11–12. Each anchor remains
+# on its inspected page. Keep the escaped-edit,
 # independent-review, source-versus-meaning and unmeasured-benefit limits.
 UNIFIED_SYSTEMS_FIRST_MINUTE = {
     (1, 1): (
@@ -134,38 +135,42 @@ UNIFIED_SYSTEMS_FIRST_MINUTE = {
         "a historical author-run test rejected nine of ten false edits and accepted one false completion claim",
         "reader benefit, discovery rate and adoption by independent laboratories remain unmeasured",
     ),
-    (2, 3): (
+    (2, 2): (
         "a repository organised around problems",
+    ),
+    (3, 3): (
         "the checkout contains authored lean and manuscript sources",
         "authors edit the sources; builders regenerate the derived views",
-    ),
-    (3, 4): (
         "agent_entry.py maps a stated task to instructions",
         "paper_evidence.py resolves mathematical paper statements",
         "paper_claim_evidence.py projects their evidence status",
-        "a maintainer reviews the claim, attribution and remaining uncertainty before adoption",
     ),
-    (4, 5): (
-        "requiring both records is a publication check, not an additional hypothesis",
-        "source-byte agreement alone cannot settle the meaning of a sentence",
+    (4, 4): (
+        "a maintainer reviews the claim, attribution and remaining uncertainty before adoption",
+        "the publication check requires the registered set, even if one declaration suffices for the clause under discussion. this is an accounting requirement, not an additional hypothesis of the theorem",
+    ),
+    (5, 5): (
+        "changing the sentence and updating its record can restore byte agreement without restoring the implication claimed by the prose",
         "lean verifies that a proof establishes the formal statement written in the source",
         "comparator adds a separately stated challenge",
         "does not technically force a second independent mathematician",
         "no independent human mathematical review of the corpus is recorded",
     ),
-    (5, 6): (
+    (6, 6): (
         "we freeze the selected manuscripts",
         "under a manifest of their exact bytes",
         "in either case the integrating reviewer decides whether the mathematics and its description remain faithful",
+    ),
+    (7, 7): (
         "it neither applies the proposal nor executes returned programs",
         "the procedure supplies no measurement of reader benefit or autonomous discovery",
-    ),
-    (6, 7): (
         "an open route for contributions",
+    ),
+    (8, 8): (
         "neither independent review nor acceptance by the wider mathematical community",
         "ordinary issues and pull requests need not become journal events",
     ),
-    (7, 8): (
+    (9, 9): (
         "nine of the ten deliberately false edits were rejected and one escaped",
         "the edits were authored by the checker’s author",
         "the other nine edits were not rerun",
@@ -174,7 +179,7 @@ UNIFIED_SYSTEMS_FIRST_MINUTE = {
         "no public pull request, human review or independent outside clone replay",
         "no comparative reader result is reported",
     ),
-    (9, 9): (
+    (10, 10): (
         "transfer to unseen mathematics and understanding by",
         "independent human readers are unresolved",
         "it is not a general incremental scheduler",
@@ -182,8 +187,10 @@ UNIFIED_SYSTEMS_FIRST_MINUTE = {
         "broad mathematical acceptance is exogenous to this repository and cannot be granted by its maintainer",
         "no new lean or comparator execution",
     ),
-    (10, 10): (
+    (11, 11): (
         "local integration commit rather than public main",
+    ),
+    (12, 12): (
         "source-binding validation does not replay lean, comparator or the full repository release checks",
     ),
 }

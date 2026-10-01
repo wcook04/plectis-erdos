@@ -77,6 +77,16 @@ mathematical proof sentence pattern. The [long guide](../../paper/exposition/wri
 illustrates this transfer using primary systems-writing and empirical-evaluation
 guidance; their criteria are scoped to those fields.
 
+For a laboratory-facing infrastructure paper, make the design the main subject:
+its purpose, components, interfaces, persistent state, division of responsibility,
+and the path from a task to a reviewed result. Choose the section order from
+systems literature and the implemented dependencies. Use a worked research case
+to explain those choices, with specialist proofs in a separate destination when
+needed. Checking a theorem in that example does not establish that the paper
+explains the architecture. Inspect diagrams for component boundaries, control
+and artifact movement, and legibility at the printed size. Bind each claim to
+the current implementation, a recorded observation or an explicit proposal.
+
 Write the sentence so its condition, object, comparator and conclusion can be
 checked against the evidence. Standard field terms are useful when their
 definitions match. A repeated stylistic template is not a substitute for the

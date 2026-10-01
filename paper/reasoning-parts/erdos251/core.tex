@@ -1165,16 +1165,24 @@ nonintegral.  In particular, the two small-difference conditions are certified f
 just one tail enclosure.
 \end{proposition}
 \begin{proof}
-The inequalities place the complete interval
-$[(sA-B)/Q,(sA+B)/Q]$ inside $(1/2,1)$.
-Thus $sD_{N+1}=2sD_N-2\in(-1,0)$, proving every assertion.
+Since $|s|=1$, the enclosure gives
+\[
+ \frac{sA-B}{Q}\le sD_N\le\frac{sA+B}{Q}.
+\]
+The first strict inequality says that the lower endpoint exceeds $1/2$;
+the second says that the upper endpoint is less than $1$.
+Thus $sD_N\in(1/2,1)$.  The recurrence and $\delta_N=2s$ now give
+$sD_{N+1}=2sD_N-2\in(-1,0)$.  Both intervals exclude integers, and
+the second also gives $|D_{N+1}|<1$.
 \end{proof}
 For $h=1,N=2$, the exact data already used above give
 $Q=2^{40}$, $A=-662838684750$, $B=11764181250$ and $s=-1$.
 The two positive integer margins are respectively
 $202637379224$ and $424908761776$.
-The second enclosure in Proposition~\ref{long251:res:finite-smallpair}
-remains a useful independent cross-check, not a logical necessity.
+Proposition~\ref{long251:res:finite-smallpair} encloses each difference
+separately.  Here the first enclosure and the exact gap difference give
+the second interval through the recurrence.  The second enclosure is
+therefore an independent cross-check, not a necessary input.
 
 \section{Two lower bounds on a possible rational denominator}\label{long251:sec:denominator-floor}
 
@@ -1516,13 +1524,21 @@ If $a$ has fixed-block nonconcentration, then so does $b$.
 No boundedness assumption on $a-b$ is needed.
 \end{proposition}
 \begin{proof}
-For fixed $k$ and a nonzero $F\in\Z[x_0,\ldots,x_k]$, a zero of
-$F(b_n,\ldots,b_{n+k})$ either is already a zero at the $a$-block or has
-$n+i\in S$ for some $0\le i\le k$.  Each fixed translate of a
-density-zero set has density zero, and a finite union retains that
-property.  This proves the assertion for each fixed $F$ and $k$.
-It gives no uniform estimate for polynomial families or lengths growing
-with $n$.
+Fix $k$ and a nonzero $F\in\Z[x_0,\ldots,x_k]$.  The two blocks agree
+unless $n+i\in S$ for some $0\le i\le k$.  Consequently
+\[
+ \begin{aligned}
+ &\bigl|\{n<N:F(b_n,\ldots,b_{n+k})=0\}\bigr|\\
+ &\quad\le\bigl|\{n<N:F(a_n,\ldots,a_{n+k})=0\}\bigr|
+       +\sum_{i=0}^k|S\cap[i,N+i)|.
+ \end{aligned}
+\]
+The first count is $o(N)$ by nonconcentration for $a$; the remaining
+finitely many counts are $o(N)$ because $S$ has density zero.
+Only the number of changed blocks enters, not the sizes of the
+corrections or of the polynomial values.  This proves the assertion
+for the already fixed sequence $b$ and every fixed $F,k$, without a
+uniform estimate for growing polynomial families or block lengths.
 \end{proof}
 
 \begin{samepage}

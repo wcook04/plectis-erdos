@@ -39,7 +39,7 @@ Throughout, $`\mathbb{N}=\{0,1,\ldots\}`$, intervals of indices contain integers
 For integers $`X,m\ge1`$, let $`\mu_{a,X,m}`$ denote the distribution of $`(a_n,\ldots,a_{n+m-1})`$ when $`n`$ is uniform on $`[X,2X)`$. Blocks are unnormalised and counted with multiplicity. We use $`d_{\rm TV}(\mu,\nu)=\sup_B|\mu(B)-\nu(B)|`$.
 
 <div id="res:sparserationalisation" class="proposition">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/d93e7408aed0b0c73ad5ea98116c7dc0dce3cf7b/evidence/erdos-251-prime-gap-dyadic-series.md#res-sparserationalisation">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d93e7408aed0b0c73ad5ea98116c7dc0dce3cf7b/evidence/erdos-251-prime-gap-dyadic-series.md#res-sparserationalisation-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/1865f2ba5def0ed9e85ebed53f4b6c7b3f6c053f/evidence/erdos-251-prime-gap-dyadic-series.md#res-sparserationalisation">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/1865f2ba5def0ed9e85ebed53f4b6c7b3f6c053f/evidence/erdos-251-prime-gap-dyadic-series.md#res-sparserationalisation-comparator">Comparator</a></p>
 
 **Proposition 1** (sparse changes preserving congruences). *Let $`a:\mathbb{N}\to\mathbb{N}`$ satisfy $`A=\sum_{n\ge0}a_n2^{-(n+1)}<\infty`$, let $`K\in\mathbb{N}`$, and let $`f:\mathbb{N}\to\mathbb{R}`$ tend to $`+\infty`$. There exist a set $`S\subseteq[K,\infty)`$ of upper Banach density zero and a nondegenerate interval $`I\subset(A,\infty)`$ such that, for every $`r\in I`$, there is an integer correction $`e:\mathbb{N}\to\mathbb{N}`$ satisfying
 ``` math
@@ -214,7 +214,7 @@ The coupling also applies to tests depending on the starting index. If their abs
 The elementary bound $`p_n\le1250(n+1)^4`$ suffices for convergence of the prime and gap series. We use the central-binomial argument of Erdős \[erdos1932, pp. 194–196\]; [Appendix A of the companion](../../../paper/251/erdos251-prime-gap-reasoning-surface.pdf#nameddest=prime-bound) derives this bound, including the prime-power estimate. This supplies the convergence hypothesis needed to apply Proposition <a href="#res:sparserationalisation" data-reference-type="ref" data-reference="res:sparserationalisation">1</a> to the prime gaps.
 
 <div id="res:jointcountermodel" class="corollary">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/d93e7408aed0b0c73ad5ea98116c7dc0dce3cf7b/evidence/erdos-251-prime-gap-dyadic-series.md#res-jointcountermodel">Lean†</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/1865f2ba5def0ed9e85ebed53f4b6c7b3f6c053f/evidence/erdos-251-prime-gap-dyadic-series.md#res-jointcountermodel">Lean†</a></p>
 
 **Corollary 2** (a rational sum with the stated prime-gap statistics). *Let $`p_0=2,p_1=3,\ldots`$ be the primes and $`g_n=p_{n+1}-p_n`$. Given $`K\in\mathbb{N}`$ and $`0<\varepsilon\le1`$, there is $`b:\mathbb{N}\to\mathbb{N}`$ with rational dyadic sum such that $`b_n=g_n`$ for $`n<K`$, $`b_n\ge g_n`$, and $`b_n-g_n\le(\log(n+3))^\varepsilon`$ eventually. For every fixed positive modulus, both the coefficients and the cumulative positions eventually retain their corresponding residues. The empirical distributions of unnormalised blocks have total variation distance tending to zero for lengths $`o(\log\log X)`$, and for every fixed nonzero $`F\in\mathbb{Z}[x_0,\ldots,x_k]`$,
 ``` math
@@ -234,7 +234,15 @@ Lean proves this for every $`\varepsilon>0`$, assuming Schlage-Puchta’s Lemma�
 
 <div class="proof">
 
-*Proof.* Since the gap series converges, we can apply Proposition <a href="#res:sparserationalisation" data-reference-type="ref" data-reference="res:sparserationalisation">1</a> to $`a=g`$. Choose a rational $`r`$ in its nondegenerate interval $`I`$ and put $`b=g+e`$. The proposition gives all the correction and congruence assertions, together with the comparison of growing blocks. Schlage-Puchta \[schlagepuchta2011, Lemma 4\] proved that the zero set of each fixed nonzero polynomial in a fixed block of prime gaps has density zero. Outside $`\bigcup_{i=0}^k(S-i)`$ the two blocks are equal, so a zero of $`F(b_n,\ldots,b_{n+k})`$ is already a zero for the original gaps. The additional exceptional set has density zero, being a finite union of translates of $`S`$. This proves the required count without estimating the values of $`F`$.
+*Proof.* Since the gap series converges, we can apply Proposition <a href="#res:sparserationalisation" data-reference-type="ref" data-reference="res:sparserationalisation">1</a> to $`a=g`$. Choose a rational $`r`$ in its nondegenerate interval $`I`$ and put $`b=g+e`$. The proposition gives all the correction and congruence assertions, together with the comparison of growing blocks. Fix $`k`$ and a nonzero $`F\in\mathbb{Z}[x_0,\ldots,x_k]`$. A new zero can occur only in a block meeting $`S`$, so
+``` math
+\begin{aligned}
+ &\bigl|\{n<N:F(b_n,\ldots,b_{n+k})=0\}\bigr|\\
+ &\quad\le\bigl|\{n<N:F(g_n,\ldots,g_{n+k})=0\}\bigr|
+       +\sum_{i=0}^k|S\cap[i,N+i)|.
+ \end{aligned}
+```
+The first count is $`o(N)`$ by Schlage-Puchta’s Lemma 4 \[schlagepuchta2011\]; the finitely many support counts are $`o(N)`$ because $`S`$ has density zero. Only changed blocks are counted, so the values of $`F`$ need not be bounded. Since $`b`$ was chosen before $`F,k`$, the same sequence satisfies every fixed-polynomial condition.
 
 To estimate $`P_n-p_n=\sum_{i<n}e_i`$, first observe that $`|S\cap[0,n)|=O_\varepsilon(n/\log\log n)`$. Indeed, the indices below $`\sqrt n`$ contribute at most $`\sqrt n`$ points, and on $`[\sqrt n,n)`$ we sum the dyadic support bounds, whose lengths add to $`O(n)`$ and whose $`\log\log X`$ are comparable to $`\log\log n`$. Multiplying by the pointwise correction bound gives the stated error. For $`0<\varepsilon\le1`$ this is $`o(n\log n)`$, so the prime number theorem \[mv2007, Chapter 6\] gives $`P_n\sim n\log n`$. Finally, summing nonnegative terms in the opposite order, we obtain
 ``` math
@@ -257,7 +265,7 @@ Land’s draft \[land2026, Theorem 2\] proves conditional irrationality under a
 We return to the actual primes and write $`G=\sum_{n\ge0}g_n2^{-(n+1)}`$. To use a recurrence for these sums, we must retain the endpoint in finite summation by parts and then show that it vanishes. The polynomial bound from Section <a href="#sec:prime-application" data-reference-type="ref" data-reference="sec:prime-application">3</a> supplies this limit and convergence of both series.
 
 <div id="res:infinite" class="theorem">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/d93e7408aed0b0c73ad5ea98116c7dc0dce3cf7b/evidence/erdos-251-prime-gap-dyadic-series.md#res-infinite">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d93e7408aed0b0c73ad5ea98116c7dc0dce3cf7b/evidence/erdos-251-prime-gap-dyadic-series.md#res-infinite-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/1865f2ba5def0ed9e85ebed53f4b6c7b3f6c053f/evidence/erdos-251-prime-gap-dyadic-series.md#res-infinite">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/1865f2ba5def0ed9e85ebed53f4b6c7b3f6c053f/evidence/erdos-251-prime-gap-dyadic-series.md#res-infinite-comparator">Comparator</a></p>
 
 **Theorem 3** (prime-to-gap identity). *The actual prime and gap series satisfy $`\Pi=2+G`$. Their complete tails
 ``` math
@@ -281,7 +289,7 @@ Since $`p_n=O((n+1)^4)`$, the endpoint tends to zero and we obtain $`\Pi=2+G`$. 
 Tao noted this reduction in the problem’s forum discussion \[erdosproblems251thread, 7 October 2025\].
 
 <div id="res:irr-equivalence" class="corollary">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/d93e7408aed0b0c73ad5ea98116c7dc0dce3cf7b/evidence/erdos-251-prime-gap-dyadic-series.md#res-irr-equivalence">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d93e7408aed0b0c73ad5ea98116c7dc0dce3cf7b/evidence/erdos-251-prime-gap-dyadic-series.md#res-irr-equivalence-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/1865f2ba5def0ed9e85ebed53f4b6c7b3f6c053f/evidence/erdos-251-prime-gap-dyadic-series.md#res-irr-equivalence">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/1865f2ba5def0ed9e85ebed53f4b6c7b3f6c053f/evidence/erdos-251-prime-gap-dyadic-series.md#res-irr-equivalence-comparator">Comparator</a></p>
 
 **Corollary 4** (exact irrationality reformulation). *The prime-value dyadic series is irrational if and only if the prime-gap dyadic series is. Both series converge by the polynomial bound proved above; neither side is proved irrational.*
 
@@ -296,7 +304,7 @@ Tao noted this reduction in the problem’s forum discussion \[erdosproblems251t
 The recurrence alone does not identify the infinite tails: adding $`C2^N`$ to any solution gives another solution. We distinguish the actual tails by the vanishing condition in the next lemma.
 
 <div id="res:true-tail" class="lemma">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos251/PaperCompleteR20/TrueTail.lean#L57">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d93e7408aed0b0c73ad5ea98116c7dc0dce3cf7b/evidence/erdos-251-prime-gap-dyadic-series.md#res-true-tail-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos251/PaperCompleteR20/TrueTail.lean#L57">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/1865f2ba5def0ed9e85ebed53f4b6c7b3f6c053f/evidence/erdos-251-prime-gap-dyadic-series.md#res-true-tail-comparator">Comparator</a></p>
 
 **Lemma 5** (the boundary condition for the tail recurrence). *Let $`\sum_{j\ge1}|a_j|2^{-j}<\infty`$ and $`U_{N+1}=2U_N-a_{N+1}`$. Then $`U_N=\sum_{j\ge1}a_{N+j}2^{-j}`$ for every $`N`$ if and only if $`2^{-N}U_N\to0`$.*
 
@@ -315,7 +323,7 @@ The recurrence alone does not identify the infinite tails: adding $`C2^N`$ to an
 For the recurrence $`U_{N+1}=2U_N-a_{N+1}`$ with $`a_n\in\mathbb{Z}`$, write $`D_h(N)=U_{N+h}-U_N`$. Modulo integers, each step is doubling: $`U_N`$ has the fractional part of $`2^NU_0`$. An integral shift means that a fractional part has returned to an earlier value. Such a return makes $`2^N(2^h-1)U_0`$ an integer and forces rationality when $`h>0`$. Conversely, doubling a rational number eventually gives periodic fractional parts. The next theorem records the denominator calculation and the exact quantifiers.
 
 <div id="res:escape-irrational" class="theorem">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/d93e7408aed0b0c73ad5ea98116c7dc0dce3cf7b/evidence/erdos-251-prime-gap-dyadic-series.md#res-escape-irrational">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d93e7408aed0b0c73ad5ea98116c7dc0dce3cf7b/evidence/erdos-251-prime-gap-dyadic-series.md#res-escape-irrational-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/1865f2ba5def0ed9e85ebed53f4b6c7b3f6c053f/evidence/erdos-251-prime-gap-dyadic-series.md#res-escape-irrational">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/1865f2ba5def0ed9e85ebed53f4b6c7b3f6c053f/evidence/erdos-251-prime-gap-dyadic-series.md#res-escape-irrational-comparator">Comparator</a></p>
 
 **Theorem 6** (exact rationality classification). *For a real integer-coefficient recurrence, the following are equivalent: $`U_0\in\mathbb{Q}`$; $`D_h(N)\in\mathbb{Z}`$ for some $`h\ge1,N\ge0`$; and, for some fixed $`h\ge1`$, $`D_h(N)\in\mathbb{Z}`$ at every sufficiently large $`N`$. More precisely, if $`U_0=u/(2^sd)`$ is in lowest terms, with $`d`$ odd, then
 ``` math
@@ -347,7 +355,7 @@ The theorem applies to the recurrence itself, without the boundary condition of 
 Fix $`h\ge1`$ and put $`D_N=T_{N+h}-T_N`$ and $`\delta_N=g_{N+h+1}-g_{N+1}`$. Then $`D_{N+1}=2D_N-\delta_N`$, where $`\delta_N`$ is even. Two differences of absolute value less than one can both be integral only if they vanish, in which case $`\delta_N=0`$. More precisely, we have the following result.
 
 <div id="res:signedwindow" class="proposition">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/d93e7408aed0b0c73ad5ea98116c7dc0dce3cf7b/evidence/erdos-251-prime-gap-dyadic-series.md#res-signedwindow">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d93e7408aed0b0c73ad5ea98116c7dc0dce3cf7b/evidence/erdos-251-prime-gap-dyadic-series.md#res-signedwindow-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/1865f2ba5def0ed9e85ebed53f4b6c7b3f6c053f/evidence/erdos-251-prime-gap-dyadic-series.md#res-signedwindow">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/1865f2ba5def0ed9e85ebed53f4b6c7b3f6c053f/evidence/erdos-251-prime-gap-dyadic-series.md#res-signedwindow-comparator">Comparator</a></p>
 
 **Proposition 7** (two consecutive differences of absolute value less than one). *Let $`D,D'\in\mathbb{R}`$, $`\delta\in2\mathbb{Z}`$ and $`D'=2D-\delta`$. The conditions $`|D|<1`$, $`|D'|<1`$ and $`\delta\ne0`$ hold exactly when, for some $`s\in\{-1,1\}`$,
 ``` math
@@ -392,7 +400,7 @@ S_{h,N,L}=\sum_{j=1}^L(g_{N+h+j}-g_{N+j})2^{-j},\qquad
 Then $`|D_N-S_{h,N,L}|\le R_{h,N,L}(M)`$. A general real majorant need not give an effective remainder bound, but the polynomial choice below does.
 
 <div id="res:truncation" class="proposition">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos251/PaperTailBoundsR7.lean#L273">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d93e7408aed0b0c73ad5ea98116c7dc0dce3cf7b/evidence/erdos-251-prime-gap-dyadic-series.md#res-truncation-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos251/PaperTailBoundsR7.lean#L273">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/1865f2ba5def0ed9e85ebed53f4b6c7b3f6c053f/evidence/erdos-251-prime-gap-dyadic-series.md#res-truncation-comparator">Comparator</a></p>
 
 **Proposition 9** (finite separation criterion). *If for every $`h\ge1`$ and every cutoff $`N_0`$ there are $`N\ge N_0,L\ge1`$ with
 ``` math
@@ -423,11 +431,11 @@ We obtain a computable bound by taking $`M(n)=1250(n+2)^4`$. For $`P(x)=x^4+8x^3
 R_{h,N,L}(M)=1250\,2^{-L}
              \bigl(P(N+h+L+2)+P(N+L+2)\bigr).
 ```
-To certify the conditions in <a href="#eq:smallpair" data-reference-type="eqref" data-reference="eq:smallpair">[eq:smallpair]</a>, suppose $`\delta_N=2s`$, where $`s\in\{-1,1\}`$, and $`|QD_N-A|\le B`$, with $`A\in\mathbb{Z}`$, $`Q>0`$, $`B\ge0`$ integers. Then $`sD_N`$ lies in $`[(sA-B)/Q,(sA+B)/Q]`$. This whole interval lies in $`(1/2,1)`$ precisely when its lower endpoint exceeds $`1/2`$ and its upper endpoint is less than $`1`$, that is,
+Separation from $`\mathbb{Z}`$ does not specify either interval in Proposition <a href="#res:signedwindow" data-reference-type="ref" data-reference="res:signedwindow">7</a>. To certify <a href="#eq:smallpair" data-reference-type="eqref" data-reference="eq:smallpair">[eq:smallpair]</a>, suppose $`\delta_N=2s`$, where $`s\in\{-1,1\}`$, and $`|QD_N-A|\le B`$, with $`A\in\mathbb{Z}`$, $`Q>0`$, $`B\ge0`$ integers. Then $`sD_N`$ lies in $`[(sA-B)/Q,(sA+B)/Q]`$. This whole interval lies in $`(1/2,1)`$ precisely when its lower endpoint exceeds $`1/2`$ and its upper endpoint is less than $`1`$, that is,
 ``` math
 2sA-Q>2B,\qquad Q-sA>B.
 ```
-The numerator $`A`$ is signed: multiplying the enclosure by $`s`$ accounts for the direction of the gap difference. At $`h=1,N=2,L=40`$, one has $`\delta_2=g_4-g_3=-2`$ and
+Reducing $`A`$ modulo $`Q`$ would preserve its distance to $`Q\mathbb{Z}`$ but lose the enclosure’s location. We retain the signed numerator and use the sign $`s`$ fixed by the gap difference. At $`h=1,N=2,L=40`$, one has $`\delta_2=g_4-g_3=-2`$ and
 ``` math
 Q=2^{40},\qquad A=-662838684750,\qquad B=11764181250,\qquad s=-1.
 ```
@@ -459,7 +467,7 @@ Its coefficients are unbounded and its first coefficient is $`-1`$. We obtain a 
 The coefficients increase strictly and $`c_{n+1}-c_n=4n+10`$ is never $`\pm2`$. The [companion’s Section 8](../../../paper/251/erdos251-prime-gap-reasoning-surface.pdf#nameddest=counterexamples) gives further examples, including a bounded nonperiodic sequence in Appendix D. None of these examples constructs consecutive primes.
 
 <div id="res:gap-nonperiodic" class="proposition">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos251/PaperCoreR7.lean#L175">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d93e7408aed0b0c73ad5ea98116c7dc0dce3cf7b/evidence/erdos-251-prime-gap-dyadic-series.md#res-gap-nonperiodic-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos251/PaperCoreR7.lean#L175">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/1865f2ba5def0ed9e85ebed53f4b6c7b3f6c053f/evidence/erdos-251-prime-gap-dyadic-series.md#res-gap-nonperiodic-comparator">Comparator</a></p>
 
 **Proposition 10** (prime gaps do not become periodic). *For every positive $`h`$, the actual consecutive-prime-gap sequence is not eventually periodic with period $`h`$.*
 
@@ -477,7 +485,7 @@ The results on bounded prime gaps \[zhang2014\], clusters of each fixed size \[m
 
 # Sources and further comparisons
 
-*Formal proofs.* A result with a kernel-checked Lean proof carries links beside its heading and in the margin; both open the same evidence. *Lean* opens the proof: the declaration itself when one declaration states the whole result, otherwise the list of declarations that together state it. Inline citations to individual declarations elsewhere may identify ingredients of a proof. *Comparator* opens the recorded comparison, in which the same statement, written again from Mathlib alone in a separate repository, was compared with our proof by Lean’s Comparator tool, allowing only the three standard axioms. *Comparator pending* means that the complete statement has no recorded comparison yet. A dagger on the Lean mark means that the Lean proof assumes an input named just below the result. A result without a mark has no Lean proof of its whole statement; what is checked is said below it. The [evidence record](https://github.com/wcook04/plectis-erdos/blob/d93e7408aed0b0c73ad5ea98116c7dc0dce3cf7b/evidence/erdos-251-prime-gap-dyadic-series.md) gives every declaration, version and check. Comparator checks statements, axioms and kernel acceptance; it does not establish novelty or peer review. These checks show that the stated propositions are proved; whether they are the right propositions is a question the reader can settle by comparing them with the text.
+*Formal proofs.* A result with a kernel-checked Lean proof carries links beside its heading. *Lean* opens the proof: the declaration itself when one declaration states the whole result, otherwise the list of declarations that together state it. Inline citations to individual declarations elsewhere may identify ingredients of a proof. *Comparator* opens the recorded comparison, in which the same statement, written again from Mathlib alone in a separate repository, was compared with our proof by Lean’s Comparator tool, allowing only the three standard axioms. *Comparator pending* means that the complete statement has no recorded comparison yet. A dagger on the Lean mark means that the Lean proof assumes an input named just below the result. A result without a mark has no Lean proof of its whole statement; what is checked is said below it. The [evidence record](https://github.com/wcook04/plectis-erdos/blob/1865f2ba5def0ed9e85ebed53f4b6c7b3f6c053f/evidence/erdos-251-prime-gap-dyadic-series.md) gives every declaration, version and check. Comparator checks statements, axioms and kernel acceptance; it does not establish novelty or peer review. These checks show that the stated propositions are proved; whether they are the right propositions is a question the reader can settle by comparing them with the text.
 
 The linked Lean declarations use Lean 4 \[lean4\] and mathlib \[mathlib\]. The formal proof of Proposition <a href="#res:sparserationalisation" data-reference-type="ref" data-reference="res:sparserationalisation">1</a> changes one coordinate at each stage, whereas the proof here uses triples. Both choose the set containing the supports, the interval and the congruence cutoffs before the value of the sum. For Corollary <a href="#res:jointcountermodel" data-reference-type="ref" data-reference="res:jointcountermodel">2</a>, the formal statement covers every $`\varepsilon>0`$ and assumes Schlage-Puchta’s lemma only for nonconcentration and the prime number theorem only for the asymptotic $`P_n\sim n\log n`$. The source links record formal support for the linked statements, rather than verification of the different printed proofs. The [companion’s Appendix G](../../../paper/251/erdos251-prime-gap-reasoning-surface.pdf#nameddest=short-source-index) retains the complete source index at this note’s original pin, including the finite telescoping identities and their nonperiodicity consequences. Its [Section 3](../../../paper/251/erdos251-prime-gap-reasoning-surface.pdf#nameddest=context) retains the broader subsum and automatic-sequence comparisons.
 

@@ -150,8 +150,8 @@ $w$. Consequently $p^{-1}(J)\cap U\subset B(c,r_0)$.
 
 For $r_0<t<|a-c|$, the set $U_1\cap\{|z-c|>t\}$ has relative boundary
 in $U$ contained in the circle $|z-c|=t$. If that circle missed $K\cap U_1$,
-its intersection with $K$ would be a nonempty proper subset both open and
-closed in $K$, a contradiction. Thus the radial map $z\mapsto|z-c|$ sends
+then $K\cap U_1\cap\{|z-c|>t\}$ would be both open and closed in $K$.
+It contains $a$ and excludes $b$, contradicting connectedness. Thus the radial map $z\mapsto|z-c|$ sends
 $K\cap U_1$ onto a set containing $(r_0,|a-c|)$ whenever that interval is
 nonempty. This map is $1$-Lipschitz, so
 \[
@@ -347,10 +347,11 @@ Consequently
 \subsection{The two roots in the component}\label{subsec:counterexample-connections}
 
 The local estimates identify a critical point, but we still have to
-find the two roots in its component. We join $b_3$ and $b_6$ to $c_s$
-using four segments followed by radial pieces. The following ordinary
-argument supplies that identification directly; the Lean source uses
-barriers. Put
+find the two roots in its component. The connections from $c_s$ to
+$b_3,b_6$ use a small disc and four segments near the critical point,
+short segments to the root directions, and radial segments out to the
+roots. The following ordinary argument identifies the component
+directly; the Lean source uses barriers. Put
 \begin{align*}
  \operatorname{Re}w_q={}&\frac{39226583259917038484346953200647}{10^{40}},\\
  \operatorname{Im}w_q={}&\frac{8232474661944848953672917849472800078083}{10^{40}},\\
@@ -395,6 +396,9 @@ sampling between endpoints is involved. The same Taylor test at $w_q$,
 with radius $10^{-8}$, gives one zero of $Q'$ in that disc and
 $\mathscr H_0>3556874/10^{12}$ throughout it. The disc is contained in
 $|w-v_2|<10^{-6}$, so this zero is $w_s$.
+For each $j=3,6$, we can therefore follow the segments from $w_s$ to
+$w_q$, then to $x_j$ and $m_j$, staying where $\mathscr H_0>0$.
+It remains to connect $m_j$ to the corresponding root.
 
 For the remaining segments no large polynomial expansion is needed.
 The Cayley intervals give
@@ -1927,8 +1931,9 @@ first integral and comparing the continuous densities therefore yields
  \sum_{B(\zeta)=w}\frac1{|B'(\zeta)|}
  =\frac{1-|B(0)|^2}{|w-B(0)|^2}\qquad(|w|=1).
 \]
-In particular each boundary fibre consists of $m$ distinct points. Choosing
-$w=-B(0)/|B(0)|$ yields
+In particular each boundary fibre consists of $m$ distinct points.
+The Poisson kernel on the right is smallest at the boundary point
+opposite $B(0)$. Choosing $w=-B(0)/|B(0)|$ therefore yields
 \[
  \frac mn<\frac{1-|B(0)|}{1+|B(0)|},
  \qquad |B(0)|<\frac{n-m}{n+m}=\frac{k}{2n-k}.
@@ -2882,10 +2887,9 @@ exists without an additional hypothesis. A zero quotient root instead
 gives a root of multiplicity at least $q$ at $h$ and hence a constant
 path between two occurrences. The formal source checks the
 factorization, radial-segment estimate and finite length inequality.
-It does not establish the existence of a suitable quotient root or
-formalise the selection and lifting just described. The available formal statements cover the segment inequality and
-finite length calculation. They do not include the complete path
-construction or unrestricted Erd\H{o}s~\#1041.
+It does not establish the existence of a suitable quotient root,
+formalise the selection and lifting just described, or prove
+unrestricted Erd\H{o}s~\#1041.
 
 The radial-segment identity and strict bound are formalised in
 \lword{Erdos1041/CyclicTrinomialFiberCase.lean}{46}{trinomialRoot_spoke_factorization}{cancellation along a trinomial root segment}
