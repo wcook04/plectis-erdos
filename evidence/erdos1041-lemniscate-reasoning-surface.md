@@ -1571,7 +1571,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 > ``` math
 > f(z)=P((z-h)^q).
 > ```
-> If every zero of $`f`$ lies in the open unit disc and $`f`$ has at least two distinct zero values, then two zeros are joined through $`h`$ by a two-segment path of length below $`2`$ inside $`\{|f|<1\}`$. Equivalently this closes the coefficient family
+> If every zero of $`f`$ lies in the open unit disc and $`f`$ has at least two distinct zero values, then two zeros are joined through $`h`$ by a two-segment path of length below $`2`$ inside $`\{|f|<1\}`$. Equivalently, under the same hypotheses the conclusion holds for polynomials of the form
 > ``` math
 > (z-h)^{3q}+A(z-h)^{2q}+B(z-h)^q+C
 > ```
@@ -2019,7 +2019,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 ## Proposition 10.7 (two counterexamples to straight-path assertions), page 56
 
-> *There is a monic quintic with all roots in the open unit disc and a non-root critical point $`c`$ whose unique nearest root has a point on the straight spoke to $`c`$ outside $`\{|f|<1\}`$. There is also a monic cubic with all roots in the open unit disc such that the midpoint of every pair of distinct roots lies outside $`\{|f|<1\}`$.*
+> *There is a monic quintic with all roots in the open unit disc and a non-root critical point $`c`$ whose unique nearest root has a point on the straight segment to $`c`$ outside $`\{|f|<1\}`$. There is also a monic cubic with all roots in the open unit disc such that the midpoint of every pair of distinct roots lies outside $`\{|f|<1\}`$.*
 
 The Lean declaration below states this result.
 

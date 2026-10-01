@@ -1541,11 +1541,11 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 > *The sufficient conditions do not form a single linear chain. The proved implications are
 > ``` math
 > \begin{aligned}
->  \text{guarded odd-prefix band}
->  &\ \Longleftrightarrow\ \text{guarded centred-magnitude bound},\\
->  \text{guarded centred-magnitude bound}
->  &\ \Longrightarrow\ \text{flexible centred-magnitude bound},\\
->  \text{flexible centred-magnitude bound}
+>  \text{odd-prefix interval at the prescribed depth}
+>  &\ \Longleftrightarrow\ \text{centred-residue bound at the prescribed depth},\\
+>  \text{centred-residue bound at the prescribed depth}
+>  &\ \Longrightarrow\ \text{centred-residue bound at a variable depth},\\
+>  \text{centred-residue bound at a variable depth}
 >  &\ \Longrightarrow\ \text{adjacent-suffix band}
 >    \ \Longrightarrow\ \text{upper-endpoint test}.
 >  \end{aligned}

@@ -6,7 +6,7 @@ Part of the [evidence record](../erdos249-totient-reasoning-surface.md) of the p
 
 ## Proposition 10.1 (A rational series preserving totient parity and the stated separation properties), page 101
 
-> *There exists $`c:\mathbb N\to\mathbb N`$ such that: $`c(n)\le6`$ for all $`n`$; $`c(n)\le n`$; $`c(n)\equiv\varphi(n)\pmod2`$ for every $`n`$; for every $`N,G,K`$ there is a block of $`K`$ explicit $`(6,0)`$ carry-pulse pairs beyond $`N`$, each pair separated by more than $`G`$; and $`\sum_n c(n)/2^n = 3/2`$.*
+> *There exists $`c:\mathbb N\to\mathbb N`$ such that: $`c(n)\le6`$ for all $`n`$; $`c(n)\le n`$; $`c(n)\equiv\varphi(n)\pmod2`$ for every $`n`$; for every $`N,G,K`$ there are $`K`$ pairs of coefficients $`(6,0)`$ starting beyond $`N`$, with starting positions separated by more than $`G`$; and $`\sum_n c(n)/2^n = 3/2`$.*
 
 The Lean declarations below together state this result.
 
@@ -353,7 +353,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long249-cor-signed-observations"></a>
 
-## Passage (beginning “long249:cor:signed-observations…”), page 117
+## Passage (beginning “long249:cor:signed-observations…”), page 118
 
 > *Remark 274* (Observations that do not determine irrationality). The following data, taken together, do not determine whether $`F_b(\beta^{-1})`$ is rational: the fixed prefix and odd coefficients; every fixed eventual coefficient and cumulative congruence; the block laws on scales $`o(\ell(X))`$; fixed progression moments modulo eventual integer constants outside $`H`$; progression Dirichlet functions modulo entire functions; and radial germs at all roots of unity modulo smooth functions with Taylor coefficients in $`\mathbb{Z}[\zeta]`$. This remains true with exact equality of the first $`P`$ moment degrees and first $`P`$ radial Taylor coefficients at moduli and root orders at most $`P`$.
 
@@ -361,7 +361,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long249-prop-signed-first-harmonic"></a>
 
-## Passage (beginning “long249:prop:signed-first-harmonic…”), page 118
+## Passage (beginning “long249:prop:signed-first-harmonic…”), page 119
 
 > *Remark 275* (The first-harmonic test on the rational members). Let $`b(n)`$ be integers with $`0\le b(n)\le n`$ and $`F_b(1/2)=u/(2^cv)`$, where $`c\ge0`$ and $`v`$ is odd and positive. Choose $`h\ge1`$ with $`v\mid2^h-1`$. If $`X\ge\max(c,1)`$ and $`16(2X+h+L+2)\le2^L`$, then for every integer $`N\in[X,2X)`$,
 > ``` math

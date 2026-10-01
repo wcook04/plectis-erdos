@@ -6,7 +6,7 @@ Part of the [evidence record](../erdos249-totient-reasoning-surface.md) of the p
 
 ## Theorem 9.4 (A real-part bound gives a certificate), page 89
 
-> *For all $`h,X,L`$ with $`0<X`$ and the room condition $`16(2X{+}h{+}L{+}2)\le 2^L`$, if
+> *For all $`h,X,L`$ with $`0<X`$ and the size condition $`16(2X{+}h{+}L{+}2)\le 2^L`$, if
 > ``` math
 > \sum_{N=X}^{2X-1} \operatorname{Re}E(h,N,L) \;\le\; \tfrac{9}{10}\,X ,
 > ```
@@ -52,7 +52,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 ## Theorem 9.5 (The same implication for a nonempty subset), page 89
 
-> *For any nonempty finite $`T\subseteq\mathbb N`$ with $`T\subset[0,2X)`$ and the same room condition, if
+> *For any nonempty finite $`T\subseteq\mathbb N`$ with $`T\subset[0,2X)`$ and the same size condition, if
 > ``` math
 > \sum_{N\in T} \operatorname{Re}E(h,N,L) \;\le\; \tfrac{9}{10}\,|T| ,
 > ```
@@ -226,7 +226,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 ## Theorem 9.12 (The proved implications), page 91
 
-> *For every $`a\ge 8`$ and every $`J,K,m`$ inside the sign corridor ($`J{+}K{+}(a{+}6) < 2\cdot 2^a`$), a one-sided residue gap at precision $`m\le K`$ (room $`2H{+}J{+}K{+}2 < 2^m`$ and $`D(H,H+J,K)\bmod 2^m \le 2^m - (2H{+}J{+}K{+}2)`$) already forces $`{R}(2H{+}J) - {R}(H{+}J)\notin\mathbb Z`$. No lower margin at all is demanded. The proof chain is complete: the theorem holds for every $`a\ge 8`$, and *$`\text{cofinal upper-endpoint condition}`$ $`\Rightarrow`$ Irrational $`S`$* is proved.*
+> *For every $`a\ge 8`$ and every $`J,K,m`$ inside the sign corridor ($`J{+}K{+}(a{+}6) < 2\cdot 2^a`$), a one-sided residue gap at precision $`m\le K`$ (size condition $`2H{+}J{+}K{+}2 < 2^m`$ and $`D(H,H+J,K)\bmod 2^m \le 2^m - (2H{+}J{+}K{+}2)`$) already forces $`{R}(2H{+}J) - {R}(H{+}J)\notin\mathbb Z`$. No lower margin at all is demanded. The proof chain is complete: the theorem holds for every $`a\ge 8`$, and *$`\text{cofinal upper-endpoint condition}`$ $`\Rightarrow`$ Irrational $`S`$* is proved.*
 
 The Lean declarations below together state this result.
 
@@ -298,19 +298,19 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 >     ```
 >     (a two-sided band on the adjacent-suffix residue directly, one candidate depth $`m`$).*
 >
-> 2.  **Guarded odd-prefix band*: at the odd guarded depth $`2q{+}1`$, a two-sided band of half-width $`H{+}q{+}2`$ on the half-word residue modulo $`4^q`$. The depth is fixed by the stated guard; it cannot be chosen independently of $`a`$.*
+> 2.  **Odd-prefix interval at the prescribed depth*: at the prescribed odd depth $`2q{+}1`$, a two-sided band of half-width $`H{+}q{+}2`$ on the half-word residue modulo $`4^q`$. The depth is fixed by $`q=q_a`$; it cannot be chosen independently of $`a`$.*
 >
-> 3.  **Guarded centred-magnitude bound*, *proved equivalent* to the previous one:
+> 3.  **Centred-residue bound at the prescribed depth*, *proved equivalent* to the previous one:
 >     ``` math
 >     \forall a_0\ \exists a,q,\ \max(14,a_0)\le a \wedge q=q_a
 >           \wedge H{+}q{+}2 \le |u_{a,q}| .
 >     ```*
 >
-> 4.  **Flexible centred-magnitude bound*: the same magnitude bound with the depth restriction relaxed from “canonical guarded” to any odd $`2q{+}1`$ satisfying the half-cell fit $`2(H{+}q{+}2)\le 4^q`$ and the sign-corridor room $`2q{+}2{+}(a{+}6)<2\cdot 2^a`$.*
+> 4.  **Centred-residue bound at a variable depth*: the same magnitude bound with the depth restriction relaxed from the prescribed value $`q=q_a`$ to any odd $`2q{+}1`$ satisfying the half-cell fit $`2(H{+}q{+}2)\le 4^q`$ and the positivity range $`2q{+}2{+}(a{+}6)<2\cdot 2^a`$.*
 >
 > 5.  **Terminal dominance*: under the same bounds as item 4, $`\delta_{2^a}(2q+2)\le2u_{a,q}`$. This is a different one-sided comparison, treated immediately below.*
 >
-> *For the first four conditions, the relevant implications into the upper-endpoint condition are as follows: adjacent-suffix band $`\to`$ upper-endpoint condition; guarded odd-prefix band $`\to`$ adjacent-suffix band; guarded centred-magnitude bound $`\Leftrightarrow`$ guarded odd-prefix band; flexible centred-magnitude bound $`\to`$ adjacent-suffix band; guarded centred-magnitude bound $`\to`$ flexible centred-magnitude bound.*
+> *For the first four conditions, the relevant implications into the upper-endpoint condition are as follows: adjacent-suffix band $`\to`$ upper-endpoint condition; odd-prefix interval at the prescribed depth $`\to`$ adjacent-suffix band; centred-residue bound at the prescribed depth $`\Leftrightarrow`$ odd-prefix interval at the prescribed depth; centred-residue bound at a variable depth $`\to`$ adjacent-suffix band; centred-residue bound at the prescribed depth $`\to`$ centred-residue bound at a variable depth.*
 
 The Lean declarations below together state this result.
 
@@ -1645,7 +1645,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 ## Proposition 9.50 (An additional hypothesis for a totient-specific rank argument), page 100
 
-> *A rank bound that contradicts the lower bound $`2^e-1`$ would have to use additional arithmetic of the actual totient coefficients. The generic proposal that every rational coefficient series has bounded tempered-carry rank is ruled out by the rational control recorded in the short paper: its carry rank is at least $`2^e-1`$ at every level. It is therefore not a remaining general lemma from which totient irrationality follows. The conditional Proposition 1.7 records eventual periodicity modulo $`v`$ together with unbounded rational rank. Periodicity of the residue sequences concerns values in a finite quotient; it does not bound the rational span of the integer-valued sections. The $`5/4`$ comparison shows that this distinction persists for a rational coefficient series.*
+> *A rank bound that contradicts the lower bound $`2^e-1`$ would have to use additional arithmetic of the actual totient coefficients. The generic proposal that rationality bounds the rank of every integral carry satisfying $`u(n)/2^n\to0`$ is disproved by the comparison sequence recorded in the short paper: its carry rank is at least $`2^e-1`$ at every level. It is therefore not a remaining general lemma from which totient irrationality follows. The conditional Proposition 1.7 records eventual periodicity modulo $`v`$ together with unbounded rational rank. Periodicity of the residue sequences concerns values in a finite quotient; it does not bound the rational span of the integer-valued sections. The $`5/4`$ comparison shows that this distinction persists for a rational coefficient series.*
 
 The Lean declarations below together state this result or one that implies it. For the rational $5/4$ comparison the Lean statement gives the eventual periodicity modulo $v$ explicitly, with period $2$ from index $2$ on every dyadic section, together with rank at least $2^e-1$ at every level $e$ and $0\le c(n)\le n$; the conditional totient statement (rationality of $S$ gives a tempered orbit with eventual periodicity modulo $v$ and rank at least $2^e-1$ at every level) is as printed.
 

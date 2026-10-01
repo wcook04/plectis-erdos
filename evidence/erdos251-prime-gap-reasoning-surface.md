@@ -663,7 +663,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 > ``` math
 > 2sA-Q>2B,\qquad Q-sA>B,
 > ```
-> then $`1/2<sD_N<1`$, $`|D_{N+1}|<1`$, and both $`D_N,D_{N+1}`$ are nonintegral. In particular the adjacent small-shift obstruction is certified from just one tail enclosure.*
+> then $`1/2<sD_N<1`$, $`|D_{N+1}|<1`$, and both $`D_N,D_{N+1}`$ are nonintegral. In particular, the two small-difference conditions are certified from just one tail enclosure.*
 
 The Lean declaration below states this result.
 
@@ -805,7 +805,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long251-res-nonconcentration"></a>
 
-## Theorem 8.3 (nonconcentration is perturbation-stable), page 22
+## Theorem 8.3 (nonconcentration is perturbation-stable), page 23
 
 > *Let $`a:\mathbb{N}\to\mathbb{Z}`$ have fixed-block nonconcentration, let $`E\subset\mathbb{Z}`$ be finite, and let $`b_n=a_n+e_n`$ with $`e_n\in E`$ for every $`n`$. Then $`b`$ has fixed-block nonconcentration.*
 
@@ -923,7 +923,7 @@ def SchlagePuchtaLemma4 : Prop :=
 
 <a id="long251-res-sparse-nonconcentration"></a>
 
-## Proposition 8.5 (nonconcentration under sparse changes), page 23
+## Proposition 8.5 (nonconcentration under sparse changes), page 24
 
 > *Let $`a,b:\mathbb{N}\to\mathbb{Z}`$ agree off a set $`S`$ of ordinary density zero. If $`a`$ has fixed-block nonconcentration, then so does $`b`$. No boundedness assumption on $`a-b`$ is needed.*
 
@@ -1129,7 +1129,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long251-res-polynomialcountermodel"></a>
 
-## Proposition 8.9 (a quadratic sequence with integral tails), page 28
+## Proposition 8.9 (a quadratic sequence with integral tails), page 29
 
 > *Put $`c_n=2(n^2+4n+2)`$ and $`U_n=2(n+4)^2`$. Then $`c_n`$ is positive, even and strictly increasing, $`U_{n+1}=2U_n-c_{n+1}`$, every shift $`U_{N+h}-U_N`$ is integral, $`c_{n+1}-c_n=4n+10`$ is never $`\pm2`$, and
 > ``` math
@@ -1218,7 +1218,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long251-xr-propagate"></a>
 
-## Proposition D.2 (propagation), page 35
+## Proposition D.2 (propagation), page 36
 
 > *Let $`T:\mathbb{N}\to\mathbb{R}`$ satisfy $`T_{n+1}=2T_n-a_{n+1}`$ with integer coefficients, and define $`\sigma_h(N)=T_{N+h}-T_N`$. For fixed $`h,N\ge0`$, if $`\sigma_h(N)`$ is an integer, then $`\sigma_h(N+k)`$ is an integer for every $`k\ge0`$.*
 
@@ -1288,7 +1288,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long251-res-complete-truncation"></a>
 
-## Proposition D.4 (completeness of finite separation), page 36
+## Proposition D.4 (completeness of finite separation), page 37
 
 > *Suppose $`D\in\mathbb{R}`$, $`S_L\in\mathbb{R}`$ and $`R_L\ge0`$ satisfy $`|D-S_L|\le R_L`$ and $`R_L\to0`$. Then
 > ``` math

@@ -65,7 +65,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 > X_{a+1}=b_aX_a-m_a,\qquad
 >  0<X_a\le\frac{8640}{343}(a+1)^2<90(a+1)^2.
 > ```
-> For every integer $`B\ge1`$, either some $`BX_a`$ is integral and all later states are integral, or $`\operatorname{dist}(BX_a,\mathbb Z)\ge1/31`$ at arbitrarily large indices.*
+> For every integer $`B\ge1`$, either $`BX_a`$ is integral at some index (and hence at every later index), or $`\operatorname{dist}(BX_a,\mathbb Z)\ge1/31`$ at arbitrarily large indices.*
 
 The Lean declaration below states this result or one that implies it. The dichotomy is proved for every integer $B$, and the printed statement takes $B\ge1$; convergence of $S$ and $T_a$, the recurrence and the bounds $0<X_a\le\frac{8640}{343}(a+1)^2<90(a+1)^2$ are stated as printed. In the recurrence $b_a$ and $m_a$ enter through closed forms that `threePrimeHeight_dyadicBlock_succ` and `literalForcing235_eq_digit` identify with $\hgt(2^{a+1})/\hgt(2^a)$ and the printed sum defining $m_a$.
 
@@ -409,7 +409,7 @@ def BugeaudLaurentTranscendence : Prop :=
 
 ## Proposition A.1 (the running least common multiple), page 10
 
-> *Let $`p,q,r`$ be pairwise distinct primes and $`x\ge1`$. Then the running LCM equals the three-prime height: $`\operatorname{L}(x)=\operatorname{H}(x)`$.*
+> *Let $`p,q,r`$ be pairwise distinct primes and $`x\ge1`$. Then the running least common multiple is given by $`\operatorname{L}(x)=\operatorname{H}(x)`$.*
 
 The Lean declaration below states this result or one that implies it. The Lean statement has the same hypotheses and conclusion as the printed one.
 
@@ -435,7 +435,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="res-cell"></a>
 
-## Proposition A.2 (cells and jumps), page 10
+## Proposition A.2 (cells and jumps), page 11
 
 > *The running LCM is constant when the three integer logarithms are constant. A jump in exactly one logarithm multiplies it by the corresponding prime. The first $`n`$ positive powers of each prime, together with $`1`$, form $`3n+1`$ distinct points.*
 
@@ -517,7 +517,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="res-fibre-prop"></a>
 
-## Proposition A.3 (grouping terms with the same running LCM), page 10
+## Proposition A.3 (grouping terms with the same running LCM), page 11
 
 > *For a finite exponent box $`\mathcal B`$, set $`F(H)=\{(i,j,k)\in\mathcal B:\operatorname{H}(p^iq^jr^k)=H\}`$. Then
 > ``` math
@@ -622,7 +622,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="res-finite-cut-rank"></a>
 
-## Proposition B.4 (rank of a matrix of threshold columns), page 12
+## Proposition B.4 (rank of a matrix of threshold columns), page 13
 
 > *Let $`m\ge1`$ and let $`c`$ lie in a field with $`c\ne 0,1`$. For $`0\le k\le m`$ write $`v_k`$ for the length-$`m`$ column with a $`1`$ in each of the first $`k`$ coordinates and $`c`$ thereafter. A matrix whose distinct columns are $`v_k`$ for $`k`$ in a nonempty set $`E`$ has rank $`|E|-\mathbf 1_{\{0,m\}\subseteq E}`$.*
 

@@ -234,7 +234,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 > ``` math
 > \sum_{(i,j,k)\in\mathcal B}\operatorname{K}(i,j,k)=\sum_{H}\#F(H)/H,
 > ```
-> the outer sum ranging over the heights attained on $`\mathcal B`$.*
+> the outer sum ranging over the running LCMs attained on $`\mathcal B`$.*
 
 The Lean declaration below states this result.
 
@@ -328,7 +328,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 ## Passage (beginning “long269:res:distinct-height-all…”), page 10
 
-> *Remark 9* (the distinct-height sums). For every finite set $`P`$ of primes with $`|P|\ge2`$, the sum $`\mathcal D_P`$ is irrational.
+> *Remark 9* (the sums over distinct running LCMs). For every finite set $`P`$ of primes with $`|P|\ge2`$, the sum $`\mathcal D_P`$ is irrational.
 
 **No Lean proof of the whole statement.** In Lean, ordinary proof, checked step by step by a second, independent AI agent within the project on 26 September 2026, no human review; not formalised: a Lean proof would need Kronecker's theorem on the closure of a line in a torus (density of the forward orbit in the subtorus it generates) and the Euler-characteristic count for line arrangements on a two-dimensional subtorus.
 
@@ -389,7 +389,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long269-res-distinct-height-criterion"></a>
 
-## Passage (beginning “long269:res:distinct-height-criterion…”), page 16
+## Passage (beginning “long269:res:distinct-height-criterion…”), page 17
 
 > *Remark 15* (a decoding criterion). Let $`P`$ be a finite set of at least two primes, and for every state $`s`$ let $`J(s)`$ be a closed interval containing the values of all infinite paths from $`s`$. For $`k\ge1`$ and each type $`\tau`$, let $`U_\tau`$ be the union of the intervals $`G_{u_1}\circ\cdots\circ G_{u_k}\bigl(J(s_k)\bigr)`$ over all states $`s`$ and all paths $`(u_1,s_1),\ldots,(u_k,s_k)`$ from $`s`$ with $`u_1=\tau`$. If the sets $`U_\tau`$ are pairwise disjoint, then $`\mathcal D_P`$ is irrational.
 
@@ -435,7 +435,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 ## Passage (beginning “long269:lem:late-swap…”), page 22
 
-> *Remark 19* (the suffix lattice and a late interchange). Suppose $`V_c(w)`$ is rational. If for distinct letters $`a,b`$ and arbitrarily long words $`u`$ there is a common infinite suffix $`z`$ such that both $`uabz`$ and $`ubaz`$ belong to $`X_w`$, then
+> *Remark 19* (interchanging two letters after a long common prefix). Suppose $`V_c(w)`$ is rational. If for distinct letters $`a,b`$ and arbitrarily long words $`u`$ there is a common infinite suffix $`z`$ such that both $`uabz`$ and $`ubaz`$ belong to $`X_w`$, then
 > ``` math
 > c_a(b_b-1)=c_b(b_a-1).
 > ```
@@ -447,7 +447,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 ## Passage (beginning “long269:lem:clock-swaps…”), page 23
 
-> *Remark 20* (isolated interchanges in a clock word). Every pair of distinct clock labels satisfies the late-interchange hypothesis of Remark 6.1 for $`X_w`$.
+> *Remark 20* (isolated interchanges in the crossing sequence). Every pair of distinct labels satisfies the late-interchange hypothesis of Remark 6.1 for $`X_w`$.
 
 **No Lean proof of the whole statement.** In Lean, no proof of the full statement is recorded; the paper gives an ordinary proof reviewed by AI agents. Finite auxiliary checks have narrower scope, and independent human review is not recorded.
 
@@ -455,7 +455,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 ## Passage (beginning “long269:thm:clock-relations…”), page 24
 
-> *Remark 21* (rational relations among independent-clock channels). Under the preceding clock hypotheses, choose integers $`b_i\ge2`$, put $`Q_n=\prod_{k\le n}b_{w_k}`$ and
+> *Remark 21* (rational relations among the subseries). Under the preceding hypotheses on the linear flow, choose integers $`b_i\ge2`$, put $`Q_n=\prod_{k\le n}b_{w_k}`$ and
 > ``` math
 > S_i=\sum_{n:\,w_n=i}\frac1{Q_n}\qquad(1\le i\le d).
 > ```
@@ -465,7 +465,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 >  \quad\Longleftrightarrow\quad
 >  c_i=\lambda(b_i-1)\quad\hbox{for all $i$ and some $\lambda\in\mathbb{Q}$}.
 > ```
-> The rational value is $`\lambda`$. Equivalently, all rational relations $`a_0+\sum_i a_iS_i=0`$ are multiples of $`(-1,b_1-1,\ldots,b_d-1)`$. Thus the span of $`1,S_1,\ldots,S_d`$ has dimension $`d`$; each channel and each nonempty proper unweighted sub-sum is irrational. The full unweighted sum is irrational exactly when the radices are not all equal.
+> The rational value is $`\lambda`$. Equivalently, all rational relations $`a_0+\sum_i a_iS_i=0`$ are multiples of $`(-1,b_1-1,\ldots,b_d-1)`$. Thus the span of $`1,S_1,\ldots,S_d`$ has dimension $`d`$; each $`S_i`$ and each nonempty proper unweighted sub-sum is irrational. The full unweighted sum is irrational exactly when the radices are not all equal.
 
 **No Lean proof of the whole statement.** In Lean, no proof of the full statement is recorded; the paper gives an ordinary proof reviewed by AI agents. Finite auxiliary checks have narrower scope, and independent human review is not recorded.
 
@@ -545,7 +545,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long269-res-infinite-rank"></a>
 
-## Theorem 7.3 (no finite separation of the kernel), page 25
+## Theorem 7.3 (no finite separation of the kernel), page 26
 
 > *<span id="long269:res:lead-infinite-rank" label="long269:res:lead-infinite-rank"></span> Let $`p,q,r`$ be primes with $`p\ne q`$, $`p\ne r`$ and $`q\ne r`$. For every $`n\ge1`$ there are injective maps $`I,J:\{0,\ldots,n-1\}\to\mathbb{N}`$ such that, for every $`k\ge0`$,
 > ``` math
@@ -668,7 +668,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long269-res-dyadic-alphabet"></a>
 
-## Proposition 8.1 (four possible bases), page 30
+## Proposition 8.1 (four possible bases), page 31
 
 > *For every $`a`$,
 > ``` math
@@ -761,9 +761,9 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long269-res-actual-orbit"></a>
 
-## Theorem 8.2 (the tail recurrence), page 31
+## Theorem 8.2 (the tail recurrence), page 32
 
-> *The shell masses are summable and $`S=\sum_{a\ge0}s_a`$. For every $`a\ge0`$,
+> *The block masses are summable and $`S=\sum_{a\ge0}s_a`$. For every $`a\ge0`$,
 > ``` math
 > \begin{equation}
 > \label{long269:eq:shell-digit-identity}
@@ -807,9 +807,9 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long269-res-literal-triangle"></a>
 
-## Lemma 8.3 (the block numerator as a weighted lattice count), page 32
+## Lemma 8.3 (the block numerator as a weighted lattice count), page 33
 
-> *Put $`\lambda_3=\log_2 3`$, $`\lambda_5=\log_2 5`$ and $`\theta_p=1/\lambda_p`$ for $`p=3,5`$. For $`j,k\ge0`$ write $`w_{j,k}=j\lambda_3+k\lambda_5`$ and $`t_{j,k}=\{w_{j,k}\}`$. The shell numerator is
+> *Put $`\lambda_3=\log_2 3`$, $`\lambda_5=\log_2 5`$ and $`\theta_p=1/\lambda_p`$ for $`p=3,5`$. For $`j,k\ge0`$ write $`w_{j,k}=j\lambda_3+k\lambda_5`$ and $`t_{j,k}=\{w_{j,k}\}`$. The block numerator is
 > ``` math
 > m_a=\sum_{\substack{j,k\ge0\\w_{j,k}<a+1}}
 >  3^{\lfloor(a+1)\theta_3\rfloor-\lfloor(a+t_{j,k})\theta_3\rfloor}
@@ -907,7 +907,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 ## Lemma 9.2 (finite denominator clearing), page 35
 
-> *For all integers $`0\le u\le b`$ the window mass $`h_b\sum_{a=u}^{b-1}s_a`$ is a natural number. If $`S=N/D`$ with $`N\in\mathbb{Z}`$ and $`D\in\mathbb{N}_{>0}`$, then $`DX_a\in\mathbb{Z}`$ for every $`a\ge1`$, and there are indices $`1\le i<j\le D+1`$ for which $`X_i-X_j\in\mathbb{Z}`$.*
+> *For all integers $`0\le u\le b`$ the sum over the segment $`h_b\sum_{a=u}^{b-1}s_a`$ is a natural number. If $`S=N/D`$ with $`N\in\mathbb{Z}`$ and $`D\in\mathbb{N}_{>0}`$, then $`DX_a\in\mathbb{Z}`$ for every $`a\ge1`$, and there are indices $`1\le i<j\le D+1`$ for which $`X_i-X_j\in\mathbb{Z}`$.*
 
 The Lean declaration below states this result or one that implies it. The Lean statement has the same hypotheses and conclusion as the printed one.
 
@@ -937,7 +937,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long269-res-actual-cancellation"></a>
 
-## Theorem 9.3 (rationality gives positive integer tails), page 35
+## Theorem 9.3 (rationality gives positive integer tails), page 36
 
 > *<span id="long269:res:lead-carry-bridge" label="long269:res:lead-carry-bridge"></span> <span id="long269:res:actual-carry-bound" label="long269:res:actual-carry-bound"></span><span id="long269:res:denominator-reduction" label="long269:res:denominator-reduction"></span> Suppose $`S=N/D`$ with $`N\in\mathbb{Z}`$, $`D\in\mathbb{N}_{>0}`$, and write
 > ``` math
@@ -1082,7 +1082,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long269-res-pinning"></a>
 
-## Proposition 9.5 (propagation of integrality and uniqueness of a small solution), page 36
+## Proposition 9.5 (propagation of integrality and uniqueness of a small solution), page 37
 
 > *For every $`a`$, $`X_a=(m_a+X_{a+1})/b_a>0`$, and if $`X_a\in\mathbb{Z}`$ then $`X_n\in\mathbb{Z}`$ for every $`n\ge a`$. Moreover, fix $`A`$, a positive width function $`w`$ with $`w(A+k)/8^{k}\to0`$, and a real sequence $`(y_n)_{n\ge A}`$ satisfying $`y_{n+1}=b_ny_n-m_n`$. If $`y_n`$ and $`X_n`$ both lie in $`(m_n/b_n,\;m_n/b_n+w(n)]`$ for every $`n\ge A`$, then $`y_A=X_A`$.*
 
@@ -1187,7 +1187,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long269-res-actual-escape-endpoint"></a>
 
-## Theorem 10.2 (a residue criterion for every dominating bound of size $`o(8^a)`$), page 40
+## Theorem 10.2 (a residue criterion for every dominating bound of size $`o(8^a)`$), page 41
 
 > *<span id="long269:res:lead-escape-equivalence" label="long269:res:lead-escape-equivalence"></span><span id="long269:res:windowconsumer" label="long269:res:windowconsumer"></span> Let $`G:\mathbb{N}_{>0}\times\mathbb{N}\to\mathbb{N}`$ satisfy $`K(B,a)\le G(B,a)`$ for all $`B`$ and $`a`$, and $`G(B,a)/8^{a}\to0`$ as $`a\to\infty`$ for each fixed $`B`$. Then
 > ``` math
@@ -1251,7 +1251,7 @@ theorem octic_escape_whole :
 
 <a id="long269-res-residue-limit"></a>
 
-## Proposition 10.3 (the fixed-start residue limit), page 41
+## Proposition 10.3 (the fixed-start residue limit), page 42
 
 > *For fixed integers $`B,\ell\ge1`$, write
 > ``` math
@@ -1323,7 +1323,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long269-res-window-growth"></a>
 
-## Proposition 10.4 (growth of the product of consecutive bases), page 43
+## Proposition 10.4 (growth of the product of consecutive bases), page 44
 
 > *Put $`\theta_3=\log_32`$ and $`\theta_5=\log_52`$. For all $`\ell\ge0`$ and $`h\ge1`$,
 > ``` math
@@ -1362,9 +1362,9 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long269-res-no-bounded-length"></a>
 
-## Corollary 10.5 (a fixed maximum length cannot cover arbitrarily late starts), page 43
+## Corollary 10.5 (a fixed maximum length cannot cover arbitrarily late starts), page 44
 
-> *Fix $`B\ge1`$ coprime to $`30`$ and $`H\ge1`$. Only finitely many starts $`\ell`$ admit an escaping window of length at most $`H`$ against the bound $`K`$.*
+> *Fix $`B\ge1`$ coprime to $`30`$ and $`H\ge1`$. Only finitely many starts $`\ell`$ admit a segment of length at most $`H`$ satisfying the residue inequality against $`K`$.*
 
 The Lean declaration below states this result or one that implies it. The Lean statement has the same hypotheses and conclusion as the printed one.
 
@@ -1391,7 +1391,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long269-res-weighted-shift-identity"></a>
 
-## Lemma 12.1 (weighted shifts preserve the actual value), page 47
+## Lemma 12.1 (weighted shifts preserve the actual value), page 48
 
 > *Fix integers $`c_0,\ldots,c_\sigma`$, not all zero, independently of the positive integer shift $`r`$. Put
 > ``` math
@@ -1445,7 +1445,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long269-res-strip-decomposition"></a>
 
-## Proposition 12.2 (an exact interior-and-strip decomposition), page 48
+## Proposition 12.2 (an exact interior-and-strip decomposition), page 49
 
 > *For a fixed operator $`c_0,\ldots,c_\sigma`$ and $`r\ge1`$, let $`E_0=\mathcal T_a`$ and $`E_s=\mathcal T_{a+sr}\smallsetminus \mathcal T_{a+(s-1)r}`$ for $`1\le s\le\sigma`$. Then
 > ``` math
@@ -1503,7 +1503,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long269-res-fixed-base-recoding"></a>
 
-## Proposition 12.4 (what direct fixed-base recoding preserves), page 50
+## Proposition 12.4 (what direct fixed-base recoding preserves), page 51
 
 > *The following identities converge absolutely:
 > ``` math
@@ -1545,7 +1545,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long269-res-tails-equivalence"></a>
 
-## Proposition 12.6 (irrationality is equivalent to nonintegrality of every reduced tail), page 52
+## Proposition 12.6 (irrationality is equivalent to nonintegrality of every reduced tail), page 53
 
 > *Statement (22), quantified over every $`B\ge1`$ coprime to $`30`$ and every $`a\ge1`$, is equivalent to irrationality of $`S`$.*
 
@@ -1570,9 +1570,9 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long269-long-denominator-reduction"></a>
 
-## Proposition 13.1 (conditional denominator reduction), page 59
+## Proposition 13.1 (conditional denominator reduction), page 60
 
-> *If $`c_n=D_{\mathrm{sm}}d_n`$ for every $`n`$, with $`D_{\mathrm{sm}}>0`$, then the recurrence and window identity for $`(d_n)`$ have multiplier $`B`$ in place of $`D`$. Moreover, for every $`n`$ and every real $`t`$,
+> *If $`c_n=D_{\mathrm{sm}}d_n`$ for every $`n`$, with $`D_{\mathrm{sm}}>0`$, then the recurrence and iterated recurrence for $`(d_n)`$ have multiplier $`B`$ in place of $`D`$. Moreover, for every $`n`$ and every real $`t`$,
 > ``` math
 > 0<c_n\le Dt\quad\Longleftrightarrow\quad0<d_n\le Bt.
 > ```*
@@ -1606,7 +1606,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long269-long-windowconsumer"></a>
 
-## Proposition 13.2 (segments satisfying the residue inequality exclude a positive bounded integer solution), page 60
+## Proposition 13.2 (segments satisfying the residue inequality exclude a positive bounded integer solution), page 61
 
 > *Let $`(b_n)`$ and $`(m_n)`$ be sequences of nonnegative integers, let $`G:\mathbb{N}_{>0}\times\mathbb{N}\to\mathbb{N}`$, and assume the residue condition (20) for these sequences and $`G`$, using $`|W_{\ell,h}|>0`$ as the modulus. Fix $`B>0`$ coprime to $`30`$. There is no integral sequence $`(d_n)`$ satisfying simultaneously $`d_{n+1}=b_nd_n-Bm_n`$, $`d_n>0`$ and $`|d_n|\le G(B,n)`$ for every $`n\ge0`$.*
 

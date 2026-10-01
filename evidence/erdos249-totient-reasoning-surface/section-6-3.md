@@ -191,7 +191,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 ## Proposition 6.76 (The lower bound and a false proposed upper bound), page 50
 
-> *By Prop. 6.98, the canonical dyadic totient-kernel family is unconditionally $`(2^e+1)`$-dimensional at every level $`e\ge1`$. Rationality of $`S`$ forces an associated tempered carry orbit with $`\mathbb Q`$-rank $`\ge 2^e-1`$ at every level (Prop. 6.90). An upper bound independent of $`e`$ for these same carry ranks would contradict the lower bound. More generally, a bound $`g(e)`$ with $`g(e)<2^e-1`$ at some level $`e\ge1`$ would suffice, provided it applies to the actual carry under the hypothetical rationality of $`S`$. A bound that merely grows with $`e`$ need not contradict anything. The generic assertion for arbitrary rational coefficient series is false: the $`5/4`$ comparison sequence in Section 10.8 has an integer carry satisfying the growth condition and the same rank lower bound. The incompatible integer identity and the finite-shift counterexample (Observation 6.115) remain separate counterexample results. None is a generic rationality-driven rank ceiling. The Lean proof covers the proved rank floor and counterexample results, not the counterfactual upper bound.*
+> *By Prop. 6.98, the canonical dyadic totient-kernel family is unconditionally $`(2^e+1)`$-dimensional at every level $`e\ge1`$. Rationality of $`S`$ forces an associated carry orbit with $`\mathbb Q`$-rank $`\ge 2^e-1`$ at every level (Prop. 6.90). An upper bound independent of $`e`$ for these same carry ranks would contradict the lower bound. More generally, a bound $`g(e)`$ with $`g(e)<2^e-1`$ at some level $`e\ge1`$ would suffice, provided it applies to the actual carry under the hypothetical rationality of $`S`$. A bound that merely grows with $`e`$ need not contradict anything. The generic assertion for arbitrary rational coefficient series is false: the $`5/4`$ comparison sequence in Section 10.8 has an integer carry satisfying the growth condition and the same rank lower bound. The incompatible integer identity and the finite-shift counterexample (Observation 6.115) remain separate counterexample results. None gives a rank upper bound from rationality alone. The Lean proof covers the rank lower bound and counterexample results, not the counterfactual upper bound.*
 
 The Lean declarations below together state this result.
 
@@ -985,11 +985,11 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 ## Proposition 6.89 (Carry displacement and tail integrality), page 53
 
-> *For a positive integer $`v`$ and a tempered integral totient carry $`u`$,
+> *For a positive integer $`v`$ and an integral totient carry $`u`$ with $`u(N)/2^N\to0`$,
 > ``` math
 > v\mid u(N+k)-u(N)\quad\Longleftrightarrow\quad R_{N+k}-R_N\in\mathbb{Z}.
 > ```
-> Indeed, temperedness identifies $`u(N)=vR_N`$, so the displacement is $`v(R_{N+k}-R_N)`$. This is a divisibility test for that displacement, not a dimension bound for the carry sections. The same proof works for another coefficient sequence once its tempered carry has been identified with its scaled tail; those hypotheses must be checked in each application.*
+> The recurrence and the limit identify $`u(N)=vR_N`$, so the difference is $`v(R_{N+k}-R_N)`$. This tests divisibility of a carry difference and gives no dimension bound for the carry sections. For another coefficient sequence, the same argument applies once its carry is identified with its scaled tail under the corresponding recurrence and limit.*
 
 The Lean declarations below together state this result.
 
@@ -1027,7 +1027,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 ## Proposition 6.90 (A consequence of rationality and its limitation), page 53
 
-> *If $`S\in\mathbb Q`$, there are a positive integer $`v`$ and a tempered integer carry orbit $`u`$ such that its retained sections through every level $`e`$ have rational rank at least $`2^e-1`$. At the same time, those sections are uniformly eventually periodic modulo $`v`$. Periodicity after reduction modulo $`v`$ is a statement in a finite quotient; it is not a rank upper bound over $`\mathbb Q`$. Proposition 6.76 gives the lower bound, while the rational comparison sequence explains why a general rank upper bound cannot be deduced from these recurrence assumptions alone.*
+> *If $`S\in\mathbb Q`$, there are a positive integer $`v`$ and an integer carry sequence $`u`$, with $`u(N)/2^N\to0`$, whose retained sections through every level $`e`$ have rational rank at least $`2^e-1`$. At the same time, those sections are uniformly eventually periodic modulo $`v`$. Periodicity after reduction modulo $`v`$ is a statement in a finite quotient; it is not a rank upper bound over $`\mathbb Q`$. Proposition 6.76 gives the lower bound, while the rational comparison sequence explains why a general rank upper bound cannot be deduced from these recurrence assumptions alone.*
 
 The Lean declaration below states this result.
 

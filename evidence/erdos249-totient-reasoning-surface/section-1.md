@@ -346,7 +346,7 @@ theorem not_irrational_totientSeries_implies_unbounded_carryRank_unconditional
 > ``` math
 > u_{2^j(n+h)+r}\equiv u_{2^jn+r}\pmod v.
 > ```
-> The rank and periodicity assertions hold together. This conditional theorem alone is not a counterexample to a general periodicity-to-rank implication: its antecedent is not established. The separate $`5/4`$ control supplies a concrete counterexample to the generic rationality-driven rank ceiling; see the detailed comparison in Section 10.8.*
+> The rank and periodicity assertions hold together. This conditional theorem alone is not a counterexample to a general periodicity-to-rank implication: its antecedent is not established. The rational comparison sequence with sum $`5/4`$ gives a counterexample to a rank upper bound based on rationality alone; see Section 10.8.*
 
 The Lean declaration below states this result.
 
@@ -448,7 +448,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 ## Proposition 1.9 (A rational sequence preserving size bounds, parity and aperiodicity), page 7
 
-> *There is $`c : \mathbb{N}\to \mathbb{N}`$ with $`c(n) \le 6`$ and $`c(n) \le n`$ for all $`n`$, $`c(n) \equiv \varphi(n) \pmod 2`$ for *every* $`n`$, and $`c`$ not eventually periodic; indeed for every $`N, G, K`$ there are $`K`$ explicit carry pulses beyond $`N`$, pairwise separated by more than $`G`$; and yet $`\sum_n c(n)/2^{n} = 3/2 \in \mathbb{Q}`$.*
+> *There is $`c : \mathbb{N}\to \mathbb{N}`$ with $`c(n) \le 6`$ and $`c(n) \le n`$ for all $`n`$, $`c(n) \equiv \varphi(n) \pmod 2`$ for *every* $`n`$, and $`c`$ not eventually periodic; indeed for every $`N, G, K`$ there are $`K`$ pairs of coefficients $`(6,0)`$ starting beyond $`N`$, with starting positions pairwise separated by more than $`G`$; and $`\sum_n c(n)/2^{n} = 3/2 \in \mathbb{Q}`$.*
 
 The Lean declarations below together state this result.
 

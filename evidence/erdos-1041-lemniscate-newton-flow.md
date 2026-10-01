@@ -156,7 +156,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 > ``` math
 > f_r(z)=z^6+\tfrac15 r^2 z^4-\tfrac15 r^4 z^2-r^6
 > ```
-> lies in the open unit disc, yet the radial spoke from the origin to the zero $`r`$ leaves $`\{|f_r|<1\}`$.*
+> lies in the open unit disc, yet the radial segment from the origin to the zero $`r`$ leaves $`\{|f_r|<1\}`$.*
 
 The Lean declaration below states this result or one that implies it. The Lean statement finds a point $tr$ of the spoke, $0<t<1$, with $|f_r(tr)|>1$, so the spoke leaves even the closed set $\{|f_r|\le1\}$; the printed statement needs only a point with $|f_r|\ge1$.
 
@@ -189,7 +189,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="res-scaled-low-critical"></a>
 
-## Passage (beginning “res:scaled-low-critical…”), page 7
+## Passage (beginning “res:scaled-low-critical…”), page 8
 
 The Lean proof assumes Theorem 4.1 as stated. Lean takes this input as a hypothesis (`LowCriticalThirteenTwentyFifths`); it is not proved in Lean.
 
@@ -241,7 +241,7 @@ def LowCriticalThirteenTwentyFifths : Prop :=
 
 <a id="res-critical-value-separation"></a>
 
-## Passage (beginning “res:critical-value-separation…”), page 9
+## Passage (beginning “res:critical-value-separation…”), page 10
 
 The Lean proof assumes the connector and area construction that this proof produces. Lean takes this input as a hypothesis (`DiscSepBergmanArea`); it is not proved in Lean.
 

@@ -90,7 +90,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 >  G_D=\gcd\{|u_n|:D<n\le H\},\qquad
 >  \mu_D=L_D\frac{G_D}{\gcd(G_D,a_D)}.
 > ```
-> The moments of finite integer vectors supported on $`n\ge2`$ and cancelling all weighted sums $`2,\ldots,D`$ are exactly $`\mu_D\mathbb{Z}`$. The integer $`\mu_D`$ is positive, is independent of the eligible prime $`p`$, and is attained by a vector of coefficients with gcd one, that is, by a primitive vector.*
+> For finite integer vectors supported on $`n\ge2`$ and cancelling all weighted sums $`2,\ldots,D`$, the possible values of $`M`$ are exactly $`\mu_D\mathbb{Z}`$. The integer $`\mu_D`$ is positive, is independent of the eligible prime $`p`$, and is attained by a vector of coefficients with gcd one, that is, by a primitive vector.*
 
 The Lean declarations below together state this result.
 
@@ -134,7 +134,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 > \mathcal R\!\left(tK_D+\sum_{n>D}z_nU_n\right)
 >  =tL_D(S-H_D)+\sum_{n>D}z_n.
 > ```
-> The residual series converges for every finite vector supported away from index zero. A zero-moment vector has integral residual, and any two finite vectors with the same factorial moment have residuals differing by an integer.*
+> The remainder series converges for every finite vector supported away from index zero. A vector with $`M=0`$ has integral remainder, and any two finite vectors with the same value of $`M`$ have remainders differing by an integer.*
 
 The Lean declarations below together state this result.
 
@@ -198,7 +198,7 @@ theorem residual_transparency {D : ℕ} (hD : 2 ≤ D) (t : ℤ)
 
 <a id="long68-res-channel-radius"></a>
 
-## Theorem 1.5 (a lower bound for the support parameter), page 9
+## Theorem 1.5 (a lower bound for the support parameter), page 10
 
 > *Let $`t,M,R\in\mathbb{N}`$ satisfy
 > ``` math
@@ -409,7 +409,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long68-res-wilson-cofinality"></a>
 
-## Proposition 2.2 (cofinal first prime occurrences), page 14
+## Proposition 2.2 (cofinal first prime occurrences), page 15
 
 > *For every integer $`B\ge0`$ there are a prime $`q`$ and an integer $`m>B`$ with $`m<q`$, $`q\mid m!-1`$ and $`\gcd(q,k!-1)=1`$ for every $`k`$ with $`2\le k<m`$.*
 
@@ -469,7 +469,7 @@ theorem product_lcm_pairwise_gcd (xs : List ℕ) :
 
 <a id="long68-res-gap-gcd"></a>
 
-## Lemma 3.2 (factorial-gap gcd), page 15
+## Lemma 3.2 (factorial-gap gcd), page 16
 
 > *For $`2\le i<j`$, the integer $`g=\gcd(i!-1,j!-1)`$ divides $`j!/i!-1`$, and $`g\le j!/i!-1<j^{\,j-i}`$.*
 
@@ -694,7 +694,7 @@ theorem companion_orbit :
 
 <a id="long68-res-lower-escape"></a>
 
-## Proposition 4.3 (lower-interval criterion), page 21
+## Proposition 4.3 (lower-interval criterion), page 22
 
 > *``` math
 > \begin{equation}
@@ -826,7 +826,7 @@ theorem uniform_family_members :
 
 <a id="long68-res-global-residue"></a>
 
-## Theorem 5.1 (a sufficient tail inequality), page 24
+## Theorem 5.1 (a sufficient tail inequality), page 25
 
 > *Suppose that for every $`B`$ there is a natural parameter $`p\ge3`$ with $`p>B`$, $`R_p>1`$, and
 > ``` math

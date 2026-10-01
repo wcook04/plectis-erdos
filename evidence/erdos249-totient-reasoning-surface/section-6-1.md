@@ -46,7 +46,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 > ```
 > and, for every $`e\ge0`$, the sequences $`n\mapsto u(2^jn+r)`$ with $`1\le j\le e`$ and $`0\le r<2^j`$ span a space of $`\mathbb Q`$-dimension at least $`2^e-1`$.*
 >
-> *The recurrence is the one obtained from the scaled tails after clearing a hypothetical denominator of $`S`$. The formal term *tempered* means exactly $`u(N)/2^N\to0`$ here, not a separate assumption of subexponential growth. This rank lower bound is a necessary consequence of rationality, not a contradiction. An upper bound using additional properties of the actual totient coefficients would be needed; the later rational comparison rules out such a bound for arbitrary rational coefficient series.*
+> *The recurrence follows from the scaled tails after clearing a hypothetical denominator of $`S`$. The only growth condition imposed here is the displayed limit $`u(N)/2^N\to0`$; subexponential growth is not assumed. The rank lower bound is a necessary consequence of rationality and yields no contradiction by itself. An upper bound using additional properties of the actual totient coefficients would be needed; the later rational comparison rules out such a bound for arbitrary rational coefficient series.*
 
 The Lean declaration below states this result.
 

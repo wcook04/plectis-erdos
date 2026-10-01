@@ -63,7 +63,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="prop-gapwindow"></a>
 
-## Proposition 5.5 (The Farey certificate at $`K=240`$), page 22
+## Proposition 5.5 (The Farey certificate at $`K=240`$), page 23
 
 > *For the window $`(N,K)=(1,240)`$, put
 > ``` math
@@ -157,7 +157,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="prop-coprime"></a>
 
-## Proposition 5.9 (Fair-coin coprimality form), page 23
+## Proposition 5.9 (Fair-coin coprimality form), page 24
 
 > *Let $`X,Y`$ be independent random variables with $`\Pr(X=n)=\Pr(Y=n)=2^{-n}`$ for $`n \ge 1`$ (independent fair-coin waiting times). Then
 > ``` math

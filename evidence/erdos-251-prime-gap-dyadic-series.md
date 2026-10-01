@@ -444,7 +444,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="res-truncation"></a>
 
-## Proposition 5.3 (finite separation criterion), page 10
+## Proposition 5.3 (finite separation criterion), page 11
 
 > *If for every $`h\ge1`$ and every cutoff $`N_0`$ there are $`N\ge N_0,L\ge1`$ with
 > ``` math

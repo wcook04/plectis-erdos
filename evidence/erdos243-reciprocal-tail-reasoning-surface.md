@@ -356,7 +356,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 ## Lemma 2.10 (two incompatible four-term residue patterns), page 9
 
-> *For $`Q_{12,1}`$, every sufficiently late four-index window beginning at $`n\equiv0\pmod7`$ contains an exceptional index. For $`Q_{12,-1}`$, the same holds for windows beginning at $`n\equiv1\pmod7`$. In either case, $`\underline d(S)\ge1/7`$. No phase-free four-index obstruction is asserted.*
+> *For $`Q_{12,1}`$, every sufficiently late four-index window beginning at $`n\equiv0\pmod7`$ contains an exceptional index. For $`Q_{12,-1}`$, the same holds for windows beginning at $`n\equiv1\pmod7`$. In either case, $`\underline d(S)\ge1/7`$. The specified starting residue classes are part of the assertion; no claim is made for every block of four consecutive indices.*
 
 The Lean declarations below together state this result.
 
@@ -488,7 +488,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 > ``` math
 > aC-D=C-\bigl(D-(a-1)C\bigr).
 > ```
-> Consequently, every exact orbit satisfies $`C_{n+1}=C_n-E_n`$.*
+> Consequently, every solution of (19) satisfies $`C_{n+1}=C_n-E_n`$.*
 
 The Lean declaration below states this result.
 
@@ -745,7 +745,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 ## Theorem 5.8 (zero is absorbing), page 21
 
-> *Let $`a,C,D:\mathbb{N}\to\mathbb{N}`$ be an exact orbit of natural numbers, so $`C_{n+1}+D_n=a_nC_n`$ and $`D_{n+1}=a_nD_n`$, and let $`E_n=D_n-(a_n-1)C_n`$. Suppose the centring is strict, $`|E_n|<C_n`$ for every $`n`$. If $`E_n=0`$ then $`E_{n+1}=0`$.*
+> *Let $`a,C,D:\mathbb{N}\to\mathbb{N}`$ satisfy $`C_{n+1}+D_n=a_nC_n`$ and $`D_{n+1}=a_nD_n`$, and put $`E_n=D_n-(a_n-1)C_n`$. Suppose that $`|E_n|<C_n`$ for every $`n`$. If $`E_n=0`$ then $`E_{n+1}=0`$.*
 
 The Lean declaration below states this result.
 
@@ -1414,7 +1414,7 @@ theorem oddPrimePower_supply_nat (O : StandingOrbit) (A : ℕ) :
 
 ## Theorem 7.8 (unit record increments), page 32
 
-> *Under the standing hypotheses, if $`R_{n+1}-R_n\le1`$ for all large $`n`$, then $`a_{n+1}=a_n^2-a_n+1`$ for all large $`n`$. Hence the sequence is eventually Sylvester if and only if $`\#\{n:R_{n+1}-R_n\ge2\}`$ is finite. No hypothesis is placed on drawdowns, on record-setting jumps, or on the cancellation factors $`h_n`$.*
+> *Under the standing hypotheses, if $`R_{n+1}-R_n\le1`$ for all large $`n`$, then $`a_{n+1}=a_n^2-a_n+1`$ for all large $`n`$. Hence the sequence is eventually Sylvester if and only if $`\#\{n:R_{n+1}-R_n\ge2\}`$ is finite. No hypothesis is placed on decreases in $`u_n`$, on record-setting jumps, or on the cancellation factors $`h_n`$.*
 
 The Lean declarations below together state this result.
 
@@ -1631,7 +1631,7 @@ theorem exists_late_energy_window (O : StandingOrbit) (hunb : ∀ M : ℕ, ∃ n
 
 ## Theorem 7.11 (slow negative part), page 34
 
-> *Let $`(a,C,D)`$ be an exact orbit of natural numbers with $`a_n>1`$, $`C_n>0`$, $`D_0\ge1`$, under vanishing relative error. Suppose that for some $`\delta\in(0,1)`$ and all large $`n`$ with $`E_n<0`$ one has $`-E_n\le(1-\delta)\ell(C_n)`$. Then $`E_n=0`$ for all large $`n`$, and $`a_{n+1}=a_n^2-a_n+1`$ for all large $`n`$.*
+> *Let $`a,C,D:\mathbb{N}\to\mathbb{N}`$ satisfy (19) with $`a_n>1`$, $`C_n>0`$, $`D_0\ge1`$, under vanishing relative error. Suppose that for some $`\delta\in(0,1)`$ and all large $`n`$ with $`E_n<0`$ one has $`-E_n\le(1-\delta)\ell(C_n)`$. Then $`E_n=0`$ for all large $`n`$, and $`a_{n+1}=a_n^2-a_n+1`$ for all large $`n`$.*
 
 The Lean declarations below together state this result.
 
@@ -1785,7 +1785,7 @@ theorem exists_multiplier_ge_four (a C D : ℕ → ℕ) (E : ℕ → ℤ)
 
 <a id="long243-res-strausbounded"></a>
 
-## Theorem 7.12 (bounded or slowly growing increments of the product ratio), page 34
+## Theorem 7.12 (bounded or slowly growing increments of the product ratio), page 35
 
 > *Let $`a_1<a_2<\cdots`$ be positive integers with $`a_{n+1}/a_n^2\to1`$ and $`\sum_{n\ge1}1/a_n=p/q`$, where $`p,q`$ are positive integers. Put
 > ``` math
@@ -1963,7 +1963,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 >  \frac{[a_1,\ldots,a_n]}{a_{n+1}}
 >  \left(\frac{a_{n+1}^2}{a_{n+2}}-1\right).
 > ```
-> Its least common multiple includes $`a_n`$ but not the clearing denominator $`q`$. It is not $`Q_n=(P_n/a_n)\gamma_n`$ from the preceding subsection, nor $`L_n\gamma_{n+1}/a_{n+1}`$ under our convention $`L_n=\operatorname{lcm}(q,a_1,\ldots,a_{n-1})`$. Being a positive multiple of the next growth defect, $`Z_n^{\mathrm{ES}}`$ has the sign of $`\Lambda_{n+1}-E_{n+1}/C_{n+1}`$. For all sufficiently large $`n`$, it is positive when $`E_{n+1}\le0`$; for $`E_{n+1}>0`$, it is negative precisely when $`E_{n+1}/C_{n+1}>\Lambda_{n+1}`$. On a Sylvester tail $`E_n=0`$ and $`\Lambda_n=(a_n-1)/a_{n+1}>0`$.*
+> Its least common multiple includes $`a_n`$ but not the clearing denominator $`q`$. It is not $`Q_n=(P_n/a_n)\gamma_n`$ from the preceding subsection, nor $`L_n\gamma_{n+1}/a_{n+1}`$ under our convention $`L_n=\operatorname{lcm}(q,a_1,\ldots,a_{n-1})`$. Being a positive multiple of the next growth defect, $`Z_n^{\mathrm{ES}}`$ has the sign of $`\Lambda_{n+1}-E_{n+1}/C_{n+1}`$. For all sufficiently large $`n`$, it is positive when $`E_{n+1}\le0`$; for $`E_{n+1}>0`$, it is negative precisely when $`E_{n+1}/C_{n+1}>\Lambda_{n+1}`$. Under the eventual Sylvester recurrence, $`E_n=0`$ and $`\Lambda_n=(a_n-1)/a_{n+1}>0`$.*
 
 The Lean declarations below together state this result.
 
@@ -2236,7 +2236,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 ## Theorem 9.2 (no constant negative magnitude), page 40
 
-> *For any $`m,c\in\mathbb{N}`$ with $`m>0`$, there is no pair of sequences $`a,D:\mathbb{N}\to\mathbb{N}`$ with $`a_n\ge2`$ for all $`n`$ satisfying $`D_{n+1}=a_nD_n`$ and ({5.1}). The same holds if the shape equation only begins at some index.*
+> *For any $`m,c\in\mathbb{N}`$ with $`m>0`$, there is no pair of sequences $`a,D:\mathbb{N}\to\mathbb{N}`$ with $`a_n\ge2`$ for all $`n`$ satisfying $`D_{n+1}=a_nD_n`$ and ({5.1}). The same holds if the identity is assumed only from some index onwards.*
 
 The Lean declarations below together state this result.
 
@@ -2313,7 +2313,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long243-res-crt"></a>
 
-## Lemma 11.1 (shifted blocks of consecutive multiples), page 42
+## Lemma 11.1 (shifted blocks of consecutive multiples), page 43
 
 > *Let $`m_0,\ldots,m_{B-1}`$ be pairwise coprime and at least $`2`$. For every bound there is a $`t`$ beyond it with $`m_i\mid t+i`$ for each $`i<B`$.*
 
@@ -2375,7 +2375,11 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 ## Proposition 11.4 (persistent coprimality), page 44
 
-> *In a reduced exact tail, $`a_n`$ is coprime to $`v_n`$; the multipliers at distinct indices are pairwise coprime; and every earlier multiplier is coprime to every later numerator.*
+> *Suppose that $`\gcd(u_n,v_n)=1`$ at every index and
+> ``` math
+> u_{n+1}+v_n=a_nu_n,\qquad v_{n+1}=a_nv_n.
+> ```
+> Then $`\gcd(a_n,v_n)=1`$, the $`a_n`$ are pairwise coprime, and $`\gcd(a_i,u_t)=1`$ whenever $`i<t`$.*
 
 The Lean declaration below states this result.
 
@@ -2404,9 +2408,9 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long243-res-gcdstab"></a>
 
-## Proposition 11.6 (the tail gcd stabilises), page 44
+## Proposition 11.6 (the tail gcd stabilises), page 45
 
-> *Let $`(a,D,C)`$ be an exact orbit of natural numbers, that is, a triple of $`\mathbb{N}`$-valued sequences with $`C_{n+1}+D_n=a_nC_n`$ and $`D_{n+1}=a_nD_n`$, whose error is $`E_n=D_n-(a_n-1)C_n`$. Suppose some fixed integer $`B\ge1`$ satisfies $`-B\le E_n<0`$ at infinitely many indices. Then $`\gcd(C_n,D_n)`$ is eventually constant, and beyond that index the orbit divided by the stable gcd is a reduced exact tail.*
+> *Let $`a,D,C:\mathbb{N}\to\mathbb{N}`$ satisfy $`C_{n+1}+D_n=a_nC_n`$ and $`D_{n+1}=a_nD_n`$, and put $`E_n=D_n-(a_n-1)C_n`$. Suppose some fixed integer $`B\ge1`$ satisfies $`-B\le E_n<0`$ at infinitely many indices. Then $`\gcd(C_n,D_n)`$ is eventually constant. Dividing $`C_n,D_n`$ by its eventual value gives coprime sequences satisfying the same recurrences.*
 
 The Lean declaration below states this result.
 
@@ -2724,7 +2728,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 ## Theorem B.1 (factorial residue reduction), page 57
 
-> *For all $`h`$ and all integers $`a\equiv b \pmod{(h+1)!}`$, the orbit from $`a`$ survives $`h`$ forced updates exactly when the orbit from $`b`$ does.*
+> *Let $`h`$ be a nonnegative integer and let $`a,b`$ be integers with $`a\equiv b\pmod{(h+1)!}`$. The first $`h`$ steps of the recursion $`a_{n+1}=\operatorname{num}(n,a_n)/(n+2)`$, starting at index zero, are integral for $`a_0=a`$ if and only if they are integral for $`a_0=b`$.*
 
 The Lean declarations below together state this result.
 

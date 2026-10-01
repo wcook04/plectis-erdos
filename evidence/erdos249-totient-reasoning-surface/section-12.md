@@ -343,7 +343,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 > \#\{N\in\mathcal A:m_N\in B(\eta)\}
 >   \;\le\;\bigl(D(\eta)+o(1)\bigr)X ,
 > ```
-> so a single choice of $`\eta`$ with $`D(\eta)<1/200`$ meets the $`\tfrac{1}{100}X`$ budget for all large $`X`$. This choice fixes $`\eta`$ before $`X_0`$, as required. It supplies only the excluded-cofactor bound: the mean and mean-subtracted estimates must still hold for this same $`\eta`$, and do not follow from making $`\eta`$ smaller.*
+> so a single choice of $`\eta`$ with $`D(\eta)<1/200`$ meets the $`\tfrac{1}{100}X`$ bound for all large $`X`$. This choice fixes $`\eta`$ before $`X_0`$, as required. It supplies only the excluded-cofactor bound: the mean and mean-subtracted estimates must still hold for this same $`\eta`$, and do not follow from making $`\eta`$ smaller.*
 
 The Lean proof assumes the prime number theorem. Lean takes this input as a hypothesis (`PrimeNumberTheorem`); it is not proved in Lean.
 
