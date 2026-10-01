@@ -218,6 +218,19 @@ def rank_lanes(catalog: dict[str, Any], task: str) -> list[dict[str, Any]]:
         task_tokens & {"attack", "counterexample", "prove", "solve"}
     )
     lean_context = bool(task_tokens & {"lean", "theorem"})
+    # Preserve explicit installation and Plectis authoring when a request
+    # also mentions the portable guide. Their action/object rules stay owned
+    # by the registry rather than being duplicated here.
+    matched_intents = {
+        lane["id"] for lane in catalog["lanes"]
+        if any(task_tokens.intersection(intent["actions"]) and
+               task_tokens.intersection(intent["objects"])
+               for intent in lane.get("task_intents", []))
+    }
+    plectis_context = "plectis" in task_tokens or any(
+        phrase in normalized_task
+        for phrase in ("this repository", "this repo", "this checkout")
+    )
     ranked: list[dict[str, Any]] = []
     for order, lane in enumerate(catalog["lanes"]):
         matches: list[str] = []
@@ -244,6 +257,14 @@ def rank_lanes(catalog: dict[str, Any], task: str) -> list[dict[str, Any]]:
                 # Two explicit intent components outweigh a generic later
                 # stage such as "propagate the downstream consequences".
                 score += 12
+        # Guide mentions cannot replace a proof request, explicit installation,
+        # or authoring in this checkout with the independent-project workflow.
+        if lane["id"] == "reuse_writing_guidance" and (
+            proof_intent or "install_skills" in matched_intents or
+            (plectis_context and "public_writing" in matched_intents)
+        ):
+            score = 0
+            matches = []
         # "Lean" names both a proof environment and an operational toolchain.
         # A genuine proof verb must keep proof search primary while the Lean
         # validation lane remains visible as a scored alternative.

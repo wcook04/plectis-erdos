@@ -976,6 +976,42 @@
       ]
     },
     {
+      "id": "reuse_writing_guidance",
+      "title": "Use the writing guidance in your own project",
+      "task_cues": [
+        "use the writing guide",
+        "use this writing guide",
+        "use your writing guide",
+        "apply the writing guide",
+        "apply this writing guide",
+        "apply your writing guide",
+        "reuse the writing guide",
+        "reuse the writing skill",
+        "use the writing skill",
+        "use this writing skill",
+        "use your writing skill",
+        "writing guide in another",
+        "writing guide in my",
+        "writing skill in another",
+        "writing skill in my",
+        "writing method in another",
+        "writing method in my",
+        "portable writing skill",
+        "standalone writing skill",
+        "use your portable writing skill",
+        "use the portable writing skill",
+        "apply the portable writing skill"
+      ],
+      "skills": [
+        "public-mathematical-writing"
+      ],
+      "read": [
+        "skills/public-mathematical-writing/SKILL.md#use-in-another-repository"
+      ],
+      "commands": [],
+      "boundary": "Use your project's sources, checks and review process. The bundled guides are optional; copying or installing the skill is optional. The Plectis workflow applies only to a Plectis checkout."
+    },
+    {
       "id": "add_problem",
       "title": "Add or incubate another open problem",
       "task_cues": [

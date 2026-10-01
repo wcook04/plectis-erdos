@@ -22,6 +22,28 @@ from agent_skill_catalog import ROOT, load_catalog
 
 
 ROUTE_CASES = {
+    'Use your portable writing skill to revise my own paper': ('reuse_writing_guidance', 'public-mathematical-writing'),
+    'Use the portable writing skill to write my own manuscript': ('reuse_writing_guidance', 'public-mathematical-writing'),
+    'Apply the portable writing skill to draft a paper for my project': ('reuse_writing_guidance', 'public-mathematical-writing'),
+    'Prove a theorem using the writing guide in another repository': ('bounded_research', 'mine-open-problem'),
+    'I want to solve Erdos 257 using the writing guide in another repository': ('bounded_research', 'mine-open-problem'),
+    'Use the writing guide to revise this Plectis paper': ('public_writing', 'public-mathematical-writing'),
+    'Install the portable writing skill in another repository': ('install_skills', 'install-clone-skills'),
+    'Use the portable writing skill to revise this Plectis manuscript': ('public_writing', 'public-mathematical-writing'),
+    'Use the portable writing skill to revise a paper in this repository': ('public_writing', 'public-mathematical-writing'),
+    'Find a counterexample using the writing guide in another repository': ('bounded_research', 'mine-open-problem'),
+    # Portable reuse should open the self-contained instructions, while
+    # installation and editing retain their own workflows.
+    'Use the writing guide in another repository': ('reuse_writing_guidance', 'public-mathematical-writing'),
+    'Use your writing guide with my own manuscript': ('reuse_writing_guidance', 'public-mathematical-writing'),
+    'Apply this writing guide to a paper in my project': ('reuse_writing_guidance', 'public-mathematical-writing'),
+    'Reuse the writing skill in another repository': ('reuse_writing_guidance', 'public-mathematical-writing'),
+    'Can I use the portable writing skill for my project?': ('reuse_writing_guidance', 'public-mathematical-writing'),
+    'Use the writing method in my repository': ('reuse_writing_guidance', 'public-mathematical-writing'),
+    'Install the portable writing skill into Codex': ('install_skills', 'install-clone-skills'),
+    'Install the writing skill in another repository': ('install_skills', 'install-clone-skills'),
+    'Revise the short writing-guide paper': ('public_writing', 'public-mathematical-writing'),
+    'Explain how the paper review process works': ('understand_repository', 'explain-public-system'),
     'Check a documentation change without installing Lean': ('repository_architecture', 'maintain-public-infrastructure'),
     'Check this documentation patch before opening a pull request': ('repository_architecture', 'maintain-public-infrastructure'),
     'Validate a documentation change with the existing public checks': ('repository_architecture', 'maintain-public-infrastructure'),
@@ -685,6 +707,16 @@ def main() -> int:
         assert expected_skill in {row["id"] for row in packet["skills"]}, (task, packet)
         assert packet["primary_lane"]["read"], task
         assert packet["primary_lane"]["boundary"], task
+        if expected_lane == "reuse_writing_guidance":
+            assert [row["id"] for row in packet["skills"]] == [
+                "public-mathematical-writing"
+            ], (task, "independent writing must not require sibling Plectis skills")
+            assert packet["primary_lane"]["read"] == [
+                "skills/public-mathematical-writing/SKILL.md#use-in-another-repository"
+            ], (task, "reuse must open the destination-project instructions")
+            assert packet["primary_lane"]["commands"] == [], (
+                task, "reuse must not require Plectis corpus commands"
+            )
         if expected_lane == "public_writing":
             assert "propagate-research-consequences" in {
                 row["id"] for row in packet["skills"]
