@@ -37,8 +37,13 @@ def skill_directories(catalog: dict[str, object]) -> dict[str, Path]:
 def same_tree(left: Path, right: Path) -> bool:
     if not left.is_dir() or not right.is_dir():
         return False
-    comparison = filecmp.dircmp(left, right)
+    comparison = filecmp.dircmp(left, right, ignore=[])
     if comparison.left_only or comparison.right_only or comparison.common_funny:
+        return False
+    # copytree materializes source links. An installed link can currently
+    # return the same bytes but still depend on another folder or form a loop.
+    # Compare the complete copied tree without traversing destination links.
+    if any((right / name).is_symlink() for name in comparison.common):
         return False
     # dircmp compares stat signatures by default. A copied skill can retain
     # its timestamp and byte count after an edit, so compare instruction bytes
@@ -105,7 +110,7 @@ def status(source: Path, destination: Path, mode: str) -> str:
                 if error.errno in {errno.ENOENT, errno.ENOTDIR, errno.ELOOP}:
                     return "different"
                 raise
-            if target == resolved_path(source):
+            if same_entry(target, resolved_path(source)):
                 return "current"
         return "different"
     if destination.is_symlink():

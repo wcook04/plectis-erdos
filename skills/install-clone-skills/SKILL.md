@@ -45,6 +45,10 @@ is already current; replacing that source with a symlink is refused.
 
 Add `--apply` to perform the displayed copy. Use `--mode symlink` when the
 harness may read links and the installed skill should follow this checkout.
+Copy mode keeps the installed files independent of the source checkout.
+A link inside an installed copy is `different`, even if its current contents
+match. An explicitly forced copy replaces it with ordinary copied content and
+leaves the link target untouched. The check includes every file and folder.
 Use `--skill NAME` repeatedly to select only some skills.
 
 ```sh

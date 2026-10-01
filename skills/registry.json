@@ -1259,13 +1259,32 @@
           "actions": [
             "install",
             "copy",
-            "symlink"
+            "symlink",
+            "reinstall",
+            "reinstalling"
           ],
           "objects": [
             "skill",
             "skills",
             "workflow",
             "workflows"
+          ]
+        },
+        {
+          "actions": [
+            "update",
+            "refresh"
+          ],
+          "objects": [
+            "skill",
+            "skills"
+          ],
+          "qualifiers": [
+            "installed",
+            "codex",
+            "claude",
+            "harness",
+            "loader"
           ]
         }
       ]

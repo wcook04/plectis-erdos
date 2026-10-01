@@ -213,11 +213,56 @@ def normalize(text: str) -> str:
     return " ".join(TOKEN_RE.findall(text.casefold()))
 
 
+def bound_installed_skill_update(
+    task: str, intent: dict[str, Any], skill_ids: list[str], *, proof_intent: bool = False,
+) -> str | None:
+    """Bind refresh/update to a skill object and its installation context."""
+    if proof_intent:
+        return None
+    boundaries = "and|then|using|with|after|before|from|for|in|into|to|at"
+    heads = set(intent["objects"])
+    heads.update(" ".join(re.findall(r"[a-z0-9]+", value.casefold())) for value in skill_ids)
+    head_pattern = "|".join(re.escape(value) for value in sorted(heads, key=len, reverse=True))
+    object_pattern = re.compile(
+        rf"(?P<modifiers>(?:(?!(?:{boundaries})\b)[a-z0-9]+\s+)*?)"
+        rf"(?P<head>{head_pattern})(?:\s+skills?)?\b(?P<tail>.*)"
+    )
+    action_pattern = re.compile(rf"\b({'|'.join(map(re.escape, intent['actions']))})\s+")
+    destinations = "|".join(re.escape(value) for value in intent["qualifiers"] if value != "installed")
+    destination_pattern = re.compile(
+        rf"\s+(?:in|into|for|at)\s+"
+        rf"(?:(?:the|my|our|your|a|an|this|custom|local|agent|coding|skills?)\s+)*"
+        rf"(?:{destinations})\b"
+    )
+    content_objects = {"paper", "papers", "abstract", "abstracts", "manuscript", "manuscripts",
+                       "readme", "guide", "guides", "example", "examples", "prose", "wording"}
+    for action in action_pattern.finditer(task):
+        candidate = object_pattern.match(task, action.end())
+        if candidate is None:
+            continue
+        object_words = set(candidate["modifiers"].split())
+        if object_words & content_objects:
+            continue
+        if "installed" in object_words or destination_pattern.match(candidate["tail"]):
+            return f"{action[1]} + installed skill"
+    return None
+
+
 def matched_task_intents(
     lane: dict[str, Any], task_tokens: set[str], *, proof_intent: bool = False,
+    task: str = "", skill_ids: list[str] | None = None,
 ) -> list[str]:
     matches = []
     for intent in lane.get("task_intents", []):
+        # An installed skill used while editing a paper is not the object of
+        # that edit. Bind only the qualified refresh/update installation rule.
+        if lane["id"] == "install_skills" and "qualifiers" in intent:
+            match = bound_installed_skill_update(
+                task, intent, skill_ids or [], proof_intent=proof_intent,
+            )
+            if match:
+                matches.append(match)
+            continue
         # Adding a guide-editing object must not displace the proof stage in
         # "prove a theorem, then revise the writing guide". Preserve existing
         # paper-authoring rules; the qualified guide rule is subordinate here.
@@ -242,8 +287,10 @@ def rank_lanes(catalog: dict[str, Any], task: str) -> list[dict[str, Any]]:
     # Preserve explicit installation and Plectis authoring when a request
     # also mentions the portable guide. Their action/object rules stay owned
     # by the registry rather than being duplicated here.
-    intent_matches = {lane["id"]: matched_task_intents(lane, task_tokens, proof_intent=proof_intent)
-                      for lane in catalog["lanes"]}
+    skill_ids = [row["id"] for row in catalog["skills"]]
+    intent_matches = {lane["id"]: matched_task_intents(
+        lane, task_tokens, proof_intent=proof_intent, task=normalized_task, skill_ids=skill_ids,
+    ) for lane in catalog["lanes"]}
     matched_intents = {lane_id for lane_id, matches in intent_matches.items() if matches}
     plectis_context = "plectis" in task_tokens or bool(
         re.search(r"\bthis (?:repository|repo|checkout)\b", normalized_task)

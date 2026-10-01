@@ -22,6 +22,26 @@ from agent_skill_catalog import ROOT, load_catalog
 
 
 ROUTE_CASES = {
+    # Updating an installed copy must not become paper or proof work.
+    'Reinstall the writing skill in Codex': ('install_skills', 'install-clone-skills'),
+    'Reinstalling the portable writing skill in Claude': ('install_skills', 'install-clone-skills'),
+    'Refresh the installed public-mathematical-writing skill from this clone': ('install_skills', 'install-clone-skills'),
+    'Update my installed writing skill to the latest version': ('install_skills', 'install-clone-skills'),
+    'Update my currently installed portable writing skill': ('install_skills', 'install-clone-skills'),
+    'Refresh the installed concise mathematical writing skills': ('install_skills', 'install-clone-skills'),
+    'Refresh the concise writing skills in Codex': ('install_skills', 'install-clone-skills'),
+    'Update my writing skill in Claude': ('install_skills', 'install-clone-skills'),
+    'Refresh my reusable writing skill for a custom agent harness': ('install_skills', 'install-clone-skills'),
+    'Update the short writing skills in my custom skills loader': ('install_skills', 'install-clone-skills'),
+    'Refresh public-mathematical-writing in Codex': ('install_skills', 'install-clone-skills'),
+    'Update the installed public-mathematical-writing': ('install_skills', 'install-clone-skills'),
+    'Update this Plectis paper using the installed writing skill': ('understand_repository', 'explain-public-system'),
+    'Revise this Plectis paper using the installed writing skill and update its abstract': ('public_writing', 'public-mathematical-writing'),
+    'Prove a theorem using the installed writing skill, then update the paper': ('bounded_research', 'mine-open-problem'),
+    'Use the installed writing skill to revise a paper in my repository and update its examples': ('reuse_writing_guidance', 'public-mathematical-writing'),
+    'Re-install the writing skill in Codex': ('install_skills', 'install-clone-skills'),
+    'Refresh my installed public-mathematical-writing': ('install_skills', 'install-clone-skills'),
+    'Prove this Lean theorem, then update the installed writing skill': ('bounded_research', 'mine-open-problem'),
     'Use the writing guide to revise a paper in my repository': ('reuse_writing_guidance', 'public-mathematical-writing'),
     'Use the writing guide to revise these papers in another repository': ('reuse_writing_guidance', 'public-mathematical-writing'),
     'Apply the short mathematical writing guides to revise papers in my project': ('reuse_writing_guidance', 'public-mathematical-writing'),

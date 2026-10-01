@@ -35,6 +35,11 @@ For an ambiguous object such as a guide, an optional `qualifiers` token group
 can require its subject as well. All supplied groups must match; modifiers may
 separate their words. A guide being edited and a guide being applied to another
 project are different tasks.
+Refreshing an installed skill belongs to installation; revising its canonical
+instructions belongs to maintenance. Bind an update or refresh to the skill
+being updated and its installed or harness context. An installed skill merely
+used while editing a paper must not select installation. Preserve proof-first
+requests and test both named skills and generic skill descriptions.
 Check neighboring tasks that should retain their original lane. Keep purpose and scope separate: a problem or paper identifies the object,
 while research, method development or infrastructure work identifies the action.
 An existing mathematical proof offered for review belongs to the research-return
@@ -228,11 +233,20 @@ For skill installation, content identity must survive an edit that preserves
 file size and timestamp. Exercise the actual preview, check, refused collision
 and explicitly forced replacement; metadata equality is not content equality.
 Keep the repair compatible with the minimum supported Python version.
+Compare every copied entry, including names normally ignored by generic
+comparison tools. An installed nested link is different in copy mode even
+when its target bytes match; forced copying must materialize independent
+content without changing the target. Test file, directory, dangling and
+recursive links, and recheck the copy after its former target disappears.
 Reject source and destination overlaps before preview or mutation. Inspect
 source aliases through parent links and link targets, and compare existing
 entry identities where different spellings can name the same directory.
 Treat an existing destination symlink as an entry to replace, so its target
 remains intact. Exercise safe aliases as well as refused overlaps.
+In symlink mode, compare the resolved target by physical entry identity;
+case aliases can retain different path spellings. A current link must remain
+untouched during preview, check, ordinary apply and forced apply. Exercise
+the alias on supported filesystems and simulate it on case-sensitive CI.
 Treat an identical physical copy as current before traversing its contents.
 Report file and directory inspection failures without replacing the affected
 installation, even with force. Exercise every CLI mode and both looping and
