@@ -11,6 +11,7 @@
 % Keep this local until Type A can repair the out-of-scope shared link helper.
 \newcommand{\shortrecordlink}[3]{\href{#1\##2}{#3}}
 \input{evidence/erdos-1049-rational-base-lambert}
+\evidenceconcordancenewpage
 \renewcommand{\commit}{7380b7871687b6bcc41ca0143c61f232e8af6500}
 \renewcommand{\commitshort}{7380b7871687}
 \renewcommand{\PX}{lean/ErdosProblems}
@@ -1027,7 +1028,7 @@ has the same formal orders, leading coefficients and type of
 fixed-base power correction, although its target value is rational.
 The model and its denominator calculation are retained there with
 ordinary proofs as unformalised remarks.
-The long record also gives an
+The companion paper also gives an
 \shortrecordlink{erdos1049-rational-base-lambert-reasoning-surface.pdf}
 {long1049-ratio-extension}{ordinary argument for the ratio-limit extension}
 under $a_{k+1}/a_k\to\rho\in(0,q^{-1})$, without the polynomial
@@ -1156,7 +1157,7 @@ Lean proofs and recorded Comparator comparisons at the
 Theorem~\ref{thm:geometric-moments} is the polynomial-bound
 specialisation of the
 \href{\laterepobase/lean/ErdosProblems/Erdos1049/PaperCompleteR21/GeometricUniversality.lean\#L1324}{geometric-moment proof}
-cited in the long record; its Comparator association remains pending.
+cited in the companion paper; its Comparator association remains pending.
 The broader ratio-limit argument and rational-value model there have
 ordinary proofs only. This revision has had no fresh Lean or
 Comparator run and no independent review.

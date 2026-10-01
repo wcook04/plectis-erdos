@@ -21,6 +21,8 @@
 \newcommand*{\ev@all}{}
 \newcommand*{\ev@rows}{}
 \newif\ifev@second
+\newif\ifev@newpage
+\newcommand{\evidenceconcordancenewpage}{\ev@newpagetrue}
 \newcommand{\DeclareResultEvidenceName}[2]{%
   \expandafter\gdef\csname ev@name@#1\endcsname{#2}}
 \newcommand{\DeclareResultEvidence}[4]{%
@@ -94,6 +96,7 @@
       {Its label does not occur in this paper; regenerate the evidence file.}\fi}%
   \ev@all
   \ifx\ev@rows\@empty\else
+    \ifev@newpage\clearpage\fi
     \section*{Verification concordance}
     \addcontentsline{toc}{section}{Verification concordance}
     \begingroup\small
