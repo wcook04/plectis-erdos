@@ -337,7 +337,7 @@ Start here (selected for this guide): [Introduction](full-text/erdos-251-prime-g
 
 **Prime-Gap Dyadic Series: Perturbations, Exact Criteria and Certificates**
 
-[full text](full-text/erdos251-prime-gap-reasoning-surface.md) · [PDF](../../paper/251/erdos251-prime-gap-reasoning-surface.pdf) · [LaTeX source](../../paper/251/erdos251-prime-gap-reasoning-surface.tex) · 52 sections · `erdos251-prime-gap-reasoning-surface` · native to this repository
+[full text](full-text/erdos251-prime-gap-reasoning-surface.md) · [PDF](../../paper/251/erdos251-prime-gap-reasoning-surface.pdf) · [LaTeX source](../../paper/251/erdos251-prime-gap-reasoning-surface.tex) · 50 sections · `erdos251-prime-gap-reasoning-surface` · native to this repository
 
 Start here (selected for this guide): [The tail recurrence and the exact criteria](full-text/erdos251-prime-gap-reasoning-surface.md#long251:sec:tail), [Coefficient conditions and counterexamples](full-text/erdos251-prime-gap-reasoning-surface.md#long251:sec:obstructions), [Remaining prime-gap estimates](full-text/erdos251-prime-gap-reasoning-surface.md#long251:sec:open), [Conclusions](full-text/erdos251-prime-gap-reasoning-surface.md#sec:erdos-251-complete-family-map).
 
@@ -358,7 +358,7 @@ Start here (selected for this guide): [Introduction](full-text/erdos-257-mersenn
 
 **Reciprocal Mersenne Subseries**
 
-[full text](full-text/erdos257-mersenne-reasoning-surface.md) · [PDF](../../paper/257/erdos257-mersenne-reasoning-surface.pdf) · [LaTeX source](../../paper/257/erdos257-mersenne-reasoning-surface.tex) · 162 sections · `erdos257-mersenne-reasoning-surface` · native to this repository
+[full text](full-text/erdos257-mersenne-reasoning-surface.md) · [PDF](../../paper/257/erdos257-mersenne-reasoning-surface.pdf) · [LaTeX source](../../paper/257/erdos257-mersenne-reasoning-surface.tex) · 163 sections · `erdos257-mersenne-reasoning-surface` · native to this repository
 
 Start here (selected for this guide): [Support criteria and their proofs](full-text/erdos257-mersenne-reasoning-surface.md#sec:257-problem), [Limitations of the recorded methods](full-text/erdos257-mersenne-reasoning-surface.md#sec:257-wall), [Unproved inputs for further arguments](full-text/erdos257-mersenne-reasoning-surface.md#sec:257-survivors), [Reading the detailed record](full-text/erdos257-mersenne-reasoning-surface.md#sec:257-howto).
 
@@ -374,7 +374,7 @@ Start here (selected for this guide): [Two sums from running least common multip
 
 **Distinct running least common multiples**
 
-[full text](full-text/erdos-269-three-prime-running-lcm.md) · [PDF](../../paper/269/erdos-269-three-prime-running-lcm.pdf) · [LaTeX source](../../paper/269/erdos-269-three-prime-running-lcm.tex) · 15 sections · `erdos-269-three-prime-running-lcm` · native to this repository
+[full text](full-text/erdos-269-three-prime-running-lcm.md) · [PDF](../../paper/269/erdos-269-three-prime-running-lcm.pdf) · [LaTeX source](../../paper/269/erdos-269-three-prime-running-lcm.tex) · 16 sections · `erdos-269-three-prime-running-lcm` · native to this repository
 
 Archived edition: [aiXiv:2609.03283v1](https://aixiv.online/abs/2609.03283v1) ([PDF](https://aixiv.online/pdf/2609.03283v1), [source archive](https://aixiv.online/src/2609.03283v1)); published 2026-09-27 from [source `551bae6dc6e7`](https://github.com/wcook04/plectis-erdos/blob/551bae6dc6e732cf85172d66323c8d2bc77ba962/paper/269/erdos-269-three-prime-running-lcm.tex).
 
@@ -421,7 +421,7 @@ Start here (selected for this guide): [Introduction](full-text/erdos-1049-ration
 
 **Geometric Moments and Rational Lambert Values: Proofs and Further Results**
 
-[full text](full-text/erdos1049-rational-base-lambert-reasoning-surface.md) · [PDF](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.pdf) · [LaTeX source](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex) · 64 sections · `erdos1049-rational-base-lambert-reasoning-surface` · native to this repository
+[full text](full-text/erdos1049-rational-base-lambert-reasoning-surface.md) · [PDF](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.pdf) · [LaTeX source](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex) · 63 sections · `erdos1049-rational-base-lambert-reasoning-surface` · native to this repository
 
 Start here (selected for this guide): [The region b^{\mu}<a and the base 31/4](full-text/erdos1049-rational-base-lambert-reasoning-surface.md#long1049:sec:region), [The sharp q-order of the normalised Hankel determinant](full-text/erdos1049-rational-base-lambert-reasoning-surface.md#long1049:sec:hankel-order), [A finite spectral consequence.](full-text/erdos1049-rational-base-lambert-reasoning-surface.md#a-finite-spectral-consequence.), [Complements and further questions](full-text/erdos1049-rational-base-lambert-reasoning-surface.md#long1049:sec:open).
 
@@ -481,7 +481,7 @@ Selected sections of this historical account: [The strategy](full-text/open-sour
 
 **Writing Mathematics from the Literature and Reviewed Revisions** · **included here; not yet published on the website**
 
-[full text](full-text/writing-mathematics-from-reviewed-revisions.md) · [PDF](../../paper/exposition/writing-mathematics-from-reviewed-revisions.pdf) · [LaTeX source](../../paper/exposition/writing-mathematics-from-reviewed-revisions.tex) · 30 sections · `writing-mathematics-from-reviewed-revisions` · native to this repository
+[full text](full-text/writing-mathematics-from-reviewed-revisions.md) · [PDF](../../paper/exposition/writing-mathematics-from-reviewed-revisions.pdf) · [LaTeX source](../../paper/exposition/writing-mathematics-from-reviewed-revisions.tex) · 31 sections · `writing-mathematics-from-reviewed-revisions` · native to this repository
 
 Start here (selected for this guide): [Learning to explain a particular argument](full-text/writing-mathematics-from-reviewed-revisions.md#sec:reading), [Two revisions and the mathematics that permits them](full-text/writing-mathematics-from-reviewed-revisions.md#sec:revisions), [What the integrating reviewer must decide](full-text/writing-mathematics-from-reviewed-revisions.md#sec:review), [Keeping a useful practice small](full-text/writing-mathematics-from-reviewed-revisions.md#sec:practice).
 

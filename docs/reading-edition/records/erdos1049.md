@@ -25,7 +25,7 @@ A complete registered-evidence match locates the same full declaration set in th
 
 State: **unresolved**.
 
-Short statement: [paper/1049/erdos-1049-rational-base-lambert.tex](../../../paper/1049/erdos-1049-rational-base-lambert.tex) lines 630-642.
+Short statement: [paper/1049/erdos-1049-rational-base-lambert.tex](../../../paper/1049/erdos-1049-rational-base-lambert.tex) lines 631-643.
 
 Ledger evidence: Lean `exact`; Comparator `compared`. These statuses are copied from the evidence ledger; this build reruns neither checker.
 
@@ -37,11 +37,11 @@ No accepted correspondence is recorded. Check the candidates below; none is sile
 
 State: **short_proof_explained_long_link_open**.
 
-Short statement: [paper/1049/erdos-1049-rational-base-lambert.tex](../../../paper/1049/erdos-1049-rational-base-lambert.tex) lines 889-891.
+Short statement: [paper/1049/erdos-1049-rational-base-lambert.tex](../../../paper/1049/erdos-1049-rational-base-lambert.tex) lines 890-892.
 
 Ledger evidence: Lean `exact`; Comparator `compared`. These statuses are copied from the evidence ledger; this build reruns neither checker.
 
-Retained short-paper argument: [paper/1049/erdos-1049-rational-base-lambert.tex](../../../paper/1049/erdos-1049-rational-base-lambert.tex) lines 892-907.
+Retained short-paper argument: [paper/1049/erdos-1049-rational-base-lambert.tex](../../../paper/1049/erdos-1049-rational-base-lambert.tex) lines 893-908.
 
 The short paper retains the corollary and its proof using the stated strict logarithmic comparison and power invariance for every positive integer r. The proof was already present in the input. No new implication or long-record link is asserted.
 
@@ -57,7 +57,7 @@ No candidate was found by the bounded label/declaration rules. Read the long rec
 
 State: **registered_evidence_linked**.
 
-Short statement: [paper/1049/erdos-1049-rational-base-lambert.tex](../../../paper/1049/erdos-1049-rational-base-lambert.tex) lines 909-920.
+Short statement: [paper/1049/erdos-1049-rational-base-lambert.tex](../../../paper/1049/erdos-1049-rational-base-lambert.tex) lines 910-921.
 
 Ledger evidence: Lean `exact`; Comparator `compared`. These statuses are copied from the evidence ledger; this build reruns neither checker.
 
@@ -72,7 +72,7 @@ Long-record location: [paper/reasoning-parts/erdos1049/core.tex](../../../paper/
 
 State: **registered_evidence_linked**.
 
-Short statement: [paper/1049/erdos-1049-rational-base-lambert.tex](../../../paper/1049/erdos-1049-rational-base-lambert.tex) lines 538-549.
+Short statement: [paper/1049/erdos-1049-rational-base-lambert.tex](../../../paper/1049/erdos-1049-rational-base-lambert.tex) lines 539-550.
 
 Ledger evidence: Lean `exact_or_stronger`; Comparator `compared`. These statuses are copied from the evidence ledger; this build reruns neither checker.
 
@@ -85,7 +85,7 @@ Long-record location: [paper/reasoning-parts/erdos1049/core.tex](../../../paper/
 
 State: **unresolved**.
 
-Short statement: [paper/1049/erdos-1049-rational-base-lambert.tex](../../../paper/1049/erdos-1049-rational-base-lambert.tex) lines 63-70.
+Short statement: [paper/1049/erdos-1049-rational-base-lambert.tex](../../../paper/1049/erdos-1049-rational-base-lambert.tex) lines 64-71.
 
 Ledger evidence: Lean `exact`; Comparator `compared`. These statuses are copied from the evidence ledger; this build reruns neither checker.
 
@@ -97,7 +97,7 @@ No candidate was found by the bounded label/declaration rules. Read the long rec
 
 State: **registered_evidence_linked**.
 
-Short statement: [paper/1049/erdos-1049-rational-base-lambert.tex](../../../paper/1049/erdos-1049-rational-base-lambert.tex) lines 335-345.
+Short statement: [paper/1049/erdos-1049-rational-base-lambert.tex](../../../paper/1049/erdos-1049-rational-base-lambert.tex) lines 336-346.
 
 Ledger evidence: Lean `exact_or_stronger`; Comparator `compared`. These statuses are copied from the evidence ledger; this build reruns neither checker.
 
@@ -109,7 +109,7 @@ Long-record location: [paper/reasoning-parts/erdos1049/core.tex](../../../paper/
 
 State: **registered_evidence_linked**.
 
-Short statement: [paper/1049/erdos-1049-rational-base-lambert.tex](../../../paper/1049/erdos-1049-rational-base-lambert.tex) lines 168-183.
+Short statement: [paper/1049/erdos-1049-rational-base-lambert.tex](../../../paper/1049/erdos-1049-rational-base-lambert.tex) lines 169-184.
 
 Ledger evidence: Lean `exact_or_stronger`; Comparator `pending`. These statuses are copied from the evidence ledger; this build reruns neither checker.
 

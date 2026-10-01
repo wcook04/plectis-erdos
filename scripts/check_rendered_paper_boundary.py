@@ -185,10 +185,10 @@ UNIFIED_SYSTEMS_FIRST_MINUTE = {
         "it is not a general incremental scheduler",
         "openness alone does not equalise resources",
         "broad mathematical acceptance is exogenous to this repository and cannot be granted by its maintainer",
-        "no new lean or comparator execution",
     ),
     (11, 11): (
         "local integration commit rather than public main",
+        "no new lean or comparator run was performed for this revision",
     ),
     (12, 12): (
         "source-binding validation does not replay lean, comparator or the full repository release checks",

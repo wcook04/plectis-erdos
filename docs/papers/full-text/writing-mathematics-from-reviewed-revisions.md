@@ -29,7 +29,7 @@ This example, developed in Section <a href="#sec:remainder" data-reference-type
 
 General advice remains useful. Halmos discusses audience, organization and the selection of examples \[halmos, §§3–4\]. Knuth, Larrabee and Roberts discuss the introduction of symbols, the connection between sentences and the reader’s need to know why a step is being taken \[knuth, §1\]. Gowers examines the placement of examples relative to unfamiliar abstractions \[gowers\], while Tao cautions against sacrificing usefulness to excessive optimization of a paper \[tao\]. Such advice identifies questions to ask. A nearby mathematical argument shows how an author has answered them in a particular setting.
 
-The method described here grew out of revisions to short papers and longer research records for eight Erdős problems. Most research and drafting in this project was performed by AI agents. Some agents worked from frozen packets; others had access to the live repository and integrated proposed changes. Their judgements are editorial evidence, with the limitations described below. They are not observations of how an independent mathematical audience read the papers. The examples support an inspectable procedure for revision rather than a claim that the procedure has already been shown to produce better readers or better mathematics.
+The examples come from revisions of papers on Erdős problems. They show how a particular mathematical difficulty led to a particular change of prose. Section <a href="#sec:practice" data-reference-type="ref" data-reference="sec:practice">5</a> records the review method and its limits.
 
 The reader can start with the construction and estimate in Section <a href="#sec:revisions" data-reference-type="ref" data-reference="sec:revisions">2</a>, then follow the additional worked explanations in Section <a href="#sec:worked-explanations" data-reference-type="ref" data-reference="sec:worked-explanations">3</a>. Section <a href="#sec:review" data-reference-type="ref" data-reference="sec:review">4</a> concerns changes that can alter meaning; Section <a href="#sec:practice" data-reference-type="ref" data-reference="sec:practice">5</a> gives a revision procedure and explains how to retain its lessons.
 
@@ -376,6 +376,14 @@ Before moving a passage, identify what a reader of each document must still be a
 
 Compare the shared assertions in both directions. A repaired endpoint in the short paper must reach the long proof; an assumption exposed in the long proof must reach the short statement. After a move, follow the link to the actual passage and check that its notation can be translated. Retain substantial alternatives and counterexamples where they explain the scope or a failed method. Material that serves only the revision history can remain in the editorial record rather than interrupting the mathematical argument.
 
+<a id="put-verification-details-where-they-can-be-checked"></a>
+
+## Put verification details where they can be checked
+
+The mathematical argument should state its hypotheses and explain the inference. An exact computation may be part of that inference; give its mathematical input, output and finite scope at the point of use. Put the software version, source identifiers, replay commands and review history in one verification and reproducibility section or appendix. Refer there from a theorem when its evidence class matters. This keeps proof status available without making a reader decode repository machinery between proof steps.
+
+Give a single account of a shared limitation, then repeat it only when a different claim would otherwise appear unconditional. A conditional premise belongs beside the statement it conditions; an editorial disclaimer does not need to recur after every equation. For an omitted proof, name its mathematical destination by section or theorem and cite the original source where an external result is used. A reference to a file or a “long record” alone does not tell a reader which argument to inspect.
+
 <a id="how-the-practice-developed"></a>
 
 ## How the practice developed
@@ -448,7 +456,7 @@ Wouter van Doorn’s feedback on first-reader legibility, recorded in the projec
 
 # Availability and authorship
 
-The writing skill, source records, lesson history and this paper’s LaTeX source are maintained in the public repository \[ledger; skill\]. The accompanying editorial return documents the new-return examples separately from the accepted historical cases. The public writing method and its review ledger record selected guidance, with source-reading and acceptance boundaries preserved. Will Cook built and directed the research infrastructure and reviewed the claims when he could. AI agents did most of the research and drafting. Cook did not independently verify every claim.
+The writing skill, source records, lesson history and this paper’s LaTeX source are maintained in the public repository \[ledger; skill\]. The accompanying editorial return documents the new-return examples separately from the accepted historical cases. The public writing method and its review ledger record selected guidance, with source-reading and acceptance boundaries preserved. The worked revisions were made across papers on eight Erdős problems. Some agents worked from frozen packets; others integrated changes against the live repository. Their editorial judgements do not measure how independent mathematical readers understood the papers. The method has not been tested for improved reader comprehension. Will Cook built and directed the research infrastructure and reviewed the claims when he could. AI agents did most of the research and drafting. Cook did not independently verify every claim.
 
 <div class="thebibliography">
 
@@ -504,4 +512,4 @@ ACM SIGPLAN, Empirical Evaluation Guidelines, committee guidance and FAQ (update
 
 </div>
 
-Earlier edition and inspection notes in the bibliography are retained as historical records. This revision additionally reads §§2–3 of Knuth et al., printed pp. 7–8 (PDF pp. 9–10), beyond the §1 passages used previously. The worked examples were checked against manuscript sources frozen in the 1 October 2026 packet; those snapshot dates need not be the manuscripts’ title-page dates. Historical cases retain their stated revision identities. Repository links locate manuscript families, not a claim that the exact frozen revision is public. The accompanying review record identifies the inspected bytes and passages and separates donor reports, current checks and integration decisions.
+*Source inspection and reproducibility.* This revision additionally reads §§2–3 of Knuth et al., printed pp. 7–8 (PDF pp. 9–10), beyond the §1 passages used previously. Worked examples were checked against manuscript sources frozen in the 1 October 2026 packet; snapshot and title-page dates may differ. Historical cases retain their stated revision identities. Repository links locate manuscript families; the review record identifies the inspected versions, passages and integration decisions.

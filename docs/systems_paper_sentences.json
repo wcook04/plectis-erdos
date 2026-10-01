@@ -6,37 +6,37 @@
     {
       "id": "257-example",
       "path": "paper/257/erdos-257-mersenne-support-subseries.tex",
-      "start_line": 273,
-      "end_line": 304,
+      "start_line": 279,
+      "end_line": 310,
       "kind": "source",
-      "sha256": "ddc400ec2fb33acd971e82fd77969267194698807f95b3c557d41ce21803bf50",
+      "sha256": "04cbd68d324c0a7816e856194c2c02c1818b3dabf15222cea5ff69f4ba6ab3aa",
       "excerpt_sha256": "670a9de7ffd16c1ba2caccf5afc6bebe99ec3e1e81ee4336dc47769c8e6f4605"
     },
     {
       "id": "257-proof",
       "path": "paper/257/erdos-257-mersenne-support-subseries.tex",
-      "start_line": 123,
-      "end_line": 271,
+      "start_line": 128,
+      "end_line": 277,
       "kind": "source",
-      "sha256": "ddc400ec2fb33acd971e82fd77969267194698807f95b3c557d41ce21803bf50",
-      "excerpt_sha256": "71de54a61ece9a2464875ee0b75a97d9bbce84946530ec1847080d3657b0c920"
+      "sha256": "04cbd68d324c0a7816e856194c2c02c1818b3dabf15222cea5ff69f4ba6ab3aa",
+      "excerpt_sha256": "071f91a304d5d850218fb7cea780d88a5d3176bc6e4b7a9088544a23b3dfa85f"
     },
     {
       "id": "257-reciprocal",
       "path": "paper/257/erdos-257-mersenne-support-subseries.tex",
-      "start_line": 910,
-      "end_line": 937,
+      "start_line": 922,
+      "end_line": 949,
       "kind": "source",
-      "sha256": "ddc400ec2fb33acd971e82fd77969267194698807f95b3c557d41ce21803bf50",
+      "sha256": "04cbd68d324c0a7816e856194c2c02c1818b3dabf15222cea5ff69f4ba6ab3aa",
       "excerpt_sha256": "07b08dc8e23653a1bea2c48b087571857616d9e98726c98f080aee58c20cd6cf"
     },
     {
       "id": "257-statement",
       "path": "paper/257/erdos-257-mersenne-support-subseries.tex",
-      "start_line": 71,
-      "end_line": 87,
+      "start_line": 73,
+      "end_line": 89,
       "kind": "source",
-      "sha256": "ddc400ec2fb33acd971e82fd77969267194698807f95b3c557d41ce21803bf50",
+      "sha256": "04cbd68d324c0a7816e856194c2c02c1818b3dabf15222cea5ff69f4ba6ab3aa",
       "excerpt_sha256": "76093fcff9c86ff532b2182837e7c4e191e9806f477c420bc2602d706c643e17"
     },
     {
@@ -62,8 +62,8 @@
       "path": "docs/papers/corpus.json",
       "start_line": 1,
       "end_line": 9194,
-      "sha256": "1d87ecf6b36ca8d6923752afb87efce67878e6386495e73e84fc7a77ef5100b1",
-      "excerpt_sha256": "1d87ecf6b36ca8d6923752afb87efce67878e6386495e73e84fc7a77ef5100b1",
+      "sha256": "7ec0f4501ed59e189f74b3b7c0ed6355cdc7c990f8321346207e70a3c656fdba",
+      "excerpt_sha256": "7ec0f4501ed59e189f74b3b7c0ed6355cdc7c990f8321346207e70a3c656fdba",
       "kind": "source"
     },
     {
@@ -71,8 +71,8 @@
       "path": "docs/systems_paper_counts.json",
       "start_line": 1,
       "end_line": 65,
-      "sha256": "144f86b22a8315e297fcce3dedeb827cf062b99ef6c331cfc0e57640cc258f58",
-      "excerpt_sha256": "144f86b22a8315e297fcce3dedeb827cf062b99ef6c331cfc0e57640cc258f58",
+      "sha256": "b579fddf139064c9478802718468ad5215552946e7203030c8b3becd4eb210e4",
+      "excerpt_sha256": "b579fddf139064c9478802718468ad5215552946e7203030c8b3becd4eb210e4",
       "kind": "source"
     },
     {
@@ -89,8 +89,8 @@
       "path": "docs/paper_lean_coverage.json",
       "start_line": 1,
       "end_line": 29162,
-      "sha256": "7c2eb7de328a826d0ea6277b71d0e992d34762471f019a1cc1eafa1ed2d7a2af",
-      "excerpt_sha256": "7c2eb7de328a826d0ea6277b71d0e992d34762471f019a1cc1eafa1ed2d7a2af",
+      "sha256": "b3d31b98b2d1e844947494c25fb04b4c1b9fc972315ca53925f5da040f83383d",
+      "excerpt_sha256": "b3d31b98b2d1e844947494c25fb04b4c1b9fc972315ca53925f5da040f83383d",
       "kind": "source"
     },
     {
@@ -99,8 +99,8 @@
       "start_line": 1,
       "end_line": 29162,
       "kind": "supplied_snapshot",
-      "sha256": "7c2eb7de328a826d0ea6277b71d0e992d34762471f019a1cc1eafa1ed2d7a2af",
-      "excerpt_sha256": "7c2eb7de328a826d0ea6277b71d0e992d34762471f019a1cc1eafa1ed2d7a2af"
+      "sha256": "b3d31b98b2d1e844947494c25fb04b4c1b9fc972315ca53925f5da040f83383d",
+      "excerpt_sha256": "b3d31b98b2d1e844947494c25fb04b4c1b9fc972315ca53925f5da040f83383d"
     },
     {
       "id": "coverage-reciprocal",
@@ -108,8 +108,8 @@
       "start_line": 1,
       "end_line": 29162,
       "kind": "supplied_snapshot",
-      "sha256": "7c2eb7de328a826d0ea6277b71d0e992d34762471f019a1cc1eafa1ed2d7a2af",
-      "excerpt_sha256": "7c2eb7de328a826d0ea6277b71d0e992d34762471f019a1cc1eafa1ed2d7a2af"
+      "sha256": "b3d31b98b2d1e844947494c25fb04b4c1b9fc972315ca53925f5da040f83383d",
+      "excerpt_sha256": "b3d31b98b2d1e844947494c25fb04b4c1b9fc972315ca53925f5da040f83383d"
     },
     {
       "id": "coverage-weighted",
@@ -117,8 +117,8 @@
       "start_line": 1,
       "end_line": 29162,
       "kind": "supplied_snapshot",
-      "sha256": "7c2eb7de328a826d0ea6277b71d0e992d34762471f019a1cc1eafa1ed2d7a2af",
-      "excerpt_sha256": "7c2eb7de328a826d0ea6277b71d0e992d34762471f019a1cc1eafa1ed2d7a2af"
+      "sha256": "b3d31b98b2d1e844947494c25fb04b4c1b9fc972315ca53925f5da040f83383d",
+      "excerpt_sha256": "b3d31b98b2d1e844947494c25fb04b4c1b9fc972315ca53925f5da040f83383d"
     },
     {
       "id": "credit",
@@ -135,8 +135,8 @@
       "start_line": 1,
       "end_line": 36203,
       "kind": "supplied_snapshot",
-      "sha256": "9050d63f146e62406d7ba5f7495a025092c5502b645c5fc99b8a60bc2f96003a",
-      "excerpt_sha256": "9050d63f146e62406d7ba5f7495a025092c5502b645c5fc99b8a60bc2f96003a"
+      "sha256": "af495b1932639ea35dd5c3be07f8b56e59f062f0c4262592743fe1d5c8985dd3",
+      "excerpt_sha256": "af495b1932639ea35dd5c3be07f8b56e59f062f0c4262592743fe1d5c8985dd3"
     },
     {
       "id": "essay-pages",
@@ -214,19 +214,19 @@
       "id": "paper-evidence",
       "path": "scripts/paper_evidence.py",
       "start_line": 1,
-      "end_line": 1527,
-      "sha256": "0dafd060cbd4df90d04180e65ff4be8a012c38f9a3dae01efe37705bdbc8f66b",
-      "excerpt_sha256": "0dafd060cbd4df90d04180e65ff4be8a012c38f9a3dae01efe37705bdbc8f66b",
+      "end_line": 1539,
+      "sha256": "1b89e0a64707ea212e40e2cc7c59e8a70b1243e3c7869ad8208902edbb2b32ad",
+      "excerpt_sha256": "1b89e0a64707ea212e40e2cc7c59e8a70b1243e3c7869ad8208902edbb2b32ad",
       "kind": "source"
     },
     {
       "id": "paper-resolver",
       "path": "scripts/paper_evidence.py",
       "kind": "source",
-      "sha256": "0dafd060cbd4df90d04180e65ff4be8a012c38f9a3dae01efe37705bdbc8f66b",
+      "sha256": "1b89e0a64707ea212e40e2cc7c59e8a70b1243e3c7869ad8208902edbb2b32ad",
       "start_line": 1,
-      "end_line": 1527,
-      "excerpt_sha256": "0dafd060cbd4df90d04180e65ff4be8a012c38f9a3dae01efe37705bdbc8f66b"
+      "end_line": 1539,
+      "excerpt_sha256": "1b89e0a64707ea212e40e2cc7c59e8a70b1243e3c7869ad8208902edbb2b32ad"
     },
     {
       "id": "private-writer",
@@ -466,10 +466,10 @@
       "id": "reader-guide",
       "path": "docs/READING_GUIDE.md",
       "start_line": 1,
-      "end_line": 146,
+      "end_line": 152,
       "kind": "source",
-      "sha256": "1996d83b320807116e6d70ac051c2483a0705a5549f292aa8f146a71c033d4b1",
-      "excerpt_sha256": "1996d83b320807116e6d70ac051c2483a0705a5549f292aa8f146a71c033d4b1"
+      "sha256": "3747b6029edb074b2a01fae35ad43ffb8e71f02b8af1c4d0674445b8f1fbaee0",
+      "excerpt_sha256": "3747b6029edb074b2a01fae35ad43ffb8e71f02b8af1c4d0674445b8f1fbaee0"
     },
     {
       "id": "explanation-depth",
@@ -697,9 +697,9 @@
       "id": "r8-release",
       "kind": "source",
       "path": "scripts/check_release.py",
-      "start_line": 1648,
-      "end_line": 1724,
-      "sha256": "4421bf54737bb1ea561fdf7013c08a299c6a7c5b9fed1931d57fe3058d1a7809",
+      "start_line": 1658,
+      "end_line": 1734,
+      "sha256": "8cd6ad61f8a80bcf9b7032b02daa7e8c1266dc15db5d8697923a5b8dbf266196",
       "excerpt_sha256": "da39690f9c38fd66ca7b1f7496108ac87673b67260a7c1c234b842008edd0adb",
       "custody": "Current native public file inspected as source; no fresh execution."
     },
@@ -719,7 +719,7 @@
       "path": "scripts/paper_evidence.py",
       "start_line": 570,
       "end_line": 635,
-      "sha256": "0dafd060cbd4df90d04180e65ff4be8a012c38f9a3dae01efe37705bdbc8f66b",
+      "sha256": "1b89e0a64707ea212e40e2cc7c59e8a70b1243e3c7869ad8208902edbb2b32ad",
       "excerpt_sha256": "dedb18e1e7983c374b871df0dd1044bf6911170ae2bb1a16e2f8ca5a0b28c550",
       "custody": "Current native public file inspected as source; no fresh execution."
     },
@@ -737,10 +737,10 @@
       "id": "r8-weighted-proof",
       "kind": "source",
       "path": "paper/257/erdos-257-mersenne-support-subseries.tex",
-      "start_line": 170,
-      "end_line": 287,
-      "sha256": "ddc400ec2fb33acd971e82fd77969267194698807f95b3c557d41ce21803bf50",
-      "excerpt_sha256": "aecbf3b02b4b923ca6826efd7cb4530cd15c1ff41652efe52e43924f6578b88c",
+      "start_line": 175,
+      "end_line": 293,
+      "sha256": "04cbd68d324c0a7816e856194c2c02c1818b3dabf15222cea5ff69f4ba6ab3aa",
+      "excerpt_sha256": "92bbcec0fccefd5abe945c1d5e45afa5b0e8d6b88f1e14209faa92deefd80b00",
       "custody": "Current native public file inspected as source; no fresh execution."
     },
     {
@@ -1531,7 +1531,7 @@
     },
     {
       "id": "r4.paper1.03",
-      "text": "The long record retains the complete proof and subsidiary cases. A correspondence link names the passage supporting a particular short-paper claim, so the reader can move from the explanation to the calculation without searching the whole record.",
+      "text": "The companion paper retains the complete proof and subsidiary cases. A correspondence link names the passage supporting a particular short-paper claim, so the reader can move from the explanation to the calculation without searching the whole paper.",
       "owner": "systems",
       "class": "reported",
       "evidence_refs": [
@@ -1541,7 +1541,7 @@
         "private-writing-brief"
       ],
       "warrant": "Separates inspected assembly code from author-supplied explanations and the reported writer/correspondence extensions.",
-      "statement_sha256": "13f883972691a16091c7800fef95772a64a8bdbfcd5b9e6ada133f99cdc0d90b",
+      "statement_sha256": "6a8754a7f9ce9f00a5f4636f8e779a2e6b958bba65df8497c26f779269869ae2",
       "section": "sec:paper"
     },
     {
@@ -1627,8 +1627,8 @@
     },
     {
       "id": "r13.paper.08",
-      "text": "After acceptance, integration requires restoring the long record's authored sections, regenerating evidence and navigation, and inspecting the compiled pages, figures and proof links.",
-      "statement_sha256": "f6174003a733ae04268ca9a13abaf8477b80673b84894832db293177e9be476f",
+      "text": "After acceptance, integration requires restoring the companion paper's authored sections, regenerating evidence and navigation, and inspecting the compiled pages, figures and proof links.",
+      "statement_sha256": "c3f34a4186d3c4bb602db176538849b44d81f1afdaf96c142769c7175cf36650",
       "class": "method",
       "evidence_refs": [
         "writing-contract",
@@ -1638,7 +1638,7 @@
         "assembler",
         "paper-evidence"
       ],
-      "warrant": "The editorial integration protocol requires restoring authored long records, refreshing projections and inspecting the rendered result. Visual inspection is a review action, not a guarantee of the static return checker.",
+      "warrant": "The editorial integration protocol requires restoring authored companion manuscripts, refreshing projections and inspecting the rendered result. Visual inspection is a review action, not a guarantee of the static return checker.",
       "section": "sec:paper"
     },
     {
@@ -2424,8 +2424,8 @@
     },
     {
       "id": "r14.agmai.limits",
-      "text": "Several of these proposed release practices have counterparts in the\nrecords described here~\\cite[Section 2.B, Step I]{agmai2026}: the short\npaper and long record explain and attribute the argument, the paper-to-Lean\nledger records formal correspondence and its limits, and the challenge\nfiles and generated \\texttt{formalization.yaml} expose the comparison inputs.\nThose records make the result inspectable; they do not certify a\nmathematician's understanding. The architecture alone does not establish\ncomplete per-result model, prompt, time and cost disclosure, an account of\ncampaign-wide selection and unsuccessful attempts, or an independent\nscholarly deposit. The further recommendations on funding community-led\nunderstanding and equitable model access address AI laboratories; this\nprototype does not demonstrate those institutional outcomes.",
-      "statement_sha256": "7d840a4a9646c7c5f095091b383d52d15b0745bf9f4fc90b498a44c9a3ce8ae4",
+      "text": "Several of these proposed release practices have counterparts in the\nrecords described here~\\cite[Section 2.B, Step I]{agmai2026}: the short\npaper and companion paper explain and attribute the argument, the paper-to-Lean\nledger records formal correspondence and its limits, and the challenge\nfiles and generated \\texttt{formalization.yaml} expose the comparison inputs.\nThose records make the result inspectable; they do not certify a\nmathematician's understanding. The architecture alone does not establish\ncomplete per-result model, prompt, time and cost disclosure, an account of\ncampaign-wide selection and unsuccessful attempts, or an independent\nscholarly deposit. The further recommendations on funding community-led\nunderstanding and equitable model access address AI laboratories; this\nprototype does not demonstrate those institutional outcomes.",
+      "statement_sha256": "c08e93a1ea21dc59fb4553e46661b66feff78adff66dd5d96accfae03340550b",
       "class": "literature",
       "evidence_refs": [
         "lit-agmai",

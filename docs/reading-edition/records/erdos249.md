@@ -25,7 +25,7 @@ A complete registered-evidence match locates the same full declaration set in th
 
 State: **unresolved**.
 
-Short statement: [paper/249/erdos-249-binary-totient-series.tex](../../../paper/249/erdos-249-binary-totient-series.tex) lines 84-105.
+Short statement: [paper/249/erdos-249-binary-totient-series.tex](../../../paper/249/erdos-249-binary-totient-series.tex) lines 85-106.
 
 Ledger evidence: Lean `exact_or_stronger`; Comparator `compared`. These statuses are copied from the evidence ledger; this build reruns neither checker.
 
@@ -37,11 +37,11 @@ No candidate was found by the bounded label/declaration rules. Read the long rec
 
 State: **short_proof_explained_long_link_open**.
 
-Short statement: [paper/249/erdos-249-binary-totient-series.tex](../../../paper/249/erdos-249-binary-totient-series.tex) lines 469-479.
+Short statement: [paper/249/erdos-249-binary-totient-series.tex](../../../paper/249/erdos-249-binary-totient-series.tex) lines 470-480.
 
 Ledger evidence: Lean `exact`; Comparator `compared`. These statuses are copied from the evidence ledger; this build reruns neither checker.
 
-Retained short-paper argument: [paper/249/erdos-249-binary-totient-series.tex](../../../paper/249/erdos-249-binary-totient-series.tex) lines 480-485.
+Retained short-paper argument: [paper/249/erdos-249-binary-totient-series.tex](../../../paper/249/erdos-249-binary-totient-series.tex) lines 481-486.
 
 Appendix A retains the full dyadic specialisation and proof from the finite-level theorem, including independence, spanning and the increasing finite ranks. Revised statement: line 385, printed A.1, preview p. 6. This is a writer disposition for native review, not a claim that the queued correspondence has already been accepted.
 
@@ -57,7 +57,7 @@ No candidate was found by the bounded label/declaration rules. Read the long rec
 
 State: **unresolved**.
 
-Short statement: [paper/249/erdos-249-binary-totient-series.tex](../../../paper/249/erdos-249-binary-totient-series.tex) lines 306-321.
+Short statement: [paper/249/erdos-249-binary-totient-series.tex](../../../paper/249/erdos-249-binary-totient-series.tex) lines 307-322.
 
 Ledger evidence: Lean `exact`; Comparator `compared`. These statuses are copied from the evidence ledger; this build reruns neither checker.
 
@@ -69,11 +69,11 @@ No candidate was found by the bounded label/declaration rules. Read the long rec
 
 State: **short_proof_explained_long_link_open**.
 
-Short statement: [paper/249/erdos-249-binary-totient-series.tex](../../../paper/249/erdos-249-binary-totient-series.tex) lines 489-497.
+Short statement: [paper/249/erdos-249-binary-totient-series.tex](../../../paper/249/erdos-249-binary-totient-series.tex) lines 490-498.
 
 Ledger evidence: Lean `exact`; Comparator `compared`. These statuses are copied from the evidence ledger; this build reruns neither checker.
 
-Retained short-paper argument: [paper/249/erdos-249-binary-totient-series.tex](../../../paper/249/erdos-249-binary-totient-series.tex) lines 498-506.
+Retained short-paper argument: [paper/249/erdos-249-binary-totient-series.tex](../../../paper/249/erdos-249-binary-totient-series.tex) lines 499-507.
 
 Appendix A retains the complete proof by restricting a putative relation to a progression on which the periodic coefficients are fixed; the eventual affine-independence argument remains available in section 2. Revised statement: line 405, printed A.2, preview p. 6. This is a writer disposition for native review, not a claim that the queued correspondence has already been accepted.
 
@@ -89,7 +89,7 @@ No candidate was found by the bounded label/declaration rules. Read the long rec
 
 State: **unresolved**.
 
-Short statement: [paper/249/erdos-249-binary-totient-series.tex](../../../paper/249/erdos-249-binary-totient-series.tex) lines 374-383.
+Short statement: [paper/249/erdos-249-binary-totient-series.tex](../../../paper/249/erdos-249-binary-totient-series.tex) lines 375-384.
 
 Ledger evidence: Lean `exact`; Comparator `compared`. These statuses are copied from the evidence ledger; this build reruns neither checker.
 
@@ -101,7 +101,7 @@ No candidate was found by the bounded label/declaration rules. Read the long rec
 
 State: **unresolved**.
 
-Short statement: [paper/249/erdos-249-binary-totient-series.tex](../../../paper/249/erdos-249-binary-totient-series.tex) lines 394-398.
+Short statement: [paper/249/erdos-249-binary-totient-series.tex](../../../paper/249/erdos-249-binary-totient-series.tex) lines 395-399.
 
 Ledger evidence: Lean `exact`; Comparator `compared`. These statuses are copied from the evidence ledger; this build reruns neither checker.
 
@@ -113,7 +113,7 @@ No candidate was found by the bounded label/declaration rules. Read the long rec
 
 State: **registered_evidence_linked**.
 
-Short statement: [paper/249/erdos-249-binary-totient-series.tex](../../../paper/249/erdos-249-binary-totient-series.tex) lines 614-623.
+Short statement: [paper/249/erdos-249-binary-totient-series.tex](../../../paper/249/erdos-249-binary-totient-series.tex) lines 615-624.
 
 Ledger evidence: Lean `exact`; Comparator `compared`. These statuses are copied from the evidence ledger; this build reruns neither checker.
 
@@ -125,7 +125,7 @@ Long-record location: [paper/reasoning-parts/erdos249/a249_front.tex](../../../p
 
 State: **registered_evidence_linked**.
 
-Short statement: [paper/249/erdos-249-binary-totient-series.tex](../../../paper/249/erdos-249-binary-totient-series.tex) lines 703-711.
+Short statement: [paper/249/erdos-249-binary-totient-series.tex](../../../paper/249/erdos-249-binary-totient-series.tex) lines 704-712.
 
 Ledger evidence: Lean `exact`; Comparator `compared`. These statuses are copied from the evidence ledger; this build reruns neither checker.
 
