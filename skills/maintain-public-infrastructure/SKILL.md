@@ -233,6 +233,10 @@ source aliases through parent links and link targets, and compare existing
 entry identities where different spellings can name the same directory.
 Treat an existing destination symlink as an entry to replace, so its target
 remains intact. Exercise safe aliases as well as refused overlaps.
+Treat an identical physical copy as current before traversing its contents.
+Report file and directory inspection failures without replacing the affected
+installation, even with force. Exercise every CLI mode and both looping and
+dangling links; a path-resolution exception must not escape as a traceback.
 Prepare a replacement before moving an installed skill. Exercise preparation,
 promotion and restoration failures, including symlinks, and keep a recoverable
 backup if restoration fails. A multi-file generated refresh must also restore

@@ -16,6 +16,7 @@ from __future__ import annotations
 
 import argparse
 import filecmp
+import errno
 import os
 import shutil
 import stat
@@ -42,26 +43,31 @@ def same_tree(left: Path, right: Path) -> bool:
     # dircmp compares stat signatures by default. A copied skill can retain
     # its timestamp and byte count after an edit, so compare instruction bytes
     # directly; this also avoids filecmp's metadata-keyed result cache.
-    try:
-        if any(
-            (left / name).read_bytes() != (right / name).read_bytes()
-            for name in comparison.common_files
-        ):
-            return False
-    except OSError:
+    if any(
+        (left / name).read_bytes() != (right / name).read_bytes()
+        for name in comparison.common_files
+    ):
         return False
     return all(same_tree(left / name, right / name) for name in comparison.common_dirs)
 
 
+def resolved_path(path: Path) -> Path:
+    try:
+        return path.resolve()
+    except RuntimeError as error:
+        # Python 3.10-3.12 report symlink loops as RuntimeError.
+        raise ValueError(f"cannot resolve path {path}: {error}") from error
+
+
 def target_directory(args: argparse.Namespace) -> Path:
     if args.target_dir is not None:
-        directory = args.target_dir.expanduser().resolve()
+        directory = resolved_path(args.target_dir.expanduser())
     elif args.target == "codex":
         codex_root = Path(os.environ.get("CODEX_HOME", Path.home() / ".codex"))
-        directory = (codex_root / "skills").expanduser().resolve()
+        directory = resolved_path((codex_root / "skills").expanduser())
     elif args.target == "claude":
         claude_root = Path(os.environ.get("CLAUDE_CONFIG_DIR", Path.home() / ".claude"))
-        directory = (claude_root / "skills").expanduser().resolve()
+        directory = resolved_path((claude_root / "skills").expanduser())
     else:
         raise ValueError("choose --target codex|claude or provide --target-dir")
     # Preview must not call an impossible destination "missing". The nearest
@@ -89,11 +95,23 @@ def status(source: Path, destination: Path, mode: str) -> str:
     if not destination.exists() and not destination.is_symlink():
         return "missing"
     if mode == "symlink":
-        if destination.is_symlink() and destination.resolve() == source.resolve():
-            return "current"
+        if destination.is_symlink():
+            try:
+                target = destination.resolve(strict=True)
+            except RuntimeError:
+                # Older pathlib versions report even strict loops this way.
+                return "different"
+            except OSError as error:
+                if error.errno in {errno.ENOENT, errno.ENOTDIR, errno.ELOOP}:
+                    return "different"
+                raise
+            if target == resolved_path(source):
+                return "current"
         return "different"
     if destination.is_symlink():
         return "different"
+    if same_entry(resolved_path(source), destination):
+        return "current"
     return "current" if same_tree(source, destination) else "different"
 
 
@@ -118,14 +136,14 @@ def overlapping_entries(left: Path, right: Path) -> bool:
 
 def source_access_entries(source: Path) -> set[Path]:
     """Include links traversed through other links' targets, not just parents."""
-    entries = {source.resolve(), source.parent.resolve() / source.name}
+    entries = {resolved_path(source), resolved_path(source.parent) / source.name}
     pending = [source]
     seen_links = set()
     while pending:
         access = pending.pop()
         for part in (access, *access.parents):
             if part.is_symlink():
-                entry = part.parent.resolve() / part.name
+                entry = resolved_path(part.parent) / part.name
                 entries.add(entry)
                 if entry not in seen_links:
                     seen_links.add(entry)
@@ -135,10 +153,10 @@ def source_access_entries(source: Path) -> set[Path]:
 
 
 def validate_destination(source: Path, destination: Path, mode: str) -> None:
-    source_path = source.resolve()
+    source_path = resolved_path(source)
     # Replacement moves the destination entry, not a symlink's target. Resolve
     # its parent so aliases cannot conceal an overlap with the source tree.
-    destination_path = destination.parent.resolve() / destination.name
+    destination_path = resolved_path(destination.parent) / destination.name
     if same_entry(source_path, destination_path) and mode == "copy":
         return
     if any(
@@ -247,7 +265,12 @@ def main() -> int:
     failures: list[str] = []
     for name, source in chosen.items():
         destination = target / name
-        state = status(source, destination, args.mode)
+        try:
+            state = status(source, destination, args.mode)
+        except (OSError, ValueError) as error:
+            print(f"error: cannot inspect {name} at {destination}: {error}", file=sys.stderr)
+            failures.append(name)
+            continue
         print(f"{state:9} {name}: {source} -> {destination} ({args.mode})")
         if args.check:
             if state != "current":

@@ -32,6 +32,10 @@ python3 scripts/install_agent_skills.py --target-dir /absolute/path/to/skills
 ```
 
 The preview reports `missing`, `current`, or `different`. It does not write.
+An inspection error names the affected skill and leaves that destination
+unchanged, including with `--force`. Restore access before retrying. A
+looping or dangling installed link is `different`; inspect it before choosing
+forced replacement.
 Choose a destination outside the selected source skill directories. The
 installer rejects ancestor or descendant overlaps before preview or apply,
 including paths reached through a parent symlink. A copy onto its own source

@@ -351,8 +351,110 @@ def check_failed_installation_preserves_material() -> None:
         assert str(backup) in error, "failed restoration must identify the surviving original"
 
 
+def check_inspection_failures_and_identity() -> None:
+    with tempfile.TemporaryDirectory(prefix="plectis-skill-inspection-") as temp:
+        root = Path(temp)
+        source = root / "writing"
+        source.mkdir()
+        original = b"source instructions\n"
+        (source / "SKILL.md").write_bytes(original)
+        name = "writing"
+
+        def cli(target, options=(), *, mode="copy", expected=0, available=None):
+            stdout, stderr = io.StringIO(), io.StringIO()
+            args = [str(INSTALLER), "--target-dir", str(target), "--mode", mode, *options]
+            selected = {name: source} if available is None else available
+            with patch.object(sys, "argv", args), \
+                    patch.object(installer, "skill_directories", return_value=selected), \
+                    contextlib.redirect_stdout(stdout), contextlib.redirect_stderr(stderr):
+                actual = installer.main()
+            assert actual == expected, (actual, expected, stdout.getvalue(), stderr.getvalue())
+            assert "Traceback" not in stderr.getvalue()
+            return stdout.getvalue(), stderr.getvalue()
+
+        # Physical identity is a current copy without inspecting descendants,
+        # even if the source contains a recursive reference.
+        reference = source / "references"
+        reference.symlink_to(source, target_is_directory=True)
+        for options in ((), ("--check",), ("--apply",), ("--force", "--apply")):
+            with patch.object(installer.tempfile, "mkdtemp", side_effect=AssertionError("staged identical source")), \
+                    patch.object(installer.shutil, "copytree", side_effect=AssertionError("copied identical source")):
+                output, error = cli(root, options)
+                assert "current" in output and not error
+                installer.install_one(source, source, "copy", True)
+            assert reference.is_symlink() and (source / "SKILL.md").read_bytes() == original
+        reference.unlink()
+        reference.mkdir()
+        (reference / "guide.md").write_bytes(b"source guide\n")
+
+        target = root / "installed"
+        destination = target / name
+        installer.install_one(source, destination, "copy", False)
+        locked = destination / "references"
+        # Inject the directory-listing failure so root runners also exercise
+        # this boundary. Preserve the user's actual directory permissions.
+        previous_mode = locked.stat().st_mode
+        locked.chmod(0)
+        try:
+            for options in ((), ("--check",), ("--apply",), ("--force", "--apply")):
+                fault = PermissionError(13, "simulated unreadable directory", str(locked))
+                with patch.object(installer.filecmp, "dircmp", side_effect=fault):
+                    output, error = cli(target, options, expected=1)
+                assert not output and "cannot inspect writing" in error and str(destination) in error
+                assert locked.stat().st_mode == (previous_mode & ~0o777)
+                assert (destination / "SKILL.md").read_bytes() == original
+            # On ordinary POSIX user runners, replay the real permission fault.
+            try:
+                list(locked.iterdir())
+            except PermissionError:
+                output, error = cli(target, ("--force", "--apply"), expected=1)
+                assert not output and "cannot inspect writing" in error
+        finally:
+            locked.chmod(previous_mode)
+        assert (locked / "guide.md").read_bytes() == b"source guide\n"
+        assert set(target.iterdir()) == {destination}
+
+        unreadable_file = destination / "SKILL.md"
+        original_read = Path.read_bytes
+
+        def failed_read(path):
+            if path.resolve() == unreadable_file.resolve():
+                raise PermissionError(13, "simulated unreadable file", str(path))
+            return original_read(path)
+
+        for options in ((), ("--check",), ("--apply",), ("--force", "--apply")):
+            with patch.object(Path, "read_bytes", failed_read):
+                output, error = cli(target, options, expected=1)
+            assert not output and "cannot inspect writing" in error
+            assert unreadable_file.read_bytes() == original
+            assert (locked / "guide.md").read_bytes() == b"source guide\n"
+
+        for mode in ("copy", "symlink"):
+            for kind in ("loop", "dangling"):
+                link_target = root / f"{mode}-{kind}"
+                link_target.mkdir()
+                link = link_target / name
+                link.symlink_to(name if kind == "loop" else "absent")
+                before = link.readlink()
+                for options, expected in (((), 0), (("--check",), 1), (("--apply",), 1)):
+                    output, _ = cli(link_target, options, mode=mode, expected=expected)
+                    assert "different" in output and link.is_symlink() and link.readlink() == before
+                cli(link_target, ("--force", "--apply"), mode=mode)
+                cli(link_target, ("--check",), mode=mode)
+                assert (link / "SKILL.md").read_bytes() == original
+                assert (source / "SKILL.md").read_bytes() == original
+
+        invalid_target = root / "looped-target"
+        invalid_target.symlink_to(invalid_target.name)
+        for options in ((), ("--check",), ("--apply",), ("--force", "--apply")):
+            output, error = cli(invalid_target, options, expected=2)
+            assert not output and "error:" in error
+            assert invalid_target.is_symlink() and invalid_target.readlink() == Path(invalid_target.name)
+
+
 def main() -> int:
     check_invalid_destination_cli()
+    check_inspection_failures_and_identity()
     check_overlapping_installation_paths()
     check_failed_installation_preserves_material()
     readme = (ROOT / "README.md").read_text(encoding="utf-8")
