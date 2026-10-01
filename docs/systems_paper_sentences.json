@@ -466,10 +466,10 @@
       "id": "reader-guide",
       "path": "docs/READING_GUIDE.md",
       "start_line": 1,
-      "end_line": 152,
+      "end_line": 147,
       "kind": "source",
-      "sha256": "3747b6029edb074b2a01fae35ad43ffb8e71f02b8af1c4d0674445b8f1fbaee0",
-      "excerpt_sha256": "3747b6029edb074b2a01fae35ad43ffb8e71f02b8af1c4d0674445b8f1fbaee0"
+      "sha256": "f3ba7f71cfdf586710c63e1f5286e53221d805f05af620492b365d975c6bce4c",
+      "excerpt_sha256": "f3ba7f71cfdf586710c63e1f5286e53221d805f05af620492b365d975c6bce4c"
     },
     {
       "id": "explanation-depth",
