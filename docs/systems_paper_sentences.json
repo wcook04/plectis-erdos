@@ -475,10 +475,10 @@
       "id": "explanation-depth",
       "path": "skills/explain-public-system/SKILL.md",
       "start_line": 1,
-      "end_line": 192,
+      "end_line": 200,
       "kind": "source",
-      "sha256": "91c8e240abe1e68f69985f027c8e470b5bc1e68841d6e9c1fc9e9cf0186d2cb4",
-      "excerpt_sha256": "91c8e240abe1e68f69985f027c8e470b5bc1e68841d6e9c1fc9e9cf0186d2cb4"
+      "sha256": "51cc4e8152d0f5f59042443147e0778010dd477ed924f5bc31d79925c1ad9635",
+      "excerpt_sha256": "51cc4e8152d0f5f59042443147e0778010dd477ed924f5bc31d79925c1ad9635"
     },
     {
       "id": "agent-entry",
@@ -520,10 +520,10 @@
       "id": "return-protocol",
       "path": "skills/erdos-research-return/SKILL.md",
       "start_line": 1,
-      "end_line": 178,
+      "end_line": 186,
       "kind": "source",
-      "sha256": "328296763a16a17a8ae0f70d58aae9ba4fed5228b9bc1f9b0473e22e4c157982",
-      "excerpt_sha256": "328296763a16a17a8ae0f70d58aae9ba4fed5228b9bc1f9b0473e22e4c157982"
+      "sha256": "df53987de8514b2c1dcc2908afc3048543de4ab582218c2bcc1a23963a51b2b7",
+      "excerpt_sha256": "df53987de8514b2c1dcc2908afc3048543de4ab582218c2bcc1a23963a51b2b7"
     },
     {
       "id": "architecture-return",
