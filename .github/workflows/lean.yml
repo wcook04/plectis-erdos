@@ -650,8 +650,27 @@ jobs:
               https://sh.rustup.rs | sh -s -- -y --default-toolchain stable --profile minimal
             . "$HOME/.cargo/env"
           fi
+          # Record the toolchain actually selected in Nanoda's build directory.
+          # --locked fixes dependency resolution, not the compiler or runner image.
+          (cd "$RUNNER_TEMP/nanoda" && {
+            printf 'nanoda_rev=%s\n' "$NANODA_REV"
+            printf 'runner_os=%s runner_arch=%s image_os=%s image_version=%s\n' \
+              "$RUNNER_OS" "$RUNNER_ARCH" "${ImageOS:-unknown}" "${ImageVersion:-unknown}"
+            command -v rustc
+            command -v cargo
+            rustc -vV
+            cargo -vV
+            if command -v rustup >/dev/null 2>&1; then
+              if ! rustup show active-toolchain; then
+                printf 'rustup_active_toolchain=unavailable\n'
+              fi
+            fi
+            sha256sum Cargo.lock
+          }) | tee artifacts-rust-toolchain.log
           (cd "$RUNNER_TEMP/nanoda" && cargo build --release --locked --bin nanoda_bin)
           test -x "$RUNNER_TEMP/nanoda/target/release/nanoda_bin"
+          sha256sum "$RUNNER_TEMP/nanoda/target/release/nanoda_bin" \
+            | tee -a artifacts-rust-toolchain.log
           echo "nanoda_rev=$NANODA_REV" >> "$GITHUB_OUTPUT"
           echo "comparator_rev=$COMPARATOR_REV" >> "$GITHUB_OUTPUT"
           echo "lean4export_rev=$LEAN4EXPORT_REV" >> "$GITHUB_OUTPUT"
@@ -907,6 +926,7 @@ jobs:
           name: external-verification-receipt-${{ github.event.pull_request.head.sha || github.sha }}
           path: |
             artifacts/external-verification-receipt.json
+            artifacts-rust-toolchain.log
             artifacts/erdos249-totient-kernel-comparator-receipt.json
             artifacts-positive.log
             artifacts-negative.log
