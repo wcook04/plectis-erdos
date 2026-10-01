@@ -822,8 +822,8 @@
         {
           "kind": "source_span",
           "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
-          "start_line": 294,
-          "end_line": 297,
+          "start_line": 274,
+          "end_line": 277,
           "must_contain": [
             "it does not verify whether that statement captures the intended mathematics",
             "Comparator adds a separately stated challenge",
