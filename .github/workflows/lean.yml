@@ -877,10 +877,10 @@ jobs:
       # build emitted no axiom lines at all.  A green check meant nothing.
       #
       # `lake env lean <file>` re-elaborates the audit source every run, so the
-      # lines are always produced, and the three assertions below turn them
-      # into an actual gate.  The empty-output assertion is the load-bearing
-      # one: without it, any future change that stops producing audit lines
-      # would silently pass both grep checks.
+      # lines are always produced. The source-bound checker below requires
+      # exactly one report for every declared audit target and permits only
+      # propext, Quot.sound and Classical.choice, including axiom-free reports.
+      # Empty, missing, malformed and native-reduction reports fail closed.
       # The two Comparator packets above build ExternalVerification and
       # ExternalVerification1049 as a side effect of checking them.  Nothing
       # checks ExternalVerification1041SolvedFamilies against a challenge, so
@@ -902,23 +902,10 @@ jobs:
             lake env lean "$src" 2>&1 | tee -a axiom-audit.log
           done
 
-          audited=$(grep -c 'depends on axioms' axiom-audit.log || true)
-          if [[ "$audited" -eq 0 ]]; then
-            echo "axiom audit produced no 'depends on axioms' lines; the gate did not run" >&2
-            exit 1
-          fi
-          echo "axiom audit covered $audited declarations"
-
-          if grep -q 'sorryAx' axiom-audit.log; then
-            echo "axiom audit found sorryAx: a compared declaration is not proved" >&2
-            grep -n 'sorryAx' axiom-audit.log >&2
-            exit 1
-          fi
-          if grep -q 'ofReduceBool\|Lean.trustCompiler' axiom-audit.log; then
-            echo "axiom audit found a native-reduction axiom (native_decide)" >&2
-            grep -n 'ofReduceBool\|Lean.trustCompiler' axiom-audit.log >&2
-            exit 1
-          fi
+          python3 scripts/check_axiom_audit.py axiom-audit.log \
+            --audit-source verification/ExternalVerification/AxiomAudit.lean \
+            --audit-source verification/ExternalVerification1049/AxiomAudit.lean \
+            --audit-source verification/ExternalVerification1041SolvedFamilies/AxiomAudit.lean
       - name: Upload external-verification receipt
         if: ${{ always() && steps.external-inputs.outputs.changed == 'true' }}
         uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1

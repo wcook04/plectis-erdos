@@ -133,10 +133,10 @@
       "id": "credit-registry",
       "path": "docs/research-commons/source-attributions.json",
       "start_line": 1,
-      "end_line": 36178,
+      "end_line": 36203,
       "kind": "supplied_snapshot",
-      "sha256": "de8c84ce3e492811e4b397585071d37d309af0e21d47b713ea2ceb2ba89a92a9",
-      "excerpt_sha256": "de8c84ce3e492811e4b397585071d37d309af0e21d47b713ea2ceb2ba89a92a9"
+      "sha256": "e71c53125dc3c919b34cf41df46173e881967829f3bef0801a15abf680b6467c",
+      "excerpt_sha256": "e71c53125dc3c919b34cf41df46173e881967829f3bef0801a15abf680b6467c"
     },
     {
       "id": "essay-pages",
@@ -697,9 +697,9 @@
       "id": "r8-release",
       "kind": "source",
       "path": "scripts/check_release.py",
-      "start_line": 1648,
-      "end_line": 1724,
-      "sha256": "4421bf54737bb1ea561fdf7013c08a299c6a7c5b9fed1931d57fe3058d1a7809",
+      "start_line": 1658,
+      "end_line": 1734,
+      "sha256": "8cd6ad61f8a80bcf9b7032b02daa7e8c1266dc15db5d8697923a5b8dbf266196",
       "excerpt_sha256": "da39690f9c38fd66ca7b1f7496108ac87673b67260a7c1c234b842008edd0adb",
       "custody": "Current native public file inspected as source; no fresh execution."
     },

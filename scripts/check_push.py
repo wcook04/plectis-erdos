@@ -22,6 +22,15 @@ import check_release_ref as snapshot
 
 # Complete release parity runs before network transport, never inside a hook.
 RELEASE_TIMEOUT_SECONDS = 2400
+# Local import closure of this driver and its snapshot/bounded-runner module.
+PUBLICATION_DRIVER_FILES = (
+    "check_push.py", "check_release_ref.py", "validation_singleflight.py",
+    "lean_build_share.py", "lean_package_share.py",
+)
+
+
+def publication_driver_sources() -> tuple[Path, ...]:
+    return tuple(Path(__file__).parent / name for name in PUBLICATION_DRIVER_FILES)
 
 
 def outgoing_commits(lines: list[str]) -> list[str]:
@@ -53,6 +62,23 @@ def prepare_commit(oid: str, release_receipt: Path | None = None) -> int:
             raise ValueError("release receipt is failed, incomplete or for another immutable commit")
         save_admission(commit, "complete_clean_release_receipt")
         return 0
+    native_driver = snapshot.ROOT / "scripts/check_push.py"
+    if Path(__file__).resolve() != native_driver.resolve():
+        # A versioned shared bundle cannot own a detached validator rooted in
+        # its Git-admin directory. Re-enter the identical checkout owner so
+        # both it and its independently imported child derive the right root.
+        for installed in publication_driver_sources():
+            selected = snapshot.ROOT / "scripts" / installed.name
+            if (not snapshot.is_safe_snapshot_file(snapshot.ROOT, selected)
+                    or selected.read_bytes() != installed.read_bytes()):
+                raise ValueError("selected checkout publication owner differs from installed guard; refresh the shared guard before preparation")
+        result = snapshot.run(
+            [sys.executable, str(native_driver), "--repository", str(snapshot.ROOT),
+             "--prepare", commit], cwd=snapshot.ROOT,
+            timeout=RELEASE_TIMEOUT_SECONDS)
+        print(result.stdout, end="", flush=True)
+        print(result.stderr, end="", file=sys.stderr, flush=True)
+        return result.returncode
     receipt, code = snapshot.validate_ref(commit, timeout_seconds=RELEASE_TIMEOUT_SECONDS,
                                           probe_only=False)
     print(snapshot.render_text(receipt), flush=True)
@@ -65,7 +91,10 @@ def admission_identity(commit: str) -> dict:
     tree = snapshot.run(["git", "rev-parse", f"{commit}^{{tree}}"], cwd=snapshot.ROOT)
     if tree.returncode:
         raise ValueError("cannot resolve outgoing commit tree")
-    driver = hashlib.sha256(Path(__file__).read_bytes() + Path(snapshot.__file__).read_bytes()).hexdigest()
+    sources = {source.name: hashlib.sha256(source.read_bytes()).hexdigest()
+               for source in publication_driver_sources()}
+    driver = hashlib.sha256(json.dumps(sources, sort_keys=True,
+                                     separators=(",", ":")).encode()).hexdigest()
     return {"schema": "prepared_publication_admission_v1", "commit": commit,
             "tree": tree.stdout.strip(), "driver": driver}
 
@@ -174,7 +203,7 @@ def install_shared() -> int:
     digest = admission_identity(snapshot.resolve_commit("HEAD"))["driver"]
     bundle = directory / digest
     bundle.mkdir(parents=True, exist_ok=True)
-    for source in (Path(__file__), Path(snapshot.__file__)):
+    for source in publication_driver_sources():
         (bundle / source.name).write_bytes(source.read_bytes())
     hook = directory / "pre-push"
     hook.write_text("#!/bin/sh\n# Plectis managed immutable publication admission\nexec python3 " +

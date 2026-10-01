@@ -475,7 +475,7 @@ README_BANNED_PHRASES = [
 
 PROOF_TRUST_RE = re.compile(
     r"\bsorry\b|\badmit\b|(?<![\w.])axiom\s+"
-    r"|native_decide"
+    r"|\b(?:native_decide|bv_decide)\b"
     r"|\+native\b|\bnative\s*:=\s*true\b"
     r"|^\s*(?:unsafe|partial)\s+(?:def|theorem|opaque|instance)\b"
     r"|^\s*set_option\s+(?:maxHeartbeats|maxRecDepth)\s+0\b",
@@ -1098,6 +1098,14 @@ def internal_imports(path: Path) -> list[str]:
     return INTERNAL_IMPORT_RE.findall(read(path))
 
 
+def proof_trust_code(text: str) -> str:
+    """Exclude prose, strings, and quoted identifiers from tactic-token checks."""
+    code = lean_code_without_comments_and_strings(text)
+    return re.sub(r"«[^»]*»", lambda match: "".join(
+        "\n" if character == "\n" else " " for character in match.group()
+    ), code)
+
+
 def proof_trust_violation(text: str) -> str | None:
     """Return the first executable proof-trust violation, if any."""
     # The combined multiline expression is exact after lexical stripping, but
@@ -1107,7 +1115,7 @@ def proof_trust_violation(text: str) -> str | None:
     # files; only those files pay for the exact comment/string-aware scan.
     if not proof_trust_candidate(text):
         return None
-    match = PROOF_TRUST_RE.search(lean_code_without_comments_and_strings(text))
+    match = PROOF_TRUST_RE.search(proof_trust_code(text))
     return match.group(0).strip() if match else None
 
 
@@ -1161,7 +1169,7 @@ def proof_trust_candidate(text: str) -> bool:
         require_space_after=True,
     ):
         return True
-    if "native_decide" in text:
+    if "native_decide" in text or "bv_decide" in text:
         return True
     if _contains_delimited_token(text, "+native", check_start=False):
         return True
@@ -1260,7 +1268,7 @@ def proof_trust_candidate_bytes(data: bytes) -> bool:
         require_space_after=True,
     ):
         return True
-    if b"native_decide" in data:
+    if b"native_decide" in data or b"bv_decide" in data:
         return True
     if _contains_delimited_token_bytes(data, b"+native", check_start=False):
         return True
@@ -1303,7 +1311,7 @@ def proof_trust_violation_bytes(data: bytes) -> str | None:
     if not proof_trust_candidate_bytes(data):
         return None
     text = data.decode("utf-8")
-    match = PROOF_TRUST_RE.search(lean_code_without_comments_and_strings(text))
+    match = PROOF_TRUST_RE.search(proof_trust_code(text))
     return match.group(0).strip() if match else None
 
 
@@ -1413,6 +1421,8 @@ def check_proof_trust() -> None:
           "proof-trust scanner must reject project-defined axioms")
     check(proof_trust_violation("theorem bad : True := by native_decide\n") == "native_decide",
           "proof-trust scanner must reject executable native reduction")
+    check(proof_trust_violation("theorem bad : (0 : BitVec 8) = 0 := by bv_decide\n") == "bv_decide",
+          "proof-trust scanner must reject native bit-vector evaluation")
     check(proof_trust_violation("theorem bad : True := by decide +native\n") == "+native",
           "proof-trust scanner must reject the native decide alias")
     check(proof_trust_violation(

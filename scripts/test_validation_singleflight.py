@@ -23,6 +23,47 @@ import lean_build_share as build_share  # noqa: E402
 
 
 class ValidationSingleflightTests(unittest.TestCase):
+    def test_elan_home_defaults_without_an_override(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            home = Path(directory)
+            for override in (None, ""):
+                with self.subTest(override=override), mock.patch.dict(os.environ):
+                    if override is None:
+                        os.environ.pop("ELAN_HOME", None)
+                    else:
+                        os.environ["ELAN_HOME"] = override
+                    with mock.patch.object(Path, "home", return_value=home):
+                        expected = (home / ".elan").resolve()
+                        self.assertEqual(singleflight.elan_home(), expected)
+                        self.assertEqual(
+                            singleflight.command_environment()["ELAN_HOME"], str(expected)
+                        )
+
+    def test_relative_elan_home_is_preserved_after_worker_changes_directory(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            home = root / "custom elan"
+            proxy = home / "bin" / "lake"
+            proxy.parent.mkdir(parents=True)
+            proxy.write_text('#!/bin/sh\nprintf "%s\\n" "$ELAN_HOME"\n')
+            proxy.chmod(0o755)
+            destination = root / "consumer"
+            destination.mkdir()
+            previous = Path.cwd()
+            try:
+                os.chdir(root)
+                with mock.patch.dict(os.environ, {"ELAN_HOME": "custom elan"}):
+                    command = fast_build.lake_command("--version")
+                    environment = singleflight.command_environment()
+                result = subprocess.run(
+                    command, cwd=destination, env=environment,
+                    capture_output=True, text=True, timeout=5, check=False,
+                )
+            finally:
+                os.chdir(previous)
+            self.assertEqual(result.returncode, 0, result.stderr)
+            self.assertEqual(result.stdout.strip(), str(home.resolve()))
+
     def setUp(self) -> None:
         self._host_lock_directory = tempfile.TemporaryDirectory()
         self._host_lock_environment = mock.patch.dict(
@@ -85,6 +126,33 @@ class ValidationSingleflightTests(unittest.TestCase):
             "inputs": inputs,
             "command": command,
         }
+
+    def test_release_timeout_is_positive_source_bound_and_part_of_cache_key(self):
+        state = Path('/tmp/release-timeout-fixture')
+        with mock.patch.object(singleflight, 'git_output', return_value=b'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\n'), \
+                mock.patch.object(singleflight, 'regular_digest_rows', return_value=[]), \
+                mock.patch.object(singleflight, 'worktree_fingerprint', return_value={'fixture': True}):
+            short = singleflight.validator_spec('release', [], 'HEAD', state, release_timeout_seconds=5)
+            long = singleflight.validator_spec('release', [], 'HEAD', state, release_timeout_seconds=9)
+            self.assertIn('--singleflight-worker', short['command'])
+            i = short['command'].index('--timeout-seconds')
+            self.assertEqual(short['command'][i + 1], '5')
+            self.assertNotEqual(short['key'], long['key'])
+            self.assertEqual(short['inputs']['normalized_command'], short['command'])
+            for timeout in (0, -1, 1.5, True):
+                with self.subTest(timeout=timeout), self.assertRaises(singleflight.ValidationError):
+                    singleflight.validator_spec('release', [], 'HEAD', state, release_timeout_seconds=timeout)
+
+    def test_release_cli_threads_owner_timeout_without_changing_observer_timeout(self):
+        with mock.patch.object(singleflight, 'validator_spec', return_value={'key': 'a' * 64}) as spec, \
+                mock.patch.object(singleflight, 'submit', return_value={'key': 'a' * 64}), \
+                mock.patch.object(singleflight, 'collect', return_value=({'state': 'running'}, 75)) as collect, \
+                mock.patch.object(singleflight, 'emit'):
+            code = singleflight.main(['run', '--class', 'release', '--ref', 'HEAD',
+                                     '--release-timeout-seconds', '37', '--timeout-seconds', '2'])
+        self.assertEqual(code, 75)
+        self.assertEqual(spec.call_args.kwargs['release_timeout_seconds'], 37)
+        self.assertEqual(collect.call_args.args[3], 2)
 
     def test_default_state_root_is_host_shared_and_repository_scoped(self) -> None:
         with tempfile.TemporaryDirectory() as directory, mock.patch.dict(

@@ -459,7 +459,11 @@ def comparator_for(claim_id: str, claims: dict[str, Any]) -> dict[str, Any]:
         "unregistered_contract": packet.get("claim_status_contract", {}).get(
             "unregistered_interface"
         ),
+        # Retain packet context in JSON, with its corpus-wide scope explicit.
         "boundary": packet.get("boundary"),
+        "boundary_scope": packet.get("scope"),
+        "registered_contract": packet.get("claim_status_contract", {}).get("registered_claim"),
+        "novelty_contract": packet.get("claim_status_contract", {}).get("novelty"),
     }
 
 
@@ -570,6 +574,11 @@ def render_claim(report: dict[str, Any]) -> str:
                 f"{comparator['bound_total']} carry a claim id"
             )
             out.extend(quoted(comparator["unregistered_contract"]))
+        # These existing typed contracts describe this selected claim's
+        # binding and priority limits; broader context keeps its explicit label.
+        if comparator["status"] == "bound":
+            out.extend(quoted(comparator.get("registered_contract")))
+        out.extend(quoted(comparator.get("novelty_contract")))
         out.append("  packet-wide context (may concern other claims):")
         out.extend(quoted(comparator["boundary"], "           "))
         out.append("")
