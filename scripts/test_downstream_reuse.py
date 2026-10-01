@@ -3,6 +3,7 @@
 # SPDX-License-Identifier: Apache-2.0
 """Offline negative and package-boundary fixtures for downstream reuse."""
 import json
+import os
 from pathlib import Path
 import subprocess
 import tempfile
@@ -65,11 +66,12 @@ class DownstreamReuseTests(unittest.TestCase):
         self.assertEqual(commands, [[str(reuse.fast_build.LAKE), "env", "lean", "Consumer.lean"]])
 
     def test_installed_launcher_runs_outside_the_sanitized_path(self):
-        launcher = Path(self.temp.name) / "installed toolchain" / "lake"
-        launcher.parent.mkdir()
+        home = Path(self.temp.name) / "installed toolchain"
+        launcher = home / "bin" / "lake"
+        launcher.parent.mkdir(parents=True)
         launcher.write_text('#!/bin/sh\n[ "$1" = env ] && [ "$2" = lean ] && [ -f Consumer.lean ]\n')
         launcher.chmod(0o755)
-        with patch.object(reuse.fast_build, "LAKE", launcher), \
+        with patch.dict(os.environ, {"ELAN_HOME": str(home)}), \
              patch.object(reuse.singleflight, "ensure_state_root", return_value={}), \
              patch.object(reuse.singleflight, "resource_lock_path", return_value=Path(self.temp.name) / "lock"):
             self.assertEqual(reuse.check(self.root), 0)

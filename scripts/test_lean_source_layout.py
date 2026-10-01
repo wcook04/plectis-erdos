@@ -5,10 +5,13 @@
 
 from __future__ import annotations
 
+import contextlib
+import os
 import shutil
 import subprocess
 import tempfile
 from pathlib import Path
+from unittest.mock import patch
 
 from lean_source import (
     LAYOUT_HISTORICAL_ROOT,
@@ -71,6 +74,68 @@ def git(root: Path, *arguments: str) -> None:
             "GIT_COMMITTER_EMAIL": "t@example.invalid",
         },
     )
+
+
+def check_root_bound_git_inventory() -> None:
+    with tempfile.TemporaryDirectory(prefix="lean-layout-parent-git-") as raw:
+        parent = Path(raw).resolve()
+        git(parent, "init", "-q")
+        root = parent / "archive "
+        root.mkdir()
+        (root / "lakefile.toml").write_text(LAKEFILE_NESTED, encoding="utf-8")
+        for relative in ("lean/Erdos249257.lean", "lean/ErdosProblems.lean",
+                         "lean/Erdos249257/Only.lean"):
+            write_module(root, relative)
+        expected = library_source_paths(root)
+        require(len(expected) == 3, "nested archive borrowed enclosing Git index")
+        git(parent, "add", "archive ")
+        require(library_source_paths(root) == expected,
+                "parent index membership changed archive inventory")
+        write_module(root, "lean/Erdos249257/Added.lean")
+        require(len(library_source_paths(root)) == 4,
+                "parent index hid a metadata-free archive source")
+
+        foreign = parent / "foreign"
+        foreign.mkdir()
+        git(foreign, "init", "-q")
+        for relative in ("lean/Erdos249257.lean", "lean/ErdosProblems.lean",
+                         "lean/Erdos249257/Added.lean"):
+            write_module(foreign, relative)
+        git(foreign, "add", "-A")
+        git(root, "init", "-q")
+        git(root, "add", "lakefile.toml", "lean/Erdos249257.lean",
+            "lean/ErdosProblems.lean", "lean/Erdos249257/Only.lean")
+        with patch.dict(os.environ, {
+            "GIT_DIR": str(foreign / ".git"), "GIT_WORK_TREE": str(foreign),
+            "GIT_INDEX_FILE": str(foreign / ".git/index"),
+            "GIT_CONFIG_COUNT": "1", "GIT_CONFIG_KEY_0": "core.worktree",
+            "GIT_CONFIG_VALUE_0": str(foreign),
+        }):
+            inventory = library_source_inventory(root)
+        require(inventory["paths"] == expected,
+                "ambient foreign Git selected a different source index")
+        require([path.name for path in inventory["unindexed"]] == ["Added.lean"],
+                "actual source index exclusion was lost")
+        with contextlib.chdir(root):
+            relative = library_source_inventory(Path("."))
+        require(len(relative["paths"]) == 3 and len(relative["unindexed"]) == 1,
+                "relative checkout root lost indexed/unindexed membership")
+        (root / ".git").rename(root / "saved-git")
+        (root / ".git").write_text("gitdir: missing-git-fixture\n", encoding="utf-8")
+        try:
+            library_source_paths(root)
+        except LibraryLayoutError as error:
+            require("Git root query" in str(error), str(error))
+        else:
+            raise AssertionError("broken source Git metadata silently became an archive")
+        (root / ".git").unlink()
+        (root / ".git").symlink_to("missing-git-metadata", target_is_directory=True)
+        try:
+            library_source_paths(root)
+        except LibraryLayoutError as error:
+            require("Git" in str(error), str(error))
+        else:
+            raise AssertionError("dangling source Git metadata silently became an archive")
 
 
 def main() -> int:
@@ -161,6 +226,8 @@ def main() -> int:
     if shutil.which("git") is None:
         print("test_lean_source_layout: git absent; Git-index cases skipped")
         return 0
+
+    check_root_bound_git_inventory()
 
     with tempfile.TemporaryDirectory(prefix="lean-layout-unindexed-") as raw:
         root = Path(raw).resolve()

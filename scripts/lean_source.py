@@ -18,6 +18,7 @@ this function.
 
 from __future__ import annotations
 
+import os
 import re
 import subprocess
 from pathlib import Path
@@ -199,17 +200,53 @@ LEAN_IMPORT_RE = re.compile(r"^\s*import\s+([A-Za-z0-9_'.]+)", re.MULTILINE)
 def _git_unindexed_files(root: Path, paths: list[Path]) -> set[Path] | None:
     """Files under ``paths`` that are absent from the Git index.
 
-    Returns ``None`` when ``root`` is not inside a Git worktree (tarball
-    checkouts, temporary test roots), which is the only case in which the
-    on-disk glob is the whole truth.  Any other Git failure raises: a builder
+    Returns ``None`` when ``root`` is not itself a Git worktree root (tarball
+    checkouts, including archives unpacked inside another worktree), which is
+    the only case in which the on-disk glob is the whole truth. An enclosing
+    or ambient foreign repository cannot own this source inventory. Any other
+    Git failure raises: a builder
     that silently fell back to the glob would fingerprint whatever happened to
     be lying in the tree, which is exactly the defect this query exists to
     prevent.  ``--others`` without ``--exclude-standard`` lists ignored files
     too, because an ignored ``.lean`` file is just as absent from every clone.
     """
-    existing = [path for path in paths if path.exists()]
+    existing = [path.resolve() for path in paths if path.exists()]
     if not existing:
         return set()
+    root = root.resolve()
+    metadata = root / ".git"
+    owns_metadata = metadata.exists() or metadata.is_symlink()
+    environment = {
+        key: value for key, value in os.environ.items()
+        if not key.startswith("GIT_")
+    }
+    environment.update({
+        "GIT_CONFIG_NOSYSTEM": "1", "GIT_CONFIG_GLOBAL": os.devnull,
+        "GIT_OPTIONAL_LOCKS": "0", "GIT_NO_REPLACE_OBJECTS": "1",
+    })
+    try:
+        discovered = subprocess.run(
+            ["git", "-C", str(root), "rev-parse", "--show-toplevel"],
+            capture_output=True, check=False, env=environment,
+            timeout=GIT_INDEX_QUERY_TIMEOUT_SECONDS,
+        )
+    except FileNotFoundError:
+        return None
+    except (OSError, subprocess.TimeoutExpired) as exc:
+        raise LibraryLayoutError(f"Git root query failed under {root}: {exc}") from exc
+    if discovered.returncode:
+        stderr = discovered.stderr.decode("utf-8", errors="replace")
+        if (not owns_metadata and discovered.returncode == 128
+                and "not a git repository" in stderr.lower()):
+            return None
+        raise LibraryLayoutError(
+            f"Git root query exited {discovered.returncode} under {root}: {stderr.strip()}"
+        )
+    top_level = Path(os.fsdecode(discovered.stdout).removesuffix("\n")).resolve()
+    if top_level != root:
+        if owns_metadata:
+            raise LibraryLayoutError(f"Git index does not belong to source root {root}")
+        return None
     command = ["git", "-C", str(root), "ls-files", "--others", "-z", "--"]
     command.extend(str(path.relative_to(root)) for path in existing)
     try:
@@ -217,6 +254,7 @@ def _git_unindexed_files(root: Path, paths: list[Path]) -> set[Path] | None:
             command,
             capture_output=True,
             check=False,
+            env=environment,
             timeout=GIT_INDEX_QUERY_TIMEOUT_SECONDS,
         )
     except FileNotFoundError:
@@ -225,8 +263,6 @@ def _git_unindexed_files(root: Path, paths: list[Path]) -> set[Path] | None:
         raise LibraryLayoutError(f"Git index query failed under {root}: {exc}") from exc
     if completed.returncode:
         stderr = completed.stderr.decode("utf-8", errors="replace")
-        if completed.returncode == 128 and "not a git repository" in stderr.lower():
-            return None
         raise LibraryLayoutError(
             f"Git index query exited {completed.returncode} under {root}: {stderr.strip()}"
         )

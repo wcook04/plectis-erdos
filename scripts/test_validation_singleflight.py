@@ -23,6 +23,47 @@ import lean_build_share as build_share  # noqa: E402
 
 
 class ValidationSingleflightTests(unittest.TestCase):
+    def test_elan_home_defaults_without_an_override(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            home = Path(directory)
+            for override in (None, ""):
+                with self.subTest(override=override), mock.patch.dict(os.environ):
+                    if override is None:
+                        os.environ.pop("ELAN_HOME", None)
+                    else:
+                        os.environ["ELAN_HOME"] = override
+                    with mock.patch.object(Path, "home", return_value=home):
+                        expected = (home / ".elan").resolve()
+                        self.assertEqual(singleflight.elan_home(), expected)
+                        self.assertEqual(
+                            singleflight.command_environment()["ELAN_HOME"], str(expected)
+                        )
+
+    def test_relative_elan_home_is_preserved_after_worker_changes_directory(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            home = root / "custom elan"
+            proxy = home / "bin" / "lake"
+            proxy.parent.mkdir(parents=True)
+            proxy.write_text('#!/bin/sh\nprintf "%s\\n" "$ELAN_HOME"\n')
+            proxy.chmod(0o755)
+            destination = root / "consumer"
+            destination.mkdir()
+            previous = Path.cwd()
+            try:
+                os.chdir(root)
+                with mock.patch.dict(os.environ, {"ELAN_HOME": "custom elan"}):
+                    command = fast_build.lake_command("--version")
+                    environment = singleflight.command_environment()
+                result = subprocess.run(
+                    command, cwd=destination, env=environment,
+                    capture_output=True, text=True, timeout=5, check=False,
+                )
+            finally:
+                os.chdir(previous)
+            self.assertEqual(result.returncode, 0, result.stderr)
+            self.assertEqual(result.stdout.strip(), str(home.resolve()))
+
     def setUp(self) -> None:
         self._host_lock_directory = tempfile.TemporaryDirectory()
         self._host_lock_environment = mock.patch.dict(
