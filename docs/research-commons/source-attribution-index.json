@@ -122694,7 +122694,7 @@
     "public_source_credit": "Names and direct citations are retained for published literature, software and public contributions. Source identity, exact local use, and mathematical correspondence are separate."
   },
   "source_registry": "docs/research-commons/source-attributions.json",
-  "source_registry_sha256": "sha256:189141cc9aa2122a6f1fb1599d278abaa55694c860fdbe92a9f09f7ae2c9a4d5",
+  "source_registry_sha256": "sha256:dcd471bdca2db88ea0578b97c6161a291193be14f8271ca38845ed413972eba9",
   "sources": [
     {
       "artifact_coordinates": [
@@ -126258,6 +126258,30 @@
           "line_start": 67,
           "path": "lakefile.toml",
           "sha256": "sha256:e1a087453f8ac7bf939211194ae083a87212d33d82bd222d1f27ffc0bbdc5211"
+        },
+        {
+          "excerpt_sha256": "sha256:cbe13cbf9d5041738aecdb7bbe0abff35d2f946ed3567c4098ec6ce11c206613",
+          "expected_text": "noncomputable def fcLength",
+          "line_end": 390,
+          "line_start": 390,
+          "path": "lean/ErdosProblems/Erdos1041/Counterexample/HausdorffLength.lean",
+          "sha256": "sha256:069ea76e27304bd34e020cf8aab0fcc9200c495ff892127612e8afe571e3fcb4"
+        },
+        {
+          "excerpt_sha256": "sha256:92f1c74787cba286feffec250ded2fbf4944d6ac40f80c655b6b9370623f920c",
+          "expected_text": "a01ad23474c14781e4f16f48f6e5a430895e10a0",
+          "line_end": 12,
+          "line_start": 12,
+          "path": "docs/case-studies/formal-conjectures-1041.md",
+          "sha256": "sha256:7d2b5e633480fb70f0e5c8f981f49a86a4ca323fb75965386598cb8af0810bf4"
+        },
+        {
+          "excerpt_sha256": "sha256:630e2b08b1fc43aaea823cabc9d314e0e96ad4d7a5d571d1203febbcb140df69",
+          "expected_text": "Independent human review",
+          "line_end": 74,
+          "line_start": 74,
+          "path": "docs/case-studies/formal-conjectures-1041.md",
+          "sha256": "sha256:7d2b5e633480fb70f0e5c8f981f49a86a4ca323fb75965386598cb8af0810bf4"
         }
       ],
       "artifact_links": [
@@ -126272,6 +126296,27 @@
           "line_end": 79,
           "line_start": 67,
           "path": "lakefile.toml"
+        },
+        {
+          "excerpt_sha256": "sha256:cbe13cbf9d5041738aecdb7bbe0abff35d2f946ed3567c4098ec6ce11c206613",
+          "expected_text": "noncomputable def fcLength",
+          "line_end": 390,
+          "line_start": 390,
+          "path": "lean/ErdosProblems/Erdos1041/Counterexample/HausdorffLength.lean"
+        },
+        {
+          "excerpt_sha256": "sha256:92f1c74787cba286feffec250ded2fbf4944d6ac40f80c655b6b9370623f920c",
+          "expected_text": "a01ad23474c14781e4f16f48f6e5a430895e10a0",
+          "line_end": 12,
+          "line_start": 12,
+          "path": "docs/case-studies/formal-conjectures-1041.md"
+        },
+        {
+          "excerpt_sha256": "sha256:630e2b08b1fc43aaea823cabc9d314e0e96ad4d7a5d571d1203febbcb140df69",
+          "expected_text": "Independent human review",
+          "line_end": 74,
+          "line_start": 74,
+          "path": "docs/case-studies/formal-conjectures-1041.md"
         }
       ],
       "authors": [
@@ -126295,17 +126340,25 @@
         "1041",
         "1049"
       ],
-      "relation": "Direct paper citations exist for #243, #251, #269, #1049. Local compatibility declarations exist for #68, #249, #251, #257, #1049. No exact #1041 Formal Conjectures reuse/citation was found; absence is a coverage boundary, not negative authority.",
+      "relation": "Direct paper citations exist for #243, #251, #269, #1049. Local compatibility declarations exist for #68, #249, #251, #257, #1049. For #1041, the local fcLength definition explicitly restates the Formal Conjectures Hausdorff path-image-length vocabulary; the case study records the merged upstream statement correction and external proof link. This is statement reuse and contribution provenance, not independent mathematical review or recorded human review of correspondence with the 1958 wording.",
       "source_coordinates": [
         {
           "locator": "Repository-level formal statement corpus",
           "url": "https://github.com/google-deepmind/formal-conjectures"
+        },
+        {
+          "locator": "Merged #1041 statement correction and external proof link; current public case-study provenance.",
+          "url": "https://github.com/google-deepmind/formal-conjectures/blob/a01ad23474c14781e4f16f48f6e5a430895e10a0/FormalConjectures/ErdosProblems/1041.lean"
         }
       ],
       "source_locators": [
         {
           "locator": "Repository-level formal statement corpus",
           "url": "https://github.com/google-deepmind/formal-conjectures"
+        },
+        {
+          "locator": "Merged #1041 statement correction and external proof link; current public case-study provenance.",
+          "url": "https://github.com/google-deepmind/formal-conjectures/blob/a01ad23474c14781e4f16f48f6e5a430895e10a0/FormalConjectures/ErdosProblems/1041.lean"
         }
       ],
       "title": "Formal Conjectures coverage boundary across the eight-problem corpus",
