@@ -148,8 +148,10 @@ theorem sixty_seven_le_rational_denominator
 rational denominator of the series divides `59!`.
 
 `sixty_le_rational_denominator` extracts only `60 ≤ q` from the same
-certificate.  That leaves `59!` itself, and every other `59`-smooth
-denominator, unexcluded; this statement removes all of them. -/
+certificate.  That leaves some positive divisors of `59!`, including
+`59!` itself, unexcluded; this statement excludes all divisors of `59!`.
+It does not exclude every `59`-smooth integer: prime exponents can exceed
+those occurring in `59!`. -/
 theorem rational_denominator_not_dvd_fiftynine_factorial
     {q : ℕ} {a : ℤ}
     (hq : 0 < q)

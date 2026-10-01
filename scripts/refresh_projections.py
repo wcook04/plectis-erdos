@@ -118,6 +118,7 @@ BUILDERS = (
     "scripts/build_external_verification.py",
     # Authored source mappings consume the complete paper inventory and emit
     # exhaustive bibliography/citation and Lean-comment coverage views.
+    "scripts/reanchor_source_attributions.py",
     "scripts/build_source_attributions.py",
     # The corpus descriptor reads paper/module-aliases.json, so the alias
     # builder has to come first. It did not until 2026-08-31, and the symptom
@@ -127,6 +128,9 @@ BUILDERS = (
     "scripts/build_paper_module_aliases.py",
     "scripts/build_corpus_descriptor.py",
     "scripts/build_publication_entry_packet.py",
+    # Reads the final source/projection inventory; its own output is excluded
+    # from that read set, so it runs last and cannot fingerprint itself.
+    "scripts/corpus_substrate.py",
 )
 
 # Builders whose bare invocation is a dry run. The two rosters print their
@@ -138,6 +142,8 @@ BUILDERS = (
 # argument parser and fails when a builder that declares --write is missing
 # from this table.
 WRITE_FLAGS: dict[str, tuple[str, ...]] = {
+    "scripts/corpus_substrate.py": ("--write",),
+    "scripts/reanchor_source_attributions.py": ("--write", "--preserve-excerpts", "--base", "HEAD"),
     "scripts/build_off_diagonal_certificate_roster.py": ("--write",),
     "scripts/build_checked_diagonal_depth_roster.py": ("--write",),
     "scripts/refresh_reasoning_source_coordinates.py": ("--write",),
@@ -180,6 +186,22 @@ def check_command(builder: str) -> list[str]:
     return [sys.executable, str(ROOT / builder), *PREFLIGHT_CHECKS.get(builder, ("--check",))]
 
 
+# The reading edition has two registered output families. Its normal invocation
+# does not refresh the claim-to-record audit; both variants belong to this owner.
+BUILD_VARIANTS = {"scripts/build_reading_edition.py": (("--records",),)}
+
+
+def run_builder_check(builder: str) -> subprocess.CompletedProcess[str]:
+    result = run(check_command(builder), cwd=ROOT)
+    if result.returncode:
+        return result
+    for flags in BUILD_VARIANTS.get(builder, ()):
+        result = run([sys.executable, str(ROOT / builder), *flags, "--check"], cwd=ROOT)
+        if result.returncode:
+            return result
+    return result
+
+
 def failure_annotation(builder: str, detail: str) -> str:
     """Put the actual failed owner in Actions annotations, not just exit 1."""
     def escape(value: str) -> str:
@@ -192,7 +214,7 @@ def preflight() -> int:
     """Reject stale shipped evidence before acquiring expensive resources."""
     def inspect(builder: str) -> tuple[str, str | None]:
         try:
-            result = run(check_command(builder), cwd=ROOT)
+            result = run_builder_check(builder)
             if result.returncode:
                 return builder, result.stderr.strip() or result.stdout.strip() or f"exit {result.returncode}"
         except (OSError, subprocess.TimeoutExpired) as exc:
@@ -263,7 +285,7 @@ def check_only() -> int:
             return 1
 
     def check_builder(builder: str) -> tuple[str, subprocess.CompletedProcess[str]]:
-        return builder, run(check_command(builder), cwd=ROOT)
+        return builder, run_builder_check(builder)
 
     # Check mode is read-only and every builder reads the same committed
     # generation. Preserve dependency order for mutation in refresh(), but do
@@ -306,10 +328,16 @@ def refresh() -> int:
             print(f"{builder} failed:")
             print(result.stderr.strip() or result.stdout.strip())
             return 1
+        for flags in BUILD_VARIANTS.get(builder, ()):
+            result = run([sys.executable, str(script), *flags], cwd=ROOT)
+            if result.returncode:
+                print(f"{builder} {' '.join(flags)} failed:")
+                print(result.stderr.strip() or result.stdout.strip())
+                return 1
 
     stale = []
     for builder in BUILDERS:
-        result = run(check_command(builder), cwd=ROOT)
+        result = run_builder_check(builder)
         if result.returncode != 0:
             stale.append((builder, result.stdout.strip() or result.stderr.strip()))
 

@@ -174,12 +174,12 @@ jobs:
           ErdosProblems.Erdos1049.PaperR20.RecoveredProofAudit
           ErdosProblems.Erdos243.PaperCompleteR20.CubicArithmeticAudit
           ErdosProblems.Erdos243.PaperCompleteR20.CubicRecoveryAudit
+          ErdosProblems.Erdos243.PaperCompleteR21.NonintegralRegularRate
           ErdosProblems.Erdos243.PaperCorrespondenceAudit
           ErdosProblems.Erdos249.PaperCompleteR20.CyclotomicRecoveryAudit
           ErdosProblems.Erdos249.PaperCompleteR20.DenominatorRecoveryAudit
           ErdosProblems.Erdos249.PaperCompleteR20.FiniteCarryCorrespondence
           ErdosProblems.Erdos249.PaperCompleteR20.FiniteCertificateBatch
-          ErdosProblems.Erdos249.PaperCompleteR20.FinitePrefixCountermodelEndpoint
           ErdosProblems.Erdos249.PaperCompleteR20.GridArcRealInterface
           ErdosProblems.Erdos249.PaperCompleteR20.LcmGridCorrespondence
           ErdosProblems.Erdos249.PaperCompleteR20.MobiusSquareReduction
@@ -230,7 +230,12 @@ jobs:
           ErdosProblems.ArgumentGraph.Results.Erdos243
           ErdosProblems.ArgumentGraph.Results.Erdos249
           ErdosProblems.ArgumentGraph.Results.Erdos249Route
+          ErdosProblems.ArgumentGraph.Results.Erdos249Endpoint
+          ErdosProblems.ArgumentGraph.Results.Erdos249Residual
+          ErdosProblems.ArgumentGraph.Results.Erdos249Abduction
           ErdosProblems.ArgumentGraph.Results.Erdos251
+          ErdosProblems.ArgumentGraph.Contracts
+          ErdosProblems.ArgumentGraph.Results.RelationCertificates
 
       # Saved even after a failed build: Lake's content traces decide what is
       # current, so a partial tree only shortens the next run.

@@ -1,0 +1,27 @@
+
+/-- The Sylvester successor `a² - a + 1`, expressed in a ring. -/
+def sylvesterNext (a : ℤ) : ℤ :=
+  a ^ 2 - a + 1
+
+/-- Product-cleared denominator update `Dₙ₊₁ = aₙ Dₙ`. -/
+def nextDenState (a D : ℤ) : ℤ :=
+  a * D
+
+/-- Product-cleared reciprocal-tail update `Cₙ₊₁ = aₙ Cₙ - Dₙ`. -/
+def nextTailState (a D C : ℤ) : ℤ :=
+  a * C - D
+
+/-- Centering at the Sylvester tail: `Eₙ = Dₙ - (aₙ - 1) Cₙ`. -/
+def centeredState (a D C : ℤ) : ℤ :=
+  D - (a - 1) * C
+
+/-- The next denominator defect from the Sylvester step. -/
+def sylvesterDefect (a aNext : ℤ) : ℤ :=
+  aNext - sylvesterNext a
+
+/-- The tail update is exactly `Cₙ₊₁ = Cₙ - Eₙ`. -/
+theorem nextTailState_eq_sub_centered (a D C : ℤ) :
+    nextTailState a D C = C - centeredState a D C := by
+  simp [nextTailState, centeredState]
+  ring
+

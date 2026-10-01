@@ -64,6 +64,7 @@ theorem both : Supply 1 ∧ EvenP 2 := ⟨rfl, Or.inl rfl⟩
 theorem uses_supply_three (h : Supply 3) : Supply 3 := h
 theorem uses_universal (h : ∀ n : Nat, Supply n) : Target := h
 theorem uses_guarded (_h : ∀ n : Nat, n ≥ 7 → Supply n) : True := trivial
+theorem uses_guarded_nine (_h : ∀ n : Nat, n ≥ 9 → Supply n) : True := trivial
 theorem uses_even_two (_h : EvenP 2) : True := trivial
 theorem uses_target (h : Target) : OpenQ := open_iff_target.mpr h
 theorem schematic (n : Nat) (h : Supply n) : Supply n := h
@@ -259,6 +260,13 @@ def main() -> int:
     expect(guarded_supply.get("supply_ge:conclusion") == [],
            f"guard discharges the producer premise: {guarded_supply}")
 
+    # A residual keeps the hypotheses that constrain its variables: the guard
+    # `n ≥ 9` does not discharge `n ≥ 7` outright, and closing the residual over
+    # `n` alone would state the false `∀ n, n ≥ 7`.
+    nine = supplied("∀ (n : Nat), n ≥ 9 → ToyCorpus.Supply n")
+    expect(nine.get("supply_ge:conclusion") == ["∀ (n : Nat), n ≥ 9 → n ≥ 7"],
+           f"the residual keeps the guard on its variable: {nine}")
+
     target = supplied("ToyCorpus.Target")
     expect(target.get("open_iff_target:iff_mp_supplies_rhs") == ["ToyCorpus.OpenQ"],
            f"Target reduces to OpenQ through the iff: {target}")
@@ -295,6 +303,7 @@ def main() -> int:
     battery = {statements[r["statement"]]["type"]: r["tactic"] for r in rows if r["record"] == "battery"}
     expect("ToyCorpus.EvenP 3" in battery, f"the battery closes EvenP 3 after unfolding: {battery}")
     expect("∀ (n : Nat), n ≥ 7" not in battery, f"the battery must not close a false statement: {battery}")
+    expect("∀ (n : Nat), n ≥ 9 → n ≥ 7" in battery, f"the guarded residual is provable and the battery closes it: {battery}")
     expect("3 ≥ 7" not in battery, "the battery must not close 3 ≥ 7")
     refuted = {statements[r["statement"]]["type"] for r in rows if r["record"] == "battery_refutation"}
     expect("3 ≥ 7" in refuted, f"the battery refutes 3 ≥ 7: {refuted}")

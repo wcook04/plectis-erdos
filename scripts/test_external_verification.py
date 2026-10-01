@@ -165,7 +165,9 @@ class ExternalVerificationContractTest(unittest.TestCase):
             [row["erdos_number"] for row in index["problems"]],
             [68, 243, 249, 251, 257, 269, 1041, 1049],
         )
-        self.assertEqual({row["status"] for row in index["problems"]}, {"open"})
+        statuses = {row["erdos_number"]: row["status"] for row in index["problems"]}
+        self.assertEqual(statuses.pop(1041), "formal statement refuted")
+        self.assertEqual(set(statuses.values()), {"open"})
         owner_boundary = json.loads(
             (ROOT / "docs/claims.json").read_text(encoding="utf-8")
         )["external_verification_packet"]["boundary"]
@@ -278,7 +280,7 @@ class ExternalVerificationContractTest(unittest.TestCase):
         )
         self.assertIn("## Comparator interface appendix", human)
         self.assertIn(
-            f"<summary>Show all {len(packet['main_results'])} statement-isolated interfaces</summary>",
+            f"<summary>Show {len(packet['main_results'])} documented statement-isolated interfaces</summary>",
             human,
         )
         # Identifiers are emitted verbatim: <wbr> is stripped by GitHub's HTML
@@ -380,6 +382,30 @@ class ExternalVerificationContractTest(unittest.TestCase):
             formalization.index("review:\n"),
         )
 
+    def test_human_counts_distinguish_packet_rows_from_executable_roster(self) -> None:
+        _, packet, source, projection = load_owner()
+        comparator, _ = builder.load_comparator_source(packet)
+        selected_count = len(packet["main_results"])
+        original_count = len(comparator["theorem_names"])
+        self.assertGreater(original_count, selected_count)
+        extended = deepcopy(comparator)
+        extended["theorem_names"].append("Fixture.additionalCompanion")
+        for roster in (comparator, extended):
+            with self.subTest(roster_count=len(roster["theorem_names"])):
+                human = builder.render_human(
+                    packet, source, projection, builder.load_signal_authority(), roster
+                )
+                self.assertIn(f"This dossier describes {selected_count} selected interfaces.", human)
+                self.assertIn(
+                    f"contains {len(roster['theorem_names'])} theorem declarations", human
+                )
+                self.assertIn("those interfaces and companion declarations", human)
+                self.assertIn(f"Show {selected_count} documented statement-isolated interfaces", human)
+                self.assertNotIn(f"The {selected_count} selected propositions", human)
+                self.assertNotIn("Show all", human)
+        self.assertEqual(len(packet["main_results"]), selected_count)
+        self.assertEqual(len(comparator["theorem_names"]), original_count)
+
     def test_signal_spine_uses_explicit_rank_not_array_or_roster_order(self) -> None:
         _, packet, source, projection = load_owner()
         signal_authority = deepcopy(builder.load_signal_authority())
@@ -470,6 +496,7 @@ class ExternalVerificationContractTest(unittest.TestCase):
                 "rational_base_tail_recurrence",
                 "height_and_pade_arithmetic",
                 "coordinatewise_corridor_no_go",
+                "calibrated_rational_hankel_countermodel",
             ],
         )
         self.assertTrue(rows_by_problem[249][1]["relations"])

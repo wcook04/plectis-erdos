@@ -105,6 +105,65 @@ def check_public_root_inventory() -> None:
         assert any("loose corpus" in error for error in errors())
 
 
+def check_v2_guide_mutations(guide: str) -> None:
+    mutations = (
+        (
+            reflow_tolerant_replace(
+                guide, checker.external_status_boundary(), ""
+            ),
+            "open-problem boundary removed",
+        ),
+        (
+            reflow_tolerant_replace(
+                guide,
+                "reviewed claim registry covers #68, #243, #249, #251, #257, #269, #1041 and #1049",
+                "reviewed claim registry covers #249 and #257",
+            ),
+            "obsolete two-problem registry scope restored",
+        ),
+        (
+            guide.replace("#1049.", "#1049 and #9999.", 1),
+            "unregistered problem added to reviewed scope",
+        ),
+        (
+            guide.replace("comparator_assurance", "unrelated_route"),
+            "Comparator inspection route removed",
+        ),
+        (
+            guide.replace("palomar_qualification", "unrelated_route"),
+            "Palomar qualification route removed",
+        ),
+        (
+            guide.replace("Lean decides whether a formal proof", "Software decides"),
+            "formal-check decision blurred",
+        ),
+        (
+            guide.replace("A mathematician decides whether the public wording", ""),
+            "human semantic review removed",
+        ),
+        (
+            guide.replace("does not prove that every important sentence was selected", ""),
+            "coverage ceiling removed",
+        ),
+        (
+            reflow_tolerant_replace(
+                guide,
+                "The archived combined #249/#257 PDF is not a default reading route.",
+                "The combined #249/#257 PDF is the default reading route.",
+            ),
+            "retired combined manuscript restored as default gateway",
+        ),
+        (
+            guide.replace("## A complete example", "## Internal record"),
+            "worked-example section removed",
+        ),
+        (guide + "\nM8 achieved 9/10.\n", "evaluation shorthand introduced"),
+    )
+    for mutated, label in mutations:
+        assert_rejected(mutated, label)
+        pass
+
+
 def main() -> int:
     check_public_root_inventory()
     check_safe_input_boundary()
@@ -118,6 +177,10 @@ def main() -> int:
     checker.validate_systems_paper(systems_paper)
     checker.validate_entry_links(readme, agents, paper_readme, guide)
     checks = 3
+    if "% SYSTEMS_PAPER_VERSION 2" in systems_paper:
+        check_v2_guide_mutations(guide)
+        from test_systems_paper_pipeline import run_all
+        return run_all()
 
     contract = checker.json.loads(
         checker.safe_architecture_text(checker.PUBLICATION_CONTRACT)
@@ -126,7 +189,20 @@ def main() -> int:
         checker.SYSTEMS_PAPER_BASE_BYTES
         + checker.SYSTEMS_PAPER_BYTES_PER_ARTIFACT * len(contract["artifacts"])
     )
-    assert len(systems_paper.encode("utf-8")) <= systems_paper_budget
+    assert checker.authored_bytes(systems_paper) <= systems_paper_budget
+    # A regenerated region may grow without spending the budget; prose may not.
+    region_end = "% END generated_semantic_coverage_macros"
+    assert region_end in systems_paper
+    grown_region = systems_paper.replace(region_end, "%" + "0" * 5000 + "\n" + region_end, 1)
+    checker.validate_systems_paper(grown_region)
+    grown_prose = systems_paper.replace(region_end, region_end + "\n%" + "0" * 5000, 1)
+    try:
+        checker.validate_systems_paper(grown_prose)
+    except AssertionError:
+        pass
+    else:
+        raise AssertionError("systems paper budget accepted 5,000 bytes of authored growth")
+    checks += 2
 
     mutations = (
         (
@@ -292,7 +368,7 @@ def main() -> int:
             checks += 1
 
     overflow = systems_paper + "x" * (
-        systems_paper_budget - len(systems_paper.encode("utf-8")) + 1
+        systems_paper_budget - checker.authored_bytes(systems_paper) + 1
     )
     assert_paper_rejected(
         overflow,

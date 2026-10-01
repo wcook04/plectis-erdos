@@ -3,6 +3,7 @@
   "title": "Free-N totient walk: affine residue dynamics, outer-band escape, and the coarse-model barrier",
   "problem": "249",
   "replaces_role_zone": "Z21",
+  "build_lane": "unbuilt: ErdosProblems/Half/FreeWalk1.lean, the module cited in this zone, is in no CI build, so its declarations are stated in source but not kernel-checked by this repository's CI.",
   "concepts": [
     {
       "id": "z89_walk_residue",

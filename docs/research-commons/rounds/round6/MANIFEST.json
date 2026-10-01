@@ -1,0 +1,34 @@
+{
+  "schema": "plectis-round-return-copies/1",
+  "round_id": "plectis_round6_20260928",
+  "boundary": "Each file is an exact copy of a Type B prose return as taken into custody; the source and published hashes are equal by construction. The return ZIP archives stay in private custody and are not listed here.",
+  "files": [
+    {
+      "public_path": "docs/research-commons/rounds/round6/return-a.md",
+      "relation": "exact_copy",
+      "source": "custody://type_b_return_intake/round6_return_20260928/A_prose",
+      "source_sha256": "aeed70bc7ea71becec287192579bf1dde23fb143346bcc5342d230db54c41f5d",
+      "published_sha256": "aeed70bc7ea71becec287192579bf1dde23fb143346bcc5342d230db54c41f5d",
+      "bytes": 32769,
+      "journal_return_id": "plectis_round6_20260928/A_prose"
+    },
+    {
+      "public_path": "docs/research-commons/rounds/round6/return-b.md",
+      "relation": "exact_copy",
+      "source": "custody://type_b_return_intake/round6_return_20260928/B_prose",
+      "source_sha256": "a8f760f80331477c47a272c28e40c5369963836a68d51dcb9ffbb3b156ef1524",
+      "published_sha256": "a8f760f80331477c47a272c28e40c5369963836a68d51dcb9ffbb3b156ef1524",
+      "bytes": 32782,
+      "journal_return_id": "plectis_round6_20260928/B_prose"
+    },
+    {
+      "public_path": "docs/research-commons/rounds/round6/return-c.md",
+      "relation": "exact_copy",
+      "source": "custody://type_b_return_intake/round6_return_20260928/C_prose",
+      "source_sha256": "a7d2ad7ee8c3479b9c7bf3ffc6be55d87eb31d6509dbb49484be187167c6f83a",
+      "published_sha256": "a7d2ad7ee8c3479b9c7bf3ffc6be55d87eb31d6509dbb49484be187167c6f83a",
+      "bytes": 36383,
+      "journal_return_id": "plectis_round6_20260928/C_prose"
+    }
+  ]
+}

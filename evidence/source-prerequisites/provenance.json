@@ -1,0 +1,17 @@
+{
+  "schema": "archived-formal-source-prerequisites/1",
+  "sources": [
+    {
+      "origin_commit": "8bf96bdcae6b9201c670fff3037c49c70ec6de8d",
+      "origin_path": "lean/ErdosProblems/Erdos1041/OutwardSlitDomain.lean",
+      "archive_path": "evidence/source-prerequisites/8bf96bdcae6b9201c670fff3037c49c70ec6de8d/lean/ErdosProblems/Erdos1041/OutwardSlitDomain.lean",
+      "sha256": "e993e104914e499d6728bd0618bcb697014b5d070e8ab4763625b54840913f1e",
+      "role": "Component-local covering and inverse-branch prerequisite source; not the broader attachment-aware theorem.",
+      "source_audit": "Exact bytes, declaration lines, hypotheses and dependencies inspected.",
+      "fresh_execution": "No new Lean compilation or Comparator replay in this editorial pass.",
+      "public_origin_visibility": "Original immutable GitHub URL returned404 on2026-09-30; stale remote-tracking branch. This archive makes the source publishable with the reviewed paper branch.",
+      "native_formal_source_pin": "Unchanged; archived evidence is not imported into the native Lean tree or promoted in the whole-statement coverage ledger.",
+      "existing_execution_receipt": "Not located in the original checkout, Git notes, or named historical receipts; declaration/proof-script presence is not promoted to checked proof status."
+    }
+  ]
+}

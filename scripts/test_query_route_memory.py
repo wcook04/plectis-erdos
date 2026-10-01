@@ -172,16 +172,17 @@ def test_semantic_programme_family_queries_project_complete_palomar_rosters() ->
         strict_prime_row["programme_position"] == 3,
         "strict-prime #249 family lost its Palomar position",
     )
-    six_269 = route_memory._semantic_programme_family_queries(
+    seven_269 = route_memory._semantic_programme_family_queries(
         ROOT, by_number[269]
     )["families"]
     require(
-        [row["family_id"] for row in six_269]
+        [row["family_id"] for row in seven_269]
         == [
             "conditional_carry_escape",
             "weighted_phase_carry_observer",
             "rank_two_kernel_no_go",
             "height_fibre_and_shell",
+            "independent_clock_channel_relations",
             "dyadic_block_alphabet",
             "three_prime_lcm_cells",
         ],

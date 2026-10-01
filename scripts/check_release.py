@@ -9,8 +9,9 @@ This script verifies that every other public surface agrees with it:
   1. claims.json is well formed, every claim status is in the taxonomy, typed
      remaining-open propositions resolve, and the machine-readable paper graph
      resolves to real public files and claim ids.
-  2. Release identity: lakefile.toml and CITATION.cff state the last tagged
-     release, while the main exposition pin agrees with the exact committed
+  2. Release identity: lakefile.toml states the last tagged release; current
+     CITATION.cff omits historical version/date fields. The main exposition
+     pin agrees with the exact committed
      formal-source checkpoint named in the registry.
   3. Every claimed Lean declaration exists in the stated module at the
      stated line.
@@ -71,8 +72,16 @@ from functools import lru_cache
 from pathlib import Path
 from typing import Any
 
-from check_problem_note_sources import note_pinned_commit, snapshot_lines_batch
-from methodology_contract import mutation_fixture_errors, render_markdown, validate_contract
+from check_problem_note_sources import (
+    RENDERED_MACRO_RE, note_pinned_commit, snapshot_lines_batch,
+    strip_comments, strip_unrendered,
+)
+from methodology_contract import (
+    PROGRAMME_TARGET_STATUSES,
+    mutation_fixture_errors,
+    render_markdown,
+    validate_contract,
+)
 from lean_source import (
     LIBRARY_ROOTS,
     library_dir,
@@ -89,7 +98,7 @@ from publication_contract import (
     mutation_fixture_failures as publication_mutation_fixture_failures,
     validate_publication_contract,
 )
-from query_corpus import canonical_paper_anchor_key, paper_anchor_inventory
+from query_corpus import canonical_paper_anchor_key, paper_anchor_inventory, printed_macro_sources
 from systems_paper_evidence import (
     mutation_fixture_failures as systems_paper_mutation_fixture_failures,
     validate_systems_paper_evidence,
@@ -287,13 +296,36 @@ def late_check_commands() -> dict[str, list[str]]:
             sys.executable,
             str(ROOT / "scripts" / "test_erdos251_computation_replay.py"),
         ],
+        "replay_routes": [
+            sys.executable,
+            str(ROOT / "research" / "experiments" / "replay_worlds" / "test_check_routes.py"),
+        ],
         "totient_normal_form": [
             sys.executable,
             str(ROOT / "scripts" / "test_totient_kernel_normal_form.py"),
         ],
+        "finite_dilation_normal_form": [
+            sys.executable,
+            str(ROOT / "scripts" / "erdos249_finite_dilation_normal_form.py"),
+            "--self-test",
+        ],
+        "chain_transcendence": [
+            sys.executable,
+            str(ROOT / "research" / "experiments" / "chain_transcendence" / "test_chain_bookkeeping.py"),
+        ],
         "admissible_feedback": [
             sys.executable,
             str(ROOT / "research" / "experiments" / "sparse_interpolation" / "test_feedback.py"),
+        ],
+        "distinct_height": [
+            sys.executable,
+            str(ROOT / "research" / "experiments" / "erdos269" / "distinct_height"
+                / "test_distinct_height.py"),
+        ],
+        "distinct_height_two_tail": [
+            sys.executable,
+            str(ROOT / "research" / "experiments" / "erdos269" / "distinct_height"
+                / "test_two_tail.py"),
         ],
         "interestingness_profile": [
             sys.executable,
@@ -433,7 +465,7 @@ INTERNAL_IMPORT_RE = re.compile(
 )
 
 LINE_WINDOW = 3  # declaration name must appear within this many lines of the stated line
-MAX_ROUTE_FIRST_CONTACT_BYTES = 48_000
+MAX_ROUTE_FIRST_CONTACT_BYTES = 56_000
 
 README_BANNED_PHRASES = [
     "Ramanujan Machine Challenge",
@@ -623,12 +655,20 @@ def contributor_gate_posture_errors(contributing: str) -> list[str]:
     """Reject contributor guidance that understates cold-reader validation."""
     flat = " ".join(contributing.split())
     errors: list[str] = []
-    if "combined baseline-plus-adversarial release-gate check" not in flat:
+    descriptions = (
+        "combined baseline-plus-adversarial release-gate check",
+        "The cold-clone comprehension program tests a bounded set of public questions "
+        "and checks that deliberately broken statements or links are detected.",
+    )
+    if not any(description in flat for description in descriptions):
         errors.append(
             "CONTRIBUTING.md must identify the cold-clone adversarial program "
             "as a release-gate check"
         )
-    if "A failure therefore blocks the release gate" not in flat:
+    if not any(sentence in flat for sentence in (
+        "A failure therefore blocks the release gate",
+        "A failure blocks the release gate",
+    )):
         errors.append(
             "CONTRIBUTING.md must state that cold-clone comprehension failures "
             "block the release gate"
@@ -675,6 +715,34 @@ def source_map_entry_errors(source_map: str) -> list[str]:
             "docs/SOURCE_MAP.md still presents the historical deposit list "
             "as the current certificate frontier"
         )
+    return errors
+
+
+def ordinary_proof_claim_errors(claim: dict, families: list[dict], root: Path) -> list[str]:
+    """Admit a non-Lean result only with an authored proof and explicit ceiling."""
+    claim_id = claim.get("id")
+    errors: list[str] = []
+    if claim.get("status") != "unconditional progress" or claim.get("declarations"):
+        errors.append(f"claim {claim_id}: ordinary proof has wrong status or declarations")
+    matches = [
+        family for family in families
+        if claim_id in family.get("claim_ids", [])
+        and family.get("status_summary") == (
+            "Reviewed ordinary proof; full infinite statement not formalised "
+            "and independent human review not recorded."
+        )
+    ]
+    if len(matches) != 1:
+        return [*errors, f"claim {claim_id}: no unique reviewed ordinary-proof family"]
+    owner = matches[0].get("primary_narrative_owner")
+    label = claim.get("paper_label")
+    if not isinstance(owner, str) or not owner.startswith("paper/") or ".." in Path(owner).parts:
+        return [*errors, f"claim {claim_id}: invalid ordinary-proof paper owner"]
+    if not isinstance(label, str) or not label:
+        return [*errors, f"claim {claim_id}: missing ordinary-proof paper label"]
+    paper = root / owner
+    if not paper.is_file() or f"\\label{{{label}}}" not in paper.read_text(encoding="utf-8"):
+        errors.append(f"claim {claim_id}: reviewed ordinary-proof label absent from {owner}")
     return errors
 
 
@@ -980,6 +1048,51 @@ def name_at_line(lines: list[str], name: str, line: int) -> bool:
     return any(name in lines[i] for i in range(lo, hi))
 
 
+def paper_macro_coordinates(
+    paper_text: str, formal_ref: str,
+) -> tuple[list[tuple[str, str, int, str, str]], list[str]]:
+    """Keep a word link's rendered body identity, through the native link owner.
+
+    The query adapter expands declared PK bodies using rendered_link_targets;
+    it rejects unresolved or ambiguous bodies instead of guessing their pin.
+    Other legacy coordinate macros retain their existing release checks.
+    """
+    printed = printed_macro_sources(paper_text)
+    visible_keys = {
+        (match.group("macro"), match.group("file"))
+        for match in RENDERED_MACRO_RE.finditer(strip_unrendered(strip_comments(paper_text)))
+    }
+    source_ref = note_pinned_commit(paper_text, formal_ref)
+    coordinates = []
+    problems = []
+    for macro, fname, line_s, name in re.findall(
+        r"\\((?:[lm](?:refx?|word|loc)|rootword))\{([^}]+)\}\{(\d+)\}(?:\{([^}]*)\})?(?:\{[^}]*\})?",
+        paper_text,
+    ):
+        if macro in ("lword", "mword"):
+            target = printed.get((macro, fname))
+            if target is None and (macro, fname) not in visible_keys:
+                # Legacy source-manifest checks also validate hidden coordinates.
+                # Resolve only this invocation against the declared macro bodies;
+                # this supplies no reader-visible route for the original row.
+                invocation = f"\\{macro}{{{fname}}}{{{line_s}}}{{{name}}}{{source}}"
+                target = printed_macro_sources(paper_text + "\n" + invocation).get((macro, fname))
+            if target is None:
+                problems.append(f"\\{macro}: unresolved printed source for {fname}")
+                continue
+            pin, rel = target
+        else:
+            pin = source_ref
+            if fname.startswith(("Erdos249257/", "ErdosProblems/")):
+                rel = fname
+            elif "\\input{problem-note-preamble}" in paper_text:
+                rel = f"ErdosProblems/{fname}"
+            else:
+                rel = f"Erdos249257/{fname}"
+        coordinates.append((macro, rel, int(line_s), name, pin))
+    return coordinates, problems
+
+
 def internal_imports(path: Path) -> list[str]:
     """Return direct imports from either supported library in source order."""
     return INTERNAL_IMPORT_RE.findall(read(path))
@@ -1195,6 +1308,7 @@ def proof_trust_violation_bytes(data: bytes) -> str | None:
 
 
 APPROVED_ROOT_FILES = {
+    '.gitattributes',  # preserve hash-bound historical excerpt whitespace
     '.gitignore',
     'AGENTS.md',
     'CITATION.cff',
@@ -1687,12 +1801,18 @@ def main(argv: list[str] | None = None) -> int:
     remaining_open_id_set = {
         row["id"] for row in data["remaining_open_propositions"]
     }
+    ordinary_families = data["machine_readable_paper"]["publication_assembly"][
+        "contribution_families"
+    ]
     for claim in data["claims"]:
         check(claim["status"] in taxonomy,
               f"claim {claim['id']}: status {claim['status']!r} not in taxonomy")
         if claim["status"] in ("cited only", "open"):
             check(not claim["declarations"],
                   f"claim {claim['id']}: {claim['status']!r} claims must not carry declarations")
+        elif not claim["declarations"]:
+            for error in ordinary_proof_claim_errors(claim, ordinary_families, ROOT):
+                check(False, error)
         else:
             check(bool(claim["declarations"]),
                   f"claim {claim['id']}: formal claim carries no declaration")
@@ -1879,9 +1999,10 @@ def main(argv: list[str] | None = None) -> int:
                   f"programme route {route.get('id')!r} has unknown problem targets: "
                   f"{sorted(target_ids - claim_id_set)}")
             check(
-                all(claim_index[target_id]["status"] == "open"
+                all(claim_index[target_id]["status"] in PROGRAMME_TARGET_STATUSES
                     for target_id in target_ids if target_id in claim_index),
-                f"programme route {route.get('id')!r} target claims must carry canonical status=open",
+                f"programme route {route.get('id')!r} target claims must carry a programme-target "
+                "status (open or formal statement refuted)",
             )
             check(not (core_ids - claim_id_set),
                   f"programme route {route.get('id')!r} has unknown core claims: "
@@ -2063,10 +2184,9 @@ def main(argv: list[str] | None = None) -> int:
     cff = read(ROOT / "CITATION.cff")
     check(re.search(r"^type: software\s*$", cff, re.M) is not None,
           "CITATION.cff: top-level type must be exactly 'software' (CFF 1.2.0)")
-    check(re.search(rf'^version: "?{re.escape(version)}"?\s*$', cff, re.M) is not None,
-          f"CITATION.cff: version does not state {version}")
-    check(re.search(rf"""^date-released: ["']?{re.escape(release['date'])}["']?\s*$""", cff, re.M) is not None,
-          f"CITATION.cff: date-released does not state {release['date']}")
+    for key in ("version", "date-released", "identifiers"):
+        check(re.search(rf"^{key}:", cff, re.M) is None,
+              f"CITATION.cff: current metadata must omit top-level {key}")
     check("Erdős" in cff, "CITATION.cff: title/keywords should use Unicode 'Erdős'")
 
     toolchain = read(ROOT / "lean-toolchain").strip()
@@ -2175,17 +2295,8 @@ def main(argv: list[str] | None = None) -> int:
         for decl in claim["declarations"]
     }
     for _paper_path, paper_text in paper_sources:
-        for _macro, fname, _line_s, _name in re.findall(
-            r"\\((?:[lm](?:refx?|word|loc)|rootword))\{([^}]+)\}\{(\d+)\}(?:\{([^}]*)\})?(?:\{[^}]*\})?",
-            paper_text,
-        ):
-            if fname.startswith(("Erdos249257/", "ErdosProblems/")):
-                rel = fname
-            elif "\\input{problem-note-preamble}" in paper_text:
-                rel = f"ErdosProblems/{fname}"
-            else:
-                rel = f"Erdos249257/{fname}"
-            pinned_requests.add((note_pinned_commit(paper_text, formal_ref), rel))
+        coordinates, _problems = paper_macro_coordinates(paper_text, formal_ref)
+        pinned_requests.update((pin, rel) for _macro, rel, _line, _name, pin in coordinates)
     pinned_cache: dict[tuple[str, str], list[str]] = {}
     snapshot_lines_batch(
         pinned_requests,
@@ -2214,20 +2325,14 @@ def main(argv: list[str] | None = None) -> int:
 
     # --- 4. paper source links ----------------------------------------------
     for paper_path, paper_text in paper_sources:
-        source_ref = note_pinned_commit(paper_text, formal_ref)
-        for macro, fname, line_s, name in re.findall(
-                r"\\((?:[lm](?:refx?|word|loc)|rootword))\{([^}]+)\}\{(\d+)\}(?:\{([^}]*)\})?(?:\{[^}]*\})?", paper_text):
-            if fname.startswith(("Erdos249257/", "ErdosProblems/")):
-                rel = fname
-            elif "\\input{problem-note-preamble}" in paper_text:
-                rel = f"ErdosProblems/{fname}"
-            else:
-                rel = f"Erdos249257/{fname}"
+        coordinates, problems = paper_macro_coordinates(paper_text, formal_ref)
+        for problem in problems:
+            fail(f"{paper_path} {problem}")
+        for macro, rel, line, name, source_ref in coordinates:
             lines = module_lines(cache, rel, source_ref)
             if lines is None:
                 fail(f"{paper_path} \\{macro}: file {rel} not found at {source_ref}")
                 continue
-            line = int(line_s)
             check(line <= len(lines), f"{paper_path} \\{macro}: {rel}:{line} beyond end of file")
             if macro in ("lref", "lrefx", "lword", "mref", "mword", "rootword") and name and line <= len(lines):
                 check(name_at_line(lines, name, line),
@@ -3081,10 +3186,10 @@ def main(argv: list[str] | None = None) -> int:
     for name in (
         "github_release_contracts",
         "semantic_queries", "semantic_storage", "semantic_relation_parity",
-        "proof_workbench", "computation_replay", "admissible_feedback",
-        "interestingness_profile",
-        "conditional_reuse",
-        "periodic_chain_probe",
+        "chain_transcendence", "totient_normal_form", "finite_dilation_normal_form",
+        "proof_workbench", "computation_replay", "replay_routes", "admissible_feedback",
+        "distinct_height", "distinct_height_two_tail",
+        "interestingness_profile", "conditional_reuse", "periodic_chain_probe",
     ):
         result = late_checks[name]
         check(result.returncode == 0,

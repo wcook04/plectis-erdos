@@ -1,0 +1,49 @@
+noncomputable abbrev actualWindowBase (lo len : ℕ) : ℤ :=
+  windowBase (fun a => (dyadicBlockBase235 a : ℤ)) lo len
+
+noncomputable abbrev actualWindowForcing (lo len : ℕ) : ℤ :=
+  windowForcing (fun a => (dyadicBlockBase235 a : ℤ))
+    (fun a => (dyadicOrderedBlockDigit235 a : ℤ)) lo len
+
+/-- The criterion as printed: positive starting thresholds and the literal cap. -/
+def ShortPaperEscape : Prop :=
+  ∀ B : ℕ, 0 < B → Nat.Coprime B 30 → ∀ a₀ : ℕ, 1 ≤ a₀ →
+    ∃ lo len : ℕ, a₀ ≤ lo ∧ 0 < len ∧
+      90 * B * (lo + len + 1) ^ 2 <
+        leastPositiveResidue (Int.natAbs (actualWindowBase lo len))
+          (-((B : ℤ) * actualWindowForcing lo len))
+
+theorem shortPaperEscape_iff_source :
+    ShortPaperEscape ↔ ActualCofinalLocalWindowEscape := by
+  constructor
+  · intro h B hB hcop a₀
+    obtain ⟨lo, len, hlo, hlen, hesc⟩ := h B hB hcop (max a₀ 1) (le_max_right _ _)
+    refine ⟨lo, len, (le_max_left _ _).trans hlo, hlen, ?_, ?_⟩
+    · have hp := windowBase235_pos lo len
+      have hn : actualWindowBase lo len ≠ 0 := hp.ne'
+      exact Int.natAbs_pos.mpr hn
+    · simpa [bridgeWidth, Nat.mul_assoc, Nat.mul_comm, Nat.mul_left_comm] using hesc
+  · intro h B hB hcop a₀ _
+    obtain ⟨lo, len, hlo, hlen, _, hesc⟩ := h B hB hcop a₀
+    refine ⟨lo, len, hlo, hlen, ?_⟩
+    simpa [bridgeWidth, Nat.mul_assoc, Nat.mul_comm, Nat.mul_left_comm] using hesc
+
+/-- Whole short-note `res:windowconsumer`, for the literal smooth-number sum. -/
+theorem short_window_equivalence :
+    Irrational paperSeries235 ↔ ShortPaperEscape := by
+  rw [paperSeries235_eq_shellTsum, shortPaperEscape_iff_source]
+  exact actualCofinalLocalWindowEscape_iff_irrational_value.symm
+
+/-- Formalise the printed warning: escape against zero is automatic. -/
+theorem escape_zero_cap :
+    CofinalLocalWindowEscape dyadicBlockBase235 dyadicOrderedBlockDigit235
+      (fun _ _ => 0) := by
+  intro B _ _ a₀
+  have hp : 0 < Int.natAbs (actualWindowBase a₀ 1) :=
+    Int.natAbs_pos.mpr (windowBase235_pos a₀ 1).ne'
+  exact ⟨a₀, 1, le_refl _, by norm_num, hp,
+    (leastPositiveResidue_pos_le hp (-((B : ℤ) * actualWindowForcing a₀ 1))).1⟩
+
+/-- Natural-number product corresponding to the source's integral window base. -/
+noncomputable def actualWindowProduct (lo len : ℕ) : ℕ :=
+  ∏ j ∈ Finset.range len, dyadicBlockBase235 (lo + j)

@@ -1556,6 +1556,7 @@
  "demand_lattice_no_lift": {
   "artifact_role": "no-go results closing the seed-plus-lift architecture for #249",
   "measured": "2026-07-26",
+  "build_lane": "unbuilt: the Lift/AngleA2, AngleA4, AngleA5 and InduceLaw modules cited here are in no CI build, so these declarations are stated in source but not kernel-checked by this repository's CI.",
   "claim": "There is no lift certifiedKill H H L -> exists L', certifiedKill (p*H) (p*H) L'. Three independent proofs.",
   "proofs": [
    {
@@ -1576,6 +1577,7 @@
  "erdos257_half_reduction": {
   "artifact_role": "verified reduction of the 1/2-membership question, and the layers proved insufficient",
   "measured": "2026-07-26",
+  "build_lane": "unbuilt: the Skip/D2, Bit/R2, Rem/C1, Rem/C6, Three/T1, Three/T2 and Three/T3 modules cited here are in no CI build, so these declarations are stated in source but not kernel-checked by this repository's CI. The axioms entry records local lake env lean runs.",
   "chain": [
    {
     "name": "Erdos249257.AngleD2.half_mem_iff_unboundedLargestSkipLate",

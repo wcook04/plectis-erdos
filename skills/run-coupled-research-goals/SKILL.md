@@ -46,6 +46,16 @@ python3 scripts/query_corpus.py --ask "<problem and current frontier>"
 Use one source identity for both goals. A summary copied between chats is not
 the shared state.
 
+For one source-bound decision over the existing claim, relation, contrast and
+journal records, use the read-only adapter after resolving the problem:
+
+```sh
+python3 scripts/research_decision.py --problem 269 --source-commit <full-commit> --format json
+```
+
+Its explicit-link selection is a starting set, not complete semantic search.
+Inspect the exact open claim and graph witnesses before choosing a probe.
+
 ## Discovery goal
 
 Read `skills/mine-open-problem/SKILL.md`. The discovery goal owns one bounded
@@ -79,6 +89,23 @@ package. It then returns a source-pinned ranked frontier to discovery: the
 strongest relevant result, exact missing bridge or falsifier, and cheapest
 test capable of changing the current appraisal. Ranking directs attention; it
 does not establish truth, novelty, or acceptance.
+
+To register a *prospective* test of an existing theory-lab mechanism, freeze a
+baseline, prediction, disconfirmation rule, holdout manifest, protocol and
+budget in a repository-relative contract. First inspect the journal proposal:
+
+```sh
+python3 scripts/research_episode.py plan --decision <saved-decision.json> \
+  --contract <repository-relative-contract.json> --producer <round-or-reviewed-return-id>
+```
+
+Only a Type A reviewer applies the resulting plan with
+`research_episode.py apply --plan <reviewed-plan.json>`. `plan` reads but does
+not write the journal; `apply` checks source identity and the journal head,
+then registers pending reviews. Neither command validates a transfer or awards
+novelty. See the workbench's
+[transfer routes](../../docs/agents/AGENT_WORKBENCH.md#source-bound-decisions-and-transfer-candidates)
+for native recorded-edge screening and advisory mechanism retrieval.
 
 ## Use compression scores to choose a test
 

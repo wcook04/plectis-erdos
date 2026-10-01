@@ -21,7 +21,7 @@ DEFAULT_UNIT = "erdos257_finite_prime_weighted_support"
 UNITS = {
     "erdos257_reciprocal_summable_support": {
         "claim_id": "reciprocal_summable_support",
-        "claim_status": "formalised here",
+        "claim_status": "unconditional progress",
         "registered_declaration": True,
         "theorem": "Erdos249257.irrational_erdosSupportSeries_of_summable_reciprocal",
         "lean_source": "lean/Erdos249257/AllBaseReciprocalSupportIrrationality.lean",
@@ -45,7 +45,7 @@ UNITS = {
     },
     DEFAULT_UNIT: {
         "claim_id": "finite_prime_weighted_support",
-        "claim_status": "formalised here",
+        "claim_status": "unconditional progress",
         "registered_declaration": True,
         "theorem": "ErdosProblems.Erdos257.PaperCompleteR8.divisibilityWeightedClaim",
         "lean_source": "lean/ErdosProblems/Erdos257/PaperCompleteR8/WeightedReturn.lean",

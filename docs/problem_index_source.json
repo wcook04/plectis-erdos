@@ -2,11 +2,11 @@
   "schema": "erdos249257-problem-index-source/1",
   "artifact_role": "authored_problem_owned_navigation_source",
   "index_path": "docs/problems.json",
-  "purpose": "Name every Erdős problem this repository holds formal material for, say what is checked and what is not, and route to the note, the modules, and the surviving obligation. Everything derivable from source -- module paths, declaration counts, note digests -- is filled in by the builder rather than authored here.",
+  "purpose": "Name every Erdős problem this repository holds formal material for, say what is checked and what is not, and route to the note, the modules, and the surviving obligation.",
   "authority_posture": "authored_navigation_source_not_Lean_proof_authority_and_not_a_reviewed_claim_registry",
-  "index_max_bytes": 65536,
+  "index_max_bytes": 73728,
   "note_coverage_floor": 0.6,
-  "note_coverage_rule": "A note pins its links so they cannot break when the library moves; the cost is that it can fall silently behind. check_problem_note_sources.py --coverage measures the gap as the fraction of declarations that exist now which the note actually links, and fails below this floor. Lower it only as a deliberate, recorded decision.",
+  "note_coverage_rule": "A note pins its links so they cannot break when the library moves; the cost is that it can fall silently behind. check_problem_note_sources.py --coverage measures the fraction of current declarations a reader can reach from the note, including a directly linked, registered same-problem companion. Authored coordinates are validated at each manuscript's own immutable pin. Generated evidence counts only actual declared labels after the native statement-correspondence and complete-support gate passes. Reader access does not establish proof correspondence. The existing floors remain unchanged; lower one only as a deliberate, recorded decision.",
   "upstream_ref": "codex/problem-centric-erdos",
   "upstream_rule": "The branch the expansion library is developed on. Coverage is gated against this checkout, which is what the notes are built from; the distance to this ref is reported and never gated, because failing on another branch's motion would make the check red through no fault of this tree.",
   "library_roots": [
@@ -20,11 +20,12 @@
       "root": "ErdosProblems.lean",
       "role": "problem_owned_expansion",
       "claim_registry": "docs/claims.json",
-      "note": "Public status is assigned per claim and declaration in docs/claims.json. Library membership and a kernel build do not imply reviewed correspondence or publication status."
+      "note": "The same per-claim status rule applies as for Erdos249257.lean."
     }
   ],
   "status_vocabulary": {
-    "open": "The historical programme target remains open in the registry. An exact formalisation may separately prove or refute one stated formulation; consult the claim record and external-verification boundary before inferring programme status.",
+    "open": "The historical programme target remains open in the registry; consult the claim record before inferring programme status.",
+    "formal statement refuted": "Lean refutes the exact Formal Conjectures statement; correspondence with the original wording awaits independent review.",
     "checked": "The pinned Lean kernel accepts the exact proposition named, with no sorry, no added axiom, and no unchecked evaluation.",
     "finite_evidence": "An exact finite computation. It constrains, and does not decide, an unbounded question.",
     "no_go": "A proof that some specific strategy cannot work. It removes a route, not the problem.",
@@ -185,6 +186,7 @@
       ],
       "what_is_checked": [
         "Lean proves cubic_rate_irrationality_unconditional for positive StrictMono zero-indexed a_n with a_n²/a_(n+1) = 1 + 3/n + o(n^-3). The one-based paper uses a finite-prefix bridge; general #243 remains open.",
+        "Lean proves nonintegral_regular_rate_irrational for positive StrictMono zero-indexed a_n whenever the real coefficient lambda is greater than one and nonintegral, with a_n²/a_(n+1) = 1 + lambda/n + o(n^-lambda). Summability is derived. The one-based paper uses the same finite-prefix bridge; the unrestricted problem remains open.",
         "The exact product-cleared tail dynamics and the defect identity, as identities in the integer state variables.",
         "That a vanishing centred state is absorbing under strict centring, so the state is either eventually zero or nowhere zero.",
         "That eventual vanishing of the centred state, with the next tail state nonvanishing, forces the Sylvester recurrence eventually.",
@@ -616,10 +618,11 @@
         "For the actual {2,3,5} series, rationality produces a positive reduced carry; cofinal local-window escape rules out such carries under the recorded bound.",
         "A bounded-radix dichotomy: under a bounded positive digit alphabet, a nonzero scaled tail must be separated from the integers cofinally.",
         "Exact three-channel block-nullity as a coboundary condition, and extinction of a bounded carry lift under two independent anchors.",
-        "The exact residue-digit plus coboundary form of an integral carry, together with a function-faithful observer criterion and a finite realised-span consequence."
+        "The exact residue-digit plus coboundary form of an integral carry, together with a function-faithful observer criterion and a finite realised-span consequence.",
+        "Irrationality of the distinct-height sum for {2,3,5}, which counts each running value once."
       ],
       "what_is_not_checked": [
-        "Irrationality or transcendence in any three-prime case.",
+        "Irrationality of the repeated sum, or transcendence, in any three-prime case.",
         "CofinalLocalWindowEscape for those actual words; it is an explicit hypothesis of the checked consumer, not a theorem.",
         "A proof that the actual three-channel word satisfies the block-null, anchor, or factorisation hypotheses of the migrated abstract consumers.",
         "The infinite limit of the jump expansion; only its finite core is checked.",
@@ -651,7 +654,7 @@
       "problem_id": "erdos_1041",
       "erdos_number": 1041,
       "short_title": "Short connections inside polynomial lemniscates",
-      "status": "open",
+      "status": "formal statement refuted",
       "question": "Must two roots of a monic polynomial in the open unit disc be joined by a sub-two-length curve inside its unit lemniscate? Ani’s degree-seven example refutes the exact Formal Conjectures statement; correspondence with the 1958 wording awaits human review.",
       "directory": "lean/ErdosProblems/Erdos1041",
       "principal_module": "ErdosProblems.Erdos1041.Counterexample.HausdorffLength",

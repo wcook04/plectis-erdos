@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import json
+import os
 import re
 import subprocess
 import sys
@@ -115,7 +116,27 @@ def run(*args: str, expected: int = 0) -> subprocess.CompletedProcess[str]:
     return result
 
 
+def check_invalid_destination_cli() -> None:
+    """Reject a file destination before preview or apply, preserving its bytes."""
+    with tempfile.TemporaryDirectory(prefix="plectis-invalid-skills-") as tmp:
+        root = Path(tmp)
+        blocked = root / "existing-file"
+        original = b"existing contributor material\n"
+        blocked.write_bytes(original)
+        link = root / "file-link"
+        link.symlink_to(blocked)
+        for target in (blocked, blocked / "skills", link):
+            for options in ((), ("--check",), ("--apply",), ("--force", "--apply")):
+                result = run("--target-dir", str(target), "--skill", "explain-public-system",
+                             *options, expected=2)
+                if "must be a directory" not in result.stderr or "Traceback" in result.stderr:
+                    raise AssertionError(result.stderr)
+                if result.stdout or blocked.read_bytes() != original or not link.is_symlink():
+                    raise AssertionError("invalid destination advertised a skill or changed user material")
+
+
 def main() -> int:
+    check_invalid_destination_cli()
     readme = (ROOT / "README.md").read_text(encoding="utf-8")
     skill_index = (ROOT / "skills" / "README.md").read_text(encoding="utf-8")
     entry = (ROOT / "AGENTS.md").read_text(encoding="utf-8")
@@ -177,6 +198,37 @@ def main() -> int:
             str(target),
             "--skill",
             "explain-public-system",
+            "--check",
+        )
+
+        # A user edit can preserve copy2's source timestamp and byte count.
+        # The check and preview must detect it, and ordinary apply must keep it.
+        original = installed.read_bytes()
+        stamp = installed.stat()
+        modified = bytes([original[0] ^ 1]) + original[1:]
+        installed.write_bytes(modified)
+        os.utime(installed, ns=(stamp.st_atime_ns, stamp.st_mtime_ns))
+        stale = run(
+            "--target-dir", str(target), "--skill", "explain-public-system",
+            "--check", expected=1,
+        )
+        assert "different" in stale.stdout
+        preview = run(
+            "--target-dir", str(target), "--skill", "explain-public-system",
+        )
+        assert "different" in preview.stdout and "preview only" in preview.stdout
+        run(
+            "--target-dir", str(target), "--skill", "explain-public-system",
+            "--apply", expected=1,
+        )
+        assert installed.read_bytes() == modified, "collision replaced user content"
+        run(
+            "--target-dir", str(target), "--skill", "explain-public-system",
+            "--force", "--apply",
+        )
+        assert installed.read_bytes() == original
+        run(
+            "--target-dir", str(target), "--skill", "explain-public-system",
             "--check",
         )
 

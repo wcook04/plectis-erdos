@@ -8,7 +8,7 @@
 
 </div>
 
-Let $`c>0`$ and let $`d\ge1`$ be an integer. For entire functions $`f(z)=\sum_{n\ge1}e_nz^n/n!`$ with nonnegative integer coefficients $`e_n\le n^c`$ eventually, each eventually divisible by every fixed integer, the vectors $`(f(1),\ldots,f^{(d-1)}(1))`$ have Hausdorff dimension $`\min(c,d)`$. They contain an open set exactly when $`c>d`$; at $`c=d`$ they are full-dimensional, null and meagre. A nonpolynomial such function with all these derivatives rational exists exactly when $`c>d`$. Multiplication and division by powers of $`z-1`$ give the matching construction and obstruction. We also study series values under restrictions on supports and congruences, using questions from seven irrationality problems of Erdős. Let $`Q_n`$ be positive integers with $`Q_n\mid Q_{n+1}`$ and $`Q_{n+1}\ge2Q_n`$, and let integer allowances $`F_n\ge0`$ satisfy $`\sum F_n/Q_n<\infty`$. Nonnegative integer digits bounded by $`F_n`$ eventually and eventually divisible by each fixed integer represent every nonnegative real exactly when $`Q_N\sum_{n>N}F_n/Q_n\to\infty`$; otherwise their values form a null meagre set. The positive construction also imposes eventual divisibility of cumulative digit sums. For factorial denominators and allowances $`n^c`$, with $`c>0`$, on a fixed infinite support, interval filling requires successive gaps to be eventually strictly smaller than $`c`$. For coprime $`a>b\ge1`$ with $`a^2>b^3`$, we prove irrationality of $`\sum_{n\in S}((a/b)^n-1)^{-1}`$ on every infinite divisibility chain $`S`$; chains with eventually periodic successive ratios give transcendence at every algebraic real base greater than one. In contrast, every rational base between one and two admits rational values on infinite supports. At base two, a fixed-depth rational count and an exact late rejection separate finite survival from membership. Full proofs, method obstructions and the unsuccessful approaches are included. We also classify the shift families that detect irrationality in every integer-digit dyadic recurrence: at every threshold $`0<c<\tau`$, precisely those containing a multiple of each positive integer suffice, where $`\tau`$ is the Thue–Morse constant in a cited sharp bound. Factorial shifts suffice; power-of-two shifts do not. For polynomially selected shifts, the condition becomes a root modulo every integer, or a unit root modulo every integer when the polynomial argument must be prime. The main arguments are ordinary proofs, with formal ingredients and external results identified separately; no original Erdős problem is settled here.
+Let $`c>0`$ and let $`d\ge1`$ be an integer. For entire functions $`f(z)=\sum_{n\ge1}e_nz^n/n!`$ with nonnegative integer coefficients $`e_n\le n^c`$ eventually, each eventually divisible by every fixed integer, the vectors $`(f(1),\ldots,f^{(d-1)}(1))`$ have Hausdorff dimension $`\min(c,d)`$. They contain an open set exactly when $`c>d`$; at $`c=d`$ they are full-dimensional, null and meagre. A nonpolynomial such function with all these derivatives rational exists exactly when $`c>d`$. Multiplication and division by powers of $`z-1`$ give the matching construction and obstruction. We also study series values under restrictions on supports and congruences, using questions from seven irrationality problems of Erdős. Let $`Q_n`$ be positive integers with $`Q_n\mid Q_{n+1}`$ and $`Q_{n+1}\ge2Q_n`$, and let integer allowances $`F_n\ge0`$ satisfy $`\sum F_n/Q_n<\infty`$. Nonnegative integer digits bounded by $`F_n`$ eventually and eventually divisible by each fixed integer represent every nonnegative real exactly when $`Q_N\sum_{n>N}F_n/Q_n\to\infty`$; otherwise their values form a null meagre set. The positive construction also imposes eventual divisibility of cumulative digit sums. For factorial denominators and allowances $`n^c`$, with $`c>0`$, on a fixed infinite support, interval filling requires successive gaps to be eventually strictly smaller than $`c`$. The number-field Subspace Theorem gives transcendence at every real algebraic base greater than one for bounded positive integer weighted Lambert sums on infinite supports admitting separated divisibility cuts. This includes every divisibility chain and explicit hosts of unbounded divisibility width and divergent reciprocal sum. In contrast, every rational base between one and two admits rational values on infinite supports. At base two, a fixed-depth rational count and an exact late rejection separate finite survival from membership. Full proofs, method obstructions and the unsuccessful approaches are included. We also classify the shift families that detect irrationality in every integer-digit dyadic recurrence: at every threshold $`0<c<\tau`$, precisely those containing a multiple of each positive integer suffice, where $`\tau`$ is the Thue–Morse constant in a cited sharp bound. Factorial shifts suffice; power-of-two shifts do not. For polynomially selected shifts, the condition becomes a root modulo every integer, or a unit root modulo every integer when the polynomial argument must be prime. The main arguments are ordinary proofs, with formal ingredients and external results identified separately; no original Erdős problem is settled here.
 
 <a id="sec:map"></a>
 
@@ -20,7 +20,7 @@ What can the freedom to choose digits preserve, and when does arithmetic remove 
 
 Section <a href="#capacity:sec:jets-intro" data-reference-type="ref" data-reference="capacity:sec:jets-intro">2</a> asks whether a single factorial digit sequence can prescribe several derivatives independently. Theorems <a href="#capacity:thm:jets" data-reference-type="ref" data-reference="capacity:thm:jets">2.1</a> and <a href="#capacity:thm:rational-jets" data-reference-type="ref" data-reference="capacity:thm:rational-jets">2.2</a> give the sharp threshold and the dimension of the attainable vectors. The proof uses the scalar capacity theorem first, then a carry that preserves lower derivatives; Sections <a href="#capacity:sec:jets-proof" data-reference-type="ref" data-reference="capacity:sec:jets-proof">4</a> and <a href="#capacity:sec:rational-jets" data-reference-type="ref" data-reference="capacity:sec:rational-jets">5</a> give the argument and the rationality obstruction.
 
-The common Lambert series in \#257 and \#1049 gives a second comparison in Section <a href="#sec:results" data-reference-type="ref" data-reference="sec:results">6</a>: a base below two permits rational subsums, while nested denominators force irrationality on certain thin supports. Neither interval filling nor a measure estimate decides whether one specified rational is a subsum at base two. Sections <a href="#sec:base2" data-reference-type="ref" data-reference="sec:base2">6.3</a> and <a href="#sec:misread" data-reference-type="ref" data-reference="sec:misread">9</a> explain that obstruction, including the exact computation that disproved a proposed stopping rule. Section <a href="#sec:second" data-reference-type="ref" data-reference="sec:second">8</a> retains the other method limits without claiming that they have one common cause.
+The common Lambert series in \#257 and \#1049 gives a second comparison in Section <a href="#sec:results" data-reference-type="ref" data-reference="sec:results">6</a>: a base below two permits rational subsums, while on every support with separated divisibility cuts the sum is transcendental at every real algebraic base greater than one, even with bounded positive integer weights. Section <a href="#sec:separated-cuts" data-reference-type="ref" data-reference="sec:separated-cuts">6.3</a> gives the proof and a non-chain host. Neither interval filling nor a measure estimate decides whether one specified rational is a subsum at base two. Sections <a href="#sec:base2" data-reference-type="ref" data-reference="sec:base2">6.4</a> and <a href="#sec:misread" data-reference-type="ref" data-reference="sec:misread">9</a> explain that obstruction, including the exact computation that disproved a proposed stopping rule. Section <a href="#sec:second" data-reference-type="ref" data-reference="sec:second">8</a> retains the other method limits without claiming that they have one common cause.
 
 Section <a href="#sec:dyadic-shifts" data-reference-type="ref" data-reference="sec:dyadic-shifts">7</a> follows a different transfer. A difference of two dyadic tail states is itself an integer-digit dyadic orbit. The resulting irrationality criterion leads to a question about which shift lengths need testing; the answer depends on divisibility rather than the size or density of the chosen family.
 
@@ -594,7 +594,7 @@ At base $`2`$ the greedy rule characterises membership and supplies finite certi
 
 </div>
 
-The limit $`2^NR_N/E`$ does not depend on whether \#257 is true. Agreement with this fixed-depth limiting proportion therefore does not establish membership. An exact computation in \[plectisinvestigation\] first read a surviving share near $`62\%`$ as evidence that most such fractions are subsums; Theorem <a href="#thm:forced" data-reference-type="ref" data-reference="thm:forced">6.4</a> is the correction. Section <a href="#sec:base2" data-reference-type="ref" data-reference="sec:base2">6.3</a> states what remains.
+The limit $`2^NR_N/E`$ does not depend on whether \#257 is true. Agreement with this fixed-depth limiting proportion therefore does not establish membership. An exact computation in \[plectisinvestigation\] first read a surviving share near $`62\%`$ as evidence that most such fractions are subsums; Theorem <a href="#thm:forced" data-reference-type="ref" data-reference="thm:forced">6.4</a> is the correction. Section <a href="#sec:base2" data-reference-type="ref" data-reference="sec:base2">6.4</a> states what remains.
 
 <a id="evidence."></a>
 
@@ -681,7 +681,206 @@ For algebraic real $`t>1`$, the point $`\alpha=t^{-d}`$ is algebraic and lies in
 
 The accompanying exact coefficient probe checks the proposed functional equation through degree $`100{,}000`$ for five ratio blocks, including $`(2,3)`$. For that alternating chain, the doubling equation $`G(z)-G(z^2)=z/(1-z)`$ already fails at degree four. The probe also rejects the $`(2,3)`$ block’s equation on an explicit nonperiodic ratio word. The probe is in [`research/experiments/interestingness/periodic_chain_probe.py`](https://github.com/wcook04/plectis-erdos/blob/01de6282/research/experiments/interestingness/periodic_chain_probe.py). Those finite checks test the formulas; the block decomposition above proves the equation at every degree.
 
-We do not know whether $`a^2>b^3`$ can be removed from the universal statement in (a). At base $`4/3`$, chains with a non-eventually-periodic word of ratios $`2,3`$ remain outside the argument. Arbitrarily grouping such ratios into blocks does not supply a single functional equation.
+<div id="thm:chain-transcendence" class="theorem">
+
+**Theorem 6.5** (divisibility chains at every rational base). *Let $`a>b\ge1`$ be coprime integers and let $`S=\{n_1<n_2<\cdots\}`$ be infinite with $`n_j\mid n_{j+1}`$ for every $`j`$. Then $`X_S(a/b)`$ is transcendental.*
+
+</div>
+
+Theorem <a href="#thm:chain-transcendence" data-reference-type="ref" data-reference="thm:chain-transcendence">6.5</a> strengthens the rational-base conclusion of Theorem <a href="#thm:chains" data-reference-type="ref" data-reference="thm:chains">6.3</a>. It removes the hypothesis $`a^2>b^3`$ from part (a) and strengthens the conclusion there from irrationality to transcendence. In particular every divisibility chain at bases $`4/3`$ and $`5/4`$ has a transcendental sum, including the chains at base $`4/3`$ whose ratios are $`2`$ except for infinitely many $`3`$s, the first case left open by Theorem <a href="#thm:chains" data-reference-type="ref" data-reference="thm:chains">6.3</a>(a). At rational bases it also gives part (b) without Mahler’s method; part (b) also covers irrational algebraic bases. The proof of Theorem <a href="#thm:chains" data-reference-type="ref" data-reference="thm:chains">6.3</a>(a) compares one partial sum with the whole tail, and at base $`4/3`$ with ratio $`n_{j+1}/n_j=2`$ that comparison fails: $`D_j(X_S(4/3)-S_j)`$ grows like $`(9/4)^{n_j}`$. The proof below keeps the first few terms of the tail as separate coordinates of an integer vector. Those coordinates are products of powers of $`a`$ and $`b`$, and by the product formula they contribute nothing to the product of absolute values over the archimedean place and the primes dividing $`ab`$. Only one linear form and the coordinate carrying the partial sum remain, and the Subspace Theorem applies.
+
+<a id="evidence.-1"></a>
+
+#### Evidence.
+
+Ordinary proof, with the $`p`$-adic Subspace Theorem as an external premise, awaiting specialist review; it is not checked in Lean. Exact finite checks of the formulas used below are in `research/experiments/chain_transcendence/` of the repository. They check the bookkeeping and form no part of the proof.
+
+<div class="proof">
+
+*Proof.* As in the proof of Theorem <a href="#thm:chains" data-reference-type="ref" data-reference="thm:chains">6.3</a>, write $`\rho=b/a`$, $`D_j=a^{n_j}-b^{n_j}`$ and $`S_j=\sum_{i\le j}b^{n_i}/(a^{n_i}-b^{n_i})`$; then $`D_jS_j`$ is a positive integer. Suppose that $`x=X_S(a/b)`$ is algebraic.
+
+*The tail.* Fix $`j`$ and put $`N=n_j`$ and $`M=n_{j+1}`$. Each $`n_l`$ with $`l>j`$ is a multiple of $`M`$, and $`\rho^n/(1-\rho^n)=\sum_{i\ge1}\rho^{in}`$, so
+``` math
+x-S_j=\sum_{k\ge1}c_j(k)\,\rho^{kM},\qquad c_j(k)=\#\{l>j:\ n_l\mid kM\}.
+```
+Since $`n_{j+1}=M`$ and $`n_{j+s}\ge2^{s-1}M`$, we have $`1\le c_j(k)\le1+\log_2k`$. For an integer $`K\ge1`$ put $`E_j=\sum_{k\ge K}c_j(k)\rho^{kM}`$. Then $`0<E_j\le C_K\rho^{KM}`$, where $`C_K=\sum_{i\ge0}(1+\log_2(K+i))\rho^{i}`$ does not depend on $`j`$.
+
+*Choice of $`K`$.* The ratios $`r_j=n_{j+1}/n_j`$ are integers at least $`2`$. Choose an infinite set $`J_0`$ of indices on which either $`r_j`$ equals a constant $`r`$, or $`r_j\to\infty`$. In the first case fix $`K\ge1`$ with $`Kr\log(a/b)>\log a`$; at base $`4/3`$ with $`r=2`$ the least such $`K`$ is $`3`$. In the second case put $`K=1`$. The vector $`(c_j(1),\dots,c_j(K-1))`$ takes only finitely many values, so it equals a fixed $`(c_1,\dots,c_{K-1})`$ for all $`j`$ in an infinite set $`J\subseteq J_0`$.
+
+*Integer points and one linear form.* For $`j\in J`$ put $`H=a^{N+(K-1)M}`$ and
+``` math
+Y_j=\bigl(H,\ H\rho^{N},\ a^{(K-1)M}D_jS_j,\ H\rho^{M},\ H\rho^{N+M},\ \dots,\
+ H\rho^{(K-1)M},\ H\rho^{N+(K-1)M}\bigr)\in\mathbb{Z}^{2K+1}.
+```
+Every coordinate except the third is an integer whose prime factors divide $`ab`$; for example $`H\rho^{N+kM}=a^{(K-1-k)M}b^{N+kM}`$. For $`y=(y_1,\dots,y_{2K+1})`$ put
+``` math
+L(y)=xy_1-xy_2-y_3-\sum_{k=1}^{K-1}c_k\,(y_{2k+2}-y_{2k+3}).
+```
+Since $`a^{(K-1)M}D_jS_j=H(1-\rho^N)S_j`$, the expansion of the tail gives
+``` math
+L(Y_j)=H(1-\rho^N)\Bigl(x-S_j-\sum_{k=1}^{K-1}c_k\rho^{kM}\Bigr)
+ =H(1-\rho^N)E_j .
+```
+
+*The product over places.* Let $`\Sigma`$ consist of the archimedean place and the primes dividing $`ab`$, with $`|p|_p=p^{-1}`$. At the archimedean place take the $`2K+1`$ forms $`L`$ and $`y_i`$ for $`i\ne3`$; at each prime $`p\mid ab`$ take the $`2K+1`$ coordinate forms. The coordinate forms are linearly independent, and so are the forms at the archimedean place, because the coefficient of $`y_3`$ in $`L`$ is $`-1`$. By the product formula, $`\prod_{v\in\Sigma}|y|_v=1`$ for every nonzero integer $`y`$ whose prime factors divide $`ab`$. Hence, in the product of $`|F(Y_j)|_v`$ over all $`v\in\Sigma`$ and all forms $`F`$ chosen at $`v`$, only $`L`$ and the third coordinate at the primes remain:
+``` math
+\Pi_j=|L(Y_j)|\prod_{p\mid ab}\bigl|a^{(K-1)M}D_jS_j\bigr|_p
+ \le HE_j\,a^{-(K-1)M}\le C_K\,a^{N}\rho^{KM},
+```
+by $`|D_jS_j|_p\le1`$ and $`\prod_{p\mid ab}|a|_p=a^{-1}`$. Also $`\|Y_j\|=\max_i|Y_{j,i}|\le\max(1,x)\,a^{N+(K-1)M}`$. In the first case $`M=rN`$ and $`a^N\rho^{KM}=a^{-\delta N}`$ with $`\delta=Kr\log(a/b)/\log a-1>0`$, so $`\Pi_j\le\|Y_j\|^{-\varepsilon}`$ for all large $`j\in J`$, where $`\varepsilon=\delta/(2+2(K-1)r)`$. In the second case $`K=1`$, $`\|Y_j\|\le\max(1,x)\,a^N`$ and $`a^N\rho^M\le a^{-N}`$ once $`r_j\log(a/b)\ge2\log a`$, so $`\Pi_j\le\|Y_j\|^{-1/2}`$ for all large $`j\in J`$.
+
+*The Subspace Theorem.* We use Schmidt’s Subspace Theorem in the $`p`$-adic form due to Schlickewei \[schmidt1972; schlickewei1976\], as stated in \[bilu2008, Theorem 2.3\]. Let $`\Sigma`$ be a finite set of places of $`\mathbb{Q}`$ containing the archimedean one and, for each $`v\in\Sigma`$, let $`F_{v,1},\dots,F_{v,m}`$ be linearly independent linear forms in $`m`$ variables with algebraic coefficients. Then for every $`\varepsilon>0`$ the vectors $`y\in\mathbb{Z}^m`$ with $`\prod_{v\in\Sigma}\prod_{i=1}^m|F_{v,i}(y)|_v\le\|y\|^{-\varepsilon}`$ lie in finitely many proper linear subspaces of $`\mathbb{Q}^m`$. Here every form has rational coefficients except possibly $`L`$, at the archimedean place, whose coefficients lie in $`\mathbb{Q}(x)`$ with $`x`$ real algebraic. The vectors $`Y_j`$ are pairwise distinct, so there are $`\lambda\in\mathbb{Q}^{2K+1}\smallsetminus\{0\}`$ and an infinite $`J'\subseteq J`$ with $`\lambda\cdot Y_j=0`$ for every $`j\in J'`$.
+
+*No fixed relation.* Divide $`\lambda\cdot Y_j=0`$ by $`H`$ and put $`z=\rho^{n_j}`$, which tends to $`0`$ along $`J'`$. In the first case $`\rho^{kM}=z^{kr}`$, and substituting $`S_j=x-\sum_{k<K}c_kz^{kr}-E_j`$ gives $`Q(z)=\lambda_3(1-z)E_j`$ for the polynomial
+``` math
+Q(z)=\lambda_1+\lambda_3x+(\lambda_2-\lambda_3x)z
+ +\sum_{k=1}^{K-1}\bigl((\lambda_{2k+2}-\lambda_3c_k)z^{kr}
+ +(\lambda_{2k+3}+\lambda_3c_k)z^{1+kr}\bigr).
+```
+Because $`r\ge2`$, the exponents $`0`$, $`1`$, $`kr`$ and $`1+kr`$ with $`1\le k<K`$ are distinct and smaller than $`Kr`$. The polynomial $`Q`$ does not depend on $`j`$ and $`|Q(z)|\le|\lambda_3|C_Kz^{Kr}`$ along $`J'`$, so every coefficient of $`Q`$ vanishes; otherwise its lowest nonzero term would dominate as $`z\to0`$. Then $`\lambda_3(1-z)E_j=0`$, and $`E_j>0`$ gives $`\lambda_3=0`$. The coefficients of $`Q`$ are now $`\lambda_1`$, $`\lambda_2`$, $`\lambda_{2k+2}`$ and $`\lambda_{2k+3}`$, so $`\lambda=0`$, a contradiction. In the second case the same substitution gives $`\lambda_1+\lambda_3x+(\lambda_2-\lambda_3x)z=\lambda_3(1-z)E_j`$ with $`0<E_j\le C_1z^{r_j}\le C_1z^2`$, and the same comparison gives $`\lambda=0`$. Therefore $`x`$ is transcendental. ◻
+
+</div>
+
+The last step uses that the ratios of the chain are at least $`2`$. The identity
+``` math
+\sum_{j\ge0}\frac{z^{2^j}}{1-z^{2^{j+1}}}=\frac{z}{1-z}\qquad(|z|<1)
+```
+shows what happens without this. Let $`\mu_j`$ be its $`j`$th partial sum and $`w=z^{2^{j+1}}`$. Then $`(1-w)\mu_j`$ is a polynomial in $`z`$ with integer coefficients of degree less than $`2^{j+1}`$, so at $`z=b/a`$ it becomes an integer after multiplication by $`a^{2^{j+1}}`$, as $`D_jS_j`$ does above. The tail, however, begins at the exponent of $`w`$ itself: $`(1-w)(z/(1-z)-\mu_j)=w`$ exactly. At $`z=b/a`$ this is a fixed linear relation between $`a^{2^{j+1}}`$, $`b^{2^{j+1}}`$ and the cleared partial sum, the situation that the last step excludes when the ratios are at least $`2`$, and the value is rational.
+
+The same proof applies when the terms of $`X_S(a/b)`$ carry bounded positive integer weights, since the tail coefficients $`c_j(k)`$ then remain positive integers bounded in terms of $`k`$.
+
+The argument is an instance of the method of Corvaja and Zannier, who apply the Subspace Theorem when a fixed linear combination of numbers composed of finitely many fixed primes approximates an integer \[corvajazannier2002, Theorem 4\]. Here those numbers are products of powers of $`a`$ and $`b`$, and divisibility along the chain supplies the integer $`a^{(K-1)M}D_jS_j`$. Two older methods bear on parts of Theorem <a href="#thm:chain-transcendence" data-reference-type="ref" data-reference="thm:chain-transcendence">6.5</a>. When the ratios $`r_j`$ are unbounded, Roth’s theorem \[roth1955\] suffices: once $`r_j\log(a/b)\ge3\log a`$, the rational $`S_j`$, of height at most $`\max(1,X_S(a/b))\,a^{n_j}`$, satisfies $`0<X_S(a/b)-S_j\le Ca^{-3n_j}`$ with $`C`$ independent of $`j`$, and irrationality follows as in the proof of Theorem <a href="#thm:chains" data-reference-type="ref" data-reference="thm:chains">6.3</a>. When the ratios are bounded, the extension of Mahler’s method to chains of functional equations by Loxton and van der Poorten \[loxtonvanderpoorten1977, Theorem 4, p. 38\] applies to $`\sum_h\varphi(\alpha^{n_h})`$ with $`\varphi(z)=z/(1-z)`$ at algebraic $`\alpha`$ with $`0<|\alpha|<1`$, provided the functions $`f_k(z)=\sum_{h\ge k}\varphi(z^{n_h/n_k})`$ satisfy their hypothesis of strong transcendence, a transcendence condition uniform in $`k`$. That hypothesis fails for unbounded ratios, since $`(1-z)f_k(z)-z`$ vanishes at $`0`$ to order $`n_{k+1}/n_k`$. We have not checked it for bounded ratios; if it holds, their theorem gives such chains at every real algebraic base greater than $`1`$. We did not find Theorem <a href="#thm:chain-transcendence" data-reference-type="ref" data-reference="thm:chain-transcendence">6.5</a> stated in the literature. The search, with locators, is recorded in `research/experiments/chain_transcendence/README.md` and ended on 26 September 2026.
+
+The preceding integer-vector argument uses a rational base. The next number-field argument controls the conjugates explicitly and extends the conclusion to every real algebraic base greater than one. It also permits non-chain blocks with separated divisibility cuts. Arbitrary supports, including the full support at $`3/2`$, remain outside its hypotheses.
+
+<a id="sec:separated-cuts"></a>
+
+## Divisibility cuts at every algebraic base
+
+A support need not be a chain for the prefix-clearing argument to work. What it needs is a place to cut: every earlier exponent divides one integer $`L`$, while every later exponent is a multiple of a larger integer $`M`$. The prefix then becomes a polynomial of degree at most $`L`$, and the tail has a bounded number of possible initial coefficient patterns in powers of $`t^{-M}`$. Keeping several of those powers as separate coordinates pays for the height of the prefix, including all its algebraic conjugates.
+
+<div id="thm:separated-cuts" class="theorem">
+
+**Theorem 6.6** (Lambert sums across divisibility cuts). *Let $`H`$ be an infinite subset of the positive integers. Suppose that positive integers $`L_j,M_j`$ satisfy
+``` math
+L_j\longrightarrow\infty,\qquad M_j>L_j,\qquad M_j-L_j\longrightarrow\infty,
+```
+and, for every $`j`$ and $`n\in H`$,
+``` math
+n\le L_j\ \Longrightarrow\ n\mid L_j,
+ \qquad n>L_j\ \Longrightarrow\ M_j\mid n.
+```
+For every infinite $`B\subseteq H`$, every bounded family of positive integer weights $`(w_n)_{n\in B}`$, and every real algebraic $`t>1`$, the sum
+``` math
+\sum_{n\in B}\frac{w_n}{t^n-1}
+```
+is transcendental.*
+
+</div>
+
+These hypotheses hold for every increasing divisibility chain, taking $`L_j=n_j`$ and $`M_j=n_{j+1}`$. They also allow arbitrarily large sets of pairwise incomparable exponents in one block, as the example below shows. They do not hold for the full positive support. The theorem therefore does not settle the rationality of the full Lambert series at $`3/2`$.
+
+The proof uses the number-field Subspace Theorem in the normalization of Evertse and Ferretti \[evertseferretti2013, §1.1, (1.1); §2.1\]. It extends the preceding argument based on the method of Corvaja and Zannier \[corvajazannier2002, Theorem 4\]. This is an ordinary proof; neither a Lean proof of the transcendence conclusion nor historical priority is asserted.
+
+<div class="proof">
+
+*Proof.* Write $`\rho=t^{-1}\in(0,1)`$ and $`1\le w_n\le W`$. The series converges by comparison with a geometric series. Suppose its value $`x`$ is algebraic, and put $`K=\mathbb{Q}(\rho,x)`$, $`d=[K:\mathbb{Q}]`$. Use absolute values $`|\cdot|_v`$ normalized by the product formula. At the specified real embedding $`v_0`$, $`|a|_{v_0}=|a|^{1/d}`$. Let $`S`$ contain the archimedean places and every finite place where $`\rho`$ is not a unit. Then $`\rho`$ is an $`S`$-unit. Write $`h=\log H(\rho)>0`$, where $`H`$ is the multiplicative projective height.
+
+For one cut, abbreviate $`L=L_j`$, $`M=M_j`$, and set
+``` math
+s_j=\sum_{\substack{n\in B\\n\le L}}
+       \frac{w_n\rho^n}{1-\rho^n},
+ \qquad z_j=(1-\rho^L)s_j=P_j(\rho).
+```
+For $`n\mid L`$,
+``` math
+(1-X^L)\frac{X^n}{1-X^n}=X^n+X^{2n}+\cdots+X^L.
+```
+Thus $`P_j\in\mathbb{Z}[X]`$, its degree is at most $`L`$, and its coefficient sum is at most $`B_j=WL^2`$. Consequently, at a finite place, $`|z_j|_v\le\max(1,|\rho|_v)^L`$; at an archimedean place the additional factor is $`B_j^{d_v/d}`$, where $`d_v`$ is its local degree. Since the archimedean exponents sum to one,
+``` math
+\begin{equation}
+\label{eq:cuts-conjugates}
+ \prod_{v\in S\smallsetminus\{v_0\}}|z_j|_v\le B_j H(\rho)^L.
+\end{equation}
+```
+All coordinates used below are $`S`$-integers. Discard finitely many cuts so that the prefix is nonempty.
+
+Every remaining exponent is a multiple of $`M`$, so
+``` math
+x-s_j=\sum_{k\ge1}c_j(k)\rho^{kM},\qquad
+ c_j(k)=\sum_{\substack{n\in B,\ n>L\\ n\mid kM}}w_n.
+```
+Writing $`n=Mr`$ shows $`0\le c_j(k)\le W\tau(k)\le Wk`$. Choose a fixed integer $`R\ge2`$ such that $`\gamma=R(-\log\rho)/d-h>0`$. On an infinite subsequence the vector $`(c_j(1),\ldots,c_j(R-1))`$ is constant; denote it by $`(c_1,\ldots,c_{R-1})`$. The remaining tail satisfies
+``` math
+0<E_j:=x-s_j-\sum_{k=1}^{R-1}c_k\rho^{kM}
+ \le C_R\rho^{RM},\qquad
+ C_R=W\left(\frac{R}{1-\rho}+\frac{\rho}{(1-\rho)^2}\right).
+```
+Strict positivity follows from the infinite positive support, even if some of the frozen coefficients are zero.
+
+Consider the $`2R+1`$ coordinates
+``` math
+Y_j=(1,\rho^L,z_j,\rho^M,\rho^{L+M},\ldots,
+          \rho^{(R-1)M},\rho^{L+(R-1)M}).
+```
+Put $`D=L+(R-1)M`$. The coordinates $`1,\rho^D`$ give the lower height bound; the polynomial estimate for $`z_j`$ gives the upper bound:
+``` math
+\begin{equation}
+\label{eq:cuts-height}
+ H(\rho)^D\le H(Y_j)\le B_j H(\rho)^D.
+\end{equation}
+```
+At every place of $`S`$ use the coordinate linear forms, except that at $`v_0`$ replace the $`z`$-coordinate form by
+``` math
+F(Y)=xY_0-xY_1-Y_z-\sum_{k=1}^{R-1}c_k(Y_{k,0}-Y_{k,1}).
+```
+Its coefficient of $`Y_z`$ is $`-1`$, so the forms remain independent, and $`F(Y_j)=(1-\rho^L)E_j`$. Every other coordinate is an $`S`$-unit and its product of absolute values over $`S`$ is one. Hence
+``` math
+\prod_{v\in S}\prod_i|F_{v,i}(Y_j)|_v
+ \le C_R^{1/d} B_j\exp(-\gamma M).
+```
+Since $`L<M`$, $`\log B_j=o(M)`$ and $`\log H(Y_j)\le(Rh+1)M`$ eventually. The last product is at most $`H(Y_j)^{-\epsilon}`$ for some fixed $`\epsilon>0`$. Outside $`S`$ the local vector norm is exactly one, because the coordinates are integral and the first is one. Dividing the displayed product by $`H(Y_j)^{2R+1}`$ therefore gives precisely the normalized hypothesis of the Subspace Theorem. Infinitely many of the $`Y_j`$ lie in one proper $`K`$-linear subspace, and hence in one fixed nonzero hyperplane.
+
+Substitute
+``` math
+z_j=(1-\rho^L)\left(x-\sum_{k=1}^{R-1}c_k\rho^{kM}-E_j\right)
+```
+in that hyperplane equation. It becomes a fixed linear combination of the monomials with exponents
+``` math
+0,L,M,L+M,\ldots,(R-1)M,L+(R-1)M
+```
+equal to a fixed multiple of $`(1-\rho^L)E_j`$. Successive exponent gaps are $`L`$ or $`M-L`$, both tending to infinity; the remainder starts at $`RM`$, also a gap $`M-L`$ beyond the last exponent. If any monomial coefficient were nonzero, divide by the first such monomial and let $`j`$ tend to infinity. All other terms tend to zero, a contradiction. Thus all these coefficients vanish. The strict inequality $`E_j>0`$ then forces the hyperplane’s $`z`$ coefficient to vanish, and substitution forces every other coefficient to vanish. This contradicts the chosen nonzero hyperplane and proves the theorem. ◻
+
+</div>
+
+<div id="cor:cuts-wide-host" class="corollary">
+
+**Corollary 6.7** (A host of unbounded divisibility width). *Define
+``` math
+\begin{gathered}
+ N_0=1,\quad m_j=2^{N_j},\quad
+ L_j=N_j\operatorname{lcm}(1,\ldots,m_j),\quad N_{j+1}=2L_j,\\
+ H_* = \bigcup_{j\ge0}\{N_j,2N_j,\ldots,m_jN_j\}.
+ \end{gathered}
+```
+Then $`\sum_{n\in H_*}1/n=\infty`$, and $`H_*`$ is not contained in any finite union of divisibility chains. Nevertheless every infinite subset of $`H_*`$, with bounded positive integer weights, has a transcendental Lambert sum at every real algebraic base greater than one.*
+
+</div>
+
+<div class="proof">
+
+*Proof.* Every exponent in the first $`j+1`$ blocks divides $`L_j`$; all later exponents are multiples of $`N_{j+1}=2L_j`$. The blocks are disjoint and ordered. These are the required cuts, with $`M_j=2L_j`$. Dyadic grouping gives $`\sum_{k\le2^{N_j}}1/k\ge N_j/2`$, so each block contributes at least $`1/2`$ to the reciprocal sum. In the upper half of the $`j`$th block, two different coefficients have ratio less than two and neither divides the other. The resulting antichains have unbounded cardinality. A union of finitely many chains cannot contain them. Apply the theorem. ◻
+
+</div>
+
+This example also lies in the one-prime weighted class used for \#257. For $`h(n)=2^{v_2(n)}`$ and every real $`t>1`$, its weighted mass obeys
+``` math
+\sum_{n\in H_*}\frac{h(n)}{n(t^{h(n)}-1)}
+ \le \frac{2t^2}{(t-1)^3}.
+```
+Indeed, $`h_j=h(N_j)`$ at least doubles. For $`n=N_jk`$, the inequality $`t^{h_jh(k)}-1\ge h(k)(t^{h_j}-1)`$ bounds one block by $`[h_j/(t^{h_j}-1)]\sum_{k\le2^{N_j}}1/(N_jk)`$, which is at most $`2h_j/(t^{h_j}-1)`$. Summing over distinct positive integers $`h_j`$ and using $`t^r-1\ge(t-1)t^{r-1}`$ proves the displayed bound. Thus the new conclusion here is algebraic-base transcendence on every infinite subset, not merely another instance of the existing integer-base irrationality criterion.
+
+For a smaller example take $`H=\bigcup_{j\ge0}\{12^j,2\cdot12^j,3\cdot12^j\}`$, with cuts $`L_j=6\cdot12^j`$, $`M_j=12^{j+1}`$. Every infinite thinning satisfies the theorem, including the terms $`2\cdot12^p,3\cdot12^p`$ for prime $`p`$ at base $`3/2`$. The theorem is hereditary under thinning because the same cuts continue to work. Arbitrary supports do not have this property; the earlier rational subsums below base two remain a necessary warning.
 
 <a id="sec:base2"></a>
 
@@ -695,7 +894,7 @@ For the remainder of this subsection, take $`t=2`$: $`w_n=(2^n-1)^{-1}`$, $`R_N=
 
 <div id="lem:gaps" class="lemma">
 
-**Lemma 6.5** (the removed intervals). *$`[0,E]\smallsetminus\mathcal A`$ is the disjoint union, over finite nonempty $`F`$, of the open intervals $`(X_F-g_{\max F},\,X_F)`$. Their total length is $`\sum_n2^{n-1}g_n=E-1`$, and $`g_n=\sum_{j\ge2}\frac{2^j-2}{2^j-1}2^{-jn}=\tfrac23 4^{-n}+\tfrac67 8^{-n}+\cdots`$.*
+**Lemma 6.8** (the removed intervals). *$`[0,E]\smallsetminus\mathcal A`$ is the disjoint union, over finite nonempty $`F`$, of the open intervals $`(X_F-g_{\max F},\,X_F)`$. Their total length is $`\sum_n2^{n-1}g_n=E-1`$, and $`g_n=\sum_{j\ge2}\frac{2^j-2}{2^j-1}2^{-jn}=\tfrac23 4^{-n}+\tfrac67 8^{-n}+\cdots`$.*
 
 </div>
 
@@ -707,7 +906,7 @@ For the remainder of this subsection, take $`t=2`$: $`w_n=(2^n-1)^{-1}`$, $`R_N=
 
 <div id="lem:translate" class="lemma">
 
-**Lemma 6.6** (translation by a finite subsum). *Let $`F`$ be finite with largest element $`n`$ and let $`0\le x\le R_n`$. The greedy rule applied to $`X_F+x`$ selects exactly $`F`$ among the indices up to $`n`$ and then agrees with the greedy rule applied to $`x`$. In particular $`X_F+x\in\mathcal A`$ if and only if $`x\in\mathcal A`$, and $`X_F+x`$ is rejected at a step $`m>n`$ exactly when $`x`$ is.*
+**Lemma 6.9** (translation by a finite subsum). *Let $`F`$ be finite with largest element $`n`$ and let $`0\le x\le R_n`$. The greedy rule applied to $`X_F+x`$ selects exactly $`F`$ among the indices up to $`n`$ and then agrees with the greedy rule applied to $`x`$. In particular $`X_F+x\in\mathcal A`$ if and only if $`x\in\mathcal A`$, and $`X_F+x`$ is rejected at a step $`m>n`$ exactly when $`x`$ is.*
 
 </div>
 
@@ -751,11 +950,11 @@ Section <a href="#sec:misread" data-reference-type="ref" data-reference="sec:mi
 
 <div id="prob:membership" class="problem">
 
-**Problem 6.7**. Decide whether $`1/2`$ is a subsum of $`\sum(2^n-1)^{-1}`$. By \[plectis257, Theorem 7\] this holds if and only if the integer remainders of the greedy rule fail to increase at infinitely many steps.
+**Problem 6.10**. Decide whether $`1/2`$ is a subsum of $`\sum(2^n-1)^{-1}`$. By \[plectis257, Theorem 7\] this holds if and only if the integer remainders of the greedy rule fail to increase at infinitely many steps.
 
 </div>
 
-The rational-point counting papers examined here concern null Cantor sets such as the middle-third set \[rstw2019; chowvarjuyu2024\]. We did not locate a theorem settling the present positive-measure subsum problem. Problem <a href="#prob:membership" data-reference-type="ref" data-reference="prob:membership">6.7</a> asks about one explicit rational point.
+The rational-point counting papers examined here concern null Cantor sets such as the middle-third set \[rstw2019; chowvarjuyu2024\]. We did not locate a theorem settling the present positive-measure subsum problem. Problem <a href="#prob:membership" data-reference-type="ref" data-reference="prob:membership">6.10</a> asks about one explicit rational point.
 
 <a id="sec:dyadic-shifts"></a>
 
@@ -901,9 +1100,9 @@ At $`n=17`$, the exact comparison is
 ``` math
 R_{17}\le\frac{196609}{25769803776}<r<\frac1{131071}=w_{17}.
 ```
-The same rejection occurs for $`577/388=1+189/388`$ by Lemma <a href="#lem:translate" data-reference-type="ref" data-reference="lem:translate">6.6</a>. The independent reproduction, including every earlier skipped step, is in [`research/experiments/sparse_interpolation/late_rejection.py`](https://github.com/wcook04/plectis-erdos/blob/8d6596fbde2c4aacf946adec4b0226ba1a97545d/research/experiments/sparse_interpolation/late_rejection.py). This certificate shows that deeper computation can add exclusions. It does not convert survival to any finite depth into a membership certificate.
+The same rejection occurs for $`577/388=1+189/388`$ by Lemma <a href="#lem:translate" data-reference-type="ref" data-reference="lem:translate">6.9</a>. The independent reproduction, including every earlier skipped step, is in [`research/experiments/sparse_interpolation/late_rejection.py`](https://github.com/wcook04/plectis-erdos/blob/8d6596fbde2c4aacf946adec4b0226ba1a97545d/research/experiments/sparse_interpolation/late_rejection.py). This certificate shows that deeper computation can add exclusions. It does not convert survival to any finite depth into a membership certificate.
 
-What survives is the agreement itself. At $`Q=200`$ the counts at steps $`1`$ to $`9`$ are $`4809`$, $`1470`$, $`600`$, $`268`$, $`132`$, $`66`$, $`32`$, $`8`$, $`6`$, against $`4811`$, $`1467`$, $`604`$, $`277`$, $`133`$, $`65`$, $`32`$, $`16`$, $`8`$ from the measures of Lemma <a href="#lem:gaps" data-reference-type="ref" data-reference="lem:gaps">6.5</a>; steps $`10`$ and $`11`$ have none against $`4`$ and $`2`$, and step $`12`$ has $`4`$ against $`1`$. The late counts fluctuate more than independent events would, because rejections arrive in the families of Lemma <a href="#lem:translate" data-reference-type="ref" data-reference="lem:translate">6.6</a>.
+What survives is the agreement itself. At $`Q=200`$ the counts at steps $`1`$ to $`9`$ are $`4809`$, $`1470`$, $`600`$, $`268`$, $`132`$, $`66`$, $`32`$, $`8`$, $`6`$, against $`4811`$, $`1467`$, $`604`$, $`277`$, $`133`$, $`65`$, $`32`$, $`16`$, $`8`$ from the measures of Lemma <a href="#lem:gaps" data-reference-type="ref" data-reference="lem:gaps">6.8</a>; steps $`10`$ and $`11`$ have none against $`4`$ and $`2`$, and step $`12`$ has $`4`$ against $`1`$. The late counts fluctuate more than independent events would, because rejections arrive in the families of Lemma <a href="#lem:translate" data-reference-type="ref" data-reference="lem:translate">6.9</a>.
 
 <a id="sec:eliminated"></a>
 
@@ -927,7 +1126,7 @@ What survives is the agreement itself. At $`Q=200`$ the counts at steps $`1`$ to
 
 - That the subsums of $`\sum(t^n-1)^{-1}`$ form a Cantor set at fixed $`t\ge2`$ is \[kovactao2024, Remark 4.1\].
 
-- A closed set of positive measure can contain essentially no rationals \[boesdarsterdos1981\], so the heuristic of Section <a href="#sec:base2" data-reference-type="ref" data-reference="sec:base2">6.3</a> cannot be a consequence of measure.
+- A closed set of positive measure can contain essentially no rationals \[boesdarsterdos1981\], so the heuristic of Section <a href="#sec:base2" data-reference-type="ref" data-reference="sec:base2">6.4</a> cannot be a consequence of measure.
 
 - The rational-point counting papers examined here concern null Cantor sets \[rstw2019; chowvarjuyu2024\]. We did not locate a theorem settling the present positive-measure subsum problem. The searches were made on 20 September 2026 and are listed in the repository record.
 
@@ -955,11 +1154,11 @@ The capacity criterion already covers non-power and oscillating allowances.
 
 # Further questions
 
-1.  Is $`1/2`$ a subsum of $`\sum(2^n-1)^{-1}`$? The exact obligation is in \[plectis257, Theorem 7\]. By Lemma <a href="#lem:gaps" data-reference-type="ref" data-reference="lem:gaps">6.5</a> the general question is one-sided approximation of a rational by finite subsums $`X_F`$ to within $`g_{\max F}`$.
+1.  Is $`1/2`$ a subsum of $`\sum(2^n-1)^{-1}`$? The exact obligation is in \[plectis257, Theorem 7\]. By Lemma <a href="#lem:gaps" data-reference-type="ref" data-reference="lem:gaps">6.8</a> the general question is one-sided approximation of a rational by finite subsums $`X_F`$ to within $`g_{\max F}`$.
 
-2.  Does the count of fractions of height at most $`Q`$ rejected at step $`n`$ stay close to $`(3Q^2/\pi^2)2^{n-1}g_n`$ in the joint range $`n\le(2-\varepsilon)\log_2Q`$, counted modulo the translations of Lemma <a href="#lem:translate" data-reference-type="ref" data-reference="lem:translate">6.6</a>? A persistent excess would be the first sign of an arithmetic mechanism for \#257.
+2.  Does the count of fractions of height at most $`Q`$ rejected at step $`n`$ stay close to $`(3Q^2/\pi^2)2^{n-1}g_n`$ in the joint range $`n\le(2-\varepsilon)\log_2Q`$, counted modulo the translations of Lemma <a href="#lem:translate" data-reference-type="ref" data-reference="lem:translate">6.9</a>? A persistent excess would be the first sign of an arithmetic mechanism for \#257.
 
-3.  Can $`a^2>b^3`$ be removed from Theorem <a href="#thm:chains" data-reference-type="ref" data-reference="thm:chains">6.3</a>(a)? At base $`4/3`$, the remaining case includes chains with a non-eventually-periodic word of ratios $`2,3`$; periodic words are transcendental by part (b).
+3.  Theorem <a href="#thm:separated-cuts" data-reference-type="ref" data-reference="thm:separated-cuts">6.6</a> settles every divisibility chain at every real algebraic base $`t>1`$, and includes non-chain hosts of unbounded width. Which supports lacking separated cuts admit comparable control of the cleared prefix height and the initial tail patterns? The full support at $`3/2`$ still has neither conclusion nor such a transfer here.
 
 4.  Is there one inequality behind \#1049 Theorem 5 and the cover cost of \#257?
 
@@ -1003,6 +1202,18 @@ B. Adamczewski and C. Faverjon, [*Méthode de Mahler : relations linéaires, t
 
 Ku. Nishioka, *Mahler Functions and Transcendence*, Lecture Notes in Math. 1631, Springer, Berlin, 1996.
 
+W. M. Schmidt, *Norm form equations*, Ann. of Math. (2) **96** (1972), 526–551.
+
+H. P. Schlickewei, *Die $`p`$-adische Verallgemeinerung des Satzes von Thue–Siegel–Roth–Schmidt*, J. Reine Angew. Math. **288** (1976), 86–105.
+
+Yu. F. Bilu, *The many faces of the subspace theorem \[after Adamczewski, Bugeaud, Corvaja, Zannier…\]*, Séminaire Bourbaki, Vol. 2006/2007, Exp. No. 967, Astérisque **317** (2008), 1–38; [arXiv:0907.2098](https://arxiv.org/abs/0907.2098). Theorem 2.3 is the statement used here.
+
+P. Corvaja and U. Zannier, *Some new applications of the subspace theorem*, Compositio Math. **131** (2002), 319–340, doi:[`10.1023/A:1015594913393`](https://doi.org/10.1023/A:1015594913393).
+
+J. H. Loxton and A. J. van der Poorten, *Arithmetic properties of certain functions in several variables III*, Bull. Austral. Math. Soc. **16** (1977), 15–47, doi:[`10.1017/S0004972700022978`](https://doi.org/10.1017/S0004972700022978).
+
+K. F. Roth, *Rational approximations to algebraic numbers*, Mathematika **2** (1955), 1–20.
+
 D. Boes, R. Darst and P. Erdős, [*Fat, symmetric, irrational Cantor sets*](https://www.tandfonline.com/doi/abs/10.1080/00029890.1981.11995266), Amer. Math. Monthly **88** (1981), 340–341.
 
 A. Rahm, N. Solomon, T. Trauthwein and B. Weiss, [*The distribution of rational numbers on Cantor’s middle thirds set*](https://arxiv.org/abs/1909.01198), arXiv:1909.01198.
@@ -1033,7 +1244,7 @@ D. Duverney and Y. Tachiya, [*Refinement of the Chowla–Erdős method and lin
 
 Boris Adamczewski and Colin Faverjon, *Mahler’s method in several variables and finite automata*, Annals of Mathematics **204**, no. 2 (2026), 455–533, [doi:`10.4007/annals.2026.204.2.1`](https://doi.org/10.4007/annals.2026.204.2.1). Locators refer to the [68-page author manuscript](https://faverjon.perso.math.cnrs.fr/AdamczewskiFaverjon_MahlerFiniteAutomata.pdf).
 
-D. Airey, B. Mance and J. Vandehey, *Normality preserving operations for Cantor series expansions and associated fractals. II*, New York J. Math. **21** (2015), 1311–1326. <https://nyjm.albany.edu/j/2015/21-60v.pdf>. M. Waldschmidt, *Integer-valued functions, Hurwitz functions, and related topics: a survey*, in K. Kurşungöz and A. Zeytin (eds.), *Number Theory: Proceedings of the Journées Arithmétiques 2019*, De Gruyter, 2022, pp. 61–82. <https://doi.org/10.1515/9783110761115-005>. H. Wegmann, *Die Hausdorffsche Dimension von Mengen reeller Zahlen, die durch Zifferneigenschaften einer Cantorentwicklung charakterisiert sind*, Czechoslovak Math. J. **18** (1968), 622–632. <https://dml.cz/handle/10338.dmlcz/100861>.
+D. Airey, B. Mance and J. Vandehey, *Normality preserving operations for Cantor series expansions and associated fractals. II*, New York J. Math. **21** (2015), 1311–1326. <https://nyjm.albany.edu/j/2015/21-60v.pdf>. M. Waldschmidt, *Integer-valued functions, Hurwitz functions, and related topics: a survey*, in K. Kurşungöz and A. Zeytin (eds.), *Number Theory: Proceedings of the Journées Arithmétiques 2019*, De Gruyter, 2022, pp. 61–82. <https://doi.org/10.1515/9783110761115-005>. H. Wegmann, *Die Hausdorffsche Dimension von Mengen reeller Zahlen, die durch Zifferneigenschaften einer Cantorentwicklung charakterisiert sind*, Czechoslovak Math. J. **18** (1968), 622–632. <https://dml.cz/handle/10338.dmlcz/100861>. J.-H. Evertse and R. Ferretti, *A further improvement of the quantitative Subspace Theorem*, Ann. of Math. **177** (2013), 513–590. Normalizations refer to §1.1, (1.1), and §2.1 of the [3 May 2012 author version](https://pub.math.leidenuniv.nl/~evertsejh/10-subspace.pdf).
 
 </div>
 

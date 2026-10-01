@@ -1,0 +1,19 @@
+rational denominator of the series divides `59!`.
+
+`sixty_le_rational_denominator` extracts only `60 ≤ q` from the same
+certificate.  That leaves `59!` itself, and every other `59`-smooth
+denominator, unexcluded; this statement removes all of them. -/
+theorem rational_denominator_not_dvd_fiftynine_factorial
+    {q : ℕ} {a : ℤ}
+    (hq : 0 < q)
+    (hseries :
+      _root_.Erdos68.factorialGapSeries =
+        (a : ℝ) / (q : ℝ)) :
+    ¬ (q ∣ Nat.factorial 59) := by
+  have h :=
+    rational_denominator_not_dvd_pred_factorial_of_nonunit_carry
+      (m := 60) (by norm_num)
+      factorialGapStepCarry_sixty_ne_one hq hseries
+  simpa using h
+
+end ErdosProblems.Erdos68

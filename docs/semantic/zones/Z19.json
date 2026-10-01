@@ -2,6 +2,7 @@
  "zone_id": "Z19",
  "title": "Lift and reconstruction experiments with explicit hypothesis boundaries",
  "problem": "both",
+ "build_lane": "unbuilt: every module cited in this zone except ErdosProblems/Lift/Recon67.lean and ErdosProblems/Lift/CertT67.lean is in no CI build (the Lift Angle, InduceLaw, Recon249, Recon257 and verify files), so those declarations are stated in source but not kernel-checked by this repository's CI.",
  "concepts": [
   {
    "id": "audited_expansion_boundary",

@@ -1,0 +1,59 @@
+{
+  "resolved_commit": "0691a313ba1ae7e08eee097cbe94588192d598e1",
+  "snapshot_posture": "clean_committed_clone_excludes_caller_worktree_changes",
+  "status": "passed",
+  "started_at": "2026-09-29T06:00:35.979094+00:00",
+  "completed_at": "2026-09-29T06:05:48.579693+00:00",
+  "gate_exit_code": 0,
+  "gate_coverage": {
+    "configured_gate_count": 5,
+    "started_gate_count": 5,
+    "completed_gate_count": 5,
+    "failed_gate_count": 0,
+    "timed_out_gate_count": 0,
+    "all_configured_gates_completed": true,
+    "not_run_commands": []
+  },
+  "reported_check_count": 15222,
+  "reported_release": "v0.10.0",
+  "schema": "round7-release-candidate-summary/1",
+  "native_receipt_sha256": "74ed1b53a1b1b10ffa07c492eae254c3eab10f628b5b4445ec7c62889318b682",
+  "gate_results": [
+    {
+      "command": [
+        "python3",
+        "scripts/check_release.py"
+      ],
+      "exit_code": 0
+    },
+    {
+      "command": [
+        "python3",
+        "scripts/test_root_import_closure.py"
+      ],
+      "exit_code": 0
+    },
+    {
+      "command": [
+        "python3",
+        "scripts/test_release_source_identity.py"
+      ],
+      "exit_code": 0
+    },
+    {
+      "command": [
+        "python3",
+        "scripts/test_query_route_memory.py"
+      ],
+      "exit_code": 0
+    },
+    {
+      "command": [
+        "python3",
+        "scripts/test_expert_handoffs.py"
+      ],
+      "exit_code": 0
+    }
+  ],
+  "boundary": "Complete release checks on the named immutable candidate; a subsequent journal/evidence commit requires its own exact-commit admission and GitHub CI. This summary is not a push authorization or a Lean proof."
+}

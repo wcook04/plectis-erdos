@@ -1,5 +1,7 @@
 # Erdős #1041 for concyclic zeros: an exact spoke calculus, and a certified no-go
 
+> Status note (2026-09-28): the exact Formal Conjectures statement of Erdős #1041 is refuted by ani's degree-seven example (Lean `erdos1041_counterexample_hausdorff`, `lean/ErdosProblems/Erdos1041/Counterexample/HausdorffLength.lean` in the public repository); correspondence with the 1958 wording awaits independent review. Earlier statements in this note that the problem is open are dated history.
+
 Status, 2026-08-24: three proved identities/inequalities (two of them sharp),
 one **exactly certified negative result** at degrees 3 and 5, and one calibrated
 sharp conjecture.  Erdős #1041 remains open.  The concyclic case remains open.

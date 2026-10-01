@@ -42,18 +42,18 @@ def test_public_corpus_keeps_the_proof_and_both_finite_checks() -> None:
 
 
 def test_individual_paper_exposes_the_result_without_formalising_it() -> None:
-    paper = PAPER.read_text(encoding="utf-8")
+    paper = " ".join(PAPER.read_text(encoding="utf-8").split())
     for fragment in (
-        "A bounded-radius concyclic class",
+        "Unformalised remark: a bounded-radius concyclic class",
         r"2\rho^n\le1",
         r"2\rho\sin(\pi/n)<2",
         "The argument is an ordinary proof outside Lean",
         "exact-rational checker",
         "checks finitely many identities",
         "regression and stress-test evidence",
-        "The degree-seven polynomial constructed by",
-        "exact Formal Conjectures statement is false",
-        "Independent human review has not adjudicated correspondence with the 1958",
+        "The degree-seven example refutes the unrestricted formulation.",
+        "negation of the Formal Conjectures statement",
+        "Independent human review of the construction and its correspondence with the 1958 wording is not recorded.",
     ):
         assert fragment in paper
     for source in (

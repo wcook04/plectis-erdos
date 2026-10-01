@@ -1388,6 +1388,12 @@ claim_review_matrix:
         comparator_disposition: "not_selected_deep_certificate_vocabulary"
         summary: "Pointwise, cofinal, lcm-diagonal, and separated-window certificate supplies are exact or sufficient reformulations."
         boundary: "Equivalent producer statements are as hard as the unresolved target."
+      - id: "signed_totient_entire_defect_interpolation"
+        contribution_class: "ordinary paper argument"
+        evidence_mode: "ordinary proof; two AI reviews, no independent human review"
+        comparator_disposition: "not_applicable_without_exact_Lean_statement"
+        summary: "For any integer beta>=2 and positive allowance f(n) tending to infinity, an interval around the totient value is filled by integer sequences b=phi+e with 0<=b(n)<=n and |e(n)|<=f(n). One target-independent even support has upper Banach density zero, leaving any fixed prefix and odd coefficients unchanged. The construction preserves every fixed eventual coefficient and cumulative congruence, gives eventually constant progression moment defects outside common hulls of density zero, entire progression Dirichlet defects, and smooth root-of-unity radial germs with prescribed finite zero jets. The full proof includes the allowance-dependent block bound and first-harmonic rational countermodels. It is an ordinary proof with two AI proof reviews, not a Lean proof of the infinite theorem or independent human review."
+        boundary: "The correction is signed, so it does not subsume the one-sided prime-gap theorem. It preserves singularities and prescribed finite jets, not full analytic functions or all Taylor coefficients. The unperturbed totient and prime series remain unresolved."
   - problem: 251
     paper: "paper/251/erdos-251-prime-gap-dyadic-series.tex"
     families:
@@ -1532,6 +1538,12 @@ claim_review_matrix:
         comparator_disposition: "targeted"
         summary: "Exact greedy characterisations, finite-support exclusions, the odd 2-adic two-thirds-band bound, and two conditional rational-half countermodel frontiers isolate local constraints around the remaining 1/2 and 1/21 alternatives."
         boundary: "Neither membership question is decided; the 2-adic bound is sharp locally, and the two countermodel routes require unconstructed terminal-scaled or cofinal-cylinder antecedents."
+      - id: "separated_cut_algebraic_lambert_transcendence"
+        contribution_class: "ordinary paper argument"
+        evidence_mode: "ordinary proof; two AI reviews, no independent human review"
+        comparator_disposition: "not_applicable_without_exact_Lean_statement"
+        summary: "For an infinite positive-integer host with cuts L_j < M_j, L_j tending to infinity and M_j-L_j tending to infinity, every host exponent at most L_j dividing L_j and every later exponent divisible by M_j, every infinite thinning with bounded positive integer weights has transcendental Lambert sum at every real algebraic base t > 1. This includes all divisibility chains and an explicit host of unbounded divisibility width and divergent reciprocal sum. The full number-field Subspace Theorem argument has two AI proof reviews; it is an ordinary proof with no Lean transcendence theorem, independent human review or asserted historical priority."
+        boundary: "The full support at 3/2 and arbitrary infinite supports at base two remain unresolved. Finite cut arithmetic is not a proof of transcendence."
   - problem: 269
     paper: "paper/269/erdos-269-three-prime-running-lcm.tex"
     families:
@@ -1583,6 +1595,18 @@ claim_review_matrix:
         comparator_disposition: "not_applicable_not_a_lean_theorem"
         summary: "A local-window checker searches 106666 denominator and start pairs and records small certificates."
         boundary: "Finite search is not a cofinal statement."
+      - id: "independent_clock_channel_relations"
+        contribution_class: "ordinary paper argument"
+        evidence_mode: "ordinary proof; two AI reviews, no independent human review"
+        comparator_disposition: "not_applicable_without_exact_Lean_statement"
+        summary: "For positive rationally independent clock rates with no simultaneous positive crossings, and integer radices b_i >= 2, all rational relations among 1 and the channel sums S_i are multiples of (-1,b_1-1,...,b_d-1). The proof uses genuine late swaps with a common infinite suffix in one orbit closure, a fixed rational lattice, and density of the clock section. The explicit rates 1,sqrt(2),sqrt(3),sqrt(6) and radices 2,3,5,7 give rational span dimension four. This is an ordinary proof reviewed by AI agents, without Lean or independent human verification of the infinite theorem."
+        boundary: "No rational independence of the original reciprocal prime logarithms is assumed or proved; the repeated running-LCM endpoint remains open."
+      - id: "selected_staircase_integral_height_boundary"
+        contribution_class: "ordinary paper argument"
+        evidence_mode: "ordinary proof; two AI reviews, no independent human review"
+        comparator_disposition: "not_applicable_without_exact_Lean_statement"
+        summary: "The selected staircase matrix with ones on and below the diagonal and integer r>=2 above it has Smith factors 1,r-1,...,r-1. For the selected {2,3,5} kernel, any entrywise-integral diagonal clearing has determinant magnitude at least 4^(N-1), whereas the reduced rational determinant has numerator one up to sign. A rational single-target border has primitive polynomial plus or minus (tX-s), where s/t is the reduced Schur complement. These ordinary arithmetic arguments were reviewed by AI agents; they are not the existing Lean nonvanishing theorem and have no independent human review."
+        boundary: "The optimality concerns diagonal clearing and one rational target. It does not rule out multi-target, nonlinear, recurrence, or new approximation methods and does not prove running-LCM irrationality."
   - problem: 1041
     paper: "paper/1041/erdos-1041-lemniscate-newton-flow.tex"
     families:
@@ -1667,11 +1691,17 @@ claim_review_matrix:
         comparator_disposition: "targeted"
         summary: "For the explicit rectangular two-function exponent model, the cleared gap is nonpositive throughout rho >= 0 and 1 + rho <= sigma, and the threshold is at most 1/2 - 1/pi^2 with equality exactly at rho = 0, sigma = 1. The gap sign and unique-zero mechanism support this sharp threshold no-go within the wider height-and-Padé arithmetic family."
         boundary: "This is a sharp no-go only for the explicit rectangular two-function exponent model under the stated real hypotheses; it constructs no approximating polynomials or remainders and is not a universal Padé or Hermite-Padé no-go. It proves no irrationality at 3/2 or any general rational-base endpoint, and the analytic remainder/nonvanishing input remains untreated. No novelty, priority, significance, external-review, or endpoint claim is made; Erdős #1049 remains open."
+      - id: "calibrated_rational_hankel_countermodel"
+        contribution_class: "ordinary paper argument"
+        evidence_mode: "ordinary proof; two AI reviews, no independent human review"
+        comparator_disposition: "not_applicable_without_exact_Lean_statement"
+        summary: "An explicit positive atomic moment family and integer formal series have all-rank Hankel order sum_{j<N} j^2 and leading coefficient (N!)^2(N+1)!/2^N, with the same fixed-base asymptotic shape including N^(-8 xi), while xi=G_{2/3}(2/3)=1. For n>=1 the exact reduced moment denominator is 3^(31n+62)(3^(n+1)-2^(n+1))^4; the determinant denominator has logarithmic size Theta(N^3), and a proposed rank-two row-product clearer leaves denominator625. These are ordinary proofs with independent exact finite checks and AI proof reviews, not a Lean proof of the infinite family or human peer review."
+        boundary: "These are not Zudilin's actual moments. They refute an inference from the shared signature alone; they do not settle F(3/2) or refute the attributed divisibility-based criterion."
 acknowledgements: null
 external_verification:
   owner: "docs/claims.json::external_verification_packet"
   problem_index: "docs/problems.json"
-  problem_index_digest: "sha256:b9d666ef4b9766a47d0e81dcda6ceccfd227196664625172ffc4df53ba392476"
+  problem_index_digest: "sha256:553907337707395dc747cb01ef2309e1e0f0dcb5c7689dbaf27c571fe210a486"
   problem_count: 8
   problems:
     - id: "erdos_68"
@@ -1708,11 +1738,11 @@ external_verification:
       erdos_number: 269
       status: "open"
       checked_frontier: "That for three pairwise distinct primes the least common multiple of the smooth prefix equals the product of the three maximal pure prime powers below the cutoff."
-      open_frontier: "Irrationality or transcendence in any three-prime case."
+      open_frontier: "Irrationality of the repeated sum, or transcendence, in any three-prime case."
       claim_registry_status: "registered_declarations"
     - id: "erdos_1041"
       erdos_number: 1041
-      status: "open"
+      status: "formal statement refuted"
       checked_frontier: "For ani’s degree-seven polynomial, every preconnected strict-lemniscate set containing two distinct roots has one-dimensional Hausdorff measure above two. Lean refutes the exact Formal Conjectures path-image claim and checks a separate total-variation bound."
       open_frontier: "The full small-parameter family reported by ani; only one explicit polynomial is formalised."
       claim_registry_status: "registered_declarations"
@@ -1725,12 +1755,12 @@ external_verification:
         manifest: "research_corpus/Erdos1041/CORPUS_MANIFEST.json"
         checkpoint: "research_corpus/Erdos1041/PUBLIC_CORPUS_CHECKPOINT.json"
         content_digests:
-          frontier: "sha256:e0c5f9c6ca8add9a7e87d11511fb63aa461699f0d54c392afba8bdabebf20299"
-          strongest_results: "sha256:6b11ede029441a4c50aae08895a035b236a5a3e08a39452cf78a8ab87194199f"
-          manifest: "sha256:ce964d4a1e23101de34f35e3a42d4e2d6851873f9a37ddaecb6af718e9048ea6"
-          checkpoint: "sha256:007198e7eb8c48c7438c21d2a082342c45f44b945c49d5a3326d0a600d6b725c"
+          frontier: "sha256:8aef5071a9a2a35de6b2af79bf0a486d97306aa0b6d4b997144e16ba1d112a9a"
+          strongest_results: "sha256:a5f888560836a710024bd6079538cbd62b39c1544a19514903ac57f9789d7e24"
+          manifest: "sha256:6f456a92e30ed2318d6c342f2e80dbbc77be39a14e051828ef215ffb8b001bbd"
+          checkpoint: "sha256:3ec0d7b9f9ab8a3425678b52830ee3e6701382b9b7485787c3dac43f66ac7fb3"
         activated_result_count: 294
-        source_checkpoint: "fd47c99b7f95ee10cbf22bd7e13a3bec9ea6bfac"
+        source_checkpoint: "fb5c8803c1498cad9755d1615473cb33b11af6ee"
         source_subtree_tree: null
         promotion_boundary: "This route is public research evidence only; it is not a reviewed claim-registry entry or a Comparator interface."
     - id: "erdos_1049"

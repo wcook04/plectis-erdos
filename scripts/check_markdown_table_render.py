@@ -242,6 +242,7 @@ SEVERITY = {"overflow": 3, "too_many_columns": 2, "long_token": 2, "prose_cells"
 REPO_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 EXACT_COPY_MANIFESTS = (
     os.path.join(REPO_ROOT, "research_corpus", "Erdos1041", "CORPUS_MANIFEST.json"),
+    os.path.join(REPO_ROOT, "docs", "research-commons", "rounds", "round6", "MANIFEST.json"),
 )
 
 

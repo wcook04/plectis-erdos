@@ -12,6 +12,7 @@ import json
 import os
 import shutil
 import subprocess
+import sys
 import tempfile
 from pathlib import Path
 from unittest.mock import patch
@@ -678,7 +679,7 @@ def synthetic_repository(parent: Path) -> tuple[Path, dict, str, str, str, Path]
             "negative_fixture_rejected": True,
             "negative_expected_diagnostic": diagnostic,
         },
-        "whole_programme_disclosure": {"all_statuses_open": True},
+        "whole_programme_disclosure": {"statuses_within_programme_boundary": True},
     }
     receipt_path = parent / "runtime-receipt.json"
     write_json(receipt_path, receipt)
@@ -815,6 +816,58 @@ def test_replay_plan() -> None:
         )
     else:
         raise AssertionError("floating branch name was accepted as a replay commit")
+
+
+def test_replay_workspace_boundary() -> None:
+    """An invalid reviewer workspace must fail before host probes or downloads."""
+    with tempfile.TemporaryDirectory() as raw:
+        root = Path(raw)
+        blocked = root / "contributor-file"
+        original = b"existing contributor material\n"
+        blocked.write_bytes(original)
+        occupied = root / "occupied"
+        occupied.mkdir()
+        (occupied / "keep").write_bytes(original)
+        output = root / "receipt.json"
+        for workspace in (blocked, blocked / "child", occupied):
+            with (
+                patch.object(replay, "check_programs") as host,
+                patch.object(replay, "prepare_source") as fetch,
+            ):
+                try:
+                    replay.execute(source_commit="a" * 40, source_tree="b" * 40,
+                                   output=output, workspace=workspace)
+                except replay.ReplayError as exc:
+                    require("workspace" in str(exc), "workspace remedy missing")
+                else:
+                    raise AssertionError("invalid workspace accepted")
+            require(not host.called and not fetch.called, "invalid workspace reached host or source")
+            for optimized in (False, True):
+                command = [sys.executable, *(["-O"] if optimized else []),
+                           str(replay.ROOT / "scripts/replay_external_verification.py"),
+                           "run", "--source-commit", "a" * 40, "--source-tree", "b" * 40,
+                           "--workspace", str(workspace), "--output", str(output)]
+                result = subprocess.run(command, capture_output=True, text=True, timeout=10)
+                require(result.returncode == 1 and "independent replay error: workspace" in result.stdout,
+                        f"workspace lacks actionable CLI error: {result}")
+                require("Traceback" not in result.stderr and not output.exists(),
+                        "invalid workspace raised a traceback or fabricated a replay receipt")
+            require(blocked.read_bytes() == original and (occupied / "keep").read_bytes() == original,
+                    "workspace rejection changed contributor material")
+        for workspace in (root / "fresh" / "nested", root / "empty"):
+            with (
+                patch.object(replay, "check_programs", side_effect=replay.ReplayError("fixture host unavailable")) as host,
+                patch.object(replay, "prepare_source") as fetch,
+            ):
+                result, code = replay.execute(
+                    source_commit="a" * 40, source_tree="b" * 40,
+                    output=output, workspace=workspace,
+                )
+            require(workspace.is_dir() and host.called and not fetch.called, "valid workspace rejected or fetched")
+            require(code == 1 and result["error"] == "fixture host unavailable",
+                    "valid workspace lost host rejection")
+            require(json.loads(output.read_text()) == result, "host rejection receipt missing")
+            output.unlink()
 
 
 def test_replay_rejects_missing_systemd_before_fetch() -> None:
@@ -1113,6 +1166,7 @@ def main() -> int:
     test_tracked_artifact_path_prefers_nested_storage()
     test_effective_verifier_identity()
     test_replay_plan()
+    test_replay_workspace_boundary()
     test_replay_rejects_missing_systemd_before_fetch()
     test_named_construction_replay_unit()
     test_weighted_support_replay_unit()

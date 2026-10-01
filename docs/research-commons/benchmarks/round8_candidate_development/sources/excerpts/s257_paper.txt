@@ -1,0 +1,61 @@
+\section{Introduction and main results}\label{sec:problem}
+For $A\subseteq\Npos$ and $b>1$, put
+$X_A(b)=\sum_{a\in A}(b^a-1)^{-1}$.  This converges because
+$(b^a-1)^{-1}\le b^{1-a}/(b-1)$.  For a finite set $P$ of primes,
+the \emph{$P$-part} of $a$ is $h(a)=\prod_{p\in P}p^{v_p(a)}$, where
+$v_p(a)$ is the exponent of $p$ in $a$.  For example, if $P=\{2\}$
+and $a=2^km$ with $m$ odd, then $h(a)=2^k$.
+
+\begin{theorem}[a weighted condition on the support]
+\label{res:weighted-support}
+Let $b\ge2$ be an integer, let $A\subseteq\Npos$ be infinite, and let $P$
+be a finite nonempty set of primes.  Set
+$h(a)=\prod_{p\in P}p^{v_p(a)}$.  If
+\begin{equation}\label{eq:weighted-fixed-base}
+ W_{b,P}(A):=\sum_{a\in A}
+ \frac{h(a)}{a(b^{h(a)}-1)}<\infty,
+\end{equation}
+then $X_A(b)$ is irrational.  In particular, the base-two condition
+\begin{equation*}\label{eq:weighted-return}
+ \sum_{a\in A}\frac{h(a)}{a(2^{h(a)}-1)}<\infty
+ \tag{W}
+\end{equation*}
+implies that $X_A(b)$ is irrational for every integer $b\ge2$.  Both
+conclusions are hereditary under passage to infinite subsets.
+\end{theorem}
+
+For $P=\{2\}$, the summand in~\eqref{eq:weighted-fixed-base} is
+$1/[m(b^{2^k}-1)]$ when $a=2^km$ and $m$ is odd.  Large powers of $2$
+can therefore compensate for large reciprocal mass among the odd
+factors.  The example following the proof in
+Section~\ref{sec:eight-return-extensions} makes this precise.
+The reciprocal mass at each fixed $P$-part must be finite, and its
+weighted sum over the parts must converge; the first requirement alone
+is insufficient.  Section~1.2 of the companion, \emph{Reciprocal Mersenne
+Subseries}, gives the decomposition and a separating example.
+
+For every finite $P$, full support and all odd exponents fail the
+condition: the integers coprime to $2\prod_{p\in P}p$ have $h(a)=1$
+and divergent reciprocal sum, by inclusion--exclusion.  The full set
+of primes fails too, since the primes outside $P$ contribute
+$1/[a(b-1)]$.  These are limitations of this criterion, not assertions
+of rationality.  By contrast, $h/(2^h-1)\le1$ shows that it includes
+every reciprocal-summable support.
+
+\begin{theorem}[reciprocal-summable supports]\label{res:reciprocal-support}
+Let $A\subseteq\Npos$ be infinite.  If
+\[
+  \sum_{a\in A}\frac1a<\infty,
+\]
+then \(X_A(b)\) is irrational for every integer \(b\ge2\).
+\end{theorem}
+
+Erd\H{o}s stated Theorem~\ref{res:reciprocal-support}, including the
+all-base conclusion, after proving its pairwise-coprime case
+\cite[p.~222]{erdos1968}.  We give a complete averaging proof of that stated extension.  Erd\H{o}s also discussed weakening reciprocal
+summability~\cite[pp.~222, 226]{erdos1968}; no identification of the
+weighted condition with his suggested conditions is asserted.
+
+The proof uses a positive displacement that rationality would separate
+from zero.  Erd\H{o}s likewise points to fractional parts of powers times
+the series value~\cite[p.~226]{erdos1968}.

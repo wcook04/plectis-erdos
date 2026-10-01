@@ -44,6 +44,54 @@ class ProbeVerdicts(unittest.TestCase):
                          ("compilation_probe", False, False))
         self.assertEqual(verdict["axioms_printed"], {"target": ["propext", "Classical.choice", "Quot.sound"]})
 
+    def test_silent_exit_zero_does_not_supply_requested_axiom_evidence(self) -> None:
+        verdict = self.run_probe()
+        self.assertTrue(verdict["compilation_accepted"])
+        self.assertFalse(verdict["accepted"])
+        self.assertEqual(verdict["missing_axiom_prints"], ["target"])
+
+    def test_each_print_directive_requires_matching_output(self) -> None:
+        self.probe.write_text("theorem target : True := trivial\n"
+                              "theorem other : True := trivial\n"
+                              "#print axioms target\n#print axioms other\n", encoding="utf-8")
+        verdict = self.run_probe(output="'target' does not depend on any axioms\n")
+        self.assertTrue(verdict["compilation_accepted"])
+        self.assertFalse(verdict["accepted"])
+        self.assertEqual(verdict["axioms_printed"], {"target": []})
+        self.assertEqual(verdict["missing_axiom_prints"], ["other"])
+
+    def test_one_qualified_output_cannot_satisfy_two_directives(self) -> None:
+        self.probe.write_text("#print axioms target\n"
+                              "#print axioms Scope.target\n", encoding="utf-8")
+        verdict = self.run_probe(output="'Scope.target' does not depend on any axioms\n")
+        self.assertTrue(verdict["compilation_accepted"])
+        self.assertFalse(verdict["accepted"])
+        self.assertEqual(verdict["missing_axiom_prints"], ["target"])
+
+    def test_namespace_qualified_output_satisfies_unqualified_request(self) -> None:
+        self.probe.write_text("namespace Scope\n"
+                              "theorem target : True := trivial\n"
+                              "#print axioms target\nend Scope\n", encoding="utf-8")
+        verdict = self.run_probe(output="'Scope.target' does not depend on any axioms\n")
+        self.assertTrue(verdict["accepted"])
+        self.assertEqual(verdict["missing_axiom_prints"], [])
+
+    def test_commented_print_directives_do_not_require_output(self) -> None:
+        self.probe.write_text("/- outer /- #print axioms fake -/ still comment -/\n"
+                              "-- #print axioms fake\n"
+                              "theorem target : True := trivial\n"
+                              "#print axioms target\n", encoding="utf-8")
+        verdict = self.run_probe(output="'target' does not depend on any axioms\n")
+        self.assertTrue(verdict["accepted"])
+        self.assertEqual(verdict["missing_axiom_prints"], [])
+
+    def test_probe_without_print_directive_can_accept_silent_compilation(self) -> None:
+        self.probe.write_text("theorem target : True := trivial\n", encoding="utf-8")
+        verdict = self.run_probe()
+        self.assertTrue(verdict["compilation_accepted"])
+        self.assertTrue(verdict["accepted"])
+        self.assertEqual(verdict["missing_axiom_prints"], [])
+
     def test_errors_and_sorry_refuse(self) -> None:
         self.assertFalse(self.run_probe(1, "research/probes/Probe.lean:1:0: error: failed")["accepted"])
         self.assertFalse(self.run_probe(0, "research/probes/Probe.lean:1:8: warning: declaration uses 'sorry'")

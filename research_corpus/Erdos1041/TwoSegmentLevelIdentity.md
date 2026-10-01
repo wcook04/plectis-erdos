@@ -1,5 +1,7 @@
 # Erdős 1041: the two-segment mechanism is level-optimal, and its threshold is Fekete's
 
+> Status note (2026-09-28): the exact Formal Conjectures statement of Erdős #1041 is refuted by ani's degree-seven example (Lean `erdos1041_counterexample_hausdorff`, `lean/ErdosProblems/Erdos1041/Counterexample/HausdorffLength.lean` in the public repository); correspondence with the 1958 wording awaits independent review. Earlier statements in this note that the problem is open are dated history.
+
 Status: one normalisation, two proved theorems, one **refuted** measured
 identity, one exact extremal computation, one adversarial extension, and one
 new member of the instrument-defect class. 2026-08-24. **Erdős #1041 remains

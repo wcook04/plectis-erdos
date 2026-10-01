@@ -10,7 +10,7 @@ Part of the [evidence record](../erdos249-totient-reasoning-surface.md) of the p
 
 The Lean declarations below together state this result.
 
-1. [`Erdos249257.tsum_totient_div_pow_two_ne_ratCast_of_den_le_79639646646701375323355774875831053`](https://github.com/wcook04/plectis-erdos/blob/ab690b0aa515faa3a432e9d47de288704ebf6bb5/lean/Erdos249257/CertificateKernel.lean#L18384)
+1. [`Erdos249257.tsum_totient_div_pow_two_ne_ratCast_of_den_le_79639646646701375323355774875831053`](https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/Erdos249257/CertificateKernel.lean#L18384)
 
 ```lean
 theorem tsum_totient_div_pow_two_ne_ratCast_of_den_le_79639646646701375323355774875831053 :
@@ -18,7 +18,7 @@ theorem tsum_totient_div_pow_two_ne_ratCast_of_den_le_79639646646701375323355774
       (∑' n : ℕ, ((Nat.totient n : ℝ)) / (2 : ℝ) ^ n) ≠ (p : ℝ)
 ```
 
-2. [`GapFareyBound.gap_check_window_1_240_first_failure`](https://github.com/wcook04/plectis-erdos/blob/ab690b0aa515faa3a432e9d47de288704ebf6bb5/lean/Erdos249257/GapFareyBound.lean#L225)
+2. [`GapFareyBound.gap_check_window_1_240_first_failure`](https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/Erdos249257/GapFareyBound.lean#L225)
 
 ```lean
 theorem gap_check_window_1_240_first_failure :
@@ -27,7 +27,7 @@ theorem gap_check_window_1_240_first_failure :
       240 243 79639646646701375323355774875831054
 ```
 
-where [`IsFirstGapFailure`](https://github.com/wcook04/plectis-erdos/blob/ab690b0aa515faa3a432e9d47de288704ebf6bb5/lean/Erdos249257/GapFareyBound.lean#L44) is
+where [`IsFirstGapFailure`](https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/Erdos249257/GapFareyBound.lean#L44) is
 
 ```lean
 def IsFirstGapFailure (V K H qstar : ℕ) : Prop :=
@@ -54,7 +54,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 The Lean declarations below together state this result.
 
-1. [`Erdos249257.TotientTailPeriodKiller.certifiedKill_diagonal_all_imported_through_t64`](https://github.com/wcook04/plectis-erdos/blob/ab690b0aa515faa3a432e9d47de288704ebf6bb5/lean/Erdos249257/DiagonalPincerCertificatesT64.lean#L1967)
+1. [`Erdos249257.TotientTailPeriodKiller.certifiedKill_diagonal_all_imported_through_t64`](https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/Erdos249257/DiagonalPincerCertificatesT64.lean#L1967)
 
 ```lean
 theorem certifiedKill_diagonal_all_imported_through_t64 :
@@ -62,27 +62,27 @@ theorem certifiedKill_diagonal_all_imported_through_t64 :
       certifiedKill (periodLcm t) (periodLcm t) (diagonalPincerKillDepthThroughT64 t)
 ```
 
-2. [`Erdos249257.TotientTailPeriodKiller.certifiedKill_diagonal_t64`](https://github.com/wcook04/plectis-erdos/blob/ab690b0aa515faa3a432e9d47de288704ebf6bb5/lean/Erdos249257/DiagonalPincerCertificatesT64.lean#L1928)
+2. [`Erdos249257.TotientTailPeriodKiller.certifiedKill_diagonal_t64`](https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/Erdos249257/DiagonalPincerCertificatesT64.lean#L1928)
 
 ```lean
 theorem certifiedKill_diagonal_t64 :
     certifiedKill (periodLcm 64) (periodLcm 64) 93
 ```
 
-3. [`Erdos249257.TotientTailPeriodKiller.certifiedKill_all_upto_sixteen`](https://github.com/wcook04/plectis-erdos/blob/ab690b0aa515faa3a432e9d47de288704ebf6bb5/lean/Erdos249257/CarrySurvivorExtinction.lean#L574)
+3. [`Erdos249257.TotientTailPeriodKiller.certifiedKill_all_upto_sixteen`](https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/Erdos249257/CarrySurvivorExtinction.lean#L574)
 
 ```lean
 theorem certifiedKill_all_upto_sixteen :
     ∀ h ∈ Finset.Icc 1 16, certifiedKill h 14 9
 ```
 
-4. [`ErdosProblems.Erdos249.PeriodMultipleEscape.certifiedKill_67_300`](https://github.com/wcook04/plectis-erdos/blob/ab690b0aa515faa3a432e9d47de288704ebf6bb5/lean/ErdosProblems/Erdos249/PeriodMultipleEscape.lean#L471)
+4. [`ErdosProblems.Erdos249.PeriodMultipleEscape.certifiedKill_67_300`](https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos249/PeriodMultipleEscape.lean#L471)
 
 ```lean
 theorem certifiedKill_67_300 : certifiedKill 67 300 11
 ```
 
-where [`certifiedKill`](https://github.com/wcook04/plectis-erdos/blob/ab690b0aa515faa3a432e9d47de288704ebf6bb5/lean/Erdos249257/TotientTailPeriodKiller.lean#L72) is
+where [`certifiedKill`](https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/Erdos249257/TotientTailPeriodKiller.lean#L72) is
 
 ```lean
 def certifiedKill (h N L : ℕ) : Prop :=
@@ -90,13 +90,13 @@ def certifiedKill (h N L : ℕ) : Prop :=
     windowDiscrepancy h N L % 2 ^ L < 2 ^ L - (N + h + L + 2)
 ```
 
-5. [`ErdosProblems.Erdos249.PeriodMultipleEscape.certifiedKill_81_300`](https://github.com/wcook04/plectis-erdos/blob/ab690b0aa515faa3a432e9d47de288704ebf6bb5/lean/ErdosProblems/Erdos249/PeriodMultipleEscape.lean#L474)
+5. [`ErdosProblems.Erdos249.PeriodMultipleEscape.certifiedKill_81_300`](https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos249/PeriodMultipleEscape.lean#L474)
 
 ```lean
 theorem certifiedKill_81_300 : certifiedKill 81 300 13
 ```
 
-where [`certifiedKill`](https://github.com/wcook04/plectis-erdos/blob/ab690b0aa515faa3a432e9d47de288704ebf6bb5/lean/Erdos249257/TotientTailPeriodKiller.lean#L72) is
+where [`certifiedKill`](https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/Erdos249257/TotientTailPeriodKiller.lean#L72) is
 
 ```lean
 def certifiedKill (h N L : ℕ) : Prop :=
@@ -104,13 +104,13 @@ def certifiedKill (h N L : ℕ) : Prop :=
     windowDiscrepancy h N L % 2 ^ L < 2 ^ L - (N + h + L + 2)
 ```
 
-6. [`ErdosProblems.Erdos249.PeriodMultipleEscape.certifiedKill_97_300`](https://github.com/wcook04/plectis-erdos/blob/ab690b0aa515faa3a432e9d47de288704ebf6bb5/lean/ErdosProblems/Erdos249/PeriodMultipleEscape.lean#L477)
+6. [`ErdosProblems.Erdos249.PeriodMultipleEscape.certifiedKill_97_300`](https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos249/PeriodMultipleEscape.lean#L477)
 
 ```lean
 theorem certifiedKill_97_300 : certifiedKill 97 300 13
 ```
 
-where [`certifiedKill`](https://github.com/wcook04/plectis-erdos/blob/ab690b0aa515faa3a432e9d47de288704ebf6bb5/lean/Erdos249257/TotientTailPeriodKiller.lean#L72) is
+where [`certifiedKill`](https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/Erdos249257/TotientTailPeriodKiller.lean#L72) is
 
 ```lean
 def certifiedKill (h N L : ℕ) : Prop :=
@@ -118,13 +118,13 @@ def certifiedKill (h N L : ℕ) : Prop :=
     windowDiscrepancy h N L % 2 ^ L < 2 ^ L - (N + h + L + 2)
 ```
 
-7. [`ErdosProblems.Erdos249.PeriodMultipleEscape.certifiedKill_101_300`](https://github.com/wcook04/plectis-erdos/blob/ab690b0aa515faa3a432e9d47de288704ebf6bb5/lean/ErdosProblems/Erdos249/PeriodMultipleEscape.lean#L480)
+7. [`ErdosProblems.Erdos249.PeriodMultipleEscape.certifiedKill_101_300`](https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos249/PeriodMultipleEscape.lean#L480)
 
 ```lean
 theorem certifiedKill_101_300 : certifiedKill 101 300 11
 ```
 
-where [`certifiedKill`](https://github.com/wcook04/plectis-erdos/blob/ab690b0aa515faa3a432e9d47de288704ebf6bb5/lean/Erdos249257/TotientTailPeriodKiller.lean#L72) is
+where [`certifiedKill`](https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/Erdos249257/TotientTailPeriodKiller.lean#L72) is
 
 ```lean
 def certifiedKill (h N L : ℕ) : Prop :=
@@ -132,13 +132,13 @@ def certifiedKill (h N L : ℕ) : Prop :=
     windowDiscrepancy h N L % 2 ^ L < 2 ^ L - (N + h + L + 2)
 ```
 
-8. [`ErdosProblems.Erdos249.PeriodMultipleEscape.certifiedKill_121_300`](https://github.com/wcook04/plectis-erdos/blob/ab690b0aa515faa3a432e9d47de288704ebf6bb5/lean/ErdosProblems/Erdos249/PeriodMultipleEscape.lean#L483)
+8. [`ErdosProblems.Erdos249.PeriodMultipleEscape.certifiedKill_121_300`](https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos249/PeriodMultipleEscape.lean#L483)
 
 ```lean
 theorem certifiedKill_121_300 : certifiedKill 121 300 10
 ```
 
-where [`certifiedKill`](https://github.com/wcook04/plectis-erdos/blob/ab690b0aa515faa3a432e9d47de288704ebf6bb5/lean/Erdos249257/TotientTailPeriodKiller.lean#L72) is
+where [`certifiedKill`](https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/Erdos249257/TotientTailPeriodKiller.lean#L72) is
 
 ```lean
 def certifiedKill (h N L : ℕ) : Prop :=
@@ -146,13 +146,13 @@ def certifiedKill (h N L : ℕ) : Prop :=
     windowDiscrepancy h N L % 2 ^ L < 2 ^ L - (N + h + L + 2)
 ```
 
-9. [`ErdosProblems.Erdos249.PeriodMultipleEscape.certifiedKill_125_300`](https://github.com/wcook04/plectis-erdos/blob/ab690b0aa515faa3a432e9d47de288704ebf6bb5/lean/ErdosProblems/Erdos249/PeriodMultipleEscape.lean#L486)
+9. [`ErdosProblems.Erdos249.PeriodMultipleEscape.certifiedKill_125_300`](https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos249/PeriodMultipleEscape.lean#L486)
 
 ```lean
 theorem certifiedKill_125_300 : certifiedKill 125 300 18
 ```
 
-where [`certifiedKill`](https://github.com/wcook04/plectis-erdos/blob/ab690b0aa515faa3a432e9d47de288704ebf6bb5/lean/Erdos249257/TotientTailPeriodKiller.lean#L72) is
+where [`certifiedKill`](https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/Erdos249257/TotientTailPeriodKiller.lean#L72) is
 
 ```lean
 def certifiedKill (h N L : ℕ) : Prop :=
@@ -160,13 +160,13 @@ def certifiedKill (h N L : ℕ) : Prop :=
     windowDiscrepancy h N L % 2 ^ L < 2 ^ L - (N + h + L + 2)
 ```
 
-10. [`ErdosProblems.Erdos249.PeriodMultipleEscape.certifiedKill_127_300`](https://github.com/wcook04/plectis-erdos/blob/ab690b0aa515faa3a432e9d47de288704ebf6bb5/lean/ErdosProblems/Erdos249/PeriodMultipleEscape.lean#L490)
+10. [`ErdosProblems.Erdos249.PeriodMultipleEscape.certifiedKill_127_300`](https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos249/PeriodMultipleEscape.lean#L490)
 
 ```lean
 theorem certifiedKill_127_300 : certifiedKill 127 300 11
 ```
 
-where [`certifiedKill`](https://github.com/wcook04/plectis-erdos/blob/ab690b0aa515faa3a432e9d47de288704ebf6bb5/lean/Erdos249257/TotientTailPeriodKiller.lean#L72) is
+where [`certifiedKill`](https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/Erdos249257/TotientTailPeriodKiller.lean#L72) is
 
 ```lean
 def certifiedKill (h N L : ℕ) : Prop :=
@@ -174,13 +174,13 @@ def certifiedKill (h N L : ℕ) : Prop :=
     windowDiscrepancy h N L % 2 ^ L < 2 ^ L - (N + h + L + 2)
 ```
 
-11. [`ErdosProblems.Erdos249.PeriodMultipleEscape.certifiedKill_128_300`](https://github.com/wcook04/plectis-erdos/blob/ab690b0aa515faa3a432e9d47de288704ebf6bb5/lean/ErdosProblems/Erdos249/PeriodMultipleEscape.lean#L493)
+11. [`ErdosProblems.Erdos249.PeriodMultipleEscape.certifiedKill_128_300`](https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos249/PeriodMultipleEscape.lean#L493)
 
 ```lean
 theorem certifiedKill_128_300 : certifiedKill 128 300 11
 ```
 
-where [`certifiedKill`](https://github.com/wcook04/plectis-erdos/blob/ab690b0aa515faa3a432e9d47de288704ebf6bb5/lean/Erdos249257/TotientTailPeriodKiller.lean#L72) is
+where [`certifiedKill`](https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/Erdos249257/TotientTailPeriodKiller.lean#L72) is
 
 ```lean
 def certifiedKill (h N L : ℕ) : Prop :=
@@ -188,7 +188,7 @@ def certifiedKill (h N L : ℕ) : Prop :=
     windowDiscrepancy h N L % 2 ^ L < 2 ^ L - (N + h + L + 2)
 ```
 
-12. [`ErdosProblems.Skip.LadderT67.exists_diagonalKill_le_82`](https://github.com/wcook04/plectis-erdos/blob/ab690b0aa515faa3a432e9d47de288704ebf6bb5/lean/ErdosProblems/Skip/LadderT67.lean#L71264)
+12. [`ErdosProblems.Skip.LadderT67.exists_diagonalKill_le_82`](https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Skip/LadderT67.lean#L71264)
 
 ```lean
 theorem exists_diagonalKill_le_82 (t : ℕ) (ht : t ≤ 82) :
@@ -237,7 +237,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 The Lean declarations below together state this result.
 
-1. [`Erdos249257.DiagonalFreshLossBridge.PowerTwoOddWindowAffine.actualLcmTailDiff_shift_pos`](https://github.com/wcook04/plectis-erdos/blob/ab690b0aa515faa3a432e9d47de288704ebf6bb5/lean/Erdos249257/TotientActualLcmOrbitSign.lean#L39)
+1. [`Erdos249257.DiagonalFreshLossBridge.PowerTwoOddWindowAffine.actualLcmTailDiff_shift_pos`](https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/Erdos249257/TotientActualLcmOrbitSign.lean#L39)
 
 ```lean
 theorem actualLcmTailDiff_shift_pos
@@ -248,7 +248,7 @@ theorem actualLcmTailDiff_shift_pos
         totientTail (periodLcm (2 ^ a) + J)
 ```
 
-2. [`Erdos249257.DiagonalFreshLossBridge.PowerTwoOddWindowAffine.actualLcm_integral_forces_topEdgeResidue`](https://github.com/wcook04/plectis-erdos/blob/ab690b0aa515faa3a432e9d47de288704ebf6bb5/lean/Erdos249257/TotientActualLcmOrbitSign.lean#L211)
+2. [`Erdos249257.DiagonalFreshLossBridge.PowerTwoOddWindowAffine.actualLcm_integral_forces_topEdgeResidue`](https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/Erdos249257/TotientActualLcmOrbitSign.lean#L211)
 
 ```lean
 theorem actualLcm_integral_forces_topEdgeResidue
@@ -270,7 +270,7 @@ theorem actualLcm_integral_forces_topEdgeResidue
       windowDiscrepancy H (H + J) K % P < P
 ```
 
-3. [`Erdos249257.TotientTailPeriodKiller.carryOrbit_eq_tail_diff`](https://github.com/wcook04/plectis-erdos/blob/ab690b0aa515faa3a432e9d47de288704ebf6bb5/lean/Erdos249257/CarrySurvivorExtinction.lean#L393)
+3. [`Erdos249257.TotientTailPeriodKiller.carryOrbit_eq_tail_diff`](https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/Erdos249257/CarrySurvivorExtinction.lean#L393)
 
 ```lean
 lemma carryOrbit_eq_tail_diff {h N : ℕ} {d : ℤ}
@@ -298,7 +298,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 The Lean declaration below states this result.
 
-[`Erdos249257.not_irrational_totientSeries_implies_unbounded_carryRank_unconditional`](https://github.com/wcook04/plectis-erdos/blob/ab690b0aa515faa3a432e9d47de288704ebf6bb5/lean/Erdos249257/TotientCarryKernelRigidity.lean#L300)
+[`Erdos249257.not_irrational_totientSeries_implies_unbounded_carryRank_unconditional`](https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/Erdos249257/TotientCarryKernelRigidity.lean#L300)
 
 ```lean
 theorem not_irrational_totientSeries_implies_unbounded_carryRank_unconditional
@@ -346,7 +346,7 @@ theorem not_irrational_totientSeries_implies_unbounded_carryRank_unconditional
 
 The Lean declaration below states this result.
 
-[`Erdos249257.not_irrational_totientSeries_implies_mod_period_and_unbounded_rank`](https://github.com/wcook04/plectis-erdos/blob/ab690b0aa515faa3a432e9d47de288704ebf6bb5/lean/Erdos249257/TotientTailCarryPeriod.lean#L224)
+[`Erdos249257.not_irrational_totientSeries_implies_mod_period_and_unbounded_rank`](https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/Erdos249257/TotientTailCarryPeriod.lean#L224)
 
 ```lean
 theorem not_irrational_totientSeries_implies_mod_period_and_unbounded_rank
@@ -384,7 +384,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 The Lean declarations below together state this result.
 
-1. [`ErdosProblems.Erdos249.PeriodMultipleEscape.periodMultipleKillSupply_iff_irrational`](https://github.com/wcook04/plectis-erdos/blob/ab690b0aa515faa3a432e9d47de288704ebf6bb5/lean/ErdosProblems/Erdos249/PeriodMultipleEscape.lean#L432)
+1. [`ErdosProblems.Erdos249.PeriodMultipleEscape.periodMultipleKillSupply_iff_irrational`](https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos249/PeriodMultipleEscape.lean#L432)
 
 ```lean
 theorem periodMultipleKillSupply_iff_irrational :
@@ -392,7 +392,7 @@ theorem periodMultipleKillSupply_iff_irrational :
       Irrational (∑' n : ℕ, (Nat.totient n : ℝ) / 2 ^ n)
 ```
 
-2. [`Erdos249257.TotientTailPeriodKiller.irrational_totient_series_iff_certificate_supply`](https://github.com/wcook04/plectis-erdos/blob/ab690b0aa515faa3a432e9d47de288704ebf6bb5/lean/Erdos249257/LcmConeFlatness.lean#L412)
+2. [`Erdos249257.TotientTailPeriodKiller.irrational_totient_series_iff_certificate_supply`](https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/Erdos249257/LcmConeFlatness.lean#L412)
 
 ```lean
 theorem irrational_totient_series_iff_certificate_supply :
@@ -401,7 +401,7 @@ theorem irrational_totient_series_iff_certificate_supply :
         ∃ N, N₀ ≤ N ∧ ∃ L, certifiedKill h N L
 ```
 
-3. [`Erdos249257.TotientTailPeriodKiller.irrational_totient_series_iff_lcm_diagonal_certificate_supply`](https://github.com/wcook04/plectis-erdos/blob/ab690b0aa515faa3a432e9d47de288704ebf6bb5/lean/Erdos249257/LcmConeFlatness.lean#L426)
+3. [`Erdos249257.TotientTailPeriodKiller.irrational_totient_series_iff_lcm_diagonal_certificate_supply`](https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/Erdos249257/LcmConeFlatness.lean#L426)
 
 ```lean
 theorem irrational_totient_series_iff_lcm_diagonal_certificate_supply :
@@ -410,7 +410,7 @@ theorem irrational_totient_series_iff_lcm_diagonal_certificate_supply :
         certifiedKill (periodLcm t) (periodLcm t) L
 ```
 
-4. [`Erdos249257.irrational_totientSeries_iff_cofinalDirectedLcmCertificateSupply`](https://github.com/wcook04/plectis-erdos/blob/ab690b0aa515faa3a432e9d47de288704ebf6bb5/lean/Erdos249257/TotientTailCarryPeriod.lean#L875)
+4. [`Erdos249257.irrational_totientSeries_iff_cofinalDirectedLcmCertificateSupply`](https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/Erdos249257/TotientTailCarryPeriod.lean#L875)
 
 ```lean
 theorem irrational_totientSeries_iff_cofinalDirectedLcmCertificateSupply :
@@ -418,7 +418,7 @@ theorem irrational_totientSeries_iff_cofinalDirectedLcmCertificateSupply :
       CofinalDirectedLcmCertificateSupply
 ```
 
-5. [`Erdos249257.TotientTailPeriodKiller.dtwWindowSeparatedPairs_iff_irrational_totient_series`](https://github.com/wcook04/plectis-erdos/blob/ab690b0aa515faa3a432e9d47de288704ebf6bb5/lean/Erdos249257/PivotAntiReconstruction.lean#L1765)
+5. [`Erdos249257.TotientTailPeriodKiller.dtwWindowSeparatedPairs_iff_irrational_totient_series`](https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/Erdos249257/PivotAntiReconstruction.lean#L1765)
 
 ```lean
 theorem dtwWindowSeparatedPairs_iff_irrational_totient_series :
@@ -442,13 +442,13 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="prop-parity"></a>
 
-## Proposition 1.9 (A rational sequence preserving size bounds, parity and aperiodicity), page 6
+## Proposition 1.9 (A rational sequence preserving size bounds, parity and aperiodicity), page 7
 
 > *There is $`c : \mathbb{N}\to \mathbb{N}`$ with $`c(n) \le 6`$ and $`c(n) \le n`$ for all $`n`$, $`c(n) \equiv \varphi(n) \pmod 2`$ for *every* $`n`$, and $`c`$ not eventually periodic; indeed for every $`N, G, K`$ there are $`K`$ explicit carry pulses beyond $`N`$, pairwise separated by more than $`G`$; and yet $`\sum_n c(n)/2^{n} = 3/2 \in \mathbb{Q}`$.*
 
 The Lean declarations below together state this result.
 
-1. [`Erdos249257.TotientParityCoboundaryCountermodel.exists_totientParity_arbitrarilyManySeparatedCarry_rational_countermodel`](https://github.com/wcook04/plectis-erdos/blob/ab690b0aa515faa3a432e9d47de288704ebf6bb5/lean/Erdos249257/TotientParityCoboundaryCountermodel.lean#L637)
+1. [`Erdos249257.TotientParityCoboundaryCountermodel.exists_totientParity_arbitrarilyManySeparatedCarry_rational_countermodel`](https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/Erdos249257/TotientParityCoboundaryCountermodel.lean#L637)
 
 ```lean
 theorem exists_totientParity_arbitrarilyManySeparatedCarry_rational_countermodel :
@@ -466,7 +466,7 @@ theorem exists_totientParity_arbitrarilyManySeparatedCarry_rational_countermodel
       ¬ Irrational (∑' n : ℕ, (c n : ℝ) / 2 ^ n)
 ```
 
-2. [`Erdos249257.TotientParityCoboundaryCountermodel.tsum_parityCoboundaryWeight_eq_three_halves`](https://github.com/wcook04/plectis-erdos/blob/ab690b0aa515faa3a432e9d47de288704ebf6bb5/lean/Erdos249257/TotientParityCoboundaryCountermodel.lean#L359)
+2. [`Erdos249257.TotientParityCoboundaryCountermodel.tsum_parityCoboundaryWeight_eq_three_halves`](https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/Erdos249257/TotientParityCoboundaryCountermodel.lean#L359)
 
 ```lean
 theorem tsum_parityCoboundaryWeight_eq_three_halves :
@@ -483,3 +483,105 @@ For each Lean declaration: the Challenge (the target, stated from Mathlib alone)
 - `tsum_parityCoboundaryWeight_eq_three_halves`: [Challenge](https://github.com/wcook04/plectis-erdos-lean/blob/cc7e541cf2081c6fef5a5e377d52e365e33b01eb/PalomarCorpus/E249_02/Challenge.lean#L65) (E249_02, line 65), [Solution](https://github.com/wcook04/plectis-erdos-lean/blob/cc7e541cf2081c6fef5a5e377d52e365e33b01eb/Solutions/PalomarCorpus/E249_02/PaperStatementsAG.lean#L48) (PaperStatementsAG.lean, line 48), [replay report](../../evidence/comparator/replay-35935225572/receipt-E249_02.json) (E249_02)
 
 Each Challenge states the same proposition as the Lean declaration it targets, with every definition it uses restated from Mathlib alone.
+
+<a id="prop-radixresidue"></a>
+
+## Proposition 1.10 (Residue series in every integer base), page 7
+
+> *Let $`t\ge2`$ be an integer.*
+>
+> 1.  *For every $`m\ge3`$, $`\sum_{n\ge1}(\varphi(n)\bmod m)\,t^{-n}`$ is irrational ([`radix_residue_series_irrational`](https://github.com/wcook04/plectis-erdos/blob/24edbddbe2bd68e920327a701aad0b9dd0d69675/lean/ErdosProblems/Erdos249/PaperCompleteR7/RationalIntegerRadixClassification.lean#L128)).*
+>
+> 2.  *For $`k\ge1`$ and $`f:\mathbb{Z}/2^k\mathbb{Z}\to\mathbb{Q}`$, the series $`\sum_{n\ge1}f(\varphi(n)\bmod2^k)\,t^{-n}`$ is rational exactly when $`f`$ is constant on the even residue classes, and its value is then $`(t+1)f(1)/t^2+f(0)/\bigl(t^2(t-1)\bigr)`$ ([`rational_zmod_radix_observable_iff`](https://github.com/wcook04/plectis-erdos/blob/24edbddbe2bd68e920327a701aad0b9dd0d69675/lean/ErdosProblems/Erdos249/PaperCompleteR7/RationalIntegerRadixClassification.lean#L145), [`positiveRadixValue_eq_of_even_constant`](https://github.com/wcook04/plectis-erdos/blob/24edbddbe2bd68e920327a701aad0b9dd0d69675/lean/ErdosProblems/Erdos249/PaperCompleteR7/IntegerRadixObservables.lean#L303)).*
+
+The Lean declarations below together state this result.
+
+1. [`ErdosProblems.Erdos249.PaperCompleteR7.RationalIntegerRadix.radix_residue_series_irrational`](https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos249/PaperCompleteR7/RationalIntegerRadixClassification.lean#L128)
+
+```lean
+theorem radix_residue_series_irrational
+    (B : ℕ) (hB : 2 ≤ B) {m : ℕ} (hm : 3 ≤ m) :
+    Irrational (radixValue B (fun n => (Nat.totient n % m : ℤ)))
+```
+
+2. [`ErdosProblems.Erdos249.PaperCompleteR7.RationalIntegerRadix.rational_zmod_radix_observable_iff`](https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos249/PaperCompleteR7/RationalIntegerRadixClassification.lean#L145)
+
+```lean
+theorem rational_zmod_radix_observable_iff
+    (B : ℕ) (hB : 2 ≤ B) {k : ℕ} (hk : 1 ≤ k)
+    (f : ZMod (2 ^ k) → ℚ) :
+    (∃ q : ℚ,
+      (∑' n : ℕ, (f (Nat.totient (n + 1) : ZMod (2 ^ k)) : ℝ) /
+        (B : ℝ) ^ (n + 1)) = (q : ℝ)) ↔
+      ∀ r : ℕ, r < 2 ^ k → r % 2 = 0 → f (r : ZMod (2 ^ k)) = f 0
+```
+
+3. [`ErdosProblems.Erdos249.PaperCompleteR7.IntegerRadixObservables.positiveRadixValue_eq_of_even_constant`](https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos249/PaperCompleteR7/IntegerRadixObservables.lean#L303)
+
+```lean
+theorem positiveRadixValue_eq_of_even_constant
+    (B : ℕ) (hB : 2 ≤ B) {k : ℕ} (hk : 1 ≤ k)
+    (f : ℕ → ℚ) (c : ℚ)
+    (hc : ∀ r, r < 2 ^ k → r % 2 = 0 → f r = c) :
+    positiveRadixValue B f (2 ^ k) =
+      ((B : ℝ) + 1) / (B : ℝ) ^ 2 * (f 1 : ℝ) +
+        (c : ℝ) / ((B : ℝ) ^ 2 * ((B : ℝ) - 1))
+```
+
+<a id="prop-radixresidue-comparator"></a>
+
+**Comparator:** not yet compared.
+
+<a id="prop-dilations"></a>
+
+## Proposition 1.11 (Finitely many dilations), page 7
+
+> *Let $`t\ge2`$ be an integer.*
+>
+> 1.  *For every $`m\ge3`$, the numbers $`1`$ and $`\sum_{n\ge1}(\varphi(n)\bmod m)\,t^{-dn}`$, $`d=1,2,\ldots`$, are linearly independent over $`\mathbb{Q}`$ ([`linearIndependent_one_and_least_residue_values`](https://github.com/wcook04/plectis-erdos/blob/24edbddbe2bd68e920327a701aad0b9dd0d69675/lean/ErdosProblems/Erdos249/FiniteDilationLinearIndependent.lean#L42)).*
+>
+> 2.  *Let $`D`$ be a finite set of positive integers, and for $`d\in D`$ let $`k_d\ge1`$ and $`f_d:\mathbb{Z}/2^{k_d}\mathbb{Z}\to\mathbb{Q}`$. For every $`c\in\mathbb{Q}`$, the number
+>     ``` math
+>     c+\sum_{d\in D}\sum_{n\ge1}f_d\bigl(\varphi(n)\bmod2^{k_d}\bigr)\,t^{-dn}
+>     ```
+>     is rational exactly when every $`f_d`$ is constant on the even residue classes ([`rational_mixed_moduli_with_constant_iff`](https://github.com/wcook04/plectis-erdos/blob/24edbddbe2bd68e920327a701aad0b9dd0d69675/lean/ErdosProblems/Erdos249/FiniteDilationMixedModuli.lean#L95)).*
+
+The Lean declarations below together state this result.
+
+1. [`ErdosProblems.Erdos249.FiniteDilationLinearIndependent.linearIndependent_one_and_least_residue_values`](https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos249/FiniteDilationLinearIndependent.lean#L42)
+
+```lean
+theorem linearIndependent_one_and_least_residue_values
+    (m B : ℕ) (hm : 3 ≤ m) (hB : 2 ≤ B) :
+    LinearIndependent ℚ (fun d : ℕ =>
+      if d = 0 then (1 : ℝ) else
+        positiveRadixValue (B ^ d) (fun r : ℕ => (r : ℚ)) m)
+```
+
+2. [`ErdosProblems.Erdos249.FiniteDilationMixedModuli.rational_mixed_moduli_with_constant_iff`](https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos249/FiniteDilationMixedModuli.lean#L95)
+
+```lean
+theorem rational_mixed_moduli_with_constant_iff
+    (D : Finset ℕ) (k : ℕ → ℕ)
+    (f : (d : ℕ) → ZMod (2 ^ (k d)) → ℚ) (B : ℕ) (q₀ : ℚ)
+    (hB : 2 ≤ B)
+    (hpos : ∀ d ∈ D, 0 < d)
+    (hk : ∀ d ∈ D, 0 < k d) :
+    (∃ q : ℚ, (q₀ : ℝ) + (∑ d ∈ D, ∑' n : ℕ,
+      (f d (Nat.totient (n + 1) : ZMod (2 ^ (k d))) : ℝ) /
+        ((B : ℝ) ^ d) ^ (n + 1)) = (q : ℝ)) ↔
+      ∀ d ∈ D, ∀ r : ℕ, r < 2 ^ (k d) → Even r →
+        f d (r : ZMod (2 ^ (k d))) = f d 0
+```
+
+<a id="prop-dilations-comparator"></a>
+
+**Comparator:** not yet compared.
+
+<a id="prop-slowmoduli"></a>
+
+## Passage (beginning “prop:slowmoduli…”), page 8
+
+> *Remark 12* (Slowly growing dyadic moduli). Let $`\kappa:\mathbb{N}\to\mathbb{N}`$ satisfy $`2^{\kappa(n)}=o(\log n)`$, and put $`a_n=\varphi(n)\bmod2^{\kappa(n)}`$. Then $`\sum_{n\ge1}a_n2^{-n}`$ is rational exactly when $`a_n=0`$ for all large $`n`$. In particular the sum is irrational when $`\kappa(3^k)\ge2`$ for infinitely many $`k`$.
+
+**No Lean proof of the whole statement.** In Lean, ordinary proof in the record; the block construction from prime factors of Fermat numbers and the tail estimate are not formalised.

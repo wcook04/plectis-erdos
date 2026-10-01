@@ -11,7 +11,7 @@ body:
         Architecture contributions are first-class work. An idea, design,
         implementation, test, or review can be credited under the contributor's
         requested name and role if it is adopted. Plain language is welcome.
-        See the [architecture contribution path](../../docs/research-commons/ARCHITECTURE_CONTRIBUTIONS.md).
+        See the [architecture contribution path](https://github.com/wcook04/plectis-erdos/blob/main/docs/research-commons/ARCHITECTURE_CONTRIBUTIONS.md).
   - type: dropdown
     id: area
     attributes:

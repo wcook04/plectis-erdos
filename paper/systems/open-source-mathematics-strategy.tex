@@ -82,8 +82,8 @@ untested.
 The paper gives a production model, contribution protocol, trust and security
 boundary, attribution policy, comparison with volunteer computing,
 Polymath-style collaboration, formalisation projects, the Prove2Me platform,
-the Aletheia case study, and multi-agent proof systems, and an evaluation
-agenda.  Mathematics is the initial domain because
+the Aletheia case study, and multi-agent proof systems, and one evaluation
+protocol.  Mathematics is the initial domain because
 its objects are digital and formal claims can be checked incrementally.  Any
 later extension to experimental science would require domain scientists,
 physical laboratories, safety governance, and new evidential authorities.
@@ -1056,8 +1056,7 @@ example; its relation to the 1958 wording awaits independent human review.
 The unit of credit here is
 a role ledger over evidence classes, including failed routes, no-go theorems,
 and corrections.  This paper does not claim that the second design is better.
-Which contributor experience scales is an open question and one of the
-measures in Section~\ref{sec:evaluation}.
+Which contributor experience scales is an open question.
 
 \paragraph{Semi-autonomous discovery on the Erd\H{o}s problems.}
 Feng et al.\ ran a research agent built on Gemini Deep Think over the 700
@@ -1116,8 +1115,8 @@ reader learn the result, and whether the people responsible for its
 publication have given that account.  The record is designed for the first;
 the second is a per-result event.  At the time of writing no selected result
 carries a recorded expert account of that kind, and adopting the standard is
-not compliance with it.  Whether the record supports such an account is one of
-the measures in Section~\ref{sec:evaluation}.
+not compliance with it.  Whether the record supports such an account is what
+the protocol of Section~\ref{sec:evaluation} asks a reader to show.
 
 The proposed composition joins these precedents.  It combines volunteer
 compute, small shared insights, formal task decomposition, agent-native
@@ -1212,22 +1211,30 @@ progress.
 
 \section{Evaluation}\label{sec:evaluation}
 
-The strategy should be evaluated at each conversion boundary.  Useful initial
-measures include:
+Prepared capacity and exercised capacity are reported separately. A supported
+contribution format, a generated task list, a compiled packet or a result
+family made ready for Palomar shows that the system can prepare work for a
+role; evidence that the role helps needs an actual contribution, its
+adjudication and the cost of integrating it. The same holds inside the
+project: a packet is an input to a research episode, whose outcome is what came
+back and what survived review.
 
-\begin{itemize}
-\item time from a cold clone to a correctly scoped first task;
-\item fraction of returned bundles that can be replayed at the stated commit;
-\item fraction requiring statement or evidence-class correction;
-\item time from return to first substantive review and to adoption decision;
-\item repeated-dead-end rate before and after a no-go enters the corpus;
-\item reviewer time per accepted result family;
-\item contribution diversity across mathematics, computation, software,
-      validation, exposition, and review;
-\item correction lineage completeness and attribution retention; and
-\item change in useful output at controlled compute when navigation or another
-      infrastructure component changes.
-\end{itemize}
+The exercised side of the maintainer's own loop is already measured. The
+research record of the
+\papersectionlink{claim-faithful-publication-systems-paper.pdf}%
+{systems-research-loop}{companion systems paper} keeps, for each round of
+outside research it records, custody of every return, its review, a disposition for each
+component and consumer, and computed milestones for each result the round owes,
+so the conversion from a packet to a landed result can be read round by round
+at each step's evidence class. Those counts describe the process; they do not
+show that the record makes the next result more likely.
+
+The next evaluation materials are concrete: twelve disclosed relation
+questions with exact source excerpts, and a four-task reader pilot whose
+controller records the allowed material, requests, replies and resource use.
+Author-proposed answers remain separate from independent grades. The relation
+questions form four dependent clusters, and the pilot contains one family;
+neither inventory supplies independent replications or a measured reader benefit.
 
 The numerator must remain claim-bounded.  One accepted counterexample may be
 more useful than hundreds of generated lemmas.  Generated certificate shards
@@ -1241,28 +1248,13 @@ a counterexample, a scoped obstruction, a reproducible stopping point, or a
 specific correction to the next task, and the record separates what happened
 from what was learned.
 
-Longitudinal model comparisons should use immutable problem snapshots and
-held-out variants where possible.  Public hard problems are susceptible to
-training-data contamination, and the repository itself will become more
-informative over time.  A later model therefore receives both a stronger
-model and a richer corpus.  The design should measure these factors
-separately rather than presenting every later success as model improvement.
+One protocol tests the effect, and it has not been run. Yuan et al.\ supply
+the precedent: two student teams attempted an end-to-end build of scientific
+hardware from its public documentation \cite{documentationtest}, which tests
+accessibility by asking outsiders to complete the documented task. Their study
+concerns open-source hardware, and it validates nothing about this route.
 
-The present work supplies no outside-reader evaluation. It establishes an
-implemented case, an explicit protocol, and falsifiable measures for a later
-study.
-
-Yuan et al. provide a useful precedent for the missing external test: two
-student teams attempted an end-to-end build from public documentation for
-scientific hardware designed more than a decade earlier
-\cite{documentationtest}. Their study concerns open-source hardware in large
-collaborations, not formal mathematics, and does not validate this repository's
-route. It supplies a precedent for testing accessibility by asking outsiders
-to complete the documented task, rather than by asking the maintainer whether
-the documents and files exist.
-
-The first study should be small and diagnostic rather than a population
-estimate.  An outside researcher receives one problem world and is asked to
+The study is small and diagnostic.  An outside researcher receives one problem world and is asked to
 recover its strongest established statement, explain the main idea, state what
 remains unproved, distinguish a genuine obstruction from an unsuccessful
 attempt, and then undertake one bounded task and return it in a form the
@@ -1285,11 +1277,12 @@ variant can ask what happens after removing a finite prefix of factorial
 shifts. Record source and help used, the decisive argument, the limitation and
 whether the return lets a maintainer decide accept, correct, request evidence
 or reject without the originating session. One to three unfamiliar readers
-would diagnose this route, not establish a comparative advantage. Later
-representation comparisons must hold the mathematical task and source access
-fixed and count reader, model, preparation, review and repair costs on both
-sides. A correct answer to a published exercise is use, not automatically a
-new research contribution.
+would diagnose this route and could show no comparative advantage. Later
+comparisons must hold the mathematical task and source access fixed, use dated
+snapshots, since public problems and this repository can reach a model through
+training, and count reader, model, preparation, review and repair costs on both
+sides. A correct answer to a published exercise counts as use of the route;
+whether it is a research contribution is a separate judgement.
 
 \section{Learning from every run}\label{sec:learning}
 
@@ -1540,28 +1533,17 @@ participation equitable.
 
 The public clone already gives readers problem papers, exact open boundaries,
 bounded query routes, ordinary-language return paths and an accepted
-architecture receipt. Those establish an inspectable mechanism, not its
-benefit to a new reader. The next decision is whether an unfamiliar reader
-can use one mathematical case and return evidence a maintainer can assess
-without the original sessions. Section~\ref{sec:evaluation} specifies a
-small dyadic-shift round and the observations that would lead to a correction
-of the explanation, return prompt or review rule.
-
-The work has route-specific dependencies, but no single launch sequence.
-Reading a paper, running a bounded public check, or contributing an ordinary
-mathematical idea can proceed while hosted services and controlled comparisons
-remain future work. The README, navigation, and return routes are partly
-implemented in the current public clone. Each advertised route should be used
-when its own operation works and its limits are clear. Higher-throughput
-services need their own resource, security, and review boundaries; those
-dependencies do not suspend use of the bounded paths already available.
-
-If the route works, a later comparison can test whether it reduces complete
-continuation and review work against good ordinary papers and source links.
-If it does not, the mathematical case remains useful and the default entry
-should be simplified. A donated-compute service, public task market and
-transfer to physical science would need separate evidence and governance;
-none is a reported capability of this repository.
+architecture receipt: an inspectable mechanism whose benefit to a new reader is
+unmeasured. The next decision is whether an unfamiliar reader can use one
+mathematical case and return evidence a maintainer can assess without the
+original sessions, and the protocol of Section~\ref{sec:evaluation} is its
+test. Reading a paper, running a bounded public check or contributing an
+ordinary mathematical idea need not wait for it; higher-throughput services
+need their own resource, security and review boundaries. If the route fails
+the test, the mathematical case remains useful and the default entry should be
+simplified. A donated-compute service, public task market and transfer to
+physical science would need separate evidence and governance; none is a
+reported capability of this repository.
 
 \section{Conclusion}\label{sec:conclusion}
 

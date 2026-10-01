@@ -144,9 +144,19 @@ def main() -> int:
     action.add_argument("--bootstrap", action="store_true")
     action.add_argument("--write", action="store_true")
     action.add_argument("--check", action="store_true")
+    action.add_argument("--audit", action="store_true", help="audit short/long claim links offline")
+    parser.add_argument("--report", type=Path, help="write the --audit JSON report")
     parser.add_argument("--paper", choices=("all", *PAPERS), default="all")
     args = parser.parse_args()
     keys = tuple(PAPERS) if args.paper == "all" else (args.paper,)
+    if args.report and not args.audit:
+        parser.error("--report requires --audit")
+    if args.audit:
+        import reasoning_record_audit
+        argv = [] if args.paper == "all" else ["--problem", args.paper]
+        if args.report:
+            argv += ["--output", str(args.report)]
+        return reasoning_record_audit.main(argv)
 
     try:
         if args.bootstrap:
@@ -160,7 +170,8 @@ def main() -> int:
             for key in keys:
                 write_one(key)
             return 0
-        return 0 if all(check_one(key) for key in keys) else 1
+        results = [check_one(key) for key in keys]
+        return 0 if all(results) else 1
     except (OSError, ValueError) as exc:
         print(f"assemble_reasoning_surfaces: {exc}", file=sys.stderr)
         return 2

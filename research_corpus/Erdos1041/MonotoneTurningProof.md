@@ -1,5 +1,7 @@
 # Erdős 1041: monotone turning is a theorem, on both branches, at every degree
 
+> Status note (2026-09-28): the exact Formal Conjectures statement of Erdős #1041 is refuted by ani's degree-seven example (Lean `erdos1041_counterexample_hausdorff`, `lean/ErdosProblems/Erdos1041/Counterexample/HausdorffLength.lean` in the public repository); correspondence with the 1958 wording awaits independent review. Earlier statements in this note that the problem is open are dated history.
+
 Status: one identity, proved symbolically and by hand, from which statement (T)
 of [NearFeketeCuspLaw.md](NearFeketeCuspLaw.md) §7 and hypothesis (C1) of
 [TurningLengthBound.md](TurningLengthBound.md) §4 both follow at every degree.

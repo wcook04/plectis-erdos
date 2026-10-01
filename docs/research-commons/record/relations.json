@@ -1,0 +1,174 @@
+{
+  "boundary": "Each row transcribes one relation certificate in lean/ErdosProblems/ArgumentGraph/Results/RelationCertificates.lean. A row is attested only when its certificate declaration is in docs/declaration_atlas.json in the named module with the recorded signature hash and the matching Contracts head; until then it is pending_pin and its reading is reported. The left and right fields follow the argument order of the Lean structure after the context. Check with python3 scripts/relation_registry.py check.",
+  "rows": [
+    {
+      "certificate": {
+        "declaration": "ErdosProblems.ArgumentGraph.RelationCertificates.prime_gap_view",
+        "module": "lean/ErdosProblems/ArgumentGraph/Results/RelationCertificates.lean",
+        "signature_sha256": "b8a88eb5e468c8d53e2d2e135d0dd74efb5d99e542ba3a266f5ae677a8d704b0"
+      },
+      "context": "fun _ : Unit => True",
+      "id": "prime_gap_view",
+      "left": "Irrational (∑' n : ℕ, ErdosProblems.Erdos251.primeDyadicTerm n)",
+      "note": "The prime-index and prime-gap dyadic series are irrational together. The equivalence supplies neither statement; the irrationality of each stays open.",
+      "problem": 251,
+      "relation": "equivalent",
+      "right": "Irrational (∑' n : ℕ, ErdosProblems.Erdos251.primeGapDyadicTerm n)",
+      "sources": [
+        {
+          "declaration": "ErdosProblems.Erdos251.irrational_tsum_primeDyadicTerm_iff_primeGap",
+          "module": "lean/ErdosProblems/Erdos251/PrimeGapDyadicTail.lean"
+        },
+        {
+          "declaration": "ErdosProblems.Erdos251.summable_primeDyadicTerm",
+          "module": "lean/ErdosProblems/Erdos251/PrimeGapDyadicTail.lean"
+        }
+      ]
+    },
+    {
+      "certificate": {
+        "declaration": "ErdosProblems.ArgumentGraph.RelationCertificates.contour_view",
+        "module": "lean/ErdosProblems/ArgumentGraph/Results/RelationCertificates.lean",
+        "signature_sha256": "ef3612662417ed1095dd858cb15f085a6a11884486ee83082b0ca154a62b3608"
+      },
+      "context": "fun ab : ℕ × ℕ => 0 < ab.2 ∧ ab.2 < ab.1",
+      "id": "contour_view",
+      "left": "(ab.2 : ℝ) ^ zudilinMu < (ab.1 : ℝ)",
+      "note": "On 0 < b < a the power condition b ^ zudilinMu < a and the contour region agree. The guards 0 < b and b < a belong to the context; outside them no relation is recorded.",
+      "problem": 1049,
+      "relation": "equivalent",
+      "right": "ZudilinContourRegion ab.1 ab.2",
+      "sources": [
+        {
+          "declaration": "ErdosProblems.Erdos1049.PaperCompleteR21.zudilin_rpow_lt_iff_contourRegion",
+          "module": "lean/ErdosProblems/Erdos1049/PaperCompleteR21/RationalBaseThreshold.lean"
+        }
+      ]
+    },
+    {
+      "certificate": {
+        "declaration": "ErdosProblems.ArgumentGraph.RelationCertificates.square_view",
+        "module": "lean/ErdosProblems/ArgumentGraph/Results/RelationCertificates.lean",
+        "signature_sha256": "3c10132a374db2079eb420ab9f130d18a3ea8a4cecff521ab3053fe77062d52a"
+      },
+      "context": "fun _ : Unit => True",
+      "id": "square_view",
+      "left": "ErdosProblems.Erdos257.PaperCompleteR21.PaperResetSqrtEscape",
+      "note": "The square-root escape as the paper states it and the square escape are one statement. Neither is supplied by this equivalence.",
+      "problem": 257,
+      "relation": "equivalent",
+      "right": "ErdosProblems.Erdos257.PaperCompleteR21.SeamResetSqrtEscape",
+      "sources": [
+        {
+          "declaration": "ErdosProblems.Erdos257.PaperCompleteR21.paperResetSqrtEscape_iff_square",
+          "module": "lean/ErdosProblems/Erdos257/PaperCompleteR21/ResetSqrtEscapeHalfMembership.lean"
+        }
+      ]
+    },
+    {
+      "certificate": {
+        "declaration": "ErdosProblems.ArgumentGraph.RelationCertificates.demand_G102_view",
+        "module": "lean/ErdosProblems/ArgumentGraph/Results/RelationCertificates.lean",
+        "signature_sha256": "f5e15058d7532d368b6a7e438fae0ec6472b6386803fc5ddef023b7dce0b8ec3"
+      },
+      "context": "fun _ : Unit => True",
+      "id": "demand_G102_view",
+      "left": "DemandLedger.G102",
+      "note": "The demand G102 is the #249 irrationality in other words, so counting G102 as progress would count the target twice.",
+      "problem": 249,
+      "relation": "equivalent",
+      "right": "Irrational (∑' n : ℕ, (Nat.totient n : ℝ) / 2 ^ n)",
+      "sources": [
+        {
+          "declaration": "DemandLedger.Bridge1.Bridge1.irr_of_G102",
+          "module": "lean/ErdosProblems/DemandLedger/edges/Bridge1.lean"
+        },
+        {
+          "declaration": "DemandLedger.Bridge1.Bridge1.G102_of_irr",
+          "module": "lean/ErdosProblems/DemandLedger/edges/Bridge1.lean"
+        }
+      ]
+    },
+    {
+      "certificate": {
+        "declaration": "ErdosProblems.ArgumentGraph.RelationCertificates.support_gap_route",
+        "module": "lean/ErdosProblems/ArgumentGraph/Results/RelationCertificates.lean",
+        "signature_sha256": "2b8f44169ede20621de066fcd6573913544eda4ed05b67824240efc7b7f33c09"
+      },
+      "context": "fun _ : Unit => True",
+      "id": "support_gap_route",
+      "left": "ErdosProblems.ArgumentGraph.RelationCertificates.SupportGap",
+      "note": "The support-gap certificate interface of the first-harmonic family gives the #249 irrationality directly. The support gap is an open input and the converse is not recorded.",
+      "problem": 249,
+      "relation": "endpoint_route",
+      "right": "Irrational (∑' n : ℕ, (Nat.totient n : ℝ) / 2 ^ n)",
+      "sources": [
+        {
+          "declaration": "ErdosProblems.Erdos249.PaperCompleteR21.irrational_totient_series_of_support_gap",
+          "module": "lean/ErdosProblems/ArgumentGraph/Results/Erdos249Endpoint.lean"
+        }
+      ]
+    },
+    {
+      "certificate": {
+        "declaration": "ErdosProblems.ArgumentGraph.RelationCertificates.good_base_gap_route",
+        "module": "lean/ErdosProblems/ArgumentGraph/Results/RelationCertificates.lean",
+        "signature_sha256": "9690bfe8bd5fbbbca228e8c9d1f1e789c99ef98ee9d3bdb02e33ba9bdc861b90"
+      },
+      "context": "fun _ : Unit => True",
+      "id": "good_base_gap_route",
+      "left": "ErdosProblems.ArgumentGraph.RelationCertificates.GoodBaseGap",
+      "note": "A first-harmonic gap at 603X/1000 on the good bases gives the #249 irrationality with no further input. The gap is an open input and the converse is not recorded.",
+      "problem": 249,
+      "relation": "endpoint_route",
+      "right": "Irrational (∑' n : ℕ, (Nat.totient n : ℝ) / 2 ^ n)",
+      "sources": [
+        {
+          "declaration": "ErdosProblems.Erdos249.PaperCompleteR21.irrational_totient_series_of_goodBase_gap",
+          "module": "lean/ErdosProblems/ArgumentGraph/Results/Erdos249Endpoint.lean"
+        }
+      ]
+    },
+    {
+      "certificate": {
+        "declaration": "ErdosProblems.ArgumentGraph.RelationCertificates.maximality_clause_refuted_off_switch",
+        "module": "lean/ErdosProblems/ArgumentGraph/Results/RelationCertificates.lean",
+        "signature_sha256": "416cea3bbd93b4263b5d43627e438da6e4662b069bd21e41048b81ff74151415"
+      },
+      "context": "ErdosProblems.ArgumentGraph.RelationCertificates.OffSwitch: fun v : ℕ × ℝ × ℝ => 3 ≤ v.1 ∧ 0 < v.2.1 ∧ v.2.1 ^ v.1 < 1 ∧ ¬ 1 ≤ v.2.1 ^ v.1 * (1 + chordCos v.1 ^ v.1)",
+      "id": "maximality_clause_refuted_off_switch",
+      "left": "innerRadius v.1 v.2.1 < v.2.2 ∧ v.2.2 ≤ v.2.1",
+      "note": "Wherever the switch fails, no point lies above the inner radius and at most the radius, so the maximality clause is vacuous there. The vacuity concerns this one clause; off_switch_region_feasible shows the region is nonempty.",
+      "problem": 1041,
+      "relation": "refuted",
+      "right": null,
+      "sources": [
+        {
+          "declaration": "ErdosProblems.Erdos1041.PaperCompleteR21.inner_chord_maximality_vacuous_off_switch",
+          "module": "lean/ErdosProblems/ArgumentGraph/Results/Erdos1041.lean"
+        }
+      ]
+    },
+    {
+      "certificate": {
+        "declaration": "ErdosProblems.ArgumentGraph.RelationCertificates.off_switch_region_feasible",
+        "module": "lean/ErdosProblems/ArgumentGraph/Results/RelationCertificates.lean",
+        "signature_sha256": "9b5acc3857da7cefa1a12165b817679c0048ac16311feca322d1f8d2c643dc74"
+      },
+      "context": "fun _ : ℕ × ℝ × ℝ => True",
+      "id": "off_switch_region_feasible",
+      "left": "v.1 = 3 ∧ v.2.1 = 1 / 2 ∧ ¬ 1 ≤ v.2.1 ^ v.1 * (1 + chordCos v.1 ^ v.1)",
+      "note": "The switch fails at degree three and radius one half, so the off-switch region is nonempty and the clause vacuity above concerns a result about a nonempty region.",
+      "problem": 1041,
+      "relation": "feasible",
+      "right": null,
+      "sources": [
+        {
+          "declaration": "ErdosProblems.Erdos1041.PaperCompleteR21.switch_fails_at_three_half",
+          "module": "lean/ErdosProblems/ArgumentGraph/Results/Erdos1041.lean"
+        }
+      ]
+    }
+  ],
+  "schema": "plectis-relation-registry/1"
+}

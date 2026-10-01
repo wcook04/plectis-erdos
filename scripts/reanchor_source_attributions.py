@@ -463,6 +463,13 @@ def reanchor(root: Path, commit: str, registry: dict[str, Any]) -> Report:
                     report.moved.append(Change(anchor.label, path, recorded, span, "relocated", new[span[0] - 1]))
                     changed.add(id(row))
                     continue
+                # Coordinates already stale at base but the excerpt is there by digest: resolve from where it was.
+                base_span = relocate_by_digest(old, row) if old is not None and align is not None else None
+                if base_span is not None:
+                    if resolve_anchor(anchor, {**row, "line_start": base_span[0], "line_end": base_span[1]},
+                                      old, new, align, report):
+                        changed.add(id(row))
+                    continue
                 if prior_rows is None:
                     prior_rows = base_registry_anchors(root, commit)
                 prior = prior_rows.get(anchor.label)
@@ -570,11 +577,16 @@ def describe(change: Change) -> str:
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     parser.add_argument("--root", type=Path, default=ROOT, help="repository checkout (default: this clone)")
-    parser.add_argument("--base", default="origin/main", help="git ref the recorded anchors were digested against")
+    parser.add_argument("--base", help="git ref the recorded anchors were digested against")
     parser.add_argument("--write", action="store_true", help="save the registry when every anchor resolves")
+    parser.add_argument("--check", action="store_true", help="fail on stale anchors without writing; defaults to HEAD as base")
+    parser.add_argument("--preserve-excerpts", action="store_true", help="refuse automatic repair when excerpt content would change")
     parser.add_argument("--patch", type=Path, help="JSON list of source rows to add or extend")
     parser.add_argument("--verbose", action="store_true", help="also list rows that only moved")
     args = parser.parse_args(argv)
+    if args.check and (args.write or args.patch):
+        parser.error("--check cannot write or patch the registry")
+    args.base = args.base or ("HEAD" if args.check else "origin/main")
     root = args.root.resolve()
     registry_path = root / REGISTRY
     try:
@@ -613,6 +625,12 @@ def main(argv: list[str] | None = None) -> int:
         f"current {report.current}, moved {len(report.moved)}, recomputed {len(report.recomputed)}, "
         f"unresolved {len(report.unresolved)}; registry {'changed' if output != raw else 'unchanged'}"
     )
+    if args.preserve_excerpts and report.recomputed:
+        print("not written: changed excerpt content requires review; only unchanged excerpts move automatically")
+        return 1
+    if args.check and output != raw:
+        print("source-attribution anchors are stale; run the projection refresh")
+        return 1
     if report.unresolved:
         if args.write:
             print("not written: resolve the anchors above, then rerun")

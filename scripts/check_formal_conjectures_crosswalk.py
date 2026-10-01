@@ -512,8 +512,11 @@ def crosswalk_errors(
         else:
             if row.get("local_problem_id") != local.get("problem_id"):
                 errors.append(f"{label}: local problem id drifted")
-            if local.get("status") != "open":
-                errors.append(f"{label}: local problem must remain open")
+            # Lean refutes the exact Formal Conjectures statement of #1041;
+            # the other indexed problems remain open.
+            expected_status = "formal statement refuted" if problem == 1041 else "open"
+            if local.get("status") != expected_status:
+                errors.append(f"{label}: local problem status must be {expected_status}")
             if not str(local.get("question", "")).strip():
                 errors.append(f"{label}: local question is empty")
 

@@ -18,12 +18,11 @@ so the two are exactly equivalent (`actualCofinalLocalWindowEscape_iff`,
 ## What this proves and what it does not
 
 It **proves** an exact equivalence of two propositions.  It does **not** prove
-either of them.  **Erdős #269 remains open.**  The mathematical content is a
-*no-go for the producer as a reduction*: `ActualCofinalLocalWindowEscape` is
-not a weaker, more tractable statement one could hope to attack by
-window/anti-concentration arguments and thereby obtain irrationality; proving
-it is literally proving Erdős #269.  Any future effort spent on the producer
-must be justified as an attack on the target itself.
+either of them.  **Erdős #269 remains open.**  The mathematical content identifies an
+exact reformulation: proving `ActualCofinalLocalWindowEscape` proves the
+target.  Logical equivalence does not decide comparative tractability or
+exclude useful window/anti-concentration methods.  Representation benefit
+requires separate evidence; the equivalence alone supplies neither endpoint.
 
 ## The mechanism
 
@@ -322,8 +321,8 @@ theorem exists_len_quadratic_div_lt (c lo : ℕ) {ε : ℝ} (hε : 0 < ε) :
 /-- **General escape.**  Irrationality of the value implies the cofinal
 local-window escape for *any* short bound `sb` that the exponentially growing
 window base eventually beats.  Nothing about `sb` other than that is used, so
-no reshaping or sharpening of the short bound yields a genuinely weaker
-producer. -/
+this is a one-way implication. A converse requires a separately justified
+carry-bound hypothesis for the proposed short bound. -/
 theorem cofinalLocalWindowEscape_of_irrational_of_beaten
     (h : Irrational (dyadicShellTsumTailR235 1)) (sb : ℕ → ℕ → ℕ)
     (hbeat : ∀ B lo : ℕ, 0 < B → ∀ ε : ℝ, 0 < ε →
@@ -347,7 +346,7 @@ theorem cofinalLocalWindowEscape_of_irrational_of_beaten
       (le_max_right _ _) (le_trans hcon (le_max_left _ _))
     exact absurd (le_trans (hfar k) hk) (not_le.mpr hlt)
 
-/-- **The whole quadratic family is equivalent to the target.**  For every
+/-- **Irrationality implies escape throughout the quadratic family.** For every
 short bound dominated by `c B · (n+1)^2` — in particular every sharpening of
 the Lean width `90 (n+1)^2`, and every rescaling of it — irrationality implies
 the escape.  The same argument works verbatim for any fixed polynomial degree;
@@ -387,8 +386,8 @@ theorem cofinalLocalWindowEscape_of_irrational
 
 /-- **The producer is exactly the target.**  `ActualCofinalLocalWindowEscape`
 is equivalent to irrationality of `Σ_{h ≥ 2} 1/H(h)`; it is therefore not a
-weaker sufficient condition, and no attack on it can be easier than Erdős
-#269 itself. -/
+weaker sufficient condition in the logical sense. Comparative tractability
+requires separate evidence. -/
 theorem actualCofinalLocalWindowEscape_iff :
     ActualCofinalLocalWindowEscape ↔ Irrational (dyadicShellTsumTailR235 1) :=
   ⟨irrational_of_cofinalLocalWindowEscape, cofinalLocalWindowEscape_of_irrational⟩

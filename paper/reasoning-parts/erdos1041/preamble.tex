@@ -6,6 +6,12 @@
 % This flat manuscript is generated from reviewable parts below.
 \documentclass[11pt]{article}
 \input{problem-note-preamble}
+% Number remarks locally so their retained labels have distinct destinations.
+% The shared preamble defines an unnumbered remark environment.
+\let\remark\relax
+\let\endremark\relax
+\newtheorem{remark}[theorem]{Remark}
+
 \input{evidence/erdos1041-lemniscate-reasoning-surface}
 \renewcommand{\commit}{7380b7871687b6bcc41ca0143c61f232e8af6500}
 \renewcommand{\commitshort}{7380b7871687}
@@ -25,7 +31,7 @@
   solved.
   \end{quote}}
 \hypersetup{
-  pdftitle={Paths in polynomial lemniscates: a degree-seven counterexample and two short-path criteria, proofs and examples for Erdős Problem 1041},
+  pdftitle={Paths in polynomial lemniscates: a degree-seven counterexample and radial connections, proofs and examples for Erdős Problem 1041},
   pdfsubject={Erdős Problem Notes: Problem 1041},
   pdfkeywords={lemniscate, Newton flow, saddle connection, Morse theory, Reeb decomposition, Lean 4},
 }
@@ -35,9 +41,9 @@
 \newcommand{\dbar}{\mathbb{D}}
 
 \runninghead{Paths in polynomial lemniscates: proofs and examples}
-\title{Paths in Polynomial Lemniscates:\\A Degree-Seven Counterexample and Two Short-Path Criteria}
+\title{Paths in Polynomial Lemniscates:\\A Degree-Seven Counterexample and Radial Connections}
 \subtitle{Proofs and examples for Erd\H{o}s Problem~\#1041, with a Lean proof for the polynomial constructed by \texttt{ani}}
 \author{Will Cook}
-\date{23 September 2026}
+\date{29 September 2026}
 
 \begin{document}

@@ -1,0 +1,863 @@
+{
+  "schema": "plectis-contrast-ledger/1",
+  "rows": [
+    {
+      "id": "c-1041-false-target",
+      "title": "Erdős #1041: a supremum measured over chosen families read as the extremal case",
+      "distinction": "A supremum measured over chosen polynomial families at each degree describes those families, and a polynomial outside them can refute the extremality it seemed to establish.",
+      "wrong_reading": "The corpus recorded that the supremum of the least intrinsic distance between two roots inside {|f| < 1} is exactly 2 at every degree, attained only in the r → 1 limit of z^n - r^n, and the public results page kept a positive #1041 route open on that reading.",
+      "right_reading": "ani's theorem shows every preconnected set joining two roots of the degree-seven example has one-dimensional Hausdorff measure above 2, which refutes the claim that an intrinsic distance of 2 is attained only in the limit of z^n - r^n and refutes extremality of that family; it does not fix the value of any supremum. The recorded supremum came from grid searches over chosen families and carries the evidence class of a measurement about those families (erdos1041_counterexample_hausdorff).",
+      "evidence": [
+        {
+          "kind": "source_span",
+          "path": "research_corpus/Erdos1041/research_packet.json",
+          "start_line": 5228,
+          "end_line": 5228,
+          "must_contain": [
+            "min-pair INTRINSIC distance",
+            "exactly 2 at every degree"
+          ]
+        },
+        {
+          "kind": "source_span",
+          "path": "docs/RESULTS.md",
+          "start_line": 586,
+          "end_line": 593,
+          "must_contain": [
+            "Degree-restricted #1041 positive routes remain open",
+            "min_c L(c) ≤ 2"
+          ]
+        },
+        {
+          "kind": "declaration",
+          "name": "erdos1041_counterexample_hausdorff",
+          "module": "lean/ErdosProblems/Erdos1041/Counterexample/HausdorffLength.lean"
+        }
+      ],
+      "provenance": [
+        {
+          "kind": "commit",
+          "ref": "969dddce",
+          "detail": "ani's degree-seven counterexample verified and formalised in Lean."
+        },
+        {
+          "kind": "claim",
+          "ref": "ani_degree_seven_total_variation_counterexample",
+          "detail": "Claim row bound to erdos1041_counterexample_hausdorff in the declaration atlas."
+        },
+        {
+          "kind": "note",
+          "ref": "https://www.erdosproblems.com/forum/thread/1041#post-8861",
+          "detail": "ani's degree-seven polynomial, posted on the erdosproblems.com forum on 7 September 2026."
+        },
+        {
+          "kind": "round",
+          "ref": "round-6",
+          "detail": "Reported by the round-6 synthesis: earlier returns claimed complete proofs of the bound before the counterexample was known."
+        }
+      ],
+      "triggers": {
+        "problems": [
+          1041
+        ],
+        "declarations": [
+          "erdos1041_counterexample_hausdorff",
+          "erdos1041_counterexample"
+        ],
+        "phrases": [
+          "attained only in the r -> 1 limit",
+          "exactly 2 at every degree",
+          "extremal family",
+          "length below 2",
+          "length less than 2",
+          "min-pair intrinsic distance",
+          "positive route"
+        ]
+      },
+      "uses": {
+        "packet_obligation": true,
+        "return_gate": "A return touching #1041 must treat the length statement as refuted by erdos1041_counterexample_hausdorff, must not treat z^n - r^n as extremal, and must label any numerical supremum as a measurement over the families it searched; the theorem fixes no supremum.",
+        "regression": null,
+        "experiment": "Build one #1041 packet with the counterexample withheld and one with it included, and record how often each return claims a proof of the length bound."
+      }
+    },
+    {
+      "id": "c-telescope-redundancy",
+      "title": "A hypothesis redundant only inside its telescope",
+      "distinction": "A hypothesis that earlier binders of a theorem make redundant can be false once it is closed on its own, so redundancy is a judgement relative to the telescope that contains it.",
+      "wrong_reading": "Since 0 < n follows from k < n, the hypothesis hn of exists_upperHalf_boolean_word_of_boolean_suffix was read as removable in every display, including a display that drops the binder hk and closes hn on its own.",
+      "right_reading": "Inside the telescope with hk : k < n, the hypothesis hn : 0 < n is entailed (Canary.positivity_redundant_in_telescope). Closed on its own over Nat the same hypothesis is false (Canary.positivity_closed_display_false). A slot replacement is judged in the telescope of the theorem that carries it, and it never counts as a weakening of the hypothesis it reconstructs.",
+      "evidence": [
+        {
+          "kind": "source_span",
+          "path": "lean/Erdos249257/BooleanMobiusLocalRepair.lean",
+          "start_line": 750,
+          "end_line": 756,
+          "must_contain": [
+            "(hk : k < n)",
+            "(hn : 0 < n)"
+          ]
+        },
+        {
+          "kind": "declaration",
+          "name": "exists_upperHalf_boolean_word_of_boolean_suffix",
+          "module": "lean/Erdos249257/BooleanMobiusLocalRepair.lean"
+        },
+        {
+          "kind": "declaration",
+          "name": "positivity_redundant_in_telescope",
+          "module": "lean/ErdosProblems/ArgumentGraph/Contracts.lean"
+        },
+        {
+          "kind": "declaration",
+          "name": "positivity_closed_display_false",
+          "module": "lean/ErdosProblems/ArgumentGraph/Contracts.lean"
+        }
+      ],
+      "provenance": [
+        {
+          "kind": "return",
+          "ref": "round-6 return C",
+          "detail": "Separately closed displays of a hypothesis and its replacement are a different statement from the pointwise comparison in one telescope; a Boolean-domain canary separates the two."
+        },
+        {
+          "kind": "round",
+          "ref": "round-6",
+          "detail": "Reported by the round-6 synthesis as the hn telescope case."
+        }
+      ],
+      "triggers": {
+        "problems": [
+          257
+        ],
+        "declarations": [
+          "exists_upperHalf_boolean_word_of_boolean_suffix",
+          "positivity_redundant_in_telescope",
+          "positivity_closed_display_false"
+        ],
+        "phrases": [
+          "redundant hypothesis",
+          "hypothesis is redundant",
+          "drop the hypothesis",
+          "slot replacement",
+          "weaker hypothesis",
+          "restatement"
+        ]
+      },
+      "uses": {
+        "packet_obligation": true,
+        "return_gate": "A return that removes, restates or replaces a hypothesis must name the telescope in which the replacement is checked and must report a slot replacement as a reconstruction of that hypothesis.",
+        "regression": "ErdosProblems.ArgumentGraph.Contracts.Canary.positivity_closed_display_false",
+        "experiment": "Show one reader the hypothesis inside its telescope and another the same hypothesis closed on its own, and record which readers keep hn."
+      }
+    },
+    {
+      "id": "c-251-equivalence-no-supply",
+      "title": "Erdős #251: an equivalence that supplies neither side",
+      "distinction": "An equivalence between the two #251 irrationality statements moves supply from either side to the other and supplies neither.",
+      "wrong_reading": "The exact equivalence irrational_tsum_primeDyadicTerm_iff_primeGap was counted as progress on #251 itself.",
+      "right_reading": "The theorem shows the prime dyadic series and the prime-gap dyadic series are irrational together, given summability of the prime dyadic series, which the corpus proves (summable_primeDyadicTerm). Both irrationality statements stay open. Credit counts them as one question, and search may keep both views.",
+      "evidence": [
+        {
+          "kind": "declaration",
+          "name": "irrational_tsum_primeDyadicTerm_iff_primeGap",
+          "module": "lean/ErdosProblems/Erdos251/PrimeGapDyadicTail.lean"
+        },
+        {
+          "kind": "relation",
+          "id": "prime_gap_view"
+        }
+      ],
+      "provenance": [
+        {
+          "kind": "claim",
+          "ref": "prime_gap_irrationality_equivalence",
+          "detail": "Claim row bound to irrational_tsum_primeDyadicTerm_iff_primeGap in the declaration atlas."
+        },
+        {
+          "kind": "return",
+          "ref": "round-6 return C",
+          "detail": "Source-based case: the two irrationality views are equivalent with the summability supplier, and neither predicate is supplied by the equivalence."
+        }
+      ],
+      "triggers": {
+        "problems": [
+          251
+        ],
+        "declarations": [
+          "irrational_tsum_primeDyadicTerm_iff_primeGap",
+          "prime_gap_view"
+        ],
+        "phrases": [
+          "prime-gap dyadic",
+          "prime gap series",
+          "equivalent reformulation",
+          "exactly equivalent"
+        ]
+      },
+      "uses": {
+        "packet_obligation": true,
+        "return_gate": "A return that proves or cites an equivalence for #251 must say which side, if any, it supplies, and may claim #251 only when one side is proved outright.",
+        "regression": null,
+        "experiment": "Give one reader the equivalence alone and another the equivalence with both statements marked open, and record which returns claim #251."
+      }
+    },
+    {
+      "id": "c-slot-replacement-not-weakening",
+      "title": "A slot replacement reconstructs the hypothesis it replaces",
+      "distinction": "A replacement R for a hypothesis H that reconstructs H in the same context is at least as strong as H there, and a proof of the converse makes the two equivalent; a slot replacement never shows that H was stronger than needed.",
+      "wrong_reading": "The abduction export's column weaker, which records that a bounded tactic search found H → R, was read as saying the replacement asks for less than the hypothesis, and the weakest-residual computation was read as a proof of weakestness.",
+      "right_reading": "SlotReplacement.not_separates proves that no admissible context value satisfies R and fails H once R reconstructs H, and SlotReplacement.equivalent_of_converse turns a converse into an equivalence. The abduction module itself says weakestness relative to the linear facts used is computed and unproved. A replacement can reach an endpoint from less only as an EndpointRoute.",
+      "evidence": [
+        {
+          "kind": "declaration",
+          "name": "SlotReplacement.not_separates",
+          "module": "lean/ErdosProblems/ArgumentGraph/Contracts.lean"
+        },
+        {
+          "kind": "declaration",
+          "name": "SlotReplacement.equivalent_of_converse",
+          "module": "lean/ErdosProblems/ArgumentGraph/Contracts.lean"
+        },
+        {
+          "kind": "source_span",
+          "path": "lean/ErdosProblems/ArgumentGraph/Abduce.lean",
+          "start_line": 26,
+          "end_line": 28,
+          "must_contain": [
+            "weakestness holds relative to the linear facts used and is computed",
+            "not proved"
+          ]
+        }
+      ],
+      "provenance": [
+        {
+          "kind": "round",
+          "ref": "plectis_round6_20260928",
+          "detail": "All three round-6 returns separated a slot replacement from a weakening; Round-5 and round-6 abduction exports (kernel-probe runs 36426747086 and 36431140098), as tabulated in the round-6 packet's machine-yield file."
+        },
+        {
+          "kind": "return",
+          "ref": "round-6 return B",
+          "detail": "Its engine patch binds the exported weaker column to a kernel-checked reverse proof and labels strictness and nonvacuity as not established."
+        }
+      ],
+      "triggers": {
+        "problems": [],
+        "declarations": [
+          "SlotReplacement",
+          "SlotReplacement.not_separates",
+          "SlotReplacement.equivalent_of_converse"
+        ],
+        "phrases": [
+          "weaker hypothesis",
+          "weakest residual",
+          "weakest condition",
+          "strictly weaker",
+          "slot replacement",
+          "weaker true"
+        ]
+      },
+      "uses": {
+        "packet_obligation": true,
+        "return_gate": "A return that calls a replacement weaker must show a separator in the same context, and must report a slot replacement as a reconstruction of the hypothesis it replaces.",
+        "regression": null,
+        "experiment": "Give one reader the export's weaker column alone and another the column with the SlotReplacement laws, and record how often each calls a replacement a weakening."
+      }
+    },
+    {
+      "id": "c-strengthening-to-vanishing",
+      "title": "A growth bound replaced by vanishing",
+      "distinction": "Replacing a growth bound c m ≤ m by vanishing c m ≤ 0 is a strict strengthening in the theorem's context, even though the two statements, each closed on its own over every c, are equivalent because both are false.",
+      "wrong_reading": "For summable_coeff_term the round-5 export offered ∀ m, c m ≤ 0 as a residual for hgrowth : ∀ m, c m ≤ m, and the equivalence of the separately closed displays could be read as saying the replacement costs nothing.",
+      "right_reading": "c is a parameter of summable_coeff_term, so the comparison is made at each c: vanishing gives growth and c = id separates them (Canary.vanishing_strictly_stronger). The closed displays are both false and hence equivalent (Canary.separately_closed_equivalence), which says nothing about the replacement.",
+      "evidence": [
+        {
+          "kind": "source_span",
+          "path": "lean/Erdos249257/CertificateKernel.lean",
+          "start_line": 8358,
+          "end_line": 8359,
+          "must_contain": [
+            "theorem summable_coeff_term",
+            "(hgrowth : ∀ m : ℕ, c m ≤ m)"
+          ]
+        },
+        {
+          "kind": "declaration",
+          "name": "vanishing_strictly_stronger",
+          "module": "lean/ErdosProblems/ArgumentGraph/Contracts.lean"
+        },
+        {
+          "kind": "declaration",
+          "name": "separately_closed_equivalence",
+          "module": "lean/ErdosProblems/ArgumentGraph/Contracts.lean"
+        }
+      ],
+      "provenance": [
+        {
+          "kind": "round",
+          "ref": "plectis_round5_20260928",
+          "detail": "The round-5 export listed summable_coeff_term slot hgrowth among suspicious residuals; Round-5 and round-6 abduction exports (kernel-probe runs 36426747086 and 36431140098), as tabulated in the round-6 packet's machine-yield file."
+        },
+        {
+          "kind": "return",
+          "ref": "round-6 return B",
+          "detail": "Its contrast kernel states the Growth and Zero control with c = id as separator."
+        }
+      ],
+      "triggers": {
+        "problems": [],
+        "declarations": [
+          "summable_coeff_term",
+          "vanishing_strictly_stronger",
+          "separately_closed_equivalence"
+        ],
+        "phrases": [
+          "c m ≤ 0",
+          "≤ 0 for all",
+          "separately closed",
+          "closed display"
+        ]
+      },
+      "uses": {
+        "packet_obligation": true,
+        "return_gate": "A return that replaces a bound on a theorem parameter must compare the two at each parameter value and must not infer anything from the equivalence of separately closed displays.",
+        "regression": "ErdosProblems.ArgumentGraph.Contracts.Canary.vanishing_strictly_stronger",
+        "experiment": "Show one reader the closed displays and another the pointwise comparison with the separator c = id, and record which readers accept the replacement."
+      }
+    },
+    {
+      "id": "c-sign-slice-not-vacuous",
+      "title": "A sign slice that is strict and still feasible",
+      "distinction": "Replacing r < t by r ≤ 0 under a positive bound t is a strict strengthening that remains feasible, so it keeps nonpositive r and loses the positive regime an application may need.",
+      "wrong_reading": "For exists_forcedBlock_return_of_lt_tail the export offered ∀ r, r ≤ 0 as a residual for hr : r < mersenneTail m, and a sign slice of this kind is easily read either as vacuous or as an equivalent restatement.",
+      "right_reading": "Under 0 < t the slice r ≤ 0 gives r < t, the value r = t/2 separates them, and r = 0 witnesses feasibility (Canary.sign_slice_strict_and_feasible). The slice is a genuine but narrower theorem; whether it serves an application depends on whether that application needs positive r.",
+      "evidence": [
+        {
+          "kind": "source_span",
+          "path": "lean/Erdos249257/GreedyAchievementSet.lean",
+          "start_line": 2147,
+          "end_line": 2148,
+          "must_contain": [
+            "theorem exists_forcedBlock_return_of_lt_tail",
+            "(hr : r < mersenneTail m)"
+          ]
+        },
+        {
+          "kind": "declaration",
+          "name": "sign_slice_strict_and_feasible",
+          "module": "lean/ErdosProblems/ArgumentGraph/Contracts.lean"
+        }
+      ],
+      "provenance": [
+        {
+          "kind": "round",
+          "ref": "plectis_round6_20260928",
+          "detail": "exists_forcedBlock_return_of_lt_tail slot hr with residual r ≤ 0; Round-5 and round-6 abduction exports (kernel-probe runs 36426747086 and 36431140098), as tabulated in the round-6 packet's machine-yield file."
+        },
+        {
+          "kind": "return",
+          "ref": "round-6 return B",
+          "detail": "Its contrast kernel states the abstract tail slice as strict and feasible."
+        }
+      ],
+      "triggers": {
+        "problems": [],
+        "declarations": [
+          "exists_forcedBlock_return_of_lt_tail",
+          "sign_slice_strict_and_feasible"
+        ],
+        "phrases": [
+          "r ≤ 0",
+          "mersennetail",
+          "sign slice"
+        ]
+      },
+      "uses": {
+        "packet_obligation": true,
+        "return_gate": "A return that replaces a strict upper bound by a sign condition must state the separator, a feasibility witness and which regime of the original it drops.",
+        "regression": "ErdosProblems.ArgumentGraph.Contracts.Canary.sign_slice_strict_and_feasible",
+        "experiment": "Ask readers to classify the r ≤ 0 residual with and without the canary, and record how many call it vacuous or equivalent."
+      }
+    },
+    {
+      "id": "c-failed-search-not-inequivalence",
+      "title": "A converse the bounded search did not find",
+      "distinction": "A bounded tactic search that fails to prove a converse is evidence about the search, and says nothing about whether the converse holds.",
+      "wrong_reading": "The export reported weaker False for the hseparate slot of half_mem_mersenneAchievementSet_of_secondChannelSeparation, which reads as if the rearranged inequality were strictly stronger than the original.",
+      "right_reading": "The two inequalities are linear rearrangements of each other (Canary.rearranged_inequality_equivalent). The search failed because hseparate is itself a statement under ∀ n, which intro and linarith do not enter; the same arithmetic closed at the sibling halfGreedy_next_survives_of_secondChannelSeparation, where n is a theorem binder.",
+      "evidence": [
+        {
+          "kind": "source_span",
+          "path": "lean/Erdos249257/GreedyAchievementSet.lean",
+          "start_line": 3118,
+          "end_line": 3121,
+          "must_contain": [
+            "(hseparate : ∀ n : ℕ, 0 < n →",
+            "≤ |greedyMersenneSecondChannelPhase n - 1 / 3|"
+          ]
+        },
+        {
+          "kind": "source_span",
+          "path": "lean/Erdos249257/GreedyAchievementSet.lean",
+          "start_line": 3057,
+          "end_line": 3058,
+          "must_contain": [
+            "theorem halfGreedy_next_survives_of_secondChannelSeparation",
+            "{n : ℕ}"
+          ]
+        },
+        {
+          "kind": "declaration",
+          "name": "rearranged_inequality_equivalent",
+          "module": "lean/ErdosProblems/ArgumentGraph/Contracts.lean"
+        }
+      ],
+      "provenance": [
+        {
+          "kind": "round",
+          "ref": "plectis_round5_20260928",
+          "detail": "hseparate reported weaker False while the sibling reported weaker True; Round-5 and round-6 abduction exports (kernel-probe runs 36426747086 and 36431140098), as tabulated in the round-6 packet's machine-yield file."
+        },
+        {
+          "kind": "return",
+          "ref": "round-6 return B",
+          "detail": "Its contrast kernel proves the second-channel rewrite equivalent by linarith."
+        }
+      ],
+      "triggers": {
+        "problems": [],
+        "declarations": [
+          "half_mem_mersenneAchievementSet_of_secondChannelSeparation",
+          "halfGreedy_next_survives_of_secondChannelSeparation",
+          "rearranged_inequality_equivalent"
+        ],
+        "phrases": [
+          "weaker false",
+          "converse not found",
+          "could not prove the converse",
+          "search failed"
+        ]
+      },
+      "uses": {
+        "packet_obligation": true,
+        "return_gate": "A return that reports a failed converse search must call the relation unknown and must not describe the replacement as strictly stronger without a separator.",
+        "regression": "ErdosProblems.ArgumentGraph.Contracts.Canary.rearranged_inequality_equivalent",
+        "experiment": "Present the weaker False row with and without the sibling row, and record how often readers call the rearrangement strictly stronger."
+      }
+    },
+    {
+      "id": "c-guards-are-context",
+      "title": "Erdős #1049: the guards belong to the equivalence",
+      "distinction": "The guards of an equivalence are part of its context, and the same two sides without them form a different statement.",
+      "wrong_reading": "The rational-base equivalence b^μ < a ↔ ZudilinContourRegion a b can be quoted as a bare equivalence between the power inequality and the contour region.",
+      "right_reading": "zudilin_rpow_lt_iff_contourRegion is proved for natural numbers with 0 < b and b < a; the relation row contour_view records it in that context, and any transport along it carries those guards.",
+      "evidence": [
+        {
+          "kind": "declaration",
+          "name": "zudilin_rpow_lt_iff_contourRegion",
+          "module": "lean/ErdosProblems/Erdos1049/PaperCompleteR21/RationalBaseThreshold.lean"
+        },
+        {
+          "kind": "source_span",
+          "path": "lean/ErdosProblems/Erdos1049/PaperCompleteR21/RationalBaseThreshold.lean",
+          "start_line": 96,
+          "end_line": 97,
+          "must_contain": [
+            "(hb : 0 < b) (hab : b < a)",
+            "ZudilinContourRegion a b"
+          ]
+        },
+        {
+          "kind": "relation",
+          "id": "contour_view"
+        }
+      ],
+      "provenance": [
+        {
+          "kind": "return",
+          "ref": "round-6 return C",
+          "detail": "Source-audit case 1049-contour-view: the contour equivalence with its guards."
+        }
+      ],
+      "triggers": {
+        "problems": [
+          1049
+        ],
+        "declarations": [
+          "zudilin_rpow_lt_iff_contourRegion",
+          "contour_view"
+        ],
+        "phrases": [
+          "contour region",
+          "zudilincontourregion"
+        ]
+      },
+      "uses": {
+        "packet_obligation": true,
+        "return_gate": "A return that uses the #1049 contour equivalence must state the guards 0 < b and b < a wherever it applies it.",
+        "regression": null,
+        "experiment": "Give one reader the equivalence with its guards and another without, and record which returns apply it outside 0 < b < a."
+      }
+    },
+    {
+      "id": "c-clause-vacuity-not-result-vacuity",
+      "title": "Erdős #1041: a vacuous clause inside a result that is not vacuous",
+      "distinction": "One clause of a result can have no instance on a region while the result it belongs to still says something there.",
+      "wrong_reading": "Since the maximality clause of binomial_inner_chord_maximal has no instance off the switch condition, the factored theorem that drops the switch condition can be read as adding nothing.",
+      "right_reading": "Off the switch condition the maximality clause is vacuous (inner_chord_maximality_vacuous_off_switch), but the midpoint equality is still asserted there, and the added region is inhabited: the switch fails at n = 3, r = 1/2 (switch_fails_at_three_half), where the factored theorem gives the equality (inner_chord_midpoint_at_three_half).",
+      "evidence": [
+        {
+          "kind": "source_span",
+          "path": "lean/ErdosProblems/ArgumentGraph/Results/Erdos1041.lean",
+          "start_line": 8,
+          "end_line": 18,
+          "must_contain": [
+            "gains",
+            "the added region is",
+            "not empty"
+          ]
+        },
+        {
+          "kind": "declaration",
+          "name": "inner_chord_maximality_vacuous_off_switch",
+          "module": "lean/ErdosProblems/ArgumentGraph/Results/Erdos1041.lean"
+        },
+        {
+          "kind": "declaration",
+          "name": "switch_fails_at_three_half",
+          "module": "lean/ErdosProblems/ArgumentGraph/Results/Erdos1041.lean"
+        },
+        {
+          "kind": "relation",
+          "id": "maximality_clause_refuted_off_switch"
+        },
+        {
+          "kind": "relation",
+          "id": "off_switch_region_feasible"
+        },
+        {
+          "kind": "declaration",
+          "name": "clause_vacuous_statement_feasible",
+          "module": "lean/ErdosProblems/ArgumentGraph/Contracts.lean"
+        }
+      ],
+      "provenance": [
+        {
+          "kind": "return",
+          "ref": "round-6 return C",
+          "detail": "Source-audit case 1041-clause-vacuity and its ClauseCoverage probe."
+        }
+      ],
+      "triggers": {
+        "problems": [
+          1041
+        ],
+        "declarations": [
+          "binomial_inner_chord_maximal",
+          "inner_chord_maximality_vacuous_off_switch",
+          "switch_fails_at_three_half"
+        ],
+        "phrases": [
+          "vacuous",
+          "adds nothing",
+          "no instance"
+        ]
+      },
+      "uses": {
+        "packet_obligation": true,
+        "return_gate": "A return that calls a result vacuous must name the clause and the region, and must check whether the rest of the result is inhabited there.",
+        "regression": "ErdosProblems.ArgumentGraph.Contracts.Canary.clause_vacuous_statement_feasible",
+        "experiment": "Ask readers whether the factored theorem adds anything, with and without the n = 3, r = 1/2 witness, and record the answers."
+      }
+    },
+    {
+      "id": "c-displayed-unused-vs-open-premise",
+      "title": "Erdős #1041: displayed hypotheses the proof ignores, and the open premise it uses",
+      "distinction": "Hypotheses a statement displays but its proof never uses are different from the open premise the proof does use; the first can be dropped, the second keeps the result conditional.",
+      "wrong_reading": "Because subcritical_perimeter_path_paper silences the unused-variable linter, its proof was read as using none of its hypotheses, the named input included, and the result as ready to be restated unconditionally.",
+      "right_reading": "The proof term is subcritical_perimeter_path applied to mul_nonneg hβ.le (Real.rpow_nonneg hμpos.le _) and hsplit. It uses hβ and hμpos, only to show the length budget β μ^(1/n) is nonnegative, and the open premise hsplit : SubcriticalSplitExists. The paper hypotheses hmonic, hsf, hdeg, hn, hμ and hperim are unused. The result stays conditional on hsplit.",
+      "evidence": [
+        {
+          "kind": "source_span",
+          "path": "lean/ErdosProblems/Erdos1041/PaperCompleteR21/SubcriticalPerimeterPath.lean",
+          "start_line": 258,
+          "end_line": 274,
+          "must_contain": [
+            "set_option linter.unusedVariables false in",
+            "(hsplit : SubcriticalSplitExists",
+            "exact subcritical_perimeter_path (mul_nonneg hβ.le (Real.rpow_nonneg hμpos.le _)) hsplit"
+          ]
+        },
+        {
+          "kind": "declaration",
+          "name": "subcritical_perimeter_path_paper",
+          "module": "lean/ErdosProblems/Erdos1041/PaperCompleteR21/SubcriticalPerimeterPath.lean"
+        }
+      ],
+      "provenance": [
+        {
+          "kind": "return",
+          "ref": "round-6 return C",
+          "detail": "Source-audit case 1041-split-obligation."
+        },
+        {
+          "kind": "note",
+          "ref": "round-6 integration review",
+          "detail": "An issue register compiled for the round-6 integration read the proof as using none of its hypotheses; a reading of the proof term on 28 September 2026 found it uses hβ, hμpos and hsplit."
+        }
+      ],
+      "triggers": {
+        "problems": [
+          1041
+        ],
+        "declarations": [
+          "subcritical_perimeter_path_paper",
+          "subcritical_perimeter_path"
+        ],
+        "phrases": [
+          "unused hypothes",
+          "idle hypothes",
+          "named input",
+          "subcriticalsplitexists",
+          "unusedvariables"
+        ]
+      },
+      "uses": {
+        "packet_obligation": true,
+        "return_gate": "A return that calls a hypothesis unused must cite the proof term, and must keep any open premise the term applies as a condition of the result.",
+        "regression": null,
+        "experiment": "Ask readers to list the hypotheses the proof uses, with and without the proof term shown, and record how many drop hsplit."
+      }
+    },
+    {
+      "id": "c-endpoint-needs-less-than-demand",
+      "title": "Erdős #249: an endpoint reached from less than the route demanded",
+      "distinction": "An endpoint can follow from less than an intermediate route demands, and only an endpoint route can show it; a slot replacement inside the route cannot.",
+      "wrong_reading": "The residualiser's demand for the #249 route, reached by replacing hypotheses inside an authored decomposition, was treated as what the irrationality of ∑ φ(n)/2^n requires.",
+      "right_reading": "irrational_totient_series_of_goodBase_gap derives the irrationality directly from a first-harmonic gap on the good bases, through irrational_totient_series_of_support_gap, with no further input; the relation rows good_base_gap_route and support_gap_route record these as endpoint routes, and demand_G102_view records that the demand G102 is equivalent to the irrationality. The gap itself is open.",
+      "evidence": [
+        {
+          "kind": "declaration",
+          "name": "irrational_totient_series_of_support_gap",
+          "module": "lean/ErdosProblems/ArgumentGraph/Results/Erdos249Endpoint.lean"
+        },
+        {
+          "kind": "declaration",
+          "name": "irrational_totient_series_of_goodBase_gap",
+          "module": "lean/ErdosProblems/ArgumentGraph/Results/Erdos249Endpoint.lean"
+        },
+        {
+          "kind": "relation",
+          "id": "support_gap_route"
+        },
+        {
+          "kind": "relation",
+          "id": "good_base_gap_route"
+        },
+        {
+          "kind": "relation",
+          "id": "demand_G102_view"
+        }
+      ],
+      "provenance": [
+        {
+          "kind": "return",
+          "ref": "round3_advisory",
+          "detail": "The round-3 return proposed synthesising routes around the endpoint itself, with the intermediate interface left negotiable."
+        },
+        {
+          "kind": "round",
+          "ref": "plectis_round4_20260927",
+          "detail": "The round-4 packet carried the endpoint theorem as kernel-probed Lean."
+        }
+      ],
+      "triggers": {
+        "problems": [
+          249
+        ],
+        "declarations": [
+          "irrational_totient_series_of_goodBase_gap",
+          "irrational_totient_series_of_support_gap",
+          "G102"
+        ],
+        "phrases": [
+          "demand",
+          "endpoint",
+          "first-harmonic gap",
+          "good base"
+        ]
+      },
+      "uses": {
+        "packet_obligation": true,
+        "return_gate": "A return that claims #249 needs less than a recorded demand must give an endpoint route to the irrationality itself, and must keep the gap it assumes labelled open.",
+        "regression": null,
+        "experiment": "Give one reader the residualiser demand alone and another the demand with the endpoint theorem, and record which returns propose a route weaker than the demand."
+      }
+    },
+    {
+      "id": "c-formalised-here-means-known",
+      "title": "The status formalised here asserts known mathematics",
+      "distinction": "The claim status formalised here means known mathematics represented and checked in Lean, so it cannot describe a theorem whose novelty has not been assessed.",
+      "wrong_reading": "Theorems whose novelty has only an informal check, such as finite_prime_weighted_support and cubic_rate_irrationality_unconditional, carry the status formalised here, which reads as a statement that they are known.",
+      "right_reading": "The taxonomy defines formalised here as known mathematics and unconditional progress as a genuine theorem that does not settle the open problem. A theorem of unassessed novelty takes a status that asserts neither novelty nor prior knowledge.",
+      "evidence": [
+        {
+          "kind": "source_span",
+          "path": "docs/ORIENTATION.md",
+          "start_line": 102,
+          "end_line": 103,
+          "must_contain": [
+            "| formalised here | Known mathematics represented and checked in Lean |",
+            "| unconditional progress | Genuine theorem that does not settle the open problem |"
+          ]
+        }
+      ],
+      "provenance": [
+        {
+          "kind": "claim",
+          "ref": "finite_prime_weighted_support",
+          "detail": "Carried the status formalised here until 28 September 2026, when it was re-typed unconditional progress; the prior-art ledger credits antecedents and makes no novelty claim."
+        },
+        {
+          "kind": "claim",
+          "ref": "cubic_rate_irrationality_unconditional",
+          "detail": "Carried the status formalised here until 28 September 2026, when it was re-typed unconditional progress."
+        }
+      ],
+      "triggers": {
+        "problems": [],
+        "declarations": [],
+        "phrases": [
+          "formalised here",
+          "formalized here",
+          "known mathematics"
+        ]
+      },
+      "uses": {
+        "packet_obligation": false,
+        "return_gate": "A return that assigns a claim status must use formalised here only for mathematics known before this programme.",
+        "regression": null,
+        "experiment": "Ask readers which registered theorems are known results, using the status field alone, and compare their answers with the prior-art ledger."
+      }
+    },
+    {
+      "id": "c-prior-art-before-novelty",
+      "title": "A result found here can already be known",
+      "distinction": "A result this programme derives can already be in the literature, so the prior-art ledger is read before any claim that a case is new.",
+      "wrong_reading": "Three results derived here were candidates for claims of contribution until prior-art checks and specialist replies stopped them: the #269 two-prime transcendence, the #1049 rational-base region and the #249 affine-totient independence.",
+      "right_reading": "Priority for the #269 two-prime result is Fan's; the #1049 region specialises Zudilin's integer-base theorems, with no priority claim; Martin's 2006 theorem already implies the #249 affine-totient independence.",
+      "evidence": [
+        {
+          "kind": "source_span",
+          "path": "docs/PRIOR_ART.md",
+          "start_line": 334,
+          "end_line": 334,
+          "must_contain": [
+            "Priority for the two-prime result is Fan's"
+          ]
+        },
+        {
+          "kind": "source_span",
+          "path": "docs/PRIOR_ART.md",
+          "start_line": 381,
+          "end_line": 381,
+          "must_contain": [
+            "no priority claim is attached to them"
+          ]
+        },
+        {
+          "kind": "source_span",
+          "path": "docs/PRIOR_ART.md",
+          "start_line": 182,
+          "end_line": 182,
+          "must_contain": [
+            "already implies the affine-totient independence"
+          ]
+        }
+      ],
+      "provenance": [
+        {
+          "kind": "round",
+          "ref": "plectis_round6_20260928",
+          "detail": "The round-6 packet's outcome ledger records three overclaims stopped by prior-art checks and specialist replies."
+        }
+      ],
+      "triggers": {
+        "problems": [],
+        "declarations": [],
+        "phrases": [
+          "new result",
+          "first proof",
+          "novel",
+          "not previously known",
+          "new case",
+          "first time"
+        ]
+      },
+      "uses": {
+        "packet_obligation": false,
+        "return_gate": "A return that calls a result new must cite the rows of docs/PRIOR_ART.md it checked, or state that novelty is unassessed.",
+        "regression": null,
+        "experiment": "Give one reader a result with its prior-art rows and another without, and record how often each calls it new."
+      }
+    },
+    {
+      "id": "c-comparator-not-independent-verification",
+      "title": "A Comparator check is a statement check",
+      "distinction": "A Comparator comparison checks that the proved statement is the separately declared statement within a declared axiom budget; it says nothing about whether that statement translates the problem faithfully, and it is no independent review of the mathematics.",
+      "wrong_reading": "A Comparator-checked result can be described as independently verified.",
+      "right_reading": "The external-verification packet fixes the public wording as Comparator-checked against a separately declared statement and axiom budget, and forbids independently verified.",
+      "evidence": [
+        {
+          "kind": "source_span",
+          "path": "docs/external_verification_packet.json",
+          "start_line": 1772,
+          "end_line": 1773,
+          "must_contain": [
+            "Comparator-checked against a separately declared statement and axiom budget",
+            "\"forbidden_wording\": \"independently verified\""
+          ]
+        },
+        {
+          "kind": "source_span",
+          "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
+          "start_line": 378,
+          "end_line": 381,
+          "must_contain": [
+            "it does not verify whether that statement captures the intended mathematics",
+            "Comparator adds a separately stated challenge",
+            "permitted axioms"
+          ]
+        }
+      ],
+      "provenance": [
+        {
+          "kind": "note",
+          "ref": "docs/external_verification_packet.json",
+          "detail": "The forbidden wording is recorded where the packet defines Comparator's public wording."
+        },
+        {
+          "kind": "note",
+          "ref": "docs/statement_migrations/round13_20260929.json",
+          "detail": "Round-13 editorial integration relocates this distinction to r4.checks2.01–02; the external-verification record retains the exact permitted and forbidden public wording."
+        }
+      ],
+      "triggers": {
+        "problems": [],
+        "declarations": [],
+        "phrases": [
+          "independently verified",
+          "independent verification",
+          "independently checked"
+        ]
+      },
+      "uses": {
+        "packet_obligation": false,
+        "return_gate": "A return that reports a Comparator result must say Comparator-checked and must not call it independent verification.",
+        "regression": null,
+        "experiment": "Ask readers what a Comparator pass establishes, with and without the packet's wording, and record how many answer that the mathematics was reviewed."
+      }
+    }
+  ]
+}

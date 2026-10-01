@@ -1,0 +1,4 @@
+# These historical excerpts preserve exact hash-bound source-span bytes.
+# Their terminal blank lines are part of the captured source.
+docs/research-commons/benchmarks/round8_candidate_development/sources/excerpts/s243_defs.txt whitespace=-blank-at-eof
+docs/research-commons/benchmarks/round8_candidate_development/sources/excerpts/s243_natural.txt whitespace=-blank-at-eof

@@ -14,7 +14,9 @@ use [results and limits](../RESULTS.md).
 |---|---|---|
 | The route from a problem's papers and Lean sources to the website | [Paper and source library](PROBLEM_LIBRARY.md) | Inspect the public library format and its rebuild instructions. |
 | Current claim status and correction responsibilities | [Methodology](../METHODOLOGY.md) · [claim records](../claims.json) | Follow the current statement, its evidence and the review required to change its public status. |
+| Every registered claim and its source context | [Complete claim register](CORPUS_REGISTER.md) | Browse the generated source-bound view; its status labels do not supply new proof or semantic admission. |
 | The distinction between a remaining obligation and a restated target | [Residual progress](RESIDUAL_PROGRESS.md) | Read how the tools classify those records and what the classification means. |
+| What a research round returned, what was done with it and what it still owes | [Research record](RESEARCH_RECORD.md) | Read the custody journal, relation rows and contrasts, and the evidence class each entry carries. |
 | The September 2026 Palomar selection and campaign | [Dated qualification record](PALOMAR_QUALIFICATION_2026-09-13.md) | Read the selection rationale and recorded campaign history; use the current qualification guide for live checks. |
 | The order in which work arrived | [Wave index](WAVE_INDEX.md) | Follow the development history when an earlier decision or result matters. |
 | A factual account of a selected verification result | [Outreach evidence capsules](OUTREACH_EVIDENCE_CAPSULES.md) | Inspect the recorded check and its limits before reusing its description. |

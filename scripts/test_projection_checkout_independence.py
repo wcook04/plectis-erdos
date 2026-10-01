@@ -35,6 +35,7 @@ read-only without paying for two redundant 150 MB regeneration passes.
 
 from __future__ import annotations
 
+import json
 import os
 import shutil
 import subprocess
@@ -123,33 +124,39 @@ def check_run_contract() -> None:
 
 def check_source_coordinate_title_contract() -> None:
     """TeX and Unicode title spellings must resolve the same paper anchor."""
-    anchors = (
-        (
-            "paper/68/erdos-68-factorial-denominator-irrationality.tex",
-            "problem",
-            "Erdős #68",
-        ),
-        (
-            "paper/243/erdos-243-reciprocal-tail-rigidity.tex",
-            "problem",
-            "Erdős #243",
-        ),
-        (
-            "paper/1041/erdos-1041-lemniscate-newton-flow.tex",
-            "problem",
-            "Erdős #1041",
-        ),
-        ("paper/archive/erdos249-257-main-paper.tex", "problem", r"Erd\H{o}s \#249"),
-        ("paper/251/erdos-251-prime-gap-dyadic-series.tex", "section", "Introduction"),
-        ("paper/269/erdos-269-three-prime-running-lcm.tex", "section", "Introduction"),
-        ("paper/1049/erdos-1049-rational-base-lambert.tex", "section", "Introduction"),
+    claims = json.loads((ROOT / "docs/claims.json").read_text(encoding="utf-8"))
+    fixture_ids = (
+        "remaining_open.erdos_68_irrationality",
+        "remaining_open.erdos_243_eventual_recurrence",
+        "remaining_open.erdos_1041_lemniscate_connection",
+        "remaining_open.erdos_249_irrationality",
+        "remaining_open.erdos_251_irrationality",
+        "remaining_open.erdos_269_three_prime_irrationality",
+        "remaining_open.erdos_1049_irrationality",
     )
-    for source, environment, title in anchors:
-        line = refresh_source_coordinates.paper_anchor_line(
-            {"source": source, "environment": environment, "title": title}
-        )
-        if line < 1:
-            raise SystemExit(f"paper anchor resolved to an invalid line: {source}")
+    for fixture_id in fixture_ids:
+        registered = [
+            row["paper_anchor"]
+            for row in claims["remaining_open_propositions"]
+            if row["id"] == fixture_id
+        ]
+        if len(registered) != 1:
+            raise SystemExit(f"title fixture must have exactly one native anchor: {fixture_id}")
+        anchor = registered[0]
+        unicode_title = refresh_source_coordinates.canonical_title(anchor["title"])
+        tex_title = unicode_title.replace("ő", r"\H{o}").replace("#", r"\#")
+        for title in (unicode_title, tex_title):
+            line = refresh_source_coordinates.paper_anchor_line({**anchor, "title": title})
+            if line < 1 or line != anchor["line"]:
+                raise SystemExit(f"title escaping did not resolve the registered line: {fixture_id}")
+        try:
+            refresh_source_coordinates.paper_anchor_line(
+                {**anchor, "title": "__unregistered_anchor_fixture__"}
+            )
+        except RuntimeError:
+            pass
+        else:
+            raise SystemExit(f"paper anchor lookup accepted an unregistered title: {fixture_id}")
 
 
 def materialise(destination: Path) -> None:

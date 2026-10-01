@@ -1,5 +1,7 @@
 # Erdős 1041: the bridge (BR) is a two-line limit, and `kappa_n > 0` follows at every degree
 
+> Status note (2026-09-28): the exact Formal Conjectures statement of Erdős #1041 is refuted by ani's degree-seven example (Lean `erdos1041_counterexample_hausdorff`, `lean/ErdosProblems/Erdos1041/Counterexample/HausdorffLength.lean` in the public repository); correspondence with the 1958 wording awaits independent review. Earlier statements in this note that the problem is open are dated history.
+
 Status: one exact identity and one limit, from which the last measured link in
 the near-Fekete chain becomes a theorem. 2026-08-24. **This does not prove
 Erdős #1041.** It does not touch the `D`-away-from-1 half, the `O(rho^2)`
