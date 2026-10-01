@@ -112,6 +112,12 @@ A Lean proof checks a formal statement; a claim record gives its public status
 and limits. A paper supplies motivation and a readable argument. A finite
 calculation covers only the range it reached.
 
+The verification concordance at the end of each problem paper links its
+statements to Lean proofs and recorded Comparator checks. A dagger identifies
+a proof that assumes a named input; pending and partial support are labelled
+explicitly. These links appear in one place, leaving the mathematical argument
+uninterrupted.
+
 Comparator compares selected statements with independently declared formal
 interfaces under fixed assumptions. It is not peer review and does not
 establish novelty. The [Palomar guide](verification/PALOMAR_QUALIFICATION.md)
@@ -124,7 +130,7 @@ mathematical importance.
 ## Reviewing one result
 
 Pick a statement in a short paper, read its assumptions and the step that does
-the work, then follow the longer record. Missing motivation, compressed hard
+the work, then follow the companion paper. Missing motivation, compressed hard
 steps and unclear attribution are useful feedback: a checked proof still needs
 an explanation others can understand and reuse.
 

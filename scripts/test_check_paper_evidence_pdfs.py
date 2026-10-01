@@ -57,7 +57,7 @@ def link(rect: list[float], uri: str) -> DictionaryObject:
 
 def pdf(links: list[tuple[list[float], str]], pages: int = 1, heading_y: float = HEAD_Y,
         headings: list[tuple[float, str] | tuple[float, float, str]] | None = None,
-        concordance_labels: tuple[str, ...] | dict[str, float] = ()) -> Path:
+        concordance_labels: tuple[str, ...] | dict[str, float | tuple[float, float]] = ()) -> Path:
     writer = PdfWriter()
     for index in range(pages):
         page = writer.add_blank_page(595.28, 841.89)
@@ -84,12 +84,14 @@ def pdf(links: list[tuple[list[float], str]], pages: int = 1, heading_y: float =
             page[NameObject("/Contents")] = writer._add_object(stream)
             page[NameObject("/Annots")] = ArrayObject([writer._add_object(link(r, u)) for r, u in links])
             for label in concordance_labels:
-                row_y = (concordance_labels[label] if isinstance(concordance_labels, dict)
-                         else heading_y)
+                position = (concordance_labels[label] if isinstance(concordance_labels, dict)
+                            else heading_y)
+                row_left, row_y = position if isinstance(position, tuple) else (None, position)
                 writer.add_named_destination_array(
                     TextStringObject("verification-result." + label),
                     ArrayObject([page.indirect_reference, NameObject("/XYZ"),
-                                 NullObject(), FloatObject(row_y), NullObject()]))
+                                 FloatObject(row_left) if row_left is not None else NullObject(),
+                                 FloatObject(row_y), NullObject()]))
     handle = tempfile.NamedTemporaryFile(suffix=".pdf", delete=False)
     buffer = io.BytesIO()
     writer.write(buffer)
@@ -297,6 +299,138 @@ def test_concordance_rows_preserve_statement_and_target() -> None:
     require(checked(displaced), "links displaced from their concordance row passed")
 
 
+def test_typed_concordance_name_must_be_visible_on_marked_row() -> None:
+    paper = {"results": [dict(PAPER["results"][0], number="3.2", page="17")]}
+    names = {"res:a": "Theorem 3.2"}
+
+    def checked(heading: str | None) -> list[str]:
+        headings = [(730.0, "Verification concordance")]
+        if heading is not None:
+            headings.append((HEAD_Y, heading))
+        return check.check_paper(pdf(SOUND, headings=headings,
+                                     concordance_labels=("res:a",)),
+                                 paper, MARKS, 1, names=names)
+
+    require(checked("Theorem 3.2") == [], "a correctly typed theorem row failed")
+    for wrong in ("Result 3.2", "Lemma 3.2", "Theorem 3.20", None):
+        found = checked(wrong)
+        require(any("Theorem 3.2" in p for p in found),
+                f"a missing or incorrectly named marked theorem row passed: {wrong!r}: {found}")
+
+
+def test_marked_unnumbered_remark_and_passage_names() -> None:
+    for name, result in (
+        ("Remark 3.2, p. 17", {"printed_kind": "Remark", "number": None,
+                               "statement_markdown": "*Remark 3.2* A qualification."}),
+        ("Passage, p. 17", {"printed_kind": "Passage", "number": None,
+                             "statement_markdown": None}),
+    ):
+        paper = {"results": [dict(PAPER["results"][0], page="17", **result)]}
+
+        def checked(heading: str | None) -> list[str]:
+            headings = [(730.0, "Verification concordance")]
+            if heading is not None:
+                headings.append((HEAD_Y, heading))
+            return check.check_paper(pdf(SOUND, headings=headings,
+                                         concordance_labels=("res:a",)),
+                                     paper, MARKS, 1, names={"res:a": name})
+
+        require(checked(name) == [], f"a marked unnumbered {name} row failed")
+        for wrong in ("Result 3.2", name.replace("17", "18"), None):
+            found = checked(wrong)
+            require(any(name in p for p in found),
+                    f"a missing or wrong marked unnumbered row passed: {name}: {wrong!r}: {found}")
+
+
+def test_unmarked_unnumbered_names_require_exact_visible_row() -> None:
+    record = CMP.removesuffix("-comparator")
+    for name in ("Remark 3.2, p. 17", "Passage, p. 17"):
+        paper = {"results": [dict(PAPER["results"][0], number=None, page="17",
+                                   printed_kind=name.split()[0])]}
+        records = {"res:a": (record, "none", "not_applicable")}
+        links = [([175.0, HEAD_Y - 2.6, 260.0, HEAD_Y + 8.0], record)]
+
+        def checked(heading: str | None) -> list[str]:
+            headings = [(730.0, "Verification concordance")]
+            if heading is not None:
+                headings.append((HEAD_Y, heading))
+            return check.check_paper(pdf(links, headings=headings,
+                                         concordance_labels=("res:a",)),
+                                     paper, {}, 1, records, {"res:a": name})
+
+        require(checked(name) == [], f"a correctly named unmarked {name} row failed")
+        for wrong in ("Result 3.2", name.replace("17", "18"), None):
+            found = checked(wrong)
+            require(any("wrong unmarked statement number" in p for p in found),
+                    f"a missing or wrong unmarked {name} row passed: {wrong!r}: {found}")
+
+
+def test_wrapped_unnumbered_name_requires_both_visible_lines() -> None:
+    name = "Remark 3.2, p. 17"
+    paper = {"results": [dict(PAPER["results"][0], number=None, page="17",
+                               printed_kind="Remark")]}
+    names = {"res:a": name}
+    record = CMP.removesuffix("-comparator")
+    first = (HEAD_Y, "Remark 3.2,")
+    second = (HEAD_Y - check.HEADING_LINE_STEP, "p. 17")
+
+    def checked(*, marked: bool, lines: list[tuple[float, str]]) -> list[str]:
+        links = SOUND if marked else [([175.0, HEAD_Y - 2.6, 260.0, HEAD_Y + 8.0], record)]
+        marks = MARKS if marked else {}
+        records = None if marked else {"res:a": (record, "none", "not_applicable")}
+        headings = [(730.0, "Verification concordance"), *lines]
+        return check.check_paper(pdf(links, headings=headings,
+                                     concordance_labels=("res:a",)),
+                                 paper, marks, 1, records, names)
+
+    for marked in (True, False):
+        require(checked(marked=marked, lines=[first, second]) == [],
+                f"a wrapped {'marked' if marked else 'unmarked'} remark name failed")
+        for lines in ([first], [first, (second[0], "p. 18")]):
+            found = checked(marked=marked, lines=lines)
+            require(any(("heading" if marked else "wrong unmarked statement number") in p
+                        for p in found),
+                    f"a missing or wrong second name line passed: {marked}: {lines}: {found}")
+
+
+def test_same_height_columns_share_targets_but_not_visible_names() -> None:
+    second_pair = [([380.0, HEAD_Y - 2.6, 405.0, HEAD_Y + 8.0], LEAN),
+                   ([420.0, HEAD_Y - 2.6, 470.0, HEAD_Y + 8.0], CMP)]
+    links = SOUND + second_pair
+    positions = {"res:a": (89.0, HEAD_Y), "res:b": (296.0, HEAD_Y)}
+    marks = {"res:a": MARKS["res:a"], "res:b": MARKS["res:a"]}
+    paper = {"results": [PAPER["results"][0],
+                         {"label": "res:b", "page": "1", "number": "1.2",
+                          "printed_kind": "Theorem"}]}
+    names = {"res:a": "Theorem 1.1", "res:b": "Theorem 1.2"}
+
+    def checked(headings: list[tuple[float, str] | tuple[float, float, str]],
+                paper=paper, names=names) -> list[str]:
+        return check.check_paper(pdf(links, headings=[(730.0, "Verification concordance"),
+                                                     *headings], concordance_labels=positions),
+                                 paper, marks, 1, names=names)
+
+    sound = checked([(89.0, HEAD_Y, "Theorem 1.1"),
+                     (296.0, HEAD_Y, "Theorem 1.2")])
+    require(sound == [], f"same-height columns with shared evidence targets failed: {sound}")
+
+    # Two unnumbered passages may legitimately have the same visible name.
+    # Only the right column prints it here; the left row must still fail.
+    passage_paper = {"results": [dict(row, printed_kind="Passage", number=None)
+                                 for row in paper["results"]]}
+    passage_names = {"res:a": "Passage, p. 1", "res:b": "Passage, p. 1"}
+    missing_left = checked([(296.0, HEAD_Y, "Passage, p. 1")],
+                           paper=passage_paper, names=passage_names)
+    require(any("res:a: its inline Lean link is not level" in p for p in missing_left)
+            and not any(p.startswith("res:b:") for p in missing_left),
+            f"a right-column name satisfied the missing left row: {missing_left}")
+    wrong_left = checked([(89.0, HEAD_Y, "Result 1.1"),
+                          (296.0, HEAD_Y, "Passage, p. 1")],
+                         paper=passage_paper, names=passage_names)
+    require(any("res:a: its inline Lean link is not level" in p for p in wrong_left),
+            f"a right-column name satisfied a wrongly named left row: {wrong_left}")
+
+
 def test_unmarked_concordance_rows_are_complete_and_unique() -> None:
     record_a = CMP.removesuffix("-comparator")
     record_b = record_a.replace("#res-a", "#res-b")
@@ -414,6 +548,11 @@ def main() -> int:
         test_dagger_mark_declaration_parses,
         test_unknown_paper_id_cannot_pass_without_checks,
         test_concordance_rows_preserve_statement_and_target,
+        test_typed_concordance_name_must_be_visible_on_marked_row,
+        test_marked_unnumbered_remark_and_passage_names,
+        test_unmarked_unnumbered_names_require_exact_visible_row,
+        test_wrapped_unnumbered_name_requires_both_visible_lines,
+        test_same_height_columns_share_targets_but_not_visible_names,
         test_unmarked_concordance_rows_are_complete_and_unique,
         test_compared_status_without_comparator_url_fails,
         test_duplicate_concordance_pair_away_from_first_row_fails,

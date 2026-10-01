@@ -1,7 +1,7 @@
 % SPDX-FileCopyrightText: 2026 Will Cook
 % SPDX-License-Identifier: CC-BY-4.0
 %
-% Inline links to the formal evidence for each result.
+% Consolidated links to the formal evidence for each result.
 %
 % Each paper inputs its own generated file paper/evidence/<paper>.tex, written by
 % scripts/paper_evidence.py from the coverage ledger and the Comparator replay
@@ -9,11 +9,9 @@
 %
 %   \DeclareResultEvidence{<label>}{<mark>}{<Lean URL>}{<Comparator URL>}
 %
-% plus its record and evidence status. When the result's \label is set, its links
-% are placed once beside its heading: "Lean" (or "Lean" with a dagger when the
-% proof assumes a named input) and, when the result was compared, "Comparator".
-% A declared result whose label never occurs is
-% an error, so a mark cannot silently go missing; so is a label declared twice.
+% plus its record, statement name and evidence status. A result's label binds
+% its identity; its Lean and Comparator links appear once in the final
+% verification concordance. Missing and duplicate result labels are errors.
 % Do not edit the per-paper files by hand.
 
 % Companion-PDF links use the same readable external-link colour in grayscale.
@@ -22,6 +20,9 @@
 \makeatletter
 \newcommand*{\ev@all}{}
 \newcommand*{\ev@rows}{}
+\newif\ifev@second
+\newcommand{\DeclareResultEvidenceName}[2]{%
+  \expandafter\gdef\csname ev@name@#1\endcsname{#2}}
 \newcommand{\DeclareResultEvidence}[4]{%
   \ifcsname ev@map@#1\endcsname
     \PackageError{paper-evidence}{Evidence declared twice for label #1}%
@@ -77,10 +78,7 @@
       % in the verification concordance, away from the mathematical argument.
     \fi
   \fi}
-% The links sit on the line where the label is set, which is the result's
-% heading line: every label of a result is set on its \begin line or at
-% the start of the line after it.  scripts/check_paper_evidence_pdfs.py checks
-% this on the rendered pages.
+% Labels establish identities without adding links to theorem headings.
 \newcommand{\ev@hook}[1]{%
   \ifcsname ev@map@#1\endcsname\csname ev@map@#1\endcsname\fi}
 \AtBeginDocument{%
@@ -99,36 +97,38 @@
     \section*{Verification concordance}
     \addcontentsline{toc}{section}{Verification concordance}
     \begingroup\small
-    \begin{longtable}{@{}p{0.32\linewidth}p{0.62\linewidth}@{}}
-    \textbf{Statement} & \textbf{Formal proof and comparison}\\\hline
+    \begin{longtable}{@{}p{.16\linewidth}@{\hspace{.02\linewidth}}p{.30\linewidth}@{\hspace{.03\linewidth}}p{.16\linewidth}@{\hspace{.02\linewidth}}p{.30\linewidth}@{}}
+    \textbf{Statement} & \textbf{Formal proof} & \textbf{Statement} & \textbf{Formal proof}\\\hline
     \endhead
     \ev@rows
+    \ifev@second & \\ \fi
     \end{longtable}
     \endgroup
   \fi}
 \newcommand{\ev@row}[1]{%
   \hypertarget{verification-result.#1}{}%
-  \hyperref[#1]{Result \ref*{#1}} &
+  {\scriptsize\hyperref[#1]{\csname ev@name@#1\endcsname}} &
   \ifcsname ev@inline@#1\endcsname
     \csname ev@inline@#1\endcsname
   \else
-    \href{\csname ev@record@#1\endcsname}{Verification record}\quad
-    {\scriptsize No complete formal proof recorded.}%
-  \fi\\}
+    {\scriptsize\href{\csname ev@record@#1\endcsname}{Verification record}}%
+  \fi
+  \ifev@second\global\ev@secondfalse\\
+  \else\global\ev@secondtrue &\fi}
 \makeatother
 
 % Once per paper: what the marks mean.  #1 is the URL of the paper's evidence
 % record.
 \newcommand{\evidenceparagraph}[1]{%
   \par\smallskip\noindent
-  The verification concordance lists the formal proofs by result number.
+  The verification concordance lists the formal proofs by statement.
   \emph{Lean} links to the supporting declarations; a dagger identifies a
   proof that assumes a named input. \emph{Comparator} links to a recorded
   kernel check against a separately written statement; \emph{pending} means
   that this comparison has not been recorded. The
   \href{#1}{verification record} gives the precise correspondence,
-  dependencies and reproducible checks, including results supported only
-  in part.}
+  dependencies and reproducible checks. A row with only a record link has
+  no complete formal proof recorded.}
 
 % A plain remark after a result, for what its mark alone cannot say: the input
 % a conditional Lean proof assumes, or what is and is not checked for a result

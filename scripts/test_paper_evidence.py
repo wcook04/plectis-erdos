@@ -663,6 +663,45 @@ def test_support_identity_is_not_presentation_limited() -> None:
             "a field beyond a blank line or display limit was absent from identity")
 
 
+def test_concordance_names_follow_printed_statements() -> None:
+    numbered = {"printed_kind": "Theorem", "number": "3.2", "page": "17",
+                "statement_markdown": "The claim."}
+    remark = {"printed_kind": "Remark", "number": None, "page": "17",
+              "statement_markdown": "*Remark 3.2* A useful qualification."}
+    passage = {"printed_kind": "Passage", "number": None, "page": "17",
+               "statement_markdown": None}
+    require(pe.concordance_name(numbered) == "Theorem 3.2",
+            "a numbered theorem inherited the generic Result heading")
+    require(pe.concordance_name(remark) == "Remark 3.2, p. 17",
+            "an unnumbered remark lost its visible type, local number or page")
+    require(pe.concordance_name(passage) == "Passage, p. 17",
+            "an unnumbered passage invented a result number or failed on missing markdown")
+    require(pe.concordance_name(dict(remark, page=None)) == "Remark 3.2" and
+            pe.concordance_name(dict(passage, page=None)) == "Passage",
+            "a missing page produced a fabricated page label")
+
+
+def test_sidecar_declares_typed_names_even_without_formal_marks() -> None:
+    rows = [
+        {"label": "res:theorem", "printed_kind": "Theorem", "number": "3.2", "page": "17",
+         "statement_markdown": "The claim."},
+        {"label": "res:remark", "printed_kind": "Remark", "number": None, "page": "17",
+         "statement_markdown": "*Remark 3.2* A qualification."},
+        {"label": "res:passage", "printed_kind": "Passage", "number": None, "page": "17",
+         "statement_markdown": None},
+    ]
+    for row in rows:
+        row.update(anchor=row["label"].replace(":", "-"),
+                   lean={"status": "none", "mark": None},
+                   comparator={"status": "not_applicable"})
+    sidecar = pe.render_sidecar({}, {"paper_id": PAPER_ID, "results": rows}, "d" * 40)
+    for label, name in (("res:theorem", "Theorem 3.2"),
+                        ("res:remark", "Remark 3.2, p. 17"),
+                        ("res:passage", "Passage, p. 17")):
+        require(f"\\DeclareResultEvidenceName{{{label}}}{{{name}}}" in sidecar,
+                f"{label} has no exact visible concordance name in the generated sidecar")
+
+
 
 def test_unchanged_generation_preserves_render_input_timestamp():
     with tempfile.TemporaryDirectory() as folder:
@@ -689,6 +728,8 @@ def test_changed_generation_replaces_the_render_input():
 
 def main() -> int:
     tests = [
+        test_concordance_names_follow_printed_statements,
+        test_sidecar_declares_typed_names_even_without_formal_marks,
         test_unchanged_generation_preserves_render_input_timestamp,
         test_changed_generation_replaces_the_render_input,
         test_complete_support_chain_and_unrelated_module,

@@ -8,8 +8,8 @@ paper/evidence/<paper>.tex and evidence/paper_evidence.json:
 
   * every declared result has one inline "Lean" link with its declared target, and
     one inline "Comparator" link when compared, or its own pending-record link;
-  * the links sit level with the result's printed heading ("Theorem 2.1", ...) on the page
-    where its label is set, so it cannot be attached to the wrong result;
+  * final concordance rows bind each statement name and link to its named
+    destination; legacy PDFs are checked against their theorem headings;
   * no evidence links repeat in the margin, no margin link is unexplained, no two
     inline marks overlap, and no evidence link runs off the page;
   * no link in the paper points at a workflow run page;
@@ -75,14 +75,52 @@ def heading_lines(page) -> list[tuple[float, float, str]]:
     """(x, y, text) of every text run on the page, for locating result headings."""
     runs: list[tuple[float, float, str]] = []
 
+    # pypdf may report the memo matrix of the preceding text object when
+    # whitespace separates BT/ET objects. Capture the position at the text
+    # operator instead, so the second pair of table columns is read correctly.
+    origin: list[tuple[float, float] | None] = [None]
+
+    def before(operator, _operands, cm, tm):
+        if operator in (b"Tj", b"TJ") and origin[0] is None:
+            origin[0] = (tm[4] * cm[0] + tm[5] * cm[2] + cm[4],
+                         tm[4] * cm[1] + tm[5] * cm[3] + cm[5])
+
     def visit(text, cm, tm, _font, _size):
         if text.strip():
-            x = tm[4] * cm[0] + tm[5] * cm[2] + cm[4]
-            y = tm[4] * cm[1] + tm[5] * cm[3] + cm[5]
+            x, y = origin[0] if origin[0] is not None else (
+                tm[4] * cm[0] + tm[5] * cm[2] + cm[4],
+                tm[4] * cm[1] + tm[5] * cm[3] + cm[5])
             runs.append((x, y, text))
+        origin[0] = None
 
-    page.extract_text(visitor_text=visit)
+    page.extract_text(visitor_text=visit, visitor_operand_before=before)
     return runs
+
+
+def row_left(destination) -> float | None:
+    try:
+        return float(destination.left)
+    except (TypeError, ValueError):
+        return None
+
+
+def row_name_matches(runs: list, name: str, top: float,
+                     left: float | None, proof_left: float) -> bool:
+    """Match the complete visible name within its column, including one wrap."""
+    starts = [(x, y, text) for x, y, text in runs
+              if abs(y - top) <= TOLERANCE and x < proof_left - 2
+              and (left is None or left - 3 <= x < left + 80)]
+    want = "".join(name.split())
+    for x, y, _text in starts:
+        column_left = left if left is not None else x
+        parts = [(xx, yy, text) for xx, yy, text in runs
+                 if column_left - 3 <= xx < min(proof_left - 2, column_left + 80)
+                 and y - 22 <= yy <= y + 2]
+        actual = "".join("".join(text.split())
+                         for _xx, _yy, text in sorted(parts, key=lambda t: (-t[1], t[0])))
+        if re.match(re.escape(want) + r"(?:\D|$)", actual):
+            return True
+    return False
 
 
 def link_groups(indices: list[int], links: list, split: str = "") -> list[list[int]]:
@@ -114,7 +152,7 @@ def link_groups(indices: list[int], links: list, split: str = "") -> list[list[i
 
 
 def check_paper(pdf: Path, paper: dict, marks: dict, baseline: int | None,
-                records: dict | None = None) -> list[str]:
+                records: dict | None = None, names: dict | None = None) -> list[str]:
     from pypdf import PdfReader
 
     problems: list[str] = []
@@ -165,7 +203,9 @@ def check_paper(pdf: Path, paper: dict, marks: dict, baseline: int | None,
             row_page = reader.get_destination_page_number(row_destination) + 1
             row_top = float(row_destination.top)
             hits = [i for i in hits if links[i][0] == row_page
-                    and abs(links[i][1][1] - row_top) <= 22.0]
+                    and abs(links[i][1][1] - row_top) <= 22.0
+                    and (row_left(row_destination) is None or
+                         row_left(row_destination) <= links[i][1][0] < row_left(row_destination) + 205)]
         elif result and result.get("page"):
             hits = [i for i in hits if links[i][0] == int(result["page"])]
         if not hits:
@@ -175,28 +215,34 @@ def check_paper(pdf: Path, paper: dict, marks: dict, baseline: int | None,
         chosen = None
         for i in hits:
             n, rect, _u = links[i]
-            if result and result.get("number"):
+            if result and (result.get("number") or (concordance and names is not None)):
                 if n not in text_cache:
                     text_cache[n] = heading_lines(reader.pages[n - 1])
                 # Text extraction may drop the space inside a bold heading ("Theorem1.3").
-                want = (f"Result{result['number']}" if concordance
+                want = ("".join(names[label].split()) if concordance and names is not None
+                        else f"Result{result['number']}" if concordance
                         else f"{result['printed_kind']}{result['number']}")
-                level = [t for t in text_cache[n]
-                         if abs(t[1] - rect[1]) <= TOLERANCE + max(rect[3] - rect[1], HEADING_LINE_STEP)
-                         and t[0] < text_right
-                         and re.match(re.escape(want) + r"(?:\D|$)", "".join(t[2].split()))]
-                if not level:
+                if concordance:
+                    if not row_name_matches(text_cache[n], want, row_top,
+                                            row_left(row_destination), rect[0]):
+                        continue
+                elif not any(abs(t[1] - rect[1]) <= TOLERANCE + max(rect[3] - rect[1], HEADING_LINE_STEP)
+                             and t[0] < text_right
+                             and re.match(re.escape(want) + r"(?:\D|$)", "".join(t[2].split()))
+                             for t in text_cache[n]):
                     continue
             chosen = i
             break
         if chosen is None:
             problems.append(f"{label}: its inline Lean link is not level with the heading "
-                            f"{result['printed_kind']} {result['number']}")
+                            f"{names.get(label, label) if concordance and names is not None else str(result.get('printed_kind')) + ' ' + str(result.get('number'))}")
             continue
         n, rect, _u = links[chosen]
         inline = [i for i, (m, r, _u) in enumerate(links)
                   if m == n and r[0] < text_right and i not in used
-                  and abs(r[1] - rect[1]) <= TOLERANCE + (rect[3] - rect[1])]
+                  and abs(r[1] - rect[1]) <= TOLERANCE + (rect[3] - rect[1])
+                  and (not concordance or row_left(row_destination) is None or
+                       row_left(row_destination) <= r[0] < row_left(row_destination) + 205)]
 
         def require_inline(name: str, uri: str, split: str = "") -> None:
             candidates = [i for i in inline if links[i][2] == uri]
@@ -230,15 +276,18 @@ def check_paper(pdf: Path, paper: dict, marks: dict, baseline: int | None,
             top = float(destination.top)
             hits = [i for i, (page, rect, uri) in enumerate(links)
                     if page == n and abs(rect[1] - top) <= 22.0
-                    and uri == record[0] and i not in used]
+                    and uri == record[0] and i not in used
+                    and (row_left(destination) is None or
+                         row_left(destination) <= rect[0] < row_left(destination) + 205)]
             if len(hits) != 1:
                 problems.append(f"{label}: missing or duplicated partial-support record")
             else:
                 used.update(hits)
-            want = "Result" + str(result.get("number", ""))
-            if not any(abs(y - top) <= 22.0
-                       and re.match(re.escape(want) + r"(?:\D|$)", "".join(t.split()))
-                       for _x, y, t in heading_lines(reader.pages[n - 1])):
+            want = ("".join(names[label].split()) if names is not None
+                    else "Result" + str(result.get("number", "")))
+            proof_left = min((links[i][1][0] for i in hits), default=(row_left(destination) or 0) + 80)
+            if not row_name_matches(heading_lines(reader.pages[n - 1]), want, top,
+                                    row_left(destination), proof_left):
                 problems.append(f"{label}: wrong unmarked statement number")
         # A second Lean/Comparator presentation elsewhere cannot hide behind
         # the dictionary of named row destinations. Ordinary source citations
@@ -303,7 +352,9 @@ def main(argv: list[str] | None = None) -> int:
             print(f"FAIL {pid}: no PDF at {pdf}")
             failures += 1
             continue
-        problems = check_paper(pdf, paper, declared(pid), baseline.get(pid), recorded(pid))
+        from paper_evidence import concordance_name
+        names = {result['label']: concordance_name(result) for result in paper['results']}
+        problems = check_paper(pdf, paper, declared(pid), baseline.get(pid), recorded(pid), names)
         for p in problems:
             print(f"FAIL {pid}: {p}")
         failures += len(problems)

@@ -1057,6 +1057,17 @@ def record_url(record_commit: str, record: str, anchor: str) -> str:
 SPLIT_BYTES = 300_000
 
 
+def concordance_name(result: dict) -> str:
+    """Use the printed statement's type, never an inherited LaTeX counter."""
+    if result.get('number'):
+        return f"{result['printed_kind']} {result['number']}"
+    heading = re.match(r'\*(Remark|Theorem|Proposition|Lemma|Corollary)\s+([\d.]+)\*',
+                       result.get('statement_markdown') or '')
+    if heading:
+        return f"{heading.group(1)} {heading.group(2)}" + (f", p. {result['page']}" if result.get('page') else '')
+    return f"Passage, p. {result['page']}" if result.get('page') else 'Passage'
+
+
 def render_sidecar(evidence: dict, paper: dict, record_commit: str) -> str:
     pid = paper["paper_id"]
     lines = [
@@ -1066,6 +1077,7 @@ def render_sidecar(evidence: dict, paper: dict, record_commit: str) -> str:
     ]
     for r in paper["results"]:
         record = record_url(record_commit, r.get("record") or f"{RECORD_DIR}/{pid}.md", r["anchor"])
+        lines.append(f"\\DeclareResultEvidenceName{{{r['label']}}}{{{concordance_name(r)}}}")
         lines.append(f"\\DeclareResultEvidenceRecord{{{r['label']}}}{{{tex_url(record)}}}"
                      f"{{{r['lean']['status']}}}{{{r['comparator']['status']}}}")
         mark = r["lean"]["mark"]
@@ -1114,7 +1126,7 @@ def record_header(evidence: dict, paper: dict, title: str, pdf_path: str, up: st
         "",
         f"This record belongs to the paper [{Path(pdf_path).name}]({up}{pdf_path}). For every result it lists "
         "the Lean declarations that state it, and the recorded Comparator check where there is one. "
-        "The inline links beside each result heading use this result mapping.",
+        "The paper's verification concordance uses this result mapping.",
         "",
         f"- **Lean.** Every declaration is quoted from [plectis-erdos]({REPO_URL}) at commit "
         f"[`{pin[:12]}`]({REPO_URL}/tree/{pin}) and is checked there by Lean's kernel "
