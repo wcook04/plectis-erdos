@@ -133,10 +133,10 @@
       "id": "credit-registry",
       "path": "docs/research-commons/source-attributions.json",
       "start_line": 1,
-      "end_line": 36178,
+      "end_line": 36203,
       "kind": "supplied_snapshot",
-      "sha256": "c03c7dc1e1c10e14d3411d0f2c4c2fcd7fa803f104416b596b462926dbbdd408",
-      "excerpt_sha256": "c03c7dc1e1c10e14d3411d0f2c4c2fcd7fa803f104416b596b462926dbbdd408"
+      "sha256": "9050d63f146e62406d7ba5f7495a025092c5502b645c5fc99b8a60bc2f96003a",
+      "excerpt_sha256": "9050d63f146e62406d7ba5f7495a025092c5502b645c5fc99b8a60bc2f96003a"
     },
     {
       "id": "essay-pages",
@@ -2275,7 +2275,7 @@
     },
     {
       "id": "r4.limits1.01",
-      "text": "This paper reports no new Lean or Comparator execution, comparative formalisation result or autonomous-optimisation experiment.",
+      "text": "This paper reports no comparative formalisation result or autonomous-optimisation experiment.",
       "owner": "systems",
       "class": "reported",
       "evidence_refs": [
@@ -2284,8 +2284,8 @@
         "strategy-limits",
         "round10-state"
       ],
-      "warrant": "Consolidates preserved experimental and scaling ceilings without turning missing evidence into impossibility.",
-      "statement_sha256": "929c321aaf443c1ed54d6633f82765822284cf0cd818072c2d95f28359162873",
+      "warrant": "The limits section retains the unmeasured comparative experiments; the execution disclosure now appears with the recorded-run identities.",
+      "statement_sha256": "973f0aec95de8db397bc656bf6a48adcb7575c6d1b36baaa999eb60d1f2abcfd",
       "section": "sec:limits"
     },
     {
@@ -2478,14 +2478,15 @@
     },
     {
       "id": "r4.repro1.02",
-      "text": "Repository links in this revision use commit \\texttt{992cf60a27ef}; the Comparator links below identify their separate recorded runs.",
+      "text": "Repository links in this revision use commit \\texttt{992cf60a27ef}; the Comparator links below identify their separate recorded runs. No new Lean or Comparator run was performed for this revision.",
       "owner": "systems",
       "class": "reported",
       "evidence_refs": [
-        "corpus"
+        "corpus",
+        "round10-state"
       ],
-      "warrant": "The repository-link macro is pinned to the committed integration basis named here. Comparator URLs retain their own recorded run identities; neither pin asserts a new proof replay.",
-      "statement_sha256": "817deba5efdf655d1d0b134231e47a1ee5ce390e2185b39c47ff70843d96197a",
+      "warrant": "The repository-link macro is pinned to the stated source revision. The Comparator URLs are historical recorded runs; the supplied state snapshot records that this manuscript revision performed no new run.",
+      "statement_sha256": "403eed498ec9302e0804ee35f6a13851d217ab6ab0d0d573519c915ee17e51b8",
       "section": "app:repro"
     },
     {
@@ -2790,7 +2791,7 @@
     },
     {
       "id": "r4.example1.04",
-      "text": "For a fixed base $b$, write $W_{b,P}(A)$ for the sum in~\\eqref{eq:worked-condition} with $2$ replaced by~$b$. The fixed-base version assumes $W_{b,P}(A)<\\infty$ and gives the same hereditary conclusion at that base. Figure~\\ref{fig:theorem} locates the two registered Lean supports; the calculation below gives the ordinary argument. Their recorded status does not report a new comparison of source revisions, Lean build or Comparator run. Comparator checks a selected Lean implementation against a separately stated challenge, as described in Section~\\ref{sec:checks}.",
+      "text": "For a fixed base $b$, write $W_{b,P}(A)$ for the sum in~\\eqref{eq:worked-condition} with $2$ replaced by~$b$. The fixed-base version assumes $W_{b,P}(A)<\\infty$ and gives the same hereditary conclusion at that base. The calculation below gives the ordinary argument; Figure~\\ref{fig:theorem} identifies its two registered Lean supports.",
       "owner": "systems",
       "class": "reported",
       "evidence_refs": [
@@ -2800,8 +2801,8 @@
         "r8-weighted-formal",
         "r8-hereditary-formal"
       ],
-      "warrant": "Fixed-base notation and appendix pointer clarified; recorded endpoints remain recorded, not newly executed or joined across revisions.",
-      "statement_sha256": "99862e88f2c6cba3206674ce988724e26afeb5ecd374549ab46ba91e32b4668b",
+      "warrant": "The fixed-base condition and hereditary conclusion retain their original mathematical sources. The figure identifies the registered formal supports; the appendix gives the ordinary argument.",
+      "statement_sha256": "65e32053e44c975983810e3c9826b887ccedcd555bd7a32db956cfcf621842e3",
       "section": "app:worked-proof"
     },
     {
@@ -2864,15 +2865,15 @@
     {
       "id": "r8.appendix.proof-scope",
       "owner": "systems",
-      "text": "This appendix retains the ordinary calculation from the Problem~257 paper used by the worked case in Section~\\ref{sec:example}. The recorded Lean declarations support its conclusion; they are not a newly executed line-by-line verification of this exposition.",
-      "statement_sha256": "31bacd5c43a3baaaa339ede0a22641c4085fcc83210ee016a109dda1aba32224",
+      "text": "This appendix retains the ordinary calculation from the Problem~257 paper used by the worked case in Section~\\ref{sec:example}.",
+      "statement_sha256": "352c470e1d0d220f4e44baeacbde9f9c3808e6c9514db4f7341185284795f83f",
       "class": "reported",
       "evidence_refs": [
         "r8-weighted-proof",
         "r8-weighted-formal",
         "r8-hereditary-formal"
       ],
-      "warrant": "Existing ordinary calculation remains optional; theorem-level formal endpoints do not line-by-line certify its exposition.",
+      "warrant": "The appendix reproduces the ordinary calculation from the cited Problem 257 source; the existing formal supports remain in the ledger.",
       "section": "app:worked-proof"
     },
     {

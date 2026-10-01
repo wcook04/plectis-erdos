@@ -471,7 +471,11 @@ def main(argv=None) -> int:
             if stale:
                 for path in stale:
                     print(f"stale: {path.relative_to(ROOT)}", file=sys.stderr)
-                print("run: python3 scripts/build_reading_edition.py", file=sys.stderr)
+                print(
+                    "run: python3 scripts/build_reading_edition.py"
+                    + (" --records" if args.records else ""),
+                    file=sys.stderr,
+                )
                 return 1
             print(f"reading edition: current ({len(outputs)} files)")
             return 0
