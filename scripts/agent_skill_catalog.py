@@ -167,9 +167,11 @@ def load_catalog() -> dict[str, Any]:
         if not isinstance(task_intents, list):
             raise SkillCatalogError(f"lane {lane_id} task_intents must be a list")
         for intent in task_intents:
-            if not isinstance(intent, dict) or set(intent) != {"actions", "objects"}:
+            if (not isinstance(intent, dict) or
+                    not {"actions", "objects"} <= set(intent) or
+                    not set(intent) <= {"actions", "objects", "qualifiers"}):
                 raise SkillCatalogError(f"lane {lane_id} task intent needs actions and objects")
-            for field in ("actions", "objects"):
+            for field in intent:
                 terms = intent[field]
                 if (
                     not isinstance(terms, list) or not terms
@@ -211,6 +213,25 @@ def normalize(text: str) -> str:
     return " ".join(TOKEN_RE.findall(text.casefold()))
 
 
+def matched_task_intents(
+    lane: dict[str, Any], task_tokens: set[str], *, proof_intent: bool = False,
+) -> list[str]:
+    matches = []
+    for intent in lane.get("task_intents", []):
+        # Adding a guide-editing object must not displace the proof stage in
+        # "prove a theorem, then revise the writing guide". Preserve existing
+        # paper-authoring rules; the qualified guide rule is subordinate here.
+        if lane["id"] == "public_writing" and proof_intent and "qualifiers" in intent:
+            continue
+        components = [task_tokens.intersection(intent[field])
+                      for field in ("actions", "objects")]
+        if "qualifiers" in intent:
+            components.append(task_tokens.intersection(intent["qualifiers"]))
+        if all(components):
+            matches.append(" + ".join(sorted(component)[0] for component in components))
+    return matches
+
+
 def rank_lanes(catalog: dict[str, Any], task: str) -> list[dict[str, Any]]:
     normalized_task = normalize(task)
     task_tokens = set(normalized_task.split())
@@ -221,16 +242,17 @@ def rank_lanes(catalog: dict[str, Any], task: str) -> list[dict[str, Any]]:
     # Preserve explicit installation and Plectis authoring when a request
     # also mentions the portable guide. Their action/object rules stay owned
     # by the registry rather than being duplicated here.
-    matched_intents = {
-        lane["id"] for lane in catalog["lanes"]
-        if any(task_tokens.intersection(intent["actions"]) and
-               task_tokens.intersection(intent["objects"])
-               for intent in lane.get("task_intents", []))
-    }
-    plectis_context = "plectis" in task_tokens or any(
-        phrase in normalized_task
-        for phrase in ("this repository", "this repo", "this checkout")
+    intent_matches = {lane["id"]: matched_task_intents(lane, task_tokens, proof_intent=proof_intent)
+                      for lane in catalog["lanes"]}
+    matched_intents = {lane_id for lane_id, matches in intent_matches.items() if matches}
+    plectis_context = "plectis" in task_tokens or bool(
+        re.search(r"\bthis (?:repository|repo|checkout)\b", normalized_task)
     )
+    reuse_excluded = (
+        proof_intent or "install_skills" in matched_intents or
+        (plectis_context and "public_writing" in matched_intents)
+    )
+    reuse_method = bool(intent_matches.get("reuse_writing_guidance")) and not reuse_excluded
     ranked: list[dict[str, Any]] = []
     for order, lane in enumerate(catalog["lanes"]):
         matches: list[str] = []
@@ -249,20 +271,24 @@ def rank_lanes(catalog: dict[str, Any], task: str) -> list[dict[str, Any]]:
         # An explicit action and object can be separated by modifiers, e.g.
         # "refine the short mathematical papers". Require both: the object
         # alone must not turn a status or propagation request into authoring.
-        for intent in lane.get("task_intents", []):
-            actions = task_tokens.intersection(intent["actions"])
-            objects = task_tokens.intersection(intent["objects"])
-            if actions and objects:
-                matches.append(f"{sorted(actions)[0]} + {sorted(objects)[0]}")
-                # Two explicit intent components outweigh a generic later
-                # stage such as "propagate the downstream consequences".
-                score += 12
+        if intent_matches[lane["id"]]:
+            matches.extend(intent_matches[lane["id"]])
+            # Explicit intent components outweigh a generic later stage such
+            # as "propagate the downstream consequences". A qualifier can
+            # disambiguate a generic object such as "guide" or "skill".
+            # Alternative object rules describe the same intent; counting
+            # both a paper and a writing guide would displace installation.
+            score += 12
         # Guide mentions cannot replace a proof request, explicit installation,
         # or authoring in this checkout with the independent-project workflow.
-        if lane["id"] == "reuse_writing_guidance" and (
-            proof_intent or "install_skills" in matched_intents or
-            (plectis_context and "public_writing" in matched_intents)
-        ):
+        if lane["id"] == "reuse_writing_guidance":
+            if reuse_excluded:
+                score = 0
+                matches = []
+        if lane["id"] == "public_writing" and reuse_method:
+            # Applying the guide supplies the method for editing the host
+            # project. Counting both "revise papers" and "writing guides"
+            # must not send that request back to the Plectis paper corpus.
             score = 0
             matches = []
         # "Lean" names both a proof environment and an operational toolchain.

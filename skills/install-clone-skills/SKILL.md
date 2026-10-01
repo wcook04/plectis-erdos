@@ -48,9 +48,14 @@ python3 scripts/install_agent_skills.py --target codex --check
 
 The installer refuses to replace different same-name material. Inspect the
 destination first; use `--force --apply` only when the user explicitly wants
-that replacement. Copy mode can be removed by deleting the installed skill
+that replacement. The installer prepares the replacement before moving the
+existing skill and restores it if installation fails. If restoration also
+fails, the error names the retained backup for recovery. Copy mode can be
+removed by deleting the installed skill
 directories. Symlink mode can be removed by deleting the links. Neither action
 changes this repository.
+A cleanup warning means the new skill was installed; it names the staging
+folder that could not be removed.
 
 ## Install the writing skill for another project
 

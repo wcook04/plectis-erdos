@@ -11,6 +11,9 @@ import subprocess
 import sys
 import tempfile
 import unittest
+from unittest.mock import patch
+
+import sync_writing_skill as owner
 
 SCRIPT = Path(__file__).with_name("sync_writing_skill.py")
 GUIDE = "writing-a-good-mathematical-paper"
@@ -124,6 +127,87 @@ class WritingSkillSyncTests(unittest.TestCase):
     def reference_bytes(self):
         return {(self.root / relative).name: (self.root / relative).read_bytes()
                 for relative in REFERENCES if (self.root / relative).exists()}
+
+    def revised_pair(self):
+        for paper_id in (GUIDE, COMPANION):
+            self.put(f"docs/papers/full-text/{paper_id}.md", f"# Revised {paper_id}\n".encode())
+        self.refresh_bindings()
+        self.reconcile()
+
+    def test_preparation_failure_preserves_both_previous_references(self):
+        self.run_owner("--write")
+        before = self.reference_bytes()
+        self.revised_pair()
+        original_write = Path.write_bytes
+
+        def failed_write(path, data):
+            if path.name == "worked-companion.md.new":
+                raise OSError("simulated full disk")
+            return original_write(path, data)
+
+        with patch.object(Path, "write_bytes", failed_write):
+            with self.assertRaisesRegex(OSError, "simulated full disk"):
+                owner.sync(self.root, write=True)
+        self.assertEqual(self.reference_bytes(), before)
+        self.assertFalse(list((self.root / REFERENCES[0]).parent.glob(".writing-skill-sync-*")))
+
+    def test_second_promotion_failure_restores_the_previous_pair(self):
+        self.run_owner("--write")
+        before = self.reference_bytes()
+        self.revised_pair()
+        original_replace = owner.os.replace
+
+        def failed_replace(source, destination):
+            if Path(source).name == "worked-companion.md.new":
+                raise OSError("simulated promotion failure")
+            return original_replace(source, destination)
+
+        with patch.object(owner.os, "replace", failed_replace):
+            with self.assertRaisesRegex(OSError, "simulated promotion failure"):
+                owner.sync(self.root, write=True)
+        self.assertEqual(self.reference_bytes(), before)
+        self.assertFalse(list((self.root / REFERENCES[0]).parent.glob(".writing-skill-sync-*")))
+
+    def test_failed_initial_pair_install_removes_the_partial_reference(self):
+        original_replace = owner.os.replace
+
+        def failed_replace(source, destination):
+            if Path(source).name == "worked-companion.md.new":
+                raise OSError("simulated promotion failure")
+            return original_replace(source, destination)
+
+        with patch.object(owner.os, "replace", failed_replace):
+            with self.assertRaises(OSError):
+                owner.sync(self.root, write=True)
+        self.assertEqual(self.reference_bytes(), {})
+
+    def test_failed_restore_retains_and_identifies_recovery_files(self):
+        self.run_owner("--write")
+        before = self.reference_bytes()
+        self.revised_pair()
+        original_replace = owner.os.replace
+
+        def failed_replace(source, destination):
+            if Path(source).name in {"worked-companion.md.new", "writing-guide.md.old"}:
+                raise OSError("simulated unavailable destination")
+            return original_replace(source, destination)
+
+        with patch.object(owner.os, "replace", failed_replace):
+            with self.assertRaisesRegex(OSError, "recovery files retained at") as caught:
+                owner.sync(self.root, write=True)
+        backup = next((self.root / REFERENCES[0]).parent.glob(".writing-skill-sync-*"))
+        self.assertIn(str(backup), str(caught.exception))
+        for name, payload in before.items():
+            self.assertEqual((backup / f"{name}.old").read_bytes(), payload)
+
+    def test_successful_pair_refresh_preserves_unowned_references(self):
+        self.run_owner("--write")
+        self.revised_pair()
+        extra = (self.root / REFERENCES[0]).parent / "user-notes.md"
+        extra.write_bytes(b"user notes\n")
+        self.run_owner("--write")
+        self.run_owner("--check")
+        self.assertEqual(extra.read_bytes(), b"user notes\n")
 
     def assert_refusal_preserves_outputs(self, message):
         before = self.reference_bytes()

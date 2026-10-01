@@ -929,7 +929,12 @@
         "evidence wording",
         "overstates",
         "overstated",
-        "overstatement"
+        "overstatement",
+        "revise the writing guide",
+        "refine the writing guide",
+        "edit the writing guide",
+        "revise this writing guide",
+        "edit this writing guide"
       ],
       "skills": [
         "public-mathematical-writing",
@@ -969,6 +974,25 @@
             "prose",
             "wording"
           ]
+        },
+        {
+          "actions": [
+            "edit",
+            "proofread",
+            "refine",
+            "revise",
+            "rewrite",
+            "write",
+            "draft",
+            "correct"
+          ],
+          "objects": [
+            "guide",
+            "guides"
+          ],
+          "qualifiers": [
+            "writing"
+          ]
         }
       ],
       "entry_purposes": [
@@ -1000,7 +1024,13 @@
         "standalone writing skill",
         "use your portable writing skill",
         "use the portable writing skill",
-        "apply the portable writing skill"
+        "apply the portable writing skill",
+        "use the writing method",
+        "apply the writing method",
+        "reuse the writing method",
+        "use this writing method",
+        "apply this writing method",
+        "use your writing method"
       ],
       "skills": [
         "public-mathematical-writing"
@@ -1009,7 +1039,28 @@
         "skills/public-mathematical-writing/SKILL.md#use-in-another-repository"
       ],
       "commands": [],
-      "boundary": "Use your project's sources, checks and review process. The bundled guides are optional; copying or installing the skill is optional. The Plectis workflow applies only to a Plectis checkout."
+      "boundary": "Use your project's sources, checks and review process. The bundled guides are optional; copying or installing the skill is optional. The Plectis workflow applies only to a Plectis checkout.",
+      "priority": 1,
+      "task_intents": [
+        {
+          "actions": [
+            "use",
+            "apply",
+            "reuse"
+          ],
+          "objects": [
+            "guide",
+            "guides",
+            "method",
+            "methods",
+            "skill",
+            "skills"
+          ],
+          "qualifiers": [
+            "writing"
+          ]
+        }
+      ]
     },
     {
       "id": "add_problem",
@@ -1206,7 +1257,9 @@
       "task_intents": [
         {
           "actions": [
-            "install"
+            "install",
+            "copy",
+            "symlink"
           ],
           "objects": [
             "skill",
@@ -1296,7 +1349,12 @@
         "documentation correction",
         "check a documentation change",
         "check this documentation patch",
-        "validate a documentation change"
+        "validate a documentation change",
+        "update the writing skill",
+        "reconcile the writing skill",
+        "sync the writing skill",
+        "synchronize the writing skill",
+        "writing skill synchronization"
       ],
       "task_intents": [
         {

@@ -4,12 +4,17 @@
 from __future__ import annotations
 
 import json
+import contextlib
+import io
 import os
 import re
 import subprocess
 import sys
 import tempfile
 from pathlib import Path
+from unittest.mock import patch
+
+import install_agent_skills as installer
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -135,8 +140,113 @@ def check_invalid_destination_cli() -> None:
                     raise AssertionError("invalid destination advertised a skill or changed user material")
 
 
+def check_failed_installation_preserves_material() -> None:
+    with tempfile.TemporaryDirectory(prefix="plectis-failed-skill-test-") as temp:
+        root = Path(temp)
+        source = root / "source"
+        source.mkdir()
+        (source / "SKILL.md").write_bytes(b"new instructions\n")
+        name = "public-mathematical-writing"
+
+        def failed_cli(target: Path, fault, *, mode="copy") -> str:
+            args = [str(INSTALLER), "--target-dir", str(target), "--skill", name,
+                    "--mode", mode, "--force", "--apply"]
+            stderr = io.StringIO()
+            with patch.object(sys, "argv", args), \
+                    patch.object(installer, "skill_directories", return_value={name: source}), \
+                    contextlib.redirect_stdout(io.StringIO()), contextlib.redirect_stderr(stderr), fault:
+                assert installer.main() == 1
+            assert stderr.getvalue().startswith("error:"), stderr.getvalue()
+            assert "Traceback" not in stderr.getvalue()
+            return stderr.getvalue()
+
+        def interrupted_copy(_source, incoming):
+            incoming.mkdir()
+            (incoming / "SKILL.md").write_bytes(b"partial instructions\n")
+            raise OSError("simulated interrupted copy")
+
+        for kind in ("missing", "directory", "file", "symlink"):
+            target = root / kind
+            target.mkdir()
+            destination = target / name
+            outside = root / f"outside-{kind}"
+            if kind == "directory":
+                destination.mkdir()
+                (destination / "SKILL.md").write_bytes(b"old instructions\n")
+                (destination / "companion.md").write_bytes(b"old companion\n")
+            elif kind == "file":
+                destination.write_bytes(b"unrelated user file\n")
+            elif kind == "symlink":
+                outside.mkdir()
+                (outside / "SKILL.md").write_bytes(b"outside instructions\n")
+                destination.symlink_to(outside, target_is_directory=True)
+            failed_cli(target, patch.object(installer.shutil, "copytree", side_effect=interrupted_copy))
+            if kind == "missing":
+                assert not destination.exists()
+            elif kind == "directory":
+                assert (destination / "SKILL.md").read_bytes() == b"old instructions\n"
+                assert (destination / "companion.md").read_bytes() == b"old companion\n"
+            elif kind == "file":
+                assert destination.read_bytes() == b"unrelated user file\n"
+            else:
+                assert destination.is_symlink() and destination.resolve() == outside.resolve()
+                assert (outside / "SKILL.md").read_bytes() == b"outside instructions\n"
+            assert set(target.iterdir()) == (set() if kind == "missing" else {destination})
+
+        target = root / "promotion"
+        destination = target / name
+        destination.mkdir(parents=True)
+        (destination / "SKILL.md").write_bytes(b"old instructions\n")
+        original_replace = os.replace
+
+        def failed_promotion(source_path, target_path):
+            if Path(source_path).name == "incoming":
+                raise OSError("simulated promotion failure")
+            return original_replace(source_path, target_path)
+
+        failed_cli(target, patch.object(installer.os, "replace", side_effect=failed_promotion))
+        assert (destination / "SKILL.md").read_bytes() == b"old instructions\n"
+        assert set(target.iterdir()) == {destination}
+        failed_cli(target, patch.object(Path, "symlink_to", side_effect=OSError("cannot create link")),
+                   mode="symlink")
+        assert (destination / "SKILL.md").read_bytes() == b"old instructions\n"
+        assert set(target.iterdir()) == {destination}
+
+        readonly = destination / "references"
+        readonly.mkdir()
+        (readonly / "guide.md").write_bytes(b"old readonly guide\n")
+        readonly.chmod(0o555)
+        installer.install_one(source, destination, "copy", True)
+        assert (destination / "SKILL.md").read_bytes() == b"new instructions\n"
+        assert set(target.iterdir()) == {destination}
+
+        # A cleanup error after promotion must describe a successful install
+        # and the retained staging folder, rather than claim installation failed.
+        (destination / "SKILL.md").write_bytes(b"old instructions\n")
+        stderr = io.StringIO()
+        with patch.object(installer.shutil, "rmtree", side_effect=OSError("cannot clean staging")), \
+                contextlib.redirect_stderr(stderr):
+            installer.install_one(source, destination, "copy", True)
+        assert (destination / "SKILL.md").read_bytes() == b"new instructions\n"
+        retained = next(target.glob(f".{name}.install-*"))
+        assert "warning: installed" in stderr.getvalue() and str(retained) in stderr.getvalue()
+        installer.shutil.rmtree(retained)
+        (destination / "SKILL.md").write_bytes(b"old instructions\n")
+
+        def failed_promotion_and_restore(source_path, target_path):
+            if Path(source_path).name in {"incoming", "previous"}:
+                raise OSError("simulated unavailable destination")
+            return original_replace(source_path, target_path)
+
+        error = failed_cli(target, patch.object(installer.os, "replace", side_effect=failed_promotion_and_restore))
+        backup = next(target.glob(f".{name}.install-*/previous"))
+        assert (backup / "SKILL.md").read_bytes() == b"old instructions\n"
+        assert str(backup) in error, "failed restoration must identify the surviving original"
+
+
 def main() -> int:
     check_invalid_destination_cli()
+    check_failed_installation_preserves_material()
     readme = (ROOT / "README.md").read_text(encoding="utf-8")
     skill_index = (ROOT / "skills" / "README.md").read_text(encoding="utf-8")
     entry = (ROOT / "AGENTS.md").read_text(encoding="utf-8")

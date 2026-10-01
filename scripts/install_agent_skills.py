@@ -18,7 +18,9 @@ import argparse
 import filecmp
 import os
 import shutil
+import stat
 import sys
+import tempfile
 from pathlib import Path
 
 from agent_skill_catalog import SkillCatalogError, load_catalog
@@ -103,16 +105,51 @@ def install_one(source: Path, destination: Path, mode: str, force: bool) -> None
         raise ValueError(
             f"{destination} already contains different material; use --force to replace it"
         )
-    if destination.exists() or destination.is_symlink():
-        if destination.is_dir() and not destination.is_symlink():
-            shutil.rmtree(destination)
-        else:
-            destination.unlink()
     destination.parent.mkdir(parents=True, exist_ok=True)
-    if mode == "symlink":
-        destination.symlink_to(source, target_is_directory=True)
-    else:
-        shutil.copytree(source, destination)
+    staging = Path(tempfile.mkdtemp(prefix=f".{destination.name}.install-", dir=destination.parent))
+    incoming, previous = staging / "incoming", staging / "previous"
+    retain_backup = False
+    installed = False
+    try:
+        # Complete preparation before moving any installed material. A failed
+        # copy must never turn a working skill into a partial installation.
+        if mode == "symlink":
+            incoming.symlink_to(source, target_is_directory=True)
+        else:
+            shutil.copytree(source, incoming)
+        if destination.exists() or destination.is_symlink():
+            os.replace(destination, previous)
+        try:
+            os.replace(incoming, destination)
+            installed = True
+        except OSError as error:
+            if previous.exists() or previous.is_symlink():
+                try:
+                    os.replace(previous, destination)
+                except OSError as restore_error:
+                    retain_backup = True
+                    raise OSError(
+                        f"installation failed: {error}; restoration failed: {restore_error}; "
+                        f"previous installation retained at {previous}"
+                    ) from restore_error
+            raise
+    finally:
+        if not retain_backup:
+            try:
+                # Copies and obsolete backups may contain readonly folders.
+                # Only change permissions inside staging, without following
+                # skill symlinks into the source or another user directory.
+                for directory, _, _ in os.walk(staging, followlinks=False):
+                    path = Path(directory)
+                    path.chmod(path.stat().st_mode | stat.S_IWUSR | stat.S_IXUSR)
+                shutil.rmtree(staging)
+            except OSError as cleanup_error:
+                if not installed:
+                    raise
+                print(
+                    f"warning: installed {destination}; could not remove staging at "
+                    f"{staging}: {cleanup_error}", file=sys.stderr,
+                )
 
 
 def parser() -> argparse.ArgumentParser:
@@ -162,7 +199,7 @@ def main() -> int:
         if args.apply:
             try:
                 install_one(source, destination, args.mode, args.force)
-            except ValueError as exc:
+            except (OSError, ValueError) as exc:
                 print(f"error: {exc}", file=sys.stderr)
                 failures.append(name)
 

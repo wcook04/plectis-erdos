@@ -26,7 +26,10 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
+import os
 import re
+import shutil
+import tempfile
 from pathlib import Path
 
 from sync_publication_pdfs import source_input_closure_digest
@@ -216,16 +219,60 @@ def build(root: Path) -> dict[Path, bytes]:
     return outputs
 
 
+def write_references(outputs: dict[Path, bytes]) -> None:
+    if not outputs:
+        return
+    parent = next(iter(outputs)).parent
+    parent.mkdir(parents=True, exist_ok=True)
+    staging = Path(tempfile.mkdtemp(prefix=".writing-skill-sync-", dir=parent))
+    previous: dict[Path, Path | None] = {}
+    installed: list[Path] = []
+    retain_backup = False
+    try:
+        # Prepare the complete pair and recovery copies before replacing either
+        # reference. Input validation alone cannot rule out filesystem failure.
+        for path, payload in outputs.items():
+            (staging / f"{path.name}.new").write_bytes(payload)
+            backup = staging / f"{path.name}.old"
+            if path.exists():
+                shutil.copy2(path, backup)
+                previous[path] = backup
+            else:
+                previous[path] = None
+        try:
+            for path in outputs:
+                os.replace(staging / f"{path.name}.new", path)
+                installed.append(path)
+        except OSError as error:
+            restore_errors = []
+            for path in reversed(installed):
+                try:
+                    if previous[path] is None:
+                        path.unlink()
+                    else:
+                        os.replace(previous[path], path)
+                except OSError as restore_error:
+                    restore_errors.append(f"{path.name}: {restore_error}")
+            if restore_errors:
+                retain_backup = True
+                raise OSError(
+                    f"reference refresh failed: {error}; restoration failed: "
+                    f"{'; '.join(restore_errors)}; recovery files retained at {staging}"
+                ) from error
+            raise
+    finally:
+        if not retain_backup:
+            shutil.rmtree(staging)
+
+
 def sync(root: Path, *, write: bool) -> dict:
     root = root.resolve()
     outputs = build(root)
     changed = [str(path.relative_to(root)) for path, payload in outputs.items()
                if not path.is_file() or path.read_bytes() != payload]
     if write:
-        for path, payload in outputs.items():
-            if str(path.relative_to(root)) in changed:
-                path.parent.mkdir(parents=True, exist_ok=True)
-                path.write_bytes(payload)
+        write_references({path: outputs[path] for path in outputs
+                          if str(path.relative_to(root)) in changed})
     return {"status": "written" if write else ("stale" if changed else "current"),
             "changed": changed, "semantic_review_verified": "recorded_reconciliation_only"}
 

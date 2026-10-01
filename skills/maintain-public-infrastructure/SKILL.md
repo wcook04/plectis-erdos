@@ -31,6 +31,10 @@ not just whether one relevant skill appears. Test natural modifiers and plural
 objects as well as the exact failed wording. Registry `task_intents` can require
 an action token and an object token without requiring adjacent words; keep both
 conditions so merely mentioning a paper does not select manuscript editing.
+For an ambiguous object such as a guide, an optional `qualifiers` token group
+can require its subject as well. All supplied groups must match; modifiers may
+separate their words. A guide being edited and a guide being applied to another
+project are different tasks.
 Check neighboring tasks that should retain their original lane. Keep purpose and scope separate: a problem or paper identifies the object,
 while research, method development or infrastructure work identifies the action.
 An existing mathematical proof offered for review belongs to the research-return
@@ -224,6 +228,11 @@ For skill installation, content identity must survive an edit that preserves
 file size and timestamp. Exercise the actual preview, check, refused collision
 and explicitly forced replacement; metadata equality is not content equality.
 Keep the repair compatible with the minimum supported Python version.
+Prepare a replacement before moving an installed skill. Exercise preparation,
+promotion and restoration failures, including symlinks, and keep a recoverable
+backup if restoration fails. A multi-file generated refresh must also restore
+its previous outputs when an ordinary write or promotion fails; validate inputs
+before preparing any output.
 
 For publication growth, conservation means preserving each existing artifact's
 identity and download name while admitting newly registered papers. Test a
