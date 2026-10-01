@@ -28,7 +28,7 @@ in the [version manifest](version.json) with the guidance.
 
 ## Keep the papers and agent instructions consistent
 
-An edit to either writing paper includes a review of the
+An edit to either writing paper or a local style it loads includes a review of the
 [mathematical-writing skill](../../../skills/public-mathematical-writing/SKILL.md).
 Carry changed advice, examples and limits into its instructions in the same
 change. If an edit leaves those instructions applicable, record the reason;
@@ -36,12 +36,24 @@ updating file hashes alone does not establish agreement.
 
 After rebuilding the paper and its full-text copy, update the edition and file
 hashes in [version.json](version.json). Its `paper_skill_review` binds the review
-to the current paper inputs and skill, with an `updated` or
+to the current paper inputs, actually loaded local styles and skill, with an `updated` or
 `verified_unchanged` disposition and a substantive reason. Run
 `python3 scripts/sync_writing_skill.py --write`, then `--check`. This copies both
 guides into the skill folder for independent installation. Projection and
 release checks reject stale review bindings or bundled guides. Change the
 paper sources and skill instructions, then regenerate their copies.
+
+The review's `style_inputs_sha256` uses the same sorted file-row digest format
+as `paper_inputs_sha256`, restricted to loaded local TeX packages. Styles can
+define prose macros, so a fresh style hash also requires review. A typography
+edit may use `verified_unchanged` after checking that the instructions still apply.
+Unused shared resources are excluded from semantic review.
+
+Use literal manuscript inputs relative to `paper/`, the exporter's working
+directory. Synchronization refuses dynamic filenames, conflicting lookup paths
+and inputs outside the current export receipt. Canonicalize them as explicit
+inputs, then regenerate through the normal owners. This guard does not interpret
+arbitrary TeX or revise historical PDF build records.
 
 ## Read the kind of paper you are writing
 

@@ -13,9 +13,10 @@ non-procedural changes whose recorded reason explains why no instruction changed
 The paper-input digest is SHA256 of UTF-8 compact JSON: selected manifest rows
 reduced to {path, sha256, role}, sorted by (path, role, sha256), with sorted object
 keys, ensure_ascii=True and separators=(",", ":"). Only compact_guide_source,
-compact_guide_input, companion_source and companion_input participate; the
-canonical shared paper resources are excluded. Every discovered manuscript
-input outside those shared resources must have a participating manifest row.
+compact_guide_input, companion_source and companion_input participate. The
+style_inputs_sha256 binding uses the same encoding for manifest rows naming
+actually loaded local TeX packages. Unused shared resources are excluded.
+Every loaded manuscript input must participate in one of these review bindings.
 
 This owner copies existing generated Markdown without exporting or rewriting it.
 Exporter receipts must bind that Markdown to its byte digest, current source,
@@ -34,9 +35,7 @@ import shutil
 import tempfile
 from pathlib import Path
 
-from sync_publication_pdfs import (
-    SHARED_PAPER_RESOURCES, manuscript_input_paths, source_input_closure_digest,
-)
+from sync_publication_pdfs import manuscript_input_paths, source_input_closure_digest
 
 ROOT = Path(__file__).resolve().parents[1]
 MANIFEST = "docs/papers/exposition-method/version.json"
@@ -105,6 +104,130 @@ def paper_inputs_sha256(files: list[dict]) -> str:
                              ensure_ascii=True).encode("utf-8"))
 
 
+def style_inputs_sha256(files: list[dict], styles: set[str]) -> str:
+    rows = [{key: row[key] for key in ("path", "sha256", "role")}
+            for row in files if row["path"] in styles]
+    rows.sort(key=lambda row: (row["path"], row["role"], row["sha256"]))
+    return sha256(json.dumps(rows, sort_keys=True, separators=(",", ":"),
+                             ensure_ascii=True).encode("utf-8"))
+
+
+def executable_tex(text: str) -> str:
+    """Mask comments and literal text, preserving line numbers for diagnostics."""
+    result = list(text)
+    i = 0
+    while i < len(text):
+        end = i
+        if text[i] == "%":
+            end = text.find("\n", i)
+            if end < 0:
+                end = len(text)
+        elif text[i] == "\\":
+            command = re.match(r"\\([A-Za-z]+|.)", text[i:])
+            if not command:
+                break
+            name = command.group(1)
+            start = i + command.end()
+            if name == "\\":
+                result[i:start] = " " * (start - i)
+            if name == "verb":
+                if text[start:start + 1] == "*":
+                    start += 1
+                if start < len(text) and not text[start].isspace():
+                    stop = text.find(text[start], start + 1)
+                    if stop >= 0 and "\n" not in text[start:stop]:
+                        end = stop + 1
+            elif name == "begin":
+                environment = re.match(r"\{(verbatim|Verbatim|lstlisting)\}", text[start:])
+                if environment:
+                    closing = "\\end{" + environment.group(1) + "}"
+                    stop = text.find(closing, start + environment.end())
+                    if stop >= 0:
+                        end = stop + len(closing)
+            if end == i:
+                # Escaped percent/backslash cannot introduce a comment/load.
+                i = start
+                continue
+        if end > i:
+            for pos in range(i, end):
+                if result[pos] not in "\r\n":
+                    result[pos] = " "
+            i = end
+        else:
+            i += 1
+    return "".join(result)
+
+
+def writing_inputs(root: Path, source: str) -> tuple[set[str], set[str]]:
+    """Audit static writing inputs under the native exporter's paper/ CWD.
+
+    This is a refusal guard, not a TeX interpreter or a replacement PDF build
+    record. Newly loaded inputs must also be covered by the existing exporter
+    closure; otherwise authors must canonicalize them before synchronization.
+    """
+    directory = Path(source).parent
+    while directory.as_posix() != "paper":
+        if any(safe_path(root, (directory / marker).as_posix()).is_file()
+               for marker in ("paper-house-style.sty", "module-aliases.tex")):
+            fail(f"{source}: exporter search root changed to {directory}; use the canonical paper/ root")
+        if directory == directory.parent:
+            fail(f"{source}: writing manuscript must be below paper/")
+        directory = directory.parent
+    inputs, styles = {source}, set()
+    queue = [source]
+    commands = re.compile(r"(?<!\\)\\(input|include|usepackage|RequirePackage)(?![A-Za-z@])")
+    while queue:
+        current = queue.pop()
+        try:
+            text = executable_tex(safe_path(root, current).read_text(encoding="utf-8"))
+        except (OSError, UnicodeError) as error:
+            fail(f"cannot audit writing input {current}: {error}")
+        for match in commands.finditer(text):
+            location = f"{current}:{text.count(chr(10), 0, match.start()) + 1}"
+            package = match.group(1) in ("usepackage", "RequirePackage")
+            tail = text[match.end():]
+            if package:
+                tail = re.sub(r"^[ \t]*\[[^\]]*\]", "", tail)
+            argument = re.match(r"[ \t]*\{([^{}\r\n]*)\}", tail)
+            if not argument:
+                fail(f"{location}: use a literal braced writing input on one line")
+            raw = argument.group(1)
+            if not raw.strip() or any(char in raw for char in "\\#$%^&~"):
+                fail(f"{location}: unsupported dynamic writing input: {raw!r}")
+            for name in raw.split(",") if package else (raw,):
+                name = name.strip()
+                relative = Path(name)
+                if not name or relative.is_absolute() or ".." in relative.parts:
+                    fail(f"{location}: invalid writing input: {name!r}")
+                if package and relative.suffix and relative.suffix.lower() != ".sty":
+                    fail(f"{location}: unsupported local package filename: {name}")
+                names = ([name] if relative.suffix else [name + ".sty"]) if package else (
+                    [name + ".tex", name] if not relative.suffix else [name]
+                )
+                loaded = None
+                for candidate in names:
+                    target = "paper/" + candidate
+                    if safe_path(root, target).is_file():
+                        loaded = target
+                        break
+                if loaded is None:
+                    if package and "/" not in name:
+                        continue  # Installed TeX package, not repository prose.
+                    fail(f"{location}: writing input missing under exporter root paper/: {name}")
+                # The legacy receipt resolver searches the including directory
+                # first. Refuse a different candidate instead of certifying it.
+                for candidate in names:
+                    alternate = (Path(current).parent / candidate).as_posix()
+                    if alternate != loaded and safe_path(root, alternate).is_file():
+                        fail(f"{location}: ambiguous exporter input: {loaded} versus {alternate}")
+                if package:
+                    styles.add(loaded)
+                if loaded not in inputs:
+                    inputs.add(loaded)
+                    queue.append(loaded)
+    return inputs, styles
+
+
 def validated_manifest(root: Path) -> dict:
     manifest = load_json(root, MANIFEST)
     if manifest.get("schema") != "exposition-method-version/1":
@@ -143,19 +266,30 @@ def validated_manifest(root: Path) -> dict:
     if len(skill_rows) != 1 or skill_rows[0]["path"] != SKILL:
         fail(f"{MANIFEST}: the skill role must bind exactly {SKILL}")
     semantic_paths = {row["path"] for row in files if row["role"] in PAPER_INPUT_ROLES}
+    loaded_styles = set()
     for paper_id, _, _, _ in PAPERS:
         source = f"paper/exposition/{paper_id}.tex"
-        inputs = set(manuscript_input_paths(root, source)) - set(SHARED_PAPER_RESOURCES)
+        actual, styles = writing_inputs(root, source)
+        loaded_styles.update(styles)
+        inputs = actual - styles
         if inputs - semantic_paths:
             fail(
                 f"{MANIFEST}: manuscript inputs missing from semantic review: "
                 f"{sorted(inputs - semantic_paths)}"
             )
+        if styles - seen:
+            fail(f"{MANIFEST}: loaded local styles missing from review: {sorted(styles - seen)}")
+        unbound = actual - set(manuscript_input_paths(root, source))
+        if unbound:
+            fail(f"{source}: inputs not covered by the native exporter receipt: {sorted(unbound)}; "
+                 "use canonical explicit manuscript inputs and regenerate through the normal owners")
     review = manifest.get("paper_skill_review")
     if not isinstance(review, dict):
         fail(f"{MANIFEST}: missing paper_skill_review reconciliation record")
     if review.get("paper_inputs_sha256") != paper_inputs_sha256(files):
         fail(f"{MANIFEST}: stale paper_skill_review.paper_inputs_sha256")
+    if review.get("style_inputs_sha256") != style_inputs_sha256(files, loaded_styles):
+        fail(f"{MANIFEST}: missing or stale paper_skill_review.style_inputs_sha256")
     if review.get("skill_sha256") != skill_rows[0]["sha256"]:
         fail(f"{MANIFEST}: stale paper_skill_review.skill_sha256")
     if review.get("disposition") not in ("updated", "verified_unchanged"):

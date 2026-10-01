@@ -1,6 +1,6 @@
 {
   "schema": "exposition-method-version/1",
-  "version": "2026-09-30.3",
+  "version": "2026-10-01.1",
   "required_roles": [
     "guidance",
     "skill",
@@ -19,12 +19,12 @@
   "files": [
     {
       "path": "docs/papers/exposition-method/README.md",
-      "sha256": "e925fe2bcc74b734cc926b3609e8473501aec9d546d45c04c2e38d5f990e76b8",
+      "sha256": "b93f23558b86064306d9a029bdd368860fde1ffb48ec270fc250b077c366fdce",
       "role": "guidance"
     },
     {
       "path": "skills/public-mathematical-writing/SKILL.md",
-      "sha256": "24e9b5f71e7a22827628b04a85e8e810d4ef6e2de6047ce97c3ab44053fa8d52",
+      "sha256": "d34f335d19271eb9c3b220c2e82d3c19dedfd09d853dfce5cc1a068e08d71792",
       "role": "skill"
     },
     {
@@ -115,8 +115,9 @@
   ],
   "paper_skill_review": {
     "paper_inputs_sha256": "a114477261462f52f1f31ff4dee083c73b13552ec54fb369508156c7f62fe1cb",
-    "skill_sha256": "24e9b5f71e7a22827628b04a85e8e810d4ef6e2de6047ce97c3ab44053fa8d52",
+    "skill_sha256": "d34f335d19271eb9c3b220c2e82d3c19dedfd09d853dfce5cc1a068e08d71792",
     "disposition": "updated",
-    "reason": "Reviewed both writing papers and all companion inputs against the instructions. Added a self-contained workflow for other repositories, retained the papers' distinctions between expository models and proof evidence, and required same-change review of a paper's associated skill. Bundled both guides and preserved the Plectis-specific claim and publication workflow separately."
+    "reason": "Reviewed the unchanged short guide, companion inputs and actually loaded paper-house-style package against the skill. The style defines typography, labels and authorship prose; its bytes now participate in a separate semantic review binding. Updated the skill and maintainer instructions to review loaded styles, use the exporter lookup root and refuse inputs its recorded closure cannot cover. Unused shared preamble and aliases are not newly asserted to have been consumed. The writing recommendations, manuscripts, PDFs and bundled guide text are unchanged; this edition repairs review and synchronization controls.",
+    "style_inputs_sha256": "fdec2bc7bda8981eb407ceff8b81dee94ff07c0d3a9f02ac354971d2ba366488"
   }
 }

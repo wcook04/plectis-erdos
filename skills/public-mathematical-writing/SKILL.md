@@ -312,7 +312,8 @@ does not cover those contracts.
 
 ### Keep the writing papers and this skill together
 
-When either writing-guide paper changes, review this skill in the same change.
+When either writing-guide paper or a local style it loads changes, review this
+skill in the same change. A style can define prose as well as typography.
 Update its instructions for each changed recommendation, example or limit.
 For a change that leaves the instructions applicable, record why. A fresh hash
 alone is not a review of meaning.
@@ -320,7 +321,7 @@ alone is not a review of meaning.
 Rebuild an edited paper and its full-text copy through the publication tools.
 Refresh the file hashes and edition in
 `docs/papers/exposition-method/version.json`, then record `paper_skill_review`:
-the current paper-input digest, this skill's hash, `updated` or
+the current paper-input and loaded-style digests, this skill's hash, `updated` or
 `verified_unchanged`, and a substantive reason. Run:
 
 ```sh
@@ -333,6 +334,11 @@ skill's `references/` directory. The normal projection and release checks reject
 stale bindings or bundled text. Commit the papers, skill, review record and
 generated copies together. Keep installed copies current by reinstalling the
 whole skill folder; do not edit generated references directly.
+
+Use explicit literal inputs relative to `paper/`, the full-text exporter's
+working directory. The synchronizer refuses dynamic filenames, conflicting
+lookup paths and inputs its export receipt does not cover. Canonicalize those
+inputs and regenerate through the normal owners before copying the guides.
 
 ### Propagate each settled correction
 

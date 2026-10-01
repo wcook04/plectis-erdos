@@ -39,9 +39,9 @@ class WritingSkillSyncTests(unittest.TestCase):
         self.files = {
             SKILL: ("skill", b"# Writing skill\n\nExplain the estimate's purpose.\n"),
             "docs/papers/exposition-method/README.md": ("guidance", b"Method records.\n"),
-            f"paper/exposition/{GUIDE}.tex": ("compact_guide_source", b"Guide manuscript.\n"),
+            f"paper/exposition/{GUIDE}.tex": ("compact_guide_source", b"\\usepackage{paper-house-style}\nGuide manuscript.\n"),
             f"paper/exposition/{GUIDE}.pdf": ("compact_guide_pdf", b"%PDF guide fixture\n"),
-            f"paper/exposition/{COMPANION}.tex": ("companion_source", b"Companion manuscript.\n\\input{parts/lesson}\n"),
+            f"paper/exposition/{COMPANION}.tex": ("companion_source", b"\\usepackage{paper-house-style}\nCompanion manuscript.\n\\input{exposition/parts/lesson}\n"),
             f"paper/exposition/{COMPANION}.pdf": ("companion_pdf", b"%PDF companion fixture\n"),
             "paper/exposition/parts/lesson.tex": ("companion_input", b"A worked revision.\n"),
             "paper/paper-house-style.sty": ("shared_input", b"A shared style.\n"),
@@ -110,8 +110,19 @@ class WritingSkillSyncTests(unittest.TestCase):
                                      "companion_source", "companion_input")]
         inputs.sort(key=lambda row: (row["path"], row["role"], row["sha256"]))
         encoded = json.dumps(inputs, sort_keys=True, separators=(",", ":"), ensure_ascii=True).encode()
+        styles = set()
+        for paper_id in (GUIDE, COMPANION):
+            source = (self.root / f"paper/exposition/{paper_id}.tex").read_bytes()
+            if b"\\usepackage{paper-house-style}" in source:
+                styles.add("paper/paper-house-style.sty")
+        styles.update(getattr(self, "extra_styles", ()))
+        style_rows = [{key: row[key] for key in ("path", "sha256", "role")}
+                      for row in self.manifest["files"] if row["path"] in styles]
+        style_rows.sort(key=lambda row: (row["path"], row["role"], row["sha256"]))
+        style_encoded = json.dumps(style_rows, sort_keys=True, separators=(",", ":"), ensure_ascii=True).encode()
         self.manifest["paper_skill_review"] = {
             "paper_inputs_sha256": digest(encoded),
+            "style_inputs_sha256": digest(style_encoded),
             "skill_sha256": digest((self.root / SKILL).read_bytes()),
             "disposition": disposition,
             "reason": "The current instructions cover the reviewed changes.",
@@ -252,14 +263,14 @@ class WritingSkillSyncTests(unittest.TestCase):
         source = f"paper/exposition/{paper_id}.tex"
         stem = f"new-guidance-{paper_id}"
         new_input = f"paper/exposition/parts/{stem}.tex"
-        self.put(source, (self.root / source).read_bytes() + f"\\input{{parts/{stem}}}\n".encode())
+        self.put(source, (self.root / source).read_bytes() + f"\\input{{exposition/parts/{stem}}}\n".encode())
         self.put(new_input, b"New writing procedure.\n")
         if not hasattr(self, "extra_inputs"):
             self.extra_inputs = {}
         self.extra_inputs[paper_id] = [new_input]
         if nested:
             inner = "paper/exposition/parts/nested/decision.sty"
-            self.put(new_input, b"\\include{nested/decision.sty}\n")
+            self.put(new_input, b"\\include{exposition/parts/nested/decision.sty}\n")
             self.put(inner, b"A nested writing decision.\n")
             self.extra_inputs[paper_id].append(inner)
         self.refresh_bindings()
@@ -317,6 +328,144 @@ class WritingSkillSyncTests(unittest.TestCase):
                 self.reconcile()
                 self.run_owner("--write")
                 self.run_owner("--check")
+
+    def test_spaced_input_is_refused_even_with_reviewed_files_and_fresh_text(self):
+        self.run_owner("--write")
+        relative = self.add_unlisted_inputs(GUIDE)
+        self.manifest["files"].append({"path": relative, "role": "compact_guide_input",
+                                      "sha256": digest((self.root / relative).read_bytes())})
+        source = f"paper/exposition/{GUIDE}.tex"
+        self.put(source, (self.root / source).read_bytes().replace(b"\\input{", b"\\input {"))
+        self.put(f"docs/papers/full-text/{GUIDE}.md", b"Freshly exported new procedure.\n")
+        self.refresh_bindings()
+        self.reconcile()
+        self.assert_refusal_preserves_outputs("not covered by the native exporter receipt")
+        self.assertIn("native exporter receipt", self.run_owner("--check", expected=2).stderr)
+
+    def test_dynamic_and_unsupported_input_forms_are_refused(self):
+        self.run_owner("--write")
+        source = f"paper/exposition/{GUIDE}.tex"
+        original = (self.root / source).read_bytes()
+        for statement, message in (
+            (b"\\def\\target{exposition/parts/lesson}\\input{\\target}\n", "unsupported dynamic"),
+            (b"\\input exposition/parts/lesson.tex\n", "literal braced"),
+            (b"\\input\n{exposition/parts/lesson}\n", "literal braced"),
+            (b"\\input% comment\n{exposition/parts/lesson}\n", "literal braced"),
+            (b"\\usepackage{\\target}\n", "unsupported dynamic"),
+        ):
+            with self.subTest(statement=statement):
+                self.put(source, original + statement)
+                self.refresh_bindings()
+                self.reconcile()
+                self.assert_refusal_preserves_outputs(message)
+
+    def test_exporter_cwd_and_source_parent_collision_is_refused(self):
+        self.run_owner("--write")
+        source = f"paper/exposition/{COMPANION}.tex"
+        self.put(source, b"\\usepackage{paper-house-style}\n\\input{parts/lesson}\n")
+        self.put("paper/parts/lesson.tex", b"Different procedure actually loaded by Pandoc.\n")
+        self.extra_inputs = {COMPANION: ["paper/parts/lesson.tex"]}
+        self.refresh_bindings()
+        self.reconcile()
+        self.assert_refusal_preserves_outputs("ambiguous exporter input")
+
+    def test_used_style_descendants_cannot_escape_exporter_coverage(self):
+        self.run_owner("--write")
+        relative = "paper/exposition/parts/style-guidance.tex"
+        self.put(relative, b"A procedural instruction loaded by the used style.\n")
+        self.put("paper/paper-house-style.sty", b"\\input{exposition/parts/style-guidance}\n")
+        self.manifest["files"].append({"path": relative, "role": "companion_input",
+                                      "sha256": digest((self.root / relative).read_bytes())})
+        self.extra_inputs = {GUIDE: [relative], COMPANION: [relative]}
+        self.refresh_bindings()
+        self.reconcile()
+        self.assert_refusal_preserves_outputs("not covered by the native exporter receipt")
+
+    def test_procedural_style_edit_requires_a_fresh_review(self):
+        self.run_owner("--write")
+        self.put("paper/paper-house-style.sty", b"\\newcommand{\\advice}{Remove necessary hypotheses.}\n")
+        self.put(f"docs/papers/full-text/{GUIDE}.md", b"Remove necessary hypotheses.\n")
+        self.refresh_bindings()
+        self.save()
+        self.assert_refusal_preserves_outputs("stale paper_skill_review.style_inputs_sha256")
+        self.reconcile()
+        self.run_owner("--write")
+        self.run_owner("--check")
+        self.assertIn(b"Remove necessary hypotheses.", (self.root / REFERENCES[0]).read_bytes())
+
+    def test_missing_style_review_binding_is_refused(self):
+        self.manifest["paper_skill_review"].pop("style_inputs_sha256")
+        self.save()
+        self.assert_refusal_preserves_outputs("missing or stale paper_skill_review.style_inputs_sha256")
+
+    def test_multiline_external_package_options_in_a_local_style_are_supported(self):
+        self.put("paper/paper-house-style.sty", b"\\RequirePackage[a4paper,\n top=68pt]{geometry}\n")
+        self.refresh_bindings()
+        self.reconcile()
+        self.run_owner("--write")
+        self.run_owner("--check")
+
+    def test_explicit_style_suffix_cannot_be_misclassified_as_external(self):
+        self.run_owner("--write")
+        source = f"paper/exposition/{GUIDE}.tex"
+        original = (self.root / source).read_bytes()
+        self.put("paper/unreviewed-style.sty", b"\\newcommand{\\advice}{Remove hypotheses.}\n")
+        for command in ("usepackage", "RequirePackage"):
+            with self.subTest(command=command):
+                self.put(source, original + f"\\{command}{{unreviewed-style.sty}}\n".encode())
+                self.put(f"docs/papers/full-text/{GUIDE}.md", b"Fresh text from an unreviewed style.\n")
+                self.refresh_bindings()
+                self.reconcile()
+                self.assert_refusal_preserves_outputs("loaded local styles missing from review")
+
+    def test_other_explicit_package_suffixes_fail_closed(self):
+        source = f"paper/exposition/{GUIDE}.tex"
+        self.put("paper/unreviewed-style.tex", b"Changed guidance.\n")
+        self.put(source, (self.root / source).read_bytes() + b"\\usepackage{unreviewed-style.tex}\n")
+        self.refresh_bindings()
+        self.reconcile()
+        self.assert_refusal_preserves_outputs("unsupported local package filename")
+
+    def test_a_shadow_marker_cannot_change_the_exporter_search_root(self):
+        self.put("paper/exposition/module-aliases.tex", b"A new search-root marker.\n")
+        self.assert_refusal_preserves_outputs("exporter search root changed")
+
+    def test_unused_shared_preamble_is_not_traversed_as_guidance(self):
+        relative = "paper/problem-note-preamble.tex"
+        self.put(relative, b"\\input{does-not-exist}\n")
+        self.extra_inputs = {GUIDE: [relative], COMPANION: [relative]}
+        self.refresh_bindings()
+        self.reconcile()
+        self.run_owner("--write")
+        self.run_owner("--check")
+
+    def test_comments_and_verbatim_are_not_loaded_inputs(self):
+        source = f"paper/exposition/{GUIDE}.tex"
+        relative = "paper/exposition/parts/literal-example.tex"
+        self.put(relative, b"An unused example.\n")
+        self.put(source, (self.root / source).read_bytes() + (
+            b"% \\input{exposition/parts/literal-example}\n"
+            b"\\verb|\\input{exposition/parts/literal-example}|\n"
+            b"\\begin{verbatim}\n\\input{exposition/parts/literal-example}\n\\end{verbatim}\n"
+        ))
+        # The old exporter conservatively binds these unused bytes; the new
+        # audit must not describe them as loaded or demand a semantic review.
+        self.extra_inputs = {GUIDE: [relative]}
+        self.refresh_bindings()
+        self.reconcile()
+        self.run_owner("--write")
+        self.run_owner("--check")
+
+    def test_escaped_percent_and_linebreak_do_not_hide_a_real_load(self):
+        source = f"paper/exposition/{GUIDE}.tex"
+        original = (self.root / source).read_bytes()
+        for statement in (b"100\\% \\input{missing-guidance}\n",
+                          b"\\\\\\input{missing-guidance}\n"):
+            with self.subTest(statement=statement):
+                self.put(source, original + statement)
+                self.refresh_bindings()
+                self.reconcile()
+                self.assert_refusal_preserves_outputs("writing input missing under exporter root")
 
     def test_skill_edit_requires_manifest_and_review_refresh(self):
         self.run_owner("--write")
@@ -394,15 +543,18 @@ class WritingSkillSyncTests(unittest.TestCase):
         self.run_owner("--write")
         self.run_owner("--check")
 
-    def test_shared_style_is_hashed_but_excluded_from_semantic_review_digest(self):
+    def test_typography_change_requires_review_in_the_separate_style_binding(self):
         self.run_owner("--write")
         before = self.manifest["paper_skill_review"].copy()
         self.put("paper/paper-house-style.sty", b"A typography adjustment.\n")
         self.assert_refusal_preserves_outputs("stale file hash: paper/paper-house-style.sty")
         self.refresh_bindings()
         self.save()
+        self.assert_refusal_preserves_outputs("stale paper_skill_review.style_inputs_sha256")
+        self.reconcile("verified_unchanged")
         self.run_owner("--write")
-        self.assertEqual(self.manifest["paper_skill_review"], before)
+        self.assertEqual(self.manifest["paper_skill_review"]["paper_inputs_sha256"], before["paper_inputs_sha256"])
+        self.assertNotEqual(self.manifest["paper_skill_review"]["style_inputs_sha256"], before["style_inputs_sha256"])
 
     def test_missing_full_text_or_duplicate_paper_never_writes_partial_references(self):
         (self.root / f"docs/papers/full-text/{COMPANION}.md").unlink()

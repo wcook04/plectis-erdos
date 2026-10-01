@@ -259,11 +259,15 @@ backup if restoration fails. A multi-file generated refresh must also restore
 its previous outputs when an ordinary write or promotion fails; validate inputs
 before preparing any output.
 
-For the writing papers, require every discovered manuscript include to appear
-in the version manifest's semantic review digest, including nested includes
-and compact-guide fragments. A current exporter receipt does not establish
-that the skill review covered every input. Only the canonical shared paper
-resources are exempt; an arbitrary `shared_input` label cannot exempt guidance.
+For the writing papers, audit literal inputs using the exporter's `paper/`
+working directory, including nested includes and actually loaded local styles.
+Require each loaded fragment in semantic review and bind loaded styles through
+the separate style-input digest; a style can define procedural prose. Unused
+shared resources are not loaded guidance. Refuse dynamic filenames, conflicting
+lookup paths and dependencies the existing export receipt does not cover.
+Test fresh text with a stale review, prose-changing styles, comments, verbatim
+examples and unused preambles. A current exporter receipt or an arbitrary
+`shared_input` label cannot establish complete semantic review.
 
 For publication growth, conservation means preserving each existing artifact's
 identity and download name while admitting newly registered papers. Test a
