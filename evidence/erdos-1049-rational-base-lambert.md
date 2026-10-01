@@ -346,7 +346,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="cor-rational-base-measure"></a>
 
-## Corollary 4.3 (an irrationality measure uniform over powers), page 13
+## Corollary 4.3 (an irrationality measure uniform over powers), page 14
 
 > *For coprime $`a>b\ge1`$ with $`\theta=\log b/\log a<\theta^*`$ and every integer $`r\ge1`$,
 > ``` math

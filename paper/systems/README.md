@@ -3,10 +3,12 @@
 
 # The systems paper
 
-Read [Publishing Mathematical Results from a Lean Repository](claim-faithful-publication-systems-paper.pdf)
+Read [A Repository-Based System for Research and Publication](claim-faithful-publication-systems-paper.pdf)
 ([LaTeX source](claim-faithful-publication-systems-paper.tex)) first. It is the
-current account of the research architecture: how a mathematical result keeps
-its hypotheses, explanation, formal support and credit as people revise it.
+current account of the implemented research and publication workflow: stored
+artifacts, task routing, evidence checks, review, contribution history and
+revisions. The main text is written for researchers unfamiliar with the
+repository; the mathematical calculation is in an optional appendix.
 
 For current instructions, use the [reading guide](../../docs/READING_GUIDE.md),
 [agent entry](../../AGENTS.md), [workbench guide](../../docs/agents/AGENT_WORKBENCH.md)

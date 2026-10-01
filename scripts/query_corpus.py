@@ -10779,7 +10779,12 @@ def paper_reading_guide_packet() -> dict[str, Any]:
         "papers": papers,
         "default_gateway": default_gateway,
         "historical_joint_manuscript": archival_joint,
-        "current_mathematical_entrances": current_notes,
+        # These are handles into registered_publication_artifacts above. Do not
+        # repeat each artifact's paths and availability flags a second time.
+        "current_mathematical_entrances": [
+            {"id": row["id"], "artifact_class": row["artifact_class"]}
+            for row in current_notes
+        ],
         "mathematical_default_gateway": mathematical_default_gateway,
         "recommended_routes": {
             "understand_the_mathematics": [

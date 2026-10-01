@@ -4,7 +4,7 @@
 
 # Plectis reading edition: eight Erdős problems
 
-Edition fingerprint `55d28663ad6e3bbc`. Papers CC-BY-4.0, Will Cook, 2026. Source: <https://github.com/wcook04/plectis-erdos>. Website: <https://wcook04.github.io/plectis/maths/>.
+Edition fingerprint `aada49c7b79fd1f0`. Papers CC-BY-4.0, Will Cook, 2026. Source: <https://github.com/wcook04/plectis-erdos>. Website: <https://wcook04.github.io/plectis/maths/>.
 
 
 ## How to use this edition
@@ -1380,7 +1380,7 @@ The mathematics and text were developed with large language model agents under W
 
 </div>
 
-We classify the finite integer vectors that cancel the first weighted summands of a factorial reciprocal series. An integral basis turns these cancellations into prescribed coordinates; excluding index one leaves a single Diophantine equation. We determine its attainable factorial moments by a gcd taken over fewer than $`2D^2`$ indices, where $`D`$ is the cancellation depth. A worked construction attains the least positive moment $`1380`$ at depth four. The additional nonintegrality condition required for an irrationality proof remains open.
+We classify the integer vectors that cancel prescribed initial weighted sums in linear forms $`MS+k`$, where $`S=\sum_{n\ge2}(n!-1)^{-1}`$. An integral basis reduces the support restriction to one linear Diophantine equation. The possible values of $`M`$ are determined by a gcd over fewer than $`2D^2`$ indices when cancellation is imposed through $`D`$. For $`D=4`$ we construct a vector with the least positive value $`M=1380`$. Nonintegrality for a family with the required denominator divisibility remains open.
 
 <a id="erdos-68-factorial-denominator-irrationality--sec:problem"></a>
 
@@ -1400,27 +1400,27 @@ irrational?
 
 The elementary proof that $`e`$ is irrational uses two properties of factorials: they clear every earlier denominator, and they leave a small positive tail. The first property fails here. If $`H_m=\sum_{n=2}^m(n!-1)^{-1}`$, then already $`3!H_3=36/5`$. We shall instead construct linear forms $`MS+k`$, with $`M,k\in\mathbb Z`$, in which several initial summands cancel. A nonintegral form excludes every rational value $`S=a/q`$ for which $`q\mid M`$.
 
-The cancellation problem admits an exact solution. We give an integral basis in which each basis vector changes just one weighted sum (Theorem <a href="#erdos-68-factorial-denominator-irrationality--res:divisor-channel-coordinates" data-reference-type="ref" data-reference="erdos-68-factorial-denominator-irrationality--res:divisor-channel-coordinates">2</a>). Thus cancellation amounts to prescribing coordinates. The basis temporarily allows an index-one coefficient; removing it leaves one linear Diophantine equation. Its solvability determines all possible factorial moments, and Theorem <a href="#erdos-68-factorial-denominator-irrationality--res:finite-channel-moment-certificate" data-reference-type="ref" data-reference="erdos-68-factorial-denominator-irrationality--res:finite-channel-moment-certificate">3</a> computes the resulting ideal by a finite gcd.
+We classify the integer coefficient vectors that cancel the first $`D-1`$ weighted sums. Starting with adjacent factorial differences, we correct each vector using those already constructed at its proper divisors. The resulting basis isolates each weighted sum (Theorem <a href="#erdos-68-factorial-denominator-irrationality--res:divisor-channel-coordinates" data-reference-type="ref" data-reference="erdos-68-factorial-denominator-irrationality--res:divisor-channel-coordinates">2</a>). The triangular change of basis is invertible over $`\mathbb Z`$, so it gives coordinates for every integer solution, not just a way to construct some solutions.
 
-The construction begins with $`n(n-1)!-n!=0`$. For our weights, this adjacent difference is still zero except when a floor exponent changes, which happens at divisors of $`n`$. Correcting the proper divisors in increasing order isolates the weighted sum at $`n`$. The corrections are integral and triangular, so they give every integer solution, with no search for suitable coefficients.
+The desired vectors are supported on indices at least two. Temporarily allowing index one makes the basis construction possible; removing it then amounts to one linear Diophantine equation. Its solvability determines the possible values of $`M`$. The gcd that occurs in this equation is defined by an infinite sequence, but Theorem <a href="#erdos-68-factorial-denominator-irrationality--res:finite-channel-moment-certificate" data-reference-type="ref" data-reference="erdos-68-factorial-denominator-irrationality--res:finite-channel-moment-certificate">3</a> computes it on a specified finite interval.
 
-At depth four the least positive moment is $`1380`$. We derive an attaining vector and place its remainder between consecutive integers. The algebraic classification holds independently of whether $`S`$ is rational. To prove irrationality, one would need a nonintegral form with $`q\mid M`$ for each prescribed $`q>0`$. Primitive vectors whose moments eventually have this divisibility are available, but nonintegrality of their remainders remains unproved.
+When cancellation is imposed through $`D=4`$, the least positive value of $`M`$ is $`1380`$. We derive a vector attaining this value and bound its remainder between consecutive integers. The classification itself does not assume that $`S`$ is rational. An irrationality proof would require, for each $`q>0`$, a nonintegral form whose coefficient $`M`$ is divisible by $`q`$. The companion constructs primitive vectors with this divisibility property; nonintegrality of their remainders remains unproved.
 
-Hančl and Tijdeman’s tail-integrality lemma treats factorial series with integer coefficients \[hancl-tijdeman, Lemma 2.1 and the following remark, p. 385\]. Their factorial-scaled partial sums are integers. Our prefixes lack this property, so the integer-difference identity below replaces the clearing step. Koepf and Schmersau’s factorial-digit criterion \[koepf-schmersau, Example 3.2, p. 121\] is used in the [companion’s digit argument](https://github.com/wcook04/plectis-erdos/blob/main/paper/68/erdos68-factorial-reasoning-surface.pdf#nameddest=r5-digits) to give an equivalent eventual-pattern condition for $`S-e+2`$. Failure of that pattern at arbitrarily large indices also remains unproved.
+Hančl and Tijdeman’s tail-integrality lemma treats factorial series with integer coefficients \[hancl-tijdeman, Lemma 2.1 and the following remark, p. 385\]. Their factorial-scaled partial sums are integers. Here the scaled partial sum need not be integral. Instead, the weight congruences give $`\mathcal R-MS\in\mathbb Z`$ <a href="#erdos-68-factorial-denominator-irrationality--eq:integer-linear-form" data-reference-type="eqref" data-reference="erdos-68-factorial-denominator-irrationality--eq:integer-linear-form">[eq:integer-linear-form]</a>; the assumption $`S=a/q`$ and $`q\mid M`$ then makes $`\mathcal R`$ integral. Koepf and Schmersau’s factorial-digit criterion \[koepf-schmersau, Example 3.2, p. 121\] is used in the [companion’s digit argument](https://github.com/wcook04/plectis-erdos/blob/main/paper/68/erdos68-factorial-reasoning-surface.pdf#nameddest=r5-digits) to give an equivalent eventual-pattern condition for $`S-e+2`$. Failure of that pattern at arbitrarily large indices also remains unproved.
 
-Sections <a href="#erdos-68-factorial-denominator-irrationality--sec:channels" data-reference-type="ref" data-reference="erdos-68-factorial-denominator-irrationality--sec:channels">2</a> and <a href="#erdos-68-factorial-denominator-irrationality--sec:moments" data-reference-type="ref" data-reference="erdos-68-factorial-denominator-irrationality--sec:moments">3</a> give the coordinate construction and finite gcd. Section <a href="#erdos-68-factorial-denominator-irrationality--sec:depth-four" data-reference-type="ref" data-reference="erdos-68-factorial-denominator-irrationality--sec:depth-four">4</a> uses them to construct and test a minimal-moment vector. Section <a href="#erdos-68-factorial-denominator-irrationality--sec:open" data-reference-type="ref" data-reference="erdos-68-factorial-denominator-irrationality--sec:open">5</a> states the remaining nonintegrality question, with the secondary arithmetic criteria developed in the companion.
+Sections <a href="#erdos-68-factorial-denominator-irrationality--sec:channels" data-reference-type="ref" data-reference="erdos-68-factorial-denominator-irrationality--sec:channels">2</a> and <a href="#erdos-68-factorial-denominator-irrationality--sec:moments" data-reference-type="ref" data-reference="erdos-68-factorial-denominator-irrationality--sec:moments">3</a> give the coordinate construction and finite gcd. Section <a href="#erdos-68-factorial-denominator-irrationality--sec:depth-four" data-reference-type="ref" data-reference="erdos-68-factorial-denominator-irrationality--sec:depth-four">4</a> uses them to construct and test a vector attaining the least positive value of $`M`$. Section <a href="#erdos-68-factorial-denominator-irrationality--sec:open" data-reference-type="ref" data-reference="erdos-68-factorial-denominator-irrationality--sec:open">5</a> states the remaining nonintegrality question, with the secondary arithmetic criteria developed in the companion.
 
 <a id="erdos-68-factorial-denominator-irrationality--sec:channels"></a>
 
 ### An integral basis
 
-Modulo $`d!-1`$, a factor $`d!`$ can be removed from a numerator without changing its residue. We use this freedom to replace $`n!`$ by a smaller integer whose change from $`n-1`$ to $`n`$ is easy to follow. For $`d\ge2`$ and $`n\ge1`$, put
+Since $`d!\equiv1\pmod{d!-1}`$, dividing $`n!`$ by an integer power of $`d!`$ preserves its residue whenever the quotient is integral. We choose the exponent so that the quotient changes predictably at successive indices. For $`d\ge2`$ and $`n\ge1`$, put
 ``` math
 W_{d,n}=\frac{n!}{(d!)^{\lfloor n/d\rfloor}}.
 ```
-Writing $`n=kd+r`$, $`0\le r<d`$, shows that $`W_{d,n}`$ is $`r!`$ times the multinomial coefficient $`n!/((d!)^k r!)`$. In particular it is an integer, and $`n!=(d!)^kW_{d,n}`$ gives $`W_{d,n}\equiv n!\pmod{d!-1}`$. For example, $`W_{3,4}=4`$ and $`(4!-W_{3,4})/(3!-1)=4`$. The exponent counts complete blocks of $`d`$ indices. It is this choice that makes its jumps occur exactly at multiples of $`d`$.
+Writing $`n=kd+r`$, $`0\le r<d`$, shows that $`W_{d,n}`$ is $`r!`$ times the multinomial coefficient $`n!/((d!)^k r!)`$. In particular it is an integer, and $`n!=(d!)^kW_{d,n}`$ gives $`W_{d,n}\equiv n!\pmod{d!-1}`$. For example, $`W_{3,4}=4`$ and $`(4!-W_{3,4})/(3!-1)=4`$. The exponent $`\lfloor n/d\rfloor`$ increases precisely at multiples of $`d`$, which will determine the nonzero weighted differences.
 
-For a finitely supported integer vector $`\lambda=(\lambda_n)_{n\ge1}`$, we define its factorial moment and weighted sums by
+For a finitely supported integer vector $`\lambda=(\lambda_n)_{n\ge1}`$, define the integer linear forms
 ``` math
 M(\lambda)=\sum_n\lambda_n n!,\qquad
  V_d(\lambda)=\sum_n\lambda_nW_{d,n},
@@ -1451,10 +1451,10 @@ The identity $`n(n-1)!-n!=0`$ suggests starting with $`T_n=ne_{n-1}-e_n`$. At $`
 
 </div>
 
-All later weighted sums are zero because the moment is zero. The last row defines $`U_4`$: it isolates $`V_4=4!-1`$ without changing the moment. For a general $`n`$, the unwanted sums are precisely those at proper divisors of $`n`$, and their correcting vectors have already been built.
+For $`d>4`$ these weighted sums equal $`M=0`$. Thus $`U_4=T_4-6U_2`$ isolates $`V_4=4!-1`$. In general, the unwanted sums occur at proper divisors of $`n`$, whose correcting vectors are already available in an inductive construction.
 
 <div id="erdos-68-factorial-denominator-irrationality--res:divisor-channel-coordinates" class="theorem">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos68/PaperCompleteDivisorCoordinates.lean#L260">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/1d16f2ddf78e7c4c850246f67bf8ce79b19deb3c/evidence/erdos-68-factorial-denominator-irrationality.md#res-divisor-channel-coordinates-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos68/PaperCompleteDivisorCoordinates.lean#L260">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d93e7408aed0b0c73ad5ea98116c7dc0dce3cf7b/evidence/erdos-68-factorial-denominator-irrationality.md#res-divisor-channel-coordinates-comparator">Comparator</a></p>
 
 **Theorem 2** (an integer basis with prescribed weighted sums). *Set
 ``` math
@@ -1479,13 +1479,13 @@ The vectors $`e_1,U_2,U_3,\ldots`$ form an integral basis. Every finite vector h
 
 <div class="proof">
 
-*Proof.* The moment of $`T_n`$ is zero. If $`d\nmid n`$, the floor exponents at $`n-1`$ and $`n`$ agree, so $`nW_{d,n-1}=W_{d,n}`$. If $`d\mid n`$, the exponent increases by one, so $`nW_{d,n-1}=d!W_{d,n}`$. Hence
+*Proof.* We have $`M(T_n)=0`$. If $`d\nmid n`$, the floor exponents at $`n-1`$ and $`n`$ agree, so $`nW_{d,n-1}=W_{d,n}`$. If $`d\mid n`$, the exponent increases by one, so $`nW_{d,n-1}=d!W_{d,n}`$. Hence
 ``` math
 V_d(T_n)=(d!-1)W_{d,n}\mathbf1_{d\mid n}.
 ```
 Suppose the asserted identities hold below $`n`$. For each proper divisor $`d`$, subtracting $`W_{d,n}U_d`$ cancels the sum at $`d`$ and changes none of the others. The sum at $`n`$ remains $`n!-1`$, since $`W_{n,n}=1`$. This proves the identities by induction.
 
-To see that no integer vectors are missed, restrict to indices $`1,\ldots,N`$. The columns $`e_1,T_2,\ldots,T_N`$ form a triangular integer matrix with diagonal $`1,-1,\ldots,-1`$. The correction from $`T_n`$ to $`U_n`$ uses only earlier columns and leaves its diagonal entry unchanged. This second change is triangular with diagonal one. Both changes therefore have integer inverses. Equivalently, one can recover the coefficients by back-substitution, dividing only by $`1`$ or $`-1`$.
+For completeness, restrict to indices $`1,\ldots,N`$. The columns $`e_1,T_2,\ldots,T_N`$ form a triangular integer matrix with diagonal $`1,-1,\ldots,-1`$. Replacing each $`T_n`$ by $`U_n`$ subtracts an integer combination of earlier columns, so the second change of basis is triangular with diagonal one. Both matrices have integer inverses: back-substitution divides only by $`1`$ or $`-1`$. Hence $`e_1,U_2,\ldots,U_N`$ is a basis over $`\mathbb Z`$.
 
 In the resulting expansion, applying $`M`$ gives the coefficient of $`e_1`$. If the coefficient of $`U_d`$ is $`c_d`$, applying $`V_d`$ gives $`V_d=M+(d!-1)c_d`$, which proves <a href="#erdos-68-factorial-denominator-irrationality--eq:channel-basis-expansion" data-reference-type="eqref" data-reference="erdos-68-factorial-denominator-irrationality--eq:channel-basis-expansion">[eq:channel-basis-expansion]</a>. For $`d>N`$ that coefficient is zero because $`V_d=M`$. ◻
 
@@ -1498,20 +1498,20 @@ For a prime $`p\ge3`$ the divisor sum is empty, and $`U_p=pe_{p-1}-e_p`$. At a c
  \label{res:translator}
 \end{equation}
 ```
-Each $`U_n`$ has moment zero and remainder one. We can thus alter an individual weighted sum by adding a multiple of $`U_n`$, while the fractional part of the remainder stays fixed. This will separate the cancellation equations from the eventual nonintegrality question.
+Since $`M(U_n)=0`$ and $`\mathcal R(U_n)=1`$, adding an integer multiple of $`U_n`$ changes only $`V_n`$ among the weighted sums and changes the remainder by an integer. It therefore preserves both $`M`$ and the fractional part of the remainder.
 
 <a id="erdos-68-factorial-denominator-irrationality--sec:moments"></a>
 
-### Attainable moments
+### Possible values of $`M`$
 
-Fix a cancellation depth $`D\ge2`$. The basis separates the equations $`V_2=\cdots=V_D=0`$ from the restriction $`\lambda_1=0`$. We first solve the equations with index one still allowed. The weight congruence, or the coordinates in <a href="#erdos-68-factorial-denominator-irrationality--eq:channel-basis-expansion" data-reference-type="eqref" data-reference="erdos-68-factorial-denominator-irrationality--eq:channel-basis-expansion">[eq:channel-basis-expansion]</a>, gives
+Fix $`D\ge2`$. We first solve $`V_2=\cdots=V_D=0`$ with index one allowed, and then impose the support restriction $`\lambda_1=0`$. The weight congruence, or the coordinates in <a href="#erdos-68-factorial-denominator-irrationality--eq:channel-basis-expansion" data-reference-type="eqref" data-reference="erdos-68-factorial-denominator-irrationality--eq:channel-basis-expansion">[eq:channel-basis-expansion]</a>, gives
 ``` math
 \begin{equation}
  V_d(\lambda)\equiv M(\lambda)\pmod{d!-1}.
  \label{res:congruence}
 \end{equation}
 ```
-Cancellation through $`D`$ therefore forces the moment to be divisible by
+It follows that $`M`$ must be divisible by
 ``` math
 L_D=\operatorname{lcm}_{2\le d\le D}(d!-1).
 ```
@@ -1528,7 +1528,7 @@ Uniqueness of the coordinates now gives the complete solution
  \label{eq:low-channel-classification}
 \end{equation}
 ```
-with $`t\in\mathbb Z`$ and finitely many nonzero integers $`z_n`$. The lower coordinates are fixed by $`t`$; all higher coordinates remain free. Since $`\mathcal R(e_1)=S`$ and $`\mathcal R(U_n)=1`$, we also have
+with $`t\in\mathbb Z`$ and finitely many nonzero integers $`z_n`$. The lower coordinates are fixed by $`t`$; all higher coordinates remain free. These free coordinates help impose the support restriction, but they change the remainder only by an integer. Indeed, $`\mathcal R(e_1)=S`$ and $`\mathcal R(U_n)=1`$ give
 ``` math
 \begin{equation}
  \mathcal R\left(tK_D+\sum_{n>D}z_nU_n\right)
@@ -1545,9 +1545,9 @@ It remains to remove index one. Write $`a_D`$ for its coefficient in $`K_D`$, an
  \label{eq:support-equation}
 \end{equation}
 ```
-The higher corrections can change this coefficient by exactly the integer multiples of $`g_D=\gcd\{u_n:n>D\}`$. Thus the equation is soluble precisely when $`g_D\mid ta_D`$. For example, at depth four we shall find $`a_4=-55`$ and $`g_4=60`$. Removing index one then requires $`60\mid55t`$, or $`12\mid t`$; the moment $`115t`$ must be a multiple of $`1380`$.
+The higher corrections can change this coefficient by exactly the integer multiples of $`g_D=\gcd\{u_n:n>D\}`$. Thus the equation is soluble precisely when $`g_D\mid ta_D`$. For example, at depth four we shall find $`a_4=-55`$ and $`g_4=60`$. Removing index one then requires $`60\mid55t`$, or $`12\mid t`$; hence $`M=115t`$ must be a multiple of $`1380`$.
 
-The same calculation in general shows that the attainable moments are
+In general, the possible values of $`M`$ form the ideal
 ``` math
 \begin{equation}
  \mu_D\mathbb Z,\qquad
@@ -1555,7 +1555,7 @@ The same calculation in general shows that the attainable moments are
  \label{eq:attainable-moment-ideal}
 \end{equation}
 ```
-Indeed, division by $`\gcd(g_D,a_D)`$ leaves two coprime integers, so $`g_D\mid ta_D`$ holds exactly when $`g_D/\gcd(g_D,a_D)\mid t`$. Bézout’s identity supplies the required finite combination of the $`u_n`$. The next theorem proves $`g_D>0`$ and bounds the indices needed for this combination. A vector attaining the least positive moment $`\mu_D`$ is automatically primitive: a common factor of its coefficients would give a smaller positive moment after division.
+Indeed, division by $`\gcd(g_D,a_D)`$ leaves two coprime integers, so $`g_D\mid ta_D`$ holds exactly when $`g_D/\gcd(g_D,a_D)\mid t`$. Bézout’s identity supplies the required finite combination of the $`u_n`$. The next theorem proves $`g_D>0`$ and bounds the indices needed for this combination. A vector attaining the least positive value $`\mu_D`$ is primitive, since dividing its coefficients by a common factor would give a smaller positive value of $`M`$.
 
 <a id="erdos-68-factorial-denominator-irrationality--sec:finite-gcd"></a>
 
@@ -1568,10 +1568,10 @@ u_2=2,\qquad
 ```
 Induction gives $`u_n=0`$ at odd indices. At twice a prime it gives $`u_{2p}=-(2p)!/2^{p-1}\ne0`$, including $`p=2`$, so the tail contains a nonzero coefficient and $`g_D>0`$. To compute this infinite gcd, we show that a specified finite interval already forces divisibility of every later coefficient.
 
-A finite calculation can miss a later drop in the gcd. Here the recurrence prevents such a drop beyond a controlled index. Large proper divisors inherit divisibility from earlier coefficients; for the remaining small divisors, the weights themselves supply it.
+The induction has two cases. For a proper divisor $`d>D`$, divisibility comes from the earlier coefficient $`u_d`$. For $`d\le D`$, it must instead come from the weight $`W_{d,n}`$. The following cutoff makes the second argument work for every such $`d`$.
 
 <div id="erdos-68-factorial-denominator-irrationality--res:finite-channel-moment-certificate" class="theorem">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/1d16f2ddf78e7c4c850246f67bf8ce79b19deb3c/evidence/erdos-68-factorial-denominator-irrationality.md#res-finite-channel-moment-certificate">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/1d16f2ddf78e7c4c850246f67bf8ce79b19deb3c/evidence/erdos-68-factorial-denominator-irrationality.md#res-finite-channel-moment-certificate-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/d93e7408aed0b0c73ad5ea98116c7dc0dce3cf7b/evidence/erdos-68-factorial-denominator-irrationality.md#res-finite-channel-moment-certificate">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d93e7408aed0b0c73ad5ea98116c7dc0dce3cf7b/evidence/erdos-68-factorial-denominator-irrationality.md#res-finite-channel-moment-certificate-comparator">Comparator</a></p>
 
 **Theorem 3** (a finite formula for the gcd). *Choose a prime $`\ell`$ with $`D/2<\ell\le D`$ and put $`H=D(2\ell-1)`$. Then
 ``` math
@@ -1594,17 +1594,17 @@ Thus $`g`$ divides the whole tail. Conversely, every common divisor of the tail 
 
 </div>
 
-Bertrand’s postulate supplies the prime $`\ell`$ when $`D\ge3`$; for $`D=2`$ take $`\ell=2`$. The proof requires $`n/d\ge2\ell`$ for every small divisor, which is why it uses the horizon $`H=D(2\ell-1)`$. A truncation at $`2D`$ is not justified by this argument.
+Bertrand’s postulate supplies the prime $`\ell`$ when $`D\ge3`$; for $`D=2`$ take $`\ell=2`$. The proof requires $`n/d\ge2\ell`$ for every small divisor, which is why it uses the cutoff $`H=D(2\ell-1)`$. A truncation at $`2D`$ is not justified by this argument.
 
 The finite gcd also gives a construction. Compute integers $`b_n`$ with $`\sum_{n=D+1}^H b_nu_n=g_D`$ by the extended Euclidean algorithm, and put $`h=\gcd(g_D,a_D)`$. Taking
 ``` math
 t=g_D/h,\qquad z_n=-(a_D/h)b_n\quad(D<n\le H)
 ```
-makes $`ta_D+\sum z_nu_n=0`$. Substitution in <a href="#erdos-68-factorial-denominator-irrationality--eq:low-channel-classification" data-reference-type="eqref" data-reference="erdos-68-factorial-denominator-irrationality--eq:low-channel-classification">[eq:low-channel-classification]</a> therefore produces a vector with moment $`\mu_D`$. The same finite calculation proves minimality and supplies an attaining vector. Additional support or coefficient-norm requirements are separate optimisation problems.
+makes $`ta_D+\sum z_nu_n=0`$. Substitution in <a href="#erdos-68-factorial-denominator-irrationality--eq:low-channel-classification" data-reference-type="eqref" data-reference="erdos-68-factorial-denominator-irrationality--eq:low-channel-classification">[eq:low-channel-classification]</a> therefore produces a vector with $`M=\mu_D`$. This gives an attaining vector as well as the minimum. Minimising its support or its coefficient norm is a separate problem.
 
 <a id="erdos-68-factorial-denominator-irrationality--sec:depth-four"></a>
 
-### A vector of least positive moment
+### An example attaining the minimum
 
 At depth four the recursion gives
 ``` math
@@ -1630,7 +1630,7 @@ Each summand is nonnegative, and each power $`d<r^j\le n`$ contributes at least 
 \mu_4=115\frac{60}{\gcd(60,55)}=1380.
 ```
 
-We construct a vector with this moment by taking $`t=12`$ in <a href="#erdos-68-factorial-denominator-irrationality--eq:support-equation" data-reference-type="eqref" data-reference="erdos-68-factorial-denominator-irrationality--eq:support-equation">[eq:support-equation]</a>. The choice $`z_6=-27`$, $`z_8=1`$ works because
+To attain $`M=1380`$, take $`t=12`$ in <a href="#erdos-68-factorial-denominator-irrationality--eq:support-equation" data-reference-type="eqref" data-reference="erdos-68-factorial-denominator-irrationality--eq:support-equation">[eq:support-equation]</a>. The choice $`z_6=-27`$, $`z_8=1`$ works because
 ``` math
 12(-55)-27(-180)-4200=0.
 ```
@@ -1715,11 +1715,11 @@ Table <a href="#erdos-68-factorial-denominator-irrationality--tab:depth-four" d
 
 </div>
 
-The moment and all cancellations follow from the coordinates before expansion. Moreover, the integer correction to the remainder in <a href="#erdos-68-factorial-denominator-irrationality--eq:residual-transparency" data-reference-type="eqref" data-reference="erdos-68-factorial-denominator-irrationality--eq:residual-transparency">[eq:residual-transparency]</a> is the sum $`-26-27+8+1=-44`$. Thus
+The coordinates already give $`M=1380`$ and the three cancellations. They also determine the integer term in <a href="#erdos-68-factorial-denominator-irrationality--eq:residual-transparency" data-reference-type="eqref" data-reference="erdos-68-factorial-denominator-irrationality--eq:residual-transparency">[eq:residual-transparency]</a>, namely $`-26-27+8+1=-44`$. Thus
 ``` math
 \mathcal R(\lambda)=1380(S-H_4)-44.
 ```
-To test this remainder, we use a tail estimate. $`(n+1)!-1>(n+1)(n!-1)`$ gives the geometric tail bound
+For the remainder estimate, the inequality $`(n+1)!-1>(n+1)(n!-1)`$ gives the geometric bound
 ``` math
 \begin{equation}
  0<S-H_N<\frac{N+2}{(N+1)((N+1)!-1)}
@@ -1738,7 +1738,7 @@ Exact rational arithmetic gives
 ```
 The positive remaining tail is less than $`2/(9!-1)`$, so $`-31<\mathcal R(\lambda)<-30`$. If $`S=a/q`$ with $`q\mid1380`$, <a href="#erdos-68-factorial-denominator-irrationality--eq:integer-linear-form" data-reference-type="eqref" data-reference="erdos-68-factorial-denominator-irrationality--eq:integer-linear-form">[eq:integer-linear-form]</a> would make this remainder an integer. Every divisor of $`1380`$ is therefore excluded.
 
-The companion gives the [alternative dual congruence, support and coefficient-norm refinements](https://github.com/wcook04/plectis-erdos/blob/main/paper/68/erdos68-factorial-reasoning-surface.pdf#nameddest=r5-depth-refinements). They concern different optimisation questions. Minimality of the moment here follows from the ideal formula, without requiring a sparsest vector.
+The companion gives the [alternative dual congruence, support and coefficient-norm refinements](https://github.com/wcook04/plectis-erdos/blob/main/paper/68/erdos68-factorial-reasoning-surface.pdf#nameddest=r5-depth-refinements). These minimise different quantities. The minimum of $`M`$ follows from <a href="#erdos-68-factorial-denominator-irrationality--eq:attainable-moment-ideal" data-reference-type="eqref" data-reference="erdos-68-factorial-denominator-irrationality--eq:attainable-moment-ideal">[eq:attainable-moment-ideal]</a> and does not require minimal support.
 
 <a id="erdos-68-factorial-denominator-irrationality--sec:open"></a>
 
@@ -1751,20 +1751,20 @@ Fix a vector with $`V_2=\cdots=V_D=0`$ and $`M>0`$. We may choose the cutoff $`N
 A_N=\sum_{d=D+1}^N\frac{V_d(\lambda)}{d!-1},\qquad
  \mathcal R(\lambda)=A_N+M(S-H_N).
 ```
-By <a href="#erdos-68-factorial-denominator-irrationality--eq:series-tail-bound" data-reference-type="eqref" data-reference="erdos-68-factorial-denominator-irrationality--eq:series-tail-bound">[eq:series-tail-bound]</a>, $`0<S-H_N<2/((N+1)!-1)`$. We can prove nonintegrality by comparing its upper bound with the distance from $`A_N`$ to the next integer:
+The remainder lies above $`A_N`$. To place it below the next integer, it is enough that the omitted tail be shorter than the gap $`\lfloor A_N\rfloor+1-A_N`$. By <a href="#erdos-68-factorial-denominator-irrationality--eq:series-tail-bound" data-reference-type="eqref" data-reference="erdos-68-factorial-denominator-irrationality--eq:series-tail-bound">[eq:series-tail-bound]</a>, a sufficient condition is
 ``` math
 \begin{equation}
  \frac{2M}{(N+1)!-1}<\lfloor A_N\rfloor+1-A_N.
  \label{eq:signed-block-gap}
 \end{equation}
 ```
-Under this inequality, $`\mathcal R(\lambda)`$ lies strictly between consecutive integers, excluding every denominator dividing $`M`$. The argument allows either sign of $`A_N`$. Its strict gap is one when $`A_N`$ is integral and can be arbitrarily small when $`A_N`$ approaches an integer from below.
+Indeed, the positive tail and this comparison give $`\lfloor A_N\rfloor<\mathcal R(\lambda)<\lfloor A_N\rfloor+1`$, excluding every denominator dividing $`M`$. The argument allows either sign of $`A_N`$. Its strict gap is one when $`A_N`$ is integral and can be arbitrarily small when $`A_N`$ approaches an integer from below.
 
-There are primitive solutions with $`0<M<N!`$ and moments eventually divisible by any prescribed $`q`$. The [progression construction in the companion](https://github.com/wcook04/plectis-erdos/blob/main/paper/68/erdos68-factorial-reasoning-surface.pdf#nameddest=r5-progression) gives such a family by turning $`V_d=0`$ into roots of a polynomial. At its support endpoint the omitted tail is less than $`2/N`$, but the gap on the right of <a href="#erdos-68-factorial-denominator-irrationality--eq:signed-block-gap" data-reference-type="eqref" data-reference="erdos-68-factorial-denominator-irrationality--eq:signed-block-gap">[eq:signed-block-gap]</a> may shrink too. Irrationality requires the comparison for a vector whose moment is divisible by each prescribed $`q`$, not merely an unbounded sequence of moments. No minimal-support assertion is made for this family.
+There are primitive solutions with $`0<M<N!`$ for which $`M`$ is eventually divisible by any prescribed $`q`$. The [progression construction in the companion](https://github.com/wcook04/plectis-erdos/blob/main/paper/68/erdos68-factorial-reasoning-surface.pdf#nameddest=r5-progression) gives such a family by turning $`V_d=0`$ into roots of a polynomial. At its support endpoint the omitted tail is less than $`2/N`$, but the gap on the right of <a href="#erdos-68-factorial-denominator-irrationality--eq:signed-block-gap" data-reference-type="eqref" data-reference="erdos-68-factorial-denominator-irrationality--eq:signed-block-gap">[eq:signed-block-gap]</a> may shrink too. For each prescribed $`q`$, an irrationality proof requires a vector satisfying both this comparison and $`q\mid M`$. Unboundedness of $`M`$ alone does not suffice. No minimal-support assertion is made for this family.
 
-Increasing the cutoff is a different operation from choosing a new vector. For $`-6e_2+e_4`$ the support ends at four, where the test fails because $`9/115<24/119`$. At $`N=5`$ it succeeds because $`13376/13685>24/719`$. More generally, for a fixed vector with $`M>0`$, the quantities $`A_N`$ increase to $`\mathcal R`$. If this limit is nonintegral, their gaps to the next integer tend to a positive number, so the test eventually succeeds. If the limit is integral, the eventual gap equals the omitted tail and the test fails. Thus extending the cutoff eventually detects a nonintegral remainder, but leaves both the remainder and the moment unchanged.
+Increasing the cutoff is a different operation from choosing a new vector. For $`-6e_2+e_4`$ the support ends at four, where the test fails because $`9/115<24/119`$. At $`N=5`$ it succeeds because $`13376/13685>24/719`$. More generally, for a fixed vector with $`M>0`$, the quantities $`A_N`$ increase to $`\mathcal R`$. If this limit is nonintegral, their gaps to the next integer tend to a positive number, so the test eventually succeeds. If the limit is integral, the eventual gap equals the omitted tail and the test fails. Thus extending the cutoff eventually detects a nonintegral remainder, but leaves both the remainder and $`M`$ unchanged.
 
-Moment-zero corrections also have a precise limitation. Each $`U_n`$ changes the remainder by one. More generally, <a href="#erdos-68-factorial-denominator-irrationality--eq:integer-linear-form" data-reference-type="eqref" data-reference="erdos-68-factorial-denominator-irrationality--eq:integer-linear-form">[eq:integer-linear-form]</a> shows that two vectors with the same moment have remainders differing by an integer. Such changes can simplify support and weighted sums, as they did in the example, but cannot change whether the remainder is integral.
+Nor can a change of coefficients preserving $`M`$ decide nonintegrality. By <a href="#erdos-68-factorial-denominator-irrationality--eq:integer-linear-form" data-reference-type="eqref" data-reference="erdos-68-factorial-denominator-irrationality--eq:integer-linear-form">[eq:integer-linear-form]</a>, the remainders of two vectors with the same value of $`M`$ differ by an integer. Adding multiples of the $`U_n`$ can therefore simplify the support and weighted sums, as in the example, without changing whether the remainder is integral.
 
 The companion treats the [equivalent carry condition](https://github.com/wcook04/plectis-erdos/blob/main/paper/68/erdos68-factorial-reasoning-surface.pdf#nameddest=r5-carry) and the [complementary-denominator tail inequality](https://github.com/wcook04/plectis-erdos/blob/main/paper/68/erdos68-factorial-reasoning-surface.pdf#nameddest=r5-complement). It also records two larger finite computations: a non-unit carry at $`m=300000`$ excludes every $`q\mid299999!`$, and a continued-fraction enclosure excludes every $`q<2^{39990}`$. Both computations were performed outside Lean; their [algorithms, exact outputs and scope](https://github.com/wcook04/plectis-erdos/blob/main/paper/68/erdos68-factorial-reasoning-surface.pdf#nameddest=r12-finite) are given there. The factorial-divisibility exclusion does not exclude all denominators with only small prime factors, whose exponents may be larger. Neither finite restriction establishes the required condition at arbitrarily large indices.
 
@@ -1772,15 +1772,15 @@ The companion treats the [equivalent carry condition](https://github.com/wcook04
 
 ### Verification
 
-*Formal proofs.* A result with a kernel-checked Lean proof carries links beside its heading and in the margin; both open the same evidence. *Lean* opens the proof: the declaration itself when one declaration states the whole result, otherwise the list of declarations that together state it. Inline citations to individual declarations elsewhere may identify ingredients of a proof. *Comparator* opens the recorded comparison, in which the same statement, written again from Mathlib alone in a separate repository, was compared with our proof by Lean’s Comparator tool, allowing only the three standard axioms. *Comparator pending* means that the complete statement has no recorded comparison yet. A dagger on the Lean mark means that the Lean proof assumes an input named just below the result. A result without a mark has no Lean proof of its whole statement; what is checked is said below it. The [evidence record](https://github.com/wcook04/plectis-erdos/blob/1d16f2ddf78e7c4c850246f67bf8ce79b19deb3c/evidence/erdos-68-factorial-denominator-irrationality.md) gives every declaration, version and check. Comparator checks statements, axioms and kernel acceptance; it does not establish novelty or peer review. These checks show that the stated propositions are proved; whether they are the right propositions is a question the reader can settle by comparing them with the text.
+*Formal proofs.* A result with a kernel-checked Lean proof carries links beside its heading and in the margin; both open the same evidence. *Lean* opens the proof: the declaration itself when one declaration states the whole result, otherwise the list of declarations that together state it. Inline citations to individual declarations elsewhere may identify ingredients of a proof. *Comparator* opens the recorded comparison, in which the same statement, written again from Mathlib alone in a separate repository, was compared with our proof by Lean’s Comparator tool, allowing only the three standard axioms. *Comparator pending* means that the complete statement has no recorded comparison yet. A dagger on the Lean mark means that the Lean proof assumes an input named just below the result. A result without a mark has no Lean proof of its whole statement; what is checked is said below it. The [evidence record](https://github.com/wcook04/plectis-erdos/blob/d93e7408aed0b0c73ad5ea98116c7dc0dce3cf7b/evidence/erdos-68-factorial-denominator-irrationality.md) gives every declaration, version and check. Comparator checks statements, axioms and kernel acceptance; it does not establish novelty or peer review. These checks show that the stated propositions are proved; whether they are the right propositions is a question the reader can settle by comparing them with the text.
 
-The integral-coordinate theorem and finite-horizon gcd formula have recorded exact Lean bindings. The [companion source concordance](https://github.com/wcook04/plectis-erdos/blob/main/paper/68/erdos68-factorial-reasoning-surface.pdf#nameddest=r12-short-sources) identifies their declarations and the attainable-moment theorem. Its large finite computations are separate from these kernel proofs.
+The integral-basis theorem and finite gcd formula have recorded exact Lean bindings. The [companion source concordance](https://github.com/wcook04/plectis-erdos/blob/main/paper/68/erdos68-factorial-reasoning-surface.pdf#nameddest=r12-short-sources) identifies their declarations and the theorem on the possible values of $`M`$. Its large finite computations are separate from these kernel proofs.
 
 <a id="erdos-68-factorial-denominator-irrationality--acknowledgements"></a>
 
 ### Acknowledgements
 
-The author thanks Wouter van Doorn for advice on exposition: explaining notation when it first appears, avoiding private terminology, and saying how restrictive a conditional hypothesis is. His advice concerned the writing of another note; he has not reviewed the mathematics of this paper. An AI research pass supplied by Will Cook derived the depth-four dual congruence and shorter vectors from the factorial-channel definitions and general moment-ideal theory developed earlier here. OpenAI Codex checked and integrated them; a separate AI pass reviewed the proof.
+The author thanks Wouter van Doorn for advice on exposition: explaining notation when it first appears, avoiding private terminology, and saying how restrictive a conditional hypothesis is. His advice concerned the writing of another note; he has not reviewed the mathematics of this paper. An AI research pass supplied by Will Cook derived the depth-four dual congruence and shorter vectors from the weighted linear forms and the classification of their possible coefficients $`M`$ developed earlier here. OpenAI Codex checked and integrated them; a separate AI pass reviewed the proof.
 
 <div class="thebibliography">
 
@@ -1796,13 +1796,13 @@ Jaroslav Hančl and Robert Tijdeman. [On the irrationality of factorial series](
 
 </div>
 
-## Erdős #243: Cubic-Rate Irrationality and Reciprocal-Tail Rigidity
+## Erdős #243: Reciprocal Sums and the Sylvester Recurrence
 
 *Under what cubic-rate hypothesis is a reciprocal sum irrational, and what separate bounded-increment criterion forces the Sylvester recurrence without settling Erdős #243?* [Full text](https://github.com/wcook04/plectis-erdos/blob/main/docs/papers/full-text/erdos-243-reciprocal-tail-rigidity.md) · [PDF](https://github.com/wcook04/plectis-erdos/blob/main/paper/243/erdos-243-reciprocal-tail-rigidity.pdf)
 
 <a id="erdos-243-reciprocal-tail-rigidity--erdos-243-reciprocal-tail-rigidity"></a>
 
-### Cubic-Rate Irrationality and Reciprocal-Tail Rigidity
+### Reciprocal Sums and the Sylvester Recurrence
 
 <div class="center">
 
@@ -1820,7 +1820,7 @@ The Sylvester recurrence $`a_{n+1}=a_n^2-a_n+1`$ gives a rational reciprocal sum
 ``` math
 \frac1{a_n-1}=\frac1{a_n}+\frac1{a_{n+1}-1}.
 ```
-We call an integer sequence which eventually satisfies this recurrence a *Sylvester tail*. Its tail sum at every sufficiently late index is $`1/(a_n-1)`$. Erdős and Graham asked whether every rational reciprocal sum with $`a_{n+1}\sim a_n^2`$ arises in this way.
+For an increasing sequence of positive integers that eventually satisfies this recurrence, the tail sum at every sufficiently large index is $`1/(a_n-1)`$. Erdős and Graham asked whether every rational reciprocal sum with $`a_{n+1}\sim a_n^2`$ arises in this way.
 
 <div id="erdos-243-reciprocal-tail-rigidity--res:problem" class="problem">
 
@@ -1834,10 +1834,10 @@ Then $`a_n=a_{n-1}^{2}-a_{n-1}+1`$ for all sufficiently large $`n`$.
 
 </div>
 
-Erdős and Graham \[erdosgraham1980, p. 64\] asked this question; see also Erdős \[erdos1988, p. 105\] and Bloom’s catalogue \[erdosproblems\]. We prove the following irrationality result for a restricted class of quadratically growing sequences.
+Erdős and Graham \[erdosgraham1980, p. 64\] asked this question; see also Erdős \[erdos1988, p. 105\] and Bloom’s catalogue \[erdosproblems\]. We prove the following irrationality result for a restricted class of sequences with $`a_{n+1}\sim a_n^2`$.
 
 <div id="erdos-243-reciprocal-tail-rigidity--res:cubicrate" class="theorem">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos243/PaperCompleteR21/SquareSpecialisationUnconditional.lean#L70">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/1d16f2ddf78e7c4c850246f67bf8ce79b19deb3c/evidence/erdos-243-reciprocal-tail-rigidity.md#res-cubicrate-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos243/PaperCompleteR21/SquareSpecialisationUnconditional.lean#L70">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d93e7408aed0b0c73ad5ea98116c7dc0dce3cf7b/evidence/erdos-243-reciprocal-tail-rigidity.md#res-cubicrate-comparator">Comparator</a></p>
 
 **Theorem 2** (cubic-rate irrationality). *A strictly increasing sequence of positive integers with
 ``` math
@@ -1847,7 +1847,7 @@ has irrational reciprocal sum.*
 
 </div>
 
-For a Sylvester tail, $`a_n^2/a_{n+1}-1=O(1/a_n)`$, which is much smaller than $`3/n`$. Theorem <a href="#erdos-243-reciprocal-tail-rigidity--res:cubicrate" data-reference-type="ref" data-reference="erdos-243-reciprocal-tail-rigidity--res:cubicrate">2</a> therefore treats a restricted case of the problem by excluding rationality altogether. The general quadratic limit $`a_{n+1}\sim a_n^2`$ remains insufficient for any argument given here.
+Under the eventual Sylvester recurrence, $`a_n^2/a_{n+1}-1=O(1/a_n)`$, which is much smaller than $`3/n`$. Theorem <a href="#erdos-243-reciprocal-tail-rigidity--res:cubicrate" data-reference-type="ref" data-reference="erdos-243-reciprocal-tail-rigidity--res:cubicrate">2</a> therefore treats a restricted case of the problem by excluding rationality altogether. The general quadratic limit $`a_{n+1}\sim a_n^2`$ remains insufficient for any argument given here.
 
 For example, set $`a_1=8`$ and
 ``` math
@@ -1859,15 +1859,15 @@ This gives $`8,16,103,5305,\ldots`$. From $`a_{n+1}\ge a_n^2/4`$ we obtain $`a_n
 ```
 The theorem applies to this explicitly defined sequence.
 
-Rationality is useful here because it makes suitably cleared tails integers. Those integers grow cubically, so they do not themselves become small. Instead we compare them with $`F_n=n(n+1)(n+2)`$, whose successive ratio is exactly $`1+3/n`$. The error estimate first gives $`C_n=AF_n+o(n)`$; subtracting the two recurrences then makes the *first difference of the error* tend to zero. Consequently $`\Delta^4C_n\to0`$. Integrality turns this limit into eventual equality, leaving $`C_n=AF_n+B`$.
+If the sum is rational, clearing denominators gives positive integer tail numerators $`C_n`$. Their growth is cubic, so we compare them with $`F_n=n(n+1)(n+2)`$, for which $`F_{n+1}/F_n=1+3/n`$. The ratio estimate gives $`C_n=AF_n+o(n)`$. Subtracting the recurrences for $`C_n`$ and $`AF_n`$ then shows that the first difference of the error tends to zero. It follows that $`\Delta^4C_n\to0`$. Since these fourth differences are integers, they eventually vanish, and $`C_n=AF_n+B`$.
 
-The rest of the proof asks whether this polynomial can be the numerator of an exact reciprocal tail. The denominator recurrence forces a square condition at every root of a cubic modulo almost every prime. Chebotarev turns that condition into a square in the cubic number field. Taking traces leaves two possible polynomials, and four consecutive terms modulo seven exclude both. Section <a href="#erdos-243-reciprocal-tail-rigidity--sec:secondaryrate" data-reference-type="ref" data-reference="erdos-243-reciprocal-tail-rigidity--sec:secondaryrate">3</a> follows these steps, introducing reduction only after the polynomial is known.
+We next use the denominator recurrence to constrain this polynomial. It gives a square condition at every root of a cubic modulo almost every prime. Chebotarev’s theorem implies that the corresponding element of the cubic number field is a square. Trace identities leave two possible polynomials; four consecutive terms modulo seven exclude both. The proof in Section <a href="#erdos-243-reciprocal-tail-rigidity--sec:secondaryrate" data-reference-type="ref" data-reference="erdos-243-reciprocal-tail-rigidity--sec:secondaryrate">3</a> follows this order.
 
-For the recurrence criteria we use the integer remainders of Koizumi \[koizumi2025, Lemma 4\]. In Section <a href="#erdos-243-reciprocal-tail-rigidity--sec:bounded" data-reference-type="ref" data-reference="erdos-243-reciprocal-tail-rigidity--sec:bounded">4</a>, a stable gcd and the Chinese remainder theorem exclude a rational tail whose $`P_n/a_n`$ has bounded upward increments. An elementary infinite product argument gives the separate summability criterion of Section <a href="#erdos-243-reciprocal-tail-rigidity--sec:mass" data-reference-type="ref" data-reference="erdos-243-reciprocal-tail-rigidity--sec:mass">5</a>. We then clear the tails by a least common multiple and count crossings of new maxima (Section <a href="#erdos-243-reciprocal-tail-rigidity--sec:lcmrecords" data-reference-type="ref" data-reference="erdos-243-reciprocal-tail-rigidity--sec:lcmrecords">6</a>). The resulting weighted criterion isolates an arithmetic estimate still missing from the general problem. The [companion paper](https://github.com/wcook04/plectis-erdos/blob/main/paper/243/erdos243-reciprocal-tail-reasoning-surface.pdf) also treats nonintegral rates and proves a stronger cubic disagreement theorem. Its detailed proof locations and the formal sources are listed in Appendix <a href="#erdos-243-reciprocal-tail-rigidity--app:index" data-reference-type="ref" data-reference="erdos-243-reciprocal-tail-rigidity--app:index">9</a>.
+For the recurrence criteria we use the integer tail numerators of Koizumi \[koizumi2025, Lemma 4\]. In Section <a href="#erdos-243-reciprocal-tail-rigidity--sec:bounded" data-reference-type="ref" data-reference="erdos-243-reciprocal-tail-rigidity--sec:bounded">4</a>, a stable gcd and the Chinese remainder theorem exclude a rational tail whose $`P_n/a_n`$ has bounded upward increments. An elementary infinite product argument gives the separate summability criterion of Section <a href="#erdos-243-reciprocal-tail-rigidity--sec:mass" data-reference-type="ref" data-reference="erdos-243-reciprocal-tail-rigidity--sec:mass">5</a>. We then clear the tails by a least common multiple and count crossings of new maxima (Section <a href="#erdos-243-reciprocal-tail-rigidity--sec:lcmrecords" data-reference-type="ref" data-reference="erdos-243-reciprocal-tail-rigidity--sec:lcmrecords">6</a>). The resulting weighted criterion isolates an arithmetic estimate still missing from the general problem. The [companion paper](https://github.com/wcook04/plectis-erdos/blob/main/paper/243/erdos243-reciprocal-tail-reasoning-surface.pdf) also treats nonintegral rates and proves a stronger cubic disagreement theorem. Its detailed proof locations and the formal sources are listed in Appendix <a href="#erdos-243-reciprocal-tail-rigidity--app:index" data-reference-type="ref" data-reference="erdos-243-reciprocal-tail-rigidity--app:index">9</a>.
 
 <a id="erdos-243-reciprocal-tail-rigidity--sec:transfer"></a>
 
-### Integer tails
+### Tail numerators
 
 <span id="erdos-243-reciprocal-tail-rigidity--sec:state" label="sec:state"></span> For the Sylvester sequence $`2,3,7,43,\ldots`$, whose reciprocal sum is $`1`$, the successive tails are $`1,1/2,1/6,1/42,\ldots`$. Multiplication by the products $`1,2,6,42,\ldots`$ leaves the constant integer numerator $`1`$. For an arbitrary rational reciprocal sum, we also multiply by a denominator of the whole sum. The resulting integer numerators need not be constant.
 
@@ -1880,9 +1880,12 @@ Here $`P_1=1`$, $`D_1=q`$ and $`C_1=p`$. Since every $`a_k`$ with $`k<n`$ divide
 ``` math
 C_n=pP_n-q\sum_{1\le k<n}\frac{P_n}{a_k}\in\mathbb{N}_{>0}.
 ```
-The integer is positive because it equals the positive tail multiplied by $`D_n`$. Removing the term $`1/a_n`$ from the tail gives the exact recurrences
+The integer is positive because it equals the positive tail multiplied by $`D_n`$. Removing the term $`1/a_n`$ from the tail gives
 ``` math
-C_{n+1}=a_nC_n-D_n,\qquad D_{n+1}=a_nD_n.
+\begin{equation}
+\label{eq:recurrences}
+ C_{n+1}=a_nC_n-D_n,\qquad D_{n+1}=a_nD_n.
+\end{equation}
 ```
 Koizumi constructs these coordinates in Lemma 4 \[koizumi2025, pp. 11–12\]. On a pseudo-greedy tail his $`c_n,d_n,e_n`$ correspond to $`C_n,D_n,D_n-(a_n-1)C_n`$. If the tail is restarted with its value in lowest terms, both coordinates are divided by the same fixed integer. We retain the unreduced fraction $`C_n/D_n`$ to keep the denominator update multiplicative.
 
@@ -1908,11 +1911,11 @@ Suppose, towards a contradiction, that the reciprocal sum in Theorem <a href="#
  \frac{C_{n+1}}{C_n}=1+\frac3n+o(n^{-3}).
 \end{equation}
 ```
-We first use only the ratio and integrality of $`C_n`$. Once these have forced a polynomial, we return to $`D_n`$ and the exact recurrences.
+We first show that $`C_n`$ is eventually a polynomial, using <a href="#erdos-243-reciprocal-tail-rigidity--eq:cubic-ratio" data-reference-type="eqref" data-reference="erdos-243-reciprocal-tail-rigidity--eq:cubic-ratio">[eq:cubic-ratio]</a> and integrality. We then apply <a href="#erdos-243-reciprocal-tail-rigidity--eq:recurrences" data-reference-type="eqref" data-reference="erdos-243-reciprocal-tail-rigidity--eq:recurrences">[eq:recurrences]</a> to restrict its coefficients.
 
 <a id="erdos-243-reciprocal-tail-rigidity--sec:cubic-extraction"></a>
 
-#### Polynomial extraction
+#### An eventual cubic polynomial
 
 The factor $`1+3/n`$ suggests the cubic $`F_n=n(n+1)(n+2)`$, since $`F_{n+1}/F_n=1+3/n`$. Write <a href="#erdos-243-reciprocal-tail-rigidity--eq:cubic-ratio" data-reference-type="eqref" data-reference="erdos-243-reciprocal-tail-rigidity--eq:cubic-ratio">[eq:cubic-ratio]</a> as $`C_{n+1}=(1+3/n+\varepsilon_n)C_n`$, where $`\varepsilon_n=o(n^{-3})`$. Dividing out the exact model gives
 ``` math
@@ -1924,7 +1927,7 @@ The logarithmic increments are absolutely summable, with tails $`o(n^{-2})`$. He
 C_n=AF_n+\delta_n,\qquad \delta_n=o(n).
 ```
 
-To obtain an exact polynomial, we need a small *integer*. The error $`\delta_n`$ need not be integral, and its size alone gives no control of its differences. Subtraction of the two ratio recurrences supplies the stronger estimate
+The estimate $`\delta_n=o(n)`$ alone does not control its differences. Instead, subtracting the recurrences for $`C_n`$ and $`AF_n`$ gives
 ``` math
 \Delta\delta_n=\frac3n\delta_n+\varepsilon_n C_n=o(1),
  \qquad \Delta h_n=h_{n+1}-h_n.
@@ -1949,17 +1952,16 @@ The precision matters at the subtraction step. The integer sequence $`F_n+(-1)^n
 
 <span id="erdos-243-reciprocal-tail-rigidity--sec:reduction" label="sec:reduction"></span> We now use the denominator recurrence. Both updates preserve common divisors, so $`G_n=\gcd(C_n,D_n)`$ forms a divisibility chain: $`G_n\mid G_{n+1}`$. For every sufficiently late $`n`$, it divides four consecutive values of $`C_n`$, and hence their third difference $`6A`$. Thus $`G_n`$ stabilises at a positive integer $`g`$.
 
-All sufficiently late fractions can now be reduced by the *same* factor. Put $`u_n=C_n/g`$ and $`v_n=D_n/g`$. They satisfy
-``` math
-u_{n+1}=a_nu_n-v_n,\qquad v_{n+1}=a_nv_n,
- \qquad \gcd(u_n,v_n)=1.
-```
-More generally, we call such a state with $`u_n>0`$ and $`v_n\ge0`$ a *reduced exact tail*. Its denominator retains each earlier multiplier. Coprimality therefore prevents that multiplier from appearing in a later numerator or multiplier.
+We can therefore reduce all sufficiently late fractions by the same factor: put $`u_n=C_n/g`$ and $`v_n=D_n/g`$. The recurrences persist after this division. The following observation describes the resulting coprimality conditions.
 
 <div id="erdos-243-reciprocal-tail-rigidity--res:reduced" class="proposition">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos243/PaperCompleteR7/Reduction.lean#L16">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/1d16f2ddf78e7c4c850246f67bf8ce79b19deb3c/evidence/erdos-243-reciprocal-tail-rigidity.md#res-reduced-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos243/PaperCompleteR7/Reduction.lean#L16">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d93e7408aed0b0c73ad5ea98116c7dc0dce3cf7b/evidence/erdos-243-reciprocal-tail-rigidity.md#res-reduced-comparator">Comparator</a></p>
 
-**Proposition 3** (persistent coprimality). *In a reduced exact tail, $`\gcd(a_n,v_n)=1`$. Distinct multipliers are pairwise coprime, and every earlier multiplier is coprime to every later numerator.*
+**Proposition 3** (persistent coprimality). *Let $`a_n,u_n,v_n`$ be integer sequences with $`u_n>0`$, $`v_n\ge0`$ and $`\gcd(u_n,v_n)=1`$ satisfying
+``` math
+u_{n+1}=a_nu_n-v_n,\qquad v_{n+1}=a_nv_n.
+```
+Then $`\gcd(a_n,v_n)=1`$. The $`a_n`$ are pairwise coprime, and $`\gcd(a_i,u_t)=1`$ whenever $`i<t`$.*
 
 </div>
 
@@ -1976,7 +1978,11 @@ In the cubic case, adjacent numerators are also coprime, since $`\gcd(u_n,u_{n+1
  Q(n)=\frac m6 n(n+1)(n+2)+c.
 \end{equation}
 ```
-The third difference $`m=6A/g`$ is a positive integer. The constant $`c`$ is also integral: choose a common denominator $`H`$ for the coefficients of $`Q`$. For any integer $`t`$, the difference $`Q(t+kH)-Q(t)`$ is an integer. Taking $`k`$ sufficiently large transfers integrality from the known tail values to $`Q(t)`$, and in particular to $`Q(0)=c`$. If a prime $`\ell`$ divides $`c`$, choose an arbitrarily late $`n\equiv-1\pmod{6\ell}`$. Both $`Q(n)`$ and $`Q(n+1)`$ would be divisible by $`\ell`$, contradicting adjacent coprimality. This also excludes $`c=0`$. Thus
+The third difference $`m=6A/g`$ is a positive integer. Since $`n(n+1)(n+2)/6=\binom{n+2}{3}`$ is an integer, any sufficiently late value $`u_n=Q(n)`$ gives
+``` math
+c=u_n-m\binom{n+2}{3}\in\mathbb{Z}.
+```
+Thus $`Q`$ is integer-valued, although its coefficients need not all be integers. If a prime $`\ell`$ divides $`c`$, choose an arbitrarily late $`n\equiv-1\pmod{6\ell}`$. Both $`Q(n)`$ and $`Q(n+1)`$ would be divisible by $`\ell`$, contradicting adjacent coprimality. This also excludes $`c=0`$. Thus
 ``` math
 m\in\mathbb{N}_{>0},\qquad c\in\{1,-1\}.
 ```
@@ -2044,7 +2050,16 @@ The square relation gives a pair of reciprocal elements:
 ``` math
 (\alpha+\beta)(\alpha-\beta)=1.
 ```
-Put $`z=\alpha+\beta`$. Then $`z^{-1}=\alpha-\beta`$ and $`2\alpha=z+z^{-1}`$. Since $`z\in K`$ and $`\alpha\in\mathbb{Q}(z)`$, we have $`\mathbb{Q}(z)=K`$. Write the minimal polynomial of $`z`$ as $`z^3+bz^2+dz+w`$, where $`b,d,w\in\mathbb{Q}`$ and $`w\ne0`$.
+Put $`z=\alpha+\beta`$. Then $`z^{-1}=\alpha-\beta`$ and $`2\alpha=z+z^{-1}`$. Since $`z\in K`$ and $`\alpha\in\mathbb{Q}(z)`$, we have $`\mathbb{Q}(z)=K`$. Write the minimal polynomial of $`z`$ as
+``` math
+p(T)=T^3+bT^2+dT+w,\qquad b,d,w\in\mathbb{Q},\quad w\ne0.
+```
+The minimal polynomial of $`z^{-1}`$ is the monic reciprocal polynomial
+``` math
+\frac{T^3p(T^{-1})}{w}
+   =T^3+\frac dwT^2+\frac bwT+\frac1w.
+```
+These two polynomials give the traces of $`z`$ and $`z^{-1}`$ by the same Newton identities. All traces below are from $`K`$ to $`\mathbb{Q}`$.
 
 The cubic for $`\alpha`$ determines its first three traces:
 ``` math
@@ -2071,7 +2086,7 @@ For completeness, the first equality follows from $`0=2\operatorname{Tr}(\alpha)
 ```
 The first line is $`4\operatorname{Tr}(\alpha^2)-6=2`$. The second is $`8\operatorname{Tr}(\alpha^3)=-24\eta`$, because the mixed terms in $`(z+z^{-1})^3`$ have trace $`3\operatorname{Tr}(z+z^{-1})=0`$. These give the other two equalities in <a href="#erdos-243-reciprocal-tail-rigidity--eq:cubic-traces" data-reference-type="eqref" data-reference="erdos-243-reciprocal-tail-rigidity--eq:cubic-traces">[eq:cubic-traces]</a>.
 
-The middle equation factors as $`(bw-1)(b+w)=0`$. Write $`w=r/s`$ in lowest terms, with $`r\ne0`$, $`s>0`$. Substituting $`b=-w`$ or $`b=1/w`$ into the last equation and using $`\eta=6c/m`$ gives respectively
+Multiplying the middle equation by $`w`$ and bringing all terms to one side gives $`(bw-1)(b+w)=0`$. Write $`w=r/s`$ in lowest terms, with $`r\ne0`$, $`s>0`$. Substituting $`b=-w`$ or $`b=1/w`$ into the last equation and using $`\eta=6c/m`$ gives respectively
 ``` math
 m=\frac{48c\,r s^3}{(r^2+s^2)^2}
  \qquad\text{or}\qquad
@@ -2121,7 +2136,7 @@ E_n=D_n-(a_n-1)C_n=C_n-C_{n+1}.
 Thus a negative error is an upward step of $`C_n`$, and zero error says that the reciprocal tail equals $`1/(a_n-1)`$. The next theorem forces constancy from bounded upward steps and a vanishing relative error. The latter limit already follows from quadratic growth; the bound on upward steps is an additional hypothesis. No polynomial expansion is assumed.
 
 <div id="erdos-243-reciprocal-tail-rigidity--res:bounded" class="theorem">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean#L2360">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/1d16f2ddf78e7c4c850246f67bf8ce79b19deb3c/evidence/erdos-243-reciprocal-tail-rigidity.md#res-bounded-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean#L2360">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d93e7408aed0b0c73ad5ea98116c7dc0dce3cf7b/evidence/erdos-243-reciprocal-tail-rigidity.md#res-bounded-comparator">Comparator</a></p>
 
 **Theorem 4** (bounded negative part). *Let $`a,C,D:\mathbb{N}\to\mathbb{N}`$ satisfy $`a_n>1`$, $`C_n>0`$, and
 ``` math
@@ -2143,12 +2158,12 @@ The relative limit is equivalently the assertion that, for every $`K\in\mathbb{N
 
 #### Zero errors and descent
 
-<span id="erdos-243-reciprocal-tail-rigidity--sec:descent" label="sec:descent"></span> For brevity, an *exact state* consists of the sequences and recurrences in Theorem <a href="#erdos-243-reciprocal-tail-rigidity--res:bounded" data-reference-type="ref" data-reference="erdos-243-reciprocal-tail-rigidity--res:bounded">4</a>. In a reciprocal tail, $`E_n=0`$ says $`x_n=1/(a_n-1)`$. We write $`z_+=\max(z,0)`$ and call $`|E_n|<C_n`$ *strict centring*.
+<span id="erdos-243-reciprocal-tail-rigidity--sec:descent" label="sec:descent"></span> Throughout this section, $`E_n=D_n-(a_n-1)C_n`$ and $`z_+=\max(z,0)`$. The arguments below use the recurrences <a href="#erdos-243-reciprocal-tail-rigidity--eq:recurrences" data-reference-type="eqref" data-reference="erdos-243-reciprocal-tail-rigidity--eq:recurrences">[eq:recurrences]</a>. We state positivity and the bound $`|E_n|<C_n`$ where they are needed.
 
 <div id="erdos-243-reciprocal-tail-rigidity--res:update" class="proposition">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos243/PaperCompleteR7/Arithmetic.lean#L21">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/1d16f2ddf78e7c4c850246f67bf8ce79b19deb3c/evidence/erdos-243-reciprocal-tail-rigidity.md#res-update-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos243/PaperCompleteR7/Arithmetic.lean#L21">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d93e7408aed0b0c73ad5ea98116c7dc0dce3cf7b/evidence/erdos-243-reciprocal-tail-rigidity.md#res-update-comparator">Comparator</a></p>
 
-**Proposition 5** (error identities). *<span id="erdos-243-reciprocal-tail-rigidity--res:defect" label="res:defect"></span> For an exact integer state,
+**Proposition 5** (error identities). *<span id="erdos-243-reciprocal-tail-rigidity--res:defect" label="res:defect"></span> For integer sequences satisfying <a href="#erdos-243-reciprocal-tail-rigidity--eq:recurrences" data-reference-type="eqref" data-reference="erdos-243-reciprocal-tail-rigidity--eq:recurrences">[eq:recurrences]</a>,
 ``` math
 C_{n+1}=C_n-E_n,\qquad
  \bigl(a_{n+1}-a_n^2+a_n-1\bigr)C_{n+1}=a_n^2E_n-E_{n+1}.
@@ -2162,14 +2177,14 @@ C_{n+1}=C_n-E_n,\qquad
 
 </div>
 
-Equation <a href="#erdos-243-reciprocal-tail-rigidity--eq:tail-estimate" data-reference-type="eqref" data-reference="erdos-243-reciprocal-tail-rigidity--eq:tail-estimate">[eq:tail-estimate]</a> now gives $`E_n/C_n=1-C_{n+1}/C_n\to0`$, hence strict centring eventually. Koizumi proves this relative-gap limit for an eventual pseudo-greedy tail \[koizumi2025, Corollary 3, p. 9\]. His rounding convention also gives half-width centring, a stronger bound than is used here.
+Equation <a href="#erdos-243-reciprocal-tail-rigidity--eq:tail-estimate" data-reference-type="eqref" data-reference="erdos-243-reciprocal-tail-rigidity--eq:tail-estimate">[eq:tail-estimate]</a> now gives $`E_n/C_n=1-C_{n+1}/C_n\to0`$, so $`|E_n|<C_n`$ for all sufficiently large $`n`$. Koizumi proves this relative-gap limit for an eventual pseudo-greedy tail \[koizumi2025, Corollary 3, p. 9\]. His rounding convention also gives $`-C_n/2\le E_n<C_n/2`$, a stronger bound than we need.
 
 Koizumi’s Lemma 3 gives zero absorption for pseudo-greedy tails, and Proposition 1(2) uses descent when their gaps are eventually nonnegative \[koizumi2025, p. 10 and p. 14\]. The following form separates what the two arguments require.
 
 <div id="erdos-243-reciprocal-tail-rigidity--res:absorb" class="theorem">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos243/PaperCompleteR7/Arithmetic.lean#L120">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/1d16f2ddf78e7c4c850246f67bf8ce79b19deb3c/evidence/erdos-243-reciprocal-tail-rigidity.md#res-absorb-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos243/PaperCompleteR7/Arithmetic.lean#L120">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d93e7408aed0b0c73ad5ea98116c7dc0dce3cf7b/evidence/erdos-243-reciprocal-tail-rigidity.md#res-absorb-comparator">Comparator</a></p>
 
-**Theorem 6** (absorption and descent). *<span id="erdos-243-reciprocal-tail-rigidity--res:descent" label="res:descent"></span> For a positive exact state with strict centring, $`E_n=0`$ implies $`E_{n+1}=0`$. For any positive integer state with $`C_{n+1}=C_n-E_n`$, eventual nonnegativity of $`E_n`$ implies its eventual vanishing.*
+**Theorem 6** (absorption and descent). *<span id="erdos-243-reciprocal-tail-rigidity--res:descent" label="res:descent"></span> Let $`a,C,D:\mathbb{N}\to\mathbb{N}`$ satisfy $`a_n>1`$, $`C_n>0`$ and <a href="#erdos-243-reciprocal-tail-rigidity--eq:recurrences" data-reference-type="eqref" data-reference="erdos-243-reciprocal-tail-rigidity--eq:recurrences">[eq:recurrences]</a>. If $`|E_n|<C_n`$ for every $`n`$, then $`E_n=0`$ implies $`E_{n+1}=0`$. For any positive integer sequence $`C_n`$ with $`C_{n+1}=C_n-E_n`$, eventual nonnegativity of $`E_n`$ implies its eventual vanishing.*
 
 </div>
 
@@ -2180,9 +2195,9 @@ Koizumi’s Lemma 3 gives zero absorption for pseudo-greedy tails, and Proposit
 </div>
 
 <div id="erdos-243-reciprocal-tail-rigidity--res:step" class="corollary">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/1d16f2ddf78e7c4c850246f67bf8ce79b19deb3c/evidence/erdos-243-reciprocal-tail-rigidity.md#res-step">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/1d16f2ddf78e7c4c850246f67bf8ce79b19deb3c/evidence/erdos-243-reciprocal-tail-rigidity.md#res-step-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/d93e7408aed0b0c73ad5ea98116c7dc0dce3cf7b/evidence/erdos-243-reciprocal-tail-rigidity.md#res-step">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d93e7408aed0b0c73ad5ea98116c7dc0dce3cf7b/evidence/erdos-243-reciprocal-tail-rigidity.md#res-step-comparator">Comparator</a></p>
 
-**Corollary 7** (two zero errors). *<span id="erdos-243-reciprocal-tail-rigidity--res:eventual" label="res:eventual"></span> If $`E_n=E_{n+1}=0`$ and $`C_{n+1}\ne0`$, then $`a_{n+1}=a_n^2-a_n+1`$. Thus eventual zero error in a positive exact state implies the eventual Sylvester recurrence.*
+**Corollary 7** (two zero errors). *<span id="erdos-243-reciprocal-tail-rigidity--res:eventual" label="res:eventual"></span> For integer sequences satisfying <a href="#erdos-243-reciprocal-tail-rigidity--eq:recurrences" data-reference-type="eqref" data-reference="erdos-243-reciprocal-tail-rigidity--eq:recurrences">[eq:recurrences]</a>, if $`E_n=E_{n+1}=0`$ and $`C_{n+1}\ne0`$, then $`a_{n+1}=a_n^2-a_n+1`$. In particular, if $`a,C,D:\mathbb{N}\to\mathbb{N}`$ also satisfy $`a_n>1`$ and $`C_n>0`$, eventual zero error implies the eventual Sylvester recurrence.*
 
 </div>
 
@@ -2192,22 +2207,22 @@ Koizumi’s Lemma 3 gives zero absorption for pseudo-greedy tails, and Proposit
 
 </div>
 
-After the centring threshold, one zero therefore makes every subsequent error zero. If there are no late zeros, integrality gives $`|E_n|\ge1`$, and $`|E_n|/C_n\to0`$ forces $`C_n\to\infty`$. The scalar update alone permits $`C_n=n+1`$, $`E_n=-1`$ forever. To exclude such behaviour we shall use the denominator recurrence.
+Once $`|E_n|<C_n`$ holds at every later index, one zero makes every subsequent error zero. If there are no late zeros, integrality gives $`|E_n|\ge1`$, and $`|E_n|/C_n\to0`$ forces $`C_n\to\infty`$. The scalar update alone permits $`C_n=n+1`$, $`E_n=-1`$ forever. To exclude such behaviour we shall use the denominator recurrence.
 
 <a id="erdos-243-reciprocal-tail-rigidity--sec:barrier"></a>
 
 #### A stable gcd and a forbidden block
 
 <div id="erdos-243-reciprocal-tail-rigidity--res:gcdstab" class="proposition">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos243/PaperCompleteR7/Reduction.lean#L103">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/1d16f2ddf78e7c4c850246f67bf8ce79b19deb3c/evidence/erdos-243-reciprocal-tail-rigidity.md#res-gcdstab-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos243/PaperCompleteR7/Reduction.lean#L103">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d93e7408aed0b0c73ad5ea98116c7dc0dce3cf7b/evidence/erdos-243-reciprocal-tail-rigidity.md#res-gcdstab-comparator">Comparator</a></p>
 
-**Proposition 8** (gcd stabilisation). *For a positive exact state, suppose that some fixed integer $`B\ge1`$ satisfies $`-B\le E_n<0`$ at infinitely many indices. Then $`G_n=\gcd(C_n,D_n)`$ is eventually constant. Division by its stable value gives a reduced exact tail.*
+**Proposition 8** (gcd stabilisation). *Let $`a,C,D:\mathbb{N}\to\mathbb{N}`$ satisfy $`a_n>1`$, $`C_n>0`$ and <a href="#erdos-243-reciprocal-tail-rigidity--eq:recurrences" data-reference-type="eqref" data-reference="erdos-243-reciprocal-tail-rigidity--eq:recurrences">[eq:recurrences]</a>. If some fixed integer $`B\ge1`$ satisfies $`-B\le E_n<0`$ at infinitely many indices, then $`G_n=\gcd(C_n,D_n)`$ is eventually constant. Dividing $`C_n,D_n`$ by its eventual value gives coprime sequences satisfying the same recurrences.*
 
 </div>
 
 <div class="proof">
 
-*Proof.* We have $`G_n\mid G_{n+1}`$ and $`G_n\mid E_n`$. Given $`n`$, choose $`t\ge n`$ with $`-B\le E_t<0`$. Then $`G_n\le G_t\le -E_t\le B`$. Hence the positive divisibility chain stabilises. Division by its stable value preserves the recurrences and gives coprime states. ◻
+*Proof.* We have $`G_n\mid G_{n+1}`$ and $`G_n\mid E_n`$. Given $`n`$, choose $`t\ge n`$ with $`-B\le E_t<0`$. Then $`G_n\le G_t\le -E_t\le B`$. Hence the positive divisibility chain stabilises. Division by its stable value preserves the recurrences and gives coprime numerators and denominators. ◻
 
 </div>
 
@@ -2216,7 +2231,7 @@ For this gcd argument, bounded negative errors need occur only arbitrarily late.
 A sequence avoiding multiples of $`2`$ and $`3`$ cannot cross the pair $`6k+2,6k+3`$ from below with upward steps at most two: its first value at least $`6k+2`$ would be one of those two integers. Decreases before that crossing do not help. For a general step bound $`B`$, the Chinese remainder theorem supplies a forbidden block of length $`B`$.
 
 <div id="erdos-243-reciprocal-tail-rigidity--res:crt" class="lemma">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean#L839">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/1d16f2ddf78e7c4c850246f67bf8ce79b19deb3c/evidence/erdos-243-reciprocal-tail-rigidity.md#res-crt-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean#L839">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d93e7408aed0b0c73ad5ea98116c7dc0dce3cf7b/evidence/erdos-243-reciprocal-tail-rigidity.md#res-crt-comparator">Comparator</a></p>
 
 **Lemma 9** (consecutive multiples). *For pairwise coprime integers $`m_0,\ldots,m_{B-1}\ge2`$ and every lower bound, there is a larger $`t`$ such that $`m_i\mid t+i`$ for each $`i<B`$.*
 
@@ -2229,7 +2244,7 @@ A sequence avoiding multiples of $`2`$ and $`3`$ cannot cross the pair $`6k+2,6k
 </div>
 
 <div id="erdos-243-reciprocal-tail-rigidity--res:barrier" class="theorem">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean#L903">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/1d16f2ddf78e7c4c850246f67bf8ce79b19deb3c/evidence/erdos-243-reciprocal-tail-rigidity.md#res-barrier-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean#L903">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d93e7408aed0b0c73ad5ea98116c7dc0dce3cf7b/evidence/erdos-243-reciprocal-tail-rigidity.md#res-barrier-comparator">Comparator</a></p>
 
 **Theorem 10** (Chinese remainder theorem and first crossing). *Let $`u:\mathbb{N}\to\mathbb{N}`$ tend to infinity and let $`B\ge1`$ be an integer with $`u_{n+1}\le u_n+B`$ for every $`n`$. There is no sequence of pairwise coprime integers $`m_i\ge2`$ for which $`\gcd(m_i,u_t)=1`$ whenever $`i<t`$.*
 
@@ -2258,7 +2273,7 @@ By Proposition <a href="#erdos-243-reciprocal-tail-rigidity--res:reduced" data-
 </div>
 
 <div id="erdos-243-reciprocal-tail-rigidity--res:cor" class="corollary">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos243/PaperCompleteR7/Arithmetic.lean#L179">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/1d16f2ddf78e7c4c850246f67bf8ce79b19deb3c/evidence/erdos-243-reciprocal-tail-rigidity.md#res-cor-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos243/PaperCompleteR7/Arithmetic.lean#L179">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d93e7408aed0b0c73ad5ea98116c7dc0dce3cf7b/evidence/erdos-243-reciprocal-tail-rigidity.md#res-cor-comparator">Comparator</a></p>
 
 **Corollary 11**. *Under Theorem <a href="#erdos-243-reciprocal-tail-rigidity--res:bounded" data-reference-type="ref" data-reference="erdos-243-reciprocal-tail-rigidity--res:bounded">4</a>, the multipliers satisfy $`a_{n+1}=a_n^2-a_n+1`$ eventually.*
 
@@ -2281,7 +2296,7 @@ t_{n+1}-t_n=t_n\gamma_n.
 Thus the following hypothesis bounds upward increments of $`t_n`$. It allows $`t_n`$ itself to be unbounded and allows decreases.
 
 <div id="erdos-243-reciprocal-tail-rigidity--res:originalbounded" class="corollary">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos243/PaperCompleteR7/ProductDefect.lean#L211">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/1d16f2ddf78e7c4c850246f67bf8ce79b19deb3c/evidence/erdos-243-reciprocal-tail-rigidity.md#res-originalbounded-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos243/PaperCompleteR7/ProductDefect.lean#L211">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d93e7408aed0b0c73ad5ea98116c7dc0dce3cf7b/evidence/erdos-243-reciprocal-tail-rigidity.md#res-originalbounded-comparator">Comparator</a></p>
 
 **Corollary 12** (bounded increments of $`P_n/a_n`$). *Let $`a_1<a_2<\cdots`$ be positive integers, $`a_{n+1}/a_n^2\to1`$, and $`\sum_{n\ge1}1/a_n\in\mathbb{Q}`$. Put $`P_n=\prod_{j<n}a_j`$. If
 ``` math
@@ -2307,12 +2322,12 @@ By the tail estimate, the subtracted term is at most $`4(a_n-1)/a_{n+1}^2<1/a_{n
 
 </div>
 
-Koizumi’s proof of Corollary 4(1) uses this product-weighted comparison \[koizumi2025, (11)–(12), p. 15\]; that corollary assumes a nonpositive upper limit, whereas the argument here allows any finite upper limit. A corresponding LCM comparison appears below. For $`a_n=b^{2^{n-1}}`$, $`b\ge2`$, the increments of $`P_n/a_n`$ are zero. Since this is not a Sylvester tail, the corollary gives irrationality. For a Sylvester sequence starting at $`a_1>1`$, $`a_n-1=(a_1-1)P_n`$ and the increments tend to zero.
+Koizumi’s proof of Corollary 4(1) uses this product-weighted comparison \[koizumi2025, (11)–(12), p. 15\]; that corollary assumes a nonpositive upper limit, whereas the argument here allows any finite upper limit. A corresponding LCM comparison appears below. For $`a_n=b^{2^{n-1}}`$, $`b\ge2`$, the increments of $`P_n/a_n`$ are zero. Since the sequence does not eventually satisfy the Sylvester recurrence, the corollary gives irrationality. For a Sylvester sequence starting at $`a_1>1`$, $`a_n-1=(a_1-1)P_n`$ and the increments tend to zero.
 
 The inclusive rate $`1/n`$ gives another useful sufficient condition.
 
 <div id="erdos-243-reciprocal-tail-rigidity--res:inclusiveone" class="corollary">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/1d16f2ddf78e7c4c850246f67bf8ce79b19deb3c/evidence/erdos-243-reciprocal-tail-rigidity.md#res-inclusiveone">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/1d16f2ddf78e7c4c850246f67bf8ce79b19deb3c/evidence/erdos-243-reciprocal-tail-rigidity.md#res-inclusiveone-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/d93e7408aed0b0c73ad5ea98116c7dc0dce3cf7b/evidence/erdos-243-reciprocal-tail-rigidity.md#res-inclusiveone">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d93e7408aed0b0c73ad5ea98116c7dc0dce3cf7b/evidence/erdos-243-reciprocal-tail-rigidity.md#res-inclusiveone-comparator">Comparator</a></p>
 
 **Corollary 13** (an inclusive one-sided $`1/n`$ bound). *Let $`a_1<a_2<\cdots`$ be positive integers with $`a_{n+1}/a_n^2\to1`$ and $`\sum_n1/a_n\in\mathbb{Q}`$. Suppose that for some $`K\ge0`$ and $`\varepsilon>0`$,
 ``` math
@@ -2335,7 +2350,7 @@ For positive limiting increments, take $`a_1=4`$ and $`a_{n+1}=\lceil n a_n^2/(n
 ``` math
 0\le1+\frac1n-\frac{a_n^2}{a_{n+1}}<\frac4{a_n^2}.
 ```
-Consequently $`t_n\sim K n`$ and $`t_{n+1}-t_n\to K>0`$. The corollary proves irrationality because $`\gamma_n\sim1/n`$ is incompatible with a Sylvester tail.
+Consequently $`t_n\sim K n`$ and $`t_{n+1}-t_n\to K>0`$. The corollary proves irrationality because $`\gamma_n\sim1/n`$ is incompatible with the eventual Sylvester recurrence.
 
 For comparison, the ceiling example with rate $`3/n`$ in the introduction has $`t_n\sim K_3n^3`$ and $`t_{n+1}-t_n\sim3K_3n^2`$ for some $`K_3>0`$. Indeed, divide $`t_n`$ by $`n(n+1)(n+2)`$ and use the absolutely summable rounding errors, as in Section <a href="#erdos-243-reciprocal-tail-rigidity--sec:cubic-extraction" data-reference-type="ref" data-reference="erdos-243-reciprocal-tail-rigidity--sec:cubic-extraction">3.1</a>. The power sequence has constant $`t_n`$, the $`1/n`$ example has bounded positive limiting increments, and the cubic example has unbounded increments. The last therefore needs the arithmetic proof of Theorem <a href="#erdos-243-reciprocal-tail-rigidity--res:cubicrate" data-reference-type="ref" data-reference="erdos-243-reciprocal-tail-rigidity--res:cubicrate">2</a>.
 
@@ -2346,7 +2361,7 @@ For comparison, the ceiling example with rate $`3/n`$ in the introduction has $`
 An infinite product gives another way to bound a numerator. This argument needs only the scalar update $`C_{n+1}=C_n-E_n`$ and positivity on a discrete set. We assume summability of the relative upward increments. Mere convergence of those increments to zero would allow $`C_n=n+1`$ and $`C_n=(n+1)^2`$, both of which grow without bound.
 
 <div id="erdos-243-reciprocal-tail-rigidity--res:massscalar" class="theorem">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos243/PaperCompleteR7/Frontier.lean#L84">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/1d16f2ddf78e7c4c850246f67bf8ce79b19deb3c/evidence/erdos-243-reciprocal-tail-rigidity.md#res-massscalar-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos243/PaperCompleteR7/Frontier.lean#L84">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d93e7408aed0b0c73ad5ea98116c7dc0dce3cf7b/evidence/erdos-243-reciprocal-tail-rigidity.md#res-massscalar-comparator">Comparator</a></p>
 
 **Theorem 14** (a convergent sum of relative increases). *<span id="erdos-243-reciprocal-tail-rigidity--res:mass" label="res:mass"></span> Let $`C_n`$ be positive integers and $`E_n`$ integers satisfying $`C_{n+1}=C_n-E_n`$. If
 ``` math
@@ -2397,10 +2412,10 @@ Since $`L_n\mid qP_n`$ and $`V_n=(L_n/(qP_n))E_n`$, multiplying <a href="#erdos-
 ```
 The lower bound will transfer a growth condition to a bound on $`V_n`$. For the weighted version we will also need the upper bound, which makes the comparison error summable.
 
-Write $`R_n=\max_{j\le n}U_j`$ and $`\mathcal R=\{n:U_{n+1}>R_n\}`$. Strict centring already gives $`U_{n+1}<U_n`$ when $`\rho_n\ge2`$, so every sufficiently late strict rise has $`\rho_n=1`$. The stronger eventual bound $`-U_n\le2V_n`$, supplied by $`V_n/U_n=E_n/C_n\to0`$, gives the quantitative estimate $`U_{n+1}\le3U_n/4`$ when $`\rho_n\ge2`$. At a sufficiently late record step, where $`\rho_n=1`$, the actual jump is $`d_n=U_{n+1}-U_n=-V_n>0`$. This identity is not asserted at a contracting step with $`\rho_n\ge2`$.
+Write $`R_n=\max_{j\le n}U_j`$ and $`\mathcal R=\{n:U_{n+1}>R_n\}`$. The inequality $`|V_n|<U_n`$ gives $`U_{n+1}<U_n`$ when $`\rho_n\ge2`$, so every sufficiently late strict rise has $`\rho_n=1`$. The stronger eventual bound $`-U_n\le2V_n`$, supplied by $`V_n/U_n=E_n/C_n\to0`$, gives the quantitative estimate $`U_{n+1}\le3U_n/4`$ when $`\rho_n\ge2`$. At a sufficiently late record step, where $`\rho_n=1`$, the actual jump is $`d_n=U_{n+1}-U_n=-V_n>0`$. This identity is not asserted at a contracting step with $`\rho_n\ge2`$.
 
 <div id="erdos-243-reciprocal-tail-rigidity--res:weightedrecord" class="theorem">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos243/PaperCompleteR11/CanonicalRecords.lean#L202">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/1d16f2ddf78e7c4c850246f67bf8ce79b19deb3c/evidence/erdos-243-reciprocal-tail-rigidity.md#res-weightedrecord-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos243/PaperCompleteR11/CanonicalRecords.lean#L202">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d93e7408aed0b0c73ad5ea98116c7dc0dce3cf7b/evidence/erdos-243-reciprocal-tail-rigidity.md#res-weightedrecord-comparator">Comparator</a></p>
 
 **Theorem 15** (a convergent weighted sum over new maxima). *Assume the growth and rationality hypotheses of Problem <a href="#erdos-243-reciprocal-tail-rigidity--res:problem" data-reference-type="ref" data-reference="erdos-243-reciprocal-tail-rigidity--res:problem">1</a>. Let $`f:[1,\infty)\to[0,\infty)`$ be finite and nonincreasing, with $`\int_1^\infty f(t)\,dt=\infty`$. Then the sequence is eventually Sylvester if and only if, for some integer $`B\ge0`$,
 ``` math
@@ -2428,7 +2443,11 @@ Thus $`U_n\to\infty`$, so there are infinitely many record steps. At every suffi
 
 Put $`P=\prod_i m_i`$ and choose $`x`$ with $`m_i\mid x+i`$ by the Chinese remainder theorem. We select the heights $`\tau=x+B+kP>R_T`$, $`k\in\mathbb{Z}`$. They are spaced $`P`$ apart, and the first is at most $`R_T+P`$.
 
-At the first crossing of a selected height, $`U_n\le R_n<\tau\le U_n+d_n`$. In particular this is a record step. The full jump matters: if the previous record is $`10`$ and a step goes from $`5`$ to $`12`$, then it first crosses $`11`$, but its starting point is $`5`$, not $`10`$. The jump is $`7`$, although the record increases by only $`2`$. These numbers illustrate the distinction between the two increments; they are not an asserted exact orbit. If $`d_n\le B`$, then $`U_n\in[\tau-B,\tau)`$, so some $`m_i`$ divides $`U_n`$. It also divides $`L_n`$, hence divides $`d_n=(a_n-1)U_n-L_n`$, contradicting $`0<d_n\le B<m_i`$.
+At the first crossing of a selected height, $`U_n\le R_n<\tau\le U_n+d_n`$. In particular this is a record step. The full jump matters: if the previous record is $`10`$ and a step goes from $`5`$ to $`12`$, then it first crosses $`11`$, but its starting point is $`5`$, not $`10`$. The jump is $`7`$, although the record increases by only $`2`$. These numbers illustrate the distinction between the two increments; no denominator sequence satisfying <a href="#erdos-243-reciprocal-tail-rigidity--eq:recurrences" data-reference-type="eqref" data-reference="erdos-243-reciprocal-tail-rigidity--eq:recurrences">[eq:recurrences]</a> is asserted. If $`d_n\le B`$, then $`U_n\in[\tau-B,\tau)`$, so
+``` math
+U_n=\tau-B+i=x+kP+i\qquad\text{for some }0\le i<B.
+```
+The choice of $`x`$ gives $`m_i\mid U_n`$. Since $`m_i\mid L_n`$ as well, we obtain $`m_i\mid d_n=(a_n-1)U_n-L_n`$, contradicting $`0<d_n\le B<m_i`$.
 
 It follows that every crossing has $`d_n>B`$. If one step first crosses $`h\ge1`$ selected heights, their spacing gives $`(h-1)P<d_n`$. Write $`r=d_n-B\ge1`$. Since $`P\ge B+1`$, $`d_n=B+r\le Pr`$, and hence $`h\le r`$. Each of those heights exceeds $`U_n`$, so monotonicity gives
 ``` math
@@ -2443,7 +2462,7 @@ Each selected height above $`R_T`$ has exactly one first crossing. The first sel
  \ge\frac1P\int_{R_T+P}^{R_N} f(t)\,dt.
 \end{equation}
 ```
-Since $`R_n\to\infty`$, the right side diverges for every $`B\ge1`$; $`B=0`$ follows by domination. Conversely a Sylvester tail telescopes to $`x_n=1/(a_n-1)`$, so $`V_n=0`$ eventually. ◻
+Since $`R_n\to\infty`$, the right side diverges for every $`B\ge1`$; $`B=0`$ follows by domination. Conversely, the eventual Sylvester recurrence gives by telescoping $`x_n=1/(a_n-1)`$, so $`V_n=0`$ eventually. ◻
 
 </div>
 
@@ -2475,7 +2494,7 @@ The ratio test gives $`\sum_nC_n/a_n<\infty`$; now $`U_n\le C_n`$ and $`f(U_n)\l
 for some $`B`$. It remains to prove finiteness under the unrestricted hypotheses. The jump in either expression is $`U_{n+1}-U_n`$. Substituting $`R_{n+1}-R_n`$ loses the recovery from earlier decreases, which the crossing estimate uses. Nor would termwise convergence of the summands to zero establish finiteness.
 
 <div id="erdos-243-reciprocal-tail-rigidity--res:lcmbounded" class="corollary">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos243/PaperCompleteR7/LcmDefect.lean#L49">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/1d16f2ddf78e7c4c850246f67bf8ce79b19deb3c/evidence/erdos-243-reciprocal-tail-rigidity.md#res-lcmbounded-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos243/PaperCompleteR7/LcmDefect.lean#L49">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d93e7408aed0b0c73ad5ea98116c7dc0dce3cf7b/evidence/erdos-243-reciprocal-tail-rigidity.md#res-lcmbounded-comparator">Comparator</a></p>
 
 **Corollary 16** (a bound using the least common multiple). *Assume the hypotheses of Problem <a href="#erdos-243-reciprocal-tail-rigidity--res:problem" data-reference-type="ref" data-reference="erdos-243-reciprocal-tail-rigidity--res:problem">1</a>. Write $`A_n=\operatorname{lcm}(a_1,\ldots,a_{n-1})`$ with $`A_1=1`$. If
 ``` math
@@ -2506,7 +2525,7 @@ The finite upper limit means an eventual upper bound; it does not require $`q`$ 
 ### Further questions
 
 <div id="erdos-243-reciprocal-tail-rigidity--res:frontier" class="proposition">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos243/PaperCompleteR7/Frontier.lean#L151">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/1d16f2ddf78e7c4c850246f67bf8ce79b19deb3c/evidence/erdos-243-reciprocal-tail-rigidity.md#res-frontier-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos243/PaperCompleteR7/Frontier.lean#L151">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d93e7408aed0b0c73ad5ea98116c7dc0dce3cf7b/evidence/erdos-243-reciprocal-tail-rigidity.md#res-frontier-comparator">Comparator</a></p>
 
 **Proposition 17** (necessary profile). *The integer tail of a sequence satisfying Problem <a href="#erdos-243-reciprocal-tail-rigidity--res:problem" data-reference-type="ref" data-reference="erdos-243-reciprocal-tail-rigidity--res:problem">1</a>’s hypotheses but not its conclusion has $`E_n\ne0`$ eventually, $`|E_n|/C_n\to0`$, unbounded negative magnitudes along negative indices, and
 ``` math
@@ -2532,10 +2551,10 @@ The weighted criterion reduces the problem to a statement about this cumulative 
  \liminf_{X\to\infty}\frac{F_B(X)}X=0.
 \end{equation}
 ```
-If the recurrence is not eventually Sylvester, first crossings instead give $`F_B(X)\ge X/P_B-O_B(1)`$, with an orbit-dependent CRT modulus $`P_B`$. The sum groups each record step by its starting numerator $`U_n`$, not by the running maximum $`R_n`$ or the time index. On a non-Sylvester tail, $`U_n\to\infty`$, so only finitely many of these steps begin below any fixed $`X`$. To see the equivalence with an admissible weight, enumerate the record indices by $`j`$ and apply the next lemma with $`u_j=U_n`$ and $`w_j=(-V_n-B)_+`$. The lemma supplies a weight once <a href="#erdos-243-reciprocal-tail-rigidity--eq:remaining-record-budget" data-reference-type="eqref" data-reference="erdos-243-reciprocal-tail-rigidity--eq:remaining-record-budget">[eq:remaining-record-budget]</a> holds. Establishing that estimate would contradict the first-crossing lower bound and exclude every non-Sylvester rational tail.
+If the recurrence is not eventually Sylvester, first crossings instead give $`F_B(X)\ge X/P_B-O_B(1)`$, with an orbit-dependent CRT modulus $`P_B`$. The sum groups each record step by its starting numerator $`U_n`$, not by the running maximum $`R_n`$ or the time index. If the eventual Sylvester recurrence fails, $`U_n\to\infty`$, so only finitely many of these steps begin below any fixed $`X`$. To see the equivalence with an admissible weight, enumerate the record indices by $`j`$ and apply the next lemma with $`u_j=U_n`$ and $`w_j=(-V_n-B)_+`$. The lemma supplies a weight once <a href="#erdos-243-reciprocal-tail-rigidity--eq:remaining-record-budget" data-reference-type="eqref" data-reference="erdos-243-reciprocal-tail-rigidity--eq:remaining-record-budget">[eq:remaining-record-budget]</a> holds. Establishing that estimate would contradict the first-crossing lower bound and exclude every non-Sylvester rational tail.
 
 <div id="erdos-243-reciprocal-tail-rigidity--res:weights" class="lemma">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos243/PaperCompleteR20/RealCutoffCriterion.lean#L87">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/1d16f2ddf78e7c4c850246f67bf8ce79b19deb3c/evidence/erdos-243-reciprocal-tail-rigidity.md#res-weights-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos243/PaperCompleteR20/RealCutoffCriterion.lean#L87">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d93e7408aed0b0c73ad5ea98116c7dc0dce3cf7b/evidence/erdos-243-reciprocal-tail-rigidity.md#res-weights-comparator">Comparator</a></p>
 
 **Lemma 18** (weights and linear density). *Let $`u_j`$ be positive integers, let $`w_j\ge0`$, and put $`F(X)=\sum_{u_j\le X}w_j`$, with the sum allowed a priori to be $`+\infty`$. Then $`\liminf_{X\to\infty}F(X)/X=0`$ if and only if there is a finite nonincreasing $`f:[1,\infty)\to[0,\infty)`$ with $`\int_1^\infty f(t)\,dt=\infty`$ and $`\sum_jw_jf(u_j)<\infty`$.*
 
@@ -2568,9 +2587,9 @@ every term being nonnegative. The right side diverges as $`N\to\infty`$, because
 
 #### Arithmetic compatibility
 
-The remaining estimate requires the denominator recurrence as well as control of the error. For example, $`C_n=n^2+1`$, $`E_n=-(2n+1)`$ has vanishing relative error and the necessary scalar pattern. But at $`n=2,3,4`$ its numerators are $`5,10,17`$. The update $`10=5a_2-D_2`$ forces $`5\mid D_2`$, hence $`5\mid D_3=a_2D_2`$; the next update would force $`5\mid17`$. It is not an exact tail. The companion’s Section 14 also constructs sequences avoiding sparse fixed moduli and distinguishes that avoidance from compatibility with all later denominators. Neither property alone supplies <a href="#erdos-243-reciprocal-tail-rigidity--eq:remaining-record-budget" data-reference-type="eqref" data-reference="erdos-243-reciprocal-tail-rigidity--eq:remaining-record-budget">[eq:remaining-record-budget]</a>.
+The remaining estimate requires the denominator recurrence as well as control of the error. For example, $`C_n=n^2+1`$, $`E_n=-(2n+1)`$ has vanishing relative error and the necessary scalar pattern. But at $`n=2,3,4`$ its numerators are $`5,10,17`$. The update $`10=5a_2-D_2`$ forces $`5\mid D_2`$, hence $`5\mid D_3=a_2D_2`$; the next update would force $`5\mid17`$. Thus these numerators cannot satisfy <a href="#erdos-243-reciprocal-tail-rigidity--eq:recurrences" data-reference-type="eqref" data-reference="erdos-243-reciprocal-tail-rigidity--eq:recurrences">[eq:recurrences]</a>. The companion’s Section 14 also constructs sequences avoiding sparse fixed moduli and distinguishes that avoidance from compatibility with all later denominators. Neither property alone supplies <a href="#erdos-243-reciprocal-tail-rigidity--eq:remaining-record-budget" data-reference-type="eqref" data-reference="erdos-243-reciprocal-tail-rigidity--eq:remaining-record-budget">[eq:remaining-record-budget]</a>.
 
-Conversely, a full exact orbit already contains the analytic data. For a zero-indexed orbit with $`a_n>1`$, $`C_n>0`$, $`D_n\ge0`$ and $`E_n/C_n\to0`$, Section 4 of the companion proves $`D_n>0`$, $`C_n/D_n\to0`$, $`\sum_n1/a_n=C_0/D_0`$ and quadratic growth. These are global assumptions on an infinite orbit. A scalar profile or a finite admissible prefix supplies only part of them.
+Conversely, suppose integer sequences indexed from zero satisfy <a href="#erdos-243-reciprocal-tail-rigidity--eq:recurrences" data-reference-type="eqref" data-reference="erdos-243-reciprocal-tail-rigidity--eq:recurrences">[eq:recurrences]</a>, with $`a_n>1`$, $`C_n>0`$, $`D_n\ge0`$ and $`E_n/C_n\to0`$. Section 4 of the companion proves that $`D_n>0`$, $`C_n/D_n\to0`$, $`\sum_n1/a_n=C_0/D_0`$ and $`a_{n+1}/a_n^2\to1`$. All these hypotheses concern the infinite sequences; a scalar example or a finite initial segment satisfies only some of them.
 
 <div id="erdos-243-reciprocal-tail-rigidity--res:lcmheight" class="problem">
 
@@ -2596,45 +2615,45 @@ I thank Wouter van Doorn for advice on the exposition, in particular for asking 
 
 <a id="erdos-243-reciprocal-tail-rigidity--app:residue"></a>
 
-### A factorial residue reduction for forced orbits
+### A factorial modulus for integral recursion
 
-A constant-negative error $`E_n=-m`$ with $`C_0=c`$ produces $`C_n=c+nm`$ and the shape equation
+A constant-negative error $`E_n=-m`$ with $`C_0=c`$ gives $`C_n=c+nm`$ and the identity
 ``` math
 \begin{equation}
 \label{eq:shape}
  D_n+m=(a_n-1)C_n.
 \end{equation}
 ```
-In the case $`m=c=1`$, where <a href="#erdos-243-reciprocal-tail-rigidity--eq:shape" data-reference-type="eqref" data-reference="erdos-243-reciprocal-tail-rigidity--eq:shape">[eq:shape]</a> reads $`D_n+1=(a_n-1)(n+1)`$, each multiplier is determined by its predecessor; we call such an orbit *forced*. At index $`n`$ the numerator of the next multiplier is
+In the case $`m=c=1`$, where <a href="#erdos-243-reciprocal-tail-rigidity--eq:shape" data-reference-type="eqref" data-reference="erdos-243-reciprocal-tail-rigidity--eq:shape">[eq:shape]</a> reads $`D_n+1=(a_n-1)(n+1)`$, each multiplier is determined by its predecessor. The recursion is $`a_{n+1}=\operatorname{num}(n,a_n)/(n+2)`$, where
 ``` math
 \operatorname{num}(n,a)=(n+1)a^{2}-(n+2)a+(n+3),
 ```
-the [forced numerator](https://github.com/wcook04/plectis-erdos/blob/7380b7871687b6bcc41ca0143c61f232e8af6500/lean/ErdosProblems/Erdos243/FiniteHorizonResidue.lean#L22), and the divisor is $`n+2`$. The orbit continues for another step exactly when this division is exact. Here survival counts exact divisions; it does not impose the positivity conditions of an infinite reciprocal-tail orbit. The [formal survival predicate](https://github.com/wcook04/plectis-erdos/blob/7380b7871687b6bcc41ca0143c61f232e8af6500/lean/ErdosProblems/Erdos243/FiniteHorizonResidue.lean#L75) requires exact division at each step.
+the [forced numerator](https://github.com/wcook04/plectis-erdos/blob/7380b7871687b6bcc41ca0143c61f232e8af6500/lean/ErdosProblems/Erdos243/FiniteHorizonResidue.lean#L22). We stop at the first nonintegral quotient. This procedure checks divisibility only; it does not impose the positivity conditions required of an infinite reciprocal-tail sequence. The [formal exact-division condition](https://github.com/wcook04/plectis-erdos/blob/7380b7871687b6bcc41ca0143c61f232e8af6500/lean/ErdosProblems/Erdos243/FiniteHorizonResidue.lean#L75) requires exact division at each step.
 
 <div id="erdos-243-reciprocal-tail-rigidity--ex:shape" class="example">
 
-**Example 20** (the shape equation running until it fails). The forced orbit from $`a=3`$ reads this way: $`\operatorname{num}(0,3)=6`$ is divisible by $`2`$ and gives $`a_1=3`$, while $`\operatorname{num}(1,3)=13`$ is not divisible by $`3`$, so the orbit stops there.
+**Example 20** (a nonintegral second step). Starting from $`a_0=3`$, the first numerator $`\operatorname{num}(0,3)=6`$ is divisible by $`2`$, giving $`a_1=3`$. The next numerator $`\operatorname{num}(1,3)=13`$ is not divisible by $`3`$, so the recursion stops.
 
 </div>
 
 Direct iteration can produce very large intermediate integers. To decide whether the first $`h`$ divisions are exact, however, it suffices to know the initial value modulo $`(h+1)!`$. Computing a pseudo-greedy orbit through residues modulo a shrinking product modulus is Koizumi’s method \[koizumi2025, Remark 2 and Algorithm 1, pp. 13–14\]; for the forced numerator that product is a factorial.
 
 <div id="erdos-243-reciprocal-tail-rigidity--res:residue" class="theorem">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos243/FiniteHorizonResidue.lean#L134">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/1d16f2ddf78e7c4c850246f67bf8ce79b19deb3c/evidence/erdos-243-reciprocal-tail-rigidity.md#res-residue-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos243/FiniteHorizonResidue.lean#L134">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d93e7408aed0b0c73ad5ea98116c7dc0dce3cf7b/evidence/erdos-243-reciprocal-tail-rigidity.md#res-residue-comparator">Comparator</a></p>
 
-**Theorem 21** (factorial residue reduction). *For all $`h`$ and all integers $`a\equiv b \pmod{(h+1)!}`$, the orbit from $`a`$ survives $`h`$ forced updates exactly when the orbit from $`b`$ does.*
+**Theorem 21** (factorial residue reduction). *Let $`h`$ be a nonnegative integer and let $`a,b`$ be integers with $`a\equiv b\pmod{(h+1)!}`$. The first $`h`$ steps of the recursion $`a_{n+1}=\operatorname{num}(n,a_n)/(n+2)`$, starting at index zero, are integral for $`a_0=a`$ if and only if they are integral for $`a_0=b`$.*
 
 </div>
 
 <div class="proof">
 
-*Proof.* Define $`M(0,i)=1`$ and $`M(h+1,i)=(i+2)M(h,i+1)`$. Thus $`M(h,0)=(h+1)!`$. We prove the stronger statement that, at index $`i`$, congruent inputs modulo $`M(h,i)`$ survive the same $`h`$ updates. There is nothing to prove for $`h=0`$.
+*Proof.* Define $`M(0,i)=1`$ and $`M(h+1,i)=(i+2)M(h,i+1)`$. Thus $`M(h,0)=(h+1)!`$. We prove the stronger statement that, at index $`i`$, congruent inputs modulo $`M(h,i)`$ give the same answer to whether the next $`h`$ quotients are all integral. There is nothing to prove for $`h=0`$.
 
-For the inductive step, suppose $`a\equiv b\pmod{(i+2)M(h,i+1)}`$. Since $`\operatorname{num}(i,\cdot)`$ is an integer polynomial, its values at $`a`$ and $`b`$ are congruent modulo that product. In particular, one is divisible by $`i+2`$ if and only if the other is. If neither is divisible, both orbits stop. Otherwise their quotients are congruent modulo $`M(h,i+1)`$, so the induction hypothesis applies to the remaining $`h`$ updates at index $`i+1`$. Taking $`i=0`$ proves the claim. ◻
+For the inductive step, suppose $`a\equiv b\pmod{(i+2)M(h,i+1)}`$. Since $`\operatorname{num}(i,\cdot)`$ is an integer polynomial, its values at $`a`$ and $`b`$ are congruent modulo that product. In particular, one is divisible by $`i+2`$ if and only if the other is. If neither is divisible, both recursions stop. Otherwise their quotients are congruent modulo $`M(h,i+1)`$, so the induction hypothesis applies to the remaining $`h`$ updates at index $`i+1`$. Taking $`i=0`$ proves the claim. ◻
 
 </div>
 
-At $`h=1`$, survival means $`2\mid a^2-2a+3`$, or equivalently that $`a`$ is odd. This illustrates Theorem <a href="#erdos-243-reciprocal-tail-rigidity--res:residue" data-reference-type="ref" data-reference="erdos-243-reciprocal-tail-rigidity--res:residue">21</a> with modulus $`2!=2`$.
+For $`h=1`$, the condition is $`2\mid a^2-2a+3`$, or equivalently that $`a`$ is odd. This illustrates Theorem <a href="#erdos-243-reciprocal-tail-rigidity--res:residue" data-reference-type="ref" data-reference="erdos-243-reciprocal-tail-rigidity--res:residue">21</a> with modulus $`2!=2`$.
 
 The enumeration in Example 9.1 of the companion, over $`2\le a_0<5000`$, gives at most $`17`$ successful updates ($`18`$ values including $`a_0`$). The seed $`a_0=1`$ is excluded because it is fixed and violates $`a_n\ge2`$. This finite calculation establishes only the stated range. The infinite [constant-negative exclusion](https://github.com/wcook04/plectis-erdos/blob/7380b7871687b6bcc41ca0143c61f232e8af6500/lean/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean#L286) requires the separate argument under the hypotheses given there.
 
@@ -2642,7 +2661,7 @@ The enumeration in Example 9.1 of the companion, over $`2\le a_0<5000`$, gives 
 
 ### Sources and related work
 
-The companion *Reciprocal-Tail Rigidity: Theorems, Proofs and Questions* gives full proofs and fixed-revision source links. [Section 2](https://github.com/wcook04/plectis-erdos/blob/main/paper/243/erdos243-reciprocal-tail-reasoning-surface.pdf#nameddest=243-long-cubic) treats regular rates and the stronger cubic disagreement result; [Sections 4–5](https://github.com/wcook04/plectis-erdos/blob/main/paper/243/erdos243-reciprocal-tail-reasoning-surface.pdf#nameddest=243-long-integer-tails) develop exact tails. The gcd and bounded-increment arguments culminate in [Section 12](https://github.com/wcook04/plectis-erdos/blob/main/paper/243/erdos243-reciprocal-tail-reasoning-surface.pdf#nameddest=243-long-bounded-increases). The LCM results are in [Section 6](https://github.com/wcook04/plectis-erdos/blob/main/paper/243/erdos243-reciprocal-tail-reasoning-surface.pdf#nameddest=243-long-weighted-records), scalar summability in [Section 13](https://github.com/wcook04/plectis-erdos/blob/main/paper/243/erdos243-reciprocal-tail-reasoning-surface.pdf#nameddest=243-long-relative-increase), and open estimates and failed constructions in [Section 14](https://github.com/wcook04/plectis-erdos/blob/main/paper/243/erdos243-reciprocal-tail-reasoning-surface.pdf#nameddest=243-long-open-questions). A final map records the dependencies. The auxiliary constructions need not be rational reciprocal series; they satisfy only the hypotheses stated for them.
+The companion *Reciprocal Sums and the Sylvester Recurrence: Further Results and Proofs* gives full proofs and fixed-revision source links. [Section 2](https://github.com/wcook04/plectis-erdos/blob/main/paper/243/erdos243-reciprocal-tail-reasoning-surface.pdf#nameddest=243-long-cubic) treats regular rates and the stronger cubic disagreement result; [Sections 4–5](https://github.com/wcook04/plectis-erdos/blob/main/paper/243/erdos243-reciprocal-tail-reasoning-surface.pdf#nameddest=243-long-integer-tails) develop the integer tail numerators. The gcd and bounded-increment arguments culminate in [Section 12](https://github.com/wcook04/plectis-erdos/blob/main/paper/243/erdos243-reciprocal-tail-reasoning-surface.pdf#nameddest=243-long-bounded-increases). The LCM results are in [Section 6](https://github.com/wcook04/plectis-erdos/blob/main/paper/243/erdos243-reciprocal-tail-reasoning-surface.pdf#nameddest=243-long-weighted-records), scalar summability in [Section 13](https://github.com/wcook04/plectis-erdos/blob/main/paper/243/erdos243-reciprocal-tail-reasoning-surface.pdf#nameddest=243-long-relative-increase), and open estimates and failed constructions in [Section 14](https://github.com/wcook04/plectis-erdos/blob/main/paper/243/erdos243-reciprocal-tail-reasoning-surface.pdf#nameddest=243-long-open-questions). A final map records the dependencies. The auxiliary constructions need not be rational reciprocal series; they satisfy only the hypotheses stated for them.
 
 The older integer-remainder method is represented by Erdős–Straus \[erdosstraus1974, Theorem 2.1, pp. 85–86\]. The polynomial Cantor-series hypotheses in Hančl–Tijdeman \[hancltijdeman2008, Theorem 2.2, pp. 39–40\] and the freely selectable series of Problem #270 \[crmarickovac2025, Theorems 1–2\] concern different settings; the companion’s Section 3 explains the distinction. The Isabelle/HOL work \[kouli2020\] formalises older Erdős–Straus criteria, not Problem #243. The general regular-rate extraction in the companion also uses the standard Gamma-ratio asymptotics recorded in \[dlmf_gamma\]; the cubic specialisation here uses only its explicit polynomial $`F_n`$.
 
@@ -2682,7 +2701,7 @@ P. Erdős and E. G. Straus, [*On the irrationality of certain Ahmes series*](h
 
 </div>
 
-We give integral coordinates for the sections $`n\mapsto\varphi(k^jn+r)`$ through any fixed level $`e\ge1`$, in every integer base $`k\ge2`$. A retained family of $`k^e+1`$ sections is a basis, and the scalar reductions of the other indexed sections form a basis of all integral relations. We give a finite-evaluation proof of independence and explain its relation to Martin’s stronger affine theorem. Prime isolation also classifies rational binary series of dyadic totient residues. The irrationality of the unreduced binary totient series remains open.
+We determine a basis and all integral relations for the sequences $`n\mapsto\varphi(k^jn+r)`$ with $`0\le j\le e`$ and $`0\le r<k^j`$, where $`k\ge2`$ and $`e\ge1`$. The basis has $`k^e+1`$ elements, and every other sequence is an explicit integer multiple of one of them. We prove independence by constructing nonsingular evaluation matrices and compare this argument with Martin’s stronger affine theorem. A related congruence construction classifies rational binary series formed from dyadic totient residues. Irrationality of the unreduced binary totient series remains open.
 
 <a id="erdos-249-binary-totient-series--sec:results"></a>
 
@@ -2698,19 +2717,19 @@ Splitting the totient sequence into its even and odd subsequences, then splittin
  \varphi(2n),\ \varphi(2n+1);\qquad
  \varphi(4n),\ \varphi(4n+1),\ \varphi(4n+2),\ \varphi(4n+3).
 ```
-Two identities remove two of them:
+The identities
 ``` math
 \varphi(4n)=2\varphi(2n),\qquad
- \varphi(4n+2)=\varphi(2n+1).
+ \varphi(4n+2)=\varphi(2n+1)
 ```
-The five remaining sequences are linearly independent over $`\mathbb{Q}`$. Thus every rational linear identity among the seven follows from these two substitutions. If the original coefficients are integers, so are the coefficients obtained after substitution.
+reduce this list to five sequences, which are linearly independent over $`\mathbb{Q}`$. Every rational linear identity among the seven therefore follows from these two substitutions. The substitutions also preserve integral coefficients, so they describe the integral relations as well.
 
 The same description holds at every finite depth and in every base. For an integer $`k\ge2`$, the *totient sections* are the sequences $`n\mapsto\varphi(k^jn+r)`$, where $`j\ge0`$ and $`0\le r<k^j`$. Throughout, $`n`$ ranges over $`\mathbb{N}=\{0,1,2,\ldots\}`$ and $`\varphi(0)=0`$. To describe relations we retain a separate index for each pair $`(j,r)`$, even when two pairs give the same sequence. For example, $`\varphi(4n+2)`$ and $`\varphi(2n+1)`$ are equal sequences but occupy different positions in the list above.
 
-The sections form the $`k`$-kernel of the totient sequence. A sequence is $`k`$-regular when the $`\mathbb{Z}`$-module generated by its $`k`$-kernel is finitely generated \[allouche-shallit\]. Coons proved that the totient sequence is not $`k`$-regular for any $`k\ge2`$ \[coons, Thm. 3.2\]. The theorem below gives more explicit information: which sections to retain, how to reduce each of the others, and hence how to test a linear identity. The level-zero family contains only $`\varphi(n)`$ and has dimension one.
+The sections form the $`k`$-kernel of the totient sequence. A sequence is $`k`$-regular when the $`\mathbb{Z}`$-module generated by its $`k`$-kernel is finitely generated \[allouche-shallit\]. Coons proved that the totient sequence is not $`k`$-regular for any $`k\ge2`$ \[coons, Thm. 3.2\]. We describe the finitely generated modules obtained by stopping at a fixed level. The theorem below specifies a basis and expresses each remaining section as a scalar multiple of a basis element; these expressions give a test for every linear identity at that level. The level-zero family contains only $`\varphi(n)`$ and has dimension one.
 
 <div id="erdos-249-binary-totient-series--thm:kkernelrank" class="theorem">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos249/PaperCompleteR8/FullKernelAssemblies.lean#L35">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/1d16f2ddf78e7c4c850246f67bf8ce79b19deb3c/evidence/erdos-249-binary-totient-series.md#thm-kkernelrank-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos249/PaperCompleteR8/FullKernelAssemblies.lean#L35">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d93e7408aed0b0c73ad5ea98116c7dc0dce3cf7b/evidence/erdos-249-binary-totient-series.md#thm-kkernelrank-comparator">Comparator</a></p>
 
 **Theorem 1** (A basis through each finite level). *Let $`k\ge2`$ and $`e\ge1`$ be integers, write $`F^{(k)}_{j,r}(n)=\varphi(k^jn+r)`$, and put
 ``` math
@@ -2737,7 +2756,7 @@ The condition $`k\nmid r`$ allows residues with $`\gcd(k,r)>1`$. For instance, $
 \varphi(36n+6)=2\varphi(6n+1),\qquad
  \varphi(36n+12)=4\varphi(6n+2).
 ```
-The second multiplier includes the factor $`2`$ already present in $`6n+2`$. Repeated prime factors of $`k`$ cause no further exception to the product formula, so the theorem also applies to nonsquarefree bases.
+The multipliers differ because $`2`$ divides $`6n+2`$ but not $`6n+1`$. The product formula also allows repeated prime factors of $`k`$, so there is no squarefreeness assumption on the base.
 
 Martin’s 2006 theorem on simultaneous totient inequalities already implies independence for every finite family of pairwise nonproportional affine forms with positive integral slopes \[martin-phi-inequalities, Thm. 1\]. Its conclusion is stronger than the independence used here. The point of the present description is the explicit reduction of the sections and the integral relation basis in Corollary <a href="#erdos-249-binary-totient-series--cor:integral-normal-form" data-reference-type="ref" data-reference="erdos-249-binary-totient-series--cor:integral-normal-form">2</a>. We also give a direct proof that constructs a nonsingular evaluation matrix. It uses the CRT–Dirichlet separation argument in Yazdani’s proof of Theorem 2, credited there to Shallit \[yazdani2001, pp. 652–653\]. The step that needs care is to keep the progression for the selected affine form reduced while imposing prime divisors on all the others.
 
@@ -2759,15 +2778,15 @@ has unbounded coefficients. Its irrationality, asked in Erdős Problem #249 \[
 
 #### Scalar reductions
 
-Multiplication by a power of $`k`$ changes a totient by a predictable factor once we know which primes dividing $`k`$ are already present. For a zero residue, $`kn`$ and $`k^jn`$ have the same prime divisors when $`n>0`$. Hence $`\varphi(k^jn)=k^{j-1}\varphi(kn)`$; both sides vanish at $`n=0`$. For an omitted positive residue $`r=k^tu`$ with $`t\ge1`$ and $`k\nmid u`$, we have $`t<j`$ because $`0<r<k^j`$. Put $`m=k^{j-t}n+u`$. A prime $`p\mid k`$ divides $`m`$ exactly when it divides $`u`$. The product formula for $`\varphi(k^tm)/\varphi(m)`$ therefore contributes $`k^t`$ and one factor $`1-1/p`$ for each prime $`p\mid k`$ absent from $`u`$. This is $`C_k(t,u)`$, and proves spanning.
+There are two parts to the proof. The product formula reduces every omitted section to a retained one; independence then shows that no further reductions are possible. In the first part, the multiplier depends only on which prime divisors of $`k`$ divide the argument. For a zero residue, $`kn`$ and $`k^jn`$ have the same prime divisors when $`n>0`$. Hence $`\varphi(k^jn)=k^{j-1}\varphi(kn)`$; both sides vanish at $`n=0`$. For an omitted positive residue $`r=k^tu`$ with $`t\ge1`$ and $`k\nmid u`$, we have $`t<j`$ because $`0<r<k^j`$. Put $`m=k^{j-t}n+u`$. A prime $`p\mid k`$ divides $`m`$ exactly when it divides $`u`$. The product formula for $`\varphi(k^tm)/\varphi(m)`$ therefore contributes $`k^t`$ and one factor $`1-1/p`$ for each prime $`p\mid k`$ absent from $`u`$. This gives $`C_k(t,u)`$ and proves that the stated family spans $`V_{k,e}`$.
 
 <a id="erdos-249-binary-totient-series--affine-independence"></a>
 
 #### Affine independence
 
-For independence, Martin’s theorem is enough. For any ordering of pairwise nonproportional affine forms and any $`C>0`$, it gives a set of positive lower density on which each successive totient ratio exceeds $`C`$. In a proposed nonzero relation, place a nonzero coefficient $`c_1`$ first and take $`C>\max(1,\sum_{i>1}|c_i|/|c_1|)`$. The first term then dominates the sum of all remaining terms in absolute value, a contradiction \[martin-phi-inequalities, Thm. 1\]. This also proves independence after any finite prefix is deleted.
+Independence follows from Martin’s theorem. For any ordering of pairwise nonproportional affine forms and any $`C>0`$, it gives a set of positive lower density on which each successive totient ratio exceeds $`C`$. In a proposed nonzero relation, place a nonzero coefficient $`c_1`$ first and take $`C>\max(1,\sum_{i>1}|c_i|/|c_1|)`$. The first term then dominates the sum of all remaining terms in absolute value, a contradiction \[martin-phi-inequalities, Thm. 1\]. This also proves independence after any finite prefix is deleted.
 
-The direct proof below gives a finite witness to independence: a square matrix of evaluations with nonzero determinant. Let $`L_i(n)=a_i n+b_i`$ for $`1\le i\le s`$, where $`a_i>0`$ and $`a_i b_j-a_j b_i\ne0`$ for $`i\ne j`$. A shift of $`n`$ makes all the $`b_i`$ positive and leaves these cross determinants unchanged. Write $`g_i=\gcd(a_i,b_i)`$ and $`A_i=L_i/g_i`$, so $`A_i`$ is primitive. We will choose a prime $`\ell`$ and points $`n_1,\ldots,n_s`$ for which
+We give a direct proof by constructing a square matrix of evaluations with nonzero determinant. Let $`L_i(n)=a_i n+b_i`$ for $`1\le i\le s`$, where $`a_i>0`$ and $`a_i b_j-a_j b_i\ne0`$ for $`i\ne j`$. A shift of $`n`$ makes all the $`b_i`$ positive and leaves these cross determinants unchanged. Write $`g_i=\gcd(a_i,b_i)`$ and $`A_i=L_i/g_i`$. If $`g_i>1`$, the values of $`L_i`$ have a fixed divisor, so it is the primitive form $`A_i`$, not $`L_i`$, that we will make prime. We will choose a prime $`\ell`$ and points $`n_1,\ldots,n_s`$ for which
 ``` math
 \begin{equation}
 \label{eq:diagonal-evaluation}
@@ -2784,7 +2803,7 @@ The direct proof below gives a finite witness to independence: a square matrix o
 ```
 A rational relation among the sequences would give a vector in the kernel of $`E`$. The displayed congruence makes its determinant nonzero, so no such relation can exist.
 
-Here is how to obtain row $`i`$. To make an off-diagonal entry vanish, it suffices to give $`L_j(n_i)`$ a prime divisor $`q_{ij}\equiv1\pmod\ell`$: then $`q_{ij}-1`$ divides its totient. To keep the diagonal entry nonzero, we make $`A_i(n_i)`$ a prime congruent to $`2`$ modulo $`\ell`$. Choose an odd $`\ell`$ dividing none of the slopes $`a_i`$, the products $`g_i\varphi(g_i)`$ or the nonzero cross determinants. For each fixed $`i`$, Dirichlet’s theorem supplies distinct primes $`q_{ij}\equiv1\pmod\ell`$ ($`j\ne i`$) outside the same finite exceptional set. We impose
+For row $`i`$, we require $`L_j(n_i)`$ to have a prime divisor $`q_{ij}\equiv1\pmod\ell`$ whenever $`j\ne i`$. Then $`q_{ij}-1`$ divides $`\varphi(L_j(n_i))`$, giving the off-diagonal zeros in <a href="#erdos-249-binary-totient-series--eq:diagonal-evaluation" data-reference-type="eqref" data-reference="erdos-249-binary-totient-series--eq:diagonal-evaluation">[eq:diagonal-evaluation]</a>. For the diagonal entry, we require $`A_i(n_i)`$ to be a prime congruent to $`2`$ modulo $`\ell`$. Choose an odd $`\ell`$ dividing none of the slopes $`a_i`$, the products $`g_i\varphi(g_i)`$ or the nonzero cross determinants. For each fixed $`i`$, Dirichlet’s theorem supplies distinct primes $`q_{ij}\equiv1\pmod\ell`$ ($`j\ne i`$) outside the same finite exceptional set. We impose
 ``` math
 A_i(n)\equiv2\pmod\ell,\qquad
  L_j(n)\equiv0\pmod{q_{ij}}\quad(j\ne i).
@@ -2804,13 +2823,13 @@ contrary to its choice. This accounts for every prime factor of the step. We may
 \varphi(L_i(n_i))=\varphi(g_i)(p-1)
        \equiv\varphi(g_i)\not\equiv0\pmod\ell,
 ```
-while all the other entries of row $`i`$ vanish modulo $`\ell`$. The rows are chosen independently. Each requires one prime value, not simultaneous prime values of all the forms. This proves <a href="#erdos-249-binary-totient-series--eq:diagonal-evaluation" data-reference-type="eqref" data-reference="erdos-249-binary-totient-series--eq:diagonal-evaluation">[eq:diagonal-evaluation]</a>, including with every $`n_i`$ beyond any prescribed threshold.
+while all the other entries of row $`i`$ vanish modulo $`\ell`$. We choose the rows separately, applying Dirichlet’s theorem once more for each selected form $`A_i`$. Thus no simultaneous primality assertion is required. The construction proves <a href="#erdos-249-binary-totient-series--eq:diagonal-evaluation" data-reference-type="eqref" data-reference="erdos-249-binary-totient-series--eq:diagonal-evaluation">[eq:diagonal-evaluation]</a> with every $`n_i`$ beyond any prescribed threshold.
 
 <a id="erdos-249-binary-totient-series--the-two-zero-residue-sections"></a>
 
 #### The two zero-residue sections
 
-It remains to separate $`\varphi(n)`$ and $`\varphi(kn)`$, whose affine arguments are proportional. On the progression $`n=km+1`$ we have $`\varphi(kn)=\varphi(k)\varphi(n)`$, so a proposed relation contains only one zero-residue term after this restriction. The positive-residue sections become the forms
+The affine-independence argument does not separate $`\varphi(n)`$ and $`\varphi(kn)`$, because their arguments are proportional. We use two different values of their ratio. On $`n=km+1`$ the ratio is $`\varphi(k)`$, so a proposed relation contains only one zero-residue term after this restriction. The positive-residue sections become the forms
 ``` math
 k^{j+1}m+k^j+r\quad(k\nmid r),
 ```
@@ -2829,17 +2848,17 @@ which completes the proof of Theorem <a href="#erdos-249-binary-totient-series-
 
 </div>
 
-The scalar reductions make an equality test possible without choosing evaluation points. We first carry it out in base six at level two, where there are $`43`$ indexed sections. The $`37`$ retained sections are $`F_{0,0},F_{1,0}`$, the five $`F_{1,r}`$ ($`1\le r\le5`$), and the $`30`$ sections $`F_{2,r}`$ with $`1\le r<36`$ and $`6\nmid r`$. The omitted sections satisfy
+The reductions give a second way to test a linear identity, by substitution. Consider base six at level two, where the family has $`43`$ indices. The $`37`$ retained sections are $`F_{0,0},F_{1,0}`$, the five $`F_{1,r}`$ ($`1\le r\le5`$), and the $`30`$ sections $`F_{2,r}`$ with $`1\le r<36`$ and $`6\nmid r`$. The omitted sections satisfy
 ``` math
 \begin{aligned}
  F_{2,0}&=6F_{1,0}, & F_{2,6}&=2F_{1,1}, & F_{2,12}&=4F_{1,2},\\
  F_{2,18}&=3F_{1,3}, & F_{2,24}&=4F_{1,4}, & F_{2,30}&=2F_{1,5}.
 \end{aligned}
 ```
-Thus an integral combination of the $`43`$ sections vanishes precisely when these six substitutions leave all $`37`$ retained coefficients zero. The six differences obtained by moving the right-hand sides to the left give every integral relation. Indeed, subtracting the original coefficient of each omitted section times its difference removes all six omitted coordinates. The remaining retained coordinates must then vanish by Theorem <a href="#erdos-249-binary-totient-series--thm:kkernelrank" data-reference-type="ref" data-reference="erdos-249-binary-totient-series--thm:kkernelrank">1</a>. Writing $`x_{j,r}`$ for the original coefficient of $`F_{j,r}`$, the coefficient at $`F_{1,2}`$ after substitution is $`x_{1,2}+4x_{2,12}`$. The separate coefficient $`x_{2,12}`$ is the coefficient of the relation $`E_{2,12}-4E_{1,2}`$, where $`E_{j,r}`$ denotes the formal generator at index $`(j,r)`$. The other omitted indices work in the same way. At base two and level two this gives just $`E_{2,0}-2E_{1,0}`$ and $`E_{2,2}-E_{1,1}`$.
+Thus an integral combination of the $`43`$ sections vanishes precisely when these six substitutions leave all $`37`$ retained coefficients zero. The six differences obtained by moving the right-hand sides to the left give every integral relation. Indeed, subtracting the original coefficient of each omitted section times its difference removes all six omitted coordinates. The remaining retained coordinates must then vanish by Theorem <a href="#erdos-249-binary-totient-series--thm:kkernelrank" data-reference-type="ref" data-reference="erdos-249-binary-totient-series--thm:kkernelrank">1</a>. Writing $`x_{j,r}`$ for the original coefficient of $`F_{j,r}`$, the coefficient at $`F_{1,2}`$ after substitution is $`x_{1,2}+4x_{2,12}`$. Meanwhile $`x_{2,12}`$ is the coefficient of $`E_{2,12}-4E_{1,2}`$ in the expression for the relation, where $`E_{j,r}`$ is the generator of the free abelian group at index $`(j,r)`$. The two kinds of coefficient have different roles: the retained coefficients test whether the combination vanishes, while the omitted coefficients give its expression as a sum of relations. At base two and level two those relations are $`E_{2,0}-2E_{1,0}`$ and $`E_{2,2}-E_{1,1}`$. The same elimination works at every omitted index.
 
 <div id="erdos-249-binary-totient-series--cor:integral-normal-form" class="corollary">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos249/PaperCompleteR8/KernelRelationBasis.lean#L398">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/1d16f2ddf78e7c4c850246f67bf8ce79b19deb3c/evidence/erdos-249-binary-totient-series.md#cor-integral-normal-form-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos249/PaperCompleteR8/KernelRelationBasis.lean#L398">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d93e7408aed0b0c73ad5ea98116c7dc0dce3cf7b/evidence/erdos-249-binary-totient-series.md#cor-integral-normal-form-comparator">Comparator</a></p>
 
 **Corollary 2** (Integral coordinates and all integral relations). *Let $`k\ge2`$ and $`e\ge1`$. The retained family is a $`\mathbb{Z}`$-basis of the module generated by the sections through level $`e`$. Index the sections by their level and residue, retaining distinct indices even when they define equal sequences. For each omitted index $`i`$, write the scalar reduction as $`F_i=a_iF_{j(i)}`$, where $`j(i)`$ is retained and $`a_i`$ is a nonnegative integer. In the free abelian group with one generator $`E_i`$ for each of these indices, the vectors
 ``` math
@@ -2873,12 +2892,12 @@ An alternative is to test equality at finitely many inputs. Return to base six a
 
 </div>
 
-The prime-isolation construction has a second use. It can place a nonzero totient residue between arbitrarily long blocks of zero residues. For a series with bounded integer coefficients, such a pattern forces irrationality: the right block makes a scaled tail small, and the left block isolates a single nonzero term. We first give the resulting classification, then the tail argument. Residues in the following sum are their least nonnegative representatives; they are coefficients of a binary series and need not be binary digits.
+A similar use of congruences produces a nonzero totient residue between arbitrarily long blocks of zero residues. We use this to classify the rational series obtained from bounded functions of dyadic totient residues. The proof rests on a tail estimate: one zero block makes the tail vanish under the assumption of rationality, and the other leaves a nonzero term too small for that assumption. In the first sum below, residues are represented by their least nonnegative values. These coefficients need not be binary digits.
 
 <div id="erdos-249-binary-totient-series--res:residueseries" class="theorem">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos249/PaperCompleteR7/RationalObservableClassification.lean#L276">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/1d16f2ddf78e7c4c850246f67bf8ce79b19deb3c/evidence/erdos-249-binary-totient-series.md#res-residueseries-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos249/PaperCompleteR7/RationalObservableClassification.lean#L276">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d93e7408aed0b0c73ad5ea98116c7dc0dce3cf7b/evidence/erdos-249-binary-totient-series.md#res-residueseries-comparator">Comparator</a></p>
 
-**Theorem 3** (Residue series and dyadic observables). *For every $`m\ge3`$,
+**Theorem 3** (Series of totient residues). *For every $`m\ge3`$,
 ``` math
 \sum_{n\ge1}\frac{\varphi(n)\bmod m}{2^n}\notin\mathbb{Q}.
 ```
@@ -2886,7 +2905,7 @@ For $`k\ge1`$ and $`f:\mathbb{Z}/2^k\mathbb{Z}\to\mathbb{Q}`$, the series $`\sum
 
 </div>
 
-Modulo two the sum is $`3/4`$, since $`\varphi(n)`$ is even for $`n\ge3`$. More generally only $`f(1)`$ and the even residue classes occur in the second assertion. The pattern used in its proof is
+Modulo two the sum is $`3/4`$, since $`\varphi(n)`$ is even for $`n\ge3`$. More generally only $`f(1)`$ and the even residue classes occur in the second assertion. The following coefficient pattern is the basis of the proof:
 ``` math
 \underbrace{0,\ldots,0}_{L\text{ terms}},\quad
  a_N\ne0,\quad
@@ -2895,7 +2914,7 @@ Modulo two the sum is $`3/4`$, since $`\varphi(n)`$ is even for $`n\ge3`$. More 
 The coefficients outside these blocks may have either sign. Their uniform bound is what makes the following argument possible.
 
 <div id="erdos-249-binary-totient-series--lem:bounded-pulse" class="lemma">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos249/PaperCompleteR7/PeriodicAndPulse.lean#L106">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/1d16f2ddf78e7c4c850246f67bf8ce79b19deb3c/evidence/erdos-249-binary-totient-series.md#lem-bounded-pulse-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos249/PaperCompleteR7/PeriodicAndPulse.lean#L106">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d93e7408aed0b0c73ad5ea98116c7dc0dce3cf7b/evidence/erdos-249-binary-totient-series.md#lem-bounded-pulse-comparator">Comparator</a></p>
 
 **Lemma 4** (An isolated nonzero coefficient between long zero blocks). *Let $`a_n\in\mathbb{Z}`$ satisfy $`|a_n|\le C`$. Suppose that for arbitrarily large $`L`$ there is $`N>L`$ such that $`a_N\ne0`$ and $`a_{N+t}=0`$ for $`0<|t|\le L`$. Then $`\sum_{n\ge1}a_n2^{-n}`$ is irrational.*
 
@@ -2943,7 +2962,7 @@ The first assertion is also an application of Erdős’s sparse-series criterion
 The finite-level theorem also describes the full dyadic kernel. The notation below specialises the base to two.
 
 <div id="erdos-249-binary-totient-series--res:basis" class="corollary">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos249/PaperCompleteR8/FullKernelAssemblies.lean#L156">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/1d16f2ddf78e7c4c850246f67bf8ce79b19deb3c/evidence/erdos-249-binary-totient-series.md#res-basis-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos249/PaperCompleteR8/FullKernelAssemblies.lean#L156">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d93e7408aed0b0c73ad5ea98116c7dc0dce3cf7b/evidence/erdos-249-binary-totient-series.md#res-basis-comparator">Comparator</a></p>
 
 **Corollary 5** (Dyadic basis). *The family
 ``` math
@@ -2964,7 +2983,7 @@ is a basis for the rational span of the full dyadic kernel. Every rational relat
 The affine argument also permits periodic coefficients by restriction to their common residue classes.
 
 <div id="erdos-249-binary-totient-series--cor:periodic-freezing" class="corollary">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos249/PaperCompleteR20/PeriodicIntegerAffine.lean#L24">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/1d16f2ddf78e7c4c850246f67bf8ce79b19deb3c/evidence/erdos-249-binary-totient-series.md#cor-periodic-freezing-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos249/PaperCompleteR20/PeriodicIntegerAffine.lean#L24">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d93e7408aed0b0c73ad5ea98116c7dc0dce3cf7b/evidence/erdos-249-binary-totient-series.md#cor-periodic-freezing-comparator">Comparator</a></p>
 
 **Corollary 6** (Periodic coefficients). *Let $`L_1,\ldots,L_s`$ be pairwise nonproportional affine forms with integer coefficients and positive slopes. If $`w_1,\ldots,w_s`$ are rational-valued periodic sequences, then
 ``` math
@@ -3026,14 +3045,14 @@ Since $`0\le R_M\le M+2`$, we have
  |2^L\Delta_h(N)-D_{h,N,L}|\le B.
 \end{equation}
 ```
-The difference is bounded by the larger tail bound. Hence the finite inequality
+The two tails are nonnegative, so their difference is bounded in absolute value by the larger tail bound, not the sum of the bounds. An integral $`\Delta_h(N)`$ would put $`D_{h,N,L}`$ within distance $`B`$ of a multiple of $`2^L`$. Hence the finite inequality
 ``` math
 \begin{equation}
 \label{eq:r3-certificate}
  B<D_{h,N,L}\bmod2^L<2^L-B
 \end{equation}
 ```
-forces $`\Delta_h(N)\notin\mathbb{Z}`$. Conversely, if its distance to $`\mathbb{Z}`$ is positive, choose $`L`$ so that $`2^L\|\Delta_h(N)\|_{\mathbb{R}/\mathbb{Z}}>2B`$; the same error estimate gives <a href="#erdos-249-binary-totient-series--eq:r3-certificate" data-reference-type="eqref" data-reference="erdos-249-binary-totient-series--eq:r3-certificate">[eq:r3-certificate]</a>. Thus allowing an unrestricted depth loses no nonintegral difference. For example, $`D_{1,12,16}=-143140`$ has residue $`53468`$ modulo $`2^{16}`$, and $`B=31`$, so it excludes denominators dividing $`2^{12}`$.
+forces $`\Delta_h(N)\notin\mathbb{Z}`$. Conversely, hold $`h,N`$ fixed and suppose that $`\|\Delta_h(N)\|_{\mathbb{R}/\mathbb{Z}}>0`$. Choose $`L`$ so that $`2^L\|\Delta_h(N)\|_{\mathbb{R}/\mathbb{Z}}>2B`$: the left side grows exponentially, whereas $`B=N+h+L+2`$ grows linearly. The same error estimate gives <a href="#erdos-249-binary-totient-series--eq:r3-certificate" data-reference-type="eqref" data-reference="erdos-249-binary-totient-series--eq:r3-certificate">[eq:r3-certificate]</a>. This detects every nonintegral difference at some depth; it does not produce such a difference for each $`h`$. For example, $`D_{1,12,16}=-143140`$ has residue $`53468`$ modulo $`2^{16}`$, and $`B=31`$, so it excludes denominators dividing $`2^{12}`$.
 
 <a id="erdos-249-binary-totient-series--sec:frontier"></a>
 
@@ -3042,7 +3061,7 @@ forces $`\Delta_h(N)\notin\mathbb{Z}`$. Conversely, if its distance to $`\mathbb
 We write $`K(h,N,L)`$ for <a href="#erdos-249-binary-totient-series--eq:r3-certificate" data-reference-type="eqref" data-reference="erdos-249-binary-totient-series--eq:r3-certificate">[eq:r3-certificate]</a>.
 
 <div id="erdos-249-binary-totient-series--res:fulldepth" class="theorem">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos249/PaperCompleteR7/ShortNoteAssemblies.lean#L35">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/1d16f2ddf78e7c4c850246f67bf8ce79b19deb3c/evidence/erdos-249-binary-totient-series.md#res-fulldepth-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos249/PaperCompleteR7/ShortNoteAssemblies.lean#L35">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d93e7408aed0b0c73ad5ea98116c7dc0dce3cf7b/evidence/erdos-249-binary-totient-series.md#res-fulldepth-comparator">Comparator</a></p>
 
 **Theorem 7** (Propagation of one nonintegral tail difference). *Fix $`d\ge1`$ and $`N\ge0`$. If $`\Delta_d(N)\notin\mathbb{Z}`$, then every sufficiently late pair $`\{t,t+1\}`$ contains an $`m`$ such that $`K(md,N,md)`$ holds. Consequently
 ``` math
@@ -3053,7 +3072,7 @@ Requiring this for every $`d\ge1,N\ge0`$ is equivalent to $`S\notin\mathbb{Q}`$.
 
 </div>
 
-The proof uses the recurrence $`\Delta_{(t+1)d}(N)\equiv2^d\Delta_{td}(N)+\Delta_d(N)\pmod\mathbb{Z}`$; it is given in [Appendix A of the long record](https://github.com/wcook04/plectis-erdos/blob/main/paper/249/erdos249-totient-reasoning-surface.pdf#nameddest=long249-r3-ray). A single pair $`d,N`$ need not imply irrationality; the final assertion requires every positive $`d`$ and every $`N\ge0`$.
+Here the depth is no longer free: it must equal the shift. The recurrence $`\Delta_{(t+1)d}(N)\equiv2^d\Delta_{td}(N)+\Delta_d(N)\pmod\mathbb{Z}`$ prevents two consecutive large shifts from both failing the test. Two failures would force the fixed nonintegral $`\Delta_d(N)`$ arbitrarily close to an integer. The estimates are in [Appendix A of the long record](https://github.com/wcook04/plectis-erdos/blob/main/paper/249/erdos249-totient-reasoning-surface.pdf#nameddest=long249-r3-ray). A single pair $`d,N`$ need not imply irrationality; the final assertion requires every positive $`d`$ and every $`N\ge0`$.
 
 For a hypothetical denominator $`2^cv`$, a second test uses the modulus $`M=(2^H-1)/v`$, where $`H`$ is a positive multiple of $`\varphi(v)`$. Write $`B_{H,c}=\sum_{j=0}^{H-1}\varphi(c+1+j)2^{H-1-j}`$.
 
@@ -3069,7 +3088,7 @@ For a hypothetical denominator $`2^cv`$, a second test uses the modulus $`M=(2^H
 
 </div>
 
-The [proof and residue recurrence](https://github.com/wcook04/plectis-erdos/blob/main/paper/249/erdos249-totient-reasoning-surface.pdf#nameddest=long249-r3-mersenne) use $`B_{H,c}=M(vR_c)-\Delta_H(c)`$ and the linear tail bound. Neither test provides these universal witnesses. A separate [Farey-interval calculation](https://github.com/wcook04/plectis-erdos/blob/main/paper/249/erdos249-totient-reasoning-surface.pdf#nameddest=long249-r3-farey) at depth $`240`$ excludes $`S=a/q`$ for $`0<q\le Q_0\approx7.96\times10^{34}`$.
+The [proof and residue recurrence](https://github.com/wcook04/plectis-erdos/blob/main/paper/249/erdos249-totient-reasoning-surface.pdf#nameddest=long249-r3-mersenne) use $`B_{H,c}=M(vR_c)-\Delta_H(c)`$ and the linear tail bound. The required residues have not been shown to exist for every choice of the parameters in either test. A separate [Farey-interval calculation](https://github.com/wcook04/plectis-erdos/blob/main/paper/249/erdos249-totient-reasoning-surface.pdf#nameddest=long249-r3-farey) at depth $`240`$ excludes $`S=a/q`$ for $`0<q\le Q_0\approx7.96\times10^{34}`$.
 
 <a id="erdos-249-binary-totient-series--sec:nogo"></a>
 
@@ -3077,7 +3096,7 @@ The [proof and residue recurrence](https://github.com/wcook04/plectis-erdos/blob
 
 <span id="erdos-249-binary-totient-series--sec:signed-interpolation-transfer" label="sec:signed-interpolation-transfer"></span> Large ranks alone cannot settle the series question. There is an integer sequence $`c`$ with $`0\le c(n)\le n`$, unchanged odd totients and $`|c(n)-\varphi(n)|\le2`$ at even indices, for which $`\sum c(n)2^{-n}=5/4`$. Its integral carry still has dyadic rank at least $`2^e-1`$ through every positive level. The [construction and its limitations](https://github.com/wcook04/plectis-erdos/blob/main/paper/249/erdos249-totient-reasoning-surface.pdf#nameddest=long249-r3-comparisons) explain why it fails the exact prime-dilation laws of $`\varphi`$. The same section retains the cofinal LCM-diagonal criterion, its endpoint sign conditions and the limits of finite integer combinations of shifts.
 
-The ordinary [signed interpolation argument](https://github.com/wcook04/plectis-erdos/blob/main/paper/249/erdos249-totient-reasoning-surface.pdf#nameddest=long249-r3-interpolation) permits any value in an interval about $`\sum\varphi(n)\beta^{-n}`$, for each integer $`\beta\ge2`$, while preserving a prescribed prefix and every odd coefficient, with errors bounded by any positive $`f(n)\to\infty`$. The changed even indices have upper Banach density zero. On each fixed progression the Dirichlet defect is entire; at roots of unity the generating-function defect has smooth radial data and any prescribed finite jets vanish. This argument has not been formalised in Lean. It preserves Dirichlet singularities; regular parts and zeros may change, and finite jets do not determine an entire radial germ. It therefore supplies no cancellation estimate for the unchanged totient.
+The [signed interpolation argument](https://github.com/wcook04/plectis-erdos/blob/main/paper/249/erdos249-totient-reasoning-surface.pdf#nameddest=long249-r3-interpolation) gives a different family of comparison sequences. For each integer $`\beta\ge2`$, their sums can take any value in an interval about $`\sum\varphi(n)\beta^{-n}`$, while a prescribed prefix and every odd coefficient stay fixed. The errors may be bounded by any positive $`f(n)\to\infty`$, and the changed even indices have upper Banach density zero. On each fixed arithmetic progression, the difference of the associated Dirichlet series is entire. At roots of unity, the difference of the generating functions extends smoothly in the radial direction, with any prescribed finite collection of radial derivatives vanishing. Thus the Dirichlet singularities are preserved, although regular parts and zeros may change; finitely many radial derivatives do not determine the full radial germ. This ordinary proof has not been formalised in Lean and gives no cancellation estimate for the unchanged totient sequence.
 
 Rational approximation imposes a different requirement. The identity
 ``` math
@@ -3090,7 +3109,7 @@ Q(e,Y)=\frac{\bigl(\sum_{d\le Y}\mu(d)/(2^d-1)^{e+2}\bigr)^2}
 ```
 
 <div id="erdos-249-binary-totient-series--res:rankonefloor" class="theorem">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/1d16f2ddf78e7c4c850246f67bf8ce79b19deb3c/evidence/erdos-249-binary-totient-series.md#res-rankonefloor">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/1d16f2ddf78e7c4c850246f67bf8ce79b19deb3c/evidence/erdos-249-binary-totient-series.md#res-rankonefloor-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/d93e7408aed0b0c73ad5ea98116c7dc0dce3cf7b/evidence/erdos-249-binary-totient-series.md#res-rankonefloor">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d93e7408aed0b0c73ad5ea98116c7dc0dce3cf7b/evidence/erdos-249-binary-totient-series.md#res-rankonefloor-comparator">Comparator</a></p>
 
 **Theorem 9** (A lower bound for the rank-one quotients). *For $`e\ge1`$ and $`Y\ge4`$, the denominator of $`Q(e,Y)`$ is positive, and the unique minimiser is $`(e,Y)=(1,5)`$. Every admissible quotient and every nonempty finite positive weighted average of such quotients satisfies
 ``` math
@@ -3100,7 +3119,7 @@ The uniform bound $`Q-\Theta_2>1/15`$ is false already at $`(1,5)`$.*
 
 </div>
 
-The [proof](https://github.com/wcook04/plectis-erdos/blob/main/paper/249/erdos249-totient-reasoning-surface.pdf#nameddest=long249-r3-rankone) bounds geometric tails and compares seven-term rational prefixes. The averaging assertion applies after division; signed combinations, coupling before division and higher-rank kernels remain separate questions. A proposed family $`p_j/q_j`$ in lowest terms would need $`0<q_j|\Theta_2-p_j/q_j|\to0`$, which convergence alone does not imply.
+The [proof](https://github.com/wcook04/plectis-erdos/blob/main/paper/249/erdos249-totient-reasoning-surface.pdf#nameddest=long249-r3-rankone) first makes the denominator uniformly positive. A geometric bound handles all $`e\ge2`$; at $`e=1`$, seven-term prefixes leave only $`Y=4,5,6`$ to compare directly. The averaging assertion concerns averages of the quotients themselves. It leaves open signed combinations, quotients formed after combining the sums, and higher-rank kernels. A proposed family $`p_j/q_j`$ in lowest terms would need $`0<q_j|\Theta_2-p_j/q_j|\to0`$, which convergence alone does not imply.
 
 <a id="erdos-249-binary-totient-series--sec:open"></a>
 
@@ -3119,7 +3138,7 @@ For every $`h\ge1`$ and every $`X_0`$, suppose that some integers $`X\ge\max(X_0
        \exp(2\pi iD_{h,N,L}/2^L)\le\frac9{10}X.
 \end{equation}
 ```
-These inequalities would prove irrationality. Indeed, if every residue failed <a href="#erdos-249-binary-totient-series--eq:r3-certificate" data-reference-type="eqref" data-reference="erdos-249-binary-totient-series--eq:r3-certificate">[eq:r3-certificate]</a>, each phase would be within $`1/16`$ of an integer, so every real part would be at least $`\cos(\pi/8)>9/10`$. A certificate must therefore occur on the block, and <a href="#erdos-249-binary-totient-series--eq:tail-phase" data-reference-type="eqref" data-reference="erdos-249-binary-totient-series--eq:tail-phase">[eq:tail-phase]</a> excludes every rational denominator by choosing its period and then a sufficiently late block.
+These inequalities would prove irrationality. Indeed, if every residue failed <a href="#erdos-249-binary-totient-series--eq:r3-certificate" data-reference-type="eqref" data-reference="erdos-249-binary-totient-series--eq:r3-certificate">[eq:r3-certificate]</a>, each phase would be within $`1/16`$ of an integer, so every real part would be at least $`\cos(\pi/8)>9/10`$. Some $`N`$ in the block must therefore satisfy <a href="#erdos-249-binary-totient-series--eq:r3-certificate" data-reference-type="eqref" data-reference="erdos-249-binary-totient-series--eq:r3-certificate">[eq:r3-certificate]</a>. For a hypothetical rational value, we choose its period and then a sufficiently late block, contradicting <a href="#erdos-249-binary-totient-series--eq:tail-phase" data-reference-type="eqref" data-reference="erdos-249-binary-totient-series--eq:tail-phase">[eq:tail-phase]</a>.
 
 To separate the counting estimates from the cancellation estimate, we single out one totient in each window. Fix $`h,s\ge1`$, $`L\ge s+h`$, $`X\ge1`$ and $`0<\eta<1`$, and put $`t=L-s+1`$ and $`E_N=\exp(2\pi iD_{h,N,L}/2^L)`$. For $`X\le N<2X`$, let $`p_N`$ be the largest prime factor of $`N+t`$ and $`m_N=(N+t)/p_N`$. Define
 ``` math
@@ -3134,7 +3153,7 @@ All indices are integers. On $`\mathcal A`$ we have $`p_N>m_N`$, so $`\varphi(N+
 z_N=\exp\!\left(\frac{2\pi i(2^h-1)\varphi(m_N)(p_N-1)}{2^t}\right),
  \qquad w_N=E_N/z_N,
 ```
-and let $`\bar z_m`$ be the average over the indices in $`\mathcal A`$ with cofactor $`m`$, with value zero for an empty set. The four proposed bounds are
+and let $`\bar z_m`$ be the average over the indices in $`\mathcal A`$ with cofactor $`m`$, taking the average to be zero for an empty set. We seek the four bounds
 ``` math
 \begin{equation}
 \label{eq:r3-four-bounds}
@@ -3150,7 +3169,7 @@ and let $`\bar z_m`$ be the average over the indices in $`\mathcal A`$ with cofa
 \end{aligned}
 \end{equation}
 ```
-Before taking real parts and absolute values, the four sums add to $`\sum E_N`$, and hence their bounds imply the real-part estimate $`9X/10`$ in <a href="#erdos-249-binary-totient-series--eq:r3-harmonic" data-reference-type="eqref" data-reference="erdos-249-binary-totient-series--eq:r3-harmonic">[eq:r3-harmonic]</a>. We have only added and subtracted the group means, without any independence assumption. The resulting bound concerns the real part, and does not give a $`21X/25`$ bound for the absolute value of the full sum.
+Before taking real parts and absolute values, the four sums add to $`\sum E_N`$, so their bounds imply the real-part estimate $`9X/10`$ in <a href="#erdos-249-binary-totient-series--eq:r3-harmonic" data-reference-type="eqref" data-reference="erdos-249-binary-totient-series--eq:r3-harmonic">[eq:r3-harmonic]</a>. Subtracting $`\bar z_m`$ cancels the unweighted sum within its cofactor group, but the factors $`w_N`$ may vary within that group. Thus centering alone does not bound the first sum. The second sum must also be estimated with those same weights. No independence has been assumed. The conclusion concerns the real part; it does not give a $`21X/25`$ bound for the absolute value of the full sum.
 
 <div id="erdos-249-binary-totient-series--prob:firstharmonic" class="problem">
 
@@ -3163,7 +3182,7 @@ for which those four bounds hold?
 
 </div>
 
-All four estimates must hold on the same block with the same parameters. For each fixed $`h,s`$, take the least admissible $`L`$ satisfying the room inequality and $`L\ge s+h`$. The [smooth-number and small-cofactor estimates](https://github.com/wcook04/plectis-erdos/blob/main/paper/249/erdos249-totient-reasoning-surface.pdf#nameddest=long249-r3-counts) give the last two bounds for all sufficiently large $`X`$ when $`0<\eta<1/(300\log4)`$. The elementary excluded-cofactor estimate is $`(3\eta\log4+o(1))X`$; it needs no prime number theorem. The group-mean and weighted mean-subtracted estimates remain open. No optimality is asserted for the sufficient margins in <a href="#erdos-249-binary-totient-series--eq:r3-four-bounds" data-reference-type="eqref" data-reference="erdos-249-binary-totient-series--eq:r3-four-bounds">[eq:r3-four-bounds]</a>.
+The parameters $`s`$ and $`\eta`$ may depend on $`h`$, but must be fixed before the threshold $`X_0`$ is given. All four estimates must then hold for one common choice of $`X,L`$. For each fixed $`h,s`$, take the least admissible $`L`$ satisfying the size inequality in <a href="#erdos-249-binary-totient-series--eq:r3-harmonic" data-reference-type="eqref" data-reference="erdos-249-binary-totient-series--eq:r3-harmonic">[eq:r3-harmonic]</a> and $`L\ge s+h`$. The [smooth-number and small-cofactor estimates](https://github.com/wcook04/plectis-erdos/blob/main/paper/249/erdos249-totient-reasoning-surface.pdf#nameddest=long249-r3-counts) give the last two bounds for all sufficiently large $`X`$ when $`0<\eta<1/(300\log4)`$. The elementary excluded-cofactor estimate is $`(3\eta\log4+o(1))X`$; it needs no prime number theorem. The first two bounds in <a href="#erdos-249-binary-totient-series--eq:r3-four-bounds" data-reference-type="eqref" data-reference="erdos-249-binary-totient-series--eq:r3-four-bounds">[eq:r3-four-bounds]</a> remain open. No optimality is asserted for the sufficient margins in <a href="#erdos-249-binary-totient-series--eq:r3-four-bounds" data-reference-type="eqref" data-reference="erdos-249-binary-totient-series--eq:r3-four-bounds">[eq:r3-four-bounds]</a>.
 
 Alternatively, at $`s=26`$, $`\eta=1/1000`$ and minimal depth one has $`|\mathcal G|>67X/100`$ for large $`X`$. The single open estimate $`\operatorname{Re}\sum_{N\in\mathcal G}E_N\le603X/1000`$, for each $`h`$ on arbitrarily large blocks, would suffice by the same argument. The [ordinary comparison argument](https://github.com/wcook04/plectis-erdos/blob/main/paper/249/erdos249-totient-reasoning-surface.pdf#nameddest=long249-r3-interpolation) gives larger first harmonics at all sufficiently large admissible scales, distinguishing its rational sequences from the cancellation required of $`\varphi`$. Its proof is included with the interpolation construction.
 
@@ -3173,7 +3192,7 @@ Balasubramanian, Giri and Srivastav give correlation estimates applicable to $`\
 
 ###### Verification.
 
-*Formal proofs.* A result with a kernel-checked Lean proof carries links beside its heading and in the margin; both open the same evidence. *Lean* opens the proof: the declaration itself when one declaration states the whole result, otherwise the list of declarations that together state it. Inline citations to individual declarations elsewhere may identify ingredients of a proof. *Comparator* opens the recorded comparison, in which the same statement, written again from Mathlib alone in a separate repository, was compared with our proof by Lean’s Comparator tool, allowing only the three standard axioms. *Comparator pending* means that the complete statement has no recorded comparison yet. A dagger on the Lean mark means that the Lean proof assumes an input named just below the result. A result without a mark has no Lean proof of its whole statement; what is checked is said below it. The [evidence record](https://github.com/wcook04/plectis-erdos/blob/1d16f2ddf78e7c4c850246f67bf8ce79b19deb3c/evidence/erdos-249-binary-totient-series.md) gives every declaration, version and check. Comparator checks statements, axioms and kernel acceptance; it does not establish novelty or peer review. These checks show that the stated propositions are proved; whether they are the right propositions is a question the reader can settle by comparing them with the text.
+*Formal proofs.* A result with a kernel-checked Lean proof carries links beside its heading and in the margin; both open the same evidence. *Lean* opens the proof: the declaration itself when one declaration states the whole result, otherwise the list of declarations that together state it. Inline citations to individual declarations elsewhere may identify ingredients of a proof. *Comparator* opens the recorded comparison, in which the same statement, written again from Mathlib alone in a separate repository, was compared with our proof by Lean’s Comparator tool, allowing only the three standard axioms. *Comparator pending* means that the complete statement has no recorded comparison yet. A dagger on the Lean mark means that the Lean proof assumes an input named just below the result. A result without a mark has no Lean proof of its whole statement; what is checked is said below it. The [evidence record](https://github.com/wcook04/plectis-erdos/blob/d93e7408aed0b0c73ad5ea98116c7dc0dce3cf7b/evidence/erdos-249-binary-totient-series.md) gives every declaration, version and check. Comparator checks statements, axioms and kernel acceptance; it does not establish novelty or peer review. These checks show that the stated propositions are proved; whether they are the right propositions is a question the reader can settle by comparing them with the text.
 
 The [declaration guide](https://github.com/wcook04/plectis-erdos/blob/main/paper/249/erdos249-totient-reasoning-surface.pdf#nameddest=long249-r3-declarations) preserves the individual formal-source links for the short paper, including the three results whose full proofs appear in Appendix A of the long record. The displayed arguments and the signed interpolation proof are to be read as ordinary mathematical proofs. Recorded Lean and Comparator checks refer to their exact declarations and source versions; this revision makes no claim of a new formal run or independent review.
 
@@ -3205,7 +3224,7 @@ J.-P. Allouche and J. Shallit, *The ring of $`k`$-regular sequences*, Theoret.
 
 </div>
 
-For each convergent dyadic series with nonnegative integer coefficients, we construct nonnegative integer perturbations whose sums fill an interval, with one sparse permitted set for all targets. The corrections obey any prescribed bound tending to infinity and eventually preserve coefficient and partial-sum residues modulo every fixed integer. Pairs with a fixed ordinary sum provide the weighted choices for interval covering. For prime gaps we also preserve growing-block statistics and cumulative size. The cumulative positions need not be prime, and the irrationality question remains open.
+For each convergent dyadic series with nonnegative integer coefficients, we construct nonnegative integer perturbations whose sums fill an interval and whose supports lie in one set of upper Banach density zero. The corrections obey any prescribed bound tending to infinity and eventually preserve coefficient and partial-sum residues modulo every fixed integer. The construction varies adjacent corrections while keeping their ordinary sum fixed. For prime gaps it also preserves growing-block distributions and cumulative size. The cumulative positions need not be prime, and the irrationality question remains open.
 
 <a id="erdos-251-prime-gap-dyadic-series--sec:problem"></a>
 
@@ -3217,7 +3236,7 @@ Let $`p_0=2,p_1=3,\ldots`$ be the primes and put $`g_n=p_{n+1}-p_n`$. Erdős ask
 ```
 is irrational \[erdos1958, p. 94\]\[erdosgraham1980, p. 62\] \[erdos1988, p. 103\]. Summation by parts gives $`\Pi=2+\sum_{n\ge0}g_n2^{-(n+1)}`$, with convergence justified in Section <a href="#erdos-251-prime-gap-dyadic-series--sec:parts" data-reference-type="ref" data-reference="erdos-251-prime-gap-dyadic-series--sec:parts">4</a>. We study which properties of the gaps survive when the latter sum is changed to a prescribed value.
 
-We prove a perturbation theorem for arbitrary convergent dyadic series with nonnegative integer coefficients. A single sparse set of permitted indices allows every target in an interval, even when the corrections must obey an arbitrarily slowly growing bound. We also prescribe, before choosing the target, a cutoff for each modulus beyond which both the corrections and their partial sums are divisible by that modulus. For prime gaps the same construction retains the distributions of blocks of length $`o(\log\log X)`$ sampled in $`[X,2X)`$ and gives cumulative positions asymptotic to $`n\log n`$. The irrationality of the actual prime series remains a distinct question: these comparison sequences need not have prime cumulative positions.
+We prove a perturbation theorem for arbitrary convergent dyadic series with nonnegative integer coefficients. All corrections are supported on one sparse set, chosen before the value of the sum. Their sizes may be eventually bounded by any prescribed function tending to infinity, while the sums still fill an interval. We also prescribe, before choosing the target, a cutoff for each modulus beyond which both the corrections and their partial sums are divisible by that modulus. For prime gaps the same construction retains the distributions of blocks of length $`o(\log\log X)`$ sampled in $`[X,2X)`$ and gives cumulative positions asymptotic to $`n\log n`$. The irrationality of the actual prime series remains a distinct question: these comparison sequences need not have prime cumulative positions.
 
 We use a standard interval-covering argument for series with finite choices. Fridy’s generalised-base lemma \[fridy1966, p. 194\] treats bounded digits and decreasing weights. Crmarić and Kovač \[crmarickovac2025, Lemma 4\] give the finite-choice form used here, and Kovač and Tao \[kovactao2024, Lemma 5.1\] use analogous intervals of reciprocal choices. We must arrange these choices on a sparse set while preserving cumulative congruences. To do so, we redistribute a fixed correction between two adjacent indices. The simplest useful calculation is
 ``` math
@@ -3227,7 +3246,7 @@ We use a standard interval-covering argument for series with finite choices. Fri
  2^{n+2}\bigl(e_n2^{-n-1}+e_{n+1}2^{-n-2}\bigr)&6&8&10&12.
  \end{array}
 ```
-Moving $`2`$ from the later index to the earlier one changes the weighted sum while leaving the ordinary sum fixed. If the cumulative correction before the pair is odd, an additional $`1`$ at $`n-1`$ clears its residue modulo $`2`$. The choice among the four pairs then has no effect on any cumulative residue beyond the pair. This is only the local calculation: we still have to accommodate every fixed modulus and an arbitrarily small density of permitted indices. Increasing the spacing inserts a smaller power of $`2`$ into the weighted contribution. We increase the range of choices in each pair just enough for later choices to cover the spacing between the present ones.
+Moving $`2`$ from the later index to the earlier one changes the weighted sum while leaving the ordinary sum fixed. If the cumulative correction before the pair is odd, an additional $`1`$ at $`n-1`$ clears its residue modulo $`2`$. Since the four pairs have the same sum, the choice of pair leaves every later cumulative residue unchanged. We repeat this operation with nested moduli and increasingly separated pairs. The larger separations make the weighted contributions smaller, so we enlarge the range of each pair until the later contributions fill the gaps between consecutive present choices.
 
 Throughout, $`\mathbb{N}=\{0,1,\ldots\}`$, intervals of indices contain integers, and $`\log`$ is natural unless a base is displayed. A set $`S\subseteq\mathbb{N}`$ has *upper Banach density zero* if
 ``` math
@@ -3236,7 +3255,7 @@ Throughout, $`\mathbb{N}=\{0,1,\ldots\}`$, intervals of indices contain integers
 For integers $`X,m\ge1`$, let $`\mu_{a,X,m}`$ denote the distribution of $`(a_n,\ldots,a_{n+m-1})`$ when $`n`$ is uniform on $`[X,2X)`$. Blocks are unnormalised and counted with multiplicity. We use $`d_{\rm TV}(\mu,\nu)=\sup_B|\mu(B)-\nu(B)|`$.
 
 <div id="erdos-251-prime-gap-dyadic-series--res:sparserationalisation" class="proposition">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/1d16f2ddf78e7c4c850246f67bf8ce79b19deb3c/evidence/erdos-251-prime-gap-dyadic-series.md#res-sparserationalisation">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/1d16f2ddf78e7c4c850246f67bf8ce79b19deb3c/evidence/erdos-251-prime-gap-dyadic-series.md#res-sparserationalisation-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/d93e7408aed0b0c73ad5ea98116c7dc0dce3cf7b/evidence/erdos-251-prime-gap-dyadic-series.md#res-sparserationalisation">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d93e7408aed0b0c73ad5ea98116c7dc0dce3cf7b/evidence/erdos-251-prime-gap-dyadic-series.md#res-sparserationalisation-comparator">Comparator</a></p>
 
 **Proposition 1** (sparse changes preserving congruences). *Let $`a:\mathbb{N}\to\mathbb{N}`$ satisfy $`A=\sum_{n\ge0}a_n2^{-(n+1)}<\infty`$, let $`K\in\mathbb{N}`$, and let $`f:\mathbb{N}\to\mathbb{R}`$ tend to $`+\infty`$. There exist a set $`S\subseteq[K,\infty)`$ of upper Banach density zero and a nondegenerate interval $`I\subset(A,\infty)`$ such that, for every $`r\in I`$, there is an integer correction $`e:\mathbb{N}\to\mathbb{N}`$ satisfying
 ``` math
@@ -3254,7 +3273,7 @@ In particular the distance tends to zero for every integer-valued $`m=m(X)\ge1`$
 
 </div>
 
-The support of $`e`$ may depend on $`r`$ and occupy only part of $`S`$. Polynomially growing nonnegative integer sequences satisfy the convergence hypothesis, whereas $`a_n=2^n`$ does not. The allowance may grow as slowly as $`\log\log(n+3)`$. A bounded allowance would force every correction to vanish: a modulus exceeding the bound makes $`e`$ eventually zero, and its constant cumulative sum must then be divisible by every positive integer.
+The support of $`e`$ may depend on $`r`$ and occupy only part of $`S`$. Polynomially growing nonnegative integer sequences satisfy the convergence hypothesis, whereas $`a_n=2^n`$ does not. The prescribed bound may grow as slowly as $`\log\log(n+3)`$. A bounded correction would have to vanish identically: a modulus exceeding the bound makes $`e`$ eventually zero, and its constant cumulative sum must then be divisible by every positive integer.
 
 Section <a href="#erdos-251-prime-gap-dyadic-series--sec:construction" data-reference-type="ref" data-reference="erdos-251-prime-gap-dyadic-series--sec:construction">2</a> gives the construction, and Section <a href="#erdos-251-prime-gap-dyadic-series--sec:prime-application" data-reference-type="ref" data-reference="erdos-251-prime-gap-dyadic-series--sec:prime-application">3</a> applies it to prime gaps. We then identify the actual tails and characterise their rationality by integral shifts. This leads to finite separation tests and to a sufficient condition involving two consecutive small differences. The [companion’s literature discussion](https://github.com/wcook04/plectis-erdos/blob/main/paper/251/erdos251-prime-gap-reasoning-surface.pdf#nameddest=context) contains the further comparisons, including finite subsums and other dyadic coefficient sequences.
 
@@ -3264,7 +3283,7 @@ Section <a href="#erdos-251-prime-gap-dyadic-series--sec:construction" data-ref
 
 <div class="proof">
 
-*Proof.* *Fixed totals.* At stage $`j`$ we put a correction at $`n_j-1`$ and a variable pair at $`n_j,n_j+1`$. We keep the pair’s ordinary sum fixed, so that its choice leaves the residue to be cleared at every later stage unchanged. Let $`n_{-1}\ge K`$, write $`s_j=n_j-n_{j-1}\ge4`$, and take positive integers $`M_j`$ with $`M_j\mid M_{j+1}`$. The actual centres and moduli will be chosen below. Put $`D_j=2^{s_j}-1`$; we will see shortly why this digit range compensates for the spacing $`s_j`$.
+*Proof.* *Fixed totals.* At stage $`j`$ we put a correction at $`n_j-1`$ and a variable pair at $`n_j,n_j+1`$. We keep the pair’s ordinary sum fixed. Consequently, the residue to be cancelled at a later stage is independent of all earlier pair choices. Let $`n_{-1}\ge K`$, write $`s_j=n_j-n_{j-1}\ge4`$, and take positive integers $`M_j`$ with $`M_j\mid M_{j+1}`$. For now let $`D_j`$ be a positive integer bounding the digit at stage $`j`$. We first describe the corrections for these parameters, then choose them to obtain both sparsity and an interval of sums.
 
 Starting from $`C_0=0`$, define
 ``` math
@@ -3297,11 +3316,12 @@ After $`c_j`$ has been inserted, the cumulative correction is divisible by $`M_j
 ``` math
 q\mid e_n,\qquad q\mid\sum_{i<n}e_i\qquad(n\ge n_J).
 ```
-The entry $`c_J`$ lies at $`n_J-1`$, just before this cutoff; it need not itself be divisible by $`q`$. This explains both the placement of the residue correction and the target independence of the cutoff.
+The entry $`c_J`$ need not be divisible by $`q`$, which is why it is placed at $`n_J-1`$, before the cutoff. The index $`n_J`$ depends on $`q`$ and the chosen moduli, but not on the digits or the value to be attained.
 
-*Spacing and size.* The variable part at stage $`j`$ has spacing $`w_j`$ and maximum $`D_jw_j`$. We arrange that the later variable parts have enough total range to cover one spacing $`w_j`$. Our choice $`D_i=2^{s_i}-1`$ gives
+*Spacing and size.* The variable part at stage $`j`$ takes the values $`0,w_j,\ldots,D_jw_j`$. To fill the gaps between these choices, we need the later variable parts to have total range at least $`w_j`$. This suggests making each later range a difference of successive dyadic scales. We therefore choose $`D_i=2^{s_i}-1`$, for which
 ``` math
-D_iw_i=M_i\bigl(2^{-n_{i-1}-2}-2^{-n_i-2}\bigr).
+D_iw_i=(2^{n_i-n_{i-1}}-1)M_i2^{-n_i-2}
+       =M_i\bigl(2^{-n_{i-1}-2}-2^{-n_i-2}\bigr).
 ```
 Because $`M_i\ge M_j`$ for $`i>j`$, replacing every later modulus by $`M_j`$ gives the finite estimate
 ``` math
@@ -3315,9 +3335,9 @@ Because $`M_i\ge M_j`$ for $`i>j`$, replacing every later modulus by $`M_j`$ giv
  \end{aligned}
 \end{equation}
 ```
-Thus increasing the spacing does not destroy interval covering, provided we pay for the corresponding digit range. Every entry of <a href="#erdos-251-prime-gap-dyadic-series--eq:correction-triple" data-reference-type="eqref" data-reference="erdos-251-prime-gap-dyadic-series--eq:correction-triple">[eq:correction-triple]</a> is at most $`M_j2^{s_j}`$. It remains to fit that quantity below the allowance while making the spacings tend to infinity and the moduli eventually divisible by each fixed integer.
+The digit range $`D_j=2^{s_j}-1`$ therefore gives the required overlap estimate even when the separations increase. Every entry of <a href="#erdos-251-prime-gap-dyadic-series--eq:correction-triple" data-reference-type="eqref" data-reference="erdos-251-prime-gap-dyadic-series--eq:correction-triple">[eq:correction-triple]</a> is at most $`M_j2^{s_j}`$, so we must keep this quantity below the prescribed bound at the three indices. We must also have $`s_j\to\infty`$ and ensure that every fixed positive integer divides all sufficiently late $`M_j`$.
 
-For a possibly nonmonotone allowance use
+To allow a nonmonotone bound $`f`$, put
 ``` math
 h(n)=\inf_{m\ge n}\min(f(m),m).
 ```
@@ -3326,13 +3346,13 @@ This nondecreasing lower envelope tends to infinity. A bound chosen using $`h(n_
 k_j=\max\{k\ge2:k!2^{k+2}\le h(n_{j-1})\},\qquad
  M_j=k_j!,\qquad s_j=k_j+2,\qquad n_j=n_{j-1}+s_j.
 ```
-The single parameter $`k_j`$ now controls both requirements: $`k_j!`$ absorbs each fixed modulus once $`k_j`$ is large enough, while $`k_j+2`$ separates the triples. We choose the largest such parameter whose cost $`k_j!2^{k_j+2}`$ fits the available bound. The choice exists because $`2!2^4=32`$, is finite, and is nondecreasing with $`j`$. Since $`n_j\to\infty`$ and $`h(n_j)\to\infty`$, we also have $`k_j\to\infty`$. Consequently the moduli are nested, every fixed $`q`$ divides all sufficiently late $`M_j`$, and $`s_j\to\infty`$. At each supported coordinate $`n`$ of the $`j`$th triple,
+The maximum exists: $`k=2`$ is admissible because $`2!2^4=32`$, and $`k!2^{k+2}`$ tends to infinity. Since $`h`$ is nondecreasing, so is $`k_j`$. Moreover $`n_j\to\infty`$, hence $`h(n_j)\to\infty`$ and $`k_j\to\infty`$. It follows that $`M_j\mid M_{j+1}`$, every fixed $`q`$ divides all sufficiently late $`M_j=k_j!`$, and the separations $`s_j=k_j+2`$ tend to infinity. The same choice gives the size estimate: at each supported coordinate $`n`$ of the $`j`$th triple,
 ``` math
 0\le e_n\le M_j2^{s_j}\le h(n_{j-1})\le\min(f(n),n).
 ```
 This proves the size bound and convergence for every choice of digits.
 
-Let $`S=\bigcup_{j\ge0}\{n_j-1,n_j,n_j+1\}`$. For any $`R`$, all but finitely many successive centres are at least $`R`$ apart. An interval of length $`H`$ therefore meets at most $`3(H/R+2)`$ permitted indices, in addition to a fixed finite set. The bound is uniform in the position of the interval. Divide by $`H`$, take the supremum over positions and let $`H\to\infty`$; then let $`R\to\infty`$. This proves upper Banach density zero.
+Let $`S=\bigcup_{j\ge0}\{n_j-1,n_j,n_j+1\}`$. For any $`R`$, all but finitely many successive centres are at least $`R`$ apart. An interval of length $`H`$ therefore contains at most $`3(H/R+2)`$ points of $`S`$, in addition to a fixed finite set. The bound is uniform in the position of the interval. Divide by $`H`$, take the supremum over positions and let $`H\to\infty`$; then let $`R\to\infty`$. This proves upper Banach density zero.
 
 *Attaining the interval.* We have now fixed the centres, moduli, digit ranges and residue corrections, but have left every digit free. Define
 ``` math
@@ -3350,7 +3370,7 @@ Taking $`J\to\infty`$ in <a href="#erdos-251-prime-gap-dyadic-series--eq:finite-
  F_{j+1}\ge M_j2^{-n_j-2}=w_j.
 \end{equation}
 ```
-For a remaining target in $`[0,F_j]`$, choosing digit $`d`$ leaves a remainder in $`[0,F_{j+1}]`$ exactly when that target belongs to
+Every variable sum from stage $`j`$ onwards lies in $`[0,F_j]`$; we must still show that every point of this interval is attained. A target in $`[0,F_j]`$ leaves a remainder in $`[0,F_{j+1}]`$ after choosing digit $`d`$ exactly when it belongs to
 ``` math
 [dw_j,dw_j+F_{j+1}],\qquad d=0,\ldots,D_j.
 ```
@@ -3365,13 +3385,13 @@ Given $`x\in[0,F_0]`$, start with $`\rho_0=x`$. Having chosen the first $`j`$ di
 ``` math
 \rho_{j+1}=\rho_j-d_jw_j\in[0,F_{j+1}].
 ```
-The covering just proved makes this possible at every stage. The invariant $`0\le\rho_j\le F_j`$ and $`F_j\to0`$ then give
+The covering just proved makes this possible at every stage. Since $`0\le\rho_j\le F_j`$ and $`F_j\to0`$, we obtain
 ``` math
 x-\sum_{i=0}^{j}d_iw_i=\rho_{j+1}\longrightarrow0.
 ```
-Thus every $`x\in[0,F_0]`$ is attained, and we may take $`I=(A+\beta,A+\beta+F_0)`$. The target $`r\in I`$ determines only the digits, through $`x=r-A-\beta`$; it changes neither $`S`$, $`I`$ nor the cutoff $`N_q=n_J`$ chosen using $`q\mid M_J`$. This last selection is the standard finite-choice covering argument of \[crmarickovac2025, Lemma 4\]. The construction above supplies its summability and overlap hypotheses while imposing the congruences and the small permitted set.
+Thus every $`x\in[0,F_0]`$ is attained, and we may take $`I=(A+\beta,A+\beta+F_0)`$. The target $`r\in I`$ determines only the digits, through $`x=r-A-\beta`$; it changes neither $`S`$, $`I`$ nor the cutoff $`N_q=n_J`$ chosen using $`q\mid M_J`$. This last selection is the standard finite-choice covering argument of \[crmarickovac2025, Lemma 4\]. The construction above supplies its summability and overlap hypotheses while imposing the congruences and requiring the support to lie in $`S`$.
 
-*The logarithmic scale.* For $`f(n)=(\log(n+3))^\varepsilon`$, we can choose the separations explicitly at the scale $`\log\log n`$. Keep the same triples and $`D_j=2^{s_j}-1`$, but replace the schedule by
+*The logarithmic scale.* For $`f(n)=(\log(n+3))^\varepsilon`$, we can choose the separations explicitly at the scale $`\log\log n`$. Keep the same triples and $`D_j=2^{s_j}-1`$, and now choose
 ``` math
 \begin{aligned}
  s_j&=\left\lfloor\frac{\varepsilon}{2}
@@ -3379,12 +3399,12 @@ Thus every $`x\in[0,F_0]`$ is attained, and we may take $`I=(A+\beta,A+\beta+F_0
  k_j&=\max\{k\ge2:k!\le(\log(n_{j-1}+3))^{\varepsilon/4}\},
  \end{aligned}
 ```
-with $`M_j=k_j!`$ and $`n_j=n_{j-1}+s_j`$. Start far enough out that $`s_j\ge4`$ and all choices exist. Allocating exponents $`\varepsilon/4`$ to the modulus and $`\varepsilon/2`$ to $`2^{s_j}`$ leaves room within the prescribed allowance:
+with $`M_j=k_j!`$ and $`n_j=n_{j-1}+s_j`$. Start far enough out that $`s_j\ge4`$ and all choices exist. The exponents $`\varepsilon/4`$ and $`\varepsilon/2`$ add to $`3\varepsilon/4<\varepsilon`$, so the corrections satisfy the prescribed bound:
 ``` math
 M_j2^{s_j}\le(\log(n_{j-1}+3))^{3\varepsilon/4}
              \le(\log(n+3))^\varepsilon
 ```
-at each coordinate $`n`$ of the triple. After enlarging the initial index, this is also at most $`n`$. The moduli remain nested and absorb every fixed integer; summability, the congruence induction and <a href="#erdos-251-prime-gap-dyadic-series--eq:finite-overlap" data-reference-type="eqref" data-reference="erdos-251-prime-gap-dyadic-series--eq:finite-overlap">[eq:finite-overlap]</a> therefore apply without change. Here $`s_j\asymp_\varepsilon\log\log n_j`$, so
+at each coordinate $`n`$ of the triple. After enlarging the initial index, this is also at most $`n`$. The moduli remain nested, and every fixed positive integer divides all sufficiently late moduli. Summability, the congruence induction and <a href="#erdos-251-prime-gap-dyadic-series--eq:finite-overlap" data-reference-type="eqref" data-reference="erdos-251-prime-gap-dyadic-series--eq:finite-overlap">[eq:finite-overlap]</a> therefore apply without change. Here $`s_j\asymp_\varepsilon\log\log n_j`$, so
 ``` math
 |S\cap[X,2X)|=O_\varepsilon(X/\log\log X).
 ```
@@ -3397,7 +3417,7 @@ Choose the same uniform starting index $`n\in[X,2X)`$ for the two blocks. A chan
  &\le\frac{m|S\cap[X,2X+m)|}{X}.
  \end{aligned}
 ```
-For $`m\le X`$, two dyadic bands cover $`[X,2X+m)`$ and give the bound $`O_\varepsilon(m/\log\log X)`$. In particular it tends to zero when $`m=o(\log\log X)`$, uniformly over targets since the permitted set $`S`$ is common to all of them. The block length enters solely through the number of starts that one altered coordinate can affect. ◻
+For $`m\le X`$, two dyadic bands cover $`[X,2X+m)`$ and give the bound $`O_\varepsilon(m/\log\log X)`$. In particular it tends to zero when $`m=o(\log\log X)`$, uniformly over the values attained, since the same set $`S`$ contains every correction support. The block length enters solely through the number of starts that one altered coordinate can affect. ◻
 
 </div>
 
@@ -3410,7 +3430,7 @@ The coupling also applies to tests depending on the starting index. If their abs
 The elementary bound $`p_n\le1250(n+1)^4`$ suffices for convergence of the prime and gap series. We use the central-binomial argument of Erdős \[erdos1932, pp. 194–196\]; [Appendix A of the companion](https://github.com/wcook04/plectis-erdos/blob/main/paper/251/erdos251-prime-gap-reasoning-surface.pdf#nameddest=prime-bound) derives this bound, including the prime-power estimate. This supplies the convergence hypothesis needed to apply Proposition <a href="#erdos-251-prime-gap-dyadic-series--res:sparserationalisation" data-reference-type="ref" data-reference="erdos-251-prime-gap-dyadic-series--res:sparserationalisation">1</a> to the prime gaps.
 
 <div id="erdos-251-prime-gap-dyadic-series--res:jointcountermodel" class="corollary">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/1d16f2ddf78e7c4c850246f67bf8ce79b19deb3c/evidence/erdos-251-prime-gap-dyadic-series.md#res-jointcountermodel">Lean†</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/d93e7408aed0b0c73ad5ea98116c7dc0dce3cf7b/evidence/erdos-251-prime-gap-dyadic-series.md#res-jointcountermodel">Lean†</a></p>
 
 **Corollary 2** (a rational sum with the stated prime-gap statistics). *Let $`p_0=2,p_1=3,\ldots`$ be the primes and $`g_n=p_{n+1}-p_n`$. Given $`K\in\mathbb{N}`$ and $`0<\varepsilon\le1`$, there is $`b:\mathbb{N}\to\mathbb{N}`$ with rational dyadic sum such that $`b_n=g_n`$ for $`n<K`$, $`b_n\ge g_n`$, and $`b_n-g_n\le(\log(n+3))^\varepsilon`$ eventually. For every fixed positive modulus, both the coefficients and the cumulative positions eventually retain their corresponding residues. The empirical distributions of unnormalised blocks have total variation distance tending to zero for lengths $`o(\log\log X)`$, and for every fixed nonzero $`F\in\mathbb{Z}[x_0,\ldots,x_k]`$,
 ``` math
@@ -3453,7 +3473,7 @@ Land’s draft \[land2026, Theorem 2\] proves conditional irrationality under a
 We return to the actual primes and write $`G=\sum_{n\ge0}g_n2^{-(n+1)}`$. To use a recurrence for these sums, we must retain the endpoint in finite summation by parts and then show that it vanishes. The polynomial bound from Section <a href="#erdos-251-prime-gap-dyadic-series--sec:prime-application" data-reference-type="ref" data-reference="erdos-251-prime-gap-dyadic-series--sec:prime-application">3</a> supplies this limit and convergence of both series.
 
 <div id="erdos-251-prime-gap-dyadic-series--res:infinite" class="theorem">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/1d16f2ddf78e7c4c850246f67bf8ce79b19deb3c/evidence/erdos-251-prime-gap-dyadic-series.md#res-infinite">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/1d16f2ddf78e7c4c850246f67bf8ce79b19deb3c/evidence/erdos-251-prime-gap-dyadic-series.md#res-infinite-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/d93e7408aed0b0c73ad5ea98116c7dc0dce3cf7b/evidence/erdos-251-prime-gap-dyadic-series.md#res-infinite">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d93e7408aed0b0c73ad5ea98116c7dc0dce3cf7b/evidence/erdos-251-prime-gap-dyadic-series.md#res-infinite-comparator">Comparator</a></p>
 
 **Theorem 3** (prime-to-gap identity). *The actual prime and gap series satisfy $`\Pi=2+G`$. Their complete tails
 ``` math
@@ -3477,7 +3497,7 @@ Since $`p_n=O((n+1)^4)`$, the endpoint tends to zero and we obtain $`\Pi=2+G`$. 
 Tao noted this reduction in the problem’s forum discussion \[erdosproblems251thread, 7 October 2025\].
 
 <div id="erdos-251-prime-gap-dyadic-series--res:irr-equivalence" class="corollary">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/1d16f2ddf78e7c4c850246f67bf8ce79b19deb3c/evidence/erdos-251-prime-gap-dyadic-series.md#res-irr-equivalence">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/1d16f2ddf78e7c4c850246f67bf8ce79b19deb3c/evidence/erdos-251-prime-gap-dyadic-series.md#res-irr-equivalence-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/d93e7408aed0b0c73ad5ea98116c7dc0dce3cf7b/evidence/erdos-251-prime-gap-dyadic-series.md#res-irr-equivalence">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d93e7408aed0b0c73ad5ea98116c7dc0dce3cf7b/evidence/erdos-251-prime-gap-dyadic-series.md#res-irr-equivalence-comparator">Comparator</a></p>
 
 **Corollary 4** (exact irrationality reformulation). *The prime-value dyadic series is irrational if and only if the prime-gap dyadic series is. Both series converge by the polynomial bound proved above; neither side is proved irrational.*
 
@@ -3492,9 +3512,9 @@ Tao noted this reduction in the problem’s forum discussion \[erdosproblems251t
 The recurrence alone does not identify the infinite tails: adding $`C2^N`$ to any solution gives another solution. We distinguish the actual tails by the vanishing condition in the next lemma.
 
 <div id="erdos-251-prime-gap-dyadic-series--res:true-tail" class="lemma">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos251/PaperCompleteR20/TrueTail.lean#L57">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/1d16f2ddf78e7c4c850246f67bf8ce79b19deb3c/evidence/erdos-251-prime-gap-dyadic-series.md#res-true-tail-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos251/PaperCompleteR20/TrueTail.lean#L57">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d93e7408aed0b0c73ad5ea98116c7dc0dce3cf7b/evidence/erdos-251-prime-gap-dyadic-series.md#res-true-tail-comparator">Comparator</a></p>
 
-**Lemma 5** (the boundary condition identifying a true tail). *Let $`\sum_{j\ge1}|a_j|2^{-j}<\infty`$ and $`U_{N+1}=2U_N-a_{N+1}`$. Then $`U_N=\sum_{j\ge1}a_{N+j}2^{-j}`$ for every $`N`$ if and only if $`2^{-N}U_N\to0`$.*
+**Lemma 5** (the boundary condition for the tail recurrence). *Let $`\sum_{j\ge1}|a_j|2^{-j}<\infty`$ and $`U_{N+1}=2U_N-a_{N+1}`$. Then $`U_N=\sum_{j\ge1}a_{N+j}2^{-j}`$ for every $`N`$ if and only if $`2^{-N}U_N\to0`$.*
 
 </div>
 
@@ -3511,7 +3531,7 @@ The recurrence alone does not identify the infinite tails: adding $`C2^N`$ to an
 For the recurrence $`U_{N+1}=2U_N-a_{N+1}`$ with $`a_n\in\mathbb{Z}`$, write $`D_h(N)=U_{N+h}-U_N`$. Modulo integers, each step is doubling: $`U_N`$ has the fractional part of $`2^NU_0`$. An integral shift means that a fractional part has returned to an earlier value. Such a return makes $`2^N(2^h-1)U_0`$ an integer and forces rationality when $`h>0`$. Conversely, doubling a rational number eventually gives periodic fractional parts. The next theorem records the denominator calculation and the exact quantifiers.
 
 <div id="erdos-251-prime-gap-dyadic-series--res:escape-irrational" class="theorem">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/1d16f2ddf78e7c4c850246f67bf8ce79b19deb3c/evidence/erdos-251-prime-gap-dyadic-series.md#res-escape-irrational">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/1d16f2ddf78e7c4c850246f67bf8ce79b19deb3c/evidence/erdos-251-prime-gap-dyadic-series.md#res-escape-irrational-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/d93e7408aed0b0c73ad5ea98116c7dc0dce3cf7b/evidence/erdos-251-prime-gap-dyadic-series.md#res-escape-irrational">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d93e7408aed0b0c73ad5ea98116c7dc0dce3cf7b/evidence/erdos-251-prime-gap-dyadic-series.md#res-escape-irrational-comparator">Comparator</a></p>
 
 **Theorem 6** (exact rationality classification). *For a real integer-coefficient recurrence, the following are equivalent: $`U_0\in\mathbb{Q}`$; $`D_h(N)\in\mathbb{Z}`$ for some $`h\ge1,N\ge0`$; and, for some fixed $`h\ge1`$, $`D_h(N)\in\mathbb{Z}`$ at every sufficiently large $`N`$. More precisely, if $`U_0=u/(2^sd)`$ is in lowest terms, with $`d`$ odd, then
 ``` math
@@ -3534,7 +3554,7 @@ An integral shift with $`h\ge1`$ makes the nonzero integer multiple $`2^N(2^h-1)
 
 </div>
 
-The theorem requires neither a true-tail boundary condition nor prime-gap coefficients. The eventual periodicity is that of fractional parts, and need not hold for the full tails. For instance, the positive even coefficients $`2,4,2,4,\ldots`$ starting at $`n=1`$ give tails $`8/3,10/3`$ alternately. Every shift of length $`1`$ is nonintegral and every shift of length $`2`$ is zero. This explains why a single shift length is insufficient.
+The theorem applies to the recurrence itself, without the boundary condition of Lemma <a href="#erdos-251-prime-gap-dyadic-series--res:true-tail" data-reference-type="ref" data-reference="erdos-251-prime-gap-dyadic-series--res:true-tail">5</a> or any assumption of primality. The eventual periodicity is that of fractional parts, and need not hold for the full tails. For instance, the positive even coefficients $`2,4,2,4,\ldots`$ starting at $`n=1`$ give tails $`8/3,10/3`$ alternately. Every shift of length $`1`$ is nonintegral and every shift of length $`2`$ is zero. This explains why a single shift length is insufficient.
 
 <a id="erdos-251-prime-gap-dyadic-series--sec:local-certificate"></a>
 
@@ -3543,7 +3563,7 @@ The theorem requires neither a true-tail boundary condition nor prime-gap coeffi
 Fix $`h\ge1`$ and put $`D_N=T_{N+h}-T_N`$ and $`\delta_N=g_{N+h+1}-g_{N+1}`$. Then $`D_{N+1}=2D_N-\delta_N`$, where $`\delta_N`$ is even. Two differences of absolute value less than one can both be integral only if they vanish, in which case $`\delta_N=0`$. More precisely, we have the following result.
 
 <div id="erdos-251-prime-gap-dyadic-series--res:signedwindow" class="proposition">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/1d16f2ddf78e7c4c850246f67bf8ce79b19deb3c/evidence/erdos-251-prime-gap-dyadic-series.md#res-signedwindow">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/1d16f2ddf78e7c4c850246f67bf8ce79b19deb3c/evidence/erdos-251-prime-gap-dyadic-series.md#res-signedwindow-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/d93e7408aed0b0c73ad5ea98116c7dc0dce3cf7b/evidence/erdos-251-prime-gap-dyadic-series.md#res-signedwindow">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d93e7408aed0b0c73ad5ea98116c7dc0dce3cf7b/evidence/erdos-251-prime-gap-dyadic-series.md#res-signedwindow-comparator">Comparator</a></p>
 
 **Proposition 7** (two consecutive differences of absolute value less than one). *Let $`D,D'\in\mathbb{R}`$, $`\delta\in2\mathbb{Z}`$ and $`D'=2D-\delta`$. The conditions $`|D|<1`$, $`|D'|<1`$ and $`\delta\ne0`$ hold exactly when, for some $`s\in\{-1,1\}`$,
 ``` math
@@ -3574,7 +3594,7 @@ For $`\delta=2`$, the endpoints $`D=1/2,1`$ give $`D'=-1,0`$ respectively. The z
 
 </div>
 
-A solution would give a nonintegral shift arbitrarily late for every $`h`$, and hence irrationality by Theorem <a href="#erdos-251-prime-gap-dyadic-series--res:escape-irrational" data-reference-type="ref" data-reference="erdos-251-prime-gap-dyadic-series--res:escape-irrational">6</a>. All three conditions must hold at the same index; witnesses for the separate conditions cannot be combined without further information. Schlage-Puchta’s lemma \[schlagepuchta2011, Lemma 4\], applied to $`x_h-x_0\pm2`$, shows that the eligible indices with $`\delta_N=\pm2`$ already have density zero. Separate infinite sets of small-difference and mismatch witnesses would therefore not suffice.
+A solution would give a nonintegral shift arbitrarily late for every $`h`$, and hence irrationality by Theorem <a href="#erdos-251-prime-gap-dyadic-series--res:escape-irrational" data-reference-type="ref" data-reference="erdos-251-prime-gap-dyadic-series--res:escape-irrational">6</a>. All three conditions must hold at the same index; witnesses for the separate conditions cannot be combined without further information. By Proposition <a href="#erdos-251-prime-gap-dyadic-series--res:signedwindow" data-reference-type="ref" data-reference="erdos-251-prime-gap-dyadic-series--res:signedwindow">7</a>, such an index must have $`\delta_N=\pm2`$. Schlage-Puchta’s lemma \[schlagepuchta2011, Lemma 4\], applied to $`x_h-x_0\pm2`$, shows that these eligible indices already have density zero. Thus the required witnesses concern a rare event. The absolute block comparison in Proposition <a href="#erdos-251-prime-gap-dyadic-series--res:sparserationalisation" data-reference-type="ref" data-reference="erdos-251-prime-gap-dyadic-series--res:sparserationalisation">1</a> does not control its relative frequency, and separate infinite sets of small-difference and mismatch witnesses would not suffice.
 
 <a id="erdos-251-prime-gap-dyadic-series--finite-separation-from-the-integers"></a>
 
@@ -3588,7 +3608,7 @@ S_{h,N,L}=\sum_{j=1}^L(g_{N+h+j}-g_{N+j})2^{-j},\qquad
 Then $`|D_N-S_{h,N,L}|\le R_{h,N,L}(M)`$. A general real majorant need not give an effective remainder bound, but the polynomial choice below does.
 
 <div id="erdos-251-prime-gap-dyadic-series--res:truncation" class="proposition">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos251/PaperTailBoundsR7.lean#L273">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/1d16f2ddf78e7c4c850246f67bf8ce79b19deb3c/evidence/erdos-251-prime-gap-dyadic-series.md#res-truncation-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos251/PaperTailBoundsR7.lean#L273">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d93e7408aed0b0c73ad5ea98116c7dc0dce3cf7b/evidence/erdos-251-prime-gap-dyadic-series.md#res-truncation-comparator">Comparator</a></p>
 
 **Proposition 9** (finite separation criterion). *If for every $`h\ge1`$ and every cutoff $`N_0`$ there are $`N\ge N_0,L\ge1`$ with
 ``` math
@@ -3619,11 +3639,11 @@ We obtain a computable bound by taking $`M(n)=1250(n+2)^4`$. For $`P(x)=x^4+8x^3
 R_{h,N,L}(M)=1250\,2^{-L}
              \bigl(P(N+h+L+2)+P(N+L+2)\bigr).
 ```
-If $`\delta_N=2s`$ and $`|QD_N-A|\le B`$, with $`A\in\mathbb{Z}`$, $`Q>0`$, $`B\ge0`$ integers, the inequalities
+To certify the conditions in <a href="#erdos-251-prime-gap-dyadic-series--eq:smallpair" data-reference-type="eqref" data-reference="erdos-251-prime-gap-dyadic-series--eq:smallpair">[eq:smallpair]</a>, suppose $`\delta_N=2s`$, where $`s\in\{-1,1\}`$, and $`|QD_N-A|\le B`$, with $`A\in\mathbb{Z}`$, $`Q>0`$, $`B\ge0`$ integers. Then $`sD_N`$ lies in $`[(sA-B)/Q,(sA+B)/Q]`$. This whole interval lies in $`(1/2,1)`$ precisely when its lower endpoint exceeds $`1/2`$ and its upper endpoint is less than $`1`$, that is,
 ``` math
-2sA-Q>2B,\qquad Q-sA>B
+2sA-Q>2B,\qquad Q-sA>B.
 ```
-put $`sD_N`$ in $`(1/2,1)`$. The numerator $`A`$ is signed. At $`h=1,N=2,L=40`$, one has $`\delta_2=g_4-g_3=-2`$ and
+The numerator $`A`$ is signed: multiplying the enclosure by $`s`$ accounts for the direction of the gap difference. At $`h=1,N=2,L=40`$, one has $`\delta_2=g_4-g_3=-2`$ and
 ``` math
 Q=2^{40},\qquad A=-662838684750,\qquad B=11764181250,\qquad s=-1.
 ```
@@ -3655,7 +3675,7 @@ Its coefficients are unbounded and its first coefficient is $`-1`$. We obtain a 
 The coefficients increase strictly and $`c_{n+1}-c_n=4n+10`$ is never $`\pm2`$. The [companion’s Section 8](https://github.com/wcook04/plectis-erdos/blob/main/paper/251/erdos251-prime-gap-reasoning-surface.pdf#nameddest=counterexamples) gives further examples, including a bounded nonperiodic sequence in Appendix D. None of these examples constructs consecutive primes.
 
 <div id="erdos-251-prime-gap-dyadic-series--res:gap-nonperiodic" class="proposition">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos251/PaperCoreR7.lean#L175">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/1d16f2ddf78e7c4c850246f67bf8ce79b19deb3c/evidence/erdos-251-prime-gap-dyadic-series.md#res-gap-nonperiodic-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos251/PaperCoreR7.lean#L175">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d93e7408aed0b0c73ad5ea98116c7dc0dce3cf7b/evidence/erdos-251-prime-gap-dyadic-series.md#res-gap-nonperiodic-comparator">Comparator</a></p>
 
 **Proposition 10** (prime gaps do not become periodic). *For every positive $`h`$, the actual consecutive-prime-gap sequence is not eventually periodic with period $`h`$.*
 
@@ -3667,15 +3687,15 @@ The coefficients increase strictly and $`c_{n+1}-c_n=4n+10`$ is never $`\pm2`$. 
 
 </div>
 
-The results on bounded prime gaps \[zhang2014\], clusters of each fixed size \[maynard2015; polymath2014\], and extreme large gaps \[fgkmt2018\] leave the signed weighted-tail windows above uncontrolled. This remains so with Polymath’s bound $`\liminf_n g_n\le246`$ \[polymath2014, Theorem 1.4(i)\]. At a logarithmic truncation depth the explicit remainder tends to zero, but the finite sum must still be separated from the relevant boundary by a larger margin. For the actual prime series, nonintegral shifts are needed arbitrarily late for every positive length. Problem <a href="#erdos-251-prime-gap-dyadic-series--prob:smallpair" data-reference-type="ref" data-reference="erdos-251-prime-gap-dyadic-series--prob:smallpair">8</a> would supply them. The perturbation theorem concerns the insufficiency of the specified congruences and block statistics, and leaves possible arguments using primality or quantitative rare-event estimates untouched.
+The results on bounded prime gaps \[zhang2014\], clusters of each fixed size \[maynard2015; polymath2014\], and extreme large gaps \[fgkmt2018\] do not give the simultaneous inequalities in <a href="#erdos-251-prime-gap-dyadic-series--eq:smallpair" data-reference-type="eqref" data-reference="erdos-251-prime-gap-dyadic-series--eq:smallpair">[eq:smallpair]</a>. This remains so with Polymath’s bound $`\liminf_n g_n\le246`$ \[polymath2014, Theorem 1.4(i)\]. At a logarithmic truncation depth the explicit remainder tends to zero, but the finite sum must still be separated from the relevant boundary by a larger margin. For the actual prime series, nonintegral shifts are needed arbitrarily late for every positive length. Problem <a href="#erdos-251-prime-gap-dyadic-series--prob:smallpair" data-reference-type="ref" data-reference="erdos-251-prime-gap-dyadic-series--prob:smallpair">8</a> would supply them. The perturbation theorem concerns the insufficiency of the specified congruences and block statistics, and leaves possible arguments using primality or quantitative rare-event estimates untouched.
 
 <a id="erdos-251-prime-gap-dyadic-series--sec:pinned-lean-sources"></a>
 
 ### Sources and further comparisons
 
-*Formal proofs.* A result with a kernel-checked Lean proof carries links beside its heading and in the margin; both open the same evidence. *Lean* opens the proof: the declaration itself when one declaration states the whole result, otherwise the list of declarations that together state it. Inline citations to individual declarations elsewhere may identify ingredients of a proof. *Comparator* opens the recorded comparison, in which the same statement, written again from Mathlib alone in a separate repository, was compared with our proof by Lean’s Comparator tool, allowing only the three standard axioms. *Comparator pending* means that the complete statement has no recorded comparison yet. A dagger on the Lean mark means that the Lean proof assumes an input named just below the result. A result without a mark has no Lean proof of its whole statement; what is checked is said below it. The [evidence record](https://github.com/wcook04/plectis-erdos/blob/1d16f2ddf78e7c4c850246f67bf8ce79b19deb3c/evidence/erdos-251-prime-gap-dyadic-series.md) gives every declaration, version and check. Comparator checks statements, axioms and kernel acceptance; it does not establish novelty or peer review. These checks show that the stated propositions are proved; whether they are the right propositions is a question the reader can settle by comparing them with the text.
+*Formal proofs.* A result with a kernel-checked Lean proof carries links beside its heading and in the margin; both open the same evidence. *Lean* opens the proof: the declaration itself when one declaration states the whole result, otherwise the list of declarations that together state it. Inline citations to individual declarations elsewhere may identify ingredients of a proof. *Comparator* opens the recorded comparison, in which the same statement, written again from Mathlib alone in a separate repository, was compared with our proof by Lean’s Comparator tool, allowing only the three standard axioms. *Comparator pending* means that the complete statement has no recorded comparison yet. A dagger on the Lean mark means that the Lean proof assumes an input named just below the result. A result without a mark has no Lean proof of its whole statement; what is checked is said below it. The [evidence record](https://github.com/wcook04/plectis-erdos/blob/d93e7408aed0b0c73ad5ea98116c7dc0dce3cf7b/evidence/erdos-251-prime-gap-dyadic-series.md) gives every declaration, version and check. Comparator checks statements, axioms and kernel acceptance; it does not establish novelty or peer review. These checks show that the stated propositions are proved; whether they are the right propositions is a question the reader can settle by comparing them with the text.
 
-The linked Lean declarations use Lean 4 \[lean4\] and mathlib \[mathlib\]. The formal proof of Proposition <a href="#erdos-251-prime-gap-dyadic-series--res:sparserationalisation" data-reference-type="ref" data-reference="erdos-251-prime-gap-dyadic-series--res:sparserationalisation">1</a> changes one coordinate at each stage, whereas the proof here uses triples. Both fix the permitted set, the interval and the congruence cutoffs before choosing the target. For Corollary <a href="#erdos-251-prime-gap-dyadic-series--res:jointcountermodel" data-reference-type="ref" data-reference="erdos-251-prime-gap-dyadic-series--res:jointcountermodel">2</a>, the formal statement covers every $`\varepsilon>0`$ and assumes Schlage-Puchta’s lemma only for nonconcentration and the prime number theorem only for the asymptotic $`P_n\sim n\log n`$. The source links record formal support for the linked statements, rather than verification of the different printed proofs. The [companion’s Appendix G](https://github.com/wcook04/plectis-erdos/blob/main/paper/251/erdos251-prime-gap-reasoning-surface.pdf#nameddest=short-source-index) retains the complete source index at this note’s original pin, including the finite telescoping identities and their nonperiodicity consequences. Its [Section 3](https://github.com/wcook04/plectis-erdos/blob/main/paper/251/erdos251-prime-gap-reasoning-surface.pdf#nameddest=context) retains the broader subsum and automatic-sequence comparisons.
+The linked Lean declarations use Lean 4 \[lean4\] and mathlib \[mathlib\]. The formal proof of Proposition <a href="#erdos-251-prime-gap-dyadic-series--res:sparserationalisation" data-reference-type="ref" data-reference="erdos-251-prime-gap-dyadic-series--res:sparserationalisation">1</a> changes one coordinate at each stage, whereas the proof here uses triples. Both choose the set containing the supports, the interval and the congruence cutoffs before the value of the sum. For Corollary <a href="#erdos-251-prime-gap-dyadic-series--res:jointcountermodel" data-reference-type="ref" data-reference="erdos-251-prime-gap-dyadic-series--res:jointcountermodel">2</a>, the formal statement covers every $`\varepsilon>0`$ and assumes Schlage-Puchta’s lemma only for nonconcentration and the prime number theorem only for the asymptotic $`P_n\sim n\log n`$. The source links record formal support for the linked statements, rather than verification of the different printed proofs. The [companion’s Appendix G](https://github.com/wcook04/plectis-erdos/blob/main/paper/251/erdos251-prime-gap-reasoning-surface.pdf#nameddest=short-source-index) retains the complete source index at this note’s original pin, including the finite telescoping identities and their nonperiodicity consequences. Its [Section 3](https://github.com/wcook04/plectis-erdos/blob/main/paper/251/erdos251-prime-gap-reasoning-surface.pdf#nameddest=context) retains the broader subsum and automatic-sequence comparisons.
 
 <a id="erdos-251-prime-gap-dyadic-series--acknowledgements"></a>
 
@@ -3691,13 +3711,13 @@ Paul Erdős, [*Sur certaines séries à valeur irrationnelle*](https://users.ren
 
 </div>
 
-## Erdős #257: Weighted and Covered Supports for Mersenne Subseries
+## Erdős #257: Irrationality criteria for Lambert subseries
 
 *Which weighted-support Mersenne subseries are proved irrational, and what still blocks the universal Erdős #257 question?* [Full text](https://github.com/wcook04/plectis-erdos/blob/main/docs/papers/full-text/erdos-257-mersenne-support-subseries.md) · [PDF](https://github.com/wcook04/plectis-erdos/blob/main/paper/257/erdos-257-mersenne-support-subseries.pdf)
 
 <a id="erdos-257-mersenne-support-subseries--erdos-257-mersenne-support-subseries"></a>
 
-### Weighted and Covered Supports for Mersenne Subseries
+### Irrationality criteria for Lambert subseries
 
 <div class="center">
 
@@ -3723,10 +3743,10 @@ This series converges by comparison with a geometric series, since $`(b^a-1)^{-1
 
 </div>
 
-Our conclusions survive arbitrary infinite thinning: once a support satisfies a criterion, every infinite subset has irrational sum. The first criterion allows many exponents with a large common prime-power factor. For $`a=2^km`$, with $`m`$ odd, it replaces the reciprocal weight $`1/(2^km)`$ by $`1/[m(b^{2^k}-1)]`$. The exponential denominator permits far more cofactors as $`k`$ increases. For a finite set $`P`$ of primes, the analogous factor is the *$`P`$-part* $`h(a)=\prod_{p\in P}p^{v_p(a)}`$, where $`v_p(a)`$ is the exponent of $`p`$ in $`a`$.
+The conditions below are hereditary: if a set satisfies one of them, so does each of its infinite subsets. For the first condition, consider an exponent $`a=2^km`$ with $`m`$ odd. We replace its reciprocal weight $`1/(2^km)`$ by $`1/[m(b^{2^k}-1)]`$, so that a large power of $`2`$ in $`a`$ reduces its contribution to the sum. More generally, for a finite set $`P`$ of primes, let the *$`P`$-part* of $`a`$ be $`h(a)=\prod_{p\in P}p^{v_p(a)}`$, where $`v_p(a)`$ is the exponent of $`p`$ in $`a`$.
 
 <div id="erdos-257-mersenne-support-subseries--res:weighted-support" class="theorem">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/1d16f2ddf78e7c4c850246f67bf8ce79b19deb3c/evidence/erdos-257-mersenne-support-subseries.md#res-weighted-support">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/1d16f2ddf78e7c4c850246f67bf8ce79b19deb3c/evidence/erdos-257-mersenne-support-subseries.md#res-weighted-support-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/d93e7408aed0b0c73ad5ea98116c7dc0dce3cf7b/evidence/erdos-257-mersenne-support-subseries.md#res-weighted-support">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d93e7408aed0b0c73ad5ea98116c7dc0dce3cf7b/evidence/erdos-257-mersenne-support-subseries.md#res-weighted-support-comparator">Comparator</a></p>
 
 **Theorem 2** (a weighted condition on the support). *Let $`b\ge2`$ be an integer, let $`A\subseteq\mathbb{N}_{>0}`$ be infinite, and let $`P`$ be a finite nonempty set of primes. Set $`h(a)=\prod_{p\in P}p^{v_p(a)}`$. If
 ``` math
@@ -3752,11 +3772,11 @@ Consider the support
 ``` math
 A_\star=\{2^km:k\ge1,\ m\text{ odd},\ m\le2^{2^k}\}.
 ```
-The cutoff $`2^{2^k}`$ makes the harmonic sum of the odd cofactors grow on the scale $`2^k`$. Dividing by $`2^k`$ therefore leaves a nonvanishing reciprocal mass in each layer, whereas dividing by $`2^{2^k}-1`$ gives a summable weighted mass. More explicitly, each layer contributes at least $`1/4`$ to the reciprocal sum and at most $`2^{1-k}`$ to <a href="#erdos-257-mersenne-support-subseries--eq:weighted-return" data-reference-type="eqref" data-reference="erdos-257-mersenne-support-subseries--eq:weighted-return">[eq:weighted-return]</a>. The calculation in Section <a href="#erdos-257-mersenne-support-subseries--sec:eight-return-extensions" data-reference-type="ref" data-reference="erdos-257-mersenne-support-subseries--sec:eight-return-extensions">2</a> proves both bounds. Every infinite subset of $`A_\star`$ consequently gives an irrational value at every integer base. Since $`h/(2^h-1)\le1`$, the same theorem also includes reciprocal-summable supports. Section <a href="#erdos-257-mersenne-support-subseries--sec:reciprocal-support" data-reference-type="ref" data-reference="erdos-257-mersenne-support-subseries--sec:reciprocal-support">7</a> gives a direct proof of Erdős’s stated extension.
+For a fixed $`k`$, the sum of $`1/m`$ over the odd cofactors is of order $`2^k`$. Thus the corresponding terms contribute at least $`1/4`$ to $`\sum_{a\in A_\star}1/a`$, but at most $`2^{1-k}`$ to <a href="#erdos-257-mersenne-support-subseries--eq:weighted-return" data-reference-type="eqref" data-reference="erdos-257-mersenne-support-subseries--eq:weighted-return">[eq:weighted-return]</a>. The calculation in Section <a href="#erdos-257-mersenne-support-subseries--sec:eight-return-extensions" data-reference-type="ref" data-reference="erdos-257-mersenne-support-subseries--sec:eight-return-extensions">2</a> proves both bounds. Every infinite subset of $`A_\star`$ consequently gives an irrational value at every integer base. Since $`h/(2^h-1)\le1`$, the same theorem also includes reciprocal-summable supports. Section <a href="#erdos-257-mersenne-support-subseries--sec:reciprocal-support" data-reference-type="ref" data-reference="erdos-257-mersenne-support-subseries--sec:reciprocal-support">7</a> gives a direct proof of Erdős’s stated extension.
 
 The divisor-cover condition instead bounds fractional powers of finite divisor counts by positive sums over divisors (Theorem <a href="#erdos-257-mersenne-support-subseries--thm:variable-fractional-cover" data-reference-type="ref" data-reference="erdos-257-mersenne-support-subseries--thm:variable-fractional-cover">3</a>). We prove that the two conditions are incomparable and that their union gives a further irrationality criterion: if $`E`$ satisfies the weighted condition and $`V`$ has a summable divisor cover, every infinite subset of $`E\cup V`$ has irrational sum (Theorem <a href="#erdos-257-mersenne-support-subseries--res:mixed-supports" data-reference-type="ref" data-reference="erdos-257-mersenne-support-subseries--res:mixed-supports">4</a>). The separating constructions in Proposition <a href="#erdos-257-mersenne-support-subseries--res:weighted-cover-incomparability" data-reference-type="ref" data-reference="erdos-257-mersenne-support-subseries--res:weighted-cover-incomparability">5</a> then give a union outside both individual classes (Corollary <a href="#erdos-257-mersenne-support-subseries--res:strict-mixed-supports" data-reference-type="ref" data-reference="erdos-257-mersenne-support-subseries--res:strict-mixed-supports">6</a>). These are sufficient hypotheses for Problem <a href="#erdos-257-mersenne-support-subseries--res:problem" data-reference-type="ref" data-reference="erdos-257-mersenne-support-subseries--res:problem">1</a>; the arbitrary support in that problem need not satisfy them.
 
-For the proofs, we compare a multiple of the series with an integer. Define
+The proofs compare a multiple of $`X_A(b)`$ with an integer. For a positive integer $`N`$, put
 ``` math
 \begin{equation}
  \Delta_{b,A}(N)=\sum_{a\in A}\frac{b^{N\bmod a}-1}{b^a-1}
@@ -3766,9 +3786,9 @@ For the proofs, we compare a multiple of the series with an integer. Define
  \label{eq:intro-displacement}\tag{D}
 \end{equation}
 ```
-The identity follows by division of $`N`$ by $`a`$. Since $`J_{b,A}(N)`$ is an integer at an integer base, rationality $`X_A(b)=p/q`$ would force every positive displacement to be at least $`1/q`$. Infinitude of $`A`$ ensures positivity for $`N>0`$: there is a nonzero summand with $`a>N`$. We shall therefore make these displacements arbitrarily small. Erdős also proposed using fractional parts of powers times the series value \[erdos1968, p. 226\].
+The identity follows by division of $`N`$ by $`a`$. If $`A`$ is infinite, then $`\Delta_{b,A}(N)>0`$, since some $`a\in A`$ exceeds $`N`$. Suppose that $`b\ge2`$ is an integer and $`X_A(b)=p/q`$, with $`p\in\mathbb Z`$ and $`q\ge1`$ an integer. Then $`q\Delta_{b,A}(N)`$ is a positive integer, and hence $`\Delta_{b,A}(N)\ge1/q`$. To obtain a contradiction, it therefore suffices to make $`\Delta_{b,A}(N)`$ arbitrarily small. Erdős also proposed using fractional parts of powers times the series value \[erdos1968, p. 226\].
 
-Choose a modulus divisible by a finite part of the support. Those exponents contribute zero to <a href="#erdos-257-mersenne-support-subseries--eq:intro-displacement" data-reference-type="eqref" data-reference="erdos-257-mersenne-support-subseries--eq:intro-displacement">[eq:intro-displacement]</a>. For the remaining exponents, a complete residue orbit has a small mean when its gcd with the modulus is large. A finite observation window also contains an incomplete orbit, however, and its error has lost the reciprocal factor needed to sum over the support. Averaging over dyadic window lengths restores that factor: an exponent enters the error sum only when a window reaches it, and the reciprocal lengths of all later windows form a geometric tail. The resulting estimate is explicit in the modulus. This lets the weighted and cover proofs use one finite average, and hence choose one index at which their sum is small.
+We average over multiples of a modulus divisible by a finite subset of $`A`$, whose terms in <a href="#erdos-257-mersenne-support-subseries--eq:intro-displacement" data-reference-type="eqref" data-reference="erdos-257-mersenne-support-subseries--eq:intro-displacement">[eq:intro-displacement]</a> then vanish. For each remaining exponent, the mean contribution over a complete residue period is small when its gcd with the modulus is large. The incomplete period causes the difficulty: its bound lacks the factor $`1/a`$ needed to sum over the exponents. A second average, over dyadic lengths, restores this factor. Indeed, an exponent contributes only at lengths that reach it, and the reciprocals of those lengths have a geometrically decreasing sum. Keeping the dependence on the modulus explicit allows both criteria to use the same finite average.
 
 Section <a href="#erdos-257-mersenne-support-subseries--sec:eight-return-extensions" data-reference-type="ref" data-reference="erdos-257-mersenne-support-subseries--sec:eight-return-extensions">2</a> proves the weighted estimate. Section <a href="#erdos-257-mersenne-support-subseries--sec:common-kernel" data-reference-type="ref" data-reference="erdos-257-mersenne-support-subseries--sec:common-kernel">3</a> introduces divisor covers through a finite example and proves their averaging estimate. Section <a href="#erdos-257-mersenne-support-subseries--sec:mixed" data-reference-type="ref" data-reference="erdos-257-mersenne-support-subseries--sec:mixed">4</a> combines the criteria. We construct the separating supports in Section <a href="#erdos-257-mersenne-support-subseries--sec:comparison" data-reference-type="ref" data-reference="erdos-257-mersenne-support-subseries--sec:comparison">5</a> and discuss the limits of the argument in Section <a href="#erdos-257-mersenne-support-subseries--sec:map" data-reference-type="ref" data-reference="erdos-257-mersenne-support-subseries--sec:map">6</a>. The main argument ends there. Appendix <a href="#erdos-257-mersenne-support-subseries--sec:reciprocal-support" data-reference-type="ref" data-reference="erdos-257-mersenne-support-subseries--sec:reciprocal-support">7</a> gives the inherited reciprocal-summable proof. The other appendices collect finite-denominator results and conditional tests for rational membership, a separate question from the support criteria. Neither $`1/2`$ nor $`1/21`$ is decided by those tests.
 
@@ -3776,12 +3796,12 @@ Section <a href="#erdos-257-mersenne-support-subseries--sec:eight-return-extens
 
 ### Finite averages and the weighted criterion
 
-Fix the integer base $`b`$ and the finite prime set $`P`$. We shall choose $`Q`$ so that the residues of $`Qm`$ modulo most exponents have a small mean. The gcd controls that mean. For example, when $`b=2`$, $`Q=4`$ and $`a=6`$, the residue orbit is $`4,2,0`$, and
+Fix the integer base $`b`$ and the finite prime set $`P`$. We average $`\Delta_{b,A}`$ over multiples of a modulus $`Q`$. The mean contribution of an exponent $`a`$ depends on $`(Q,a)`$. For example, when $`b=2`$, $`Q=4`$ and $`a=6`$, the residues are $`4,2,0`$, and
 ``` math
 \frac13\left(\frac{2^4-1}{63}+\frac{2^2-1}{63}+0\right)
  =\frac2{21}\le\frac{2}{6(2^2-1)}=\frac19.
 ```
-The final expression is the mean of $`2^{4m\bmod6}/63`$ over the same orbit. If $`6\mid Q`$, the displacement is zero throughout the orbit. We use these two effects separately: divisibility removes a finite part of $`A`$, and a large gcd controls the rest.
+The final expression is the mean of $`2^{4m\bmod6}/63`$ over the same period. If $`6\mid Q`$, the term with exponent $`6`$ vanishes at every multiple of $`Q`$. In the proof, divisibility removes finitely many exponents, and the gcd estimate bounds the remaining terms.
 
 <div class="proof">
 
@@ -3793,7 +3813,7 @@ The final expression is the mean of $`2^{4m\bmod6}/63`$ over the same orbit. If 
  \le \frac{g}{a(b^g-1)}+\frac1{T(b^g-1)}.
 \end{equation}
 ```
-The sum over one orbit is $`\sum_{t=1}^{a/g}b^{tQ\bmod a}/(b^a-1)=1/(b^g-1)`$. The first term in <a href="#erdos-257-mersenne-support-subseries--eq:weighted-finite-orbit" data-reference-type="eqref" data-reference="erdos-257-mersenne-support-subseries--eq:weighted-finite-orbit">[eq:weighted-finite-orbit]</a> accounts for complete orbits; the second allows one extra orbit for the remaining indices. Also, for $`Y=QT`$,
+The sum over one orbit is $`\sum_{t=1}^{a/g}b^{tQ\bmod a}/(b^a-1)=1/(b^g-1)`$. The first term in <a href="#erdos-257-mersenne-support-subseries--eq:weighted-finite-orbit" data-reference-type="eqref" data-reference="erdos-257-mersenne-support-subseries--eq:weighted-finite-orbit">[eq:weighted-finite-orbit]</a> accounts for complete orbits; the second allows one extra orbit for the remaining indices. The complete-orbit bound explains the weight in the theorem: replacing $`g`$ by the $`P`$-part $`h(a)`$ gives its summand. The modulus chosen below will permit this replacement for $`h(a)\le H`$; the remaining exponents need a separate estimate. Also, for $`Y=QT`$,
 ``` math
 \begin{equation}
 \label{eq:weighted-outer-short}
@@ -3803,7 +3823,7 @@ The sum over one orbit is $`\sum_{t=1}^{a/g}b^{tQ\bmod a}/(b^a-1)=1/(b^g-1)`$. T
 ```
 because $`d_a(tQ)\le2\,2^{tQ-a}`$ when $`a>QT`$ and $`\sum_{t=1}^T2^{tQ-QT}\le2`$.
 
-*Recovering the reciprocal factor.* The incomplete-orbit error is small for each fixed $`a`$, but the number of exponents with $`a\le QT`$ grows with $`T`$. Summing this estimate loses the smallness we need: the error has no factor $`1/a`$. Instead of fixing $`T`$, take $`T=2^j`$ and reverse the order of summation. For a fixed exponent $`a`$, only lengths $`2^j\ge a/Q`$ contribute. Their reciprocals have total at most $`2Q/a`$, which is the factor we need. Thus, for integers $`Q,M\ge1`$ and $`\alpha_a\ge0`$ with $`\sum_a\alpha_a/a<\infty`$,
+*Recovering the reciprocal factor.* The error in <a href="#erdos-257-mersenne-support-subseries--eq:weighted-finite-orbit" data-reference-type="eqref" data-reference="erdos-257-mersenne-support-subseries--eq:weighted-finite-orbit">[eq:weighted-finite-orbit]</a> tends to zero for each fixed $`a`$, but it has no factor $`1/a`$ to justify summing over the increasing range $`a\le QT`$. We therefore take $`T=2^j`$ and sum first over $`j`$. For a fixed $`a`$, only lengths $`2^j\ge a/Q`$ contribute, and the sum of their reciprocals is at most $`2Q/a`$. Thus, for integers $`Q,M\ge1`$ and $`\alpha_a\ge0`$ with $`\sum_a\alpha_a/a<\infty`$,
 ``` math
 \begin{equation}
 \label{eq:weighted-dyadic-short}
@@ -3813,7 +3833,7 @@ because $`d_a(tQ)\le2\,2^{tQ-a}`$ when $`a>QT`$ and $`\sum_{t=1}^T2^{tQ-QT}\le2`
 ```
 the estimate is unchanged if the available dyadic lengths start later. Dividing by $`M`$ will turn the cost $`2Q`$ into $`2Q/M`$.
 
-*Choosing the modulus.* Fix $`\varepsilon>0`$. Choose finite nonempty $`F\subseteq A`$ so that the <a href="#erdos-257-mersenne-support-subseries--eq:weighted-fixed-base" data-reference-type="eqref" data-reference="erdos-257-mersenne-support-subseries--eq:weighted-fixed-base">[eq:weighted-fixed-base]</a> mass outside $`F`$ is below $`\varepsilon`$, and let $`L`$ be any fixed positive common multiple of $`F`$. Besides cancelling $`F`$, the modulus should contain every $`P`$-prime power up to a growing threshold $`H`$. Truncating each prime power separately keeps its size polynomial in $`H`$. With $`p_*=\max P`$ and $`H\ge2p_*`$, set
+*Choosing the modulus.* Fix $`\varepsilon>0`$. Choose finite nonempty $`F\subseteq A`$ so that the sum in <a href="#erdos-257-mersenne-support-subseries--eq:weighted-fixed-base" data-reference-type="eqref" data-reference="erdos-257-mersenne-support-subseries--eq:weighted-fixed-base">[eq:weighted-fixed-base]</a> over $`A\setminus F`$ is below $`\varepsilon`$, and let $`L`$ be any fixed positive common multiple of $`F`$. Besides cancelling $`F`$, the modulus should contain every $`P`$-prime power up to a growing threshold $`H`$. Truncating each prime power separately keeps its size polynomial in $`H`$. With $`p_*=\max P`$ and $`H\ge2p_*`$, set
 ``` math
 Q=L\prod_{p\in P}p^{\lfloor\log_pH\rfloor},\qquad
  G=\left\lfloor\frac H{p_*}\right\rfloor.
@@ -3834,7 +3854,7 @@ For the gcd claim, either every $`P`$-prime-power component of $`h(a)`$ is at mo
  +\frac{G(1+\log Q+2M\log2)+Q}{b^G-1}+4\,2^{-M}.
 \end{equation}
 ```
-The four contributions are now separate: the complete-orbit weighted tail, its incomplete-orbit error, the large-gcd terms, and the exponents beyond the observation window. With $`F`$ and $`L`$ fixed, every term after $`\varepsilon`$ tends to zero as $`H\to\infty`$. The left side gives equal total weight to each of the $`M`$ scales and uniform weight within each scale. It is therefore a probability average, so for large $`H`$ one of its sampled displacements is below $`2\varepsilon`$. No rate of decay in the sampled index $`N=Qt`$ is asserted. Since $`\varepsilon`$ is arbitrary, this contradicts the lower bound $`1/q`$ under rationality. Finally $`W_{b,P}(A)\le W_{2,P}(A)`$ for $`b\ge2`$, and weighted mass decreases on taking subsets. ◻
+The four terms respectively bound the weighted tail over complete periods, the incomplete periods, the exponents with large gcd, and the exponents beyond $`QT`$. With $`F`$ and $`L`$ fixed, every term after $`\varepsilon`$ tends to zero as $`H\to\infty`$. The left-hand side is an average with nonnegative weights summing to one: each of the $`M`$ lengths has weight $`1/M`$, distributed uniformly among its $`2^j`$ indices. For large $`H`$, some $`N=Qt`$ therefore satisfies $`\Delta_{b,A}(N)<2\varepsilon`$. This argument gives no rate of decay in $`N`$. Since $`\varepsilon`$ is arbitrary, this contradicts the lower bound $`1/q`$ under rationality. Finally $`W_{b,P}(A)\le W_{2,P}(A)`$ for $`b\ge2`$, and the weighted sum decreases on taking subsets. ◻
 
 </div>
 
@@ -3850,7 +3870,7 @@ The layers are disjoint, since their elements have different $`2`$-adic valuatio
 ``` math
 S_r=\sum_{\substack{m\le2^r\\m\text{ odd}}}\frac1m.
 ```
-Each block $`2^j\le m<2^{j+1}`$, $`1\le j<r`$, contains $`2^{j-1}`$ odd integers, with reciprocal sum between $`1/4`$ and $`1/2`$. Including $`m=1`$ gives $`r/4\le S_r\le r`$. The ordinary reciprocal mass of the $`k`$th layer is $`2^{-k}S_{2^k}\ge1/4`$, so $`\sum_{a\in A_\star}1/a`$ diverges. For $`P=\{2\}`$, that layer’s weighted mass satisfies
+Each block $`2^j\le m<2^{j+1}`$, $`1\le j<r`$, contains $`2^{j-1}`$ odd integers, with reciprocal sum between $`1/4`$ and $`1/2`$. Including $`m=1`$ gives $`r/4\le S_r\le r`$. The sum of reciprocals in the $`k`$th layer is $`2^{-k}S_{2^k}\ge1/4`$, so $`\sum_{a\in A_\star}1/a`$ diverges. For $`P=\{2\}`$, its contribution to the weighted sum satisfies
 ``` math
 \frac{S_{2^k}}{2^{2^k}-1}
  \le\frac{2^k}{2^{2^k}-1}
@@ -3860,11 +3880,11 @@ The last bound uses $`2^{2^k}-1\ge2^{2^k-1}`$ and $`2^k\ge2k`$. Summation proves
 
 A related selection of a term from an average over an arithmetic progression occurs in Duverney–Tachiya \[duverneytachiya, Section 2, (2.3)–(2.9)\]. The sparse-coefficient criteria of Kaneko–Suzuki–Tachiya \[kanekosuzukitachiya, Theorems 1 and 3\] do not apply directly to the divisor counts $`c_A(n)=\#\{a\in A:a\mid n\}`$: for nonempty $`A`$, these are positive on every multiple of $`\min A`$. The corresponding density calculation, and the distinction between their remote-tail average and our displacement, are given in [Section 1.2 of the long record](https://github.com/wcook04/plectis-erdos/blob/main/paper/257/erdos257-mersenne-reasoning-surface.pdf#nameddest=record257:weighted-proof).
 
-The dependence on the finite prime witness can be prescribed. If $`E`$ is a finite set of primes and $`\mathcal U`$ is an upward-closed family of subsets of $`E`$ with $`E\in\mathcal U\not\ni\varnothing`$, a finite union of prime-cofactor constructions has divergent reciprocal sum and $`W_{b,P}<\infty`$ exactly when $`P\cap E\in\mathcal U`$, for every $`b\ge2`$ and finite prime set $`P`$, so every infinite subset is irrational at every base. The construction is given in [Section 1.3 of the long record](https://github.com/wcook04/plectis-erdos/blob/main/paper/257/erdos257-mersenne-reasoning-surface.pdf#nameddest=record257:witness-rules).
+The sets of primes for which the weighted sum converges can also be prescribed. Let $`E`$ be a finite set of primes and let $`\mathcal U`$ be an upward-closed family of subsets of $`E`$ containing $`E`$ but not $`\varnothing`$. A finite union of the constructions just described has divergent reciprocal sum, and, for every $`b\ge2`$ and finite prime set $`P`$, its weighted sum $`W_{b,P}`$ is finite exactly when $`P\cap E\in\mathcal U`$. Taking $`P=E`$ shows that every infinite subset has an irrational sum at every integer base. The construction is given in [Section 1.3 of the long record](https://github.com/wcook04/plectis-erdos/blob/main/paper/257/erdos257-mersenne-reasoning-surface.pdf#nameddest=record257:witness-rules).
 
 <a id="erdos-257-mersenne-support-subseries--sec:common-kernel"></a>
 
-### Positive divisor covers
+### Positive divisor majorants
 
 The weighted criterion treats exponents individually. A divisor cover can take advantage of correlations between several exponents. The relevant quantity is how many members of a finite set divide the same integer.
 
@@ -3878,9 +3898,9 @@ We shall also use the divisor counts
 ```
 Expanding $`(b^a-1)^{-1}=\sum_{j\ge1}b^{-aj}`$ and interchanging nonnegative sums gives the identity. Although $`\mathbf1_A`$ takes only the values zero and one, its divisor transform may take larger values, with $`0\le c_A(n)\le\tau(n)`$.
 
-<a id="erdos-257-mersenne-support-subseries--a-divisor-cube-and-the-cover-condition"></a>
+<a id="erdos-257-mersenne-support-subseries--a-finite-divisor-set-and-the-cover-condition"></a>
 
-#### A divisor cube and the cover condition
+#### A finite divisor set and the cover condition
 
 For finite $`F\subseteq\mathbb{N}_{>0}`$, write $`f_F(n)=\#\{a\in F:a\mid n\}`$. Consider the four exponents $`F=\{2,6,10,30\}`$. If $`2\nmid n`$, the count is zero. Otherwise each of the primes $`3`$ and $`5`$ that divides $`n`$ doubles the count. Thus
 ``` math
@@ -3893,12 +3913,12 @@ f_F(n)^\alpha
   +z\mathbf1_{10\mid n}+z^2\mathbf1_{30\mid n},\qquad
  C=\frac12\left(1+\frac z3\right)\left(1+\frac z5\right).
 ```
-Here $`C`$ is the sum of each coefficient divided by its divisor. These reciprocals are the densities of the divisibility events, so $`C`$ is also the complete-period mean of this majorant. This is a two-prime instance of the divisor-cube expansion used in Section <a href="#erdos-257-mersenne-support-subseries--sec:comparison" data-reference-type="ref" data-reference="erdos-257-mersenne-support-subseries--sec:comparison">5</a>.
+Here $`C`$ is the sum of each coefficient divided by its divisor. These reciprocals are the densities of the divisibility events, so $`C`$ is also the complete-period mean of this majorant. The same expansion applies to $`\{qd:d\mid\prod_{p\in P}p\}`$ when no prime in $`P`$ divides $`q`$.
 
-The example shows what the fractional power changes: a factor $`2`$ in the count becomes a factor $`1+z`$. For a large cube, the positive expansion can therefore be much cheaper than the divisor count itself. Small $`\alpha`$ has a price, however. The tail estimate below divides by $`2^\alpha-1=z`$. A single finite example explains the majorant; only a summable sequence of the resulting full costs gives an infinite support criterion.
+The fractional power replaces each factor $`2`$ in the divisor count by $`1+z`$. When the set involves many primes and $`\alpha`$ is small, this reduces the coefficients in the positive expansion. The tail estimate below also contains the factor $`(2^\alpha-1)^{-1}=1/z`$, which grows as $`\alpha`$ decreases. The criterion therefore requires summability of the full expression, including this factor, over a sequence of finite sets.
 
 <div id="erdos-257-mersenne-support-subseries--thm:variable-fractional-cover" class="theorem">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos257/PaperCompleteR8/PositiveCoverReturn.lean#L241">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/1d16f2ddf78e7c4c850246f67bf8ce79b19deb3c/evidence/erdos-257-mersenne-support-subseries.md#thm-variable-fractional-cover-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos257/PaperCompleteR8/PositiveCoverReturn.lean#L241">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d93e7408aed0b0c73ad5ea98116c7dc0dce3cf7b/evidence/erdos-257-mersenne-support-subseries.md#thm-variable-fractional-cover-comparator">Comparator</a></p>
 
 **Theorem 3** (a summable divisor-cover criterion). *For each $`j\ge1`$, let $`F_j\subseteq\mathbb{N}_{>0}`$ be finite, let $`0<\alpha_j\le1`$, and let $`c_{j,d}\ge0`$ satisfy
 ``` math
@@ -3921,7 +3941,12 @@ For example, take $`F_j=\{4^j\}`$, $`\alpha_j=1`$ and $`c_{j,4^j}=1`$, with all 
 
 #### A finite mean for shifted divisor tails
 
-Raising a base-two tail to the power $`\alpha`$ changes its geometric factor to $`B=2^\alpha`$. Thus the proof needs a bound valid for all $`1<B\le2`$, including $`B`$ close to $`1`$. To combine this criterion with the weighted one later, we also need an explicit dependence on the modulus and freedom to choose the starting scale.
+A divisor majorant becomes a sum of geometric tails, one for each divisor. Indeed, the positive offsets $`r`$ with $`d\mid N+r`$ are $`d-(N\bmod d),2d-(N\bmod d),\ldots`$, so
+``` math
+\sum_{\substack{r\ge1\\d\mid N+r}}B^{-r}
+ =\frac{B^{N\bmod d}}{B^d-1}.
+```
+Raising a base-two tail to the power $`\alpha`$ replaces its geometric factor by $`B=2^\alpha`$. We therefore need to estimate this expression for $`1<B\le2`$, including $`B`$ close to $`1`$. The weighted proof has already chosen its modulus and dyadic lengths; to use the same observations, the estimate must keep both choices explicit.
 
 For $`1<B\le2`$, positive integers $`L,d,M`$, and an integer $`R\ge0`$, put
 ``` math
@@ -3948,14 +3973,14 @@ Fix $`T=2^j`$. We divide the proof according to how $`d`$ compares with $`LT`$, 
  \le\frac{g}{d(B^g-1)}+\frac1{T(B^g-1)}
  \le\frac1{d(B-1)}+\frac1{T(B-1)}.
 ```
-Across dyadic lengths satisfying $`d\le L2^j`$, the reciprocal-length errors sum to at most $`2L/[d(B-1)]`$. When $`d>2LT`$, there is no wrap and $`2Lm\le d-1`$; hence $`\sum_{i=0}^{d-1}B^i\ge dB^{(d-1)/2}\ge dB^{Lm}`$. Each atom is then at most $`1/[d(B-1)]`$. Only the transition range $`LT<d\le2LT`$ remains. It contains at most one dyadic length, for which the geometric sum and convexity give
+Across dyadic lengths satisfying $`d\le L2^j`$, the reciprocal-length errors sum to at most $`2L/[d(B-1)]`$. When $`d>2LT`$, we have $`Lm\bmod d=Lm`$ and $`2Lm\le d-1`$; hence $`\sum_{i=0}^{d-1}B^i\ge dB^{(d-1)/2}\ge dB^{Lm}`$. Each term $`w_{B,d}(Lm)`$ is then at most $`1/[d(B-1)]`$. Only the transition range $`LT<d\le2LT`$ remains. It contains at most one dyadic length, for which the geometric sum and convexity give
 ``` math
 \frac1T\sum_{m=1}^T w_{B,d}(Lm)
  =\frac{B^L}{T(B^L-1)}\frac{B^{LT}-1}{B^d-1}
  \le\frac{LB^L}{d(B^L-1)}
  \le\frac{2L}{d(B-1)}.
 ```
-For the last inequality we used $`(B^L-1)/(B-1)=\sum_{i=0}^{L-1}B^i\ge B^{L-1}`$ and $`B\le2`$. Summing the main terms and the two error bounds proves <a href="#erdos-257-mersenne-support-subseries--eq:mixed-finite-kernel" data-reference-type="eqref" data-reference="erdos-257-mersenne-support-subseries--eq:mixed-finite-kernel">[eq:mixed-finite-kernel]</a>. The corresponding [source estimate](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos257/PaperCompleteR8/DyadicKernel.lean#L206) uses the same finite average. Nonnegative interchange permits summation against any coefficients $`c_d`$ with $`\sum_dc_d/d<\infty`$.
+The first inequality uses the convexity of $`x\mapsto B^x-1`$ and its value $`0`$ at the origin to bound the ratio by $`LT/d`$. For the last inequality we used $`(B^L-1)/(B-1)=\sum_{i=0}^{L-1}B^i\ge B^{L-1}`$ and $`B\le2`$. Summing the main terms and the two error bounds proves <a href="#erdos-257-mersenne-support-subseries--eq:mixed-finite-kernel" data-reference-type="eqref" data-reference="erdos-257-mersenne-support-subseries--eq:mixed-finite-kernel">[eq:mixed-finite-kernel]</a>. The corresponding [source estimate](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos257/PaperCompleteR8/DyadicKernel.lean#L206) uses the same finite average. Nonnegative interchange permits summation against any coefficients $`c_d`$ with $`\sum_dc_d/d<\infty`$.
 
 <a id="erdos-257-mersenne-support-subseries--proof-of-the-cover-criterion"></a>
 
@@ -3982,7 +4007,7 @@ Summing the progression in each residue class gives the last equality. For the d
 ```
 We will make the displacements of the first $`J`$ finite sets vanish by divisibility, then use $`U_j(N)`$ to bound the terms from the remaining sets. The early tails themselves need not vanish: the displayed identity then gives $`U_j(N)=X_{F_j}(2)`$ for $`j\le J`$.
 
-Fix $`\varepsilon>0`$, set $`t_j=\varepsilon2^{-j}`$, and choose $`J`$ with
+Fix $`\varepsilon>0`$ and allot $`t_j=\varepsilon2^{-j}`$ to the $`j`$th tail; these allowances sum to $`\varepsilon`$. Since $`U_j^{\alpha_j}\le V_j`$, it suffices to make $`t_j^{-\alpha_j}V_j<1`$. This normalisation explains the factor $`2^{j\alpha_j}`$ in the cover condition. Choose $`J`$ with
 ``` math
 K_J:=\sum_{j>J}\frac{C_jt_j^{-\alpha_j}}{B_j-1}<\frac14.
 ```
@@ -3990,7 +4015,7 @@ This is possible since $`\varepsilon^{-\alpha_j}\le\max(1,\varepsilon^{-1})`$. C
 ``` math
 0<\Delta_{2,A}(N)\le\sum_{j>J}U_j(N)\le\varepsilon.
 ```
-Equation <a href="#erdos-257-mersenne-support-subseries--eq:intro-displacement" data-reference-type="eqref" data-reference="erdos-257-mersenne-support-subseries--eq:intro-displacement">[eq:intro-displacement]</a> now excludes rationality at base two. For $`0\le r<d`$, the function $`(b^r-1)/(b^d-1)`$ is nonincreasing on $`b>1`$. For $`r>0`$, cancel $`b-1`$ and write it as $`A(b)/(A(b)+C(b))`$, where $`A(b)=\sum_{i<r}b^i`$ and $`C(b)=\sum_{r\le j<d}b^j`$. Its derivative has the sign of $`A'C-AC'=\sum_{i<r\le j<d}(i-j)b^{i+j-1}<0`$. Thus $`\Delta_{b,A}(N)\le\Delta_{2,A}(N)`$ for every real $`b\ge2`$; when $`b`$ is an integer, the same rational-lattice argument applies. Any prescribed positive divisor can be included in $`L`$, so the witnesses can also be required to be arbitrarily large. ◻
+Equation <a href="#erdos-257-mersenne-support-subseries--eq:intro-displacement" data-reference-type="eqref" data-reference="erdos-257-mersenne-support-subseries--eq:intro-displacement">[eq:intro-displacement]</a> now excludes rationality at base two. For $`0\le r<d`$, the function $`(b^r-1)/(b^d-1)`$ is nonincreasing on $`b>1`$. For $`r>0`$, cancel $`b-1`$ and write it as $`A(b)/(A(b)+C(b))`$, where $`A(b)=\sum_{i<r}b^i`$ and $`C(b)=\sum_{r\le j<d}b^j`$. Its derivative has the sign of $`A'C-AC'=\sum_{i<r\le j<d}(i-j)b^{i+j-1}<0`$. Thus $`\Delta_{b,A}(N)\le\Delta_{2,A}(N)`$ for every real $`b\ge2`$; when $`b`$ is an integer, this contradicts the lower bound obtained from <a href="#erdos-257-mersenne-support-subseries--eq:intro-displacement" data-reference-type="eqref" data-reference="erdos-257-mersenne-support-subseries--eq:intro-displacement">[eq:intro-displacement]</a> under rationality. Any prescribed positive integer can be included as a divisor of $`L`$, so the chosen indices can also be required to be arbitrarily large. ◻
 
 </div>
 
@@ -4002,10 +4027,14 @@ The same proof permits any positive weights $`\eta_j`$ with $`\sum_j\eta_j=1`$: 
 
 Irrationality of two summands alone does not imply irrationality of their sum. The proofs provide more: small positive displacements whose finite averages remain controlled as the modulus changes. We now include both sets of finite divisibility requirements in one modulus and estimate both contributions before choosing an index.
 
+<div class="samepage">
+
 <div id="erdos-257-mersenne-support-subseries--res:mixed-supports" class="theorem">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/1d16f2ddf78e7c4c850246f67bf8ce79b19deb3c/evidence/erdos-257-mersenne-support-subseries.md#res-mixed-supports">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/1d16f2ddf78e7c4c850246f67bf8ce79b19deb3c/evidence/erdos-257-mersenne-support-subseries.md#res-mixed-supports-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/d93e7408aed0b0c73ad5ea98116c7dc0dce3cf7b/evidence/erdos-257-mersenne-support-subseries.md#res-mixed-supports">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d93e7408aed0b0c73ad5ea98116c7dc0dce3cf7b/evidence/erdos-257-mersenne-support-subseries.md#res-mixed-supports-comparator">Comparator</a></p>
 
 **Theorem 4** (mixed weighted and cover supports). *Let $`E,V\subseteq\mathbb{N}_{>0}`$. Suppose $`E`$ satisfies <a href="#erdos-257-mersenne-support-subseries--eq:weighted-return" data-reference-type="eqref" data-reference="erdos-257-mersenne-support-subseries--eq:weighted-return">[eq:weighted-return]</a> for a finite nonempty prime set $`P`$, and $`V\subseteq\bigcup_jF_j`$ for finite sets and nonnegative majorants satisfying the hypotheses of Theorem <a href="#erdos-257-mersenne-support-subseries--thm:variable-fractional-cover" data-reference-type="ref" data-reference="erdos-257-mersenne-support-subseries--thm:variable-fractional-cover">3</a>, with either <a href="#erdos-257-mersenne-support-subseries--eq:strengthened-cover" data-reference-type="eqref" data-reference="erdos-257-mersenne-support-subseries--eq:strengthened-cover">[eq:strengthened-cover]</a> or its positive-weight variant. Then $`X_A(b)`$ is irrational for every infinite $`A\subseteq E\cup V`$ and every integer $`b\ge2`$.*
+
+</div>
 
 </div>
 
@@ -4015,7 +4044,7 @@ Irrationality of two summands alone does not imply irrationality of their sum. T
 ``` math
 K_J=\sum_{j>J}\frac{C_jt_j^{-\alpha_j}}{B_j-1}<\frac1{16}.
 ```
-Choose a finite $`F\subseteq E`$ whose complementary weighted mass is $`\kappa<\rho/16`$. Let $`L`$ be a positive common multiple of $`N_0`$, all members of $`F`$, and all members of the first $`J`$ finite sets. Keeping $`J`$, $`F`$ and $`L`$ fixed, we use the base-two choices
+Choose a finite $`F\subseteq E`$ so that the weighted sum over $`E\setminus F`$ is $`\kappa<\rho/16`$. Let $`L`$ be a positive common multiple of $`N_0`$, all members of $`F`$, and all members of the first $`J`$ finite sets. Keeping $`J`$, $`F`$ and $`L`$ fixed, we use the base-two choices
 ``` math
 Q=L\prod_{p\in P}p^{\lfloor\log_pH\rfloor},\qquad
  G=\lfloor H/\max P\rfloor,\qquad M=\lfloor2^{G/2}\rfloor.
@@ -4038,7 +4067,7 @@ Choose a sampled $`N=Qm`$ for which the nonnegative sum is less than $`1`$. Then
 \Delta_{2,A}(N)\le\Delta_{2,E}(N)+\Delta_{2,V}(N)<2\rho<\varepsilon,
  \qquad N\ge Q\ge L\ge N_0.
 ```
-This inequality remains valid when $`E`$ and $`V`$ overlap. Since $`A`$ is infinite, its displacement is positive. The comparison of atoms in the cover proof gives arbitrarily small positive displacements at every integer base, and <a href="#erdos-257-mersenne-support-subseries--eq:intro-displacement" data-reference-type="eqref" data-reference="erdos-257-mersenne-support-subseries--eq:intro-displacement">[eq:intro-displacement]</a> finishes the proof. ◻
+This inequality remains valid when $`E`$ and $`V`$ overlap. Since $`A`$ is infinite, $`\Delta_{2,A}(N)>0`$. The comparison $`0<\Delta_{b,A}(N)\le\Delta_{2,A}(N)`$ proved in the cover argument therefore gives arbitrarily small positive values at every integer base. Equation <a href="#erdos-257-mersenne-support-subseries--eq:intro-displacement" data-reference-type="eqref" data-reference="erdos-257-mersenne-support-subseries--eq:intro-displacement">[eq:intro-displacement]</a> rules out rationality. ◻
 
 </div>
 
@@ -4049,7 +4078,7 @@ This inequality remains valid when $`E`$ and $`V`$ overlap. Since $`A`$ is infin
 Write $`\mathcal W_b`$ for supports satisfying the finite-prime weighted hypothesis at base $`b`$, and $`\mathcal C`$ for supports admitting a strengthened positive cover as in <a href="#erdos-257-mersenne-support-subseries--eq:strengthened-cover" data-reference-type="eqref" data-reference="erdos-257-mersenne-support-subseries--eq:strengthened-cover">[eq:strengthened-cover]</a>. Neither condition includes the other.
 
 <div id="erdos-257-mersenne-support-subseries--res:weighted-cover-incomparability" class="proposition">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/1d16f2ddf78e7c4c850246f67bf8ce79b19deb3c/evidence/erdos-257-mersenne-support-subseries.md#res-weighted-cover-incomparability">Lean</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/d93e7408aed0b0c73ad5ea98116c7dc0dce3cf7b/evidence/erdos-257-mersenne-support-subseries.md#res-weighted-cover-incomparability">Lean</a></p>
 
 **Proposition 5** (incomparable support criteria). *There are infinite positive supports $`E`$ and $`V`$ such that
 ``` math
@@ -4060,7 +4089,7 @@ E\in\mathcal W_2,\quad E\notin\mathcal C,\qquad
 
 </div>
 
-The constructions use the same type of divisor cube in two different ways. For $`E`$, every cube carries a growing power of the fixed prime $`2`$, so the weighted condition is inexpensive. The number of divisors occurring together will exclude every possible cover. For $`V`$, the cubes use disjoint sets of fresh primes. A finite prime witness then misses almost all cubes, whereas fractional powers keep their cover costs summable.
+Both constructions use finite sets of the form $`\{qd:d\mid\prod_{p\in P}p\}`$. For $`E`$, we take $`q`$ to be a growing power of $`2`$. This makes the weighted sum converge, while the many simultaneous divisors force the lower bound for any cover to diverge. For $`V`$, we use disjoint sets of primes in successive finite sets. For any fixed finite set of primes, all sufficiently late sets contain only exponents coprime to those primes, so the weighted sum diverges. Fractional powers of the divisor counts will nevertheless give a summable cover cost.
 
 <a id="erdos-257-mersenne-support-subseries--a-lower-bound-independent-of-the-cover"></a>
 
@@ -4081,7 +4110,7 @@ Here $`\log^+t=\log\max\{1,t\}`$. For every finite $`F`$ contained in $`\bigcup_
 ```
 Indeed, at a point where $`f_F(n)=t>0`$, some covering set $`F_j`$ satisfies $`f_{F_j}(n)\ge\eta_jt`$. Otherwise summing contradicts coverage. The corresponding weighted majorant is at least $`\Psi(t)`$. Average first over $`1\le n\le X`$, using $`\lfloor X/d\rfloor/X\le1/d`$, and let $`X\to\infty`$. The periodic left side tends to $`\mathbb E_F\Psi(f_F)`$, proving the first inequality; the covering moduli need not divide $`\operatorname{lcm}(F)`$. Convexity gives $`2^\alpha-1\le\alpha`$, and $`e^u/u\ge e`$ proves the second. The scalar inequality $`t^\alpha/(2^\alpha-1)\ge e\log t`$ also has a [corresponding source theorem](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos257/PaperCompleteR7/CoverKernel.lean#L170).
 
-The lower bound is asymptotically attained on a single divisor cube: <a href="#erdos-257-mersenne-support-subseries--eq:optimal-cube-cost" data-reference-type="eqref" data-reference="erdos-257-mersenne-support-subseries--eq:optimal-cube-cost">[eq:optimal-cube-cost]</a> in Appendix <a href="#erdos-257-mersenne-support-subseries--app:elementary-details" data-reference-type="ref" data-reference="erdos-257-mersenne-support-subseries--app:elementary-details">11</a> gives its sharp leading constant. The separation below uses only the lower bound <a href="#erdos-257-mersenne-support-subseries--eq:cover-log-obstruction" data-reference-type="eqref" data-reference="erdos-257-mersenne-support-subseries--eq:cover-log-obstruction">[eq:cover-log-obstruction]</a>.
+The lower bound is asymptotically attained on the sets $`\{qd:d\mid\prod_{p\in P}p\}`$: <a href="#erdos-257-mersenne-support-subseries--eq:optimal-cube-cost" data-reference-type="eqref" data-reference="erdos-257-mersenne-support-subseries--eq:optimal-cube-cost">[eq:optimal-cube-cost]</a> in Appendix <a href="#erdos-257-mersenne-support-subseries--app:elementary-details" data-reference-type="ref" data-reference="erdos-257-mersenne-support-subseries--app:elementary-details">11</a> gives the sharp leading constant. The separation below uses only the lower bound <a href="#erdos-257-mersenne-support-subseries--eq:cover-log-obstruction" data-reference-type="eqref" data-reference="erdos-257-mersenne-support-subseries--eq:cover-log-obstruction">[eq:cover-log-obstruction]</a>.
 
 <a id="erdos-257-mersenne-support-subseries--two-separating-constructions"></a>
 
@@ -4089,15 +4118,15 @@ The lower bound is asymptotically attained on a single divisor cube: <a href="#e
 
 <div class="proof">
 
-*Proof of Proposition <a href="#erdos-257-mersenne-support-subseries--res:weighted-cover-incomparability" data-reference-type="ref" data-reference="erdos-257-mersenne-support-subseries--res:weighted-cover-incomparability">5</a>.* The reciprocal sum over odd primes diverges, even after finitely many are removed. Otherwise $`\prod_{p\text{ odd}}(1+1/p)`$ would bound the reciprocal mass of odd squarefree integers; the decomposition $`n=ds^2`$ would then make the odd harmonic series converge.
+*Proof of Proposition <a href="#erdos-257-mersenne-support-subseries--res:weighted-cover-incomparability" data-reference-type="ref" data-reference="erdos-257-mersenne-support-subseries--res:weighted-cover-incomparability">5</a>.* The reciprocal sum over odd primes diverges, even after finitely many are removed. Otherwise $`\prod_{p\text{ odd}}(1+1/p)`$ would bound the sum of reciprocals of odd squarefree integers; the decomposition $`n=ds^2`$ would then make the odd harmonic series converge.
 
-For the first construction, the $`k`$th group of exponents will carry a factor $`2^k`$. The event $`v_2(n)=k`$ has density $`2^{-(k+1)}`$, so a prime reciprocal sum of order $`2^k`$ will give a fixed contribution to the mean logarithmic count. Taking its leading constant below $`\log2`$ leaves exponential decay in the weighted sum. Choose pairwise disjoint finite sets $`P_k`$ of odd primes such that $`2^k/4\le S_k:=\sum_{p\in P_k}1/p<2^k/4+1`$. Put $`M_k=\prod_{p\in P_k}p`$ and $`E=\bigcup_{k\ge1}\{2^kd:d\mid M_k\}`$. The witness $`\{2\}`$ has weighted mass
+For the first construction, the $`k`$th group of exponents will carry a factor $`2^k`$. The event $`v_2(n)=k`$ has density $`2^{-(k+1)}`$, so a prime reciprocal sum of order $`2^k`$ will give a fixed contribution to the mean logarithmic count. Taking its leading constant below $`\log2`$ leaves exponential decay in the weighted sum. Choose pairwise disjoint finite sets $`P_k`$ of odd primes such that $`2^k/4\le S_k:=\sum_{p\in P_k}1/p<2^k/4+1`$. Put $`M_k=\prod_{p\in P_k}p`$ and $`E=\bigcup_{k\ge1}\{2^kd:d\mid M_k\}`$. For $`P=\{2\}`$ the weighted sum is
 ``` math
 \sum_{k\ge1}\frac{\prod_{p\in P_k}(1+1/p)}{2^{2^k}-1}
  \le 2e\sum_{k\ge1}
        \exp\bigl(-(\log2-1/4)2^k\bigr)<\infty.
 ```
-For the union $`F_m`$ of the first $`m`$ frames, average $`\log^+ f_{F_m}`$ over one period. On $`v_2(n)=k<m`$, the $`k`$th frame contributes $`2^{Z_k(n)}`$ divisors, where $`Z_k(n)=\sum_{p\in P_k}\mathbf1_{p\mid n}`$. This event has density $`2^{-(k+1)}`$ and is independent of odd-prime divisibility. Thus
+For $`F_m=\bigcup_{k=1}^m\{2^kd:d\mid M_k\}`$, average $`\log^+ f_{F_m}`$ over one period. On $`v_2(n)=k<m`$, the set $`\{2^kd:d\mid M_k\}`$ contributes $`2^{Z_k(n)}`$ divisors, where $`Z_k(n)=\sum_{p\in P_k}\mathbf1_{p\mid n}`$. This event has density $`2^{-(k+1)}`$ and is independent of odd-prime divisibility. Thus
 ``` math
 \mathbb E_{F_m}\log^+f_{F_m}
  \ge(\log2)\sum_{k=1}^{m-1}2^{-(k+1)}S_k
@@ -4105,19 +4134,19 @@ For the union $`F_m`$ of the first $`m`$ frames, average $`\log^+ f_{F_m}`$ over
 ```
 Bound <a href="#erdos-257-mersenne-support-subseries--eq:cover-log-obstruction" data-reference-type="eqref" data-reference="erdos-257-mersenne-support-subseries--eq:cover-log-obstruction">[eq:cover-log-obstruction]</a> makes these means uniformly bounded for every strengthened cover, so $`E\notin\mathcal C`$.
 
-For the reverse direction, choose unused odd primes $`q_j\ge4^j`$ and disjoint finite sets $`P_j`$ of unused odd primes. Stop each $`P_j`$ at the first prefix with $`R_j:=\prod_{p\in P_j}(1+1/p)\ge q_j`$. Prime reciprocal divergence permits this, and minimality gives $`q_j\le R_j<4q_j/3`$. Put $`S_j=\sum_{p\in P_j}1/p`$, $`M_j=\prod_{p\in P_j}p`$, and $`V=\bigcup_{j\ge1}F_j`$, where $`F_j=\{q_jd:d\mid M_j\}`$. The frames have disjoint prime alphabets, and
+For the reverse direction, choose unused odd primes $`q_j\ge4^j`$ and disjoint finite sets $`P_j`$ of unused odd primes. Stop each $`P_j`$ at the first prefix with $`R_j:=\prod_{p\in P_j}(1+1/p)\ge q_j`$. Prime reciprocal divergence permits this, and minimality gives $`q_j\le R_j<4q_j/3`$. Put $`S_j=\sum_{p\in P_j}1/p`$, $`M_j=\prod_{p\in P_j}p`$, and $`V=\bigcup_{j\ge1}F_j`$, where $`F_j=\{q_jd:d\mid M_j\}`$. No prime divides exponents in two different sets $`F_j`$, and
 ``` math
 \sum_{a\in F_j}\frac1a=\frac{R_j}{q_j}\in[1,4/3).
 ```
-Thus the reciprocal sum diverges. Every finite prime set misses all factors of all but finitely many frames; each missed frame has base-$`b`$ weighted mass $`R_j/[q_j(b-1)]\ge1/(b-1)`$. Hence $`V\notin\mathcal W_b`$ for every integer $`b\ge2`$.
+Thus $`\sum_{a\in V}1/a`$ diverges. Given a finite set $`P`$ of primes, all exponents in all but finitely many $`F_j`$ are coprime to $`\prod_{p\in P}p`$. On each such $`F_j`$ we have $`h_P(a)=1`$, so its contribution to the base-$`b`$ weighted sum is $`R_j/[q_j(b-1)]\ge1/(b-1)`$. Hence $`V\notin\mathcal W_b`$ for every integer $`b\ge2`$.
 
-For the full infinite-cover cost, from $`\log(1+x)\ge x-x^2/2`$ and $`\sum_{p\in P_j}p^{-2}\le1`$ we have $`S_j\le\log R_j+1/2<\log q_j+1`$. The cost has two product factors: the frame-index weight $`(1+z_j)^j`$ and the divisor contribution $`\prod_{p\in P_j}(1+z_j/p)`$. Their product is at most $`\exp(z_j(j+S_j))`$. This suggests keeping $`z_j(j+S_j)`$ equal to $`1`$. Set
+For the full infinite-cover cost, from $`\log(1+x)\ge x-x^2/2`$ and $`\sum_{p\in P_j}p^{-2}\le1`$ we have $`S_j\le\log R_j+1/2<\log q_j+1`$. In the $`j`$th term of the cover cost, the factor $`2^{j\alpha_j}`$ becomes $`(1+z_j)^j`$, and the divisor sum contributes $`\prod_{p\in P_j}(1+z_j/p)`$. Their product is at most $`\exp(z_j(j+S_j))`$, which we keep bounded by choosing $`z_j(j+S_j)=1`$. Set
 ``` math
 z_j=(j+S_j)^{-1},\qquad
  \alpha_j=\log_2(1+z_j),\qquad
  c_{j,q_jd}=z_j^{\omega(d)}\quad(d\mid M_j),
 ```
-with other coefficients zero and $`\omega(d)`$ the number of prime factors of $`d`$. If $`q_j\mid n`$ and $`Z`$ primes in $`P_j`$ divide $`n`$, the divisor majorant equals $`(1+z_j)^Z=f_{F_j}(n)^{\alpha_j}`$; otherwise both sides vanish. The column cost is $`C_j=q_j^{-1}\prod_{p\in P_j}(1+z_j/p)`$, whence
+with other coefficients zero and $`\omega(d)`$ the number of prime factors of $`d`$. If $`q_j\mid n`$ and $`Z`$ primes in $`P_j`$ divide $`n`$, the divisor majorant equals $`(1+z_j)^Z=f_{F_j}(n)^{\alpha_j}`$; otherwise both sides vanish. The sum defining $`C_j`$ is $`C_j=q_j^{-1}\prod_{p\in P_j}(1+z_j/p)`$, whence
 ``` math
 \frac{C_j2^{j\alpha_j}}{2^{\alpha_j}-1}
  =\frac{(1+z_j)^j}{q_jz_j}
@@ -4125,7 +4154,7 @@ with other coefficients zero and $`\omega(d)`$ the number of prime factors of $`
  \le\frac{e(j+S_j)}{q_j}
  \le e\bigl((1+\log4)j+1\bigr)4^{-j}.
 ```
-The last bound uses that $`(j+\log x+1)/x`$ decreases for $`x\ge4^j`$. Its sum converges, including the frame-index factor in <a href="#erdos-257-mersenne-support-subseries--eq:strengthened-cover" data-reference-type="eqref" data-reference="erdos-257-mersenne-support-subseries--eq:strengthened-cover">[eq:strengthened-cover]</a>; hence $`V\in\mathcal C`$. ◻
+The last bound uses that $`(j+\log x+1)/x`$ decreases for $`x\ge4^j`$. The bound is summable in $`j`$ and includes the factor $`2^{j\alpha_j}`$ required by <a href="#erdos-257-mersenne-support-subseries--eq:strengthened-cover" data-reference-type="eqref" data-reference="erdos-257-mersenne-support-subseries--eq:strengthened-cover">[eq:strengthened-cover]</a>; hence $`V\in\mathcal C`$. ◻
 
 </div>
 
@@ -4137,22 +4166,22 @@ The union of the two separating supports requires the mixed theorem.
 
 <div id="erdos-257-mersenne-support-subseries--res:strict-mixed-supports" class="corollary">
 
-**Corollary 6** (a host requiring the mixed criterion). *There is an infinite positive support $`U`$ with $`U\notin\mathcal C`$ and $`U\notin\mathcal W_b`$ for every integer $`b\ge2`$, such that $`X_A(b)`$ is irrational for every infinite $`A\subseteq U`$ and every integer $`b\ge2`$.*
+**Corollary 6** (a support requiring the mixed criterion). *There is an infinite positive support $`U`$ with $`U\notin\mathcal C`$ and $`U\notin\mathcal W_b`$ for every integer $`b\ge2`$, such that $`X_A(b)`$ is irrational for every infinite $`A\subseteq U`$ and every integer $`b\ge2`$.*
 
 </div>
 
 <div class="proof">
 
-*Proof.* Let $`U=E\cup V`$, with $`E,V`$ as in Proposition <a href="#erdos-257-mersenne-support-subseries--res:weighted-cover-incomparability" data-reference-type="ref" data-reference="erdos-257-mersenne-support-subseries--res:weighted-cover-incomparability">5</a>. A cover of $`U`$ restricts to a cover of $`E`$, and a finite-prime weighted witness for $`U`$ restricts to one for $`V`$, since all weights are nonnegative. Thus $`U`$ belongs to neither individual class. Theorem <a href="#erdos-257-mersenne-support-subseries--res:mixed-supports" data-reference-type="ref" data-reference="erdos-257-mersenne-support-subseries--res:mixed-supports">4</a> gives irrationality for every infinite subset of $`U`$ at every integer base $`b\ge2`$. ◻
+*Proof.* Let $`U=E\cup V`$, with $`E,V`$ as in Proposition <a href="#erdos-257-mersenne-support-subseries--res:weighted-cover-incomparability" data-reference-type="ref" data-reference="erdos-257-mersenne-support-subseries--res:weighted-cover-incomparability">5</a>. A cover of $`U`$ is also a cover of $`E`$, while convergence of the weighted sum over $`U`$ would imply convergence of the sum over $`V`$ for the same prime set, since all summands are nonnegative. Thus $`U`$ belongs to neither individual class. Theorem <a href="#erdos-257-mersenne-support-subseries--res:mixed-supports" data-reference-type="ref" data-reference="erdos-257-mersenne-support-subseries--res:mixed-supports">4</a> gives irrationality for every infinite subset of $`U`$ at every integer base $`b\ge2`$. ◻
 
 </div>
 
-The fixed-dyadic cover class in (V) is closed under finite unions. For two covers, interleave their $`j`$th frames at positions $`2j-1,2j`$, halve each exponent, and retain the nonnegative coefficient columns. The majorants persist since $`f^{\alpha/2}\le f^\alpha`$ for every nonnegative integer $`f`$. Writing $`T_j=C_j2^{j\alpha_j}/(2^{\alpha_j}-1)`$ for an old column, its new cost is at most
+The fixed-dyadic cover class in (V) is closed under finite unions. For two covers, place their $`j`$th finite sets at positions $`2j-1,2j`$, halve each exponent, and retain the coefficients of the corresponding majorants. The inequalities persist since $`f^{\alpha/2}\le f^\alpha`$ for every nonnegative integer $`f`$. Writing $`T_j=C_j2^{j\alpha_j}/(2^{\alpha_j}-1)`$ for the original $`j`$th cost, its new cost is at most
 ``` math
 \frac{C_j2^{j\alpha_j}}{2^{\alpha_j/2}-1}
  =(1+2^{\alpha_j/2})T_j\le(1+\sqrt2)T_j.
 ```
-For $`r`$ covers, interleave at positions at most $`rj`$ and divide each exponent by $`r`$; the cost ratio is $`(2^\alpha-1)/(2^{\alpha/r}-1)<2r`$. Weighted supports are likewise closed under finite unions: combine their finite prime witnesses, so the prime part grows and $`h/(b^h-1)`$ decreases. Finite supports admit both criteria; subsets inherit each host. Thus the mixed class is closed under finite unions and finite changes using the literal dyadic condition (V), without changing to arbitrary cover weights. The summability hypothesis cannot be omitted for countable unions. Every prime singleton is admitted, but for the full prime support $`\mathcal P`$ one has $`\Delta_{2,\mathcal P}(N)>1/3`$ for every $`N\ge1`$: indeed $`\sum_{r\ge1}2^{-r}\omega(N+r)\ge1`$, whereas $`X_{\mathcal P}(2)\le\sum_{a\ge2}(2^a-1)^{-1}<2/3`$. Here $`\omega(n)`$ is the number of distinct prime divisors of $`n`$. The reciprocal-summable class is contained in the weighted class, since $`h/(2^h-1)\le1`$. A direct averaging proof of this special case is given in Section <a href="#erdos-257-mersenne-support-subseries--sec:reciprocal-support" data-reference-type="ref" data-reference="erdos-257-mersenne-support-subseries--sec:reciprocal-support">7</a>.
+For $`r`$ covers, interleave at positions at most $`rj`$ and divide each exponent by $`r`$; the cost ratio is $`(2^\alpha-1)/(2^{\alpha/r}-1)<2r`$. Weighted supports are likewise closed under finite unions: take the union of their finite prime sets. The prime part $`h_P(a)`$ can only increase, and $`h/(b^h-1)`$ decreases with $`h`$. Finite supports satisfy both criteria, and each criterion is inherited by subsets. Thus the mixed class is closed under finite unions and finite changes with the fixed dyadic weights in (V); arbitrary cover weights are not needed. The summability hypothesis cannot be omitted for countable unions. Every prime singleton is admitted, but for the full prime support $`\mathcal P`$ one has $`\Delta_{2,\mathcal P}(N)>1/3`$ for every $`N\ge1`$: indeed $`\sum_{r\ge1}2^{-r}\omega(N+r)\ge1`$, whereas $`X_{\mathcal P}(2)\le\sum_{a\ge2}(2^a-1)^{-1}<2/3`$. Here $`\omega(n)`$ is the number of distinct prime divisors of $`n`$. The reciprocal-summable class is contained in the weighted class, since $`h/(2^h-1)\le1`$. A direct averaging proof of this special case is given in Section <a href="#erdos-257-mersenne-support-subseries--sec:reciprocal-support" data-reference-type="ref" data-reference="erdos-257-mersenne-support-subseries--sec:reciprocal-support">7</a>.
 
 For comparison, Tao–Teräväinen prove the full-prime case at base $`2`$ \[taoteravainen2025, Theorem 1.3, p. 4\]. The paragraph following it states extensions to prime support at every integer base and to full prime-power support at base $`2`$, leaving the modifications to the reader. It does not treat arbitrary infinite thinnings. The proposed thinning extension is not a premise of any theorem here.
 
@@ -4180,9 +4209,9 @@ Prime-incidence arguments require additional care as well: multiplying all prime
 
 #### Algebraic bases on separated supports
 
-The companion [*Reading eight Erdős problems together*](https://github.com/wcook04/plectis-erdos/blob/main/paper/synthesis/optimal-sparse-perturbations.pdf), subsection “Divisibility cuts at every algebraic base”, states a transcendence extension based on the number-field Subspace Theorem. Its hypothesis is an infinite host $`H`$ with cuts $`L_j<M_j`$, where $`L_j\to\infty`$ and $`M_j-L_j\to\infty`$, such that every $`n\in H`$ with $`n\le L_j`$ divides $`L_j`$, and every $`n\in H`$ with $`n>L_j`$ is a multiple of $`M_j`$. The claimed conclusion is transcendence of $`\sum_{n\in B}w_n/(t^n-1)`$ for every infinite $`B\subseteq H`$, bounded positive integer weights $`w_n`$ and real algebraic $`t>1`$.
+The companion [*Reading eight Erdős problems together*](https://github.com/wcook04/plectis-erdos/blob/main/paper/synthesis/optimal-sparse-perturbations.pdf), subsection “Divisibility cuts at every algebraic base”, states a transcendence extension based on the number-field Subspace Theorem. Its hypothesis is an infinite set $`H`$ with indices $`L_j<M_j`$, where $`L_j\to\infty`$ and $`M_j-L_j\to\infty`$, such that every $`n\in H`$ with $`n\le L_j`$ divides $`L_j`$, and every $`n\in H`$ with $`n>L_j`$ is a multiple of $`M_j`$. The claimed conclusion is transcendence of $`\sum_{n\in B}w_n/(t^n-1)`$ for every infinite $`B\subseteq H`$, bounded positive integer weights $`w_n`$ and real algebraic $`t>1`$.
 
-Every divisibility chain has such cuts, as does $`H_* = \bigcup_j N_j\{1,\ldots,2^{N_j}\}`$ with $`N_0=1`$ and $`N_{j+1}=2N_j\operatorname{lcm}(1,\ldots,2^{N_j})`$. Each block has reciprocal mass at least $`1/2`$ and contains antichains of unbounded size. Its one-prime weighted mass at every real $`t>1`$ is at most $`2t^2/(t-1)^3`$. This provides a connection with the weighted criterion, although the cut condition is not asserted for every weighted host.
+Every divisibility chain has such cuts, as does $`H_* = \bigcup_j N_j\{1,\ldots,2^{N_j}\}`$ with $`N_0=1`$ and $`N_{j+1}=2N_j\operatorname{lcm}(1,\ldots,2^{N_j})`$. Each block has a reciprocal sum of at least $`1/2`$ and contains antichains of unbounded size. The weighted sum for one prime is at most $`2t^2/(t-1)^3`$ at every real $`t>1`$. This connects the example with the weighted criterion, although the separation condition is not asserted for every support satisfying that criterion.
 
 The companion proof is outside this paper and is not a premise of the weighted, cover or mixed theorem. It has two AI proof reviews, no Lean proof of transcendence and no independent human review. No historical priority is asserted for the extension. The case of arbitrary infinite support at base two remains unresolved.
 
@@ -4190,10 +4219,10 @@ The companion proof is outside this paper and is not a premise of the weighted, 
 
 ### Reciprocal-summable supports
 
-Erdős stated the following extension of his pairwise-coprime theorem \[erdos1968, p. 222\]. It follows from Theorem <a href="#erdos-257-mersenne-support-subseries--res:weighted-support" data-reference-type="ref" data-reference="erdos-257-mersenne-support-subseries--res:weighted-support">2</a>, since $`h/(2^h-1)\le1`$, but the direct argument explains why finite reciprocal mass makes the averaging simpler.
+Erdős stated the following extension of his pairwise-coprime theorem \[erdos1968, p. 222\]. It follows from Theorem <a href="#erdos-257-mersenne-support-subseries--res:weighted-support" data-reference-type="ref" data-reference="erdos-257-mersenne-support-subseries--res:weighted-support">2</a>, since $`h/(2^h-1)\le1`$, but the direct argument explains why reciprocal summability makes the averaging simpler.
 
 <div id="erdos-257-mersenne-support-subseries--res:reciprocal-support" class="theorem">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/Erdos249257/AllBaseReciprocalSupportIrrationality.lean#L395">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/1d16f2ddf78e7c4c850246f67bf8ce79b19deb3c/evidence/erdos-257-mersenne-support-subseries.md#res-reciprocal-support-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/Erdos249257/AllBaseReciprocalSupportIrrationality.lean#L395">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d93e7408aed0b0c73ad5ea98116c7dc0dce3cf7b/evidence/erdos-257-mersenne-support-subseries.md#res-reciprocal-support-comparator">Comparator</a></p>
 
 **Theorem 7** (reciprocal-summable supports). *Let $`A\subseteq\mathbb{N}_{>0}`$ be infinite. If
 ``` math
@@ -4220,7 +4249,7 @@ Then $`T_N^{(b)}-T_0^{(b)}=\Delta_{b,A}(N)`$. For a fixed positive integer $`Q`$
  \label{eq:gcd-orbit-mean}
 \end{equation}
 ```
-The orbit $`4,2,0`$ modulo $`6`$ used in Section <a href="#erdos-257-mersenne-support-subseries--sec:eight-return-extensions" data-reference-type="ref" data-reference="erdos-257-mersenne-support-subseries--sec:eight-return-extensions">2</a> illustrates this mean: its atom average is $`1/9`$, while its displacement average is $`2/21`$. When an exponent divides $`Q`$, its atom stays at its zero-shift value, so its contribution to the displacement vanishes.
+The orbit $`4,2,0`$ modulo $`6`$ used in Section <a href="#erdos-257-mersenne-support-subseries--sec:eight-return-extensions" data-reference-type="ref" data-reference="erdos-257-mersenne-support-subseries--sec:eight-return-extensions">2</a> illustrates this mean: its average of $`w_{2,6}(4m)`$ is $`1/9`$, while the average of $`w_{2,6}(4m)-w_{2,6}(0)`$ is $`2/21`$. When $`d\mid Q`$, we have $`w_{b,d}(Qm)=w_{b,d}(0)`$, so this exponent contributes zero to the displacement.
 
 To interchange the sum over exponents and this limit, we use a bound summable in $`d`$ for the fixed modulus $`Q`$. Counting positive multiples of $`d`$ gives
 ``` math
@@ -4241,7 +4270,7 @@ Next let $`Q_t=\operatorname{lcm}(1,\ldots,t)`$. For each fixed $`d`$, eventuall
  \label{eq:lcm-prefix-orbit-limit}
 \end{equation}
 ```
-Thus the limiting averages of the nonnegative displacements $`\Delta_{b,A}(Q_tm)`$ tend to zero. Choose $`t`$, then a sufficiently long finite average, and finally a term no larger than that average. This gives arbitrarily small positive displacements, contradicting the rational lattice in <a href="#erdos-257-mersenne-support-subseries--eq:intro-displacement" data-reference-type="eqref" data-reference="erdos-257-mersenne-support-subseries--eq:intro-displacement">[eq:intro-displacement]</a>. This proves Theorem <a href="#erdos-257-mersenne-support-subseries--res:reciprocal-support" data-reference-type="ref" data-reference="erdos-257-mersenne-support-subseries--res:reciprocal-support">7</a> directly at every integer base.
+Thus the limiting averages of the nonnegative displacements $`\Delta_{b,A}(Q_tm)`$ tend to zero. Choose $`t`$, then a sufficiently long finite average, and finally a term no larger than that average. This gives arbitrarily small positive displacements, contradicting the lower bound $`1/q`$ obtained from <a href="#erdos-257-mersenne-support-subseries--eq:intro-displacement" data-reference-type="eqref" data-reference="erdos-257-mersenne-support-subseries--eq:intro-displacement">[eq:intro-displacement]</a>. This proves Theorem <a href="#erdos-257-mersenne-support-subseries--res:reciprocal-support" data-reference-type="ref" data-reference="erdos-257-mersenne-support-subseries--res:reciprocal-support">7</a> directly at every integer base.
 
 The order of limits is essential: the observation length tends to infinity with the modulus fixed, and only then does the modulus increase. Reciprocal summability controls both interchanges.
 
@@ -4254,7 +4283,7 @@ For example, every powerful integer (each prime factor occurs to exponent at lea
 For a finite nonempty $`F\subseteq\mathbb{N}_{>0}`$, let $`D_F`$ be the positive reduced denominator of $`X_F(b)=\sum_{n\in F}(b^n-1)^{-1}`$. We use $`\operatorname{ord}_1(b)=1`$.
 
 <div id="erdos-257-mersenne-support-subseries--res:period" class="theorem">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/1d16f2ddf78e7c4c850246f67bf8ce79b19deb3c/evidence/erdos-257-mersenne-support-subseries.md#res-period">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/1d16f2ddf78e7c4c850246f67bf8ce79b19deb3c/evidence/erdos-257-mersenne-support-subseries.md#res-period-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/d93e7408aed0b0c73ad5ea98116c7dc0dce3cf7b/evidence/erdos-257-mersenne-support-subseries.md#res-period">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d93e7408aed0b0c73ad5ea98116c7dc0dce3cf7b/evidence/erdos-257-mersenne-support-subseries.md#res-period-comparator">Comparator</a></p>
 
 **Theorem 8** (the exact denominator period). *Let $`F\subseteq\mathbb{N}_{>0}`$ be finite and nonempty, let $`b\ge2`$ be an integer, and let $`D_F>0`$ be the denominator of $`X_F(b)`$ in lowest terms. Then $`D_F`$ is coprime to $`b`$, and
 ``` math
@@ -4290,7 +4319,7 @@ z_N:=v\sum_{r\ge1}c_A(N+r)2^{-r}
 ```
 Separating the first term of the tail then gives $`z_{N+1}=2z_N-vc_A(N+1)`$. All the coefficients $`c_A(n)`$ are divisor counts of the same set $`A`$.
 
-Two elementary tail properties hold regardless of whether the value is rational. Assume first that $`A`$ is nonempty and put $`a_0=\min A`$. Then every $`a_0`$ consecutive integers contain a multiple of $`a_0`$, so a divisor-incidence zero window has length at most $`a_0-1`$. If $`A`$ is infinite, choose $`k`$ exponents and a common multiple $`L`$; then $`c_A(L)\ge k`$ and $`\sum_{r\ge1}c_A(L-1+r)2^{-r}\ge k/2`$, by its first term. Both facts hold without rationality. A contradiction must use the integral recurrence together with the requirement that every coefficient is obtained from the same selector.
+Two elementary tail properties hold regardless of whether the value is rational. Assume first that $`A`$ is nonempty and put $`a_0=\min A`$. Then every $`a_0`$ consecutive integers contain a multiple of $`a_0`$, so a run of zeros of $`c_A`$ has length at most $`a_0-1`$. If $`A`$ is infinite, choose $`k`$ exponents and a common multiple $`L`$; then $`c_A(L)\ge k`$ and $`\sum_{r\ge1}c_A(L-1+r)2^{-r}\ge k/2`$, by its first term. Both facts hold without rationality. A contradiction must use the integral recurrence together with the requirement that every coefficient counts divisors in the same set $`A`$.
 
 The compatibility condition on the coefficients is expressed by Dirichlet convolution: $`\mu*c_A=\mathbf1_A`$, where $`\mu`$ is the Möbius function. A putative recurrence with integral forcing must therefore satisfy $`(\mu*c_A)(n)\in\{0,1\}`$ for all $`n`$. The telescoping proof of the integer-recurrence criterion and the Möbius inversion argument are given under [Bounds for a general coefficient sequence](https://github.com/wcook04/plectis-erdos/blob/main/paper/257/erdos257-mersenne-reasoning-surface.pdf#nameddest=record257:coefficient-recurrence) in the long record. The example $`A=\{2\}`$ there has value $`1/3`$. The correspondence permits finite supports; infinitude remains a separate requirement for a counterexample to Problem <a href="#erdos-257-mersenne-support-subseries--res:problem" data-reference-type="ref" data-reference="erdos-257-mersenne-support-subseries--res:problem">1</a>.
 
@@ -4308,7 +4337,7 @@ The estimate
 ``` math
 2^{-N}<R_N\le2^{-N}+\frac23\,4^{-N}<w_N\qquad(N\ge1)
 ```
-implies uniqueness of the selector. Indeed, at the first differing exponent $`n`$, the difference $`w_n`$ exceeds everything later terms can cancel. The middle inequality follows by writing $`w_n=2^{-n}+4^{-n}/(1-2^{-n})`$ and using $`n\ge N+1\ge2`$. Since every weight exceeds its tail, Hornich’s theorem \[hornich1941\], as proved by Nitecki \[nitecki2013, Theorem 4(1), p. 9\], shows that the coding image is a Cantor set of measure $`\lim_N2^NR_N`$; the estimate above gives $`2^NR_N\to1`$, so $`\lambda(\mathcal A)=1`$. Concretely, fixing the first $`N`$ digits gives $`2^N`$ disjoint closed intervals of length $`R_N`$. These interval unions decrease to $`\mathcal A`$, and continuity of Lebesgue measure from above gives the same limit. Kovač–Tao record this strict-tail inequality and the Cantor conclusion in the fixed-base setting \[kovactao, Remark 4.1\]. Thus each represented target has a unique selector. The [geometry section of the long record](https://github.com/wcook04/plectis-erdos/blob/main/paper/257/erdos257-mersenne-reasoning-surface.pdf#nameddest=record257:geometry) also treats restricted supports. The linked results give the [comparison of each restricted tail with the preceding weight](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos257/MersenneSubseriesRigidity.lean#L30), the [injectivity of the restricted digit map](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos257/MersenneSubseriesRigidity.lean#L54) and the [measure dichotomy](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos257/MersenneSubseriesRigidity.lean#L397).
+implies uniqueness of the sequence $`(\varepsilon_n)`$. Indeed, at the first differing exponent $`n`$, the difference $`w_n`$ exceeds everything later terms can cancel. The middle inequality follows by writing $`w_n=2^{-n}+4^{-n}/(1-2^{-n})`$ and using $`n\ge N+1\ge2`$. Since every weight exceeds its tail, Hornich’s theorem \[hornich1941\], as proved by Nitecki \[nitecki2013, Theorem 4(1), p. 9\], shows that the coding image is a Cantor set of measure $`\lim_N2^NR_N`$; the estimate above gives $`2^NR_N\to1`$, so $`\lambda(\mathcal A)=1`$. Concretely, fixing the first $`N`$ digits gives $`2^N`$ disjoint closed intervals of length $`R_N`$. These interval unions decrease to $`\mathcal A`$, and continuity of Lebesgue measure from above gives the same limit. Kovač–Tao record this strict-tail inequality and the Cantor conclusion in the fixed-base setting \[kovactao, Remark 4.1\]. Thus each represented target determines a unique set of selected exponents. The [geometry section of the long record](https://github.com/wcook04/plectis-erdos/blob/main/paper/257/erdos257-mersenne-reasoning-surface.pdf#nameddest=record257:geometry) also treats restricted supports. The linked results give the [comparison of each restricted tail with the preceding weight](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos257/MersenneSubseriesRigidity.lean#L30), the [injectivity of the restricted digit map](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos257/MersenneSubseriesRigidity.lean#L54) and the [measure dichotomy](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos257/MersenneSubseriesRigidity.lean#L397).
 
 <a id="erdos-257-mersenne-support-subseries--sec:actual-repairs"></a>
 
@@ -4329,7 +4358,7 @@ Thus $`P_N=\sum_{j=1}^N2^{N-j}c_x(j)`$ is the integer truncation of the Lambert 
 ```
 
 <div id="erdos-257-mersenne-support-subseries--res:general-repair" class="theorem">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos257/PaperCompleteR20/GeneralRepairCorrespondence.lean#L15">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/1d16f2ddf78e7c4c850246f67bf8ce79b19deb3c/evidence/erdos-257-mersenne-support-subseries.md#res-general-repair-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos257/PaperCompleteR20/GeneralRepairCorrespondence.lean#L15">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d93e7408aed0b0c73ad5ea98116c7dc0dce3cf7b/evidence/erdos-257-mersenne-support-subseries.md#res-general-repair-comparator">Comparator</a></p>
 
 **Theorem 9** (membership and nonincreasing integer remainders). *For every real $`x\ge0`$, the following are equivalent:
 ``` math
@@ -4356,7 +4385,7 @@ Conversely, if $`x\notin\mathcal A`$, then $`\delta=x-X_{A_x}(2)>0`$. The Lamber
 
 </div>
 
-The theorem supplies a test for membership. Applying it requires nonincreases along the actual greedy sequence of the target. For $`x=0`$, the selector is empty and $`Q_N=0`$ at every rank. A finite subseries sum is likewise represented and satisfies the criterion. The target $`x=3/4`$ lies strictly between $`R_1<2/3`$ and $`w_1=1`$, so it is not represented and its integer remainders eventually increase strictly. For $`1/2`$ and $`1/21`$, the theorem does not establish which alternative occurs.
+The theorem supplies a test for membership. Applying it requires nonincreases along the actual greedy sequence of the target. For $`x=0`$, no exponent is selected and $`Q_N=0`$ at every rank. A finite subseries sum is likewise represented and satisfies the criterion. The target $`x=3/4`$ lies strictly between $`R_1<2/3`$ and $`w_1=1`$, so it is not represented and its integer remainders eventually increase strictly. For $`1/2`$ and $`1/21`$, the theorem does not establish which alternative occurs.
 
 The same argument allows a uniform subpower window: for each $`0<\varepsilon<1`$, a constant $`C_\varepsilon`$ gives the window length $`\lceil C_\varepsilon(K+1)^\varepsilon\rceil`$. Indeed, $`\tau(n)\le A_\varepsilon n^\varepsilon`$ gives $`Q_N\le D_\varepsilon(N+1)^\varepsilon`$ for represented targets, where $`D_\varepsilon=A_\varepsilon\sum_{r\ge1}r^\varepsilon2^{-r}`$. Choose $`C_\varepsilon>D_\varepsilon(C_\varepsilon+3)^\varepsilon`$, which is possible because $`\varepsilon<1`$. For $`T=\lceil C_\varepsilon(K+1)^\varepsilon\rceil`$, strict increase at all $`T`$ steps would give
 ``` math
@@ -4374,7 +4403,7 @@ At $`x=1/2`$, the digits $`\beta_N`$ vanish for $`N\ge1`$; at $`x=1/21`$ they ar
  \label{eq:actual-selector-obligation}
 \end{equation}
 ```
-Both $`Q_N`$ and $`c_x`$ must arise from the same greedy selector. Counterexamples to fixed-multiplier schedules, with their finite phase masks, are retained in the long record. They concern those schedules; they do not decide either target.
+Both $`Q_N`$ and $`c_x`$ must arise from the same greedy support $`A_x`$. Counterexamples to fixed-multiplier schedules, with their finite phase masks, are retained in the long record. They concern those schedules; they do not decide either target.
 
 <a id="erdos-257-mersenne-support-subseries--sec:open"></a>
 
@@ -4408,7 +4437,7 @@ Write $`r_n=r_n(1/21)`$ for the real greedy remainder and $`A_{1/21}`$ for its s
 The eventual all-selected behaviour makes some clauses redundant. We retain them to specify both the real greedy sequence and the comparison with its finite integer versions.
 
 <div id="erdos-257-mersenne-support-subseries--res:one-over-twenty-one-frontier" class="theorem">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/1d16f2ddf78e7c4c850246f67bf8ce79b19deb3c/evidence/erdos-257-mersenne-support-subseries.md#res-one-over-twenty-one-frontier">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/1d16f2ddf78e7c4c850246f67bf8ce79b19deb3c/evidence/erdos-257-mersenne-support-subseries.md#res-one-over-twenty-one-frontier-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/d93e7408aed0b0c73ad5ea98116c7dc0dce3cf7b/evidence/erdos-257-mersenne-support-subseries.md#res-one-over-twenty-one-frontier">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d93e7408aed0b0c73ad5ea98116c7dc0dce3cf7b/evidence/erdos-257-mersenne-support-subseries.md#res-one-over-twenty-one-frontier-comparator">Comparator</a></p>
 
 **Theorem 10** (integer-quotient tests for $`1/21`$). *The following statements hold.*
 
@@ -4432,7 +4461,7 @@ The eventual all-selected behaviour makes some clauses redundant. We retain them
 
 <div class="proof">
 
-*Proof.* Write $`x=1/21`$, $`G=A_{1/21}`$ and $`\delta=x-X_G(2)\ge0`$. If $`x\notin\mathcal A`$, then $`\delta>0`$. The real remainder tends to $`\delta`$, so every sufficiently small weight is selected and eventually $`r_n>R_n`$. For the integer comparisons, normalise by $`4^R`$. As long as the selectors agree through rank $`d-1`$, the remainders differ by at most $`d/4^R`$. Each fixed comparison is strict, since equality would give a finite representation of $`x`$. Choose $`d_0`$ with $`w_d<\delta/2`$ for $`d>d_0`$. For large $`R`$ the comparisons through $`d_0`$ agree and $`2R/4^R<\delta/2`$, so induction forces both rules to select all remaining ranks through $`2R`$. This proves $`\mathcal F_{21}`$. A represented target has $`r_n\le R_n`$ at every rank, giving the converse in (1).
+*Proof.* Write $`x=1/21`$, $`G=A_{1/21}`$ and $`\delta=x-X_G(2)\ge0`$. If $`x\notin\mathcal A`$, then $`\delta>0`$. The real remainder tends to $`\delta`$, so every sufficiently small weight is selected and eventually $`r_n>R_n`$. For the integer comparisons, normalise by $`4^R`$. As long as the selected exponents agree through rank $`d-1`$, the remainders differ by at most $`d/4^R`$. Each fixed comparison is strict, since equality would give a finite representation of $`x`$. Choose $`d_0`$ with $`w_d<\delta/2`$ for $`d>d_0`$. For large $`R`$ the comparisons through $`d_0`$ agree and $`2R/4^R<\delta/2`$, so induction forces both rules to select all remaining ranks through $`2R`$. This proves $`\mathcal F_{21}`$. A represented target has $`r_n\le R_n`$ at every rank, giving the converse in (1).
 
 For every $`R`$, the rounding errors satisfy
 ``` math
@@ -4481,14 +4510,14 @@ Indeed, $`c_{A_j}(n)\le\tau(n)\le2\sqrt n`$ and $`\sqrt{M+r}\le\sqrt M+r`$, so t
 K_D(M)=2^{M-1}-\sum_{d\in D}
                 \left\lfloor\frac{2^M}{2^d-1}\right\rfloor.
 ```
-The exact quotient rows considered in the long record satisfy $`\sum_{d\in D}q_M(d)=2^{M-1}-1`$, so they have $`K_D(M)=1`$. The terminal criterion allows a larger error of either sign. At a fixed depth these are different conditions, although cofinal existence of either kind of approximation characterises half-membership.
+The exact quotient rows considered in the long record satisfy $`\sum_{d\in D}q_M(d)=2^{M-1}-1`$, so they have $`K_D(M)=1`$. The terminal criterion allows a larger error of either sign. At a fixed depth these are different conditions, although cofinal existence of either kind of approximation characterises $`1/2\in\mathcal A`$.
 
 Conversely, if $`X_A(2)=1/2`$, then $`1\notin A`$, and the prefixes $`A_M=A\cap\{2,\ldots,M\}`$ satisfy
 ``` math
 K_{A_M}(M)=\sum_{r\ge1}c_A(M+r)2^{-r}
        \le 2\sqrt M+4.
 ```
-The equality uses the coefficients of the full support $`A`$ on the right: truncation does not change the coefficients through $`M`$. Hence the existence hypothesis of Theorem <a href="#erdos-257-mersenne-support-subseries--res:terminalhalf" data-reference-type="ref" data-reference="erdos-257-mersenne-support-subseries--res:terminalhalf">11</a> is equivalent to half-membership. No compatible sequence of prefixes is required for the forward implication. The existence of the approximating supports remains unproved and would refute Problem <a href="#erdos-257-mersenne-support-subseries--res:problem" data-reference-type="ref" data-reference="erdos-257-mersenne-support-subseries--res:problem">1</a>.
+The equality uses the coefficients of the full support $`A`$ on the right: truncation does not change the coefficients through $`M`$. Hence the existence hypothesis of Theorem <a href="#erdos-257-mersenne-support-subseries--res:terminalhalf" data-reference-type="ref" data-reference="erdos-257-mersenne-support-subseries--res:terminalhalf">11</a> is equivalent to $`1/2\in\mathcal A`$. No compatible sequence of prefixes is required for the forward implication. The existence of the approximating supports remains unproved and would refute Problem <a href="#erdos-257-mersenne-support-subseries--res:problem" data-reference-type="ref" data-reference="erdos-257-mersenne-support-subseries--res:problem">1</a>.
 
 <a id="erdos-257-mersenne-support-subseries--finite-families-with-a-shared-prefix."></a>
 
@@ -4507,9 +4536,9 @@ Require that all the $`A_k`$ agree on $`\{1,\ldots,K\}`$ and that some integer $
 Thus the binary suffixes have consecutive values $`E-k`$, while the terminal carry ranges through the entire permitted interval. This is substantially more data than one finite approximation to $`1/2`$.
 
 <div id="erdos-257-mersenne-support-subseries--res:cylinderhalf" class="theorem">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/Erdos249257/SuffixCylinderTerminalOnlyBridge.lean#L287">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/1d16f2ddf78e7c4c850246f67bf8ce79b19deb3c/evidence/erdos-257-mersenne-support-subseries.md#res-cylinderhalf-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/Erdos249257/SuffixCylinderTerminalOnlyBridge.lean#L287">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d93e7408aed0b0c73ad5ea98116c7dc0dce3cf7b/evidence/erdos-257-mersenne-support-subseries.md#res-cylinderhalf-comparator">Comparator</a></p>
 
-**Theorem 12** (unbounded shared-prefix families imply a half-support). *Suppose that for every $`N`$ there are $`M,K`$ with $`\max\{N,1\}\le M`$, $`0\le K\le M`$, and a family satisfying all the conditions in the preceding paragraph. Then $`X_A(2)=1/2`$ for some infinite set $`A\subseteq\mathbb{N}_{>0}`$.*
+**Theorem 12** (unbounded shared-prefix families represent one half). *Suppose that for every $`N`$ there are $`M,K`$ with $`\max\{N,1\}\le M`$, $`0\le K\le M`$, and a family satisfying all the conditions in the preceding paragraph. Then $`X_A(2)=1/2`$ for some infinite set $`A\subseteq\mathbb{N}_{>0}`$.*
 
 </div>
 
@@ -4590,11 +4619,11 @@ For $`t\ge1`$, put $`z=\log_2t`$. The substitution $`y=2^\alpha`$ reduces the in
 ```
 The endpoint and the open lower bound $`\alpha>0`$ are both included in this calculation. This scalar identity does not supply a converse to the positive-cover criterion.
 
-<a id="erdos-257-mersenne-support-subseries--the-cost-of-a-divisor-cube"></a>
+<a id="erdos-257-mersenne-support-subseries--the-cost-for-a-finite-set-of-divisors"></a>
 
-#### The cost of a divisor cube
+#### The cost for a finite set of divisors
 
-On a divisor cube the lower bound is asymptotically attained. For $`F(q,P)=\{qd:d\mid\prod_{p\in P}p\}`$, where $`q\ge2`$ and no $`p\in P`$ divides $`q`$, put $`S=\sum_{p\in P}1/p`$. If $`S\ge1`$, the infimum $`K_*`$ over finite or countable covers satisfies
+For the following finite divisor sets, the lower bound is asymptotically attained. For $`F(q,P)=\{qd:d\mid\prod_{p\in P}p\}`$, where $`q\ge2`$ and no $`p\in P`$ divides $`q`$, put $`S=\sum_{p\in P}1/p`$. If $`S\ge1`$, the infimum $`K_*`$ over finite or countable covers satisfies
 ``` math
 \begin{equation}
  \frac{e(S-1)}q\le K_*\bigl(F(q,P)\bigr)\le\frac{eS}q.
@@ -4616,11 +4645,11 @@ In particular, $`1-1/S\le qK_*(F(q,P))/(eS)\le1`$. Thus $`K_*(F(q,P))\sim eS/q`$
 
 ### Sources
 
-*Formal proofs.* A result with a kernel-checked Lean proof carries links beside its heading and in the margin; both open the same evidence. *Lean* opens the proof: the declaration itself when one declaration states the whole result, otherwise the list of declarations that together state it. Inline citations to individual declarations elsewhere may identify ingredients of a proof. *Comparator* opens the recorded comparison, in which the same statement, written again from Mathlib alone in a separate repository, was compared with our proof by Lean’s Comparator tool, allowing only the three standard axioms. *Comparator pending* means that the complete statement has no recorded comparison yet. A dagger on the Lean mark means that the Lean proof assumes an input named just below the result. A result without a mark has no Lean proof of its whole statement; what is checked is said below it. The [evidence record](https://github.com/wcook04/plectis-erdos/blob/1d16f2ddf78e7c4c850246f67bf8ce79b19deb3c/evidence/erdos-257-mersenne-support-subseries.md) gives every declaration, version and check. Comparator checks statements, axioms and kernel acceptance; it does not establish novelty or peer review. These checks show that the stated propositions are proved; whether they are the right propositions is a question the reader can settle by comparing them with the text.
+*Formal proofs.* A result with a kernel-checked Lean proof carries links beside its heading and in the margin; both open the same evidence. *Lean* opens the proof: the declaration itself when one declaration states the whole result, otherwise the list of declarations that together state it. Inline citations to individual declarations elsewhere may identify ingredients of a proof. *Comparator* opens the recorded comparison, in which the same statement, written again from Mathlib alone in a separate repository, was compared with our proof by Lean’s Comparator tool, allowing only the three standard axioms. *Comparator pending* means that the complete statement has no recorded comparison yet. A dagger on the Lean mark means that the Lean proof assumes an input named just below the result. A result without a mark has no Lean proof of its whole statement; what is checked is said below it. The [evidence record](https://github.com/wcook04/plectis-erdos/blob/d93e7408aed0b0c73ad5ea98116c7dc0dce3cf7b/evidence/erdos-257-mersenne-support-subseries.md) gives every declaration, version and check. Comparator checks statements, axioms and kernel acceptance; it does not establish novelty or peer review. These checks show that the stated propositions are proved; whether they are the right propositions is a question the reader can settle by comparing them with the text.
 
 For Erdős’s reciprocal-summable extension and fractional-part argument, see pp. 222 and 226 of \[erdos1968\]. The periodic theorem \[lucatachiya2014periodic\] is also stated in Luca and Tachiya’s account \[lucatachiya2017, Theorem A and Example 2, pp. 139–140\], and Hornich’s strict-tail theorem is proved in Nitecki’s exposition \[nitecki2013, Theorem 4(1)\]. These expositions are the sources used here for those two results; the original articles were not independently retrieved. The *Formal Conjectures* file \[formalconjectures257\] is statement-level prior art, not a proof dependency.
 
-The linked evidence record identifies the exact Lean statements, source revisions and recorded Comparator checks. No such checks were rerun for this revision. The ordinary arguments here have not had independent human review. They include the $`A_\star`$ calculation, the fresh-prime construction, the signed finite-denominator extension and the proof of Theorem <a href="#erdos-257-mersenne-support-subseries--res:one-over-twenty-one-frontier" data-reference-type="ref" data-reference="erdos-257-mersenne-support-subseries--res:one-over-twenty-one-frontier">10</a>. For the incomparability result, the formal construction of $`V`$ uses a different squarefree divisor-cube schedule. The mixed implication is also formalised. The three logarithmic-sampling results in the long record have separate comparison records; these do not constitute human review of the ordinary proofs. No historical priority is claimed for the support comparison. Conditional statements retain their antecedents, and computations retain their finite ranges.
+The linked evidence record identifies the exact Lean statements, source revisions and recorded Comparator checks. No such checks were rerun for this revision. The ordinary arguments here have not had independent human review. They include the $`A_\star`$ calculation, the fresh-prime construction, the signed finite-denominator extension and the proof of Theorem <a href="#erdos-257-mersenne-support-subseries--res:one-over-twenty-one-frontier" data-reference-type="ref" data-reference="erdos-257-mersenne-support-subseries--res:one-over-twenty-one-frontier">10</a>. For the incomparability result, the formal construction of $`V`$ uses a different construction using finite sets of squarefree divisors. The mixed implication is also formalised. The three logarithmic-sampling results in the long record have separate comparison records; these do not constitute human review of the ordinary proofs. No historical priority is claimed for the support comparison. Conditional statements retain their antecedents, and computations retain their finite ranges.
 
 <a id="erdos-257-mersenne-support-subseries--reproducing-the-weighted-theorem."></a>
 
@@ -4679,16 +4708,16 @@ We give a five-map proof that the reciprocals of the distinct running least comm
 
 ### Two sums from running least common multiples
 
-The $`5`$-smooth integers are the positive integers whose prime factors belong to $`\{2,3,5\}`$. Their running least common multiples begin $`1,2,6,12,60,60,120,360,360,\ldots`$. More generally, for a finite set of primes $`P`$, let $`\mathcal S_P`$ be the positive integers supported on $`P`$, including $`1`$, and put
+The $`5`$-smooth integers are the positive integers whose prime factors belong to $`\{2,3,5\}`$. Their running least common multiples begin $`1,2,6,12,60,60,120,360,360,\ldots`$. For a finite set of primes $`P`$, let $`\mathcal S_P`$ consist of $`1`$ and all positive integers whose prime factors belong to $`P`$, and put
 ``` math
 \operatorname{L}(x)=\operatorname{lcm}\{u\in\mathcal S_P:u\le x\},\qquad
  \operatorname{H}_P(x)=\prod_{p\in P}p^{\lfloor\log_p x\rfloor}\quad(x\ge1).
 ```
-Every integer in the prefix divides $`\operatorname{H}_P(x)`$, and each maximal prime power occurs there. Hence $`\operatorname{L}(x)=\operatorname{H}_P(x)`$. The running value changes only at a positive prime power, where it is multiplied by that prime. Counting each distinct height once gives
+Every integer in this finite set divides $`\operatorname{H}_P(x)`$. Conversely, the set contains the largest power of each $`p\in P`$ below or equal to $`x`$, so their product divides its least common multiple. Thus $`\operatorname{L}(x)=\operatorname{H}_P(x)`$. This value changes only at a positive prime power, where it is multiplied by that prime. Summing its distinct reciprocals gives
 ``` math
 \mathcal D_P=1+\sum_{\substack{t=p^n\\p\in P,\ n\ge1}}\frac1{\operatorname{H}_P(t)}.
 ```
-Positive powers of distinct primes never coincide, and geometric growth of the successive heights gives convergence. We use $`\mathbb{N}=\{0,1,2,\ldots\}`$.
+Positive powers of distinct primes never coincide, and geometric growth of the successive running LCMs gives convergence. We use $`\mathbb{N}=\{0,1,2,\ldots\}`$.
 
 <div id="erdos-269-three-prime-running-lcm--r4-five-map-theorem">
 
@@ -4697,11 +4726,11 @@ Positive powers of distinct primes never coincide, and geometric growth of the s
 <div id="erdos-269-three-prime-running-lcm--res:distinct-height-235" class="theorem">
 <p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos269/DistinctHeightIrrationality.lean#L689">Lean</a></p>
 
-**Theorem 1** (the distinct-height sum for $`\{2,3,5\}`$). *The number $`\mathcal D_{\{2,3,5\}}`$ is irrational.*
+**Theorem 1** (the sum over distinct running LCMs for $`\{2,3,5\}`$). *The number $`\mathcal D_{\{2,3,5\}}`$ is irrational.*
 
 </div>
 
-The proof turns on whether a normalised tail determines the jumps that follow it. Rationality would confine the tails to a finite set. Five affine maps describe the possible blocks of jumps, and the spacing of powers of $`5`$ puts their images in disjoint intervals. A repeated tail would therefore repeat the entire later block sequence. Powers of $`3`$ occur with an irrational frequency, which excludes that periodicity.
+If the sum were rational, its normalised tails would take only finitely many values. We show that each such value determines both the next block of jumps and the following tail. Repetition of a tail would then force the blocks to be eventually periodic, contrary to the irrational frequency of powers of $`3`$. To recover a block from its tail, we use five affine maps whose images are separated by a bound obtained from the spacing of powers of $`5`$.
 
 Erdős asserted irrationality of $`\mathcal D_P`$ for every finite $`P`$ with $`|P|\ge2`$ in a letter dated 1 January 1973, without printing a proof \[erdos1974letter, p. 335\]. Thus the theorem above is a special case of that earlier assertion. We claim no priority for its conclusion. The [companion’s general argument](https://github.com/wcook04/plectis-erdos/blob/main/paper/269/erdos269-running-lcm-reasoning-surface.pdf#nameddest=r3-distinct-proof) uses an isolated interchange of jumps on a torus. That argument is retained there as an ordinary proof awaiting formalisation. The proof below is independent of that argument.
 
@@ -4709,19 +4738,19 @@ The question in Erdős Problem #269 concerns the sum with multiplicity,
 ``` math
 \mathcal R_P=\sum_{u\in\mathcal S_P}\frac1{\operatorname{L}(u)},
 ```
-as recorded in \[erdosgraham1980, p. 65\] and \[erdos1988, p. 106\]. For example, $`\operatorname{L}(5)=\operatorname{L}(6)=60`$ for $`P=\{2,3,5\}`$, giving $`2/60`$ in $`\mathcal R_P`$ and $`1/60`$ in $`\mathcal D_P`$. The theorem treats a related, distinct target. Our arguments leave the repeated sum unresolved for finite $`P`$ with $`|P|\ge3`$. For $`P=\{p\}`$ both sums equal $`p/(p-1)`$.
+as recorded in \[erdosgraham1980, p. 65\] and \[erdos1988, p. 106\]. For example, $`\operatorname{L}(5)=\operatorname{L}(6)=60`$ for $`P=\{2,3,5\}`$, giving $`2/60`$ in $`\mathcal R_P`$ and $`1/60`$ in $`\mathcal D_P`$. The theorem treats the sum over distinct values; the problem asks about the sum with multiplicity. Our arguments leave the latter unresolved for finite $`P`$ with $`|P|\ge3`$. For $`P=\{p\}`$ both sums equal $`p/(p-1)`$.
 
-Section <a href="#erdos-269-three-prime-running-lcm--sec:distinct-235" data-reference-type="ref" data-reference="erdos-269-three-prime-running-lcm--sec:distinct-235">[sec:distinct-235]</a> proves the theorem. We then retain the multiplicities and examine what changes: the tails satisfy an integer recurrence, but their values are unbounded. Sections <a href="#erdos-269-three-prime-running-lcm--sec:lcm" data-reference-type="ref" data-reference="erdos-269-three-prime-running-lcm--sec:lcm">3</a> and <a href="#erdos-269-three-prime-running-lcm--sec:escape" data-reference-type="ref" data-reference="erdos-269-three-prime-running-lcm--sec:escape">4</a> derive that recurrence and a residue criterion for the repeated sum. For two primes, Fan’s factorisation \[fan2026comment\] reduces both sums to a Hecke–Mahler value and yields transcendence (Section <a href="#erdos-269-three-prime-running-lcm--sec:two-prime" data-reference-type="ref" data-reference="erdos-269-three-prime-running-lcm--sec:two-prime">5</a>). Appendix <a href="#erdos-269-three-prime-running-lcm--sec:height-identities" data-reference-type="ref" data-reference="erdos-269-three-prime-running-lcm--sec:height-identities">6</a> collects the elementary height identities, and Appendix <a href="#erdos-269-three-prime-running-lcm--sec:rank" data-reference-type="ref" data-reference="erdos-269-three-prime-running-lcm--sec:rank">7</a> explains why the three-prime kernel has no finite separated factorisation.
+Section <a href="#erdos-269-three-prime-running-lcm--sec:distinct-235" data-reference-type="ref" data-reference="erdos-269-three-prime-running-lcm--sec:distinct-235">[sec:distinct-235]</a> proves the theorem. We then retain the multiplicities and examine what changes: the tails satisfy an integer recurrence, but their values are unbounded. Sections <a href="#erdos-269-three-prime-running-lcm--sec:lcm" data-reference-type="ref" data-reference="erdos-269-three-prime-running-lcm--sec:lcm">3</a> and <a href="#erdos-269-three-prime-running-lcm--sec:escape" data-reference-type="ref" data-reference="erdos-269-three-prime-running-lcm--sec:escape">4</a> derive that recurrence and a residue criterion for the repeated sum. For two primes, Fan’s factorisation \[fan2026comment\] reduces both sums to a Hecke–Mahler value and yields transcendence (Section <a href="#erdos-269-three-prime-running-lcm--sec:two-prime" data-reference-type="ref" data-reference="erdos-269-three-prime-running-lcm--sec:two-prime">5</a>). Appendix <a href="#erdos-269-three-prime-running-lcm--sec:height-identities" data-reference-type="ref" data-reference="erdos-269-three-prime-running-lcm--sec:height-identities">6</a> collects the elementary running LCM identities, and Appendix <a href="#erdos-269-three-prime-running-lcm--sec:rank" data-reference-type="ref" data-reference="erdos-269-three-prime-running-lcm--sec:rank">7</a> explains why the three-prime kernel has no finite separated factorisation.
 
 <a id="erdos-269-three-prime-running-lcm--sec:distinct"></a>
 
 ### Recovering the prime-power jumps
 
-<span id="erdos-269-three-prime-running-lcm--sec:distinct-235" label="sec:distinct-235"></span> In long division, rationality leaves only finitely many possible remainders. A repeated remainder then repeats the later digits because it determines the next step. We use the same distinction here: first obtain finitely many tail values under rationality, then show that a tail value determines the next block of prime-power jumps.
+<span id="erdos-269-three-prime-running-lcm--sec:distinct-235" label="sec:distinct-235"></span> For a rational number, long division has only finitely many possible remainders, and each remainder determines the next digit and remainder. The same two facts will prove useful here. Rationality bounds the number of tail values; the main work is to show that a tail determines the next block of prime-power jumps.
 
 <div class="proof">
 
-*Proof of Theorem <a href="#erdos-269-three-prime-running-lcm--res:distinct-height-235" data-reference-type="ref" data-reference="erdos-269-three-prime-running-lcm--res:distinct-height-235">1</a>.* *Finitely many tails under rationality.* Write $`\operatorname{H}=\operatorname{H}_{\{2,3,5\}}`$ in this proof and put $`P_a=\operatorname{H}(2^a)`$. Every height at or before $`2^a`$ divides $`P_a`$. We therefore normalise the tail after $`2^a`$ by
+*Proof of Theorem <a href="#erdos-269-three-prime-running-lcm--res:distinct-height-235" data-reference-type="ref" data-reference="erdos-269-three-prime-running-lcm--res:distinct-height-235">1</a>.* *Finitely many tails under rationality.* Write $`\operatorname{H}=\operatorname{H}_{\{2,3,5\}}`$ in this proof and put $`P_a=\operatorname{H}(2^a)`$. Every running LCM at or before $`2^a`$ divides $`P_a`$. We therefore normalise the tail after $`2^a`$ by
 ``` math
 \begin{equation}
 \label{eq:five-tail}
@@ -4729,7 +4758,7 @@ Section <a href="#erdos-269-three-prime-running-lcm--sec:distinct-235" data-ref
                    \frac1{\operatorname{H}(t)}.
 \end{equation}
 ```
-Each subsequent jump multiplies the height by at least $`2`$, and a jump by $`3`$ eventually occurs. Comparison with $`\sum_{j\ge1}2^{-j}`$ gives $`0<Y_a<1`$.
+Each subsequent jump multiplies the running LCM by at least $`2`$, and a jump by $`3`$ eventually occurs. Comparison with $`\sum_{j\ge1}2^{-j}`$ gives $`0<Y_a<1`$.
 
 Suppose that $`\mathcal D_{\{2,3,5\}}=N/K`$, where $`N`$ is an integer and $`K\ge1`$ is an integer. Clearing the finite prefix gives
 ``` math
@@ -4739,14 +4768,14 @@ KY_a=P_aN-K\left(P_a+
 ```
 Thus the $`Y_a`$ lie in the finite set $`(K^{-1}\mathbb Z)\cap(0,1)`$. It remains to show why equality of two tails propagates.
 
-*Recovering a block from its tail.* Consider the jumps between $`16`$ and $`32`$, including the last endpoint. They occur at $`25,27,32`$, multiplying the height successively by $`5,3,2`$. After normalisation at $`16`$, their contribution is $`1/5+1/15+1/30`$. The remaining tail is normalised at a height $`30`$ times as large, so
+*Recovering a block from its tail.* Consider the jumps between $`16`$ and $`32`$, including the last endpoint. They occur at $`25,27,32`$, multiplying the running LCM successively by $`5,3,2`$. After normalisation at $`16`$, their contribution is $`1/5+1/15+1/30`$. The remaining tail is normalised at a running LCM $`30`$ times as large, so
 ``` math
 Y_4=\frac15+\frac1{15}+\frac1{30}+\frac{Y_5}{30}
      =\frac{9+Y_5}{30}.
 ```
-In the block $`(64,128]`$, the interior jumps occur in the opposite order, at $`81,125`$. Its constant term is $`1/3+1/15+1/30=13/30`$. The order of the jumps is therefore visible in the affine recurrence.
+In the block $`(64,128]`$, the interior jumps occur in the opposite order, at $`81,125`$. Its constant term is $`1/3+1/15+1/30=13/30`$. The two blocks have the same multiplier $`30`$, but different numerators, $`9`$ and $`13`$. To recover the order from a tail value, we must still separate the possible values of the block maps.
 
-In general, $`(2^a,2^{a+1}]`$ contains its terminal power of $`2`$, at most one power of $`3`$ and at most one power of $`5`$. Let $`\tau_a`$ denote the sequence of interior prime labels, omitting the terminal $`2`$. Splitting off the block gives
+Every block $`(2^a,2^{a+1}]`$ contains its terminal power of $`2`$, at most one power of $`3`$ and at most one power of $`5`$. We record the interior jumps in their order by a word $`\tau_a`$ on the letters $`3,5`$, omitting the terminal $`2`$. Splitting off the block gives
 ``` math
 \begin{equation}
 \label{eq:five-maps}
@@ -4759,14 +4788,14 @@ In general, $`(2^a,2^{a+1}]`$ contains its terminal power of $`2`$, at most one 
  \end{array}
 \end{equation}
 ```
-Here $`b_\tau`$ is the factor by which the height increases across the block, and $`\mu_\tau/b_\tau`$ is the block’s normalised contribution.
+Here $`b_\tau`$ is the factor by which the running LCM increases across the block, and $`\mu_\tau/b_\tau`$ is the block’s normalised contribution.
 
-The five formulae alone do not recover $`\tau_a`$ from $`Y_a`$. The coarse images $`G_{53}([0,1])=[3/10,1/3]`$ and $`G_5([0,1])=[3/10,2/5]`$ overlap. We need a smaller interval known to contain the next *arithmetic* tail. The table gives the lower bound $`Y_a\ge3/10`$. With that lower endpoint, separating these two images requires an upper endpoint $`U`$ satisfying
+To recover $`\tau_a`$ from $`Y_a`$, we need disjoint intervals containing the possible images. The bound $`0<Y_{a+1}<1`$ is insufficient, since $`G_{53}([0,1])=[3/10,1/3]`$ and $`G_5([0,1])=[3/10,2/5]`$ overlap. The table gives $`Y_a\ge3/10`$. With this lower bound, separation of these two images requires an upper bound $`U`$ satisfying
 ``` math
 G_{53}(U)<G_5(3/10),\qquad
  \frac{9+U}{30}<\frac{33}{100},\qquad U<\frac9{10}.
 ```
-This specifies the improvement needed from the arithmetic sequence.
+It is therefore enough, for this pair of images, to improve the upper bound from $`1`$ to a number below $`9/10`$.
 
 A power $`5^f`$ belongs to block $`\lfloor f\log_2 5\rfloor`$. These indices start at $`2`$ and their successive differences are $`2`$ or $`3`$. Every three consecutive blocks therefore contain a power of $`5`$. Given $`a`$, let $`j\in\{a,a+1,a+2\}`$ be the first such block. The maps for blocks containing $`5`$ give $`Y_j\le7/15`$, since $`Y_{j+1}<1`$ and $`G_{35}(1)=7/15`$ bounds $`G_5(1)`$ and $`G_{53}(1)`$ as well. We now work *backwards* from $`j`$ to $`a`$. Each intervening block has map $`G_\varnothing`$ or $`G_3`$, and $`G_3(y)\le G_\varnothing(y)=(1+y)/2`$ for $`y\ge0`$. At most two backward steps give the successive bounds $`7/15`$, $`11/15`$, $`13/15`$. Hence
 ``` math
@@ -4776,9 +4805,14 @@ A power $`5^f`$ belongs to block $`\lfloor f\log_2 5\rfloor`$. These indices sta
  G_\varnothing\bigl(G_\varnothing(7/15)\bigr)=\frac{13}{15}<\frac9{10}.
 \end{equation}
 ```
-The bound uses the occurrence of a power of $`5`$ within three blocks. It does not assert invariance under arbitrary words in the five maps: indeed, $`G_\varnothing(13/15)=14/15`$ lies outside $`I`$.
+This bound holds for the tails of the prime-power sequence because every three consecutive blocks contain a power of $`5`$. The interval $`I`$ is not invariant under arbitrary compositions of the five maps: for example, $`G_\varnothing(13/15)=14/15`$ lies outside $`I`$.
 
-Figure <a href="#erdos-269-three-prime-running-lcm--fig:five-map-images" data-reference-type="ref" data-reference="erdos-269-three-prime-running-lcm--fig:five-map-images">1</a> gives the exact images of $`I`$. They are pairwise disjoint, with successive gaps $`1/900,17/300,79/900,1/180`$. The two smallest gaps come from $`3(3/10)-13/15=1/30>0`$.
+Figure <a href="#erdos-269-three-prime-running-lcm--fig:five-map-images" data-reference-type="ref" data-reference="erdos-269-three-prime-running-lcm--fig:five-map-images">1</a> gives the exact images of $`I`$. They are pairwise disjoint, with successive gaps $`1/900,17/300,79/900,1/180`$. Writing $`L=3/10`$ and $`U=13/15`$, the two narrow gaps are
+``` math
+G_5(L)-G_{53}(U)=\frac{3L-U}{30}=\frac1{900},\qquad
+ G_\varnothing(L)-G_3(U)=\frac{3L-U}{6}=\frac1{180}.
+```
+Thus the same inequality $`U<3L=9/10`$ separates both pairs.
 
 <figure id="erdos-269-three-prime-running-lcm--fig:five-map-images" data-latex-placement="!htbp">
 
@@ -4797,32 +4831,30 @@ Dividing by $`n`$ and taking the limit gives $`\ell\alpha=c`$, contrary to uniqu
 
 </div>
 
-The [companion’s account of this proof](https://github.com/wcook04/plectis-erdos/blob/main/paper/269/erdos269-running-lcm-reasoning-surface.pdf#nameddest=r3-five-maps) also compares one-jump and dyadic bounds. Its finite-state extension uses intervals depending on earlier blocks. The saved exact computations satisfy that criterion for every set of three primes at most $`31`$ and for $`292`$ of the $`330`$ four-prime sets in that range. The general criterion and those computations are recorded as remarks awaiting formalisation. For $`\{2,3,5,7\}`$ two admissible automaton words give the same affine map at every subsequent refinement, preventing that automaton from recovering its first block. This identity does not establish a collision between two words realised by the arithmetic sequence.
-
 <a id="erdos-269-three-prime-running-lcm--sec:lcm"></a>
 
 ### The repeated three-prime sum
 
-<span id="erdos-269-three-prime-running-lcm--sec:shell" label="sec:shell"></span><span id="erdos-269-three-prime-running-lcm--sec:actual-orbit" label="sec:actual-orbit"></span> We return to the sum in which every smooth integer contributes. Put $`P=\{2,3,5\}`$, $`S=\mathcal R_P`$ and $`\operatorname{H}=\operatorname{H}_P`$ throughout this section. The height still changes only at prime powers, but smooth integers between consecutive jumps also contribute to $`S`$.
+<span id="erdos-269-three-prime-running-lcm--sec:shell" label="sec:shell"></span><span id="erdos-269-three-prime-running-lcm--sec:actual-orbit" label="sec:actual-orbit"></span> We return to the sum in which every smooth integer contributes. Put $`P=\{2,3,5\}`$, $`S=\mathcal R_P`$ and $`\operatorname{H}=\operatorname{H}_P`$ throughout this section. The running LCM still changes only at prime powers, but smooth integers between consecutive jumps also contribute to $`S`$.
 
-For example, $`[16,32)`$ contains the seven smooth integers $`16,18,20,24,25,27,30`$. Grouping them by their height gives
+For example, $`[16,32)`$ contains the seven smooth integers $`16,18,20,24,25,27,30`$. Grouping them by their running LCM gives
 ``` math
 \begin{array}{c|c|c}
- \text{smooth integers}&\text{height}&\text{contribution}\\\hline
+ \text{smooth integers}&\text{running LCM}&\text{contribution}\\\hline
  16,18,20,24&720&4/720\\
  25&3600&1/3600\\
  27,30&10800&2/10800
  \end{array}
 ```
-The factors $`4`$ and $`2`$ record information that is absent from the sequence of distinct heights. Appendix <a href="#erdos-269-three-prime-running-lcm--sec:height-identities" data-reference-type="ref" data-reference="erdos-269-three-prime-running-lcm--sec:height-identities">6</a> gives the finite grouping identity for general three-prime sets.
+Each of these three running LCMs contributes only once to $`\mathcal D_P`$. In the repeated sum their coefficients are $`4,1,2`$, so the same jumps no longer give the same block contribution. Appendix <a href="#erdos-269-three-prime-running-lcm--sec:height-identities" data-reference-type="ref" data-reference="erdos-269-three-prime-running-lcm--sec:height-identities">6</a> gives the finite grouping identity for general three-prime sets.
 
-We use the half-open blocks $`[2^a,2^{a+1})`$, so the tail starts at $`2^a`$ rather than just after it. Its finite prefix excludes the jump by $`2`$ at that endpoint. Half the height therefore clears that prefix: write
+We use the half-open blocks $`[2^a,2^{a+1})`$, so the tail starts at $`2^a`$ rather than just after it. Its finite prefix excludes the jump by $`2`$ at that endpoint. Half the running LCM therefore clears that prefix: write
 ``` math
 s_a=\sum_{\substack{x\in\mathcal S_P\\2^a\le x<2^{a+1}}}\frac1{\operatorname{H}(x)},
  \qquad T_a=\sum_{j\ge0}s_{a+j},\qquad
  h_a=\frac{\operatorname{H}(2^a)}2,\qquad X_a=h_aT_a.
 ```
-Indeed, a height strictly before $`2^a`$ has exponent of $`2`$ at most $`a-1`$ and divides $`h_a`$. Here $`h_0=1/2`$, while $`h_a`$ is an integer for $`a\ge1`$. This endpoint convention explains the factor $`1/2`$ and the difference from the tails in Section <a href="#erdos-269-three-prime-running-lcm--sec:distinct-235" data-reference-type="ref" data-reference="erdos-269-three-prime-running-lcm--sec:distinct-235">[sec:distinct-235]</a>.
+Indeed, a running LCM strictly before $`2^a`$ has exponent of $`2`$ at most $`a-1`$ and divides $`h_a`$. Here $`h_0=1/2`$, while $`h_a`$ is an integer for $`a\ge1`$. This endpoint convention explains the factor $`1/2`$ and the difference from the tails in Section <a href="#erdos-269-three-prime-running-lcm--sec:distinct-235" data-reference-type="ref" data-reference="erdos-269-three-prime-running-lcm--sec:distinct-235">[sec:distinct-235]</a>.
 
 The change in normalisation is $`b_a=\operatorname{H}(2^{a+1})/\operatorname{H}(2^a)`$. Splitting off $`s_a`$ will give $`X_{a+1}=b_aX_a-h_{a+1}s_a`$, so we name the integer block contribution $`m_a=h_{a+1}s_a`$. Explicitly,
 ``` math
@@ -4833,14 +4865,14 @@ The change in normalisation is $`b_a=\operatorname{H}(2^{a+1})/\operatorname{H}(
        \frac{\operatorname{H}(2^{a+1})}{2\operatorname{H}(x)}.
 \end{equation}
 ```
-For $`[2,4)`$, the heights at $`2,3`$ are $`2,6`$ and $`h_2=6`$, giving $`m_1=6(1/2+1/6)=4`$ and $`b_1=6`$. For the block displayed above, $`h_5=10800`$ and
+For $`[2,4)`$, the running LCMs at $`2,3`$ are $`2,6`$ and $`h_2=6`$, giving $`m_1=6(1/2+1/6)=4`$ and $`b_1=6`$. For the block displayed above, $`h_5=10800`$ and
 ``` math
 m_4=4\cdot15+3+2\cdot1=65,\qquad b_4=30.
 ```
 Thus $`m_a`$ need not be smaller than $`b_a`$.
 
 <div id="erdos-269-three-prime-running-lcm--res:dyadic-alphabet" class="lemma">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos269/PaperCompleteR20/DyadicAlphabetWhole.lean#L19">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/1d16f2ddf78e7c4c850246f67bf8ce79b19deb3c/evidence/erdos-269-three-prime-running-lcm.md#res-dyadic-alphabet-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos269/PaperCompleteR20/DyadicAlphabetWhole.lean#L19">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d93e7408aed0b0c73ad5ea98116c7dc0dce3cf7b/evidence/erdos-269-three-prime-running-lcm.md#res-dyadic-alphabet-comparator">Comparator</a></p>
 
 **Lemma 2** (integer coefficients and four possible bases). *For every $`a\ge0`$, $`m_a`$ is a positive integer and $`b_a\in\{2,6,10,30\}`$. The word “numerator” does not impose the positional-digit restriction $`m_a<b_a`$; that restriction need not hold.*
 
@@ -4852,17 +4884,17 @@ Thus $`m_a`$ need not be smaller than $`b_a`$.
 
 </div>
 
-The four bases describe height changes. The numerators also count all smooth integers between those changes, so the four choices of $`b_a`$ do not supply a finite list of affine maps for $`X_a`$.
+Although $`b_a`$ has only four possible values, the recurrence also depends on $`m_a`$, which counts contributions from every smooth integer in the block. Thus the finite set of bases does not give a finite family of affine maps for $`X_a`$.
 
 <div id="erdos-269-three-prime-running-lcm--res:actual-orbit" class="proposition">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos269/PaperR7SeriesIdentification.lean#L168">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/1d16f2ddf78e7c4c850246f67bf8ce79b19deb3c/evidence/erdos-269-three-prime-running-lcm.md#res-actual-orbit-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos269/PaperR7SeriesIdentification.lean#L168">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d93e7408aed0b0c73ad5ea98116c7dc0dce3cf7b/evidence/erdos-269-three-prime-running-lcm.md#res-actual-orbit-comparator">Comparator</a></p>
 
 **Proposition 3** (the tail recurrence and a quadratic bound). *The series defining $`S,T_a`$ converge. For every $`a\ge0`$,
 ``` math
 X_{a+1}=b_aX_a-m_a,\qquad
  0<X_a\le\frac{8640}{343}(a+1)^2<90(a+1)^2.
 ```
-For every integer $`B\ge1`$, either some $`BX_a`$ is integral and all later states are integral, or $`\operatorname{dist}(BX_a,\mathbb Z)\ge1/31`$ at arbitrarily large indices.*
+For every integer $`B\ge1`$, either $`BX_a`$ is integral at some index (and hence at every later index), or $`\operatorname{dist}(BX_a,\mathbb Z)\ge1/31`$ at arbitrarily large indices.*
 
 </div>
 
@@ -4875,14 +4907,14 @@ X_a\le15(a+1)^2\sum_{j\ge0}\frac{(j+1)^2}{8^j}
 ```
 This also proves convergence. Splitting off $`s_a`$ gives the recurrence, since $`h_{a+1}=b_ah_a`$ and $`m_a=h_{a+1}s_a`$.
 
-For the final assertion, suppose that every sufficiently late distance is strictly less than $`1/31`$, and write $`BX_a=z_a+e_a`$, where $`z_a`$ is integral and $`|e_a|<1/31`$. The recurrence makes $`e_{a+1}-b_ae_a`$ an integer of absolute value less than $`(1+b_a)/31\le1`$. Thus $`e_{a+1}=b_ae_a`$. Since $`b_a\ge2`$, boundedness forces every such error to vanish. Once integral, the states remain integral by the recurrence. ◻
+For the final assertion, suppose that every sufficiently late distance is strictly less than $`1/31`$, and write $`BX_a=z_a+e_a`$, where $`z_a`$ is integral and $`|e_a|<1/31`$. The recurrence makes $`e_{a+1}-b_ae_a`$ an integer of absolute value less than $`(1+b_a)/31\le1`$. Thus $`e_{a+1}=b_ae_a`$. Since $`b_a\ge2`$, boundedness forces every such error to vanish. Once integral, the values $`BX_a`$ remain integral by the recurrence. ◻
 
 </div>
 
 We can also write the repeated series as a Cantor series: $`S/2=\sum_{a\ge0}m_a/(b_0\cdots b_a)`$. The criteria in \[erdosstraus1974, Theorem 2.1\] and \[hancltijdeman2004, Theorem 3.1\] require a small-numerator hypothesis $`m_a/(b_{a-1}b_a)\to0`$. Here the $`b_a`$ are bounded and $`m_a`$ grows quadratically. The [companion’s tail estimates](https://github.com/wcook04/plectis-erdos/blob/main/paper/269/erdos269-running-lcm-reasoning-surface.pdf#nameddest=r3-repeated-bounds) prove this lower bound as well as sharper upper bounds. In particular, $`X_a>m_a/30`$ is unbounded, so the finite-value argument in Section <a href="#erdos-269-three-prime-running-lcm--sec:distinct-235" data-reference-type="ref" data-reference="erdos-269-three-prime-running-lcm--sec:distinct-235">[sec:distinct-235]</a> no longer applies to these normalised tails.
 
 <div id="erdos-269-three-prime-running-lcm--res:denominator-reduction" class="theorem">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos269/PaperR7RationalBridge.lean#L80">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/1d16f2ddf78e7c4c850246f67bf8ce79b19deb3c/evidence/erdos-269-three-prime-running-lcm.md#res-denominator-reduction-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos269/PaperR7RationalBridge.lean#L80">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d93e7408aed0b0c73ad5ea98116c7dc0dce3cf7b/evidence/erdos-269-three-prime-running-lcm.md#res-denominator-reduction-comparator">Comparator</a></p>
 
 **Theorem 4** (rationality gives positive integer tails). *If $`S=A/D`$ in lowest terms, where $`D=2^u3^v5^wB`$ and $`\gcd(B,30)=1`$, then for every $`a\ge a_0=u+1+2v+3w`$,
 ``` math
@@ -4908,7 +4940,7 @@ If $`a\ge u+1+2v+3w`$, the exponent $`a-1`$ of $`2`$ in $`h_a`$ is at least $`u`
 </div>
 
 <div id="erdos-269-three-prime-running-lcm--res:exact-onset" class="corollary">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/1d16f2ddf78e7c4c850246f67bf8ce79b19deb3c/evidence/erdos-269-three-prime-running-lcm.md#res-exact-onset">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/1d16f2ddf78e7c4c850246f67bf8ce79b19deb3c/evidence/erdos-269-three-prime-running-lcm.md#res-exact-onset-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/d93e7408aed0b0c73ad5ea98116c7dc0dce3cf7b/evidence/erdos-269-three-prime-running-lcm.md#res-exact-onset">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d93e7408aed0b0c73ad5ea98116c7dc0dce3cf7b/evidence/erdos-269-three-prime-running-lcm.md#res-exact-onset-comparator">Comparator</a></p>
 
 **Corollary 5** (the first index at which the denominator clears). *Under the same lowest-terms hypothesis, put $`M=2^u3^v5^w`$ and let $`\operatorname{den}`$ denote the positive reduced denominator. For $`a\ge1`$,
 ``` math
@@ -4924,13 +4956,13 @@ Consequently $`BX_a`$ is integral exactly when $`2^a\ge\max(2^{u+1},3^v,5^w)`$. 
 
 </div>
 
-For a hypothetical reduced denominator $`2^3 3^2 5\cdot7`$, the first integral $`7X_a`$ would occur at $`a=4`$. The sufficient onset in the theorem is $`11`$. The [companion’s denominator calculation](https://github.com/wcook04/plectis-erdos/blob/main/paper/269/erdos269-running-lcm-reasoning-surface.pdf#nameddest=r3-denominator) also determines the reduced denominator of $`X_a`$ itself.
+For a hypothetical reduced denominator $`2^3 3^2 5\cdot7`$, the first integral $`7X_a`$ would occur at $`a=4`$. The sufficient starting index in the theorem is $`11`$. The [companion’s denominator calculation](https://github.com/wcook04/plectis-erdos/blob/main/paper/269/erdos269-running-lcm-reasoning-surface.pdf#nameddest=r3-denominator) also determines the reduced denominator of $`X_a`$ itself.
 
 <a id="erdos-269-three-prime-running-lcm--sec:escape"></a>
 
 ### A residue criterion
 
-<span id="erdos-269-three-prime-running-lcm--sec:open" label="sec:open"></span> A hypothetical rational value of $`S`$ produces positive integer tails $`d_a=BX_a`$ bounded by $`90B(a+1)^2`$. Over several steps, the recurrence also places the terminal tail in a single residue class. The useful question is whether that class has any positive representative below the bound.
+<span id="erdos-269-three-prime-running-lcm--sec:open" label="sec:open"></span> If $`S`$ is rational, the values $`d_a=BX_a`$ are eventually positive integers bounded by $`90B(a+1)^2`$. Iterating the recurrence places each later value in a particular residue class. We shall exclude integrality when the least positive integer in this class exceeds the bound.
 
 For two steps the recurrence reads $`X_{\ell+2}=b_{\ell+1}b_\ell X_\ell-(b_{\ell+1}m_\ell+m_{\ell+1})`$. To keep track of the multiplicative and additive terms over $`h`$ steps, write
 ``` math
@@ -4956,7 +4988,7 @@ For integers $`W\ge1,t`$, define $`\operatorname{lpr}_W(t)=1+((t-1)\bmod W)`$, w
 ```
 
 <div id="erdos-269-three-prime-running-lcm--res:consumer" class="lemma">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos269/PaperR7BasicAssembly.lean#L138">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/1d16f2ddf78e7c4c850246f67bf8ce79b19deb3c/evidence/erdos-269-three-prime-running-lcm.md#res-consumer-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos269/PaperR7BasicAssembly.lean#L138">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d93e7408aed0b0c73ad5ea98116c7dc0dce3cf7b/evidence/erdos-269-three-prime-running-lcm.md#res-consumer-comparator">Comparator</a></p>
 
 **Lemma 6** (least positive residues). *If $`d`$ is a positive integer with $`d\le K`$ and $`d\equiv -BF\pmod W`$, where $`W\ge1`$, then $`\operatorname{lpr}_W(-BF)\le K`$.*
 
@@ -4975,7 +5007,7 @@ For $`\ell=1,h=6`$, direct iteration gives $`W_{1,6}=648000`$ and $`F_{1,6}=5244
 </div>
 
 <div id="erdos-269-three-prime-running-lcm--res:windowconsumer" class="theorem">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos269/PaperR7WindowResults.lean#L51">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/1d16f2ddf78e7c4c850246f67bf8ce79b19deb3c/evidence/erdos-269-three-prime-running-lcm.md#res-windowconsumer-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos269/PaperR7WindowResults.lean#L51">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d93e7408aed0b0c73ad5ea98116c7dc0dce3cf7b/evidence/erdos-269-three-prime-running-lcm.md#res-windowconsumer-comparator">Comparator</a></p>
 
 **Theorem 7** (a residue criterion for irrationality). *The number $`S`$ is irrational if and only if
 ``` math
@@ -4994,9 +5026,9 @@ For $`\ell=1,h=6`$, direct iteration gives $`W_{1,6}=648000`$ and $`F_{1,6}=5244
 
 <div class="proof">
 
-*Proof.* Suppose that <a href="#erdos-269-three-prime-running-lcm--eq:escape" data-reference-type="eqref" data-reference="erdos-269-three-prime-running-lcm--eq:escape">[eq:escape]</a> holds and $`S`$ is rational. By Theorem <a href="#erdos-269-three-prime-running-lcm--res:denominator-reduction" data-reference-type="ref" data-reference="erdos-269-three-prime-running-lcm--res:denominator-reduction">4</a>, $`d_a=BX_a`$ is a positive integer for every sufficiently large $`a`$. Choose a window beyond that onset. Equation <a href="#erdos-269-three-prime-running-lcm--eq:actual-tail" data-reference-type="eqref" data-reference="erdos-269-three-prime-running-lcm--eq:actual-tail">[eq:actual-tail]</a> gives $`d_{\ell+h}\equiv-BF_{\ell,h}\pmod{W_{\ell,h}}`$, contrary to Lemma <a href="#erdos-269-three-prime-running-lcm--res:consumer" data-reference-type="ref" data-reference="erdos-269-three-prime-running-lcm--res:consumer">6</a> and <a href="#erdos-269-three-prime-running-lcm--eq:escape" data-reference-type="eqref" data-reference="erdos-269-three-prime-running-lcm--eq:escape">[eq:escape]</a>.
+*Proof.* Suppose that <a href="#erdos-269-three-prime-running-lcm--eq:escape" data-reference-type="eqref" data-reference="erdos-269-three-prime-running-lcm--eq:escape">[eq:escape]</a> holds and $`S`$ is rational. By Theorem <a href="#erdos-269-three-prime-running-lcm--res:denominator-reduction" data-reference-type="ref" data-reference="erdos-269-three-prime-running-lcm--res:denominator-reduction">4</a>, $`d_a=BX_a`$ is a positive integer for every sufficiently large $`a`$. Choose a segment beyond that onset. Equation <a href="#erdos-269-three-prime-running-lcm--eq:actual-tail" data-reference-type="eqref" data-reference="erdos-269-three-prime-running-lcm--eq:actual-tail">[eq:actual-tail]</a> gives $`d_{\ell+h}\equiv-BF_{\ell,h}\pmod{W_{\ell,h}}`$, contrary to Lemma <a href="#erdos-269-three-prime-running-lcm--res:consumer" data-reference-type="ref" data-reference="erdos-269-three-prime-running-lcm--res:consumer">6</a> and <a href="#erdos-269-three-prime-running-lcm--eq:escape" data-reference-type="eqref" data-reference="erdos-269-three-prime-running-lcm--eq:escape">[eq:escape]</a>.
 
-Conversely, suppose that $`S`$ is irrational and fix $`B,\ell\ge1`$. Equation <a href="#erdos-269-three-prime-running-lcm--eq:prefix-lattice" data-reference-type="eqref" data-reference="erdos-269-three-prime-running-lcm--eq:prefix-lattice">[eq:prefix-lattice]</a> makes $`BX_\ell`$ nonintegral. The distance upwards to the next integer, $`\delta=\lceil BX_\ell\rceil-BX_\ell\in(0,1)`$, is now fixed as the window length $`h`$ grows. We have $`W_{\ell,h}\ge2^h`$, whereas $`X_{\ell+h}`$ has only quadratic growth. Consequently $`\delta+BX_{\ell+h}/W_{\ell,h}`$ lies in $`(0,1)`$ for sufficiently large $`h`$. This ensures that the following representative lies strictly between $`0`$ and the modulus, so it is the least positive one:
+Conversely, suppose that $`S`$ is irrational and fix $`B,\ell\ge1`$. Equation <a href="#erdos-269-three-prime-running-lcm--eq:prefix-lattice" data-reference-type="eqref" data-reference="erdos-269-three-prime-running-lcm--eq:prefix-lattice">[eq:prefix-lattice]</a> makes $`BX_\ell`$ nonintegral. The distance upwards to the next integer, $`\delta=\lceil BX_\ell\rceil-BX_\ell\in(0,1)`$, is now fixed as the segment length $`h`$ grows. We have $`W_{\ell,h}\ge2^h`$, whereas $`X_{\ell+h}`$ has only quadratic growth. Consequently $`\delta+BX_{\ell+h}/W_{\ell,h}`$ lies in $`(0,1)`$ for sufficiently large $`h`$. This ensures that the following representative lies strictly between $`0`$ and the modulus, so it is the least positive one:
 ``` math
 \operatorname{lpr}_{W_{\ell,h}}(-BF_{\ell,h})
  =\lceil BX_\ell\rceil W_{\ell,h}-BF_{\ell,h}
@@ -5006,7 +5038,11 @@ The positive constant $`\delta`$ multiplies an exponentially growing $`W_{\ell,h
 
 </div>
 
+The converse gives no estimate for the gap $`\delta`$. It explains why a long enough segment succeeds once $`BX_\ell`$ is known to be nonintegral. To use the forward implication, we must prove <a href="#erdos-269-three-prime-running-lcm--eq:escape" data-reference-type="eqref" data-reference="erdos-269-three-prime-running-lcm--eq:escape">[eq:escape]</a> for the actual coefficients without assuming that nonintegrality.
+
 The upper-bound property of $`K`$ is essential: choosing the zero function would make every residue inequality automatic. The [companion’s residue analysis](https://github.com/wcook04/plectis-erdos/blob/main/paper/269/erdos269-running-lcm-reasoning-surface.pdf#nameddest=r3-residue) treats smaller bounds and identifies when more general bounds give the same criterion. Finite searches cover only finitely many multipliers and starts.
+
+<div class="minipage">
 
 The repeated three-prime question can therefore be written in three equivalent forms.
 
@@ -5034,16 +5070,18 @@ The repeated three-prime question can therefore be written in three equivalent f
 
 </div>
 
+</div>
+
 An integral $`BX_a`$ makes $`S`$ rational by <a href="#erdos-269-three-prime-running-lcm--eq:prefix-lattice" data-reference-type="eqref" data-reference="erdos-269-three-prime-running-lcm--eq:prefix-lattice">[eq:prefix-lattice]</a>; Theorem <a href="#erdos-269-three-prime-running-lcm--res:denominator-reduction" data-reference-type="ref" data-reference="erdos-269-three-prime-running-lcm--res:denominator-reduction">4</a> proves the converse implication. Theorem <a href="#erdos-269-three-prime-running-lcm--res:windowconsumer" data-reference-type="ref" data-reference="erdos-269-three-prime-running-lcm--res:windowconsumer">7</a> gives the third form. All three remain unproved for $`S`$. The [companion’s discussion of the repeated sum](https://github.com/wcook04/plectis-erdos/blob/main/paper/269/erdos269-running-lcm-reasoning-surface.pdf#nameddest=r3-open) records the finite calculations and the hypotheses missing from proposed finite-difference and function-theoretic arguments.
 
 <a id="erdos-269-three-prime-running-lcm--sec:two-prime"></a>
 
 ### Two-prime transcendence
 
-For two primes we can retain the multiplicities and still evaluate the sum through one Hecke–Mahler value. Fan gave the factorisation of the repeated sum and its transcendence consequence in his post of 26 June 2026 \[fan2026comment\]. The following calculation also expresses the distinct-height sum in that value.
+For two primes we can retain the multiplicities and still evaluate the sum through one Hecke–Mahler value. Fan gave the factorisation of the repeated sum and its transcendence consequence in his post of 26 June 2026 \[fan2026comment\]. The following calculation also expresses the sum over distinct running LCMs in that value.
 
 <div id="erdos-269-three-prime-running-lcm--res:two-prime-transcendence" class="theorem">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/1d16f2ddf78e7c4c850246f67bf8ce79b19deb3c/evidence/erdos-269-three-prime-running-lcm.md#res-two-prime-transcendence">Lean†</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/d93e7408aed0b0c73ad5ea98116c7dc0dce3cf7b/evidence/erdos-269-three-prime-running-lcm.md#res-two-prime-transcendence">Lean†</a></p>
 
 **Theorem 11** (both two-prime sums). *<span id="erdos-269-three-prime-running-lcm--res:two-prime-repeated-transcendence" label="res:two-prime-repeated-transcendence"></span> Let $`p<q`$ be distinct primes. Put $`\theta=\log p/\log q`$ and $`A=\sum_{n\ge0}p^{-n}q^{-\lfloor n\theta\rfloor}`$. Let $`\mathcal R_{p,q}`$ sum the reciprocal running LCM at every positive $`\{p,q\}`$-smooth integer, and let $`\mathcal D_{p,q}`$ count each distinct running LCM once. Then
 ``` math
@@ -5069,7 +5107,7 @@ Since $`0<x,y<1`$, these series converge absolutely. The identity $`y^{m_{n+1}}-
 ``` math
 B=\frac{p-(p-1)A}{q-1}.
 ```
-We compute the repeated sum from the height $`p^{i+\lfloor j/\theta\rfloor}q^{j+m_i}`$ at $`p^iq^j`$, obtaining
+For the repeated sum, the running LCM at $`p^iq^j`$ is $`p^{i+\lfloor j/\theta\rfloor}q^{j+m_i}`$. Its reciprocal is the product of $`x^iy^{m_i}`$, which depends only on $`i`$, and $`y^jx^{\lfloor j/\theta\rfloor}`$, which depends only on $`j`$. Absolute convergence therefore gives
 ``` math
 \mathcal R_{p,q}
  =A\sum_{j\ge0}y^jx^{\lfloor j/\theta\rfloor}=A(1+B).
@@ -5093,14 +5131,14 @@ For larger prime sets, the sums over pure powers $`E_p=\sum_{\alpha\ge0}\operato
 
 <a id="erdos-269-three-prime-running-lcm--sec:height-identities"></a>
 
-### Height identities and multiplicities
+### Identities for the running LCM and multiplicities
 
 <span id="erdos-269-three-prime-running-lcm--sec:cells" label="sec:cells"></span><span id="erdos-269-three-prime-running-lcm--sec:fibre" label="sec:fibre"></span> Let $`p,q,r`$ be pairwise distinct primes. Write $`\operatorname{H}=\operatorname{H}_{\{p,q,r\}}`$ and $`\operatorname{K}(i,j,k)=\operatorname{H}(p^iq^jr^k)^{-1}`$ throughout this appendix and the next. The following identities underlie the grouping of the repeated series in Section <a href="#erdos-269-three-prime-running-lcm--sec:lcm" data-reference-type="ref" data-reference="erdos-269-three-prime-running-lcm--sec:lcm">3</a>.
 
 <div id="erdos-269-three-prime-running-lcm--res:lcm" class="proposition">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos269/PaperCompleteR20/RealCutoffs.lean#L49">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/1d16f2ddf78e7c4c850246f67bf8ce79b19deb3c/evidence/erdos-269-three-prime-running-lcm.md#res-lcm-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos269/PaperCompleteR20/RealCutoffs.lean#L49">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d93e7408aed0b0c73ad5ea98116c7dc0dce3cf7b/evidence/erdos-269-three-prime-running-lcm.md#res-lcm-comparator">Comparator</a></p>
 
-**Proposition 12** (the running least common multiple). *Let $`p,q,r`$ be pairwise distinct primes and $`x\ge1`$. Then the running LCM equals the three-prime height: $`\operatorname{L}(x)=\operatorname{H}(x)`$.*
+**Proposition 12** (the running least common multiple). *Let $`p,q,r`$ be pairwise distinct primes and $`x\ge1`$. Then the running least common multiple is given by $`\operatorname{L}(x)=\operatorname{H}(x)`$.*
 
 </div>
 
@@ -5119,7 +5157,7 @@ For each prime, $`x/p<p^{\lfloor\log_p x\rfloor}\le x`$. Multiplying gives
 ```
 
 <div id="erdos-269-three-prime-running-lcm--res:cell" class="proposition">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/1d16f2ddf78e7c4c850246f67bf8ce79b19deb3c/evidence/erdos-269-three-prime-running-lcm.md#res-cell">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/1d16f2ddf78e7c4c850246f67bf8ce79b19deb3c/evidence/erdos-269-three-prime-running-lcm.md#res-cell-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/d93e7408aed0b0c73ad5ea98116c7dc0dce3cf7b/evidence/erdos-269-three-prime-running-lcm.md#res-cell">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d93e7408aed0b0c73ad5ea98116c7dc0dce3cf7b/evidence/erdos-269-three-prime-running-lcm.md#res-cell-comparator">Comparator</a></p>
 
 **Proposition 13** (cells and jumps). *The running LCM is constant when the three integer logarithms are constant. A jump in exactly one logarithm multiplies it by the corresponding prime. The first $`n`$ positive powers of each prime, together with $`1`$, form $`3n+1`$ distinct points.*
 
@@ -5127,14 +5165,14 @@ For each prime, $`x/p<p^{\lfloor\log_p x\rfloor}\le x`$. Multiplying gives
 
 <div class="proof">
 
-*Proof.* The height is a product of the three maximal pure powers, which proves the constancy and jump assertions. Unique factorisation separates the $`3n`$ positive pure powers from one another and from $`1`$. ◻
+*Proof.* The running LCM is a product of the three maximal pure powers, which proves the constancy and jump assertions. Unique factorisation separates the $`3n`$ positive pure powers from one another and from $`1`$. ◻
 
 </div>
 
 <div id="erdos-269-three-prime-running-lcm--res:fibre-prop" class="proposition">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean#L407">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/1d16f2ddf78e7c4c850246f67bf8ce79b19deb3c/evidence/erdos-269-three-prime-running-lcm.md#res-fibre-prop-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean#L407">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d93e7408aed0b0c73ad5ea98116c7dc0dce3cf7b/evidence/erdos-269-three-prime-running-lcm.md#res-fibre-prop-comparator">Comparator</a></p>
 
-**Proposition 14** (grouping terms with the same height). *For a finite exponent box $`\mathcal B`$, set $`F(H)=\{(i,j,k)\in\mathcal B:\operatorname{H}(p^iq^jr^k)=H\}`$. Then
+**Proposition 14** (grouping terms with the same running LCM). *For a finite exponent box $`\mathcal B`$, set $`F(H)=\{(i,j,k)\in\mathcal B:\operatorname{H}(p^iq^jr^k)=H\}`$. Then
 ``` math
 \begin{equation}
 \label{res:fibre}
@@ -5146,7 +5184,7 @@ For each prime, $`x/p<p^{\lfloor\log_p x\rfloor}\le x`$. Multiplying gives
 
 <div class="proof">
 
-*Proof.* Partition the finite exponent box by the value of the height. The terms in the part $`F(H)`$ all equal $`1/H`$. ◻
+*Proof.* Partition the finite exponent box by the value of the running LCM. The terms in the part $`F(H)`$ all equal $`1/H`$. ◻
 
 </div>
 
@@ -5165,7 +5203,7 @@ We ask whether the two-prime factorisation can be replaced, for three primes, by
 A single nonzero minor rules out rank one. The theorem below requires minors of every order, with rows and columns chosen to suit the order. The same choices will work in every layer $`k`$.
 
 <div id="erdos-269-three-prime-running-lcm--res:infinite-rank" class="theorem">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos269/PaperR7BasicAssembly.lean#L22">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/1d16f2ddf78e7c4c850246f67bf8ce79b19deb3c/evidence/erdos-269-three-prime-running-lcm.md#res-infinite-rank-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos269/PaperR7BasicAssembly.lean#L22">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d93e7408aed0b0c73ad5ea98116c7dc0dce3cf7b/evidence/erdos-269-three-prime-running-lcm.md#res-infinite-rank-comparator">Comparator</a></p>
 
 **Theorem 16** (no finite separation of the kernel). *Let $`p,q,r`$ be primes with $`p\ne q`$, $`p\ne r`$ and $`q\ne r`$. For every $`n\ge0`$ there are injective maps $`I,J:\{0,\ldots,n-1\}\to\mathbb{N}`$ such that, for every $`k\ge0`$,
 ``` math
@@ -5226,7 +5264,7 @@ For the final assertion, suppose a separation with $`d`$ summands existed and fi
 No continuity or boundedness is assumed for the separated factors.
 
 <div id="erdos-269-three-prime-running-lcm--res:admissible-modular-minors" class="corollary">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos269/PaperR7ModularMinors.lean#L133">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/1d16f2ddf78e7c4c850246f67bf8ce79b19deb3c/evidence/erdos-269-three-prime-running-lcm.md#res-admissible-modular-minors-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos269/PaperR7ModularMinors.lean#L133">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d93e7408aed0b0c73ad5ea98116c7dc0dce3cf7b/evidence/erdos-269-three-prime-running-lcm.md#res-admissible-modular-minors-comparator">Comparator</a></p>
 
 **Corollary 17** (the same minors modulo integers coprime to $`30`$). *For $`(p,q,r)=(2,3,5)`$ and every $`n\ge1`$, there are injective maps $`I,J:\{0,\ldots,n-1\}\to\mathbb{N}`$, chosen independently of $`B`$ and $`k`$, such that for every $`B\ge2`$ coprime to $`30`$ and every $`k\ge0`$, the selected $`n\times n`$ kernel matrix has unit determinant over $`\mathbb Z/B\mathbb Z`$, with each reciprocal prime power interpreted by its modular inverse.*
 
@@ -5248,10 +5286,10 @@ The leading $`4\times4`$ block at $`\{2,3,5\}`$ is singular:
 ``` math
 \operatorname{K}(3,j,0)=\frac1{120}\operatorname{K}(0,j,0)\qquad(0\le j<4).
 ```
-These equalities follow by evaluating the height at $`3^j`$ and $`8\cdot3^j`$. But at $`j=4`$, $`\operatorname{K}(3,4,0)-\operatorname{K}(0,4,0)/120=-1/19440000`$. Thus the leading minors do not supply the arbitrary-order theorem.
+These equalities follow by evaluating the running LCM at $`3^j`$ and $`8\cdot3^j`$. But at $`j=4`$, $`\operatorname{K}(3,4,0)-\operatorname{K}(0,4,0)/120=-1/19440000`$. Thus the leading minors do not supply the arbitrary-order theorem.
 
 <div id="erdos-269-three-prime-running-lcm--res:finite-cut-rank" class="proposition">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos269/PaperR7FiniteCutRank.lean#L182">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/1d16f2ddf78e7c4c850246f67bf8ce79b19deb3c/evidence/erdos-269-three-prime-running-lcm.md#res-finite-cut-rank-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos269/PaperR7FiniteCutRank.lean#L182">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d93e7408aed0b0c73ad5ea98116c7dc0dce3cf7b/evidence/erdos-269-three-prime-running-lcm.md#res-finite-cut-rank-comparator">Comparator</a></p>
 
 **Proposition 18** (rank of a matrix of threshold columns). *Let $`m\ge1`$ and let $`c`$ lie in a field with $`c\ne 0,1`$. For $`0\le k\le m`$ write $`v_k`$ for the length-$`m`$ column with a $`1`$ in each of the first $`k`$ coordinates and $`c`$ thereafter. A matrix whose distinct columns are $`v_k`$ for $`k`$ in a nonempty set $`E`$ has rank $`|E|-\mathbf 1_{\{0,m\}\subseteq E}`$.*
 
@@ -5277,11 +5315,15 @@ Truncating the original kernel to $`i<N`$ gives a sum of $`N`$ separated terms. 
 
 ### Proof sources and further comparisons
 
-The margin marks link to the recorded Lean declarations and, where present, Comparator comparisons. For the five-map proof the declarations are in [the distinct-height development](https://github.com/wcook04/plectis-erdos/blob/5154f4c46fa5d5ab2cff8df857a0b10f310cbeeb/lean/ErdosProblems/Erdos269/DistinctHeightIrrationality.lean) and [its block-series criterion](https://github.com/wcook04/plectis-erdos/blob/5154f4c46fa5d5ab2cff8df857a0b10f310cbeeb/lean/ErdosProblems/Erdos269/DistinctHeightBlockRadix.lean); no comparison is recorded. The [evidence record](https://github.com/wcook04/plectis-erdos/blob/1d16f2ddf78e7c4c850246f67bf8ce79b19deb3c/evidence/erdos-269-three-prime-running-lcm.md) gives the versions. Neither checker was rerun for this revision, and the public links may precede this manuscript’s local revision. The named input for two-prime transcendence stays beside that theorem.
+The margin marks link to the recorded Lean declarations and, where present, Comparator comparisons. For the five-map proof the declarations are in [the distinct-value development](https://github.com/wcook04/plectis-erdos/blob/5154f4c46fa5d5ab2cff8df857a0b10f310cbeeb/lean/ErdosProblems/Erdos269/DistinctHeightIrrationality.lean) and [its block-series criterion](https://github.com/wcook04/plectis-erdos/blob/5154f4c46fa5d5ab2cff8df857a0b10f310cbeeb/lean/ErdosProblems/Erdos269/DistinctHeightBlockRadix.lean); no comparison is recorded. The [evidence record](https://github.com/wcook04/plectis-erdos/blob/d93e7408aed0b0c73ad5ea98116c7dc0dce3cf7b/evidence/erdos-269-three-prime-running-lcm.md) gives the versions. Neither checker was rerun for this revision, and the public links may precede this manuscript’s local revision. The named input for two-prime transcendence stays beside that theorem.
 
-The [distinct-height programs](https://github.com/wcook04/plectis-erdos/tree/10178c4df40cb27d83b5ebb1ec337dd588b82998/research/experiments/erdos269/distinct_height) calculate the interval endpoints and finite-state examples using exact arithmetic; the proof in Section <a href="#erdos-269-three-prime-running-lcm--sec:distinct-235" data-reference-type="ref" data-reference="erdos-269-three-prime-running-lcm--sec:distinct-235">[sec:distinct-235]</a> derives its constants directly. The [companion’s source inventory](https://github.com/wcook04/plectis-erdos/blob/main/paper/269/erdos269-running-lcm-reasoning-surface.pdf#nameddest=r3-source-inventory) also covers the ordinary general and subseries arguments. Its historical note reports a second AI agent’s check on 26 September 2026 and the incorporation of its corrections. No human mathematical review is reported.
+The [programs for sums over distinct values](https://github.com/wcook04/plectis-erdos/tree/10178c4df40cb27d83b5ebb1ec337dd588b82998/research/experiments/erdos269/distinct_height) calculate the interval endpoints and finite-state examples using exact arithmetic; the proof in Section <a href="#erdos-269-three-prime-running-lcm--sec:distinct-235" data-reference-type="ref" data-reference="erdos-269-three-prime-running-lcm--sec:distinct-235">[sec:distinct-235]</a> derives its constants directly.
 
-The classical criteria of Erdős–Straus \[erdosstraus1974\], Hančl–Tijdeman \[hancltijdeman2004\] and Diananda–Oppenheim \[dianandaoppenheim1955\] are compared with the bounded-base series in the companion. It also compares the bounded-ratio argument with Erdős–Taylor \[erdostaylor1957, Theorem 1, p. 600\] and Fan \[fan2026strongly, Lemma 3.1, p. 7\], and the carry restrictions with the polynomial Cantor-series results of Hančl–Tijdeman \[hancltijdeman2008, Theorems 2.2, 3.1 and 4.2\]. Koutsoukou-Argyraki and Li’s Isabelle development \[afperdosstraus2020\] formalises classical irrationality criteria. It does not treat the present repeated series.
+The [companion’s account of this proof](https://github.com/wcook04/plectis-erdos/blob/main/paper/269/erdos269-running-lcm-reasoning-surface.pdf#nameddest=r3-five-maps) also compares one-jump and dyadic bounds. Its finite-state extension uses intervals depending on earlier blocks. The saved exact computations satisfy that criterion for every set of three primes at most $`31`$ and for $`292`$ of the $`330`$ four-prime sets in that range. The general criterion and those computations are recorded as remarks awaiting formalisation. For $`\{2,3,5,7\}`$ two admissible automaton words give the same affine map at every subsequent refinement, preventing that automaton from recovering its first block. This identity does not establish a collision between two words realised by the arithmetic sequence.
+
+The [companion’s source inventory](https://github.com/wcook04/plectis-erdos/blob/main/paper/269/erdos269-running-lcm-reasoning-surface.pdf#nameddest=r3-source-inventory) also covers the ordinary general and subseries arguments. Its historical note reports a second AI agent’s check on 26 September 2026 and the incorporation of its corrections. No human mathematical review is reported.
+
+The classical criteria of Erdős–Straus \[erdosstraus1974\], Hančl–Tijdeman \[hancltijdeman2004\] and Diananda–Oppenheim \[dianandaoppenheim1955\] are compared with the bounded-base series in the companion. It also compares the bounded-ratio argument with Erdős–Taylor \[erdostaylor1957, Theorem 1, p. 600\] and Fan \[fan2026strongly, Lemma 3.1, p. 7\], and the restrictions on integer recurrences with the polynomial Cantor-series results of Hančl–Tijdeman \[hancltijdeman2008, Theorems 2.2, 3.1 and 4.2\]. Koutsoukou-Argyraki and Li’s Isabelle development \[afperdosstraus2020\] formalises classical irrationality criteria. It does not treat the present repeated series.
 
 For transcendence, the relevant comparisons are the finite-difference conditions of Luca–Ouaknine–Worrell \[lucaouaknineworrell2025\], the echoing conditions in \[kebis2024echoing\], the fixed-base complexity theorem of Adamczewski–Bugeaud \[adamczewskibugeaud2007\], and multivariate Mahler theory \[adamczewskifaverjon2026\]. Quadratic growth of $`m_a`$ supplies none of the missing cancellation or recurrence hypotheses. The companion exhibits nonzero boundary terms in a proposed third-difference calculation and distinguishes variable-base digits from fixed-base expansions. Work on fixed-prime semigroups \[tijdemanmeijer1974; languasco2025\] and other Ahmes-series problems \[kovactao2024\] provides context; no estimate from those papers enters our dyadic counting argument.
 
@@ -5327,7 +5369,7 @@ The problem number and its status as of 28 July 2026 are taken from Thomas Bloom
 
 </div>
 
-A monic polynomial of degree seven can have all its zeros in the open unit disc while every connected subset of $`\{|f|<1\}`$ containing two zeros has Hausdorff measure greater than $`2`$. We give the polynomial constructed by `ani` and prove the estimate by confining the cut between two inverse sheets to a small disc. For monic trinomials whose zeros lie in the open unit disc, the root equation keeps every root-to-origin segment inside the lemniscate. Further remarks record analytic short-path criteria whose formal proofs still require additional inputs.
+A monic polynomial of degree seven can have all its zeros in the open unit disc while every connected subset of $`\{|f|<1\}`$ containing two zeros has Hausdorff measure greater than $`2`$. We give the polynomial constructed by `ani`. The proof confines the slit preimage within the two-root component to a small disc about a critical point; radial projection on each of its two inverse sheets then gives the measure bound. For monic trinomials whose zeros lie in the open unit disc, the root equation keeps every root-to-origin segment inside the lemniscate. Further remarks record analytic short-path criteria whose formal proofs still require additional inputs.
 
 <a id="erdos-1041-lemniscate-newton-flow--sec:problem"></a>
 
@@ -5352,7 +5394,7 @@ A repeated root allows a constant curve between two occurrences, so we consider 
 </div>
 
 <div id="erdos-1041-lemniscate-newton-flow--res:ani-degree-seven-counterexample" class="theorem">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/1d16f2ddf78e7c4c850246f67bf8ce79b19deb3c/evidence/erdos-1041-lemniscate-newton-flow.md#res-ani-degree-seven-counterexample">Lean</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/d93e7408aed0b0c73ad5ea98116c7dc0dce3cf7b/evidence/erdos-1041-lemniscate-newton-flow.md#res-ani-degree-seven-counterexample">Lean</a></p>
 
 **Theorem 2** (`ani`’s degree-seven example). *The monic polynomial $`f`$ in <a href="#erdos-1041-lemniscate-newton-flow--eq:ani-f" data-reference-type="eqref" data-reference="erdos-1041-lemniscate-newton-flow--eq:ani-f">[eq:ani-f]</a> has seven distinct zeros in the open unit disc. Every connected set $`K\subset\Omega_f`$ containing two of its zeros satisfies $`\mathcal H^1(K)>2`$.*
 
@@ -5360,9 +5402,11 @@ A repeated root allows a constant curve between two occurrences, so we consider 
 
 Here $`\mathcal H^1`$ is one-dimensional Hausdorff measure. Applied to a path image, the theorem also rules out a rectifiable path of total variation less than $`2`$.
 
-The construction leaves only one pair of zeros available: five components of $`\Omega_f`$ contain one zero each, and the sixth contains two. On that last component, $`f`$ is a double cover of the value disc. Its two roots have combined distance from the critical point slightly greater than $`2`$. Cut the value disc from the critical value out to the unit circle. We prove that the *whole* preimage of this slit lies in a small disc about the critical point. Outside that disc the two inverse sheets are separated, so a connected set containing both roots must approach the disc on each sheet. Radial projection counts the two contributions separately. The loss at the small disc is less than the excess of the root distances over $`2`$.
+Five components of $`\Omega_f`$ contain one zero each, and the sixth contains two. Thus only the last component can contain a connected set joining two zeros. On this component, $`f`$ is a double cover of the value disc, and the sum of the distances from its critical point to its two zeros is slightly greater than $`2`$. Distance estimates alone do not show that the roots nearest to that critical point lie in a common component; Section <a href="#erdos-1041-lemniscate-newton-flow--sec:critical-proximity" data-reference-type="ref" data-reference="erdos-1041-lemniscate-newton-flow--sec:critical-proximity">6.1</a> supplies no such component-selection argument.
 
-A quadratic model first shows what a narrow neck does and what it leaves to achieve. We then prove the two-sheet estimate and explain the two scales in the degree-seven polynomial. Section <a href="#erdos-1041-lemniscate-newton-flow--sec:trinomial" data-reference-type="ref" data-reference="erdos-1041-lemniscate-newton-flow--sec:trinomial">3</a> gives the contrasting positive result: for $`z^n+az^m+b`$, the root equation bounds the polynomial on every root-to-origin segment. Four nonzero terms can already defeat a prescribed segment. Sections <a href="#erdos-1041-lemniscate-newton-flow--sec:constant-factor" data-reference-type="ref" data-reference="erdos-1041-lemniscate-newton-flow--sec:constant-factor">4</a> and <a href="#erdos-1041-lemniscate-newton-flow--sec:separation" data-reference-type="ref" data-reference="erdos-1041-lemniscate-newton-flow--sec:separation">5</a> collect unformalised analytic remarks on small or isolated critical values. Their arguments, given in full in the companion, are independent of the counterexample and the trinomial theorem.
+We cut the value disc from the critical value to the unit circle and confine the *whole* preimage of the slit to a small disc about the critical point. A connected set joining the zeros must approach this disc on both inverse sheets. Radial projection then gives a lower bound for its measure on each sheet. Adding these bounds subtracts twice the radius of the small disc from the sum of the two root distances; the remaining quantity is greater than $`2`$.
+
+We begin with a quadratic example in which the slit preimage is small but the two zeros can still be joined by a segment of length less than $`2`$. The double-cover estimate identifies the additional inequality needed for the degree-seven example. In Section <a href="#erdos-1041-lemniscate-newton-flow--sec:trinomial" data-reference-type="ref" data-reference="erdos-1041-lemniscate-newton-flow--sec:trinomial">3</a>, the root equation for $`z^n+az^m+b`$ bounds the polynomial on every segment from the origin to a zero. A polynomial with four nonzero terms shows that this conclusion need not persist. Sections <a href="#erdos-1041-lemniscate-newton-flow--sec:constant-factor" data-reference-type="ref" data-reference="erdos-1041-lemniscate-newton-flow--sec:constant-factor">4</a> and <a href="#erdos-1041-lemniscate-newton-flow--sec:separation" data-reference-type="ref" data-reference="erdos-1041-lemniscate-newton-flow--sec:separation">5</a> concern small or isolated critical values. These analytic arguments are independent of the counterexample and the trinomial theorem, and remain unformalised. Full proofs are given in the companion.
 
 For the analytic arguments we use the component-wise Riemann–Hurwitz calculation of Ebenfelt, Khavinson and Shapiro \[eks2010, proof of Proposition 2.1\] together with Pólya’s area inequality in the forms given by Crane \[crane, Theorems 1 and 6\]. Inverse branches, slit domains and capacity also occur in Crane’s work on Smale’s mean-value conjecture \[crane2007smale, Lemma 2.1 and §§2–4\], whose derivative normalisation differs from the monic normalisation here. The [companion paper](https://github.com/wcook04/plectis-erdos/blob/main/paper/1041/erdos1041-lemniscate-reasoning-surface.pdf) gives the rational tests for the degree-seven polynomial and the full arguments underlying Sections <a href="#erdos-1041-lemniscate-newton-flow--sec:other-results" data-reference-type="ref" data-reference="erdos-1041-lemniscate-newton-flow--sec:other-results">6</a>–<a href="#erdos-1041-lemniscate-newton-flow--sec:open" data-reference-type="ref" data-reference="erdos-1041-lemniscate-newton-flow--sec:open">7</a>.
 
@@ -5436,7 +5480,7 @@ This is the required bound. No parametrisation of $`K`$ has been used. ◻
 
 #### The polynomial
 
-The polynomial must accomplish two things at once: place its roots in the unit disc and arrange the critical geometry so that the distance surplus survives the loss in the lemma. We start near $`z^7-1`$, whose roots lie on the unit circle, and perturb its multiple critical point at the origin. The powers of $`\varepsilon`$ below are chosen so that the linear, quadratic and cubic perturbations all have order $`\varepsilon^7`$ at $`z=\varepsilon w`$. Thus coefficients that are small at the root circle can change the geometry at the critical-point scale. The following fixed coefficients are those of `ani`’s construction. Put $`s=10^{-6}`$, $`\varepsilon=s^2=10^{-12}`$ and $`\rho=1-s^{16}`$, and let
+The construction must satisfy three requirements: all roots lie in the unit disc, the only component containing more than one root has degree two, and the lower bound in Lemma <a href="#erdos-1041-lemniscate-newton-flow--lem:two-sheet-bottleneck" data-reference-type="ref" data-reference="erdos-1041-lemniscate-newton-flow--lem:two-sheet-bottleneck">3</a> exceeds $`2`$ for its two roots. We start near $`z^7-1`$, whose roots lie on the unit circle, and perturb its multiple critical point at the origin. The powers of $`\varepsilon`$ below are chosen so that the linear, quadratic and cubic perturbations all have order $`\varepsilon^7`$ at $`z=\varepsilon w`$. Thus coefficients that are small at the root circle can change the geometry at the critical-point scale. The following fixed coefficients are those of `ani`’s construction. Put $`s=10^{-6}`$, $`\varepsilon=s^2=10^{-12}`$ and $`\rho=1-s^{16}`$, and let
 ``` math
 \begin{gather*}
  A=-\frac{329507}{1600},\qquad B=\frac{551827}{800},\qquad
@@ -5470,7 +5514,7 @@ Let $`c_s=\rho\varepsilon w_s`$, $`v=f(c_s)`$, $`\delta=1-|v|`$, and write $`f(c
 |b_j-c_s|^2=\rho^2\bigl(1-2\varepsilon\operatorname{Re}
  (w_s\bar\zeta_j)+\varepsilon^2|w_s|^2\bigr).
 ```
-The displacement enters through a term proportional to $`\varepsilon`$, whereas $`1-\rho=\varepsilon^8`$. The finite estimates below fix the sign and the margin for the chosen pair:
+The term proportional to $`\varepsilon`$ measures the effect of moving the critical point, while $`1-\rho=\varepsilon^8`$ measures the contraction of the zeros. The following finite estimates give the sign and size of their combined effect for the chosen pair:
 ``` math
 \begin{align}
  M:=|A_s(0)|&>180\rho^5\varepsilon^5,&
@@ -5483,7 +5527,7 @@ The displacement enters through a term proportional to $`\varepsilon`$, whereas 
        \label{eq:ani-distances}
 \end{align}
 ```
-The subscripts $`3,6`$ refer to Cayley roots in the intervals $`(43812,43813)/10^4`$ and $`(-4816,-4815)/10^4`$. The last inequality is the feature absent from the quadratic model: measured from $`c_s`$, these two root distances have sum greater than $`2`$. The first two estimates make $`\sqrt{\delta/M}<\rho\varepsilon/5000`$, so the neck costs only a small fraction of this surplus.
+The subscripts $`3,6`$ refer to Cayley roots in the intervals $`(43812,43813)/10^4`$ and $`(-4816,-4815)/10^4`$. The Taylor estimate gives the uniform quadratic control required by Lemma <a href="#erdos-1041-lemniscate-newton-flow--lem:two-sheet-bottleneck" data-reference-type="ref" data-reference="erdos-1041-lemniscate-newton-flow--lem:two-sheet-bottleneck">3</a>. The first two inequalities give $`\sqrt{\delta/M}<\rho\varepsilon/5000`$, which bounds the term subtracted there. The last inequality supplies the sum of root distances from $`c_s`$; the final comparison below shows that its excess over $`2`$ survives this subtraction.
 
 We must also place these two roots in the same component; distance estimates alone do not identify that pair. We join a small disc about $`w_s`$ to points close to $`8\zeta_3`$ and $`8\zeta_6`$ by polygonal arcs in the $`w`$-plane. Containment of the four inner segments follows by writing
 ``` math
@@ -5518,7 +5562,7 @@ The choice $`s=10^{-6}`$ is fixed throughout. Extending these estimates to the s
 If $`f(z)=z^n+b`$ has a zero $`\zeta`$ in the open unit disc, then $`|b|=|\zeta|^n<1`$. The identity $`f(t\zeta)=b(1-t^n)`$, $`0\le t\le1`$, keeps the whole segment $`[0,\zeta]`$ in the lemniscate. A middle monomial does not destroy this argument: the equation $`f(\zeta)=0`$ lets us eliminate its contribution before taking absolute values. Only $`b`$ and $`-\zeta^n`$ remain, both of modulus less than one.
 
 <div id="erdos-1041-lemniscate-newton-flow--res:trinomial-all-degree" class="theorem">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos1041/PaperTrinomialWholeR21.lean#L23">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/1d16f2ddf78e7c4c850246f67bf8ce79b19deb3c/evidence/erdos-1041-lemniscate-newton-flow.md#res-trinomial-all-degree-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos1041/PaperTrinomialWholeR21.lean#L23">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d93e7408aed0b0c73ad5ea98116c7dc0dce3cf7b/evidence/erdos-1041-lemniscate-newton-flow.md#res-trinomial-all-degree-comparator">Comparator</a></p>
 
 **Theorem 4** (all-degree monic trinomials). *Let $`1\le m<n`$ and
 ``` math
@@ -5546,26 +5590,26 @@ The same calculation has a useful partial-sum form. Write $`f(z)=\sum_{k=0}^n a_
 ``` math
 f(t\zeta)=\sum_{j=0}^{n-1}(t^j-t^{j+1})S_j.
 ```
-For $`t<1`$, division by $`1-t^n`$ expresses the value as a convex combination of the $`S_j`$. In the trinomial case these are $`b`$ and $`-\zeta^n`$. Additional coefficients introduce further partial sums, whose moduli need not be controlled by the root locations. The theorem controls segments ending at zeros; it makes no assertion that the whole lemniscate is star-shaped. The next polynomial shows where the partial-sum argument can fail after a further term is added.
+For $`0\le t<1`$, the weights are nonnegative and sum to $`1-t^n`$. Thus $`f(t\zeta)/(1-t^n)`$ is a convex combination of the $`S_j`$. In the trinomial case these are $`b`$ and $`-\zeta^n`$. Additional coefficients introduce further partial sums, whose moduli need not be controlled by the root locations. The theorem controls segments ending at zeros; it makes no assertion that the whole lemniscate is star-shaped. The next polynomial shows where the partial-sum argument can fail after a further term is added.
 
 <div id="erdos-1041-lemniscate-newton-flow--res:sextic-spoke" class="proposition">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos1041/PaperCompleteR20/SexticSpokeWhole.lean#L9">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/1d16f2ddf78e7c4c850246f67bf8ce79b19deb3c/evidence/erdos-1041-lemniscate-newton-flow.md#res-sextic-spoke-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos1041/PaperCompleteR20/SexticSpokeWhole.lean#L9">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d93e7408aed0b0c73ad5ea98116c7dc0dce3cf7b/evidence/erdos-1041-lemniscate-newton-flow.md#res-sextic-spoke-comparator">Comparator</a></p>
 
 **Proposition 5** (failure of a prescribed radial segment). *There exist $`r\in(0,1)`$ for which every zero of
 ``` math
 f_r(z)=z^6+\tfrac15 r^2 z^4-\tfrac15 r^4 z^2-r^6
 ```
-lies in the open unit disc, yet the radial spoke from the origin to the zero $`r`$ leaves $`\{|f_r|<1\}`$.*
+lies in the open unit disc, yet the radial segment from the origin to the zero $`r`$ leaves $`\{|f_r|<1\}`$.*
 
 </div>
 
 <div class="proof">
 
-*Proof.* We substitute $`z=rw`$ and factor the polynomial as $`r^6(w^2-1)(w^4+\tfrac65w^2+1)`$, whose six zeros have modulus $`r`$. At the midpoint of the positive spoke, $`f_r(r/2)=-(327/320)r^6`$; choosing $`320/327<r^6<1`$ proves the assertion. ◻
+*Proof.* We substitute $`z=rw`$ and factor the polynomial as $`r^6(w^2-1)(w^4+\tfrac65w^2+1)`$, whose six zeros have modulus $`r`$. At the midpoint of that segment, $`f_r(r/2)=-(327/320)r^6`$; choosing $`320/327<r^6<1`$ proves the assertion. ◻
 
 </div>
 
-This failure concerns the prescribed spoke only. In Section <a href="#erdos-1041-lemniscate-newton-flow--sec:solved-families" data-reference-type="ref" data-reference="erdos-1041-lemniscate-newton-flow--sec:solved-families">6.2</a> we use the partial-sum identity again, first for power substitutions in a cubic and then for a quintic whose two missing coefficients select a suitable pair of segments.
+This failure concerns the prescribed segment only. In Section <a href="#erdos-1041-lemniscate-newton-flow--sec:solved-families" data-reference-type="ref" data-reference="erdos-1041-lemniscate-newton-flow--sec:solved-families">6.2</a> we use the partial-sum identity again, first for power substitutions in a cubic and then for a quintic whose two missing coefficients select a suitable pair of segments.
 
 <a id="erdos-1041-lemniscate-newton-flow--sec:constant-factor"></a>
 
@@ -5575,9 +5619,9 @@ This failure concerns the prescribed spoke only. In Section <a href="#erdos-104
 
 </div>
 
-A small critical value leaves room to enlarge a component before reaching the level $`1`$. For a squarefree polynomial, put $`\mu=\min_{f'(c)=0}|f(c)|>0`$ and follow a component from its first merger at level $`\mu`$. If all root connections were long, the roots would have to be far apart in its hyperbolic metric. Packing then forces many roots into the growing component, and a boundary-length estimate forces its area to grow too fast. The available range of logarithmic levels is $`\log(1/\mu)`$.
+For a squarefree polynomial, put $`\mu=\min_{f'(c)=0}|f(c)|>0`$. We follow a component from its first merger at level $`\mu`$ up to level $`1`$. Suppose that no two distinct zeros can be joined by a curve of length less than $`2`$. Conformal length estimates then give a lower bound for the hyperbolic distances between the zeros. A packing inequality bounds their number from below, and a boundary-length estimate converts this bound into a lower bound for the growth of the component’s area. When the interval of logarithmic levels, of length $`\log(1/\mu)`$, is sufficiently large, this contradicts Pólya’s area bound.
 
-The ordinary argument in the companion makes this contradiction quantitative using Pólya’s area bound. It gives the following unformalised criterion, which requires no restriction on root locations.
+The companion gives the ordinary analytic argument and its rational comparison. They yield the following unformalised criterion, with no restriction on the locations of the zeros.
 
 <span id="erdos-1041-lemniscate-newton-flow--res:low-critical-thirteen-twentyfifths" label="res:low-critical-thirteen-twentyfifths"></span> Let $`f`$ be squarefree and monic of degree $`n\ge2`$, and let $`\mu`$ be its least critical-value modulus. If $`\mu\le13/25`$, then two distinct roots are joined inside $`\{|f|<1\}`$ by a rectifiable curve of length strictly less than $`2`$.
 
@@ -5589,7 +5633,7 @@ This assertion has an ordinary analytic argument and an exact rational compariso
 ```
 In every degree the length can be chosen less than $`(5/2)\mu^{1/n}`$.
 
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/1d16f2ddf78e7c4c850246f67bf8ce79b19deb3c/evidence/erdos-1041-lemniscate-newton-flow.md#res-scaled-low-critical">Lean†</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/d93e7408aed0b0c73ad5ea98116c7dc0dce3cf7b/evidence/erdos-1041-lemniscate-newton-flow.md#res-scaled-low-critical">Lean†</a></p>
 
 Lean checks this scaling implication under the named input `LowCriticalThirteenTwentyFifths`, the unformalised assertion in Remark <a href="#erdos-1041-lemniscate-newton-flow--res:low-critical-thirteen-twentyfifths" data-reference-type="ref" data-reference="erdos-1041-lemniscate-newton-flow--res:low-critical-thirteen-twentyfifths">[res:low-critical-thirteen-twentyfifths]</a>.
 
@@ -5603,16 +5647,16 @@ Lean checks this scaling implication under the named input `LowCriticalThirteenT
 
 #### The analytic argument
 
-Suppose that no pair can be connected with length less than $`2`$ in $`\Omega_f`$. At a regular level $`t\in(\mu,1)`$ we take the component $`C_t`$ containing a chosen first merger and write $`a=\operatorname{Area}(C_t)/\pi\le1`$, $`x=\log(t/\mu)`$. Uniformising $`C_t`$ by the disc, the Bergman segment estimate bounds the length between roots at hyperbolic distance $`d`$ by $`\sqrt{2a\log\cosh(d/2)}`$. Our failure assumption therefore forces pairwise distance at least $`D`$, where $`\cosh(D/2)=e^{2/a}`$.
+Suppose that no pair can be connected with length less than $`2`$ in $`\Omega_f`$. At a regular level $`t\in(\mu,1)`$ we take the component $`C_t`$ containing a chosen first merger and write $`a=\operatorname{Area}(C_t)/\pi\le1`$, $`x=\log(t/\mu)`$. Uniformising $`C_t`$ by the disc, the Bergman segment estimate bounds the length between roots at hyperbolic distance $`d`$ by $`\sqrt{2a\log\cosh(d/2)}`$. The assumption on connecting curves therefore forces pairwise distance at least $`D`$, where $`\cosh(D/2)=e^{2/a}`$.
 
-Choose the centre of this uniformisation on a connected set through the first pair in $`K_\mu(f)`$, outside every intrinsic open unit ball centred at a root. Such a point exists: those balls are pairwise disjoint under the failure assumption and cannot cover a connected set containing two roots. If $`d_j`$ are the distances of the roots from this centre, the one-root Bergman estimate and the finite Blaschke product for $`f/t`$ give
+Choose the centre of this uniformisation on a connected set through the first pair in $`K_\mu(f)`$, outside every intrinsic open unit ball centred at a root. Such a point exists: those balls are pairwise disjoint under that assumption and cannot cover a connected set containing two roots. If $`d_j`$ are the distances of the roots from this centre, the one-root Bergman estimate and the finite Blaschke product for $`f/t`$ give
 ``` math
 \lambda(d_j)\le\tfrac12\delta(a),\qquad
  \sum_j\lambda(d_j)\ge x,\qquad
  \lambda(d)=-\log\tanh(d/2),\quad
  \delta(a)=-\log(1-e^{-1/a}).
 ```
-The passage through a first merger, including simultaneous mergers, is part of the analytic input still to be formalised.
+The Blaschke product requires a total contribution of at least $`x`$, while each root contributes at most $`\delta(a)/2`$. This already gives $`k\ge2x/\delta(a)`$. The pairwise separation gives additional information, which the following packing estimate uses to improve this lower bound. The passage through a first merger, including simultaneous mergers, is part of the analytic input still to be formalised.
 
 <div id="erdos-1041-lemniscate-newton-flow--circle-packing-inputs">
 
@@ -5655,9 +5699,9 @@ Equation <a href="#erdos-1041-lemniscate-newton-flow--eq:short-packing" data-re
 ``` math
 X=\frac{635762889599}{10^{12}}.
 ```
-It used $`18`$ area levels, $`126`$ certified weighted inequalities and a maximum step $`1/400`$. To certify $`U`$ on an interval $`[u,v]`$, it bounds the expression by $`\lambda(u)-\sum_i\sigma_i\min(w(u,r_i),w(v,r_i))`$; the tail is bounded directly by $`\lambda`$. Numerical optimisation proposes the weights, while rational inequalities bound the whole half-line. The recorded comparison gives $`(13/25)e^X<0.982000386<1`$. It also gives $`(529/1000)e^X<0.998996547`$, so the ordinary argument supports that sharper threshold as well. Neither threshold is claimed optimal, and this arithmetic does not formalise the analytic reduction.
+It used $`18`$ area levels, $`126`$ certified weighted inequalities and a maximum step $`1/400`$. To certify $`U`$ on an interval $`[u,v]`$, it bounds the expression by $`\lambda(u)-\sum_i\sigma_i\min(w(u,r_i),w(v,r_i))`$; the tail is bounded directly by $`\lambda`$. Numerical optimisation proposes the weights, while rational inequalities bound the whole half-line. Since $`t=\mu e^x`$, the contradiction $`a>1`$ occurs before level $`1`$ provided that $`\mu e^X<1`$. The recorded comparison gives $`(13/25)e^X<0.982000386<1`$. It also gives $`(529/1000)e^X<0.998996547`$, so the ordinary argument supports that sharper threshold as well. Neither threshold is claimed optimal, and this arithmetic does not formalise the analytic reduction.
 
-<span id="erdos-1041-lemniscate-newton-flow--res:constant-factor-path" label="res:constant-factor-path"></span> A related ordinary averaging argument, also unformalised in its analytic construction, gives the following bounds. For a monic polynomial of degree $`n\ge2`$, two zero occurrences can be joined in $`K_{2\mu}(f)`$ with length at most $`(71/10)\mu^{1/n}`$; they are distinct in the squarefree case, and a repeated root gives a constant path. When $`\mu\le1/2`$, the argument gives a path of length at most $`5.7`$ in $`\Omega_f`$. Its complete proof and the component-arity and capacity variants are in the [inverse-ray averaging argument](https://github.com/wcook04/plectis-erdos/blob/main/paper/1041/erdos1041-lemniscate-reasoning-surface.pdf#nameddest=constant-factor-proof).
+<span id="erdos-1041-lemniscate-newton-flow--res:constant-factor-path" label="res:constant-factor-path"></span> A related ordinary averaging argument, also unformalised in its analytic construction, gives the following bounds. For a monic polynomial of degree $`n\ge2`$, two zero occurrences can be joined in $`K_{2\mu}(f)`$ with length at most $`(71/10)\mu^{1/n}`$; they are distinct in the squarefree case, and a repeated root gives a constant path. When $`\mu\le1/2`$, the argument gives a path of length at most $`5.7`$ in $`\Omega_f`$. The proof, together with refinements that retain the number of zeros in the component or its logarithmic capacity, is given in the [inverse-ray averaging argument](https://github.com/wcook04/plectis-erdos/blob/main/paper/1041/erdos1041-lemniscate-reasoning-surface.pdf#nameddest=constant-factor-proof).
 
 <a id="erdos-1041-lemniscate-newton-flow--sec:separation"></a>
 
@@ -5681,7 +5725,7 @@ Put $`p=w_0(1-w_0)`$. Then two distinct roots are joined inside $`\{|f|\le|v|\}`
 \end{equation}
 ```
 
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/1d16f2ddf78e7c4c850246f67bf8ce79b19deb3c/evidence/erdos-1041-lemniscate-newton-flow.md#res-critical-value-separation">Lean†</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/d93e7408aed0b0c73ad5ea98116c7dc0dce3cf7b/evidence/erdos-1041-lemniscate-newton-flow.md#res-critical-value-separation">Lean†</a></p>
 
 Lean assumes `DiscSepBergmanArea`: existence of the square-root connector, its Bergman length bound and the area bound for the two-sheeted component. The complete ordinary argument is in the [companion’s separation proof](https://github.com/wcook04/plectis-erdos/blob/main/paper/1041/erdos1041-lemniscate-reasoning-surface.pdf#nameddest=critical-value-separation-proof).
 
@@ -5693,7 +5737,7 @@ For example, $`f(z)=z^3-3a^2z`$ with $`0<a<1/\sqrt3`$ has zeros $`0,\pm\sqrt3a`$
 ```
 then two roots are joined inside $`\{|f|<1\}`$ by a curve of length strictly below $`2`$. In degree three the branch-centred choice $`w_0=1`$ already works with $`4/3`$ replaced by $`6/5`$.
 
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/1d16f2ddf78e7c4c850246f67bf8ce79b19deb3c/evidence/erdos-1041-lemniscate-newton-flow.md#res-critical-value-thresholds">Lean†</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/d93e7408aed0b0c73ad5ea98116c7dc0dce3cf7b/evidence/erdos-1041-lemniscate-newton-flow.md#res-critical-value-thresholds">Lean†</a></p>
 
 The geometric conclusion assumes the construction in Remark <a href="#erdos-1041-lemniscate-newton-flow--res:critical-value-separation" data-reference-type="ref" data-reference="erdos-1041-lemniscate-newton-flow--res:critical-value-separation">[res:critical-value-separation]</a>. Lean checks the numerical inequalities for $`4/3`$ and $`6/5`$ without that input.
 
@@ -5701,7 +5745,7 @@ The geometric conclusion assumes the construction in Remark <a href="#erdos-104
 
 #### Square roots and component area
 
-Here is the ordinary argument behind the two remarks. Choose $`\alpha^n=v`$ and normalise to $`P(z)=v^{-1}f(c+\alpha z)`$. The component $`U`$ above $`D(w_0,S)`$ containing $`0`$ has degree two, as follows by exhausting with regular discs and applying Riemann–Hurwitz. The square root $`\xi=\sqrt{1-P}`$ then maps $`U`$ biholomorphically onto $`V=\{\xi:|\xi^2-(1-w_0)|<S\}`$, and its inverse maps $`[-1,1]`$ to the proposed connection.
+Here is the ordinary argument behind the two remarks. Choose $`\alpha^n=v`$ and normalise to $`P(z)=v^{-1}f(c+\alpha z)`$. The component $`U`$ above $`D(w_0,S)`$ containing $`0`$ has degree two, as follows by exhausting with regular discs and applying Riemann–Hurwitz. The square root $`\xi=\sqrt{1-P}`$ then maps $`U`$ biholomorphically onto $`V=\{\xi:|\xi^2-(1-w_0)|<S\}`$, and its inverse maps $`[-1,1]`$ to the proposed connection. Along this interval $`P=1-\xi^2\in[0,1]`$, which gives the required containment.
 
 Put $`a=1-w_0`$ and $`p=w_0(1-w_0)`$. The coordinate
 ``` math
@@ -5712,7 +5756,7 @@ sends $`V`$ to the unit disc and $`\xi=\pm1`$ to $`\zeta=\pm q`$, where $`q^2=S/
 L^2\le\frac2\pi\log\frac{S^2+S+p}{S^2-S+p}\,
                     \operatorname{Area}(U).
 ```
-For the remaining area estimate, the companion uses an exterior map of a regular component $`W`$ containing $`k<n`$ roots. Reflecting the $`n-k`$ exterior-root factors into the disc gives a Blaschke product $`B`$ with $`|B(0)|=\operatorname{cap}(\overline W)^n/t`$ and $`|B'|<n`$ on the boundary. Summing reciprocal derivatives over the fibre opposite $`B(0)`$ gives $`(n-k)/n<(1-|B(0)|)/(1+|B(0)|)`$, or equivalently $`\operatorname{cap}(\overline W)^n/t<k/(2n-k)`$. For $`k=2`$, this inequality and Pólya’s area–capacity inequality \[polya1928, printed pp. 280–282\], \[crane, Theorem 6\], followed by exhaustion, give $`\operatorname{Area}(U)\le\pi(S/(n-1))^{2/n}`$. We restore the length scale $`|v|^{1/n}`$ to obtain <a href="#erdos-1041-lemniscate-newton-flow--eq:disk-family-length" data-reference-type="eqref" data-reference="erdos-1041-lemniscate-newton-flow--eq:disk-family-length">[eq:disk-family-length]</a>. Dubinin’s relative area inequality \[dubinin, Theorem 1\] has a different full-covering hypothesis; the absolute component estimate is needed here.
+The remaining estimate uses the fact that $`U`$ contains only two of the $`n`$ roots. An area bound for the whole lemniscate would lose this information. The companion therefore first treats a regular component $`W`$ containing $`k<n`$ roots, using an exterior map. Reflecting the $`n-k`$ exterior-root factors into the disc gives a Blaschke product $`B`$ with $`|B(0)|=\operatorname{cap}(\overline W)^n/t`$ and $`|B'|<n`$ on the boundary. Summing reciprocal derivatives over the fibre opposite $`B(0)`$ gives $`(n-k)/n<(1-|B(0)|)/(1+|B(0)|)`$, or equivalently $`\operatorname{cap}(\overline W)^n/t<k/(2n-k)`$. For $`k=2`$, this inequality and Pólya’s area–capacity inequality \[polya1928, printed pp. 280–282\], \[crane, Theorem 6\], followed by exhaustion, give $`\operatorname{Area}(U)\le\pi(S/(n-1))^{2/n}`$. We restore the length scale $`|v|^{1/n}`$ to obtain <a href="#erdos-1041-lemniscate-newton-flow--eq:disk-family-length" data-reference-type="eqref" data-reference="erdos-1041-lemniscate-newton-flow--eq:disk-family-length">[eq:disk-family-length]</a>. Dubinin’s relative area inequality \[dubinin, Theorem 1\] has a different full-covering hypothesis; the absolute component estimate is needed here.
 
 <span id="erdos-1041-lemniscate-newton-flow--res:separation-parent" label="res:separation-parent"></span> For the conditional threshold, decrease $`S`$ to $`4/3`$. Since $`p\ge0`$ and $`n\ge3`$, the logarithm is at most $`\log7<2`$ and $`(S/(n-1))^{2/n}\le1`$, giving $`L<2|v|^{1/n}<2`$. For $`n=3,w_0=1,S=6/5`$, use $`(3/5)^{2/3}\log11<2`$. The chosen critical value must be nonzero and have modulus less than one. Root locations by themselves do not isolate it from the others. <span id="erdos-1041-lemniscate-newton-flow--bdry:critical-value-separation" label="bdry:critical-value-separation"></span>
 
@@ -5730,7 +5774,7 @@ For the remaining area estimate, the companion uses an exterior map of a regular
 
 <span id="erdos-1041-lemniscate-newton-flow--sec:exact-obstructions" label="sec:exact-obstructions"></span> <span id="erdos-1041-lemniscate-newton-flow--res:critical-proximity" label="res:critical-proximity"></span> At a non-root critical point, the balance $`\sum_j(c-z_j)^{-1}=0`$ bounds the ratio of the two smallest root distances by $`n-1`$. Comparing their sum with the geometric mean of all $`n`$ distances then gives a bound of $`2r`$, where $`r^n=\prod_j|c-z_j|`$.
 
-<span id="erdos-1041-lemniscate-newton-flow--res:two-nearest-roots" label="res:two-nearest-roots"></span> The root-disc hypothesis gives a different estimate: at every non-root critical point the sum of the two nearest-root distances is strictly less than $`2`$. Both arguments and their precise statements are in the companion’s [root-distance estimates](https://github.com/wcook04/plectis-erdos/blob/main/paper/1041/erdos1041-lemniscate-reasoning-surface.pdf#nameddest=root-distance-proofs). The nearest pair is chosen among all roots of $`f`$. It need not be the pair in the two-root component of the degree-seven example, where containment restricts which pair can be joined.
+<span id="erdos-1041-lemniscate-newton-flow--res:two-nearest-roots" label="res:two-nearest-roots"></span> When all zeros lie in the open unit disc, a different estimate holds: at every non-root critical point the sum of the distances to the two nearest zeros is strictly less than $`2`$. Both arguments and their precise statements are in the companion’s [root-distance estimates](https://github.com/wcook04/plectis-erdos/blob/main/paper/1041/erdos1041-lemniscate-reasoning-surface.pdf#nameddest=root-distance-proofs). The nearest pair is chosen among all roots of $`f`$. It need not be the pair in the two-root component of the degree-seven example, where containment restricts which pair can be joined.
 
 <span id="erdos-1041-lemniscate-newton-flow--res:straight-no-go" label="res:straight-no-go"></span> These distance estimates alone do not imply containment. For the quintic
 ``` math
@@ -5743,13 +5787,13 @@ all roots lie in the disc and $`0`$ is a non-root critical point, but its unique
 
 <span id="erdos-1041-lemniscate-newton-flow--res:arity-not-capacity" label="res:arity-not-capacity"></span> A further cubic has two roots at its first merger but normalised component capacity one at level $`2\mu`$. The normalisation uses the standard identity $`\operatorname{cap}(K_t(f))=t^{1/n}`$ \[ransford1995, Theorem 5.2.5 and p. 153\].
 
-<span id="erdos-1041-lemniscate-newton-flow--res:one-root-gamma-false" label="res:one-root-gamma-false"></span> Finally, $`z^8-(3/2)z`$ has a one-root unit-level component with perimeter larger than the proposed constant $`\Gamma(1/4)^2/(2\sqrt\pi)`$. These examples, with full calculations, appear in [the companion’s component examples](https://github.com/wcook04/plectis-erdos/blob/main/paper/1041/erdos1041-lemniscate-reasoning-surface.pdf#nameddest=component-counterexamples). The last example has no root-disc restriction and disproves that specific perimeter constant. The existence of a uniform perimeter constant remains a separate question. Although \[revision2026, Proposition 2\] reports a Runge construction of unbounded one-root perimeters, its proof is unavailable and we do not use it.
+<span id="erdos-1041-lemniscate-newton-flow--res:one-root-gamma-false" label="res:one-root-gamma-false"></span> Finally, $`z^8-(3/2)z`$ has a one-root unit-level component with perimeter larger than the proposed constant $`\Gamma(1/4)^2/(2\sqrt\pi)`$. These examples, with full calculations, appear in [the companion’s component examples](https://github.com/wcook04/plectis-erdos/blob/main/paper/1041/erdos1041-lemniscate-reasoning-surface.pdf#nameddest=component-counterexamples). The last example imposes no restriction on root locations and disproves that specific perimeter constant. The existence of a uniform perimeter constant remains a separate question. Although \[revision2026, Proposition 2\] reports a Runge construction of unbounded one-root perimeters, its proof is unavailable and we do not use it.
 
 <a id="erdos-1041-lemniscate-newton-flow--sec:solved-families"></a>
 
 #### Sparse families and binomial chords
 
-<span id="erdos-1041-lemniscate-newton-flow--sec:binomial" label="sec:binomial"></span> <span id="erdos-1041-lemniscate-newton-flow--res:cubic-fibres" label="res:cubic-fibres"></span> Suppose that all zeros lie in the open unit disc. The radial argument extends to $`P((z-h)^q)`$ when $`q\ge2`$ and $`P`$ is a monic cubic: if there are two distinct zeros, some such pair has a two-segment connector.
+<span id="erdos-1041-lemniscate-newton-flow--sec:binomial" label="sec:binomial"></span> <span id="erdos-1041-lemniscate-newton-flow--res:cubic-fibres" label="res:cubic-fibres"></span> Suppose that all zeros lie in the open unit disc. The radial argument extends to $`P((z-h)^q)`$ when $`q\ge2`$ and $`P`$ is a monic cubic: if there are two distinct zeros, some such pair can be joined by a path consisting of two segments.
 
 <span id="erdos-1041-lemniscate-newton-flow--res:primitive-quintic" label="res:primitive-quintic"></span> For $`z^5+az^4+bz+c`$, a harmonic-moment identity selects two root indices with $`|bz_j+c|<1`$, after which Abel summation controls the whole segments. The companion gives the [cubic-fibre proof](https://github.com/wcook04/plectis-erdos/blob/main/paper/1041/erdos1041-lemniscate-reasoning-surface.pdf#nameddest=cubic-fibre-proof) and the [quintic selection argument](https://github.com/wcook04/plectis-erdos/blob/main/paper/1041/erdos1041-lemniscate-reasoning-surface.pdf#nameddest=quintic-proof), including repeated root occurrences.
 
@@ -5769,7 +5813,7 @@ The constant is sharp, with equality for the appropriately scaled zeros of $`T_n
 
 #### Critical-value means
 
-<span id="erdos-1041-lemniscate-newton-flow--res:fp-weighted-all-degree" label="res:fp-weighted-all-degree"></span> A weighted Poisson identity gives another consequence of the root-disc hypothesis. For $`c_j\in\overline{\mathbb D}`$ and positive weights of sum one, set $`G(z)=\prod_j|1-\bar c_jz|^{w_j}`$. Then $`\sum_jw_jG(c_j)^2\le1`$, with equality only when all $`c_j=0`$. For interior points, we form the analytic product $`g(z)=1+\sum_{\nu\ge1}a_\nu z^\nu`$ with $`|g|=G`$. The weighted Poisson kernel is $`P=1-2\operatorname{Re}(\zeta g'/g)`$, and
+<span id="erdos-1041-lemniscate-newton-flow--res:fp-weighted-all-degree" label="res:fp-weighted-all-degree"></span> A weighted Poisson identity gives an estimate for critical values when the zeros lie in a disc. For $`c_j\in\overline{\mathbb D}`$ and positive weights of sum one, set $`G(z)=\prod_j|1-\bar c_jz|^{w_j}`$. Then $`\sum_jw_jG(c_j)^2\le1`$, with equality only when all $`c_j=0`$. For interior points, we form the analytic product $`g(z)=1+\sum_{\nu\ge1}a_\nu z^\nu`$ with $`|g|=G`$. The weighted Poisson kernel is $`P=1-2\operatorname{Re}(\zeta g'/g)`$, and
 ``` math
 \sum_jw_jG(c_j)^2\le\int |g|^2P\,dm
           =1-\sum_{\nu\ge1}(2\nu-1)|a_\nu|^2.
@@ -5783,7 +5827,7 @@ Radial contraction gives the boundary case.
 ```
 for the same enclosing disc. Equality is attained by $`(z-h)^n-\lambda`$ with $`|\lambda|=R^n`$. The companion supplies the [weighted identity, reflected-derivative comparison and equality analysis](https://github.com/wcook04/plectis-erdos/blob/main/paper/1041/erdos1041-lemniscate-reasoning-surface.pdf#nameddest=weighted-poisson-proof).
 
-The quadratic specialisation implies Dubinin’s sharp critical-value product bound by AM–GM \[dubinin2006critical, Theorem 2\]. With a zero prescribed at the disc centre, his Theorem 3 gives a different, sharper product estimate and credits earlier work of Tischler \[tischler1989, p. 444, as discussed by Dubinin\]. The corresponding marked-zero positive-moment question in \[revision2026\] remains unresolved here. To turn any of these mean bounds into a short-path theorem, one would still have to select a pair of roots and control a curve joining them inside the lemniscate.
+Applying AM–GM to the quadratic specialisation gives Dubinin’s sharp critical-value product bound \[dubinin2006critical, Theorem 2\]. With a zero prescribed at the disc centre, his Theorem 3 gives a different, sharper product estimate and credits earlier work of Tischler \[tischler1989, p. 444, as discussed by Dubinin\]. The corresponding marked-zero positive-moment question in \[revision2026\] remains unresolved here. To turn any of these mean bounds into a short-path theorem, one would still have to select a pair of roots and control a curve joining them inside the lemniscate.
 
 <a id="erdos-1041-lemniscate-newton-flow--sec:orlicz"></a>
 
@@ -5810,7 +5854,7 @@ Substituting $`q=e^{-kt}`$ gives the identity. Since the integrand increases fro
 
 <span id="erdos-1041-lemniscate-newton-flow--res:ray" label="res:ray"></span> For a finite interval $`[a,b]`$, assume the Newton equation only for $`a<t<b`$ and continuity of $`f(z(t))`$ up to both endpoints. The interior identity then extends to $`f(z(b))=e^{a-b}f(z(a))`$, without evaluating $`f/f'`$ at an endpoint. Nonzero endpoint values therefore lie on the same positive ray. Critical values with distinct arguments exclude such a connection; distinct moduli are insufficient.
 
-<span id="erdos-1041-lemniscate-newton-flow--res:locus" label="res:locus"></span> A generic constant perturbation separates rays when the original critical values are distinct, but cannot split equal values. The companion records an unformalised argument that a linear perturbation can do so generically. Neither qualitative assertion supplies a numerical perturbation bound that preserves a near-extremal path inequality. The [forbidden-ray locus calculation](https://github.com/wcook04/plectis-erdos/blob/main/paper/1041/erdos1041-lemniscate-reasoning-surface.pdf#nameddest=argument-perturbation-proof) and the local logarithmic expansion, with remainder $`nq^{N+1}/((N+1)(1-q))`$ for $`q<1`$, specify the available control. At the nearest-root radius that expansion is inapplicable.
+<span id="erdos-1041-lemniscate-newton-flow--res:locus" label="res:locus"></span> A generic constant perturbation separates rays when the original critical values are distinct, but cannot split equal values. The companion records an unformalised argument that a linear perturbation can do so generically. Neither qualitative assertion supplies a numerical perturbation bound that preserves a near-extremal path inequality. The [forbidden-ray locus calculation](https://github.com/wcook04/plectis-erdos/blob/main/paper/1041/erdos1041-lemniscate-reasoning-surface.pdf#nameddest=argument-perturbation-proof) and the local logarithmic expansion, with remainder $`nq^{N+1}/((N+1)(1-q))`$ for $`q<1`$, specify the available control. The expansion is inapplicable at the distance to the nearest zero.
 
 <a id="erdos-1041-lemniscate-newton-flow--res:component-local-covering"></a>
 
@@ -5846,7 +5890,7 @@ Eremenko and Hayman’s bound $`\mathcal H^1\{|p|=1\}<9.173\deg p`$ \[eremenko-h
 
 The supplied Lean sources prove the fixed counterexample for preconnected sets, the negation and `answer(False)` forms of the Formal Conjectures statement, and the total-variation formulation. They also prove the trinomial theorem and the other formally supported estimates identified in the companion’s [verification notes](https://github.com/wcook04/plectis-erdos/blob/main/paper/1041/erdos1041-lemniscate-reasoning-surface.pdf#nameddest=verification-notes). No fresh Lean build or independent human review is reported here, including review of the correspondence with the 1958 wording. The recorded full rational replay on 29 September 2026 reproduced the stopping time and $`126`$ dual certificates; those are the computational results cited here. The analytic assertions in Remarks <a href="#erdos-1041-lemniscate-newton-flow--res:low-critical-thirteen-twentyfifths" data-reference-type="ref" data-reference="erdos-1041-lemniscate-newton-flow--res:low-critical-thirteen-twentyfifths">[res:low-critical-thirteen-twentyfifths]</a>–<a href="#erdos-1041-lemniscate-newton-flow--res:critical-value-thresholds" data-reference-type="ref" data-reference="erdos-1041-lemniscate-newton-flow--res:critical-value-thresholds">[res:critical-value-thresholds]</a>, the fourth-power mean and the later topological and compactness arguments remain outside the formal conclusions. The links beside each statement and in the margin retain the original statement identifiers and their conditional dependencies; they do not promote these remarks to unconditional Lean theorems.
 
-*Formal proofs.* A result with a kernel-checked Lean proof carries links beside its heading and in the margin; both open the same evidence. *Lean* opens the proof: the declaration itself when one declaration states the whole result, otherwise the list of declarations that together state it. Inline citations to individual declarations elsewhere may identify ingredients of a proof. *Comparator* opens the recorded comparison, in which the same statement, written again from Mathlib alone in a separate repository, was compared with our proof by Lean’s Comparator tool, allowing only the three standard axioms. *Comparator pending* means that the complete statement has no recorded comparison yet. A dagger on the Lean mark means that the Lean proof assumes an input named just below the result. A result without a mark has no Lean proof of its whole statement; what is checked is said below it. The [evidence record](https://github.com/wcook04/plectis-erdos/blob/1d16f2ddf78e7c4c850246f67bf8ce79b19deb3c/evidence/erdos-1041-lemniscate-newton-flow.md) gives every declaration, version and check. Comparator checks statements, axioms and kernel acceptance; it does not establish novelty or peer review. These checks show that the stated propositions are proved; whether they are the right propositions is a question the reader can settle by comparing them with the text.
+*Formal proofs.* A result with a kernel-checked Lean proof carries links beside its heading and in the margin; both open the same evidence. *Lean* opens the proof: the declaration itself when one declaration states the whole result, otherwise the list of declarations that together state it. Inline citations to individual declarations elsewhere may identify ingredients of a proof. *Comparator* opens the recorded comparison, in which the same statement, written again from Mathlib alone in a separate repository, was compared with our proof by Lean’s Comparator tool, allowing only the three standard axioms. *Comparator pending* means that the complete statement has no recorded comparison yet. A dagger on the Lean mark means that the Lean proof assumes an input named just below the result. A result without a mark has no Lean proof of its whole statement; what is checked is said below it. The [evidence record](https://github.com/wcook04/plectis-erdos/blob/d93e7408aed0b0c73ad5ea98116c7dc0dce3cf7b/evidence/erdos-1041-lemniscate-newton-flow.md) gives every declaration, version and check. Comparator checks statements, axioms and kernel acceptance; it does not establish novelty or peer review. These checks show that the stated propositions are proved; whether they are the right propositions is a question the reader can settle by comparing them with the text.
 
 <a id="erdos-1041-lemniscate-newton-flow--acknowledgements"></a>
 
@@ -5874,7 +5918,7 @@ I thank Wouter van Doorn for advice on mathematical exposition, in particular on
 
 </div>
 
-We determine the fixed-base asymptotic of Zudilin’s normalised Hankel determinants, including the constant and the factor $`N^{-8F(1/q)}`$, where $`F(t)=\sum_{n\ge1}(t^n-1)^{-1}`$. The proof uses positive geometric moments and a rank-uniform partition estimate. Separately, we extend the rational-base irrationality region for $`F`$ by calculating the denominator cost of Zudilin’s 2004 forms. The region includes every positive integral power of $`31/4`$, but excludes $`3/2`$.
+We determine the fixed-base asymptotic of Zudilin’s normalised Hankel determinants, including the constant and the factor $`N^{-8F(1/q)}`$, where $`F(t)=\sum_{n\ge1}(t^n-1)^{-1}`$. The proof uses positive geometric moments and a bound on the partition sum independent of $`N`$. Separately, we extend the rational-base irrationality region for $`F`$ by calculating the degrees after cancellation in Zudilin’s 2004 forms. The region includes every positive integral power of $`31/4`$, but excludes $`3/2`$.
 
 <a id="erdos-1049-rational-base-lambert--sec:problem"></a>
 
@@ -5892,7 +5936,7 @@ For each fixed real $`q\in(0,1)`$, we determine the asymptotic size of the Hanke
 The sums converge for $`0<q<1`$. They also define formal series, since the $`t`$th summand has $`q`$-order $`(m+1)t`$.
 
 <div id="erdos-1049-rational-base-lambert--res:sharp-fixed-base" class="theorem">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos1049/PaperCompleteR21/SharpFixedBaseShort.lean#L53">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/1d16f2ddf78e7c4c850246f67bf8ce79b19deb3c/evidence/erdos-1049-rational-base-lambert.md#res-sharp-fixed-base-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos1049/PaperCompleteR21/SharpFixedBaseShort.lean#L53">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d93e7408aed0b0c73ad5ea98116c7dc0dce3cf7b/evidence/erdos-1049-rational-base-lambert.md#res-sharp-fixed-base-comparator">Comparator</a></p>
 
 **Theorem 1** (the size of $`V_N^*`$ at a fixed base). *Fix $`0<q<1`$ and write $`P=(q;q)_\infty`$, $`B_N=N(N-1)(2N-1)/6`$ and $`C_N=(N!)^2(N+1)!/2^N`$. There is a $`K(q)>0`$ with
 ``` math
@@ -5902,11 +5946,11 @@ V_N^*(q)\sim K(q)\,C_Nq^{B_N}P^{2N}N^{-8F(1/q)}
 
 </div>
 
-The constant $`K(q)`$ is the convergent product in <a href="#erdos-1049-rational-base-lambert--eq:fixed-constant" data-reference-type="eqref" data-reference="erdos-1049-rational-base-lambert--eq:fixed-constant">[eq:fixed-constant]</a>. Zudilin proved $`\operatorname{ord}_q V_N^*\ge B_N`$ and the estimate $`|V_N^*|\le q^{N^3/3}\exp(O_q(N^2))`$ \[zudilin2016, Lemma 1 and §4\]. We obtain the factorial and exponential factors concealed by this estimate, as well as its power of $`N`$. We also recover the exact first formal term $`C_Nq^{B_N}`$. These are different limiting questions: multiplying by $`(1-q)^{N^3}`$ preserves that first term and changes the fixed-base logarithm by a cubic quantity. No uniformity as $`q\to1`$ is asserted.
+The constant $`K(q)`$ is the convergent product in <a href="#erdos-1049-rational-base-lambert--eq:fixed-constant" data-reference-type="eqref" data-reference="erdos-1049-rational-base-lambert--eq:fixed-constant">[eq:fixed-constant]</a>. Zudilin proved $`\operatorname{ord}_q V_N^*\ge B_N`$ and the estimate $`|V_N^*|\le q^{N^3/3}\exp(O_q(N^2))`$ \[zudilin2016, Lemma 1 and §4\]. Theorem <a href="#erdos-1049-rational-base-lambert--res:sharp-fixed-base" data-reference-type="ref" data-reference="erdos-1049-rational-base-lambert--res:sharp-fixed-base">1</a> determines the factorial, exponential and power factors contained in this estimate. We also recover the exact first formal term $`C_Nq^{B_N}`$. These are different limiting questions: multiplying by $`(1-q)^{N^3}`$ preserves that first term and changes the fixed-base logarithm by a cubic quantity. No uniformity as $`q\to1`$ is asserted.
 
-The determinant becomes tractable when we write $`v_m^*`$ as a positive moment on $`1,q,q^2,\ldots`$. Heine’s identity expresses it as a sum over choices of $`N`$ nodes, with a squared Vandermonde for each choice \[zudilin2017det, §2, (2)–(5)\]. The first $`N`$ nodes give the scale $`q^{B_N}P^{2N}\prod_{k<N}a_k`$. Other choices still contribute at that scale: even shifting the last node by one place gives a term of comparable size. Partitions record these displacements. For a fixed partition, the weight ratios tend to $`1`$, so its limiting contribution is the same as for constant weights, where a Cauchy determinant gives an exact answer. The main estimate makes this comparison uniform over all partitions.
+We represent $`v_m^*`$ as $`\sum_{k\ge0}a_kq^{(m+1)k}`$ with $`a_k>0`$. These are the moments of a positive measure supported on $`1,q,q^2,\ldots`$. Heine’s identity then expresses the determinant as a sum over choices of $`N`$ nodes, with a squared Vandermonde factor for each choice \[zudilin2017det, §2, (2)–(5)\]. The contribution of the first $`N`$ nodes has size $`q^{B_N}P^{2N}\prod_{k<N}a_k`$ up to a positive limiting factor. Moving the last node one place still gives a contribution of comparable size, so we must sum over displaced tuples. We index them by partitions. For each fixed partition, the weight ratios tend to $`1`$; a summable bound independent of $`N`$ then permits passage to the limit in the sum. The resulting limit is the same as for constant weights, for which Cauchy’s determinant formula gives an exact evaluation.
 
-The remaining calculation concerns the weights themselves. They are a product of two finite convolution sums, of lengths two and three. Their first relative corrections are $`-2F(1/q)/(k+1)`$ and $`-6F(1/q)/(k+2)`$. Adding these corrections and then multiplying the weights over $`k<N`$ gives the power $`N^{-8F(1/q)}`$. Theorem <a href="#erdos-1049-rational-base-lambert--thm:geometric-moments" data-reference-type="ref" data-reference="erdos-1049-rational-base-lambert--thm:geometric-moments">2</a> isolates the determinant argument from this coefficient calculation; it also evaluates the determinant with entries $`(1-q^{i+j+1})^{-2}`$.
+The remaining calculation concerns the weights themselves. Their factorisation involves a two-fold and a three-fold convolution of the sequence $`1/(q;q)_k`$. Their first relative corrections are $`-2F(1/q)/(k+1)`$ and $`-6F(1/q)/(k+2)`$. Adding these corrections and then multiplying the weights over $`k<N`$ gives the power $`N^{-8F(1/q)}`$. Theorem <a href="#erdos-1049-rational-base-lambert--thm:geometric-moments" data-reference-type="ref" data-reference="erdos-1049-rational-base-lambert--thm:geometric-moments">2</a> isolates the determinant argument from this coefficient calculation; it also evaluates the determinant with entries $`(1-q^{i+j+1})^{-2}`$.
 
 Chowla’s conjecture, recorded by Erdős \[erdos1988, p. 102\], asks whether $`F(t)`$ is irrational for every rational $`t>1`$. This is a related arithmetic question, and the fixed-base asymptotic alone does not answer it. In Section <a href="#erdos-1049-rational-base-lambert--sec:rational-base-irrationality" data-reference-type="ref" data-reference="erdos-1049-rational-base-lambert--sec:rational-base-irrationality">4</a> we use the different 2004 construction \[zudilin2004, §5\] to prove irrationality for coprime $`a>b\ge1`$ satisfying
 ``` math
@@ -5950,7 +5994,7 @@ Indeed, $`\sum d|\log(1-q^d)|<\infty`$, and the logarithm of the second product 
  D_N^{(0)}\sim\mathcal M(q)^3q^{B_N}P^{2N}.
 \end{equation}
 ```
-The next theorem shows that positive weights satisfying the two shift conditions below alter this answer only by their first $`N`$ factors. Its second hypothesis controls large displacements of the nodes; its first says that a fixed displacement eventually has negligible effect on a weight. Both hypotheses allow $`a_k=(k+1)^s`$ for every real $`s`$.
+Under the following hypotheses, replacing the constant weights by $`a_k`$ multiplies the asymptotic by $`\prod_{k<N}a_k`$. The ratio limit controls each fixed displacement of a node, while the polynomial bound controls the sum over all displacements. The power weights $`a_k=(k+1)^s`$, with $`s\in\mathbb R`$, satisfy both conditions.
 
 <div id="erdos-1049-rational-base-lambert--thm:geometric-moments" class="theorem">
 <p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos1049/PaperCompleteR21/GeometricUniversality.lean#L1324">Lean</a></p>
@@ -6006,9 +6050,9 @@ The tuple $`k_i=i`$ contributes $`q^{B_N}\Delta_N\prod_{i<N}a_i`$. It does not a
  \longrightarrow\frac{q}{(1-q)^2}.
 \end{equation}
 ```
-Only pairs involving the moved node change, so the product telescopes. At $`q=1/2`$ the limiting ratio is $`2`$. We must therefore retain the displaced tuples, even at large rank.
+Only pairs involving the moved node change, so the product telescopes. At $`q=1/2`$ the limiting ratio is $`2`$: the displaced tuple contributes twice as much asymptotically as $`(0,1,\ldots,N-1)`$.
 
-Subtracting the baseline tuple gives shifts $`\lambda_i=k_i-i`$. They are nonnegative and weakly increasing, since $`k_{i+1}\ge k_i+1`$. Reversing them gives a partition. For example, at rank four,
+Subtracting $`(0,1,\ldots,N-1)`$ gives the shifts $`\lambda_i=k_i-i`$. Since $`k_{i+1}\ge k_i+1`$, these are nonnegative and weakly increasing; reversing their order gives a partition. For $`N=4`$, for example,
 ``` math
 \underbrace{(0,1,3,5)}_{(k_i)}
  \longmapsto\underbrace{(0,0,1,2)}_{(\lambda_i)}
@@ -6026,11 +6070,23 @@ In general, put $`\mu_j=\lambda_{N-j}`$ for $`1\le j\le N`$, so that $`\mu_1\ge\
 \end{split}
 \end{equation}
 ```
-The exponent $`2j-1`$ has a direct meaning. The $`j`$th index from the right contributes once through its mass $`q^{k_i}`$ and twice through each of its $`j-1`$ pairs with later indices in the squared Vandermonde. This gives $`1+2(j-1)`$.
+The $`j`$th index from the right contributes once through $`q^{k_i}`$ and twice through each of its $`j-1`$ pairs with later indices in the squared Vandermonde. Its displacement therefore has exponent $`1+2(j-1)=2j-1`$.
 
-Set $`W_N(\mu)=0`$ when $`\mu`$ has more than $`N`$ positive parts. The sum now has an index set independent of $`N`$. A fixed partition shifts only the last indices of the baseline tuple: $`(2,1)`$ shifts its last two indices, whatever the rank $`N\ge2`$. These indices tend to infinity with $`N`$, so the fixed-shift hypothesis removes the weights from each limiting summand. The remaining issue is the total contribution of partitions with many or large parts. We use the polynomial bound for this step.
+Set $`W_N(\mu)=0`$ when $`\mu`$ has more than $`N`$ positive parts, so that every sum has the same index set. Fix a partition with $`\ell`$ positive parts. It affects only the last $`\ell`$ indices of $`(0,1,\ldots,N-1)`$: for instance, $`(2,1)`$ affects the last two for every $`N\ge2`$. Those indices tend to infinity, so the weight ratios in <a href="#erdos-1049-rational-base-lambert--eq:partition-summand" data-reference-type="eqref" data-reference="erdos-1049-rational-base-lambert--eq:partition-summand">[eq:partition-summand]</a> tend to $`1`$ by the fixed-shift hypothesis.
 
-For a partition of length $`\ell`$, only the factors with $`j\le\ell`$ can differ from $`1`$. For each such $`j`$, the denominator product in the Vandermonde quotient is at least $`P`$, and its numerator product is at most $`1`$. Consequently
+The Vandermonde quotient still contains a growing number of factors, but its dependence on $`N`$ telescopes. The factors with $`j<k\le\ell`$ are fixed, and those with $`j>\ell`$ equal $`1`$. For $`N\ge\ell`$ and each $`j\le\ell`$, the remaining factors satisfy
+``` math
+\begin{equation}
+\label{eq:partition-tail}
+ \prod_{k=\ell+1}^{N}
+ \frac{1-q^{k-j+\mu_j}}{1-q^{k-j}}
+ =\frac{(q^{N+1-j};q)_{\mu_j}}{(q^{\ell+1-j};q)_{\mu_j}}
+ \longrightarrow\frac1{(q^{\ell+1-j};q)_{\mu_j}}.
+\end{equation}
+```
+Thus each $`W_N(\mu)`$ has the same limit as for constant weights.
+
+To pass this limit through the sum over partitions, we need a bound independent of $`N`$ that remains summable as both the number and size of the parts grow. Only factors with $`j\le\ell`$ can differ from $`1`$. For each such $`j`$, the denominator product in the Vandermonde quotient is at least $`P`$, and its numerator product is at most $`1`$. Together with the polynomial shift bound, this gives
 ``` math
 W_N(\mu)\le(CP^{-2})^\ell
  \prod_{j=1}^\ell(1+\mu_j)^\kappa q^{(2j-1)\mu_j}.
@@ -6044,13 +6100,13 @@ Let $`A=\sum_{u\ge1}(1+u)^\kappa q^{u-1}<\infty`$. Dropping the ordering of the 
  &\le(CP^{-2}A)^\ell q^{\ell^2}.
 \end{align*}
 ```
-The last inequality follows from $`q^{(2j-1)u}\le q^{2j-1}q^{u-1}`$ and $`1+3+\cdots+(2\ell-1)=\ell^2`$. Thus the cost of having $`\ell`$ positive parts gives a factor $`q^{\ell^2}`$, and summing over $`\ell`$ gives a finite bound, uniform in the determinant rank.
+Here $`q^{(2j-1)u}\le q^{2j-1}q^{u-1}`$ and $`1+3+\cdots+(2\ell-1)=\ell^2`$. Since $`q<1`$, the bound $`(CP^{-2}A)^\ell q^{\ell^2}`$ is summable over $`\ell`$, independently of $`N`$.
 
-For a fixed partition of length $`\ell`$, the shifts $`\mu_j`$ are fixed and the indices $`N-j`$ tend to infinity for $`j\le\ell`$. Hence all the weight ratios in <a href="#erdos-1049-rational-base-lambert--eq:partition-summand" data-reference-type="eqref" data-reference="erdos-1049-rational-base-lambert--eq:partition-summand">[eq:partition-summand]</a> tend to $`1`$. Its Vandermonde quotient also converges: there are only finitely many nontrivial first indices, and the logarithms of the remaining factors have geometric tails. Dominated convergence shows that $`\sum_\mu W_N(\mu)`$ has the same limit as for $`a_k=1`$. This common limit is positive, since the empty partition contributes $`1`$. Restoring the reference-tuple factors, we obtain
+Dominated convergence now shows that $`\sum_\mu W_N(\mu)`$ has the same limit as for $`a_k=1`$. This common limit is positive, since the empty partition contributes $`1`$. Restoring the contribution of $`(0,1,\ldots,N-1)`$ gives
 ``` math
 \frac{D_N}{D_N^{(0)}\prod_{k<N}a_k}\longrightarrow1.
 ```
-The model asymptotic <a href="#erdos-1049-rational-base-lambert--eq:cauchy-model-limit" data-reference-type="eqref" data-reference="erdos-1049-rational-base-lambert--eq:cauchy-model-limit">[eq:cauchy-model-limit]</a> now proves the theorem. The comparison explains why the normalised limit retains the geometric spacing of the nodes but loses the individual weights. ◻
+Combining this limit with <a href="#erdos-1049-rational-base-lambert--eq:cauchy-model-limit" data-reference-type="eqref" data-reference="erdos-1049-rational-base-lambert--eq:cauchy-model-limit">[eq:cauchy-model-limit]</a> proves the theorem. ◻
 
 </div>
 
@@ -6081,7 +6137,7 @@ These identities hold formally in $`\mathbb{Z}[[q,w]]`$ and, for fixed $`0<q<1`$
 
 #### Positive weights
 
-For $`r\ge1`$ and $`k\ge0`$ define the finite sum
+For $`r\ge1`$ and $`k\ge0`$, set
 ``` math
 R_k^{(r)}(q)=\sum_{n_1+\cdots+n_r=k}
               \frac{(q;q)_k}{\prod_{j=1}^r(q;q)_{n_j}},
@@ -6092,8 +6148,10 @@ c_k:=R_k^{(2)}(0)R_k^{(3)}(0)=\frac{(k+1)^2(k+2)}2,
  \qquad \prod_{k<N}c_k=C_N.
 ```
 
+<div class="samepage">
+
 <div id="erdos-1049-rational-base-lambert--prop:weight-factorisation" class="proposition">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos1049/PaperCompleteR21/RogersFactorisationAnalytic.lean#L1312">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/1d16f2ddf78e7c4c850246f67bf8ce79b19deb3c/evidence/erdos-1049-rational-base-lambert.md#prop-weight-factorisation-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos1049/PaperCompleteR21/RogersFactorisationAnalytic.lean#L1312">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d93e7408aed0b0c73ad5ea98116c7dc0dce3cf7b/evidence/erdos-1049-rational-base-lambert.md#prop-weight-factorisation-comparator">Comparator</a></p>
 
 **Proposition 3** (the positive moment weights). *For every $`k\ge0`$,
 ``` math
@@ -6107,9 +6165,11 @@ P^5c_k\le a_k\le P^{-1}c_k,
 
 </div>
 
+</div>
+
 <div class="proof">
 
-*Proof.* We use the Gaussian binomial coefficients $`\genfrac{[}{]}{0pt}{}{n}{j}_q=(q;q)_n/((q;q)_j(q;q)_{n-j})`$ for $`0\le j\le n`$, and put $`\mathcal E(z)=(z;q)_\infty^{-1}`$. Euler’s expansion gives $`\mathcal E(z)^r=\sum_{n\ge0}R_n^{(r)}z^n/(q;q)_n`$. To obtain the product $`R_k^{(2)}R_k^{(3)}`$, we need to shift the coefficients of $`\mathcal E^3`$ and then sum over all splittings of the index. The operator $`\partial_qf(z)=(f(z)-f(qz))/z`$ does this without introducing extra factorials: $`\partial_qz^j=(1-q^j)z^{j-1}`$ cancels the last factor of $`(q;q)_j`$. In particular,
+*Proof.* We use the Gaussian binomial coefficients $`\genfrac{[}{]}{0pt}{}{n}{j}_q=(q;q)_n/((q;q)_j(q;q)_{n-j})`$ for $`0\le j\le n`$, and put $`\mathcal E(z)=(z;q)_\infty^{-1}`$. Euler’s expansion gives $`\mathcal E(z)^r=\sum_{n\ge0}R_n^{(r)}z^n/(q;q)_n`$. To obtain $`R_k^{(2)}R_k^{(3)}`$, we shift the coefficients of $`\mathcal E^3`$ and sum over decompositions of the index. The unnormalised $`q`$-difference operator $`\partial_qf(z)=(f(z)-f(qz))/z`$ is convenient because $`\partial_qz^j=(1-q^j)z^{j-1}`$ cancels the last factor of $`(q;q)_j`$. In particular,
 ``` math
 \partial_q\mathcal E=\mathcal E,\qquad
  \partial_q^n\mathcal E(z)^3
@@ -6132,12 +6192,23 @@ and hence
   \sum_{k\ge0}\frac{w^k(z;q)_k}{(q;q)_k}h_k(z).
 ```
 The left-hand side is $`\sum_{n,j\ge0}R_{n+j}^{(3)}w^nz^j/((q;q)_n(q;q)_j)`$. Putting $`z=w`$ collects all pairs with the same sum $`n+j`$. The coefficient of $`w^k`$ is consequently $`R_k^{(3)}\sum_{j\le k}\bigl((q;q)_j(q;q)_{k-j}\bigr)^{-1}
-=R_k^{(2)}R_k^{(3)}/(q;q)_k`$. To evaluate the right-hand side, we expand $`h_k`$, put $`k=j+t`$, and use the $`q`$-binomial theorem in the form
+=R_k^{(2)}R_k^{(3)}/(q;q)_k`$. On the right-hand side, put $`z=w`$, expand $`h_k`$, and write $`k=j+t`$. The identity $`(w;q)_{j+t}=(w;q)_j(wq^j;q)_t`$ gives
+``` math
+\mathcal E(w)^4\sum_{j\ge0}\frac{w^j(w;q)_j^2}{(q;q)_j}
+       \sum_{t\ge0}\frac{(wq^j;q)_t}{(q;q)_t}w^t.
+```
+The inner sum is evaluated by the $`q`$-binomial theorem:
 ``` math
 \sum_{t\ge0}\frac{(wq^j;q)_t}{(q;q)_t}w^t
  =\frac{(w^2q^j;q)_\infty}{(w;q)_\infty}.
 ```
-The resulting expression is $`G_q(w)`$, as required. We may read each identity coefficientwise, or as an absolutely convergent expansion when $`|z|`$ and $`|w|`$ are sufficiently small.
+Finally, $`(w;q)_j=(w;q)_\infty/(wq^j;q)_\infty`$ cancels two of the five factors $`\mathcal E(w)`$, leaving
+``` math
+\mathcal E(w)^3\sum_{j\ge0}\frac{w^j}{(q;q)_j}
+       \frac{(w^2q^j;q)_\infty}{(wq^j;q)_\infty^2}
+ =G_q(w).
+```
+We may read each identity coefficientwise, or as an absolutely convergent expansion when $`|z|`$ and $`|w|`$ are sufficiently small.
 
 For the bounds, we write $`b_k^{(r)}=[z^k](z;q)_\infty^{-r}`$, so that $`R_k^{(r)}=(q;q)_kb_k^{(r)}`$ and $`a_k=P^4(q;q)_kb_k^{(2)}b_k^{(3)}`$. By Euler’s expansion, $`b_k^{(r)}`$ is an $`r`$-fold convolution of $`1/(q;q)_n`$, whose terms lie in $`[1,P^{-1}]`$. There are $`\binom{k+r-1}{r-1}`$ compositions of $`k`$ into $`r`$ nonnegative parts, and we deduce
 ``` math
@@ -6147,7 +6218,7 @@ Combining these at $`r=2,3`$ with $`P\le(q;q)_k\le1`$ and $`c_k=(k+1)\binom{k+2}
 
 </div>
 
-The bounds above control shifts uniformly. We now calculate the first correction to $`a_k/c_k`$; this will give the fixed-shift limit and the power of $`N`$ in Theorem <a href="#erdos-1049-rational-base-lambert--res:sharp-fixed-base" data-reference-type="ref" data-reference="erdos-1049-rational-base-lambert--res:sharp-fixed-base">1</a>.
+It remains to prove the fixed-shift limit and determine the product $`\prod_{k<N}a_k`$. Both follow from the first-order asymptotic of $`a_k/c_k`$.
 
 <a id="erdos-1049-rational-base-lambert--sec:coefficient-asymptotic"></a>
 
@@ -6155,7 +6226,7 @@ The bounds above control shifts uniformly. We now calculate the first correction
 
 <div class="proof">
 
-*Proof of Theorem <a href="#erdos-1049-rational-base-lambert--res:sharp-fixed-base" data-reference-type="ref" data-reference="erdos-1049-rational-base-lambert--res:sharp-fixed-base">1</a>.* Put $`L=F(1/q)`$, $`e_k=(q;q)_k^{-1}`$ and $`E=P^{-1}`$. Replacing every $`e_k`$ by $`E`$ in the two convolution sums gives $`E^2(k+1)`$ and $`E^3\binom{k+2}{2}`$. These count, respectively, the nonnegative pairs and triples with sum $`k`$. They explain the leading cubic term of $`a_k`$, but we also need its first correction. For a fixed index $`i`$, there is one pair $`(i,k-i)`$ and there are $`k-i+1`$ triples whose first coordinate is $`i`$. Thus a summable deficit in the sequence $`e_i`$ produces a constant correction in the two-fold sum and a linear correction in the three-fold sum. We calculate that deficit and bound the terms containing it twice.
+*Proof of Theorem <a href="#erdos-1049-rational-base-lambert--res:sharp-fixed-base" data-reference-type="ref" data-reference="erdos-1049-rational-base-lambert--res:sharp-fixed-base">1</a>.* Put $`L=F(1/q)`$, $`e_k=(q;q)_k^{-1}`$ and $`E=P^{-1}`$. Replacing every $`e_k`$ by $`E`$ in the two convolution sums gives $`E^2(k+1)`$ and $`E^3\binom{k+2}{2}`$. The factors $`k+1`$ and $`\binom{k+2}{2}`$ count nonnegative pairs and triples with sum $`k`$. For a fixed $`i`$, one pair and $`k-i+1`$ triples have first coordinate $`i`$. Consequently, the summable differences $`E-e_i`$ produce a constant correction in the two-fold convolution and a linear correction in the three-fold convolution. The terms containing two or more such differences contribute to the error bounds below.
 
 Writing $`d_k=E-e_k`$, the identity $`e_{k+1}-e_k=q^{k+1}e_{k+1}`$ gives
 ``` math
@@ -6219,16 +6290,16 @@ Substitution in <a href="#erdos-1049-rational-base-lambert--eq:geometric-limit" 
 
 </div>
 
-The power of $`N`$ thus comes from the first-order corrections in the two convolutions. Replacing $`a_k`$ by its leading cubic term $`c_k`$ would lose both corrections and hence the factor $`N^{-8F(1/q)}`$.
+Thus the leading cubic term $`c_k`$ determines $`C_N`$, whereas the first correction to $`a_k/c_k`$ determines $`N^{-8F(1/q)}`$.
 
 <a id="erdos-1049-rational-base-lambert--sec:hankel-order"></a>
 
 #### The first nonzero formal term
 
-The order of a nonzero formal series is the least exponent with nonzero coefficient. We now let $`q`$ tend formally to zero at fixed rank, rather than increasing the rank at fixed $`q`$. The shifted term in <a href="#erdos-1049-rational-base-lambert--eq:last-node-shift" data-reference-type="eqref" data-reference="erdos-1049-rational-base-lambert--eq:last-node-shift">[eq:last-node-shift]</a> then has an extra factor of $`q`$. More generally, every nonempty partition has positive displacement exponent. Thus a single tuple determines the first formal term, although all partitions were needed for the fixed-base constant.
+The order of a nonzero formal series is the least exponent with nonzero coefficient. We now fix $`N`$ and determine the first term in the formal $`q`$-expansion. The shifted term in <a href="#erdos-1049-rational-base-lambert--eq:last-node-shift" data-reference-type="eqref" data-reference="erdos-1049-rational-base-lambert--eq:last-node-shift">[eq:last-node-shift]</a> then has an extra factor of $`q`$. More generally, every nonempty partition has positive displacement exponent. Thus a single tuple determines the first formal term, although all partitions were needed for the fixed-base constant.
 
 <div id="erdos-1049-rational-base-lambert--res:zudilin-sharp-qorder" class="theorem">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/1d16f2ddf78e7c4c850246f67bf8ce79b19deb3c/evidence/erdos-1049-rational-base-lambert.md#res-zudilin-sharp-qorder">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/1d16f2ddf78e7c4c850246f67bf8ce79b19deb3c/evidence/erdos-1049-rational-base-lambert.md#res-zudilin-sharp-qorder-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/d93e7408aed0b0c73ad5ea98116c7dc0dce3cf7b/evidence/erdos-1049-rational-base-lambert.md#res-zudilin-sharp-qorder">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d93e7408aed0b0c73ad5ea98116c7dc0dce3cf7b/evidence/erdos-1049-rational-base-lambert.md#res-zudilin-sharp-qorder-comparator">Comparator</a></p>
 
 **Theorem 4** (the first nonzero term of the Hankel determinant). *For every $`N\ge1`$,
 ``` math
@@ -6258,7 +6329,7 @@ The order of the summand indexed by $`(k_i)`$ is $`\sum_{i<N}(2N-1-2i)k_i`$. Bec
 ``` math
 \sum_{i<N}(2N-1-2i)i=B_N,\qquad \prod_{i<N}c_i=C_N.
 ```
-No other tuple can cancel that coefficient. For example, at rank two the pair $`(0,1)`$ contributes $`6q+O(q^2)`$, and every other increasing pair has order at least two. ◻
+No other tuple can cancel that coefficient. For $`N=2`$, the pair $`(0,1)`$ contributes $`6q+O(q^2)`$, and every other increasing pair has order at least two. ◻
 
 </div>
 
@@ -6276,7 +6347,7 @@ We now use the 2004 coefficient family. If $`U,V\in\mathbb{Z}[X]`$ have degree a
  =\frac{b^{K_n}}{a^{K_n-W_n}}.
 \end{equation}
 ```
-This is the degree contribution; the proof below also controls the remaining factors. The quadratic limits $`K_n/n^2\to C_1`$ and $`(K_n-W_n)/n^2\to C_0`$ yield the sufficient inequality $`C_1\log b<C_0\log a`$ once the remaining factors have been bounded. The work is to justify cancellation over $`\mathbb{Z}[X]`$ and calculate the two degrees before specialising $`X`$ to $`a/b`$.
+The proof below shows that the remaining factors contribute only $`o(n^2)`$ to the logarithm. Hence the limits $`K_n/n^2\to C_1`$ and $`(K_n-W_n)/n^2\to C_0`$ give the sufficient inequality $`C_1\log b<C_0\log a`$. We first justify cancellation in $`\mathbb{Z}[X]`$ and calculate the degrees, before specialising $`X`$ to $`a/b`$.
 
 We use the parameter direction from Zudilin’s construction \[zudilin2004, §5, pp. 161–162\], together with its thirteen intervals and constants $`C_1,C_0`$. At integer bases his theorem gives the irrationality-exponent bound $`C_1/C_0=2.46497868\ldots`$ \[zudilin2004, Thm. 1, p. 154\]. Let $`\psi_1(u)=\sum_{k\ge0}(k+u)^{-2}`$ for $`u>0`$, and let $`\mathcal I`$ consist of the thirteen intervals listed in the proof. We put
 ``` math
@@ -6290,7 +6361,7 @@ We use the parameter direction from Zudilin’s construction \[zudilin2004, §5,
 The intervals are disjoint and lie in $`[1/14,1)`$, so $`0\le J\le\psi_1(1/14)-\psi_1(1)<196`$. Together with $`\pi>3`$, these bounds give $`0<C_0<266<C_1/2`$. Thus $`\theta^*=C_0/C_1`$ and $`\mu=C_1/C_0`$ are positive reciprocal constants. The notation $`\mu_{\rm irr}(\xi)`$ instead denotes the irrationality exponent of a value. The estimates below give a sufficient cutoff; its optimality is unknown.
 
 <div id="erdos-1049-rational-base-lambert--res:rational-base-threshold" class="theorem">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/1d16f2ddf78e7c4c850246f67bf8ce79b19deb3c/evidence/erdos-1049-rational-base-lambert.md#res-rational-base-threshold">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/1d16f2ddf78e7c4c850246f67bf8ce79b19deb3c/evidence/erdos-1049-rational-base-lambert.md#res-rational-base-threshold-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/d93e7408aed0b0c73ad5ea98116c7dc0dce3cf7b/evidence/erdos-1049-rational-base-lambert.md#res-rational-base-threshold">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d93e7408aed0b0c73ad5ea98116c7dc0dce3cf7b/evidence/erdos-1049-rational-base-lambert.md#res-rational-base-threshold-comparator">Comparator</a></p>
 
 **Theorem 5** (rational-base region for Zudilin’s forms). *Let $`a>b\ge1`$ be coprime integers with
 ``` math
@@ -6437,7 +6508,7 @@ The coefficient is negative under the theorem’s hypothesis. The positive value
 </div>
 
 <div id="erdos-1049-rational-base-lambert--res:thirtyone-four" class="corollary">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos1049/PaperR17/SourceConsumers.lean#L117">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/1d16f2ddf78e7c4c850246f67bf8ce79b19deb3c/evidence/erdos-1049-rational-base-lambert.md#res-thirtyone-four-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos1049/PaperR17/SourceConsumers.lean#L117">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d93e7408aed0b0c73ad5ea98116c7dc0dce3cf7b/evidence/erdos-1049-rational-base-lambert.md#res-thirtyone-four-comparator">Comparator</a></p>
 
 **Corollary 6**. *$`F\bigl((31/4)^r\bigr)`$ is irrational for every integer $`r\ge1`$.*
 
@@ -6460,7 +6531,7 @@ Taking a common positive integer power preserves both the logarithmic ratio and 
 </div>
 
 <div id="erdos-1049-rational-base-lambert--cor:rational-base-measure" class="corollary">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/1d16f2ddf78e7c4c850246f67bf8ce79b19deb3c/evidence/erdos-1049-rational-base-lambert.md#cor-rational-base-measure">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/1d16f2ddf78e7c4c850246f67bf8ce79b19deb3c/evidence/erdos-1049-rational-base-lambert.md#cor-rational-base-measure-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/d93e7408aed0b0c73ad5ea98116c7dc0dce3cf7b/evidence/erdos-1049-rational-base-lambert.md#cor-rational-base-measure">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d93e7408aed0b0c73ad5ea98116c7dc0dce3cf7b/evidence/erdos-1049-rational-base-lambert.md#cor-rational-base-measure-comparator">Comparator</a></p>
 
 **Corollary 7** (an irrationality measure uniform over powers). *For coprime $`a>b\ge1`$ with $`\theta=\log b/\log a<\theta^*`$ and every integer $`r\ge1`$,
 ``` math
@@ -6522,9 +6593,9 @@ The positive-remainder estimates require $`x>1`$, so they give no statement for 
 
 ### Further questions
 
-To use the determinant asymptotic in an irrationality proof, we would need to clear its rational coefficients at a cost compatible with its decay. Positivity and the growth of the moment weights do not estimate this cost. For comparison, the [rational-value model in the companion paper](https://github.com/wcook04/plectis-erdos/blob/main/paper/1049/erdos1049-rational-base-lambert-reasoning-surface.pdf#nameddest=long1049-countermodel) has the same formal orders, leading coefficients and type of fixed-base power correction, although its target value is rational. The model and its denominator calculation are retained there with ordinary proofs as unformalised remarks. The long record also gives an [ordinary argument for the ratio-limit extension](https://github.com/wcook04/plectis-erdos/blob/main/paper/1049/erdos1049-rational-base-lambert-reasoning-surface.pdf#nameddest=long1049-ratio-extension) under $`a_{k+1}/a_k\to\rho\in(0,q^{-1})`$, without the polynomial shift bound in Theorem <a href="#erdos-1049-rational-base-lambert--thm:geometric-moments" data-reference-type="ref" data-reference="erdos-1049-rational-base-lambert--thm:geometric-moments">2</a>. That extension remains unformalised.
+An irrationality argument based on these determinants would also require a bound for their coefficient denominators. After clearing them, the nonzero determinants must still tend to zero; positivity and the growth of the moment weights alone give no such bound. For comparison, the [rational-value model in the companion paper](https://github.com/wcook04/plectis-erdos/blob/main/paper/1049/erdos1049-rational-base-lambert-reasoning-surface.pdf#nameddest=long1049-countermodel) has the same formal orders, leading coefficients and type of fixed-base power correction, although its target value is rational. The model and its denominator calculation are retained there with ordinary proofs as unformalised remarks. The long record also gives an [ordinary argument for the ratio-limit extension](https://github.com/wcook04/plectis-erdos/blob/main/paper/1049/erdos1049-rational-base-lambert-reasoning-surface.pdf#nameddest=long1049-ratio-extension) under $`a_{k+1}/a_k\to\rho\in(0,q^{-1})`$, without the polynomial shift bound in Theorem <a href="#erdos-1049-rational-base-lambert--thm:geometric-moments" data-reference-type="ref" data-reference="erdos-1049-rational-base-lambert--thm:geometric-moments">2</a>. That extension remains unformalised.
 
-A different question concerns the polynomial coefficients of the approximants, rather than their remainders. Van Assche’s little-$`q`$-Legendre construction \[vanassche2001, §3\] and the multiple-orthogonality construction of Postelmans and Van Assche \[postelmansvanassche2007, §2\] make the normalisation important. In the 2016 family, the companion paper proves positivity of the first matrix of a coefficient pencil through rank eight, with real, interlacing roots below $`F(p)`$ for $`p>1`$. The shifted minors and coefficientwise positivity are supported by the stated finite polynomial computations. The [coefficient-moment section](https://github.com/wcook04/plectis-erdos/blob/main/paper/1049/erdos1049-rational-base-lambert-reasoning-surface.pdf#nameddest=long1049-coefficients) gives the definitions and the precise ranges. It leaves all-rank positivity and convergence of the largest root open. The general moment criteria of Wang and Zhu \[wangzhu2016\] and Sokal and Walrad \[sw2024\], Berg’s factorial-power example \[berg2007, Theorem 5.1\], and the quadrature construction of Golub and Welsch \[golubwelsch1969\] provide the relevant comparisons. Using a recurrence from another family would require a proof that it holds for these coefficients. The root-of-unity method of Krattenthaler, Rochev, Väänänen and Zudilin \[krvz2009\], for example, concerns a separate construction.
+A different question concerns the polynomial coefficients of the approximants, rather than their remainders. Van Assche’s little-$`q`$-Legendre construction \[vanassche2001, §3\] and the multiple-orthogonality construction of Postelmans and Van Assche \[postelmansvanassche2007, §2\] make the normalisation important. In the 2016 family, the companion paper proves positivity of the first matrix of a coefficient pencil for sizes $`N\le8`$, with real, interlacing roots below $`F(p)`$ for $`p>1`$. The shifted minors and coefficientwise positivity are supported by the stated finite polynomial computations. The [coefficient-moment section](https://github.com/wcook04/plectis-erdos/blob/main/paper/1049/erdos1049-rational-base-lambert-reasoning-surface.pdf#nameddest=long1049-coefficients) gives the definitions and the precise ranges. Positivity for every $`N`$ and convergence of the largest root remain open. The general moment criteria of Wang and Zhu \[wangzhu2016\] and Sokal and Walrad \[sw2024\], Berg’s factorial-power example \[berg2007, Theorem 5.1\], and the quadrature construction of Golub and Welsch \[golubwelsch1969\] provide the relevant comparisons. Using a recurrence from another family would require a proof that it holds for these coefficients. The root-of-unity method of Krattenthaler, Rochev, Väänänen and Zudilin \[krvz2009\], for example, concerns a separate construction.
 
 <a id="erdos-1049-rational-base-lambert--sec:round8-transfer-boundaries"></a>
 
@@ -6532,14 +6603,14 @@ A different question concerns the polynomial coefficients of the approximants, r
 
 At $`3/2`$, a polynomial $`Q`$ of degree at most $`W`$ has integral homogenised value $`H_W(Q)=2^WQ(3/2)`$. Congruences at powers of $`2`$ and $`3`$ give finite counting criteria for combinations of such values. The companion paper treats [integer rescaling](https://github.com/wcook04/plectis-erdos/blob/main/paper/1049/erdos1049-rational-base-lambert-reasoning-surface.pdf#nameddest=long1049-arithmetic) and [endpoint congruences and signed sums](https://github.com/wcook04/plectis-erdos/blob/main/paper/1049/erdos1049-rational-base-lambert-reasoning-surface.pdf#nameddest=long1049-endpoints). It also treats the rank-one case and proves the quantitative finite-fibre estimate used below. Equal residues give a useful irrationality form only when the divided remainder is also nonzero and small. Smith normal form describes the image of the evaluated lattice \[stanley2016, Theorems 2.3–2.4\], but does not estimate these real remainders.
 
-For example, suppose that $`M`$ integral rows $`(A_j,B_j)`$ have remainders $`e_j=A_jF(3/2)-B_j`$, and that the subset sums take $`Q`$ residue values modulo a positive integer $`D`$. Put $`T=\sum_j|e_j|`$ and suppose that at most $`k`$ selectors give the same exact remainder within a residue class. For each positive integer $`n`$, the sufficient inequality
+For example, suppose that $`M`$ integral rows $`(A_j,B_j)`$ have remainders $`e_j=A_jF(3/2)-B_j`$, and that the subset sums take $`Q`$ residue values modulo a positive integer $`D`$. Put $`T=\sum_j|e_j|`$ and suppose that at most $`k`$ subsets give any fixed remainder within a residue class. For each positive integer $`n`$, the sufficient inequality
 ``` math
 \begin{equation}
 \label{eq:quantitative-selector-budget}
  2^M>Qk\left(\left\lfloor\frac{nT}{D}\right\rfloor+1\right)
 \end{equation}
 ```
-gives two equal-residue selectors whose remainders differ by a nonzero quantity of absolute value less than $`D/n`$. Indeed, in each residue class partition the interval of attained remainders into bins of width $`D/n`$, beginning at its least value. If every bin contained only one real value, its multiplicity would be at most $`k`$, contrary to <a href="#erdos-1049-rational-base-lambert--eq:quantitative-selector-budget" data-reference-type="eqref" data-reference="erdos-1049-rational-base-lambert--eq:quantitative-selector-budget">[eq:quantitative-selector-budget]</a>. Subtracting the selectors and dividing by $`D`$ gives an integral linear form of nonzero absolute value less than $`1/n`$. The [quantitative lemma and its proof](https://github.com/wcook04/plectis-erdos/blob/main/paper/1049/erdos1049-rational-base-lambert-reasoning-surface.pdf#nameddest=long1049-selectors) state the finite-set version without assumptions about Lambert series.
+gives two subsets with the same residue vector whose remainder values differ by an amount strictly between $`0`$ and $`D/n`$ in absolute value. Indeed, in each residue class divide the range of remainders into half-open intervals of width $`D/n`$, starting at its least value. If each interval contained only one remainder value, it would contain at most $`k`$ subsets, contrary to <a href="#erdos-1049-rational-base-lambert--eq:quantitative-selector-budget" data-reference-type="eqref" data-reference="erdos-1049-rational-base-lambert--eq:quantitative-selector-budget">[eq:quantitative-selector-budget]</a>. Subtracting the two subset sums and dividing their coefficients by $`D`$ gives an integral linear form of nonzero absolute value less than $`1/n`$. The [quantitative lemma and its proof](https://github.com/wcook04/plectis-erdos/blob/main/paper/1049/erdos1049-rational-base-lambert-reasoning-surface.pdf#nameddest=long1049-selectors) state the finite-set version without assumptions about Lambert series.
 
 The elementary integer-base method provides a different comparison. Vandehey \[vandehey2013\] and Duverney and Tachiya \[duverneytachiya2019\] use integer-base expansions. At a noninteger rational base the cleared tails satisfy a recurrence with a growing denominator contribution. The [clearing and tail-recurrence calculations](https://github.com/wcook04/plectis-erdos/blob/main/paper/1049/erdos1049-rational-base-lambert-reasoning-surface.pdf#nameddest=long1049-clearing) in the companion paper rule out one coordinatewise scheme at $`3/2`$. They make no assertion about other approximation families. At the function level, Bell and Smertnig \[bellsmertnig2026, Theorem 1.3\] exclude Mahler equations for the divisor generating series, while leaving the arithmetic of a single rational argument undecided.
 
@@ -6553,7 +6624,7 @@ The unrestricted request for primitive polynomial rows and a signed combination 
 
 ### Proofs and source records
 
-The links beside each statement and in the margin give the existing Lean proofs and recorded Comparator comparisons, indexed in the [evidence record](https://github.com/wcook04/plectis-erdos/blob/1d16f2ddf78e7c4c850246f67bf8ce79b19deb3c/evidence/erdos-1049-rational-base-lambert.md) at the [source revision](https://github.com/wcook04/plectis-erdos/tree/7380b7871687b6bcc41ca0143c61f232e8af6500). Theorem <a href="#erdos-1049-rational-base-lambert--thm:geometric-moments" data-reference-type="ref" data-reference="erdos-1049-rational-base-lambert--thm:geometric-moments">2</a> is the polynomial-bound specialisation of the [geometric-moment proof](https://github.com/wcook04/plectis-erdos/blob/035c414b25fda09ae0d2e56358b8716d321ebd99/lean/ErdosProblems/Erdos1049/PaperCompleteR21/GeometricUniversality.lean#L1324) cited in the long record; its Comparator association remains pending. The broader ratio-limit argument and rational-value model there have ordinary proofs only. This revision has had no fresh Lean or Comparator run and no independent review.
+The links beside each statement and in the margin give the existing Lean proofs and recorded Comparator comparisons, indexed in the [evidence record](https://github.com/wcook04/plectis-erdos/blob/d93e7408aed0b0c73ad5ea98116c7dc0dce3cf7b/evidence/erdos-1049-rational-base-lambert.md) at the [source revision](https://github.com/wcook04/plectis-erdos/tree/7380b7871687b6bcc41ca0143c61f232e8af6500). Theorem <a href="#erdos-1049-rational-base-lambert--thm:geometric-moments" data-reference-type="ref" data-reference="erdos-1049-rational-base-lambert--thm:geometric-moments">2</a> is the polynomial-bound specialisation of the [geometric-moment proof](https://github.com/wcook04/plectis-erdos/blob/035c414b25fda09ae0d2e56358b8716d321ebd99/lean/ErdosProblems/Erdos1049/PaperCompleteR21/GeometricUniversality.lean#L1324) cited in the long record; its Comparator association remains pending. The broader ratio-limit argument and rational-value model there have ordinary proofs only. This revision has had no fresh Lean or Comparator run and no independent review.
 
 <a id="erdos-1049-rational-base-lambert--data-availability."></a>
 

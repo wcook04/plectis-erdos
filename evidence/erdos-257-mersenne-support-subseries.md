@@ -1,4 +1,4 @@
-# Formal evidence: Weighted and Covered Supports for Mersenne Subseries
+# Formal evidence: Irrationality criteria for Lambert subseries
 
 This record belongs to the paper [erdos-257-mersenne-support-subseries.pdf](../paper/257/erdos-257-mersenne-support-subseries.pdf). For every result it lists the Lean declarations that state it, and the recorded Comparator check where there is one. The inline links and margin marks in the paper use the same result mapping.
 
@@ -201,7 +201,7 @@ theorem exists_strengthened_not_old_or_weighted_host :
 
 <a id="res-strict-mixed-supports"></a>
 
-## Corollary 5.2 (a host requiring the mixed criterion), page 12
+## Corollary 5.2 (a support requiring the mixed criterion), page 12
 
 > *There is an infinite positive support $`U`$ with $`U\notin\mathcal C`$ and $`U\notin\mathcal W_b`$ for every integer $`b\ge2`$, such that $`X_A(b)`$ is irrational for every infinite $`A\subseteq U`$ and every integer $`b\ge2`$.*
 
@@ -240,7 +240,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="res-period"></a>
 
-## Theorem B.1 (the exact denominator period), page 15
+## Theorem B.1 (the exact denominator period), page 16
 
 > *Let $`F\subseteq\mathbb{N}_{>0}`$ be finite and nonempty, let $`b\ge2`$ be an integer, and let $`D_F>0`$ be the denominator of $`X_F(b)`$ in lowest terms. Then $`D_F`$ is coprime to $`b`$, and
 > ``` math
@@ -302,7 +302,7 @@ theorem finite_period_noncollapse_rat_den
 
 <a id="res-general-repair"></a>
 
-## Theorem C.1 (membership and nonincreasing integer remainders), page 17
+## Theorem C.1 (membership and nonincreasing integer remainders), page 18
 
 > *For every real $`x\ge0`$, the following are equivalent:
 > ``` math
@@ -338,7 +338,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="res-one-over-twenty-one-frontier"></a>
 
-## Theorem D.1 (integer-quotient tests for $`1/21`$), page 19
+## Theorem D.1 (integer-quotient tests for $`1/21`$), page 20
 
 > *The following statements hold.*
 >
@@ -444,7 +444,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="res-terminalhalf"></a>
 
-## Theorem D.2 (finite approximations with vanishing scaled error), page 20
+## Theorem D.2 (finite approximations with vanishing scaled error), page 21
 
 > *Suppose there are integers $`M_j\ge1`$ tending to infinity and sets $`A_j\subseteq\{2,\ldots,M_j\}`$ such that
 > ``` math
@@ -478,7 +478,7 @@ Next check: In the next governed corpus build, transport lean/ErdosProblems/Erdo
 
 <a id="res-cylinderhalf"></a>
 
-## Theorem D.3 (unbounded shared-prefix families imply a half-support), page 21
+## Theorem D.3 (unbounded shared-prefix families represent one half), page 22
 
 > *Suppose that for every $`N`$ there are $`M,K`$ with $`\max\{N,1\}\le M`$, $`0\le K\le M`$, and a family satisfying all the conditions in the preceding paragraph. Then $`X_A(2)=1/2`$ for some infinite set $`A\subseteq\mathbb{N}_{>0}`$.*
 

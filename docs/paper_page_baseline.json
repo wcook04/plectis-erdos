@@ -7,20 +7,20 @@
   "erdos-243-reciprocal-tail-rigidity": 20,
   "erdos-249-binary-totient-series": 17,
   "erdos-251-prime-gap-dyadic-series": 15,
-  "erdos-257-mersenne-support-subseries": 25,
+  "erdos-257-mersenne-support-subseries": 26,
   "erdos-269-three-prime-running-lcm": 17,
   "erdos-1041-lemniscate-newton-flow": 32,
   "erdos-1049-rational-base-lambert": 21,
-  "erdos68-factorial-reasoning-surface": 50,
+  "erdos68-factorial-reasoning-surface": 51,
   "erdos243-reciprocal-tail-reasoning-surface": 60,
   "erdos249-totient-reasoning-surface": 164,
   "erdos251-prime-gap-reasoning-surface": 49,
   "erdos257-mersenne-reasoning-surface": 166,
-  "erdos269-running-lcm-reasoning-surface": 71,
+  "erdos269-running-lcm-reasoning-surface": 72,
   "erdos1041-lemniscate-reasoning-surface": 85,
   "erdos1049-rational-base-lambert-reasoning-surface": 78
  },
- "total": 889,
+ "total": 892,
  "revisions": [
   {
    "date": "2026-09-26",
@@ -146,6 +146,39 @@
    "review_capture": "cap_quick_refresh_reviewed_pdf_length_baselines_af_b66f0a403d4f",
    "source_sha256": "335826ba9916688d6b6ad9c45dd2a9eb632960c457b187dd94206916f051483d",
    "pdf_sha256": "660d1c56dac943b5a596f9f830443ca9af4054035452cca2c5e3eb4f4a9afa45"
+  },
+  {
+   "date": "2026-09-30",
+   "paper": "erdos68-factorial-reasoning-surface",
+   "from": 50,
+   "to": 51,
+   "reason": "Reviewed R8 proof explanations and evidence qualifications retain typography; native build has zero overfull boxes. Final bibliography pages are legible, with no stranded proof or caption.",
+   "review_capture": "cap_quick_review_r8_explanatory_pagination_updates_20f849287b56",
+   "source_sha256": "ec45815bc0e5839636eccb9eb32c374cb4c6bdd17db4ac24065cac429685e74c",
+   "pdf_sha256": "da848a6019739a77b87ed0785e4797ebcbfaf955d7b8524777a6ecb23e0f866d",
+   "visual_review": "review/native_arithmetic_a/REVIEW.json"
+  },
+  {
+   "date": "2026-09-30",
+   "paper": "erdos-257-mersenne-support-subseries",
+   "from": 25,
+   "to": 26,
+   "reason": "Reviewed R8 proof explanations and evidence qualifications retain typography; native build has zero overfull boxes. Final bibliography pages are legible, with no stranded proof or caption.",
+   "review_capture": "cap_quick_review_r8_explanatory_pagination_updates_20f849287b56",
+   "source_sha256": "49dde5b195930bca30b6de1b56dff407a0e70559b8495cd33fa46d74822279dc",
+   "pdf_sha256": "dbe8effb652cfe2a4b273856aa7d2395345bebec2b24ae90d1570b281ede1f60",
+   "visual_review": "closeout/PAGINATION_REVIEW.json"
+  },
+  {
+   "date": "2026-09-30",
+   "paper": "erdos269-running-lcm-reasoning-surface",
+   "from": 71,
+   "to": 72,
+   "reason": "Reviewed R8 proof explanations and evidence qualifications retain typography; native build has zero overfull boxes. Final bibliography pages are legible, with no stranded proof or caption.",
+   "review_capture": "cap_quick_review_r8_explanatory_pagination_updates_20f849287b56",
+   "source_sha256": "c0c2af23fb4185613fe45655b735acd75166916ba3a964730d2b01192ebd6fc9",
+   "pdf_sha256": "600d66da9763ca53c97457b108e5d58ae49babd1235cac65c6665b19f904fbd9",
+   "visual_review": "review/native_arithmetic_a/REVIEW.json"
   }
  ]
 }

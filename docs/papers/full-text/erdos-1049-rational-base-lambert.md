@@ -8,7 +8,7 @@
 
 </div>
 
-We determine the fixed-base asymptotic of Zudilin’s normalised Hankel determinants, including the constant and the factor $`N^{-8F(1/q)}`$, where $`F(t)=\sum_{n\ge1}(t^n-1)^{-1}`$. The proof uses positive geometric moments and a rank-uniform partition estimate. Separately, we extend the rational-base irrationality region for $`F`$ by calculating the denominator cost of Zudilin’s 2004 forms. The region includes every positive integral power of $`31/4`$, but excludes $`3/2`$.
+We determine the fixed-base asymptotic of Zudilin’s normalised Hankel determinants, including the constant and the factor $`N^{-8F(1/q)}`$, where $`F(t)=\sum_{n\ge1}(t^n-1)^{-1}`$. The proof uses positive geometric moments and a bound on the partition sum independent of $`N`$. Separately, we extend the rational-base irrationality region for $`F`$ by calculating the degrees after cancellation in Zudilin’s 2004 forms. The region includes every positive integral power of $`31/4`$, but excludes $`3/2`$.
 
 <a id="sec:problem"></a>
 
@@ -26,7 +26,7 @@ For each fixed real $`q\in(0,1)`$, we determine the asymptotic size of the Hanke
 The sums converge for $`0<q<1`$. They also define formal series, since the $`t`$th summand has $`q`$-order $`(m+1)t`$.
 
 <div id="res:sharp-fixed-base" class="theorem">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos1049/PaperCompleteR21/SharpFixedBaseShort.lean#L53">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/1d16f2ddf78e7c4c850246f67bf8ce79b19deb3c/evidence/erdos-1049-rational-base-lambert.md#res-sharp-fixed-base-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos1049/PaperCompleteR21/SharpFixedBaseShort.lean#L53">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d93e7408aed0b0c73ad5ea98116c7dc0dce3cf7b/evidence/erdos-1049-rational-base-lambert.md#res-sharp-fixed-base-comparator">Comparator</a></p>
 
 **Theorem 1** (the size of $`V_N^*`$ at a fixed base). *Fix $`0<q<1`$ and write $`P=(q;q)_\infty`$, $`B_N=N(N-1)(2N-1)/6`$ and $`C_N=(N!)^2(N+1)!/2^N`$. There is a $`K(q)>0`$ with
 ``` math
@@ -36,11 +36,11 @@ V_N^*(q)\sim K(q)\,C_Nq^{B_N}P^{2N}N^{-8F(1/q)}
 
 </div>
 
-The constant $`K(q)`$ is the convergent product in <a href="#eq:fixed-constant" data-reference-type="eqref" data-reference="eq:fixed-constant">[eq:fixed-constant]</a>. Zudilin proved $`\operatorname{ord}_q V_N^*\ge B_N`$ and the estimate $`|V_N^*|\le q^{N^3/3}\exp(O_q(N^2))`$ \[zudilin2016, Lemma 1 and §4\]. We obtain the factorial and exponential factors concealed by this estimate, as well as its power of $`N`$. We also recover the exact first formal term $`C_Nq^{B_N}`$. These are different limiting questions: multiplying by $`(1-q)^{N^3}`$ preserves that first term and changes the fixed-base logarithm by a cubic quantity. No uniformity as $`q\to1`$ is asserted.
+The constant $`K(q)`$ is the convergent product in <a href="#eq:fixed-constant" data-reference-type="eqref" data-reference="eq:fixed-constant">[eq:fixed-constant]</a>. Zudilin proved $`\operatorname{ord}_q V_N^*\ge B_N`$ and the estimate $`|V_N^*|\le q^{N^3/3}\exp(O_q(N^2))`$ \[zudilin2016, Lemma 1 and §4\]. Theorem <a href="#res:sharp-fixed-base" data-reference-type="ref" data-reference="res:sharp-fixed-base">1</a> determines the factorial, exponential and power factors contained in this estimate. We also recover the exact first formal term $`C_Nq^{B_N}`$. These are different limiting questions: multiplying by $`(1-q)^{N^3}`$ preserves that first term and changes the fixed-base logarithm by a cubic quantity. No uniformity as $`q\to1`$ is asserted.
 
-The determinant becomes tractable when we write $`v_m^*`$ as a positive moment on $`1,q,q^2,\ldots`$. Heine’s identity expresses it as a sum over choices of $`N`$ nodes, with a squared Vandermonde for each choice \[zudilin2017det, §2, (2)–(5)\]. The first $`N`$ nodes give the scale $`q^{B_N}P^{2N}\prod_{k<N}a_k`$. Other choices still contribute at that scale: even shifting the last node by one place gives a term of comparable size. Partitions record these displacements. For a fixed partition, the weight ratios tend to $`1`$, so its limiting contribution is the same as for constant weights, where a Cauchy determinant gives an exact answer. The main estimate makes this comparison uniform over all partitions.
+We represent $`v_m^*`$ as $`\sum_{k\ge0}a_kq^{(m+1)k}`$ with $`a_k>0`$. These are the moments of a positive measure supported on $`1,q,q^2,\ldots`$. Heine’s identity then expresses the determinant as a sum over choices of $`N`$ nodes, with a squared Vandermonde factor for each choice \[zudilin2017det, §2, (2)–(5)\]. The contribution of the first $`N`$ nodes has size $`q^{B_N}P^{2N}\prod_{k<N}a_k`$ up to a positive limiting factor. Moving the last node one place still gives a contribution of comparable size, so we must sum over displaced tuples. We index them by partitions. For each fixed partition, the weight ratios tend to $`1`$; a summable bound independent of $`N`$ then permits passage to the limit in the sum. The resulting limit is the same as for constant weights, for which Cauchy’s determinant formula gives an exact evaluation.
 
-The remaining calculation concerns the weights themselves. They are a product of two finite convolution sums, of lengths two and three. Their first relative corrections are $`-2F(1/q)/(k+1)`$ and $`-6F(1/q)/(k+2)`$. Adding these corrections and then multiplying the weights over $`k<N`$ gives the power $`N^{-8F(1/q)}`$. Theorem <a href="#thm:geometric-moments" data-reference-type="ref" data-reference="thm:geometric-moments">2</a> isolates the determinant argument from this coefficient calculation; it also evaluates the determinant with entries $`(1-q^{i+j+1})^{-2}`$.
+The remaining calculation concerns the weights themselves. Their factorisation involves a two-fold and a three-fold convolution of the sequence $`1/(q;q)_k`$. Their first relative corrections are $`-2F(1/q)/(k+1)`$ and $`-6F(1/q)/(k+2)`$. Adding these corrections and then multiplying the weights over $`k<N`$ gives the power $`N^{-8F(1/q)}`$. Theorem <a href="#thm:geometric-moments" data-reference-type="ref" data-reference="thm:geometric-moments">2</a> isolates the determinant argument from this coefficient calculation; it also evaluates the determinant with entries $`(1-q^{i+j+1})^{-2}`$.
 
 Chowla’s conjecture, recorded by Erdős \[erdos1988, p. 102\], asks whether $`F(t)`$ is irrational for every rational $`t>1`$. This is a related arithmetic question, and the fixed-base asymptotic alone does not answer it. In Section <a href="#sec:rational-base-irrationality" data-reference-type="ref" data-reference="sec:rational-base-irrationality">4</a> we use the different 2004 construction \[zudilin2004, §5\] to prove irrationality for coprime $`a>b\ge1`$ satisfying
 ``` math
@@ -84,7 +84,7 @@ Indeed, $`\sum d|\log(1-q^d)|<\infty`$, and the logarithm of the second product 
  D_N^{(0)}\sim\mathcal M(q)^3q^{B_N}P^{2N}.
 \end{equation}
 ```
-The next theorem shows that positive weights satisfying the two shift conditions below alter this answer only by their first $`N`$ factors. Its second hypothesis controls large displacements of the nodes; its first says that a fixed displacement eventually has negligible effect on a weight. Both hypotheses allow $`a_k=(k+1)^s`$ for every real $`s`$.
+Under the following hypotheses, replacing the constant weights by $`a_k`$ multiplies the asymptotic by $`\prod_{k<N}a_k`$. The ratio limit controls each fixed displacement of a node, while the polynomial bound controls the sum over all displacements. The power weights $`a_k=(k+1)^s`$, with $`s\in\mathbb R`$, satisfy both conditions.
 
 <div id="thm:geometric-moments" class="theorem">
 <p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos1049/PaperCompleteR21/GeometricUniversality.lean#L1324">Lean</a></p>
@@ -140,9 +140,9 @@ The tuple $`k_i=i`$ contributes $`q^{B_N}\Delta_N\prod_{i<N}a_i`$. It does not a
  \longrightarrow\frac{q}{(1-q)^2}.
 \end{equation}
 ```
-Only pairs involving the moved node change, so the product telescopes. At $`q=1/2`$ the limiting ratio is $`2`$. We must therefore retain the displaced tuples, even at large rank.
+Only pairs involving the moved node change, so the product telescopes. At $`q=1/2`$ the limiting ratio is $`2`$: the displaced tuple contributes twice as much asymptotically as $`(0,1,\ldots,N-1)`$.
 
-Subtracting the baseline tuple gives shifts $`\lambda_i=k_i-i`$. They are nonnegative and weakly increasing, since $`k_{i+1}\ge k_i+1`$. Reversing them gives a partition. For example, at rank four,
+Subtracting $`(0,1,\ldots,N-1)`$ gives the shifts $`\lambda_i=k_i-i`$. Since $`k_{i+1}\ge k_i+1`$, these are nonnegative and weakly increasing; reversing their order gives a partition. For $`N=4`$, for example,
 ``` math
 \underbrace{(0,1,3,5)}_{(k_i)}
  \longmapsto\underbrace{(0,0,1,2)}_{(\lambda_i)}
@@ -160,11 +160,23 @@ In general, put $`\mu_j=\lambda_{N-j}`$ for $`1\le j\le N`$, so that $`\mu_1\ge\
 \end{split}
 \end{equation}
 ```
-The exponent $`2j-1`$ has a direct meaning. The $`j`$th index from the right contributes once through its mass $`q^{k_i}`$ and twice through each of its $`j-1`$ pairs with later indices in the squared Vandermonde. This gives $`1+2(j-1)`$.
+The $`j`$th index from the right contributes once through $`q^{k_i}`$ and twice through each of its $`j-1`$ pairs with later indices in the squared Vandermonde. Its displacement therefore has exponent $`1+2(j-1)=2j-1`$.
 
-Set $`W_N(\mu)=0`$ when $`\mu`$ has more than $`N`$ positive parts. The sum now has an index set independent of $`N`$. A fixed partition shifts only the last indices of the baseline tuple: $`(2,1)`$ shifts its last two indices, whatever the rank $`N\ge2`$. These indices tend to infinity with $`N`$, so the fixed-shift hypothesis removes the weights from each limiting summand. The remaining issue is the total contribution of partitions with many or large parts. We use the polynomial bound for this step.
+Set $`W_N(\mu)=0`$ when $`\mu`$ has more than $`N`$ positive parts, so that every sum has the same index set. Fix a partition with $`\ell`$ positive parts. It affects only the last $`\ell`$ indices of $`(0,1,\ldots,N-1)`$: for instance, $`(2,1)`$ affects the last two for every $`N\ge2`$. Those indices tend to infinity, so the weight ratios in <a href="#eq:partition-summand" data-reference-type="eqref" data-reference="eq:partition-summand">[eq:partition-summand]</a> tend to $`1`$ by the fixed-shift hypothesis.
 
-For a partition of length $`\ell`$, only the factors with $`j\le\ell`$ can differ from $`1`$. For each such $`j`$, the denominator product in the Vandermonde quotient is at least $`P`$, and its numerator product is at most $`1`$. Consequently
+The Vandermonde quotient still contains a growing number of factors, but its dependence on $`N`$ telescopes. The factors with $`j<k\le\ell`$ are fixed, and those with $`j>\ell`$ equal $`1`$. For $`N\ge\ell`$ and each $`j\le\ell`$, the remaining factors satisfy
+``` math
+\begin{equation}
+\label{eq:partition-tail}
+ \prod_{k=\ell+1}^{N}
+ \frac{1-q^{k-j+\mu_j}}{1-q^{k-j}}
+ =\frac{(q^{N+1-j};q)_{\mu_j}}{(q^{\ell+1-j};q)_{\mu_j}}
+ \longrightarrow\frac1{(q^{\ell+1-j};q)_{\mu_j}}.
+\end{equation}
+```
+Thus each $`W_N(\mu)`$ has the same limit as for constant weights.
+
+To pass this limit through the sum over partitions, we need a bound independent of $`N`$ that remains summable as both the number and size of the parts grow. Only factors with $`j\le\ell`$ can differ from $`1`$. For each such $`j`$, the denominator product in the Vandermonde quotient is at least $`P`$, and its numerator product is at most $`1`$. Together with the polynomial shift bound, this gives
 ``` math
 W_N(\mu)\le(CP^{-2})^\ell
  \prod_{j=1}^\ell(1+\mu_j)^\kappa q^{(2j-1)\mu_j}.
@@ -178,13 +190,13 @@ Let $`A=\sum_{u\ge1}(1+u)^\kappa q^{u-1}<\infty`$. Dropping the ordering of the 
  &\le(CP^{-2}A)^\ell q^{\ell^2}.
 \end{align*}
 ```
-The last inequality follows from $`q^{(2j-1)u}\le q^{2j-1}q^{u-1}`$ and $`1+3+\cdots+(2\ell-1)=\ell^2`$. Thus the cost of having $`\ell`$ positive parts gives a factor $`q^{\ell^2}`$, and summing over $`\ell`$ gives a finite bound, uniform in the determinant rank.
+Here $`q^{(2j-1)u}\le q^{2j-1}q^{u-1}`$ and $`1+3+\cdots+(2\ell-1)=\ell^2`$. Since $`q<1`$, the bound $`(CP^{-2}A)^\ell q^{\ell^2}`$ is summable over $`\ell`$, independently of $`N`$.
 
-For a fixed partition of length $`\ell`$, the shifts $`\mu_j`$ are fixed and the indices $`N-j`$ tend to infinity for $`j\le\ell`$. Hence all the weight ratios in <a href="#eq:partition-summand" data-reference-type="eqref" data-reference="eq:partition-summand">[eq:partition-summand]</a> tend to $`1`$. Its Vandermonde quotient also converges: there are only finitely many nontrivial first indices, and the logarithms of the remaining factors have geometric tails. Dominated convergence shows that $`\sum_\mu W_N(\mu)`$ has the same limit as for $`a_k=1`$. This common limit is positive, since the empty partition contributes $`1`$. Restoring the reference-tuple factors, we obtain
+Dominated convergence now shows that $`\sum_\mu W_N(\mu)`$ has the same limit as for $`a_k=1`$. This common limit is positive, since the empty partition contributes $`1`$. Restoring the contribution of $`(0,1,\ldots,N-1)`$ gives
 ``` math
 \frac{D_N}{D_N^{(0)}\prod_{k<N}a_k}\longrightarrow1.
 ```
-The model asymptotic <a href="#eq:cauchy-model-limit" data-reference-type="eqref" data-reference="eq:cauchy-model-limit">[eq:cauchy-model-limit]</a> now proves the theorem. The comparison explains why the normalised limit retains the geometric spacing of the nodes but loses the individual weights. ◻
+Combining this limit with <a href="#eq:cauchy-model-limit" data-reference-type="eqref" data-reference="eq:cauchy-model-limit">[eq:cauchy-model-limit]</a> proves the theorem. ◻
 
 </div>
 
@@ -215,7 +227,7 @@ These identities hold formally in $`\mathbb{Z}[[q,w]]`$ and, for fixed $`0<q<1`$
 
 ## Positive weights
 
-For $`r\ge1`$ and $`k\ge0`$ define the finite sum
+For $`r\ge1`$ and $`k\ge0`$, set
 ``` math
 R_k^{(r)}(q)=\sum_{n_1+\cdots+n_r=k}
               \frac{(q;q)_k}{\prod_{j=1}^r(q;q)_{n_j}},
@@ -226,8 +238,10 @@ c_k:=R_k^{(2)}(0)R_k^{(3)}(0)=\frac{(k+1)^2(k+2)}2,
  \qquad \prod_{k<N}c_k=C_N.
 ```
 
+<div class="samepage">
+
 <div id="prop:weight-factorisation" class="proposition">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos1049/PaperCompleteR21/RogersFactorisationAnalytic.lean#L1312">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/1d16f2ddf78e7c4c850246f67bf8ce79b19deb3c/evidence/erdos-1049-rational-base-lambert.md#prop-weight-factorisation-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos1049/PaperCompleteR21/RogersFactorisationAnalytic.lean#L1312">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d93e7408aed0b0c73ad5ea98116c7dc0dce3cf7b/evidence/erdos-1049-rational-base-lambert.md#prop-weight-factorisation-comparator">Comparator</a></p>
 
 **Proposition 3** (the positive moment weights). *For every $`k\ge0`$,
 ``` math
@@ -241,9 +255,11 @@ P^5c_k\le a_k\le P^{-1}c_k,
 
 </div>
 
+</div>
+
 <div class="proof">
 
-*Proof.* We use the Gaussian binomial coefficients $`\genfrac{[}{]}{0pt}{}{n}{j}_q=(q;q)_n/((q;q)_j(q;q)_{n-j})`$ for $`0\le j\le n`$, and put $`\mathcal E(z)=(z;q)_\infty^{-1}`$. Euler’s expansion gives $`\mathcal E(z)^r=\sum_{n\ge0}R_n^{(r)}z^n/(q;q)_n`$. To obtain the product $`R_k^{(2)}R_k^{(3)}`$, we need to shift the coefficients of $`\mathcal E^3`$ and then sum over all splittings of the index. The operator $`\partial_qf(z)=(f(z)-f(qz))/z`$ does this without introducing extra factorials: $`\partial_qz^j=(1-q^j)z^{j-1}`$ cancels the last factor of $`(q;q)_j`$. In particular,
+*Proof.* We use the Gaussian binomial coefficients $`\genfrac{[}{]}{0pt}{}{n}{j}_q=(q;q)_n/((q;q)_j(q;q)_{n-j})`$ for $`0\le j\le n`$, and put $`\mathcal E(z)=(z;q)_\infty^{-1}`$. Euler’s expansion gives $`\mathcal E(z)^r=\sum_{n\ge0}R_n^{(r)}z^n/(q;q)_n`$. To obtain $`R_k^{(2)}R_k^{(3)}`$, we shift the coefficients of $`\mathcal E^3`$ and sum over decompositions of the index. The unnormalised $`q`$-difference operator $`\partial_qf(z)=(f(z)-f(qz))/z`$ is convenient because $`\partial_qz^j=(1-q^j)z^{j-1}`$ cancels the last factor of $`(q;q)_j`$. In particular,
 ``` math
 \partial_q\mathcal E=\mathcal E,\qquad
  \partial_q^n\mathcal E(z)^3
@@ -266,12 +282,23 @@ and hence
   \sum_{k\ge0}\frac{w^k(z;q)_k}{(q;q)_k}h_k(z).
 ```
 The left-hand side is $`\sum_{n,j\ge0}R_{n+j}^{(3)}w^nz^j/((q;q)_n(q;q)_j)`$. Putting $`z=w`$ collects all pairs with the same sum $`n+j`$. The coefficient of $`w^k`$ is consequently $`R_k^{(3)}\sum_{j\le k}\bigl((q;q)_j(q;q)_{k-j}\bigr)^{-1}
-=R_k^{(2)}R_k^{(3)}/(q;q)_k`$. To evaluate the right-hand side, we expand $`h_k`$, put $`k=j+t`$, and use the $`q`$-binomial theorem in the form
+=R_k^{(2)}R_k^{(3)}/(q;q)_k`$. On the right-hand side, put $`z=w`$, expand $`h_k`$, and write $`k=j+t`$. The identity $`(w;q)_{j+t}=(w;q)_j(wq^j;q)_t`$ gives
+``` math
+\mathcal E(w)^4\sum_{j\ge0}\frac{w^j(w;q)_j^2}{(q;q)_j}
+       \sum_{t\ge0}\frac{(wq^j;q)_t}{(q;q)_t}w^t.
+```
+The inner sum is evaluated by the $`q`$-binomial theorem:
 ``` math
 \sum_{t\ge0}\frac{(wq^j;q)_t}{(q;q)_t}w^t
  =\frac{(w^2q^j;q)_\infty}{(w;q)_\infty}.
 ```
-The resulting expression is $`G_q(w)`$, as required. We may read each identity coefficientwise, or as an absolutely convergent expansion when $`|z|`$ and $`|w|`$ are sufficiently small.
+Finally, $`(w;q)_j=(w;q)_\infty/(wq^j;q)_\infty`$ cancels two of the five factors $`\mathcal E(w)`$, leaving
+``` math
+\mathcal E(w)^3\sum_{j\ge0}\frac{w^j}{(q;q)_j}
+       \frac{(w^2q^j;q)_\infty}{(wq^j;q)_\infty^2}
+ =G_q(w).
+```
+We may read each identity coefficientwise, or as an absolutely convergent expansion when $`|z|`$ and $`|w|`$ are sufficiently small.
 
 For the bounds, we write $`b_k^{(r)}=[z^k](z;q)_\infty^{-r}`$, so that $`R_k^{(r)}=(q;q)_kb_k^{(r)}`$ and $`a_k=P^4(q;q)_kb_k^{(2)}b_k^{(3)}`$. By Euler’s expansion, $`b_k^{(r)}`$ is an $`r`$-fold convolution of $`1/(q;q)_n`$, whose terms lie in $`[1,P^{-1}]`$. There are $`\binom{k+r-1}{r-1}`$ compositions of $`k`$ into $`r`$ nonnegative parts, and we deduce
 ``` math
@@ -281,7 +308,7 @@ Combining these at $`r=2,3`$ with $`P\le(q;q)_k\le1`$ and $`c_k=(k+1)\binom{k+2}
 
 </div>
 
-The bounds above control shifts uniformly. We now calculate the first correction to $`a_k/c_k`$; this will give the fixed-shift limit and the power of $`N`$ in Theorem <a href="#res:sharp-fixed-base" data-reference-type="ref" data-reference="res:sharp-fixed-base">1</a>.
+It remains to prove the fixed-shift limit and determine the product $`\prod_{k<N}a_k`$. Both follow from the first-order asymptotic of $`a_k/c_k`$.
 
 <a id="sec:coefficient-asymptotic"></a>
 
@@ -289,7 +316,7 @@ The bounds above control shifts uniformly. We now calculate the first correction
 
 <div class="proof">
 
-*Proof of Theorem <a href="#res:sharp-fixed-base" data-reference-type="ref" data-reference="res:sharp-fixed-base">1</a>.* Put $`L=F(1/q)`$, $`e_k=(q;q)_k^{-1}`$ and $`E=P^{-1}`$. Replacing every $`e_k`$ by $`E`$ in the two convolution sums gives $`E^2(k+1)`$ and $`E^3\binom{k+2}{2}`$. These count, respectively, the nonnegative pairs and triples with sum $`k`$. They explain the leading cubic term of $`a_k`$, but we also need its first correction. For a fixed index $`i`$, there is one pair $`(i,k-i)`$ and there are $`k-i+1`$ triples whose first coordinate is $`i`$. Thus a summable deficit in the sequence $`e_i`$ produces a constant correction in the two-fold sum and a linear correction in the three-fold sum. We calculate that deficit and bound the terms containing it twice.
+*Proof of Theorem <a href="#res:sharp-fixed-base" data-reference-type="ref" data-reference="res:sharp-fixed-base">1</a>.* Put $`L=F(1/q)`$, $`e_k=(q;q)_k^{-1}`$ and $`E=P^{-1}`$. Replacing every $`e_k`$ by $`E`$ in the two convolution sums gives $`E^2(k+1)`$ and $`E^3\binom{k+2}{2}`$. The factors $`k+1`$ and $`\binom{k+2}{2}`$ count nonnegative pairs and triples with sum $`k`$. For a fixed $`i`$, one pair and $`k-i+1`$ triples have first coordinate $`i`$. Consequently, the summable differences $`E-e_i`$ produce a constant correction in the two-fold convolution and a linear correction in the three-fold convolution. The terms containing two or more such differences contribute to the error bounds below.
 
 Writing $`d_k=E-e_k`$, the identity $`e_{k+1}-e_k=q^{k+1}e_{k+1}`$ gives
 ``` math
@@ -353,16 +380,16 @@ Substitution in <a href="#eq:geometric-limit" data-reference-type="eqref" data-r
 
 </div>
 
-The power of $`N`$ thus comes from the first-order corrections in the two convolutions. Replacing $`a_k`$ by its leading cubic term $`c_k`$ would lose both corrections and hence the factor $`N^{-8F(1/q)}`$.
+Thus the leading cubic term $`c_k`$ determines $`C_N`$, whereas the first correction to $`a_k/c_k`$ determines $`N^{-8F(1/q)}`$.
 
 <a id="sec:hankel-order"></a>
 
 ## The first nonzero formal term
 
-The order of a nonzero formal series is the least exponent with nonzero coefficient. We now let $`q`$ tend formally to zero at fixed rank, rather than increasing the rank at fixed $`q`$. The shifted term in <a href="#eq:last-node-shift" data-reference-type="eqref" data-reference="eq:last-node-shift">[eq:last-node-shift]</a> then has an extra factor of $`q`$. More generally, every nonempty partition has positive displacement exponent. Thus a single tuple determines the first formal term, although all partitions were needed for the fixed-base constant.
+The order of a nonzero formal series is the least exponent with nonzero coefficient. We now fix $`N`$ and determine the first term in the formal $`q`$-expansion. The shifted term in <a href="#eq:last-node-shift" data-reference-type="eqref" data-reference="eq:last-node-shift">[eq:last-node-shift]</a> then has an extra factor of $`q`$. More generally, every nonempty partition has positive displacement exponent. Thus a single tuple determines the first formal term, although all partitions were needed for the fixed-base constant.
 
 <div id="res:zudilin-sharp-qorder" class="theorem">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/1d16f2ddf78e7c4c850246f67bf8ce79b19deb3c/evidence/erdos-1049-rational-base-lambert.md#res-zudilin-sharp-qorder">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/1d16f2ddf78e7c4c850246f67bf8ce79b19deb3c/evidence/erdos-1049-rational-base-lambert.md#res-zudilin-sharp-qorder-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/d93e7408aed0b0c73ad5ea98116c7dc0dce3cf7b/evidence/erdos-1049-rational-base-lambert.md#res-zudilin-sharp-qorder">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d93e7408aed0b0c73ad5ea98116c7dc0dce3cf7b/evidence/erdos-1049-rational-base-lambert.md#res-zudilin-sharp-qorder-comparator">Comparator</a></p>
 
 **Theorem 4** (the first nonzero term of the Hankel determinant). *For every $`N\ge1`$,
 ``` math
@@ -392,7 +419,7 @@ The order of the summand indexed by $`(k_i)`$ is $`\sum_{i<N}(2N-1-2i)k_i`$. Bec
 ``` math
 \sum_{i<N}(2N-1-2i)i=B_N,\qquad \prod_{i<N}c_i=C_N.
 ```
-No other tuple can cancel that coefficient. For example, at rank two the pair $`(0,1)`$ contributes $`6q+O(q^2)`$, and every other increasing pair has order at least two. ◻
+No other tuple can cancel that coefficient. For $`N=2`$, the pair $`(0,1)`$ contributes $`6q+O(q^2)`$, and every other increasing pair has order at least two. ◻
 
 </div>
 
@@ -410,7 +437,7 @@ We now use the 2004 coefficient family. If $`U,V\in\mathbb{Z}[X]`$ have degree a
  =\frac{b^{K_n}}{a^{K_n-W_n}}.
 \end{equation}
 ```
-This is the degree contribution; the proof below also controls the remaining factors. The quadratic limits $`K_n/n^2\to C_1`$ and $`(K_n-W_n)/n^2\to C_0`$ yield the sufficient inequality $`C_1\log b<C_0\log a`$ once the remaining factors have been bounded. The work is to justify cancellation over $`\mathbb{Z}[X]`$ and calculate the two degrees before specialising $`X`$ to $`a/b`$.
+The proof below shows that the remaining factors contribute only $`o(n^2)`$ to the logarithm. Hence the limits $`K_n/n^2\to C_1`$ and $`(K_n-W_n)/n^2\to C_0`$ give the sufficient inequality $`C_1\log b<C_0\log a`$. We first justify cancellation in $`\mathbb{Z}[X]`$ and calculate the degrees, before specialising $`X`$ to $`a/b`$.
 
 We use the parameter direction from Zudilin’s construction \[zudilin2004, §5, pp. 161–162\], together with its thirteen intervals and constants $`C_1,C_0`$. At integer bases his theorem gives the irrationality-exponent bound $`C_1/C_0=2.46497868\ldots`$ \[zudilin2004, Thm. 1, p. 154\]. Let $`\psi_1(u)=\sum_{k\ge0}(k+u)^{-2}`$ for $`u>0`$, and let $`\mathcal I`$ consist of the thirteen intervals listed in the proof. We put
 ``` math
@@ -424,7 +451,7 @@ We use the parameter direction from Zudilin’s construction \[zudilin2004, §5,
 The intervals are disjoint and lie in $`[1/14,1)`$, so $`0\le J\le\psi_1(1/14)-\psi_1(1)<196`$. Together with $`\pi>3`$, these bounds give $`0<C_0<266<C_1/2`$. Thus $`\theta^*=C_0/C_1`$ and $`\mu=C_1/C_0`$ are positive reciprocal constants. The notation $`\mu_{\rm irr}(\xi)`$ instead denotes the irrationality exponent of a value. The estimates below give a sufficient cutoff; its optimality is unknown.
 
 <div id="res:rational-base-threshold" class="theorem">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/1d16f2ddf78e7c4c850246f67bf8ce79b19deb3c/evidence/erdos-1049-rational-base-lambert.md#res-rational-base-threshold">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/1d16f2ddf78e7c4c850246f67bf8ce79b19deb3c/evidence/erdos-1049-rational-base-lambert.md#res-rational-base-threshold-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/d93e7408aed0b0c73ad5ea98116c7dc0dce3cf7b/evidence/erdos-1049-rational-base-lambert.md#res-rational-base-threshold">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d93e7408aed0b0c73ad5ea98116c7dc0dce3cf7b/evidence/erdos-1049-rational-base-lambert.md#res-rational-base-threshold-comparator">Comparator</a></p>
 
 **Theorem 5** (rational-base region for Zudilin’s forms). *Let $`a>b\ge1`$ be coprime integers with
 ``` math
@@ -571,7 +598,7 @@ The coefficient is negative under the theorem’s hypothesis. The positive value
 </div>
 
 <div id="res:thirtyone-four" class="corollary">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos1049/PaperR17/SourceConsumers.lean#L117">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/1d16f2ddf78e7c4c850246f67bf8ce79b19deb3c/evidence/erdos-1049-rational-base-lambert.md#res-thirtyone-four-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos1049/PaperR17/SourceConsumers.lean#L117">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d93e7408aed0b0c73ad5ea98116c7dc0dce3cf7b/evidence/erdos-1049-rational-base-lambert.md#res-thirtyone-four-comparator">Comparator</a></p>
 
 **Corollary 6**. *$`F\bigl((31/4)^r\bigr)`$ is irrational for every integer $`r\ge1`$.*
 
@@ -594,7 +621,7 @@ Taking a common positive integer power preserves both the logarithmic ratio and 
 </div>
 
 <div id="cor:rational-base-measure" class="corollary">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/1d16f2ddf78e7c4c850246f67bf8ce79b19deb3c/evidence/erdos-1049-rational-base-lambert.md#cor-rational-base-measure">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/1d16f2ddf78e7c4c850246f67bf8ce79b19deb3c/evidence/erdos-1049-rational-base-lambert.md#cor-rational-base-measure-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/d93e7408aed0b0c73ad5ea98116c7dc0dce3cf7b/evidence/erdos-1049-rational-base-lambert.md#cor-rational-base-measure">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d93e7408aed0b0c73ad5ea98116c7dc0dce3cf7b/evidence/erdos-1049-rational-base-lambert.md#cor-rational-base-measure-comparator">Comparator</a></p>
 
 **Corollary 7** (an irrationality measure uniform over powers). *For coprime $`a>b\ge1`$ with $`\theta=\log b/\log a<\theta^*`$ and every integer $`r\ge1`$,
 ``` math
@@ -656,9 +683,9 @@ The positive-remainder estimates require $`x>1`$, so they give no statement for 
 
 # Further questions
 
-To use the determinant asymptotic in an irrationality proof, we would need to clear its rational coefficients at a cost compatible with its decay. Positivity and the growth of the moment weights do not estimate this cost. For comparison, the [rational-value model in the companion paper](../../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.pdf#nameddest=long1049-countermodel) has the same formal orders, leading coefficients and type of fixed-base power correction, although its target value is rational. The model and its denominator calculation are retained there with ordinary proofs as unformalised remarks. The long record also gives an [ordinary argument for the ratio-limit extension](../../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.pdf#nameddest=long1049-ratio-extension) under $`a_{k+1}/a_k\to\rho\in(0,q^{-1})`$, without the polynomial shift bound in Theorem <a href="#thm:geometric-moments" data-reference-type="ref" data-reference="thm:geometric-moments">2</a>. That extension remains unformalised.
+An irrationality argument based on these determinants would also require a bound for their coefficient denominators. After clearing them, the nonzero determinants must still tend to zero; positivity and the growth of the moment weights alone give no such bound. For comparison, the [rational-value model in the companion paper](../../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.pdf#nameddest=long1049-countermodel) has the same formal orders, leading coefficients and type of fixed-base power correction, although its target value is rational. The model and its denominator calculation are retained there with ordinary proofs as unformalised remarks. The long record also gives an [ordinary argument for the ratio-limit extension](../../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.pdf#nameddest=long1049-ratio-extension) under $`a_{k+1}/a_k\to\rho\in(0,q^{-1})`$, without the polynomial shift bound in Theorem <a href="#thm:geometric-moments" data-reference-type="ref" data-reference="thm:geometric-moments">2</a>. That extension remains unformalised.
 
-A different question concerns the polynomial coefficients of the approximants, rather than their remainders. Van Assche’s little-$`q`$-Legendre construction \[vanassche2001, §3\] and the multiple-orthogonality construction of Postelmans and Van Assche \[postelmansvanassche2007, §2\] make the normalisation important. In the 2016 family, the companion paper proves positivity of the first matrix of a coefficient pencil through rank eight, with real, interlacing roots below $`F(p)`$ for $`p>1`$. The shifted minors and coefficientwise positivity are supported by the stated finite polynomial computations. The [coefficient-moment section](../../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.pdf#nameddest=long1049-coefficients) gives the definitions and the precise ranges. It leaves all-rank positivity and convergence of the largest root open. The general moment criteria of Wang and Zhu \[wangzhu2016\] and Sokal and Walrad \[sw2024\], Berg’s factorial-power example \[berg2007, Theorem 5.1\], and the quadrature construction of Golub and Welsch \[golubwelsch1969\] provide the relevant comparisons. Using a recurrence from another family would require a proof that it holds for these coefficients. The root-of-unity method of Krattenthaler, Rochev, Väänänen and Zudilin \[krvz2009\], for example, concerns a separate construction.
+A different question concerns the polynomial coefficients of the approximants, rather than their remainders. Van Assche’s little-$`q`$-Legendre construction \[vanassche2001, §3\] and the multiple-orthogonality construction of Postelmans and Van Assche \[postelmansvanassche2007, §2\] make the normalisation important. In the 2016 family, the companion paper proves positivity of the first matrix of a coefficient pencil for sizes $`N\le8`$, with real, interlacing roots below $`F(p)`$ for $`p>1`$. The shifted minors and coefficientwise positivity are supported by the stated finite polynomial computations. The [coefficient-moment section](../../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.pdf#nameddest=long1049-coefficients) gives the definitions and the precise ranges. Positivity for every $`N`$ and convergence of the largest root remain open. The general moment criteria of Wang and Zhu \[wangzhu2016\] and Sokal and Walrad \[sw2024\], Berg’s factorial-power example \[berg2007, Theorem 5.1\], and the quadrature construction of Golub and Welsch \[golubwelsch1969\] provide the relevant comparisons. Using a recurrence from another family would require a proof that it holds for these coefficients. The root-of-unity method of Krattenthaler, Rochev, Väänänen and Zudilin \[krvz2009\], for example, concerns a separate construction.
 
 <a id="sec:round8-transfer-boundaries"></a>
 
@@ -666,14 +693,14 @@ A different question concerns the polynomial coefficients of the approximants, r
 
 At $`3/2`$, a polynomial $`Q`$ of degree at most $`W`$ has integral homogenised value $`H_W(Q)=2^WQ(3/2)`$. Congruences at powers of $`2`$ and $`3`$ give finite counting criteria for combinations of such values. The companion paper treats [integer rescaling](../../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.pdf#nameddest=long1049-arithmetic) and [endpoint congruences and signed sums](../../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.pdf#nameddest=long1049-endpoints). It also treats the rank-one case and proves the quantitative finite-fibre estimate used below. Equal residues give a useful irrationality form only when the divided remainder is also nonzero and small. Smith normal form describes the image of the evaluated lattice \[stanley2016, Theorems 2.3–2.4\], but does not estimate these real remainders.
 
-For example, suppose that $`M`$ integral rows $`(A_j,B_j)`$ have remainders $`e_j=A_jF(3/2)-B_j`$, and that the subset sums take $`Q`$ residue values modulo a positive integer $`D`$. Put $`T=\sum_j|e_j|`$ and suppose that at most $`k`$ selectors give the same exact remainder within a residue class. For each positive integer $`n`$, the sufficient inequality
+For example, suppose that $`M`$ integral rows $`(A_j,B_j)`$ have remainders $`e_j=A_jF(3/2)-B_j`$, and that the subset sums take $`Q`$ residue values modulo a positive integer $`D`$. Put $`T=\sum_j|e_j|`$ and suppose that at most $`k`$ subsets give any fixed remainder within a residue class. For each positive integer $`n`$, the sufficient inequality
 ``` math
 \begin{equation}
 \label{eq:quantitative-selector-budget}
  2^M>Qk\left(\left\lfloor\frac{nT}{D}\right\rfloor+1\right)
 \end{equation}
 ```
-gives two equal-residue selectors whose remainders differ by a nonzero quantity of absolute value less than $`D/n`$. Indeed, in each residue class partition the interval of attained remainders into bins of width $`D/n`$, beginning at its least value. If every bin contained only one real value, its multiplicity would be at most $`k`$, contrary to <a href="#eq:quantitative-selector-budget" data-reference-type="eqref" data-reference="eq:quantitative-selector-budget">[eq:quantitative-selector-budget]</a>. Subtracting the selectors and dividing by $`D`$ gives an integral linear form of nonzero absolute value less than $`1/n`$. The [quantitative lemma and its proof](../../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.pdf#nameddest=long1049-selectors) state the finite-set version without assumptions about Lambert series.
+gives two subsets with the same residue vector whose remainder values differ by an amount strictly between $`0`$ and $`D/n`$ in absolute value. Indeed, in each residue class divide the range of remainders into half-open intervals of width $`D/n`$, starting at its least value. If each interval contained only one remainder value, it would contain at most $`k`$ subsets, contrary to <a href="#eq:quantitative-selector-budget" data-reference-type="eqref" data-reference="eq:quantitative-selector-budget">[eq:quantitative-selector-budget]</a>. Subtracting the two subset sums and dividing their coefficients by $`D`$ gives an integral linear form of nonzero absolute value less than $`1/n`$. The [quantitative lemma and its proof](../../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.pdf#nameddest=long1049-selectors) state the finite-set version without assumptions about Lambert series.
 
 The elementary integer-base method provides a different comparison. Vandehey \[vandehey2013\] and Duverney and Tachiya \[duverneytachiya2019\] use integer-base expansions. At a noninteger rational base the cleared tails satisfy a recurrence with a growing denominator contribution. The [clearing and tail-recurrence calculations](../../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.pdf#nameddest=long1049-clearing) in the companion paper rule out one coordinatewise scheme at $`3/2`$. They make no assertion about other approximation families. At the function level, Bell and Smertnig \[bellsmertnig2026, Theorem 1.3\] exclude Mahler equations for the divisor generating series, while leaving the arithmetic of a single rational argument undecided.
 
@@ -687,7 +714,7 @@ The unrestricted request for primitive polynomial rows and a signed combination 
 
 # Proofs and source records
 
-The links beside each statement and in the margin give the existing Lean proofs and recorded Comparator comparisons, indexed in the [evidence record](https://github.com/wcook04/plectis-erdos/blob/1d16f2ddf78e7c4c850246f67bf8ce79b19deb3c/evidence/erdos-1049-rational-base-lambert.md) at the [source revision](https://github.com/wcook04/plectis-erdos/tree/7380b7871687b6bcc41ca0143c61f232e8af6500). Theorem <a href="#thm:geometric-moments" data-reference-type="ref" data-reference="thm:geometric-moments">2</a> is the polynomial-bound specialisation of the [geometric-moment proof](https://github.com/wcook04/plectis-erdos/blob/035c414b25fda09ae0d2e56358b8716d321ebd99/lean/ErdosProblems/Erdos1049/PaperCompleteR21/GeometricUniversality.lean#L1324) cited in the long record; its Comparator association remains pending. The broader ratio-limit argument and rational-value model there have ordinary proofs only. This revision has had no fresh Lean or Comparator run and no independent review.
+The links beside each statement and in the margin give the existing Lean proofs and recorded Comparator comparisons, indexed in the [evidence record](https://github.com/wcook04/plectis-erdos/blob/d93e7408aed0b0c73ad5ea98116c7dc0dce3cf7b/evidence/erdos-1049-rational-base-lambert.md) at the [source revision](https://github.com/wcook04/plectis-erdos/tree/7380b7871687b6bcc41ca0143c61f232e8af6500). Theorem <a href="#thm:geometric-moments" data-reference-type="ref" data-reference="thm:geometric-moments">2</a> is the polynomial-bound specialisation of the [geometric-moment proof](https://github.com/wcook04/plectis-erdos/blob/035c414b25fda09ae0d2e56358b8716d321ebd99/lean/ErdosProblems/Erdos1049/PaperCompleteR21/GeometricUniversality.lean#L1324) cited in the long record; its Comparator association remains pending. The broader ratio-limit argument and rational-value model there have ordinary proofs only. This revision has had no fresh Lean or Comparator run and no independent review.
 
 <a id="data-availability."></a>
 

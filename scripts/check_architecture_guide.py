@@ -532,9 +532,9 @@ def validate_systems_paper(text: str) -> None:
 
     artifact = next(a for a in contract['artifacts'] if a['id']=='repository_architecture_guide')
     unified = artifact.get('systems_paper_profile') == 'unified_corpus_to_paper_v1'
-    title = ('Publishing Mathematical Results from a Lean Repository'
+    title = ('A Repository-Based System for Research and Publication'
              if unified else 'Problem-Sized Lean Worlds')
-    subtitle = (r'Evidence, exposition and revision in eight Erd\H{o}s problems'
+    subtitle = (r'Architecture, evidence and iteration in a Lean research repository'
                 if unified else 'Persistent, checkable research records for AI-assisted mathematics')
     require(title in text and subtitle in text,
             'systems paper title differs from its registered architecture profile')

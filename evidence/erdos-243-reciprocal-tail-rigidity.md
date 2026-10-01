@@ -1,4 +1,4 @@
-# Formal evidence: Cubic-Rate Irrationality and Reciprocal-Tail Rigidity
+# Formal evidence: Reciprocal Sums and the Sylvester Recurrence
 
 This record belongs to the paper [erdos-243-reciprocal-tail-rigidity.pdf](../paper/243/erdos-243-reciprocal-tail-rigidity.pdf). For every result it lists the Lean declarations that state it, and the recorded Comparator check where there is one. The inline links and margin marks in the paper use the same result mapping.
 

@@ -274,7 +274,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="res-dual-arity-floor"></a>
 
-## Passage (beginning “res:dual-arity-floor…”), page 12
+## Passage (beginning “res:dual-arity-floor…”), page 13
 
 The Lean proof assumes the separation bound (7) and the radius and budget bounds (8), which this proof derives from the standing failure hypothesis. Lean takes this input as a hypothesis (`hsep`, `hrad`, `hbudget`); it is not proved in Lean.
 

@@ -359,7 +359,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long251-res-true-tail"></a>
 
-## Lemma 5.4 (the boundary condition identifying a true tail), page 14
+## Lemma 5.4 (the boundary condition for the tail recurrence), page 14
 
 > *Let $`a_1,a_2,\ldots`$ be real numbers with $`\sum_{j\ge1}|a_j|2^{-j}<\infty`$, and let $`U_{N+1}=2U_N-a_{N+1}`$. Then
 > ``` math
@@ -446,7 +446,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long251-res-smallpair"></a>
 
-## Theorem 6.1 (adjacent small-shift obstruction), page 16
+## Theorem 6.1 (two consecutive small tail differences), page 16
 
 > *Let $`T`$ satisfy the dyadic tail recurrence with integer coefficients $`g`$, and fix $`h`$ and $`N`$. If
 > ``` math
@@ -657,7 +657,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long251-res-one-tail-certificate"></a>
 
-## Proposition 6.7 (a one-tail signed certificate), page 18
+## Proposition 6.7 (certifying two small differences from one enclosure), page 18
 
 > *Let $`D_{N+1}=2D_N-\delta_N`$ with real $`D_N`$, and suppose $`\delta_N=2s`$ for $`s\in\{-1,1\}`$. If integers $`A,B,Q`$ satisfy $`Q>0`$, $`B\ge0`$, $`|QD_N-A|\le B`$, and
 > ``` math
@@ -745,7 +745,7 @@ theorem denominator_floor_both (a : ℤ) (b : ℕ) (hb : 0 < b)
 
 <a id="long251-res-boundedperturbation"></a>
 
-## Theorem 8.1 (bounded-perturbation obstruction), page 21
+## Theorem 8.1 (bounded perturbations preserving congruences), page 21
 
 > *Let $`a_n`$ be natural numbers with $`\sum_{n\ge0}a_n2^{-(n+1)}`$ convergent. For every integer $`M\ge1`$ and every cutoff $`K`$ there are digits $`\varepsilon_n\in\{0,1\}`$, zero for $`n<K`$, such that $`\sum_{n\ge0}(a_n+M\varepsilon_n)2^{-(n+1)}`$ is rational.*
 
@@ -949,7 +949,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long251-res-jointcountermodel"></a>
 
-## Corollary 8.6 (simultaneous prime-gap countermodel), page 24
+## Corollary 8.6 (a rational sum with the stated prime-gap statistics), page 24
 
 > *For every prescribed finite prime-gap prefix and $`0<\varepsilon\le1`$, there is an altered sequence $`b=g+e`$, with $`P_n=2+\sum_{i<n}b_i`$, for which one can simultaneously impose a rational dyadic value, nonnegative integer corrections eventually at most $`(\log(n+3))^\varepsilon`$, all fixed eventual coefficient and cumulative congruences, fixed-block polynomial nonconcentration, and vanishing total variation distance between unnormalised block distributions for lengths $`o(\log\log X)`$. The cumulative positions satisfy
 > ``` math
@@ -1042,7 +1042,7 @@ def SchlagePuchtaLemma4 : Prop :=
 
 <a id="long251-res-sparse"></a>
 
-## Theorem 8.7 (sparsity of the two-window event), page 25
+## Theorem 8.7 (density zero for the small-difference condition), page 25
 
 > *Fix $`h\ge1`$. The set of $`N\ge1`$ at which the three hypotheses of Theorem 6.1 hold for the actual prime gaps has density zero. For the same $`h`$, the set of $`N`$ with $`g_{N+h+1}=g_{N+1}`$ also has density zero.*
 
@@ -1129,7 +1129,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long251-res-polynomialcountermodel"></a>
 
-## Proposition 8.9 (quadratic polynomial-shift countermodel), page 28
+## Proposition 8.9 (a quadratic sequence with integral tails), page 28
 
 > *Put $`c_n=2(n^2+4n+2)`$ and $`U_n=2(n+4)^2`$. Then $`c_n`$ is positive, even and strictly increasing, $`U_{n+1}=2U_n-c_{n+1}`$, every shift $`U_{N+h}-U_N`$ is integral, $`c_{n+1}-c_n=4n+10`$ is never $`\pm2`$, and
 > ``` math
@@ -1320,7 +1320,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long251-xr-boundedpolignac"></a>
 
-## Proposition D.6 (bounded recurring-values countermodel), page 39
+## Proposition D.6 (recurring values with integral tails), page 39
 
 > *Put $`U_0=4`$ and, for $`n\ge1`$, $`U_n=6`$ when $`n=k!`$ for some $`k\ge3`$ and $`U_n=4`$ otherwise, and set $`a_n=2U_{n-1}-U_n`$ for $`n\ge1`$. Then $`a_n\in\{2,4,8\}`$. For every $`k\ge3`$, the value $`2`$ occurs at index $`k!`$ and the value $`4`$ at index $`2\,k!`$, so both recur infinitely often at indices divisible by any fixed $`t\ge1`$. The series $`\sum_{n\ge1}a_n2^{-n}`$ equals $`4`$ and every tail $`\sum_{j\ge1}a_{N+j}2^{-j}`$ equals the integer $`U_N`$.*
 

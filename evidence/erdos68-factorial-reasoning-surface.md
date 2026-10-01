@@ -82,7 +82,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long68-res-moment-ideal"></a>
 
-## Theorem 1.3 (the set of attainable moments), page 5
+## Theorem 1.3 (the set of attainable values of $`M`$), page 5
 
 > *Fix $`D\ge2`$ and a prime $`p`$ with $`D/2<p\le D`$. Put
 > ``` math
@@ -127,7 +127,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long68-res-residual-transparency"></a>
 
-## Theorem 1.4 (how the coefficient choices change the remainder), page 8
+## Theorem 1.4 (how the coefficient choices change the remainder), page 6
 
 > *For the vector in (2),
 > ``` math
@@ -497,7 +497,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long68-res-segment"></a>
 
-## Lemma 3.3 (segment inequality), page 15
+## Lemma 3.3 (segment inequality), page 16
 
 > *For $`2\le k\le N-1`$,
 > ``` math
@@ -572,7 +572,7 @@ theorem common_denominator_growth_liminf :
 
 <a id="long68-res-carry-equivalence"></a>
 
-## Theorem 4.1 (an exact criterion from successive partial sums), page 18
+## Theorem 4.1 (an exact criterion from successive partial sums), page 19
 
 > *For $`m\ge3`$,
 > ``` math
