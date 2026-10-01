@@ -76,7 +76,7 @@ The two documents must be compared in both directions: a stronger hypothesis,
 a repaired endpoint or a newly explained limiting step may appear first in
 either one.
 
-\subsection{A better account can require a repaired argument}
+\subsection{Distinguish clarification from a proof repair}
 
 An earlier \#251 review identified a defect in the manuscript's condensed
 account of a sparse construction: a buffer quantity was used without being
@@ -87,7 +87,10 @@ repair assigned the relevant coordinates and performed the accounting across
 all indices. Calling the original paragraph unclear would have understated
 the issue. The condensed proof needed repair before the account of it could be trusted.
 Here the recoverable original prevented a loss during shortening or integration
-from being attributed to the original construction.
+from being attributed to the original construction. This is a historical
+mathematical repair, undertaken in its own review. A current exposition-only
+assignment should locate such a defect and refer it for a separately authorised
+proof review. It should not silently add the missing mathematics.
 
 That decision must be distinguished from a later sharp companion construction
 which remained unreviewed at its recorded disposition. The presence of both
@@ -121,6 +124,49 @@ those remarks. Routine details about running a check could recede, but the
 reader still needed to know which assertion depended on an input. Calling
 both kinds of sentence workflow commentary had erased a substantive
 qualification.
+
+\subsection{Read explanatory words as mathematical claims}\label{sec:words-as-claims}
+
+A familiar word can assert more than the displayed calculation supports. In
+\#1041, Abel summation expresses $f(t\zeta)$ as
+\[
+ f(t\zeta)=\sum_{j=0}^{n-1}(t^j-t^{j+1})S_j,
+ \qquad S_j=\sum_{k=0}^{j}a_k\zeta^k,
+\]
+where $n\ge1$, $f(z)=\sum_{k=0}^n a_kz^k$ and $f(\zeta)=0$.
+For $0\le t<1$, the nonnegative coefficients sum to $1-t^n$.
+Thus it is $f(t\zeta)/(1-t^n)$ that the calculation directly presents as a
+convex combination of the $S_j$~\cite[section on trinomials]{paper1041}.
+At $t=1$ this quotient is undefined, and the proof instead uses $f(\zeta)=0$.
+Naming the normalised quantity checks the definition and the endpoint in the
+same sentence. A root-distance calculation or a statement about segments to
+zeros must likewise retain the particular geometric object it controls.
+
+A shorter proof can also be clearer when its reason is already available.
+The \#243 arithmetic normal form is
+\[
+                 Q(n)=m\binom{n+2}{3}+c,
+                 \qquad m\in\mathbb Z_{>0},
+\]
+and $Q(n)$ is known to be integral at every sufficiently large integer $n$.
+At any such nonnegative $n$, the binomial coefficient is integral, so
+$c=Q(n)-m\binom{n+2}{3}$ is integral
+\cite[reduction and the constant term]{paper243}.
+The proposed explanation uses exactly those established facts. Replacing them
+by ``$Q$ is an integer polynomial'' would be unsafe: an integer-valued polynomial
+can have nonintegral coefficients, as $n(n-1)/2$ shows. The useful simplification
+names the available arithmetic structure.
+
+Even prose that seems to paraphrase a bound deserves this review. In the
+\#257 finite average, the residue period has length $d/\gcd(L,d)$ and the
+sample contains $T$ observations. The inequality $d\le LT$ does not assert
+that one whole period occurs. For $L=3,d=5,T=2$, it holds while the period
+has length five. Splitting the sample into complete periods, possibly none,
+and one remainder is sufficient for the displayed bound
+\cite[finite means for shifted divisor tails]{paper257}.
+Adding the two words ``possibly none'' corrects a gloss while leaving the
+estimate unchanged. This is different from a proof whose estimate itself
+fails. That distinction belongs in the review decision.
 
 \subsection{Correct the source without rewriting its history}
 

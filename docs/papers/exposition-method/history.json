@@ -2005,6 +2005,13 @@
       "role": "Parent-owned current exposition method donor ledger",
       "authority": "parent collected.json and accepted public lessons ledger",
       "boundary": "Scout inventory includes lateR5hash custody for continuity; no re-adjudication of the parent 217 recent rows or R7 pending submissions."
+    },
+    {
+      "epoch": "R8 guide and manuscript return review",
+      "date": "30Sep–1Oct2026",
+      "role": "Selected guide revision and source-current genre transfer",
+      "authority": "R8 original return identities in returns.json; B8/review/exposition/REVIEW.json; current public manuscript sources",
+      "boundary": "Ten returns are indexed, including R9-labelled #1049. Donor reading claims remain donor claims. Guide examples were checked against selected manuscript passages; exact TeX/PDF version and final release checks are bound separately."
     }
   ],
   "source_grounded_cases": [

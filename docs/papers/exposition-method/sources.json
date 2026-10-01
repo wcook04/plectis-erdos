@@ -3869,6 +3869,75 @@
       ],
       "reading_boundary": "This additional source is retained to make historical citations available. Its earlier donor declarations and this custody check are separate from the37 reviewed writing sources.",
       "rights_boundary": "Custody and citation metadata do not confer a licence to republish the original."
+    },
+    {
+      "id": "levin-redell-1983-systems-paper",
+      "recorded_title": "How (and How Not) to Write a Good Systems Paper",
+      "authors": [
+        "Roy Levin",
+        "David D. Redell"
+      ],
+      "year": 1983,
+      "public_reference": "https://www.usenix.org/guidelines-authors",
+      "originals": [
+        {
+          "file": "source.html",
+          "path": "source.html",
+          "sha256": "fd2fe8cc7b46d09aa530dd3ce6244826767f911eaeea827c288a3e5ca489c0c6",
+          "bytes": 37500
+        }
+      ],
+      "used_in": [
+        "exposition-guide-r8-genre-transfer"
+      ],
+      "writing_source_kind": "primary_systems_writing_guidance",
+      "later_inspection": {
+        "date": "2026-10-01",
+        "scope": "USENIX author-hosted full-page introduction and Classes of Papers through Evaluation Criteria opening; genre classes and explicit qualification inspected online, not the entire article."
+      },
+      "reading_boundary": "The source supplies writing conventions and a genre distinction, not proof or evaluation of the repository systems paper.",
+      "annex_slug": "levin-redell-1983-systems-paper",
+      "original_custody": {
+        "packet_member": "annex/levin-redell-1983-systems-paper/source.html",
+        "official_url": "https://www.usenix.org/guidelines-authors",
+        "retrieved_at": "2026-09-30T23:15:25.108447+00:00",
+        "availability": "full_original",
+        "reading_boundary": "Complete original bytes in custody; inspection remains partial as recorded in later_inspection."
+      }
+    },
+    {
+      "id": "sigplan-2018-empirical-evaluation",
+      "recorded_title": "Empirical Evaluation Guidelines",
+      "authors": [
+        "ACM SIGPLAN empirical evaluation committee"
+      ],
+      "year": 2018,
+      "public_reference": "https://sigplan-www.sigplan.hosting.acm.org/Resources/EmpiricalEvaluation/",
+      "originals": [
+        {
+          "file": "source.html",
+          "path": "source.html",
+          "sha256": "28626f36061e2ab2e5d9bd03d60df04494e89164ffe731d213e81f3f96af6f45",
+          "bytes": 15809
+        }
+      ],
+      "used_in": [
+        "exposition-guide-r8-genre-transfer"
+      ],
+      "writing_source_kind": "primary_empirical_evaluation_guidance",
+      "later_inspection": {
+        "date": "2026-10-01",
+        "scope": "Official page introduction, checklist description, FAQ on claim scope, limitations and checklist judgment inspected online; not the linked checklist PDF or underlying sampled papers."
+      },
+      "reading_boundary": "The guidance is scoped to PL empirical evaluations and supplies no direct validation of any local experiment or system.",
+      "annex_slug": "sigplan-2018-empirical-evaluation",
+      "original_custody": {
+        "packet_member": "annex/sigplan-2018-empirical-evaluation/source.html",
+        "official_url": "https://sigplan-www.sigplan.hosting.acm.org/Resources/EmpiricalEvaluation/",
+        "retrieved_at": "2026-09-30T23:15:25.715294+00:00",
+        "availability": "full_original",
+        "reading_boundary": "Complete original bytes in custody; inspection remains partial as recorded in later_inspection."
+      }
     }
   ],
   "reviewed_conventions": [

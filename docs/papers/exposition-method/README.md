@@ -59,6 +59,34 @@ assertions often deserve parallel syntax; dependencies often deserve a
 subordinate clause. Sentence variety is useful when it makes these relations
 clear, not as a count to optimize.
 
+## Carry the method into systems and scientific exposition
+
+This framework was developed on mathematical papers, where the main warrant is
+often a proof. The transferable operation is to identify the claim, its
+conditions, the decisive evidence and the sentence that connects them. The
+evidence changes with genre. For a systems paper, read a nearby implemented or
+theoretical systems paper and distinguish an implementation report, a workload
+measurement, a baseline comparison and a general design claim. Levin and
+Redell's [systems-paper advice](https://www.usenix.org/guidelines-authors)
+distinguishes such paper classes. The [SIGPLAN empirical-evaluation guidance](https://sigplan-www.sigplan.hosting.acm.org/Resources/EmpiricalEvaluation/)
+asks for clear claims and limitations while treating its checklist as support
+for expert judgment. Neither source verifies this repository's systems paper.
+
+For an expository scientific paper, inspect the primary study or derivation and
+nearby expositions in that field. Separate what a source measured, inferred or
+modelled from what the new author explains. State the study population, model
+assumptions or experimental conditions where they govern the conclusion. An
+expository synthesis should say when it reports no new experiment. Put a
+condition before the consequence it licenses; give a measured outcome and its
+comparator together. Use the field's terms and sentence habits only when the
+underlying object and evidence match.
+
+These are bounded genre transfers, not proof rules for an empirical paper or
+a universal rubric for scientific writing. The next guide review should read
+primary advice on guide-writing itself, as well as close human examples of
+mathematical, systems and scientific exposition, and report exact locators and
+what was actually inspected.
+
 ## Let the proof determine the explanation
 
 The model passage and the new argument must be compared in two separate ways.
@@ -157,11 +185,16 @@ separates theorem-specific conditions from transferable advice.
 ## Use the revised version in the next packet
 
 Include the current skill, this guide, the relevant rule and lesson records,
-source identities and both writing papers. Freeze their bytes and digests in
+source identities, both writing papers, all prior authoring and exposition
+returns, all ten new R8 returns (including the separately labelled R9 #1049
+return), and the newest accepted paper sources. Freeze their bytes and digests in
 the packet manifest. Enclose the actual primary sources needed for the chosen
 passages, with version and reading-status information. The recipient should
-read them and compare their conventions with the supplied manuscript, rather
-than apply a generic vocabulary checklist. Source availability remains separate
+research how to write the two guides themselves from primary writing advice
+and close expository papers, with a separate systems and scientific-genre pass.
+It should read the enclosed sources, state actual reading scope, and compare
+their conventions with the supplied manuscript rather than apply a generic
+vocabulary checklist. Source availability remains separate
 from a declaration that a source was read.
 
 The resulting change is a revision to repository documents and procedures.

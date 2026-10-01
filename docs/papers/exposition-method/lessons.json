@@ -7914,6 +7914,136 @@
         "native-r7-68-02"
       ],
       "tag_boundary": "Rule-family tag is a retrieval aid, not acceptance of this donor proposal as a universal rule."
+    },
+    {
+      "id": "short-20260930-r8-exposition-generalized-lessons-01",
+      "return_id": "short-20260930-r8-exposition",
+      "document": "GENERALIZED_LESSONS.json",
+      "document_sha256": "d014d275dc2fb7d8c0fcba831212156bb16d0d3182b5ad7bd8af4f723a46f0f4",
+      "index": 0,
+      "rule_families": [
+        "E03",
+        "E05"
+      ],
+      "proposal": "A missing sentence is an exposition problem only when its mathematical warrant is already available.",
+      "before": "Explain why the iteration attains the target.",
+      "after": "State the remainder identity and the bound tending to zero; when either is missing, refer the proof obligation for mathematical review.",
+      "limit": "An analogy with a successful source proof is not the missing proof.",
+      "guide_destination": "Long §§1.1,4.3; compact §3",
+      "editorial_disposition": "accepted_as_scoped_worked_example_under_existing_rules",
+      "native_review": "B8/review/exposition/REVIEW.json",
+      "reading_boundary": "Donor source-reading claims remain in original return; selected mathematical example checked against current public paper, with final guide render and release status separate."
+    },
+    {
+      "id": "short-20260930-r8-exposition-generalized-lessons-02",
+      "return_id": "short-20260930-r8-exposition",
+      "document": "GENERALIZED_LESSONS.json",
+      "document_sha256": "d014d275dc2fb7d8c0fcba831212156bb16d0d3182b5ad7bd8af4f723a46f0f4",
+      "index": 1,
+      "rule_families": [
+        "E05"
+      ],
+      "proposal": "Present the set to be certified before the arithmetic test.",
+      "before": "The following two inequalities suffice.",
+      "after": "Enclose sD by (sA±B)/Q; compare the lower endpoint with 1/2 and the upper with 1.",
+      "limit": "Failure of the enclosure test does not establish that the actual value is outside the interval.",
+      "guide_destination": "Long §3.1; compact §5",
+      "editorial_disposition": "accepted_as_scoped_worked_example_under_existing_rules",
+      "native_review": "B8/review/exposition/REVIEW.json",
+      "reading_boundary": "Donor source-reading claims remain in original return; selected mathematical example checked against current public paper, with final guide render and release status separate."
+    },
+    {
+      "id": "short-20260930-r8-exposition-generalized-lessons-03",
+      "return_id": "short-20260930-r8-exposition",
+      "document": "GENERALIZED_LESSONS.json",
+      "document_sha256": "d014d275dc2fb7d8c0fcba831212156bb16d0d3182b5ad7bd8af4f723a46f0f4",
+      "index": 2,
+      "rule_families": [
+        "E05"
+      ],
+      "proposal": "A fixed combinatorial index can still leave a product whose length grows.",
+      "before": "For each fixed partition, the weight ratios tend to one; apply dominated convergence.",
+      "after": "First cancel the growing product into finite endpoint products. Then use a common index set and a summable bound over lengths and parts.",
+      "limit": "The base remains fixed; neither step asserts uniformity as q tends to one.",
+      "guide_destination": "Long §3.3; compact §6",
+      "editorial_disposition": "accepted_as_scoped_worked_example_under_existing_rules",
+      "native_review": "B8/review/exposition/REVIEW.json",
+      "reading_boundary": "Donor source-reading claims remain in original return; selected mathematical example checked against current public paper, with final guide render and release status separate."
+    },
+    {
+      "id": "short-20260930-r8-exposition-generalized-lessons-04",
+      "return_id": "short-20260930-r8-exposition",
+      "document": "GENERALIZED_LESSONS.json",
+      "document_sha256": "d014d275dc2fb7d8c0fcba831212156bb16d0d3182b5ad7bd8af4f723a46f0f4",
+      "index": 3,
+      "rule_families": [
+        "E03",
+        "E07"
+      ],
+      "proposal": "Preserve the full strength of a finite test without erasing the remaining quantifiers.",
+      "before": "The certificate is only sufficient, or alternatively the certificate solves the problem.",
+      "after": "It exactly detects a nonintegral fixed difference, but does not produce differences for every required shift and cutoff.",
+      "limit": "A varying object can have a shrinking gap; the fixed-object argument is not uniform without more information.",
+      "guide_destination": "Long §3.4; compact §11",
+      "editorial_disposition": "accepted_as_scoped_worked_example_under_existing_rules",
+      "native_review": "B8/review/exposition/REVIEW.json",
+      "reading_boundary": "Donor source-reading claims remain in original return; selected mathematical example checked against current public paper, with final guide render and release status separate."
+    },
+    {
+      "id": "short-20260930-r8-exposition-generalized-lessons-05",
+      "return_id": "short-20260930-r8-exposition",
+      "document": "GENERALIZED_LESSONS.json",
+      "document_sha256": "d014d275dc2fb7d8c0fcba831212156bb16d0d3182b5ad7bd8af4f723a46f0f4",
+      "index": 4,
+      "rule_families": [
+        "E04",
+        "E05"
+      ],
+      "proposal": "Explain which existing restriction selects a base, kernel or parameter.",
+      "before": "Use a centred base-four expansion.",
+      "after": "Only even-indexed coefficients may change, and their binary weights are 2^{-2m}=4^{-m}.",
+      "limit": "The identity explains the choice; coefficient bounds and attainable values still require the construction proof.",
+      "guide_destination": "Long §3.2; compact §§5,8",
+      "editorial_disposition": "accepted_as_scoped_worked_example_under_existing_rules",
+      "native_review": "B8/review/exposition/REVIEW.json",
+      "reading_boundary": "Donor source-reading claims remain in original return; selected mathematical example checked against current public paper, with final guide render and release status separate."
+    },
+    {
+      "id": "short-20260930-r8-exposition-generalized-lessons-06",
+      "return_id": "short-20260930-r8-exposition",
+      "document": "GENERALIZED_LESSONS.json",
+      "document_sha256": "d014d275dc2fb7d8c0fcba831212156bb16d0d3182b5ad7bd8af4f723a46f0f4",
+      "index": 5,
+      "rule_families": [
+        "E03",
+        "E04"
+      ],
+      "proposal": "Read explanatory nouns as mathematical assertions with definitions.",
+      "before": "The Abel sum is a convex combination.",
+      "after": "Its coefficients sum to 1-t^n, so the displayed convex combination is the normalised quantity for t<1; the endpoint uses the root identity.",
+      "limit": "A different valid convex-hull argument could add the origin explicitly. Do not call all unnormalised formulations false without checking which points are included.",
+      "guide_destination": "Long §4.4; compact §13",
+      "editorial_disposition": "accepted_as_scoped_worked_example_under_existing_rules",
+      "native_review": "B8/review/exposition/REVIEW.json",
+      "reading_boundary": "Donor source-reading claims remain in original return; selected mathematical example checked against current public paper, with final guide render and release status separate."
+    },
+    {
+      "id": "short-20260930-r8-exposition-generalized-lessons-07",
+      "return_id": "short-20260930-r8-exposition",
+      "document": "GENERALIZED_LESSONS.json",
+      "document_sha256": "d014d275dc2fb7d8c0fcba831212156bb16d0d3182b5ad7bd8af4f723a46f0f4",
+      "index": 6,
+      "rule_families": [
+        "E12"
+      ],
+      "proposal": "Review separate tasks rather than collapse quality into one impression.",
+      "before": "The paper reads better and has fewer flagged phrases.",
+      "after": "Ask the reader to identify the result, reconstruct the difficult inference and apply it with its hypotheses intact; report self-review as such.",
+      "limit": "These are proposed review tasks, not evidence that a reader study was conducted or that the draft wins a comparison.",
+      "guide_destination": "Long §5.6; compact §14",
+      "editorial_disposition": "accepted_as_scoped_worked_example_under_existing_rules",
+      "native_review": "B8/review/exposition/REVIEW.json",
+      "reading_boundary": "Donor source-reading claims remain in original return; selected mathematical example checked against current public paper, with final guide render and release status separate."
     }
   ],
   "integrating_reviews": [
@@ -8484,6 +8614,13 @@
         "actual_source_verification": "Printed p.385 Lemma 2.1 and following remark give integer scaled rational tails, with the factorial case requiring no extra q when the denominator divides the product; no statement about H_m in this manuscript.",
         "source_reference": "packet annex/hancl-tijdeman-2005-irrationality-factorial-series/source.pdf, p.385"
       }
+    },
+    {
+      "id": "native-r8-exposition-guide-01",
+      "return_id": "short-20260930-r8-exposition",
+      "scope": "Seven guide proposals selected under existing rule families after source-current mathematical checks; systems/scientific transfer added with primary advice. Final render/release bound separately.",
+      "record_path": "B8/review/exposition/REVIEW.json",
+      "donor_generalized_lessons_sha256": "d014d275dc2fb7d8c0fcba831212156bb16d0d3182b5ad7bd8af4f723a46f0f4"
     }
   ]
 }

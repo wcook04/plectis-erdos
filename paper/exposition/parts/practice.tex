@@ -21,6 +21,56 @@ scores to optimize. Each rule states a limit that matters to its use: an
 example does not prove an infinite result; a shorter sentence need not preserve
 quantifiers; a rendered PDF need not explain its mathematics well.
 
+\subsection{Revise in an order that preserves the argument}\label{sec:revision-order}
+
+Begin with the full statement, proof and closest prior results. Write a brief
+account of the contribution, the decisive inference and the exact boundary.
+Check this account against the abstract and introduction. When a condition is
+only sufficient, a witness is shared, or a parameter is fixed, preserve that
+qualification in every compressed occurrence. Agreement among several summaries
+is not enough if all have inherited the same overstatement.
+
+Next choose the passage where the intended reader must supply the most
+consequential missing explanation. Ask a concrete question: why this parameter,
+why this normalisation, why this error threshold, or why does this limit give
+the asserted object? Read a relevant local argument in an original source,
+then find the mathematical answer in the manuscript. Write the sentence that
+connects that answer to the next step. If the answer is absent, record the
+mathematical issue rather than concealing it with a connective.
+
+Review the revised paragraph with its predecessor and successor. Definitions
+must arrive before they are used, and the paragraph's conclusion must supply
+what the next one needs. Read displayed formulas as parts of grammatical
+sentences, checking punctuation and the referent of each symbol. Conrad's
+examples illustrate how unspecified variables and loose quantification can
+make ordinary-looking prose say the wrong thing~\cite[\S\S1--2]{conrad}.
+A sentence-level pass is valuable after the dependency structure is sound;
+it cannot substitute for that earlier work.
+
+Finally, remove explanation that repeats an already intelligible operation.
+Keep a second account when it serves a different purpose, such as showing how
+to apply a formula after deriving it. Stop when another sentence would resolve
+no specific ambiguity, justify no missing transition and improve no useful
+route through the paper. This gives brevity a reader-facing purpose without
+imposing a page target.
+
+\subsection{Keep the short paper and long record useful separately}\label{sec:short-long}
+
+Before moving a passage, identify what a reader of each document must still be
+able to do. The short paper should support its principal result through an
+intelligible proof or a clearly identified proof sketch with a precise full-proof
+destination. A long record should preserve the omitted derivation, its assumptions
+and its relation to the main argument. A link labelled ``details'' is insufficient
+when its destination proves a different statement or omits the difficult step.
+
+Compare the shared assertions in both directions. A repaired endpoint in the
+short paper must reach the long proof; an assumption exposed in the long proof
+must reach the short statement. After a move, follow the link to the actual
+passage and check that its notation can be translated. Retain substantial
+alternatives and counterexamples where they explain the scope or a failed
+method. Material that serves only the revision history can remain in the
+editorial record rather than interrupting the mathematical argument.
+
 \subsection{How the practice developed}
 
 The recorded process began with reviewers proposing changes to particular
@@ -122,6 +172,20 @@ and their neighbours: a useful explanation can be separated from its figure,
 or a small heading can be stranded above a page break. Bibliographic labels,
 captions, interval endpoints and cross-document links belong to this review.
 
+Read the result along three routes. First, scan the title, abstract,
+introduction and main statements: recover the contribution and its boundary
+without importing private knowledge. Second, reconstruct the proof: identify
+where each hypothesis is used and explain the difficult inference in your own
+words. Third, try to use a result: check its assumptions on an example, locate
+an excluded case and find the cited input needed for an application. These
+routes expose different failures, so a successful scan should not stand in for
+a proof reading.
+
+When an independent reader is available, ask for the exact place where their
+reconstruction stopped and what they believed had been established there.
+An author's own cold-start pass is still useful, but should be reported as
+self-review. No independent reader is implied by the procedure described here.
+
 The checks answer limited questions. A successful build establishes that the
 source rendered under the recorded toolchain. A passage comparison helps
 establish what changed. A source inspection supports a citation's locator
@@ -132,16 +196,65 @@ alongside gains. A claim of improved comprehension would require evidence
 from readers performing a specified task on identified versions, with the
 comparison and its limitations recorded.
 
-The method leaves that empirical question open. Its present contribution is
-to make editorial reasoning recoverable: a nearby paper offered a model, a
-local argument licensed a revision, and a reviewer accepted, repaired or
-rejected it for stated reasons. A different proof may warrant a different choice.
+The method leaves that empirical question open. It makes a particular editorial
+decision inspectable: a source suggests an explanatory choice, the local
+mathematics warrants the new sentence, and the review records its fate. The
+practical standard remains the reader's ability to recover the argument. A
+different proof may warrant a different choice.
+
+
+\section{Transfer the method across research genres}\label{sec:genre-transfer}
+
+The common task is to make the relation between a claim and its warrant
+legible. What counts as a warrant depends on the field and the sentence.
+For a mathematical theorem, state the domain and hypotheses, then explain
+the proof's hard implication. A systems paper may instead claim that a
+particular mechanism works under a specified workload, compare it with a
+baseline, or describe a reproducible failure. Give the implementation, test
+conditions, comparator and observed result before drawing that conclusion.
+A build or artifact check can support a statement about those tested objects;
+it cannot prove an unrestricted performance or usability claim.
+
+Levin and Redell distinguish papers about implemented systems, proposed
+systems and theoretical work, and caution that evaluation criteria vary across
+those classes~\cite{levin-redell}. The SIGPLAN empirical-evaluation guidance
+asks authors to state claims and limitations clearly, and treats its checklist
+as an aid to judgment rather than a universal score~\cite{sigplan-evaluation}.
+These are genre-specific primary sources, not proof authority for any
+particular system. A nearby systems paper's opening and evaluation should also
+be read at their actual passages before transferring a sentence pattern.
+
+The companion systems paper in this repository describes a source-to-publication
+workflow and one mathematical case~\cite{systems}. A useful reading question
+is whether a sentence concerns the checked declaration, the authored argument,
+the release procedure or a reader's understanding. Those four claims need
+different evidence. In an expository scientific paper, similarly identify the
+underlying study or derivation, the population or model, the observed or cited
+result, and the author's synthesis. If the paper contributes no new experiment,
+say so. Compare each inference with the cited primary study and with nearby
+expositions in that field; do not turn a source's reported association into
+causation or a model's prediction into an observation.
+
+Sentence structure should expose these dependencies. Put the condition before
+its consequence when the condition controls the claim; name the measured
+quantity and comparator in the same sentence as the reported change; keep
+parallel outcomes in parallel clauses. The value of this practice is local:
+it lets a reader test exactly which evidence licenses each statement. It is
+not a single prose template for mathematics, systems research and every
+science.
+
+\section*{Acknowledgement}
+Wouter van Doorn's feedback on first-reader legibility, recorded in the project's
+writing guidance, helped sharpen the attention to private terminology, unnecessary
+notation and restrictive hypotheses. This acknowledges advice on exposition;
+it does not attribute mathematical verification or endorsement to him.
 
 \section*{Availability and authorship}
-The writing skill, guide, source records, lesson history and this paper's
-LaTeX source are maintained in the public repository~\cite{ledger,skill}.
-The paper studies recorded revisions and limited inspections of cited source
-passages. It reports no new mathematical result and no controlled study of
-readers. Will Cook built and directed the research infrastructure and reviewed
+The writing skill, source records, lesson history and this paper's LaTeX source
+are maintained in the public repository~\cite{ledger,skill}. The accompanying
+editorial return documents the new-return examples separately from the accepted
+historical cases. The public writing method and its review ledger record
+selected guidance, with source-reading and acceptance boundaries preserved.
+Will Cook built and directed the research infrastructure and reviewed
 the claims when he could. AI agents did most of the research and drafting.
 Cook did not independently verify every claim.
