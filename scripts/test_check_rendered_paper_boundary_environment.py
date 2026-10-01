@@ -105,9 +105,9 @@ No comparative reader result is reported.""",
         10: """Transfer to unseen mathematics and understanding by independent human readers are unresolved.
 It is not a general incremental scheduler.
 Openness alone does not equalise resources.
-Broad mathematical acceptance is exogenous to this repository and cannot be granted by its maintainer.
-No new Lean or Comparator execution.""",
-        11: """The initial unified manuscript was prepared from a local integration commit rather than public main.""",
+Broad mathematical acceptance is exogenous to this repository and cannot be granted by its maintainer.""",
+        11: """The initial unified manuscript was prepared from a local integration commit rather than public main.
+No new Lean or Comparator run was performed for this revision.""",
         12: """Source-binding validation does not replay Lean, Comparator or the full repository release checks.""",
     }
     pdf = boundary.ROOT / "paper/systems/claim-faithful-publication-systems-paper.pdf"
@@ -134,6 +134,7 @@ No new Lean or Comparator execution.""",
         (9, "The contributor and reviewer were the same agent", "The contributor and reviewer were independent people", "contributor and reviewer were the same agent"),
         (5, "without restoring the implication claimed by the prose", "while restoring the implication claimed by the prose", "restore byte agreement without restoring"),
         (11, "local integration commit rather than public main", "public main", "local integration commit rather than public main"),
+        (11, "No new Lean or Comparator run was performed for this revision", "A new Lean and Comparator run was performed for this revision", "no new lean or comparator run was performed for this revision"),
         (4, "requires the registered set", "requires any one declaration", "the publication check requires the registered set"),
         (4, "not an additional hypothesis of the theorem", "an additional hypothesis of the theorem", "this is an accounting requirement, not an additional hypothesis"),
     )
@@ -148,6 +149,15 @@ No new Lean or Comparator execution.""",
     require(
         any("pages 9-9" in error and "nine of the ten" in error for error in check(moved)),
         "historical limit outside its reviewed page band was accepted",
+    )
+    no_new_run = "No new Lean or Comparator run was performed for this revision."
+    wrong_page = dict(pages)
+    wrong_page[11] = wrong_page[11].replace(no_new_run, "", 1)
+    wrong_page[10] += "\n" + no_new_run
+    require(
+        any("pages 11-11" in error and "no new lean or comparator run" in error
+            for error in check(wrong_page)),
+        "the no-new-run limit on page 10 satisfied its required page-11 band",
     )
 
 
