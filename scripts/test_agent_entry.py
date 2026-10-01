@@ -22,6 +22,12 @@ from agent_skill_catalog import ROOT, load_catalog
 
 
 ROUTE_CASES = {
+    'Prove this Lean theorem, then update the documentation about installed skills': ('bounded_research', 'mine-open-problem'),
+    'Update my installed writing skills, then refresh their documentation': ('install_skills', 'install-clone-skills'),
+    # Describing installed skills is a documentation task, not installation.
+    'Update the table of installed writing skills': ('repository_architecture', 'maintain-public-infrastructure'),
+    'Update the documentation about writing skills in Codex': ('repository_architecture', 'maintain-public-infrastructure'),
+    'Update the list of installed skills': ('repository_architecture', 'maintain-public-infrastructure'),
     # Updating an installed copy must not become paper or proof work.
     'Reinstall the writing skill in Codex': ('install_skills', 'install-clone-skills'),
     'Reinstalling the portable writing skill in Claude': ('install_skills', 'install-clone-skills'),

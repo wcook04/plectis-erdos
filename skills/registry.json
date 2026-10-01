@@ -1445,6 +1445,24 @@
             "security",
             "governance"
           ]
+        },
+        {
+          "actions": [
+            "update",
+            "refresh"
+          ],
+          "objects": [
+            "table",
+            "tables",
+            "list",
+            "lists",
+            "documentation",
+            "docs"
+          ],
+          "qualifiers": [
+            "skill",
+            "skills"
+          ]
         }
       ],
       "skills": [

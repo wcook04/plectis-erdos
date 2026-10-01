@@ -235,7 +235,8 @@ def bound_installed_skill_update(
         rf"(?:{destinations})\b"
     )
     content_objects = {"paper", "papers", "abstract", "abstracts", "manuscript", "manuscripts",
-                       "readme", "guide", "guides", "example", "examples", "prose", "wording"}
+                       "readme", "guide", "guides", "example", "examples", "prose", "wording",
+                       "table", "tables", "list", "lists", "documentation", "docs"}
     for action in action_pattern.finditer(task):
         candidate = object_pattern.match(task, action.end())
         if candidate is None:
@@ -265,8 +266,9 @@ def matched_task_intents(
             continue
         # Adding a guide-editing object must not displace the proof stage in
         # "prove a theorem, then revise the writing guide". Preserve existing
-        # paper-authoring rules; the qualified guide rule is subordinate here.
-        if lane["id"] == "public_writing" and proof_intent and "qualifiers" in intent:
+        # paper-authoring rules; qualified guide and skill-documentation rules
+        # remain subordinate to proof research.
+        if lane["id"] in {"public_writing", "repository_architecture"} and proof_intent and "qualifiers" in intent:
             continue
         components = [task_tokens.intersection(intent[field])
                       for field in ("actions", "objects")]

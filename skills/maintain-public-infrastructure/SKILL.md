@@ -38,8 +38,10 @@ project are different tasks.
 Refreshing an installed skill belongs to installation; revising its canonical
 instructions belongs to maintenance. Bind an update or refresh to the skill
 being updated and its installed or harness context. An installed skill merely
-used while editing a paper must not select installation. Preserve proof-first
-requests and test both named skills and generic skill descriptions.
+used while editing a paper must not select installation. Tables, lists and
+documentation about installed skills also retain their reading or maintenance
+route. Preserve proof-first requests and test both named skills and generic
+skill descriptions.
 Check neighboring tasks that should retain their original lane. Keep purpose and scope separate: a problem or paper identifies the object,
 while research, method development or infrastructure work identifies the action.
 An existing mathematical proof offered for review belongs to the research-return
