@@ -8,7 +8,7 @@
 
 </div>
 
-For each convergent dyadic series with nonnegative integer coefficients, we construct nonnegative integer perturbations whose sums fill an interval, with one sparse permitted set for all targets. The corrections obey any prescribed bound tending to infinity and eventually preserve coefficient and partial-sum residues modulo every fixed integer. Pairs with a fixed ordinary sum provide the weighted choices for interval covering. For prime gaps we also preserve growing-block statistics and cumulative size. The cumulative positions need not be prime, and the irrationality question remains open.
+For each convergent dyadic series with nonnegative integer coefficients, we construct nonnegative integer perturbations whose sums fill an interval and whose supports lie in one set of upper Banach density zero. The corrections obey any prescribed bound tending to infinity and eventually preserve coefficient and partial-sum residues modulo every fixed integer. The construction varies adjacent corrections while keeping their ordinary sum fixed. For prime gaps it also preserves growing-block distributions and cumulative size. The cumulative positions need not be prime, and the irrationality question remains open.
 
 <a id="sec:problem"></a>
 
@@ -20,7 +20,7 @@ Let $`p_0=2,p_1=3,\ldots`$ be the primes and put $`g_n=p_{n+1}-p_n`$. Erdős ask
 ```
 is irrational \[erdos1958, p. 94\]\[erdosgraham1980, p. 62\] \[erdos1988, p. 103\]. Summation by parts gives $`\Pi=2+\sum_{n\ge0}g_n2^{-(n+1)}`$, with convergence justified in Section <a href="#sec:parts" data-reference-type="ref" data-reference="sec:parts">4</a>. We study which properties of the gaps survive when the latter sum is changed to a prescribed value.
 
-We prove a perturbation theorem for arbitrary convergent dyadic series with nonnegative integer coefficients. A single sparse set of permitted indices allows every target in an interval, even when the corrections must obey an arbitrarily slowly growing bound. We also prescribe, before choosing the target, a cutoff for each modulus beyond which both the corrections and their partial sums are divisible by that modulus. For prime gaps the same construction retains the distributions of blocks of length $`o(\log\log X)`$ sampled in $`[X,2X)`$ and gives cumulative positions asymptotic to $`n\log n`$. The irrationality of the actual prime series remains a distinct question: these comparison sequences need not have prime cumulative positions.
+We prove a perturbation theorem for arbitrary convergent dyadic series with nonnegative integer coefficients. All corrections are supported on one sparse set, chosen before the value of the sum. Their sizes may be eventually bounded by any prescribed function tending to infinity, while the sums still fill an interval. We also prescribe, before choosing the target, a cutoff for each modulus beyond which both the corrections and their partial sums are divisible by that modulus. For prime gaps the same construction retains the distributions of blocks of length $`o(\log\log X)`$ sampled in $`[X,2X)`$ and gives cumulative positions asymptotic to $`n\log n`$. The irrationality of the actual prime series remains a distinct question: these comparison sequences need not have prime cumulative positions.
 
 We use a standard interval-covering argument for series with finite choices. Fridy’s generalised-base lemma \[fridy1966, p. 194\] treats bounded digits and decreasing weights. Crmarić and Kovač \[crmarickovac2025, Lemma 4\] give the finite-choice form used here, and Kovač and Tao \[kovactao2024, Lemma 5.1\] use analogous intervals of reciprocal choices. We must arrange these choices on a sparse set while preserving cumulative congruences. To do so, we redistribute a fixed correction between two adjacent indices. The simplest useful calculation is
 ``` math
@@ -30,7 +30,7 @@ We use a standard interval-covering argument for series with finite choices. Fri
  2^{n+2}\bigl(e_n2^{-n-1}+e_{n+1}2^{-n-2}\bigr)&6&8&10&12.
  \end{array}
 ```
-Moving $`2`$ from the later index to the earlier one changes the weighted sum while leaving the ordinary sum fixed. If the cumulative correction before the pair is odd, an additional $`1`$ at $`n-1`$ clears its residue modulo $`2`$. The choice among the four pairs then has no effect on any cumulative residue beyond the pair. This is only the local calculation: we still have to accommodate every fixed modulus and an arbitrarily small density of permitted indices. Increasing the spacing inserts a smaller power of $`2`$ into the weighted contribution. We increase the range of choices in each pair just enough for later choices to cover the spacing between the present ones.
+Moving $`2`$ from the later index to the earlier one changes the weighted sum while leaving the ordinary sum fixed. If the cumulative correction before the pair is odd, an additional $`1`$ at $`n-1`$ clears its residue modulo $`2`$. Since the four pairs have the same sum, the choice of pair leaves every later cumulative residue unchanged. We repeat this operation with nested moduli and increasingly separated pairs. The larger separations make the weighted contributions smaller, so we enlarge the range of each pair until the later contributions fill the gaps between consecutive present choices.
 
 Throughout, $`\mathbb{N}=\{0,1,\ldots\}`$, intervals of indices contain integers, and $`\log`$ is natural unless a base is displayed. A set $`S\subseteq\mathbb{N}`$ has *upper Banach density zero* if
 ``` math
@@ -39,7 +39,7 @@ Throughout, $`\mathbb{N}=\{0,1,\ldots\}`$, intervals of indices contain integers
 For integers $`X,m\ge1`$, let $`\mu_{a,X,m}`$ denote the distribution of $`(a_n,\ldots,a_{n+m-1})`$ when $`n`$ is uniform on $`[X,2X)`$. Blocks are unnormalised and counted with multiplicity. We use $`d_{\rm TV}(\mu,\nu)=\sup_B|\mu(B)-\nu(B)|`$.
 
 <div id="res:sparserationalisation" class="proposition">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/1d16f2ddf78e7c4c850246f67bf8ce79b19deb3c/evidence/erdos-251-prime-gap-dyadic-series.md#res-sparserationalisation">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/1d16f2ddf78e7c4c850246f67bf8ce79b19deb3c/evidence/erdos-251-prime-gap-dyadic-series.md#res-sparserationalisation-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/d93e7408aed0b0c73ad5ea98116c7dc0dce3cf7b/evidence/erdos-251-prime-gap-dyadic-series.md#res-sparserationalisation">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d93e7408aed0b0c73ad5ea98116c7dc0dce3cf7b/evidence/erdos-251-prime-gap-dyadic-series.md#res-sparserationalisation-comparator">Comparator</a></p>
 
 **Proposition 1** (sparse changes preserving congruences). *Let $`a:\mathbb{N}\to\mathbb{N}`$ satisfy $`A=\sum_{n\ge0}a_n2^{-(n+1)}<\infty`$, let $`K\in\mathbb{N}`$, and let $`f:\mathbb{N}\to\mathbb{R}`$ tend to $`+\infty`$. There exist a set $`S\subseteq[K,\infty)`$ of upper Banach density zero and a nondegenerate interval $`I\subset(A,\infty)`$ such that, for every $`r\in I`$, there is an integer correction $`e:\mathbb{N}\to\mathbb{N}`$ satisfying
 ``` math
@@ -57,7 +57,7 @@ In particular the distance tends to zero for every integer-valued $`m=m(X)\ge1`$
 
 </div>
 
-The support of $`e`$ may depend on $`r`$ and occupy only part of $`S`$. Polynomially growing nonnegative integer sequences satisfy the convergence hypothesis, whereas $`a_n=2^n`$ does not. The allowance may grow as slowly as $`\log\log(n+3)`$. A bounded allowance would force every correction to vanish: a modulus exceeding the bound makes $`e`$ eventually zero, and its constant cumulative sum must then be divisible by every positive integer.
+The support of $`e`$ may depend on $`r`$ and occupy only part of $`S`$. Polynomially growing nonnegative integer sequences satisfy the convergence hypothesis, whereas $`a_n=2^n`$ does not. The prescribed bound may grow as slowly as $`\log\log(n+3)`$. A bounded correction would have to vanish identically: a modulus exceeding the bound makes $`e`$ eventually zero, and its constant cumulative sum must then be divisible by every positive integer.
 
 Section <a href="#sec:construction" data-reference-type="ref" data-reference="sec:construction">2</a> gives the construction, and Section <a href="#sec:prime-application" data-reference-type="ref" data-reference="sec:prime-application">3</a> applies it to prime gaps. We then identify the actual tails and characterise their rationality by integral shifts. This leads to finite separation tests and to a sufficient condition involving two consecutive small differences. The [companion’s literature discussion](../../../paper/251/erdos251-prime-gap-reasoning-surface.pdf#nameddest=context) contains the further comparisons, including finite subsums and other dyadic coefficient sequences.
 
@@ -67,7 +67,7 @@ Section <a href="#sec:construction" data-reference-type="ref" data-reference="s
 
 <div class="proof">
 
-*Proof.* *Fixed totals.* At stage $`j`$ we put a correction at $`n_j-1`$ and a variable pair at $`n_j,n_j+1`$. We keep the pair’s ordinary sum fixed, so that its choice leaves the residue to be cleared at every later stage unchanged. Let $`n_{-1}\ge K`$, write $`s_j=n_j-n_{j-1}\ge4`$, and take positive integers $`M_j`$ with $`M_j\mid M_{j+1}`$. The actual centres and moduli will be chosen below. Put $`D_j=2^{s_j}-1`$; we will see shortly why this digit range compensates for the spacing $`s_j`$.
+*Proof.* *Fixed totals.* At stage $`j`$ we put a correction at $`n_j-1`$ and a variable pair at $`n_j,n_j+1`$. We keep the pair’s ordinary sum fixed. Consequently, the residue to be cancelled at a later stage is independent of all earlier pair choices. Let $`n_{-1}\ge K`$, write $`s_j=n_j-n_{j-1}\ge4`$, and take positive integers $`M_j`$ with $`M_j\mid M_{j+1}`$. For now let $`D_j`$ be a positive integer bounding the digit at stage $`j`$. We first describe the corrections for these parameters, then choose them to obtain both sparsity and an interval of sums.
 
 Starting from $`C_0=0`$, define
 ``` math
@@ -100,11 +100,12 @@ After $`c_j`$ has been inserted, the cumulative correction is divisible by $`M_j
 ``` math
 q\mid e_n,\qquad q\mid\sum_{i<n}e_i\qquad(n\ge n_J).
 ```
-The entry $`c_J`$ lies at $`n_J-1`$, just before this cutoff; it need not itself be divisible by $`q`$. This explains both the placement of the residue correction and the target independence of the cutoff.
+The entry $`c_J`$ need not be divisible by $`q`$, which is why it is placed at $`n_J-1`$, before the cutoff. The index $`n_J`$ depends on $`q`$ and the chosen moduli, but not on the digits or the value to be attained.
 
-*Spacing and size.* The variable part at stage $`j`$ has spacing $`w_j`$ and maximum $`D_jw_j`$. We arrange that the later variable parts have enough total range to cover one spacing $`w_j`$. Our choice $`D_i=2^{s_i}-1`$ gives
+*Spacing and size.* The variable part at stage $`j`$ takes the values $`0,w_j,\ldots,D_jw_j`$. To fill the gaps between these choices, we need the later variable parts to have total range at least $`w_j`$. This suggests making each later range a difference of successive dyadic scales. We therefore choose $`D_i=2^{s_i}-1`$, for which
 ``` math
-D_iw_i=M_i\bigl(2^{-n_{i-1}-2}-2^{-n_i-2}\bigr).
+D_iw_i=(2^{n_i-n_{i-1}}-1)M_i2^{-n_i-2}
+       =M_i\bigl(2^{-n_{i-1}-2}-2^{-n_i-2}\bigr).
 ```
 Because $`M_i\ge M_j`$ for $`i>j`$, replacing every later modulus by $`M_j`$ gives the finite estimate
 ``` math
@@ -118,9 +119,9 @@ Because $`M_i\ge M_j`$ for $`i>j`$, replacing every later modulus by $`M_j`$ giv
  \end{aligned}
 \end{equation}
 ```
-Thus increasing the spacing does not destroy interval covering, provided we pay for the corresponding digit range. Every entry of <a href="#eq:correction-triple" data-reference-type="eqref" data-reference="eq:correction-triple">[eq:correction-triple]</a> is at most $`M_j2^{s_j}`$. It remains to fit that quantity below the allowance while making the spacings tend to infinity and the moduli eventually divisible by each fixed integer.
+The digit range $`D_j=2^{s_j}-1`$ therefore gives the required overlap estimate even when the separations increase. Every entry of <a href="#eq:correction-triple" data-reference-type="eqref" data-reference="eq:correction-triple">[eq:correction-triple]</a> is at most $`M_j2^{s_j}`$, so we must keep this quantity below the prescribed bound at the three indices. We must also have $`s_j\to\infty`$ and ensure that every fixed positive integer divides all sufficiently late $`M_j`$.
 
-For a possibly nonmonotone allowance use
+To allow a nonmonotone bound $`f`$, put
 ``` math
 h(n)=\inf_{m\ge n}\min(f(m),m).
 ```
@@ -129,13 +130,13 @@ This nondecreasing lower envelope tends to infinity. A bound chosen using $`h(n_
 k_j=\max\{k\ge2:k!2^{k+2}\le h(n_{j-1})\},\qquad
  M_j=k_j!,\qquad s_j=k_j+2,\qquad n_j=n_{j-1}+s_j.
 ```
-The single parameter $`k_j`$ now controls both requirements: $`k_j!`$ absorbs each fixed modulus once $`k_j`$ is large enough, while $`k_j+2`$ separates the triples. We choose the largest such parameter whose cost $`k_j!2^{k_j+2}`$ fits the available bound. The choice exists because $`2!2^4=32`$, is finite, and is nondecreasing with $`j`$. Since $`n_j\to\infty`$ and $`h(n_j)\to\infty`$, we also have $`k_j\to\infty`$. Consequently the moduli are nested, every fixed $`q`$ divides all sufficiently late $`M_j`$, and $`s_j\to\infty`$. At each supported coordinate $`n`$ of the $`j`$th triple,
+The maximum exists: $`k=2`$ is admissible because $`2!2^4=32`$, and $`k!2^{k+2}`$ tends to infinity. Since $`h`$ is nondecreasing, so is $`k_j`$. Moreover $`n_j\to\infty`$, hence $`h(n_j)\to\infty`$ and $`k_j\to\infty`$. It follows that $`M_j\mid M_{j+1}`$, every fixed $`q`$ divides all sufficiently late $`M_j=k_j!`$, and the separations $`s_j=k_j+2`$ tend to infinity. The same choice gives the size estimate: at each supported coordinate $`n`$ of the $`j`$th triple,
 ``` math
 0\le e_n\le M_j2^{s_j}\le h(n_{j-1})\le\min(f(n),n).
 ```
 This proves the size bound and convergence for every choice of digits.
 
-Let $`S=\bigcup_{j\ge0}\{n_j-1,n_j,n_j+1\}`$. For any $`R`$, all but finitely many successive centres are at least $`R`$ apart. An interval of length $`H`$ therefore meets at most $`3(H/R+2)`$ permitted indices, in addition to a fixed finite set. The bound is uniform in the position of the interval. Divide by $`H`$, take the supremum over positions and let $`H\to\infty`$; then let $`R\to\infty`$. This proves upper Banach density zero.
+Let $`S=\bigcup_{j\ge0}\{n_j-1,n_j,n_j+1\}`$. For any $`R`$, all but finitely many successive centres are at least $`R`$ apart. An interval of length $`H`$ therefore contains at most $`3(H/R+2)`$ points of $`S`$, in addition to a fixed finite set. The bound is uniform in the position of the interval. Divide by $`H`$, take the supremum over positions and let $`H\to\infty`$; then let $`R\to\infty`$. This proves upper Banach density zero.
 
 *Attaining the interval.* We have now fixed the centres, moduli, digit ranges and residue corrections, but have left every digit free. Define
 ``` math
@@ -153,7 +154,7 @@ Taking $`J\to\infty`$ in <a href="#eq:finite-overlap" data-reference-type="eqref
  F_{j+1}\ge M_j2^{-n_j-2}=w_j.
 \end{equation}
 ```
-For a remaining target in $`[0,F_j]`$, choosing digit $`d`$ leaves a remainder in $`[0,F_{j+1}]`$ exactly when that target belongs to
+Every variable sum from stage $`j`$ onwards lies in $`[0,F_j]`$; we must still show that every point of this interval is attained. A target in $`[0,F_j]`$ leaves a remainder in $`[0,F_{j+1}]`$ after choosing digit $`d`$ exactly when it belongs to
 ``` math
 [dw_j,dw_j+F_{j+1}],\qquad d=0,\ldots,D_j.
 ```
@@ -168,13 +169,13 @@ Given $`x\in[0,F_0]`$, start with $`\rho_0=x`$. Having chosen the first $`j`$ di
 ``` math
 \rho_{j+1}=\rho_j-d_jw_j\in[0,F_{j+1}].
 ```
-The covering just proved makes this possible at every stage. The invariant $`0\le\rho_j\le F_j`$ and $`F_j\to0`$ then give
+The covering just proved makes this possible at every stage. Since $`0\le\rho_j\le F_j`$ and $`F_j\to0`$, we obtain
 ``` math
 x-\sum_{i=0}^{j}d_iw_i=\rho_{j+1}\longrightarrow0.
 ```
-Thus every $`x\in[0,F_0]`$ is attained, and we may take $`I=(A+\beta,A+\beta+F_0)`$. The target $`r\in I`$ determines only the digits, through $`x=r-A-\beta`$; it changes neither $`S`$, $`I`$ nor the cutoff $`N_q=n_J`$ chosen using $`q\mid M_J`$. This last selection is the standard finite-choice covering argument of \[crmarickovac2025, Lemma 4\]. The construction above supplies its summability and overlap hypotheses while imposing the congruences and the small permitted set.
+Thus every $`x\in[0,F_0]`$ is attained, and we may take $`I=(A+\beta,A+\beta+F_0)`$. The target $`r\in I`$ determines only the digits, through $`x=r-A-\beta`$; it changes neither $`S`$, $`I`$ nor the cutoff $`N_q=n_J`$ chosen using $`q\mid M_J`$. This last selection is the standard finite-choice covering argument of \[crmarickovac2025, Lemma 4\]. The construction above supplies its summability and overlap hypotheses while imposing the congruences and requiring the support to lie in $`S`$.
 
-*The logarithmic scale.* For $`f(n)=(\log(n+3))^\varepsilon`$, we can choose the separations explicitly at the scale $`\log\log n`$. Keep the same triples and $`D_j=2^{s_j}-1`$, but replace the schedule by
+*The logarithmic scale.* For $`f(n)=(\log(n+3))^\varepsilon`$, we can choose the separations explicitly at the scale $`\log\log n`$. Keep the same triples and $`D_j=2^{s_j}-1`$, and now choose
 ``` math
 \begin{aligned}
  s_j&=\left\lfloor\frac{\varepsilon}{2}
@@ -182,12 +183,12 @@ Thus every $`x\in[0,F_0]`$ is attained, and we may take $`I=(A+\beta,A+\beta+F_0
  k_j&=\max\{k\ge2:k!\le(\log(n_{j-1}+3))^{\varepsilon/4}\},
  \end{aligned}
 ```
-with $`M_j=k_j!`$ and $`n_j=n_{j-1}+s_j`$. Start far enough out that $`s_j\ge4`$ and all choices exist. Allocating exponents $`\varepsilon/4`$ to the modulus and $`\varepsilon/2`$ to $`2^{s_j}`$ leaves room within the prescribed allowance:
+with $`M_j=k_j!`$ and $`n_j=n_{j-1}+s_j`$. Start far enough out that $`s_j\ge4`$ and all choices exist. The exponents $`\varepsilon/4`$ and $`\varepsilon/2`$ add to $`3\varepsilon/4<\varepsilon`$, so the corrections satisfy the prescribed bound:
 ``` math
 M_j2^{s_j}\le(\log(n_{j-1}+3))^{3\varepsilon/4}
              \le(\log(n+3))^\varepsilon
 ```
-at each coordinate $`n`$ of the triple. After enlarging the initial index, this is also at most $`n`$. The moduli remain nested and absorb every fixed integer; summability, the congruence induction and <a href="#eq:finite-overlap" data-reference-type="eqref" data-reference="eq:finite-overlap">[eq:finite-overlap]</a> therefore apply without change. Here $`s_j\asymp_\varepsilon\log\log n_j`$, so
+at each coordinate $`n`$ of the triple. After enlarging the initial index, this is also at most $`n`$. The moduli remain nested, and every fixed positive integer divides all sufficiently late moduli. Summability, the congruence induction and <a href="#eq:finite-overlap" data-reference-type="eqref" data-reference="eq:finite-overlap">[eq:finite-overlap]</a> therefore apply without change. Here $`s_j\asymp_\varepsilon\log\log n_j`$, so
 ``` math
 |S\cap[X,2X)|=O_\varepsilon(X/\log\log X).
 ```
@@ -200,7 +201,7 @@ Choose the same uniform starting index $`n\in[X,2X)`$ for the two blocks. A chan
  &\le\frac{m|S\cap[X,2X+m)|}{X}.
  \end{aligned}
 ```
-For $`m\le X`$, two dyadic bands cover $`[X,2X+m)`$ and give the bound $`O_\varepsilon(m/\log\log X)`$. In particular it tends to zero when $`m=o(\log\log X)`$, uniformly over targets since the permitted set $`S`$ is common to all of them. The block length enters solely through the number of starts that one altered coordinate can affect. ◻
+For $`m\le X`$, two dyadic bands cover $`[X,2X+m)`$ and give the bound $`O_\varepsilon(m/\log\log X)`$. In particular it tends to zero when $`m=o(\log\log X)`$, uniformly over the values attained, since the same set $`S`$ contains every correction support. The block length enters solely through the number of starts that one altered coordinate can affect. ◻
 
 </div>
 
@@ -213,7 +214,7 @@ The coupling also applies to tests depending on the starting index. If their abs
 The elementary bound $`p_n\le1250(n+1)^4`$ suffices for convergence of the prime and gap series. We use the central-binomial argument of Erdős \[erdos1932, pp. 194–196\]; [Appendix A of the companion](../../../paper/251/erdos251-prime-gap-reasoning-surface.pdf#nameddest=prime-bound) derives this bound, including the prime-power estimate. This supplies the convergence hypothesis needed to apply Proposition <a href="#res:sparserationalisation" data-reference-type="ref" data-reference="res:sparserationalisation">1</a> to the prime gaps.
 
 <div id="res:jointcountermodel" class="corollary">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/1d16f2ddf78e7c4c850246f67bf8ce79b19deb3c/evidence/erdos-251-prime-gap-dyadic-series.md#res-jointcountermodel">Lean†</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/d93e7408aed0b0c73ad5ea98116c7dc0dce3cf7b/evidence/erdos-251-prime-gap-dyadic-series.md#res-jointcountermodel">Lean†</a></p>
 
 **Corollary 2** (a rational sum with the stated prime-gap statistics). *Let $`p_0=2,p_1=3,\ldots`$ be the primes and $`g_n=p_{n+1}-p_n`$. Given $`K\in\mathbb{N}`$ and $`0<\varepsilon\le1`$, there is $`b:\mathbb{N}\to\mathbb{N}`$ with rational dyadic sum such that $`b_n=g_n`$ for $`n<K`$, $`b_n\ge g_n`$, and $`b_n-g_n\le(\log(n+3))^\varepsilon`$ eventually. For every fixed positive modulus, both the coefficients and the cumulative positions eventually retain their corresponding residues. The empirical distributions of unnormalised blocks have total variation distance tending to zero for lengths $`o(\log\log X)`$, and for every fixed nonzero $`F\in\mathbb{Z}[x_0,\ldots,x_k]`$,
 ``` math
@@ -256,7 +257,7 @@ Land’s draft \[land2026, Theorem 2\] proves conditional irrationality under a
 We return to the actual primes and write $`G=\sum_{n\ge0}g_n2^{-(n+1)}`$. To use a recurrence for these sums, we must retain the endpoint in finite summation by parts and then show that it vanishes. The polynomial bound from Section <a href="#sec:prime-application" data-reference-type="ref" data-reference="sec:prime-application">3</a> supplies this limit and convergence of both series.
 
 <div id="res:infinite" class="theorem">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/1d16f2ddf78e7c4c850246f67bf8ce79b19deb3c/evidence/erdos-251-prime-gap-dyadic-series.md#res-infinite">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/1d16f2ddf78e7c4c850246f67bf8ce79b19deb3c/evidence/erdos-251-prime-gap-dyadic-series.md#res-infinite-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/d93e7408aed0b0c73ad5ea98116c7dc0dce3cf7b/evidence/erdos-251-prime-gap-dyadic-series.md#res-infinite">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d93e7408aed0b0c73ad5ea98116c7dc0dce3cf7b/evidence/erdos-251-prime-gap-dyadic-series.md#res-infinite-comparator">Comparator</a></p>
 
 **Theorem 3** (prime-to-gap identity). *The actual prime and gap series satisfy $`\Pi=2+G`$. Their complete tails
 ``` math
@@ -280,7 +281,7 @@ Since $`p_n=O((n+1)^4)`$, the endpoint tends to zero and we obtain $`\Pi=2+G`$. 
 Tao noted this reduction in the problem’s forum discussion \[erdosproblems251thread, 7 October 2025\].
 
 <div id="res:irr-equivalence" class="corollary">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/1d16f2ddf78e7c4c850246f67bf8ce79b19deb3c/evidence/erdos-251-prime-gap-dyadic-series.md#res-irr-equivalence">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/1d16f2ddf78e7c4c850246f67bf8ce79b19deb3c/evidence/erdos-251-prime-gap-dyadic-series.md#res-irr-equivalence-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/d93e7408aed0b0c73ad5ea98116c7dc0dce3cf7b/evidence/erdos-251-prime-gap-dyadic-series.md#res-irr-equivalence">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d93e7408aed0b0c73ad5ea98116c7dc0dce3cf7b/evidence/erdos-251-prime-gap-dyadic-series.md#res-irr-equivalence-comparator">Comparator</a></p>
 
 **Corollary 4** (exact irrationality reformulation). *The prime-value dyadic series is irrational if and only if the prime-gap dyadic series is. Both series converge by the polynomial bound proved above; neither side is proved irrational.*
 
@@ -295,9 +296,9 @@ Tao noted this reduction in the problem’s forum discussion \[erdosproblems251t
 The recurrence alone does not identify the infinite tails: adding $`C2^N`$ to any solution gives another solution. We distinguish the actual tails by the vanishing condition in the next lemma.
 
 <div id="res:true-tail" class="lemma">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos251/PaperCompleteR20/TrueTail.lean#L57">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/1d16f2ddf78e7c4c850246f67bf8ce79b19deb3c/evidence/erdos-251-prime-gap-dyadic-series.md#res-true-tail-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos251/PaperCompleteR20/TrueTail.lean#L57">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d93e7408aed0b0c73ad5ea98116c7dc0dce3cf7b/evidence/erdos-251-prime-gap-dyadic-series.md#res-true-tail-comparator">Comparator</a></p>
 
-**Lemma 5** (the boundary condition identifying a true tail). *Let $`\sum_{j\ge1}|a_j|2^{-j}<\infty`$ and $`U_{N+1}=2U_N-a_{N+1}`$. Then $`U_N=\sum_{j\ge1}a_{N+j}2^{-j}`$ for every $`N`$ if and only if $`2^{-N}U_N\to0`$.*
+**Lemma 5** (the boundary condition for the tail recurrence). *Let $`\sum_{j\ge1}|a_j|2^{-j}<\infty`$ and $`U_{N+1}=2U_N-a_{N+1}`$. Then $`U_N=\sum_{j\ge1}a_{N+j}2^{-j}`$ for every $`N`$ if and only if $`2^{-N}U_N\to0`$.*
 
 </div>
 
@@ -314,7 +315,7 @@ The recurrence alone does not identify the infinite tails: adding $`C2^N`$ to an
 For the recurrence $`U_{N+1}=2U_N-a_{N+1}`$ with $`a_n\in\mathbb{Z}`$, write $`D_h(N)=U_{N+h}-U_N`$. Modulo integers, each step is doubling: $`U_N`$ has the fractional part of $`2^NU_0`$. An integral shift means that a fractional part has returned to an earlier value. Such a return makes $`2^N(2^h-1)U_0`$ an integer and forces rationality when $`h>0`$. Conversely, doubling a rational number eventually gives periodic fractional parts. The next theorem records the denominator calculation and the exact quantifiers.
 
 <div id="res:escape-irrational" class="theorem">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/1d16f2ddf78e7c4c850246f67bf8ce79b19deb3c/evidence/erdos-251-prime-gap-dyadic-series.md#res-escape-irrational">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/1d16f2ddf78e7c4c850246f67bf8ce79b19deb3c/evidence/erdos-251-prime-gap-dyadic-series.md#res-escape-irrational-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/d93e7408aed0b0c73ad5ea98116c7dc0dce3cf7b/evidence/erdos-251-prime-gap-dyadic-series.md#res-escape-irrational">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d93e7408aed0b0c73ad5ea98116c7dc0dce3cf7b/evidence/erdos-251-prime-gap-dyadic-series.md#res-escape-irrational-comparator">Comparator</a></p>
 
 **Theorem 6** (exact rationality classification). *For a real integer-coefficient recurrence, the following are equivalent: $`U_0\in\mathbb{Q}`$; $`D_h(N)\in\mathbb{Z}`$ for some $`h\ge1,N\ge0`$; and, for some fixed $`h\ge1`$, $`D_h(N)\in\mathbb{Z}`$ at every sufficiently large $`N`$. More precisely, if $`U_0=u/(2^sd)`$ is in lowest terms, with $`d`$ odd, then
 ``` math
@@ -337,7 +338,7 @@ An integral shift with $`h\ge1`$ makes the nonzero integer multiple $`2^N(2^h-1)
 
 </div>
 
-The theorem requires neither a true-tail boundary condition nor prime-gap coefficients. The eventual periodicity is that of fractional parts, and need not hold for the full tails. For instance, the positive even coefficients $`2,4,2,4,\ldots`$ starting at $`n=1`$ give tails $`8/3,10/3`$ alternately. Every shift of length $`1`$ is nonintegral and every shift of length $`2`$ is zero. This explains why a single shift length is insufficient.
+The theorem applies to the recurrence itself, without the boundary condition of Lemma <a href="#res:true-tail" data-reference-type="ref" data-reference="res:true-tail">5</a> or any assumption of primality. The eventual periodicity is that of fractional parts, and need not hold for the full tails. For instance, the positive even coefficients $`2,4,2,4,\ldots`$ starting at $`n=1`$ give tails $`8/3,10/3`$ alternately. Every shift of length $`1`$ is nonintegral and every shift of length $`2`$ is zero. This explains why a single shift length is insufficient.
 
 <a id="sec:local-certificate"></a>
 
@@ -346,7 +347,7 @@ The theorem requires neither a true-tail boundary condition nor prime-gap coeffi
 Fix $`h\ge1`$ and put $`D_N=T_{N+h}-T_N`$ and $`\delta_N=g_{N+h+1}-g_{N+1}`$. Then $`D_{N+1}=2D_N-\delta_N`$, where $`\delta_N`$ is even. Two differences of absolute value less than one can both be integral only if they vanish, in which case $`\delta_N=0`$. More precisely, we have the following result.
 
 <div id="res:signedwindow" class="proposition">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/1d16f2ddf78e7c4c850246f67bf8ce79b19deb3c/evidence/erdos-251-prime-gap-dyadic-series.md#res-signedwindow">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/1d16f2ddf78e7c4c850246f67bf8ce79b19deb3c/evidence/erdos-251-prime-gap-dyadic-series.md#res-signedwindow-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/d93e7408aed0b0c73ad5ea98116c7dc0dce3cf7b/evidence/erdos-251-prime-gap-dyadic-series.md#res-signedwindow">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d93e7408aed0b0c73ad5ea98116c7dc0dce3cf7b/evidence/erdos-251-prime-gap-dyadic-series.md#res-signedwindow-comparator">Comparator</a></p>
 
 **Proposition 7** (two consecutive differences of absolute value less than one). *Let $`D,D'\in\mathbb{R}`$, $`\delta\in2\mathbb{Z}`$ and $`D'=2D-\delta`$. The conditions $`|D|<1`$, $`|D'|<1`$ and $`\delta\ne0`$ hold exactly when, for some $`s\in\{-1,1\}`$,
 ``` math
@@ -377,7 +378,7 @@ For $`\delta=2`$, the endpoints $`D=1/2,1`$ give $`D'=-1,0`$ respectively. The z
 
 </div>
 
-A solution would give a nonintegral shift arbitrarily late for every $`h`$, and hence irrationality by Theorem <a href="#res:escape-irrational" data-reference-type="ref" data-reference="res:escape-irrational">6</a>. All three conditions must hold at the same index; witnesses for the separate conditions cannot be combined without further information. Schlage-Puchta’s lemma \[schlagepuchta2011, Lemma 4\], applied to $`x_h-x_0\pm2`$, shows that the eligible indices with $`\delta_N=\pm2`$ already have density zero. Separate infinite sets of small-difference and mismatch witnesses would therefore not suffice.
+A solution would give a nonintegral shift arbitrarily late for every $`h`$, and hence irrationality by Theorem <a href="#res:escape-irrational" data-reference-type="ref" data-reference="res:escape-irrational">6</a>. All three conditions must hold at the same index; witnesses for the separate conditions cannot be combined without further information. By Proposition <a href="#res:signedwindow" data-reference-type="ref" data-reference="res:signedwindow">7</a>, such an index must have $`\delta_N=\pm2`$. Schlage-Puchta’s lemma \[schlagepuchta2011, Lemma 4\], applied to $`x_h-x_0\pm2`$, shows that these eligible indices already have density zero. Thus the required witnesses concern a rare event. The absolute block comparison in Proposition <a href="#res:sparserationalisation" data-reference-type="ref" data-reference="res:sparserationalisation">1</a> does not control its relative frequency, and separate infinite sets of small-difference and mismatch witnesses would not suffice.
 
 <a id="finite-separation-from-the-integers"></a>
 
@@ -391,7 +392,7 @@ S_{h,N,L}=\sum_{j=1}^L(g_{N+h+j}-g_{N+j})2^{-j},\qquad
 Then $`|D_N-S_{h,N,L}|\le R_{h,N,L}(M)`$. A general real majorant need not give an effective remainder bound, but the polynomial choice below does.
 
 <div id="res:truncation" class="proposition">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos251/PaperTailBoundsR7.lean#L273">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/1d16f2ddf78e7c4c850246f67bf8ce79b19deb3c/evidence/erdos-251-prime-gap-dyadic-series.md#res-truncation-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos251/PaperTailBoundsR7.lean#L273">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d93e7408aed0b0c73ad5ea98116c7dc0dce3cf7b/evidence/erdos-251-prime-gap-dyadic-series.md#res-truncation-comparator">Comparator</a></p>
 
 **Proposition 9** (finite separation criterion). *If for every $`h\ge1`$ and every cutoff $`N_0`$ there are $`N\ge N_0,L\ge1`$ with
 ``` math
@@ -422,11 +423,11 @@ We obtain a computable bound by taking $`M(n)=1250(n+2)^4`$. For $`P(x)=x^4+8x^3
 R_{h,N,L}(M)=1250\,2^{-L}
              \bigl(P(N+h+L+2)+P(N+L+2)\bigr).
 ```
-If $`\delta_N=2s`$ and $`|QD_N-A|\le B`$, with $`A\in\mathbb{Z}`$, $`Q>0`$, $`B\ge0`$ integers, the inequalities
+To certify the conditions in <a href="#eq:smallpair" data-reference-type="eqref" data-reference="eq:smallpair">[eq:smallpair]</a>, suppose $`\delta_N=2s`$, where $`s\in\{-1,1\}`$, and $`|QD_N-A|\le B`$, with $`A\in\mathbb{Z}`$, $`Q>0`$, $`B\ge0`$ integers. Then $`sD_N`$ lies in $`[(sA-B)/Q,(sA+B)/Q]`$. This whole interval lies in $`(1/2,1)`$ precisely when its lower endpoint exceeds $`1/2`$ and its upper endpoint is less than $`1`$, that is,
 ``` math
-2sA-Q>2B,\qquad Q-sA>B
+2sA-Q>2B,\qquad Q-sA>B.
 ```
-put $`sD_N`$ in $`(1/2,1)`$. The numerator $`A`$ is signed. At $`h=1,N=2,L=40`$, one has $`\delta_2=g_4-g_3=-2`$ and
+The numerator $`A`$ is signed: multiplying the enclosure by $`s`$ accounts for the direction of the gap difference. At $`h=1,N=2,L=40`$, one has $`\delta_2=g_4-g_3=-2`$ and
 ``` math
 Q=2^{40},\qquad A=-662838684750,\qquad B=11764181250,\qquad s=-1.
 ```
@@ -458,7 +459,7 @@ Its coefficients are unbounded and its first coefficient is $`-1`$. We obtain a 
 The coefficients increase strictly and $`c_{n+1}-c_n=4n+10`$ is never $`\pm2`$. The [companion’s Section 8](../../../paper/251/erdos251-prime-gap-reasoning-surface.pdf#nameddest=counterexamples) gives further examples, including a bounded nonperiodic sequence in Appendix D. None of these examples constructs consecutive primes.
 
 <div id="res:gap-nonperiodic" class="proposition">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos251/PaperCoreR7.lean#L175">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/1d16f2ddf78e7c4c850246f67bf8ce79b19deb3c/evidence/erdos-251-prime-gap-dyadic-series.md#res-gap-nonperiodic-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos251/PaperCoreR7.lean#L175">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d93e7408aed0b0c73ad5ea98116c7dc0dce3cf7b/evidence/erdos-251-prime-gap-dyadic-series.md#res-gap-nonperiodic-comparator">Comparator</a></p>
 
 **Proposition 10** (prime gaps do not become periodic). *For every positive $`h`$, the actual consecutive-prime-gap sequence is not eventually periodic with period $`h`$.*
 
@@ -470,15 +471,15 @@ The coefficients increase strictly and $`c_{n+1}-c_n=4n+10`$ is never $`\pm2`$. 
 
 </div>
 
-The results on bounded prime gaps \[zhang2014\], clusters of each fixed size \[maynard2015; polymath2014\], and extreme large gaps \[fgkmt2018\] leave the signed weighted-tail windows above uncontrolled. This remains so with Polymath’s bound $`\liminf_n g_n\le246`$ \[polymath2014, Theorem 1.4(i)\]. At a logarithmic truncation depth the explicit remainder tends to zero, but the finite sum must still be separated from the relevant boundary by a larger margin. For the actual prime series, nonintegral shifts are needed arbitrarily late for every positive length. Problem <a href="#prob:smallpair" data-reference-type="ref" data-reference="prob:smallpair">8</a> would supply them. The perturbation theorem concerns the insufficiency of the specified congruences and block statistics, and leaves possible arguments using primality or quantitative rare-event estimates untouched.
+The results on bounded prime gaps \[zhang2014\], clusters of each fixed size \[maynard2015; polymath2014\], and extreme large gaps \[fgkmt2018\] do not give the simultaneous inequalities in <a href="#eq:smallpair" data-reference-type="eqref" data-reference="eq:smallpair">[eq:smallpair]</a>. This remains so with Polymath’s bound $`\liminf_n g_n\le246`$ \[polymath2014, Theorem 1.4(i)\]. At a logarithmic truncation depth the explicit remainder tends to zero, but the finite sum must still be separated from the relevant boundary by a larger margin. For the actual prime series, nonintegral shifts are needed arbitrarily late for every positive length. Problem <a href="#prob:smallpair" data-reference-type="ref" data-reference="prob:smallpair">8</a> would supply them. The perturbation theorem concerns the insufficiency of the specified congruences and block statistics, and leaves possible arguments using primality or quantitative rare-event estimates untouched.
 
 <a id="sec:pinned-lean-sources"></a>
 
 # Sources and further comparisons
 
-*Formal proofs.* A result with a kernel-checked Lean proof carries links beside its heading and in the margin; both open the same evidence. *Lean* opens the proof: the declaration itself when one declaration states the whole result, otherwise the list of declarations that together state it. Inline citations to individual declarations elsewhere may identify ingredients of a proof. *Comparator* opens the recorded comparison, in which the same statement, written again from Mathlib alone in a separate repository, was compared with our proof by Lean’s Comparator tool, allowing only the three standard axioms. *Comparator pending* means that the complete statement has no recorded comparison yet. A dagger on the Lean mark means that the Lean proof assumes an input named just below the result. A result without a mark has no Lean proof of its whole statement; what is checked is said below it. The [evidence record](https://github.com/wcook04/plectis-erdos/blob/1d16f2ddf78e7c4c850246f67bf8ce79b19deb3c/evidence/erdos-251-prime-gap-dyadic-series.md) gives every declaration, version and check. Comparator checks statements, axioms and kernel acceptance; it does not establish novelty or peer review. These checks show that the stated propositions are proved; whether they are the right propositions is a question the reader can settle by comparing them with the text.
+*Formal proofs.* A result with a kernel-checked Lean proof carries links beside its heading and in the margin; both open the same evidence. *Lean* opens the proof: the declaration itself when one declaration states the whole result, otherwise the list of declarations that together state it. Inline citations to individual declarations elsewhere may identify ingredients of a proof. *Comparator* opens the recorded comparison, in which the same statement, written again from Mathlib alone in a separate repository, was compared with our proof by Lean’s Comparator tool, allowing only the three standard axioms. *Comparator pending* means that the complete statement has no recorded comparison yet. A dagger on the Lean mark means that the Lean proof assumes an input named just below the result. A result without a mark has no Lean proof of its whole statement; what is checked is said below it. The [evidence record](https://github.com/wcook04/plectis-erdos/blob/d93e7408aed0b0c73ad5ea98116c7dc0dce3cf7b/evidence/erdos-251-prime-gap-dyadic-series.md) gives every declaration, version and check. Comparator checks statements, axioms and kernel acceptance; it does not establish novelty or peer review. These checks show that the stated propositions are proved; whether they are the right propositions is a question the reader can settle by comparing them with the text.
 
-The linked Lean declarations use Lean 4 \[lean4\] and mathlib \[mathlib\]. The formal proof of Proposition <a href="#res:sparserationalisation" data-reference-type="ref" data-reference="res:sparserationalisation">1</a> changes one coordinate at each stage, whereas the proof here uses triples. Both fix the permitted set, the interval and the congruence cutoffs before choosing the target. For Corollary <a href="#res:jointcountermodel" data-reference-type="ref" data-reference="res:jointcountermodel">2</a>, the formal statement covers every $`\varepsilon>0`$ and assumes Schlage-Puchta’s lemma only for nonconcentration and the prime number theorem only for the asymptotic $`P_n\sim n\log n`$. The source links record formal support for the linked statements, rather than verification of the different printed proofs. The [companion’s Appendix G](../../../paper/251/erdos251-prime-gap-reasoning-surface.pdf#nameddest=short-source-index) retains the complete source index at this note’s original pin, including the finite telescoping identities and their nonperiodicity consequences. Its [Section 3](../../../paper/251/erdos251-prime-gap-reasoning-surface.pdf#nameddest=context) retains the broader subsum and automatic-sequence comparisons.
+The linked Lean declarations use Lean 4 \[lean4\] and mathlib \[mathlib\]. The formal proof of Proposition <a href="#res:sparserationalisation" data-reference-type="ref" data-reference="res:sparserationalisation">1</a> changes one coordinate at each stage, whereas the proof here uses triples. Both choose the set containing the supports, the interval and the congruence cutoffs before the value of the sum. For Corollary <a href="#res:jointcountermodel" data-reference-type="ref" data-reference="res:jointcountermodel">2</a>, the formal statement covers every $`\varepsilon>0`$ and assumes Schlage-Puchta’s lemma only for nonconcentration and the prime number theorem only for the asymptotic $`P_n\sim n\log n`$. The source links record formal support for the linked statements, rather than verification of the different printed proofs. The [companion’s Appendix G](../../../paper/251/erdos251-prime-gap-reasoning-surface.pdf#nameddest=short-source-index) retains the complete source index at this note’s original pin, including the finite telescoping identities and their nonperiodicity consequences. Its [Section 3](../../../paper/251/erdos251-prime-gap-reasoning-surface.pdf#nameddest=context) retains the broader subsum and automatic-sequence comparisons.
 
 <a id="acknowledgements"></a>
 

@@ -378,7 +378,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="prop-zetaq"></a>
 
-## Proposition 5.17 (The divisor-sum identity), page 25
+## Proposition 5.17 (The divisor-sum identity), page 26
 
 > *``` math
 > \sum_{d\ge1} \frac{1}{(2^d-1)^2} \;=\; \sum_{n\ge1} \frac{\sigma(n)-\tau(n)}{2^n} \;=\; \zeta_q(2)-\zeta_q(1) \text{ at } q=\tfrac12,
