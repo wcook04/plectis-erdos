@@ -408,6 +408,37 @@ def cache_restore_prefixes(workflow: str) -> list[str]:
 
 
 class LeanFastBuildTests(unittest.TestCase):
+    def test_custom_elan_proxy_runs_through_the_bounded_consumer(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            custom = root / "custom elan"
+            proxy = custom / "bin" / "lake"
+            proxy.parent.mkdir(parents=True)
+            proxy.write_text('#!/bin/sh\nprintf "custom proxy: %s\\n" "$1"\n')
+            proxy.chmod(0o755)
+            with mock.patch.dict(os.environ, {"ELAN_HOME": str(custom)}):
+                result = fast._run(
+                    fast.lake_command("--version"), cwd=root,
+                    timeout_seconds=5, capture_output=True, text=True,
+                )
+            self.assertEqual(result.returncode, 0, result.stderr)
+            self.assertEqual(result.stdout, "custom proxy: --version\n")
+
+    def test_missing_custom_elan_proxy_does_not_fall_back(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            default = root / "default-home" / ".elan" / "bin" / "lake"
+            default.parent.mkdir(parents=True)
+            default.write_text('#!/bin/sh\nexit 0\n')
+            default.chmod(0o755)
+            custom = root / "missing-custom"
+            with mock.patch.object(Path, "home", return_value=root / "default-home"), \
+                    mock.patch.dict(os.environ, {"ELAN_HOME": str(custom)}):
+                command = fast.lake_command("--version")
+                self.assertEqual(command[0], str(custom.resolve() / "bin" / "lake"))
+                with self.assertRaises(FileNotFoundError):
+                    fast._run(command, cwd=root, timeout_seconds=5)
+
     def test_discovery_uses_declared_lake_source_roots(self) -> None:
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)

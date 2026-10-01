@@ -225,6 +225,12 @@ def digest_file(path: Path) -> str:
     return digest_bytes(path.read_bytes())
 
 
+def elan_home() -> Path:
+    """Resolve Elan's configured installation before a worker changes cwd."""
+    configured = os.environ.get("ELAN_HOME")
+    return (Path(configured) if configured else Path.home() / ".elan").resolve()
+
+
 def command_environment() -> dict[str, str]:
     """Run workers without ambient Git, Python, or locale configuration."""
     environment = os.environ.copy()
@@ -240,6 +246,7 @@ def command_environment() -> dict[str, str]:
             environment.pop(key, None)
     environment.update(
         {
+            "ELAN_HOME": str(elan_home()),
             "GIT_CONFIG_NOSYSTEM": "1",
             "GIT_CONFIG_GLOBAL": os.devnull,
             "GIT_OPTIONAL_LOCKS": "0",
@@ -741,6 +748,7 @@ def validator_spec(
     lean_lake_staleness: bool = False,
     dependency_full_check: bool = False,
     dependency_write_stale: bool = False,
+    release_timeout_seconds: int = 900,
 ) -> dict[str, Any]:
     if kind not in ROSTER_VALIDATORS:
         raise ValidationError(f"unknown validation class: {kind}")
@@ -823,6 +831,8 @@ def validator_spec(
         ]
         authority_paths = [ROOT / "docs/papers/check_paper_corpus.py", corpus, *sources]
     elif kind == "release":
+        if type(release_timeout_seconds) is not int or release_timeout_seconds <= 0:
+            raise ValidationError("release timeout must be a positive integer")
         if targets:
             raise ValidationError("release validation accepts no targets")
         immutable_ref = ref or git_output("rev-parse", "HEAD").decode().strip()
@@ -830,6 +840,8 @@ def validator_spec(
         command = [
             sys.executable,
             "scripts/check_release_ref.py",
+            "--timeout-seconds",
+            str(release_timeout_seconds),
             "--ref",
             commit,
             "--format",
@@ -2178,6 +2190,8 @@ def add_validation_request_arguments(parser: argparse.ArgumentParser) -> None:
     parser.add_argument("--class", dest="kind", choices=tuple(ROSTER_VALIDATORS), required=True)
     parser.add_argument("--target", action="append", default=[])
     parser.add_argument("--ref")
+    parser.add_argument("--release-timeout-seconds", type=int, default=900,
+                        help="positive owner gate deadline for release validation; part of its source-bound key")
     parser.add_argument("--format", dest="output_format", choices=("card", "json"))
     parser.add_argument("--check", action="store_true", help="check generated output instead of replacing it")
     parser.add_argument("--full-check", action="store_true", help="with dependency-index --check, rerun the environment exporter")
@@ -2247,6 +2261,7 @@ def main(argv: list[str] | None = None) -> int:
                     args.check,
                     dependency_full_check=args.full_check,
                     dependency_write_stale=args.write_stale,
+                    release_timeout_seconds=args.release_timeout_seconds,
                 ),
                 args.state_root,
             )

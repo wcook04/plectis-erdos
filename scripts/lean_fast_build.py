@@ -34,7 +34,7 @@ import lean_package_share
 
 
 ROOT = Path(__file__).resolve().parents[1]
-TOOLCHAIN_BIN = Path.home() / ".elan" / "bin"
+TOOLCHAIN_BIN = singleflight.elan_home() / "bin"
 LAKE = TOOLCHAIN_BIN / "lake"
 IMPORT_RE = re.compile(
     r"^\s*(?:public\s+)?import\s+"
@@ -57,7 +57,7 @@ LAKE_COMMAND_TIMEOUT_SECONDS = 3 * 60 * 60
 
 def lake_command(*arguments: str) -> list[str]:
     """Build a Lake argv with the canonical installed toolchain executable."""
-    return [str(LAKE), *arguments]
+    return [str(singleflight.elan_home() / "bin" / "lake"), *arguments]
 
 
 def _run(

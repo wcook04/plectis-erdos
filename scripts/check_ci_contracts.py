@@ -20,6 +20,7 @@ import validation_singleflight as singleflight
 
 ROOT = Path(__file__).resolve().parents[1]
 TESTS = (
+    "test_check_axiom_audit.py",
     "test_dependency_lock_contract.py",
     "test_lean_fast_build.py",
     "test_lean_dependency_environment.py",

@@ -22,7 +22,8 @@ body:
   - type: input
     id: release
     attributes:
-      label: Release tag
-      placeholder: v0.10.0
+      label: Paper edition, commit or link (if known)
+      description: Share the release tag, paper edition, commit or source link you read. Leave blank when unknown.
+      placeholder: v0.10.0, or a link to the statement you read
     validations:
-      required: true
+      required: false

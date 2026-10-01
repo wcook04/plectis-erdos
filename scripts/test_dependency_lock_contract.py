@@ -46,7 +46,7 @@ RELEASE_VALIDATOR_REQUIREMENTS = (
     ("setuptools", "84.0.0"),
     ("six", "1.17.0"),
     ("tomlkit", "0.15.1"),
-    ("urllib3", "2.7.0"),
+    ("urllib3", "2.8.0"),
 )
 RELEASE_INSTALL_COMMAND = (
     "python3 -m pip install --disable-pip-version-check --no-cache-dir "
