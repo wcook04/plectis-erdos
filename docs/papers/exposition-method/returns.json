@@ -1354,6 +1354,533 @@
       "native_status": "selected_after_editorial_review_native_render_and_release_pending",
       "status_boundary": "Acceptance of a manuscript delta does not adopt each proposed writing rule or certify a source reading. Originals remain in maintainer custody; these hashes identify them.",
       "native_decision_summary": "Selected two TeX sources are in `public/paper/68/`. They match the donor bytes. The 20 inventoried result identities remain at their R6 authority and logical ceilings; declared restatements are accounted for in `STATEMENT_ACCOUNTING.json`."
+    },
+    {
+      "id": "short-20260930-r8-1041",
+      "round": 8,
+      "problem": "1041",
+      "archive_name": "erdos1041_r8_complete_return_20260930.zip",
+      "archive_sha256": "110c35d920ac3ded3d34ed1dec4409eb1cad9b0d7d4d7c365276f1c134b4235f",
+      "documents": {
+        "RETURN.json": {
+          "member": "erdos1041_r8_return_20260930/RETURN.json",
+          "sha256": "0fb0ef8dcc581f9017d3c7a640df631dfcc6c932c7f3a1be5ee0a450c646d2fa"
+        },
+        "STYLE_RULES.json": {
+          "member": "erdos1041_r8_return_20260930/STYLE_RULES.json",
+          "sha256": "79c6766bc6d301fb4388ac677face9f1e0c2c7eafff671aae5f48efd13abc1f7"
+        },
+        "GENERALIZED_LESSONS.json": {
+          "member": "erdos1041_r8_return_20260930/GENERALIZED_LESSONS.json",
+          "sha256": "f689e1cad0c0df8f870af5eabeff7c867c74ca622baa3481fc5f37119bb51192"
+        },
+        "LITERATURE_READING.json": {
+          "member": "erdos1041_r8_return_20260930/LITERATURE_READING.json",
+          "sha256": "8cfab26020a16d401ef519d46877838b009c948baecace285c6edee85d2d2eee"
+        },
+        "EDITORIAL_REPORT.md": {
+          "member": "erdos1041_r8_return_20260930/EDITORIAL_REPORT.md",
+          "sha256": "36eb35e3a9443423bc9adb28a6451f3832189eeab34bdf8a7fdcd00d521b8c6f"
+        },
+        "REGISTER_REPORT.json": {
+          "member": "erdos1041_r8_return_20260930/REGISTER_REPORT.json",
+          "sha256": "8d8a1ffc3df57fe97e516e6bc342dfd61838fd48e4a4d8f97ca14bb5c5ecf6fe"
+        },
+        "FEEDBACK_UPTAKE.json": {
+          "member": "erdos1041_r8_return_20260930/FEEDBACK_UPTAKE.json",
+          "sha256": "81cbb7169c94bac8f5d167aaae036b0cd439b2a1ca1e9c04fcff1ee4b746dfcf"
+        },
+        "READER_VALUE_REPORT.json": {
+          "member": "erdos1041_r8_return_20260930/READER_VALUE_REPORT.json",
+          "sha256": "fa8b0df20f3fa9890bd8685ac4a0d6e3b15b93b8b0d7e349ad7991115f8635d3"
+        },
+        "BLOCKERS.md": {
+          "member": "erdos1041_r8_return_20260930/BLOCKERS.md",
+          "sha256": "caab69e4f49d5033efa0a458462921a0f9b83f2fd320ee2ab1eb0cf4fe946800"
+        },
+        "STATEMENT_CHANGES.json": {
+          "member": "erdos1041_r8_return_20260930/STATEMENT_CHANGES.json",
+          "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+        }
+      },
+      "native_receipt_identities": [],
+      "native_status": "R8_source_reviewed; final native guide render and release binding pending",
+      "status_boundary": "Original ZIP and member hashes identify donor proposals, not verified reading or automatic acceptance. See R8 native review and selected public source. The guide self-research requirement remains a next-round task."
+    },
+    {
+      "id": "short-20260930-r8-1049",
+      "round": 8,
+      "donor_filename_round_label": 9,
+      "input_packet_id": "erdos1049_short_refinement_r8_20260930",
+      "custody_batch": "short_refinement_r8_20260930",
+      "problem": "1049",
+      "archive_name": "erdos1049_short_refinement_r9_20260930.zip",
+      "archive_sha256": "0765c809c23ab5787177594d11ce48e3137d3338b314fe20adedb0c80a4b4a3e",
+      "documents": {
+        "RETURN.json": {
+          "member": "erdos1049_short_refinement_r9_20260930/RETURN.json",
+          "sha256": "0d3a97d3158eb56915a3e44315e890bcc2961c7de6d094815c0afafc8bc9c2d3"
+        },
+        "STYLE_RULES.json": {
+          "member": "erdos1049_short_refinement_r9_20260930/STYLE_RULES.json",
+          "sha256": "156c8f5fe4bdbf253cf568a85c0d32d82341a1a05162c56611ffe5f97cc9cd20"
+        },
+        "GENERALIZED_LESSONS.json": {
+          "member": "erdos1049_short_refinement_r9_20260930/GENERALIZED_LESSONS.json",
+          "sha256": "82bcd86a34134632e1a757ba678ff900da7ea34b7a69294bbe7129222153dbb0"
+        },
+        "LITERATURE_READING.json": {
+          "member": "erdos1049_short_refinement_r9_20260930/LITERATURE_READING.json",
+          "sha256": "c8058a6179491b9b6fe523b0a6885a6309115d2349a6527eb29084b07c35b866"
+        },
+        "EDITORIAL_REPORT.md": {
+          "member": "erdos1049_short_refinement_r9_20260930/EDITORIAL_REPORT.md",
+          "sha256": "afafc4590364987bbc5e9e21c95c676c6827a514a70474cd80283298f01464be"
+        },
+        "REGISTER_REPORT.json": {
+          "member": "erdos1049_short_refinement_r9_20260930/REGISTER_REPORT.json",
+          "sha256": "7a7e2055df6cb603b80c134c2f320ea1f46d05f380f265b81f9ccb11505d88c1"
+        },
+        "FEEDBACK_UPTAKE.json": {
+          "member": "erdos1049_short_refinement_r9_20260930/FEEDBACK_UPTAKE.json",
+          "sha256": "7af2aa4cdd1e368dc079ffcd2147117c52d74ad1ae44b1fce8ef34d1c5439021"
+        },
+        "READER_VALUE_REPORT.json": {
+          "member": "erdos1049_short_refinement_r9_20260930/READER_VALUE_REPORT.json",
+          "sha256": "260e36d7b0aeb616b88247543a1e1139d83e54c6233b87a467884d18253a52e6"
+        },
+        "BLOCKERS.md": {
+          "member": "erdos1049_short_refinement_r9_20260930/BLOCKERS.md",
+          "sha256": "5f054ae7821f755623f3e07e8a368ecef233bd4745571668f1773abfeb752ad9"
+        },
+        "STATEMENT_CHANGES.json": {
+          "member": "erdos1049_short_refinement_r9_20260930/STATEMENT_CHANGES.json",
+          "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+        }
+      },
+      "native_receipt_identities": [],
+      "native_status": "R8_source_reviewed; final native guide render and release binding pending",
+      "status_boundary": "Original ZIP and member hashes identify donor proposals, not verified reading or automatic acceptance. See R8 native review and selected public source. The guide self-research requirement remains a next-round task."
+    },
+    {
+      "id": "short-20260930-r8-243",
+      "round": 8,
+      "problem": "243",
+      "archive_name": "erdos243_short_refinement_r8_return_20260930.zip",
+      "archive_sha256": "3c35cef8042089d1cd8ed38471fe4eab027b210e50a3b8a0e5cc30c1126dd288",
+      "documents": {
+        "RETURN.json": {
+          "member": "erdos243_r8_return/RETURN.json",
+          "sha256": "a048fc9dfc93369fa23fd2322134ef887f0a4b273d6277e9c951a3654ee017a5"
+        },
+        "STYLE_RULES.json": {
+          "member": "erdos243_r8_return/STYLE_RULES.json",
+          "sha256": "5a68fd6dc049735b609c305f9b72f1b95d43b4805ef6e0854a86559398b3d9f9"
+        },
+        "GENERALIZED_LESSONS.json": {
+          "member": "erdos243_r8_return/GENERALIZED_LESSONS.json",
+          "sha256": "1fa1f68e0442030794605ca2acdee339c1f159f59ecf40f88fd9862df2f68b83"
+        },
+        "LITERATURE_READING.json": {
+          "member": "erdos243_r8_return/LITERATURE_READING.json",
+          "sha256": "ad0b32a380637eda6452fe6c9cdf1f8848bfbaec87dacf305a08e204077c6fed"
+        },
+        "EDITORIAL_REPORT.md": {
+          "member": "erdos243_r8_return/EDITORIAL_REPORT.md",
+          "sha256": "6f6e29cd78c231934623c37656e91e465211e33b6e0504c886ef00e7fa316d28"
+        },
+        "REGISTER_REPORT.json": {
+          "member": "erdos243_r8_return/REGISTER_REPORT.json",
+          "sha256": "9302af9bc6c823643033947fec46a44554528a887934bbdb0011dcdd0c21bb85"
+        },
+        "FEEDBACK_UPTAKE.json": {
+          "member": "erdos243_r8_return/FEEDBACK_UPTAKE.json",
+          "sha256": "bd9038087e82b640f5b05570bb43c9ed2c31d40d700d81c348d4ac49d51e714a"
+        },
+        "READER_VALUE_REPORT.json": {
+          "member": "erdos243_r8_return/READER_VALUE_REPORT.json",
+          "sha256": "a12cc743765c901db8501a775e503bb98a22e9d34e778b463ecf12460c1c7d6d"
+        },
+        "BLOCKERS.md": {
+          "member": "erdos243_r8_return/BLOCKERS.md",
+          "sha256": "ec7972aef7ddf793c5f9f989c5cd6a3ed3f5d9a9897cac2d1d732edd8aa25c7f"
+        },
+        "STATEMENT_CHANGES.json": {
+          "member": "erdos243_r8_return/STATEMENT_CHANGES.json",
+          "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+        }
+      },
+      "native_receipt_identities": [],
+      "native_status": "R8_source_reviewed; final native guide render and release binding pending",
+      "status_boundary": "Original ZIP and member hashes identify donor proposals, not verified reading or automatic acceptance. See R8 native review and selected public source. The guide self-research requirement remains a next-round task."
+    },
+    {
+      "id": "short-20260930-r8-249",
+      "round": 8,
+      "problem": "249",
+      "archive_name": "erdos249_r8_return.zip",
+      "archive_sha256": "e33b99b5ad1eb5768e1613ac8204f10db27496a8a7c8697d014359aac1c8e0a7",
+      "documents": {
+        "RETURN.json": {
+          "member": "erdos249_r8_return/RETURN.json",
+          "sha256": "174a54c20beceb34eaeb44a70ccbf457dd1130839c0eca5a8ab16b8d0e8ad024"
+        },
+        "STYLE_RULES.json": {
+          "member": "erdos249_r8_return/STYLE_RULES.json",
+          "sha256": "f3ae7f82a3c1df6e8a452ed2fbeef6dee4f8c6fc7dd3b5cf28d61a87043b41b1"
+        },
+        "GENERALIZED_LESSONS.json": {
+          "member": "erdos249_r8_return/GENERALIZED_LESSONS.json",
+          "sha256": "5ee9d7706a1d52beaeccb0b4c1d4732ee8d89cfe4811ce8d2c940f147f3145ef"
+        },
+        "LITERATURE_READING.json": {
+          "member": "erdos249_r8_return/LITERATURE_READING.json",
+          "sha256": "e8e82a490037c709a4331b673a9602e8f66fc717ec9ed7be2a773ecddec386cb"
+        },
+        "EDITORIAL_REPORT.md": {
+          "member": "erdos249_r8_return/EDITORIAL_REPORT.md",
+          "sha256": "ac6aef2394e7629b0cc97d17ce038da3568ebf32e6be70ba948030f5e907e653"
+        },
+        "REGISTER_REPORT.json": {
+          "member": "erdos249_r8_return/REGISTER_REPORT.json",
+          "sha256": "1998e4373f5a9cbf3186edc67f7507fce15b0a989a7cde42cff7b74261db6ee1"
+        },
+        "FEEDBACK_UPTAKE.json": {
+          "member": "erdos249_r8_return/FEEDBACK_UPTAKE.json",
+          "sha256": "643b1d68d4efca553f3b70a50c0f9de8b893dea03093030dbf8b96b74363d147"
+        },
+        "READER_VALUE_REPORT.json": {
+          "member": "erdos249_r8_return/READER_VALUE_REPORT.json",
+          "sha256": "170294fec4012992265239f0aeb0df0818d0270314bbecfadcebb28f36f02bea"
+        },
+        "BLOCKERS.md": {
+          "member": "erdos249_r8_return/BLOCKERS.md",
+          "sha256": "9bac4d9b962b74c1e1685ac55cf5e71e5d3f976edbb5b20e8732d643d422944d"
+        },
+        "STATEMENT_CHANGES.json": {
+          "member": "erdos249_r8_return/STATEMENT_CHANGES.json",
+          "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+        }
+      },
+      "native_receipt_identities": [],
+      "native_status": "R8_source_reviewed; final native guide render and release binding pending",
+      "status_boundary": "Original ZIP and member hashes identify donor proposals, not verified reading or automatic acceptance. See R8 native review and selected public source. The guide self-research requirement remains a next-round task."
+    },
+    {
+      "id": "short-20260930-r8-251",
+      "round": 8,
+      "problem": "251",
+      "archive_name": "erdos251_short_refinement_r8_20260930_return.zip",
+      "archive_sha256": "1f5e678944ab134488f208f2ae15618c5efe388d4b228695bfafe5d465fd43b5",
+      "documents": {
+        "RETURN.json": {
+          "member": "erdos251_r8_editorial_return/RETURN.json",
+          "sha256": "ff3eb3c0ef056ef939e938170ce8ee37e5723f2b0dc4ddb3fcceab31183a804b"
+        },
+        "STYLE_RULES.json": {
+          "member": "erdos251_r8_editorial_return/STYLE_RULES.json",
+          "sha256": "dc1365a59c66b5fb74efabe21ed93f6fa790b081dd6fd75d6f841c8cc3b39204"
+        },
+        "GENERALIZED_LESSONS.json": {
+          "member": "erdos251_r8_editorial_return/GENERALIZED_LESSONS.json",
+          "sha256": "cf8394f4d8ae39031746650bfa7793ef75304630af4f63684dd9d956e5feffe8"
+        },
+        "LITERATURE_READING.json": {
+          "member": "erdos251_r8_editorial_return/LITERATURE_READING.json",
+          "sha256": "2f59c487daafb3409a0334c4aee730104e677917697de40359ef9a01ce7e0c9c"
+        },
+        "EDITORIAL_REPORT.md": {
+          "member": "erdos251_r8_editorial_return/EDITORIAL_REPORT.md",
+          "sha256": "fe140befcc6dc3d8cdaa7d2642d91bf3ef157e4759b2b5a36fb99c3b0e7c7d6f"
+        },
+        "REGISTER_REPORT.json": {
+          "member": "erdos251_r8_editorial_return/REGISTER_REPORT.json",
+          "sha256": "e70738b4e165d2fadad8f5b0104925fb0d2fe498ac28e67164ba0f1868c32617"
+        },
+        "FEEDBACK_UPTAKE.json": {
+          "member": "erdos251_r8_editorial_return/FEEDBACK_UPTAKE.json",
+          "sha256": "bab12a0356101223b0b826b239dfebb206de9f02127fd8c025418b4ca005c497"
+        },
+        "READER_VALUE_REPORT.json": {
+          "member": "erdos251_r8_editorial_return/READER_VALUE_REPORT.json",
+          "sha256": "fbc64c540db55b3b8db3f6fc26b63d1aa8cc862f8876486938a6605ebed073cd"
+        },
+        "BLOCKERS.md": {
+          "member": "erdos251_r8_editorial_return/BLOCKERS.md",
+          "sha256": "c6997dab9dec595e1a2b38aad4a61f62dc995e0adc8997ea581e05ad7a631bf3"
+        },
+        "STATEMENT_CHANGES.json": {
+          "member": "erdos251_r8_editorial_return/STATEMENT_CHANGES.json",
+          "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+        }
+      },
+      "native_receipt_identities": [],
+      "native_status": "R8_source_reviewed; final native guide render and release binding pending",
+      "status_boundary": "Original ZIP and member hashes identify donor proposals, not verified reading or automatic acceptance. See R8 native review and selected public source. The guide self-research requirement remains a next-round task."
+    },
+    {
+      "id": "short-20260930-r8-257",
+      "round": 8,
+      "problem": "257",
+      "archive_name": "erdos257_r8_final_return.zip",
+      "archive_sha256": "70009d4228dea08155ec6036e1da4ae415b8fc3664c41c75074d03a3c650470d",
+      "documents": {
+        "RETURN.json": {
+          "member": "erdos257_r8_exposition_return/RETURN.json",
+          "sha256": "e45216bf3f672e84605e947f6446b0a1ce08dcdcde9aa5b77ba843413aaa6301"
+        },
+        "STYLE_RULES.json": {
+          "member": "erdos257_r8_exposition_return/STYLE_RULES.json",
+          "sha256": "6788a2356aa3f6d505b078e8ee3f7795ce20fa9292392c2620c2e0cc9d93ff50"
+        },
+        "GENERALIZED_LESSONS.json": {
+          "member": "erdos257_r8_exposition_return/GENERALIZED_LESSONS.json",
+          "sha256": "4805509191dbb6b95424a486add2339f6e2dbc69277dad439dcc1a30ad91ffd8"
+        },
+        "LITERATURE_READING.json": {
+          "member": "erdos257_r8_exposition_return/LITERATURE_READING.json",
+          "sha256": "24fbf21adf435a9c4a1ec8b7a522abcaa9c9a4de43a467fc6f0c2ff54c3bc893"
+        },
+        "EDITORIAL_REPORT.md": {
+          "member": "erdos257_r8_exposition_return/EDITORIAL_REPORT.md",
+          "sha256": "4a2270392869e7808a67c6ae297c8c91759f52ded602fcc74a85dda48c9b3b07"
+        },
+        "REGISTER_REPORT.json": {
+          "member": "erdos257_r8_exposition_return/REGISTER_REPORT.json",
+          "sha256": "3756fc1b21073ac6913913e273c5cfd7c2736ca0be3b55c25fc7403f435754a4"
+        },
+        "FEEDBACK_UPTAKE.json": {
+          "member": "erdos257_r8_exposition_return/FEEDBACK_UPTAKE.json",
+          "sha256": "07c90ea1e06b81c300b7e70ba4c615f20c76d7706b54a3c2287468e8bb99c645"
+        },
+        "READER_VALUE_REPORT.json": {
+          "member": "erdos257_r8_exposition_return/READER_VALUE_REPORT.json",
+          "sha256": "7dc8bd7487a680e538691d6d040f8a0a82f523c34c15549a73b372cdca2dc094"
+        },
+        "BLOCKERS.md": {
+          "member": "erdos257_r8_exposition_return/BLOCKERS.md",
+          "sha256": "edaa1f424a05fca33838526db3d3e8068c4286cd555487e7bfd812ee54547a4e"
+        },
+        "STATEMENT_CHANGES.json": {
+          "member": "erdos257_r8_exposition_return/STATEMENT_CHANGES.json",
+          "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+        }
+      },
+      "native_receipt_identities": [],
+      "native_status": "R8_source_reviewed; final native guide render and release binding pending",
+      "status_boundary": "Original ZIP and member hashes identify donor proposals, not verified reading or automatic acceptance. See R8 native review and selected public source. The guide self-research requirement remains a next-round task."
+    },
+    {
+      "id": "short-20260930-r8-269",
+      "round": 8,
+      "problem": "269",
+      "archive_name": "erdos269_short_refinement_r8_return_20260930.zip",
+      "archive_sha256": "d74e2fccda05964191f9a5900bb3dd497e3fce3ad68e7c971dfcf6bf92d9955e",
+      "documents": {
+        "RETURN.json": {
+          "member": "erdos269_short_refinement_r8_return_20260930/RETURN.json",
+          "sha256": "7b41efb6771c15fa815cf886e314a1741364f581b8c4a91ffd5a5effdf005ea9"
+        },
+        "STYLE_RULES.json": {
+          "member": "erdos269_short_refinement_r8_return_20260930/STYLE_RULES.json",
+          "sha256": "5661a8e5664ef19fbb2e67ac0b74134567e400a4d24d7c656c05319fa716f836"
+        },
+        "GENERALIZED_LESSONS.json": {
+          "member": "erdos269_short_refinement_r8_return_20260930/GENERALIZED_LESSONS.json",
+          "sha256": "1d753b48258c14459f0934c9e838d2225501c0df17a229f614e9e450c3b1f80c"
+        },
+        "LITERATURE_READING.json": {
+          "member": "erdos269_short_refinement_r8_return_20260930/LITERATURE_READING.json",
+          "sha256": "4d03af4061e88b9a211c7ea5bdad21956ccac579a40ab8de7df3b3f9341c4ccd"
+        },
+        "EDITORIAL_REPORT.md": {
+          "member": "erdos269_short_refinement_r8_return_20260930/EDITORIAL_REPORT.md",
+          "sha256": "c4a27c737631bfae1149d01aa9ff84aa8458be87523e5e31fb577ed90681991d"
+        },
+        "REGISTER_REPORT.json": {
+          "member": "erdos269_short_refinement_r8_return_20260930/REGISTER_REPORT.json",
+          "sha256": "f1071d5bb983b22e387a1b8f6ef5a5a4ebe6d6e345623d1ea03955b9a36ac440"
+        },
+        "FEEDBACK_UPTAKE.json": {
+          "member": "erdos269_short_refinement_r8_return_20260930/FEEDBACK_UPTAKE.json",
+          "sha256": "9af9a149cf1b4c5066503f091d5f431152ec5fe629e853ffb1c28f891807664a"
+        },
+        "READER_VALUE_REPORT.json": {
+          "member": "erdos269_short_refinement_r8_return_20260930/READER_VALUE_REPORT.json",
+          "sha256": "5b1be679388ae393d3a90913e2a0c46d1dcb617abc0c495f76a1359c641ed108"
+        },
+        "BLOCKERS.md": {
+          "member": "erdos269_short_refinement_r8_return_20260930/BLOCKERS.md",
+          "sha256": "f5e0abd62e3e7f13a8916624628f12ff94096fb06b0cbdab5a9d7b2950e05e05"
+        },
+        "STATEMENT_CHANGES.json": {
+          "member": "erdos269_short_refinement_r8_return_20260930/STATEMENT_CHANGES.json",
+          "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+        }
+      },
+      "native_receipt_identities": [],
+      "native_status": "R8_source_reviewed; final native guide render and release binding pending",
+      "status_boundary": "Original ZIP and member hashes identify donor proposals, not verified reading or automatic acceptance. See R8 native review and selected public source. The guide self-research requirement remains a next-round task."
+    },
+    {
+      "id": "short-20260930-r8-68",
+      "round": 8,
+      "problem": "68",
+      "archive_name": "erdos68_r8_exposition_return_20260930.zip",
+      "archive_sha256": "26a8aec951cdec1da89548335568a95b6493b88d7732d1f5e5c64a98ff940e46",
+      "documents": {
+        "RETURN.json": {
+          "member": "erdos68_r8_exposition_return_20260930/RETURN.json",
+          "sha256": "0148145869fc43794db55282e439ca040c5d9d58b0c2c14f29f2d91df6099b28"
+        },
+        "STYLE_RULES.json": {
+          "member": "erdos68_r8_exposition_return_20260930/STYLE_RULES.json",
+          "sha256": "37f9a888bd57304cf25bc7f92c7cb2421ff18f5fc6607d1c0b8270ada5b4e440"
+        },
+        "GENERALIZED_LESSONS.json": {
+          "member": "erdos68_r8_exposition_return_20260930/GENERALIZED_LESSONS.json",
+          "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+        },
+        "LITERATURE_READING.json": {
+          "member": "erdos68_r8_exposition_return_20260930/LITERATURE_READING.json",
+          "sha256": "cc68db329886b49dde28bbba001f8b4fa75b1929805c6fa783427c73368d5d43"
+        },
+        "EDITORIAL_REPORT.md": {
+          "member": "erdos68_r8_exposition_return_20260930/EDITORIAL_REPORT.md",
+          "sha256": "dc9e047663feb95d1b78b54351f550ad2b962d78a6e291abd9238c6d606a63e5"
+        },
+        "REGISTER_REPORT.json": {
+          "member": "erdos68_r8_exposition_return_20260930/REGISTER_REPORT.json",
+          "sha256": "4436a16abbe6851ac5c12bdfc571869bd78e13000a746665af1602273693306d"
+        },
+        "FEEDBACK_UPTAKE.json": {
+          "member": "erdos68_r8_exposition_return_20260930/FEEDBACK_UPTAKE.json",
+          "sha256": "872326352ec9a9fc2cec012020c0193f00072ce9c28dc58603cff44726eaaef4"
+        },
+        "READER_VALUE_REPORT.json": {
+          "member": "erdos68_r8_exposition_return_20260930/READER_VALUE_REPORT.json",
+          "sha256": "17ae901478fa886496b2674347a312d2a389de4cb0cd0d8fbf25c9c57a6692ae"
+        },
+        "BLOCKERS.md": {
+          "member": "erdos68_r8_exposition_return_20260930/BLOCKERS.md",
+          "sha256": "33e2d84b046045b05931744aeb56de55cd0bf28c47ca3714a1c665277465c5fc"
+        },
+        "STATEMENT_CHANGES.json": {
+          "member": "erdos68_r8_exposition_return_20260930/STATEMENT_CHANGES.json",
+          "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+        }
+      },
+      "native_receipt_identities": [],
+      "native_status": "R8_source_reviewed; final native guide render and release binding pending",
+      "status_boundary": "Original ZIP and member hashes identify donor proposals, not verified reading or automatic acceptance. See R8 native review and selected public source. The guide self-research requirement remains a next-round task."
+    },
+    {
+      "id": "short-20260930-r8-exposition",
+      "round": 8,
+      "problem": "exposition",
+      "archive_name": "exposition_guides_r8_final_20260930.zip",
+      "archive_sha256": "6057811052509fcbba53a19ef4338704bc17636a9f3b125fd4c991e64eb4e1c2",
+      "documents": {
+        "RETURN.json": {
+          "member": "exposition_guides_r8_final_20260930/RETURN.json",
+          "sha256": "e33c583706a593fa55bbc6253930c08ff896c93d3148a14090bcecca25a24043"
+        },
+        "STYLE_RULES.json": {
+          "member": "exposition_guides_r8_final_20260930/STYLE_RULES.json",
+          "sha256": "cdbcfe28e59792a38b380db312f7fd5e90106072ab8aed66967180e63bfc78da"
+        },
+        "GENERALIZED_LESSONS.json": {
+          "member": "exposition_guides_r8_final_20260930/GENERALIZED_LESSONS.json",
+          "sha256": "d014d275dc2fb7d8c0fcba831212156bb16d0d3182b5ad7bd8af4f723a46f0f4"
+        },
+        "LITERATURE_READING.json": {
+          "member": "exposition_guides_r8_final_20260930/LITERATURE_READING.json",
+          "sha256": "fe295ff8756638f39abce6a29dad848be15de26a575d5ec58ac8849d538deda2"
+        },
+        "EDITORIAL_REPORT.md": {
+          "member": "exposition_guides_r8_final_20260930/EDITORIAL_REPORT.md",
+          "sha256": "a45e994cd760037cd7eaef273656282b6fef72348cdbd898ffd3a7b7c243bd87"
+        },
+        "REGISTER_REPORT.json": {
+          "member": "exposition_guides_r8_final_20260930/REGISTER_REPORT.json",
+          "sha256": "86358d47781fcad9f5cadf1ee37b3fbbbe0afc08fac01da17ee78b61ff9c6e40"
+        },
+        "GUIDE_REVISION_REPORT.json": {
+          "member": "exposition_guides_r8_final_20260930/GUIDE_REVISION_REPORT.json",
+          "sha256": "b0aa071f0a090dccf8b3484993ed9c3f798908b069092aed26a518a2b025a55f"
+        },
+        "FEEDBACK_UPTAKE.json": {
+          "member": "exposition_guides_r8_final_20260930/FEEDBACK_UPTAKE.json",
+          "sha256": "42876f22671fc0f29c7f358940c52be163caa1e89b034322c070bdf7101c3884"
+        },
+        "READER_VALUE_REPORT.json": {
+          "member": "exposition_guides_r8_final_20260930/READER_VALUE_REPORT.json",
+          "sha256": "64620022e9481264fd9ff005c40ffef603438afdc864b355daa8b423911cc451"
+        },
+        "BLOCKERS.md": {
+          "member": "exposition_guides_r8_final_20260930/BLOCKERS.md",
+          "sha256": "e96fea893e5b3c19c9ed8bcd3a63db2151da13c3f1c6dc01ac3ad44e13a59ef8"
+        },
+        "STATEMENT_CHANGES.json": {
+          "member": "exposition_guides_r8_final_20260930/STATEMENT_CHANGES.json",
+          "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+        }
+      },
+      "native_receipt_identities": [],
+      "native_status": "R8_source_reviewed; final native guide render and release binding pending",
+      "status_boundary": "Original ZIP and member hashes identify donor proposals, not verified reading or automatic acceptance. See R8 native review and selected public source. The guide self-research requirement remains a next-round task."
+    },
+    {
+      "id": "short-20260930-r8-systems",
+      "round": 8,
+      "problem": "systems",
+      "archive_name": "systems_short_refinement_r8_return_20260930.zip",
+      "archive_sha256": "2765d9eb324b4ca443612b4745175739a3591a0450b0f4a98ba7de11939388c2",
+      "documents": {
+        "RETURN.json": {
+          "member": "systems_short_refinement_r8_return_20260930/RETURN.json",
+          "sha256": "872012ce5880f006e08ff03c2a037e53096ebd4237679e6dbf2cdb4724de91e8"
+        },
+        "STYLE_RULES.json": {
+          "member": "systems_short_refinement_r8_return_20260930/STYLE_RULES.json",
+          "sha256": "0b0129581852ada86403f366b2a0cf76b0b1a7dba1c84a5434b86cbc2f761726"
+        },
+        "GENERALIZED_LESSONS.json": {
+          "member": "systems_short_refinement_r8_return_20260930/GENERALIZED_LESSONS.json",
+          "sha256": "84880a3458ab8328250eef419b99d80974ab9302905f4a3f3482c8c10b79426f"
+        },
+        "LITERATURE_READING.json": {
+          "member": "systems_short_refinement_r8_return_20260930/LITERATURE_READING.json",
+          "sha256": "9478c4acdcea8d8c79618ec8808cc2f107d5dad15b05171611f7c52f9760e8ff"
+        },
+        "EDITORIAL_REPORT.md": {
+          "member": "systems_short_refinement_r8_return_20260930/EDITORIAL_REPORT.md",
+          "sha256": "a88358b05cd9caf673d503607829de891d67e4bd9bc965d17fb0c7a42c51e053"
+        },
+        "REGISTER_REPORT.json": {
+          "member": "systems_short_refinement_r8_return_20260930/REGISTER_REPORT.json",
+          "sha256": "9ce577eeb1f066da95277d2f4faa6c23e958444060e311f885c32189f932a820"
+        },
+        "FEEDBACK_UPTAKE.json": {
+          "member": "systems_short_refinement_r8_return_20260930/FEEDBACK_UPTAKE.json",
+          "sha256": "d6b3172efd82e10457bef95f62c1d25d4c989033f66c3837d9a1d870c2919abd"
+        },
+        "READER_VALUE_REPORT.json": {
+          "member": "systems_short_refinement_r8_return_20260930/READER_VALUE_REPORT.json",
+          "sha256": "dcdb8bf6cc912282a5c7286cc8b03837406b345ef94456e0c5a50fac752ab0c4"
+        },
+        "BLOCKERS.md": {
+          "member": "systems_short_refinement_r8_return_20260930/BLOCKERS.md",
+          "sha256": "98ce08aebcf7fdf2715bbdfaf805eda6d6d06ca5ab13085b23f9926d8fd480ed"
+        },
+        "STATEMENT_CHANGES.json": {
+          "member": "systems_short_refinement_r8_return_20260930/STATEMENT_CHANGES.json",
+          "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+        }
+      },
+      "native_receipt_identities": [],
+      "native_status": "R8_source_reviewed; final native guide render and release binding pending",
+      "status_boundary": "Original ZIP and member hashes identify donor proposals, not verified reading or automatic acceptance. See R8 native review and selected public source. The guide self-research requirement remains a next-round task."
     }
   ]
 }

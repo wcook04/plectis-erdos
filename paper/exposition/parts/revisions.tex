@@ -121,3 +121,171 @@ its notation accumulates~\cite[\S4]{halmos}\cite{gowers}. The usefulness of this
 particular instance is more narrowly demonstrated: one can see the lost
 multiplicity in the table. It does not establish the infinite-series theorem
 or show that every reader would prefer this placement.
+
+
+\section{From a formula to the sentence that explains it}\label{sec:worked-explanations}
+
+Eight additional editorial returns supplied these cases (the \#1049 return
+is labelled R9). They were proposals when supplied. The explanations below
+were checked against the current manuscript sources; that check does not by
+itself establish a new theorem, formal coverage or release status. We group them by the reader's
+question rather than by the order of the returns.
+
+\subsection{How does the target determine the finite test?}\label{sec:certificate}
+
+A certificate is easier to understand when the reader sees the set it must
+certify before seeing its arithmetic form. In the \#251 paper, two tail
+differences satisfy
+\[
+ D'=2D-\delta,\qquad \delta=2s,\qquad s\in\{-1,1\}.
+\]
+The already proved local criterion asks for $1/2<sD<1$; it then gives
+$-1<sD'<0$. The finite calculation supplies integers $A,Q,B$ with $Q>0$,
+$B\ge0$ and $|QD-A|\le B$~\cite[section on finite separation]{paper251}.
+It is tempting to write only that two ensuing inequalities certify the target.
+The missing explanation is the enclosure itself:
+\[
+ sD\in\left[\frac{sA-B}{Q},\frac{sA+B}{Q}\right].
+\]
+Multiplication by either sign preserves the error bound. The lower endpoint
+must exceed $1/2$, and the upper endpoint must be below $1$. Thus the entire
+closed enclosure lies in $(1/2,1)$ exactly when
+\[
+             2sA-Q>2B,\qquad Q-sA>B.
+\]
+Each inequality now has a visible job. The factor $2$ in the first one comes
+from the lower endpoint $1/2$; it is not an unexplained safety factor. Strictness
+also has a purpose: the boundary values give $sD'=-1$ or $0$.
+
+A usable replacement for ``the following inequalities suffice'' is therefore:
+\begin{quote}
+The error bound encloses $sD$ between $(sA-B)/Q$ and $(sA+B)/Q$.
+Requiring the lower endpoint to exceed $1/2$ and the upper endpoint to lie
+below $1$ gives the two strict inequalities.
+\end{quote}
+This is explanatory reconstruction of an existing certificate. Passing the
+test proves membership of the value in the target interval. Failure of a
+conservative enclosure to fit does not prove that the value lies outside it.
+
+The \#68 remainder has a related, one-sided geometry. With $M>0$, it is a
+finite value $A_N$ plus a strictly positive omitted tail. The tail must fit
+below the next integer, so the relevant gap is
+$\lfloor A_N\rfloor+1-A_N$~\cite[section on nonintegrality]{paper68}.
+An upper bound for the tail explains a sufficient test only after this gap
+has been identified. At an integral $A_N$ the gap is $1$. Replacing the
+strict successor $\lfloor A_N\rfloor+1$ by $\lceil A_N\rceil$ would make
+it zero. This endpoint is a particularly useful example because it distinguishes
+two superficially interchangeable conventions.
+
+\subsection{Why was this base or kernel chosen?}\label{sec:formula-choice}
+
+A change of notation should reveal a constraint or save an operation. In one
+\#249 comparison construction, only the even-indexed coefficients may change.
+Writing $e_n$ for the coefficient changes, their contribution to a binary series is
+\[
+                 \sum_{m\ge1} e_{2m}\,2^{-2m}
+                 =\sum_{m\ge1}e_{2m}\,4^{-m}.
+\]
+The permitted support has selected base four. Stating this before the digit
+construction explains the choice and shows immediately why the odd coefficients
+remain untouched~\cite[comparison-sequence construction]{paper249long}.
+The identity alone says nothing about which corrections can be attained under
+additional coefficient bounds; those are separate assertions of the construction.
+
+The \#257 divisor kernel admits an equally direct introduction. Fix integers
+$N\ge0$ and $d\ge1$, and let $B>1$. If $r\ge1$ satisfies $d\mid N+r$,
+then its possible values are
+\[
+       d-(N\bmod d),\quad 2d-(N\bmod d),\quad\ldots.
+\]
+Consequently
+\[
+ \sum_{\substack{r\ge1\\d\mid N+r}}B^{-r}
+ =\frac{B^{N\bmod d}}{B^d-1}.
+\]
+This is the weight of the future positions at which $d$ divides the index.
+It explains the kernel before the averaging machinery is introduced
+\cite[finite means for shifted divisor tails]{paper257}. When $d\mid N$, the
+first positive offset is $d$, so the same formula applies without adding an
+unwanted offset zero. In that paper $B=2^\alpha$, with $0<\alpha\le1$; estimates
+must retain their dependence on $B-1$ as $\alpha$ becomes small.
+
+The two examples make a formula intelligible by deriving it from the operation
+already being performed. Tao's discussion of notation recommends making
+important parameters visible and translating borrowed notation at its use
+\cite{tao-notation}. Here the support restriction and the divisibility condition
+provide the local reasons. The exposition should give those reasons before
+asking the reader to remember another named quantity.
+
+\subsection{What remains to justify after an index is fixed?}\label{sec:fixed-partition}
+
+Fixing a summation index need not leave a fixed finite product. In the \#1049
+moment-determinant argument, a summand is indexed by a partition
+$\mu_1\ge\cdots\ge\mu_\ell>0$, with $\mu_k=0$ for $k>\ell$.
+The base $q\in(0,1)$ and the partition are fixed while $N\to\infty$.
+The ratios of shifted weights tend to one, but the Vandermonde quotient
+still contains factors indexed by $k$ up to $N$
+\cite[proof for geometric moment determinants]{paper1049}.
+
+For a fixed $1\le j\le\ell$, the part with $k>\ell$ is
+\[
+ \prod_{k=\ell+1}^{N}
+       \frac{1-q^{k-j+\mu_j}}{1-q^{k-j}}
+ =\frac{(q^{N+1-j};q)_{\mu_j}}
+        {(q^{\ell+1-j};q)_{\mu_j}},
+ \qquad
+ (a;q)_m:=\prod_{r=0}^{m-1}(1-aq^r).
+\]
+Cancellation leaves two finite endpoint products, each of length $\mu_j$.
+The numerator tends to $1$ and the denominator is fixed and positive.
+The remaining factors have $j,k\le\ell$ and are independent of $N$.
+This establishes convergence of the whole quotient for a fixed partition,
+including its growing part. The formula is the telescoping explanation
+proposed in the later return; its algebra does not invoke a new asymptotic
+theorem.
+
+There is still a second question: can the limit be passed through the sum over
+all partitions? Extend the summand by zero when $\ell>N$, so that the index set
+is fixed. The source proof supplies a bound, independent of $N$, whose total
+over partitions of length $\ell$ is at most
+\[
+                         K^\ell q^{\ell^2},
+\]
+where $K>0$ may depend on the fixed base and the fixed weight-bound constants.
+The ratio of successive terms is $Kq^{2\ell+1}\to0$, so this bound is summable
+over $\ell$. It controls both large parts and large lengths, and hence permits
+dominated convergence. A bound for each individual partition would not do
+that work.
+
+The improved explanation therefore has two conclusions, in this order:
+the whole summand converges for a fixed partition, and a summable bound controls
+all partitions uniformly in $N$. Neither conclusion asserts uniformity as
+$q\uparrow1$. Keeping the base fixed is part of the statement, not a temporary
+convenience that prose may suppress.
+
+\subsection{Does a complete test provide the required witnesses?}\label{sec:detection}
+
+In the \#249 finite tail-difference test, a fixed pair $h,N$ has a nonintegral
+difference $\Delta_h(N)$ exactly when some sufficiently deep finite calculation
+certifies separation from the integers. Here $\|x\|_{\mathbb R/\mathbb Z}$ denotes the distance from $x$ to the nearest
+integer. For this fixed pair, the positive gap $\|\Delta_h(N)\|_{\mathbb R/\mathbb Z}$
+is constant, while the scaled error
+bound is linear in the depth $L$. Exponential growth of $2^L$ therefore makes
+\[
+       2^L\|\Delta_h(N)\|_{\mathbb R/\mathbb Z}
+                 >2(N+h+L+2)
+\]
+possible whenever the gap is positive~\cite[section on binary totient tails]{paper249}.
+
+This proves completeness of detection for the fixed difference. An irrationality
+argument still needs nonintegral differences for the specified shifts and beyond
+the specified cutoffs. The test has not produced that family. Both facts deserve
+their full strength: the equivalence is exact, and the witness-production problem
+remains. Calling the test ``merely sufficient'' would lose a proved converse;
+calling it a solution would erase the remaining quantifiers.
+
+The distinction is useful whenever a proof offers arbitrarily accurate
+certificates. State which object stays fixed as the accuracy improves. If the
+object changes too, its distance from the forbidden set may shrink, and a new
+comparison is needed. This is the same discipline that made the fixed-base
+limit in Section~\ref{sec:fixed-partition} readable.

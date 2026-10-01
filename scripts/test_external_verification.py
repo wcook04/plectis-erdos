@@ -9,6 +9,8 @@ import json
 import hashlib
 import os
 import re
+import shlex
+import sys
 import subprocess
 import tempfile
 import unittest
@@ -17,6 +19,7 @@ from pathlib import Path
 from unittest.mock import patch
 
 import build_external_verification as builder
+import check_axiom_audit as axiom_audit
 from build_external_verification import (
     checkout_source_path,
     imports_in_text,
@@ -691,8 +694,44 @@ class ExternalVerificationContractTest(unittest.TestCase):
         # at all.  Pin the three properties that make it real.
         audit_step = workflow[audit:].split("- name:", 2)[1]
         self.assertIn("lake env lean", audit_step)
-        self.assertIn("sorryAx", audit_step)
-        self.assertIn("depends on axioms", audit_step)
+        self.assertIn("python3 scripts/check_axiom_audit.py axiom-audit.log", audit_step)
+        for owner in ("ExternalVerification", "ExternalVerification1049",
+                      "ExternalVerification1041SolvedFamilies"):
+            self.assertIn(f"--audit-source verification/{owner}/AxiomAudit.lean", audit_step)
+
+    def test_workflow_axiom_checker_enforces_all_three_source_rosters(self) -> None:
+        workflow = (ROOT / ".github/workflows/lean.yml").read_text()
+        step = workflow.split("- name: Post-verification axiom audit (gated)", 1)[1]
+        step = step.split("- name:", 1)[0]
+        command = re.search(
+            r"(?m)^          python3 scripts/check_axiom_audit\.py axiom-audit\.log"
+            r"(?: \\\n            --audit-source \S+)+", step,
+        )
+        self.assertIsNotNone(command, "workflow must invoke the source-bound checker")
+        argv = shlex.split(command.group(0).replace("\\\n", " "))
+        sources = [ROOT / argv[i + 1] for i, item in enumerate(argv)
+                   if item == "--audit-source"]
+        self.assertEqual(len(sources), 3)
+        names = sorted(axiom_audit.expected_declarations(sources))
+        self.assertEqual(len(names), 23)
+        valid = "".join(f"'{name}' depends on axioms: [propext]\n" for name in names)
+        cases = {
+            "complete": (valid, 0),
+            "missing_owner_report": (valid.split("\n", 1)[1], 1),
+            "native_429_axiom": (valid.replace("[propext]", "[Fixture._native.native_decide.ax_1]", 1), 1),
+            "no_reports": ("", 1),
+        }
+        with tempfile.TemporaryDirectory(prefix="workflow-axiom-fixture-") as raw:
+            log = Path(raw) / "audit.log"
+            for case, (text, expected) in cases.items():
+                with self.subTest(case=case):
+                    log.write_text(text)
+                    result = subprocess.run(
+                        [sys.executable, argv[1], str(log), *argv[3:]],
+                        cwd=ROOT, capture_output=True, text=True, timeout=10,
+                        env=singleflight.command_environment(),
+                    )
+                    self.assertEqual(result.returncode, expected, result.stdout + result.stderr)
 
     def test_human_markdown_links_use_current_storage_paths(self) -> None:
         human = (ROOT / "docs/EXTERNAL_VERIFICATION.md").read_text(encoding="utf-8")

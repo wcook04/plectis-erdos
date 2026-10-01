@@ -84,6 +84,14 @@ review record. The remaining workflow is specific to Plectis.
 
 ## Work in Plectis
 
+Before following references or running repository commands below, locate the
+intended Plectis public checkout and read its `AGENTS.md`. If this skill was
+opened from an installed skills directory, open
+`<checkout>/skills/public-mathematical-writing/SKILL.md` in that checkout first.
+Follow relative references from that clone-local file and run repository
+commands from the checkout root. If the intended checkout is unavailable,
+report that prerequisite before continuing.
+
 Use this branch for the reader-facing parts of the Plectis README, result
 and scope guides, paper full text, and manuscript prose. It depends only on
 tracked files in this checkout. Command references, schemas and agent-only
@@ -128,10 +136,34 @@ limit in the existing review record. The public [lesson ledger](../../docs/paper
 preserves examples and corrections; its proposals are not universal commands.
 Keep supplied sources, donor-declared reading and your later inspection distinct.
 Adopt a new general rule only when the case warrants it; otherwise record an
-application of the existing rule. A frozen next packet must include the chosen
-version of this skill, both writing papers, its guidance and the primary originals it asks its reader
-to study. This updates repository practice, not model weights, and claims no
+application of the existing rule. A frozen next guide packet must include the chosen version of this skill,
+both writing papers, its guidance, all earlier authoring and exposition returns,
+the newest paper sources and the new round of returns. It must ask its writer to
+research how to write these guides, using primary writing advice and nearby
+expository or systems literature, with exact passages and reading scope.
+The originals requested for a claim must actually be available; a return
+ledger or source list alone is not a reading receipt. This updates repository practice, not model weights, and claims no
 measured reader benefit.
+
+### Adapt the warrant to the genre
+
+This skill governs mathematical explanations. Its source-to-sentence method
+also helps with a systems or expository scientific paper, but the evidence
+class changes. For a systems claim, name the system, implementation state,
+test conditions, comparator, measured outcome and limitation at the point of
+use; distinguish an artifact check from evaluation of a broader performance
+or usability claim. For a scientific exposition, identify the original study
+or derivation, population or model, reported result and the writer's own
+synthesis. Do not make a cited association causal or a model output observed.
+Read primary guidance and close papers in that genre before transferring a
+mathematical proof sentence pattern. The [long guide](../../paper/exposition/writing-mathematics-from-reviewed-revisions.pdf)
+illustrates this transfer using primary systems-writing and empirical-evaluation
+guidance; their criteria are scoped to those fields.
+
+Write the sentence so its condition, object, comparator and conclusion can be
+checked against the evidence. Standard field terms are useful when their
+definitions match. A repeated stylistic template is not a substitute for the
+argument or evaluation.
 
 ### Begin from the claim, not the draft
 
@@ -336,7 +368,8 @@ generated copies together. Keep installed copies current by reinstalling the
 whole skill folder; do not edit generated references directly.
 
 Use explicit literal inputs relative to `paper/`, the full-text exporter's
-working directory. The synchronizer refuses dynamic filenames, conflicting
+working directory. Replace `\subfile` loads with explicit `\input` statements.
+The synchronizer refuses unsupported loaders, dynamic filenames, conflicting
 lookup paths and inputs its export receipt does not cover. Canonicalize those
 inputs and regenerate through the normal owners before copying the guides.
 
@@ -392,7 +425,7 @@ this skill.
 python3 scripts/proof_cockpit.py --check
 python3 scripts/test_public_writing_contract.py
 python3 scripts/check_problem_note_sources.py --coverage
-python3 scripts/check_release.py
+python3 scripts/run_release_check.py
 ```
 
 Run `python3 scripts/lean_fast_build.py --jobs 2` after Lean changes. For paper
@@ -401,6 +434,18 @@ checks; do not regenerate authored prose mechanically. For a native TeX edit,
 build the changed PDF and run `scripts/sync_publication_pdfs.py` before
 `docs/papers/refresh_paper_corpus.py --write`: the corpus records the PDF
 digest as well as the manuscript text. Then restamp the source/PDF pair through
-`check_publication_contract.py --restamp --apply`, reanchor any moved source
-attributions, refresh projections, and run the release check. A corpus refresh
-done before PDF synchronization must be repeated afterward.
+`python3 scripts/check_publication_contract.py --restamp --apply`, reanchor any
+moved source attributions, and refresh projections. Run
+`python3 docs/papers/refresh_paper_corpus.py --check`,
+`python3 scripts/check_publication_contract.py`, and the release check. This
+native corpus refresh preserves imported companion
+provenance; a Python projection refresh alone does not rebuild registered paper
+full text. A corpus refresh done before PDF synchronization must be repeated
+afterward.
+
+Before freezing evidence records or recipient packets, run the title and
+source-coordinate owners, then `python3 scripts/paper_evidence.py check` across
+the full corpus. Commit reviewed record revisions, bind generated sidecars to
+that exact commit, and rerender and synchronize affected PDFs before packaging.
+Carry the original support qualifications and evidence classes into the frozen
+record; a corrected title or coordinate does not strengthen a claim.

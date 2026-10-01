@@ -98,7 +98,7 @@ reader understanding.
 
 ## Project papers
 
-Start with [Publishing Mathematical Results from a Lean Repository](systems/claim-faithful-publication-systems-paper.pdf)
+Start with [A Repository-Based System for Research and Publication](systems/claim-faithful-publication-systems-paper.pdf)
 ([source](systems/claim-faithful-publication-systems-paper.tex)). This is the main
 systems paper: it follows a result from its mathematical argument through
 formal support, written explanation, review and contribution.

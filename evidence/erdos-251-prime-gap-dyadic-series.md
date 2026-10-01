@@ -321,7 +321,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="res-true-tail"></a>
 
-## Lemma 4.3 (the boundary condition identifying a true tail), page 8
+## Lemma 4.3 (the boundary condition for the tail recurrence), page 9
 
 > *Let $`\sum_{j\ge1}|a_j|2^{-j}<\infty`$ and $`U_{N+1}=2U_N-a_{N+1}`$. Then $`U_N=\sum_{j\ge1}a_{N+j}2^{-j}`$ for every $`N`$ if and only if $`2^{-N}U_N\to0`$.*
 
@@ -400,7 +400,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="res-signedwindow"></a>
 
-## Proposition 5.1 (two consecutive differences of absolute value less than one), page 9
+## Proposition 5.1 (two consecutive differences of absolute value less than one), page 10
 
 > *Let $`D,D'\in\mathbb{R}`$, $`\delta\in2\mathbb{Z}`$ and $`D'=2D-\delta`$. The conditions $`|D|<1`$, $`|D'|<1`$ and $`\delta\ne0`$ hold exactly when, for some $`s\in\{-1,1\}`$,
 > ``` math

@@ -222,7 +222,7 @@
       "commands": [
         "python3 research/experiments/choices_contraction/rational_membership_probe.py --target 189/388 --depth 16 17 --horizon 160 --json"
       ],
-      "boundary": "An exact finite exclusion rules out the selected rational; finite survival is not membership, and this probe does not check the weighted irrationality theorem or settle universal Erdős #257."
+      "boundary": "An exact finite exclusion rules out the selected rational; finite survival is not membership, and this probe does not check the weighted irrationality theorem or settle universal Erd\u0151s #257."
     },
     {
       "id": "comparator_replay",
@@ -230,7 +230,12 @@
       "task_cues": [
         "external verification replay",
         "external replay",
-        "external verification"
+        "external verification",
+        "independent comparator replay",
+        "comparator replay independently",
+        "replay independently with comparator",
+        "replay with comparator independently",
+        "independent comparator review"
       ],
       "task_intents": [
         {
@@ -257,7 +262,7 @@
         "python3 scripts/replay_external_verification.py plan --unit weighted-support --source-commit <40-hex-commit> --source-tree <40-hex-tree>",
         "python3 scripts/replay_external_verification.py run --unit weighted-support --source-commit <40-hex-commit> --source-tree <40-hex-tree> --output weighted-support-replay-receipt.json"
       ],
-      "boundary": "Use an immutable public commit and tree on Linux with systemd. A passing Comparator receipt checks the selected statement, axiom budget and kernel acceptance; it does not solve universal Erdős #257 or establish novelty."
+      "boundary": "Use an immutable public commit and tree on Linux with systemd. A passing Comparator receipt checks the selected statement, axiom budget and kernel acceptance; it does not solve universal Erd\u0151s #257 or establish novelty."
     },
     {
       "id": "reproduce_claim",
@@ -500,7 +505,20 @@
       "commands": [
         "python3 scripts/query_corpus.py --ask \"<question>\""
       ],
-      "boundary": "Read source-current problem and claim status from the indexed public authorities; query results route to evidence but do not create proof or claim authority."
+      "boundary": "Read source-current problem and claim status from the indexed public authorities; query results route to evidence but do not create proof or claim authority.",
+      "task_intents": [
+        {
+          "actions": [
+            "inspect",
+            "explain",
+            "query"
+          ],
+          "objects": [
+            "claim",
+            "claims"
+          ]
+        }
+      ]
     },
     {
       "id": "result_summary_audit",
@@ -1000,75 +1018,12 @@
       ]
     },
     {
-      "id": "reuse_writing_guidance",
-      "title": "Use the writing guidance in your own project",
-      "task_cues": [
-        "use the writing guide",
-        "use this writing guide",
-        "use your writing guide",
-        "apply the writing guide",
-        "apply this writing guide",
-        "apply your writing guide",
-        "reuse the writing guide",
-        "reuse the writing skill",
-        "use the writing skill",
-        "use this writing skill",
-        "use your writing skill",
-        "writing guide in another",
-        "writing guide in my",
-        "writing skill in another",
-        "writing skill in my",
-        "writing method in another",
-        "writing method in my",
-        "portable writing skill",
-        "standalone writing skill",
-        "use your portable writing skill",
-        "use the portable writing skill",
-        "apply the portable writing skill",
-        "use the writing method",
-        "apply the writing method",
-        "reuse the writing method",
-        "use this writing method",
-        "apply this writing method",
-        "use your writing method"
-      ],
-      "skills": [
-        "public-mathematical-writing"
-      ],
-      "read": [
-        "skills/public-mathematical-writing/SKILL.md#use-in-another-repository"
-      ],
-      "commands": [],
-      "boundary": "Use your project's sources, checks and review process. The bundled guides are optional; copying or installing the skill is optional. The Plectis workflow applies only to a Plectis checkout.",
-      "priority": 1,
-      "task_intents": [
-        {
-          "actions": [
-            "use",
-            "apply",
-            "reuse"
-          ],
-          "objects": [
-            "guide",
-            "guides",
-            "method",
-            "methods",
-            "skill",
-            "skills"
-          ],
-          "qualifiers": [
-            "writing"
-          ]
-        }
-      ]
-    },
-    {
       "id": "add_problem",
       "title": "Add or incubate another open problem",
       "task_cues": [
         "add problem",
         "new problem",
-        "another erdős problem",
+        "another erd\u0151s problem",
         "register problem",
         "register its paper",
         "expand problem roster",
@@ -1228,7 +1183,7 @@
     },
     {
       "id": "install_skills",
-      "title": "Install clone-local skills into an agent harness",
+      "title": "Install, update or remove skills in an agent harness",
       "priority": 60,
       "task_cues": [
         "install skills",
@@ -1274,6 +1229,23 @@
           "actions": [
             "update",
             "refresh"
+          ],
+          "objects": [
+            "skill",
+            "skills"
+          ],
+          "qualifiers": [
+            "installed",
+            "codex",
+            "claude",
+            "harness",
+            "loader"
+          ]
+        },
+        {
+          "actions": [
+            "remove",
+            "uninstall"
           ],
           "objects": [
             "skill",
@@ -1369,6 +1341,13 @@
         "check a documentation change",
         "check this documentation patch",
         "validate a documentation change",
+        "github inspection",
+        "repository readiness",
+        "contributor readiness",
+        "release before publishing this repository",
+        "releases before publishing this repository",
+        "repository release checks",
+        "repository release validation",
         "update the writing skill",
         "reconcile the writing skill",
         "sync the writing skill",
@@ -1448,6 +1427,63 @@
         },
         {
           "actions": [
+            "make",
+            "improve",
+            "fix",
+            "repair",
+            "link"
+          ],
+          "objects": [
+            "navigation",
+            "readme",
+            "links",
+            "routes",
+            "entry",
+            "documentation",
+            "architecture"
+          ]
+        },
+        {
+          "actions": [
+            "review"
+          ],
+          "objects": [
+            "architecture"
+          ]
+        },
+        {
+          "actions": [
+            "audit",
+            "inspect",
+            "inspection"
+          ],
+          "objects": [
+            "readme",
+            "license",
+            "licence",
+            "licensing",
+            "contributing",
+            "contribution",
+            "contributions"
+          ]
+        },
+        {
+          "actions": [
+            "update",
+            "refresh",
+            "correct",
+            "fix",
+            "repair",
+            "maintain"
+          ],
+          "objects": [
+            "citation",
+            "citations",
+            "cff"
+          ]
+        },
+        {
+          "actions": [
             "update",
             "refresh"
           ],
@@ -1480,6 +1516,69 @@
       "boundary": "Repair the public owner surface and preserve the observed journey as a fixture; do not depend on private infrastructure or hand-edit generated projections.",
       "entry_purposes": [
         "infrastructure"
+      ]
+    },
+    {
+      "id": "reuse_writing_guidance",
+      "title": "Use the writing guidance in your own project",
+      "task_cues": [
+        "use the writing guide",
+        "use this writing guide",
+        "use your writing guide",
+        "apply the writing guide",
+        "apply this writing guide",
+        "apply your writing guide",
+        "reuse the writing guide",
+        "reuse the writing skill",
+        "use the writing skill",
+        "use this writing skill",
+        "use your writing skill",
+        "writing guide in another",
+        "writing guide in my",
+        "writing skill in another",
+        "writing skill in my",
+        "writing method in another",
+        "writing method in my",
+        "portable writing skill",
+        "standalone writing skill",
+        "use your portable writing skill",
+        "use the portable writing skill",
+        "apply the portable writing skill",
+        "use the writing method",
+        "apply the writing method",
+        "reuse the writing method",
+        "use this writing method",
+        "apply this writing method",
+        "use your writing method"
+      ],
+      "skills": [
+        "public-mathematical-writing"
+      ],
+      "read": [
+        "skills/public-mathematical-writing/SKILL.md#use-in-another-repository"
+      ],
+      "commands": [],
+      "boundary": "Use your project's sources, checks and review process. The bundled guides are optional; copying or installing the skill is optional. The Plectis workflow applies only to a Plectis checkout.",
+      "priority": 1,
+      "task_intents": [
+        {
+          "actions": [
+            "use",
+            "apply",
+            "reuse"
+          ],
+          "objects": [
+            "guide",
+            "guides",
+            "method",
+            "methods",
+            "skill",
+            "skills"
+          ],
+          "qualifiers": [
+            "writing"
+          ]
+        }
       ]
     }
   ]

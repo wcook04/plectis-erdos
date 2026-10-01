@@ -35,7 +35,11 @@ For an ambiguous object such as a guide, an optional `qualifiers` token group
 can require its subject as well. All supplied groups must match; modifiers may
 separate their words. A guide being edited and a guide being applied to another
 project are different tasks.
-Refreshing an installed skill belongs to installation; revising its canonical
+Recognize a registered name before or after the word “skill” before checking
+its destination or whether the request edits its content. Preserve both name
+orders as task fixtures. Words in the managed skill's name must not supply a
+second action, but a real later request must remain visible.
+Refreshing or removing an installed skill belongs to installation; revising its canonical
 instructions belongs to maintenance. Bind an update or refresh to the skill
 being updated and its installed or harness context. An installed skill merely
 used while editing a paper must not select installation. Tables, lists and
@@ -263,7 +267,8 @@ For the writing papers, audit literal inputs using the exporter's `paper/`
 working directory, including nested includes and actually loaded local styles.
 Require each loaded fragment in semantic review and bind loaded styles through
 the separate style-input digest; a style can define procedural prose. Unused
-shared resources are not loaded guidance. Refuse dynamic filenames, conflicting
+shared resources are not loaded guidance. Refuse unsupported loaders such as
+`\subfile`, dynamic filenames, conflicting
 lookup paths and dependencies the existing export receipt does not cover.
 Test fresh text with a stale review, prose-changing styles, comments, verbatim
 examples and unused preambles. A current exporter receipt or an arbitrary

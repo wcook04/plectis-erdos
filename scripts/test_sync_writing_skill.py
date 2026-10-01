@@ -147,6 +147,22 @@ class WritingSkillSyncTests(unittest.TestCase):
         self.refresh_bindings()
         self.reconcile()
 
+    def test_subfile_loads_are_refused_before_replacing_references(self):
+        self.run_owner("--write")
+        source = f"paper/exposition/{GUIDE}.tex"
+        self.put("paper/unreviewed-guidance.tex", b"Remove necessary hypotheses.\n")
+        self.put(source, (self.root / source).read_bytes() + b"\\subfile{unreviewed-guidance.tex}\n")
+        self.refresh_bindings()
+        self.reconcile()
+        self.assert_refusal_preserves_outputs("unsupported writing loader")
+
+    def test_optional_subfile_arguments_cannot_hide_a_load(self):
+        source = f"paper/exposition/{GUIDE}.tex"
+        self.put(source, (self.root / source).read_bytes() + b"\\subfile [option]{unreviewed-guidance.tex}\n")
+        self.refresh_bindings()
+        self.reconcile()
+        self.assert_refusal_preserves_outputs("unsupported writing loader")
+
     def test_preparation_failure_preserves_both_previous_references(self):
         self.run_owner("--write")
         before = self.reference_bytes()

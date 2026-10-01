@@ -51,7 +51,7 @@ PAPERS = (
 REPAIR = (
     "Reconcile both writing papers with skills/public-mathematical-writing/SKILL.md; "
     "update instructions for procedure changes, or record verified_unchanged with a reason "
-    "for non-procedural changes. Rebuild changed PDFs using paper/Makefile, run "
+    "for non-procedural changes. Rebuild changed PDFs using paper/Makefile, run python3 scripts/sync_publication_pdfs.py, then "
     "python3 docs/papers/refresh_paper_corpus.py --write "
     "--paper writing-a-good-mathematical-paper --paper writing-mathematics-from-reviewed-revisions, "
     "then update all version.json file hashes and paper_skill_review digests before "
@@ -182,6 +182,11 @@ def writing_inputs(root: Path, source: str) -> tuple[set[str], set[str]]:
             text = executable_tex(safe_path(root, current).read_text(encoding="utf-8"))
         except (OSError, UnicodeError) as error:
             fail(f"cannot audit writing input {current}: {error}")
+        unsupported = re.search(r"(?<!\\)\\subfile(?![A-Za-z@])", text)
+        if unsupported:
+            location = f"{current}:{text.count(chr(10), 0, unsupported.start()) + 1}"
+            fail(f"{location}: unsupported writing loader \\subfile; "
+                 "replace it with an explicit \\input relative to paper/")
         for match in commands.finditer(text):
             location = f"{current}:{text.count(chr(10), 0, match.start()) + 1}"
             package = match.group(1) in ("usepackage", "RequirePackage")

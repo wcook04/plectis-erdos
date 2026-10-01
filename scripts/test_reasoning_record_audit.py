@@ -219,9 +219,17 @@ class CorpusTests(unittest.TestCase):
     def test_real_duplicate_assertion_outside_ledger_is_detected(self):
         root=self.clone_inputs();path=root/'paper/reasoning-parts/erdos269/core.tex'
         text=path.read_text()
-        start=text.index(r'\begin{theorem}[the distinct-height sum at $\{2,3,5\}$]')
-        end=text.index(r'\end{theorem}',start)+len(r'\end{theorem}')
-        duplicate=text[start:end].replace('long269:res:distinct-height-235','seed:duplicate')
+        label=r'\label{long269:res:distinct-height-235}'
+        self.assertEqual(text.count(label), 1)
+        anchor=text.index(label)
+        start=text.rfind(r'\begin{theorem}[',0,anchor)
+        self.assertGreaterEqual(start, 0)
+        self.assertNotIn(r'\end{theorem}',text[start:anchor])
+        end=text.index(r'\end{theorem}',anchor)+len(r'\end{theorem}')
+        statement=text[start:end]
+        self.assertIn(label, statement)
+        duplicate=statement.replace(label,r'\label{seed:duplicate}')
+        self.assertNotEqual(duplicate,statement)
         path.write_text(text+'\n\n'+duplicate+'\n')
         value=audit.report(root,[269])
         self.assertTrue(any(x['code']=='duplicate_statement' for x in value['pairs'][0]['findings']))

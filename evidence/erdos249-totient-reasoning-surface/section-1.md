@@ -6,7 +6,11 @@ Part of the [evidence record](../erdos249-totient-reasoning-surface.md) of the p
 
 ## Theorem 1.3 (Denominator exclusion from a fixed Farey window), page 5
 
-> *If $`S \in \mathbb{Q}`$ then its reduced denominator exceeds $`Q_0 := 79\,639\,646\,646\,701\,375\,323\,355\,774\,875\,831\,053 \approx 7.96 \times 10^{34}`$. Equivalently, $`S`$ differs from every rational number whose reduced denominator is at most $`Q_0`$. The bound is sharp for this window: $`q = Q_0 + 1`$ is the exact first failing denominator. It is the denominator of the mediant of two explicit unimodular Farey neighbours.*
+> *If $`S \in \mathbb{Q}`$ then its reduced denominator exceeds
+> ``` math
+> Q_0 := 79\,639\,646\,646\,701\,375\,323\,355\,774\,875\,831\,053 \approx 7.96 \times 10^{34}.
+> ```
+> Equivalently, $`S`$ differs from every rational number whose reduced denominator is at most $`Q_0`$. The bound is sharp for this window: $`q = Q_0 + 1`$ is the exact first failing denominator. It is the denominator of the mediant of two explicit unimodular Farey neighbours.*
 
 The Lean declarations below together state this result.
 

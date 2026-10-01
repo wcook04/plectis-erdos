@@ -1,6 +1,6 @@
 ---
 name: install-clone-skills
-description: Preview, install, or verify the public Plectis skills in Codex, Claude, or another directory-based agent harness.
+description: Preview, install, update, remove, or verify the public Plectis skills in Codex, Claude, or another directory-based agent harness.
 ---
 
 # Install clone skills
@@ -62,10 +62,9 @@ The installer refuses to replace different same-name material. Inspect the
 destination first; use `--force --apply` only when the user explicitly wants
 that replacement. The installer prepares the replacement before moving the
 existing skill and restores it if installation fails. If restoration also
-fails, the error names the retained backup for recovery. Copy mode can be
-removed by deleting the installed skill
-directories. Symlink mode can be removed by deleting the links. Neither action
-changes this repository.
+fails, the error names the retained backup for recovery. To remove a copy, delete only its installed skill directory. To remove a
+symlink installation, delete only the link. Inspect the selected destination
+first and preserve other skills. Neither action changes this repository.
 A cleanup warning means the new skill was installed; it names the staging
 folder that could not be removed.
 

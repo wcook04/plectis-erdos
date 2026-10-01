@@ -426,7 +426,40 @@ def check_history_scope_contract() -> None:
             require(code == 1 and json.loads(output)["gates"]["failed"] == 1, f"{root.name}: genuine gate failure masked")
 
 
+def check_claim_local_comparator_boundary() -> None:
+    """A one-claim card separates typed contracts from labelled packet context."""
+    register = json.loads(verify_claims.CLAIMS_PATH.read_text(encoding="utf-8"))
+    packet = register["external_verification_packet"]
+    packet["boundary"] = "UNRELATED_PACKET_NARRATIVE about a different problem."
+    for claim_id in ("eb_full_support", "dyadic_totient_certificate_interface", "erdos_1041"):
+        report = verify_claims.follow_claim(claim_id, register, label_index=None)
+        comparator = report["comparator"]
+        rendered = "".join(verify_claims.render_claim(report).split())
+        heading = "packet-widecontext(mayconcernotherclaims):"
+        require(heading in rendered and "UNRELATED_PACKET_NARRATIVE" in rendered,
+                f"{claim_id}: accepted packet context or its scope label disappeared")
+        require(rendered.index(heading) < rendered.index("UNRELATED_PACKET_NARRATIVE"),
+                f"{claim_id}: unrelated packet narrative lost its preceding scope label")
+        require(comparator["boundary"] == packet["boundary"]
+                and comparator["boundary_scope"] == packet["scope"],
+                f"{claim_id}: JSON packet context lost its source or scope")
+        for interface in comparator["interfaces"]:
+            require("".join(interface["boundary"].split()) in rendered,
+                    f"{claim_id}: selected interface boundary was dropped")
+        contract = "registered_claim" if comparator["status"] == "bound" else "unregistered_interface"
+        require("".join(packet["claim_status_contract"][contract].split()) in rendered,
+                f"{claim_id}: claim binding contract was dropped")
+        require("".join(packet["claim_status_contract"]["novelty"].split()) in rendered,
+                f"{claim_id}: novelty limit was dropped")
+    register.pop("external_verification_packet")
+    report = verify_claims.follow_claim("eb_full_support", register, label_index=None)
+    require(report["comparator"]["status"] == "packet_absent"
+            and "SECOND FORMAL CHECK" not in verify_claims.render_claim(report),
+            "absent Comparator packet was turned into a formal-check claim")
+
+
 def main() -> int:
+    check_claim_local_comparator_boundary()
     check_gate_timeout_contract()
     check_optional_tool_discovery_contract()
     check_history_scope_contract()

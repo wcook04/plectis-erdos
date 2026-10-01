@@ -213,40 +213,53 @@ def normalize(text: str) -> str:
     return " ".join(TOKEN_RE.findall(text.casefold()))
 
 
-def bound_installed_skill_update(
+def bound_installed_skill_actions(
     task: str, intent: dict[str, Any], skill_ids: list[str], *, proof_intent: bool = False,
-) -> str | None:
-    """Bind refresh/update to a skill object and its installation context."""
+) -> list[tuple[str, tuple[int, int]]]:
+    """Bind installed actions and identify their object span for cue isolation."""
     if proof_intent:
-        return None
+        return []
     boundaries = "and|then|using|with|after|before|from|for|in|into|to|at"
-    heads = set(intent["objects"])
-    heads.update(" ".join(re.findall(r"[a-z0-9]+", value.casefold())) for value in skill_ids)
+    named_heads = {" ".join(re.findall(r"[a-z0-9]+", value.casefold())) for value in skill_ids}
+    heads = set(intent["objects"]) | named_heads
     head_pattern = "|".join(re.escape(value) for value in sorted(heads, key=len, reverse=True))
+    if named_heads:
+        generic_pattern = "|".join(re.escape(value) for value in sorted(intent["objects"]))
+        named_pattern = "|".join(re.escape(value) for value in sorted(named_heads, key=len, reverse=True))
+        # Consume "skill NAME" before a generic head leaves NAME in the tail.
+        head_pattern = rf"(?:{generic_pattern})\s+(?:{named_pattern})|{head_pattern}"
     object_pattern = re.compile(
         rf"(?P<modifiers>(?:(?!(?:{boundaries})\b)[a-z0-9]+\s+)*?)"
         rf"(?P<head>{head_pattern})(?:\s+skills?)?\b(?P<tail>.*)"
     )
     action_pattern = re.compile(rf"\b({'|'.join(map(re.escape, intent['actions']))})\s+")
-    destinations = "|".join(re.escape(value) for value in intent["qualifiers"] if value != "installed")
+    destinations = "|".join(re.escape(value) for value in intent.get("qualifiers", []) if value != "installed")
+    destination_prepositions = "from" if set(intent["actions"]) & {"remove", "uninstall"} else "in|into|for|at"
     destination_pattern = re.compile(
-        rf"\s+(?:in|into|for|at)\s+"
+        rf"\s+(?:{destination_prepositions})\s+"
         rf"(?:(?:the|my|our|your|a|an|this|custom|local|agent|coding|skills?)\s+)*"
         rf"(?:{destinations})\b"
     )
     content_objects = {"paper", "papers", "abstract", "abstracts", "manuscript", "manuscripts",
                        "readme", "guide", "guides", "example", "examples", "prose", "wording",
                        "table", "tables", "list", "lists", "documentation", "docs"}
+    matches = []
     for action in action_pattern.finditer(task):
         candidate = object_pattern.match(task, action.end())
         if candidate is None:
             continue
+        removal = bool(set(intent["actions"]) & {"remove", "uninstall"})
+        content_pattern = "|".join(sorted(content_objects))
+        if removal and (re.match(r"\s+s\b", candidate["tail"]) or
+                        re.match(rf"\s+(?:{content_pattern})\b", candidate["tail"])):
+            continue  # Removal must name the installed folder, not its content.
         object_words = set(candidate["modifiers"].split())
         if object_words & content_objects:
             continue
-        if "installed" in object_words or destination_pattern.match(candidate["tail"]):
-            return f"{action[1]} + installed skill"
-    return None
+        if ("qualifiers" not in intent or "installed" in object_words or
+                destination_pattern.match(candidate["tail"])):
+            matches.append((f"{action[1]} + installed skill", candidate.span("head")))
+    return matches
 
 
 def matched_task_intents(
@@ -256,13 +269,12 @@ def matched_task_intents(
     matches = []
     for intent in lane.get("task_intents", []):
         # An installed skill used while editing a paper is not the object of
-        # that edit. Bind only the qualified refresh/update installation rule.
+        # that edit. Bind only qualified installed-skill actions.
         if lane["id"] == "install_skills" and "qualifiers" in intent:
-            match = bound_installed_skill_update(
+            bound_actions = bound_installed_skill_actions(
                 task, intent, skill_ids or [], proof_intent=proof_intent,
             )
-            if match:
-                matches.append(match)
+            matches.extend(label for label, _ in bound_actions)
             continue
         # Adding a guide-editing object must not displace the proof stage in
         # "prove a theorem, then revise the writing guide". Preserve existing
@@ -290,9 +302,31 @@ def rank_lanes(catalog: dict[str, Any], task: str) -> list[dict[str, Any]]:
     # also mentions the portable guide. Their action/object rules stay owned
     # by the registry rather than being duplicated here.
     skill_ids = [row["id"] for row in catalog["skills"]]
-    intent_matches = {lane["id"]: matched_task_intents(
-        lane, task_tokens, proof_intent=proof_intent, task=normalized_task, skill_ids=skill_ids,
-    ) for lane in catalog["lanes"]}
+    installation = next(lane for lane in catalog["lanes"] if lane["id"] == "install_skills")
+    installation_matches = matched_task_intents(
+        installation, task_tokens, proof_intent=proof_intent, task=normalized_task, skill_ids=skill_ids,
+    )
+    semantic_task = normalized_task
+    installed_objects = [match
+        for intent in installation.get("task_intents", [])
+        for match in bound_installed_skill_actions(normalized_task, intent, skill_ids)]
+    # Only names bound as managed objects are masked. A real later request to
+    # submit a pull request remains visible, even if those words name a skill.
+    object_spans: list[tuple[int, int]] = []
+    for start, end in sorted({span for _, span in installed_objects}):
+        if object_spans and start < object_spans[-1][1]:
+            # An action word inside a registered name can bind an inner head.
+            # Replace overlapping spans once to preserve later offsets.
+            prior_start, prior_end = object_spans[-1]
+            object_spans[-1] = (prior_start, max(prior_end, end))
+        else:
+            object_spans.append((start, end))
+    for start, end in reversed(object_spans):
+        semantic_task = semantic_task[:start] + "skill" + semantic_task[end:]
+    semantic_tokens = set(semantic_task.split())
+    intent_matches = {lane["id"]: (installation_matches if lane["id"] == "install_skills" else
+        matched_task_intents(lane, semantic_tokens, proof_intent=proof_intent,
+                             task=semantic_task, skill_ids=skill_ids)) for lane in catalog["lanes"]}
     matched_intents = {lane_id for lane_id, matches in intent_matches.items() if matches}
     plectis_context = "plectis" in task_tokens or bool(
         re.search(r"\bthis (?:repository|repo|checkout)\b", normalized_task)
@@ -306,15 +340,17 @@ def rank_lanes(catalog: dict[str, Any], task: str) -> list[dict[str, Any]]:
     for order, lane in enumerate(catalog["lanes"]):
         matches: list[str] = []
         score = 0
+        cue_task = normalized_task if lane["id"] == "install_skills" else semantic_task
+        cue_task_tokens = task_tokens if lane["id"] == "install_skills" else semantic_tokens
         for cue in lane["task_cues"]:
             normalized_cue = normalize(cue)
             cue_tokens = normalized_cue.split()
             if not normalized_cue:
                 continue
-            if " " in normalized_cue and normalized_cue in normalized_task:
+            if " " in normalized_cue and normalized_cue in cue_task:
                 matches.append(cue)
                 score += 4 + len(cue_tokens)
-            elif len(cue_tokens) == 1 and cue_tokens[0] in task_tokens:
+            elif len(cue_tokens) == 1 and cue_tokens[0] in cue_task_tokens:
                 matches.append(cue)
                 score += 2
         # An explicit action and object can be separated by modifiers, e.g.

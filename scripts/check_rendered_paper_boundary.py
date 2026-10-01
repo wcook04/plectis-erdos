@@ -121,44 +121,70 @@ FIRST_MINUTE_CONTRACT = {
 
 # The unified manuscript has its own reviewed reading windows. The publication
 # contract selects this profile; historical manuscript checks retain their
-# original wording and windows. The reviewed unified edition puts refinement
-# on pages 6–7 and historical observations on pages 8–9. Match its prose while
-# retaining the escaped-edit, review, source-freeze and unmeasured-benefit limits.
+# original wording and windows. In the reviewed 21-page lab edition, repository
+# roles occupy pages 2–3, checks 4–5, revision and contributions 5–7, recorded
+# observations 7–8, limits 9 and reproduction notes 10. Keep the escaped-edit,
+# independent-review, source-versus-meaning and unmeasured-benefit limits.
 UNIFIED_SYSTEMS_FIRST_MINUTE = {
     (1, 1): (
-        "publishing mathematical results from a lean repository",
-        "evidence, exposition and revision in eight",
-        "question, prior sources, computations, proofs and unresolved steps together",
-        "a historical test rejected nine of ten false edits but accepted a false claim of completion",
+        "a repository-based system for research and publication",
+        "architecture, evidence and iteration in a lean research repository",
+        "the public plectis prototype implements this workflow for eight mathematical programmes",
+        "it keeps questions, prior sources, computations, proofs and unresolved steps together",
+        "a historical author-run test rejected nine of ten false edits and accepted one false completion claim",
+        "reader benefit, discovery rate and adoption by independent laboratories remain unmeasured",
+    ),
+    (2, 3): (
+        "a repository organised around problems",
+        "the checkout contains authored lean and manuscript sources",
+        "authors edit the sources; builders regenerate the derived views",
+    ),
+    (3, 4): (
+        "agent_entry.py maps a stated task to instructions",
+        "paper_evidence.py resolves mathematical paper statements",
+        "paper_claim_evidence.py projects their evidence status",
+        "a maintainer reviews the claim, attribution and remaining uncertainty before adoption",
+    ),
+    (4, 5): (
+        "requiring both records is a publication check, not an additional hypothesis",
+        "source-byte agreement alone cannot settle the meaning of a sentence",
+        "lean verifies that a proof establishes the formal statement written in the source",
+        "comparator adds a separately stated challenge",
+        "does not technically force a second independent mathematician",
+        "no independent human mathematical review of the corpus is recorded",
     ),
     (5, 6): (
-        "lean verifies that a proof establishes the formal statement",
-        "comparator adds a separately stated challenge",
-        "does not require a second independent mathematician",
-        "no independent human mathematical review of the corpus is recorded",
+        "we freeze the selected manuscripts",
+        "under a manifest of their exact bytes",
         "in either case the integrating reviewer decides whether the mathematics and its description remain faithful",
+        "it neither applies the proposal nor executes returned programs",
+        "the procedure supplies no measurement of reader benefit or autonomous discovery",
     ),
-    (6, 8): (
+    (6, 7): (
         "an open route for contributions",
         "neither independent review nor acceptance by the wider mathematical community",
-        "source-frozen editorial refinement",
-        "under a manifest of their exact bytes",
-        "it neither applies the proposal nor executes returned programs",
-        "no measurement of reader benefit or autonomous discovery",
+        "ordinary issues and pull requests need not become journal events",
     ),
-    (8, 9): (
+    (7, 8): (
         "nine of the ten deliberately false edits were rejected and one escaped",
+        "the edits were authored by the checker’s author",
+        "the other nine edits were not rerun",
+        "supplying no post-repair",
         "the contributor and reviewer were the same agent",
         "no public pull request, human review or independent outside clone replay",
+        "no comparative reader result is reported",
     ),
-    (9, 11): (
+    (9, 9): (
         "transfer to unseen mathematics and understanding by",
         "independent human readers are unresolved",
-        "no comparative reader result is reported",
+        "it is not a general incremental scheduler",
         "openness alone does not equalise resources",
         "broad mathematical acceptance is exogenous to this repository and cannot be granted by its maintainer",
         "no new lean or comparator execution",
+    ),
+    (10, 10): (
         "local integration commit rather than public main",
+        "source-binding validation does not replay lean, comparator or the full repository release checks",
     ),
 }
 

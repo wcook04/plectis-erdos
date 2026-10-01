@@ -52,7 +52,7 @@ class PushTests(unittest.TestCase):
                 path = root / command[1]
                 path.parent.mkdir(parents=True, exist_ok=True)
                 path.write_text("print('fixture')\n")
-            for name in ("check_push.py", "check_release_ref.py"):
+            for name in check_push.PUBLICATION_DRIVER_FILES:
                 shutil.copyfile(Path(check_push.__file__).parent / name, root / "scripts" / name)
             (root / "scripts/refresh_projections.py").write_text(
                 "from pathlib import Path\n"
@@ -147,7 +147,63 @@ class PushTests(unittest.TestCase):
             self.assertEqual(pushed.returncode, 0, pushed.stderr)
             # A changed validation driver invalidates its old admission.
             installed = Path(git("config", "--get", "core.hooksPath").stdout.strip())
-            bundled = next(installed.glob("*/check_push.py"))
+            bundle = next(installed.glob("*/check_push.py")).parent
+            self.assertEqual({path.name for path in bundle.glob("*.py")},
+                             set(check_push.PUBLICATION_DRIVER_FILES))
+            # The advertised installed --prepare route must re-enter the actual
+            # checkout owner, including its independently imported worker root.
+            sibling_git = lambda *args: subprocess.run(
+                ["git", *args], cwd=sibling, env=env, text=True,
+                capture_output=True, check=True)
+            (sibling / "fresh.txt").write_text("new admitted sibling commit\n")
+            sibling_git("add", "fresh.txt")
+            sibling_git("commit", "-qm", "fresh installed preparation")
+            fresh = sibling_git("rev-parse", "HEAD").stdout.strip()
+            dirty = sibling / "projection.txt"
+            dirty.write_text("uncommitted repair excluded\n")
+            before_prepare = sibling_git("status", "--porcelain").stdout
+            prepared = subprocess.run(
+                [sys.executable, str(bundle / "check_push.py"),
+                 "--repository", str(sibling), "--prepare", fresh],
+                cwd=peer, env=env, text=True, capture_output=True, timeout=35)
+            self.assertEqual(prepared.returncode, 0, prepared.stdout + prepared.stderr)
+            self.assertIn("check_release_ref: passed", prepared.stdout)
+            admission = json.loads((root / ".git/plectis-publication-admission-v1" /
+                                    (fresh + ".json")).read_text())
+            self.assertEqual(admission["commit"], fresh)
+            self.assertEqual(admission["evidence"], "complete_clean_release_validation")
+            self.assertEqual(sibling_git("status", "--porcelain").stdout, before_prepare)
+            self.assertEqual(dirty.read_text(), "uncommitted repair excluded\n")
+            pushed = subprocess.run(["git", "push", "origin", "HEAD:refs/heads/fresh-sibling"],
+                                    cwd=sibling, env=env, text=True, capture_output=True)
+            self.assertEqual(pushed.returncode, 0, pushed.stdout + pushed.stderr)
+            # A different selected owner cannot acquire an admission under the
+            # frozen installed bundle identity. Restore it for following checks.
+            selected_dependency = sibling / "scripts/lean_package_share.py"
+            original_selected = selected_dependency.read_bytes()
+            selected_dependency.write_bytes(original_selected + b"\n# changed checkout owner\n")
+            refused_prepare = subprocess.run(
+                [sys.executable, str(bundle / "check_push.py"),
+                 "--repository", str(sibling), "--prepare", fresh],
+                cwd=peer, env=env, text=True, capture_output=True, timeout=35)
+            self.assertNotEqual(refused_prepare.returncode, 0)
+            self.assertIn("selected checkout publication owner differs", refused_prepare.stderr)
+            selected_dependency.write_bytes(original_selected)
+            # Every imported dependency participates in the immutable admission,
+            # even though the shared guard only reads receipts during transport.
+            for name in ("validation_singleflight.py", "lean_build_share.py", "lean_package_share.py"):
+                dependency = bundle / name
+                original = dependency.read_bytes()
+                dependency.write_bytes(original + b"\n# revised dependency\n")
+                rejected = subprocess.run(["git", "push", "origin", "HEAD:refs/heads/dependency-changed"],
+                                          cwd=sibling, env=env, text=True, capture_output=True)
+                self.assertNotEqual(rejected.returncode, 0, rejected.stdout + rejected.stderr)
+                self.assertIn("no current admission", rejected.stderr)
+                dependency.write_bytes(original)
+                restored = subprocess.run(["git", "push", "origin", "HEAD:refs/heads/dependency-restored"],
+                                          cwd=sibling, env=env, text=True, capture_output=True)
+                self.assertEqual(restored.returncode, 0, restored.stdout + restored.stderr)
+            bundled = bundle / "check_push.py"
             bundled.write_text(bundled.read_text() + "\n# revised validator\n")
             rejected = subprocess.run(["git", "push", "origin", "HEAD:refs/heads/uncertified"],
                                       cwd=sibling, env=env, text=True, capture_output=True)

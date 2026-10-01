@@ -1785,7 +1785,7 @@
     "owner": "docs/problem_index_source.json",
     "owner_digest": "sha256:d651478e6b7908e49517009f4cf575bf0f3fd64184974c52db9ac57be1491c8a",
     "projection": "docs/problems.json",
-    "projection_digest": "sha256:553907337707395dc747cb01ef2309e1e0f0dcb5c7689dbaf27c571fe210a486",
+    "projection_digest": "sha256:e8e1d7c043cfc172833f1cf5a60896534759346bc65a1e62f5d50bbf5dc5c175",
     "schema": "erdos249257-problem-index/1",
     "problem_count": 8,
     "authority_posture": "navigation_projection_not_Lean_proof_authority_and_not_a_reviewed_claim_registry",
@@ -2108,7 +2108,7 @@
         ],
         "note": {
           "artifact_id": "erdos_243_note",
-          "title": "Cubic-Rate Irrationality and Reciprocal-Tail Rigidity",
+          "title": "Reciprocal Sums and the Sylvester Recurrence",
           "source_path": "paper/243/erdos-243-reciprocal-tail-rigidity.tex",
           "rendered_path": "paper/243/erdos-243-reciprocal-tail-rigidity.pdf",
           "authority_posture": "authored_mathematical_exposition_not_Lean_proof_authority; public_status_is_owned_per_claim_by_docs/claims.json"
@@ -2152,7 +2152,7 @@
         "finite_search": "An exact search over initial states below five thousand produced forced prefixes of length seventeen and no longer. It is superseded: the constant-negative template is now excluded outright, for every seed and at every scale.",
         "paper": {
           "paper_id": "erdos-243-reciprocal-tail-rigidity",
-          "title": "Cubic-Rate Irrationality and Reciprocal-Tail Rigidity",
+          "title": "Reciprocal Sums and the Sylvester Recurrence",
           "source": "paper/243/erdos-243-reciprocal-tail-rigidity.tex",
           "pdf": "paper/243/erdos-243-reciprocal-tail-rigidity.pdf",
           "full_text": "docs/papers/full-text/erdos-243-reciprocal-tail-rigidity.md",
@@ -2443,7 +2443,7 @@
         ],
         "note": {
           "artifact_id": "erdos_257_note",
-          "title": "Weighted and Covered Supports for Mersenne Subseries",
+          "title": "Irrationality criteria for Lambert subseries",
           "source_path": "paper/257/erdos-257-mersenne-support-subseries.tex",
           "rendered_path": "paper/257/erdos-257-mersenne-support-subseries.pdf",
           "authority_posture": "authored_mathematical_exposition_not_Lean_proof_authority; public_status_is_owned_per_claim_by_docs/claims.json"
@@ -2471,7 +2471,7 @@
         "finite_search": null,
         "paper": {
           "paper_id": "erdos-257-mersenne-support-subseries",
-          "title": "Weighted and Covered Supports for Mersenne Subseries",
+          "title": "Irrationality criteria for Lambert subseries",
           "source": "paper/257/erdos-257-mersenne-support-subseries.tex",
           "pdf": "paper/257/erdos-257-mersenne-support-subseries.pdf",
           "full_text": "docs/papers/full-text/erdos-257-mersenne-support-subseries.md",

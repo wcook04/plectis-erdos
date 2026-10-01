@@ -113,7 +113,7 @@ theorem displayed_integral_normal_form (k e : ℕ) (hk : 2 ≤ k) (he : 1 ≤ e)
 
 <a id="res-residueseries"></a>
 
-## Theorem 4.1 (Residue series and dyadic observables), page 6
+## Theorem 4.1 (Series of totient residues), page 6
 
 > *For every $`m\ge3`$,
 > ``` math
@@ -256,7 +256,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="res-fulldepth"></a>
 
-## Theorem B.1 (Propagation of one nonintegral tail difference), page 9
+## Theorem B.1 (Propagation of one nonintegral tail difference), page 10
 
 > *Fix $`d\ge1`$ and $`N\ge0`$. If $`\Delta_d(N)\notin\mathbb{Z}`$, then every sufficiently late pair $`\{t,t+1\}`$ contains an $`m`$ such that $`K(md,N,md)`$ holds. Consequently
 > ``` math
@@ -296,7 +296,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="res-rankonefloor"></a>
 
-## Theorem B.3 (A lower bound for the rank-one quotients), page 10
+## Theorem B.3 (A lower bound for the rank-one quotients), page 11
 
 > *For $`e\ge1`$ and $`Y\ge4`$, the denominator of $`Q(e,Y)`$ is positive, and the unique minimiser is $`(e,Y)=(1,5)`$. Every admissible quotient and every nonempty finite positive weighted average of such quotients satisfies
 > ``` math
