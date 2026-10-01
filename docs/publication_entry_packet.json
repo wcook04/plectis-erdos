@@ -107,7 +107,7 @@
   },
   "authority_posture": "navigation_projection_not_Lean_proof_authority_and_not_historical_evidence_authority",
   "content_hashes": {
-    "docs/claims.json": "sha256:5ba69f6d6a562a7b6e9640ba795c8a68e8bef8d974277adbf81895ec17e71553",
+    "docs/claims.json": "sha256:1ff6d3c68c05426087ae62839a95d85efa442c71a1540a31b33a38dd8cb47a3e",
     "docs/methodology.json": "sha256:cef19d9092c49ba9c9b269a4b04c2c6030164bba6b80561117577713f60c3750",
     "docs/problems.json": "sha256:553907337707395dc747cb01ef2309e1e0f0dcb5c7689dbaf27c571fe210a486",
     "docs/publication_contract.json": "sha256:59ef558359fa0269a16ecff8cb73c0ddb7f846c54e5f491dc6253c17c707bfc1",
