@@ -225,6 +225,12 @@ def digest_file(path: Path) -> str:
     return digest_bytes(path.read_bytes())
 
 
+def elan_home() -> Path:
+    """Resolve Elan's configured installation before a worker changes cwd."""
+    configured = os.environ.get("ELAN_HOME")
+    return (Path(configured) if configured else Path.home() / ".elan").resolve()
+
+
 def command_environment() -> dict[str, str]:
     """Run workers without ambient Git, Python, or locale configuration."""
     environment = os.environ.copy()
@@ -240,6 +246,7 @@ def command_environment() -> dict[str, str]:
             environment.pop(key, None)
     environment.update(
         {
+            "ELAN_HOME": str(elan_home()),
             "GIT_CONFIG_NOSYSTEM": "1",
             "GIT_CONFIG_GLOBAL": os.devnull,
             "GIT_OPTIONAL_LOCKS": "0",

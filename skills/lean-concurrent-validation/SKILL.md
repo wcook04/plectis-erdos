@@ -10,6 +10,14 @@ cache hydration, or a trace where two agents appear ready to compile. The
 implementation is entirely tracked in this public repository. It does not
 require `ai_workflow`, a sibling checkout, a service, or private host setup.
 
+Install Elan first, as described in `docs/REPRODUCIBILITY.md`. The build wrapper
+uses its Lake proxy in `$ELAN_HOME/bin`, or `~/.elan/bin` when `ELAN_HOME` is
+unset or empty. A custom installation is supported without a private path or
+`PATH` override. Relative `ELAN_HOME` paths are resolved from the invoking
+directory and passed as absolute paths to workers and temporary consumers.
+An unavailable proxy remains a failed prerequisite; no other installation is
+silently substituted.
+
 ## Plan cheaply, execute through the shared owner
 
 A plan reads the local graph and does not compile:
