@@ -153,6 +153,8 @@ def check_paper(pdf: Path, paper: dict, marks: dict, baseline: int | None,
         record = records.get(label) if records is not None else None
         if records is not None and record is None:
             problems.append(f"{label}: no generated evidence record/status mapping")
+        if record is not None and record[2] == "compared" and not comparator:
+            problems.append(f"{label}: compared status has no Comparator target")
         hits = [i for i, (n, r, u) in enumerate(links)
                 if u == lean and r[0] < text_right and i not in used]
         row_destination = destinations.get("verification-result." + label)
@@ -216,6 +218,38 @@ def check_paper(pdf: Path, paper: dict, marks: dict, baseline: int | None,
                     or rect[3] > float(reader.pages[n - 1].mediabox.height) - 4):
                 problems.append(f"page {n}: evidence link to {uri} runs off the page")
     if concordance:
+        for label, record in (records or {}).items():
+            if label in marks:
+                continue
+            destination = destinations.get("verification-result." + label)
+            result = results.get(label)
+            if destination is None or result is None:
+                problems.append(f"{label}: missing verification row for unmarked statement")
+                continue
+            n = reader.get_destination_page_number(destination) + 1
+            top = float(destination.top)
+            hits = [i for i, (page, rect, uri) in enumerate(links)
+                    if page == n and abs(rect[1] - top) <= 22.0
+                    and uri == record[0] and i not in used]
+            if len(hits) != 1:
+                problems.append(f"{label}: missing or duplicated partial-support record")
+            else:
+                used.update(hits)
+            want = "Result" + str(result.get("number", ""))
+            if not any(abs(y - top) <= 22.0
+                       and re.match(re.escape(want) + r"(?:\D|$)", "".join(t.split()))
+                       for _x, y, t in heading_lines(reader.pages[n - 1])):
+                problems.append(f"{label}: wrong unmarked statement number")
+        # A second Lean/Comparator presentation elsewhere cannot hide behind
+        # the dictionary of named row destinations. Ordinary source citations
+        # are permitted; repeated evidence labels are not.
+        for i, (n, rect, uri) in enumerate(links):
+            if i in used or uri not in evidence_uris:
+                continue
+            if any(abs(y - rect[1]) <= 3.0 and abs(x - rect[0]) <= 3.0
+                   and re.match(r"^(Lean|Comparator)(?:\W|$)", t.strip())
+                   for x, y, t in heading_lines(reader.pages[n - 1])):
+                problems.append(f"page {n}: duplicate evidence presentation outside its row")
         row_pages = [reader.get_destination_page_number(destination) + 1
                      for name, destination in destinations.items()
                      if name.startswith("verification-result.")]

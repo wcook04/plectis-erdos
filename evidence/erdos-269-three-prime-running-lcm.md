@@ -592,7 +592,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="res-admissible-modular-minors"></a>
 
-## Corollary B.3 (the same minors modulo integers coprime to $`30`$), page 12
+## Corollary B.3 (the same minors modulo integers coprime to $`30`$), page 13
 
 > *For $`(p,q,r)=(2,3,5)`$ and every $`n\ge1`$, there are injective maps $`I,J:\{0,\ldots,n-1\}\to\mathbb{N}`$, chosen independently of $`B`$ and $`k`$, such that for every $`B\ge2`$ coprime to $`30`$ and every $`k\ge0`$, the selected $`n\times n`$ kernel matrix has unit determinant over $`\mathbb Z/B\mathbb Z`$, with each reciprocal prime power interpreted by its modular inverse.*
 

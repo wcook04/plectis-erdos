@@ -30,7 +30,6 @@
     \expandafter\gdef\csname ev@map@#1\endcsname{\ev@marks{#1}{#2}{#3}{#4}}%
     \expandafter\gdef\csname ev@inline@#1\endcsname{\ev@inline{#1}{#2}{#3}{#4}}%
     \g@addto@macro\ev@all{\do{#1}}%
-    \g@addto@macro\ev@rows{\ev@row{#1}{#2}{#3}{#4}}%
   \fi}
 % Generated record targets also cover statements without a complete Lean proof.
 % They let an authored inline reference use the very same result identity as
@@ -38,7 +37,8 @@
 \newcommand{\DeclareResultEvidenceRecord}[4]{%
   \expandafter\gdef\csname ev@record@#1\endcsname{#2}%
   \expandafter\gdef\csname ev@leanstatus@#1\endcsname{#3}%
-  \expandafter\gdef\csname ev@cmpstatus@#1\endcsname{#4}}
+  \expandafter\gdef\csname ev@cmpstatus@#1\endcsname{#4}%
+  \g@addto@macro\ev@rows{\ev@row{#1}}}
 \newcommand{\ev@inline}[4]{%
   \begingroup\normalfont\scriptsize
   \href{#3}{#2}%
@@ -106,9 +106,15 @@
     \end{longtable}
     \endgroup
   \fi}
-\newcommand{\ev@row}[4]{%
+\newcommand{\ev@row}[1]{%
   \hypertarget{verification-result.#1}{}%
-  \hyperref[#1]{Result \ref*{#1}} & \ev@inline{#1}{#2}{#3}{#4}\\}
+  \hyperref[#1]{Result \ref*{#1}} &
+  \ifcsname ev@inline@#1\endcsname
+    \csname ev@inline@#1\endcsname
+  \else
+    \href{\csname ev@record@#1\endcsname}{Verification record}\quad
+    {\scriptsize No complete formal proof recorded.}%
+  \fi\\}
 \makeatother
 
 % Once per paper: what the marks mean.  #1 is the URL of the paper's evidence

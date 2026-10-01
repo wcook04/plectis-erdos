@@ -2017,7 +2017,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="res-straight-no-go"></a>
 
-## Proposition 10.7 (two counterexamples to straight-path assertions), page 56
+## Proposition 10.7 (two counterexamples to straight-path assertions), page 57
 
 > *There is a monic quintic with all roots in the open unit disc and a non-root critical point $`c`$ whose unique nearest root has a point on the straight segment to $`c`$ outside $`\{|f|<1\}`$. There is also a monic cubic with all roots in the open unit disc such that the midpoint of every pair of distinct roots lies outside $`\{|f|<1\}`$.*
 
@@ -2189,7 +2189,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="res-ray"></a>
 
-## Corollary 11.2 (ray separation), page 65
+## Corollary 11.2 (ray separation), page 66
 
 > *Let $`a<b`$ and let the value trajectory $`t\mapsto f(z(t))`$ be continuous on $`[a,b]`$. Assume the Newton equation and $`f'(z(t))\ne0`$ on $`(a,b)`$ only. Then
 > ``` math
@@ -2225,7 +2225,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="res-locus"></a>
 
-## Theorem 12.1 (ray-collision locus), page 66
+## Theorem 12.1 (ray-collision locus), page 67
 
 > *Let $`a\ne b`$ be complex. Every common translation $`\beta`$ for which $`a+\beta`$ and $`b+\beta`$ lie on the same positive ray has the form
 > ``` math
@@ -2257,6 +2257,6 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="res-attachment-aware-reeb"></a>
 
-## Passage (beginning “res:attachment-aware-reeb…”), page 69
+## Passage (beginning “res:attachment-aware-reeb…”), page 70
 
 **No Lean proof of the whole statement.** In Lean, Component-local surjectivity, finite fibres, covering and unique continuous root-labelled branches on a finite outward-slit domain are checked in OutwardSlitDomain at public commit 8bf96bdcae6b9201c670fff3037c49c70ec6de8d, alongside ray-disjointness, level-separation and saddle-scale prerequisites. The complete theorem still lacks a Lean proof of component sheet count, conformality, Morse, monodromy and embedded-tree assertions; prerequisite checking does not establish the complete theorem..

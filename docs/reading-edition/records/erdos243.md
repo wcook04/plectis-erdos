@@ -25,11 +25,11 @@ A complete registered-evidence match locates the same full declaration set in th
 
 State: **short_proof_explained_long_link_open**.
 
-Short statement: [paper/243/erdos-243-reciprocal-tail-rigidity.tex](../../../paper/243/erdos-243-reciprocal-tail-rigidity.tex) lines 650-658.
+Short statement: [paper/243/erdos-243-reciprocal-tail-rigidity.tex](../../../paper/243/erdos-243-reciprocal-tail-rigidity.tex) lines 656-664.
 
 Ledger evidence: Lean `exact`; Comparator `compared`. These statuses are copied from the evidence ledger; this build reruns neither checker.
 
-Retained short-paper argument: [paper/243/erdos-243-reciprocal-tail-rigidity.tex](../../../paper/243/erdos-243-reciprocal-tail-rigidity.tex) lines 659-673.
+Retained short-paper argument: [paper/243/erdos-243-reciprocal-tail-rigidity.tex](../../../paper/243/erdos-243-reciprocal-tail-rigidity.tex) lines 665-679.
 
 The proof displays the exact defect comparison with the product quotient. Its remainder is positive and tends to zero; a finite upper bound gives a lower bound on E, then bounded-negative-part rigidity and the recurrence corollary apply. The product criterion is not the classical LCM criterion. This is an authored disposition, not a claim that Type A has accepted a new native correspondence binding.
 
@@ -39,17 +39,17 @@ This hash-bound passage records proof availability; its mathematical correctness
 
 No accepted correspondence is recorded. Check the candidates below; none is silently treated as a proof of this short statement.
 
-- `partial_declaration_overlap`: [paper/reasoning-parts/erdos243/core.tex](../../../paper/reasoning-parts/erdos243/core.tex) lines 2306-2319.
+- `partial_declaration_overlap`: [paper/reasoning-parts/erdos243/core.tex](../../../paper/reasoning-parts/erdos243/core.tex) lines 2308-2321.
 
 ### res:bounded
 
 State: **registered_evidence_linked**.
 
-Short statement: [paper/243/erdos-243-reciprocal-tail-rigidity.tex](../../../paper/243/erdos-243-reciprocal-tail-rigidity.tex) lines 481-493.
+Short statement: [paper/243/erdos-243-reciprocal-tail-rigidity.tex](../../../paper/243/erdos-243-reciprocal-tail-rigidity.tex) lines 487-499.
 
 Ledger evidence: Lean `exact_or_stronger`; Comparator `compared`. These statuses are copied from the evidence ledger; this build reruns neither checker.
 
-Long-record location: [paper/reasoning-parts/erdos243/core.tex](../../../paper/reasoning-parts/erdos243/core.tex) lines 3086-3098.
+Long-record location: [paper/reasoning-parts/erdos243/core.tex](../../../paper/reasoning-parts/erdos243/core.tex) lines 3088-3100.
 
 - `ErdosProblems.Erdos243.eventuallyBoundedNegativePart_eventually_zero`: [lean/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean](../../../lean/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean) lines 2360-2360.
 
@@ -57,11 +57,11 @@ Long-record location: [paper/reasoning-parts/erdos243/core.tex](../../../paper/r
 
 State: **short_proof_explained_long_link_open**.
 
-Short statement: [paper/243/erdos-243-reciprocal-tail-rigidity.tex](../../../paper/243/erdos-243-reciprocal-tail-rigidity.tex) lines 633-636.
+Short statement: [paper/243/erdos-243-reciprocal-tail-rigidity.tex](../../../paper/243/erdos-243-reciprocal-tail-rigidity.tex) lines 639-642.
 
 Ledger evidence: Lean `exact`; Comparator `compared`. These statuses are copied from the evidence ledger; this build reruns neither checker.
 
-Retained short-paper argument: [paper/243/erdos-243-reciprocal-tail-rigidity.tex](../../../paper/243/erdos-243-reciprocal-tail-rigidity.tex) lines 637-640.
+Retained short-paper argument: [paper/243/erdos-243-reciprocal-tail-rigidity.tex](../../../paper/243/erdos-243-reciprocal-tail-rigidity.tex) lines 643-646.
 
 The immediately preceding bounded-negative-part theorem makes E eventually zero. The two-zero identity, with positive successor numerator, then gives the eventual Sylvester recurrence. This is an authored disposition, not a claim that Type A has accepted a new native correspondence binding.
 
@@ -71,13 +71,13 @@ This hash-bound passage records proof availability; its mathematical correctness
 
 No accepted correspondence is recorded. Check the candidates below; none is silently treated as a proof of this short statement.
 
-- `label_alias`: [paper/reasoning-parts/erdos243/core.tex](../../../paper/reasoning-parts/erdos243/core.tex) lines 3121-3124.
+- `label_alias`: [paper/reasoning-parts/erdos243/core.tex](../../../paper/reasoning-parts/erdos243/core.tex) lines 3123-3126.
 
 ### res:update
 
 State: **unresolved**.
 
-Short statement: [paper/243/erdos-243-reciprocal-tail-rigidity.tex](../../../paper/243/erdos-243-reciprocal-tail-rigidity.tex) lines 508-514.
+Short statement: [paper/243/erdos-243-reciprocal-tail-rigidity.tex](../../../paper/243/erdos-243-reciprocal-tail-rigidity.tex) lines 514-520.
 
 Ledger evidence: Lean `exact`; Comparator `compared`. These statuses are copied from the evidence ledger; this build reruns neither checker.
 
@@ -89,7 +89,7 @@ No accepted correspondence is recorded. Check the candidates below; none is sile
 
 State: **unresolved**.
 
-Short statement: [paper/243/erdos-243-reciprocal-tail-rigidity.tex](../../../paper/243/erdos-243-reciprocal-tail-rigidity.tex) lines 532-538.
+Short statement: [paper/243/erdos-243-reciprocal-tail-rigidity.tex](../../../paper/243/erdos-243-reciprocal-tail-rigidity.tex) lines 538-544.
 
 Ledger evidence: Lean `exact`; Comparator `compared`. These statuses are copied from the evidence ledger; this build reruns neither checker.
 
@@ -101,7 +101,7 @@ No accepted correspondence is recorded. Check the candidates below; none is sile
 
 State: **unresolved**.
 
-Short statement: [paper/243/erdos-243-reciprocal-tail-rigidity.tex](../../../paper/243/erdos-243-reciprocal-tail-rigidity.tex) lines 547-553.
+Short statement: [paper/243/erdos-243-reciprocal-tail-rigidity.tex](../../../paper/243/erdos-243-reciprocal-tail-rigidity.tex) lines 553-559.
 
 Ledger evidence: Lean `exact`; Comparator `compared`. These statuses are copied from the evidence ledger; this build reruns neither checker.
 
@@ -113,11 +113,11 @@ No accepted correspondence is recorded. Check the candidates below; none is sile
 
 State: **short_proof_explained_long_link_open**.
 
-Short statement: [paper/243/erdos-243-reciprocal-tail-rigidity.tex](../../../paper/243/erdos-243-reciprocal-tail-rigidity.tex) lines 588-591.
+Short statement: [paper/243/erdos-243-reciprocal-tail-rigidity.tex](../../../paper/243/erdos-243-reciprocal-tail-rigidity.tex) lines 594-597.
 
 Ledger evidence: Lean `exact`; Comparator `compared`. These statuses are copied from the evidence ledger; this build reruns neither checker.
 
-Retained short-paper argument: [paper/243/erdos-243-reciprocal-tail-rigidity.tex](../../../paper/243/erdos-243-reciprocal-tail-rigidity.tex) lines 592-595.
+Retained short-paper argument: [paper/243/erdos-243-reciprocal-tail-rigidity.tex](../../../paper/243/erdos-243-reciprocal-tail-rigidity.tex) lines 598-601.
 
 Solve t=-i modulo m_i by the Chinese remainder theorem for the finitely many pairwise coprime moduli; add multiples of their product to exceed any prescribed lower bound. This is an authored disposition, not a claim that Type A has accepted a new native correspondence binding.
 
@@ -127,17 +127,17 @@ This hash-bound passage records proof availability; its mathematical correctness
 
 No accepted correspondence is recorded. Check the candidates below; none is silently treated as a proof of this short statement.
 
-- `label_alias`: [paper/reasoning-parts/erdos243/core.tex](../../../paper/reasoning-parts/erdos243/core.tex) lines 2860-2863.
+- `label_alias`: [paper/reasoning-parts/erdos243/core.tex](../../../paper/reasoning-parts/erdos243/core.tex) lines 2862-2865.
 
 ### res:barrier
 
 State: **short_proof_explained_long_link_open**.
 
-Short statement: [paper/243/erdos-243-reciprocal-tail-rigidity.tex](../../../paper/243/erdos-243-reciprocal-tail-rigidity.tex) lines 597-601.
+Short statement: [paper/243/erdos-243-reciprocal-tail-rigidity.tex](../../../paper/243/erdos-243-reciprocal-tail-rigidity.tex) lines 603-607.
 
 Ledger evidence: Lean `exact`; Comparator `compared`. These statuses are copied from the evidence ledger; this build reruns neither checker.
 
-Retained short-paper argument: [paper/243/erdos-243-reciprocal-tail-rigidity.tex](../../../paper/243/erdos-243-reciprocal-tail-rigidity.tex) lines 602-611.
+Retained short-paper argument: [paper/243/erdos-243-reciprocal-tail-rigidity.tex](../../../paper/243/erdos-243-reciprocal-tail-rigidity.tex) lines 608-617.
 
 Choose the forbidden consecutive block above the finitely many initial numerator values. The first later crossing lies within B of the block’s start, so one of the assigned moduli divides the numerator, contradicting the retained coprimality. Decreases are allowed. This is an authored disposition, not a claim that Type A has accepted a new native correspondence binding.
 
@@ -147,17 +147,17 @@ This hash-bound passage records proof availability; its mathematical correctness
 
 No accepted correspondence is recorded. Check the candidates below; none is silently treated as a proof of this short statement.
 
-- `label_alias`: [paper/reasoning-parts/erdos243/core.tex](../../../paper/reasoning-parts/erdos243/core.tex) lines 2897-2902.
+- `label_alias`: [paper/reasoning-parts/erdos243/core.tex](../../../paper/reasoning-parts/erdos243/core.tex) lines 2899-2904.
 
 ### res:reduced
 
 State: **registered_evidence_linked**.
 
-Short statement: [paper/243/erdos-243-reciprocal-tail-rigidity.tex](../../../paper/243/erdos-243-reciprocal-tail-rigidity.tex) lines 241-249.
+Short statement: [paper/243/erdos-243-reciprocal-tail-rigidity.tex](../../../paper/243/erdos-243-reciprocal-tail-rigidity.tex) lines 247-255.
 
 Ledger evidence: Lean `exact`; Comparator `compared`. These statuses are copied from the evidence ledger; this build reruns neither checker.
 
-Long-record location: [paper/reasoning-parts/erdos243/core.tex](../../../paper/reasoning-parts/erdos243/core.tex) lines 2944-2951.
+Long-record location: [paper/reasoning-parts/erdos243/core.tex](../../../paper/reasoning-parts/erdos243/core.tex) lines 2946-2953.
 
 - `ErdosProblems.Erdos243.PaperCompleteR7.persistent_coprimality`: [lean/ErdosProblems/Erdos243/PaperCompleteR7/Reduction.lean](../../../lean/ErdosProblems/Erdos243/PaperCompleteR7/Reduction.lean) lines 16-16.
 
@@ -165,11 +165,11 @@ Long-record location: [paper/reasoning-parts/erdos243/core.tex](../../../paper/r
 
 State: **registered_evidence_linked**.
 
-Short statement: [paper/243/erdos-243-reciprocal-tail-rigidity.tex](../../../paper/243/erdos-243-reciprocal-tail-rigidity.tex) lines 565-571.
+Short statement: [paper/243/erdos-243-reciprocal-tail-rigidity.tex](../../../paper/243/erdos-243-reciprocal-tail-rigidity.tex) lines 571-577.
 
 Ledger evidence: Lean `exact`; Comparator `compared`. These statuses are copied from the evidence ledger; this build reruns neither checker.
 
-Long-record location: [paper/reasoning-parts/erdos243/core.tex](../../../paper/reasoning-parts/erdos243/core.tex) lines 2993-2999.
+Long-record location: [paper/reasoning-parts/erdos243/core.tex](../../../paper/reasoning-parts/erdos243/core.tex) lines 2995-3001.
 
 - `ErdosProblems.Erdos243.PaperCompleteR7.gcd_stabilises_and_reduces`: [lean/ErdosProblems/Erdos243/PaperCompleteR7/Reduction.lean](../../../lean/ErdosProblems/Erdos243/PaperCompleteR7/Reduction.lean) lines 103-103.
 
@@ -177,11 +177,11 @@ Long-record location: [paper/reasoning-parts/erdos243/core.tex](../../../paper/r
 
 State: **registered_evidence_linked**.
 
-Short statement: [paper/243/erdos-243-reciprocal-tail-rigidity.tex](../../../paper/243/erdos-243-reciprocal-tail-rigidity.tex) lines 735-742.
+Short statement: [paper/243/erdos-243-reciprocal-tail-rigidity.tex](../../../paper/243/erdos-243-reciprocal-tail-rigidity.tex) lines 741-748.
 
 Ledger evidence: Lean `exact`; Comparator `compared`. These statuses are copied from the evidence ledger; this build reruns neither checker.
 
-Long-record location: [paper/reasoning-parts/erdos243/core.tex](../../../paper/reasoning-parts/erdos243/core.tex) lines 3159-3167.
+Long-record location: [paper/reasoning-parts/erdos243/core.tex](../../../paper/reasoning-parts/erdos243/core.tex) lines 3161-3169.
 
 - `ErdosProblems.Erdos243.PaperCompleteR7.finite_negative_mass_paper`: [lean/ErdosProblems/Erdos243/PaperCompleteR7/Frontier.lean](../../../lean/ErdosProblems/Erdos243/PaperCompleteR7/Frontier.lean) lines 84-84.
 
@@ -189,7 +189,7 @@ Long-record location: [paper/reasoning-parts/erdos243/core.tex](../../../paper/r
 
 State: **registered_evidence_linked**.
 
-Short statement: [paper/243/erdos-243-reciprocal-tail-rigidity.tex](../../../paper/243/erdos-243-reciprocal-tail-rigidity.tex) lines 818-826.
+Short statement: [paper/243/erdos-243-reciprocal-tail-rigidity.tex](../../../paper/243/erdos-243-reciprocal-tail-rigidity.tex) lines 824-832.
 
 Ledger evidence: Lean `exact`; Comparator `compared`. These statuses are copied from the evidence ledger; this build reruns neither checker.
 
@@ -201,11 +201,11 @@ Long-record location: [paper/reasoning-parts/erdos243/core.tex](../../../paper/r
 
 State: **short_proof_explained_long_link_open**.
 
-Short statement: [paper/243/erdos-243-reciprocal-tail-rigidity.tex](../../../paper/243/erdos-243-reciprocal-tail-rigidity.tex) lines 941-949.
+Short statement: [paper/243/erdos-243-reciprocal-tail-rigidity.tex](../../../paper/243/erdos-243-reciprocal-tail-rigidity.tex) lines 948-956.
 
 Ledger evidence: Lean `exact`; Comparator `compared`. These statuses are copied from the evidence ledger; this build reruns neither checker.
 
-Retained short-paper argument: [paper/243/erdos-243-reciprocal-tail-rigidity.tex](../../../paper/243/erdos-243-reciprocal-tail-rigidity.tex) lines 951-959.
+Retained short-paper argument: [paper/243/erdos-243-reciprocal-tail-rigidity.tex](../../../paper/243/erdos-243-reciprocal-tail-rigidity.tex) lines 958-966.
 
 Use L_n/A_n=q/gcd(q,A_n) in [1,q] to translate the stated upper bound to the LCM-tail expression. The defect comparison bounds the negative part of V. With a larger B the excess series is eventually zero, and the weighted-record theorem gives the conclusion. This is an authored disposition, not a claim that Type A has accepted a new native correspondence binding.
 
@@ -221,11 +221,11 @@ No candidate was found by the bounded label/declaration rules. Read the long rec
 
 State: **short_proof_explained_long_link_open**.
 
-Short statement: [paper/243/erdos-243-reciprocal-tail-rigidity.tex](../../../paper/243/erdos-243-reciprocal-tail-rigidity.tex) lines 686-695.
+Short statement: [paper/243/erdos-243-reciprocal-tail-rigidity.tex](../../../paper/243/erdos-243-reciprocal-tail-rigidity.tex) lines 692-701.
 
 Ledger evidence: Lean `exact`; Comparator `compared`. These statuses are copied from the evidence ledger; this build reruns neither checker.
 
-Retained short-paper argument: [paper/243/erdos-243-reciprocal-tail-rigidity.tex](../../../paper/243/erdos-243-reciprocal-tail-rigidity.tex) lines 696-703.
+Retained short-paper argument: [paper/243/erdos-243-reciprocal-tail-rigidity.tex](../../../paper/243/erdos-243-reciprocal-tail-rigidity.tex) lines 702-709.
 
 Compare the quotient t_(n+1)/t_n with (1+1/n)(1+K/n^(1+epsilon)). The convergent error product gives t_n=O(n), and t_n*gamma_n is bounded above. The preceding product-increment criterion applies, including the exact one-sided 1/n bound. This is an authored disposition, not a claim that Type A has accepted a new native correspondence binding.
 
@@ -235,7 +235,7 @@ This hash-bound passage records proof availability; its mathematical correctness
 
 No accepted correspondence is recorded. Check the candidates below; none is silently treated as a proof of this short statement.
 
-- `partial_declaration_overlap`: [paper/reasoning-parts/erdos243/core.tex](../../../paper/reasoning-parts/erdos243/core.tex) lines 2383-2395.
+- `partial_declaration_overlap`: [paper/reasoning-parts/erdos243/core.tex](../../../paper/reasoning-parts/erdos243/core.tex) lines 2385-2397.
 
 ### res:cubicrate
 
@@ -253,11 +253,11 @@ Long-record location: [paper/reasoning-parts/erdos243/core.tex](../../../paper/r
 
 State: **registered_evidence_linked**.
 
-Short statement: [paper/243/erdos-243-reciprocal-tail-rigidity.tex](../../../paper/243/erdos-243-reciprocal-tail-rigidity.tex) lines 997-1005.
+Short statement: [paper/243/erdos-243-reciprocal-tail-rigidity.tex](../../../paper/243/erdos-243-reciprocal-tail-rigidity.tex) lines 1004-1012.
 
 Ledger evidence: Lean `exact`; Comparator `compared`. These statuses are copied from the evidence ledger; this build reruns neither checker.
 
-Long-record location: [paper/reasoning-parts/erdos243/core.tex](../../../paper/reasoning-parts/erdos243/core.tex) lines 3246-3262.
+Long-record location: [paper/reasoning-parts/erdos243/core.tex](../../../paper/reasoning-parts/erdos243/core.tex) lines 3248-3264.
 
 - `ErdosProblems.Erdos243.PaperCompleteR7.canonical_frontier`: [lean/ErdosProblems/Erdos243/PaperCompleteR7/Frontier.lean](../../../lean/ErdosProblems/Erdos243/PaperCompleteR7/Frontier.lean) lines 151-151.
 
@@ -265,11 +265,11 @@ Long-record location: [paper/reasoning-parts/erdos243/core.tex](../../../paper/r
 
 State: **short_proof_explained_long_link_open**.
 
-Short statement: [paper/243/erdos-243-reciprocal-tail-rigidity.tex](../../../paper/243/erdos-243-reciprocal-tail-rigidity.tex) lines 1036-1041.
+Short statement: [paper/243/erdos-243-reciprocal-tail-rigidity.tex](../../../paper/243/erdos-243-reciprocal-tail-rigidity.tex) lines 1043-1048.
 
 Ledger evidence: Lean `exact`; Comparator `compared`. These statuses are copied from the evidence ledger; this build reruns neither checker.
 
-Retained short-paper argument: [paper/243/erdos-243-reciprocal-tail-rigidity.tex](../../../paper/243/erdos-243-reciprocal-tail-rigidity.tex) lines 1043-1071.
+Retained short-paper argument: [paper/243/erdos-243-reciprocal-tail-rigidity.tex](../../../paper/243/erdos-243-reciprocal-tail-rigidity.tex) lines 1050-1078.
 
 For zero lower density choose cutoffs X_k with F(X_k)<=2^(-k)X_k and sum the nested indicator weights 1_[1,X_k]/X_k. The integral diverges but the weighted mass is finite. Conversely use partial summation against a positive nonincreasing divergent-integral weight to exclude an eventual positive linear lower bound for F. This is an authored disposition, not a claim that Type A has accepted a new native correspondence binding.
 
@@ -285,13 +285,13 @@ No candidate was found by the bounded label/declaration rules. Read the long rec
 
 State: **unresolved**.
 
-Short statement: [paper/243/erdos-243-reciprocal-tail-rigidity.tex](../../../paper/243/erdos-243-reciprocal-tail-rigidity.tex) lines 1148-1153.
+Short statement: [paper/243/erdos-243-reciprocal-tail-rigidity.tex](../../../paper/243/erdos-243-reciprocal-tail-rigidity.tex) lines 1155-1160.
 
 Ledger evidence: Lean `exact`; Comparator `compared`. These statuses are copied from the evidence ledger; this build reruns neither checker.
 
 No accepted correspondence is recorded. Check the candidates below; none is silently treated as a proof of this short statement.
 
-- `label_alias`: [paper/reasoning-parts/erdos243/core.tex](../../../paper/reasoning-parts/erdos243/core.tex) lines 3921-3926.
+- `label_alias`: [paper/reasoning-parts/erdos243/core.tex](../../../paper/reasoning-parts/erdos243/core.tex) lines 3923-3928.
 
 ## Long-record material retained outside these links
 
@@ -318,31 +318,31 @@ These registered long assertions are not used by an accepted short-paper link. T
 - `long243:res:eventual`: [paper/reasoning-parts/erdos243/core.tex](../../../paper/reasoning-parts/erdos243/core.tex) lines 1368-1373.
 - `long243:res:absorb`: [paper/reasoning-parts/erdos243/core.tex](../../../paper/reasoning-parts/erdos243/core.tex) lines 1382-1386.
 - `long243:res:arithmeticrecord`: [paper/reasoning-parts/erdos243/core.tex](../../../paper/reasoning-parts/erdos243/core.tex) lines 1467-1483.
-- `long243:res:valuationtransition`: [paper/reasoning-parts/erdos243/core.tex](../../../paper/reasoning-parts/erdos243/core.tex) lines 1740-1753.
-- `long243:res:powerpersistence`: [paper/reasoning-parts/erdos243/core.tex](../../../paper/reasoning-parts/erdos243/core.tex) lines 1768-1771.
-- `long243:res:recorddichotomy`: [paper/reasoning-parts/erdos243/core.tex](../../../paper/reasoning-parts/erdos243/core.tex) lines 1781-1789.
-- `long243:res:loglogboundary`: [paper/reasoning-parts/erdos243/core.tex](../../../paper/reasoning-parts/erdos243/core.tex) lines 1800-1810.
-- `long243:res:recordamplified`: [paper/reasoning-parts/erdos243/core.tex](../../../paper/reasoning-parts/erdos243/core.tex) lines 1983-1987.
-- `long243:res:criticalrate`: [paper/reasoning-parts/erdos243/core.tex](../../../paper/reasoning-parts/erdos243/core.tex) lines 1989-1994.
-- `long243:res:oddpowersupply`: [paper/reasoning-parts/erdos243/core.tex](../../../paper/reasoning-parts/erdos243/core.tex) lines 2072-2080.
-- `long243:res:unitrecord`: [paper/reasoning-parts/erdos243/core.tex](../../../paper/reasoning-parts/erdos243/core.tex) lines 2106-2111.
-- `long243:res:epochenergy`: [paper/reasoning-parts/erdos243/core.tex](../../../paper/reasoning-parts/erdos243/core.tex) lines 2153-2162.
-- `long243:res:energycriterion`: [paper/reasoning-parts/erdos243/core.tex](../../../paper/reasoning-parts/erdos243/core.tex) lines 2194-2199.
-- `long243:res:slownegative`: [paper/reasoning-parts/erdos243/core.tex](../../../paper/reasoning-parts/erdos243/core.tex) lines 2246-2251.
-- `long243:res:strausbounded`: [paper/reasoning-parts/erdos243/core.tex](../../../paper/reasoning-parts/erdos243/core.tex) lines 2306-2319.
-- `long243:res:onethreshold`: [paper/reasoning-parts/erdos243/core.tex](../../../paper/reasoning-parts/erdos243/core.tex) lines 2383-2395.
-- `long243:res:classicalhalfspace`: [paper/reasoning-parts/erdos243/core.tex](../../../paper/reasoning-parts/erdos243/core.tex) lines 2467-2496.
-- `long243:res:coprimalitycap`: [paper/reasoning-parts/erdos243/core.tex](../../../paper/reasoning-parts/erdos243/core.tex) lines 2534-2546.
-- `long243:res:descent`: [paper/reasoning-parts/erdos243/core.tex](../../../paper/reasoning-parts/erdos243/core.tex) lines 2620-2623.
-- `long243:res:constant`: [paper/reasoning-parts/erdos243/core.tex](../../../paper/reasoning-parts/erdos243/core.tex) lines 2673-2678.
-- `long243:res:periodic`: [paper/reasoning-parts/erdos243/core.tex](../../../paper/reasoning-parts/erdos243/core.tex) lines 2767-2775.
-- `long243:res:crt`: [paper/reasoning-parts/erdos243/core.tex](../../../paper/reasoning-parts/erdos243/core.tex) lines 2860-2863.
-- `long243:res:barrier`: [paper/reasoning-parts/erdos243/core.tex](../../../paper/reasoning-parts/erdos243/core.tex) lines 2897-2902.
-- `long243:res:gcdsparse`: [paper/reasoning-parts/erdos243/core.tex](../../../paper/reasoning-parts/erdos243/core.tex) lines 3039-3049.
-- `long243:res:cor`: [paper/reasoning-parts/erdos243/core.tex](../../../paper/reasoning-parts/erdos243/core.tex) lines 3121-3124.
-- `long243:res:variablerise`: [paper/reasoning-parts/erdos243/core.tex](../../../paper/reasoning-parts/erdos243/core.tex) lines 3542-3554.
-- `long243:res:gapconstant`: [paper/reasoning-parts/erdos243/core.tex](../../../paper/reasoning-parts/erdos243/core.tex) lines 3582-3592.
-- `long243:res:residue`: [paper/reasoning-parts/erdos243/core.tex](../../../paper/reasoning-parts/erdos243/core.tex) lines 3921-3926.
+- `long243:res:valuationtransition`: [paper/reasoning-parts/erdos243/core.tex](../../../paper/reasoning-parts/erdos243/core.tex) lines 1741-1754.
+- `long243:res:powerpersistence`: [paper/reasoning-parts/erdos243/core.tex](../../../paper/reasoning-parts/erdos243/core.tex) lines 1770-1773.
+- `long243:res:recorddichotomy`: [paper/reasoning-parts/erdos243/core.tex](../../../paper/reasoning-parts/erdos243/core.tex) lines 1783-1791.
+- `long243:res:loglogboundary`: [paper/reasoning-parts/erdos243/core.tex](../../../paper/reasoning-parts/erdos243/core.tex) lines 1802-1812.
+- `long243:res:recordamplified`: [paper/reasoning-parts/erdos243/core.tex](../../../paper/reasoning-parts/erdos243/core.tex) lines 1985-1989.
+- `long243:res:criticalrate`: [paper/reasoning-parts/erdos243/core.tex](../../../paper/reasoning-parts/erdos243/core.tex) lines 1991-1996.
+- `long243:res:oddpowersupply`: [paper/reasoning-parts/erdos243/core.tex](../../../paper/reasoning-parts/erdos243/core.tex) lines 2074-2082.
+- `long243:res:unitrecord`: [paper/reasoning-parts/erdos243/core.tex](../../../paper/reasoning-parts/erdos243/core.tex) lines 2108-2113.
+- `long243:res:epochenergy`: [paper/reasoning-parts/erdos243/core.tex](../../../paper/reasoning-parts/erdos243/core.tex) lines 2155-2164.
+- `long243:res:energycriterion`: [paper/reasoning-parts/erdos243/core.tex](../../../paper/reasoning-parts/erdos243/core.tex) lines 2196-2201.
+- `long243:res:slownegative`: [paper/reasoning-parts/erdos243/core.tex](../../../paper/reasoning-parts/erdos243/core.tex) lines 2248-2253.
+- `long243:res:strausbounded`: [paper/reasoning-parts/erdos243/core.tex](../../../paper/reasoning-parts/erdos243/core.tex) lines 2308-2321.
+- `long243:res:onethreshold`: [paper/reasoning-parts/erdos243/core.tex](../../../paper/reasoning-parts/erdos243/core.tex) lines 2385-2397.
+- `long243:res:classicalhalfspace`: [paper/reasoning-parts/erdos243/core.tex](../../../paper/reasoning-parts/erdos243/core.tex) lines 2469-2498.
+- `long243:res:coprimalitycap`: [paper/reasoning-parts/erdos243/core.tex](../../../paper/reasoning-parts/erdos243/core.tex) lines 2536-2548.
+- `long243:res:descent`: [paper/reasoning-parts/erdos243/core.tex](../../../paper/reasoning-parts/erdos243/core.tex) lines 2622-2625.
+- `long243:res:constant`: [paper/reasoning-parts/erdos243/core.tex](../../../paper/reasoning-parts/erdos243/core.tex) lines 2675-2680.
+- `long243:res:periodic`: [paper/reasoning-parts/erdos243/core.tex](../../../paper/reasoning-parts/erdos243/core.tex) lines 2769-2777.
+- `long243:res:crt`: [paper/reasoning-parts/erdos243/core.tex](../../../paper/reasoning-parts/erdos243/core.tex) lines 2862-2865.
+- `long243:res:barrier`: [paper/reasoning-parts/erdos243/core.tex](../../../paper/reasoning-parts/erdos243/core.tex) lines 2899-2904.
+- `long243:res:gcdsparse`: [paper/reasoning-parts/erdos243/core.tex](../../../paper/reasoning-parts/erdos243/core.tex) lines 3041-3051.
+- `long243:res:cor`: [paper/reasoning-parts/erdos243/core.tex](../../../paper/reasoning-parts/erdos243/core.tex) lines 3123-3126.
+- `long243:res:variablerise`: [paper/reasoning-parts/erdos243/core.tex](../../../paper/reasoning-parts/erdos243/core.tex) lines 3546-3558.
+- `long243:res:gapconstant`: [paper/reasoning-parts/erdos243/core.tex](../../../paper/reasoning-parts/erdos243/core.tex) lines 3586-3596.
+- `long243:res:residue`: [paper/reasoning-parts/erdos243/core.tex](../../../paper/reasoning-parts/erdos243/core.tex) lines 3923-3928.
 
 ## Passage-review queue
 

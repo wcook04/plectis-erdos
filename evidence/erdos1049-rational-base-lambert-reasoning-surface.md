@@ -540,7 +540,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long1049-res-sharpgaps"></a>
 
-## Corollary 3.2 (gaps between the stated logarithmic thresholds), page 20
+## Corollary 3.2 (gaps between the stated logarithmic thresholds), page 21
 
 > *For every $`\rho,\sigma\in\mathbb{R}`$ with $`0\le\rho`$ and $`1+\rho\le\sigma`$,
 > ``` math
@@ -659,7 +659,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long1049-res-allrowinitial"></a>
 
-## Lemma 3.5 (a coefficient of each transformed row), page 22
+## Lemma 3.5 (a coefficient of each transformed row), page 23
 
 > *For $`m\ge j\ge0`$ one has $`D_jW_m(t)\in q^{E(m,j)}A`$ and
 > ``` math
@@ -923,7 +923,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long1049-thm-geometric-ratio"></a>
 
-## Passage (beginning “long1049:thm:geometric-ratio…”), page 34
+## Passage (beginning “long1049:thm:geometric-ratio…”), page 35
 
 > *Remark 1* (limiting weight ratios; unformalised). Let $`0<q<1`$ and $`0<\rho<q^{-1}`$. Suppose that $`a_k>0`$ for $`k\ge0`$ and
 > ``` math
@@ -947,7 +947,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long1049-thm-calibrated-model"></a>
 
-## Passage (beginning “long1049:thm:calibrated-model…”), page 37
+## Passage (beginning “long1049:thm:calibrated-model…”), page 38
 
 > *Remark 2* (a rational special value). All the weights in (25) are positive for $`0<q\le2/3`$. The two moment sequences $`(\mu_m)`$ and $`(\nu_m)`$ have positive Hankel determinants of every size, $`G_q`$ is not a rational function, and $`G_q(q)=1`$. Their formal Hankel determinants both begin with
 > ``` math
@@ -993,7 +993,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long1049-res-finite-pencil"></a>
 
-## Proposition 3.9 (finite coefficient positivity and pencil roots), page 43
+## Proposition 3.9 (finite coefficient positivity and pencil roots), page 44
 
 > *For every real $`p>1`$ and $`1\le N\le8`$, $`A_N`$ is positive definite and all roots of $`\det(YA_N-B_N)`$ are real and strictly less than $`F(p)`$. The roots at consecutive ranks $`N,N+1\le8`$ interlace non-strictly.*
 
@@ -1154,7 +1154,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long1049-res-nomult"></a>
 
-## Corollary 5.5 (limits of rescaling and common-divisor cancellation at $`3/2`$), page 50
+## Corollary 5.5 (limits of rescaling and common-divisor cancellation at $`3/2`$), page 51
 
 > *Under the endpoint hypotheses of Proposition 5.3, every common divisor of the unscaled evaluations $`H_W(U)`$ and $`H_W(V)`$ is coprime to $`6`$. Multiplying two integer rows by nonzero integers $`c_n,c_m`$ multiplies their determinant by $`c_nc_m`$ and its absolute value by $`|c_nc_m|`$. Cancelling this introduced scalar factor therefore leaves the original comparison between divisor and determinant size unchanged.*
 
@@ -1186,7 +1186,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long1049-res-cyclounit"></a>
 
-## Proposition 5.6 (coprimality of homogenised cyclotomic values), page 50
+## Proposition 5.6 (coprimality of homogenised cyclotomic values), page 51
 
 > *Let $`a>b\ge1`$ with $`\gcd(a,b)=1`$ and let $`m\ge1`$. Then $`\gcd(\Phi_m(a,b),ab)=1`$. In particular $`\gcd(\Phi_m(3,2),6)=1`$ for every $`m`$.*
 
@@ -1214,7 +1214,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="res-bottomjet"></a>
 
-## Lemma 5.7 (a residue and divisibility by $`3^R`$), page 51
+## Lemma 5.7 (a residue and divisibility by $`3^R`$), page 52
 
 > *Vanishing of the [residue modulo $`3^R`$](https://github.com/wcook04/plectis-erdos/blob/7380b7871687b6bcc41ca0143c61f232e8af6500/lean/ErdosProblems/Erdos1049/ZudilinConeArithmetic.lean#L191) is exactly divisibility by the corresponding power of three: $`J_{3,R}(P)=0`$ if and only if $`3^R\mid H_W(P)`$.*
 
@@ -1275,7 +1275,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long1049-res-rankfortyone"></a>
 
-## Corollary 5.9 (the exact count at depth $`41`$), page 52
+## Corollary 5.9 (the exact count at depth $`41`$), page 53
 
 > *Let $`T>0`$. At modulus $`3^{R}`$ with $`R=41T`$, any family of $`M\ge130T+2S`$ integral polynomial pairs has two distinct binary vectors with the same residue vector. For $`T=1`$ the coefficient $`130`$ is exact for this counting argument:
 > ``` math
@@ -1347,7 +1347,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="res-boundedfibre"></a>
 
-## Theorem 5.11 (equal residues with close, distinct values), page 53
+## Theorem 5.11 (equal residues with close, distinct values), page 54
 
 > *Let $`A,B,J`$ be finite sets and let $`f:A\to B`$, $`g:A\to\mathbb R`$ and $`\iota:A\to J`$. Suppose that each simultaneous fibre of $`(f,g)`$ has at most $`k`$ elements and that, for some $`\delta>0`$,
 > ``` math
@@ -1431,7 +1431,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long1049-res-scalar"></a>
 
-## Theorem 5.14 (a restriction on the two scalar exponents), page 55
+## Theorem 5.14 (a restriction on the two scalar exponents), page 56
 
 > *Let $`C_1>0`$. If $`C_0\le0`$ or $`2C_0\le C_1`$, then
 > ``` math
@@ -1547,7 +1547,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long1049-res-tailrec"></a>
 
-## Theorem 7.1 (recurrence for the scaled remainder), page 58
+## Theorem 7.1 (recurrence for the scaled remainder), page 59
 
 > *Let $`r,s,B,\xi\in\mathbb{Q}`$ with $`r\ne0`$, let $`c:\mathbb{N}\to\mathbb{Q}`$, and let $`P_N`$ and $`U_N`$ be as in ({$\ast $}). Then for every $`N`$,
 > ``` math
@@ -1578,7 +1578,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long1049-res-forcing"></a>
 
-## Theorem 7.2 (the forcing term), page 58
+## Theorem 7.2 (the forcing term), page 59
 
 > *Let $`s,B`$ be natural numbers and $`c:\mathbb{N}\to\mathbb{N}`$.*
 >
@@ -1609,7 +1609,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long1049-res-sevenhalves"></a>
 
-## Theorem 8.1 (the $`7/2`$ height condition), page 59
+## Theorem 8.1 (the $`7/2`$ height condition), page 60
 
 > *``` math
 > \frac{\log 7}{\log(7/2)}
@@ -1733,7 +1733,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long1049-res-nomahler"></a>
 
-## Proposition 10.5 (no finite simultaneous $`2/3`$-system), page 68
+## Proposition 10.5 (no finite simultaneous $`2/3`$-system), page 69
 
 > *Let
 > ``` math

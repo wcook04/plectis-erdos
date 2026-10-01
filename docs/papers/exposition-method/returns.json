@@ -2424,6 +2424,295 @@
       "native_status": "source_reviewed_selective_integration",
       "correction_of": "short-20261001-r9-257",
       "status_boundary": "Separate later original correction; the earlier recovery-only arrival is preserved. Type A selected manuscript changes are recorded in the native review. Archive custody and donor reading claims are not proof, full reading, or automatic rule adoption."
+    },
+    {
+      "id": "short-20261001-r10-68",
+      "round": 10,
+      "problem": "68",
+      "archive_name": "erdos68_r10_exposition_return_20261001.zip",
+      "archive_sha256": "336de1f316679d7715ea4b5672425882eafbcdbd48811e765efc03d3b5b5d3d3",
+      "documents": {
+        "EDITORIAL_REPORT.md": {
+          "member": "erdos68_r10_exposition_return_20261001/EDITORIAL_REPORT.md",
+          "sha256": "d0a0112af699413ed33e10e94b484b60bac9543f445bee77f96fdab6d67c27f6"
+        },
+        "GENERALIZED_LESSONS.json": {
+          "member": "erdos68_r10_exposition_return_20261001/GENERALIZED_LESSONS.json",
+          "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+        },
+        "LITERATURE_READING.json": {
+          "member": "erdos68_r10_exposition_return_20261001/LITERATURE_READING.json",
+          "sha256": "d4cf81ef80b22899793b1b5e97233051364517676601387c16928d0cc535c241"
+        },
+        "RETURN.json": {
+          "member": "erdos68_r10_exposition_return_20261001/RETURN.json",
+          "sha256": "27a6feaa0988b587cf0ba5a4f6c589c68e9d260c41b304df3923c96aaf9e9a5e"
+        },
+        "STATEMENT_CHANGES.json": {
+          "member": "erdos68_r10_exposition_return_20261001/STATEMENT_CHANGES.json",
+          "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+        },
+        "STYLE_RULES.json": {
+          "member": "erdos68_r10_exposition_return_20261001/STYLE_RULES.json",
+          "sha256": "ace4cbf9ea15eb95f3b0a468ccfad6cce01cc6aa7d2b3b7b9e3595c5f557d885"
+        }
+      },
+      "native_status": "source_reviewed_selective_integration",
+      "native_review": "state/formal_math/type_b_return_batches/short_refinement_r10_20261001/review/analysis/papers_68_1041_1049.md",
+      "status_boundary": "Archive identity preserves custody; selected editorial uptake does not establish a new theorem, formal proof, full donor reading, or measured reader benefit."
+    },
+    {
+      "id": "short-20261001-r10-243",
+      "round": 10,
+      "problem": "243",
+      "archive_name": "erdos243_short_refinement_r10_return_20261001.zip",
+      "archive_sha256": "d79c9823ea510d7739e630e9b425254ccd10df2b483d89f138a434b474e5bfb9",
+      "documents": {
+        "EDITORIAL_REPORT.md": {
+          "member": "erdos243_r10_return/EDITORIAL_REPORT.md",
+          "sha256": "5b41aa94bec54a01673b95a33c2b41d4190b1421d81b038123d279039a2e99c1"
+        },
+        "GENERALIZED_LESSONS.json": {
+          "member": "erdos243_r10_return/GENERALIZED_LESSONS.json",
+          "sha256": "40c97cb99ddd58b2bb9db1c298ad593b6a1e11b96eae0ce50ef940dc3a74e6f9"
+        },
+        "LITERATURE_READING.json": {
+          "member": "erdos243_r10_return/LITERATURE_READING.json",
+          "sha256": "956bcd021c12269347b4d735c48fd8eecf693fa5f7846f69b251cc8dca976400"
+        },
+        "RETURN.json": {
+          "member": "erdos243_r10_return/RETURN.json",
+          "sha256": "33e26957e41274529096a1414a2d26cb02f80037c7618129a5a9090dee9db840"
+        },
+        "STATEMENT_CHANGES.json": {
+          "member": "erdos243_r10_return/STATEMENT_CHANGES.json",
+          "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+        },
+        "STYLE_RULES.json": {
+          "member": "erdos243_r10_return/STYLE_RULES.json",
+          "sha256": "1729b355474173a541704bf656aa9b7cf19a5f57ad2490dba052f97addc9c194"
+        }
+      },
+      "native_status": "source_reviewed_selective_integration",
+      "native_review": "state/formal_math/type_b_return_batches/short_refinement_r10_20261001/review/arithmetic_a/DECISIONS.md",
+      "status_boundary": "Archive identity preserves custody; selected editorial uptake does not establish a new theorem, formal proof, full donor reading, or measured reader benefit."
+    },
+    {
+      "id": "short-20261001-r10-249",
+      "round": 10,
+      "problem": "249",
+      "archive_name": "erdos249_r10_return.zip",
+      "archive_sha256": "6dfe3c2675be75ba5e436faff8fc0a82a34de5914b4f97004751cf6e1b078833",
+      "documents": {
+        "EDITORIAL_REPORT.md": {
+          "member": "erdos249_r10_return/EDITORIAL_REPORT.md",
+          "sha256": "ee64a4a0b2cf8baf629ee26fce4c94488ac97d20643695689e2a3dd14786b192"
+        },
+        "GENERALIZED_LESSONS.json": {
+          "member": "erdos249_r10_return/GENERALIZED_LESSONS.json",
+          "sha256": "288efe7f19d862a935c0677feeaaa3e604b4328e0506217b9cad36486ea2da09"
+        },
+        "LITERATURE_READING.json": {
+          "member": "erdos249_r10_return/LITERATURE_READING.json",
+          "sha256": "73a035822307073ca7817fccedfb9ff0916153b0b73a5369d345a2843fd5706a"
+        },
+        "RETURN.json": {
+          "member": "erdos249_r10_return/RETURN.json",
+          "sha256": "6a3e5b5af2b690ff1a592c45aa3b60534c7cbd3d36ad3e1e0d88374a13d7835d"
+        },
+        "STATEMENT_CHANGES.json": {
+          "member": "erdos249_r10_return/STATEMENT_CHANGES.json",
+          "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+        },
+        "STYLE_RULES.json": {
+          "member": "erdos249_r10_return/STYLE_RULES.json",
+          "sha256": "9fe2db4fdd8e661c69ec1c8389c6d5a5e2a55a8e432664d68283eb647e842149"
+        }
+      },
+      "native_status": "source_reviewed_selective_integration",
+      "native_review": "state/formal_math/type_b_return_batches/short_refinement_r10_20261001/review/arithmetic_a/DECISIONS.md",
+      "status_boundary": "Archive identity preserves custody; selected editorial uptake does not establish a new theorem, formal proof, full donor reading, or measured reader benefit."
+    },
+    {
+      "id": "short-20261001-r10-251",
+      "round": 10,
+      "problem": "251",
+      "archive_name": "erdos251_short_refinement_r10_20261001_return.zip",
+      "archive_sha256": "5d166ad08062305f8ef7f6d5364dc3f641d603b2468163f256c0f262be710630",
+      "documents": {
+        "EDITORIAL_REPORT.md": {
+          "member": "erdos251_short_refinement_r10_20261001_return/EDITORIAL_REPORT.md",
+          "sha256": "5bb196f4a12e6e74f1bd7db86f02730e7629905eb811e8d9906f5516d12c7d78"
+        },
+        "GENERALIZED_LESSONS.json": {
+          "member": "erdos251_short_refinement_r10_20261001_return/GENERALIZED_LESSONS.json",
+          "sha256": "b192eab2e13b1e6abb53c287322d5fd9dff272d4b59aee0e85c5a2cd48c26ea7"
+        },
+        "LITERATURE_READING.json": {
+          "member": "erdos251_short_refinement_r10_20261001_return/LITERATURE_READING.json",
+          "sha256": "4091056a55cefad01775067ad60d52191ba77ea5b18671caccdd6157ab6e6fb8"
+        },
+        "RETURN.json": {
+          "member": "erdos251_short_refinement_r10_20261001_return/RETURN.json",
+          "sha256": "68c00a04c734471ab346f8c1a0c6fd0b0ccfd63b17d74ea5097f55c2b5e8c775"
+        },
+        "STATEMENT_CHANGES.json": {
+          "member": "erdos251_short_refinement_r10_20261001_return/STATEMENT_CHANGES.json",
+          "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+        },
+        "STYLE_RULES.json": {
+          "member": "erdos251_short_refinement_r10_20261001_return/STYLE_RULES.json",
+          "sha256": "b8b075186ff0d0ea7f3dcb1389dbd226bca89f231709adc59b97cb17dcf70e73"
+        }
+      },
+      "native_status": "source_reviewed_selective_integration",
+      "native_review": "state/formal_math/type_b_return_batches/short_refinement_r10_20261001/review/arithmetic_a/DECISIONS.md",
+      "status_boundary": "Archive identity preserves custody; selected editorial uptake does not establish a new theorem, formal proof, full donor reading, or measured reader benefit."
+    },
+    {
+      "id": "short-20261001-r10-257",
+      "round": 10,
+      "problem": "257",
+      "archive_name": "erdos257_r10_final_return.zip",
+      "archive_sha256": "78049eb73c424fd449508a99f28ed6a64ef60f9fe208fec95346b2e1908727b1",
+      "documents": {
+        "EDITORIAL_REPORT.md": {
+          "member": "erdos257_r10_final_return/EDITORIAL_REPORT.md",
+          "sha256": "41436c3ee947e337d2db7a19f598bde53e911b6f675e395947a1800b32a1b28d"
+        },
+        "GENERALIZED_LESSONS.json": {
+          "member": "erdos257_r10_final_return/GENERALIZED_LESSONS.json",
+          "sha256": "e9cc9bd6bd764fc55ca68aaf6f5ecaeddf133196cdd33c8be180a898b80e3129"
+        },
+        "LITERATURE_READING.json": {
+          "member": "erdos257_r10_final_return/LITERATURE_READING.json",
+          "sha256": "4f50ec93515176b354ab27a79cb1a12cdc584f1b3bd4f5bfd154d143a98d32c5"
+        },
+        "RETURN.json": {
+          "member": "erdos257_r10_final_return/RETURN.json",
+          "sha256": "9482cba278578476012b82e500d6ad38a076b22d6ce0ebce3a82525b21812249"
+        },
+        "STATEMENT_CHANGES.json": {
+          "member": "erdos257_r10_final_return/STATEMENT_CHANGES.json",
+          "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+        },
+        "STYLE_RULES.json": {
+          "member": "erdos257_r10_final_return/STYLE_RULES.json",
+          "sha256": "98b02ec6644498f9c99357b2ec8a8b61999420bcf27566dbb81545f1c33d6cd2"
+        }
+      },
+      "native_status": "source_reviewed_selective_integration",
+      "native_review": "state/formal_math/type_b_return_batches/short_refinement_r10_20261001/review/arithmetic_b/DECISIONS.md",
+      "status_boundary": "Archive identity preserves custody; selected editorial uptake does not establish a new theorem, formal proof, full donor reading, or measured reader benefit."
+    },
+    {
+      "id": "short-20261001-r10-269",
+      "round": 10,
+      "problem": "269",
+      "archive_name": "erdos269_short_refinement_r10_return_20261001.zip",
+      "archive_sha256": "33c7bc4eb03c93021865bb58b34838951ee0f128a09e2a8b7cd3e47cdd32faf3",
+      "documents": {
+        "EDITORIAL_REPORT.md": {
+          "member": "erdos269_short_refinement_r10_return_20261001/EDITORIAL_REPORT.md",
+          "sha256": "e6cba6822763db5a97f42b6e4b4d180c0dc2b3c4019ab057b54c6fcc49323665"
+        },
+        "GENERALIZED_LESSONS.json": {
+          "member": "erdos269_short_refinement_r10_return_20261001/GENERALIZED_LESSONS.json",
+          "sha256": "2cd628c6b0380b354d446d922e1c0745086d00a5a9cc44981e0b0e478cb5817c"
+        },
+        "LITERATURE_READING.json": {
+          "member": "erdos269_short_refinement_r10_return_20261001/LITERATURE_READING.json",
+          "sha256": "455e481e389377e27749fb109d96af2be6a233bc6546abe04041557d72e5ecfc"
+        },
+        "RETURN.json": {
+          "member": "erdos269_short_refinement_r10_return_20261001/RETURN.json",
+          "sha256": "533618e579d8e3e10957a4c270b63312d4068c92b2fdf5e0400689ce42a8f224"
+        },
+        "STATEMENT_CHANGES.json": {
+          "member": "erdos269_short_refinement_r10_return_20261001/STATEMENT_CHANGES.json",
+          "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+        },
+        "STYLE_RULES.json": {
+          "member": "erdos269_short_refinement_r10_return_20261001/STYLE_RULES.json",
+          "sha256": "22f38b9241cc283397ee07f9cbdfb1e1b301b591b582c0c94c7e7fa1aa21466f"
+        }
+      },
+      "native_status": "source_reviewed_selective_integration",
+      "native_review": "state/formal_math/type_b_return_batches/short_refinement_r10_20261001/review/arithmetic_b/DECISIONS.md",
+      "status_boundary": "Archive identity preserves custody; selected editorial uptake does not establish a new theorem, formal proof, full donor reading, or measured reader benefit."
+    },
+    {
+      "id": "short-20261001-r10-1041",
+      "round": 10,
+      "problem": "1041",
+      "archive_name": "erdos1041_r10_complete_return_20261001.zip",
+      "archive_sha256": "75c2cada5e0402dc501bcf210adb0fb7450d1075620ef7a507dbe300f0bd0bb9",
+      "documents": {
+        "EDITORIAL_REPORT.md": {
+          "member": "erdos1041_r10_return_20261001/EDITORIAL_REPORT.md",
+          "sha256": "5ac0dc121545704faeb7a7299d3e615cdfaf3a587af6c92b0ec9bf75ab9287cb"
+        },
+        "GENERALIZED_LESSONS.json": {
+          "member": "erdos1041_r10_return_20261001/GENERALIZED_LESSONS.json",
+          "sha256": "e7505e923ff907427e364ec0799ebdaf5ee44504b0794895d12930e3a6a7bfb6"
+        },
+        "LITERATURE_READING.json": {
+          "member": "erdos1041_r10_return_20261001/LITERATURE_READING.json",
+          "sha256": "3d321c81a5ceeea20ab9d95a1732114a16b7a0fde7c962fa3268824e4315e5ba"
+        },
+        "RETURN.json": {
+          "member": "erdos1041_r10_return_20261001/RETURN.json",
+          "sha256": "9f9732d665603195636a730769fb6453b7dc1860aa520ebc340127b288ee3f74"
+        },
+        "STATEMENT_CHANGES.json": {
+          "member": "erdos1041_r10_return_20261001/STATEMENT_CHANGES.json",
+          "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+        },
+        "STYLE_RULES.json": {
+          "member": "erdos1041_r10_return_20261001/STYLE_RULES.json",
+          "sha256": "2e26b521a2cd0e3fe8edf55d89010a727cb108632c4b1711665748b7a9f40831"
+        }
+      },
+      "native_status": "source_reviewed_selective_integration",
+      "native_review": "state/formal_math/type_b_return_batches/short_refinement_r10_20261001/review/analysis/papers_68_1041_1049.md",
+      "status_boundary": "Archive identity preserves custody; selected editorial uptake does not establish a new theorem, formal proof, full donor reading, or measured reader benefit."
+    },
+    {
+      "id": "short-20261001-r10-1049",
+      "round": 10,
+      "problem": "1049",
+      "archive_name": "erdos1049_short_refinement_r11_20261001.zip",
+      "archive_sha256": "e99ebe9b075f2a53f92d486521a47b2a7cd739c7a705e8fd8d7811eea56eeef9",
+      "documents": {
+        "EDITORIAL_REPORT.md": {
+          "member": "erdos1049_short_refinement_r11_20261001/EDITORIAL_REPORT.md",
+          "sha256": "dfa722f4da3c7ce8b343c129b42c6c7b985920f2cc6035eb0bf7431c9ff19317"
+        },
+        "GENERALIZED_LESSONS.json": {
+          "member": "erdos1049_short_refinement_r11_20261001/GENERALIZED_LESSONS.json",
+          "sha256": "13ddcd551527c650efc318fdfdb1e9b40d9f6dd3ce853c6dbc69bbc2fff503b3"
+        },
+        "LITERATURE_READING.json": {
+          "member": "erdos1049_short_refinement_r11_20261001/LITERATURE_READING.json",
+          "sha256": "a576463c0158ff9b0b994ff777b7799bfffe77bbcf2f3078fa110d2d0569a437"
+        },
+        "RETURN.json": {
+          "member": "erdos1049_short_refinement_r11_20261001/RETURN.json",
+          "sha256": "e98893d376c37d2558424a1ceea339c6b619439e0e043f12be11621dcc5decf5"
+        },
+        "STATEMENT_CHANGES.json": {
+          "member": "erdos1049_short_refinement_r11_20261001/STATEMENT_CHANGES.json",
+          "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+        },
+        "STYLE_RULES.json": {
+          "member": "erdos1049_short_refinement_r11_20261001/STYLE_RULES.json",
+          "sha256": "02c9e913d321cd62fb9a3d3d971950cc64f96a40b5380cda2ad9196abd83c0b5"
+        }
+      },
+      "native_status": "source_reviewed_selective_integration",
+      "native_review": "state/formal_math/type_b_return_batches/short_refinement_r10_20261001/review/analysis/papers_68_1041_1049.md",
+      "status_boundary": "Archive identity preserves custody; selected editorial uptake does not establish a new theorem, formal proof, full donor reading, or measured reader benefit.",
+      "filename_boundary": "Original filename says R11; it arrived in the frozen R10 campaign and is recorded here under that batch identity."
     }
   ]
 }

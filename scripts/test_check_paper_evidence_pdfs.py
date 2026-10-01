@@ -56,8 +56,8 @@ def link(rect: list[float], uri: str) -> DictionaryObject:
 
 
 def pdf(links: list[tuple[list[float], str]], pages: int = 1, heading_y: float = HEAD_Y,
-        headings: list[tuple[float, str]] | None = None,
-        concordance_labels: tuple[str, ...] = ()) -> Path:
+        headings: list[tuple[float, str] | tuple[float, float, str]] | None = None,
+        concordance_labels: tuple[str, ...] | dict[str, float] = ()) -> Path:
     writer = PdfWriter()
     for index in range(pages):
         page = writer.add_blank_page(595.28, 841.89)
@@ -72,15 +72,24 @@ def pdf(links: list[tuple[list[float], str]], pages: int = 1, heading_y: float =
             })
             stream = DecodedStreamObject()
             runs = headings if headings is not None else [(heading_y, "Theorem 1.1")]
-            stream.set_data("\n".join(f"BT /F1 11 Tf 89 {y} Td ({text}) Tj ET"
-                                      for y, text in runs).encode())
+            positioned = []
+            for run in runs:
+                if len(run) == 2:
+                    y, text = run
+                    positioned.append((89.0, y, text))
+                else:
+                    positioned.append(run)
+            stream.set_data("\n".join(f"BT /F1 11 Tf {x} {y} Td ({text}) Tj ET"
+                                      for x, y, text in positioned).encode())
             page[NameObject("/Contents")] = writer._add_object(stream)
             page[NameObject("/Annots")] = ArrayObject([writer._add_object(link(r, u)) for r, u in links])
             for label in concordance_labels:
+                row_y = (concordance_labels[label] if isinstance(concordance_labels, dict)
+                         else heading_y)
                 writer.add_named_destination_array(
                     TextStringObject("verification-result." + label),
                     ArrayObject([page.indirect_reference, NameObject("/XYZ"),
-                                 NullObject(), FloatObject(heading_y), NullObject()]))
+                                 NullObject(), FloatObject(row_y), NullObject()]))
     handle = tempfile.NamedTemporaryFile(suffix=".pdf", delete=False)
     buffer = io.BytesIO()
     writer.write(buffer)
@@ -288,6 +297,96 @@ def test_concordance_rows_preserve_statement_and_target() -> None:
     require(checked(displaced), "links displaced from their concordance row passed")
 
 
+def test_unmarked_concordance_rows_are_complete_and_unique() -> None:
+    record_a = CMP.removesuffix("-comparator")
+    record_b = record_a.replace("#res-a", "#res-b")
+    paper = {"results": [PAPER["results"][0],
+                         {"label": "res:b", "page": "1", "number": "1.2", "printed_kind": "Remark"}]}
+    records = {"res:a": (record_a, "none", "not_applicable"),
+               "res:b": (record_b, "none", "not_applicable")}
+    headings = [(730.0, "Verification concordance"),
+                (HEAD_Y, "Result 1.1"), (HEAD_Y - 100, "Result 1.2")]
+    links = [([175.0, HEAD_Y - 2.6, 260.0, HEAD_Y + 8.0], record_a),
+             ([175.0, HEAD_Y - 102.6, 260.0, HEAD_Y - 92.0], record_b)]
+    rows = {"res:a": HEAD_Y, "res:b": HEAD_Y - 100}
+
+    def checked(links=links, rows=rows, headings=headings):
+        return check.check_paper(pdf(links, headings=headings, concordance_labels=rows),
+                                 paper, {}, 1, records)
+
+    require(checked() == [], f"two unmarked result rows failed: {checked()}")
+    require(any("res:b: missing verification row" in p
+                for p in checked(rows={"res:a": HEAD_Y})),
+            "an unmarked statement missing from the concordance passed")
+    require(any("res:b: missing or duplicated partial-support record" in p
+                for p in checked(links=links[:1])),
+            "an unmarked row without its record link passed")
+    duplicate = ([275.0, HEAD_Y - 102.6, 360.0, HEAD_Y - 92.0], record_b)
+    require(any("res:b: missing or duplicated partial-support record" in p
+                for p in checked(links=links + [duplicate])),
+            "two record links on one unmarked row passed")
+    wrong_number = headings[:-1] + [(HEAD_Y - 100, "Result 1.3")]
+    require(any("res:b: wrong unmarked statement number" in p
+                for p in checked(headings=wrong_number)),
+            "an unmarked row with the wrong statement number passed")
+
+
+def test_compared_status_without_comparator_url_fails() -> None:
+    marks = {"res:a": ("Lean", LEAN, "")}
+    records = {"res:a": (CMP.removesuffix("-comparator"), "exact", "compared")}
+    headings = [(730.0, "Verification concordance"), (HEAD_Y, "Result 1.1")]
+    found = check.check_paper(pdf(SOUND[:1], headings=headings,
+                                  concordance_labels=("res:a",)),
+                              PAPER, marks, 1, records)
+    require(any("compared status has no Comparator target" in p for p in found),
+            f"a compared row with no Comparator URL passed: {found}")
+
+
+def test_duplicate_concordance_pair_away_from_first_row_fails() -> None:
+    lower = [([r[0], r[1] - 100, r[2], r[3] - 100], u) for r, u in SOUND]
+    for x, label in [(175.0, "Lean"), (210.0, "Comparator")]:
+        headings = [(730.0, "Verification concordance"), (HEAD_Y, "Result 1.1"),
+                    (x, HEAD_Y - 100, label)]
+        found = check.check_paper(pdf(SOUND + lower, headings=headings,
+                                      concordance_labels=("res:a",)),
+                                  PAPER, MARKS, 1,
+                                  {"res:a": (CMP.removesuffix("-comparator"), "exact", "compared")})
+        require(any("duplicate evidence presentation outside its row" in p for p in found),
+                f"a second {label} presentation away from the original row passed: {found}")
+
+
+def test_pending_dagger_and_shared_targets_pass_in_concordance() -> None:
+    heading = [(730.0, "Verification concordance"), (HEAD_Y, "Result 1.1")]
+    record_a = CMP.removesuffix("-comparator")
+    pending_marks = {"res:a": ("Lean", LEAN, "")}
+    pending_records = {"res:a": (record_a, "exact", "pending")}
+    pending = check.check_paper(pdf(SOUND, headings=heading,
+                                    concordance_labels=("res:a",)),
+                                PAPER, pending_marks, 1, pending_records)
+    require(pending == [], f"a valid pending comparison in the concordance failed: {pending}")
+
+    dagger_marks = {"res:a": (r"Lean\textsuperscript{\dag}", LEAN, CMP)}
+    dagger_piece = ([199.0, HEAD_Y + 1.0, 205.0, HEAD_Y + 10.0], LEAN)
+    compared_records = {"res:a": (record_a, "modulo_named_input", "compared")}
+    dagger = check.check_paper(pdf([dagger_piece, SOUND[1], SOUND[0]], headings=heading,
+                                   concordance_labels=("res:a",)),
+                                PAPER, dagger_marks, 1, compared_records)
+    require(dagger == [], f"a valid split dagger in the concordance failed: {dagger}")
+
+    paper = {"results": PAPER["results"] +
+             [{"label": "res:b", "page": "1", "number": "1.2", "printed_kind": "Theorem"}]}
+    marks = {"res:a": MARKS["res:a"], "res:b": MARKS["res:a"]}
+    records = {"res:a": (record_a, "exact", "compared"),
+               "res:b": (record_a.replace("#res-a", "#res-b"), "exact", "compared")}
+    both = SOUND + [([r[0], r[1] - 100, r[2], r[3] - 100], u) for r, u in SOUND]
+    headings = heading + [(HEAD_Y - 100, "Result 1.2")]
+    shared = check.check_paper(pdf(both, headings=headings,
+                                   concordance_labels={"res:a": HEAD_Y,
+                                                       "res:b": HEAD_Y - 100}),
+                               paper, marks, 1, records)
+    require(shared == [], f"two concordance rows sharing evidence targets failed: {shared}")
+
+
 def main() -> int:
     tests = [
         test_sound_page_passes,
@@ -315,6 +414,10 @@ def main() -> int:
         test_dagger_mark_declaration_parses,
         test_unknown_paper_id_cannot_pass_without_checks,
         test_concordance_rows_preserve_statement_and_target,
+        test_unmarked_concordance_rows_are_complete_and_unique,
+        test_compared_status_without_comparator_url_fails,
+        test_duplicate_concordance_pair_away_from_first_row_fails,
+        test_pending_dagger_and_shared_targets_pass_in_concordance,
     ]
     for test in tests:
         test()

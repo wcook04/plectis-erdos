@@ -321,7 +321,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="res-thirtyone-four"></a>
 
-## Corollary 4.2, page 13
+## Corollary 4.2, page 14
 
 > *$`F\bigl((31/4)^r\bigr)`$ is irrational for every integer $`r\ge1`$.*
 

@@ -724,7 +724,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long251-res-cfexclusion"></a>
 
-## Theorem 7.2 (certified continued-fraction exclusion), page 19
+## Theorem 7.2 (certified continued-fraction exclusion), page 20
 
 > *Every rational equal to $`\Pi`$, and hence every rational equal to $`S`$, has reduced denominator $`q\ge2^{39997}`$, and therefore $`q>10^{12040}`$.*
 
@@ -1218,7 +1218,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long251-xr-propagate"></a>
 
-## Proposition D.2 (propagation), page 36
+## Proposition D.2 (propagation), page 35
 
 > *Let $`T:\mathbb{N}\to\mathbb{R}`$ satisfy $`T_{n+1}=2T_n-a_{n+1}`$ with integer coefficients, and define $`\sigma_h(N)=T_{N+h}-T_N`$. For fixed $`h,N\ge0`$, if $`\sigma_h(N)`$ is an integer, then $`\sigma_h(N+k)`$ is an integer for every $`k\ge0`$.*
 
@@ -1288,7 +1288,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long251-res-complete-truncation"></a>
 
-## Proposition D.4 (completeness of finite separation), page 37
+## Proposition D.4 (completeness of finite separation), page 36
 
 > *Suppose $`D\in\mathbb{R}`$, $`S_L\in\mathbb{R}`$ and $`R_L\ge0`$ satisfy $`|D-S_L|\le R_L`$ and $`R_L\to0`$. Then
 > ``` math

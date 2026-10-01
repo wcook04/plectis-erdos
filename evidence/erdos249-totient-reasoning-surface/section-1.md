@@ -4,7 +4,7 @@ Part of the [evidence record](../erdos249-totient-reasoning-surface.md) of the p
 
 <a id="thm-denom"></a>
 
-## Theorem 1.3 (Denominator exclusion from a fixed Farey window), page 5
+## Theorem 1.3 (Denominator exclusion from a fixed Farey window), page 4
 
 > *If $`S \in \mathbb{Q}`$ then its reduced denominator exceeds
 > ``` math
@@ -296,7 +296,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="prop-rank"></a>
 
-## Proposition 1.6 (Rationality forces unbounded carry rank), page 6
+## Proposition 1.6 (Rationality forces unbounded carry rank), page 5
 
 > *If $`S`$ is rational then, for every $`e`$, the carry sections $`n\mapsto u_{2^jn+r}`$ with $`1\le j\le e`$ and $`0\le r<2^j`$ span a rational vector space of dimension at least $`2^{e}-1`$. The lower bound holds at every depth. It comes from the linear independence of the $`2^e+1`$ retained dyadic totient sections for $`e\ge1`$, proved using the Chinese remainder theorem and Dirichlet’s theorem, so the full family spans an infinite-dimensional space, the case $`k=2`$ of Coons’s non-regularity theorem (§10.8).*
 
@@ -490,7 +490,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="prop-radixresidue"></a>
 
-## Proposition 1.10 (Residue series in every integer base), page 7
+## Proposition 1.10 (Residue series in every integer base), page 6
 
 > *Let $`t\ge2`$ be an integer.*
 >

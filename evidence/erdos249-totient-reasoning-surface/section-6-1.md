@@ -530,7 +530,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="catalogue-cert-a12"></a>
 
-## Proposition 6.11 (A common certificate for sixteen shifts), page 31
+## Proposition 6.11 (A common certificate for sixteen shifts), page 30
 
 > *For each integer $`1\le h\le16`$, one has $`\mathcal C(h,14,9)`$. The common basepoint is $`14`$ and the depth is $`9`$; these parameters have different roles. The two windows for each shift use only the 25 distinct totient values at $`15\le n\le39`$ across the whole family. Thus $`S\ne a/b`$ for every reduced fraction with $`b>0`$ such that $`b\mid2^{14}(2^h-1)`$ for at least one $`1\le h\le16`$.*
 
@@ -566,7 +566,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="catalogue-cert-b11"></a>
 
-## Proposition 6.12 (Historical diagonal examples and the complete band through 82), page 31
+## Proposition 6.12 (Historical diagonal examples and the complete band through 82), page 30
 
 > *Let $`H_t=\operatorname{lcm}(1,\ldots,t)`$ and let
 > ``` math
@@ -780,7 +780,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="catalogue-cert-c1"></a>
 
-## Proposition 6.21 (The Farey gap lemma), page 33
+## Proposition 6.21 (The Farey gap lemma), page 32
 
 > *Let $`a,b,c,d,r,s\in\mathbb Z`$, with $`b,d>0`$ and $`bc-ad=1`$. If
 > ``` math
@@ -1077,7 +1077,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="catalogue-cert-d9"></a>
 
-## Proposition 6.25 (The gap between distinct rational numbers), page 34
+## Proposition 6.25 (The gap between distinct rational numbers), page 33
 
 > *If $`a/b<c/d`$ are reduced rational numbers with $`b,d>0`$, then
 > ``` math
@@ -1136,7 +1136,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="catalogue-mob-a1a"></a>
 
-## Proposition 6.26 (The Möbius identity for $`S`$), page 34
+## Proposition 6.26 (The Möbius identity for $`S`$), page 33
 
 > *The absolutely convergent series satisfy
 > ``` math
@@ -1245,7 +1245,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="catalogue-mob-a4"></a>
 
-## Proposition 6.30 (Weight one and divisor sums), page 35
+## Proposition 6.30 (Weight one and divisor sums), page 34
 
 > *$`\sum_{d:\mathbb{N}^+}' 1/(2^d-1)^2 = \sum_{n:\mathbb{N}^+}' \big(\sigma(n)-\tau(n)\big)\cdot(1/2)^n = \zeta_q(2) - \zeta_q(1)`$ at $`q=1/2`$. The displayed identity is formalised. Irrationality of its value follows from the cited linear independence result of Postelmans and Van Assche, as explained in Proposition 5.17; that literature result is not formalised here. Replacing the weight $`1`$ by $`\mu`$ changes the value to that of Definition 6.29. Observation 6.32 compares the two choices of weight.*
 
@@ -1302,7 +1302,7 @@ theorem moebius_weight_value :
 
 <a id="catalogue-mob-a5"></a>
 
-## Proposition 6.31 (Totient weight and gcd moments), page 35
+## Proposition 6.31 (Totient weight and gcd moments), page 34
 
 > *``` math
 > \sum_{d:\mathbb{N}^+}' \varphi(d)/(2^d-1)^2 = \sum_{n:\mathbb{N}^+}' (P(n)-n)\cdot(1/2)^n,
@@ -1452,7 +1452,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="catalogue-mob-a9a"></a>
 
-## Proposition 6.35 (A Stern–Brocot recursion with stopping), page 36
+## Proposition 6.35 (A Stern–Brocot recursion with stopping), page 35
 
 > *For positive integers $`a,b`$, put
 > ``` math
@@ -1650,7 +1650,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="catalogue-mob-b2"></a>
 
-## Proposition 6.38 (Evaluation at two), page 37
+## Proposition 6.38 (Evaluation at two), page 36
 
 > *For squarefree $`r\ge1`$, evaluation of $`P_r`$ at two gives the integer
 > ``` math

@@ -152,7 +152,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="prop-nonzero-minor-survives-inverse-phase"></a>
 
-## Proposition 10.4 (A nonzero minor survives inverse-phase column weights), page 104
+## Proposition 10.4 (A nonzero minor survives inverse-phase column weights), page 103
 
 > *Let $`d\ge1`$ be an integer, let $`e_0,\ldots,e_{d-1}`$ be nonnegative integers, and let $`z_0,\ldots,z_{d-1}`$ be nonzero complex numbers. Write $`P_{ij}=z_j^{e_i}`$, and suppose $`e_{i_0}=1`$ for some $`i_0`$. Multiplying column $`j`$ by $`W_j=z_j^{-1}`$ gives
 > ``` math
@@ -313,7 +313,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long249-thm-signed-interpolation"></a>
 
-## Passage (beginning “long249:thm:signed-interpolation…”), page 113
+## Passage (beginning “long249:thm:signed-interpolation…”), page 112
 
 > *Remark 273* (Sparse interpolation around the totient). Fix integers $`\beta\ge2`$, $`K\ge1`$, $`P\ge2`$, and any function $`f:\mathbb{N}_{>0}\to(0,\infty)`$ with $`f(n)\to\infty`$. There exist $`T>0`$ and target-independent sets $`S\subseteq H\subseteq\{n>K\}`$, with every element of $`S`$ even, such that every
 > ``` math
@@ -353,7 +353,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long249-cor-signed-observations"></a>
 
-## Passage (beginning “long249:cor:signed-observations…”), page 117
+## Passage (beginning “long249:cor:signed-observations…”), page 116
 
 > *Remark 274* (Observations that do not determine irrationality). The following data, taken together, do not determine whether $`F_b(\beta^{-1})`$ is rational: the fixed prefix and odd coefficients; every fixed eventual coefficient and cumulative congruence; the block laws on scales $`o(\ell(X))`$; fixed progression moments modulo eventual integer constants outside $`H`$; progression Dirichlet functions modulo entire functions; and radial germs at all roots of unity modulo smooth functions with Taylor coefficients in $`\mathbb{Z}[\zeta]`$. This remains true with exact equality of the first $`P`$ moment degrees and first $`P`$ radial Taylor coefficients at moduli and root orders at most $`P`$.
 
@@ -361,7 +361,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long249-prop-signed-first-harmonic"></a>
 
-## Passage (beginning “long249:prop:signed-first-harmonic…”), page 118
+## Passage (beginning “long249:prop:signed-first-harmonic…”), page 117
 
 > *Remark 275* (The first-harmonic test on the rational members). Let $`b(n)`$ be integers with $`0\le b(n)\le n`$ and $`F_b(1/2)=u/(2^cv)`$, where $`c\ge0`$ and $`v`$ is odd and positive. Choose $`h\ge1`$ with $`v\mid2^h-1`$. If $`X\ge\max(c,1)`$ and $`16(2X+h+L+2)\le2^L`$, then for every integer $`N\in[X,2X)`$,
 > ``` math

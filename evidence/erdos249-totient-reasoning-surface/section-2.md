@@ -4,7 +4,7 @@ Part of the [evidence record](../erdos249-totient-reasoning-surface.md) of the p
 
 <a id="lem-gsound"></a>
 
-## Lemma 2.1 (A residue certificate excludes an integral tail difference), page 10
+## Lemma 2.1 (A residue certificate excludes an integral tail difference), page 9
 
 > *Let $`c:\mathbb{N}\to\mathbb{N}`$ satisfy $`c(n)\le n`$ for all $`n`$. For $`h,N,L\in\mathbb{N}`$, $`\mathcal C_c(h,N,L) \Rightarrow R^{c}_{N+h} - R^{c}_{N} \notin \mathbb{Z}`$.*
 
@@ -333,7 +333,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="prop-b5"></a>
 
-## Proposition 2.11 (Information lost by specific carry descriptions), page 13
+## Proposition 2.11 (Information lost by specific carry descriptions), page 12
 
 > 1.  *Fix $`m\ge2`$ and write $`R=\lfloor(m+1)/2\rfloor`$. For $`r=0,\ldots,R`$, let $`c_r`$ vanish except at $`c_r(m)=R-r`$ and $`c_r(m+1)=2r`$. Each sequence satisfies $`0\le c_r(n)\le n`$, has the same binary sum $`R2^{-m}`$, and has the same coefficients and scaled tails before position $`m`$. Its scaled tail at position $`m`$ is $`r`$. The common history therefore does not determine that tail. A finite set of labels that determines the tail for each member of this family must contain at least $`R+1=\lfloor(m+1)/2\rfloor+1`$ elements, one for each value of $`r`$.*
 >

@@ -4,7 +4,7 @@ Part of the [evidence record](../erdos249-totient-reasoning-surface.md) of the p
 
 <a id="prop-b11-inv"></a>
 
-## Proposition 6.104 (Diagonal certificates through $`82`$), page 57
+## Proposition 6.104 (Diagonal certificates through $`82`$), page 56
 
 > *The current aggregate establishes
 > ``` math
@@ -47,7 +47,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="prop-c1-inv"></a>
 
-## Proposition 6.105 (A coprime-pair expression for $`S`$), page 57
+## Proposition 6.105 (A coprime-pair expression for $`S`$), page 56
 
 > *For $`n\ge0`$, the number of integer pairs $`a\ge1`$, $`b\ge0`$ with $`a+b=n`$ and $`\gcd(a,b)=1`$ is $`\varphi(n)`$, with $`\varphi(0)=0`$. Indeed, $`b=n-a`$ and $`\gcd(a,n-a)=\gcd(a,n)`$. The boundary case $`n=1`$ contributes $`(a,b)=(1,0)`$; it disappears when both coordinates are required to be positive. Consequently,
 > ``` math
@@ -124,7 +124,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="thm-values-exponents-one-two"></a>
 
-## Theorem 6.121 (The values at exponents one and two), page 63
+## Theorem 6.121 (The values at exponents one and two), page 62
 
 > *The first two values are $`\Theta_1=1/2`$ and $`\Theta_2=S-1/2`$.*
 
@@ -151,7 +151,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="thm-first-two-summands-give-positive"></a>
 
-## Theorem 6.122 (The first two summands give a positive Hankel gap), page 63
+## Theorem 6.122 (The first two summands give a positive Hankel gap), page 62
 
 > *$`(1-3^{-(r+1)})^2 - (1-3^{-r})(1-3^{-(r+2)}) = 4/3^{r+2}`$, so the rational sequence $`1-3^{-r}`$ is strictly log-concave for every integer $`r\ge1`$.*
 
@@ -281,7 +281,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="prop-uniqueness-under-growth-condition"></a>
 
-## Proposition 6.126 (Uniqueness under the growth condition), page 65
+## Proposition 6.126 (Uniqueness under the growth condition), page 64
 
 > *A real sequence $`d`$ with $`d(N{+}1)=2d(N)`$ and $`d(N)=o(2^N)`$ is identically zero.*
 
@@ -385,7 +385,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="prop-geometric-tail-bound"></a>
 
-## Proposition 6.129 (A geometric tail bound), page 66
+## Proposition 6.129 (A geometric tail bound), page 65
 
 > *For every integer $`D\ge0`$,
 > ``` math
@@ -520,7 +520,7 @@ theorem squarefreeKernel_eq_prod_primeFactors (H : ℕ) :
 
 <a id="prop-divisor-sum-complement"></a>
 
-## Proposition 6.132 (The divisor sum and its complement), page 67
+## Proposition 6.132 (The divisor sum and its complement), page 66
 
 > *For integers $`H>0`$ and $`s\ge0`$,
 > ``` math
@@ -585,7 +585,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="thm-doubling-full-totient-difference"></a>
 
-## Theorem 6.133 (Doubling the full totient difference), page 67
+## Theorem 6.133 (Doubling the full totient difference), page 66
 
 > *For nonnegative integers $`H,r`$ with $`H`$ even,
 > ``` math
@@ -745,7 +745,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="cor-numerator-polynomial-explicit-positive-coefficients"></a>
 
-## Corollary 6.137, page 68
+## Corollary 6.137, page 67
 
 > *For the same squarefree $`r`$, evaluation at $`X=2`$ gives the integer
 > ``` math
@@ -1177,7 +1177,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="thm-classical-coprime-pair-lambert-identity"></a>
 
-## Theorem 6.146 (The classical coprime-pair Lambert identity), page 71
+## Theorem 6.146 (The classical coprime-pair Lambert identity), page 70
 
 > *For every $`0\le r<1`$, $`\sum_{(a,b)\ \mathrm{coprime},\, a,b\ge 1}
 > \dfrac{r^{a+b}}{1-r^{a+b}} = \Bigl(\dfrac{r}{1-r}\Bigr)^2`$, an elementary rational function of $`r`$, hence rational at every rational $`r`$ including $`r=1/2`$. This is the classical visible-point identity, and its Lean proof is a formalisation of it rather than a new result: writing each pair $`(A,B)`$ of positive integers uniquely as $`g\cdot(a,b)`$ with $`\gcd(a,b)=1`$ converts the quadrant sum $`\sum_{A,B\ge1}r^{A+B}=(r/(1-r))^2`$ into the displayed sum over visible points. With the plain weight $`r^{a+b}`$, the same strictly positive index set instead sums to $`\sum_{n\ge1}\varphi(n)r^n-r`$. Thus at $`r=1/2`$ the Lambert-weighted sum is $`1`$, whereas the plain-weight sum is $`S-1/2`$, not $`S`$. Adding the boundary pair $`(1,0)`$ recovers $`S`$ in the plain-weight sum.*
@@ -1389,7 +1389,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="thm-sufficient-order-hypothesis-unbounded-prime"></a>
 
-## Theorem 6.155 (A sufficient order hypothesis for unbounded prime support), page 73
+## Theorem 6.155 (A sufficient order hypothesis for unbounded prime support), page 72
 
 > *Let $`C:\mathbb{N}\to\mathbb{N}`$, and fix integers $`m\ge1`$ and $`d\ge0`$. Suppose that for every pair of primes $`q,p`$ with $`p\mid C(mq)`$ there is an integer $`k`$ such that
 > ``` math
@@ -1620,7 +1620,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="prop-bound-preserved-positive-normalised-averaging"></a>
 
-## Proposition 6.157 (The bound is preserved by positive normalised averaging), page 74
+## Proposition 6.157 (The bound is preserved by positive normalised averaging), page 73
 
 > *For a nonempty finite family of admissible quotients with positive weights summing to $`1`$, the weighted average still exceeds $`\Theta_2`$ by more than $`1/480`$. If an admissible quotient is $`p/q`$ in lowest terms, with $`q>0`$, then $`|q\Theta_2-p|>q/480`$.*
 

@@ -362,7 +362,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long269-res-dp-two-walls"></a>
 
-## Passage (beginning “long269:res:dp-two-walls…”), page 13
+## Passage (beginning “long269:res:dp-two-walls…”), page 12
 
 > *Remark 13* (two walls). If $`|P|\ge4`$, there is $`x\in T_0`$ with $`\theta_q(x)=0`$ for exactly two primes $`q\in P`$.
 

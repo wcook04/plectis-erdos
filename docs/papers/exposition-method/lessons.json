@@ -10871,6 +10871,250 @@
       "universal_rule_disposition": "retained_candidate_no_new_rule",
       "native_review": "docs/statement_migrations/r9_exposition_20261001.json",
       "reading_boundary": "The Type A application is checked against the current paper and its scope; source inclusion and donor-declared reading do not establish later full reading or measured reader benefit."
+    },
+    {
+      "id": "short-20261001-r10-68-style-rules-02",
+      "return_id": "short-20261001-r10-68",
+      "document": "STYLE_RULES.json",
+      "document_sha256": "ace4cbf9ea15eb95f3b0a468ccfad6cce01cc6aa7d2b3b7b9e3595c5f557d885",
+      "index": 1,
+      "rule_families": [
+        "E03",
+        "E04"
+      ],
+      "proposal": "When a normalization changes the integer offset, show both offsets and the conversion instead of reusing the same letter locally.",
+      "before": "Here $\\mathcal R=1380(S-H_4)+k$.",
+      "after": "The second column is the offset from $1380(S-H_4)$; the third is the\ninteger $k$ in $\\mathcal R=1380S+k$.",
+      "limit": "The old locally defined table was not a false theorem. This edit removes a reader translation, not a mathematical defect; the existing sum z_n is sufficient notation.",
+      "original_proposal": {
+        "rule": "When a normalization changes the integer offset, show both offsets and the conversion instead of reusing the same letter locally.",
+        "scope": "long_record",
+        "specimens": [
+          {
+            "quote": "Don’t use the same notation for two different things.",
+            "source": "annex/knuth-mathematical-writing/source.pdf",
+            "locator": "§1 item 14, printed p.3 (PDF p.5)."
+          }
+        ],
+        "before": "Here $\\mathcal R=1380(S-H_4)+k$.",
+        "after": "The second column is the offset from $1380(S-H_4)$; the third is the\ninteger $k$ in $\\mathcal R=1380S+k$.",
+        "limit": "The old locally defined table was not a false theorem. This edit removes a reader translation, not a mathematical defect; the existing sum z_n is sufficient notation."
+      },
+      "editorial_disposition": "accepted_as_scoped_application_of_existing_rule",
+      "manuscript_disposition": "local_edit_reviewed_in_native_record",
+      "native_review": "state/formal_math/type_b_return_batches/short_refinement_r10_20261001/review/analysis/papers_68_1041_1049.md",
+      "reading_boundary": "Donor before/after text is advisory; the reviewed manuscript may adapt it. Rule-family tags are retrieval aids, not new universal writing rules or proof authority."
+    },
+    {
+      "id": "short-20261001-r10-243-generalized-lessons-01",
+      "return_id": "short-20261001-r10-243",
+      "document": "GENERALIZED_LESSONS.json",
+      "document_sha256": "40c97cb99ddd58b2bb9db1c298ad593b6a1e11b96eae0ce50ef940dc3a74e6f9",
+      "index": 0,
+      "rule_families": [
+        "E03"
+      ],
+      "proposal": "Show the exact identity that transfers an estimate between two normalizations.",
+      "before": "For the second estimate, use $C_{n+1}/C_n=a_nx_{n+1}/x_n$ in the\nfirst. Quadratic growth makes $1/a_n=o(n^{-k})$ for every fixed $k$,\nso this error preserves the precision required in the cubic theorem.",
+      "after": "For the second estimate, the first gives $a_nx_n=1+O(1/a_n)$. Use this in\n\\[\n \\frac{C_{n+1}}{C_n}\n =\\frac{a_n^2}{a_{n+1}}\\,\n  \\frac{a_{n+1}x_{n+1}}{a_nx_n}.\n\\]\nThe last factor is $1+O(1/a_n)$, and $a_n^2/a_{n+1}\\to1$, giving the\nstated additive error. Quadratic growth makes $1/a_n=o(n^{-k})$ for every fixed $k$,\nso this error preserves the precision required in the cubic theorem.",
+      "limit": "The source models showing a normalization before estimating it. It does not prove the cubic theorem, and familiar one-step substitutions need not all receive displays.",
+      "original_proposal": {
+        "lesson": "Show the exact identity that transfers an estimate between two normalizations.",
+        "before": "For the second estimate, use $C_{n+1}/C_n=a_nx_{n+1}/x_n$ in the\nfirst. Quadratic growth makes $1/a_n=o(n^{-k})$ for every fixed $k$,\nso this error preserves the precision required in the cubic theorem.",
+        "after": "For the second estimate, the first gives $a_nx_n=1+O(1/a_n)$. Use this in\n\\[\n \\frac{C_{n+1}}{C_n}\n =\\frac{a_n^2}{a_{n+1}}\\,\n  \\frac{a_{n+1}x_{n+1}}{a_nx_n}.\n\\]\nThe last factor is $1+O(1/a_n)$, and $a_n^2/a_{n+1}\\to1$, giving the\nstated additive error. Quadratic growth makes $1/a_n=o(n^{-k})$ for every fixed $k$,\nso this error preserves the precision required in the cubic theorem.",
+        "reason": "Display the exact normalization at the transition from reciprocal tails to integer numerators. The bounded leading ratio converts the relative correction into the stated additive error; indices and the following index-shift qualification remain unchanged.",
+        "applicability": "short_math",
+        "counterexample_or_limit": "The source models showing a normalization before estimating it. It does not prove the cubic theorem, and familiar one-step substitutions need not all receive displays.",
+        "proposed_destination": "skills/formal-math-exposition/references/mathematical-writing-mechanics.md",
+        "confidence": "High for the stated local change; an instance of existing notation/dependency guidance, not a newly validated universal rule."
+      },
+      "editorial_disposition": "accepted_as_scoped_application_of_existing_rule",
+      "manuscript_disposition": "local_edit_reviewed_in_native_record",
+      "native_review": "state/formal_math/type_b_return_batches/short_refinement_r10_20261001/review/arithmetic_a/DECISIONS.md",
+      "reading_boundary": "Donor before/after text is advisory; the reviewed manuscript may adapt it. Rule-family tags are retrieval aids, not new universal writing rules or proof authority."
+    },
+    {
+      "id": "short-20261001-r10-249-generalized-lessons-02",
+      "return_id": "short-20261001-r10-249",
+      "document": "GENERALIZED_LESSONS.json",
+      "document_sha256": "288efe7f19d862a935c0677feeaaa3e604b4328e0506217b9cad36486ea2da09",
+      "index": 1,
+      "rule_families": [
+        "E07"
+      ],
+      "proposal": "A quantified eventual-detection theorem should say what a single failed finite test leaves undecided.",
+      "before": "at some depth; it does not produce such a difference for each $h$.\nFor example, $D_{1,12,16}=-143140$ has residue $53468$ modulo $2^{16}$,",
+      "after": "at some depth. A failed test at one depth proves no integrality:\nthe error interval may simply be too wide to separate the value from\n$\\Z$. Increasing the depth eventually detects each fixed nonintegral\ndifference, but does not produce such a difference for each $h$.\nFor example, $D_{1,12,16}=-143140$ has residue $53468$ modulo $2^{16}$,",
+      "limit": "A separate completeness or stopping theorem may justify deciding the opposite case; none is supplied here.",
+      "original_proposal": {
+        "lesson": "A quantified eventual-detection theorem should say what a single failed finite test leaves undecided.",
+        "before": "at some depth; it does not produce such a difference for each $h$.\nFor example, $D_{1,12,16}=-143140$ has residue $53468$ modulo $2^{16}$,",
+        "after": "at some depth. A failed test at one depth proves no integrality:\nthe error interval may simply be too wide to separate the value from\n$\\Z$. Increasing the depth eventually detects each fixed nonintegral\ndifference, but does not produce such a difference for each $h$.\nFor example, $D_{1,12,16}=-143140$ has residue $53468$ modulo $2^{16}$,",
+        "reason": "The exact equivalence uses existence of a depth, not failure at a prescribed depth.",
+        "applicability": "Finite certificates with a decaying error interval and a converse requiring a fixed positive separation.",
+        "counterexample_or_limit": "A separate completeness or stopping theorem may justify deciding the opposite case; none is supplied here.",
+        "proposed_destination": "public/docs/papers/exposition-method/rules.json::E05",
+        "confidence": "high for this fixed-distance argument; no empirical claim about comprehension"
+      },
+      "editorial_disposition": "accepted_as_scoped_application_of_existing_rule",
+      "manuscript_disposition": "local_edit_reviewed_in_native_record",
+      "native_review": "state/formal_math/type_b_return_batches/short_refinement_r10_20261001/review/arithmetic_a/DECISIONS.md",
+      "reading_boundary": "Donor before/after text is advisory; the reviewed manuscript may adapt it. Rule-family tags are retrieval aids, not new universal writing rules or proof authority."
+    },
+    {
+      "id": "short-20261001-r10-251-generalized-lessons-01",
+      "return_id": "short-20261001-r10-251",
+      "document": "GENERALIZED_LESSONS.json",
+      "document_sha256": "b192eab2e13b1e6abb53c287322d5fd9dff272d4b59aee0e85c5a2cd48c26ea7",
+      "index": 0,
+      "rule_families": [
+        "E03"
+      ],
+      "proposal": "Show the exact tail left after finite truncation before giving its majorant.",
+      "before": "The checked bound $p_n\\le1250(n+1)^4$ gives $0\\le g_m\\le p_{m+1}\\le1250(m+2)^4$,\nso the omitted absolute tail is at most\n",
+      "after": "Splitting the complete tails after $L$ terms gives\n\\[\n \\sigma_h(N)=F_{h,N,L}+2^{-L}\\sigma_h(N+L).\n\\]\nThe last term is the part not determined by the finite gap blocks.\nThe checked bound $p_n\\le1250(n+1)^4$ gives $0\\le g_m\\le p_{m+1}\\le1250(m+2)^4$,\nso its absolute value is at most\n",
+      "limit": "Do not add a displayed identity merely to expand routine algebra, and do not use exposition to supply missing convergence.",
+      "original_proposal": {
+        "lesson": "Show the exact tail left after finite truncation before giving its majorant.",
+        "before": "The checked bound $p_n\\le1250(n+1)^4$ gives $0\\le g_m\\le p_{m+1}\\le1250(m+2)^4$,\nso the omitted absolute tail is at most\n",
+        "after": "Splitting the complete tails after $L$ terms gives\n\\[\n \\sigma_h(N)=F_{h,N,L}+2^{-L}\\sigma_h(N+L).\n\\]\nThe last term is the part not determined by the finite gap blocks.\nThe checked bound $p_n\\le1250(n+1)^4$ gives $0\\le g_m\\le p_{m+1}\\le1250(m+2)^4$,\nso its absolute value is at most\n",
+        "reason": "The bound now has an identified object; the reader sees that finite blocks leave an entire later tail, not an unweighted next coefficient.",
+        "applicability": "Already justified finite/infinite decompositions in series criteria.",
+        "counterexample_or_limit": "Do not add a displayed identity merely to expand routine algebra, and do not use exposition to supply missing convergence.",
+        "proposed_destination": "public/docs/papers/exposition-method/lessons.json — additional bounded #251 example under existing estimate/dependency guidance (E03), not a new universal rule.",
+        "confidence": "High for this local clarification; no independent reader test."
+      },
+      "editorial_disposition": "accepted_as_scoped_application_of_existing_rule",
+      "manuscript_disposition": "local_edit_reviewed_in_native_record",
+      "native_review": "state/formal_math/type_b_return_batches/short_refinement_r10_20261001/review/arithmetic_a/DECISIONS.md",
+      "reading_boundary": "Donor before/after text is advisory; the reviewed manuscript may adapt it. Rule-family tags are retrieval aids, not new universal writing rules or proof authority."
+    },
+    {
+      "id": "short-20261001-r10-257-generalized-lessons-01",
+      "return_id": "short-20261001-r10-257",
+      "document": "GENERALIZED_LESSONS.json",
+      "document_sha256": "e9cc9bd6bd764fc55ca68aaf6f5ecaeddf133196cdd33c8be180a898b80e3129",
+      "index": 0,
+      "rule_families": [
+        "E03",
+        "E05"
+      ],
+      "proposal": "When two criteria are combined by a common witness, state explicitly what is being combined: the estimates, not merely their separate conclusions.",
+      "before": "The introduction stated the mixed irrationality conclusion after the two individual criteria.",
+      "after": "The revision says that separate irrational subseries could still have a rational sum and that the small-displacement estimates are what combine on one finite distribution.",
+      "limit": "Do not add this explanation when the conclusion is a purely formal closure property and no common witness is required.",
+      "original_proposal": {
+        "lesson": "When two criteria are combined by a common witness, state explicitly what is being combined: the estimates, not merely their separate conclusions.",
+        "before": "The introduction stated the mixed irrationality conclusion after the two individual criteria.",
+        "after": "The revision says that separate irrational subseries could still have a rational sum and that the small-displacement estimates are what combine on one finite distribution.",
+        "reason": "This identifies the logical content of the union theorem before the proof begins.",
+        "applicability": "Combination theorems whose conclusion needs simultaneous control of two nonnegative quantities at one index.",
+        "counterexample_or_limit": "Do not add this explanation when the conclusion is a purely formal closure property and no common witness is required.",
+        "proposed_destination": "public/docs/papers/exposition-method/lessons.json",
+        "confidence": "high"
+      },
+      "editorial_disposition": "accepted_as_scoped_application_of_existing_rule",
+      "manuscript_disposition": "local_edit_reviewed_in_native_record",
+      "native_review": "state/formal_math/type_b_return_batches/short_refinement_r10_20261001/review/arithmetic_b/DECISIONS.md",
+      "reading_boundary": "Donor before/after text is advisory; the reviewed manuscript may adapt it. Rule-family tags are retrieval aids, not new universal writing rules or proof authority."
+    },
+    {
+      "id": "short-20261001-r10-269-generalized-lessons-03",
+      "return_id": "short-20261001-r10-269",
+      "document": "GENERALIZED_LESSONS.json",
+      "document_sha256": "2cd628c6b0380b354d446d922e1c0745086d00a5a9cc44981e0b0e478cb5817c",
+      "index": 2,
+      "rule_families": [
+        "E03"
+      ],
+      "proposal": "Derive a shift weight from one summand before introducing the whole shifted series.",
+      "before": "Set $\\alpha=S/2$ and retain the boundary running LCMs $P_a$. We combine\nshifted tails after subtracting their finite rational corrections. Since\nthe denominators change under a shift, the resulting identity has weights\nas well as shifted numerators. It concerns the repeated sum $S$ only.\nIn this subsection and the next, $r$ is a positive integer shift; the\nprime-generator notation is no longer in use.",
+      "after": "Set $\\alpha=S/2$ and retain the boundary running LCMs $P_a$. To combine\nshifted tails, we first express them with the same denominators. After\nmultiplication by $P_t$, the term with index $a+t$ becomes\n\\[\n \\frac{P_t m_{a+t}}{P_{a+t+1}}\n =\\frac{P_tP_{a+1}}{P_{a+t+1}}\\,\n   \\frac{m_{a+t}}{P_{a+1}}.\n\\]\nThe first factor on the right is the weight $\\gamma_{a,t}$ below. It is\nforced by the change of denominator, rather than chosen to produce\ncancellation. The removed finite prefix supplies the rational correction.\nThe identity concerns the repeated sum $S$ only. In this subsection and\nthe next, $r$ is a positive integer shift; the prime-generator notation is\nno longer in use.",
+      "limit": "A routine weight with no likely ambiguity need not be preceded by another worked line.",
+      "original_proposal": {
+        "lesson": "Derive a shift weight from one summand before introducing the whole shifted series.",
+        "before": "Set $\\alpha=S/2$ and retain the boundary running LCMs $P_a$. We combine\nshifted tails after subtracting their finite rational corrections. Since\nthe denominators change under a shift, the resulting identity has weights\nas well as shifted numerators. It concerns the repeated sum $S$ only.\nIn this subsection and the next, $r$ is a positive integer shift; the\nprime-generator notation is no longer in use.",
+        "after": "Set $\\alpha=S/2$ and retain the boundary running LCMs $P_a$. To combine\nshifted tails, we first express them with the same denominators. After\nmultiplication by $P_t$, the term with index $a+t$ becomes\n\\[\n \\frac{P_t m_{a+t}}{P_{a+t+1}}\n =\\frac{P_tP_{a+1}}{P_{a+t+1}}\\,\n   \\frac{m_{a+t}}{P_{a+1}}.\n\\]\nThe first factor on the right is the weight $\\gamma_{a,t}$ below. It is\nforced by the change of denominator, rather than chosen to produce\ncancellation. The removed finite prefix supplies the rational correction.\nThe identity concerns the repeated sum $S$ only. In this subsection and\nthe next, $r$ is a positive integer shift; the prime-generator notation is\nno longer in use.",
+        "reason": "The reader can identify gamma as the cost of changing the denominator, without mistaking it for a newly chosen cancellation device.",
+        "applicability": "This local exposition pattern; candidate instantiation of existing guidance, not a new universal rule.",
+        "counterexample_or_limit": "A routine weight with no likely ambiguity need not be preceded by another worked line.",
+        "proposed_destination": "public/docs/papers/exposition-method/rules.json#E02",
+        "confidence": "Moderate editorial judgment; mathematical scope preserved and finite checks run, but no independent reader test."
+      },
+      "editorial_disposition": "accepted_as_scoped_application_of_existing_rule",
+      "manuscript_disposition": "local_edit_reviewed_in_native_record",
+      "native_review": "state/formal_math/type_b_return_batches/short_refinement_r10_20261001/review/arithmetic_b/DECISIONS.md",
+      "reading_boundary": "Donor before/after text is advisory; the reviewed manuscript may adapt it. Rule-family tags are retrieval aids, not new universal writing rules or proof authority."
+    },
+    {
+      "id": "short-20261001-r10-1041-generalized-lessons-02",
+      "return_id": "short-20261001-r10-1041",
+      "document": "GENERALIZED_LESSONS.json",
+      "document_sha256": "e7505e923ff907427e364ec0799ebdaf5ee44504b0794895d12930e3a6a7bfb6",
+      "index": 1,
+      "rule_families": [
+        "E03",
+        "E05"
+      ],
+      "proposal": "For a path obtained by substitution, display the particular path and check containment separately from length.",
+      "before": "of two segments.",
+      "after": "of two segments. The companion selects a nonzero root $r$ of $P$ for\nwhich $[0,r]\\subset\\{|P|<1\\}$. Writing $f(z)=P((z-h)^q)$ and $y^q=r$,\nwe have $f(h+ty\\zeta)=P(t^qr)$ for $0\\le t\\le1$ and every $q$th root\nof unity $\\zeta$. Thus one quotient segment gives $q$ contained\nsegments through $h$. Averaging $|h+y\\zeta|^2$ over the full fibre gives\n$|h|^2+|y|^2<1$, so two distinct fibre points are joined with length\n$2|y|<2$.",
+      "limit": "The radial identity uses t^q and a nonzero fibre. This is not a rule that a power substitution preserves the length of arbitrary curves.",
+      "original_proposal": {
+        "lesson": "For a path obtained by substitution, display the particular path and check containment separately from length.",
+        "before": "of two segments.",
+        "after": "of two segments. The companion selects a nonzero root $r$ of $P$ for\nwhich $[0,r]\\subset\\{|P|<1\\}$. Writing $f(z)=P((z-h)^q)$ and $y^q=r$,\nwe have $f(h+ty\\zeta)=P(t^qr)$ for $0\\le t\\le1$ and every $q$th root\nof unity $\\zeta$. Thus one quotient segment gives $q$ contained\nsegments through $h$. Averaging $|h+y\\zeta|^2$ over the full fibre gives\n$|h|^2+|y|^2<1$, so two distinct fibre points are joined with length\n$2|y|<2$.",
+        "reason": "The source proof selects a nonzero quotient root, lifts a radial segment by t to t^q, and uses the full-fibre square-modulus average. The added explanation shows why one quotient root supplies two endpoints without asserting a metric bound for arbitrary lifted curves.",
+        "applicability": "short_math; when the same source-supported dependency or misleading inference occurs",
+        "counterexample_or_limit": "The radial identity uses t^q and a nonzero fibre. This is not a rule that a power substitution preserves the length of arbitrary curves.",
+        "proposed_destination": "skills/formal-math-exposition/references/mathematical-writing-mechanics.md",
+        "confidence": "Moderate: one source-checked editorial case; not independently reader-tested or adopted as a general rule."
+      },
+      "editorial_disposition": "accepted_as_scoped_application_of_existing_rule",
+      "manuscript_disposition": "local_edit_reviewed_in_native_record",
+      "native_review": "state/formal_math/type_b_return_batches/short_refinement_r10_20261001/review/analysis/papers_68_1041_1049.md",
+      "reading_boundary": "Donor before/after text is advisory; the reviewed manuscript may adapt it. Rule-family tags are retrieval aids, not new universal writing rules or proof authority."
+    },
+    {
+      "id": "short-20261001-r10-1049-generalized-lessons-03",
+      "return_id": "short-20261001-r10-1049",
+      "document": "GENERALIZED_LESSONS.json",
+      "document_sha256": "13ddcd551527c650efc318fdfdb1e9b40d9f6dd3ce853c6dbc69bbc2fff503b3",
+      "index": 2,
+      "rule_families": [
+        "E03"
+      ],
+      "proposal": "In a counting argument for a small nonzero value, expose the width, number of cells, and exact-value multiplicity separately.",
+      "before": "Indeed, in each residue class divide the range of remainders into\nhalf-open intervals of width $D/n$, starting at its least value.\nIf each interval contained only one remainder value, it would contain\nat most $k$ subsets, contrary to \\eqref{eq:quantitative-selector-budget}.",
+      "after": "Indeed, in each residue class divide the range of remainders into\nhalf-open intervals of width $D/n$, starting at its least value.\nAt most $\\lfloor nT/D\\rfloor+1$ intervals are needed, including a\nlast interval when the greatest value is an endpoint. If each interval\ncontained only one remainder value, it would contain at most $k$\nsubsets, contrary to \\eqref{eq:quantitative-selector-budget}.\nThus some interval contains two different remainder values;\nthe half-open convention makes their separation strictly less than $D/n$.",
+      "limit": "The bounds on width and multiplicity must be supplied for the actual family; finite counting by itself does not construct useful approximants.",
+      "original_proposal": {
+        "lesson": "In a counting argument for a small nonzero value, expose the width, number of cells, and exact-value multiplicity separately.",
+        "before": "Indeed, in each residue class divide the range of remainders into\nhalf-open intervals of width $D/n$, starting at its least value.\nIf each interval contained only one remainder value, it would contain\nat most $k$ subsets, contrary to \\eqref{eq:quantitative-selector-budget}.",
+        "after": "Indeed, in each residue class divide the range of remainders into\nhalf-open intervals of width $D/n$, starting at its least value.\nAt most $\\lfloor nT/D\\rfloor+1$ intervals are needed, including a\nlast interval when the greatest value is an endpoint. If each interval\ncontained only one remainder value, it would contain at most $k$\nsubsets, contrary to \\eqref{eq:quantitative-selector-budget}.\nThus some interval contains two different remainder values;\nthe half-open convention makes their separation strictly less than $D/n$.",
+        "reason": "A collision of subsets need not give different values. The multiplicity hypothesis supplies nonvanishing, while the half-open cells supply strict smallness.",
+        "applicability": "Finite pigeonhole arguments where the output must be nonzero as well as close.",
+        "counterexample_or_limit": "The bounds on width and multiplicity must be supplied for the actual family; finite counting by itself does not construct useful approximants.",
+        "proposed_destination": "skills/formal-math-exposition/references/mathematical-writing-mechanics.md",
+        "confidence": "high for this proof; no automatic generalisation to infinite or unbounded fibres"
+      },
+      "editorial_disposition": "accepted_as_scoped_application_of_existing_rule",
+      "manuscript_disposition": "local_edit_reviewed_in_native_record",
+      "native_review": "state/formal_math/type_b_return_batches/short_refinement_r10_20261001/review/analysis/papers_68_1041_1049.md",
+      "reading_boundary": "Donor before/after text is advisory; the reviewed manuscript may adapt it. Rule-family tags are retrieval aids, not new universal writing rules or proof authority."
+    },
+    {
+      "id": "operator-20261001-paper-readability",
+      "source_class": "authored_operator_feedback",
+      "rule_families": [
+        "E03",
+        "E06",
+        "E07"
+      ],
+      "proposal": "Give a self-contained mathematical argument; state a shared limitation once, and collect detailed verification provenance in a compact Verification and reproducibility section or appendix.",
+      "editorial_disposition": "accepted_as_scoped_manuscript_practice",
+      "application_boundary": "Retain local hypotheses, conditional conclusions, theorem qualifiers, proof reach, statement identifiers, and precise source attribution. Verification records remain accessible in a consolidated section.",
+      "native_review": "state/formal_math/type_b_return_batches/short_refinement_r10_20261001/review/analysis/full_corpus_feedback_audit.md"
     }
   ],
   "integrating_reviews": [
@@ -11455,6 +11699,26 @@
       "scope": "Selective Type A integration of the later real #257 correction; five generalized lessons and seven style rules remain individually scoped.",
       "record_path": "B/review/257/ASSIMILATION.json",
       "donor_generalized_lessons_sha256": "c18cca2a533ee3685a40bdedba55cf7f0a76226f373f07f4b0a28f17d59da472"
+    },
+    {
+      "id": "native-r10-eight-problem-returns",
+      "return_ids": [
+        "short-20261001-r10-68",
+        "short-20261001-r10-243",
+        "short-20261001-r10-249",
+        "short-20261001-r10-251",
+        "short-20261001-r10-257",
+        "short-20261001-r10-269",
+        "short-20261001-r10-1041",
+        "short-20261001-r10-1049"
+      ],
+      "scope": "Eight original advisory exposition returns; one selected, locally reviewed application from each, with other dispositions in the native batch review records.",
+      "record_paths": [
+        "state/formal_math/type_b_return_batches/short_refinement_r10_20261001/review/analysis/papers_68_1041_1049.md",
+        "state/formal_math/type_b_return_batches/short_refinement_r10_20261001/review/arithmetic_a/DECISIONS.md",
+        "state/formal_math/type_b_return_batches/short_refinement_r10_20261001/review/arithmetic_b/DECISIONS.md"
+      ],
+      "claim_boundary": "No statement change or new proof status inferred from donor packets."
     }
   ]
 }

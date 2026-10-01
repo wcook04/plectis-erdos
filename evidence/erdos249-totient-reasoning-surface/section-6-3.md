@@ -4,7 +4,7 @@ Part of the [evidence record](../erdos249-totient-reasoning-surface.md) of the p
 
 <a id="prop-b3"></a>
 
-## Proposition 6.72 (One diagonal parameter suffices), page 49
+## Proposition 6.72 (One diagonal parameter suffices), page 48
 
 > *The following condition is equivalent to irrationality:
 > ``` math
@@ -37,7 +37,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="prop-b7-60c3ed"></a>
 
-## Proposition 6.73 (A sufficient condition on the LCM grid), page 49
+## Proposition 6.73 (A sufficient condition on the LCM grid), page 48
 
 > *``` math
 > \big(\forall t_0,\ \exists t\ge t_0,\ \exists q\,m\,L,\ 0<q \wedge \mathcal{C}(m\cdot{H}\,t)(q\cdot{H}\,t)\ L\big)
@@ -79,7 +79,7 @@ theorem irrational_totient_series_of_lcm_cone_window_kill_supply
 
 <a id="prop-b10"></a>
 
-## Proposition 6.74 (A finite-grid certificate condition), page 49
+## Proposition 6.74 (A finite-grid certificate condition), page 48
 
 > *Let $`H,L\in\mathbb N`$ and let $`Q\subseteq\mathbb N_{>0}`$ be finite and nonempty. Define $`A_q=\sum_{j=1}^{L}\varphi(qH+j)2^{L-j}`$ and $`B_q=qH+L+2`$. If $`B_q<2^L`$ for every $`q\in Q`$ and
 > ``` math
@@ -359,7 +359,7 @@ theorem fiveQuarter_comparison_rational_with_carryRank_floor :
 
 <a id="prop-b12cons"></a>
 
-## Proposition 6.77 (Soundness of the finite carry test), page 50
+## Proposition 6.77 (Soundness of the finite carry test), page 49
 
 > *For fixed $`h,N,K\in\mathbb N`$, use the integer recurrences $`c_{h,N,z}`$ defined above. Test each of the $`2(N+h+1)+1`$ candidates $`z\in\mathbb Z`$ with $`|z|\le N+h+1`$. If every candidate has some $`i\le K`$ for which
 > ``` math
@@ -408,7 +408,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="prop-ar-04-inv"></a>
 
-## Proposition 6.78 (The exact totient difference on an LCM progression), page 50
+## Proposition 6.78 (The exact totient difference on an LCM progression), page 49
 
 > *Put $`H=H(t)`$. For every $`j\ge0`$, the arithmetic expression in the piecewise form given below equals $`\delta_t(j)=\varphi(2H+j)-\varphi(H+j)`$. For a divisor $`j\mid H`$, this assertion contains a useful product formula, not merely a change of notation. Set
 > ``` math
@@ -555,7 +555,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="prop-ar-05-inv"></a>
 
-## Proposition 6.80 (Positivity of the short-window differences), page 51
+## Proposition 6.80 (Positivity of the short-window differences), page 50
 
 > *For $`a\ge8`$ and $`1\le j<2\cdot2^a`$,
 > ``` math
@@ -586,7 +586,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="prop-ar-06-inv"></a>
 
-## Proposition 6.81 (The accumulated sum is the discrepancy), page 51
+## Proposition 6.81 (The accumulated sum is the discrepancy), page 50
 
 > *For all $`t,L\in\mathbb N`$, the weighted diagonal sum is exactly
 > ``` math
@@ -636,7 +636,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="prop-sep-01-inv"></a>
 
-## Proposition 6.82 (A global-to-local identity), page 51
+## Proposition 6.82 (A global-to-local identity), page 50
 
 > *``` math
 > \Omega_a \;=\; 2^H(2^H-1)\Big(\textstyle\sum_n' \varphi(n)/2^n\Big) - \big(\Phi_{2H}-\Phi_H\big),\quad H={H}(2^a).
@@ -750,7 +750,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="prop-sgn-03"></a>
 
-## Proposition 6.85 (The residue forced by integrality), page 52
+## Proposition 6.85 (The residue forced by integrality), page 51
 
 > *Let $`a,J,K\in\mathbb N`$, $`a\ge8`$, $`H=H(2^a)`$, and assume
 > ``` math
@@ -806,7 +806,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="prop-te-02-inv"></a>
 
-## Proposition 6.86 (The penultimate term of a partial divisibility pattern), page 52
+## Proposition 6.86 (The penultimate term of a partial divisibility pattern), page 51
 
 > *Let $`a,J,K,m\in\mathbb N`$, $`a\ge8`$, $`H=H_{2^a}`$ and $`B=2H+J+K+2`$. Suppose that
 > ``` math
@@ -983,7 +983,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="prop-cp-01-inv"></a>
 
-## Proposition 6.89 (Carry displacement and tail integrality), page 53
+## Proposition 6.89 (Carry displacement and tail integrality), page 52
 
 > *For a positive integer $`v`$ and an integral totient carry $`u`$ with $`u(N)/2^N\to0`$,
 > ``` math
@@ -1025,7 +1025,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="prop-cp-02"></a>
 
-## Proposition 6.90 (A consequence of rationality and its limitation), page 53
+## Proposition 6.90 (A consequence of rationality and its limitation), page 52
 
 > *If $`S\in\mathbb Q`$, there are a positive integer $`v`$ and an integer carry sequence $`u`$, with $`u(N)/2^N\to0`$, whose retained sections through every level $`e`$ have rational rank at least $`2^e-1`$. At the same time, those sections are uniformly eventually periodic modulo $`v`$. Periodicity after reduction modulo $`v`$ is a statement in a finite quotient; it is not a rank upper bound over $`\mathbb Q`$. Proposition 6.76 gives the lower bound, while the rational comparison sequence explains why a general rank upper bound cannot be deduced from these recurrence assumptions alone.*
 
@@ -1057,7 +1057,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="prop-cp-05-inv"></a>
 
-## Proposition 6.91 (A totient difference congruent to two modulo four), page 53
+## Proposition 6.91 (A totient difference congruent to two modulo four), page 52
 
 > *For every positive integer $`h`$ and every $`B\in\mathbb N`$, there is a prime $`p>B`$ such that
 > ``` math
@@ -1169,7 +1169,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="prop-mp-01-inv"></a>
 
-## Proposition 6.93 (A Möbius-inversion formula for the tail), page 54
+## Proposition 6.93 (A Möbius-inversion formula for the tail), page 53
 
 > *For $`N\in\mathbb N`$ and $`d\ge1`$, let $`r_d(N)=d-(N\bmod d)`$ and $`q_d(N)=\lfloor N/d\rfloor+1`$. Thus $`r_d(N)`$ is the distance to the next strictly larger multiple of $`d`$, so $`1\le r_d(N)\le d`$. Möbius inversion gives
 > ``` math
@@ -1326,7 +1326,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="prop-a9-inv"></a>
 
-## Proposition 6.96 (Rationality gives an eventual tail period), page 55
+## Proposition 6.96 (Rationality gives an eventual tail period), page 54
 
 > *Suppose $`S=a/(2^c v)`$ in lowest terms, where $`a\in\mathbb Z`$, $`c\ge0`$ and $`v\ge1`$ is odd. Take $`h=\varphi(v)`$, including $`h=1`$ when $`v=1`$. Euler’s theorem gives $`v\mid2^h-1`$, so
 > ``` math
@@ -1409,7 +1409,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="prop-b6-inv"></a>
 
-## Proposition 6.97 (Tail integrality on an LCM grid), page 55
+## Proposition 6.97 (Tail integrality on an LCM grid), page 54
 
 > *If $`S\in\mathbb Q`$, there is $`t_1\in\mathbb N`$ such that for all $`t\ge t_1`$, $`q\ge1`$ and $`m\ge0`$,
 > ``` math
@@ -1460,7 +1460,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="prop-d4-inv"></a>
 
-## Proposition 6.98 (Independence of the retained dyadic family), page 55
+## Proposition 6.98 (Independence of the retained dyadic family), page 54
 
 > *For every $`e\ge0`$, the auxiliary canonical dyadic family has $`2^e+1`$ indexed sections, and these sections are linearly independent over $`\mathbb Q`$. The CRT–Dirichlet argument is explained in Section 10.8. For $`e\ge1`$ the family is a basis for all sections through level $`e`$. At $`e=0`$ the auxiliary family still contains both $`\varphi(n)`$ and $`\varphi(2n)`$, so it is not the actual level-zero truncation, whose dimension is one. No rationality hypothesis on $`S`$ is used.*
 
@@ -1579,7 +1579,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="prop-c3-inv"></a>
 
-## Proposition 6.100 (The resulting denominator exclusion), page 56
+## Proposition 6.100 (The resulting denominator exclusion), page 55
 
 > *For every reduced fraction $`a/q`$, with $`a\in\mathbb Z`$ and $`q\ge1`$,
 > ``` math
@@ -1619,7 +1619,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="prop-d1d2-inv"></a>
 
-## Proposition 6.101 (Two general irrationality criteria), page 56
+## Proposition 6.101 (Two general irrationality criteria), page 55
 
 > *Let $`x\in\mathbb R`$. One sufficient condition is a sequence of reduced fractions $`u_j=a_j/q_j`$, $`q_j\ge1`$, with $`u_j\ne x`$ for all sufficiently large $`j`$ and
 > ``` math
@@ -1757,7 +1757,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="prop-d7-inv"></a>
 
-## Proposition 6.102 (Lambert identities involving $`S`$), page 56
+## Proposition 6.102 (Lambert identities involving $`S`$), page 55
 
 > *For $`L(f)=\sum_{n\ge1}f(n)/(2^n-1)`$, the identities are $`L(\mu)=1/2`$, $`L(\varphi)=2`$, $`L(1)=E`$ and $`L(\varphi*\mu)=S`$. The last identity rewrites the same unknown value; it does not deduce its irrationality from that of $`E`$. The value $`L(\mathrm{Id})=\sum_{m\ge1}\sigma(m)/2^m`$ is transcendental by Nesterenko \[nesterenko1996, Cor. 2, p. 1320\]. These examples show that Lambert-series form alone does not determine arithmetic status. The individual comparisons are in Proposition 6.43 and its table.*
 

@@ -269,7 +269,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="res-crt"></a>
 
-## Lemma 4.6 (consecutive multiples), page 9
+## Lemma 4.6 (consecutive multiples), page 10
 
 > *For pairwise coprime integers $`m_0,\ldots,m_{B-1}\ge2`$ and every lower bound, there is a larger $`t`$ such that $`m_i\mid t+i`$ for each $`i<B`$.*
 
@@ -299,7 +299,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="res-barrier"></a>
 
-## Theorem 4.7 (Chinese remainder theorem and first crossing), page 9
+## Theorem 4.7 (Chinese remainder theorem and first crossing), page 10
 
 > *Let $`u:\mathbb{N}\to\mathbb{N}`$ tend to infinity and let $`B\ge1`$ be an integer with $`u_{n+1}\le u_n+B`$ for every $`n`$. There is no sequence of pairwise coprime integers $`m_i\ge2`$ for which $`\gcd(m_i,u_t)=1`$ whenever $`i<t`$.*
 
