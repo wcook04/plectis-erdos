@@ -31,9 +31,9 @@
       "title": "Publishing Mathematical Results from a Lean Repository",
       "artifact_class": "repository_architecture_guide",
       "source_path": "paper/systems/claim-faithful-publication-systems-paper.tex",
-      "source_content_digest": "sha256:3d83804d8e0a97914e009f07656ab7c7d6cb460bcbda554b9063e68ef1b2b688",
+      "source_content_digest": "sha256:713c307c0d021d013309aed49679631a414ce71c8b5a602a51e67fafba971797",
       "rendered_path": "paper/systems/claim-faithful-publication-systems-paper.pdf",
-      "rendered_content_digest": "sha256:c7016cb1100c5f36c3ae6a23920ef6337de38cab814139173f2fb1be544770a5",
+      "rendered_content_digest": "sha256:df40cf12a3a281834a7cd9f681abcce0d3a84475a56eb64d168013b60d9db1e1",
       "authority_posture": "authored_repository_architecture_not_Lean_proof_authority",
       "claim_scope": "A first-principles architecture and access guide to the public Lean source, reviewed claim record, authored documents, generated views, release flow, CI jobs, and human trust boundary. It describes a working prototype rather than a validated multi-user service. A 23 September architecture return has an accepted local receipt with same-contributor reproduction, but independent outside first use remains unobserved. Using ani's explicit degree-seven polynomial, Lean here refutes the exact Formal Conjectures path-image-length statement by a one-dimensional Hausdorff-measure bound; correspondence with the 1958 wording lacks independent human review. The guide itself adds no mathematical result.",
       "architecture_ref": "docs/claims.json::machine_readable_paper.publication_assembly.publication_architecture.architecture_guides",
@@ -436,6 +436,44 @@
         "python3 scripts/build_reading_edition.py --check"
       ],
       "storage_path": "paper/synthesis/optimal-sparse-perturbations.pdf"
+    },
+    {
+      "id": "exposition_method_companion",
+      "title": "Writing Mathematics from the Literature and Reviewed Revisions",
+      "artifact_class": "exposition_method_companion",
+      "publication_role": "systems_guide",
+      "source_path": "paper/exposition/writing-mathematics-from-reviewed-revisions.tex",
+      "source_content_digest": "sha256:28dbfb994dab4e4dd415758ec391c3f8f48eafa54a5cc2b7e11130f81bd67af4",
+      "rendered_path": "paper/exposition/writing-mathematics-from-reviewed-revisions.pdf",
+      "rendered_content_digest": "sha256:b633665030fd0592224eeb9e761e42a8d9b1973755e57d277dc9872d03d57dc6",
+      "storage_path": "paper/exposition/writing-mathematics-from-reviewed-revisions.pdf",
+      "authority_posture": "authored_exposition_methodology_not_Lean_proof_authority_not_measured_reader_benefit",
+      "claim_scope": "A documented editorial practice grounded in primary prose and reviewed revisions, with retained examples, integrating decisions and reuse limits; no measured reader benefit or independent mathematical review is claimed.",
+      "architecture_ref": "docs/papers/exposition-method/README.md",
+      "entry_route_id": "understand_exposition_method",
+      "validation": [
+        "python3 scripts/check_publication_contract.py",
+        "python3 scripts/paper_build_manifest.py"
+      ]
+    },
+    {
+      "id": "exposition_compact_guide",
+      "title": "Writing a Good Mathematical Paper",
+      "artifact_class": "exposition_compact_guide",
+      "publication_role": "systems_guide",
+      "source_path": "paper/exposition/writing-a-good-mathematical-paper.tex",
+      "source_content_digest": "sha256:c6720e1c490324ba431748b49b569b4762f1cd66dbc1159188ca2d2afab9e3d6",
+      "rendered_path": "paper/exposition/writing-a-good-mathematical-paper.pdf",
+      "rendered_content_digest": "sha256:adab6091806c70f7e05367b79353c4971dcbbfaf7a4f9bba12b437966dbbd21f",
+      "storage_path": "paper/exposition/writing-a-good-mathematical-paper.pdf",
+      "authority_posture": "authored_compact_exposition_guide_not_Lean_proof_authority_not_independent_review",
+      "claim_scope": "A self-contained general guide for an AI writing a mathematical paper: study nearby primary prose, state precise claims, connect deductions, introduce notation, explain difficult steps, attribute sources and inspect the rendered text. The guide does not certify a mathematical result or claim measured writing benefit.",
+      "architecture_ref": "skills/public-mathematical-writing/SKILL.md",
+      "entry_route_id": "read_compact_mathematical_writing",
+      "validation": [
+        "python3 scripts/check_publication_contract.py",
+        "python3 scripts/paper_build_manifest.py"
+      ]
     }
   ],
   "entrypoints": [
@@ -561,6 +599,69 @@
         "artifact",
         "contribution_track",
         "evidence_class",
+        "reading_route"
+      ]
+    },
+    {
+      "id": "understand_exposition_method",
+      "title": "Read nearby mathematics and retain lessons from reviewed revisions",
+      "intent": "Understand how primary mathematical prose and specific reviewed revisions inform a bounded exposition practice without establishing mathematical truth, independent review or measured reader benefit.",
+      "discovery_terms": [
+        "mathematical exposition",
+        "nearby mathematical literature",
+        "reviewed revisions",
+        "editorial lessons",
+        "writing mathematics"
+      ],
+      "read": [
+        "paper/exposition/writing-mathematics-from-reviewed-revisions.tex",
+        "skills/public-mathematical-writing/SKILL.md",
+        "docs/papers/exposition-method/README.md",
+        "docs/papers/exposition-method/lessons.json"
+      ],
+      "query_steps": [
+        "python3 scripts/query_corpus.py --publication-artifact exposition_method_companion",
+        "python3 scripts/query_corpus.py --artifact writing-mathematics-from-reviewed-revisions.pdf"
+      ],
+      "authority_owners": [
+        "paper/exposition/writing-mathematics-from-reviewed-revisions.tex",
+        "skills/public-mathematical-writing/SKILL.md",
+        "docs/papers/exposition-method/lessons.json",
+        "docs/publication_contract.json"
+      ],
+      "adjacent_handle_classes": [
+        "publication_artifact_id",
+        "artifact",
+        "reading_route"
+      ]
+    },
+    {
+      "id": "read_compact_mathematical_writing",
+      "title": "Write a good mathematical paper",
+      "intent": "Read a compact general writing guide, then follow the worked companion and existing public skill for source-grounded mathematical exposition.",
+      "discovery_terms": [
+        "writing a good mathematical paper",
+        "compact mathematical writing guide",
+        "AI mathematical writing",
+        "short exposition guide"
+      ],
+      "read": [
+        "paper/exposition/writing-a-good-mathematical-paper.tex",
+        "skills/public-mathematical-writing/SKILL.md",
+        "docs/papers/exposition-method/README.md"
+      ],
+      "query_steps": [
+        "python3 scripts/query_corpus.py --publication-artifact exposition_compact_guide",
+        "python3 scripts/query_corpus.py --artifact writing-a-good-mathematical-paper.pdf"
+      ],
+      "authority_owners": [
+        "paper/exposition/writing-a-good-mathematical-paper.tex",
+        "skills/public-mathematical-writing/SKILL.md",
+        "docs/publication_contract.json"
+      ],
+      "adjacent_handle_classes": [
+        "publication_artifact_id",
+        "artifact",
         "reading_route"
       ]
     }

@@ -31,6 +31,10 @@ not just whether one relevant skill appears. Test natural modifiers and plural
 objects as well as the exact failed wording. Registry `task_intents` can require
 an action token and an object token without requiring adjacent words; keep both
 conditions so merely mentioning a paper does not select manuscript editing.
+For an ambiguous object such as a guide, an optional `qualifiers` token group
+can require its subject as well. All supplied groups must match; modifiers may
+separate their words. A guide being edited and a guide being applied to another
+project are different tasks.
 Check neighboring tasks that should retain their original lane. Keep purpose and scope separate: a problem or paper identifies the object,
 while research, method development or infrastructure work identifies the action.
 An existing mathematical proof offered for review belongs to the research-return
@@ -224,6 +228,26 @@ For skill installation, content identity must survive an edit that preserves
 file size and timestamp. Exercise the actual preview, check, refused collision
 and explicitly forced replacement; metadata equality is not content equality.
 Keep the repair compatible with the minimum supported Python version.
+Reject source and destination overlaps before preview or mutation. Inspect
+source aliases through parent links and link targets, and compare existing
+entry identities where different spellings can name the same directory.
+Treat an existing destination symlink as an entry to replace, so its target
+remains intact. Exercise safe aliases as well as refused overlaps.
+Treat an identical physical copy as current before traversing its contents.
+Report file and directory inspection failures without replacing the affected
+installation, even with force. Exercise every CLI mode and both looping and
+dangling links; a path-resolution exception must not escape as a traceback.
+Prepare a replacement before moving an installed skill. Exercise preparation,
+promotion and restoration failures, including symlinks, and keep a recoverable
+backup if restoration fails. A multi-file generated refresh must also restore
+its previous outputs when an ordinary write or promotion fails; validate inputs
+before preparing any output.
+
+For the writing papers, require every discovered manuscript include to appear
+in the version manifest's semantic review digest, including nested includes
+and compact-guide fragments. A current exporter receipt does not establish
+that the skill review covered every input. Only the canonical shared paper
+resources are exempt; an arbitrary `shared_input` label cannot exempt guidance.
 
 For publication growth, conservation means preserving each existing artifact's
 identity and download name while admitting newly registered papers. Test a

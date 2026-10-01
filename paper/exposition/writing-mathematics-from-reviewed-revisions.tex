@@ -1,0 +1,40 @@
+% SPDX-FileCopyrightText: 2026 Will Cook
+% SPDX-License-Identifier: CC-BY-4.0
+\documentclass[11pt]{article}
+\usepackage{paper-house-style}
+\usepackage{booktabs,tabularx,array,xurl}
+\usepackage[colorlinks=true,linkcolor=linkinternal,urlcolor=linkexternal,citecolor=linkinternal]{hyperref}
+\hypersetup{pdftitle={Writing Mathematics from the Literature and Reviewed Revisions},pdfauthor={Will Cook},pdflang={en-GB},bookmarksnumbered=true}
+\runninghead{Writing mathematics from reviewed revisions}
+\title{Writing Mathematics from the Literature\\and Reviewed Revisions}
+\subtitle{A method for reading, revising and retaining useful editorial lessons}
+\author{Will Cook}
+\date{30 September 2026}
+\emergencystretch=1.8em
+\newcommand{\caseid}[1]{\texttt{#1}}
+\newcommand{\corpus}{\url{https://github.com/wcook04/plectis-erdos}}
+\begin{document}
+\maketitle
+\paperprovenance
+\begin{abstract}
+A mathematical sentence can be easy to read and still conceal the step that
+justifies it. Nearby papers offer more useful models than a list of preferred
+words: they show how the field introduces hypotheses, names objects, connects
+deductions and allocates space to a proof's difficult transition. We describe a
+method for studying those choices and testing their use in another manuscript.
+The examples come from reviewed revisions of eight Erd\H{o}s-problem papers.
+They include an infinite construction whose remainder must vanish, an estimate
+whose required accuracy should be explained before it is proved, and proposed
+rules that became too strong when detached from their original case. Each lesson
+retains its source, the old and proposed passages, the integrating decision and
+a limit on reuse. The resulting guidance extends an existing public writing
+skill and can be included at an exact version in a later review packet. This is
+a documented editorial practice; it has not been evaluated as an intervention
+in reader understanding.
+\end{abstract}
+\input{exposition/parts/reading.tex}
+\input{exposition/parts/revisions.tex}
+\input{exposition/parts/review.tex}
+\input{exposition/parts/practice.tex}
+\input{exposition/parts/references.tex}
+\end{document}

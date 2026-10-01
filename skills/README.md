@@ -53,15 +53,15 @@ Return work from any clone, preserve attribution, reconcile it with current main
   Routed by: Build or validate Lean safely, Propagate a stable result or architecture change, Land a Lean proof of a paper statement in the papers and the Comparator queue
 - [propagate-research-consequences](propagate-research-consequences/SKILL.md): Audit whether result summaries represent the strongest supported mathematics in a public clone, or propagate a stable result through its downstream consumers while preserving exact evidence and open boundaries.
   Routed by: Audit strongest substantive result summaries, Read the corpus and decide what to develop, Run sustained discovery with corpus stewardship, Propagate a stable result or architecture change, Land a Lean proof of a paper statement in the papers and the Comparator queue, Write reader-facing mathematics, Package or assimilate research from a clone
-- [submit-pull-request](submit-pull-request/SKILL.md): Prepare, validate, commit, and, only when explicitly authorised, push and open a pull request that returns a mathematical, architecture, exposition, or clone-experience contribution to the public repository.
+- [submit-pull-request](submit-pull-request/SKILL.md): Prepare, validate, commit, and submit a mathematical, architecture, exposition, or clone-experience contribution as a pull request, following the contributor's task and standing instructions.
   Routed by: Package or assimilate research from a clone, Prepare a contribution or pull request
 
 ## Public communication
 
 Explain checked mathematics in reader-facing prose without outrunning the evidence.
 
-- [public-mathematical-writing](public-mathematical-writing/SKILL.md): Write or revise reader-facing mathematics in this public Lean repository without outrunning checked source, claim status, or the exact open boundary.
-  Routed by: Read the corpus and decide what to develop, Land a Lean proof of a paper statement in the papers and the Comparator queue, Write reader-facing mathematics
+- [public-mathematical-writing](public-mathematical-writing/SKILL.md): Write or revise mathematical papers using nearby literature and exact evidence, either in another repository or with the public Plectis source and claim records.
+  Routed by: Read the corpus and decide what to develop, Land a Lean proof of a paper statement in the papers and the Comparator queue, Write reader-facing mathematics, Use the writing guidance in your own project
 
 ## Infrastructure stewardship
 

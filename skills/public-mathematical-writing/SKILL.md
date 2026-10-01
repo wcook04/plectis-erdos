@@ -1,20 +1,95 @@
 ---
 name: public-mathematical-writing
-description: Write or revise reader-facing mathematics in this public Lean repository without outrunning checked source, claim status, or the exact open boundary.
+description: Write or revise mathematical papers using nearby literature and exact evidence, either in another repository or with the public Plectis source and claim records.
 ---
+
+<!-- SPDX-FileCopyrightText: 2026 Will Cook -->
+<!-- SPDX-License-Identifier: Apache-2.0 -->
 
 # Public mathematical writing
 
-Use this skill for `docs/READING_GUIDE.md`, the reader-facing parts of `README.md`,
-result and scope guides, paper full text, and manuscript prose. It travels with
-the public clone and depends only on files in this repository.
+Use this skill for mathematical manuscripts, result explanations and reader-facing
+repository documentation. First identify whether the target belongs to Plectis
+or another project. The general method below is self-contained; its further
+reading is optional. The Plectis workflow later in this file applies only to a
+Plectis checkout.
 
-Do not apply it to command references, generated JSON, schemas, or agent-only
-workbench instructions. Those files should stay exact and operational. The
-point is to give readers a real account of the mathematics before asking them
-to understand the repository machinery.
+## Use in another repository
 
-## Enter from the public evidence
+Follow the destination project's instructions and preserve unrelated work.
+Use its manuscript sources, proofs, evidence records, build tools and review
+process. No Plectis commands, claim schema or other installed skill is required.
+If the task concerns another discipline, use that discipline's evidence and
+writing conventions; this method was developed for mathematics.
+
+- **Settle meaning before prose.** Identify the intended reader, contribution,
+  exact statement and argument. Preserve domains, hypotheses, quantifiers,
+  implication directions, attribution and unresolved questions. Distinguish
+  an ordinary proof, formal proof, cited result, finite computation and
+  conjecture. Resolve a substantive disagreement before copyediting; a more
+  fluent sentence cannot settle it.
+- **Read nearby primary literature.** Select papers close in subject and genre.
+  Inspect complete local arguments, recording edition and passage. Study how
+  authors introduce objects, place hypotheses, connect deductions and explain
+  difficult steps. Use established terminology for the same object; write
+  original sentences rather than imitating a named voice. A source's expository
+  choice does not prove the corresponding step in your argument.
+- **Explain the dependence.** Give the question, principal result, reason for
+  interest and proof's main idea. Motivate a construction before using it.
+  Spend detail at the difficult inference and check limiting arguments and
+  parameter dependence. Use an example when it clarifies the mechanism, and
+  say where it stops representing the general claim. A README should explain
+  one real result or capability and offer a reliable first action before an
+  exhaustive inventory.
+- **Use notation and sentences purposefully.** Introduce a symbol when it
+  reduces repeated explanation. Replace private names with the actual object
+  or property, preserving necessary technical terms. Let sentence connections
+  express real reasons and dependencies. Retain a useful authorial voice;
+  remove slogans, vague actors and repetitive framing without manufacturing
+  certainty, personal history or a uniform sentence rhythm.
+- **Review the revision as a claim.** Compare the old and new meaning, including
+  compressed statements in titles, abstracts, captions and conclusions. Check
+  short and long versions in both directions. Retain the exact failed inference
+  and its witness when an unsuccessful approach is informative. Do not invent
+  a discovery history or promote a checked lemma into a checked whole proof.
+- **Keep decisions and limits.** Record each substantive change, its reason,
+  source locator and accepted, repaired, rejected or pending disposition in the
+  project's existing review record, or its normal change summary if none exists.
+  When a paper has an accompanying agent skill, review and update that skill
+  in the same change. Carry changed instructions, examples and limits into it;
+  record a reason when the instructions remain applicable without alteration.
+  A proposed general lesson needs its scope and an exception; an application
+  of an existing rule needs no new rule.
+  Distinguish a reviewer's assessment from observed reader feedback.
+- **Inspect the delivered result.** Run the project's relevant checks and
+  manuscript build. Read the rendered text from a cold start; check references,
+  links, formulas, captions and page layout. Report what was actually inspected
+  and any unavailable check. Successful compilation does not establish reader
+  understanding, mathematical novelty or independent review.
+
+Optional reading: [the compact guide](references/writing-guide.md) and
+[its worked companion](references/worked-companion.md) are bundled with this
+skill. Further sources include
+[Halmos](https://doi.org/10.5169/seals-43857),
+[Knuth, Larrabee and Roberts](https://cs.stanford.edu/~knuth/klr.html),
+[Tao](https://terrytao.wordpress.com/advice-on-writing-papers/) and
+[Gowers](https://gowers.wordpress.com/2007/10/19/my-favourite-pedagogical-principle-examples-first/).
+These inform writing decisions; they do not endorse this skill or verify a
+new argument. The instructions above remain usable without these links.
+The skill is [Apache-2.0 licensed](LICENSE); the bundled guides retain their
+CC-BY-4.0 licence and attribution.
+
+For work in another repository, finish with that project's validation and
+review record. The remaining workflow is specific to Plectis.
+
+## Work in Plectis
+
+Use this branch for the reader-facing parts of the Plectis README, result
+and scope guides, paper full text, and manuscript prose. It depends only on
+tracked files in this checkout. Command references, schemas and agent-only
+instructions remain exact operational documentation.
+
+### Enter from the public evidence
 
 ```sh
 python3 scripts/proof_cockpit.py --format card
@@ -28,7 +103,37 @@ handle. Lean source checked by the pinned Lean kernel is proof authority;
 route; papers and Markdown explain. No private checkout, memory, prompt packet,
 provider trace, or private artifact is an input to public prose.
 
-## Begin from the claim, not the draft
+### Read nearby mathematical prose before a substantial rewrite
+
+Start with [Writing a Good Mathematical Paper](../../paper/exposition/writing-a-good-mathematical-paper.pdf)
+for the compact, general instructions. Use the
+[long companion](../../paper/exposition/writing-mathematics-from-reviewed-revisions.pdf)
+and [literature and reviewed-revision guide](../../docs/papers/exposition-method/README.md)
+for worked cases, review history and a manuscript-scale or cross-paper pass. Choose a small set of human papers
+close in subfield and genre, then read the relevant original arguments, with
+exact version and passage locators. Inspect terminology, hypothesis and
+quantifier placement, the reasons expressed by sentence connections, notation
+on first use, proof pacing and local attribution. Write original prose using
+those conventions; do not copy sentences or imitate a named voice.
+
+For each proposed transfer, identify both the source's writing choice and the
+local mathematical fact that licenses the new sentence. A stylistic specimen
+does not prove the target argument. Keep established technical terms; replace
+private compounds by the actual object, bound or property when that reduces
+unnecessary decoding. Use subordinate clauses for dependencies and parallel
+syntax for parallel claims, without optimizing sentence counts or detector rates.
+
+Record the actual before/after passage, source locator, native decision and
+limit in the existing review record. The public [lesson ledger](../../docs/papers/exposition-method/lessons.json)
+preserves examples and corrections; its proposals are not universal commands.
+Keep supplied sources, donor-declared reading and your later inspection distinct.
+Adopt a new general rule only when the case warrants it; otherwise record an
+application of the existing rule. A frozen next packet must include the chosen
+version of this skill, both writing papers, its guidance and the primary originals it asks its reader
+to study. This updates repository practice, not model weights, and claims no
+measured reader benefit.
+
+### Begin from the claim, not the draft
 
 Before changing mathematical prose, read the exact current result from its
 owning Lean declaration, the matching entry in `docs/claims.json` when one
@@ -56,6 +161,10 @@ Compare the exact mathematical domains as well: a local complex-parameter
 chain rule does not itself formalise an integrated real-time trajectory or its
 endpoint behaviour. State separately the checked lemma and any ordinary
 argument that supplies the advertised conclusion.
+
+Logical scope and evidence are separate: a conditional implication can have
+an ordinary or formally checked proof. A finite verification supports an
+infinite claim only through a proved reduction that covers every case.
 
 An ordinary proof can establish a theorem before its full formalization exists.
 Check that argument on its own terms, including limiting steps, endpoints and
@@ -88,7 +197,7 @@ must quantify its order and say which parameters its indices may depend on.
 Keep essential guards inside the statement, even when the intended application
 automatically supplies them.
 
-## Write for the reader in front of you
+### Write for the reader in front of you
 
 A human front door should first answer four ordinary questions in prose: what
 problem is being studied, what has been established, why that result is worth
@@ -124,7 +233,7 @@ formulation. The short paper should sustain its principal argument; the long
 record should explain the additional mechanisms and retain technical material
 in a navigable order. Do not make both versions equal-weight inventories.
 
-## Short paper, long record, and synthesis
+### Short paper, long record, and synthesis
 
 Use this same skill for all three. A short paper sustains one principal argument:
 question, motivating example, strongest accurate result, key proof idea, hard
@@ -164,7 +273,7 @@ An expository contribution can clarify a known theorem. Judge it for its named
 audience; distinguish actual reader feedback from an agent's assessment of
 the prose. Fluency alone does not establish understanding.
 
-## Prose pass
+### Prose pass
 
 Use direct, understated English. Name the mathematician, contributor, program,
 or formal declaration that performs an action when the actor matters. Cut
@@ -178,7 +287,7 @@ than polishing every paragraph into the same cadence. Do not invent warmth,
 certainty, history, motivation, examples, sources, or a personal voice that
 the source does not contain.
 
-## Final check
+### Final check
 
 Compare every changed mathematical sentence with its declaration, claim row,
 computation, or cited source. Check the rendered Markdown links and compile a
@@ -201,7 +310,31 @@ authority wording intact. Measure the whole first-read bundle, then run
 `scripts/test_public_artifact_boundary.py`; a local readability check alone
 does not cover those contracts.
 
-## Propagate each settled correction
+### Keep the writing papers and this skill together
+
+When either writing-guide paper changes, review this skill in the same change.
+Update its instructions for each changed recommendation, example or limit.
+For a change that leaves the instructions applicable, record why. A fresh hash
+alone is not a review of meaning.
+
+Rebuild an edited paper and its full-text copy through the publication tools.
+Refresh the file hashes and edition in
+`docs/papers/exposition-method/version.json`, then record `paper_skill_review`:
+the current paper-input digest, this skill's hash, `updated` or
+`verified_unchanged`, and a substantive reason. Run:
+
+```sh
+python3 scripts/sync_writing_skill.py --write
+python3 scripts/sync_writing_skill.py --check
+```
+
+The synchronizer checks those bindings before copying the two guides into this
+skill's `references/` directory. The normal projection and release checks reject
+stale bindings or bundled text. Commit the papers, skill, review record and
+generated copies together. Keep installed copies current by reinstalling the
+whole skill folder; do not edit generated references directly.
+
+### Propagate each settled correction
 
 Run [propagate-research-consequences](../propagate-research-consequences/SKILL.md)
 as part of every substantive mathematical revision, even when no Lean file
@@ -241,7 +374,7 @@ validation and review coverage in the existing review or contribution record.
 Distinguish fully inspected proofs from sampled or unavailable material. Counts
 of papers, declarations or passing checks are not mathematical review coverage.
 
-## Validation and boundaries
+### Validation and boundaries
 
 Change source authorities before generated projections. Never hand-edit a
 generated orientation, index, full-text mirror, or coordinate projection. A

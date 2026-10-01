@@ -25,6 +25,7 @@ else to inspect the argument and continue from it.
 |---|---|---|
 | Understand the project without installing anything | [A reader's way in](READING_GUIDE.md) | The eight questions, what formalisation adds, and how to read the evidence. |
 | Read the mathematics | [The papers](../paper/README.md) | A short paper for each problem, then a longer record when you need the details. |
+| Apply the writing method to your own manuscript | [Writing guides](../paper/README.md#writing-guides) | A two-page instruction sheet, a worked companion and a reusable agent skill. |
 | Read the comparison across problems | [The cross-problem paper](../paper/synthesis/optimal-sparse-perturbations.pdf) | Capacity and congruences, Lambert subsums, method obstructions and their full research record. |
 | Find what has been established and what is missing | [Results and limits](RESULTS.md) | The results beside their remaining open questions, with routes to the evidence. |
 | See what is open and what would settle it | [The argument graph](ARGUMENT_GRAPH.md) | Every conditional theorem read out of the Lean kernel: what is proved, what reduces to what, which open statements are the same problem in other coordinates, and what a missing input would settle. |

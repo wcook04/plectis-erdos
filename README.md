@@ -74,6 +74,9 @@ Lean-checked statements, conditional results and finite computations.
   using Python alone after cloning. The guide separates these checks from
   compiling a proof. The experiment is a finite exclusion test; it does not
   reproduce the weighted theorem above.
+- **Write your own paper.** The [two-page guide](paper/exposition/writing-a-good-mathematical-paper.pdf)
+  and [reusable writing skill](#use-the-writing-method-in-your-own-project)
+  apply the method in your project. You can give the guide directly to an agent.
 - **Work with an agent.** The [agent quickstart](docs/agents/README.md#start-with-current-public-work)
   gives clone commands and a copyable prompt. Ask it to explain a result,
   investigate a question, or improve a tool; the public checkout contains the
@@ -84,20 +87,20 @@ Lean-checked statements, conditional results and finite computations.
 
 ## Why keep the whole research record?
 
-I want other people to be able to work on these questions with me.
-A checked proof still needs an explanation of why the argument works and how
+I want other people to work on these questions with me. A checked proof
+still needs an explanation of why the argument works and how
 someone might arrive at it. The longer records preserve calculations and
 routes that stopped at a precise obstruction, so another reader can question
 the approach, repair it or try the idea elsewhere.
 
 I am responsible for the claims, sources and release. AI assists research,
 formalisation and exposition; formal checking, readable prose and human
-understanding remain separate responsibilities. Novelty and significance need
-human judgement. The [system paper](paper/systems/claim-faithful-publication-systems-paper.pdf)
+understanding remain separate responsibilities. Novelty needs human judgement. The
+[system paper](paper/systems/claim-faithful-publication-systems-paper.pdf)
 explains how results, corrections and credited contributions move through the
-repository. The [design discussion](docs/ARCHITECTURE.md#why-preserve-explanations-and-failed-approaches)
-sets out the reasoning and its limits.
+repository.
 Independent mathematical review of the corpus has not been recorded.
+Do not infer results from private or unreleased work.
 
 ## Problem papers
 
@@ -120,8 +123,7 @@ The [cross-problem paper, Reading Eight Erdős Problems Together](paper/synthesi
 develops connections through factorial series, Lambert subsums and the limits
 of shared methods. Its main theorems are ordinary proofs; Lean checks specified
 ingredients. The [synthesis guide](paper/synthesis/README.md) identifies ways to
-continue that work. The [paper index](paper/README.md) also identifies the main
-systems paper and the earlier accounts retained for historical context.
+continue that work.
 
 <a id="what-the-checks-establish"></a>
 
@@ -139,10 +141,8 @@ lists the selected statements. The [verification dossier](docs/EXTERNAL_VERIFICA
 records selected statements across all eight problems and their replay requirements;
 it does not cover every argument in the papers.
 
-Researchers still judge whether the formal statement captures the intended
-mathematics, whether a result is new, and whether it is useful. A successful
-build or platform submission does not establish those judgements.
-[Methodology](docs/METHODOLOGY.md) explains the review required to change a claim.
+[Methodology](docs/METHODOLOGY.md) explains the review required to change a claim,
+including whether the formal statement captures the intended mathematics.
 
 ## Contribute
 
@@ -157,7 +157,7 @@ Lean. I can help formalise an argument while preserving its attribution.
 - **A question or correction:** use the
   [research-progress form](https://github.com/wcook04/plectis-erdos/issues/new?template=research_progress.yml)
   or [email me](https://wcook04.github.io/plectis/#contact).
-- **An investigation with your own agent:** the [frontier relay](docs/FRONTIER_RELAY.md)
+- **An investigation with your own agent:** the [research session guide](docs/FRONTIER_RELAY.md)
   explains how to return the argument, evidence, limits and next question.
 
 [CONTRIBUTING](CONTRIBUTING.md) explains what to send,
@@ -176,12 +176,10 @@ or an intermediate result helped, please cite the relevant work and say how.
 | [lean/](docs/SOURCE_MAP.md) | Formal proofs in the `Erdos249257` and `ErdosProblems` libraries. |
 | [docs/](docs/README.md) | Guides, claim records and source maps. |
 | [research/](research/README.md) | Experiments, examples and investigations. |
-| [research_corpus/](research_corpus/README.md) | Dated research returns and unresolved obligations. |
-| [computations/](computations/README.md) | Exact arithmetic certificates and scripts. |
-| [verification/](verification/README.md) | Selected formal interfaces, solutions and replay configuration. |
-| [evidence/](evidence/README.md) | Paper-to-proof records and stored Comparator reports. |
-| [scripts/](scripts/README.md) | Query tools, projection builders and validation programs. |
 | [skills/](skills/README.md) | Workflows for coding agents using this checkout. |
+
+The [complete map](docs/ARCHITECTURE.md#repository-map) also locates research
+returns, exact computations, verification files, evidence records and scripts.
 
 [REPRODUCIBILITY](docs/REPRODUCIBILITY.md) owns installation, commands and build
 requirements. The checkout is hundreds of megabytes; Lean builds download
@@ -225,6 +223,23 @@ topic, start with the [source map](docs/SOURCE_MAP.md); it gives the module
 order without asking you to decode Lean declaration names first.
 <!-- END generated_principal_declaration_anchors -->
 
+## Use the writing method in your own project
+
+[Writing a Good Mathematical Paper](paper/exposition/writing-a-good-mathematical-paper.pdf)
+is a two-page guide to give an agent with your manuscript and sources.
+Read nearby papers, use the field's terminology, explain difficult steps and
+preserve the exact statement while revising. No clone is needed.
+
+The [long companion](paper/exposition/writing-mathematics-from-reviewed-revisions.pdf)
+explains worked examples and reviewed revisions that inform later guidance. The
+[writing skill](skills/public-mathematical-writing/SKILL.md#use-in-another-repository)
+includes both guides and uses your project's sources and checks. Copy its folder or use the
+[optional installer](skills/install-clone-skills/SKILL.md#install-the-writing-skill-for-another-project).
+
+This practice comes from mathematics. For another field, start with its own
+literature. Reader benefits have not been measured; corrections and reports
+of unclear passages are [welcome contributions](CONTRIBUTING.md#choose-where-to-begin).
+
 <a id="citation-and-prior-work"></a>
 
 ## Formal Conjectures contributions
@@ -241,8 +256,6 @@ additional selected statement checks and their recorded outcomes.
 The [paper catalogue](docs/papers/README.md) links versioned aiXiv editions;
 the [verification guides](docs/verification/README.md) explain submission and
 registry records. An archived edition may differ from the current paper.
-This main checkout contains the mathematics and tools needed to work with the corpus.
-Do not infer results from private or unreleased work.
 
 ## Citation and licence
 

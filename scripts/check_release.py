@@ -264,6 +264,10 @@ def late_check_commands() -> dict[str, list[str]]:
             str(ROOT / "scripts" / "test_cold_clone_comprehension.py"),
         ],
         "github_release_contracts": [sys.executable, str(ROOT / "scripts" / "check_ci_release.py")],
+        "writing_skill_sync": [
+            sys.executable,
+            str(ROOT / "scripts" / "test_sync_writing_skill.py"),
+        ],
         "semantic_queries": [
             sys.executable,
             str(ROOT / "scripts" / "test_query_semantic_tiers.py"),

@@ -72,7 +72,7 @@ A declaration is a named Lean definition, theorem or lemma. The declaration inde
 </tr>
 </tbody>
 </table>
-<p>Across the corpus: 8 problems, 1,903 Lean modules and 22 registered papers. The claim registry contains 160 claims in eight statuses, with 19 open obligations.</p>
+<p>Across the corpus: 8 problems, 1,903 Lean modules and 24 registered papers. The claim registry contains 160 claims in eight statuses, with 19 open obligations.</p>
 </div>
 <figcaption>Contents of a problem collection and the four ways to inspect the recorded work. The counts refer to the whole corpus. Source locations, dependency edges, interpretations and claim statuses answer different questions.</figcaption>
 </figure>

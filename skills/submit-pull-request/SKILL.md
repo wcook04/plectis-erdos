@@ -1,15 +1,18 @@
 ---
 name: submit-pull-request
-description: Prepare, validate, commit, and, only when explicitly authorised, push and open a pull request that returns a mathematical, architecture, exposition, or clone-experience contribution to the public repository.
+description: Prepare, validate, commit, and submit a mathematical, architecture, exposition, or clone-experience contribution as a pull request, following the contributor's task and standing instructions.
 ---
 
 # Submit a pull request
 
 A pull request asks the upstream repository to pull a proposed branch from a
 contributor's fork. Use this skill when a contributor wants an agent to turn
-finished work into a reviewable return. Preparation is local. Pushing a branch
-and opening the pull request are external actions and require explicit
-authorisation at that point.
+finished work into a reviewable return. Use the contributor's request and
+standing instructions to determine the submission scope. A request to submit
+or publish authorises the ordinary branch push and pull-request creation;
+standing authorisation carries forward without another confirmation. Complete
+validation and submission when those steps sensibly finish the requested work.
+Respect an instruction to review, draft or prepare locally only.
 
 ## Establish the return boundary
 
@@ -171,13 +174,17 @@ changed and why, what another person can check, what remains open or uncertain,
 and who supplied each material contribution. Describe agent output as a
 candidate until the relevant review has occurred.
 
-## Stop before sending
+## Submit within the authorised scope
 
-Without explicit authorisation to publish, stop after the commits, validation
-receipt, proposed title, and draft body are ready. Tell the contributor which
-remote branch and upstream base would be used.
+After the commits, validation receipt, title and body are ready, proceed with
+submission under the contributor's existing authorisation. Do not ask again
+merely because a push or pull request is an external action. Escalate only for
+a concrete issue that cannot be resolved within the task: an unclear destination,
+private material whose disclosure is not authorised, an unrepairable validation
+failure, or a proposed destructive or materially broader action. Explain that
+specific issue and the decision needed; ordinary preparation and repair continue.
 
-After explicit authorisation, push the named branch to the contributor's fork:
+Push the named branch to the verified contribution remote:
 
 ```sh
 git push -u <fork-remote> <branch>

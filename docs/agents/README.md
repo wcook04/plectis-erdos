@@ -64,6 +64,7 @@ or with the mathematics itself. For learning, specify how much help you want.
 | Show me the open questions and help me choose one | The list from `python3 scripts/query_corpus.py --open`, one chosen row, and the checked results that bear on it |
 | Read the corpus and decide what is worth developing | A direction stated early with its reason, the sources it rests on, what was proved, computed or conjectured, the prior work found, and the next question. [One investigation](../../research/experiments/choices_contraction/README.md) shows the shape |
 | Explain how this repo works to a newcomer | A source-linked map and one relevant next action |
+| Revise a paper using nearby literature | A source-grounded revision preserving the claim and its limits, with reasons for substantive changes. [Writing method](../../paper/README.md#writing-guides) |
 | Independently reproduce the checked claim `eb_full_support` | Verifier output, checkout commit, assumptions and remaining open boundary |
 | Improve cold clone navigation | One reproduced failure, a focused repair and the corresponding regression check |
 | Package the work from my old checkout for maintainers | A contribution with the original starting commit and replay evidence |
@@ -85,6 +86,16 @@ not itself establish a new mathematical result.
 | Understand how statements and relationships are indexed | [Semantic compiler](SEMANTIC_COMPILER.md) | The query layer and the source records behind it. |
 | Change source, claims or public wording | [Agent guide](AGENT_GUIDE.md) | Authority, change order, validation and contribution rules. |
 | Offer research sessions through a community or hosted service | [Frontier distribution](FRONTIER_DISTRIBUTION.md) | Setup and distribution instructions. |
+
+## Use the writing skill in another project
+
+Give your agent the [two-page writing guide](../../paper/exposition/writing-a-good-mathematical-paper.pdf)
+with your manuscript and relevant primary sources, or copy the
+[writing skill folder](../../skills/public-mathematical-writing/SKILL.md).
+Its **Use in another repository** mode uses your project's evidence and checks.
+The [optional installer](../../skills/install-clone-skills/SKILL.md#install-the-writing-skill-for-another-project)
+previews and copies that one skill for your loader. Other Plectis workflows
+still require this checkout.
 
 ## Make and return a change
 

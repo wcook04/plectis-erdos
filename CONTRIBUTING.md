@@ -21,6 +21,14 @@ the #257 paper see why the first average needs a second one. Name the intended
 reader and the step you want to clarify. A worked example or a better-motivated
 construction can help without changing the theorem.
 
+**Improve the writing guidance.** The [short guide and worked companion](paper/README.md#writing-guides)
+are contributions you can question or extend too. Send a source correction,
+a before-and-after passage with the reason for the change, or a reader's report
+of a step they could not reconstruct. Name the paper edition and intended
+reader. If you adapt the guide or [writing skill](skills/public-mathematical-writing/SKILL.md)
+to another field, explain which of that field's sources informed the changes
+and where the advice stops applying.
+
 **Develop a reusable method.** Start from the [synthesis papers](paper/synthesis/README.md)
 or the [admissible-choice experiment](research/experiments/sparse_interpolation/README.md).
 A connection, obstruction, new question, construction or useful intermediate
@@ -228,9 +236,10 @@ clone-local [research-return skill](skills/erdos-research-return/SKILL.md), and
 the [consequence-propagation skill](skills/propagate-research-consequences/SKILL.md)
 after a stable result, and
 the [pull-request submission skill](skills/submit-pull-request/SKILL.md) when
-turning owned work into commits and a proposed GitHub return. That skill stops
-before pushing or opening the pull request unless the contributor explicitly
-authorises those external actions. Maintainers should preserve the
+turning owned work into commits and a proposed GitHub return. Follow the
+contributor's request and standing instructions through validation and submission;
+ask again only when a concrete issue requires a new decision. Respect requests
+limited to review, drafting or local preparation. Maintainers should preserve the
 contributor's prose rather than replacing it with machine field names.
 
 To open and package a bounded, attributable structured research session, use
