@@ -230,7 +230,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="prop-b2"></a>
 
-## Proposition 2.7 (Three particular equivalences), page 12
+## Proposition 2.7 (Three particular equivalences), page 11
 
 > 1.  **Certificate completeness.* The complete residue tests considered here are equivalent to the corresponding nonintegrality assertions. Rewriting the quantified condition using one of these equivalences does not weaken it.*
 >

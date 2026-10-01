@@ -189,7 +189,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="prop-d5cons"></a>
 
-## Proposition 6.76 (The lower bound and a false proposed upper bound), page 50
+## Proposition 6.76 (The lower bound and a false proposed upper bound), page 49
 
 > *By Prop. 6.98, the canonical dyadic totient-kernel family is unconditionally $`(2^e+1)`$-dimensional at every level $`e\ge1`$. Rationality of $`S`$ forces an associated carry orbit with $`\mathbb Q`$-rank $`\ge 2^e-1`$ at every level (Prop. 6.90). An upper bound independent of $`e`$ for these same carry ranks would contradict the lower bound. More generally, a bound $`g(e)`$ with $`g(e)<2^e-1`$ at some level $`e\ge1`$ would suffice, provided it applies to the actual carry under the hypothetical rationality of $`S`$. A bound that merely grows with $`e`$ need not contradict anything. The generic assertion for arbitrary rational coefficient series is false: the $`5/4`$ comparison sequence in Section 10.8 has an integer carry satisfying the growth condition and the same rank lower bound. The incompatible integer identity and the finite-shift counterexample (Observation 6.115) remain separate counterexample results. None gives a rank upper bound from rationality alone. The Lean proof covers the rank lower bound and counterexample results, not the counterfactual upper bound.*
 
@@ -523,7 +523,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="prop-ar-03-inv"></a>
 
-## Proposition 6.79 (A lower bound for the totient of a rough integer), page 51
+## Proposition 6.79 (A lower bound for the totient of a rough integer), page 50
 
 > *Let $`a\ge8`$, set $`t=2^a`$, and let $`n>0`$ be an integer all of whose prime factors exceed $`t`$. If $`n<2^{2t}`$, then $`n`$ has fewer than $`t/4`$ distinct prime factors and
 > ``` math
@@ -711,7 +711,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="prop-sgn-01"></a>
 
-## Proposition 6.84 (Unconditional positivity), page 52
+## Proposition 6.84 (Unconditional positivity), page 51
 
 > *For $`a\ge8`$, $`J+(a+6)<2\cdot2^a`$:
 > ``` math
@@ -919,7 +919,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="prop-fr-02-inv"></a>
 
-## Proposition 6.88 (The factor in a second difference), page 53
+## Proposition 6.88 (The factor in a second difference), page 52
 
 > *Let $`a\ge4`$ and $`j\ge1`$ be integers with $`j^2\le2^a`$, and put $`H_a=H(2^a)=\operatorname{lcm}(1,\ldots,2^a)`$. Then
 > ``` math
@@ -1088,7 +1088,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="prop-ta-inv"></a>
 
-## Proposition 6.92 (A prescribed residue after a long divisibility block), page 54
+## Proposition 6.92 (A prescribed residue after a long divisibility block), page 53
 
 > *Let $`K\ge2`$ and $`H>K`$ be integers. For every $`B\in\mathbb N`$ there is a prime $`p>\max(B,H+K)`$ such that
 > ``` math
@@ -1281,7 +1281,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="prop-a5-inv"></a>
 
-## Proposition 6.95 (The necessary depth), page 55
+## Proposition 6.95 (The necessary depth), page 54
 
 > *Every certificate $`\mathcal C(h,N,L)`$ satisfies
 > ``` math
@@ -1831,7 +1831,7 @@ def NesterenkoTranscendenceP : Prop :=
 
 <a id="prop-d9-inv"></a>
 
-## Proposition 6.103 (A general rational gap bound), page 57
+## Proposition 6.103 (A general rational gap bound), page 56
 
 > *If $`a/b<c/d`$ are reduced fractions with $`b,d>0`$, then
 > ``` math

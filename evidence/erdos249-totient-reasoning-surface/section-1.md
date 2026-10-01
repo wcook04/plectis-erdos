@@ -446,7 +446,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="prop-parity"></a>
 
-## Proposition 1.9 (A rational sequence preserving size bounds, parity and aperiodicity), page 7
+## Proposition 1.9 (A rational sequence preserving size bounds, parity and aperiodicity), page 6
 
 > *There is $`c : \mathbb{N}\to \mathbb{N}`$ with $`c(n) \le 6`$ and $`c(n) \le n`$ for all $`n`$, $`c(n) \equiv \varphi(n) \pmod 2`$ for *every* $`n`$, and $`c`$ not eventually periodic; indeed for every $`N, G, K`$ there are $`K`$ pairs of coefficients $`(6,0)`$ starting beyond $`N`$, with starting positions pairwise separated by more than $`G`$; and $`\sum_n c(n)/2^{n} = 3/2 \in \mathbb{Q}`$.*
 

@@ -681,7 +681,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="catalogue-cert-b5"></a>
 
-## Proposition 6.51 (Totient factorisation on an LCM progression), page 42
+## Proposition 6.51 (Totient factorisation on an LCM progression), page 41
 
 > *Let $`t\ge1`$, $`j\ge1`$ and $`q\ge0`$ be integers. Suppose $`j\mid H(t)`$ and every prime divisor of $`j`$ also divides $`H(t)/j`$. Then
 > ``` math
@@ -999,7 +999,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="catalogue-cert-b10b"></a>
 
-## Theorem 6.57 (A sufficient quantified finite-grid condition), page 44
+## Theorem 6.57 (A sufficient quantified finite-grid condition), page 43
 
 > *Suppose that for every $`t_0`$ there are $`t\ge t_0`$, a depth $`L`$, and a finite nonempty $`Q\subseteq\mathbb N_{>0}`$ such that, with $`H=H_t`$, all the hypotheses of Theorem 6.56 hold. Then $`S\notin\mathbb Q`$. Indeed, rationality would make all tail differences on every sufficiently large LCM grid integral, whereas the finite-grid theorem supplies a nonintegral pair on such a grid. The example above verifies one grid; it does not establish the quantified hypothesis.*
 
@@ -1299,7 +1299,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="prop-ni-01"></a>
 
-## Proposition 6.61 (An equivalent diagonal nonintegrality condition), page 46
+## Proposition 6.61 (An equivalent diagonal nonintegrality condition), page 45
 
 > *The following statements are equivalent:
 > ``` math
@@ -1536,7 +1536,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="prop-te-05"></a>
 
-## Proposition 6.65 (Relations among the sufficient conditions), page 47
+## Proposition 6.65 (Relations among the sufficient conditions), page 46
 
 > *The sufficient conditions do not form a single linear chain. The proved implications are
 > ``` math
@@ -1878,7 +1878,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="prop-a10"></a>
 
-## Proposition 6.71 (The full quantified condition), page 49
+## Proposition 6.71 (The full quantified condition), page 48
 
 > *``` math
 > \big(\forall h\ge 1,\ \forall N_0,\ \exists N\ge N_0,\ \exists L,\ \mathcal{C}\ h\ N\ L\big)

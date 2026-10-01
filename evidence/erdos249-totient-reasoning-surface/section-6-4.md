@@ -309,7 +309,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="prop-exact-rational-approximation-formula"></a>
 
-## Proposition 6.128 (An exact rational approximation formula), page 66
+## Proposition 6.128 (An exact rational approximation formula), page 65
 
 > *For integers $`H,D\ge0`$, with the integer prefixes $`\Phi_N`$ defined above,
 > ``` math
@@ -441,7 +441,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="prop-sum-over-divisor-indices"></a>
 
-## Proposition 6.131 (The sum over divisor indices), page 67
+## Proposition 6.131 (The sum over divisor indices), page 66
 
 > *For integers $`H>0`$ and $`s\ge0`$, the part of the Möbius expansion indexed by divisors of $`H`$ is
 > ``` math
@@ -676,7 +676,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="thm-positive-coefficients-numerator-polynomial"></a>
 
-## Theorem 6.136 (Positive coefficients of the numerator polynomial), page 68
+## Theorem 6.136 (Positive coefficients of the numerator polynomial), page 67
 
 > *For a squarefree integer $`r\ge1`$, the numerator polynomial has the explicit expression
 > ``` math
@@ -870,7 +870,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="prop-squared-distance-phase-one"></a>
 
-## Proposition 6.140 (Squared distance from the phase one), page 69
+## Proposition 6.140 (Squared distance from the phase one), page 68
 
 > *``` math
 > \begin{aligned}
@@ -901,7 +901,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="lem-squared-distance-bound-separated-pairs"></a>
 
-## Lemma 6.141 (Squared-distance bound for separated pairs), page 69
+## Lemma 6.141 (Squared-distance bound for separated pairs), page 68
 
 > *For a finite family $`z:T\to\mathbb{C}`$, a real number $`\delta\ge0`$, and any set of pairs $`P\subseteq
 > T\times T`$ each separated by $`\ge\delta`$, $`|P|\cdot\delta^2 \le
@@ -994,7 +994,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="prop-separation-larger-than-error-implies"></a>
 
-## Proposition 6.143 (Separation larger than the error implies exclusion), page 70
+## Proposition 6.143 (Separation larger than the error implies exclusion), page 69
 
 > *Suppose
 > ``` math
@@ -1053,7 +1053,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="thm-coprime-pair-counting-totient"></a>
 
-## Theorem 6.144 (Coprime-pair counting and the totient), page 71
+## Theorem 6.144 (Coprime-pair counting and the totient), page 70
 
 > *For every $`n\in\mathbb N`$, $`\#\{(a,b)\in\mathbb N^2:a+b=n,\ a>0,\ \gcd(a,b)=1\}=\varphi(n)`$. Here $`b=0`$ is allowed: the boundary pair $`(1,0)`$ accounts for the value $`\varphi(1)=1`$.*
 
@@ -1090,7 +1090,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="prop-two-lattice-sums"></a>
 
-## Proposition 6.145 (Two lattice sums), page 71
+## Proposition 6.145 (Two lattice sums), page 70
 
 > *For $`0\le r<1`$, the two choices of boundary give
 > ``` math
@@ -1258,7 +1258,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="thm-nondivisors-short-lcm-window"></a>
 
-## Theorem 6.149 (Nondivisors in a short LCM window), page 72
+## Theorem 6.149 (Nondivisors in a short LCM window), page 71
 
 > *Let $`t\ge1`$. If $`1\le j<2t`$ and $`j\nmid H_t`$, then $`j=p^a>t`$ for a prime $`p`$ and an integer $`a\ge1`$. Every integer $`1\le j\le t`$ divides $`H_t`$. To see the first claim, some prime-power divisor $`p^a`$ of $`j`$ exceeds $`t`$; otherwise every prime-power divisor would divide $`H_t`$. Since $`j<2t<2p^a`$, its remaining cofactor is $`1`$.*
 >
@@ -1352,7 +1352,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="thm-prime-satisfying-stated-cyclotomic-conditions"></a>
 
-## Theorem 6.152 (A prime satisfying the stated cyclotomic conditions), page 73
+## Theorem 6.152 (A prime satisfying the stated cyclotomic conditions), page 72
 
 > *For every period $`h>0`$ and threshold $`N_0`$, there exist a prime $`q`$ and a prime factor $`p`$ of $`|\Phi_{hq}(2)|`$ (the binary cyclotomic layer) with $`p`$ coprime to $`hq`$, $`hq\mid p-1`$, and $`p-1\ge N_0`$. The characteristic-prime exceptional case in the cyclotomic order decomposition is eliminated directly, by choosing $`q>2^h`$ (rules out $`p=q`$) and $`q>h`$ (rules out $`p\mid h`$).*
 
@@ -1538,7 +1538,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="thm-uniform-positive-gap-rank-one"></a>
 
-## Theorem 6.156 (A uniform positive gap for rank-one quotients), page 74
+## Theorem 6.156 (A uniform positive gap for rank-one quotients), page 73
 
 > *For integers $`r\ge2`$ and $`Y\ge1`$, write
 > ``` math

@@ -88,7 +88,7 @@ theorem not_irrational_totientSeries_implies_unbounded_carryRank_unconditional
 
 <a id="catalogue-cert-d4"></a>
 
-## Theorem 6.3 (Independence of the retained dyadic sections), page 29
+## Theorem 6.3 (Independence of the retained dyadic sections), page 28
 
 > *For every integer $`e\ge0`$, the family
 > ``` math
@@ -229,7 +229,7 @@ theorem cyclotomicValue_dvd_baseMobiusShadow_den
 
 <a id="catalogue-mob-b6"></a>
 
-## Proposition 6.6 (Primes in the upper half remain after cancellation), page 30
+## Proposition 6.6 (Primes in the upper half remain after cancellation), page 29
 
 > *For $`t\ge5`$ the whole product
 > ``` math
@@ -492,7 +492,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="catalogue-cert-a11"></a>
 
-## Proposition 6.10 (Small certificates), page 31
+## Proposition 6.10 (Small certificates), page 30
 
 > *For each integer $`1\le h\le8`$, the finite test $`\mathcal C(h,12,16)`$ holds. Each discrepancy uses two 16-term windows. Across all eight shifts, only the 24 distinct totient values at $`13\le n\le36`$ are needed, since the windows overlap. The source verifies the eight integer residue inequalities by exact computation.*
 >
@@ -1421,7 +1421,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="catalogue-mob-a8"></a>
 
-## Proposition 6.34 (The sum over coprime directions), page 36
+## Proposition 6.34 (The sum over coprime directions), page 35
 
 > *The sum over positive coprime pairs satisfies
 > ``` math
