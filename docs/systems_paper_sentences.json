@@ -133,10 +133,10 @@
       "id": "credit-registry",
       "path": "docs/research-commons/source-attributions.json",
       "start_line": 1,
-      "end_line": 36178,
+      "end_line": 36203,
       "kind": "supplied_snapshot",
-      "sha256": "189141cc9aa2122a6f1fb1599d278abaa55694c860fdbe92a9f09f7ae2c9a4d5",
-      "excerpt_sha256": "189141cc9aa2122a6f1fb1599d278abaa55694c860fdbe92a9f09f7ae2c9a4d5"
+      "sha256": "dcd471bdca2db88ea0578b97c6161a291193be14f8271ca38845ed413972eba9",
+      "excerpt_sha256": "dcd471bdca2db88ea0578b97c6161a291193be14f8271ca38845ed413972eba9"
     },
     {
       "id": "essay-pages",

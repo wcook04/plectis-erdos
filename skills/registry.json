@@ -222,7 +222,7 @@
       "commands": [
         "python3 research/experiments/choices_contraction/rational_membership_probe.py --target 189/388 --depth 16 17 --horizon 160 --json"
       ],
-      "boundary": "An exact finite exclusion rules out the selected rational; finite survival is not membership, and this probe does not check the weighted irrationality theorem or settle universal Erdős #257."
+      "boundary": "An exact finite exclusion rules out the selected rational; finite survival is not membership, and this probe does not check the weighted irrationality theorem or settle universal Erd\u0151s #257."
     },
     {
       "id": "comparator_replay",
@@ -230,7 +230,12 @@
       "task_cues": [
         "external verification replay",
         "external replay",
-        "external verification"
+        "external verification",
+        "independent comparator replay",
+        "comparator replay independently",
+        "replay independently with comparator",
+        "replay with comparator independently",
+        "independent comparator review"
       ],
       "task_intents": [
         {
@@ -257,7 +262,7 @@
         "python3 scripts/replay_external_verification.py plan --unit weighted-support --source-commit <40-hex-commit> --source-tree <40-hex-tree>",
         "python3 scripts/replay_external_verification.py run --unit weighted-support --source-commit <40-hex-commit> --source-tree <40-hex-tree> --output weighted-support-replay-receipt.json"
       ],
-      "boundary": "Use an immutable public commit and tree on Linux with systemd. A passing Comparator receipt checks the selected statement, axiom budget and kernel acceptance; it does not solve universal Erdős #257 or establish novelty."
+      "boundary": "Use an immutable public commit and tree on Linux with systemd. A passing Comparator receipt checks the selected statement, axiom budget and kernel acceptance; it does not solve universal Erd\u0151s #257 or establish novelty."
     },
     {
       "id": "reproduce_claim",
@@ -500,7 +505,20 @@
       "commands": [
         "python3 scripts/query_corpus.py --ask \"<question>\""
       ],
-      "boundary": "Read source-current problem and claim status from the indexed public authorities; query results route to evidence but do not create proof or claim authority."
+      "boundary": "Read source-current problem and claim status from the indexed public authorities; query results route to evidence but do not create proof or claim authority.",
+      "task_intents": [
+        {
+          "actions": [
+            "inspect",
+            "explain",
+            "query"
+          ],
+          "objects": [
+            "claim",
+            "claims"
+          ]
+        }
+      ]
     },
     {
       "id": "result_summary_audit",
@@ -981,7 +999,7 @@
       "task_cues": [
         "add problem",
         "new problem",
-        "another erdős problem",
+        "another erd\u0151s problem",
         "register problem",
         "register its paper",
         "expand problem roster",
@@ -1260,7 +1278,14 @@
         "documentation correction",
         "check a documentation change",
         "check this documentation patch",
-        "validate a documentation change"
+        "validate a documentation change",
+        "github inspection",
+        "repository readiness",
+        "contributor readiness",
+        "release before publishing this repository",
+        "releases before publishing this repository",
+        "repository release checks",
+        "repository release validation"
       ],
       "task_intents": [
         {
@@ -1331,6 +1356,63 @@
           "objects": [
             "security",
             "governance"
+          ]
+        },
+        {
+          "actions": [
+            "make",
+            "improve",
+            "fix",
+            "repair",
+            "link"
+          ],
+          "objects": [
+            "navigation",
+            "readme",
+            "links",
+            "routes",
+            "entry",
+            "documentation",
+            "architecture"
+          ]
+        },
+        {
+          "actions": [
+            "review"
+          ],
+          "objects": [
+            "architecture"
+          ]
+        },
+        {
+          "actions": [
+            "audit",
+            "inspect",
+            "inspection"
+          ],
+          "objects": [
+            "readme",
+            "license",
+            "licence",
+            "licensing",
+            "contributing",
+            "contribution",
+            "contributions"
+          ]
+        },
+        {
+          "actions": [
+            "update",
+            "refresh",
+            "correct",
+            "fix",
+            "repair",
+            "maintain"
+          ],
+          "objects": [
+            "citation",
+            "citations",
+            "cff"
           ]
         }
       ],
