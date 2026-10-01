@@ -5,6 +5,14 @@ description: Preview, install, or verify the public Plectis skills in Codex, Cla
 
 # Install clone skills
 
+Before following references or running repository commands below, locate the
+intended Plectis public checkout and read its `AGENTS.md`. If this skill was
+opened from an installed skills directory, open
+`<checkout>/skills/install-clone-skills/SKILL.md` in that checkout first.
+Follow relative references from that clone-local file and run repository
+commands from the checkout root. If the intended checkout is unavailable,
+report that prerequisite before continuing.
+
 Use this skill when somebody wants the workflows in this clone to remain
 available outside the repository. Installation is optional. An agent working
 inside the clone can read `AGENTS.md` and `skills/*/SKILL.md` directly.

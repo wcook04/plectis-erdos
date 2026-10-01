@@ -5,6 +5,14 @@ description: Dogfood, organize, consolidate, and repair the public clone's agent
 
 # Maintain the public infrastructure
 
+Before following references or running repository commands below, locate the
+intended Plectis public checkout and read its `AGENTS.md`. If this skill was
+opened from an installed skills directory, open
+`<checkout>/skills/maintain-public-infrastructure/SKILL.md` in that checkout first.
+Follow relative references from that clone-local file and run repository
+commands from the checkout root. If the intended checkout is unavailable,
+report that prerequisite before continuing.
+
 Use this skill when a clean clone is confusing, a routed workflow is stale or
 duplicated, an advertised command only works in an authoring environment, or a
 new capability has not reached entry, validation, contribution, and downstream

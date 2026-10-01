@@ -5,6 +5,14 @@ description: Prepare, validate, assimilate, or update a provenance-preserving pu
 
 # Erdős research return
 
+Before following references or running repository commands below, locate the
+intended Plectis public checkout and read its `AGENTS.md`. If this skill was
+opened from an installed skills directory, open
+`<checkout>/skills/erdos-research-return/SKILL.md` in that checkout first.
+Follow relative references from that clone-local file and run repository
+commands from the checkout root. If the intended checkout is unavailable,
+report that prerequisite before continuing.
+
 Use this skill when work from a public clone should come back as a replayable
 contribution with durable artifact credit. Work only from tracked files in this
 repository; do not require a private checkout, private ledger, agent memory, or

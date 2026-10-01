@@ -5,6 +5,14 @@ description: Prepare, validate, commit, and, only when explicitly authorised, pu
 
 # Submit a pull request
 
+Before following references or running repository commands below, locate the
+intended Plectis public checkout and read its `AGENTS.md`. If this skill was
+opened from an installed skills directory, open
+`<checkout>/skills/submit-pull-request/SKILL.md` in that checkout first.
+Follow relative references from that clone-local file and run repository
+commands from the checkout root. If the intended checkout is unavailable,
+report that prerequisite before continuing.
+
 A pull request asks the upstream repository to pull a proposed branch from a
 contributor's fork. Use this skill when a contributor wants an agent to turn
 finished work into a reviewable return. Preparation is local. Pushing a branch

@@ -5,6 +5,14 @@ description: Use whenever Lean proves or restates a result that a short paper or
 
 # Land a Lean proof in the papers and the Comparator queue
 
+Before following references or running repository commands below, locate the
+intended Plectis public checkout and read its `AGENTS.md`. If this skill was
+opened from an installed skills directory, open
+`<checkout>/skills/land-lean-proofs/SKILL.md` in that checkout first.
+Follow relative references from that clone-local file and run repository
+commands from the checkout root. If the intended checkout is unavailable,
+report that prerequisite before continuing.
+
 A kernel-checked proof of a paper statement has landed when three things
 hold: every paper that states the result links the declaration, the result's
 row in `docs/paper_lean_coverage.json` records it, and the row waits in the

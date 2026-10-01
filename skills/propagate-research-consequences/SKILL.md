@@ -5,6 +5,14 @@ description: Audit whether result summaries represent the strongest supported ma
 
 # Propagate research consequences
 
+Before following references or running repository commands below, locate the
+intended Plectis public checkout and read its `AGENTS.md`. If this skill was
+opened from an installed skills directory, open
+`<checkout>/skills/propagate-research-consequences/SKILL.md` in that checkout first.
+Follow relative references from that clone-local file and run repository
+commands from the checkout root. If the intended checkout is unavailable,
+report that prerequisite before continuing.
+
 Use this skill to audit existing result summaries, or after a theorem,
 counterexample, no-go, corrected statement, computation, exposition change,
 or architecture repair has produced a stable local delta. It connects
