@@ -2708,6 +2708,88 @@ def check_pinned_source_link_layouts() -> None:
                 assert query_corpus.formal_source_url(claims, path, 1) is None
 
 
+def validate_principal_paper_query_metadata() -> None:
+    """The principal paper results stay reachable without promoting proof status."""
+    expected = {
+        "paper/68/erdos-68-factorial-denominator-irrationality.tex": (
+            "Integer Linear Forms for a Factorial Reciprocal Series",
+            {"res:divisor-channel-coordinates",
+             "res:finite-channel-moment-certificate"},
+            "irrationality remains open",
+        ),
+        "paper/269/erdos-269-three-prime-running-lcm.tex": (
+            "Distinct running least common multiples",
+            {"res:distinct-height-235"},
+            "distinct-height {2,3,5} theorem",
+        ),
+        "paper/1049/erdos-1049-rational-base-lambert.tex": (
+            "Hankel Determinants of Geometric Moments and Rational Lambert Values",
+            {"cor:rational-base-measure", "res:sharp-fixed-base"},
+            "irrationality at 3/2 remains open",
+        ),
+        "paper/249/erdos-249-binary-totient-series.tex": (
+            "Integral Relations among Totient Sections",
+            {"thm:kkernelrank", "cor:integral-normal-form"},
+            "original unreduced totient-series irrationality remains open",
+        ),
+        "paper/243/erdos-243-reciprocal-tail-rigidity.tex": (
+            "Cubic-Rate Irrationality and Reciprocal-Tail Rigidity",
+            {"res:originalbounded", "res:bounded", "res:cubicrate"},
+            "unrestricted problem remains open",
+        ),
+        "paper/251/erdos-251-prime-gap-dyadic-series.tex": (
+            "Sparse Congruence-Preserving Perturbations of Dyadic Series",
+            {"res:sparserationalisation", "res:jointcountermodel"},
+            "positions are not asserted to be prime",
+        ),
+        "paper/1041/erdos-1041-lemniscate-newton-flow.tex": (
+            "Paths in Polynomial Lemniscates: A Degree-Seven Counterexample and Radial Connections",
+            {"res:ani-degree-seven-counterexample", "res:trinomial-all-degree",
+             "res:low-critical-thirteen-twentyfifths"},
+            "historical correspondence awaits human review",
+        ),
+    }
+    for source, (title, labels, boundary) in expected.items():
+        packet = query("--paper-source", source)
+        assert packet["paper"]["title"] == title
+        assert boundary in packet["paper"]["role"]
+        assert labels <= {anchor["label"] for anchor in packet["anchors"]}
+        for label in labels:
+            anchor = query("--paper-label", label)
+            assert anchor["authority_posture"] == "navigation_projection_not_proof_authority"
+            assert anchor["paper"]["source"] == source
+            lines = (ROOT / source).read_text(encoding="utf-8").splitlines()
+            line = anchor["paper"]["line"]
+            assert f"\\label{{{label}}}" in "\n".join(lines[line - 1:line + 2])
+    # The revised papers deliberately move some registered results to long
+    # records; obsolete short labels must not be restored by a branch merge.
+    long_routes = {
+        "long68:res:bandbreakpoint": "paper/68/erdos68-factorial-reasoning-surface.tex",
+        "long269:res:distinct-height-all": "paper/269/erdos269-running-lcm-reasoning-surface.tex",
+        "long269:res:single-prime-subsums": "paper/269/erdos269-running-lcm-reasoning-surface.tex",
+    }
+    for label, source in long_routes.items():
+        packet = query("--paper-label", label)
+        assert packet["paper"]["source"] == source
+        assert packet["authority_posture"] == "navigation_projection_not_proof_authority"
+        lines = (ROOT / source).read_text(encoding="utf-8").splitlines()
+        line = packet["paper"]["line"]
+        assert f"\\label{{{label}}}" in "\n".join(lines[line - 1:line + 2])
+    for programme, obsolete in {
+        68: {"res:carry-characterization", "res:bandbreakpoint"},
+        269: {"res:distinct-height-all", "res:distinct-height-triples", "res:single-prime-subsums"},
+        1049: {"res:nocorridor", "res:tailrec", "res:forcing"},
+    }.items():
+        source = next(source for source in expected if source.startswith(f"paper/{programme}/"))
+        assert not obsolete.intersection(anchor["label"] for anchor in query("--paper-source", source)["anchors"])
+    # These query anchors expose authored results. They do not create registry
+    # claims or turn the ordinary analytic criterion into a Lean-checked theorem.
+    assert query("--paper-label", "res:low-critical-thirteen-twentyfifths")["attached_claims"] == []
+    assert query("--claim", "erdos_243")["claim"]["status"] == "open"
+    assert query("--claim", "erdos_251")["claim"]["status"] == "open"
+    assert query("--claim", "erdos_1041")["claim"]["status"] == "formal statement refuted"
+
+
 def validate_registered_claim_paper_routes() -> None:
     source = "paper/68/erdos68-factorial-reasoning-surface.tex"
     qualified = "Erdos68.factorialMoment_eq_factorial_pow_mul_channelNumerator_band"
@@ -2916,6 +2998,7 @@ def validate_release_word_link_coordinates() -> None:
 
 
 def main() -> int:
+    validate_principal_paper_query_metadata()
     check_pinned_coordinate_fixtures()
     validate_release_word_link_coordinates()
     validate_current_source_identities()
