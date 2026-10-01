@@ -6,37 +6,37 @@
     {
       "id": "257-example",
       "path": "paper/257/erdos-257-mersenne-support-subseries.tex",
-      "start_line": 269,
-      "end_line": 300,
+      "start_line": 271,
+      "end_line": 302,
       "kind": "source",
-      "sha256": "69d394b5af4878100d9ae1bebdebfa8059dd9ab0124100f443906ecdb47c38ae",
-      "excerpt_sha256": "a1db825f85046a0439c67a883e73b4320a9b5a0f5accf3735917ec75c437804a"
+      "sha256": "49dde5b195930bca30b6de1b56dff407a0e70559b8495cd33fa46d74822279dc",
+      "excerpt_sha256": "670a9de7ffd16c1ba2caccf5afc6bebe99ec3e1e81ee4336dc47769c8e6f4605"
     },
     {
       "id": "257-proof",
       "path": "paper/257/erdos-257-mersenne-support-subseries.tex",
-      "start_line": 123,
-      "end_line": 267,
+      "start_line": 121,
+      "end_line": 269,
       "kind": "source",
-      "sha256": "69d394b5af4878100d9ae1bebdebfa8059dd9ab0124100f443906ecdb47c38ae",
-      "excerpt_sha256": "c0389bc913937ef9f02a12a94674aa4988e9c21531cfd3d21675e327786a6473"
+      "sha256": "49dde5b195930bca30b6de1b56dff407a0e70559b8495cd33fa46d74822279dc",
+      "excerpt_sha256": "71de54a61ece9a2464875ee0b75a97d9bbce84946530ec1847080d3657b0c920"
     },
     {
       "id": "257-reciprocal",
       "path": "paper/257/erdos-257-mersenne-support-subseries.tex",
-      "start_line": 872,
-      "end_line": 899,
+      "start_line": 899,
+      "end_line": 926,
       "kind": "source",
-      "sha256": "69d394b5af4878100d9ae1bebdebfa8059dd9ab0124100f443906ecdb47c38ae",
+      "sha256": "49dde5b195930bca30b6de1b56dff407a0e70559b8495cd33fa46d74822279dc",
       "excerpt_sha256": "07b08dc8e23653a1bea2c48b087571857616d9e98726c98f080aee58c20cd6cf"
     },
     {
       "id": "257-statement",
       "path": "paper/257/erdos-257-mersenne-support-subseries.tex",
-      "start_line": 70,
-      "end_line": 86,
+      "start_line": 69,
+      "end_line": 85,
       "kind": "source",
-      "sha256": "69d394b5af4878100d9ae1bebdebfa8059dd9ab0124100f443906ecdb47c38ae",
+      "sha256": "49dde5b195930bca30b6de1b56dff407a0e70559b8495cd33fa46d74822279dc",
       "excerpt_sha256": "76093fcff9c86ff532b2182837e7c4e191e9806f477c420bc2602d706c643e17"
     },
     {
@@ -61,9 +61,9 @@
       "id": "corpus",
       "path": "docs/papers/corpus.json",
       "start_line": 1,
-      "end_line": 8837,
-      "sha256": "788d6b05c22e7a061253a5d093434141f4739524519552daa65be94310cf3a81",
-      "excerpt_sha256": "788d6b05c22e7a061253a5d093434141f4739524519552daa65be94310cf3a81",
+      "end_line": 9194,
+      "sha256": "bb9bed498bc44fbf3645a4b849ab157ffbf77f8d5ebeca2b86656df4e7f5e7e1",
+      "excerpt_sha256": "bb9bed498bc44fbf3645a4b849ab157ffbf77f8d5ebeca2b86656df4e7f5e7e1",
       "kind": "source"
     },
     {
@@ -71,8 +71,8 @@
       "path": "docs/systems_paper_counts.json",
       "start_line": 1,
       "end_line": 65,
-      "sha256": "91a9b165c293710953572f33a0460a9e50c5f5d18e7be1e218f37919bd6585cd",
-      "excerpt_sha256": "91a9b165c293710953572f33a0460a9e50c5f5d18e7be1e218f37919bd6585cd",
+      "sha256": "354db2225fafa72107491799df757dea3b7bdfb4071ad941d8705934da61b8c1",
+      "excerpt_sha256": "354db2225fafa72107491799df757dea3b7bdfb4071ad941d8705934da61b8c1",
       "kind": "source"
     },
     {
@@ -89,8 +89,8 @@
       "path": "docs/paper_lean_coverage.json",
       "start_line": 1,
       "end_line": 29162,
-      "sha256": "d7a419e492825ee10021578f6af586760f3c9df8a41cc2ffb81b94dea22a5ce0",
-      "excerpt_sha256": "d7a419e492825ee10021578f6af586760f3c9df8a41cc2ffb81b94dea22a5ce0",
+      "sha256": "18d2717c30eb3fc49dc6467ba197978a65534b39bb574260ce1314a7738c7e0e",
+      "excerpt_sha256": "18d2717c30eb3fc49dc6467ba197978a65534b39bb574260ce1314a7738c7e0e",
       "kind": "source"
     },
     {
@@ -99,8 +99,8 @@
       "start_line": 1,
       "end_line": 29162,
       "kind": "supplied_snapshot",
-      "sha256": "d7a419e492825ee10021578f6af586760f3c9df8a41cc2ffb81b94dea22a5ce0",
-      "excerpt_sha256": "d7a419e492825ee10021578f6af586760f3c9df8a41cc2ffb81b94dea22a5ce0"
+      "sha256": "18d2717c30eb3fc49dc6467ba197978a65534b39bb574260ce1314a7738c7e0e",
+      "excerpt_sha256": "18d2717c30eb3fc49dc6467ba197978a65534b39bb574260ce1314a7738c7e0e"
     },
     {
       "id": "coverage-reciprocal",
@@ -108,8 +108,8 @@
       "start_line": 1,
       "end_line": 29162,
       "kind": "supplied_snapshot",
-      "sha256": "d7a419e492825ee10021578f6af586760f3c9df8a41cc2ffb81b94dea22a5ce0",
-      "excerpt_sha256": "d7a419e492825ee10021578f6af586760f3c9df8a41cc2ffb81b94dea22a5ce0"
+      "sha256": "18d2717c30eb3fc49dc6467ba197978a65534b39bb574260ce1314a7738c7e0e",
+      "excerpt_sha256": "18d2717c30eb3fc49dc6467ba197978a65534b39bb574260ce1314a7738c7e0e"
     },
     {
       "id": "coverage-weighted",
@@ -117,8 +117,8 @@
       "start_line": 1,
       "end_line": 29162,
       "kind": "supplied_snapshot",
-      "sha256": "d7a419e492825ee10021578f6af586760f3c9df8a41cc2ffb81b94dea22a5ce0",
-      "excerpt_sha256": "d7a419e492825ee10021578f6af586760f3c9df8a41cc2ffb81b94dea22a5ce0"
+      "sha256": "18d2717c30eb3fc49dc6467ba197978a65534b39bb574260ce1314a7738c7e0e",
+      "excerpt_sha256": "18d2717c30eb3fc49dc6467ba197978a65534b39bb574260ce1314a7738c7e0e"
     },
     {
       "id": "credit",
@@ -135,8 +135,8 @@
       "start_line": 1,
       "end_line": 36178,
       "kind": "supplied_snapshot",
-      "sha256": "189141cc9aa2122a6f1fb1599d278abaa55694c860fdbe92a9f09f7ae2c9a4d5",
-      "excerpt_sha256": "189141cc9aa2122a6f1fb1599d278abaa55694c860fdbe92a9f09f7ae2c9a4d5"
+      "sha256": "de8c84ce3e492811e4b397585071d37d309af0e21d47b713ea2ceb2ba89a92a9",
+      "excerpt_sha256": "de8c84ce3e492811e4b397585071d37d309af0e21d47b713ea2ceb2ba89a92a9"
     },
     {
       "id": "essay-pages",
@@ -542,6 +542,276 @@
       "kind": "source",
       "sha256": "31b23d2facdea99c35009cc5af3de808d9cf08b6ce680b471d784e791813be52",
       "excerpt_sha256": "31b23d2facdea99c35009cc5af3de808d9cf08b6ce680b471d784e791813be52"
+    },
+    {
+      "id": "r8-architecture",
+      "kind": "source",
+      "path": "docs/ARCHITECTURE.md",
+      "start_line": 1,
+      "end_line": 150,
+      "sha256": "9cfff690ac9439ffb1a6e75c48892e835b426d325ae9d69e9b715f58963f4a9c",
+      "excerpt_sha256": "9133d275f6467b414f3dfb9c5be6ef343b21087433390a238624d8da538b50ef",
+      "custody": "Current native public file inspected as source; no fresh execution."
+    },
+    {
+      "id": "r8-entry",
+      "kind": "source",
+      "path": "scripts/agent_entry.py",
+      "start_line": 125,
+      "end_line": 170,
+      "sha256": "08da05c916a2b6e665c8a8aac0d9d3cec53130573651740b495a00111cc9b1da",
+      "excerpt_sha256": "b00dc1edc397ddbcd0b84bf7c9f666bacde6bd6192f2a8c5d0d1ef566511d2a8",
+      "custody": "Current native public file inspected as source; no fresh execution."
+    },
+    {
+      "id": "r8-quickstart",
+      "kind": "source",
+      "path": "docs/agents/README.md",
+      "start_line": 1,
+      "end_line": 106,
+      "sha256": "0379b31685398dfd42d22734312e893e0bbb02f887511e2931ebc530e0582573",
+      "excerpt_sha256": "0379b31685398dfd42d22734312e893e0bbb02f887511e2931ebc530e0582573",
+      "custody": "Current native public file inspected as source; no fresh execution."
+    },
+    {
+      "id": "r8-lookup",
+      "kind": "source",
+      "path": "scripts/query_corpus.py",
+      "start_line": 6602,
+      "end_line": 6731,
+      "sha256": "3298c88f36467d0aa6c81fb04bdd31cfcae274c1de61401940458cc5443f325d",
+      "excerpt_sha256": "2f13aac684bc48891582a60d8b501c1c1d357db9bfddfbe0c49e4cbb26c8da8b",
+      "custody": "Current native public file inspected as source; no fresh execution."
+    },
+    {
+      "id": "r8-probe",
+      "kind": "source",
+      "path": "scripts/proof_workbench.py",
+      "start_line": 168,
+      "end_line": 247,
+      "sha256": "ab4e124a8c135394803163713f0b91422104dd2d58805cc797041fe7a7fc8a01",
+      "excerpt_sha256": "99a4f6db7e26cc5310961288d8bc5fdf9a366dca82286d999e3956f0b6efd970",
+      "custody": "Current native public file inspected as source; no fresh execution."
+    },
+    {
+      "id": "r8-probe-claim",
+      "kind": "source",
+      "path": "scripts/proof_workbench.py",
+      "start_line": 783,
+      "end_line": 815,
+      "sha256": "ab4e124a8c135394803163713f0b91422104dd2d58805cc797041fe7a7fc8a01",
+      "excerpt_sha256": "5fa6172e4a9e1a7e3b471079d63ca8ed19c7086bfae526b929bb1b730cce7b08",
+      "custody": "Current native public file inspected as source; no fresh execution."
+    },
+    {
+      "id": "r8-journal",
+      "kind": "source",
+      "path": "scripts/research_record.py",
+      "start_line": 1,
+      "end_line": 115,
+      "sha256": "e099f4e5db1dad0ca42a3421220bd4206f0273108d191b200505d8f0f08af3ed",
+      "excerpt_sha256": "0a07fa2cc8dc9dbd1c2503ab104082123c9ce3101f04927fd29fcc9446ff2755",
+      "custody": "Current native public file inspected as source; no fresh execution."
+    },
+    {
+      "id": "r8-journal-integrity",
+      "kind": "source",
+      "path": "scripts/research_record.py",
+      "start_line": 333,
+      "end_line": 377,
+      "sha256": "e099f4e5db1dad0ca42a3421220bd4206f0273108d191b200505d8f0f08af3ed",
+      "excerpt_sha256": "85faf57370ef80f62292de0cc5334c195510b8ec74fea9bfaa7afc515e43c6d9",
+      "custody": "Current native public file inspected as source; no fresh execution."
+    },
+    {
+      "id": "r8-journal-entry",
+      "kind": "source",
+      "path": "scripts/research_record.py",
+      "start_line": 556,
+      "end_line": 596,
+      "sha256": "e099f4e5db1dad0ca42a3421220bd4206f0273108d191b200505d8f0f08af3ed",
+      "excerpt_sha256": "dd0d7b41757b9ee07add3ae0b9395d9fa44311d72ac62a6d93d7511e40be05ba",
+      "custody": "Current native public file inspected as source; no fresh execution."
+    },
+    {
+      "id": "r8-writer-boundary",
+      "kind": "source",
+      "path": "scripts/short_paper_writer.py",
+      "start_line": 1,
+      "end_line": 52,
+      "sha256": "6e3b6a9de5f55cfa38f4c5458cd636ca5a558b7da4cbf528815908fc4fd499fe",
+      "excerpt_sha256": "862e4c0bb5326497e6b5b843f888858c99d53d84879014221e00ba92afd514e0",
+      "custody": "Current native public file inspected as source; no fresh execution."
+    },
+    {
+      "id": "r8-writer-entry",
+      "kind": "source",
+      "path": "scripts/short_paper_writer.py",
+      "start_line": 577,
+      "end_line": 616,
+      "sha256": "6e3b6a9de5f55cfa38f4c5458cd636ca5a558b7da4cbf528815908fc4fd499fe",
+      "excerpt_sha256": "734d225219778c002ebf875e63dc4b4f47d179da69be0875bef9bc6fff31b04b",
+      "custody": "Current native public file inspected as source; no fresh execution."
+    },
+    {
+      "id": "r8-exchange",
+      "kind": "source",
+      "path": "scripts/paper_refinement.py",
+      "start_line": 1,
+      "end_line": 174,
+      "sha256": "aedd53b4c0735bbef3601d0038b164652277de745583138a30979be97cb9f7cf",
+      "excerpt_sha256": "aedd53b4c0735bbef3601d0038b164652277de745583138a30979be97cb9f7cf",
+      "custody": "Current native public file inspected as source; no fresh execution."
+    },
+    {
+      "id": "r8-sentence-check",
+      "kind": "source",
+      "path": "scripts/systems_paper_evidence.py",
+      "start_line": 367,
+      "end_line": 457,
+      "sha256": "85e4d8a04fa07f830868f9ea4e39a6787a1a3e35a6a30e897b6316574b945105",
+      "excerpt_sha256": "dab0895aa9230f0109fc6ddf9ebef8ae7bae4fd801b55796da0b96e891573526",
+      "custody": "Current native public file inspected as source; no fresh execution."
+    },
+    {
+      "id": "r8-projection-order",
+      "kind": "source",
+      "path": "scripts/refresh_projections.py",
+      "start_line": 1,
+      "end_line": 110,
+      "sha256": "f838561a7e3609572cd1963cf107cd3b82a79d2d8176c16e796f00394988422e",
+      "excerpt_sha256": "106846e848945585e0a96183db9f073eff7794d5a495622a2624c06bb5ea7dc9",
+      "custody": "Current native public file inspected as source; no fresh execution."
+    },
+    {
+      "id": "r8-projection-refresh",
+      "kind": "source",
+      "path": "scripts/refresh_projections.py",
+      "start_line": 278,
+      "end_line": 356,
+      "sha256": "f838561a7e3609572cd1963cf107cd3b82a79d2d8176c16e796f00394988422e",
+      "excerpt_sha256": "51e8c5123dc12eb550e761be722b2ce39773abba5c0a8bd116686fb2194bc71a",
+      "custody": "Current native public file inspected as source; no fresh execution."
+    },
+    {
+      "id": "r8-release",
+      "kind": "source",
+      "path": "scripts/check_release.py",
+      "start_line": 1648,
+      "end_line": 1724,
+      "sha256": "4421bf54737bb1ea561fdf7013c08a299c6a7c5b9fed1931d57fe3058d1a7809",
+      "excerpt_sha256": "da39690f9c38fd66ca7b1f7496108ac87673b67260a7c1c234b842008edd0adb",
+      "custody": "Current native public file inspected as source; no fresh execution."
+    },
+    {
+      "id": "r8-contribution",
+      "kind": "source",
+      "path": "CONTRIBUTING.md",
+      "start_line": 1,
+      "end_line": 89,
+      "sha256": "d364b1ae2501d7a55ac113ae9f4b6ff9ae64928a5b7fddf89e410d5518307b0f",
+      "excerpt_sha256": "9dddfc8f6ceefc14e83ed1967c38a10de331ac98552bfb9efa825ec06e2009c4",
+      "custody": "Current native public file inspected as source; no fresh execution."
+    },
+    {
+      "id": "r8-paper-resolve",
+      "kind": "source",
+      "path": "scripts/paper_evidence.py",
+      "start_line": 570,
+      "end_line": 635,
+      "sha256": "e0877691f942c137a73f89eb0a38939ee77735da23257e66ee9492e86309e0bc",
+      "excerpt_sha256": "dedb18e1e7983c374b871df0dd1044bf6911170ae2bb1a16e2f8ca5a0b28c550",
+      "custody": "Current native public file inspected as source; no fresh execution."
+    },
+    {
+      "id": "r8-claim-project",
+      "kind": "source",
+      "path": "scripts/paper_claim_evidence.py",
+      "start_line": 236,
+      "end_line": 300,
+      "sha256": "d8a3dbceaef0c45bf5edce7c55b26f0975ec87737529ae164142d9bccffd21b7",
+      "excerpt_sha256": "d68a3027aa3c4d33039a5b4dc5acdeb82740e102b0eacec30849e30a907849cb",
+      "custody": "Current native public file inspected as source; no fresh execution."
+    },
+    {
+      "id": "r8-weighted-proof",
+      "kind": "source",
+      "path": "paper/257/erdos-257-mersenne-support-subseries.tex",
+      "start_line": 168,
+      "end_line": 285,
+      "sha256": "49dde5b195930bca30b6de1b56dff407a0e70559b8495cd33fa46d74822279dc",
+      "excerpt_sha256": "aecbf3b02b4b923ca6826efd7cb4530cd15c1ff41652efe52e43924f6578b88c",
+      "custody": "Current native public file inspected as source; no fresh execution."
+    },
+    {
+      "id": "r8-weighted-formal",
+      "kind": "source",
+      "path": "lean/ErdosProblems/Erdos257/PaperCompleteR8/WeightedReturn.lean",
+      "start_line": 1,
+      "end_line": 130,
+      "sha256": "c00b39ee574aaec577de2cbc6971c12ca5865c8891f0c8fa88b9ba63335e92a0",
+      "excerpt_sha256": "c00b39ee574aaec577de2cbc6971c12ca5865c8891f0c8fa88b9ba63335e92a0",
+      "custody": "Current native public file inspected as source; no fresh execution."
+    },
+    {
+      "id": "r8-hereditary-formal",
+      "kind": "source",
+      "path": "lean/ErdosProblems/Erdos257/PaperCompleteR8/WeightedHereditaryClaim.lean",
+      "start_line": 1,
+      "end_line": 41,
+      "sha256": "3a22a6ca16724aa7430c3ebbe92d3bc0a2f599d43cab0452ef46376cd0132518",
+      "excerpt_sha256": "3a22a6ca16724aa7430c3ebbe92d3bc0a2f599d43cab0452ef46376cd0132518",
+      "custody": "Current native public file inspected as source; no fresh execution."
+    },
+    {
+      "id": "r8-old-navigation",
+      "kind": "source",
+      "path": "paper/systems/cold-clone-to-proof-receipt.tex",
+      "start_line": 170,
+      "end_line": 261,
+      "sha256": "b49322acf67d58f7018ce742206bd3ed00fe3446fb71b269a6774cd178dd568b",
+      "excerpt_sha256": "ab1ece62588b2cb176c1a5b86709b0f4faab321201a66ccb4978767026e0526a",
+      "custody": "Current native public file inspected as source; no fresh execution."
+    },
+    {
+      "id": "r8-old-authority",
+      "kind": "source",
+      "path": "paper/systems/cold-clone-to-proof-receipt.tex",
+      "start_line": 317,
+      "end_line": 411,
+      "sha256": "b49322acf67d58f7018ce742206bd3ed00fe3446fb71b269a6774cd178dd568b",
+      "excerpt_sha256": "6cbb917477c55ae56bf4b98cc4c0967cfbecfef0a227a8a867217a4944aa3cc1",
+      "custody": "Current native public file inspected as source; no fresh execution."
+    },
+    {
+      "id": "r8-old-navigation-limits",
+      "kind": "source",
+      "path": "paper/systems/cold-clone-to-proof-receipt.tex",
+      "start_line": 572,
+      "end_line": 629,
+      "sha256": "b49322acf67d58f7018ce742206bd3ed00fe3446fb71b269a6774cd178dd568b",
+      "excerpt_sha256": "1f3093160d7b9a0a67d3082170519063e2608d43c9e5b197a9468b78aed244db",
+      "custody": "Current native public file inspected as source; no fresh execution."
+    },
+    {
+      "id": "r8-old-contribution",
+      "kind": "source",
+      "path": "paper/systems/open-source-mathematics-strategy.tex",
+      "start_line": 610,
+      "end_line": 701,
+      "sha256": "85a59805caf7ff351e026227710d5b63758dcba02297e09b1270966cec15edd0",
+      "excerpt_sha256": "b6efb6d955f1b08699611581b564b4a5f149c2ffc29f9252c85ddad919f0daf7",
+      "custody": "Current native public file inspected as source; no fresh execution."
+    },
+    {
+      "id": "r8-old-strategy-limits",
+      "kind": "source",
+      "path": "paper/systems/open-source-mathematics-strategy.tex",
+      "start_line": 1477,
+      "end_line": 1532,
+      "sha256": "85a59805caf7ff351e026227710d5b63758dcba02297e09b1270966cec15edd0",
+      "excerpt_sha256": "1bbc7a663fb85e75bbb2abf455f3a5e08af5240f184a5487d2fcaa51c8aede0f",
+      "custody": "Current native public file inspected as source; no fresh execution."
     }
   ],
   "sentences": [
@@ -559,171 +829,156 @@
     },
     {
       "id": "r4.abstract.01",
-      "text": "A correct Lean theorem can acquire a false meaning when its hypotheses disappear from a paper.",
+      "text": "We describe a repository-based research system that connects questions, proofs, computations and failed approaches to reviewed claims and publications.",
       "owner": "systems",
-      "class": "reported",
+      "class": "method",
       "evidence_refs": [
-        "world-views",
-        "packet-dossier",
-        "packet-support",
-        "257-statement",
-        "strategy-protocol",
-        "credit",
-        "historical"
+        "r8-architecture",
+        "r8-contribution",
+        "r8-journal",
+        "r8-exchange"
       ],
-      "warrant": "Summarises the supplied implementation and dated historical record, without a fresh run, universal reliability claim or reader-benefit assertion.",
-      "statement_sha256": "b4e360ee06c782edd3f137260674a06c484262a48d7a7487d7c54e1430e499dd",
+      "warrant": "Summarises the documented artifact/research/publication responsibilities without a measured benefit.",
+      "statement_sha256": "638abbbb7651ea8a5f39c9cd5016473815a61ac65155a81dabf8d341f89543c1",
       "section": "frontmatter"
     },
     {
       "id": "r4.abstract.02",
-      "text": "Plectis records the passage from formal results to prose within a repository organised around individual problems.",
+      "text": "The public Plectis prototype implements this workflow for eight mathematical programmes using structured records, Python command-line tools and Lean.",
       "owner": "systems",
-      "class": "reported",
+      "class": "implemented",
       "evidence_refs": [
-        "world-views",
-        "packet-dossier",
-        "packet-support",
-        "257-statement",
-        "strategy-protocol",
-        "credit",
-        "historical"
+        "r8-architecture",
+        "r8-contribution",
+        "r8-journal",
+        "r8-exchange",
+        "r8-entry",
+        "r8-probe"
       ],
-      "warrant": "Summarises the supplied implementation and dated historical record, without a fresh run, universal reliability claim or reader-benefit assertion.",
-      "statement_sha256": "f6facfa5afba5d670dff1d9b132fc6902a5ad4c19273c90a17c21f1ced128406",
+      "warrant": "Defines the public repository prototype and actual JSON/Python/Lean components; no private-system breadth is inferred.",
+      "statement_sha256": "c0ce39c4a9c7aaae0f6699430988b386a2afeb44ec5bf3b33bb29c36f4e48f35",
       "section": "frontmatter"
     },
     {
       "id": "r4.abstract.03",
-      "text": "We follow a weighted-support criterion for reciprocal Mersenne series through its proof, its two registered Lean supports and its written explanation.",
+      "text": "Task routing and source indexes locate relevant work; optional recorded proof sessions retain submitted inputs and Lean results.",
       "owner": "systems",
-      "class": "reported",
+      "class": "implemented",
       "evidence_refs": [
-        "world-views",
-        "packet-dossier",
-        "packet-support",
-        "257-statement",
-        "strategy-protocol",
-        "credit",
-        "historical"
+        "r8-entry",
+        "r8-lookup",
+        "r8-probe",
+        "r8-probe-claim"
       ],
-      "warrant": "Summarises the supplied implementation and dated historical record, without a fresh run, universal reliability claim or reader-benefit assertion.",
-      "statement_sha256": "8fe457464e2e909dcfcd35d293744e26301f19cb7fd2d8175e5422a2a2b820a8",
+      "warrant": "Task routing uses a stated task; recorded sessions are optional and bind submitted inputs/results. It does not choose a question or schedule agents.",
+      "statement_sha256": "d08755ae0b0f2e9114e187e293e6a504e4a8bda9a88a553e91c584fe5ce3c893",
       "section": "frontmatter"
     },
     {
       "id": "r4.abstract.04",
-      "text": "The publication checks compare registered support sets with the supplied evidence and detect changes to source bytes; linked claim and contribution records retain limitations and credit through revision.",
+      "text": "Maintainers review proposed changes, update evidence bindings, regenerate derived files and inspect the publications; a contribution journal retains explicitly recorded outcomes, limitations and credit.",
       "owner": "systems",
-      "class": "reported",
+      "class": "method",
       "evidence_refs": [
-        "world-views",
-        "packet-dossier",
-        "packet-support",
-        "257-statement",
-        "strategy-protocol",
-        "credit",
-        "historical"
+        "r8-architecture",
+        "r8-contribution",
+        "r8-journal",
+        "r8-exchange",
+        "r8-projection-refresh",
+        "r8-sentence-check"
       ],
-      "warrant": "The supplied checks compare registered support identities and source bytes. Separate claim and contribution records retain limitations and attribution. This does not assert proof replay, semantic entailment, independent review or measured reader benefit.",
-      "statement_sha256": "379ec827c0f4f6bf065955b5767e047756aec87c2b0c2922149efe4e0482a926",
+      "warrant": "Names maintainer integration responsibilities and explicitly recorded journal outcomes. No independent review or automatic ingestion of ordinary submissions.",
+      "statement_sha256": "8f7921315b2467fbd526793aac591eb65c49f8d8127366a86803e3d07598827c",
       "section": "frontmatter"
     },
     {
       "id": "r4.abstract.05",
-      "text": "A historical test rejected \\HistoricalRejected{} of \\HistoricalEdits{} false edits but accepted a false claim of completion.",
+      "text": "A conditional theorem supplies a worked case: publication checks can detect missing evidence records while a paraphrase that drops a condition still requires mathematical judgement.",
       "owner": "systems",
-      "class": "reported",
+      "class": "method",
       "evidence_refs": [
-        "world-views",
-        "packet-dossier",
-        "packet-support",
         "257-statement",
-        "strategy-protocol",
-        "credit",
-        "historical"
+        "coverage-weighted",
+        "r8-sentence-check"
       ],
-      "warrant": "Summarises the supplied implementation and dated historical record, without a fresh run, universal reliability claim or reader-benefit assertion.",
-      "statement_sha256": "f9777fded2cae49c2054dd40c01961dc55eadbbab41aab1da2e29154e9643a41",
+      "warrant": "The existing conditional theorem illustrates source-accounting and semantic fidelity as distinct review questions.",
+      "statement_sha256": "d5aaebd46361c8241db736d68d35868444990c62287999a616bd052bfbeb4386",
       "section": "frontmatter"
     },
     {
       "id": "r4.abstract.06",
-      "text": "This case identifies the remaining task for authors and reviewers: deciding whether the recorded sources justify the words the reader sees.",
+      "text": "A historical author-run test rejected \\HistoricalRejected{} of \\HistoricalEdits{} false edits and accepted one false completion claim. Reader benefit, discovery rate and adoption by independent laboratories remain unmeasured.",
       "owner": "systems",
       "class": "reported",
       "evidence_refs": [
-        "world-views",
-        "packet-dossier",
-        "packet-support",
-        "257-statement",
-        "strategy-protocol",
-        "credit",
-        "historical"
+        "historical",
+        "reader-study",
+        "strategy-limits"
       ],
-      "warrant": "Summarises the supplied implementation and dated historical record, without a fresh run, universal reliability claim or reader-benefit assertion.",
-      "statement_sha256": "c807e54686b535629b67d510d2f5e268176d30c6d4a6347ebb830d4010d03788",
+      "warrant": "Dated author-run nine rejections/one escape preserved; discovery, reader benefit and independent-laboratory adoption remain unmeasured.",
+      "statement_sha256": "1a828582980bd6d99028d1e8e84c0909c6884912909afb9fb0a2bf88f4e2e3f3",
       "section": "frontmatter"
     },
     {
       "id": "r4.intro1.01",
-      "text": "Consider a theorem asserting that\n\\(\\sum_{a\\in A}(2^a-1)^{-1}\\) is irrational under a summability condition on the set of exponents~$A$ (Section~\\ref{sec:example}). Two faults in publishing this result require different checks. The paper might retain only one of its two registered Lean supports. Or it might retain both links but omit the summability hypothesis, thereby asserting a solution of the arbitrary-support problem, which remains open.",
+      "text": "A research repository must support several activities: choosing a question, recovering earlier work, testing an argument, reviewing a claim and publishing an explanation. Their outputs need to remain connected when a proof, experiment or manuscript changes. Otherwise a new contributor must reconstruct the history, and a correct result can acquire a misleading description.",
       "owner": "systems",
       "class": "method",
       "evidence_refs": [
-        "257-statement",
-        "257-proof",
-        "packet-support",
-        "audit-code"
+        "r8-architecture",
+        "r8-contribution",
+        "r8-journal",
+        "r8-exchange"
       ],
-      "warrant": "Counterfactual explanation of the source theorem's sufficient support hypothesis and the open arbitrary-support question. No new mutation experiment or formal-to-prose equivalence check is asserted.",
-      "statement_sha256": "7bc3c253327e95e04ff71641ef582b0ea966029800e55854532cea47eeb8ac2f",
+      "warrant": "Motivates keeping research artifacts and their revision relationships together; no frequency or performance estimate.",
+      "statement_sha256": "58c2d3d0a8c47cffa80c04a0c37a395e5752644746334e0475edfdddbc94773e",
       "section": "sec:intro"
     },
     {
       "id": "r4.intro1.02",
-      "text": "For each mathematical problem, Plectis keeps the question, prior sources, computations, proofs and unresolved steps together in a problem-centred collection. It records which Lean results support a paper statement and which source passages explain it, so that a reviewer can make these comparisons at a specified revision.",
+      "text": "Plectis is the public repository prototype studied here. It keeps questions, prior sources, computations, proofs and unresolved steps together, with records of proposed contributions and their review. Its implemented scope is the research and publication workflow in this repository; broader autonomous discovery and services for other scientific fields are proposals (Section~\\ref{sec:limits}).",
       "owner": "systems",
       "class": "method",
       "evidence_refs": [
-        "world-views",
-        "strategy-goals",
-        "record"
+        "r8-architecture",
+        "r8-contribution",
+        "r8-journal",
+        "r8-exchange",
+        "strategy-limits"
       ],
-      "warrant": "Motivates the persistent problem object and depicts the documented contribution cycle; no effect size or external uptake is inferred.",
-      "statement_sha256": "d0f1b7fb978cbfda1d93b4c3c815fc8b0202cfd78b814b1f3625a36dfab5eaa2",
+      "warrant": "Explicit public repository/prototype scope; broader autonomous discovery and other-science services remain proposals.",
+      "statement_sha256": "5c840c1b017f67a75f61bf5dd8c41c474d18ce39d45ea40014ca78cf76da6ced",
       "section": "sec:intro"
     },
     {
       "id": "r4.intro1.03",
-      "text": "Figure~\\ref{fig:lifecycle} shows where these records enter: a mathematical claim is selected from the accumulated work, all its registered supports are compared with the supplied evidence, and an author turns it into a paper that readers may question or extend.",
+      "text": "The architecture separates stored research artifacts, tools that locate or check them, and decisions made by authors and maintainers. Figure~\\ref{fig:lifecycle} follows a selected result into publication and back through contributions. Source consistency, mathematical validity and the usefulness of an explanation remain distinct responsibilities.",
       "owner": "systems",
       "class": "method",
       "evidence_refs": [
-        "world-views",
-        "strategy-goals",
-        "record"
+        "r8-architecture",
+        "r8-contribution",
+        "r8-journal",
+        "r8-exchange",
+        "r8-sentence-check"
       ],
-      "warrant": "Motivates the persistent problem object and depicts the documented contribution cycle; no effect size or external uptake is inferred.",
-      "statement_sha256": "395889bbd49662b60a08a74dfa779d36407ede140395caa4df4736c7b8f99611",
+      "warrant": "Stored artifacts, executable checks and reviewer decisions are separate responsibilities.",
+      "statement_sha256": "7fcbc367314b88f7e7a47788eb1b1b68f7e761b9f2f1a1e6825bc41376367959",
       "section": "sec:intro"
     },
     {
       "id": "r4.fig.lifecycle",
-      "text": "\\begin{figure}[htbp]\n\\centering\n\\begin{tikzpicture}[x=1cm,y=1cm]\n\\node[sys box,text width=2.7cm,minimum height=1.8cm] (c) at (0,0) {Problem collection\\\\sources, results\\\\and open questions};\n\\node[sys box,text width=2.7cm,minimum height=1.8cm] (s) at (3.6,0) {\\mbox{Paper coverage}\\\\row\\\\compare all listed\\\\formal supports};\n\\node[sys box,text width=2.7cm,minimum height=1.8cm] (p) at (7.2,0) {Authored paper\\\\statement, argument\\\\and limitations};\n\\node[sys box,text width=2.7cm,minimum height=1.8cm] (r) at (10.8,0) {Readers\\\\inspect, question\\\\and extend};\n\\draw[sys arrow] (c)--(s);\n\\draw[sys arrow] (s)--(p);\n\\draw[sys arrow] (p)--(r);\n\\draw[sys arrow,dashed] (r.south)--++(0,-.85)-| (c.south);\n\\node[sys label,text width=11.6cm] at (5.4,-2.5) {Corrections and contributions return after review and adoption (Figure~\\ref{fig:contribute}).\\\\The research journal records returns and their dispositions.};\n\\end{tikzpicture}\n\\caption{From accumulated work to a paper and subsequent revision. Solid arrows show the publication sequence, not logical implication or automatic approval. Comparing the complete registered support set does not execute a new formal proof or establish that the prose has the intended meaning.}\n\\label{fig:lifecycle}\n\\end{figure}",
+      "text": "\\begin{figure}[htbp]\n\\centering\n\\begin{tikzpicture}[x=1cm,y=1cm]\n\\node[sys box,text width=2.7cm,minimum height=1.8cm] (c) at (0,0) {Research artifacts\\\\sources, proofs, tests\\\\and open questions};\n\\node[sys box,text width=2.7cm,minimum height=1.8cm] (s) at (3.6,0) {Evidence and claim\\\\records\\\\review scope and\\\\registered supports};\n\\node[sys box,text width=2.7cm,minimum height=1.8cm] (p) at (7.2,0) {Publications\\\\papers, explanations\\\\and source links};\n\\node[sys box,text width=2.7cm,minimum height=1.8cm] (r) at (10.8,0) {Readers\\\\inspect, question\\\\and extend};\n\\draw[sys arrow] (c)--(s);\n\\draw[sys arrow] (s)--(p);\n\\draw[sys arrow] (p)--(r);\n\\draw[sys arrow,dashed] (r.south)--++(0,-.85)-| (c.south);\n\\node[sys label,text width=11.6cm] at (5.4,-2.5) {Corrections and contributions return after review and adoption (Figure~\\ref{fig:contribute}).\\\\The research journal records returns and their dispositions.};\n\\end{tikzpicture}\n\\caption{From accumulated work to a paper and subsequent revision. Solid arrows show a sequence of responsibilities rather than logical implication or automatic approval. The source and evidence records support review; they do not establish the intended meaning of the prose.}\n\\label{fig:lifecycle}\n\\end{figure}",
       "owner": "systems",
-      "class": "reported",
+      "class": "method",
       "evidence_refs": [
-        "packet-dossier",
-        "packet-support",
-        "assembler",
-        "record",
-        "credit",
-        "strategy-protocol",
-        "coverage-weighted"
+        "r8-architecture",
+        "r8-contribution",
+        "r8-journal",
+        "r8-exchange"
       ],
-      "warrant": "The forward sequence separates support-set comparison from authored interpretation. The conditional return path requires review and adoption, and the journal is explicitly limited to returns/dispositions; no new formal execution or automatic semantic validation is depicted. The complete paper support list belongs to the paper coverage row, which is distinct from the selected-claim registry.",
-      "statement_sha256": "ff1bd53dfb7caec519b99703e5ae560b864428e1efa481f9cadbe1df1750f779",
+      "warrant": "Preserves figure ID/geometry and broadens plain workflow labels. Arrows show responsibility sequence rather than deductions or automated approval.",
+      "statement_sha256": "86a3c690015724455c4d3ba684cd28b66c5ab1b78d2fce3a25987707edf6f275",
       "section": "sec:intro",
       "unit_type": "figure",
       "caption": "From accumulated work to a paper and subsequent revision. Solid arrows show the publication sequence, not logical implication or automatic approval. Comparing the complete registered support set does not execute a new formal proof or establish that the prose has the intended meaning.",
@@ -763,34 +1018,34 @@
     },
     {
       "id": "r4.intro2.03",
-      "text": "The additional relation described here records a statement together with all its registered supports and the source passages used to explain it.",
+      "text": "The records described here connect a selected public assertion with all its registered formal supports, the passages used to explain it, and the contribution history that changes it. They let a reviewer recover the basis of a claim at a specified revision.",
       "owner": "systems",
-      "class": "reported",
+      "class": "implemented",
       "evidence_refs": [
-        "world-related",
-        "lit-etp",
-        "strategy-related",
-        "packet-support",
-        "audit-code"
+        "coverage",
+        "r8-sentence-check",
+        "r8-journal"
       ],
-      "warrant": "The compiler iterates over the full recorded declaration set, requires current statement identities, and reports gaps; the sentence checker binds declared prose and source bytes. This describes the checks, not a successful join for the supplied snapshot.",
-      "statement_sha256": "61cc048ce31491fbc35a9ad3a52f1dd569a1c77c875e05aeec35b14b0d784d00",
+      "warrant": "The actual records join selected assertions, registered supports, source spans and dispositions; byte agreement does not entail prose meaning.",
+      "statement_sha256": "43d8ec975b5486bc11c5e1b02b1b5cf5f1c34a06f64d5e417fe4923e80db6bcf",
       "section": "sec:intro"
     },
     {
       "id": "r4.intro2.04",
-      "text": "We first describe what a problem collection lets a reader recover. The worked example then supplies the mathematical reason for its support hypothesis, before we follow the theorem into the publication checks, editorial revisions and contribution record. The historical false-edit test returns to the distinction that opened the paper.",
+      "text": "We describe the components and their responsibilities, then trace a conditional theorem through the evidence checks. The revision and contribution workflows explain how accepted changes return to the repository. Recorded observations and limits distinguish implemented procedures from their unmeasured effects; Appendix~\\ref{app:worked-proof} retains the mathematical calculation.",
       "owner": "systems",
-      "class": "reported",
+      "class": "method",
       "evidence_refs": [
-        "world-related",
-        "lit-etp",
-        "strategy-related",
-        "packet-support",
-        "audit-code"
+        "r8-architecture",
+        "r8-contribution",
+        "r8-journal",
+        "r8-exchange",
+        "r8-weighted-proof",
+        "r8-weighted-formal",
+        "r8-hereditary-formal"
       ],
-      "warrant": "States the inherited roles and the concrete documented publication operations; it makes no priority or performance claim.",
-      "statement_sha256": "fcc3670110c377ac700e94c5ce8b9cf77814da5c519afd52b8798f1fe94ace43",
+      "warrant": "Roadmap matches the systems-first body and optional exact mathematical appendix.",
+      "statement_sha256": "8aaf04d0877b8afc0876d2ee8a2f21b22289f953cda6d883f3edf4fd4e7190bc",
       "section": "sec:intro"
     },
     {
@@ -906,294 +1161,117 @@
       "section": "sec:world"
     },
     {
-      "id": "r4.example1.01",
-      "text": "For an infinite set $A$ of positive integers and an integer $b\\ge2$, write\n\\[\n X_A(b)=\\sum_{a\\in A}\\frac1{b^a-1}.\n\\]\nThe question is when a condition on the exponents forces this number, and the corresponding sum over every infinite subset of~$A$, to be irrational.",
+      "id": "r8.architecture.records",
       "owner": "systems",
-      "class": "reported",
+      "text": "\\subsection{Stored artifacts and executable tools}\nThe checkout contains authored Lean and manuscript sources, JSON records for selected claims and their evidence, and a journal of research returns. Indexes, source coordinates and status summaries are derived from those records. Authors edit the sources; builders regenerate the derived views. The claim review keeps a finite computation's tested range distinct from a general theorem, and a failed attempt distinct from a proof that every approach must fail. This distinction makes a changed proof or paper traceable without treating a generated index as a proof. The \\repolink{docs/ARCHITECTURE.md}{architecture guide} describes this ownership.",
+      "statement_sha256": "338642a6df7a4d88800f048e21159e4f9828c8c64342407e46f2b95f80234f68",
+      "class": "method",
       "evidence_refs": [
-        "257-statement",
-        "coverage-weighted"
+        "r8-architecture",
+        "r8-projection-order",
+        "r8-journal",
+        "r8-contribution"
       ],
-      "warrant": "Quotes the current source theorem with domains, finite-prime hypothesis, all-base and hereditary clauses intact. The publication ledger records formal support; no new Lean replay is claimed.",
-      "statement_sha256": "5cd75d21e8ded4bb2bf4b25a9086de7b0f6938155311bbae1ea473b2e502461d",
-      "section": "sec:example"
+      "warrant": "Authored and derived records have distinct owners; generated source indexes grant no proof authority. Finite computation is scoped to its tested range; failed-attempt custody does not prove a universal obstruction.",
+      "section": "sec:world"
     },
     {
-      "id": "r4.example1.02",
-      "text": "The condition below rewards exponents divisible by large powers of a fixed collection of primes. For the prime $2$ alone, the relevant part of $a=2^km$, with $m$ odd, is $2^k$. For a finite nonempty set $P$ of primes, this becomes $h_P(a)=\\prod_{p\\in P}p^{v_p(a)}$.\n\\par\\Needspace{7\\baselineskip}",
+      "id": "r8.architecture.tools",
       "owner": "systems",
-      "class": "reported",
+      "text": "The command-line tools have bounded jobs:\n\\begin{center}\\small\n\\begin{tabularx}{\\linewidth}{@{}>{\\raggedright\\arraybackslash}p{2.55cm}>{\\raggedright\\arraybackslash}X@{}}\n\\toprule\nComponent & Input, output and responsibility\\\\\n\\midrule\nTask routing & \\repolink{scripts/agent_entry.py}{agent\\_entry.py} maps a stated task to instructions, relevant files and commands; the researcher chooses the question and approach.\\\\[3pt]\nEvidence retrieval & \\repolink{scripts/query_corpus.py}{query\\_corpus.py} returns problem, claim, declaration and paper-source records from the indexes.\\\\[3pt]\nProof sessions & \\repolink{scripts/proof_workbench.py}{proof\\_workbench.py} records notes and submitted Lean probes, derives verdicts from the Lean process, and binds a session claim to an accepted probe.\\\\[3pt]\nStatement evidence & \\repolink{scripts/paper_evidence.py}{paper\\_evidence.py} resolves mathematical paper statements against source and verification records; \\repolink{scripts/paper_claim_evidence.py}{paper\\_claim\\_evidence.py} projects their evidence status and reported gaps.\\\\[3pt]\nEditorial exchange & \\repolink{scripts/short_paper_writer.py}{short\\_paper\\_writer.py} audits manuscripts and packages proposed revisions without applying or approving the return.\\\\[3pt]\nResearch history & \\repolink{scripts/research_record.py}{research\\_record.py} verifies the journal of entered returns and dispositions and reports what recorded outputs still owe.\\\\[3pt]\nDerived views & \\repolink{scripts/refresh_projections.py}{refresh\\_projections.py} runs builders in dependency order; \\repolink{scripts/check_release.py}{check\\_release.py} checks release contracts and freshness.\\\\\n\\bottomrule\n\\end{tabularx}\n\\end{center}\nA separate self-audit, \\repolink{scripts/systems_paper_evidence.py}{systems\\_paper\\_evidence.py}, checks this systems manuscript's text and cited source bindings. These are inspectable software responsibilities, not measurements of research quality or new execution results.",
+      "statement_sha256": "c53153d9f7fdd6c1b490a478ea20c03fbc55e683bb1641014ec53ed05a732abd",
+      "class": "implemented",
       "evidence_refs": [
-        "257-statement",
-        "coverage-weighted"
+        "r8-entry",
+        "r8-lookup",
+        "r8-probe",
+        "r8-probe-claim",
+        "r8-writer-boundary",
+        "r8-writer-entry",
+        "r8-exchange",
+        "r8-sentence-check",
+        "r8-projection-order",
+        "r8-projection-refresh",
+        "r8-release",
+        "r8-journal",
+        "r8-journal-entry",
+        "r8-paper-resolve",
+        "r8-claim-project"
       ],
-      "warrant": "Quotes the current source theorem with domains, finite-prime hypothesis, all-base and hereditary clauses intact. The publication ledger records formal support; no new Lean replay is claimed.",
-      "statement_sha256": "e56cf9a9efda2a1087b521358c2a43df99be4e911f57af4fa5a59bbfd1803099",
-      "section": "sec:example"
+      "warrant": "Every row names an inspected command entry/function. Mathematical paper evidence resolution is separate from this manuscript self-audit. No fresh execution or efficacy result.",
+      "section": "sec:world"
     },
     {
-      "id": "r4.example1.03",
-      "text": "The weighted-support theorem of the Problem~257 paper states that, if\n\\begin{equation}\\label{eq:worked-condition}\n W_{2,P}(A):=\\sum_{a\\in A}\\frac{h_P(a)}{a(2^{h_P(a)}-1)}<\\infty,\n\\end{equation}\nthen $X_B(b)$ is irrational for every integer $b\\ge2$ and every infinite $B\\subseteq A$~\\cite[Theorem~1.2]{paper257}.",
+      "id": "r8.architecture.roles",
       "owner": "systems",
-      "class": "reported",
+      "text": "\\subsection{Researcher, agent and maintainer responsibilities}\nA researcher chooses the task and the evidence needed to answer it. A coding agent can inspect files, invoke tools and prepare a proposed change using the public instructions; ordinary written arguments and explanations can also be contributed without a clone or an agent. A maintainer reviews the claim, attribution and remaining uncertainty before adoption. The contributor and reviewer may be the same agent, so this division of responsibilities does not establish independent review. Public setup and review instructions are in the \\repolink{docs/agents/README.md}{agent quickstart} and \\repolink{CONTRIBUTING.md}{contribution guide}.",
+      "statement_sha256": "81466e9babdabd4b040428a8a52cec4355d510211da4ae07d54f623c0a87d9b3",
+      "class": "method",
       "evidence_refs": [
-        "257-statement",
-        "coverage-weighted"
+        "r8-quickstart",
+        "r8-contribution"
       ],
-      "warrant": "Quotes the current source theorem with domains, finite-prime hypothesis, all-base and hereditary clauses intact. The publication ledger records formal support; no new Lean replay is claimed.",
-      "statement_sha256": "9020896c6f04f8389b7c72c99d11a7c396587f3e3d524d393c36a3bdcba5311d",
-      "section": "sec:example"
+      "warrant": "Public file/terminal agent instructions and ordinary submissions coexist. Maintainer review remains a responsibility and can share the actor.",
+      "section": "sec:world"
     },
     {
-      "id": "r4.example1.04",
-      "text": "There is also a fixed-base version, with $2$ replaced by $b$ in the hypothesis. We explain the weighted condition and its proof first, then locate both registered Lean supports in Figure~\\ref{fig:theorem}. Their recorded status does not report a new comparison of source revisions, Lean build or Comparator run. Comparator checks a selected Lean implementation against a separately stated challenge, as described in Section~\\ref{sec:checks}.",
+      "id": "r8.architecture.iteration",
       "owner": "systems",
-      "class": "reported",
+      "text": "A typical iteration starts with a question and the recorded work that bears on it. The researcher investigates, then returns an argument, experiment, correction or manuscript change with its evidence and limitations. Review may adopt it, request revision, defer it or reject it. Accepted work changes the authored claims, papers and evidence records; builders and release checks update the dependent views before the next task uses them. The journal preserves dispositions for the structured returns explicitly entered into it. Ordinary issues, pull requests and ideas can enter review without a journal session. Sections~\\ref{sec:paper} and~\\ref{sec:contribute} give the implemented publication exchange and the wider contribution procedure.",
+      "statement_sha256": "408727ee959364b66ae0bc72924f8201a4a9b0aa15d276bf218f8321cfe0e75e",
+      "class": "method",
+      "evidence_refs": [
+        "r8-architecture",
+        "r8-contribution",
+        "r8-journal",
+        "r8-exchange",
+        "r8-journal-entry",
+        "r8-projection-refresh"
+      ],
+      "warrant": "Candidate return -> maintainer review -> authored claims/papers/evidence -> builders/checks. Journal scope explicitly entered; ordinary issue/PR remains available.",
+      "section": "sec:world"
+    },
+    {
+      "id": "r8.case.system-role",
+      "owner": "systems",
+      "text": "The worked case concerns a theorem that establishes a result for a restricted family of infinite sums. The paper must retain the restriction: removing it would assert a solution of a more general problem that remains open. Its evidence record lists two formal supports. A checker can require both records and verify their source bindings, yet a sentence retaining both links can still omit the condition. Appendix~\\ref{app:worked-proof} gives the exact statement and calculation for specialists.",
+      "statement_sha256": "a71ec65528f505eefc235cd223007ba89024c0a00ec176986147cb49c2c1be9d",
+      "class": "method",
       "evidence_refs": [
         "257-statement",
         "coverage-weighted",
-        "packet-support"
+        "r8-sentence-check"
       ],
-      "warrant": "The native coverage row lists both named declarations, exact_or_stronger status, two recorded Comparator entries and prepared Palomar status. The two Lean source files confirm the descriptive clause labels. Completeness is relative to the registered set, not a claim of logical minimality. The figure is a documentary trace, not a fresh common-pin join, Lean build, Comparator replay or executed false-paraphrase test.",
-      "statement_sha256": "cdc0a4118c2f4fda4f1c830f5b460d3656116efaade05167c19f3dda1690498d",
+      "warrant": "Plain software failure example preserves the conditional theorem, two-support record and open broader problem; formulas optional.",
       "section": "sec:example"
     },
     {
-      "id": "r4.example1.05",
-      "text": "This is a sufficient condition on the support; the question for an arbitrary infinite set of exponents in base two remains open.",
+      "id": "r8.case.proof-role",
       "owner": "systems",
-      "class": "reported",
+      "text": "These failures assign different tasks to the tools and the reviewer. A missing support record is an accounting failure that the publication tools can report. Dropping a condition changes the meaning of the claim and requires comparison with the complete source statement. The historical false-completion edit in Section~\\ref{sec:instance} illustrates another semantic failure: replacing a limitation by a claim that the unresolved step is complete. Source links and current hashes do not, by themselves, establish what those words mean.",
+      "statement_sha256": "55ad0fdb93ea4741072bf5ab97464a830174bd20f119bb785faec634fc46cff0",
+      "class": "method",
       "evidence_refs": [
-        "257-statement",
-        "coverage-weighted"
+        "historical",
+        "r8-sentence-check"
       ],
-      "warrant": "Quotes the current source theorem with domains, finite-prime hypothesis, all-base and hereditary clauses intact. The publication ledger records formal support; no new Lean replay is claimed.",
-      "statement_sha256": "b917ab0bcbdfa433774fe6b64e9d2c0375fd253322e1d628a8b0215e33ca5245",
+      "warrant": "Separates accounting failure, dropped-condition semantic failure and historical false completion; hashes/source links alone do not imply truth.",
       "section": "sec:example"
-    },
-    {
-      "id": "r4.example2.01",
-      "text": "Erd\\H{o}s had already stated that $\\sum_{a\\in A}1/a<\\infty$ suffices for this all-base irrationality conclusion~\\cite[p.~222]{erdos1968}.",
-      "owner": "systems",
-      "class": "reported",
-      "evidence_refs": [
-        "257-reciprocal",
-        "257-statement",
-        "coverage-reciprocal"
-      ],
-      "warrant": "Keeps the inherited reciprocal criterion, exact formal antecedent and the source paper's averaging attribution separate from the weighted extension.",
-      "statement_sha256": "4e512071e44cc226a1300caa2ff2f78361e1d773cdfc265d73a6267ce67413c3",
-      "section": "sec:example"
-    },
-    {
-      "id": "r4.example2.03",
-      "text": "The source paper credits Duverney and Tachiya for an arithmetic-progression averaging argument of the kind used to select a small positive displacement~\\cite[Section~2, (2.3)--(2.9)]{duverneytachiya}.",
-      "owner": "systems",
-      "class": "reported",
-      "evidence_refs": [
-        "257-reciprocal",
-        "257-statement",
-        "coverage-reciprocal"
-      ],
-      "warrant": "Keeps the inherited reciprocal criterion, exact formal antecedent and the source paper's averaging attribution separate from the weighted extension.",
-      "statement_sha256": "a85a16fcc13391bf42ddc77713b0a0ae22afa711c622d873ede266e27ba71e26",
-      "section": "sec:example"
-    },
-    {
-      "id": "r4.example3.01",
-      "text": "The distinction from the reciprocal-summability criterion is visible in the source paper's example\n\\[\n A_\\star=\\{2^km:k\\ge1,\\ m\\text{ odd},\\ 1\\le m\\le2^{2^k}\\},\\qquad P=\\{2\\}.\n\\]\nWithin the layer $v_2(a)=k$, reciprocal summation discounts each odd $m$ by $2^{-k}$; weighted summation discounts it by $(2^{2^k}-1)^{-1}$.",
-      "owner": "systems",
-      "class": "reported",
-      "evidence_refs": [
-        "257-example"
-      ],
-      "warrant": "Reconstructs the supplied A-star layer calculation. Each dyadic block contributes between 1/4 and 1/2; the displayed geometric upper bound sums. No formal badge is assigned to the unlisted example.",
-      "statement_sha256": "64a90d156ea109c908fd8682ec79c7ce323d6f349737763f9fdc756d158e0fbc",
-      "section": "sec:example"
-    },
-    {
-      "id": "r4.example3.02",
-      "text": "To compare the layers, put $S_r=\\sum_{1\\le m\\le2^r,\\ m\\ \\mathrm{odd}}1/m$. Grouping the odd integers into intervals $[2^j,2^{j+1})$ gives $r/4\\le S_r\\le r$ for integers $r\\ge2$.",
-      "owner": "systems",
-      "class": "reported",
-      "evidence_refs": [
-        "257-example"
-      ],
-      "warrant": "Reconstructs the supplied A-star layer calculation. Each dyadic block contributes between 1/4 and 1/2; the displayed geometric upper bound sums. No formal badge is assigned to the unlisted example.",
-      "statement_sha256": "9f9baaf9e40f6505643857f446c21e50a1ed4cdcfbe592361dd43cdc8dd3be49",
-      "section": "sec:example"
-    },
-    {
-      "id": "r4.example3.03",
-      "text": "The reciprocal contribution of each disjoint layer is at least $2^{-k}S_{2^k}\\ge1/4$. Its weighted contribution satisfies\n\\[\n \\frac{S_{2^k}}{2^{2^k}-1}\\le\\frac{2^k}{2^{2^k}-1}\\le2^{1-k},\n\\]\nso the layer contributions have a convergent geometric majorant in the weighted sum.",
-      "owner": "systems",
-      "class": "reported",
-      "evidence_refs": [
-        "257-example"
-      ],
-      "warrant": "Reconstructs the supplied A-star layer calculation. Each dyadic block contributes between 1/4 and 1/2; the displayed geometric upper bound sums. No formal badge is assigned to the unlisted example.",
-      "statement_sha256": "262d7fe38f63d92fb881afbc17667b3186c355771bd2ed813f42d0f0cb97bc42",
-      "section": "sec:example"
-    },
-    {
-      "id": "r4.example3.04",
-      "text": "Thus $A_\\star$ lies beyond the reciprocal-summability criterion but satisfies~\\eqref{eq:worked-condition}. This is the source paper's ordinary calculation, with no separate entry in the paper-to-Lean ledger~\\cite[calculation following the weighted proof]{paper257}.",
-      "owner": "systems",
-      "class": "reported",
-      "evidence_refs": [
-        "257-example"
-      ],
-      "warrant": "Reconstructs the supplied A-star layer calculation. Each dyadic block contributes between 1/4 and 1/2; the displayed geometric upper bound sums. No formal badge is assigned to the unlisted example.",
-      "statement_sha256": "cec59c1ce4d950223629704378c6ccf8e53637de1b4f7b279eae4073319cfe02",
-      "section": "sec:example"
-    },
-    {
-      "id": "r4.example4.01",
-      "text": "\\Needspace{9\\baselineskip}\n\\paragraph{A positive displacement.}\nSuppose that $X_A(b)=p/q$ with integers $p,q$ and $q>0$. For a positive integer $N$, multiplication by $b^N-1$ removes the complete geometric blocks from each summand, leaving\n\\begin{equation}\\label{eq:worked-displacement}\n \\Delta_{b,A}(N)=\\sum_{a\\in A}\\frac{b^{N\\bmod a}-1}{b^a-1}\n =(b^N-1)X_A(b)-J_{b,A}(N),\\qquad N\\ge1,\n\\end{equation}\nwhere $J_{b,A}(N)=\\sum_{a\\in A,\\,a\\le N}\\sum_{j=1}^{\\lfloor N/a\\rfloor}b^{N-ja}$ is an integer.",
-      "owner": "systems",
-      "class": "reported",
-      "evidence_refs": [
-        "257-proof",
-        "257-statement"
-      ],
-      "warrant": "Explains the exact displacement identity, positivity, common modulus and two-scale averaging in the existing proof; this exposition is not a newly checked Lean proof or a claim to omit the weighted hypothesis.",
-      "statement_sha256": "d0287903d0434b7cda528ed071ccf6d0de0a649ada57a23e5e352a16b53883ef",
-      "section": "sec:example"
-    },
-    {
-      "id": "r4.example4.02",
-      "text": "Every summand is nonnegative, and one is positive because the infinite set~$A$ contains an exponent larger than~$N$. Hence $q\\Delta_{b,A}(N)$ is a positive integer, and\n\\(\\Delta_{b,A}(N)\\ge1/q\\).",
-      "owner": "systems",
-      "class": "reported",
-      "evidence_refs": [
-        "257-proof",
-        "257-statement"
-      ],
-      "warrant": "Explains the exact displacement identity, positivity, common modulus and two-scale averaging in the existing proof; this exposition is not a newly checked Lean proof or a claim to omit the weighted hypothesis.",
-      "statement_sha256": "a88980bf8d3c57da0f167d40cc7721c8fcd3a8d5b0c25ddbf9d6fa16667b0657",
-      "section": "sec:example"
-    },
-    {
-      "id": "r4.example4.03",
-      "text": "We obtain a contradiction by finding a multiple $N=tQ$ with smaller displacement. Divisibility helps because the summand indexed by $a$ vanishes whenever $a\\mid Q$.",
-      "owner": "systems",
-      "class": "reported",
-      "evidence_refs": [
-        "257-proof",
-        "257-statement"
-      ],
-      "warrant": "Explains the exact displacement identity, positivity, common modulus and two-scale averaging in the existing proof; this exposition is not a newly checked Lean proof or a claim to omit the weighted hypothesis.",
-      "statement_sha256": "fdb26cb9876c414bba31875de79fc3417f40acbe795dd865f8e87224c5f946e6",
-      "section": "sec:example"
-    },
-    {
-      "id": "r4.example4.04",
-      "text": "Choose a finite nonempty $F\\subset A$ outside which the weighted sum is less than $\\varepsilon$, and make $Q$ a multiple of every element of~$F$. Those terms then disappear for every~$t$; we must control the remaining terms on average.",
-      "owner": "systems",
-      "class": "reported",
-      "evidence_refs": [
-        "257-proof",
-        "257-statement"
-      ],
-      "warrant": "Explains the exact displacement identity, positivity, common modulus and two-scale averaging in the existing proof; this exposition is not a newly checked Lean proof or a claim to omit the weighted hypothesis.",
-      "statement_sha256": "e4e3ff6dcb5d0980406d8ab3ca9eef8583a43c241c326257596228783343268a",
-      "section": "sec:example"
-    },
-    {
-      "id": "r4.example4.05",
-      "text": "\\paragraph{A finite orbit and its unfinished end.}\nWith $b=2$, $Q=4$ and $a=6$, the residues $tQ\\bmod a$ are $4,2,0$, and their mean displacement is\n\\[\n \\frac13\\left(\\frac{15}{63}+\\frac3{63}+0\\right)=\\frac2{21}\\le\\frac19\n .\n\\]\nFor a general exponent $a$, put $g=\\gcd(a,Q)$. The residues run through the multiples of~$g$ in a cycle of length $a/g$. Summing the geometric progression over complete cycles, and bounding one unfinished cycle, gives\n\\begin{equation}\\label{eq:worked-orbit}\n \\frac1T\\sum_{t=1}^T\\frac{b^{tQ\\bmod a}-1}{b^a-1}\n \\le \\underbrace{\\frac{g}{a(b^g-1)}}_{\\text{complete cycles}}\n    +\\underbrace{\\frac1{T(b^g-1)}}_{\\text{unfinished cycle}}.\n\\end{equation}",
-      "owner": "systems",
-      "class": "reported",
-      "evidence_refs": [
-        "257-proof",
-        "257-statement"
-      ],
-      "warrant": "Explains the exact displacement identity, positivity, common modulus and two-scale averaging in the existing proof; this exposition is not a newly checked Lean proof or a claim to omit the weighted hypothesis.",
-      "statement_sha256": "b7f17953dc2d0e6c2705ed2417327378434c3a23103cd11187c842d5470536f5",
-      "section": "sec:example"
-    },
-    {
-      "id": "r4.example4.06",
-      "text": "The first term has the shape of the weighted hypothesis once suitable prime powers have been put into~$Q$. The second has lost the factor $1/a$. Summability of the first therefore gives no licence to sum the unfinished-cycle bounds over all exponents. This is the difficulty that a single progression average leaves unresolved.",
-      "owner": "systems",
-      "class": "reported",
-      "evidence_refs": [
-        "257-proof",
-        "257-statement"
-      ],
-      "warrant": "Explains the exact displacement identity, positivity, common modulus and two-scale averaging in the existing proof; this exposition is not a newly checked Lean proof or a claim to omit the weighted hypothesis.",
-      "statement_sha256": "04ab3ad10d7c2661d73e622b890ba0330b6386f5b708029003ff235b095318ae",
-      "section": "sec:example"
-    },
-    {
-      "id": "r4.example4.07",
-      "text": "\\paragraph{A second average restores the missing factor.}\nThe source proof averages over $T=2^j$, $M\\le j<2M$, for a large integer $M$. For nonnegative weights $\\alpha_a$ indexed by positive integers, with $\\sum_a\\alpha_a/a<\\infty$, it uses\n\\begin{equation}\\label{eq:worked-dyadic}\n \\sum_{j=M}^{2M-1}2^{-j}\\sum_{a\\le Q2^j}\\alpha_a\n \\le 2Q\\sum_a\\frac{\\alpha_a}{a}.\n\\end{equation}\nIndeed, a fixed $a$ enters only when $2^j\\ge a/Q$, and the sum of the admissible $2^{-j}$ is at most $2Q/a$. The missing factor is recovered by changing the length of the average, before summing over~$a$.",
-      "owner": "systems",
-      "class": "reported",
-      "evidence_refs": [
-        "257-proof",
-        "257-statement"
-      ],
-      "warrant": "Explains the exact displacement identity, positivity, common modulus and two-scale averaging in the existing proof; this exposition is not a newly checked Lean proof or a claim to omit the weighted hypothesis.",
-      "statement_sha256": "04120d6cf51eb68f603e3cf1b2f7d15d782b0c10c94438c9ffa503149c4d3597",
-      "section": "sec:example"
-    },
-    {
-      "id": "r6.example.balance",
-      "owner": "systems",
-      "class": "reported",
-      "evidence_refs": [
-        "257-proof"
-      ],
-      "section": "sec:example",
-      "warrant": "Expansion of the existing weighted proof at lines 117–256: finite orbit bound, dyadic geometric-tail estimate, Q/G/M choices and tail bound; no new mathematical result or formal evidence. Type A reader-vocabulary review: Make the order of the existing scale choices explicit; the same bound appears in the source proof.",
-      "text": "To see why both averages can be made small, let $p_*=\\max P$, take $L$ divisible by~$F$, and, for $H\\ge2p_*$, set\n\\[\n Q=L\\prod_{p\\in P}p^{\\lfloor\\log_p H\\rfloor},\\qquad\n G=\\lfloor H/p_*\\rfloor,\\qquad M=\\lfloor b^{G/2}\\rfloor.\n\\]\nIf $h_P(a)\\le H$, then $h_P(a)\\mid Q$; otherwise $\\gcd(a,Q)\\ge G$. Thus the small-$h_P(a)$ terms are controlled by the weighted sum and~\\eqref{eq:worked-dyadic}, while the large-$h_P(a)$ terms gain a denominator $b^G-1$. With $F$ and its common multiple $L$ fixed, $Q\\le LH^{|P|}$, whereas $M$ grows exponentially in~$H$. Consequently $Q/M\\to0$ and $GM/b^G\\to0$. The finite mean is bounded by $\\varepsilon$ plus terms tending to zero; the exponents $a>QT$ contribute at most $4/T$. These are the two scale choices in the source proof~\\cite[Section~2]{paper257}.",
-      "statement_sha256": "528e20bed07d1b6f311365f89278124e14adf6c7e4ef05edf80c68cbe16c1f86"
-    },
-    {
-      "id": "r4.example4.08",
-      "text": "Since $\\varepsilon$ is arbitrary, one of the displacements is smaller than $1/q$, a contradiction. Passing to an infinite $B\\subseteq A$ only decreases the weighted sum, and $b^{h_P(a)}-1\\ge2^{h_P(a)}-1$ gives the all-base conclusion from the binary hypothesis~\\cite[Section~2]{paper257}.",
-      "owner": "systems",
-      "class": "reported",
-      "evidence_refs": [
-        "257-proof",
-        "257-statement"
-      ],
-      "warrant": "Explains the exact displacement identity, positivity, common modulus and two-scale averaging in the existing proof; this exposition is not a newly checked Lean proof or a claim to omit the weighted hypothesis.",
-      "statement_sha256": "2107577c05580582fd4db0bc39f8786b987ed29725d93e1a4639840b20ef64a2",
-      "section": "sec:example"
-    },
-    {
-      "id": "r4.fig.theorem",
-      "text": "\\begin{figure}[htbp]\n\\centering\n\\begin{tikzpicture}[x=1cm,y=1cm]\n\\node[sys box,text width=12.7cm,minimum height=1cm] (s) at (0,0) {\\textbf{Paper statement, with the notation and assumptions of Section~\\ref{sec:example}}\\\\\n$W_{2,P}(A)<\\infty\\ \\Longrightarrow\\ X_B(b)\\notin\\mathbb Q$\n\\quad for every infinite $B\\subseteq A$ and integer $b\\ge2$.};\n\\node[sys box,text width=4.55cm,minimum height=2.2cm] (l) at (-3.9,-2.1) {\\textbf{Registered coverage row}\\\\\\texttt{res:weighted-support}\\\\[3pt]\nExact or stronger support.\\\\Both entries required.};\n\\node[sys box,text width=5.5cm,minimum height=.9cm] (a) at (3.35,-1.45) {Weighted criterion: fixed-base and all-base\\\\\\repolink{lean/ErdosProblems/Erdos257/PaperCompleteR8/WeightedReturn.lean}{WeightedReturn.lean}};\n\\node[sys box,text width=5.5cm,minimum height=.9cm] (b) at (3.35,-2.75) {Hereditary criterion for a fixed base\\\\\\repolink{lean/ErdosProblems/Erdos257/PaperCompleteR8/WeightedHereditaryClaim.lean}{WeightedHereditaryClaim.lean}};\n\\draw[sys arrow] (s.south -| l.north)--(l.north);\n\\draw[sys arrow] (l.east)--++(.55,0)|-(a.west);\n\\draw[sys arrow] (l.east)--++(.55,0)|-(b.west);\n\\node[sys label,text width=12.8cm] at (0,-4.05) {Comparator: \\texttt{PalomarCorpus/E257} and \\texttt{E257bc}, recorded as compared.\\\\Palomar submission: prepared, not submitted. Declaration names: Appendix~\\ref{app:repro}.};\n\\node[sys box,text width=5.95cm,minimum height=1.5cm] at (-3.45,-5.6) {\\textbf{Authored explanation}\\\\$\\Delta(N)\\ge1/q$ under rationality;\\\\a finite orbit gives an end correction;\\\\dyadic lengths recover $1/a$.};\n\\node[sys box,text width=5.95cm,minimum height=1.5cm] at (3.45,-5.6) {\\textbf{False illustrative paraphrase}\\\\``Solves Problem 257.''\\\\This drops the support hypothesis\\\\even if both source links remain.};\n\\end{tikzpicture}\n\\caption{The arrows associate a paper statement with its coverage row and the two registered supports; they do not represent deductions between these records. The support hypothesis still needs mathematical explanation. The false paraphrase is illustrative, distinct from historical edit~8 in Table~\\ref{tab:mutations}.}\n\\label{fig:theorem}\n\\end{figure}\n\\FloatBarrier",
-      "owner": "systems",
-      "class": "reported",
-      "evidence_refs": [
-        "257-statement",
-        "257-proof",
-        "coverage-weighted",
-        "packet-support",
-        "historical"
-      ],
-      "warrant": "The unchanged weighted-support statement refers to the hypotheses and notation in the worked example. Both coverage-row supports and their recorded Comparator status are retained. Arrows associate records, not logical deductions. Palomar remains prepared, not submitted; the false paraphrase is explicitly illustrative.",
-      "statement_sha256": "defe9c534a170c7bd492e85c47ba17b3ee993be09a1a3f542b331070cbc46914",
-      "section": "sec:example",
-      "unit_type": "figure",
-      "caption": "The arrows associate a paper statement with its coverage row and the two registered supports; they do not represent deductions between these records. The support hypothesis still needs mathematical explanation. The false paraphrase is illustrative, distinct from historical edit~8 in Table~\\ref{tab:mutations}.",
-      "figure_title": "One theorem and its recorded support"
     },
     {
       "id": "r4.checks1.01",
-      "text": "Figure~\\ref{fig:theorem} now gives a concrete test for the publication checks. Its coverage record names two supporting Lean results. Evidence for the weighted criterion alone does not supply the complete registered set while the hereditary support is missing.",
+      "text": "The worked case has two registered formal results: one proves the restricted theorem, and the other proves its consequence for every subset (Appendix~\\ref{app:worked-proof}, Figure~\\ref{fig:theorem}). Supplying only one leaves the evidence record incomplete. Requiring both records is a publication check, not an additional hypothesis of the mathematical theorem.",
       "owner": "systems",
       "class": "implemented",
       "evidence_refs": [
-        "packet-dossier",
-        "packet-support",
-        "paper-resolver"
+        "coverage-weighted",
+        "r8-paper-resolve",
+        "r8-claim-project",
+        "r8-weighted-formal",
+        "r8-hereditary-formal"
       ],
-      "warrant": "Describes the source-binding and complete-support branches of the supplied dossier compiler and evidence resolver, not an executed full-corpus dossier build.",
-      "statement_sha256": "283727bb15ad34fc1f449a9ab1ccb56f89331d568c71ae1b40f32e9e5795f41e",
+      "warrant": "The registered coverage names a restricted-result declaration and its every-subset companion; their bodies retain their mathematical hypotheses. The resolver/projector account for the complete registered support set. This describes the current registered evidence relation without a new proof replay; requiring both records is a publication accounting requirement, not a new theorem hypothesis. Main prose is independent of the optional mathematical appendix.",
+      "statement_sha256": "9705c47ba2cc7d3f998fdb1d3b49ceb3a6b43bff65e330df752e111f9dcd72d4",
       "section": "sec:checks"
     },
     {
@@ -1289,18 +1367,15 @@
     },
     {
       "id": "r4.checks2.04",
-      "text": "For example, the last paragraph of Section~\\ref{sec:example} attributes heredity to the decrease of a nonnegative sum under restriction. Its record points to the weighted proof and explains that step. The checker compares cryptographic hashes of the text and source passage, and rejects missing records or passages without a binding.",
+      "text": "For example, the worked case concludes that the same restricted result holds for every subset. Its record points to the source proof and explains why the condition is preserved. The checker compares cryptographic hashes of the text and source passage, and rejects missing records or passages without a binding.",
       "owner": "systems",
-      "class": "reported",
+      "class": "implemented",
       "evidence_refs": [
-        "audit-code",
-        "paper-evidence",
-        "paper-resolver",
-        "257-statement",
-        "world-authority"
+        "257-proof",
+        "r8-sentence-check"
       ],
-      "warrant": "Preserves the corpus authority sentence and exact co-edit/meaning limits; the checker implementation supports mechanical binding only.",
-      "statement_sha256": "39f1c86db5c5069be3a135286f845183fd1b059e209db1a4ac15fc7fc8f6c2ca",
+      "warrant": "Uses the current restricted-result/every-subset proof as a plain example of sentence-to-source provenance. The checker verifies recorded text/source identity; this supplies neither a new proof execution nor a semantic correctness guarantee.",
+      "statement_sha256": "e429aafd070ef35135076d03a338818073e8eafe3dc8c40c9860f140623d34d3",
       "section": "sec:checks"
     },
     {
@@ -1379,47 +1454,41 @@
     },
     {
       "id": "r4.checks3.04",
-      "text": "The protocol distinguishes contributor and reviewer roles but does not require a second independent mathematician. No independent human mathematical review of the corpus is recorded.",
+      "text": "The protocol distinguishes contributor and reviewer roles but does not technically force a second independent mathematician. No independent human mathematical review of the corpus is recorded.",
       "owner": "systems",
       "class": "reported",
       "evidence_refs": [
-        "world-authority",
-        "world-limits",
-        "strategy-protocol",
-        "corpus"
+        "r8-contribution",
+        "architecture-return"
       ],
-      "warrant": "Protocol roles do not require separate actors; the paper-corpus peer-review record reports no external mathematical review. No reader or institutional acceptance is inferred.",
-      "statement_sha256": "074fc404fa437703083144e6f3df4da88433ca46360a892425e9af8a04dc6c3a",
+      "warrant": "Role separation does not technically require a second independent mathematician; absence of independent human review remains.",
+      "statement_sha256": "674345024de1fee0fbfef12f281f887d148ec781eaa1938c30fcd366576ce75d",
       "section": "sec:checks"
     },
     {
       "id": "r4.paper1.01",
-      "text": "The worked example also suggests how to write the short account: give the support condition, show a set that it reaches, and explain why incomplete periods force a second average.",
+      "text": "The worked case suggests a concrete editorial task: retain the result's conditions and scope, explain the decisive step, and link the short account to the full argument. A useful explanation lets a reader recover why the conclusion holds and where it stops applying.",
       "owner": "systems",
-      "class": "reported",
+      "class": "method",
       "evidence_refs": [
-        "packet-dossier",
-        "assembler",
-        "private-writer",
-        "private-writing-brief"
+        "writing-contract",
+        "r8-weighted-proof"
       ],
-      "warrant": "Separates inspected assembly code from author-supplied explanations and the reported writer/correspondence extensions.",
-      "statement_sha256": "27e58a19ecf8a6dfea5bb07422271c8fee5ac66e5f31c1e2ce6fe6c112c5aa88",
+      "warrant": "Names the plain editorial product: faithful conditions/scope, decisive step and recoverable full argument.",
+      "statement_sha256": "c8cdab0c7e41998e364b9a664786a66005d120106052649bc61ec0ab4efbe10b",
       "section": "sec:paper"
     },
     {
       "id": "r4.paper1.02",
-      "text": "A dependency graph locates the ingredients, but choosing this order and identifying the loss of $1/a$ are expository decisions made from the argument.",
+      "text": "A dependency graph locates the ingredients. Choosing their order and explaining their role require reading the argument; the manuscript audit supplies no such judgement.",
       "owner": "systems",
-      "class": "reported",
+      "class": "method",
       "evidence_refs": [
-        "packet-dossier",
-        "assembler",
-        "private-writer",
-        "private-writing-brief"
+        "r8-writer-boundary",
+        "r8-lookup"
       ],
-      "warrant": "Separates inspected assembly code from author-supplied explanations and the reported writer/correspondence extensions.",
-      "statement_sha256": "9dd7233fcfcecdaa9fd8c4f79774495f4baff15d51ade805aaf0c37341546e93",
+      "warrant": "Retrieval locates ingredients; ordering and explanatory judgement belong to author/reviewer.",
+      "statement_sha256": "464da7b42693ae081f546d6df48e97768ff790410f11ed8f010f7e5d36df64fb",
       "section": "sec:paper"
     },
     {
@@ -1466,6 +1535,89 @@
       "statement_sha256": "f70e838a307ede11d843df71e8c325d51e11c9d9c8d636177d6eaa0934eb5050"
     },
     {
+      "id": "r14.assignment.jobs",
+      "text": "This distinction concerns access to the repository. The assigned work is a separate choice: mathematical research, proof or claim audit, literature and attribution review, or exposition.",
+      "statement_sha256": "a4fc2749a7f4caea84ffa8b9e64b3bd14d640f41d79b9dd6dc06d68552c7f252",
+      "class": "method",
+      "evidence_refs": [
+        "writing-contract",
+        "native-writer",
+        "native-refinement"
+      ],
+      "warrant": "Type A/B is the substrate-authority axis. Task-specific requested products and acceptance are separately stated in the existing authoring contract. Exposition preserves established mathematics; new research, audit and attribution assignments retain their own scope.",
+      "section": "sec:paper"
+    },
+    {
+      "id": "r14.assignment.products",
+      "text": "Research returns candidate arguments, an audit returns source-located findings, a literature review returns attribution proposals, and exposition returns a clearer manuscript; each product has its own review and acceptance criteria.",
+      "statement_sha256": "921554178a476cce6519907a73cf551872985a2ff1fc6ff36461f1b1a129b229",
+      "class": "method",
+      "evidence_refs": [
+        "writing-contract",
+        "native-writer",
+        "native-refinement"
+      ],
+      "warrant": "Type A/B is the substrate-authority axis. Task-specific requested products and acceptance are separately stated in the existing authoring contract. Exposition preserves established mathematics; new research, audit and attribution assignments retain their own scope.",
+      "section": "sec:paper"
+    },
+    {
+      "id": "r14.assignment.exposition",
+      "text": "An exposition assignment preserves the established hypotheses, conclusions and evidence status; a suspected mathematical defect is returned for a separate audit or research assignment.",
+      "statement_sha256": "06004c4e62b32a8f9cdfffcc0653be9d67efd1748e3a310db767a2f6eecf909c",
+      "class": "method",
+      "evidence_refs": [
+        "writing-contract",
+        "native-writer",
+        "native-refinement"
+      ],
+      "warrant": "Type A/B is the substrate-authority axis. Task-specific requested products and acceptance are separately stated in the existing authoring contract. Exposition preserves established mathematics; new research, audit and attribution assignments retain their own scope.",
+      "section": "sec:paper"
+    },
+    {
+      "id": "r13.paper.07",
+      "text": "The reviewer compares hypotheses and implication directions with the whole statement and all its registered declarations. An ordinary argument retains its actual evidence class where formalisation is incomplete.",
+      "statement_sha256": "7aaea7badce69e1e10e0a942e4c4c4527bc55d3712610532a5c32fd0fbe5fc5b",
+      "class": "method",
+      "evidence_refs": [
+        "writing-contract",
+        "native-writer",
+        "native-refinement",
+        "packet-dossier"
+      ],
+      "warrant": "Reviewed against the public packet/dossier/writer implementations and editorial contract. The figure and role split describe method; code checks exact bytes and edit accounting. Mathematical interpretation, reader benefit and publication acceptance are separate obligations.",
+      "section": "sec:paper"
+    },
+    {
+      "id": "r13.paper.08",
+      "text": "After acceptance, integration requires restoring the long record's authored sections, regenerating evidence and navigation, and inspecting the compiled pages, figures and proof links.",
+      "statement_sha256": "f6174003a733ae04268ca9a13abaf8477b80673b84894832db293177e9be476f",
+      "class": "method",
+      "evidence_refs": [
+        "writing-contract",
+        "native-writer",
+        "native-refinement",
+        "packet-dossier",
+        "assembler",
+        "paper-evidence"
+      ],
+      "warrant": "The editorial integration protocol requires restoring authored long records, refreshing projections and inspecting the rendered result. Visual inspection is a review action, not a guarantee of the static return checker.",
+      "section": "sec:paper"
+    },
+    {
+      "id": "r13.paper.09",
+      "text": "A writing rule learned from the revision travels with its example and limits as a candidate. Its adoption requires a reviewed change to the owning writing contract.",
+      "statement_sha256": "87ec4fa36b223708b7238b7b724fb03e89ba97d2e79584e10cb94e13c1010d49",
+      "class": "method",
+      "evidence_refs": [
+        "writing-contract",
+        "native-writer",
+        "native-refinement",
+        "packet-dossier"
+      ],
+      "warrant": "Reviewed against the public packet/dossier/writer implementations and editorial contract. The figure and role split describe method; code checks exact bytes and edit accounting. Mathematical interpretation, reader benefit and publication acceptance are separate obligations.",
+      "section": "sec:paper"
+    },
+    {
       "id": "r13.paper.01",
       "text": "A revision begins by collecting candidate results, antecedents, difficult proof transitions and unresolved questions with their source locations.",
       "statement_sha256": "c273eacc71d5d3b14397abadbdf28af20a7e5a70d63f21cc3346627deb85e4c9",
@@ -1509,16 +1661,14 @@
     },
     {
       "id": "r13.paper.04",
-      "text": "An advisory model can return a proposal against those sources; a tool-enabled agent can prepare it in a checkout. In either case the integrating reviewer decides whether the mathematics and its description remain faithful.",
-      "statement_sha256": "ebec7406c6c9dad85be80ae946b1f5d1f52abf1947c0ea74e12283e438c6d59a",
+      "text": "An advisory model can return a proposal against those sources; a tool-enabled agent can prepare it in a checkout. In either case the integrating reviewer decides whether the mathematics and its description remain faithful. The packet declares which manuscript paths may change; its evidence records and checking tools remain read-only inputs to this editorial exchange.",
+      "statement_sha256": "285aac6f2096073a4becbb895099379663ac9d5ff9da771a3a2490088258adb5",
       "class": "method",
       "evidence_refs": [
-        "writing-contract",
-        "native-writer",
-        "native-refinement",
-        "packet-dossier"
+        "r8-exchange",
+        "r8-writer-entry"
       ],
-      "warrant": "Reviewed against the public packet/dossier/writer implementations and editorial contract. The figure and role split describe method; code checks exact bytes and edit accounting. Mathematical interpretation, reader benefit and publication acceptance are separate obligations.",
+      "warrant": "Native freeze declares editable manuscript paths while copying evidence and audit code as read-only inputs; check_return refuses edits outside that set. Reviewer adoption remains a separate decision.",
       "section": "sec:paper"
     },
     {
@@ -1567,76 +1717,16 @@
     },
     {
       "id": "r13.paper.10",
-      "text": "The packet and audit stages in Figure~\\ref{fig:refinement} are implemented by \\repolink{scripts/short_paper_writer.py}{short\\_paper\\_writer.py}. Appendix~\\ref{app:repro} specifies the protocol roles and the acceptance steps. This procedure supplies no measurement of reader benefit or autonomous discovery.",
-      "statement_sha256": "07cf024c96a54d0b4e090fc52057809e7a566a626916e2162bb47938fe503656",
-      "class": "implemented",
+      "text": "The packet and audit stages in Figure~\\ref{fig:refinement} are implemented by \\repolink{scripts/short_paper_writer.py}{short\\_paper\\_writer.py} and \\repolink{scripts/paper_refinement.py}{paper\\_refinement.py}.\n\nA return has two possible lasting effects: accepted text changes the paper; an accepted general lesson changes the guidance supplied to later writers. The latter needs its own review, so a local improvement can be retained without becoming a new rule. This process revises documents and instructions, not model weights. The procedure supplies no measurement of reader benefit or autonomous discovery.",
+      "statement_sha256": "e5a7b3b0ddae87bc8404d4d6adf222bc396546dc803f1a979c9fbf2f4b1aaf49",
+      "class": "method",
       "evidence_refs": [
+        "r8-writer-entry",
+        "r8-exchange",
         "writing-contract",
-        "native-writer",
-        "native-refinement",
-        "packet-dossier"
+        "private-writer"
       ],
-      "warrant": "Reviewed against the public packet/dossier/writer implementations and editorial contract. The figure and role split describe method; code checks exact bytes and edit accounting. Mathematical interpretation, reader benefit and publication acceptance are separate obligations.",
-      "section": "sec:paper"
-    },
-    {
-      "id": "r4.paper2.01",
-      "text": "\\Needspace{7\\baselineskip}\nThe relation to the motivating problem must also survive compression: the Problem~269 record distinguishes distinct running-LCM heights from the heights counted with multiplicity in the original question~\\cite{paper269}.",
-      "owner": "systems",
-      "class": "method",
-      "evidence_refs": [
-        "round10-contract",
-        "paper-resolver",
-        "credit-registry",
-        "257-statement"
-      ],
-      "warrant": "Applies the packet's explicit target-relation warning and complete-support rule without stating a new running-LCM theorem.",
-      "statement_sha256": "dd9d527eb464bc9cb18a398b82639171ac18c9f7c130ca108e4edbb6fba33fe2",
-      "section": "sec:paper"
-    },
-    {
-      "id": "r4.paper2.02",
-      "text": "A result about the former is not automatically a result about the latter.",
-      "owner": "systems",
-      "class": "method",
-      "evidence_refs": [
-        "round10-contract",
-        "paper-resolver",
-        "credit-registry",
-        "257-statement"
-      ],
-      "warrant": "Applies the packet's explicit target-relation warning and complete-support rule without stating a new running-LCM theorem.",
-      "statement_sha256": "be047bf5ebcaf48396e69c82ce31f611a916e35d4d4c8154a09bcc9d1f28c7b3",
-      "section": "sec:paper"
-    },
-    {
-      "id": "r4.paper2.03",
-      "text": "When a statement is sharpened, merged or moved, its complete support set and any named input must move with it, and the statement relation needs renewed review.",
-      "owner": "systems",
-      "class": "method",
-      "evidence_refs": [
-        "round10-contract",
-        "paper-resolver",
-        "credit-registry",
-        "257-statement"
-      ],
-      "warrant": "Applies the packet's explicit target-relation warning and complete-support rule without stating a new running-LCM theorem.",
-      "statement_sha256": "7bfda100b3b4385b8c7b1a37f2ed20f0eca833d9d9401c20e70a3b38c847cc3d",
-      "section": "sec:paper"
-    },
-    {
-      "id": "r4.paper2.04",
-      "text": "A new arrangement of a proof does not make its ingredients new.",
-      "owner": "systems",
-      "class": "method",
-      "evidence_refs": [
-        "round10-contract",
-        "paper-resolver",
-        "credit-registry",
-        "257-statement"
-      ],
-      "warrant": "Applies the packet's explicit target-relation warning and complete-support rule without stating a new running-LCM theorem.",
-      "statement_sha256": "8bbdf6833266d69e3786e8746ed6c0476f5906efd787e695a293b397e0d57c1b",
+      "warrant": "Proposals handled by native code; adopting text and adopting a guidance rule remain separate reviewed choices. No model-weight update or automatic lesson adoption.",
       "section": "sec:paper"
     },
     {
@@ -1717,16 +1807,16 @@
     },
     {
       "id": "r4.contribute2.01",
-      "text": "The research journal records returns and dispositions in an append-only, hash-linked history, while a correction may withdraw something previously endorsed.",
+      "text": "The research journal records explicitly entered returns and dispositions in an append-only, hash-linked history, while a correction may withdraw something previously endorsed. Ordinary issues and pull requests need not become journal events.",
       "owner": "systems",
-      "class": "reported",
+      "class": "implemented",
       "evidence_refs": [
-        "record",
-        "strategy-goals",
-        "strategy-evaluation"
+        "r8-journal",
+        "r8-journal-entry",
+        "r8-contribution"
       ],
-      "warrant": "The journal code is inspected; the coupling and appraisal are reported operating rules, not a demonstrated autonomous improvement policy.",
-      "statement_sha256": "6b4f06470cc47174f6f307bc25ce60eae89fdf6bcde0173697932dab001ba6c1",
+      "warrant": "Journal is explicitly entered structured events; ordinary issue/PR review does not imply automatic journal custody.",
+      "statement_sha256": "b55f61ccc81f5f7ecd27f008ed5eafd8c0dbc6c1dc0037542833a1d7df2766fc",
       "section": "sec:contribute"
     },
     {
@@ -1960,14 +2050,14 @@
     },
     {
       "id": "r4.obs3.02",
-      "text": "The post-repair witness accepts the intact baseline README and rejects a test copy containing the false clause.",
+      "text": "In that recorded follow-up, the post-repair witness accepts the current README and rejects a test copy containing the false clause.",
       "owner": "systems",
       "class": "reported",
       "evidence_refs": [
         "historical"
       ],
-      "warrant": "The post-repair record concerns its intact baseline and one mutated test copy. The baseline is historical; the sentence makes no claim about executing that witness against the present README.",
-      "statement_sha256": "0063ea7a676fdd6afa000adaef974c513b458de7342a8828fc86b4e4978016b1",
+      "warrant": "Current README is confined to the recorded follow-up baseline/edit-8 witness, not a new test.",
+      "statement_sha256": "e2df2ec4110545dd77f5b57a12a3d885551ab20029b56d65072187da0237637d",
       "section": "sec:instance"
     },
     {
@@ -2131,78 +2221,19 @@
       "section": "sec:related"
     },
     {
-      "id": "r4.related2.01",
-      "text": "The totient record refines Coons\\textquotesingle s non-$k$-regularity antecedent and distinguishes Martin\\textquotesingle s separation theorem from its own Chinese-remainder and Dirichlet argument traced to Yazdani~\\cite{paper249,coons,martin,yazdani}.",
+      "id": "r8.related.systems",
       "owner": "systems",
-      "class": "reported",
+      "text": "Our fixed-order regeneration and freshness checks address the build-system problem of keeping derived views consistent with their inputs~\\cite{buildsystems}. The implementation runs an explicit ordered list of builders, then checks the resulting views; it is not a general incremental scheduler. Source bindings and the journal record artifact provenance, including the inputs and revision to which a claim or entered return refers. These records serve inspection and reproducibility, with research efficiency and semantic correctness left to separate evaluation.",
+      "statement_sha256": "318c644b33442e22502a3018f877c41f49cf2b5940038e4a0a4dd56dea7ceb05",
+      "class": "method",
       "evidence_refs": [
-        "credit-registry",
-        "strategy-limits",
-        "strategy-related",
-        "coverage-1041"
+        "r8-projection-order",
+        "r8-projection-refresh",
+        "r8-journal",
+        "r8-journal-integrity",
+        "r8-sentence-check"
       ],
-      "warrant": "Preserves each inherited mathematical credit and the narrower 1041 statement/historical-correspondence limit. This is a report of the source record, not a new polynomial theorem.",
-      "statement_sha256": "464f001fb49c44a454c77a7307454f05a2503b6b4175611337e9a9bbb8c39e4b",
-      "section": "sec:related"
-    },
-    {
-      "id": "r4.related2.02",
-      "text": "The running-LCM record retains Fan\\textquotesingle s public priority for the two-prime case despite an independently reported derivation, and credits its Hecke--Mahler antecedents separately~\\cite{paper269,fan269,loxtonvdp1977,bugeaudlaurent2023}.",
-      "owner": "systems",
-      "class": "reported",
-      "evidence_refs": [
-        "credit-registry",
-        "strategy-limits",
-        "strategy-related",
-        "coverage-1041"
-      ],
-      "warrant": "Preserves each inherited mathematical credit and the narrower 1041 statement/historical-correspondence limit. This is a report of the source record, not a new polynomial theorem.",
-      "statement_sha256": "97eb250cecd959a8f1b0e38581f0d20d7be16d79a3c151bd3e74155c741d36a9",
-      "section": "sec:related"
-    },
-    {
-      "id": "r4.related2.03",
-      "text": "For Problem~1041, the public degree-seven construction is ani\\textquotesingle s; the recorded Lean result refutes the exact Formal Conjectures statement, while correspondence with the 1958 curve-length wording remains unreviewed~\\cite{aniforum,formalconjectures,fcpr,ehp1958,erdos1041}.",
-      "owner": "systems",
-      "class": "reported",
-      "evidence_refs": [
-        "credit-registry",
-        "strategy-limits",
-        "strategy-related",
-        "coverage-1041"
-      ],
-      "warrant": "Preserves each inherited mathematical credit and the narrower 1041 statement/historical-correspondence limit. This is a report of the source record, not a new polynomial theorem.",
-      "statement_sha256": "8028d9b82b20ea1c5276bae5dd229cdc1018c9c08bb29d65b932117be35813ed",
-      "section": "sec:related"
-    },
-    {
-      "id": "r4.related2.04",
-      "text": "Appendix~\\ref{app:repro} names its four recorded Lean declarations; Comparator is pending.",
-      "owner": "systems",
-      "class": "reported",
-      "evidence_refs": [
-        "credit-registry",
-        "strategy-limits",
-        "strategy-related",
-        "coverage-1041"
-      ],
-      "warrant": "Preserves each inherited mathematical credit and the narrower 1041 statement/historical-correspondence limit. This is a report of the source record, not a new polynomial theorem.",
-      "statement_sha256": "39deba313455c1a976d11e42da5ab1556554f12ae93c613378faba9e54ff32d5",
-      "section": "sec:related"
-    },
-    {
-      "id": "r4.related2.05",
-      "text": "The other seven targets remain unresolved here.",
-      "owner": "systems",
-      "class": "reported",
-      "evidence_refs": [
-        "credit-registry",
-        "strategy-limits",
-        "strategy-related",
-        "coverage-1041"
-      ],
-      "warrant": "Preserves each inherited mathematical credit and the narrower 1041 statement/historical-correspondence limit. This is a report of the source record, not a new polynomial theorem.",
-      "statement_sha256": "82d0f45f8206e16de0cf7205dea9775ec652b408da8d79989fcb31ca164212a2",
+      "warrant": "Fixed-order regeneration and freshness are described exactly; no general dynamic incremental scheduler or measured optimization is claimed. Existing Build Systems a la Carte citation credits the analogue.",
       "section": "sec:related"
     },
     {
@@ -2398,17 +2429,14 @@
     },
     {
       "id": "r4.repro1.01",
-      "text": "The initial unified manuscript was prepared from the frozen packet at \\texttt{ced96e58b337}, a local integration commit rather than public main.",
+      "text": "The initial unified manuscript was prepared from the frozen packet at \\texttt{ced96e58b337}, a local integration commit rather than public main. A 29 September state report lists this manuscript as \\emph{Problem-Sized Lean Worlds}.",
       "owner": "systems",
       "class": "reported",
       "evidence_refs": [
-        "corpus",
-        "coverage",
-        "world-limits",
-        "strategy-limits"
+        "round10-state"
       ],
-      "warrant": "Clarifies the historical provenance already carried by the incoming manuscript and ledger. The initial unified manuscript derives from ced96e58; that identifier is not presented as the current packet commit, a fresh execution pin or a public-landing receipt. Current packet identity is recorded in the returned manifest accounting.",
-      "statement_sha256": "e04a86cf5af640917a43a4accc40489673e911d0af77b50a9f68316124643e22",
+      "warrant": "Former title is an explicitly dated historical state label.",
+      "statement_sha256": "3f8f36893dbd5d3245bf97826abcd558565ee4a4e90abd0b7ff0b548990e0fa2",
       "section": "app:repro"
     },
     {
@@ -2438,16 +2466,36 @@
       "section": "app:repro"
     },
     {
+      "id": "r8.repro.historical-crosswalk",
+      "owner": "systems",
+      "text": "\\subsection{Earlier design accounts and current status}\n\\emph{\\repolink{paper/systems/cold-clone-to-proof-receipt.tex}{From a Cold Clone to a Proof Receipt}} (August 2026) explains the declaration, dependency, interpretation and claim views and the optional recorded proof session. The current task entry and the inspected implementation are described in Section~\\ref{sec:world}; the earlier paper's inventory and audit figures belong to its dated snapshot.\n\n\\emph{\\repolink{paper/systems/open-source-mathematics-strategy.tex}{From Spare Compute to Cumulative Mathematics}} (September 2026) explains contribution roles, original-base reproduction, later integration and role credit. Section~\\ref{sec:contribute} describes the current public return procedure and distinguishes ordinary submissions from explicitly entered journal events. Volunteer-compute services, inexpensive adoption by new laboratories and improvements in discovery rate remain proposals or unmeasured outcomes. These two manuscripts are historical design sources, not additional current system specifications.",
+      "statement_sha256": "48a21d8690a7bffcab4b08cc300cd4ee4e92de53b025caa4138610c6fcd889cf",
+      "class": "reported",
+      "evidence_refs": [
+        "r8-old-navigation",
+        "r8-old-authority",
+        "r8-old-navigation-limits",
+        "r8-old-contribution",
+        "r8-old-strategy-limits",
+        "r8-architecture",
+        "r8-journal-entry"
+      ],
+      "warrant": "Two older manuscripts are dated design sources with current source/protocol crosswalks. Old metrics remain snapshot facts; hosted compute and laboratory efficacy are unmeasured/proposed.",
+      "section": "app:repro"
+    },
+    {
       "id": "r4.repro2.01",
-      "text": "The weighted row in \\repolink{docs/paper_lean_coverage.json}{docs/paper\\_lean\\_coverage.json} names \\nolinkurl{divisibilityWeightedClaim} and \\nolinkurl{finitePrimeWeighted_fixedBase_hereditary}, in namespace \\nolinkurl{ErdosProblems.Erdos257.PaperCompleteR8}.",
+      "text": "The weighted row in \\repolink{docs/paper_lean_coverage.json}{docs/paper\\_lean\\_coverage.json} names \\nolinkurl{divisibilityWeightedClaim} and \\nolinkurl{finitePrimeWeighted_fixedBase_hereditary}, in namespace \\nolinkurl{ErdosProblems.Erdos257.PaperCompleteR8}. Appendix~\\ref{app:worked-proof} follows the ordinary proof in~\\cite{paper257}; these entries record formal support for the conclusion, not a line-by-line comparison of that argument with the Lean proofs.",
       "owner": "systems",
       "class": "reported",
       "evidence_refs": [
         "coverage-weighted",
-        "coverage-reciprocal"
+        "r8-weighted-proof",
+        "r8-weighted-formal",
+        "r8-hereditary-formal"
       ],
-      "warrant": "Exact names, run IDs and recorded status come from the frozen coverage rows; local source bytes and new replay are not asserted.",
-      "statement_sha256": "7c1838881463040ed1385746ad3aed8950e4653413eb0a082049dc70de4f25f9",
+      "warrant": "Registered theorem-level formal support is distinguished from this ordinary proof exposition and its different schedule.",
+      "statement_sha256": "0c5d43c5465910850e7b77e37d8c553916663e64900395d55c5f5ae82108ab53",
       "section": "app:repro"
     },
     {
@@ -2564,16 +2612,14 @@
     },
     {
       "id": "r4.repro3.04",
-      "text": "The native writing packet freezes manuscript inputs, selected records and the tools used to inspect them. It supplies no Lean source tree; source-binding validation does not replay Lean, Comparator or the full repository release checks.",
+      "text": "The public writer's native packet freezes manuscript inputs, selected records and the tools used to inspect them; its input list does not include a Lean source tree. Source-binding validation does not replay Lean, Comparator or the full repository release checks.",
       "owner": "systems",
-      "class": "method",
+      "class": "implemented",
       "evidence_refs": [
-        "native-refinement",
-        "audit-code",
-        "counts-code"
+        "r8-exchange"
       ],
-      "warrant": "paper_refinement.freeze collects manuscript input closure and its explicitly enumerated audit/evidence files, with no Lean source tree. These source-binding checks perform no Lean, Comparator or full repository release execution. This narrow native writing packet is distinct from a full mathematical research packet.",
-      "statement_sha256": "5ba8b6ea33b79293af56a8722ef1ea97beeab1d55ed9d51dd23f15b018964272",
+      "warrant": "Native public freeze uses its actual input list without a Lean tree; richer private assignment packet is distinct.",
+      "statement_sha256": "fb5cab75f480ea4e261243a48392a63ee9c8f6836adc177c3e604dc29741755d",
       "section": "app:repro"
     },
     {
@@ -2655,89 +2701,6 @@
       "section": "app:repro"
     },
     {
-      "id": "r14.assignment.jobs",
-      "text": "This distinction concerns access to the repository. The assigned work is a separate choice: mathematical research, proof or claim audit, literature and attribution review, or exposition.",
-      "statement_sha256": "a4fc2749a7f4caea84ffa8b9e64b3bd14d640f41d79b9dd6dc06d68552c7f252",
-      "class": "method",
-      "evidence_refs": [
-        "writing-contract",
-        "native-writer",
-        "native-refinement"
-      ],
-      "warrant": "Type A/B is the substrate-authority axis. Task-specific requested products and acceptance are separately stated in the existing authoring contract. Exposition preserves established mathematics; new research, audit and attribution assignments retain their own scope.",
-      "section": "app:repro"
-    },
-    {
-      "id": "r14.assignment.products",
-      "text": "Research returns candidate arguments, an audit returns source-located findings, a literature review returns attribution proposals, and exposition returns a clearer manuscript; each product has its own review and acceptance criteria.",
-      "statement_sha256": "921554178a476cce6519907a73cf551872985a2ff1fc6ff36461f1b1a129b229",
-      "class": "method",
-      "evidence_refs": [
-        "writing-contract",
-        "native-writer",
-        "native-refinement"
-      ],
-      "warrant": "Type A/B is the substrate-authority axis. Task-specific requested products and acceptance are separately stated in the existing authoring contract. Exposition preserves established mathematics; new research, audit and attribution assignments retain their own scope.",
-      "section": "app:repro"
-    },
-    {
-      "id": "r14.assignment.exposition",
-      "text": "An exposition assignment preserves the established hypotheses, conclusions and evidence status; a suspected mathematical defect is returned for a separate audit or research assignment.",
-      "statement_sha256": "06004c4e62b32a8f9cdfffcc0653be9d67efd1748e3a310db767a2f6eecf909c",
-      "class": "method",
-      "evidence_refs": [
-        "writing-contract",
-        "native-writer",
-        "native-refinement"
-      ],
-      "warrant": "Type A/B is the substrate-authority axis. Task-specific requested products and acceptance are separately stated in the existing authoring contract. Exposition preserves established mathematics; new research, audit and attribution assignments retain their own scope.",
-      "section": "app:repro"
-    },
-    {
-      "id": "r13.paper.07",
-      "text": "The reviewer compares hypotheses and implication directions with the whole statement and all its registered declarations. An ordinary argument retains its actual evidence class where formalisation is incomplete.",
-      "statement_sha256": "7aaea7badce69e1e10e0a942e4c4c4527bc55d3712610532a5c32fd0fbe5fc5b",
-      "class": "method",
-      "evidence_refs": [
-        "writing-contract",
-        "native-writer",
-        "native-refinement",
-        "packet-dossier"
-      ],
-      "warrant": "Reviewed against the public packet/dossier/writer implementations and editorial contract. The figure and role split describe method; code checks exact bytes and edit accounting. Mathematical interpretation, reader benefit and publication acceptance are separate obligations.",
-      "section": "app:repro"
-    },
-    {
-      "id": "r13.paper.08",
-      "text": "After acceptance, integration requires restoring the long record's authored sections, regenerating evidence and navigation, and inspecting the compiled pages, figures and proof links.",
-      "statement_sha256": "f6174003a733ae04268ca9a13abaf8477b80673b84894832db293177e9be476f",
-      "class": "method",
-      "evidence_refs": [
-        "writing-contract",
-        "native-writer",
-        "native-refinement",
-        "packet-dossier",
-        "assembler",
-        "paper-evidence"
-      ],
-      "warrant": "The editorial integration protocol requires restoring authored long records, refreshing projections and inspecting the rendered result. Visual inspection is a review action, not a guarantee of the static return checker.",
-      "section": "app:repro"
-    },
-    {
-      "id": "r13.paper.09",
-      "text": "A writing rule learned from the revision travels with its example and limits as a candidate. Its adoption requires a reviewed change to the owning writing contract.",
-      "statement_sha256": "87ec4fa36b223708b7238b7b724fb03e89ba97d2e79584e10cb94e13c1010d49",
-      "class": "method",
-      "evidence_refs": [
-        "writing-contract",
-        "native-writer",
-        "native-refinement",
-        "packet-dossier"
-      ],
-      "warrant": "Reviewed against the public packet/dossier/writer implementations and editorial contract. The figure and role split describe method; code checks exact bytes and edit accounting. Mathematical interpretation, reader benefit and publication acceptance are separate obligations.",
-      "section": "app:repro"
-    },
-    {
       "id": "r6.layout.credit",
       "owner": "systems",
       "class": "method",
@@ -2748,6 +2711,429 @@
       "warrant": "Non-empirical layout instruction separating the reproduction appendix and relocated source-role figure.",
       "text": "\\FloatBarrier",
       "statement_sha256": "9bba072b92bb3075aa54432298a6af9e3aa4ccd74e543d029f47d3f31f13f8ae"
+    },
+    {
+      "id": "r4.example1.01",
+      "text": "For an infinite set $A$ of positive integers and an integer $b\\ge2$, write\n\\[\n X_A(b)=\\sum_{a\\in A}\\frac1{b^a-1}.\n\\]\nThe question is when a condition on the exponents forces this number, and the corresponding sum over every infinite subset of~$A$, to be irrational.",
+      "owner": "systems",
+      "class": "reported",
+      "evidence_refs": [
+        "257-statement",
+        "coverage-weighted"
+      ],
+      "warrant": "Quotes the current source theorem with domains, finite-prime hypothesis, all-base and hereditary clauses intact. The publication ledger records formal support; no new Lean replay is claimed.",
+      "statement_sha256": "5cd75d21e8ded4bb2bf4b25a9086de7b0f6938155311bbae1ea473b2e502461d",
+      "section": "app:worked-proof"
+    },
+    {
+      "id": "r4.example1.02",
+      "text": "The condition below rewards exponents divisible by large powers of a fixed collection of primes. For the prime $2$ alone, the relevant part of $a=2^km$, with $m$ odd, is $2^k$. For a finite nonempty set $P$ of primes, this becomes $h_P(a)=\\prod_{p\\in P}p^{v_p(a)}$, where $v_p(a)$ is the exponent of $p$ in the prime factorisation of~$a$.\n\\par\\Needspace{7\\baselineskip}",
+      "owner": "systems",
+      "class": "reported",
+      "evidence_refs": [
+        "257-statement",
+        "r8-weighted-proof"
+      ],
+      "warrant": "Explicit v_p definition only; existing weighted theorem body and logical scope unchanged.",
+      "statement_sha256": "0a7d378210c911fda242438ac8026de1e77b0ea47bddf130ef1b993961fd2afb",
+      "section": "app:worked-proof"
+    },
+    {
+      "id": "r4.example1.03",
+      "text": "The weighted-support theorem of the Problem~257 paper states that, if\n\\begin{equation}\\label{eq:worked-condition}\n W_{2,P}(A):=\\sum_{a\\in A}\\frac{h_P(a)}{a(2^{h_P(a)}-1)}<\\infty,\n\\end{equation}\nthen $X_B(b)$ is irrational for every integer $b\\ge2$ and every infinite $B\\subseteq A$~\\cite[Theorem~1.2]{paper257}.",
+      "owner": "systems",
+      "class": "reported",
+      "evidence_refs": [
+        "257-statement",
+        "coverage-weighted"
+      ],
+      "warrant": "Quotes the current source theorem with domains, finite-prime hypothesis, all-base and hereditary clauses intact. The publication ledger records formal support; no new Lean replay is claimed.",
+      "statement_sha256": "9020896c6f04f8389b7c72c99d11a7c396587f3e3d524d393c36a3bdcba5311d",
+      "section": "app:worked-proof"
+    },
+    {
+      "id": "r4.example1.04",
+      "text": "For a fixed base $b$, write $W_{b,P}(A)$ for the sum in~\\eqref{eq:worked-condition} with $2$ replaced by~$b$. The fixed-base version assumes $W_{b,P}(A)<\\infty$ and gives the same hereditary conclusion at that base. Figure~\\ref{fig:theorem} locates the two registered Lean supports; Appendix~\\ref{app:worked-proof} explains the ordinary argument. Their recorded status does not report a new comparison of source revisions, Lean build or Comparator run. Comparator checks a selected Lean implementation against a separately stated challenge, as described in Section~\\ref{sec:checks}.",
+      "owner": "systems",
+      "class": "reported",
+      "evidence_refs": [
+        "257-statement",
+        "coverage-weighted",
+        "r8-weighted-proof",
+        "r8-weighted-formal",
+        "r8-hereditary-formal"
+      ],
+      "warrant": "Fixed-base notation and appendix pointer clarified; recorded endpoints remain recorded, not newly executed or joined across revisions.",
+      "statement_sha256": "0b3172231f96a678517db8c9497d52eae54ee3004bd1cdcb05fe2eb9e411062a",
+      "section": "app:worked-proof"
+    },
+    {
+      "id": "r4.example1.05",
+      "text": "This is a sufficient condition on the support; the question for an arbitrary infinite set of exponents in base two remains open.",
+      "owner": "systems",
+      "class": "reported",
+      "evidence_refs": [
+        "257-statement",
+        "coverage-weighted"
+      ],
+      "warrant": "Quotes the current source theorem with domains, finite-prime hypothesis, all-base and hereditary clauses intact. The publication ledger records formal support; no new Lean replay is claimed.",
+      "statement_sha256": "b917ab0bcbdfa433774fe6b64e9d2c0375fd253322e1d628a8b0215e33ca5245",
+      "section": "app:worked-proof"
+    },
+    {
+      "id": "r4.example2.01",
+      "text": "Erd\\H{o}s had already stated that $\\sum_{a\\in A}1/a<\\infty$ suffices for this all-base irrationality conclusion~\\cite[p.~222]{erdos1968}.",
+      "owner": "systems",
+      "class": "reported",
+      "evidence_refs": [
+        "257-reciprocal",
+        "257-statement",
+        "coverage-reciprocal"
+      ],
+      "warrant": "Keeps the inherited reciprocal criterion, exact formal antecedent and the source paper's averaging attribution separate from the weighted extension.",
+      "statement_sha256": "4e512071e44cc226a1300caa2ff2f78361e1d773cdfc265d73a6267ce67413c3",
+      "section": "app:worked-proof"
+    },
+    {
+      "id": "r4.example2.03",
+      "text": "The source paper credits Duverney and Tachiya for an arithmetic-progression averaging argument of the kind used to select a small positive displacement~\\cite[Section~2, (2.3)--(2.9)]{duverneytachiya}.",
+      "owner": "systems",
+      "class": "reported",
+      "evidence_refs": [
+        "257-reciprocal",
+        "257-statement",
+        "coverage-reciprocal"
+      ],
+      "warrant": "Keeps the inherited reciprocal criterion, exact formal antecedent and the source paper's averaging attribution separate from the weighted extension.",
+      "statement_sha256": "a85a16fcc13391bf42ddc77713b0a0ae22afa711c622d873ede266e27ba71e26",
+      "section": "app:worked-proof"
+    },
+    {
+      "id": "r4.fig.theorem",
+      "text": "\\begin{figure}[htbp]\n\\centering\n\\begin{tikzpicture}[x=1cm,y=1cm]\n\\node[sys box,text width=12.7cm,minimum height=1cm] (s) at (0,0) {\\textbf{Paper statement, with the notation and assumptions of Appendix~\\ref{app:worked-proof}}\\\\\n$W_{2,P}(A)<\\infty\\ \\Longrightarrow\\ X_B(b)\\notin\\mathbb Q$\n\\quad for every infinite $B\\subseteq A$ and integer $b\\ge2$.};\n\\node[sys box,text width=4.55cm,minimum height=2.2cm] (l) at (-3.9,-2.1) {\\textbf{Registered coverage row}\\\\\\texttt{res:weighted-support}\\\\[3pt]\nExact or stronger support.\\\\Both entries required.};\n\\node[sys box,text width=5.5cm,minimum height=.9cm] (a) at (3.35,-1.45) {Weighted criterion: fixed-base and all-base\\\\\\repolink{lean/ErdosProblems/Erdos257/PaperCompleteR8/WeightedReturn.lean}{WeightedReturn.lean}};\n\\node[sys box,text width=5.5cm,minimum height=.9cm] (b) at (3.35,-2.75) {Hereditary criterion for a fixed base\\\\\\repolink{lean/ErdosProblems/Erdos257/PaperCompleteR8/WeightedHereditaryClaim.lean}{WeightedHereditaryClaim.lean}};\n\\draw[sys arrow] (s.south -| l.north)--(l.north);\n\\draw[sys arrow] (l.east)--++(.55,0)|-(a.west);\n\\draw[sys arrow] (l.east)--++(.55,0)|-(b.west);\n\\node[sys label,text width=12.8cm] at (0,-4.05) {Comparator: \\texttt{PalomarCorpus/E257} and \\texttt{E257bc}, recorded as compared.\\\\Palomar submission: prepared, not submitted. Declaration names: Appendix~\\ref{app:repro}.};\n\\node[sys box,text width=5.95cm,minimum height=1.5cm] at (-3.45,-5.6) {\\textbf{Authored explanation}\\\\$\\Delta(N)\\ge1/q$ under rationality;\\\\a finite orbit gives an end correction;\\\\dyadic lengths recover $1/a$.};\n\\node[sys box,text width=5.95cm,minimum height=1.5cm] at (3.45,-5.6) {\\textbf{False illustrative paraphrase}\\\\``Solves Problem 257.''\\\\This drops the support hypothesis\\\\even if both source links remain.};\n\\end{tikzpicture}\n\\caption{The arrows associate a paper statement with its coverage row and the two registered supports; they do not represent deductions between these records. The support hypothesis still needs mathematical explanation. The false paraphrase is illustrative, distinct from historical edit~8 in Table~\\ref{tab:mutations}.}\n\\label{fig:theorem}\n\\end{figure}\n\\FloatBarrier",
+      "owner": "systems",
+      "class": "reported",
+      "evidence_refs": [
+        "coverage-weighted",
+        "257-statement"
+      ],
+      "warrant": "Only relocates the figure and changes its local notation pointer from main section to technical appendix; formal source IDs and theorem formula retained.",
+      "statement_sha256": "e58c71dc87061b932ab1e5173af6cae28d476e0e6f1f342a1bc18d57f737299c",
+      "section": "app:worked-proof",
+      "unit_type": "figure",
+      "caption": "The arrows associate a paper statement with its coverage row and the two registered supports; they do not represent deductions between these records. The support hypothesis still needs mathematical explanation. The false paraphrase is illustrative, distinct from historical edit~8 in Table~\\ref{tab:mutations}.",
+      "figure_title": "One theorem and its recorded support"
+    },
+    {
+      "id": "r8.appendix.proof-scope",
+      "owner": "systems",
+      "text": "This appendix retains the ordinary calculation from the Problem~257 paper used by the worked case in Section~\\ref{sec:example}. The recorded Lean declarations support its conclusion; they are not a newly executed line-by-line verification of this exposition.",
+      "statement_sha256": "31bacd5c43a3baaaa339ede0a22641c4085fcc83210ee016a109dda1aba32224",
+      "class": "reported",
+      "evidence_refs": [
+        "r8-weighted-proof",
+        "r8-weighted-formal",
+        "r8-hereditary-formal"
+      ],
+      "warrant": "Existing ordinary calculation remains optional; theorem-level formal endpoints do not line-by-line certify its exposition.",
+      "section": "app:worked-proof"
+    },
+    {
+      "id": "r4.example3.01",
+      "text": "The distinction from the reciprocal-summability criterion is visible in the source paper's example\n\\[\n A_\\star=\\{2^km:k\\ge1,\\ m\\text{ odd},\\ 1\\le m\\le2^{2^k}\\},\\qquad P=\\{2\\}.\n\\]\nWithin the layer $v_2(a)=k$, reciprocal summation discounts each odd $m$ by $2^{-k}$; weighted summation discounts it by $(2^{2^k}-1)^{-1}$.",
+      "owner": "systems",
+      "class": "reported",
+      "evidence_refs": [
+        "257-example"
+      ],
+      "warrant": "Reconstructs the supplied A-star layer calculation. Each dyadic block contributes between 1/4 and 1/2; the displayed geometric upper bound sums. No formal badge is assigned to the unlisted example.",
+      "statement_sha256": "64a90d156ea109c908fd8682ec79c7ce323d6f349737763f9fdc756d158e0fbc",
+      "section": "app:worked-proof"
+    },
+    {
+      "id": "r4.example3.02",
+      "text": "To compare the layers, put $S_r=\\sum_{1\\le m\\le2^r,\\ m\\ \\mathrm{odd}}1/m$. Grouping the odd integers into intervals $[2^j,2^{j+1})$ gives $r/4\\le S_r\\le r$ for integers $r\\ge2$.",
+      "owner": "systems",
+      "class": "reported",
+      "evidence_refs": [
+        "257-example"
+      ],
+      "warrant": "Reconstructs the supplied A-star layer calculation. Each dyadic block contributes between 1/4 and 1/2; the displayed geometric upper bound sums. No formal badge is assigned to the unlisted example.",
+      "statement_sha256": "9f9baaf9e40f6505643857f446c21e50a1ed4cdcfbe592361dd43cdc8dd3be49",
+      "section": "app:worked-proof"
+    },
+    {
+      "id": "r4.example3.03",
+      "text": "The reciprocal contribution of each disjoint layer is at least $2^{-k}S_{2^k}\\ge1/4$. Its weighted contribution satisfies\n\\[\n \\frac{S_{2^k}}{2^{2^k}-1}\\le\\frac{2^k}{2^{2^k}-1}\\le2^{1-k},\n\\]\nso the layer contributions have a convergent geometric majorant in the weighted sum.",
+      "owner": "systems",
+      "class": "reported",
+      "evidence_refs": [
+        "257-example"
+      ],
+      "warrant": "Reconstructs the supplied A-star layer calculation. Each dyadic block contributes between 1/4 and 1/2; the displayed geometric upper bound sums. No formal badge is assigned to the unlisted example.",
+      "statement_sha256": "262d7fe38f63d92fb881afbc17667b3186c355771bd2ed813f42d0f0cb97bc42",
+      "section": "app:worked-proof"
+    },
+    {
+      "id": "r4.example3.04",
+      "text": "Thus $A_\\star$ lies beyond the reciprocal-summability criterion but satisfies~\\eqref{eq:worked-condition}. This is the source paper's ordinary calculation, with no separate entry in the paper-to-Lean ledger~\\cite[calculation following the weighted proof]{paper257}.",
+      "owner": "systems",
+      "class": "reported",
+      "evidence_refs": [
+        "257-example"
+      ],
+      "warrant": "Reconstructs the supplied A-star layer calculation. Each dyadic block contributes between 1/4 and 1/2; the displayed geometric upper bound sums. No formal badge is assigned to the unlisted example.",
+      "statement_sha256": "cec59c1ce4d950223629704378c6ccf8e53637de1b4f7b279eae4073319cfe02",
+      "section": "app:worked-proof"
+    },
+    {
+      "id": "r4.example4.01",
+      "text": "\\Needspace{9\\baselineskip}\n\\paragraph{A positive displacement.}\nSuppose that $X_A(b)=p/q$ with integers $p,q$ and $q>0$. For a positive integer $N$, multiplication by $b^N-1$ removes the complete geometric blocks from each summand, leaving\n\\begin{equation}\\label{eq:worked-displacement}\n \\Delta_{b,A}(N)=\\sum_{a\\in A}\\frac{b^{N\\bmod a}-1}{b^a-1}\n =(b^N-1)X_A(b)-J_{b,A}(N),\\qquad N\\ge1,\n\\end{equation}\nwhere $J_{b,A}(N)=\\sum_{a\\in A,\\,a\\le N}\\sum_{j=1}^{\\lfloor N/a\\rfloor}b^{N-ja}$ is an integer.",
+      "owner": "systems",
+      "class": "reported",
+      "evidence_refs": [
+        "257-proof",
+        "257-statement"
+      ],
+      "warrant": "Explains the exact displacement identity, positivity, common modulus and two-scale averaging in the existing proof; this exposition is not a newly checked Lean proof or a claim to omit the weighted hypothesis.",
+      "statement_sha256": "d0287903d0434b7cda528ed071ccf6d0de0a649ada57a23e5e352a16b53883ef",
+      "section": "app:worked-proof"
+    },
+    {
+      "id": "r4.example4.02",
+      "text": "Every summand is nonnegative, and one is positive because the infinite set~$A$ contains an exponent larger than~$N$. Hence $q\\Delta_{b,A}(N)$ is a positive integer, and\n\\(\\Delta_{b,A}(N)\\ge1/q\\).",
+      "owner": "systems",
+      "class": "reported",
+      "evidence_refs": [
+        "257-proof",
+        "257-statement"
+      ],
+      "warrant": "Explains the exact displacement identity, positivity, common modulus and two-scale averaging in the existing proof; this exposition is not a newly checked Lean proof or a claim to omit the weighted hypothesis.",
+      "statement_sha256": "a88980bf8d3c57da0f167d40cc7721c8fcd3a8d5b0c25ddbf9d6fa16667b0657",
+      "section": "app:worked-proof"
+    },
+    {
+      "id": "r4.example4.03",
+      "text": "We obtain a contradiction by finding a multiple $N=tQ$ with smaller displacement. Divisibility helps because the summand indexed by $a$ vanishes whenever $a\\mid Q$.",
+      "owner": "systems",
+      "class": "reported",
+      "evidence_refs": [
+        "257-proof",
+        "257-statement"
+      ],
+      "warrant": "Explains the exact displacement identity, positivity, common modulus and two-scale averaging in the existing proof; this exposition is not a newly checked Lean proof or a claim to omit the weighted hypothesis.",
+      "statement_sha256": "fdb26cb9876c414bba31875de79fc3417f40acbe795dd865f8e87224c5f946e6",
+      "section": "app:worked-proof"
+    },
+    {
+      "id": "r4.example4.04",
+      "text": "Choose a finite nonempty $F\\subset A$ outside which the weighted sum is less than $\\varepsilon$, and make $Q$ a multiple of every element of~$F$. Those terms then disappear for every~$t$; we must control the remaining terms on average.",
+      "owner": "systems",
+      "class": "reported",
+      "evidence_refs": [
+        "257-proof",
+        "257-statement"
+      ],
+      "warrant": "Explains the exact displacement identity, positivity, common modulus and two-scale averaging in the existing proof; this exposition is not a newly checked Lean proof or a claim to omit the weighted hypothesis.",
+      "statement_sha256": "e4e3ff6dcb5d0980406d8ab3ca9eef8583a43c241c326257596228783343268a",
+      "section": "app:worked-proof"
+    },
+    {
+      "id": "r4.example4.05",
+      "text": "\\paragraph{A finite orbit and its unfinished end.}\nWith $b=2$, $Q=4$ and $a=6$, the residues $tQ\\bmod a$ are $4,2,0$, and their mean displacement is\n\\[\n \\frac13\\left(\\frac{15}{63}+\\frac3{63}+0\\right)=\\frac2{21}\\le\\frac19.\n\\]\nFor a general exponent $a$, put $g=\\gcd(a,Q)$. The residues run through the multiples of~$g$ in a cycle of length $a/g$. Replacing each numerator $b^r-1$ by $b^r$ bounds the sum over one cycle by $1/(b^g-1)$. There are at most $T/(a/g)$ complete cycles and one unfinished cycle among the first $T$ terms. Dividing their total by~$T$ gives\n\\begin{equation}\\label{eq:worked-orbit}\n \\frac1T\\sum_{t=1}^T\\frac{b^{tQ\\bmod a}-1}{b^a-1}\n \\le \\underbrace{\\frac{g}{a(b^g-1)}}_{\\text{complete cycles}}\n    +\\underbrace{\\frac1{T(b^g-1)}}_{\\text{unfinished cycle}}.\n\\end{equation}",
+      "owner": "systems",
+      "class": "reported",
+      "evidence_refs": [
+        "r8-weighted-proof"
+      ],
+      "warrant": "Existing finite-orbit bound expanded by geometric majorant and division by progression length T; no new inequality.",
+      "statement_sha256": "e4c60e3d0c4b11666ead054b3c7cc49aebaf4801f91a15efb6e86e1582c15632",
+      "section": "app:worked-proof"
+    },
+    {
+      "id": "r4.example4.06",
+      "text": "The first term has the shape of the weighted hypothesis once suitable prime powers have been put into~$Q$. The second has lost the factor $1/a$. Summability of the first therefore gives no licence to sum the unfinished-cycle bounds over all exponents. This is the difficulty that a single progression average leaves unresolved.",
+      "owner": "systems",
+      "class": "reported",
+      "evidence_refs": [
+        "257-proof",
+        "257-statement"
+      ],
+      "warrant": "Explains the exact displacement identity, positivity, common modulus and two-scale averaging in the existing proof; this exposition is not a newly checked Lean proof or a claim to omit the weighted hypothesis.",
+      "statement_sha256": "04ab3ad10d7c2661d73e622b890ba0330b6386f5b708029003ff235b095318ae",
+      "section": "app:worked-proof"
+    },
+    {
+      "id": "r4.example4.07",
+      "text": "\\paragraph{A second average restores the missing factor.}\nThe source proof averages over the $M$ lengths $T=2^j$, $M\\le j<2M$. Thus $M$ counts the lengths being averaged, whereas $T$ counts the terms in one progression average. For nonnegative weights $\\alpha_a$ indexed by positive integers, with $\\sum_a\\alpha_a/a<\\infty$, it uses\n\\begin{equation}\\label{eq:worked-dyadic}\n \\sum_{j=M}^{2M-1}2^{-j}\\sum_{a\\le Q2^j}\\alpha_a\n \\le 2Q\\sum_a\\frac{\\alpha_a}{a}.\n\\end{equation}\nIndeed, a fixed $a$ enters only when $2^j\\ge a/Q$, and the sum of the admissible $2^{-j}$ is at most $2Q/a$. This recovers the missing factor before summing over~$a$. Dividing by the number $M$ of lengths then reduces the cost from $2Q$ to $2Q/M$.",
+      "owner": "systems",
+      "class": "reported",
+      "evidence_refs": [
+        "r8-weighted-proof"
+      ],
+      "warrant": "Separates progression length T from the number M of dyadic lengths, including the essential division by M.",
+      "statement_sha256": "05318b387468fcfe3c4b335d149c842e950bf9c8513161eb3d6fad17d071f69f",
+      "section": "app:worked-proof"
+    },
+    {
+      "id": "r6.example.balance",
+      "owner": "systems",
+      "class": "reported",
+      "evidence_refs": [
+        "r8-weighted-proof"
+      ],
+      "section": "app:worked-proof",
+      "warrant": "Copies the existing ordinary source schedule, gcd cases and finite mean; no new estimate or exact formal-proof correspondence.",
+      "text": "\\paragraph{Balancing the two costs.}\nThe modulus must cancel $F$ while making the remaining exponents amenable to one of two estimates. Fix a positive common multiple $L$ of~$F$, put $p_*=\\max P$, and, for $H\\ge2p_*$, set\n\\[\n Q=L\\prod_{p\\in P}p^{\\lfloor\\log_p H\\rfloor},\\qquad\n G=\\lfloor H/p_*\\rfloor.\n\\]\nIf $h_P(a)\\le H$, then $h_P(a)\\mid Q$. Since $n/(b^n-1)$ decreases for positive integers~$n$, the complete-cycle term in~\\eqref{eq:worked-orbit} is bounded by $h_P(a)/[a(b^{h_P(a)}-1)]$. Its sum outside~$F$ is less than $\\varepsilon$.\n\nIf $h_P(a)>H$, then $\\gcd(a,Q)\\ge G$: either every $P$-prime-power component of $h_P(a)$ is at most $H$, so $h_P(a)\\mid Q$, or one exceeds $H$, and its truncated component in $Q$ is greater than $H/p_*\\ge G$. Summing~\\eqref{eq:worked-orbit} over these exponents up to $QT$ costs at most\n\\[\n \\frac{G(1+\\log(QT))+Q}{b^G-1}:\n\\]\nthe harmonic sum supplies $1+\\log(QT)$, and at most $QT$ unfinished-cycle terms supply~$Q$.\n\nIncreasing $M$ therefore has two effects. It reduces the first group's unfinished-cycle cost $Q/M$, but increases the second group's cost through $\\log T<2M\\log2$. We need both $Q/M\\to0$ and $GM/b^G\\to0$, not merely a long average. With $F$ and $L$ fixed, $Q\\le LH^{|P|}$ and $G=H/p_*+O(1)$. The choice $M=\\lfloor b^{G/2}\\rfloor$ meets both requirements.\n\nThe source proof combines these estimates into the finite mean\n\\begin{equation}\\label{eq:worked-mean}\n\\begin{aligned}\n &\\frac1M\\sum_{j=M}^{2M-1}\\frac1{2^j}\n       \\sum_{t=1}^{2^j}\\Delta_{b,A}(tQ)\\\\\n &\\qquad\\le \\varepsilon+\\frac{2QW_{b,P}(A)}M\n       +\\frac{G(1+\\log Q+2M\\log2)+Q}{b^G-1}+4\\,2^{-M}.\n\\end{aligned}\n\\end{equation}\nThe terms bound, respectively, the weighted tail over complete cycles, its unfinished cycles, the exponents with large gcd, and the exponents beyond $QT$. The second term uses~\\eqref{eq:worked-dyadic} with $\\alpha_a=\\mathbf1_A(a)/(b^{h_P(a)}-1)$; the last uses the geometric tail bound $4/T$. After $\\varepsilon$, $F$ and $L$ have been fixed, every term after $\\varepsilon$ tends to zero as $H\\to\\infty$~\\cite[Section~2, weighted-support proof]{paper257}.",
+      "statement_sha256": "4889f83299c1924e536d3702ace44e096b2d7b6485059389826119204c252c8e"
+    },
+    {
+      "id": "r4.example4.08",
+      "text": "The left side of~\\eqref{eq:worked-mean} is an average with nonnegative weights summing to one: each length has weight $1/M$, distributed equally among its $2^j$ terms. For large $H$, at least one displacement is therefore less than $2\\varepsilon$. Taking $0<\\varepsilon<1/(2q)$ contradicts the lower bound $1/q$. This argument gives no rate of decay in~$N$. Passing to an infinite $B\\subseteq A$ only decreases the weighted sum, and $b^{h_P(a)}-1\\ge2^{h_P(a)}-1$ gives the all-base conclusion from the binary hypothesis~\\cite[Section~2]{paper257}.",
+      "owner": "systems",
+      "class": "reported",
+      "evidence_refs": [
+        "r8-weighted-proof",
+        "r8-hereditary-formal"
+      ],
+      "warrant": "Clarifies normalized finite weights and epsilon choice; no selected-index rate of decay and no stronger hereditary conclusion.",
+      "statement_sha256": "1ee6262b4756ee637009356d7b9c0d6f8df8c3d9812b2ff5db563180bcf3fab2",
+      "section": "app:worked-proof"
+    },
+    {
+      "id": "r4.paper2.01",
+      "text": "\\Needspace{7\\baselineskip}\nThe relation to the motivating problem must also survive compression: the Problem~269 record distinguishes distinct running-LCM heights from the heights counted with multiplicity in the original question~\\cite{paper269}.",
+      "owner": "systems",
+      "class": "method",
+      "evidence_refs": [
+        "round10-contract",
+        "paper-resolver",
+        "credit-registry",
+        "257-statement"
+      ],
+      "warrant": "Applies the packet's explicit target-relation warning and complete-support rule without stating a new running-LCM theorem.",
+      "statement_sha256": "dd9d527eb464bc9cb18a398b82639171ac18c9f7c130ca108e4edbb6fba33fe2",
+      "section": "app:worked-proof"
+    },
+    {
+      "id": "r4.paper2.02",
+      "text": "A result about the former is not automatically a result about the latter.",
+      "owner": "systems",
+      "class": "method",
+      "evidence_refs": [
+        "round10-contract",
+        "paper-resolver",
+        "credit-registry",
+        "257-statement"
+      ],
+      "warrant": "Applies the packet's explicit target-relation warning and complete-support rule without stating a new running-LCM theorem.",
+      "statement_sha256": "be047bf5ebcaf48396e69c82ce31f611a916e35d4d4c8154a09bcc9d1f28c7b3",
+      "section": "app:worked-proof"
+    },
+    {
+      "id": "r4.paper2.03",
+      "text": "When a statement is sharpened, merged or moved, its complete support set and any named input must move with it, and the statement relation needs renewed review.",
+      "owner": "systems",
+      "class": "method",
+      "evidence_refs": [
+        "round10-contract",
+        "paper-resolver",
+        "credit-registry",
+        "257-statement"
+      ],
+      "warrant": "Applies the packet's explicit target-relation warning and complete-support rule without stating a new running-LCM theorem.",
+      "statement_sha256": "7bfda100b3b4385b8c7b1a37f2ed20f0eca833d9d9401c20e70a3b38c847cc3d",
+      "section": "app:worked-proof"
+    },
+    {
+      "id": "r4.paper2.04",
+      "text": "A new arrangement of a proof does not make its ingredients new.",
+      "owner": "systems",
+      "class": "method",
+      "evidence_refs": [
+        "round10-contract",
+        "paper-resolver",
+        "credit-registry",
+        "257-statement"
+      ],
+      "warrant": "Applies the packet's explicit target-relation warning and complete-support rule without stating a new running-LCM theorem.",
+      "statement_sha256": "8bbdf6833266d69e3786e8746ed6c0476f5906efd787e695a293b397e0d57c1b",
+      "section": "app:worked-proof"
+    },
+    {
+      "id": "r4.related2.01",
+      "text": "The totient record refines Coons\\textquotesingle s non-$k$-regularity antecedent and distinguishes Martin\\textquotesingle s separation theorem from its own Chinese-remainder and Dirichlet argument traced to Yazdani~\\cite{paper249,coons,martin,yazdani}.",
+      "owner": "systems",
+      "class": "reported",
+      "evidence_refs": [
+        "credit-registry",
+        "strategy-limits",
+        "strategy-related",
+        "coverage-1041"
+      ],
+      "warrant": "Preserves each inherited mathematical credit and the narrower 1041 statement/historical-correspondence limit. This is a report of the source record, not a new polynomial theorem.",
+      "statement_sha256": "464f001fb49c44a454c77a7307454f05a2503b6b4175611337e9a9bbb8c39e4b",
+      "section": "app:worked-proof"
+    },
+    {
+      "id": "r4.related2.02",
+      "text": "The running-LCM record retains Fan\\textquotesingle s public priority for the two-prime case despite an independently reported derivation, and credits its Hecke--Mahler antecedents separately~\\cite{paper269,fan269,loxtonvdp1977,bugeaudlaurent2023}.",
+      "owner": "systems",
+      "class": "reported",
+      "evidence_refs": [
+        "credit-registry",
+        "strategy-limits",
+        "strategy-related",
+        "coverage-1041"
+      ],
+      "warrant": "Preserves each inherited mathematical credit and the narrower 1041 statement/historical-correspondence limit. This is a report of the source record, not a new polynomial theorem.",
+      "statement_sha256": "97eb250cecd959a8f1b0e38581f0d20d7be16d79a3c151bd3e74155c741d36a9",
+      "section": "app:worked-proof"
+    },
+    {
+      "id": "r4.related2.03",
+      "text": "For Problem~1041, the public degree-seven construction is ani\\textquotesingle s; the recorded Lean result refutes the exact Formal Conjectures statement, while correspondence with the 1958 curve-length wording remains unreviewed~\\cite{aniforum,formalconjectures,fcpr,ehp1958,erdos1041}.",
+      "owner": "systems",
+      "class": "reported",
+      "evidence_refs": [
+        "credit-registry",
+        "strategy-limits",
+        "strategy-related",
+        "coverage-1041"
+      ],
+      "warrant": "Preserves each inherited mathematical credit and the narrower 1041 statement/historical-correspondence limit. This is a report of the source record, not a new polynomial theorem.",
+      "statement_sha256": "8028d9b82b20ea1c5276bae5dd229cdc1018c9c08bb29d65b932117be35813ed",
+      "section": "app:worked-proof"
+    },
+    {
+      "id": "r4.related2.04",
+      "text": "Appendix~\\ref{app:repro} names its four recorded Lean declarations; Comparator is pending.",
+      "owner": "systems",
+      "class": "reported",
+      "evidence_refs": [
+        "credit-registry",
+        "strategy-limits",
+        "strategy-related",
+        "coverage-1041"
+      ],
+      "warrant": "Preserves each inherited mathematical credit and the narrower 1041 statement/historical-correspondence limit. This is a report of the source record, not a new polynomial theorem.",
+      "statement_sha256": "39deba313455c1a976d11e42da5ab1556554f12ae93c613378faba9e54ff32d5",
+      "section": "app:worked-proof"
+    },
+    {
+      "id": "r4.related2.05",
+      "text": "The other seven targets remain unresolved here.",
+      "owner": "systems",
+      "class": "reported",
+      "evidence_refs": [
+        "credit-registry",
+        "strategy-limits",
+        "strategy-related",
+        "coverage-1041"
+      ],
+      "warrant": "Preserves each inherited mathematical credit and the narrower 1041 statement/historical-correspondence limit. This is a report of the source record, not a new polynomial theorem.",
+      "statement_sha256": "82d0f45f8206e16de0cf7205dea9775ec652b408da8d79989fcb31ca164212a2",
+      "section": "app:worked-proof"
     },
     {
       "id": "r4.fig.credit",
@@ -2778,17 +3164,14 @@
       "id": "lifecycle",
       "title": "The life of one claim",
       "sentence_unit": "r4.fig.lifecycle",
-      "caption": "From accumulated work to a paper and subsequent revision. Solid arrows show the publication sequence, not logical implication or automatic approval. Comparing the complete registered support set does not execute a new formal proof or establish that the prose has the intended meaning.",
+      "caption": "From accumulated work to a paper and subsequent revision. Solid arrows show a sequence of responsibilities rather than logical implication or automatic approval. The source and evidence records support review; they do not establish the intended meaning of the prose.",
       "source_refs": [
-        "packet-dossier",
-        "packet-support",
-        "assembler",
-        "record",
-        "credit",
-        "strategy-protocol",
-        "coverage-weighted"
+        "r8-architecture",
+        "r8-contribution",
+        "r8-journal",
+        "r8-exchange"
       ],
-      "body_sha256": "ff1bd53dfb7caec519b99703e5ae560b864428e1efa481f9cadbe1df1750f779"
+      "body_sha256": "86a3c690015724455c4d3ba684cd28b66c5ab1b78d2fce3a25987707edf6f275"
     },
     {
       "id": "world",
@@ -2809,13 +3192,10 @@
       "sentence_unit": "r4.fig.theorem",
       "caption": "The arrows associate a paper statement with its coverage row and the two registered supports; they do not represent deductions between these records. The support hypothesis still needs mathematical explanation. The false paraphrase is illustrative, distinct from historical edit~8 in Table~\\ref{tab:mutations}.",
       "source_refs": [
-        "257-statement",
-        "257-proof",
         "coverage-weighted",
-        "packet-support",
-        "historical"
+        "257-statement"
       ],
-      "body_sha256": "defe9c534a170c7bd492e85c47ba17b3ee993be09a1a3f542b331070cbc46914"
+      "body_sha256": "e58c71dc87061b932ab1e5173af6cae28d476e0e6f1f342a1bc18d57f737299c"
     },
     {
       "id": "checks",
@@ -2885,5 +3265,5 @@
     "formal_status": "Quoted existing theorem is class reported, linked to coverage rows; no formal class is recognised by this checker.",
     "external_reading": "External register reading is described in the return, not imported as evidence of implementation."
   },
-  "revision_source_commit": "992cf60a27efd8c34f437e347c413bb781d75c32"
+  "revision_source_commit": "31ce9342703cd14a5858f9263f62185a12154ca5"
 }

@@ -1,0 +1,84 @@
+{
+  "schema": "exposition-rules/1",
+  "role": "bounded supplement to SHORT_PAPER_CONTRACT.md and public-mathematical-writing; not a proof registry",
+  "rules": [
+    {
+      "id": "E00",
+      "title": "Read nearby mathematical literature",
+      "guidance": "Choose human-authored papers close in subject, proof structure and genre. Read a complete local argument in an identified original version. Examine established terminology, hypothesis and quantifier placement, sentence connections, attribution, notation and proof pacing. Adapt the reason for a choice in original prose, then check the local mathematics that licenses it.",
+      "limit": "A distant stylistic model does not establish field usage; a supplied file is not a reading claim; another author’s composition does not prove the target argument or guarantee reader benefit."
+    },
+    {
+      "id": "E01",
+      "title": "Select a coherent principal result",
+      "guidance": "Lead with the strongest useful supported result, its mechanism and its actual relation to the named problem. Resolve competing centres before polishing. A conditional reduction may deserve prominence; an unconditional wrapper need not.",
+      "limit": "No prescribed first-page proof, page count or theorem-category ranking."
+    },
+    {
+      "id": "E02",
+      "title": "Make an example explain a choice",
+      "guidance": "Place a small example before unfamiliar notation when it makes the definition, construction or obstruction intelligible. Show the relevant operation and preserved quantities. Say what the example does not establish. Check that an example or witness satisfies the claimed object’s defining conditions, rather than only those of a larger model.",
+      "limit": "A familiar definition need not acquire another example; a finite check establishes an infinite claim only through a proved reduction."
+    },
+    {
+      "id": "E03",
+      "title": "Explain the difficult inference",
+      "guidance": "State the quantity to control and the accuracy required. When a preliminary estimate is too weak, explain its loss and the operation or hypothesis used to recover it. Explain the target of a parameter choice before its schedule. Use connective prose to identify actual dependencies.",
+      "limit": "A writing model supplies no missing estimate or mathematical implication."
+    },
+    {
+      "id": "E04",
+      "title": "Name the mathematical object",
+      "guidance": "Prefer established terminology, an exact property or the displayed inequality to private compounds. Introduce symbols by their role. Retain useful technical vocabulary and stable formal identifiers. Translate source indices, coordinates and normalisations explicitly when adapting an argument; let headings name a mathematical object, result or operation.",
+      "limit": "Do not replace a precise uncommon term by an inaccurate familiar term or rename code for prose convenience."
+    },
+    {
+      "id": "E05",
+      "title": "Preserve statement meaning",
+      "guidance": "Compare domains, codomains, signs, endpoints, quantifiers, shared witnesses, implication directions, parameter dependencies and hypotheses in every compressed occurrence. Wording inside a theorem belongs to statement accounting. In limiting arguments, state which parameters stay fixed and the order of successive limits. A classification must show both validity of constructed objects and exhaustion of all admissible objects.",
+      "limit": "Unchanged formulae, labels or declaration lists do not prove equivalence of prose."
+    },
+    {
+      "id": "E06",
+      "title": "Keep the two papers consistent",
+      "guidance": "Let the short paper sustain its argument and the long record recover it. Move subordinate detail only after creating and checking a complete destination. Reconcile stronger and weaker statements in both directions.",
+      "limit": "The long record is not regenerated from a shortened draft; neither document automatically outranks the other."
+    },
+    {
+      "id": "E07",
+      "title": "Distinguish evidence from explanation",
+      "guidance": "Keep ordinary proof, exact formal statement, named unproved input, selected Comparator outcome, computation and citation separate. Explain the proof on the page and preserve pending status. Logical scope and evidence are separate: a conditional implication can have an ordinary or formal proof. Correct stale underclaims as well as overclaims against current reviewed evidence.",
+      "limit": "A nearby checked endpoint does not check a different prose argument; a metadata or spelling check does not prove meaning."
+    },
+    {
+      "id": "E08",
+      "title": "Verify what the citation does",
+      "guidance": "Read the relevant original passage in the identified version, verify its locator, and say whether it supplies proof, attribution, terminology or an expository example. Record author credit at the use.",
+      "limit": "A style specimen is an analogy in composition, not a theorem about the new manuscript or a guarantee of reader benefit."
+    },
+    {
+      "id": "E09",
+      "title": "Preserve informative failures",
+      "guidance": "Keep the failed implication, assumptions, witness and missing information together. Distinguish an error in one proof step, failure of one method, and a counterexample to a theorem.",
+      "limit": "A failed check, missing source or unrun receipt is not a mathematical refutation."
+    },
+    {
+      "id": "E10",
+      "title": "Inspect the reading surface",
+      "guidance": "Render the owning source, inspect affected pages and their neighbours, and follow actual cross-document destinations. Check figures at final size, endpoints, captions and bibliography.",
+      "limit": "A clean build and an existing target do not establish that the target is the intended proof or that a diagram teaches it."
+    },
+    {
+      "id": "E11",
+      "title": "Report review and reading honestly",
+      "guidance": "Separate source availability, donor-declared reading, later source inspection, accepted edits and measured reader responses. Counts and rates may describe a detector; identify versions and genre, and include denominators and regressions.",
+      "limit": "Do not call an agent reread independent human review, or a lower detector rate improved comprehension."
+    },
+    {
+      "id": "E12",
+      "title": "Amend a rule only as far as the case warrants",
+      "guidance": "Record the proposal, before/after passage, original source, native decision, applicability and counterexample or limit. Reuse an existing rule when it already covers the lesson. Freeze the resulting files for the next packet.",
+      "limit": "Accepted document revisions do not train model weights, prove general effectiveness or license unrelated work."
+    }
+  ]
+}

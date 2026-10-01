@@ -696,7 +696,7 @@
         "end": "under the review qualification given in the introduction.",
         "path": "paper/reasoning-parts/erdos257/a257_front.tex",
         "selector": "between",
-        "sha256": "sha256:e6fb0129077fac184ccd875b1a8bcc44f966446c8bfbc5eec0417255301ad84c",
+        "sha256": "sha256:2f5db6a18b9c776989eb844f202834107b57c54c6814c0f2fc6abb88a0025ceb",
         "start": "\\paragraph{Why the mixed criterion is strict.}\\label{record257:strict-mixed-proof}"
       }
     },
