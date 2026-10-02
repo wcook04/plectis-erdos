@@ -196,8 +196,17 @@ def check_command(builder: str) -> list[str]:
 BUILD_VARIANTS = {"scripts/build_reading_edition.py": (("--records",),)}
 
 
-def run_builder_check(builder: str) -> subprocess.CompletedProcess[str]:
+def run_builder_check(
+    builder: str,
+    *,
+    base_results: dict[str, subprocess.CompletedProcess[str]] | None = None,
+) -> subprocess.CompletedProcess[str]:
     result = run(check_command(builder), cwd=ROOT)
+    # Keep the base output family separate from the final registered variant.
+    # The caller may reuse this exact result only after the whole preflight
+    # succeeds; a stale --records audit still aborts below.
+    if base_results is not None and builder in BUILDERS:
+        base_results[builder] = result
     if result.returncode:
         return result
     for flags in BUILD_VARIANTS.get(builder, ()):
@@ -215,11 +224,14 @@ def failure_annotation(builder: str, detail: str) -> str:
     return f"::error file={builder},title=Publication preflight failed::{escape(command + ': ' + detail[-2000:])}"
 
 
-def preflight() -> int:
+def preflight(
+    *,
+    base_results: dict[str, subprocess.CompletedProcess[str]] | None = None,
+) -> int:
     """Reject stale shipped evidence before acquiring expensive resources."""
     def inspect(builder: str) -> tuple[str, str | None]:
         try:
-            result = run_builder_check(builder)
+            result = run_builder_check(builder, base_results=base_results)
             if result.returncode:
                 return builder, result.stderr.strip() or result.stdout.strip() or f"exit {result.returncode}"
         except (OSError, subprocess.TimeoutExpired) as exc:
