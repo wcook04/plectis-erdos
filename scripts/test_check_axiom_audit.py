@@ -120,6 +120,41 @@ class AxiomAuditTests(unittest.TestCase):
                 with self.assertRaises(ValueError):
                     audit.expected_declarations([p])
 
+    def test_wrapped_literal_source_roster_preserves_scopes_and_comments(self):
+        source = ('namespace Outer\nsection\n'
+                  '/- #print axioms hidden -/\n'
+                  'def hint := "#print axioms fake"\n'
+                  '#print axioms -- explanatory comment\n'
+                  '  wrapped -- name comment\nend\n'
+                  '#print axioms\nsecond\nend Outer\n')
+        valid = "'Outer.wrapped' depends on axioms: [propext]\n" \
+                "'Outer.second' does not depend on any axioms\n"
+        self.assertEqual(self.run_cli(valid, source=source).returncode, 0)
+        for text in (valid.splitlines()[0] + "\n",
+                     valid + "'Foreign' does not depend on any axioms\n",
+                     valid + valid.splitlines()[0] + "\n"):
+            with self.subTest(text=text):
+                self.assertEqual(self.run_cli(text, source=source).returncode, 1)
+
+    def test_wrapped_source_refuses_truncation_scope_and_nonliteral_continuations(self):
+        for source in ('#print axioms\n', '#print axioms\n\nowner\n',
+                       'namespace Outer\n#print axioms\nend Outer\n',
+                       'namespace Outer\n#print axioms\n  end\n',
+                       '#print axioms\nnamespace Foreign\n',
+                       '#print axioms\n  "fake"\n',
+                       '#print axioms\n  owner extra\n',
+                       '#print axioms\n#print axioms other\n',
+                       '#print axioms\nowner\n#print axioms owner\n'):
+            with self.subTest(source=source):
+                self.assertEqual(self.run_cli("'owner' does not depend on any axioms\n", source=source).returncode, 1)
+
+        # A valid wrapped root-qualified prime name is the positive control:
+        # blanket refusal must not make the adversarial checks pass.
+        self.assertEqual(self.run_cli(
+            "'Elsewhere.owner'' does not depend on any axioms\n",
+            source="namespace Outer\n#print axioms\n  _root_.Elsewhere.owner'\nend Outer\n",
+        ).returncode, 0)
+
     def test_actual_three_workflow_audit_owners_resolve_complete_roster(self):
         paths = [audit.ROOT / "verification" / name / "AxiomAudit.lean" for name in
                  ("ExternalVerification", "ExternalVerification1049", "ExternalVerification1041SolvedFamilies")]
