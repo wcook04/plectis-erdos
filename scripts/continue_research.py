@@ -241,7 +241,10 @@ def workbench_command(sessions_root: Path, *args: str) -> list[str]:
         sys.executable,
         str(SCRIPTS / "proof_workbench.py"),
         "--sessions-root",
-        str(sessions_root),
+        # Children run in ROOT, while parent artifact reads and writes use the
+        # caller's directory. Bind the requested session root before that cwd
+        # change without resolving links or erasing .. boundary components.
+        str(_absolute_preserving_dotdot(sessions_root)),
         *args,
     ]
 
