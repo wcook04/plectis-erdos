@@ -61,9 +61,9 @@
       "id": "corpus",
       "path": "docs/papers/corpus.json",
       "start_line": 1,
-      "end_line": 9194,
-      "sha256": "bb9bed498bc44fbf3645a4b849ab157ffbf77f8d5ebeca2b86656df4e7f5e7e1",
-      "excerpt_sha256": "bb9bed498bc44fbf3645a4b849ab157ffbf77f8d5ebeca2b86656df4e7f5e7e1",
+      "end_line": 9202,
+      "sha256": "ef5d1ac74cee7e73e3659c2bbc543730c4728e851028b2d003883089546d92c6",
+      "excerpt_sha256": "ef5d1ac74cee7e73e3659c2bbc543730c4728e851028b2d003883089546d92c6",
       "kind": "source"
     },
     {
@@ -475,10 +475,10 @@
       "id": "explanation-depth",
       "path": "skills/explain-public-system/SKILL.md",
       "start_line": 1,
-      "end_line": 192,
+      "end_line": 200,
       "kind": "source",
-      "sha256": "91c8e240abe1e68f69985f027c8e470b5bc1e68841d6e9c1fc9e9cf0186d2cb4",
-      "excerpt_sha256": "91c8e240abe1e68f69985f027c8e470b5bc1e68841d6e9c1fc9e9cf0186d2cb4"
+      "sha256": "51cc4e8152d0f5f59042443147e0778010dd477ed924f5bc31d79925c1ad9635",
+      "excerpt_sha256": "51cc4e8152d0f5f59042443147e0778010dd477ed924f5bc31d79925c1ad9635"
     },
     {
       "id": "agent-entry",
@@ -486,8 +486,8 @@
       "start_line": 1,
       "end_line": 161,
       "kind": "source",
-      "sha256": "fd4d5d246731891853c4bf6dfa921637a28fb0a1c808213bae88f57c36cc37cb",
-      "excerpt_sha256": "fd4d5d246731891853c4bf6dfa921637a28fb0a1c808213bae88f57c36cc37cb"
+      "sha256": "11965aa640745c5b07af2a6199f53e33fba97162d4b55a1d95a8909c67d67c58",
+      "excerpt_sha256": "11965aa640745c5b07af2a6199f53e33fba97162d4b55a1d95a8909c67d67c58"
     },
     {
       "id": "workbench-guide",
@@ -502,10 +502,10 @@
       "id": "contribution-guide",
       "path": "CONTRIBUTING.md",
       "start_line": 1,
-      "end_line": 255,
+      "end_line": 264,
       "kind": "source",
-      "sha256": "d364b1ae2501d7a55ac113ae9f4b6ff9ae64928a5b7fddf89e410d5518307b0f",
-      "excerpt_sha256": "d364b1ae2501d7a55ac113ae9f4b6ff9ae64928a5b7fddf89e410d5518307b0f"
+      "sha256": "ccd19754ec63b12f4a1558f2ba10f90cc48002c6e5a896bd2b0030f239b86989",
+      "excerpt_sha256": "ccd19754ec63b12f4a1558f2ba10f90cc48002c6e5a896bd2b0030f239b86989"
     },
     {
       "id": "software-citation",
@@ -520,10 +520,10 @@
       "id": "return-protocol",
       "path": "skills/erdos-research-return/SKILL.md",
       "start_line": 1,
-      "end_line": 178,
+      "end_line": 186,
       "kind": "source",
-      "sha256": "328296763a16a17a8ae0f70d58aae9ba4fed5228b9bc1f9b0473e22e4c157982",
-      "excerpt_sha256": "328296763a16a17a8ae0f70d58aae9ba4fed5228b9bc1f9b0473e22e4c157982"
+      "sha256": "df53987de8514b2c1dcc2908afc3048543de4ab582218c2bcc1a23963a51b2b7",
+      "excerpt_sha256": "df53987de8514b2c1dcc2908afc3048543de4ab582218c2bcc1a23963a51b2b7"
     },
     {
       "id": "architecture-return",
@@ -568,9 +568,9 @@
       "kind": "source",
       "path": "docs/agents/README.md",
       "start_line": 1,
-      "end_line": 106,
-      "sha256": "0379b31685398dfd42d22734312e893e0bbb02f887511e2931ebc530e0582573",
-      "excerpt_sha256": "0379b31685398dfd42d22734312e893e0bbb02f887511e2931ebc530e0582573",
+      "end_line": 117,
+      "sha256": "3c6926259d366f49d7612c15f5b363ac117e200da337304e57e2b38ae63c1f24",
+      "excerpt_sha256": "3c6926259d366f49d7612c15f5b363ac117e200da337304e57e2b38ae63c1f24",
       "custody": "Current native public file inspected as source; no fresh execution."
     },
     {
@@ -579,7 +579,7 @@
       "path": "scripts/query_corpus.py",
       "start_line": 6602,
       "end_line": 6731,
-      "sha256": "3298c88f36467d0aa6c81fb04bdd31cfcae274c1de61401940458cc5443f325d",
+      "sha256": "99f487de4d5523ff8dec6415e8d8114463e72e0832889ece1192d905a1b4dc87",
       "excerpt_sha256": "2f13aac684bc48891582a60d8b501c1c1d357db9bfddfbe0c49e4cbb26c8da8b",
       "custody": "Current native public file inspected as source; no fresh execution."
     },
@@ -678,18 +678,18 @@
       "kind": "source",
       "path": "scripts/refresh_projections.py",
       "start_line": 1,
-      "end_line": 110,
-      "sha256": "f838561a7e3609572cd1963cf107cd3b82a79d2d8176c16e796f00394988422e",
-      "excerpt_sha256": "106846e848945585e0a96183db9f073eff7794d5a495622a2624c06bb5ea7dc9",
+      "end_line": 114,
+      "sha256": "7a5f68851999ffc3e8c05855af099edadd7888a7f9e9f4b95d7e95f9a457d77b",
+      "excerpt_sha256": "bf36f893a52ba118a02490b5982f89a591e2a195901e52867d42a913c8767244",
       "custody": "Current native public file inspected as source; no fresh execution."
     },
     {
       "id": "r8-projection-refresh",
       "kind": "source",
       "path": "scripts/refresh_projections.py",
-      "start_line": 278,
-      "end_line": 356,
-      "sha256": "f838561a7e3609572cd1963cf107cd3b82a79d2d8176c16e796f00394988422e",
+      "start_line": 295,
+      "end_line": 373,
+      "sha256": "7a5f68851999ffc3e8c05855af099edadd7888a7f9e9f4b95d7e95f9a457d77b",
       "excerpt_sha256": "51e8c5123dc12eb550e761be722b2ce39773abba5c0a8bd116686fb2194bc71a",
       "custody": "Current native public file inspected as source; no fresh execution."
     },
@@ -697,9 +697,9 @@
       "id": "r8-release",
       "kind": "source",
       "path": "scripts/check_release.py",
-      "start_line": 1658,
-      "end_line": 1734,
-      "sha256": "8cd6ad61f8a80bcf9b7032b02daa7e8c1266dc15db5d8697923a5b8dbf266196",
+      "start_line": 1737,
+      "end_line": 1813,
+      "sha256": "a1db58e2217b60beb4d01cd2ebee8e8baac92f6e7986313327e36917fa25c959",
       "excerpt_sha256": "da39690f9c38fd66ca7b1f7496108ac87673b67260a7c1c234b842008edd0adb",
       "custody": "Current native public file inspected as source; no fresh execution."
     },
@@ -708,9 +708,9 @@
       "kind": "source",
       "path": "CONTRIBUTING.md",
       "start_line": 1,
-      "end_line": 89,
-      "sha256": "d364b1ae2501d7a55ac113ae9f4b6ff9ae64928a5b7fddf89e410d5518307b0f",
-      "excerpt_sha256": "9dddfc8f6ceefc14e83ed1967c38a10de331ac98552bfb9efa825ec06e2009c4",
+      "end_line": 97,
+      "sha256": "ccd19754ec63b12f4a1558f2ba10f90cc48002c6e5a896bd2b0030f239b86989",
+      "excerpt_sha256": "b68aa4a6ac437aff95ef64b616ae63a3ce9046a3f2c2fcaf91e1f3cb095203fd",
       "custody": "Current native public file inspected as source; no fresh execution."
     },
     {

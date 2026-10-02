@@ -1,6 +1,6 @@
 {
   "schema": "exposition-method-version/1",
-  "version": "2026-10-01.4",
+  "version": "2026-10-01.5",
   "required_roles": [
     "guidance",
     "skill",
@@ -19,12 +19,12 @@
   "files": [
     {
       "path": "docs/papers/exposition-method/README.md",
-      "sha256": "f29ee13f519ad05f4f527fb332bd797d44d7774ef381cc9fa3c6efad2e4306ea",
+      "sha256": "86a4fa5786ed7e4597062e142980c69c3a5ab009ae189c251b31da52960ec66d",
       "role": "guidance"
     },
     {
       "path": "skills/public-mathematical-writing/SKILL.md",
-      "sha256": "4e683d2ac58d789dca46e8cfb82c5d3bd995c8804b23dd5fe833c7d0c00a5913",
+      "sha256": "c36b064c93c393f173aeb90107022dd8109cc8a625e8d21c896d2df50c20bf38",
       "role": "skill"
     },
     {
@@ -112,5 +112,12 @@
       "sha256": "0b6f06299766d8ad9339f4ffbd27e59012920ef40dd1c4821e978d39a698d2ea",
       "role": "compact_guide_pdf"
     }
-  ]
+  ],
+  "paper_skill_review": {
+    "paper_inputs_sha256": "d901eaedcc167392bc0798583b0ade077e8df8deb81a217c854643106b17883d",
+    "style_inputs_sha256": "fdec2bc7bda8981eb407ceff8b81dee94ff07c0d3a9f02ac354971d2ba366488",
+    "skill_sha256": "c36b064c93c393f173aeb90107022dd8109cc8a625e8d21c896d2df50c20bf38",
+    "disposition": "updated",
+    "reason": "Reconciled the accepted R8 writing method with PR314 portable reuse and scoped Plectis maintenance instructions. All accepted writing manuscript inputs, style bytes, PDFs, custody records and reviewed method are retained unchanged. The standalone destination-project prefix is preserved; only Work in Plectis reopens the intended public checkout before source commands. Plectis instructions now distinguish portable reuse, editing and installation, require literal source/style input coverage and an explicit review binding, and preserve atomic two-reference promotion/rollback. This author review includes the actual loaded style input separately; it does not promote a paper, proof or historical correspondence claim."
+  }
 }

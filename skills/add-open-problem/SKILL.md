@@ -5,6 +5,14 @@ description: Add a sourced mathematical problem as a new public problem world wi
 
 # Add an open problem
 
+Before following references or running repository commands below, locate the
+intended Plectis public checkout and read its `AGENTS.md`. If this skill was
+opened from an installed skills directory, open
+`<checkout>/skills/add-open-problem/SKILL.md` in that checkout first.
+Follow relative references from that clone-local file and run repository
+commands from the checkout root. If the intended checkout is unavailable,
+report that prerequisite before continuing.
+
 Use this skill to port a problem beyond the current indexed roster into the public
 corpus. This is a governed multi-surface change, not the creation of one Lean
 file. Read `docs/agents/AGENT_GUIDE.md`, `docs/ARCHITECTURE.md`, `docs/papers/README.md`, and

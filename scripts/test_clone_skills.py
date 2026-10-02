@@ -4,12 +4,17 @@
 from __future__ import annotations
 
 import json
+import contextlib
+import io
 import os
 import re
 import subprocess
 import sys
 import tempfile
 from pathlib import Path
+from unittest.mock import patch
+
+import install_agent_skills as installer
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -135,8 +140,500 @@ def check_invalid_destination_cli() -> None:
                     raise AssertionError("invalid destination advertised a skill or changed user material")
 
 
+def check_overlapping_installation_paths() -> None:
+    """Invalid selections must fail before preview, staging, or replacement."""
+    with tempfile.TemporaryDirectory(prefix="plectis-skill-overlap-") as temp:
+        root = Path(temp)
+        name = "writing"
+        source = root / name
+        source.mkdir()
+        original = b"source instructions\n"
+        (source / "SKILL.md").write_bytes(original)
+        parent_alias = root / "source-alias"
+        parent_alias.symlink_to(source, target_is_directory=True)
+        ancestor = root / "ancestor" / name
+        nested_source = ancestor / "nested"
+        nested_source.mkdir(parents=True)
+        (ancestor / "SKILL.md").write_bytes(b"ancestor material\n")
+        (nested_source / "SKILL.md").write_bytes(original)
+        source_alias = ancestor / "source-alias"
+        source_alias.symlink_to(source, target_is_directory=True)
+        checkout_alias = ancestor / "checkout-alias"
+        checkout_alias.symlink_to(root, target_is_directory=True)
+        chained_alias = root / "chained-alias"
+        chained_alias.symlink_to(checkout_alias / name, target_is_directory=True)
+
+        cases = (
+            (source, source / "references"),
+            (source, parent_alias / "references"),
+            (nested_source, ancestor.parent),
+            (source_alias, ancestor.parent),
+            (checkout_alias / name, ancestor.parent),
+            (chained_alias, ancestor.parent),
+        )
+        # Linux commonly uses case-sensitive filesystems; macOS commonly does
+        # not. Exercise the real alias only where both spellings are one entry.
+        case_alias = root / name.upper()
+        if case_alias.exists() and os.path.samefile(source, case_alias):
+            cases += ((source, case_alias / "references"),)
+        for mode in ("copy", "symlink"):
+            for selected, target in cases:
+                destination = target / name
+                for options in ((), ("--check",), ("--apply",), ("--force", "--apply")):
+                    stdout, stderr = io.StringIO(), io.StringIO()
+                    args = [str(INSTALLER), "--target-dir", str(target), "--skill", name,
+                            "--mode", mode, *options]
+                    with patch.object(sys, "argv", args), \
+                            patch.object(installer, "skill_directories", return_value={name: selected}), \
+                            contextlib.redirect_stdout(stdout), contextlib.redirect_stderr(stderr):
+                        assert installer.main() == 2
+                    assert not stdout.getvalue(), stdout.getvalue()
+                    assert "must not overlap" in stderr.getvalue() and "Traceback" not in stderr.getvalue()
+                    assert (selected / "SKILL.md").read_bytes() == original
+                    assert (ancestor / "SKILL.md").read_bytes() == b"ancestor material\n"
+                    assert parent_alias.is_symlink()
+                    assert source_alias.is_symlink()
+                    assert checkout_alias.is_symlink()
+                    assert chained_alias.is_symlink()
+                with patch.object(installer.tempfile, "mkdtemp", side_effect=AssertionError("staged unsafe install")):
+                    try:
+                        installer.install_one(selected, destination, mode, True)
+                    except ValueError as error:
+                        assert "must not overlap" in str(error)
+                    else:
+                        raise AssertionError("direct unsafe installation accepted")
+
+        # The source itself is already a current copy. Replacing it with a
+        # symlink would delete the tree and point the installed link at itself.
+        with patch.object(installer.tempfile, "mkdtemp", side_effect=AssertionError("staged current copy")):
+            installer.install_one(source, source, "copy", True)
+        for options in ((), ("--check",), ("--apply",), ("--force", "--apply")):
+            stdout, stderr = io.StringIO(), io.StringIO()
+            args = [str(INSTALLER), "--target-dir", str(root), "--skill", name,
+                    "--mode", "symlink", *options]
+            with patch.object(sys, "argv", args), \
+                    patch.object(installer, "skill_directories", return_value={name: source}), \
+                    contextlib.redirect_stdout(stdout), contextlib.redirect_stderr(stderr):
+                assert installer.main() == 2
+            assert not stdout.getvalue() and "must not overlap" in stderr.getvalue()
+            assert (source / "SKILL.md").read_bytes() == original
+        if case_alias.exists() and os.path.samefile(source, case_alias):
+            with patch.object(installer.tempfile, "mkdtemp", side_effect=AssertionError("staged case alias")):
+                installer.install_one(source, case_alias, "copy", True)
+                try:
+                    installer.install_one(source, case_alias, "symlink", True)
+                except ValueError as error:
+                    assert "must not overlap" in str(error)
+                else:
+                    raise AssertionError("case alias replaced the source")
+
+        # A leaf symlink may legitimately be replaced by a copy. Its target
+        # must remain intact; resolving the leaf would wrongly reject this.
+        destination = root / "installed" / name
+        destination.parent.mkdir()
+        destination.symlink_to(source, target_is_directory=True)
+        installer.install_one(source, destination, "copy", True)
+        assert not destination.is_symlink()
+        assert (source / "SKILL.md").read_bytes() == original
+        assert (destination / "SKILL.md").read_bytes() == original
+        safe_alias = root / "outside-checkout-alias"
+        safe_alias.symlink_to(root, target_is_directory=True)
+        for mode in ("copy", "symlink"):
+            safe_destination = root / f"safe-{mode}" / name
+            installer.install_one(safe_alias / name, safe_destination, mode, True)
+            assert (safe_destination / "SKILL.md").read_bytes() == original
+            assert safe_alias.is_symlink()
+        assert not (source / "references").exists()
+        assert not list(root.rglob(".writing.install-*"))
+
+
+def check_failed_installation_preserves_material() -> None:
+    with tempfile.TemporaryDirectory(prefix="plectis-failed-skill-test-") as temp:
+        root = Path(temp)
+        source = root / "source"
+        source.mkdir()
+        (source / "SKILL.md").write_bytes(b"new instructions\n")
+        name = "public-mathematical-writing"
+
+        def failed_cli(target: Path, fault, *, mode="copy") -> str:
+            args = [str(INSTALLER), "--target-dir", str(target), "--skill", name,
+                    "--mode", mode, "--force", "--apply"]
+            stderr = io.StringIO()
+            with patch.object(sys, "argv", args), \
+                    patch.object(installer, "skill_directories", return_value={name: source}), \
+                    contextlib.redirect_stdout(io.StringIO()), contextlib.redirect_stderr(stderr), fault:
+                assert installer.main() == 1
+            assert stderr.getvalue().startswith("error:"), stderr.getvalue()
+            assert "Traceback" not in stderr.getvalue()
+            return stderr.getvalue()
+
+        def interrupted_copy(_source, incoming):
+            incoming.mkdir()
+            (incoming / "SKILL.md").write_bytes(b"partial instructions\n")
+            raise OSError("simulated interrupted copy")
+
+        for kind in ("missing", "directory", "file", "symlink"):
+            target = root / kind
+            target.mkdir()
+            destination = target / name
+            outside = root / f"outside-{kind}"
+            if kind == "directory":
+                destination.mkdir()
+                (destination / "SKILL.md").write_bytes(b"old instructions\n")
+                (destination / "companion.md").write_bytes(b"old companion\n")
+            elif kind == "file":
+                destination.write_bytes(b"unrelated user file\n")
+            elif kind == "symlink":
+                outside.mkdir()
+                (outside / "SKILL.md").write_bytes(b"outside instructions\n")
+                destination.symlink_to(outside, target_is_directory=True)
+            failed_cli(target, patch.object(installer.shutil, "copytree", side_effect=interrupted_copy))
+            if kind == "missing":
+                assert not destination.exists()
+            elif kind == "directory":
+                assert (destination / "SKILL.md").read_bytes() == b"old instructions\n"
+                assert (destination / "companion.md").read_bytes() == b"old companion\n"
+            elif kind == "file":
+                assert destination.read_bytes() == b"unrelated user file\n"
+            else:
+                assert destination.is_symlink() and destination.resolve() == outside.resolve()
+                assert (outside / "SKILL.md").read_bytes() == b"outside instructions\n"
+            assert set(target.iterdir()) == (set() if kind == "missing" else {destination})
+
+        target = root / "promotion"
+        destination = target / name
+        destination.mkdir(parents=True)
+        (destination / "SKILL.md").write_bytes(b"old instructions\n")
+        original_replace = os.replace
+
+        def failed_promotion(source_path, target_path):
+            if Path(source_path).name == "incoming":
+                raise OSError("simulated promotion failure")
+            return original_replace(source_path, target_path)
+
+        failed_cli(target, patch.object(installer.os, "replace", side_effect=failed_promotion))
+        assert (destination / "SKILL.md").read_bytes() == b"old instructions\n"
+        assert set(target.iterdir()) == {destination}
+        failed_cli(target, patch.object(Path, "symlink_to", side_effect=OSError("cannot create link")),
+                   mode="symlink")
+        assert (destination / "SKILL.md").read_bytes() == b"old instructions\n"
+        assert set(target.iterdir()) == {destination}
+
+        readonly = destination / "references"
+        readonly.mkdir()
+        (readonly / "guide.md").write_bytes(b"old readonly guide\n")
+        readonly.chmod(0o555)
+        installer.install_one(source, destination, "copy", True)
+        assert (destination / "SKILL.md").read_bytes() == b"new instructions\n"
+        assert set(target.iterdir()) == {destination}
+
+        # A cleanup error after promotion must describe a successful install
+        # and the retained staging folder, rather than claim installation failed.
+        (destination / "SKILL.md").write_bytes(b"old instructions\n")
+        stderr = io.StringIO()
+        with patch.object(installer.shutil, "rmtree", side_effect=OSError("cannot clean staging")), \
+                contextlib.redirect_stderr(stderr):
+            installer.install_one(source, destination, "copy", True)
+        assert (destination / "SKILL.md").read_bytes() == b"new instructions\n"
+        retained = next(target.glob(f".{name}.install-*"))
+        assert "warning: installed" in stderr.getvalue() and str(retained) in stderr.getvalue()
+        installer.shutil.rmtree(retained)
+        (destination / "SKILL.md").write_bytes(b"old instructions\n")
+
+        def failed_promotion_and_restore(source_path, target_path):
+            if Path(source_path).name in {"incoming", "previous"}:
+                raise OSError("simulated unavailable destination")
+            return original_replace(source_path, target_path)
+
+        error = failed_cli(target, patch.object(installer.os, "replace", side_effect=failed_promotion_and_restore))
+        backup = next(target.glob(f".{name}.install-*/previous"))
+        assert (backup / "SKILL.md").read_bytes() == b"old instructions\n"
+        assert str(backup) in error, "failed restoration must identify the surviving original"
+
+
+def check_copied_links_and_complete_tree() -> None:
+    """A current copy has independent content at every installed entry."""
+    import shutil
+
+    with tempfile.TemporaryDirectory(prefix="plectis-skill-copy-links-") as temp:
+        root = Path(temp)
+        source = root / "writing"
+        source.mkdir()
+        original = b"source instructions\n"
+        (source / "SKILL.md").write_bytes(original)
+        (source / "references").mkdir()
+        (source / "references" / "guide.md").write_bytes(b"bundled guide\n")
+        # Generic dircmp ignores these names. A copy check must include them.
+        (source / "tags").write_bytes(b"source tags\n")
+        (source / ".git").mkdir()
+        (source / ".git" / "record").write_bytes(b"copied record\n")
+
+        def cli(target, options=(), *, expected=0):
+            stdout, stderr = io.StringIO(), io.StringIO()
+            args = [str(INSTALLER), "--target-dir", str(target), *options]
+            with patch.object(sys, "argv", args), \
+                    patch.object(installer, "skill_directories", return_value={"writing": source}), \
+                    contextlib.redirect_stdout(stdout), contextlib.redirect_stderr(stderr):
+                actual = installer.main()
+            assert actual == expected, (actual, expected, stdout.getvalue(), stderr.getvalue())
+            assert "Traceback" not in stderr.getvalue()
+            return stdout.getvalue(), stderr.getvalue()
+
+        for kind, relative in (("file", "references/guide.md"),
+                               ("directory", "references"),
+                               ("dangling", "references/guide.md"),
+                               ("recursive", "references"),
+                               ("ignored_file", "tags"),
+                               ("ignored_directory", ".git")):
+            target = root / kind / "installed"
+            destination = target / "writing"
+            outside = root / kind / "outside"
+            shutil.copytree(source, destination)
+            shutil.copytree(source, outside)
+            entry = destination / relative
+            if entry.is_dir():
+                shutil.rmtree(entry)
+            else:
+                entry.unlink()
+            link_target = (destination if kind == "recursive" else
+                           outside / "missing" if kind == "dangling" else outside / relative)
+            entry.symlink_to(link_target, target_is_directory=kind in {
+                "directory", "recursive", "ignored_directory",
+            })
+            link_text = entry.readlink()
+            for options, expected in (((), 0), (("--check",), 1), (("--apply",), 1)):
+                output, error = cli(target, options, expected=expected)
+                assert "different" in output
+                assert entry.is_symlink() and entry.readlink() == link_text
+                assert (outside / "references" / "guide.md").read_bytes() == b"bundled guide\n"
+            output, error = cli(target, ("--force", "--apply"))
+            assert "different" in output and not error
+            assert not entry.is_symlink()
+            assert (outside / "SKILL.md").read_bytes() == original
+            assert (outside / "references" / "guide.md").read_bytes() == b"bundled guide\n"
+            assert (outside / "tags").read_bytes() == b"source tags\n"
+            assert (outside / ".git" / "record").read_bytes() == b"copied record\n"
+            shutil.rmtree(outside)
+            output, error = cli(target, ("--check",))
+            assert "current" in output and not error
+            assert (destination / "references" / "guide.md").read_bytes() == b"bundled guide\n"
+            assert (destination / ".git" / "record").read_bytes() == b"copied record\n"
+            assert set(target.iterdir()) == {destination}
+
+        target = root / "ignored-drift"
+        destination = target / "writing"
+        shutil.copytree(source, destination)
+        for relative in ("tags", ".git/record"):
+            altered = destination / relative
+            original_bytes = altered.read_bytes()
+            altered.write_bytes(b"changed material\n")
+            output, error = cli(target, ("--check",), expected=1)
+            assert "different" in output
+            cli(target, ("--apply",), expected=1)
+            assert altered.read_bytes() == b"changed material\n"
+            cli(target, ("--force", "--apply"))
+            assert altered.read_bytes() == original_bytes
+        (destination / ".git" / "extra").write_bytes(b"extra material\n")
+        cli(target, ("--check",), expected=1)
+        cli(target, ("--apply",), expected=1)
+        assert (destination / ".git" / "extra").read_bytes() == b"extra material\n"
+        cli(target, ("--force", "--apply"))
+        assert not (destination / ".git" / "extra").exists()
+        assert (source / "SKILL.md").read_bytes() == original
+
+        # Source links are intentionally materialized by copytree; this must
+        # remain compatible with rejecting links in the installed copy.
+        (source / "guide-link.md").symlink_to(source / "references" / "guide.md")
+        (source / "reference-link").symlink_to(source / "references", target_is_directory=True)
+        target = root / "materialized-source-links"
+        cli(target, ("--apply",))
+        destination = target / "writing"
+        assert not (destination / "guide-link.md").is_symlink()
+        assert not (destination / "reference-link").is_symlink()
+        assert (destination / "guide-link.md").read_bytes() == b"bundled guide\n"
+        assert (destination / "reference-link" / "guide.md").read_bytes() == b"bundled guide\n"
+        output, error = cli(target, ("--check",))
+        assert "current" in output and not error
+
+
+def check_current_symlink_identity() -> None:
+    """An alternate spelling of the same target is current without replacement."""
+    with tempfile.TemporaryDirectory(prefix="plectis-skill-link-identity-") as temp:
+        root = Path(temp)
+        source = root / "Writing"
+        source.mkdir()
+        original = b"source instructions\n"
+        (source / "SKILL.md").write_bytes(original)
+        target = root / "installed"
+        target.mkdir()
+        destination = target / "writing"
+        destination.symlink_to(source, target_is_directory=True)
+        case_alias = root / "writing"
+        real_resolve, real_lstat = Path.resolve, Path.lstat
+
+        def aliased_resolve(path, *args, **kwargs):
+            if path == destination:
+                return case_alias
+            return real_resolve(path, *args, **kwargs)
+
+        def aliased_lstat(path, *args, **kwargs):
+            return real_lstat(source if path == case_alias else path, *args, **kwargs)
+
+        def cli(options, *, expected=0, state="current"):
+            stdout, stderr = io.StringIO(), io.StringIO()
+            args = [str(INSTALLER), "--target-dir", str(target), "--skill", "writing",
+                    "--mode", "symlink", *options]
+            before = destination.readlink(), destination.lstat().st_ino
+            with patch.object(sys, "argv", args), \
+                    patch.object(installer, "skill_directories", return_value={"writing": source}), \
+                    patch.object(installer.tempfile, "mkdtemp", side_effect=AssertionError("staged current link")), \
+                    contextlib.redirect_stdout(stdout), contextlib.redirect_stderr(stderr):
+                result = installer.main()
+            assert result == expected, (options, result, stdout.getvalue(), stderr.getvalue())
+            assert state in stdout.getvalue()
+            if expected == 0:
+                assert not stderr.getvalue()
+            assert destination.is_symlink()
+            assert (destination.readlink(), destination.lstat().st_ino) == before
+            assert (source / "SKILL.md").read_bytes() == original
+            assert set(target.iterdir()) == {destination}
+
+        # Simulate the inode behavior on case-sensitive CI as well.
+        with patch.object(Path, "resolve", aliased_resolve), \
+                patch.object(Path, "lstat", aliased_lstat):
+            for options in ((), ("--check",), ("--apply",), ("--force", "--apply")):
+                cli(options)
+
+        # Replay the actual alias on filesystems that support it.
+        if case_alias.exists() and os.path.samefile(source, case_alias):
+            destination.unlink()
+            destination.symlink_to(case_alias, target_is_directory=True)
+            for options in ((), ("--check",), ("--apply",), ("--force", "--apply")):
+                cli(options)
+
+
+        # Equal instruction bytes in a different target do not make it current.
+        other = root / "Other"
+        other.mkdir()
+        (other / "SKILL.md").write_bytes(original)
+        destination.unlink()
+        destination.symlink_to(other, target_is_directory=True)
+        for options, expected in (((), 0), (("--check",), 1), (("--apply",), 1)):
+            cli(options, expected=expected, state="different")
+        installer.install_one(source, destination, "symlink", True)
+        assert installer.status(source, destination, "symlink") == "current"
+        assert (other / "SKILL.md").read_bytes() == original
+        assert (source / "SKILL.md").read_bytes() == original
+
+
+def check_inspection_failures_and_identity() -> None:
+    with tempfile.TemporaryDirectory(prefix="plectis-skill-inspection-") as temp:
+        root = Path(temp)
+        source = root / "writing"
+        source.mkdir()
+        original = b"source instructions\n"
+        (source / "SKILL.md").write_bytes(original)
+        name = "writing"
+
+        def cli(target, options=(), *, mode="copy", expected=0, available=None):
+            stdout, stderr = io.StringIO(), io.StringIO()
+            args = [str(INSTALLER), "--target-dir", str(target), "--mode", mode, *options]
+            selected = {name: source} if available is None else available
+            with patch.object(sys, "argv", args), \
+                    patch.object(installer, "skill_directories", return_value=selected), \
+                    contextlib.redirect_stdout(stdout), contextlib.redirect_stderr(stderr):
+                actual = installer.main()
+            assert actual == expected, (actual, expected, stdout.getvalue(), stderr.getvalue())
+            assert "Traceback" not in stderr.getvalue()
+            return stdout.getvalue(), stderr.getvalue()
+
+        # Physical identity is a current copy without inspecting descendants,
+        # even if the source contains a recursive reference.
+        reference = source / "references"
+        reference.symlink_to(source, target_is_directory=True)
+        for options in ((), ("--check",), ("--apply",), ("--force", "--apply")):
+            with patch.object(installer.tempfile, "mkdtemp", side_effect=AssertionError("staged identical source")), \
+                    patch.object(installer.shutil, "copytree", side_effect=AssertionError("copied identical source")):
+                output, error = cli(root, options)
+                assert "current" in output and not error
+                installer.install_one(source, source, "copy", True)
+            assert reference.is_symlink() and (source / "SKILL.md").read_bytes() == original
+        reference.unlink()
+        reference.mkdir()
+        (reference / "guide.md").write_bytes(b"source guide\n")
+
+        target = root / "installed"
+        destination = target / name
+        installer.install_one(source, destination, "copy", False)
+        locked = destination / "references"
+        # Inject the directory-listing failure so root runners also exercise
+        # this boundary. Preserve the user's actual directory permissions.
+        previous_mode = locked.stat().st_mode
+        locked.chmod(0)
+        try:
+            for options in ((), ("--check",), ("--apply",), ("--force", "--apply")):
+                fault = PermissionError(13, "simulated unreadable directory", str(locked))
+                with patch.object(installer.filecmp, "dircmp", side_effect=fault):
+                    output, error = cli(target, options, expected=1)
+                assert not output and "cannot inspect writing" in error and str(destination) in error
+                assert locked.stat().st_mode == (previous_mode & ~0o777)
+                assert (destination / "SKILL.md").read_bytes() == original
+            # On ordinary POSIX user runners, replay the real permission fault.
+            try:
+                list(locked.iterdir())
+            except PermissionError:
+                output, error = cli(target, ("--force", "--apply"), expected=1)
+                assert not output and "cannot inspect writing" in error
+        finally:
+            locked.chmod(previous_mode)
+        assert (locked / "guide.md").read_bytes() == b"source guide\n"
+        assert set(target.iterdir()) == {destination}
+
+        unreadable_file = destination / "SKILL.md"
+        original_read = Path.read_bytes
+
+        def failed_read(path):
+            if path.resolve() == unreadable_file.resolve():
+                raise PermissionError(13, "simulated unreadable file", str(path))
+            return original_read(path)
+
+        for options in ((), ("--check",), ("--apply",), ("--force", "--apply")):
+            with patch.object(Path, "read_bytes", failed_read):
+                output, error = cli(target, options, expected=1)
+            assert not output and "cannot inspect writing" in error
+            assert unreadable_file.read_bytes() == original
+            assert (locked / "guide.md").read_bytes() == b"source guide\n"
+
+        for mode in ("copy", "symlink"):
+            for kind in ("loop", "dangling"):
+                link_target = root / f"{mode}-{kind}"
+                link_target.mkdir()
+                link = link_target / name
+                link.symlink_to(name if kind == "loop" else "absent")
+                before = link.readlink()
+                for options, expected in (((), 0), (("--check",), 1), (("--apply",), 1)):
+                    output, _ = cli(link_target, options, mode=mode, expected=expected)
+                    assert "different" in output and link.is_symlink() and link.readlink() == before
+                cli(link_target, ("--force", "--apply"), mode=mode)
+                cli(link_target, ("--check",), mode=mode)
+                assert (link / "SKILL.md").read_bytes() == original
+                assert (source / "SKILL.md").read_bytes() == original
+
+        invalid_target = root / "looped-target"
+        invalid_target.symlink_to(invalid_target.name)
+        for options in ((), ("--check",), ("--apply",), ("--force", "--apply")):
+            output, error = cli(invalid_target, options, expected=2)
+            assert not output and "error:" in error
+            assert invalid_target.is_symlink() and invalid_target.readlink() == Path(invalid_target.name)
+
+
 def main() -> int:
     check_invalid_destination_cli()
+    check_inspection_failures_and_identity()
+    check_current_symlink_identity()
+    check_copied_links_and_complete_tree()
+    check_overlapping_installation_paths()
+    check_failed_installation_preserves_material()
     readme = (ROOT / "README.md").read_text(encoding="utf-8")
     skill_index = (ROOT / "skills" / "README.md").read_text(encoding="utf-8")
     entry = (ROOT / "AGENTS.md").read_text(encoding="utf-8")

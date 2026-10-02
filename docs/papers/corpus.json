@@ -9132,7 +9132,11 @@
           }
         ],
         "unresolved_count": 0
-      }
+      },
+      "full_text_sha256": "sha256:43e764349dd085c1c4be24211a6f374cab09f2d69a0f92db5f1db05751fc7558",
+      "full_text_source_sha256": "sha256:bbf1eb5c3cef579085620ff9c6a8513589c29914b56e250f7e0f9a6f94b3b8f3",
+      "full_text_inputs_sha256": "sha256:82c860a46abaaf37a513784b65f69e6ce2ffcb2b4349a86b7cb2bc05a0f341b4",
+      "full_text_pdf_sha256": "sha256:966d312bfd6bdab891ce397a3c727d3632aacfe38332d0b03d0ced2bc082fb98"
     },
     {
       "paper_id": "writing-a-good-mathematical-paper",
@@ -9188,7 +9192,11 @@
       "citations_rendered": 0,
       "local_pdf": "paper/exposition/writing-a-good-mathematical-paper.pdf",
       "pdf_sha256": "sha256:0b6f06299766d8ad9339f4ffbd27e59012920ef40dd1c4821e978d39a698d2ea",
-      "pdf_byte_count": 34076
+      "pdf_byte_count": 34076,
+      "full_text_sha256": "sha256:a14f845e28195af1487d8d5723bfbaa11992de9eaba95c3a3b8c9a9a8249c6cd",
+      "full_text_source_sha256": "sha256:8d69c59b963e4647d2144014cf18124b35a673dd62efd68fc35f84efd424a9c1",
+      "full_text_inputs_sha256": "sha256:1af24c8f1db05ffab8c2b1b62896dbb701768efc67969fb29ee615ed5f1f51b2",
+      "full_text_pdf_sha256": "sha256:0b6f06299766d8ad9339f4ffbd27e59012920ef40dd1c4821e978d39a698d2ea"
     }
   ]
 }

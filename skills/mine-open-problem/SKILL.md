@@ -5,6 +5,14 @@ description: Select and attack one bounded open mathematical route from this clo
 
 # Mine an open problem
 
+Before following references or running repository commands below, locate the
+intended Plectis public checkout and read its `AGENTS.md`. If this skill was
+opened from an installed skills directory, open
+`<checkout>/skills/mine-open-problem/SKILL.md` in that checkout first.
+Follow relative references from that clone-local file and run repository
+commands from the checkout root. If the intended checkout is unavailable,
+report that prerequisite before continuing.
+
 This skill turns a cold clone into a bounded research run. It may produce a
 proof, but a correction, counterexample, no-go, exact computation, literature
 connection, or reproducible failed route is also a valid result.

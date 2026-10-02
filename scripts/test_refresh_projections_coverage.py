@@ -116,6 +116,31 @@ def check_record_variant_failure_is_not_ignored() -> None:
                     for args in variants), "record variant used the wrong mutation/check mode")
 
 
+def check_preflight_base_result_is_not_the_record_variant() -> None:
+    builder = "scripts/build_reading_edition.py"
+    for variant_code in (0, 17):
+        captured = {}
+        calls = []
+        def fake_run(args, cwd):
+            calls.append(tuple(args))
+            records = "--records" in args
+            return subprocess.CompletedProcess(
+                args, variant_code if records else 0,
+                "records" if records else "base", "stale records" if records and variant_code else "",
+            )
+        with patch.object(refresh_projections, "run", side_effect=fake_run):
+            final = refresh_projections.run_builder_check(builder, base_results=captured)
+        require(captured[builder].args == refresh_projections.check_command(builder),
+                "preflight attributed the records argv to its base output family")
+        require(captured[builder].stdout == "base" and final.stdout == "records",
+                "preflight lost the distinct base/records diagnostic streams")
+        require(final.returncode == variant_code, "records failure was not returned")
+        require(len(calls) == 2, "base or registered records variant was dropped/repeated")
+        with patch.object(refresh_projections, "run", side_effect=fake_run):
+            require(refresh_projections.preflight(base_results={}) == int(bool(variant_code)),
+                    "preflight base-result capture masked the failing registered records variant")
+
+
 def check_external_evidence_is_not_silently_omitted() -> None:
     external = "scripts/build_lean_dependency_index.py"
     for operation in (refresh_projections.refresh, refresh_projections.check_only):
@@ -144,7 +169,8 @@ def main() -> int:
             "early preflight omits a registered projection; stale generated files can reach expensive CI")
     source = CHECK_RELEASE.read_text(encoding="utf-8")
     checked = checked_builders(source)
-    require("refresh_projections.preflight()" in source, "release gate bypasses shared evidence preflight")
+    require("refresh_projections.preflight(base_results=base_results)" in source,
+            "release gate bypasses shared evidence preflight or loses its base results")
     checked.update(Path(path).name for path in refresh_projections.PREFLIGHT_CHECKS
                    if BUILDER_NAME.match(Path(path).name))
 
@@ -229,6 +255,7 @@ def main() -> int:
     )
     check_check_only_dispatch()
     check_record_variant_failure_is_not_ignored()
+    check_preflight_base_result_is_not_the_record_variant()
     check_external_evidence_is_not_silently_omitted()
 
     print(

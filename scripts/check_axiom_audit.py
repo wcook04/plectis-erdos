@@ -26,6 +26,7 @@ ENTRY = re.compile(
     r"\[(?P<axioms>[^\[\]]*)\])[ \t]*$"
 )
 MARKER = re.compile(r"(?:depends on axioms|does not depend on any axioms)")
+PRINT_AXIOMS_HEAD = re.compile(r"^[ \t]*#print[ \t]+axioms[ \t]*$")
 PRINT_AXIOMS = re.compile(r"^[ \t]*#print[ \t]+axioms[ \t]+([A-Za-z_][\w'.]*)[ \t]*$")
 
 
@@ -43,6 +44,13 @@ def expected_declarations(sources: list[Path]) -> set[str]:
         command_lines = set()
         for index, line in enumerate(lines, 1):
             command = PRINT_AXIOMS.fullmatch(line)
+            if command is None and PRINT_AXIOMS_HEAD.fullmatch(line):
+                # A literal name may occupy the next physical source line.
+                # Preserve the head line and namespace stack; do not cross a
+                # scope command or silently search later lines for a name.
+                following = lines[index] if index < len(lines) else ""
+                if not re.match(r"\s*(?:namespace|section|noncomputable|end)\b", following):
+                    command = PRINT_AXIOMS.fullmatch("#print axioms " + following.strip())
             if command:
                 projected.append(f"theorem {command.group(1)} : True := by trivial")
                 command_lines.add(index)

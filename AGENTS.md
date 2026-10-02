@@ -155,7 +155,7 @@ Preserve the starting commit, delta, attribution, commands, outcomes and limits.
 Credit material integration changes separately. Report unresolved work.
 
 [Submission](skills/submit-pull-request/SKILL.md) owns scoped commits, release
-admission and PR preparation. Local preparation is allowed; pushing, opening a
-PR or making an external submission requires explicit authorisation.
+admission and PR preparation. Follow task and standing authorisation; ask again
+only for a concrete issue requiring a new decision. Respect local-only requests.
 
 Do not absorb the complete deep contract merely to find the first action.

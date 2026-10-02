@@ -492,6 +492,7 @@ def main() -> int:
     )
     require("formal_source_matches_current_lean_tree(" in inspect.getsource(check_release.formal_source_identity_errors),
             "shared source-identity helper omitted the actual Lean-tree comparison")
+    check_preflight_projection_reuse()
     check_dependency_preflight()
     check_empty_selection_is_not_a_pass()
     print(
@@ -499,6 +500,123 @@ def main() -> int:
         "inherit caller Git, Python, locale, or PATH state"
     )
     return 0
+
+
+def check_preflight_projection_reuse() -> None:
+    """Reuse exact base results once while retaining variants and all failures."""
+    saved_errors, saved_checks = check_release.ERRORS, check_release.CHECKS
+    saved_results = check_release._PROJECTION_CHECK_RESULTS
+    saved_context = check_release._PREFLIGHT_PROJECTION_CONTEXT
+    calls = []
+    environment = {"PATH": "fixture-bin", "LANG": "C.UTF-8"}
+    context = {
+        "cwd": str(check_release.ROOT), "producer_cwd": str(check_release.ROOT),
+        "environment": environment, "producer_environment": environment,
+        "timeout": 900, "producer_timeout": 900,
+        "commands": {b: tuple(check_release.refresh_projections.check_command(b))
+                     for b in check_release.refresh_projections.BUILDERS},
+        "source": {"tree": "fixture-immutable-tree", "dirty": False},
+    }
+    def fake_run(argv, **kwargs):
+        calls.append(tuple(argv))
+        return subprocess.CompletedProcess(argv, 0, "records" if "--records" in argv else "base", "")
+    try:
+        check_release.ERRORS, check_release.CHECKS = [], 0
+        base_results = {}
+        with patch.object(check_release.refresh_projections, "run", side_effect=fake_run), \
+             patch.object(check_release, "preflight_projection_context", return_value=context):
+            require(check_release.refresh_projections.preflight(base_results=base_results) == 0,
+                    "mock preflight failed")
+            require(set(base_results) == set(check_release.refresh_projections.BUILDERS),
+                    "preflight did not capture every current base builder")
+            for builder, result in base_results.items():
+                require(calls.count(tuple(result.args)) == 1, f"base builder repeated: {builder}")
+            require(any("--records" in argv for argv in calls), "preflight dropped records")
+            require(check_release.seed_preflight_projection_results(base_results, context),
+                    "exact successful preflight results were refused")
+            calls.clear()
+            before_checks = check_release.CHECKS
+            with patch.object(check_release, "_SUBPROCESS_RUN", side_effect=fake_run):
+                results = check_release.publication_stage_check_results()
+            require(len(calls) == 5, "publication repeated projections or lost a diagnostic")
+            require(len(results) == len(base_results) + 5, "combined result coverage changed")
+            require(check_release.CHECKS == before_checks + 1,
+                    "merged publication results changed the aggregate check-count contribution")
+            for builder, result in base_results.items():
+                require(results[f"projection:{builder}"] is result,
+                        "publication replaced the actual base result")
+
+            for invalid in (
+                {k: v for k, v in base_results.items() if k != next(iter(base_results))},
+                {**base_results, "scripts/unknown_builder.py": subprocess.CompletedProcess([], 0)},
+                {**base_results, next(iter(base_results)): subprocess.CompletedProcess(
+                    list(context["commands"][next(iter(base_results))]), 17, "out", "err")},
+                {**base_results, "scripts/build_reading_edition.py": subprocess.CompletedProcess(
+                    [sys.executable, str(check_release.ROOT / "scripts/build_reading_edition.py"), "--records", "--check"], 0)},
+            ):
+                check_release._PROJECTION_CHECK_RESULTS = None
+                check_release._PREFLIGHT_PROJECTION_CONTEXT = None
+                require(not check_release.seed_preflight_projection_results(invalid, context),
+                        "incomplete/unknown/failed/wrong-family preflight was admitted")
+                require(check_release._PROJECTION_CHECK_RESULTS is None, "invalid preflight populated cache")
+
+            for field, replacement in (
+                ("cwd", "another-root"), ("environment", {"PATH": "other-bin"}),
+                ("source", {"tree": "changed-tree", "dirty": False}),
+                ("timeout", 901), ("commands", {**context["commands"], "new-builder": ("fixture",)}),
+            ):
+                changed = {**context, field: replacement}
+                with patch.object(check_release, "preflight_projection_context", return_value=changed):
+                    require(not check_release.seed_preflight_projection_results(base_results, context),
+                            f"changed {field} was reused")
+
+            require(check_release.seed_preflight_projection_results(base_results, context), "reseed failed")
+            new_builder = "scripts/new_projection_fixture.py"
+            new_context = {**context, "commands": {
+                **context["commands"], new_builder: (sys.executable, str(check_release.ROOT / new_builder), "--check")}}
+            with patch.object(check_release.refresh_projections, "BUILDERS",
+                              (*check_release.refresh_projections.BUILDERS, new_builder)), \
+                 patch.object(check_release, "preflight_projection_context", return_value=new_context):
+                require(not check_release.seed_preflight_projection_results(base_results, new_context),
+                        "new registered builder escaped preflight coverage")
+            require(check_release._PROJECTION_CHECK_RESULTS is None,
+                    "failed new-builder admission retained previous results")
+            require(check_release.seed_preflight_projection_results(base_results, context), "reseed failed")
+            with patch.object(check_release, "preflight_projection_context",
+                              return_value={**context, "source": {"tree": "later-source"}}):
+                try:
+                    check_release.publication_stage_check_results()
+                except RuntimeError:
+                    pass
+                else:
+                    raise AssertionError("publication reused a changed source snapshot")
+
+        # A failed mandatory preflight must stop before seeding/release work,
+        # and each main invocation must begin with a distinct empty result set.
+        sinks = []
+        def failed_preflight(*, base_results):
+            require(not base_results, "new main invocation retained prior preflight results")
+            sinks.append(base_results)
+            return 1
+        for _ in range(2):
+            check_release._PROJECTION_CHECK_RESULTS = base_results
+            check_release._PREFLIGHT_PROJECTION_CONTEXT = context
+            with patch.object(check_release, "missing_release_dependencies", return_value=[]), \
+                 patch.object(check_release, "preflight_projection_context", return_value=context), \
+                 patch.object(check_release.refresh_projections, "preflight", side_effect=failed_preflight), \
+                 patch.object(check_release, "seed_preflight_projection_results",
+                              side_effect=AssertionError("failed preflight seeded cache")), \
+                 patch.object(check_release, "check_proof_trust",
+                              side_effect=AssertionError("failed preflight continued")):
+                require(check_release.main(["--singleflight-worker"]) == 1, "failed preflight released")
+            require(check_release._PROJECTION_CHECK_RESULTS is None
+                    and check_release._PREFLIGHT_PROJECTION_CONTEXT is None,
+                    "main retained a cross-run projection cache")
+        require(sinks[0] is not sinks[1], "main invocations shared a preflight sink")
+    finally:
+        check_release.ERRORS, check_release.CHECKS = saved_errors, saved_checks
+        check_release._PROJECTION_CHECK_RESULTS = saved_results
+        check_release._PREFLIGHT_PROJECTION_CONTEXT = saved_context
 
 
 def check_dependency_preflight() -> None:

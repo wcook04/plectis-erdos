@@ -5,6 +5,14 @@ description: Coordinate an event-driven discovery goal and corpus-stewardship go
 
 # Run coupled research goals
 
+Before following references or running repository commands below, locate the
+intended Plectis public checkout and read its `AGENTS.md`. If this skill was
+opened from an installed skills directory, open
+`<checkout>/skills/run-coupled-research-goals/SKILL.md` in that checkout first.
+Follow relative references from that clone-local file and run repository
+commands from the checkout root. If the intended checkout is unavailable,
+report that prerequisite before continuing.
+
 Use this skill when a person or agent wants sustained work on an open problem
 rather than one isolated attempt. It can be run in one agent session, in two
 tasks, or across different people and harnesses. The contract is the same:

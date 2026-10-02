@@ -947,7 +947,12 @@
         "evidence wording",
         "overstates",
         "overstated",
-        "overstatement"
+        "overstatement",
+        "revise the writing guide",
+        "refine the writing guide",
+        "edit the writing guide",
+        "revise this writing guide",
+        "edit this writing guide"
       ],
       "skills": [
         "public-mathematical-writing",
@@ -986,6 +991,25 @@
             "exposition",
             "prose",
             "wording"
+          ]
+        },
+        {
+          "actions": [
+            "edit",
+            "proofread",
+            "refine",
+            "revise",
+            "rewrite",
+            "write",
+            "draft",
+            "correct"
+          ],
+          "objects": [
+            "guide",
+            "guides"
+          ],
+          "qualifiers": [
+            "writing"
           ]
         }
       ],
@@ -1159,7 +1183,7 @@
     },
     {
       "id": "install_skills",
-      "title": "Install clone-local skills into an agent harness",
+      "title": "Install, update or remove skills in an agent harness",
       "priority": 60,
       "task_cues": [
         "install skills",
@@ -1188,13 +1212,51 @@
       "task_intents": [
         {
           "actions": [
-            "install"
+            "install",
+            "copy",
+            "symlink",
+            "reinstall",
+            "reinstalling"
           ],
           "objects": [
             "skill",
             "skills",
             "workflow",
             "workflows"
+          ]
+        },
+        {
+          "actions": [
+            "update",
+            "refresh"
+          ],
+          "objects": [
+            "skill",
+            "skills"
+          ],
+          "qualifiers": [
+            "installed",
+            "codex",
+            "claude",
+            "harness",
+            "loader"
+          ]
+        },
+        {
+          "actions": [
+            "remove",
+            "uninstall"
+          ],
+          "objects": [
+            "skill",
+            "skills"
+          ],
+          "qualifiers": [
+            "installed",
+            "codex",
+            "claude",
+            "harness",
+            "loader"
           ]
         }
       ]
@@ -1285,7 +1347,12 @@
         "release before publishing this repository",
         "releases before publishing this repository",
         "repository release checks",
-        "repository release validation"
+        "repository release validation",
+        "update the writing skill",
+        "reconcile the writing skill",
+        "sync the writing skill",
+        "synchronize the writing skill",
+        "writing skill synchronization"
       ],
       "task_intents": [
         {
@@ -1414,6 +1481,24 @@
             "citations",
             "cff"
           ]
+        },
+        {
+          "actions": [
+            "update",
+            "refresh"
+          ],
+          "objects": [
+            "table",
+            "tables",
+            "list",
+            "lists",
+            "documentation",
+            "docs"
+          ],
+          "qualifiers": [
+            "skill",
+            "skills"
+          ]
         }
       ],
       "skills": [
@@ -1431,6 +1516,69 @@
       "boundary": "Repair the public owner surface and preserve the observed journey as a fixture; do not depend on private infrastructure or hand-edit generated projections.",
       "entry_purposes": [
         "infrastructure"
+      ]
+    },
+    {
+      "id": "reuse_writing_guidance",
+      "title": "Use the writing guidance in your own project",
+      "task_cues": [
+        "use the writing guide",
+        "use this writing guide",
+        "use your writing guide",
+        "apply the writing guide",
+        "apply this writing guide",
+        "apply your writing guide",
+        "reuse the writing guide",
+        "reuse the writing skill",
+        "use the writing skill",
+        "use this writing skill",
+        "use your writing skill",
+        "writing guide in another",
+        "writing guide in my",
+        "writing skill in another",
+        "writing skill in my",
+        "writing method in another",
+        "writing method in my",
+        "portable writing skill",
+        "standalone writing skill",
+        "use your portable writing skill",
+        "use the portable writing skill",
+        "apply the portable writing skill",
+        "use the writing method",
+        "apply the writing method",
+        "reuse the writing method",
+        "use this writing method",
+        "apply this writing method",
+        "use your writing method"
+      ],
+      "skills": [
+        "public-mathematical-writing"
+      ],
+      "read": [
+        "skills/public-mathematical-writing/SKILL.md#use-in-another-repository"
+      ],
+      "commands": [],
+      "boundary": "Use your project's sources, checks and review process. The bundled guides are optional; copying or installing the skill is optional. The Plectis workflow applies only to a Plectis checkout.",
+      "priority": 1,
+      "task_intents": [
+        {
+          "actions": [
+            "use",
+            "apply",
+            "reuse"
+          ],
+          "objects": [
+            "guide",
+            "guides",
+            "method",
+            "methods",
+            "skill",
+            "skills"
+          ],
+          "qualifiers": [
+            "writing"
+          ]
+        }
       ]
     }
   ]

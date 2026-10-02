@@ -116,6 +116,7 @@ _SUBPROCESS_RUN = subprocess.run
 PROJECTION_CHECK_WORKERS = refresh_projections.CHECK_WORKERS
 RELEASE_CHECK_WORKERS = 4
 _PROJECTION_CHECK_RESULTS: dict[str, subprocess.CompletedProcess[str]] | None = None
+_PREFLIGHT_PROJECTION_CONTEXT: dict[str, Any] | None = None
 
 
 def clean_environment() -> dict[str, str]:
@@ -206,6 +207,52 @@ def projection_check_results() -> dict[str, subprocess.CompletedProcess[str]]:
     return _PROJECTION_CHECK_RESULTS
 
 
+def preflight_projection_context() -> dict[str, Any]:
+    """Bind reuse to the same commands, execution context and source snapshot."""
+    return {
+        "cwd": str(ROOT),
+        "producer_cwd": str(refresh_projections.ROOT),
+        "environment": clean_environment(),
+        "producer_environment": refresh_projections.clean_environment(),
+        "timeout": SUBPROCESS_TIMEOUT_SECONDS,
+        "producer_timeout": refresh_projections.SUBPROCESS_TIMEOUT_SECONDS,
+        "commands": {
+            builder: tuple(refresh_projections.check_command(builder))
+            for builder in refresh_projections.BUILDERS
+        },
+        "source": singleflight.worktree_fingerprint(singleflight.default_state_root()),
+    }
+
+
+def seed_preflight_projection_results(
+    results: dict[str, subprocess.CompletedProcess[str]],
+    context: dict[str, Any],
+) -> bool:
+    """Admit complete, successful BASE results from this invocation only."""
+    global _PROJECTION_CHECK_RESULTS, _PREFLIGHT_PROJECTION_CONTEXT
+    _PROJECTION_CHECK_RESULTS = None
+    _PREFLIGHT_PROJECTION_CONTEXT = None
+    current = preflight_projection_context()
+    valid = (
+        context == current
+        and current["cwd"] == current["producer_cwd"]
+        and current["environment"] == current["producer_environment"]
+        and current["timeout"] == current["producer_timeout"]
+        and set(results) == set(refresh_projections.BUILDERS)
+        and all(
+            result.returncode == 0
+            and tuple(result.args) == current["commands"][builder]
+            for builder, result in results.items()
+        )
+    )
+    if not valid:
+        check(False, "projection preflight result identity/coverage changed; no cached release admission")
+        return False
+    _PROJECTION_CHECK_RESULTS = dict(results)
+    _PREFLIGHT_PROJECTION_CONTEXT = current
+    return True
+
+
 def run_independent_checks(
     commands: dict[str, list[str]],
 ) -> dict[str, subprocess.CompletedProcess[str]]:
@@ -242,10 +289,15 @@ def start_independent_checks(
 def finish_independent_checks(
     executor: ThreadPoolExecutor,
     futures: dict[str, Any],
+    *,
+    completed: dict[str, subprocess.CompletedProcess[str]] | None = None,
 ) -> dict[str, subprocess.CompletedProcess[str]]:
     """Collect a previously started check batch and always close its workers."""
     try:
-        results = {check_id: future.result() for check_id, future in futures.items()}
+        if set(completed or {}) & set(futures):
+            raise ValueError("completed release checks overlap scheduled checks")
+        results = dict(completed or {})
+        results.update({check_id: future.result() for check_id, future in futures.items()})
         consume_check_results(results)
         return results
     finally:
@@ -264,6 +316,10 @@ def late_check_commands() -> dict[str, list[str]]:
             str(ROOT / "scripts" / "test_cold_clone_comprehension.py"),
         ],
         "github_release_contracts": [sys.executable, str(ROOT / "scripts" / "check_ci_release.py")],
+        "writing_skill_sync": [
+            sys.executable,
+            str(ROOT / "scripts" / "test_sync_writing_skill.py"),
+        ],
         "semantic_queries": [
             sys.executable,
             str(ROOT / "scripts" / "test_query_semantic_tiers.py"),
@@ -434,7 +490,21 @@ def publication_stage_check_results() -> dict[str, subprocess.CompletedProcess[s
             ],
         }
     )
-    results = run_independent_checks(commands)
+    completed: dict[str, subprocess.CompletedProcess[str]] = {}
+    if _PREFLIGHT_PROJECTION_CONTEXT is not None:
+        if (
+            _PREFLIGHT_PROJECTION_CONTEXT != preflight_projection_context()
+            or _PROJECTION_CHECK_RESULTS is None
+            or set(_PROJECTION_CHECK_RESULTS) != set(refresh_projections.BUILDERS)
+        ):
+            raise RuntimeError("projection preflight snapshot/context changed before publication checks")
+        completed = {
+            f"{projection_prefix}{builder}": result
+            for builder, result in _PROJECTION_CHECK_RESULTS.items()
+        }
+        commands = {key: argv for key, argv in commands.items() if key not in completed}
+    executor, futures = start_independent_checks(commands)
+    results = finish_independent_checks(executor, futures, completed=completed)
     _PROJECTION_CHECK_RESULTS = {
         builder: results[f"{projection_prefix}{builder}"]
         for builder in refresh_projections.BUILDERS
@@ -1535,6 +1605,11 @@ def missing_release_dependencies() -> list[str]:
 
 
 def main(argv: list[str] | None = None) -> int:
+    global _PROJECTION_CHECK_RESULTS, _PREFLIGHT_PROJECTION_CONTEXT
+    # Every main invocation owns a new source-current result set. Never carry
+    # a prior in-process gate's projections into another attempted release.
+    _PROJECTION_CHECK_RESULTS = None
+    _PREFLIGHT_PROJECTION_CONTEXT = None
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument(
         "--singleflight-worker",
@@ -1628,7 +1703,11 @@ def main(argv: list[str] | None = None) -> int:
     read.cache_clear()
     cache: dict[tuple[str, str | None], list[str] | None] = {}
 
-    if refresh_projections.preflight():
+    base_results: dict[str, subprocess.CompletedProcess[str]] = {}
+    preflight_context = preflight_projection_context()
+    if refresh_projections.preflight(base_results=base_results):
+        return 1
+    if not seed_preflight_projection_results(base_results, preflight_context):
         return 1
 
     # Fail fast on the cheapest high-severity invariant.  In particular, do

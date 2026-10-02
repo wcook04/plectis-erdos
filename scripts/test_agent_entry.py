@@ -564,6 +564,157 @@ ROUTE_CASES = {
     'claim': ('understand_repository', 'explain-public-system'),
 }
 
+# PR314 portable-writing and installed-object contrasts, retaining all current fixtures.
+ROUTE_CASES.update({'Update the skill public-mathematical-writing in Codex': ('install_skills', 'install-clone-skills'),
+ 'Refresh the skill public-mathematical-writing in Claude': ('install_skills', 'install-clone-skills'),
+ 'Uninstall the skill public-mathematical-writing from Codex': ('install_skills', 'install-clone-skills'),
+ 'Remove the skill public-mathematical-writing from my custom harness': ('install_skills',
+                                                                         'install-clone-skills'),
+ "Remove the installed skill public-mathematical-writing's examples from the README": ('public_writing',
+                                                                                       'public-mathematical-writing'),
+ 'Remove the installed skill public-mathematical-writing documentation from the README': ('public_writing',
+                                                                                          'public-mathematical-writing'),
+ 'Update the skill mine-open-problem in Codex': ('install_skills', 'install-clone-skills'),
+ 'Uninstall the skill submit-pull-request from Claude': ('install_skills', 'install-clone-skills'),
+ 'Install the skill submit-pull-request in Codex': ('install_skills', 'install-clone-skills'),
+ 'Update the skill public-mathematical-writing in Codex, then refresh the skill submit-pull-request in Claude': ('install_skills',
+                                                                                                                 'install-clone-skills'),
+ 'Uninstall the skill mine-open-problem from Codex, then remove the skill submit-pull-request from Claude': ('install_skills',
+                                                                                                             'install-clone-skills'),
+ 'Prove this Lean theorem, then update the skill submit-pull-request in Codex': ('bounded_research',
+                                                                                 'mine-open-problem'),
+ "Update the installed skill public-mathematical-writing's version in Codex": ('install_skills',
+                                                                               'install-clone-skills'),
+ 'Prove this Lean theorem, then uninstall the skill public-mathematical-writing from Codex': ('bounded_research',
+                                                                                              'mine-open-problem'),
+ 'Use the skill public-mathematical-writing to revise a paper in my repository': ('reuse_writing_guidance',
+                                                                                  'public-mathematical-writing'),
+ 'Revise this Plectis paper using the skill public-mathematical-writing': ('public_writing',
+                                                                           'public-mathematical-writing'),
+ 'Uninstall the installed public-mathematical-writing skill from Codex': ('install_skills',
+                                                                          'install-clone-skills'),
+ 'Uninstall the installed public-mathematical-writing from Codex': ('install_skills', 'install-clone-skills'),
+ 'Remove the installed writing skill from Claude': ('install_skills', 'install-clone-skills'),
+ 'Remove the installed writing skills from my custom harness': ('install_skills', 'install-clone-skills'),
+ 'Remove my currently installed portable writing skill': ('install_skills', 'install-clone-skills'),
+ 'Uninstall the writing skill from my custom harness': ('install_skills', 'install-clone-skills'),
+ 'Remove my writing skills from a custom skills loader': ('install_skills', 'install-clone-skills'),
+ 'Remove the writing guide from the installed writing skill': ('understand_repository',
+                                                               'explain-public-system'),
+ "Remove the installed writing skill's outdated examples": ('understand_repository', 'explain-public-system'),
+ 'Use the installed writing skill to remove a paragraph from my manuscript': ('reuse_writing_guidance',
+                                                                              'public-mathematical-writing'),
+ 'Revise this Plectis paper using the installed writing skill and remove its abstract': ('public_writing',
+                                                                                         'public-mathematical-writing'),
+ 'Prove this Lean theorem, then uninstall the installed writing skill': ('bounded_research',
+                                                                         'mine-open-problem'),
+ "Update my installed writing skill's version in Codex": ('install_skills', 'install-clone-skills'),
+ "Update my installed writing skills' version in Codex": ('install_skills', 'install-clone-skills'),
+ 'Remove the installed writing skill documentation from the README': ('understand_repository',
+                                                                      'explain-public-system'),
+ 'Remove the installed writing skill examples from this Plectis paper': ('understand_repository',
+                                                                         'explain-public-system'),
+ 'Remove my installed writing skill, then update the documentation': ('install_skills',
+                                                                      'install-clone-skills'),
+ 'Prove this Lean theorem, then update the documentation about installed skills': ('bounded_research',
+                                                                                   'mine-open-problem'),
+ 'Update my installed writing skills, then refresh their documentation': ('install_skills',
+                                                                          'install-clone-skills'),
+ 'Update the table of installed writing skills': ('repository_architecture',
+                                                  'maintain-public-infrastructure'),
+ 'Update the documentation about writing skills in Codex': ('repository_architecture',
+                                                            'maintain-public-infrastructure'),
+ 'Update the list of installed skills': ('repository_architecture', 'maintain-public-infrastructure'),
+ 'Reinstall the writing skill in Codex': ('install_skills', 'install-clone-skills'),
+ 'Reinstalling the portable writing skill in Claude': ('install_skills', 'install-clone-skills'),
+ 'Refresh the installed public-mathematical-writing skill from this clone': ('install_skills',
+                                                                             'install-clone-skills'),
+ 'Update my installed writing skill to the latest version': ('install_skills', 'install-clone-skills'),
+ 'Update my currently installed portable writing skill': ('install_skills', 'install-clone-skills'),
+ 'Refresh the installed concise mathematical writing skills': ('install_skills', 'install-clone-skills'),
+ 'Refresh the concise writing skills in Codex': ('install_skills', 'install-clone-skills'),
+ 'Update my writing skill in Claude': ('install_skills', 'install-clone-skills'),
+ 'Refresh my reusable writing skill for a custom agent harness': ('install_skills', 'install-clone-skills'),
+ 'Update the short writing skills in my custom skills loader': ('install_skills', 'install-clone-skills'),
+ 'Refresh public-mathematical-writing in Codex': ('install_skills', 'install-clone-skills'),
+ 'Update the installed public-mathematical-writing': ('install_skills', 'install-clone-skills'),
+ 'Update this Plectis paper using the installed writing skill': ('understand_repository',
+                                                                 'explain-public-system'),
+ 'Revise this Plectis paper using the installed writing skill and update its abstract': ('public_writing',
+                                                                                         'public-mathematical-writing'),
+ 'Prove a theorem using the installed writing skill, then update the paper': ('bounded_research',
+                                                                              'mine-open-problem'),
+ 'Use the installed writing skill to revise a paper in my repository and update its examples': ('reuse_writing_guidance',
+                                                                                                'public-mathematical-writing'),
+ 'Re-install the writing skill in Codex': ('install_skills', 'install-clone-skills'),
+ 'Refresh my installed public-mathematical-writing': ('install_skills', 'install-clone-skills'),
+ 'Prove this Lean theorem, then update the installed writing skill': ('bounded_research',
+                                                                      'mine-open-problem'),
+ 'Use the writing guide to revise a paper in my repository': ('reuse_writing_guidance',
+                                                              'public-mathematical-writing'),
+ 'Use the writing guide to revise these papers in another repository': ('reuse_writing_guidance',
+                                                                        'public-mathematical-writing'),
+ 'Apply the short mathematical writing guides to revise papers in my project': ('reuse_writing_guidance',
+                                                                                'public-mathematical-writing'),
+ 'Use the mathematical writing method to revise the README in my repository': ('reuse_writing_guidance',
+                                                                               'public-mathematical-writing'),
+ 'Revise the short writing guides and update their accompanying skill': ('public_writing',
+                                                                         'public-mathematical-writing'),
+ 'Apply the writing method to the README of another project': ('reuse_writing_guidance',
+                                                               'public-mathematical-writing'),
+ 'Use this writing method to draft my own manuscript': ('reuse_writing_guidance',
+                                                        'public-mathematical-writing'),
+ 'Use the writing guide to revise this report about my paper': ('reuse_writing_guidance',
+                                                                'public-mathematical-writing'),
+ 'Revise the writing guide and update its accompanying skill': ('public_writing',
+                                                                'public-mathematical-writing'),
+ 'Edit this writing guide and reconcile the writing skill': ('public_writing', 'public-mathematical-writing'),
+ 'Update the writing skill after changing its paper': ('repository_architecture',
+                                                       'maintain-public-infrastructure'),
+ 'Synchronize the writing skill with its reviewed papers': ('repository_architecture',
+                                                            'maintain-public-infrastructure'),
+ 'Copy the portable writing skill into Codex': ('install_skills', 'install-clone-skills'),
+ 'Copy the portable writing skill and use its guide to revise a paper in my repository': ('install_skills',
+                                                                                          'install-clone-skills'),
+ 'Install the writing skill and use its guide to revise this Plectis paper': ('install_skills',
+                                                                              'install-clone-skills'),
+ 'Symlink the portable writing skill into my agent harness': ('install_skills', 'install-clone-skills'),
+ 'Apply the writing method to revise this Plectis paper': ('public_writing', 'public-mathematical-writing'),
+ 'Use the writing guide to draft a manuscript in this checkout': ('public_writing',
+                                                                  'public-mathematical-writing'),
+ 'Prove a theorem using this writing method in my repository': ('bounded_research', 'mine-open-problem'),
+ 'Prove a theorem, then revise the concise writing guide': ('bounded_research', 'mine-open-problem'),
+ 'Prove a theorem, then revise the writing guide': ('bounded_research', 'mine-open-problem'),
+ 'Use your portable writing skill to revise my own paper': ('reuse_writing_guidance',
+                                                            'public-mathematical-writing'),
+ 'Use the portable writing skill to write my own manuscript': ('reuse_writing_guidance',
+                                                               'public-mathematical-writing'),
+ 'Apply the portable writing skill to draft a paper for my project': ('reuse_writing_guidance',
+                                                                      'public-mathematical-writing'),
+ 'Prove a theorem using the writing guide in another repository': ('bounded_research', 'mine-open-problem'),
+ 'I want to solve Erdos 257 using the writing guide in another repository': ('bounded_research',
+                                                                             'mine-open-problem'),
+ 'Use the writing guide to revise this Plectis paper': ('public_writing', 'public-mathematical-writing'),
+ 'Install the portable writing skill in another repository': ('install_skills', 'install-clone-skills'),
+ 'Use the portable writing skill to revise this Plectis manuscript': ('public_writing',
+                                                                      'public-mathematical-writing'),
+ 'Use the portable writing skill to revise a paper in this repository': ('public_writing',
+                                                                         'public-mathematical-writing'),
+ 'Find a counterexample using the writing guide in another repository': ('bounded_research',
+                                                                         'mine-open-problem'),
+ 'Use the writing guide in another repository': ('reuse_writing_guidance', 'public-mathematical-writing'),
+ 'Use your writing guide with my own manuscript': ('reuse_writing_guidance', 'public-mathematical-writing'),
+ 'Apply this writing guide to a paper in my project': ('reuse_writing_guidance',
+                                                       'public-mathematical-writing'),
+ 'Reuse the writing skill in another repository': ('reuse_writing_guidance', 'public-mathematical-writing'),
+ 'Can I use the portable writing skill for my project?': ('reuse_writing_guidance',
+                                                          'public-mathematical-writing'),
+ 'Use the writing method in my repository': ('reuse_writing_guidance', 'public-mathematical-writing'),
+ 'Install the portable writing skill into Codex': ('install_skills', 'install-clone-skills'),
+ 'Install the writing skill in another repository': ('install_skills', 'install-clone-skills'),
+ 'Revise the short writing-guide paper': ('public_writing', 'public-mathematical-writing'),
+ 'Explain how the paper review process works': ('understand_repository', 'explain-public-system')})
+
 
 def validate_finished_patch_routes() -> None:
     """Separate returning finished patches from authoring changes or proofs."""
@@ -729,6 +880,16 @@ def main() -> int:
         assert expected_skill in {row["id"] for row in packet["skills"]}, (task, packet)
         assert packet["primary_lane"]["read"], task
         assert packet["primary_lane"]["boundary"], task
+        if expected_lane == "reuse_writing_guidance":
+            assert [row["id"] for row in packet["skills"]] == [
+                "public-mathematical-writing"
+            ], (task, "independent writing must not require sibling Plectis skills")
+            assert packet["primary_lane"]["read"] == [
+                "skills/public-mathematical-writing/SKILL.md#use-in-another-repository"
+            ], (task, "reuse must open the destination-project instructions")
+            assert packet["primary_lane"]["commands"] == [], (
+                task, "reuse must not require Plectis corpus commands"
+            )
         if expected_lane == "public_writing":
             assert "propagate-research-consequences" in {
                 row["id"] for row in packet["skills"]
@@ -755,6 +916,24 @@ def main() -> int:
     assert "lean_validation" in {
         row["id"] for row in duplicate_builds["alternatives"]
     }
+
+    for managed_object in (
+        "Uninstall the skill submit-pull-request from Claude",
+        "Uninstall submit-pull-request skill from Claude",
+        "Uninstall the skill install-clone-skills from Claude",
+        "Update the skill install-clone-skills in Codex",
+    ):
+        removal = entry_packet(catalog, managed_object)
+        assert removal["primary_lane"]["id"] == "install_skills", removal
+        assert "submit_change" not in {
+            row["id"] for row in removal["alternatives"]
+        }, "The installed skill's name must not manufacture a submission request"
+        following_action = entry_packet(
+            catalog, managed_object + " then submit a pull request"
+        )
+        assert "submit_change" in {
+            row["id"] for row in following_action["alternatives"]
+        }, "Masking a managed object must preserve a real later submission request"
 
     fallback = entry_packet(catalog, "frobnicate the unspecified material")
     assert fallback["route_status"] == "fallback"
