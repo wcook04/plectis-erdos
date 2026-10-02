@@ -538,6 +538,14 @@ ROUTE_CASES = {
     'Prove the weighted theorem in Lean before an independent Comparator replay': ('bounded_research', 'mine-open-problem'),
     'Submit my mathematical proof for review': ('return_research', 'erdos-research-return'),
     'Review the #257 theorem in the paper without running Comparator': ('understand_repository', 'explain-public-system'),
+    # Ordinary release-readiness requests must reach the maintenance owner.
+    'fix fresh clone bugs and failures and get public repository ready for release': ('repository_architecture', 'maintain-public-infrastructure'),
+    'organize public repository and fix first read impressions': ('repository_architecture', 'maintain-public-infrastructure'),
+    'Repair first-read failures in a fresh clone': ('repository_architecture', 'maintain-public-infrastructure'),
+    'Prepare the repository for release readiness': ('repository_architecture', 'maintain-public-infrastructure'),
+    'Tidy the public repo so a newcomer can use it': ('repository_architecture', 'maintain-public-infrastructure'),
+    'Explain first-read impressions of the public repository': ('understand_repository', 'explain-public-system'),
+    'Describe release readiness without changing the repository': ('understand_repository', 'explain-public-system'),
     # PR309 ordinary maintenance and status routes, with neighboring controls.
     'Update the repository citation metadata and refresh its generated views': ('repository_architecture', 'maintain-public-infrastructure'),
     'Refresh the public repository citations and regenerate their views': ('repository_architecture', 'maintain-public-infrastructure'),
