@@ -89,6 +89,13 @@ request. Keep actual runtime errors separate, and cover both input sources in
 normal and optimized runs with checks that rejected requests start no
 subprocess and create no artifacts.
 
+For a producer with several named output files, inspect every selected final
+path before writing the first file. Refuse symlinks, including broken links,
+and nonregular-file collisions without changing earlier output or material
+outside the selected directory. Preserve the producer's documented
+regeneration behavior for regular files. Test clean output, repeated
+regeneration, and a collision at each output in normal and optimized runs.
+
 ## Know the public owner graph
 
 - `skills/registry.json` owns skill families, task lanes, composition edges,
