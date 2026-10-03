@@ -69,6 +69,7 @@ class Inputs:
         self.root = root.resolve()
         self.texts: dict[str, str] = {}
         self.hashes: dict[str, str] = {}
+        self._statement_lines: dict[str, list[str]] = {}
 
     def read(self, relative: str) -> str:
         if relative not in self.texts:
@@ -76,6 +77,12 @@ class Inputs:
             self.hashes[relative] = digest(raw)
             self.texts[relative] = raw.decode('utf-8')
         return self.texts[relative]
+
+    def statement_lines(self, relative: str) -> list[str]:
+        """Convert each statement source once in this immutable input snapshot."""
+        if relative not in self._statement_lines:
+            self._statement_lines[relative] = coverage.counter_view(self.read(relative)).splitlines()
+        return self._statement_lines[relative]
 
     def json(self, relative: str) -> Any:
         return json.loads(self.read(relative))
@@ -93,8 +100,9 @@ def normalized(text: str) -> str:
     return re.sub(r'\s+', ' ', text).strip()
 
 
-def statement_text(loc: coverage.Located, source: str) -> str:
-    text = '\n'.join(coverage.counter_view(source).splitlines()[loc.line - 1:loc.end_line])
+def statement_text(loc: coverage.Located, source: str | Inputs) -> str:
+    lines = source.statement_lines(loc.path) if isinstance(source, Inputs) else coverage.counter_view(source).splitlines()
+    text = '\n'.join(lines[loc.line - 1:loc.end_line])
     env = loc.row.get('environment')
     if env:
         begin, end = '\\begin{' + env + '}', '\\end{' + env + '}'
@@ -397,7 +405,7 @@ def _report(root: Path = ROOT, problems: list[int] | None = None) -> dict:
             labels = found['labels']
             pseudo = coverage.Located({'id': (labels or ['unlabelled'])[0], 'environment': found['environment']},
                                       found['path'], found['line'], found['end_line'])
-            body = statement_text(pseudo, inputs.read(found['path']))
+            body = statement_text(pseudo, inputs)
             buckets[normalized(body)].append(found)
         for key, group in buckets.items():
             if len(group) > 1:
@@ -432,12 +440,12 @@ def _report(root: Path = ROOT, problems: list[int] | None = None) -> dict:
             sloc = currency.located.get(c['short_claim'])
             if sloc is None:
                 continue
-            a = normalized(statement_text(sloc, texts[sloc.path]))
+            a = normalized(statement_text(sloc, inputs))
             for candidate in c['candidates']:
                 if candidate['basis'] != 'label_alias':
                     continue
                 gloc = currency.located[candidate['long_claim']]
-                b = normalized(statement_text(gloc, texts[gloc.path]))
+                b = normalized(statement_text(gloc, inputs))
                 ratio = difflib.SequenceMatcher(None, a, b, autojunk=False).ratio()
                 if a != b and ratio >= .88:
                     findings.append({'code': 'possible_stale_passage', 'severity': 'review',
