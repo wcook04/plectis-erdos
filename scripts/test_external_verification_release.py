@@ -632,7 +632,11 @@ def synthetic_repository(parent: Path) -> tuple[Path, dict, str, str, str, Path]
     )
     write_json(root / release.CONTRACT_PATH, contract)
     for relative in contract["tracked_artifacts"]:
-        path = root / relative
+        problem = next(
+            (number for number, name in PUBLIC_PROBLEM_ARTIFACTS.items() if name == relative),
+            None,
+        )
+        path = root / "paper" / str(problem) / relative if problem is not None else root / relative
         if path == root / release.CONTRACT_PATH:
             continue
         path.parent.mkdir(parents=True, exist_ok=True)
@@ -1080,6 +1084,35 @@ def test_release_manifest() -> None:
             ),
             "release manifest artifact URL is not commit-bound",
         )
+        for row in manifest["tracked_artifacts"]:
+            require(
+                git(root, "ls-tree", "--name-only", commit, "--", row["path"]) == row["path"],
+                "release manifest artifact path is absent from its source commit: " + row["path"],
+            )
+            require(
+                row["sha256"] == digest(root / row["path"]),
+                "release manifest artifact digest does not identify its source path",
+            )
+            require(
+                row["immutable_url"] == f"{contract['repository']}/blob/{commit}/{row['path']}",
+                "release manifest artifact URL does not identify its source path",
+            )
+        rows_by_path = {row["path"]: row for row in manifest["tracked_artifacts"]}
+        require("README.md" in rows_by_path, "ordinary manifest artifact path changed")
+        for problem, basename in PUBLIC_PROBLEM_ARTIFACTS.items():
+            require(basename in contract["tracked_artifacts"], "hosted PDF asset basename changed")
+            source_path = f"paper/{problem}/{basename}"
+            require(source_path in rows_by_path, "nested PDF source path is missing")
+            broken_source = copy.deepcopy(manifest)
+            broken_row = next(row for row in broken_source["tracked_artifacts"] if row["path"] == source_path)
+            broken_row["path"] = basename
+            broken_row["immutable_url"] = f"{contract['repository']}/blob/{commit}/{basename}"
+            expect_error(
+                lambda: release.validate_manifest(
+                    broken_source, root=root, runtime_receipt_path=receipt_path
+                ),
+                "tracked-artifact identities are stale",
+            )
         expected_theorem_count = len(
             json.loads(
                 (root / "verification/comparator.json").read_text(encoding="utf-8")

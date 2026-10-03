@@ -338,11 +338,14 @@ def artifact_rows(
     rows = []
     for relative in release_contract["tracked_artifacts"]:
         path = tracked_artifact_path(root, relative)
+        # Contract PDF names retain hosted asset basenames; source rows identify
+        # the actual file stored in the immutable repository tree.
+        source_path = path.relative_to(root).as_posix()
         rows.append(
             {
-                "path": relative,
+                "path": source_path,
                 "sha256": sha256_file(path, root=root),
-                "immutable_url": f"{repository}/blob/{source_commit}/{relative}",
+                "immutable_url": f"{repository}/blob/{source_commit}/{source_path}",
             }
         )
     return rows
