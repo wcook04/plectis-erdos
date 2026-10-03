@@ -502,10 +502,10 @@
       "id": "contribution-guide",
       "path": "CONTRIBUTING.md",
       "start_line": 1,
-      "end_line": 255,
+      "end_line": 259,
       "kind": "source",
-      "sha256": "d364b1ae2501d7a55ac113ae9f4b6ff9ae64928a5b7fddf89e410d5518307b0f",
-      "excerpt_sha256": "d364b1ae2501d7a55ac113ae9f4b6ff9ae64928a5b7fddf89e410d5518307b0f"
+      "sha256": "e14eef84f87832e31581cfd488b7fb9f6264e8d65f46b1d211464086aef69269",
+      "excerpt_sha256": "e14eef84f87832e31581cfd488b7fb9f6264e8d65f46b1d211464086aef69269"
     },
     {
       "id": "software-citation",
@@ -708,9 +708,9 @@
       "kind": "source",
       "path": "CONTRIBUTING.md",
       "start_line": 1,
-      "end_line": 89,
-      "sha256": "d364b1ae2501d7a55ac113ae9f4b6ff9ae64928a5b7fddf89e410d5518307b0f",
-      "excerpt_sha256": "9dddfc8f6ceefc14e83ed1967c38a10de331ac98552bfb9efa825ec06e2009c4",
+      "end_line": 93,
+      "sha256": "e14eef84f87832e31581cfd488b7fb9f6264e8d65f46b1d211464086aef69269",
+      "excerpt_sha256": "104071eed53570a015cd2a856277a7f9ba87bd45fb5f3a94bb549b39b17dac7d",
       "custody": "Current native public file inspected as source; no fresh execution."
     },
     {
