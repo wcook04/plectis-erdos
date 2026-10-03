@@ -3,7 +3,9 @@
 
 from __future__ import annotations
 
+import contextlib
 import copy
+import io
 import json
 import os
 import subprocess
@@ -127,7 +129,7 @@ def check_toolchain_absence_is_a_clean_skip_signal() -> None:
     # Stand the dependency probe down. It runs first and raises a subclass of
     # the same exception, so leaving it live would let this check pass in an
     # unbuilt clone without ever reaching the `lake` exec it exists to test.
-    compiler._require_lean_dependencies = lambda _repo_root: None
+    compiler._require_lean_dependencies = lambda _repo_root, **_kwargs: None
     try:
         try:
             compiler.environment_fingerprint(compiler.ROOT, timeout_seconds=1)
@@ -169,8 +171,11 @@ def check_unfetched_dependencies_are_a_clean_skip_signal() -> None:
             try:
                 compiler._require_lean_dependencies(root)
             except compiler.LeanDependenciesUnavailable as error:
-                assert "python3 scripts/lean_fast_build.py --jobs 2" in str(error)
-                assert "lake exe cache get" not in str(error)
+                message = str(error)
+                if "Select the local modules" not in message:
+                    raise AssertionError("generic cold check invented a build target")
+                if "--jobs 2`" in message or "lake exe cache get" in message:
+                    raise AssertionError("cold check suggested an untargeted build")
                 return
             raise AssertionError(
                 f"an incomplete checkout ({stage}) did not raise "
@@ -188,6 +193,83 @@ def check_unfetched_dependencies_are_a_clean_skip_signal() -> None:
         # Complete tree: the probe must stand aside so that a genuine `lake`
         # failure still reaches the caller as a failure.
         compiler._require_lean_dependencies(root)
+
+
+
+def check_cold_setup_follows_selected_imports() -> None:
+    """Every CLI mode refuses before tools and suggests only its own targets."""
+    def require(condition: bool, message: str) -> None:
+        if not condition:
+            raise AssertionError(message)
+
+    with tempfile.TemporaryDirectory() as raw:
+        root = Path(raw)
+        (root / "lake-manifest.json").write_text(
+            json.dumps({"packages": [{"name": "mathlib"}]}), encoding="utf-8",
+        )
+        (root / "lakefile.toml").write_text(
+            '[[lean_lib]]\nname = "Erdos249257"\nsrcDir = "lean"\n'
+            '[[lean_lib]]\nname = "Other"\nsrcDir = "lean"\n',
+            encoding="utf-8",
+        )
+        for module in ["Erdos249257", "Erdos249257.CurvatureCarry",
+                       "Erdos249257.TotientTailPeriodKiller", "Other.Leaf"]:
+            path = root / "lean" / Path(*module.split(".")).with_suffix(".lean")
+            path.parent.mkdir(parents=True, exist_ok=True)
+            path.write_text("-- local cold fixture\n", encoding="utf-8")
+
+        def refusal(arguments: list[str]) -> str:
+            stdout, stderr = io.StringIO(), io.StringIO()
+            with mock.patch.object(compiler.sys, "argv", [
+                "proof_state_compiler.py", "--repo-root", str(root), *arguments,
+            ]), mock.patch.object(compiler.subprocess, "run", side_effect=
+                AssertionError("cold refusal executed a tool")), \
+                    contextlib.redirect_stdout(stdout), contextlib.redirect_stderr(stderr):
+                status = compiler.main()
+            require(status == 2, f"cold CLI returned {status}, expected 2")
+            require(not stdout.getvalue(), "cold CLI emitted a success packet")
+            require("REFUSED:" in stderr.getvalue(), "cold CLI lost refusal diagnostic")
+            require("--jobs 2`" not in stderr.getvalue(), "untargeted default build suggested")
+            return stderr.getvalue()
+
+        pilot = refusal(["--pilot-controls"])
+        require("--jobs 2 Erdos249257.CurvatureCarry "
+                "Erdos249257.TotientTailPeriodKiller`" in pilot,
+                "pilot preparation did not cover its selected imports")
+        request = copy.deepcopy(compiler.pilot_requests()[0])
+        request["imports"] = ["Other.Leaf"]
+        request_path = root / "request.json"
+        request_path.write_text(json.dumps(request), encoding="utf-8")
+        explicit = refusal(["--request-file", str(request_path)])
+        require("--jobs 2 Other.Leaf`" in explicit,
+                "request preparation did not follow its imports")
+        require("CurvatureCarry" not in explicit, "request received pilot-only remedy")
+        with mock.patch.object(compiler.sys, "stdin", io.StringIO(json.dumps(request))):
+            stdin = refusal(["--request-stdin"])
+        require("--jobs 2 Other.Leaf`" in stdin, "stdin lost selected-import remedy")
+        inspection = refusal(["--inspect-declaration", "Other.example", "--module", "Other.Leaf"])
+        require("--jobs 2 Other.Leaf`" in inspection,
+                "inspection preparation did not follow --module")
+        require("CurvatureCarry" not in inspection, "inspection received pilot-only remedy")
+        for imports, expected in [
+            (["Erdos249257"], "coordinated release validation"),
+            (["Mathlib"], "cannot all be resolved as local build targets"),
+            (["Other.Leaf", "Mathlib"], "cannot all be resolved as local build targets"),
+        ]:
+            request["imports"] = imports
+            request_path.write_text(json.dumps(request), encoding="utf-8")
+            message = refusal(["--request-file", str(request_path)])
+            require(expected in message, "unfocused imports lost actionable setup guidance")
+            require("Run `python3 scripts/lean_fast_build.py" not in message,
+                    "unsupported imports received a falsely sufficient local build")
+            require("CurvatureCarry" not in message, "unsupported imports received pilot remedy")
+        # Metadata-only roots cannot resolve local targets; remain an exit-2
+        # setup refusal, without calling Git/Lake or suggesting a full build.
+        for path in (root / "lean").rglob("*.lean"):
+            path.unlink()
+        metadata_only = refusal(["--pilot-controls"])
+        require("cannot all be resolved" in metadata_only,
+                "metadata-only checkout lost the setup refusal")
 
 
 def check_timeout_reaps_lean_child() -> None:
@@ -334,6 +416,7 @@ def main() -> int:
     check_subprocess_environment()
     check_toolchain_absence_is_a_clean_skip_signal()
     check_unfetched_dependencies_are_a_clean_skip_signal()
+    check_cold_setup_follows_selected_imports()
     check_timeout_reaps_lean_child()
     try:
         packet = check_live_pilot()

@@ -20,6 +20,7 @@ import itertools
 import json
 import os
 import re
+import shlex
 import signal
 import subprocess
 import sys
@@ -134,7 +135,49 @@ def _command_output(
     return completed.stdout.strip()
 
 
-def _require_lean_dependencies(repo_root: Path) -> None:
+def _dependency_setup_guidance(repo_root: Path, imports: Iterable[str]) -> str:
+    """Suggest only selected local targets, using the build wrapper's resolver."""
+    selected = sorted(set(imports))
+    setup = "See docs/REPRODUCIBILITY.md for pinned toolchain and dependency setup. "
+    if not selected:
+        return setup + (
+            "Select the local modules needed for this check before using the "
+            "focused build wrapper; an untargeted two-root build is release-only."
+        )
+    import lean_fast_build as build
+
+    try:
+        modules = build.discover(repo_root)
+        targets = build.resolve_targets(selected, modules, repo_root)
+        libraries = build.lake_library_rows(repo_root)
+        roots = {row["name"] for row in libraries if isinstance(row.get("name"), str)}
+        if not libraries:
+            roots = {name for name in modules if "." not in name}
+        if any(target in roots for target in targets):
+            return setup + (
+                "The selected imports include a library root. Narrow them to "
+                "the modules needed for this check, or arrange coordinated "
+                "release validation for a full-root build."
+            )
+    except (OSError, ValueError):
+        return setup + (
+            "The selected imports cannot all be resolved as local build targets: "
+            f"{', '.join(selected)}. Choose a focused local module that supplies "
+            "these imports, or prepare their pinned dependencies through the "
+            "documented setup route; no default full-root build is selected."
+        )
+    command = shlex.join([
+        "python3", "scripts/lean_fast_build.py", "--jobs", "2", *targets,
+    ])
+    return (
+        f"Run `{command}` in this checkout (the wrapper owns cache acquisition), "
+        "then re-run this check. " + setup + "Never overlap Lean builds."
+    )
+
+
+def _require_lean_dependencies(
+    repo_root: Path, *, imports: Iterable[str] = (),
+) -> None:
     """Fail early, and legibly, when the dependency tree is incomplete.
 
     The probe compares the packages ``lake-manifest.json`` pins against what is
@@ -174,10 +217,8 @@ def _require_lean_dependencies(repo_root: Path) -> None:
     raise LeanDependenciesUnavailable(
         f"{len(missing)} of {len(required)} Lean dependencies pinned in "
         f"lake-manifest.json are absent from {packages_dir}: "
-        f"{', '.join(missing)}. Run `python3 scripts/lean_fast_build.py "
-        "--jobs 2` in this checkout (it owns cache acquisition; see "
-        "docs/REPRODUCIBILITY.md), then re-run this "
-        "check."
+        f"{', '.join(missing)}. "
+        + _dependency_setup_guidance(repo_root, imports)
     )
 
 
@@ -185,9 +226,10 @@ def environment_fingerprint(
     repo_root: Path = ROOT,
     *,
     timeout_seconds: float = ENVIRONMENT_COMMAND_TIMEOUT_SECONDS,
+    imports: Iterable[str] = (),
 ) -> dict[str, Any]:
     """Return the exact local environment identity used by transition runs."""
-    _require_lean_dependencies(repo_root)
+    _require_lean_dependencies(repo_root, imports=imports)
     git_head = _command_output(
         ["git", "rev-parse", "HEAD"],
         cwd=repo_root,
@@ -840,7 +882,8 @@ def compile_request(
     _validate_request(request)
     repo_root = repo_root.resolve()
     environment = environment or environment_fingerprint(
-        repo_root, timeout_seconds=min(timeout_seconds, 30.0)
+        repo_root, timeout_seconds=min(timeout_seconds, 30.0),
+        imports=request["imports"],
     )
     transitions = [
         _run_candidate(
@@ -1127,8 +1170,10 @@ def compile_pilot_suite(
     repo_root: Path = ROOT,
     timeout_seconds: float = 90.0,
 ) -> dict[str, Any]:
+    requests = pilot_requests()
     environment = environment_fingerprint(
-        repo_root, timeout_seconds=min(timeout_seconds, 30.0)
+        repo_root, timeout_seconds=min(timeout_seconds, 30.0),
+        imports={module for request in requests for module in request["imports"]},
     )
     packets = [
         compile_request(
@@ -1137,7 +1182,7 @@ def compile_pilot_suite(
             environment=environment,
             timeout_seconds=timeout_seconds,
         )
-        for request in pilot_requests()
+        for request in requests
     ]
     cases = {packet["goal_id"]: packet for packet in packets}
     blocked = cases["integer_tail_without_divisibility"]
@@ -1261,7 +1306,9 @@ def inspect_declaration(module: str, declaration: str, *, repo_root: Path = ROOT
                         nodes: int = 160, depth: int = 12,
                         timeout_seconds: float = 90.0) -> dict[str, Any]:
     source = inspection_source(module, declaration, nodes, depth)
-    environment = environment_fingerprint(repo_root, timeout_seconds=timeout_seconds)
+    environment = environment_fingerprint(
+        repo_root, timeout_seconds=timeout_seconds, imports=[module],
+    )
     lock_path = singleflight.resource_lock_path({}, 'lean-host')
     lock_path.parent.mkdir(parents=True, exist_ok=True)
     with lock_path.open('a+') as lock:
