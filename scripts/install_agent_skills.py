@@ -83,6 +83,23 @@ def selected_skills(
     return {name: available[name] for name in args.skill}
 
 
+def validate_install_plan(available: dict[str, Path], chosen: dict[str, Path], target: Path) -> None:
+    """Refuse any destination overlapping clone sources before the first write."""
+    for name in chosen:
+        # Resolve the parent, not the installed link: an external link pointing
+        # to a source can remain current or be safely unlinked for a copy.
+        destination = target / name
+        destination_path = destination.parent.resolve() / destination.name
+        for source in available.values():
+            source_path = source.resolve()
+            if (source_path == destination_path
+                    or source_path in destination_path.parents
+                    or destination_path in source_path.parents):
+                raise ValueError(
+                    f"refusing overlapping source skill and destination: {source} -> {destination}"
+                )
+
+
 def status(source: Path, destination: Path, mode: str) -> str:
     if not destination.exists() and not destination.is_symlink():
         return "missing"
@@ -146,6 +163,7 @@ def main() -> int:
     try:
         target = target_directory(args)
         chosen = selected_skills(args, available)
+        validate_install_plan(available, chosen, target)
     except ValueError as exc:
         print(f"error: {exc}", file=sys.stderr)
         return 2
