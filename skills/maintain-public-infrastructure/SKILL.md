@@ -88,6 +88,9 @@ refusal contract. An explicit JSON `null` must not be treated as an absent
 request. Keep actual runtime errors separate, and cover both input sources in
 normal and optimized runs with checks that rejected requests start no
 subprocess and create no artifacts.
+Validate nested receipt object shapes before reading their fields, including
+receipts whose bytes a trusted index pins. Use the shared reader's existing
+refusal contract for each caller.
 
 For a producer with several named output files, inspect every selected final
 path before writing the first file. Refuse symlinks, including broken links,
