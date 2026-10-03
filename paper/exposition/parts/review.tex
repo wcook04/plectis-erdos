@@ -127,8 +127,10 @@ qualification.
 
 \subsection{Read explanatory words as mathematical claims}\label{sec:words-as-claims}
 
-A familiar word can assert more than the displayed calculation supports. In
-\#1041, Abel summation expresses $f(t\zeta)$ as
+Test a mathematical adjective by substituting its definition. A ``convex
+combination'' requires nonnegative weights whose sum is one. Checking only
+their signs leaves half the condition untested. In \#1041, Abel summation
+expresses $f(t\zeta)$ as
 \[
  f(t\zeta)=\sum_{j=0}^{n-1}(t^j-t^{j+1})S_j,
  \qquad S_j=\sum_{k=0}^{j}a_k\zeta^k,
@@ -158,8 +160,9 @@ can have nonintegral coefficients, as $n(n-1)/2$ shows. The useful simplificatio
 names the available arithmetic structure.
 
 Even prose that seems to paraphrase a bound deserves this review. In the
-\#257 finite average, the residue period has length $d/\gcd(L,d)$ and the
-sample contains $T$ observations. The inequality $d\le LT$ does not assert
+\#257 finite average, $L,d,T$ are positive integers. The residues of
+$L,2L,3L,\ldots$ modulo $d$ repeat with period $d/\gcd(L,d)$; the sample
+uses only the first $T$ terms. The inequality $d\le LT$ does not assert
 that one whole period occurs. For $L=3,d=5,T=2$, it holds while the period
 has length five. Splitting the sample into complete periods, possibly none,
 and one remainder is sufficient for the displayed bound

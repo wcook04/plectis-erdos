@@ -1,6 +1,6 @@
 # Formal evidence: Distinct running least common multiples
 
-This record belongs to the paper [erdos-269-three-prime-running-lcm.pdf](../paper/269/erdos-269-three-prime-running-lcm.pdf). For every result it lists the Lean declarations that state it, and the recorded Comparator check where there is one. The inline links and margin marks in the paper use the same result mapping.
+This record belongs to the paper [erdos-269-three-prime-running-lcm.pdf](../paper/269/erdos-269-three-prime-running-lcm.pdf). For every result it lists the Lean declarations that state it, and the recorded Comparator check where there is one. The paper's verification concordance uses this result mapping.
 
 - **Lean.** Every declaration is quoted from [plectis-erdos](https://github.com/wcook04/plectis-erdos) at commit [`436f55ebdafa`](https://github.com/wcook04/plectis-erdos/tree/436f55ebdafa67e4af0fff79f621c13f2ded12bf) and is checked there by Lean's kernel (`leanprover/lean4:v4.29.1`, Mathlib `5e932f97dd25`).
 - **Comparator.** For a compared result, each declaration was stated a second time, from Mathlib alone, as a *Challenge* in [plectis-erdos-lean](https://github.com/wcook04/plectis-erdos-lean), and a *Solution* that uses our proof was checked against it by [Comparator](https://github.com/leanprover/comparator), which also confirms that only the axioms `propext`, `Quot.sound`, `Classical.choice` are used. All checks below come from replay run [35935225572](https://github.com/wcook04/plectis-erdos-lean/actions/runs/35935225572) at corpus commit [`cc7e541cf208`](https://github.com/wcook04/plectis-erdos-lean/tree/cc7e541cf2081c6fef5a5e377d52e365e33b01eb) (tag `paper-evidence-2026-09-24`); both the default Lean kernel and the independent `nanoda` kernel accepted every entry. The replay's own report for each entry is kept in this repository and linked from each check. A Challenge shows `sorry` because it states the target without proving it.
@@ -65,7 +65,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 > X_{a+1}=b_aX_a-m_a,\qquad
 >  0<X_a\le\frac{8640}{343}(a+1)^2<90(a+1)^2.
 > ```
-> For every integer $`B\ge1`$, either some $`BX_a`$ is integral and all later states are integral, or $`\operatorname{dist}(BX_a,\mathbb Z)\ge1/31`$ at arbitrarily large indices.*
+> For every integer $`B\ge1`$, either $`BX_a`$ is integral at some index (and hence at every later index), or $`\operatorname{dist}(BX_a,\mathbb Z)\ge1/31`$ at arbitrarily large indices.*
 
 The Lean declaration below states this result or one that implies it. The dichotomy is proved for every integer $B$, and the printed statement takes $B\ge1$; convergence of $S$ and $T_a$, the recurrence and the bounds $0<X_a\le\frac{8640}{343}(a+1)^2<90(a+1)^2$ are stated as printed. In the recurrence $b_a$ and $m_a$ enter through closed forms that `threePrimeHeight_dyadicBlock_succ` and `literalForcing235_eq_digit` identify with $\hgt(2^{a+1})/\hgt(2^a)$ and the printed sum defining $m_a$.
 
@@ -409,7 +409,7 @@ def BugeaudLaurentTranscendence : Prop :=
 
 ## Proposition A.1 (the running least common multiple), page 10
 
-> *Let $`p,q,r`$ be pairwise distinct primes and $`x\ge1`$. Then the running LCM equals the three-prime height: $`\operatorname{L}(x)=\operatorname{H}(x)`$.*
+> *Let $`p,q,r`$ be pairwise distinct primes and $`x\ge1`$. Then the running least common multiple is given by $`\operatorname{L}(x)=\operatorname{H}(x)`$.*
 
 The Lean declaration below states this result or one that implies it. The Lean statement has the same hypotheses and conclusion as the printed one.
 
@@ -435,7 +435,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="res-cell"></a>
 
-## Proposition A.2 (cells and jumps), page 10
+## Proposition A.2 (cells and jumps), page 11
 
 > *The running LCM is constant when the three integer logarithms are constant. A jump in exactly one logarithm multiplies it by the corresponding prime. The first $`n`$ positive powers of each prime, together with $`1`$, form $`3n+1`$ distinct points.*
 
@@ -517,7 +517,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="res-fibre-prop"></a>
 
-## Proposition A.3 (grouping terms with the same running LCM), page 10
+## Proposition A.3 (grouping terms with the same running LCM), page 11
 
 > *For a finite exponent box $`\mathcal B`$, set $`F(H)=\{(i,j,k)\in\mathcal B:\operatorname{H}(p^iq^jr^k)=H\}`$. Then
 > ``` math
@@ -592,7 +592,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="res-admissible-modular-minors"></a>
 
-## Corollary B.3 (the same minors modulo integers coprime to $`30`$), page 12
+## Corollary B.3 (the same minors modulo integers coprime to $`30`$), page 13
 
 > *For $`(p,q,r)=(2,3,5)`$ and every $`n\ge1`$, there are injective maps $`I,J:\{0,\ldots,n-1\}\to\mathbb{N}`$, chosen independently of $`B`$ and $`k`$, such that for every $`B\ge2`$ coprime to $`30`$ and every $`k\ge0`$, the selected $`n\times n`$ kernel matrix has unit determinant over $`\mathbb Z/B\mathbb Z`$, with each reciprocal prime power interpreted by its modular inverse.*
 
@@ -622,7 +622,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="res-finite-cut-rank"></a>
 
-## Proposition B.4 (rank of a matrix of threshold columns), page 12
+## Proposition B.4 (rank of a matrix of threshold columns), page 13
 
 > *Let $`m\ge1`$ and let $`c`$ lie in a field with $`c\ne 0,1`$. For $`0\le k\le m`$ write $`v_k`$ for the length-$`m`$ column with a $`1`$ in each of the first $`k`$ coordinates and $`c`$ thereafter. A matrix whose distinct columns are $`v_k`$ for $`k`$ in a nonempty set $`E`$ has rank $`|E|-\mathbf 1_{\{0,m\}\subseteq E}`$.*
 

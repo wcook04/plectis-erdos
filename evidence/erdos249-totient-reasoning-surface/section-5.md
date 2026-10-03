@@ -4,7 +4,7 @@ Part of the [evidence record](../erdos249-totient-reasoning-surface.md) of the p
 
 <a id="prop-shift"></a>
 
-## Proposition 5.3 (Digit-shift identity), page 22
+## Proposition 5.3 (Digit-shift identity), page 21
 
 > *For every $`N : \mathbb{N}`$,
 > ``` math
@@ -199,7 +199,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="prop-gcdlayer"></a>
 
-## Proposition 5.10 (The gcd-layer normalisation), page 24
+## Proposition 5.10 (The gcd-layer normalisation), page 23
 
 > *For independent fair-coin waiting times as above, $`\sum_{g\ge1}\Pr(\gcd(X,Y)=g)=1`$ exactly; and for every $`d>0`$, $`\Pr(d\mid X \wedge d\mid Y) = 1/(2^d-1)^2`$.*
 
@@ -237,7 +237,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="thm-denomcoprime"></a>
 
-## Theorem 5.11 (Denominator exclusion for the coprimality-probability form), page 24
+## Theorem 5.11 (Denominator exclusion for the coprimality-probability form), page 23
 
 > *Let
 > ``` math
@@ -378,7 +378,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="prop-zetaq"></a>
 
-## Proposition 5.17 (The divisor-sum identity), page 26
+## Proposition 5.17 (The divisor-sum identity), page 25
 
 > *``` math
 > \sum_{d\ge1} \frac{1}{(2^d-1)^2} \;=\; \sum_{n\ge1} \frac{\sigma(n)-\tau(n)}{2^n} \;=\; \zeta_q(2)-\zeta_q(1) \text{ at } q=\tfrac12,
@@ -436,7 +436,7 @@ theorem exists_irrational_pair_with_rational_difference :
 
 <a id="prop-pillai"></a>
 
-## Proposition 5.18 (The gcd-moment identity), page 26
+## Proposition 5.18 (The gcd-moment identity), page 25
 
 > *``` math
 > \sum_{d\ge1} \frac{\varphi(d)}{(2^d-1)^2} \;=\; \sum_{n\ge1} \bigl(P(n)-n\bigr)\cdot 2^{-n} \;=\; \mathbb{E}[\gcd(X,Y)],

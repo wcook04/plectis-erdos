@@ -9,7 +9,7 @@
 \title{Writing a Good Mathematical Paper}
 \subtitle{A compact guide for authors and AI assistants}
 \author{Will Cook}
-\date{30 September 2026}
+\date{1 October 2026}
 \emergencystretch=1.5em
 \newcommand{\instruction}[2]{\par\medskip\noindent\textbf{#1.} #2\par}
 \begin{document}
@@ -59,13 +59,13 @@ separately. Spend detail on the decisive inference. A proof paragraph should
 make clear what the operation establishes and what remains to prove.}
 
 \instruction{6. Separate construction from completion}{
-Account for each choice, correction and preserved condition. A classification
-needs both construction and exhaustiveness. An enclosure needs a covering
-argument before it yields attainment. For example, $r_n=x-S_n$,
-$0\le r_n\le\varepsilon_n$ and $\varepsilon_n\to0$ give $S_n\to x$;
-repeated choice alone does not. State which parameters are fixed, justify the
-limit of a summand including any growing product, then give the bound that
-permits interchanging the limit and the sum.}
+Account for each choice and preserved condition. A classification needs both
+construction and exhaustiveness. An enclosure alone does not show that every
+target is attained. For example, $r_n=x-S_n$, $0\le r_n\le\varepsilon_n$
+and $\varepsilon_n\to0$ give $S_n\to x$; repeated choice alone does not.
+State which parameters are fixed and justify the limit of the whole summand,
+including any growing product. To interchange a limit and a sum, identify an
+applicable theorem and check its hypotheses.}
 
 % Keep the final reading paragraph with the fourteen instructions.
 \newpage\enlargethispage{3\baselineskip}
@@ -78,8 +78,8 @@ reduction. Check that a witness belongs to the claimed object. Label a diagram's
 objects, maps and conventions, and keep its explanation nearby.}
 
 \instruction{8. Use the field's words and purposeful notation}{
-Keep established terms when their definitions fit: ``moment sequences'' has a
-standard meaning. Replace private labels by the actual condition; $u_n/2^n\to0$
+Keep established terms when their definitions fit, such as ``Stieltjes moment
+sequence''. Replace private labels by the actual condition; $u_n/2^n\to0$
 is weaker than subexponential growth. Define symbols before use, keep their
 roles stable and remove names that save no work. Translate borrowed indices,
 coordinates and normalisations. Distinguish a sum, its partial sums and its
@@ -107,7 +107,8 @@ ordinary or formal proof; a computation or conjecture needs its own label.
 Keep unproved mathematical inputs beside the dependent result. A checked nearby
 lemma does not formalise the whole proof; missing formalisation does not
 invalidate an ordinary proof. Give finite computations their scope and
-reproduction details. A complete test for a fixed object does not produce the
+reproduction details in a compact verification section. A test can eventually detect every nonintegral fixed value
+without certifying integrality when it fails. It still does not produce the
 witnesses required by a quantified theorem.}
 
 \instruction{12. Preserve useful detail and informative failures}{
@@ -116,7 +117,9 @@ the rest recoverable. Move detail only after checking its destination; reconcile
 statements, assumptions and evidence in both directions. Preserve the attempted
 implication, assumptions, witness and missing ingredient of a useful failed route.
 Distinguish a flawed step, a failed method and a counterexample to a theorem.
-Motivate the finished proof without inventing its discovery history.}
+Motivate the finished proof without inventing its discovery history. Cite a
+specific section or theorem for omitted arguments; keep build commands and
+source identifiers with the verification record.}
 
 \instruction{13. Review changes as claims, then as prose}{
 Compare old and new meanings, including explanatory words beside unchanged
@@ -137,7 +140,7 @@ identifiable difficulty and improves neither accuracy nor recovery of the argume
 \par\medskip\noindent\small
 \textit{Further reading.}
 Halmos, \href{https://doi.org/10.5169/seals-43857}{\emph{How to write mathematics}}, \S\S3--5 (1970);
-Knuth et al., \href{https://cs.stanford.edu/~knuth/klr.html}{\emph{Mathematical Writing}}, \S1 (1988);
+Knuth et al., \href{https://cs.stanford.edu/~knuth/klr.html}{\emph{Mathematical Writing}}, \S\S1--3 (1988);
 Gowers, \href{https://gowers.wordpress.com/2007/10/19/my-favourite-pedagogical-principle-examples-first/}{\emph{Examples first!}} (2007);
 Tao, \href{https://terrytao.wordpress.com/advice-on-writing-papers/}{\emph{On writing}}.
 Worked cases, sources and revision history: the

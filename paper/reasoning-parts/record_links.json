@@ -95,14 +95,14 @@
     {
       "action": "explained_in_short",
       "rationale": "Compare the quotient t_(n+1)/t_n with (1+1/n)(1+K/n^(1+epsilon)). The convergent error product gives t_n=O(n), and t_n*gamma_n is bounded above. The preceding product-increment criterion applies, including the exact one-sided 1/n bound. This is an authored disposition, not a claim that Type A has accepted a new native correspondence binding.",
-      "review_status": "R5 Type A source-reading review of retained proof and evidence boundary; no new independent mathematical review.",
+      "review_status": "R9 Type A source-reading review of accepted exposition change against unchanged statement and prior proof; no new independent mathematical review, Lean execution or long-record correspondence.",
       "short_id": "erdos-243-reciprocal-tail-rigidity#res:inclusiveone",
       "short_statement_sha256": "sha256:98a8202e9030aa79759f1826c5480e8ff9e84839de9db737dd2b8cfe10a9cb4a",
       "support": {
         "label": "res:inclusiveone",
         "path": "paper/243/erdos-243-reciprocal-tail-rigidity.tex",
         "selector": "adjacent_proof",
-        "sha256": "sha256:cca514a8a4fd42832b1dbce0fe400ae35b0eca001fe1f5c12af8dfd89f123417"
+        "sha256": "sha256:e86509b32b19b9d26b38f708986549d730b37d99f3cc6abf5fd65a8d450caeba"
       }
     },
     {
@@ -304,14 +304,14 @@
     {
       "action": "explained_in_short",
       "rationale": "The application proof remains in sec:prime-application. It invokes the sparse construction, the finite-union exceptional-set argument and the cumulative-size estimate under the unchanged adjacent published-input remark. The convergence bound now points directly to the existing full Appendix A proof.",
-      "review_status": "R5 Type A source-reading review of retained proof and evidence boundary; no new independent mathematical review.",
+      "review_status": "R9 Type A source-reading review of accepted exposition change against unchanged statement and prior proof; no new independent mathematical review, Lean execution or long-record correspondence.",
       "short_id": "erdos-251-prime-gap-dyadic-series#res:jointcountermodel",
       "short_statement_sha256": "sha256:c30e3bd411f9d423be7347233494992984bb7ba9f8dffdae999c0fd8b34085b8",
       "support": {
         "label": "res:jointcountermodel",
         "path": "paper/251/erdos-251-prime-gap-dyadic-series.tex",
         "selector": "adjacent_proof",
-        "sha256": "sha256:b9b0c2df95c3450340fb558d613a123c1fe3b479c82b69ec46495f8cbcdcf98b"
+        "sha256": "sha256:bad04b7984d13f0adfed2e411c3067b11773b121397c3f282866470691d30f1e"
       }
     },
     {

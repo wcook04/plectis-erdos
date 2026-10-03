@@ -25,7 +25,7 @@ A complete registered-evidence match locates the same full declaration set in th
 
 State: **unresolved**.
 
-Short statement: [paper/1049/erdos-1049-rational-base-lambert.tex](../../../paper/1049/erdos-1049-rational-base-lambert.tex) lines 630-642.
+Short statement: [paper/1049/erdos-1049-rational-base-lambert.tex](../../../paper/1049/erdos-1049-rational-base-lambert.tex) lines 631-643.
 
 Ledger evidence: Lean `exact`; Comparator `compared`. These statuses are copied from the evidence ledger; this build reruns neither checker.
 
@@ -37,11 +37,11 @@ No accepted correspondence is recorded. Check the candidates below; none is sile
 
 State: **short_proof_explained_long_link_open**.
 
-Short statement: [paper/1049/erdos-1049-rational-base-lambert.tex](../../../paper/1049/erdos-1049-rational-base-lambert.tex) lines 871-873.
+Short statement: [paper/1049/erdos-1049-rational-base-lambert.tex](../../../paper/1049/erdos-1049-rational-base-lambert.tex) lines 890-892.
 
 Ledger evidence: Lean `exact`; Comparator `compared`. These statuses are copied from the evidence ledger; this build reruns neither checker.
 
-Retained short-paper argument: [paper/1049/erdos-1049-rational-base-lambert.tex](../../../paper/1049/erdos-1049-rational-base-lambert.tex) lines 874-889.
+Retained short-paper argument: [paper/1049/erdos-1049-rational-base-lambert.tex](../../../paper/1049/erdos-1049-rational-base-lambert.tex) lines 893-908.
 
 The short paper retains the corollary and its proof using the stated strict logarithmic comparison and power invariance for every positive integer r. The proof was already present in the input. No new implication or long-record link is asserted.
 
@@ -57,11 +57,11 @@ No candidate was found by the bounded label/declaration rules. Read the long rec
 
 State: **registered_evidence_linked**.
 
-Short statement: [paper/1049/erdos-1049-rational-base-lambert.tex](../../../paper/1049/erdos-1049-rational-base-lambert.tex) lines 891-902.
+Short statement: [paper/1049/erdos-1049-rational-base-lambert.tex](../../../paper/1049/erdos-1049-rational-base-lambert.tex) lines 910-921.
 
 Ledger evidence: Lean `exact`; Comparator `compared`. These statuses are copied from the evidence ledger; this build reruns neither checker.
 
-Long-record location: [paper/reasoning-parts/erdos1049/core.tex](../../../paper/reasoning-parts/erdos1049/core.tex) lines 612-623.
+Long-record location: [paper/reasoning-parts/erdos1049/core.tex](../../../paper/reasoning-parts/erdos1049/core.tex) lines 623-634.
 
 - `ErdosProblems.Erdos1049.PaperCompleteR21.rational_base_measure_uniform`: [lean/ErdosProblems/Erdos1049/PaperCompleteR21/RationalBaseThreshold.lean](../../../lean/ErdosProblems/Erdos1049/PaperCompleteR21/RationalBaseThreshold.lean) lines 194-194.
 - `ErdosProblems.Erdos1049.PaperCompleteR21.thirtyoneFour_power_measure_lt_301`: [lean/ErdosProblems/Erdos1049/PaperCompleteR21/RationalBaseThreshold.lean](../../../lean/ErdosProblems/Erdos1049/PaperCompleteR21/RationalBaseThreshold.lean) lines 205-205.
@@ -72,11 +72,11 @@ Long-record location: [paper/reasoning-parts/erdos1049/core.tex](../../../paper/
 
 State: **registered_evidence_linked**.
 
-Short statement: [paper/1049/erdos-1049-rational-base-lambert.tex](../../../paper/1049/erdos-1049-rational-base-lambert.tex) lines 538-549.
+Short statement: [paper/1049/erdos-1049-rational-base-lambert.tex](../../../paper/1049/erdos-1049-rational-base-lambert.tex) lines 539-550.
 
 Ledger evidence: Lean `exact_or_stronger`; Comparator `compared`. These statuses are copied from the evidence ledger; this build reruns neither checker.
 
-Long-record location: [paper/reasoning-parts/erdos1049/core.tex](../../../paper/reasoning-parts/erdos1049/core.tex) lines 1431-1439.
+Long-record location: [paper/reasoning-parts/erdos1049/core.tex](../../../paper/reasoning-parts/erdos1049/core.tex) lines 1443-1451.
 
 - `ErdosProblems.Erdos1049.order_zudilinNormalizedHankelDet_all`: [lean/ErdosProblems/Erdos1049/AllRow/Producer.lean](../../../lean/ErdosProblems/Erdos1049/AllRow/Producer.lean) lines 173-173.
 - `ErdosProblems.Erdos1049.coeff_zudilinNormalizedHankelDet_all_rat`: [lean/ErdosProblems/Erdos1049/AllRow/Producer.lean](../../../lean/ErdosProblems/Erdos1049/AllRow/Producer.lean) lines 199-199.
@@ -85,7 +85,7 @@ Long-record location: [paper/reasoning-parts/erdos1049/core.tex](../../../paper/
 
 State: **unresolved**.
 
-Short statement: [paper/1049/erdos-1049-rational-base-lambert.tex](../../../paper/1049/erdos-1049-rational-base-lambert.tex) lines 63-70.
+Short statement: [paper/1049/erdos-1049-rational-base-lambert.tex](../../../paper/1049/erdos-1049-rational-base-lambert.tex) lines 64-71.
 
 Ledger evidence: Lean `exact`; Comparator `compared`. These statuses are copied from the evidence ledger; this build reruns neither checker.
 
@@ -97,11 +97,11 @@ No candidate was found by the bounded label/declaration rules. Read the long rec
 
 State: **registered_evidence_linked**.
 
-Short statement: [paper/1049/erdos-1049-rational-base-lambert.tex](../../../paper/1049/erdos-1049-rational-base-lambert.tex) lines 335-345.
+Short statement: [paper/1049/erdos-1049-rational-base-lambert.tex](../../../paper/1049/erdos-1049-rational-base-lambert.tex) lines 336-346.
 
 Ledger evidence: Lean `exact_or_stronger`; Comparator `compared`. These statuses are copied from the evidence ledger; this build reruns neither checker.
 
-Long-record location: [paper/reasoning-parts/erdos1049/core.tex](../../../paper/reasoning-parts/erdos1049/core.tex) lines 1935-1963.
+Long-record location: [paper/reasoning-parts/erdos1049/core.tex](../../../paper/reasoning-parts/erdos1049/core.tex) lines 1947-1975.
 
 - `ErdosProblems.Erdos1049.PaperCompleteR21.RogersFactorisation.rogers_factorisation_proposition`: [lean/ErdosProblems/Erdos1049/PaperCompleteR21/RogersFactorisationAnalytic.lean](../../../lean/ErdosProblems/Erdos1049/PaperCompleteR21/RogersFactorisationAnalytic.lean) lines 1312-1312.
 
@@ -109,11 +109,11 @@ Long-record location: [paper/reasoning-parts/erdos1049/core.tex](../../../paper/
 
 State: **registered_evidence_linked**.
 
-Short statement: [paper/1049/erdos-1049-rational-base-lambert.tex](../../../paper/1049/erdos-1049-rational-base-lambert.tex) lines 168-183.
+Short statement: [paper/1049/erdos-1049-rational-base-lambert.tex](../../../paper/1049/erdos-1049-rational-base-lambert.tex) lines 169-184.
 
 Ledger evidence: Lean `exact_or_stronger`; Comparator `pending`. These statuses are copied from the evidence ledger; this build reruns neither checker.
 
-Long-record location: [paper/reasoning-parts/erdos1049/core.tex](../../../paper/reasoning-parts/erdos1049/core.tex) lines 1811-1825.
+Long-record location: [paper/reasoning-parts/erdos1049/core.tex](../../../paper/reasoning-parts/erdos1049/core.tex) lines 1823-1837.
 
 - `ErdosProblems.Erdos1049.PaperCompleteR21.GeometricUniversality.geometric_universality`: [lean/ErdosProblems/Erdos1049/PaperCompleteR21/GeometricUniversality.lean](../../../lean/ErdosProblems/Erdos1049/PaperCompleteR21/GeometricUniversality.lean) lines 1324-1324.
 
@@ -123,41 +123,41 @@ These registered long assertions are not used by an accepted short-paper link. T
 
 - `long1049:res:omega-indicator`: [paper/reasoning-parts/erdos1049/core.tex](../../../paper/reasoning-parts/erdos1049/core.tex) lines 195-198.
 - `long1049:res:region`: [paper/reasoning-parts/erdos1049/core.tex](../../../paper/reasoning-parts/erdos1049/core.tex) lines 231-239.
-- `long1049:res:31over4`: [paper/reasoning-parts/erdos1049/core.tex](../../../paper/reasoning-parts/erdos1049/core.tex) lines 572-588.
-- `long1049:res:archcap`: [paper/reasoning-parts/erdos1049/core.tex](../../../paper/reasoning-parts/erdos1049/core.tex) lines 894-925.
-- `long1049:cor:no-decay-below-square`: [paper/reasoning-parts/erdos1049/core.tex](../../../paper/reasoning-parts/erdos1049/core.tex) lines 970-975.
-- `long1049:res:sourceheight`: [paper/reasoning-parts/erdos1049/core.tex](../../../paper/reasoning-parts/erdos1049/core.tex) lines 1043-1047.
-- `long1049:res:powerbracket`: [paper/reasoning-parts/erdos1049/core.tex](../../../paper/reasoning-parts/erdos1049/core.tex) lines 1297-1308.
-- `long1049:res:sharpgaps`: [paper/reasoning-parts/erdos1049/core.tex](../../../paper/reasoning-parts/erdos1049/core.tex) lines 1338-1350.
-- `long1049:res:chargeceilings`: [paper/reasoning-parts/erdos1049/core.tex](../../../paper/reasoning-parts/erdos1049/core.tex) lines 1369-1380.
-- `long1049:res:allrowinitial`: [paper/reasoning-parts/erdos1049/core.tex](../../../paper/reasoning-parts/erdos1049/core.tex) lines 1480-1485.
-- `long1049:thm:sharp-fixed-base`: [paper/reasoning-parts/erdos1049/core.tex](../../../paper/reasoning-parts/erdos1049/core.tex) lines 2081-2096.
-- `long1049:res:finite-pencil`: [paper/reasoning-parts/erdos1049/core.tex](../../../paper/reasoning-parts/erdos1049/core.tex) lines 2851-2856.
-- `long1049:res:content`: [paper/reasoning-parts/erdos1049/core.tex](../../../paper/reasoning-parts/erdos1049/core.tex) lines 3141-3160.
-- `long1049:res:endpoints`: [paper/reasoning-parts/erdos1049/core.tex](../../../paper/reasoning-parts/erdos1049/core.tex) lines 3224-3232.
-- `long1049:res:commonmult`: [paper/reasoning-parts/erdos1049/core.tex](../../../paper/reasoning-parts/erdos1049/core.tex) lines 3283-3290.
-- `long1049:res:nomult`: [paper/reasoning-parts/erdos1049/core.tex](../../../paper/reasoning-parts/erdos1049/core.tex) lines 3314-3322.
-- `long1049:res:cyclounit`: [paper/reasoning-parts/erdos1049/core.tex](../../../paper/reasoning-parts/erdos1049/core.tex) lines 3340-3344.
-- `long1049:res:jetkernel`: [paper/reasoning-parts/erdos1049/core.tex](../../../paper/reasoning-parts/erdos1049/core.tex) lines 3417-3432.
-- `long1049:res:rankfortyone`: [paper/reasoning-parts/erdos1049/core.tex](../../../paper/reasoning-parts/erdos1049/core.tex) lines 3449-3459.
-- `long1049:res:boundedfibre`: [paper/reasoning-parts/erdos1049/core.tex](../../../paper/reasoning-parts/erdos1049/core.tex) lines 3494-3507.
-- `long1049:res:plucker-collapse`: [paper/reasoning-parts/erdos1049/core.tex](../../../paper/reasoning-parts/erdos1049/core.tex) lines 3574-3590.
-- `long1049:res:scalar`: [paper/reasoning-parts/erdos1049/core.tex](../../../paper/reasoning-parts/erdos1049/core.tex) lines 3659-3668.
-- `long1049:res:corridorbound`: [paper/reasoning-parts/erdos1049/core.tex](../../../paper/reasoning-parts/erdos1049/core.tex) lines 3774-3779.
-- `long1049:res:exp`: [paper/reasoning-parts/erdos1049/core.tex](../../../paper/reasoning-parts/erdos1049/core.tex) lines 3822-3824.
-- `long1049:res:nocorridor`: [paper/reasoning-parts/erdos1049/core.tex](../../../paper/reasoning-parts/erdos1049/core.tex) lines 3831-3834.
-- `long1049:res:tailrec`: [paper/reasoning-parts/erdos1049/core.tex](../../../paper/reasoning-parts/erdos1049/core.tex) lines 3868-3874.
-- `long1049:res:forcing`: [paper/reasoning-parts/erdos1049/core.tex](../../../paper/reasoning-parts/erdos1049/core.tex) lines 3888-3895.
-- `long1049:res:sevenhalves`: [paper/reasoning-parts/erdos1049/core.tex](../../../paper/reasoning-parts/erdos1049/core.tex) lines 3950-3956.
-- `long1049:res:pade`: [paper/reasoning-parts/erdos1049/core.tex](../../../paper/reasoning-parts/erdos1049/core.tex) lines 4062-4079.
-- `long1049:res:tail-lattice`: [paper/reasoning-parts/erdos1049/core.tex](../../../paper/reasoning-parts/erdos1049/core.tex) lines 4441-4453.
-- `long1049:res:nomahler`: [paper/reasoning-parts/erdos1049/core.tex](../../../paper/reasoning-parts/erdos1049/core.tex) lines 4561-4568.
-- `res:bottomjet`: [paper/reasoning-parts/erdos1049/core.tex](../../../paper/reasoning-parts/erdos1049/core.tex) lines 3387-3392.
-- `res:boundedfibre`: [paper/reasoning-parts/erdos1049/core.tex](../../../paper/reasoning-parts/erdos1049/core.tex) lines 3526-3537.
-- `long1049:thm:calibrated-model`: [paper/reasoning-parts/erdos1049/core.tex](../../../paper/reasoning-parts/erdos1049/core.tex) lines 2452-2471.
-- `long1049:thm:calibrated-denominators`: [paper/reasoning-parts/erdos1049/core.tex](../../../paper/reasoning-parts/erdos1049/core.tex) lines 2560-2571.
-- `long1049:prop:calibrated-height`: [paper/reasoning-parts/erdos1049/core.tex](../../../paper/reasoning-parts/erdos1049/core.tex) lines 2616-2626.
-- `long1049:thm:geometric-ratio`: [paper/reasoning-parts/erdos1049/core.tex](../../../paper/reasoning-parts/erdos1049/core.tex) lines 2274-2289.
+- `long1049:res:31over4`: [paper/reasoning-parts/erdos1049/core.tex](../../../paper/reasoning-parts/erdos1049/core.tex) lines 583-599.
+- `long1049:res:archcap`: [paper/reasoning-parts/erdos1049/core.tex](../../../paper/reasoning-parts/erdos1049/core.tex) lines 905-936.
+- `long1049:cor:no-decay-below-square`: [paper/reasoning-parts/erdos1049/core.tex](../../../paper/reasoning-parts/erdos1049/core.tex) lines 984-989.
+- `long1049:res:sourceheight`: [paper/reasoning-parts/erdos1049/core.tex](../../../paper/reasoning-parts/erdos1049/core.tex) lines 1055-1059.
+- `long1049:res:powerbracket`: [paper/reasoning-parts/erdos1049/core.tex](../../../paper/reasoning-parts/erdos1049/core.tex) lines 1309-1320.
+- `long1049:res:sharpgaps`: [paper/reasoning-parts/erdos1049/core.tex](../../../paper/reasoning-parts/erdos1049/core.tex) lines 1350-1362.
+- `long1049:res:chargeceilings`: [paper/reasoning-parts/erdos1049/core.tex](../../../paper/reasoning-parts/erdos1049/core.tex) lines 1381-1392.
+- `long1049:res:allrowinitial`: [paper/reasoning-parts/erdos1049/core.tex](../../../paper/reasoning-parts/erdos1049/core.tex) lines 1492-1497.
+- `long1049:thm:sharp-fixed-base`: [paper/reasoning-parts/erdos1049/core.tex](../../../paper/reasoning-parts/erdos1049/core.tex) lines 2093-2108.
+- `long1049:res:finite-pencil`: [paper/reasoning-parts/erdos1049/core.tex](../../../paper/reasoning-parts/erdos1049/core.tex) lines 2863-2868.
+- `long1049:res:content`: [paper/reasoning-parts/erdos1049/core.tex](../../../paper/reasoning-parts/erdos1049/core.tex) lines 3153-3172.
+- `long1049:res:endpoints`: [paper/reasoning-parts/erdos1049/core.tex](../../../paper/reasoning-parts/erdos1049/core.tex) lines 3236-3244.
+- `long1049:res:commonmult`: [paper/reasoning-parts/erdos1049/core.tex](../../../paper/reasoning-parts/erdos1049/core.tex) lines 3295-3302.
+- `long1049:res:nomult`: [paper/reasoning-parts/erdos1049/core.tex](../../../paper/reasoning-parts/erdos1049/core.tex) lines 3326-3334.
+- `long1049:res:cyclounit`: [paper/reasoning-parts/erdos1049/core.tex](../../../paper/reasoning-parts/erdos1049/core.tex) lines 3352-3356.
+- `long1049:res:jetkernel`: [paper/reasoning-parts/erdos1049/core.tex](../../../paper/reasoning-parts/erdos1049/core.tex) lines 3429-3444.
+- `long1049:res:rankfortyone`: [paper/reasoning-parts/erdos1049/core.tex](../../../paper/reasoning-parts/erdos1049/core.tex) lines 3461-3471.
+- `long1049:res:boundedfibre`: [paper/reasoning-parts/erdos1049/core.tex](../../../paper/reasoning-parts/erdos1049/core.tex) lines 3506-3519.
+- `long1049:res:plucker-collapse`: [paper/reasoning-parts/erdos1049/core.tex](../../../paper/reasoning-parts/erdos1049/core.tex) lines 3590-3606.
+- `long1049:res:scalar`: [paper/reasoning-parts/erdos1049/core.tex](../../../paper/reasoning-parts/erdos1049/core.tex) lines 3675-3684.
+- `long1049:res:corridorbound`: [paper/reasoning-parts/erdos1049/core.tex](../../../paper/reasoning-parts/erdos1049/core.tex) lines 3790-3795.
+- `long1049:res:exp`: [paper/reasoning-parts/erdos1049/core.tex](../../../paper/reasoning-parts/erdos1049/core.tex) lines 3838-3840.
+- `long1049:res:nocorridor`: [paper/reasoning-parts/erdos1049/core.tex](../../../paper/reasoning-parts/erdos1049/core.tex) lines 3847-3850.
+- `long1049:res:tailrec`: [paper/reasoning-parts/erdos1049/core.tex](../../../paper/reasoning-parts/erdos1049/core.tex) lines 3884-3890.
+- `long1049:res:forcing`: [paper/reasoning-parts/erdos1049/core.tex](../../../paper/reasoning-parts/erdos1049/core.tex) lines 3904-3911.
+- `long1049:res:sevenhalves`: [paper/reasoning-parts/erdos1049/core.tex](../../../paper/reasoning-parts/erdos1049/core.tex) lines 3966-3972.
+- `long1049:res:pade`: [paper/reasoning-parts/erdos1049/core.tex](../../../paper/reasoning-parts/erdos1049/core.tex) lines 4078-4095.
+- `long1049:res:tail-lattice`: [paper/reasoning-parts/erdos1049/core.tex](../../../paper/reasoning-parts/erdos1049/core.tex) lines 4457-4469.
+- `long1049:res:nomahler`: [paper/reasoning-parts/erdos1049/core.tex](../../../paper/reasoning-parts/erdos1049/core.tex) lines 4577-4584.
+- `res:bottomjet`: [paper/reasoning-parts/erdos1049/core.tex](../../../paper/reasoning-parts/erdos1049/core.tex) lines 3399-3404.
+- `res:boundedfibre`: [paper/reasoning-parts/erdos1049/core.tex](../../../paper/reasoning-parts/erdos1049/core.tex) lines 3538-3549.
+- `long1049:thm:calibrated-model`: [paper/reasoning-parts/erdos1049/core.tex](../../../paper/reasoning-parts/erdos1049/core.tex) lines 2464-2483.
+- `long1049:thm:calibrated-denominators`: [paper/reasoning-parts/erdos1049/core.tex](../../../paper/reasoning-parts/erdos1049/core.tex) lines 2572-2583.
+- `long1049:prop:calibrated-height`: [paper/reasoning-parts/erdos1049/core.tex](../../../paper/reasoning-parts/erdos1049/core.tex) lines 2628-2638.
+- `long1049:thm:geometric-ratio`: [paper/reasoning-parts/erdos1049/core.tex](../../../paper/reasoning-parts/erdos1049/core.tex) lines 2286-2301.
 
 ## Passage-review queue
 

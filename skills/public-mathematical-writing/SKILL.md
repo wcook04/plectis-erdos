@@ -77,6 +77,16 @@ mathematical proof sentence pattern. The [long guide](../../paper/exposition/wri
 illustrates this transfer using primary systems-writing and empirical-evaluation
 guidance; their criteria are scoped to those fields.
 
+For a laboratory-facing infrastructure paper, make the design the main subject:
+its purpose, components, interfaces, persistent state, division of responsibility,
+and the path from a task to a reviewed result. Choose the section order from
+systems literature and the implemented dependencies. Use a worked research case
+to explain those choices, with specialist proofs in a separate destination when
+needed. Checking a theorem in that example does not establish that the paper
+explains the architecture. Inspect diagrams for component boundaries, control
+and artifact movement, and legibility at the printed size. Bind each claim to
+the current implementation, a recorded observation or an explicit proposal.
+
 Write the sentence so its condition, object, comparator and conclusion can be
 checked against the evidence. Standard field terms are useful when their
 definitions match. A repeated stylistic template is not a substitute for the
@@ -190,6 +200,18 @@ step and precise remainder. The long record makes the proof inspectable and
 keeps technical details, worthwhile failed routes and reproduction information
 in a navigable order. It is not a chronological transcript. Check the statements
 and evidence classes in both directions before refreshing their projections.
+
+Write both versions as papers for a mathematician encountering the argument
+for the first time. Identify a cited result by its author, theorem or section,
+and explain the local inference; a link labelled "long record" or a source-file
+name alone is not a mathematical reference. State a restrictive hypothesis
+where it controls a theorem and explain what familiar cases satisfy it.
+Consolidate shared limitations once, repeating only those needed to prevent a
+specific claim from appearing unconditional. Keep the proof's mathematical
+input and conclusion in the main text; gather Lean and Comparator identities,
+build commands, version pins and review history in a compact verification and
+reproducibility section or appendix. Preserve exact statement identifiers,
+dependencies and evidence classes in that section.
 
 The synthesis pair can develop an insight arising anywhere in the corpus:
 a transfer, construction, obstruction, better intermediate object or new

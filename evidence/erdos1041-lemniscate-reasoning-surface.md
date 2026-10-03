@@ -1,6 +1,6 @@
 # Formal evidence: Paths in Polynomial Lemniscates:\\A Degree-Seven Counterexample and Radial Connections
 
-This record belongs to the paper [erdos1041-lemniscate-reasoning-surface.pdf](../paper/1041/erdos1041-lemniscate-reasoning-surface.pdf). For every result it lists the Lean declarations that state it, and the recorded Comparator check where there is one. The inline links and margin marks in the paper use the same result mapping.
+This record belongs to the paper [erdos1041-lemniscate-reasoning-surface.pdf](../paper/1041/erdos1041-lemniscate-reasoning-surface.pdf). For every result it lists the Lean declarations that state it, and the recorded Comparator check where there is one. The paper's verification concordance uses this result mapping.
 
 - **Lean.** Every declaration is quoted from [plectis-erdos](https://github.com/wcook04/plectis-erdos) at commit [`436f55ebdafa`](https://github.com/wcook04/plectis-erdos/tree/436f55ebdafa67e4af0fff79f621c13f2ded12bf) and is checked there by Lean's kernel (`leanprover/lean4:v4.29.1`, Mathlib `5e932f97dd25`).
 - **Comparator.** For a compared result, each declaration was stated a second time, from Mathlib alone, as a *Challenge* in [plectis-erdos-lean](https://github.com/wcook04/plectis-erdos-lean), and a *Solution* that uses our proof was checked against it by [Comparator](https://github.com/leanprover/comparator), which also confirms that only the axioms `propext`, `Quot.sound`, `Classical.choice` are used. All checks below come from replay run [35935225572](https://github.com/wcook04/plectis-erdos-lean/actions/runs/35935225572) at corpus commit [`cc7e541cf208`](https://github.com/wcook04/plectis-erdos-lean/tree/cc7e541cf2081c6fef5a5e377d52e365e33b01eb) (tag `paper-evidence-2026-09-24`); both the default Lean kernel and the independent `nanoda` kernel accepted every entry. The replay's own report for each entry is kept in this repository and linked from each check. A Challenge shows `sorry` because it states the target without proving it.
@@ -1571,7 +1571,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 > ``` math
 > f(z)=P((z-h)^q).
 > ```
-> If every zero of $`f`$ lies in the open unit disc and $`f`$ has at least two distinct zero values, then two zeros are joined through $`h`$ by a two-segment path of length below $`2`$ inside $`\{|f|<1\}`$. Equivalently this closes the coefficient family
+> If every zero of $`f`$ lies in the open unit disc and $`f`$ has at least two distinct zero values, then two zeros are joined through $`h`$ by a two-segment path of length below $`2`$ inside $`\{|f|<1\}`$. Equivalently, under the same hypotheses the conclusion holds for polynomials of the form
 > ``` math
 > (z-h)^{3q}+A(z-h)^{2q}+B(z-h)^q+C
 > ```
@@ -2017,9 +2017,9 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="res-straight-no-go"></a>
 
-## Proposition 10.7 (two counterexamples to straight-path assertions), page 56
+## Proposition 10.7 (two counterexamples to straight-path assertions), page 57
 
-> *There is a monic quintic with all roots in the open unit disc and a non-root critical point $`c`$ whose unique nearest root has a point on the straight spoke to $`c`$ outside $`\{|f|<1\}`$. There is also a monic cubic with all roots in the open unit disc such that the midpoint of every pair of distinct roots lies outside $`\{|f|<1\}`$.*
+> *There is a monic quintic with all roots in the open unit disc and a non-root critical point $`c`$ whose unique nearest root has a point on the straight segment to $`c`$ outside $`\{|f|<1\}`$. There is also a monic cubic with all roots in the open unit disc such that the midpoint of every pair of distinct roots lies outside $`\{|f|<1\}`$.*
 
 The Lean declaration below states this result.
 
@@ -2189,7 +2189,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="res-ray"></a>
 
-## Corollary 11.2 (ray separation), page 65
+## Corollary 11.2 (ray separation), page 66
 
 > *Let $`a<b`$ and let the value trajectory $`t\mapsto f(z(t))`$ be continuous on $`[a,b]`$. Assume the Newton equation and $`f'(z(t))\ne0`$ on $`(a,b)`$ only. Then
 > ``` math
@@ -2225,7 +2225,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="res-locus"></a>
 
-## Theorem 12.1 (ray-collision locus), page 66
+## Theorem 12.1 (ray-collision locus), page 67
 
 > *Let $`a\ne b`$ be complex. Every common translation $`\beta`$ for which $`a+\beta`$ and $`b+\beta`$ lie on the same positive ray has the form
 > ``` math
@@ -2257,6 +2257,6 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="res-attachment-aware-reeb"></a>
 
-## Passage (beginning “res:attachment-aware-reeb…”), page 69
+## Passage (beginning “res:attachment-aware-reeb…”), page 70
 
 **No Lean proof of the whole statement.** In Lean, Component-local surjectivity, finite fibres, covering and unique continuous root-labelled branches on a finite outward-slit domain are checked in OutwardSlitDomain at public commit 8bf96bdcae6b9201c670fff3037c49c70ec6de8d, alongside ray-disjointness, level-separation and saddle-scale prerequisites. The complete theorem still lacks a Lean proof of component sheet count, conformality, Morse, monodromy and embedded-tree assertions; prerequisite checking does not establish the complete theorem..

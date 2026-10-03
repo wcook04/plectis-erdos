@@ -4,7 +4,7 @@ Part of the [evidence record](../erdos249-totient-reasoning-surface.md) of the p
 
 <a id="catalogue-mob-b3"></a>
 
-## Proposition 6.39 (Decomposition by the radical), page 37
+## Proposition 6.39 (Decomposition by the radical), page 36
 
 > *For $`H\ge1`$ and $`r\ge1`$,
 > ``` math
@@ -117,7 +117,7 @@ theorem mobiusNumerator_mod_cyclotomicEval
 
 <a id="catalogue-mob-b8a"></a>
 
-## Proposition 6.41 (Adjoining a prime: new divisors), page 38
+## Proposition 6.41 (Adjoining a prime: new divisors), page 37
 
 > *Let $`r\ge1`$, let $`p\nmid r`$ be prime, and let $`m\mid r`$. Then
 > ``` math
@@ -380,7 +380,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="catalogue-mob-f1"></a>
 
-## Proposition 6.46 (The error under composite dilation), page 40
+## Proposition 6.46 (The error under composite dilation), page 39
 
 > *For $`A\subseteq\mathbb N`$ and $`n\ge1`$, let $`d_A(n)=\#\{d\ge1:d\mid n,\ d\in A\}`$. If $`a\in A`$ and $`a,x\ge1`$, then
 > ``` math
@@ -546,7 +546,7 @@ theorem totient_convolution_weight_not_periodic :
 
 <a id="catalogue-cert-a10"></a>
 
-## Theorem 6.47 (The quantified certificate condition is equivalent to irrationality), page 41
+## Theorem 6.47 (The quantified certificate condition is equivalent to irrationality), page 40
 
 > *$`\big(\forall h:\mathbb{N},\ 0<h \to \forall N_0:\mathbb{N},\ \exists N\ge N_0,\ \exists L,\ \mathcal{C}(h,N,L)\big) \leftrightarrow S\notin\mathbb Q`$. The quantified-condition side is exactly $`\mathcal{C}(h,N,L)`$ quantified as $`\forall h\ge1\ \forall N_0\ge0\ \exists N\ge N_0\ \exists L`$. The universally quantified assertion remains unproved. The equivalence identifies the finite witnesses that suffice; it does not establish their existence beyond every threshold.*
 
@@ -681,7 +681,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="catalogue-cert-b5"></a>
 
-## Proposition 6.51 (Totient factorisation on an LCM progression), page 42
+## Proposition 6.51 (Totient factorisation on an LCM progression), page 41
 
 > *Let $`t\ge1`$, $`j\ge1`$ and $`q\ge0`$ be integers. Suppose $`j\mid H(t)`$ and every prime divisor of $`j`$ also divides $`H(t)/j`$. Then
 > ``` math
@@ -724,7 +724,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="catalogue-cert-b6"></a>
 
-## Theorem 6.52 (Rationality forces tail integrality on an LCM grid), page 42
+## Theorem 6.52 (Rationality forces tail integrality on an LCM grid), page 41
 
 > *If $`S\in\mathbb Q`$, there is $`t_1\in\mathbb N`$ such that for all $`t\ge t_1`$, $`q\ge1`$ and $`m\ge0`$,
 > ``` math
@@ -786,7 +786,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="catalogue-cert-b7"></a>
 
-## Theorem 6.53 (A sufficient nonintegrality condition on the grid), page 42
+## Theorem 6.53 (A sufficient nonintegrality condition on the grid), page 41
 
 > *Suppose that for every $`t_0\in\mathbb{N}`$ there are integers $`t\ge t_0`$, $`q\ge1`$, $`m\ge0`$ and $`L\ge0`$ such that
 > ``` math
@@ -958,7 +958,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="catalogue-cert-b10a"></a>
 
-## Theorem 6.56 (A finite-grid condition gives a nonintegral pair), page 43
+## Theorem 6.56 (A finite-grid condition gives a nonintegral pair), page 42
 
 > *Let $`Q\subseteq\mathbb N_{>0}`$ be finite and nonempty. Suppose that $`B_q<2^L`$ for every $`q\in Q`$ and that
 > ``` math
@@ -999,7 +999,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="catalogue-cert-b10b"></a>
 
-## Theorem 6.57 (A sufficient quantified finite-grid condition), page 44
+## Theorem 6.57 (A sufficient quantified finite-grid condition), page 43
 
 > *Suppose that for every $`t_0`$ there are $`t\ge t_0`$, a depth $`L`$, and a finite nonempty $`Q\subseteq\mathbb N_{>0}`$ such that, with $`H=H_t`$, all the hypotheses of Theorem 6.56 hold. Then $`S\notin\mathbb Q`$. Indeed, rationality would make all tail differences on every sufficiently large LCM grid integral, whereas the finite-grid theorem supplies a nonintegral pair on such a grid. The example above verifies one grid; it does not establish the quantified hypothesis.*
 
@@ -1036,7 +1036,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="catalogue-cert-b12"></a>
 
-## Proposition 6.58 (A finite carry test implies nonintegrality), page 44
+## Proposition 6.58 (A finite carry test implies nonintegrality), page 43
 
 > *For each integer $`z`$ with $`|z|\le N+h+1`$, define
 > ``` math
@@ -1090,7 +1090,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="catalogue-mob-e1"></a>
 
-## Theorem 6.59 (The block norm condition implies irrationality), page 44
+## Theorem 6.59 (The block norm condition implies irrationality), page 43
 
 > *Suppose that for every integer $`h\ge1`$ and every threshold $`X_0\in\mathbb{N}`$ there are $`X,L\in\mathbb{N}`$ with
 > ``` math
@@ -1299,7 +1299,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="prop-ni-01"></a>
 
-## Proposition 6.61 (An equivalent diagonal nonintegrality condition), page 46
+## Proposition 6.61 (An equivalent diagonal nonintegrality condition), page 45
 
 > *The following statements are equivalent:
 > ``` math
@@ -1333,7 +1333,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="prop-ar-07"></a>
 
-## Proposition 6.62 (A sufficient short-window condition), page 46
+## Proposition 6.62 (A sufficient short-window condition), page 45
 
 > *Suppose that for every $`a_0\in\mathbb N`$ there are $`a\ge a_0`$ and $`L<2\cdot2^a`$ with $`\mathcal C(H_{2^a},H_{2^a},L)`$. Then $`S\notin\mathbb Q`$. Writing out the certificate, the required inequality is
 > ``` math
@@ -1387,7 +1387,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="prop-sep-03"></a>
 
-## Proposition 6.63 (A sufficient approximation condition), page 46
+## Proposition 6.63 (A sufficient approximation condition), page 45
 
 > *Use the prescribed index $`q_a`$ and the error $`\varepsilon_{a,q_a}`$ defined above. Suppose
 > ``` math
@@ -1536,16 +1536,16 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="prop-te-05"></a>
 
-## Proposition 6.65 (Relations among the sufficient conditions), page 47
+## Proposition 6.65 (Relations among the sufficient conditions), page 46
 
 > *The sufficient conditions do not form a single linear chain. The proved implications are
 > ``` math
 > \begin{aligned}
->  \text{guarded odd-prefix band}
->  &\ \Longleftrightarrow\ \text{guarded centred-magnitude bound},\\
->  \text{guarded centred-magnitude bound}
->  &\ \Longrightarrow\ \text{flexible centred-magnitude bound},\\
->  \text{flexible centred-magnitude bound}
+>  \text{odd-prefix interval at the prescribed depth}
+>  &\ \Longleftrightarrow\ \text{centred-residue bound at the prescribed depth},\\
+>  \text{centred-residue bound at the prescribed depth}
+>  &\ \Longrightarrow\ \text{centred-residue bound at a variable depth},\\
+>  \text{centred-residue bound at a variable depth}
 >  &\ \Longrightarrow\ \text{adjacent-suffix band}
 >    \ \Longrightarrow\ \text{upper-endpoint test}.
 >  \end{aligned}
@@ -1586,7 +1586,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="prop-te-06"></a>
 
-## Proposition 6.66 (An exact endpoint formula), page 47
+## Proposition 6.66 (An exact endpoint formula), page 46
 
 > *Let $`a,q\in\mathbb N`$, $`a\ge8`$, and $`H=H(2^a)`$. Assume
 > ``` math
@@ -1779,7 +1779,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="prop-cp-06"></a>
 
-## Proposition 6.69 (A directed certificate condition), page 48
+## Proposition 6.69 (A directed certificate condition), page 47
 
 > *For fixed $`h,N\in\mathbb{N}`$, a depth $`L\in\mathbb{N}`$ satisfying
 > ``` math
@@ -1826,7 +1826,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="prop-cp-07"></a>
 
-## Proposition 6.70 (A sufficient condition at the prescribed mod-four pulses), page 48
+## Proposition 6.70 (A sufficient condition at the prescribed mod-four pulses), page 47
 
 > *Suppose that for every positive integer $`h`$ and every $`B\in\mathbb N`$ there are a prime $`p>B`$ and $`K\in\mathbb N`$ such that
 > ``` math
@@ -1878,7 +1878,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="prop-a10"></a>
 
-## Proposition 6.71 (The full quantified condition), page 49
+## Proposition 6.71 (The full quantified condition), page 48
 
 > *``` math
 > \big(\forall h\ge 1,\ \forall N_0,\ \exists N\ge N_0,\ \exists L,\ \mathcal{C}\ h\ N\ L\big)

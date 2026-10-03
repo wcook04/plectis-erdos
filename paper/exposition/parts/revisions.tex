@@ -93,13 +93,24 @@ mathematics it does not discuss.
 
 \subsection{An example must reveal the relevant difference}
 
-The same manuscript distinguishes counting smooth integers from counting
-their distinct heights. Its revision groups the seven smooth integers in
-$[16,32)$ by height:
+The same manuscript distinguishes summing over smooth integers from summing
+over the distinct values of their running least common multiple. Here the
+allowed prime factors are $2,3,5$; a positive integer with no other prime
+factor is called $5$-smooth. For $x\ge1$ its running least common multiple is
+\[
+ H(x)=\operatorname{lcm}\{u\le x:u\text{ is }5\text{-smooth}\}
+     =2^{\lfloor\log_2x\rfloor}
+      3^{\lfloor\log_3x\rfloor}
+      5^{\lfloor\log_5x\rfloor}.
+\]
+The formula selects the largest power of each allowed prime not exceeding
+$x$~\cite[definition of running least common multiples]{paper269}. For example,
+$H(16)=16\cdot9\cdot5=720$. These are the quantities called heights in the
+revision. The seven $5$-smooth integers in $[16,32)$ give:
 \begin{center}
 \begin{tabular}{@{}lll@{}}
 \toprule
-Smooth integers & Height & Contribution\\
+$5$-smooth integers $u$ & $H(u)$ & Sum of $1/H(u)$\\
 \midrule
 $16,18,20,24$ & $720$ & $4/720$\\
 $25$ & $3600$ & $1/3600$\\
@@ -157,25 +168,26 @@ Each inequality now has a visible job. The factor $2$ in the first one comes
 from the lower endpoint $1/2$; it is not an unexplained safety factor. Strictness
 also has a purpose: the boundary values give $sD'=-1$ or $0$.
 
-A usable replacement for ``the following inequalities suffice'' is therefore:
-\begin{quote}
-The error bound encloses $sD$ between $(sA-B)/Q$ and $(sA+B)/Q$.
-Requiring the lower endpoint to exceed $1/2$ and the upper endpoint to lie
-below $1$ gives the two strict inequalities.
-\end{quote}
-This is explanatory reconstruction of an existing certificate. Passing the
-test proves membership of the value in the target interval. Failure of a
-conservative enclosure to fit does not prove that the value lies outside it.
+The explanation also tells us what failure means. Take $D=3/4$, $s=1$,
+$Q=4$, $A=3$ and $B=1$. The error bound is valid, but its enclosure
+$[1/2,1]$ fails both strict endpoint tests, even though $D$ lies in the target
+interval. Passing certifies membership; failure of this enclosure to fit does
+not certify nonmembership. This example interprets the existing certificate
+without changing it.
 
-The \#68 remainder has a related, one-sided geometry. With $M>0$, it is a
-finite value $A_N$ plus a strictly positive omitted tail. The tail must fit
-below the next integer, so the relevant gap is
-$\lfloor A_N\rfloor+1-A_N$~\cite[section on nonintegrality]{paper68}.
-An upper bound for the tail explains a sufficient test only after this gap
-has been identified. At an integral $A_N$ the gap is $1$. Replacing the
-strict successor $\lfloor A_N\rfloor+1$ by $\lceil A_N\rceil$ would make
-it zero. This endpoint is a particularly useful example because it distinguishes
-two superficially interchangeable conventions.
+The \#68 remainder has a related, one-sided geometry. It is
+$A_N+M(S-H_N)$, where $S$ is the series sum, $H_N$ its $N$th partial sum,
+and $M>0$ scales the strictly positive omitted tail. To put this remainder
+between consecutive integers, it suffices to prove
+\[
+             0<M(S-H_N)<\lfloor A_N\rfloor+1-A_N.
+\]
+The left inequality puts the remainder above $\lfloor A_N\rfloor$; the right
+puts it below $\lfloor A_N\rfloor+1$~\cite[section on nonintegrality]{paper68}.
+An upper bound for the tail becomes a test only after this gap is identified.
+At an integral $A_N$ the gap is $1$. Replacing the strict successor by
+$\lceil A_N\rceil$ would make it zero. The endpoint distinguishes two
+superficially interchangeable conventions.
 
 \subsection{Why was this base or kernel chosen?}\label{sec:formula-choice}
 
@@ -227,17 +239,17 @@ The ratios of shifted weights tend to one, but the Vandermonde quotient
 still contains factors indexed by $k$ up to $N$
 \cite[proof for geometric moment determinants]{paper1049}.
 
-For a fixed $1\le j\le\ell$, the part with $k>\ell$ is
+For $N\ge\ell$ and fixed $1\le j\le\ell$, cancel the common factors in
+the part with $k>\ell$:
 \[
  \prod_{k=\ell+1}^{N}
        \frac{1-q^{k-j+\mu_j}}{1-q^{k-j}}
- =\frac{(q^{N+1-j};q)_{\mu_j}}
-        {(q^{\ell+1-j};q)_{\mu_j}},
- \qquad
- (a;q)_m:=\prod_{r=0}^{m-1}(1-aq^r).
+ =\frac{\displaystyle\prod_{r=0}^{\mu_j-1}(1-q^{N+1-j+r})}
+        {\displaystyle\prod_{r=0}^{\mu_j-1}(1-q^{\ell+1-j+r})}.
 \]
-Cancellation leaves two finite endpoint products, each of length $\mu_j$.
-The numerator tends to $1$ and the denominator is fixed and positive.
+The original product has $N-\ell$ factors; each endpoint product has the
+fixed length $\mu_j$. Thus every factor in the numerator tends to $1$,
+while the denominator is fixed and positive.
 The remaining factors have $j,k\le\ell$ and are independent of $N$.
 This establishes convergence of the whole quotient for a fixed partition,
 including its growing part. The formula is the telescoping explanation
@@ -265,27 +277,41 @@ convenience that prose may suppress.
 
 \subsection{Does a complete test provide the required witnesses?}\label{sec:detection}
 
-In the \#249 finite tail-difference test, a fixed pair $h,N$ has a nonintegral
-difference $\Delta_h(N)$ exactly when some sufficiently deep finite calculation
-certifies separation from the integers. Here $\|x\|_{\mathbb R/\mathbb Z}$ denotes the distance from $x$ to the nearest
-integer. For this fixed pair, the positive gap $\|\Delta_h(N)\|_{\mathbb R/\mathbb Z}$
-is constant, while the scaled error
-bound is linear in the depth $L$. Exponential growth of $2^L$ therefore makes
+In the \#249 test, fix a positive integer shift $h$ and an index $N\ge0$,
+and write $D$ for that particular real tail difference. At each positive integer
+depth $L$, the paper computes an integer $A_L$ and proves
 \[
-       2^L\|\Delta_h(N)\|_{\mathbb R/\mathbb Z}
-                 >2(N+h+L+2)
+       |2^LD-A_L|\le B_L,\qquad B_L=N+h+L+2.
 \]
-possible whenever the gap is positive~\cite[section on binary totient tails]{paper249}.
+An integer $D$ would put a multiple of $2^L$ in this closed enclosure. Hence
+one can certify nonintegrality by checking
+\[
+       B_L<(A_L\bmod 2^L)<2^L-B_L,
+\]
+where the residue is chosen in $\{0,\ldots,2^L-1\}$
+\cite[section on binary totient tails]{paper249}. The two strict margins
+keep the enclosure away from the neighbouring multiples of $2^L$.
 
-This proves completeness of detection for the fixed difference. An irrationality
-argument still needs nonintegral differences for the specified shifts and beyond
-the specified cutoffs. The test has not produced that family. Both facts deserve
-their full strength: the equivalence is exact, and the witness-production problem
-remains. Calling the test ``merely sufficient'' would lose a proved converse;
-calling it a solution would erase the remaining quantifiers.
+The test also detects every nonintegral fixed $D$ at some depth. Its gap
+$\|D\|_{\mathbb R/\mathbb Z}$ from the nearest integer is then a positive
+constant. The source proves that detection follows once
+\[
+                 2^L\|D\|_{\mathbb R/\mathbb Z}>2B_L.
+\]
+Exponential growth of $2^L$ exceeds the linear growth of $B_L$, so such a
+depth exists. This converse is stronger than a merely sufficient test.
 
-The distinction is useful whenever a proof offers arbitrarily accurate
-certificates. State which object stays fixed as the accuracy improves. If the
-object changes too, its distance from the forbidden set may shrink, and a new
-comparison is needed. This is the same discipline that made the fixed-base
-limit in Section~\ref{sec:fixed-partition} readable.
+Completeness of positive detection does not give a stopping certificate for
+integrality: when $D$ is integral, this search never succeeds. Failure at the
+depths tried is therefore not, by itself, a proof of integrality. A second
+distinction concerns the irrationality argument. For every positive shift and
+every cutoff it still needs an index beyond that cutoff with a nonintegral
+difference. The test recognises a suitable fixed value; it has not produced
+this family. Its exact converse and the remaining quantifiers both belong in
+the explanation.
+
+Whenever a proof offers arbitrarily accurate certificates, state which object
+stays fixed as the accuracy improves. If the object changes too, its distance
+from the forbidden set may shrink, and a new comparison is needed. This is the
+same discipline that made the fixed-base limit in
+Section~\ref{sec:fixed-partition} readable.

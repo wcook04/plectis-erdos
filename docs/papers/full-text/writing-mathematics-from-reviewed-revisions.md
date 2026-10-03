@@ -8,7 +8,7 @@
 
 </div>
 
-A mathematical sentence can be easy to read and still conceal the inference that justifies it. This guide explains how to locate that difficulty, study a relevant passage in the literature and write an explanation warranted by the manuscript’s own proof. Worked cases show how a shrinking remainder gives an attained sum, how a target interval determines a finite certificate, and why a limit inside a sum has two separate obligations. Further cases concern notation, quantifiers and words that silently strengthen a claim. The examples come from recorded revisions of eight Erdős-problem papers, including examples first supplied as editorial proposals and then checked against the current manuscript sources. A guide example does not confer proof or release status on the result it describes. We distinguish accepted revisions, proposed improvements and lessons that need a narrower scope. A practical final pass tests three uses of a paper: identifying its contribution, reconstructing its proof and applying its results. The compact companion collects the actions; this guide supplies worked explanations, sources and limits. The account documents editorial practice and reports no controlled evaluation of reader understanding.
+A mathematical sentence can be easy to read and still conceal the inference that justifies it. This guide explains how to locate that difficulty, study a relevant passage in the literature and write an explanation warranted by the manuscript’s own proof. Worked cases connect finite choices to an attained sum, derive a certificate from its target interval and separate convergence of one summand from passage through an infinite sum. They also show how to make an example self-contained and distinguish a failed test from a negative conclusion. The cases come from recorded revisions of eight Erdős-problem papers, including proposals subsequently checked against the selected manuscript sources. We distinguish accepted revisions, proposed improvements and lessons that need a narrower scope; an example confers no new proof or release status. The compact companion collects the actions. This guide supplies their reasons, sources and limits, with a final pass through a paper’s contribution, proof and use. It documents editorial practice, not a controlled evaluation of reader understanding.
 
 <a id="sec:reading"></a>
 
@@ -29,7 +29,7 @@ This example, developed in Section <a href="#sec:remainder" data-reference-type
 
 General advice remains useful. Halmos discusses audience, organization and the selection of examples \[halmos, §§3–4\]. Knuth, Larrabee and Roberts discuss the introduction of symbols, the connection between sentences and the reader’s need to know why a step is being taken \[knuth, §1\]. Gowers examines the placement of examples relative to unfamiliar abstractions \[gowers\], while Tao cautions against sacrificing usefulness to excessive optimization of a paper \[tao\]. Such advice identifies questions to ask. A nearby mathematical argument shows how an author has answered them in a particular setting.
 
-The method described here grew out of revisions to short papers and longer research records for eight Erdős problems. Most research and drafting in this project was performed by AI agents. Some agents worked from frozen packets; others had access to the live repository and integrated proposed changes. Their judgements are editorial evidence, with the limitations described below. They are not observations of how an independent mathematical audience read the papers. The examples support an inspectable procedure for revision rather than a claim that the procedure has already been shown to produce better readers or better mathematics.
+The examples come from revisions of papers on Erdős problems. They show how a particular mathematical difficulty led to a particular change of prose. Section <a href="#sec:practice" data-reference-type="ref" data-reference="sec:practice">5</a> records the review method and its limits.
 
 The reader can start with the construction and estimate in Section <a href="#sec:revisions" data-reference-type="ref" data-reference="sec:revisions">2</a>, then follow the additional worked explanations in Section <a href="#sec:worked-explanations" data-reference-type="ref" data-reference="sec:worked-explanations">3</a>. Section <a href="#sec:review" data-reference-type="ref" data-reference="sec:review">4</a> concerns changes that can alter meaning; Section <a href="#sec:practice" data-reference-type="ref" data-reference="sec:practice">5</a> gives a revision procedure and explains how to retain its lessons.
 
@@ -47,7 +47,13 @@ Choose a small group of human-authored papers that addresses these needs. Includ
 
 Read the original passage in a named version. An abstract can establish the name used for an object; it seldom reveals the pacing of the proof. For that, read the argument around the sentence, including the statement it proves and the hypotheses it invokes. Record the section, theorem or equation label and page. Preprint versions can have different numbering from a published article, and a source archive may differ from the accompanying PDF. The file’s digest identifies the supplied bytes; a public link tells the reader where to seek the work. Neither should silently stand in for the other.
 
-For a difficult passage, reconstruct the local argument in your own notation before borrowing its presentation. Identify the point at which the source makes a choice intelligible or a conclusion unavoidable. Then ask which fact in the target proof could do the same work. In the opening example, that fact is a remainder bound tending to zero. When the target proof contains no such fact, the comparison has exposed a mathematical obligation; it has not supplied an explanation that can safely be inserted.
+For a difficult passage, reconstruct the local argument before borrowing its presentation. Knuth, Larrabee and Roberts give a useful worked comparison \[knuth, §§2–3, pp. 7–8\]. Their example considers vectors $`c+kb`$ whose coordinates are nonincreasing for every nonnegative integer $`k`$. Fix the vectors $`c,b`$ and coordinates $`i<j`$. Rearranging the coordinate inequality gives
+``` math
+c_i-c_j\ge k(b_j-b_i)\qquad(k\ge0).
+```
+The left side is fixed. If $`b_j-b_i`$ were positive, the right side would grow without bound; hence $`b_j\le b_i`$. The source compares a proof choosing a particular $`k`$ for a contradiction with a direct proof using this dependence. Reading the two shows why the phrase “for arbitrarily large $`k`$” matters. It is not a reason to ban proof by contradiction elsewhere.
+
+Now ask which fact in the target proof could make its own conclusion equally unavoidable. In the opening construction, that fact is a remainder bound tending to zero. When the target proof contains no such fact, the comparison has exposed a mathematical obligation; it has not supplied an explanation that can safely be inserted.
 
 The record should distinguish three acts. A packet may contain a source. Its recipient may declare that particular pages were read. An integrating reviewer may later inspect the quoted passage. These are different facts. Later inspection can verify a locator or expose a poor analogy; it cannot establish what the earlier recipient actually read.
 
@@ -132,15 +138,22 @@ The return associated this choice with an item in Knuth’s notes about the auth
 
 ## An example must reveal the relevant difference
 
-The same manuscript distinguishes counting smooth integers from counting their distinct heights. Its revision groups the seven smooth integers in $`[16,32)`$ by height:
+The same manuscript distinguishes summing over smooth integers from summing over the distinct values of their running least common multiple. Here the allowed prime factors are $`2,3,5`$; a positive integer with no other prime factor is called $`5`$-smooth. For $`x\ge1`$ its running least common multiple is
+``` math
+H(x)=\operatorname{lcm}\{u\le x:u\text{ is }5\text{-smooth}\}
+     =2^{\lfloor\log_2x\rfloor}
+      3^{\lfloor\log_3x\rfloor}
+      5^{\lfloor\log_5x\rfloor}.
+```
+The formula selects the largest power of each allowed prime not exceeding $`x`$ \[paper269, definition of running least common multiples\]. For example, $`H(16)=16\cdot9\cdot5=720`$. These are the quantities called heights in the revision. The seven $`5`$-smooth integers in $`[16,32)`$ give:
 
 <div class="center">
 
-| Smooth integers | Height    | Contribution |
-|:----------------|:----------|:-------------|
-| $`16,18,20,24`$ | $`720`$   | $`4/720`$    |
-| $`25`$          | $`3600`$  | $`1/3600`$   |
-| $`27,30`$       | $`10800`$ | $`2/10800`$  |
+| $`5`$-smooth integers $`u`$ | $`H(u)`$  | Sum of $`1/H(u)`$ |
+|:----------------------------|:----------|:------------------|
+| $`16,18,20,24`$             | $`720`$   | $`4/720`$         |
+| $`25`$                      | $`3600`$  | $`1/3600`$        |
+| $`27,30`$                   | $`10800`$ | $`2/10800`$       |
 
 </div>
 
@@ -172,13 +185,13 @@ Multiplication by either sign preserves the error bound. The lower endpoint must
 ```
 Each inequality now has a visible job. The factor $`2`$ in the first one comes from the lower endpoint $`1/2`$; it is not an unexplained safety factor. Strictness also has a purpose: the boundary values give $`sD'=-1`$ or $`0`$.
 
-A usable replacement for “the following inequalities suffice” is therefore:
+The explanation also tells us what failure means. Take $`D=3/4`$, $`s=1`$, $`Q=4`$, $`A=3`$ and $`B=1`$. The error bound is valid, but its enclosure $`[1/2,1]`$ fails both strict endpoint tests, even though $`D`$ lies in the target interval. Passing certifies membership; failure of this enclosure to fit does not certify nonmembership. This example interprets the existing certificate without changing it.
 
-> The error bound encloses $`sD`$ between $`(sA-B)/Q`$ and $`(sA+B)/Q`$. Requiring the lower endpoint to exceed $`1/2`$ and the upper endpoint to lie below $`1`$ gives the two strict inequalities.
-
-This is explanatory reconstruction of an existing certificate. Passing the test proves membership of the value in the target interval. Failure of a conservative enclosure to fit does not prove that the value lies outside it.
-
-The \#68 remainder has a related, one-sided geometry. With $`M>0`$, it is a finite value $`A_N`$ plus a strictly positive omitted tail. The tail must fit below the next integer, so the relevant gap is $`\lfloor A_N\rfloor+1-A_N`$ \[paper68, section on nonintegrality\]. An upper bound for the tail explains a sufficient test only after this gap has been identified. At an integral $`A_N`$ the gap is $`1`$. Replacing the strict successor $`\lfloor A_N\rfloor+1`$ by $`\lceil A_N\rceil`$ would make it zero. This endpoint is a particularly useful example because it distinguishes two superficially interchangeable conventions.
+The \#68 remainder has a related, one-sided geometry. It is $`A_N+M(S-H_N)`$, where $`S`$ is the series sum, $`H_N`$ its $`N`$th partial sum, and $`M>0`$ scales the strictly positive omitted tail. To put this remainder between consecutive integers, it suffices to prove
+``` math
+0<M(S-H_N)<\lfloor A_N\rfloor+1-A_N.
+```
+The left inequality puts the remainder above $`\lfloor A_N\rfloor`$; the right puts it below $`\lfloor A_N\rfloor+1`$ \[paper68, section on nonintegrality\]. An upper bound for the tail becomes a test only after this gap is identified. At an integral $`A_N`$ the gap is $`1`$. Replacing the strict successor by $`\lceil A_N\rceil`$ would make it zero. The endpoint distinguishes two superficially interchangeable conventions.
 
 <a id="sec:formula-choice"></a>
 
@@ -210,16 +223,14 @@ The two examples make a formula intelligible by deriving it from the operation a
 
 Fixing a summation index need not leave a fixed finite product. In the \#1049 moment-determinant argument, a summand is indexed by a partition $`\mu_1\ge\cdots\ge\mu_\ell>0`$, with $`\mu_k=0`$ for $`k>\ell`$. The base $`q\in(0,1)`$ and the partition are fixed while $`N\to\infty`$. The ratios of shifted weights tend to one, but the Vandermonde quotient still contains factors indexed by $`k`$ up to $`N`$ \[paper1049, proof for geometric moment determinants\].
 
-For a fixed $`1\le j\le\ell`$, the part with $`k>\ell`$ is
+For $`N\ge\ell`$ and fixed $`1\le j\le\ell`$, cancel the common factors in the part with $`k>\ell`$:
 ``` math
 \prod_{k=\ell+1}^{N}
        \frac{1-q^{k-j+\mu_j}}{1-q^{k-j}}
- =\frac{(q^{N+1-j};q)_{\mu_j}}
-        {(q^{\ell+1-j};q)_{\mu_j}},
- \qquad
- (a;q)_m:=\prod_{r=0}^{m-1}(1-aq^r).
+ =\frac{\displaystyle\prod_{r=0}^{\mu_j-1}(1-q^{N+1-j+r})}
+        {\displaystyle\prod_{r=0}^{\mu_j-1}(1-q^{\ell+1-j+r})}.
 ```
-Cancellation leaves two finite endpoint products, each of length $`\mu_j`$. The numerator tends to $`1`$ and the denominator is fixed and positive. The remaining factors have $`j,k\le\ell`$ and are independent of $`N`$. This establishes convergence of the whole quotient for a fixed partition, including its growing part. The formula is the telescoping explanation proposed in the later return; its algebra does not invoke a new asymptotic theorem.
+The original product has $`N-\ell`$ factors; each endpoint product has the fixed length $`\mu_j`$. Thus every factor in the numerator tends to $`1`$, while the denominator is fixed and positive. The remaining factors have $`j,k\le\ell`$ and are independent of $`N`$. This establishes convergence of the whole quotient for a fixed partition, including its growing part. The formula is the telescoping explanation proposed in the later return; its algebra does not invoke a new asymptotic theorem.
 
 There is still a second question: can the limit be passed through the sum over all partitions? Extend the summand by zero when $`\ell>N`$, so that the index set is fixed. The source proof supplies a bound, independent of $`N`$, whose total over partitions of length $`\ell`$ is at most
 ``` math
@@ -233,16 +244,25 @@ The improved explanation therefore has two conclusions, in this order: the whole
 
 ## Does a complete test provide the required witnesses?
 
-In the \#249 finite tail-difference test, a fixed pair $`h,N`$ has a nonintegral difference $`\Delta_h(N)`$ exactly when some sufficiently deep finite calculation certifies separation from the integers. Here $`\|x\|_{\mathbb R/\mathbb Z}`$ denotes the distance from $`x`$ to the nearest integer. For this fixed pair, the positive gap $`\|\Delta_h(N)\|_{\mathbb R/\mathbb Z}`$ is constant, while the scaled error bound is linear in the depth $`L`$. Exponential growth of $`2^L`$ therefore makes
+In the \#249 test, fix a positive integer shift $`h`$ and an index $`N\ge0`$, and write $`D`$ for that particular real tail difference. At each positive integer depth $`L`$, the paper computes an integer $`A_L`$ and proves
 ``` math
-2^L\|\Delta_h(N)\|_{\mathbb R/\mathbb Z}
-                 >2(N+h+L+2)
+|2^LD-A_L|\le B_L,\qquad B_L=N+h+L+2.
 ```
-possible whenever the gap is positive \[paper249, section on binary totient tails\].
+An integer $`D`$ would put a multiple of $`2^L`$ in this closed enclosure. Hence one can certify nonintegrality by checking
+``` math
+B_L<(A_L\bmod 2^L)<2^L-B_L,
+```
+where the residue is chosen in $`\{0,\ldots,2^L-1\}`$ \[paper249, section on binary totient tails\]. The two strict margins keep the enclosure away from the neighbouring multiples of $`2^L`$.
 
-This proves completeness of detection for the fixed difference. An irrationality argument still needs nonintegral differences for the specified shifts and beyond the specified cutoffs. The test has not produced that family. Both facts deserve their full strength: the equivalence is exact, and the witness-production problem remains. Calling the test “merely sufficient” would lose a proved converse; calling it a solution would erase the remaining quantifiers.
+The test also detects every nonintegral fixed $`D`$ at some depth. Its gap $`\|D\|_{\mathbb R/\mathbb Z}`$ from the nearest integer is then a positive constant. The source proves that detection follows once
+``` math
+2^L\|D\|_{\mathbb R/\mathbb Z}>2B_L.
+```
+Exponential growth of $`2^L`$ exceeds the linear growth of $`B_L`$, so such a depth exists. This converse is stronger than a merely sufficient test.
 
-The distinction is useful whenever a proof offers arbitrarily accurate certificates. State which object stays fixed as the accuracy improves. If the object changes too, its distance from the forbidden set may shrink, and a new comparison is needed. This is the same discipline that made the fixed-base limit in Section <a href="#sec:fixed-partition" data-reference-type="ref" data-reference="sec:fixed-partition">3.3</a> readable.
+Completeness of positive detection does not give a stopping certificate for integrality: when $`D`$ is integral, this search never succeeds. Failure at the depths tried is therefore not, by itself, a proof of integrality. A second distinction concerns the irrationality argument. For every positive shift and every cutoff it still needs an index beyond that cutoff with a nonintegral difference. The test recognises a suitable fixed value; it has not produced this family. Its exact converse and the remaining quantifiers both belong in the explanation.
+
+Whenever a proof offers arbitrarily accurate certificates, state which object stays fixed as the accuracy improves. If the object changes too, its distance from the forbidden set may shrink, and a new comparison is needed. This is the same discipline that made the fixed-base limit in Section <a href="#sec:fixed-partition" data-reference-type="ref" data-reference="sec:fixed-partition">3.3</a> readable.
 
 <a id="sec:review"></a>
 
@@ -300,7 +320,7 @@ A late-September integration supplies a concrete limit on deleting operational l
 
 ## Read explanatory words as mathematical claims
 
-A familiar word can assert more than the displayed calculation supports. In \#1041, Abel summation expresses $`f(t\zeta)`$ as
+Test a mathematical adjective by substituting its definition. A “convex combination” requires nonnegative weights whose sum is one. Checking only their signs leaves half the condition untested. In \#1041, Abel summation expresses $`f(t\zeta)`$ as
 ``` math
 f(t\zeta)=\sum_{j=0}^{n-1}(t^j-t^{j+1})S_j,
  \qquad S_j=\sum_{k=0}^{j}a_k\zeta^k,
@@ -314,7 +334,7 @@ Q(n)=m\binom{n+2}{3}+c,
 ```
 and $`Q(n)`$ is known to be integral at every sufficiently large integer $`n`$. At any such nonnegative $`n`$, the binomial coefficient is integral, so $`c=Q(n)-m\binom{n+2}{3}`$ is integral \[paper243, reduction and the constant term\]. The proposed explanation uses exactly those established facts. Replacing them by “$`Q`$ is an integer polynomial” would be unsafe: an integer-valued polynomial can have nonintegral coefficients, as $`n(n-1)/2`$ shows. The useful simplification names the available arithmetic structure.
 
-Even prose that seems to paraphrase a bound deserves this review. In the \#257 finite average, the residue period has length $`d/\gcd(L,d)`$ and the sample contains $`T`$ observations. The inequality $`d\le LT`$ does not assert that one whole period occurs. For $`L=3,d=5,T=2`$, it holds while the period has length five. Splitting the sample into complete periods, possibly none, and one remainder is sufficient for the displayed bound \[paper257, finite means for shifted divisor tails\]. Adding the two words “possibly none” corrects a gloss while leaving the estimate unchanged. This is different from a proof whose estimate itself fails. That distinction belongs in the review decision.
+Even prose that seems to paraphrase a bound deserves this review. In the \#257 finite average, $`L,d,T`$ are positive integers. The residues of $`L,2L,3L,\ldots`$ modulo $`d`$ repeat with period $`d/\gcd(L,d)`$; the sample uses only the first $`T`$ terms. The inequality $`d\le LT`$ does not assert that one whole period occurs. For $`L=3,d=5,T=2`$, it holds while the period has length five. Splitting the sample into complete periods, possibly none, and one remainder is sufficient for the displayed bound \[paper257, finite means for shifted divisor tails\]. Adding the two words “possibly none” corrects a gloss while leaving the estimate unchanged. This is different from a proof whose estimate itself fails. That distinction belongs in the review decision.
 
 <a id="correct-the-source-without-rewriting-its-history"></a>
 
@@ -334,9 +354,7 @@ The same care applies to the role of the source. A paper may supply a theorem, h
 
 </div>
 
-The public implementation extends the repository’s existing mathematical writing skill \[skill\]. It adds a literature-reading pass before a substantial rewrite and places the detailed cases in a linked guide and lesson records. The two-page *Writing a Good Mathematical Paper* \[compact\] distils the instructions for use without this repository. The present companion explains their evidence and limits. The skill remains a set of working instructions; the records make its examples and exceptions recoverable. A writer need not read every past return before deciding how to explain a particular proof.
-
-The compact rule set asks writers to select a coherent result, use examples for a stated purpose, explain difficult inferences, name the actual mathematical objects and preserve statement meaning. It also covers the relation between short and long papers, evidence, citation roles, informative failures, rendering and honest reporting of review. These topics are not scores to optimize. Each rule states a limit that matters to its use: an example does not prove an infinite result; a shorter sentence need not preserve quantifiers; a rendered PDF need not explain its mathematics well.
+Use the two-page *Writing a Good Mathematical Paper* \[compact\] as a working guide; use this companion when a particular instruction needs an example or a limit. The repository’s writing skill \[skill\] incorporates the literature-reading pass, while its records retain the detailed cases and exceptions. A writer need not read every past return before explaining a proof. The next revision should resolve a specific difficulty, not demonstrate that every rule has been mentioned.
 
 <a id="sec:revision-order"></a>
 
@@ -357,6 +375,14 @@ Finally, remove explanation that repeats an already intelligible operation. Keep
 Before moving a passage, identify what a reader of each document must still be able to do. The short paper should support its principal result through an intelligible proof or a clearly identified proof sketch with a precise full-proof destination. A long record should preserve the omitted derivation, its assumptions and its relation to the main argument. A link labelled “details” is insufficient when its destination proves a different statement or omits the difficult step.
 
 Compare the shared assertions in both directions. A repaired endpoint in the short paper must reach the long proof; an assumption exposed in the long proof must reach the short statement. After a move, follow the link to the actual passage and check that its notation can be translated. Retain substantial alternatives and counterexamples where they explain the scope or a failed method. Material that serves only the revision history can remain in the editorial record rather than interrupting the mathematical argument.
+
+<a id="put-verification-details-where-they-can-be-checked"></a>
+
+## Put verification details where they can be checked
+
+The mathematical argument should state its hypotheses and explain the inference. An exact computation may be part of that inference; give its mathematical input, output and finite scope at the point of use. Put the software version, source identifiers, replay commands and review history in one verification and reproducibility section or appendix. Refer there from a theorem when its evidence class matters. This keeps proof status available without making a reader decode repository machinery between proof steps.
+
+Give a single account of a shared limitation, then repeat it only when a different claim would otherwise appear unconditional. A conditional premise belongs beside the statement it conditions; an editorial disclaimer does not need to recur after every equation. For an omitted proof, name its mathematical destination by section or theorem and cite the original source where an external result is used. A reference to a file or a “long record” alone does not tell a reader which argument to inspect.
 
 <a id="how-the-practice-developed"></a>
 
@@ -396,7 +422,9 @@ Freezing a version matters because guidance can change during a review. An earli
 
 The final pass uses the repository’s native sources and rendering tools. After changing a figure, inspect it at the size in which it appears. Follow a reference to the intended theorem or long-form argument, rather than merely checking that a target file exists. After reflow, inspect the affected pages and their neighbours: a useful explanation can be separated from its figure, or a small heading can be stranded above a page break. Bibliographic labels, captions, interval endpoints and cross-document links belong to this review.
 
-Read the result along three routes. First, scan the title, abstract, introduction and main statements: recover the contribution and its boundary without importing private knowledge. Second, reconstruct the proof: identify where each hypothesis is used and explain the difficult inference in your own words. Third, try to use a result: check its assumptions on an example, locate an excluded case and find the cited input needed for an application. These routes expose different failures, so a successful scan should not stand in for a proof reading.
+Read the result along three routes. First, scan the title, abstract, introduction and main statements: recover the contribution and its boundary without importing private knowledge. Second, reconstruct the proof: identify where each hypothesis is used and explain the difficult inference in your own words. Third, try to use a result: check its assumptions on an example, locate an excluded case and find the cited input needed for an application.
+
+For the examples here, these tasks have specific answers. In Section <a href="#sec:certificate" data-reference-type="ref" data-reference="sec:certificate">3.1</a>, the certificate places a value in $`(1/2,1)`$; its two inequalities come from the two endpoint gaps; the value $`D=3/4`$ with the loose enclosure $`[1/2,1]`$ shows why a failed test is inconclusive. A reader who can repeat “compare both endpoints” but cannot explain that failure has not yet recovered how to use the certificate. This identifies a passage to revisit, not a numerical score for understanding.
 
 When an independent reader is available, ask for the exact place where their reconstruction stopped and what they believed had been established there. An author’s own cold-start pass is still useful, but should be reported as self-review. No independent reader is implied by the procedure described here.
 
@@ -408,11 +436,13 @@ The method leaves that empirical question open. It makes a particular editorial 
 
 # Transfer the method across research genres
 
-The common task is to make the relation between a claim and its warrant legible. What counts as a warrant depends on the field and the sentence. For a mathematical theorem, state the domain and hypotheses, then explain the proof’s hard implication. A systems paper may instead claim that a particular mechanism works under a specified workload, compare it with a baseline, or describe a reproducible failure. Give the implementation, test conditions, comparator and observed result before drawing that conclusion. A build or artifact check can support a statement about those tested objects; it cannot prove an unrestricted performance or usability claim.
+The common task is to make the relation between a claim and its warrant legible. What counts as a warrant depends on the field and the sentence. For a mathematical theorem, state the domain and hypotheses, then explain the proof’s hard implication. A systems paper may describe a design, report an implemented mechanism or compare performance under a workload. Identify which of these is being claimed. An empirical comparison needs the tested implementation, conditions, comparator and observed result; a proposed design must not be presented as an implemented one. A build or artifact check concerns the tested objects, not unrestricted performance or usability.
 
 Levin and Redell distinguish papers about implemented systems, proposed systems and theoretical work, and caution that evaluation criteria vary across those classes \[levin-redell\]. The SIGPLAN empirical-evaluation guidance asks authors to state claims and limitations clearly, and treats its checklist as an aid to judgment rather than a universal score \[sigplan-evaluation\]. These are genre-specific primary sources, not proof authority for any particular system. A nearby systems paper’s opening and evaluation should also be read at their actual passages before transferring a sentence pattern.
 
-The companion systems paper in this repository describes a source-to-publication workflow and one mathematical case \[systems\]. A useful reading question is whether a sentence concerns the checked declaration, the authored argument, the release procedure or a reader’s understanding. Those four claims need different evidence. In an expository scientific paper, similarly identify the underlying study or derivation, the population or model, the observed or cited result, and the author’s synthesis. If the paper contributes no new experiment, say so. Compare each inference with the cited primary study and with nearby expositions in that field; do not turn a source’s reported association into causation or a model’s prediction into an observation.
+The repository’s systems manuscript gives a concrete example. It reports nine rejections among ten deliberately false, author-selected edits in a historical trial. After one edit escaped, a follow-up checked the intact baseline and that escaped edit against a repair; the other nine edits were not rerun \[systems, recorded observations\]. The first report describes those ten trials, not a general $`90\%`$ reliability rate. The second describes the tested repair, not a post-repair ten-out-of-ten result. The manuscript also records missing original logs and the absence of an independent comparison. Those qualifications determine which conclusion the observations can support; they are not incidental implementation details.
+
+In an expository scientific paper, similarly identify the underlying study or derivation, the population or model, the observed or cited result, and the author’s synthesis. If the paper contributes no new experiment, say so. Compare each inference with the cited primary study and with nearby expositions in that field; do not turn a reported association into causation or a model’s prediction into an observation.
 
 Sentence structure should expose these dependencies. Put the condition before its consequence when the condition controls the claim; name the measured quantity and comparator in the same sentence as the reported change; keep parallel outcomes in parallel clauses. The value of this practice is local: it lets a reader test exactly which evidence licenses each statement. It is not a single prose template for mathematics, systems research and every science.
 
@@ -426,13 +456,13 @@ Wouter van Doorn’s feedback on first-reader legibility, recorded in the projec
 
 # Availability and authorship
 
-The writing skill, source records, lesson history and this paper’s LaTeX source are maintained in the public repository \[ledger; skill\]. The accompanying editorial return documents the new-return examples separately from the accepted historical cases. The public writing method and its review ledger record selected guidance, with source-reading and acceptance boundaries preserved. Will Cook built and directed the research infrastructure and reviewed the claims when he could. AI agents did most of the research and drafting. Cook did not independently verify every claim.
+The writing skill, source records, lesson history and this paper’s LaTeX source are maintained in the public repository \[ledger; skill\]. The accompanying editorial return documents the new-return examples separately from the accepted historical cases. The public writing method and its review ledger record selected guidance, with source-reading and acceptance boundaries preserved. The worked revisions were made across papers on eight Erdős problems. Some agents worked from frozen packets; others integrated changes against the live repository. Their editorial judgements do not measure how independent mathematical readers understood the papers. The method has not been tested for improved reader comprehension. Will Cook built and directed the research infrastructure and reviewed the claims when he could. AI agents did most of the research and drafting. Cook did not independently verify every claim.
 
 <div class="thebibliography">
 
 99 P. R. Halmos, How to write mathematics, *L’Enseignement Mathématique* (2) **16** (1970), 123–152. Cited edition: the scanned article, §§3–4. <https://doi.org/10.5169/seals-43857>.
 
-D. E. Knuth, T. Larrabee and P. M. Roberts, *Mathematical Writing*, Stanford Computer Science report STAN-CS-88-1193 (1988), notes from the 1987 course; book edition, Mathematical Association of America, 1989. Locators here refer to §1 of the report. <https://cs.stanford.edu/~knuth/klr.html>.
+D. E. Knuth, T. Larrabee and P. M. Roberts, *Mathematical Writing*, Stanford Computer Science report STAN-CS-88-1193 (1988), notes from the 1987 course; book edition, Mathematical Association of America, 1989. Locators here refer to §§1–3 of the report; the worked exercise and proof comparison are on printed pp. 7–8 (PDF pp. 9–10). <https://cs.stanford.edu/~knuth/klr.html>.
 
 T. Gowers, My favourite pedagogical principle: examples first, 19 October 2007, author’s essay. <https://gowers.wordpress.com/2007/10/19/my-favourite-pedagogical-principle-examples-first/>.
 
@@ -448,7 +478,7 @@ W. Cook, [Literature and reviewed-revision guide](https://github.com/wcook04/pl
 
 W. Cook, [Public mathematical writing](https://github.com/wcook04/plectis-erdos/blob/main/skills/public-mathematical-writing/SKILL.md), repository skill.
 
-W. Cook, [Writing a Good Mathematical Paper](https://github.com/wcook04/plectis-erdos/blob/main/paper/exposition/writing-a-good-mathematical-paper.pdf), compact guide, 30 September 2026.
+W. Cook, [Writing a Good Mathematical Paper](https://github.com/wcook04/plectis-erdos/blob/main/paper/exposition/writing-a-good-mathematical-paper.pdf), compact guide, 1 October 2026.
 
 W. Cook, [Publishing Mathematical Results from a Lean Repository](https://github.com/wcook04/plectis-erdos/blob/main/paper/systems/claim-faithful-publication-systems-paper.tex), 30 September 2026. T. Gowers, Examples first II, 24 October 2007, author’s follow-up essay. <https://gowers.wordpress.com/2007/10/24/examples-first-ii/>.
 
@@ -470,6 +500,8 @@ W. Cook, Sparse Congruence-Preserving Perturbations of Dyadic Series, \#251 sho
 
 W. Cook, Irrationality criteria for Lambert subseries, \#257 short paper, supplied source dated 30 September 2026. <https://github.com/wcook04/plectis-erdos/blob/main/paper/257/erdos-257-mersenne-support-subseries.tex>.
 
+W. Cook, Distinct running least common multiples, \#269 short paper, manuscript snapshot, 1 October 2026. <https://github.com/wcook04/plectis-erdos/blob/main/paper/269/erdos-269-three-prime-running-lcm.tex>.
+
 W. Cook, Paths in Polynomial Lemniscates: A Degree-Seven Counterexample and Radial Connections, \#1041 short paper, supplied source dated 30 September 2026. <https://github.com/wcook04/plectis-erdos/blob/main/paper/1041/erdos-1041-lemniscate-newton-flow.tex>.
 
 W. Cook, Hankel Determinants of Geometric Moments and Rational Lambert Values, \#1049 short paper, supplied source dated 30 September 2026. <https://github.com/wcook04/plectis-erdos/blob/main/paper/1049/erdos-1049-rational-base-lambert.tex>.
@@ -480,4 +512,4 @@ ACM SIGPLAN, Empirical Evaluation Guidelines, committee guidance and FAQ (update
 
 </div>
 
-The worked examples were checked against the selected public manuscript sources after R8 integration. Repository links locate manuscript families; later revisions may differ. The review record identifies source bytes, passages, donor reading claims and native checks separately.
+*Source inspection and reproducibility.* This revision additionally reads §§2–3 of Knuth et al., printed pp. 7–8 (PDF pp. 9–10), beyond the §1 passages used previously. Worked examples were checked against manuscript sources frozen in the 1 October 2026 packet; snapshot and title-page dates may differ. Historical cases retain their stated revision identities. Repository links locate manuscript families; the review record identifies the inspected versions, passages and integration decisions.

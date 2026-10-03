@@ -24,8 +24,6 @@ The common Lambert series in \#257 and \#1049 gives a second comparison in Secti
 
 Section <a href="#sec:dyadic-shifts" data-reference-type="ref" data-reference="sec:dyadic-shifts">7</a> follows a different transfer. A difference of two dyadic tail states is itself an integer-digit dyadic orbit. The resulting irrationality criterion leads to a question about which shift lengths need testing; the answer depends on divisibility rather than the size or density of the chosen family.
 
-The proofs presented here are ordinary mathematical arguments. Cited Lean results establish specified ingredients and quoted results, not the complete capacity classification or Lambert-chain theorem. The sources and originating review are credited in Section <a href="#capacity:sec:sources" data-reference-type="ref" data-reference="capacity:sec:sources">12</a>. Historical novelty and independent expert review are not established.
-
 <a id="capacity:sec:jets-intro"></a>
 
 # Prescribing a value and its derivatives
@@ -1134,7 +1132,7 @@ What survives is the agreement itself. At $`Q=200`$ the counts at steps $`1`$ to
 
 <a id="capacity:sec:sources"></a>
 
-# Sources and formal correspondence
+# Verification and sources
 
 The starting point is the sparse perturbation construction accompanying Erdős Problem \#251 in this repository, especially its [short paper](../../../paper/251/erdos-251-prime-gap-dyadic-series.pdf) and [`ResidueFeedbackCore.lean`](https://github.com/wcook04/plectis-erdos/blob/8d6596fbde2c4aacf946adec4b0226ba1a97545d/lean/ErdosProblems/Erdos251/ResidueFeedbackCore.lean). The latter already proves residue-dependent selection and an abstract infinite sum endpoint. An operator-supplied review supplied the form of Lemma <a href="#capacity:lem:feedback" data-reference-type="ref" data-reference="capacity:lem:feedback">3.4</a>, the sharp exponential support constants, and the linear/superlinear factorial contrast. Those ingredients are credited to that review, not presented as discoveries of this paper. The extensions developed here are the exact capacity criterion on arbitrary strict integer divisibility chains, the factorial support classification and its integer-exponent comparison, the common-divisor formulation, and the derivative dimension and rationality thresholds proved above.
 

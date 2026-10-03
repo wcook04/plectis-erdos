@@ -4,7 +4,7 @@ Part of the [evidence record](../erdos249-totient-reasoning-surface.md) of the p
 
 <a id="prop-b3"></a>
 
-## Proposition 6.72 (One diagonal parameter suffices), page 49
+## Proposition 6.72 (One diagonal parameter suffices), page 48
 
 > *The following condition is equivalent to irrationality:
 > ``` math
@@ -37,7 +37,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="prop-b7-60c3ed"></a>
 
-## Proposition 6.73 (A sufficient condition on the LCM grid), page 49
+## Proposition 6.73 (A sufficient condition on the LCM grid), page 48
 
 > *``` math
 > \big(\forall t_0,\ \exists t\ge t_0,\ \exists q\,m\,L,\ 0<q \wedge \mathcal{C}(m\cdot{H}\,t)(q\cdot{H}\,t)\ L\big)
@@ -79,7 +79,7 @@ theorem irrational_totient_series_of_lcm_cone_window_kill_supply
 
 <a id="prop-b10"></a>
 
-## Proposition 6.74 (A finite-grid certificate condition), page 49
+## Proposition 6.74 (A finite-grid certificate condition), page 48
 
 > *Let $`H,L\in\mathbb N`$ and let $`Q\subseteq\mathbb N_{>0}`$ be finite and nonempty. Define $`A_q=\sum_{j=1}^{L}\varphi(qH+j)2^{L-j}`$ and $`B_q=qH+L+2`$. If $`B_q<2^L`$ for every $`q\in Q`$ and
 > ``` math
@@ -189,9 +189,9 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="prop-d5cons"></a>
 
-## Proposition 6.76 (The lower bound and a false proposed upper bound), page 50
+## Proposition 6.76 (The lower bound and a false proposed upper bound), page 49
 
-> *By Prop. 6.98, the canonical dyadic totient-kernel family is unconditionally $`(2^e+1)`$-dimensional at every level $`e\ge1`$. Rationality of $`S`$ forces an associated tempered carry orbit with $`\mathbb Q`$-rank $`\ge 2^e-1`$ at every level (Prop. 6.90). An upper bound independent of $`e`$ for these same carry ranks would contradict the lower bound. More generally, a bound $`g(e)`$ with $`g(e)<2^e-1`$ at some level $`e\ge1`$ would suffice, provided it applies to the actual carry under the hypothetical rationality of $`S`$. A bound that merely grows with $`e`$ need not contradict anything. The generic assertion for arbitrary rational coefficient series is false: the $`5/4`$ comparison sequence in Section 10.8 has an integer carry satisfying the growth condition and the same rank lower bound. The incompatible integer identity and the finite-shift counterexample (Observation 6.115) remain separate counterexample results. None is a generic rationality-driven rank ceiling. The Lean proof covers the proved rank floor and counterexample results, not the counterfactual upper bound.*
+> *By Prop. 6.98, the canonical dyadic totient-kernel family is unconditionally $`(2^e+1)`$-dimensional at every level $`e\ge1`$. Rationality of $`S`$ forces an associated carry orbit with $`\mathbb Q`$-rank $`\ge 2^e-1`$ at every level (Prop. 6.90). An upper bound independent of $`e`$ for these same carry ranks would contradict the lower bound. More generally, a bound $`g(e)`$ with $`g(e)<2^e-1`$ at some level $`e\ge1`$ would suffice, provided it applies to the actual carry under the hypothetical rationality of $`S`$. A bound that merely grows with $`e`$ need not contradict anything. The generic assertion for arbitrary rational coefficient series is false: the $`5/4`$ comparison sequence in Section 10.8 has an integer carry satisfying the growth condition and the same rank lower bound. The incompatible integer identity and the finite-shift counterexample (Observation 6.115) remain separate counterexample results. None gives a rank upper bound from rationality alone. The Lean proof covers the rank lower bound and counterexample results, not the counterfactual upper bound.*
 
 The Lean declarations below together state this result.
 
@@ -359,7 +359,7 @@ theorem fiveQuarter_comparison_rational_with_carryRank_floor :
 
 <a id="prop-b12cons"></a>
 
-## Proposition 6.77 (Soundness of the finite carry test), page 50
+## Proposition 6.77 (Soundness of the finite carry test), page 49
 
 > *For fixed $`h,N,K\in\mathbb N`$, use the integer recurrences $`c_{h,N,z}`$ defined above. Test each of the $`2(N+h+1)+1`$ candidates $`z\in\mathbb Z`$ with $`|z|\le N+h+1`$. If every candidate has some $`i\le K`$ for which
 > ``` math
@@ -408,7 +408,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="prop-ar-04-inv"></a>
 
-## Proposition 6.78 (The exact totient difference on an LCM progression), page 50
+## Proposition 6.78 (The exact totient difference on an LCM progression), page 49
 
 > *Put $`H=H(t)`$. For every $`j\ge0`$, the arithmetic expression in the piecewise form given below equals $`\delta_t(j)=\varphi(2H+j)-\varphi(H+j)`$. For a divisor $`j\mid H`$, this assertion contains a useful product formula, not merely a change of notation. Set
 > ``` math
@@ -523,7 +523,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="prop-ar-03-inv"></a>
 
-## Proposition 6.79 (A lower bound for the totient of a rough integer), page 51
+## Proposition 6.79 (A lower bound for the totient of a rough integer), page 50
 
 > *Let $`a\ge8`$, set $`t=2^a`$, and let $`n>0`$ be an integer all of whose prime factors exceed $`t`$. If $`n<2^{2t}`$, then $`n`$ has fewer than $`t/4`$ distinct prime factors and
 > ``` math
@@ -555,7 +555,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="prop-ar-05-inv"></a>
 
-## Proposition 6.80 (Positivity of the short-window differences), page 51
+## Proposition 6.80 (Positivity of the short-window differences), page 50
 
 > *For $`a\ge8`$ and $`1\le j<2\cdot2^a`$,
 > ``` math
@@ -586,7 +586,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="prop-ar-06-inv"></a>
 
-## Proposition 6.81 (The accumulated sum is the discrepancy), page 51
+## Proposition 6.81 (The accumulated sum is the discrepancy), page 50
 
 > *For all $`t,L\in\mathbb N`$, the weighted diagonal sum is exactly
 > ``` math
@@ -636,7 +636,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="prop-sep-01-inv"></a>
 
-## Proposition 6.82 (A global-to-local identity), page 51
+## Proposition 6.82 (A global-to-local identity), page 50
 
 > *``` math
 > \Omega_a \;=\; 2^H(2^H-1)\Big(\textstyle\sum_n' \varphi(n)/2^n\Big) - \big(\Phi_{2H}-\Phi_H\big),\quad H={H}(2^a).
@@ -711,7 +711,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="prop-sgn-01"></a>
 
-## Proposition 6.84 (Unconditional positivity), page 52
+## Proposition 6.84 (Unconditional positivity), page 51
 
 > *For $`a\ge8`$, $`J+(a+6)<2\cdot2^a`$:
 > ``` math
@@ -750,7 +750,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="prop-sgn-03"></a>
 
-## Proposition 6.85 (The residue forced by integrality), page 52
+## Proposition 6.85 (The residue forced by integrality), page 51
 
 > *Let $`a,J,K\in\mathbb N`$, $`a\ge8`$, $`H=H(2^a)`$, and assume
 > ``` math
@@ -806,7 +806,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="prop-te-02-inv"></a>
 
-## Proposition 6.86 (The penultimate term of a partial divisibility pattern), page 52
+## Proposition 6.86 (The penultimate term of a partial divisibility pattern), page 51
 
 > *Let $`a,J,K,m\in\mathbb N`$, $`a\ge8`$, $`H=H_{2^a}`$ and $`B=2H+J+K+2`$. Suppose that
 > ``` math
@@ -919,7 +919,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="prop-fr-02-inv"></a>
 
-## Proposition 6.88 (The factor in a second difference), page 53
+## Proposition 6.88 (The factor in a second difference), page 52
 
 > *Let $`a\ge4`$ and $`j\ge1`$ be integers with $`j^2\le2^a`$, and put $`H_a=H(2^a)=\operatorname{lcm}(1,\ldots,2^a)`$. Then
 > ``` math
@@ -983,13 +983,13 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="prop-cp-01-inv"></a>
 
-## Proposition 6.89 (Carry displacement and tail integrality), page 53
+## Proposition 6.89 (Carry displacement and tail integrality), page 52
 
-> *For a positive integer $`v`$ and a tempered integral totient carry $`u`$,
+> *For a positive integer $`v`$ and an integral totient carry $`u`$ with $`u(N)/2^N\to0`$,
 > ``` math
 > v\mid u(N+k)-u(N)\quad\Longleftrightarrow\quad R_{N+k}-R_N\in\mathbb{Z}.
 > ```
-> Indeed, temperedness identifies $`u(N)=vR_N`$, so the displacement is $`v(R_{N+k}-R_N)`$. This is a divisibility test for that displacement, not a dimension bound for the carry sections. The same proof works for another coefficient sequence once its tempered carry has been identified with its scaled tail; those hypotheses must be checked in each application.*
+> The recurrence and the limit identify $`u(N)=vR_N`$, so the difference is $`v(R_{N+k}-R_N)`$. This tests divisibility of a carry difference and gives no dimension bound for the carry sections. For another coefficient sequence, the same argument applies once its carry is identified with its scaled tail under the corresponding recurrence and limit.*
 
 The Lean declarations below together state this result.
 
@@ -1025,9 +1025,9 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="prop-cp-02"></a>
 
-## Proposition 6.90 (A consequence of rationality and its limitation), page 53
+## Proposition 6.90 (A consequence of rationality and its limitation), page 52
 
-> *If $`S\in\mathbb Q`$, there are a positive integer $`v`$ and a tempered integer carry orbit $`u`$ such that its retained sections through every level $`e`$ have rational rank at least $`2^e-1`$. At the same time, those sections are uniformly eventually periodic modulo $`v`$. Periodicity after reduction modulo $`v`$ is a statement in a finite quotient; it is not a rank upper bound over $`\mathbb Q`$. Proposition 6.76 gives the lower bound, while the rational comparison sequence explains why a general rank upper bound cannot be deduced from these recurrence assumptions alone.*
+> *If $`S\in\mathbb Q`$, there are a positive integer $`v`$ and an integer carry sequence $`u`$, with $`u(N)/2^N\to0`$, whose retained sections through every level $`e`$ have rational rank at least $`2^e-1`$. At the same time, those sections are uniformly eventually periodic modulo $`v`$. Periodicity after reduction modulo $`v`$ is a statement in a finite quotient; it is not a rank upper bound over $`\mathbb Q`$. Proposition 6.76 gives the lower bound, while the rational comparison sequence explains why a general rank upper bound cannot be deduced from these recurrence assumptions alone.*
 
 The Lean declaration below states this result.
 
@@ -1057,7 +1057,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="prop-cp-05-inv"></a>
 
-## Proposition 6.91 (A totient difference congruent to two modulo four), page 53
+## Proposition 6.91 (A totient difference congruent to two modulo four), page 52
 
 > *For every positive integer $`h`$ and every $`B\in\mathbb N`$, there is a prime $`p>B`$ such that
 > ``` math
@@ -1088,7 +1088,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="prop-ta-inv"></a>
 
-## Proposition 6.92 (A prescribed residue after a long divisibility block), page 54
+## Proposition 6.92 (A prescribed residue after a long divisibility block), page 53
 
 > *Let $`K\ge2`$ and $`H>K`$ be integers. For every $`B\in\mathbb N`$ there is a prime $`p>\max(B,H+K)`$ such that
 > ``` math
@@ -1169,7 +1169,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="prop-mp-01-inv"></a>
 
-## Proposition 6.93 (A Möbius-inversion formula for the tail), page 54
+## Proposition 6.93 (A Möbius-inversion formula for the tail), page 53
 
 > *For $`N\in\mathbb N`$ and $`d\ge1`$, let $`r_d(N)=d-(N\bmod d)`$ and $`q_d(N)=\lfloor N/d\rfloor+1`$. Thus $`r_d(N)`$ is the distance to the next strictly larger multiple of $`d`$, so $`1\le r_d(N)\le d`$. Möbius inversion gives
 > ``` math
@@ -1281,7 +1281,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="prop-a5-inv"></a>
 
-## Proposition 6.95 (The necessary depth), page 55
+## Proposition 6.95 (The necessary depth), page 54
 
 > *Every certificate $`\mathcal C(h,N,L)`$ satisfies
 > ``` math
@@ -1326,7 +1326,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="prop-a9-inv"></a>
 
-## Proposition 6.96 (Rationality gives an eventual tail period), page 55
+## Proposition 6.96 (Rationality gives an eventual tail period), page 54
 
 > *Suppose $`S=a/(2^c v)`$ in lowest terms, where $`a\in\mathbb Z`$, $`c\ge0`$ and $`v\ge1`$ is odd. Take $`h=\varphi(v)`$, including $`h=1`$ when $`v=1`$. Euler’s theorem gives $`v\mid2^h-1`$, so
 > ``` math
@@ -1409,7 +1409,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="prop-b6-inv"></a>
 
-## Proposition 6.97 (Tail integrality on an LCM grid), page 55
+## Proposition 6.97 (Tail integrality on an LCM grid), page 54
 
 > *If $`S\in\mathbb Q`$, there is $`t_1\in\mathbb N`$ such that for all $`t\ge t_1`$, $`q\ge1`$ and $`m\ge0`$,
 > ``` math
@@ -1460,7 +1460,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="prop-d4-inv"></a>
 
-## Proposition 6.98 (Independence of the retained dyadic family), page 55
+## Proposition 6.98 (Independence of the retained dyadic family), page 54
 
 > *For every $`e\ge0`$, the auxiliary canonical dyadic family has $`2^e+1`$ indexed sections, and these sections are linearly independent over $`\mathbb Q`$. The CRT–Dirichlet argument is explained in Section 10.8. For $`e\ge1`$ the family is a basis for all sections through level $`e`$. At $`e=0`$ the auxiliary family still contains both $`\varphi(n)`$ and $`\varphi(2n)`$, so it is not the actual level-zero truncation, whose dimension is one. No rationality hypothesis on $`S`$ is used.*
 
@@ -1579,7 +1579,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="prop-c3-inv"></a>
 
-## Proposition 6.100 (The resulting denominator exclusion), page 56
+## Proposition 6.100 (The resulting denominator exclusion), page 55
 
 > *For every reduced fraction $`a/q`$, with $`a\in\mathbb Z`$ and $`q\ge1`$,
 > ``` math
@@ -1619,7 +1619,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="prop-d1d2-inv"></a>
 
-## Proposition 6.101 (Two general irrationality criteria), page 56
+## Proposition 6.101 (Two general irrationality criteria), page 55
 
 > *Let $`x\in\mathbb R`$. One sufficient condition is a sequence of reduced fractions $`u_j=a_j/q_j`$, $`q_j\ge1`$, with $`u_j\ne x`$ for all sufficiently large $`j`$ and
 > ``` math
@@ -1757,7 +1757,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="prop-d7-inv"></a>
 
-## Proposition 6.102 (Lambert identities involving $`S`$), page 56
+## Proposition 6.102 (Lambert identities involving $`S`$), page 55
 
 > *For $`L(f)=\sum_{n\ge1}f(n)/(2^n-1)`$, the identities are $`L(\mu)=1/2`$, $`L(\varphi)=2`$, $`L(1)=E`$ and $`L(\varphi*\mu)=S`$. The last identity rewrites the same unknown value; it does not deduce its irrationality from that of $`E`$. The value $`L(\mathrm{Id})=\sum_{m\ge1}\sigma(m)/2^m`$ is transcendental by Nesterenko \[nesterenko1996, Cor. 2, p. 1320\]. These examples show that Lambert-series form alone does not determine arithmetic status. The individual comparisons are in Proposition 6.43 and its table.*
 
@@ -1831,7 +1831,7 @@ def NesterenkoTranscendenceP : Prop :=
 
 <a id="prop-d9-inv"></a>
 
-## Proposition 6.103 (A general rational gap bound), page 57
+## Proposition 6.103 (A general rational gap bound), page 56
 
 > *If $`a/b<c/d`$ are reduced fractions with $`b,d>0`$, then
 > ``` math

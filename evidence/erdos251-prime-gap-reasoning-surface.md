@@ -1,6 +1,6 @@
 # Formal evidence: Prime-Gap Dyadic Series:\\Perturbations, Exact Criteria and Certificates
 
-This record belongs to the paper [erdos251-prime-gap-reasoning-surface.pdf](../paper/251/erdos251-prime-gap-reasoning-surface.pdf). For every result it lists the Lean declarations that state it, and the recorded Comparator check where there is one. The inline links and margin marks in the paper use the same result mapping.
+This record belongs to the paper [erdos251-prime-gap-reasoning-surface.pdf](../paper/251/erdos251-prime-gap-reasoning-surface.pdf). For every result it lists the Lean declarations that state it, and the recorded Comparator check where there is one. The paper's verification concordance uses this result mapping.
 
 - **Lean.** Every declaration is quoted from [plectis-erdos](https://github.com/wcook04/plectis-erdos) at commit [`436f55ebdafa`](https://github.com/wcook04/plectis-erdos/tree/436f55ebdafa67e4af0fff79f621c13f2ded12bf) and is checked there by Lean's kernel (`leanprover/lean4:v4.29.1`, Mathlib `5e932f97dd25`).
 - **Comparator.** For a compared result, each declaration was stated a second time, from Mathlib alone, as a *Challenge* in [plectis-erdos-lean](https://github.com/wcook04/plectis-erdos-lean), and a *Solution* that uses our proof was checked against it by [Comparator](https://github.com/leanprover/comparator), which also confirms that only the axioms `propext`, `Quot.sound`, `Classical.choice` are used. All checks below come from replay run [35935225572](https://github.com/wcook04/plectis-erdos-lean/actions/runs/35935225572) at corpus commit [`cc7e541cf208`](https://github.com/wcook04/plectis-erdos-lean/tree/cc7e541cf2081c6fef5a5e377d52e365e33b01eb) (tag `paper-evidence-2026-09-24`); both the default Lean kernel and the independent `nanoda` kernel accepted every entry. The replay's own report for each entry is kept in this repository and linked from each check. A Challenge shows `sorry` because it states the target without proving it.
@@ -663,7 +663,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 > ``` math
 > 2sA-Q>2B,\qquad Q-sA>B,
 > ```
-> then $`1/2<sD_N<1`$, $`|D_{N+1}|<1`$, and both $`D_N,D_{N+1}`$ are nonintegral. In particular the adjacent small-shift obstruction is certified from just one tail enclosure.*
+> then $`1/2<sD_N<1`$, $`|D_{N+1}|<1`$, and both $`D_N,D_{N+1}`$ are nonintegral. In particular, the two small-difference conditions are certified from just one tail enclosure.*
 
 The Lean declaration below states this result.
 
@@ -724,7 +724,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long251-res-cfexclusion"></a>
 
-## Theorem 7.2 (certified continued-fraction exclusion), page 19
+## Theorem 7.2 (certified continued-fraction exclusion), page 20
 
 > *Every rational equal to $`\Pi`$, and hence every rational equal to $`S`$, has reduced denominator $`q\ge2^{39997}`$, and therefore $`q>10^{12040}`$.*
 
@@ -805,7 +805,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long251-res-nonconcentration"></a>
 
-## Theorem 8.3 (nonconcentration is perturbation-stable), page 22
+## Theorem 8.3 (nonconcentration is perturbation-stable), page 23
 
 > *Let $`a:\mathbb{N}\to\mathbb{Z}`$ have fixed-block nonconcentration, let $`E\subset\mathbb{Z}`$ be finite, and let $`b_n=a_n+e_n`$ with $`e_n\in E`$ for every $`n`$. Then $`b`$ has fixed-block nonconcentration.*
 
@@ -923,7 +923,7 @@ def SchlagePuchtaLemma4 : Prop :=
 
 <a id="long251-res-sparse-nonconcentration"></a>
 
-## Proposition 8.5 (nonconcentration under sparse changes), page 23
+## Proposition 8.5 (nonconcentration under sparse changes), page 24
 
 > *Let $`a,b:\mathbb{N}\to\mathbb{Z}`$ agree off a set $`S`$ of ordinary density zero. If $`a`$ has fixed-block nonconcentration, then so does $`b`$. No boundedness assumption on $`a-b`$ is needed.*
 
@@ -1129,7 +1129,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long251-res-polynomialcountermodel"></a>
 
-## Proposition 8.9 (a quadratic sequence with integral tails), page 28
+## Proposition 8.9 (a quadratic sequence with integral tails), page 29
 
 > *Put $`c_n=2(n^2+4n+2)`$ and $`U_n=2(n+4)^2`$. Then $`c_n`$ is positive, even and strictly increasing, $`U_{n+1}=2U_n-c_{n+1}`$, every shift $`U_{N+h}-U_N`$ is integral, $`c_{n+1}-c_n=4n+10`$ is never $`\pm2`$, and
 > ``` math

@@ -9,7 +9,7 @@ what a reader meets:
 
 * paper/evidence/<paper>.tex  one \\DeclareResultEvidence line per result with a Lean
                               proof, read by paper/paper-evidence.tex, which places the
-                              "Lean" and "Comparator" links in the margin beside it;
+                              "Lean" and "Comparator" links beside its heading;
 * evidence/<paper>.md         the paper's evidence record: for every result, the Lean
                               declarations that state it (with their statements), how they
                               relate to the printed statement, and the Comparator check;
@@ -1053,8 +1053,19 @@ def record_url(record_commit: str, record: str, anchor: str) -> str:
 
 
 # A record larger than this is split into one file per section of the paper, so that each
-# page the margin marks open stays quick to load and within what GitHub renders.
+# page the result links open stays quick to load and within what GitHub renders.
 SPLIT_BYTES = 300_000
+
+
+def concordance_name(result: dict) -> str:
+    """Use the printed statement's type, never an inherited LaTeX counter."""
+    if result.get('number'):
+        return f"{result['printed_kind']} {result['number']}"
+    heading = re.match(r'\*(Remark|Theorem|Proposition|Lemma|Corollary)\s+([\d.]+)\*',
+                       result.get('statement_markdown') or '')
+    if heading:
+        return f"{heading.group(1)} {heading.group(2)}" + (f", p. {result['page']}" if result.get('page') else '')
+    return f"Passage, p. {result['page']}" if result.get('page') else 'Passage'
 
 
 def render_sidecar(evidence: dict, paper: dict, record_commit: str) -> str:
@@ -1066,6 +1077,7 @@ def render_sidecar(evidence: dict, paper: dict, record_commit: str) -> str:
     ]
     for r in paper["results"]:
         record = record_url(record_commit, r.get("record") or f"{RECORD_DIR}/{pid}.md", r["anchor"])
+        lines.append(f"\\DeclareResultEvidenceName{{{r['label']}}}{{{concordance_name(r)}}}")
         lines.append(f"\\DeclareResultEvidenceRecord{{{r['label']}}}{{{tex_url(record)}}}"
                      f"{{{r['lean']['status']}}}{{{r['comparator']['status']}}}")
         mark = r["lean"]["mark"]
@@ -1114,7 +1126,7 @@ def record_header(evidence: dict, paper: dict, title: str, pdf_path: str, up: st
         "",
         f"This record belongs to the paper [{Path(pdf_path).name}]({up}{pdf_path}). For every result it lists "
         "the Lean declarations that state it, and the recorded Comparator check where there is one. "
-        "The inline links and margin marks in the paper use the same result mapping.",
+        "The paper's verification concordance uses this result mapping.",
         "",
         f"- **Lean.** Every declaration is quoted from [plectis-erdos]({REPO_URL}) at commit "
         f"[`{pin[:12]}`]({REPO_URL}/tree/{pin}) and is checked there by Lean's kernel "

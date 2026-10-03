@@ -284,17 +284,6 @@ Membership of \(1/21\) & Open; finite obstruction and exact frontier & Finite su
 \end{tabular}
 \end{table}
 
-\paragraph{What ``Lean-checked'' means here.}
-A \emph{proof term} is a formal expression that Lean's kernel accepts as a
-proof.  Here a linked theorem is ``Lean-checked'' when such a term is accepted
-from the fixed source revision and dependencies.  An exact equivalence remains
-an equivalence even when both sides are open.  A finite calculation remains
-finite.  A theorem with a rationality hypothesis does not prove that a rational
-support exists.
-The manuscript, its link checker, and its generated indexes help a reader find
-the proof but are not themselves proof authority.  Section~\ref{sec:verify}
-states how the fixed source revision and trusted dependencies are checked.
-
 \paragraph{Reading map.}
 For a first pass, read the list of theorems above, then
 Sections~\ref{sec:eb} and~\ref{sec:249}, which contain the results that stand
@@ -3764,8 +3753,16 @@ producer inside the same integration manuscript.
 
 \section{Formal verification and reproducibility}\label{sec:verify}
 
-\noindent This section records proof authority and reproducibility; it does
-not add a mathematical conclusion to either reduction.
+\noindent This section records proof authority and reproducibility.
+
+\paragraph{What ``Lean-checked'' means here.}
+A \emph{proof term} is a formal expression that Lean's kernel accepts as a
+proof. Here a linked theorem is ``Lean-checked'' when such a term is accepted
+from the fixed source revision and dependencies. An exact equivalence remains
+an equivalence even when both sides are open. A finite calculation remains
+finite. A theorem with a rationality hypothesis does not prove that a rational
+support exists. The manuscript, its link checker and generated indexes help
+a reader find a proof; the proof term supplies the formal authority.
 
 \paragraph{Proof authority and source identity.}
 The pinned Lean~4 toolchain and Mathlib revision check the named results.

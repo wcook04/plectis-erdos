@@ -1,6 +1,6 @@
 # Formal evidence: Paths in Polynomial Lemniscates:\\A Degree-Seven Counterexample\\and Radial Connections
 
-This record belongs to the paper [erdos-1041-lemniscate-newton-flow.pdf](../paper/1041/erdos-1041-lemniscate-newton-flow.pdf). For every result it lists the Lean declarations that state it, and the recorded Comparator check where there is one. The inline links and margin marks in the paper use the same result mapping.
+This record belongs to the paper [erdos-1041-lemniscate-newton-flow.pdf](../paper/1041/erdos-1041-lemniscate-newton-flow.pdf). For every result it lists the Lean declarations that state it, and the recorded Comparator check where there is one. The paper's verification concordance uses this result mapping.
 
 - **Lean.** Every declaration is quoted from [plectis-erdos](https://github.com/wcook04/plectis-erdos) at commit [`436f55ebdafa`](https://github.com/wcook04/plectis-erdos/tree/436f55ebdafa67e4af0fff79f621c13f2ded12bf) and is checked there by Lean's kernel (`leanprover/lean4:v4.29.1`, Mathlib `5e932f97dd25`).
 - **Comparator.** For a compared result, each declaration was stated a second time, from Mathlib alone, as a *Challenge* in [plectis-erdos-lean](https://github.com/wcook04/plectis-erdos-lean), and a *Solution* that uses our proof was checked against it by [Comparator](https://github.com/leanprover/comparator), which also confirms that only the axioms `propext`, `Quot.sound`, `Classical.choice` are used. All checks below come from replay run [35935225572](https://github.com/wcook04/plectis-erdos-lean/actions/runs/35935225572) at corpus commit [`cc7e541cf208`](https://github.com/wcook04/plectis-erdos-lean/tree/cc7e541cf2081c6fef5a5e377d52e365e33b01eb) (tag `paper-evidence-2026-09-24`); both the default Lean kernel and the independent `nanoda` kernel accepted every entry. The replay's own report for each entry is kept in this repository and linked from each check. A Challenge shows `sorry` because it states the target without proving it.
@@ -156,7 +156,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 > ``` math
 > f_r(z)=z^6+\tfrac15 r^2 z^4-\tfrac15 r^4 z^2-r^6
 > ```
-> lies in the open unit disc, yet the radial spoke from the origin to the zero $`r`$ leaves $`\{|f_r|<1\}`$.*
+> lies in the open unit disc, yet the radial segment from the origin to the zero $`r`$ leaves $`\{|f_r|<1\}`$.*
 
 The Lean declaration below states this result or one that implies it. The Lean statement finds a point $tr$ of the spoke, $0<t<1$, with $|f_r(tr)|>1$, so the spoke leaves even the closed set $\{|f_r|\le1\}$; the printed statement needs only a point with $|f_r|\ge1$.
 
@@ -189,7 +189,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="res-scaled-low-critical"></a>
 
-## Passage (beginning “res:scaled-low-critical…”), page 7
+## Passage (beginning “res:scaled-low-critical…”), page 8
 
 The Lean proof assumes Theorem 4.1 as stated. Lean takes this input as a hypothesis (`LowCriticalThirteenTwentyFifths`); it is not proved in Lean.
 
@@ -241,7 +241,7 @@ def LowCriticalThirteenTwentyFifths : Prop :=
 
 <a id="res-critical-value-separation"></a>
 
-## Passage (beginning “res:critical-value-separation…”), page 9
+## Passage (beginning “res:critical-value-separation…”), page 10
 
 The Lean proof assumes the connector and area construction that this proof produces. Lean takes this input as a hypothesis (`DiscSepBergmanArea`); it is not proved in Lean.
 

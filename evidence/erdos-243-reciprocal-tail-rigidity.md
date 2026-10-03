@@ -1,6 +1,6 @@
 # Formal evidence: Reciprocal Sums and the Sylvester Recurrence
 
-This record belongs to the paper [erdos-243-reciprocal-tail-rigidity.pdf](../paper/243/erdos-243-reciprocal-tail-rigidity.pdf). For every result it lists the Lean declarations that state it, and the recorded Comparator check where there is one. The inline links and margin marks in the paper use the same result mapping.
+This record belongs to the paper [erdos-243-reciprocal-tail-rigidity.pdf](../paper/243/erdos-243-reciprocal-tail-rigidity.pdf). For every result it lists the Lean declarations that state it, and the recorded Comparator check where there is one. The paper's verification concordance uses this result mapping.
 
 - **Lean.** Every declaration is quoted from [plectis-erdos](https://github.com/wcook04/plectis-erdos) at commit [`436f55ebdafa`](https://github.com/wcook04/plectis-erdos/tree/436f55ebdafa67e4af0fff79f621c13f2ded12bf) and is checked there by Lean's kernel (`leanprover/lean4:v4.29.1`, Mathlib `5e932f97dd25`).
 - **Comparator.** For a compared result, each declaration was stated a second time, from Mathlib alone, as a *Challenge* in [plectis-erdos-lean](https://github.com/wcook04/plectis-erdos-lean), and a *Solution* that uses our proof was checked against it by [Comparator](https://github.com/leanprover/comparator), which also confirms that only the axioms `propext`, `Quot.sound`, `Classical.choice` are used. All checks below come from replay run [35935225572](https://github.com/wcook04/plectis-erdos-lean/actions/runs/35935225572) at corpus commit [`cc7e541cf208`](https://github.com/wcook04/plectis-erdos-lean/tree/cc7e541cf2081c6fef5a5e377d52e365e33b01eb) (tag `paper-evidence-2026-09-24`); both the default Lean kernel and the independent `nanoda` kernel accepted every entry. The replay's own report for each entry is kept in this repository and linked from each check. A Challenge shows `sorry` because it states the target without proving it.
@@ -46,7 +46,11 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 ## Proposition 3.1 (persistent coprimality), page 4
 
-> *In a reduced exact tail, $`\gcd(a_n,v_n)=1`$. Distinct multipliers are pairwise coprime, and every earlier multiplier is coprime to every later numerator.*
+> *Let $`a_n,u_n,v_n`$ be integer sequences with $`u_n>0`$, $`v_n\ge0`$ and $`\gcd(u_n,v_n)=1`$ satisfying
+> ``` math
+> u_{n+1}=a_nu_n-v_n,\qquad v_{n+1}=a_nv_n.
+> ```
+> Then $`\gcd(a_n,v_n)=1`$. The $`a_n`$ are pairwise coprime, and $`\gcd(a_i,u_t)=1`$ whenever $`i<t`$.*
 
 The Lean declaration below states this result.
 
@@ -121,7 +125,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 ## Proposition 4.2 (error identities), page 8
 
-> *<span id="res:defect" label="res:defect"></span> For an exact integer state,
+> *<span id="res:defect" label="res:defect"></span> For integer sequences satisfying (1),
 > ``` math
 > C_{n+1}=C_n-E_n,\qquad
 >  \bigl(a_{n+1}-a_n^2+a_n-1\bigr)C_{n+1}=a_n^2E_n-E_{n+1}.
@@ -153,7 +157,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 ## Theorem 4.3 (absorption and descent), page 9
 
-> *<span id="res:descent" label="res:descent"></span> For a positive exact state with strict centring, $`E_n=0`$ implies $`E_{n+1}=0`$. For any positive integer state with $`C_{n+1}=C_n-E_n`$, eventual nonnegativity of $`E_n`$ implies its eventual vanishing.*
+> *<span id="res:descent" label="res:descent"></span> Let $`a,C,D:\mathbb{N}\to\mathbb{N}`$ satisfy $`a_n>1`$, $`C_n>0`$ and (1). If $`|E_n|<C_n`$ for every $`n`$, then $`E_n=0`$ implies $`E_{n+1}=0`$. For any positive integer sequence $`C_n`$ with $`C_{n+1}=C_n-E_n`$, eventual nonnegativity of $`E_n`$ implies its eventual vanishing.*
 
 The Lean declaration below states this result.
 
@@ -187,7 +191,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 ## Corollary 4.4 (two zero errors), page 9
 
-> *<span id="res:eventual" label="res:eventual"></span> If $`E_n=E_{n+1}=0`$ and $`C_{n+1}\ne0`$, then $`a_{n+1}=a_n^2-a_n+1`$. Thus eventual zero error in a positive exact state implies the eventual Sylvester recurrence.*
+> *<span id="res:eventual" label="res:eventual"></span> For integer sequences satisfying (1), if $`E_n=E_{n+1}=0`$ and $`C_{n+1}\ne0`$, then $`a_{n+1}=a_n^2-a_n+1`$. In particular, if $`a,C,D:\mathbb{N}\to\mathbb{N}`$ also satisfy $`a_n>1`$ and $`C_n>0`$, eventual zero error implies the eventual Sylvester recurrence.*
 
 The Lean declarations below together state this result.
 
@@ -231,7 +235,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 ## Proposition 4.5 (gcd stabilisation), page 9
 
-> *For a positive exact state, suppose that some fixed integer $`B\ge1`$ satisfies $`-B\le E_n<0`$ at infinitely many indices. Then $`G_n=\gcd(C_n,D_n)`$ is eventually constant. Division by its stable value gives a reduced exact tail.*
+> *Let $`a,C,D:\mathbb{N}\to\mathbb{N}`$ satisfy $`a_n>1`$, $`C_n>0`$ and (1). If some fixed integer $`B\ge1`$ satisfies $`-B\le E_n<0`$ at infinitely many indices, then $`G_n=\gcd(C_n,D_n)`$ is eventually constant. Dividing $`C_n,D_n`$ by its eventual value gives coprime sequences satisfying the same recurrences.*
 
 The Lean declaration below states this result.
 
@@ -265,7 +269,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="res-crt"></a>
 
-## Lemma 4.6 (consecutive multiples), page 9
+## Lemma 4.6 (consecutive multiples), page 10
 
 > *For pairwise coprime integers $`m_0,\ldots,m_{B-1}\ge2`$ and every lower bound, there is a larger $`t`$ such that $`m_i\mid t+i`$ for each $`i<B`$.*
 
@@ -295,7 +299,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="res-barrier"></a>
 
-## Theorem 4.7 (Chinese remainder theorem and first crossing), page 9
+## Theorem 4.7 (Chinese remainder theorem and first crossing), page 10
 
 > *Let $`u:\mathbb{N}\to\mathbb{N}`$ tend to infinity and let $`B\ge1`$ be an integer with $`u_{n+1}\le u_n+B`$ for every $`n`$. There is no sequence of pairwise coprime integers $`m_i\ge2`$ for which $`\gcd(m_i,u_t)=1`$ whenever $`i<t`$.*
 
@@ -656,7 +660,7 @@ theorem real_lowerDensityZero_iff_exists_admissible_real_weight
 
 ## Theorem A.2 (factorial residue reduction), page 18
 
-> *For all $`h`$ and all integers $`a\equiv b \pmod{(h+1)!}`$, the orbit from $`a`$ survives $`h`$ forced updates exactly when the orbit from $`b`$ does.*
+> *Let $`h`$ be a nonnegative integer and let $`a,b`$ be integers with $`a\equiv b\pmod{(h+1)!}`$. The first $`h`$ steps of the recursion $`a_{n+1}=\operatorname{num}(n,a_n)/(n+2)`$, starting at index zero, are integral for $`a_0=a`$ if and only if they are integral for $`a_0=b`$.*
 
 The Lean declaration below states this result.
 

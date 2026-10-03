@@ -1,0 +1,115 @@
+{
+  "schema": "r9-reviewed-exposition-integration/1",
+  "source_base": "a4196f2e566ecf6677920c038ec641e5a2ceb9e2",
+  "returns": [
+    {
+      "id": "short-20261001-r9-exposition",
+      "problem": "exposition",
+      "archive_name": "exposition_guides_r9_final_20261001.zip",
+      "archive_sha256": "d2c9b1e7cbdf4cf70e308d549ef684deee9529518177ba73b52b1bc6496dbb0c",
+      "native_status": "source_reviewed_selective_integration"
+    },
+    {
+      "id": "short-20261001-r9-systems",
+      "problem": "systems",
+      "archive_name": "systems_short_refinement_r9_return_20261001.zip",
+      "archive_sha256": "4ff0ae49f65ec7a08c5fec6a2a49da7582991da8faa69d023eaaade14a3b2021",
+      "native_status": "source_reviewed_selective_integration"
+    },
+    {
+      "id": "short-20261001-r9-1049",
+      "problem": "1049",
+      "archive_name": "erdos1049_short_refinement_r10_20261001.zip",
+      "archive_sha256": "e75e79cf1d12fb4ba9d401d3b010276aa3bc02f496eb6c61f63990d3b5a0f30e",
+      "native_status": "source_reviewed_selective_integration",
+      "filename_boundary": "R10 filename; RETURN.json identifies the frozen R9 assignment."
+    },
+    {
+      "id": "short-20261001-r9-1041",
+      "problem": "1041",
+      "archive_name": "erdos1041_r9_complete_return_20261001.zip",
+      "archive_sha256": "927ed10a093949c55bd86f57377ed2cf97c6b1d00c9a25213dfcfa4e8527fe8f",
+      "native_status": "source_reviewed_selective_integration"
+    },
+    {
+      "id": "short-20261001-r9-269",
+      "problem": "269",
+      "archive_name": "erdos269_short_refinement_r9_return_20261001.zip",
+      "archive_sha256": "06d23009211a8b43ace73483fd502cc9783d095294c5961a0713c06607a6fd2e",
+      "native_status": "source_reviewed_selective_integration"
+    },
+    {
+      "id": "short-20261001-r9-257",
+      "problem": "257",
+      "archive_name": "erdos257_r9_recovered_work.zip",
+      "archive_sha256": "0515b945a88c4b8d8b73b4bff34a3dfc6a1f566b4b1e9431bdae02bcc0f6f29c",
+      "native_status": "recovery_only_no_revised_manuscript"
+    },
+    {
+      "id": "short-20261001-r9-251",
+      "problem": "251",
+      "archive_name": "erdos251_short_refinement_r9_20261001_return.zip",
+      "archive_sha256": "da8ca0bd104de31211de1af61c04bd028dfe18ab88afe53c07d95eb2d5241988",
+      "native_status": "source_reviewed_selective_integration"
+    },
+    {
+      "id": "short-20261001-r9-249",
+      "problem": "249",
+      "archive_name": "erdos249_r9_return.zip",
+      "archive_sha256": "42dcdede77788415cd5f4fcbb49edcc2c21d1ae63eb3cf3dd2333bc217be961f",
+      "native_status": "source_reviewed_selective_integration"
+    },
+    {
+      "id": "short-20261001-r9-243",
+      "problem": "243",
+      "archive_name": "erdos243_short_refinement_r9_return_20261001.zip",
+      "archive_sha256": "354bf67948387b086fe2e70ed846f2cc91a2ff39ee0d9a6c3b971fde9d5b251b",
+      "native_status": "source_reviewed_selective_integration"
+    },
+    {
+      "id": "short-20261001-r9-68",
+      "problem": "68",
+      "archive_name": "erdos68_r9_exposition_return_20261001.zip",
+      "archive_sha256": "b4325a14be4f07bf17f84dfd8f3c8525020e5fe596ced03fb050bef848fe53f1",
+      "native_status": "source_reviewed_selective_integration"
+    },
+    {
+      "id": "short-20261001-r9-257-correction",
+      "problem": "257",
+      "archive_name": "erdos257_r9_final_return.zip",
+      "archive_sha256": "e7753cd734ee6a281ceae947a8b75b23dc8ef8a0bc14d0646317858af8e3baf7",
+      "native_status": "source_reviewed_selective_integration",
+      "correction_of": "short-20261001-r9-257"
+    }
+  ],
+  "reviewed_cases": {
+    "1041": "Positive Bernstein weights carry coefficient bounds to each whole segment. Local invertibility requires properness and a simply connected target before global inversion. Ordinary and named-input proofs stay distinct.",
+    "1049": "Approximation parameters are justified by the needed smallness and coefficient cost. An all-base nondecay conclusion is kept distinct from a one-base comparison.",
+    "251": "Fixed support-window counts precede the density-zero conclusion. Exact signed enclosures distinguish positive exclusion from inconclusive tests.",
+    "269": "Residue exclusion names its precise integer interval and endpoints. Return times, phase displacements and approximation parameters have separate roles.",
+    "243": "The normalized ratio makes the convergent comparison product explicit. Integrality of an LCM numerator and reduction to lowest terms are separate. Availability prose preserves recorded coverage gaps.",
+    "249": "One substitution displays both coordinate recovery and relation reconstruction. Modular certificates and exact equality tests have separate conclusions.",
+    "systems": "Twenty returned units are integrated selectively. A proof-first opening and theorem-specific roadmap are rejected; architecture, task sequencing, persistent state, responsibilities and limits remain central. Diagram labels are adjusted in the rendered artifact.",
+    "exposition": "Twenty-two donor changes are integrated; Knuth passage locators and the compact-guide date are corrected. Worked cases define operations, distinguish one-sided tests, expose fixed-object limits and preserve genre.",
+    "68": "Local factorial-tail explanations accepted with statement, source, integrality and formal-status boundaries retained.",
+    "257": "Later real correction reviewed and selectively integrated; see B/review/257/ASSIMILATION.json. Earlier #257 recovery-only arrival remains a separate historical record. Proof and evidence classes are unchanged.",
+    "257-correction": "Later real correction reviewed and selectively integrated; see B/review/257/ASSIMILATION.json. Earlier #257 recovery-only arrival remains a separate historical record. Proof and evidence classes are unchanged.",
+    "257-recovery": "The recovery archive preserves only the original input and notes. Current manuscript pair retained; no fresh editorial output inferred."
+  },
+  "general_rule_disposition": "Refinements of E00/E02/E03/E07/E12 and scoped applications of existing families. Manuscript acceptance and rule adoption are separate decisions.",
+  "validation_state": "Source review and native rendering of all 23 publications in the publication contract completed. The current #257 correction is integrated; its earlier recovery-only archive remains historical custody. Immutable page-record links use the preserved evidence-record revision. Final native publication and release qualification is recorded for the resulting committed revision.",
+  "boundary": "Source-level editorial review, not independent human peer review, Lean compilation, Comparator replay, acceptance or a reader study.",
+  "current_return_ids": {
+    "exposition": "short-20261001-r9-exposition",
+    "systems": "short-20261001-r9-systems",
+    "1049": "short-20261001-r9-1049",
+    "1041": "short-20261001-r9-1041",
+    "269": "short-20261001-r9-269",
+    "257": "short-20261001-r9-257-correction",
+    "251": "short-20261001-r9-251",
+    "249": "short-20261001-r9-249",
+    "243": "short-20261001-r9-243",
+    "68": "short-20261001-r9-68"
+  },
+  "presentation_change": "One inline Lean/Comparator pair at each result heading; duplicate margin copies removed. Exact evidence targets and support classes are retained; native PDF fixtures check wrapped headings and reject duplicate or misplaced links."
+}

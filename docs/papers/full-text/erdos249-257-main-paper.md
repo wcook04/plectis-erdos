@@ -73,12 +73,6 @@ where $`X,Y\in\mathbb{N}_{>0}`$ are independent and $`\Pr(X=n)=\Pr(Y=n)=2^{-n}`$
 | Membership of $`1/2`$ | Open; exact reductions | Greedy and recurrence laws give exact equivalences without proving either event. |
 | Membership of $`1/21`$ | Open; finite obstruction and exact frontier | Finite support is impossible on ranks at least two; one permanent affine-supercapacity regime remains. |
 
-<a id="what-lean-checked-means-here."></a>
-
-#### What “Lean-checked” means here.
-
-A *proof term* is a formal expression that Lean’s kernel accepts as a proof. Here a linked theorem is “Lean-checked” when such a term is accepted from the fixed source revision and dependencies. An exact equivalence remains an equivalence even when both sides are open. A finite calculation remains finite. A theorem with a rationality hypothesis does not prove that a rational support exists. The manuscript, its link checker, and its generated indexes help a reader find the proof but are not themselves proof authority. Section <a href="#sec:verify" data-reference-type="ref" data-reference="sec:verify">8</a> states how the fixed source revision and trusted dependencies are checked.
-
 <a id="reading-map."></a>
 
 #### Reading map.
@@ -1197,7 +1191,13 @@ No row of this architecture changes the status of either Erdős problem. It does
 
 # Formal verification and reproducibility
 
-This section records proof authority and reproducibility; it does not add a mathematical conclusion to either reduction.
+This section records proof authority and reproducibility.
+
+<a id="what-lean-checked-means-here."></a>
+
+#### What “Lean-checked” means here.
+
+A *proof term* is a formal expression that Lean’s kernel accepts as a proof. Here a linked theorem is “Lean-checked” when such a term is accepted from the fixed source revision and dependencies. An exact equivalence remains an equivalence even when both sides are open. A finite calculation remains finite. A theorem with a rationality hypothesis does not prove that a rational support exists. The manuscript, its link checker and generated indexes help a reader find a proof; the proof term supplies the formal authority.
 
 <a id="proof-authority-and-source-identity."></a>
 

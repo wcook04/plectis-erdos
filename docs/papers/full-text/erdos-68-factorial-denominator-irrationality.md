@@ -57,7 +57,7 @@ and let
 ``` math
 \mathcal R(\lambda)=\sum_{d\ge2}\frac{V_d(\lambda)}{d!-1}.
 ```
-Choose $`N\ge2`$ beyond the support of $`\lambda`$. For $`d>N`$ the floor exponents are zero, so $`V_d=M`$ and the series converges absolutely. Only the first $`N-1`$ terms can differ from those of $`MS`$, and the weight congruence gives
+Here $`n`$ indexes the chosen coefficients, whereas $`d`$ indexes the summands of the remainder. If $`\lambda`$ is supported on $`n\le N`$, with $`N\ge2`$, then $`d>N`$ makes every floor exponent zero. Hence $`V_d=M`$ throughout this tail, and the series converges absolutely. Only the first $`N-1`$ terms can differ from those of $`MS`$; the weight congruence gives
 ``` math
 \begin{equation}
  \mathcal R(\lambda)-M(\lambda)S
@@ -82,7 +82,7 @@ The identity $`n(n-1)!-n!=0`$ suggests starting with $`T_n=ne_{n-1}-e_n`$. At $`
 For $`d>4`$ these weighted sums equal $`M=0`$. Thus $`U_4=T_4-6U_2`$ isolates $`V_4=4!-1`$. In general, the unwanted sums occur at proper divisors of $`n`$, whose correcting vectors are already available in an inductive construction.
 
 <div id="res:divisor-channel-coordinates" class="theorem">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos68/PaperCompleteDivisorCoordinates.lean#L260">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d93e7408aed0b0c73ad5ea98116c7dc0dce3cf7b/evidence/erdos-68-factorial-denominator-irrationality.md#res-divisor-channel-coordinates-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos68/PaperCompleteDivisorCoordinates.lean#L260">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/846d57d3f9926696332d782eb232aaf3cf803a99/evidence/erdos-68-factorial-denominator-irrationality.md#res-divisor-channel-coordinates-comparator">Comparator</a></p>
 
 **Theorem 2** (an integer basis with prescribed weighted sums). *Set
 ``` math
@@ -118,6 +118,8 @@ For completeness, restrict to indices $`1,\ldots,N`$. The columns $`e_1,T_2,\ldo
 In the resulting expansion, applying $`M`$ gives the coefficient of $`e_1`$. If the coefficient of $`U_d`$ is $`c_d`$, applying $`V_d`$ gives $`V_d=M+(d!-1)c_d`$, which proves <a href="#eq:channel-basis-expansion" data-reference-type="eqref" data-reference="eq:channel-basis-expansion">[eq:channel-basis-expansion]</a>. For $`d>N`$ that coefficient is zero because $`V_d=M`$. ◻
 
 </div>
+
+The $`U_d`$-coordinates in <a href="#eq:channel-basis-expansion" data-reference-type="eqref" data-reference="eq:channel-basis-expansion">[eq:channel-basis-expansion]</a> are exactly the integer summands in <a href="#eq:integer-linear-form" data-reference-type="eqref" data-reference="eq:integer-linear-form">[eq:integer-linear-form]</a>. Their sum is therefore $`k`$ in $`\mathcal R=MS+k`$. The same coordinates describe both the vector and its linear form.
 
 For a prime $`p\ge3`$ the divisor sum is empty, and $`U_p=pe_{p-1}-e_p`$. At a composite index the correction terms remove the extra weighted sums. For example,
 ``` math
@@ -165,6 +167,7 @@ with $`t\in\mathbb Z`$ and finitely many nonzero integers $`z_n`$. The lower coo
  \label{eq:residual-transparency}
 \end{equation}
 ```
+Since $`M=tL_D`$ clears the denominators of $`H_D`$, the integer in $`\mathcal R=MS+k`$ is $`k=-MH_D+\sum_{n>D}z_n`$. Thus the sum of the free coordinates is the offset from $`M(S-H_D)`$, not from $`MS`$.
 
 It remains to remove index one. Write $`a_D`$ for its coefficient in $`K_D`$, and $`u_n`$ for its coefficient in $`U_n`$. All other coordinates already lie in the permitted range $`n\ge2`$, so the only remaining equation is
 ``` math
@@ -194,12 +197,12 @@ The recursion for the first coordinate is
 u_2=2,\qquad
  u_n=-\sum_{\substack{d\mid n\\2\le d<n}}W_{d,n}u_d\quad(n>2).
 ```
-Induction gives $`u_n=0`$ at odd indices. At twice a prime it gives $`u_{2p}=-(2p)!/2^{p-1}\ne0`$, including $`p=2`$, so the tail contains a nonzero coefficient and $`g_D>0`$. To compute this infinite gcd, we show that a specified finite interval already forces divisibility of every later coefficient.
+Induction gives $`u_n=0`$ at odd indices. At twice a prime it gives $`u_{2p}=-(2p)!/2^{p-1}\ne0`$, including $`p=2`$, so $`g_D>0`$. This nonzero coefficient also tells us how to make the calculation finite. Choose a prime $`\ell`$ with $`D/2<\ell\le D`$. Any gcd computed on an initial interval of the tail containing $`2\ell`$ must divide $`(2\ell)!`$. We use that factorial to control the later terms of the recurrence.
 
-The induction has two cases. For a proper divisor $`d>D`$, divisibility comes from the earlier coefficient $`u_d`$. For $`d\le D`$, it must instead come from the weight $`W_{d,n}`$. The following cutoff makes the second argument work for every such $`d`$.
+For a proper divisor $`d>D`$, divisibility by the finite gcd comes from the earlier coefficient $`u_d`$. For $`d\le D`$, we instead make the weight $`W_{d,n}`$ divisible by $`(2\ell)!`$. The proof obtains this from $`n/d\ge2\ell`$; the cutoff below is chosen to ensure that inequality for every small divisor.
 
 <div id="res:finite-channel-moment-certificate" class="theorem">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/d93e7408aed0b0c73ad5ea98116c7dc0dce3cf7b/evidence/erdos-68-factorial-denominator-irrationality.md#res-finite-channel-moment-certificate">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/d93e7408aed0b0c73ad5ea98116c7dc0dce3cf7b/evidence/erdos-68-factorial-denominator-irrationality.md#res-finite-channel-moment-certificate-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/846d57d3f9926696332d782eb232aaf3cf803a99/evidence/erdos-68-factorial-denominator-irrationality.md#res-finite-channel-moment-certificate">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/846d57d3f9926696332d782eb232aaf3cf803a99/evidence/erdos-68-factorial-denominator-irrationality.md#res-finite-channel-moment-certificate-comparator">Comparator</a></p>
 
 **Theorem 3** (a finite formula for the gcd). *Choose a prime $`\ell`$ with $`D/2<\ell\le D`$ and put $`H=D(2\ell-1)`$. Then
 ``` math
@@ -222,7 +225,7 @@ Thus $`g`$ divides the whole tail. Conversely, every common divisor of the tail 
 
 </div>
 
-Bertrand’s postulate supplies the prime $`\ell`$ when $`D\ge3`$; for $`D=2`$ take $`\ell=2`$. The proof requires $`n/d\ge2\ell`$ for every small divisor, which is why it uses the cutoff $`H=D(2\ell-1)`$. A truncation at $`2D`$ is not justified by this argument.
+Bertrand’s postulate supplies the prime $`\ell`$ when $`D\ge3`$; for $`D=2`$ take $`\ell=2`$. Merely including the nonzero coefficient at $`2\ell`$ is not enough: the cutoff must also control every later small-divisor weight. A truncation at $`2D`$ is not justified by this argument.
 
 The finite gcd also gives a construction. Compute integers $`b_n`$ with $`\sum_{n=D+1}^H b_nu_n=g_D`$ by the extended Euclidean algorithm, and put $`h=\gcd(g_D,a_D)`$. Taking
 ``` math
@@ -343,9 +346,9 @@ Table <a href="#tab:depth-four" data-reference-type="ref" data-reference="tab:d
 
 </div>
 
-The coordinates already give $`M=1380`$ and the three cancellations. They also determine the integer term in <a href="#eq:residual-transparency" data-reference-type="eqref" data-reference="eq:residual-transparency">[eq:residual-transparency]</a>, namely $`-26-27+8+1=-44`$. Thus
+The coordinates give $`M=1380`$, the three cancellations, and the offset $`-26-27+8+1=-44`$ in <a href="#eq:residual-transparency" data-reference-type="eqref" data-reference="eq:residual-transparency">[eq:residual-transparency]</a>. Since $`H_4=143/115`$, the original linear form is
 ``` math
-\mathcal R(\lambda)=1380(S-H_4)-44.
+\mathcal R(\lambda)=1380(S-H_4)-44=1380S-1760.
 ```
 For the remainder estimate, the inequality $`(n+1)!-1>(n+1)(n!-1)`$ gives the geometric bound
 ``` math
@@ -386,13 +389,13 @@ The remainder lies above $`A_N`$. To place it below the next integer, it is enou
  \label{eq:signed-block-gap}
 \end{equation}
 ```
-Indeed, the positive tail and this comparison give $`\lfloor A_N\rfloor<\mathcal R(\lambda)<\lfloor A_N\rfloor+1`$, excluding every denominator dividing $`M`$. The argument allows either sign of $`A_N`$. Its strict gap is one when $`A_N`$ is integral and can be arbitrarily small when $`A_N`$ approaches an integer from below.
+Indeed, the positive tail and this comparison give $`\lfloor A_N\rfloor<\mathcal R(\lambda)<\lfloor A_N\rfloor+1`$, excluding every denominator dividing $`M`$. Failure of this sufficient comparison is inconclusive. Either sign of $`A_N`$ is allowed: its strict gap is one when $`A_N`$ is integral and can be arbitrarily small when $`A_N`$ approaches an integer from below.
 
-There are primitive solutions with $`0<M<N!`$ for which $`M`$ is eventually divisible by any prescribed $`q`$. The [progression construction in the companion](../../../paper/68/erdos68-factorial-reasoning-surface.pdf#nameddest=r5-progression) gives such a family by turning $`V_d=0`$ into roots of a polynomial. At its support endpoint the omitted tail is less than $`2/N`$, but the gap on the right of <a href="#eq:signed-block-gap" data-reference-type="eqref" data-reference="eq:signed-block-gap">[eq:signed-block-gap]</a> may shrink too. For each prescribed $`q`$, an irrationality proof requires a vector satisfying both this comparison and $`q\mid M`$. Unboundedness of $`M`$ alone does not suffice. No minimal-support assertion is made for this family.
+First keep the vector fixed and increase only the cutoff. The vector $`-6e_2+e_4`$ has $`M=12`$. At $`N=4`$, its finite part $`A_4=-239/115`$ lies just below $`-2`$, and its gap $`9/115`$ is smaller than the bound $`24/119`$. At $`N=5`$, the finite part $`A_5=-27061/13685`$ has crossed $`-2`$: the next integer is now $`-1`$, and the gap $`13376/13685`$ exceeds $`24/719`$. More generally, for a fixed vector with $`M>0`$, the quantities $`A_N`$ increase to $`\mathcal R`$. If this limit is nonintegral, their gaps to the next integer tend to a positive number, so the test eventually succeeds. If the limit is integral, the eventual gap equals the omitted tail and the test fails. Extending the cutoff therefore eventually detects a nonintegral remainder, but leaves both that remainder and the set of divisors of $`M`$ unchanged.
 
-Increasing the cutoff is a different operation from choosing a new vector. For $`-6e_2+e_4`$ the support ends at four, where the test fails because $`9/115<24/119`$. At $`N=5`$ it succeeds because $`13376/13685>24/719`$. More generally, for a fixed vector with $`M>0`$, the quantities $`A_N`$ increase to $`\mathcal R`$. If this limit is nonintegral, their gaps to the next integer tend to a positive number, so the test eventually succeeds. If the limit is integral, the eventual gap equals the omitted tail and the test fails. Thus extending the cutoff eventually detects a nonintegral remainder, but leaves both the remainder and $`M`$ unchanged.
+Changing coefficients while preserving $`M`$ also leaves integrality unchanged. By <a href="#eq:integer-linear-form" data-reference-type="eqref" data-reference="eq:integer-linear-form">[eq:integer-linear-form]</a>, the remainders of two such vectors differ by an integer. Adding multiples of the $`U_n`$ can simplify the support and weighted sums, as in the example; it cannot turn an integral remainder into a nonintegral one.
 
-Nor can a change of coefficients preserving $`M`$ decide nonintegrality. By <a href="#eq:integer-linear-form" data-reference-type="eqref" data-reference="eq:integer-linear-form">[eq:integer-linear-form]</a>, the remainders of two vectors with the same value of $`M`$ differ by an integer. Adding multiples of the $`U_n`$ can therefore simplify the support and weighted sums, as in the example, without changing whether the remainder is integral.
+To exclude every possible denominator, we must instead choose vectors whose values of $`M`$ have the required divisibility. There are primitive solutions with $`0<M<N!`$ for which $`M`$ is eventually divisible by any prescribed $`q`$. The [progression construction in the companion](../../../paper/68/erdos68-factorial-reasoning-surface.pdf#nameddest=r5-progression) gives such a family by turning $`V_d=0`$ into roots of a polynomial. At its support endpoint the omitted tail is less than $`2/N`$, but the gap on the right of <a href="#eq:signed-block-gap" data-reference-type="eqref" data-reference="eq:signed-block-gap">[eq:signed-block-gap]</a> may shrink too. To prove irrationality by this test, for each $`q>0`$ we need one vector with $`q\mid M`$ and a cutoff for which <a href="#eq:signed-block-gap" data-reference-type="eqref" data-reference="eq:signed-block-gap">[eq:signed-block-gap]</a> holds. Divisibility and a small tail do not by themselves establish that comparison. No minimal-support assertion is made for this family.
 
 The companion treats the [equivalent carry condition](../../../paper/68/erdos68-factorial-reasoning-surface.pdf#nameddest=r5-carry) and the [complementary-denominator tail inequality](../../../paper/68/erdos68-factorial-reasoning-surface.pdf#nameddest=r5-complement). It also records two larger finite computations: a non-unit carry at $`m=300000`$ excludes every $`q\mid299999!`$, and a continued-fraction enclosure excludes every $`q<2^{39990}`$. Both computations were performed outside Lean; their [algorithms, exact outputs and scope](../../../paper/68/erdos68-factorial-reasoning-surface.pdf#nameddest=r12-finite) are given there. The factorial-divisibility exclusion does not exclude all denominators with only small prime factors, whose exponents may be larger. Neither finite restriction establishes the required condition at arbitrarily large indices.
 
@@ -400,7 +403,7 @@ The companion treats the [equivalent carry condition](../../../paper/68/erdos68-
 
 # Verification
 
-*Formal proofs.* A result with a kernel-checked Lean proof carries links beside its heading and in the margin; both open the same evidence. *Lean* opens the proof: the declaration itself when one declaration states the whole result, otherwise the list of declarations that together state it. Inline citations to individual declarations elsewhere may identify ingredients of a proof. *Comparator* opens the recorded comparison, in which the same statement, written again from Mathlib alone in a separate repository, was compared with our proof by Lean’s Comparator tool, allowing only the three standard axioms. *Comparator pending* means that the complete statement has no recorded comparison yet. A dagger on the Lean mark means that the Lean proof assumes an input named just below the result. A result without a mark has no Lean proof of its whole statement; what is checked is said below it. The [evidence record](https://github.com/wcook04/plectis-erdos/blob/d93e7408aed0b0c73ad5ea98116c7dc0dce3cf7b/evidence/erdos-68-factorial-denominator-irrationality.md) gives every declaration, version and check. Comparator checks statements, axioms and kernel acceptance; it does not establish novelty or peer review. These checks show that the stated propositions are proved; whether they are the right propositions is a question the reader can settle by comparing them with the text.
+The verification concordance lists the formal proofs by statement. *Lean* links to the supporting declarations; a dagger identifies a proof that assumes a named input. *Comparator* links to a recorded kernel check against a separately written statement; *pending* means that this comparison has not been recorded. The [verification record](https://github.com/wcook04/plectis-erdos/blob/846d57d3f9926696332d782eb232aaf3cf803a99/evidence/erdos-68-factorial-denominator-irrationality.md) gives the precise correspondence, dependencies and reproducible checks. A row with only a record link has no complete formal proof recorded.
 
 The integral-basis theorem and finite gcd formula have recorded exact Lean bindings. The [companion source concordance](../../../paper/68/erdos68-factorial-reasoning-surface.pdf#nameddest=r12-short-sources) identifies their declarations and the theorem on the possible values of $`M`$. Its large finite computations are separate from these kernel proofs.
 

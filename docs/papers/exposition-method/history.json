@@ -2012,6 +2012,20 @@
       "role": "Selected guide revision and source-current genre transfer",
       "authority": "R8 original return identities in returns.json; B8/review/exposition/REVIEW.json; current public manuscript sources",
       "boundary": "Ten returns are indexed, including R9-labelled #1049. Donor reading claims remain donor claims. Guide examples were checked against selected manuscript passages; exact TeX/PDF version and final release checks are bound separately."
+    },
+    {
+      "epoch": "R9 source-reviewed manuscript and guide revisions",
+      "date": "1Oct2026",
+      "role": "Selective integration of seven mathematical manuscript pairs, the infrastructure paper and the paired writing guides; #257 recovery contains no revision.",
+      "authority": "Original hashes in returns.json and docs/statement_migrations/r9_exposition_20261001.json",
+      "boundary": "Existing proof and Comparator classes preserved. Systems opening remains architecture-first. Proposals are retained separately from adoption of a rule; no model training or measured reader benefit is claimed."
+    },
+    {
+      "epoch": "R9 #257 later real correction",
+      "date": "1Oct2026",
+      "role": "A separate original archive supplied a revised #257 pair after the recovery-only arrival; Type A selectively integrated the reviewed manuscript edits.",
+      "authority": "Exact original ZIP and member hashes in returns.json; native receipt B/review/257/ASSIMILATION.json and docs/statement_migrations/r9_exposition_20261001.json.",
+      "boundary": "The prior recovery row remains historically true. Donor lesson proposals and source availability are not automatic framework rules or proof upgrades."
     }
   ],
   "source_grounded_cases": [
