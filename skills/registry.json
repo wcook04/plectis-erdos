@@ -1445,6 +1445,41 @@
             "repo",
             "repos"
           ]
+        },
+        {
+          "actions": [
+            "repair",
+            "repairing",
+            "fix",
+            "fixing",
+            "debug",
+            "correct",
+            "correcting"
+          ],
+          "objects": [
+            "workbench",
+            "workbenches",
+            "setup",
+            "setups",
+            "guidance"
+          ],
+          "context_markers": [
+            "after",
+            "before",
+            "by",
+            "during",
+            "for",
+            "from",
+            "in",
+            "inside",
+            "on",
+            "through",
+            "using",
+            "via",
+            "while",
+            "with",
+            "without"
+          ]
         }
       ],
       "skills": [

@@ -16,6 +16,7 @@ from pathlib import Path
 from unittest.mock import patch
 
 import agent_entry
+import agent_skill_catalog
 
 from agent_entry import PUBLIC_REPOSITORY, checkout_card, entry_packet
 from agent_skill_catalog import ROOT, load_catalog
@@ -600,6 +601,83 @@ def validate_finished_patch_routes() -> None:
                     raise AssertionError((task, "missing submission handle", handle))
 
 
+def validate_workbench_maintenance_routes() -> None:
+    """Repair actions reach maintenance without redirecting setup or proof work."""
+    catalog = load_catalog()
+    maintenance = ("repository_architecture", "maintain-public-infrastructure")
+    cases = {
+        "Repair cold workbench setup and missing Lean dependency guidance": maintenance,
+        "Fix broken cold workbenches and their startup guidance": maintenance,
+        "Correct missing setup instructions for Lean dependencies": maintenance,
+        "Debug the initial workbench setups": maintenance,
+        "Repair missing Lean dependency guidance": maintenance,
+        "Fix the workbench setup instructions for proof probes": maintenance,
+        "After reading Lean proof notes, repair the cold workbench setup": maintenance,
+        "Fix the broken workbench with a Lean proof probe": maintenance,
+        "Repair the dependency guidance after checking a proof": maintenance,
+        "Fixing broken workbench setups in the Lean repository": maintenance,
+        "Correcting the dependency guidance for first-time Lean users": maintenance,
+        "Set up Lean for the first time": ("understand_repository", "explain-public-system"),
+        "Install Lean and its dependencies": ("understand_repository", "explain-public-system"),
+        "Explain workbench setup and Lean dependencies": ("understand_repository", "explain-public-system"),
+        "Explain the missing Lean dependency guidance": ("understand_repository", "explain-public-system"),
+        "Prove a Lean theorem after reading workbench guidance": ("bounded_research", "mine-open-problem"),
+        "Find a proof of the dependency lemma in Lean": ("bounded_research", "mine-open-problem"),
+        "Repair the dependency proof in Lean": ("bounded_research", "mine-open-problem"),
+        "Fix my Lean proof using the workbench": ("bounded_research", "mine-open-problem"),
+        "Repair a Lean proof after reading workbench setup guidance": ("bounded_research", "mine-open-problem"),
+        "Fix the Lean proof in the workbench": ("bounded_research", "mine-open-problem"),
+        "Repair my Lean proof with the setup guidance": ("bounded_research", "mine-open-problem"),
+        "Repair a Lean proof while consulting dependency guidance": ("bounded_research", "mine-open-problem"),
+        "Fix the Lean proof before using the cold workbench": ("bounded_research", "mine-open-problem"),
+        "Fix the Lean proof for the workbench probe": ("bounded_research", "mine-open-problem"),
+        "send my finished tooling patch to maintainers": ("submit_change", "submit-pull-request"),
+        "prepare my completed workbench setup patch for review": ("submit_change", "submit-pull-request"),
+    }
+    for task, (expected_lane, expected_skill) in cases.items():
+        packet = entry_packet(catalog, task)
+        if packet["primary_lane"]["id"] != expected_lane:
+            raise AssertionError((task, expected_lane, packet["primary_lane"]))
+        if expected_skill not in {row["id"] for row in packet["skills"]}:
+            raise AssertionError((task, "missing owner skill", expected_skill))
+        if packet["task"] != task:
+            raise AssertionError("workbench maintenance route lost the original request")
+
+
+def validate_context_marker_schema() -> None:
+    """Scoped intents validate their optional tokens as strictly as other fields."""
+    original = json.loads(agent_skill_catalog.REGISTRY_PATH.read_text(encoding="utf-8"))
+    invalid_markers = [[], "using", ["Using"], ["using", "using"], [3]]
+    with tempfile.TemporaryDirectory(prefix="plectis-intent-schema-") as temporary:
+        registry = Path(temporary) / "registry.json"
+        for markers in invalid_markers:
+            invalid = json.loads(json.dumps(original))
+            invalid["lanes"][0]["task_intents"] = [
+                {"actions": ["fix"], "objects": ["setup"], "context_markers": markers}
+            ]
+            registry.write_text(json.dumps(invalid), encoding="utf-8")
+            with patch.object(agent_skill_catalog, "REGISTRY_PATH", registry):
+                try:
+                    load_catalog()
+                except agent_skill_catalog.SkillCatalogError as exc:
+                    if "task intent context_markers" not in str(exc):
+                        raise AssertionError((markers, str(exc))) from exc
+                else:
+                    raise AssertionError(("invalid context markers accepted", markers))
+        invalid["lanes"][0]["task_intents"][0] = {
+            "actions": ["fix"], "objects": ["setup"], "unknown": ["using"]
+        }
+        registry.write_text(json.dumps(invalid), encoding="utf-8")
+        with patch.object(agent_skill_catalog, "REGISTRY_PATH", registry):
+            try:
+                load_catalog()
+            except agent_skill_catalog.SkillCatalogError as exc:
+                if "task intent needs actions and objects" not in str(exc):
+                    raise AssertionError(str(exc)) from exc
+            else:
+                raise AssertionError("unknown task intent field accepted")
+
+
 def run_cli(root: Path, *args: str) -> subprocess.CompletedProcess[str]:
     return subprocess.run(
         [sys.executable, str(root / "scripts" / "agent_entry.py"), *args],
@@ -645,6 +723,8 @@ def validate_blank_selectors() -> None:
 
 def main() -> int:
     validate_finished_patch_routes()
+    validate_workbench_maintenance_routes()
+    validate_context_marker_schema()
     validate_blank_selectors()
 
     # Real temporary repositories exercise clone, fork, tag, dirty-tree and
