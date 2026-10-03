@@ -92,6 +92,7 @@ def checked_receipts(index: dict[str, Any], root: Path, ids: list[str],
     A receipt self-declaring a producer/check/pass is not enough. The trusted
     index pins its bytes AND authorizes that exact producer for the check.
     """
+    require(isinstance(index, dict), "evidence index must be a JSON object")
     require(index.get("schema") == "plectis-trusted-evidence-index/1", "wrong evidence index")
     require(isinstance(index.get("receipts"), dict) and isinstance(index.get("producers"), dict),
             "bad trusted-index maps")
@@ -105,6 +106,7 @@ def checked_receipts(index: dict[str, Any], root: Path, ids: list[str],
         require(bytes_sha(data) == hex_digest(row.get("sha256"), "receipt hash"),
                 f"changed receipt bytes: {rid}")
         receipt = read_json(safe_file(root, row["path"]))
+        require(isinstance(receipt, dict), f"receipt must be a JSON object: {rid}")
         require(receipt.get("schema") == "plectis-checked-evidence/1", "wrong receipt schema")
         require(receipt.get("subject_sha256") == subject_sha, f"receipt for another request: {rid}")
         require(receipt.get("foundation_sha256") == foundation_sha, f"stale foundation: {rid}")

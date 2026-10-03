@@ -88,6 +88,9 @@ refusal contract. An explicit JSON `null` must not be treated as an absent
 request. Keep actual runtime errors separate, and cover both input sources in
 normal and optimized runs with checks that rejected requests start no
 subprocess and create no artifacts.
+Validate nested receipt object shapes before reading their fields, including
+receipts whose bytes a trusted index pins. Use the shared reader's existing
+refusal contract for each caller.
 
 For a producer with several named output files, inspect every selected final
 path before writing the first file. Refuse symlinks, including broken links,
@@ -281,6 +284,8 @@ skill family, prepare a fixture, or trace downstream consumers. Never spend the
 turn repeatedly polling a build when task-coupled work remains. Lean validation
 still goes through `skills/lean-concurrent-validation/SKILL.md`; do not launch a
 competing build to look busy.
+
+For a recurring timeout, preserve the failed committed snapshot and measure phase wall and CPU time at the existing deadline before selecting a repair. Keep parsed-source caches within one live audit input snapshot. Verify unchanged findings and fresh source reads in subsequent audits. Record a successful focused replay separately from a completed release gate.
 
 ## Return, assimilate, and propagate
 
