@@ -263,7 +263,7 @@ python3 scripts/test_human_first_contact.py
 ```
 
 Use the exact previously failing task with `agent_entry.py --entry` as a manual
-smoke. Before publication, run `python3 scripts/check_release.py` once; do not
+smoke. Before publication, run `python3 scripts/run_release_check.py` once; do not
 serially rerun every component after that full gate passes.
 
 A long command is a concurrency window. While it runs, continue only work that
