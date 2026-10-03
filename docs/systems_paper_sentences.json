@@ -475,10 +475,10 @@
       "id": "explanation-depth",
       "path": "skills/explain-public-system/SKILL.md",
       "start_line": 1,
-      "end_line": 192,
+      "end_line": 195,
       "kind": "source",
-      "sha256": "91c8e240abe1e68f69985f027c8e470b5bc1e68841d6e9c1fc9e9cf0186d2cb4",
-      "excerpt_sha256": "91c8e240abe1e68f69985f027c8e470b5bc1e68841d6e9c1fc9e9cf0186d2cb4"
+      "sha256": "775293526015f555e41120537b7878a615e3a8c8a34f6a804a5226922960b294",
+      "excerpt_sha256": "775293526015f555e41120537b7878a615e3a8c8a34f6a804a5226922960b294"
     },
     {
       "id": "agent-entry",
@@ -568,9 +568,9 @@
       "kind": "source",
       "path": "docs/agents/README.md",
       "start_line": 1,
-      "end_line": 106,
-      "sha256": "0379b31685398dfd42d22734312e893e0bbb02f887511e2931ebc530e0582573",
-      "excerpt_sha256": "0379b31685398dfd42d22734312e893e0bbb02f887511e2931ebc530e0582573",
+      "end_line": 123,
+      "sha256": "b9850dc5f8c9dc1995f9e4e6c1838294465bcc94085e8f9eab59c224fa2949e0",
+      "excerpt_sha256": "b9850dc5f8c9dc1995f9e4e6c1838294465bcc94085e8f9eab59c224fa2949e0",
       "custody": "Current native public file inspected as source; no fresh execution."
     },
     {
