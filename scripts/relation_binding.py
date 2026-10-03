@@ -209,6 +209,9 @@ def main() -> int:
     args = p.parse_args()
     try:
         if args.command == "emit":
+            for output in (args.out / "RelationBindings.lean", args.out / "manifest.json"):
+                if output.is_symlink() or (output.exists() and not output.is_file()):
+                    raise decision.DecisionError(f"refuse symlink or nonregular output: {output}")
             source, manifest = emit(args.root)
             args.out.mkdir(parents=True, exist_ok=True)
             (args.out / "RelationBindings.lean").write_text(source, encoding="utf-8")
