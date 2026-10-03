@@ -125,6 +125,85 @@ class BindingTests(unittest.TestCase):
         self.assertEqual(out["disposition"], "requires_fixed_baseline_and_consumer_test")
 
 
+class GateCandidateInputTests(unittest.TestCase):
+    def test_candidate_json_shape_refuses_without_tools_or_writes_and_keeps_valid_triage(self):
+        with tempfile.TemporaryDirectory(prefix="plectis-gate-candidate-") as temporary:
+            directory = Path(temporary)
+            root = directory / "metadata root with spaces and 'quotes"
+            root.mkdir()
+            f.fixture(root)
+            capsule = d.build(root, 249, f.COMMIT)
+            decision_path = directory / "valid decision.json"
+            decision_path.write_text(json.dumps(capsule), encoding="utf-8")
+            before = {path.relative_to(root): path.read_bytes()
+                      for path in root.rglob("*") if path.is_file()}
+            before_nodes = {path.relative_to(root) for path in root.rglob("*")}
+            cli = [sys.executable, *(["-O"] if sys.flags.optimize else []), b.__file__]
+            bad = [("null", None, "candidate must be a JSON object"),
+                   ("list", [], "candidate must be a JSON object"),
+                   ("string", "text", "candidate must be a JSON object"),
+                   ("number", 12, "candidate must be a JSON object"),
+                   ("boolean", True, "candidate must be a JSON object"),
+                   ("list kind", {"contribution": []}, "candidate needs an explicit contribution kind"),
+                   ("object kind", {"contribution": {}}, "candidate needs an explicit contribution kind"),
+                   ("empty object", {}, "candidate needs an explicit contribution kind")]
+            good = [("registered statement", {"statement": "Target is open.", "contribution": "new_statement"},
+                     "registered_text_not_a_new_statement"),
+                    ("registered proof", {"statement": "Target is open.", "contribution": "new_proof"},
+                     "proof_of_registered_statement_requires_verification"),
+                    ("unknown statement", {"statement": "Unseen.", "contribution": "new_statement"},
+                     "not_matched_in_selected_claims_unknown"),
+                    ("representation", {"statement": "A useful view.", "contribution": "representation_gain"},
+                     "requires_fixed_baseline_and_consumer_test")]
+            cases = [(name, value, 2, message) for name, value, message in bad]
+            cases += [("malformed JSON", "{", 2, "Expecting"),
+                      ("missing request", None, 2, "No such file")]
+            cases += [(name, value, 0, disposition) for name, value, disposition in good]
+            for name, value, expected, message in cases:
+                with self.subTest(name=name):
+                    candidate = directory / f"{name} candidate with 'quotes.json"
+                    if name != "missing request":
+                        candidate.write_text("{" if name == "malformed JSON" else json.dumps(value), encoding="utf-8")
+                    request_before = candidate.read_bytes() if candidate.exists() else None
+                    arguments = ["--root", str(root), "gate", "--decision", str(decision_path),
+                                 "--candidate", str(candidate)]
+                    stdout, stderr = io.StringIO(), io.StringIO()
+                    with mock.patch.object(sys, "argv", [b.__file__, *arguments]), \
+                            mock.patch.object(b, "emit", side_effect=AssertionError("gate entered emit")), \
+                            mock.patch.object(b, "replay", side_effect=AssertionError("gate entered replay")), \
+                            mock.patch.object(b.probes, "run_probe", side_effect=AssertionError("gate ran Lean")), \
+                            mock.patch.object(subprocess, "run", side_effect=AssertionError("gate started tool")), \
+                            mock.patch.object(Path, "write_text", side_effect=AssertionError("gate wrote artifact")), \
+                            mock.patch.object(Path, "write_bytes", side_effect=AssertionError("gate wrote artifact")), \
+                            mock.patch.object(Path, "mkdir", side_effect=AssertionError("gate made directory")), \
+                            contextlib.redirect_stdout(stdout), contextlib.redirect_stderr(stderr):
+                        self.assertEqual(b.main(), expected)
+                    result = subprocess.run([*cli, *arguments], capture_output=True, text=True,
+                                            env={**os.environ, "PATH": str(directory / "no tools"),
+                                                 "PYTHONDONTWRITEBYTECODE": "1"})
+                    self.assertEqual(result.returncode, expected, result.stderr)
+                    if expected:
+                        self.assertEqual(stdout.getvalue(), "")
+                        self.assertEqual(result.stdout, "")
+                        self.assertIn(message, stderr.getvalue())
+                        self.assertIn(message, result.stderr)
+                        self.assertIn("relation_binding:", result.stderr)
+                        self.assertNotIn("Traceback", result.stderr)
+                    else:
+                        self.assertEqual(stderr.getvalue(), "")
+                        self.assertEqual(result.stderr, "")
+                        for output in (stdout.getvalue(), result.stdout):
+                            triage = json.loads(output)
+                            self.assertEqual(triage["disposition"], message)
+                            self.assertFalse(triage["publication_admitted"])
+                            self.assertEqual(triage["novelty"], "not_established")
+                    self.assertEqual({path.relative_to(root): path.read_bytes()
+                                      for path in root.rglob("*") if path.is_file()}, before)
+                    self.assertEqual({path.relative_to(root) for path in root.rglob("*")}, before_nodes)
+                    self.assertEqual(candidate.read_bytes() if candidate.exists() else None, request_before)
+                    self.assertEqual(json.loads(decision_path.read_text()), capsule)
+
+
 class EmitOutputTests(unittest.TestCase):
     def test_hardlinked_selected_pair_refuses_before_generation(self):
         with tempfile.TemporaryDirectory(prefix="plectis-binding-alias-") as temporary:
