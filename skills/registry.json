@@ -1480,6 +1480,102 @@
             "with",
             "without"
           ]
+        },
+        {
+          "actions": [
+            "repair",
+            "repairing",
+            "fix",
+            "fixing",
+            "debug",
+            "correct",
+            "correcting"
+          ],
+          "objects": [
+            "emitter",
+            "emitters",
+            "compiler",
+            "compilers",
+            "generator",
+            "generators",
+            "cli",
+            "clis",
+            "parser",
+            "parsers",
+            "script",
+            "scripts"
+          ],
+          "context_markers": [
+            "after",
+            "before",
+            "by",
+            "during",
+            "for",
+            "from",
+            "in",
+            "inside",
+            "on",
+            "within",
+            "through",
+            "using",
+            "via",
+            "while",
+            "with",
+            "without",
+            "of",
+            "and",
+            "or",
+            "then",
+            "unless",
+            "when",
+            "so",
+            "to"
+          ],
+          "object_clause": {
+            "faults": [
+              "bug",
+              "bugs",
+              "failure",
+              "failures",
+              "error",
+              "errors",
+              "exception",
+              "exceptions",
+              "traceback",
+              "tracebacks"
+            ],
+            "bridges": [
+              "in",
+              "inside",
+              "on",
+              "within"
+            ],
+            "blocked_heads": [
+              "proof",
+              "proofs",
+              "theorem",
+              "theorems",
+              "lemma",
+              "lemmas",
+              "conjecture",
+              "conjectures",
+              "counterexample",
+              "counterexamples",
+              "declaration",
+              "declarations"
+            ],
+            "compounds": [
+              "proof state compiler",
+              "proof state compilers"
+            ],
+            "competing_actions": [
+              "prove",
+              "solve",
+              "attack",
+              "find",
+              "verify"
+            ]
+          }
         }
       ],
       "skills": [
