@@ -493,10 +493,10 @@
       "id": "workbench-guide",
       "path": "docs/agents/AGENT_WORKBENCH.md",
       "start_line": 1,
-      "end_line": 482,
+      "end_line": 485,
       "kind": "source",
-      "sha256": "3dffc05fb8336be49801bdb5fc4ba4939afbe4caaceefa60eccfa4e31c0defe7",
-      "excerpt_sha256": "3dffc05fb8336be49801bdb5fc4ba4939afbe4caaceefa60eccfa4e31c0defe7"
+      "sha256": "b3d7d3f672b143828402537333a53e0f9d2af10530b3928c93749eed5127cfbc",
+      "excerpt_sha256": "b3d7d3f672b143828402537333a53e0f9d2af10530b3928c93749eed5127cfbc"
     },
     {
       "id": "contribution-guide",

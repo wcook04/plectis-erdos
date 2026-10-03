@@ -367,8 +367,9 @@ programmes among the neighbouring numbered problems, each external status as
 listed on its erdosproblems.com page.
 
 `python3 scripts/check_cold_clone_comprehension.py --quick` checks the
-reading surfaces without Lean; `python3 scripts/check_release.py` runs the
-full public-surface and query sweep.
+reading surfaces without Lean; `python3 scripts/run_release_check.py` prepares
+the pinned Python dependencies and Lean pilot import, then runs the full
+public-surface and query sweep.
 
 ## Recovered from the front page: how the repository fits together
 
@@ -446,11 +447,13 @@ release validation; full Lean roots are release-only.
 The dependency-index validator stores an exact `.lake` receipt: unchanged
 inputs make `--check` constant-time; `--check --full-check` forces an audit.
 
-The public release surfaces are checked separately:
+The public release surfaces are checked separately. The full release entry
+needs Python 3.12 and Elan; it prepares the pinned Python dependencies and Lean
+pilot import. See [release prerequisites](../REPRODUCIBILITY.md#3-run-the-release-surface-checks).
 
 ```sh
 python3 scripts/check_cold_clone_comprehension.py --quick
-python3 scripts/check_release.py
+python3 scripts/run_release_check.py
 python3 scripts/test_methodology_contract.py
 ```
 
