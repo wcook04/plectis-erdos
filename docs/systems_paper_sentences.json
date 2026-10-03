@@ -124,19 +124,19 @@
       "id": "credit",
       "path": "docs/research-commons/CREDIT_POLICY.md",
       "start_line": 1,
-      "end_line": 79,
-      "sha256": "c93c7710b3a6837511f0a720fc798896060a918797654f1e002605fdea627da5",
-      "excerpt_sha256": "c93c7710b3a6837511f0a720fc798896060a918797654f1e002605fdea627da5",
+      "end_line": 99,
+      "sha256": "22116032e3afd5510e1c7de6871b5c951c7f81f3d80aae329e10d844479d725f",
+      "excerpt_sha256": "22116032e3afd5510e1c7de6871b5c951c7f81f3d80aae329e10d844479d725f",
       "kind": "source"
     },
     {
       "id": "credit-registry",
       "path": "docs/research-commons/source-attributions.json",
       "start_line": 1,
-      "end_line": 36203,
+      "end_line": 36351,
       "kind": "supplied_snapshot",
-      "sha256": "af495b1932639ea35dd5c3be07f8b56e59f062f0c4262592743fe1d5c8985dd3",
-      "excerpt_sha256": "af495b1932639ea35dd5c3be07f8b56e59f062f0c4262592743fe1d5c8985dd3"
+      "sha256": "1341330c011f551b2ec59653d1a9c4d901a59f10ee6fc7b8dc5dc63361b687c0",
+      "excerpt_sha256": "1341330c011f551b2ec59653d1a9c4d901a59f10ee6fc7b8dc5dc63361b687c0"
     },
     {
       "id": "essay-pages",
