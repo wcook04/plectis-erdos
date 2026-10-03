@@ -3,10 +3,13 @@
 
 from __future__ import annotations
 
+import contextlib
 import hashlib
+import io
 import json
 import os
 import shutil
+import shlex
 import subprocess
 import sys
 import tempfile
@@ -756,6 +759,181 @@ def check_partial_workbench_open_retry() -> None:
         require([move["move_id"] for move in moves] == ["m001", "m002"], "retry retained partial ledger entries")
 
 
+def check_start_interruption_recovery() -> None:
+    """Real child sessions survive interruption without erasing shared state."""
+    with tempfile.TemporaryDirectory(prefix="continue-interruption-") as temporary:
+        sessions = Path(temporary) / "sessions with spaces and an apostrophe's"
+        for boundary in ("before_open", "open_receipt", "after_open", "foreign_note", "foreign_probe", "foreign_file"):
+            args = continue_research.build_parser().parse_args([
+                "--sessions-root", str(sessions), "start", "--session", boundary,
+                "--area", "tooling", "--starting-path", "README.md",
+                "--validation-plan", "inspect interruption recovery", "--frontier", "entry",
+                "--intent", "repair agent entry", "--stop-condition", "record observation",
+                "--contributor", "Fixture Contributor", "--allow-dirty",
+                "--repository-origin", "https://github.com/example/public",
+            ])
+            directory = sessions / boundary
+            original_write = Path.write_text
+            saved: dict[Path, bytes] = {}
+
+            def interrupted_write(path: Path, *positional, **keywords):
+                if path == directory / "route.json":
+                    if boundary == "foreign_note":
+                        child = continue_research.run_json_command(continue_research.workbench_command(
+                            sessions, "note", "--session", boundary, "--kind", "observation",
+                            "--text", "Another actor's observation must survive.",
+                        ))
+                        require(child["move_id"] == "m003", "foreign note did not land")
+                    elif boundary == "foreign_probe":
+                        original_write(directory / "probes/foreign.lean", "-- foreign probe", encoding="utf-8")
+                    elif boundary == "foreign_file":
+                        original_write(directory / "foreign.txt", "foreign artifact", encoding="utf-8")
+                    saved.update({p: p.read_bytes() for p in directory.rglob("*") if p.is_file()})
+                    raise KeyboardInterrupt("fixture Ctrl-C")
+                return original_write(path, *positional, **keywords)
+
+            if boundary == "before_open":
+                with mock.patch.object(continue_research, "run_json_command", side_effect=KeyboardInterrupt):
+                    interrupted = continue_research.cmd_start(args)
+            elif boundary == "open_receipt":
+                original_command = continue_research.run_json_command
+
+                def interrupted_command(command):
+                    original_command(command)
+                    saved.update({p: p.read_bytes() for p in directory.rglob("*") if p.is_file()})
+                    raise KeyboardInterrupt("fixture Ctrl-C after child publication")
+
+                with mock.patch.object(continue_research, "run_json_command", interrupted_command):
+                    interrupted = continue_research.cmd_start(args)
+            else:
+                with mock.patch.object(Path, "write_text", interrupted_write):
+                    interrupted = continue_research.cmd_start(args)
+            require(interrupted["status"] == "interrupted" and interrupted["valid"] is False,
+                    "interruption did not return a typed unsuccessful start")
+            if boundary == "before_open":
+                require(not directory.exists(), "pre-open interruption left session state")
+                require(interrupted["recovery"]["state"] == "retry_same_session", "pre-open retry is unclear")
+                retried = continue_research.cmd_start(args)
+                require(retried["session"] == boundary, "safe same-name retry failed")
+            else:
+                require(not (directory / "continuation.json").exists(), "interruption falsely completed continuation")
+                require(interrupted["recovery"]["state"] == "inspect_retained_session", "shared ledger recovery is unclear")
+                require("--sessions-root" in interrupted["recovery"]["inspect_command"], "inspect command lost session override")
+                inspect = shlex.split(interrupted["recovery"]["inspect_command"])
+                require(inspect[3] == str(sessions), "quoted recovery command changed the requested root")
+                inspect[0] = sys.executable
+                observed = run(inspect)
+                require(json.loads(observed.stdout)["session"] == boundary, "inspect command selected another session")
+                for path, data in saved.items():
+                    require(path.read_bytes() == data, f"interruption altered retained artifact: {path}")
+                try:
+                    continue_research.cmd_start(args)
+                except SystemExit as error:
+                    require("session already exists" in str(error), "same-name retry lost its preservation boundary")
+                else:
+                    raise AssertionError("same-name retry overwrote retained session")
+                args.session = boundary + "_retry"
+                retried = continue_research.cmd_start(args)
+                require(retried["session"] == args.session, "new-name retry failed")
+                for path, data in saved.items():
+                    require(path.read_bytes() == data, f"retry altered retained artifact: {path}")
+
+
+def check_interrupted_start_main_output() -> None:
+    """CLI recovery JSON must serialize and exit unsuccessfully after Ctrl-C."""
+    with tempfile.TemporaryDirectory(prefix="continue-interrupted-main-") as temporary:
+        sessions = Path(temporary) / "sessions with spaces and an apostrophe's"
+        arguments = [
+            "--sessions-root", str(sessions), "start", "--session", "interrupted_main",
+            "--area", "tooling", "--starting-path", "README.md",
+            "--validation-plan", "inspect CLI interruption", "--frontier", "entry",
+            "--intent", "repair agent entry", "--stop-condition", "record observation",
+            "--contributor", "Fixture Contributor", "--allow-dirty",
+            "--repository-origin", "https://github.com/example/public",
+        ]
+        output = io.StringIO()
+        with (
+            mock.patch.object(continue_research, "run_json_command", side_effect=KeyboardInterrupt),
+            contextlib.redirect_stdout(output),
+        ):
+            exit_code = continue_research.main(arguments)
+        result = json.loads(output.getvalue())
+        require(exit_code != 0, "interrupted start CLI returned success")
+        require(result["valid"] is False and result["status"] == "interrupted",
+                "interrupted start CLI omitted the unsuccessful recovery result")
+        require(result["recovery"]["state"] == "retry_same_session", "CLI recovery lost pre-open retry")
+        require(not sessions.exists(), "interrupted CLI created session artifacts before opening")
+
+
+def check_failed_start_preserves_shared_artifacts() -> None:
+    """Ordinary startup errors retain modified expected names and nested files."""
+    with tempfile.TemporaryDirectory(prefix="continue-failed-shared-start-") as temporary:
+        sessions = Path(temporary) / "sessions with spaces and an apostrophe's"
+        for mutation in ("open_receipt", "foreign_note", "foreign_probe", "modified_route", "foreign_file"):
+            args = continue_research.build_parser().parse_args([
+                "--sessions-root", str(sessions), "start", "--session", mutation,
+                "--area", "tooling", "--starting-path", "README.md",
+                "--validation-plan", "inspect failed-start preservation", "--frontier", "entry",
+                "--intent", "repair agent entry", "--stop-condition", "record observation",
+                "--contributor", "Fixture Contributor", "--allow-dirty",
+                "--repository-origin", "https://github.com/example/public",
+            ])
+            directory = sessions / mutation
+            original_write = Path.write_text
+            saved: dict[Path, bytes] = {}
+
+            def failed_write(path: Path, *positional, **keywords):
+                if path == directory / "route.json":
+                    if mutation == "foreign_note":
+                        continue_research.run_json_command(continue_research.workbench_command(
+                            sessions, "note", "--session", mutation, "--kind", "observation",
+                            "--text", "Another actor's observation must survive ordinary errors.",
+                        ))
+                    elif mutation == "foreign_probe":
+                        original_write(directory / "probes/foreign.lean", "-- foreign probe", encoding="utf-8")
+                    elif mutation == "modified_route":
+                        original_write(path, "An external writer changed this expected-name file.", encoding="utf-8")
+                    else:
+                        original_write(directory / "foreign.txt", "foreign artifact", encoding="utf-8")
+                    saved.update({p: p.read_bytes() for p in directory.rglob("*") if p.is_file()})
+                    raise OSError("fixture interrupted write")
+                return original_write(path, *positional, **keywords)
+
+            original_command = continue_research.run_json_command
+
+            def failed_command(command):
+                result = original_command(command)
+                if mutation == "open_receipt":
+                    saved.update({p: p.read_bytes() for p in directory.rglob("*") if p.is_file()})
+                    raise SystemExit("fixture interrupted write after child publication")
+                return result
+
+            with (
+                mock.patch.object(Path, "write_text", failed_write),
+                mock.patch.object(continue_research, "run_json_command", failed_command),
+            ):
+                try:
+                    continue_research.cmd_start(args)
+                except SystemExit as error:
+                    message = str(error)
+                    require("fixture interrupted write" in message, "failure detail was lost")
+                    require("session retained" in message and "new --session name" in message,
+                            "ordinary failure did not give shared-session recovery")
+                    require(continue_research.start_recovery(directory)["inspect_command"] in message,
+                            "ordinary failure lost the exact-root inspection command")
+                else:
+                    raise AssertionError("failed startup was reported successful")
+            for path, data in saved.items():
+                require(path.read_bytes() == data, f"ordinary failure erased shared artifact: {path}")
+            require(not (directory / "continuation.json").exists(), "failed start acquired a complete continuation")
+            try:
+                continue_research.cmd_start(args)
+            except SystemExit as error:
+                require("session already exists" in str(error), "same-name retry lost preservation boundary")
+            else:
+                raise AssertionError("retry overwrote a retained shared session")
+
+
 def check_relative_session_root_across_child_cwd() -> None:
     """Parent and real workbench children must share a caller-relative root."""
     with tempfile.TemporaryDirectory(prefix="continue-relative-root-") as temporary:
@@ -1354,6 +1532,16 @@ def check_source_snapshot_detached_recipient() -> None:
         require(limited["omission_check"] == "unavailable_preexisting_dirt", limited)
 
 
+def check_package_failure_recovery() -> None:
+    """The existing continuation release check consumes package rollback cases."""
+    import unittest
+    from test_package_recovery import PackageRecoveryTests
+
+    suite = unittest.defaultTestLoader.loadTestsFromTestCase(PackageRecoveryTests)
+    result = unittest.TextTestRunner().run(suite)
+    require(result.wasSuccessful(), "package recovery regression failed")
+
+
 def main() -> int:
     require(
         continue_research.PROBLEMS is continue_research.route_memory_receipt.ROSTER,
@@ -1364,6 +1552,7 @@ def main() -> int:
     check_subprocess_timeouts()
     check_replay_execution_posture()
     check_package_session_path_boundary()
+    check_package_failure_recovery()
     check_malformed_utf8_inputs_rejected()
     check_route_memory_corpus_contract()
     check_route_memory_file_boundary()
@@ -1373,6 +1562,9 @@ def main() -> int:
     check_start_arguments_before_side_effects()
     check_partial_workbench_open_retry()
     check_relative_session_root_across_child_cwd()
+    check_start_interruption_recovery()
+    check_interrupted_start_main_output()
+    check_failed_start_preserves_shared_artifacts()
     check_repository_origin_override()
     check_subject_frontier_round_trip()
     check_architecture_frontier_round_trip()

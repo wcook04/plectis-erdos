@@ -17,7 +17,7 @@ import hashlib
 import json
 import os
 import re
-import shutil
+import shlex
 import stat
 import subprocess
 import sys
@@ -537,67 +537,146 @@ def session_dir(sessions_root: Path, slug: str) -> Path:
     return sessions_root / slug
 
 
+def start_recovery(directory: Path) -> dict[str, Any]:
+    """Report recovery without claiming ownership of published workbench state."""
+    retained = directory.exists() or directory.is_symlink()
+    inspect = shlex.join([
+        "python3", "scripts/proof_workbench.py", "--sessions-root",
+        str(_absolute_preserving_dotdot(directory.parent)), "show", "--session", directory.name,
+    ]) if retained else None
+    return {
+        "state": "inspect_retained_session" if retained else "retry_same_session",
+        "artifacts_retained": retained,
+        "inspect_command": inspect,
+        "retry_instruction": (
+            "Inspect the retained session files, then rerun the original start with a new --session name."
+            if retained else "No session artifacts exist; rerun the original start with the same session name."
+        ),
+    }
+
+
 def cleanup_partial_start(directory: Path) -> str | None:
-    """Remove only the known artifacts created by a failed start transaction."""
-    if not directory.exists():
+    """Retain session artifacts when the parent cannot prove exclusive ownership.
+
+    A readable child opening ledger is shared workbench authority. Neither a
+    filename allowlist nor a content snapshot makes later recursive deletion
+    safe: another actor may append a note or store a probe after inspection.
+    The workbench owns rollback before publishing its readable opening record.
+    """
+    recovery = start_recovery(directory)
+    if not recovery["artifacts_retained"]:
         return None
-    if directory.is_symlink():
-        return f"partial start cleanup refused for symlinked session: {directory}"
-    allowed_names = {
-        "continuation.json",
-        "ledger.jsonl",
-        "probes",
-        "route-memory-consultation.json",
-        "route-memory-return-template.json",
-        "route.json",
+    return (
+        f"session retained; inspect with {recovery['inspect_command']}; "
+        + recovery["retry_instruction"]
+    )
+
+
+def _write_package_file(destination: Path, data: bytes) -> None:
+    """Never overwrite an entry created by another writer during this attempt."""
+    if output_path_has_symlink_component(destination):
+        raise SystemExit(f"package output must not traverse symbolic links: {destination}")
+    with destination.open('xb') as stream:
+        stream.write(data)
+
+
+def _package_output_identity(output: Path) -> tuple[int, int] | None:
+    try:
+        info = output.lstat()
+    except OSError:
+        return None
+    if not stat.S_ISDIR(info.st_mode):
+        return None
+    return info.st_dev, info.st_ino
+
+
+def _package_is_complete(
+    output: Path, files: dict[str, bytes], identity: tuple[int, int] | None,
+) -> bool:
+    """Recognise completed bytes, never mere existence of a manifest."""
+    if identity is None or _package_output_identity(output) != identity:
+        return False
+    allowed_directories = {
+        parent.as_posix()
+        for relative in files
+        for parent in Path(relative).parents
+        if parent != Path('.')
     }
     try:
-        unexpected = sorted(
-            child.name for child in directory.iterdir()
-            if child.name not in allowed_names
-        )
-        if unexpected:
-            return (
-                "partial start cleanup refused for unexpected session artifacts: "
-                + ", ".join(unexpected)
-            )
-        shutil.rmtree(directory)
-    except OSError as exc:
-        return f"partial start cleanup failed: {directory}: {exc}"
-    return None
-
-
-def cleanup_partial_package(output: Path, expected_files: set[str]) -> str | None:
-    """Remove only files emitted by a failed package transaction."""
-    if not output.exists():
-        return None
-    if output.is_symlink():
-        return f"partial package cleanup refused for symlinked output: {output}"
-    allowed_directories = {""}
-    for relative in expected_files:
-        parts = Path(relative).parts[:-1]
-        for index in range(1, len(parts) + 1):
-            allowed_directories.add(Path(*parts[:index]).as_posix())
-    try:
-        unexpected: list[str] = []
-        for child in output.rglob("*"):
+        observed = set()
+        for child in output.rglob('*'):
             relative = child.relative_to(output).as_posix()
-            if child.is_symlink():
-                unexpected.append(relative)
-            elif child.is_dir():
+            info = child.lstat()
+            if stat.S_ISDIR(info.st_mode):
                 if relative not in allowed_directories:
-                    unexpected.append(relative)
-            elif relative not in expected_files:
-                unexpected.append(relative)
-        if unexpected:
-            return (
-                "partial package cleanup refused for unexpected output artifacts: "
-                + ", ".join(sorted(unexpected))
-            )
-        shutil.rmtree(output)
-    except OSError as exc:
-        return f"partial package cleanup failed: {output}: {exc}"
-    return None
+                    return False
+            elif stat.S_ISREG(info.st_mode):
+                observed.add(relative)
+            else:
+                return False
+        if observed != set(files):
+            return False
+        for relative, expected in files.items():
+            if output_path_has_symlink_component(output / relative):
+                return False
+            if (output / relative).read_bytes() != expected:
+                return False
+        manifest = json.loads((output / 'package.json').read_bytes())
+        for row in manifest['files']:
+            actual = (output / row['path']).read_bytes()
+            if _sha256(actual) != row['sha256'] or len(actual) != row['bytes']:
+                return False
+    except (OSError, ValueError, KeyError, TypeError):
+        return False
+    return _package_output_identity(output) == identity
+
+
+def package_failure_recovery(
+    args: argparse.Namespace, files: dict[str, bytes],
+    identity: tuple[int, int] | None,
+) -> dict[str, Any]:
+    """Retain failed attempts: names and last checks cannot authorise deletion.
+
+    Even an unchanged regular file may be replaced between inspection and
+    unlink. Do not recursively delete nonempty or uncertain output. A new
+    output path permits retry without overwriting any retained bytes.
+    """
+    output = args.output
+    complete = _package_is_complete(output, files, identity)
+    retry_output = output.with_name(output.name + '.retry')
+    index = 2
+    while os.path.lexists(retry_output):
+        retry_output = output.with_name(output.name + f'.retry-{index}')
+        index += 1
+    command = [
+        sys.executable, str(Path(__file__).resolve()),
+        '--sessions-root', str(args.sessions_root), 'package',
+        '--session', args.session, '--return-json', str(args.return_json),
+        '--output', str(retry_output),
+    ]
+    if args.route_memory_receipt is not None:
+        command.extend(['--route-memory-receipt', str(args.route_memory_receipt)])
+    if args.replay:
+        command.append('--replay')
+    inspection = [sys.executable, '-c',
+                  'from pathlib import Path; import sys; p=Path(sys.argv[1]); '
+                  'print(p); print(chr(10).join(str(x.relative_to(p)) for x in p.rglob("*")))',
+                  str(output)]
+    return {
+        'output': str(output),
+        'state': 'complete' if complete else 'retained_incomplete_or_uncertain',
+        'package_complete': complete,
+        'files_deleted': False,
+        'inspection_command': shlex.join(inspection),
+        'retry_command': None if complete else shlex.join(command),
+        'guidance': (
+            'Complete package bytes and declared hashes were verified; the package was '
+            'preserved despite the lost command receipt. Inspect it before delivery.'
+            if complete else
+            'Output was retained without deleting files. Inspect the retained attempt, '
+            'then retry using the new output path; do not delete or reuse an uncertain output.'
+        ),
+    }
 
 
 def _absolute_preserving_dotdot(path: Path) -> Path:
@@ -993,8 +1072,18 @@ def cmd_start(args: argparse.Namespace) -> dict[str, Any]:
             (directory / "route-memory-consultation.json").write_text(dump_json(route_memory), encoding="utf-8")
             (directory / "route-memory-return-template.json").write_text(dump_json(return_template(route_memory)), encoding="utf-8")
         (directory / "continuation.json").write_text(dump_json(manifest), encoding="utf-8")
+    except KeyboardInterrupt:
+        # Do not delete a child ledger published before Ctrl-C: it may already
+        # carry another actor's work. Expose the exact retained-root recovery.
+        return {
+            "schema": "research-continuation-start/1",
+            "session": args.session,
+            "status": "interrupted",
+            "valid": False,
+            "recovery": start_recovery(directory),
+        }
     except SystemExit as exc:
-        if not opened:
+        if not opened and not (directory.exists() or directory.is_symlink()):
             raise
         cleanup_error = cleanup_partial_start(directory)
         detail = f"start failed: {exc}"
@@ -1002,7 +1091,7 @@ def cmd_start(args: argparse.Namespace) -> dict[str, Any]:
             detail = f"{detail}; {cleanup_error}"
         raise SystemExit(detail) from exc
     except Exception as exc:
-        if not opened:
+        if not opened and not (directory.exists() or directory.is_symlink()):
             raise
         cleanup_error = cleanup_partial_start(directory)
         detail = f"start failed: {type(exc).__name__}: {exc}"
@@ -1725,33 +1814,36 @@ def cmd_package(args: argparse.Namespace) -> dict[str, Any]:
         package_manifest["validation"]["repository_backed"]["command"] += suffix
         package_manifest["github_intake"]["local_validation"] += suffix
     files["package.json"] = dump_json(package_manifest).encode("utf-8")
-    created_output = False
+    output_identity = None
     try:
         output.mkdir(parents=True)
-        created_output = True
+        output_identity = _package_output_identity(output)
         if output.is_symlink() or output_path_has_symlink_component(output):
             raise SystemExit(
                 f"package output must not traverse symbolic links: {output}"
             )
         for relative, data in files.items():
+            if _package_output_identity(output) != output_identity:
+                raise SystemExit("package output directory identity changed during writing")
             destination = output / relative
             destination.parent.mkdir(parents=True, exist_ok=True)
-            destination.write_bytes(data)
-    except SystemExit as exc:
-        if not created_output:
-            raise
-        cleanup_error = cleanup_partial_package(output, set(files))
-        detail = f"package failed: {exc}"
-        if cleanup_error:
-            detail = f"{detail}; {cleanup_error}"
-        raise SystemExit(detail) from exc
-    except Exception as exc:
-        if not created_output:
-            raise
-        cleanup_error = cleanup_partial_package(output, set(files))
-        detail = f"package failed: {type(exc).__name__}: {exc}"
-        if cleanup_error:
-            detail = f"{detail}; {cleanup_error}"
+            _write_package_file(destination, data)
+    except KeyboardInterrupt:
+        recovery = package_failure_recovery(args, files, output_identity)
+        return {
+            "schema": "research-return-package-result/1",
+            "return_id": returned["return_id"],
+            "session": args.session,
+            "valid": False,
+            "interrupted": True,
+            "recovery": recovery,
+        }
+    except (SystemExit, Exception) as exc:
+        recovery = package_failure_recovery(args, files, output_identity)
+        detail = f"package failed: {type(exc).__name__}: {exc}; {recovery['guidance']}"
+        detail += f" Inspect: {recovery['inspection_command']}"
+        if recovery['retry_command']:
+            detail += f" Retry: {recovery['retry_command']}"
         raise SystemExit(detail) from exc
     return {
         "schema": "research-return-package-result/1",
