@@ -42,6 +42,14 @@ handoff must retain the original request. Exercise the complete architecture
 session, validation and package path as well as the mathematics path; a receipt
 schema alone does not prove that contributors can produce a valid return.
 
+For software repair routes, test a fault in a tool alongside mathematical
+repair using that tool. Require an affirmative request about the tool itself;
+negated requests, quoted commands and unrelated later clauses must not supply
+that intent. Apply any clause boundary to both the action and its object, and
+make existing competing-action guards consume that boundary too. Preserve the
+existing route for a separate mathematical request. Verify unsupported command
+heads retain the existing route and explicit purpose still wins.
+
 For reports that an outside agent missed recent capabilities, inspect the
 checkout provenance returned by `agent_entry.py` before repairing the router.
 Use `--checkout --check-upstream` for an explicit live comparison with canonical
