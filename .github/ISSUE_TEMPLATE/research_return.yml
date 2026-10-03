@@ -149,7 +149,7 @@ body:
       placeholder: |-
         For mathematical work, list only the applicable route handles:
         python3 scripts/query_corpus.py --paper-anchor <canonical_paper_label>
-        python3 scripts/query_corpus.py --problem <number>
+        python3 scripts/query_corpus.py --route erdos_<number>
         python3 scripts/query_corpus.py --search "all result families"
         python3 scripts/query_corpus.py --publication-family <family_id>
         python3 scripts/query_corpus.py --open <remaining_open.id>
@@ -213,7 +213,7 @@ body:
         environment, and the exact source or script used.
       render: text
       placeholder: |-
-        command: python3 scripts/query_corpus.py --problem <number>
+        command: python3 scripts/query_corpus.py --route erdos_<number>
         exit: 0
         observed: <short output>
         environment: <pinned public toolchain, if relevant>
