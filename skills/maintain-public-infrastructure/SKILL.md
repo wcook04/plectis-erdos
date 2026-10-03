@@ -95,6 +95,15 @@ and nonregular-file collisions without changing earlier output or material
 outside the selected directory. Preserve the producer's documented
 regeneration behavior for regular files. Test clean output, repeated
 regeneration, and a collision at each output in normal and optimized runs.
+For regular-file refresh, verify that every selected output can be opened
+without truncation before changing any output. A later opening refusal must
+preserve earlier bytes and remove only unchanged files created during preparation. Test
+a real read-only file at each output, including a missing paired output; retain
+successful creation and regeneration controls. State the tested failure
+boundary without claiming atomic publication across writes or interruptions.
+Check that distinct named outputs do not alias the same regular file. A
+successful exit must leave the selected source and manifest identities valid;
+test both hardlink creation orders while retaining distinct-file regeneration.
 
 ## Know the public owner graph
 

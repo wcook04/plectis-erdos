@@ -12,9 +12,12 @@ Lean, a clean-build receipt, or a release authorization.
 from __future__ import annotations
 
 import argparse
+from contextlib import ExitStack
 import hashlib
 import json
+import os
 import re
+import stat
 import sys
 import tempfile
 from pathlib import Path
@@ -198,6 +201,63 @@ def return_gate(root: Path, capsule: dict[str, Any], candidate: dict[str, Any]) 
             "literature": "external source comparison remains required"}
 
 
+def _write_outputs(outputs: dict[Path, str]) -> None:
+    """Acquire the whole pair before truncating; this is not crash rollback."""
+    created: list[tuple[Path, os.stat_result]] = []
+    with ExitStack() as stack:
+        handles = {}
+        identities = set()
+
+        def acquire(path: Path, *, create: bool = False):
+            flags = os.O_WRONLY | getattr(os, "O_NONBLOCK", 0) | getattr(os, "O_NOFOLLOW", 0)
+            if create:
+                flags |= os.O_CREAT | os.O_EXCL
+            fd = os.open(path, flags, 0o666)
+            try:
+                info = os.fstat(fd)
+                if create:
+                    created.append((path, info))
+                if not stat.S_ISREG(info.st_mode):
+                    raise decision.DecisionError(f"refuse nonregular output: {path}")
+                identity = (info.st_dev, info.st_ino)
+                if identity in identities:
+                    raise decision.DecisionError("refuse aliased selected outputs")
+                stream = os.fdopen(fd, "w", encoding="utf-8")
+            except (OSError, ValueError):
+                os.close(fd)
+                raise
+            handles[path] = stack.enter_context(stream)
+            identities.add(identity)
+
+        try:
+            missing = []
+            for path in outputs:
+                try:
+                    acquire(path)
+                except FileNotFoundError:
+                    missing.append(path)
+            # Existing readonly outputs refuse before any new file is created.
+            for path in missing:
+                acquire(path, create=True)
+        except (OSError, ValueError):
+            for path, info in created:
+                try:
+                    current = path.lstat()
+                    identity = lambda row: (row.st_dev, row.st_ino, row.st_size,
+                                            row.st_mtime_ns, row.st_ctime_ns)
+                    if identity(current) == identity(info) and current.st_size == 0:
+                        path.unlink()
+                except OSError:
+                    pass  # Preserve anything whose ownership is now uncertain.
+            raise
+        # Acquisition failures preserve old bytes. Later write/flush failures
+        # can still leave a partial pair; this is not atomic bundle publication.
+        for path, text in outputs.items():
+            stream = handles[path]
+            stream.truncate(0)
+            stream.write(text)
+
+
 def main() -> int:
     p = argparse.ArgumentParser(description=__doc__)
     p.add_argument("--root", type=Path, default=Path(__file__).resolve().parents[1])
@@ -209,13 +269,16 @@ def main() -> int:
     args = p.parse_args()
     try:
         if args.command == "emit":
-            for output in (args.out / "RelationBindings.lean", args.out / "manifest.json"):
+            outputs = (args.out / "RelationBindings.lean", args.out / "manifest.json")
+            for output in outputs:
                 if output.is_symlink() or (output.exists() and not output.is_file()):
                     raise decision.DecisionError(f"refuse symlink or nonregular output: {output}")
+            if all(output.exists() for output in outputs) and outputs[0].samefile(outputs[1]):
+                raise decision.DecisionError("refuse aliased selected outputs")
             source, manifest = emit(args.root)
             args.out.mkdir(parents=True, exist_ok=True)
-            (args.out / "RelationBindings.lean").write_text(source, encoding="utf-8")
-            (args.out / "manifest.json").write_text(json.dumps(manifest, indent=2) + "\n")
+            _write_outputs({args.out / "RelationBindings.lean": source,
+                            args.out / "manifest.json": json.dumps(manifest, indent=2) + "\n"})
             print(json.dumps({"state": manifest["state"], "obligations": len(manifest["obligations"])}))
             return 0
         result = replay(args.root, args.timeout) if args.command == "replay" else return_gate(
