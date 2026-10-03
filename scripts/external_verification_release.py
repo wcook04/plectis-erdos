@@ -469,6 +469,8 @@ def validate_manifest(
             source_commit=source_commit
         ),
     ]
+    if manifest.get("runtime_receipt", {}).get("asset_name") != expected_names[0]:
+        raise ReleaseIdentityError("manifest runtime-receipt asset name is not canonical")
     if manifest.get("release_assets", {}).get("required") != expected_names:
         raise ReleaseIdentityError("manifest release-asset names are not canonical")
     encoded = json.dumps(manifest, sort_keys=True)

@@ -1133,6 +1133,21 @@ def test_release_manifest() -> None:
         require("/blob/main/" not in encoded, "release manifest contains a floating main URL")
         require("/blob/HEAD/" not in encoded, "release manifest contains a floating HEAD URL")
 
+        unrelated_receipt_asset = copy.deepcopy(manifest)
+        unrelated_receipt_asset["runtime_receipt"]["asset_name"] = (
+            "external-verification-receipt-unrelated.json"
+        )
+        require(
+            not (parent / unrelated_receipt_asset["runtime_receipt"]["asset_name"]).exists(),
+            "unrelated receipt asset fixture unexpectedly exists",
+        )
+        expect_error(
+            lambda: release.validate_manifest(
+                unrelated_receipt_asset, root=root, runtime_receipt_path=receipt_path
+            ),
+            "runtime-receipt asset name is not canonical",
+        )
+
         wrong_tree = copy.deepcopy(manifest)
         wrong_tree["source"]["tree"] = "f" * 40
         expect_error(

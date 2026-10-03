@@ -41,6 +41,9 @@ def validation_arguments(return_path: Path, route_path: Path) -> list[str] | Non
         "--require-submitted",
         "--check-git",
     ]
+    repository = returned.get("repository") if isinstance(returned, dict) else None
+    if isinstance(repository, dict) and repository.get("proposed_commit") is not None:
+        command.append("--require-complete-proposed-diff")
     if track == "mathematics":
         if not route_path.is_file():
             raise ValueError("mathematics return.json requires route-memory.json")
