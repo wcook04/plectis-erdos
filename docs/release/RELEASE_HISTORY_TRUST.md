@@ -144,12 +144,12 @@ only by object IDs, paths, counts, and redacted SHA-256 fingerprints; payloads
 are never printed into logs or public artifacts.
 
 The cross-surface release checker, `python3 scripts/check_release.py`, does
-not invoke this gate; the reachable-history workflow is the surface that
-consumes it, and a red result there is a release finding in its own right
-rather than something the top-level checker can waive or has already covered.
-The workflow scans the exact checkout under test and validates that fresh
-report; the committed `docs/release/reachable-history-audit.json` is the last
-operator-anchored record, regenerated when the scanner or dispositions change.
+not invoke this gate. Its result and the normal CI checks do not certify a
+fresh whole-history release decision. Use the explicit local
+`--target release-gate` route above for that separate decision. The committed
+`docs/release/reachable-history-audit.json` is the last operator-anchored record;
+its exact-commit and ref freshness must pass before it supplies current
+assurance. Regenerate it when the scanner or dispositions change.
 
 The evidence comparison is clone-shape invariant: each branch name is compared
 once whether it is seen as a local head or as origin's remote-tracking ref,
@@ -159,20 +159,17 @@ reader can clone them. All of them are still scanned.
 
 ## Future-ingress enforcement
 
-`.github/workflows/reachable-history-trust.yml` runs on every push and pull
-request (and is available by manual dispatch). Its checkout fetches the full
-history and tags, then scans that checkout, validates the fresh evidence, runs
-the deleted-object, disposition and redaction fixtures, and applies the
-public-clone release gate. There is no path-filter exception for a future
-commit: a change anywhere in the repository re-enters this boundary, so a new
-reachable object cannot be treated as safe merely because the current-tree
-files look unchanged.
+The operator retired `.github/workflows/reachable-history-trust.yml` in commit
+`caf225bca94e663836f6043ebaaaaf1afb776a39` on 9 September 2026. It no longer runs
+on pushes, pull requests or manual dispatch. The shipped workflows do not
+invoke the reachable-history gate. When a change needs this assurance, run the
+explicit local audit and release-gate routes above; a green normal CI result
+does not establish that this separate boundary was checked.
 
-The workflow is assurance evidence, not authorization to mutate shared
-history. A red result stays red until an operator-approved remediation is
-performed and a fresh exact-commit, all-ref report is regenerated and
-validated; CI cannot rewrite refs, delete recovery evidence, or waive the
-decision.
+The explicit local audit supplies assurance evidence. Remediation remains
+operator-owned: a red result requires an approved remediation and a fresh
+exact-commit, all-ref report before it can pass. Retiring the workflow does not
+authorize rewriting refs, deleting recovery evidence or waiving that decision.
 
 No agent may rewrite history, delete refs/tags, force-push, or remove recovery
 evidence. If the audit is blocked, its embedded operator decision is the
