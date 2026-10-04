@@ -43,6 +43,24 @@ The source inventory and statement normalization come from `check_lean_paper_pro
 
 The theorem renderer currently accepts a lead with existing whole-statement formal support or a native-recorded ordinary proof. It refuses to promote `computed` or `cited` evidence into a proved lead theorem. Other dossier results remain available upstream but are not automatically selected. Supporting computed/cited content needs a separately typed renderer in a future amendment.
 
+## Scope of the journal paper
+
+The title, abstract and main theorem make a mathematical promise. Each section
+and appendix must help prove, explain, illustrate, test sharpness or delimit that
+promise. A separate question does not belong merely because it shares the same
+Erdős number. Keep the main argument self-contained; move independent programmes
+to the existing long record. Do not meet a page quota by hiding a necessary proof.
+
+Consolidate formal-source concordances, review history and build commands in the
+long verification record, with one compact statement and a precise link in the
+short paper. Keep assumptions, actual methodological limitations and attribution
+at their mathematical uses. Compare both versions before moving a passage: keep
+unique proofs, restore definitions needed at the destination, avoid duplicate
+narration, and repair title, abstract, bibliography and links in both directions.
+Reconcile the coverage ledger without changing evidence status. Render both
+papers and inspect the revised transitions; fewer pages alone establish no
+improvement in understanding.
+
 ## Editorial revision exchange
 
 Type A and Type B describe access to the live substrate. The assignment is a

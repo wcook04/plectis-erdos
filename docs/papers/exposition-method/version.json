@@ -1,6 +1,6 @@
 {
   "schema": "exposition-method-version/1",
-  "version": "2026-10-04.2",
+  "version": "2026-10-04.3",
   "required_roles": [
     "guidance",
     "skill",
@@ -24,17 +24,17 @@
     },
     {
       "path": "skills/public-mathematical-writing/SKILL.md",
-      "sha256": "6bf9f059fccee30b02e8852e46061a8fa184f94a221b9d235ad94cbf72c2644f",
+      "sha256": "c686f9f4408f9ae10bc761aa82154722017c7f082be225f6beffd49b9570612e",
       "role": "skill"
     },
     {
       "path": "docs/papers/exposition-method/rules.json",
-      "sha256": "bca21b9fdfe5ca5ac7ae520a762db9e8054aacd8e6d7ac5e5162b6dfaf42c4dc",
+      "sha256": "7b797ca5b7b0c806466c2254a97624c322c04a558e1438d5ac0ce520dadd6dd0",
       "role": "rules"
     },
     {
       "path": "docs/papers/exposition-method/lessons.json",
-      "sha256": "d3cd2280fc80c86e4628aaba64a3536c4f9d76fd96f3e4f423e824ee8b745368",
+      "sha256": "3859a7c548af8fd40e71e82a6b1ddce40468c3fcfba63468924efadcff30f746",
       "role": "lessons"
     },
     {
@@ -59,7 +59,7 @@
     },
     {
       "path": "paper/exposition/writing-mathematics-from-reviewed-revisions.pdf",
-      "sha256": "21800ba85b39d0ad194c0585d7c2fa8c80e97d8df8f0ec7f14c4fe1b8070032a",
+      "sha256": "5a2efea88d2a7ef1ba38771f55b15fc6495c25213611af173ca82130a1f2beee",
       "role": "companion_pdf"
     },
     {
@@ -79,7 +79,7 @@
     },
     {
       "path": "paper/exposition/parts/practice.tex",
-      "sha256": "5d43ef03630299b3ee7ffcea77830e28caa98636de441c65383e5b414fa09c61",
+      "sha256": "6859e5aed8484c624e9b5d9ea6b8911ddd0f46691b5e9e65f5f93ee8e38ba914",
       "role": "companion_input"
     },
     {
@@ -99,17 +99,17 @@
     },
     {
       "path": "paper/module-aliases.tex",
-      "sha256": "6d6d9640a9b7f04d003ebbffb78db279f5af838a2afc99ba6b5b247cc67b6954",
+      "sha256": "1c703b0a1e659daa8c5d47c97816d498350cb1fbf81cb3057410498ecda0267d",
       "role": "shared_input"
     },
     {
       "path": "paper/exposition/writing-a-good-mathematical-paper.tex",
-      "sha256": "3ea8de2c71651873d24a72885392e4d0d8c65cc0e143bd884c6d94cbc43dc0ae",
+      "sha256": "4474c8d711502f1f972cdd8df391625596a6619bc37672eab6e43400fbe2bb36",
       "role": "compact_guide_source"
     },
     {
       "path": "paper/exposition/writing-a-good-mathematical-paper.pdf",
-      "sha256": "c111145c70abaeddcf1af4050f4d7fb823d75ec4d745fa65f50cb68eea1e286c",
+      "sha256": "0382ea264e5d3d130574e6f13f86d01fca996035fb3789235be62024d0c83270",
       "role": "compact_guide_pdf"
     },
     {

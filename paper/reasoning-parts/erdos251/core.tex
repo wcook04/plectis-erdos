@@ -658,6 +658,8 @@ estimate nor its necessity.  The appendix calculations and counterexamples
 separate these remaining questions from the algebraic equivalences.
 
 \section{Summation by parts, with the endpoint retained}\label{long251:sec:parts}
+\papersectiontarget{scope-actual-tails}
+
 
 We return to the actual prime gaps
 $g_n=p_{n+1}-p_n$, with $p_0=2$ and $g_0=1$.  We write
@@ -667,7 +669,7 @@ $g_n=p_{n+1}-p_n$, with $p_0=2$ and $g_0=1$.  We write
 \]
 Here $S$ denotes the gap sum.  The set of indices used in
 Section~\ref{long251:sec:paired-corrections} will not be needed below.
-The short paper calls this same sum $G$.  The two calculations below
+The two calculations below
 have different jobs: summation by parts gives $\Pi=2+S$, and deleting
 the first gap gives the initial tail $T_0=2S-1$.
 
@@ -733,6 +735,10 @@ Both series converge and
  \sum_{n\ge0}\frac{p_n}{2^{\,n+1}}
  \;=\;2+\sum_{n\ge0}\frac{g_n}{2^{\,n+1}} .
 \]
+Writing $S=\sum_{n\ge0}g_n2^{-(n+1)}$, the complete tails
+$T_N=\sum_{j\ge1}g_{N+j}2^{-j}$ satisfy
+$T_0=2S-1$ and $T_{N+1}=2T_N-g_{N+1}$.
+Thus $\Pi$, $S$ and $T_0$ have the same rationality status.
 \end{theorem}
 
 \begin{proof}
@@ -743,9 +749,13 @@ $u_0=1$ gives
 \[
  \sum_{n\ge0}v_n
  =2\left(\sum_{n\ge0}u_n-u_0\right)-\sum_{n\ge0}u_n
- =\sum_{n\ge0}u_n-2 . \qedhere
+ =\sum_{n\ge0}u_n-2 .
 \]
 \end{proof}
+
+The tail assertions follow by splitting off the first term and using
+$g_0=1$. Affine transformations with rational coefficients and nonzero
+slope preserve rationality.
 
 The prime number theorem is needed neither for this convergence nor for
 the identity.  Its asymptotic $p_n\sim n\log n$ is used in
@@ -878,6 +888,13 @@ following are equivalent:
 \item for some fixed $h\ge1$, $\sigma_h(N)$ is an integer at every
   sufficiently large $N$.
 \end{enumerate}
+More precisely, if $T_0=u/(2^sd)$ is in lowest terms, with $d$ odd, then
+\[
+ \operatorname{den}(T_N)=2^{\max(s-N,0)}d,\qquad
+ \sigma_h(N)\in\Z\ \Longleftrightarrow\ N\ge s\ \text{and}\ d\mid2^h-1
+ \quad(h\ge1).
+\]
+
 Consequently $T_0$ is irrational if and only if every positive-length shift is
 nonintegral at every index, equivalently if and only if for every $h\ge1$ and
 every cutoff some later $N$ has $\sigma_h(N)\notin\Z$.
@@ -1078,6 +1095,10 @@ $-1<D_N<1$, $-1<D_{N+1}<1$, $\delta_N\ne0$ is equivalent to
  \quad\hbox{or}\quad
  \bigl(\delta_N=-2\ \hbox{ and }-1<D_N<-\tfrac12\bigr).
 \]
+In either case, with $s=\delta_N/2\in\{-1,1\}$,
+$sD_{N+1}\in(-1,0)$ and both differences are nonintegral.
+The same statement holds for any real triple with $D'=2D-\delta$
+and even $\delta$, without a hypothesis on prime gaps.
 \end{theorem}
 
 \begin{proof}
@@ -2207,7 +2228,9 @@ print("Both tail rows and the denominator floor verified.")
 \end{verbatim}
 }
 
-\section{Verification and reproducibility}\label{long251:app:index}\compatlabel{app:index}
+\section{Verification and reproducibility}\label{long251:app:index}
+\papersectiontarget{scope-verification}
+\compatlabel{app:index}
 \pdfbookmark[1]{Statements and declarations}{statements-declarations}
 \evidenceparagraph{\evidencerecordurl}
 The source links identify definitions and proof steps at fixed revisions;
@@ -2432,6 +2455,7 @@ $\sum_{n\ge0}M(n)2^{-n}<\infty$, and put
 If for every $h\ge1$ and every $N_0$ there are $N\ge N_0$ and $L\ge1$ with
 $\operatorname{dist}(S_{h,N,L},\Z)>R_{h,N,L}(M)$, then the nonintegrality
 condition in Problem~\ref{long251:prob:escape} holds.
+Consequently $\Pi$ is irrational.
 \end{proposition}
 \end{samepage}
 

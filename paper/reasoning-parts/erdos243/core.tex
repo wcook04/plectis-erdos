@@ -830,7 +830,7 @@ where $[a_1,\ldots,a_n]$ is the least common
 multiple~\cite[Theorem~3, p.~132]{erdosstraus1964}.  This is the indexing in
 the original theorem. With $A_r=\operatorname{lcm}(a_1,\ldots,a_{r-1})$
 and $r=n+1$, its expression is exactly
-$(A_r/a_r)(a_r^2/a_{r+1}-1)$, the LCM quantity in the short note.
+$(A_r/a_r)(a_r^2/a_{r+1}-1)$, the LCM quantity considered here.
 The index change is not an additional difference between those two
 criteria. Erd\H{o}s's 1988 survey, followed by the
 catalogue summary, instead prints $a_n^2/a_{n+1}-1$ in the second factor while
@@ -1060,10 +1060,16 @@ For all $a,D,C\in\Z$,
  aC-D=C-\bigl(D-(a-1)C\bigr).
 \]
 Consequently, every solution of \eqref{long243:eq:recurrences} satisfies $C_{n+1}=C_n-E_n$.
+For the same sequences the second error identity is
+\[
+ (a_{n+1}-a_n^2+a_n-1)C_{n+1}=a_n^2E_n-E_{n+1}.
+\]
 \end{proposition}
 
 \begin{proof}
-$C-\bigl(D-(a-1)C\bigr)=aC-D$.
+$C-\bigl(D-(a-1)C\bigr)=aC-D$. The second identity follows
+by substituting $D_n=E_n+(a_n-1)C_n$ into the next error and using
+$D_{n+1}=a_nD_n$.
 \end{proof}
 
 $C_n$ decreases when $E_n>0$, increases when $E_n<0$, and
@@ -1229,6 +1235,10 @@ Let $a,a',D,C\in\Z$ with $aC-D\ne0$. If
  D-(a-1)C=0,\qquad aD-(a'-1)(aC-D)=0,
 \]
 then $a'=a^2-a+1$.
+Consequently, for integer sequences satisfying
+$D_{n+1}=a_nD_n$ and $C_{n+1}=a_nC_n-D_n$, eventual zero error and
+$C_{n+1}\ne0$ at all sufficiently large indices imply the eventual
+Sylvester recurrence.
 \end{theorem}
 
 \begin{proof}
@@ -1390,13 +1400,17 @@ $|E_n|<C_n$ at the subsequent indices.
 Let $a,C,D:\N\to\N$ satisfy $C_{n+1}+D_n=a_nC_n$ and
 $D_{n+1}=a_nD_n$, and put $E_n=D_n-(a_n-1)C_n$.
 Suppose that $|E_n|<C_n$ for every $n$.  If $E_n=0$ then $E_{n+1}=0$.
+For any positive integer sequence $C_n$ with $C_{n+1}=C_n-E_n$,
+eventual nonnegativity of the integer errors $E_n$ implies their
+ eventual vanishing.
 \end{theorem}
 
 \begin{proof}
 Putting $E_n=0$ in Theorem~\ref{long243:res:defect} gives
 $\Delta_n C_{n+1}=-E_{n+1}$, so $C_{n+1}$ divides $E_{n+1}$.  A multiple of
 $C_{n+1}$ of absolute value smaller than $C_{n+1}$ is zero, and
-$|E_{n+1}|<C_{n+1}$ by hypothesis.
+$|E_{n+1}|<C_{n+1}$ by hypothesis. For the descent clause, the positive
+integer sequence is eventually nonincreasing, hence eventually constant.
 \end{proof}
 
 Beyond an index from which $|E_n|<C_n$ always holds, either $E_n$
@@ -2370,9 +2384,8 @@ $F_n\le qP_n$: multiplying $E_n+qQ_n=o(1)$ by $F_n/(qP_n)$ gives
 \]
 Neither $F_nx_n$ nor $F_n-(a_n-1)F_nx_n$ need be integral. The LCM
 choice $F_n=L_n$ makes both integers, but its update includes the
-factor $\rho_n$ of Section~\ref{long243:sec:lcmrecords}. The short note
-uses only this LCM specialisation; no general clearing factor is
-needed in its bounded-increment proof.
+factor $\rho_n$ of Section~\ref{long243:sec:lcmrecords}. This LCM specialisation suffices for the bounded-increment proof;
+that proof needs no general clearing factor.
 
 \paragraph{Attribution.}
 Erd\H{o}s and Straus require $\limsup\le0$ in the corresponding criterion, with
@@ -2386,7 +2399,7 @@ replaces a nonpositive upper limit by an arbitrary finite upper limit.
 The material distinction here is product versus least common multiple.
 Reindexing $r=n+1$ makes the classical LCM expression
 $[a_1,\ldots,a_{r-1}]a_r^{-1}(a_r^2/a_{r+1}-1)$, exactly the expression
-in the short note's LCM corollary.
+in the LCM corollary below.
 
 The comparison $E_n+qQ_n=o(1)$ has its classical predecessor in
 Koizumi's proof of Corollary~4(1) \cite[(11)--(12), p.~15]{koizumi2025}.
@@ -2445,9 +2458,8 @@ $a_{n+1}=\lceil n a_n^2/(n+c)\rceil$ and choose the seed large enough
 that $a_{n+1}\ge a_n^2/(1+c)\ge2a_n$ throughout. The rounding remainder
 in $[0,1)$ gives an error in the ratio bounded by
 $(1+c)^2/a_n^2$, smaller than every fixed inverse power of $n$.
-This calculation supplies the family comparison behind the two rounded
-examples retained in the short note. It concerns their growth and does
-not assume rationality.
+This calculation supplies the growth comparison for the rounded
+examples below. It does not assume rationality.
 
 The second clause has a concrete application outside Koizumi's
 nonpositive-upper-limit product condition. The sequence
@@ -3080,6 +3092,8 @@ constancy under that hypothesis, nor does it bound the negative magnitudes.
 
 \papersectiontarget{243-long-bounded-increases}
 \section{Bounded negative part}\label{long243:sec:bounded}
+\papersectiontarget{long243-bounded}
+
 
 The lower bound $E_n\ge-B$ has two uses. At negative indices it
 bounds the gcd, making it stable. At every index it bounds the upward
@@ -3247,6 +3261,8 @@ $(-E_n)_+/C_n$ and not a bound on it.
 
 \papersectiontarget{243-long-open-questions}
 \section{Further questions}\label{long243:sec:open}
+\papersectiontarget{scope-relocated-criteria}
+
 
 We collect the restrictions on a possible counterexample and the
 estimates which would exclude it. The constant and periodic arguments
@@ -3346,9 +3362,91 @@ $|E_n|/C_n\to0$, $\log C_n=o(n)$ and $\sum_n(E_n/C_n)^2<\infty$.
 It is not an exact reciprocal-tail orbit. Indeed, $C_2=5$, $C_3=10$
 and $C_4=17$. The first numerator update forces $5\mid D_2$; the
 multiplicative denominator update gives $5\mid D_3$; the next numerator
-update then forces $5\mid C_4$, a contradiction. This is the failed-route
-example referred to at the end of the short note: subexponential size
+update then forces $5\mid C_4$, a contradiction. This failed-route
+example shows that subexponential size
 and a small relative error do not supply arithmetic compatibility.
+
+\begin{corollary}[a bound using the least common multiple]\label{res:lcmbounded}
+Assume the hypotheses of Problem~\ref{long243:res:problem}. Write
+$A_n=\operatorname{lcm}(a_1,\ldots,a_{n-1})$ with $A_1=1$. If
+\[
+ \limsup_{n\to\infty}\frac{A_n}{a_n}
+ \left(\frac{a_n^2}{a_{n+1}}-1\right)<\infty,
+\]
+then the sequence is eventually Sylvester.
+\end{corollary}
+
+\begin{proof}
+Since $L_n/A_n=q/\gcd(q,A_n)$ lies in $[1,q]$, an upper bound on the
+expression in the corollary gives an upper bound on
+$(L_n/a_n)(a_n^2/a_{n+1}-1)$; negative terms remain negative.
+The clearing-factor identity in Section~\ref{long243:sec:records} therefore bounds the
+negative part of $V_n$. Choose an integer $B$ above
+that eventual bound. The record series then vanishes after a finite prefix,
+so Theorem~\ref{long243:res:weightedrecord} applies.
+\end{proof}
+
+\subsection{Cumulative record weights}
+For $B\ge0$ put
+\[
+ F_B(X)=\sum_{\substack{n\in\mathcal R\\U_n\le X}}(-V_n-B)_+.
+\]
+The weighted criterion reduces the problem to a statement about this
+cumulative sum. We would need to show, from growth and rationality,
+that for some fixed integer $B\ge0$,
+\begin{equation}\label{eq:remaining-record-budget}
+ \liminf_{X\to\infty}\frac{F_B(X)}X=0.
+\end{equation}
+If the recurrence is not eventually Sylvester, first crossings instead give
+$F_B(X)\ge X/P_B-O_B(1)$, with an orbit-dependent CRT modulus $P_B$.
+The sum groups each record step by its starting numerator $U_n$, not by
+the running maximum $R_n$ or the time index. If the eventual Sylvester
+recurrence fails,
+$U_n\to\infty$, so only finitely many of these steps begin below any
+fixed $X$.
+To see the equivalence with an admissible weight, enumerate the record
+indices by $j$ and apply the next lemma with $u_j=U_n$ and
+$w_j=(-V_n-B)_+$. The lemma supplies a weight once
+\eqref{eq:remaining-record-budget} holds. Establishing that estimate
+would contradict the first-crossing lower bound and exclude every
+non-Sylvester rational tail.
+
+\begin{lemma}[weights and linear density]\label{res:weights}
+Let $u_j$ be positive integers, let $w_j\ge0$, and put
+$F(X)=\sum_{u_j\le X}w_j$, with the sum allowed a priori to be $+\infty$. Then $\liminf_{X\to\infty}F(X)/X=0$ if and only if
+there is a finite nonincreasing $f:[1,\infty)\to[0,\infty)$ with
+$\int_1^\infty f(t)\,dt=\infty$ and $\sum_jw_jf(u_j)<\infty$.
+\end{lemma}
+
+\begin{proof}
+Suppose the lower limit vanishes. Choose cutoffs at which the ratio
+$F(X)/X$ is small. Since $F$ is constant on each $[m,m+1)$, there are
+integers $X_1<X_2<\cdots$ with $X_k\ge2^k$ and
+$F(X_k)\le2^{-k}X_k$. Set
+\[
+ f(t)=\sum_{k\ge1}\frac{\mathbf 1_{[1,X_k]}(t)}{X_k}.
+\]
+This function is nonincreasing and bounded by $\sum_k2^{-k}$.
+Each cutoff contributes $1-1/X_k$ to its integral, but at most $2^{-k}$
+to the weighted sum. Interchanging nonnegative sums therefore gives
+\[
+ \int_1^\infty f(t)\,dt=\sum_k(1-1/X_k)=\infty,
+ \qquad
+ \sum_jw_jf(u_j)=\sum_k\frac{F(X_k)}{X_k}\le1.
+\]
+
+Conversely, let $f$ be such a weight and suppose $F(m)\ge cm$ for some $c>0$
+and all integers $m\ge M$. A nonincreasing nonnegative function with divergent
+integral is positive everywhere, so $F(X)\le f(X)^{-1}\sum_jw_jf(u_j)$ is
+finite. Partial summation gives, for $N>M$,
+\[
+ \sum_{u_j\le N}w_jf(u_j)
+ =F(N)f(N)+\sum_{m=1}^{N-1}F(m)\bigl(f(m)-f(m+1)\bigr)
+ \ge c\Bigl(Mf(M)+\sum_{m=M+1}^{N}f(m)\Bigr),
+\]
+every term being nonnegative. The right side diverges as $N\to\infty$, because
+$\sum_{m\ge1}f(m)\ge\int_1^\infty f(t)\,dt=\infty$.
+\end{proof}
 
 \subsection{Growth of the factors repeated in the denominator}
 
@@ -3699,6 +3797,8 @@ Bloom's Erd\H{o}s Problems catalogue~\cite{erdosproblems}.
 
 \appendix
 \section{Verification and reproducibility}\label{long243:app:index}
+\papersectiontarget{scope-verification}
+
 \evidenceparagraph{\evidencerecordurl}
 The fixed toolchain, library manifest and Lean sources are in the
 \href{\sourceurl}{public repository}. The evidence record identifies
@@ -3983,8 +4083,8 @@ The reduction remains useful because its shrinking-modulus argument
 applies to other recurrences defined by polynomial division.
 % ; - part family_catalogue ; -
 \section{Result map and proof dependencies}\label{sec:erdos-243-complete-family-map}
-The short paper proves cubic-rate irrationality in Section~3 and the
-bounded-increment criterion in Section~4. Their dependencies are
+The short paper proves cubic-rate irrationality. The bounded-increment
+criterion and the additional recurrence criteria are developed here. Their dependencies are
 summarised below. Details retained here are the signed-series
 comparison in Section~\ref{long243:sec:priorwork}, the integer-coefficient
 extension in Section~\ref{long243:sec:lcmrecords}, and the general
@@ -3992,8 +4092,7 @@ $1+c/n$ comparison in Section~\ref{long243:sec:records}.
 Section~\ref{long243:sec:cubicrate} retains the full regular-rate
 extraction and positive-density cubic exclusion;
 Theorem~\ref{long243:res:recorddichotomy} gives the separate
-double-logarithmic argument. The short note also includes the scalar
-failed-divisibility example from Section~\ref{long243:sec:open}.
+double-logarithmic argument. Section~\ref{long243:sec:open} gives the scalar failed-divisibility example.
 
 \paragraph{Bounded upward increments.}
 Vanishing relative error gives eventual absorption. Bounded negative

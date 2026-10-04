@@ -82,6 +82,12 @@ For two primes the conclusion is stronger.
 \begin{theorem}[two-prime transcendence]\label{long269:res:lead-two-prime}
 Let $p$ and $q$ be distinct primes.  Then $\mathcal R_{\{p,q\}}$ and
 $\mathcal D_{\{p,q\}}$ are transcendental.
+For $p<q$, put $\theta=\log p/\log q$ and
+$A=\sum_{n\ge0}p^{-n}q^{-\lfloor n\theta\rfloor}$. Then
+\[
+ \mathcal D_{\{p,q\}}=\frac{(q-p)A+p}{q-1},\qquad
+ \mathcal R_{\{p,q\}}=\frac{(p+q-1)A-(p-1)A^2}{q-1}.
+\]
 \end{theorem}
 \evidenceremark{The Lean proof assumes the transcendence theorem of Bugeaud
 and Laurent.}
@@ -120,8 +126,7 @@ Sections~\ref{long269:sec:blocks}--\ref{long269:sec:escape}; the finite
 calculations and open questions follow. Formal sources are collected in
 Section~\ref{long269:sec:proof-sources}. The
 \href{erdos-269-three-prime-running-lcm.pdf\#r4-five-map-theorem}{short paper}
-concentrates on the five-map theorem and the
-\href{erdos-269-three-prime-running-lcm.pdf\#r4-repeated-criterion}{repeated-tail criterion}.
+concentrates on the five-map theorem.
 
 We use $\N=\{0,1,2,\ldots\}$ for exponents and braces for fractional parts.
 In the finite-geometry section and in the kernel calculation, $P=\{p,q,r\}$ consists
@@ -1877,6 +1882,23 @@ multiple target values or stronger approximation data, and it does not
 settle the repeated running-LCM problem. Smith form is
 used here in its standard sense~\cite{stanley2016}.
 
+\begin{corollary}[the same minors modulo integers coprime to $30$]
+\label{res:admissible-modular-minors}
+For $(p,q,r)=(2,3,5)$ and every $n\ge1$, there are injective maps
+$I,J:\{0,\ldots,n-1\}\to\N$, chosen independently of $B$ and $k$, such that
+for every $B\ge2$ coprime to $30$ and every $k\ge0$, the selected $n\times n$
+kernel matrix has unit determinant over $\mathbb Z/B\mathbb Z$, with each
+reciprocal prime power interpreted by its modular inverse.
+\end{corollary}
+\begin{proof}
+Choose the maps from Theorem~\ref{long269:res:infinite-rank}.  Every row and column
+factor is a unit modulo $B$.  The normalised determinant is
+$5^{-1}(-4/5)^{n-1}$, also a unit.
+\end{proof}
+The modulus may be composite, for example $49$ or $77$.  Coprimality
+with $30$ makes both the reciprocal entries and the determinant units:
+the latter introduces only a power of $4$ in its numerator.
+
 \subsection{Uniform approximation of the rescaled kernel}\label{long269:sec:approximation}
 \papersectiontarget{r3-approximation}
 
@@ -2068,7 +2090,23 @@ The block masses are summable and $S=\sum_{a\ge0}s_a$.  For every $a\ge0$,
  \qquad
  X_a=\sum_{j\ge a}\frac{m_j}{b_ab_{a+1}\cdots b_j} .
 \end{equation}
+The coefficients need not be positional digits: $m_4=65>b_4=30$.
+Moreover
+\[
+ 0<X_a\le\frac{8640}{343}(a+1)^2<90(a+1)^2.
+\]
+For every integer $B\ge1$, either $BX_a$ is integral at some index and
+every later index, or its distance from $\Z$ is at least $1/31$ at
+arbitrarily large indices.
+Here $b_a\in\{2,6,10,30\}$.
+
 \end{theorem}
+
+The numerical example was calculated above. The quadratic bound follows
+from the stronger estimate in Theorem~\ref{long269:res:actual-tail-bound}:
+$n_a\le3a$ gives $Q(n_a)\le a^2+8a/3+2\le2(a+1)^2$.
+Proposition~\ref{long269:res:actual-dichotomy} proves the final alternative.
+Here we prove convergence and the recurrence.
 
 \begin{proof}
 Every exponent of $3$ or $5$ in the $a$th block is at most $a$, and for each
@@ -2202,6 +2240,8 @@ for every $B\ge1$ coprime to $30$, not merely for $B=1$.
 \section{Bounding the tails and clearing a rational denominator}
 \label{long269:sec:actual-orbit}
 \papersectiontarget{r3-repeated-bounds}
+\papersectiontarget{scope-repeated}
+
 
 We sharpen the quadratic estimate by counting points of equal running LCM.
 As the cutoff increases, one prime exponent increases at each jump, so
@@ -2288,8 +2328,8 @@ The cutoff in \eqref{long269:eq:endpoint-index} is $2^{a}$ and it is strict.
 The symbol $K(B,a)$ bounds an \emph{integral} quantity
 $BX_a$: from $BX_a\le BQ(n_a)$ one may take the floor only after integrality
 has been established.  We do not assert $BX_a\le K(B,a)$ for arbitrary
-real tails. The short paper uses the coarser bound
-$K_{\rm short}(B,a)=90B(a+1)^2$. In this record $K$ always denotes the
+real tails. The coarser real-tail bound
+$K_{\rm coarse}(B,a)=90B(a+1)^2$ is also valid. In this record $K$ always denotes the
 sharper bound in \eqref{long269:eq:actual-bound}; the residue theorem
 below allows either choice.
 
@@ -2664,8 +2704,7 @@ Equivalently, the starting integer must lie in
 \]
 A residue exceeding $K$ says exactly that this interval contains no
 integer. The floor in the definition of $K$ is legitimate here because
-integrality is being assumed. The short paper uses the coarser real-tail
-bound $90B(a+1)^2$ instead. The argument needs a valid bound on the
+integrality is being assumed. The coarser real-tail bound $90B(a+1)^2$ can also be used. The argument needs a valid bound on the
 possible integer tail and the stated growth condition, rather than a
 particular numerical choice.
 
@@ -2925,6 +2964,19 @@ contains the programs and saved outputs for the larger scan and the two
 larger denominator exclusions. These computations establish the stated
 finite cases. The criterion still requires every denominator and every
 starting threshold, which no finite scan supplies.
+
+For comparison with a coarse tail estimate, the finite segment
+$\ell=1,h=6$ has $W_{1,6}=648000$ and $F_{1,6}=524431$.
+Using $K_{\rm coarse}(B,a)=90B(a+1)^2$, the cap at $B=1,a=7$ is $5760$.
+Thus
+\[
+ \frac{524431}{648000}<X_1\le\frac{530191}{648000}<1,
+ \qquad \operatorname{lpr}_{648000}(-524431)=123569>5760.
+\]
+This excludes an integral tail at that start; it does not exclude a
+rational denominator that clears only later. The sharper cap $K$ used
+above has a different definition.
+
 
 \subsection{Checking individual segments}
 
@@ -3723,6 +3775,8 @@ uses Fan's earlier reduction to the cited Hecke--Mahler value theorem.
 
 \pdfbookmark[1]{Statements and declarations}{statements-declarations}
 \subsection*{Verification and reproducibility}\label{long269:sec:proof-sources}
+\papersectiontarget{scope-verification}
+
 \evidenceparagraph{\evidencerecordurl}
 
 \paragraph{Proof sources.}

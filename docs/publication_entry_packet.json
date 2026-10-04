@@ -107,13 +107,13 @@
   },
   "authority_posture": "navigation_projection_not_Lean_proof_authority_and_not_historical_evidence_authority",
   "content_hashes": {
-    "docs/claims.json": "sha256:a9585ba52513078c062569fa95acc7291a990e08daab3b70ac315f6282106751",
+    "docs/claims.json": "sha256:476a3f4856d451b9814e84c78cee99a4445baa624358e033ccab035773b62604",
     "docs/methodology.json": "sha256:cef19d9092c49ba9c9b269a4b04c2c6030164bba6b80561117577713f60c3750",
-    "docs/problems.json": "sha256:e8e1d7c043cfc172833f1cf5a60896534759346bc65a1e62f5d50bbf5dc5c175",
-    "docs/publication_contract.json": "sha256:522dbb9b4683cca10b67a64d7c3c6e465a8b52caf88ee3fc9deb384aab7d2f0b",
+    "docs/problems.json": "sha256:412bfdfa221e46a0b5e580c81dddae62a021d27e868e829f7820bb1073747b9c",
+    "docs/publication_contract.json": "sha256:3a0b13381094e64adf19f0c8eefa6073e80f0bf573b656f94a270fcbdf604b69",
     "docs/publication_entry_source.json": "sha256:42d7d0097c961fb3fd06a061a5c226f3b91761dfd3e96eaab05c198a65c1470e",
     "docs/publication_evidence.json": "sha256:4e350698eed8b4ee10fc629cfb7540ed71bc6ccf4020ee2ede8635f4aae809b3",
-    "paper/systems/claim-faithful-publication-systems-paper.pdf": "sha256:38521d1b5a4c24277bcaa6a239a6b2549eb31bf9bda3fe61b497afad92b64a1a",
+    "paper/systems/claim-faithful-publication-systems-paper.pdf": "sha256:9d09b9cf29cae7014ebbb86c2e329fbdc35656cf4c1198b1ac39d686b68624ed",
     "paper/systems/claim-faithful-publication-systems-paper.tex": "sha256:9c7392d5e686da61bd5f3f761ffad93865c350201ca4c3e6628c2af7d35ff6a7",
     "research/experiments/publication_mutations.json": "sha256:9243e270257869e7a191c7598e917457cab61194299d1651e21bbc45a2d4c1e3",
     "research_corpus/Erdos1041/CORPUS_MANIFEST.json": "sha256:6f456a92e30ed2318d6c342f2e80dbbc77be39a14e051828ef215ffb8b001bbd",
@@ -330,8 +330,8 @@
       "open_target_claim": "universal_257",
       "paper_anchor": {
         "environment": "problem",
-        "line": 1439,
-        "source": "paper/257/erdos-257-mersenne-support-subseries.tex",
+        "line": 9375,
+        "source": "paper/257/erdos257-mersenne-reasoning-surface.tex",
         "title": "membership of 1/21 in the Mersenne achievement set"
       },
       "statement": "Decide the exact 1/21 branch: equivalently, exclude the fatal/cofinite/aligned branch, contradict its eventual permanent affine-supercapacity recurrence, prove cofinally bounded scaled greedy remainders, or force an unbounded sequence of closed canonical quotient rows. A positive membership result would refute universal #257; no such producer is proved.",
@@ -366,7 +366,7 @@
       "open_target_claim": "erdos_1041",
       "paper_anchor": {
         "environment": "problem",
-        "line": 75,
+        "line": 73,
         "source": "paper/1041/erdos-1041-lemniscate-newton-flow.tex",
         "title": "Erdős #1041"
       },
@@ -390,7 +390,7 @@
       "open_target_claim": "erdos_243",
       "paper_anchor": {
         "environment": "problem",
-        "line": 59,
+        "line": 57,
         "source": "paper/243/erdos-243-reciprocal-tail-rigidity.tex",
         "title": "Erdős Problem 243"
       },
@@ -401,10 +401,10 @@
       "id": "remaining_open.erdos_269_reduced_tail_nonintegrality",
       "open_target_claim": "erdos_269",
       "paper_anchor": {
-        "environment": "problem",
-        "line": 611,
-        "source": "paper/269/erdos-269-three-prime-running-lcm.tex",
-        "title": "no reduced tail is an integer"
+        "environment": "subsection",
+        "line": 3812,
+        "source": "paper/269/erdos269-running-lcm-reasoning-surface.tex",
+        "title": "The unresolved repeated-sum question"
       },
       "statement": "Prove that B·T_a ∉ ℤ for every B ≥ 1 coprime to 30 and every a ≥ 1.",
       "status": "open"
@@ -413,10 +413,10 @@
       "id": "remaining_open.erdos_269_cofinal_local_window_escape",
       "open_target_claim": "erdos_269",
       "paper_anchor": {
-        "environment": "problem",
-        "line": 617,
-        "source": "paper/269/erdos-269-three-prime-running-lcm.tex",
-        "title": "residue inequalities after every starting index"
+        "environment": "section",
+        "line": 2679,
+        "source": "paper/269/erdos269-running-lcm-reasoning-surface.tex",
+        "title": "A residue criterion and the bounds it allows"
       },
       "statement": "Prove that for every B ≥ 1 coprime to 30 and every a₀ ≥ 1 there are ℓ ≥ a₀ and h ≥ 1 with lpr_{W(ℓ,h)}(−B·F(ℓ,h)) > K(B, ℓ+h), where K is the defined long-paper cap.",
       "status": "open"
@@ -426,7 +426,7 @@
       "open_target_claim": "erdos_269",
       "paper_anchor": {
         "environment": "problem",
-        "line": 3580,
+        "line": 3632,
         "source": "paper/269/erdos269-running-lcm-reasoning-surface.tex",
         "title": "an exact function representing the distinct-height sum"
       },
@@ -438,8 +438,8 @@
       "open_target_claim": "erdos_243",
       "paper_anchor": {
         "environment": "problem",
-        "line": 1105,
-        "source": "paper/243/erdos-243-reciprocal-tail-rigidity.tex",
+        "line": 3593,
+        "source": "paper/243/erdos243-reciprocal-tail-reasoning-surface.tex",
         "title": "growth of repeated denominator factors"
       },
       "statement": "Decide whether every nonterminal canonical orbit of the reduced-orbit problem has limsup_n (log M_n)/n > 0, equivalently 2^n ≤ M_n^K infinitely often for some K ≥ 1.",
@@ -449,10 +449,10 @@
       "id": "remaining_open.erdos_249_first_harmonic_anti_concentration",
       "open_target_claim": "erdos_249",
       "paper_anchor": {
-        "environment": "problem",
-        "line": 789,
-        "source": "paper/249/erdos-249-binary-totient-series.tex",
-        "title": "Four estimates for the first-harmonic sum"
+        "environment": "subsection",
+        "line": 1255,
+        "source": "paper/249/erdos249-totient-reasoning-surface.tex",
+        "title": "A four-term bound for the real part"
       },
       "statement": "Decide whether, for each h ≥ 1, some s ≥ 1 and 0 < η < 1 give, for every X₀, admissible X and L meeting the displayed size conditions for which the four first-harmonic bounds hold.",
       "status": "open"
@@ -462,8 +462,8 @@
       "open_target_claim": "universal_257",
       "paper_anchor": {
         "environment": "problem",
-        "line": 1455,
-        "source": "paper/257/erdos-257-mersenne-support-subseries.tex",
+        "line": 9391,
+        "source": "paper/257/erdos257-mersenne-reasoning-surface.tex",
         "title": "bounded returns of the scaled remainder"
       },
       "statement": "Decide whether the scaled actual greedy remainder returns cofinally to one bounded interval: whether some B < ∞ has 2^N r_N ≤ B at arbitrarily large N.",
@@ -474,8 +474,8 @@
       "open_target_claim": "universal_257",
       "paper_anchor": {
         "environment": "problem",
-        "line": 1464,
-        "source": "paper/257/erdos-257-mersenne-support-subseries.tex",
+        "line": 9400,
+        "source": "paper/257/erdos257-mersenne-reasoning-surface.tex",
         "title": "arithmetic tests for the greedy sequence"
       },
       "statement": "Decide whether a bounded-memory 2-adic or discrepancy invariant of the actual support forces a closed return or forbids permanent supercapacity, or prove no such invariant exists.",
@@ -486,8 +486,8 @@
       "open_target_claim": "universal_257",
       "paper_anchor": {
         "environment": "problem",
-        "line": 1475,
-        "source": "paper/257/erdos-257-mersenne-support-subseries.tex",
+        "line": 9411,
+        "source": "paper/257/erdos257-mersenne-reasoning-surface.tex",
         "title": "final-skip Diophantine exclusion"
       },
       "statement": "Decide whether the final-skip signatures prove |E − a_M| ≥ gap_M, contradicting 0 < a_M − E < gap_M, for E = ∑_{n≥1}(2^n − 1)^{−1} and the last-skip approximant a_M.",
@@ -531,7 +531,7 @@
     ],
     "reading_rule": "Read FRONTIER.md for dated refutations and open gaps, then STRONGEST_RESULTS.json for source-pinned activation. Premises and falsifiers retain local hypotheses; research rows do not settle historical correspondence or become Comparator claims.",
     "source_index": {
-      "content_digest": "sha256:e8e1d7c043cfc172833f1cf5a60896534759346bc65a1e62f5d50bbf5dc5c175",
+      "content_digest": "sha256:412bfdfa221e46a0b5e580c81dddae62a021d27e868e829f7820bb1073747b9c",
       "path": "docs/problems.json"
     },
     "strongest_result_summary": {

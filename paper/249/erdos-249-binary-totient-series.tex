@@ -21,7 +21,7 @@
 
 \runninghead{Integral relations among totient sections}
 \title{Integral Relations among Totient Sections}
-\subtitle{Finite-level bases and bounded residue series}
+\subtitle{Finite-level bases and integral relations}
 \author{Will Cook}
 \date{July 2026; revised 1 October 2026}
 
@@ -39,8 +39,7 @@ where $k\ge2$ and $e\ge1$. The basis has $k^e+1$ elements, and
 every other sequence is an explicit integer multiple of one of them.
 We prove independence by constructing nonsingular evaluation matrices
 and compare this argument with Martin's stronger affine theorem.
-A related congruence construction classifies rational binary series
-formed from dyadic totient residues. Irrationality of the unreduced
+Irrationality of the unreduced
 binary totient series remains open.
 \end{abstract}
 
@@ -132,20 +131,13 @@ prime divisors on all the others.
 
 Section~\ref{sec:rank} proves the basis theorem.
 Section~\ref{sec:base-six-test} starts with the six reductions in base
-six and derives the integral relation basis. In Section~\ref{sec:family}
-we use prime isolation again, for bounded functions of totient residues.
-The series
-\[
- S=\sum_{n\ge1}\frac{\varphi(n)}{2^n}
-\]
-has unbounded coefficients. Its irrationality, asked in
-Erd\H{o}s Problem~\#249~\cite[p.~61]{erdosgraham1980}, remains open.
-The coefficient basis supplies no irrationality conclusion for this
-value. Appendix~\ref{app:sources} gives further coefficient
-consequences; Appendices~\ref{sec:carry-rank} and~\ref{sec:open}
-collect the tail identities, comparison sequences and still-unproved
-cancellation estimates relevant to $S$. Their longer proofs are in
-\longrecord{long249-r3-complements}{\emph{The Binary Totient Series}}.
+six and derives the integral relation basis. The series
+$S=\sum_{n\ge1}\varphi(n)2^{-n}$ has unbounded coefficients, and its
+irrationality remains open (Erd\H{o}s Problem~\#249~\cite[p.~61]{erdosgraham1980}).
+The basis theorem supplies no irrationality conclusion for this value.
+The \longrecord{short249-residues}{long record's residue classification}
+and \longrecord{short249-first-harmonic}{exponential-sum question}
+pursue the distinct arithmetic questions.
 
 \section{Proof of the basis theorem}\label{sec:rank}
 \papersectiontarget{short249-proof}
@@ -350,497 +342,15 @@ integer-valued and has coefficient $1/2$ in the retained basis.
 Thus this module is not saturated in the group of integer-valued
 sequences.
 
-An alternative is to test equality at finitely many inputs. Return
-to base six and level two. Order the retained columns as above, with
-residues increasing within each level, and evaluate at
-$n=0,\ldots,36$ to obtain a $37\times37$ matrix.
-Its determinant is $17$ modulo $101$, so it is nonsingular over $\Q$.
-Consequently a retained combination is zero if and only if all $37$
-of its integer evaluations are zero. Here reduction modulo $101$
-certifies the matrix, not the equality of a proposed combination:
-$101F_{2,2}$ would vanish modulo $101$ at every input, although its
-integer value at $n=0$ is $101$.
-The script \texttt{scripts/totient\_kernel\_normal\_form.py} calculates
-the coordinates and the first nonzero evaluation using integer arithmetic.
 
-\section{Bounded functions of totient residues}\label{sec:family}
-\papersectiontarget{short249-residues}
-In the evaluation proof, congruences make one totient value nonzero
-modulo the auxiliary prime in each row. Here they isolate one nonzero
-residue between two arbitrarily long zero blocks. Rationality confines
-every scaled tail to a fixed discrete set. Boundedness and the zero
-blocks then force a nonzero tail whose absolute value is smaller than
-the spacing of that set.
-In the first sum below, residues are represented by their least
-nonnegative values. These coefficients need not be binary digits.
-\begin{theorem}[Series of totient residues]\label{res:residueseries}
-For every $m\ge3$,
-\[
- \sum_{n\ge1}\frac{\ph(n)\bmod m}{2^n}\notin\Q.
-\]
-For $k\ge1$ and $f:\Z/2^k\Z\to\Q$, the series
-$\sum_{n\ge1}f(\ph(n)\bmod2^k)2^{-n}$ is rational exactly when $f$ is
-constant on the even residue classes. If that constant is $c$, its value is
-$3f(1)/4+c/4$.
-\end{theorem}
-Modulo two the sum is $3/4$, since $\varphi(n)$ is even for $n\ge3$.
-More generally only $f(1)$ and the even residue classes occur in the
-second assertion. The following coefficient pattern is the basis of the proof:
-\[
- \underbrace{0,\ldots,0}_{L\text{ terms}},\quad
- a_N\ne0,\quad
- \underbrace{0,\ldots,0}_{L\text{ terms}}.
-\]
-The coefficients outside these blocks may have either sign. Their
-uniform bound is what makes the following argument possible.
-\begin{lemma}[An isolated nonzero coefficient between long zero blocks]\label{lem:bounded-pulse}
-Let $a_n\in\Z$ satisfy $|a_n|\le C$. Suppose that for arbitrarily large $L$
-there is $N>L$ such that $a_N\ne0$ and
-$a_{N+t}=0$ for $0<|t|\le L$. Then $\sum_{n\ge1}a_n2^{-n}$ is irrational.
-\end{lemma}
-\begin{proof}
-Suppose that the sum has denominator $q\ge1$. Multiplying it by
-$2^j$ and removing its finite integer prefix shows that every scaled
-tail $T_j=\sum_{t\ge1}a_{j+t}2^{-t}$ belongs to $q^{-1}\Z$.
-Choose a pattern with $C2^{-L}<1/q$. The block on the right gives
-\[
- |T_N|\le C\sum_{t>L}2^{-t}=C2^{-L}<1/q.
-\]
-The only element of $q^{-1}\Z$ in this interval is zero, so $T_N=0$.
-Now start before the left block. The next $L$ coefficients vanish,
-and the entire contribution after $a_N$ has just been shown to be
-zero. Consequently
-\[
- T_{N-L-1}=a_N2^{-L-1},\qquad
- 0<|T_{N-L-1}|\le C2^{-L-1}<1/q,
-\]
-contradicting $T_{N-L-1}\in q^{-1}\Z$.
-\end{proof}
-For example, the indicator of the squares satisfies the lemma.
-An eventually periodic sequence with infinitely many nonzero terms
-does not have isolated coefficients at arbitrarily large distances.
-The uniform bound $C$ is essential to this argument.
-
-\begin{proof}[Proof of Theorem~\ref{res:residueseries}]
-Fix a unit $s\pmod m$ and a positive integer $L$.
-Choose distinct primes $q_t\equiv1\pmod m$, all exceeding $L$, for
-$0<|t|\le L$. The congruences
-\[
- p\equiv s\pmod m,\qquad p\equiv-t\pmod{q_t}\quad(0<|t|\le L)
-\]
-define a reduced progression, since $s$ is a unit modulo $m$ and
-$0<|t|<q_t$. CRT and Dirichlet's theorem therefore allow us to choose
-an arbitrarily large prime $p>L+1$ on this progression, with
-$m\mid\varphi(p+t)$ at every neighbour and
-$\varphi(p)\equiv s-1\pmod m$ at the centre.
-
-For a rational-valued function $f$ on the residue classes, subtract
-$f(0)$ and multiply by a common denominator of its values. Since
-$\sum_{n\ge1}2^{-n}=1$, these operations preserve whether the sum is
-rational. If $f(s-1)\ne f(0)$, the resulting bounded integer sequence
-has an isolated nonzero coefficient for every $L$, so the lemma
-applies.
-For the least-residue map we take $s=-1$ and obtain the nonzero
-residue $m-2$ when $m\ge3$. When $m=2^k$, each even residue $r$
-is of the form $s-1$ with $s$ a unit, so nonconstancy on the even
-classes gives an irrational sum by the same argument.
-Conversely, if $f$ is constant there, all terms after $n=2$ equal
-$c$ and we obtain $3f(1)/4+c/4$.
-\end{proof}
-
-The first assertion is also an application of Erd\H{o}s's sparse-series
-criterion~\cite[Lem.~1, p.~213]{erdos1957}, and of Kaneko, Suzuki and
-Tachiya~\cite[Thm.~3]{kst2026}. The residues are bounded and nonnegative,
-and the prime construction above makes their support infinite.
-The nonzero residues occur on a set of density zero: an integer in that
-set has no prime divisor
-$p\equiv1\pmod m$. Wong gave the case in which the base equals the
-modulus~\cite{wong2015}. The isolated-coefficient argument above also
-treats signed values of $f-f(0)$, for which those nonnegative
-sparse-series criteria need an additional spacing hypothesis.
-The \longrecord{long249-r3-residue-extension}{extension to other bases}
-treats every integer $t\ge2$ and proves rational linear
-independence of $1$ and $\sum_n(\varphi(n)\bmod m)t^{-dn}$, $d\ge1$.
-
-\appendix
-\section{Further consequences for the sections}\label{app:sources}
-\papersectiontarget{short249-sources}
-The finite-level theorem also describes the full dyadic kernel.
-The notation below specialises the base to two.
-
-\begin{corollary}[Dyadic basis]\label{res:basis}
-The family
-\[
- \{\ph_{0,0},\ph_{1,0}\}
- \cup\{\ph_{j,r}:j\ge1,\ 0<r<2^j,\ r\text{ odd}\},
- \qquad \ph_{j,r}(n)=\ph(2^jn+r),
-\]
-is a basis for the rational span of the full dyadic kernel. Every rational
-relation is generated by the scalar reductions. The complete level-zero
-truncation has dimension one.
-\end{corollary}
-\begin{proof}
-Each finite subset of this family is contained in some
-$\mathcal B_{2,e}$. Theorem~\ref{thm:kkernelrank} gives independence,
-and its reductions give spanning. At level zero the sole section
-$\varphi(n)$ is nonzero, since $\varphi(1)=1$.
-\end{proof}
-
-The affine argument also permits periodic coefficients by restriction
-to their common residue classes.
-\begin{corollary}[Periodic coefficients]\label{cor:periodic-freezing}
-Let $L_1,\ldots,L_s$ be pairwise nonproportional affine forms with integer
-coefficients and positive slopes. If $w_1,\ldots,w_s$ are rational-valued
-periodic sequences, then
-\[
- \sum_i w_i(n)\ph(L_i(n))=0\quad\text{for all sufficiently large }n
- \quad\Longrightarrow\quad w_i(n)=0\quad\text{for every }i,n.
-\]
-\end{corollary}
-\begin{proof}
-We choose a common period $Q$ and restrict to $n=r+Qt$. The
-coefficients are now the constants $w_i(r)$, and the cross
-determinants are $Q(a_i b_j-a_j b_i)\ne0$. By shifting $t$ beyond
-the given threshold we can apply affine independence, obtaining
-$w_i(r)=0$ for every $i$. We repeat this for each residue $r$;
-periodicity then gives the conclusion even at the indices preceding
-the threshold.
-\end{proof}
-Proportional forms are excluded for a reason: the identity
-$\varphi(4n+2)=\varphi(2n+1)$ would otherwise contradict the conclusion.
-Martin's theorem gives the same corollary on each
-progression~\cite[Thm.~1]{martin-phi-inequalities}.
-
-Coons's proof of nonregularity counts the poles of
-$\zeta(s-1)/\zeta(s)$~\cite[Cor.~3.1, Thm.~3.2]{coons}.
-For an integer-valued sequence, finite dimension of the rational kernel
-span is equivalent to finite generation of its integral kernel module:
-choose finitely many evaluations that embed the span in $\Q^d$;
-the module embeds in $\Z^d$, whose subgroups are finitely generated
-(compare~\cite[App.~A]{coons-jsr}).
-Theorem~\ref{thm:kkernelrank} recovers this nonregularity and gives
-the ranks of its finite truncations.
-For an account of the earlier separation method, see Allouche, Shallit
-and Yassawi~\cite[Thm.~3, Ex.~4, Rem.~7]{allouche-shallit-yassawi}.
-
-These facts have a functional consequence. A $k$-Mahler equation has
-the form $\sum_{i=0}^d P_i(z)F(z^{k^i})=0$, with
-$P_i\in\Q[z]$ and $P_0\ne0$.
-The height theorem of Adamczewski, Bell and Smertnig implies that a
-$k$-Mahler series with integer coefficients of polynomial growth is
-$k$-regular~\cite[Thm.~1.2(b)]{adamczewski-bell-smertnig2023}.
-Since $\varphi(n)\le n$, its logarithmic height is at most $\log n$,
-so $F_\varphi(z)=\sum_{n\ge1}\varphi(n)z^n$ has no such equation.
-Bell and Smertnig's multiplicative classification gives the same
-conclusion~\cite[Thm.~1.3]{bell-smertnig2026}.
-Bell, Bruin and Coons treat related algebraic and $D$-finite series,
-the latter satisfying a linear differential equation with polynomial
-coefficients~\cite[Thms.~1.5--1.6]{bell-bruin-coons}.
-These statements concern the function, and do not determine
-$F_\varphi(1/2)$.
-
-The section operators $T_i g(n)=g(kn+i)$ satisfy
-\[
- T_iF_{j,r}=F_{j+1,k^ji+r},\qquad
- V_{k,e+1}=V_{k,e}+\sum_{i=0}^{k-1}T_iV_{k,e}.
-\]
-To obtain the second identity, write every residue at level $j+1$
-as $k^ji+r$. For a positive retained residue, the resulting section
-is again retained. For the two zero-residue generators, use
-$T_iF_{0,0}=F_{1,i}$ and $T_iF_{1,0}=F_{2,ki}$ followed by the
-zero-residue or scalar reduction. We thus obtain a positive integer
-multiple of a basis element in every case, although the increasing
-dimensions prevent any finite truncation from being invariant.
-The growth formula using the joint spectral radius for finite-dimensional regular
-sequences~\cite[Thm.~1, Prop.~4, Cor.~7]{coons-jsr} therefore does not
-apply to $\varphi$.
-
-\section{The binary totient series}\label{sec:carry-rank}
-\papersectiontarget{short249-tails}
-The proof of Theorem~\ref{res:residueseries} uses boundedness where a long zero
-block makes the tail small. For $S$, the estimate
-$0\le\varphi(n)\le n$ proves convergence, but forcing
-$2^L\mid\varphi(N+L)$ with $N+L>1$ already requires
-$2^L\le N+L-1$. The tail bound $(N+L+2)2^{-L}$ then exceeds $1$.
-This is a failure of the estimate, not a lower bound on the tail.
-Thus this divisibility construction does not supply the small nonzero
-tail needed to exclude a rational value. We consider instead a
-finite test for differences of scaled tails.
-
-Put $R_N=\sum_{j\ge1}\varphi(N+j)2^{-j}$ and
-$\Delta_h(N)=R_{N+h}-R_N$. Subtracting the finite-prefix identities
-for $2^{N+h}S$ and $2^NS$ gives
-\begin{equation}\label{eq:tail-phase}
- \Delta_h(N)\equiv2^N(2^h-1)S\pmod\Z.
-\end{equation}
-If $S=a/(2^cv)$, with $v$ odd, then $\Delta_h(N)$ is integral for
-$N\ge c$ and $h=\varphi(v)$. To disprove rationality it therefore
-suffices to find a nonintegral difference beyond every threshold for
-each positive $h$.
-
-For $h,N,L\in\N$, define the integer
-\[
- D_{h,N,L}=\sum_{j=0}^{L-1}
-   \bigl(\varphi(N+h+1+j)-\varphi(N+1+j)\bigr)2^{L-1-j},
- \qquad B=N+h+L+2.
-\]
-Since $0\le R_M\le M+2$, we have
-\begin{equation}\label{eq:tail-error}
- 2^L\Delta_h(N)-D_{h,N,L}=R_{N+h+L}-R_{N+L},\qquad
- |2^L\Delta_h(N)-D_{h,N,L}|\le B.
-\end{equation}
-The two tails are nonnegative, so their difference is bounded in
-absolute value by the larger tail bound, not the sum of the bounds.
-Thus $D_{h,N,L}/2^L$ approximates $\Delta_h(N)$ with error at most
-$B/2^L$. To exclude an integer value, the approximation must lie
-farther than this error from every integer. Equivalently, the residue
-of $D_{h,N,L}$ must avoid both ends of the interval $[0,2^L)$.
-Thus the finite inequality
-\begin{equation}\label{eq:r3-certificate}
- B<D_{h,N,L}\bmod2^L<2^L-B
-\end{equation}
-forces $\Delta_h(N)\notin\Z$.
-Conversely, hold $h,N$ fixed and suppose that
-$\|\Delta_h(N)\|_{\R/\Z}>0$. Choose $L$ so that
-$2^L\|\Delta_h(N)\|_{\R/\Z}>2B$: the left side grows exponentially,
-whereas $B=N+h+L+2$ grows linearly. The same error estimate gives
-\eqref{eq:r3-certificate}. This detects every nonintegral difference
-at some depth. A failed test at one depth proves no integrality:
-the error interval may simply be too wide to separate the value from
-$\Z$. Increasing the depth eventually detects each fixed nonintegral
-difference, but does not produce such a difference for each $h$.
-For example, $D_{1,12,16}=-143140$ has residue $53468$ modulo $2^{16}$,
-and $B=31$, so it excludes denominators dividing $2^{12}$.
-
-\subsection{Equivalent residue conditions}\label{sec:frontier}
-We write $K(h,N,L)$ for \eqref{eq:r3-certificate}.
-\begin{theorem}[Propagation of one nonintegral tail difference]\label{res:fulldepth}
-Fix $d\ge1$ and $N\ge0$. If $\Delta_d(N)\notin\Z$, then every sufficiently
-late pair $\{t,t+1\}$ contains an $m$ such that $K(md,N,md)$ holds.
-Consequently
-\[
- \exists t\ge1:\ K(td,N,td)
- \quad\Longleftrightarrow\quad\Delta_d(N)\notin\Z.
-\]
-Requiring this for every $d\ge1,N\ge0$ is equivalent to $S\notin\Q$.
-\end{theorem}
-Here the depth is no longer free: it must equal the shift. The recurrence
-$\Delta_{(t+1)d}(N)\equiv2^d\Delta_{td}(N)+\Delta_d(N)\pmod\Z$
-prevents two consecutive large shifts from both failing the test.
-Two failures would force the fixed nonintegral $\Delta_d(N)$ arbitrarily
-close to an integer. The estimates are in
-\longrecord{long249-r3-ray}{Appendix A of the companion paper}.
-A single pair $d,N$ need not imply irrationality; the final assertion
-requires every positive $d$ and every $N\ge0$.
-
-For a hypothetical denominator $2^cv$, a second test uses the
-modulus $M=(2^H-1)/v$, where $H$ is a positive multiple of $\varphi(v)$.
-Write $B_{H,c}=\sum_{j=0}^{H-1}\varphi(c+1+j)2^{H-1-j}$.
-\begin{equivform}[A residue test modulo a divisor of $2^H-1$]\label{res:canonicalmersenne}
-The series $S$ is irrational if and only if, for every $c\ge0$ and odd
-$v\ge1$, some positive multiple $H$ of $\ph(v)$ satisfies
-\begin{equation}\label{eq:canonical-gap}
- c+H+1<(-B_{H,c})\bmod M<M-(c+H+1).
-\end{equation}
-\end{equivform}
-The choice of modulus makes
-$B_{H,c}=M(vR_c)-\Delta_H(c)$. Under the hypothetical rationality
-assumption, $vR_c$ is an integer, so the first term is a multiple of
-$M$ and only the small tail difference remains modulo $M$.
-The \longrecord{long249-r3-mersenne}{proof and residue recurrence}
-also give the converse by keeping $c,v$ fixed and letting $H$ grow.
-The required residues have not been shown to exist for every choice
-of the parameters in either test. A separate
-\longrecord{long249-r3-farey}{Farey-interval calculation} at depth $240$
-excludes $S=a/q$ for $0<q\le Q_0\approx7.96\times10^{34}$.
-
-\subsection{Comparison sequences}\label{sec:nogo}\label{sec:signed-interpolation-transfer}
-Large ranks alone cannot settle the series question. There is an integer
-sequence $c$ with $0\le c(n)\le n$, unchanged odd totients and
-$|c(n)-\varphi(n)|\le2$ at even indices, for which
-$\sum c(n)2^{-n}=5/4$. Its carry is the integer sequence
-\[
- u_N=4\sum_{j\ge1}c(N+j)2^{-j}
-     =5\cdot2^N-4\sum_{n=1}^{N}c(n)2^{N-n}.
-\]
-For $j\ge1$ and odd $0<r<2^j$, the recurrence gives
-\[
- 4\varphi(2^jn+r)=2u_{2^jn+r-1}-u_{2^jn+r}.
-\]
-Thus the $2^e-1$ independent odd-residue totient sections lie in the
-span of the carry sections through level $e$. This explains how the
-rank lower bound survives even though the sum is rational.
-The \longrecord{long249-r3-comparisons}{construction and its limitations}
-explain why it fails the exact prime-dilation laws of $\varphi$.
-The same section retains the cofinal LCM-diagonal criterion, its endpoint
-sign conditions and the limits of finite integer combinations of shifts.
-
-The \longrecord{long249-r3-interpolation}{signed interpolation
-argument} gives a different family of comparison sequences. For each
-integer $\beta\ge2$, their sums can take any value in an interval about
-$\sum\varphi(n)\beta^{-n}$, while a prescribed prefix and every odd
-coefficient stay fixed. The errors may be bounded by any positive
-$f(n)\to\infty$, and the changed even indices have upper Banach
-density zero. On each fixed arithmetic progression, the difference
-of the associated Dirichlet series is entire. At roots of unity, the
-difference of the generating functions extends smoothly in the radial
-direction, with any prescribed finite collection of radial derivatives
-vanishing. Thus the Dirichlet singularities are preserved, although
-regular parts and zeros may change; finitely many radial derivatives
-do not determine the full radial germ. This ordinary proof has not
-been formalised in Lean and gives no cancellation estimate for the
-unchanged totient sequence.
-
-Rational approximation imposes a different requirement. The identity
-\[
- \Theta_2:=\sum_{d\ge1}\frac{\mu(d)}{(2^d-1)^2}=S-\frac12
-\]
-was posted by Amiram Eldar, together with its coprimality interpretation,
-on 15 March 2026~\cite{eldar2026oeis}, and by Steve Fan on
-16 May 2026~\cite{fan2026totient}.
-Consider the rational quotients
-\[
- Q(e,Y)=\frac{\bigl(\sum_{d\le Y}\mu(d)/(2^d-1)^{e+2}\bigr)^2}
-      {\sum_{d\le Y}\mu(d)/(2^d-1)^{2e+2}}.
-\]
-\begin{theorem}[A lower bound for the rank-one quotients]\label{res:rankonefloor}
-For $e\ge1$ and $Y\ge4$, the denominator of $Q(e,Y)$ is positive, and the
-unique minimiser is $(e,Y)=(1,5)$. Every admissible quotient and every
-nonempty finite positive weighted average of such quotients satisfies
-\[
- Q-\Theta_2>\frac{21}{320}.
-\]
-The uniform bound $Q-\Theta_2>1/15$ is false already at $(1,5)$.
-\end{theorem}
-The \longrecord{long249-r3-rankone}{proof} first makes the denominator
-uniformly positive. A geometric bound handles all $e\ge2$; at $e=1$,
-seven-term prefixes leave only $Y=4,5,6$ to compare directly.
-The averaging assertion concerns averages of the quotients themselves.
-It leaves open signed combinations, quotients formed after combining
-the sums, and higher-rank kernels. A proposed family
-$p_j/q_j$ in lowest terms would need
-$0<q_j|\Theta_2-p_j/q_j|\to0$, which convergence alone does not imply.
-
-\section{An exponential-sum question}\label{sec:open}
-\papersectiontarget{short249-first-harmonic}
-For every $h\ge1$ and every $X_0$, suppose that some integers
-$X\ge\max(X_0,1)$ and $L\ge h$ satisfy
-\begin{equation}\label{eq:r3-harmonic}
- 16(2X+h+L+2)\le2^L,\qquad
- \operatorname{Re}\sum_{N=X}^{2X-1}
-       \exp(2\pi iD_{h,N,L}/2^L)\le\frac9{10}X.
-\end{equation}
-These inequalities would prove irrationality. Indeed, if every residue
-failed \eqref{eq:r3-certificate}, each $D_{h,N,L}/2^L$ would be within
-$1/16$ of an integer. Each exponential would then have real part at least
-$\cos(\pi/8)>9/10$. Some $N$ in the block must therefore satisfy
-\eqref{eq:r3-certificate}. For a hypothetical rational value, we choose
-its period and then a sufficiently late block, contradicting
-\eqref{eq:tail-phase}.
-
-To separate the counting estimates from the cancellation estimate,
-we single out one totient in each window. Fix $h,s\ge1$,
-$L\ge s+h$, $X\ge1$ and $0<\eta<1$, and put
-$t=L-s+1$ and $E_N=\exp(2\pi iD_{h,N,L}/2^L)$.
-For $X\le N<2X$, let $p_N$ be the largest prime factor of $N+t$ and
-$m_N=(N+t)/p_N$. Define
-\[
-\begin{aligned}
- \mathcal A&=\{N\in[X,2X):m_N\le\lfloor\sqrt X/2\rfloor,
-                      \ p_N>2\lfloor\sqrt X\rfloor\},\\
- \mathcal G&=\{N\in\mathcal A:\varphi(m_N)\ge\eta m_N\}.
-\end{aligned}
-\]
-All indices are integers. On $\mathcal A$ we have $p_N>m_N$, so
-$\varphi(N+t)=\varphi(m_N)(p_N-1)$. Its coefficient in the phase is
-$(2^h-1)/2^t$. Write
-\[
- z_N=\exp\!\left(\frac{2\pi i(2^h-1)\varphi(m_N)(p_N-1)}{2^t}\right),
- \qquad w_N=E_N/z_N,
-\]
-and let $\bar z_m$ be the average over the indices in $\mathcal A$
-with cofactor $m$, taking the average to be zero for an empty set.
-We seek the four bounds
-\begin{equation}\label{eq:r3-four-bounds}
-\begin{aligned}
- \operatorname{Re}\sum_{N\in\mathcal G}w_N(z_N-\bar z_{m_N})
-       &\le\tfrac{14}{25}X,\\
- \left|\sum_{N\in\mathcal G}w_N\bar z_{m_N}\right|
-       &\le\tfrac1{100}X,\\
- \left|\sum_{N\in\mathcal A\smallsetminus\mathcal G}E_N\right|
-       &\le\tfrac1{100}X,\\
- \left|\sum_{\substack{X\le N<2X\\N\notin\mathcal A}}E_N\right|
-       &\le\tfrac8{25}X.
-\end{aligned}
-\end{equation}
-The last two sums cover the indices outside $\mathcal G$.
-On $\mathcal G$, the identity
-$w_Nz_N=w_N(z_N-\bar z_{m_N})+w_N\bar z_{m_N}$ gives the first two.
-The four sums therefore add to $\sum E_N$ before any estimates are
-taken, and their bounds give $(14/25+1/100+1/100+8/25)X=9X/10$.
-Subtracting $\bar z_m$ cancels the unweighted sum over the whole
-cofactor group, but $w_N$ varies with the same index $N$. That
-cancellation does not persist automatically after multiplication by
-$w_N$. Both of the first two sums still require weighted estimates;
-no independence has been assumed. The conclusion concerns the real
-part; it does not give a $21X/25$ bound for the absolute value of the
-full sum.
-
-\begin{problem}[Four estimates for the first-harmonic sum]
-\label{prob:firstharmonic}
-For each $h\ge1$, do there exist $s\ge1$ and $0<\eta<1$ such that, for every
-$X_0$, there are $X,L$ with
-\[
- \max(X_0,1)\le X,\qquad h\le L-s,\qquad
- 16(2X+h+L+2)\le2^L,
-\]
-for which those four bounds hold?
-\end{problem}
-
-The parameters $s$ and $\eta$ may depend on $h$, but must be fixed
-before the threshold $X_0$ is given. All four estimates must then hold
-for one common choice of $X,L$. For each fixed $h,s$, take the least
-admissible $L$ satisfying the size
-inequality in \eqref{eq:r3-harmonic} and $L\ge s+h$. The
-\longrecord{long249-r3-counts}{smooth-number and small-cofactor estimates}
-give the last two bounds for all sufficiently large $X$ when
-$0<\eta<1/(300\log4)$. The elementary excluded-cofactor estimate is
-$(3\eta\log4+o(1))X$; it needs no prime number theorem.
-The first two bounds in \eqref{eq:r3-four-bounds} remain open.
-No optimality is asserted for the sufficient margins in
-\eqref{eq:r3-four-bounds}.
-
-Alternatively, at $s=26$, $\eta=1/1000$ and minimal depth one has
-$|\mathcal G|>67X/100$ for large $X$. The single open estimate
-$\operatorname{Re}\sum_{N\in\mathcal G}E_N\le603X/1000$, for each
-$h$ on arbitrarily large blocks, would suffice by the same argument.
-The \longrecord{long249-r3-interpolation}{ordinary comparison argument}
-gives larger first harmonics at all sufficiently large admissible scales,
-distinguishing its rational sequences from the cancellation required of
-$\varphi$. Its proof is included with the interpolation construction.
-
-Balasubramanian, Giri and Srivastav give correlation estimates applicable
-to $\varphi(n)/n$, uniformly for $|h|\le x/2$~\cite[Thm.~2.2]{bgs2016}.
-Here the modulus grows with $L$, and the residual weight depends on
-other totient values in the window. That correlation theorem supplies
-neither of the two remaining estimates. Establishing them for the
-actual totient is the unresolved arithmetic step.
-
-\section*{Verification and reproducibility}
+\section*{Verification and further consequences}
 \evidenceparagraph{\evidencerecordurl}
-The \longrecord{long249-r3-declarations}{declaration guide} links the
-formal sources for this paper. Complete proofs of three cited results
-appear in Appendix~A of the companion paper. The displayed arguments,
-including signed interpolation, require ordinary mathematical review;
-the recorded Lean and Comparator checks cover their specified
-declarations and source versions. No new formal run or independent
-review was performed for this revision.
-
-\paragraph{Acknowledgement.}
-I thank Wouter van Doorn for advice on writing for a first-time reader
-and on explaining the strength of a hypothesis. His advice concerned a
-different note; it was not a mathematical review or endorsement of the
-results presented here.
+The \longrecord{scope-verification}{long record's verification section}
+locates the formal statements and the reproducible base-six calculation.
+Its \longrecord{short249-sources}{further consequences for the sections}
+include periodic coefficient relations and section operators. These results,
+and the separate rational-series criteria, are not needed for the basis
+and integral relations proved here.
 
 \begin{thebibliography}{99}\small
 \raggedright
@@ -852,68 +362,17 @@ doi:\href{https://doi.org/10.1016/0304-3975(92)90001-V}{10.1016/0304-3975(92)900
 functions}, J.\ Th\'eor.\ Nombres Bordeaux \textbf{22} (2010), no.~2, 339--352,
 doi:\href{https://doi.org/10.5802/jtnb.718}{10.5802/jtnb.718}.
 Theorem~3.2, p.~348.
-\bibitem{coons-jsr} M.~Coons, \emph{Regular sequences and the joint spectral
-radius}, Internat.\ J.\ Found.\ Comput.\ Sci.\ \textbf{28} (2017), no.~2,
-135--140,
-doi:\href{https://doi.org/10.1142/S0129054117500095}{10.1142/S0129054117500095};
-arXiv:\href{https://arxiv.org/abs/1511.07535v1}{1511.07535v1}.
-Theorem~1, Proposition~4, Corollary~7 and Appendix~A are cited with the
-arXiv v1 numbering.
 \bibitem{martin-phi-inequalities} G.~Martin, \emph{Simultaneous inequalities
 among values of the Euler phi-function},
 arXiv:\href{https://arxiv.org/abs/math/0603053v1}{math/0603053v1}, 2006.
 Theorem~1, pp.~1--2.
-\bibitem{wong2015} Erick Wong,
-\href{https://math.stackexchange.com/a/1211557}{answer 1211557}
-to \emph{An infinite sum based on the mod-parity of Euler's totient function},
-Mathematics Stack Exchange, 29 March 2015, accessed 15 September 2026.
-\bibitem{erdos1957} P.~Erd\H{o}s, \emph{On the irrationality of certain
-series}, Indag.\ Math.\ \textbf{19} (1957), 212--219. Lemmas~1 and~4,
-pp.~213--218.
-\bibitem{kst2026} H.~Kaneko, Y.~Suzuki and Y.~Tachiya, \emph{Refinements of
-Erd\H{o}s's irrationality criterion for certain sparse infinite series},
-arXiv:\href{https://arxiv.org/abs/2601.20743v1}{2601.20743v1}. Theorem~3, p.~5.
-\bibitem{eldar2026oeis} A.~Eldar, comment and formula added to OEIS A256936
-(revisions 28 and 31), 15 March 2026,
-\url{https://oeis.org/history?seq=A256936}, accessed 16 September 2026.
-\bibitem{fan2026totient} S.~Fan, comment on Erd\H{o}s Problem \#249,
-16 May 2026, 19:01, \href{https://www.erdosproblems.com/forum/thread/249}
-{Erd\H{o}s Problems discussion thread}, accessed 16 September 2026.
 \bibitem{erdosgraham1980} P.~Erd\H{o}s and R.~L.~Graham,
 \emph{Old and New Problems and Results in Combinatorial Number Theory},
 Monographies de L'Enseignement Math\'ematique \textbf{28}, 1980, p.~61.
-\bibitem{bgs2016} R.~Balasubramanian, S.~Giri and P.~Srivastav,
-\emph{On correlations of certain multiplicative functions},
-J.\ Number Theory \textbf{174} (2017), 221--238,
-doi:\href{https://doi.org/10.1016/j.jnt.2016.10.001}{10.1016/j.jnt.2016.10.001};
-arXiv:\href{https://arxiv.org/abs/1511.02221v3}{1511.02221v3}.
-Theorem~2.2 is cited with the arXiv v3 pagination, p.~2.
 \bibitem{yazdani2001} S.~Yazdani,
 \emph{Multiplicative functions and $k$-automatic sequences},
 J.\ Th\'eor.\ Nombres Bordeaux \textbf{13} (2001), no.~2, 651--658,
 \url{https://www.numdam.org/item/JTNB_2001__13_2_651_0/}.
 Theorem~2 and its proof, pp.~652--653; Corollary~4, p.~654.
-\bibitem{allouche-shallit-yassawi} J.-P.~Allouche, J.~Shallit and R.~Yassawi,
-\emph{How to prove that a sequence is not automatic},
-Exposition.\ Math.\ \textbf{40} (2022), no.~1, 1--22,
-doi:\href{https://doi.org/10.1016/j.exmath.2021.08.001}{10.1016/j.exmath.2021.08.001};
-arXiv:\href{https://arxiv.org/abs/2104.13072v1}{2104.13072v1}.
-Theorem and example numbering follows the arXiv v1 (2021).
-\bibitem{bell-smertnig2026} J.~Bell and D.~Smertnig,
-\emph{Mahler series with multiplicative coefficient sequences},
-arXiv:\href{https://arxiv.org/abs/2603.23456v1}{2603.23456v1},
-24 March 2026, preprint. Theorem~1.3, p.~2; Lemma~3.3, p.~9.
-\bibitem{bell-bruin-coons} J.~P.~Bell, N.~Bruin and M.~Coons,
-\emph{Transcendence of generating functions whose coefficients are multiplicative},
-Trans.\ Amer.\ Math.\ Soc.\ \textbf{364} (2012), no.~2, 933--959,
-doi:\href{https://doi.org/10.1090/S0002-9947-2011-05479-6}{10.1090/S0002-9947-2011-05479-6};
-arXiv:\href{https://arxiv.org/abs/1003.2221v2}{1003.2221v2}.
-Theorems~1.5--1.6 are cited with the arXiv v2 pagination, p.~2.
-\bibitem{adamczewski-bell-smertnig2023}
-B.~Adamczewski, J.~Bell and D.~Smertnig,
-\emph{A height gap theorem for coefficients of Mahler functions},
-J.~Eur.~Math.~Soc.\ \textbf{25} (2023), no.~7, 2525--2571,
-doi:\href{https://doi.org/10.4171/JEMS/1244}{10.4171/JEMS/1244}.
-Theorem~1.2(b), p.~2528; logarithmic height in Section~1.1.1, p.~2527.
 \end{thebibliography}
 \end{document}

@@ -3,7 +3,7 @@
   "artifact_role": "paper_sigil_to_lean_module_navigation_crosswalk",
   "authority_posture": "generated_navigation_projection_not_proof_authority",
   "heuristic": "Each CamelCase component contributes at most its first three characters.",
-  "alias_count": 100,
+  "alias_count": 96,
   "aliases": [
     {
       "sigil": "ActForResPro",
@@ -484,26 +484,6 @@
       "sigil": "TotTaiPerKil",
       "module": "lean/Erdos249257/TotientTailPeriodKiller.lean",
       "path": "lean/Erdos249257/TotientTailPeriodKiller.lean"
-    },
-    {
-      "sigil": "FinHorRes",
-      "module": "lean/ErdosProblems/Erdos243/FiniteHorizonResidue.lean",
-      "path": "lean/ErdosProblems/Erdos243/FiniteHorizonResidue.lean"
-    },
-    {
-      "sigil": "RecTaiRig",
-      "module": "lean/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean",
-      "path": "lean/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean"
-    },
-    {
-      "sigil": "RepEnt",
-      "module": "lean/ErdosProblems/Erdos243/RepairEntropy.lean",
-      "path": "lean/ErdosProblems/Erdos243/RepairEntropy.lean"
-    },
-    {
-      "sigil": "SpaResRec",
-      "module": "lean/ErdosProblems/Erdos243/SparseResetRecovery.lean",
-      "path": "lean/ErdosProblems/Erdos243/SparseResetRecovery.lean"
     }
   ],
   "validation": "python3 scripts/build_paper_module_aliases.py --check"

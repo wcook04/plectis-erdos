@@ -221,7 +221,7 @@ of $k^e+1$ totient sections through level $e\ge1$ in every base
 $k\ge2$. Its
 \shortpaper{short249-base-six}{base-six example and integral relation proof}
 turn an identity among the original indexed sections into an explicit
-test on their coefficients. Its prime-isolation proof also yields
+test on their coefficients. The prime-isolation argument below also proves
 irrationality for bounded residue series. The present record explains
 the additional difficulty posed by the unbounded coefficients of $S$
 and keeps the rational comparisons alongside the deductions they test.
@@ -233,8 +233,7 @@ Section~\ref{sub:generic-carry-rank} constructs the rational $5/4$
 series with unbounded carry rank. Other rational comparisons are in
 Section~\ref{sec:wall}. Section~\ref{sub:pivot} gives the unresolved
 weighted exponential sums and their common parameter requirements,
-corresponding to the \shortpaper{short249-first-harmonic}{four-estimate problem}
-in the short paper's final appendix.
+which the four-estimate problem below collects into one criterion.
 
 Appendix~\ref{app:r3-complements} contains the complete propagation,
 Mersenne-residue and sharp rank-one arguments cited there.
@@ -524,17 +523,90 @@ information about $\varphi$.
 \subsection{Reduced coefficients}\label{sub:reduced-coefficients}
 \papersectiontarget{long249-r3-residue-extension}
 
-Reduction modulo $m$ supplies the bound missing for the unreduced
-coefficients. For $m\ge3$ the binary series of $\varphi(n)\bmod m$ is
-irrational. For a rational-valued function of $\varphi(n)\bmod2^k$, its
-binary series is rational precisely when that function is constant on
-the even residues. Both assertions follow by isolating a prime $p$
-with prescribed $\varphi(p)\bmod m$: CRT makes each neighbour $p+j$,
-$0<|j|\le L$, divisible by its own prime congruent to $1\pmod m$,
-so all neighbouring residues vanish. A bound on the remaining tail
-then proves irrationality. The same tail estimate works in any integer
-base. For several dilations, the extra step is to prevent cancellation
-at the isolated coefficient.
+\subsubsection{Binary residue series}\label{sec:family}
+\papersectiontarget{short249-residues}
+In the evaluation proof, congruences make one totient value nonzero
+modulo the auxiliary prime in each row. Here they isolate one nonzero
+residue between two arbitrarily long zero blocks. Rationality confines
+every scaled tail to a fixed discrete set. Boundedness and the zero
+blocks then force a nonzero tail whose absolute value is smaller than
+the spacing of that set.
+In the first sum below, residues are represented by their least
+nonnegative values. These coefficients need not be binary digits.
+\begin{theorem}[Series of totient residues]\label{res:residueseries}
+For every $m\ge3$,
+\[
+ \sum_{n\ge1}\frac{\ph(n)\bmod m}{2^n}\notin\Q.
+\]
+For $k\ge1$ and $f:\Z/2^k\Z\to\Q$, the series
+$\sum_{n\ge1}f(\ph(n)\bmod2^k)2^{-n}$ is rational exactly when $f$ is
+constant on the even residue classes. If that constant is $c$, its value is
+$3f(1)/4+c/4$.
+\end{theorem}
+Modulo two the sum is $3/4$, since $\varphi(n)$ is even for $n\ge3$.
+More generally only $f(1)$ and the even residue classes occur in the
+second assertion. The following coefficient pattern is the basis of the proof:
+\[
+ \underbrace{0,\ldots,0}_{L\text{ terms}},\quad
+ a_N\ne0,\quad
+ \underbrace{0,\ldots,0}_{L\text{ terms}}.
+\]
+The coefficients outside these blocks may have either sign. Their
+uniform bound is what makes the following argument possible.
+\begin{lem}[An isolated nonzero coefficient between long zero blocks]\label{lem:bounded-pulse}
+Let $a_n\in\Z$ satisfy $|a_n|\le C$. Suppose that for arbitrarily large $L$
+there is $N>L$ such that $a_N\ne0$ and
+$a_{N+t}=0$ for $0<|t|\le L$. Then $\sum_{n\ge1}a_n2^{-n}$ is irrational.
+\end{lem}
+\begin{proof}
+Suppose that the sum has denominator $q\ge1$. Multiplying it by
+$2^j$ and removing its finite integer prefix shows that every scaled
+tail $T_j=\sum_{t\ge1}a_{j+t}2^{-t}$ belongs to $q^{-1}\Z$.
+Choose a pattern with $C2^{-L}<1/q$. The block on the right gives
+\[
+ |T_N|\le C\sum_{t>L}2^{-t}=C2^{-L}<1/q.
+\]
+The only element of $q^{-1}\Z$ in this interval is zero, so $T_N=0$.
+Now start before the left block. The next $L$ coefficients vanish,
+and the entire contribution after $a_N$ has just been shown to be
+zero. Consequently
+\[
+ T_{N-L-1}=a_N2^{-L-1},\qquad
+ 0<|T_{N-L-1}|\le C2^{-L-1}<1/q,
+\]
+contradicting $T_{N-L-1}\in q^{-1}\Z$.
+\end{proof}
+For example, the indicator of the squares satisfies the lemma.
+An eventually periodic sequence with infinitely many nonzero terms
+does not have isolated coefficients at arbitrarily large distances.
+The uniform bound $C$ is essential to this argument.
+
+\begin{proof}[Proof of Theorem~\ref{res:residueseries}]
+Fix a unit $s\pmod m$ and a positive integer $L$.
+Choose distinct primes $q_t\equiv1\pmod m$, all exceeding $L$, for
+$0<|t|\le L$. The congruences
+\[
+ p\equiv s\pmod m,\qquad p\equiv-t\pmod{q_t}\quad(0<|t|\le L)
+\]
+define a reduced progression, since $s$ is a unit modulo $m$ and
+$0<|t|<q_t$. CRT and Dirichlet's theorem therefore allow us to choose
+an arbitrarily large prime $p>L+1$ on this progression, with
+$m\mid\varphi(p+t)$ at every neighbour and
+$\varphi(p)\equiv s-1\pmod m$ at the centre.
+
+For a rational-valued function $f$ on the residue classes, subtract
+$f(0)$ and multiply by a common denominator of its values. Since
+$\sum_{n\ge1}2^{-n}=1$, these operations preserve whether the sum is
+rational. If $f(s-1)\ne f(0)$, the resulting bounded integer sequence
+has an isolated nonzero coefficient for every $L$, so the lemma
+applies.
+For the least-residue map we take $s=-1$ and obtain the nonzero
+residue $m-2$ when $m\ge3$. When $m=2^k$, each even residue $r$
+is of the form $s-1$ with $s$ a unit, so nonconstancy on the even
+classes gives an irrational sum by the same argument.
+Conversely, if $f$ is constant there, all terms after $n=2$ equal
+$c$ and we obtain $3f(1)/4+c/4$.
+\end{proof}
 
 \begin{prop}[Residue series in every integer base]
 \label{prop:radixresidue}
@@ -553,7 +625,7 @@ Let $t\ge2$ be an integer.
 \end{prop}
 
 \begin{proof}
-The short paper's proof applies verbatim in base $t$: its lemma on an
+The preceding proof applies in base $t$: Lemma~\ref{lem:bounded-pulse} on an
 isolated nonzero coefficient uses only $Ct^{-L}<1/q$ in place of
 $C2^{-L}<1/q$. For the value in (b), $\varphi(1)=\varphi(2)=1$ and
 $\varphi(n)$ is even for $n\ge3$.
@@ -659,7 +731,7 @@ $4$, so $a_{3^k}\ne0$ whenever $\kappa(3^k)\ge2$.
 \begin{rem}[Earlier results and the reduced coefficients]
 \label{rem:erdos1957}
 Proposition~\ref{prop:radixresidue}(a), and with it the first assertion
-of the short paper's residue theorem, already follows from Erd\H{o}s's
+of the preceding residue theorem, already follows from Erd\H{o}s's
 Lemma~1 of~\cite[p.~213]{erdos1957}: if integers $a_k\ge0$ have
 $\sum_{k\le n}a_k=O(n)$, infinitely many $a_k\ne0$, and
 $\liminf_n\#\{k\le n:a_k>0\}/n=0$, then $\sum_ka_kt^{-k}$ is irrational for
@@ -1180,7 +1252,7 @@ Both are finite observations. Neither establishes nor refutes
 equidistribution or the estimate at arbitrarily large scales.
 \end{rem}
 
-\subsection{A four-term bound for the real part}\label{sub:four-sums}
+\subsection{A four-term bound for the real part}\label{sub:four-sums}\papersectiontarget{short249-first-harmonic}
 
 For a selected term $\varphi(mp)$ with $p>m$ prime, multiplicativity
 gives the phase associated with $\varphi(m)(p-1)$. We factor that
@@ -6476,7 +6548,7 @@ A rank bound that contradicts the lower bound $2^e-1$ would have to use
 additional arithmetic of the actual totient coefficients. The generic
 proposal that rationality bounds the rank of every integral carry
 satisfying $u(n)/2^n\to0$ is disproved by the comparison sequence
-recorded in the short paper:
+in Section~\ref{sub:generic-carry-rank}:
 its carry rank is at least $2^e-1$ at every level. It is therefore not a
 remaining general lemma from which totient irrationality follows.
 The conditional Proposition~\ref{prop:period-not-rank}
@@ -6903,6 +6975,69 @@ second-difference certificate exists at depth at most $8$
 This disproves a universal claim of smaller depth for second differences;
 it does not show that they can never improve a certificate.
 
+\begin{cor}[Dyadic basis]\label{res:basis}
+The family
+\[
+ \{\ph_{0,0},\ph_{1,0}\}
+ \cup\{\ph_{j,r}:j\ge1,\ 0<r<2^j,\ r\text{ odd}\},
+ \qquad \ph_{j,r}(n)=\ph(2^jn+r),
+\]
+is a basis for the rational span of the full dyadic kernel. Every rational
+relation is generated by the scalar reductions. The complete level-zero
+truncation has dimension one.
+\end{cor}
+\begin{proof}
+Each finite subset of this family is contained in a finite-level family. Theorem~\ref{thm:exact-dyadic-rank-infinite-dimensionality} gives independence,
+and its reductions give spanning. At level zero the sole section
+$\varphi(n)$ is nonzero, since $\varphi(1)=1$.
+\end{proof}
+
+\subsection{Periodic relations and section operators}\papersectiontarget{short249-sources}
+The affine argument also permits periodic coefficients by restriction
+to their common residue classes.
+\begin{cor}[Periodic coefficients]\label{cor:periodic-freezing}
+Let $L_1,\ldots,L_s$ be pairwise nonproportional affine forms with integer
+coefficients and positive slopes. If $w_1,\ldots,w_s$ are rational-valued
+periodic sequences, then
+\[
+ \sum_i w_i(n)\ph(L_i(n))=0\quad\text{for all sufficiently large }n
+ \quad\Longrightarrow\quad w_i(n)=0\quad\text{for every }i,n.
+\]
+\end{cor}
+\begin{proof}
+We choose a common period $Q$ and restrict to $n=r+Qt$. The
+coefficients are now the constants $w_i(r)$, and the cross
+determinants are $Q(a_i b_j-a_j b_i)\ne0$. By shifting $t$ beyond
+the given threshold we can apply affine independence, obtaining
+$w_i(r)=0$ for every $i$. We repeat this for each residue $r$;
+periodicity then gives the conclusion even at the indices preceding
+the threshold.
+\end{proof}
+Proportional forms are excluded for a reason: the identity
+$\varphi(4n+2)=\varphi(2n+1)$ would otherwise contradict the conclusion.
+Martin's theorem gives the same corollary on each
+progression~\cite[Thm.~1]{martin-phi-inequalities}.
+
+For an integer base $k\ge2$, put $F_{j,r}(n)=\varphi(k^jn+r)$,
+where $j\ge0$ and $0\le r<k^j$. Let $V_{k,e}$ be their rational span
+through level $e\ge1$. The section operators $T_i g(n)=g(kn+i)$,
+$0\le i<k$, satisfy
+\[
+ T_iF_{j,r}=F_{j+1,k^ji+r},\qquad
+ V_{k,e+1}=V_{k,e}+\sum_{i=0}^{k-1}T_iV_{k,e}.
+\]
+To obtain the second identity, write every residue at level $j+1$
+as $k^ji+r$. For a positive retained residue, the resulting section
+is again retained. For the two zero-residue generators, use
+$T_iF_{0,0}=F_{1,i}$ and $T_iF_{1,0}=F_{2,ki}$ followed by the
+zero-residue or scalar reduction. We thus obtain a positive integer
+multiple of a basis element in every case, although the increasing
+dimensions prevent any finite truncation from being invariant.
+The growth formula using the joint spectral radius for finite-dimensional regular
+sequences~\cite[Thm.~1, Prop.~4, Cor.~7]{coons-jsr} therefore does not
+apply to $\varphi$.
+
+
 \subsection{Exact dyadic rank and the limits of a rank argument}
 \label{sec:mahler-defect}
 
@@ -6996,7 +7131,7 @@ that are not eventually zero: their growth exponent is the base-$k$
 logarithm of the joint spectral radius of their section matrices in a
 basis, whereas a redundant spanning family gives only an upper bound
 (Coons~\cite[Theorem~1, Proposition~4 and Corollary~7]{coons-jsr}).  The totient is not regular, so that theorem does not
-apply; the short paper records how the section maps act on the retained bases
+apply; the preceding subsection records how the section maps act on the retained bases
 from one level to the next.
 
 The \href{https://github.com/wcook04/plectis-erdos/blob/25ef6245d15a47548c6926369ae8f1a0f0a14a80/ErdosProblems/Erdos249/PaperCompleteR8/KernelRelationBasis.lean#L398}{integral normal form} and the \href{https://github.com/wcook04/plectis-erdos/blob/25ef6245d15a47548c6926369ae8f1a0f0a14a80/ErdosProblems/Erdos249/PaperCompleteR8/FullKernelAssemblies.lean#L156}{full dyadic rational basis} are formally checked in Lean.
@@ -9458,11 +9593,11 @@ examples at $a=4,6$, do not establish an asymptotic pattern.
 \appendix
 \section{Complementary proofs for the short paper}\label{app:r3-complements}
 \papersectiontarget{long249-r3-complements}
-The \shortpaper{short249-proof}{basis theorem}, the
-\shortpaper{short249-base-six}{integral relation theorem} and the
-\shortpaper{short249-residues}{bounded residue theorem} have complete
-proofs in the short paper. This appendix supplies the longer arguments
-behind its discussion of $S$: propagation from a nonintegral tail,
+The \shortpaper{short249-proof}{basis theorem} and the
+\shortpaper{short249-base-six}{integral relation theorem} have complete
+proofs in the short paper. The bounded residue theorem and its proof are
+Theorem~\ref{res:residueseries} of this record. This appendix develops
+further arguments about $S$: propagation from a nonintegral tail,
 Mersenne residues, rational comparisons and the sharp rank-one bound.
 Throughout, $K(h,N,L)$ is the residue condition
 $\mathcal C(h,N,L)$ defined in the main text.
@@ -9843,6 +9978,8 @@ families.
 
 
 \section{Verification and reproducibility}\label{app:r3-declarations}
+\papersectiontarget{scope-verification}
+
 \papersectiontarget{long249-r3-declarations}
 \evidenceparagraph{\evidencerecordurl}
 The links below identify formal declarations at the supplied source
@@ -9850,6 +9987,21 @@ revisions. A checked conditional implication retains its hypothesis;
 the linked source alone does not establish that input for $\varphi$.
 The record gives the available Lean and Comparator status and does not
 report a new replay or independent review of the printed proofs.
+
+An alternative is to test equality at finitely many inputs. At base six
+and level two, write $F_{j,r}(n)=\varphi(6^jn+r)$. Order the retained
+columns as $F_{0,0}$, $F_{1,0}$, then $F_{1,r}$ for $1\le r\le5$,
+and $F_{2,r}$ for $1\le r<36$, $6\nmid r$, with residues increasing
+within each level. Evaluate at
+$n=0,\ldots,36$ to obtain a $37\times37$ matrix.
+Its determinant is $17$ modulo $101$, so it is nonsingular over $\Q$.
+Consequently a retained combination is zero if and only if all $37$
+of its integer evaluations are zero. Here reduction modulo $101$
+certifies the matrix, not the equality of a proposed combination:
+$101F_{2,2}$ would vanish modulo $101$ at every input, although its
+integer value at $n=0$ is $101$.
+The script \texttt{scripts/totient\_kernel\_normal\_form.py} calculates
+the coordinates and the first nonzero evaluation using integer arithmetic.
 
 \medskip\noindent\textbf{Bases and relations.}\par\smallskip
 \mword{Erdos249257/TotientMahlerDefect.lean}{160}{totientKernel_zero_residue}{reduction of sections with residue zero};

@@ -1248,49 +1248,49 @@
             "id": "erdos_68_note",
             "source": "paper/68/erdos-68-factorial-denominator-irrationality.tex",
             "decision": "retain_as_problem_owned_note",
-            "thesis": "The factorial-series carry equivalences, two incomparable finite denominator exclusions, and the still-open cofinal-carry producer. FactorialGapPlateauCore owns the carry definitions; FactorialZeroPlateau retains compatibility imports."
+            "thesis": "An integral basis for factorial-denominator cancellation vectors, their exact possible coefficient sums, and a worked minimum. Nonintegrality needed to settle the original series remains open."
           },
           {
             "id": "erdos_243_note",
             "source": "paper/243/erdos-243-reciprocal-tail-rigidity.tex",
             "decision": "retain_as_problem_owned_note",
-            "thesis": "A Lean-checked zero-indexed positive StrictMono cubic-rate irrationality theorem for a_n²/a_(n+1)=1+3/n+o(n^-3), transferred to the one-based paper form by an ordinary finite-prefix argument, alongside the bounded-increment criterion for eventual Sylvester recurrence under rationality. The latter requires an additional increment bound not derived from the original hypotheses. Erdős #243 remains open."
+            "thesis": "Cubic-rate irrationality under a_n²/a_(n+1)=1+3/n+o(n^-3), with the complete integer-tail and cubic-field argument. The unrestricted problem and independent eventual-recurrence criteria belong to the long record."
           },
           {
             "id": "erdos_249_note",
             "source": "paper/249/erdos-249-binary-totient-series.tex",
             "decision": "retain_as_problem_owned_note",
-            "thesis": "Exact section rank k^e+1 for every integer base k ≥ 2 and e ≥ 1 by a CRT–Dirichlet independence proof, also formalised unconditionally in AllBaseTotientKernel.lean at public checkpoint 25ef6245d15a. Martin is the broader external affine-independence antecedent. One hypothetical rational carry has both unbounded section ranks and periodic congruence sections, with no contradiction or cofinal producer proved."
+            "thesis": "Exact finite-level bases and integral relations among totient sections in every integer base k≥2. The binary totient-series irrationality problem remains open; residue and carry programmes are treated in the long record."
           },
           {
             "id": "erdos_251_note",
             "source": "paper/251/erdos-251-prime-gap-dyadic-series.tex",
             "decision": "retain_as_problem_owned_note",
-            "thesis": "A coefficient-only countermodel and sparse rationalising perturbation as the supported lead; the already-known prime-to-gap identity checked without the prime-number theorem; cofinal small-mismatch tail witness open."
+            "thesis": "Sparse congruence-preserving changes that rationalise a dyadic sum while retaining the stated asymptotic statistics, with a prime-gap application. This does not prove rationality or irrationality of the actual prime series."
           },
           {
             "id": "erdos_257_note",
             "source": "paper/257/erdos-257-mersenne-support-subseries.tex",
             "decision": "retain_as_problem_owned_note",
-            "thesis": "Ordinary proofs and Lean-checked finite-prime weighted, strengthened positive-cover, common-witness mixed, and reciprocal-summable support criteria. Named separating examples retain ordinary proofs. Arbitrary infinite support and the 1/2 and 1/21 branches remain open and distinct."
+            "thesis": "Weighted, positive-cover, common-witness mixed and reciprocal-summable support criteria, with their separating examples and limits. Finite denominators and achievement-set membership are separate questions treated in the long record."
           },
           {
             "id": "erdos_269_note",
             "source": "paper/269/erdos-269-three-prime-running-lcm.tex",
             "decision": "retain_as_problem_owned_note",
-            "thesis": "Three-prime Lean rank/window structure; Steve Fan's two-prime transcendence (26 June 2026) recorded as ordinary plus Bugeaud–Laurent, with no Lean theorem or priority claim; cofinal local-window escape remains open."
+            "thesis": "The complete five-map proof of irrationality for the reciprocal sum of distinct running least common multiples of the 5-smooth integers. The repeated-value sum remains open and is treated in the long record."
           },
           {
             "id": "erdos_1041_note",
             "source": "paper/1041/erdos-1041-lemniscate-newton-flow.tex",
             "decision": "retain_as_problem_owned_note",
-            "thesis": "Using ani's explicit degree-seven polynomial, Lean proves a one-dimensional Hausdorff-measure bound for every preconnected connecting set and refutes the exact Formal Conjectures path-image-length statement; the total-variation bound remains checked. The note also treats positive short-path families, the sharp critical-value mean, Newton-flow geometry, and exact obstructions. The family is not formalised; historical correspondence and ordinary analytic assemblies remain separate from Lean verification."
+            "thesis": "The degree-seven counterexample to the Formal Conjectures path-image-length statement, its complete bottleneck proof, and radial paths for trinomials. Historical correspondence and the additional analytic programmes remain distinct in the long record."
           },
           {
             "id": "erdos_1049_note",
             "source": "paper/1049/erdos-1049-rational-base-lambert.tex",
             "decision": "retain_as_problem_owned_note",
-            "thesis": "Rational-base irrationality and irrationality-exponent bounds in the Zudilin contour region, including powers of 31/4, plus all-rank normalized Hankel order and coefficient formulas. The finite coefficient pencil is Lean checked only through rank eight. Irrationality at 3/2 and the universal rational-base assertion remain open."
+            "thesis": "Sharp fixed-base moment-determinant asymptotics and rational-base irrationality in the stated Zudilin contour region, including 31/4. Formal q-order, irrationality-exponent bounds and further problems belong to the long record; 3/2 remains open."
           }
         ],
         "problem_series_boundary": "A problem note expounds declarations and ordinary mathematics. Formal status belongs to exact registered statements and their evidence, not to every assertion in a note. Using ani's degree-seven polynomial, Lean refutes the exact Formal Conjectures path-image-length statement by a one-dimensional Hausdorff-measure bound; the total-variation result remains checked. Historical correspondence remains unreviewed, and the other seven targets remain unresolved here.",
@@ -21940,10 +21940,10 @@
       "open_target_claim": "universal_257",
       "statement": "Decide the exact 1/21 branch: equivalently, exclude the fatal/cofinite/aligned branch, contradict its eventual permanent affine-supercapacity recurrence, prove cofinally bounded scaled greedy remainders, or force an unbounded sequence of closed canonical quotient rows. A positive membership result would refute universal #257; no such producer is proved.",
       "paper_anchor": {
-        "source": "paper/257/erdos-257-mersenne-support-subseries.tex",
+        "source": "paper/257/erdos257-mersenne-reasoning-surface.tex",
         "environment": "problem",
         "title": "membership of 1/21 in the Mersenne achievement set",
-        "line": 1439
+        "line": 9375
       }
     },
     {
@@ -21979,7 +21979,7 @@
         "source": "paper/1041/erdos-1041-lemniscate-newton-flow.tex",
         "environment": "problem",
         "title": "Erdős #1041",
-        "line": 75
+        "line": 73
       }
     },
     {
@@ -22003,7 +22003,7 @@
         "source": "paper/243/erdos-243-reciprocal-tail-rigidity.tex",
         "environment": "problem",
         "title": "Erdős Problem 243",
-        "line": 59
+        "line": 57
       }
     },
     {
@@ -22012,10 +22012,10 @@
       "open_target_claim": "erdos_269",
       "statement": "Prove that B·T_a ∉ ℤ for every B ≥ 1 coprime to 30 and every a ≥ 1.",
       "paper_anchor": {
-        "source": "paper/269/erdos-269-three-prime-running-lcm.tex",
-        "environment": "problem",
-        "title": "no reduced tail is an integer",
-        "line": 611
+        "source": "paper/269/erdos269-running-lcm-reasoning-surface.tex",
+        "environment": "subsection",
+        "title": "The unresolved repeated-sum question",
+        "line": 3812
       }
     },
     {
@@ -22024,10 +22024,10 @@
       "open_target_claim": "erdos_269",
       "statement": "Prove that for every B ≥ 1 coprime to 30 and every a₀ ≥ 1 there are ℓ ≥ a₀ and h ≥ 1 with lpr_{W(ℓ,h)}(−B·F(ℓ,h)) > K(B, ℓ+h), where K is the defined long-paper cap.",
       "paper_anchor": {
-        "source": "paper/269/erdos-269-three-prime-running-lcm.tex",
-        "environment": "problem",
-        "title": "residue inequalities after every starting index",
-        "line": 617
+        "source": "paper/269/erdos269-running-lcm-reasoning-surface.tex",
+        "environment": "section",
+        "title": "A residue criterion and the bounds it allows",
+        "line": 2679
       }
     },
     {
@@ -22039,7 +22039,7 @@
         "source": "paper/269/erdos269-running-lcm-reasoning-surface.tex",
         "environment": "problem",
         "title": "an exact function representing the distinct-height sum",
-        "line": 3580
+        "line": 3632
       }
     },
     {
@@ -22048,10 +22048,10 @@
       "open_target_claim": "erdos_243",
       "statement": "Decide whether every nonterminal canonical orbit of the reduced-orbit problem has limsup_n (log M_n)/n > 0, equivalently 2^n ≤ M_n^K infinitely often for some K ≥ 1.",
       "paper_anchor": {
-        "source": "paper/243/erdos-243-reciprocal-tail-rigidity.tex",
+        "source": "paper/243/erdos243-reciprocal-tail-reasoning-surface.tex",
         "environment": "problem",
         "title": "growth of repeated denominator factors",
-        "line": 1105
+        "line": 3593
       }
     },
     {
@@ -22060,10 +22060,10 @@
       "open_target_claim": "erdos_249",
       "statement": "Decide whether, for each h ≥ 1, some s ≥ 1 and 0 < η < 1 give, for every X₀, admissible X and L meeting the displayed size conditions for which the four first-harmonic bounds hold.",
       "paper_anchor": {
-        "source": "paper/249/erdos-249-binary-totient-series.tex",
-        "environment": "problem",
-        "title": "Four estimates for the first-harmonic sum",
-        "line": 789
+        "source": "paper/249/erdos249-totient-reasoning-surface.tex",
+        "environment": "subsection",
+        "title": "A four-term bound for the real part",
+        "line": 1255
       }
     },
     {
@@ -22072,10 +22072,10 @@
       "open_target_claim": "universal_257",
       "statement": "Decide whether the scaled actual greedy remainder returns cofinally to one bounded interval: whether some B < ∞ has 2^N r_N ≤ B at arbitrarily large N.",
       "paper_anchor": {
-        "source": "paper/257/erdos-257-mersenne-support-subseries.tex",
+        "source": "paper/257/erdos257-mersenne-reasoning-surface.tex",
         "environment": "problem",
         "title": "bounded returns of the scaled remainder",
-        "line": 1455
+        "line": 9391
       }
     },
     {
@@ -22084,10 +22084,10 @@
       "open_target_claim": "universal_257",
       "statement": "Decide whether a bounded-memory 2-adic or discrepancy invariant of the actual support forces a closed return or forbids permanent supercapacity, or prove no such invariant exists.",
       "paper_anchor": {
-        "source": "paper/257/erdos-257-mersenne-support-subseries.tex",
+        "source": "paper/257/erdos257-mersenne-reasoning-surface.tex",
         "environment": "problem",
         "title": "arithmetic tests for the greedy sequence",
-        "line": 1464
+        "line": 9400
       }
     },
     {
@@ -22096,10 +22096,10 @@
       "open_target_claim": "universal_257",
       "statement": "Decide whether the final-skip signatures prove |E − a_M| ≥ gap_M, contradicting 0 < a_M − E < gap_M, for E = ∑_{n≥1}(2^n − 1)^{−1} and the last-skip approximant a_M.",
       "paper_anchor": {
-        "source": "paper/257/erdos-257-mersenne-support-subseries.tex",
+        "source": "paper/257/erdos257-mersenne-reasoning-surface.tex",
         "environment": "problem",
         "title": "final-skip Diophantine exclusion",
-        "line": 1475
+        "line": 9411
       }
     }
   ],

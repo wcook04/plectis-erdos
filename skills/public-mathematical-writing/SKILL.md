@@ -194,6 +194,32 @@ in a navigable order. Do not make both versions equal-weight inventories.
 
 ## Short paper, long record, and synthesis
 
+Before shortening a paper, state the promise made by its title and main theorem.
+Assign every section and appendix a mathematical job: establish that result,
+explain its mechanism or sharpness, delimit its reach, or pursue another question.
+Keep the first three when they earn their space. Move independent questions,
+extended classifications and research programmes into the existing long record,
+even when they share the same original problem number. An appendix is part of
+the paper's scope; moving a second article behind the bibliography does not
+make the first article focused. Length is an outcome of selection, not a quota.
+
+Preserve the complete central argument, its hard step, essential examples and
+claim-changing qualifications. Consolidate repeated provenance and review
+qualifications in one compact verification statement. Put exact replay commands,
+source inventories and review history in the long record or repository's
+reproducibility documentation. Keep attribution where a result is used and an
+unproved premise beside the theorem that requires it. Reducing administrative
+prose must never turn an ordinary proof into a formally checked one.
+
+For each relocation, compare with the destination before copying. Update an
+existing treatment when it already proves the same result; preserve genuinely
+additional arguments with their assumptions, credit and evidence class. Record
+the old and new locators in the existing editorial record, repair incoming
+claim and paper links, and check notation, references and both rendered papers.
+The short paper must still support a reader's reconstruction of its principal
+argument. The long record must remain an organised mathematical account, not
+an accumulation of repeated appendices or a chronological revision log.
+
 Use this same skill for all three. A short paper sustains one principal argument:
 question, motivating example, strongest accurate result, key proof idea, hard
 step and precise remainder. The long record makes the proof inspectable and
