@@ -103,7 +103,7 @@ def validate_advertised_python_commands(documents: dict[str, str]) -> None:
 
 def run(*args: str, expected: int = 0) -> subprocess.CompletedProcess[str]:
     result = subprocess.run(
-        ["python3", str(INSTALLER), *args],
+        [sys.executable, str(INSTALLER), *args],
         cwd=ROOT,
         text=True,
         capture_output=True,
