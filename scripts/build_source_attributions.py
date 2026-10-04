@@ -6,6 +6,7 @@
 from __future__ import annotations
 
 import argparse
+import datetime
 import hashlib
 import json
 import re
@@ -35,9 +36,38 @@ SOURCE_FIELDS = {
     "id", "kind", "title", "authors", "urls", "problems", "source_locators",
     "artifact_links", "relation", "verification_state", "bibliography_keys",
     "identity_disclosure", "confirmation_status",
+    "received_on", "confirmed_on", "ledger", "implemented_in",
     "mapping_status", "mapping_note", "verification_scope",
     "paper_reported_locators", "publication_years", "year",
 }
+CREDIT_LEDGER_JSON = "docs/research-commons/credit-ledger.json"
+CREDIT_LEDGER_MARKDOWN = "docs/research-commons/CREDIT_LEDGER.md"
+CREDIT_LEDGER_SCHEMA = "plectis-credit-ledger/1"
+# Advice sent privately moves through three naming states. Every entry starts
+# withheld, and only the person who gave the advice can move it: to named, once
+# they confirm the public name they want, or to anonymous at their request.
+NAMING_STATES = {
+    "withheld_pending_confirmation": "not_confirmed",
+    "named_with_permission": "confirmed",
+    "anonymous_by_request": "declined",
+}
+NEUTRAL_ROLES = ("mathematician", "researcher", "reader")
+NEUTRAL_LABEL_SUFFIX = {
+    "withheld_pending_confirmation": "name withheld pending confirmation",
+    "anonymous_by_request": "anonymous at their request",
+}
+NAMING_DISPLAY = {
+    "withheld_pending_confirmation": "Name withheld until they confirm.",
+    "named_with_permission": "Named with their permission.",
+    "anonymous_by_request": "Anonymous at their request.",
+}
+MONTH_NAMES = ("January", "February", "March", "April", "May", "June", "July",
+               "August", "September", "October", "November", "December")
+LEDGER_FIELDS = ("told", "changed")
+LEDGER_TEXT_LIMIT = 280
+DATE_RE = re.compile(r"^\d{4}-\d{2}-\d{2}$")
+COMMIT_RE = re.compile(r"^[0-9a-f]{40}$")
+PUBLIC_COMMIT_URL = "https://github.com/wcook04/plectis-erdos/commit/"
 LOCATOR_FIELDS={"url","locator","evidence_path","line_start","line_end","expected_text","excerpt_sha256"}
 ARTIFACT_FIELDS={"path","line_start","line_end","expected_text","excerpt_sha256"}
 PATH_RE = re.compile(r"^[^/\\](?:.*[^/\\])?$")
@@ -73,6 +103,64 @@ def canonical(value: Any) -> bytes:
 
 def digest(path: Path) -> str:
     return "sha256:" + hashlib.sha256(file_bytes(path)).hexdigest()
+
+
+def anchor_id(value: str) -> str:
+    return re.sub(r"[^a-z0-9]+","-",value.casefold()).strip("-") or "source"
+
+
+def md_escape(value: Any) -> str:
+    text=" ".join(str(value).split())
+    for character in ("\\","`","*","_","[","]","<",">"): text=text.replace(character,"\\"+character)
+    return text
+
+
+def neutral_labels(state: str) -> set[str]:
+    suffix=NEUTRAL_LABEL_SUFFIX.get(state)
+    return {f"A {role} ({suffix})" for role in NEUTRAL_ROLES} if suffix else set()
+
+
+def valid_date(value: Any) -> bool:
+    if not isinstance(value,str) or not DATE_RE.fullmatch(value): return False
+    try: datetime.date.fromisoformat(value)
+    except ValueError: return False
+    return True
+
+
+def validate_correspondence(source: dict[str, Any], *, label: str) -> None:
+    """Private advice stays anonymous until the person who gave it decides."""
+    state=source.get("identity_disclosure")
+    if state not in NAMING_STATES or source.get("confirmation_status")!=NAMING_STATES[state]:
+        raise AttributionError(f"{label}: correspondence naming state must be one of {sorted(NAMING_STATES)} with its matching confirmation_status")
+    if state=="named_with_permission":
+        if not valid_date(source.get("confirmed_on")):
+            raise AttributionError(f"{label}: a named correspondent requires confirmed_on as YYYY-MM-DD")
+        if any("withheld" in author.casefold() or "anonymous" in author.casefold() for author in source["authors"]):
+            raise AttributionError(f"{label}: a named correspondent carries the public name they confirmed")
+    else:
+        if "confirmed_on" in source:
+            raise AttributionError(f"{label}: confirmed_on applies only to a named correspondent")
+        if len(source["authors"])!=1 or source["authors"][0] not in neutral_labels(state):
+            raise AttributionError(f"{label}: correspondence author must use a neutral label for its naming state")
+    if not valid_date(source.get("received_on")):
+        raise AttributionError(f"{label}: correspondence requires received_on as YYYY-MM-DD")
+    if state=="named_with_permission" and source["confirmed_on"]<source["received_on"]:
+        raise AttributionError(f"{label}: confirmed_on precedes received_on")
+    ledger=source.get("ledger")
+    if not isinstance(ledger,dict) or set(ledger)!=set(LEDGER_FIELDS):
+        raise AttributionError(f"{label}: correspondence requires a ledger with exactly {list(LEDGER_FIELDS)}")
+    for field in LEDGER_FIELDS:
+        text=ledger[field]
+        if not isinstance(text,str) or not text.strip() or len(text)>LEDGER_TEXT_LIMIT or "\n" in text or URL_RE.search(text):
+            raise AttributionError(f"{label}: ledger.{field} must be one line of at most {LEDGER_TEXT_LIMIT} characters without links")
+    commits=source.get("implemented_in",[])
+    if not isinstance(commits,list) or not all(isinstance(commit,str) and COMMIT_RE.fullmatch(commit) for commit in commits) or len(set(commits))!=len(commits):
+        raise AttributionError(f"{label}: implemented_in lists distinct full public commit hashes")
+    if source.get("urls"):
+        raise AttributionError(f"{label}: private correspondence must not expose mailbox or message URLs")
+    public_text=json.dumps(source,ensure_ascii=False)
+    if EMAIL_RE.search(public_text) or ABSOLUTE_PRIVATE_PATH_RE.search(public_text):
+        raise AttributionError(f"{label}: correspondence metadata contains a private address or local path")
 
 
 def normalized_url(value: str) -> str:
@@ -234,15 +322,11 @@ def validate_registry(root: Path, registry: dict[str, Any], paper_by_id: dict[st
             if not isinstance(url, str) or not url.startswith("https://"):
                 raise AttributionError(f"{label}: only https URLs are public-safe")
         if source["kind"] == "correspondence":
-            if source.get("identity_disclosure") != "withheld_pending_confirmation" or source.get("confirmation_status") != "not_confirmed":
-                raise AttributionError(f"{label}: correspondence requires withheld, unconfirmed identity state")
-            if source["authors"] != ["A mathematician (name withheld pending confirmation)"]:
-                raise AttributionError(f"{label}: correspondence author must use the neutral withheld label")
-            if source.get("urls"):
-                raise AttributionError(f"{label}: private correspondence must not expose mailbox or message URLs")
-            public_text=json.dumps(source,ensure_ascii=False)
-            if EMAIL_RE.search(public_text) or ABSOLUTE_PRIVATE_PATH_RE.search(public_text):
-                raise AttributionError(f"{label}: correspondence metadata contains a private address or local path")
+            validate_correspondence(source,label=label)
+        else:
+            for field in ("identity_disclosure","confirmation_status","received_on","confirmed_on","ledger","implemented_in"):
+                if field in source:
+                    raise AttributionError(f"{label}: {field} applies only to private correspondence")
         for loc_index, locator in enumerate(source.get("source_locators", [])):
             if not isinstance(locator, dict) or not str(locator.get("locator", "")).strip():
                 raise AttributionError(f"{label}.source_locators[{loc_index}]: locator required")
@@ -272,8 +356,8 @@ def validate_registry(root: Path, registry: dict[str, Any], paper_by_id: dict[st
                 raise AttributionError(f"{label}: dangling bibliography paper/key binding")
         if source["verification_state"] in {"source_verified","existing_source_closure"} and not source.get("source_locators"):
             raise AttributionError(f"{label}: verified source states require a source locator")
-        if source["verification_state"] == "implemented_advice" and (not source.get("artifact_links") or source["kind"] != "correspondence" or source.get("identity_disclosure") != "withheld_pending_confirmation"):
-            raise AttributionError(f"{label}: implemented correspondence advice requires a public artifact and withheld identity")
+        if source["verification_state"] == "implemented_advice" and (not source.get("artifact_links") or source["kind"] != "correspondence" or source.get("identity_disclosure") not in NAMING_STATES):
+            raise AttributionError(f"{label}: implemented correspondence advice requires a public artifact and a recorded naming state")
     return sources
 
 
@@ -458,13 +542,83 @@ def build(root: Path, registry_path: Path, paper_corpus_path: Path) -> dict[str,
     }
 
 
+def credit_ledger(index: dict[str, Any]) -> dict[str, Any]:
+    """Advice that changed public files, newest first, with its naming state."""
+    entries=[]
+    for source in index["sources"]:
+        if source["kind"]!="correspondence" or source["verification_state"]!="implemented_advice": continue
+        state=source["identity_disclosure"]
+        neutral=state!="named_with_permission"
+        entries.append({
+            "id":source["id"],
+            "anchor":f"credit-{anchor_id(source['id'])}",
+            "received_on":source["received_on"],
+            "title":source["title"],
+            "problems":list(source.get("problems",[])),
+            "told":source["ledger"]["told"],
+            "changed":source["ledger"]["changed"],
+            "credited_as":source["authors"][0] if neutral else ", ".join(source["authors"]),
+            "role":source["authors"][0].split(" (",1)[0].removeprefix("A ") if neutral else None,
+            "naming":{"state":state,"confirmation_status":source["confirmation_status"],"confirmed_on":source.get("confirmed_on"),"display":NAMING_DISPLAY[state]},
+            "artifacts":[{field:item[field] for field in ("path","line_start","line_end","excerpt_sha256")} for item in source.get("artifact_coordinates",[])],
+            "commits":[{"sha":commit,"url":PUBLIC_COMMIT_URL+commit} for commit in source.get("implemented_in",[])],
+            "detail":f"SOURCE_ATTRIBUTIONS.md#source-{anchor_id(source['id'])}",
+        })
+    entries.sort(key=lambda entry:(entry["received_on"],entry["id"]),reverse=True)
+    counts={"entries":len(entries),**{state:sum(entry["naming"]["state"]==state for entry in entries) for state in NAMING_STATES}}
+    return {
+        "schema":CREDIT_LEDGER_SCHEMA,
+        "artifact_role":"generated_credit_ledger_for_implemented_advice",
+        "generated_by":"scripts/build_source_attributions.py",
+        "source_registry":index["source_registry"],
+        "source_registry_sha256":index["source_registry_sha256"],
+        "authority_boundary":"Acknowledges advice that changed public files in this repository. It does not say that the person reviewed, checked or endorsed any mathematics, and it does not make them an author.",
+        "naming_policy":"Every entry starts with the name withheld. A name appears only after that person confirms the public name they want, and an entry stays anonymous if they ask. Private messages stay outside this repository.",
+        "counts":counts,
+        "entries":entries,
+    }
+
+
+def credit_ledger_markdown(ledger: dict[str, Any]) -> bytes:
+    def when(value: str) -> str:
+        day=datetime.date.fromisoformat(value)
+        return f"{day.day} {MONTH_NAMES[day.month-1]} {day.year}"
+    def artifact_link(item: dict[str, Any]) -> str:
+        path=quote(item["path"],safe="/"); start=item["line_start"]; end=item["line_end"]
+        span=f"line {start}" if start==end else f"lines {start}–{end}"
+        # GitHub renders Markdown and drops a line anchor unless the plain view is asked for.
+        plain="?plain=1" if item["path"].endswith(".md") else ""
+        return f"[{md_escape(item['path'])}, {span}](../../{path}{plain}#L{start}-L{end})"
+    def name_line(entry: dict[str, Any]) -> str:
+        state=entry["naming"]["state"]
+        if state=="named_with_permission":
+            return f"{md_escape(entry['credited_as'])}, named with their permission on {when(entry['naming']['confirmed_on'])}."
+        if state=="anonymous_by_request":
+            return f"anonymous at their request (credited as a {md_escape(entry['role'])})."
+        return f"withheld until they confirm (credited as a {md_escape(entry['role'])})."
+    counts=ledger["counts"]
+    lines=["<!-- SPDX-FileCopyrightText: 2026 Will Cook -->","<!-- SPDX-License-Identifier: CC-BY-4.0 -->","","# Credit ledger","","_Generated from the authored source registry by `scripts/build_source_attributions.py`; do not hand-edit._","",
+           "People have told us things about this work that changed it. Each entry says what they told us, what changed because of it, and where to see the change. A name appears only after that person confirms they want to be named; until then the entry says the name is withheld. Thanking someone here does not mean they reviewed, checked or endorsed the mathematics.","",
+           f"Entries: `{counts['entries']}`. Names withheld until confirmed: `{counts['withheld_pending_confirmation']}`. Named with permission: `{counts['named_with_permission']}`. Anonymous at their request: `{counts['anonymous_by_request']}`.","",
+           "Published papers, forum posts and software are credited in [source attributions](SOURCE_ATTRIBUTIONS.md), and the [credit policy](CREDIT_POLICY.md) explains how credit works here. If an entry is about your advice and you would like to be named, to stay anonymous, or to correct the entry, [get in touch](https://wcook04.github.io/plectis/docs/contact.html#get-in-touch).",""]
+    for entry in ledger["entries"]:
+        problems=", ".join(f"#{md_escape(problem)}" for problem in entry["problems"]) or "the whole corpus"
+        lines += [f'<a id="{entry["anchor"]}"></a>',"",f"## {when(entry['received_on'])}: {md_escape(entry['title'])}","",
+                  f"- **What they told us:** {md_escape(entry['told'])}",
+                  f"- **What changed:** {md_escape(entry['changed'])}",
+                  "- **Where to see it:** "+"; ".join(artifact_link(item) for item in entry["artifacts"]),
+                  *([ "- **Commits:** "+", ".join(f"[{commit['sha'][:10]}]({commit['url']})" for commit in entry["commits"])] if entry["commits"] else []),
+                  f"- **Problems:** {problems}",
+                  f"- **Name:** {name_line(entry)}",
+                  f"- **Full record:** [source attributions](SOURCE_ATTRIBUTIONS.md#source-{anchor_id(entry['id'])})",""]
+    if not ledger["entries"]: lines += ["No implemented advice is recorded yet.",""]
+    lines += ["Machine-readable version: [credit-ledger.json](credit-ledger.json).",""]
+    return "\n".join(lines).encode()
+
+
 def markdown(index: dict[str, Any]) -> bytes:
-    def esc(value: Any) -> str:
-        text=" ".join(str(value).split())
-        for character in ("\\","`","*","_","[","]","<",">"): text=text.replace(character,"\\"+character)
-        return text
-    def anchor(value: str) -> str:
-        return re.sub(r"[^a-z0-9]+","-",value.casefold()).strip("-") or "source"
+    esc=md_escape
+    anchor=anchor_id
     def local_link(row: dict[str,Any], label: str | None=None) -> str:
         path=quote(row["path"],safe="/"); start=row["line_start"]; end=row["line_end"]
         return f"[{esc(label or row['path'])}](../../{path}#L{start}-L{end})"
@@ -479,10 +633,10 @@ def markdown(index: dict[str, Any]) -> bytes:
     lines = ["# Source attributions", "", "_Generated from the authored source registry; do not hand-edit._", "", "This index shows which public sources informed which papers, problems, Lean-facing records, and implemented changes. Source credit does not establish proof, novelty, endorsement, peer review, or complete historical coverage.", "", "Private correspondence appears only under a neutral anonymous identity until public naming is confirmed. Its email, mailbox location, message text, and private evidence remain outside this repository.", "", "## Coverage and anonymous implementation credits", "", f"The registry contains `{len(index['sources'])}` curated sources across `{index['paper_inventory']['paper_denominator']}` registered papers and `{index['lean_inventory']['library_file_denominator']}` Lean library files.", ""]
     states = {row["key"]: row["source_ids"] for row in index["facets"]["by_verification_state"]}
     lines += ["Source review states: " + "; ".join(f"`{state}`: `{len(ids)}`" for state, ids in sorted(states.items())) + ".", "", "Bibliography coverage records attribution already present in the corpus. A `bibliography_only` record still needs direct source-passage verification; a completed lexical review does not certify a source-to-theorem correspondence.", ""]
-    anonymous=[s for s in index["sources"] if s["kind"]=="correspondence" and s["verification_state"]=="implemented_advice"]
-    if anonymous:
-        lines += ["Implemented advice whose identity is awaiting confirmation:", ""]
-        for source in anonymous: lines.append(f"- {source_ref(source['id'])} — {esc(source['relation'])}")
+    advice=[s for s in index["sources"] if s["kind"]=="correspondence" and s["verification_state"]=="implemented_advice"]
+    if advice:
+        lines += ["Implemented advice from private correspondence. The [credit ledger](CREDIT_LEDGER.md) gives each entry's date, what changed and whether the person has been named:", ""]
+        for source in advice: lines.append(f"- {source_ref(source['id'])} — {esc(source['relation'])}")
         lines.append("")
     lines += [f"- Unmatched citation keys: `{index['coverage']['unmatched_citation_key_count']}`", f"- Bibliography entries awaiting curated links: `{index['coverage']['bibliography_without_curated_link_count']}`", f"- Lean candidates awaiting review: `{index['coverage']['lean_candidate_awaiting_review_count']}` (`{index['lean_inventory']['direct_reference_candidate_count']}` direct URL/DOI/arXiv rows; `{index['lean_inventory']['named_or_key_candidate_count']}` surname/key rows; categories may overlap).", "", "## Browse by problem", ""]
     lines[:0]=["<!-- SPDX-FileCopyrightText: 2026 Will Cook -->","<!-- SPDX-License-Identifier: CC-BY-4.0 -->",""]
@@ -498,7 +652,7 @@ def markdown(index: dict[str, Any]) -> bytes:
     for source in index["sources"]:
         primary=source.get("urls",[])[0] if source.get("urls") else None
         heading=f"[{esc(source['title'])}]({primary})" if primary else esc(source["title"])
-        lines += [f'<a id="source-{anchor(source["id"])}"></a>', "", f"### {heading}", "", f"- Source id: `{esc(source['id'])}`", f"- Author or public identity: {', '.join(esc(a) for a in source['authors'])}", f"- Kind: `{esc(source['kind'])}`", f"- Problems: {', '.join('#'+esc(p) for p in source.get('problems', [])) or 'none recorded'}", f"- Relationship and boundary: {esc(source['relation'])}", f"- Source verification: `{esc(source['verification_state'])}` — {esc(source.get('verification_scope','scope not separately recorded'))}", f"- Local mapping: `{esc(source.get('mapping_status','not recorded'))}`" + (f" — {esc(source['mapping_note'])}" if source.get('mapping_note') else ""), ""]
+        lines += [f'<a id="source-{anchor(source["id"])}"></a>', "", f"### {heading}", "", f"- Source id: `{esc(source['id'])}`", f"- Author or public identity: {', '.join(esc(a) for a in source['authors'])}", f"- Kind: `{esc(source['kind'])}`"] + ([f"- Received: `{esc(source['received_on'])}`; naming: {NAMING_DISPLAY[source['identity_disclosure']]} [Credit ledger entry](CREDIT_LEDGER.md#credit-{anchor(source['id'])})"] if source["kind"]=="correspondence" else []) + [f"- Problems: {', '.join('#'+esc(p) for p in source.get('problems', [])) or 'none recorded'}", f"- Relationship and boundary: {esc(source['relation'])}", f"- Source verification: `{esc(source['verification_state'])}` — {esc(source.get('verification_scope','scope not separately recorded'))}", f"- Local mapping: `{esc(source.get('mapping_status','not recorded'))}`" + (f" — {esc(source['mapping_note'])}" if source.get('mapping_note') else ""), ""]
         if source.get("source_locators"):
             lines += ["Exact source locations:", ""]
             for locator in source["source_locators"]:
@@ -546,14 +700,21 @@ def main(argv: list[str] | None = None) -> int:
     if args.query:
         q=args.query.casefold(); rows=[s for s in index["sources"] if q in s["id"].casefold() or q in s["title"].casefold() or any(q in a.casefold() for a in s["authors"]) or q in {str(p).casefold() for p in s.get("problems",[])}]
         print(json.dumps(rows,indent=2,ensure_ascii=False)); return 0 if rows else 1
-    jp,mp=canonical(index),markdown(index); jo=root/"docs/research-commons/source-attribution-index.json"; mo=root/"docs/research-commons/SOURCE_ATTRIBUTIONS.md"
+    ledger=credit_ledger(index)
+    outputs=(
+        (root/"docs/research-commons/source-attribution-index.json",canonical(index)),
+        (root/"docs/research-commons/SOURCE_ATTRIBUTIONS.md",markdown(index)),
+        (root/CREDIT_LEDGER_JSON,canonical(ledger)),
+        (root/CREDIT_LEDGER_MARKDOWN,credit_ledger_markdown(ledger)),
+    )
     if args.check:
-        current=jo.is_file() and mo.is_file() and jo.read_bytes()==jp and mo.read_bytes()==mp
+        current=all(path.is_file() and path.read_bytes()==payload for path,payload in outputs)
         print("source attribution views current" if current else "source attribution views stale; run python3 scripts/build_source_attributions.py")
         return 0 if current else 1
-    try: write(jo,jp); write(mo,mp)
+    try:
+        for path,payload in outputs: write(path,payload)
     except (OSError,AttributionError) as exc: print(f"build_source_attributions: {exc}",file=sys.stderr); return 1
-    print("wrote source attribution JSON and Markdown views"); return 0
+    print("wrote source attribution JSON and Markdown views and the credit ledger"); return 0
 
 
 if __name__ == "__main__": raise SystemExit(main())

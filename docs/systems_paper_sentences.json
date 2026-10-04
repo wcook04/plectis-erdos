@@ -125,7 +125,7 @@
       "path": "docs/research-commons/CREDIT_POLICY.md",
       "start_line": 1,
       "end_line": 79,
-      "sha256": "c93c7710b3a6837511f0a720fc798896060a918797654f1e002605fdea627da5",
+      "sha256": "22116032e3afd5510e1c7de6871b5c951c7f81f3d80aae329e10d844479d725f",
       "excerpt_sha256": "c93c7710b3a6837511f0a720fc798896060a918797654f1e002605fdea627da5",
       "kind": "source"
     },
@@ -133,10 +133,10 @@
       "id": "credit-registry",
       "path": "docs/research-commons/source-attributions.json",
       "start_line": 1,
-      "end_line": 36203,
+      "end_line": 36351,
       "kind": "supplied_snapshot",
-      "sha256": "b70c9def77ba27f45f22a56da848ab7724fd6476a42e211654e52700255fc0c2",
-      "excerpt_sha256": "b70c9def77ba27f45f22a56da848ab7724fd6476a42e211654e52700255fc0c2"
+      "sha256": "309ea20910b7c04915c309232fa5624f6d841cd92a683f4adf0342194e22ea98",
+      "excerpt_sha256": "309ea20910b7c04915c309232fa5624f6d841cd92a683f4adf0342194e22ea98"
     },
     {
       "id": "essay-pages",
@@ -847,9 +847,9 @@
       "id": "r11-prove2me-attribution",
       "kind": "supplied_snapshot",
       "path": "docs/research-commons/source-attributions.json",
-      "start_line": 15977,
-      "end_line": 16025,
-      "sha256": "b70c9def77ba27f45f22a56da848ab7724fd6476a42e211654e52700255fc0c2",
+      "start_line": 16125,
+      "end_line": 16173,
+      "sha256": "309ea20910b7c04915c309232fa5624f6d841cd92a683f4adf0342194e22ea98",
       "excerpt_sha256": "8f30a18d11e5db78e071573e26c75d20ae776b9323ffa603048eb2100851dc8b",
       "custody": "Public attribution inventory, marked bibliography_only. Used for feature attribution, not for its conflicting first-publication chronology. Direct claims are checked against the enclosed original v2 in this pass."
     }
