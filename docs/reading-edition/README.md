@@ -4,14 +4,14 @@
 
 # Reading edition
 
-Edition fingerprint `b7008623a429cfce`. Papers CC-BY-4.0, Will Cook, 2026. Source: <https://github.com/wcook04/plectis-erdos>. Website: <https://wcook04.github.io/plectis/maths/>.
+Edition fingerprint `e3bd659f77c37349`. Papers CC-BY-4.0, Will Cook, 2026. Source: <https://github.com/wcook04/plectis-erdos>. Website: <https://wcook04.github.io/plectis/maths/>.
 
 Read the mathematics with your own AI model, or without one, and without a clone. All three files come from one builder and one set of sources, so they agree with the papers and with each other.
 
 | File | Contents | Size |
 |---|---|---:|
 | [plectis-reading-edition.md](plectis-reading-edition.md) | Start here. Introduction, research instruction, the cross-problem paper in full, the opening sections and references of each short paper, and one worked example in full. [Raw](https://raw.githubusercontent.com/wcook04/plectis-erdos/main/docs/reading-edition/plectis-reading-edition.md) | 367 KB |
-| [plectis-short-papers.md](plectis-short-papers.md) | The same front matter with the cross-problem paper and all eight short papers in full. [Raw](https://raw.githubusercontent.com/wcook04/plectis-erdos/main/docs/reading-edition/plectis-short-papers.md) | 652 KB |
+| [plectis-short-papers.md](plectis-short-papers.md) | The same front matter with the cross-problem paper and all eight short papers in full. [Raw](https://raw.githubusercontent.com/wcook04/plectis-erdos/main/docs/reading-edition/plectis-short-papers.md) | 653 KB |
 | Complete edition | All 17 papers below. Written on demand, because it repeats `docs/papers/full-text/`. | 3,427 KB |
 
 ```sh
@@ -41,7 +41,7 @@ A model with a small context window should take the starter file first and then 
 | #269 | [Running least common multiples: distinct values and multiplicities](../../docs/papers/full-text/erdos269-running-lcm-reasoning-surface.md) | longer record | 272 KB | [raw](https://raw.githubusercontent.com/wcook04/plectis-erdos/main/docs/papers/full-text/erdos269-running-lcm-reasoning-surface.md) |
 | #1041 | [Paths in Polynomial Lemniscates: A Degree-Seven Counterexample and Radial Connections](../../docs/papers/full-text/erdos-1041-lemniscate-newton-flow.md) | short paper | 61 KB | [raw](https://raw.githubusercontent.com/wcook04/plectis-erdos/main/docs/papers/full-text/erdos-1041-lemniscate-newton-flow.md) |
 | #1041 | [Paths in Polynomial Lemniscates: A Degree-Seven Counterexample and Radial Connections](../../docs/papers/full-text/erdos1041-lemniscate-reasoning-surface.md) | longer record | 291 KB | [raw](https://raw.githubusercontent.com/wcook04/plectis-erdos/main/docs/papers/full-text/erdos1041-lemniscate-reasoning-surface.md) |
-| #1049 | [Hankel Determinants of Geometric Moments and Rational Lambert Values](../../docs/papers/full-text/erdos-1049-rational-base-lambert.md) | short paper | 62 KB | [raw](https://raw.githubusercontent.com/wcook04/plectis-erdos/main/docs/papers/full-text/erdos-1049-rational-base-lambert.md) |
+| #1049 | [Hankel Determinants of Geometric Moments and Rational Lambert Values](../../docs/papers/full-text/erdos-1049-rational-base-lambert.md) | short paper | 63 KB | [raw](https://raw.githubusercontent.com/wcook04/plectis-erdos/main/docs/papers/full-text/erdos-1049-rational-base-lambert.md) |
 | #1049 | [Geometric Moments and Rational Lambert Values: Proofs and Further Results](../../docs/papers/full-text/erdos1049-rational-base-lambert-reasoning-surface.md) | longer record | 288 KB | [raw](https://raw.githubusercontent.com/wcook04/plectis-erdos/main/docs/papers/full-text/erdos1049-rational-base-lambert-reasoning-surface.md) |
 
 The introduction is authored in [INTRODUCTION.md](INTRODUCTION.md). The research instruction is the marked region of [skills/explore-the-corpus/SKILL.md](../../skills/explore-the-corpus/SKILL.md); a clone and this edition therefore give the same instruction. Rebuild with `python3 scripts/build_reading_edition.py`; `--check` fails when any output is stale.

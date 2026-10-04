@@ -13,14 +13,14 @@
     },
     "erdos_1041_note": {
       "inputs": {
-        "paper/1041/erdos-1041-lemniscate-newton-flow.tex": "sha256:d928fef4b7cccad1ab5653b6e04b980381675c62001795ede78c1ae1c22ed8d6",
+        "paper/1041/erdos-1041-lemniscate-newton-flow.tex": "sha256:b5904df3c943b0e2c47306396b44ac2ee200ffd03390cde3a61451d148239fe9",
         "paper/evidence/erdos-1041-lemniscate-newton-flow.tex": "sha256:c60b85cd02a4f493465fbd32c1bccecab7e8d11a0e28a5321ac62a8c2612ec6c",
         "paper/module-aliases.tex": "sha256:6d6d9640a9b7f04d003ebbffb78db279f5af838a2afc99ba6b5b247cc67b6954",
         "paper/paper-evidence.tex": "sha256:1ba1b3a112445f6fee7794f2083c29a60fb102d239d5e799808a36b9a5e562e3",
         "paper/paper-house-style.sty": "sha256:554ed85b5315bd936a4d09d58f8727547c5bb1b299f9684eb6ef720b329759a2",
         "paper/problem-note-preamble.tex": "sha256:088d36d7ba3d3ee0cee2df99e8915927999698f19889f8ea0b8d55b3721ec778"
       },
-      "rendered_content_digest": "sha256:e361b9bbb289ca75960e74611ec4609764fc0ab7c34af03d6f0401b7bd6f8dc7",
+      "rendered_content_digest": "sha256:63f05b368aa6dde6b29843207ac680711f7542b5c84bf47943e5ccded85af91f",
       "source_path": "paper/1041/erdos-1041-lemniscate-newton-flow.tex",
       "storage_path": "paper/1041/erdos-1041-lemniscate-newton-flow.pdf"
     },
@@ -39,14 +39,14 @@
     },
     "erdos_1049_note": {
       "inputs": {
-        "paper/1049/erdos-1049-rational-base-lambert.tex": "sha256:f5aa05723fe34febd687465abe7dfb9d1e8412af189b295921b52464ae402ec8",
+        "paper/1049/erdos-1049-rational-base-lambert.tex": "sha256:f8571e575b206c4164e8fff9747b912e6e9770d395908079b34b8f27495c0bb8",
         "paper/evidence/erdos-1049-rational-base-lambert.tex": "sha256:c4e6515515effaf60879a0a41f057fed821263558b84d7840fcca132c4946e83",
         "paper/module-aliases.tex": "sha256:6d6d9640a9b7f04d003ebbffb78db279f5af838a2afc99ba6b5b247cc67b6954",
         "paper/paper-evidence.tex": "sha256:1ba1b3a112445f6fee7794f2083c29a60fb102d239d5e799808a36b9a5e562e3",
         "paper/paper-house-style.sty": "sha256:554ed85b5315bd936a4d09d58f8727547c5bb1b299f9684eb6ef720b329759a2",
         "paper/problem-note-preamble.tex": "sha256:088d36d7ba3d3ee0cee2df99e8915927999698f19889f8ea0b8d55b3721ec778"
       },
-      "rendered_content_digest": "sha256:27234dac97b41939fc5702196761cfcf3fae79ad45dc3677c49fb4e264f3c40a",
+      "rendered_content_digest": "sha256:43ab4eaec3e4bdcc931bf86dbbffd8f233e4dbae787501bdc18fc32d70d38f81",
       "source_path": "paper/1049/erdos-1049-rational-base-lambert.tex",
       "storage_path": "paper/1049/erdos-1049-rational-base-lambert.pdf"
     },

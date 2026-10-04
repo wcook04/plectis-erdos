@@ -1109,11 +1109,13 @@ state the finite-set version without assumptions about Lambert series.
 The elementary integer-base method provides a different comparison.
 Vandehey \cite{vandehey2013} and Duverney and Tachiya
 \cite{duverneytachiya2019} use integer-base expansions. At a
-noninteger rational base the cleared tails satisfy a recurrence with
-a growing denominator contribution. The
+noninteger rational base the
+\href{https://github.com/wcook04/plectis-erdos/blob/7380b7871687b6bcc41ca0143c61f232e8af6500/lean/ErdosProblems/Erdos1049/RationalBaseLambert.lean\#L187}{cleared-tail recurrence}
+has a growing denominator contribution. The
 \shortrecordlink{erdos1049-rational-base-lambert-reasoning-surface.pdf}
 {long1049-clearing}{clearing and tail-recurrence calculations}
-in the companion paper rule out one coordinatewise scheme at $3/2$.
+in the companion paper include the
+\href{https://github.com/wcook04/plectis-erdos/blob/7380b7871687b6bcc41ca0143c61f232e8af6500/lean/ErdosProblems/Erdos1049/RationalBaseLambert.lean\#L155}{coordinatewise obstruction at $3/2$}.
 They make no assertion about other approximation families. At the
 function level, Bell and Smertnig \cite[Theorem~1.3]{bellsmertnig2026}
 exclude Mahler equations for the divisor generating series, while
