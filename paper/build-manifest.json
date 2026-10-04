@@ -232,7 +232,7 @@
     },
     "exposition_method_companion": {
       "inputs": {
-        "paper/exposition/parts/practice.tex": "sha256:6859e5aed8484c624e9b5d9ea6b8911ddd0f46691b5e9e65f5f93ee8e38ba914",
+        "paper/exposition/parts/practice.tex": "sha256:c544d6a84298f2bb6fcc8f92694dee74e4ea0b1edb4cb3871e84bf5426ed42c6",
         "paper/exposition/parts/reading.tex": "sha256:8675f4cbb7003a35a81890813b278a7e4b6ebcf02eaeb3da391feabb30fbfa65",
         "paper/exposition/parts/references.tex": "sha256:61f75d6d2cfb2110b31a28ec892387393e04ca9016bcdb390630f8c6c66427e1",
         "paper/exposition/parts/review.tex": "sha256:56c0ac6bb469bb0f4ea68437b0652aaaaeb7186465ecc82500e8bcea8dc301f7",
@@ -242,7 +242,7 @@
         "paper/paper-house-style.sty": "sha256:554ed85b5315bd936a4d09d58f8727547c5bb1b299f9684eb6ef720b329759a2",
         "paper/problem-note-preamble.tex": "sha256:088d36d7ba3d3ee0cee2df99e8915927999698f19889f8ea0b8d55b3721ec778"
       },
-      "rendered_content_digest": "sha256:5a2efea88d2a7ef1ba38771f55b15fc6495c25213611af173ca82130a1f2beee",
+      "rendered_content_digest": "sha256:c3b2a81e43e0106dc88c8d9c211bad6f0800c3943e008a33d383eb4ef0d7af15",
       "source_path": "paper/exposition/writing-mathematics-from-reviewed-revisions.tex",
       "storage_path": "paper/exposition/writing-mathematics-from-reviewed-revisions.pdf"
     },

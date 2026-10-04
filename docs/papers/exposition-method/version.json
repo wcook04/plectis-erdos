@@ -59,7 +59,7 @@
     },
     {
       "path": "paper/exposition/writing-mathematics-from-reviewed-revisions.pdf",
-      "sha256": "5a2efea88d2a7ef1ba38771f55b15fc6495c25213611af173ca82130a1f2beee",
+      "sha256": "c3b2a81e43e0106dc88c8d9c211bad6f0800c3943e008a33d383eb4ef0d7af15",
       "role": "companion_pdf"
     },
     {
@@ -79,7 +79,7 @@
     },
     {
       "path": "paper/exposition/parts/practice.tex",
-      "sha256": "6859e5aed8484c624e9b5d9ea6b8911ddd0f46691b5e9e65f5f93ee8e38ba914",
+      "sha256": "c544d6a84298f2bb6fcc8f92694dee74e4ea0b1edb4cb3871e84bf5426ed42c6",
       "role": "companion_input"
     },
     {

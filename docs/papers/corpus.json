@@ -8768,8 +8768,8 @@
       ],
       "citations_rendered": 41,
       "local_pdf": "paper/exposition/writing-mathematics-from-reviewed-revisions.pdf",
-      "pdf_sha256": "sha256:5a2efea88d2a7ef1ba38771f55b15fc6495c25213611af173ca82130a1f2beee",
-      "pdf_byte_count": 136636,
+      "pdf_sha256": "sha256:c3b2a81e43e0106dc88c8d9c211bad6f0800c3943e008a33d383eb4ef0d7af15",
+      "pdf_byte_count": 136664,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection for this guide",

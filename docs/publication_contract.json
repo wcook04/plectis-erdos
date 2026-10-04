@@ -445,7 +445,7 @@
       "source_path": "paper/exposition/writing-mathematics-from-reviewed-revisions.tex",
       "source_content_digest": "sha256:6321a07eb19adea4439282c2a9d52d3016ccf8615b9d2d267990a286729ae238",
       "rendered_path": "paper/exposition/writing-mathematics-from-reviewed-revisions.pdf",
-      "rendered_content_digest": "sha256:5a2efea88d2a7ef1ba38771f55b15fc6495c25213611af173ca82130a1f2beee",
+      "rendered_content_digest": "sha256:c3b2a81e43e0106dc88c8d9c211bad6f0800c3943e008a33d383eb4ef0d7af15",
       "storage_path": "paper/exposition/writing-mathematics-from-reviewed-revisions.pdf",
       "authority_posture": "authored_exposition_methodology_not_Lean_proof_authority_not_measured_reader_benefit",
       "claim_scope": "A documented editorial practice grounded in primary prose and reviewed revisions, with retained examples, integrating decisions and reuse limits; no measured reader benefit or independent mathematical review is claimed.",
