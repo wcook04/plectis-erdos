@@ -3,14 +3,14 @@
   "classification": "inventory_and_reported_history",
   "builder": "scripts/build_systems_paper_counts.py::pipeline_values",
   "values": {
-    "LedgerRows": 689,
-    "LedgerExact": 498,
-    "LedgerSpecialising": 142,
-    "LedgerNamedInput": 23,
-    "LedgerNoLean": 26,
-    "LedgerWithLean": 663,
-    "LedgerFormal": 640,
-    "LedgerCompared": 616,
+    "LedgerRows": 649,
+    "LedgerExact": 475,
+    "LedgerSpecialising": 129,
+    "LedgerNamedInput": 20,
+    "LedgerNoLean": 25,
+    "LedgerWithLean": 624,
+    "LedgerFormal": 604,
+    "LedgerCompared": 580,
     "LedgerQueued": 24,
     "LeanModules": 1903,
     "Claims": 160,
@@ -34,11 +34,11 @@
   "inputs": [
     {
       "path": "docs/paper_lean_coverage.json",
-      "sha256": "fe656ab45f924d5c3f883ec1e54325cc359beaeca3eaa9ff1d1bab6f00933b49"
+      "sha256": "263090882fd15d3b1b66b1c0f69291b925bdd415c97cbb8c431626470e9d4645"
     },
     {
       "path": "docs/claims.json",
-      "sha256": "e06fcf5a304df0d0eb8e7c150145fa1fc02442f1456d80913afffc12790edd72"
+      "sha256": "476a3f4856d451b9814e84c78cee99a4445baa624358e033ccab035773b62604"
     },
     {
       "path": "docs/problem_index_source.json",
@@ -46,7 +46,7 @@
     },
     {
       "path": "docs/papers/corpus.json",
-      "sha256": "70a151c7b5066c896a60ac2fb89789a30ffec58821bf698d80645a439ad3a4c2"
+      "sha256": "1853b2a644e1650974d128dafffbc29551af6e97de446695e857b0ff9734d527"
     },
     {
       "path": "docs/publication_evidence.json",
