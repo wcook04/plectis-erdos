@@ -62,8 +62,8 @@
       "path": "docs/papers/corpus.json",
       "start_line": 1,
       "end_line": 8858,
-      "sha256": "1853b2a644e1650974d128dafffbc29551af6e97de446695e857b0ff9734d527",
-      "excerpt_sha256": "1853b2a644e1650974d128dafffbc29551af6e97de446695e857b0ff9734d527",
+      "sha256": "3ce5fb3613815b902da197e95c937495c733a7c6d8dcb422ec9faa46877c756e",
+      "excerpt_sha256": "3ce5fb3613815b902da197e95c937495c733a7c6d8dcb422ec9faa46877c756e",
       "kind": "source"
     },
     {
@@ -71,8 +71,8 @@
       "path": "docs/systems_paper_counts.json",
       "start_line": 1,
       "end_line": 65,
-      "sha256": "c41984c2450bf49545839fd8229338c8385d8d76d4b750fbe6cb46761154c448",
-      "excerpt_sha256": "c41984c2450bf49545839fd8229338c8385d8d76d4b750fbe6cb46761154c448",
+      "sha256": "1ebd0d4af407e7957f16a897c530c574c9c839e1f364d3b5ce96da56d7fe1328",
+      "excerpt_sha256": "1ebd0d4af407e7957f16a897c530c574c9c839e1f364d3b5ce96da56d7fe1328",
       "kind": "source"
     },
     {
@@ -2926,7 +2926,8 @@
       "evidence_refs": [
         "257-reciprocal",
         "257-statement",
-        "coverage-reciprocal"
+        "coverage-reciprocal",
+        "257-example"
       ],
       "warrant": "Keeps the inherited reciprocal criterion, exact formal antecedent and the source paper's averaging attribution separate from the weighted extension.",
       "statement_sha256": "a85a16fcc13391bf42ddc77713b0a0ae22afa711c622d873ede266e27ba71e26",
