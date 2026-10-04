@@ -822,7 +822,7 @@ jobs:
               raise SystemExit('feedback-policy Comparator unit did not pass both controls')
           print('feedback-policy: positive accepted and exact negative statement rejected')
           PYTHON
-      - name: Enforce the #257 weighted-support replay unit
+      - name: "Enforce the #257 weighted-support replay unit"
         if: ${{ always() && !cancelled() && steps.external-inputs.outputs.changed == 'true' }}
         env:
           WEIGHTED_POSITIVE_EXIT: ${{ steps.comparator.outputs.weighted_support_positive_exit }}
