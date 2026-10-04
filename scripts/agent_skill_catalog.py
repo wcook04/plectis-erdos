@@ -167,9 +167,15 @@ def load_catalog() -> dict[str, Any]:
         if not isinstance(task_intents, list):
             raise SkillCatalogError(f"lane {lane_id} task_intents must be a list")
         for intent in task_intents:
-            if not isinstance(intent, dict) or set(intent) != {"actions", "objects"}:
+            if (
+                not isinstance(intent, dict)
+                or not {"actions", "objects"}.issubset(intent)
+                or set(intent) - {"actions", "objects", "context_markers", "object_clause"}
+            ):
                 raise SkillCatalogError(f"lane {lane_id} task intent needs actions and objects")
-            for field in ("actions", "objects"):
+            for field in ("actions", "objects", "context_markers"):
+                if field not in intent:
+                    continue
                 terms = intent[field]
                 if (
                     not isinstance(terms, list) or not terms
@@ -179,6 +185,8 @@ def load_catalog() -> dict[str, Any]:
                     raise SkillCatalogError(
                         f"lane {lane_id} task intent {field} needs unique lowercase tokens"
                     )
+            if "object_clause" in intent:
+                _validate_object_clause(intent, lane_id)
         for field in ("read", "commands"):
             values = lane.get(field)
             if not isinstance(values, list) or not all(
@@ -211,9 +219,145 @@ def normalize(text: str) -> str:
     return " ".join(TOKEN_RE.findall(text.casefold()))
 
 
+def _validate_object_clause(intent: dict[str, Any], lane_id: str) -> None:
+    clause = intent["object_clause"]
+    fields = {"faults", "bridges", "blocked_heads", "compounds", "competing_actions"}
+    if not isinstance(clause, dict) or set(clause) != fields or "context_markers" not in intent:
+        raise SkillCatalogError(f"lane {lane_id} task intent object_clause has invalid fields")
+    for field in fields - {"compounds"}:
+        terms = clause[field]
+        if (not isinstance(terms, list) or not terms
+                or not all(isinstance(term, str) and TOKEN_RE.fullmatch(term) for term in terms)
+                or len(terms) != len(set(terms))):
+            raise SkillCatalogError(f"lane {lane_id} task intent object_clause {field} needs unique lowercase tokens")
+    compounds = clause["compounds"]
+    if (not isinstance(compounds, list) or not compounds
+            or not all(isinstance(term, str) and normalize(term) == term
+                       and len(term.split()) > 1 and term.split()[-1] in intent["objects"] for term in compounds)
+            or len(compounds) != len(set(compounds))
+            or not set(clause["bridges"]) <= set(intent["context_markers"])):
+        raise SkillCatalogError(f"lane {lane_id} task intent object_clause has invalid compounds or bridges")
+
+
+def _affirmative_command_ends(task: str, tokens: list[str]) -> dict[int, int]:
+    """Bind supported command heads and object spans to the same clause.
+
+    Normalization removes punctuation. Original semicolons/newlines delimit
+    this check's clauses; periods and conjunctions do not establish a new
+    command. Unknown lead-ins and open quote prefixes provide no affirmative
+    evidence. This conservative admission rule is not a negation parser.
+    """
+    text = task.casefold()
+    matches = list(TOKEN_RE.finditer(text))
+    if [match.group() for match in matches] != tokens:
+        return {}
+    negators = {"no", "not", "never", "without", "avoid", "stop"}
+    contractions = {"don", "doesn", "didn", "can", "won", "shouldn", "wouldn", "couldn",
+                    "isn", "aren", "wasn", "weren", "hasn", "haven", "hadn"}
+    admitted = {}
+    for index, match in enumerate(matches):
+        prefix = text[:match.start()]
+        # Unbalanced quote families make an instruction possibly quoted.
+        # Apostrophes within words (don't) are not quote delimiters.
+        if any(len(re.findall(pattern, prefix)) % 2 for pattern in (
+                r'["“”]', r"`", r"(?<![a-z0-9])['‘’]|['‘’](?![a-z0-9])")):
+            continue
+        local = prefix[max(prefix.rfind(";"), prefix.rfind("\n")) + 1:]
+        lead = normalize(local).split()
+        if set(lead) & negators or any(
+                token == "t" and position > 0 and lead[position - 1] in contractions
+                for position, token in enumerate(lead)):
+            continue
+        if (all(token in {"please", "instead", "then"} for token in lead)
+                or (lead[0] in {"after", "before"} and local.rstrip().endswith(","))):
+            boundaries = [position for marker in (";", "\n")
+                          if (position := text.find(marker, match.end())) >= 0]
+            end = min(boundaries, default=len(text))
+            admitted[index] = next(
+                (position for position in range(index + 1, len(matches))
+                 if matches[position].start() >= end), len(matches))
+    return admitted
+
+
+def _object_clause_match(
+    intent: dict[str, Any], tokens: list[str], affirmative: dict[int, int]
+) -> tuple[str, str] | None:
+    """Match a repaired noun clause, not a later tool reference or proof head.
+
+    Only opt-in intents use this rule. Faults can bind a location to a tool;
+    explicitly named compounds distinguish software modifiers from math heads.
+    Multi-action or negated requests retain the preexisting routing evidence.
+    """
+    clause = intent["object_clause"]
+    objects = set(intent["objects"])
+    blockers = set(clause["blocked_heads"])
+    competing = set(clause["competing_actions"])
+    for index, action in enumerate(tokens):
+        if action not in intent["actions"]:
+            continue
+        if index not in affirmative:
+            continue
+        if any(token in competing for token in tokens[:index]):
+            continue
+        if any(token in competing and (
+                   position >= affirmative[index]
+                   or set(tokens[index + 1:position]) & {"and", "or", "then"})
+               for position, token in enumerate(tokens[index + 1:], index + 1)):
+            continue
+        span = []
+        for token in tokens[index + 1:affirmative[index]]:
+            if token in intent["context_markers"]:
+                # A fault in a tool identifies its target. A proof in/using a
+                # tool names a mathematical target and must not cross here.
+                if (token in clause["bridges"] and set(span) & set(clause["faults"])
+                        and not set(span) & (objects | blockers)):
+                    continue
+                break
+            span.append(token)
+        covered = set()
+        for compound in clause["compounds"]:
+            words = compound.split()
+            for start in range(len(span) - len(words) + 1):
+                if span[start:start + len(words)] == words:
+                    covered.update(range(start, start + len(words)))
+        if any(token in blockers and position not in covered for position, token in enumerate(span)):
+            continue
+        for token in span:
+            if token in objects:
+                return action, token
+    return None
+
+
+def _intent_match(
+    intent: dict[str, Any], tokens: list[str], task: str | None = None
+) -> tuple[str, str] | None:
+    actions = set(tokens).intersection(intent["actions"])
+    objects = set(tokens).intersection(intent["objects"])
+    if not actions or not objects:
+        return None
+    if "object_clause" in intent:
+        affirmative = _affirmative_command_ends(task, tokens) if task is not None else {}
+        return _object_clause_match(intent, tokens, affirmative)
+    markers = intent.get("context_markers")
+    if markers is None:
+        return sorted(actions)[0], sorted(objects)[0]
+    # Scoped intents describe the repaired object, not a later reference such
+    # as "fix my proof using the workbench". Modifiers remain unrestricted.
+    for index, token in enumerate(tokens):
+        if token not in actions:
+            continue
+        for following in tokens[index + 1:]:
+            if following in markers:
+                break
+            if following in objects:
+                return token, following
+    return None
+
+
 def rank_lanes(catalog: dict[str, Any], task: str) -> list[dict[str, Any]]:
     normalized_task = normalize(task)
-    task_tokens = set(normalized_task.split())
+    ordered_tokens = normalized_task.split()
+    task_tokens = set(ordered_tokens)
     proof_intent = bool(
         task_tokens & {"attack", "counterexample", "prove", "solve"}
     )
@@ -237,10 +381,9 @@ def rank_lanes(catalog: dict[str, Any], task: str) -> list[dict[str, Any]]:
         # "refine the short mathematical papers". Require both: the object
         # alone must not turn a status or propagation request into authoring.
         for intent in lane.get("task_intents", []):
-            actions = task_tokens.intersection(intent["actions"])
-            objects = task_tokens.intersection(intent["objects"])
-            if actions and objects:
-                matches.append(f"{sorted(actions)[0]} + {sorted(objects)[0]}")
+            match = _intent_match(intent, ordered_tokens, task)
+            if match:
+                matches.append(f"{match[0]} + {match[1]}")
                 # Two explicit intent components outweigh a generic later
                 # stage such as "propagate the downstream consequences".
                 score += 12

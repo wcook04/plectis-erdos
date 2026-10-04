@@ -183,6 +183,8 @@ def build(root: Path, problem: int, source_commit: str, byte_budget: int = 512_0
 
 
 def check_decision(root: Path, value: dict[str, Any]) -> None:
+    if not isinstance(value, dict):
+        raise DecisionError("decision must be a JSON object")
     body = {k: v for k, v in value.items() if k != "decision_sha256"}
     if value.get("schema") != SCHEMA or digest(body) != value.get("decision_sha256"):
         raise DecisionError("decision identity mismatch")

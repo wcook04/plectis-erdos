@@ -7,6 +7,7 @@ from __future__ import annotations
 
 import copy
 import json
+import shutil
 import subprocess
 import sys
 import tempfile
@@ -78,7 +79,122 @@ def fixture_for(category: str, base: dict) -> dict:
     return value
 
 
+def check_proposed_diff_coverage() -> list[dict]:
+    """Replay PR intake against a real two-file diff in an isolated repository."""
+    base = json.loads(SUBMITTED.read_text(encoding="utf-8"))
+    results = []
+    with tempfile.TemporaryDirectory(prefix="research-intake-diff-") as directory:
+        temporary = Path(directory)
+        checkout = temporary / "checkout"
+        scripts = checkout / "scripts"
+        scripts.mkdir(parents=True)
+        # The actual intake and validator derive their Git root from __file__.
+        # Copy their import closure instead of mocking Git or validating this repo.
+        for name in (
+            "check_research_return_intake.py", "validate_research_return.py",
+            "repository_identity.py", "route_memory_receipt.py",
+            "validation_singleflight.py", "lean_build_share.py", "lean_package_share.py",
+        ):
+            shutil.copyfile(ROOT / "scripts" / name, scripts / name)
+        identity = checkout / "docs" / "repository_identity.json"
+        identity.parent.mkdir()
+        shutil.copyfile(ROOT / "docs" / "repository_identity.json", identity)
+        environment = intake.return_validator.git_environment()
+        environment["PYTHONDONTWRITEBYTECODE"] = "1"
+        # Optimize the helper and its validator subprocess together.
+        environment["PYTHONOPTIMIZE"] = str(sys.flags.optimize)
+
+        def git(*args: str) -> str:
+            result = subprocess.run(
+                ["git", "-c", "user.name=Intake Fixture",
+                 "-c", "user.email=intake-fixture@example.invalid",
+                 "-c", "commit.gpgsign=false", "-c", "core.hooksPath=/dev/null", *args],
+                cwd=checkout, env=environment, capture_output=True, text=True,
+                check=False, timeout=30,
+            )
+            require(result.returncode == 0, f"synthetic Git command failed: {args}: {result.stderr}")
+            return result.stdout.strip()
+
+        git("init", "-q")
+        for path in ("a.txt", "b.txt"):
+            (checkout / path).write_text("before\n", encoding="utf-8")
+        git("add", "a.txt", "b.txt")
+        git("commit", "-qm", "starting source")
+        starting = git("rev-parse", "HEAD")
+        for path in ("a.txt", "b.txt"):
+            (checkout / path).write_text("after\n", encoding="utf-8")
+        git("add", "a.txt", "b.txt")
+        git("commit", "-qm", "two-file proposal")
+        proposed = git("rev-parse", "HEAD")
+        require(git("diff", "--name-only", starting, proposed).splitlines() == ["a.txt", "b.txt"],
+                "synthetic proposal lost its two distinct changed paths")
+        base["return_id"] = "rr-fixture-architecture-proposed-diff"
+        base["repository"].update(starting_commit=starting, proposed_commit=proposed)
+        base["frontier"] = {
+            "track": "architecture", "area": "tooling",
+            "handle": "fixture/proposed-diff-coverage",
+            "bounded_question": "Does PR intake require every proposed source path?",
+            "stop_condition": "Stop after omitted, complete and uncommitted cases.",
+            "starting_paths": ["a.txt"],
+        }
+        base["result"].update(
+            claim_ceiling="architecture_proposal",
+            summary="Synthetic source-coverage fixture; no adoption is claimed.",
+            surviving_boundary="No software correctness or mathematical result is established.",
+        )
+        base["evidence"][0].update(
+            command="python3 scripts/check_research_return_intake.py",
+            observed="Fixture-only source check; evidence replay is recorded by the test.",
+        )
+        returned = temporary / "return.json"
+        route = temporary / "route-memory.json"
+
+        def evaluate(name: str, paths: list[str], *, standalone: bool = False) -> dict:
+            base["repository"]["changed_paths"] = paths
+            base["evidence"][0]["artifacts"] = paths
+            base["attribution"]["artifact_credit"][0]["artifact_paths"] = paths
+            write(returned, base)
+            if standalone:
+                arguments = [str(scripts / "validate_research_return.py"), str(returned),
+                             "--require-submitted", "--check-git"]
+            else:
+                arguments = [str(scripts / "check_research_return_intake.py"),
+                             "--return-json", str(returned), "--route-memory-receipt", str(route)]
+            result = subprocess.run(
+                [sys.executable, *arguments], cwd=checkout, env=environment,
+                capture_output=True, text=True, check=False, timeout=30,
+            )
+            require(bool(result.stdout), f"{name} emitted no receipt: {result.stderr}")
+            receipt = json.loads(result.stdout)
+            require(receipt.get("accepted") is False, f"{name} asserted acceptance: {receipt}")
+            results.append({"case": name, "exit": result.returncode, "receipt": receipt})
+            return results[-1]
+
+        optional = evaluate("standalone-optional-coverage", ["a.txt"], standalone=True)
+        require(optional["exit"] == 0 and optional["receipt"]["valid"],
+                f"standalone validator lost its optional coverage policy: {optional}")
+        omitted = evaluate("omitted-proposed-path", ["a.txt"])
+        require(omitted["exit"] == 1 and not omitted["receipt"]["valid"],
+                f"PR intake admitted an incomplete proposed source set: {omitted}")
+        require(any("paths omitted" in error and "b.txt" in error
+                    for error in omitted["receipt"]["errors"]),
+                f"omitted path was not identified: {omitted}")
+        complete = evaluate("complete-proposed-paths", ["a.txt", "b.txt"])
+        require(complete["exit"] == 0 and complete["receipt"]["submitted"],
+                f"complete proposal failed intake: {complete}")
+        base["repository"].update(starting_commit=proposed, proposed_commit=None)
+        (checkout / "a.txt").write_text("uncommitted draft\n", encoding="utf-8")
+        draft = evaluate("uncommitted-draft", ["a.txt"])
+        require(draft["exit"] == 0 and draft["receipt"]["submitted"],
+                f"uncommitted draft acquired a proposed-commit requirement: {draft}")
+        require(not complete["receipt"]["route_memory_receipt_required"]
+                and not draft["receipt"]["route_memory_receipt_required"] and not route.exists(),
+                "architecture source checks acquired mathematical route memory")
+    return results
+
+
 def main() -> int:
+    check_proposed_diff_coverage()
     base = json.loads(SUBMITTED.read_text(encoding="utf-8"))
     head = subprocess.run(["git", "rev-parse", "HEAD"], cwd=ROOT, capture_output=True,
                           text=True, check=True).stdout.strip()

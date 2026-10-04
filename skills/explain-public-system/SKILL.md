@@ -78,7 +78,10 @@ run. The universal #257 assertion remains open.
 ## Reproduce one recorded claim
 
 For an independent reproduction request, take this bounded branch before the
-whole-repository explanation. Use Git and Python 3; Lean is not required.
+whole-repository explanation. Use Git and Python 3.11 or later; Lean is not
+required. Run the [agent quickstart's Python version check](../../docs/agents/README.md#start-with-current-public-work)
+first, selecting an installed supported interpreter if `python3` is older.
+Use that same interpreter for every command in this branch.
 
 1. Record the revision and local changes with
    `python3 scripts/agent_entry.py --checkout`. For latest-work requests, add

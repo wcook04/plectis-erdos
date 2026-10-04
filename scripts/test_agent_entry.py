@@ -8,6 +8,7 @@ from __future__ import annotations
 import contextlib
 import io
 import json
+import os
 import shutil
 import subprocess
 import sys
@@ -16,6 +17,7 @@ from pathlib import Path
 from unittest.mock import patch
 
 import agent_entry
+import agent_skill_catalog
 
 from agent_entry import PUBLIC_REPOSITORY, checkout_card, entry_packet
 from agent_skill_catalog import ROOT, load_catalog
@@ -538,6 +540,14 @@ ROUTE_CASES = {
     'Prove the weighted theorem in Lean before an independent Comparator replay': ('bounded_research', 'mine-open-problem'),
     'Submit my mathematical proof for review': ('return_research', 'erdos-research-return'),
     'Review the #257 theorem in the paper without running Comparator': ('understand_repository', 'explain-public-system'),
+    # Ordinary release-readiness requests must reach the maintenance owner.
+    'fix fresh clone bugs and failures and get public repository ready for release': ('repository_architecture', 'maintain-public-infrastructure'),
+    'organize public repository and fix first read impressions': ('repository_architecture', 'maintain-public-infrastructure'),
+    'Repair first-read failures in a fresh clone': ('repository_architecture', 'maintain-public-infrastructure'),
+    'Prepare the repository for release readiness': ('repository_architecture', 'maintain-public-infrastructure'),
+    'Tidy the public repo so a newcomer can use it': ('repository_architecture', 'maintain-public-infrastructure'),
+    'Explain first-read impressions of the public repository': ('understand_repository', 'explain-public-system'),
+    'Describe release readiness without changing the repository': ('understand_repository', 'explain-public-system'),
     # PR309 ordinary maintenance and status routes, with neighboring controls.
     'Update the repository citation metadata and refresh its generated views': ('repository_architecture', 'maintain-public-infrastructure'),
     'Refresh the public repository citations and regenerate their views': ('repository_architecture', 'maintain-public-infrastructure'),
@@ -592,6 +602,219 @@ def validate_finished_patch_routes() -> None:
                     raise AssertionError((task, "missing submission handle", handle))
 
 
+def validate_workbench_maintenance_routes() -> None:
+    """Repair actions reach maintenance without redirecting setup or proof work."""
+    catalog = load_catalog()
+    maintenance = ("repository_architecture", "maintain-public-infrastructure")
+    cases = {
+        "Repair cold workbench setup and missing Lean dependency guidance": maintenance,
+        "Fix broken cold workbenches and their startup guidance": maintenance,
+        "Correct missing setup instructions for Lean dependencies": maintenance,
+        "Debug the initial workbench setups": maintenance,
+        "Repair missing Lean dependency guidance": maintenance,
+        "Fix the workbench setup instructions for proof probes": maintenance,
+        "After reading Lean proof notes, repair the cold workbench setup": maintenance,
+        "Fix the broken workbench with a Lean proof probe": maintenance,
+        "Repair the dependency guidance after checking a proof": maintenance,
+        "Fixing broken workbench setups in the Lean repository": maintenance,
+        "Correcting the dependency guidance for first-time Lean users": maintenance,
+        "Set up Lean for the first time": ("understand_repository", "explain-public-system"),
+        "Install Lean and its dependencies": ("understand_repository", "explain-public-system"),
+        "Explain workbench setup and Lean dependencies": ("understand_repository", "explain-public-system"),
+        "Explain the missing Lean dependency guidance": ("understand_repository", "explain-public-system"),
+        "Prove a Lean theorem after reading workbench guidance": ("bounded_research", "mine-open-problem"),
+        "Find a proof of the dependency lemma in Lean": ("bounded_research", "mine-open-problem"),
+        "Repair the dependency proof in Lean": ("bounded_research", "mine-open-problem"),
+        "Fix my Lean proof using the workbench": ("bounded_research", "mine-open-problem"),
+        "Repair a Lean proof after reading workbench setup guidance": ("bounded_research", "mine-open-problem"),
+        "Fix the Lean proof in the workbench": ("bounded_research", "mine-open-problem"),
+        "Repair my Lean proof with the setup guidance": ("bounded_research", "mine-open-problem"),
+        "Repair a Lean proof while consulting dependency guidance": ("bounded_research", "mine-open-problem"),
+        "Fix the Lean proof before using the cold workbench": ("bounded_research", "mine-open-problem"),
+        "Fix the Lean proof for the workbench probe": ("bounded_research", "mine-open-problem"),
+        "send my finished tooling patch to maintainers": ("submit_change", "submit-pull-request"),
+        "prepare my completed workbench setup patch for review": ("submit_change", "submit-pull-request"),
+    }
+    for task, (expected_lane, expected_skill) in cases.items():
+        packet = entry_packet(catalog, task)
+        if packet["primary_lane"]["id"] != expected_lane:
+            raise AssertionError((task, expected_lane, packet["primary_lane"]))
+        if expected_skill not in {row["id"] for row in packet["skills"]}:
+            raise AssertionError((task, "missing owner skill", expected_skill))
+        if packet["task"] != task:
+            raise AssertionError("workbench maintenance route lost the original request")
+
+
+def validate_software_repair_object_routes() -> None:
+    """Software heads and faults do not redirect mathematical repair objects."""
+    catalog = load_catalog()
+    # Explicit checks keep the preexisting golden routes meaningful under -O.
+    for task, (lane, skill) in ROUTE_CASES.items():
+        packet = entry_packet(catalog, task)
+        if packet["primary_lane"]["id"] != lane or skill not in {row["id"] for row in packet["skills"]}:
+            raise AssertionError((task, lane, packet["primary_lane"]))
+    positive = [
+        "Fix a bug in the relation emitter",
+        "Repair public relation emitter output preservation on readonly files",
+        "Fix bugs in the relation emitters",
+        "Debug the relation emitters",
+        "Fix a bug in the CLI",
+        "Debug the CLI argument parsing",
+        "Fix a JSON decoding bug in the relation emitter",
+        "Fix a bug in the proof-state compiler JSON decoding",
+        "Repair a bug in the proof-state compilers' JSON loaders",
+        "Fix the CLI JSON decoding used for proof-state requests",
+        "Repair relation emitter JSON failures after a proof probe",
+        "Fix a generator failure",
+        "Debug malformed generator outputs",
+        "Repair generator failures so I can prove a theorem",
+        "After reading Lean proof notes, fix the relation emitter",
+        "Before reading Lean proof notes, fix the relation emitter",
+        "Fix the compiler JSON bug after proving the theorem",
+        "Don’t automatically fix the CLI; instead, fix the relation emitter",
+        "Don’t silently fix the CLI; instead, fix the relation emitter",
+        "Don’t silently fix the CLI; please debug the relation emitter",
+        "Fix the CLI without changing its JSON schema",
+        "Fix a bug; fix the relation emitter.",
+        "Fix the CLI; explain the relation emitter.",
+        "Fix a bug\nplease debug the relation emitter.",
+        "Please do not try to fix the relation emitter; debug the CLI instead",
+    ]
+    negative = {
+        "Fix a bug": "understand_repository",
+        "Fix a bug; explain the relation emitter.": "understand_repository",
+        "Fix a bug\nexplain the relation emitter.": "understand_repository",
+        "Fix a bug; don’t silently fix the emitter; explain the error.": "understand_repository",
+        'Explain "fix the CLI" without executing it': "understand_repository",
+        "Don’t silently fix the CLI; explain the error.": "understand_repository",
+        "Don’t unexpectedly and silently fix the CLI; explain the error.": "understand_repository",
+        "Please do not attempt any automatic correction before trying to fix the CLI; explain the error.": "understand_repository",
+        "Refrain from quietly fixing the CLI; explain the error.": "understand_repository",
+        "Explain whether we should fix the CLI": "understand_repository",
+        "Don’t fix the CLI and then fix the relation emitter; explain the error.": "understand_repository",
+        "Do not run 'fix the CLI; fix the relation emitter'; explain the error.": "understand_repository",
+        "Don’t automatically fix the CLI; explain why its JSON loader failed.": "understand_repository",
+        "Please do not try to fix the relation emitter; explain the failure.": "understand_repository",
+        "Please do not ever try to automatically fix the CLI; explain its JSON failure": "understand_repository",
+        "Fix it": "understand_repository",
+        "Explain the relation emitter": "understand_repository",
+        "Describe the CLI parser": "understand_repository",
+        "Repair the mathematical relation between two functions": "understand_repository",
+        "Prove the relation emitter preserves a theorem": "bounded_research",
+        "Fix my Lean proof using the CLI": "bounded_research",
+        "Repair a proof in the relation emitter": "bounded_research",
+        "Fix the relation emitter proof in Lean": "bounded_research",
+        "Repair the proof script": "bounded_research",
+        "Find a counterexample using the relation emitter": "bounded_research",
+        "Prove the parser theorem in Lean": "bounded_research",
+        "Do not fix the relation emitter; explain it": "understand_repository",
+        "Don't fix the relation emitter; explain it": "understand_repository",
+        "Fix the emitter and prove the theorem": "bounded_research",
+        "Fix the emitter; prove the theorem independently.": "bounded_research",
+        "Fix the emitter\nprove the theorem independently.": "bounded_research",
+        "Fix a bug; fix the emitter; prove the theorem independently.": "bounded_research",
+        "Prove the theorem and fix the emitter": "bounded_research",
+        "Repair a theorem emitted by the generator": "understand_repository",
+        "Fix a bug in my Lean proof using the relation emitter": "bounded_research",
+        "Inspect the theorem declaration emitted by the generator": "source_inspection",
+        "Attack open problem 249 using the emitter": "bounded_research",
+        "Fix the compiler-generated Lean proof": "bounded_research",
+        "Fix the emitter proof": "bounded_research",
+        "Repair the proof compiler": "bounded_research",
+        "Fix a bug in the theorem using the generator": "understand_repository",
+    }
+    cases = {**{task: "repository_architecture" for task in positive}, **negative}
+    scope = "#257 theorem and proof-state compiler JSON"
+    cli = [sys.executable, *(["-O"] if sys.flags.optimize else []), str(ROOT / "scripts/agent_entry.py")]
+    for task, inferred in cases.items():
+        packet = entry_packet(catalog, task, scope=scope)
+        if packet["primary_lane"]["id"] != inferred or packet["task"] != task or packet["scope"] != scope:
+            raise AssertionError((task, inferred, packet))
+        for purpose in (None, "infrastructure", "research"):
+            arguments = ["--entry", task, "--scope", scope, "--json"]
+            if purpose:
+                arguments += ["--purpose", purpose]
+            result = subprocess.run([*cli, *arguments], cwd=ROOT, capture_output=True, text=True,
+                                    env={**os.environ, "PATH": str(ROOT / "no-tools"), "PYTHONDONTWRITEBYTECODE": "1"})
+            if result.returncode != 0:
+                raise AssertionError((task, result.stderr))
+            actual = json.loads(result.stdout)
+            expected = inferred if purpose is None else (
+                "repository_architecture" if purpose == "infrastructure" else "bounded_research")
+            if (actual["primary_lane"]["id"] != expected or actual["task"] != task
+                    or actual["scope"] != scope or actual["purpose"] != purpose
+                    or (purpose and actual["route_status"] != "explicit")):
+                raise AssertionError((task, purpose, expected, actual))
+            if purpose == "infrastructure" or (purpose is None and inferred == "repository_architecture"):
+                if "maintain-public-infrastructure" not in {row["id"] for row in actual["skills"]}:
+                    raise AssertionError((task, "missing maintenance owner"))
+    print(f"software repair object routes: {len(cases)} cases / {3 * len(cases)} real CLI controls pass")
+
+
+def validate_object_clause_schema() -> None:
+    original = json.loads(agent_skill_catalog.REGISTRY_PATH.read_text(encoding="utf-8"))
+    lane = next(row for row in original["lanes"] if row["id"] == "repository_architecture")
+    intent = lane["task_intents"][-1]
+    valid = intent["object_clause"]
+    invalid = [None, [], {}, {**valid, "unknown": ["x"]}]
+    for field in ("faults", "bridges", "blocked_heads", "competing_actions"):
+        for terms in ([], "bug", ["Bug"], ["bug", "bug"], [3]):
+            invalid.append({**valid, field: terms})
+    for terms in ([], "proof state compiler", [3], ["Proof state compiler"],
+                  ["proof state proof"], ["proof state compiler", "proof state compiler"]):
+        invalid.append({**valid, "compounds": terms})
+    invalid.append({**valid, "bridges": ["unknown"]})
+    with tempfile.TemporaryDirectory(prefix="plectis-object-clause-schema-") as temporary:
+        path = Path(temporary) / "registry.json"
+        for clause in invalid:
+            document = json.loads(json.dumps(original))
+            row = next(row for row in document["lanes"] if row["id"] == "repository_architecture")
+            row["task_intents"][-1]["object_clause"] = clause
+            path.write_text(json.dumps(document), encoding="utf-8")
+            with patch.object(agent_skill_catalog, "REGISTRY_PATH", path):
+                try:
+                    load_catalog()
+                except agent_skill_catalog.SkillCatalogError as error:
+                    if "object_clause" not in str(error):
+                        raise AssertionError((clause, str(error))) from error
+                else:
+                    raise AssertionError(("invalid object clause accepted", clause))
+
+
+def validate_context_marker_schema() -> None:
+    """Scoped intents validate their optional tokens as strictly as other fields."""
+    original = json.loads(agent_skill_catalog.REGISTRY_PATH.read_text(encoding="utf-8"))
+    invalid_markers = [[], "using", ["Using"], ["using", "using"], [3]]
+    with tempfile.TemporaryDirectory(prefix="plectis-intent-schema-") as temporary:
+        registry = Path(temporary) / "registry.json"
+        for markers in invalid_markers:
+            invalid = json.loads(json.dumps(original))
+            invalid["lanes"][0]["task_intents"] = [
+                {"actions": ["fix"], "objects": ["setup"], "context_markers": markers}
+            ]
+            registry.write_text(json.dumps(invalid), encoding="utf-8")
+            with patch.object(agent_skill_catalog, "REGISTRY_PATH", registry):
+                try:
+                    load_catalog()
+                except agent_skill_catalog.SkillCatalogError as exc:
+                    if "task intent context_markers" not in str(exc):
+                        raise AssertionError((markers, str(exc))) from exc
+                else:
+                    raise AssertionError(("invalid context markers accepted", markers))
+        invalid["lanes"][0]["task_intents"][0] = {
+            "actions": ["fix"], "objects": ["setup"], "unknown": ["using"]
+        }
+        registry.write_text(json.dumps(invalid), encoding="utf-8")
+        with patch.object(agent_skill_catalog, "REGISTRY_PATH", registry):
+            try:
+                load_catalog()
+            except agent_skill_catalog.SkillCatalogError as exc:
+                if "task intent needs actions and objects" not in str(exc):
+                    raise AssertionError(str(exc)) from exc
+            else:
+                raise AssertionError("unknown task intent field accepted")
+
+
 def run_cli(root: Path, *args: str) -> subprocess.CompletedProcess[str]:
     return subprocess.run(
         [sys.executable, str(root / "scripts" / "agent_entry.py"), *args],
@@ -637,6 +860,10 @@ def validate_blank_selectors() -> None:
 
 def main() -> int:
     validate_finished_patch_routes()
+    validate_workbench_maintenance_routes()
+    validate_context_marker_schema()
+    validate_object_clause_schema()
+    validate_software_repair_object_routes()
     validate_blank_selectors()
 
     # Real temporary repositories exercise clone, fork, tag, dirty-tree and

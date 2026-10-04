@@ -69,6 +69,7 @@ class Inputs:
         self.root = root.resolve()
         self.texts: dict[str, str] = {}
         self.hashes: dict[str, str] = {}
+        self._statement_lines: dict[str, list[str]] = {}
 
     def read(self, relative: str) -> str:
         if relative not in self.texts:
@@ -76,6 +77,12 @@ class Inputs:
             self.hashes[relative] = digest(raw)
             self.texts[relative] = raw.decode('utf-8')
         return self.texts[relative]
+
+    def statement_lines(self, relative: str) -> list[str]:
+        """Convert each statement source once in this immutable input snapshot."""
+        if relative not in self._statement_lines:
+            self._statement_lines[relative] = coverage.counter_view(self.read(relative)).splitlines()
+        return self._statement_lines[relative]
 
     def json(self, relative: str) -> Any:
         return json.loads(self.read(relative))
@@ -93,8 +100,10 @@ def normalized(text: str) -> str:
     return re.sub(r'\s+', ' ', text).strip()
 
 
-def statement_text(loc: coverage.Located, source: str, *, counter_lines: list[str] | None = None) -> str:
-    lines = coverage.counter_view(source).splitlines() if counter_lines is None else counter_lines
+def statement_text(loc: coverage.Located, source: str | Inputs, *, counter_lines: list[str] | None = None) -> str:
+    lines = counter_lines
+    if lines is None:
+        lines = source.statement_lines(loc.path) if isinstance(source, Inputs) else coverage.counter_view(source).splitlines()
     text = '\n'.join(lines[loc.line - 1:loc.end_line])
     env = loc.row.get('environment')
     if env:
@@ -226,11 +235,8 @@ def _report(root: Path = ROOT, problems: list[int] | None = None) -> dict:
     inputs = Inputs(root)
     # Each report reads an immutable local input snapshot. Strip comments and
     # split each file once, rather than once per assertion in a long paper.
-    statement_lines: dict[str, list[str]] = {}
     def assertion_text(loc: coverage.Located) -> str:
-        if loc.path not in statement_lines:
-            statement_lines[loc.path] = coverage.counter_view(inputs.read(loc.path)).splitlines()
-        return statement_text(loc, '', counter_lines=statement_lines[loc.path])
+        return statement_text(loc, inputs)
     for rel in ('scripts/reasoning_record_audit.py', 'scripts/assemble_reasoning_surfaces.py',
                 'scripts/check_lean_paper_propagation.py', 'scripts/lean_source.py',
                 'scripts/build_reading_edition.py', 'docs/papers/paper_corpus_renderer.py'):
