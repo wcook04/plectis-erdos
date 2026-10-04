@@ -193,9 +193,71 @@ For each Lean declaration: the Challenge (the target, stated from Mathlib alone)
 
 Each Challenge states the same proposition as the Lean declaration it targets, with every definition it uses restated from Mathlib alone.
 
+<a id="res-period"></a>
+
+## Theorem 1.8 (the exact denominator period), page 23
+
+> *Let $`F\subseteq\mathbb{N}_{>0}`$ be finite and nonempty, let $`b\ge2`$ be an integer, and let $`D_F>0`$ be the denominator of $`X_F(b)`$ in lowest terms. Then $`D_F`$ is coprime to $`b`$, and
+> ``` math
+> \operatorname{ord}_{D_F}(b)=\operatorname{lcm}\{n:n\in F\}.
+> ```
+> If moreover $`\operatorname{lcm}(F)\ge2`$, then $`\operatorname{lcm}(F)<D_F`$. We use $`\operatorname{ord}_1(b)=1`$, so the statement includes $`F=\{1\}`$ at $`b=2`$.*
+
+The Lean declarations below together state this result or one that implies it. The Lean statements have the same hypotheses and conclusions as the printed ones, with $F\subseteq\Npos$ written as $0\notin F$; coprimality of $D_F$ and $b$ is proved without assuming $F$ nonempty. The order is the multiplicative order of $b$ modulo $D_F$, which is $1$ when $D_F=1$, as in the convention $\operatorname{ord}_1(b)=1$.
+
+1. [`Erdos249257.coprime_base_den_finiteErdosSum`](https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/Erdos249257/CertificateKernel.lean#L5221)
+
+```lean
+theorem coprime_base_den_finiteErdosSum
+    (F : Finset Nat) (b : Nat) (h0 : 0 ∉ F) (hb : 2 ≤ b) :
+    Nat.Coprime b (finiteErdosSum F b).den
+```
+
+2. [`Erdos249257.finite_period_noncollapse_rat_den`](https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/Erdos249257/CertificateKernel.lean#L5246)
+
+```lean
+theorem finite_period_noncollapse_rat_den
+    (F : Finset Nat) (b : Nat)
+    (hF : F.Nonempty) (h0 : 0 ∉ F) (hb : 2 ≤ b) :
+    orderOf (ZMod.unitOfCoprime b (coprime_base_den_finiteErdosSum F b h0 hb))
+      = F.lcm id
+```
+
+3. [`Erdos249257.lcm_lt_den_finiteErdosSum`](https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/Erdos249257/CertificateKernel.lean#L5260)
+
+```lean
+theorem lcm_lt_den_finiteErdosSum
+    (F : Finset Nat) (b : Nat)
+    (hF : F.Nonempty) (h0 : 0 ∉ F) (hb : 2 ≤ b)
+    (h2 : 2 ≤ F.lcm id) :
+    F.lcm id < (finiteErdosSum F b).den
+```
+
+<a id="res-period-comparator"></a>
+
+**Comparator: passed** (run 35935225572, corpus commit `cc7e541cf208`).
+
+For each Lean declaration: the Challenge (the target, stated from Mathlib alone), the Solution (our proof) and the replay report.
+
+- `coprime_base_den_finiteErdosSum`: [Challenge](https://github.com/wcook04/plectis-erdos-lean/blob/cc7e541cf2081c6fef5a5e377d52e365e33b01eb/PalomarCorpus/E257_47/Challenge.lean#L165) (E257_47, line 165), [Solution](https://github.com/wcook04/plectis-erdos-lean/blob/cc7e541cf2081c6fef5a5e377d52e365e33b01eb/Solutions/PalomarCorpus/E257_47/PaperStatementsAG.lean#L30) (PaperStatementsAG.lean, line 30), [replay report](../../evidence/comparator/replay-35935225572/receipt-E257_47.json) (E257_47)
+- `finite_period_noncollapse_rat_den`: [Challenge](https://github.com/wcook04/plectis-erdos-lean/blob/cc7e541cf2081c6fef5a5e377d52e365e33b01eb/PalomarCorpus/E257_50/Challenge.lean#L97) (E257_50, line 97), [Solution](https://github.com/wcook04/plectis-erdos-lean/blob/cc7e541cf2081c6fef5a5e377d52e365e33b01eb/Solutions/PalomarCorpus/E257_50/FinitePeriodNoncollapse.lean#L12) (FinitePeriodNoncollapse.lean, line 12), [replay report](../../evidence/comparator/replay-35935225572/receipt-E257_50.json) (E257_50)
+- `lcm_lt_den_finiteErdosSum`: [Challenge](https://github.com/wcook04/plectis-erdos-lean/blob/cc7e541cf2081c6fef5a5e377d52e365e33b01eb/PalomarCorpus/E257_47/Challenge.lean#L170) (E257_47, line 170), [Solution](https://github.com/wcook04/plectis-erdos-lean/blob/cc7e541cf2081c6fef5a5e377d52e365e33b01eb/Solutions/PalomarCorpus/E257_47/PaperStatementsAG.lean#L119) (PaperStatementsAG.lean, line 119), [replay report](../../evidence/comparator/replay-35935225572/receipt-E257_47.json) (E257_47)
+
+Each Challenge states the same proposition as the Lean declaration it targets except where shown below, with every definition it uses restated from Mathlib alone.
+
+Challenge for `finite_period_noncollapse_rat_den`:
+
+```lean
+theorem finite_period_noncollapse_rat_den
+    (F : Finset ℕ) (b : ℕ)
+    (hF : F.Nonempty) (h0 : 0 ∉ F) (hb : 2 ≤ b) :
+    ∃ hcop : Nat.Coprime b (finiteErdosSum F b).den,
+      orderOf (ZMod.unitOfCoprime b hcop) = F.lcm id := by sorry
+```
+
 <a id="thm-geometry"></a>
 
-## Theorem 1.8 (Achievement-set geometry), page 22
+## Theorem 1.9 (Achievement-set geometry), page 24
 
 > *$`\mathcal{A}`$ is compact, closed, perfect, totally disconnected and nowhere dense, and $`\operatorname{volume}(\mathcal{A}) = 1`$. Thus its measure is positive although it contains no interval. Its convex hull is $`[0,E]`$, where $`E=\sum_{n\ge1}w_n`$. The positive-index digit coding onto $`\mathcal{A}`$ is injective: each achievable real has *exactly one* support.*
 
@@ -226,7 +288,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="thm-supported-dichotomy"></a>
 
-## Theorem 1.9 (Support-restricted refinement), page 23
+## Theorem 1.10 (Support-restricted refinement), page 24
 
 > *Use zero-based indices in this statement: coordinate $`j\in\mathbb{N}`$ carries weight $`w_{j+1}`$. For $`J\subseteq\mathbb{N}`$, consider the sums that use only coordinates in $`J`$. If $`\mathbb{N}\smallsetminus J`$ is finite, this achievement set has measure $`2^{-|\mathbb{N}\smallsetminus J|}`$; if infinitely many coordinates are omitted, its measure is zero. Injectivity survives every restriction; perfectness is proved when $`J`$ is infinite. No perfectness claim is made for finite $`J`$, whose coding range is finite.*
 
@@ -282,7 +344,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="thm-greedy-survival"></a>
 
-## Theorem 1.11 (Membership equals greedy survival; the fatal-gap dichotomy), page 24
+## Theorem 1.12 (Membership equals greedy survival; the fatal-gap dichotomy), page 25
 
 > *For a real target $`x\ge0`$, let $`r_n(x)`$ be the remainder after the greedy rule has processed weights $`w_1,\ldots,w_n`$, and let $`R_n=\sum_{j>n}w_j`$, with $`r_0(x)=x`$ and $`R_0=E`$. Then
 > ``` math
@@ -310,5 +372,41 @@ theorem paper_greedy_survival :
 For each Lean declaration: the Challenge (the target, stated from Mathlib alone), the Solution (our proof) and the replay report.
 
 - `paper_greedy_survival`: [Challenge](https://github.com/wcook04/plectis-erdos-lean/blob/cc7e541cf2081c6fef5a5e377d52e365e33b01eb/PalomarCorpus/E257_02/Challenge.lean#L126) (E257_02, line 126), [Solution](https://github.com/wcook04/plectis-erdos-lean/blob/cc7e541cf2081c6fef5a5e377d52e365e33b01eb/Solutions/PalomarCorpus/E257_02/PaperStatementsD.lean#L186) (PaperStatementsD.lean, line 186), [replay report](../../evidence/comparator/replay-35935225572/receipt-E257_02.json) (E257_02)
+
+Each Challenge states the same proposition as the Lean declaration it targets, with every definition it uses restated from Mathlib alone.
+
+<a id="res-general-repair"></a>
+
+## Theorem 1.14 (membership and nonincreasing integer remainders), page 27
+
+> *For every real $`x\ge0`$, the following are equivalent:
+> ``` math
+> \begin{gathered}
+>  x\in\mathcal A;\\
+>  \forall K\ge0\ \exists N\ge K:\quad Q_{N+1}\le Q_N;\\
+>  \forall K\ge0\ \exists N\in[K,K+2\lfloor\sqrt K\rfloor+12):
+>  \quad Q_{N+1}\le Q_N.
+>  \end{gathered}
+> ```*
+
+The Lean declaration below states this result.
+
+[`ErdosProblems.Erdos257.PaperCompleteR20.paper_general_repair_criteria`](https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos257/PaperCompleteR20/GeneralRepairCorrespondence.lean#L15)
+
+```lean
+theorem paper_general_repair_criteria {x : ℝ} (hx : 0 ≤ x) :
+    (x ∈ mersenneAchievementSet ↔ ∀ K : ℕ, ∃ N, K ≤ N ∧
+      paperIntegerDefect x (N+1) ≤ paperIntegerDefect x N) ∧
+    (x ∈ mersenneAchievementSet ↔ ∀ K : ℕ, ∃ N, K ≤ N ∧
+      N < K+2*Nat.sqrt K+12 ∧ paperIntegerDefect x (N+1) ≤ paperIntegerDefect x N)
+```
+
+<a id="res-general-repair-comparator"></a>
+
+**Comparator: passed** (run 35935225572, corpus commit `cc7e541cf208`).
+
+For each Lean declaration: the Challenge (the target, stated from Mathlib alone), the Solution (our proof) and the replay report.
+
+- `paper_general_repair_criteria`: [Challenge](https://github.com/wcook04/plectis-erdos-lean/blob/cc7e541cf2081c6fef5a5e377d52e365e33b01eb/PalomarCorpus/E257_47/Challenge.lean#L207) (E257_47, line 207), [Solution](https://github.com/wcook04/plectis-erdos-lean/blob/cc7e541cf2081c6fef5a5e377d52e365e33b01eb/Solutions/PalomarCorpus/E257_47/PaperStatementsM.lean#L26) (PaperStatementsM.lean, line 26), [replay report](../../evidence/comparator/replay-35935225572/receipt-E257_47.json) (E257_47)
 
 Each Challenge states the same proposition as the Lean declaration it targets, with every definition it uses restated from Mathlib alone.

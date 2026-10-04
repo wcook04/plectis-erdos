@@ -4,7 +4,7 @@ This record belongs to the paper [erdos243-reciprocal-tail-reasoning-surface.pdf
 
 - **Lean.** Every declaration is quoted from [plectis-erdos](https://github.com/wcook04/plectis-erdos) at commit [`436f55ebdafa`](https://github.com/wcook04/plectis-erdos/tree/436f55ebdafa67e4af0fff79f621c13f2ded12bf) and is checked there by Lean's kernel (`leanprover/lean4:v4.29.1`, Mathlib `5e932f97dd25`).
 - **Comparator.** For a compared result, each declaration was stated a second time, from Mathlib alone, as a *Challenge* in [plectis-erdos-lean](https://github.com/wcook04/plectis-erdos-lean), and a *Solution* that uses our proof was checked against it by [Comparator](https://github.com/leanprover/comparator), which also confirms that only the axioms `propext`, `Quot.sound`, `Classical.choice` are used. All checks below come from replay run [35935225572](https://github.com/wcook04/plectis-erdos-lean/actions/runs/35935225572) at corpus commit [`cc7e541cf208`](https://github.com/wcook04/plectis-erdos-lean/tree/cc7e541cf2081c6fef5a5e377d52e365e33b01eb) (tag `paper-evidence-2026-09-24`); both the default Lean kernel and the independent `nanoda` kernel accepted every entry. The replay's own report for each entry is kept in this repository and linked from each check. A Challenge shows `sorry` because it states the target without proving it.
-- **Counts.** 53 results: 53 with a Lean proof of the whole statement, 0 whose Lean proof assumes a named input (marked with a dagger), 0 without a Lean proof of the whole statement; 51 compared.
+- **Counts.** 55 results: 55 with a Lean proof of the whole statement, 0 whose Lean proof assumes a named input (marked with a dagger), 0 without a Lean proof of the whole statement; 53 compared.
 
 These checks establish that the stated propositions are proved. Whether each is the right proposition is for the reader to judge against the paper's statement, which is reproduced below. Comparator checks separately declared statements, the axiom budget and kernel acceptance; it does not establish novelty, significance or peer review.
 
@@ -488,15 +488,28 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 > ``` math
 > aC-D=C-\bigl(D-(a-1)C\bigr).
 > ```
-> Consequently, every solution of (19) satisfies $`C_{n+1}=C_n-E_n`$.*
+> Consequently, every solution of (19) satisfies $`C_{n+1}=C_n-E_n`$. For the same sequences the second error identity is
+> ``` math
+> (a_{n+1}-a_n^2+a_n-1)C_{n+1}=a_n^2E_n-E_{n+1}.
+> ```*
 
-The Lean declaration below states this result.
+The Lean declarations below together state this result.
 
-[`ErdosProblems.Erdos243.nextTailState_eq_sub_centered`](https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean#L57)
+1. [`ErdosProblems.Erdos243.nextTailState_eq_sub_centered`](https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean#L57)
 
 ```lean
 theorem nextTailState_eq_sub_centered (a D C : ℤ) :
     nextTailState a D C = C - centeredState a D C
+```
+
+2. [`ErdosProblems.Erdos243.PaperCompleteR7.error_identities`](https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos243/PaperCompleteR7/Arithmetic.lean#L21)
+
+```lean
+theorem error_identities (a aNext D C : ℤ) :
+    nextTailState a D C = C - centeredState a D C ∧
+    sylvesterDefect a aNext * nextTailState a D C =
+      a ^ 2 * centeredState a D C -
+        centeredState aNext (nextDenState a D) (nextTailState a D C)
 ```
 
 <a id="long243-res-update-comparator"></a>
@@ -506,6 +519,7 @@ theorem nextTailState_eq_sub_centered (a D C : ℤ) :
 For each Lean declaration: the Challenge (the target, stated from Mathlib alone), the Solution (our proof) and the replay report.
 
 - `nextTailState_eq_sub_centered`: [Challenge](https://github.com/wcook04/plectis-erdos-lean/blob/cc7e541cf2081c6fef5a5e377d52e365e33b01eb/PalomarCorpus/E243_02/Challenge.lean#L128) (E243_02, line 128), [Solution](https://github.com/wcook04/plectis-erdos-lean/blob/cc7e541cf2081c6fef5a5e377d52e365e33b01eb/Solutions/PalomarCorpus/E243_02/PaperStatementsA.lean#L305) (PaperStatementsA.lean, line 305), [replay report](../evidence/comparator/replay-35935225572/receipt-E243_02.json) (E243_02)
+- `error_identities`: [Challenge](https://github.com/wcook04/plectis-erdos-lean/blob/cc7e541cf2081c6fef5a5e377d52e365e33b01eb/PalomarCorpus/E243_09/Challenge.lean#L71) (E243_09, line 71), [Solution](https://github.com/wcook04/plectis-erdos-lean/blob/cc7e541cf2081c6fef5a5e377d52e365e33b01eb/Solutions/PalomarCorpus/E243_09/PaperStatementsA.lean#L208) (PaperStatementsA.lean, line 208), [replay report](../evidence/comparator/replay-35935225572/receipt-E243_09.json) (E243_09)
 
 Each Challenge states the same proposition as the Lean declaration it targets, with every definition it uses restated from Mathlib alone.
 
@@ -587,11 +601,11 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 > ``` math
 > D-(a-1)C=0,\qquad aD-(a'-1)(aC-D)=0,
 > ```
-> then $`a'=a^2-a+1`$.*
+> then $`a'=a^2-a+1`$. Consequently, for integer sequences satisfying $`D_{n+1}=a_nD_n`$ and $`C_{n+1}=a_nC_n-D_n`$, eventual zero error and $`C_{n+1}\ne0`$ at all sufficiently large indices imply the eventual Sylvester recurrence.*
 
-The Lean declaration below states this result.
+The Lean declarations below together state this result.
 
-[`ErdosProblems.Erdos243.sylvesterNext_eq_of_centered_zero`](https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean#L1787)
+1. [`ErdosProblems.Erdos243.sylvesterNext_eq_of_centered_zero`](https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean#L1787)
 
 ```lean
 theorem sylvesterNext_eq_of_centered_zero
@@ -603,6 +617,19 @@ theorem sylvesterNext_eq_of_centered_zero
     aNext = sylvesterNext a
 ```
 
+2. [`ErdosProblems.Erdos243.PaperCompleteR7.natural_sylvester_of_eventual_zero`](https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos243/PaperCompleteR7/Arithmetic.lean#L156)
+
+```lean
+theorem natural_sylvester_of_eventual_zero
+    (a C D : ℕ → ℕ) (E : ℕ → ℤ)
+    (hCpos : ∀ n, 0 < C n)
+    (hC : ∀ n, C (n + 1) + D n = a n * C n)
+    (hD : ∀ n, D (n + 1) = a n * D n)
+    (hE : ∀ n, E n = centeredState (a n : ℤ) (D n : ℤ) (C n : ℤ))
+    (hzero : ∃ N, ∀ n, N ≤ n → E n = 0) :
+    ∃ N, ∀ n, N ≤ n → (a (n + 1) : ℤ) = sylvesterNext (a n : ℤ)
+```
+
 <a id="long243-res-step-comparator"></a>
 
 **Comparator: passed** (run 35935225572, corpus commit `cc7e541cf208`).
@@ -610,6 +637,7 @@ theorem sylvesterNext_eq_of_centered_zero
 For each Lean declaration: the Challenge (the target, stated from Mathlib alone), the Solution (our proof) and the replay report.
 
 - `sylvesterNext_eq_of_centered_zero`: [Challenge](https://github.com/wcook04/plectis-erdos-lean/blob/cc7e541cf2081c6fef5a5e377d52e365e33b01eb/PalomarCorpus/E243_02/Challenge.lean#L139) (E243_02, line 139), [Solution](https://github.com/wcook04/plectis-erdos-lean/blob/cc7e541cf2081c6fef5a5e377d52e365e33b01eb/Solutions/PalomarCorpus/E243_02/PaperStatementsA.lean#L314) (PaperStatementsA.lean, line 314), [replay report](../evidence/comparator/replay-35935225572/receipt-E243_02.json) (E243_02)
+- `natural_sylvester_of_eventual_zero`: [Challenge](https://github.com/wcook04/plectis-erdos-lean/blob/cc7e541cf2081c6fef5a5e377d52e365e33b01eb/PalomarCorpus/E243_09/Challenge.lean#L78) (E243_09, line 78), [Solution](https://github.com/wcook04/plectis-erdos-lean/blob/cc7e541cf2081c6fef5a5e377d52e365e33b01eb/Solutions/PalomarCorpus/E243_09/PaperStatementsA.lean#L228) (PaperStatementsA.lean, line 228), [replay report](../evidence/comparator/replay-35935225572/receipt-E243_09.json) (E243_09)
 
 Each Challenge states the same proposition as the Lean declaration it targets, with every definition it uses restated from Mathlib alone.
 
@@ -681,7 +709,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long243-res-oldmodulussaturation"></a>
 
-## Lemma 5.6 (saturation modulo an old denominator), page 20
+## Lemma 5.6 (saturation modulo an old denominator), page 21
 
 > *Let $`M\ge2`$. Any finite word $`r_0,\ldots,r_k`$ of units modulo $`M`$ is compatible with the cancellation-free recurrences modulo $`M`$, with all reduced denominator residues equal to zero. Consequently the eliminated two-step identity alone imposes no further restriction on such unit words when the multiplier residues are free.*
 
@@ -745,11 +773,11 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 ## Theorem 5.8 (zero is absorbing), page 21
 
-> *Let $`a,C,D:\mathbb{N}\to\mathbb{N}`$ satisfy $`C_{n+1}+D_n=a_nC_n`$ and $`D_{n+1}=a_nD_n`$, and put $`E_n=D_n-(a_n-1)C_n`$. Suppose that $`|E_n|<C_n`$ for every $`n`$. If $`E_n=0`$ then $`E_{n+1}=0`$.*
+> *Let $`a,C,D:\mathbb{N}\to\mathbb{N}`$ satisfy $`C_{n+1}+D_n=a_nC_n`$ and $`D_{n+1}=a_nD_n`$, and put $`E_n=D_n-(a_n-1)C_n`$. Suppose that $`|E_n|<C_n`$ for every $`n`$. If $`E_n=0`$ then $`E_{n+1}=0`$. For any positive integer sequence $`C_n`$ with $`C_{n+1}=C_n-E_n`$, eventual nonnegativity of the integer errors $`E_n`$ implies their eventual vanishing.*
 
-The Lean declaration below states this result.
+The Lean declarations below together state this result.
 
-[`ErdosProblems.Erdos243.centeredState_zero_absorbing`](https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean#L2227)
+1. [`ErdosProblems.Erdos243.centeredState_zero_absorbing`](https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean#L2227)
 
 ```lean
 theorem centeredState_zero_absorbing
@@ -762,6 +790,22 @@ theorem centeredState_zero_absorbing
     E (n + 1) = 0
 ```
 
+2. [`ErdosProblems.Erdos243.PaperCompleteR7.absorption_and_descent`](https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos243/PaperCompleteR7/Arithmetic.lean#L120)
+
+```lean
+theorem absorption_and_descent :
+    (∀ (a C D : ℕ → ℕ) (E : ℕ → ℤ),
+      (∀ n, C (n + 1) + D n = a n * C n) →
+      (∀ n, D (n + 1) = a n * D n) →
+      (∀ n, E n = centeredState (a n : ℤ) (D n : ℤ) (C n : ℤ)) →
+      (∀ n, Int.natAbs (E n) < C n) →
+      ∀ n, E n = 0 → E (n + 1) = 0) ∧
+    (∀ (C : ℕ → ℕ) (E : ℕ → ℤ),
+      (∀ n, (C (n + 1) : ℤ) = (C n : ℤ) - E n) →
+      (∃ N, ∀ n, N ≤ n → 0 ≤ E n) →
+      ∃ N, ∀ n, N ≤ n → E n = 0)
+```
+
 <a id="long243-res-absorb-comparator"></a>
 
 **Comparator: passed** (run 35935225572, corpus commit `cc7e541cf208`).
@@ -769,6 +813,7 @@ theorem centeredState_zero_absorbing
 For each Lean declaration: the Challenge (the target, stated from Mathlib alone), the Solution (our proof) and the replay report.
 
 - `centeredState_zero_absorbing`: [Challenge](https://github.com/wcook04/plectis-erdos-lean/blob/cc7e541cf2081c6fef5a5e377d52e365e33b01eb/PalomarCorpus/E243_02/Challenge.lean#L118) (E243_02, line 118), [Solution](https://github.com/wcook04/plectis-erdos-lean/blob/cc7e541cf2081c6fef5a5e377d52e365e33b01eb/Solutions/PalomarCorpus/E243_02/PaperStatementsA.lean#L276) (PaperStatementsA.lean, line 276), [replay report](../evidence/comparator/replay-35935225572/receipt-E243_02.json) (E243_02)
+- `absorption_and_descent`: [Challenge](https://github.com/wcook04/plectis-erdos-lean/blob/cc7e541cf2081c6fef5a5e377d52e365e33b01eb/PalomarCorpus/E243_09/Challenge.lean#L46) (E243_09, line 46), [Solution](https://github.com/wcook04/plectis-erdos-lean/blob/cc7e541cf2081c6fef5a5e377d52e365e33b01eb/Solutions/PalomarCorpus/E243_09/PaperStatementsA.lean#L185) (PaperStatementsA.lean, line 185), [replay report](../evidence/comparator/replay-35935225572/receipt-E243_09.json) (E243_09)
 
 Each Challenge states the same proposition as the Lean declaration it targets, with every definition it uses restated from Mathlib alone.
 
@@ -2208,7 +2253,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long243-res-descent"></a>
 
-## Theorem 8.1 (descent), page 40
+## Theorem 8.1 (descent), page 39
 
 > *Let $`C,E:\mathbb{N}\to\mathbb{N}`$ satisfy $`C_{n+1}+E_n=C_n`$ for every $`n`$. Then $`E_n=0`$ for all sufficiently large $`n`$.*
 
@@ -2275,7 +2320,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long243-res-periodic"></a>
 
-## Theorem 10.1 (no periodic negative magnitude), page 42
+## Theorem 10.1 (no periodic negative magnitude), page 41
 
 > *Let $`a,D,C,e:\mathbb{N}\to\mathbb{N}`$ with $`a_n\ge2`$, $`e_n>0`$ and $`e_n<a_n`$ for every $`n`$, satisfying
 > ``` math
@@ -2317,9 +2362,9 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 > *Let $`m_0,\ldots,m_{B-1}`$ be pairwise coprime and at least $`2`$. For every bound there is a $`t`$ beyond it with $`m_i\mid t+i`$ for each $`i<B`$.*
 
-The Lean declaration below states this result.
+The Lean declarations below together state this result.
 
-[`ErdosProblems.Erdos243.PaperCompleteR21.exists_shiftedBlock_consecutiveMultiples`](https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos243/PaperCompleteR21/ForbiddenBlockCrossing.lean#L26)
+1. [`ErdosProblems.Erdos243.PaperCompleteR21.exists_shiftedBlock_consecutiveMultiples`](https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos243/PaperCompleteR21/ForbiddenBlockCrossing.lean#L26)
 
 ```lean
 theorem exists_shiftedBlock_consecutiveMultiples
@@ -2330,6 +2375,18 @@ theorem exists_shiftedBlock_consecutiveMultiples
     ∃ t, L < t ∧ ∀ i, i < B → m i ∣ t + i
 ```
 
+2. [`ErdosProblems.Erdos243.exists_shifted_consecutiveMultiples`](https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean#L839)
+
+```lean
+theorem exists_shifted_consecutiveMultiples
+    {k : ℕ}
+    (m : Fin k → ℕ)
+    (hm : ∀ i, 1 < m i)
+    (hpair : ∀ i j, i ≠ j → Nat.Coprime (m i) (m j))
+    (L : ℕ) :
+    ∃ x, L < x ∧ ∀ i : Fin k, m i ∣ x + i.1
+```
+
 <a id="long243-res-crt-comparator"></a>
 
 **Comparator: passed** (run 35935225572, corpus commit `cc7e541cf208`).
@@ -2337,6 +2394,7 @@ theorem exists_shiftedBlock_consecutiveMultiples
 For each Lean declaration: the Challenge (the target, stated from Mathlib alone), the Solution (our proof) and the replay report.
 
 - `exists_shiftedBlock_consecutiveMultiples`: [Challenge](https://github.com/wcook04/plectis-erdos-lean/blob/cc7e541cf2081c6fef5a5e377d52e365e33b01eb/PalomarCorpus/E243_08/Challenge.lean#L37) (E243_08, line 37), [Solution](https://github.com/wcook04/plectis-erdos-lean/blob/cc7e541cf2081c6fef5a5e377d52e365e33b01eb/Solutions/PalomarCorpus/E243_08/PaperStatementsA.lean#L107) (PaperStatementsA.lean, line 107), [replay report](../evidence/comparator/replay-35935225572/receipt-E243_08.json) (E243_08)
+- `exists_shifted_consecutiveMultiples`: [Challenge](https://github.com/wcook04/plectis-erdos-lean/blob/cc7e541cf2081c6fef5a5e377d52e365e33b01eb/PalomarCorpus/E243_09/Challenge.lean#L88) (E243_09, line 88), [Solution](https://github.com/wcook04/plectis-erdos-lean/blob/cc7e541cf2081c6fef5a5e377d52e365e33b01eb/Solutions/PalomarCorpus/E243_09/PaperStatementsA.lean#L297) (PaperStatementsA.lean, line 297), [replay report](../evidence/comparator/replay-35935225572/receipt-E243_09.json) (E243_09)
 
 Each Challenge states the same proposition as the Lean declaration it targets, with every definition it uses restated from Mathlib alone.
 
@@ -2346,9 +2404,9 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 > *Let $`u:\mathbb{N}\to\mathbb{N}`$ tend to infinity with $`u_{n+1}\le u_n+B`$ for a fixed integer $`B\ge1`$. Then $`u`$ cannot remain coprime to infinitely many fresh pairwise coprime moduli: there is no family of pairwise coprime $`m_i\ge2`$, one for each index, such that $`\gcd(m_i,u_t)=1`$ whenever $`i<t`$.*
 
-The Lean declaration below states this result.
+The Lean declarations below together state this result.
 
-[`ErdosProblems.Erdos243.PaperCompleteR21.no_boundedRise_coprimeToEarlierModuli`](https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos243/PaperCompleteR21/ForbiddenBlockCrossing.lean#L44)
+1. [`ErdosProblems.Erdos243.PaperCompleteR21.no_boundedRise_coprimeToEarlierModuli`](https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos243/PaperCompleteR21/ForbiddenBlockCrossing.lean#L44)
 
 ```lean
 theorem no_boundedRise_coprimeToEarlierModuli
@@ -2361,6 +2419,22 @@ theorem no_boundedRise_coprimeToEarlierModuli
       (∀ i t, i < t → Nat.gcd (m i) (u t) = 1)
 ```
 
+2. [`ErdosProblems.Erdos243.no_boundedRise_of_tailAvoidance`](https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean#L903)
+
+```lean
+theorem no_boundedRise_of_tailAvoidance
+    (u m : ℕ → ℕ) (N B : ℕ)
+    (hB : 0 < B)
+    (hm : ∀ n, N ≤ n → 1 < m n)
+    (hpair : ∀ {i j : ℕ}, N ≤ i → N ≤ j → i ≠ j →
+      Nat.Coprime (m i) (m j))
+    (havoid : ∀ {i t : ℕ}, N ≤ i → i < t →
+      Nat.Coprime (m i) (u t))
+    (hrise : ∀ n, N ≤ n → u (n + 1) ≤ u n + B)
+    (huTop : Filter.Tendsto u Filter.atTop Filter.atTop) :
+    False
+```
+
 <a id="long243-res-barrier-comparator"></a>
 
 **Comparator: passed** (run 35935225572, corpus commit `cc7e541cf208`).
@@ -2368,6 +2442,7 @@ theorem no_boundedRise_coprimeToEarlierModuli
 For each Lean declaration: the Challenge (the target, stated from Mathlib alone), the Solution (our proof) and the replay report.
 
 - `no_boundedRise_coprimeToEarlierModuli`: [Challenge](https://github.com/wcook04/plectis-erdos-lean/blob/cc7e541cf2081c6fef5a5e377d52e365e33b01eb/PalomarCorpus/E243_08/Challenge.lean#L45) (E243_08, line 45), [Solution](https://github.com/wcook04/plectis-erdos-lean/blob/cc7e541cf2081c6fef5a5e377d52e365e33b01eb/Solutions/PalomarCorpus/E243_08/PaperStatementsA.lean#L117) (PaperStatementsA.lean, line 117), [replay report](../evidence/comparator/replay-35935225572/receipt-E243_08.json) (E243_08)
+- `no_boundedRise_of_tailAvoidance`: [Challenge](https://github.com/wcook04/plectis-erdos-lean/blob/cc7e541cf2081c6fef5a5e377d52e365e33b01eb/PalomarCorpus/E243_10/Challenge.lean#L55) (E243_10, line 55), [Solution](https://github.com/wcook04/plectis-erdos-lean/blob/cc7e541cf2081c6fef5a5e377d52e365e33b01eb/Solutions/PalomarCorpus/E243_10/BoundedRiseReducedTail.lean#L12) (BoundedRiseReducedTail.lean, line 12), [replay report](../evidence/comparator/replay-35935225572/receipt-E243_10.json) (E243_10)
 
 Each Challenge states the same proposition as the Lean declaration it targets, with every definition it uses restated from Mathlib alone.
 
@@ -2527,13 +2602,13 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long243-res-cor"></a>
 
-## Corollary 12.2, page 47
+## Corollary 12.2, page 46
 
 > *Under the hypotheses of Theorem 12.1, the multipliers satisfy $`a_{n+1}=a_n^{2}-a_n+1`$ for all sufficiently large $`n`$.*
 
-The Lean declaration below states this result or one that implies it. `boundedNegativePart_sylvesterNext_eventually` has the hypotheses of `eventuallyBoundedNegativePart_eventually_zero` (with $E_n/C_n\to0$ unfolded as there) and concludes $a_{n+1}=a_n^2-a_n+1$ (`sylvesterNext`) for all large $n$; it assumes nothing about $C_{n+1}\ne0$.
+The Lean declarations below together state this result or one that implies it. `boundedNegativePart_sylvesterNext_eventually` has the hypotheses of `eventuallyBoundedNegativePart_eventually_zero` (with $E_n/C_n\to0$ unfolded as there) and concludes $a_{n+1}=a_n^2-a_n+1$ (`sylvesterNext`) for all large $n$; it assumes nothing about $C_{n+1}\ne0$.  The consolidated statement retains the clauses already proved at these interfaces; Exact eventual multiplier conclusion under the same bounded-negative hypotheses; source wrapper declaration absent from destination coverage.
 
-[`ErdosProblems.Erdos243.boundedNegativePart_sylvesterNext_eventually`](https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean#L2412)
+1. [`ErdosProblems.Erdos243.boundedNegativePart_sylvesterNext_eventually`](https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean#L2412)
 
 ```lean
 theorem boundedNegativePart_sylvesterNext_eventually
@@ -2550,6 +2625,21 @@ theorem boundedNegativePart_sylvesterNext_eventually
       (a (n + 1) : ℤ) = sylvesterNext (a n : ℤ)
 ```
 
+2. [`ErdosProblems.Erdos243.PaperCompleteR7.bounded_negative_endpoint_eventual_multiplier`](https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos243/PaperCompleteR7/Arithmetic.lean#L179)
+
+```lean
+theorem bounded_negative_endpoint_eventual_multiplier
+    (a C D : ℕ → ℕ) (E : ℕ → ℤ)
+    (ha : ∃ N, ∀ n, N ≤ n → 1 < a n)
+    (hCpos : ∀ n, 0 < C n)
+    (hC : ∀ n, C (n + 1) + D n = a n * C n)
+    (hD : ∀ n, D (n + 1) = a n * D n)
+    (hE : ∀ n, E n = centeredState (a n : ℤ) (D n : ℤ) (C n : ℤ))
+    (hbound : ∃ N B : ℕ, ∀ n, N ≤ n → -(B : ℤ) ≤ E n)
+    (hvanish : ∀ K : ℕ, ∃ N, ∀ n, N ≤ n → K * Int.natAbs (E n) < C n) :
+    ∃ N, ∀ n, N ≤ n → (a (n + 1) : ℤ) = sylvesterNext (a n : ℤ)
+```
+
 <a id="long243-res-cor-comparator"></a>
 
 **Comparator: passed** (run 35935225572, corpus commit `cc7e541cf208`).
@@ -2557,6 +2647,7 @@ theorem boundedNegativePart_sylvesterNext_eventually
 For each Lean declaration: the Challenge (the target, stated from Mathlib alone), the Solution (our proof) and the replay report.
 
 - `boundedNegativePart_sylvesterNext_eventually`: [Challenge](https://github.com/wcook04/plectis-erdos-lean/blob/cc7e541cf2081c6fef5a5e377d52e365e33b01eb/PalomarCorpus/E243_08/Challenge.lean#L93) (E243_08, line 93), [Solution](https://github.com/wcook04/plectis-erdos-lean/blob/cc7e541cf2081c6fef5a5e377d52e365e33b01eb/Solutions/PalomarCorpus/E243_08/PaperStatementsA.lean#L269) (PaperStatementsA.lean, line 269), [replay report](../evidence/comparator/replay-35935225572/receipt-E243_08.json) (E243_08)
+- `bounded_negative_endpoint_eventual_multiplier`: [Challenge](https://github.com/wcook04/plectis-erdos-lean/blob/cc7e541cf2081c6fef5a5e377d52e365e33b01eb/PalomarCorpus/E243_09/Challenge.lean#L59) (E243_09, line 59), [Solution](https://github.com/wcook04/plectis-erdos-lean/blob/cc7e541cf2081c6fef5a5e377d52e365e33b01eb/Solutions/PalomarCorpus/E243_09/PaperStatementsA.lean#L197) (PaperStatementsA.lean, line 197), [replay report](../evidence/comparator/replay-35935225572/receipt-E243_09.json) (E243_09)
 
 Each Challenge states the same proposition as the Lean declaration it targets, with every definition it uses restated from Mathlib alone.
 
@@ -2651,9 +2742,88 @@ For each Lean declaration: the Challenge (the target, stated from Mathlib alone)
 
 Each Challenge states the same proposition as the Lean declaration it targets, with every definition it uses restated from Mathlib alone.
 
+<a id="res-lcmbounded"></a>
+
+## Corollary 14.3 (a bound using the least common multiple), page 50
+
+> *Assume the hypotheses of Problem 1.1. Write $`A_n=\operatorname{lcm}(a_1,\ldots,a_{n-1})`$ with $`A_1=1`$. If
+> ``` math
+> \limsup_{n\to\infty}\frac{A_n}{a_n}
+>  \left(\frac{a_n^2}{a_{n+1}}-1\right)<\infty,
+> ```
+> then the sequence is eventually Sylvester.*
+
+The Lean declaration below states this result.
+
+[`ErdosProblems.Erdos243.PaperCompleteR7.original_coordinate_lcm_bounded_defect`](https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos243/PaperCompleteR7/LcmDefect.lean#L49)
+
+```lean
+theorem original_coordinate_lcm_bounded_defect
+    (a : ℕ → ℕ) (ha : StrictMono a) (hapos : ∀ n, 0 < a n)
+    (p : ℤ) (q : ℕ) (hq : 0 < q)
+    (hs : HasSum (fun n ↦ 1 / (a n : ℝ)) ((p : ℝ) / (q : ℝ)))
+    (hgrowth : Tendsto (fun n ↦ (a (n + 1) : ℝ) / (a n : ℝ) ^ 2)
+      atTop (nhds 1))
+    (hupper : ∃ M : ℝ, ∃ N, ∀ n, N ≤ n → lcmDefect a n ≤ M) :
+    ∃ N, ∀ n, N ≤ n →
+      (a (n + 1) : ℤ) = (a n : ℤ) ^ 2 - (a n : ℤ) + 1
+```
+
+<a id="res-lcmbounded-comparator"></a>
+
+**Comparator: passed** (run 35935225572, corpus commit `cc7e541cf208`).
+
+For each Lean declaration: the Challenge (the target, stated from Mathlib alone), the Solution (our proof) and the replay report.
+
+- `original_coordinate_lcm_bounded_defect`: [Challenge](https://github.com/wcook04/plectis-erdos-lean/blob/cc7e541cf2081c6fef5a5e377d52e365e33b01eb/PalomarCorpus/E243_09/Challenge.lean#L109) (E243_09, line 109), [Solution](https://github.com/wcook04/plectis-erdos-lean/blob/cc7e541cf2081c6fef5a5e377d52e365e33b01eb/Solutions/PalomarCorpus/E243_09/PaperStatementsS.lean#L17) (PaperStatementsS.lean, line 17), [replay report](../evidence/comparator/replay-35935225572/receipt-E243_09.json) (E243_09)
+
+Each Challenge states the same proposition as the Lean declaration it targets, with every definition it uses restated from Mathlib alone.
+
+<a id="res-weights"></a>
+
+## Lemma 14.4 (weights and linear density), page 50
+
+> *Let $`u_j`$ be positive integers, let $`w_j\ge0`$, and put $`F(X)=\sum_{u_j\le X}w_j`$, with the sum allowed a priori to be $`+\infty`$. Then $`\liminf_{X\to\infty}F(X)/X=0`$ if and only if there is a finite nonincreasing $`f:[1,\infty)\to[0,\infty)`$ with $`\int_1^\infty f(t)\,dt=\infty`$ and $`\sum_jw_jf(u_j)<\infty`$.*
+
+The Lean declaration below states this result.
+
+[`ErdosProblems.Erdos243.PaperCompleteR20.real_lowerDensityZero_iff_exists_admissible_real_weight`](https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos243/PaperCompleteR20/RealCutoffCriterion.lean#L87)
+
+```lean
+theorem real_lowerDensityZero_iff_exists_admissible_real_weight
+    (u : ℕ → ℕ) (w : ℕ → ℝ≥0) (hu : ∀ j, 0 < u j) :
+    RealPrefixLowerDensityZero u (fun j => (w j : ℝ≥0∞)) ↔
+      ∃ f : ℝ → ℝ,
+        AntitoneOn f (Ici 1) ∧
+        (∀ t : ℝ, 1 ≤ t → 0 ≤ f t) ∧
+        PaperCompleteR11.IntegralUnbounded f ∧
+        Summable (fun j : ℕ => (w j : ℝ) * f (u j : ℕ))
+```
+
+<a id="res-weights-comparator"></a>
+
+**Comparator: passed** (run 35935225572, corpus commit `cc7e541cf208`).
+
+For each Lean declaration: the Challenge (the target, stated from Mathlib alone), the Solution (our proof) and the replay report.
+
+- `real_lowerDensityZero_iff_exists_admissible_real_weight`: [Challenge](https://github.com/wcook04/plectis-erdos-lean/blob/cc7e541cf2081c6fef5a5e377d52e365e33b01eb/PalomarCorpus/E243_09/Challenge.lean#L139) (E243_09, line 139), [Solution](https://github.com/wcook04/plectis-erdos-lean/blob/cc7e541cf2081c6fef5a5e377d52e365e33b01eb/Solutions/PalomarCorpus/E243_09/PaperStatementsJ.lean#L23) (PaperStatementsJ.lean, line 23), [replay report](../evidence/comparator/replay-35935225572/receipt-E243_09.json) (E243_09)
+
+Challenge for `real_lowerDensityZero_iff_exists_admissible_real_weight`:
+
+```lean
+theorem real_lowerDensityZero_iff_exists_admissible_real_weight
+    (u : ℕ → ℕ) (w : ℕ → ℝ≥0) (hu : ∀ j, 0 < u j) :
+    RealPrefixLowerDensityZero u (fun j => (w j : ℝ≥0∞)) ↔
+      ∃ f : ℝ → ℝ,
+        AntitoneOn f (Ici 1) ∧
+        (∀ t : ℝ, 1 ≤ t → 0 ≤ f t) ∧
+        IntegralUnbounded f ∧
+        Summable (fun j : ℕ => (w j : ℝ) * f (u j : ℕ)) := by sorry
+```
+
 <a id="long243-res-variablerise"></a>
 
-## Proposition 14.6 (small increases when the prime moduli are sparse), page 53
+## Proposition 14.8 (small increases when the prime moduli are sparse), page 54
 
 > *There exist strictly increasing primes $`p_i`$ and a strictly increasing positive integer sequence $`u_n\to\infty`$ such that $`\gcd(u_n,p_i)=1`$ for all $`i,n`$ and
 > ``` math
@@ -2690,7 +2860,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long243-res-gapconstant"></a>
 
-## Theorem 14.7 (largest gaps between integers avoiding given multiples), page 53
+## Theorem 14.9 (largest gaps between integers avoiding given multiples), page 55
 
 > *Let $`m_0<m_1<\cdots`$ be pairwise coprime integers at least $`2`$ with $`\ell(m_j)=j+O(1)`$, where $`\ell(x)=\log_2\log_2\max(4,x)`$. Let $`\sigma=\prod_j(1-1/m_j)>0`$ and enumerate the positive integers divisible by no $`m_j`$ in increasing order as $`(u_n)`$. Then
 > ``` math
@@ -2726,7 +2896,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long243-res-residue"></a>
 
-## Theorem B.1 (factorial residue reduction), page 57
+## Theorem B.1 (factorial residue reduction), page 59
 
 > *Let $`h`$ be a nonnegative integer and let $`a,b`$ be integers with $`a\equiv b\pmod{(h+1)!}`$. The first $`h`$ steps of the recursion $`a_{n+1}=\operatorname{num}(n,a_n)/(n+2)`$, starting at index zero, are integral for $`a_0=a`$ if and only if they are integral for $`a_0=b`$.*
 

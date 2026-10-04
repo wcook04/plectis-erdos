@@ -1,10 +1,10 @@
-# Formal evidence: Reciprocal Mersenne Subseries, Section 6, results 6.106 to 6.146
+# Formal evidence: Reciprocal Mersenne Subseries, Section 6, results 6.106 to 6.149
 
 Part of the [evidence record](../erdos257-mersenne-reasoning-surface.md) of the paper [erdos257-mersenne-reasoning-surface.pdf](../../paper/257/erdos257-mersenne-reasoning-surface.pdf), which explains what the Lean and Comparator checks establish.
 
 <a id="record-257bm-i-mob"></a>
 
-## Theorem 6.106 (Möbius inversion of the divisor counts), page 74
+## Theorem 6.106 (Möbius inversion of the divisor counts), page 76
 
 > *For a set $`A\subseteq\mathbb{N}`$ and each positive integer $`n`$,
 > ``` math
@@ -50,7 +50,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="record-257bm-i-bridge"></a>
 
-## Theorem 6.107 (The support series as a coefficient series), page 75
+## Theorem 6.107 (The support series as a coefficient series), page 77
 
 > *For $`A\subseteq\mathbb{N}_{>0}`$,
 > ``` math
@@ -105,7 +105,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="record-257rig-i2"></a>
 
-## Theorem 6.108 (A restriction on dyadic rational values), page 75
+## Theorem 6.108 (A restriction on dyadic rational values), page 77
 
 > *If an infinite support $`A\subseteq\mathbb{N}_{>0}`$ has $`X_A(2)=p/2^c`$ for integers $`p`$ and $`c\ge0`$, then $`\sum_{a\in A}1/a`$ either diverges or converges to a value greater than $`1`$. The cited proof averages the shifted integer recurrence and uses a common multiple of two distinct support elements. Thus a convergent reciprocal sum of at most $`1`$ is excluded. This is a separate necessary condition: the reciprocal-summable criterion proved earlier already excludes every support with a convergent reciprocal sum, not just those whose sum is at most $`1`$.*
 
@@ -147,7 +147,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="record-257rig-i3"></a>
 
-## Theorem 6.109 (Unboundedness of a positive shifted recurrence), page 75
+## Theorem 6.109 (Unboundedness of a positive shifted recurrence), page 77
 
 > *Let $`A\subseteq\mathbb{N}_{>0}`$ be infinite, fix a shift $`c\ge0`$ and a positive integer $`v`$, and let $`u`$ be a positive integer sequence satisfying
 > ``` math
@@ -211,7 +211,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="record-257rig-i4a"></a>
 
-## Theorem 6.110 (Bounds for intervals with zero divisor counts), page 75
+## Theorem 6.110 (Bounds for intervals with zero divisor counts), page 77
 
 > *Suppose that $`X_A(2)=p/(2^cv)`$ for an infinite positive support $`A`$ and an odd positive integer $`v`$. For every $`\varepsilon>0`$ there is $`B`$ such that, for $`N\ge1`$, a run of $`h`$ zero divisor counts starting after $`c+N`$ satisfies $`h\le\varepsilon\log_2N+B`$. In fact this conclusion holds without rationality: fix any $`a\in A`$. Every $`a`$ consecutive positive integers include a multiple of $`a`$, where $`c_A`$ is positive. Hence $`h\le a-1`$, so one can take $`B=a-1`$. The zero-run conclusion therefore imposes no additional restriction on a fixed nonempty support, regardless of the tail estimates used in the linked proof.*
 
@@ -253,7 +253,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="record-257rig-i4b"></a>
 
-## Proposition 6.111 (A subpower bound for divisor counts), page 75
+## Proposition 6.111 (A subpower bound for divisor counts), page 77
 
 > *For positive integers $`n,k`$, $`\tau(n)^k \le (k^{2^k})^k\cdot n`$, or equivalently $`\tau(n)\le k^{2^k}n^{1/k}`$. The constant absorbs the finitely many primes below $`2^k`$; for larger primes, $`(\nu+1)^k\le p^\nu`$ controls each factor of the divisor product. This estimate is independent of the support problem. The elementary zero-run bound above already follows from a single positive support element, without this estimate or a recurrence.*
 
@@ -290,7 +290,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="record-257rig-i5"></a>
 
-## Proposition 6.112 (Two distinct prime-power differences commute), page 76
+## Proposition 6.112 (Two distinct prime-power differences commute), page 78
 
 > *Lemma 6.57 gives the four-term expansion and its divisor-count interpretation. Commutation is elementary for arbitrary positive multipliers. The extraction formula uses distinct primes, *positive* exponents $`e,f`$ and $`\gcd(n,pq)=1`$. The example $`A=\{12\}`$ shows the extracted coefficient explicitly. No rationality statement about multiplicative subsequences follows from commutation alone.*
 
@@ -339,7 +339,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="record-257bm-i-cross2"></a>
 
-## Theorem 6.114 (Existence of a first crossing), page 76
+## Theorem 6.114 (Existence of a first crossing), page 78
 
 > *Let $`E\subseteq\{2,3,\ldots\}`$ be finite and suppose $`X_E(2)>1/2`$. There is a least $`c\in E`$ such that
 > ``` math
@@ -377,7 +377,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="record-257hg-i6"></a>
 
-## Theorem 6.115 (Nonnegative centred carries below the half-value), page 76
+## Theorem 6.115 (Nonnegative centred carries below the half-value), page 78
 
 > *If $`1\notin A`$ and $`X_A(2)<1/2`$, then
 > ``` math
@@ -426,7 +426,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="record-257hg-i7"></a>
 
-## Theorem 6.116 (Three possibilities at a skipped endpoint), page 76
+## Theorem 6.116 (Three possibilities at a skipped endpoint), page 78
 
 > *For a rank $`s\ge5`$ omitted by the real greedy support, let $`H_s`$ and $`f_s`$ be as in Lemma 6.45. That lemma identifies the actual prefix as $`D_s`$ when $`f_s\le0`$ and as $`B_s`$ when $`f_s>0`$, with the exact remainder or overshoot in each case. To obtain the nonnegative-margin condition in Definition 6.81, the negative case would still have to be excluded at every required skipped rank. The trichotomy itself does not exclude it. In particular, the value $`-3`$ excluded for $`C_D`$ under the all-right-tail hypothesis of Theorem 6.44 is not an exclusion for $`f_s`$: the coordinates and the hypotheses are different.*
 
@@ -465,7 +465,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="record-257hg-i2"></a>
 
-## Theorem 6.118 (The unweighted sum of remaining gap lengths), page 77
+## Theorem 6.118 (The unweighted sum of remaining gap lengths), page 79
 
 > *For every $`N\ge0`$, the unweighted sum of gap lengths satisfies
 > ``` math
@@ -519,7 +519,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="record-257hg-i4"></a>
 
-## Theorem 6.120 (A sufficient inequality for a safe skip), page 77
+## Theorem 6.120 (A sufficient inequality for a safe skip), page 79
 
 > *Let $`k,u,L\ge1`$ be integers, set $`a=2L-(2^k-1)u`$, and suppose $`a>0`$. For the skipped rational remainder $`\rho=u/(2L)`$, $`\rho\le2^{-k}`$ is equivalent to $`u\le a`$, whereas
 > ``` math
@@ -637,7 +637,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="record-257hg-i5"></a>
 
-## Proposition 6.121 (Two unconditional safety cases), page 78
+## Proposition 6.121 (Two unconditional safety cases), page 80
 
 > *Under the positive-integer and skipped-step hypotheses of Theorem 6.120, $`u=1`$ implies $`a\ge1`$, so the current remainder is less than $`R_k`$. Conversely, a fatal tail-mass deficit forces $`3a<2u`$, hence $`u\ge2`$, or $`u\ge3`$ when $`u`$ is odd. These are statements about the current step, not infinite survival.*
 
@@ -738,7 +738,7 @@ theorem unitNumerator_skipSafe_actualTail {k u L a : ℕ}
 
 <a id="record-257bm-i13"></a>
 
-## Theorem 6.122 (Two-sided dyadic bounds), page 78
+## Theorem 6.122 (Two-sided dyadic bounds), page 80
 
 > *Under the local hypothesis excluding the specified three middle cells and imposing the right-pulse bound, induction (base case at row 5 verified by direct computation) propagates it to the universal two-sided bound
 > ``` math
@@ -769,7 +769,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="record-257bm-i14"></a>
 
-## Proposition 6.123 (A finite band check for $`13\le d\le30`$), page 78
+## Proposition 6.123 (A finite band check for $`13\le d\le30`$), page 80
 
 > *For every actual upper-reset index $`13\le d\le30`$ and every $`0\le j\le d`$, the linked certificate verifies
 > ``` math
@@ -859,7 +859,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="record-257bm-i15"></a>
 
-## Theorem 6.124 (A general perturbed greedy recurrence), page 78
+## Theorem 6.124 (A general perturbed greedy recurrence), page 80
 
 > *Let the old integer values be separated by at least $`g\ge1`$, and let the update be $`t(x)=4s(x)+p(x)`$ with $`0\le p(x)\le B<g`$. Suppose $`x_-`$ and $`x_+`$ are the adjacent old values on either side of capacity $`C`$. Theorem 6.62 gives the largest admissible updated value at capacity $`4C+g`$ and the exact three-branch remainder after testing the extra weight $`2g+4`$.*
 >
@@ -1054,7 +1054,7 @@ theorem prefixChoice_eq_below {α : Type*} (F : PerturbedFamily α) {C : ℕ}
 
 <a id="record-257bm-i16"></a>
 
-## Theorem 6.125 (Spacing of compatible reverse-carry words), page 79
+## Theorem 6.125 (Spacing of compatible reverse-carry words), page 81
 
 > *Consider two integer carry recurrences $`b_i(m)+2u_i(m)=a_i(m)+u_i(m+1)`$, $`i=1,2`$. If $`a_1(k)=a_2(k)`$ and the output bits at $`k`$ are $`1`$ and $`0`$, then the carry difference at $`k+1`$ is odd. If the coefficients and bits agree for the following $`L`$ positions, the difference at $`k+L+1`$ is $`2^L`$ times that odd integer. Consequently absolute terminal bounds $`B_1,B_2`$ give $`2^L\le B_1+B_2`$. Lemma 6.46 states the exact identity and proves it by subtraction. The linked formal statements encode these agreements; they do not supply terminal bounds for an unrelated digit system.*
 
@@ -1163,7 +1163,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="record-257bm-i17"></a>
 
-## Proposition 6.126 (Changing one support bit at a doubled rank), page 79
+## Proposition 6.126 (Changing one support bit at a doubled rank), page 81
 
 > *Let two supports agree except that the second includes $`N+1`$ while the first does not. At the argument $`2(N+1)`$ their divisor counts differ by exactly $`1`$, because $`N+1`$ divides $`2(N+1)`$. More generally the difference at a positive argument $`m`$ is $`\mathbf1_{N+1\mid m}`$. The linked statements apply this identity to the finite supports in their hypotheses. No conclusion about a different coefficient sequence follows without identifying its own support change.*
 
@@ -1221,7 +1221,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="record-257bm-k1"></a>
 
-## Theorem 6.127 (A bounded model of the doubling-or-return alternative), page 79
+## Theorem 6.127 (A bounded model of the doubling-or-return alternative), page 81
 
 > *The dichotomy $`\mathrm{ExactLocalMersenneHalfRow}(2n{-}1) \vee \exists c,\,4\le c\le n\wedge
 > \mathrm{ExactLocalMersenneHalfRow}(2c{-}2)`$ (proved for $`n\ge6`$ at Theorem 6.128 below) is not by itself enough for cofinality. Countermodel: $`\mathrm{boundedDoubleOrRecycleModel}(n) := (n=6)`$ satisfies exactly the same two-branch transition shape (seed at 6, and the model reproduces the $`\vee`$ shape by always taking the recycle branch with $`c=4`$, conclusion back at $`2\cdot4-2=6`$), yet
@@ -1270,7 +1270,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="record-257bm-k-dich"></a>
 
-## Theorem 6.128 (Doubling or returning to an earlier depth), page 79
+## Theorem 6.128 (Doubling or returning to an earlier depth), page 81
 
 > *For $`n\ge6`$, $`\mathrm{ExactLocalMersenneHalfRow}(n)`$:
 > ``` math
@@ -1322,7 +1322,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="record-257bm-k2"></a>
 
-## Proposition 6.129 (A sufficient fractional-mass bound need not hold), page 80
+## Proposition 6.129 (A sufficient fractional-mass bound need not hold), page 82
 
 > *Take $`D=\{2,3\}`$ and $`c=5`$. Direct calculation gives
 > ``` math
@@ -1379,7 +1379,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="record-257bm-k4"></a>
 
-## Theorem 6.131 (The returning endpoint need not be larger), page 80
+## Theorem 6.131 (The returning endpoint need not be larger), page 82
 
 > *Theorem 6.78 is unconditional, but its witness is $`\exists c\le n`$, not $`\exists c`$ large: $`2c-2`$ may be $`\le n`$, so the endpoint need not grow. The countermodel of Theorem 6.127 is the explicit falsifier of the naive hope that growth comes for free: $`\mathrm{boundedDoubleOrRecycleModel}(n):=(n=6)`$ satisfies the same transition schema plus a seed and is not cofinal. Growth is recovered only inside $`\mathrm{ProtectedExactLocalMersenneRow}`$ (Theorem 6.71), whose invariants $`\mathrm{endpoint}<2\cdot\mathrm{cutoff}`$ and $`\mathrm{new\_above\_cutoff}`$ force $`c>\mathrm{cutoff}`$ hence $`2c-2>\mathrm{endpoint}`$ ; and maintaining those invariants is precisely what needs the strict-upper (sharp capacity) fill of Theorem 6.75 rather than this general recycling theorem.*
 
@@ -1447,7 +1447,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="record-257rig-k6"></a>
 
-## Theorem 6.133 (Uniqueness at a critical crossing), page 81
+## Theorem 6.133 (Uniqueness at a critical crossing), page 83
 
 > *For $`c\ge4`$, $`D`$ bounded $`[2,c)`$, below-half, with genuine crossing deficit $`\tfrac12-\mathrm{value}(D) < \ensuremath{w}(c)`$:
 > ``` math
@@ -1480,7 +1480,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="record-257bm-k9"></a>
 
-## Theorem 6.136 (Vanishing of the specified linear-channel determinant), page 81
+## Theorem 6.136 (Vanishing of the specified linear-channel determinant), page 83
 
 > *Let $`V`$ be a vector space over $`\mathbb{Q}`$, let $`e:V\to\mathbb{Q}`$ be linear, and let $`(\ell_j)_{j\in\iota}`$ be a finite family of linear functionals vanishing on $`\ker e`$. For any vectors $`(v_i)_{i\in\iota}`$, the matrix $`(\ell_j(v_i))_{i,j\in\iota}`$ has rank at most one, so every square minor of size at least two vanishes. Indeed, the functionals descend to $`V/\ker e`$, which has dimension at most one. This elementary linear-algebra argument applies at every matrix size. It does not cover additional functionals that fail to vanish on $`\ker e`$.*
 
@@ -1522,7 +1522,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="record-257hg-k12"></a>
 
-## Theorem 6.139 (Excluding the cell with value minus three), page 82
+## Theorem 6.139 (Excluding the cell with value minus three), page 84
 
 > *At a middle row $`D\ge13`$ followed only by right transitions, $`4\,\mathrm{rem}(D)-p_D^--4\ne-3`$, by Theorem 6.44. Its proof uses the nonnegative centred carry for the completed support, not a finite search. The values $`-2,-1`$ remain among the three exceptional negative cells. Excluding them under this extra tail assumption would still not exclude nonnegative values of the coordinate, or establish the all-middle-row and right-branch hypotheses in Theorem 6.9. The complete remaining tail inequality is stated in Remark 10.8.*
 
@@ -1601,7 +1601,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="prop-unsafe-middle-range-exactly-three"></a>
 
-## Proposition 6.140 (The unsafe middle range is exactly three integers), page 82
+## Proposition 6.140 (The unsafe middle range is exactly three integers), page 84
 
 > *For $`s\ge5`$, write $`R=\mathrm{rem}(s)`$ and $`P=p_s^-`$. Since $`4R-P-4`$ is an integer,
 > ``` math
@@ -1636,9 +1636,71 @@ For each Lean declaration: the Challenge (the target, stated from Mathlib alone)
 
 Each Challenge states the same proposition as the Lean declaration it targets, with every definition it uses restated from Mathlib alone.
 
+<a id="res-terminalhalf"></a>
+
+## Theorem 6.142 (finite approximations with vanishing scaled error), page 86
+
+> *Suppose there are integers $`M_j\ge1`$ tending to infinity and sets $`A_j\subseteq\{2,\ldots,M_j\}`$ such that
+> ``` math
+> \frac{|K_{A_j}(M_j)|}{2^{M_j}}\longrightarrow0.
+> ```
+> Then $`X_A(2)=1/2`$ for some infinite set $`A\subseteq\mathbb{N}_{>0}`$.*
+
+The Lean declaration below states this result or one that implies it. The Lean statement is the equivalence stated in the paragraph after the theorem: its right-to-left direction is the printed theorem, with $A\subseteq\mathbb N_{>0}$ written as $0\notin B$, and its left-to-right direction is the converse, with the approximants $M_j=j+1$ and $A_j=B\cap\{0,\ldots,j+1\}$.
+
+[`ErdosProblems.Erdos257.PaperCompleteR20.paper_terminalhalf_iff`](https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos257/PaperCompleteR20/TerminalSetCorrespondence.lean#L185)
+
+```lean
+theorem paper_terminalhalf_iff :
+    (∃ B : Set ℕ, 0 ∉ B ∧ B.Infinite ∧ erdosSupportSeries 2 B = (1 : ℝ) / 2) ↔
+      ∃ (M : ℕ → ℕ) (A : ℕ → Set ℕ),
+        (∀ j, 1 ≤ M j) ∧
+          Filter.Tendsto M Filter.atTop Filter.atTop ∧
+          (∀ j n, n ∈ A j → 2 ≤ n ∧ n ≤ M j) ∧
+          Filter.Tendsto
+            (fun j ↦ |(terminalPaperCarry (A j) (M j) : ℝ)| / (2 : ℝ) ^ M j)
+            Filter.atTop (nhds 0)
+```
+
+<a id="res-terminalhalf-comparator"></a>
+
+**Comparator:** not yet compared.
+
+Comparator entry E257_47 (replay 35935225572 at corpus commit cc7e541cf2081c6fef5a5e377d52e365e33b01eb) checks paper_terminalhalf, which is the right-to-left direction of the equivalence alone. No Challenge, Solution or replay is bound for paper_terminalhalf_iff.
+
+Next check: In the next governed corpus build, transport lean/ErdosProblems/Erdos257/PaperCompleteR20/TerminalSetCorrespondence.lean from public paper commit 4db6150ed53492363079661a68bed4d181eb56dd (SHA-256 6daff7f2777bede7e0831ba83061add33f7cbe520cb07ccf840f0b34e1ffcc8e; Lean v4.29.1). Build its module, probe the exact declaration closure, prepare an independent Challenge for paper_terminalhalf_iff with terminalPaperCarry and erdosSupportSeries restated from Mathlib, and its checked Solution, and run Comparator. Add an association for paper_terminalhalf_iff only after a matching source-bound replay passes, then regenerate paper evidence.
+
+<a id="res-cylinderhalf"></a>
+
+## Theorem 6.143 (unbounded shared-prefix families represent one half), page 87
+
+> *Suppose that for every $`N`$ there are $`M,K`$ with $`\max\{N,1\}\le M`$, $`0\le K\le M`$, and a family satisfying all the conditions in the preceding paragraph. Then $`X_A(2)=1/2`$ for some infinite set $`A\subseteq\mathbb{N}_{>0}`$.*
+
+The Lean declaration below states this result or one that implies it. The Lean hypothesis has the printed content: a stage at depth $M$ with cutoff $K\le M$ consists of sets $A_1,\ldots,A_{B(M)}\subseteq\{2,\ldots,M\}$ with $1\le K_{A_k}(m)\le B(m)$ for $1\le m\le M$ and $K_{A_k}(M)=k$, agreeing on $\{1,\ldots,K\}$, whose suffix values are $E-k$ for one integer $E\ge B(M)$. The conclusion is the printed one, with $A\subseteq\Npos$ written as $0\notin A$.
+
+[`Erdos249257.SuffixCylinderTerminalOnlyBridge.exists_infinite_positive_support_half_of_cofinalCylinderStages`](https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/Erdos249257/SuffixCylinderTerminalOnlyBridge.lean#L287)
+
+```lean
+theorem exists_infinite_positive_support_half_of_cofinalCylinderStages
+    (hstages : ∀ N : ℕ, ∃ M K : ℕ,
+      max N 1 ≤ M ∧ Nonempty (CylinderStage K M)) :
+    ∃ A : Set ℕ, 0 ∉ A ∧ A.Infinite ∧
+      erdosSupportSeries 2 A = (1 : ℝ) / 2
+```
+
+<a id="res-cylinderhalf-comparator"></a>
+
+**Comparator: passed** (run 35935225572, corpus commit `cc7e541cf208`).
+
+For each Lean declaration: the Challenge (the target, stated from Mathlib alone), the Solution (our proof) and the replay report.
+
+- `exists_infinite_positive_support_half_of_cofinalCylinderStages`: [Challenge](https://github.com/wcook04/plectis-erdos-lean/blob/cc7e541cf2081c6fef5a5e377d52e365e33b01eb/PalomarCorpus/E257_48/Challenge.lean#L95) (E257_48, line 95), [Solution](https://github.com/wcook04/plectis-erdos-lean/blob/cc7e541cf2081c6fef5a5e377d52e365e33b01eb/Solutions/PalomarCorpus/E257_48/PaperStructuresCB.lean#L538) (PaperStructuresCB.lean, line 538), [replay report](../../evidence/comparator/replay-35935225572/receipt-E257_48.json) (E257_48)
+
+Each Challenge states the same proposition as the Lean declaration it targets, with every definition it uses restated from Mathlib alone.
+
 <a id="prop-finite-approximations-without-compatibility"></a>
 
-## Proposition 6.142, page 84
+## Proposition 6.144, page 87
 
 > *Every shared-prefix family just defined at depth $`N`$ contains a finite support $`A`$ with $`|K_A(N)|\le B(N)`$, and at a feedback row this survives *both* outputs of the corpus’s total feedback theorem; full-cylinder advance or a localized one-hole seam, which can delete at most one of carries $`3,4`$.*
 
@@ -1808,7 +1870,7 @@ theorem paper_shared_prefix_family_strip_witness_after_feedback_of_all_depths
 
 <a id="prop-exact-lebesgue-measure-dichotomy"></a>
 
-## Proposition 6.146 (Exact Lebesgue-measure dichotomy), page 87
+## Proposition 6.148 (Exact Lebesgue-measure dichotomy), page 89
 
 > *Either $`J=F^c`$ for a finite $`F`$, and $`\mathrm{vol}(\mathcal A_J)=2^{-|F|}`$ exactly, or $`J^c`$ is infinite and the volume is exactly $`0`$.*
 
@@ -1832,5 +1894,111 @@ theorem paper_volume_supportedMersenneAchievementSet_dichotomy (J : Set ℕ) :
 For each Lean declaration: the Challenge (the target, stated from Mathlib alone), the Solution (our proof) and the replay report.
 
 - `paper_volume_supportedMersenneAchievementSet_dichotomy`: [Challenge](https://github.com/wcook04/plectis-erdos-lean/blob/cc7e541cf2081c6fef5a5e377d52e365e33b01eb/PalomarCorpus/E257_42/Challenge.lean#L273) (E257_42, line 273), [Solution](https://github.com/wcook04/plectis-erdos-lean/blob/cc7e541cf2081c6fef5a5e377d52e365e33b01eb/Solutions/PalomarCorpus/E257_42/PaperStatementsAM.lean#L236) (PaperStatementsAM.lean, line 236), [replay report](../../evidence/comparator/replay-35935225572/receipt-E257_42.json) (E257_42)
+
+Each Challenge states the same proposition as the Lean declaration it targets, with every definition it uses restated from Mathlib alone.
+
+<a id="res-one-over-twenty-one-frontier"></a>
+
+## Theorem 6.149 (integer-quotient tests for $`1/21`$), page 91
+
+> *The following statements hold.*
+>
+> 1.  *$`1/21\in\mathcal A`$ if and only if $`\mathcal F_{21}`$ does not hold.*
+>
+> 2.  *If there is an unbounded sequence of ranks $`R`$ with $`s_R\le 2^R`$, then $`1/21\in\mathcal A`$.*
+>
+> 3.  *On $`\mathcal F_{21}`$, eventually $`s_R>2^R`$, the boundary rank $`R+1`$ belongs to $`D_{R+1}`$, and, for all sufficiently large $`R`$,
+>     ``` math
+>     \begin{aligned}
+>      D_{R+1}&=D_R\cup\{R+1\},\\
+>      s_{R+1}&=4s_R+
+>      \left\lfloor\frac{4(2^{2R}\bmod21)}{21}\right\rfloor
+>      -2c_{D_R}(2R+1)-c_{D_R}(2R+2)\\
+>      &\hspace{3em}{}-(2^{R+1}+1).
+>      \end{aligned}
+>     ```
+>     Here $`c_{D_R}(m)=\#\{d\in D_R:d\mid m\}`$.*
+
+The Lean declarations below together state this result or one that implies it. Item 2 follows from a Lean criterion with a weaker hypothesis: $1/21\in\Ach$ whenever $(s_R+2R+1)/2^{2R}\to0$ along some sequence of ranks $R\ge2$ tending to infinity, and ranks $R_k\to\infty$ with $s_{R_k}\le2^{R_k}$ supply such a sequence. Items 1 and 3 are stated as printed; the recurrence for $s_{R+1}$ is written with natural-number subtraction, which agrees with the integer identity because $s_{R+1}>2^{R+1}$ for all large $R$.
+
+1. [`Erdos249257.one_div_twenty_one_mem_iff_not_fatalAlignedBranch`](https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/Erdos249257/TwentyOneQuotientGreedy.lean#L3507)
+
+```lean
+theorem one_div_twenty_one_mem_iff_not_fatalAlignedBranch :
+    (1 / 21 : ℝ) ∈ mersenneAchievementSet ↔
+      ¬ TwentyOneFatalAlignedBranch
+```
+
+2. [`Erdos249257.twentyOneCofinalEvenQuotientGreedyDecay_of_closedRows`](https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/Erdos249257/TwentyOneQuotientGreedy.lean#L5554)
+
+```lean
+theorem twentyOneCofinalEvenQuotientGreedyDecay_of_closedRows
+    {R : ℕ → ℕ}
+    (hR : Tendsto R atTop atTop)
+    (hrow : ∀ k : ℕ,
+      2 ≤ R k ∧
+        twentyOneEvenQuotientGreedyRemainder (R k) ≤ 2 ^ (R k)) :
+    TwentyOneCofinalEvenQuotientGreedyDecay
+```
+
+where [`TwentyOneCofinalEvenQuotientGreedyDecay`](https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/Erdos249257/TwentyOneQuotientGreedy.lean#L5425) is
+
+```lean
+def TwentyOneCofinalEvenQuotientGreedyDecay : Prop :=
+  ∃ R : ℕ → ℕ,
+    Tendsto R atTop atTop ∧
+      (∀ k : ℕ, 2 ≤ R k) ∧
+      Tendsto
+        (fun k : ℕ =>
+          ((twentyOneEvenQuotientGreedyRemainder (R k) +
+              (2 * R k + 1) : ℕ) : ℝ) /
+            (2 : ℝ) ^ (2 * R k))
+        atTop (nhds 0)
+```
+
+3. [`Erdos249257.one_div_twenty_one_mem_mersenneAchievementSet_of_cofinalGreedyDecay`](https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/Erdos249257/TwentyOneQuotientGreedy.lean#L5458)
+
+```lean
+theorem one_div_twenty_one_mem_mersenneAchievementSet_of_cofinalGreedyDecay
+    (hcofinal : TwentyOneCofinalEvenQuotientGreedyDecay) :
+    (1 / 21 : ℝ) ∈ mersenneAchievementSet
+```
+
+4. [`Erdos249257.twentyOneFatalAlignedBranch_eventually_strict_supercapacity`](https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/Erdos249257/TwentyOneQuotientGreedy.lean#L5625)
+
+```lean
+theorem twentyOneFatalAlignedBranch_eventually_strict_supercapacity
+    (hbranch : TwentyOneFatalAlignedBranch) :
+    ∃ K : ℕ, ∀ R : ℕ, K ≤ R →
+      2 ^ R < twentyOneEvenQuotientGreedyRemainder R
+```
+
+5. [`Erdos249257.twentyOneFatalAlignedBranch_eventually_affine_supercapacity`](https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/Erdos249257/TwentyOneQuotientGreedy.lean#L5658)
+
+```lean
+theorem twentyOneFatalAlignedBranch_eventually_affine_supercapacity
+    (hbranch : TwentyOneFatalAlignedBranch) :
+    ∃ K : ℕ, ∀ R : ℕ, K ≤ R →
+      twentyOneEvenQuotientGreedySupport (R + 1) =
+          insert (R + 1) (twentyOneEvenQuotientGreedySupport R) ∧
+        twentyOneEvenQuotientGreedyRemainder (R + 1) =
+          (4 * twentyOneEvenQuotientGreedyRemainder R +
+              twentyOneTargetTwoStepPulse (2 * R) -
+                localPrefixTwoStepPulse
+                  (twentyOneEvenQuotientGreedySupport R) (2 * R)) -
+            (2 ^ (R + 1) + 1)
+```
+
+<a id="res-one-over-twenty-one-frontier-comparator"></a>
+
+**Comparator: passed** (run 35935225572, corpus commit `cc7e541cf208`).
+
+For each Lean declaration: the Challenge (the target, stated from Mathlib alone), the Solution (our proof) and the replay report.
+
+- `one_div_twenty_one_mem_iff_not_fatalAlignedBranch`: [Challenge](https://github.com/wcook04/plectis-erdos-lean/blob/cc7e541cf2081c6fef5a5e377d52e365e33b01eb/PalomarCorpus/E257_52/Challenge.lean#L175) (E257_52, line 175), [Solution](https://github.com/wcook04/plectis-erdos-lean/blob/cc7e541cf2081c6fef5a5e377d52e365e33b01eb/Solutions/PalomarCorpus/E257_52/TwentyOneFatalBranch.lean#L233) (TwentyOneFatalBranch.lean, line 233), [replay report](../../evidence/comparator/replay-35935225572/receipt-E257_52.json) (E257_52)
+- `twentyOneCofinalEvenQuotientGreedyDecay_of_closedRows`: [Challenge](https://github.com/wcook04/plectis-erdos-lean/blob/cc7e541cf2081c6fef5a5e377d52e365e33b01eb/PalomarCorpus/E257_47/Challenge.lean#L238) (E257_47, line 238), [Solution](https://github.com/wcook04/plectis-erdos-lean/blob/cc7e541cf2081c6fef5a5e377d52e365e33b01eb/Solutions/PalomarCorpus/E257_47/PaperStructuresBQ.lean#L299) (PaperStructuresBQ.lean, line 299), [replay report](../../evidence/comparator/replay-35935225572/receipt-E257_47.json) (E257_47)
+- `one_div_twenty_one_mem_mersenneAchievementSet_of_cofinalGreedyDecay`: [Challenge](https://github.com/wcook04/plectis-erdos-lean/blob/cc7e541cf2081c6fef5a5e377d52e365e33b01eb/PalomarCorpus/E257_47/Challenge.lean#L225) (E257_47, line 225), [Solution](https://github.com/wcook04/plectis-erdos-lean/blob/cc7e541cf2081c6fef5a5e377d52e365e33b01eb/Solutions/PalomarCorpus/E257_47/PaperStructuresBM.lean#L302) (PaperStructuresBM.lean, line 302), [replay report](../../evidence/comparator/replay-35935225572/receipt-E257_47.json) (E257_47)
+- `twentyOneFatalAlignedBranch_eventually_strict_supercapacity`: [Challenge](https://github.com/wcook04/plectis-erdos-lean/blob/cc7e541cf2081c6fef5a5e377d52e365e33b01eb/PalomarCorpus/E257_52/Challenge.lean#L180) (E257_52, line 180), [Solution](https://github.com/wcook04/plectis-erdos-lean/blob/cc7e541cf2081c6fef5a5e377d52e365e33b01eb/Solutions/PalomarCorpus/E257_52/TwentyOneFatalBranch.lean#L239) (TwentyOneFatalBranch.lean, line 239), [replay report](../../evidence/comparator/replay-35935225572/receipt-E257_52.json) (E257_52)
+- `twentyOneFatalAlignedBranch_eventually_affine_supercapacity`: [Challenge](https://github.com/wcook04/plectis-erdos-lean/blob/cc7e541cf2081c6fef5a5e377d52e365e33b01eb/PalomarCorpus/E257_52/Challenge.lean#L186) (E257_52, line 186), [Solution](https://github.com/wcook04/plectis-erdos-lean/blob/cc7e541cf2081c6fef5a5e377d52e365e33b01eb/Solutions/PalomarCorpus/E257_52/TwentyOneFatalBranch.lean#L248) (TwentyOneFatalBranch.lean, line 248), [replay report](../../evidence/comparator/replay-35935225572/receipt-E257_52.json) (E257_52)
 
 Each Challenge states the same proposition as the Lean declaration it targets, with every definition it uses restated from Mathlib alone.
