@@ -45,6 +45,8 @@ def _frontmatter(path: Path) -> dict[str, str]:
 
 def load_catalog() -> dict[str, Any]:
     data = json.loads(REGISTRY_PATH.read_text(encoding="utf-8"))
+    if not isinstance(data, dict):
+        raise SkillCatalogError("skills/registry.json must be a JSON object")
     if data.get("schema") != SUPPORTED_SCHEMA:
         raise SkillCatalogError("skills/registry.json has an unsupported schema")
 
