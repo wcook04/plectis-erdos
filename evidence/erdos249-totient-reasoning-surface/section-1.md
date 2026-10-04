@@ -298,7 +298,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 ## Proposition 1.6 (Rationality forces unbounded carry rank), page 5
 
-> *If $`S`$ is rational then, for every $`e`$, the carry sections $`n\mapsto u_{2^jn+r}`$ with $`1\le j\le e`$ and $`0\le r<2^j`$ span a rational vector space of dimension at least $`2^{e}-1`$. The lower bound holds at every depth. It comes from the linear independence of the $`2^e+1`$ retained dyadic totient sections for $`e\ge1`$, proved using the Chinese remainder theorem and Dirichlet’s theorem, so the full family spans an infinite-dimensional space, the case $`k=2`$ of Coons’s non-regularity theorem (§10.8).*
+> *If $`S`$ is rational then, for every $`e`$, the carry sections $`n\mapsto u_{2^jn+r}`$ with $`1\le j\le e`$ and $`0\le r<2^j`$ span a rational vector space of dimension at least $`2^{e}-1`$. The lower bound holds at every depth. It comes from the linear independence of the $`2^e+1`$ retained dyadic totient sections for $`e\ge1`$, proved using the Chinese remainder theorem and Dirichlet’s theorem, so the full family spans an infinite-dimensional space, the case $`k=2`$ of Coons’s non-regularity theorem (§10.9).*
 
 The Lean declaration below states this result.
 
@@ -346,7 +346,7 @@ theorem not_irrational_totientSeries_implies_unbounded_carryRank_unconditional
 > ``` math
 > u_{2^j(n+h)+r}\equiv u_{2^jn+r}\pmod v.
 > ```
-> The rank and periodicity assertions hold together. This conditional theorem alone is not a counterexample to a general periodicity-to-rank implication: its antecedent is not established. The rational comparison sequence with sum $`5/4`$ gives a counterexample to a rank upper bound based on rationality alone; see Section 10.8.*
+> The rank and periodicity assertions hold together. This conditional theorem alone is not a counterexample to a general periodicity-to-rank implication: its antecedent is not established. The rational comparison sequence with sum $`5/4`$ gives a counterexample to a rank upper bound based on rationality alone; see Section 10.9.*
 
 The Lean declaration below states this result.
 
@@ -488,9 +488,75 @@ For each Lean declaration: the Challenge (the target, stated from Mathlib alone)
 
 Each Challenge states the same proposition as the Lean declaration it targets, with every definition it uses restated from Mathlib alone.
 
+<a id="res-residueseries"></a>
+
+## Theorem 1.10 (Series of totient residues), page 7
+
+> *For every $`m\ge3`$,
+> ``` math
+> \sum_{n\ge1}\frac{\varphi(n)\bmod m}{2^n}\notin\mathbb{Q}.
+> ```
+> For $`k\ge1`$ and $`f:\mathbb{Z}/2^k\mathbb{Z}\to\mathbb{Q}`$, the series $`\sum_{n\ge1}f(\varphi(n)\bmod2^k)2^{-n}`$ is rational exactly when $`f`$ is constant on the even residue classes. If that constant is $`c`$, its value is $`3f(1)/4+c/4`$.*
+
+The Lean declaration below states this result.
+
+[`ErdosProblems.Erdos249.PaperCompleteR7.RationalObservables.short_note_residue_theorem`](https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos249/PaperCompleteR7/RationalObservableClassification.lean#L276)
+
+```lean
+theorem short_note_residue_theorem :
+    (∀ m : ℕ, 3 ≤ m → Irrational (totientResidueValue m)) ∧
+    (∀ k : ℕ, 1 ≤ k → ∀ f : ZMod (2 ^ k) → ℚ,
+      ((∃ q : ℚ,
+        (∑' n : ℕ, (f (Nat.totient (n + 1) : ZMod (2 ^ k)) : ℝ) /
+          2 ^ (n + 1)) = (q : ℝ)) ↔
+        ∀ r : ℕ, r < 2 ^ k → r % 2 = 0 → f (r : ZMod (2 ^ k)) = f 0)) ∧
+    (∀ k : ℕ, 1 ≤ k → ∀ f : ZMod (2 ^ k) → ℚ, ∀ c : ℚ,
+      (∀ r : ℕ, r < 2 ^ k → r % 2 = 0 → f (r : ZMod (2 ^ k)) = c) →
+      (∑' n : ℕ, (f (Nat.totient (n + 1) : ZMod (2 ^ k)) : ℝ) /
+        2 ^ (n + 1)) = ((3 * f 1 / 4 + c / 4 : ℚ) : ℝ))
+```
+
+<a id="res-residueseries-comparator"></a>
+
+**Comparator: passed** (run 35935225572, corpus commit `cc7e541cf208`).
+
+For each Lean declaration: the Challenge (the target, stated from Mathlib alone), the Solution (our proof) and the replay report.
+
+- `short_note_residue_theorem`: [Challenge](https://github.com/wcook04/plectis-erdos-lean/blob/cc7e541cf2081c6fef5a5e377d52e365e33b01eb/PalomarCorpus/E249_30/Challenge.lean#L77) (E249_30, line 77), [Solution](https://github.com/wcook04/plectis-erdos-lean/blob/cc7e541cf2081c6fef5a5e377d52e365e33b01eb/Solutions/PalomarCorpus/E249_30/RationalObservableClassification.lean#L41) (RationalObservableClassification.lean, line 41), [replay report](../../evidence/comparator/replay-35935225572/receipt-E249_30.json) (E249_30)
+
+Each Challenge states the same proposition as the Lean declaration it targets, with every definition it uses restated from Mathlib alone.
+
+<a id="lem-bounded-pulse"></a>
+
+## Lemma 1.11 (An isolated nonzero coefficient between long zero blocks), page 7
+
+> *Let $`a_n\in\mathbb{Z}`$ satisfy $`|a_n|\le C`$. Suppose that for arbitrarily large $`L`$ there is $`N>L`$ such that $`a_N\ne0`$ and $`a_{N+t}=0`$ for $`0<|t|\le L`$. Then $`\sum_{n\ge1}a_n2^{-n}`$ is irrational.*
+
+The Lean declaration below states this result.
+
+[`ErdosProblems.Erdos249.PaperCompleteR7.bounded_isolated_pulse`](https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos249/PaperCompleteR7/PeriodicAndPulse.lean#L106)
+
+```lean
+theorem bounded_isolated_pulse
+    (a : ℕ → ℤ) (C : ℝ) (hC : ∀ n, |(a n : ℝ)| ≤ C)
+    (hpulse : ∀ L₀ : ℕ, ∃ L N : ℕ, L₀ ≤ L ∧ L < N ∧ a N ≠ 0 ∧
+      ∀ j, 0 < j → j ≤ L → a (N - j) = 0 ∧ a (N + j) = 0) :
+    Irrational (∑' n : ℕ, (a (n + 1) : ℝ) / 2 ^ (n + 1))
+```
+
+<a id="lem-bounded-pulse-comparator"></a>
+
+**Comparator: passed** (run 35935225572, corpus commit `cc7e541cf208`).
+
+For each Lean declaration: the Challenge (the target, stated from Mathlib alone), the Solution (our proof) and the replay report.
+
+- `bounded_isolated_pulse`: [Challenge](https://github.com/wcook04/plectis-erdos-lean/blob/cc7e541cf2081c6fef5a5e377d52e365e33b01eb/PalomarCorpus/E249_30/Challenge.lean#L62) (E249_30, line 62), [Solution](https://github.com/wcook04/plectis-erdos-lean/blob/cc7e541cf2081c6fef5a5e377d52e365e33b01eb/Solutions/PalomarCorpus/E249_30/PaperStatementsAE.lean#L363) (PaperStatementsAE.lean, line 363), [replay report](../../evidence/comparator/replay-35935225572/receipt-E249_30.json) (E249_30)
+
+Each Challenge states the same proposition as the Lean declaration it targets, with every definition it uses restated from Mathlib alone.
+
 <a id="prop-radixresidue"></a>
 
-## Proposition 1.10 (Residue series in every integer base), page 6
+## Proposition 1.12 (Residue series in every integer base), page 8
 
 > *Let $`t\ge2`$ be an integer.*
 >
@@ -538,7 +604,7 @@ theorem positiveRadixValue_eq_of_even_constant
 
 <a id="prop-dilations"></a>
 
-## Proposition 1.11 (Finitely many dilations), page 7
+## Proposition 1.13 (Finitely many dilations), page 8
 
 > *Let $`t\ge2`$ be an integer.*
 >
@@ -584,8 +650,8 @@ theorem rational_mixed_moduli_with_constant_iff
 
 <a id="prop-slowmoduli"></a>
 
-## Passage (beginning “prop:slowmoduli…”), page 8
+## Passage (beginning “prop:slowmoduli…”), page 9
 
-> *Remark 12* (Slowly growing dyadic moduli). Let $`\kappa:\mathbb{N}\to\mathbb{N}`$ satisfy $`2^{\kappa(n)}=o(\log n)`$, and put $`a_n=\varphi(n)\bmod2^{\kappa(n)}`$. Then $`\sum_{n\ge1}a_n2^{-n}`$ is rational exactly when $`a_n=0`$ for all large $`n`$. In particular the sum is irrational when $`\kappa(3^k)\ge2`$ for infinitely many $`k`$.
+> *Remark 14* (Slowly growing dyadic moduli). Let $`\kappa:\mathbb{N}\to\mathbb{N}`$ satisfy $`2^{\kappa(n)}=o(\log n)`$, and put $`a_n=\varphi(n)\bmod2^{\kappa(n)}`$. Then $`\sum_{n\ge1}a_n2^{-n}`$ is rational exactly when $`a_n=0`$ for all large $`n`$. In particular the sum is irrational when $`\kappa(3^k)\ge2`$ for infinitely many $`k`$.
 
 **No Lean proof of the whole statement.** In Lean, ordinary proof in the record; the block construction from prime factors of Fermat numbers and the tail estimate are not formalised.

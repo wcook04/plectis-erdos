@@ -285,6 +285,19 @@ class CorpusTests(unittest.TestCase):
         self.assertIn('No accepted correspondence',text)
         self.assertIn('paper/reasoning-parts/erdos257/a257_front.tex',text)
         self.assertIn('correctness of ordinary proofs',text)
+
+    def test_renderer_keeps_short_proof_availability_distinct_from_long_correspondence(self):
+        sys.path.insert(0,str(audit.ROOT/'docs/papers'))
+        try:
+            import paper_corpus_renderer as renderer
+        finally:
+            sys.path.pop(0)
+        pair=next(p for p in self.base['pairs'] if p['problem']==251)
+        claim=next(c for c in pair['claims'] if c['label']=='res:jointcountermodel')
+        self.assertEqual(claim['state'],'short_proof_explained_long_link_open')
+        self.assertIsNotNone(claim['short_proof'])
+        self.assertEqual(claim['matches'],[])
+        text=renderer.render_record_navigation(pair,audit.BOUNDARY)
         self.assertIn('Retained short-paper argument:',text)
         self.assertIn('No accepted long-record correspondence is established by this disposition.',text)
 

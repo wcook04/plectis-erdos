@@ -4,7 +4,7 @@ Part of the [evidence record](../erdos249-totient-reasoning-surface.md) of the p
 
 <a id="lem-orbit"></a>
 
-## Lemma 12.1 (The doubling identity), page 119
+## Lemma 12.1 (The doubling identity), page 121
 
 > *For all $`N\ge 0`$ and $`h\ge 1`$,
 > ``` math
@@ -94,7 +94,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="prop-transfer"></a>
 
-## Proposition 12.2 (Transfer to the doubling orbit), page 120
+## Proposition 12.2 (Transfer to the doubling orbit), page 122
 
 > *Suppose that
 > ``` math
@@ -130,7 +130,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="cor-digitform"></a>
 
-## Corollary 12.3 (A digit version of the analytic condition), page 120
+## Corollary 12.3 (A digit version of the analytic condition), page 122
 
 > *Let $`\rho_h(X)`$ denote the proportion of $`N\in[X,2X)`$ with $`\|2^N\alpha_h\|_{\mathbb{R}/\mathbb{Z}}\ge 1/4`$. If for every $`h\ge 1`$ there are cofinally many $`X`$ with $`\rho_h(X)\ge 11/100`$, then $`S`$ is irrational. For nondyadic $`\alpha_h`$, the condition counted by $`\rho_h(X)`$ is exactly a change between binary digits $`N+1`$ and $`N+2`$. Thus the same sufficient hypothesis asks for at least $`11X/100`$ such changes, counted with $`X\le N<2X`$, on arbitrarily large blocks for every $`h`$.*
 
@@ -213,7 +213,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="thm-lacunary"></a>
 
-## Theorem 12.5 (The block norm condition is stronger in the class $`0\le c(n)\le n`$), page 123
+## Theorem 12.5 (The block norm condition is stronger in the class $`0\le c(n)\le n`$), page 125
 
 > *Let $`c(n)=1`$ if $`n=k!`$ for some $`k\ge 1`$ and $`c(n)=0`$ otherwise, so $`0\le c(n)\le n`$ for all $`n\ge 1`$, and let $`\beta=\sum_{n\ge1}c(n)/2^{n}
 > =\sum_{k\ge 1}2^{-k!}`$. Then $`\beta`$ is irrational, and for every $`h\ge 1`$ and every $`X\ge 81(h+5)`$,
@@ -282,7 +282,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="prop-dickman"></a>
 
-## Proposition 12.6 (A one-sided bound for the unassigned terms), page 125
+## Proposition 12.6 (A one-sided bound for the unassigned terms), page 127
 
 > *Fix $`h,s`$ and choose the admissible depth $`L`$ minimally for each large $`X`$. Put $`t=L-s+1=O_{h,s}(\log X)`$ and $`y_X=4\sqrt X+2t/\sqrt X`$. If $`n=N+t`$ is unassigned, then its largest prime factor satisfies $`P(n)\le y_X`$. Consequently
 > ``` math
@@ -336,7 +336,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="prop-badcof"></a>
 
-## Proposition 12.7 (The excluded-cofactor estimate), page 126
+## Proposition 12.7 (The excluded-cofactor estimate), page 128
 
 > *Fix $`h,s`$ and use the minimal admissible depth $`L`$, as in Proposition 12.6; thus $`t=L-s+1=O_{h,s}(\log X)`$. For $`\eta\in(0,1)`$ let $`B(\eta)=\{m\ge1:\varphi(m)<\eta m\}`$, with natural density $`D(\eta)`$; by Schoenberg’s theorem $`D`$ exists, is continuous, and $`D(0+)=0`$ \[schoenberg1928, §17, p. 193\], in the framework of \[schoenberg1936, Theorem 1, pp. 318–319, and §8, p. 323\]. Then
 > ``` math
@@ -382,7 +382,7 @@ def PrimeNumberTheorem : Prop :=
 
 <a id="prop-route4"></a>
 
-## Proposition 12.9, page 130
+## Proposition 12.9, page 132
 
 > *$`\mathcal{C}(h,N,h)`$ holds whenever $`\bigl\|2^{N+h}S-2^{N}S\bigr\|_{\mathbb{R}/\mathbb{Z}}>2(N+2h+2)/2^{h}`$.*
 
@@ -429,7 +429,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="res-fulldepth"></a>
 
-## Theorem A.1 (Propagation of one nonintegral tail difference), page 147
+## Theorem A.1 (Propagation of one nonintegral tail difference), page 149
 
 > *Fix $`d\ge1`$ and $`N\ge0`$. If $`\Delta_d(N)\notin\mathbb{Z}`$, then every sufficiently late pair $`\{t,t+1\}`$ contains an $`m`$ such that $`K(md,N,md)`$ holds. Consequently
 > ``` math
@@ -469,7 +469,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="res-rankonefloor"></a>
 
-## Theorem A.3 (A lower bound for the rank-one quotients), page 150
+## Theorem A.3 (A lower bound for the rank-one quotients), page 152
 
 > *For $`e\ge1`$ and $`Y\ge4`$, the denominator of $`Q(e,Y)`$ is positive, and the unique minimiser is $`(e,Y)=(1,5)`$. Every admissible quotient and every nonempty finite positive weighted average of such quotients satisfies
 > ``` math

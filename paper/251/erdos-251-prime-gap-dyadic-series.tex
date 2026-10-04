@@ -18,7 +18,7 @@
   pdfkeywords={irrationality, prime gaps, dyadic series, summation by parts, Lean 4},
 }
 
-\runninghead{Erd\H{o}s \#251: sparse perturbations and exact criteria}
+\runninghead{Erd\H{o}s \#251: sparse congruence-preserving perturbations}
 \title{Sparse Congruence-Preserving Perturbations\\of Dyadic Series}
 \subtitle{What gap statistics can tell us about Erd\H{o}s Problem~\#251}
 \author{Will Cook}
@@ -51,7 +51,7 @@ Erd\H{o}s asked whether
 is irrational \cite[p.~94]{erdos1958}\cite[p.~62]{erdosgraham1980}
 \cite[p.~103]{erdos1988}.  Summation by parts gives
 $\Pi=2+\sum_{n\ge0}g_n2^{-(n+1)}$, with convergence justified in
-Section~\ref{sec:parts}.  We study which properties of the gaps survive
+Section~\ref{sec:prime-application}.  We study which properties of the gaps survive
 when the latter sum is changed to a prescribed value.
 
 We prove a perturbation theorem for arbitrary convergent dyadic series
@@ -137,13 +137,10 @@ a modulus exceeding the bound makes $e$ eventually zero, and its constant
 cumulative sum must then be divisible by every positive integer.
 
 Section~\ref{sec:construction} gives the construction, and
-Section~\ref{sec:prime-application} applies it to prime gaps.  We then
-identify the actual tails and characterise their rationality by integral
-shifts.  This leads to finite separation tests and to a sufficient condition
-involving two consecutive small differences.  The
-\href{erdos251-prime-gap-reasoning-surface.pdf\#context}{companion's literature discussion}
-contains the further comparisons, including finite subsums and other
-dyadic coefficient sequences.
+Section~\ref{sec:prime-application} applies it to prime gaps.  The
+\href{erdos251-prime-gap-reasoning-surface.pdf\#scope-actual-tails}
+{long record} develops the separate integral-tail criteria and finite
+separation tests for the actual prime series.
 
 \section{Proof of Proposition~\ref{res:sparserationalisation}}\label{sec:construction}
 \begin{proof}
@@ -407,6 +404,16 @@ derives this bound, including the prime-power estimate.  This supplies
 the convergence hypothesis needed to apply
 Proposition~\ref{res:sparserationalisation} to the prime gaps.
 
+Finite summation by parts gives
+\[
+ \sum_{i=0}^{n}\frac{p_i}{2^{i+1}}
+ =2+\sum_{i=0}^{n-1}\frac{g_i}{2^{i+1}}-\frac{p_n}{2^{n+1}}.
+\]
+The endpoint tends to zero by the polynomial bound, proving
+$\Pi=2+\sum_{n\ge0}g_n2^{-(n+1)}$. Thus rationality is unchanged by
+passing between the prime and gap series. Tao noted the reduction in
+the problem's discussion~\cite[7 October 2025]{erdosproblems251thread}.
+
 \begin{corollary}[a rational sum with the stated prime-gap statistics]\label{res:jointcountermodel}
 Let $p_0=2,p_1=3,\ldots$ be the primes and $g_n=p_{n+1}-p_n$.
 Given $K\in\N$ and $0<\varepsilon\le1$, there is $b:\N\to\N$ with
@@ -486,303 +493,12 @@ above and are not assumed here.  The
 \href{erdos251-prime-gap-reasoning-surface.pdf\#context}{companion's Section~3}
 compares the hypotheses and sampling conventions.
 
-\section{The prime series and its actual tails}\label{sec:parts}
-We return to the actual primes and write
-$G=\sum_{n\ge0}g_n2^{-(n+1)}$.  To use a recurrence for these sums,
-we must retain the endpoint in finite summation by parts and then show
-that it vanishes.  The polynomial bound from
-Section~\ref{sec:prime-application} supplies this limit and convergence
-of both series.
-
-\begin{theorem}[prime-to-gap identity]\label{res:infinite}
-The actual prime and gap series satisfy $\Pi=2+G$.  Their complete tails
-\[
- T_N=\sum_{j\ge1}g_{N+j}2^{-j}
-\]
-satisfy $T_0=2G-1$ and $T_{N+1}=2T_N-g_{N+1}$.
-Thus $\Pi$, $G$ and $T_0$ have the same rationality status.
-\end{theorem}
-\begin{proof}
-Finite summation by parts gives
-\[
- \sum_{i=0}^{n}\frac{p_i}{2^{i+1}}
- =2+\sum_{i=0}^{n-1}\frac{g_i}{2^{i+1}}-\frac{p_n}{2^{n+1}}.
-\]
-Since $p_n=O((n+1)^4)$, the endpoint tends to zero and we obtain
-$\Pi=2+G$.  We obtain the tail recurrence by splitting off the first
-term of $T_N$; removing $g_0=1$ from $G$ gives $T_0=2G-1$.
-\end{proof}
-Tao noted this reduction in the problem's forum discussion
-\cite[7 October 2025]{erdosproblems251thread}.
-
-\begin{corollary}[exact irrationality reformulation]\label{res:irr-equivalence}
-The prime-value dyadic series is irrational if and only if the prime-gap
-dyadic series is. Both series converge by the polynomial bound proved above;
-neither side is proved irrational.
-\end{corollary}
-\begin{proof}
-Adding the rational number $2$ preserves rationality and irrationality.
-\end{proof}
-
-The recurrence alone does not identify the infinite tails: adding $C2^N$
-to any solution gives another solution.  We distinguish the actual tails
-by the vanishing condition in the next lemma.
-\begin{lemma}[the boundary condition for the tail recurrence]\label{res:true-tail}
-Let $\sum_{j\ge1}|a_j|2^{-j}<\infty$ and $U_{N+1}=2U_N-a_{N+1}$.
-Then $U_N=\sum_{j\ge1}a_{N+j}2^{-j}$ for every $N$ if and only if
-$2^{-N}U_N\to0$.
-\end{lemma}
-\begin{proof}
-Iteration gives $2^{-N}U_N=U_0-\sum_{j=1}^Na_j2^{-j}$.
-The limit is zero exactly when $U_0$ is the full series.  Subtracting its
-first $N$ terms and multiplying by $2^N$ then gives the tail formula.
-Conversely the formula implies
-$2^{-N}U_N=\sum_{k>N}a_k2^{-k}\to0$ by absolute convergence.
-\end{proof}
-
-\subsection{Integral shifts}\label{sec:tail}
-For the recurrence $U_{N+1}=2U_N-a_{N+1}$ with $a_n\in\Z$, write
-$D_h(N)=U_{N+h}-U_N$.  Modulo integers, each step is doubling:
-$U_N$ has the fractional part of $2^NU_0$.  An integral shift means
-that a fractional part has returned to an earlier value.  Such a return
-makes $2^N(2^h-1)U_0$ an integer and forces rationality when $h>0$.
-Conversely, doubling a rational number eventually gives periodic
-fractional parts.  The next theorem records the denominator calculation
-and the exact quantifiers.
-
-\begin{theorem}[exact rationality classification]\label{res:escape-irrational}
-For a real integer-coefficient recurrence, the following are equivalent:
-$U_0\in\Q$; $D_h(N)\in\Z$ for some $h\ge1,N\ge0$; and, for some fixed
-$h\ge1$, $D_h(N)\in\Z$ at every sufficiently large $N$.
-More precisely, if $U_0=u/(2^sd)$ is in lowest terms, with $d$ odd, then
-\[
- \operatorname{den}(U_N)=2^{\max(s-N,0)}d,\qquad
- D_h(N)\in\Z\ \Longleftrightarrow\ N\ge s\ \text{and}\ d\mid2^h-1
- \quad(h\ge1).
-\]
-Consequently $U_0$ is irrational exactly when every positive shift is
-nonintegral at every index, equivalently when for each fixed $h\ge1$
-there are arbitrarily late nonintegral shifts.
-\end{theorem}
-\begin{proof}
-Iteration gives
-\[
- U_N-2^NU_0\in\Z,\qquad
- D_h(N)-2^N(2^h-1)U_0\in\Z.
-\]
-An integral shift with $h\ge1$ makes the nonzero integer multiple
-$2^N(2^h-1)U_0$ integral, and therefore forces $U_0\in\Q$.
-Conversely, write $U_0=u/(2^sd)$ in lowest terms.  Multiplication by
-$2^N$ cancels exactly $\min(N,s)$ powers of two from the denominator.
-The remaining factor $2^h-1$ is odd, so the second relation is integral
-exactly when $N\ge s$ and $d\mid2^h-1$.  For $d>1$, Euler's congruence
-provides such a shift $h=\varphi(d)$, and for $d=1$ we take $h=1$.
-This shift works for every $N\ge s$.  Negating the pointwise and eventual
-criteria gives the two assertions about irrationality.
-\end{proof}
-
-The theorem applies to the recurrence itself, without the boundary
-condition of Lemma~\ref{res:true-tail} or any assumption of primality.  The eventual periodicity is that of fractional parts,
-and need not hold for the full tails.  For instance, the positive even
-coefficients $2,4,2,4,\ldots$ starting at $n=1$ give tails $8/3,10/3$
-alternately.  Every shift of length $1$ is nonintegral and every shift of
-length $2$ is zero.  This explains why a single shift length is insufficient.
-
-\section{Small tail differences and finite tests}\label{sec:local-certificate}
-Fix $h\ge1$ and put $D_N=T_{N+h}-T_N$ and
-$\delta_N=g_{N+h+1}-g_{N+1}$.  Then
-$D_{N+1}=2D_N-\delta_N$, where $\delta_N$ is even.  Two differences of
-absolute value less than one can both be integral only if they vanish,
-in which case $\delta_N=0$.  More precisely, we have the following result.
-
-\begin{proposition}[two consecutive differences of absolute value less than one]\label{res:signedwindow}
-Let $D,D'\in\R$, $\delta\in2\Z$ and $D'=2D-\delta$.
-The conditions $|D|<1$, $|D'|<1$ and $\delta\ne0$ hold exactly when,
-for some $s\in\{-1,1\}$,
-\[
- \delta=2s,\qquad \tfrac12<sD<1.
-\]
-In that case $sD'\in(-1,0)$ and both $D$ and $D'$ are nonintegral.
-\end{proposition}
-\begin{proof}
-The bounds on $D,D'$ imply $-3<\delta<3$, so a nonzero even $\delta$
-equals $2s$ with $s\in\{-1,1\}$.  Substituting in $D'=2D-2s$ gives
-$1/2<sD<1$.  Conversely this interval gives $sD'=2sD-2\in(-1,0)$.
-\end{proof}
-For $\delta=2$, the endpoints $D=1/2,1$ give $D'=-1,0$ respectively.
-The zero triple $D=D'=\delta=0$ shows why the mismatch is required.
-
-\begin{problem}[two small tail differences at arbitrarily large indices]\label{prob:smallpair}
-For every integer $h\ge1$ and every cutoff $N_0$, exhibit $N\ge N_0$ with
-\begin{equation}\label{eq:smallpair}
- |T_{N+h}-T_N|<1,\quad |T_{N+h+1}-T_{N+1}|<1,\quad
- g_{N+h+1}\ne g_{N+1}.
-\end{equation}
-\end{problem}
-
-A solution would give a nonintegral shift arbitrarily late for every
-$h$, and hence irrationality by Theorem~\ref{res:escape-irrational}.
-All three conditions must hold at the same index; separate infinite
-sets of small-difference and mismatch witnesses do not suffice.
-
-By Proposition~\ref{res:signedwindow}, such an index must have
-$\delta_N=\pm2$.  Schlage-Puchta's lemma
-\cite[Lemma~4]{schlagepuchta2011}, applied to $x_h-x_0\pm2$, shows that
-these eligible indices already have density zero.  Thus the required
-witnesses concern a rare event whose relative frequency is not controlled
-by the absolute block comparison in
-Proposition~\ref{res:sparserationalisation}.
-
-\subsection{Finite separation from the integers}
-To decide nonintegrality from finitely many gaps, we bound the part of
-the difference that has not been summed.  Choose $M(n)\ge g_n$ with
-$\sum_nM(n)2^{-n}<\infty$, and write
-\[
- S_{h,N,L}=\sum_{j=1}^L(g_{N+h+j}-g_{N+j})2^{-j},\qquad
- R_{h,N,L}(M)=\sum_{j>L}(M(N+h+j)+M(N+j))2^{-j}.
-\]
-Splitting the complete tails after $L$ terms gives
-\[
- D_N=S_{h,N,L}+2^{-L}D_{N+L},\qquad
- |D_N-S_{h,N,L}|\le R_{h,N,L}(M).
-\]
-The uncomputed part is another complete tail difference, with the same
-shift $h$.  The criterion below uses only the displayed bound; a general
-real majorant need not make that bound computable.
-
-For the actual prime gaps, one computable choice is $M(n)=1250(n+2)^4$.
-For $P(x)=x^4+8x^3+36x^2+104x+150$, summing the identity
-$2P(x)=(x+1)^4+P(x+1)$ with dyadic weights gives
-$\sum_{j\ge1}(x+j)^4 2^{-j}=P(x)$ and hence
-\[
- R_{h,N,L}(M)=1250\,2^{-L}
-             \bigl(P(N+h+L+2)+P(N+L+2)\bigr).
-\]
-
-\begin{proposition}[finite separation criterion]\label{res:truncation}
-If for every $h\ge1$ and every cutoff $N_0$ there are $N\ge N_0,L\ge1$ with
-\begin{equation}\label{eq:truncation}
- \operatorname{dist}(S_{h,N,L},\Z)>R_{h,N,L}(M),
-\end{equation}
-then $\Pi$ is irrational.
-\end{proposition}
-\begin{proof}
-The enclosure gives
-$\operatorname{dist}(D_N,\Z)\ge
-\operatorname{dist}(S_{h,N,L},\Z)-R_{h,N,L}(M)>0$.
-Thus each fixed positive shift is nonintegral at arbitrarily large
-indices, and Theorem~\ref{res:escape-irrational} applies.
-\end{proof}
-
-\begin{remark}[what arbitrary truncation does not gain]\label{res:complete-truncation}
-Whenever $|D-S_L|\le R_L\to0$, nonintegrality of $D$ is equivalent to
-$\operatorname{dist}(S_L,\Z)>R_L$ for some $L$.  Indeed, for
-$\delta=\operatorname{dist}(D,\Z)>0$, take $R_L<\delta/2$ and use the
-$1$-Lipschitz property of distance.  Unrestricted depth therefore gives
-an exact reformulation, not an additional analytic estimate.  At a
-prescribed logarithmic depth one must also control the margin from the
-integers as $N$ varies; a shrinking remainder alone does not do so.
-The companion, Appendix~D.2, gives an explicit example distinguishing
-refinement at a fixed value from enclosures of changing values.
-\end{remark}
-
-Separation from $\Z$ does not specify either interval in
-Proposition~\ref{res:signedwindow}.  To certify \eqref{eq:smallpair},
-suppose $\delta_N=2s$, where $s\in\{-1,1\}$, and $|QD_N-A|\le B$,
-with $A\in\Z$, $Q>0$, $B\ge0$ integers.  Then $sD_N$ lies in $[(sA-B)/Q,(sA+B)/Q]$.  This whole
-interval lies in $(1/2,1)$ precisely when its lower endpoint exceeds
-$1/2$ and its upper endpoint is less than $1$, that is,
-\[
- 2sA-Q>2B,\qquad Q-sA>B.
-\]
-Reducing $A$ modulo $Q$ would preserve its distance to $Q\Z$ but lose
-the enclosure's location.  We retain the signed numerator and use the
-sign $s$ fixed by the gap difference.
-At $h=1,N=2,L=40$, one has $\delta_2=g_4-g_3=-2$ and
-\[
- Q=2^{40},\qquad A=-662838684750,\qquad B=11764181250,\qquad s=-1.
-\]
-Here $A/Q=S_{1,2,40}$ and $B/Q=R_{1,2,40}(M)$, and the two strict
-margins are $202637379224$ and $424908761776$.
-The \href{erdos251-prime-gap-reasoning-surface.pdf\#finite-certificates}{companion's integer certificates}
-give the prime-index calculation and remainder derivation.  This finite
-pair leaves the quantifiers in Problem~\ref{prob:smallpair} unresolved.
-
-\section{Further consequences and questions}\label{sec:open}
-We can place the interval in Proposition~\ref{res:sparserationalisation}
-inside $(A,A+\eta)$ for any $\eta>0$.  Choose $K'\ge K$ such that
-$(K'+1)2^{-K'}<\eta$, and start the construction after $K'$.
-The bound $e_n\le n$ from the proof gives
-\[
- 0<\sum_ne_n2^{-(n+1)}\le(K'+1)2^{-K'}<\eta.
-\]
-This bounds the dyadic change, without bounding the ordinary total.
-
-\subsection{Nonperiodic coefficients}\label{sec:carry}
-The usual periodicity criterion for rational binary expansions assumes
-digits in $\{0,1\}$.  With unrestricted integer coefficients, the
-following telescoping identity already gives a different behaviour:
-\[
- \sum_{i=0}^{n-1}\frac{i-1}{2^{i+1}}=-\frac{n}{2^n}\longrightarrow0.
-\]
-Its coefficients are unbounded and its first coefficient is $-1$.
-We obtain a positive even example by taking $c_n=2(n^2+4n+2)$ and
-$U_n=2(n+4)^2$.  Direct substitution gives
-$U_{n+1}=2U_n-c_{n+1}$, while the polynomial growth gives
-$2^{-n}U_n\to0$.  Lemma~\ref{res:true-tail} therefore identifies $U$
-as the complete tail and yields
-\[
- \sum_{j\ge1}c_j2^{-j}=32,\qquad
- \sum_{n\ge0}c_n2^{-(n+1)}=18.
-\]
-The coefficients increase strictly and $c_{n+1}-c_n=4n+10$ is never
-$\pm2$.  The \href{erdos251-prime-gap-reasoning-surface.pdf\#counterexamples}{companion's Section~8}
-gives further examples, including a bounded nonperiodic sequence in
-Appendix~D.  None of these examples constructs consecutive primes.
-
-\begin{proposition}[prime gaps do not become periodic]\label{res:gap-nonperiodic}
-For every positive $h$, the actual consecutive-prime-gap sequence is not
-eventually periodic with period $h$.
-\end{proposition}
-\begin{proof}
-If the gaps were eventually periodic, they would be bounded.  For each
-$m\ge2$, however, the $m-1$ integers $m!+2,\ldots,m!+m$ are composite.
-The consecutive primes on either side therefore have a gap of at least
-$m$, contradicting boundedness.
-\end{proof}
-
-The results on bounded prime gaps \cite{zhang2014}, clusters of each
-fixed size \cite{maynard2015,polymath2014}, and extreme large gaps
-\cite{fgkmt2018} do not give the simultaneous inequalities in \eqref{eq:smallpair}.
-This remains so with Polymath's bound $\liminf_n g_n\le246$
-\cite[Theorem~1.4(i)]{polymath2014}.  For fixed $h$ and $\varepsilon>0$,
-taking $L=\lceil(4+\varepsilon)\log_2(N+2)\rceil$ in the polynomial
-remainder gives an error $O_{h,\varepsilon}(N^{-\varepsilon})$.
-The finite sum must still be separated from the relevant boundary by
-more than this error.
-For the actual prime series, nonintegral shifts are needed arbitrarily
-late for every positive length.  Problem~\ref{prob:smallpair} would
-supply them.  The perturbation theorem concerns the insufficiency of the
-specified congruences and block statistics, and leaves possible arguments
-using primality or quantitative rare-event estimates untouched.
-
-\section{Verification and reproducibility}\label{sec:pinned-lean-sources}
+\section*{Verification}
 \evidenceparagraph{\evidencerecordurl}
-The linked Lean declarations use Lean~4 \cite{lean4} and mathlib
-\cite{mathlib}.  The formal proof of
-Proposition~\ref{res:sparserationalisation} changes one coordinate at each
-stage, whereas the proof here uses triples.  Both choose the set containing the supports,
-the interval and the congruence cutoffs before the value of the sum.
-For Corollary~\ref{res:jointcountermodel}, the formal statement covers
-every $\varepsilon>0$ and assumes Schlage-Puchta's lemma only for
-nonconcentration and the prime number theorem only for the asymptotic
-$P_n\sim n\log n$.  The source links record formal support for the linked
-statements, rather than verification of the different printed proofs.
-The \href{erdos251-prime-gap-reasoning-surface.pdf\#short-source-index}{companion's Appendix~G}
-retains the complete source index at this note's original pin, including
-the finite telescoping identities and their nonperiodicity consequences.
-Its \href{erdos251-prime-gap-reasoning-surface.pdf\#context}{Section~3}
-retains the broader subsum and automatic-sequence comparisons.
+The \href{erdos251-prime-gap-reasoning-surface.pdf\#scope-verification}
+{long record's verification section} supplies the precise source
+correspondence and replay instructions. The perturbation theorem concerns
+comparison sequences; their cumulative positions need not be prime.
 
 \subsection*{Acknowledgements}
 I thank Wouter van Doorn for advice on explaining unfamiliar hypotheses,
@@ -801,8 +517,6 @@ The numbering follows Bloom's catalogue \cite{erdosproblems}.
   Monographies de L'Enseignement Mathématique, L'Enseignement Mathématique, 1980.
 \bibitem{erdos1988} Paul Erd\H{o}s, \href{https://doi.org/10.1017/CBO9780511897184.009}{\emph{On the irrationality of certain series: problems and results}}.
   New Advances in Transcendence Theory, Cambridge University Press, 1988, pp.~102--109, doi:\href{https://doi.org/10.1017/CBO9780511897184.009}{10.1017/CBO9780511897184.009}.
-\bibitem{fgkmt2018} Kevin Ford, Ben Green, Sergei Konyagin, James Maynard and Terence Tao, \href{https://arxiv.org/abs/1412.5029v3}{\emph{Long gaps between primes}}.
-  Journal of the American Mathematical Society \textbf{31} (2018), 65--105, doi:\href{https://doi.org/10.1090/jams/876}{10.1090/jams/876}; arXiv:\href{https://arxiv.org/abs/1412.5029v3}{1412.5029v3}.
 \bibitem{fridy1966} John A. Fridy, \href{https://www.fq.math.ca/Scanned/4-3/fridy.pdf}{\emph{Generalized bases for the real numbers}}.
   The Fibonacci Quarterly \textbf{4} (1966), no.~3, 193--201.
 \bibitem{kovactao2024} Vjekoslav Kova\v{c} and Terence Tao, \href{https://arxiv.org/abs/2406.17593v4}{\emph{On several irrationality problems for Ahmes series}}.
@@ -811,16 +525,8 @@ The numbering follows Bloom's catalogue \cite{erdosproblems}.
   The Quarterly Journal of Mathematics \textbf{74} (2023), no.~4, 1457--1479, doi:\href{https://doi.org/10.1093/qmath/haad030}{10.1093/qmath/haad030}; arXiv:\href{https://arxiv.org/abs/2210.09775v2}{2210.09775v2}. Statement numbers refer to arXiv version 2, 15 June 2023.
 \bibitem{land2026} Johan Land, \href{https://github.com/beetree/math_erdos_251}{\emph{A conditional proof of the irrationality of $\sum_{n\ge1}p_n2^{-n}$ under a uniform Hardy--Littlewood prime-tuples conjecture}}.
   Research draft, 5 September 2026. Formalisation material accompanies the draft.
-\bibitem{lean4} Leonardo de Moura and Sebastian Ullrich, \href{https://doi.org/10.1007/978-3-030-79876-5_37}{\emph{The Lean 4 theorem prover and programming language}}.
-  Automated Deduction -- CADE 28, Lecture Notes in Computer Science, Springer, 2021, pp.~625--635, doi:\href{https://doi.org/10.1007/978-3-030-79876-5_37}{10.1007/978-3-030-79876-5\_37}.
-\bibitem{mathlib} {The mathlib Community}, \href{https://doi.org/10.1145/3372885.3373824}{\emph{The Lean mathematical library}}.
-  Proceedings of the 9th ACM SIGPLAN International Conference on Certified Programs and Proofs, ACM, 2020, pp.~367--381, doi:\href{https://doi.org/10.1145/3372885.3373824}{10.1145/3372885.3373824}. Describes a Lean 3-era snapshot; the repository lock identifies the library used by the present Lean 4 sources.
-\bibitem{maynard2015} James Maynard, \href{https://doi.org/10.4007/annals.2015.181.1.7}{\emph{Small gaps between primes}}.
-  Annals of Mathematics \textbf{181} (2015), 383--413, doi:\href{https://doi.org/10.4007/annals.2015.181.1.7}{10.4007/annals.2015.181.1.7}.
 \bibitem{mv2007} Hugh L. Montgomery and Robert C. Vaughan, \href{https://doi.org/10.1017/CBO9780511618314}{\emph{Multiplicative Number Theory I: Classical Theory}}.
   Cambridge Studies in Advanced Mathematics, Cambridge University Press, 2007, doi:\href{https://doi.org/10.1017/CBO9780511618314}{10.1017/CBO9780511618314}.
-\bibitem{zhang2014} Yitang Zhang, \href{https://doi.org/10.4007/annals.2014.179.3.7}{\emph{Bounded gaps between primes}}.
-  Annals of Mathematics \textbf{179} (2014), 1121--1174, doi:\href{https://doi.org/10.4007/annals.2014.179.3.7}{10.4007/annals.2014.179.3.7}.
 \bibitem{erdosproblems} Thomas F. Bloom, \href{https://www.erdosproblems.com/251}{\emph{Erd\H{o}s Problem \#251}}.
   2026. Accessed 6 September 2026.
 \bibitem{erdosproblems251thread} {Erdős Problems contributors}, \href{https://www.erdosproblems.com/forum/thread/251}{\emph{Erd\H{o}s Problem \#251 discussion thread}}.
@@ -833,8 +539,8 @@ The numbering follows Bloom's catalogue \cite{erdosproblems}.
   Acta Arithmetica \textbf{126} (2007), no.~4, 295--303, doi:\href{https://doi.org/10.4064/aa126-4-1}{10.4064/aa126-4-1}; arXiv:\href{https://arxiv.org/abs/1105.1451v1}{1105.1451v1}. Published in 2007; arXiv upload is from 2011. Lemma and preprint page locators refer to arXiv version 1.
 \bibitem{erdos1932} Paul Erd\H{o}s, \href{https://users.renyi.hu/~p_erdos/1932-01.pdf}{\emph{Beweis eines Satzes von Tschebyschef}}.
   Acta Litterarum ac Scientiarum Szeged \textbf{5} (1932), 194--198.
-\bibitem{polymath2014} {D. H. J. Polymath}, \href{https://arxiv.org/abs/1407.4897v4}{\emph{Variants of the Selberg sieve, and bounded intervals containing many primes}}.
-  Research in the Mathematical Sciences \textbf{1} (2014), article 12, doi:\href{https://doi.org/10.1186/s40687-014-0012-7}{10.1186/s40687-014-0012-7}; arXiv:\href{https://arxiv.org/abs/1407.4897v4}{1407.4897v4}. Theorem 1.4(i) refers to arXiv version 4 (22 December 2014); the journal numbers it Theorem 4(i). An erratum is recorded at doi:10.1186/s40687-015-0033-x.
 \end{thebibliography}
 
+% Keep the concordance heading with its table.
+\clearpage
 \end{document}

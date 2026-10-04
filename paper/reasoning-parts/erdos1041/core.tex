@@ -567,6 +567,8 @@ and the
 
 \section{A small least critical value}
 \label{sec:low-critical-closure}
+\papersectiontarget{scope-further-estimates}
+
 \papersectiontarget{low-critical-proof}
 
 We follow a component from its first merger as the level of $|f|$
@@ -1961,6 +1963,28 @@ Substitution into (7) proves (5), and (6) makes its right side strictly less
 than $4$.
 \end{proof}
 
+\begin{remark}[unnormalised isolated-value criterion]
+\label{res:critical-value-separation-unnormalised}
+Let $f$ be monic of degree $n\ge3$, let $c$ be a simple critical point, and
+put $v=f(c)\ne0$.  Fix $w_0\in[0,1]$ and
+$S>\max(w_0,1-w_0)$.  Suppose every other critical point $d$ satisfies
+\[
+  \left|\frac{f(d)}v-w_0\right|\ge S .
+\]
+Put $p=w_0(1-w_0)$.  Then two distinct roots are joined inside
+$\{|f|\le|v|\}$ by a curve $\Gamma$ satisfying
+\begin{equation}\label{eq:disk-family-unnormalised-length}
+ \operatorname{length}(\Gamma)^2
+ \le 2|v|^{2/n}\Bigl(\frac{S}{n-1}\Bigr)^{2/n}
+ \log\!\frac{S^2+S+p}{S^2-S+p}.
+\end{equation}
+\end{remark}
+\evidenceremark{The normalisation and scaling are checked in Lean conditional
+on the same \texttt{DiscSepBergmanArea} input as the preceding criterion.}
+For this form set $z=c+|v|^{1/n}w$ and $P(w)=f(z)/v$.
+The leading coefficient of $P$ has modulus one. Scaling the preceding
+connector multiplies its length by $|v|^{1/n}$, giving the displayed bound.
+
 \begin{remark}[unformalised numerical consequences]
 \label{res:critical-value-thresholds}
 Inequality~\eqref{eq:disk-family-coefficient} holds for every $n\ge3$,
@@ -1972,6 +1996,7 @@ $v=f(c)\ne0$ and $|v|<1$, and
 \]
 for every other critical point $d$, then two roots of $f$ are joined inside
 $\{|f|<1\}$ by a curve of length strictly below $2$.
+In degree three, $w_0=1$ permits $4/3$ to be replaced by $6/5$.
 \end{remark}
 \evidenceremark{Lean checks the displayed coefficient estimates and numerical
 steps. Their path conclusions still require \texttt{DiscSepBergmanArea},
@@ -3981,8 +4006,8 @@ arbitrary connecting curve follows from either straight-segment assertion.
 
 \subsection*{Unformalised remark: limits of contained paths at fixed degree}
 \hypertarget{closed-class-limits}{}
-The compactness argument linked from the short paper concerns arbitrary
-curves in a closed lemniscate. We give its ordinary proof here. It has
+The following compactness argument concerns arbitrary
+curves in a closed lemniscate. It has
 not been formalised, and it gives no attainment statement for paths
 confined to an open lemniscate.
 
@@ -5083,6 +5108,12 @@ methods, not direct sources of the present positive moment or connector
 constant, and their normalisations are not interchangeable with a root-disc
 hypothesis.
 
+Pendyala's work
+on Problem~1120 \cite[Definition~1.1 and Theorem~1.2]{pendyala2026shortest}
+asks for a path from $0$ to the unit circle in the intersection of a
+lemniscate with the closed disc. Those endpoints and that additional
+region restriction differ from the present question.
+
 \section*{Acknowledgements}
 I thank Wouter van Doorn for advice on mathematical exposition, in particular
 on explaining restrictive hypotheses, avoiding private terminology and
@@ -5467,4 +5498,10 @@ parameter is not a proof of the reported parameter family.
   \emph{Potential Theory in the Complex Plane}, London Mathematical Society
   Student Texts~28, Cambridge University Press, Cambridge, 1995,
   doi:\href{https://doi.org/10.1017/CBO9780511623776}{10.1017/CBO9780511623776}.
+\bibitem{pendyala2026shortest} V.~S. Pendyala,
+  \emph{Shortest paths in polynomial lemniscate sublevel sets and a problem
+  of Erd\H{o}s}, arXiv:\href{https://arxiv.org/abs/2606.19178v1}{2606.19178v1}
+  (2026),
+  doi:\href{https://doi.org/10.48550/arXiv.2606.19178}
+  {10.48550/arXiv.2606.19178}.
 \end{thebibliography}

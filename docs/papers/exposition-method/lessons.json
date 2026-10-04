@@ -11992,6 +11992,18 @@
       ],
       "scope": "Eight mathematical short/long pairs, systems paper and paired writing guides; five bounded guide applications under existing rules.",
       "claim_boundary": "No statement, proof status or novelty claim promoted. Original R11 uptake is historical evidence; original R12 audit declarations remain separate from fresh native checks."
+    },
+    {
+      "id": "native-scope-20261004",
+      "source": "operator editorial review of the support-criteria paper, generalised across the eight problem pairs",
+      "rule_family": "E06",
+      "disposition": "accepted_with_scope_limit",
+      "before": "The support-criteria short paper also developed finite denominator periods, greedy achievement-set membership, tests for one twenty-first and approximations to one half, alongside repeated verification qualifications.",
+      "after": "The support criteria, proof mechanisms, strictness examples and full-support limitation remain in the short paper; independent membership programmes and detailed reproducibility live in the existing long record.",
+      "reason": "The later programmes answer different questions from the title and principal theorem. Their value does not require inclusion in the same journal article.",
+      "native_review": "docs/statement_migrations/short_scope_20261004.json",
+      "applicability": "Short theorem papers with a maintained long companion; applied selectively to all eight problem pairs.",
+      "limit": "No fixed page target, deletion of essential proofs, change to theorem truth or evidence status, or measured comprehension benefit is asserted."
     }
   ]
 }

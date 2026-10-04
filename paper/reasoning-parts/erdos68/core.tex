@@ -549,6 +549,30 @@ not give this divisibility. For example, the compulsory factor $12L_D$ has
 $3$-adic valuation exactly $1$ for every $D$, so this necessary divisor
 alone does not guarantee $9\mid M$.
 
+\papersectiontarget{r12-short-gap}
+Fix a vector with $V_2=\cdots=V_D=0$ and $M>0$. We may choose the
+cutoff $N\ge D$ anywhere at or beyond its support. Separate the finite
+signed sum from the positive tail:
+\[
+ J_N=\sum_{d=D+1}^N\frac{V_d(c)}{d!-1},\qquad
+ \mathcal R(c)=J_N+M(S-H_N).
+\]
+The remainder lies above $J_N$. To place it below the next integer,
+it is enough that the omitted tail be shorter than the gap
+$\lfloor J_N\rfloor+1-J_N$. By \eqref{long68:eq:tail-bound}, a sufficient
+condition is
+\begin{equation}
+ \frac{2M}{(N+1)!-1}<\lfloor J_N\rfloor+1-J_N.
+ \label{eq:signed-block-gap}
+\end{equation}
+Indeed, the positive tail and this comparison give
+$\lfloor J_N\rfloor<\mathcal R(c)<\lfloor J_N\rfloor+1$,
+excluding every denominator dividing $M$.
+Failure of this sufficient comparison is inconclusive. Either sign of
+$J_N$ is allowed: its strict gap is one when $J_N$ is integral and
+can be arbitrarily small when $J_N$ approaches an integer from below.
+
+
 For $c=-6e_2+e_4$, we have $M(c)=12$ and $\mathcal R(c)=12S-17$. At cutoff $4$, its finite part is $-239/115$:
 the gap $9/115$ is smaller than the tail bound $24/119$. At cutoff $5$,
 the finite part is $-27061/13685$, whose gap $13376/13685$ exceeds the
@@ -570,9 +594,8 @@ tends to zero. For an integral remainder, the eventual gap equals the
 omitted tail itself and is smaller than that upper bound. At any one
 cutoff, success places the remainder strictly above the finite part and
 below the least integer strictly exceeding it, so it implies nonintegrality.
-The \href{erdos-68-factorial-denominator-irrationality.pdf\#r12-short-gap}{remainder comparison in the short paper}
-writes out the inequality. Its eventual success for a fixed vector is
-therefore equivalent to that vector's nonintegral remainder, not a
+Eventual success of~\eqref{eq:signed-block-gap} for a fixed vector is
+therefore equivalent to nonintegrality of that vector's remainder, not a
 separate reason for nonintegrality. To exclude every denominator, for
 each $q>0$ we still need a vector with $q\mid M(c)$ for which the test
 succeeds. Choosing its coefficients and choosing a truncation cutoff
@@ -2724,7 +2747,7 @@ $67$ gives the checked bound
 \[
  \Ser=\frac aq,\ q>0\quad\Longrightarrow\quad q\ge67 .
 \]
-The exact-interval census of the short note replaces $67$ by $300000$.
+The exact-interval census of the finite-exclusion calculation replaces $67$ by $300000$.
 
 The finite geometric-series identity gives another exact decomposition.  For a real $x\ne0,1$ and an integer $K\ge0$,
 \[
@@ -2981,7 +3004,7 @@ which excludes denominators dividing $600$.
 A separate interval computation reports the stronger geometric statement that no
 lower-interval event $m\theta_{m-1}<E_m$ occurs at any $3\le m\le100000$; its executable and source
 digest are not available, so that classification remains external finite
-evidence.  The carry computation through $300000$ used in the short note is the
+evidence.  The carry computation through $300000$ used in the finite-exclusion calculation is the
 exact GMP computation recorded in Section~\ref{long68:sec:finite}, with
 the separate calculation through $4000$; it is computational evidence
 outside the Lean development.

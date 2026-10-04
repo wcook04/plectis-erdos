@@ -75,7 +75,7 @@ The constant $K(q)$ is the convergent product in
 $\operatorname{ord}_q V_N^*\ge B_N$ and the estimate
 $|V_N^*|\le q^{N^3/3}\exp(O_q(N^2))$
 \cite[Lemma~1 and \S4]{zudilin2016}. Theorem~\ref{res:sharp-fixed-base} determines the factorial, exponential
-and power factors contained in this estimate. We also recover the exact
+and power factors contained in this estimate. The long record also determines the exact
 first formal term $C_Nq^{B_N}$. These are different limiting questions: multiplying
 by $(1-q)^{N^3}$ preserves that first term and changes the fixed-base
 logarithm by a cubic quantity. No uniformity as $q\to1$ is asserted.
@@ -530,62 +530,11 @@ equivalently
 Thus the product of the cubic weights $c_k$ gives $C_N$, whereas the
 first correction to $a_k/c_k$ determines $N^{-8F(1/q)}$.
 
-\subsection{The first nonzero formal term}\label{sec:hankel-order}
-
-The order of a nonzero formal series is the least exponent with
-nonzero coefficient. We now fix $N$ and determine the first term
-in the formal $q$-expansion. The shifted
-term in \eqref{eq:last-node-shift} then has an extra factor of $q$.
-More generally, every nonempty partition has positive displacement
-exponent. Thus a single tuple determines the first formal term,
-although all partitions were needed for the fixed-base constant.
-
-\begin{theorem}[the first nonzero term of the Hankel determinant]
-\label{res:zudilin-sharp-qorder}
-For every $N\ge1$,
-\[
- \operatorname{ord}_q V_N^*=\frac{N(N-1)(2N-1)}6,
-\]
-and the coefficient of the first nonzero monomial is
-\[
- [q^{N(N-1)(2N-1)/6}]V_N^*
-   =\frac{(N!)^2(N+1)!}{2^N}.
-\]
-\end{theorem}
-
-\begin{proof}
-At $q=0$, the $t=0$ term of $G_q(w)$ is $(1-w^2)/(1-w)^5$, while the
-remaining terms sum to $w/(1-w)^4$. Thus
-\[
- G_0(w)=\frac{1+2w}{(1-w)^4},\qquad a_k(0)=c_k>0.
-\]
-We compute modulo $q^{M+1}$ by truncating each moment sum in
-\eqref{eq:positive-moments} at $k=M$. Since all omitted terms are
-divisible by $q^{M+1}$, multilinearity leaves the determinant
-unchanged modulo that power. Applying finite Cauchy--Binet and then
-allowing $M$ to increase, we obtain the coefficientwise identity
-\[
- V_N^*=\sum_{k_0<\cdots<k_{N-1}}
- \left(\prod_{i<N}a_{k_i}(q)q^{k_i}\right)
- \prod_{i<j<N}(q^{k_i}-q^{k_j})^2.
-\]
-The order of the summand indexed by $(k_i)$ is
-$\sum_{i<N}(2N-1-2i)k_i$. Because $k_i\ge i$ and all the weights
-$2N-1-2i$ are positive, we obtain the unique minimum at $k_i=i$,
-with order and coefficient
-\[
- \sum_{i<N}(2N-1-2i)i=B_N,\qquad \prod_{i<N}c_i=C_N.
-\]
-No other tuple can cancel that coefficient.
-For $N=2$, the pair $(0,1)$ contributes $6q+O(q^2)$,
-and every other increasing pair has order at least two.
-\end{proof}
-
-This proves equality in Zudilin's bound
-\cite[\S4, pp.~6--7]{zudilin2016}. An alternative argument, which
-computes the first nonzero term of every transformed row, is given in
+The corresponding formal-series calculation, including the exact first
+term $C_Nq^{B_N}$, is given in the
 \shortrecordlink{erdos1049-rational-base-lambert-reasoning-surface.pdf}
-{long1049-formal-rows}{the companion paper}.
+{scope-formal-order}{long record}. It concerns the limit $q\to0$ and is
+separate from the fixed-$q$ asymptotic proved above.
 
 \section{Rational bases}
 \label{sec:rational-base-irrationality}
@@ -911,90 +860,10 @@ Taking a common positive integer power preserves both the logarithmic
 ratio and coprimality, so the same criterion applies for every $r\ge1$.
 \end{proof}
 
-\begin{corollary}[an irrationality measure uniform over powers]
-\label{cor:rational-base-measure}
-For coprime $a>b\ge1$ with $\theta=\log b/\log a<\theta^*$ and every
-integer $r\ge1$,
-\[
- \mu_{\rm irr}\!\left(F((a/b)^r)\right)
- \le\frac{1-\theta}{\theta^*-\theta}.
-\]
-Here $\mu_{\rm irr}(\xi)$ is the supremum of the exponents $\nu$ for which
-$|\xi-p/q|<q^{-\nu}$ has infinitely many reduced rational solutions.
-In particular, $\mu_{\rm irr}(F((31/4)^r))<301$ for every $r\ge1$.
-\end{corollary}
-\begin{proof}
-We follow the passage from linear forms to an exponent bound used by
-Zudilin at integer bases \cite[p.~162]{zudilin2004}. Applying the
-estimates separately at each fixed base $(a/b)^r$ will give a bound
-independent of $r$. We use the polynomials $U_n,V_n$ from
-Theorem~\ref{res:rational-base-threshold}, with $W_n=\deg U_n$.
-The additional estimate we need is a growth bound for their coefficients.
-In that construction the coefficient of $F$ before cancellation is a
-sum of $O(n)$ Laurent monomials times two Gaussian binomial polynomials.
-Each Gaussian polynomial has nonnegative coefficients summing to at
-most $2^{27n+2}$. Thus the sum of the absolute coefficients is
-$\exp(O(n))$. Its largest exponent is
-$K_n=(1091n^2+81n+2)/2$, so its absolute value at a fixed $x>1$ is at
-most $x^{K_n}\exp(O(n))$. The cyclotomic estimate in the same proof
-bounds the normalising multiplier by
-$x^{W_n-K_n}\exp(O_x(n))$. Multiplication gives
-\[
- |U_n(x)|\le x^{W_n}\exp(O_x(n))\qquad(x>1\text{ fixed}).
-\]
-Set $\xi=F(a/b)$, $Q_n=b^{W_n}U_n(a/b)$ and
-$P_n=b^{W_n}V_n(a/b)$.  With
-\[
- \alpha=(C_1-C_0)\log a,\qquad
- \tau=C_0\log a-C_1\log b>0,
-\]
-we have $\log(Q_n\xi-P_n)=-\tau n^2+o(n^2)$ and
-$|Q_n|\le\exp(\alpha n^2+o(n^2))$.
-
-For a rational approximation with denominator $q$, we will choose a
-remainder at most $1/(2q)$ without letting $|Q_n|$ grow unnecessarily.
-The decay rate suggests taking $n^2$ near $(\log q)/\tau$.
-The reason for this choice is the following integer comparison.
-For integers $A,B,p,q$ with $q>0$, if $L=A\xi-B$ and $2q|L|\le1$, then
-\[
- |L|\le |A|\,|\xi-p/q|.
-\]
-When $Ap-Bq=0$ this is equality.  Otherwise the nonzero integer $Ap-Bq$
-gives $1/q\le |L|+|A|\,|\xi-p/q|$, which proves the inequality.
-We fix $0<\eta<\tau$ and use the preceding estimates in the form
-\[
- e^{-(\tau+\eta)n^2}\le Q_n\xi-P_n\le e^{-(\tau-\eta)n^2},
- \qquad |Q_n|\le e^{(\alpha+\eta)n^2}
-\]
-for all sufficiently large $n$. The upper remainder bound determines
-our choice: for a sufficiently large denominator $q$, take
-$n=\lceil\sqrt{\log(2q)/(\tau-\eta)}\rceil$. Then
-$2q(Q_n\xi-P_n)\le1$. The preceding integer argument now applies to
-$(A,B)=(Q_n,P_n)$ for every numerator $p$. Also $Q_n\ne0$: otherwise
-$Q_n\xi-P_n$ would be an integer strictly between $0$ and $1$.
-The lower remainder bound and the coefficient bound now give
-\[
- |\xi-p/q|\ge e^{-(\alpha+\tau+2\eta)n^2}
-             =q^{-(\alpha+\tau+2\eta)/(\tau-\eta)-o(1)},
-\]
-since $n^2=\log(2q)/(\tau-\eta)+O_\eta(\sqrt{\log q}+1)$.
-
-Letting $\eta\downarrow0$, we deduce the bound
-$1+\alpha/\tau=(1-\theta)/(\theta^*-\theta)$. A common power multiplies
-$\alpha$ and $\tau$ by $r$, so the quotient is unchanged, although the
-constants in the approximation inequality may depend on $r$.
-For $31/4$, the exact interval bounds in the companion record,
-\shortrecordlink{erdos1049-rational-base-lambert-reasoning-surface.pdf}{long1049-regionbracket}{Section~2.5},
-give $\theta<0.4036982$ and $\theta^*>0.40568$. The quotient increases
-with $\theta$ and decreases with $\theta^*$ in this range, so
-\[
- \frac{1-\theta}{\theta^*-\theta}
- <\frac{1-0.4036982}{0.40568-0.4036982}
- =\frac{2981509}{9909}<301.
-\]
-The same section gives the rational certificates for these bounds
-and sharper enclosures of the constants.
-\end{proof}
+The same forms also give an irrationality-exponent bound uniform over
+positive integral powers of the base. Its statement and proof are in the
+\shortrecordlink{erdos1049-rational-base-lambert-reasoning-surface.pdf}
+{scope-measure}{long record's quantitative extension}.
 
 \subsection{Comparison with earlier criteria}
 Bundschuh and V\"a\"an\"anen's Theorem~2 at $\alpha=-1$
@@ -1020,160 +889,22 @@ The companion record also checks the parameters at $7/2$ in
 its section on Bundschuh and V\"a\"an\"anen's height criterion.
 The analytic irrationality result used there is their cited theorem.
 
-\section{Further questions}\label{sec:open}
-
-An irrationality argument based on these determinants would also
-require a bound for their coefficient denominators. After clearing
-them, the nonzero determinants must still tend to zero; positivity
-and the growth of the moment weights alone give no such bound. For comparison, the
+\section{Scope and verification}\label{sec:open}
+The fixed-base determinant asymptotic and the rational-base region answer
+different questions about the same Lambert series. Neither establishes
+irrationality at $3/2$, and the region's boundary is not decided by the
+strict inequality used in its proof. The
 \shortrecordlink{erdos1049-rational-base-lambert-reasoning-surface.pdf}
-{long1049-countermodel}{rational-value model in the companion paper}
-has the same formal orders, leading coefficients and type of
-fixed-base power correction, although its target value is rational.
-The model and its denominator calculation are retained there with
-ordinary proofs as unformalised remarks.
-The companion paper also gives an
-\shortrecordlink{erdos1049-rational-base-lambert-reasoning-surface.pdf}
-{long1049-ratio-extension}{ordinary argument for the ratio-limit extension}
-under $a_{k+1}/a_k\to\rho\in(0,q^{-1})$, without the polynomial
-shift bound in Theorem~\ref{thm:geometric-moments}. That extension
-remains unformalised.
+{scope-further-questions}{long record's further questions} develops the
+remaining congruence and approximation questions.
 
-A different question concerns the polynomial coefficients of the
-approximants, rather than their remainders. Van Assche's
-little-$q$-Legendre construction
-\cite[\S3]{vanassche2001} and the multiple-orthogonality construction
-of Postelmans and Van Assche \cite[\S2]{postelmansvanassche2007}
-make the normalisation important. In the 2016 family, the companion
-paper proves positivity of the first matrix of a coefficient pencil
-for sizes $N\le8$, with real, interlacing roots below $F(p)$ for
-$p>1$. The shifted minors and coefficientwise positivity are supported
-by the stated finite polynomial computations. The
-\shortrecordlink{erdos1049-rational-base-lambert-reasoning-surface.pdf}
-{long1049-coefficients}{coefficient-moment section}
-gives the definitions and the precise ranges. Positivity for every
-$N$ and convergence of the largest root remain open. The general
-moment criteria of Wang and Zhu \cite{wangzhu2016} and Sokal and
-Walrad \cite{sw2024}, Berg's factorial-power example
-\cite[Theorem~5.1]{berg2007}, and the quadrature construction of Golub
-and Welsch \cite{golubwelsch1969} provide the relevant comparisons.
-Using a recurrence from another family would require a proof that it
-holds for these coefficients. The root-of-unity method of
-Krattenthaler, Rochev, V\"a\"an\"anen and Zudilin \cite{krvz2009}, for
-example, concerns a separate construction.
-
-\subsection{Congruences and divided forms}\label{sec:round8-transfer-boundaries}
-
-At $3/2$, a polynomial $Q$ of degree at most $W$ has integral
-homogenised value $H_W(Q)=2^WQ(3/2)$. Congruences at powers of $2$
-and $3$ give finite counting criteria for combinations of such values.
-The companion paper treats
-\shortrecordlink{erdos1049-rational-base-lambert-reasoning-surface.pdf}
-{long1049-arithmetic}{integer rescaling} and
-\shortrecordlink{erdos1049-rational-base-lambert-reasoning-surface.pdf}
-{long1049-endpoints}{endpoint congruences and signed sums}. It also treats the rank-one case and
-proves the quantitative finite-fibre estimate used below. Equal residues give a useful
-irrationality form only when the divided remainder is also nonzero
-and small. Smith normal form describes the image of the evaluated
-lattice \cite[Theorems~2.3--2.4]{stanley2016}, but does not estimate
-these real remainders.
-
-For example, suppose that $M$ integral rows $(A_j,B_j)$ have remainders
-$e_j=A_jF(3/2)-B_j$. Let $D$ be a positive integer, and suppose that the
-coefficient-pair subset sums $\sum_{j\in I}(A_j,B_j)$ take $Q$ values in
-$(\mathbb Z/D\mathbb Z)^2$. Put $T=\sum_j|e_j|$ and suppose that
-at most $k$ subsets give any fixed remainder within a residue class.
-The least and greatest subset remainders are
-\[
- \sum_{e_j<0}e_j\quad\text{and}\quad\sum_{e_j>0}e_j;
-\]
-their difference is $T$. Thus $T$ bounds the width of the range in
-each residue class as well. For each positive integer $n$, the inequality
-\begin{equation}\label{eq:quantitative-selector-budget}
- 2^M>Qk\left(\left\lfloor\frac{nT}{D}\right\rfloor+1\right)
-\end{equation}
-gives two subsets with the same residue vector whose remainder
-values differ by an amount strictly between $0$ and $D/n$ in absolute value.
-Indeed, in each residue class divide the range of remainders into
-half-open intervals of width $D/n$, starting at its least value.
-At most $\lfloor nT/D\rfloor+1$ intervals are needed, including a
-last interval when the greatest value is an endpoint. If each interval
-contained only one remainder value, it would contain at most $k$
-subsets, contrary to \eqref{eq:quantitative-selector-budget}.
-Thus some interval contains two different remainder values;
-the half-open convention makes their separation strictly less than $D/n$.
-Subtracting the two subset sums and dividing their coefficients by
-$D$ gives an integral linear form of nonzero absolute value less
-than $1/n$. The
-\shortrecordlink{erdos1049-rational-base-lambert-reasoning-surface.pdf}
-{long1049-selectors}{quantitative lemma and its proof}
-state the finite-set version without assumptions about Lambert series.
-
-The elementary integer-base method provides a different comparison.
-Vandehey \cite{vandehey2013} and Duverney and Tachiya
-\cite{duverneytachiya2019} use integer-base expansions. At a
-noninteger rational base the
-\href{https://github.com/wcook04/plectis-erdos/blob/7380b7871687b6bcc41ca0143c61f232e8af6500/lean/ErdosProblems/Erdos1049/RationalBaseLambert.lean\#L187}{cleared-tail recurrence}
-has a growing denominator contribution. The
-\shortrecordlink{erdos1049-rational-base-lambert-reasoning-surface.pdf}
-{long1049-clearing}{clearing and tail-recurrence calculations}
-in the companion paper include the
-\href{https://github.com/wcook04/plectis-erdos/blob/7380b7871687b6bcc41ca0143c61f232e8af6500/lean/ErdosProblems/Erdos1049/RationalBaseLambert.lean\#L155}{coordinatewise obstruction at $3/2$}.
-They make no assertion about other approximation families. At the
-function level, Bell and Smertnig \cite[Theorem~1.3]{bellsmertnig2026}
-exclude Mahler equations for the divisor generating series, while
-leaving the arithmetic of a single rational argument undecided.
-
-\paragraph{A construction problem.}\label{prob:kernel}
-The unrestricted request for primitive polynomial rows and a signed
-combination whose divided remainder lies strictly between $0$ and
-$1/n$ is equivalent to the irrationality of the target. The companion
-paper retains the full statement and proves this equivalence in its
-\shortrecordlink{erdos1049-rational-base-lambert-reasoning-surface.pdf}
-{long1049-open-construction}{section on divided linear forms}.
-A more specific question must prescribe the approximation family.
-For the 2004 family one can instead ask whether a parameter direction
-improves $\theta^*$. The
-\shortrecordlink{erdos1049-rational-base-lambert-reasoning-surface.pdf}
-{long1049-region-extensions}{all-base degree restriction}
-proves an upper bound of $1/2$ for the degree cutoff. Its hypotheses
-require one polynomial family, with common leading constants in its
-degree, coefficient-height and remainder estimates at every fixed real
-base $x>1$; the error terms may depend on $x$. Merely having estimates
-at $3/2$ does not suffice.
-
-Under those hypotheses, the
-\shortrecordlink{erdos1049-rational-base-lambert-reasoning-surface.pdf}
-{long1049-no-decay}{nondecay corollary}
-goes beyond the failure of a sufficient criterion: after denominator
-clearing, the undivided forms cannot tend to zero at any rational base $a/b$
-with $b<a<b^2$,
-including $3/2$, even without a quadratic degree limit. If that limit
-exists, their absolute values tend to infinity in this strict region.
-Division by additional base-dependent content and families outside
-these hypotheses remain unclassified. Equality in the rational-base
-cutoff is also unresolved by the estimates of
-Section~\ref{sec:rational-base-irrationality}.
-
-\appendix
-\section{Verification and reproducibility}\label{app:index}
-
-The \href{\evidencerecordurl}{evidence record} indexes the existing
-Lean proofs and recorded Comparator comparisons at the
-\href{\sourceurl}{source revision}.
-Theorem~\ref{thm:geometric-moments} is the polynomial-bound
-specialisation of the
-\href{\laterepobase/lean/ErdosProblems/Erdos1049/PaperCompleteR21/GeometricUniversality.lean\#L1324}{geometric-moment proof}
-cited in the companion paper; its Comparator association remains pending.
-The broader ratio-limit argument and rational-value model there have
-ordinary proofs only. This revision has had no fresh Lean or
-Comparator run and no independent review.
 \evidenceparagraph{\evidencerecordurl}
-
-\paragraph{Data availability.}
-The cited source revision contains the Lean sources, toolchain and
-library manifest. The companion paper supplies the longer algebraic
-arguments and the precise scope of the finite computations.
+Theorem~\ref{thm:geometric-moments} is the polynomial-bound specialisation
+of the geometric-moment proof identified in the
+\shortrecordlink{erdos1049-rational-base-lambert-reasoning-surface.pdf}
+{scope-verification}{verification section}; its Comparator association
+remains pending. That section distinguishes formal coverage from the
+ordinary extensions and gives the source and reproduction details.
 
 \paragraph{Funding and competing interests.}
 This work received no external funding. The author declares no
@@ -1218,11 +949,6 @@ hypothesis.
   p.~4, in the paragraph beginning ``Finally, we remark''; no value of \(c\) is
   computed there, and the remark is made for the generalized \(q\)-logarithm of
   that paper.
-\bibitem{stanley2016} R.~P. Stanley, \emph{Smith normal form in combinatorics},
-  J. Combin. Theory Ser. A \textbf{144} (2016), 476--495,
-  doi:\href{https://doi.org/10.1016/j.jcta.2016.06.013}{10.1016/j.jcta.2016.06.013};
-  arXiv:\href{https://arxiv.org/abs/1602.00166v1}{1602.00166v1}.
-  Page references are to arXiv:1602.00166v1.
 \bibitem{zudilin2017det} W.~Zudilin, \emph{A determinantal approach to
   irrationality}, Constr. Approx. \textbf{45} (2017), no.~2, 301--310,
   doi:\href{https://doi.org/10.1007/s00365-016-9333-7}{10.1007/s00365-016-9333-7};
@@ -1232,61 +958,6 @@ hypothesis.
   \href{https://www.erdosproblems.com/1049}{\emph{Erd\H{o}s Problem \#1049}},
   \texttt{erdosproblems.com/1049}. Accessed 28 July 2026, when the page
   displayed ``last edited 28 September 2025''.
-\bibitem{bellsmertnig2026} J.~Bell and D.~Smertnig,
-  \href{https://arxiv.org/abs/2603.23456v1}{\emph{Mahler series with
-  multiplicative coefficient sequences}}, arXiv:2603.23456v1,
-  24 March 2026.  Theorem~1.3 is on pp.~2--3; its stated consequences on
-  p.~3 include that the divisor and totient generating series are not
-  $k$-Mahler for any $k\ge2$.
-\bibitem{vandehey2013} J.~Vandehey,
-  \href{https://arxiv.org/abs/1206.0340v1}{\emph{On an incomplete argument of
-  Erd\H{o}s on the irrationality of Lambert series}}, Integers
-  \textbf{13} (2013), Paper A58. Page references are to
-  arXiv:1206.0340v1 (2012).
-\bibitem{duverneytachiya2019} D.~Duverney and Y.~Tachiya, \emph{Refinement of
-  the Chowla--Erd\H{o}s method and linear independence of certain Lambert
-  series}, Forum Math. \textbf{31} (2019), no.~6, 1557--1566,
-  doi:\href{https://doi.org/10.1515/forum-2018-0299}{10.1515/forum-2018-0299}.
-  Page references are to the
-  \href{https://danielduverney.fr/documents/theorie-des-nombres/DuverneyTachiya190522.pdf}{authors'
-  version}.
-\bibitem{vanassche2001} W.~Van Assche,
-  \href{https://arxiv.org/abs/math/0101187v1}{\emph{Little \(q\)-Legendre
-  polynomials and irrationality of certain Lambert series}},
-  Ramanujan J. \textbf{5} (2001), no.~3, 295--310,
-  doi:\href{https://doi.org/10.1023/A:1012930828917}{10.1023/A:1012930828917}.
-  Page references are to arXiv:math/0101187v1.
-\bibitem{postelmansvanassche2007} K.~Postelmans and W.~Van Assche,
-  \href{https://arxiv.org/abs/math/0604312v1}{\emph{Irrationality of
-  $\zeta_q(1)$ and $\zeta_q(2)$}}, J. Number Theory \textbf{126} (2007),
-  no.~1, 119--154,
-  doi:\href{https://doi.org/10.1016/j.jnt.2006.11.011}{10.1016/j.jnt.2006.11.011}.
-  Page references are to arXiv:math/0604312v1 (2006).
-\bibitem{krvz2009} C.~Krattenthaler, I.~Rochev, K.~V\"a\"an\"anen and
-  W.~Zudilin, \emph{On the non-quadraticity of values of the
-  \(q\)-exponential function and related \(q\)-series}, Acta Arith.
-  \textbf{136} (2009), no.~3, 243--269,
-  doi:\href{https://doi.org/10.4064/aa136-3-4}{10.4064/aa136-3-4};
-  arXiv:\href{https://arxiv.org/abs/0812.2921v1}{0812.2921v1}.
-  Page references are to arXiv:0812.2921v1.
-\bibitem{wangzhu2016} Y.~Wang and B.-X.~Zhu,
-  \href{https://arxiv.org/abs/1612.04114v1}{\emph{Log-convex and Stieltjes
-  moment sequences}}, Adv. Appl. Math. \textbf{81} (2016), 115--127,
-  doi:\href{https://doi.org/10.1016/j.aam.2016.06.008}{10.1016/j.aam.2016.06.008}.
-  Page references are to arXiv:1612.04114v1.
-\bibitem{berg2007} C.~Berg, \emph{On powers of Stieltjes moment sequences, II},
-  J. Comput. Appl. Math. \textbf{199} (2007), 23--38;
-  arXiv:\href{https://arxiv.org/abs/math/0412340v1}{math/0412340v1}.
-  Theorem references use the preprint; Theorem~5.1 treats factorial powers.
-\bibitem{sw2024} A.~D. Sokal and J.~Walrad,
-  \emph{Continued-fraction characterization of Stieltjes moment sequences
-  with support in $[\xi,\infty)$},
-  \href{https://arxiv.org/abs/2404.12131v1}{arXiv:2404.12131v1}, 2024.
-  The classical Stieltjes criterion is recalled on pp.~1--2.
-\bibitem{golubwelsch1969} G.~H. Golub and J.~H. Welsch,
-  \emph{Calculation of Gauss Quadrature Rules}, Math. Comp. \textbf{23}
-  (1969), no.~106, 221--230,
-  doi:\href{https://doi.org/10.1090/S0025-5718-69-99647-1}{10.1090/S0025-5718-69-99647-1}.
 \bibitem{vinroot2010} C.~R. Vinroot,
   \href{https://arxiv.org/abs/1011.0984}{\emph{Multivariate Rogers--Szeg\H{o}
   polynomials and flags in finite vector spaces}}, arXiv:1011.0984v1,

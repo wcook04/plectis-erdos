@@ -8,12 +8,8 @@
     "workflow": "palomar-replay.yml",
     "receipts": "evidence/comparator/replay-35935225572"
   },
-  "record_commit": "846d57d3f9926696332d782eb232aaf3cf803a99",
+  "record_commit": "5783e729f82dc8079b3b2e174dc02c8b1e56ea88",
   "record_commit_overrides": {
-    "erdos-243-reciprocal-tail-rigidity": "b4d9b60327e3c4d4cc50acb37e62268788cd77e0",
-    "erdos243-reciprocal-tail-reasoning-surface": "b4d9b60327e3c4d4cc50acb37e62268788cd77e0",
-    "erdos249-totient-reasoning-surface": "b4d9b60327e3c4d4cc50acb37e62268788cd77e0",
-    "erdos257-mersenne-reasoning-surface": "b4d9b60327e3c4d4cc50acb37e62268788cd77e0",
-    "erdos269-running-lcm-reasoning-surface": "b4d9b60327e3c4d4cc50acb37e62268788cd77e0"
+    "erdos249-totient-reasoning-surface": "e633f9f6b50f58e967ee7332ba859bf33dc6ada9"
   }
 }

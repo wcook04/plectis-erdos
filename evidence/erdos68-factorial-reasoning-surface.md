@@ -198,7 +198,7 @@ theorem residual_transparency {D : ℕ} (hD : 2 ≤ D) (t : ℤ)
 
 <a id="long68-res-channel-radius"></a>
 
-## Theorem 1.5 (a lower bound for the support parameter), page 10
+## Theorem 1.5 (a lower bound for the support parameter), page 11
 
 > *Let $`t,M,R\in\mathbb{N}`$ satisfy
 > ``` math
@@ -284,7 +284,7 @@ theorem radius_not_littleO (M R : ℕ → ℕ)
 
 <a id="long68-res-radius-constant"></a>
 
-## Corollary 1.6 (the asymptotic lower bound), page 10
+## Corollary 1.6 (the asymptotic lower bound), page 11
 
 > *Let $`M(t),R(t)`$ satisfy $`M(t)>0`$, $`L_{2t^2}\mid M(t)`$ and $`M(t)<(R(t)+1)!-1`$ for all sufficiently large $`t`$. Then
 > ``` math
@@ -327,7 +327,7 @@ theorem asymptotic_radius_constant_liminf (M R : ℕ → ℕ)
 
 <a id="long68-res-translator"></a>
 
-## Theorem 1.7 (changing just one weighted sum), page 11
+## Theorem 1.7 (changing just one weighted sum), page 12
 
 > *Let $`p\ge3`$ be prime and let $`c_{p-1}=p`$, $`c_p=-1`$, with every other coefficient zero. Then $`M(c)=0`$, $`V_{p}(c)=p!-1`$, and $`V_{d}(c)=0`$ for every $`d\ge2`$ with $`d\ne p`$.*
 
@@ -369,7 +369,7 @@ theorem prime_channel_corrector {p : ℕ} (hp : p.Prime) :
 
 <a id="long68-res-prime-pole"></a>
 
-## Theorem 2.1 (maximal prime-power survival), page 13
+## Theorem 2.1 (maximal prime-power survival), page 14
 
 > *Let $`M\ge2`$, let $`p`$ be a prime dividing $`L_M`$, and put $`e=v_p(L_M)`$. Let $`J=\{n:2\le n\le M,\ v_p(d_n)=e\}`$ and write $`d_n=p^eu_n`$ for $`n\in J`$. Then, with inverses in $`\mathbb F_p`$,
 > ``` math
@@ -409,7 +409,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long68-res-wilson-cofinality"></a>
 
-## Proposition 2.2 (cofinal first prime occurrences), page 15
+## Proposition 2.2 (cofinal first prime occurrences), page 16
 
 > *For every integer $`B\ge0`$ there are a prime $`q`$ and an integer $`m>B`$ with $`m<q`$, $`q\mid m!-1`$ and $`\gcd(q,k!-1)=1`$ for every $`k`$ with $`2\le k<m`$.*
 
@@ -436,7 +436,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long68-res-product-lcm"></a>
 
-## Lemma 3.1 (product, least common multiple, pairwise gcd), page 15
+## Lemma 3.1 (product, least common multiple, pairwise gcd), page 16
 
 > *For positive integers $`x_1,\ldots,x_k`$,
 > ``` math
@@ -469,7 +469,7 @@ theorem product_lcm_pairwise_gcd (xs : List ℕ) :
 
 <a id="long68-res-gap-gcd"></a>
 
-## Lemma 3.2 (factorial-gap gcd), page 16
+## Lemma 3.2 (factorial-gap gcd), page 17
 
 > *For $`2\le i<j`$, the integer $`g=\gcd(i!-1,j!-1)`$ divides $`j!/i!-1`$, and $`g\le j!/i!-1<j^{\,j-i}`$.*
 
@@ -497,7 +497,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long68-res-segment"></a>
 
-## Lemma 3.3 (segment inequality), page 16
+## Lemma 3.3 (segment inequality), page 17
 
 > *For $`2\le k\le N-1`$,
 > ``` math
@@ -533,7 +533,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long68-res-lcm-growth"></a>
 
-## Theorem 3.4 (common-denominator growth), page 16
+## Theorem 3.4 (common-denominator growth), page 17
 
 > *``` math
 > \liminf_{N\to\infty}\frac{\log L_N}{N^{3/2}\log N}
@@ -572,7 +572,7 @@ theorem common_denominator_growth_liminf :
 
 <a id="long68-res-carry-equivalence"></a>
 
-## Theorem 4.1 (an exact criterion from successive partial sums), page 19
+## Theorem 4.1 (an exact criterion from successive partial sums), page 20
 
 > *For $`m\ge3`$,
 > ``` math
@@ -655,7 +655,7 @@ theorem strict_successor_characterisation :
 
 <a id="long68-res-companion-orbit"></a>
 
-## Proposition 4.2 (rationality and factorial residues), page 20
+## Proposition 4.2 (rationality and factorial residues), page 21
 
 > *``` math
 > S\in\mathbb{Q}
@@ -694,7 +694,7 @@ theorem companion_orbit :
 
 <a id="long68-res-lower-escape"></a>
 
-## Proposition 4.3 (lower-interval criterion), page 22
+## Proposition 4.3 (lower-interval criterion), page 23
 
 > *``` math
 > \begin{equation}
@@ -713,7 +713,7 @@ theorem companion_orbit :
 >  1+\varepsilon_m+\frac2m\le m\Delta_m
 > \end{equation}
 > ```
-> implies the escape inequality in (20). Cofinally many instances of (21) therefore imply $`S\notin\mathbb{Q}`$.*
+> implies the escape inequality in (21). Cofinally many instances of (22) therefore imply $`S\notin\mathbb{Q}`$.*
 
 The Lean declaration below states this result.
 
@@ -769,7 +769,7 @@ theorem lower_interval_criterion :
 
 <a id="long68-res-shift-family"></a>
 
-## Theorem 4.4 (a criterion for the shifts $`t\ge-1`$), page 23
+## Theorem 4.4 (a criterion for the shifts $`t\ge-1`$), page 24
 
 > *For every integer $`t\ge-1`$, the series $`S_t`$ is rational exactly when
 > ``` math
@@ -826,7 +826,7 @@ theorem uniform_family_members :
 
 <a id="long68-res-global-residue"></a>
 
-## Theorem 5.1 (a sufficient tail inequality), page 25
+## Theorem 5.1 (a sufficient tail inequality), page 26
 
 > *Suppose that for every $`B`$ there is a natural parameter $`p\ge3`$ with $`p>B`$, $`R_p>1`$, and
 > ``` math

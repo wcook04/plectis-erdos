@@ -256,6 +256,8 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 ## Corollary 2.4 (an irrationality measure uniform over powers), page 10
 
+> *<span id="scope-measure"></span>*
+>
 > *For coprime $`a>b\ge1`$ with $`\theta=\log b/\log a<\theta^*`$ and every integer $`r\ge1`$,
 > ``` math
 > \mu_{\rm irr}\!\left(F((a/b)^r)\right)

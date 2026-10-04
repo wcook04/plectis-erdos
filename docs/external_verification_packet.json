@@ -1785,7 +1785,7 @@
     "owner": "docs/problem_index_source.json",
     "owner_digest": "sha256:d651478e6b7908e49517009f4cf575bf0f3fd64184974c52db9ac57be1491c8a",
     "projection": "docs/problems.json",
-    "projection_digest": "sha256:e8e1d7c043cfc172833f1cf5a60896534759346bc65a1e62f5d50bbf5dc5c175",
+    "projection_digest": "sha256:412bfdfa221e46a0b5e580c81dddae62a021d27e868e829f7820bb1073747b9c",
     "schema": "erdos249257-problem-index/1",
     "problem_count": 8,
     "authority_posture": "navigation_projection_not_Lean_proof_authority_and_not_a_reviewed_claim_registry",
@@ -2108,7 +2108,7 @@
         ],
         "note": {
           "artifact_id": "erdos_243_note",
-          "title": "Reciprocal Sums and the Sylvester Recurrence",
+          "title": "Cubic-Rate Irrationality of Reciprocal Sums",
           "source_path": "paper/243/erdos-243-reciprocal-tail-rigidity.tex",
           "rendered_path": "paper/243/erdos-243-reciprocal-tail-rigidity.pdf",
           "authority_posture": "authored_mathematical_exposition_not_Lean_proof_authority; public_status_is_owned_per_claim_by_docs/claims.json"
@@ -2152,7 +2152,7 @@
         "finite_search": "An exact search over initial states below five thousand produced forced prefixes of length seventeen and no longer. It is superseded: the constant-negative template is now excluded outright, for every seed and at every scale.",
         "paper": {
           "paper_id": "erdos-243-reciprocal-tail-rigidity",
-          "title": "Reciprocal Sums and the Sylvester Recurrence",
+          "title": "Cubic-Rate Irrationality of Reciprocal Sums",
           "source": "paper/243/erdos-243-reciprocal-tail-rigidity.tex",
           "pdf": "paper/243/erdos-243-reciprocal-tail-rigidity.pdf",
           "full_text": "docs/papers/full-text/erdos-243-reciprocal-tail-rigidity.md",

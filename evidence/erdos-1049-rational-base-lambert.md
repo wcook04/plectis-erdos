@@ -4,7 +4,7 @@ This record belongs to the paper [erdos-1049-rational-base-lambert.pdf](../paper
 
 - **Lean.** Every declaration is quoted from [plectis-erdos](https://github.com/wcook04/plectis-erdos) at commit [`436f55ebdafa`](https://github.com/wcook04/plectis-erdos/tree/436f55ebdafa67e4af0fff79f621c13f2ded12bf) and is checked there by Lean's kernel (`leanprover/lean4:v4.29.1`, Mathlib `5e932f97dd25`).
 - **Comparator.** For a compared result, each declaration was stated a second time, from Mathlib alone, as a *Challenge* in [plectis-erdos-lean](https://github.com/wcook04/plectis-erdos-lean), and a *Solution* that uses our proof was checked against it by [Comparator](https://github.com/leanprover/comparator), which also confirms that only the axioms `propext`, `Quot.sound`, `Classical.choice` are used. All checks below come from replay run [35935225572](https://github.com/wcook04/plectis-erdos-lean/actions/runs/35935225572) at corpus commit [`cc7e541cf208`](https://github.com/wcook04/plectis-erdos-lean/tree/cc7e541cf2081c6fef5a5e377d52e365e33b01eb) (tag `paper-evidence-2026-09-24`); both the default Lean kernel and the independent `nanoda` kernel accepted every entry. The replay's own report for each entry is kept in this repository and linked from each check. A Challenge shows `sorry` because it states the target without proving it.
-- **Counts.** 7 results: 7 with a Lean proof of the whole statement, 0 whose Lean proof assumes a named input (marked with a dagger), 0 without a Lean proof of the whole statement; 6 compared.
+- **Counts.** 5 results: 5 with a Lean proof of the whole statement, 0 whose Lean proof assumes a named input (marked with a dagger), 0 without a Lean proof of the whole statement; 4 compared.
 
 These checks establish that the stated propositions are proved. Whether each is the right proposition is for the reader to judge against the paper's statement, which is reproduced below. Comparator checks separately declared statements, the axiom budget and kernel acceptance; it does not establish novelty, significance or peer review.
 
@@ -158,53 +158,9 @@ For each Lean declaration: the Challenge (the target, stated from Mathlib alone)
 
 Each Challenge states the same proposition as the Lean declaration it targets, with every definition it uses restated from Mathlib alone.
 
-<a id="res-zudilin-sharp-qorder"></a>
-
-## Theorem 3.2 (the first nonzero term of the Hankel determinant), page 8
-
-> *For every $`N\ge1`$,
-> ``` math
-> \operatorname{ord}_q V_N^*=\frac{N(N-1)(2N-1)}6,
-> ```
-> and the coefficient of the first nonzero monomial is
-> ``` math
-> [q^{N(N-1)(2N-1)/6}]V_N^*
->    =\frac{(N!)^2(N+1)!}{2^N}.
-> ```*
-
-The Lean declarations below together state this result or one that implies it. The Lean statements hold for every $N\ge0$, the case $N=0$ being the empty determinant $V_0^*=1$. The exponent $N(N-1)(2N-1)/6$ is computed in natural numbers, where the subtractions and the division by $6$ are exact for $N\ge1$.
-
-1. [`ErdosProblems.Erdos1049.order_zudilinNormalizedHankelDet_all`](https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos1049/AllRow/Producer.lean#L173)
-
-```lean
-theorem order_zudilinNormalizedHankelDet_all (N : ℕ) :
-    PowerSeries.order (zudilinNormalizedHankelDet N) =
-      ((N * (N - 1) * (2 * N - 1) / 6 : ℕ) : ℕ∞)
-```
-
-2. [`ErdosProblems.Erdos1049.coeff_zudilinNormalizedHankelDet_all_rat`](https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos1049/AllRow/Producer.lean#L199)
-
-```lean
-theorem coeff_zudilinNormalizedHankelDet_all_rat (N : ℕ) :
-    ((PowerSeries.coeff (N * (N - 1) * (2 * N - 1) / 6)
-      (zudilinNormalizedHankelDet N) : ℤ) : ℚ) =
-      (N.factorial : ℚ) ^ 2 * ((N + 1).factorial : ℚ) / (2 : ℚ) ^ N
-```
-
-<a id="res-zudilin-sharp-qorder-comparator"></a>
-
-**Comparator: passed** (run 35935225572, corpus commit `cc7e541cf208`).
-
-For each Lean declaration: the Challenge (the target, stated from Mathlib alone), the Solution (our proof) and the replay report.
-
-- `order_zudilinNormalizedHankelDet_all`: [Challenge](https://github.com/wcook04/plectis-erdos-lean/blob/cc7e541cf2081c6fef5a5e377d52e365e33b01eb/PalomarCorpus/E1049_04/Challenge.lean#L72) (E1049_04, line 72), [Solution](https://github.com/wcook04/plectis-erdos-lean/blob/cc7e541cf2081c6fef5a5e377d52e365e33b01eb/Solutions/PalomarCorpus/E1049_04/PaperStatementsG.lean#L49) (PaperStatementsG.lean, line 49), [replay report](../evidence/comparator/replay-35935225572/receipt-E1049_04.json) (E1049_04)
-- `coeff_zudilinNormalizedHankelDet_all_rat`: [Challenge](https://github.com/wcook04/plectis-erdos-lean/blob/cc7e541cf2081c6fef5a5e377d52e365e33b01eb/PalomarCorpus/E1049_03/Challenge.lean#L162) (E1049_03, line 162), [Solution](https://github.com/wcook04/plectis-erdos-lean/blob/cc7e541cf2081c6fef5a5e377d52e365e33b01eb/Solutions/PalomarCorpus/E1049_03/AdelicHeightBridge.lean#L62) (AdelicHeightBridge.lean, line 62), [replay report](../evidence/comparator/replay-35935225572/receipt-E1049_03.json) (E1049_03)
-
-Each Challenge states the same proposition as the Lean declaration it targets, with every definition it uses restated from Mathlib alone.
-
 <a id="res-rational-base-threshold"></a>
 
-## Theorem 4.1 (rational-base region for Zudilin’s forms), page 10
+## Theorem 4.1 (rational-base region for Zudilin’s forms), page 9
 
 > *Let $`a>b\ge1`$ be coprime integers with
 > ``` math
@@ -321,7 +277,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="res-thirtyone-four"></a>
 
-## Corollary 4.2, page 14
+## Corollary 4.2, page 13
 
 > *$`F\bigl((31/4)^r\bigr)`$ is irrational for every integer $`r\ge1`$.*
 
@@ -341,65 +297,5 @@ theorem thirtyone_four_powers (r : ℕ) (hr : 0 < r) :
 For each Lean declaration: the Challenge (the target, stated from Mathlib alone), the Solution (our proof) and the replay report.
 
 - `thirtyone_four_powers`: [Challenge](https://github.com/wcook04/plectis-erdos-lean/blob/cc7e541cf2081c6fef5a5e377d52e365e33b01eb/PalomarCorpus/E1049_07/Challenge.lean#L88) (E1049_07, line 88), [Solution](https://github.com/wcook04/plectis-erdos-lean/blob/cc7e541cf2081c6fef5a5e377d52e365e33b01eb/Solutions/PalomarCorpus/E1049_07/RationalBaseRegion.lean#L63) (RationalBaseRegion.lean, line 63), [replay report](../evidence/comparator/replay-35935225572/receipt-E1049_07.json) (E1049_07)
-
-Each Challenge states the same proposition as the Lean declaration it targets, with every definition it uses restated from Mathlib alone.
-
-<a id="cor-rational-base-measure"></a>
-
-## Corollary 4.3 (an irrationality measure uniform over powers), page 14
-
-> *For coprime $`a>b\ge1`$ with $`\theta=\log b/\log a<\theta^*`$ and every integer $`r\ge1`$,
-> ``` math
-> \mu_{\rm irr}\!\left(F((a/b)^r)\right)
->  \le\frac{1-\theta}{\theta^*-\theta}.
-> ```
-> Here $`\mu_{\rm irr}(\xi)`$ is the supremum of the exponents $`\nu`$ for which $`|\xi-p/q|<q^{-\nu}`$ has infinitely many reduced rational solutions. In particular, $`\mu_{\rm irr}(F((31/4)^r))<301`$ for every $`r\ge1`$.*
-
-The Lean declarations below together state this result.
-
-1. [`ErdosProblems.Erdos1049.PaperCompleteR21.rational_base_measure_uniform`](https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos1049/PaperCompleteR21/RationalBaseThreshold.lean#L194)
-
-```lean
-theorem rational_base_measure_uniform (a b r : ℕ) (hb : 0 < b) (hab : b < a)
-    (_hcop : Nat.Coprime a b) (hr : 0 < r)
-    (hθ : Real.log (b : ℝ) / Real.log (a : ℝ) < zudilinContour) :
-    irrationalityExponent (paperLambert (((a : ℝ) / b) ^ r)) ≤
-      (1 - Real.log (b : ℝ) / Real.log (a : ℝ)) /
-        (zudilinContour - Real.log (b : ℝ) / Real.log (a : ℝ))
-```
-
-2. [`ErdosProblems.Erdos1049.PaperCompleteR21.thirtyoneFour_power_measure_lt_301`](https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos1049/PaperCompleteR21/RationalBaseThreshold.lean#L205)
-
-```lean
-theorem thirtyoneFour_power_measure_lt_301 (r : ℕ) (hr : 0 < r) :
-    irrationalityExponent (paperLambert (((31 : ℝ) / 4) ^ r)) < 301
-```
-
-3. [`ErdosProblems.Erdos1049.PaperR17.rational_base_power_measure`](https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos1049/PaperR17/SourceConsumers.lean#L167)
-
-```lean
-theorem rational_base_power_measure (a b r : ℕ) (hb : 0 < b) (hab : b < a)
-    (hr : 0 < r) (hregion : ZudilinContourRegion a b) :
-    irrationalityExponent (paperLambert (((a : ℝ) / b) ^ r)) ≤
-      rationalBaseMeasureBound a b
-```
-
-4. [`ErdosProblems.Erdos1049.PaperR17.thirtyone_four_power_measure_lt_301`](https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos1049/PaperR17/SourceConsumers.lean#L176)
-
-```lean
-theorem thirtyone_four_power_measure_lt_301 (r : ℕ) (hr : 0 < r) :
-    irrationalityExponent (paperLambert (((31 : ℝ) / 4) ^ r)) < 301
-```
-
-<a id="cor-rational-base-measure-comparator"></a>
-
-**Comparator: passed** (run 35935225572, corpus commit `cc7e541cf208`).
-
-For each Lean declaration: the Challenge (the target, stated from Mathlib alone), the Solution (our proof) and the replay report.
-
-- `rational_base_measure_uniform`: [Challenge](https://github.com/wcook04/plectis-erdos-lean/blob/cc7e541cf2081c6fef5a5e377d52e365e33b01eb/PalomarCorpus/E1049_01/Challenge.lean#L212) (E1049_01, line 212), [Solution](https://github.com/wcook04/plectis-erdos-lean/blob/cc7e541cf2081c6fef5a5e377d52e365e33b01eb/Solutions/PalomarCorpus/E1049_01/PaperStatementsI.lean#L23) (PaperStatementsI.lean, line 23), [replay report](../evidence/comparator/replay-35935225572/receipt-E1049_01.json) (E1049_01)
-- `thirtyoneFour_power_measure_lt_301`: [Challenge](https://github.com/wcook04/plectis-erdos-lean/blob/cc7e541cf2081c6fef5a5e377d52e365e33b01eb/PalomarCorpus/E1049_01/Challenge.lean#L220) (E1049_01, line 220), [Solution](https://github.com/wcook04/plectis-erdos-lean/blob/cc7e541cf2081c6fef5a5e377d52e365e33b01eb/Solutions/PalomarCorpus/E1049_01/PaperStatementsI.lean#L31) (PaperStatementsI.lean, line 31), [replay report](../evidence/comparator/replay-35935225572/receipt-E1049_01.json) (E1049_01)
-- `rational_base_power_measure`: [Challenge](https://github.com/wcook04/plectis-erdos-lean/blob/cc7e541cf2081c6fef5a5e377d52e365e33b01eb/PalomarCorpus/E1049_01/Challenge.lean#L233) (E1049_01, line 233), [Solution](https://github.com/wcook04/plectis-erdos-lean/blob/cc7e541cf2081c6fef5a5e377d52e365e33b01eb/Solutions/PalomarCorpus/E1049_01/RationalBaseRegion.lean#L55) (RationalBaseRegion.lean, line 55), [replay report](../evidence/comparator/replay-35935225572/receipt-E1049_01.json) (E1049_01)
-- `thirtyone_four_power_measure_lt_301`: [Challenge](https://github.com/wcook04/plectis-erdos-lean/blob/cc7e541cf2081c6fef5a5e377d52e365e33b01eb/PalomarCorpus/E1049_01/Challenge.lean#L239) (E1049_01, line 239), [Solution](https://github.com/wcook04/plectis-erdos-lean/blob/cc7e541cf2081c6fef5a5e377d52e365e33b01eb/Solutions/PalomarCorpus/E1049_01/RationalBaseRegion.lean#L74) (RationalBaseRegion.lean, line 74), [replay report](../evidence/comparator/replay-35935225572/receipt-E1049_01.json) (E1049_01)
 
 Each Challenge states the same proposition as the Lean declaration it targets, with every definition it uses restated from Mathlib alone.

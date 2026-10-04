@@ -4,7 +4,7 @@ This record belongs to the paper [erdos1041-lemniscate-reasoning-surface.pdf](..
 
 - **Lean.** Every declaration is quoted from [plectis-erdos](https://github.com/wcook04/plectis-erdos) at commit [`436f55ebdafa`](https://github.com/wcook04/plectis-erdos/tree/436f55ebdafa67e4af0fff79f621c13f2ded12bf) and is checked there by Lean's kernel (`leanprover/lean4:v4.29.1`, Mathlib `5e932f97dd25`).
 - **Comparator.** For a compared result, each declaration was stated a second time, from Mathlib alone, as a *Challenge* in [plectis-erdos-lean](https://github.com/wcook04/plectis-erdos-lean), and a *Solution* that uses our proof was checked against it by [Comparator](https://github.com/leanprover/comparator), which also confirms that only the axioms `propext`, `Quot.sound`, `Classical.choice` are used. All checks below come from replay run [35935225572](https://github.com/wcook04/plectis-erdos-lean/actions/runs/35935225572) at corpus commit [`cc7e541cf208`](https://github.com/wcook04/plectis-erdos-lean/tree/cc7e541cf2081c6fef5a5e377d52e365e33b01eb) (tag `paper-evidence-2026-09-24`); both the default Lean kernel and the independent `nanoda` kernel accepted every entry. The replay's own report for each entry is kept in this repository and linked from each check. A Challenge shows `sorry` because it states the target without proving it.
-- **Counts.** 37 results: 25 with a Lean proof of the whole statement, 10 whose Lean proof assumes a named input (marked with a dagger), 2 without a Lean proof of the whole statement; 23 compared.
+- **Counts.** 38 results: 25 with a Lean proof of the whole statement, 11 whose Lean proof assumes a named input (marked with a dagger), 2 without a Lean proof of the whole statement; 23 compared.
 
 These checks establish that the stated propositions are proved. Whether each is the right proposition is for the reader to judge against the paper's statement, which is reproduced below. Comparator checks separately declared statements, the axiom budget and kernel acceptance; it does not establish novelty, significance or peer review.
 
@@ -906,11 +906,103 @@ def DiscSepBergmanArea : Prop :=
 
 **Comparator:** not applicable (no unconditional Lean proof of the whole statement).
 
+<a id="res-critical-value-separation-unnormalised"></a>
+
+## Passage (beginning “res:critical-value-separation-unnormalised…”), page 30
+
+The Lean proof assumes the connector and area construction that this proof produces. Lean takes this input as a hypothesis (`DiscSepBergmanArea`); it is not proved in Lean.
+
+1. [`ErdosProblems.Erdos1041.PaperCompleteR21.discSep_separation_short`](https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos1041/PaperCompleteR21/CriticalValueSeparationTransport.lean#L534)
+
+```lean
+theorem discSep_separation_short (hext : DiscSepBergmanArea)
+    {f : ℂ[X]} {n : ℕ} {c : ℂ} {w₀ S : ℝ}
+    (hn : 3 ≤ n) (hdeg : f.natDegree = n) (hmonic : f.Monic)
+    (hcrit : f.derivative.eval c = 0)
+    (hsimple : f.derivative.derivative.eval c ≠ 0)
+    (hv : f.eval c ≠ 0)
+    (hw₀ : 0 ≤ w₀) (hw₁ : w₀ ≤ 1) (hS : max w₀ (1 - w₀) < S)
+    (hsep : ∀ d : ℂ, d ≠ c → f.derivative.eval d = 0 →
+      S ≤ ‖f.eval d / f.eval c - (w₀ : ℂ)‖) :
+    ∃ (a b : ℂ) (γ : ℝ → ℂ) (Lf : ℝ), a ≠ b ∧ f.eval a = 0 ∧ f.eval b = 0 ∧
+      ContinuousOn γ (Set.Icc (-1 : ℝ) 1) ∧ γ (-1) = a ∧ γ 1 = b ∧
+      (∀ ξ ∈ Set.Icc (-1 : ℝ) 1, ‖f.eval (γ ξ)‖ ≤ ‖f.eval c‖) ∧
+      BoundedVariationOn γ (Set.Icc (-1 : ℝ) 1) ∧
+      0 ≤ Lf ∧ eVariationOn γ (Set.Icc (-1 : ℝ) 1) ≤ ENNReal.ofReal Lf ∧
+      Lf ^ 2 ≤ 2 * ‖f.eval c‖ ^ ((2 : ℝ) / (n : ℝ)) *
+        discSepCoefficient n S (w₀ * (1 - w₀))
+```
+
+2. [`ErdosProblems.Erdos1041.PaperCompleteR21.discSepNormalise_spec`](https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos1041/PaperCompleteR21/CriticalValueSeparationTransport.lean#L410)
+
+```lean
+theorem discSepNormalise_spec {f : ℂ[X]} {n : ℕ} {c v : ℂ} {r w₀ S : ℝ}
+    (hn : 3 ≤ n) (hdeg : f.natDegree = n) (hmonic : f.Monic)
+    (hcrit : f.derivative.eval c = 0)
+    (hsimple : f.derivative.derivative.eval c ≠ 0)
+    (hvdef : v = f.eval c) (hv : v ≠ 0)
+    (hrdef : r = ‖v‖ ^ (1 / (n : ℝ)))
+    (hw₀ : 0 ≤ w₀) (hw₁ : w₀ ≤ 1) (hS : max w₀ (1 - w₀) < S)
+    (hsep : ∀ d : ℂ, d ≠ c → f.derivative.eval d = 0 → S ≤ ‖f.eval d / v - (w₀ : ℂ)‖) :
+    DiscSepNormalised (discSepNormalise f c r v) n w₀ S
+```
+
+3. [`ErdosProblems.Erdos1041.PaperCompleteR21.discSep_transport`](https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos1041/PaperCompleteR21/CriticalValueSeparationTransport.lean#L475)
+
+```lean
+theorem discSep_transport {f P : ℂ[X]} {c v : ℂ} {r L : ℝ} {Z : ℝ → ℂ}
+    (hr : 0 < r) (hv : v ≠ 0)
+    (hP : ∀ w : ℂ, P.eval w = f.eval ((r : ℂ) * w + c) * v⁻¹)
+    (hZ : DiscSepConnector P Z L) :
+    ∃ γ : ℝ → ℂ, ContinuousOn γ (Set.Icc (-1 : ℝ) 1) ∧
+      γ (-1) ≠ γ 1 ∧ f.eval (γ (-1)) = 0 ∧ f.eval (γ 1) = 0 ∧
+      (∀ ξ ∈ Set.Icc (-1 : ℝ) 1, ‖f.eval (γ ξ)‖ ≤ ‖v‖) ∧
+      BoundedVariationOn γ (Set.Icc (-1 : ℝ) 1) ∧
+      eVariationOn γ (Set.Icc (-1 : ℝ) 1) ≤ ENNReal.ofReal (r * L)
+```
+
+4. [`ErdosProblems.Erdos1041.PaperCompleteR21.discSep_squared_length_le`](https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos1041/PaperCompleteR21/CriticalValueSeparationTransport.lean#L305)
+
+```lean
+theorem discSep_squared_length_le {n : ℕ} {w₀ S L area : ℝ}
+    (hw₀ : 0 ≤ w₀) (hS : max w₀ (1 - w₀) < S)
+    (hBergman : L ^ 2 ≤ 2 / Real.pi *
+      Real.log ((1 + discSepQsq S (w₀ * (1 - w₀))) /
+        (1 - discSepQsq S (w₀ * (1 - w₀)))) * area)
+    (hArea : area ≤ Real.pi * (S / ((n : ℝ) - 1)) ^ ((2 : ℝ) / (n : ℝ))) :
+    L ^ 2 ≤ 2 * discSepCoefficient n S (w₀ * (1 - w₀))
+```
+
+5. [`ErdosProblems.Erdos1041.PaperCompleteR21.discSep_bergman_factor`](https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos1041/PaperCompleteR21/CriticalValueSeparationTransport.lean#L179)
+
+```lean
+theorem discSep_bergman_factor {S p : ℝ} (hS : 0 < S) (hden : 0 < S ^ 2 - S + p) :
+    (1 + discSepQsq S p) / (1 - discSepQsq S p)
+      = (S ^ 2 + S + p) / (S ^ 2 - S + p)
+```
+
+The assumed input [`DiscSepBergmanArea`](https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos1041/PaperCompleteR21/CriticalValueSeparationTransport.lean#L293) is
+
+```lean
+def DiscSepBergmanArea : Prop :=
+  ∀ (P : ℂ[X]) (n : ℕ) (w₀ S : ℝ), DiscSepNormalised P n w₀ S →
+    ∃ (Z : ℝ → ℂ) (L area : ℝ),
+      DiscSepConnector P Z L ∧
+      L ^ 2 ≤ 2 / Real.pi *
+        Real.log ((1 + discSepQsq S (w₀ * (1 - w₀))) /
+          (1 - discSepQsq S (w₀ * (1 - w₀)))) * area ∧
+      area ≤ Real.pi * (S / ((n : ℝ) - 1)) ^ ((2 : ℝ) / (n : ℝ))
+```
+
+<a id="res-critical-value-separation-unnormalised-comparator"></a>
+
+**Comparator:** not applicable (no unconditional Lean proof of the whole statement).
+
 <a id="res-critical-value-thresholds"></a>
 
-## Passage (beginning “res:critical-value-thresholds…”), page 30
+## Passage (beginning “res:critical-value-thresholds…”), page 31
 
-The Lean proof assumes the connector and area construction in the proof of Theorem 7.1. Lean takes this input as a hypothesis (`DiscSepBergmanArea`); it is not proved in Lean.
+The Lean proof assumes the connector and area construction in the proof of Theorem 7.1. Lean takes this input as a hypothesis (`DiscSepBergmanArea`, `CriticalValueSeparationTheorem`); it is not proved in Lean.
 
 1. [`ErdosProblems.Erdos1041.PaperCompleteR21.discSepCoefficient_lt_two`](https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos1041/PaperCompleteR21/CriticalValueSeparationTransport.lean#L645)
 
@@ -953,6 +1045,86 @@ theorem discSep_ratio_le_branch {S p : ℝ} (hS : 1 < S) (hp : 0 ≤ p) :
 theorem discSep_branch_le_seven {S : ℝ} (hS : 4 / 3 ≤ S) : (S + 1) / (S - 1) ≤ 7
 ```
 
+5. [`ErdosProblems.Erdos1041.PaperCompleteR21.discSep_cubic_six_fifths`](https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos1041/PaperCompleteR21/CriticalValueSeparationTransport.lean#L738)
+
+```lean
+theorem discSep_cubic_six_fifths (hext : DiscSepBergmanArea)
+    {f : ℂ[X]} {c : ℂ}
+    (hdeg : f.natDegree = 3) (hmonic : f.Monic)
+    (hroots : ∀ z : ℂ, f.eval z = 0 → ‖z‖ < 1)
+    (hcrit : f.derivative.eval c = 0)
+    (hsimple : f.derivative.derivative.eval c ≠ 0)
+    (hv : f.eval c ≠ 0) (hv1 : ‖f.eval c‖ < 1)
+    (hsep : ∀ d : ℂ, d ≠ c → f.derivative.eval d = 0 →
+      6 / 5 ≤ ‖f.eval d / f.eval c - (1 : ℂ)‖) :
+    ∃ (a b : ℂ) (γ : ℝ → ℂ), a ≠ b ∧ f.eval a = 0 ∧ f.eval b = 0 ∧
+      ContinuousOn γ (Set.Icc (-1 : ℝ) 1) ∧ γ (-1) = a ∧ γ 1 = b ∧
+      (∀ ξ ∈ Set.Icc (-1 : ℝ) 1, ‖f.eval (γ ξ)‖ < 1) ∧
+      BoundedVariationOn γ (Set.Icc (-1 : ℝ) 1) ∧
+      eVariationOn γ (Set.Icc (-1 : ℝ) 1) < ENNReal.ofReal 2
+```
+
+6. [`ErdosProblems.Erdos1041.PaperCompleteR21.discSepCoefficient_three_six_fifths`](https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos1041/PaperCompleteR21/CriticalValueSeparationTransport.lean#L677)
+
+```lean
+theorem discSepCoefficient_three_six_fifths : discSepCoefficient 3 (6 / 5) 0 < 2
+```
+
+7. [`ErdosProblems.Erdos1041.PaperCompleteR21.SeparationParent.separation_parent`](https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos1041/PaperCompleteR21/SeparationParent.lean#L162)
+
+```lean
+theorem separation_parent (hSep : CriticalValueSeparationTheorem)
+    {f : ℂ[X]} {c : ℂ} {w₀ S : ℝ}
+    (hmonic : f.Monic) (hdeg : 3 ≤ f.natDegree)
+    (hroots : PaperAnalyticTargets.RootsInOpenUnitDisc f)
+    (hcrit : f.derivative.eval c = 0) (hsimple : f.derivative.derivative.eval c ≠ 0)
+    (hv0 : f.eval c ≠ 0) (hv1 : ‖f.eval c‖ < 1)
+    (hw0 : 0 ≤ w₀) (hw1 : w₀ ≤ 1) (hS : 4 / 3 ≤ S)
+    (hsep : ValueSeparatedAtCentre f c w₀ S) :
+    PaperAnalyticTargets.HasDistinctConnection f 1 2
+```
+
+where [`HasDistinctConnection`](https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos1041/PaperAnalyticTargets.lean#L45) is
+
+```lean
+def HasDistinctConnection (p : ℂ[X]) (R L : ℝ) : Prop :=
+  ∃ a b : ℂ, a ≠ b ∧ p.eval a = 0 ∧ p.eval b = 0 ∧ ConnectedBelow p.eval R L a b
+```
+
+8. [`ErdosProblems.Erdos1041.PaperCompleteR21.SeparationParent.separationCoefficient_lt_two`](https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos1041/PaperCompleteR21/SeparationParent.lean#L98)
+
+```lean
+theorem separationCoefficient_lt_two {n : ℕ} (hn : 3 ≤ n) {p : ℝ} (hp : 0 ≤ p) :
+    separationCoefficient n (4 / 3) p < 2
+```
+
+9. [`ErdosProblems.Erdos1041.PaperCompleteR21.SeparationParent.squared_bound_lt_four`](https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos1041/PaperCompleteR21/SeparationParent.lean#L123)
+
+```lean
+theorem squared_bound_lt_four {n : ℕ} (hn : 3 ≤ n) {v p : ℝ} (hv0 : 0 < v) (hv1 : v < 1)
+    (hp : 0 ≤ p) :
+    2 * v ^ ((2 : ℝ) / (n : ℝ)) * separationCoefficient n (4 / 3) p < 4
+```
+
+10. [`ErdosProblems.Erdos1041.PaperCompleteR21.SeparationParent.connectedBelow_of_connectedAtMost`](https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos1041/PaperCompleteR21/SeparationParent.lean#L144)
+
+```lean
+theorem connectedBelow_of_connectedAtMost {f : ℂ → ℂ} {R L R' L' : ℝ} {a b : ℂ}
+    (h : PaperAnalyticTargets.ConnectedAtMost f R L a b) (hR : R < R') (hL : L < L')
+    (hL0 : 0 ≤ L) : PaperCurve.ConnectedBelow f R' L' a b
+```
+
+where [`ConnectedBelow`](https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos1041/PaperCurveAssembly.lean#L176) is
+
+```lean
+def ConnectedBelow (f : ℂ → ℂ) (R L : ℝ) (a b : ℂ) : Prop :=
+  ∃ γ : ℝ → ℂ, ContinuousOn γ (Icc (0 : ℝ) 2) ∧
+    γ 0 = a ∧ γ 2 = b ∧
+    (∀ t ∈ Icc (0 : ℝ) 2, ‖f (γ t)‖ < R) ∧
+    BoundedVariationOn γ (Icc (0 : ℝ) 2) ∧
+    eVariationOn γ (Icc (0 : ℝ) 2) < ENNReal.ofReal L
+```
+
 The assumed input [`DiscSepBergmanArea`](https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos1041/PaperCompleteR21/CriticalValueSeparationTransport.lean#L293) is
 
 ```lean
@@ -966,13 +1138,27 @@ def DiscSepBergmanArea : Prop :=
       area ≤ Real.pi * (S / ((n : ℝ) - 1)) ^ ((2 : ℝ) / (n : ℝ))
 ```
 
+The assumed input [`CriticalValueSeparationTheorem`](https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos1041/PaperCompleteR21/SeparationParent.lean#L60) is
+
+```lean
+def CriticalValueSeparationTheorem : Prop :=
+  ∀ (f : ℂ[X]) (c : ℂ) (w₀ S : ℝ), f.Monic → 3 ≤ f.natDegree →
+    f.derivative.eval c = 0 → f.derivative.derivative.eval c ≠ 0 →
+    f.eval c ≠ 0 → 0 ≤ w₀ → w₀ ≤ 1 → max w₀ (1 - w₀) < S →
+    ValueSeparatedAtCentre f c w₀ S →
+    ∃ a b : ℂ, a ≠ b ∧ f.eval a = 0 ∧ f.eval b = 0 ∧
+      PaperAnalyticTargets.ConnectedAtMost f.eval ‖f.eval c‖
+        (Real.sqrt (2 * ‖f.eval c‖ ^ ((2 : ℝ) / (f.natDegree : ℝ)) *
+          separationCoefficient f.natDegree S (w₀ * (1 - w₀)))) a b
+```
+
 <a id="res-critical-value-thresholds-comparator"></a>
 
 **Comparator:** not applicable (no unconditional Lean proof of the whole statement).
 
 <a id="res-sep-or-false"></a>
 
-## Proposition 8.1 (failure of two critical-value criteria to cover all polynomials), page 32
+## Proposition 8.1 (failure of two critical-value criteria to cover all polynomials), page 33
 
 > *Let $`f(z)=z^3+(3/100)z-3/4`$. Every root lies in the open unit disc, both critical points are simple, the critical values lie on distinct positive rays, $`\mu>13/25`$, and
 > ``` math
@@ -1618,7 +1804,7 @@ theorem complete_translated_cubic_quotient_fibres
 
 <a id="res-complementary-binomial-chords"></a>
 
-## Theorem 10.1 (complementary binomial chords), page 41
+## Theorem 10.1 (complementary binomial chords), page 42
 
 > *Two adjacent zeros of $`z^n-a`$ can be joined by an explicit polygonal path inside $`\{|z^n-a|<1\}`$ of length strictly below $`2`$. For $`r<r_*`$ the adjacent-root chord itself works. For $`r\ge r_*`$, two radial legs and an inner adjacent crossing chord work after an arbitrarily small radial contraction. These two constructions meet at $`r=r_*`$, where the outer chord attains $`|f|=1`$ at its midpoint and therefore lies only in the closed lemniscate. Open containment at and above the switch uses the inner chord after a radial contraction.*
 
@@ -1738,7 +1924,7 @@ theorem binomial_chords_above_threshold {n : ℕ} (hn : 3 ≤ n) {r : ℝ} (hr0 
 
 <a id="res-critical-value-budget"></a>
 
-## Theorem 10.2 (a mean bound for critical values), page 48
+## Theorem 10.2 (a mean bound for critical values), page 49
 
 > *Let $`f`$ be monic of degree $`n\ge2`$, with roots in a closed disc of radius $`R\ge0`$. If $`c_1,\ldots,c_{n-1}`$ are its critical points counted with multiplicity, then
 > ``` math
@@ -1932,7 +2118,7 @@ theorem paper_weighted_free_point : WeightedFreePoint := by sorry
 
 <a id="res-critical-proximity"></a>
 
-## Theorem 10.5 (a geometric-mean bound for distances to a critical point), page 55
+## Theorem 10.5 (a geometric-mean bound for distances to a critical point), page 56
 
 > *Let $`n\ge2`$, let $`z_1,\ldots,z_n,c\in\mathbb C`$ with $`c\ne z_k`$ for every $`k`$, and suppose
 > ``` math
@@ -2154,7 +2340,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="res-value"></a>
 
-## Theorem 11.1 (value equation), page 65
+## Theorem 11.1 (value equation), page 66
 
 > *For a polynomial $`f`$ and a differentiable curve $`z:I\to\mathbb C`$ on an interval $`I`$, assume $`f'(z(t))\ne0`$ and $`z'(t)=-f(z(t))/f'(z(t))`$ throughout $`I`$. Then $`w=f\circ z`$ satisfies $`w'=-w`$, and
 > ``` math

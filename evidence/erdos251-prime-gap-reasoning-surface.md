@@ -231,17 +231,57 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 > ``` math
 > \sum_{n\ge0}\frac{p_n}{2^{\,n+1}}
 >  \;=\;2+\sum_{n\ge0}\frac{g_n}{2^{\,n+1}} .
-> ```*
+> ```
+> Writing $`S=\sum_{n\ge0}g_n2^{-(n+1)}`$, the complete tails $`T_N=\sum_{j\ge1}g_{N+j}2^{-j}`$ satisfy $`T_0=2S-1`$ and $`T_{N+1}=2T_N-g_{N+1}`$. Thus $`\Pi`$, $`S`$ and $`T_0`$ have the same rationality status.*
 
-The Lean declaration below states this result.
+The Lean declarations below together state this result.
 
-[`ErdosProblems.Erdos251.PaperR7.infinite_prime_gap_identity`](https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos251/PaperCoreR7.lean#L47)
+1. [`ErdosProblems.Erdos251.PaperR7.infinite_prime_gap_identity`](https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos251/PaperCoreR7.lean#L47)
 
 ```lean
 theorem infinite_prime_gap_identity :
     Summable primeDyadicTerm ∧ Summable primeGapDyadicTerm ∧
     (∑' n : ℕ, primeDyadicTerm n) =
       2 + ∑' n : ℕ, primeGapDyadicTerm n
+```
+
+2. [`ErdosProblems.Erdos251.realPrimeGapTail_eq_tsum_shifted_gaps`](https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos251/RealPrimeGapTail.lean#L31)
+
+```lean
+theorem realPrimeGapTail_eq_tsum_shifted_gaps (N : ℕ) :
+    realPrimeGapTail N =
+      ∑' k : ℕ, (primeGap0 (N + k + 1) : ℝ) / 2 ^ (k + 1)
+```
+
+3. [`ErdosProblems.Erdos251.realPrimeGapTail_zero`](https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos251/RealPrimeGapTail.lean#L57)
+
+```lean
+@[simp] theorem realPrimeGapTail_zero :
+    realPrimeGapTail 0 = 2 * (∑' n : ℕ, primeGapDyadicTerm n) - 1
+```
+
+4. [`ErdosProblems.Erdos251.realPrimeGapTail_recurrence`](https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos251/RealPrimeGapTail.lean#L48)
+
+```lean
+theorem realPrimeGapTail_recurrence :
+    RealDyadicTailRecurrence (fun n => (primeGap0 n : ℤ)) realPrimeGapTail
+```
+
+5. [`ErdosProblems.Erdos251.irrational_tsum_primeDyadicTerm_iff_primeGap`](https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos251/PrimeGapDyadicTail.lean#L435)
+
+```lean
+theorem irrational_tsum_primeDyadicTerm_iff_primeGap
+    (hprime : Summable primeDyadicTerm) :
+    Irrational (∑' n : ℕ, primeDyadicTerm n) ↔
+      Irrational (∑' n : ℕ, primeGapDyadicTerm n)
+```
+
+6. [`ErdosProblems.Erdos251.irrational_realPrimeGapTail_zero_iff`](https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos251/RealPrimeGapTail.lean#L63)
+
+```lean
+theorem irrational_realPrimeGapTail_zero_iff :
+    Irrational (realPrimeGapTail 0) ↔
+      Irrational (∑' n : ℕ, primeGapDyadicTerm n)
 ```
 
 <a id="long251-res-infinite-comparator"></a>
@@ -251,6 +291,11 @@ theorem infinite_prime_gap_identity :
 For each Lean declaration: the Challenge (the target, stated from Mathlib alone), the Solution (our proof) and the replay report.
 
 - `infinite_prime_gap_identity`: [Challenge](https://github.com/wcook04/plectis-erdos-lean/blob/cc7e541cf2081c6fef5a5e377d52e365e33b01eb/PalomarCorpus/E251_01/Challenge.lean#L205) (E251_01, line 205), [Solution](https://github.com/wcook04/plectis-erdos-lean/blob/cc7e541cf2081c6fef5a5e377d52e365e33b01eb/Solutions/PalomarCorpus/E251_01/PaperStatementsG.lean#L44) (PaperStatementsG.lean, line 44), [replay report](../evidence/comparator/replay-35935225572/receipt-E251_01.json) (E251_01)
+- `realPrimeGapTail_eq_tsum_shifted_gaps`: [Challenge](https://github.com/wcook04/plectis-erdos-lean/blob/cc7e541cf2081c6fef5a5e377d52e365e33b01eb/PalomarCorpus/E251_05/Challenge.lean#L126) (E251_05, line 126), [Solution](https://github.com/wcook04/plectis-erdos-lean/blob/cc7e541cf2081c6fef5a5e377d52e365e33b01eb/Solutions/PalomarCorpus/E251_05/PaperStatementsG.lean#L168) (PaperStatementsG.lean, line 168), [replay report](../evidence/comparator/replay-35935225572/receipt-E251_05.json) (E251_05)
+- `realPrimeGapTail_zero`: [Challenge](https://github.com/wcook04/plectis-erdos-lean/blob/cc7e541cf2081c6fef5a5e377d52e365e33b01eb/PalomarCorpus/E251_05/Challenge.lean#L135) (E251_05, line 135), [Solution](https://github.com/wcook04/plectis-erdos-lean/blob/cc7e541cf2081c6fef5a5e377d52e365e33b01eb/Solutions/PalomarCorpus/E251_05/PaperStatementsG.lean#L175) (PaperStatementsG.lean, line 175), [replay report](../evidence/comparator/replay-35935225572/receipt-E251_05.json) (E251_05)
+- `realPrimeGapTail_recurrence`: [Challenge](https://github.com/wcook04/plectis-erdos-lean/blob/cc7e541cf2081c6fef5a5e377d52e365e33b01eb/PalomarCorpus/E251_05/Challenge.lean#L131) (E251_05, line 131), [Solution](https://github.com/wcook04/plectis-erdos-lean/blob/cc7e541cf2081c6fef5a5e377d52e365e33b01eb/Solutions/PalomarCorpus/E251_05/PaperStatementsG.lean#L172) (PaperStatementsG.lean, line 172), [replay report](../evidence/comparator/replay-35935225572/receipt-E251_05.json) (E251_05)
+- `irrational_tsum_primeDyadicTerm_iff_primeGap`: [Challenge](https://github.com/wcook04/plectis-erdos-lean/blob/cc7e541cf2081c6fef5a5e377d52e365e33b01eb/PalomarCorpus/E251_05/Challenge.lean#L120) (E251_05, line 120), [Solution](https://github.com/wcook04/plectis-erdos-lean/blob/cc7e541cf2081c6fef5a5e377d52e365e33b01eb/Solutions/PalomarCorpus/E251_05/PaperStatementsG.lean#L159) (PaperStatementsG.lean, line 159), [replay report](../evidence/comparator/replay-35935225572/receipt-E251_05.json) (E251_05)
+- `irrational_realPrimeGapTail_zero_iff`: [Challenge](https://github.com/wcook04/plectis-erdos-lean/blob/cc7e541cf2081c6fef5a5e377d52e365e33b01eb/PalomarCorpus/E251_05/Challenge.lean#L115) (E251_05, line 115), [Solution](https://github.com/wcook04/plectis-erdos-lean/blob/cc7e541cf2081c6fef5a5e377d52e365e33b01eb/Solutions/PalomarCorpus/E251_05/PaperStatementsG.lean#L155) (PaperStatementsG.lean, line 155), [replay report](../evidence/comparator/replay-35935225572/receipt-E251_05.json) (E251_05)
 
 Each Challenge states the same proposition as the Lean declaration it targets, with every definition it uses restated from Mathlib alone.
 
@@ -260,9 +305,9 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 > *<span id="res:irr-equivalence" label="res:irr-equivalence"></span> $`\Pi`$ is irrational if and only if $`S=\sum_{n\ge0}g_n2^{-(n+1)}`$ is irrational. The corresponding zero-based series with denominator $`2^n`$ equals $`4+2S`$ and has the same irrationality status.*
 
-The Lean declaration below states this result.
+The Lean declarations below together state this result.
 
-[`ErdosProblems.Erdos251.PaperR7.irrationality_reformulation`](https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos251/PaperCoreR7.lean#L56)
+1. [`ErdosProblems.Erdos251.PaperR7.irrationality_reformulation`](https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos251/PaperCoreR7.lean#L56)
 
 ```lean
 theorem irrationality_reformulation :
@@ -274,6 +319,15 @@ theorem irrationality_reformulation :
       Irrational (∑' n : ℕ, primeGapDyadicTerm n))
 ```
 
+2. [`ErdosProblems.Erdos251.PaperR7.infinite_prime_gap_identity`](https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos251/PaperCoreR7.lean#L47)
+
+```lean
+theorem infinite_prime_gap_identity :
+    Summable primeDyadicTerm ∧ Summable primeGapDyadicTerm ∧
+    (∑' n : ℕ, primeDyadicTerm n) =
+      2 + ∑' n : ℕ, primeGapDyadicTerm n
+```
+
 <a id="long251-res-irr-equivalence-comparator"></a>
 
 **Comparator: passed** (run 35935225572, corpus commit `cc7e541cf208`).
@@ -281,6 +335,7 @@ theorem irrationality_reformulation :
 For each Lean declaration: the Challenge (the target, stated from Mathlib alone), the Solution (our proof) and the replay report.
 
 - `irrationality_reformulation`: [Challenge](https://github.com/wcook04/plectis-erdos-lean/blob/cc7e541cf2081c6fef5a5e377d52e365e33b01eb/PalomarCorpus/E251_01/Challenge.lean#L211) (E251_01, line 211), [Solution](https://github.com/wcook04/plectis-erdos-lean/blob/cc7e541cf2081c6fef5a5e377d52e365e33b01eb/Solutions/PalomarCorpus/E251_01/PaperStatementsG.lean#L49) (PaperStatementsG.lean, line 49), [replay report](../evidence/comparator/replay-35935225572/receipt-E251_01.json) (E251_01)
+- `infinite_prime_gap_identity`: [Challenge](https://github.com/wcook04/plectis-erdos-lean/blob/cc7e541cf2081c6fef5a5e377d52e365e33b01eb/PalomarCorpus/E251_01/Challenge.lean#L205) (E251_01, line 205), [Solution](https://github.com/wcook04/plectis-erdos-lean/blob/cc7e541cf2081c6fef5a5e377d52e365e33b01eb/Solutions/PalomarCorpus/E251_01/PaperStatementsG.lean#L44) (PaperStatementsG.lean, line 44), [replay report](../evidence/comparator/replay-35935225572/receipt-E251_01.json) (E251_01)
 
 Each Challenge states the same proposition as the Lean declaration it targets, with every definition it uses restated from Mathlib alone.
 
@@ -328,11 +383,18 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 >
 > 3.  *for some fixed $`h\ge1`$, $`\sigma_h(N)`$ is an integer at every sufficiently large $`N`$.*
 >
+> *More precisely, if $`T_0=u/(2^sd)`$ is in lowest terms, with $`d`$ odd, then
+> ``` math
+> \operatorname{den}(T_N)=2^{\max(s-N,0)}d,\qquad
+>  \sigma_h(N)\in\mathbb{Z}\ \Longleftrightarrow\ N\ge s\ \text{and}\ d\mid2^h-1
+>  \quad(h\ge1).
+> ```*
+>
 > *Consequently $`T_0`$ is irrational if and only if every positive-length shift is nonintegral at every index, equivalently if and only if for every $`h\ge1`$ and every cutoff some later $`N`$ has $`\sigma_h(N)\notin\mathbb{Z}`$.*
 
-The Lean declaration below states this result.
+The Lean declarations below together state this result.
 
-[`ErdosProblems.Erdos251.PaperR7.rationality_classification`](https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos251/PaperCoreR7.lean#L94)
+1. [`ErdosProblems.Erdos251.PaperR7.rationality_classification`](https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos251/PaperCoreR7.lean#L94)
 
 ```lean
 theorem rationality_classification {g : ℕ → ℤ} {T : ℕ → ℝ}
@@ -347,6 +409,17 @@ theorem rationality_classification {g : ℕ → ℤ} {T : ℕ → ℝ}
     (Irrational (T 0) ↔ CofinalNonintegralTailShifts T)
 ```
 
+2. [`ErdosProblems.Erdos251.PaperCompleteR20.real_orbit_exact_den_and_shift`](https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos251/PaperCompleteR20/ExactDenominator.lean#L62)
+
+```lean
+theorem real_orbit_exact_den_and_shift
+    {g : ℕ → ℤ} {T : ℕ → ℝ} (hrec : RealDyadicTailRecurrence g T)
+    (q : ℚ) (hq0 : T 0 = q) (s d : ℕ) (hq : q.den = 2^s*d) (hd : Odd d)
+    (N h : ℕ) (hh : 0 < h) :
+    (∃ v : ℚ, T N = v ∧ v.den = 2^(s-N)*d) ∧
+    (RealIntegral (realTailShift T h N) ↔ s ≤ N ∧ d ∣ 2^h-1)
+```
+
 <a id="long251-res-escape-irrational-comparator"></a>
 
 **Comparator: passed** (run 35935225572, corpus commit `cc7e541cf208`).
@@ -354,12 +427,13 @@ theorem rationality_classification {g : ℕ → ℤ} {T : ℕ → ℝ}
 For each Lean declaration: the Challenge (the target, stated from Mathlib alone), the Solution (our proof) and the replay report.
 
 - `rationality_classification`: [Challenge](https://github.com/wcook04/plectis-erdos-lean/blob/cc7e541cf2081c6fef5a5e377d52e365e33b01eb/PalomarCorpus/E251_01/Challenge.lean#L220) (E251_01, line 220), [Solution](https://github.com/wcook04/plectis-erdos-lean/blob/cc7e541cf2081c6fef5a5e377d52e365e33b01eb/Solutions/PalomarCorpus/E251_01/PaperStatementsG.lean#L91) (PaperStatementsG.lean, line 91), [replay report](../evidence/comparator/replay-35935225572/receipt-E251_01.json) (E251_01)
+- `real_orbit_exact_den_and_shift`: [Challenge](https://github.com/wcook04/plectis-erdos-lean/blob/cc7e541cf2081c6fef5a5e377d52e365e33b01eb/PalomarCorpus/E251_05/Challenge.lean#L150) (E251_05, line 150), [Solution](https://github.com/wcook04/plectis-erdos-lean/blob/cc7e541cf2081c6fef5a5e377d52e365e33b01eb/Solutions/PalomarCorpus/E251_05/PaperStatementsJ.lean#L18) (PaperStatementsJ.lean, line 18), [replay report](../evidence/comparator/replay-35935225572/receipt-E251_05.json) (E251_05)
 
 Each Challenge states the same proposition as the Lean declaration it targets, with every definition it uses restated from Mathlib alone.
 
 <a id="long251-res-true-tail"></a>
 
-## Lemma 5.4 (the boundary condition for the tail recurrence), page 14
+## Lemma 5.4 (the boundary condition for the tail recurrence), page 15
 
 > *Let $`a_1,a_2,\ldots`$ be real numbers with $`\sum_{j\ge1}|a_j|2^{-j}<\infty`$, and let $`U_{N+1}=2U_N-a_{N+1}`$. Then
 > ``` math
@@ -485,7 +559,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long251-res-smallpair-real"></a>
 
-## Corollary 6.2 (real form and the sufficient condition), page 16
+## Corollary 6.2 (real form and the sufficient condition), page 17
 
 > *The same statement holds for a real orbit, with the same proof. If for every $`h\ge1`$ and every cutoff some later $`N`$ satisfies the three displayed conditions for the actual prime gaps, then $`\Pi`$ is irrational.*
 
@@ -558,11 +632,12 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 > \bigl(\delta_N=2\ \hbox{ and }\tfrac12<D_N<1\bigr)
 >  \quad\hbox{or}\quad
 >  \bigl(\delta_N=-2\ \hbox{ and }-1<D_N<-\tfrac12\bigr).
-> ```*
+> ```
+> In either case, with $`s=\delta_N/2\in\{-1,1\}`$, $`sD_{N+1}\in(-1,0)`$ and both differences are nonintegral. The same statement holds for any real triple with $`D'=2D-\delta`$ and even $`\delta`$, without a hypothesis on prime gaps.*
 
-The Lean declaration below states this result.
+The Lean declarations below together state this result.
 
-[`ErdosProblems.Erdos251.PaperR7.real_signed_two_window`](https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos251/PaperCoreR7.lean#L135)
+1. [`ErdosProblems.Erdos251.PaperR7.real_signed_two_window`](https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos251/PaperCoreR7.lean#L135)
 
 ```lean
 theorem real_signed_two_window {g : ℕ → ℤ} {T : ℕ → ℝ}
@@ -577,6 +652,27 @@ theorem real_signed_two_window {g : ℕ → ℤ} {T : ℕ → ℝ}
        -1 < realTailShift T h N ∧ realTailShift T h N < -(1 / 2)))
 ```
 
+2. [`ErdosProblems.Erdos251.PaperCompleteR20.signed_two_window_iff`](https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos251/PaperCompleteR20/SignedWindow.lean#L7)
+
+```lean
+theorem signed_two_window_iff (D D' : ℝ) (δ : ℤ)
+    (heven : Even δ) (hstep : D' = 2 * D - (δ : ℝ)) :
+    (|D| < 1 ∧ |D'| < 1 ∧ δ ≠ 0) ↔
+      ∃ s : ℤ, (s = -1 ∨ s = 1) ∧ δ = 2 * s ∧
+        (1 / 2 : ℝ) < (s : ℝ) * D ∧ (s : ℝ) * D < 1
+```
+
+3. [`ErdosProblems.Erdos251.PaperCompleteR20.signed_two_window_consequences`](https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos251/PaperCompleteR20/SignedWindow.lean#L47)
+
+```lean
+theorem signed_two_window_consequences (D D' : ℝ) (δ s : ℤ)
+    (hstep : D' = 2 * D - (δ : ℝ)) (hs : s = -1 ∨ s = 1)
+    (hδ : δ = 2 * s) (hlo : (1 / 2 : ℝ) < (s : ℝ) * D)
+    (hhi : (s : ℝ) * D < 1) :
+    (-1 < (s : ℝ) * D' ∧ (s : ℝ) * D' < 0) ∧
+      D ∉ Set.range ((↑) : ℤ → ℝ) ∧ D' ∉ Set.range ((↑) : ℤ → ℝ)
+```
+
 <a id="long251-res-signedwindow-comparator"></a>
 
 **Comparator: passed** (run 35935225572, corpus commit `cc7e541cf208`).
@@ -584,12 +680,14 @@ theorem real_signed_two_window {g : ℕ → ℤ} {T : ℕ → ℝ}
 For each Lean declaration: the Challenge (the target, stated from Mathlib alone), the Solution (our proof) and the replay report.
 
 - `real_signed_two_window`: [Challenge](https://github.com/wcook04/plectis-erdos-lean/blob/cc7e541cf2081c6fef5a5e377d52e365e33b01eb/PalomarCorpus/E251_02/Challenge.lean#L128) (E251_02, line 128), [Solution](https://github.com/wcook04/plectis-erdos-lean/blob/cc7e541cf2081c6fef5a5e377d52e365e33b01eb/Solutions/PalomarCorpus/E251_02/PaperStatementsG.lean#L102) (PaperStatementsG.lean, line 102), [replay report](../evidence/comparator/replay-35935225572/receipt-E251_02.json) (E251_02)
+- `signed_two_window_iff`: [Challenge](https://github.com/wcook04/plectis-erdos-lean/blob/cc7e541cf2081c6fef5a5e377d52e365e33b01eb/PalomarCorpus/E251_05/Challenge.lean#L169) (E251_05, line 169), [Solution](https://github.com/wcook04/plectis-erdos-lean/blob/cc7e541cf2081c6fef5a5e377d52e365e33b01eb/Solutions/PalomarCorpus/E251_05/PaperStatementsD.lean#L22) (PaperStatementsD.lean, line 22), [replay report](../evidence/comparator/replay-35935225572/receipt-E251_05.json) (E251_05)
+- `signed_two_window_consequences`: [Challenge](https://github.com/wcook04/plectis-erdos-lean/blob/cc7e541cf2081c6fef5a5e377d52e365e33b01eb/PalomarCorpus/E251_05/Challenge.lean#L161) (E251_05, line 161), [Solution](https://github.com/wcook04/plectis-erdos-lean/blob/cc7e541cf2081c6fef5a5e377d52e365e33b01eb/Solutions/PalomarCorpus/E251_05/PaperStatementsD.lean#L14) (PaperStatementsD.lean, line 14), [replay report](../evidence/comparator/replay-35935225572/receipt-E251_05.json) (E251_05)
 
 Each Challenge states the same proposition as the Lean declaration it targets, with every definition it uses restated from Mathlib alone.
 
 <a id="long251-res-explicit-remainder"></a>
 
-## Proposition 6.5 (explicit remainder), page 17
+## Proposition 6.5 (explicit remainder), page 18
 
 > *For integers $`h,N\ge0`$ and $`L\ge1`$ put
 > ``` math
@@ -745,7 +843,7 @@ theorem denominator_floor_both (a : ℤ) (b : ℕ) (hb : 0 < b)
 
 <a id="long251-res-boundedperturbation"></a>
 
-## Theorem 8.1 (bounded perturbations preserving congruences), page 21
+## Theorem 8.1 (bounded perturbations preserving congruences), page 22
 
 > *Let $`a_n`$ be natural numbers with $`\sum_{n\ge0}a_n2^{-(n+1)}`$ convergent. For every integer $`M\ge1`$ and every cutoff $`K`$ there are digits $`\varepsilon_n\in\{0,1\}`$, zero for $`n<K`$, such that $`\sum_{n\ge0}(a_n+M\varepsilon_n)2^{-(n+1)}`$ is rational.*
 
@@ -1091,7 +1189,7 @@ def SchlagePuchtaLemma4 : Prop :=
 
 <a id="long251-res-polignacfail"></a>
 
-## Theorem 8.8 (recurring values are not enough), page 26
+## Theorem 8.8 (recurring values are not enough), page 27
 
 > *There is a sequence $`(a_n)_{n\ge1}`$ of positive even integers with the following properties. The values $`2`$ and $`4`$ each occur infinitely often at indices divisible by every fixed $`t\ge1`$. The sequence is unbounded, not eventually periodic, and satisfies $`a_n=O(\log n)`$. The series $`\sum_{n\ge1}a_n2^{-n}`$ equals $`6`$, and every scaled tail $`\sum_{j\ge1}a_{N+j}2^{-j}`$ is an integer, so every tail shift is integral. The increasing odd sequence $`P_n=3+\sum_{j\le n}a_j`$ satisfies $`P_n\sim n\log n`$.*
 
@@ -1165,7 +1263,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long251-res-telescope"></a>
 
-## Proposition 8.10 (exact telescoping), page 29
+## Proposition 8.10 (exact telescoping), page 30
 
 > *For every $`n\ge0`$, $`\sum_{i=0}^{n-1}\kappa_i2^{-(i+1)}=K_0-K_n2^{-n}`$.*
 
@@ -1253,11 +1351,11 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 > S_{h,N,L}=\sum_{j=1}^{L}\frac{g_{N+h+j}-g_{N+j}}{2^{\,j}},\qquad
 >  R_{h,N,L}(M)=\sum_{j>L}\frac{M(N+h+j)+M(N+j)}{2^{\,j}} .
 > ```
-> If for every $`h\ge1`$ and every $`N_0`$ there are $`N\ge N_0`$ and $`L\ge1`$ with $`\operatorname{dist}(S_{h,N,L},\mathbb{Z})>R_{h,N,L}(M)`$, then the nonintegrality condition in Problem 10.1 holds.*
+> If for every $`h\ge1`$ and every $`N_0`$ there are $`N\ge N_0`$ and $`L\ge1`$ with $`\operatorname{dist}(S_{h,N,L},\mathbb{Z})>R_{h,N,L}(M)`$, then the nonintegrality condition in Problem 10.1 holds. Consequently $`\Pi`$ is irrational.*
 
-The Lean declaration below states this result or one that implies it. The Lean statement assumes only $M(n)\ge g_n$ and convergence of the series $R_{h,N,L}(M)$ at the triples $(h,N,L)$ used; the printed hypothesis $\sum_{n\ge0}M(n)2^{-n}<\infty$ gives that convergence, and the conclusion is the nonintegrality condition of the escape problem for every $h\ge1$.
+The Lean declarations below together state this result or one that implies it. The Lean statement assumes only $M(n)\ge g_n$ and convergence of the series $R_{h,N,L}(M)$ at the triples $(h,N,L)$ used; the printed hypothesis $\sum_{n\ge0}M(n)2^{-n}<\infty$ gives that convergence, and the conclusion is the nonintegrality condition of the escape problem for every $h\ge1$. The Lean statement assumes only $M(n)\ge g_n$ and convergence of the series $R_{h,N,L}(M)$ at the triples $(h,N,L)$ used; the printed standing assumption $\sum_{n\ge0}M(n)2^{-n}<\infty$ gives that convergence, and the conclusion is irrationality of $\Pi$. The consolidated statement retains the clauses already proved at these interfaces; Long truncation concludes the nonintegrality condition; short concludes Pi irrational. Add explicit Pi-irrationality consequence to existing long truncation environment and its irrational_prime_series_of_finite_truncation declaration.
 
-[`ErdosProblems.Erdos251.PaperR7.cofinal_escape_of_finite_truncation`](https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos251/PaperTailBoundsR7.lean#L261)
+1. [`ErdosProblems.Erdos251.PaperR7.cofinal_escape_of_finite_truncation`](https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos251/PaperTailBoundsR7.lean#L261)
 
 ```lean
 theorem cofinal_escape_of_finite_truncation (M : ℕ → ℝ)
@@ -1276,6 +1374,17 @@ def CofinalNonintegralTailShifts (T : ℕ → ℝ) : Prop :=
     ¬RealIntegral (realTailShift T h N)
 ```
 
+2. [`ErdosProblems.Erdos251.PaperR7.irrational_prime_series_of_finite_truncation`](https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos251/PaperTailBoundsR7.lean#L273)
+
+```lean
+theorem irrational_prime_series_of_finite_truncation (M : ℕ → ℝ)
+    (hM : ∀ n, (primeGap0 n : ℝ) ≤ M n)
+    (hsupply : ∀ h : ℕ, 0 < h → ∀ N₀ : ℕ, ∃ N L : ℕ,
+      N₀ ≤ N ∧ 1 ≤ L ∧ Summable (majorantRemainderTerm M h N L) ∧
+      majorantRemainder M h N L < integerDistance (signedWindow h N L)) :
+    Irrational (∑' n : ℕ, primeDyadicTerm n)
+```
+
 <a id="long251-xr-truncation-comparator"></a>
 
 **Comparator: passed** (run 35935225572, corpus commit `cc7e541cf208`).
@@ -1283,12 +1392,13 @@ def CofinalNonintegralTailShifts (T : ℕ → ℝ) : Prop :=
 For each Lean declaration: the Challenge (the target, stated from Mathlib alone), the Solution (our proof) and the replay report.
 
 - `cofinal_escape_of_finite_truncation`: [Challenge](https://github.com/wcook04/plectis-erdos-lean/blob/cc7e541cf2081c6fef5a5e377d52e365e33b01eb/PalomarCorpus/E251_04/Challenge.lean#L144) (E251_04, line 144), [Solution](https://github.com/wcook04/plectis-erdos-lean/blob/cc7e541cf2081c6fef5a5e377d52e365e33b01eb/Solutions/PalomarCorpus/E251_04/PaperStatementsN.lean#L21) (PaperStatementsN.lean, line 21), [replay report](../evidence/comparator/replay-35935225572/receipt-E251_04.json) (E251_04)
+- `irrational_prime_series_of_finite_truncation`: [Challenge](https://github.com/wcook04/plectis-erdos-lean/blob/cc7e541cf2081c6fef5a5e377d52e365e33b01eb/PalomarCorpus/E251_05/Challenge.lean#L196) (E251_05, line 196), [Solution](https://github.com/wcook04/plectis-erdos-lean/blob/cc7e541cf2081c6fef5a5e377d52e365e33b01eb/Solutions/PalomarCorpus/E251_05/PaperStatementsQ.lean#L20) (PaperStatementsQ.lean, line 20), [replay report](../evidence/comparator/replay-35935225572/receipt-E251_05.json) (E251_05)
 
 Each Challenge states the same proposition as the Lean declaration it targets, with every definition it uses restated from Mathlib alone.
 
 <a id="long251-res-complete-truncation"></a>
 
-## Proposition D.4 (completeness of finite separation), page 36
+## Proposition D.4 (completeness of finite separation), page 37
 
 > *Suppose $`D\in\mathbb{R}`$, $`S_L\in\mathbb{R}`$ and $`R_L\ge0`$ satisfy $`|D-S_L|\le R_L`$ and $`R_L\to0`$. Then
 > ``` math

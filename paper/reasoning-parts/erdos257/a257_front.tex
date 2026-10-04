@@ -936,6 +936,34 @@ $1/(2pq)-1/(4pq)=1/(4pq)$.  Thus dilating a prime support already destroys
 the independence used in the prime-incidence argument.  This brief ordinary
 calculation marks a boundary of that argument, not an irrationality criterion.
 
+\subsection{Algebraic bases on separated supports}
+\label{sec:separated-support-transfer}
+The companion
+\href{optimal-sparse-perturbations.pdf}{\emph{Reading eight Erd\H{o}s
+problems together}}, subsection ``Divisibility cuts at every algebraic base'',
+states a transcendence extension based on the number-field Subspace
+Theorem. Its hypothesis is an infinite set $H$ with indices $L_j<M_j$,
+where $L_j\to\infty$ and $M_j-L_j\to\infty$, such that every $n\in H$
+with $n\le L_j$ divides $L_j$, and every $n\in H$ with $n>L_j$ is a
+multiple of $M_j$. The claimed conclusion is transcendence of
+$\sum_{n\in B}w_n/(t^n-1)$ for every infinite $B\subseteq H$, bounded
+positive integer weights $w_n$ and real algebraic $t>1$.
+
+Every divisibility chain has such cuts, as does
+$H_* = \bigcup_j N_j\{1,\ldots,2^{N_j}\}$ with $N_0=1$ and
+$N_{j+1}=2N_j\operatorname{lcm}(1,\ldots,2^{N_j})$.
+Each block has a reciprocal sum of at least $1/2$ and contains
+antichains of unbounded size. The weighted sum for one prime is at
+most $2t^2/(t-1)^3$ at every real $t>1$. This connects the example
+with the weighted criterion, although the separation condition is
+not asserted for every support satisfying that criterion.
+
+This separate proof does not enter the weighted, cover or mixed theorem. It has two AI proof reviews, no Lean
+proof of transcendence and no independent human review. No historical
+priority is asserted for the extension. The case of arbitrary infinite
+support at base two remains unresolved.
+
+
 \subsection{The universal problem and the half-value question}
 
 For an integer $n \ge 1$ set $x_n := 1/(2^n-1)$, and for $A \subseteq \{1,2,3,\dots\}$ write
@@ -1120,6 +1148,95 @@ sum at least $1/2$.  Its reciprocal sum therefore diverges.
 These examples compare denominator growth with reciprocal summability
 only; they leave the other support criteria out of the comparison.
 
+\subsection{Finite-support denominator periods}\papersectiontarget{scope-finite-periods}\label{sec:period}
+
+For a finite nonempty $F\subseteq\Npos$, let $D_F$ be the positive reduced
+denominator of $X_F(b)=\sum_{n\in F}(b^n-1)^{-1}$.
+We use $\operatorname{ord}_1(b)=1$.
+
+\begin{thm}[the exact denominator period]\label{res:period}
+Let $F\subseteq\Npos$ be finite and nonempty, let $b\ge2$ be an integer, and
+let $D_F>0$ be the denominator of $X_F(b)$ in lowest terms.  Then $D_F$ is
+coprime to $b$, and
+\[
+  \operatorname{ord}_{D_F}(b)=\lcm\{n:n\in F\}.
+\]
+If moreover $\lcm(F)\ge2$, then $\lcm(F)<D_F$.  We use
+$\operatorname{ord}_1(b)=1$, so the statement includes $F=\{1\}$
+at $b=2$.
+\end{thm}
+
+Put $L=\operatorname{lcm}(F)$.  Clearing denominators gives
+$D_F\mid b^L-1$, so the upper divisibility for the order is immediate.
+For the reverse, choose $n\ge2$ maximal under divisibility in $F$ and a
+prime $\ell\mid\Phi_n(b)$.  If $e=v_\ell(b^n-1)$, the full prime power
+$\ell^e$ has $\operatorname{ord}_{\ell^e}(b)=n$.
+Every other selected exponent $m$ has $n\nmid m$, hence
+$v_\ell(b^m-1)<e$.  The $n$th summand has uniquely smallest $\ell$-adic
+valuation and cannot cancel.  Thus $\ell^e\mid D_F$ and
+$n\mid\operatorname{ord}_{D_F}(b)$.  Taking all maximal selected exponents
+proves the order statement; the size bound follows from
+$\operatorname{ord}_{D_F}(b)\mid\varphi(D_F)<D_F$ when $L\ge2$.
+The case $F=\{1\}$ has order one directly.
+
+The unique-valuation argument also permits signs $\pm1$ on the finite
+summands. This signed extension is not included in the formal statement.
+The required cyclotomic prime-power fact is proved in
+the following calculation.
+The distinction between primes and prime powers is visible in
+\[
+ X_{\{2,3\}}(2)=\frac{10}{21},\qquad
+ X_{\{2,6\}}(2)=\frac{22}{63}.
+\]
+In both examples $2$ has multiplicative order six modulo the denominator.
+The first combines orders two and three; the second retains the
+order-six prime power $9$, although no prime divisor of $63$ has order six.
+The boundary $F=\{1\}$ at base two has $D_F=L=1$.
+These lower denominator bounds give no upper height control for infinite
+partial sums and do not decide an infinite-support value.  Van Assche instead constructs approximants for the full Lambert series and proves
+both nonvanishing and decay of the associated integer linear forms
+\cite[Lemma~1 and (34)--(35)]{vanassche2001}.  That approximation mechanism
+does not follow from denominator survival alone.
+
+
+In particular, $1/21$ is not a finite subseries sum. If it were, the order
+of $2$ modulo $21$ would force every selected exponent to divide $6$.
+The exponent $1$ is excluded since its weight is $1$. Any sum containing
+$2$ or $3$ exceeds $1/21$, whereas the only nonzero remaining sum is
+$1/63$, from the exponent $6$. This will distinguish finite and infinite
+representations below.
+
+\paragraph{Cyclotomic prime-power fact.}
+Let $b\ge2$, $n\ge2$, $\ell\mid\Phi_n(b)$ be prime and
+$e=v_\ell(b^n-1)$.  Then $\operatorname{ord}_{\ell^e}(b)=n$.
+We include the $2$-adic case.
+For odd $\ell$, put $d=\operatorname{ord}_{\ell}(b)$ and
+$s=v_\ell(b^d-1)$.  The elementary lifting identity
+$v_\ell(b^{dt}-1)=s+v_\ell(t)$ follows by factoring a geometric sum
+when $\ell\nmid t$ and by a binomial expansion for a factor $\ell$.
+In the factorisation $b^n-1=\prod_{r\mid n}\Phi_r(b)$, subtracting
+these valuations over proper divisors gives
+\[
+ v_\ell(\Phi_n(b))=
+ \begin{cases}s&n=d,\\1&n=d\ell^j,\ j\ge1,\\0&\text{otherwise.}\end{cases}
+\]
+If $n=d$, no smaller positive exponent gives $b^m\equiv1\pmod\ell$.
+If $n=d\ell^j$, the full valuation is $e=s+j$; the same lifting
+identity shows that the least exponent giving valuation $e$ is
+$d\ell^j=n$.
+For $\ell=2$, $b$ is odd.  Factoring $b^{2t}-1$ gives
+\[
+ v_2(b^{2^j}-1)=v_2(b-1)+v_2(b+1)+j-1\qquad(j\ge1).
+\]
+The only possible indices $n\ge2$ are $n=2^j$:
+$v_2(\Phi_2(b))=v_2(b+1)$ and
+$v_2(\Phi_{2^j}(b))=1$ for $j\ge2$; all other indices have
+valuation zero.  The displayed identity again makes $2^j$ the least
+exponent with the full valuation.  This proves the fact.
+Finally $\Phi_n(b)>1$: each primitive $n$th root $\zeta$ satisfies
+$|b-\zeta|>1$, and their product is $\Phi_n(b)$.
+
+
 \subsection{Geometry and rational-target membership}
 \papersectiontarget{record257:geometry}
 At the first differing digit, $w_n>R_n$ prevents all later digits from
@@ -1297,6 +1414,105 @@ necessary ingredient of every possible proof of membership.
 \clearpage
 \part*{II. Limitations and extensions of recorded methods}
 \addcontentsline{toc}{part}{II. Limitations and extensions of recorded methods}
+\subsection{The greedy recurrence}\label{sec:actual-repairs}
+For $x\ge0$, the greedy rule starts with $r_0=x$ and, at rank $n\ge1$,
+selects $n$ when $r_{n-1}\ge(2^n-1)^{-1}$, subtracting that weight if
+selected.  Let $A_x$ be the resulting support and
+$c_x(n)=\#\{a\in A_x:a\mid n\}$.  Set
+\[
+ P_0=0,\qquad P_{N+1}=2P_N+c_x(N+1),\qquad
+ Q_N=\lfloor2^Nx\rfloor-P_N.
+\]
+Thus $P_N=\sum_{j=1}^N2^{N-j}c_x(j)$ is the integer truncation of the
+Lambert expansion.  It is at most
+$2^NX_{A_x}(2)\le2^Nx$, so $Q_N\ge0$.  These integer remainders obey
+\begin{equation}
+ Q_{N+1}=2Q_N+\beta_N-c_x(N+1),\qquad
+ \beta_N=\lfloor2^{N+1}x\rfloor-2\lfloor2^Nx\rfloor\in\{0,1\}.
+ \label{eq:actual-repair-recurrence}
+\end{equation}
+
+The reason to test for nonincreases is a difference in growth rates.
+For a represented target, $Q_N$ is bounded by a scaled coefficient tail
+of order $\sqrt N$; integrality prevents strict increase throughout a
+sufficiently long window. For an unrepresented target, the positive
+deficit $x-X_{A_x}(2)$ contributes exponential growth, and the
+recurrence eventually forces strict increase.
+
+\begin{thm}[membership and nonincreasing integer remainders]\label{res:general-repair}
+For every real $x\ge0$, the following are equivalent:
+\[
+ \begin{gathered}
+ x\in\Ach;\\
+ \forall K\ge0\ \exists N\ge K:\quad Q_{N+1}\le Q_N;\\
+ \forall K\ge0\ \exists N\in[K,K+2\lfloor\sqrt K\rfloor+12):
+ \quad Q_{N+1}\le Q_N.
+ \end{gathered}
+\]
+\end{thm}
+
+\begin{proof}
+Strict domination of each Mersenne weight over its tail implies that a
+represented target is recovered by the greedy rule.  For such a target,
+\[
+ 0\le Q_N\le\sum_{r\ge1}c_x(N+r)2^{-r}
+ \le2\sqrt N+4,
+\]
+since $c_x(n)\le\tau(n)\le2\sqrt n$ and
+$\sqrt{N+r}\le\sqrt N+\sqrt r\le\sqrt N+r$.
+Put $s=\lfloor\sqrt K\rfloor$ and $T=2s+12$.
+Strict increase at all $T$ steps would imply $Q_{K+T}\ge T$.
+But $K+T<(s+4)^2$ gives $Q_{K+T}<2s+12=T$.
+This proves the window condition and hence cofinal nonincreases.
+
+Conversely, if $x\notin\mathcal A$, then
+$\delta=x-X_{A_x}(2)>0$.  The Lambert prefix is at most
+$2^NX_{A_x}(2)$, so $Q_N\ge2^N\delta-1$.
+Eventually this exceeds $c_x(N+1)\le N+1$.
+Equation~\eqref{eq:actual-repair-recurrence} then makes $Q_N$ strictly
+increasing, contradicting cofinal nonincreases.
+\end{proof}
+
+The nonincreases must occur along the target's own greedy sequence.
+For $x=0$, no exponent is selected and $Q_N=0$ at every rank.  A finite subseries sum is likewise represented and satisfies the
+criterion.  The target $x=3/4$ lies strictly between $R_1<2/3$ and
+$w_1=1$, so it is not represented and its integer remainders eventually
+increase strictly.  For $1/2$ and $1/21$, the theorem does not establish
+which alternative occurs.
+
+The same argument allows a uniform subpower window: for each $0<\varepsilon<1$, a constant
+$C_\varepsilon$ gives the window length
+$\lceil C_\varepsilon(K+1)^\varepsilon\rceil$.
+Indeed, $\tau(n)\le A_\varepsilon n^\varepsilon$ gives
+$Q_N\le D_\varepsilon(N+1)^\varepsilon$ for represented targets,
+where $D_\varepsilon=A_\varepsilon\sum_{r\ge1}r^\varepsilon2^{-r}$.
+Choose $C_\varepsilon>D_\varepsilon(C_\varepsilon+3)^\varepsilon$,
+which is possible because $\varepsilon<1$.
+For $T=\lceil C_\varepsilon(K+1)^\varepsilon\rceil$, strict increase
+at all $T$ steps would give
+\[
+ T\le Q_{K+T}\le D_\varepsilon(K+T+1)^\varepsilon
+ \le D_\varepsilon(C_\varepsilon+3)^\varepsilon(K+1)^\varepsilon<T,
+\]
+a contradiction.  The converse still follows from exponential growth
+when $x$ is not represented.  This shortens the window for represented targets without deciding
+whether a specified target is represented. The linked formal proof
+establishes the square-root window.
+
+At $x=1/2$, the digits $\beta_N$ vanish for $N\ge1$; at $x=1/21$ they
+are six-periodic.  Thus the unresolved arithmetic input is
+\begin{equation}
+ \forall K\ \exists N\ge K:\qquad
+ c_x(N+1)\ge Q_N+\beta_N,
+ \qquad x\in\{1/2,1/21\}.
+ \label{eq:actual-selector-obligation}
+\end{equation}
+Both $Q_N$ and $c_x$ must arise from the same greedy support $A_x$.
+Counterexamples to fixed-multiplier schedules, with their finite phase
+masks, are retained in the companion paper. They concern those schedules;
+they do not decide either target.
+
+
 \section{Limitations of the recorded methods}
 \label{sec:257-wall}
 A bound for the actual greedy sequence and a bound uniform over a class
@@ -5210,57 +5426,96 @@ This is one verified row of a hypothesis required for every $d\ge13$; it shows o
 base case is not itself an obstruction.
 \end{obs}
 
-\subsubsection{Finite approximations without compatibility}
-\papersectiontarget{record257:terminal-approximation}
-For a finite support $D\subseteq\{2,\ldots,M\}$, the integer
+\subsubsection{Finite approximations and shared prefixes}\papersectiontarget{record257:terminal-approximation}
+\paragraph{Approximation to $1/2$ by finite supports.}
+For $A\subseteq\{2,\ldots,M\}$ and $1\le m\le M$, define the integer
 \[
- K_D(M)=2^{M-1}-\sum_{j=2}^{M}2^{M-j}\#\{d\in D:d\mid j\}
+ K_A(m)=2^{m-1}-\sum_{j=2}^{m}2^{m-j}c_A(j).
 \]
-is the half-carry at the terminal rank.  It is
-$\operatorname{ihc}(D,M-1)$ in the notation used earlier.  The condition
-below asks for $M_j\to\infty$ and finite sets $D_j$ with
-$|K_{D_j}(M_j)|/2^{M_j}\to0$.  It does not require the sets to agree or
-bound the carries at earlier ranks.
-The estimate
-\[
- \left|\sum_{d\in D_j}\frac1{2^d-1}-\frac12\right|
- \le\frac{|K_{D_j}(M_j)|+2\sqrt{M_j}+4}{2^{M_j}}
-\]
-follows by expanding each Mersenne weight. Indeed,
-\[
- X_D(2)-\frac12=-2^{-M}K_D(M)
-       +\sum_{n>M}c_D(n)2^{-n}.
-\]
-Here $c_D(n)\le\tau(n)\le2\sqrt n$, and
-$\sqrt{M+r}\le\sqrt M+r$ gives
-\[
- \sum_{r\ge1}2^{-r}c_D(M+r)\le2\sqrt M+4.
-\]
-Each finite value belongs to the closed achievement set; its limit
-therefore belongs too, even when the finite supports disagree.
-No compatibility between them is needed for this implication.
-The finite approximants themselves remain an unproved input.
-A square-root terminal bound is sufficient and stronger as a bound on
-these particular witnesses; it does not establish a strict logical
-separation between the corresponding existence statements.
+It measures the error in the truncated divisor-coefficient sum, after
+multiplication by $2^m$.  In particular,
+$K_A(1)=1$ and $K_A(m+1)=2K_A(m)-c_A(m+1)$.
 
+\begin{thm}[finite approximations with vanishing scaled error]
+\label{res:terminalhalf}
+Suppose there are integers $M_j\ge1$ tending to infinity and sets
+$A_j\subseteq\{2,\ldots,M_j\}$ such that
+\[
+ \frac{|K_{A_j}(M_j)|}{2^{M_j}}\longrightarrow0.
+\]
+Then $X_A(2)=1/2$ for some infinite set $A\subseteq\Npos$.
+\end{thm}
 
-Here is the finite family used in the cited construction.  Put
-$B(m)=2\lfloor\sqrt m\rfloor+4$.  A depth-$M$ family with a shared
-prefix through $K\le M$ consists of sets
-$A_1,\ldots,A_{B(M)}\subseteq\{2,\ldots,M\}$ such that
+To compare the finite subseries with $1/2$, we separate the coefficient
+tail from the terminal carry. No agreement between the supports $A_j$
+or bound on their earlier carries is needed. The estimate is
+\[
+ \left|X_{A_j}(2)-\frac12\right|
+ \le \frac{|K_{A_j}(M_j)|+2\sqrt{M_j}+4}{2^{M_j}}.
+\]
+Indeed, $c_{A_j}(n)\le\tau(n)\le2\sqrt n$ and
+$\sqrt{M+r}\le\sqrt M+r$, so the normalised tail is at most
+$\sum_{r\ge1}2^{-r}(2\sqrt M+2r)=2\sqrt M+4$.  The finite sums therefore tend to
+$1/2$.  The achievement set is closed, and no finite support has value
+$1/2$, so its representing support is infinite.  A square-root bound on
+the terminal carry would suffice, but the theorem permits any error
+$o(2^{M_j})$.  For a finite $D\subseteq\{2,\ldots,M\}$, the
+floor-quotient identity gives
+\[
+ K_D(M)=2^{M-1}-\sum_{d\in D}
+                \left\lfloor\frac{2^M}{2^d-1}\right\rfloor.
+\]
+The exact quotient rows considered in the companion paper satisfy
+$\sum_{d\in D}q_M(d)=2^{M-1}-1$, so they have $K_D(M)=1$.
+The terminal criterion allows a larger error of either sign. At a fixed depth these are
+different conditions, although cofinal existence of either kind of
+approximation characterises $1/2\in\mathcal A$.
+
+Conversely, if $X_A(2)=1/2$, then $1\notin A$, and the prefixes
+$A_M=A\cap\{2,\ldots,M\}$ satisfy
+\[
+ K_{A_M}(M)=\sum_{r\ge1}c_A(M+r)2^{-r}
+       \le 2\sqrt M+4.
+\]
+The equality uses the coefficients of the full support $A$ on the
+right: truncation does not change the coefficients through $M$.
+Hence the existence hypothesis of Theorem~\ref{res:terminalhalf}
+is equivalent to $1/2\in\mathcal A$. No compatible sequence of prefixes is required for the forward
+implication. The existence of the approximating supports remains
+unproved and would refute Problem~\ref{defn:U}.
+
+\paragraph{Finite families with a shared prefix.}
+Put $B(m)=2\lfloor\sqrt m\rfloor+4$.  For $0\le K\le M$, consider a
+family $A_1,\ldots,A_{B(M)}\subseteq\{2,\ldots,M\}$ with
 \[
  1\le K_{A_k}(m)\le B(m)\quad(1\le m\le M),
- \qquad K_{A_k}(M)=k,
+ \qquad K_{A_k}(M)=k.
 \]
-all $A_k$ agree through $K$, and one integer $E\ge B(M)$ satisfies
+Require that all the $A_k$ agree on $\{1,\ldots,K\}$ and that some
+integer $E\ge B(M)$ satisfies
 \[
- \sum_{j=K+1}^{M}1_{A_k}(j)2^{M-j}+k=E
- \quad(1\le k\le B(M)).
+ \sum_{j=K+1}^{M}1_{A_k}(j)\,2^{M-j}+k=E
+ \qquad(1\le k\le B(M)).
 \]
-The suffixes therefore have consecutive binary values $E-k$.
-The following statements explain how these particular families supply
-finite approximations; they do not construct them at arbitrary depths.
+Thus the binary suffixes have consecutive values $E-k$, while the
+terminal carry ranges through the entire permitted interval.  This is
+substantially more data than one finite approximation to $1/2$.
+
+\begin{thm}[unbounded shared-prefix families represent one half]
+\label{res:cylinderhalf}
+Suppose that for every $N$ there are $M,K$ with
+$\max\{N,1\}\le M$, $0\le K\le M$, and a family satisfying all the
+conditions in the preceding paragraph.  Then $X_A(2)=1/2$ for some
+infinite set $A\subseteq\Npos$.
+\end{thm}
+
+For each $M$ choose the member with terminal carry $1$. Its error is at
+most $(1+2\sqrt M+4)2^{-M}$, which tends to zero along unbounded depths, so
+Theorem~\ref{res:terminalhalf} applies. The other shared-prefix conditions
+are additional requirements of the proposed construction; the compactness
+argument uses only this one member. No construction at unbounded depths
+is established here.
+
 
 \begin{prop}\label{prop:finite-approximations-without-compatibility}
 Every shared-prefix family just defined at depth $N$ contains a finite
@@ -5455,64 +5710,72 @@ These facts explain an approach and give no counterexample: nothing here proves
 that the associated integer-multiplicity expansion of $1/21$ can be made Boolean.  The recurring multiplicities are precisely
 the unresolved collision data, not zero--one support digits.
 
-\subsubsection{Integer-quotient tests for one twenty-first}
-\papersectiontarget{record257:twenty-one-quotients}
+\subsubsection{Integer quotients for $1/21$}\label{sec:open}\papersectiontarget{record257:twenty-one-quotients}
+For $1/21$ an integer greedy procedure gives finite remainders that can
+be compared with the real greedy sequence. For $1/2$ we instead allow
+arbitrary finite approximating supports. In both cases the outstanding
+question is whether suitable finite data occur at unbounded depths.
 
-For $x=1/21$, nonmembership forces the real greedy sequence eventually
-to select every exponent. The integer quotient rows then agree with
-that sequence at growing cutoffs. Let
-$\mathcal F_{21}$ denote the conjunction consisting
-of a fatal greedy gap, finite skipped support (hence cofinite selection),
-eventual alignment between the quotient rows and the rational greedy prefix,
-and eventual visits to every doubling block.  Then
+\paragraph{Integer quotients for $1/21$.}
+For $M,d\ge1$, set
 \[
- \frac1{21}\in\ensuremath{\mathcal A}
- \quad\Longleftrightarrow\quad
- \text{$\mathcal F_{21}$ does not hold}
+ q_M(d)=\left\lfloor\frac{2^M}{2^d-1}\right\rfloor,
+ \qquad T_M=\left\lfloor\frac{2^M}{21}\right\rfloor.
 \]
-(\lean{one\_div\_twenty\_one\_mem\_iff\_not\_fatalAlignedBranch}{TwentyOneQuotientGreedy.lean:3507}).
-
-On the fatal branch the canonical quotient remainder $s_R$ is eventually
-strictly above the closed capacity $2^R$
-(\lean{twentyOneFatalAlignedBranch\_eventually\_strict\_supercapacity}{TwentyOneQuotientGreedy.lean:5625}),
-and thereafter the support appends $R+1$ while $s_R$ follows one explicit
-affine recurrence
-(\lean{twentyOneFatalAlignedBranch\_eventually\_affine\_supercapacity}{TwentyOneQuotientGreedy.lean:5658}).
-Conversely, closed rows $s_R\le2^R$ along any unbounded sequence decay after
-normalisation and put $1/21$ in the achievement set
-(\lean{twentyOneCofinalEvenQuotientGreedyDecay\_of\_closedRows}{TwentyOneQuotientGreedy.lean:5554};
-\lean{one\_div\_twenty\_one\_mem\_mersenneAchievementSet\_of\_cofinalGreedyDecay}{TwentyOneQuotientGreedy.lean:5458}).
-
-We give the definitions and the complete ordinary proof, including the
-rounding estimate and the agreement through rank $2R$ needed in the
-short paper. Put $T_M=\lfloor2^M/21\rfloor$ and
-$q_M(d)=\lfloor2^M/(2^d-1)\rfloor$. Starting with $T_{2R}$, apply the
-integer greedy rule to the weights $q_{2R}(d)$, in increasing order of
-$d$, selecting a weight exactly when it does not exceed the current
-remainder. Let $D_R$ be the selected exponents in $\{2,\ldots,R\}$,
-and let
+Starting with the integer remainder $T_{2R}$, consider $d=2,\ldots,R$
+in order and subtract $q_{2R}(d)$ whenever it does not exceed the current
+remainder.  Let $D_R$ be the set of selected exponents and $s_R$ the final
+remainder.  Thus
 \[
- s_R=T_{2R}-\sum_{d\in D_R}q_{2R}(d).
+ s_R=T_{2R}-\sum_{d\in D_R}q_{2R}(d)\ge0.
 \]
-The alignment in $\mathcal F_{21}$ refers to the full integer word
-through $2R$ agreeing with the real greedy word through $2R$, for all
-sufficiently large $R$. Its other clauses are a finite fatal gap
-$r_n(1/21)>R_n$ with all later exponents selected, and a selected
-exponent in every sufficiently late block $(K,2K]$.
-On this conjunction, the eventual recurrence is
-\begin{equation}
- \begin{split}
- s_{R+1}={}&4s_R+
- \left\lfloor\frac{4(4^R\bmod21)}{21}\right\rfloor
+A second comparison uses the same integer rule through $d=2R$, rather
+than stopping at $R$.
+For example, $R=6$ gives $T_{12}=195$, $D_6=\{5\}$ and
+$s_6=195-\lfloor4096/31\rfloor=63\le64$.  This is one row satisfying
+the bound below, not evidence that such rows occur at unbounded depths.
+
+
+Write $r_n=r_n(1/21)$ for the real greedy remainder and $A_{1/21}$ for its
+support.  The condition $\mathcal F_{21}$ means that there exist integers
+$n,R_0,K_0\ge0$ with all of the following properties:
+\begin{enumerate}
+\item $r_n>R_n$, the set of positive exponents outside $A_{1/21}$ is
+finite, and every exponent greater than $n$ belongs to $A_{1/21}$;
+\item for every $R\ge R_0$, the integer rule with target $T_{2R}$ and
+weights $q_{2R}(2),\ldots,q_{2R}(2R)$ selects exactly the same exponents
+as the real greedy rule on $\{2,\ldots,2R\}$;
+\item for every $K\ge K_0$, the interval $(K,2K]$ contains an exponent
+of $A_{1/21}$.
+\end{enumerate}
+The eventual all-selected behaviour makes some clauses redundant. We
+retain them to specify both the real greedy sequence and the comparison
+with its finite integer versions.
+
+\begin{thm}[integer-quotient tests for $1/21$]
+\label{res:one-over-twenty-one-frontier}
+The following statements hold.
+\begin{enumerate}
+\item $1/21\in\Ach$ if and only if $\mathcal F_{21}$ does not hold.
+\item If there is an unbounded sequence of ranks $R$ with $s_R\le 2^R$,
+  then $1/21\in\Ach$.
+\item On $\mathcal F_{21}$, eventually $s_R>2^R$, the boundary rank $R+1$
+  belongs to $D_{R+1}$, and, for all sufficiently large $R$,
+\[
+ \begin{aligned}
+ D_{R+1}&=D_R\cup\{R+1\},\\
+ s_{R+1}&=4s_R+
+ \left\lfloor\frac{4(2^{2R}\bmod21)}{21}\right\rfloor
  -2c_{D_R}(2R+1)-c_{D_R}(2R+2)\\
- &{}-(2^{R+1}+1),\qquad
- D_{R+1}=D_R\cup\{R+1\},\quad s_R>2^R.
- \end{split}
- \label{eq:record257-twenty-one-recurrence}
-\end{equation}
+ &\hspace{3em}{}-(2^{R+1}+1).
+ \end{aligned}
+\]
+Here $c_{D_R}(m)=\#\{d\in D_R:d\mid m\}$.
+\end{enumerate}
+\end{thm}
 
 \begin{proof}
-Put $x=1/21$, let $G=G_{1/21}$, and write $\delta=x-X_G(2)\ge0$.
+Put $x=1/21$, let $G=A_{1/21}$, and write $\delta=x-X_G(2)\ge0$.
 If $x\notin\mathcal A$, then $\delta>0$ and $r_n\downarrow\delta$.
 Since $w_n\to0$, every sufficiently large exponent is selected. Choose
 $n$ beyond that point with $R_n<\delta$. This proves the first clause of
@@ -5559,16 +5822,27 @@ Also
  \qquad q_{2R+2}(R+1)=2^{R+1}+1.
 \]
 Subtract the contributions of $D_R$ and of the new exponent $R+1$ to
-obtain~\eqref{eq:record257-twenty-one-recurrence}.
+obtain the recurrence in clause~(3).
 \end{proof}
 
-The remaining question is whether this eventual recurrence can occur
-for the actual greedy word, or whether closed returns occur at
-unbounded depths. Neither assertion is established here. Since no
-finite support represents $1/21$, membership would give an
-infinite-support rational counterexample to the universal problem.
 
-% ; - part a257_p2 ; -
+The closed-row implication also has formal proofs of the normalised decay
+and its membership consequence
+(\lean{twentyOneCofinalEvenQuotientGreedyDecay\_of\_closedRows}{TwentyOneQuotientGreedy.lean:5554};
+\lean{one\_div\_twenty\_one\_mem\_mersenneAchievementSet\_of\_cofinalGreedyDecay}{TwentyOneQuotientGreedy.lean:5458}).
+
+\noindent The finite uniqueness statement is also explicit: if
+$D\subseteq\{2,\ldots,R\}$ and an integer $s$ satisfy
+$\sum_{d\in D}q_{2R}(d)+s=T_{2R}$ with $0\le s\le2^R$, then
+$D=D_R$ and $s=s_R$.  This is the denominator-specific separation theorem
+(\href{https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/TwentyOneQuotientGreedy.lean\#L231}{uniqueness of a finite representation with the stated remainder bound}).
+The cited finite crossing lemmas give additional consequences under their
+alignment hypotheses: an earlier finite prefix cannot occur, and a real
+greedy exponent must be skipped
+(\href{https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/TwentyOneQuotientGreedy.lean\#L5179}{the missing-prefix consequence of an aligned crossing},
+\href{https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/TwentyOneQuotientGreedy.lean\#L5223}{the real greedy skip forced by that crossing}).
+
+
 \clearpage
 \part*{IV. Scales, conditional interfaces and unresolved inputs}
 \addcontentsline{toc}{part}{IV. Scales, conditional interfaces and unresolved inputs}
@@ -8894,6 +9168,58 @@ to $\mathrm{U257}$.  The missing step is to exclude the fatal aligned
 affine-supercapacity branch (or force unbounded closed returns); neither is
 proved.
 
+\begin{problem}[membership of 1/21 in the Mersenne achievement set]
+\label{prob:one-over-twenty-one-membership}
+For the greedy remainder of $1/21$, prove that arbitrarily large $N$
+satisfy
+\[
+ 2^{N+1}r_N(1/21)<\frac{2^{N+1}}{2^{N+1}-1},
+ \quad\text{equivalently}\quad
+ r_N(1/21)<\frac1{2^{N+1}-1}.
+\]
+Equivalently, exclude the condition $\mathcal F_{21}$ defined above.
+One sufficient route is to rule out the eventual recurrence in
+Theorem~\ref{res:one-over-twenty-one-frontier}(3) together with $s_R>2^R$;
+another is to prove $s_R\le2^R$ at arbitrarily large ranks.  Neither
+sufficient route is claimed to be necessary by itself.
+\end{problem}
+
+\begin{problem}[bounded returns of the scaled remainder]\label{prob:scaled-return}
+For each of the targets $x=1/2$ and $x=1/21$, does the greedy remainder
+$r_N(x)$ return to one bounded interval after scaling by $2^N$?
+\[
+ \exists B<\infty\ \forall K\ \exists N\ge K:
+ \qquad 2^N r_N(x)\le B.
+\]
+\end{problem}
+
+\begin{problem}[arithmetic tests for the greedy sequence]\label{prob:actual-invariant}
+Can a finite-memory, $2$-adic or discrepancy argument prove $s_R\le2^R$
+at arbitrarily large ranks, or rule out the eventual recurrence in
+Theorem~\ref{res:one-over-twenty-one-frontier}(3)?  Such an argument must use
+the divisor counts of the actual greedy support.  Can a bounded window of
+$R\bmod6$, residues of $s_R$, endpoint divisor counts and the finite set of
+eventual skips force a decrease or a contradiction?  Alternatively, can one
+show that these bounded-memory data cannot distinguish the actual sequence
+from sequences that remain above $2^R$ but need not come from a support?
+\end{problem}
+
+\begin{problem}[final-skip Diophantine exclusion]\label{prob:fatal-interval}
+Let $E=\sum_{n\ge1}(2^n-1)^{-1}$.  If $1/21\notin\mathcal A$, let $M$ be the last
+skipped exponent, $S_M$ its finite skipped prefix, and
+\[
+ a_M=\frac1{21}+\sum_{d\in S_M}\frac1{2^d-1}.
+\]
+Write $\operatorname{gap}_M=(2^M-1)^{-1}-R_M>0$.
+Can the arithmetic restrictions on this last skipped exponent be used to
+prove $|E-a_M|\ge\operatorname{gap}_M$, contradicting
+\[
+ 0<a_M-E<\operatorname{gap}_M?
+\]
+\end{problem}
+
+
+
 \subsection{Implication table}
 \label{sec:v-table}
 
@@ -9359,7 +9685,7 @@ Finite supports and denominators: \mword{Erdos249257/CertificateKernel.lean}{524
 Rational values and carries: \mword{Erdos249257/BooleanMobiusCarry.lean}{949}{exists_normalized_support_fraction_iff_exists_booleanMobiusCarry}{rational support values and M\"obius-inverted carries}; \mword{Erdos249257/GenericTailOrbitRigidity.lean}{426}{binaryCoeffSeries_rational_iff_exists_temperedBinaryOrbit}{rationality and integer recurrences with vanishing scaled error}; \mword{Erdos249257/RationalSupportCarrySkeleton.lean}{1480}{one_div_oddOrder_le_reciprocalMass_of_support_fraction}{a lower bound for reciprocal mass}; \mword{Erdos249257/RationalSupportCarrySkeleton.lean}{2383}{exists_unbounded_shifted_odd_tail_nat_state_of_support_fraction}{unboundedness of the shifted odd-tail recurrence}; \mword{Erdos249257/SublogDivisorCoverage.lean}{392}{supportCoeffZeroWindow_length_le_eps_logb_add}{lengths of intervals with zero divisor count}.
 Composite dilation: \mword{Erdos249257/CompositeDilationDefect.lean}{30}{supportCoeff_mul_eq_add_defect}{the divisor-count identity under dilation}; \mword{Erdos249257/CompositeDilationDefect.lean}{151}{compositeDilationDefect_le_exceptional_add_petalCoeff}{the upper bound for the dilation correction}; \mword{Erdos249257/CompositeDilationDefect.lean}{218}{compositeDilationDefect_two_six_fixture}{the example with exponents two and six}.
 The achievement set: \mword{Erdos249257/GreedyAchievementSet.lean}{996}{volume_mersenneAchievementSet}{Lebesgue measure one}; \mword{Erdos249257/GreedyAchievementSet.lean}{1656}{perfect_mersenneAchievementSet}{perfect}; \mword{Erdos249257/GreedyAchievementSet.lean}{1672}{isTotallyDisconnected_mersenneAchievementSet}{totally disconnected}; \mword{Erdos249257/GreedyAchievementSet.lean}{1681}{isNowhereDense_mersenneAchievementSet}{nowhere dense}; \mword{Erdos249257/GreedyAchievementSet.lean}{1458}{mem_mersenneAchievementSet_iff_greedy_survival}{membership and greedy tail bounds}; \mword{Erdos249257/GreedyAchievementSet.lean}{1784}{three_fourths_not_mem_mersenneAchievementSet}{non-membership of $3/4$}; \mword{Erdos249257/GreedyAchievementSet.lean}{2583}{half_mem_mersenneAchievementSet_iff_greedySkippedSupport_infinite}{the greedy form}; \mword{Erdos249257/HalfCarryReachability.lean}{589}{finite_boolSupport_ne_half}{the finite-support exclusion}.
-Restricted achievement sets: \lword{Erdos257/MersenneSubseriesRigidity.lean}{397}{volume_supportedMersenneAchievementSet_dichotomy}{the formal dichotomy}.
+Restricted achievement sets: \lword{Erdos257/MersenneSubseriesRigidity.lean}{30}{selectedMersenneTail_lt_weight}{the strict tail bound after deleting weights}; \lword{Erdos257/MersenneSubseriesRigidity.lean}{397}{volume_supportedMersenneAchievementSet_dichotomy}{the formal dichotomy}.
 Greedy skips and exact rows: \mword{Erdos249257/BooleanMobiusSkipRowCofinal.lean}{22}{CofinalPositiveHalfGreedySkips}{the cofinal-skip hypothesis}; \mword{Erdos249257/BooleanMobiusSkipRowCofinal.lean}{55}{exactLocalMersenneHalfRow_of_positiveHalfGreedySkip}{an exact finite sum from one greedy skip}; \mword{Erdos249257/BooleanMobiusSkipRowCofinal.lean}{84}{cofinalExactLocalMersenneHalfRows_of_positiveHalfGreedySkips}{exact finite sums from arbitrarily late greedy skips}; \mword{Erdos249257/BooleanMobiusSkipRowCofinal.lean}{97}{half_mem_mersenneAchievementSet_of_positiveHalfGreedySkips}{membership from infinitely many greedy skips}; \mword{Erdos249257/BooleanMobiusSkippedCoreExactRow.lean}{228}{exists_upperHalfBooleanWord_of_skippedCore}{the upper-half Boolean fill}.
 Membership of $1/2$: \mword{Erdos249257/HalfCylinderHalfMembershipClassification.lean}{126}{half_mem_mersenneAchievementSet_iff_unboundedTerminalFalse}{the terminal-bit form}; \mword{Erdos249257/HalfCylinderHalfMembershipClassification.lean}{213}{half_mem_mersenneAchievementSet_iff_exists_unboundedSkippedRanksAlong}{the skipped-rank form}.
 The two-thirds band: \mword{Erdos249257/HalfGreedyTwoThirdsBand.lean}{88}{postTakeUnsafeAt_iff_band}{general band localization}; \mword{Erdos249257/HalfGreedyTwoThirdsBand.lean}{127}{singletonUnsafe_iff_twoThirdsBand}{two-thirds band}; \mword{Erdos249257/HalfGreedyTwoThirdsBand.lean}{185}{not_twoThirdsBand_of_int}{integral safety}; \mword{Erdos249257/HalfGreedyTwoThirdsBand.lean}{231}{seven_le_of_intBand_odd}{odd numerator bound}.
@@ -9368,12 +9694,38 @@ The two-thirds band: \mword{Erdos249257/HalfGreedyTwoThirdsBand.lean}{88}{postTa
 \endgroup
 
 \section*{Verification and reproducibility}
+The formal question is recorded in the Formal Conjectures library~\cite{formalconjectures257}.
+\papersectiontarget{scope-verification}
+
 \evidenceparagraph{\evidencerecordurl}
 Links marked \textsc{Lean source} identify the declaration associated
 with a statement or proof step. The integer-quotient proof for $1/21$
 and other arguments without a formal link remain ordinary proofs; no
 new formal or independent human verification is claimed here. The
 linked records identify the propositions and source revisions checked.
+
+\paragraph{Reproducing the weighted theorem.}
+The two declarations for Theorem~\ref{thm:257-weighted} are in
+the public source at
+\href{https://github.com/wcook04/plectis-erdos/tree/91ca3405b795a520825ac5ca04dcd591b9ddf3e3}{commit \texttt{91ca3405}}.
+That snapshot pins Lean~4.29.1 in \texttt{lean-toolchain} and its Mathlib
+revision in \texttt{lake-manifest.json}.  From a complete checkout, with
+\texttt{elan} installed, build the two modules with:
+\begin{verbatim}
+lake exe cache get
+python3 scripts/lean_fast_build.py --jobs 2 \
+  ErdosProblems.Erdos257.PaperCompleteR8.WeightedReturn \
+  ErdosProblems.Erdos257.PaperCompleteR8.WeightedHereditaryClaim
+\end{verbatim}
+The cache download is optional.  The modules contain
+\texttt{divisibilityWeightedClaim} and
+\texttt{finitePrimeWeighted\_fixedBase\_hereditary}, respectively; their precise statements and associated checks are linked above.
+
+The supplementary declarations are collected in
+\papersectionlink{erdos257-mersenne-reasoning-surface.pdf}{record257:supplementary-sources}
+{the companion paper's final source section}, grouped by support criteria,
+finite denominators, integer recurrences and achievement sets.
+
 
 \section*{Acknowledgements}
 I thank Wouter van Doorn for advice on mathematical exposition, especially
@@ -9558,5 +9910,10 @@ arXiv:2512.17285v1 (2025), preprint.
   \href{https://www.renyi.hu/~p_erdos/1932-01.pdf}
   {Beweis eines Satzes von Tschebyschef}, 1932, pp.~194--198,
   especially \S\S4--5.
+
+\bibitem{formalconjectures257} The Formal Conjectures Authors,
+  \href{https://github.com/google-deepmind/formal-conjectures/blob/f776d2f2039351b00737ffcafb9d7d7666e1d9af/FormalConjectures/ErdosProblems/257.lean}
+  {\emph{FormalConjectures.ErdosProblems.\texttt{257}}},
+  Lean source at commit \texttt{f776d2f}, 2025, accessed 13 September 2026.
 
 \end{thebibliography}

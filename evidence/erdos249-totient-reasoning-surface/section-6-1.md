@@ -4,7 +4,7 @@ Part of the [evidence record](../erdos249-totient-reasoning-surface.md) of the p
 
 <a id="catalogue-cert-a9"></a>
 
-## Theorem 6.1 (Rationality gives an eventual tail period), page 28
+## Theorem 6.1 (Rationality gives an eventual tail period), page 29
 
 > *If $`S=a/(2^cv)`$ with $`a\in\mathbb Z`$, $`c\in\mathbb N`$ and $`v`$ a positive odd integer, then
 > ``` math
@@ -38,7 +38,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="catalogue-cert-d5"></a>
 
-## Theorem 6.2 (Rationality forces unbounded carry rank), page 28
+## Theorem 6.2 (Rationality forces unbounded carry rank), page 29
 
 > *If $`S\in\mathbb Q`$, there are an integer $`v>0`$ and an integer sequence $`u`$ such that
 > ``` math
@@ -88,7 +88,7 @@ theorem not_irrational_totientSeries_implies_unbounded_carryRank_unconditional
 
 <a id="catalogue-cert-d4"></a>
 
-## Theorem 6.3 (Independence of the retained dyadic sections), page 28
+## Theorem 6.3 (Independence of the retained dyadic sections), page 29
 
 > *For every integer $`e\ge0`$, the family
 > ``` math
@@ -127,7 +127,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="catalogue-cert-a8"></a>
 
-## Proposition 6.4 (Denominator divisibility forces tail integrality), page 28
+## Proposition 6.4 (Denominator divisibility forces tail integrality), page 30
 
 > *If $`S=a/q`$ in lowest terms with $`q>0`$ and $`q\mid2^N(2^h-1)`$, then $`R_{N+h}-R_N\in\mathbb Z`$. Indeed, the prefix identity expresses that difference as $`2^N(2^h-1)S`$ minus an integer. This is the contradiction used by a nonintegrality certificate to exclude the rational value $`a/q`$.*
 
@@ -154,7 +154,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="catalogue-mob-b5"></a>
 
-## Proposition 6.5 (A cyclotomic factor remains after cancellation), page 29
+## Proposition 6.5 (A cyclotomic factor remains after cancellation), page 30
 
 > *If $`r`$ is squarefree, then
 > ``` math
@@ -229,7 +229,7 @@ theorem cyclotomicValue_dvd_baseMobiusShadow_den
 
 <a id="catalogue-mob-b6"></a>
 
-## Proposition 6.6 (Primes in the upper half remain after cancellation), page 29
+## Proposition 6.6 (Primes in the upper half remain after cancellation), page 30
 
 > *For $`t\ge5`$ the whole product
 > ``` math
@@ -330,7 +330,7 @@ theorem upperHalfChannel_product_dvd_den_of_scale_primeFactors_le
 
 <a id="catalogue-mob-b7a"></a>
 
-## Proposition 6.7 (A lower bound for the reduced denominator), page 29
+## Proposition 6.7 (A lower bound for the reduced denominator), page 31
 
 > *For every integer $`t\ge5`$,
 > ``` math
@@ -370,7 +370,7 @@ theorem upper_half_product_denominator_bounds {t : ℕ} (ht : 5 ≤ t) :
 
 <a id="catalogue-mob-b7b"></a>
 
-## Proposition 6.8 (The exact reduced denominator), page 30
+## Proposition 6.8 (The exact reduced denominator), page 31
 
 > *At every integer scale $`t\ge0`$,
 > ``` math
@@ -437,7 +437,7 @@ theorem lcmHeight_five_scaledMobiusShadow_den_exact :
 
 <a id="catalogue-mob-d3"></a>
 
-## Proposition 6.9 (Nonvanishing of a signed dyadic sum), page 30
+## Proposition 6.9 (Nonvanishing of a signed dyadic sum), page 31
 
 > *Let $`I`$ be finite, let $`u_i\in\mathbb Z`$ and $`e_i\in\mathbb N`$, and suppose that $`m\in I`$ is the unique index with maximal exponent $`e_m`$. If $`u_m`$ is odd, then
 > ``` math
@@ -492,7 +492,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="catalogue-cert-a11"></a>
 
-## Proposition 6.10 (Small certificates), page 30
+## Proposition 6.10 (Small certificates), page 31
 
 > *For each integer $`1\le h\le8`$, the finite test $`\mathcal C(h,12,16)`$ holds. Each discrepancy uses two 16-term windows. Across all eight shifts, only the 24 distinct totient values at $`13\le n\le36`$ are needed, since the windows overlap. The source verifies the eight integer residue inequalities by exact computation.*
 >
@@ -530,7 +530,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="catalogue-cert-a12"></a>
 
-## Proposition 6.11 (A common certificate for sixteen shifts), page 30
+## Proposition 6.11 (A common certificate for sixteen shifts), page 31
 
 > *For each integer $`1\le h\le16`$, one has $`\mathcal C(h,14,9)`$. The common basepoint is $`14`$ and the depth is $`9`$; these parameters have different roles. The two windows for each shift use only the 25 distinct totient values at $`15\le n\le39`$ across the whole family. Thus $`S\ne a/b`$ for every reduced fraction with $`b>0`$ such that $`b\mid2^{14}(2^h-1)`$ for at least one $`1\le h\le16`$.*
 
@@ -566,7 +566,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="catalogue-cert-b11"></a>
 
-## Proposition 6.12 (Historical diagonal examples and the complete band through 82), page 30
+## Proposition 6.12 (Historical diagonal examples and the complete band through 82), page 32
 
 > *Let $`H_t=\operatorname{lcm}(1,\ldots,t)`$ and let
 > ``` math
@@ -615,7 +615,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="catalogue-cert-a2"></a>
 
-## Proposition 6.16 (The prefix-tail identity), page 31
+## Proposition 6.16 (The prefix-tail identity), page 33
 
 > *For every $`N\in\mathbb N`$,
 > ``` math
@@ -666,7 +666,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="catalogue-cert-a5"></a>
 
-## Lemma 6.17 (The necessary depth inequality), page 32
+## Lemma 6.17 (The necessary depth inequality), page 33
 
 > *For $`h,N,L\in\mathbb{N}`$, the condition $`\mathcal C(h,N,L)`$ implies
 > ``` math
@@ -711,7 +711,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="catalogue-cert-a6"></a>
 
-## Proposition 6.18 (A certificate implies nonintegrality), page 32
+## Proposition 6.18 (A certificate implies nonintegrality), page 33
 
 > *For all $`h,N,L\in\mathbb N`$,
 > ``` math
@@ -749,7 +749,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="catalogue-cert-a7"></a>
 
-## Theorem 6.19 (Nonintegrality gives a certificate at some depth), page 32
+## Theorem 6.19 (Nonintegrality gives a certificate at some depth), page 33
 
 > *For every $`h,N\in\mathbb N`$,
 > ``` math
@@ -780,7 +780,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="catalogue-cert-c1"></a>
 
-## Proposition 6.21 (The Farey gap lemma), page 32
+## Proposition 6.21 (The Farey gap lemma), page 34
 
 > *Let $`a,b,c,d,r,s\in\mathbb Z`$, with $`b,d>0`$ and $`bc-ad=1`$. If
 > ``` math
@@ -817,7 +817,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="catalogue-cert-d1"></a>
 
-## Proposition 6.22 (An irrationality criterion from rational approximations), page 32
+## Proposition 6.22 (An irrationality criterion from rational approximations), page 34
 
 > *Let $`x\in\mathbb R`$ and let $`u_k=p_k/q_k\in\mathbb Q`$ be in lowest terms, with $`q_k>0`$. If $`u_k\ne x`$ for every sufficiently large $`k`$ and $`q_k|x-u_k|\to0`$, then $`x`$ is irrational. Indeed, if $`x=a/b`$ with $`a\in\mathbb Z`$ and $`b\ge1`$, a nonzero integer numerator gives $`q_k|x-u_k|=|a q_k-b p_k|/b\ge1/b`$, a contradiction. This elementary criterion requires both nonvanishing and the scaled error estimate. Convergence $`u_k\to x`$ alone is insufficient, and the approximants need not be continued-fraction convergents.*
 
@@ -844,7 +844,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="catalogue-cert-d2"></a>
 
-## Proposition 6.23 (An irrationality criterion from near integers), page 33
+## Proposition 6.23 (An irrationality criterion from near integers), page 34
 
 > *Let $`\xi\in\mathbb R`$. Suppose that for every integer $`q\ge1`$ there are integers $`m,z`$ with
 > ``` math
@@ -1046,7 +1046,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="catalogue-cert-d3"></a>
 
-## Proposition 6.24 (A nonsingular evaluation matrix gives independence), page 33
+## Proposition 6.24 (A nonsingular evaluation matrix gives independence), page 34
 
 > *Let $`I`$ be a finite index set and let $`f_j:\mathbb N\to\mathbb Q`$ for $`j\in I`$. If there are evaluation points $`n_i\in\mathbb N`$ such that
 > ``` math
@@ -1077,7 +1077,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="catalogue-cert-d9"></a>
 
-## Proposition 6.25 (The gap between distinct rational numbers), page 33
+## Proposition 6.25 (The gap between distinct rational numbers), page 34
 
 > *If $`a/b<c/d`$ are reduced rational numbers with $`b,d>0`$, then
 > ``` math
@@ -1136,7 +1136,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="catalogue-mob-a1a"></a>
 
-## Proposition 6.26 (The Möbius identity for $`S`$), page 33
+## Proposition 6.26 (The Möbius identity for $`S`$), page 35
 
 > *The absolutely convergent series satisfy
 > ``` math
@@ -1178,7 +1178,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="catalogue-mob-a1b"></a>
 
-## Corollary 6.27 (An equivalent irrationality question), page 34
+## Corollary 6.27 (An equivalent irrationality question), page 35
 
 > *Subtracting the rational number $`1/2`$ gives
 > ``` math
@@ -1211,7 +1211,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="catalogue-mob-a2"></a>
 
-## Proposition 6.28 (The squared-Lambert identity), page 34
+## Proposition 6.28 (The squared-Lambert identity), page 35
 
 > *Let $`w:\mathbb N\to\mathbb R`$ satisfy $`|w(d)|\le d`$ for $`d\ge1`$, and let $`0\le r<1`$. Then
 > ``` math
@@ -1245,7 +1245,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="catalogue-mob-a4"></a>
 
-## Proposition 6.30 (Weight one and divisor sums), page 34
+## Proposition 6.30 (Weight one and divisor sums), page 35
 
 > *$`\sum_{d:\mathbb{N}^+}' 1/(2^d-1)^2 = \sum_{n:\mathbb{N}^+}' \big(\sigma(n)-\tau(n)\big)\cdot(1/2)^n = \zeta_q(2) - \zeta_q(1)`$ at $`q=1/2`$. The displayed identity is formalised. Irrationality of its value follows from the cited linear independence result of Postelmans and Van Assche, as explained in Proposition 5.17; that literature result is not formalised here. Replacing the weight $`1`$ by $`\mu`$ changes the value to that of Definition 6.29. Observation 6.32 compares the two choices of weight.*
 
@@ -1302,7 +1302,7 @@ theorem moebius_weight_value :
 
 <a id="catalogue-mob-a5"></a>
 
-## Proposition 6.31 (Totient weight and gcd moments), page 34
+## Proposition 6.31 (Totient weight and gcd moments), page 36
 
 > *``` math
 > \sum_{d:\mathbb{N}^+}' \varphi(d)/(2^d-1)^2 = \sum_{n:\mathbb{N}^+}' (P(n)-n)\cdot(1/2)^n,
@@ -1372,7 +1372,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="catalogue-mob-a7"></a>
 
-## Proposition 6.33 (The weight of pairs divisible by a fixed integer), page 35
+## Proposition 6.33 (The weight of pairs divisible by a fixed integer), page 36
 
 > *Let $`X,Y`$ be independent random variables with $`\mathbb P(X=n)=\mathbb P(Y=n)=2^{-n}`$ for $`n\ge1`$. For every $`d\ge1`$,
 > ``` math
@@ -1421,7 +1421,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="catalogue-mob-a8"></a>
 
-## Proposition 6.34 (The sum over coprime directions), page 35
+## Proposition 6.34 (The sum over coprime directions), page 36
 
 > *The sum over positive coprime pairs satisfies
 > ``` math
@@ -1452,7 +1452,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="catalogue-mob-a9a"></a>
 
-## Proposition 6.35 (A Stern–Brocot recursion with stopping), page 35
+## Proposition 6.35 (A Stern–Brocot recursion with stopping), page 37
 
 > *For positive integers $`a,b`$, put
 > ``` math
@@ -1558,7 +1558,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="catalogue-mob-a9b"></a>
 
-## Proposition 6.36 (Convergence with an explicit error), page 36
+## Proposition 6.36 (Convergence with an explicit error), page 37
 
 > *In the splitting identity of Proposition 6.35, the sum of the two child terms is at most $`2/3`$ of the parent term. If $`M_d(a,b)`$ is the sum of the contributions removed during the first $`d`$ levels, then
 > ``` math
@@ -1607,7 +1607,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="catalogue-mob-b1"></a>
 
-## Proposition 6.37 (A numerator polynomial and its coefficients), page 36
+## Proposition 6.37 (A numerator polynomial and its coefficients), page 37
 
 > *For squarefree $`r\ge1`$, the polynomial defined above has coefficients
 > ``` math
@@ -1650,7 +1650,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="catalogue-mob-b2"></a>
 
-## Proposition 6.38 (Evaluation at two), page 36
+## Proposition 6.38 (Evaluation at two), page 37
 
 > *For squarefree $`r\ge1`$, evaluation of $`P_r`$ at two gives the integer
 > ``` math

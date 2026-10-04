@@ -9,26 +9,26 @@
       "start_line": 279,
       "end_line": 312,
       "kind": "source",
-      "sha256": "d261bce1baa7dbabb89517cdc47fc0215165b03132bc0f3e86736c9fa61f555f",
+      "sha256": "dcc8f3bcb592a473b0c4f1c24b63aa41179c362cf1b6b6021b5c435aa017c904",
       "excerpt_sha256": "19c669b3e8d113ec32b7aa63104df844dd5f0ff0b2240c0cdbaf2991b6b948d5"
     },
     {
       "id": "257-proof",
       "path": "paper/257/erdos-257-mersenne-support-subseries.tex",
-      "start_line": 128,
+      "start_line": 121,
       "end_line": 277,
       "kind": "source",
-      "sha256": "d261bce1baa7dbabb89517cdc47fc0215165b03132bc0f3e86736c9fa61f555f",
-      "excerpt_sha256": "071f91a304d5d850218fb7cea780d88a5d3176bc6e4b7a9088544a23b3dfa85f"
+      "sha256": "dcc8f3bcb592a473b0c4f1c24b63aa41179c362cf1b6b6021b5c435aa017c904",
+      "excerpt_sha256": "e1d71f5de2a5ffde769f1a6076f06e7dfcf2e8f0d1858a26d7f807eef5d6cf62"
     },
     {
       "id": "257-reciprocal",
       "path": "paper/257/erdos-257-mersenne-support-subseries.tex",
-      "start_line": 924,
-      "end_line": 951,
+      "start_line": 855,
+      "end_line": 931,
       "kind": "source",
-      "sha256": "d261bce1baa7dbabb89517cdc47fc0215165b03132bc0f3e86736c9fa61f555f",
-      "excerpt_sha256": "07b08dc8e23653a1bea2c48b087571857616d9e98726c98f080aee58c20cd6cf"
+      "sha256": "dcc8f3bcb592a473b0c4f1c24b63aa41179c362cf1b6b6021b5c435aa017c904",
+      "excerpt_sha256": "7fd5d5e10c2ce62aaa71ff08b606d59fbf5bef1f6a2947d075c5669a72b4daff"
     },
     {
       "id": "257-statement",
@@ -36,7 +36,7 @@
       "start_line": 73,
       "end_line": 89,
       "kind": "source",
-      "sha256": "d261bce1baa7dbabb89517cdc47fc0215165b03132bc0f3e86736c9fa61f555f",
+      "sha256": "dcc8f3bcb592a473b0c4f1c24b63aa41179c362cf1b6b6021b5c435aa017c904",
       "excerpt_sha256": "76093fcff9c86ff532b2182837e7c4e191e9806f477c420bc2602d706c643e17"
     },
     {
@@ -61,9 +61,9 @@
       "id": "corpus",
       "path": "docs/papers/corpus.json",
       "start_line": 1,
-      "end_line": 9224,
-      "sha256": "f88e28f6f4601454e6809a167e022268a561a53c3f4d66255944efb03b62068f",
-      "excerpt_sha256": "f88e28f6f4601454e6809a167e022268a561a53c3f4d66255944efb03b62068f",
+      "end_line": 8858,
+      "sha256": "c0a143f17522efb56ac1b5f26b0d0009f7471908968e1caedf23423c58d3f088",
+      "excerpt_sha256": "c0a143f17522efb56ac1b5f26b0d0009f7471908968e1caedf23423c58d3f088",
       "kind": "source"
     },
     {
@@ -71,8 +71,8 @@
       "path": "docs/systems_paper_counts.json",
       "start_line": 1,
       "end_line": 65,
-      "sha256": "252aadd01380ff84863988a13296a4dc67f9c33973a23be0c2110f33f08bb6d4",
-      "excerpt_sha256": "252aadd01380ff84863988a13296a4dc67f9c33973a23be0c2110f33f08bb6d4",
+      "sha256": "199c682f46c961163eaeb5ce91a4ea36211376ef44a1ef6a607bf94107ebfd5c",
+      "excerpt_sha256": "199c682f46c961163eaeb5ce91a4ea36211376ef44a1ef6a607bf94107ebfd5c",
       "kind": "source"
     },
     {
@@ -88,37 +88,37 @@
       "id": "coverage",
       "path": "docs/paper_lean_coverage.json",
       "start_line": 1,
-      "end_line": 29162,
-      "sha256": "fe656ab45f924d5c3f883ec1e54325cc359beaeca3eaa9ff1d1bab6f00933b49",
-      "excerpt_sha256": "fe656ab45f924d5c3f883ec1e54325cc359beaeca3eaa9ff1d1bab6f00933b49",
+      "end_line": 27661,
+      "sha256": "9b2ba9489093158c9791475ca62a0b1592da1e065f548a9aa06b1c2125e9a359",
+      "excerpt_sha256": "9b2ba9489093158c9791475ca62a0b1592da1e065f548a9aa06b1c2125e9a359",
       "kind": "source"
     },
     {
       "id": "coverage-1041",
       "path": "docs/paper_lean_coverage.json",
       "start_line": 1,
-      "end_line": 29162,
+      "end_line": 27661,
       "kind": "supplied_snapshot",
-      "sha256": "fe656ab45f924d5c3f883ec1e54325cc359beaeca3eaa9ff1d1bab6f00933b49",
-      "excerpt_sha256": "fe656ab45f924d5c3f883ec1e54325cc359beaeca3eaa9ff1d1bab6f00933b49"
+      "sha256": "9b2ba9489093158c9791475ca62a0b1592da1e065f548a9aa06b1c2125e9a359",
+      "excerpt_sha256": "9b2ba9489093158c9791475ca62a0b1592da1e065f548a9aa06b1c2125e9a359"
     },
     {
       "id": "coverage-reciprocal",
       "path": "docs/paper_lean_coverage.json",
       "start_line": 1,
-      "end_line": 29162,
+      "end_line": 27661,
       "kind": "supplied_snapshot",
-      "sha256": "fe656ab45f924d5c3f883ec1e54325cc359beaeca3eaa9ff1d1bab6f00933b49",
-      "excerpt_sha256": "fe656ab45f924d5c3f883ec1e54325cc359beaeca3eaa9ff1d1bab6f00933b49"
+      "sha256": "9b2ba9489093158c9791475ca62a0b1592da1e065f548a9aa06b1c2125e9a359",
+      "excerpt_sha256": "9b2ba9489093158c9791475ca62a0b1592da1e065f548a9aa06b1c2125e9a359"
     },
     {
       "id": "coverage-weighted",
       "path": "docs/paper_lean_coverage.json",
       "start_line": 1,
-      "end_line": 29162,
+      "end_line": 27661,
       "kind": "supplied_snapshot",
-      "sha256": "fe656ab45f924d5c3f883ec1e54325cc359beaeca3eaa9ff1d1bab6f00933b49",
-      "excerpt_sha256": "fe656ab45f924d5c3f883ec1e54325cc359beaeca3eaa9ff1d1bab6f00933b49"
+      "sha256": "9b2ba9489093158c9791475ca62a0b1592da1e065f548a9aa06b1c2125e9a359",
+      "excerpt_sha256": "9b2ba9489093158c9791475ca62a0b1592da1e065f548a9aa06b1c2125e9a359"
     },
     {
       "id": "credit",
@@ -133,10 +133,10 @@
       "id": "credit-registry",
       "path": "docs/research-commons/source-attributions.json",
       "start_line": 1,
-      "end_line": 36351,
+      "end_line": 34498,
       "kind": "supplied_snapshot",
-      "sha256": "9f4ad23ecff6d7ccd55a05d9a574e396e9c53c29bb6372ab5f1875ffa26f2726",
-      "excerpt_sha256": "9f4ad23ecff6d7ccd55a05d9a574e396e9c53c29bb6372ab5f1875ffa26f2726"
+      "sha256": "ee77b6e601f91abc2b9dea4917f2a4fd3e4dac7fa4d695514821825cc59d842a",
+      "excerpt_sha256": "ee77b6e601f91abc2b9dea4917f2a4fd3e4dac7fa4d695514821825cc59d842a"
     },
     {
       "id": "essay-pages",
@@ -440,9 +440,9 @@
       "kind": "source",
       "path": "docs/papers/SHORT_PAPER_CONTRACT.md",
       "start_line": 1,
-      "end_line": 132,
-      "sha256": "c97208060d2732399f14ace4008166ea30b05f797fd0c6ac19d829b3f6ddf9aa",
-      "excerpt_sha256": "c97208060d2732399f14ace4008166ea30b05f797fd0c6ac19d829b3f6ddf9aa"
+      "end_line": 150,
+      "sha256": "c8fa7b81301597bfe8eeade4e1eb7c1d668b6311bf60163617f5d0bed7c0dfc0",
+      "excerpt_sha256": "c8fa7b81301597bfe8eeade4e1eb7c1d668b6311bf60163617f5d0bed7c0dfc0"
     },
     {
       "id": "refinement-tests",
@@ -739,7 +739,7 @@
       "path": "paper/257/erdos-257-mersenne-support-subseries.tex",
       "start_line": 175,
       "end_line": 293,
-      "sha256": "d261bce1baa7dbabb89517cdc47fc0215165b03132bc0f3e86736c9fa61f555f",
+      "sha256": "dcc8f3bcb592a473b0c4f1c24b63aa41179c362cf1b6b6021b5c435aa017c904",
       "excerpt_sha256": "92bbcec0fccefd5abe945c1d5e45afa5b0e8d6b88f1e14209faa92deefd80b00",
       "custody": "Current native public file inspected as source; no fresh execution."
     },
@@ -847,9 +847,9 @@
       "id": "r11-prove2me-attribution",
       "kind": "supplied_snapshot",
       "path": "docs/research-commons/source-attributions.json",
-      "start_line": 16125,
-      "end_line": 16173,
-      "sha256": "9f4ad23ecff6d7ccd55a05d9a574e396e9c53c29bb6372ab5f1875ffa26f2726",
+      "start_line": 14864,
+      "end_line": 14912,
+      "sha256": "ee77b6e601f91abc2b9dea4917f2a4fd3e4dac7fa4d695514821825cc59d842a",
       "excerpt_sha256": "a8d6f7239b51857fa0654cb764a559bca353d637f58bd7882ebec87ee5baa42b",
       "custody": "Public attribution inventory, marked bibliography_only. Used for feature attribution, not for its conflicting first-publication chronology. Direct claims are checked against the enclosed original v2 in this pass."
     },
@@ -2926,7 +2926,8 @@
       "evidence_refs": [
         "257-reciprocal",
         "257-statement",
-        "coverage-reciprocal"
+        "coverage-reciprocal",
+        "257-example"
       ],
       "warrant": "Keeps the inherited reciprocal criterion, exact formal antecedent and the source paper's averaging attribution separate from the weighted extension.",
       "statement_sha256": "a85a16fcc13391bf42ddc77713b0a0ae22afa711c622d873ede266e27ba71e26",
@@ -3389,5 +3390,5 @@
     "formal_status": "Quoted existing theorem is class reported, linked to coverage rows; no formal class is recognised by this checker.",
     "external_reading": "External register reading is described in the return, not imported as evidence of implementation."
   },
-  "revision_source_commit": "31ce9342703cd14a5858f9263f62185a12154ca5"
+  "revision_source_commit": "797f2370e4798f551cafcd6e6e86491f15440263"
 }

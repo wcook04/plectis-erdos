@@ -1,0 +1,2776 @@
+{
+  "schema": "paper-scope-migration/1",
+  "base_commit": "f9ad7e269da32d27ab71ddb3ae576a2844ac7b57",
+  "scope": [
+    68,
+    243,
+    249,
+    251,
+    257,
+    269,
+    1041,
+    1049
+  ],
+  "purpose": "Keep each short paper within its title and principal theorem; preserve independent programmes and full verification in existing long records.",
+  "review": "Primary author edited the manuscripts; three read-only Sol scouts audited relocations and evidence mappings. No independent human review, new theorem or new Lean proof is claimed.",
+  "statement_moves": [
+    {
+      "from": "erdos-243-reciprocal-tail-rigidity#res:weights",
+      "to": [
+        "erdos243-reciprocal-tail-reasoning-surface#res:weights"
+      ],
+      "relation": "exact_relocation",
+      "reason": "Statement bytes unchanged apart from navigation; complete proof retained at destination."
+    },
+    {
+      "from": "erdos-249-binary-totient-series#res:basis",
+      "to": [
+        "erdos249-totient-reasoning-surface#res:basis"
+      ],
+      "relation": "exact_relocation",
+      "reason": "Statement bytes unchanged apart from navigation; complete proof retained at destination."
+    },
+    {
+      "from": "erdos-249-binary-totient-series#cor:periodic-freezing",
+      "to": [
+        "erdos249-totient-reasoning-surface#cor:periodic-freezing"
+      ],
+      "relation": "exact_relocation",
+      "reason": "Statement bytes unchanged apart from navigation; complete proof retained at destination."
+    },
+    {
+      "from": "erdos-249-binary-totient-series#res:residueseries",
+      "to": [
+        "erdos249-totient-reasoning-surface#res:residueseries"
+      ],
+      "relation": "exact_relocation",
+      "reason": "Statement bytes unchanged apart from navigation; complete proof retained at destination."
+    },
+    {
+      "from": "erdos-249-binary-totient-series#lem:bounded-pulse",
+      "to": [
+        "erdos249-totient-reasoning-surface#lem:bounded-pulse"
+      ],
+      "relation": "exact_relocation",
+      "reason": "Statement bytes unchanged apart from navigation; complete proof retained at destination."
+    },
+    {
+      "from": "erdos-257-mersenne-support-subseries#res:period",
+      "to": [
+        "erdos257-mersenne-reasoning-surface#res:period"
+      ],
+      "relation": "exact_relocation",
+      "reason": "Statement bytes unchanged apart from navigation; complete proof retained at destination."
+    },
+    {
+      "from": "erdos-257-mersenne-support-subseries#res:general-repair",
+      "to": [
+        "erdos257-mersenne-reasoning-surface#res:general-repair"
+      ],
+      "relation": "exact_relocation",
+      "reason": "Statement bytes unchanged apart from navigation; complete proof retained at destination."
+    },
+    {
+      "from": "erdos-257-mersenne-support-subseries#res:one-over-twenty-one-frontier",
+      "to": [
+        "erdos257-mersenne-reasoning-surface#res:one-over-twenty-one-frontier"
+      ],
+      "relation": "exact_relocation",
+      "reason": "Statement bytes unchanged apart from navigation; complete proof retained at destination."
+    },
+    {
+      "from": "erdos-257-mersenne-support-subseries#res:terminalhalf",
+      "to": [
+        "erdos257-mersenne-reasoning-surface#res:terminalhalf"
+      ],
+      "relation": "exact_relocation",
+      "reason": "Statement bytes unchanged apart from navigation; complete proof retained at destination."
+    },
+    {
+      "from": "erdos-257-mersenne-support-subseries#res:cylinderhalf",
+      "to": [
+        "erdos257-mersenne-reasoning-surface#res:cylinderhalf"
+      ],
+      "relation": "exact_relocation",
+      "reason": "Statement bytes unchanged apart from navigation; complete proof retained at destination."
+    },
+    {
+      "from": "erdos-269-three-prime-running-lcm#res:admissible-modular-minors",
+      "to": [
+        "erdos269-running-lcm-reasoning-surface#res:admissible-modular-minors"
+      ],
+      "relation": "exact_relocation",
+      "reason": "Statement bytes unchanged apart from navigation; complete proof retained at destination."
+    },
+    {
+      "from": "erdos-243-reciprocal-tail-rigidity#res:originalbounded",
+      "to": [
+        "erdos243-reciprocal-tail-reasoning-surface#long243:res:strausbounded"
+      ],
+      "relation": "reviewed_consolidation",
+      "reason": "Bounded product-ratio clause is identical after choosing positive p,q for the rational sum; long theorem adds the slow-growth clause.",
+      "preserved_declarations": [
+        {
+          "name": "ErdosProblems.Erdos243.PaperCompleteR7.original_coordinate_bounded_defect",
+          "file": "lean/ErdosProblems/Erdos243/PaperCompleteR7/ProductDefect.lean"
+        }
+      ],
+      "source_evidence": {
+        "lean": {
+          "status": "exact",
+          "declarations": [
+            {
+              "name": "ErdosProblems.Erdos243.PaperCompleteR7.original_coordinate_bounded_defect",
+              "file": "lean/ErdosProblems/Erdos243/PaperCompleteR7/ProductDefect.lean"
+            }
+          ]
+        },
+        "comparator": {
+          "status": "compared",
+          "repository": "https://github.com/wcook04/plectis-erdos-lean",
+          "entries": [
+            "PalomarCorpus/E243"
+          ],
+          "run_ids": [
+            "35544127144"
+          ],
+          "corpus_commits": [
+            "03a9e42b132a7d1e31344ece6f817e6ecaf0a549"
+          ]
+        },
+        "palomar": {
+          "status": "prepared"
+        }
+      }
+    },
+    {
+      "from": "erdos-243-reciprocal-tail-rigidity#res:bounded",
+      "to": [
+        "erdos243-reciprocal-tail-reasoning-surface#long243:res:bounded"
+      ],
+      "relation": "reviewed_consolidation",
+      "reason": "All recurrences, positivity, relative limit, eventual error bound, and conclusion retained.",
+      "preserved_declarations": [
+        {
+          "name": "ErdosProblems.Erdos243.eventuallyBoundedNegativePart_eventually_zero",
+          "file": "lean/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean"
+        }
+      ],
+      "source_evidence": {
+        "lean": {
+          "status": "exact_or_stronger",
+          "declarations": [
+            {
+              "name": "ErdosProblems.Erdos243.eventuallyBoundedNegativePart_eventually_zero",
+              "file": "lean/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean"
+            }
+          ]
+        },
+        "comparator": {
+          "status": "compared",
+          "repository": "https://github.com/wcook04/plectis-erdos-lean",
+          "entries": [
+            "PalomarCorpus/E243a"
+          ],
+          "run_ids": [
+            "35643815458"
+          ],
+          "corpus_commits": [
+            "56408ca8d927d34479b80bdf93a7ae8f87bff6ba"
+          ]
+        },
+        "palomar": {
+          "status": "prepared"
+        }
+      }
+    },
+    {
+      "from": "erdos-243-reciprocal-tail-rigidity#res:cor",
+      "to": [
+        "erdos243-reciprocal-tail-reasoning-surface#long243:res:cor"
+      ],
+      "relation": "reviewed_consolidation",
+      "reason": "Exact eventual multiplier conclusion under the same bounded-negative hypotheses; source wrapper declaration absent from destination coverage.",
+      "preserved_declarations": [
+        {
+          "name": "ErdosProblems.Erdos243.PaperCompleteR7.bounded_negative_endpoint_eventual_multiplier",
+          "file": "lean/ErdosProblems/Erdos243/PaperCompleteR7/Arithmetic.lean"
+        }
+      ],
+      "source_evidence": {
+        "lean": {
+          "status": "exact",
+          "declarations": [
+            {
+              "name": "ErdosProblems.Erdos243.PaperCompleteR7.bounded_negative_endpoint_eventual_multiplier",
+              "file": "lean/ErdosProblems/Erdos243/PaperCompleteR7/Arithmetic.lean"
+            }
+          ]
+        },
+        "comparator": {
+          "status": "compared",
+          "repository": "https://github.com/wcook04/plectis-erdos-lean",
+          "entries": [
+            "PalomarCorpus/E243a"
+          ],
+          "run_ids": [
+            "35643815458"
+          ],
+          "corpus_commits": [
+            "56408ca8d927d34479b80bdf93a7ae8f87bff6ba"
+          ]
+        },
+        "palomar": {
+          "status": "prepared"
+        }
+      }
+    },
+    {
+      "from": "erdos-243-reciprocal-tail-rigidity#res:update",
+      "to": [
+        "erdos243-reciprocal-tail-reasoning-surface#long243:res:update",
+        "erdos243-reciprocal-tail-reasoning-surface#long243:res:defect"
+      ],
+      "relation": "reviewed_consolidation",
+      "reason": "Short row combines both recurrence error identities. Long rows state their isolated universal integer identities separately; jointly imply exactly the short row. No single destination row contains the complete combined statement.",
+      "preserved_declarations": [
+        {
+          "name": "ErdosProblems.Erdos243.PaperCompleteR7.error_identities",
+          "file": "lean/ErdosProblems/Erdos243/PaperCompleteR7/Arithmetic.lean"
+        }
+      ],
+      "source_evidence": {
+        "lean": {
+          "status": "exact",
+          "declarations": [
+            {
+              "name": "ErdosProblems.Erdos243.PaperCompleteR7.error_identities",
+              "file": "lean/ErdosProblems/Erdos243/PaperCompleteR7/Arithmetic.lean"
+            }
+          ]
+        },
+        "comparator": {
+          "status": "compared",
+          "repository": "https://github.com/wcook04/plectis-erdos-lean",
+          "entries": [
+            "PalomarCorpus/E243a"
+          ],
+          "run_ids": [
+            "35643815458"
+          ],
+          "corpus_commits": [
+            "56408ca8d927d34479b80bdf93a7ae8f87bff6ba"
+          ]
+        },
+        "palomar": {
+          "status": "prepared"
+        }
+      }
+    },
+    {
+      "from": "erdos-243-reciprocal-tail-rigidity#res:absorb",
+      "to": [
+        "erdos243-reciprocal-tail-reasoning-surface#long243:res:absorb",
+        "erdos243-reciprocal-tail-reasoning-surface#long243:res:descent"
+      ],
+      "relation": "reviewed_consolidation",
+      "reason": "Absorption is stated without short a>1/C>0 hypotheses. Scalar natural descent is stated from index zero; the short eventual nonnegative version follows by deleting a finite prefix and treating its nonnegative integer errors as naturals. Combined source wrapper absent; no one destination row contains both clauses.",
+      "preserved_declarations": [
+        {
+          "name": "ErdosProblems.Erdos243.PaperCompleteR7.absorption_and_descent",
+          "file": "lean/ErdosProblems/Erdos243/PaperCompleteR7/Arithmetic.lean"
+        }
+      ],
+      "source_evidence": {
+        "lean": {
+          "status": "exact",
+          "declarations": [
+            {
+              "name": "ErdosProblems.Erdos243.PaperCompleteR7.absorption_and_descent",
+              "file": "lean/ErdosProblems/Erdos243/PaperCompleteR7/Arithmetic.lean"
+            }
+          ]
+        },
+        "comparator": {
+          "status": "compared",
+          "repository": "https://github.com/wcook04/plectis-erdos-lean",
+          "entries": [
+            "PalomarCorpus/E243a"
+          ],
+          "run_ids": [
+            "35643815458"
+          ],
+          "corpus_commits": [
+            "56408ca8d927d34479b80bdf93a7ae8f87bff6ba"
+          ]
+        },
+        "palomar": {
+          "status": "prepared"
+        }
+      }
+    },
+    {
+      "from": "erdos-243-reciprocal-tail-rigidity#res:step",
+      "to": [
+        "erdos243-reciprocal-tail-reasoning-surface#long243:res:step",
+        "erdos243-reciprocal-tail-reasoning-surface#long243:res:eventual"
+      ],
+      "relation": "reviewed_consolidation",
+      "reason": "Local nonzero-factor cancellation and eventual integer sequence form retained separately. Source local declaration is present at res:step; natural eventual wrapper absent at both destinations.",
+      "preserved_declarations": [
+        {
+          "name": "ErdosProblems.Erdos243.sylvesterNext_eq_of_centered_zero",
+          "file": "lean/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean"
+        },
+        {
+          "name": "ErdosProblems.Erdos243.PaperCompleteR7.natural_sylvester_of_eventual_zero",
+          "file": "lean/ErdosProblems/Erdos243/PaperCompleteR7/Arithmetic.lean"
+        }
+      ],
+      "source_evidence": {
+        "lean": {
+          "status": "exact",
+          "declarations": [
+            {
+              "name": "ErdosProblems.Erdos243.sylvesterNext_eq_of_centered_zero",
+              "file": "lean/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean"
+            },
+            {
+              "name": "ErdosProblems.Erdos243.PaperCompleteR7.natural_sylvester_of_eventual_zero",
+              "file": "lean/ErdosProblems/Erdos243/PaperCompleteR7/Arithmetic.lean"
+            }
+          ]
+        },
+        "comparator": {
+          "status": "compared",
+          "repository": "https://github.com/wcook04/plectis-erdos-lean",
+          "entries": [
+            "PalomarCorpus/E243a"
+          ],
+          "run_ids": [
+            "35643815458"
+          ],
+          "corpus_commits": [
+            "56408ca8d927d34479b80bdf93a7ae8f87bff6ba"
+          ]
+        },
+        "palomar": {
+          "status": "prepared"
+        }
+      }
+    },
+    {
+      "from": "erdos-243-reciprocal-tail-rigidity#res:crt",
+      "to": [
+        "erdos243-reciprocal-tail-reasoning-surface#long243:res:crt"
+      ],
+      "relation": "reviewed_consolidation",
+      "reason": "Same arbitrary lower bound and B consecutive multiples with pairwise coprime moduli >=2. Destination uses newer shiftedBlock declaration; source declaration name absent.",
+      "preserved_declarations": [
+        {
+          "name": "ErdosProblems.Erdos243.exists_shifted_consecutiveMultiples",
+          "file": "lean/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean"
+        }
+      ],
+      "source_evidence": {
+        "lean": {
+          "status": "exact",
+          "declarations": [
+            {
+              "name": "ErdosProblems.Erdos243.exists_shifted_consecutiveMultiples",
+              "file": "lean/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean"
+            }
+          ]
+        },
+        "comparator": {
+          "status": "compared",
+          "repository": "https://github.com/wcook04/plectis-erdos-lean",
+          "entries": [
+            "PalomarCorpus/E243a"
+          ],
+          "run_ids": [
+            "35643815458"
+          ],
+          "corpus_commits": [
+            "56408ca8d927d34479b80bdf93a7ae8f87bff6ba"
+          ]
+        },
+        "palomar": {
+          "status": "prepared"
+        }
+      }
+    },
+    {
+      "from": "erdos-243-reciprocal-tail-rigidity#res:barrier",
+      "to": [
+        "erdos243-reciprocal-tail-reasoning-surface#long243:res:barrier"
+      ],
+      "relation": "reviewed_consolidation",
+      "reason": "Same divergent natural sequence, uniform bounded rise, pairwise coprime fresh moduli, and gcd avoidance i<t; destination uses newer wrapper. Source declaration absent.",
+      "preserved_declarations": [
+        {
+          "name": "ErdosProblems.Erdos243.no_boundedRise_of_tailAvoidance",
+          "file": "lean/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean"
+        }
+      ],
+      "source_evidence": {
+        "lean": {
+          "status": "exact",
+          "declarations": [
+            {
+              "name": "ErdosProblems.Erdos243.no_boundedRise_of_tailAvoidance",
+              "file": "lean/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean"
+            }
+          ]
+        },
+        "comparator": {
+          "status": "compared",
+          "repository": "https://github.com/wcook04/plectis-erdos-lean",
+          "entries": [
+            "PalomarCorpus/E243"
+          ],
+          "run_ids": [
+            "35544127144"
+          ],
+          "corpus_commits": [
+            "03a9e42b132a7d1e31344ece6f817e6ecaf0a549"
+          ]
+        },
+        "palomar": {
+          "status": "prepared"
+        }
+      }
+    },
+    {
+      "from": "erdos-243-reciprocal-tail-rigidity#res:gcdstab",
+      "to": [
+        "erdos243-reciprocal-tail-reasoning-surface#long243:res:gcdstab"
+      ],
+      "relation": "reviewed_consolidation",
+      "reason": "Same stabilization/reduction conclusion; long statement omits a>1/C>0 hypotheses and derives positivity from arbitrarily late negative errors.",
+      "preserved_declarations": [
+        {
+          "name": "ErdosProblems.Erdos243.PaperCompleteR7.gcd_stabilises_and_reduces",
+          "file": "lean/ErdosProblems/Erdos243/PaperCompleteR7/Reduction.lean"
+        }
+      ],
+      "source_evidence": {
+        "lean": {
+          "status": "exact",
+          "declarations": [
+            {
+              "name": "ErdosProblems.Erdos243.PaperCompleteR7.gcd_stabilises_and_reduces",
+              "file": "lean/ErdosProblems/Erdos243/PaperCompleteR7/Reduction.lean"
+            }
+          ]
+        },
+        "comparator": {
+          "status": "compared",
+          "repository": "https://github.com/wcook04/plectis-erdos-lean",
+          "entries": [
+            "PalomarCorpus/E243a"
+          ],
+          "run_ids": [
+            "35643815458"
+          ],
+          "corpus_commits": [
+            "56408ca8d927d34479b80bdf93a7ae8f87bff6ba"
+          ]
+        },
+        "palomar": {
+          "status": "prepared"
+        }
+      }
+    },
+    {
+      "from": "erdos-243-reciprocal-tail-rigidity#res:massscalar",
+      "to": [
+        "erdos243-reciprocal-tail-reasoning-surface#long243:res:mass"
+      ],
+      "relation": "reviewed_consolidation",
+      "reason": "Identical scalar positive-integer statement plus exact-orbit multiplier consequence.",
+      "preserved_declarations": [
+        {
+          "name": "ErdosProblems.Erdos243.PaperCompleteR7.finite_negative_mass_paper",
+          "file": "lean/ErdosProblems/Erdos243/PaperCompleteR7/Frontier.lean"
+        }
+      ],
+      "source_evidence": {
+        "lean": {
+          "status": "exact",
+          "declarations": [
+            {
+              "name": "ErdosProblems.Erdos243.PaperCompleteR7.finite_negative_mass_paper",
+              "file": "lean/ErdosProblems/Erdos243/PaperCompleteR7/Frontier.lean"
+            }
+          ]
+        },
+        "comparator": {
+          "status": "compared",
+          "repository": "https://github.com/wcook04/plectis-erdos-lean",
+          "entries": [
+            "PalomarCorpus/E243l"
+          ],
+          "run_ids": [
+            "35643815458"
+          ],
+          "corpus_commits": [
+            "56408ca8d927d34479b80bdf93a7ae8f87bff6ba"
+          ]
+        },
+        "palomar": {
+          "status": "prepared"
+        }
+      }
+    },
+    {
+      "from": "erdos-243-reciprocal-tail-rigidity#res:weightedrecord",
+      "to": [
+        "erdos243-reciprocal-tail-reasoning-surface#long243:res:weightedrecord"
+      ],
+      "relation": "reviewed_consolidation",
+      "reason": "Admissible weight is inherited from long res:arithmeticrecord: finite, nonincreasing, nonnegative, divergent integral. Record indices still concern LCM numerator running maxima and weight is evaluated at starting U_n.",
+      "preserved_declarations": [
+        {
+          "name": "ErdosProblems.Erdos243.PaperCompleteR11.canonical_weighted_record_excess",
+          "file": "lean/ErdosProblems/Erdos243/PaperCompleteR11/CanonicalRecords.lean"
+        }
+      ],
+      "source_evidence": {
+        "lean": {
+          "status": "exact",
+          "declarations": [
+            {
+              "name": "ErdosProblems.Erdos243.PaperCompleteR11.canonical_weighted_record_excess",
+              "file": "lean/ErdosProblems/Erdos243/PaperCompleteR11/CanonicalRecords.lean"
+            }
+          ]
+        },
+        "comparator": {
+          "status": "compared",
+          "repository": "https://github.com/wcook04/plectis-erdos-lean",
+          "entries": [
+            "PalomarCorpus/E243"
+          ],
+          "run_ids": [
+            "35544127144"
+          ],
+          "corpus_commits": [
+            "03a9e42b132a7d1e31344ece6f817e6ecaf0a549"
+          ]
+        },
+        "palomar": {
+          "status": "prepared"
+        }
+      }
+    },
+    {
+      "from": "erdos-243-reciprocal-tail-rigidity#res:inclusiveone",
+      "to": [
+        "erdos243-reciprocal-tail-reasoning-surface#long243:res:onethreshold"
+      ],
+      "relation": "reviewed_consolidation",
+      "reason": "Second displayed clause matches exact inclusive 1/n+K/n^(1+epsilon) statement and eventual pointwise 1/n consequence; first clause adds strict limsup n gamma_+<1 criterion. Do not equate inclusive clause with limsup <=1.",
+      "preserved_declarations": [
+        {
+          "name": "ErdosProblems.Erdos243.PaperCompleteR20.original_coordinate_inclusive_one",
+          "file": "lean/ErdosProblems/Erdos243/PaperCompleteR20/InclusiveOne.lean"
+        },
+        {
+          "name": "ErdosProblems.Erdos243.PaperCompleteR20.original_coordinate_inclusive_one_pointwise",
+          "file": "lean/ErdosProblems/Erdos243/PaperCompleteR20/InclusiveOne.lean"
+        }
+      ],
+      "source_evidence": {
+        "lean": {
+          "status": "exact",
+          "declarations": [
+            {
+              "name": "ErdosProblems.Erdos243.PaperCompleteR20.original_coordinate_inclusive_one",
+              "file": "lean/ErdosProblems/Erdos243/PaperCompleteR20/InclusiveOne.lean"
+            },
+            {
+              "name": "ErdosProblems.Erdos243.PaperCompleteR20.original_coordinate_inclusive_one_pointwise",
+              "file": "lean/ErdosProblems/Erdos243/PaperCompleteR20/InclusiveOne.lean"
+            }
+          ]
+        },
+        "comparator": {
+          "status": "compared",
+          "repository": "https://github.com/wcook04/plectis-erdos-lean",
+          "entries": [
+            "PalomarCorpus/E243b"
+          ],
+          "run_ids": [
+            "35624228171"
+          ],
+          "corpus_commits": [
+            "b6cd2121370ae1eb2024399a3947dfbb815a488a"
+          ]
+        },
+        "palomar": {
+          "status": "prepared"
+        }
+      }
+    },
+    {
+      "from": "erdos-243-reciprocal-tail-rigidity#res:frontier",
+      "to": [
+        "erdos243-reciprocal-tail-reasoning-surface#long243:res:frontier"
+      ],
+      "relation": "reviewed_consolidation",
+      "reason": "Same nonzero eventual error, vanishing relative error, unbounded negative magnitudes on negative indices, divergent relative-increase sum.",
+      "preserved_declarations": [
+        {
+          "name": "ErdosProblems.Erdos243.PaperCompleteR7.canonical_frontier",
+          "file": "lean/ErdosProblems/Erdos243/PaperCompleteR7/Frontier.lean"
+        }
+      ],
+      "source_evidence": {
+        "lean": {
+          "status": "exact",
+          "declarations": [
+            {
+              "name": "ErdosProblems.Erdos243.PaperCompleteR7.canonical_frontier",
+              "file": "lean/ErdosProblems/Erdos243/PaperCompleteR7/Frontier.lean"
+            }
+          ]
+        },
+        "comparator": {
+          "status": "compared",
+          "repository": "https://github.com/wcook04/plectis-erdos-lean",
+          "entries": [
+            "PalomarCorpus/E243l"
+          ],
+          "run_ids": [
+            "35643815458"
+          ],
+          "corpus_commits": [
+            "56408ca8d927d34479b80bdf93a7ae8f87bff6ba"
+          ]
+        },
+        "palomar": {
+          "status": "prepared"
+        }
+      }
+    },
+    {
+      "from": "erdos-243-reciprocal-tail-rigidity#res:residue",
+      "to": [
+        "erdos243-reciprocal-tail-reasoning-surface#long243:res:residue"
+      ],
+      "relation": "reviewed_consolidation",
+      "reason": "Same factorial congruence equivalence of first h integral forced quotients.",
+      "preserved_declarations": [
+        {
+          "name": "ErdosProblems.Erdos243.forcedSurvives_iff_of_modEq_factorial",
+          "file": "lean/ErdosProblems/Erdos243/FiniteHorizonResidue.lean"
+        }
+      ],
+      "source_evidence": {
+        "lean": {
+          "status": "exact",
+          "declarations": [
+            {
+              "name": "ErdosProblems.Erdos243.forcedSurvives_iff_of_modEq_factorial",
+              "file": "lean/ErdosProblems/Erdos243/FiniteHorizonResidue.lean"
+            }
+          ]
+        },
+        "comparator": {
+          "status": "compared",
+          "repository": "https://github.com/wcook04/plectis-erdos-lean",
+          "entries": [
+            "PalomarCorpus/E243k"
+          ],
+          "run_ids": [
+            "35674034595"
+          ],
+          "corpus_commits": [
+            "253a436b69603a5662696127016559ddcfd1db42"
+          ]
+        },
+        "palomar": {
+          "status": "prepared"
+        }
+      }
+    },
+    {
+      "from": "erdos-249-binary-totient-series#res:fulldepth",
+      "to": [
+        "erdos249-totient-reasoning-surface#res:fulldepth"
+      ],
+      "relation": "reviewed_consolidation",
+      "reason": "Existing complete full-depth amplification statement carries identical source declaration.",
+      "preserved_declarations": [
+        {
+          "name": "ErdosProblems.Erdos249.PaperCompleteR7.fullDepth_amplification",
+          "file": "lean/ErdosProblems/Erdos249/PaperCompleteR7/ShortNoteAssemblies.lean"
+        }
+      ],
+      "source_evidence": {
+        "lean": {
+          "status": "exact",
+          "declarations": [
+            {
+              "name": "ErdosProblems.Erdos249.PaperCompleteR7.fullDepth_amplification",
+              "file": "lean/ErdosProblems/Erdos249/PaperCompleteR7/ShortNoteAssemblies.lean"
+            }
+          ]
+        },
+        "comparator": {
+          "status": "compared",
+          "repository": "https://github.com/wcook04/plectis-erdos-lean",
+          "entries": [
+            "PalomarCorpus/E249m"
+          ],
+          "run_ids": [
+            "35674034595"
+          ],
+          "corpus_commits": [
+            "253a436b69603a5662696127016559ddcfd1db42"
+          ]
+        },
+        "palomar": {
+          "status": "prepared"
+        }
+      }
+    },
+    {
+      "from": "erdos-249-binary-totient-series#res:rankonefloor",
+      "to": [
+        "erdos249-totient-reasoning-surface#res:rankonefloor"
+      ],
+      "relation": "reviewed_consolidation",
+      "reason": "Existing rank-one floor/strict positive-direct-sum gap/upper-gap comparison statement carries all six source declarations.",
+      "preserved_declarations": [
+        {
+          "name": "ErdosProblems.Erdos249.RankOneSubrankObstruction.rankOne_denominator_pos",
+          "file": "lean/ErdosProblems/Erdos249/RankOneSharpFloor.lean"
+        },
+        {
+          "name": "ErdosProblems.Erdos249.RankOneSubrankObstruction.rankOneSubrankQuotient_ge_one_five",
+          "file": "lean/ErdosProblems/Erdos249/RankOneSharpFloor.lean"
+        },
+        {
+          "name": "ErdosProblems.Erdos249.RankOneSubrankObstruction.rankOneSubrankQuotient_eq_one_five_iff",
+          "file": "lean/ErdosProblems/Erdos249/RankOneSharpFloor.lean"
+        },
+        {
+          "name": "ErdosProblems.Erdos249.RankOneSubrankObstruction.rankOneSubrankQuotient_sub_theta_two_gt_twentyOne_div_threeTwenty",
+          "file": "lean/ErdosProblems/Erdos249/RankOneSharpFloor.lean"
+        },
+        {
+          "name": "ErdosProblems.Erdos249.RankOneSubrankObstruction.positive_direct_sum_sub_theta_two_gt_twentyOne_div_threeTwenty",
+          "file": "lean/ErdosProblems/Erdos249/RankOneSharpFloor.lean"
+        },
+        {
+          "name": "ErdosProblems.Erdos249.RankOneSubrankObstruction.rankOneSubrankQuotient_one_five_sub_theta_two_lt_one_div_fifteen",
+          "file": "lean/ErdosProblems/Erdos249/RankOneSharpFloor.lean"
+        }
+      ],
+      "source_evidence": {
+        "lean": {
+          "status": "exact",
+          "declarations": [
+            {
+              "name": "ErdosProblems.Erdos249.RankOneSubrankObstruction.rankOne_denominator_pos",
+              "file": "lean/ErdosProblems/Erdos249/RankOneSharpFloor.lean"
+            },
+            {
+              "name": "ErdosProblems.Erdos249.RankOneSubrankObstruction.rankOneSubrankQuotient_ge_one_five",
+              "file": "lean/ErdosProblems/Erdos249/RankOneSharpFloor.lean"
+            },
+            {
+              "name": "ErdosProblems.Erdos249.RankOneSubrankObstruction.rankOneSubrankQuotient_eq_one_five_iff",
+              "file": "lean/ErdosProblems/Erdos249/RankOneSharpFloor.lean"
+            },
+            {
+              "name": "ErdosProblems.Erdos249.RankOneSubrankObstruction.rankOneSubrankQuotient_sub_theta_two_gt_twentyOne_div_threeTwenty",
+              "file": "lean/ErdosProblems/Erdos249/RankOneSharpFloor.lean"
+            },
+            {
+              "name": "ErdosProblems.Erdos249.RankOneSubrankObstruction.positive_direct_sum_sub_theta_two_gt_twentyOne_div_threeTwenty",
+              "file": "lean/ErdosProblems/Erdos249/RankOneSharpFloor.lean"
+            },
+            {
+              "name": "ErdosProblems.Erdos249.RankOneSubrankObstruction.rankOneSubrankQuotient_one_five_sub_theta_two_lt_one_div_fifteen",
+              "file": "lean/ErdosProblems/Erdos249/RankOneSharpFloor.lean"
+            }
+          ]
+        },
+        "comparator": {
+          "status": "compared",
+          "repository": "https://github.com/wcook04/plectis-erdos-lean",
+          "entries": [
+            "PalomarCorpus/E249",
+            "PalomarCorpus/E249bg"
+          ],
+          "run_ids": [
+            "35544127144",
+            "35643815458"
+          ],
+          "corpus_commits": [
+            "03a9e42b132a7d1e31344ece6f817e6ecaf0a549",
+            "56408ca8d927d34479b80bdf93a7ae8f87bff6ba"
+          ]
+        },
+        "palomar": {
+          "status": "prepared"
+        }
+      }
+    },
+    {
+      "from": "erdos-251-prime-gap-dyadic-series#res:infinite",
+      "to": [
+        "erdos251-prime-gap-reasoning-surface#long251:res:infinite",
+        "erdos251-prime-gap-reasoning-surface#long251:res:irr-equivalence"
+      ],
+      "relation": "reviewed_consolidation",
+      "reason": "Tail formula, zero value and recurrence occur in actual-tail prose but are absent from the long infinite-identity asserting environment. Preserve all six short declarations in expanded long row.",
+      "preserved_declarations": [
+        {
+          "name": "ErdosProblems.Erdos251.PaperR7.infinite_prime_gap_identity",
+          "file": "lean/ErdosProblems/Erdos251/PaperCoreR7.lean"
+        },
+        {
+          "name": "ErdosProblems.Erdos251.realPrimeGapTail_eq_tsum_shifted_gaps",
+          "file": "lean/ErdosProblems/Erdos251/RealPrimeGapTail.lean"
+        },
+        {
+          "name": "ErdosProblems.Erdos251.realPrimeGapTail_zero",
+          "file": "lean/ErdosProblems/Erdos251/RealPrimeGapTail.lean"
+        },
+        {
+          "name": "ErdosProblems.Erdos251.realPrimeGapTail_recurrence",
+          "file": "lean/ErdosProblems/Erdos251/RealPrimeGapTail.lean"
+        },
+        {
+          "name": "ErdosProblems.Erdos251.irrational_tsum_primeDyadicTerm_iff_primeGap",
+          "file": "lean/ErdosProblems/Erdos251/PrimeGapDyadicTail.lean"
+        },
+        {
+          "name": "ErdosProblems.Erdos251.irrational_realPrimeGapTail_zero_iff",
+          "file": "lean/ErdosProblems/Erdos251/RealPrimeGapTail.lean"
+        }
+      ],
+      "source_evidence": {
+        "lean": {
+          "status": "exact",
+          "declarations": [
+            {
+              "name": "ErdosProblems.Erdos251.PaperR7.infinite_prime_gap_identity",
+              "file": "lean/ErdosProblems/Erdos251/PaperCoreR7.lean"
+            },
+            {
+              "name": "ErdosProblems.Erdos251.realPrimeGapTail_eq_tsum_shifted_gaps",
+              "file": "lean/ErdosProblems/Erdos251/RealPrimeGapTail.lean"
+            },
+            {
+              "name": "ErdosProblems.Erdos251.realPrimeGapTail_zero",
+              "file": "lean/ErdosProblems/Erdos251/RealPrimeGapTail.lean"
+            },
+            {
+              "name": "ErdosProblems.Erdos251.realPrimeGapTail_recurrence",
+              "file": "lean/ErdosProblems/Erdos251/RealPrimeGapTail.lean"
+            },
+            {
+              "name": "ErdosProblems.Erdos251.irrational_tsum_primeDyadicTerm_iff_primeGap",
+              "file": "lean/ErdosProblems/Erdos251/PrimeGapDyadicTail.lean"
+            },
+            {
+              "name": "ErdosProblems.Erdos251.irrational_realPrimeGapTail_zero_iff",
+              "file": "lean/ErdosProblems/Erdos251/RealPrimeGapTail.lean"
+            }
+          ]
+        },
+        "comparator": {
+          "status": "compared",
+          "repository": "https://github.com/wcook04/plectis-erdos-lean",
+          "entries": [
+            "PalomarCorpus/E251g"
+          ],
+          "run_ids": [
+            "35605146048"
+          ],
+          "corpus_commits": [
+            "94f3747194777267461e689327dd20017e7ed744"
+          ]
+        },
+        "palomar": {
+          "status": "prepared"
+        }
+      }
+    },
+    {
+      "from": "erdos-251-prime-gap-dyadic-series#res:true-tail",
+      "to": [
+        "erdos251-prime-gap-reasoning-surface#long251:res:true-tail"
+      ],
+      "relation": "reviewed_consolidation",
+      "reason": "Identical boundary iff and declaration.",
+      "preserved_declarations": [
+        {
+          "name": "ErdosProblems.Erdos251.PaperCompleteR20.real_dyadic_orbit_eq_true_tail_iff",
+          "file": "lean/ErdosProblems/Erdos251/PaperCompleteR20/TrueTail.lean"
+        }
+      ],
+      "source_evidence": {
+        "lean": {
+          "status": "exact",
+          "declarations": [
+            {
+              "name": "ErdosProblems.Erdos251.PaperCompleteR20.real_dyadic_orbit_eq_true_tail_iff",
+              "file": "lean/ErdosProblems/Erdos251/PaperCompleteR20/TrueTail.lean"
+            }
+          ]
+        },
+        "comparator": {
+          "status": "compared",
+          "repository": "https://github.com/wcook04/plectis-erdos-lean",
+          "entries": [
+            "PalomarCorpus/E251c"
+          ],
+          "run_ids": [
+            "35605146048"
+          ],
+          "corpus_commits": [
+            "94f3747194777267461e689327dd20017e7ed744"
+          ]
+        },
+        "palomar": {
+          "status": "prepared"
+        }
+      }
+    },
+    {
+      "from": "erdos-251-prime-gap-dyadic-series#res:escape-irrational",
+      "to": [
+        "erdos251-prime-gap-reasoning-surface#long251:res:escape-irrational"
+      ],
+      "relation": "reviewed_consolidation",
+      "reason": "Exact denominator/shift formula occurs in preceding prose, not long classifier environment; add formula and real_orbit_exact_den_and_shift declaration.",
+      "preserved_declarations": [
+        {
+          "name": "ErdosProblems.Erdos251.PaperCompleteR20.real_orbit_exact_den_and_shift",
+          "file": "lean/ErdosProblems/Erdos251/PaperCompleteR20/ExactDenominator.lean"
+        },
+        {
+          "name": "ErdosProblems.Erdos251.PaperR7.rationality_classification",
+          "file": "lean/ErdosProblems/Erdos251/PaperCoreR7.lean"
+        }
+      ],
+      "source_evidence": {
+        "lean": {
+          "status": "exact",
+          "declarations": [
+            {
+              "name": "ErdosProblems.Erdos251.PaperCompleteR20.real_orbit_exact_den_and_shift",
+              "file": "lean/ErdosProblems/Erdos251/PaperCompleteR20/ExactDenominator.lean"
+            },
+            {
+              "name": "ErdosProblems.Erdos251.PaperR7.rationality_classification",
+              "file": "lean/ErdosProblems/Erdos251/PaperCoreR7.lean"
+            }
+          ]
+        },
+        "comparator": {
+          "status": "compared",
+          "repository": "https://github.com/wcook04/plectis-erdos-lean",
+          "entries": [
+            "PalomarCorpus/E251g",
+            "PalomarCorpus/E251j"
+          ],
+          "run_ids": [
+            "35605146048"
+          ],
+          "corpus_commits": [
+            "94f3747194777267461e689327dd20017e7ed744"
+          ]
+        },
+        "palomar": {
+          "status": "prepared"
+        }
+      }
+    },
+    {
+      "from": "erdos-251-prime-gap-dyadic-series#res:signedwindow",
+      "to": [
+        "erdos251-prime-gap-reasoning-surface#long251:res:signedwindow"
+      ],
+      "relation": "reviewed_consolidation",
+      "reason": "Long signed interval iff and recurrence give signed next interval and nonintegrality immediately. To preserve exact generic short coverage, add signed_two_window_iff and signed_two_window_consequences declarations or retain their full statement in the long row.",
+      "preserved_declarations": [
+        {
+          "name": "ErdosProblems.Erdos251.PaperCompleteR20.signed_two_window_iff",
+          "file": "lean/ErdosProblems/Erdos251/PaperCompleteR20/SignedWindow.lean"
+        },
+        {
+          "name": "ErdosProblems.Erdos251.PaperCompleteR20.signed_two_window_consequences",
+          "file": "lean/ErdosProblems/Erdos251/PaperCompleteR20/SignedWindow.lean"
+        }
+      ],
+      "source_evidence": {
+        "lean": {
+          "status": "exact",
+          "declarations": [
+            {
+              "name": "ErdosProblems.Erdos251.PaperCompleteR20.signed_two_window_iff",
+              "file": "lean/ErdosProblems/Erdos251/PaperCompleteR20/SignedWindow.lean"
+            },
+            {
+              "name": "ErdosProblems.Erdos251.PaperCompleteR20.signed_two_window_consequences",
+              "file": "lean/ErdosProblems/Erdos251/PaperCompleteR20/SignedWindow.lean"
+            }
+          ]
+        },
+        "comparator": {
+          "status": "compared",
+          "repository": "https://github.com/wcook04/plectis-erdos-lean",
+          "entries": [
+            "PalomarCorpus/E251d"
+          ],
+          "run_ids": [
+            "35605146048"
+          ],
+          "corpus_commits": [
+            "94f3747194777267461e689327dd20017e7ed744"
+          ]
+        },
+        "palomar": {
+          "status": "prepared"
+        }
+      }
+    },
+    {
+      "from": "erdos-251-prime-gap-dyadic-series#res:truncation",
+      "to": [
+        "erdos251-prime-gap-reasoning-surface#long251:xr:truncation",
+        "erdos251-prime-gap-reasoning-surface#long251:res:escape-irrational"
+      ],
+      "relation": "reviewed_consolidation",
+      "reason": "Long truncation concludes the nonintegrality condition; short concludes Pi irrational. Add explicit Pi-irrationality consequence to existing long truncation environment and its irrational_prime_series_of_finite_truncation declaration.",
+      "preserved_declarations": [
+        {
+          "name": "ErdosProblems.Erdos251.PaperR7.irrational_prime_series_of_finite_truncation",
+          "file": "lean/ErdosProblems/Erdos251/PaperTailBoundsR7.lean"
+        }
+      ],
+      "source_evidence": {
+        "lean": {
+          "status": "exact_or_stronger",
+          "declarations": [
+            {
+              "name": "ErdosProblems.Erdos251.PaperR7.irrational_prime_series_of_finite_truncation",
+              "file": "lean/ErdosProblems/Erdos251/PaperTailBoundsR7.lean"
+            }
+          ]
+        },
+        "comparator": {
+          "status": "compared",
+          "repository": "https://github.com/wcook04/plectis-erdos-lean",
+          "entries": [
+            "PalomarCorpus/E251q"
+          ],
+          "run_ids": [
+            "35605146048"
+          ],
+          "corpus_commits": [
+            "94f3747194777267461e689327dd20017e7ed744"
+          ]
+        },
+        "palomar": {
+          "status": "prepared"
+        }
+      }
+    },
+    {
+      "from": "erdos-251-prime-gap-dyadic-series#res:irr-equivalence",
+      "to": [
+        "erdos251-prime-gap-reasoning-surface#long251:res:irr-equivalence"
+      ],
+      "relation": "reviewed_consolidation",
+      "reason": "Long also covers zero-based denominator 2^n convention.",
+      "preserved_declarations": [
+        {
+          "name": "ErdosProblems.Erdos251.PaperR7.infinite_prime_gap_identity",
+          "file": "lean/ErdosProblems/Erdos251/PaperCoreR7.lean"
+        },
+        {
+          "name": "ErdosProblems.Erdos251.PaperR7.irrationality_reformulation",
+          "file": "lean/ErdosProblems/Erdos251/PaperCoreR7.lean"
+        }
+      ],
+      "source_evidence": {
+        "lean": {
+          "status": "exact_or_stronger",
+          "declarations": [
+            {
+              "name": "ErdosProblems.Erdos251.PaperR7.infinite_prime_gap_identity",
+              "file": "lean/ErdosProblems/Erdos251/PaperCoreR7.lean"
+            },
+            {
+              "name": "ErdosProblems.Erdos251.PaperR7.irrationality_reformulation",
+              "file": "lean/ErdosProblems/Erdos251/PaperCoreR7.lean"
+            }
+          ]
+        },
+        "comparator": {
+          "status": "compared",
+          "repository": "https://github.com/wcook04/plectis-erdos-lean",
+          "entries": [
+            "PalomarCorpus/E251g"
+          ],
+          "run_ids": [
+            "35605146048"
+          ],
+          "corpus_commits": [
+            "94f3747194777267461e689327dd20017e7ed744"
+          ]
+        },
+        "palomar": {
+          "status": "prepared"
+        }
+      }
+    },
+    {
+      "from": "erdos-251-prime-gap-dyadic-series#res:gap-nonperiodic",
+      "to": [
+        "erdos251-prime-gap-reasoning-surface#long251:res:gap-nonperiodic"
+      ],
+      "relation": "reviewed_consolidation",
+      "reason": "Same quantified theorem and same declaration.",
+      "preserved_declarations": [
+        {
+          "name": "ErdosProblems.Erdos251.PaperR7.prime_gaps_not_eventually_periodic",
+          "file": "lean/ErdosProblems/Erdos251/PaperCoreR7.lean"
+        }
+      ],
+      "source_evidence": {
+        "lean": {
+          "status": "exact",
+          "declarations": [
+            {
+              "name": "ErdosProblems.Erdos251.PaperR7.prime_gaps_not_eventually_periodic",
+              "file": "lean/ErdosProblems/Erdos251/PaperCoreR7.lean"
+            }
+          ]
+        },
+        "comparator": {
+          "status": "compared",
+          "repository": "https://github.com/wcook04/plectis-erdos-lean",
+          "entries": [
+            "PalomarCorpus/E251g"
+          ],
+          "run_ids": [
+            "35605146048"
+          ],
+          "corpus_commits": [
+            "94f3747194777267461e689327dd20017e7ed744"
+          ]
+        },
+        "palomar": {
+          "status": "prepared"
+        }
+      }
+    },
+    {
+      "from": "erdos-269-three-prime-running-lcm#res:infinite-rank",
+      "to": [
+        "erdos269-running-lcm-reasoning-surface#long269:res:infinite-rank"
+      ],
+      "relation": "reviewed_consolidation",
+      "reason": "Same all-rank nonseparation theorem, long n>=1 excludes only short trivial n=0 case; retain n=0 convention in provenance, no proof gap.",
+      "preserved_declarations": [
+        {
+          "name": "ErdosProblems.Erdos269.PaperR7.paper_uniform_rank_and_nonseparation",
+          "file": "lean/ErdosProblems/Erdos269/PaperR7BasicAssembly.lean"
+        }
+      ],
+      "source_evidence": {
+        "lean": {
+          "status": "exact_or_stronger",
+          "declarations": [
+            {
+              "name": "ErdosProblems.Erdos269.PaperR7.paper_uniform_rank_and_nonseparation",
+              "file": "lean/ErdosProblems/Erdos269/PaperR7BasicAssembly.lean"
+            }
+          ]
+        },
+        "comparator": {
+          "status": "compared",
+          "repository": "https://github.com/wcook04/plectis-erdos-lean",
+          "entries": [
+            "PalomarCorpus/E269a"
+          ],
+          "run_ids": [
+            "35643815458"
+          ],
+          "corpus_commits": [
+            "56408ca8d927d34479b80bdf93a7ae8f87bff6ba"
+          ]
+        },
+        "palomar": {
+          "status": "prepared"
+        }
+      }
+    },
+    {
+      "from": "erdos-269-three-prime-running-lcm#res:finite-cut-rank",
+      "to": [
+        "erdos269-running-lcm-reasoning-surface#long269:res:finite-cut-rank"
+      ],
+      "relation": "reviewed_consolidation",
+      "reason": "Same field restrictions and rank formula; same declaration.",
+      "preserved_declarations": [
+        {
+          "name": "ErdosProblems.Erdos269.PaperR7.rank_cutMatrix",
+          "file": "lean/ErdosProblems/Erdos269/PaperR7FiniteCutRank.lean"
+        }
+      ],
+      "source_evidence": {
+        "lean": {
+          "status": "exact_or_stronger",
+          "declarations": [
+            {
+              "name": "ErdosProblems.Erdos269.PaperR7.rank_cutMatrix",
+              "file": "lean/ErdosProblems/Erdos269/PaperR7FiniteCutRank.lean"
+            }
+          ]
+        },
+        "comparator": {
+          "status": "compared",
+          "repository": "https://github.com/wcook04/plectis-erdos-lean",
+          "entries": [
+            "PalomarCorpus/E269h"
+          ],
+          "run_ids": [
+            "35682858662"
+          ],
+          "corpus_commits": [
+            "923460880a52704e64faea51eae656e2acbaff95"
+          ]
+        },
+        "palomar": {
+          "status": "prepared"
+        }
+      }
+    },
+    {
+      "from": "erdos-269-three-prime-running-lcm#res:two-prime-transcendence",
+      "to": [
+        "erdos269-running-lcm-reasoning-surface#long269:res:lead-two-prime"
+      ],
+      "relation": "reviewed_consolidation",
+      "reason": "Long lead row only states transcendence. Both explicit polynomial identities live in its proof, not row. Include identities in existing theorem and short two_prime_affine_and_quadratic evidence.",
+      "preserved_declarations": [
+        {
+          "name": "ErdosProblems.Erdos269.PaperCompleteR21.two_prime_affine_and_quadratic",
+          "file": "lean/ErdosProblems/Erdos269/PaperCompleteR21/TwoPrimeSums.lean"
+        },
+        {
+          "name": "ErdosProblems.Erdos269.PaperCompleteR21.two_prime_sums_transcendental",
+          "file": "lean/ErdosProblems/Erdos269/PaperCompleteR21/TwoPrimeSums.lean"
+        },
+        {
+          "name": "ErdosProblems.Erdos269.PaperCompleteR21.runningLcm_eq_twoPrimeHeight",
+          "file": "lean/ErdosProblems/Erdos269/PaperCompleteR21/TwoPrimeSums.lean"
+        },
+        {
+          "name": "ErdosProblems.Erdos269.PaperCompleteR21.twoPrimeHeight_smooth",
+          "file": "lean/ErdosProblems/Erdos269/PaperCompleteR21/TwoPrimeSums.lean"
+        },
+        {
+          "name": "ErdosProblems.Erdos269.PaperCompleteR21.qExp_pExp_succ",
+          "file": "lean/ErdosProblems/Erdos269/PaperCompleteR21/TwoPrimeSums.lean"
+        },
+        {
+          "name": "ErdosProblems.Erdos269.PaperCompleteR21.pExp_qExp_succ",
+          "file": "lean/ErdosProblems/Erdos269/PaperCompleteR21/TwoPrimeSums.lean"
+        },
+        {
+          "name": "ErdosProblems.Erdos269.PaperCompleteR21.runningLcmValues_eq",
+          "file": "lean/ErdosProblems/Erdos269/PaperCompleteR21/TwoPrimeSums.lean"
+        },
+        {
+          "name": "ErdosProblems.Erdos269.PaperCompleteR21.repeatedSum_eq",
+          "file": "lean/ErdosProblems/Erdos269/PaperCompleteR21/TwoPrimeSums.lean"
+        },
+        {
+          "name": "ErdosProblems.Erdos269.PaperCompleteR21.distinctSum_eq",
+          "file": "lean/ErdosProblems/Erdos269/PaperCompleteR21/TwoPrimeSums.lean"
+        },
+        {
+          "name": "ErdosProblems.Erdos269.PaperCompleteR21.bSum_eq",
+          "file": "lean/ErdosProblems/Erdos269/PaperCompleteR21/TwoPrimeSums.lean"
+        },
+        {
+          "name": "ErdosProblems.Erdos269.PaperCompleteR21.heckeValue_boundary",
+          "file": "lean/ErdosProblems/Erdos269/PaperCompleteR21/TwoPrimeSums.lean"
+        },
+        {
+          "name": "ErdosProblems.Erdos269.PaperCompleteR21.irrational_logb_of_primes",
+          "file": "lean/ErdosProblems/Erdos269/PaperCompleteR21/TwoPrimeSums.lean"
+        },
+        {
+          "name": "ErdosProblems.Erdos269.PaperCompleteR21.transcendental_heckeValue",
+          "file": "lean/ErdosProblems/Erdos269/PaperCompleteR21/TwoPrimeSums.lean"
+        }
+      ],
+      "source_evidence": {
+        "lean": {
+          "status": "modulo_named_input",
+          "declarations": [
+            {
+              "name": "ErdosProblems.Erdos269.PaperCompleteR21.two_prime_affine_and_quadratic",
+              "file": "lean/ErdosProblems/Erdos269/PaperCompleteR21/TwoPrimeSums.lean"
+            },
+            {
+              "name": "ErdosProblems.Erdos269.PaperCompleteR21.two_prime_sums_transcendental",
+              "file": "lean/ErdosProblems/Erdos269/PaperCompleteR21/TwoPrimeSums.lean"
+            },
+            {
+              "name": "ErdosProblems.Erdos269.PaperCompleteR21.runningLcm_eq_twoPrimeHeight",
+              "file": "lean/ErdosProblems/Erdos269/PaperCompleteR21/TwoPrimeSums.lean"
+            },
+            {
+              "name": "ErdosProblems.Erdos269.PaperCompleteR21.twoPrimeHeight_smooth",
+              "file": "lean/ErdosProblems/Erdos269/PaperCompleteR21/TwoPrimeSums.lean"
+            },
+            {
+              "name": "ErdosProblems.Erdos269.PaperCompleteR21.qExp_pExp_succ",
+              "file": "lean/ErdosProblems/Erdos269/PaperCompleteR21/TwoPrimeSums.lean"
+            },
+            {
+              "name": "ErdosProblems.Erdos269.PaperCompleteR21.pExp_qExp_succ",
+              "file": "lean/ErdosProblems/Erdos269/PaperCompleteR21/TwoPrimeSums.lean"
+            },
+            {
+              "name": "ErdosProblems.Erdos269.PaperCompleteR21.runningLcmValues_eq",
+              "file": "lean/ErdosProblems/Erdos269/PaperCompleteR21/TwoPrimeSums.lean"
+            },
+            {
+              "name": "ErdosProblems.Erdos269.PaperCompleteR21.repeatedSum_eq",
+              "file": "lean/ErdosProblems/Erdos269/PaperCompleteR21/TwoPrimeSums.lean"
+            },
+            {
+              "name": "ErdosProblems.Erdos269.PaperCompleteR21.distinctSum_eq",
+              "file": "lean/ErdosProblems/Erdos269/PaperCompleteR21/TwoPrimeSums.lean"
+            },
+            {
+              "name": "ErdosProblems.Erdos269.PaperCompleteR21.bSum_eq",
+              "file": "lean/ErdosProblems/Erdos269/PaperCompleteR21/TwoPrimeSums.lean"
+            },
+            {
+              "name": "ErdosProblems.Erdos269.PaperCompleteR21.heckeValue_boundary",
+              "file": "lean/ErdosProblems/Erdos269/PaperCompleteR21/TwoPrimeSums.lean"
+            },
+            {
+              "name": "ErdosProblems.Erdos269.PaperCompleteR21.irrational_logb_of_primes",
+              "file": "lean/ErdosProblems/Erdos269/PaperCompleteR21/TwoPrimeSums.lean"
+            },
+            {
+              "name": "ErdosProblems.Erdos269.PaperCompleteR21.transcendental_heckeValue",
+              "file": "lean/ErdosProblems/Erdos269/PaperCompleteR21/TwoPrimeSums.lean"
+            }
+          ],
+          "named_inputs": [
+            "ErdosProblems.Erdos269.PaperCompleteR21.BugeaudLaurentTranscendence"
+          ],
+          "scope": "the transcendence theorem of Bugeaud and Laurent"
+        },
+        "comparator": {
+          "status": "not_applicable"
+        },
+        "palomar": {
+          "status": "not_applicable"
+        }
+      }
+    },
+    {
+      "from": "erdos-269-three-prime-running-lcm#res:lcm",
+      "to": [
+        "erdos269-running-lcm-reasoning-surface#long269:res:lcm"
+      ],
+      "relation": "reviewed_consolidation",
+      "reason": "Same real cutoff theorem and same declaration.",
+      "preserved_declarations": [
+        {
+          "name": "ErdosProblems.Erdos269.PaperCompleteR20.running_lcm_real_cutoff_exact",
+          "file": "lean/ErdosProblems/Erdos269/PaperCompleteR20/RealCutoffs.lean"
+        }
+      ],
+      "source_evidence": {
+        "lean": {
+          "status": "exact_or_stronger",
+          "declarations": [
+            {
+              "name": "ErdosProblems.Erdos269.PaperCompleteR20.running_lcm_real_cutoff_exact",
+              "file": "lean/ErdosProblems/Erdos269/PaperCompleteR20/RealCutoffs.lean"
+            }
+          ]
+        },
+        "comparator": {
+          "status": "compared",
+          "repository": "https://github.com/wcook04/plectis-erdos-lean",
+          "entries": [
+            "PalomarCorpus/E269d"
+          ],
+          "run_ids": [
+            "35643815458"
+          ],
+          "corpus_commits": [
+            "56408ca8d927d34479b80bdf93a7ae8f87bff6ba"
+          ]
+        },
+        "palomar": {
+          "status": "prepared"
+        }
+      }
+    },
+    {
+      "from": "erdos-269-three-prime-running-lcm#res:cell",
+      "to": [
+        "erdos269-running-lcm-reasoning-surface#long269:res:cell",
+        "erdos269-running-lcm-reasoning-surface#long269:res:count"
+      ],
+      "relation": "reviewed_consolidation",
+      "reason": "Short cell+jump+3n+1 count bundle splits across two long rows. The declaration sets cover each clause.",
+      "preserved_declarations": [
+        {
+          "name": "ErdosProblems.Erdos269.PaperCompleteR20.realPrefixLcm_eq_of_sameLogCell",
+          "file": "lean/ErdosProblems/Erdos269/PaperCompleteR20/RealCutoffs.lean"
+        },
+        {
+          "name": "ErdosProblems.Erdos269.PaperCompleteR20.realPrefixLcm_jump_first",
+          "file": "lean/ErdosProblems/Erdos269/PaperCompleteR20/RealCutoffs.lean"
+        },
+        {
+          "name": "ErdosProblems.Erdos269.PaperCompleteR20.realPrefixLcm_jump_second",
+          "file": "lean/ErdosProblems/Erdos269/PaperCompleteR20/RealCutoffs.lean"
+        },
+        {
+          "name": "ErdosProblems.Erdos269.PaperCompleteR20.realPrefixLcm_jump_third",
+          "file": "lean/ErdosProblems/Erdos269/PaperCompleteR20/RealCutoffs.lean"
+        },
+        {
+          "name": "ErdosProblems.Erdos269.PaperR7.paper_jump_count",
+          "file": "lean/ErdosProblems/Erdos269/PaperR7BasicAssembly.lean"
+        }
+      ],
+      "source_evidence": {
+        "lean": {
+          "status": "exact_or_stronger",
+          "declarations": [
+            {
+              "name": "ErdosProblems.Erdos269.PaperCompleteR20.realPrefixLcm_eq_of_sameLogCell",
+              "file": "lean/ErdosProblems/Erdos269/PaperCompleteR20/RealCutoffs.lean"
+            },
+            {
+              "name": "ErdosProblems.Erdos269.PaperCompleteR20.realPrefixLcm_jump_first",
+              "file": "lean/ErdosProblems/Erdos269/PaperCompleteR20/RealCutoffs.lean"
+            },
+            {
+              "name": "ErdosProblems.Erdos269.PaperCompleteR20.realPrefixLcm_jump_second",
+              "file": "lean/ErdosProblems/Erdos269/PaperCompleteR20/RealCutoffs.lean"
+            },
+            {
+              "name": "ErdosProblems.Erdos269.PaperCompleteR20.realPrefixLcm_jump_third",
+              "file": "lean/ErdosProblems/Erdos269/PaperCompleteR20/RealCutoffs.lean"
+            },
+            {
+              "name": "ErdosProblems.Erdos269.PaperR7.paper_jump_count",
+              "file": "lean/ErdosProblems/Erdos269/PaperR7BasicAssembly.lean"
+            }
+          ]
+        },
+        "comparator": {
+          "status": "compared",
+          "repository": "https://github.com/wcook04/plectis-erdos-lean",
+          "entries": [
+            "PalomarCorpus/E269a",
+            "PalomarCorpus/E269d"
+          ],
+          "run_ids": [
+            "35643815458"
+          ],
+          "corpus_commits": [
+            "56408ca8d927d34479b80bdf93a7ae8f87bff6ba"
+          ]
+        },
+        "palomar": {
+          "status": "prepared"
+        }
+      }
+    },
+    {
+      "from": "erdos-269-three-prime-running-lcm#res:fibre-prop",
+      "to": [
+        "erdos269-running-lcm-reasoning-surface#long269:res:fibre"
+      ],
+      "relation": "reviewed_consolidation",
+      "reason": "Same finite grouping and same declaration.",
+      "preserved_declarations": [
+        {
+          "name": "ErdosProblems.Erdos269.finiteSmoothKernelSum_groupedByHeight",
+          "file": "lean/ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean"
+        }
+      ],
+      "source_evidence": {
+        "lean": {
+          "status": "exact",
+          "declarations": [
+            {
+              "name": "ErdosProblems.Erdos269.finiteSmoothKernelSum_groupedByHeight",
+              "file": "lean/ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean"
+            }
+          ]
+        },
+        "comparator": {
+          "status": "compared",
+          "repository": "https://github.com/wcook04/plectis-erdos-lean",
+          "entries": [
+            "PalomarCorpus/E269"
+          ],
+          "run_ids": [
+            "35544127144"
+          ],
+          "corpus_commits": [
+            "03a9e42b132a7d1e31344ece6f817e6ecaf0a549"
+          ]
+        },
+        "palomar": {
+          "status": "prepared"
+        }
+      }
+    },
+    {
+      "from": "erdos-269-three-prime-running-lcm#res:dyadic-alphabet",
+      "to": [
+        "erdos269-running-lcm-reasoning-surface#long269:res:dyadic-alphabet",
+        "erdos269-running-lcm-reasoning-surface#long269:res:actual-orbit"
+      ],
+      "relation": "reviewed_consolidation",
+      "reason": "Alphabet in first row; m_a positive integral in second. Short dyadic_alphabet_whole also gives m_4=65,b_4=30 showing no positional digit restriction.",
+      "preserved_declarations": [
+        {
+          "name": "ErdosProblems.Erdos269.PaperCompleteR20.dyadic_alphabet_whole",
+          "file": "lean/ErdosProblems/Erdos269/PaperCompleteR20/DyadicAlphabetWhole.lean"
+        }
+      ],
+      "source_evidence": {
+        "lean": {
+          "status": "exact_or_stronger",
+          "declarations": [
+            {
+              "name": "ErdosProblems.Erdos269.PaperCompleteR20.dyadic_alphabet_whole",
+              "file": "lean/ErdosProblems/Erdos269/PaperCompleteR20/DyadicAlphabetWhole.lean"
+            }
+          ]
+        },
+        "comparator": {
+          "status": "compared",
+          "repository": "https://github.com/wcook04/plectis-erdos-lean",
+          "entries": [
+            "PalomarCorpus/E269c"
+          ],
+          "run_ids": [
+            "35643815458"
+          ],
+          "corpus_commits": [
+            "56408ca8d927d34479b80bdf93a7ae8f87bff6ba"
+          ]
+        },
+        "palomar": {
+          "status": "prepared"
+        }
+      }
+    },
+    {
+      "from": "erdos-269-three-prime-running-lcm#res:actual-orbit",
+      "to": [
+        "erdos269-running-lcm-reasoning-surface#long269:res:actual-orbit",
+        "erdos269-running-lcm-reasoning-surface#long269:res:actual-tail-bound",
+        "erdos269-running-lcm-reasoning-surface#long269:res:actual-dichotomy"
+      ],
+      "relation": "reviewed_consolidation",
+      "reason": "Recurrence+summability; stronger Q(n_a) bound; dichotomy. Q(n_a)<=a^2+8a/3+2<=2(a+1)^2<8640/343(a+1)^2, so old numeric cap follows.",
+      "preserved_declarations": [
+        {
+          "name": "ErdosProblems.Erdos269.PaperR7.short_actual_orbit",
+          "file": "lean/ErdosProblems/Erdos269/PaperR7SeriesIdentification.lean"
+        }
+      ],
+      "source_evidence": {
+        "lean": {
+          "status": "exact_or_stronger",
+          "declarations": [
+            {
+              "name": "ErdosProblems.Erdos269.PaperR7.short_actual_orbit",
+              "file": "lean/ErdosProblems/Erdos269/PaperR7SeriesIdentification.lean"
+            }
+          ]
+        },
+        "comparator": {
+          "status": "compared",
+          "repository": "https://github.com/wcook04/plectis-erdos-lean",
+          "entries": [
+            "PalomarCorpus/E269c"
+          ],
+          "run_ids": [
+            "35643815458"
+          ],
+          "corpus_commits": [
+            "56408ca8d927d34479b80bdf93a7ae8f87bff6ba"
+          ]
+        },
+        "palomar": {
+          "status": "prepared"
+        }
+      }
+    },
+    {
+      "from": "erdos-269-three-prime-running-lcm#res:denominator-reduction",
+      "to": [
+        "erdos269-running-lcm-reasoning-surface#long269:res:actual-cancellation"
+      ],
+      "relation": "reviewed_consolidation",
+      "reason": "Same onset u+1+2v+3w, positive recurrence and sharper K<=90B(a+1)^2; long does not require reduced fraction.",
+      "preserved_declarations": [
+        {
+          "name": "ErdosProblems.Erdos269.PaperR7.short_fixed_split_bridge",
+          "file": "lean/ErdosProblems/Erdos269/PaperR7RationalBridge.lean"
+        }
+      ],
+      "source_evidence": {
+        "lean": {
+          "status": "exact_or_stronger",
+          "declarations": [
+            {
+              "name": "ErdosProblems.Erdos269.PaperR7.short_fixed_split_bridge",
+              "file": "lean/ErdosProblems/Erdos269/PaperR7RationalBridge.lean"
+            }
+          ]
+        },
+        "comparator": {
+          "status": "compared",
+          "repository": "https://github.com/wcook04/plectis-erdos-lean",
+          "entries": [
+            "PalomarCorpus/E269c"
+          ],
+          "run_ids": [
+            "35643815458"
+          ],
+          "corpus_commits": [
+            "56408ca8d927d34479b80bdf93a7ae8f87bff6ba"
+          ]
+        },
+        "palomar": {
+          "status": "prepared"
+        }
+      }
+    },
+    {
+      "from": "erdos-269-three-prime-running-lcm#res:exact-onset",
+      "to": [
+        "erdos269-running-lcm-reasoning-surface#long269:res:exact-denominator"
+      ],
+      "relation": "reviewed_consolidation",
+      "reason": "Long includes both X_a and BX_a denominators and minimal onset; source declarations overlap and long has extra onset specification/minimality.",
+      "preserved_declarations": [
+        {
+          "name": "ErdosProblems.Erdos269.PaperR13.exact_denominators_and_minimal_clearing",
+          "file": "lean/ErdosProblems/Erdos269/PaperExactDenominatorR13.lean"
+        },
+        {
+          "name": "ErdosProblems.Erdos269.PaperR13.scaled_state_is_integer_iff_firstClearingIndex_le",
+          "file": "lean/ErdosProblems/Erdos269/PaperExactDenominatorR13.lean"
+        },
+        {
+          "name": "ErdosProblems.Erdos269.PaperR13.clearingCondition_iff_max",
+          "file": "lean/ErdosProblems/Erdos269/PaperExactDenominatorR13.lean"
+        }
+      ],
+      "source_evidence": {
+        "lean": {
+          "status": "exact",
+          "declarations": [
+            {
+              "name": "ErdosProblems.Erdos269.PaperR13.exact_denominators_and_minimal_clearing",
+              "file": "lean/ErdosProblems/Erdos269/PaperExactDenominatorR13.lean"
+            },
+            {
+              "name": "ErdosProblems.Erdos269.PaperR13.scaled_state_is_integer_iff_firstClearingIndex_le",
+              "file": "lean/ErdosProblems/Erdos269/PaperExactDenominatorR13.lean"
+            },
+            {
+              "name": "ErdosProblems.Erdos269.PaperR13.clearingCondition_iff_max",
+              "file": "lean/ErdosProblems/Erdos269/PaperExactDenominatorR13.lean"
+            }
+          ]
+        },
+        "comparator": {
+          "status": "compared",
+          "repository": "https://github.com/wcook04/plectis-erdos-lean",
+          "entries": [
+            "PalomarCorpus/E269a",
+            "PalomarCorpus/E269f",
+            "PalomarCorpus/E269g"
+          ],
+          "run_ids": [
+            "35643815458",
+            "35674034595"
+          ],
+          "corpus_commits": [
+            "253a436b69603a5662696127016559ddcfd1db42",
+            "56408ca8d927d34479b80bdf93a7ae8f87bff6ba"
+          ]
+        },
+        "palomar": {
+          "status": "prepared"
+        }
+      }
+    },
+    {
+      "from": "erdos-269-three-prime-running-lcm#res:consumer",
+      "to": [
+        "erdos269-running-lcm-reasoning-surface#long269:res:consumer"
+      ],
+      "relation": "reviewed_consolidation",
+      "reason": "Long contradiction K<lpr iff positive bounded representative requires lpr<=K. Different exact consumer declaration but same mathematical statement.",
+      "preserved_declarations": [
+        {
+          "name": "ErdosProblems.Erdos269.PaperR7.paper_finite_endpoint_obstruction",
+          "file": "lean/ErdosProblems/Erdos269/PaperR7BasicAssembly.lean"
+        }
+      ],
+      "source_evidence": {
+        "lean": {
+          "status": "exact_or_stronger",
+          "declarations": [
+            {
+              "name": "ErdosProblems.Erdos269.PaperR7.paper_finite_endpoint_obstruction",
+              "file": "lean/ErdosProblems/Erdos269/PaperR7BasicAssembly.lean"
+            }
+          ]
+        },
+        "comparator": {
+          "status": "compared",
+          "repository": "https://github.com/wcook04/plectis-erdos-lean",
+          "entries": [
+            "PalomarCorpus/E269c"
+          ],
+          "run_ids": [
+            "35643815458"
+          ],
+          "corpus_commits": [
+            "56408ca8d927d34479b80bdf93a7ae8f87bff6ba"
+          ]
+        },
+        "palomar": {
+          "status": "prepared"
+        }
+      }
+    },
+    {
+      "from": "erdos-269-three-prime-running-lcm#res:windowconsumer",
+      "to": [
+        "erdos269-running-lcm-reasoning-surface#long269:res:actual-escape-endpoint"
+      ],
+      "relation": "reviewed_consolidation",
+      "reason": "Explicit long theorem covers arbitrary dominating o(8^a) bound and specifically K_0=90B(a+1)^2; octic_escape_whole explicitly includes short-cap equivalence.",
+      "preserved_declarations": [
+        {
+          "name": "ErdosProblems.Erdos269.PaperR7.short_window_equivalence",
+          "file": "lean/ErdosProblems/Erdos269/PaperR7WindowResults.lean"
+        }
+      ],
+      "source_evidence": {
+        "lean": {
+          "status": "exact_or_stronger",
+          "declarations": [
+            {
+              "name": "ErdosProblems.Erdos269.PaperR7.short_window_equivalence",
+              "file": "lean/ErdosProblems/Erdos269/PaperR7WindowResults.lean"
+            }
+          ]
+        },
+        "comparator": {
+          "status": "compared",
+          "repository": "https://github.com/wcook04/plectis-erdos-lean",
+          "entries": [
+            "PalomarCorpus/E269g"
+          ],
+          "run_ids": [
+            "35674034595"
+          ],
+          "corpus_commits": [
+            "253a436b69603a5662696127016559ddcfd1db42"
+          ]
+        },
+        "palomar": {
+          "status": "prepared"
+        }
+      }
+    },
+    {
+      "from": "erdos-1049-rational-base-lambert#cor:rational-base-measure",
+      "to": [
+        "erdos1049-rational-base-lambert-reasoning-surface#long1049:cor:rational-base-measure"
+      ],
+      "relation": "reviewed_consolidation",
+      "reason": "Exact same powers, same bound and same four declarations.",
+      "preserved_declarations": [
+        {
+          "name": "ErdosProblems.Erdos1049.PaperCompleteR21.rational_base_measure_uniform",
+          "file": "lean/ErdosProblems/Erdos1049/PaperCompleteR21/RationalBaseThreshold.lean"
+        },
+        {
+          "name": "ErdosProblems.Erdos1049.PaperCompleteR21.thirtyoneFour_power_measure_lt_301",
+          "file": "lean/ErdosProblems/Erdos1049/PaperCompleteR21/RationalBaseThreshold.lean"
+        },
+        {
+          "name": "ErdosProblems.Erdos1049.PaperR17.rational_base_power_measure",
+          "file": "lean/ErdosProblems/Erdos1049/PaperR17/SourceConsumers.lean"
+        },
+        {
+          "name": "ErdosProblems.Erdos1049.PaperR17.thirtyone_four_power_measure_lt_301",
+          "file": "lean/ErdosProblems/Erdos1049/PaperR17/SourceConsumers.lean"
+        }
+      ],
+      "source_evidence": {
+        "lean": {
+          "status": "exact",
+          "declarations": [
+            {
+              "name": "ErdosProblems.Erdos1049.PaperCompleteR21.rational_base_measure_uniform",
+              "file": "lean/ErdosProblems/Erdos1049/PaperCompleteR21/RationalBaseThreshold.lean"
+            },
+            {
+              "name": "ErdosProblems.Erdos1049.PaperCompleteR21.thirtyoneFour_power_measure_lt_301",
+              "file": "lean/ErdosProblems/Erdos1049/PaperCompleteR21/RationalBaseThreshold.lean"
+            },
+            {
+              "name": "ErdosProblems.Erdos1049.PaperR17.rational_base_power_measure",
+              "file": "lean/ErdosProblems/Erdos1049/PaperR17/SourceConsumers.lean"
+            },
+            {
+              "name": "ErdosProblems.Erdos1049.PaperR17.thirtyone_four_power_measure_lt_301",
+              "file": "lean/ErdosProblems/Erdos1049/PaperR17/SourceConsumers.lean"
+            }
+          ]
+        },
+        "comparator": {
+          "status": "compared",
+          "repository": "https://github.com/wcook04/plectis-erdos-lean",
+          "entries": [
+            "PalomarCorpus/E1049",
+            "PalomarCorpus/E1049i"
+          ],
+          "run_ids": [
+            "35544127144",
+            "35674034595"
+          ],
+          "corpus_commits": [
+            "03a9e42b132a7d1e31344ece6f817e6ecaf0a549",
+            "253a436b69603a5662696127016559ddcfd1db42"
+          ]
+        },
+        "palomar": {
+          "status": "prepared"
+        }
+      }
+    },
+    {
+      "from": "erdos-1049-rational-base-lambert#res:zudilin-sharp-qorder",
+      "to": [
+        "erdos1049-rational-base-lambert-reasoning-surface#long1049:res:zudilin-sharp-qorder"
+      ],
+      "relation": "reviewed_consolidation",
+      "reason": "Same q-order and coefficient formula; same two declarations; long already exact.",
+      "preserved_declarations": [
+        {
+          "name": "ErdosProblems.Erdos1049.order_zudilinNormalizedHankelDet_all",
+          "file": "lean/ErdosProblems/Erdos1049/AllRow/Producer.lean"
+        },
+        {
+          "name": "ErdosProblems.Erdos1049.coeff_zudilinNormalizedHankelDet_all_rat",
+          "file": "lean/ErdosProblems/Erdos1049/AllRow/Producer.lean"
+        }
+      ],
+      "source_evidence": {
+        "lean": {
+          "status": "exact_or_stronger",
+          "declarations": [
+            {
+              "name": "ErdosProblems.Erdos1049.order_zudilinNormalizedHankelDet_all",
+              "file": "lean/ErdosProblems/Erdos1049/AllRow/Producer.lean"
+            },
+            {
+              "name": "ErdosProblems.Erdos1049.coeff_zudilinNormalizedHankelDet_all_rat",
+              "file": "lean/ErdosProblems/Erdos1049/AllRow/Producer.lean"
+            }
+          ]
+        },
+        "comparator": {
+          "status": "compared",
+          "repository": "https://github.com/wcook04/plectis-erdos-lean",
+          "entries": [
+            "PalomarCorpus/E1049",
+            "PalomarCorpus/E1049g"
+          ],
+          "run_ids": [
+            "35544127144",
+            "35674034595"
+          ],
+          "corpus_commits": [
+            "03a9e42b132a7d1e31344ece6f817e6ecaf0a549",
+            "253a436b69603a5662696127016559ddcfd1db42"
+          ]
+        },
+        "palomar": {
+          "status": "prepared"
+        }
+      }
+    },
+    {
+      "from": "erdos-243-reciprocal-tail-rigidity#res:lcmbounded",
+      "to": [
+        "erdos243-reciprocal-tail-reasoning-surface#res:lcmbounded"
+      ],
+      "relation": "reviewed_relocation",
+      "reason": "Complete original claim and proof preserved; only local notation, references or presentation changed.",
+      "source_evidence": {
+        "lean": {
+          "status": "exact",
+          "declarations": [
+            {
+              "name": "ErdosProblems.Erdos243.PaperCompleteR7.original_coordinate_lcm_bounded_defect",
+              "file": "lean/ErdosProblems/Erdos243/PaperCompleteR7/LcmDefect.lean"
+            }
+          ]
+        },
+        "comparator": {
+          "status": "compared",
+          "repository": "https://github.com/wcook04/plectis-erdos-lean",
+          "entries": [
+            "PalomarCorpus/E243s"
+          ],
+          "run_ids": [
+            "35674034595"
+          ],
+          "corpus_commits": [
+            "253a436b69603a5662696127016559ddcfd1db42"
+          ]
+        },
+        "palomar": {
+          "status": "prepared"
+        }
+      }
+    },
+    {
+      "from": "erdos-1041-lemniscate-newton-flow#res:low-critical-thirteen-twentyfifths",
+      "to": [
+        "erdos1041-lemniscate-reasoning-surface#res:low-critical-thirteen-twentyfifths"
+      ],
+      "relation": "reviewed_consolidation",
+      "reason": "The long registered passage(s) collectively state all clauses and preserve the same evidence and named input.",
+      "preserved_declarations": [],
+      "source_evidence": {
+        "lean": {
+          "status": "none",
+          "counted": true,
+          "declarations": [],
+          "reason": "the degree-two case and the closing inequality $(13/25)e^X<1$ at the recorded stopping time $X=635762889599/10^{12}$ are checked; the computation that certifies $X$ and the analytic argument in higher degrees are not"
+        },
+        "comparator": {
+          "status": "not_applicable"
+        },
+        "palomar": {
+          "status": "not_applicable"
+        }
+      }
+    },
+    {
+      "from": "erdos-1041-lemniscate-newton-flow#res:scaled-low-critical",
+      "to": [
+        "erdos1041-lemniscate-reasoning-surface#res:low-critical-scale-free",
+        "erdos1041-lemniscate-reasoning-surface#res:scaled-low-critical-path"
+      ],
+      "relation": "reviewed_consolidation",
+      "reason": "The long registered passage(s) collectively state all clauses and preserve the same evidence and named input.",
+      "preserved_declarations": [
+        {
+          "name": "ErdosProblems.Erdos1041.PaperCompleteR21.scaledLowCritical_of_lowCritical",
+          "file": "lean/ErdosProblems/Erdos1041/PaperCompleteR21/LowCriticalScaleTransport.lean"
+        },
+        {
+          "name": "ErdosProblems.Erdos1041.PaperCompleteR21.scaledLowCriticalFiveHalves_of_lowCritical",
+          "file": "lean/ErdosProblems/Erdos1041/PaperCompleteR21/LowCriticalScaleTransport.lean"
+        }
+      ],
+      "source_evidence": {
+        "lean": {
+          "status": "modulo_named_input",
+          "declarations": [
+            {
+              "name": "ErdosProblems.Erdos1041.PaperCompleteR21.scaledLowCritical_of_lowCritical",
+              "file": "lean/ErdosProblems/Erdos1041/PaperCompleteR21/LowCriticalScaleTransport.lean"
+            },
+            {
+              "name": "ErdosProblems.Erdos1041.PaperCompleteR21.scaledLowCriticalFiveHalves_of_lowCritical",
+              "file": "lean/ErdosProblems/Erdos1041/PaperCompleteR21/LowCriticalScaleTransport.lean"
+            }
+          ],
+          "named_inputs": [
+            "ErdosProblems.Erdos1041.PaperAnalyticTargets.LowCriticalThirteenTwentyFifths"
+          ],
+          "scope": "Theorem~\\ref{res:low-critical-thirteen-twentyfifths} as stated"
+        },
+        "comparator": {
+          "status": "not_applicable"
+        },
+        "palomar": {
+          "status": "not_applicable"
+        }
+      }
+    },
+    {
+      "from": "erdos-1041-lemniscate-newton-flow#res:critical-value-separation",
+      "to": [
+        "erdos1041-lemniscate-reasoning-surface#res:critical-value-separation-unnormalised"
+      ],
+      "relation": "reviewed_relocation",
+      "reason": "Complete original claim and proof preserved; only local notation, references or presentation changed.",
+      "source_evidence": {
+        "lean": {
+          "status": "modulo_named_input",
+          "declarations": [
+            {
+              "name": "ErdosProblems.Erdos1041.PaperCompleteR21.discSep_separation_short",
+              "file": "lean/ErdosProblems/Erdos1041/PaperCompleteR21/CriticalValueSeparationTransport.lean"
+            },
+            {
+              "name": "ErdosProblems.Erdos1041.PaperCompleteR21.discSepNormalise_spec",
+              "file": "lean/ErdosProblems/Erdos1041/PaperCompleteR21/CriticalValueSeparationTransport.lean"
+            },
+            {
+              "name": "ErdosProblems.Erdos1041.PaperCompleteR21.discSep_transport",
+              "file": "lean/ErdosProblems/Erdos1041/PaperCompleteR21/CriticalValueSeparationTransport.lean"
+            },
+            {
+              "name": "ErdosProblems.Erdos1041.PaperCompleteR21.discSep_squared_length_le",
+              "file": "lean/ErdosProblems/Erdos1041/PaperCompleteR21/CriticalValueSeparationTransport.lean"
+            },
+            {
+              "name": "ErdosProblems.Erdos1041.PaperCompleteR21.discSep_bergman_factor",
+              "file": "lean/ErdosProblems/Erdos1041/PaperCompleteR21/CriticalValueSeparationTransport.lean"
+            }
+          ],
+          "named_inputs": [
+            "ErdosProblems.Erdos1041.PaperCompleteR21.DiscSepBergmanArea"
+          ],
+          "scope": "the connector and area construction that this proof produces"
+        },
+        "comparator": {
+          "status": "not_applicable"
+        },
+        "palomar": {
+          "status": "not_applicable"
+        }
+      }
+    },
+    {
+      "from": "erdos-1041-lemniscate-newton-flow#res:critical-value-thresholds",
+      "to": [
+        "erdos1041-lemniscate-reasoning-surface#res:critical-value-thresholds"
+      ],
+      "relation": "reviewed_consolidation",
+      "reason": "Both the uniform four-thirds and the cubic six-fifths bounds are included in the registered remark. The two named analytic inputs remain explicit.",
+      "preserved_declarations": [
+        {
+          "name": "ErdosProblems.Erdos1041.PaperCompleteR21.discSep_uniform_radius",
+          "file": "lean/ErdosProblems/Erdos1041/PaperCompleteR21/CriticalValueSeparationTransport.lean"
+        },
+        {
+          "name": "ErdosProblems.Erdos1041.PaperCompleteR21.discSep_cubic_six_fifths",
+          "file": "lean/ErdosProblems/Erdos1041/PaperCompleteR21/CriticalValueSeparationTransport.lean"
+        },
+        {
+          "name": "ErdosProblems.Erdos1041.PaperCompleteR21.discSepCoefficient_lt_two",
+          "file": "lean/ErdosProblems/Erdos1041/PaperCompleteR21/CriticalValueSeparationTransport.lean"
+        },
+        {
+          "name": "ErdosProblems.Erdos1041.PaperCompleteR21.discSepCoefficient_three_six_fifths",
+          "file": "lean/ErdosProblems/Erdos1041/PaperCompleteR21/CriticalValueSeparationTransport.lean"
+        },
+        {
+          "name": "ErdosProblems.Erdos1041.PaperCompleteR21.SeparationParent.separation_parent",
+          "file": "lean/ErdosProblems/Erdos1041/PaperCompleteR21/SeparationParent.lean"
+        },
+        {
+          "name": "ErdosProblems.Erdos1041.PaperCompleteR21.SeparationParent.separationCoefficient_lt_two",
+          "file": "lean/ErdosProblems/Erdos1041/PaperCompleteR21/SeparationParent.lean"
+        },
+        {
+          "name": "ErdosProblems.Erdos1041.PaperCompleteR21.SeparationParent.squared_bound_lt_four",
+          "file": "lean/ErdosProblems/Erdos1041/PaperCompleteR21/SeparationParent.lean"
+        },
+        {
+          "name": "ErdosProblems.Erdos1041.PaperCompleteR21.SeparationParent.connectedBelow_of_connectedAtMost",
+          "file": "lean/ErdosProblems/Erdos1041/PaperCompleteR21/SeparationParent.lean"
+        }
+      ],
+      "source_evidence": {
+        "lean": {
+          "status": "modulo_named_input",
+          "declarations": [
+            {
+              "name": "ErdosProblems.Erdos1041.PaperCompleteR21.discSep_uniform_radius",
+              "file": "lean/ErdosProblems/Erdos1041/PaperCompleteR21/CriticalValueSeparationTransport.lean"
+            },
+            {
+              "name": "ErdosProblems.Erdos1041.PaperCompleteR21.discSep_cubic_six_fifths",
+              "file": "lean/ErdosProblems/Erdos1041/PaperCompleteR21/CriticalValueSeparationTransport.lean"
+            },
+            {
+              "name": "ErdosProblems.Erdos1041.PaperCompleteR21.discSepCoefficient_lt_two",
+              "file": "lean/ErdosProblems/Erdos1041/PaperCompleteR21/CriticalValueSeparationTransport.lean"
+            },
+            {
+              "name": "ErdosProblems.Erdos1041.PaperCompleteR21.discSepCoefficient_three_six_fifths",
+              "file": "lean/ErdosProblems/Erdos1041/PaperCompleteR21/CriticalValueSeparationTransport.lean"
+            },
+            {
+              "name": "ErdosProblems.Erdos1041.PaperCompleteR21.SeparationParent.separation_parent",
+              "file": "lean/ErdosProblems/Erdos1041/PaperCompleteR21/SeparationParent.lean"
+            },
+            {
+              "name": "ErdosProblems.Erdos1041.PaperCompleteR21.SeparationParent.separationCoefficient_lt_two",
+              "file": "lean/ErdosProblems/Erdos1041/PaperCompleteR21/SeparationParent.lean"
+            },
+            {
+              "name": "ErdosProblems.Erdos1041.PaperCompleteR21.SeparationParent.squared_bound_lt_four",
+              "file": "lean/ErdosProblems/Erdos1041/PaperCompleteR21/SeparationParent.lean"
+            },
+            {
+              "name": "ErdosProblems.Erdos1041.PaperCompleteR21.SeparationParent.connectedBelow_of_connectedAtMost",
+              "file": "lean/ErdosProblems/Erdos1041/PaperCompleteR21/SeparationParent.lean"
+            }
+          ],
+          "named_inputs": [
+            "ErdosProblems.Erdos1041.PaperCompleteR21.DiscSepBergmanArea",
+            "ErdosProblems.Erdos1041.PaperCompleteR21.SeparationParent.CriticalValueSeparationTheorem"
+          ],
+          "scope": "the connector and area construction in the proof of Theorem~\\ref{res:critical-value-separation}; for the absorbed S>=4/3 corollary (SeparationParent), Theorem~\\ref{res:critical-value-separation} as stated"
+        },
+        "comparator": {
+          "status": "not_applicable"
+        },
+        "palomar": {
+          "status": "not_applicable"
+        }
+      }
+    }
+  ],
+  "expanded_existing_statements": [
+    "erdos243-reciprocal-tail-reasoning-surface#long243:res:absorb",
+    "erdos243-reciprocal-tail-reasoning-surface#long243:res:step",
+    "erdos243-reciprocal-tail-reasoning-surface#long243:res:update",
+    "erdos251-prime-gap-reasoning-surface#long251:res:escape-irrational",
+    "erdos251-prime-gap-reasoning-surface#long251:res:infinite",
+    "erdos251-prime-gap-reasoning-surface#long251:res:signedwindow",
+    "erdos251-prime-gap-reasoning-surface#long251:xr:truncation",
+    "erdos269-running-lcm-reasoning-surface#long269:res:actual-orbit",
+    "erdos269-running-lcm-reasoning-surface#long269:res:lead-two-prime"
+  ],
+  "evidence_boundary": "No theorem is promoted from conditional or ordinary evidence to exact formal evidence. All original formal declarations remain bound. Existing Comparator receipts are retained only for their original interfaces.",
+  "validation": {
+    "status": "source_and_rendered_checks_passed",
+    "statement_inventory": {
+      "total": 649,
+      "exact_or_stronger_or_exact": 604,
+      "modulo_named_input": 20,
+      "no_complete_formal_proof": 25,
+      "missing_declarations": 0,
+      "new_unlinked_rows": 0,
+      "new_orphan_links": 0,
+      "existing_comparator_pending_rows": 24
+    },
+    "checks": [
+      "All 23 publication PDFs rebuilt from current TeX inputs.",
+      "Rendered evidence links checked for all 16 problem papers.",
+      "All short-paper pages visually reviewed; selected changed long-record pages visually reviewed.",
+      "Original formal declaration identities preserved through explicit statement mappings."
+    ],
+    "short_pages_before": {
+      "68": 9,
+      "243": 21,
+      "249": 15,
+      "251": 14,
+      "257": 26,
+      "269": 17,
+      "1041": 18,
+      "1049": 20
+    },
+    "short_pages_after": {
+      "68": 9,
+      "243": 8,
+      "249": 7,
+      "251": 10,
+      "257": 16,
+      "269": 5,
+      "1041": 8,
+      "1049": 16
+    },
+    "boundary": "These editorial and rendering checks are not new proof verification or an empirical measure of reader comprehension. The final committed revision must also pass the repository release and push gates."
+  },
+  "attribution_relocations": [
+    {
+      "source": "source-b6603e42453ff3",
+      "from": "paper/251/erdos-251-prime-gap-dyadic-series.tex",
+      "to": "paper/251/erdos251-prime-gap-reasoning-surface.tex",
+      "text": "\\bibitem{lean4}"
+    },
+    {
+      "source": "source-d8b2a7c411bc2d",
+      "from": "paper/251/erdos-251-prime-gap-dyadic-series.tex",
+      "to": "paper/251/erdos251-prime-gap-reasoning-surface.tex",
+      "text": "\\bibitem{mathlib}"
+    },
+    {
+      "source": "source-296ff41148fff7",
+      "from": "paper/249/erdos-249-binary-totient-series.tex",
+      "to": "paper/249/erdos249-totient-reasoning-surface.tex",
+      "text": "\\bibitem{coons-jsr}"
+    },
+    {
+      "source": "source-296ff41148fff7",
+      "from": "paper/249/erdos-249-binary-totient-series.tex",
+      "to": "existing long/source links",
+      "text": "\\cite[App.~A]{coons-jsr}"
+    },
+    {
+      "source": "source-296ff41148fff7",
+      "from": "paper/249/erdos-249-binary-totient-series.tex",
+      "to": "existing long/source links",
+      "text": "joint spectral radius"
+    },
+    {
+      "source": "source-f300911fb03a5c",
+      "from": "paper/1041/erdos-1041-lemniscate-newton-flow.tex",
+      "to": "paper/1041/erdos1041-lemniscate-reasoning-surface.tex",
+      "text": "\\bibitem{march2026}"
+    },
+    {
+      "source": "source-318b37ba5af2eb",
+      "from": "paper/243/erdos-243-reciprocal-tail-rigidity.tex",
+      "to": "paper/243/erdos243-reciprocal-tail-reasoning-surface.tex",
+      "text": "\\bibitem{badea1993}"
+    },
+    {
+      "source": "source-fcf73a15ff9c7c",
+      "from": "paper/269/erdos-269-three-prime-running-lcm.tex",
+      "to": "paper/269/erdos269-running-lcm-reasoning-surface.tex",
+      "text": "\\bibitem{loxtonvdp1977}"
+    },
+    {
+      "source": "source-2ec6bf87654604",
+      "from": "paper/1041/erdos-1041-lemniscate-newton-flow.tex",
+      "to": "paper/1041/erdos1041-lemniscate-reasoning-surface.tex",
+      "text": "\\bibitem{polya1928}"
+    },
+    {
+      "source": "source-c32d672658410d",
+      "from": "paper/251/erdos-251-prime-gap-dyadic-series.tex",
+      "to": "paper/251/erdos251-prime-gap-reasoning-surface.tex",
+      "text": "\\bibitem{zhang2014}"
+    },
+    {
+      "source": "source-99c2f3cb190b95",
+      "from": "paper/249/erdos-249-binary-totient-series.tex",
+      "to": "paper/249/erdos249-totient-reasoning-surface.tex",
+      "text": "\\bibitem{fan2026totient}"
+    },
+    {
+      "source": "source-6c2fbacaba626f",
+      "from": "paper/1049/erdos-1049-rational-base-lambert.tex",
+      "to": "paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex",
+      "text": "\\bibitem{postelmansvanassche2007}"
+    },
+    {
+      "source": "source-a87fa25f28c7b0",
+      "from": "paper/68/erdos-68-factorial-denominator-irrationality.tex",
+      "to": "paper/68/erdos68-factorial-reasoning-surface.tex",
+      "text": "\\bibitem{koepf-schmersau}"
+    },
+    {
+      "source": "source-b0b779fff5defe",
+      "from": "paper/243/erdos-243-reciprocal-tail-rigidity.tex",
+      "to": "paper/243/erdos243-reciprocal-tail-reasoning-surface.tex",
+      "text": "\\bibitem{duverney2001}"
+    },
+    {
+      "source": "source-6accca20cd5e44",
+      "from": "paper/257/erdos-257-mersenne-support-subseries.tex",
+      "to": "paper/257/erdos257-mersenne-reasoning-surface.tex",
+      "text": "\\bibitem{lucatachiya2017}"
+    },
+    {
+      "source": "source-cd126799fede94",
+      "from": "paper/257/erdos-257-mersenne-support-subseries.tex",
+      "to": "paper/257/erdos257-mersenne-reasoning-surface.tex",
+      "text": "\\bibitem{vanassche2001}"
+    },
+    {
+      "source": "source-cd126799fede94",
+      "from": "paper/1049/erdos-1049-rational-base-lambert.tex",
+      "to": "paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex",
+      "text": "\\bibitem{vanassche2001}"
+    },
+    {
+      "source": "source-d3995db1508bc9",
+      "from": "paper/251/erdos-251-prime-gap-dyadic-series.tex",
+      "to": "paper/251/erdos251-prime-gap-reasoning-surface.tex",
+      "text": "\\bibitem{fgkmt2018}"
+    },
+    {
+      "source": "source-3bc828513b4d63",
+      "from": "paper/1049/erdos-1049-rational-base-lambert.tex",
+      "to": "paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex",
+      "text": "\\bibitem{bellsmertnig2026}"
+    },
+    {
+      "source": "source-3bc828513b4d63",
+      "from": "paper/249/erdos-249-binary-totient-series.tex",
+      "to": "paper/249/erdos249-totient-reasoning-surface.tex",
+      "text": "\\bibitem{bell-smertnig2026}"
+    },
+    {
+      "source": "source-5911448b65fdf9",
+      "from": "paper/1049/erdos-1049-rational-base-lambert.tex",
+      "to": "paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex",
+      "text": "\\bibitem{vandehey2013}"
+    },
+    {
+      "source": "source-4f5fd0d7405e29",
+      "from": "paper/257/erdos-257-mersenne-support-subseries.tex",
+      "to": "paper/257/erdos257-mersenne-reasoning-surface.tex",
+      "text": "\\bibitem{kovactao}"
+    },
+    {
+      "source": "source-4f5fd0d7405e29",
+      "from": "paper/269/erdos-269-three-prime-running-lcm.tex",
+      "to": "paper/269/erdos269-running-lcm-reasoning-surface.tex",
+      "text": "\\bibitem{kovactao2024}"
+    },
+    {
+      "source": "source-e33bdf934f939f",
+      "from": "paper/243/erdos-243-reciprocal-tail-rigidity.tex",
+      "to": "paper/243/erdos243-reciprocal-tail-reasoning-surface.tex",
+      "text": "\\bibitem{erdosstraus1964}"
+    },
+    {
+      "source": "source-7dc956ce55b7a0",
+      "from": "paper/269/erdos-269-three-prime-running-lcm.tex",
+      "to": "paper/269/erdos269-running-lcm-reasoning-surface.tex",
+      "text": "\\bibitem{erdosstraus1974}"
+    },
+    {
+      "source": "source-7dc956ce55b7a0",
+      "from": "paper/243/erdos-243-reciprocal-tail-rigidity.tex",
+      "to": "paper/243/erdos243-reciprocal-tail-reasoning-surface.tex",
+      "text": "\\bibitem{erdosstraus1974}"
+    },
+    {
+      "source": "source-7f1f2a3fd9238c",
+      "from": "paper/1041/erdos-1041-lemniscate-newton-flow.tex",
+      "to": "existing long/source links",
+      "text": "\\bibitem{eremenko-hayman}"
+    },
+    {
+      "source": "eremenko_yuditskii_2012_comb_functions",
+      "from": "paper/1041/erdos-1041-lemniscate-newton-flow.tex",
+      "to": "existing long/source links",
+      "text": "\\bibitem{eremenko-yuditskii}"
+    },
+    {
+      "source": "eremenko_2007_markov_type_inequality_plane_continua",
+      "from": "paper/1041/erdos-1041-lemniscate-newton-flow.tex",
+      "to": "existing long/source links",
+      "text": "\\bibitem{eremenko-markov}"
+    },
+    {
+      "source": "eremenko_lempert_1994_extremal_problem_for_polynomials",
+      "from": "paper/1041/erdos-1041-lemniscate-newton-flow.tex",
+      "to": "existing long/source links",
+      "text": "\\bibitem{eremenko-lempert}"
+    },
+    {
+      "source": "bishop_eremenko_lazebnik_2025_shapes_of_rational_lemniscates",
+      "from": "paper/1041/erdos-1041-lemniscate-newton-flow.tex",
+      "to": "existing long/source links",
+      "text": "\\bibitem{bishop-eremenko-lazebnik}"
+    },
+    {
+      "source": "source-2a3af2a360bb15",
+      "from": "paper/243/erdos-243-reciprocal-tail-rigidity.tex",
+      "to": "paper/243/erdos243-reciprocal-tail-reasoning-surface.tex",
+      "text": "\\bibitem{bado2026}"
+    },
+    {
+      "source": "source-317a740451ce03",
+      "from": "paper/1049/erdos-1049-rational-base-lambert.tex",
+      "to": "paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex",
+      "text": "\\bibitem{duverneytachiya2019}"
+    },
+    {
+      "source": "source-8710374c3e8c9f",
+      "from": "paper/1041/erdos-1041-lemniscate-newton-flow.tex",
+      "to": "paper/1041/erdos1041-lemniscate-reasoning-surface.tex",
+      "text": "\\bibitem{pendyala2026shortest}"
+    },
+    {
+      "source": "source-6564b203677735",
+      "from": "paper/251/erdos-251-prime-gap-dyadic-series.tex",
+      "to": "paper/251/erdos251-prime-gap-reasoning-surface.tex",
+      "text": "\\bibitem{maynard2015}"
+    },
+    {
+      "source": "source-6564b203677735",
+      "from": "paper/251/erdos-251-prime-gap-dyadic-series.tex",
+      "to": "paper/251/erdos251-prime-gap-reasoning-surface.tex",
+      "text": "\\bibitem{maynard2015}"
+    },
+    {
+      "source": "source-dcbe400c96be59",
+      "from": "paper/1041/erdos-1041-lemniscate-newton-flow.tex",
+      "to": "paper/1041/erdos1041-lemniscate-reasoning-surface.tex",
+      "text": "\\bibitem{dubinin}"
+    },
+    {
+      "source": "source-40bc4064b92788",
+      "from": "paper/1041/erdos-1041-lemniscate-newton-flow.tex",
+      "to": "paper/1041/erdos1041-lemniscate-reasoning-surface.tex",
+      "text": "\\bibitem{crane}"
+    },
+    {
+      "source": "source-b9d7160919621f",
+      "from": "paper/269/erdos-269-three-prime-running-lcm.tex",
+      "to": "paper/269/erdos269-running-lcm-reasoning-surface.tex",
+      "text": "\\bibitem{bugeaudlaurent2023}"
+    },
+    {
+      "source": "source-0f61ad0796acdf",
+      "from": "paper/249/erdos-249-binary-totient-series.tex",
+      "to": "paper/249/erdos249-totient-reasoning-surface.tex",
+      "text": "\\bibitem{wong2015}"
+    },
+    {
+      "source": "source-21cdeefea4c8ec",
+      "from": "paper/269/erdos-269-three-prime-running-lcm.tex",
+      "to": "paper/269/erdos269-running-lcm-reasoning-surface.tex",
+      "text": "\\bibitem{fan2026comment}"
+    },
+    {
+      "source": "proposed-direct-595203db1f6891",
+      "from": "paper/249/erdos-249-binary-totient-series.tex",
+      "to": "paper/249/erdos249-totient-reasoning-surface.tex",
+      "text": "\\bibitem{bgs2016}"
+    },
+    {
+      "source": "correspondence-004",
+      "from": "paper/243/erdos-243-reciprocal-tail-rigidity.tex",
+      "to": "existing long/source links",
+      "text": "Chinese remainder theorem and first crossing"
+    },
+    {
+      "source": "correspondence-004",
+      "from": "paper/243/erdos-243-reciprocal-tail-rigidity.tex",
+      "to": "existing long/source links",
+      "text": "does not suffice"
+    },
+    {
+      "source": "source-43a734be32736f",
+      "from": "paper/257/erdos-257-mersenne-support-subseries.tex",
+      "to": "paper/257/erdos257-mersenne-reasoning-surface.tex",
+      "text": "\\bibitem{erdos1975}"
+    },
+    {
+      "source": "source-c742deb980b53c",
+      "from": "paper/257/erdos-257-mersenne-support-subseries.tex",
+      "to": "paper/257/erdos257-mersenne-reasoning-surface.tex",
+      "text": "\\bibitem{bkkkz2026}"
+    },
+    {
+      "source": "source-892c567092d6f3",
+      "from": "paper/257/erdos-257-mersenne-support-subseries.tex",
+      "to": "paper/257/erdos257-mersenne-reasoning-surface.tex",
+      "text": "\\bibitem{vandoornkovac}"
+    },
+    {
+      "source": "source-71fb76f6e1363b",
+      "from": "paper/269/erdos-269-three-prime-running-lcm.tex",
+      "to": "paper/269/erdos269-running-lcm-reasoning-surface.tex",
+      "text": "\\bibitem{fan2026strongly}"
+    },
+    {
+      "source": "source-71fb76f6e1363b",
+      "from": "paper/269/erdos-269-three-prime-running-lcm.tex",
+      "to": "existing long/source links",
+      "text": "{fan2026strongly}"
+    },
+    {
+      "source": "source-1a7535a5e17a8c",
+      "from": "paper/269/erdos-269-three-prime-running-lcm.tex",
+      "to": "paper/269/erdos269-running-lcm-reasoning-surface.tex",
+      "text": "\\bibitem{hancltijdeman2004}"
+    },
+    {
+      "source": "source-62ee65065db497",
+      "from": "paper/269/erdos-269-three-prime-running-lcm.tex",
+      "to": "paper/269/erdos269-running-lcm-reasoning-surface.tex",
+      "text": "\\bibitem{erdostaylor1957}"
+    },
+    {
+      "source": "source-c6e97d89c9fa5f",
+      "from": "paper/243/erdos-243-reciprocal-tail-rigidity.tex",
+      "to": "paper/243/erdos243-reciprocal-tail-reasoning-surface.tex",
+      "text": "\\bibitem{kouli2020}"
+    },
+    {
+      "source": "source-c6e97d89c9fa5f",
+      "from": "paper/269/erdos-269-three-prime-running-lcm.tex",
+      "to": "paper/269/erdos269-running-lcm-reasoning-surface.tex",
+      "text": "\\bibitem{afperdosstraus2020}"
+    },
+    {
+      "source": "source-92b0dfb67f5009",
+      "from": "paper/1041/erdos-1041-lemniscate-newton-flow.tex",
+      "to": "paper/1041/erdos1041-lemniscate-reasoning-surface.tex",
+      "text": "\\bibitem{kozen-stefansson1997}"
+    },
+    {
+      "source": "source-9e37cc2fe7db3e",
+      "from": "paper/1041/erdos-1041-lemniscate-newton-flow.tex",
+      "to": "paper/1041/erdos1041-lemniscate-reasoning-surface.tex",
+      "text": "\\bibitem{eks2010}"
+    },
+    {
+      "source": "source-2a86f52125aec0",
+      "from": "paper/1041/erdos-1041-lemniscate-newton-flow.tex",
+      "to": "paper/1041/erdos1041-lemniscate-reasoning-surface.tex",
+      "text": "\\bibitem{dubinin2006capacity}"
+    },
+    {
+      "source": "source-91756d895a28a8",
+      "from": "paper/1049/erdos-1049-rational-base-lambert.tex",
+      "to": "paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex",
+      "text": "\\bibitem{stanley2016}"
+    },
+    {
+      "source": "source-22ef36d016ca81",
+      "from": "paper/1049/erdos-1049-rational-base-lambert.tex",
+      "to": "paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex",
+      "text": "\\bibitem{krvz2009}"
+    },
+    {
+      "source": "source-71037224a1dd7c",
+      "from": "paper/249/erdos-249-binary-totient-series.tex",
+      "to": "paper/249/erdos249-totient-reasoning-surface.tex",
+      "text": "\\bibitem{eldar2026oeis}"
+    },
+    {
+      "source": "source-7c8ba4ea6eea79",
+      "from": "paper/269/erdos-269-three-prime-running-lcm.tex",
+      "to": "paper/269/erdos269-running-lcm-reasoning-surface.tex",
+      "text": "\\bibitem{adamczewskibugeaud2007}"
+    },
+    {
+      "source": "source-63a234b13e4427",
+      "from": "paper/257/erdos-257-mersenne-support-subseries.tex",
+      "to": "paper/257/erdos257-mersenne-reasoning-surface.tex",
+      "text": "\\bibitem{nitecki2013}"
+    },
+    {
+      "source": "source-4bb571f8383293",
+      "from": "paper/257/erdos-257-mersenne-support-subseries.tex",
+      "to": "paper/257/erdos257-mersenne-reasoning-surface.tex",
+      "text": "\\bibitem{formalconjectures257}"
+    },
+    {
+      "source": "source-cbaba7aeeb0f71",
+      "from": "paper/243/erdos-243-reciprocal-tail-rigidity.tex",
+      "to": "paper/243/erdos243-reciprocal-tail-reasoning-surface.tex",
+      "text": "\\bibitem{tijdemanyuan2002}"
+    },
+    {
+      "source": "source-ee991edd431d57",
+      "from": "paper/243/erdos-243-reciprocal-tail-rigidity.tex",
+      "to": "paper/243/erdos243-reciprocal-tail-reasoning-surface.tex",
+      "text": "\\bibitem{erdosproblemaday243}"
+    },
+    {
+      "source": "source-41df26fdff66cb",
+      "from": "paper/243/erdos-243-reciprocal-tail-rigidity.tex",
+      "to": "paper/243/erdos243-reciprocal-tail-reasoning-surface.tex",
+      "text": "\\bibitem{crmarickovac2025}"
+    },
+    {
+      "source": "source-b95bf142df7fb5",
+      "from": "paper/243/erdos-243-reciprocal-tail-rigidity.tex",
+      "to": "paper/243/erdos243-reciprocal-tail-reasoning-surface.tex",
+      "text": "\\bibitem{dlmf_gamma}"
+    },
+    {
+      "source": "source-0f03e2dab0b8c2",
+      "from": "paper/243/erdos-243-reciprocal-tail-rigidity.tex",
+      "to": "paper/243/erdos243-reciprocal-tail-reasoning-surface.tex",
+      "text": "\\bibitem{duverneykurosawashiokawa2020}"
+    },
+    {
+      "source": "source-77ddbf43e364f7",
+      "from": "paper/243/erdos-243-reciprocal-tail-rigidity.tex",
+      "to": "paper/243/erdos243-reciprocal-tail-reasoning-surface.tex",
+      "text": "\\bibitem{hancltijdeman2008}"
+    },
+    {
+      "source": "source-77ddbf43e364f7",
+      "from": "paper/269/erdos-269-three-prime-running-lcm.tex",
+      "to": "paper/269/erdos269-running-lcm-reasoning-surface.tex",
+      "text": "\\bibitem{hancltijdeman2008}"
+    },
+    {
+      "source": "source-6b460d123159d9",
+      "from": "paper/249/erdos-249-binary-totient-series.tex",
+      "to": "paper/249/erdos249-totient-reasoning-surface.tex",
+      "text": "\\bibitem{allouche-shallit-yassawi}"
+    },
+    {
+      "source": "source-b791f5b49e0da6",
+      "from": "paper/249/erdos-249-binary-totient-series.tex",
+      "to": "paper/249/erdos249-totient-reasoning-surface.tex",
+      "text": "\\bibitem{bell-bruin-coons}"
+    },
+    {
+      "source": "source-91aa380a16dba9",
+      "from": "paper/251/erdos-251-prime-gap-dyadic-series.tex",
+      "to": "paper/251/erdos251-prime-gap-reasoning-surface.tex",
+      "text": "\\bibitem{polymath2014}"
+    },
+    {
+      "source": "source-691e9cc3c46273",
+      "from": "paper/257/erdos-257-mersenne-support-subseries.tex",
+      "to": "paper/257/erdos257-mersenne-reasoning-surface.tex",
+      "text": "\\bibitem{hornich1941}"
+    },
+    {
+      "source": "source-9ce84321e202f1",
+      "from": "paper/257/erdos-257-mersenne-support-subseries.tex",
+      "to": "paper/257/erdos257-mersenne-reasoning-surface.tex",
+      "text": "\\bibitem{lucatachiya2014periodic}"
+    },
+    {
+      "source": "source-eaeb7980382323",
+      "from": "paper/269/erdos-269-three-prime-running-lcm.tex",
+      "to": "paper/269/erdos269-running-lcm-reasoning-surface.tex",
+      "text": "\\bibitem{adamczewskifaverjon2026}"
+    },
+    {
+      "source": "source-7a9657920d576b",
+      "from": "paper/269/erdos-269-three-prime-running-lcm.tex",
+      "to": "paper/269/erdos269-running-lcm-reasoning-surface.tex",
+      "text": "\\bibitem{kebis2024echoing}"
+    },
+    {
+      "source": "source-bbb68df5b83380",
+      "from": "paper/269/erdos-269-three-prime-running-lcm.tex",
+      "to": "paper/269/erdos269-running-lcm-reasoning-surface.tex",
+      "text": "\\bibitem{languasco2025}"
+    },
+    {
+      "source": "source-29bdada58b414a",
+      "from": "paper/269/erdos-269-three-prime-running-lcm.tex",
+      "to": "paper/269/erdos269-running-lcm-reasoning-surface.tex",
+      "text": "\\bibitem{lucaouaknineworrell2025}"
+    },
+    {
+      "source": "source-ab6d6d6b890f57",
+      "from": "paper/269/erdos-269-three-prime-running-lcm.tex",
+      "to": "paper/269/erdos269-running-lcm-reasoning-surface.tex",
+      "text": "\\bibitem{tijdemanmeijer1974}"
+    },
+    {
+      "source": "source-818467bc1cb170",
+      "from": "paper/1041/erdos-1041-lemniscate-newton-flow.tex",
+      "to": "paper/1041/erdos1041-lemniscate-reasoning-surface.tex",
+      "text": "\\bibitem{crane2007smale}"
+    },
+    {
+      "source": "source-b10b965e63a00d",
+      "from": "paper/1041/erdos-1041-lemniscate-newton-flow.tex",
+      "to": "paper/1041/erdos1041-lemniscate-reasoning-surface.tex",
+      "text": "\\bibitem{dubinin2006critical}"
+    },
+    {
+      "source": "source-f0af8e6f36727f",
+      "from": "paper/1041/erdos-1041-lemniscate-newton-flow.tex",
+      "to": "paper/1041/erdos1041-lemniscate-reasoning-surface.tex",
+      "text": "\\bibitem{dubinin2013fourpoint}"
+    },
+    {
+      "source": "source-57fe330e419648",
+      "from": "paper/1041/erdos-1041-lemniscate-newton-flow.tex",
+      "to": "paper/1041/erdos1041-lemniscate-reasoning-surface.tex",
+      "text": "\\bibitem{kuznetsova2003}"
+    },
+    {
+      "source": "source-45037c29c04bed",
+      "from": "paper/1041/erdos-1041-lemniscate-newton-flow.tex",
+      "to": "paper/1041/erdos1041-lemniscate-reasoning-surface.tex",
+      "text": "\\bibitem{revision2026}"
+    },
+    {
+      "source": "source-7ac8693558c1a2",
+      "from": "paper/1041/erdos-1041-lemniscate-newton-flow.tex",
+      "to": "paper/1041/erdos1041-lemniscate-reasoning-surface.tex",
+      "text": "\\bibitem{tischler1989}"
+    },
+    {
+      "source": "source-2a10c7287879c3",
+      "from": "paper/1049/erdos-1049-rational-base-lambert.tex",
+      "to": "paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex",
+      "text": "\\bibitem{berg2007}"
+    },
+    {
+      "source": "source-53a2a9c4a9e7c2",
+      "from": "paper/1049/erdos-1049-rational-base-lambert.tex",
+      "to": "paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex",
+      "text": "\\bibitem{golubwelsch1969}"
+    },
+    {
+      "source": "source-c61a0cf3f328ce",
+      "from": "paper/1049/erdos-1049-rational-base-lambert.tex",
+      "to": "paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex",
+      "text": "\\bibitem{sw2024}"
+    },
+    {
+      "source": "source-e535117ac620e6",
+      "from": "paper/1049/erdos-1049-rational-base-lambert.tex",
+      "to": "paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex",
+      "text": "\\bibitem{wangzhu2016}"
+    },
+    {
+      "source": "source-endpoint2026-logarithmic-repair",
+      "from": "paper/257/erdos-257-mersenne-support-subseries.tex",
+      "to": "paper/257/erdos257-mersenne-reasoning-surface.tex",
+      "text": "AI-assisted note of 17 September"
+    }
+  ],
+  "navigation_rebindings": [
+    {
+      "statement": "erdos249-totient-reasoning-surface#prop:additional-hypothesis-totient-specific-rank",
+      "reason": "Replaced the removed short-paper comparison reference with the existing local generic-carry-rank section; mathematical assertion and Lean declarations unchanged."
+    }
+  ]
+}

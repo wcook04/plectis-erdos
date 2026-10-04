@@ -4,7 +4,7 @@ Part of the [evidence record](../erdos249-totient-reasoning-surface.md) of the p
 
 <a id="thm-goodbasegap"></a>
 
-## Theorem 3.5 (Irrationality from one bound on the good indices), page 18
+## Theorem 3.5 (Irrationality from one bound on the good indices), page 19
 
 > 1.  *Suppose that for every $`h\ge1`$ and every $`A`$ there are $`X`$, $`L`$ with $`16(2X+h+L+2)\le2^L`$ and a nonempty finite set $`T`$ of integers in $`[A,2X)`$ with
 >     ``` math

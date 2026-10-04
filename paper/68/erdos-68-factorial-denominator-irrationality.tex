@@ -87,22 +87,16 @@ We derive a vector attaining this value and bound its remainder between
 consecutive integers. The classification itself does not assume that
 $S$ is rational. An irrationality proof would require, for each $q>0$,
 a nonintegral form whose coefficient $M$ is divisible by $q$.
-The companion's
-\href{erdos68-factorial-reasoning-surface.pdf\#r5-progression}{progression construction}
-gives primitive vectors with this divisibility property;
-nonintegrality of their remainders remains unproved.
-
 Han\v{c}l and Tijdeman's tail-integrality lemma treats factorial series
 with integer coefficients \cite[Lemma~2.1 and the following remark,
 p.~385]{hancl-tijdeman}. Their factorial-scaled partial sums are integers.
 Here the scaled partial sum need not be integral. Instead, the weight
 congruences give $\mathcal R-MS\in\mathbb Z$
 \eqref{eq:integer-linear-form}; the assumption $S=a/q$ and $q\mid M$
-then makes $\mathcal R$ integral. Koepf and Schmersau's factorial-digit
-criterion \cite[Example~3.2, p.~121]{koepf-schmersau} is used in the
-\href{erdos68-factorial-reasoning-surface.pdf\#r5-digits}{companion's digit argument}
-to give an equivalent eventual-pattern condition for $S-e+2$. Failure
-of that pattern at arbitrarily large indices also remains unproved.
+then makes $\mathcal R$ integral.
+
+The companion gives the separate factorial-digit criterion and its sources.
+
 
 Sections~\ref{sec:channels} and \ref{sec:moments} give the coordinate
 construction and finite gcd. Section~\ref{sec:depth-four} uses them to
@@ -488,76 +482,17 @@ These minimise different quantities. The minimum of $M$ follows from
 \eqref{eq:attainable-moment-ideal} and does not require minimal support.
 
 \section{Nonintegrality of the remainder}\label{sec:open}\label{sec:plateau}
-\papersectiontarget{r12-short-gap}
+The classification determines which coefficients $M$ can occur in the
+integer linear forms. To prove irrationality by this method, for each
+$q>0$ one must still produce a nonintegral form with $q\mid M$.
+Changing the vector while fixing $M$ changes the remainder by an integer,
+by~\eqref{eq:integer-linear-form}; it cannot change integrality.
 
-Fix a vector with $V_2=\cdots=V_D=0$ and $M>0$. We may choose the
-cutoff $N\ge D$ anywhere at or beyond its support. Separate the finite
-signed sum from the positive tail:
-\[
- A_N=\sum_{d=D+1}^N\frac{V_d(\lambda)}{d!-1},\qquad
- \mathcal R(\lambda)=A_N+M(S-H_N).
-\]
-The remainder lies above $A_N$. To place it below the next integer,
-it is enough that the omitted tail be shorter than the gap
-$\lfloor A_N\rfloor+1-A_N$. By \eqref{eq:series-tail-bound}, a sufficient
-condition is
-\begin{equation}
- \frac{2M}{(N+1)!-1}<\lfloor A_N\rfloor+1-A_N.
- \label{eq:signed-block-gap}
-\end{equation}
-Indeed, the positive tail and this comparison give
-$\lfloor A_N\rfloor<\mathcal R(\lambda)<\lfloor A_N\rfloor+1$,
-excluding every denominator dividing $M$.
-Failure of this sufficient comparison is inconclusive. Either sign of
-$A_N$ is allowed: its strict gap is one when $A_N$ is integral and
-can be arbitrarily small when $A_N$ approaches an integer from below.
-
-First keep the vector fixed and increase only the cutoff. The vector
-$-6e_2+e_4$ has $M=12$. At $N=4$, its finite part
-$A_4=-239/115$ lies just below $-2$, and its gap $9/115$ is smaller
-than the bound $24/119$. At $N=5$, the finite part
-$A_5=-27061/13685$ has crossed $-2$: the next integer is now $-1$,
-and the gap $13376/13685$ exceeds $24/719$.
-More generally, for a fixed vector with $M>0$,
-the quantities $A_N$ increase to $\mathcal R$. If this limit is
-nonintegral, their gaps to the next integer tend to a positive number,
-so the test eventually succeeds. If the limit is integral, the eventual
-gap equals the omitted tail and the test fails. Extending the cutoff
-therefore eventually detects a nonintegral remainder, but leaves both
-that remainder and the set of divisors of $M$ unchanged.
-
-Changing coefficients while preserving $M$ also leaves integrality
-unchanged. By \eqref{eq:integer-linear-form}, the remainders of two such
-vectors differ by an integer. Adding multiples of the $U_n$ can
-simplify the support and weighted sums, as in the example; it cannot
-turn an integral remainder into a nonintegral one.
-
-To exclude every possible denominator, we must instead choose vectors
-whose values of $M$ have the required divisibility. There are primitive
-solutions with $0<M<N!$ for which $M$ is eventually divisible by any
-prescribed $q$. The
-\href{erdos68-factorial-reasoning-surface.pdf\#r5-progression}{progression construction in the companion}
-gives such a family by turning $V_d=0$ into roots of a polynomial.
-At its support endpoint the omitted tail is less than $2/N$, but the
-gap on the right of \eqref{eq:signed-block-gap} may shrink too.
-To prove irrationality by this test, for each $q>0$ we need one vector
-with $q\mid M$ and a cutoff for which \eqref{eq:signed-block-gap}
-holds. Divisibility and a small tail do not by themselves establish
-that comparison. No minimal-support assertion is made for this family.
-
-The companion treats the
-\href{erdos68-factorial-reasoning-surface.pdf\#r5-carry}{equivalent carry condition}
-and the
-\href{erdos68-factorial-reasoning-surface.pdf\#r5-complement}{complementary-denominator tail inequality}.
-It also records two larger finite computations: a non-unit carry at
-$m=300000$ excludes every $q\mid299999!$, and a continued-fraction
-enclosure excludes every $q<2^{39990}$. Both computations were performed
-outside Lean; their
-\href{erdos68-factorial-reasoning-surface.pdf\#r12-finite}{algorithms, exact outputs and scope}
-are given there. The factorial-divisibility exclusion does not exclude
-all denominators with only small prime factors, whose exponents may be
-larger. Neither finite restriction establishes the required condition
-at arbitrarily large indices.
+The \href{erdos68-factorial-reasoning-surface.pdf\#r12-short-gap}
+{long record's nonintegrality test} gives the exact finite-tail inequality,
+explains when extending the cutoff detects a nonintegral remainder and
+compares it with the progression construction. The required comparison
+for every possible denominator remains unproved.
 
 \section{Verification}\label{app:sources}
 
@@ -585,10 +520,6 @@ In Alan Baker (ed.), \emph{New Advances in Transcendence Theory}, Cambridge Univ
 \bibitem{bloom}
 Thomas F. Bloom. \href{https://www.erdosproblems.com/68}{Erd{\H o}s Problem {\#68}}.
 Online resource (2026). Historical access: 28 July 2026; present-page status not reverified.
-
-\bibitem{koepf-schmersau}
-Wolfram Koepf and Dieter Schmersau. \href{https://doi.org/10.1524/anly.2011.1094}{Irrationality of certain infinite series {II}}.
-\emph{Analysis} \textbf{31} (2011), 117--124.
 
 \bibitem{hancl-tijdeman}
 Jaroslav Han{\v c}l and Robert Tijdeman. \href{https://doi.org/10.4064/aa118-4-5}{On the irrationality of factorial series}.
