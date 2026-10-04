@@ -9,5 +9,7 @@
     "receipts": "evidence/comparator/replay-35935225572"
   },
   "record_commit": "5783e729f82dc8079b3b2e174dc02c8b1e56ea88",
-  "record_commit_overrides": {}
+  "record_commit_overrides": {
+    "erdos249-totient-reasoning-surface": "e633f9f6b50f58e967ee7332ba859bf33dc6ada9"
+  }
 }

@@ -105,13 +105,13 @@
     "erdos_249_reasoning_record": {
       "inputs": {
         "paper/249/erdos249-totient-reasoning-surface.tex": "sha256:7ea21077b4bf6b02525a31dcfa4bd99649c2f5dcea88a2fc24d515469f1997f9",
-        "paper/evidence/erdos249-totient-reasoning-surface.tex": "sha256:ff23431cd496c4ca1ab250406adedb7dabf2a0219cbe96cc917184d2d9d3dd1d",
+        "paper/evidence/erdos249-totient-reasoning-surface.tex": "sha256:e398bbfe6e73e8fdc491a062c1baf87f1e966ce3dd9246cca4702503645975c8",
         "paper/module-aliases.tex": "sha256:1c703b0a1e659daa8c5d47c97816d498350cb1fbf81cb3057410498ecda0267d",
         "paper/paper-evidence.tex": "sha256:1ba1b3a112445f6fee7794f2083c29a60fb102d239d5e799808a36b9a5e562e3",
         "paper/paper-house-style.sty": "sha256:554ed85b5315bd936a4d09d58f8727547c5bb1b299f9684eb6ef720b329759a2",
         "paper/problem-note-preamble.tex": "sha256:088d36d7ba3d3ee0cee2df99e8915927999698f19889f8ea0b8d55b3721ec778"
       },
-      "rendered_content_digest": "sha256:9da0461d4ab7d8d26b1807e6568f1fcbb5ca526cbc36818632eff6b6c719b62c",
+      "rendered_content_digest": "sha256:37bfb2319c60804afd16f7ee4b3f7e0d5936736d55515754206efd91f35d77ab",
       "source_path": "paper/249/erdos249-totient-reasoning-surface.tex",
       "storage_path": "paper/249/erdos249-totient-reasoning-surface.pdf"
     },

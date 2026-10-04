@@ -115,7 +115,7 @@
       "source_path": "paper/249/erdos249-totient-reasoning-surface.tex",
       "source_content_digest": "sha256:7ea21077b4bf6b02525a31dcfa4bd99649c2f5dcea88a2fc24d515469f1997f9",
       "rendered_path": "paper/249/erdos249-totient-reasoning-surface.pdf",
-      "rendered_content_digest": "sha256:9da0461d4ab7d8d26b1807e6568f1fcbb5ca526cbc36818632eff6b6c719b62c",
+      "rendered_content_digest": "sha256:37bfb2319c60804afd16f7ee4b3f7e0d5936736d55515754206efd91f35d77ab",
       "authority_posture": "authored_claim_bounded_problem_reasoning_record_not_Lean_proof_authority",
       "claim_scope": "Claim-bounded reasoning record for Erdős Problem 249. It distinguishes checked premises and finite certificates from open obligations: the level-e dyadic-section rank is 2^e+1 only for e >= 1; the full span is infinite-dimensional; the finite Farey computation excludes denominators up to the stated bound; and diagonal certificates exist through t = 82, with neither t = 83 nor an unbounded family supplied. Irrationality remains open.",
       "architecture_ref": "docs/claims.json::machine_readable_paper.publication_assembly.publication_architecture.retained_companions",

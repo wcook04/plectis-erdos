@@ -3502,8 +3502,8 @@
       ],
       "citations_rendered": 59,
       "local_pdf": "paper/249/erdos249-totient-reasoning-surface.pdf",
-      "pdf_sha256": "sha256:9da0461d4ab7d8d26b1807e6568f1fcbb5ca526cbc36818632eff6b6c719b62c",
-      "pdf_byte_count": 862397,
+      "pdf_sha256": "sha256:37bfb2319c60804afd16f7ee4b3f7e0d5936736d55515754206efd91f35d77ab",
+      "pdf_byte_count": 862403,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection for this guide",
