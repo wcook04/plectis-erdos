@@ -2111,12 +2111,12 @@ def validate_paper_semantic_citation_aliases() -> None:
     packet = semantic_query(
         "paper-coverage",
         "--paper",
-        "erdos_243_note",
+        "erdos243-reciprocal-tail-reasoning-surface",
         "--limit",
         "64",
     )
     by_artifact = {row["artifact"]: row for row in packet["results"]}
-    reciprocal = by_artifact["erdos_243_note"]
+    reciprocal = by_artifact["erdos_243_reasoning_record"]
 
     assert reciprocal["authored_statement_nodes_reached"] > 0
     assert (
@@ -2724,7 +2724,7 @@ def validate_principal_paper_query_metadata() -> None:
         ),
         "paper/1049/erdos-1049-rational-base-lambert.tex": (
             "Hankel Determinants of Geometric Moments and Rational Lambert Values",
-            {"cor:rational-base-measure", "res:sharp-fixed-base"},
+            {"res:rational-base-threshold", "res:sharp-fixed-base"},
             "irrationality at 3/2 remains open",
         ),
         "paper/249/erdos-249-binary-totient-series.tex": (
@@ -2732,9 +2732,14 @@ def validate_principal_paper_query_metadata() -> None:
             {"thm:kkernelrank", "cor:integral-normal-form"},
             "original unreduced totient-series irrationality remains open",
         ),
+        "paper/257/erdos-257-mersenne-support-subseries.tex": (
+            "Irrationality criteria for Lambert subseries",
+            {"res:weighted-support", "thm:variable-fractional-cover", "res:mixed-supports"},
+            "rational membership are in the long record",
+        ),
         "paper/243/erdos-243-reciprocal-tail-rigidity.tex": (
-            "Cubic-Rate Irrationality and Reciprocal-Tail Rigidity",
-            {"res:originalbounded", "res:bounded", "res:cubicrate"},
+            "Cubic-Rate Irrationality of Reciprocal Sums",
+            {"res:cubicrate"},
             "unrestricted problem remains open",
         ),
         "paper/251/erdos-251-prime-gap-dyadic-series.tex": (
@@ -2744,8 +2749,7 @@ def validate_principal_paper_query_metadata() -> None:
         ),
         "paper/1041/erdos-1041-lemniscate-newton-flow.tex": (
             "Paths in Polynomial Lemniscates: A Degree-Seven Counterexample and Radial Connections",
-            {"res:ani-degree-seven-counterexample", "res:trinomial-all-degree",
-             "res:low-critical-thirteen-twentyfifths"},
+            {"res:ani-degree-seven-counterexample", "res:trinomial-all-degree"},
             "historical correspondence awaits human review",
         ),
     }
@@ -2767,6 +2771,10 @@ def validate_principal_paper_query_metadata() -> None:
         "long68:res:bandbreakpoint": "paper/68/erdos68-factorial-reasoning-surface.tex",
         "long269:res:distinct-height-all": "paper/269/erdos269-running-lcm-reasoning-surface.tex",
         "long269:res:single-prime-subsums": "paper/269/erdos269-running-lcm-reasoning-surface.tex",
+        "long243:res:strausbounded": "paper/243/erdos243-reciprocal-tail-reasoning-surface.tex",
+        "long243:res:bounded": "paper/243/erdos243-reciprocal-tail-reasoning-surface.tex",
+        "res:low-critical-thirteen-twentyfifths": "paper/1041/erdos1041-lemniscate-reasoning-surface.tex",
+        "long1049:cor:rational-base-measure": "paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex",
     }
     for label, source in long_routes.items():
         packet = query("--paper-label", label)
@@ -2777,11 +2785,26 @@ def validate_principal_paper_query_metadata() -> None:
         assert f"\\label{{{label}}}" in "\n".join(lines[line - 1:line + 2])
     for programme, obsolete in {
         68: {"res:carry-characterization", "res:bandbreakpoint"},
+        243: {"res:originalbounded", "res:bounded", "res:barrier"},
+        249: {"res:basis"},
+        251: {"res:irr-equivalence", "res:gap-nonperiodic"},
+        257: {"res:period", "res:one-over-twenty-one-frontier", "prob:one-over-twenty-one-membership",
+              "res:terminalhalf", "res:cylinderhalf"},
         269: {"res:distinct-height-all", "res:distinct-height-triples", "res:single-prime-subsums"},
-        1049: {"res:nocorridor", "res:tailrec", "res:forcing"},
+        1041: {"res:low-critical-thirteen-twentyfifths", "res:ray"},
+        1049: {"res:nocorridor", "res:tailrec", "res:forcing", "cor:rational-base-measure"},
     }.items():
         source = next(source for source in expected if source.startswith(f"paper/{programme}/"))
         assert not obsolete.intersection(anchor["label"] for anchor in query("--paper-source", source)["anchors"])
+    # An explicit route must name a label in its current source; a deleted
+    # short-paper label must not linger in the companion-source allowlist.
+    for row in load("docs/claims.json")["machine_readable_paper"]["paper"]["companion_sources"]:
+        source = row["source"]
+        if Path(source).parts[1] not in {"68", "243", "249", "251", "257", "269", "1041", "1049"}:
+            continue
+        text = (ROOT / source).read_text(encoding="utf-8")
+        for label in row.get("anchor_label_allowlist", []):
+            assert f"\\label{{{label}}}" in text, (source, label)
     # These query anchors expose authored results. They do not create registry
     # claims or turn the ordinary analytic criterion into a Lean-checked theorem.
     assert query("--paper-label", "res:low-critical-thirteen-twentyfifths")["attached_claims"] == []
@@ -2972,7 +2995,7 @@ def validate_release_word_link_coordinates() -> None:
             old_guessed_path = "Erdos249257/" + path.removeprefix("ErdosProblems/")
             assert module_lines(cache, old_guessed_path, pin) is None
             repaired_count += 1
-    assert repaired_count == 37
+    assert repaired_count == 38
 
     paper_pin, body_pin = "a" * 40, "b" * 40
     fixture = (r"\newcommand{\commit}{" + paper_pin + r"}"
@@ -3577,32 +3600,31 @@ def main() -> int:
     }
     twenty_one_paper = query("--paper-label", "res:one-over-twenty-one-frontier")
     assert twenty_one_paper["paper"]["source"] == (
-        "paper/257/erdos-257-mersenne-support-subseries.tex"
+        "paper/257/erdos257-mersenne-reasoning-surface.tex"
     )
     assert twenty_one_paper["anchor_class"] == "registered_claim_anchor"
     assert twenty_one_paper["attachment_receipt"] == {
         "claim_count": 1,
         "open_proposition_count": 0,
-        "source_link_count": 3,
+        "source_link_count": 2,
         "complete": True,
         "owners": [
-            "paper/257/erdos-257-mersenne-support-subseries.tex",
+            "paper/257/erdos257-mersenne-reasoning-surface.tex",
             "docs/claims.json",
         ],
     }
     assert {
         row["declaration"] for row in twenty_one_paper["source_links"]
     } == {
-        "twentyOneClosedRow_forces_quotientGreedy",
-        "twentyOneAlignedSaturatedCrossing_forces_canonical_ancestor_hole",
-        "twentyOneAlignedSaturatedCrossing_forces_scaled_greedy_skip",
+        "twentyOneCofinalEvenQuotientGreedyDecay_of_closedRows",
+        "one_div_twenty_one_mem_mersenneAchievementSet_of_cofinalGreedyDecay",
     }
     # The result's own proof is linked by its margin mark: the declarations behind
     # the mark are listed in the evidence map instead of inline in the text.
     twenty_one_mark = next(
         result
         for paper in load("evidence/paper_evidence.json")["papers"]
-        if paper["paper_id"] == "erdos-257-mersenne-support-subseries"
+        if paper["paper_id"] == "erdos257-mersenne-reasoning-surface"
         for result in paper["results"]
         if result["label"] == "res:one-over-twenty-one-frontier"
     )

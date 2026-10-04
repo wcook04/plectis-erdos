@@ -955,11 +955,9 @@
           "source": "paper/269/erdos-269-three-prime-running-lcm.tex",
           "rendered": "paper/269/erdos-269-three-prime-running-lcm.pdf",
           "formal_source_ref": "99f4bf47422abbd8757cbb22b50ba079d764d3a7",
-          "role": "Standalone theorem-led problem note for Erdős #269: the distinct-height {2,3,5} theorem and a repeated-sum residue criterion; the general finite-prime argument is in the long record, and the catalogue-sum problem remains open.",
+          "role": "Standalone theorem-led problem note for Erdős #269: the distinct-height {2,3,5} theorem; general finite-prime arguments and repeated-sum criteria are in the long record, and the catalogue-sum problem remains open.",
           "anchor_label_allowlist": [
-            "res:distinct-height-235",
-            "res:consumer",
-            "res:windowconsumer"
+            "res:distinct-height-235"
           ]
         },
         {
@@ -969,8 +967,6 @@
           "formal_source_ref": "99f4bf47422abbd8757cbb22b50ba079d764d3a7",
           "role": "Standalone theorem-led problem note for Erdős #251: sparse congruence-preserving rationalising perturbations and a joint prime-gap countermodel; cumulative positions are not asserted to be prime, and the prime dyadic sum remains open.",
           "anchor_label_allowlist": [
-            "res:irr-equivalence",
-            "res:gap-nonperiodic",
             "res:sparserationalisation",
             "res:jointcountermodel"
           ]
@@ -980,12 +976,10 @@
           "source": "paper/1041/erdos-1041-lemniscate-newton-flow.tex",
           "rendered": "paper/1041/erdos-1041-lemniscate-newton-flow.pdf",
           "formal_source_ref": "7380b7871687b6bcc41ca0143c61f232e8af6500",
-          "role": "Standalone theorem-led problem note for Erdős #1041: a degree-seven formal-statement refutation and radial trinomial connections; the low-critical-value assertion is unformalised and its scaling implication is Lean-checked only under the named input; historical correspondence awaits human review.",
+          "role": "Standalone theorem-led problem note for Erdős #1041: a degree-seven formal-statement refutation, radial trinomial connections and a sextic failure of the positive-ray strategy; low-critical-value criteria are in the long record, and historical correspondence awaits human review.",
           "anchor_label_allowlist": [
-            "res:ray",
             "res:ani-degree-seven-counterexample",
-            "res:trinomial-all-degree",
-            "res:low-critical-thirteen-twentyfifths"
+            "res:trinomial-all-degree"
           ]
         },
         {
@@ -995,20 +989,17 @@
           "formal_source_ref": "7380b7871687b6bcc41ca0143c61f232e8af6500",
           "role": "Standalone theorem-led problem note for Erdős #1049: fixed-base Hankel asymptotics and geometric moments, with a rational-base irrationality-measure region; irrationality at 3/2 remains open.",
           "anchor_label_allowlist": [
-            "cor:rational-base-measure",
-            "res:sharp-fixed-base"
+            "res:sharp-fixed-base",
+            "res:rational-base-threshold"
           ]
         },
         {
-          "title": "Cubic-Rate Irrationality and Reciprocal-Tail Rigidity",
+          "title": "Cubic-Rate Irrationality of Reciprocal Sums",
           "source": "paper/243/erdos-243-reciprocal-tail-rigidity.tex",
           "rendered": "paper/243/erdos-243-reciprocal-tail-rigidity.pdf",
           "formal_source_ref": "7380b7871687b6bcc41ca0143c61f232e8af6500",
-          "role": "Standalone theorem-led problem note for Erdős #243: a cubic-rate irrationality theorem, separate reciprocal-tail criteria under bounded negative parts or bounded increments, and the fresh-modulus barrier; the unrestricted problem remains open.",
+          "role": "Standalone theorem-led problem note for Erdős #243: cubic-rate irrationality of reciprocal sums and the tail estimate used in its proof; broader reciprocal-tail criteria are in the long record, and the unrestricted problem remains open.",
           "anchor_label_allowlist": [
-            "res:barrier",
-            "res:originalbounded",
-            "res:bounded",
             "res:cubicrate"
           ]
         },
@@ -1019,7 +1010,6 @@
           "formal_source_ref": "99f4bf47422abbd8757cbb22b50ba079d764d3a7",
           "role": "Standalone theorem-led problem note for Erdős #249: all-base totient-section independence and integral relations; the original unreduced totient-series irrationality remains open.",
           "anchor_label_allowlist": [
-            "res:basis",
             "thm:kkernelrank",
             "cor:integral-normal-form"
           ]
@@ -1034,7 +1024,8 @@
             "thm:goodbasegap",
             "res:factorideal",
             "res:actualorbit",
-            "res:actualsign"
+            "res:actualsign",
+            "res:basis"
           ]
         },
         {
@@ -1042,20 +1033,22 @@
           "source": "paper/257/erdos257-mersenne-reasoning-surface.tex",
           "rendered": "paper/257/erdos257-mersenne-reasoning-surface.pdf",
           "formal_source_ref": "99f4bf47422abbd8757cbb22b50ba079d764d3a7",
-          "role": "Full problem-specific reasoning record for Erdős #257."
-        },
-        {
-          "title": "Weighted Support Criteria for Reciprocal Mersenne Subseries",
-          "source": "paper/257/erdos-257-mersenne-support-subseries.tex",
-          "rendered": "paper/257/erdos-257-mersenne-support-subseries.pdf",
-          "formal_source_ref": "99f4bf47422abbd8757cbb22b50ba079d764d3a7",
-          "role": "Standalone theorem-led problem note for Erdős #257 and the 1/21 frontier.",
+          "role": "Full problem-specific reasoning record for Erdős #257.",
           "anchor_label_allowlist": [
             "res:period",
             "res:one-over-twenty-one-frontier",
             "prob:one-over-twenty-one-membership",
             "res:terminalhalf",
-            "res:cylinderhalf",
+            "res:cylinderhalf"
+          ]
+        },
+        {
+          "title": "Irrationality criteria for Lambert subseries",
+          "source": "paper/257/erdos-257-mersenne-support-subseries.tex",
+          "rendered": "paper/257/erdos-257-mersenne-support-subseries.pdf",
+          "formal_source_ref": "99f4bf47422abbd8757cbb22b50ba079d764d3a7",
+          "role": "Standalone theorem-led problem note for Erdős #257: weighted, fractional-cover and mixed support criteria for reciprocal exponential subseries, their separation and limitations; denominator periods, achievement sets and rational membership are in the long record.",
+          "anchor_label_allowlist": [
             "res:reciprocal-support",
             "res:weighted-support",
             "thm:variable-fractional-cover",
@@ -1072,7 +1065,9 @@
           "anchor_owner": "paper/1041/erdos-1041-lemniscate-newton-flow.tex",
           "anchor_label_allowlist": [
             "res:degree-three",
-            "res:reflected-critical-value"
+            "res:reflected-critical-value",
+            "res:ray",
+            "res:low-critical-thirteen-twentyfifths"
           ],
           "formal_source_ref": "7380b7871687b6bcc41ca0143c61f232e8af6500"
         },
@@ -1084,7 +1079,9 @@
           "anchor_label_allowlist": [
             "long1049:res:nocorridor",
             "long1049:res:tailrec",
-            "long1049:res:forcing"
+            "long1049:res:forcing",
+            "long1049:cor:rational-base-measure",
+            "long1049:res:zudilin-sharp-qorder"
           ],
           "formal_source_ref": "7380b7871687b6bcc41ca0143c61f232e8af6500"
         },
@@ -1103,7 +1100,10 @@
           "formal_source_ref": "be89e72217ec9c5f05aa5ec7b915c1ebf0816fdd",
           "anchor_label_allowlist": [
             "long243:res:gapconstant",
-            "long243:res:nonintegralrate"
+            "long243:res:nonintegralrate",
+            "long243:res:barrier",
+            "long243:res:strausbounded",
+            "long243:res:bounded"
           ]
         },
         {
@@ -1111,7 +1111,12 @@
           "source": "paper/251/erdos251-prime-gap-reasoning-surface.tex",
           "rendered": "paper/251/erdos251-prime-gap-reasoning-surface.pdf",
           "role": "Historical full reasoning record for Erdős #251.",
-          "formal_source_ref": "3d6d938d696fed0fb71dd55115a18a73738ff223"
+          "formal_source_ref": "3d6d938d696fed0fb71dd55115a18a73738ff223",
+          "anchor_label_allowlist": [
+            "long251:res:irr-equivalence",
+            "long251:res:gap-nonperiodic",
+            "long251:app:short-source-index"
+          ]
         },
         {
           "title": "The Three-Prime Running LCM: Complete Reasoning Record",
@@ -1121,7 +1126,10 @@
           "formal_source_ref": "ee650b32b8b2cb98b94e5500df5370d85f7403b8",
           "anchor_label_allowlist": [
             "long269:res:distinct-height-all",
-            "long269:res:single-prime-subsums"
+            "long269:res:single-prime-subsums",
+            "long269:res:consumer",
+            "long269:res:actual-escape-endpoint",
+            "long269:long:windowconsumer"
           ]
         },
         {
@@ -22361,7 +22369,7 @@
       "remaining_open_proposition_ids": [
         "remaining_open.erdos_269_three_prime_irrationality"
       ],
-      "paper_label": "res:consumer",
+      "paper_label": "long269:res:consumer",
       "readme_headline": false,
       "declarations": [
         {
@@ -22389,7 +22397,7 @@
       "remaining_open_proposition_ids": [
         "remaining_open.erdos_269_three_prime_irrationality"
       ],
-      "paper_label": "res:windowconsumer",
+      "paper_label": "long269:long:windowconsumer",
       "readme_headline": false,
       "declarations": [
         {
@@ -22412,7 +22420,7 @@
       "remaining_open_proposition_ids": [
         "remaining_open.erdos_269_cofinal_local_window_escape"
       ],
-      "paper_label": "res:windowconsumer",
+      "paper_label": "long269:res:actual-escape-endpoint",
       "readme_headline": false,
       "declarations": [
         {
@@ -25841,7 +25849,7 @@
       "remaining_open_proposition_ids": [
         "remaining_open.erdos_243_eventual_recurrence"
       ],
-      "paper_label": "res:barrier",
+      "paper_label": "long243:res:barrier",
       "readme_headline": false,
       "declarations": [
         {
@@ -26288,7 +26296,7 @@
       "remaining_open_proposition_ids": [
         "remaining_open.erdos_1049_irrationality"
       ],
-      "paper_label": "res:zudilin-sharp-qorder",
+      "paper_label": "long1049:res:zudilin-sharp-qorder",
       "readme_headline": false,
       "declarations": [
         {

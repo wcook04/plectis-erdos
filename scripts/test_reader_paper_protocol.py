@@ -223,6 +223,10 @@ class PaperProtocolTests(unittest.TestCase):
     def test_real_corpus_material_and_native_owner(self):
         src=ROOT/'paper/68/erdos-68-factorial-denominator-irrationality.tex'
         self.assertTrue(native.safe_file(ROOT,src.relative_to(ROOT).as_posix()).is_file())
-        self.assertIn('299999',src.read_text())
+        self.assertIn('M=1380',src.read_text())
+        record=ROOT/'paper/68/erdos68-factorial-reasoning-surface.tex'
+        self.assertTrue(native.safe_file(ROOT,record.relative_to(ROOT).as_posix()).is_file())
+        self.assertIn(record.with_suffix('.pdf').name,src.read_text())
+        self.assertIn('299999',record.read_text())
 
 if __name__=='__main__':unittest.main()
