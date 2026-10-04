@@ -1061,6 +1061,65 @@ def test_public_problem_artifact_coverage() -> None:
     )
 
 
+def test_release_cli_receipt_path_boundary() -> None:
+    """The CLI must preserve receipt paths for the no-follow reader."""
+    with tempfile.TemporaryDirectory() as temporary:
+        parent = Path(temporary)
+        root, _, commit, tree, tag, receipt_path = synthetic_repository(parent)
+        receipt_link = parent / "receipt-link.json"
+        receipt_link.symlink_to(receipt_path)
+        parent_link = parent / "receipt-parent-link"
+        parent_link.symlink_to(receipt_path.parent, target_is_directory=True)
+        linked_parent_receipt = parent_link / receipt_path.name
+        cli = [sys.executable, "-B", *(["-O"] if sys.flags.optimize else []),
+               str(Path(release.__file__))]
+
+        def run(*arguments: str) -> subprocess.CompletedProcess[str]:
+            return subprocess.run(
+                [*cli, *arguments], cwd=parent, capture_output=True, text=True,
+                env=singleflight.command_environment(),
+                timeout=singleflight.GIT_COMMAND_TIMEOUT_SECONDS,
+            )
+
+        def build(receipt: Path, output: Path) -> subprocess.CompletedProcess[str]:
+            return run("build", "--root", str(root), "--source-commit", commit,
+                       "--source-tree", tree, "--release-tag", tag,
+                       "--receipt", str(receipt), "--output", str(output))
+
+        def validate(receipt: Path, manifest: Path) -> subprocess.CompletedProcess[str]:
+            return run("validate", "--root", str(root), "--manifest", str(manifest),
+                       "--receipt", str(receipt))
+
+        controls = [("absolute", receipt_path),
+                    ("relative", receipt_path.relative_to(parent))]
+        for alias in (Path("/tmp"), Path("/var")):
+            if release._is_allowed_platform_alias(alias):
+                try:
+                    relative = receipt_path.resolve().relative_to(alias.resolve(strict=True))
+                except ValueError:
+                    continue
+                controls.append(("platform-" + alias.name, alias / relative))
+        for label, receipt in controls:
+            manifest = parent / (label + "-manifest.json")
+            result = build(receipt, manifest)
+            require(result.returncode == 0, result.stdout + result.stderr)
+            result = validate(receipt, manifest)
+            require(result.returncode == 0, result.stdout + result.stderr)
+        manifest = parent / "absolute-manifest.json"
+        for label, receipt in (("leaf", receipt_link), ("parent", linked_parent_receipt)):
+            expect_error(lambda: release.load_json(receipt), "symlinked release input")
+            output = parent / (label + "-refused-manifest.json")
+            result = build(receipt, output)
+            require(result.returncode == 1,
+                    f"CLI build accepted {label} receipt symlink: {result.stdout}{result.stderr}")
+            require("symlinked release input" in result.stdout, result.stdout + result.stderr)
+            require(not output.exists(), "refused receipt created a release manifest")
+            result = validate(receipt, manifest)
+            require(result.returncode == 1,
+                    f"CLI validate accepted {label} receipt symlink: {result.stdout}{result.stderr}")
+            require("symlinked release input" in result.stdout, result.stdout + result.stderr)
+
+
 def test_release_manifest() -> None:
     with tempfile.TemporaryDirectory() as temporary:
         parent = Path(temporary)
@@ -1236,6 +1295,7 @@ def main() -> int:
     test_failure_control_receipt_parser()
     test_weighted_support_runtime_receipt()
     test_public_problem_artifact_coverage()
+    test_release_cli_receipt_path_boundary()
     test_release_manifest()
     print(
         "external-verification release contract: replay plan, immutable manifest, "
