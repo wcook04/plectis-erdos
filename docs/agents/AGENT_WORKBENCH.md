@@ -367,8 +367,9 @@ programmes among the neighbouring numbered problems, each external status as
 listed on its erdosproblems.com page.
 
 `python3 scripts/check_cold_clone_comprehension.py --quick` checks the
-reading surfaces without Lean; `python3 scripts/check_release.py` runs the
-full public-surface and query sweep.
+reading surfaces without Lean; `python3 scripts/run_release_check.py` prepares
+the pinned Python dependencies and Lean pilot import, then runs the full
+public-surface and query sweep.
 
 ## Recovered from the front page: how the repository fits together
 
@@ -408,8 +409,12 @@ reading order.
 
 ## Recovered from the front page: build and verify
 
-Everything above this heading runs with Python alone. Building the Lean source
-needs the toolchain, and `lake` arrives with it: install `elan`, Lean's
+Static navigation, source queries and session planning run with Python alone.
+The live proof-state pilot, workbench probe/replay and historical bridge
+experiment above also execute Lean: prepare their selected imports first and
+wait for any host-wide Lean build to finish. The [proof-state compiler guide](PROOF_STATE_COMPILER.md#first-run)
+gives the focused pilot setup. Building or probing Lean source needs the
+toolchain, and `lake` arrives with it: install `elan`, Lean's
 toolchain manager, from the
 [Lean setup guide](https://leanprover-community.github.io/get_started.html).
 `elan` then reads [`lean-toolchain`](../../lean-toolchain) and selects
@@ -436,16 +441,19 @@ Lake graph scans in batches capped by `--jobs`.
 A cold clone can navigate before this step; formal editing needs the
 pinned toolchain. Later builds reuse outputs and rebuild only the selected or
 stale dependency cone; `--changed-from <git-ref>` selects changed modules.
-For source edits, use `--changed-from HEAD` before the untargeted integration
-build so a local proof iteration does not pay for unrelated generated modules.
+For source edits, use `--changed-from HEAD` or explicit selected modules for
+local proof iterations. The untargeted two-root build belongs to coordinated
+release validation; full Lean roots are release-only.
 The dependency-index validator stores an exact `.lake` receipt: unchanged
 inputs make `--check` constant-time; `--check --full-check` forces an audit.
 
-The public release surfaces are checked separately:
+The public release surfaces are checked separately. The full release entry
+needs Python 3.12 and Elan; it prepares the pinned Python dependencies and Lean
+pilot import. See [release prerequisites](../REPRODUCIBILITY.md#3-run-the-release-surface-checks).
 
 ```sh
 python3 scripts/check_cold_clone_comprehension.py --quick
-python3 scripts/check_release.py
+python3 scripts/run_release_check.py
 python3 scripts/test_methodology_contract.py
 ```
 

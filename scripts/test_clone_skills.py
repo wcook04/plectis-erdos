@@ -6,6 +6,7 @@ from __future__ import annotations
 import json
 import os
 import re
+import shutil
 import subprocess
 import sys
 import tempfile
@@ -135,8 +136,102 @@ def check_invalid_destination_cli() -> None:
                     raise AssertionError("invalid destination advertised a skill or changed user material")
 
 
+def check_overlapping_source_cli() -> None:
+    """Real CLI refuses self-links/nested copies without losing clone instructions."""
+    driver = [sys.executable, *(["-O"] * sys.flags.optimize)]
+    with tempfile.TemporaryDirectory(prefix="plectis-overlap-skills-") as temporary:
+        clone = Path(temporary) / "parent with spaces and 'quotes" / "mine-open-problem"
+        (clone / "scripts").mkdir(parents=True)
+        for name in ("install_agent_skills.py", "agent_skill_catalog.py"):
+            shutil.copy2(ROOT / "scripts" / name, clone / "scripts" / name)
+        shutil.copytree(ROOT / "skills", clone / "skills")
+        name = "mine-open-problem"
+        source = clone / "skills" / name
+        original = (source / "SKILL.md").read_bytes()
+        foreign = source / "local-notes.txt"
+        foreign.write_bytes(b"contributor notes\n")
+        alias = clone / "skills-alias"
+        alias.symlink_to(clone / "skills", target_is_directory=True)
+        parent_alias = Path(temporary) / "parent-alias"
+        parent_alias.symlink_to(clone.parent, target_is_directory=True)
+        source_bytes = {path.relative_to(clone / "skills"): path.read_bytes()
+                        for path in (clone / "skills").rglob("*") if path.is_file()}
+        cases = [
+            ("skills", "symlink"),
+            (str(alias), "symlink"),
+            (str(source), "copy"),
+            (str(source), "symlink"),
+            (str(clone.parent), "copy"),
+            (str(parent_alias), "copy"),
+        ]
+        for target, mode in cases:
+            result = subprocess.run(
+                [*driver, str(clone / "scripts/install_agent_skills.py"),
+                 "--target-dir", target, "--skill", name,
+                 "--mode", mode, "--apply", "--force"],
+                cwd=clone, text=True, capture_output=True, check=False,
+            )
+            if result.returncode != 2 or "refusing overlapping source skill" not in result.stderr:
+                raise AssertionError((target, mode, result.returncode, result.stdout, result.stderr))
+            if "Traceback" in result.stderr or source.is_symlink():
+                raise AssertionError("overlap produced a traceback or replaced the source")
+            if (source / "SKILL.md").read_bytes() != original or foreign.read_bytes() != b"contributor notes\n":
+                raise AssertionError("overlap changed clone instructions or contributor notes")
+            if (source / name).exists() or (source / name).is_symlink():
+                raise AssertionError("nested destination created despite overlap refusal")
+        # The first choice would create a disjoint sibling, but a later choice
+        # encloses the whole clone. The complete plan must refuse before either.
+        result = subprocess.run(
+            [*driver, str(clone / "scripts/install_agent_skills.py"),
+             "--target-dir", str(clone.parent),
+             "--skill", "explain-public-system", "--skill", name,
+             "--mode", "copy", "--apply", "--force"],
+            cwd=clone, text=True, capture_output=True, check=False,
+        )
+        if result.returncode != 2 or "refusing overlapping source skill" not in result.stderr:
+            raise AssertionError(("multi-selection", result.returncode, result.stderr))
+        if (clone.parent / "explain-public-system").exists() or result.stdout:
+            raise AssertionError("first selection wrote or advertised work before plan rejection")
+        # Installing a different skill under an unselected source is also unsafe.
+        result = subprocess.run(
+            [*driver, str(clone / "scripts/install_agent_skills.py"),
+             "--target-dir", str(source), "--skill", "explain-public-system",
+             "--apply", "--force"],
+            cwd=clone, text=True, capture_output=True, check=False,
+        )
+        if result.returncode != 2 or "refusing overlapping source skill" not in result.stderr:
+            raise AssertionError(("unselected source", result.returncode, result.stderr))
+        if (source / "explain-public-system").exists():
+            raise AssertionError("installation wrote under an unselected source")
+        if (source / "SKILL.md").read_bytes() != original or foreign.read_bytes() != b"contributor notes\n":
+            raise AssertionError("plan rejection changed source material")
+        after_bytes = {path.relative_to(clone / "skills"): path.read_bytes()
+                       for path in (clone / "skills").rglob("*") if path.is_file()}
+        if after_bytes != source_bytes:
+            raise AssertionError("overlap plan changed selected or unselected source bytes")
+        # A disjoint existing link to source remains current in link mode;
+        # explicit copy replacement unlinks it without deleting its source.
+        target = clone / "host skills"
+        target.mkdir()
+        installed = target / name
+        installed.symlink_to(source, target_is_directory=True)
+        for mode, options in (("symlink", ["--check"]), ("copy", ["--apply", "--force"])):
+            result = subprocess.run(
+                [*driver, str(clone / "scripts/install_agent_skills.py"),
+                 "--target-dir", str(target), "--skill", name, "--mode", mode, *options],
+                cwd=clone, text=True, capture_output=True, check=False,
+            )
+            if result.returncode != 0:
+                raise AssertionError((mode, result.stderr))
+        if installed.is_symlink() or (installed / "SKILL.md").read_bytes() != original:
+            raise AssertionError("valid link-to-copy replacement failed")
+        if (source / "SKILL.md").read_bytes() != original or foreign.read_bytes() != b"contributor notes\n":
+            raise AssertionError("valid link replacement changed source material")
+
+
 def main() -> int:
     check_invalid_destination_cli()
+    check_overlapping_source_cli()
     readme = (ROOT / "README.md").read_text(encoding="utf-8")
     skill_index = (ROOT / "skills" / "README.md").read_text(encoding="utf-8")
     entry = (ROOT / "AGENTS.md").read_text(encoding="utf-8")

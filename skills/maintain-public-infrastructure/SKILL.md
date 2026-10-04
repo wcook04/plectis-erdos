@@ -42,6 +42,14 @@ handoff must retain the original request. Exercise the complete architecture
 session, validation and package path as well as the mathematics path; a receipt
 schema alone does not prove that contributors can produce a valid return.
 
+For software repair routes, test a fault in a tool alongside mathematical
+repair using that tool. Require an affirmative request about the tool itself;
+negated requests, quoted commands and unrelated later clauses must not supply
+that intent. Apply any clause boundary to both the action and its object, and
+make existing competing-action guards consume that boundary too. Preserve the
+existing route for a separate mathematical request. Verify unsupported command
+heads retain the existing route and explicit purpose still wins.
+
 For reports that an outside agent missed recent capabilities, inspect the
 checkout provenance returned by `agent_entry.py` before repairing the router.
 Use `--checkout --check-upstream` for an explicit live comparison with canonical
@@ -80,6 +88,33 @@ point to an issue path. Use public repository file URLs and actual
 `issues/new?template=<filename>` form URLs. Preserve field IDs and contribution
 or credit boundaries; validate destinations in `scripts/test_contribution_entry.py`
 and inspect the rendered form without entering or submitting a report.
+
+For a CLI with an object-shaped JSON request contract, validate explicitly
+selected file or stdin inputs before choosing a default mode or launching
+tools. Reject input I/O, decoding and schema errors through that CLI's input
+refusal contract. An explicit JSON `null` must not be treated as an absent
+request. Keep actual runtime errors separate, and cover both input sources in
+normal and optimized runs with checks that rejected requests start no
+subprocess and create no artifacts.
+Validate nested receipt object shapes before reading their fields, including
+receipts whose bytes a trusted index pins. Use the shared reader's existing
+refusal contract for each caller.
+
+For a producer with several named output files, inspect every selected final
+path before writing the first file. Refuse symlinks, including broken links,
+and nonregular-file collisions without changing earlier output or material
+outside the selected directory. Preserve the producer's documented
+regeneration behavior for regular files. Test clean output, repeated
+regeneration, and a collision at each output in normal and optimized runs.
+For regular-file refresh, verify that every selected output can be opened
+without truncation before changing any output. A later opening refusal must
+preserve earlier bytes and remove only unchanged files created during preparation. Test
+a real read-only file at each output, including a missing paired output; retain
+successful creation and regeneration controls. State the tested failure
+boundary without claiming atomic publication across writes or interruptions.
+Check that distinct named outputs do not alias the same regular file. A
+successful exit must leave the selected source and manifest identities valid;
+test both hardlink creation orders while retaining distinct-file regeneration.
 
 ## Know the public owner graph
 
@@ -248,7 +283,7 @@ python3 scripts/test_human_first_contact.py
 ```
 
 Use the exact previously failing task with `agent_entry.py --entry` as a manual
-smoke. Before publication, run `python3 scripts/check_release.py` once; do not
+smoke. Before publication, run `python3 scripts/run_release_check.py` once; do not
 serially rerun every component after that full gate passes.
 
 A long command is a concurrency window. While it runs, continue only work that
@@ -257,6 +292,8 @@ skill family, prepare a fixture, or trace downstream consumers. Never spend the
 turn repeatedly polling a build when task-coupled work remains. Lean validation
 still goes through `skills/lean-concurrent-validation/SKILL.md`; do not launch a
 competing build to look busy.
+
+For a recurring timeout, preserve the failed committed snapshot and measure phase wall and CPU time at the existing deadline before selecting a repair. Keep parsed-source caches within one live audit input snapshot. Verify unchanged findings and fresh source reads in subsequent audits. Record a successful focused replay separately from a completed release gate.
 
 ## Return, assimilate, and propagate
 

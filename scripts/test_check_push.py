@@ -215,6 +215,18 @@ class PushTests(unittest.TestCase):
             self.assertNotEqual(refused.returncode, 0)
             self.assertEqual(git("config", "--get", "core.hooksPath").stdout.strip(), "/custom/preserve")
 
+    def test_admission_store_lookup_retains_git_failure_detail(self):
+        for stderr, expected in (
+            ("fatal: not a git repository\n", "fatal: not a git repository"),
+            ("", "git rev-parse exited 128"),
+        ):
+            with self.subTest(stderr=stderr), mock.patch.object(
+                check_push.snapshot, "run",
+                return_value=subprocess.CompletedProcess([], 128, "", stderr),
+            ):
+                with self.assertRaisesRegex(ValueError, expected):
+                    check_push.admission_path("a" * 40)
+
     def test_failed_incomplete_or_other_commit_receipts_never_admit(self):
         with tempfile.TemporaryDirectory() as temp:
             path = Path(temp) / "release.json"

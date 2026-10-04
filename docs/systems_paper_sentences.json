@@ -475,10 +475,10 @@
       "id": "explanation-depth",
       "path": "skills/explain-public-system/SKILL.md",
       "start_line": 1,
-      "end_line": 192,
+      "end_line": 195,
       "kind": "source",
-      "sha256": "91c8e240abe1e68f69985f027c8e470b5bc1e68841d6e9c1fc9e9cf0186d2cb4",
-      "excerpt_sha256": "91c8e240abe1e68f69985f027c8e470b5bc1e68841d6e9c1fc9e9cf0186d2cb4"
+      "sha256": "775293526015f555e41120537b7878a615e3a8c8a34f6a804a5226922960b294",
+      "excerpt_sha256": "775293526015f555e41120537b7878a615e3a8c8a34f6a804a5226922960b294"
     },
     {
       "id": "agent-entry",
@@ -493,19 +493,19 @@
       "id": "workbench-guide",
       "path": "docs/agents/AGENT_WORKBENCH.md",
       "start_line": 1,
-      "end_line": 477,
+      "end_line": 485,
       "kind": "source",
-      "sha256": "b2c276c755b8ba301fbd43323ddcd379a5f29523ae07cf9eab438d0bccbf0544",
-      "excerpt_sha256": "b2c276c755b8ba301fbd43323ddcd379a5f29523ae07cf9eab438d0bccbf0544"
+      "sha256": "b3d7d3f672b143828402537333a53e0f9d2af10530b3928c93749eed5127cfbc",
+      "excerpt_sha256": "b3d7d3f672b143828402537333a53e0f9d2af10530b3928c93749eed5127cfbc"
     },
     {
       "id": "contribution-guide",
       "path": "CONTRIBUTING.md",
       "start_line": 1,
-      "end_line": 255,
+      "end_line": 259,
       "kind": "source",
-      "sha256": "d364b1ae2501d7a55ac113ae9f4b6ff9ae64928a5b7fddf89e410d5518307b0f",
-      "excerpt_sha256": "d364b1ae2501d7a55ac113ae9f4b6ff9ae64928a5b7fddf89e410d5518307b0f"
+      "sha256": "e14eef84f87832e31581cfd488b7fb9f6264e8d65f46b1d211464086aef69269",
+      "excerpt_sha256": "e14eef84f87832e31581cfd488b7fb9f6264e8d65f46b1d211464086aef69269"
     },
     {
       "id": "software-citation",
@@ -568,9 +568,9 @@
       "kind": "source",
       "path": "docs/agents/README.md",
       "start_line": 1,
-      "end_line": 106,
-      "sha256": "0379b31685398dfd42d22734312e893e0bbb02f887511e2931ebc530e0582573",
-      "excerpt_sha256": "0379b31685398dfd42d22734312e893e0bbb02f887511e2931ebc530e0582573",
+      "end_line": 123,
+      "sha256": "b9850dc5f8c9dc1995f9e4e6c1838294465bcc94085e8f9eab59c224fa2949e0",
+      "excerpt_sha256": "b9850dc5f8c9dc1995f9e4e6c1838294465bcc94085e8f9eab59c224fa2949e0",
       "custody": "Current native public file inspected as source; no fresh execution."
     },
     {
@@ -708,9 +708,9 @@
       "kind": "source",
       "path": "CONTRIBUTING.md",
       "start_line": 1,
-      "end_line": 89,
-      "sha256": "d364b1ae2501d7a55ac113ae9f4b6ff9ae64928a5b7fddf89e410d5518307b0f",
-      "excerpt_sha256": "9dddfc8f6ceefc14e83ed1967c38a10de331ac98552bfb9efa825ec06e2009c4",
+      "end_line": 93,
+      "sha256": "e14eef84f87832e31581cfd488b7fb9f6264e8d65f46b1d211464086aef69269",
+      "excerpt_sha256": "104071eed53570a015cd2a856277a7f9ba87bd45fb5f3a94bb549b39b17dac7d",
       "custody": "Current native public file inspected as source; no fresh execution."
     },
     {
@@ -829,7 +829,7 @@
       "path": "docs/agents/AGENT_WORKBENCH.md",
       "start_line": 175,
       "end_line": 202,
-      "sha256": "b2c276c755b8ba301fbd43323ddcd379a5f29523ae07cf9eab438d0bccbf0544",
+      "sha256": "b3d7d3f672b143828402537333a53e0f9d2af10530b3928c93749eed5127cfbc",
       "excerpt_sha256": "81134a83c49fab0e628fcb25d139a389b829e01c716dac0375b8e22342574d91",
       "custody": "Type A current implementation inspection for R9 systems integration; no new probe run."
     }

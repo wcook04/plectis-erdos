@@ -55,8 +55,17 @@ def python_version(executable: str) -> tuple[int, int] | None:
 def select_python(explicit: str | None = None) -> str:
     candidates = [explicit] if explicit else [sys.executable, shutil.which("python3.12")]
     for candidate in candidates:
-        if candidate and python_version(candidate) == (3, 12):
-            return candidate
+        if not candidate:
+            continue
+        # Validation runs in the caller's directory, while preparation runs in
+        # ROOT. Pin both explicit relative paths and relative PATH entries now
+        # so the child uses the same interpreter that passed the version check.
+        executable = candidate if Path(candidate).is_absolute() else shutil.which(candidate)
+        if executable is None:
+            continue
+        executable = str(Path(executable).absolute())
+        if python_version(executable) == (3, 12):
+            return executable
     raise PreparationError(
         "Python 3.12 is required for the committed release dependency lock; "
         "install it or pass --python /path/to/python3.12"

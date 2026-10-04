@@ -3,7 +3,9 @@
 
 from __future__ import annotations
 
+import contextlib
 import copy
+import io
 import json
 import os
 import subprocess
@@ -127,7 +129,7 @@ def check_toolchain_absence_is_a_clean_skip_signal() -> None:
     # Stand the dependency probe down. It runs first and raises a subclass of
     # the same exception, so leaving it live would let this check pass in an
     # unbuilt clone without ever reaching the `lake` exec it exists to test.
-    compiler._require_lean_dependencies = lambda _repo_root: None
+    compiler._require_lean_dependencies = lambda _repo_root, **_kwargs: None
     try:
         try:
             compiler.environment_fingerprint(compiler.ROOT, timeout_seconds=1)
@@ -169,8 +171,11 @@ def check_unfetched_dependencies_are_a_clean_skip_signal() -> None:
             try:
                 compiler._require_lean_dependencies(root)
             except compiler.LeanDependenciesUnavailable as error:
-                assert "python3 scripts/lean_fast_build.py --jobs 2" in str(error)
-                assert "lake exe cache get" not in str(error)
+                message = str(error)
+                if "Select the local modules" not in message:
+                    raise AssertionError("generic cold check invented a build target")
+                if "--jobs 2`" in message or "lake exe cache get" in message:
+                    raise AssertionError("cold check suggested an untargeted build")
                 return
             raise AssertionError(
                 f"an incomplete checkout ({stage}) did not raise "
@@ -188,6 +193,234 @@ def check_unfetched_dependencies_are_a_clean_skip_signal() -> None:
         # Complete tree: the probe must stand aside so that a genuine `lake`
         # failure still reaches the caller as a failure.
         compiler._require_lean_dependencies(root)
+
+
+
+def check_cold_setup_follows_selected_imports() -> None:
+    """Every CLI mode refuses before tools and suggests only its own targets."""
+    def require(condition: bool, message: str) -> None:
+        if not condition:
+            raise AssertionError(message)
+
+    with tempfile.TemporaryDirectory() as raw:
+        root = Path(raw)
+        (root / "lake-manifest.json").write_text(
+            json.dumps({"packages": [{"name": "mathlib"}]}), encoding="utf-8",
+        )
+        (root / "lakefile.toml").write_text(
+            '[[lean_lib]]\nname = "Erdos249257"\nsrcDir = "lean"\n'
+            '[[lean_lib]]\nname = "Other"\nsrcDir = "lean"\n',
+            encoding="utf-8",
+        )
+        for module in ["Erdos249257", "Erdos249257.CurvatureCarry",
+                       "Erdos249257.TotientTailPeriodKiller", "Other.Leaf"]:
+            path = root / "lean" / Path(*module.split(".")).with_suffix(".lean")
+            path.parent.mkdir(parents=True, exist_ok=True)
+            path.write_text("-- local cold fixture\n", encoding="utf-8")
+
+        def refusal(arguments: list[str]) -> str:
+            stdout, stderr = io.StringIO(), io.StringIO()
+            with mock.patch.object(compiler.sys, "argv", [
+                "proof_state_compiler.py", "--repo-root", str(root), *arguments,
+            ]), mock.patch.object(compiler.subprocess, "run", side_effect=
+                AssertionError("cold refusal executed a tool")), \
+                    contextlib.redirect_stdout(stdout), contextlib.redirect_stderr(stderr):
+                status = compiler.main()
+            require(status == 2, f"cold CLI returned {status}, expected 2")
+            require(not stdout.getvalue(), "cold CLI emitted a success packet")
+            require("REFUSED:" in stderr.getvalue(), "cold CLI lost refusal diagnostic")
+            require("--jobs 2`" not in stderr.getvalue(), "untargeted default build suggested")
+            return stderr.getvalue()
+
+        pilot = refusal(["--pilot-controls"])
+        require("--jobs 2 Erdos249257.CurvatureCarry "
+                "Erdos249257.TotientTailPeriodKiller`" in pilot,
+                "pilot preparation did not cover its selected imports")
+        request = copy.deepcopy(compiler.pilot_requests()[0])
+        request["imports"] = ["Other.Leaf"]
+        request_path = root / "request.json"
+        request_path.write_text(json.dumps(request), encoding="utf-8")
+        explicit = refusal(["--request-file", str(request_path)])
+        require("--jobs 2 Other.Leaf`" in explicit,
+                "request preparation did not follow its imports")
+        require("CurvatureCarry" not in explicit, "request received pilot-only remedy")
+        with mock.patch.object(compiler.sys, "stdin", io.StringIO(json.dumps(request))):
+            stdin = refusal(["--request-stdin"])
+        require("--jobs 2 Other.Leaf`" in stdin, "stdin lost selected-import remedy")
+        inspection = refusal(["--inspect-declaration", "Other.example", "--module", "Other.Leaf"])
+        require("--jobs 2 Other.Leaf`" in inspection,
+                "inspection preparation did not follow --module")
+        require("CurvatureCarry" not in inspection, "inspection received pilot-only remedy")
+        for imports, expected in [
+            (["Erdos249257"], "coordinated release validation"),
+            (["Mathlib"], "cannot all be resolved as local build targets"),
+            (["Other.Leaf", "Mathlib"], "cannot all be resolved as local build targets"),
+        ]:
+            request["imports"] = imports
+            request_path.write_text(json.dumps(request), encoding="utf-8")
+            message = refusal(["--request-file", str(request_path)])
+            require(expected in message, "unfocused imports lost actionable setup guidance")
+            require("Run `python3 scripts/lean_fast_build.py" not in message,
+                    "unsupported imports received a falsely sufficient local build")
+            require("CurvatureCarry" not in message, "unsupported imports received pilot remedy")
+        # Metadata-only roots cannot resolve local targets; remain an exit-2
+        # setup refusal, without calling Git/Lake or suggesting a full build.
+        for path in (root / "lean").rglob("*.lean"):
+            path.unlink()
+        metadata_only = refusal(["--pilot-controls"])
+        require("cannot all be resolved" in metadata_only,
+                "metadata-only checkout lost the setup refusal")
+
+
+def check_request_loading_refusals() -> None:
+    """Invalid explicit inputs refuse before tools/pilot, including JSON null."""
+    def require(condition: bool, message: str) -> None:
+        if not condition:
+            raise AssertionError(message)
+
+    cli = [compiler.sys.executable]
+    if compiler.sys.flags.optimize:
+        cli.append("-O")
+    cli.append(str(Path(compiler.__file__)))
+    with tempfile.TemporaryDirectory(prefix="plectis-request-input-") as temporary:
+        root = Path(temporary) / "cold root with spaces and 'quotes"
+        root.mkdir()
+        (root / "lake-manifest.json").write_text(
+            json.dumps({"packages": [{"name": "mathlib"}]}), encoding="utf-8",
+        )
+        inputs = Path(temporary) / "request files"
+        inputs.mkdir()
+        missing = inputs / "missing request.json"
+        directory = inputs / "directory request.json"
+        directory.mkdir()
+        cases = [(missing, "cannot read request"), (directory, "cannot read request")]
+        for name, payload, diagnostic in [
+            ("malformed", b"{", "cannot read request"),
+            ("nonutf8", b"\xff", "cannot read request"),
+            ("null", b"null", "must be a JSON object"),
+            ("list", b"[]", "must be a JSON object"),
+            ("string", b'"request"', "must be a JSON object"),
+            ("number", b"3", "must be a JSON object"),
+            ("boolean", b"true", "must be a JSON object"),
+            ("wrong schema", b"{}", "request schema must be"),
+            ("missing fields", json.dumps({"schema_version": compiler.REQUEST_SCHEMA}).encode(),
+             "goal_id is required"),
+        ]:
+            path = inputs / f"{name} request.json"
+            path.write_bytes(payload)
+            cases.append((path, diagnostic))
+        unreadable = inputs / "unreadable request.json"
+        unreadable.write_text("{}", encoding="utf-8")
+        unreadable.chmod(0)
+        try:
+            try:
+                unreadable.read_bytes()
+            except PermissionError:
+                cases.append((unreadable, "cannot read request"))
+            # Privileged test hosts may read chmod-000 files; the directory
+            # case remains a real unreadable input and the mock below covers
+            # PermissionError independently of the host's effective user.
+            original = {path: path.read_bytes() for path, _ in cases
+                        if path.is_file() and path != unreadable}
+            for path, diagnostic in cases:
+                arguments = ["--repo-root", str(root), "--request-file", str(path)]
+                stdout, stderr = io.StringIO(), io.StringIO()
+                with mock.patch.object(compiler.sys, "argv", ["proof_state_compiler.py", *arguments]), \
+                        mock.patch.object(compiler, "compile_pilot_suite", side_effect=AssertionError("explicit input ran pilot")), \
+                        mock.patch.object(compiler, "environment_fingerprint", side_effect=AssertionError("invalid input reached tools")), \
+                        mock.patch.object(compiler.subprocess, "run", side_effect=AssertionError("invalid input executed tool")), \
+                        contextlib.redirect_stdout(stdout), contextlib.redirect_stderr(stderr):
+                    status = compiler.main()
+                require(status == 2 and not stdout.getvalue(), "invalid file emitted a success packet")
+                require("REFUSED:" in stderr.getvalue() and diagnostic in stderr.getvalue(),
+                        f"invalid file lost typed refusal: {stderr.getvalue()}")
+                output = Path(temporary) / "output packet with spaces and 'quotes.json"
+                with output.open("w", encoding="utf-8") as handle:
+                    result = subprocess.run(
+                        [*cli, *arguments],
+                        cwd=root, stdout=handle, stderr=subprocess.PIPE, text=True, check=False,
+                    )
+                require(result.returncode == 2 and output.read_bytes() == b"", "real CLI emitted output")
+                require("REFUSED:" in result.stderr and diagnostic in result.stderr,
+                        f"real CLI lost refusal: {result.stderr}")
+                require("Traceback" not in result.stderr, "real CLI printed input traceback")
+            require(all(path.read_bytes() == payload for path, payload in original.items()),
+                    "invalid input handling changed request files")
+            with mock.patch.object(compiler.sys, "argv", ["proof_state_compiler.py", "--request-file", str(missing)]), \
+                    mock.patch.object(Path, "read_text", side_effect=PermissionError("denied request")), \
+                    contextlib.redirect_stdout(io.StringIO()), contextlib.redirect_stderr(io.StringIO()) as stderr:
+                require(compiler.main() == 2 and "denied request" in stderr.getvalue(),
+                        "PermissionError lost input refusal")
+        finally:
+            unreadable.chmod(0o600)
+        for payload, diagnostic in [
+            ("null", "must be a JSON object"), ("[]", "must be a JSON object"),
+            ('"request"', "must be a JSON object"), ("3", "must be a JSON object"),
+            ("false", "must be a JSON object"), ("{", "cannot read request"),
+            ("{}", "request schema must be"),
+        ]:
+            stdout, stderr = io.StringIO(), io.StringIO()
+            with mock.patch.object(compiler.sys, "argv", ["proof_state_compiler.py", "--request-stdin"]), \
+                    mock.patch.object(compiler.sys, "stdin", io.StringIO(payload)), \
+                    mock.patch.object(compiler, "compile_pilot_suite", side_effect=AssertionError("stdin ran pilot")), \
+                    mock.patch.object(compiler, "environment_fingerprint", side_effect=AssertionError("stdin reached tools")), \
+                    mock.patch.object(compiler.subprocess, "run", side_effect=AssertionError("stdin executed tool")), \
+                    contextlib.redirect_stdout(stdout), contextlib.redirect_stderr(stderr):
+                require(compiler.main() == 2 and not stdout.getvalue(), "invalid stdin emitted packet")
+            require(diagnostic in stderr.getvalue(), "stdin lost input diagnostic")
+            result = subprocess.run(
+                [*cli, "--request-stdin", "--repo-root", str(root)],
+                cwd=root, input=payload, capture_output=True, text=True, check=False,
+            )
+            require(result.returncode == 2 and not result.stdout and "Traceback" not in result.stderr,
+                    "real stdin CLI failed noisily or emitted output")
+            require(diagnostic in result.stderr, "real stdin CLI lost diagnostic")
+        valid = inputs / "valid request.json"
+        valid.write_text(json.dumps(compiler.pilot_requests()[0]), encoding="utf-8")
+        result = subprocess.run(
+            [*cli, "--request-file", str(valid), "--repo-root", str(root)],
+            cwd=root, capture_output=True, text=True, check=False,
+        )
+        require(result.returncode == 2 and not result.stdout and "Traceback" not in result.stderr,
+                "valid cold request lost dependency refusal")
+        require("Lean dependencies pinned" in result.stderr and "mathlib" in result.stderr,
+                "valid cold request was misclassified as an input error")
+        require(sorted(path.name for path in root.iterdir()) == ["lake-manifest.json"],
+                "invalid inputs created repository artifacts")
+
+
+def check_request_loading_preserves_runtime_boundary() -> None:
+    """Valid schema keeps dependency refusals and genuine runtime failures distinct."""
+    request = compiler.pilot_requests()[0]
+    for value in (None, [], "request", 3, False):
+        try:
+            compiler._validate_request(value)
+        except compiler.RequestError as error:
+            if "JSON object" not in str(error):
+                raise AssertionError(str(error)) from error
+        else:
+            raise AssertionError("non-object passed library request validation")
+    compiler._validate_request(request)
+    with mock.patch.object(compiler.sys, "argv", ["proof_state_compiler.py", "--request-stdin"]), \
+            mock.patch.object(compiler.sys, "stdin", io.StringIO(json.dumps(request))), \
+            mock.patch.object(compiler, "compile_request", side_effect=RuntimeError("real compiler failure")), \
+            contextlib.redirect_stdout(io.StringIO()), contextlib.redirect_stderr(io.StringIO()) as stderr:
+        try:
+            compiler.main()
+        except RuntimeError as error:
+            if str(error) != "real compiler failure" or stderr.getvalue():
+                raise AssertionError("runtime error was changed into input refusal") from error
+        else:
+            raise AssertionError("runtime error was swallowed")
+    # An absent explicit request still selects the existing pilot mode.
+    stdout = io.StringIO()
+    with mock.patch.object(compiler.sys, "argv", ["proof_state_compiler.py", "--pilot-controls"]), \
+            mock.patch.object(compiler, "compile_pilot_suite", return_value={"kind": "pilot_control"}) as pilot, \
+            contextlib.redirect_stdout(stdout):
+        if compiler.main() != 0 or json.loads(stdout.getvalue()) != {"kind": "pilot_control"}:
+            raise AssertionError("ordinary pilot mode changed")
+        if pilot.call_count != 1:
+            raise AssertionError("ordinary pilot mode did not run exactly once")
 
 
 def check_timeout_reaps_lean_child() -> None:
@@ -334,6 +567,9 @@ def main() -> int:
     check_subprocess_environment()
     check_toolchain_absence_is_a_clean_skip_signal()
     check_unfetched_dependencies_are_a_clean_skip_signal()
+    check_cold_setup_follows_selected_imports()
+    check_request_loading_refusals()
+    check_request_loading_preserves_runtime_boundary()
     check_timeout_reaps_lean_child()
     try:
         packet = check_live_pilot()

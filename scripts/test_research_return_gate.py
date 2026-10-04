@@ -2,11 +2,16 @@
 # SPDX-License-Identifier: Apache-2.0
 from __future__ import annotations
 import copy
+import contextlib
+import io
+import os
+import subprocess
 import json
 from pathlib import Path
 import sys
 import tempfile
 import unittest
+from unittest import mock
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import research_return_gate as g
 import check_assimilation_cut as ac
@@ -229,6 +234,111 @@ class AssimilationTests(Fixture):
     def test_parent_record_move_invalidates(self):
         self.complete(); self.cut["record_parent_sha256"] = g.digest("concurrent append")
         with self.assertRaises(g.GateError): self.run_cut()
+
+class EvidenceJsonCliTests(Fixture):
+    def test_shared_evidence_shape_refusals_preserve_both_callers_and_valid_evidence(self):
+        self.receipt("interpretation")
+        assimilation = AssimilationTests("test_explicit_full_closure")
+        assimilation.setUp()
+        self.addCleanup(assimilation.doCleanups)
+        assimilation.complete()
+        assimilation.receipt("comparator_result", subject=g.digest(assimilation.cut))
+        assimilation.receipt("remote_publication", subject=g.digest(assimilation.cut))
+        python = [sys.executable, *(["-O"] if sys.flags.optimize else [])]
+        shapes = [("null", None), ("list", []), ("string", "text"), ("number", 12), ("boolean", True)]
+        cases = [(role, label, value) for role in ("index", "receipt") for label, value in shapes]
+        cases += [("loader", label, None) for label in ("malformed", "encoding", "missing")]
+        if not hasattr(os, "geteuid") or os.geteuid() != 0:
+            cases.append(("loader", "unreadable", None))
+        cases.append(("valid", "reviewed fixture", None))
+        for owner, fixture, document, refusal in ((g, self, self.req, "invalid_input_or_evidence"),
+                                                  (ac, assimilation, assimilation.cut, "blocked")):
+            request = fixture.root / "request with spaces and 'quotes.json"
+            request.write_bytes(g.canonical(document))
+            index = fixture.root / "index with spaces and 'quotes.json"
+            original_index = copy.deepcopy(fixture.index)
+            receipt = fixture.root / (fixture.ids[0] + ".json")
+            original_receipt = receipt.read_bytes()
+            for role, label, value in cases:
+                with self.subTest(owner=owner.__name__, role=role, label=label):
+                    receipt.write_bytes(original_receipt)
+                    current_index = copy.deepcopy(original_index)
+                    if role == "receipt":
+                        receipt.write_text(json.dumps(value), encoding="utf-8")
+                        current_index["receipts"][fixture.ids[0]]["sha256"] = g.bytes_sha(receipt.read_bytes())
+                    index.write_text(json.dumps(value if role == "index" else current_index), encoding="utf-8")
+                    if role == "loader":
+                        if label == "missing": index.unlink()
+                        elif label == "malformed": index.write_bytes(b"{")
+                        elif label == "encoding": index.write_bytes(b"\xff")
+                        else: index.chmod(0)
+                    arguments = (["assess", str(request), "--return-file", str(fixture.raw)] if owner is g else
+                                 [str(request), "--checkout", str(fixture.root)])
+                    arguments += ["--evidence-index", str(index), "--evidence-root", str(fixture.root)]
+                    for rid in fixture.ids:
+                        arguments += ["--receipt", rid]
+                    # Snapshot even an unreadable fixture before taking its read permission away.
+                    if role == "loader" and label == "unreadable": index.chmod(0o600)
+                    before = {path.relative_to(fixture.root): path.read_bytes()
+                              for path in fixture.root.rglob("*") if path.is_file()}
+                    before_nodes = {path.relative_to(fixture.root) for path in fixture.root.rglob("*")}
+                    if role == "loader" and label == "unreadable": index.chmod(0)
+                    expected = 0 if role == "valid" else 2
+                    stdout, stderr = io.StringIO(), io.StringIO()
+                    try:
+                        with contextlib.ExitStack() as stack:
+                            stack.enter_context(mock.patch.object(sys, "argv", [owner.__file__, *arguments]))
+                            stack.enter_context(mock.patch.object(subprocess, "run", side_effect=AssertionError("gate started tool")))
+                            for name in ("write_text", "write_bytes", "mkdir"):
+                                stack.enter_context(mock.patch.object(Path, name, side_effect=AssertionError("gate mutated artifacts")))
+                            stack.enter_context(contextlib.redirect_stdout(stdout))
+                            stack.enter_context(contextlib.redirect_stderr(stderr))
+                            self.assertEqual(owner.main(), expected)
+                        result = subprocess.run([*python, owner.__file__, *arguments], capture_output=True, text=True,
+                                                env={**os.environ, "PATH": str(fixture.root / "no tools"),
+                                                     "PYTHONDONTWRITEBYTECODE": "1"})
+                        self.assertEqual(result.returncode, expected, result.stderr)
+                        self.assertEqual(stderr.getvalue(), "")
+                        self.assertEqual(result.stderr, "")
+                        for output in (stdout.getvalue(), result.stdout):
+                            verdict = json.loads(output)
+                            if expected:
+                                self.assertEqual(verdict["status"], refusal)
+                                if role in ("index", "receipt"):
+                                    self.assertIn("must be a JSON object", verdict["error"])
+                            elif owner is g:
+                                self.assertEqual(verdict["interpretation"], "reviewed_and_bound")
+                                self.assertEqual(verdict["formal_correctness"], "unknown")
+                                self.assertEqual(verdict["new_mathematical_credit"], "not_authorized")
+                            else:
+                                self.assertEqual(verdict["round_status"], "closed")
+                                self.assertFalse(verdict["production_admission"])
+                    finally:
+                        if role == "loader" and label == "unreadable": index.chmod(0o600)
+                    self.assertEqual({path.relative_to(fixture.root): path.read_bytes()
+                                      for path in fixture.root.rglob("*") if path.is_file()}, before)
+                    self.assertEqual({path.relative_to(fixture.root) for path in fixture.root.rglob("*")}, before_nodes)
+
+    def test_extract_input_errors_keep_the_readonly_refusal_contract(self):
+        bad = self.root / "malformed UTF8 return with 'quotes.txt"
+        bad.write_bytes(b"\xff")
+        python = [sys.executable, *(["-O"] if sys.flags.optimize else [])]
+        before = {path.relative_to(self.root): path.read_bytes() for path in self.root.rglob("*") if path.is_file()}
+        for path, expected in ((bad, 2), (self.root / "missing return.txt", 2), (self.raw, 0)):
+            with self.subTest(path=path):
+                result = subprocess.run([*python, g.__file__, "extract", str(path)], capture_output=True, text=True,
+                                        env={**os.environ, "PATH": str(self.root / "no tools"),
+                                             "PYTHONDONTWRITEBYTECODE": "1"})
+                self.assertEqual(result.returncode, expected, result.stderr)
+                self.assertEqual(result.stderr, "")
+                value = json.loads(result.stdout)
+                if expected:
+                    self.assertEqual(value["status"], "invalid_input_or_evidence")
+                else:
+                    self.assertEqual(value["semantic_coverage"], "review_required")
+                    self.assertEqual(len(value["all_paragraphs"]), 2)
+                self.assertEqual({path.relative_to(self.root): path.read_bytes()
+                                  for path in self.root.rglob("*") if path.is_file()}, before)
 
 if __name__ == "__main__":
     unittest.main(verbosity=2)
