@@ -4,7 +4,7 @@
 
 Start with [Irrationality criteria for Lambert subseries](../../../docs/papers/full-text/erdos-257-mersenne-support-subseries.md). The longer account is [Reciprocal Mersenne Subseries](../../../docs/papers/full-text/erdos257-mersenne-reasoning-surface.md).
 
-Registered assertions: 11 short, 175 long. Located long-record links: 2. Proofs retained in the short paper: 3. Long correspondences still open: 9.
+Registered assertions: 11 short, 175 long. Located long-record links: 3. Proofs retained in the short paper: 3. Long correspondences still open: 8.
 
 Checks registered asserting environments and registered claim spans. Unregistered prose assertions, mathematical equivalence, correctness of ordinary proofs, Lean compilation, Comparator replay and PDF freshness are not established by this audit.
 
@@ -84,15 +84,17 @@ Long-record location: [paper/reasoning-parts/erdos257/a257_front.tex](../../../p
 
 ### res:strict-mixed-supports
 
-State: **unresolved**.
+State: **authored_proof_text_linked**.
 
 Short statement: [paper/257/erdos-257-mersenne-support-subseries.tex](../../../paper/257/erdos-257-mersenne-support-subseries.tex) lines 775-781.
 
 Ledger evidence: Lean `none`; Comparator `not_applicable`. These statuses are copied from the evidence ledger; this build reruns neither checker.
 
-No accepted correspondence is recorded. Check the candidates below; none is silently treated as a proof of this short statement.
+Long-record location: [paper/reasoning-parts/erdos257/a257_front.tex](../../../paper/reasoning-parts/erdos257/a257_front.tex) lines 867-899.
 
-No candidate was found by the bounded label/declaration rules. Read the long record before declaring the result absent.
+The long passage now repeats the short corollary’s union argument with both host hypotheses explicit and points to the existing mixed criterion. The differing printed and Lean constructions remain distinguished. The union argument depends on the short paper’s host-existence proposition; the printed host constructions have not been moved or independently reviewed here.
+
+Review status: Ordinary proof text transferred from the short paper; no independent review recorded..
 
 ### res:period
 
