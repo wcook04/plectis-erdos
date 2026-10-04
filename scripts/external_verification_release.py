@@ -437,10 +437,9 @@ def validate_manifest(
         raise ReleaseIdentityError("manifest repository differs from contract")
     if source.get("commit_url") != f"{source['repository']}/commit/{source_commit}":
         raise ReleaseIdentityError("manifest commit URL is not commit-pinned")
-    if f"/blob/{source_commit}/" not in manifest.get("contract", {}).get(
-        "immutable_url", ""
-    ):
-        raise ReleaseIdentityError("manifest contract URL is not commit-pinned")
+    expected_contract_url = f"{source['repository']}/blob/{source_commit}/{CONTRACT_PATH}"
+    if manifest.get("contract", {}).get("immutable_url") != expected_contract_url:
+        raise ReleaseIdentityError("manifest contract URL does not identify the source-bound contract")
     if manifest.get("contract", {}).get("sha256") != sha256_file(
         root / CONTRACT_PATH, root=root
     ):

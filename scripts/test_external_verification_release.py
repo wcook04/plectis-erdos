@@ -1148,6 +1148,21 @@ def test_release_manifest() -> None:
             "runtime-receipt asset name is not canonical",
         )
 
+        unrelated_contract_locator = copy.deepcopy(manifest)
+        unrelated_contract_locator["contract"]["immutable_url"] = (
+            f"{contract['repository']}/blob/{commit}/README.md"
+        )
+        require(
+            digest(root / "README.md") != manifest["contract"]["sha256"],
+            "unrelated contract locator fixture has the declared contract digest",
+        )
+        expect_error(
+            lambda: release.validate_manifest(
+                unrelated_contract_locator, root=root, runtime_receipt_path=receipt_path
+            ),
+            "contract URL does not identify the source-bound contract",
+        )
+
         wrong_tree = copy.deepcopy(manifest)
         wrong_tree["source"]["tree"] = "f" * 40
         expect_error(
