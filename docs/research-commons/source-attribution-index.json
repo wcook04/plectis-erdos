@@ -3,7 +3,7 @@
   "authority_boundary": "Navigation and source-credit evidence only. It does not establish proof, novelty, endorsement, peer review, or complete historical knowledge. Lean matches are lexical candidates, not attribution.",
   "coverage": {
     "bibliography_without_curated_link_count": 116,
-    "curated_source_count": 310,
+    "curated_source_count": 312,
     "lean_candidate_awaiting_review_count": 827,
     "unmatched_citation_key_count": 0
   },
@@ -14,7 +14,9 @@
         "source_ids": [
           "correspondence-001",
           "correspondence-002",
-          "correspondence-003"
+          "correspondence-003",
+          "correspondence-004",
+          "correspondence-005"
         ]
       },
       {
@@ -3943,6 +3945,8 @@
         "source_ids": [
           "bishop_eremenko_lazebnik_2025_shapes_of_rational_lemniscates",
           "correspondence-001",
+          "correspondence-004",
+          "correspondence-005",
           "erdos1041_ani_degree_seven_candidate_counterexample",
           "erdos1041_morluto_independent_check",
           "erdos1041_pendyala_quartic",
@@ -3983,6 +3987,8 @@
         "source_ids": [
           "correspondence-001",
           "correspondence-003",
+          "correspondence-004",
+          "correspondence-005",
           "erdos1049_bloom_chowla_scan_retrieval",
           "erdos_problems_catalog_eight_problem_context",
           "formal_conjectures_adapter_problem_1049",
@@ -4038,6 +4044,8 @@
         "key": "243",
         "source_ids": [
           "correspondence-001",
+          "correspondence-004",
+          "correspondence-005",
           "erdos243_kovac_koizumi_pointer",
           "erdos243_tao_tail_pair_recurrence",
           "erdos_problems_catalog_eight_problem_context",
@@ -4071,6 +4079,8 @@
         "source_ids": [
           "correspondence-001",
           "correspondence-002",
+          "correspondence-004",
+          "correspondence-005",
           "erdos249_fan_mobius_transform",
           "erdos249_rafik_sparse_power_two_subseries",
           "erdos_problems_catalog_eight_problem_context",
@@ -4136,6 +4146,8 @@
         "key": "251",
         "source_ids": [
           "correspondence-001",
+          "correspondence-004",
+          "correspondence-005",
           "erdos251_alfaiz_schlage_puchta_pointer",
           "erdos251_kovac_variable_denominator_counterexample",
           "erdos251_land_conditional_proof_lean",
@@ -4190,6 +4202,8 @@
         "key": "257",
         "source_ids": [
           "correspondence-001",
+          "correspondence-004",
+          "correspondence-005",
           "erdos257_kovac_context_bundle",
           "erdos257_kovac_older_special_case_attribution",
           "erdos257_tang_tachiya_period_two",
@@ -4249,6 +4263,8 @@
         "key": "269",
         "source_ids": [
           "correspondence-001",
+          "correspondence-004",
+          "correspondence-005",
           "erdos269_fan_infinite_p_proof_repair",
           "erdos269_fan_two_prime_disclosure",
           "erdos_problems_catalog_eight_problem_context",
@@ -4289,6 +4305,8 @@
         "key": "68",
         "source_ids": [
           "correspondence-001",
+          "correspondence-004",
+          "correspondence-005",
           "erdos_problems_catalog_eight_problem_context",
           "formal_conjectures_adapter_problem_68",
           "formal_conjectures_eight_problem_coverage_boundary",
@@ -4477,7 +4495,9 @@
         "source_ids": [
           "correspondence-001",
           "correspondence-002",
-          "correspondence-003"
+          "correspondence-003",
+          "correspondence-004",
+          "correspondence-005"
         ]
       },
       {
@@ -124584,7 +124604,7 @@
     "public_source_credit": "Names and direct citations are retained for published literature, software and public contributions. Source identity, exact local use, and mathematical correspondence are separate."
   },
   "source_registry": "docs/research-commons/source-attributions.json",
-  "source_registry_sha256": "sha256:af495b1932639ea35dd5c3be07f8b56e59f062f0c4262592743fe1d5c8985dd3",
+  "source_registry_sha256": "sha256:1341330c011f551b2ec59653d1a9c4d901a59f10ee6fc7b8dc5dc63361b687c0",
   "sources": [
     {
       "artifact_coordinates": [
@@ -125620,7 +125640,14 @@
       "confirmation_status": "not_confirmed",
       "id": "correspondence-001",
       "identity_disclosure": "withheld_pending_confirmation",
+      "implemented_in": [
+        "e062d93809b6a394a067b4ea1bbdac7b228e0510"
+      ],
       "kind": "correspondence",
+      "ledger": {
+        "changed": "formalization.yaml now lists the selected results this way, and Comparator checks them against separately written statements, including an altered statement that must be rejected.",
+        "told": "A mathematician advised listing each selected result with its exact statement, proof source, novelty status, axioms and limits, and giving reviewers a cheap way to check the statements themselves."
+      },
       "paper_reported_coordinates": [],
       "paper_reported_locators": [],
       "problems": [
@@ -125633,6 +125660,7 @@
         "1041",
         "1049"
       ],
+      "received_on": "2026-08-06",
       "relation": "Implemented advice to classify each selected result, expose exact statements, proof provenance, novelty status, sorry count, axiom budget, and boundaries in formalization.yaml, and to provide a cheap Comparator inspection route with an altered-statement rejection fixture. The current public surface has evolved beyond the original interface count; the durable implementation is the manifest-plus-Comparator pattern and its explicit scope ceiling.",
       "source_coordinates": [
         {
@@ -125644,7 +125672,7 @@
           "locator": "Private correspondence retained by maintainer; identity withheld pending confirmation."
         }
       ],
-      "title": "Formalization classification and cheap inspection advice",
+      "title": "Listing each checked result, with a cheap way to check it",
       "urls": [],
       "verification_state": "implemented_advice"
     },
@@ -125739,11 +125767,16 @@
       "id": "correspondence-002",
       "identity_disclosure": "withheld_pending_confirmation",
       "kind": "correspondence",
+      "ledger": {
+        "changed": "The #249 paper now opens with the exact rank and basis, compares the result with work of Allouche and Shallit, Coons and Martin, and links a minimal Lean entry; the irrationality question stays open.",
+        "told": "A mathematician advised leading the #249 paper with its exact finite-level theorem, explaining the mechanism behind it, and comparing it precisely with the existing literature on regular sequences."
+      },
       "paper_reported_coordinates": [],
       "paper_reported_locators": [],
       "problems": [
         "249"
       ],
+      "received_on": "2026-08-06",
       "relation": "Implemented advice to lead with the exact finite-level rank and basis, give the CRT/Dirichlet-style independence mechanism, compare the result precisely with Allouche–Shallit, Coons, Martin, and adjacent k-kernel literature, and link a minimal Lean entry. The paper states the exact rank k^e+1 and basis, records that Coons already proved non-k-regularity and Martin supplies a broader external affine-independence antecedent while the public Lean proof establishes all-base independence separately, and keeps the unbounded #249 irrationality endpoint open. No proof verification, novelty judgment, or progress-on-parent-problem judgment is attributed to the correspondent.",
       "source_coordinates": [
         {
@@ -125755,7 +125788,7 @@
           "locator": "Private correspondence retained by maintainer; identity withheld pending confirmation."
         }
       ],
-      "title": "Theorem-first packaging and literature-comparison advice",
+      "title": "Leading the #249 paper with its exact theorem",
       "urls": [],
       "verification_state": "implemented_advice"
     },
@@ -125823,12 +125856,20 @@
       "confirmation_status": "not_confirmed",
       "id": "correspondence-003",
       "identity_disclosure": "withheld_pending_confirmation",
+      "implemented_in": [
+        "f5342c683a321f752b6994423e1e9ec40979809f"
+      ],
       "kind": "correspondence",
+      "ledger": {
+        "changed": "The comparison was carried out: a source note and a Lean module recording where the two methods part are public, and the #1049 record cites the paper where they meet.",
+        "told": "A mathematician suggested comparing the #1049 construction with an earlier irrationality paper."
+      },
       "paper_reported_coordinates": [],
       "paper_reported_locators": [],
       "problems": [
         "1049"
       ],
+      "received_on": "2026-08-05",
       "relation": "Implemented a received pointer by comparing the cited q-Apéry construction with the #1049 rational-base programme. The public source closure verifies that the paper targets the same Lambert value, identifies the q-WZ operator and the integer-base denominator-clearing boundary, and credits both published authors in the ordinary literature row. The local Lean module separately proves that Van Assche’s different moving diagonal has a nonzero n=0 residual for the cited operator. This correspondence row credits only the private prior-art pointer; it does not claim the correspondent checked the comparison, calculations, Lean, or #1049 mathematics.",
       "source_coordinates": [
         {
@@ -125840,7 +125881,206 @@
           "locator": "Private correspondence retained by maintainer; identity withheld pending confirmation."
         }
       ],
-      "title": "Prior-art comparison advice",
+      "title": "Earlier work on the #1049 Lambert value",
+      "urls": [],
+      "verification_state": "implemented_advice"
+    },
+    {
+      "artifact_coordinates": [
+        {
+          "excerpt_sha256": "sha256:4fccb25970fe4d947353fbb0ac94e7491bdd3e9ff10f3d53ddab5ffa734e53e8",
+          "expected_text": "Chinese remainder theorem and first crossing",
+          "line_end": 603,
+          "line_start": 603,
+          "path": "paper/243/erdos-243-reciprocal-tail-rigidity.tex",
+          "sha256": "sha256:668fd53715f3e8ff43baef623d97f9097b1f6cff769d1883df56caf062baee24"
+        },
+        {
+          "excerpt_sha256": "sha256:bfb4918e3aead559a22c89f378d6a1e6371158599e673680944f0bdc187f9e4b",
+          "expected_text": "does not suffice",
+          "line_end": 733,
+          "line_start": 711,
+          "path": "paper/243/erdos-243-reciprocal-tail-rigidity.tex",
+          "sha256": "sha256:668fd53715f3e8ff43baef623d97f9097b1f6cff769d1883df56caf062baee24"
+        },
+        {
+          "excerpt_sha256": "sha256:e0e13da38d38e09f8750613516947c6ecc6895f947339efa10f17e32951fe324",
+          "expected_text": "State a restrictive hypothesis",
+          "line_end": 215,
+          "line_start": 204,
+          "path": "skills/public-mathematical-writing/SKILL.md",
+          "sha256": "sha256:6bf9f059fccee30b02e8852e46061a8fa184f94a221b9d235ad94cbf72c2644f"
+        },
+        {
+          "excerpt_sha256": "sha256:43ae7aa3892935664831547944b3b27f554b3fd290c430f00cc870396a0f8a9e",
+          "expected_text": "Explain restrictive assumptions",
+          "line_end": 15,
+          "line_start": 15,
+          "path": "docs/papers/SHORT_PAPER_CONTRACT.md",
+          "sha256": "sha256:c97208060d2732399f14ace4008166ea30b05f797fd0c6ac19d829b3f6ddf9aa"
+        },
+        {
+          "excerpt_sha256": "sha256:ff5754db474f064134ae8227c14f4824529f41415521823ca5a324a5154ab45c",
+          "expected_text": "Avoid one-use names",
+          "line_end": 23,
+          "line_start": 23,
+          "path": "docs/papers/SHORT_PAPER_CONTRACT.md",
+          "sha256": "sha256:c97208060d2732399f14ace4008166ea30b05f797fd0c6ac19d829b3f6ddf9aa"
+        }
+      ],
+      "artifact_links": [
+        {
+          "excerpt_sha256": "sha256:4fccb25970fe4d947353fbb0ac94e7491bdd3e9ff10f3d53ddab5ffa734e53e8",
+          "expected_text": "Chinese remainder theorem and first crossing",
+          "line_end": 603,
+          "line_start": 603,
+          "path": "paper/243/erdos-243-reciprocal-tail-rigidity.tex"
+        },
+        {
+          "excerpt_sha256": "sha256:bfb4918e3aead559a22c89f378d6a1e6371158599e673680944f0bdc187f9e4b",
+          "expected_text": "does not suffice",
+          "line_end": 733,
+          "line_start": 711,
+          "path": "paper/243/erdos-243-reciprocal-tail-rigidity.tex"
+        },
+        {
+          "excerpt_sha256": "sha256:e0e13da38d38e09f8750613516947c6ecc6895f947339efa10f17e32951fe324",
+          "expected_text": "State a restrictive hypothesis",
+          "line_end": 215,
+          "line_start": 204,
+          "path": "skills/public-mathematical-writing/SKILL.md"
+        },
+        {
+          "excerpt_sha256": "sha256:43ae7aa3892935664831547944b3b27f554b3fd290c430f00cc870396a0f8a9e",
+          "expected_text": "Explain restrictive assumptions",
+          "line_end": 15,
+          "line_start": 15,
+          "path": "docs/papers/SHORT_PAPER_CONTRACT.md"
+        },
+        {
+          "excerpt_sha256": "sha256:ff5754db474f064134ae8227c14f4824529f41415521823ca5a324a5154ab45c",
+          "expected_text": "Avoid one-use names",
+          "line_end": 23,
+          "line_start": 23,
+          "path": "docs/papers/SHORT_PAPER_CONTRACT.md"
+        }
+      ],
+      "authors": [
+        "A mathematician (name withheld pending confirmation)"
+      ],
+      "bibliography_keys": [],
+      "confirmation_status": "not_confirmed",
+      "id": "correspondence-004",
+      "identity_disclosure": "withheld_pending_confirmation",
+      "kind": "correspondence",
+      "ledger": {
+        "changed": "All sixteen problem papers were rewritten for a first-time reader, naming standard tools and saying how restrictive each hypothesis is, and the public writing rules now require it.",
+        "told": "A mathematician said the #243 note used names that meant nothing on a first or second reading, defined notation it used once, and never said how restrictive its main hypothesis was."
+      },
+      "paper_reported_coordinates": [],
+      "paper_reported_locators": [],
+      "problems": [
+        "68",
+        "243",
+        "249",
+        "251",
+        "257",
+        "269",
+        "1041",
+        "1049"
+      ],
+      "received_on": "2026-09-17",
+      "relation": "Implemented advice on exposition received about the #243 note: replace private names for ordinary objects with the mathematics they denote, inline notation that is used once, and say how restrictive a conditional hypothesis is. The eight short and eight long problem papers were rewritten under these rules and merged on 18 September 2026. The #243 note now names the Chinese remainder theorem where that is the tool and gives examples of what its bounded-increment hypothesis covers, and the public writing skill and short-paper contract now require plain names, notation only where it helps, and an explanation of restrictive hypotheses. No mathematical review, verification or endorsement of any paper is attributed to the correspondent.",
+      "source_coordinates": [
+        {
+          "locator": "Private correspondence retained by maintainer; identity withheld pending confirmation."
+        }
+      ],
+      "source_locators": [
+        {
+          "locator": "Private correspondence retained by maintainer; identity withheld pending confirmation."
+        }
+      ],
+      "title": "Writing for a first-time reader",
+      "urls": [],
+      "verification_state": "implemented_advice"
+    },
+    {
+      "artifact_coordinates": [
+        {
+          "excerpt_sha256": "sha256:c28f49fa5b966035e1acc601b6fdee1738bfe70821923da14b9e485b58aa846f",
+          "expected_text": "finite-choice form used here",
+          "line_end": 73,
+          "line_start": 68,
+          "path": "paper/251/erdos-251-prime-gap-dyadic-series.tex",
+          "sha256": "sha256:23be8663e3f2a97993d90be3d8814e8f578b632b537cd83ac7c76705a9a1ab9d"
+        },
+        {
+          "excerpt_sha256": "sha256:25842c87b62e2854557a2e4add69568a3d3398b523afd982a2f0348cca448abf",
+          "expected_text": "Preserve prior attribution",
+          "line_end": 19,
+          "line_start": 19,
+          "path": "docs/papers/SHORT_PAPER_CONTRACT.md",
+          "sha256": "sha256:c97208060d2732399f14ace4008166ea30b05f797fd0c6ac19d829b3f6ddf9aa"
+        }
+      ],
+      "artifact_links": [
+        {
+          "excerpt_sha256": "sha256:c28f49fa5b966035e1acc601b6fdee1738bfe70821923da14b9e485b58aa846f",
+          "expected_text": "finite-choice form used here",
+          "line_end": 73,
+          "line_start": 68,
+          "path": "paper/251/erdos-251-prime-gap-dyadic-series.tex"
+        },
+        {
+          "excerpt_sha256": "sha256:25842c87b62e2854557a2e4add69568a3d3398b523afd982a2f0348cca448abf",
+          "expected_text": "Preserve prior attribution",
+          "line_end": 19,
+          "line_start": 19,
+          "path": "docs/papers/SHORT_PAPER_CONTRACT.md"
+        }
+      ],
+      "authors": [
+        "A mathematician (name withheld pending confirmation)"
+      ],
+      "bibliography_keys": [],
+      "confirmation_status": "not_confirmed",
+      "id": "correspondence-005",
+      "identity_disclosure": "withheld_pending_confirmation",
+      "implemented_in": [
+        "029c90d4144d6087ba62d08ffc8b3cee1a9a165e",
+        "7148c5ae4a4a2f3802cccdeed62c394f64593340"
+      ],
+      "kind": "correspondence",
+      "ledger": {
+        "changed": "A literature review was run for each of the eight problems, and each paper now credits its sources at the point where they are used.",
+        "told": "A mathematician said the trouble with AI-assisted mathematics is that it rarely shows where its methods and ideas come from."
+      },
+      "paper_reported_coordinates": [],
+      "paper_reported_locators": [],
+      "problems": [
+        "68",
+        "243",
+        "249",
+        "251",
+        "257",
+        "269",
+        "1041",
+        "1049"
+      ],
+      "received_on": "2026-09-15",
+      "relation": "Implemented advice received in reply to a letter about one of the eight problems: the main objection to AI-assisted mathematics is how rarely it shows where its methods and ideas come from. A prior-art literature review was then run for each of the eight problems, and pull requests #180 and #181 added point-of-use attribution and corrected locators to all eight short papers and long records. No mathematical review, verification or endorsement of any paper is attributed to the correspondent.",
+      "source_coordinates": [
+        {
+          "locator": "Private correspondence retained by maintainer; identity withheld pending confirmation."
+        }
+      ],
+      "source_locators": [
+        {
+          "locator": "Private correspondence retained by maintainer; identity withheld pending confirmation."
+        }
+      ],
+      "title": "Showing where methods and ideas come from",
       "urls": [],
       "verification_state": "implemented_advice"
     },

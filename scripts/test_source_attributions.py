@@ -11,6 +11,22 @@ from unittest.mock import patch
 
 import build_source_attributions as subject
 
+WITHHELD = "A mathematician (name withheld pending confirmation)"
+
+
+def correspondence(row: dict, **overrides) -> dict:
+    """Turn the fixture's public source into a private-correspondence row."""
+    row.update({
+        "id":"correspondence-001","kind":"correspondence","title":"Advice on the public exposition",
+        "authors":[WITHHELD],"urls":[],
+        "source_locators":[{"locator":"Private correspondence; public implementation linked below"}],
+        "identity_disclosure":"withheld_pending_confirmation","confirmation_status":"not_confirmed",
+        "verification_state":"implemented_advice","received_on":"2026-09-17",
+        "ledger":{"told":"A reader said the opening used names that meant nothing on a first reading.","changed":"The opening now uses ordinary words and says what the hypothesis excludes."},
+    })
+    row.update(overrides)
+    return row
+
 
 class SourceAttributionTests(unittest.TestCase):
     def fixture(self) -> tuple[Path, Path]:
@@ -105,8 +121,7 @@ class SourceAttributionTests(unittest.TestCase):
 
     def test_private_correspondence_is_anonymous_and_has_no_evidence_path(self):
         root, registry = self.fixture(); data=json.loads(registry.read_text())
-        row=data["sources"][0]
-        row.update({"id":"correspondence-001","kind":"correspondence","authors":["A mathematician (name withheld pending confirmation)"],"urls":[],"source_locators":[{"locator":"Private correspondence; public implementation linked below"}],"identity_disclosure":"withheld_pending_confirmation","confirmation_status":"not_confirmed"})
+        row=correspondence(data["sources"][0],verification_state="source_verified")
         registry.write_text(json.dumps(data))
         with patch.object(subject.lean_source,"library_source_paths",return_value=[]):
             result=subject.build(root,registry,root/"docs/papers/corpus.json")
@@ -126,14 +141,108 @@ class SourceAttributionTests(unittest.TestCase):
         self.assertLess(rendered.index("## Sources and exact uses"),rendered.index("## Coverage requiring review"))
 
     def test_human_view_keeps_correspondence_anonymous(self):
-        root,registry=self.fixture(); data=json.loads(registry.read_text()); row=data["sources"][0]
-        row.update({"id":"correspondence-001","kind":"correspondence","title":"Advice on the public exposition","authors":["A mathematician (name withheld pending confirmation)"],"urls":[],"source_locators":[{"locator":"Private correspondence; public implementation linked below"}],"identity_disclosure":"withheld_pending_confirmation","confirmation_status":"not_confirmed","verification_state":"implemented_advice"})
+        root,registry=self.fixture(); data=json.loads(registry.read_text()); correspondence(data["sources"][0])
         registry.write_text(json.dumps(data))
         with patch.object(subject.lean_source,"library_source_paths",return_value=[]): result=subject.build(root,registry,root/"docs/papers/corpus.json")
         rendered=subject.markdown(result).decode()
-        self.assertIn("A mathematician (name withheld pending confirmation)",rendered)
+        self.assertIn(WITHHELD,rendered)
         self.assertIn("Private correspondence; public implementation linked below",rendered)
+        self.assertIn("CREDIT_LEDGER.md#credit-correspondence-001",rendered)
         self.assertNotIn("mailto:",rendered)
+
+    def build_with(self, data: dict) -> dict:
+        root,registry=self.fixture(); registry.write_text(json.dumps(data))
+        with patch.object(subject.lean_source,"library_source_paths",return_value=[]):
+            return subject.build(root,registry,root/"docs/papers/corpus.json")
+
+    def fixture_data(self) -> dict:
+        _root,registry=self.fixture(); return json.loads(registry.read_text())
+
+    def test_credit_ledger_lists_advice_newest_first_with_its_trace(self):
+        data=self.fixture_data(); first=correspondence(data["sources"][0])
+        second=correspondence(json.loads(json.dumps(first)),id="correspondence-002",title="A prior-art pointer",received_on="2026-08-05",bibliography_keys=[])
+        data["sources"].append(second)
+        ledger=subject.credit_ledger(self.build_with(data))
+        self.assertEqual(ledger["schema"],subject.CREDIT_LEDGER_SCHEMA)
+        self.assertEqual([entry["id"] for entry in ledger["entries"]],["correspondence-001","correspondence-002"])
+        entry=ledger["entries"][0]
+        self.assertEqual(entry["naming"]["state"],"withheld_pending_confirmation")
+        self.assertEqual(entry["role"],"mathematician")
+        self.assertEqual(entry["artifacts"][0]["path"],"paper/test.tex")
+        self.assertEqual(ledger["counts"],{"entries":2,"withheld_pending_confirmation":2,"named_with_permission":0,"anonymous_by_request":0})
+        rendered=subject.credit_ledger_markdown(ledger).decode()
+        self.assertIn('<a id="credit-correspondence-001"></a>',rendered)
+        self.assertIn("## 17 September 2026: Advice on the public exposition",rendered)
+        self.assertIn("withheld until they confirm (credited as a mathematician)",rendered)
+        self.assertIn("../../paper/test.tex#L1-L1",rendered)
+        self.assertLess(rendered.index("17 September 2026"),rendered.index("5 August 2026"))
+
+    def test_named_correspondent_needs_a_confirmation_date_and_their_name(self):
+        data=self.fixture_data()
+        correspondence(data["sources"][0],identity_disclosure="named_with_permission",confirmation_status="confirmed",authors=["Ada Lovelace"])
+        with self.assertRaisesRegex(subject.AttributionError,"confirmed_on"):
+            self.build_with(data)
+        data["sources"][0]["confirmed_on"]="2026-09-01"
+        with self.assertRaisesRegex(subject.AttributionError,"precedes"):
+            self.build_with(data)
+        data["sources"][0]["confirmed_on"]="2026-10-01"
+        entry=subject.credit_ledger(self.build_with(data))["entries"][0]
+        self.assertEqual(entry["credited_as"],"Ada Lovelace")
+        self.assertIn("Ada Lovelace, named with their permission on 1 October 2026.",subject.credit_ledger_markdown(subject.credit_ledger(self.build_with(data))).decode())
+        data["sources"][0]["authors"]=[WITHHELD]
+        with self.assertRaisesRegex(subject.AttributionError,"public name"):
+            self.build_with(data)
+
+    def test_withheld_or_anonymous_entries_keep_a_neutral_label(self):
+        data=self.fixture_data()
+        correspondence(data["sources"][0],authors=["Ada Lovelace"])
+        with self.assertRaisesRegex(subject.AttributionError,"neutral label"):
+            self.build_with(data)
+        correspondence(data["sources"][0],identity_disclosure="anonymous_by_request",confirmation_status="declined",authors=["A researcher (anonymous at their request)"])
+        entry=subject.credit_ledger(self.build_with(data))["entries"][0]
+        self.assertEqual(entry["naming"]["display"],"Anonymous at their request.")
+        correspondence(data["sources"][0],identity_disclosure="anonymous_by_request",confirmation_status="not_confirmed",authors=["A researcher (anonymous at their request)"])
+        with self.assertRaisesRegex(subject.AttributionError,"naming state"):
+            self.build_with(data)
+        correspondence(data["sources"][0],confirmed_on="2026-10-01")
+        with self.assertRaisesRegex(subject.AttributionError,"confirmed_on applies only"):
+            self.build_with(data)
+
+    def test_ledger_lines_are_short_dated_and_link_free(self):
+        data=self.fixture_data(); row=correspondence(data["sources"][0])
+        row["received_on"]="17 September"
+        with self.assertRaisesRegex(subject.AttributionError,"received_on"):
+            self.build_with(data)
+        correspondence(row); row["ledger"]["told"]="See https://example.org/private for what they said."
+        with self.assertRaisesRegex(subject.AttributionError,"without links"):
+            self.build_with(data)
+        correspondence(row); row["ledger"]={"told":"x"*300,"changed":"Short."}
+        with self.assertRaisesRegex(subject.AttributionError,"at most"):
+            self.build_with(data)
+        correspondence(row); del row["ledger"]["changed"]
+        with self.assertRaisesRegex(subject.AttributionError,"ledger"):
+            self.build_with(data)
+
+    def test_implementing_commits_are_full_hashes_and_link_publicly(self):
+        data=self.fixture_data(); row=correspondence(data["sources"][0],implemented_in=["e062d93"])
+        with self.assertRaisesRegex(subject.AttributionError,"commit hashes"):
+            self.build_with(data)
+        row["implemented_in"]=["a"*40]
+        ledger=subject.credit_ledger(self.build_with(data))
+        self.assertEqual(ledger["entries"][0]["commits"],[{"sha":"a"*40,"url":subject.PUBLIC_COMMIT_URL+"a"*40}])
+        self.assertIn(f"- **Commits:** [aaaaaaaaaa]({subject.PUBLIC_COMMIT_URL}{'a'*40})",subject.credit_ledger_markdown(ledger).decode())
+
+    def test_markdown_artifacts_link_to_the_plain_view(self):
+        root,registry=self.fixture(); (root/"docs/NOTE.md").write_text("one\ntwo\n",encoding="utf-8")
+        data=json.loads(registry.read_text()); correspondence(data["sources"][0],artifact_links=[{"path":"docs/NOTE.md","line_start":2,"line_end":2}])
+        registry.write_text(json.dumps(data))
+        with patch.object(subject.lean_source,"library_source_paths",return_value=[]): result=subject.build(root,registry,root/"docs/papers/corpus.json")
+        self.assertIn("(../../docs/NOTE.md?plain=1#L2-L2)",subject.credit_ledger_markdown(subject.credit_ledger(result)).decode())
+
+    def test_naming_fields_belong_only_to_private_correspondence(self):
+        data=self.fixture_data(); data["sources"][0]["received_on"]="2026-09-17"
+        with self.assertRaisesRegex(subject.AttributionError,"only to private correspondence"):
+            self.build_with(data)
 
     def test_shared_url_retains_all_candidates_without_arbitrary_binding(self):
         root,registry=self.fixture(); data=json.loads(registry.read_text())
@@ -185,8 +294,8 @@ class SourceAttributionTests(unittest.TestCase):
         self.assertIn("DOI:10.1000/example",subject.REF_RE.findall(joined))
 
     def test_correspondence_rejects_email_or_local_path_hidden_in_relation(self):
-        root,registry=self.fixture(); data=json.loads(registry.read_text()); row=data["sources"][0]
-        row.update({"id":"correspondence-001","kind":"correspondence","authors":["A mathematician (name withheld pending confirmation)"],"urls":[],"source_locators":[{"locator":"Private correspondence; public implementation linked below"}],"identity_disclosure":"withheld_pending_confirmation","confirmation_status":"not_confirmed","verification_state":"implemented_advice","relation":"Implemented advice from hidden@example.org."})
+        root,registry=self.fixture(); data=json.loads(registry.read_text())
+        row=correspondence(data["sources"][0],relation="Implemented advice from hidden@example.org.")
         registry.write_text(json.dumps(data))
         with self.assertRaisesRegex(subject.AttributionError,"private address"):
             subject.build(root,registry,root/"docs/papers/corpus.json")

@@ -121,7 +121,9 @@ Begin with the [human contributor guide](../../CONTRIBUTING.md). Read the
 The [return package template](RETURN_PACKAGE_TEMPLATE.md) is the detailed
 agent-facing contract, while [accepted contributions](CONTRIBUTIONS.md) and
 [contribution recognition](CONTRIBUTION_RECOGNITION.md) are generated views of
-work that has actually been accepted.
+work that has actually been accepted. Advice sent privately that changed the
+public record is listed in the generated [credit ledger](CREDIT_LEDGER.md), with
+what changed and where to see it; names stay withheld until each person confirms.
 
 Scholarly sources and implemented external advice use a separate rail. Read
 the generated [source-attribution index](SOURCE_ATTRIBUTIONS.md), or query its
