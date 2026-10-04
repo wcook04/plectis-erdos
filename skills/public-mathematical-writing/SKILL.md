@@ -377,9 +377,14 @@ provenance; a Python projection refresh alone does not rebuild registered paper
 full text. A corpus refresh done before PDF synchronization must be repeated
 afterward.
 
-Before freezing evidence records or recipient packets, run the title and
-source-coordinate owners, then `python3 scripts/paper_evidence.py check` across
-the full corpus. Commit reviewed record revisions, bind generated sidecars to
+After the final prose and cross-reference edits, run
+`python3 scripts/check_lean_paper_propagation.py` against the actual manuscript
+bodies. A corrected reference inside a statement can change its fingerprint;
+review and refresh that row and its relation record without changing its proof
+status. Before freezing evidence records or recipient packets, run the title
+and source-coordinate owners, then `python3 scripts/paper_evidence.py check`
+across the full corpus. The evidence-output check does not replace the
+statement-source currency check. Commit reviewed record revisions, bind generated sidecars to
 that exact commit, and rerender and synchronize affected PDFs before packaging.
 Carry the original support qualifications and evidence classes into the frozen
 record; a corrected title or coordinate does not strengthen a claim.

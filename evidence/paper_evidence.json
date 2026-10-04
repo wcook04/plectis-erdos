@@ -32054,8 +32054,8 @@
      "number": "9.50",
      "page": "100",
      "source": "paper/reasoning-parts/erdos249/a249_front.tex:6354",
-     "statement_sha256": "sha256:83ba97bf6900c8a3567e390c9cf5640228d9a1ea99afde5a6d1e449258c1ebb6",
-     "statement_key": null,
+     "statement_sha256": "sha256:7581382b4dfc0a6a38cec5ffe58f2f90277ebb2667f3de349cbe44ca5f073970",
+     "statement_key": "sha256:359e902aed8ade45cfcfcd7d96f4368eb1fc6e83be904ad9760c3ec9d5210aba",
      "title": "An additional hypothesis for a totient-specific rank argument",
      "statement_markdown": "*A rank bound that contradicts the lower bound $`2^e-1`$ would have to use additional arithmetic of the actual totient coefficients. The generic proposal that rationality bounds the rank of every integral carry satisfying $`u(n)/2^n\\to0`$ is disproved by the comparison sequence in Section 12.6: its carry rank is at least $`2^e-1`$ at every level. It is therefore not a remaining general lemma from which totient irrationality follows. The conditional Proposition 1.7 records eventual periodicity modulo $`v`$ together with unbounded rational rank. Periodicity of the residue sequences concerns values in a finite quotient; it does not bound the rational span of the integer-valued sections. The $`5/4`$ comparison shows that this distinction persists for a rational coefficient series.*",
      "lean": {

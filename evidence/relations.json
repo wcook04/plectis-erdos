@@ -261,7 +261,7 @@
     },
     "erdos249-totient-reasoning-surface#prop:additional-hypothesis-totient-specific-rank": {
       "note": "For the rational $5/4$ comparison the Lean statement gives the eventual periodicity modulo $v$ explicitly, with period $2$ from index $2$ on every dyadic section, together with rank at least $2^e-1$ at every level $e$ and $0\\le c(n)\\le n$; the conditional totient statement (rationality of $S$ gives a tempered orbit with eventual periodicity modulo $v$ and rank at least $2^e-1$ at every level) is as printed.",
-      "statement_key": null,
+      "statement_key": "sha256:359e902aed8ade45cfcfcd7d96f4368eb1fc6e83be904ad9760c3ec9d5210aba",
       "lean_statements": {
         "ErdosProblems.Erdos249.PaperCompleteR21.rationalControl_periodic_with_unbounded_carry_rank": "0926cf971dbb204789ccc2f4caa32c0f12c3fe1e56d24cf289f10cac6fff1e80",
         "ErdosProblems.Erdos249.PaperCompleteR21.rationality_gives_mod_period_and_unbounded_rank": "bc0e5f466b5841567907d53d19de28081818bce024ccda7c69131e9a84379e1c"

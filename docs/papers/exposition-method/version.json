@@ -1,6 +1,6 @@
 {
   "schema": "exposition-method-version/1",
-  "version": "2026-10-04.3",
+  "version": "2026-10-04.4",
   "required_roles": [
     "guidance",
     "skill",
@@ -24,7 +24,7 @@
     },
     {
       "path": "skills/public-mathematical-writing/SKILL.md",
-      "sha256": "c686f9f4408f9ae10bc761aa82154722017c7f082be225f6beffd49b9570612e",
+      "sha256": "19e9ed385314ff9f07a71e9914c859cf1eeeba90cc5967b8a88bbfd79596db94",
       "role": "skill"
     },
     {

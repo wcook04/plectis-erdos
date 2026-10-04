@@ -62,8 +62,8 @@
       "path": "docs/papers/corpus.json",
       "start_line": 1,
       "end_line": 8858,
-      "sha256": "68fcc86f9575e87dd94499b761d1713cd1abce8866ac41b0947441bd84fc9468",
-      "excerpt_sha256": "68fcc86f9575e87dd94499b761d1713cd1abce8866ac41b0947441bd84fc9468",
+      "sha256": "f493e99aa4c5da785d56f4b225eeca9806e58e890dd64b4bddd1e68c17594b24",
+      "excerpt_sha256": "f493e99aa4c5da785d56f4b225eeca9806e58e890dd64b4bddd1e68c17594b24",
       "kind": "source"
     },
     {
@@ -71,8 +71,8 @@
       "path": "docs/systems_paper_counts.json",
       "start_line": 1,
       "end_line": 65,
-      "sha256": "a8095b4d3db4a609ea34d83b00c322b7b69c0c9718a398130a6df27dff6e1fc0",
-      "excerpt_sha256": "a8095b4d3db4a609ea34d83b00c322b7b69c0c9718a398130a6df27dff6e1fc0",
+      "sha256": "4da04ef4ce9780139d0cf7072bee7da0d5427c51515e6f7e5abd2f9ff16b7627",
+      "excerpt_sha256": "4da04ef4ce9780139d0cf7072bee7da0d5427c51515e6f7e5abd2f9ff16b7627",
       "kind": "source"
     },
     {
@@ -89,8 +89,8 @@
       "path": "docs/paper_lean_coverage.json",
       "start_line": 1,
       "end_line": 27661,
-      "sha256": "263090882fd15d3b1b66b1c0f69291b925bdd415c97cbb8c431626470e9d4645",
-      "excerpt_sha256": "263090882fd15d3b1b66b1c0f69291b925bdd415c97cbb8c431626470e9d4645",
+      "sha256": "9b2ba9489093158c9791475ca62a0b1592da1e065f548a9aa06b1c2125e9a359",
+      "excerpt_sha256": "9b2ba9489093158c9791475ca62a0b1592da1e065f548a9aa06b1c2125e9a359",
       "kind": "source"
     },
     {
@@ -99,8 +99,8 @@
       "start_line": 1,
       "end_line": 27661,
       "kind": "supplied_snapshot",
-      "sha256": "263090882fd15d3b1b66b1c0f69291b925bdd415c97cbb8c431626470e9d4645",
-      "excerpt_sha256": "263090882fd15d3b1b66b1c0f69291b925bdd415c97cbb8c431626470e9d4645"
+      "sha256": "9b2ba9489093158c9791475ca62a0b1592da1e065f548a9aa06b1c2125e9a359",
+      "excerpt_sha256": "9b2ba9489093158c9791475ca62a0b1592da1e065f548a9aa06b1c2125e9a359"
     },
     {
       "id": "coverage-reciprocal",
@@ -108,8 +108,8 @@
       "start_line": 1,
       "end_line": 27661,
       "kind": "supplied_snapshot",
-      "sha256": "263090882fd15d3b1b66b1c0f69291b925bdd415c97cbb8c431626470e9d4645",
-      "excerpt_sha256": "263090882fd15d3b1b66b1c0f69291b925bdd415c97cbb8c431626470e9d4645"
+      "sha256": "9b2ba9489093158c9791475ca62a0b1592da1e065f548a9aa06b1c2125e9a359",
+      "excerpt_sha256": "9b2ba9489093158c9791475ca62a0b1592da1e065f548a9aa06b1c2125e9a359"
     },
     {
       "id": "coverage-weighted",
@@ -117,8 +117,8 @@
       "start_line": 1,
       "end_line": 27661,
       "kind": "supplied_snapshot",
-      "sha256": "263090882fd15d3b1b66b1c0f69291b925bdd415c97cbb8c431626470e9d4645",
-      "excerpt_sha256": "263090882fd15d3b1b66b1c0f69291b925bdd415c97cbb8c431626470e9d4645"
+      "sha256": "9b2ba9489093158c9791475ca62a0b1592da1e065f548a9aa06b1c2125e9a359",
+      "excerpt_sha256": "9b2ba9489093158c9791475ca62a0b1592da1e065f548a9aa06b1c2125e9a359"
     },
     {
       "id": "credit",

@@ -1,7 +1,7 @@
 {
   "schema": "plectis-paper-lean-coverage/1",
   "lean_pin": "436f55ebdafa67e4af0fff79f621c13f2ded12bf",
-  "content_digest": "sha256:8947f32613263542085b580a95dd098471a92674bfbfbcd7e520699b290157a2",
+  "content_digest": "sha256:747c758013fee9512bec1fa13d91cbba549ae23cf8c09f62408781995aaade27",
   "authority": "Generated projection of the maintainer coverage count. Proof authority stays with the Lean source checked by the pinned kernel, and docs/claims.json owns claim status. Each row records which Lean declarations state one asserting paper environment and how far the row has travelled toward independent Comparator replay and Palomar preparation.",
   "row_rule": "One row per closed asserting theorem-like environment (and per registered labelled claim span) of the sixteen problem papers, short and long counted separately even when their statements agree. statement_sha256 is the sha256 of the environment body after TeX comments are removed; source is the authored file and line of its opening.",
   "status_rule": {
@@ -12180,7 +12180,7 @@
       "label": "prop:additional-hypothesis-totient-specific-rank",
       "environment": "prop",
       "kind": "proposition",
-      "statement_sha256": "sha256:83ba97bf6900c8a3567e390c9cf5640228d9a1ea99afde5a6d1e449258c1ebb6",
+      "statement_sha256": "sha256:7581382b4dfc0a6a38cec5ffe58f2f90277ebb2667f3de349cbe44ca5f073970",
       "source": "paper/reasoning-parts/erdos249/a249_front.tex:6354",
       "lean": {
         "status": "exact_or_stronger",
