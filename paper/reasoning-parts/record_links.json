@@ -693,10 +693,10 @@
       "short_id": "erdos-257-mersenne-support-subseries#res:strict-mixed-supports",
       "short_statement_sha256": "sha256:ec8cba3f6409742197fa4fa63d81b4e71f2aba928597821a4600ea8cfa8c3f4a",
       "support": {
-        "end": "under the review qualification given in the introduction.",
+        "end": "The mixed implication itself is kernel-checked.",
         "path": "paper/reasoning-parts/erdos257/a257_front.tex",
         "selector": "between",
-        "sha256": "sha256:2f5db6a18b9c776989eb844f202834107b57c54c6814c0f2fc6abb88a0025ceb",
+        "sha256": "sha256:32d2c302f9c890b5d4804cf7f7c3dc5658f996d42b9b44540e41fed635d75078",
         "start": "\\paragraph{Why the mixed criterion is strict.}\\label{record257:strict-mixed-proof}"
       }
     },

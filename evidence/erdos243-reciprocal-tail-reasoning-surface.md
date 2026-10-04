@@ -858,7 +858,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long243-res-valuationtransition"></a>
 
-## Lemma 7.1 (the denominator valuation transition), page 26
+## Lemma 7.1 (the denominator valuation transition), page 27
 
 > *Let $`u,v,a`$ be positive integers, $`\gcd(u,v)=1`$, and $`w=au-v>0`$. Put $`h=\gcd(w,av)`$ and $`v'=av/h`$. For a prime $`p`$, write $`r=\nu_p(a)`$, $`s=\nu_p(v)`$ and $`t=\nu_p(w)`$. Then
 > ``` math
@@ -1042,7 +1042,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long243-res-loglogboundary"></a>
 
-## Corollary 7.4 (the double-logarithmic bound), page 27
+## Corollary 7.4 (the double-logarithmic bound), page 28
 
 > *If
 > ``` math
@@ -1461,7 +1461,7 @@ theorem unitRecordIncrement_criterion (O : StandingOrbit) :
 
 <a id="long243-res-epochenergy"></a>
 
-## Theorem 7.9 (counting crossings before a prime power is lost), page 32
+## Theorem 7.9 (counting crossings before a prime power is lost), page 33
 
 > *Let the orbit satisfy the reduced recurrences of this section, with $`2|\tilde e_n|<u_n`$ from an index $`s`$. Let $`p\ge3`$ be prime, $`Q=p^{\ell}`$ divide $`v_s`$ with $`Q\ge16`$, put $`L=pQ/2`$, and assume $`R_s<L/2`$. Assume that $`u_t\ge L`$ for some $`t>s`$, and let $`\tau`$ be the first such index, let $`J`$ be the set of steps in $`[s,\tau)`$ that first cross at least one odd multiple of $`p`$ in $`(L/2,L]`$, and put $`X=\sum_{n\in J}(d_n-2)`$. Then every $`n\in J`$ is a record step with $`h_n=1`$ and $`d_n\ge3`$, and $`pQ\le(8p+8)\lvert J\rvert+4X+8p`$.*
 
@@ -2208,7 +2208,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long243-res-descent"></a>
 
-## Theorem 8.1 (descent), page 39
+## Theorem 8.1 (descent), page 40
 
 > *Let $`C,E:\mathbb{N}\to\mathbb{N}`$ satisfy $`C_{n+1}+E_n=C_n`$ for every $`n`$. Then $`E_n=0`$ for all sufficiently large $`n`$.*
 
@@ -2275,7 +2275,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long243-res-periodic"></a>
 
-## Theorem 10.1 (no periodic negative magnitude), page 41
+## Theorem 10.1 (no periodic negative magnitude), page 42
 
 > *Let $`a,D,C,e:\mathbb{N}\to\mathbb{N}`$ with $`a_n\ge2`$, $`e_n>0`$ and $`e_n<a_n`$ for every $`n`$, satisfying
 > ``` math
@@ -2527,7 +2527,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long243-res-cor"></a>
 
-## Corollary 12.2, page 46
+## Corollary 12.2, page 47
 
 > *Under the hypotheses of Theorem 12.1, the multipliers satisfy $`a_{n+1}=a_n^{2}-a_n+1`$ for all sufficiently large $`n`$.*
 

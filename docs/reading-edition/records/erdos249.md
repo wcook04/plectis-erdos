@@ -37,11 +37,11 @@ No candidate was found by the bounded label/declaration rules. Read the long rec
 
 State: **short_proof_explained_long_link_open**.
 
-Short statement: [paper/249/erdos-249-binary-totient-series.tex](../../../paper/249/erdos-249-binary-totient-series.tex) lines 470-480.
+Short statement: [paper/249/erdos-249-binary-totient-series.tex](../../../paper/249/erdos-249-binary-totient-series.tex) lines 471-481.
 
 Ledger evidence: Lean `exact`; Comparator `compared`. These statuses are copied from the evidence ledger; this build reruns neither checker.
 
-Retained short-paper argument: [paper/249/erdos-249-binary-totient-series.tex](../../../paper/249/erdos-249-binary-totient-series.tex) lines 481-486.
+Retained short-paper argument: [paper/249/erdos-249-binary-totient-series.tex](../../../paper/249/erdos-249-binary-totient-series.tex) lines 482-487.
 
 Appendix A retains the full dyadic specialisation and proof from the finite-level theorem, including independence, spanning and the increasing finite ranks. Revised statement: line 385, printed A.1, preview p. 6. This is a writer disposition for native review, not a claim that the queued correspondence has already been accepted.
 
@@ -57,7 +57,7 @@ No candidate was found by the bounded label/declaration rules. Read the long rec
 
 State: **unresolved**.
 
-Short statement: [paper/249/erdos-249-binary-totient-series.tex](../../../paper/249/erdos-249-binary-totient-series.tex) lines 307-322.
+Short statement: [paper/249/erdos-249-binary-totient-series.tex](../../../paper/249/erdos-249-binary-totient-series.tex) lines 308-323.
 
 Ledger evidence: Lean `exact`; Comparator `compared`. These statuses are copied from the evidence ledger; this build reruns neither checker.
 
@@ -69,11 +69,11 @@ No candidate was found by the bounded label/declaration rules. Read the long rec
 
 State: **short_proof_explained_long_link_open**.
 
-Short statement: [paper/249/erdos-249-binary-totient-series.tex](../../../paper/249/erdos-249-binary-totient-series.tex) lines 490-498.
+Short statement: [paper/249/erdos-249-binary-totient-series.tex](../../../paper/249/erdos-249-binary-totient-series.tex) lines 491-499.
 
 Ledger evidence: Lean `exact`; Comparator `compared`. These statuses are copied from the evidence ledger; this build reruns neither checker.
 
-Retained short-paper argument: [paper/249/erdos-249-binary-totient-series.tex](../../../paper/249/erdos-249-binary-totient-series.tex) lines 499-507.
+Retained short-paper argument: [paper/249/erdos-249-binary-totient-series.tex](../../../paper/249/erdos-249-binary-totient-series.tex) lines 500-508.
 
 Appendix A retains the complete proof by restricting a putative relation to a progression on which the periodic coefficients are fixed; the eventual affine-independence argument remains available in section 2. Revised statement: line 405, printed A.2, preview p. 6. This is a writer disposition for native review, not a claim that the queued correspondence has already been accepted.
 
@@ -89,7 +89,7 @@ No candidate was found by the bounded label/declaration rules. Read the long rec
 
 State: **unresolved**.
 
-Short statement: [paper/249/erdos-249-binary-totient-series.tex](../../../paper/249/erdos-249-binary-totient-series.tex) lines 375-384.
+Short statement: [paper/249/erdos-249-binary-totient-series.tex](../../../paper/249/erdos-249-binary-totient-series.tex) lines 376-385.
 
 Ledger evidence: Lean `exact`; Comparator `compared`. These statuses are copied from the evidence ledger; this build reruns neither checker.
 
@@ -101,7 +101,7 @@ No candidate was found by the bounded label/declaration rules. Read the long rec
 
 State: **unresolved**.
 
-Short statement: [paper/249/erdos-249-binary-totient-series.tex](../../../paper/249/erdos-249-binary-totient-series.tex) lines 395-399.
+Short statement: [paper/249/erdos-249-binary-totient-series.tex](../../../paper/249/erdos-249-binary-totient-series.tex) lines 396-400.
 
 Ledger evidence: Lean `exact`; Comparator `compared`. These statuses are copied from the evidence ledger; this build reruns neither checker.
 
@@ -113,11 +113,11 @@ No candidate was found by the bounded label/declaration rules. Read the long rec
 
 State: **registered_evidence_linked**.
 
-Short statement: [paper/249/erdos-249-binary-totient-series.tex](../../../paper/249/erdos-249-binary-totient-series.tex) lines 615-624.
+Short statement: [paper/249/erdos-249-binary-totient-series.tex](../../../paper/249/erdos-249-binary-totient-series.tex) lines 617-626.
 
 Ledger evidence: Lean `exact`; Comparator `compared`. These statuses are copied from the evidence ledger; this build reruns neither checker.
 
-Long-record location: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 9335-9344.
+Long-record location: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 9333-9342.
 
 - `ErdosProblems.Erdos249.PaperCompleteR7.fullDepth_amplification`: [lean/ErdosProblems/Erdos249/PaperCompleteR7/ShortNoteAssemblies.lean](../../../lean/ErdosProblems/Erdos249/PaperCompleteR7/ShortNoteAssemblies.lean) lines 35-35.
 
@@ -125,11 +125,11 @@ Long-record location: [paper/reasoning-parts/erdos249/a249_front.tex](../../../p
 
 State: **registered_evidence_linked**.
 
-Short statement: [paper/249/erdos-249-binary-totient-series.tex](../../../paper/249/erdos-249-binary-totient-series.tex) lines 704-712.
+Short statement: [paper/249/erdos-249-binary-totient-series.tex](../../../paper/249/erdos-249-binary-totient-series.tex) lines 706-714.
 
 Ledger evidence: Lean `exact`; Comparator `compared`. These statuses are copied from the evidence ledger; this build reruns neither checker.
 
-Long-record location: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 9550-9558.
+Long-record location: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 9548-9556.
 
 - `ErdosProblems.Erdos249.RankOneSubrankObstruction.rankOne_denominator_pos`: [lean/ErdosProblems/Erdos249/RankOneSharpFloor.lean](../../../lean/ErdosProblems/Erdos249/RankOneSharpFloor.lean) lines 25-25.
 - `ErdosProblems.Erdos249.RankOneSubrankObstruction.rankOneSubrankQuotient_ge_one_five`: [lean/ErdosProblems/Erdos249/RankOneSharpFloor.lean](../../../lean/ErdosProblems/Erdos249/RankOneSharpFloor.lean) lines 530-530.
@@ -149,201 +149,201 @@ These registered long assertions are not used by an accepted short-paper link. T
 - `prop:period-not-rank`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 277-292.
 - `prop:iffs`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 294-313.
 - `prop:parity`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 315-323.
-- `lem:gsound`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 544-548.
-- `lem:gperiod`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 569-576.
-- `thm:gamma`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 596-617.
-- `cor:b1`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 640-649.
-- `prop:b2`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 677-714.
-- `prop:b4`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 730-741.
-- `prop:b5`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 762-797.
-- `prop:b6`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 799-858.
-- `prop:b7`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 860-868.
-- `prop:shift`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 1365-1374.
-- `lem:farey`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 1401-1406.
-- `prop:gapwindow`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 1421-1437.
-- `thm:denom-record`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 1439-1447.
-- `prop:coprime`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 1482-1495.
-- `prop:gcdlayer`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 1497-1501.
-- `thm:denomcoprime`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 1503-1511.
-- `thm:denommobsq`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 1513-1519.
-- `prop:mobsq`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 1546-1554.
-- `prop:lambertengine`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 1609-1615.
-- `prop:zetaq`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 1627-1641.
-- `prop:pillai`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 1646-1657.
-- `catalogue:cert:a9`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 1817-1826.
-- `catalogue:cert:d5`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 1828-1846.
-- `catalogue:cert:d4`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 1848-1865.
-- `catalogue:cert:a8`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 1867-1873.
-- `catalogue:mob:b5`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 1898-1908.
-- `catalogue:mob:b6`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 1910-1922.
-- `catalogue:mob:b7a`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 1934-1946.
-- `catalogue:mob:b7b`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 1948-1961.
-- `catalogue:mob:d3`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 1963-1976.
-- `catalogue:cert:a11`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 1978-1989.
-- `catalogue:cert:a12`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 1991-1998.
-- `catalogue:cert:b11`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 2002-2021.
-- `catalogue:cert:a2`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 2069-2078.
-- `catalogue:cert:a5`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 2080-2090.
-- `catalogue:cert:a6`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 2092-2102.
-- `catalogue:cert:a7`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 2104-2116.
-- `catalogue:cert:c1`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 2127-2140.
-- `catalogue:cert:d1`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 2142-2151.
-- `catalogue:cert:d2`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 2153-2175.
-- `catalogue:cert:d3`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 2177-2189.
-- `catalogue:cert:d9`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 2191-2200.
-- `catalogue:mob:a1a`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 2202-2215.
-- `catalogue:mob:a1b`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 2217-2227.
-- `catalogue:mob:a2`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 2229-2241.
-- `catalogue:mob:a4`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 2256-2263.
-- `catalogue:mob:a5`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 2267-2276.
-- `catalogue:mob:a7`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 2299-2308.
-- `catalogue:mob:a8`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 2310-2320.
-- `catalogue:mob:a9a`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 2322-2349.
-- `catalogue:mob:a9b`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 2351-2363.
-- `catalogue:mob:b1`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 2365-2380.
-- `catalogue:mob:b2`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 2382-2392.
-- `catalogue:mob:b3`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 2394-2406.
-- `catalogue:mob:b4`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 2415-2425.
-- `catalogue:mob:b8a`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 2451-2456.
-- `catalogue:mob:b8b`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 2474-2480.
-- `catalogue:cert:d7`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 2492-2503.
-- `catalogue:mob:e3`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 2538-2582.
-- `catalogue:mob:f1`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 2584-2611.
-- `catalogue:cert:a10`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 2659-2661.
-- `catalogue:cert:b2`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 2663-2670.
-- `catalogue:cert:b3`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 2672-2674.
-- `catalogue:cert:b4`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 2676-2684.
-- `catalogue:cert:b5`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 2686-2699.
-- `catalogue:cert:b6`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 2701-2716.
-- `catalogue:cert:b7`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 2718-2733.
-- `catalogue:cert:b8`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 2735-2747.
-- `catalogue:cert:b9a`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 2749-2767.
-- `catalogue:cert:b10a`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 2777-2785.
-- `catalogue:cert:b10b`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 2824-2833.
-- `catalogue:cert:b12`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 2835-2852.
-- `catalogue:mob:e1`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 2854-2870.
-- `catalogue:mob:e2`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 2874-2909.
-- `prop:NI-01`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 2953-2963.
-- `prop:AR-07`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 2965-2980.
-- `prop:SEP-03`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 2983-2999.
-- `prop:TE-04`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 3002-3025.
-- `prop:TE-05`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 3027-3049.
-- `prop:TE-06`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 3051-3072.
-- `prop:SK-02`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 3074-3086.
-- `prop:FR-01`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 3088-3106.
-- `prop:CP-06`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 3108-3116.
-- `prop:CP-07`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 3137-3160.
-- `prop:A10`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 3162-3170.
-- `prop:B3`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 3172-3187.
-- `prop:B7`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 3189-3196.
-- `prop:B10`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 3200-3213.
-- `prop:C2sup`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 3216-3223.
-- `prop:D5cons`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 3225-3240.
-- `prop:B12cons`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 3242-3257.
-- `prop:AR-04-inv`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 3266-3292.
-- `prop:AR-03-inv`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 3294-3308.
-- `prop:AR-05-inv`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 3310-3322.
-- `prop:AR-06-inv`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 3324-3335.
-- `prop:SEP-01-inv`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 3337-3344.
-- `prop:SEP-02-inv`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 3346-3357.
-- `prop:SGN-01`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 3359-3369.
-- `prop:SGN-03`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 3371-3388.
-- `prop:TE-02-inv`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 3391-3416.
-- `prop:TE-03-inv`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 3418-3435.
-- `prop:FR-02-inv`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 3437-3458.
-- `prop:CP-01-inv`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 3460-3472.
-- `prop:CP-02`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 3474-3485.
-- `prop:CP-05-inv`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 3487-3503.
-- `prop:TA-inv`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 3505-3545.
-- `prop:MP-01-inv`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 3547-3567.
-- `prop:SK-01-inv`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 3569-3580.
-- `prop:A5-inv`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 3582-3593.
-- `prop:A9-inv`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 3595-3615.
-- `prop:B6-inv`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 3617-3629.
-- `prop:D4-inv`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 3631-3640.
-- `prop:C2-inv`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 3642-3661.
-- `prop:C3-inv`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 3665-3675.
-- `prop:D1D2-inv`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 3677-3696.
-- `prop:D7-inv`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 3698-3708.
-- `prop:D9-inv`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 3715-3735.
-- `prop:B11-inv`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 3737-3752.
-- `prop:C1-inv`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 3754-3769.
-- `thm:values-exponents-one-two`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 4164-4166.
-- `thm:first-two-summands-give-positive`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 4171-4174.
-- `thm:strict-log-concavity-all-integer`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 4176-4186.
-- `thm:binary-carry-criterion`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 4245-4257.
-- `prop:uniqueness-under-growth-condition`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 4281-4284.
-- `prop:exact-rational-approximation-formula`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 4336-4349.
-- `prop:geometric-tail-bound`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 4351-4360.
-- `prop:sum-over-divisor-indices`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 4399-4411.
-- `prop:divisor-sum-complement`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 4413-4429.
-- `thm:doubling-full-totient-difference`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 4431-4443.
-- `prop:doubling-identity-two-portions-sum`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 4456-4470.
-- `thm:positive-coefficients-numerator-polynomial`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 4475-4488.
-- `cor:numerator-polynomial-explicit-positive-coefficients`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 4490-4496.
-- `prop:geometric-remainder-bound`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 4519-4531.
-- `prop:squared-distance-phase-one`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 4542-4549.
-- `lem:squared-distance-bound-separated-pairs`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 4551-4555.
-- `prop:finite-divisor-sum`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 4587-4597.
-- `prop:separation-larger-than-error-implies`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 4612-4620.
-- `thm:coprime-pair-counting-totient`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 4680-4685.
-- `prop:two-lattice-sums`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 4687-4704.
-- `thm:classical-coprime-pair-lambert-identity`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 4706-4718.
-- `thm:nondivisors-short-lcm-window`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 4748-4765.
-- `thm:unbounded-prime-support-mersenne-factors`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 4793-4799.
-- `thm:prime-satisfying-stated-cyclotomic-conditions`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 4801-4808.
-- `thm:sufficient-order-hypothesis-unbounded-prime`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 4846-4877.
-- `thm:uniform-positive-gap-rank-one`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 4889-4903.
-- `prop:bound-preserved-positive-normalised-averaging`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 4905-4910.
-- `thm:concatenation-specified-period-multiples`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 4929-4950.
-- `thm:hgap-real`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 5542-5549.
-- `thm:hgap-subset`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 5551-5561.
-- `thm:hgap-norm`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 5563-5583.
-- `thm:positivity-remaining-residue-inequality`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 5638-5646.
-- `thm:proved-implications`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 5669-5675.
-- `prop:te-chain`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 5691-5730.
-- `thm:proved-implication`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 5751-5755.
-- `prop:sufficient-extension`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 5780-5788.
-- `thm:separation-rational-approximation`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 5792-5801.
-- `thm:short-window-examples-through-exponent`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 5836-5847.
-- `thm:diagonal-certificate-table`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 5872-5886.
-- `prop:sufficient-extension-2`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 5897-5905.
-- `thm:one-common-certificate-sixteen-shifts`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 5909-5919.
-- `prop:simultaneous-certificates-unrestricted-depth`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 5931-5939.
-- `thm:fixed-farey-bound`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 5972-5976.
-- `prop:sufficient-extension-3`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 6019-6029.
-- `thm:two-adic-congruence-that-does`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 6033-6042.
-- `prop:sufficient-accumulated-residue-condition`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 6061-6074.
-- `thm:arbitrarily-large-prime-power-lcm`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 6078-6087.
-- `prop:sufficient-inequality`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 6138-6144.
-- `thm:certificate-four-tail-combination`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 6148-6160.
-- `thm:one-explicit-witness`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 6162-6172.
-- `thm:denominators-mobius-sums`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 6192-6210.
-- `prop:additional-approximation-hypothesis`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 6224-6243.
-- `thm:rationality-carry-rank`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 6252-6257.
-- `thm:rationality-carry-rank-2`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 6259-6268.
-- `prop:additional-hypothesis-totient-specific-rank`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 6284-6298.
-- `prop:rational-series-preserving-totient-parity`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 6395-6402.
-- `lem:complement-divisibility-after-multiplication`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 6486-6493.
-- `lem:nonvanishing-unique-largest-denominator-exponent`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 6566-6575.
-- `prop:nonzero-minor-survives-inverse-phase`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 6613-6624.
-- `prop:tail-integrality-lcm-grid`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 6656-6662.
-- `prop:finite-grid-certificate-gives-nonintegral`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 6670-6681.
-- `thm:exact-dyadic-rank-infinite-dimensionality`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 6730-6738.
-- `lem:orbit`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 7559-7576.
-- `prop:transfer`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 7588-7595.
-- `cor:digitform`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 7630-7638.
-- `thm:lacunary`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 7802-7816.
-- `prop:dickman`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 7912-7928.
-- `prop:badcof`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 7973-7989.
-- `thm:goodbasegap`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 1128-1148.
-- `prop:radixresidue`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 346-360.
-- `prop:dilations`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 369-386.
-- `prop:route4`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 8279-8282.
-- `prop:slowmoduli`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 432-437.
-- `long249:thm:signed-interpolation`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 7090-7133.
-- `long249:cor:signed-observations`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 7317-7327.
-- `long249:prop:signed-first-harmonic`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 7371-7381.
+- `lem:gsound`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 545-549.
+- `lem:gperiod`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 570-577.
+- `thm:gamma`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 597-618.
+- `cor:b1`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 641-650.
+- `prop:b2`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 678-715.
+- `prop:b4`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 731-742.
+- `prop:b5`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 763-798.
+- `prop:b6`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 800-859.
+- `prop:b7`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 861-869.
+- `prop:shift`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 1363-1372.
+- `lem:farey`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 1399-1404.
+- `prop:gapwindow`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 1419-1435.
+- `thm:denom-record`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 1437-1445.
+- `prop:coprime`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 1480-1493.
+- `prop:gcdlayer`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 1495-1499.
+- `thm:denomcoprime`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 1501-1509.
+- `thm:denommobsq`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 1511-1517.
+- `prop:mobsq`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 1544-1552.
+- `prop:lambertengine`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 1607-1613.
+- `prop:zetaq`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 1625-1639.
+- `prop:pillai`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 1644-1655.
+- `catalogue:cert:a9`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 1815-1824.
+- `catalogue:cert:d5`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 1826-1844.
+- `catalogue:cert:d4`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 1846-1863.
+- `catalogue:cert:a8`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 1865-1871.
+- `catalogue:mob:b5`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 1896-1906.
+- `catalogue:mob:b6`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 1908-1920.
+- `catalogue:mob:b7a`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 1932-1944.
+- `catalogue:mob:b7b`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 1946-1959.
+- `catalogue:mob:d3`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 1961-1974.
+- `catalogue:cert:a11`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 1976-1987.
+- `catalogue:cert:a12`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 1989-1996.
+- `catalogue:cert:b11`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 2000-2019.
+- `catalogue:cert:a2`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 2067-2076.
+- `catalogue:cert:a5`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 2078-2088.
+- `catalogue:cert:a6`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 2090-2100.
+- `catalogue:cert:a7`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 2102-2114.
+- `catalogue:cert:c1`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 2125-2138.
+- `catalogue:cert:d1`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 2140-2149.
+- `catalogue:cert:d2`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 2151-2173.
+- `catalogue:cert:d3`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 2175-2187.
+- `catalogue:cert:d9`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 2189-2198.
+- `catalogue:mob:a1a`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 2200-2213.
+- `catalogue:mob:a1b`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 2215-2225.
+- `catalogue:mob:a2`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 2227-2239.
+- `catalogue:mob:a4`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 2254-2261.
+- `catalogue:mob:a5`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 2265-2274.
+- `catalogue:mob:a7`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 2297-2306.
+- `catalogue:mob:a8`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 2308-2318.
+- `catalogue:mob:a9a`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 2320-2347.
+- `catalogue:mob:a9b`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 2349-2361.
+- `catalogue:mob:b1`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 2363-2378.
+- `catalogue:mob:b2`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 2380-2390.
+- `catalogue:mob:b3`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 2392-2404.
+- `catalogue:mob:b4`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 2413-2423.
+- `catalogue:mob:b8a`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 2449-2454.
+- `catalogue:mob:b8b`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 2472-2478.
+- `catalogue:cert:d7`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 2490-2501.
+- `catalogue:mob:e3`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 2536-2580.
+- `catalogue:mob:f1`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 2582-2609.
+- `catalogue:cert:a10`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 2657-2659.
+- `catalogue:cert:b2`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 2661-2668.
+- `catalogue:cert:b3`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 2670-2672.
+- `catalogue:cert:b4`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 2674-2682.
+- `catalogue:cert:b5`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 2684-2697.
+- `catalogue:cert:b6`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 2699-2714.
+- `catalogue:cert:b7`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 2716-2731.
+- `catalogue:cert:b8`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 2733-2745.
+- `catalogue:cert:b9a`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 2747-2765.
+- `catalogue:cert:b10a`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 2775-2783.
+- `catalogue:cert:b10b`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 2822-2831.
+- `catalogue:cert:b12`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 2833-2850.
+- `catalogue:mob:e1`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 2852-2868.
+- `catalogue:mob:e2`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 2872-2907.
+- `prop:NI-01`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 2951-2961.
+- `prop:AR-07`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 2963-2978.
+- `prop:SEP-03`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 2981-2997.
+- `prop:TE-04`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 3000-3023.
+- `prop:TE-05`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 3025-3047.
+- `prop:TE-06`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 3049-3070.
+- `prop:SK-02`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 3072-3084.
+- `prop:FR-01`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 3086-3104.
+- `prop:CP-06`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 3106-3114.
+- `prop:CP-07`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 3135-3158.
+- `prop:A10`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 3160-3168.
+- `prop:B3`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 3170-3185.
+- `prop:B7`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 3187-3194.
+- `prop:B10`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 3198-3211.
+- `prop:C2sup`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 3214-3221.
+- `prop:D5cons`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 3223-3238.
+- `prop:B12cons`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 3240-3255.
+- `prop:AR-04-inv`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 3264-3290.
+- `prop:AR-03-inv`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 3292-3306.
+- `prop:AR-05-inv`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 3308-3320.
+- `prop:AR-06-inv`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 3322-3333.
+- `prop:SEP-01-inv`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 3335-3342.
+- `prop:SEP-02-inv`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 3344-3355.
+- `prop:SGN-01`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 3357-3367.
+- `prop:SGN-03`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 3369-3386.
+- `prop:TE-02-inv`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 3389-3414.
+- `prop:TE-03-inv`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 3416-3433.
+- `prop:FR-02-inv`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 3435-3456.
+- `prop:CP-01-inv`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 3458-3470.
+- `prop:CP-02`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 3472-3483.
+- `prop:CP-05-inv`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 3485-3501.
+- `prop:TA-inv`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 3503-3543.
+- `prop:MP-01-inv`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 3545-3565.
+- `prop:SK-01-inv`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 3567-3578.
+- `prop:A5-inv`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 3580-3591.
+- `prop:A9-inv`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 3593-3613.
+- `prop:B6-inv`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 3615-3627.
+- `prop:D4-inv`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 3629-3638.
+- `prop:C2-inv`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 3640-3659.
+- `prop:C3-inv`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 3663-3673.
+- `prop:D1D2-inv`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 3675-3694.
+- `prop:D7-inv`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 3696-3706.
+- `prop:D9-inv`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 3713-3733.
+- `prop:B11-inv`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 3735-3750.
+- `prop:C1-inv`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 3752-3767.
+- `thm:values-exponents-one-two`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 4162-4164.
+- `thm:first-two-summands-give-positive`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 4169-4172.
+- `thm:strict-log-concavity-all-integer`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 4174-4184.
+- `thm:binary-carry-criterion`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 4243-4255.
+- `prop:uniqueness-under-growth-condition`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 4279-4282.
+- `prop:exact-rational-approximation-formula`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 4334-4347.
+- `prop:geometric-tail-bound`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 4349-4358.
+- `prop:sum-over-divisor-indices`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 4397-4409.
+- `prop:divisor-sum-complement`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 4411-4427.
+- `thm:doubling-full-totient-difference`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 4429-4441.
+- `prop:doubling-identity-two-portions-sum`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 4454-4468.
+- `thm:positive-coefficients-numerator-polynomial`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 4473-4486.
+- `cor:numerator-polynomial-explicit-positive-coefficients`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 4488-4494.
+- `prop:geometric-remainder-bound`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 4517-4529.
+- `prop:squared-distance-phase-one`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 4540-4547.
+- `lem:squared-distance-bound-separated-pairs`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 4549-4553.
+- `prop:finite-divisor-sum`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 4585-4595.
+- `prop:separation-larger-than-error-implies`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 4610-4618.
+- `thm:coprime-pair-counting-totient`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 4678-4683.
+- `prop:two-lattice-sums`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 4685-4702.
+- `thm:classical-coprime-pair-lambert-identity`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 4704-4716.
+- `thm:nondivisors-short-lcm-window`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 4746-4763.
+- `thm:unbounded-prime-support-mersenne-factors`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 4791-4797.
+- `thm:prime-satisfying-stated-cyclotomic-conditions`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 4799-4806.
+- `thm:sufficient-order-hypothesis-unbounded-prime`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 4844-4875.
+- `thm:uniform-positive-gap-rank-one`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 4887-4901.
+- `prop:bound-preserved-positive-normalised-averaging`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 4903-4908.
+- `thm:concatenation-specified-period-multiples`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 4927-4948.
+- `thm:hgap-real`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 5540-5547.
+- `thm:hgap-subset`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 5549-5559.
+- `thm:hgap-norm`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 5561-5581.
+- `thm:positivity-remaining-residue-inequality`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 5636-5644.
+- `thm:proved-implications`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 5667-5673.
+- `prop:te-chain`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 5689-5728.
+- `thm:proved-implication`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 5749-5753.
+- `prop:sufficient-extension`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 5778-5786.
+- `thm:separation-rational-approximation`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 5790-5799.
+- `thm:short-window-examples-through-exponent`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 5834-5845.
+- `thm:diagonal-certificate-table`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 5870-5884.
+- `prop:sufficient-extension-2`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 5895-5903.
+- `thm:one-common-certificate-sixteen-shifts`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 5907-5917.
+- `prop:simultaneous-certificates-unrestricted-depth`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 5929-5937.
+- `thm:fixed-farey-bound`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 5970-5974.
+- `prop:sufficient-extension-3`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 6017-6027.
+- `thm:two-adic-congruence-that-does`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 6031-6040.
+- `prop:sufficient-accumulated-residue-condition`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 6059-6072.
+- `thm:arbitrarily-large-prime-power-lcm`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 6076-6085.
+- `prop:sufficient-inequality`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 6136-6142.
+- `thm:certificate-four-tail-combination`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 6146-6158.
+- `thm:one-explicit-witness`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 6160-6170.
+- `thm:denominators-mobius-sums`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 6190-6208.
+- `prop:additional-approximation-hypothesis`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 6222-6241.
+- `thm:rationality-carry-rank`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 6250-6255.
+- `thm:rationality-carry-rank-2`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 6257-6266.
+- `prop:additional-hypothesis-totient-specific-rank`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 6282-6296.
+- `prop:rational-series-preserving-totient-parity`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 6393-6400.
+- `lem:complement-divisibility-after-multiplication`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 6484-6491.
+- `lem:nonvanishing-unique-largest-denominator-exponent`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 6564-6573.
+- `prop:nonzero-minor-survives-inverse-phase`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 6611-6622.
+- `prop:tail-integrality-lcm-grid`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 6654-6660.
+- `prop:finite-grid-certificate-gives-nonintegral`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 6668-6679.
+- `thm:exact-dyadic-rank-infinite-dimensionality`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 6728-6736.
+- `lem:orbit`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 7557-7574.
+- `prop:transfer`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 7586-7593.
+- `cor:digitform`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 7628-7636.
+- `thm:lacunary`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 7800-7814.
+- `prop:dickman`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 7910-7926.
+- `prop:badcof`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 7971-7987.
+- `thm:goodbasegap`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 1129-1149.
+- `prop:radixresidue`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 347-361.
+- `prop:dilations`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 370-387.
+- `prop:route4`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 8277-8280.
+- `prop:slowmoduli`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 433-438.
+- `long249:thm:signed-interpolation`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 7088-7131.
+- `long249:cor:signed-observations`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 7315-7325.
+- `long249:prop:signed-first-harmonic`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 7369-7379.
 
 ## Passage-review queue
 

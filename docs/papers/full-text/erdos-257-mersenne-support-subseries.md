@@ -8,7 +8,7 @@
 
 </div>
 
-We prove a hereditary irrationality criterion for Lambert subseries supported on a union $`E\cup V`$. The set $`E`$ satisfies a finite-prime weighted summability condition, while $`V`$ admits a summable positive divisor cover. The two support classes are incomparable, both extend beyond reciprocal-summable supports, and the union criterion reaches supports in neither class. The proof turns on a second average over dyadic lengths: it restores the reciprocal factor lost by incomplete residue periods and, because both estimates use one finite distribution, yields a single index at which both displacements are small. The arbitrary infinite-support problem in base two remains open.
+We prove that $`\sum_{a\in A}(b^a-1)^{-1}`$ is irrational for every integer $`b\ge2`$ and every infinite $`A\subseteq E\cup V`$ under two hypotheses. The set $`E`$ satisfies a finite-prime weighted summability condition at base two, while $`V`$ admits a summable positive divisor cover. The two support classes are incomparable, both extend beyond reciprocal-summable supports, and the union criterion reaches supports in neither class. The proof turns on a second average over dyadic lengths: it restores the reciprocal factor lost by incomplete residue periods and, because both estimates use one finite distribution, yields a single index at which both displacements are small. The arbitrary infinite-support problem in base two remains open.
 
 <a id="sec:problem"></a>
 
@@ -161,7 +161,7 @@ Each block $`2^j\le m<2^{j+1}`$, $`1\le j<r`$, contains $`2^{j-1}`$ odd integers
 ```
 The last bound uses $`2^{2^k}-1\ge2^{2^k-1}`$ and $`2^k\ge2k`$. Summation proves <a href="#eq:weighted-return" data-reference-type="eqref" data-reference="eq:weighted-return">[eq:weighted-return]</a>. The lower bound $`1/4`$ in every layer has already excluded reciprocal summability.
 
-A related selection of a term from an average over an arithmetic progression occurs in Duverney–Tachiya \[duverneytachiya, Section 2, (2.3)–(2.9)\]. The sparse-coefficient criteria of Kaneko–Suzuki–Tachiya \[kanekosuzukitachiya, Theorems 1 and 3\] do not apply directly to the divisor counts $`c_A(n)=\#\{a\in A:a\mid n\}`$: for nonempty $`A`$, these are positive on every multiple of $`\min A`$. The corresponding density calculation, and the distinction between their remote-tail average and our displacement, are given in [Section 1.2 of the companion paper](../../../paper/257/erdos257-mersenne-reasoning-surface.pdf#nameddest=record257:weighted-proof).
+A related selection of a term from an average over an arithmetic progression occurs in Duverney–Tachiya \[duverneytachiya, Section 2, (2.3)–(2.9)\]. In the criteria of Kaneko–Suzuki–Tachiya \[kanekosuzukitachiya, Theorems 1 and 3\], sparsity concerns the positions of nonzero power-series coefficients, not the set of selected Lambert denominators. The divisor counts $`c_A(n)=\#\{a\in A:a\mid n\}`$ are positive on every multiple of $`\min A`$ for nonempty $`A`$, so those criteria do not apply directly. The corresponding density calculation, and the distinction between their remote-tail average and our displacement, are given in [Section 1.2 of the companion paper](../../../paper/257/erdos257-mersenne-reasoning-surface.pdf#nameddest=record257:weighted-proof).
 
 The sets of primes for which the weighted sum converges can also be prescribed. Let $`E`$ be a finite set of primes and let $`\mathcal U`$ be an upward-closed family of subsets of $`E`$ containing $`E`$ but not $`\varnothing`$. A finite union of the constructions just described has divergent reciprocal sum, and, for every $`b\ge2`$ and finite prime set $`P`$, its weighted sum $`W_{b,P}`$ is finite exactly when $`P\cap E\in\mathcal U`$. Taking $`P=E`$ shows that every infinite subset has an irrational sum at every integer base. The construction is given in [Section 1.3 of the companion paper](../../../paper/257/erdos257-mersenne-reasoning-surface.pdf#nameddest=record257:witness-rules).
 
@@ -229,7 +229,7 @@ A divisor majorant becomes a sum of geometric tails, one for each divisor. Indee
 \sum_{\substack{r\ge1\\d\mid N+r}}B^{-r}
  =\frac{B^{N\bmod d}}{B^d-1}.
 ```
-Raising a base-two tail to the power $`\alpha`$ replaces its geometric factor by $`B=2^\alpha`$. We therefore need to estimate this expression for $`1<B\le2`$, including $`B`$ close to $`1`$. The weighted proof has already chosen its modulus and dyadic lengths; to use the same observations, the estimate must keep both choices explicit.
+Raising a base-two tail to the power $`\alpha`$ replaces its geometric factor by $`B=2^\alpha`$. We therefore need to estimate this expression for $`1<B\le2`$, including $`B`$ close to $`1`$. In the mixed theorem, the weighted construction will choose the modulus and dyadic scales after the finite covering sets have been fixed. The estimate must therefore retain these parameters.
 
 For $`1<B\le2`$, positive integers $`L,d,M`$, and an integer $`R\ge0`$, put
 ``` math
@@ -308,7 +308,7 @@ The same proof permits any positive weights $`\eta_j`$ with $`\sum_j\eta_j=1`$: 
 
 # A common index for the two criteria
 
-Irrationality of two summands alone does not imply irrationality of their sum, and separate sequences on which the two displacements are small would not suffice either. The preceding estimates provide the stronger input we need: after all finite divisibility requirements are absorbed into one modulus, both nonnegative errors can be averaged on the same finite distribution. Only then do we choose an index.
+The cover estimate retains its dependence on the modulus so that it can use the larger modulus chosen by the weighted construction. This lets us add the two nonnegative errors on one finite distribution and only then choose an index. We work at base two and obtain the all-base conclusion by the displacement comparison proved above.
 
 <div class="samepage">
 
@@ -358,7 +358,7 @@ This inequality remains valid when $`E`$ and $`V`$ overlap. Since $`A`$ is infin
 
 # Comparison of the support classes
 
-Write $`\mathcal W_b`$ for supports satisfying the finite-prime weighted hypothesis at base $`b`$, and $`\mathcal C`$ for supports admitting a strengthened positive cover as in <a href="#eq:strengthened-cover" data-reference-type="eqref" data-reference="eq:strengthened-cover">[eq:strengthened-cover]</a>. Neither condition includes the other.
+Write $`\mathcal W_b`$ for supports satisfying the finite-prime weighted hypothesis at base $`b`$, and $`\mathcal C`$ for supports admitting a divisor cover satisfying <a href="#eq:strengthened-cover" data-reference-type="eqref" data-reference="eq:strengthened-cover">[eq:strengthened-cover]</a>. Neither condition includes the other.
 
 <div id="res:weighted-cover-incomparability" class="proposition">
 <p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/846d57d3f9926696332d782eb232aaf3cf803a99/evidence/erdos-257-mersenne-support-subseries.md#res-weighted-cover-incomparability">Lean</a></p>
@@ -910,7 +910,7 @@ The endpoint and the open lower bound $`\alpha>0`$ are both included in this cal
 
 ## The cost for a finite set of divisors
 
-For the following finite divisor sets, the lower bound is asymptotically attained. For $`F(q,P)=\{qd:d\mid\prod_{p\in P}p\}`$, where $`q\ge2`$ and no $`p\in P`$ divides $`q`$, put $`S=\sum_{p\in P}1/p`$. If $`S\ge1`$, the infimum $`K_*`$ over finite or countable covers satisfies
+For the following finite divisor sets, the lower bound is asymptotically attained. Here $`K_*(F)`$ is the infimum of the cover cost $`K`$ from Section <a href="#sec:comparison" data-reference-type="ref" data-reference="sec:comparison">5</a>, taken over finite or countable covers of $`F`$ and all positive weights of total one. For $`F(q,P)=\{qd:d\mid\prod_{p\in P}p\}`$, where $`q\ge2`$ and no $`p\in P`$ divides $`q`$, put $`S=\sum_{p\in P}1/p`$. If $`S\ge1`$, then
 ``` math
 \begin{equation}
  \frac{e(S-1)}q\le K_*\bigl(F(q,P)\bigr)\le\frac{eS}q.
@@ -922,7 +922,7 @@ For the lower bound, we condition on $`q\mid n`$ and write $`f_F(n)=2^Z`$. The C
 \frac{2^{\alpha z}}{2^\alpha-1}
  \ge\frac{e^{(z-1)v}}v\ge e(z-1)\quad(z>1);
 ```
-for $`0\le z\le1`$ the claimed lower bound is nonpositive. Thus $`\Psi(2^z)\ge e(z-1)`$. For the upper bound, use the one-set cover with $`z=1/S`$ and $`\alpha=\log_2(1+z)`$; its exact positive expansion has cost
+for $`0\le z\le1`$ the claimed lower bound is nonpositive. Thus $`\Psi(2^z)\ge e(z-1)`$. For the upper bound, use the one-set cover, whose weight is one, with $`z=1/S`$ and $`\alpha=\log_2(1+z)`$; its exact positive expansion has cost
 ``` math
 \frac1{qz}\prod_{p\in P}(1+z/p)\le\frac{eS}q.
 ```
@@ -936,7 +936,7 @@ The verification concordance lists the formal proofs by statement. *Lean* links 
 
 For Erdős’s reciprocal-summable extension and fractional-part argument, see pp. 222 and 226 of \[erdos1968\]. The periodic theorem \[lucatachiya2014periodic\] is also stated in Luca and Tachiya’s account \[lucatachiya2017, Theorem A and Example 2, pp. 139–140\], and Hornich’s strict-tail theorem is proved in Nitecki’s exposition \[nitecki2013, Theorem 4(1)\]. These expositions are the sources used here for those two results; the original articles were not independently retrieved. The *Formal Conjectures* file \[formalconjectures257\] is statement-level prior art, not a proof dependency.
 
-The evidence record identifies the exact statements, source revisions and recorded comparisons. The mixed implication has a formal proof; its construction of $`V`$ uses finite sets of squarefree divisors. The $`A_\star`$ calculation, fresh-prime construction, signed finite-denominator extension and Theorem <a href="#res:one-over-twenty-one-frontier" data-reference-type="ref" data-reference="res:one-over-twenty-one-frontier">10</a> have ordinary arguments here, without independent human review. The companion paper locates the separate comparisons for its three logarithmic-sampling results. No historical priority is asserted for the support comparison.
+The evidence record identifies the exact statements, source revisions and recorded comparisons. The mixed implication has a formal proof. A separate formal construction of a separating support $`V`$ uses finite sets of squarefree divisors. The $`A_\star`$ calculation, printed fresh-prime construction, Corollary <a href="#res:strict-mixed-supports" data-reference-type="ref" data-reference="res:strict-mixed-supports">6</a>, signed finite-denominator extension and Theorem <a href="#res:one-over-twenty-one-frontier" data-reference-type="ref" data-reference="res:one-over-twenty-one-frontier">10</a> have ordinary arguments here, without independent human review. The strictness corollary has no formal binding in the record. The companion paper locates the separate comparisons for its three logarithmic-sampling results. No historical priority is asserted for the support comparison.
 
 <a id="reproducing-the-weighted-theorem."></a>
 

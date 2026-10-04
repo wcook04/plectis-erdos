@@ -8,7 +8,7 @@
 
 </div>
 
-A mathematical sentence can be easy to read and still conceal the inference that justifies it. This guide explains how to locate that difficulty, study a relevant passage in the literature and write an explanation warranted by the manuscript’s own proof. Worked cases connect finite choices to an attained sum, derive a certificate from its target interval and separate convergence of one summand from passage through an infinite sum. They also show how to make an example self-contained and distinguish a failed test from a negative conclusion. The cases come from recorded revisions of eight Erdős-problem papers, including proposals subsequently checked against the selected manuscript sources. We distinguish accepted revisions, proposed improvements and lessons that need a narrower scope; an example confers no new proof or release status. The compact companion collects the actions. This guide supplies their reasons, sources and limits, with a final pass through a paper’s contribution, proof and use. It documents editorial practice, not a controlled evaluation of reader understanding.
+A mathematical sentence can be easy to read and still conceal the inference that justifies it. This guide explains how to locate that difficulty, study a relevant passage in the literature and write an explanation warranted by the manuscript’s own proof. Worked cases connect finite choices to an attained sum, derive a certificate from its target interval and separate convergence of one summand from passage through an infinite sum. Later examples explain why a technique recurs and how an ordinary verb can change a claim’s scope. The cases come from recorded revisions of eight Erdős-problem papers; a final section considers their supporting systems paper. Accepted revisions, proposed improvements and narrower lessons remain distinct. The compact companion gives instructions; this guide supplies their reasons, sources and limits. It documents editorial practice, not new mathematical results or a controlled evaluation of reader understanding.
 
 <a id="sec:reading"></a>
 
@@ -29,9 +29,7 @@ This example, developed in Section <a href="#sec:remainder" data-reference-type
 
 General advice remains useful. Halmos discusses audience, organization and the selection of examples \[halmos, §§3–4\]. Knuth, Larrabee and Roberts discuss the introduction of symbols, the connection between sentences and the reader’s need to know why a step is being taken \[knuth, §1\]. Gowers examines the placement of examples relative to unfamiliar abstractions \[gowers\], while Tao cautions against sacrificing usefulness to excessive optimization of a paper \[tao\]. Such advice identifies questions to ask. A nearby mathematical argument shows how an author has answered them in a particular setting.
 
-The examples come from revisions of papers on Erdős problems. They show how a particular mathematical difficulty led to a particular change of prose. Section <a href="#sec:practice" data-reference-type="ref" data-reference="sec:practice">5</a> records the review method and its limits.
-
-The reader can start with the construction and estimate in Section <a href="#sec:revisions" data-reference-type="ref" data-reference="sec:revisions">2</a>, then follow the additional worked explanations in Section <a href="#sec:worked-explanations" data-reference-type="ref" data-reference="sec:worked-explanations">3</a>. Section <a href="#sec:review" data-reference-type="ref" data-reference="sec:review">4</a> concerns changes that can alter meaning; Section <a href="#sec:practice" data-reference-type="ref" data-reference="sec:practice">5</a> gives a revision procedure and explains how to retain its lessons.
+The cases come from revisions of papers on Erdős problems. Read them by the difficulty at hand: construction and attainment in Section <a href="#sec:remainder" data-reference-type="ref" data-reference="sec:remainder">2.1</a>; the accuracy needed from an estimate and the meaning of a failed test in Section <a href="#sec:certificate" data-reference-type="ref" data-reference="sec:certificate">3.1</a>; limits through infinite sums in Section <a href="#sec:worked-explanations" data-reference-type="ref" data-reference="sec:worked-explanations">3</a>; changes of meaning in Section <a href="#sec:review" data-reference-type="ref" data-reference="sec:review">4</a>. Section <a href="#sec:practice" data-reference-type="ref" data-reference="sec:practice">5</a> explains how to review a revision and keep its useful lesson without making every case a new rule.
 
 <a id="choose-sources-by-the-work-the-prose-must-do"></a>
 
@@ -70,6 +68,8 @@ Parallel syntax helps compare parallel claims. A subordinate clause can keep a d
 Notation should receive this close reading as well. Ask when a symbol first becomes necessary, what repeated work it saves and which nearby quantities the reader might confuse with it. A new name for a standard object creates an additional translation. Conversely, removing an established term such as “Stieltjes moment sequence” can make a manuscript less connected to its literature \[wangzhu\]. A vocabulary pass should compare definitions and uses, rather than delete unfamiliar words merely because they are technical.
 
 Proof pacing is the allocation of explanation to mathematical difficulty. The reader may need to see the accuracy required of an estimate before its derivation, or the obstruction that motivates a parameter choice. Several lines of routine substitution can be shorter than one indispensable sentence about why a limit exists. The manuscript should give the latter its space. These choices can be examined in actual passages, without imitating an author’s voice or turning a preferred cadence into a rule.
+
+A repeated technique may serve a different purpose later in the proof. In the R11 paper-revision round, \#243 paper makes two uses of finite differences explicit. A fourth difference tends to zero and is integer-valued, so it eventually vanishes; this gives eventual polynomial behaviour. Later, a positive constant third difference bounds a divisibility chain of positive greatest common divisors, so that chain stabilises \[paper243, finite-difference argument\]. Naming the technique twice would not distinguish these conclusions. The added sentence identifies the second job. This is a local instance of Knuth et al.’s advice to tell the reader why a step is taken \[knuth, §1, item 12\], not a requirement to explain every routine calculation again.
 
 <a id="use-examples-without-delaying-the-result"></a>
 
@@ -266,15 +266,15 @@ Whenever a proof offers arbitrarily accurate certificates, state which object st
 
 <a id="sec:review"></a>
 
-# What the integrating reviewer must decide
+# Review changes without changing their meaning
 
 <div id="exposition-review">
 
 </div>
 
-A proposed revision has several possible fates. It can be accepted verbatim, accepted after a mathematical or expository repair, rejected, or left pending a named check. Its lesson may already be expressed in the writing guidance. These decisions should not be collapsed into a single “accepted” label. The revision of a paragraph and the adoption of a general rule are different acts, as are admission of a returned archive and acceptance of the mathematics inside it.
+Begin with the current statement and proof. Compare the old passage with the proposal, then record whether it was accepted as written, revised, rejected or left pending a named check. A proposal requiring mathematical repair belongs in a separate mathematical review. Retain the exact passages and the decision’s source; a text match helps locate an accepted edit but does not prove that two statements are equivalent.
 
-The reviewer begins with the current statement and proof. For a substantive change, the record retains the old passage, the proposed passage, the source of the proposal and the decision actually made in the canonical manuscript. A digest identifies the source bytes; a commit, path and label identify the accepted passage. An exact text match, after whitespace normalization, can help locate it. Such a match does not establish equivalence of two theorem statements or prove that a general recommendation is sound.
+Acceptance of a paragraph does not adopt a general writing rule. Nor does an intact returned archive establish the mathematics inside it. The cases below show why these decisions must remain separate.
 
 <a id="replace-a-local-term-without-losing-its-definition"></a>
 
@@ -291,6 +291,14 @@ The gain is specific. A reader no longer has to recover a private definition to 
 Removing a shorthand can also remove the visible source of its assumptions. In \#243, “positive exact state” bundled recurrence and positivity conditions. A proposed replacement referred to the same assumptions after that definition had disappeared. The integrating reviewer instead stated the recurrences for the first implication, then explicitly added natural-number domains and $`a_n>1`$, $`C_n>0`$ for the eventual consequence. In a second passage, the reviewer removed “earlier” from “earlier decreases”: the original qualification did not restrict the time at which decreases could occur.
 
 The R7 lesson records distinguish these reviewed selections from the donor’s proposal and from later rendering or formal correspondence checks. These cases show why terminology, grammar and quantification belong in the same review. A plainer noun is useful only if the sentence still makes the same claim.
+
+<a id="check-the-ordinary-words-that-carry-scope"></a>
+
+## Check the ordinary words that carry scope
+
+An unchanged formula can acquire a stronger claim from its surrounding prose. The R11 \#251 revision replaces “uses all late indices” by “permits changes at every index after the prefix” in a comparison construction \[paper251long, comparison construction\]. The second describes allowed positions, not a promise that every one is changed. In the sparse construction, the containing set $`S`$ and target interval are fixed before the target is chosen; the correction depends on that target, and its support may occupy only part of $`S`$ \[paper251, sparse-perturbation proposition\].
+
+The same revision replaces the claim that corrections can “grow arbitrarily slowly” by an eventual upper bound chosen in advance. Given any prescribed function tending to infinity, the corrections can eventually be bounded by it. This does not say that the corrections themselves tend to infinity. These repairs spell out the dependency that the short phrases obscured. They do not call for expanding every familiar expression: expand the one whose ordinary reading changes the theorem’s scope.
 
 <a id="rejecting-an-attractive-universal-rule"></a>
 
@@ -392,9 +400,9 @@ The recorded process began with reviewers proposing changes to particular papers
 
 Each returned manuscript then met a separate integration decision. In the later second round, only one of nine candidates was accepted, although the returns had passed transport checks. In the third round, integration included restoring seventeen named-input remarks removed during compression. These events exposed different questions: did the proposed files arrive intact, did the revision preserve the mathematics and credit, and did it explain the argument? A pass on the first question could not answer the others. Comparing short papers with their longer records also recovered useful material, as the \#251 buffer-coordinate case illustrates.
 
-The recent rounds supplied more explicit literary models, before-and-after passages and proposed general lessons. We compared these with the selected native source, reopened the cited passages and retained repairs alongside acceptances. The finite-remainder explanation survived this review; a claimed Knuth locator needed correction; a broad author–reader analogy did not by itself justify a specific rule about estimates. The resulting instructions therefore combine mathematical checks with reading practice, while the records preserve the disagreements and limits that compression would hide.
+Later rounds supplied more explicit source models and before-and-after passages. The finite-remainder explanation survived review; a Knuth locator needed correction; a broad author–reader analogy did not justify a specific rule about estimates. The records retain these different outcomes.
 
-This short/long pair is the next distillation of that sequence. The compact guide gives the writer actions; this companion explains why those actions are useful and when they are insufficient. A later packet can carry both at a fixed version, solicit another local revision and repeat the review. The systems paper \[systems\] describes the repository mechanisms supporting the process. Here the object of review is the editorial decision itself.
+The nine R11 paper returns subsequently received editorial acceptance. Their recorded replacement passages occur in the manuscripts supplied for this revision. That correspondence supports using selected examples here; it does not establish reader benefit or justify nine new instructions. The new finite-difference, scope and systems cases refine existing guidance. The systems paper \[systems\] describes the mechanisms that retain these records; this guide concerns the editorial judgments they make inspectable.
 
 <a id="from-one-case-to-a-bounded-amendment"></a>
 
@@ -406,21 +414,19 @@ The public records separate recent proposals, historical requests, source identi
 
 The record of a failure should be equally specific. Preserve the attempted implication, its assumptions, the witness to failure and the information missing from the argument. Failure of one estimate does not refute the theorem. Failure to run a check says that the check is unrun. An unavailable source says something about the review’s evidence, not about the truth of the source’s claim. These distinctions prevent a later writer from giving a historical obstacle more force than it had.
 
-<a id="what-the-next-packet-must-contain"></a>
+<a id="keep-a-revision-recoverable"></a>
 
-## What the next packet must contain
+## Keep a revision recoverable
 
-A frozen review packet should include the exact skill and guide it asks the recipient to follow, the compact paper, the relevant lessons, the source identities and this companion paper. A manifest records their paths and byte digests. The packet must also carry the primary originals needed for its selected specimens, with versions and reading-status declarations kept separate. A title in a bibliography or a list of annex files is not a substitute for a source that the recipient can actually inspect.
+Keep the manuscript, the guidance used and the source passages needed for review at identified versions. A manifest of paths and byte digests identifies the supplied files; it does not establish which passages anyone read. Retain the proposed words, their reason and limit, and the decision reached against the current argument. Later reviewers should be able to recover both the proposal and the accepted wording.
 
-The recipient can then compare those papers with the supplied manuscript: how does each introduce its object, make a hypothesis visible, motivate an estimate or credit an input? The return should identify the passage read, the feature adapted, the proposed local change and its limit. The repository agent reviews the proposal against the current mathematics, integrates an accepted change and amends the guidance only if the evidence warrants it. The next packet can consume that resulting version. This is a sequence of explicit document revisions, not training of model weights.
-
-Freezing a version matters because guidance can change during a review. An earlier packet cannot have applied a later correction to Knuth’s locator, and a later integration should not attribute that correction to the original return. Keeping both versions makes the difference inspectable. The same principle applies to mathematical status: a later accepted ordinary proof does not turn an earlier unassessed proposal into an already checked result.
+A later correction to a citation or proof does not become an achievement of the earlier return. Preserve both versions rather than silently replacing its history. Adopt a general lesson only through a separate review of its scope. This is revision of documents and guidance, not training of model weights.
 
 <a id="read-the-page-that-will-be-read"></a>
 
 ## Read the page that will be read
 
-The final pass uses the repository’s native sources and rendering tools. After changing a figure, inspect it at the size in which it appears. Follow a reference to the intended theorem or long-form argument, rather than merely checking that a target file exists. After reflow, inspect the affected pages and their neighbours: a useful explanation can be separated from its figure, or a small heading can be stranded above a page break. Bibliographic labels, captions, interval endpoints and cross-document links belong to this review.
+Render the sources that will be delivered, recording the toolchain used. After changing a figure, inspect it at the size in which it appears. Follow a reference to the intended theorem or long-form argument, rather than merely checking that a target file exists. After reflow, inspect the affected pages and their neighbours: a useful explanation can be separated from its figure, or a small heading can be stranded above a page break. Bibliographic labels, captions, interval endpoints and cross-document links belong to this review.
 
 Read the result along three routes. First, scan the title, abstract, introduction and main statements: recover the contribution and its boundary without importing private knowledge. Second, reconstruct the proof: identify where each hypothesis is used and explain the difficult inference in your own words. Third, try to use a result: check its assumptions on an example, locate an excluded case and find the cited input needed for an application.
 
@@ -439,6 +445,10 @@ The method leaves that empirical question open. It makes a particular editorial 
 The common task is to make the relation between a claim and its warrant legible. What counts as a warrant depends on the field and the sentence. For a mathematical theorem, state the domain and hypotheses, then explain the proof’s hard implication. A systems paper may describe a design, report an implemented mechanism or compare performance under a workload. Identify which of these is being claimed. An empirical comparison needs the tested implementation, conditions, comparator and observed result; a proposed design must not be presented as an implemented one. A build or artifact check concerns the tested objects, not unrestricted performance or usability.
 
 Levin and Redell distinguish papers about implemented systems, proposed systems and theoretical work, and caution that evaluation criteria vary across those classes \[levin-redell\]. The SIGPLAN empirical-evaluation guidance asks authors to state claims and limitations clearly, and treats its checklist as an aid to judgment rather than a universal score \[sigplan-evaluation\]. These are genre-specific primary sources, not proof authority for any particular system. A nearby systems paper’s opening and evaluation should also be read at their actual passages before transferring a sentence pattern.
+
+A fair comparison names the mechanisms already present in the closest work. Prove2Me separates immutable theorem statements from submitted proofs; its missions have a human-audited core, and its milestones link source statements to attested formalisations \[prove2me, §§3–4\]. The R11 systems revision credits those features before describing its own focus: a paper assertion at a specified revision, its full registered support set and a separate record binding explanatory prose to sources \[systems, related work\]. This is a comparison of recorded objects and responsibilities. It does not establish that the designs are exclusive, that one has priority, or that repository hosting is an advantage over a service.
+
+Verbs need equally precise subjects. In that revision, builders regenerate derived views; release checks test their consistency. Saying that the checks “update the records” would assign them a different operation. Naming who or what acts, on which input, and with which output is often enough to make an infrastructure description intelligible without inventing a private vocabulary \[systems, stored artifacts and executable tools\].
 
 The repository’s systems manuscript gives a concrete example. It reports nine rejections among ten deliberately false, author-selected edits in a historical trial. After one edit escaped, a follow-up checked the intact baseline and that escaped edit against a repair; the other nine edits were not rerun \[systems, recorded observations\]. The first report describes those ten trials, not a general $`90\%`$ reliability rate. The second describes the tested repair, not a post-repair ten-out-of-ten result. The manuscript also records missing original logs and the absence of an independent comparison. Those qualifications determine which conclusion the observations can support; they are not incidental implementation details.
 
@@ -510,6 +520,10 @@ R. Levin and D. D. Redell, How (and How Not) to Write a Good Systems Paper, *
 
 ACM SIGPLAN, Empirical Evaluation Guidelines, committee guidance and FAQ (updated 2018; inspected 1 October 2026). <https://sigplan-www.sigplan.hosting.acm.org/Resources/EmpiricalEvaluation/>.
 
+W. Cook, \#251 companion research record, R11 manuscript snapshot supplied 4 October 2026, comparison construction and sparse perturbations. <https://github.com/wcook04/plectis-erdos/blob/main/paper/251/erdos251-prime-gap-reasoning-surface.tex>.
+
+S. Chen, K. Marwaha, X. Lu, H. Yuen and T. Peng, *Prove2Me: An Open Collaborative Platform for Scaling Math Formalization*, arXiv:2608.28433v2, 31 August 2026. Cited passages: §§3–4. <https://arxiv.org/abs/2608.28433v2>.
+
 </div>
 
-*Source inspection and reproducibility.* This revision additionally reads §§2–3 of Knuth et al., printed pp. 7–8 (PDF pp. 9–10), beyond the §1 passages used previously. Worked examples were checked against manuscript sources frozen in the 1 October 2026 packet; snapshot and title-page dates may differ. Historical cases retain their stated revision identities. Repository links locate manuscript families; the review record identifies the inspected versions, passages and integration decisions.
+*Source inspection and reproducibility.* This revision uses the manuscript snapshot supplied on 4 October 2026. The new R11 examples refer to that snapshot; older worked cases and bibliography entries retain their stated dates and revision identities. The writing-source reading includes Halmos on audience, organisation and honesty; Knuth et al., §§1–3, including the proof comparison on printed pp. 7–8 (PDF pp. 9–10); Gowers’s examples-first essay; and Tao’s writing overview and advice against overoptimisation. The new systems comparison uses Prove2Me version 2, §§3–4. Repository links locate manuscript families, not immutable snapshots. The accompanying reading and revision records identify the inspected versions, passages, source bytes and decisions; they do not claim a full reading of every source enclosed in the packet.

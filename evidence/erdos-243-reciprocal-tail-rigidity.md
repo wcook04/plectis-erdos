@@ -616,7 +616,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="res-weights"></a>
 
-## Lemma 7.2 (weights and linear density), page 16
+## Lemma 7.2 (weights and linear density), page 17
 
 > *Let $`u_j`$ be positive integers, let $`w_j\ge0`$, and put $`F(X)=\sum_{u_j\le X}w_j`$, with the sum allowed a priori to be $`+\infty`$. Then $`\liminf_{X\to\infty}F(X)/X=0`$ if and only if there is a finite nonincreasing $`f:[1,\infty)\to[0,\infty)`$ with $`\int_1^\infty f(t)\,dt=\infty`$ and $`\sum_jw_jf(u_j)<\infty`$.*
 

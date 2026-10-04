@@ -155,7 +155,7 @@ which completes the proof of Theorem <a href="#thm:kkernelrank" data-reference-
 
 </div>
 
-The reductions give a second way to test a linear identity, by substitution. Consider base six at level two, where the family has $`43`$ indices. The $`37`$ retained sections are $`F_{0,0},F_{1,0}`$, the five $`F_{1,r}`$ ($`1\le r\le5`$), and the $`30`$ sections $`F_{2,r}`$ with $`1\le r<36`$ and $`6\nmid r`$. The omitted sections satisfy
+Once independence is known, a linear identity can be tested by substitution alone: reduce to the retained sections and compare their coefficients. Consider base six at level two, where the family has $`43`$ indices. The $`37`$ retained sections are $`F_{0,0},F_{1,0}`$, the five $`F_{1,r}`$ ($`1\le r\le5`$), and the $`30`$ sections $`F_{2,r}`$ with $`1\le r<36`$ and $`6\nmid r`$. The omitted sections satisfy
 ``` math
 \begin{aligned}
  F_{2,0}&=6F_{1,0}, & F_{2,6}&=2F_{1,1}, & F_{2,12}&=4F_{1,2},\\
@@ -207,7 +207,7 @@ An alternative is to test equality at finitely many inputs. Return to base six a
 
 </div>
 
-A similar use of congruences produces a nonzero totient residue between arbitrarily long blocks of zero residues. We use this to classify the rational series obtained from bounded functions of dyadic totient residues. The proof rests on a tail estimate: one zero block makes the tail vanish under the assumption of rationality, and the other leaves a nonzero term too small for that assumption. In the first sum below, residues are represented by their least nonnegative values. These coefficients need not be binary digits.
+In the evaluation proof, congruences make one totient value nonzero modulo the auxiliary prime in each row. Here they isolate one nonzero residue between two arbitrarily long zero blocks. Rationality confines every scaled tail to a fixed discrete set. Boundedness and the zero blocks then force a nonzero tail whose absolute value is smaller than the spacing of that set. In the first sum below, residues are represented by their least nonnegative values. These coefficients need not be binary digits.
 
 <div id="res:residueseries" class="theorem">
 <p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos249/PaperCompleteR7/RationalObservableClassification.lean#L276">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/846d57d3f9926696332d782eb232aaf3cf803a99/evidence/erdos-249-binary-totient-series.md#res-residueseries-comparator">Comparator</a></p>
@@ -335,7 +335,7 @@ To obtain the second identity, write every residue at level $`j+1`$ as $`k^ji+r`
 
 </div>
 
-The proof of Theorem <a href="#res:residueseries" data-reference-type="ref" data-reference="res:residueseries">3</a> uses boundedness where a long zero block makes the tail small. For $`S`$, the estimate $`0\le\varphi(n)\le n`$ proves convergence, but forcing $`2^L\mid\varphi(N+L)`$ with $`N+L>1`$ already requires $`2^L\le N+L-1`$. The tail bound $`(N+L+2)2^{-L}`$ then exceeds $`1`$. Thus this divisibility construction does not supply the small nonzero tail needed to exclude a rational value. We consider instead a finite test for differences of scaled tails.
+The proof of Theorem <a href="#res:residueseries" data-reference-type="ref" data-reference="res:residueseries">3</a> uses boundedness where a long zero block makes the tail small. For $`S`$, the estimate $`0\le\varphi(n)\le n`$ proves convergence, but forcing $`2^L\mid\varphi(N+L)`$ with $`N+L>1`$ already requires $`2^L\le N+L-1`$. The tail bound $`(N+L+2)2^{-L}`$ then exceeds $`1`$. This is a failure of the estimate, not a lower bound on the tail. Thus this divisibility construction does not supply the small nonzero tail needed to exclude a rational value. We consider instead a finite test for differences of scaled tails.
 
 Put $`R_N=\sum_{j\ge1}\varphi(N+j)2^{-j}`$ and $`\Delta_h(N)=R_{N+h}-R_N`$. Subtracting the finite-prefix identities for $`2^{N+h}S`$ and $`2^NS`$ gives
 ``` math
@@ -462,7 +462,7 @@ For every $`h\ge1`$ and every $`X_0`$, suppose that some integers $`X\ge\max(X_0
        \exp(2\pi iD_{h,N,L}/2^L)\le\frac9{10}X.
 \end{equation}
 ```
-These inequalities would prove irrationality. Indeed, if every residue failed <a href="#eq:r3-certificate" data-reference-type="eqref" data-reference="eq:r3-certificate">[eq:r3-certificate]</a>, each phase would be within $`1/16`$ of an integer, so every real part would be at least $`\cos(\pi/8)>9/10`$. Some $`N`$ in the block must therefore satisfy <a href="#eq:r3-certificate" data-reference-type="eqref" data-reference="eq:r3-certificate">[eq:r3-certificate]</a>. For a hypothetical rational value, we choose its period and then a sufficiently late block, contradicting <a href="#eq:tail-phase" data-reference-type="eqref" data-reference="eq:tail-phase">[eq:tail-phase]</a>.
+These inequalities would prove irrationality. Indeed, if every residue failed <a href="#eq:r3-certificate" data-reference-type="eqref" data-reference="eq:r3-certificate">[eq:r3-certificate]</a>, each $`D_{h,N,L}/2^L`$ would be within $`1/16`$ of an integer. Each exponential would then have real part at least $`\cos(\pi/8)>9/10`$. Some $`N`$ in the block must therefore satisfy <a href="#eq:r3-certificate" data-reference-type="eqref" data-reference="eq:r3-certificate">[eq:r3-certificate]</a>. For a hypothetical rational value, we choose its period and then a sufficiently late block, contradicting <a href="#eq:tail-phase" data-reference-type="eqref" data-reference="eq:tail-phase">[eq:tail-phase]</a>.
 
 To separate the counting estimates from the cancellation estimate, we single out one totient in each window. Fix $`h,s\ge1`$, $`L\ge s+h`$, $`X\ge1`$ and $`0<\eta<1`$, and put $`t=L-s+1`$ and $`E_N=\exp(2\pi iD_{h,N,L}/2^L)`$. For $`X\le N<2X`$, let $`p_N`$ be the largest prime factor of $`N+t`$ and $`m_N=(N+t)/p_N`$. Define
 ``` math

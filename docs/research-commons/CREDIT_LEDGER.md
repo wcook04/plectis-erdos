@@ -17,7 +17,7 @@ Published papers, forum posts and software are credited in [source attributions]
 
 - **What they told us:** A mathematician said the #243 note used names that meant nothing on a first or second reading, defined notation it used once, and never said how restrictive its main hypothesis was.
 - **What changed:** All sixteen problem papers were rewritten for a first-time reader, naming standard tools and saying how restrictive each hypothesis is, and the public writing rules now require it.
-- **Where to see it:** [paper/243/erdos-243-reciprocal-tail-rigidity.tex, line 603](../../paper/243/erdos-243-reciprocal-tail-rigidity.tex#L603-L603); [paper/243/erdos-243-reciprocal-tail-rigidity.tex, lines 711–733](../../paper/243/erdos-243-reciprocal-tail-rigidity.tex#L711-L733); [skills/public-mathematical-writing/SKILL.md, lines 204–215](../../skills/public-mathematical-writing/SKILL.md?plain=1#L204-L215); [docs/papers/SHORT\_PAPER\_CONTRACT.md, line 15](../../docs/papers/SHORT_PAPER_CONTRACT.md?plain=1#L15-L15); [docs/papers/SHORT\_PAPER\_CONTRACT.md, line 23](../../docs/papers/SHORT_PAPER_CONTRACT.md?plain=1#L23-L23)
+- **Where to see it:** [paper/243/erdos-243-reciprocal-tail-rigidity.tex, line 607](../../paper/243/erdos-243-reciprocal-tail-rigidity.tex#L607-L607); [paper/243/erdos-243-reciprocal-tail-rigidity.tex, lines 715–737](../../paper/243/erdos-243-reciprocal-tail-rigidity.tex#L715-L737); [skills/public-mathematical-writing/SKILL.md, lines 204–215](../../skills/public-mathematical-writing/SKILL.md?plain=1#L204-L215); [docs/papers/SHORT\_PAPER\_CONTRACT.md, line 15](../../docs/papers/SHORT_PAPER_CONTRACT.md?plain=1#L15-L15); [docs/papers/SHORT\_PAPER\_CONTRACT.md, line 23](../../docs/papers/SHORT_PAPER_CONTRACT.md?plain=1#L23-L23)
 - **Problems:** #68, #243, #249, #251, #257, #269, #1041, #1049
 - **Name:** withheld until they confirm (credited as a mathematician).
 - **Full record:** [source attributions](SOURCE_ATTRIBUTIONS.md#source-correspondence-004)
@@ -28,7 +28,7 @@ Published papers, forum posts and software are credited in [source attributions]
 
 - **What they told us:** A mathematician said the trouble with AI-assisted mathematics is that it rarely shows where its methods and ideas come from.
 - **What changed:** A literature review was run for each of the eight problems, and each paper now credits its sources at the point where they are used.
-- **Where to see it:** [paper/251/erdos-251-prime-gap-dyadic-series.tex, lines 68–73](../../paper/251/erdos-251-prime-gap-dyadic-series.tex#L68-L73); [docs/papers/SHORT\_PAPER\_CONTRACT.md, line 19](../../docs/papers/SHORT_PAPER_CONTRACT.md?plain=1#L19-L19)
+- **Where to see it:** [paper/251/erdos-251-prime-gap-dyadic-series.tex, lines 70–75](../../paper/251/erdos-251-prime-gap-dyadic-series.tex#L70-L75); [docs/papers/SHORT\_PAPER\_CONTRACT.md, line 19](../../docs/papers/SHORT_PAPER_CONTRACT.md?plain=1#L19-L19)
 - **Commits:** [029c90d414](https://github.com/wcook04/plectis-erdos/commit/029c90d4144d6087ba62d08ffc8b3cee1a9a165e), [7148c5ae4a](https://github.com/wcook04/plectis-erdos/commit/7148c5ae4a4a2f3802cccdeed62c394f64593340)
 - **Problems:** #68, #243, #249, #251, #257, #269, #1041, #1049
 - **Name:** withheld until they confirm (credited as a mathematician).

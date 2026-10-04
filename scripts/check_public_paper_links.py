@@ -38,6 +38,7 @@ class LinkOccurrence:
     page: int
     kind: str
     target: str
+    destination: str = ""
 
 
 @dataclass(frozen=True)
@@ -94,6 +95,7 @@ def pdf_links(paths: Iterable[Path]) -> list[LinkOccurrence]:
                             page_number,
                             "cross_pdf",
                             str(action.get("/F")),
+                            str(action.get("/D")) if isinstance(action.get("/D"), str) else "",
                         )
                     )
     return rows
@@ -102,6 +104,22 @@ def pdf_links(paths: Iterable[Path]) -> list[LinkOccurrence]:
 def without_fragment(url: str) -> str:
     split = urllib.parse.urlsplit(url)
     return urllib.parse.urlunsplit((split.scheme, split.netloc, split.path, split.query, ""))
+
+
+def missing_named_destinations(rows: Iterable[LinkOccurrence], pdfs: Iterable[Path]) -> list[LinkOccurrence]:
+    """Resolve rendered GoToR names against the shipped target's name tree."""
+    paths = {path.name: path for path in pdfs}
+    names: dict[str, set[str]] = {}
+    missing = []
+    for row in rows:
+        target = Path(row.target).name
+        if not row.destination or target not in paths:
+            continue
+        if target not in names:
+            names[target] = set(_load_pdf_reader()(str(paths[target])).named_destinations)
+        if row.destination not in names[target]:
+            missing.append(row)
+    return missing
 
 
 def check_url(url: str, *, timeout: float) -> NetworkResult:
@@ -180,6 +198,7 @@ def audit(*, network: bool, jobs: int, timeout: float) -> dict:
     missing_cross_rows = [
         row for row in cross_rows if Path(row.target).name not in shipped_pdf_names
     ]
+    missing_destination_rows = missing_named_destinations(cross_rows, pdfs)
 
     network_rows = run_network(
         (row.target for row in uri_rows), jobs=jobs, timeout=timeout
@@ -196,7 +215,7 @@ def audit(*, network: bool, jobs: int, timeout: float) -> dict:
         for row in network_rows
         if row.status == 0 or row.status in INCONCLUSIVE_HTTP_CODES
     ]
-    ok = not local_uri_rows and not missing_cross_rows and not broken
+    ok = not local_uri_rows and not missing_cross_rows and not missing_destination_rows and not broken
     return {
         "schema": "public_paper_link_audit_v1",
         "ok": ok,
@@ -208,6 +227,7 @@ def audit(*, network: bool, jobs: int, timeout: float) -> dict:
         "cross_pdf_annotation_count": len(cross_rows),
         "local_uri_rows": [asdict(row) for row in local_uri_rows],
         "missing_cross_pdf_rows": [asdict(row) for row in missing_cross_rows],
+        "missing_named_destination_rows": [asdict(row) for row in missing_destination_rows],
         "broken_network_rows": [asdict(row) for row in broken],
         "inconclusive_network_rows": [asdict(row) for row in inconclusive],
         "network_ok_count": sum(200 <= row.status < 400 for row in network_rows),
@@ -239,6 +259,8 @@ def main() -> int:
             f"{receipt['distinct_public_target_count']} distinct public targets, "
             f"{receipt['cross_pdf_annotation_count']} cross-PDF links"
         )
+        for row in receipt["missing_named_destination_rows"]:
+            print(f"BROKEN PDF destination {row['pdf']}:{row['page']} -> {row['target']}#{row['destination']}")
         if receipt["broken_network_rows"]:
             for row in receipt["broken_network_rows"]:
                 print(f"BROKEN {row['status']} {row['url']} {row['error']}")

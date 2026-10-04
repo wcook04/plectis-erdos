@@ -288,16 +288,16 @@ Lean checks this scaling implication under the named input `LowCriticalThirteenT
 
 ## The analytic argument
 
-Suppose that no pair can be connected with length less than $`2`$ in $`\Omega_f`$. At a regular level $`t\in(\mu,1)`$ we take the component $`C_t`$ containing a chosen first merger and write $`a=\operatorname{Area}(C_t)/\pi\le1`$, $`x=\log(t/\mu)`$. Uniformising $`C_t`$ by the disc, the Bergman segment estimate bounds the length between roots at hyperbolic distance $`d`$ by $`\sqrt{2a\log\cosh(d/2)}`$. The assumption on connecting curves therefore forces pairwise distance at least $`D`$, where $`\cosh(D/2)=e^{2/a}`$.
+Suppose that no pair can be connected with length less than $`2`$ in $`\Omega_f`$. At a regular level $`t\in(\mu,1)`$ we take the component $`C_t`$ containing a chosen first merger. Let $`k\ge2`$ be its number of roots, and put $`a=\operatorname{Area}(C_t)/\pi\le1`$ and $`x=\log(t/\mu)`$. In the disc uniformisation, hyperbolic distance is normalised by $`d(0,s)=2\operatorname{artanh}s`$ for $`0\le s<1`$. The Bergman segment estimate bounds the length between roots at hyperbolic distance $`d`$ by $`\sqrt{2a\log\cosh(d/2)}`$. The assumption on connecting curves therefore forces pairwise distance at least $`D`$, where $`\cosh(D/2)=e^{2/a}`$.
 
-Choose the centre of this uniformisation on a connected set through the first pair in $`K_\mu(f)`$, outside every intrinsic open unit ball centred at a root. Such a point exists: those balls are pairwise disjoint under that assumption and cannot cover a connected set containing two roots. If $`d_j`$ are the distances of the roots from this centre, the one-root Bergman estimate and the finite Blaschke product for $`f/t`$ give
+Intrinsic distance in $`C_t`$ means the infimum of Euclidean lengths of curves in $`C_t`$. Choose the centre $`h`$ of the uniformisation on a connected set through the first pair in $`K_\mu(f)`$, outside every intrinsic open unit ball centred at a root. Such a point exists: those balls are pairwise disjoint under that assumption and cannot cover a connected set containing two roots. If $`d_j`$ are the hyperbolic distances of the roots from this centre, we obtain
 ``` math
 \lambda(d_j)\le\tfrac12\delta(a),\qquad
  \sum_j\lambda(d_j)\ge x,\qquad
  \lambda(d)=-\log\tanh(d/2),\quad
  \delta(a)=-\log(1-e^{-1/a}).
 ```
-The Blaschke product requires a total contribution of at least $`x`$, while each root contributes at most $`\delta(a)/2`$. This already gives $`k\ge2x/\delta(a)`$. The pairwise separation gives additional information, which the following packing estimate uses to improve this lower bound. The passage through a first merger, including simultaneous mergers, is part of the analytic input still to be formalised.
+The one-root Bergman estimate gives the first bound because every root has intrinsic distance at least $`1`$ from $`h`$. For the second, $`h`$ is not a root and lies in $`K_\mu(f)`$, so evaluating the finite Blaschke product for $`f/t`$ at the centre gives $`\sum_j\lambda(d_j)=\log(t/|f(h)|)\ge x`$. Thus the total contribution is at least $`x`$, while each root contributes at most $`\delta(a)/2`$, giving $`k\ge2x/\delta(a)`$. The pairwise separation gives additional information, which the following packing estimate uses to improve this lower bound. The passage through a first merger, including simultaneous mergers, is part of the analytic input still to be formalised.
 
 <div id="circle-packing-inputs">
 
@@ -309,7 +309,7 @@ w(d,r)=\arccos\!\left(\operatorname{clamp}_{[-1,1]}
  \frac{\cosh d\cosh r-\cosh(D/2)}{\sinh d\sinh r}\right),
  \qquad \sum_jw(d_j,r)\le\pi.
 ```
-This circle-slice inequality is formalised separately. If nonnegative weights $`\sigma_i`$ at radii $`r_i`$ give $`\lambda(d)\le U+\sum_i\sigma_iw(d,r_i)`$ for every admissible $`d`$, where $`U>0`$, summing at the $`k`$ roots gives
+This circle-slice inequality is formalised separately. If nonnegative weights $`\sigma_i`$ at radii $`r_i>0`$ give $`\lambda(d)\le U+\sum_i\sigma_iw(d,r_i)`$ for every $`d>0`$ satisfying $`\lambda(d)\le\delta(a)/2`$, where $`U>0`$, summing at the $`k`$ roots gives
 ``` math
 \begin{equation}
 \label{eq:short-packing}
@@ -318,7 +318,7 @@ This circle-slice inequality is formalised separately. If nonnegative weights $`
 ```
 The circle must be fixed before taking these intersections: angular projections of disjoint balls at different distances can overlap.
 
-To obtain area growth, lift one common value radius from all $`k`$ roots to $`\partial C_t`$, and join successive endpoints by boundary arcs. Splitting the lift integral at level $`\mu`$ gives mean total length at most $`\sqrt{ka(x+2)/2}`$. The sum of the $`k`$ adjacent-root connections counts each lift twice and the boundary once, so $`2k\le\sqrt{2ka(x+2)}+\mathcal H^1(\partial C_t)`$. Combining this with $`\mathcal H^1(\partial C_t)^2\le2\pi k t\,(d/dt)\operatorname{Area}(C_t)`$ yields the ordinary differential inequality
+To obtain area growth, lift one common value radius from all $`k`$ roots to $`\partial C_t`$, and join successive endpoints by boundary arcs. These arcs remain in $`\Omega_f`$ because $`t<1`$. Splitting the lift integral at level $`\mu`$ gives mean total length at most $`\sqrt{ka(x+2)/2}`$. The sum of the $`k`$ adjacent-root connections counts each lift twice and the boundary once, so $`2k\le\sqrt{2ka(x+2)}+\mathcal H^1(\partial C_t)`$. Combining this with $`\mathcal H^1(\partial C_t)^2\le2\pi k t\,(d/dt)\operatorname{Area}(C_t)`$ yields the ordinary differential inequality
 ``` math
 \begin{equation}
 \label{eq:short-area-growth}
@@ -386,20 +386,22 @@ The geometric conclusion assumes the construction in Remark <a href="#res:criti
 
 ## Square roots and component area
 
-Here is the ordinary argument behind the two remarks. Choose $`\alpha^n=v`$ and normalise to $`P(z)=v^{-1}f(c+\alpha z)`$. The component $`U`$ above $`D(w_0,S)`$ containing $`0`$ has degree two, as follows by exhausting with regular discs and applying Riemann–Hurwitz. Since $`U`$ is simply connected and $`1-P`$ has only a double zero at $`0`$ there, it has a single-valued analytic square root $`\xi`$. The resulting map is a proper local biholomorphism onto $`V=\{\xi:|\xi^2-(1-w_0)|<S\}`$, which is star-shaped and hence simply connected. It is therefore biholomorphic, and its inverse maps $`[-1,1]`$ to the proposed connection. Along this interval $`P=1-\xi^2\in[0,1]`$, which gives the required containment.
+Here is the ordinary argument behind the two remarks. Choose $`\alpha^n=v`$ and normalise to $`P(z)=v^{-1}f(c+\alpha z)`$. The component $`U`$ above $`D(w_0,S)`$ containing $`0`$ has degree two, as follows by exhausting with regular discs and applying Riemann–Hurwitz. The exhaustion is needed because other critical values may lie on the outer boundary. Since $`U`$ is simply connected and $`1-P`$ has only a double zero at $`0`$ there, it has a single-valued analytic square root $`\xi`$. The resulting map is a proper local biholomorphism onto $`V=\{\xi:|\xi^2-(1-w_0)|<S\}`$, which is star-shaped and hence simply connected. It is therefore biholomorphic, and its inverse maps $`[-1,1]`$ to the proposed connection. Along this interval $`P=1-\xi^2\in[0,1]`$, which gives the required containment. Let $`L`$ be the Euclidean length of this normalised curve.
 
-Put $`a=1-w_0`$ and $`p=w_0(1-w_0)`$. We map $`V`$ to the unit disc by
+Put $`a=1-w_0`$ and $`p=w_0(1-w_0)`$. Squaring maps $`V`$ onto $`D(a,S)`$. A Möbius map from this disc to the unit disc fixing $`0`$, followed by taking a square root, gives the conformal map
 ``` math
 \zeta=\xi\sqrt{\frac{S}{S^2+a\xi^2-a^2}}.
 ```
-The endpoints $`\xi=\pm1`$ map to $`\zeta=\pm q`$, where $`q^2=S/(S^2+p)`$. The Bergman estimate is consequently
+Choose the square-root factor positive at $`0`$. The endpoints $`\xi=\pm1`$ then map to $`\zeta=\pm q`$, where $`q^2=S/(S^2+p)`$. The hypothesis on $`S`$ gives $`S^2-S+p=(S-w_0)(S-(1-w_0))>0`$, so $`0<q<1`$. The Bergman segment estimate therefore applies and gives
 ``` math
 L^2\le\frac2\pi\log\frac{S^2+S+p}{S^2-S+p}\,
                     \operatorname{Area}(U).
 ```
-The remaining estimate uses the fact that $`U`$ contains only two of the $`n`$ roots. An area bound for the whole lemniscate would lose this information. The companion therefore first treats a regular component $`W`$ containing $`k<n`$ roots, using an exterior map. Reflecting the $`n-k`$ exterior-root factors into the disc gives a Blaschke product $`B`$ with $`|B(0)|=\operatorname{cap}(\overline W)^n/t`$ and $`|B'|<n`$ on the boundary. Summing reciprocal derivatives over the fibre opposite $`B(0)`$ gives $`(n-k)/n<(1-|B(0)|)/(1+|B(0)|)`$, or equivalently $`\operatorname{cap}(\overline W)^n/t<k/(2n-k)`$. For $`k=2`$, this inequality and Pólya’s area–capacity inequality \[polya1928, printed pp. 280–282\], \[crane, Theorem 6\], followed by exhaustion, give $`\operatorname{Area}(U)\le\pi(S/(n-1))^{2/n}`$. We restore the length scale $`|v|^{1/n}`$ to obtain <a href="#eq:disk-family-length" data-reference-type="eqref" data-reference="eq:disk-family-length">[eq:disk-family-length]</a>. Dubinin’s relative area inequality \[dubinin, Theorem 1\] has a different full-covering hypothesis; the absolute component estimate is needed here.
+The remaining estimate uses the degree-two count; an area bound for the whole lemniscate would lose this information. The companion first treats a monic polynomial $`F`$ of degree $`n`$, a regular level $`t>0`$ of $`|F|`$, and a component $`W`$ of $`\{|F|<t\}`$ containing $`k<n`$ zeros of $`F`$, counted with multiplicity. Reflecting the $`n-k`$ exterior-root factors into the disc gives a Blaschke product $`B`$ with $`|B(0)|=\operatorname{cap}(\overline W)^n/t`$ and $`|B'|<n`$ on the boundary. Summing reciprocal derivatives over the fibre opposite $`B(0)`$ gives $`(n-k)/n<(1-|B(0)|)/(1+|B(0)|)`$, or equivalently $`\operatorname{cap}(\overline W)^n/t<k/(2n-k)`$.
 
-<span id="res:separation-parent" label="res:separation-parent"></span> For the conditional threshold, decrease $`S`$ to $`4/3`$. Since $`p\ge0`$ and $`n\ge3`$, the logarithm is at most $`\log7<2`$ and $`(S/(n-1))^{2/n}\le1`$, giving $`L<2|v|^{1/n}<2`$. For $`n=3,w_0=1,S=6/5`$, use $`(3/5)^{2/3}\log11<2`$. The chosen critical value must be nonzero and have modulus less than one. Root locations by themselves do not isolate it from the others. <span id="bdry:critical-value-separation" label="bdry:critical-value-separation"></span>
+Apply this to $`F=P-w_0`$ on the regular inner components exhausting $`U`$. Their degree is two, so $`k=2`$ and $`k/(2n-k)=1/(n-1)`$. Pólya’s area–capacity inequality \[polya1928, printed pp. 280–282\], \[crane, Theorem 6\], followed by exhaustion, now gives $`\operatorname{Area}(U)\le\pi(S/(n-1))^{2/n}`$. The original curve has length $`\operatorname{length}(\Gamma)=|v|^{1/n}L`$, which gives <a href="#eq:disk-family-length" data-reference-type="eqref" data-reference="eq:disk-family-length">[eq:disk-family-length]</a>. Dubinin’s relative area inequality \[dubinin, Theorem 1\] has a different full-covering hypothesis; the absolute component estimate is needed here.
+
+<span id="res:separation-parent" label="res:separation-parent"></span> For the conditional threshold, decrease $`S`$ to $`4/3`$. Since $`p\ge0`$ and $`n\ge3`$, the logarithm is at most $`\log7<2`$ and $`(S/(n-1))^{2/n}\le1`$, giving $`\operatorname{length}(\Gamma)<2|v|^{1/n}<2`$. For $`n=3,w_0=1,S=6/5`$, use $`(3/5)^{2/3}\log11<2`$. The chosen critical value must be nonzero and have modulus less than one. Root locations by themselves do not isolate it from the others. <span id="bdry:critical-value-separation" label="bdry:critical-value-separation"></span>
 
 <a id="sec:other-results"></a>
 
@@ -500,7 +502,7 @@ Substituting $`q=e^{-kt}`$ gives the identity. Since the integrand increases fro
 
 <span id="res:ray" label="res:ray"></span> For a finite interval $`[a,b]`$, assume the Newton equation only for $`a<t<b`$ and continuity of $`f(z(t))`$ up to both endpoints. The interior identity then extends to $`f(z(b))=e^{a-b}f(z(a))`$, without evaluating $`f/f'`$ at an endpoint. Nonzero endpoint values therefore lie on the same positive ray. Critical values with distinct arguments exclude such a connection; distinct moduli are insufficient.
 
-<span id="res:locus" label="res:locus"></span> A generic constant perturbation separates rays when the original critical values are distinct, but cannot split equal values. The companion records an unformalised argument that a linear perturbation can do so generically. Neither qualitative assertion supplies a numerical perturbation bound that preserves a near-extremal path inequality. The [forbidden-ray locus calculation](../../../paper/1041/erdos1041-lemniscate-reasoning-surface.pdf#nameddest=argument-perturbation-proof) and the local logarithmic expansion, with remainder $`nq^{N+1}/((N+1)(1-q))`$ for $`q<1`$, specify the available control. The expansion is inapplicable at the distance to the nearest zero.
+<span id="res:locus" label="res:locus"></span> A generic constant perturbation separates rays when the original critical values are distinct, but cannot split equal values. The formal sources give the [one-parameter collision locus](https://github.com/wcook04/plectis-erdos/blob/7380b7871687b6bcc41ca0143c61f232e8af6500/lean/ErdosProblems/Erdos1041/NewtonFlowRaySeparation.lean#L107) and the [finite affine-line avoidance argument](https://github.com/wcook04/plectis-erdos/blob/7380b7871687b6bcc41ca0143c61f232e8af6500/lean/ErdosProblems/Erdos1041/NewtonFlowRaySeparation.lean#L162). The companion records an unformalised argument that a linear perturbation can do so generically. Neither qualitative assertion supplies a numerical perturbation bound that preserves a near-extremal path inequality. The [forbidden-ray locus calculation](../../../paper/1041/erdos1041-lemniscate-reasoning-surface.pdf#nameddest=argument-perturbation-proof) and the local logarithmic expansion, with remainder $`nq^{N+1}/((N+1)(1-q))`$ for $`q<1`$, specify the available control. The expansion is inapplicable at the distance to the nearest zero.
 
 <a id="res:component-local-covering"></a>
 

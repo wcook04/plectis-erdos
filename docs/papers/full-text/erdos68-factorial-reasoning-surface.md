@@ -8,7 +8,7 @@
 
 </div>
 
-We give the integer-coordinate classification and finite-gcd calculation for factorial-weighted cancellation, together with support and coefficient norm refinements. For $`S=\sum_{n\ge2}(n!-1)^{-1}`$, we derive lower bounds on common denominators and describe prime-power cancellation in reduced partial sums. Carry and factorial-digit criteria isolate the remaining nonintegrality questions. Recorded exact computations exclude $`q\mid299999!`$ and $`q<2^{39990}`$ when $`S=a/q`$; these computations are outside Lean and do not settle irrationality.
+We give the integer-coordinate classification and finite-gcd calculation for factorial-weighted cancellation, together with support and coefficient norm refinements. For $`S=\sum_{n\ge2}(n!-1)^{-1}`$, we derive lower bounds on common denominators and describe prime-power cancellation in reduced partial sums. Carry and factorial-digit criteria give equivalent formulations of irrationality. Recorded exact computations exclude $`q\mid299999!`$ and $`q<2^{39990}`$ when $`S=a/q`$; these computations are outside Lean and do not settle irrationality.
 
 <div id="long68:res:problem" class="problem">
 
@@ -20,7 +20,7 @@ Erdős posed this question in 1988, together with the expectation that the corre
 
 We first construct integer linear forms $`MS+k`$ in $`S`$. The coefficient $`M`$ is a factorial-weighted sum of the entries of a finite integer vector. Its possible values, when specified initial weighted sums vanish, form an explicitly computable ideal of $`\mathbb Z`$. The proof starts with adjacent factorial differences. Eliminating the proper divisors of each index gives an integral basis, in which the cancellation equations prescribe the lower coordinates. Restricting the support to indices at least two then leaves one linear Diophantine equation. The accompanying short paper gives the basis construction, the finite-gcd proof, and an example attaining the least positive value $`M=1380`$ when the sums indexed by $`2,3,4`$ vanish.
 
-We also minimise support sizes and coefficient norms, and construct primitive vectors supported on arithmetic progressions. These impose additional requirements on the coefficients. The carry, digit and reduced-denominator arguments address nonintegrality of the resulting linear form. Changing a vector while preserving $`M`$ changes the remainder by an integer. It may simplify the calculation, but it cannot change whether the remainder is integral. That condition requires a separate argument.
+For the depth-four calculation, we also minimise support sizes and coefficient norms among vectors supported on $`\{2,\ldots,8\}`$. A separate construction gives primitive vectors supported on arithmetic progressions. The carry, digit and reduced-denominator arguments address nonintegrality of the resulting linear form. Changing a vector while preserving $`M`$ changes the remainder by an integer. It may simplify the calculation, but it cannot change whether the remainder is integral. That condition requires a separate argument.
 
 Throughout, write
 ``` math
@@ -198,7 +198,7 @@ For finite integer vectors supported on $`n\ge2`$ and cancelling all weighted su
 
 </div>
 
-The support equation determines which basis coefficients are admissible. The same coefficients give the remainder explicitly. This identifies what remains to be proved after constructing a vector: its fractional part is fixed by $`M`$, whereas the free higher coordinates change only its integer part.
+The support equation determines which basis coefficients are admissible. For a fixed admissible value of $`M`$, those choices give remainders differing by integers. The following formula records the integer offset and shows why changing the vector at that value of $`M`$ cannot alter nonintegrality.
 
 <div id="long68:res:residual-transparency" class="theorem">
 <p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/846d57d3f9926696332d782eb232aaf3cf803a99/evidence/erdos68-factorial-reasoning-surface.md#long68-res-residual-transparency">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/846d57d3f9926696332d782eb232aaf3cf803a99/evidence/erdos68-factorial-reasoning-surface.md#long68-res-residual-transparency-comparator">Comparator</a></p>
@@ -307,7 +307,7 @@ To verify the last value, $`u_7=0`$, while $`840=\operatorname{lcm}(1,\ldots,8)`
 
 ## Support bounds and nonintegrality
 
-The basis formula <a href="#long68:eq:low-channel-basis" data-reference-type="eqref" data-reference="long68:eq:low-channel-basis">[long68:eq:low-channel-basis]</a> describes all solutions of the weighted-sum equations, and <a href="#long68:eq:low-channel-support" data-reference-type="eqref" data-reference="long68:eq:low-channel-support">[long68:eq:low-channel-support]</a> imposes the support restriction. The remainder identity then determines their residues modulo $`\mathbb{Z}`$. In particular, $`\mathcal R(c)`$ is an integer linear form in $`1`$ and $`S`$, and its distance from the nearest integer equals that of $`M(c)S`$. Integer translation can choose a representative near zero, but cannot change this distance. To exclude every rational denominator this way, each positive integer $`q`$ must divide the coefficient $`M`$ of some nonintegral form in the family. Eventual divisibility by every fixed $`q`$ is sufficient; growth of the values of $`M`$ alone is not. For example, the compulsory factor $`12L_D`$ has $`3`$-adic valuation exactly $`1`$ for every $`D`$, so this necessary divisor alone does not guarantee $`9\mid M`$.
+The basis formula <a href="#long68:eq:low-channel-basis" data-reference-type="eqref" data-reference="long68:eq:low-channel-basis">[long68:eq:low-channel-basis]</a> describes all solutions of the weighted-sum equations, and <a href="#long68:eq:low-channel-support" data-reference-type="eqref" data-reference="long68:eq:low-channel-support">[long68:eq:low-channel-support]</a> imposes the support restriction. The remainder identity then determines their residues modulo $`\mathbb{Z}`$. In particular, $`\mathcal R(c)`$ is an integer linear form in $`1`$ and $`S`$, and its distance from the nearest integer equals that of $`M(c)S`$. Integer translation can choose a representative near zero, but cannot change this distance. To exclude every rational denominator this way, each positive integer $`q`$ must divide the coefficient $`M`$ of some nonintegral form in the family. It would suffice to find a family of nonintegral forms whose values of $`M`$ are eventually divisible by every fixed $`q`$; growth alone does not give this divisibility. For example, the compulsory factor $`12L_D`$ has $`3`$-adic valuation exactly $`1`$ for every $`D`$, so this necessary divisor alone does not guarantee $`9\mid M`$.
 
 For $`c=-6e_2+e_4`$, we have $`M(c)=12`$ and $`\mathcal R(c)=12S-17`$. At cutoff $`4`$, its finite part is $`-239/115`$: the gap $`9/115`$ is smaller than the tail bound $`24/119`$. At cutoff $`5`$, the finite part is $`-27061/13685`$, whose gap $`13376/13685`$ exceeds the new bound $`24/719`$. The finite part has crossed $`-2`$, so the next integer is now $`-1`$ rather than $`-2`$. This explains the larger gap. The second cutoff certifies nonintegrality of the same remainder; failure at the first cutoff was inconclusive. The successful test excludes denominators dividing the unchanged value $`M=12`$, already covered by the finite exclusions.
 
@@ -966,7 +966,7 @@ Thus escape can occur even when $`b_m=1`$, provided the digit is $`m-1`$. This h
 
 ## The series with denominators $`n!+t`$
 
-The digit argument also applies to the other shifts mentioned by Erdős. We restrict here to $`t\ge-1`$ so that every denominator from index two onwards is positive. Put $`S_t=\sum_{n\ge2}1/(n!+t)`$ and $`C_t=\sum_{n\ge2}1/\bigl(n!(n!+t)\bigr)`$, so that $`S_t=-tC_t+(e-2)`$.
+The digit argument also applies to the other shifts mentioned by Erdős. For an integer $`t\ge-1`$, put $`S_t=\sum_{n\ge2}1/(n!+t)`$ and $`C_t=\sum_{n\ge2}1/\bigl(n!(n!+t)\bigr)`$, so that $`S_t=-tC_t+(e-2)`$.
 
 The restriction $`t\ge-1`$ keeps every denominator positive for $`n\ge2`$; $`t=-2`$ is excluded because its first denominator is zero. All series in this identity converge absolutely. The familiar case $`t=0`$ is $`e-2`$; this example will make the residue condition explicit.
 

@@ -2713,6 +2713,907 @@
       "native_review": "state/formal_math/type_b_return_batches/short_refinement_r10_20261001/review/analysis/papers_68_1041_1049.md",
       "status_boundary": "Archive identity preserves custody; selected editorial uptake does not establish a new theorem, formal proof, full donor reading, or measured reader benefit.",
       "filename_boundary": "Original filename says R11; it arrived in the frozen R10 campaign and is recorded here under that batch identity."
+    },
+    {
+      "id": "short-20261004-r11-systems",
+      "round": 11,
+      "problem": "systems",
+      "custody_cohort": "paper_refinement_r11_20261004",
+      "archive_name": "systems_r11_prove2me_refinement_return_20261003.zip",
+      "archive_sha256": "af9c97e4cd4a699f4ae8c609a6f2a8c3a76f44721a27c67658c3ed9a8252561b",
+      "documents": {
+        "EDITORIAL_REPORT.md": {
+          "member": "systems_r11_prove2me_refinement_return/EDITORIAL_REPORT.md",
+          "sha256": "1085655f8814bc19d929f62a15b583bc82b117527bce2e3537e505f53ab5b339"
+        },
+        "FEEDBACK_UPTAKE.json": {
+          "member": "systems_r11_prove2me_refinement_return/FEEDBACK_UPTAKE.json",
+          "sha256": "ba39b92ed078cf852644e130b354cbbc4d501bcbf991eef9d7faee57f4cb39fd"
+        },
+        "GENERALIZED_LESSONS.json": {
+          "member": "systems_r11_prove2me_refinement_return/GENERALIZED_LESSONS.json",
+          "sha256": "55dd77932ac4898fe33a2326e3039bdea5ec8b28020a749c16e750b0568a8c25"
+        },
+        "LITERATURE_READING.json": {
+          "member": "systems_r11_prove2me_refinement_return/LITERATURE_READING.json",
+          "sha256": "662ccb793fe7b2b4b3ac34a4052652815079c267dd73fb489f0e1e61a8e5b862"
+        },
+        "RETURN.json": {
+          "member": "systems_r11_prove2me_refinement_return/RETURN.json",
+          "sha256": "533386a338f3b552892239a3068adc9a80db731051f74f477604c9b3ccc841ca"
+        },
+        "STATEMENT_CHANGES.json": {
+          "member": "systems_r11_prove2me_refinement_return/STATEMENT_CHANGES.json",
+          "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+        },
+        "STYLE_RULES.json": {
+          "member": "systems_r11_prove2me_refinement_return/STYLE_RULES.json",
+          "sha256": "8b744dad284256ef74c3b4e01a50f0ae22064eeb50f9f1dd3cb1a7cf6f7799fe"
+        }
+      },
+      "native_status": "source_reviewed_editorial_integration",
+      "native_receipt_identities": [
+        {
+          "name": "systems_NATIVE_DISPOSITION.json",
+          "sha256": "694f5188262fbb0db51694f87579f8b3d8f4cfb2aee0c83054d9cfbb6625809c"
+        }
+      ],
+      "status_boundary": "Reviewed exposition only; no new theorem, formal status, exhaustive donor reading or measured reader benefit.",
+      "manuscript_disposition": "Focused source edits accepted; theorem statements, registered claims and formal source pins conserved."
+    },
+    {
+      "id": "short-20261004-r11-1049",
+      "round": 11,
+      "problem": "1049",
+      "custody_cohort": "paper_refinement_r11_20261004",
+      "archive_name": "erdos1049_r11_exposition_return_20261003.zip",
+      "archive_sha256": "63f4e68fdbbb84b6705b1828337bf1ca7f04a01d81289bc8c25be01d0f068583",
+      "documents": {
+        "EDITORIAL_REPORT.md": {
+          "member": "erdos1049_r11_exposition_return_20261003/EDITORIAL_REPORT.md",
+          "sha256": "98742e48f5c7e917552777935f86fa3c6520b3ce1d76b46e14867954bb763a63"
+        },
+        "FEEDBACK_UPTAKE.json": {
+          "member": "erdos1049_r11_exposition_return_20261003/FEEDBACK_UPTAKE.json",
+          "sha256": "50c12fe3fa5ee0cb13b3d81a4e870cb93afd2283edea867594a112f6fa28eeac"
+        },
+        "GENERALIZED_LESSONS.json": {
+          "member": "erdos1049_r11_exposition_return_20261003/GENERALIZED_LESSONS.json",
+          "sha256": "b3289d3243753478732a38024fe322ae817a15ff45d1e0a553b4ec0beb4d5c0e"
+        },
+        "LITERATURE_READING.json": {
+          "member": "erdos1049_r11_exposition_return_20261003/LITERATURE_READING.json",
+          "sha256": "bb297c8e71b5072dac7df3314fb10a84a0214a0382a419ae4f30c111dd962484"
+        },
+        "RETURN.json": {
+          "member": "erdos1049_r11_exposition_return_20261003/RETURN.json",
+          "sha256": "9a6368d7d3d74d59afdb68a0963a30f07a234de5d34290764d633d4715d324ba"
+        },
+        "STATEMENT_CHANGES.json": {
+          "member": "erdos1049_r11_exposition_return_20261003/STATEMENT_CHANGES.json",
+          "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+        },
+        "STYLE_RULES.json": {
+          "member": "erdos1049_r11_exposition_return_20261003/STYLE_RULES.json",
+          "sha256": "2b6034d4359541023e7528c19bd51e618ece5332fc5b44bf3e632948e61d1748"
+        }
+      },
+      "native_status": "source_reviewed_editorial_integration",
+      "native_receipt_identities": [
+        {
+          "name": "1049_NATIVE_DISPOSITION.json",
+          "sha256": "2f3ef3392c4e0bb330bd024422dfe5ad14be14924240286c475adac9fbaf1aff"
+        }
+      ],
+      "status_boundary": "Reviewed exposition only; no new theorem, formal status, exhaustive donor reading or measured reader benefit.",
+      "manuscript_disposition": "Focused source edits accepted; theorem statements, registered claims and formal source pins conserved."
+    },
+    {
+      "id": "short-20261004-r11-1041",
+      "round": 11,
+      "problem": "1041",
+      "custody_cohort": "paper_refinement_r11_20261004",
+      "archive_name": "erdos1041_r11_return_20261003.zip",
+      "archive_sha256": "7124fec43969d1252383528cb008813410af0d7e0f39d4c067c87cb8c0da7906",
+      "documents": {
+        "EDITORIAL_REPORT.md": {
+          "member": "erdos1041_r11_return_20261003/EDITORIAL_REPORT.md",
+          "sha256": "0965abf833ed9ccaa047e9278b469c90a1cc408a57ecdca3b0f8d7df8a041c22"
+        },
+        "FEEDBACK_UPTAKE.json": {
+          "member": "erdos1041_r11_return_20261003/FEEDBACK_UPTAKE.json",
+          "sha256": "c2f527fa16ff7204731080e8e1b8bf278c596e82b4d7616bfe17f8819060fcf9"
+        },
+        "GENERALIZED_LESSONS.json": {
+          "member": "erdos1041_r11_return_20261003/GENERALIZED_LESSONS.json",
+          "sha256": "a322776629afa5f4f534a6f923e4ee15f4d7cb85de9d2d6aa2f4d797fe35b063"
+        },
+        "LITERATURE_READING.json": {
+          "member": "erdos1041_r11_return_20261003/LITERATURE_READING.json",
+          "sha256": "47b283c4516d218dcf55da102805eecbd26f1a83b76d33fd5d67b24fcd13f846"
+        },
+        "RETURN.json": {
+          "member": "erdos1041_r11_return_20261003/RETURN.json",
+          "sha256": "fd4027f8a9120ad8ff0347d6979584d694e21714b25c55423cd1df74551544ca"
+        },
+        "STATEMENT_CHANGES.json": {
+          "member": "erdos1041_r11_return_20261003/STATEMENT_CHANGES.json",
+          "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+        },
+        "STYLE_RULES.json": {
+          "member": "erdos1041_r11_return_20261003/STYLE_RULES.json",
+          "sha256": "bd7d8edac094e976f7826f1262c9a6a149359d397e0c7bcd11a3070dca4e1cdf"
+        }
+      },
+      "native_status": "source_reviewed_editorial_integration",
+      "native_receipt_identities": [
+        {
+          "name": "1041_NATIVE_DISPOSITION.json",
+          "sha256": "eb3ab4197e609c4759dbd865e13f0a01bbefabfb75446b471b829967a93673c7"
+        }
+      ],
+      "status_boundary": "Reviewed exposition only; no new theorem, formal status, exhaustive donor reading or measured reader benefit.",
+      "manuscript_disposition": "Focused source edits accepted; theorem statements, registered claims and formal source pins conserved."
+    },
+    {
+      "id": "short-20261004-r11-269",
+      "round": 11,
+      "problem": "269",
+      "custody_cohort": "paper_refinement_r11_20261004",
+      "archive_name": "erdos269_r11_return.zip",
+      "archive_sha256": "04a136f1efcbef03656ac8769a27859eaa1d2ab74debacdb47046469a455fc9c",
+      "documents": {
+        "EDITORIAL_REPORT.md": {
+          "member": "erdos269_r11_return/EDITORIAL_REPORT.md",
+          "sha256": "5511ca500472c15a8cd914c6e5c5d9f7d44bc2fb87efadfd3e5bf82e93fb9c6a"
+        },
+        "FEEDBACK_UPTAKE.json": {
+          "member": "erdos269_r11_return/FEEDBACK_UPTAKE.json",
+          "sha256": "1d7c47c2b5855401cb82803371d3c91be334825ec03dcc96977a92239088f8a2"
+        },
+        "GENERALIZED_LESSONS.json": {
+          "member": "erdos269_r11_return/GENERALIZED_LESSONS.json",
+          "sha256": "0775ebe44587e421d8dd9cb142b2dec42c0cb12dd0410c43c736c9e85eb7116a"
+        },
+        "LITERATURE_READING.json": {
+          "member": "erdos269_r11_return/LITERATURE_READING.json",
+          "sha256": "0b2b0ff5bc3f08957a140127e78ab32dce29e3695c9c6054d6399d065da9316c"
+        },
+        "RETURN.json": {
+          "member": "erdos269_r11_return/RETURN.json",
+          "sha256": "4cb36b6a80feeb72b6eadd1de5469856f4036b3efba72d47b401aa38d01d8edf"
+        },
+        "STATEMENT_CHANGES.json": {
+          "member": "erdos269_r11_return/STATEMENT_CHANGES.json",
+          "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+        },
+        "STYLE_RULES.json": {
+          "member": "erdos269_r11_return/STYLE_RULES.json",
+          "sha256": "4f2f63700759d17c4718519e844085d5988e1cd636a26d217ccab1e740fd259f"
+        }
+      },
+      "native_status": "source_reviewed_editorial_integration",
+      "native_receipt_identities": [
+        {
+          "name": "269_NATIVE_DISPOSITION.json",
+          "sha256": "b8fb4070468802c8d89af3c703c0ec91bdfab2a809823e635d81406b8a11d62c"
+        }
+      ],
+      "status_boundary": "Reviewed exposition only; no new theorem, formal status, exhaustive donor reading or measured reader benefit.",
+      "manuscript_disposition": "Focused source edits accepted; theorem statements, registered claims and formal source pins conserved."
+    },
+    {
+      "id": "short-20261004-r11-257",
+      "round": 11,
+      "problem": "257",
+      "custody_cohort": "paper_refinement_r11_20261004",
+      "archive_name": "erdos257_short_refinement_r11_20261003_return.zip",
+      "archive_sha256": "a56162d7499fb53fcedb2465b242dc7268b0052b8e3291f5240d6425713aa9b4",
+      "documents": {
+        "EDITORIAL_REPORT.md": {
+          "member": "erdos257_r11_exposition_return/EDITORIAL_REPORT.md",
+          "sha256": "4600128642838cffeeda419f77b0e6f2d9d557d60aa9715f6da51c94429cbc48"
+        },
+        "FEEDBACK_UPTAKE.json": {
+          "member": "erdos257_r11_exposition_return/FEEDBACK_UPTAKE.json",
+          "sha256": "4261c835c4fe54771c79e2dec17b42b973fdf0b7ce0a70aa47a23bd938e577ed"
+        },
+        "GENERALIZED_LESSONS.json": {
+          "member": "erdos257_r11_exposition_return/GENERALIZED_LESSONS.json",
+          "sha256": "9a09ca29865c3f02f97d69ce14ae814a5d2fa6c4f8847d06534b7d1fc6fe3be9"
+        },
+        "LITERATURE_READING.json": {
+          "member": "erdos257_r11_exposition_return/LITERATURE_READING.json",
+          "sha256": "2d5e305b46cf5e9870dd2f9c6219ccd9f32c0a624bfda6a25bc6f714fa08a0df"
+        },
+        "RETURN.json": {
+          "member": "erdos257_r11_exposition_return/RETURN.json",
+          "sha256": "5b4a17c3f72f94276f07cfbcaa1480d21d59faf46ff81a586f5b40d0e9041ac6"
+        },
+        "STATEMENT_CHANGES.json": {
+          "member": "erdos257_r11_exposition_return/STATEMENT_CHANGES.json",
+          "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+        },
+        "STYLE_RULES.json": {
+          "member": "erdos257_r11_exposition_return/STYLE_RULES.json",
+          "sha256": "0bb845d1deeb71b0161ee6c2833efbb374de8e4601a4fa35ed4a7c433a44aaef"
+        }
+      },
+      "native_status": "source_reviewed_editorial_integration",
+      "native_receipt_identities": [
+        {
+          "name": "257_NATIVE_DISPOSITION.json",
+          "sha256": "6186048cd89ec9b858d84b249bbd020f4b1179e9cfbf5722fe3b6db230d93a4d"
+        }
+      ],
+      "status_boundary": "Reviewed exposition only; no new theorem, formal status, exhaustive donor reading or measured reader benefit.",
+      "manuscript_disposition": "Focused source edits accepted; theorem statements, registered claims and formal source pins conserved."
+    },
+    {
+      "id": "short-20261004-r11-251",
+      "round": 11,
+      "problem": "251",
+      "custody_cohort": "paper_refinement_r11_20261004",
+      "archive_name": "erdos251_r11_complete_return.zip",
+      "archive_sha256": "2bb804c6b90644a621e509f343e53f32dd4e687bc75fb6779c639e9e874c856d",
+      "documents": {
+        "EDITORIAL_REPORT.md": {
+          "member": "erdos251_r11_return/EDITORIAL_REPORT.md",
+          "sha256": "d571c4fa0f7831de4441af06c4461ef02d9825314852fe92cb0c911bc6ed57e1"
+        },
+        "FEEDBACK_UPTAKE.json": {
+          "member": "erdos251_r11_return/FEEDBACK_UPTAKE.json",
+          "sha256": "1883b7946b63d4ba84f24592632143375c020df14853e6fe3e957485355dbdbc"
+        },
+        "GENERALIZED_LESSONS.json": {
+          "member": "erdos251_r11_return/GENERALIZED_LESSONS.json",
+          "sha256": "9a837d940959cd3afc8153bb9c2534b24bdb7b2dcb4a34ac2ec73e0fc7d6e1ba"
+        },
+        "LITERATURE_READING.json": {
+          "member": "erdos251_r11_return/LITERATURE_READING.json",
+          "sha256": "9c73b3a5cecf7bd9ad0ee21c823860b2dccbb233ca385ad2c027edd904361392"
+        },
+        "RETURN.json": {
+          "member": "erdos251_r11_return/RETURN.json",
+          "sha256": "1f3b5a5dcbee3244c92bc8571b52c150370239a59bf736559709918236d7c3fc"
+        },
+        "STATEMENT_CHANGES.json": {
+          "member": "erdos251_r11_return/STATEMENT_CHANGES.json",
+          "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+        },
+        "STYLE_RULES.json": {
+          "member": "erdos251_r11_return/STYLE_RULES.json",
+          "sha256": "6987c9b61e2dd1a6a6413442c222eb3ca8a35e03f794413fc8de3a6eda27c18d"
+        }
+      },
+      "native_status": "source_reviewed_editorial_integration",
+      "native_receipt_identities": [
+        {
+          "name": "251_NATIVE_DISPOSITION.json",
+          "sha256": "2e0505fd6bf27b90c8f5b28b6bcd5645121ddff20e54ae5d26fd985ee5ba602e"
+        }
+      ],
+      "status_boundary": "Reviewed exposition only; no new theorem, formal status, exhaustive donor reading or measured reader benefit.",
+      "manuscript_disposition": "Focused source edits accepted; theorem statements, registered claims and formal source pins conserved."
+    },
+    {
+      "id": "short-20261004-r11-249",
+      "round": 11,
+      "problem": "249",
+      "custody_cohort": "paper_refinement_r11_20261004",
+      "archive_name": "erdos249_r11_refinement_return.zip",
+      "archive_sha256": "37316eb7bc965f39a0fa55f2a4837a21dcb99223e35743803c12729cdbd8f654",
+      "documents": {
+        "EDITORIAL_REPORT.md": {
+          "member": "erdos249_r11_return/EDITORIAL_REPORT.md",
+          "sha256": "f00e9d7a2479d1a63e3f3108dc9106185fe57faebad438ea4e7cdb475e07bca4"
+        },
+        "FEEDBACK_UPTAKE.json": {
+          "member": "erdos249_r11_return/FEEDBACK_UPTAKE.json",
+          "sha256": "6739839f881ea7e059f1b22ced5ebfaee4a050442d75fb1cf95c963f39968460"
+        },
+        "GENERALIZED_LESSONS.json": {
+          "member": "erdos249_r11_return/GENERALIZED_LESSONS.json",
+          "sha256": "e69382d21cba153cf1170eea6103239bc47bd128e3857c8e00aa22ffdbe16e43"
+        },
+        "LITERATURE_READING.json": {
+          "member": "erdos249_r11_return/LITERATURE_READING.json",
+          "sha256": "45b0929ea75cd62f7b98af570430709b81247fa23f6a3762e96f4ca15d1e756d"
+        },
+        "RETURN.json": {
+          "member": "erdos249_r11_return/RETURN.json",
+          "sha256": "6ad8d567d84e3ca9823031ee0f9b1bec553787d36f3b86ea74ac1b7b5d4b286a"
+        },
+        "STATEMENT_CHANGES.json": {
+          "member": "erdos249_r11_return/STATEMENT_CHANGES.json",
+          "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+        },
+        "STYLE_RULES.json": {
+          "member": "erdos249_r11_return/STYLE_RULES.json",
+          "sha256": "3af9824e964b77c09c203c844547a83ca29579bd2ea3d6a8249f3ac74df1969f"
+        }
+      },
+      "native_status": "source_reviewed_editorial_integration",
+      "native_receipt_identities": [
+        {
+          "name": "249_NATIVE_DISPOSITION.json",
+          "sha256": "6f67deaf97b5c5ad30fbe42351b7c0dc2c48b93b6318705c1a3fea1a5539ca0c"
+        }
+      ],
+      "status_boundary": "Reviewed exposition only; no new theorem, formal status, exhaustive donor reading or measured reader benefit.",
+      "manuscript_disposition": "Focused source edits accepted; theorem statements, registered claims and formal source pins conserved."
+    },
+    {
+      "id": "short-20261004-r11-243",
+      "round": 11,
+      "problem": "243",
+      "custody_cohort": "paper_refinement_r11_20261004",
+      "archive_name": "erdos243_r11_exposition_return_20261003.zip",
+      "archive_sha256": "7b12865f30ad36dfa9aa4b96f79b77bbb77618bd984875b46dc7fd14075ececb",
+      "documents": {
+        "EDITORIAL_REPORT.md": {
+          "member": "erdos243_r11_exposition_return_20261003/EDITORIAL_REPORT.md",
+          "sha256": "d349c7faf15ff532644d6e8edfc5af73e6929379548a164a34ac2fd78a248eb6"
+        },
+        "FEEDBACK_UPTAKE.json": {
+          "member": "erdos243_r11_exposition_return_20261003/FEEDBACK_UPTAKE.json",
+          "sha256": "a3b9a6ca7e6913cd5de00bb9162edd7b84146aa4a8247bb1f9de00beced955b3"
+        },
+        "GENERALIZED_LESSONS.json": {
+          "member": "erdos243_r11_exposition_return_20261003/GENERALIZED_LESSONS.json",
+          "sha256": "c12b1e259abed8f1d435555edde860ec2dbf8db0898da7b79e5fbfae62243a60"
+        },
+        "LITERATURE_READING.json": {
+          "member": "erdos243_r11_exposition_return_20261003/LITERATURE_READING.json",
+          "sha256": "a2625bd58338cc08984541f0220ce256671c8f002e4605873249585dda948230"
+        },
+        "RETURN.json": {
+          "member": "erdos243_r11_exposition_return_20261003/RETURN.json",
+          "sha256": "274c7748483606aeeb6fa43cff9fa09ce3177bf43d483b8f880d38b902a25a0a"
+        },
+        "STATEMENT_CHANGES.json": {
+          "member": "erdos243_r11_exposition_return_20261003/STATEMENT_CHANGES.json",
+          "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+        },
+        "STYLE_RULES.json": {
+          "member": "erdos243_r11_exposition_return_20261003/STYLE_RULES.json",
+          "sha256": "1d30cc3d17f80b10c5663d4fe099cbdf31075c3453c6444769209039e048fac9"
+        }
+      },
+      "native_status": "source_reviewed_editorial_integration",
+      "native_receipt_identities": [
+        {
+          "name": "243_NATIVE_DISPOSITION.json",
+          "sha256": "d159e1f57c52b1241bfefdd3fae7ebea87114ae3a1ea8e830f02c18a664b7a96"
+        }
+      ],
+      "status_boundary": "Reviewed exposition only; no new theorem, formal status, exhaustive donor reading or measured reader benefit.",
+      "manuscript_disposition": "Focused source edits accepted; theorem statements, registered claims and formal source pins conserved."
+    },
+    {
+      "id": "short-20261004-r11-68",
+      "round": 11,
+      "problem": "68",
+      "custody_cohort": "paper_refinement_r11_20261004",
+      "archive_name": "erdos68_r11_editorial_return.zip",
+      "archive_sha256": "6eed4e25755e300d2caba893b57af074aab9ead069409edb7bde4624dbfab16f",
+      "documents": {
+        "EDITORIAL_REPORT.md": {
+          "member": "erdos68_r11_editorial_return/EDITORIAL_REPORT.md",
+          "sha256": "4d07fece09a3534fc45469107beb7d84f62bd4af30a53e33a3ceb07e4216339b"
+        },
+        "FEEDBACK_UPTAKE.json": {
+          "member": "erdos68_r11_editorial_return/FEEDBACK_UPTAKE.json",
+          "sha256": "cd7b778823c5ac2e40d2a04a5fcb712d52683f084bb2508df6716807aea2a4de"
+        },
+        "GENERALIZED_LESSONS.json": {
+          "member": "erdos68_r11_editorial_return/GENERALIZED_LESSONS.json",
+          "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+        },
+        "LITERATURE_READING.json": {
+          "member": "erdos68_r11_editorial_return/LITERATURE_READING.json",
+          "sha256": "2b21cd64e9d14aa6d601fb97b253d65acf7fc2dfe0e6ecd3fffff6d69c65bd67"
+        },
+        "RETURN.json": {
+          "member": "erdos68_r11_editorial_return/RETURN.json",
+          "sha256": "a1f6a2342805cced1686681ec092b1f994f78197626d34d3396f7c55c6821d22"
+        },
+        "STATEMENT_CHANGES.json": {
+          "member": "erdos68_r11_editorial_return/STATEMENT_CHANGES.json",
+          "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+        },
+        "STYLE_RULES.json": {
+          "member": "erdos68_r11_editorial_return/STYLE_RULES.json",
+          "sha256": "1241d4efcc0c5720aaca34a48db023f428a5219a713121a69b326589ffd30058"
+        }
+      },
+      "native_status": "source_reviewed_editorial_integration",
+      "native_receipt_identities": [
+        {
+          "name": "68_NATIVE_DISPOSITION.json",
+          "sha256": "66a9045295264cb7fa44b66413e1a64a4cb0192f743818f2ef4b947c8b172f0a"
+        }
+      ],
+      "status_boundary": "Reviewed exposition only; no new theorem, formal status, exhaustive donor reading or measured reader benefit.",
+      "manuscript_disposition": "Focused source edits accepted; theorem statements, registered claims and formal source pins conserved."
+    },
+    {
+      "id": "short-20261004-r12-68",
+      "round": 12,
+      "problem": "68",
+      "custody_cohort": "paper_refinement_r12_20261004",
+      "archive_name": "erdos68_r12_editorial_return.zip",
+      "archive_sha256": "64ee809b5f44fd28ecb743141d287c684a73563755f60c6be2290b99c8230674",
+      "documents": {
+        "EDITORIAL_REPORT.md": {
+          "member": "erdos68_r12_editorial_return/EDITORIAL_REPORT.md",
+          "sha256": "e2c53e5d3a2ea2371035add09e1a8ce6901d45de4d8888b5a116d25a4974ae73"
+        },
+        "FEEDBACK_UPTAKE.json": {
+          "member": "erdos68_r12_editorial_return/FEEDBACK_UPTAKE.json",
+          "sha256": "687b15ae36f82527123cf617d19bd6fc7af6756a3444b5a485c6299ecd248f7d"
+        },
+        "GENERALIZED_LESSONS.json": {
+          "member": "erdos68_r12_editorial_return/GENERALIZED_LESSONS.json",
+          "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+        },
+        "LITERATURE_READING.json": {
+          "member": "erdos68_r12_editorial_return/LITERATURE_READING.json",
+          "sha256": "93b27feaf97ccf7ceed57982f5d66fb17a945036e8562f1aa1aa90603d4a0c09"
+        },
+        "RETURN.json": {
+          "member": "erdos68_r12_editorial_return/RETURN.json",
+          "sha256": "9739dcf036b112610f6826ce896cd65e8b78002f08e7ca0fc84191822a21a4f3"
+        },
+        "STATEMENT_CHANGES.json": {
+          "member": "erdos68_r12_editorial_return/STATEMENT_CHANGES.json",
+          "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+        },
+        "STYLE_RULES.json": {
+          "member": "erdos68_r12_editorial_return/STYLE_RULES.json",
+          "sha256": "f53b66e5016fdbbac3dad13f5cc4fd4c2d60b18e669a5f45e910565315409516"
+        }
+      },
+      "native_status": "source_reviewed_editorial_integration",
+      "native_receipt_identities": [
+        {
+          "name": "68_NATIVE_DISPOSITION.json",
+          "sha256": "a1a70a195f39f126e72819bdba4df4c6f167a75512ea45a40794fd0ebdac8dd1"
+        }
+      ],
+      "status_boundary": "Reviewed exposition only; no new theorem, formal status, exhaustive donor reading or measured reader benefit.",
+      "manuscript_disposition": "Focused source edits accepted; theorem statements, registered claims and formal source pins conserved. Donor advice remains scoped and revisable."
+    },
+    {
+      "id": "short-20261004-r12-243",
+      "round": 12,
+      "problem": "243",
+      "custody_cohort": "paper_refinement_r12_20261004",
+      "archive_name": "erdos243_r12_exposition_return_20261004.zip",
+      "archive_sha256": "b522aa3f87bf56415c316d33f6a4cedd2d804e241463fd33054fc572761f30db",
+      "documents": {
+        "EDITORIAL_REPORT.md": {
+          "member": "erdos243_r12_exposition_return_20261004/EDITORIAL_REPORT.md",
+          "sha256": "fbe6d7c529cf428f653b4349d00430cf3256a13f601204e3b1497fc914e6e550"
+        },
+        "FEEDBACK_UPTAKE.json": {
+          "member": "erdos243_r12_exposition_return_20261004/FEEDBACK_UPTAKE.json",
+          "sha256": "147f52e9c3903ad64abc9e7c0db2531da90468cd78bfbe5b80ed5515e65ae2dd"
+        },
+        "GENERALIZED_LESSONS.json": {
+          "member": "erdos243_r12_exposition_return_20261004/GENERALIZED_LESSONS.json",
+          "sha256": "e2715e0c4176b96bc1cf07c566536cf8133eaa9811b4a31eae32955dde3907ca"
+        },
+        "LITERATURE_READING.json": {
+          "member": "erdos243_r12_exposition_return_20261004/LITERATURE_READING.json",
+          "sha256": "5318e30aecb36d1c11ebf3d6e922f629c4c28bdca76dc122e95066537e3019c8"
+        },
+        "RETURN.json": {
+          "member": "erdos243_r12_exposition_return_20261004/RETURN.json",
+          "sha256": "7404236f6f6d1c90b6e732784e86490850f12786e8d2c0f6cdc18fa0ba9ac4f0"
+        },
+        "STATEMENT_CHANGES.json": {
+          "member": "erdos243_r12_exposition_return_20261004/STATEMENT_CHANGES.json",
+          "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+        },
+        "STYLE_RULES.json": {
+          "member": "erdos243_r12_exposition_return_20261004/STYLE_RULES.json",
+          "sha256": "86216baf2d669f29a9e26cb86f1e9c1ac53b245da075a86bb5c7f02a45cf4cf6"
+        }
+      },
+      "native_status": "source_reviewed_editorial_integration",
+      "native_receipt_identities": [
+        {
+          "name": "243_NATIVE_DISPOSITION.json",
+          "sha256": "ac4c043266fd661b2ff5f80e21b20737b08df55b05d2e067ceb5cb19c8e50c05"
+        }
+      ],
+      "status_boundary": "Reviewed exposition only; no new theorem, formal status, exhaustive donor reading or measured reader benefit.",
+      "manuscript_disposition": "Focused source edits accepted; theorem statements, registered claims and formal source pins conserved. Donor advice remains scoped and revisable."
+    },
+    {
+      "id": "short-20261004-r12-249",
+      "round": 12,
+      "problem": "249",
+      "custody_cohort": "paper_refinement_r12_20261004",
+      "archive_name": "erdos249_r12_refinement_return.zip",
+      "archive_sha256": "28a239057c6751345cc02ae6cff4458bdcb332858698812f56956d4ddbf94af9",
+      "documents": {
+        "EDITORIAL_REPORT.md": {
+          "member": "erdos249_r12_return/EDITORIAL_REPORT.md",
+          "sha256": "e7e33ffbc20e71288ae709196407084042981753f4a0280403bd9a386e7019cc"
+        },
+        "FEEDBACK_UPTAKE.json": {
+          "member": "erdos249_r12_return/FEEDBACK_UPTAKE.json",
+          "sha256": "4ed1457c4dee5b01f6f78722f4a4199e0852248e14dc336508b8171d38fa09cf"
+        },
+        "GENERALIZED_LESSONS.json": {
+          "member": "erdos249_r12_return/GENERALIZED_LESSONS.json",
+          "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+        },
+        "LITERATURE_READING.json": {
+          "member": "erdos249_r12_return/LITERATURE_READING.json",
+          "sha256": "3b1d6ba8b94be3ad534aabaf8579c1148f6a6fc3f3a5c20a65a916aaa47c9504"
+        },
+        "RETURN.json": {
+          "member": "erdos249_r12_return/RETURN.json",
+          "sha256": "d2f7486670d9c8f09b08a0dda3af7c2c0ad9818edbe430a1b513a506f431e2c1"
+        },
+        "STATEMENT_CHANGES.json": {
+          "member": "erdos249_r12_return/STATEMENT_CHANGES.json",
+          "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+        },
+        "STYLE_RULES.json": {
+          "member": "erdos249_r12_return/STYLE_RULES.json",
+          "sha256": "e7350f58f5d867fbf43ba0e2cdf1ad7216136914b434e37b84712a06c9973a53"
+        }
+      },
+      "native_status": "source_reviewed_editorial_integration",
+      "native_receipt_identities": [
+        {
+          "name": "249_NATIVE_DISPOSITION.json",
+          "sha256": "2d1a4e32d7e0ebb555da172c0551499095a717beca0bb51ca16dd4be4acefba3"
+        }
+      ],
+      "status_boundary": "Reviewed exposition only; no new theorem, formal status, exhaustive donor reading or measured reader benefit.",
+      "manuscript_disposition": "Focused source edits accepted; theorem statements, registered claims and formal source pins conserved. Donor advice remains scoped and revisable."
+    },
+    {
+      "id": "short-20261004-r12-251",
+      "round": 12,
+      "problem": "251",
+      "custody_cohort": "paper_refinement_r12_20261004",
+      "archive_name": "erdos251_r12_complete_return.zip",
+      "archive_sha256": "37696594c534a43f50f07880d3918f229b7fb042e1a09c1f8d232bea4a51fc8f",
+      "documents": {
+        "EDITORIAL_REPORT.md": {
+          "member": "erdos251_r12_return/EDITORIAL_REPORT.md",
+          "sha256": "a38d33ccfae2ed47d60729d46ed3104e0bf211c5c1041758ab6fe06c418ea538"
+        },
+        "FEEDBACK_UPTAKE.json": {
+          "member": "erdos251_r12_return/FEEDBACK_UPTAKE.json",
+          "sha256": "8e24aa96676e1b5631a44a527ffde0cffeafeea847d22b57b8a32e4f7e0f5a8f"
+        },
+        "GENERALIZED_LESSONS.json": {
+          "member": "erdos251_r12_return/GENERALIZED_LESSONS.json",
+          "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+        },
+        "LITERATURE_READING.json": {
+          "member": "erdos251_r12_return/LITERATURE_READING.json",
+          "sha256": "52f258434c2d46f5551ef3e55d8bd81f286c5e718797685e80e016a284c78e93"
+        },
+        "RETURN.json": {
+          "member": "erdos251_r12_return/RETURN.json",
+          "sha256": "789a5a39cd5d6826c16d09ceb6afe13e50dc4026f507317657ad2155104ae6c8"
+        },
+        "STATEMENT_CHANGES.json": {
+          "member": "erdos251_r12_return/STATEMENT_CHANGES.json",
+          "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+        },
+        "STYLE_RULES.json": {
+          "member": "erdos251_r12_return/STYLE_RULES.json",
+          "sha256": "c178698c6535d51f15f196208081730160edd05daa6ea3793cb61401c160c57c"
+        }
+      },
+      "native_status": "source_reviewed_editorial_integration",
+      "native_receipt_identities": [
+        {
+          "name": "251_NATIVE_DISPOSITION.json",
+          "sha256": "671807ec97c8e372e6f9971bc25ac2d702597f22c83c347236880fe252d0fbeb"
+        }
+      ],
+      "status_boundary": "Reviewed exposition only; no new theorem, formal status, exhaustive donor reading or measured reader benefit.",
+      "manuscript_disposition": "Focused source edits accepted; theorem statements, registered claims and formal source pins conserved. Donor advice remains scoped and revisable."
+    },
+    {
+      "id": "short-20261004-r12-257",
+      "round": 12,
+      "problem": "257",
+      "custody_cohort": "paper_refinement_r12_20261004",
+      "archive_name": "erdos257_short_refinement_r12_20261004_return.zip",
+      "archive_sha256": "7013c6831dad5c655c75b088ff57bfea4dd2043b082a9a503068d5dff9385f1a",
+      "documents": {
+        "EDITORIAL_REPORT.md": {
+          "member": "erdos257_r12_exposition_return/EDITORIAL_REPORT.md",
+          "sha256": "a0d1831db9e692e8516d95d45debcdd220d6f60c6ae3cd248bd75e2965377227"
+        },
+        "FEEDBACK_UPTAKE.json": {
+          "member": "erdos257_r12_exposition_return/FEEDBACK_UPTAKE.json",
+          "sha256": "e4239c3b6adb083779ee99129e081dead1f184ed909a8f3f2ec4c54cb3d986d9"
+        },
+        "GENERALIZED_LESSONS.json": {
+          "member": "erdos257_r12_exposition_return/GENERALIZED_LESSONS.json",
+          "sha256": "40fecedf22749edf99f493c577b514484a2beed4f17cd2a77240ad64effc27a1"
+        },
+        "LITERATURE_READING.json": {
+          "member": "erdos257_r12_exposition_return/LITERATURE_READING.json",
+          "sha256": "40da8105f74701ba631eceb2cb1a697927b3a7031bb6be0ce63fb2a78fcf27d7"
+        },
+        "RETURN.json": {
+          "member": "erdos257_r12_exposition_return/RETURN.json",
+          "sha256": "740de7f11fea7e32a480f4b1932f0ddfa83def64d7aa3594cbeb0ef8efeeff12"
+        },
+        "STATEMENT_CHANGES.json": {
+          "member": "erdos257_r12_exposition_return/STATEMENT_CHANGES.json",
+          "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+        },
+        "STYLE_RULES.json": {
+          "member": "erdos257_r12_exposition_return/STYLE_RULES.json",
+          "sha256": "9c7e0d7a326678070a1db23c574c25767592af9aaf8d812459ec71bf221618b8"
+        }
+      },
+      "native_status": "source_reviewed_editorial_integration",
+      "native_receipt_identities": [
+        {
+          "name": "257_NATIVE_DISPOSITION.json",
+          "sha256": "3d73d247de64d14119d2a9b796124c810ba437ddbd1faa553fdb766f1a32f1a0"
+        }
+      ],
+      "status_boundary": "Reviewed exposition only; no new theorem, formal status, exhaustive donor reading or measured reader benefit.",
+      "manuscript_disposition": "Focused source edits accepted; theorem statements, registered claims and formal source pins conserved. Donor advice remains scoped and revisable."
+    },
+    {
+      "id": "short-20261004-r12-269",
+      "round": 12,
+      "problem": "269",
+      "custody_cohort": "paper_refinement_r12_20261004",
+      "archive_name": "erdos269_r12_return.zip",
+      "archive_sha256": "5ed31ba9a734e8c0e531ddcc8a8f6fab6af26d3f39817da54e6cb5d9621a584b",
+      "documents": {
+        "EDITORIAL_REPORT.md": {
+          "member": "erdos269_r12_return/EDITORIAL_REPORT.md",
+          "sha256": "3268090119c3afcc418dafcbf7468712e95a50efbfd1fdbe137be6a7292279ac"
+        },
+        "FEEDBACK_UPTAKE.json": {
+          "member": "erdos269_r12_return/FEEDBACK_UPTAKE.json",
+          "sha256": "c3c0f1236584574b2fcd5797e2df93676e2c67b4451c0217611caff48c491f7e"
+        },
+        "GENERALIZED_LESSONS.json": {
+          "member": "erdos269_r12_return/GENERALIZED_LESSONS.json",
+          "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+        },
+        "LITERATURE_READING.json": {
+          "member": "erdos269_r12_return/LITERATURE_READING.json",
+          "sha256": "21cacf718ab9136c1f15eb2c4f509872d2a407444e6c6ead9b342dfd3076d1c5"
+        },
+        "RETURN.json": {
+          "member": "erdos269_r12_return/RETURN.json",
+          "sha256": "caa0a3cbd3a76e1576c2ba02824a15054574d46c2e54b56cca52fa757d2f908b"
+        },
+        "STATEMENT_CHANGES.json": {
+          "member": "erdos269_r12_return/STATEMENT_CHANGES.json",
+          "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+        },
+        "STYLE_RULES.json": {
+          "member": "erdos269_r12_return/STYLE_RULES.json",
+          "sha256": "3a46479a3dc8b8f39fd2bcd895ab6618a75ab054b834013d7231fae007d0e25d"
+        }
+      },
+      "native_status": "source_reviewed_editorial_integration",
+      "native_receipt_identities": [
+        {
+          "name": "269_NATIVE_DISPOSITION.json",
+          "sha256": "e561ce46c7b08a202016edfbd4abbcfa332d9f09cd3f202bd62bb592a0af424f"
+        }
+      ],
+      "status_boundary": "Reviewed exposition only; no new theorem, formal status, exhaustive donor reading or measured reader benefit.",
+      "manuscript_disposition": "Focused source edits accepted; theorem statements, registered claims and formal source pins conserved. Donor advice remains scoped and revisable."
+    },
+    {
+      "id": "short-20261004-r12-1041",
+      "round": 12,
+      "problem": "1041",
+      "custody_cohort": "paper_refinement_r12_20261004",
+      "archive_name": "erdos1041_r12_return_20261004.zip",
+      "archive_sha256": "63532902ca32dfd20c9b59d7bf231a7113f76fc52a912b0ed8f28fab54d789b9",
+      "documents": {
+        "EDITORIAL_REPORT.md": {
+          "member": "erdos1041_r12_return_20261004/EDITORIAL_REPORT.md",
+          "sha256": "fd53f186368b284bdb462512f907ec6ed09ea485aeed91bd204a42e5e4b107aa"
+        },
+        "FEEDBACK_UPTAKE.json": {
+          "member": "erdos1041_r12_return_20261004/FEEDBACK_UPTAKE.json",
+          "sha256": "2854adccf85b42b36dffcd7259534dddfedcaed4b4c90d85ac14a3f37ad7c3fb"
+        },
+        "GENERALIZED_LESSONS.json": {
+          "member": "erdos1041_r12_return_20261004/GENERALIZED_LESSONS.json",
+          "sha256": "b90a367b23ae05cebf612334aa8c2c94527bf73700d63cbbeaaf67d804d5bce2"
+        },
+        "LITERATURE_READING.json": {
+          "member": "erdos1041_r12_return_20261004/LITERATURE_READING.json",
+          "sha256": "f76c46b1dcb9c10b47437758a69e6139963596b20c59f4093cb841bea8312725"
+        },
+        "RETURN.json": {
+          "member": "erdos1041_r12_return_20261004/RETURN.json",
+          "sha256": "a45849e7caa78512fd9e7c57a9cf07bde2ef6817c5109b49e6312e3c65b9d43c"
+        },
+        "STATEMENT_CHANGES.json": {
+          "member": "erdos1041_r12_return_20261004/STATEMENT_CHANGES.json",
+          "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+        },
+        "STYLE_RULES.json": {
+          "member": "erdos1041_r12_return_20261004/STYLE_RULES.json",
+          "sha256": "cde0ae0057a15ce491ca326ff636e9a3ccf771ef669f9d2d90bbf3d30861d954"
+        }
+      },
+      "native_status": "source_reviewed_editorial_integration",
+      "native_receipt_identities": [
+        {
+          "name": "1041_NATIVE_DISPOSITION.json",
+          "sha256": "3637fd5be0df76ddaa780bbeae32bde0a6bd6810fc8508af1553b578a958400c"
+        }
+      ],
+      "status_boundary": "Reviewed exposition only; no new theorem, formal status, exhaustive donor reading or measured reader benefit.",
+      "manuscript_disposition": "Focused source edits accepted; theorem statements, registered claims and formal source pins conserved. Donor advice remains scoped and revisable."
+    },
+    {
+      "id": "short-20261004-r12-1049",
+      "round": 12,
+      "problem": "1049",
+      "custody_cohort": "paper_refinement_r12_20261004",
+      "archive_name": "erdos1049_r12_exposition_return_20261004.zip",
+      "archive_sha256": "44ce26341b3f35a5163c20f92d616086035dd3e2bc8bea2c270a236f0c3a0392",
+      "documents": {
+        "EDITORIAL_REPORT.md": {
+          "member": "erdos1049_r12_exposition_return_20261004/EDITORIAL_REPORT.md",
+          "sha256": "3cce2c9ee60cfd1e2dfba26083929c5728561004dd0f38be5f1c907cc259af8c"
+        },
+        "FEEDBACK_UPTAKE.json": {
+          "member": "erdos1049_r12_exposition_return_20261004/FEEDBACK_UPTAKE.json",
+          "sha256": "1766e99e6ae76508ef47172cbe3147b119d1b8b04ac4965d611b6dd5acf53776"
+        },
+        "GENERALIZED_LESSONS.json": {
+          "member": "erdos1049_r12_exposition_return_20261004/GENERALIZED_LESSONS.json",
+          "sha256": "db33a3599dd865176f9238c6996189ccef789896dcb4025c720c9047163a81c0"
+        },
+        "LITERATURE_READING.json": {
+          "member": "erdos1049_r12_exposition_return_20261004/LITERATURE_READING.json",
+          "sha256": "fe7b238710df9c7faf7e7f7ee1e0905de80043276026f378a085fcf24d0e2e5a"
+        },
+        "RETURN.json": {
+          "member": "erdos1049_r12_exposition_return_20261004/RETURN.json",
+          "sha256": "0c920e2b2ed587ade73943472cd30886127cd5bad6edabcd2aad07a5032efeca"
+        },
+        "STATEMENT_CHANGES.json": {
+          "member": "erdos1049_r12_exposition_return_20261004/STATEMENT_CHANGES.json",
+          "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+        },
+        "STYLE_RULES.json": {
+          "member": "erdos1049_r12_exposition_return_20261004/STYLE_RULES.json",
+          "sha256": "539aaa386b821545bafd4e943b6f0ad1876dc30f53bff16fe746ef8e7480075d"
+        }
+      },
+      "native_status": "source_reviewed_editorial_integration",
+      "native_receipt_identities": [
+        {
+          "name": "1049_NATIVE_DISPOSITION.json",
+          "sha256": "af8c71aff3671ab9660baaf4ff7ff267d336af7c6393451847f502c800e8e297"
+        }
+      ],
+      "status_boundary": "Reviewed exposition only; no new theorem, formal status, exhaustive donor reading or measured reader benefit.",
+      "manuscript_disposition": "Focused source edits accepted; theorem statements, registered claims and formal source pins conserved. Donor advice remains scoped and revisable."
+    },
+    {
+      "id": "short-20261004-r12-systems",
+      "round": 12,
+      "problem": "systems",
+      "custody_cohort": "paper_refinement_r12_20261004",
+      "archive_name": "systems_r12_prove2me_refinement_return_20261004.zip",
+      "archive_sha256": "01142e377f9365aeca95d903ff392a0dd72fc37e718796e535ccc63056ec8b94",
+      "documents": {
+        "EDITORIAL_REPORT.md": {
+          "member": "systems_r12_prove2me_refinement_return_20261004/EDITORIAL_REPORT.md",
+          "sha256": "da00563090e4f51315c8d885cf09ac5f5ad0cea0322a05edcaf873cb4245633c"
+        },
+        "FEEDBACK_UPTAKE.json": {
+          "member": "systems_r12_prove2me_refinement_return_20261004/FEEDBACK_UPTAKE.json",
+          "sha256": "4fd5ecb97d229eda7322f67d7a658448a1adf229a8b8799a6e0cd2a9c720dee9"
+        },
+        "GENERALIZED_LESSONS.json": {
+          "member": "systems_r12_prove2me_refinement_return_20261004/GENERALIZED_LESSONS.json",
+          "sha256": "7a53723490d0fc76cf514c052f40059b98b7540b1e45139384287223c6c19767"
+        },
+        "LITERATURE_READING.json": {
+          "member": "systems_r12_prove2me_refinement_return_20261004/LITERATURE_READING.json",
+          "sha256": "ecf62b5a7d5cb1ed64b8ab15535c381828b88825ee34443c1f801d8024c5354a"
+        },
+        "RETURN.json": {
+          "member": "systems_r12_prove2me_refinement_return_20261004/RETURN.json",
+          "sha256": "d2c403338fe0f3afad42902b1259379b21961ffe18dd89d5b62459626a573f87"
+        },
+        "STATEMENT_CHANGES.json": {
+          "member": "systems_r12_prove2me_refinement_return_20261004/STATEMENT_CHANGES.json",
+          "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+        },
+        "STYLE_RULES.json": {
+          "member": "systems_r12_prove2me_refinement_return_20261004/STYLE_RULES.json",
+          "sha256": "e995abcf3ad854536bfd04d043588064e0478bc94bab7384a52e5aff7c130490"
+        }
+      },
+      "native_status": "source_reviewed_editorial_integration",
+      "native_receipt_identities": [
+        {
+          "name": "systems_NATIVE_DISPOSITION.json",
+          "sha256": "63b1e18a6c3755f3251c15c584f2d66a236b53bb73d9c59b50db6d20c6cf38ac"
+        }
+      ],
+      "status_boundary": "Reviewed exposition only; no new theorem, formal status, exhaustive donor reading or measured reader benefit.",
+      "manuscript_disposition": "Focused source edits accepted; theorem statements, registered claims and formal source pins conserved. Donor advice remains scoped and revisable."
+    },
+    {
+      "id": "short-20261004-r12-exposition",
+      "round": 12,
+      "problem": "exposition",
+      "custody_cohort": "paper_refinement_r12_20261004",
+      "archive_name": "exposition_refinement_r12_return.zip",
+      "archive_sha256": "f67dae6e91a842eb9f483f669e92a5c52e5b0f61324d7076f401cb54ba735097",
+      "documents": {
+        "EDITORIAL_REPORT.md": {
+          "member": "exposition_r12_final_return/EDITORIAL_REPORT.md",
+          "sha256": "6eb9a5f2a5d43c98730e16291fd535a1aae69ba86fb7effc4a116f3b9e9e65cd"
+        },
+        "FEEDBACK_UPTAKE.json": {
+          "member": "exposition_r12_final_return/FEEDBACK_UPTAKE.json",
+          "sha256": "100200de9661eeb5f5a6ef326c810423120414bbc83b6ebbf59c9fe7e1657119"
+        },
+        "GENERALIZED_LESSONS.json": {
+          "member": "exposition_r12_final_return/GENERALIZED_LESSONS.json",
+          "sha256": "dce65f5feb5996029e753e19afcbf3940db0d145219386b70ce3d55ede26efd8"
+        },
+        "GUIDE_REVISION_REPORT.json": {
+          "member": "exposition_r12_final_return/GUIDE_REVISION_REPORT.json",
+          "sha256": "a150cd8e375ed86ee2da1da67d8298b76f06b9d0a8407f1a5cffa4670c68846b"
+        },
+        "LITERATURE_READING.json": {
+          "member": "exposition_r12_final_return/LITERATURE_READING.json",
+          "sha256": "5602a51f062522c9ec32dac8fa84ec2183ed3d2602799c0e06679c2b9330be6b"
+        },
+        "R11_UPTAKE.json": {
+          "member": "exposition_r12_final_return/R11_UPTAKE.json",
+          "sha256": "d9e9b3c450258e5b5e439e71a7ae0af4a5ddf4440c58ea90591947adcfb47c1c"
+        },
+        "RETURN.json": {
+          "member": "exposition_r12_final_return/RETURN.json",
+          "sha256": "3b8a24eb940d934eb6591a1f8b74c9713de114f5ab6bc32b921a13bef3a79eec"
+        },
+        "STATEMENT_CHANGES.json": {
+          "member": "exposition_r12_final_return/STATEMENT_CHANGES.json",
+          "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+        },
+        "STYLE_RULES.json": {
+          "member": "exposition_r12_final_return/STYLE_RULES.json",
+          "sha256": "48d02a48e5d47067d9013f239e38d7b2c977a777260ff69dcfa95b5c87fdf0a4"
+        }
+      },
+      "native_status": "source_reviewed_editorial_integration",
+      "native_receipt_identities": [
+        {
+          "name": "exposition_NATIVE_DISPOSITION.json",
+          "sha256": "58719485049761414d6eef996c231b2df938b6776cd4dd120823d2207774d068"
+        }
+      ],
+      "status_boundary": "Reviewed exposition only; no new theorem, formal status, exhaustive donor reading or measured reader benefit.",
+      "manuscript_disposition": "Focused source edits accepted; theorem statements, registered claims and formal source pins conserved. Donor advice remains scoped and revisable."
     }
   ]
 }
