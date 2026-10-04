@@ -11259,6 +11259,102 @@
       "editorial_disposition": "accepted_as_scoped_application_of_existing_guidance",
       "manuscript_disposition": "Corresponding passage compared with current manuscript and accepted.",
       "reading_boundary": "Donor example retained with its source identity. Its application here is not a universal writing rule, proof or empirical result."
+    },
+    {
+      "id": "short-20261004-r12-exposition-generalized-lessons-01",
+      "return_id": "short-20261004-r12-exposition",
+      "document": "GENERALIZED_LESSONS.json",
+      "document_sha256": "dce65f5feb5996029e753e19afcbf3940db0d145219386b70ce3d55ede26efd8",
+      "index": 0,
+      "rule_families": [
+        "E03"
+      ],
+      "proposal": "Name the new task and the local fact that makes it possible; do not repeat the technique's name as an explanation.",
+      "before": "separately. Spend detail on the decisive inference. A proof paragraph should\nmake clear what the operation establishes and what remains to prove.",
+      "after": "separately. When a technique recurs for a new task, name that task. Spend detail\non the decisive inference and make clear what remains to prove.",
+      "reason": "Specify the local task of a repeated operation instead of adding more proof announcements; the accepted finite-difference revision is the concrete case.",
+      "limit": "Routine repetition for the same already intelligible task does not need another paragraph.",
+      "editorial_disposition": "accepted_as_scoped_application_of_existing_guidance",
+      "manuscript_disposition": "Concrete guide example or conditional instruction compared with frozen sources and accepted.",
+      "reading_boundary": "Original donor proposal preserved; guide wording is accepted locally. No universal rule family, measured improvement or model-weight training is inferred."
+    },
+    {
+      "id": "short-20261004-r12-exposition-generalized-lessons-02",
+      "return_id": "short-20261004-r12-exposition",
+      "document": "GENERALIZED_LESSONS.json",
+      "document_sha256": "dce65f5feb5996029e753e19afcbf3940db0d145219386b70ce3d55ede26efd8",
+      "index": 1,
+      "rule_families": [
+        "E04",
+        "E05"
+      ],
+      "proposal": "Separate permitted positions from realised nonzero support and a prescribed upper allowance from growth of the chosen object.",
+      "before": "\\subsection{Rejecting an attractive universal rule}",
+      "after": "\\subsection{Check the ordinary words that carry scope}\n\nAn unchanged formula can acquire a stronger claim from its surrounding prose.\nThe R11 \\#251 revision replaces ``uses all late indices'' by\n``permits changes at every index after the prefix'' in a comparison\nconstruction~\\cite[comparison construction]{paper251long}. The second describes allowed positions, not a promise that\nevery one is changed. In the sparse construction, the containing set $S$ and\ntarget interval are fixed before the target is chosen; the correction depends\non that target, and its support may occupy only part of $S$\n\\cite[sparse-perturbation proposition]{paper251}.\n\nThe same revision replaces the claim that corrections can ``grow arbitrarily\nslowly'' by an eventual upper bound chosen in advance. Given any prescribed\nfunction tending to infinity, the corrections can eventually be bounded by\nit. This does not say that the corrections themselves tend to infinity.\nThese repairs spell out the dependency that the short phrases obscured.\nThey do not call for expanding every familiar expression: expand the one\nwhose ordinary reading changes the theorem's scope.\n\n\\subsection{Rejecting an attractive universal rule}",
+      "reason": "Give ordinary verbs and growth phrases the same scope scrutiny as formulas, using two accepted R11 edits rather than a new abstract quantifier checklist.",
+      "limit": "This does not authorize changing the theorem or expanding every familiar phrase.",
+      "editorial_disposition": "accepted_as_scoped_application_of_existing_guidance",
+      "manuscript_disposition": "Concrete guide example or conditional instruction compared with frozen sources and accepted.",
+      "reading_boundary": "Original donor proposal preserved; guide wording is accepted locally. No universal rule family, measured improvement or model-weight training is inferred."
+    },
+    {
+      "id": "short-20261004-r12-exposition-generalized-lessons-03",
+      "return_id": "short-20261004-r12-exposition",
+      "document": "GENERALIZED_LESSONS.json",
+      "document_sha256": "dce65f5feb5996029e753e19afcbf3940db0d145219386b70ce3d55ede26efd8",
+      "index": 2,
+      "rule_families": [
+        "E00",
+        "E08"
+      ],
+      "proposal": "Credit the predecessor's actual recorded objects and mechanisms, then name the local review object.",
+      "before": "and passage. State what changes when an argument is adapted. Credit supplied\nideas and corrections locally.",
+      "after": "and passage. Say what an adaptation retains and changes. Credit supplied\nideas and corrections locally.",
+      "reason": "Require attribution of the inherited part as well as the change; do not describe a predecessor only by what it lacks.",
+      "limit": "A difference of emphasis or deployment is not proof of exclusivity, priority or performance advantage.",
+      "editorial_disposition": "accepted_as_scoped_application_of_existing_guidance",
+      "manuscript_disposition": "Concrete guide example or conditional instruction compared with frozen sources and accepted.",
+      "reading_boundary": "Original donor proposal preserved; guide wording is accepted locally. No universal rule family, measured improvement or model-weight training is inferred."
+    },
+    {
+      "id": "short-20261004-r12-exposition-generalized-lessons-04",
+      "return_id": "short-20261004-r12-exposition",
+      "document": "GENERALIZED_LESSONS.json",
+      "document_sha256": "dce65f5feb5996029e753e19afcbf3940db0d145219386b70ce3d55ede26efd8",
+      "index": 3,
+      "rule_families": [
+        "E04",
+        "E05",
+        "E07"
+      ],
+      "proposal": "Identify actor/component, input and output; distinguish builders that regenerate from checks that assess consistency.",
+      "before": "particular system. A nearby systems paper's opening and evaluation should also\nbe read at their actual passages before transferring a sentence pattern.",
+      "after": "particular system. A nearby systems paper's opening and evaluation should also\nbe read at their actual passages before transferring a sentence pattern.\n\nA fair comparison names the mechanisms already present in the closest work.\nProve2Me separates immutable theorem statements from submitted proofs; its\nmissions have a human-audited core, and its milestones link source statements\nto attested formalisations~\\cite[\\S\\S3--4]{prove2me}. The R11 systems revision\ncredits those features before describing its own focus: a paper assertion at\na specified revision, its full registered support set and a separate record\nbinding explanatory prose to sources~\\cite[related work]{systems}. This is a\ncomparison of recorded objects and responsibilities. It does not establish\nthat the designs are exclusive, that one has priority, or that repository\nhosting is an advantage over a service.\n\nVerbs need equally precise subjects. In that revision, builders regenerate\nderived views; release checks test their consistency. Saying that the checks\n``update the records'' would assign them a different operation. Naming who\nor what acts, on which input, and with which output is often enough to make\nan infrastructure description intelligible without inventing a private\nvocabulary~\\cite[stored artifacts and executable tools]{systems}.\n",
+      "reason": "Apply the source-and-local-warrant method to one current systems comparison; credit Prove2Me's actual mechanisms and distinguish builders from checking, without priority or performance claims.",
+      "limit": "This is not a universal architecture prescription; the actual implementation may deliberately combine responsibilities.",
+      "editorial_disposition": "accepted_as_scoped_application_of_existing_guidance",
+      "manuscript_disposition": "Concrete guide example or conditional instruction compared with frozen sources and accepted.",
+      "reading_boundary": "Original donor proposal preserved; guide wording is accepted locally. No universal rule family, measured improvement or model-weight training is inferred."
+    },
+    {
+      "id": "short-20261004-r12-exposition-generalized-lessons-05",
+      "return_id": "short-20261004-r12-exposition",
+      "document": "GENERALIZED_LESSONS.json",
+      "document_sha256": "dce65f5feb5996029e753e19afcbf3940db0d145219386b70ce3d55ede26efd8",
+      "index": 4,
+      "rule_families": [
+        "E06",
+        "E07",
+        "E12"
+      ],
+      "proposal": "State the condition under which the advice applies, retaining its conclusion and limit.",
+      "before": "\nSeparate logical scope from evidence. A conditional implication may have an\nordinary or formal proof; a computation or conjecture needs its own label.\nKeep unproved mathematical inputs beside the dependent result. A checked nearby\nlemma does not formalise the whole proof; missing formalisation does not\ninvalidate an ordinary proof. Give finite computations their scope and\nreproduction details in a compact verification section. A test can eventually detect every nonintegral fixed value\nwithout certifying integrality when it fails. It still does not produce the\nwitnesses required by a quantified theorem.",
+      "after": "\nSeparate logical scope from evidence. A conditional implication can have an\nordinary or formal proof; label computations and conjectures separately. Keep\nunproved inputs beside the dependent result. A checked nearby lemma does not\nformalise the whole proof; missing formalisation does not invalidate an ordinary\nproof. Give computations their finite scope and reproduction details in one\nverification section. For a one-sided test, distinguish what passing proves\nfrom what failure leaves undecided. Pointwise eventual detection need not\nsupply a uniform stopping bound or the witnesses a quantified theorem requires.",
+      "reason": "Make the one-sided-test advice general and self-contained while retaining local inputs, ordinary/formal evidence and quantified-witness boundaries; remove repetition rather than squeezing the reading references onto a third page.",
+      "limit": "Do not weaken a genuine decision procedure or remove a necessary companion reference merely to shorten the guide.",
+      "editorial_disposition": "accepted_as_scoped_application_of_existing_guidance",
+      "manuscript_disposition": "Concrete guide example or conditional instruction compared with frozen sources and accepted.",
+      "reading_boundary": "Original donor proposal preserved; guide wording is accepted locally. No universal rule family, measured improvement or model-weight training is inferred."
     }
   ],
   "integrating_reviews": [
@@ -11879,6 +11975,23 @@
       ],
       "scope": "Eight mathematics programmes and the systems paper; focused manuscript edits and eight selected local lesson applications.",
       "claim_boundary": "No statement, proof status or novelty claim promoted. Historical advice remains revisable."
+    },
+    {
+      "id": "native-r12-ten-paper-and-guide-returns",
+      "return_ids": [
+        "short-20261004-r12-68",
+        "short-20261004-r12-243",
+        "short-20261004-r12-249",
+        "short-20261004-r12-251",
+        "short-20261004-r12-257",
+        "short-20261004-r12-269",
+        "short-20261004-r12-1041",
+        "short-20261004-r12-1049",
+        "short-20261004-r12-systems",
+        "short-20261004-r12-exposition"
+      ],
+      "scope": "Eight mathematical short/long pairs, systems paper and paired writing guides; five bounded guide applications under existing rules.",
+      "claim_boundary": "No statement, proof status or novelty claim promoted. Original R11 uptake is historical evidence; original R12 audit declarations remain separate from fresh native checks."
     }
   ]
 }

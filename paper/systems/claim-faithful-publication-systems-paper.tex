@@ -76,10 +76,10 @@ We describe Plectis, a repository-based system for carrying mathematical researc
 Its public prototype organises eight mathematical programmes around shared source files and structured records.
 % END SENTENCE r4.abstract.02
 % SENTENCE r4.abstract.03
-The design separates claims, supporting artifacts, explanatory passages and the review decisions attached to a revision.
+The design keeps paper statements, registered formal support and explanatory prose in separate records, allowing revisions to be checked against their cited evidence.
 % END SENTENCE r4.abstract.03
 % SENTENCE r4.abstract.04
-Python tools retrieve this work, record optional Lean probes, check evidence bindings and regenerate derived views; maintainers decide which changes to adopt, and a journal retains entered outcomes and credit.
+Python tools retrieve records, store optional Lean probes, check source bindings and regenerate indexes and summaries. Maintainers decide which changes to adopt, and a journal retains entered contributions and review decisions.
 % END SENTENCE r4.abstract.04
 % SENTENCE r4.abstract.05
 A worked example shows why links to correct formal proofs can survive a paraphrase that drops a stated hypothesis.
@@ -93,14 +93,32 @@ A historical author-run test rejected \HistoricalRejected{} of \HistoricalEdits{
 % SENTENCE r4.intro1.01
 Research continues across sessions, contributors and drafts. The next researcher needs to recover which question is open, what has been tried, and what supports the claims already published. A formal proof may remain correct while an edited explanation drops a hypothesis, or an unresolved step is later described as complete. Keeping the proof is therefore only part of keeping a usable research record.
 % END SENTENCE r4.intro1.01
+
 % SENTENCE r4.intro1.02
 Plectis is the public repository prototype studied here. It stores questions, prior sources, computations, proofs and unresolved steps alongside proposed contributions and their review. The implemented workflow is local to this repository; broader autonomous discovery and services for other scientific fields are proposals (Section~\ref{sec:limits}).
 % END SENTENCE r4.intro1.02
+
 % SENTENCE r4.intro1.03
-The architecture separates authored research records, the tools that locate or check them, and the publications generated from them. Researchers and maintainers decide what to investigate and what a proposed change justifies. Figure~\ref{fig:lifecycle} follows the resulting path from research artifacts to publication and back through contributions.
+The architecture separates authored research and publication records from the tools that inspect them and the indexes and summaries generated from them. Researchers and maintainers decide what to investigate and what a proposed change justifies. Figure~\ref{fig:lifecycle} follows the resulting path from research artifacts to publication and back through contributions.
 % END SENTENCE r4.intro1.03
+
+% SENTENCE r4.intro2.01
+Erd\H{o}s Problems supplies the questions and their public discussion, while Lean and mathlib supply the formal language and library~\cite{erdosproblems,lean4,mathlib}.
+% END SENTENCE r4.intro2.01
+% SENTENCE r4.intro2.02
+Formalisation blueprints link a written argument to named Lean declarations~\cite{leanblueprint,leanarchitect}, and the Equational Theories Project maintains shared problem records~\cite{etp}. Prove2Me combines human-audited missions, source-linked milestones and separately submitted proofs, with intermediate results available for other agents to reuse~\cite[Sections~3--4]{prove2me}.
+% END SENTENCE r4.intro2.02
+
+% SENTENCE r4.intro2.03
+Publication review follows a paper assertion at a specified revision. Its coverage record identifies the printed statement, registered Lean supports and their stated relationship. A separate passage record binds the explanation to sources and rationale; contribution records retain entered review decisions. Together these links make the basis of a proposed revision inspectable. Agreement between the records does not establish that the prose is true.
+% END SENTENCE r4.intro2.03
+
+% SENTENCE r4.intro2.04
+We first describe the stored records, inspection tools and contributor responsibilities. A proposed change to a theorem\textquotesingle s explanation then illustrates the publication checks. The revision and contribution workflows show how accepted work returns to the repository. Recorded observations and limits distinguish these implemented procedures from their unmeasured effects; Appendix~\ref{app:worked-proof} retains the mathematical calculation.
+% END SENTENCE r4.intro2.04
+
 % SENTENCE r4.fig.lifecycle
-\begin{figure}[htbp]
+\begin{figure}[H]
 \centering
 \begin{tikzpicture}[x=1cm,y=1cm]
 \node[sys box,text width=2.7cm,minimum height=1.8cm] (c) at (0,0) {Research artifacts\\sources, proofs, tests\\and open questions};
@@ -117,28 +135,23 @@ The architecture separates authored research records, the tools that locate or c
 \label{fig:lifecycle}
 \end{figure}
 % END SENTENCE r4.fig.lifecycle
-
-% SENTENCE r4.intro2.01
-Erd\H{o}s Problems supplies the questions and their public discussion, while Lean and mathlib supply the formal language and library~\cite{erdosproblems,lean4,mathlib}.
-% END SENTENCE r4.intro2.01
-% SENTENCE r4.intro2.02
-Formalisation blueprints link a written argument to named Lean declarations~\cite{leanblueprint,leanarchitect}, and the Equational Theories Project maintains shared problem records~\cite{etp}. Prove2Me already combines separate statements and proofs, human-audited missions, reusable intermediate results and open agent contributions~\cite[Sections~3--4]{prove2me}.
-% END SENTENCE r4.intro2.02
-
-% SENTENCE r4.intro2.03
-Here publication review follows a particular paper assertion at a specified revision. The paper-to-Lean ledger records its full registered support set and each support's stated relation to it. A separate ledger binds explanatory passages to source locations and an authored rationale. Claim and contribution records retain status, limits and entered review decisions. Together, these records let a reviewer inspect an assertion's basis and proposed wording.
-% END SENTENCE r4.intro2.03
-
-% SENTENCE r4.intro2.04
-We describe the components and their responsibilities, then follow one theorem from its evidence record to its explanation. The revision and contribution workflows show how accepted changes return to the repository. Recorded observations and limits distinguish implemented procedures from their unmeasured effects; Appendix~\ref{app:worked-proof} retains the mathematical calculation.
-% END SENTENCE r4.intro2.04
 \section{A repository organised around problems}\label{sec:world}
 \papersectiontarget{systems-scaling}
+% SENTENCE r8.architecture.records
+\subsection{Stored records and derived views}
+Lean and manuscript files contain the arguments. Claim records state selected assertions and what remains open; evidence records identify their registered supports; the journal retains entered returns and decisions. Builders read these authored files to produce indexes, source coordinates and status summaries. The \repolink{docs/ARCHITECTURE.md}{architecture guide} identifies the source of each derived view. A changed summary can therefore be investigated at its input record rather than treated as a new research result.
+% END SENTENCE r8.architecture.records
+
+% SENTENCE r12.architecture.correspondence
+For publication, the coverage ledger identifies a \emph{paper occurrence}: a labelled assertion in a particular manuscript, together with its source location and a digest of its statement. The row lists its registered Lean supports and their evidence status. Where the formal result is stronger than the printed statement, an authored relation note explains the correspondence and is bound to both statements. The passage ledger used for this systems paper has a different purpose: it records explanatory text, cited source spans, an evidence class and a rationale. Neither ledger derives the prose from a Lean proof.
+% END SENTENCE r12.architecture.correspondence
+
 % SENTENCE r4.world1.01
-Within this collection, a reader may want a proof, a counterexample to a proposed extension, or the argument behind a failed approach. Exact experiments and corrected references remain beside the original question as contributions in their own right.
+\subsection{Finding the relevant work}
+Within each problem collection, a reader may want a proof, a counterexample to a proposed extension, or the argument behind a failed approach. Exact experiments and corrected references remain beside the original question as contributions in their own right.
 % END SENTENCE r4.world1.01
 % SENTENCE r4.world1.02
-The first task is to find the relevant work without compiling the whole repository. Four views answer different parts of that question (Figure~\ref{fig:world}).
+The reader can locate these records without first compiling the whole repository. Four views answer different parts of that search (Figure~\ref{fig:world}).
 % END SENTENCE r4.world1.02
 
 % SENTENCE r4.world1.03
@@ -187,13 +200,10 @@ A source link by itself records no successful execution. When a question require
 \FloatBarrier
 % END SENTENCE r4.world2.03
 
-% SENTENCE r8.architecture.records
-\subsection{Stored artifacts and executable tools}
-The checkout separates authored records from derived views. Lean and manuscript files contain the arguments; claim records state what is asserted and what remains open; evidence records link selected assertions to their supports; the journal retains entered returns and decisions. Builders turn these inputs into indexes, source coordinates and status summaries. An apparent change in a summary can therefore be traced to the record that owns it. The \repolink{docs/ARCHITECTURE.md}{architecture guide} identifies these sources and their derived views.
-% END SENTENCE r8.architecture.records
 
 % SENTENCE r8.architecture.tools
-The tools act on these files at different stages of the workflow:
+\subsection{Operations on the records}
+The tools provide the following operations:
 \begin{center}\small
 \begin{tabularx}{\linewidth}{@{}>{\raggedright\arraybackslash}p{2.55cm}>{\raggedright\arraybackslash}X@{}}
 \toprule
@@ -202,9 +212,9 @@ Component & Input, output and responsibility\\
 Task routing & \repolink{scripts/agent_entry.py}{agent\_entry.py} maps a stated task to instructions, relevant files and commands; the researcher chooses the question and approach.\\[3pt]
 Evidence retrieval & \repolink{scripts/query_corpus.py}{query\_corpus.py} returns problem, claim, declaration and paper-source records from the indexes.\\[3pt]
 Proof sessions & \repolink{scripts/proof_workbench.py}{proof\_workbench.py} records notes and submitted Lean probes, derives verdicts from the Lean process, and binds a session claim to an accepted probe.\\[3pt]
-Statement evidence & \repolink{scripts/paper_evidence.py}{paper\_evidence.py} resolves mathematical paper statements against source and verification records; \repolink{scripts/paper_claim_evidence.py}{paper\_claim\_evidence.py} projects their evidence status and reported gaps.\\[3pt]
+Statement evidence & \repolink{scripts/paper_evidence.py}{paper\_evidence.py} locates each registered support at the recorded revision and checks its source and verification bindings; \repolink{scripts/paper_claim_evidence.py}{paper\_claim\_evidence.py} projects their evidence status and reported gaps.\\[3pt]
 Editorial exchange & \repolink{scripts/short_paper_writer.py}{short\_paper\_writer.py} audits manuscripts and packages proposed revisions without applying or approving the return.\\[3pt]
-Research history & \repolink{scripts/research_record.py}{research\_record.py} verifies the journal of entered returns and dispositions and reports what recorded outputs still owe.\\[3pt]
+Research history & \repolink{scripts/research_record.py}{research\_record.py} verifies the journal of entered returns and dispositions and reports the outstanding milestones of recorded outputs.\\[3pt]
 Derived views & \repolink{scripts/refresh_projections.py}{refresh\_projections.py} runs builders in dependency order; \repolink{scripts/check_release.py}{check\_release.py} checks release contracts and freshness.\\
 \bottomrule
 \end{tabularx}
@@ -225,7 +235,7 @@ A researcher chooses the task and the evidence needed to answer it. A coding age
 A typical iteration starts by retrieving the work relevant to a question. The researcher investigates and submits an argument, experiment, correction or manuscript change with its evidence and limitations. Review may adopt it, request revision, defer it or reject it. Accepted work updates the affected authored records; builders regenerate their dependent views, and release checks test those views for consistency. The journal preserves dispositions for structured returns explicitly entered into it. Ordinary issues, pull requests and ideas can enter review without a journal session. Sections~\ref{sec:paper} and~\ref{sec:contribute} describe these two contribution routes.
 % END SENTENCE r8.architecture.iteration
 
-\section{Worked case: a theorem and its explanation}\label{sec:example}\label{sec:predigestion}
+\section{Worked case: reviewing an explanation}\label{sec:example}\label{sec:predigestion}
 
 
 % SENTENCE r8.case.system-role
@@ -233,14 +243,14 @@ The worked case concerns a theorem about infinite sums of reciprocals over a res
 % END SENTENCE r8.case.system-role
 
 % SENTENCE r8.case.proof-role
-Suppose a contributor rewrites this theorem's explanation. In \repolink{docs/paper_lean_coverage.json}{paper\_lean\_coverage.json}, the row for \texttt{res:weighted-support} identifies the theorem's occurrence in the mathematical paper, its statement digest, source location and two Lean supports. The systems paper's \repolink{docs/systems_paper_sentences.json}{sentence ledger} instead records the explanatory passage, its sources and an authored rationale. For example, the appendix's hereditary conclusion is bound to the ordinary proof and its formal declaration. The reviewer must inspect the proposed words against those sources: retaining the Lean links alone does not show that the rewrite retains the hypothesis. Section~\ref{sec:checks} separates the checks involved.
+Suppose a contributor rewrites this theorem\textquotesingle s explanation. Its coverage row, \texttt{res:weighted-support} in \repolink{docs/paper_lean_coverage.json}{paper\_lean\_coverage.json}, identifies the statement in the mathematical paper and two registered Lean supports. An explanatory passage in this systems paper is instead recorded in the \repolink{docs/systems_paper_sentences.json}{passage ledger}, with sources and a rationale. For the appendix\textquotesingle s hereditary conclusion, these sources are the ordinary proof and a formal declaration. If the contributor drops the weighted hypothesis from that explanation, both Lean proofs and both source links can remain unchanged. The reviewer must compare the new wording with the cited statements. Section~\ref{sec:checks} explains which part of this comparison the tools check.
 % END SENTENCE r8.case.proof-role
 
 
 \section{Proof and publication checks}\label{sec:checks}\label{sec:graph}
 \papersectiontarget{systems-trust}
 % SENTENCE r4.checks1.01
-The example has two registered formal supports (Figure~\ref{fig:theorem}). One gives fixed-base irrationality and the all-base conclusion for every infinite subset; the other makes the fixed-base hereditary conclusion explicit. Their roles overlap. The publication check requires the registered set, even if one declaration suffices for the clause under discussion. This is an accounting requirement, not an additional hypothesis of the theorem.
+The example has two registered formal supports (Figure~\ref{fig:theorem}). One gives fixed-base irrationality and the all-base conclusion for every infinite subset; the other makes the fixed-base hereditary conclusion explicit. Their roles overlap. Here the \emph{registered support set} means the declarations listed for this paper occurrence, not every declaration on which their proofs depend. The publication check accounts for that full list even when one declaration suffices for the clause under discussion. This is a record-consistency requirement, not an additional hypothesis of the theorem.
 % END SENTENCE r4.checks1.01
 % SENTENCE r4.checks1.02
 The resolver also follows any registered named inputs and checks the identified source revisions. A result dependent on an additional named input retains that dependency; the weighted theorem above illustrates a different issue, a restriction within the proved statement. A changed statement or source must be checked against its records again. Evidence attached to one revision cannot silently support another.
@@ -280,15 +290,15 @@ Comparator adds a separately stated challenge and a check of its selected Lean i
 % END SENTENCE r4.checks2.02
 
 % SENTENCE r4.checks2.03
-Each marked passage in this systems paper has a recorded text, specified source lines, an evidence class and an authored rationale for citing those sources.
+Each marked passage in this systems paper has a recorded text, specified source lines, an evidence class and a rationale for citing those sources. The record groups prose for checking; it need not correspond to one grammatical sentence.
 % END SENTENCE r4.checks2.03
 
 % SENTENCE r4.checks2.04
-For the appendix's hereditary conclusion, the cited sources explain why restriction to an infinite subset preserves the weighted condition. The sentence checker compares cryptographic hashes of the marked text and its declared source passages; it also rejects missing records or passages without a binding.
+For the appendix\textquotesingle s hereditary conclusion, the sources explain why restriction to an infinite subset preserves the weighted condition. The passage checker compares cryptographic hashes of the marked text and declared sources and requires a nonempty rationale. It also rejects missing records or unbound passages. It does not assess whether that rationale justifies the text.
 % END SENTENCE r4.checks2.04
 
 % SENTENCE r4.checks2.05
-Changing the sentence alone therefore makes its recorded digest stale. Changing the sentence and updating its record can restore byte agreement without restoring the implication claimed by the prose.
+Changing the passage alone makes its recorded digest stale. Updating its record as well can restore byte agreement while leaving the new assertion unsupported.
 % END SENTENCE r4.checks2.05
 % SENTENCE r4.checks2.06
 For example, a paraphrase could drop the support hypothesis while retaining both correct Lean links in Figure~\ref{fig:theorem}. A reviewer must compare its hypothesis and quantifiers with the source statement. This is an illustrative editing failure, distinct from historical edit~8, which replaced a limitation by a false completion claim (Table~\ref{tab:mutations}).
@@ -319,7 +329,7 @@ A dependency graph locates the ingredients. Choosing their order and explaining 
 The companion paper retains the complete proof and subsidiary cases. A correspondence link names the passage supporting each linked short-paper claim, taking the reader from explanation to calculation.
 % END SENTENCE r4.paper1.03
 % SENTENCE r4.paper1.04
-The assembler preserves these authored parts and their cross-references; it supplies no missing mathematical step.
+The assembler inlines the companion\textquotesingle s authored sections into a flat manuscript, retaining their cross-references. It supplies no missing mathematical step.
 % END SENTENCE r4.paper1.04
 % SENTENCE reader.guidance
 Readers may need a hint, a worked example or the full argument. The reading guide invites them to reconstruct a decisive step or change a hypothesis, and the explanation instructions require an agent to respect the requested depth. These are authoring rules; they do not establish that a reader has understood the proof.
@@ -352,7 +362,7 @@ The reviewer compares hypotheses and implication directions with the whole state
 
 
 % SENTENCE r13.paper.08
-After acceptance, integration requires restoring the companion paper's authored sections, regenerating evidence and navigation, and inspecting the compiled pages, figures and proof links.
+After acceptance, the integrating reviewer applies changes to the owning manuscript sources and updates the affected evidence bindings. For an assembled companion, edits belong in its authored sections before rebuilding the flat paper. Integration also requires regenerating evidence and navigation, then inspecting the compiled pages, figures and proof links.
 % END SENTENCE r13.paper.08
 
 
@@ -386,7 +396,7 @@ An advisory model can return a proposal against those sources; a tool-enabled ag
 \node[sys box,text width=3.55cm,minimum height=1.5cm] (review) at (9.5,0) {\textbf{3. Check and review}\\Source checks;\\meaning, scope and credit};
 \node[sys box,text width=3.55cm,minimum height=1.5cm] (record) at (0,-2.8) {\textbf{6. Record outcome}\\Accepted changes,\\lessons and limitations};
 \node[sys box,text width=3.55cm,minimum height=1.5cm] (render) at (4.75,-2.8) {\textbf{5. Render and inspect}\\Regenerate evidence,\\PDFs and reading links};
-\node[sys box,text width=3.55cm,minimum height=1.5cm] (bind) at (9.5,-2.8) {\textbf{4. Integrate changes}\\Restore authored text;\\update source bindings};
+\node[sys box,text width=3.55cm,minimum height=1.5cm] (bind) at (9.5,-2.8) {\textbf{4. Integrate changes}\\Apply source edits;\\update source bindings};
 \draw[sys arrow] (freeze)--node[sys label,above=34pt,font=\footnotesize]{frozen source packet} (write);
 \draw[sys arrow] (write)--node[sys label,above=34pt,font=\footnotesize]{proposed source changes} (review);
 \draw[sys arrow] (review)--node[sys label,right,fill=none]{if accepted} (bind);
@@ -585,11 +595,11 @@ We use its published version~2, dated 31 August 2026; the first version appeared
 % END SENTENCE r4.related1.02
 
 % SENTENCE r11.related.prove2me-audit
-Prove2Me also addresses the human side of this process. A mission fixes a human-audited core of goals, definitions and milestones; each milestone pairs a source statement with its attested canonical formalisation. An independent agent can read the Lean statements back into mathematical prose for comparison with the source. Natural-language accounts accompany statements and proofs, the reusable library is searchable through statement descriptions, and imported results receive reuse credit. Discussion records include a disproved statement followed by a corrected replacement~\cite[Sections~3.3 and~4.3--4.5]{prove2me}. Explanation, reuse, correction and shared agent work are therefore part of the comparison, not contributions claimed here.
+Human review is part of Prove2Me\textquotesingle s design. A mission fixes a human-audited core of goals, definitions and milestones; each milestone pairs a source statement with its attested canonical formalisation. For read-back, an independent agent receives the Lean declaration and dependent definitions without the original source; a human compares its mathematical rendering with that source. Natural-language accounts accompany statements and proofs, statement descriptions support library search, and imports give contributors reuse credit. The discussion record also includes a disproved statement followed by a corrected replacement~\cite[Sections~3.3 and~4.3--4.5]{prove2me}. Explanation, reuse, correction and shared agent work are therefore established parts of this comparison.
 % END SENTENCE r11.related.prove2me-audit
 
 % SENTENCE r4.related1.03
-Our unit for publication review is a paper assertion at a specified revision. Its record names the full registered formal support set and the relation of each support to the printed statement; a separate record binds explanatory prose to sources and rationale. Entered contribution records preserve review decisions and role credit. This paper concentrates on those revision-specific publication records; Prove2Me concentrates on audited formalisation missions and composable proofs. Hosting one design as a service and the other in a repository does not establish an advantage. We claim neither priority for persistent research records nor a measured advantage over Prove2Me.
+For correspondence with a source, the closest analogue is Prove2Me\textquotesingle s milestone: both designs identify the mathematical statement whose formalisation is being reviewed. Our coverage record follows a particular paper occurrence and can list several overlapping formal supports, with a relation note explaining their connection to the printed claim. It is not a proof-sketch: listing those supports does not compose proof terms or discharge open lemmas. A separate passage record binds the explanation to sources and rationale, while entered contribution records retain revision decisions and role credit. The focus here is the consistency and review of these publication records across revisions. This difference of focus establishes neither priority for persistent research records nor a measured advantage over Prove2Me.
 % END SENTENCE r4.related1.03
 
 % SENTENCE r4.related1.04

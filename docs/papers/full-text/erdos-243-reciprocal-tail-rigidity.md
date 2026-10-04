@@ -85,7 +85,7 @@ The integer is positive because it equals the positive tail multiplied by $`D_n`
  C_{n+1}=a_nC_n-D_n,\qquad D_{n+1}=a_nD_n.
 \end{equation}
 ```
-Koizumi constructs these coordinates in Lemma 4 \[koizumi2025, pp. 11–12\]. On a pseudo-greedy tail his $`c_n,d_n,e_n`$ correspond to $`C_n,D_n,D_n-(a_n-1)C_n`$. If the tail is restarted with its value in lowest terms, both coordinates are divided by the same fixed integer. We retain the unreduced fraction $`C_n/D_n`$ to keep the denominator update multiplicative.
+Koizumi constructs these coordinates in Lemma 4 \[koizumi2025, pp. 11–12\]. On a pseudo-greedy tail his $`c_n,d_n,e_n`$ correspond to $`C_n,D_n,D_n-(a_n-1)C_n`$. If the tail is restarted with its value in lowest terms, both coordinates are divided by the same fixed integer. We retain the unreduced fraction $`C_n/D_n`$ to keep the denominator update multiplicative. In the cubic proof we first extract a polynomial for this $`C_n`$, then divide out the eventual fixed gcd in Section <a href="#sec:cubic-normalisation" data-reference-type="ref" data-reference="sec:cubic-normalisation">3.2</a>.
 
 For large $`n`$, $`a_{n+1}\ge a_n^2/2\ge2a_n`$. The terms after $`1/a_{n+1}`$ sum to at most $`2/a_{n+2}\le4/a_{n+1}^2`$, so
 ``` math

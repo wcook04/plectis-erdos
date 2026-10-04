@@ -493,6 +493,15 @@ Induction yields
 \begin{equation}\label{eq:actual-tail}
  X_{\ell+h}=W_{\ell,h}X_\ell-F_{\ell,h}.
 \end{equation}
+The quotient $F_{\ell,h}/W_{\ell,h}$ is the contribution of these $h$
+blocks to the starting tail:
+\[
+ \frac{F_{\ell,h}}{W_{\ell,h}}
+ =h_\ell\sum_{a=\ell}^{\ell+h-1}s_a.
+\]
+The remainder is $X_{\ell+h}/W_{\ell,h}$. Thus
+\eqref{eq:actual-tail} splits $X_\ell$ into a finite sum and its tail,
+with both measured in the starting normalisation.
 Throughout this section let
 \begin{equation}\label{eq:actual-bound}
  K(B,a)=90B(a+1)^2.
@@ -503,10 +512,12 @@ The bound $0<BX_{\ell+h}\le K(B,\ell+h)$ and
  \frac{BF_{\ell,h}}{W_{\ell,h}}<BX_\ell
  \le\frac{BF_{\ell,h}+K(B,\ell+h)}{W_{\ell,h}}.
 \]
-If this interval contains no integer, then $BX_\ell$ cannot be integral.
-The residue test expresses the same exclusion at the other end of the
-segment: an integral starting tail would make $BX_{\ell+h}$ a positive
-integer congruent to $-BF_{\ell,h}$ modulo $W_{\ell,h}$.
+Its width is $K(B,\ell+h)/W_{\ell,h}$, but a width below $1$ does not
+by itself exclude an integer. We must compare its right endpoint with
+the first integer strictly above its left endpoint. The residue test
+makes this comparison at the other end of the segment: an integral
+starting tail would make $BX_{\ell+h}$ a positive integer congruent to
+$-BF_{\ell,h}$ modulo $W_{\ell,h}$.
 
 For integers $W\ge1,t$, define
 $\operatorname{lpr}_W(t)=1+((t-1)\bmod W)$, with the remainder in

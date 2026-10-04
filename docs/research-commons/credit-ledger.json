@@ -13,14 +13,14 @@
       "artifacts": [
         {
           "excerpt_sha256": "sha256:4fccb25970fe4d947353fbb0ac94e7491bdd3e9ff10f3d53ddab5ffa734e53e8",
-          "line_end": 605,
-          "line_start": 605,
+          "line_end": 607,
+          "line_start": 607,
           "path": "paper/243/erdos-243-reciprocal-tail-rigidity.tex"
         },
         {
           "excerpt_sha256": "sha256:bfb4918e3aead559a22c89f378d6a1e6371158599e673680944f0bdc187f9e4b",
-          "line_end": 735,
-          "line_start": 713,
+          "line_end": 737,
+          "line_start": 715,
           "path": "paper/243/erdos-243-reciprocal-tail-rigidity.tex"
         },
         {
@@ -294,5 +294,5 @@
   "naming_policy": "Every entry starts with the name withheld. A name appears only after that person confirms the public name they want, and an entry stays anonymous if they ask. Private messages stay outside this repository.",
   "schema": "plectis-credit-ledger/1",
   "source_registry": "docs/research-commons/source-attributions.json",
-  "source_registry_sha256": "sha256:bb57cff1f17396c4b5de2851b3f3c0059966151e554f564e9fe6bd1ce9eb691e"
+  "source_registry_sha256": "sha256:9f4ad23ecff6d7ccd55a05d9a574e396e9c53c29bb6372ab5f1875ffa26f2726"
 }

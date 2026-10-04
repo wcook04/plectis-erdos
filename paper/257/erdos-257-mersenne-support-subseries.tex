@@ -304,10 +304,12 @@ in every layer has already excluded reciprocal summability.
 A related selection of a term from an average over an arithmetic
 progression occurs in
 Duverney--Tachiya~\cite[Section~2, (2.3)--(2.9)]{duverneytachiya}.
-The sparse-coefficient criteria of Kaneko--Suzuki--Tachiya
-\cite[Theorems~1 and~3]{kanekosuzukitachiya} do not apply directly to
-the divisor counts $c_A(n)=\#\{a\in A:a\mid n\}$: for nonempty $A$,
-these are positive on every multiple of $\min A$.
+In the criteria of Kaneko--Suzuki--Tachiya
+\cite[Theorems~1 and~3]{kanekosuzukitachiya}, sparsity concerns the
+positions of nonzero power-series coefficients, not the set of selected
+Lambert denominators. The divisor counts $c_A(n)=\#\{a\in A:a\mid n\}$
+are positive on every multiple of $\min A$ for nonempty $A$, so those
+criteria do not apply directly.
 The corresponding density calculation, and the distinction between
 their remote-tail average and our displacement, are given in
 \papersectionlink{erdos257-mersenne-reasoning-surface.pdf}{record257:weighted-proof}
@@ -617,7 +619,7 @@ base. Equation~\eqref{eq:intro-displacement} rules out rationality.
 \section{Comparison of the support classes}\label{sec:comparison}
 Write $\mathcal W_b$ for supports satisfying the finite-prime weighted
 hypothesis at base $b$, and $\mathcal C$ for supports admitting a
-strengthened positive cover as in~\eqref{eq:strengthened-cover}.
+divisor cover satisfying~\eqref{eq:strengthened-cover}.
 Neither condition includes the other.
 
 \begin{proposition}[incomparable support criteria]
@@ -1531,10 +1533,12 @@ calculation.  This scalar identity does not supply a converse to the
 positive-cover criterion.
 
 \subsection*{The cost for a finite set of divisors}
-For the following finite divisor sets, the lower bound is asymptotically attained. For
-$F(q,P)=\{qd:d\mid\prod_{p\in P}p\}$, where $q\ge2$ and no $p\in P$
-divides $q$, put $S=\sum_{p\in P}1/p$.  If $S\ge1$, the infimum $K_*$
-over finite or countable covers satisfies
+For the following finite divisor sets, the lower bound is asymptotically
+attained. Here $K_*(F)$ is the infimum of the cover cost $K$ from
+Section~\ref{sec:comparison}, taken over finite or countable covers of $F$
+and all positive weights of total one.
+For $F(q,P)=\{qd:d\mid\prod_{p\in P}p\}$, where $q\ge2$ and no $p\in P$
+divides $q$, put $S=\sum_{p\in P}1/p$.  If $S\ge1$, then
 \begin{equation}
  \frac{e(S-1)}q\le K_*\bigl(F(q,P)\bigr)\le\frac{eS}q.
  \label{eq:optimal-cube-cost}
@@ -1548,8 +1552,8 @@ $\mathbb EZ=S$.  For $z\ge0$ and $v=\alpha\log2>0$,
 \]
 for $0\le z\le1$ the claimed lower bound is nonpositive.
 Thus $\Psi(2^z)\ge e(z-1)$.  For the upper bound, use the
-one-set cover with $z=1/S$ and $\alpha=\log_2(1+z)$; its exact
-positive expansion has cost
+one-set cover, whose weight is one, with $z=1/S$ and
+$\alpha=\log_2(1+z)$; its exact positive expansion has cost
 \[
  \frac1{qz}\prod_{p\in P}(1+z/p)\le\frac{eS}q.
 \]

@@ -4,15 +4,15 @@
 
 # Reading edition
 
-Edition fingerprint `e3bd659f77c37349`. Papers CC-BY-4.0, Will Cook, 2026. Source: <https://github.com/wcook04/plectis-erdos>. Website: <https://wcook04.github.io/plectis/maths/>.
+Edition fingerprint `754a57a3eb8c5c7d`. Papers CC-BY-4.0, Will Cook, 2026. Source: <https://github.com/wcook04/plectis-erdos>. Website: <https://wcook04.github.io/plectis/maths/>.
 
 Read the mathematics with your own AI model, or without one, and without a clone. All three files come from one builder and one set of sources, so they agree with the papers and with each other.
 
 | File | Contents | Size |
 |---|---|---:|
-| [plectis-reading-edition.md](plectis-reading-edition.md) | Start here. Introduction, research instruction, the cross-problem paper in full, the opening sections and references of each short paper, and one worked example in full. [Raw](https://raw.githubusercontent.com/wcook04/plectis-erdos/main/docs/reading-edition/plectis-reading-edition.md) | 367 KB |
-| [plectis-short-papers.md](plectis-short-papers.md) | The same front matter with the cross-problem paper and all eight short papers in full. [Raw](https://raw.githubusercontent.com/wcook04/plectis-erdos/main/docs/reading-edition/plectis-short-papers.md) | 653 KB |
-| Complete edition | All 17 papers below. Written on demand, because it repeats `docs/papers/full-text/`. | 3,427 KB |
+| [plectis-reading-edition.md](plectis-reading-edition.md) | Start here. Introduction, research instruction, the cross-problem paper in full, the opening sections and references of each short paper, and one worked example in full. [Raw](https://raw.githubusercontent.com/wcook04/plectis-erdos/main/docs/reading-edition/plectis-reading-edition.md) | 368 KB |
+| [plectis-short-papers.md](plectis-short-papers.md) | The same front matter with the cross-problem paper and all eight short papers in full. [Raw](https://raw.githubusercontent.com/wcook04/plectis-erdos/main/docs/reading-edition/plectis-short-papers.md) | 655 KB |
+| Complete edition | All 17 papers below. Written on demand, because it repeats `docs/papers/full-text/`. | 3,431 KB |
 
 ```sh
 python3 scripts/build_reading_edition.py --complete plectis-complete-edition.md
@@ -27,7 +27,7 @@ A model with a small context window should take the starter file first and then 
 | Problem | Paper | Kind | Size | Raw text |
 |---|---|---|---:|---|
 | Eight together | [Reading Eight Erdős Problems Together](../../docs/papers/full-text/optimal-sparse-perturbations.md) | cross-problem paper | 127 KB | [raw](https://raw.githubusercontent.com/wcook04/plectis-erdos/main/docs/papers/full-text/optimal-sparse-perturbations.md) |
-| #68 | [Integer Linear Forms for a Factorial Reciprocal Series](../../docs/papers/full-text/erdos-68-factorial-denominator-irrationality.md) | short paper | 30 KB | [raw](https://raw.githubusercontent.com/wcook04/plectis-erdos/main/docs/papers/full-text/erdos-68-factorial-denominator-irrationality.md) |
+| #68 | [Integer Linear Forms for a Factorial Reciprocal Series](../../docs/papers/full-text/erdos-68-factorial-denominator-irrationality.md) | short paper | 31 KB | [raw](https://raw.githubusercontent.com/wcook04/plectis-erdos/main/docs/papers/full-text/erdos-68-factorial-denominator-irrationality.md) |
 | #68 | [Factorial Linear Forms and Denominators Detailed Proofs and Rationality Criteria](../../docs/papers/full-text/erdos68-factorial-reasoning-surface.md) | longer record | 201 KB | [raw](https://raw.githubusercontent.com/wcook04/plectis-erdos/main/docs/papers/full-text/erdos68-factorial-reasoning-surface.md) |
 | #243 | [Reciprocal Sums and the Sylvester Recurrence](../../docs/papers/full-text/erdos-243-reciprocal-tail-rigidity.md) | short paper | 74 KB | [raw](https://raw.githubusercontent.com/wcook04/plectis-erdos/main/docs/papers/full-text/erdos-243-reciprocal-tail-rigidity.md) |
 | #243 | [Reciprocal Sums and the Sylvester Recurrence: Further Results and Proofs](../../docs/papers/full-text/erdos243-reciprocal-tail-reasoning-surface.md) | longer record | 250 KB | [raw](https://raw.githubusercontent.com/wcook04/plectis-erdos/main/docs/papers/full-text/erdos243-reciprocal-tail-reasoning-surface.md) |
@@ -38,8 +38,8 @@ A model with a small context window should take the starter file first and then 
 | #257 | [Irrationality criteria for Lambert subseries](../../docs/papers/full-text/erdos-257-mersenne-support-subseries.md) | short paper | 91 KB | [raw](https://raw.githubusercontent.com/wcook04/plectis-erdos/main/docs/papers/full-text/erdos-257-mersenne-support-subseries.md) |
 | #257 | [Reciprocal Mersenne Subseries](../../docs/papers/full-text/erdos257-mersenne-reasoning-surface.md) | longer record | 623 KB | [raw](https://raw.githubusercontent.com/wcook04/plectis-erdos/main/docs/papers/full-text/erdos257-mersenne-reasoning-surface.md) |
 | #269 | [Distinct running least common multiples](../../docs/papers/full-text/erdos-269-three-prime-running-lcm.md) | short paper | 58 KB | [raw](https://raw.githubusercontent.com/wcook04/plectis-erdos/main/docs/papers/full-text/erdos-269-three-prime-running-lcm.md) |
-| #269 | [Running least common multiples: distinct values and multiplicities](../../docs/papers/full-text/erdos269-running-lcm-reasoning-surface.md) | longer record | 272 KB | [raw](https://raw.githubusercontent.com/wcook04/plectis-erdos/main/docs/papers/full-text/erdos269-running-lcm-reasoning-surface.md) |
-| #1041 | [Paths in Polynomial Lemniscates: A Degree-Seven Counterexample and Radial Connections](../../docs/papers/full-text/erdos-1041-lemniscate-newton-flow.md) | short paper | 61 KB | [raw](https://raw.githubusercontent.com/wcook04/plectis-erdos/main/docs/papers/full-text/erdos-1041-lemniscate-newton-flow.md) |
+| #269 | [Running least common multiples: distinct values and multiplicities](../../docs/papers/full-text/erdos269-running-lcm-reasoning-surface.md) | longer record | 273 KB | [raw](https://raw.githubusercontent.com/wcook04/plectis-erdos/main/docs/papers/full-text/erdos269-running-lcm-reasoning-surface.md) |
+| #1041 | [Paths in Polynomial Lemniscates: A Degree-Seven Counterexample and Radial Connections](../../docs/papers/full-text/erdos-1041-lemniscate-newton-flow.md) | short paper | 62 KB | [raw](https://raw.githubusercontent.com/wcook04/plectis-erdos/main/docs/papers/full-text/erdos-1041-lemniscate-newton-flow.md) |
 | #1041 | [Paths in Polynomial Lemniscates: A Degree-Seven Counterexample and Radial Connections](../../docs/papers/full-text/erdos1041-lemniscate-reasoning-surface.md) | longer record | 291 KB | [raw](https://raw.githubusercontent.com/wcook04/plectis-erdos/main/docs/papers/full-text/erdos1041-lemniscate-reasoning-surface.md) |
 | #1049 | [Hankel Determinants of Geometric Moments and Rational Lambert Values](../../docs/papers/full-text/erdos-1049-rational-base-lambert.md) | short paper | 63 KB | [raw](https://raw.githubusercontent.com/wcook04/plectis-erdos/main/docs/papers/full-text/erdos-1049-rational-base-lambert.md) |
 | #1049 | [Geometric Moments and Rational Lambert Values: Proofs and Further Results](../../docs/papers/full-text/erdos1049-rational-base-lambert-reasoning-surface.md) | longer record | 288 KB | [raw](https://raw.githubusercontent.com/wcook04/plectis-erdos/main/docs/papers/full-text/erdos1049-rational-base-lambert-reasoning-surface.md) |

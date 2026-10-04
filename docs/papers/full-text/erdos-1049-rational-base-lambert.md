@@ -367,11 +367,13 @@ Let $`\gamma_{\!E}`$ denote Euler’s constant and put
  \qquad K(q)=\mathcal A(q)\mathcal M(q)^3.
 \end{equation}
 ```
-Positivity of $`a_k`$ and summability of $`\log(a_k/c_k)+8L/(k+1)=O_q((k+1)^{-2})`$ show that $`\mathcal A(q)`$ converges to a positive number. In the logarithm of the product, the first-order term contributes $`-8L\sum_{k<N}(k+1)^{-1}`$, while the summable remainder contributes a finite constant. Using $`\sum_{k<N}(k+1)^{-1}=\log N+\gamma_{\!E}+o(1)`$, we obtain
+Positivity of $`a_k`$ and summability of $`\log(a_k/c_k)+8L/(k+1)=O_q((k+1)^{-2})`$ show that $`\mathcal A(q)`$ converges to a positive number. Since $`\prod_{k<N}c_k=C_N`$, we can separate these contributions exactly:
 ``` math
-\prod_{k<N}a_k\sim\mathcal A(q)C_NN^{-8L}.
+\log\frac{\prod_{k<N}a_k}{C_N}
+ =-8L\sum_{k<N}\frac1{k+1}
+  +\sum_{k<N}\left(\log\frac{a_k}{c_k}+\frac{8L}{k+1}\right).
 ```
-Substitution in <a href="#eq:geometric-limit" data-reference-type="eqref" data-reference="eq:geometric-limit">[eq:geometric-limit]</a> proves the theorem, or equivalently
+The second sum tends to $`\log\mathcal A(q)+8\gamma_{\!E}L`$. Using $`\sum_{k<N}(k+1)^{-1}=\log N+\gamma_{\!E}+o(1)`$, the Euler-constant terms cancel, giving $`\prod_{k<N}a_k\sim\mathcal A(q)C_NN^{-8L}`$. Substitution in <a href="#eq:geometric-limit" data-reference-type="eqref" data-reference="eq:geometric-limit">[eq:geometric-limit]</a> proves the theorem, or equivalently
 ``` math
 \log V_N^*=B_N\log q+\log C_N+2N\log P
              -8L\log N+\log K(q)+o(1).
@@ -380,7 +382,7 @@ Substitution in <a href="#eq:geometric-limit" data-reference-type="eqref" data-r
 
 </div>
 
-Thus the leading cubic term $`c_k`$ determines $`C_N`$, whereas the first correction to $`a_k/c_k`$ determines $`N^{-8F(1/q)}`$.
+Thus the product of the cubic weights $`c_k`$ gives $`C_N`$, whereas the first correction to $`a_k/c_k`$ determines $`N^{-8F(1/q)}`$.
 
 <a id="sec:hankel-order"></a>
 

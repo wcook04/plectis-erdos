@@ -1319,11 +1319,13 @@ Dividing the correction $`-3L(k+1)`$ by the leading term $`\binom{k+2}{2}`$ give
 ```
 In particular $`a_{k+1}/a_k\to1`$, and multiplication of finitely many adjacent ratios gives $`a_{k+h}/a_k\to1`$ for each fixed $`h`$. The uniform shift bound follows from Proposition <a href="#long1049:prop:rogers-factorisation" data-reference-type="ref" data-reference="long1049:prop:rogers-factorisation">14</a>, so Theorem <a href="#long1049:thm:geometric-universality" data-reference-type="ref" data-reference="long1049:thm:geometric-universality">13</a> applies.
 
-Positivity of $`a_k`$ and summability of $`\log(a_k/c_k)+8L/(k+1)=O_q((k+1)^{-2})`$ show that $`\mathcal A(q)`$ converges to a positive number. In the logarithm of the product, the first-order term contributes $`-8L\sum_{k<N}(k+1)^{-1}`$, while the summable remainder contributes a finite constant. Using $`\sum_{k<N}(k+1)^{-1}=\log N+\gamma_{\!E}+o(1)`$, we obtain
+Positivity of $`a_k`$ and summability of $`\log(a_k/c_k)+8L/(k+1)=O_q((k+1)^{-2})`$ show that $`\mathcal A(q)`$ converges to a positive number. Since $`\prod_{k<N}c_k=C_N`$, we can separate these contributions exactly:
 ``` math
-\prod_{k<N}a_k\sim\mathcal A(q)C_NN^{-8L}.
+\log\frac{\prod_{k<N}a_k}{C_N}
+ =-8L\sum_{k<N}\frac1{k+1}
+  +\sum_{k<N}\left(\log\frac{a_k}{c_k}+\frac{8L}{k+1}\right).
 ```
-Theorem <a href="#long1049:thm:geometric-universality" data-reference-type="ref" data-reference="long1049:thm:geometric-universality">13</a> now gives the stated determinant asymptotic. Taking logarithms yields
+The second sum tends to $`\log\mathcal A(q)+8\gamma_{\!E}L`$. Using $`\sum_{k<N}(k+1)^{-1}=\log N+\gamma_{\!E}+o(1)`$, the Euler-constant terms cancel, giving $`\prod_{k<N}a_k\sim\mathcal A(q)C_NN^{-8L}`$. Theorem <a href="#long1049:thm:geometric-universality" data-reference-type="ref" data-reference="long1049:thm:geometric-universality">13</a> now gives the stated determinant asymptotic. Taking logarithms yields
 ``` math
 \log V_N^*=B_N\log q+\log C_N+2N\log P
              -8L\log N+\log K(q)+o(1).

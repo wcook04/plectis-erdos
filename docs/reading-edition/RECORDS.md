@@ -10,7 +10,7 @@ The navigators show both located evidence and unresolved correspondences. Genera
 - [Erdős #243](records/erdos243.md): 7 linked, 4 unresolved short assertions.
 - [Erdős #249](records/erdos249.md): 2 linked, 4 unresolved short assertions.
 - [Erdős #251](records/erdos251.md): 2 linked, 1 unresolved short assertions.
-- [Erdős #257](records/erdos257.md): 3 linked, 5 unresolved short assertions.
+- [Erdős #257](records/erdos257.md): 2 linked, 6 unresolved short assertions.
 - [Erdős #269](records/erdos269.md): 5 linked, 4 unresolved short assertions.
 - [Erdős #1041](records/erdos1041.md): 4 linked, 4 unresolved short assertions.
 - [Erdős #1049](records/erdos1049.md): 4 linked, 2 unresolved short assertions.

@@ -484,7 +484,7 @@ These are limitations of specified arguments, not an exhaustive classification o
 
 # Conditions that would imply irrationality
 
-Below are three quantitative sufficient conditions, an equivalent residue formulation, and a proposed generic rank bound. The rank bound is false, as its rational counterexample shows. The other arithmetic conditions remain open for the totient; the proofs establish their stated implications. They are examples of possible approaches, not an exhaustive list.
+Below are quantitative sufficient conditions, an equivalent residue formulation, and a proposed generic rank bound. The rank bound is false, as its rational counterexample shows. The other arithmetic conditions remain open for the totient; the proofs establish their stated implications. They are examples of possible approaches, not an exhaustive list.
 
 <a id="cancellation-on-a-full-block"></a>
 

@@ -25,7 +25,7 @@
 \title{Integer Linear Forms for a\\Factorial Reciprocal Series}
 \subtitle{An integral basis and a finite gcd formula}
 \author{Will Cook}
-\date{31 August 2026; revised 3 October 2026}
+\date{31 August 2026; revised 4 October 2026}
 
 \begin{document}
 \maketitle
@@ -264,8 +264,8 @@ Uniqueness of the coordinates now gives the complete solution
  \label{eq:low-channel-classification}
 \end{equation}
 with $t\in\mathbb Z$ and finitely many nonzero integers $z_n$.
-The lower coordinates are fixed by $t$; all higher coordinates remain
-free.
+The parameter $t$ fixes the lower coordinates; the higher $z_n$ remain
+arbitrary until we impose $\lambda_1=0$.
 
 It remains to remove index one. Write $a_D$ for its coefficient in
 $K_D$, and $u_n$ for its coefficient in $U_n$. All other coordinates
@@ -369,8 +369,10 @@ Minimising its support or its coefficient norm is a separate problem.
 
 \subsection{The associated remainder}\label{sec:coordinate-remainder}
 
-Once $t$ is fixed, the higher coordinates change the remainder only by
-an integer. Indeed, $\mathcal R(e_1)=S$ and $\mathcal R(U_n)=1$ give
+For a fixed admissible value $M=tL_D$, the higher coordinates must
+still satisfy \eqref{eq:support-equation}. Among those choices, the
+remainder changes only by an integer: $\mathcal R(e_1)=S$ and
+$\mathcal R(U_n)=1$ give
 \begin{equation}
  \mathcal R\left(tK_D+\sum_{n>D}z_nU_n\right)
  =tL_D(S-H_D)+\sum_{n>D}z_n,
@@ -379,7 +381,7 @@ an integer. Indeed, $\mathcal R(e_1)=S$ and $\mathcal R(U_n)=1$ give
 \end{equation}
 Since $M=tL_D$ clears the denominators of $H_D$, the integer in
 $\mathcal R=MS+k$ is $k=-MH_D+\sum_{n>D}z_n$. Thus the sum of the
-free coordinates is the offset from $M(S-H_D)$, not from $MS$.
+higher coordinates is the offset from $M(S-H_D)$, not from $MS$.
 
 \section{An example attaining the minimum}\label{sec:depth-four}
 

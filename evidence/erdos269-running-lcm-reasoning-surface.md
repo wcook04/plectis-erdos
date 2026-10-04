@@ -1156,7 +1156,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long269-res-consumer"></a>
 
-## Proposition 10.1 (least positive residues), page 40
+## Proposition 10.1 (least positive residues), page 41
 
 > *Let $`C>0`$ and let $`c`$ be an integer with $`0<c`$ and $`|c|\le K`$. If $`c\equiv N\pmod C`$ and $`K<\operatorname{lpr}_C(N)`$, then the hypotheses are contradictory.*
 

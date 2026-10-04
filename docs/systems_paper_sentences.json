@@ -7,10 +7,10 @@
       "id": "257-example",
       "path": "paper/257/erdos-257-mersenne-support-subseries.tex",
       "start_line": 279,
-      "end_line": 310,
+      "end_line": 312,
       "kind": "source",
-      "sha256": "a61683d9c106a1f2e4648205d5ec9071bb897b8f4150f4ae1e8a94afdcc5bcf0",
-      "excerpt_sha256": "670a9de7ffd16c1ba2caccf5afc6bebe99ec3e1e81ee4336dc47769c8e6f4605"
+      "sha256": "d261bce1baa7dbabb89517cdc47fc0215165b03132bc0f3e86736c9fa61f555f",
+      "excerpt_sha256": "19c669b3e8d113ec32b7aa63104df844dd5f0ff0b2240c0cdbaf2991b6b948d5"
     },
     {
       "id": "257-proof",
@@ -18,16 +18,16 @@
       "start_line": 128,
       "end_line": 277,
       "kind": "source",
-      "sha256": "a61683d9c106a1f2e4648205d5ec9071bb897b8f4150f4ae1e8a94afdcc5bcf0",
+      "sha256": "d261bce1baa7dbabb89517cdc47fc0215165b03132bc0f3e86736c9fa61f555f",
       "excerpt_sha256": "071f91a304d5d850218fb7cea780d88a5d3176bc6e4b7a9088544a23b3dfa85f"
     },
     {
       "id": "257-reciprocal",
       "path": "paper/257/erdos-257-mersenne-support-subseries.tex",
-      "start_line": 922,
-      "end_line": 949,
+      "start_line": 924,
+      "end_line": 951,
       "kind": "source",
-      "sha256": "a61683d9c106a1f2e4648205d5ec9071bb897b8f4150f4ae1e8a94afdcc5bcf0",
+      "sha256": "d261bce1baa7dbabb89517cdc47fc0215165b03132bc0f3e86736c9fa61f555f",
       "excerpt_sha256": "07b08dc8e23653a1bea2c48b087571857616d9e98726c98f080aee58c20cd6cf"
     },
     {
@@ -36,7 +36,7 @@
       "start_line": 73,
       "end_line": 89,
       "kind": "source",
-      "sha256": "a61683d9c106a1f2e4648205d5ec9071bb897b8f4150f4ae1e8a94afdcc5bcf0",
+      "sha256": "d261bce1baa7dbabb89517cdc47fc0215165b03132bc0f3e86736c9fa61f555f",
       "excerpt_sha256": "76093fcff9c86ff532b2182837e7c4e191e9806f477c420bc2602d706c643e17"
     },
     {
@@ -61,9 +61,9 @@
       "id": "corpus",
       "path": "docs/papers/corpus.json",
       "start_line": 1,
-      "end_line": 9206,
-      "sha256": "407f2c4f4298570f9cddb536b099121e0bb4358cab2507214d64482c3588119a",
-      "excerpt_sha256": "407f2c4f4298570f9cddb536b099121e0bb4358cab2507214d64482c3588119a",
+      "end_line": 9224,
+      "sha256": "70a151c7b5066c896a60ac2fb89789a30ffec58821bf698d80645a439ad3a4c2",
+      "excerpt_sha256": "70a151c7b5066c896a60ac2fb89789a30ffec58821bf698d80645a439ad3a4c2",
       "kind": "source"
     },
     {
@@ -71,8 +71,8 @@
       "path": "docs/systems_paper_counts.json",
       "start_line": 1,
       "end_line": 65,
-      "sha256": "6b8d25d1dffbdef4cde6dd442284fc83b662294b50655d7aa8c1737bb46df9ef",
-      "excerpt_sha256": "6b8d25d1dffbdef4cde6dd442284fc83b662294b50655d7aa8c1737bb46df9ef",
+      "sha256": "252aadd01380ff84863988a13296a4dc67f9c33973a23be0c2110f33f08bb6d4",
+      "excerpt_sha256": "252aadd01380ff84863988a13296a4dc67f9c33973a23be0c2110f33f08bb6d4",
       "kind": "source"
     },
     {
@@ -89,8 +89,8 @@
       "path": "docs/paper_lean_coverage.json",
       "start_line": 1,
       "end_line": 29162,
-      "sha256": "382b380833e51c2daf6c0c5fb3a4abb5d20d231b25972b2bf081769718405c24",
-      "excerpt_sha256": "382b380833e51c2daf6c0c5fb3a4abb5d20d231b25972b2bf081769718405c24",
+      "sha256": "fe656ab45f924d5c3f883ec1e54325cc359beaeca3eaa9ff1d1bab6f00933b49",
+      "excerpt_sha256": "fe656ab45f924d5c3f883ec1e54325cc359beaeca3eaa9ff1d1bab6f00933b49",
       "kind": "source"
     },
     {
@@ -99,8 +99,8 @@
       "start_line": 1,
       "end_line": 29162,
       "kind": "supplied_snapshot",
-      "sha256": "382b380833e51c2daf6c0c5fb3a4abb5d20d231b25972b2bf081769718405c24",
-      "excerpt_sha256": "382b380833e51c2daf6c0c5fb3a4abb5d20d231b25972b2bf081769718405c24"
+      "sha256": "fe656ab45f924d5c3f883ec1e54325cc359beaeca3eaa9ff1d1bab6f00933b49",
+      "excerpt_sha256": "fe656ab45f924d5c3f883ec1e54325cc359beaeca3eaa9ff1d1bab6f00933b49"
     },
     {
       "id": "coverage-reciprocal",
@@ -108,8 +108,8 @@
       "start_line": 1,
       "end_line": 29162,
       "kind": "supplied_snapshot",
-      "sha256": "382b380833e51c2daf6c0c5fb3a4abb5d20d231b25972b2bf081769718405c24",
-      "excerpt_sha256": "382b380833e51c2daf6c0c5fb3a4abb5d20d231b25972b2bf081769718405c24"
+      "sha256": "fe656ab45f924d5c3f883ec1e54325cc359beaeca3eaa9ff1d1bab6f00933b49",
+      "excerpt_sha256": "fe656ab45f924d5c3f883ec1e54325cc359beaeca3eaa9ff1d1bab6f00933b49"
     },
     {
       "id": "coverage-weighted",
@@ -117,8 +117,8 @@
       "start_line": 1,
       "end_line": 29162,
       "kind": "supplied_snapshot",
-      "sha256": "382b380833e51c2daf6c0c5fb3a4abb5d20d231b25972b2bf081769718405c24",
-      "excerpt_sha256": "382b380833e51c2daf6c0c5fb3a4abb5d20d231b25972b2bf081769718405c24"
+      "sha256": "fe656ab45f924d5c3f883ec1e54325cc359beaeca3eaa9ff1d1bab6f00933b49",
+      "excerpt_sha256": "fe656ab45f924d5c3f883ec1e54325cc359beaeca3eaa9ff1d1bab6f00933b49"
     },
     {
       "id": "credit",
@@ -135,8 +135,8 @@
       "start_line": 1,
       "end_line": 36351,
       "kind": "supplied_snapshot",
-      "sha256": "bb57cff1f17396c4b5de2851b3f3c0059966151e554f564e9fe6bd1ce9eb691e",
-      "excerpt_sha256": "bb57cff1f17396c4b5de2851b3f3c0059966151e554f564e9fe6bd1ce9eb691e"
+      "sha256": "9f4ad23ecff6d7ccd55a05d9a574e396e9c53c29bb6372ab5f1875ffa26f2726",
+      "excerpt_sha256": "9f4ad23ecff6d7ccd55a05d9a574e396e9c53c29bb6372ab5f1875ffa26f2726"
     },
     {
       "id": "essay-pages",
@@ -739,7 +739,7 @@
       "path": "paper/257/erdos-257-mersenne-support-subseries.tex",
       "start_line": 175,
       "end_line": 293,
-      "sha256": "a61683d9c106a1f2e4648205d5ec9071bb897b8f4150f4ae1e8a94afdcc5bcf0",
+      "sha256": "d261bce1baa7dbabb89517cdc47fc0215165b03132bc0f3e86736c9fa61f555f",
       "excerpt_sha256": "92bbcec0fccefd5abe945c1d5e45afa5b0e8d6b88f1e14209faa92deefd80b00",
       "custody": "Current native public file inspected as source; no fresh execution."
     },
@@ -849,9 +849,27 @@
       "path": "docs/research-commons/source-attributions.json",
       "start_line": 16125,
       "end_line": 16173,
-      "sha256": "bb57cff1f17396c4b5de2851b3f3c0059966151e554f564e9fe6bd1ce9eb691e",
-      "excerpt_sha256": "8f30a18d11e5db78e071573e26c75d20ae776b9323ffa603048eb2100851dc8b",
+      "sha256": "9f4ad23ecff6d7ccd55a05d9a574e396e9c53c29bb6372ab5f1875ffa26f2726",
+      "excerpt_sha256": "a8d6f7239b51857fa0654cb764a559bca353d637f58bd7882ebec87ee5baa42b",
       "custody": "Public attribution inventory, marked bibliography_only. Used for feature attribution, not for its conflicting first-publication chronology. Direct claims are checked against the enclosed original v2 in this pass."
+    },
+    {
+      "id": "r12-resolver-relations",
+      "path": "scripts/paper_evidence.py",
+      "start_line": 750,
+      "end_line": 846,
+      "kind": "source",
+      "sha256": "1b89e0a64707ea212e40e2cc7c59e8a70b1243e3c7869ad8208902edbb2b32ad",
+      "excerpt_sha256": "b781b6be3310fb2bea4d39c6f028c217361977d277ae0ae6efe89ad82486575a"
+    },
+    {
+      "id": "r12-bound-parser",
+      "path": "scripts/systems_paper_evidence.py",
+      "start_line": 281,
+      "end_line": 299,
+      "kind": "source",
+      "sha256": "85e4d8a04fa07f830868f9ea4e39a6787a1a3e35a6a30e897b6316574b945105",
+      "excerpt_sha256": "fc546e10c86e2d0438c6fc755e72e53beba0ac82990a25bf7289020a11b522bc"
     }
   ],
   "sentences": [
@@ -901,7 +919,7 @@
     },
     {
       "id": "r4.abstract.03",
-      "text": "The design separates claims, supporting artifacts, explanatory passages and the review decisions attached to a revision.",
+      "text": "The design keeps paper statements, registered formal support and explanatory prose in separate records, allowing revisions to be checked against their cited evidence.",
       "owner": "systems",
       "class": "method",
       "evidence_refs": [
@@ -910,13 +928,13 @@
         "r8-sentence-check",
         "r8-journal"
       ],
-      "warrant": "Replace a tool inventory in the abstract with the record model the reader needs. Source inspection supports the stated role; this editorial return does not report a new implementation run or independent reader evaluation.",
-      "statement_sha256": "7a42601988263bedd092ff21d82b5531b14a858f60ac0c7156729318e3b1a1c9",
+      "warrant": "The coverage ledger identifies paper statements and their registered formal supports, whereas systems_paper_evidence.py checks a separate set of marked prose records. These distinct inputs support checking what evidence a revision cites; the checker does not derive the prose from formal terms.",
+      "statement_sha256": "127f3c2c3ab89bdd4920f83aecd2694b276fdf3383fb7ce3c9d9c46121c773e6",
       "section": "frontmatter"
     },
     {
       "id": "r4.abstract.04",
-      "text": "Python tools retrieve this work, record optional Lean probes, check evidence bindings and regenerate derived views; maintainers decide which changes to adopt, and a journal retains entered outcomes and credit.",
+      "text": "Python tools retrieve records, store optional Lean probes, check source bindings and regenerate indexes and summaries. Maintainers decide which changes to adopt, and a journal retains entered contributions and review decisions.",
       "owner": "systems",
       "class": "implemented",
       "evidence_refs": [
@@ -926,8 +944,8 @@
         "r8-projection-refresh",
         "r8-contribution"
       ],
-      "warrant": "Connect tool actions to their shared records while leaving adoption with maintainers. Source inspection supports the stated role; this editorial return does not report a new implementation run or independent reader evaluation.",
-      "statement_sha256": "40fd394f8ce76888eaa65b855382b47e2d0cd3dff822f2aa400caede6a6f5a3b",
+      "warrant": "The architecture guide identifies query and evidence tools and their input owners; proof_workbench.py records the result of its Lean subprocess; refresh_projections.py calls an ordered list of builders. CONTRIBUTING.md assigns adoption to review, and research_record.py stores entered events. The summary does not assert that every research activity is automatically captured.",
+      "statement_sha256": "eedc10c70f34833391bd3874c65a9026e588d5e5020fc360ff78d83906e21704",
       "section": "frontmatter"
     },
     {
@@ -990,7 +1008,7 @@
     },
     {
       "id": "r4.intro1.03",
-      "text": "The architecture separates authored research records, the tools that locate or check them, and the publications generated from them. Researchers and maintainers decide what to investigate and what a proposed change justifies. Figure~\\ref{fig:lifecycle} follows the resulting path from research artifacts to publication and back through contributions.",
+      "text": "The architecture separates authored research and publication records from the tools that inspect them and the indexes and summaries generated from them. Researchers and maintainers decide what to investigate and what a proposed change justifies. Figure~\\ref{fig:lifecycle} follows the resulting path from research artifacts to publication and back through contributions.",
       "owner": "systems",
       "class": "method",
       "evidence_refs": [
@@ -1000,27 +1018,9 @@
         "r8-exchange",
         "r8-sentence-check"
       ],
-      "warrant": "Make the object/tool/decision split explain the workflow; detailed trust distinctions follow in their owning section. Source inspection supports the stated role; this editorial return does not report a new implementation run or independent reader evaluation.",
-      "statement_sha256": "a9840db38bd210860b1b394435f11447933f69a33f14b7c77d243e1867c9b263",
+      "warrant": "ARCHITECTURE.md distinguishes authored sources from generated views. The contribution and refinement protocols require proposed changes and review; research_record.py retains entered dispositions. Figure 1 represents this documented workflow, not a theorem dependency graph or an automatic research policy.",
+      "statement_sha256": "a386cc4cfa3f422ea4fbc45abb092e7f329068655f84290d426915930b4151ab",
       "section": "sec:intro"
-    },
-    {
-      "id": "r4.fig.lifecycle",
-      "text": "\\begin{figure}[htbp]\n\\centering\n\\begin{tikzpicture}[x=1cm,y=1cm]\n\\node[sys box,text width=2.7cm,minimum height=1.8cm] (c) at (0,0) {Research artifacts\\\\sources, proofs, tests\\\\and open questions};\n\\node[sys box,text width=2.7cm,minimum height=1.8cm] (s) at (3.6,0) {Evidence and claim\\\\records\\\\review scope and\\\\registered supports};\n\\node[sys box,text width=2.7cm,minimum height=1.8cm] (p) at (7.2,0) {Publications\\\\papers, explanations\\\\and source links};\n\\node[sys box,text width=2.7cm,minimum height=1.8cm] (r) at (10.8,0) {Readers\\\\inspect, question\\\\and extend};\n\\draw[sys arrow] (c)--node[sys label,above=43pt,font=\\footnotesize]{selected result} (s);\n\\draw[sys arrow] (s)--node[sys label,above=43pt,font=\\footnotesize]{sourced account} (p);\n\\draw[sys arrow] (p)--node[sys label,above=43pt,font=\\footnotesize]{paper and links} (r);\n\\draw[sys arrow,dashed] (r.south)--++(0,-.85)-| (c.south);\n\\node[sys label,text width=11.6cm] at (5.4,-2.5) {Corrections and contributions return after review and adoption (Figure~\\ref{fig:contribute}).\\\\The research journal records returns and their dispositions.};\n\\end{tikzpicture}\n\\caption{From accumulated work to a paper and subsequent revision. Labels name what passes between the stages; the arrows imply neither logical deduction nor automatic approval. The source and evidence records support review; they do not establish the intended meaning of the prose.}\n\\label{fig:lifecycle}\n\\end{figure}",
-      "owner": "systems",
-      "class": "method",
-      "evidence_refs": [
-        "r8-architecture",
-        "r8-contribution",
-        "r8-journal",
-        "r8-exchange"
-      ],
-      "warrant": "Preserves figure ID/geometry and broadens plain workflow labels. Arrows show responsibility sequence rather than deductions or automated approval. This revision labels the exchanged objects or separates the additional support-accounting relation; the figure does not report new executions or review outcomes.",
-      "statement_sha256": "4ae3a8063e399cbd4197c93d9c220450a33c33a7841e9340b490b517f99737f8",
-      "section": "sec:intro",
-      "unit_type": "figure",
-      "caption": "From accumulated work to a paper and subsequent revision. Solid arrows show the publication sequence, not logical implication or automatic approval. Comparing the complete registered support set does not execute a new formal proof or establish that the prose has the intended meaning.",
-      "figure_title": "The life of one claim"
     },
     {
       "id": "r4.intro2.01",
@@ -1040,7 +1040,7 @@
     },
     {
       "id": "r4.intro2.02",
-      "text": "Formalisation blueprints link a written argument to named Lean declarations~\\cite{leanblueprint,leanarchitect}, and the Equational Theories Project maintains shared problem records~\\cite{etp}. Prove2Me already combines separate statements and proofs, human-audited missions, reusable intermediate results and open agent contributions~\\cite[Sections~3--4]{prove2me}.",
+      "text": "Formalisation blueprints link a written argument to named Lean declarations~\\cite{leanblueprint,leanarchitect}, and the Equational Theories Project maintains shared problem records~\\cite{etp}. Prove2Me combines human-audited missions, source-linked milestones and separately submitted proofs, with intermediate results available for other agents to reuse~\\cite[Sections~3--4]{prove2me}.",
       "owner": "systems",
       "class": "literature",
       "evidence_refs": [
@@ -1049,36 +1049,36 @@
         "strategy-related",
         "r11-prove2me-edition"
       ],
-      "warrant": "Credit the nearest platform for concrete mechanisms on first mention, not merely collaboration. Source inspection supports the stated role; this editorial return does not report a new implementation run or independent reader evaluation. Prove2Me comparison additionally checked against the complete supplied v2 original; public identity/attribution bindings do not themselves certify its content.",
-      "statement_sha256": "cffdcd4bf26ab0b596a75db70a0182fe14e90422c329cf77c2c1b90a99a5cc0e",
+      "warrant": "The companion related-work passages and supplied Equational Theories excerpt support the existing blueprint and shared-record comparison. The supplied Prove2Me v2 original, Sections 3.1–3.3 and 4.2–4.4, supplies the audited core, separate proof submissions, reusable imports and source-linked milestones. Native metadata bindings identify the edition; they do not independently validate that literature summary.",
+      "statement_sha256": "ecaa97caa707cec2d6be4e8dfe85775cb19b96cdbc0dff9ac6946bc337fea2cc",
       "section": "sec:intro",
       "external_reading": {
         "source": "annex/arxiv-2608-28433-prove2me-open-collaborative-platform/source.pdf",
         "sha256": "87aaad288301d9c124cabf456d425b9e334232faed498323f54f7493a7f8423b",
         "edition": "arXiv:2608.28433v2, 31 August 2026",
-        "sections_read": "Complete main article Sections 1--7; references and figures including Appendix A inspected.",
-        "boundary": "External original inspected for literature claims. The native source checker checks the bound public metadata and prior summary; it does not read or validate this PDF."
+        "sections_read": "Supplied complete main article and figures; this passage uses Sections 3.3, 4.2 and 4.3--4.5.",
+        "boundary": "The external original supplies literature content. Native bindings check public custody records, not semantic agreement with this PDF."
       }
     },
     {
       "id": "r4.intro2.03",
-      "text": "Here publication review follows a particular paper assertion at a specified revision. The paper-to-Lean ledger records its full registered support set and each support's stated relation to it. A separate ledger binds explanatory passages to source locations and an authored rationale. Claim and contribution records retain status, limits and entered review decisions. Together, these records let a reviewer inspect an assertion's basis and proposed wording.",
+      "text": "Publication review follows a paper assertion at a specified revision. Its coverage record identifies the printed statement, registered Lean supports and their stated relationship. A separate passage record binds the explanation to sources and rationale; contribution records retain entered review decisions. Together these links make the basis of a proposed revision inspectable. Agreement between the records does not establish that the prose is true.",
       "owner": "systems",
       "class": "implemented",
       "evidence_refs": [
         "coverage-weighted",
-        "paper-resolver",
+        "r12-resolver-relations",
         "r8-claim-project",
         "r8-sentence-check",
         "r8-journal"
       ],
-      "warrant": "State the narrower design contribution as record relationships rather than a new platform category. Source inspection supports the stated role; this editorial return does not report a new implementation run or independent reader evaluation.",
-      "statement_sha256": "0078c3581b1a24f451d15da742290457ada2aa8f3642111fc277601014cf20b8",
+      "warrant": "The weighted coverage row stores the paper occurrence and registered declarations. paper_evidence.py lines 750–846 checks a row-level relation note against the paper statement key and Lean declaration stamps. systems_paper_evidence.py binds marked text, source spans and a nonempty rationale; research_record.py retains entered review events. These operations make provenance inspectable but do not decide the truth of a paraphrase.",
+      "statement_sha256": "59888e8133741272f2d9638bb6aae87806b2c70610187e547ff578a1a71eb0d6",
       "section": "sec:intro"
     },
     {
       "id": "r4.intro2.04",
-      "text": "We describe the components and their responsibilities, then follow one theorem from its evidence record to its explanation. The revision and contribution workflows show how accepted changes return to the repository. Recorded observations and limits distinguish implemented procedures from their unmeasured effects; Appendix~\\ref{app:worked-proof} retains the mathematical calculation.",
+      "text": "We first describe the stored records, inspection tools and contributor responsibilities. A proposed change to a theorem\\textquotesingle s explanation then illustrates the publication checks. The revision and contribution workflows show how accepted work returns to the repository. Recorded observations and limits distinguish these implemented procedures from their unmeasured effects; Appendix~\\ref{app:worked-proof} retains the mathematical calculation.",
       "owner": "systems",
       "class": "method",
       "evidence_refs": [
@@ -1090,34 +1090,81 @@
         "r8-weighted-formal",
         "r8-hereditary-formal"
       ],
-      "warrant": "Keep the route architecture-first and avoid conflating a theorem with hypotheses with an unresolved conditional proof. Source inspection supports the stated role; this editorial return does not report a new implementation run or independent reader evaluation.",
-      "statement_sha256": "5f2c3e1610112e94832bc6b9c3c4e8f0136f9f4de35b6a0f12f2abcac65af402",
+      "warrant": "This is the reading order of the revised manuscript. The architecture and contribution sources ground the workflow sections; the cited ordinary and formal sources ground the retained mathematical appendix. The proposed explanation edit is illustrative, not an additional empirical test.",
+      "statement_sha256": "b9c5e292eb78b91d1ab2c2c650443698dabc5077197c16265bc2beb9c50c128c",
       "section": "sec:intro"
     },
     {
+      "id": "r4.fig.lifecycle",
+      "text": "\\begin{figure}[H]\n\\centering\n\\begin{tikzpicture}[x=1cm,y=1cm]\n\\node[sys box,text width=2.7cm,minimum height=1.8cm] (c) at (0,0) {Research artifacts\\\\sources, proofs, tests\\\\and open questions};\n\\node[sys box,text width=2.7cm,minimum height=1.8cm] (s) at (3.6,0) {Evidence and claim\\\\records\\\\review scope and\\\\registered supports};\n\\node[sys box,text width=2.7cm,minimum height=1.8cm] (p) at (7.2,0) {Publications\\\\papers, explanations\\\\and source links};\n\\node[sys box,text width=2.7cm,minimum height=1.8cm] (r) at (10.8,0) {Readers\\\\inspect, question\\\\and extend};\n\\draw[sys arrow] (c)--node[sys label,above=43pt,font=\\footnotesize]{selected result} (s);\n\\draw[sys arrow] (s)--node[sys label,above=43pt,font=\\footnotesize]{sourced account} (p);\n\\draw[sys arrow] (p)--node[sys label,above=43pt,font=\\footnotesize]{paper and links} (r);\n\\draw[sys arrow,dashed] (r.south)--++(0,-.85)-| (c.south);\n\\node[sys label,text width=11.6cm] at (5.4,-2.5) {Corrections and contributions return after review and adoption (Figure~\\ref{fig:contribute}).\\\\The research journal records returns and their dispositions.};\n\\end{tikzpicture}\n\\caption{From accumulated work to a paper and subsequent revision. Labels name what passes between the stages; the arrows imply neither logical deduction nor automatic approval. The source and evidence records support review; they do not establish the intended meaning of the prose.}\n\\label{fig:lifecycle}\n\\end{figure}",
+      "owner": "systems",
+      "class": "method",
+      "evidence_refs": [
+        "r8-architecture",
+        "r8-contribution",
+        "r8-journal",
+        "r8-exchange"
+      ],
+      "warrant": "The architecture, contribution and refinement records identify authored research, evidence records, manuscripts and review of returned changes. The journal records entered dispositions. The arrows therefore describe artifacts passing between workflow stages, with review and adoption as conditions, and assert no logical implication or automatic approval.",
+      "statement_sha256": "e3c134bf027343c3f4689c47bfcb51623311344a5c23a6314cbeedfe9e627d09",
+      "section": "sec:intro",
+      "unit_type": "figure",
+      "caption": "From accumulated work to a paper and subsequent revision. Labels name what passes between the stages; the arrows imply neither logical deduction nor automatic approval. The source and evidence records support review; they do not establish the intended meaning of the prose.",
+      "figure_title": "The life of one claim"
+    },
+    {
+      "id": "r8.architecture.records",
+      "owner": "systems",
+      "text": "\\subsection{Stored records and derived views}\nLean and manuscript files contain the arguments. Claim records state selected assertions and what remains open; evidence records identify their registered supports; the journal retains entered returns and decisions. Builders read these authored files to produce indexes, source coordinates and status summaries. The \\repolink{docs/ARCHITECTURE.md}{architecture guide} identifies the source of each derived view. A changed summary can therefore be investigated at its input record rather than treated as a new research result.",
+      "statement_sha256": "5014fccf78f80566a3235902139327ef4740034b7a0388d1ea4389dcf78897aa",
+      "class": "implemented",
+      "evidence_refs": [
+        "r8-architecture",
+        "r8-projection-order",
+        "r8-projection-refresh",
+        "r8-journal"
+      ],
+      "warrant": "ARCHITECTURE.md identifies authored inputs and generated outputs, while refresh_projections.py enumerates and runs builders over those inputs. research_record.py stores entered events. Thus a derived summary can be traced to an input owner; changing a projection is not, by itself, evidence of new mathematical work.",
+      "section": "sec:world"
+    },
+    {
+      "id": "r12.architecture.correspondence",
+      "owner": "systems",
+      "section": "sec:world",
+      "class": "implemented",
+      "text": "For publication, the coverage ledger identifies a \\emph{paper occurrence}: a labelled assertion in a particular manuscript, together with its source location and a digest of its statement. The row lists its registered Lean supports and their evidence status. Where the formal result is stronger than the printed statement, an authored relation note explains the correspondence and is bound to both statements. The passage ledger used for this systems paper has a different purpose: it records explanatory text, cited source spans, an evidence class and a rationale. Neither ledger derives the prose from a Lean proof.",
+      "statement_sha256": "4def4c736251094ff444708fa633549e5eae5e3dd1fa86b4e98e22deac600e35",
+      "evidence_refs": [
+        "coverage-weighted",
+        "r12-resolver-relations",
+        "r8-sentence-check"
+      ],
+      "warrant": "The res:weighted-support coverage row supplies a concrete labelled paper occurrence with a statement digest, source coordinate and registered Lean supports. paper_evidence.py lines 750–846 binds its authored relation note to the paper statement key and declaration stamps. systems_paper_evidence.py lines 367–457 instead checks marked prose, source digests, an evidence class and a nonempty rationale. The inspected checks do not construct a natural-language proof or certify semantic entailment."
+    },
+    {
       "id": "r4.world1.01",
-      "text": "Within this collection, a reader may want a proof, a counterexample to a proposed extension, or the argument behind a failed approach. Exact experiments and corrected references remain beside the original question as contributions in their own right.",
+      "text": "\\subsection{Finding the relevant work}\nWithin each problem collection, a reader may want a proof, a counterexample to a proposed extension, or the argument behind a failed approach. Exact experiments and corrected references remain beside the original question as contributions in their own right.",
       "owner": "systems",
       "class": "reported",
       "evidence_refs": [
         "world-views",
         "strategy-protocol"
       ],
-      "warrant": "Keeps exhaustive location, loaded-root dependency coverage and selected interpretation distinct.",
-      "statement_sha256": "2e7609b3099f7e2e4030dcec4dcdaec611c19fa719902cdc8e725d5e048f0b39",
+      "warrant": "The earlier view description reports locations for declarations and contextual research records; the contribution protocol allows corrections, counterexamples and methodological work as useful returns. The new subsection heading changes only the order of explanation and does not claim a fresh successful retrieval or independent use.",
+      "statement_sha256": "c282719ad515f299857596f845720ba4cec04cc9ba3b932ce70ce0609723c2a8",
       "section": "sec:world"
     },
     {
       "id": "r4.world1.02",
-      "text": "The first task is to find the relevant work without compiling the whole repository. Four views answer different parts of that question (Figure~\\ref{fig:world}).",
+      "text": "The reader can locate these records without first compiling the whole repository. Four views answer different parts of that search (Figure~\\ref{fig:world}).",
       "owner": "systems",
       "class": "reported",
       "evidence_refs": [
         "world-views",
         "strategy-protocol"
       ],
-      "warrant": "Keeps exhaustive location, loaded-root dependency coverage and selected interpretation distinct.",
-      "statement_sha256": "fa5514fccdbd362d687d61350730efd3e4d163908b878f1040c6df6702d5da04",
+      "warrant": "The earlier paper describes declaration, dependency, interpretation and claim views available from the stored repository artifacts before a whole Lean build. Figure 2 distinguishes their coverage. This is the documented availability of those views, not evidence that a new clone or Lean replay was performed in this revision.",
+      "statement_sha256": "fd3c7d1f80bf0b9f9964a06065ff8763626c70364befd9146857558b22a35529",
       "section": "sec:world"
     },
     {
@@ -1207,25 +1254,10 @@
       "section": "sec:world"
     },
     {
-      "id": "r8.architecture.records",
-      "owner": "systems",
-      "text": "\\subsection{Stored artifacts and executable tools}\nThe checkout separates authored records from derived views. Lean and manuscript files contain the arguments; claim records state what is asserted and what remains open; evidence records link selected assertions to their supports; the journal retains entered returns and decisions. Builders turn these inputs into indexes, source coordinates and status summaries. An apparent change in a summary can therefore be traced to the record that owns it. The \\repolink{docs/ARCHITECTURE.md}{architecture guide} identifies these sources and their derived views.",
-      "statement_sha256": "f311d6c712e94adff2928c217e7f7250a0bf94524ad6a45638da413fdee217b5",
-      "class": "implemented",
-      "evidence_refs": [
-        "r8-architecture",
-        "r8-projection-order",
-        "r8-projection-refresh",
-        "r8-journal"
-      ],
-      "warrant": "Explain the stored objects and the reason for separating them before describing the commands. Source inspection supports the stated role; this editorial return does not report a new implementation run or independent reader evaluation.",
-      "section": "sec:world"
-    },
-    {
       "id": "r8.architecture.tools",
       "owner": "systems",
-      "text": "The tools act on these files at different stages of the workflow:\n\\begin{center}\\small\n\\begin{tabularx}{\\linewidth}{@{}>{\\raggedright\\arraybackslash}p{2.55cm}>{\\raggedright\\arraybackslash}X@{}}\n\\toprule\nComponent & Input, output and responsibility\\\\\n\\midrule\nTask routing & \\repolink{scripts/agent_entry.py}{agent\\_entry.py} maps a stated task to instructions, relevant files and commands; the researcher chooses the question and approach.\\\\[3pt]\nEvidence retrieval & \\repolink{scripts/query_corpus.py}{query\\_corpus.py} returns problem, claim, declaration and paper-source records from the indexes.\\\\[3pt]\nProof sessions & \\repolink{scripts/proof_workbench.py}{proof\\_workbench.py} records notes and submitted Lean probes, derives verdicts from the Lean process, and binds a session claim to an accepted probe.\\\\[3pt]\nStatement evidence & \\repolink{scripts/paper_evidence.py}{paper\\_evidence.py} resolves mathematical paper statements against source and verification records; \\repolink{scripts/paper_claim_evidence.py}{paper\\_claim\\_evidence.py} projects their evidence status and reported gaps.\\\\[3pt]\nEditorial exchange & \\repolink{scripts/short_paper_writer.py}{short\\_paper\\_writer.py} audits manuscripts and packages proposed revisions without applying or approving the return.\\\\[3pt]\nResearch history & \\repolink{scripts/research_record.py}{research\\_record.py} verifies the journal of entered returns and dispositions and reports what recorded outputs still owe.\\\\[3pt]\nDerived views & \\repolink{scripts/refresh_projections.py}{refresh\\_projections.py} runs builders in dependency order; \\repolink{scripts/check_release.py}{check\\_release.py} checks release contracts and freshness.\\\\\n\\bottomrule\n\\end{tabularx}\n\\end{center}\nA separate self-audit, \\repolink{scripts/systems_paper_evidence.py}{systems\\_paper\\_evidence.py}, checks this systems manuscript's text and cited source bindings. These commands provide the operations; the researcher or agent chooses which to invoke. Their presence is not evidence of a successful run or of research quality.",
-      "statement_sha256": "31793bd4384cb7db15ad8cf7562ed64188bcdf606088002cc7e1349a7a1f8ac3",
+      "text": "\\subsection{Operations on the records}\nThe tools provide the following operations:\n\\begin{center}\\small\n\\begin{tabularx}{\\linewidth}{@{}>{\\raggedright\\arraybackslash}p{2.55cm}>{\\raggedright\\arraybackslash}X@{}}\n\\toprule\nComponent & Input, output and responsibility\\\\\n\\midrule\nTask routing & \\repolink{scripts/agent_entry.py}{agent\\_entry.py} maps a stated task to instructions, relevant files and commands; the researcher chooses the question and approach.\\\\[3pt]\nEvidence retrieval & \\repolink{scripts/query_corpus.py}{query\\_corpus.py} returns problem, claim, declaration and paper-source records from the indexes.\\\\[3pt]\nProof sessions & \\repolink{scripts/proof_workbench.py}{proof\\_workbench.py} records notes and submitted Lean probes, derives verdicts from the Lean process, and binds a session claim to an accepted probe.\\\\[3pt]\nStatement evidence & \\repolink{scripts/paper_evidence.py}{paper\\_evidence.py} locates each registered support at the recorded revision and checks its source and verification bindings; \\repolink{scripts/paper_claim_evidence.py}{paper\\_claim\\_evidence.py} projects their evidence status and reported gaps.\\\\[3pt]\nEditorial exchange & \\repolink{scripts/short_paper_writer.py}{short\\_paper\\_writer.py} audits manuscripts and packages proposed revisions without applying or approving the return.\\\\[3pt]\nResearch history & \\repolink{scripts/research_record.py}{research\\_record.py} verifies the journal of entered returns and dispositions and reports the outstanding milestones of recorded outputs.\\\\[3pt]\nDerived views & \\repolink{scripts/refresh_projections.py}{refresh\\_projections.py} runs builders in dependency order; \\repolink{scripts/check_release.py}{check\\_release.py} checks release contracts and freshness.\\\\\n\\bottomrule\n\\end{tabularx}\n\\end{center}\nA separate self-audit, \\repolink{scripts/systems_paper_evidence.py}{systems\\_paper\\_evidence.py}, checks this systems manuscript's text and cited source bindings. These commands provide the operations; the researcher or agent chooses which to invoke. Their presence is not evidence of a successful run or of research quality.",
+      "statement_sha256": "9dd0ecc315d3fde63178843b48d5db5a4ecef54d4ebdd241c5645b5e108f7914",
       "class": "implemented",
       "evidence_refs": [
         "r8-entry",
@@ -1244,7 +1276,7 @@
         "r8-paper-resolve",
         "r8-claim-project"
       ],
-      "warrant": "Keep the useful interface table, but explain that it is a set of invoked operations rather than an autonomous pipeline. Source inspection supports the stated role; this editorial return does not report a new implementation run or independent reader evaluation.",
+      "warrant": "The cited entry points expose task routing, lookup, recorded probes, manuscript exchange, evidence checks, fixed-order regeneration and journal operations. The resolver reads registered declaration names and their recorded source revisions; it does not infer a formalization from prose. The journal reports statuses of entered outputs rather than choosing future mathematical work. The tool list describes inspected source behavior, not a new end-to-end execution.",
       "section": "sec:world"
     },
     {
@@ -1310,8 +1342,8 @@
     {
       "id": "r8.case.proof-role",
       "owner": "systems",
-      "text": "Suppose a contributor rewrites this theorem's explanation. In \\repolink{docs/paper_lean_coverage.json}{paper\\_lean\\_coverage.json}, the row for \\texttt{res:weighted-support} identifies the theorem's occurrence in the mathematical paper, its statement digest, source location and two Lean supports. The systems paper's \\repolink{docs/systems_paper_sentences.json}{sentence ledger} instead records the explanatory passage, its sources and an authored rationale. For example, the appendix's hereditary conclusion is bound to the ordinary proof and its formal declaration. The reviewer must inspect the proposed words against those sources: retaining the Lean links alone does not show that the rewrite retains the hypothesis. Section~\\ref{sec:checks} separates the checks involved.",
-      "statement_sha256": "da5ff9e081c1a88acac427bb3a5d7b7adf83d49928d658079410516acdeeec89",
+      "text": "Suppose a contributor rewrites this theorem\\textquotesingle s explanation. Its coverage row, \\texttt{res:weighted-support} in \\repolink{docs/paper_lean_coverage.json}{paper\\_lean\\_coverage.json}, identifies the statement in the mathematical paper and two registered Lean supports. An explanatory passage in this systems paper is instead recorded in the \\repolink{docs/systems_paper_sentences.json}{passage ledger}, with sources and a rationale. For the appendix\\textquotesingle s hereditary conclusion, these sources are the ordinary proof and a formal declaration. If the contributor drops the weighted hypothesis from that explanation, both Lean proofs and both source links can remain unchanged. The reviewer must compare the new wording with the cited statements. Section~\\ref{sec:checks} explains which part of this comparison the tools check.",
+      "statement_sha256": "3bc953d86853f0e1ce40c7012c0f80d0949f897291af8a6f4f0bab2df57d3f94",
       "class": "method",
       "evidence_refs": [
         "coverage-weighted",
@@ -1319,23 +1351,23 @@
         "r8-hereditary-formal",
         "r8-sentence-check"
       ],
-      "warrant": "Use a concrete editorial action to connect the two existing records; keep this hypothetical example distinct from the historical mutation test. Source inspection supports the stated role; this editorial return does not report a new implementation run or independent reader evaluation.",
+      "warrant": "The weighted paper occurrence lists two formal supports. The prose checker uses its own marked-passage records with source spans and rationale, and the hereditary declaration and ordinary proof support the retained conclusion under the weighted hypothesis. Editing only the explanation can leave the two formal files and links unchanged. This is a constructed illustration of the review obligation, not the historical mutation trial or a new measured failure rate.",
       "section": "sec:example"
     },
     {
       "id": "r4.checks1.01",
-      "text": "The example has two registered formal supports (Figure~\\ref{fig:theorem}). One gives fixed-base irrationality and the all-base conclusion for every infinite subset; the other makes the fixed-base hereditary conclusion explicit. Their roles overlap. The publication check requires the registered set, even if one declaration suffices for the clause under discussion. This is an accounting requirement, not an additional hypothesis of the theorem.",
+      "text": "The example has two registered formal supports (Figure~\\ref{fig:theorem}). One gives fixed-base irrationality and the all-base conclusion for every infinite subset; the other makes the fixed-base hereditary conclusion explicit. Their roles overlap. Here the \\emph{registered support set} means the declarations listed for this paper occurrence, not every declaration on which their proofs depend. The publication check accounts for that full list even when one declaration suffices for the clause under discussion. This is a record-consistency requirement, not an additional hypothesis of the theorem.",
       "owner": "systems",
       "class": "implemented",
       "evidence_refs": [
         "coverage-weighted",
+        "r12-resolver-relations",
         "paper-resolver",
-        "r8-claim-project",
         "r8-weighted-formal",
         "r8-hereditary-formal"
       ],
-      "warrant": "The two declarations overlap: divisibilityWeightedClaim includes fixed-base irrationality and the binary-cost all-base hereditary clause; finitePrimeWeighted_fixedBase_hereditary explicitly supplies the fixed-base infinite-subset clause. Requiring every registered support is accounting, not a mathematical hypothesis or minimality assertion. Type A integration shortens the example for laboratory infrastructure readers; the same source relation and evidence ceiling are retained.",
-      "statement_sha256": "cf8b6e0628caf2a555c87968a292915a8c74c7c4b1e5ec08e5219dc052631189",
+      "warrant": "The coverage row enumerates two named supports, and the supplied declarations expose the overlapping fixed-base and hereditary conclusions. The resolver iterates over that registered list and checks the required source/relation bindings. Completeness here is relative to that list, not to a transitive Lean dependency closure, and does not add a mathematical assumption or assert both supports are logically necessary.",
+      "statement_sha256": "e6a933ad43eb119487a7bcbbc3cf1f1b1f44d740774aebd33a4c63564a263e2d",
       "section": "sec:checks"
     },
     {
@@ -1419,40 +1451,41 @@
     },
     {
       "id": "r4.checks2.03",
-      "text": "Each marked passage in this systems paper has a recorded text, specified source lines, an evidence class and an authored rationale for citing those sources.",
+      "text": "Each marked passage in this systems paper has a recorded text, specified source lines, an evidence class and a rationale for citing those sources. The record groups prose for checking; it need not correspond to one grammatical sentence.",
       "owner": "systems",
       "class": "implemented",
       "evidence_refs": [
-        "r8-sentence-check"
+        "r8-sentence-check",
+        "r12-bound-parser"
       ],
-      "warrant": "Describes the native sentence-ledger fields. Rationale is explicitly authored; its existence does not certify its mathematical adequacy.",
-      "statement_sha256": "5e9ef5d00e53a9c3b0def8478153c30503b781f03c3e286384c104dfc76ba67d",
+      "warrant": "systems_paper_evidence.py parses the text delimited by SENTENCE markers and checks the corresponding ledger entries. A delimited unit may contain multiple grammatical sentences, a display or a figure; the parser does not perform linguistic sentence segmentation. The ledger records its text, source bindings, class and rationale.",
+      "statement_sha256": "5104f56183b053cfed49da2dd66a9c90ddb5fa9be92e93cbece271659544a73a",
       "section": "sec:checks"
     },
     {
       "id": "r4.checks2.04",
-      "text": "For the appendix's hereditary conclusion, the cited sources explain why restriction to an infinite subset preserves the weighted condition. The sentence checker compares cryptographic hashes of the marked text and its declared source passages; it also rejects missing records or passages without a binding.",
+      "text": "For the appendix\\textquotesingle s hereditary conclusion, the sources explain why restriction to an infinite subset preserves the weighted condition. The passage checker compares cryptographic hashes of the marked text and declared sources and requires a nonempty rationale. It also rejects missing records or unbound passages. It does not assess whether that rationale justifies the text.",
       "owner": "systems",
       "class": "implemented",
       "evidence_refs": [
-        "r8-weighted-proof",
-        "r8-hereditary-formal",
-        "r8-sentence-check"
+        "r8-sentence-check",
+        "257-proof",
+        "r8-hereditary-formal"
       ],
-      "warrant": "Restores the source theorem's infinite-subset qualifier and identifies the concrete existing sentence unit. The checker compares marked-text and declared-source digests and inventories; no semantic or proof replay is claimed. Type A integration shortens the example for laboratory infrastructure readers; the same source relation and evidence ceiling are retained.",
-      "statement_sha256": "975c5630b259b590b9044c16a8da7684d1cc002774897993df2ee60d97c2ded5",
+      "warrant": "The retained ordinary proof and hereditary declaration support restriction to an infinite subset under the stated weighted hypothesis. The prose checker compares the marked-text and source hashes, rejects missing or unbound records, and tests that the rationale string is nonempty. It does not evaluate whether the rationale entails the passage.",
+      "statement_sha256": "abd000b341fc21b01f640e031f8b36fc1c48b4fdd87da0a80caec40beb21877d",
       "section": "sec:checks"
     },
     {
       "id": "r4.checks2.05",
-      "text": "Changing the sentence alone therefore makes its recorded digest stale. Changing the sentence and updating its record can restore byte agreement without restoring the implication claimed by the prose.",
+      "text": "Changing the passage alone makes its recorded digest stale. Updating its record as well can restore byte agreement while leaving the new assertion unsupported.",
       "owner": "systems",
       "class": "method",
       "evidence_refs": [
         "r8-sentence-check"
       ],
-      "warrant": "A reasoned account of what digest validation does and does not detect. This is a hypothetical coordinated prose/ledger edit, not a newly executed empirical trial.",
-      "statement_sha256": "8b3d0ce46ec615a9bcc3f5fc07504ea0efbb2999771ae7926658bf4a7cca6e52",
+      "warrant": "The checker recomputes the digest of each delimited unit and compares it with the ledger. Changing only the passage causes a mismatch; updating the ledger to the new bytes can restore that equality. Since the checker does not decide the passage’s meaning, this equality is compatible with an unsupported assertion.",
+      "statement_sha256": "237ee88c3dff2f133bcfcef4200dbe69f6f853bd9d013806b97c22084c5ca276",
       "section": "sec:checks"
     },
     {
@@ -1568,17 +1601,14 @@
     },
     {
       "id": "r4.paper1.04",
-      "text": "The assembler preserves these authored parts and their cross-references; it supplies no missing mathematical step.",
+      "text": "The assembler inlines the companion\\textquotesingle s authored sections into a flat manuscript, retaining their cross-references. It supplies no missing mathematical step.",
       "owner": "systems",
-      "class": "reported",
+      "class": "implemented",
       "evidence_refs": [
-        "packet-dossier",
-        "assembler",
-        "private-writer",
-        "private-writing-brief"
+        "assembler"
       ],
-      "warrant": "Separates inspected assembly code from author-supplied explanations and the reported writer/correspondence extensions.",
-      "statement_sha256": "3b2ef01cd80b0fae621779bc330097e66b9e9f479c6bcb5587d7016e57d55575",
+      "warrant": "assemble_reasoning_surfaces.py reads the authored part files and inlines them between part markers in a flat manuscript, retaining their TeX cross-references. Its check mode tests freshness of this assembly. The inspected transformation neither invents a missing argument nor restores mathematical content from a shortened paper.",
+      "statement_sha256": "dcde38f21e1c377c9d2728cf3937b67b0a33d0e85dbf9ee8913a9497753b952b",
       "section": "sec:paper"
     },
     {
@@ -1593,6 +1623,19 @@
       "warrant": "The reading guide asks readers to reconstruct the decisive step or change a hypothesis; the explanation skill respects a requested hint or full argument. These are authoring instructions, with no measured learning or comprehension outcome.",
       "text": "Readers may need a hint, a worked example or the full argument. The reading guide invites them to reconstruct a decisive step or change a hypothesis, and the explanation instructions require an agent to respect the requested depth. These are authoring rules; they do not establish that a reader has understood the proof.",
       "statement_sha256": "f70e838a307ede11d843df71e8c325d51e11c9d9c8d636177d6eaa0934eb5050"
+    },
+    {
+      "id": "r14.assignment.authority",
+      "text": "An integrating agent can alter the live checkout; an advisory agent returns proposed changes against supplied sources. The local names Type A and Type B denote those two permissions.",
+      "statement_sha256": "817320f9b248e0d4368948c57533475fc36b8bbccdad9ccf50bb75eb476b7d74",
+      "class": "method",
+      "evidence_refs": [
+        "writing-contract",
+        "native-writer",
+        "native-refinement"
+      ],
+      "warrant": "Use familiar roles before introducing local labels; these describe authority rather than intelligence or independent reviewers. Source inspection supports the stated role; this editorial return does not report a new implementation run or independent reader evaluation.",
+      "section": "app:repro"
     },
     {
       "id": "r14.assignment.jobs",
@@ -1649,18 +1692,15 @@
     },
     {
       "id": "r13.paper.08",
-      "text": "After acceptance, integration requires restoring the companion paper's authored sections, regenerating evidence and navigation, and inspecting the compiled pages, figures and proof links.",
-      "statement_sha256": "c3f34a4186d3c4bb602db176538849b44d81f1afdaf96c142769c7175cf36650",
+      "text": "After acceptance, the integrating reviewer applies changes to the owning manuscript sources and updates the affected evidence bindings. For an assembled companion, edits belong in its authored sections before rebuilding the flat paper. Integration also requires regenerating evidence and navigation, then inspecting the compiled pages, figures and proof links.",
+      "statement_sha256": "d75db32edd0a55fabae58402a8e11f8bcdd5dda1db65ccb1413bf488e95beeb0",
       "class": "method",
       "evidence_refs": [
-        "writing-contract",
-        "native-writer",
-        "native-refinement",
-        "packet-dossier",
         "assembler",
-        "paper-evidence"
+        "writing-contract",
+        "native-refinement"
       ],
-      "warrant": "The editorial integration protocol requires restoring authored companion manuscripts, refreshing projections and inspecting the rendered result. Visual inspection is a review action, not a guarantee of the static return checker.",
+      "warrant": "The writing contract and refinement exchange separate proposed edits from integration. assemble_reasoning_surfaces.py rebuilds the flat companion from its authored sections, so adopted companion edits belong in those sections. Regeneration and inspection are integration obligations, not actions that the return checker performs merely by accepting an archive.",
       "section": "sec:paper"
     },
     {
@@ -1733,8 +1773,8 @@
     },
     {
       "id": "r13.fig.refinement",
-      "text": "\\begin{figure}[H]\n\\centering\n\\begin{tikzpicture}[x=1cm,y=1cm]\n\\node[sys box,text width=3.55cm,minimum height=1.5cm] (freeze) at (0,0) {\\textbf{1. Freeze inputs}\\\\Manuscripts, statements\\\\and source records};\n\\node[sys box,text width=3.55cm,minimum height=1.5cm] (write) at (4.75,0) {\\textbf{2. Propose revisions}\\\\Wording, organisation,\\\\examples and figures};\n\\node[sys box,text width=3.55cm,minimum height=1.5cm] (review) at (9.5,0) {\\textbf{3. Check and review}\\\\Source checks;\\\\meaning, scope and credit};\n\\node[sys box,text width=3.55cm,minimum height=1.5cm] (record) at (0,-2.8) {\\textbf{6. Record outcome}\\\\Accepted changes,\\\\lessons and limitations};\n\\node[sys box,text width=3.55cm,minimum height=1.5cm] (render) at (4.75,-2.8) {\\textbf{5. Render and inspect}\\\\Regenerate evidence,\\\\PDFs and reading links};\n\\node[sys box,text width=3.55cm,minimum height=1.5cm] (bind) at (9.5,-2.8) {\\textbf{4. Integrate changes}\\\\Restore authored text;\\\\update source bindings};\n\\draw[sys arrow] (freeze)--node[sys label,above=34pt,font=\\footnotesize]{frozen source packet} (write);\n\\draw[sys arrow] (write)--node[sys label,above=34pt,font=\\footnotesize]{proposed source changes} (review);\n\\draw[sys arrow] (review)--node[sys label,right,fill=none]{if accepted} (bind);\n\\draw[sys arrow] (bind)--node[sys label,below=24pt,font=\\footnotesize]{integrated sources} (render);\n\\draw[sys arrow] (render)--node[sys label,below=24pt,font=\\footnotesize]{inspected outputs} (record);\n\\draw[sys arrow,dashed] (record)--node[sys label,left,fill=none]{next revision} (freeze);\n\\end{tikzpicture}\n\\caption{The exposition workflow, read in numerical order, with the exchanged objects labelled. A proposal may be revised or declined at step~3; only accepted changes proceed to integration. The steps name responsibilities, which may be performed by the same agent. Rendering and inspection remain separate from source checks.}\n\\label{fig:refinement}\n\\end{figure}",
-      "statement_sha256": "c5ed6894de086e62cedc97933ecc146d9b985e719c3f67320b25dfde30880847",
+      "text": "\\begin{figure}[H]\n\\centering\n\\begin{tikzpicture}[x=1cm,y=1cm]\n\\node[sys box,text width=3.55cm,minimum height=1.5cm] (freeze) at (0,0) {\\textbf{1. Freeze inputs}\\\\Manuscripts, statements\\\\and source records};\n\\node[sys box,text width=3.55cm,minimum height=1.5cm] (write) at (4.75,0) {\\textbf{2. Propose revisions}\\\\Wording, organisation,\\\\examples and figures};\n\\node[sys box,text width=3.55cm,minimum height=1.5cm] (review) at (9.5,0) {\\textbf{3. Check and review}\\\\Source checks;\\\\meaning, scope and credit};\n\\node[sys box,text width=3.55cm,minimum height=1.5cm] (record) at (0,-2.8) {\\textbf{6. Record outcome}\\\\Accepted changes,\\\\lessons and limitations};\n\\node[sys box,text width=3.55cm,minimum height=1.5cm] (render) at (4.75,-2.8) {\\textbf{5. Render and inspect}\\\\Regenerate evidence,\\\\PDFs and reading links};\n\\node[sys box,text width=3.55cm,minimum height=1.5cm] (bind) at (9.5,-2.8) {\\textbf{4. Integrate changes}\\\\Apply source edits;\\\\update source bindings};\n\\draw[sys arrow] (freeze)--node[sys label,above=34pt,font=\\footnotesize]{frozen source packet} (write);\n\\draw[sys arrow] (write)--node[sys label,above=34pt,font=\\footnotesize]{proposed source changes} (review);\n\\draw[sys arrow] (review)--node[sys label,right,fill=none]{if accepted} (bind);\n\\draw[sys arrow] (bind)--node[sys label,below=24pt,font=\\footnotesize]{integrated sources} (render);\n\\draw[sys arrow] (render)--node[sys label,below=24pt,font=\\footnotesize]{inspected outputs} (record);\n\\draw[sys arrow,dashed] (record)--node[sys label,left,fill=none]{next revision} (freeze);\n\\end{tikzpicture}\n\\caption{The exposition workflow, read in numerical order, with the exchanged objects labelled. A proposal may be revised or declined at step~3; only accepted changes proceed to integration. The steps name responsibilities, which may be performed by the same agent. Rendering and inspection remain separate from source checks.}\n\\label{fig:refinement}\n\\end{figure}",
+      "statement_sha256": "c652f44e9bdc6c64e427f6cac7e21d24fe542fd804fc61bb209e9951c81ca2a8",
       "class": "method",
       "evidence_refs": [
         "writing-contract",
@@ -1742,9 +1782,9 @@
         "native-refinement",
         "packet-dossier"
       ],
-      "warrant": "The numbered workflow separates packet checking and semantic review, conditions integration on acceptance, and permits revision or rejection. Distinct responsibilities do not require distinct people; rendering is not supplied by source checks. This revision labels the exchanged objects or separates the additional support-accounting relation; the figure does not report new executions or review outcomes.",
+      "warrant": "The writer freezes selected sources, the refinement checker examines a proposed overlay without integrating it, and the writing contract assigns acceptance and publication work to the integrating role. Figure 4 names those responsibilities. The revised integration box now says to apply source edits and update bindings rather than implying that a checker reconstructs authored content.",
       "unit_type": "figure",
-      "caption": "The exposition workflow, read in numerical order. A proposal may be revised or declined at step~3; only accepted changes proceed to integration. The steps name responsibilities, which may be performed by the same agent. Rendering and inspection remain separate from source checks.",
+      "caption": "The exposition workflow, read in numerical order, with the exchanged objects labelled. A proposal may be revised or declined at step~3; only accepted changes proceed to integration. The steps name responsibilities, which may be performed by the same agent. Rendering and inspection remain separate from source checks.",
       "figure_title": "Expository revision at a fixed source revision",
       "section": "sec:paper"
     },
@@ -2260,46 +2300,46 @@
     {
       "id": "r11.related.prove2me-audit",
       "owner": "systems",
-      "text": "Prove2Me also addresses the human side of this process. A mission fixes a human-audited core of goals, definitions and milestones; each milestone pairs a source statement with its attested canonical formalisation. An independent agent can read the Lean statements back into mathematical prose for comparison with the source. Natural-language accounts accompany statements and proofs, the reusable library is searchable through statement descriptions, and imported results receive reuse credit. Discussion records include a disproved statement followed by a corrected replacement~\\cite[Sections~3.3 and~4.3--4.5]{prove2me}. Explanation, reuse, correction and shared agent work are therefore part of the comparison, not contributions claimed here.",
-      "statement_sha256": "44a382711465afae1b03483c678740f4176a1ab80fa792be860495cdf6eca741",
+      "text": "Human review is part of Prove2Me\\textquotesingle s design. A mission fixes a human-audited core of goals, definitions and milestones; each milestone pairs a source statement with its attested canonical formalisation. For read-back, an independent agent receives the Lean declaration and dependent definitions without the original source; a human compares its mathematical rendering with that source. Natural-language accounts accompany statements and proofs, statement descriptions support library search, and imports give contributors reuse credit. The discussion record also includes a disproved statement followed by a corrected replacement~\\cite[Sections~3.3 and~4.3--4.5]{prove2me}. Explanation, reuse, correction and shared agent work are therefore established parts of this comparison.",
+      "statement_sha256": "af1805521f85f9c5ec320f56ce0db146e9939a878f01ca544aef4363588b7fc6",
       "class": "literature",
       "evidence_refs": [
         "strategy-related",
         "r11-prove2me-edition",
         "r11-prove2me-attribution"
       ],
-      "warrant": "Direct reading of the supplied Prove2Me v2 original, Sections 3.3 and 4.3--4.5, supports the curated audit core, read-back, descriptions, searchable reuse, reuse credit and corrected replacement. Native bindings cover the public custody/attribution and prior summary, not the entire external PDF. This comparison makes no inference about currently absent platform features.",
+      "warrant": "Prove2Me v2 Section 3.3 describes the audited mission core and a read-back agent given the Lean declaration and dependent definitions but not the original source. Sections 3.1–3.2 require natural-language accounts; Sections 4.3–4.4 describe indexed descriptions, import credit and source-linked milestones. Section 4.5 records a disproof followed by a corrected replacement. These mechanisms were checked in the supplied original; the bound public records establish edition/custody, not semantic verification of this summary.",
       "section": "sec:related",
       "external_reading": {
         "source": "annex/arxiv-2608-28433-prove2me-open-collaborative-platform/source.pdf",
         "sha256": "87aaad288301d9c124cabf456d425b9e334232faed498323f54f7493a7f8423b",
         "edition": "arXiv:2608.28433v2, 31 August 2026",
-        "sections_read": "Complete main article Sections 1--7; references and figures including Appendix A inspected.",
-        "boundary": "External original inspected for literature claims. The native source checker checks the bound public metadata and prior summary; it does not read or validate this PDF."
+        "sections_read": "Supplied complete main article and figures; this passage uses Sections 3.3, 4.2 and 4.3--4.5.",
+        "boundary": "The external original supplies literature content. Native bindings check public custody records, not semantic agreement with this PDF."
       }
     },
     {
       "id": "r4.related1.03",
-      "text": "Our unit for publication review is a paper assertion at a specified revision. Its record names the full registered formal support set and the relation of each support to the printed statement; a separate record binds explanatory prose to sources and rationale. Entered contribution records preserve review decisions and role credit. This paper concentrates on those revision-specific publication records; Prove2Me concentrates on audited formalisation missions and composable proofs. Hosting one design as a service and the other in a repository does not establish an advantage. We claim neither priority for persistent research records nor a measured advantage over Prove2Me.",
+      "text": "For correspondence with a source, the closest analogue is Prove2Me\\textquotesingle s milestone: both designs identify the mathematical statement whose formalisation is being reviewed. Our coverage record follows a particular paper occurrence and can list several overlapping formal supports, with a relation note explaining their connection to the printed claim. It is not a proof-sketch: listing those supports does not compose proof terms or discharge open lemmas. A separate passage record binds the explanation to sources and rationale, while entered contribution records retain revision decisions and role credit. The focus here is the consistency and review of these publication records across revisions. This difference of focus establishes neither priority for persistent research records nor a measured advantage over Prove2Me.",
       "owner": "systems",
       "class": "method",
       "evidence_refs": [
+        "r11-prove2me-edition",
+        "r11-prove2me-attribution",
         "coverage-weighted",
-        "paper-resolver",
+        "r12-resolver-relations",
         "r8-sentence-check",
-        "r8-journal",
-        "strategy-related",
-        "r11-prove2me-edition"
+        "r8-journal"
       ],
-      "warrant": "Explain the narrower publication-record contribution without caricaturing the comparison platform or claiming a new reuse mechanism. Source inspection supports the stated role; this editorial return does not report a new implementation run or independent reader evaluation. Prove2Me comparison additionally checked against the complete supplied v2 original; public identity/attribution bindings do not themselves certify its content.",
-      "statement_sha256": "c0637e9d88ac4733ecdc63c744987903e09cae9e55f8005b5873a7717854a69d",
+      "warrant": "Prove2Me v2 Section 4.4 pairs a source statement with an attested canonical formalization, while Sections 4.2–4.3 give proof-sketch imports conditional proof-composition semantics. Locally, the weighted coverage row and paper_evidence.py bind a paper occurrence and a row-level relation note to a list of supports; the passage checker and journal bind explanations and entered review events separately. The closest-analogue judgment is an architectural comparison: a coverage list is not a Lean proof term and does not close a subgoal. The sources support no priority or comparative-performance conclusion.",
+      "statement_sha256": "d860fc7e6ac4294e4829e6322a78559f8c27ada98516b99b6bedd9b0f9aa4eeb",
       "section": "sec:related",
       "external_reading": {
         "source": "annex/arxiv-2608-28433-prove2me-open-collaborative-platform/source.pdf",
         "sha256": "87aaad288301d9c124cabf456d425b9e334232faed498323f54f7493a7f8423b",
         "edition": "arXiv:2608.28433v2, 31 August 2026",
-        "sections_read": "Complete main article Sections 1--7; references and figures including Appendix A inspected.",
-        "boundary": "External original inspected for literature claims. The native source checker checks the bound public metadata and prior summary; it does not read or validate this PDF."
+        "sections_read": "Supplied complete main article and figures; this passage uses Sections 3.3, 4.2 and 4.3--4.5.",
+        "boundary": "The external original supplies literature content. Native bindings check public custody records, not semantic agreement with this PDF."
       }
     },
     {
@@ -2785,19 +2825,6 @@
       "section": "app:repro"
     },
     {
-      "id": "r14.assignment.authority",
-      "text": "An integrating agent can alter the live checkout; an advisory agent returns proposed changes against supplied sources. The local names Type A and Type B denote those two permissions.",
-      "statement_sha256": "817320f9b248e0d4368948c57533475fc36b8bbccdad9ccf50bb75eb476b7d74",
-      "class": "method",
-      "evidence_refs": [
-        "writing-contract",
-        "native-writer",
-        "native-refinement"
-      ],
-      "warrant": "Use familiar roles before introducing local labels; these describe authority rather than intelligence or independent reviewers. Source inspection supports the stated role; this editorial return does not report a new implementation run or independent reader evaluation.",
-      "section": "app:repro"
-    },
-    {
       "id": "r6.layout.credit",
       "owner": "systems",
       "class": "method",
@@ -3268,7 +3295,7 @@
         "r8-journal",
         "r8-exchange"
       ],
-      "body_sha256": "4ae3a8063e399cbd4197c93d9c220450a33c33a7841e9340b490b517f99737f8"
+      "body_sha256": "e3c134bf027343c3f4689c47bfcb51623311344a5c23a6314cbeedfe9e627d09"
     },
     {
       "id": "world",
@@ -3319,7 +3346,7 @@
         "native-refinement",
         "packet-dossier"
       ],
-      "body_sha256": "c5ed6894de086e62cedc97933ecc146d9b985e719c3f67320b25dfde30880847"
+      "body_sha256": "c652f44e9bdc6c64e427f6cac7e21d24fe542fd804fc61bb209e9951c81ca2a8"
     },
     {
       "id": "contribute",

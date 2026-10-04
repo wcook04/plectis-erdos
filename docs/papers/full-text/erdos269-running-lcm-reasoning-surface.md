@@ -1621,7 +1621,14 @@ Induction gives
  d_{\ell+h}=W_{\ell,h}d_\ell-BF_{\ell,h}
 \end{equation}
 ```
-for any sequence satisfying $`d_{n+1}=b_nd_n-Bm_n`$. Since $`b_a=P_{a+1}/P_a`$, the product telescopes to $`W_{\ell,h}=P_{\ell+h}/P_\ell`$. The previously proved bounds $`8^a/15<P_a\le8^a`$ therefore give $`W_{\ell,h}>8^h/15`$. For a positive integer $`C`$ and an integer $`N`$, use $`\operatorname{lpr}_C(N)=1+((N-1)\bmod C)\in\{1,\ldots,C\}`$. In particular $`\operatorname{lpr}_C(0)=C`$. Positivity of this representative is what allows comparison with a positive integer tail.
+for any sequence satisfying $`d_{n+1}=b_nd_n-Bm_n`$. Since $`b_a=P_{a+1}/P_a`$, the product telescopes to $`W_{\ell,h}=P_{\ell+h}/P_\ell`$. For the actual block masses, $`m_a=h_{a+1}s_a`$ and $`h_a=P_a/2`$ identify the two terms after division by $`W_{\ell,h}`$:
+``` math
+\frac{F_{\ell,h}}{W_{\ell,h}}
+ =h_\ell\sum_{a=\ell}^{\ell+h-1}s_a,
+ \qquad
+ \frac{X_{\ell+h}}{W_{\ell,h}}=h_\ell T_{\ell+h}.
+```
+Thus the accumulated numerator records a finite part of the original reciprocal sum, in the same normalisation as the starting tail. No assumption of rationality or integrality is used in these identities. The previously proved bounds $`8^a/15<P_a\le8^a`$ also give $`W_{\ell,h}>8^h/15`$. For a positive integer $`C`$ and an integer $`N`$, use $`\operatorname{lpr}_C(N)=1+((N-1)\bmod C)\in\{1,\ldots,C\}`$. In particular $`\operatorname{lpr}_C(0)=C`$. Positivity of this representative is what allows comparison with a positive integer tail.
 
 <div id="long269:res:consumer" class="proposition">
 <p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos269/ResidueEscape.lean#L110">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/846d57d3f9926696332d782eb232aaf3cf803a99/evidence/erdos269-running-lcm-reasoning-surface.md#long269-res-consumer-comparator">Comparator</a></p>

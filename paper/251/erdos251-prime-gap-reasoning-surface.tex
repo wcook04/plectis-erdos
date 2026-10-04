@@ -83,9 +83,11 @@ their terms and their partial sums, with cutoffs fixed before the target.  The c
 ordinary sum fixed.  This separates the choice of weighted sum from
 the subsequent congruence calculations.
 
-With a polylogarithmic bound on the corrections we also preserve empirical blocks of
-length $o(\log\log X)$.  Applied to prime gaps, the theorem gives rational
-sums and cumulative positions asymptotic to $n\log n$.  These positions
+With a polylogarithmic bound on the corrections, the original and altered
+empirical block distributions have total variation distance tending to zero
+for lengths $o(\log\log X)$ sampled in $[X,2X)$.  Applied to prime gaps,
+the theorem gives rational sums and cumulative positions asymptotic to
+$n\log n$.  These positions
 are comparison integers and are not shown to be prime.  These congruences and statistics are therefore compatible with a rational
 sum.  The irrationality of the actual prime series remains unresolved.
 
@@ -211,8 +213,8 @@ zero.  For example, the union of the integer intervals
 $[k!,k!+k)$, $k\ge3$, has ordinary density zero but upper Banach density
 one.  If $k!\le x<(k+1)!$, at most $k(k+1)/2$ indices have occurred,
 so their proportion is at most $k(k+1)/(2k!)\to0$.  Nevertheless each
-interval is filled and their lengths are unbounded.  The hypothesis rules out this concentration in long intervals, however far
-apart those intervals lie.
+interval is filled and their lengths are unbounded.  Upper Banach density zero rules out this concentration in long intervals,
+however far apart those intervals lie.
 
 \begin{proof}
 \emph{Fixed totals.}
@@ -2254,8 +2256,8 @@ The source links identify definitions and proof steps at fixed revisions;
 the short paper's source index retains its different revision in
 Appendix~\ref{long251:app:short-source-index}. The formal sparse
 construction changes one coordinate per stage, whereas the printed
-proof uses triples. Both fix supports, the interval of sums and the
-modulus cutoffs before choosing a value. The formal proofs use the
+proof uses triples. Both fix a set containing all correction supports,
+the interval of sums and the modulus cutoffs before choosing a value. The formal proofs use the
 published inputs stated below; the linked declarations do not check
 the different printed arguments step by step.
 

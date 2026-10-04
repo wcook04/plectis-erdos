@@ -144,8 +144,9 @@ unit fractions; Lean~4.
 A sufficiently precise rate constrains an integer tail more strongly
 than the quadratic limit alone. At rate $1+3/n+o(n^{-3})$, its
 numerator must eventually be cubic. The denominator recurrence will
-exclude every possible cubic. Here the increments of $P_n/a_n$ grow
-like a positive multiple of $n^2$, so the bounded-increase criterion
+exclude every possible cubic. For the prefix product
+$P_n=\prod_{1\le k<n}a_k$, the increments of $P_n/a_n$ grow like a
+positive multiple of $n^2$, so the bounded-increase criterion
 later in the paper does not apply. The eventual Sylvester recurrence gives deviation
 $O(1/a_n)$ and is also excluded by this rate.
 
@@ -243,8 +244,10 @@ is a positive integer as well.  From $x_n=1/a_n+x_{n+1}$,
  C_{n+1}=D_{n+1}x_{n+1}=a_nD_n\Bigl(x_n-\frac1{a_n}\Bigr)=a_nC_n-D_n,
  \qquad D_{n+1}=a_nD_n,
 \]
-which is \eqref{long243:eq:cubicorbit}.  These are the tail variables of Koizumi's
+which is \eqref{long243:eq:cubicorbit}. These are the unreduced tail variables of Koizumi's
 Lemma~4 \cite[pp.~11--12]{koizumi2025}, up to a common positive factor.
+The rate estimate in Lemma~\ref{long243:res:tailratio} uses this numerator,
+without reducing each tail fraction separately.
 Section~\ref{long243:sec:state} constructs these variables together with
 the error $E_n=D_n-(a_n-1)C_n$, which this section does not need.  The subsequent cubic exclusion uses only these integer recurrences;
 it does not assume a reciprocal sum. To apply its zero-based statement
@@ -811,8 +814,8 @@ Sylvester recurrence,
 so the conclusion is irrationality on a restricted class of the sequences
 in Problem~\ref{long243:res:problem}.
 
-Writing $P_n=\prod_{k<n}a_k$, at the cubic rate $P_n/a_n$ grows like
-$n^3$ and its increment like $n^2$.
+At the cubic rate $P_n/a_n$ grows like $n^3$ and its increment like
+$n^2$.
 Thus neither the bounded-increment criterion nor Koizumi's nonpositive
 upper-limit criterion applies. The rate also fails his $1+o(1/n)$
 condition, and Duverney's signed defect series diverges. We do not decide
