@@ -229,6 +229,7 @@ These registered long assertions are not used by an accepted short-paper link. T
 - `prop:additional-approximation-hypothesis`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 6294-6313.
 - `thm:rationality-carry-rank`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 6322-6327.
 - `thm:rationality-carry-rank-2`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 6329-6338.
+- `prop:additional-hypothesis-totient-specific-rank`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 6354-6368.
 - `prop:rational-series-preserving-totient-parity`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 6465-6472.
 - `lem:complement-divisibility-after-multiplication`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 6556-6563.
 - `lem:nonvanishing-unique-largest-denominator-exponent`: [paper/reasoning-parts/erdos249/a249_front.tex](../../../paper/reasoning-parts/erdos249/a249_front.tex) lines 6636-6645.
