@@ -21883,7 +21883,7 @@
         "source": "paper/68/erdos-68-factorial-denominator-irrationality.tex",
         "environment": "problem",
         "title": "Erdős Problem~#68",
-        "line": 51
+        "line": 52
       }
     },
     {
@@ -21907,7 +21907,7 @@
         "source": "paper/251/erdos-251-prime-gap-dyadic-series.tex",
         "environment": "section",
         "title": "Introduction",
-        "line": 43
+        "line": 45
       }
     },
     {
@@ -22015,7 +22015,7 @@
         "source": "paper/269/erdos-269-three-prime-running-lcm.tex",
         "environment": "problem",
         "title": "no reduced tail is an integer",
-        "line": 597
+        "line": 600
       }
     },
     {
@@ -22027,7 +22027,7 @@
         "source": "paper/269/erdos-269-three-prime-running-lcm.tex",
         "environment": "problem",
         "title": "residue inequalities after every starting index",
-        "line": 603
+        "line": 606
       }
     },
     {
@@ -22039,7 +22039,7 @@
         "source": "paper/269/erdos269-running-lcm-reasoning-surface.tex",
         "environment": "problem",
         "title": "an exact function representing the distinct-height sum",
-        "line": 3565
+        "line": 3568
       }
     },
     {
@@ -22051,7 +22051,7 @@
         "source": "paper/243/erdos-243-reciprocal-tail-rigidity.tex",
         "environment": "problem",
         "title": "growth of repeated denominator factors",
-        "line": 1099
+        "line": 1103
       }
     },
     {
@@ -22063,7 +22063,7 @@
         "source": "paper/249/erdos-249-binary-totient-series.tex",
         "environment": "problem",
         "title": "Four estimates for the first-harmonic sum",
-        "line": 787
+        "line": 789
       }
     },
     {

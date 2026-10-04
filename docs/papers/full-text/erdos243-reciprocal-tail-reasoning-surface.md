@@ -85,7 +85,7 @@ It begins $`8,16,103,5305,\ldots`$. The inequality $`a_{n+1}\ge a_n^2/4`$ gives 
 ``` math
 0\le1+\frac3n-\frac{a_n^2}{a_{n+1}}<\frac{16}{a_n^2}=o(n^{-3}).
 ```
-Thus its reciprocal sum is irrational. The proof of the theorem uses the following arithmetic obstruction.
+Thus its reciprocal sum is irrational. Lemma <a href="#long243:res:extraction" data-reference-type="ref" data-reference="long243:res:extraction">12</a> will turn the rate assumption into an eventual rising-factorial cubic for the integer tail numerator. We first prove the arithmetic obstruction that rules out this cubic using only the exact integer recurrences.
 
 <div id="long243:res:cubicexclusion" class="theorem">
 <p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos243/PaperCompleteR21/SquareSpecialisationUnconditional.lean#L54">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/846d57d3f9926696332d782eb232aaf3cf803a99/evidence/erdos243-reciprocal-tail-reasoning-surface.md#long243-res-cubicexclusion-comparator">Comparator</a></p>
@@ -106,9 +106,9 @@ In particular no such orbit satisfies $`C_n=A\,n(n+1)(n+2)+B`$ for all large $`n
 
 </div>
 
-The short paper needs only to exclude eventual equality with a cubic. Here we keep track of where each congruence fails and obtain positive lower density of disagreement. The bound may depend on the orbit and the cubic; no uniform numerical constant is claimed.
+The short paper needs only to exclude eventual equality with a cubic of this form. Here we prove more: the disagreement set has positive lower density. The bound may depend on the orbit and the cubic; no uniform numerical constant is claimed.
 
-Suppose, then, that the disagreement set has lower density zero. It leaves arbitrarily late four-term blocks intact. On each such block, a third difference bounds $`G_n=\gcd(C_n,D_n)`$; the divisibility chain therefore stabilises. Dividing it out leaves the proposed numerator $`m n(n+1)(n+2)/6+c`$, with $`m>0`$ integral and $`c=\pm1`$. If the middle of three consecutive numerators vanishes modulo a prime, the recurrence makes the negative product of its neighbours a square. Applied to the polynomial, this forces a square at every root modulo almost every prime. A square in the cubic field follows, and traces leave $`m=12`$. Four-term blocks modulo seven exclude the two signs.
+Suppose, then, that the disagreement set has lower density zero. This does not give agreement on a whole tail; it gives cutoffs along which the proportion of disagreements tends to zero. In particular, it leaves arbitrarily late four-term blocks intact. On each such block, a third difference bounds $`G_n=\gcd(C_n,D_n)`$; the divisibility chain therefore stabilises. Dividing it out leaves the proposed numerator $`m n(n+1)(n+2)/6+c`$, with $`m>0`$ integral and $`c=\pm1`$. If the middle of three consecutive numerators vanishes modulo a prime, the recurrence makes the negative product of its neighbours a square. Applied to the polynomial, this forces a square at every root modulo almost every prime. A square in the cubic field follows, and traces leave $`m=12`$. Four-term blocks modulo seven exclude the two signs.
 
 The density assertion comes from the same finite tests. A failed test recurs on an arithmetic progression, and each occurrence forces a disagreement in a window of bounded length. The next lemma counts those disagreements. After proving the arithmetic exclusion, we return to the rate assumption in Lemma <a href="#long243:res:extraction" data-reference-type="ref" data-reference="long243:res:extraction">12</a>.
 
@@ -982,7 +982,7 @@ U_n=\tau-B+i=x+kP+i\qquad\text{for some }0\le i<B.
 ```
 The choice of $`x`$ gives $`m_i\mid U_n`$. Since $`m_i\mid L_n`$ as well, we obtain $`m_i\mid d_n=(a_n-1)U_n-L_n`$, contradicting $`0<d_n\le B<m_i`$.
 
-Every crossing therefore has $`d_n>B`$. If it first crosses $`h\ge1`$ selected heights, their spacing gives $`(h-1)P<d_n`$. Writing $`r=d_n-B\ge1`$ and using $`P\ge B+1`$, we obtain $`d_n=B+r\le Pr`$, hence $`h\le r`$. Since each crossed height is above $`U_n`$, monotonicity of $`f`$ gives
+Every crossing therefore has $`d_n>B`$. A single jump may first cross several selected heights; their combined weight must be bounded by that jump’s excess. If it first crosses $`h\ge1`$ selected heights, their spacing gives $`(h-1)P<d_n`$. Writing $`r=d_n-B\ge1`$ and using $`P\ge B+1`$, we obtain $`d_n=B+r\le Pr`$, hence $`h\le r`$. Since each crossed height is above $`U_n`$, monotonicity of $`f`$ gives
 ``` math
 \sum_{\substack{\tau\text{ first crossed}\\\text{at step }n}}f(\tau)
  \le(d_n-B)f(U_n).

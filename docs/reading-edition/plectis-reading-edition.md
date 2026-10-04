@@ -4,7 +4,7 @@
 
 # Plectis reading edition: eight Erdős problems
 
-Edition fingerprint `ef9137d0835a6408`. Papers CC-BY-4.0, Will Cook, 2026. Source: <https://github.com/wcook04/plectis-erdos>. Website: <https://wcook04.github.io/plectis/maths/>.
+Edition fingerprint `b7008623a429cfce`. Papers CC-BY-4.0, Will Cook, 2026. Source: <https://github.com/wcook04/plectis-erdos>. Website: <https://wcook04.github.io/plectis/maths/>.
 
 
 ## How to use this edition
@@ -1384,7 +1384,7 @@ Longer record: [Factorial Linear Forms and Denominators Detailed Proofs and Rati
 
 </div>
 
-We classify the integer vectors that cancel prescribed initial weighted sums in linear forms $`MS+k`$, where $`S=\sum_{n\ge2}(n!-1)^{-1}`$. An integral basis reduces the support restriction to one linear Diophantine equation. The possible values of $`M`$ are determined by a gcd over fewer than $`2D^2`$ indices when cancellation is imposed through $`D`$. For $`D=4`$ we construct a vector with the least positive value $`M=1380`$. Nonintegrality for a family with the required denominator divisibility remains open.
+We classify finitely supported integer vectors on indices $`n\ge2`$ that cancel prescribed initial weighted sums in linear forms $`MS+k`$, where $`S=\sum_{n\ge2}(n!-1)^{-1}`$. Temporarily allowing index one gives an integral basis; removing that coordinate requires one linear Diophantine equation. The possible values of $`M`$ are determined by a gcd over fewer than $`2D^2`$ indices when cancellation is imposed through $`D`$. For $`D=4`$ we construct a vector with the least positive value $`M=1380`$. An irrationality proof by these forms still requires, for each $`q>0`$, a nonintegral form with $`q\mid M`$.
 
 <a id="erdos-68-factorial-denominator-irrationality--sec:problem"></a>
 
@@ -1408,7 +1408,7 @@ We classify the integer coefficient vectors that cancel the first $`D-1`$ weight
 
 The desired vectors are supported on indices at least two. Temporarily allowing index one makes the basis construction possible; removing it then amounts to one linear Diophantine equation. Its solvability determines the possible values of $`M`$. The gcd that occurs in this equation is defined by an infinite sequence, but Theorem <a href="#erdos-68-factorial-denominator-irrationality--res:finite-channel-moment-certificate" data-reference-type="ref" data-reference="erdos-68-factorial-denominator-irrationality--res:finite-channel-moment-certificate">3</a> computes it on a specified finite interval.
 
-When cancellation is imposed through $`D=4`$, the least positive value of $`M`$ is $`1380`$. We derive a vector attaining this value and bound its remainder between consecutive integers. The classification itself does not assume that $`S`$ is rational. An irrationality proof would require, for each $`q>0`$, a nonintegral form whose coefficient $`M`$ is divisible by $`q`$. The companion constructs primitive vectors with this divisibility property; nonintegrality of their remainders remains unproved.
+When cancellation is imposed through $`D=4`$, the least positive value of $`M`$ is $`1380`$. We derive a vector attaining this value and bound its remainder between consecutive integers. The classification itself does not assume that $`S`$ is rational. An irrationality proof would require, for each $`q>0`$, a nonintegral form whose coefficient $`M`$ is divisible by $`q`$. The companion’s [progression construction](https://github.com/wcook04/plectis-erdos/blob/main/paper/68/erdos68-factorial-reasoning-surface.pdf#nameddest=r5-progression) gives primitive vectors with this divisibility property; nonintegrality of their remainders remains unproved.
 
 Hančl and Tijdeman’s tail-integrality lemma treats factorial series with integer coefficients \[hancl-tijdeman, Lemma 2.1 and the following remark, p. 385\]. Their factorial-scaled partial sums are integers. Here the scaled partial sum need not be integral. Instead, the weight congruences give $`\mathcal R-MS\in\mathbb Z`$ <a href="#erdos-68-factorial-denominator-irrationality--eq:integer-linear-form" data-reference-type="eqref" data-reference="erdos-68-factorial-denominator-irrationality--eq:integer-linear-form">[eq:integer-linear-form]</a>; the assumption $`S=a/q`$ and $`q\mid M`$ then makes $`\mathcal R`$ integral. Koepf and Schmersau’s factorial-digit criterion \[koepf-schmersau, Example 3.2, p. 121\] is used in the [companion’s digit argument](https://github.com/wcook04/plectis-erdos/blob/main/paper/68/erdos68-factorial-reasoning-surface.pdf#nameddest=r5-digits) to give an equivalent eventual-pattern condition for $`S-e+2`$. Failure of that pattern at arbitrarily large indices also remains unproved.
 
@@ -1534,16 +1534,7 @@ Uniqueness of the coordinates now gives the complete solution
  \label{eq:low-channel-classification}
 \end{equation}
 ```
-with $`t\in\mathbb Z`$ and finitely many nonzero integers $`z_n`$. The lower coordinates are fixed by $`t`$; all higher coordinates remain free. These free coordinates help impose the support restriction, but they change the remainder only by an integer. Indeed, $`\mathcal R(e_1)=S`$ and $`\mathcal R(U_n)=1`$ give
-``` math
-\begin{equation}
- \mathcal R\left(tK_D+\sum_{n>D}z_nU_n\right)
- =tL_D(S-H_D)+\sum_{n>D}z_n,
- \qquad H_D=\sum_{d=2}^D\frac1{d!-1}.
- \label{eq:residual-transparency}
-\end{equation}
-```
-Since $`M=tL_D`$ clears the denominators of $`H_D`$, the integer in $`\mathcal R=MS+k`$ is $`k=-MH_D+\sum_{n>D}z_n`$. Thus the sum of the free coordinates is the offset from $`M(S-H_D)`$, not from $`MS`$.
+with $`t\in\mathbb Z`$ and finitely many nonzero integers $`z_n`$. The lower coordinates are fixed by $`t`$; all higher coordinates remain free.
 
 It remains to remove index one. Write $`a_D`$ for its coefficient in $`K_D`$, and $`u_n`$ for its coefficient in $`U_n`$. All other coordinates already lie in the permitted range $`n\ge2`$, so the only remaining equation is
 ``` math
@@ -1609,6 +1600,21 @@ t=g_D/h,\qquad z_n=-(a_D/h)b_n\quad(D<n\le H)
 ```
 makes $`ta_D+\sum z_nu_n=0`$. Substitution in <a href="#erdos-68-factorial-denominator-irrationality--eq:low-channel-classification" data-reference-type="eqref" data-reference="erdos-68-factorial-denominator-irrationality--eq:low-channel-classification">[eq:low-channel-classification]</a> therefore produces a vector with $`M=\mu_D`$. This gives an attaining vector as well as the minimum. Minimising its support or its coefficient norm is a separate problem.
 
+<a id="erdos-68-factorial-denominator-irrationality--sec:coordinate-remainder"></a>
+
+#### The associated remainder
+
+Once $`t`$ is fixed, the higher coordinates change the remainder only by an integer. Indeed, $`\mathcal R(e_1)=S`$ and $`\mathcal R(U_n)=1`$ give
+``` math
+\begin{equation}
+ \mathcal R\left(tK_D+\sum_{n>D}z_nU_n\right)
+ =tL_D(S-H_D)+\sum_{n>D}z_n,
+ \qquad H_D=\sum_{d=2}^D\frac1{d!-1}.
+ \label{eq:residual-transparency}
+\end{equation}
+```
+Since $`M=tL_D`$ clears the denominators of $`H_D`$, the integer in $`\mathcal R=MS+k`$ is $`k=-MH_D+\sum_{n>D}z_n`$. Thus the sum of the free coordinates is the offset from $`M(S-H_D)`$, not from $`MS`$.
+
 <a id="erdos-68-factorial-denominator-irrationality--sec:depth-four"></a>
 
 *This entry ends here, at a section boundary. Later sections of the paper, and anything the text above says is given below, are in [the full short paper](https://github.com/wcook04/plectis-erdos/blob/main/docs/papers/full-text/erdos-68-factorial-denominator-irrationality.md) (30 KB as text) and in `plectis-short-papers.md`.*
@@ -1633,7 +1639,7 @@ Jaroslav Hančl and Robert Tijdeman. [On the irrationality of factorial series](
 
 *Under what cubic-rate hypothesis is a reciprocal sum irrational, and what separate bounded-increment criterion forces the Sylvester recurrence without settling Erdős #243?* [Full text](https://github.com/wcook04/plectis-erdos/blob/main/docs/papers/full-text/erdos-243-reciprocal-tail-rigidity.md) · [PDF](https://github.com/wcook04/plectis-erdos/blob/main/paper/243/erdos-243-reciprocal-tail-rigidity.pdf)
 
-Longer record: [Reciprocal Sums and the Sylvester Recurrence: Further Results and Proofs](https://github.com/wcook04/plectis-erdos/blob/main/docs/papers/full-text/erdos243-reciprocal-tail-reasoning-surface.md) (249 KB as text).
+Longer record: [Reciprocal Sums and the Sylvester Recurrence: Further Results and Proofs](https://github.com/wcook04/plectis-erdos/blob/main/docs/papers/full-text/erdos243-reciprocal-tail-reasoning-surface.md) (250 KB as text).
 
 <a id="erdos-243-reciprocal-tail-rigidity--erdos-243-reciprocal-tail-rigidity"></a>
 
@@ -1791,7 +1797,7 @@ The precision matters at the subtraction step. The integer sequence $`F_n+(-1)^n
 
 #### Reduction and the constant term
 
-<span id="erdos-243-reciprocal-tail-rigidity--sec:reduction" label="sec:reduction"></span> We now use the denominator recurrence. Both updates preserve common divisors, so $`G_n=\gcd(C_n,D_n)`$ forms a divisibility chain: $`G_n\mid G_{n+1}`$. For every sufficiently late $`n`$, it divides four consecutive values of $`C_n`$, and hence their third difference $`6A`$. Thus $`G_n`$ stabilises at a positive integer $`g`$.
+<span id="erdos-243-reciprocal-tail-rigidity--sec:reduction" label="sec:reduction"></span> We now use the denominator recurrence. Both updates preserve common divisors, so $`G_n=\gcd(C_n,D_n)`$ forms a divisibility chain: $`G_n\mid G_{n+1}`$. For every sufficiently late $`n`$, it divides four consecutive values of $`C_n`$, and hence their third difference $`6A`$. Unlike the vanishing fourth difference used above, this positive third difference bounds the gcd. Thus $`G_n`$ stabilises at a positive integer $`g`$.
 
 We can therefore reduce all sufficiently late fractions by the same factor: put $`u_n=C_n/g`$ and $`v_n=D_n/g`$. The recurrences persist after this division. The following observation describes the resulting coprimality conditions.
 
@@ -1887,7 +1893,7 @@ The first equality puts $`r=\bar\alpha`$ in $`\mathbb F_\ell`$ and gives $`f(r)=
 
 #### Traces in the cubic field
 
-The square relation gives a pair of reciprocal elements:
+To constrain $`\eta`$, we use the square relation to express $`\alpha`$ through a pair of reciprocal elements in the same cubic field:
 ``` math
 (\alpha+\beta)(\alpha-\beta)=1.
 ```
@@ -2143,7 +2149,7 @@ which completes the proof of Theorem <a href="#erdos-249-binary-totient-series-
 
 </div>
 
-The reductions give a second way to test a linear identity, by substitution. Consider base six at level two, where the family has $`43`$ indices. The $`37`$ retained sections are $`F_{0,0},F_{1,0}`$, the five $`F_{1,r}`$ ($`1\le r\le5`$), and the $`30`$ sections $`F_{2,r}`$ with $`1\le r<36`$ and $`6\nmid r`$. The omitted sections satisfy
+Once independence is known, a linear identity can be tested by substitution alone: reduce to the retained sections and compare their coefficients. Consider base six at level two, where the family has $`43`$ indices. The $`37`$ retained sections are $`F_{0,0},F_{1,0}`$, the five $`F_{1,r}`$ ($`1\le r\le5`$), and the $`30`$ sections $`F_{2,r}`$ with $`1\le r<36`$ and $`6\nmid r`$. The omitted sections satisfy
 ``` math
 \begin{aligned}
  F_{2,0}&=6F_{1,0}, & F_{2,6}&=2F_{1,1}, & F_{2,12}&=4F_{1,2},\\
@@ -2217,7 +2223,7 @@ Longer record: [Prime-Gap Dyadic Series: Perturbations, Exact Criteria and Certi
 
 </div>
 
-For each convergent dyadic series with nonnegative integer coefficients, we construct nonnegative integer perturbations whose sums fill an interval and whose supports lie in one set of upper Banach density zero. The corrections obey any prescribed bound tending to infinity and eventually preserve coefficient and partial-sum residues modulo every fixed integer. The construction varies adjacent corrections while keeping their ordinary sum fixed. For prime gaps it also preserves growing-block distributions and cumulative size. The cumulative positions need not be prime, and the irrationality question remains open.
+For each convergent dyadic series with nonnegative integer coefficients, we construct nonnegative integer perturbations whose sums fill an interval and whose supports lie in one set of upper Banach density zero. The corrections satisfy any prescribed bound tending to infinity for all sufficiently large indices; for each fixed modulus, coefficient and partial-sum residues are eventually preserved. The construction varies adjacent corrections while keeping their ordinary sum fixed. In the prime-gap application with eventual correction bound $`\log(n+3)`$, it gives vanishing total variation error for blocks of length $`o(\log\log X)`$ sampled on $`[X,2X)`$ and preserves the cumulative asymptotic $`n\log n`$. The cumulative positions need not be prime, and the irrationality question remains open.
 
 <a id="erdos-251-prime-gap-dyadic-series--sec:problem"></a>
 
@@ -2231,7 +2237,7 @@ is irrational \[erdos1958, p. 94\]\[erdosgraham1980, p. 62\] \[erdos1988, p. 
 
 We prove a perturbation theorem for arbitrary convergent dyadic series with nonnegative integer coefficients. All corrections are supported on one sparse set, chosen before the value of the sum. Their sizes may be eventually bounded by any prescribed function tending to infinity, while the sums still fill an interval. We also prescribe, before choosing the target, a cutoff for each modulus beyond which both the corrections and their partial sums are divisible by that modulus. For prime gaps the same construction retains the distributions of blocks of length $`o(\log\log X)`$ sampled in $`[X,2X)`$ and gives cumulative positions asymptotic to $`n\log n`$. The irrationality of the actual prime series remains a distinct question: these comparison sequences need not have prime cumulative positions.
 
-We use a standard interval-covering argument for series with finite choices. Fridy’s generalised-base lemma \[fridy1966, p. 194\] treats bounded digits and decreasing weights. Crmarić and Kovač \[crmarickovac2025, Lemma 4\] give the finite-choice form used here, and Kovač and Tao \[kovactao2024, Lemma 5.1\] use analogous intervals of reciprocal choices. We must arrange these choices on a sparse set while preserving cumulative congruences. To do so, we redistribute a fixed correction between two adjacent indices. The simplest useful calculation is
+We use a standard interval-covering argument for series with finite choices. Fridy’s generalised-base lemma \[fridy1966, p. 194\] treats prescribed digit bounds and nonincreasing weights. Crmarić and Kovač \[crmarickovac2025, Lemma 4\] give the finite-choice form used here, and Kovač and Tao \[kovactao2024, Lemma 5.1\] use analogous intervals of reciprocal choices. We must arrange these choices on a sparse set while preserving cumulative congruences. To do so, we redistribute a fixed correction between two adjacent indices. The simplest useful calculation is
 ``` math
 \begin{array}{c|rrrr}
  (e_n,e_{n+1}) &(0,6)&(2,4)&(4,2)&(6,0)\\
@@ -2266,7 +2272,7 @@ In particular the distance tends to zero for every integer-valued $`m=m(X)\ge1`$
 
 </div>
 
-The support of $`e`$ may depend on $`r`$ and occupy only part of $`S`$. Polynomially growing nonnegative integer sequences satisfy the convergence hypothesis, whereas $`a_n=2^n`$ does not. The prescribed bound may grow as slowly as $`\log\log(n+3)`$. A bounded correction would have to vanish identically: a modulus exceeding the bound makes $`e`$ eventually zero, and its constant cumulative sum must then be divisible by every positive integer.
+The set $`S`$, the interval $`I`$ and every congruence cutoff are fixed before $`r`$ is chosen. The correction $`e`$ depends on $`r`$; its support may occupy only part of $`S`$. Polynomially growing nonnegative integer sequences satisfy the convergence hypothesis, whereas $`a_n=2^n`$ does not. The prescribed bound may grow as slowly as $`\log\log(n+3)`$. A bounded correction would have to vanish identically: a modulus exceeding the bound makes $`e`$ eventually zero, and its constant cumulative sum must then be divisible by every positive integer.
 
 Section <a href="#erdos-251-prime-gap-dyadic-series--sec:construction" data-reference-type="ref" data-reference="erdos-251-prime-gap-dyadic-series--sec:construction">2</a> gives the construction, and Section <a href="#erdos-251-prime-gap-dyadic-series--sec:prime-application" data-reference-type="ref" data-reference="erdos-251-prime-gap-dyadic-series--sec:prime-application">3</a> applies it to prime gaps. We then identify the actual tails and characterise their rationality by integral shifts. This leads to finite separation tests and to a sufficient condition involving two consecutive small differences. The [companion’s literature discussion](https://github.com/wcook04/plectis-erdos/blob/main/paper/251/erdos251-prime-gap-reasoning-surface.pdf#nameddest=context) contains the further comparisons, including finite subsums and other dyadic coefficient sequences.
 
@@ -2418,7 +2424,7 @@ The coupling also applies to tests depending on the starting index. If their abs
 
 <a id="erdos-251-prime-gap-dyadic-series--sec:prime-application"></a>
 
-*This entry ends here, at a section boundary. Later sections of the paper, and anything the text above says is given below, are in [the full short paper](https://github.com/wcook04/plectis-erdos/blob/main/docs/papers/full-text/erdos-251-prime-gap-dyadic-series.md) (47 KB as text) and in `plectis-short-papers.md`.*
+*This entry ends here, at a section boundary. Later sections of the paper, and anything the text above says is given below, are in [the full short paper](https://github.com/wcook04/plectis-erdos/blob/main/docs/papers/full-text/erdos-251-prime-gap-dyadic-series.md) (48 KB as text) and in `plectis-short-papers.md`.*
 
 #### References cited in this paper
 
@@ -2446,7 +2452,7 @@ Longer record: [Reciprocal Mersenne Subseries](https://github.com/wcook04/plecti
 
 </div>
 
-We prove a hereditary irrationality criterion for Lambert subseries supported on a union $`E\cup V`$. The set $`E`$ satisfies a finite-prime weighted summability condition, while $`V`$ admits a summable positive divisor cover. The two support classes are incomparable, both extend beyond reciprocal-summable supports, and the union criterion reaches supports in neither class. The proof turns on a second average over dyadic lengths: it restores the reciprocal factor lost by incomplete residue periods and, because both estimates use one finite distribution, yields a single index at which both displacements are small. The arbitrary infinite-support problem in base two remains open.
+We prove that $`\sum_{a\in A}(b^a-1)^{-1}`$ is irrational for every integer $`b\ge2`$ and every infinite $`A\subseteq E\cup V`$ under two hypotheses. The set $`E`$ satisfies a finite-prime weighted summability condition at base two, while $`V`$ admits a summable positive divisor cover. The two support classes are incomparable, both extend beyond reciprocal-summable supports, and the union criterion reaches supports in neither class. The proof turns on a second average over dyadic lengths: it restores the reciprocal factor lost by incomplete residue periods and, because both estimates use one finite distribution, yields a single index at which both displacements are small. The arbitrary infinite-support problem in base two remains open.
 
 <a id="erdos-257-mersenne-support-subseries--sec:problem"></a>
 
@@ -2823,7 +2829,7 @@ Thus $`m_a`$ need not be smaller than $`b_a`$.
 
 </div>
 
-Although $`b_a`$ has only four possible values, the recurrence also depends on $`m_a`$, which counts contributions from every smooth integer in the block. Thus the finite set of bases does not give a finite family of affine maps for $`X_a`$.
+In the distinct-value proof, the ordered jumps in a block determine its numerator $`\mu_\tau`$. For the repeated sum, that word does not record how many smooth integers share each running LCM. We therefore retain the full block contribution $`m_a`$, not just the jumps.
 
 <div id="erdos-269-three-prime-running-lcm--res:actual-orbit" class="proposition">
 <p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos269/PaperR7SeriesIdentification.lean#L168">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/846d57d3f9926696332d782eb232aaf3cf803a99/evidence/erdos-269-three-prime-running-lcm.md#res-actual-orbit-comparator">Comparator</a></p>
@@ -2850,7 +2856,7 @@ For the final assertion, suppose that every sufficiently late distance is strict
 
 </div>
 
-We can also write the repeated series as a Cantor series: $`S/2=\sum_{a\ge0}m_a/(b_0\cdots b_a)`$. The criteria in \[erdosstraus1974, Theorem 2.1\] and \[hancltijdeman2004, Theorem 3.1\] require a small-numerator hypothesis $`m_a/(b_{a-1}b_a)\to0`$. Here the $`b_a`$ are bounded and $`m_a`$ grows quadratically. The [companion’s tail estimates](https://github.com/wcook04/plectis-erdos/blob/main/paper/269/erdos269-running-lcm-reasoning-surface.pdf#nameddest=r3-repeated-bounds) prove this lower bound as well as sharper upper bounds. In particular, $`X_a>m_a/30`$ is unbounded, so the finite-value argument in Section <a href="#erdos-269-three-prime-running-lcm--sec:distinct-235" data-reference-type="ref" data-reference="erdos-269-three-prime-running-lcm--sec:distinct-235">[sec:distinct-235]</a> no longer applies to these normalised tails.
+We can also write the repeated series as a Cantor series: $`S/2=\sum_{a\ge0}m_a/(b_0\cdots b_a)`$. The criteria in \[erdosstraus1974, Theorem 2.1\] and \[hancltijdeman2004, Theorem 3.1\] require a small-numerator hypothesis $`m_a/(b_{a-1}b_a)\to0`$. Here the $`b_a`$ are bounded and $`m_a`$ grows quadratically. The [companion’s tail estimates](https://github.com/wcook04/plectis-erdos/blob/main/paper/269/erdos269-running-lcm-reasoning-surface.pdf#nameddest=r3-repeated-bounds) prove this lower bound as well as sharper upper bounds. Thus these criteria do not apply, and $`X_a>m_a/30`$ is unbounded. Rationality still places the tails in a fixed lattice, but no longer in a finite set as in Section <a href="#erdos-269-three-prime-running-lcm--sec:distinct-235" data-reference-type="ref" data-reference="erdos-269-three-prime-running-lcm--sec:distinct-235">[sec:distinct-235]</a>. We shall use their quadratic bound to exclude possible integer tails instead.
 
 <div id="erdos-269-three-prime-running-lcm--res:denominator-reduction" class="theorem">
 <p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos269/PaperR7RationalBridge.lean#L80">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/846d57d3f9926696332d782eb232aaf3cf803a99/evidence/erdos-269-three-prime-running-lcm.md#res-denominator-reduction-comparator">Comparator</a></p>
@@ -3115,7 +3121,7 @@ The choice $`s=10^{-6}`$ is fixed throughout. Extending these estimates to the s
 
 <a id="erdos-1041-lemniscate-newton-flow--sec:trinomial"></a>
 
-*This entry ends here, at a section boundary. Later sections of the paper, and anything the text above says is given below, are in [the full short paper](https://github.com/wcook04/plectis-erdos/blob/main/docs/papers/full-text/erdos-1041-lemniscate-newton-flow.md) (60 KB as text) and in `plectis-short-papers.md`.*
+*This entry ends here, at a section boundary. Later sections of the paper, and anything the text above says is given below, are in [the full short paper](https://github.com/wcook04/plectis-erdos/blob/main/docs/papers/full-text/erdos-1041-lemniscate-newton-flow.md) (61 KB as text) and in `plectis-short-papers.md`.*
 
 #### References cited in this paper
 
@@ -3479,7 +3485,7 @@ For three factors, the terms with one $`d_i`$ contribute $`-3E^2\sum_{i=0}^k(k-i
 ``` math
 b_k^{(3)}=E^3\left(\binom{k+2}{2}-3L(k+1)\right)+O_q(1).
 ```
-Dividing the correction $`-3L(k+1)`$ by the leading term $`\binom{k+2}{2}`$ gives the relative correction $`-6L/(k+2)`$. The two-fold convolution contributes $`-2L/(k+1)`$ in the same way. Since $`(q;q)_k=P(1+O_q(q^k))`$ and $`c_k=(k+1)^2(k+2)/2`$, multiplication yields
+Dividing the correction $`-3L(k+1)`$ by the leading term $`\binom{k+2}{2}`$ gives the relative correction $`-6L/(k+2)`$. The two-fold convolution contributes $`-2L/(k+1)`$ in the same way. Since $`(q;q)_k=P(1+O_q(q^k))`$, the leading constants in $`a_k=P^4(q;q)_k b_k^{(2)}b_k^{(3)}`$ multiply to $`P^5E^5=1`$. With $`c_k=(k+1)^2(k+2)/2`$, the two relative corrections therefore give
 ``` math
 \begin{align*}
  \frac{a_k}{c_k}

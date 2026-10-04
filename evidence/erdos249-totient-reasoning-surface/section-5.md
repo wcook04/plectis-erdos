@@ -127,7 +127,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="thm-denom-record"></a>
 
-## Theorem 5.6 (Denominator exclusion), page 23
+## Theorem 5.6 (Denominator exclusion), page 22
 
 > *For every $`p\in\mathbb{Q}`$ whose reduced denominator is at most $`Q_0`$,
 > ``` math
@@ -269,7 +269,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="thm-denommobsq"></a>
 
-## Theorem 5.12 (Denominator exclusion for the Möbius-square form), page 24
+## Theorem 5.12 (Denominator exclusion for the Möbius-square form), page 23
 
 > *With $`Q_1`$ as in Theorem 5.11: for every $`a\in\mathbb{Z}`$, $`d\in\mathbb{N}`$ with $`0<d\le Q_1`$, the signed series $`T := \sum_{m\ge1} \mu(m)/(2^m-1)^2 = S - \tfrac12`$ (see §5.5) is not equal to $`a/d`$.*
 

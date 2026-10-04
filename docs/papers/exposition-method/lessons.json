@@ -11115,6 +11115,150 @@
       "editorial_disposition": "accepted_as_scoped_manuscript_practice",
       "application_boundary": "Retain local hypotheses, conditional conclusions, theorem qualifiers, proof reach, statement identifiers, and precise source attribution. Verification records remain accessible in a consolidated section.",
       "native_review": "state/formal_math/type_b_return_batches/short_refinement_r10_20261001/review/analysis/full_corpus_feedback_audit.md"
+    },
+    {
+      "id": "short-20261004-r11-systems-generalized-lessons-01",
+      "return_id": "short-20261004-r11-systems",
+      "document": "GENERALIZED_LESSONS.json",
+      "document_sha256": "55dd77932ac4898fe33a2326e3039bdea5ec8b28020a749c16e750b0568a8c25",
+      "index": 0,
+      "rule_families": [
+        "E07"
+      ],
+      "proposal": "Credit the antecedent’s actual mechanisms before stating the narrower review object.",
+      "before": "Its hosted verification service and this repository-based record provide different places for those activities; we claim neither priority for persistent research records nor a measured advantage over these systems.",
+      "after": "Our unit for publication review is a paper assertion at a specified revision. Its record names the full registered formal support set and the relation of each support to the printed statement; a separate record binds explanatory prose to sources and rationale. Entered contribution records preserve review decisions and role credit. This paper concentrates on those revision-specific publication records; Prove2Me concentrates on audited formalisation missions and composable proofs. Hosting one design as a service and the other in a repository does not establish an advantage. We claim neither priority for persistent research records nor a measured advantage over Prove2Me.",
+      "reason": "A hosted-versus-repository distinction did not tell a specialist what the records or operations actually were. The expanded comparison credits Prove2Me’s source-linked milestones, explanations and corrections before describing revision-specific publication records.",
+      "limit": "A difference of emphasis is not demonstrated exclusivity or technical superiority.",
+      "editorial_disposition": "accepted_as_scoped_application_of_existing_guidance",
+      "manuscript_disposition": "Corresponding passage compared with current manuscript and accepted.",
+      "reading_boundary": "Donor example retained with its source identity. Its application here is not a universal writing rule, proof or empirical result."
+    },
+    {
+      "id": "short-20261004-r11-1049-generalized-lessons-02",
+      "return_id": "short-20261004-r11-1049",
+      "document": "GENERALIZED_LESSONS.json",
+      "document_sha256": "b3289d3243753478732a38024fe322ae817a15ff45d1e0a553b4ec0beb4d5c0e",
+      "index": 1,
+      "rule_families": [
+        "E03"
+      ],
+      "proposal": "Separate the residue-space map from the real-valued map in finite selection arguments.",
+      "before": "Subset sums were said to have residues after only their real remainders had been named.",
+      "after": "Integer coefficient-pair sums are explicitly mapped into (Z/DZ)^2; their real remainders retain the separate width and multiplicity conditions.",
+      "reason": "The same subset index feeds two different maps. Identifying their codomains explains both integrality after division and the need for a nonzero real difference.",
+      "limit": "A scalar integer congruence with no competing real-valued map may need no such extra sentence. Typing the maps is not a substitute for estimating their fibres.",
+      "editorial_disposition": "accepted_as_scoped_application_of_existing_guidance",
+      "manuscript_disposition": "Corresponding passage compared with current manuscript and accepted.",
+      "reading_boundary": "Donor example retained with its source identity. Its application here is not a universal writing rule, proof or empirical result."
+    },
+    {
+      "id": "short-20261004-r11-1041-generalized-lessons-03",
+      "return_id": "short-20261004-r11-1041",
+      "document": "GENERALIZED_LESSONS.json",
+      "document_sha256": "a322776629afa5f4f534a6f923e4ee15f4d7cb85de9d2d6aa2f4d797fe35b063",
+      "index": 2,
+      "rule_families": [
+        "E03"
+      ],
+      "proposal": "Replace an opaque admissibility word by the exact range when it controls what a numerical certificate must cover.",
+      "before": "weights $\\sigma_i$ at radii $r_i$ give\n$\\lambda(d)\\le U+\\sum_i\\sigma_iw(d,r_i)$ for every admissible $d$,\nwhere $U>0$, summing at the $k$ roots gives",
+      "after": "weights $\\sigma_i$ at radii $r_i>0$ give\n$\\lambda(d)\\le U+\\sum_i\\sigma_iw(d,r_i)$ for every $d>0$ satisfying\n$\\lambda(d)\\le\\delta(a)/2$, where $U>0$, summing at the $k$ roots gives",
+      "reason": "The certificate must majorize lambda on the whole positive-distance tail satisfying lambda(d)<=delta(a)/2, not only at the actual root distances or sampled radii. Positive r_i also keeps the circle-slice expression’s denominator in its stated domain.",
+      "limit": "An explicit range is justified here by the existing res:dual-arity-floor definition and proof. In another argument, broadening the domain could strengthen the hypothesis or invalidate a certificate; that would require a mathematical task and statement accounting.",
+      "editorial_disposition": "accepted_as_scoped_application_of_existing_guidance",
+      "manuscript_disposition": "Corresponding passage compared with current manuscript and accepted.",
+      "reading_boundary": "Donor example retained with its source identity. Its application here is not a universal writing rule, proof or empirical result."
+    },
+    {
+      "id": "short-20261004-r11-269-generalized-lessons-02",
+      "return_id": "short-20261004-r11-269",
+      "document": "GENERALIZED_LESSONS.json",
+      "document_sha256": "0775ebe44587e421d8dd9cb142b2dec42c0cb12dd0410c43c736c9e85eb7116a",
+      "index": 1,
+      "rule_families": [
+        "E07"
+      ],
+      "proposal": "Separate an unsuccessful finite exclusion from a positive conclusion about the infinite object.",
+      "before": "contains no integer. The converse formalises this observation, but gives\nno estimate for the gap $\\delta$. To use the forward implication, we\nmust prove~\\eqref{eq:escape} for the actual coefficients without assuming\nthat nonintegrality.",
+      "after": "contains no integer. Failure to exclude an integer at a finite length\nproves neither integrality nor failure at every longer length. The\nconverse gives no estimate for the gap $\\delta$; to use the forward\nimplication, we must prove~\\eqref{eq:escape} for the actual coefficients\nwithout assuming that nonintegrality.",
+      "reason": "Separate eventual detection under nonintegrality from what an unsuccessful finite test establishes. Keep the unknown gap and the unproved universal requirement explicit.",
+      "limit": "The warning is appropriate here because the detection argument depends on an unknown positive gap. It is unnecessary when an independent theorem gives a uniform stopping bound.",
+      "editorial_disposition": "accepted_as_scoped_application_of_existing_guidance",
+      "manuscript_disposition": "Corresponding passage compared with current manuscript and accepted.",
+      "reading_boundary": "Donor example retained with its source identity. Its application here is not a universal writing rule, proof or empirical result."
+    },
+    {
+      "id": "short-20261004-r11-257-generalized-lessons-02",
+      "return_id": "short-20261004-r11-257",
+      "document": "GENERALIZED_LESSONS.json",
+      "document_sha256": "9a09ca29865c3f02f97d69ce14ae814a5d2fa6c4f8847d06534b7d1fc6fe3be9",
+      "index": 1,
+      "rule_families": [
+        "E05"
+      ],
+      "proposal": "A theorem implication and a witness construction with related conclusions need distinct subjects in an evidence paragraph.",
+      "before": "The mixed implication has a formal proof; its construction of $V$ uses finite sets of squarefree divisors.",
+      "after": "The mixed implication has a formal proof. A separate formal construction of a separating support $V$ uses finite sets of squarefree divisors.",
+      "reason": "The pronoun could make a conditional theorem appear to provide the existential construction. The revised text also names the unbound strictness corollary rather than implying coverage by proximity.",
+      "limit": "Do not invent uncertainty for an exact existing binding. Wording alone neither creates nor removes formal evidence.",
+      "editorial_disposition": "accepted_as_scoped_application_of_existing_guidance",
+      "manuscript_disposition": "Corresponding passage compared with current manuscript and accepted.",
+      "reading_boundary": "Donor example retained with its source identity. Its application here is not a universal writing rule, proof or empirical result."
+    },
+    {
+      "id": "short-20261004-r11-251-generalized-lessons-01",
+      "return_id": "short-20261004-r11-251",
+      "document": "GENERALIZED_LESSONS.json",
+      "document_sha256": "9a837d940959cd3afc8153bb9c2534b24bdb7b2dcb4a34ac2ec73e0fc7d6e1ba",
+      "index": 0,
+      "rule_families": [
+        "E03"
+      ],
+      "proposal": "Expose the distinction between a fixed permissible support and the support of a chosen realization.",
+      "before": "modulo $M$.  This construction uses all late indices and imposes neither\ndensity-zero support nor eventual preservation of all moduli.",
+      "after": "modulo $M$.  This construction permits changes at every index after the\nprefix; it imposes neither density-zero support nor eventual preservation\nof all moduli.",
+      "reason": "A construction allowing every late binary position does not force a nonzero correction at every such position; the sparse construction likewise has a fixed containing set with target-dependent actual support.",
+      "limit": "When every allowed coordinate is genuinely forced nonzero, saying that every coordinate is used is accurate. No general prohibition on the word uses is proposed.",
+      "editorial_disposition": "accepted_as_scoped_application_of_existing_guidance",
+      "manuscript_disposition": "Corresponding passage compared with current manuscript and accepted.",
+      "reading_boundary": "Donor example retained with its source identity. Its application here is not a universal writing rule, proof or empirical result."
+    },
+    {
+      "id": "short-20261004-r11-249-generalized-lessons-02",
+      "return_id": "short-20261004-r11-249",
+      "document": "GENERALIZED_LESSONS.json",
+      "document_sha256": "e69382d21cba153cf1170eea6103239bc47bd128e3857c8e00aa22ffdbe16e43",
+      "index": 1,
+      "rule_families": [
+        "E07"
+      ],
+      "proposal": "A failed sufficient bound should not read as a lower bound on the object itself.",
+      "before": "$2^L\\le N+L-1$. The tail bound $(N+L+2)2^{-L}$ then exceeds $1$.\nThus this divisibility construction does not supply the small nonzero",
+      "after": "$2^L\\le N+L-1$. The tail bound $(N+L+2)2^{-L}$ then exceeds $1$.\nThis is a failure of the estimate, not a lower bound on the tail.\nThus this divisibility construction does not supply the small nonzero",
+      "reason": "Prevent a reader from mistaking the failure of an upper estimate for a lower estimate on the actual tail.",
+      "limit": "An actual lower-bound proof should be presented directly; this warning is not a substitute for checking the inequality direction.",
+      "editorial_disposition": "accepted_as_scoped_application_of_existing_guidance",
+      "manuscript_disposition": "Corresponding passage compared with current manuscript and accepted.",
+      "reading_boundary": "Donor example retained with its source identity. Its application here is not a universal writing rule, proof or empirical result."
+    },
+    {
+      "id": "short-20261004-r11-243-generalized-lessons-03",
+      "return_id": "short-20261004-r11-243",
+      "document": "GENERALIZED_LESSONS.json",
+      "document_sha256": "c12b1e259abed8f1d435555edde860ec2dbf8db0898da7b79e5fbfae62243a60",
+      "index": 2,
+      "rule_families": [
+        "E03"
+      ],
+      "proposal": "Explain the multiplicity issue before using a first-crossing weight bound.",
+      "before": "It follows that every crossing has $d_n>B$. If one step first\ncrosses $h\\ge1$ selected heights, their spacing gives",
+      "after": "It follows that every crossing has $d_n>B$. A single jump may first\ncross several selected heights, so we must bound their combined weight\nby that jump's excess. If one step first crosses $h\\ge1$ selected\nheights, their spacing gives",
+      "reason": "One jump can first cross several selected heights; its excess must bound their combined weight rather than be used afresh for each height.",
+      "limit": "The correct cost and spacing must come from the actual proof; neither a running-maximum increment nor a source analogy can replace the full jump.",
+      "editorial_disposition": "accepted_as_scoped_application_of_existing_guidance",
+      "manuscript_disposition": "Corresponding passage compared with current manuscript and accepted.",
+      "reading_boundary": "Donor example retained with its source identity. Its application here is not a universal writing rule, proof or empirical result."
     }
   ],
   "integrating_reviews": [
@@ -11719,6 +11863,22 @@
         "state/formal_math/type_b_return_batches/short_refinement_r10_20261001/review/arithmetic_b/DECISIONS.md"
       ],
       "claim_boundary": "No statement change or new proof status inferred from donor packets."
+    },
+    {
+      "id": "native-r11-nine-paper-returns",
+      "return_ids": [
+        "short-20261004-r11-systems",
+        "short-20261004-r11-1049",
+        "short-20261004-r11-1041",
+        "short-20261004-r11-269",
+        "short-20261004-r11-257",
+        "short-20261004-r11-251",
+        "short-20261004-r11-249",
+        "short-20261004-r11-243",
+        "short-20261004-r11-68"
+      ],
+      "scope": "Eight mathematics programmes and the systems paper; focused manuscript edits and eight selected local lesson applications.",
+      "claim_boundary": "No statement, proof status or novelty claim promoted. Historical advice remains revisable."
     }
   ]
 }

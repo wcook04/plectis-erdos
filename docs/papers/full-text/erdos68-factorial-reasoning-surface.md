@@ -8,7 +8,7 @@
 
 </div>
 
-We give the integer-coordinate classification and finite-gcd calculation for factorial-weighted cancellation, together with support and coefficient norm refinements. For $`S=\sum_{n\ge2}(n!-1)^{-1}`$, we derive lower bounds on common denominators and describe prime-power cancellation in reduced partial sums. Carry and factorial-digit criteria isolate the remaining nonintegrality questions. Recorded exact computations exclude $`q\mid299999!`$ and $`q<2^{39990}`$ when $`S=a/q`$; these computations are outside Lean and do not settle irrationality.
+We give the integer-coordinate classification and finite-gcd calculation for factorial-weighted cancellation, together with support and coefficient norm refinements. For $`S=\sum_{n\ge2}(n!-1)^{-1}`$, we derive lower bounds on common denominators and describe prime-power cancellation in reduced partial sums. Carry and factorial-digit criteria give equivalent formulations of irrationality. Recorded exact computations exclude $`q\mid299999!`$ and $`q<2^{39990}`$ when $`S=a/q`$; these computations are outside Lean and do not settle irrationality.
 
 <div id="long68:res:problem" class="problem">
 
@@ -20,7 +20,7 @@ Erdős posed this question in 1988, together with the expectation that the corre
 
 We first construct integer linear forms $`MS+k`$ in $`S`$. The coefficient $`M`$ is a factorial-weighted sum of the entries of a finite integer vector. Its possible values, when specified initial weighted sums vanish, form an explicitly computable ideal of $`\mathbb Z`$. The proof starts with adjacent factorial differences. Eliminating the proper divisors of each index gives an integral basis, in which the cancellation equations prescribe the lower coordinates. Restricting the support to indices at least two then leaves one linear Diophantine equation. The accompanying short paper gives the basis construction, the finite-gcd proof, and an example attaining the least positive value $`M=1380`$ when the sums indexed by $`2,3,4`$ vanish.
 
-We also minimise support sizes and coefficient norms, and construct primitive vectors supported on arithmetic progressions. These impose additional requirements on the coefficients. The carry, digit and reduced-denominator arguments address nonintegrality of the resulting linear form. Changing a vector while preserving $`M`$ changes the remainder by an integer. It may simplify the calculation, but it cannot change whether the remainder is integral. That condition requires a separate argument.
+For the depth-four calculation, we also minimise support sizes and coefficient norms among vectors supported on $`\{2,\ldots,8\}`$. A separate construction gives primitive vectors supported on arithmetic progressions. The carry, digit and reduced-denominator arguments address nonintegrality of the resulting linear form. Changing a vector while preserving $`M`$ changes the remainder by an integer. It may simplify the calculation, but it cannot change whether the remainder is integral. That condition requires a separate argument.
 
 Throughout, write
 ``` math
@@ -966,7 +966,7 @@ Thus escape can occur even when $`b_m=1`$, provided the digit is $`m-1`$. This h
 
 ## The series with denominators $`n!+t`$
 
-The digit argument also applies to the other shifts mentioned by Erdős. We restrict here to $`t\ge-1`$ so that every denominator from index two onwards is positive. Put $`S_t=\sum_{n\ge2}1/(n!+t)`$ and $`C_t=\sum_{n\ge2}1/\bigl(n!(n!+t)\bigr)`$, so that $`S_t=-tC_t+(e-2)`$.
+The digit argument also applies to the other shifts mentioned by Erdős. For an integer $`t\ge-1`$, put $`S_t=\sum_{n\ge2}1/(n!+t)`$ and $`C_t=\sum_{n\ge2}1/\bigl(n!(n!+t)\bigr)`$, so that $`S_t=-tC_t+(e-2)`$.
 
 The restriction $`t\ge-1`$ keeps every denominator positive for $`n\ge2`$; $`t=-2`$ is excluded because its first denominator is zero. All series in this identity converge absolutely. The familiar case $`t=0`$ is $`e-2`$; this example will make the residue condition explicit.
 

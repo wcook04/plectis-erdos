@@ -20,6 +20,18 @@ def test_without_fragment_preserves_query() -> None:
     assert MODULE.without_fragment("https://example.test/a?q=1#L42") == "https://example.test/a?q=1"
 
 
+def test_remote_destination_is_resolved_without_browser_fragment_prefix(monkeypatch) -> None:
+    class Reader:
+        def __init__(self, _path):
+            self.named_destinations = {"record257:weighted-proof": object()}
+    monkeypatch.setattr(MODULE, "_load_pdf_reader", lambda: Reader)
+    rows = [
+        MODULE.LinkOccurrence("short.pdf", 1, "cross_pdf", "long.pdf", "record257:weighted-proof"),
+        MODULE.LinkOccurrence("short.pdf", 2, "cross_pdf", "long.pdf", "nameddest=record257:weighted-proof"),
+    ]
+    assert MODULE.missing_named_destinations(rows, [Path("long.pdf")]) == [rows[1]]
+
+
 def test_offline_audit_rejects_local_and_missing_cross_pdf(monkeypatch) -> None:
     monkeypatch.setattr(MODULE, "contract_pdfs", lambda: [MODULE.ROOT / "one.pdf"])
     monkeypatch.setattr(

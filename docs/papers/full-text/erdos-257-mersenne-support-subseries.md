@@ -8,7 +8,7 @@
 
 </div>
 
-We prove a hereditary irrationality criterion for Lambert subseries supported on a union $`E\cup V`$. The set $`E`$ satisfies a finite-prime weighted summability condition, while $`V`$ admits a summable positive divisor cover. The two support classes are incomparable, both extend beyond reciprocal-summable supports, and the union criterion reaches supports in neither class. The proof turns on a second average over dyadic lengths: it restores the reciprocal factor lost by incomplete residue periods and, because both estimates use one finite distribution, yields a single index at which both displacements are small. The arbitrary infinite-support problem in base two remains open.
+We prove that $`\sum_{a\in A}(b^a-1)^{-1}`$ is irrational for every integer $`b\ge2`$ and every infinite $`A\subseteq E\cup V`$ under two hypotheses. The set $`E`$ satisfies a finite-prime weighted summability condition at base two, while $`V`$ admits a summable positive divisor cover. The two support classes are incomparable, both extend beyond reciprocal-summable supports, and the union criterion reaches supports in neither class. The proof turns on a second average over dyadic lengths: it restores the reciprocal factor lost by incomplete residue periods and, because both estimates use one finite distribution, yields a single index at which both displacements are small. The arbitrary infinite-support problem in base two remains open.
 
 <a id="sec:problem"></a>
 
@@ -229,7 +229,7 @@ A divisor majorant becomes a sum of geometric tails, one for each divisor. Indee
 \sum_{\substack{r\ge1\\d\mid N+r}}B^{-r}
  =\frac{B^{N\bmod d}}{B^d-1}.
 ```
-Raising a base-two tail to the power $`\alpha`$ replaces its geometric factor by $`B=2^\alpha`$. We therefore need to estimate this expression for $`1<B\le2`$, including $`B`$ close to $`1`$. The weighted proof has already chosen its modulus and dyadic lengths; to use the same observations, the estimate must keep both choices explicit.
+Raising a base-two tail to the power $`\alpha`$ replaces its geometric factor by $`B=2^\alpha`$. We therefore need to estimate this expression for $`1<B\le2`$, including $`B`$ close to $`1`$. In the mixed theorem, the weighted construction will choose the modulus and dyadic scales after the finite covering sets have been fixed. The estimate must therefore retain these parameters.
 
 For $`1<B\le2`$, positive integers $`L,d,M`$, and an integer $`R\ge0`$, put
 ``` math
@@ -308,7 +308,7 @@ The same proof permits any positive weights $`\eta_j`$ with $`\sum_j\eta_j=1`$: 
 
 # A common index for the two criteria
 
-Irrationality of two summands alone does not imply irrationality of their sum, and separate sequences on which the two displacements are small would not suffice either. The preceding estimates provide the stronger input we need: after all finite divisibility requirements are absorbed into one modulus, both nonnegative errors can be averaged on the same finite distribution. Only then do we choose an index.
+The cover estimate retains its dependence on the modulus so that it can use the larger modulus chosen by the weighted construction. This lets us add the two nonnegative errors on one finite distribution and only then choose an index. We work at base two and obtain the all-base conclusion by the displacement comparison proved above.
 
 <div class="samepage">
 
@@ -936,7 +936,7 @@ The verification concordance lists the formal proofs by statement. *Lean* links 
 
 For Erdős’s reciprocal-summable extension and fractional-part argument, see pp. 222 and 226 of \[erdos1968\]. The periodic theorem \[lucatachiya2014periodic\] is also stated in Luca and Tachiya’s account \[lucatachiya2017, Theorem A and Example 2, pp. 139–140\], and Hornich’s strict-tail theorem is proved in Nitecki’s exposition \[nitecki2013, Theorem 4(1)\]. These expositions are the sources used here for those two results; the original articles were not independently retrieved. The *Formal Conjectures* file \[formalconjectures257\] is statement-level prior art, not a proof dependency.
 
-The evidence record identifies the exact statements, source revisions and recorded comparisons. The mixed implication has a formal proof; its construction of $`V`$ uses finite sets of squarefree divisors. The $`A_\star`$ calculation, fresh-prime construction, signed finite-denominator extension and Theorem <a href="#res:one-over-twenty-one-frontier" data-reference-type="ref" data-reference="res:one-over-twenty-one-frontier">10</a> have ordinary arguments here, without independent human review. The companion paper locates the separate comparisons for its three logarithmic-sampling results. No historical priority is asserted for the support comparison.
+The evidence record identifies the exact statements, source revisions and recorded comparisons. The mixed implication has a formal proof. A separate formal construction of a separating support $`V`$ uses finite sets of squarefree divisors. The $`A_\star`$ calculation, printed fresh-prime construction, Corollary <a href="#res:strict-mixed-supports" data-reference-type="ref" data-reference="res:strict-mixed-supports">6</a>, signed finite-denominator extension and Theorem <a href="#res:one-over-twenty-one-frontier" data-reference-type="ref" data-reference="res:one-over-twenty-one-frontier">10</a> have ordinary arguments here, without independent human review. The strictness corollary has no formal binding in the record. The companion paper locates the separate comparisons for its three logarithmic-sampling results. No historical priority is asserted for the support comparison.
 
 <a id="reproducing-the-weighted-theorem."></a>
 

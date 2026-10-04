@@ -190,7 +190,7 @@ Thus $`m_a`$ need not be smaller than $`b_a`$.
 
 </div>
 
-Although $`b_a`$ has only four possible values, the recurrence also depends on $`m_a`$, which counts contributions from every smooth integer in the block. Thus the finite set of bases does not give a finite family of affine maps for $`X_a`$.
+In the distinct-value proof, the ordered jumps in a block determine its numerator $`\mu_\tau`$. For the repeated sum, that word does not record how many smooth integers share each running LCM. We therefore retain the full block contribution $`m_a`$, not just the jumps.
 
 <div id="res:actual-orbit" class="proposition">
 <p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos269/PaperR7SeriesIdentification.lean#L168">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/846d57d3f9926696332d782eb232aaf3cf803a99/evidence/erdos-269-three-prime-running-lcm.md#res-actual-orbit-comparator">Comparator</a></p>
@@ -217,7 +217,7 @@ For the final assertion, suppose that every sufficiently late distance is strict
 
 </div>
 
-We can also write the repeated series as a Cantor series: $`S/2=\sum_{a\ge0}m_a/(b_0\cdots b_a)`$. The criteria in \[erdosstraus1974, Theorem 2.1\] and \[hancltijdeman2004, Theorem 3.1\] require a small-numerator hypothesis $`m_a/(b_{a-1}b_a)\to0`$. Here the $`b_a`$ are bounded and $`m_a`$ grows quadratically. The [companion’s tail estimates](../../../paper/269/erdos269-running-lcm-reasoning-surface.pdf#nameddest=r3-repeated-bounds) prove this lower bound as well as sharper upper bounds. In particular, $`X_a>m_a/30`$ is unbounded, so the finite-value argument in Section <a href="#sec:distinct-235" data-reference-type="ref" data-reference="sec:distinct-235">[sec:distinct-235]</a> no longer applies to these normalised tails.
+We can also write the repeated series as a Cantor series: $`S/2=\sum_{a\ge0}m_a/(b_0\cdots b_a)`$. The criteria in \[erdosstraus1974, Theorem 2.1\] and \[hancltijdeman2004, Theorem 3.1\] require a small-numerator hypothesis $`m_a/(b_{a-1}b_a)\to0`$. Here the $`b_a`$ are bounded and $`m_a`$ grows quadratically. The [companion’s tail estimates](../../../paper/269/erdos269-running-lcm-reasoning-surface.pdf#nameddest=r3-repeated-bounds) prove this lower bound as well as sharper upper bounds. Thus these criteria do not apply, and $`X_a>m_a/30`$ is unbounded. Rationality still places the tails in a fixed lattice, but no longer in a finite set as in Section <a href="#sec:distinct-235" data-reference-type="ref" data-reference="sec:distinct-235">[sec:distinct-235]</a>. We shall use their quadratic bound to exclude possible integer tails instead.
 
 <div id="res:denominator-reduction" class="theorem">
 <p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos269/PaperR7RationalBridge.lean#L80">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/846d57d3f9926696332d782eb232aaf3cf803a99/evidence/erdos-269-three-prime-running-lcm.md#res-denominator-reduction-comparator">Comparator</a></p>
@@ -316,7 +316,7 @@ For $`\ell=1,h=6`$, direct iteration gives $`W_{1,6}=648000`$ and $`F_{1,6}=5244
 ``` math
 \frac{524431}{648000}<X_1\le\frac{530191}{648000}<1.
 ```
-It contains no integer. Equivalently, $`\operatorname{lpr}_{W_{1,6}}(-F_{1,6})=123569>5760`$ excludes an integral $`X_1`$. A rational denominator might clear only later, so a criterion for irrationality must allow every late start and every denominator part coprime to $`30`$.
+It contains no integer. Equivalently, $`\operatorname{lpr}_{W_{1,6}}(-F_{1,6})=123569>5760`$ excludes an integral $`X_1`$. A rational denominator might clear only later. The criterion must therefore test every denominator part coprime to $`30`$ beyond any prescribed clearing index, rather than just at one early start.
 
 <div id="r4-repeated-criterion">
 
@@ -354,7 +354,7 @@ The positive constant $`\delta`$ multiplies an exponentially growing $`W_{\ell,h
 
 </div>
 
-As $`h`$ grows, the interval above narrows towards the fixed value $`BX_\ell`$. If that value is nonintegral, a sufficiently narrow interval contains no integer. The converse formalises this observation, but gives no estimate for the gap $`\delta`$. To use the forward implication, we must prove <a href="#eq:escape" data-reference-type="eqref" data-reference="eq:escape">[eq:escape]</a> for the actual coefficients without assuming that nonintegrality.
+As $`h`$ grows, the interval above narrows towards the fixed value $`BX_\ell`$. If that value is nonintegral, a sufficiently narrow interval contains no integer. Failure to exclude an integer at a finite length proves neither integrality nor failure at every longer length. The converse gives no estimate for the gap $`\delta`$; to use the forward implication, we must prove <a href="#eq:escape" data-reference-type="eqref" data-reference="eq:escape">[eq:escape]</a> for the actual coefficients without assuming that nonintegrality.
 
 The upper-bound property of $`K`$ is essential: choosing the zero function would make every residue inequality automatic. The [companion’s residue analysis](../../../paper/269/erdos269-running-lcm-reasoning-surface.pdf#nameddest=r3-residue) treats smaller bounds and identifies when more general bounds give the same criterion. Finite searches cover only finitely many multipliers and starts.
 

@@ -1124,7 +1124,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="long269-res-jump-constrained-bound"></a>
 
-## Proposition 9.6 (a smaller quadratic bound), page 37
+## Proposition 9.6 (a smaller quadratic bound), page 38
 
 > *For every $`a\ge0`$,
 > ``` math

@@ -1233,7 +1233,7 @@ Finally, $`(w;q)_j=(w;q)_\infty/(wq^j;q)_\infty`$ cancels two of the five factor
 ```
 Every step holds coefficientwise, and absolutely for $`|w|`$ small.
 
-A $`q`$-multinomial coefficient has nonnegative integral coefficients, degree $`\sum_{i<j}n_in_j`$, and value $`1`$ at $`q=1`$ after division by the corresponding multinomial. Summing over compositions gives coefficient sum $`r^k`$ for $`R_k^{(r)}`$ and hence $`6^k`$ for the product. The degree is maximised by balanced parts, which gives $`\lfloor k^2/4\rfloor`$ for $`r=2`$ and $`\lfloor k^2/3\rfloor`$ for $`r=3`$; no leading cancellation occurs because all coefficients are nonnegative.
+A $`q`$-multinomial coefficient has nonnegative integral coefficients and degree $`\sum_{i<j}n_in_j`$. At $`q=1`$ it equals the corresponding ordinary multinomial coefficient. Summing over compositions gives coefficient sum $`r^k`$ for $`R_k^{(r)}`$ and hence $`6^k`$ for the product. The degree is maximised by balanced parts, which gives $`\lfloor k^2/4\rfloor`$ for $`r=2`$ and $`\lfloor k^2/3\rfloor`$ for $`r=3`$; no leading cancellation occurs because all coefficients are nonnegative.
 
 For the bounds, write $`b_k^{(r)}=[z^k](z;q)_\infty^{-r}`$, so that $`R_k^{(r)}=(q;q)_kb_k^{(r)}`$ and $`\gamma_k=(q;q)_kb_k^{(2)}b_k^{(3)}`$. Euler’s expansion exhibits $`b_k^{(r)}`$ as an $`r`$-fold convolution of the sequence $`1/(q;q)_n`$, whose terms lie in $`[1,P^{-1}]`$; the number of compositions of $`k`$ into $`r`$ nonnegative parts is $`\binom{k+r-1}{r-1}`$, so
 ``` math
@@ -1307,7 +1307,7 @@ For three factors, the terms with one $`d_i`$ contribute $`-3E^2\sum_{i=0}^k(k-i
 ``` math
 b_k^{(3)}=E^3\left(\binom{k+2}{2}-3L(k+1)\right)+O_q(1).
 ```
-Dividing the correction $`-3L(k+1)`$ by the leading term $`\binom{k+2}{2}`$ gives the relative correction $`-6L/(k+2)`$. The two-fold convolution contributes $`-2L/(k+1)`$ in the same way. Since $`(q;q)_k=P(1+O_q(q^k))`$ and $`c_k=(k+1)^2(k+2)/2`$, multiplication yields
+Dividing the correction $`-3L(k+1)`$ by the leading term $`\binom{k+2}{2}`$ gives the relative correction $`-6L/(k+2)`$. The two-fold convolution contributes $`-2L/(k+1)`$ in the same way. Since $`(q;q)_k=P(1+O_q(q^k))`$, the leading constants in $`a_k=P^4(q;q)_k b_k^{(2)}b_k^{(3)}`$ multiply to $`P^5E^5=1`$. With $`c_k=(k+1)^2(k+2)/2`$, the two relative corrections therefore give
 ``` math
 \begin{align*}
  \frac{a_k}{c_k}
@@ -2212,7 +2212,7 @@ f(x)=f(y),\qquad 0<|g(x)-g(y)|<\delta.
 
 </div>
 
-For an application, let $`M`$ integral rows have real remainders $`e_j`$, and suppose their subset sums have $`Q`$ possible residues modulo a positive integer $`D`$. Put $`T=\sum_j|e_j|`$. The least and greatest subset remainders are respectively
+For an application, let $`M`$ integral coefficient rows $`(A_j,B_j)`$ have real remainders $`e_j`$ at the same target. Let $`D`$ be a positive integer, and suppose that the coefficient-pair subset sums $`\sum_{j\in I}(A_j,B_j)`$ take $`Q`$ values in $`(\mathbb Z/D\mathbb Z)^2`$. Put $`T=\sum_j|e_j|`$. The least and greatest subset remainders are respectively
 ``` math
 \sum_{e_j<0}e_j\quad\text{and}\quad\sum_{e_j>0}e_j,
 ```

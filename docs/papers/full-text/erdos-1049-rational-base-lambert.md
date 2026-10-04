@@ -346,7 +346,7 @@ For three factors, the terms with one $`d_i`$ contribute $`-3E^2\sum_{i=0}^k(k-i
 ``` math
 b_k^{(3)}=E^3\left(\binom{k+2}{2}-3L(k+1)\right)+O_q(1).
 ```
-Dividing the correction $`-3L(k+1)`$ by the leading term $`\binom{k+2}{2}`$ gives the relative correction $`-6L/(k+2)`$. The two-fold convolution contributes $`-2L/(k+1)`$ in the same way. Since $`(q;q)_k=P(1+O_q(q^k))`$ and $`c_k=(k+1)^2(k+2)/2`$, multiplication yields
+Dividing the correction $`-3L(k+1)`$ by the leading term $`\binom{k+2}{2}`$ gives the relative correction $`-6L/(k+2)`$. The two-fold convolution contributes $`-2L/(k+1)`$ in the same way. Since $`(q;q)_k=P(1+O_q(q^k))`$, the leading constants in $`a_k=P^4(q;q)_k b_k^{(2)}b_k^{(3)}`$ multiply to $`P^5E^5=1`$. With $`c_k=(k+1)^2(k+2)/2`$, the two relative corrections therefore give
 ``` math
 \begin{align*}
  \frac{a_k}{c_k}
@@ -708,7 +708,7 @@ A different question concerns the polynomial coefficients of the approximants, r
 
 At $`3/2`$, a polynomial $`Q`$ of degree at most $`W`$ has integral homogenised value $`H_W(Q)=2^WQ(3/2)`$. Congruences at powers of $`2`$ and $`3`$ give finite counting criteria for combinations of such values. The companion paper treats [integer rescaling](../../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.pdf#nameddest=long1049-arithmetic) and [endpoint congruences and signed sums](../../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.pdf#nameddest=long1049-endpoints). It also treats the rank-one case and proves the quantitative finite-fibre estimate used below. Equal residues give a useful irrationality form only when the divided remainder is also nonzero and small. Smith normal form describes the image of the evaluated lattice \[stanley2016, Theorems 2.3–2.4\], but does not estimate these real remainders.
 
-For example, suppose that $`M`$ integral rows $`(A_j,B_j)`$ have remainders $`e_j=A_jF(3/2)-B_j`$, and that the subset sums take $`Q`$ residue values modulo a positive integer $`D`$. Put $`T=\sum_j|e_j|`$ and suppose that at most $`k`$ subsets give any fixed remainder within a residue class. The least and greatest subset remainders are
+For example, suppose that $`M`$ integral rows $`(A_j,B_j)`$ have remainders $`e_j=A_jF(3/2)-B_j`$. Let $`D`$ be a positive integer, and suppose that the coefficient-pair subset sums $`\sum_{j\in I}(A_j,B_j)`$ take $`Q`$ values in $`(\mathbb Z/D\mathbb Z)^2`$. Put $`T=\sum_j|e_j|`$ and suppose that at most $`k`$ subsets give any fixed remainder within a residue class. The least and greatest subset remainders are
 ``` math
 \sum_{e_j<0}e_j\quad\text{and}\quad\sum_{e_j>0}e_j;
 ```

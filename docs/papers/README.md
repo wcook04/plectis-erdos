@@ -261,7 +261,7 @@ The [problem summaries](../RELATED_PROBLEMS.md) introduce the mathematics. `docs
 
 **Integer Linear Forms for a Factorial Reciprocal Series**
 
-[full text](full-text/erdos-68-factorial-denominator-irrationality.md) · [PDF](../../paper/68/erdos-68-factorial-denominator-irrationality.pdf) · [LaTeX source](../../paper/68/erdos-68-factorial-denominator-irrationality.tex) · 9 sections · `erdos-68-factorial-denominator-irrationality` · native to this repository
+[full text](full-text/erdos-68-factorial-denominator-irrationality.md) · [PDF](../../paper/68/erdos-68-factorial-denominator-irrationality.pdf) · [LaTeX source](../../paper/68/erdos-68-factorial-denominator-irrationality.tex) · 10 sections · `erdos-68-factorial-denominator-irrationality` · native to this repository
 
 Archived edition: [aiXiv:2609.03280v1](https://aixiv.online/abs/2609.03280v1) ([PDF](https://aixiv.online/pdf/2609.03280v1), [source archive](https://aixiv.online/src/2609.03280v1)); published 2026-09-27 from [source `551bae6dc6e7`](https://github.com/wcook04/plectis-erdos/blob/551bae6dc6e732cf85172d66323c8d2bc77ba962/paper/68/erdos-68-factorial-denominator-irrationality.tex).
 
@@ -429,9 +429,9 @@ Start here (selected for this guide): [The region b^{\mu}<a and the base 31/4](f
 
 **A Repository-Based System for Research and Publication**
 
-[full text](full-text/claim-faithful-publication-systems-paper.md) · [PDF](../../paper/systems/claim-faithful-publication-systems-paper.pdf) · [LaTeX source](../../paper/systems/claim-faithful-publication-systems-paper.tex) · 23 sections · `claim-faithful-publication-systems` · native to this repository
+[full text](full-text/claim-faithful-publication-systems-paper.md) · [PDF](../../paper/systems/claim-faithful-publication-systems-paper.pdf) · [LaTeX source](../../paper/systems/claim-faithful-publication-systems-paper.tex) · 24 sections · `claim-faithful-publication-systems` · native to this repository
 
-Start here (selected for this guide): [Introduction](full-text/claim-faithful-publication-systems-paper.md#sec:intro), [Worked case: publishing a conditional theorem](full-text/claim-faithful-publication-systems-paper.md#sec:example), [Publication and revision](full-text/claim-faithful-publication-systems-paper.md#sec:paper), [Proof and publication checks](full-text/claim-faithful-publication-systems-paper.md#sec:checks), [Limits](full-text/claim-faithful-publication-systems-paper.md#sec:limits).
+Start here (selected for this guide): [Introduction](full-text/claim-faithful-publication-systems-paper.md#sec:intro), [Worked case: a theorem and its explanation](full-text/claim-faithful-publication-systems-paper.md#sec:example), [Publication and revision](full-text/claim-faithful-publication-systems-paper.md#sec:paper), [Proof and publication checks](full-text/claim-faithful-publication-systems-paper.md#sec:checks), [Limits](full-text/claim-faithful-publication-systems-paper.md#sec:limits).
 
 ### What may a stranger conclude from public evidence when the author chose both what to publish and what counts as a pass?
 

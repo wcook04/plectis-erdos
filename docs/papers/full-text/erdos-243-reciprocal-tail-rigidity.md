@@ -154,7 +154,7 @@ The precision matters at the subtraction step. The integer sequence $`F_n+(-1)^n
 
 ## Reduction and the constant term
 
-<span id="sec:reduction" label="sec:reduction"></span> We now use the denominator recurrence. Both updates preserve common divisors, so $`G_n=\gcd(C_n,D_n)`$ forms a divisibility chain: $`G_n\mid G_{n+1}`$. For every sufficiently late $`n`$, it divides four consecutive values of $`C_n`$, and hence their third difference $`6A`$. Thus $`G_n`$ stabilises at a positive integer $`g`$.
+<span id="sec:reduction" label="sec:reduction"></span> We now use the denominator recurrence. Both updates preserve common divisors, so $`G_n=\gcd(C_n,D_n)`$ forms a divisibility chain: $`G_n\mid G_{n+1}`$. For every sufficiently late $`n`$, it divides four consecutive values of $`C_n`$, and hence their third difference $`6A`$. Unlike the vanishing fourth difference used above, this positive third difference bounds the gcd. Thus $`G_n`$ stabilises at a positive integer $`g`$.
 
 We can therefore reduce all sufficiently late fractions by the same factor: put $`u_n=C_n/g`$ and $`v_n=D_n/g`$. The recurrences persist after this division. The following observation describes the resulting coprimality conditions.
 
@@ -250,7 +250,7 @@ The first equality puts $`r=\bar\alpha`$ in $`\mathbb F_\ell`$ and gives $`f(r)=
 
 ## Traces in the cubic field
 
-The square relation gives a pair of reciprocal elements:
+To constrain $`\eta`$, we use the square relation to express $`\alpha`$ through a pair of reciprocal elements in the same cubic field:
 ``` math
 (\alpha+\beta)(\alpha-\beta)=1.
 ```
@@ -654,7 +654,7 @@ U_n=\tau-B+i=x+kP+i\qquad\text{for some }0\le i<B.
 ```
 The choice of $`x`$ gives $`m_i\mid U_n`$. Since $`m_i\mid L_n`$ as well, we obtain $`m_i\mid d_n=(a_n-1)U_n-L_n`$, contradicting $`0<d_n\le B<m_i`$.
 
-It follows that every crossing has $`d_n>B`$. If one step first crosses $`h\ge1`$ selected heights, their spacing gives $`(h-1)P<d_n`$. Write $`r=d_n-B\ge1`$. Since $`P\ge B+1`$, $`d_n=B+r\le Pr`$, and hence $`h\le r`$. Each of those heights exceeds $`U_n`$, so monotonicity gives
+It follows that every crossing has $`d_n>B`$. A single jump may first cross several selected heights, so we must bound their combined weight by that jump’s excess. If one step first crosses $`h\ge1`$ selected heights, their spacing gives $`(h-1)P<d_n`$. Write $`r=d_n-B\ge1`$. Since $`P\ge B+1`$, $`d_n=B+r\le Pr`$, and hence $`h\le r`$. Each of those heights exceeds $`U_n`$, so monotonicity gives
 ``` math
 \sum_{\substack{\tau\text{ first crossed}\\\text{at step }n}}f(\tau)
  \le(d_n-B)f(U_n).

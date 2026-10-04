@@ -1,6 +1,6 @@
 {
   "schema": "exposition-method-version/1",
-  "version": "2026-10-01.6",
+  "version": "2026-10-04.1",
   "required_roles": [
     "guidance",
     "skill",
@@ -34,7 +34,7 @@
     },
     {
       "path": "docs/papers/exposition-method/lessons.json",
-      "sha256": "d9498f44bd0a4dcfe09e05a75679c6543cbe85a86f0159ff8be9b0e8e1802fd4",
+      "sha256": "5d5e176747792c36d58438d902d3eaf9761fc9046514f50dca4078879123d186",
       "role": "lessons"
     },
     {
@@ -44,7 +44,7 @@
     },
     {
       "path": "docs/papers/exposition-method/returns.json",
-      "sha256": "b81ddda65eba34dc57acd4975e80c3145c77002f7258ee0c1be2dc720821bf62",
+      "sha256": "89738b93d8095ea2794ab0ef521de6af5e87c03d2d00827f071bf1fde41855d3",
       "role": "returns"
     },
     {
@@ -59,7 +59,7 @@
     },
     {
       "path": "paper/exposition/writing-mathematics-from-reviewed-revisions.pdf",
-      "sha256": "7fa1c21bfb297c825a8747d4745ba3805dc362ae642d4bb84106e3c94e9941ea",
+      "sha256": "7551851f37e8d9c52d8b774b5e59375c2a270daee4293f04f6357a6cc5d4164e",
       "role": "companion_pdf"
     },
     {
@@ -89,7 +89,7 @@
     },
     {
       "path": "paper/paper-house-style.sty",
-      "sha256": "1b4630ead32bfb407a2f29f5953fbb8d4140a659f6500799282a4805ba54a883",
+      "sha256": "554ed85b5315bd936a4d09d58f8727547c5bb1b299f9684eb6ef720b329759a2",
       "role": "shared_input"
     },
     {
@@ -109,7 +109,7 @@
     },
     {
       "path": "paper/exposition/writing-a-good-mathematical-paper.pdf",
-      "sha256": "bff08ec5e088d7725c639619839100d9cae5545442b9ad73a624324cfd82ea73",
+      "sha256": "44d844baf76ce9ac6d0a689fe6d9feb62f54f7602fab2ced5f51f9fdd55296c3",
       "role": "compact_guide_pdf"
     },
     {

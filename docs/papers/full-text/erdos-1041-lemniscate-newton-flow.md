@@ -288,16 +288,16 @@ Lean checks this scaling implication under the named input `LowCriticalThirteenT
 
 ## The analytic argument
 
-Suppose that no pair can be connected with length less than $`2`$ in $`\Omega_f`$. At a regular level $`t\in(\mu,1)`$ we take the component $`C_t`$ containing a chosen first merger and write $`a=\operatorname{Area}(C_t)/\pi\le1`$, $`x=\log(t/\mu)`$. Uniformising $`C_t`$ by the disc, the Bergman segment estimate bounds the length between roots at hyperbolic distance $`d`$ by $`\sqrt{2a\log\cosh(d/2)}`$. The assumption on connecting curves therefore forces pairwise distance at least $`D`$, where $`\cosh(D/2)=e^{2/a}`$.
+Suppose that no pair can be connected with length less than $`2`$ in $`\Omega_f`$. At a regular level $`t\in(\mu,1)`$ we take the component $`C_t`$ containing a chosen first merger. Let $`k\ge2`$ be its number of roots, and put $`a=\operatorname{Area}(C_t)/\pi\le1`$ and $`x=\log(t/\mu)`$. In the disc uniformisation, hyperbolic distance is normalised by $`d(0,s)=2\operatorname{artanh}s`$ for $`0\le s<1`$. The Bergman segment estimate bounds the length between roots at hyperbolic distance $`d`$ by $`\sqrt{2a\log\cosh(d/2)}`$. The assumption on connecting curves therefore forces pairwise distance at least $`D`$, where $`\cosh(D/2)=e^{2/a}`$.
 
-Choose the centre of this uniformisation on a connected set through the first pair in $`K_\mu(f)`$, outside every intrinsic open unit ball centred at a root. Such a point exists: those balls are pairwise disjoint under that assumption and cannot cover a connected set containing two roots. If $`d_j`$ are the distances of the roots from this centre, the one-root Bergman estimate and the finite Blaschke product for $`f/t`$ give
+Intrinsic distance in $`C_t`$ means the infimum of Euclidean lengths of curves in $`C_t`$. Choose the centre $`h`$ of the uniformisation on a connected set through the first pair in $`K_\mu(f)`$, outside every intrinsic open unit ball centred at a root. Such a point exists: those balls are pairwise disjoint under that assumption and cannot cover a connected set containing two roots. If $`d_j`$ are the hyperbolic distances of the roots from this centre, we obtain
 ``` math
 \lambda(d_j)\le\tfrac12\delta(a),\qquad
  \sum_j\lambda(d_j)\ge x,\qquad
  \lambda(d)=-\log\tanh(d/2),\quad
  \delta(a)=-\log(1-e^{-1/a}).
 ```
-The Blaschke product requires a total contribution of at least $`x`$, while each root contributes at most $`\delta(a)/2`$. This already gives $`k\ge2x/\delta(a)`$. The pairwise separation gives additional information, which the following packing estimate uses to improve this lower bound. The passage through a first merger, including simultaneous mergers, is part of the analytic input still to be formalised.
+The one-root Bergman estimate gives the first bound because every root has intrinsic distance at least $`1`$ from $`h`$. For the second, $`h`$ is not a root and lies in $`K_\mu(f)`$, so evaluating the finite Blaschke product for $`f/t`$ at the centre gives $`\sum_j\lambda(d_j)=\log(t/|f(h)|)\ge x`$. Thus the total contribution is at least $`x`$, while each root contributes at most $`\delta(a)/2`$, giving $`k\ge2x/\delta(a)`$. The pairwise separation gives additional information, which the following packing estimate uses to improve this lower bound. The passage through a first merger, including simultaneous mergers, is part of the analytic input still to be formalised.
 
 <div id="circle-packing-inputs">
 
@@ -309,7 +309,7 @@ w(d,r)=\arccos\!\left(\operatorname{clamp}_{[-1,1]}
  \frac{\cosh d\cosh r-\cosh(D/2)}{\sinh d\sinh r}\right),
  \qquad \sum_jw(d_j,r)\le\pi.
 ```
-This circle-slice inequality is formalised separately. If nonnegative weights $`\sigma_i`$ at radii $`r_i`$ give $`\lambda(d)\le U+\sum_i\sigma_iw(d,r_i)`$ for every admissible $`d`$, where $`U>0`$, summing at the $`k`$ roots gives
+This circle-slice inequality is formalised separately. If nonnegative weights $`\sigma_i`$ at radii $`r_i>0`$ give $`\lambda(d)\le U+\sum_i\sigma_iw(d,r_i)`$ for every $`d>0`$ satisfying $`\lambda(d)\le\delta(a)/2`$, where $`U>0`$, summing at the $`k`$ roots gives
 ``` math
 \begin{equation}
 \label{eq:short-packing}
@@ -318,7 +318,7 @@ This circle-slice inequality is formalised separately. If nonnegative weights $`
 ```
 The circle must be fixed before taking these intersections: angular projections of disjoint balls at different distances can overlap.
 
-To obtain area growth, lift one common value radius from all $`k`$ roots to $`\partial C_t`$, and join successive endpoints by boundary arcs. Splitting the lift integral at level $`\mu`$ gives mean total length at most $`\sqrt{ka(x+2)/2}`$. The sum of the $`k`$ adjacent-root connections counts each lift twice and the boundary once, so $`2k\le\sqrt{2ka(x+2)}+\mathcal H^1(\partial C_t)`$. Combining this with $`\mathcal H^1(\partial C_t)^2\le2\pi k t\,(d/dt)\operatorname{Area}(C_t)`$ yields the ordinary differential inequality
+To obtain area growth, lift one common value radius from all $`k`$ roots to $`\partial C_t`$, and join successive endpoints by boundary arcs. These arcs remain in $`\Omega_f`$ because $`t<1`$. Splitting the lift integral at level $`\mu`$ gives mean total length at most $`\sqrt{ka(x+2)/2}`$. The sum of the $`k`$ adjacent-root connections counts each lift twice and the boundary once, so $`2k\le\sqrt{2ka(x+2)}+\mathcal H^1(\partial C_t)`$. Combining this with $`\mathcal H^1(\partial C_t)^2\le2\pi k t\,(d/dt)\operatorname{Area}(C_t)`$ yields the ordinary differential inequality
 ``` math
 \begin{equation}
 \label{eq:short-area-growth}

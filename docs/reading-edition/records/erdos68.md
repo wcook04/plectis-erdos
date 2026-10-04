@@ -25,7 +25,7 @@ A complete registered-evidence match locates the same full declaration set in th
 
 State: **unresolved**.
 
-Short statement: [paper/68/erdos-68-factorial-denominator-irrationality.tex](../../../paper/68/erdos-68-factorial-denominator-irrationality.tex) lines 173-191.
+Short statement: [paper/68/erdos-68-factorial-denominator-irrationality.tex](../../../paper/68/erdos-68-factorial-denominator-irrationality.tex) lines 176-194.
 
 Ledger evidence: Lean `exact`; Comparator `compared`. These statuses are copied from the evidence ledger; this build reruns neither checker.
 
@@ -37,7 +37,7 @@ No candidate was found by the bounded label/declaration rules. Read the long rec
 
 State: **unresolved**.
 
-Short statement: [paper/68/erdos-68-factorial-denominator-irrationality.tex](../../../paper/68/erdos-68-factorial-denominator-irrationality.tex) lines 328-335.
+Short statement: [paper/68/erdos-68-factorial-denominator-irrationality.tex](../../../paper/68/erdos-68-factorial-denominator-irrationality.tex) lines 320-327.
 
 Ledger evidence: Lean `exact`; Comparator `compared`. These statuses are copied from the evidence ledger; this build reruns neither checker.
 
@@ -49,24 +49,24 @@ No candidate was found by the bounded label/declaration rules. Read the long rec
 
 These registered long assertions are not used by an accepted short-paper link. They may be supporting lemmas, broader results, route-local obstructions, or unresolved matches. They are retained and are not deletion candidates.
 
-- `long68:res:prime-pole`: [paper/reasoning-parts/erdos68/core.tex](../../../paper/reasoning-parts/erdos68/core.tex) lines 840-849.
-- `long68:res:wilson-cofinality`: [paper/reasoning-parts/erdos68/core.tex](../../../paper/reasoning-parts/erdos68/core.tex) lines 939-942.
-- `long68:res:product-lcm`: [paper/reasoning-parts/erdos68/core.tex](../../../paper/reasoning-parts/erdos68/core.tex) lines 973-979.
-- `long68:res:gap-gcd`: [paper/reasoning-parts/erdos68/core.tex](../../../paper/reasoning-parts/erdos68/core.tex) lines 1002-1005.
-- `long68:res:segment`: [paper/reasoning-parts/erdos68/core.tex](../../../paper/reasoning-parts/erdos68/core.tex) lines 1014-1022.
-- `long68:res:lcm-growth`: [paper/reasoning-parts/erdos68/core.tex](../../../paper/reasoning-parts/erdos68/core.tex) lines 1036-1041.
-- `long68:res:carry-equivalence`: [paper/reasoning-parts/erdos68/core.tex](../../../paper/reasoning-parts/erdos68/core.tex) lines 1222-1242.
-- `long68:res:companion-orbit`: [paper/reasoning-parts/erdos68/core.tex](../../../paper/reasoning-parts/erdos68/core.tex) lines 1326-1333.
-- `long68:res:lower-escape`: [paper/reasoning-parts/erdos68/core.tex](../../../paper/reasoning-parts/erdos68/core.tex) lines 1406-1420.
+- `long68:res:prime-pole`: [paper/reasoning-parts/erdos68/core.tex](../../../paper/reasoning-parts/erdos68/core.tex) lines 841-850.
+- `long68:res:wilson-cofinality`: [paper/reasoning-parts/erdos68/core.tex](../../../paper/reasoning-parts/erdos68/core.tex) lines 940-943.
+- `long68:res:product-lcm`: [paper/reasoning-parts/erdos68/core.tex](../../../paper/reasoning-parts/erdos68/core.tex) lines 974-980.
+- `long68:res:gap-gcd`: [paper/reasoning-parts/erdos68/core.tex](../../../paper/reasoning-parts/erdos68/core.tex) lines 1003-1006.
+- `long68:res:segment`: [paper/reasoning-parts/erdos68/core.tex](../../../paper/reasoning-parts/erdos68/core.tex) lines 1015-1023.
+- `long68:res:lcm-growth`: [paper/reasoning-parts/erdos68/core.tex](../../../paper/reasoning-parts/erdos68/core.tex) lines 1037-1042.
+- `long68:res:carry-equivalence`: [paper/reasoning-parts/erdos68/core.tex](../../../paper/reasoning-parts/erdos68/core.tex) lines 1223-1243.
+- `long68:res:companion-orbit`: [paper/reasoning-parts/erdos68/core.tex](../../../paper/reasoning-parts/erdos68/core.tex) lines 1327-1334.
+- `long68:res:lower-escape`: [paper/reasoning-parts/erdos68/core.tex](../../../paper/reasoning-parts/erdos68/core.tex) lines 1407-1421.
 - `long68:res:shift-family`: [paper/reasoning-parts/erdos68/core.tex](../../../paper/reasoning-parts/erdos68/core.tex) lines 1515-1524.
 - `long68:res:global-residue`: [paper/reasoning-parts/erdos68/core.tex](../../../paper/reasoning-parts/erdos68/core.tex) lines 1612-1619.
-- `long68:res:normalform`: [paper/reasoning-parts/erdos68/core.tex](../../../paper/reasoning-parts/erdos68/core.tex) lines 127-130.
-- `long68:res:bandbreakpoint`: [paper/reasoning-parts/erdos68/core.tex](../../../paper/reasoning-parts/erdos68/core.tex) lines 155-161.
-- `long68:res:moment-ideal`: [paper/reasoning-parts/erdos68/core.tex](../../../paper/reasoning-parts/erdos68/core.tex) lines 299-310.
-- `long68:res:residual-transparency`: [paper/reasoning-parts/erdos68/core.tex](../../../paper/reasoning-parts/erdos68/core.tex) lines 333-342.
-- `long68:res:channel-radius`: [paper/reasoning-parts/erdos68/core.tex](../../../paper/reasoning-parts/erdos68/core.tex) lines 590-599.
-- `long68:res:radius-constant`: [paper/reasoning-parts/erdos68/core.tex](../../../paper/reasoning-parts/erdos68/core.tex) lines 642-648.
-- `long68:res:translator`: [paper/reasoning-parts/erdos68/core.tex](../../../paper/reasoning-parts/erdos68/core.tex) lines 690-694.
+- `long68:res:normalform`: [paper/reasoning-parts/erdos68/core.tex](../../../paper/reasoning-parts/erdos68/core.tex) lines 128-131.
+- `long68:res:bandbreakpoint`: [paper/reasoning-parts/erdos68/core.tex](../../../paper/reasoning-parts/erdos68/core.tex) lines 156-162.
+- `long68:res:moment-ideal`: [paper/reasoning-parts/erdos68/core.tex](../../../paper/reasoning-parts/erdos68/core.tex) lines 300-311.
+- `long68:res:residual-transparency`: [paper/reasoning-parts/erdos68/core.tex](../../../paper/reasoning-parts/erdos68/core.tex) lines 334-343.
+- `long68:res:channel-radius`: [paper/reasoning-parts/erdos68/core.tex](../../../paper/reasoning-parts/erdos68/core.tex) lines 591-600.
+- `long68:res:radius-constant`: [paper/reasoning-parts/erdos68/core.tex](../../../paper/reasoning-parts/erdos68/core.tex) lines 643-649.
+- `long68:res:translator`: [paper/reasoning-parts/erdos68/core.tex](../../../paper/reasoning-parts/erdos68/core.tex) lines 691-695.
 
 ## Passage-review queue
 

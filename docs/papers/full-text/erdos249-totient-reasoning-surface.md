@@ -180,7 +180,7 @@ These propositions separate several logical obligations. Positivity leaves an up
 
 </div>
 
-Reduction modulo $`m`$ supplies the bound missing for the unreduced coefficients. For $`m\ge3`$ the binary series of $`\varphi(n)\bmod m`$ is irrational. For a rational-valued function of $`\varphi(n)\bmod2^k`$, its binary series is rational precisely when that function is constant on the even residues. Both assertions follow by isolating a prime $`p`$ with prescribed $`\varphi(p)\bmod m`$: CRT makes each neighbour $`p+j`$, $`0<|j|\le L`$, divisible by its own prime congruent to $`1\pmod m`$, so all neighbouring residues vanish. A bound on the remaining tail then proves irrationality. The same argument works in any integer base and yields the dilation statements below.
+Reduction modulo $`m`$ supplies the bound missing for the unreduced coefficients. For $`m\ge3`$ the binary series of $`\varphi(n)\bmod m`$ is irrational. For a rational-valued function of $`\varphi(n)\bmod2^k`$, its binary series is rational precisely when that function is constant on the even residues. Both assertions follow by isolating a prime $`p`$ with prescribed $`\varphi(p)\bmod m`$: CRT makes each neighbour $`p+j`$, $`0<|j|\le L`$, divisible by its own prime congruent to $`1\pmod m`$, so all neighbouring residues vanish. A bound on the remaining tail then proves irrationality. The same tail estimate works in any integer base. For several dilations, the extra step is to prevent cancellation at the isolated coefficient.
 
 <div id="prop:radixresidue" class="prop">
 <p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/846d57d3f9926696332d782eb232aaf3cf803a99/evidence/erdos249-totient-reasoning-surface/section-1.md#prop-radixresidue">Lean</a></p>
@@ -663,7 +663,7 @@ This asks for more than nonintegrality. A nonintegral real number can be arbitra
 
 ## Certificates with depth equal to the shift
 
-The unrestricted depth can be replaced by a multiple of the shift. The propagation argument in Appendix <a href="#long249:r3-ray" data-reference-type="ref" data-reference="long249:r3-ray">14.1</a> explains why doing so preserves the equivalence below.
+The shift and truncation depth can be required to agree, provided the shift is allowed to run through positive multiples of a fixed $`d`$. The propagation argument in Appendix <a href="#long249:r3-ray" data-reference-type="ref" data-reference="long249:r3-ray">14.1</a> explains why this restriction preserves the equivalence below.
 
 <div id="defn:apfde" class="defn">
 
@@ -676,9 +676,7 @@ It is equivalent to $`S\notin\mathbb Q`$. [`ApFullDepthEscape`](https://github.c
 
 </div>
 
-For the actual totient series, the condition in Definition <a href="#defn:apfde" data-reference-type="ref" data-reference="defn:apfde">33</a> is equivalent to irrationality, by the full-depth amplification argument of the short paper (the propagation theorem in Appendix <a href="#long249:r3-ray" data-reference-type="ref" data-reference="long249:r3-ray">14.1</a>; [`apFullDepthEscape_iff_irrational`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos249/FullDepthRayAmplifier.lean#L406)). For a fixed pair $`(d,N)`$, a nonintegral tail difference supplies a certificate in every sufficiently late adjacent pair of multipliers. The missing arithmetic input is a nonintegral tail difference for every relevant pair, not a converse implication for the condition with depth equal to the shift. This is an exact reformulation of the open problem, which remains unproved.
-
-The finite examples establish the hypothesis for individual pairs $`(d,N)`$, not for all pairs. Thus the universally quantified condition is not a mild regularity assumption: it has the full strength of the irrationality question.
+For a fixed pair $`(d,N)`$, a nonintegral tail difference supplies a certificate in every sufficiently late adjacent pair of multipliers. Appendix <a href="#long249:r3-ray" data-reference-type="ref" data-reference="long249:r3-ray">14.1</a> proves this propagation and hence the equivalence in Definition <a href="#defn:apfde" data-reference-type="ref" data-reference="defn:apfde">33</a> ([`apFullDepthEscape_iff_irrational`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos249/FullDepthRayAmplifier.lean#L406)). The finite examples verify the starting hypothesis for individual pairs, not for every $`d,N`$. That universal supply of nonintegral differences is the missing arithmetic input. With these quantifiers, the condition has the full strength of the irrationality question; it is not a mild regularity assumption. The open problem remains unproved.
 
 Formal sources: [`windowDiscrepancy_self_eq_totientBlock_sub`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos249/PeriodMultipleEscape.lean#L67)
 
@@ -6806,7 +6804,7 @@ If $`S`$ is irrational, fix $`c,v`$. Then $`vR_c`$ is nonintegral. As $`H`$ tend
 
 </div>
 
-With its universal quantifiers, this condition is equivalent to the unresolved irrationality assertion. A rational value $`a/(2^cv)`$ fails the test for that same $`c,v`$, whereas irrationality gives it for every sufficiently large allowed $`H`$. The proof does not find such an $`H`$ without assuming irrationality.
+For fixed $`c,v`$, one successful test excludes every value $`S=a/(2^cv)`$, regardless of the numerator $`a`$. Conversely, irrationality gives success for every sufficiently large allowed $`H`$ for each fixed $`c,v`$. This converse does not supply successful tests for every $`c,v`$ without the irrationality assumption.
 
 A formal declaration for the equivalence is [available here](https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean#L3165), with the modulus written as $`vM=2^H-1`$. The finite residues also satisfy
 ``` math

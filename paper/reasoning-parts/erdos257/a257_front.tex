@@ -3,10 +3,12 @@
 \paperprovenance
 
 \begin{abstract}
-The main result of Part~I combines two hereditary irrationality criteria
-for Mersenne subseries: a finite-prime weighted condition and a positive
-divisor-cover condition.  Their estimates hold on one finite distribution,
-so the union criterion reaches supports lying in neither individual class.
+Part~I proves that $\sum_{a\in A}(b^a-1)^{-1}$ is irrational for every
+integer $b\ge2$ and every infinite $A\subseteq E\cup V$ under two
+hypotheses. The set $E$ satisfies a finite-prime weighted summability
+condition at base two, while $V$ admits a summable positive divisor cover.
+The estimates for the two sets hold on one finite distribution, so the
+union criterion reaches supports lying in neither individual class.
 The record also develops finite-denominator arithmetic, achievement-set
 geometry and integer-quotient tests for $1/2$ and $1/21$. Conditional
 arguments retain their hypotheses, computations their finite ranges, and
@@ -15,16 +17,17 @@ unrestricted base-two problem remain open.
 \end{abstract}
 
 \section*{Introduction}
-The series $X_A(b)=\sum_{a\in A}(b^a-1)^{-1}$ is irrational for several
-classes of infinite supports $A$. Erd\H{o}s proved the full-support case
+For an integer $b\ge2$, the series $X_A(b)=\sum_{a\in A}(b^a-1)^{-1}$
+is irrational for several classes of infinite supports $A$. Erd\H{o}s proved the full-support case
 and later stated a criterion assuming only convergence of
 $\sum_{a\in A}1/a$; the periodic-support results belong to Luca and
 Tachiya. We begin with these antecedents and prove two hereditary
 criteria which also admit supports of divergent reciprocal sum.
-For a rational value $X_A(b)=p/q$ with $q>0$, the associated positive quantities
-$\Delta_{b,A}(N)$ satisfy $q\Delta_{b,A}(N)\in\mathbb Z$ and hence
-$\Delta_{b,A}(N)\ge1/q$. We rule out rationality by making them
-arbitrarily small. In a finite average, the incomplete residue periods produce an error
+The proofs subtract an explicitly chosen integer from $(b^N-1)X_A(b)$,
+leaving a positive difference $\Delta_{b,A}(N)$. If $X_A(b)=p/q$ with
+$q>0$, then $q\Delta_{b,A}(N)\in\mathbb Z$, so
+$\Delta_{b,A}(N)\ge1/q$. We rule out rationality by making this
+difference arbitrarily small. In a finite average, the incomplete residue periods produce an error
 without the factor $1/a$ needed for summation over exponents. Averaging
 again over dyadic lengths restores this factor. The decisive point for the
 union theorem is stronger than proving the two criteria separately: both
@@ -606,8 +609,9 @@ $d-(N\bmod d),2d-(N\bmod d),\ldots$, and hence
 The cover argument raises a base-two tail to a fractional power $\alpha$,
 replacing its geometric factor by $B=2^\alpha$. The estimate must
 therefore allow $1<B\le2$. It must also keep the modulus, first dyadic
-scale and number of scales separate: the mixed theorem will use the
-windows already chosen by the weighted proof.
+scale and number of scales separate. In the mixed theorem, the weighted
+construction chooses these parameters after the finite divisibility
+requirements have been fixed.
 
 For $1<B\le2$, positive integers $L,d,M$, and an integer $R\ge0$, put
 \[

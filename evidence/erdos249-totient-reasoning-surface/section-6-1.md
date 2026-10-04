@@ -127,7 +127,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="catalogue-cert-a8"></a>
 
-## Proposition 6.4 (Denominator divisibility forces tail integrality), page 29
+## Proposition 6.4 (Denominator divisibility forces tail integrality), page 28
 
 > *If $`S=a/q`$ in lowest terms with $`q>0`$ and $`q\mid2^N(2^h-1)`$, then $`R_{N+h}-R_N\in\mathbb Z`$. Indeed, the prefix identity expresses that difference as $`2^N(2^h-1)S`$ minus an integer. This is the contradiction used by a nonintegrality certificate to exclude the rational value $`a/q`$.*
 
@@ -330,7 +330,7 @@ theorem upperHalfChannel_product_dvd_den_of_scale_primeFactors_le
 
 <a id="catalogue-mob-b7a"></a>
 
-## Proposition 6.7 (A lower bound for the reduced denominator), page 30
+## Proposition 6.7 (A lower bound for the reduced denominator), page 29
 
 > *For every integer $`t\ge5`$,
 > ``` math
@@ -615,7 +615,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="catalogue-cert-a2"></a>
 
-## Proposition 6.16 (The prefix-tail identity), page 32
+## Proposition 6.16 (The prefix-tail identity), page 31
 
 > *For every $`N\in\mathbb N`$,
 > ``` math
@@ -817,7 +817,7 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 <a id="catalogue-cert-d1"></a>
 
-## Proposition 6.22 (An irrationality criterion from rational approximations), page 33
+## Proposition 6.22 (An irrationality criterion from rational approximations), page 32
 
 > *Let $`x\in\mathbb R`$ and let $`u_k=p_k/q_k\in\mathbb Q`$ be in lowest terms, with $`q_k>0`$. If $`u_k\ne x`$ for every sufficiently large $`k`$ and $`q_k|x-u_k|\to0`$, then $`x`$ is irrational. Indeed, if $`x=a/b`$ with $`a\in\mathbb Z`$ and $`b\ge1`$, a nonzero integer numerator gives $`q_k|x-u_k|=|a q_k-b p_k|/b\ge1/b`$, a contradiction. This elementary criterion requires both nonvanishing and the scaled error estimate. Convergence $`u_k\to x`$ alone is insufficient, and the approximants need not be continued-fraction convergents.*
 
