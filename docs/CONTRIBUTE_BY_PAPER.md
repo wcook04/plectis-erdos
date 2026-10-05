@@ -195,7 +195,7 @@ python3 scripts/query_route_memory.py --problem 269
 
 ## Problem 1041
 
-Must two roots of a monic polynomial in the open unit disc be joined by a sub-two-length curve inside its unit lemniscate? Ani’s degree-seven example refutes the exact Formal Conjectures statement; correspondence with the 1958 wording awaits human review.
+Must two roots of a monic polynomial in the open unit disc be joined by a sub-two-length curve inside its unit lemniscate? Ani’s degree-seven example refutes the exact Formal Conjectures statement; independent human review of correspondence with the 1958 wording has not been recorded.
 
 For ani’s degree-seven polynomial, every preconnected strict-lemniscate set containing two distinct roots has one-dimensional Hausdorff measure above two. Lean refutes the exact Formal Conjectures path-image claim and checks a separate total-variation bound.
 
@@ -216,7 +216,7 @@ Existing questions:
 - Given a selected connector with strict slack, quantify a two-stage perturbation preserving roots, component, collars, ray separation, and slack; no universal existence claim follows.
 - Under explicit component, saddle, and corrected metric hypotheses, derive a restricted root-to-root Newton-flow connector without a universal sub-two claim.
 
-[Return work on #1041](https://github.com/wcook04/plectis-erdos/issues/new?template=research_progress.yml&title=%5Bresearch+progress%5D+Erd%C5%91s+%231041&question=Erd%C5%91s+%231041%3A+Must+two+roots+of+a+monic+polynomial+in+the+open+unit+disc+be+joined+by+a+sub-two-length+curve+inside+its+unit+lemniscate%3F+Ani%E2%80%99s+degree-seven+example+refutes+the+exact+Formal+Conjectures+statement%3B+correspondence+with+the+1958+wording+awaits+human+review.) · [Email and credit preferences](../CONTRIBUTING.md#return-what-you-learned)
+[Return work on #1041](https://github.com/wcook04/plectis-erdos/issues/new?template=research_progress.yml&title=%5Bresearch+progress%5D+Erd%C5%91s+%231041&question=Erd%C5%91s+%231041%3A+Must+two+roots+of+a+monic+polynomial+in+the+open+unit+disc+be+joined+by+a+sub-two-length+curve+inside+its+unit+lemniscate%3F+Ani%E2%80%99s+degree-seven+example+refutes+the+exact+Formal+Conjectures+statement%3B+independent+human+review+of+correspondence+with+the+1958+wording+has+not+been+recorded.) · [Email and credit preferences](../CONTRIBUTING.md#return-what-you-learned)
 
 For a coding agent:
 

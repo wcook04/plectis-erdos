@@ -47,7 +47,7 @@ step. Mathematical importance requires separate judgement.
 | [#251](#result-251) | Lean checks a rich synthetic prime-gap countermodel, and the paper gives a separate sparse-perturbation obstruction. | These are not actual prime gaps; the prime-specific producer for irrationality remains open. |
 | [#257](#result-257) | Lean checks the finite-prime weighted-support theorem at every integer base, including supports with divergent reciprocal sum. | It does not cover every infinite support. [Palomar registered version 1](https://palomar-registry.org/entry?id=PALOMAR-2026-09-25-000009&version=1) of the exact five-declaration `E257_01` selection. |
 | [#269](#result-269) | Both two-prime running-LCM sums are transcendental by the paper's argument using a cited Hecke–Mahler theorem; Lean checks the formulas and the conditional transfer. | The cited transcendence input is not formalised, and the three-prime irrationality question remains open. |
-| [#1041](#result-1041) | Ani's degree-seven polynomial refutes the exact Formal Conjectures path-image-length statement in Lean; Lean also checks positive trinomial and sharp collinear families. | Independent review of correspondence with the 1958 wording is pending; other geometric results have their own hypotheses. |
+| [#1041](#result-1041) | Ani's degree-seven polynomial refutes the exact Formal Conjectures path-image-length statement in Lean; Lean also checks positive trinomial and sharp collinear families. | Independent human review of correspondence with the 1958 wording has not been recorded; other geometric results have their own hypotheses. |
 | [#1049](#result-1049) | Lean checks irrationality in Zudilin's rational-base contour region and exact Hankel orders. | `3/2` and the all-rational-base claim remain open. |
 
 To read further, the [paper catalogue](../paper/README.md#problem-papers)
@@ -462,7 +462,8 @@ erdosproblems.com contributor
 that every preconnected strict-lemniscate set joining two distinct roots has
 one-dimensional Hausdorff measure greater than two. This refutes the exact
 Formal Conjectures path-image-length statement and the separate total-variation
-formulation; correspondence with the 1958 wording remains unreviewed.
+formulation; independent human review of correspondence with the 1958 wording
+has not been recorded.
 The short paper also gives a cubic showing why a two-root first merger alone
 does not force a capacity gap; its Lean capacity clause assumes the classical
 transfinite-diameter formula. Read the
@@ -575,8 +576,8 @@ a claim to settle the seven unresolved targets or the unadjudicated historical
   one-dimensional Hausdorff measure greater than two. It refutes the exact
   Formal Conjectures path-image-length statement; a separate total-variation
   bound is checked. Ani supplied the polynomial. The reported family is not
-  formalised, and correspondence with the 1958 wording awaits independent
-  human review.
+  formalised. Independent human review of correspondence with the 1958 wording
+  has not been recorded.
 - A second-layer Boolean–Möbius normal form is now an executable rationality
   equivalence: any `p/q` support value (`q>0`) is represented by a positive,
   square-root-bounded integer carry orbit whose quotient reconstructs the
@@ -1348,7 +1349,8 @@ core)**
   path-image case refutes the exact Formal Conjectures statement, and the
   separate total-variation bound remains checked. The formal proof covers one
   polynomial, not ani's reported small-parameter family. Independent human
-  review of correspondence with the 1958 curve-length wording remains open.
+  review of correspondence with the 1958 curve-length wording has not been
+  recorded.
 
 - Current-source boundary: the committed [`research_corpus/Erdos1041/FRONTIER.md`](../research_corpus/Erdos1041/FRONTIER.md)
   is the dated route for later source-only research evidence. Read it before
@@ -2092,7 +2094,7 @@ _Questions generated from `docs/problem_index_source.json`._
 | [#251](../paper/251/erdos-251-prime-gap-dyadic-series.pdf) | Is the dyadic series of consecutive primes irrational? Equivalently, is the corresponding consecutive-prime-gap dyadic series irrational? |
 | [#257](../paper/257/erdos-257-mersenne-support-subseries.pdf) | Is the sum of 1/(2^n-1) over every infinite set of positive exponents irrational? |
 | [#269](../paper/269/erdos-269-three-prime-running-lcm.pdf) | For a finite set of at least two primes, is the sum of reciprocals of the running least common multiples of the smooth numbers irrational? This library treats the three-prime case. |
-| [#1041](../paper/1041/erdos-1041-lemniscate-newton-flow.pdf) | Must two roots of a monic polynomial in the open unit disc be joined by a sub-two-length curve inside its unit lemniscate? Ani’s degree-seven example refutes the exact Formal Conjectures statement; correspondence with the 1958 wording awaits human review. |
+| [#1041](../paper/1041/erdos-1041-lemniscate-newton-flow.pdf) | Must two roots of a monic polynomial in the open unit disc be joined by a sub-two-length curve inside its unit lemniscate? Ani’s degree-seven example refutes the exact Formal Conjectures statement; independent human review of correspondence with the 1958 wording has not been recorded. |
 | [#1049](../paper/1049/erdos-1049-rational-base-lambert.pdf) | For which rational bases is the corresponding series irrational? The first resistant explicit base is three halves. |
 <!-- END problem_programme_card -->
 

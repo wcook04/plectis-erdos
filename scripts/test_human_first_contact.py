@@ -271,18 +271,25 @@ def main() -> None:
     )
     require("```" not in first_screen and "git clone" not in first_screen,
         "README asks a cold reader to choose a checkout before showing the papers")
-    require(
-        "![Eight Erdős problem programmes:" in first_screen
-        and "](.github/system-map.png)" in first_screen,
-        "README opening lost the mathematical research-record banner",
-    )
-    for token in (
-        "routes that stopped",
-        "human judgement",
-        "independent, AI-assisted prototype",
-        "short paper",
+    for url in (
+        "https://wcook04.github.io/plectis/",
+        "https://wcook04.github.io/plectis/maths/universe.html",
     ):
-        require(token in " ".join(first_screen.split()), f"README opening lost its project-purpose boundary: {token}")
+        require(f"]({url})" in first_screen,
+                f"README opening lost its public website route: {url}")
+    # The front door leads with a bounded mathematical reading and states
+    # authorship directly. Keep these meanings without pinning an old slogan
+    # or calling a 26-page edition a short paper.
+    for token in (
+        "Theorem 1.2",
+        "section 2",
+        "The problem papers report",
+        "AI agents did most of their research and drafting",
+        "Cook did not independently verify every claim",
+        "unrestricted question remains open",
+    ):
+        require(token in " ".join(first_screen.replace("**", "").split()),
+                f"README opening lost its reading or evidence boundary: {token}")
     require(
         "(docs/RESULTS.md)" in first_screen,
         "README opening must route readers to the results and their limits",
@@ -355,8 +362,9 @@ def main() -> None:
             f"https://www.erdosproblems.com/{n}" in readme,
             f"README lost the Erdős Problems catalogue link for #{n}",
         )
-    for label in ("[short paper]", "[longer paper]"):
-        require(label in readme, f"README lost the {label} paper-index label")
+    require("[longer paper]" in readme, "README lost the longer-paper route")
+    require(len(re.findall(r"\[paper, [0-9]+ pages\]", readme)) == 8,
+            "README must show the page count for each first-reading paper")
     for slug in paper_slugs:
         require(f"{slug}.pdf" in readme, f"README omits the {slug} paper")
         stored = [

@@ -1079,9 +1079,9 @@ FIRST_COMMAND_PROMISES = (
     ("where the claim\nstops", ("WHERE THIS CLAIM STOPS",)),
 )
 
-# The exact invocation the README puts in front of a reader who has not decided
-# to read yet. Running any other one would test a command nobody was offered.
-FIRST_COMMAND_ARGV = ("--claim", "eb_full_support")
+# The README keeps the featured #257 result through its first claim trace.
+# Running a different claim would check a route the reader was not offered.
+FIRST_COMMAND_ARGV = ("--claim", "finite_prime_weighted_support")
 
 
 def validate_first_command_keeps_its_promise(readme_prefix: str) -> None:
@@ -1119,6 +1119,41 @@ def first_contact_surface_text(surfaces: dict[str, str], path: str) -> str:
     if text is None:
         return safe_read_text(path)
     return text
+
+
+def validate_readme_research_entry(readme_prefix: str) -> None:
+    """Keep the selected mathematical entry and public text routes visible."""
+    featured = re.search(r"(?m)^## [^\n]*#257[^\n]*$", readme_prefix)
+    portfolio = readme_prefix.find("## Problem papers")
+    require(
+        featured is not None and 0 <= featured.start() < portfolio,
+        "README must feature #257 before the complete problem-paper table",
+    )
+    opening = readme_prefix[:featured.start()]
+    for label, destination in (
+        ("Website", "https://wcook04.github.io/plectis/"),
+        ("Interactive maths map", "https://wcook04.github.io/plectis/maths/universe.html"),
+        ("Maths reading room", "https://wcook04.github.io/plectis/maths/"),
+    ):
+        require(
+            f"[{label}]({destination})" in opening,
+            f"README opening lost its explicit {label!r} text route",
+        )
+    for destination in ("docs/READING_GUIDE.md", "docs/RESULTS.md"):
+        require(
+            re.search(rf"\[[^\]]+\]\({re.escape(destination)}\)", opening),
+            f"README opening lost its reader route to {destination}",
+        )
+    feature = readme_prefix[featured.start():portfolio]
+    require(
+        "Theorem 1.2" in feature and "section 2" in feature.casefold()
+        and "paper/257/erdos-257-mersenne-support-subseries.pdf" in feature,
+        "README must give the featured #257 paper's bounded theorem-and-proof reading task",
+    )
+    require(
+        "scripts/verify_claims.py --claim finite_prime_weighted_support" in readme_prefix,
+        "README's first claim trace must keep the featured weighted-support result",
+    )
 
 
 def validate_human_first_contact(
@@ -1187,25 +1222,13 @@ def validate_human_first_contact(
     require(all(position >= 0 for position in positions), f"README first-contact surface lost section sequence {section_order}")
     require(positions == sorted(positions), "README first-contact sections are out of order")
 
-    # 2026-09-10, operator-directed: the front page carries no command block.
-    # Every command moved to REPRODUCIBILITY and the agent workbench, which the
-    # prefix must still name (asserted with FIRST_CONTACT_ROUTED_SURFACES
-    # below). The advertised verifier is still executed further down so its
-    # behaviour cannot drift away from the runbook that now describes it.
+    # Detailed setup stays in the directly routed runbooks. The front page
+    # carries the featured metadata trace inline, without a command block;
+    # execute it below so its behaviour cannot drift from the promised route.
     last_problem = readme_prefix.find("#1049", positions[0])
     require("```" not in readme_prefix, "README front page carries a command block; commands belong in REPRODUCIBILITY and the agent workbench")
     require(last_problem >= positions[0], "README no longer exposes all eight papers under its paper index")
-    require(
-        "![Eight Erdős problem programmes:" in readme_prefix[:positions[0]]
-        and "](.github/system-map.png)" in readme_prefix[:positions[0]],
-        "README opening lost the mathematical research-record banner",
-    )
-    require(
-        "#257" in readme_prefix[:last_problem]
-        and "#249" in readme_prefix[:last_problem]
-        and "For a first look" in readme_prefix[:last_problem],
-        "README no longer recommends a concrete first paper",
-    )
+    validate_readme_research_entry(readme_prefix)
     validate_first_command_keeps_its_promise(readme_prefix)
 
     require(

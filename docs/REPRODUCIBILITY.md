@@ -252,16 +252,16 @@ python3 scripts/lean_fast_build.py --jobs 2 \
   ErdosProblems.Erdos257.PaperCompleteR8.WeightedReturn
 ```
 
-[`DivisibilityWeightedClaim`](../lean/ErdosProblems/Erdos257/PaperCompleteR7/AnalyticTargets.lean)
+[`DivisibilityWeightedClaim`](../lean/ErdosProblems/Erdos257/PaperCompleteR7/AnalyticTargets.lean#L61)
 states the fixed-base and hereditary clauses. The proof declaration is
 [`divisibilityWeightedClaim`](../lean/ErdosProblems/Erdos257/PaperCompleteR8/WeightedReturn.lean#L120).
 The weighted term and `FinitePrimeWeighted` definitions are in
-[`PrimeWeightedDefinitions.lean`](../lean/ErdosProblems/Erdos257/PaperCompleteR7/PrimeWeightedDefinitions.lean),
+[`PrimeWeightedDefinitions.lean`](../lean/ErdosProblems/Erdos257/PaperCompleteR7/PrimeWeightedDefinitions.lean#L25),
 which the R7 interface imports.
-The R7 interface file's preamble describes the earlier development stage;
-its "missing" proof wording is not the current theorem status. Read the R8
-proof and the claim record above for that status. The R7 source remains at
-its pinned formal-source revision.
+The R7 file records the statement interfaces; their proofs are supplied by
+the R8 modules named in its declaration comments. Read the R8 proof and the
+claim record above for the current theorem status. The recorded formal-source
+revision identifies the historical checkpoint separately from this checkout.
 The first command checks the current claim's references and prints its
 recorded formal-source revision; it does not run Lean. The second command
 checks the current checkout with the pinned Lean toolchain. Record
