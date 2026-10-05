@@ -36,11 +36,11 @@ See \[erdosgraham1980, p. 64\] and \[erdos1988, p. 105\]. Bloom’s catalogu
 
 Clearing a rational reciprocal tail gives positive integers $`C_n,D_n`$ with $`C_{n+1}=a_nC_n-D_n`$ and $`D_{n+1}=a_nD_n`$. The first update can also be written $`C_{n+1}=C_n-E_n`$, where $`E_n=D_n-(a_n-1)C_n`$. Quadratic growth makes $`E_n/C_n\to0`$. The eventual Sylvester recurrence follows once the integer error itself vanishes.
 
-The two principal arguments control different features of this integer numerator. A precise regular rate controls its finite differences: although $`C_n`$ grows, a sufficiently high difference tends to zero and therefore vanishes. The resulting polynomial must still satisfy the exact denominator recurrence, which imposes congruences on its values. A bound on upward steps gives a different use of integrality. After a common divisor stabilises, every earlier multiplier is coprime to every later numerator. The Chinese remainder theorem then produces a block that an unbounded numerator with bounded upward steps cannot cross. When common factors keep being cancelled, the later criteria instead estimate the prime powers that survive.
+There are two ways to use this integer numerator. At a precise regular rate it grows, but a high finite difference tends to zero and must vanish. The resulting polynomial is then tested against the denominator recurrence. With bounded upward steps, a different argument applies: a stable common divisor gives reduced tails, whose numerators avoid every earlier multiplier. The Chinese remainder theorem produces a block that bounded rises cannot cross, regardless of intervening decreases. Neither argument replaces the denominator recurrence by a scalar growth estimate.
 
-We prove the cubic and nonintegral-rate theorems first (Section <a href="#long243:sec:cubicrate" data-reference-type="ref" data-reference="long243:sec:cubicrate">2</a>). Their rate assumptions exclude the eventual Sylvester recurrence, so these results settle restricted cases by ruling out rationality. The general recurrence question remains open here. Section <a href="#long243:sec:priorwork" data-reference-type="ref" data-reference="long243:sec:priorwork">3</a> compares the results with earlier criteria. Sections <a href="#long243:sec:state" data-reference-type="ref" data-reference="long243:sec:state">4</a>–<a href="#long243:sec:defect" data-reference-type="ref" data-reference="long243:sec:defect">5</a> then develop the integer tail numerators and zero-error identities used in the remaining arguments.
+Section <a href="#long243:sec:cubicrate" data-reference-type="ref" data-reference="long243:sec:cubicrate">2</a> proves cubic and nonintegral-rate irrationality: these rates exclude the eventual Sylvester recurrence. The general question remains open. After the literature comparison in Section <a href="#long243:sec:priorwork" data-reference-type="ref" data-reference="long243:sec:priorwork">3</a>, Sections <a href="#long243:sec:state" data-reference-type="ref" data-reference="long243:sec:state">4</a>–<a href="#long243:sec:defect" data-reference-type="ref" data-reference="long243:sec:defect">5</a> develop integer tails and zero-error identities for the subsequent criteria.
 
-For further criteria we distinguish two normalisations. In Section <a href="#long243:sec:lcmrecords" data-reference-type="ref" data-reference="long243:sec:lcmrecords">6</a>, the least common multiple removes repeated factors among the earlier denominators. In Section <a href="#long243:sec:records" data-reference-type="ref" data-reference="long243:sec:records">7</a>, reduction to lowest terms also cancels factors shared with the tail numerator. Thus a prime can persist in the LCM and disappear from the reduced denominator. The constant and periodic errors are treated in Sections <a href="#long243:sec:constant" data-reference-type="ref" data-reference="long243:sec:constant">9</a>–<a href="#long243:sec:periodic" data-reference-type="ref" data-reference="long243:sec:periodic">10</a>. The bounded-increase proof occupies Sections <a href="#long243:sec:barrier" data-reference-type="ref" data-reference="long243:sec:barrier">11</a>–<a href="#long243:sec:bounded" data-reference-type="ref" data-reference="long243:sec:bounded">12</a>, followed by the scalar summability criterion in Section <a href="#long243:sec:mass" data-reference-type="ref" data-reference="long243:sec:mass">13</a>. Section <a href="#long243:sec:open" data-reference-type="ref" data-reference="long243:sec:open">14</a> gives further questions and examples showing which recurrence hypotheses cannot be omitted. The appendices contain formal-source locations, the finite residue calculation and a result map.
+The later criteria use two distinct normalisations. Section <a href="#long243:sec:lcmrecords" data-reference-type="ref" data-reference="long243:sec:lcmrecords">6</a> clears tails with an LCM: common numerator factors remain, so congruences forbid short crossings rather than numerator values. Section <a href="#long243:sec:records" data-reference-type="ref" data-reference="long243:sec:records">7</a> reduces to lowest terms, where cancellation can remove a prime that persists in the LCM. That argument must track the prime powers which survive. Sections <a href="#long243:sec:constant" data-reference-type="ref" data-reference="long243:sec:constant">9</a>–<a href="#long243:sec:periodic" data-reference-type="ref" data-reference="long243:sec:periodic">10</a> treat constant and periodic errors; Sections <a href="#long243:sec:barrier" data-reference-type="ref" data-reference="long243:sec:barrier">11</a>–<a href="#long243:sec:bounded" data-reference-type="ref" data-reference="long243:sec:bounded">12</a> prove the bounded-increase criterion, and Section <a href="#long243:sec:mass" data-reference-type="ref" data-reference="long243:sec:mass">13</a> treats scalar summability. Section <a href="#long243:sec:open" data-reference-type="ref" data-reference="long243:sec:open">14</a> separates open estimates from countermodels to weakened hypotheses. The appendices give formal sources, the finite residue calculation and a result map.
 
 We use $`z_+=\max(z,0)`$. Deleting a finite prefix is harmless for an eventual recurrence, but not for the coefficients in a higher-order rate. In particular, the index $`n`$ in $`1+3/n+o(n^{-3})`$ is kept fixed throughout the cubic proof. The recurrence sections also use zero-based indexing, with that convention stated where the integer sequences are introduced.
 
@@ -108,7 +108,7 @@ In particular no such orbit satisfies $`C_n=A\,n(n+1)(n+2)+B`$ for all large $`n
 
 The short paper needs only to exclude eventual equality with a cubic of this form. Here we prove more: the disagreement set has positive lower density. The bound may depend on the orbit and the cubic; no uniform numerical constant is claimed.
 
-Suppose, then, that the disagreement set has lower density zero. This does not give agreement on a whole tail; it gives cutoffs along which the proportion of disagreements tends to zero. In particular, it leaves arbitrarily late four-term blocks intact. On each such block, a third difference bounds $`G_n=\gcd(C_n,D_n)`$; the divisibility chain therefore stabilises. Dividing it out leaves the proposed numerator $`m n(n+1)(n+2)/6+c`$, with $`m>0`$ integral and $`c=\pm1`$. If the middle of three consecutive numerators vanishes modulo a prime, the recurrence makes the negative product of its neighbours a square. Applied to the polynomial, this forces a square at every root modulo almost every prime. A square in the cubic field follows, and traces leave $`m=12`$. Four-term blocks modulo seven exclude the two signs.
+Lower density zero does not give eventual agreement, but leaves arbitrarily late intact four-term blocks. Their third differences bound $`G_n=\gcd(C_n,D_n)`$, stabilising the divisibility chain. Dividing out its limit leaves $`m n(n+1)(n+2)/6+c`$, with $`m>0`$ integral and $`c=\pm1`$. A vanishing middle numerator modulo a prime forces the negative product of its neighbours to be a square. This condition at every root modulo almost every prime yields a square in the cubic field; traces give $`m=12`$, and four-term blocks modulo seven exclude both signs.
 
 The density assertion comes from the same finite tests. A failed test recurs on an arithmetic progression, and each occurrence forces a disagreement in a window of bounded length. The next lemma counts those disagreements. After proving the arithmetic exclusion, we return to the rate assumption in Lemma <a href="#long243:res:extraction" data-reference-type="ref" data-reference="long243:res:extraction">12</a>.
 
@@ -130,13 +130,13 @@ is a positive integer as well. From $`x_n=1/a_n+x_{n+1}`$,
 C_{n+1}=D_{n+1}x_{n+1}=a_nD_n\Bigl(x_n-\frac1{a_n}\Bigr)=a_nC_n-D_n,
  \qquad D_{n+1}=a_nD_n,
 ```
-which is <a href="#long243:eq:cubicorbit" data-reference-type="eqref" data-reference="long243:eq:cubicorbit">[long243:eq:cubicorbit]</a>. These are the unreduced tail variables of Koizumi’s Lemma 4 \[koizumi2025, pp. 11–12\], up to a common positive factor. The rate estimate in Lemma <a href="#long243:res:tailratio" data-reference-type="ref" data-reference="long243:res:tailratio">13</a> uses this numerator, without reducing each tail fraction separately. Section <a href="#long243:sec:state" data-reference-type="ref" data-reference="long243:sec:state">4</a> constructs these variables together with the error $`E_n=D_n-(a_n-1)C_n`$, which this section does not need. The subsequent cubic exclusion uses only these integer recurrences; it does not assume a reciprocal sum. To apply its zero-based statement without shifting the rate hypothesis, adjoin $`a_0=1`$, $`D_0=q`$ and $`C_0=p+q`$. The recurrences at $`0`$ then give $`D_1=q`$ and $`C_1=p`$, while every original index $`n\ge1`$ is unchanged. The auxiliary term $`a_0`$ need not satisfy the increasing-sequence hypothesis of the irrationality theorem: the exclusion requires only positive multipliers.
+which is <a href="#long243:eq:cubicorbit" data-reference-type="eqref" data-reference="long243:eq:cubicorbit">[long243:eq:cubicorbit]</a>. These are the unreduced tail variables of Koizumi’s Lemma 4 \[koizumi2025, pp. 11–12\], up to a common positive factor. Lemma <a href="#long243:res:tailratio" data-reference-type="ref" data-reference="long243:res:tailratio">13</a> uses this unreduced numerator: reducing each tail separately would introduce varying cancellation factors into the ratio and obscure the prescribed rate. Section <a href="#long243:sec:state" data-reference-type="ref" data-reference="long243:sec:state">4</a> constructs these variables together with the error $`E_n=D_n-(a_n-1)C_n`$, which this section does not need. The subsequent cubic exclusion uses only these integer recurrences; it does not assume a reciprocal sum. To apply its zero-based statement without shifting the rate hypothesis, adjoin $`a_0=1`$, $`D_0=q`$ and $`C_0=p+q`$. The recurrences at $`0`$ then give $`D_1=q`$ and $`C_1=p`$, while every original index $`n\ge1`$ is unchanged. The auxiliary term $`a_0`$ need not satisfy the increasing-sequence hypothesis of the irrationality theorem: the exclusion requires only positive multipliers.
 
 <a id="reduction-and-lower-density"></a>
 
 ## Reduction and lower density
 
-For $`S\subseteq\mathbb{N}`$ write $`\underline d(S)=\liminf_X\#(S\cap[1,X])/X`$. Thus $`\underline d(S)=0`$ means that these proportions approach zero along some sequence of cutoffs. Their limit need not exist. For a sequence $`F`$, let $`\Delta F_n=F_{n+1}-F_n`$; higher powers of $`\Delta`$ mean repeated forward differences. This operator is distinct from the later indexed quantity $`\Delta_n`$, the Sylvester defect.
+For $`S\subseteq\mathbb{N}`$ write $`\underline d(S)=\liminf_X\#(S\cap[1,X])/X`$. Thus $`\underline d(S)=0`$ gives cutoffs along which the exceptional proportion tends to zero, not eventual agreement. We cannot replace $`C_n`$ by its proposed polynomial at arbitrary indices; the following lemma supplies the finite windows where such a replacement is valid. For a sequence $`F`$, let $`\Delta F_n=F_{n+1}-F_n`$; higher powers of $`\Delta`$ mean repeated forward differences. This operator is distinct from the later indexed quantity $`\Delta_n`$, the Sylvester defect.
 
 <div id="long243:res:periodicobstruction" class="lemma">
 <p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos243/PaperCompleteR11/DensityTransport.lean#L156">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/b4d9b60327e3c4d4cc50acb37e62268788cd77e0/evidence/erdos243-reciprocal-tail-reasoning-surface.md#long243-res-periodicobstruction-comparator">Comparator</a></p>
@@ -442,6 +442,8 @@ Hence every sufficiently late window $`[7k,7k+3]`$ for the plus profile, and eve
 
 </div>
 
+The two densities play different roles. If the field element is not a square, Chebotarev supplies one witnessing prime; its periodic obstruction gives a positive density of disagreement *indices*. No lower bound uniform over cubic profiles is needed.
+
 <a id="polynomial-extraction-at-a-regular-rate"></a>
 
 ## Polynomial extraction at a regular rate
@@ -493,7 +495,7 @@ so $`C_n`$ agrees eventually with a polynomial with rational coefficients. Its g
 
 </div>
 
-The little-oh error in <a href="#long243:eq:regularrate" data-reference-type="eqref" data-reference="long243:eq:regularrate">[long243:eq:regularrate]</a> cannot in general be replaced by a big-oh error. The positive integers $`C_n=n(n+1)(n+2)+(-1)^n`$ satisfy $`C_{n+1}/C_n=1+3/n+O(n^{-3})`$ and are not eventually polynomial. Likewise $`C_n=\lceil n^{3/2}\rceil`$ satisfies $`C_{n+1}/C_n=1+3/(2n)+O(n^{-3/2})`$: rounding contributes $`O(n^{-3/2})`$, while the unrounded ratio has error $`O(n^{-2})`$. These two scalar examples prevent the proposed weakening of Lemma <a href="#long243:res:extraction" data-reference-type="ref" data-reference="long243:res:extraction">12</a>. Neither is asserted to satisfy the exact reciprocal-tail recurrences.
+The little-oh error in <a href="#long243:eq:regularrate" data-reference-type="eqref" data-reference="long243:eq:regularrate">[long243:eq:regularrate]</a> cannot in general be replaced by a big-oh error. The positive integers $`C_n=n(n+1)(n+2)+(-1)^n`$ satisfy $`C_{n+1}/C_n=1+3/n+O(n^{-3})`$ and are not eventually polynomial. Likewise $`C_n=\lceil n^{3/2}\rceil`$ satisfies $`C_{n+1}/C_n=1+3/(2n)+O(n^{-3/2})`$: rounding contributes $`O(n^{-3/2})`$, while the unrounded ratio has error $`O(n^{-2})`$. These scalar examples obstruct weaker extraction hypotheses, not an irrationality theorem; neither is asserted to satisfy the full tail hypotheses. Extraction excludes nonintegral $`\lambda`$. Integral rates still require an arithmetic exclusion, proved here in degree three.
 
 <div id="long243:res:tailratio" class="lemma">
 <p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos243/PaperCompleteR7/QuantitativeTail.lean#L204">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/b4d9b60327e3c4d4cc50acb37e62268788cd77e0/evidence/erdos243-reciprocal-tail-reasoning-surface.md#long243-res-tailratio-comparator">Comparator</a></p>
@@ -926,9 +928,9 @@ Beyond an index from which $`|E_n|<C_n`$ always holds, either $`E_n`$ reaches ze
 
 # LCM numerators and weighted records
 
-The least common multiple clears a rational tail while removing factors repeated among earlier denominators. We prove that its integer numerator is bounded exactly when a weighted sum over new maxima converges. At each such step we may subtract a fixed amount from the increase before summing. The error may have either sign, extending the setting of Koizumi’s eventual-nonnegative case in Proposition 1(2).
+Clearing a rational tail by an LCM removes repeated denominator factors, but need not make its numerator coprime to that LCM. The argument here therefore forbids short crossings, not numerator values. It characterises boundedness by a weighted sum over new maxima, even after subtracting a fixed amount at each record. The error may have either sign, extending the setting of Koizumi’s eventual-nonnegative case in Proposition 1(2).
 
-Applied to rational tails, this gives a Sylvester recurrence criterion. Its convergence hypothesis remains to be derived in the unrestricted problem. Proposition <a href="#long243:res:coprimalitycap" data-reference-type="ref" data-reference="long243:res:coprimalitycap">41</a> later gives an auxiliary model which avoids whole moduli. That model omits both the denominator recurrence and coprimality to the individual prime factors, so its counterexamples do not apply to the theorem here.
+Applied to rational tails, this gives a Sylvester recurrence criterion. Its convergence hypothesis remains unproved for the unrestricted problem. The whole-modulus avoidance model in Proposition <a href="#long243:res:coprimalitycap" data-reference-type="ref" data-reference="long243:res:coprimalitycap">41</a> omits the denominator recurrence and prime-factor coprimality; its examples therefore do not contradict the criterion.
 
 In this section the indices start at $`0`$. Write the full reciprocal sum as $`p/q`$, with positive integers $`p,q`$, put $`x_n=\sum_{k\ge n}1/a_k`$, and take $`D_0=q`$. Set
 ``` math
@@ -942,7 +944,7 @@ M_{n+1}=M_n\rho_n,\qquad
 ```
 These are Bado’s LCM coordinates, with the indexing translated explicitly. Take his denominator parameter to be $`q`$ and identify his $`a_{n+1}`$ with our $`a_n`$. Then his $`M_n`$, $`\Delta_n`$, $`K_n`$, $`u_{n+1}`$ and $`g_{n+1}`$ are respectively our $`L_n`$, $`M_n`$, $`U_n`$, $`V_n`$ and $`\rho_n`$. His (19) becomes the middle update above \[bado2026, Prop. 7.1 and (16)–(20), pp. 6–7\].
 
-Write $`R_n=\max_{j\le n}U_j`$ and $`\mathcal R=\{n:U_{n+1}>R_n\}`$. The inequality $`|V_n|<U_n`$ gives $`U_{n+1}<U_n`$ when $`\rho_n\ge2`$, so every sufficiently late strict rise has $`\rho_n=1`$. The stronger eventual bound $`-U_n\le2V_n`$, supplied by $`V_n/U_n=E_n/C_n\to0`$, gives the quantitative estimate $`U_{n+1}\le3U_n/4`$ when $`\rho_n\ge2`$. At a sufficiently late LCM record, $`\rho_n=1`$ and the actual jump is $`d_n=U_{n+1}-U_n=-V_n>0`$. At a contracting step with $`\rho_n\ge2`$ this identity need not hold.
+Write $`R_n=\max_{j\le n}U_j`$ and $`\mathcal R=\{n:U_{n+1}>R_n\}`$. The inequality $`|V_n|<U_n`$ gives $`U_{n+1}<U_n`$ when $`\rho_n\ge2`$, so every sufficiently late strict rise has $`\rho_n=1`$. The stronger eventual bound $`-U_n\le2V_n`$, supplied by $`V_n/U_n=E_n/C_n\to0`$, gives the quantitative estimate $`U_{n+1}\le3U_n/4`$ when $`\rho_n\ge2`$. Repeated factors thus cause contraction; late records use multipliers coprime to the current LCM. At those records the actual jump is $`d_n=U_{n+1}-U_n=-V_n>0`$. This identity need not hold when $`\rho_n\ge2`$.
 
 For $`B=0`$, divergence under unbounded growth can already be seen by comparing a record step with the interval of new heights it covers:
 ``` math
@@ -980,9 +982,9 @@ Put $`P=\prod_i m_i`$ and choose $`x`$ with $`m_i\mid x+i`$ by the Chinese remai
 ``` math
 U_n=\tau-B+i=x+kP+i\qquad\text{for some }0\le i<B.
 ```
-The choice of $`x`$ gives $`m_i\mid U_n`$. Since $`m_i\mid L_n`$ as well, we obtain $`m_i\mid d_n=(a_n-1)U_n-L_n`$, contradicting $`0<d_n\le B<m_i`$.
+The choice of $`x`$ gives $`m_i\mid U_n`$, which is compatible with these unreduced LCM coordinates. Since $`m_i\mid L_n`$ too, it also gives $`m_i\mid d_n=(a_n-1)U_n-L_n`$. The contradiction is $`0<d_n\le B<m_i`$: the jump is too short to be a positive multiple of the modulus.
 
-Every crossing therefore has $`d_n>B`$. A single jump may first cross several selected heights; their combined weight must be bounded by that jump’s excess. If it first crosses $`h\ge1`$ selected heights, their spacing gives $`(h-1)P<d_n`$. Writing $`r=d_n-B\ge1`$ and using $`P\ge B+1`$, we obtain $`d_n=B+r\le Pr`$, hence $`h\le r`$. Since each crossed height is above $`U_n`$, monotonicity of $`f`$ gives
+Every crossing has $`d_n>B`$. We must still avoid counting one excess several times when a jump crosses more than one selected height: their combined weight must fit within that same $`d_n-B`$. If it first crosses $`h\ge1`$ selected heights, their spacing gives $`(h-1)P<d_n`$. Writing $`r=d_n-B\ge1`$ and using $`P\ge B+1`$, we obtain $`d_n=B+r\le Pr`$, hence $`h\le r`$. Since each crossed height is above $`U_n`$, monotonicity of $`f`$ gives
 ``` math
 \sum_{\substack{\tau\text{ first crossed}\\\text{at step }n}}f(\tau)
  \le(d_n-B)f(U_n).
@@ -999,7 +1001,7 @@ Since $`R_n\to\infty`$, the right side diverges for every $`B\ge1`$. The case $`
 
 </div>
 
-The record multipliers themselves supplied the CRT moduli, and the bound $`-V_n<U_n`$ excluded records with $`\rho_n\ge2`$. For reciprocal tails we also have vanishing relative error. This forces the numerator to be unbounded whenever Sylvester behaviour fails.
+The abstract theorem used only unboundedness, not $`U_n\to\infty`$: record multipliers supplied the CRT moduli, and the stated error bound excluded records with $`\rho_n\ge2`$. For reciprocal tails, vanishing relative error and absorption supply the missing alternative: failure of Sylvester behaviour forces $`U_n\to\infty`$.
 
 <div id="long243:res:weightedrecord" class="theorem">
 <p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos243/PaperCompleteR11/CanonicalRecords.lean#L202">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/b4d9b60327e3c4d4cc50acb37e62268788cd77e0/evidence/erdos243-reciprocal-tail-reasoning-surface.md#long243-res-weightedrecord-comparator">Comparator</a></p>
@@ -1023,7 +1025,7 @@ The nonincreasing weights $`1/t`$ and $`1/[t\log(et)]`$ have divergent integrals
 ```
 Its finite lower bound in <a href="#long243:eq:weightedcrossing" data-reference-type="eqref" data-reference="long243:eq:weightedcrossing">[long243:eq:weightedcrossing]</a> is $`P^{-1}\log\bigl(\log(eR_N)/\log(e(R_T+P))\bigr)`$. Further fixed iterated logarithmic factors are allowed whenever the integral still diverges. These are specialisations of one crossing theorem.
 
-The criterion also has an exact expression in the original growth defect. Put $`\gamma_n=a_n^2/a_{n+1}-1`$ and $`\theta_n=E_n/C_n`$. The defect identity gives
+Transferring the criterion to the growth defect requires a summable change in the summands, not merely a pointwise asymptotic. Put $`\gamma_n=a_n^2/a_{n+1}-1`$ and $`\theta_n=E_n/C_n`$. The defect identity gives
 ``` math
 \gamma_n+\theta_n=
  \frac{(1-\theta_n)(a_n-1+\theta_{n+1})}{a_{n+1}},
@@ -1067,7 +1069,7 @@ With the additional limit $`V_n/U_n\to0`$, choose an integer $`K`$ bounding $`U_
 
 # New maxima of reduced numerators
 
-We next reduce each tail to lowest terms, writing $`u_n/v_n`$. This can remove a prime power which remains present in every later LCM $`L_j`$. Before applying coprimality to new maxima of $`u_n`$, we therefore need estimates for the factors that survive cancellation. Throughout this section $`u_n`$ denotes the reduced numerator and $`U_n`$ the LCM numerator of the preceding section.
+We now reduce each tail to lowest terms, writing $`u_n/v_n`$. Coprimality is restored, but persistence is lost: a prime power can disappear from $`v_n`$ while remaining in every later LCM $`L_j`$. Before applying coprimality at new maxima, we must therefore bound what cancellation removes. Lower-case $`u_n`$ is the reduced numerator; upper-case $`U_n`$ remains the LCM numerator of the preceding section.
 
 <a id="fractions-in-lowest-terms."></a>
 
@@ -1128,6 +1130,8 @@ a_{n+1}=\frac{p_n}{q_n}a_n^2-a_n+\frac{q_{n+1}}{p_{n+1}}.
 ```
 Thus $`q_n/p_{n+1}=h_n`$ is precisely the cancellation factor, and $`q_n/p_n\to1`$. This identifies the reduced parameters, not every possible unreduced choice in the original theorem. An upper bound on $`q_n-p_n`$ controls the increase before cancellation in the reduced coordinates. To transfer that bound directly to $`(-E_n)_+=G_n(q_n-p_n)_+`$ would also require control of $`G_n`$.
 
+An old prime power can be lost only when the multiplier supplies exactly its exponent and subtraction cancels more. The formula below separates this case from unequal exponents.
+
 <div id="long243:res:valuationtransition" class="lemma">
 <p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/b4d9b60327e3c4d4cc50acb37e62268788cd77e0/evidence/erdos243-reciprocal-tail-reasoning-surface.md#long243-res-valuationtransition">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/b4d9b60327e3c4d4cc50acb37e62268788cd77e0/evidence/erdos243-reciprocal-tail-reasoning-surface.md#long243-res-valuationtransition-comparator">Comparator</a></p>
 
@@ -1149,7 +1153,7 @@ In particular $`\nu_p(v')\le\max(r,s)`$. A strict loss relative to $`s`$ require
 
 </div>
 
-The factor $`h`$ is removed from $`av`$, after multiplication by $`a`$; this need not lower the prime exponents of the original denominator $`v`$. For example, $`(u,v,a)=(2,15,9)`$ gives $`w=3`$, $`h=3`$ and $`(u',v')=(1,45)`$. The numerator before cancellation exceeds $`u`$ by only $`w-u=1`$, yet the $`3`$-adic valuation of the reduced denominator rises from $`1`$ to $`2`$. This is a finite exact step, not an infinite counterexample.
+Cancellation is measured against the enlarged denominator $`av`$, not against $`v`$. Thus $`h>1`$ need not mean that an old prime power is lost. For example, $`(u,v,a)=(2,15,9)`$ gives $`w=3`$, $`h=3`$ and $`(u',v')=(1,45)`$. The numerator before cancellation exceeds $`u`$ by only $`w-u=1`$, yet the $`3`$-adic valuation of the reduced denominator rises from $`1`$ to $`2`$. This is a finite exact step, not an infinite counterexample.
 
 <div id="long243:res:powerpersistence" class="corollary">
 <p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos243/PaperCompleteR20/PowerPersistence.lean#L27">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/b4d9b60327e3c4d4cc50acb37e62268788cd77e0/evidence/erdos243-reciprocal-tail-reasoning-surface.md#long243-res-powerpersistence-comparator">Comparator</a></p>
@@ -1164,7 +1168,7 @@ The factor $`h`$ is removed from $`av`$, after multiplication by $`a`$; this nee
 
 </div>
 
-These local calculations explain the persistence threshold used below.
+The bound on $`w_n`$ protects the old prime power despite varying cancellation factors. It is needed only until the crossing under study.
 
 <a id="growth-of-the-running-maximum"></a>
 
@@ -1229,7 +1233,7 @@ Suppose $`H_{n+1}-H_n\le c\ell(H_n)`$ eventually for some $`0<c<1`$. For a large
 ```
 The bound on $`H_s`$ uses $`\log H_s=o(s)`$ and $`s=B+o(B)`$. Thus the product is large enough to place the block beyond the previous maximum, but small enough that the allowed jump at its height is less than the block length: $`c\ell(3P)<B`$ for all sufficiently large $`B`$. Both comparisons are needed; existence of a distant CRT block alone would not control a height-dependent jump bound.
 
-*Crossing the block.* Choose $`x\in[P,2P)`$ by the Chinese remainder theorem so that $`m_i\mid x+i`$ for $`0\le i<B`$. At the first record $`C_t\ge x`$ after $`s`$, the preceding maximum is below $`x`$ and its increase is at most $`c\ell(2P)<B`$. Thus $`x\le C_t<x+B<3P`$, so some $`m_i`$ divides both $`C_t`$ and $`D_t`$. The exact updates preserve this common divisor. At the next record $`C_r`$ we would therefore have
+*Crossing the block.* An unreduced numerator may land on a multiple. The modulus then becomes a persistent common divisor, forbidding the *next* small record. Choose $`x\in[P,2P)`$ by the Chinese remainder theorem so that $`m_i\mid x+i`$ for $`0\le i<B`$. At the first record $`C_t\ge x`$ after $`s`$, the preceding maximum is below $`x`$ and its increase is at most $`c\ell(2P)<B`$. Thus $`x\le C_t<x+B<3P`$, so some $`m_i`$ divides both $`C_t`$ and $`D_t`$. The exact updates preserve this common divisor. At the next record $`C_r`$ we would therefore have
 ``` math
 m_i\mid C_r-C_t,\qquad
  0<C_r-C_t\le c\ell(C_t)\le c\ell(3P)<B<m_i,
@@ -1240,7 +1244,7 @@ The integer normalisation matters here. Scaling $`(C,D,E)`$ by a positive intege
 
 *The common gcd and the sharper coefficient.* For any fixed $`N`$, divide the tail from $`N`$ onwards by $`G_N`$. The resulting integer orbit satisfies the same hypotheses. Its running maximum is eventually $`H_n/G_N`$, and $`\ell(H_n/G_N)/\ell(H_n)\to1`$. The auxiliary bound therefore gives $`\Theta\ge G_N`$. If $`G_N`$ is unbounded, then $`\Theta=+\infty`$.
 
-Otherwise $`G_n=g`$ eventually. Fix a later index $`T`$ with $`v_T>1`$. The reduced fractions have pairwise coprime multipliers, each coprime to $`v_T`$. For a large integer $`L`$, exactly
+Otherwise $`G_n=g`$ eventually. Fix a later index $`T`$ with $`v_T>1`$. The reduced fractions have pairwise coprime multipliers, each coprime to $`v_T`$. Its prime factors already exclude the nonunit offsets; new multipliers need cover only the rest. For a large integer $`L`$, exactly
 ``` math
 k_L=\frac{\varphi(v_T)}{v_T}L+O(v_T)
 ```
@@ -1290,7 +1294,7 @@ No upper bound on $`\Theta`$ is proved. If $`G_n`$ is unbounded, the theorem for
 
 *Proof of Theorem <a href="#long243:res:recordamplified" data-reference-type="ref" data-reference="long243:res:recordamplified">31</a>.* Suppose the orbit is not eventually Sylvester and $`\mathcal A_n\le K`$ eventually, for an integer $`K\ge1`$. Absorption and $`|\tilde e_n|/u_n\to0`$ give $`u_n\to\infty`$. Negative reduced errors must occur arbitrarily late, since otherwise $`h_nu_{n+1}=u_n-\tilde e_n`$ would make $`u_n`$ eventually nonincreasing.
 
-The bound controls cancellation as well as upward motion. Fix a late index $`s`$, and let $`t>s`$ be the first subsequent negative-error index. At the intervening steps the reduced numerator is nonincreasing, so $`u_t\le u_{s+1}`$. Since $`R_t\ge u_s`$ and $`m_t=|\tilde e_t|\ge1`$,
+Cancellation may lower $`u_{s+1}`$ without a record. The first later negative error detects the loss: its magnitude is at least one, while $`R_t`$ remembers $`u_s`$. Fix a late $`s`$ and let $`t>s`$ be that first negative-error index. At the intervening steps the reduced numerator is nonincreasing, so $`u_t\le u_{s+1}`$. Since $`R_t\ge u_s`$ and $`m_t=|\tilde e_t|\ge1`$,
 ``` math
 \mathcal A_t=\frac{R_tm_t}{u_t}\ge\frac{u_s}{u_{s+1}}
  =\frac{h_s}{1-\tilde e_s/u_s}.
@@ -1309,7 +1313,7 @@ The estimate at the first later negative error is the lemma in the release, [neg
 
 For Corollary <a href="#long243:res:criticalrate" data-reference-type="ref" data-reference="long243:res:criticalrate">32</a>, the comparison $`|\delta_n-m_n/u_n|\le3/a_n`$ and the rate $`\delta_n=O(1/n)`$ give $`m_n/u_n=O(1/n)`$. If $`u_n=O(n)`$, then $`m_n=O(1)`$. Conversely, $`m_n=O(1)`$ gives $`u_{n+1}\le u_n+m_n`$, hence $`u_n=O(n)`$ and $`R_n=O(n)`$. In either case $`\mathcal A_n=R_nm_n/u_n=O(1)`$, so Theorem <a href="#long243:res:recordamplified" data-reference-type="ref" data-reference="long243:res:recordamplified">31</a> gives eventual Sylvester behaviour. The eventual Sylvester recurrence gives $`u_n=1`$ and $`m_n=0`$ eventually, which proves the converse implications.
 
-The condition bounds the negative reduced error after multiplying it by $`R_n/u_n`$. At a current maximum this is just $`(-\tilde e_n)_+`$; after a decrease the multiplier is larger. A bound on $`(-\tilde e_n)_+`$ does not directly control this additional factor. Under the critical-rate hypothesis, the preceding corollary supplies the required control. The eventual Sylvester recurrence makes the expression eventually zero. We do not derive it for every rational tail satisfying the growth hypothesis.
+The critical-rate assumption is doing real work: a bound on $`(-\tilde e_n)_+`$ alone does not directly control $`R_n/u_n`$ after a decrease. The preceding corollary supplies the missing control from $`\delta_n=O(1/n)`$. No such bound is derived here from the unrestricted quadratic limit.
 
 <div id="long243:res:oddpowersupply" class="lemma">
 <p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/b4d9b60327e3c4d4cc50acb37e62268788cd77e0/evidence/erdos243-reciprocal-tail-reasoning-surface.md#long243-res-oddpowersupply">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/b4d9b60327e3c4d4cc50acb37e62268788cd77e0/evidence/erdos243-reciprocal-tail-reasoning-surface.md#long243-res-oddpowersupply-comparator">Comparator</a></p>
@@ -1337,7 +1341,7 @@ This contradicts the preceding exponential lower bound for all sufficiently larg
 
 </div>
 
-The argument compares the logarithm of the odd denominator part with the logarithm of a factorial bound. It needs neither the prime number theorem nor a lower density of new primes, and makes no such claim.
+This uses only an elementary factorial bound, not prime distribution. The prime may change with $`n`$: choose one large prime power at a late start and protect it until the first forbidden crossing.
 
 <div id="long243:res:unitrecord" class="theorem">
 <p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/b4d9b60327e3c4d4cc50acb37e62268788cd77e0/evidence/erdos243-reciprocal-tail-reasoning-surface.md#long243-res-unitrecord">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/b4d9b60327e3c4d4cc50acb37e62268788cd77e0/evidence/erdos243-reciprocal-tail-reasoning-surface.md#long243-res-unitrecord-comparator">Comparator</a></p>
@@ -1348,7 +1352,7 @@ The argument compares the logarithm of the odd denominator part with the logarit
 
 <div class="proof">
 
-*Proof.* Suppose the orbit is not eventually Sylvester. Absorption gives $`\tilde e_n\ne0`$ on a late tail, so vanishing relative error and integrality give $`u_n\to\infty`$. Choose $`s`$ so large that the unit-increment bound and $`|\tilde e_n|<u_n/2`$ hold for every $`n\ge s`$, and that Lemma <a href="#long243:res:oddpowersupply" data-reference-type="ref" data-reference="long243:res:oddpowersupply">33</a> applies with $`A=3`$. Since $`H_s\ge R_s\ge1`$, it supplies an odd $`Q=p^k\mid v_s`$ with $`Q>(H_s+2)^3>4(R_s+2)`$ and $`Q\ge16`$. Let $`Y`$ be the least multiple of $`p`$ above $`R_s`$. Then $`Y\le R_s+p< Q/4+p\le5Q/4`$. At the first $`t>s`$ with $`u_t\ge Y`$, the integral unit-record increment forces $`u_t=Y`$. Before $`t`$, one has $`w_n<3u_n/2<15Q/8<pQ=p^{k+1}`$. Corollary <a href="#long243:res:powerpersistence" data-reference-type="ref" data-reference="long243:res:powerpersistence">28</a> therefore gives $`p^k\mid v_t`$. But $`p\mid u_t=Y`$, contradicting $`\gcd(u_t,v_t)=1`$. The converse follows because the eventual Sylvester recurrence gives $`u_n=1`$ eventually. ◻
+*Proof.* Suppose the orbit is not eventually Sylvester. Absorption gives $`\tilde e_n\ne0`$ on a late tail, so vanishing relative error and integrality give $`u_n\to\infty`$. Choose $`s`$ so large that the unit-increment bound and $`|\tilde e_n|<u_n/2`$ hold for every $`n\ge s`$, and that Lemma <a href="#long243:res:oddpowersupply" data-reference-type="ref" data-reference="long243:res:oddpowersupply">33</a> applies with $`A=3`$. Since $`H_s\ge R_s\ge1`$, it supplies an odd $`Q=p^k\mid v_s`$ with $`Q>(H_s+2)^3>4(R_s+2)`$ and $`Q\ge16`$. Let $`Y`$ be the least multiple of $`p`$ above $`R_s`$. Then $`Y\le R_s+p< Q/4+p\le5Q/4`$. At the first $`t>s`$ with $`u_t\ge Y`$, the integer maximum rises from at most $`Y-1`$ by at most one, forcing $`u_t=Y`$ regardless of $`u_{t-1}`$. Before $`t`$, one has $`w_n<3u_n/2<15Q/8<pQ=p^{k+1}`$. Corollary <a href="#long243:res:powerpersistence" data-reference-type="ref" data-reference="long243:res:powerpersistence">28</a> therefore gives $`p^k\mid v_t`$. But $`p\mid u_t=Y`$, contradicting $`\gcd(u_t,v_t)=1`$. The converse follows because the eventual Sylvester recurrence gives $`u_n=1`$ eventually. ◻
 
 </div>
 
@@ -1359,6 +1363,8 @@ The two-unit criterion discussed below bounds the actual jump at each record ste
 <a id="counting-jumps-before-a-prime-power-can-be-lost"></a>
 
 ## Counting jumps before a prime power can be lost
+
+Large jumps may skip forbidden values. Under the relative-error bound, $`L=pQ/2`$ keeps the numerator before cancellation below $`pQ`$ until the crossing, protecting the prime power. Odd multiples of $`p`$ exclude two-unit crossings as well: skipping an odd level in two units would leave both adjacent numerators even. We count both crossing jumps and their excess over two.
 
 <div id="long243:res:epochenergy" class="theorem">
 <p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/b4d9b60327e3c4d4cc50acb37e62268788cd77e0/evidence/erdos243-reciprocal-tail-reasoning-surface.md#long243-res-epochenergy">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/b4d9b60327e3c4d4cc50acb37e62268788cd77e0/evidence/erdos243-reciprocal-tail-reasoning-surface.md#long243-res-epochenergy-comparator">Comparator</a></p>
@@ -1377,7 +1383,7 @@ which rearranges to the asserted inequality. ◻
 
 </div>
 
-The next series ignores record jumps of size at most two, apart from finitely many initial terms, and assigns a smaller cost to a large jump when it begins at a large numerator. The eventual Sylvester recurrence gives no late records, so both series converge. The proof shows that a non-Sylvester rational tail contributes a fixed positive amount on arbitrarily late finite intervals. Thus convergence is a genuine additional requirement, not a restatement of the pointwise limit $`|E_n|/C_n\to0`$.
+Crossing requires many jumps or a few large ones. The first series therefore counts jumps of size at least three and measures their excess over two, with weights that detect either contribution. A non-Sylvester tail pays a fixed positive amount on arbitrarily late protected intervals; a Sylvester tail has no late records. The relative-error limit alone gives no convergence.
 
 <div id="long243:res:energycriterion" class="theorem">
 <p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/b4d9b60327e3c4d4cc50acb37e62268788cd77e0/evidence/erdos243-reciprocal-tail-reasoning-surface.md#long243-res-energycriterion">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/b4d9b60327e3c4d4cc50acb37e62268788cd77e0/evidence/erdos243-reciprocal-tail-reasoning-surface.md#long243-res-energycriterion-comparator">Comparator</a></p>
@@ -1697,7 +1703,7 @@ The case $`\gcd(c,m)=1`$ is the [exclusion when $`c`$ and $`m`$ are coprime](htt
 
 <div class="proof">
 
-*Removing the scale.* For general $`c`$, put $`g=\gcd(c,m)`$. Equation <a href="#long243:eq:shape" data-reference-type="eqref" data-reference="long243:eq:shape">[long243:eq:shape]</a> shows $`g\mid D_n`$ for every $`n`$, so dividing $`D`$, $`c`$ and $`m`$ by $`g`$ leaves a system of the same shape with coprime data, which the previous case excludes. ◻
+*Removing the scale.* For general $`c`$, set $`g=\gcd(c,m)`$. Equation <a href="#long243:eq:shape" data-reference-type="eqref" data-reference="long243:eq:shape">[long243:eq:shape]</a> gives $`g\mid D_n`$. Both identities are homogeneous in $`D,c,m`$: dividing them by $`g`$ leaves the multipliers unchanged and gives coprime data, excluded by the previous case. ◻
 
 </div>
 
@@ -1740,7 +1746,7 @@ Otherwise some prime $`p`$ divides $`M`$, divides $`C_0`$, and divides every mag
 
 The first of the two cases above is the [exclusion when no prime of $`M`$ divides all phases](https://github.com/wcook04/plectis-erdos/blob/be89e72217ec9c5f05aa5ec7b915c1ebf0816fdd/lean/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean#L548), the induction is the [exclusion at every scale](https://github.com/wcook04/plectis-erdos/blob/be89e72217ec9c5f05aa5ec7b915c1ebf0816fdd/lean/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean#L690), and the eventual form is the [eventual exclusion](https://github.com/wcook04/plectis-erdos/blob/be89e72217ec9c5f05aa5ec7b915c1ebf0816fdd/lean/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean#L802).
 
-The phase-by-phase proof uses $`e_n<a_n`$ to prevent a multiplier from dividing its own nonzero phase magnitude. This is not a rescaling of the orbit. Nevertheless, for an infinite solution of <a href="#long243:eq:recurrences" data-reference-type="eqref" data-reference="long243:eq:recurrences">[long243:eq:recurrences]</a> with periodic positive magnitudes, the bound follows eventually from the other assumptions. The identity gives $`C_n>0`$, and periodicity gives
+The bound $`e_n<a_n`$ rules out $`a_j\mid e_j`$. It follows eventually, without rescaling: on an infinite orbit with periodic positive magnitudes, bounded errors and exponential denominator growth suffice. The identity gives $`C_n>0`$, and periodicity gives
 ``` math
 C_n=\frac{M}{h}n+O(1),\qquad \sup_ne_n<\infty,
 ```
@@ -1878,7 +1884,7 @@ G_n=G_{n+1}=\cdots=G_{n+L}.
 
 The first assertion is the [sublinear strict-growth theorem](https://github.com/wcook04/plectis-erdos/blob/be89e72217ec9c5f05aa5ec7b915c1ebf0816fdd/lean/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean#L2186); the second is the [arbitrarily late constant-block theorem](https://github.com/wcook04/plectis-erdos/blob/be89e72217ec9c5f05aa5ec7b915c1ebf0816fdd/lean/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean#L2202). The proof first converts vanishing relative error into subexponential growth of $`C_n`$. Each strict divisibility increase of $`G_n`$ contributes a factor of at least $`2`$, so $`2^{\Gamma(N)}G_0\le G_N\le C_N`$. Taking logarithms gives $`\Gamma(N)=o(N)`$. For $`L=0`$ the second assertion is immediate. For $`L\ge1`$, if every block of $`L`$ successive transitions beyond $`B`$ contained a strict increase, disjoint such blocks would give $`\Gamma(N)\ge(N-B)/L-O(1)`$, a contradiction.
 
-The quantifiers matter. Proposition <a href="#long243:res:gcdstab" data-reference-type="ref" data-reference="long243:res:gcdstab">51</a> uses a bound on negative magnitudes at arbitrarily late indices and yields eventual constancy. Proposition <a href="#long243:res:gcdsparse" data-reference-type="ref" data-reference="long243:res:gcdsparse">52</a> uses only vanishing relative error and yields arbitrarily late constant blocks of each prescribed finite length. This proof does not establish eventual constancy under that hypothesis, nor does it bound the negative magnitudes.
+The starting index may depend on the block length; arbitrarily long constant blocks do not give an infinite constant tail. Proposition <a href="#long243:res:gcdstab" data-reference-type="ref" data-reference="long243:res:gcdstab">51</a> needs additional bounded negative witnesses, which Proposition <a href="#long243:res:gcdsparse" data-reference-type="ref" data-reference="long243:res:gcdsparse">52</a> does not supply.
 
 <div id="243-long-bounded-increases">
 
@@ -1975,11 +1981,11 @@ Choose an integer upper bound $`K`$ for $`C_n`$. Each strict rise of the integer
 
 </div>
 
-The same proof allows any positive real $`C_0`$, provided $`E_n\in\mathbb{Z}`$: after the finitely many rises, the bounded positive values lie in the finite set $`(C_0+\mathbb{Z})\cap(0,K]`$, so they stabilise. The Lean statement retains integer-valued $`C_n`$.
+Integer increments suffice even for positive real $`C_0`$: the bounded values lie in the finite set $`(C_0+\mathbb{Z})\cap(0,K]`$, so the same proof works. The Lean statement retains integer-valued $`C_n`$.
 
 The two indispensable features of this argument are positivity and discrete increments. With $`C_n=1+1/(n+1)`$ and $`E_n=1/((n+1)(n+2))`$, the numerator decreases forever with zero relative-increase sum, but the errors are not integers. With $`C_n=-n-1`$ and $`E_n=1`$, the increments are integers but positivity fails.
 
-For the gap sequence of the pseudo-greedy expansion, the same criterion, with the same product bound and integer descent, appears in the Erdős Problem a Day working report on Problem #243, dated 12 August 2026 \[erdosproblemaday243, A global termination criterion\]. Bado’s Theorem 11.1 also accounts for the factors removed in LCM clearing \[bado2026, Thm. 11.1 and Remark 11.3, p. 9\]. In the notation of Section <a href="#long243:sec:lcmrecords" data-reference-type="ref" data-reference="long243:sec:lcmrecords">6</a>, the update gives
+The pseudo-greedy gap version, with the same product bound and integer descent, appears in the 12 August 2026 working report \[erdosproblemaday243, A global termination criterion\]. Bado additionally accounts for factors removed in LCM clearing \[bado2026, Thm. 11.1 and Remark 11.3, p. 9\]. In the notation of Section <a href="#long243:sec:lcmrecords" data-reference-type="ref" data-reference="long243:sec:lcmrecords">6</a>, the update gives
 ``` math
 \log U_N\le\log U_0+
  \sum_{n<N}\frac{(-E_n)_+}{C_n}-\sum_{n<N}\log\rho_n.
@@ -2073,7 +2079,7 @@ To compare repeated prime factors in the denominator with its total size, define
 ``` math
 L_0=D_0,\qquad L_{n+1}=\operatorname{lcm}(L_n,a_n),\qquad M_n=\frac{D_n}{L_n}.
 ```
-Since $`D_n=D_0\prod_{j<n}a_j`$, the quotient is integral and $`M_nL_n=D_n`$. The product counts every occurrence of a prime, whereas the least common multiple keeps only its largest exponent. The quotient $`M_n`$ records the remaining factors. Problem <a href="#long243:res:lcmheight" data-reference-type="ref" data-reference="long243:res:lcmheight">59</a> below asks whether failure of the Sylvester recurrence would force this quotient to grow exponentially, contradicting its known subexponential upper bound. We first record a local estimate for cancellation during a recovery interval; it does not by itself give that global lower bound.
+The integer $`M_n`$ records prime factors counted repeatedly in $`D_n=D_0\prod_{j<n}a_j`$ but only to their largest exponent in $`L_n`$; thus $`M_nL_n=D_n`$. Problem <a href="#long243:res:lcmheight" data-reference-type="ref" data-reference="long243:res:lcmheight">59</a> asks whether failure of the Sylvester recurrence forces exponential growth of $`M_n`$, contradicting its subexponential upper bound. The following recovery estimate is local and does not supply that lower bound.
 
 <a id="cancellation-during-recovery-intervals"></a>
 
@@ -2103,7 +2109,7 @@ To see this, divide the recurrence by $`u_n`$ and multiply over the interval:
  =\prod_{r\le n<r+L}\left(1-\frac{\tilde e_n}{u_n}\right)
  <(1+1/K)^L.
 ```
-The recovery hypothesis $`u_r\le u_{r+L}`$ makes the endpoint ratio at least $`1`$, so $`\prod_{r\le n<r+L}h_n<(1+1/K)^L`$. The least common multiple of the $`m_q`$ divides the product of the $`c_n`$, and $`c_n^2\mid h_n`$ at every step. Its square therefore divides, and is at most, the positive integer $`\prod_{r\le n<r+L}h_n`$. Multiplying by $`K^L`$ proves the claimed bound. This is the [bound on cancellation over a recovery interval](https://github.com/wcook04/plectis-erdos/blob/be89e72217ec9c5f05aa5ec7b915c1ebf0816fdd/lean/ErdosProblems/Erdos243/RepairEntropy.lean#L48).
+Recovery makes the endpoint ratio at least $`1`$, giving $`\prod_{r\le n<r+L}h_n<(1+1/K)^L`$. Without $`u_r\le u_{r+L}`$, a small endpoint ratio could conceal a large cancellation product. The least common multiple of the $`m_q`$ divides the product of the $`c_n`$, and $`c_n^2\mid h_n`$ at every step. Its square therefore divides, and is at most, the positive integer $`\prod_{r\le n<r+L}h_n`$. Multiplying by $`K^L`$ proves the claimed bound. This is the [bound on cancellation over a recovery interval](https://github.com/wcook04/plectis-erdos/blob/be89e72217ec9c5f05aa5ec7b915c1ebf0816fdd/lean/ErdosProblems/Erdos243/RepairEntropy.lean#L48).
 
 The square in <a href="#long243:eq:repair-entropy" data-reference-type="eqref" data-reference="long243:eq:repair-entropy">[long243:eq:repair-entropy]</a> comes from the assumption $`c_n^2\mid h_n`$. If the least common multiple of the chosen moduli is at least $`2^{|R|}`$, then
 ``` math
@@ -2120,7 +2126,7 @@ For a fixed number of steps, the same estimate has a simpler consequence: a suff
 ``` math
 \prod_{0\le i<L}h_{r+i}=1.
 ```
-Indeed, choose $`K`$ so large that $`(1+1/K)^L<2`$ and apply the same product estimate beyond its error threshold. The positive integer product is then smaller than $`2`$, so it equals $`1`$. The same $`K`$ works for every length $`1\le j\le L`$, since $`(1+1/K)^j\le(1+1/K)^L<2`$. Thus, after a sufficiently late step with $`h_n>1`$, the numerator cannot regain its starting value at any of the next $`L`$ indices. This includes a recovery followed by another fall before the last endpoint. The fixed-length conclusion is formalised as [absence of late cancellation during recovery intervals of fixed length](https://github.com/wcook04/plectis-erdos/blob/be89e72217ec9c5f05aa5ec7b915c1ebf0816fdd/lean/ErdosProblems/Erdos243/RepairEntropy.lean#L107). The theorem does not bound a recovery length that varies with $`r`$, nor does it supply a lower bound for the least common multiple of the chosen moduli. Those are the missing inputs needed to turn <a href="#long243:eq:repair-entropy" data-reference-type="eqref" data-reference="long243:eq:repair-entropy">[long243:eq:repair-entropy]</a> into a global contradiction.
+Indeed, choose $`K`$ so large that $`(1+1/K)^L<2`$ and apply the same product estimate beyond its error threshold. The positive integer product is then smaller than $`2`$, so it equals $`1`$. The same $`K`$ works for every length $`1\le j\le L`$, since $`(1+1/K)^j\le(1+1/K)^L<2`$. Thus, after a sufficiently late step with $`h_n>1`$, the numerator cannot regain its starting value at any of the next $`L`$ indices. This includes a recovery followed by another fall before the last endpoint. The fixed-length conclusion is formalised as [absence of late cancellation during recovery intervals of fixed length](https://github.com/wcook04/plectis-erdos/blob/be89e72217ec9c5f05aa5ec7b915c1ebf0816fdd/lean/ErdosProblems/Erdos243/RepairEntropy.lean#L107). The threshold $`N`$ depends on $`L`$: late cancellations require longer recoveries, but have not been excluded. A global contradiction needs control of those varying lengths and a lower bound on the moduli’s least common multiple; the interval estimate supplies neither.
 
 <div id="long243:res:lcmheight" class="problem">
 
@@ -2174,7 +2180,7 @@ By Proposition <a href="#long243:res:frontier" data-reference-type="ref" data-r
 
 </div>
 
-An affirmative answer closes Problem #243 by Theorem <a href="#long243:res:mass" data-reference-type="ref" data-reference="long243:res:mass">55</a>. The summands are nonnegative and tend to zero, so $`\log(1+t)`$ is comparable to $`t`$ at their values. Convergence is therefore equivalent to boundedness of the partial products $`\prod_{n<N}(1+(-E_n)_+/C_n)`$, the same criterion in multiplicative form. A negative answer requires a sequence satisfying the full growth and rationality hypotheses. A locally admissible state orbit is insufficient. By Theorem <a href="#long243:res:weightedrecord" data-reference-type="ref" data-reference="long243:res:weightedrecord">26</a>, it is enough to establish the finiteness of <a href="#long243:eq:weightedgrowth" data-reference-type="eqref" data-reference="long243:eq:weightedgrowth">[long243:eq:weightedgrowth]</a> for one nonincreasing weight with divergent integral and one fixed $`B\ge0`$. The equivalent sum in Theorem <a href="#long243:res:weightedrecord" data-reference-type="ref" data-reference="long243:res:weightedrecord">26</a> uses only steps where the LCM numerator exceeds its previous maximum. It subtracts $`B`$ from each upward jump, takes the positive part and weights it by $`f(U_n)`$.
+An affirmative answer closes Problem #243 by Theorem <a href="#long243:res:mass" data-reference-type="ref" data-reference="long243:res:mass">55</a>. Since the summands tend to zero and $`\log(1+t)\sim t`$, convergence is equivalent to bounded partial products $`\prod_{n<N}(1+(-E_n)_+/C_n)`$. A negative answer requires the full growth and rationality hypotheses, not merely a locally admissible orbit. By Theorem <a href="#long243:res:weightedrecord" data-reference-type="ref" data-reference="long243:res:weightedrecord">26</a>, finiteness of <a href="#long243:eq:weightedgrowth" data-reference-type="eqref" data-reference="long243:eq:weightedgrowth">[long243:eq:weightedgrowth]</a> for one nonincreasing weight with divergent integral and one fixed $`B\ge0`$ also suffices. The equivalent record-only sum in Theorem <a href="#long243:res:weightedrecord" data-reference-type="ref" data-reference="long243:res:weightedrecord">26</a> weights the positive excess of each actual upward jump over $`B`$ by $`f(U_n)`$.
 
 <div id="long243:rem:relative-error-boundary" class="remark">
 
@@ -2200,7 +2206,7 @@ Thus the bounded-increment hypothesis of Theorem <a href="#long243:res:barrier"
 
 <div class="proof">
 
-*Proof.* Choose increasing primes $`p_i>\max\{\exp(\exp((i+2)^2)),2^{i+3}\}`$, for $`i\ge0`$. Primes of arbitrarily large size suffice; no distribution theorem is used. Then $`\theta=\sum_i1/p_i<1/4`$ and $`k(z)=\#\{i:p_i\le z\}\le\sqrt{\log\log z}`$ whenever $`z`$ is large. For integer $`x`$ put $`L(x)=\lceil4\sqrt{\log\log(x+e^e)}+8\rceil`$. Since $`L(x)=o(x)`$, eventually $`L(x)>k(x+L(x))/(1-\theta)`$. The elementary window bound of Proposition <a href="#long243:res:coprimalitycap" data-reference-type="ref" data-reference="long243:res:coprimalitycap">41</a> leaves an integer in $`[x,x+L(x))`$ divisible by no $`p_i`$. The set of such integers is therefore unbounded. Enumerate it increasingly as $`(u_n)`$ and apply the same bound with $`x=u_n+1`$ to obtain $`u_{n+1}-u_n\le L(u_n+1)`$. For prime moduli nondivisibility is exactly coprimality, proving every claim. The moduli are deliberately much sparser than the scale used in the next theorem. ◻
+*Proof.* Choose increasing primes $`p_i>\max\{\exp(\exp((i+2)^2)),2^{i+3}\}`$, for $`i\ge0`$. Primes of arbitrarily large size suffice; no distribution theorem is used. Then $`\theta=\sum_i1/p_i<1/4`$ and $`k(z)=\#\{i:p_i\le z\}\le\sqrt{\log\log z}`$ whenever $`z`$ is large. For integer $`x`$ put $`L(x)=\lceil4\sqrt{\log\log(x+e^e)}+8\rceil`$. Since $`L(x)=o(x)`$, eventually $`L(x)>k(x+L(x))/(1-\theta)`$. The elementary window bound of Proposition <a href="#long243:res:coprimalitycap" data-reference-type="ref" data-reference="long243:res:coprimalitycap">41</a> leaves an integer in $`[x,x+L(x))`$ divisible by no $`p_i`$. The set of such integers is therefore unbounded. Enumerate it increasingly as $`(u_n)`$ and apply the same bound with $`x=u_n+1`$ to obtain $`u_{n+1}-u_n\le L(u_n+1)`$. For prime moduli nondivisibility is exactly coprimality, proving every claim. Sparse moduli defeat the abstract coprimality argument, not the exact tail recurrences. The next theorem instead fixes the moduli’s double-exponential scale. ◻
 
 </div>
 
@@ -2227,7 +2233,7 @@ M_T=\prod_{j<T}m_j,\qquad
 ```
 Here $`\theta_T\to0`$. By the Chinese remainder theorem, avoiding the first $`T`$ whole moduli selects precisely the fraction $`\sigma_T`$ of the residues modulo $`M_T`$.
 
-For the upper bound, an integer interval $`[x,x+L)`$ contains at least $`\sigma_TL-M_T`$ integers avoiding that prefix. The remaining moduli cover at most $`L\theta_T+k(x+L)`$ integers. Choose $`T`$ large enough that $`\sigma_T>\theta_T`$, and then any $`c>(\sigma_T-\theta_T)^{-1}`$. For $`L=\lceil c\ell(x)\rceil`$, the number left is positive for all sufficiently large $`x`$, since $`k(x+L)=\ell(x)+O(1)`$. Thus the set being enumerated is unbounded, and every sufficiently late such interval meets it. Applying this at $`x=u_n+1`$ gives
+For the upper bound, fix $`T`$ before sending the interval to infinity, so the prefix error $`M_T`$ stays constant. An integer interval $`[x,x+L)`$ contains at least $`\sigma_TL-M_T`$ integers avoiding that prefix. The remaining moduli cover at most $`L\theta_T+k(x+L)`$ integers. Choose $`T`$ large enough that $`\sigma_T>\theta_T`$, and then any $`c>(\sigma_T-\theta_T)^{-1}`$. For $`L=\lceil c\ell(x)\rceil`$, the number left is positive for all sufficiently large $`x`$, since $`k(x+L)=\ell(x)+O(1)`$. Thus the set being enumerated is unbounded, and every sufficiently late such interval meets it. Applying this at $`x=u_n+1`$ gives
 ``` math
 \limsup_n\frac{u_{n+1}-u_n}{\ell(u_n)}
  \le(\sigma_T-\theta_T)^{-1}.
@@ -2320,7 +2326,7 @@ The series converge by the stated rapid-growth rate. If the original sum were ra
 
 ## The square-specialisation proofs
 
-The Lean proofs of Lemma <a href="#long243:res:squarespec" data-reference-type="ref" data-reference="long243:res:squarespec">8</a>, Proposition <a href="#long243:res:transportsquare" data-reference-type="ref" data-reference="long243:res:transportsquare">9</a>, Theorem <a href="#long243:res:cubicexclusion" data-reference-type="ref" data-reference="long243:res:cubicexclusion">4</a> and Theorem <a href="#long243:res:cubicrate" data-reference-type="ref" data-reference="long243:res:cubicrate">2</a> assume no form of the Chebotarev theorem. The ordinary proof of Lemma <a href="#long243:res:squarespec" data-reference-type="ref" data-reference="long243:res:squarespec">8</a> above uses the classical finite-Galois Chebotarev theorem; its Lean proof uses the simple pole of the Dedekind zeta function instead, as described after that proof, and the Lean proofs of the other three pass through the lemma. The Lean statement of Theorem <a href="#long243:res:cubicrate" data-reference-type="ref" data-reference="long243:res:cubicrate">2</a> is indexed from zero; the one-based conclusion uses the finite-prefix argument above.
+Lemma <a href="#long243:res:squarespec" data-reference-type="ref" data-reference="long243:res:squarespec">8</a> and its consequences, Proposition <a href="#long243:res:transportsquare" data-reference-type="ref" data-reference="long243:res:transportsquare">9</a>, Theorem <a href="#long243:res:cubicexclusion" data-reference-type="ref" data-reference="long243:res:cubicexclusion">4</a> and Theorem <a href="#long243:res:cubicrate" data-reference-type="ref" data-reference="long243:res:cubicrate">2</a>, are formalised without Chebotarev. The printed proof of Lemma <a href="#long243:res:squarespec" data-reference-type="ref" data-reference="long243:res:squarespec">8</a> uses that theorem; its Lean proof instead uses the simple pole of the Dedekind zeta function. The zero-indexed Lean statement of Theorem <a href="#long243:res:cubicrate" data-reference-type="ref" data-reference="long243:res:cubicrate">2</a> requires the finite-prefix bridge above.
 
 The nonintegral-rate formal proof uses the real-parameter extraction theorem and a quantitative canonical-tail estimate. Convergence of the reciprocal series is derived from the rate.
 
@@ -2371,7 +2377,7 @@ the [forced numerator](https://github.com/wcook04/plectis-erdos/blob/be89e72217e
 
 <div class="proof">
 
-*Proof.* Define $`M(0,i)=1`$ and $`M(h+1,i)=(i+2)M(h,i+1)`$. Thus $`M(h,0)=(h+1)!`$. We prove the stronger statement that, at index $`i`$, congruent inputs modulo $`M(h,i)`$ give the same answer to whether the next $`h`$ quotients are all integral. There is nothing to prove for $`h=0`$.
+*Proof.* Each exact division consumes a congruence factor. Retain the remaining factors by setting $`M(0,i)=1`$ and $`M(h+1,i)=(i+2)M(h,i+1)`$. Thus $`M(h,0)=(h+1)!`$. We prove the stronger statement that, at index $`i`$, congruent inputs modulo $`M(h,i)`$ give the same answer to whether the next $`h`$ quotients are all integral. There is nothing to prove for $`h=0`$.
 
 For the inductive step, suppose $`a\equiv b\pmod{(i+2)M(h,i+1)}`$. Since $`\operatorname{num}(i,\cdot)`$ is an integer polynomial, its values at $`a`$ and $`b`$ are congruent modulo that product. In particular, one is divisible by $`i+2`$ if and only if the other is. If neither is divisible, both recursions stop. Otherwise their quotients are congruent modulo $`M(h,i+1)`$, so the induction hypothesis applies to the remaining $`h`$ updates at index $`i+1`$. Taking $`i=0`$ proves the claim. ◻
 
@@ -2381,13 +2387,13 @@ The formal [factorial residue reduction](https://github.com/wcook04/plectis-erdo
 
 For $`h=1`$, the modulus is $`2!=2`$. The first quotient is integral if and only if $`2\mid a^2-2a+3`$, or equivalently if $`a`$ is odd. For instance, $`\operatorname{num}(0,3)=6`$ and $`\operatorname{num}(0,4)=11`$. Thus the parity of $`a`$ decides the first step, as Theorem <a href="#long243:res:residue" data-reference-type="ref" data-reference="long243:res:residue">64</a> asserts in this case.
 
-Exact enumeration for $`2\le a_0<5000`$ gives a maximum of $`17`$ successful updates, or $`18`$ multiplier values including $`a_0`$. Nine seeds attain it, the least being $`1501`$. The seed $`a_0=1`$ is excluded: it gives $`a_n=1`$ at every step and violates the hypothesis $`a_n\ge2`$. This procedure tests exact division only; it does not test all the conditions required of a positive integer solution of the recurrences. The finite search does not prove the infinite exclusion; Theorem <a href="#long243:res:constant" data-reference-type="ref" data-reference="long243:res:constant">44</a> does so under its stated hypotheses. The reduction remains useful because its shrinking-modulus argument applies to other recurrences defined by polynomial division.
+Exact enumeration for $`2\le a_0<5000`$ gives a maximum of $`17`$ successful updates, or $`18`$ multiplier values including $`a_0`$. Nine seeds attain it, the least being $`1501`$. The seed $`a_0=1`$ is excluded: it gives $`a_n=1`$ at every step and violates the hypothesis $`a_n\ge2`$. The test certifies exact division, not a positive orbit. Even a surviving seed for every finite horizon would not supply one integer seed surviving forever. Theorem <a href="#long243:res:constant" data-reference-type="ref" data-reference="long243:res:constant">44</a> proves the infinite exclusion; the residue reduction also applies to other polynomial-division recurrences.
 
 <a id="sec:erdos-243-complete-family-map"></a>
 
 # Result map and proof dependencies
 
-The short paper proves cubic-rate irrationality in Section 3 and the bounded-increment criterion in Section 4. Their dependencies are summarised below. Details retained here are the signed-series comparison in Section <a href="#long243:sec:priorwork" data-reference-type="ref" data-reference="long243:sec:priorwork">3</a>, the integer-coefficient extension in Section <a href="#long243:sec:lcmrecords" data-reference-type="ref" data-reference="long243:sec:lcmrecords">6</a>, and the general $`1+c/n`$ comparison in Section <a href="#long243:sec:records" data-reference-type="ref" data-reference="long243:sec:records">7</a>. Section <a href="#long243:sec:cubicrate" data-reference-type="ref" data-reference="long243:sec:cubicrate">2</a> retains the full regular-rate extraction and positive-density cubic exclusion; Theorem <a href="#long243:res:recorddichotomy" data-reference-type="ref" data-reference="long243:res:recorddichotomy">29</a> gives the separate double-logarithmic argument. The short note also includes the scalar failed-divisibility example from Section <a href="#long243:sec:open" data-reference-type="ref" data-reference="long243:sec:open">14</a>.
+Beyond the short paper, this companion supplies signed-series comparisons (Section <a href="#long243:sec:priorwork" data-reference-type="ref" data-reference="long243:sec:priorwork">3</a>), integer coefficients (Section <a href="#long243:sec:lcmrecords" data-reference-type="ref" data-reference="long243:sec:lcmrecords">6</a>), general $`1+c/n`$ rates (Section <a href="#long243:sec:records" data-reference-type="ref" data-reference="long243:sec:records">7</a>), and regular-rate extraction with positive-density cubic exclusion (Section <a href="#long243:sec:cubicrate" data-reference-type="ref" data-reference="long243:sec:cubicrate">2</a>). Theorem <a href="#long243:res:recorddichotomy" data-reference-type="ref" data-reference="long243:res:recorddichotomy">29</a> gives the double-logarithmic bound; Section <a href="#long243:sec:open" data-reference-type="ref" data-reference="long243:sec:open">14</a> includes the scalar failed-divisibility example. The principal dependencies are:
 
 <a id="bounded-upward-increments."></a>
 
@@ -2405,7 +2411,7 @@ The inequality $`C_{n+1}\le C_n(1+(-E_n)_+/C_n)`$ turns summability into a unifo
 
 #### New maxima and prime-power persistence.
 
-A bound on the negative reduced error scaled by the previous maximum also bounds every cancellation factor. Primes larger than that bound persist in the reduced denominator, giving the CRT contradiction in Theorem <a href="#long243:res:recordamplified" data-reference-type="ref" data-reference="long243:res:recordamplified">31</a>. The double-logarithmic argument uses the density-one coprimality count to obtain enough moduli, then controls the height of the CRT block. The LCM numerator gives weighted first-crossing estimates. A prime power dividing the reduced denominator persists while the unreduced next numerator stays below the threshold in Corollary <a href="#long243:res:powerpersistence" data-reference-type="ref" data-reference="long243:res:powerpersistence">28</a>. Crossings can be counted before that threshold is reached.
+The amplified error bounds cancellation, protecting large primes for Theorem <a href="#long243:res:recordamplified" data-reference-type="ref" data-reference="long243:res:recordamplified">31</a>. Density-one coprimality and CRT height control give the double-logarithmic bound. LCM tails give weighted crossings without primitive numerators. For reduced tails, Corollary <a href="#long243:res:powerpersistence" data-reference-type="ref" data-reference="long243:res:powerpersistence">28</a> protects a prime power below its numerator threshold, allowing crossings to be counted before that protection fails.
 
 <a id="cubic-rate."></a>
 

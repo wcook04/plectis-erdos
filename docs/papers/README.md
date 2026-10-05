@@ -274,7 +274,7 @@ Start here (selected for this guide): [Introduction](full-text/erdos-68-factoria
 
 **Factorial Linear Forms and Denominators Detailed Proofs and Rationality Criteria**
 
-[full text](full-text/erdos68-factorial-reasoning-surface.md) · [PDF](../../paper/68/erdos68-factorial-reasoning-surface.pdf) · [LaTeX source](../../paper/68/erdos68-factorial-reasoning-surface.tex) · 45 sections · `erdos68-factorial-reasoning-surface` · native to this repository
+[full text](full-text/erdos68-factorial-reasoning-surface.md) · [PDF](../../paper/68/erdos68-factorial-reasoning-surface.pdf) · [LaTeX source](../../paper/68/erdos68-factorial-reasoning-surface.tex) · 46 sections · `erdos68-factorial-reasoning-surface` · native to this repository
 
 Start here (selected for this guide): [Carries and factorial digits](full-text/erdos68-factorial-reasoning-surface.md#long68:sec:carry), [Finite denominator exclusions](full-text/erdos68-factorial-reasoning-surface.md#long68:sec:finite), [Further arithmetic questions](full-text/erdos68-factorial-reasoning-surface.md#long68:sec:open), [Relations among the criteria](full-text/erdos68-factorial-reasoning-surface.md#sec:erdos-68-complete-family-map).
 
@@ -316,7 +316,7 @@ Start here (selected for this guide): [Introduction](full-text/erdos-249-binary-
 
 **The Binary Totient Series**
 
-[full text](full-text/erdos249-totient-reasoning-surface.md) · [PDF](../../paper/249/erdos249-totient-reasoning-surface.pdf) · [LaTeX source](../../paper/249/erdos249-totient-reasoning-surface.tex) · 170 sections · `erdos249-totient-reasoning-surface` · native to this repository
+[full text](full-text/erdos249-totient-reasoning-surface.md) · [PDF](../../paper/249/erdos249-totient-reasoning-surface.pdf) · [LaTeX source](../../paper/249/erdos249-totient-reasoning-surface.tex) · 168 sections · `erdos249-totient-reasoning-surface` · native to this repository
 
 Start here (selected for this guide): [Rational comparison sequences](full-text/erdos249-totient-reasoning-surface.md#sec:wall), [Conditions that would imply irrationality](full-text/erdos249-totient-reasoning-surface.md#sec:survivors), [Series identities and finite exclusions](full-text/erdos249-totient-reasoning-surface.md#sec:series), [Exact dyadic rank and the limits of a rank argument](full-text/erdos249-totient-reasoning-surface.md#sec:mahler-defect).
 
@@ -387,7 +387,7 @@ Start here (selected for this guide): [Two sums from running least common multip
 
 **Paths in Polynomial Lemniscates: A Degree-Seven Counterexample and Radial Connections**
 
-[full text](full-text/erdos-1041-lemniscate-newton-flow.md) · [PDF](../../paper/1041/erdos-1041-lemniscate-newton-flow.pdf) · [LaTeX source](../../paper/1041/erdos-1041-lemniscate-newton-flow.tex) · 26 sections · `erdos-1041-lemniscate-newton-flow` · native to this repository
+[full text](full-text/erdos-1041-lemniscate-newton-flow.md) · [PDF](../../paper/1041/erdos-1041-lemniscate-newton-flow.pdf) · [LaTeX source](../../paper/1041/erdos-1041-lemniscate-newton-flow.tex) · 29 sections · `erdos-1041-lemniscate-newton-flow` · native to this repository
 
 Archived edition: [aiXiv:2609.03284v1](https://aixiv.online/abs/2609.03284v1) ([PDF](https://aixiv.online/pdf/2609.03284v1), [source archive](https://aixiv.online/src/2609.03284v1)); published 2026-09-27 from [source `551bae6dc6e7`](https://github.com/wcook04/plectis-erdos/blob/551bae6dc6e732cf85172d66323c8d2bc77ba962/paper/1041/erdos-1041-lemniscate-newton-flow.tex).
 
@@ -429,7 +429,7 @@ Start here (selected for this guide): [The region b^{\mu}<a and the base 31/4](f
 
 **A Repository-Based System for Research and Publication**
 
-[full text](full-text/claim-faithful-publication-systems-paper.md) · [PDF](../../paper/systems/claim-faithful-publication-systems-paper.pdf) · [LaTeX source](../../paper/systems/claim-faithful-publication-systems-paper.tex) · 26 sections · `claim-faithful-publication-systems` · native to this repository
+[full text](full-text/claim-faithful-publication-systems-paper.md) · [PDF](../../paper/systems/claim-faithful-publication-systems-paper.pdf) · [LaTeX source](../../paper/systems/claim-faithful-publication-systems-paper.tex) · 41 sections · `claim-faithful-publication-systems` · native to this repository
 
 Start here (selected for this guide): [Introduction](full-text/claim-faithful-publication-systems-paper.md#sec:intro), [Worked case: reviewing an explanation](full-text/claim-faithful-publication-systems-paper.md#sec:example), [Publication and revision](full-text/claim-faithful-publication-systems-paper.md#sec:paper), [Proof and publication checks](full-text/claim-faithful-publication-systems-paper.md#sec:checks), [Limits](full-text/claim-faithful-publication-systems-paper.md#sec:limits).
 
@@ -483,7 +483,7 @@ Selected sections of this historical account: [The strategy](full-text/open-sour
 
 [full text](full-text/writing-mathematics-from-reviewed-revisions.md) · [PDF](../../paper/exposition/writing-mathematics-from-reviewed-revisions.pdf) · [LaTeX source](../../paper/exposition/writing-mathematics-from-reviewed-revisions.tex) · 32 sections · `writing-mathematics-from-reviewed-revisions` · native to this repository
 
-Start here (selected for this guide): [Learning to explain a particular argument](full-text/writing-mathematics-from-reviewed-revisions.md#sec:reading), [Two revisions and the mathematics that permits them](full-text/writing-mathematics-from-reviewed-revisions.md#sec:revisions), [Review changes without changing their meaning](full-text/writing-mathematics-from-reviewed-revisions.md#sec:review), [Keeping a useful practice small](full-text/writing-mathematics-from-reviewed-revisions.md#sec:practice).
+Start here (selected for this guide): [Learning to explain a particular argument](full-text/writing-mathematics-from-reviewed-revisions.md#sec:reading), [Explain the choices in a proof](full-text/writing-mathematics-from-reviewed-revisions.md#sec:revisions), [Review changes without changing their meaning](full-text/writing-mathematics-from-reviewed-revisions.md#sec:review), [Keeping a useful practice small](full-text/writing-mathematics-from-reviewed-revisions.md#sec:practice).
 
 ### How should an AI write a clear and mathematically faithful paper?
 

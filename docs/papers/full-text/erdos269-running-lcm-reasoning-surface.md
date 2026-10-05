@@ -32,7 +32,7 @@ We begin with an irrationality result for three primes.
 
 </div>
 
-The proof in Section <a href="#long269:sec:distinct-235" data-reference-type="ref" data-reference="long269:sec:distinct-235">2</a> groups the jumps between consecutive powers of $`2`$. Rationality would leave only finitely many normalised tails. To deduce eventual periodicity, we show that a tail determines the next block and the following tail: the spacing of powers of $`5`$ gives a bound that separates the five possible affine images. The irrational frequency of powers of $`3`$ then gives a contradiction.
+The proof in Section <a href="#long269:sec:distinct-235" data-reference-type="ref" data-reference="long269:sec:distinct-235">2</a> gives the primes three different roles. Powers of $`2`$ delimit the blocks; powers of $`5`$ occur often enough to separate the five affine tail images; powers of $`3`$ have an irrational block frequency. Separation makes each tail determine the next block and tail. Under rationality there are only finitely many tails, so repetition would force an impossible periodic block sequence.
 
 Erdős asserted the general conclusion for every finite $`P`$ with $`|P|\ge2`$ in his letter of 1 January 1973, without printing a proof \[erdos1974letter, p. 335\]. The theorem above is a special case of that assertion. The general argument in Section <a href="#long269:sec:distinct-all" data-reference-type="ref" data-reference="long269:sec:distinct-all">5.1</a> compares nearby tails and finds an isolated interchange of jumps on a torus. We retain it as an ordinary argument awaiting formalisation, with its intermediate claims stated as remarks. The specialised five-map proof is independent of that argument.
 
@@ -42,8 +42,6 @@ The question in Erdős Problem #269 retains multiplicities. If $`a_1<a_2<\cdots
              =\sum_{u\in\mathcal S_P}\frac1{\operatorname{L}(u)}
 ```
 \[erdosgraham1980, p. 65\]\[erdos1988, p. 106\]; the numbering is Bloom’s \[erdosproblems\]. For $`P=\{2,3,5\}`$, the integers $`5`$ and $`6`$ both have running LCM $`60`$. They contribute $`2/60`$ to $`\mathcal R_P`$ and $`1/60`$ to $`\mathcal D_P`$. Thus Theorem <a href="#long269:res:distinct-height-235" data-reference-type="ref" data-reference="long269:res:distinct-height-235">1</a> concerns the sum over distinct values, whereas the problem concerns the sum with multiplicity. The arguments in this paper leave $`\mathcal R_P`$ unresolved when $`P`$ is finite and $`|P|\ge3`$.
-
-The finite-state extension in Section <a href="#long269:sec:distinct-criterion" data-reference-type="ref" data-reference="long269:sec:distinct-criterion">5.3</a> allows the interval to depend on earlier blocks. Its saved exact calculations cover the three-prime sets at most $`31`$ and $`292`$ of the $`330`$ four-prime sets in that range. The criterion and its applications also remain remarks awaiting formalisation. A collision between admissible automaton words prevents that interval criterion from treating $`\{2,3,5,7\}`$ at any depth (Section <a href="#long269:sec:distinct-certificates" data-reference-type="ref" data-reference="long269:sec:distinct-certificates">5.4</a>); this is a limitation of the enlarged word language, not an identity between realised arithmetic tails.
 
 For two primes the conclusion is stronger.
 
@@ -58,9 +56,9 @@ The Lean proof assumes the transcendence theorem of Bugeaud and Laurent.
 
 Fan’s post of 26 June 2026 gave the finite-prime running-LCM identity, the factorisation of $`\mathcal R_{\{p,q\}}`$, and the Hecke–Mahler reduction with its transcendence conclusion \[fan2026comment\]. We reproduce that calculation in Section <a href="#long269:sec:two-prime" data-reference-type="ref" data-reference="long269:sec:two-prime">4</a>. Both values are nonconstant polynomials over $`\mathbb Q`$ in one boundary sum, whose transcendence follows from Loxton and van der Poorten \[loxtonvdp1977, Theorem 8, p. 40\], in the formulation of Bugeaud and Laurent \[bugeaudlaurent2023, Theorem 1.1\]. No priority is claimed for this deduction.
 
-For the repeated three-prime sum, the normalised tails $`X_a`$ at powers of two satisfy $`X_{a+1}=b_aX_a-m_a`$, with $`b_a\in\{2,6,10,30\}`$ and positive integer $`m_a`$. Both $`m_a`$ and $`X_a`$ grow quadratically. A hypothetical rational denominator splits into its $`\{2,3,5\}`$ part and a factor $`B`$ coprime to $`30`$, and every sufficiently late $`BX_a`$ is then integral. The iterated recurrence determines its residue at a later endpoint. A residue above the quadratic tail bound contradicts integrality. Irrationality is equivalent to finding such segments for every $`B`$ and beyond every starting index. Neither these unbounded quantifiers nor an irrationality theorem for the repeated three-prime sum follows from the finite computations.
+Retaining multiplicities preserves the bases but changes the numerators. The repeated tails satisfy $`X_{a+1}=b_aX_a-m_a`$, with $`b_a\in\{2,6,10,30\}`$, while both $`m_a`$ and $`X_a`$ grow quadratically. The preceding finite-tail repetition argument no longer applies. Rationality would still make every sufficiently late $`BX_a`$ integral, where $`B`$ is the denominator part coprime to $`30`$. A finite segment excludes such an integer tail when its least positive residue exceeds the quadratic bound. Irrationality is equivalent to finding these segments for every $`B`$ beyond every prescribed onset. The finite computations do not establish either unbounded quantifier.
 
-Section <a href="#long269:sec:distinct-235" data-reference-type="ref" data-reference="long269:sec:distinct-235">2</a> contains the five-map proof and its exact interval calculations. The finite geometry and two-prime formulae follow in Sections <a href="#long269:sec:lcm" data-reference-type="ref" data-reference="long269:sec:lcm">3</a> and <a href="#long269:sec:two-prime" data-reference-type="ref" data-reference="long269:sec:two-prime">4</a>. Section <a href="#long269:sec:distinct-all" data-reference-type="ref" data-reference="long269:sec:distinct-all">5.1</a> gives the ordinary general argument, followed by the finite-state and prime-power subseries extensions. The linear-flow arguments in Section <a href="#long269:sec:clock-transfer" data-reference-type="ref" data-reference="long269:sec:clock-transfer">6</a> are likewise recorded pending formalisation. Section <a href="#long269:sec:rank" data-reference-type="ref" data-reference="long269:sec:rank">7</a> treats exact separation and uniform approximation of the kernel. The repeated-tail recurrence and residue criterion occupy Sections <a href="#long269:sec:blocks" data-reference-type="ref" data-reference="long269:sec:blocks">8</a>–<a href="#long269:sec:escape" data-reference-type="ref" data-reference="long269:sec:escape">10</a>; the finite calculations and open questions follow. Formal sources are collected in Section <a href="#long269:sec:proof-sources" data-reference-type="ref" data-reference="long269:sec:proof-sources">[long269:sec:proof-sources]</a>. The [short paper](../../../paper/269/erdos-269-three-prime-running-lcm.pdf#nameddest=r4-five-map-theorem) concentrates on the five-map theorem and the [repeated-tail criterion](../../../paper/269/erdos-269-three-prime-running-lcm.pdf#nameddest=r4-repeated-criterion).
+The five-map proof comes first. Sections <a href="#long269:sec:lcm" data-reference-type="ref" data-reference="long269:sec:lcm">3</a> and <a href="#long269:sec:two-prime" data-reference-type="ref" data-reference="long269:sec:two-prime">4</a> then supply the running LCM geometry and two-prime formulae. For general distinct sums, Section <a href="#long269:sec:distinct-all" data-reference-type="ref" data-reference="long269:sec:distinct-all">5.1</a> uses comparison of two tails rather than recovery from one; the finite-state, subseries and linear-flow extensions follow as ordinary arguments pending formalisation. Section <a href="#long269:sec:rank" data-reference-type="ref" data-reference="long269:sec:rank">7</a> separates exact kernel rank from approximation. For the repeated target, Sections <a href="#long269:sec:blocks" data-reference-type="ref" data-reference="long269:sec:blocks">8</a>–<a href="#long269:sec:escape" data-reference-type="ref" data-reference="long269:sec:escape">10</a> derive the coefficients, bounds and residue criterion; the remaining sections distinguish finite certificates from missing arithmetic inputs. Section <a href="#long269:sec:proof-sources" data-reference-type="ref" data-reference="long269:sec:proof-sources">[long269:sec:proof-sources]</a> records formal coverage. The [short paper](../../../paper/269/erdos-269-three-prime-running-lcm.pdf#nameddest=r4-five-map-theorem) concentrates on the five-map theorem and the [repeated-tail criterion](../../../paper/269/erdos-269-three-prime-running-lcm.pdf#nameddest=r4-repeated-criterion).
 
 We use $`\mathbb{N}=\{0,1,2,\ldots\}`$ for exponents and braces for fractional parts. In the finite-geometry section and in the kernel calculation, $`P=\{p,q,r\}`$ consists of three pairwise distinct primes, $`\operatorname{H}=\operatorname{H}_P`$, and
 ``` math
@@ -78,7 +76,7 @@ The other sections specify their prime sets separately. For $`\{2,3,5\}`$, $`\ma
 
 </div>
 
-The proof has the same two requirements as the long-division argument for eventual periodicity: finitely many remainders, and a remainder that determines the next step. Rationality will give the first requirement. For the second, a bound using the spacing of powers of $`5`$ will separate the five possible next-block images. The irrational frequency of powers of $`3`$ will then rule out the forced periodicity.
+As in long division, periodicity requires both finitely many remainders and a deterministic rule for the next step. The varying bases make the second requirement nontrivial. We obtain it by separating the five possible block images, using a bound on the actual arithmetic tails.
 
 <div class="proof">
 
@@ -105,7 +103,7 @@ Thus the $`Y_a`$ lie in the finite set $`(K^{-1}\mathbb Z)\cap(0,1)`$. It remain
 Y_4=\frac15+\frac1{15}+\frac1{30}+\frac{Y_5}{30}
      =\frac{9+Y_5}{30}.
 ```
-In the block $`(64,128]`$, the interior jumps occur in the opposite order, at $`81,125`$. Its constant term is $`1/3+1/15+1/30=13/30`$. The two blocks have the same multiplier $`30`$, but different numerators, $`9`$ and $`13`$. To recover the order from a tail value, we must still separate the possible values of the block maps.
+In the block $`(64,128]`$, the interior jumps occur in the opposite order, at $`81,125`$. Its constant term is $`1/3+1/15+1/30=13/30`$. The multiplier $`30`$ records the primes, but not their order; the numerators $`9`$ and $`13`$ retain the order. The remaining question is whether the unknown following tail can conceal this difference.
 
 In general, $`(2^a,2^{a+1}]`$ contains its terminal power of $`2`$, at most one power of $`3`$ and at most one power of $`5`$. Let $`\tau_a`$ denote the sequence of interior prime labels, omitting the terminal $`2`$. Splitting off the block gives
 ``` math
@@ -301,7 +299,7 @@ Let $`P=\{p,q\}`$ with $`p<q`$, and put $`L_{p,q}(t)=p^{\lfloor\log_p t\rfloor}q
  \qquad
  \mathcal R_{\{p,q\}}=\sum_{i,j\ge0}\frac1{L_{p,q}(p^iq^j)}.
 ```
-We shall express both in terms of the sum over powers of $`p`$. This gives the factorisation credited to Fan in the introduction and reduces the transcendence assertion to the cited Hecke–Mahler theorem.
+We first express the contribution from powers of $`q`$ in terms of that from powers of $`p`$. The repeated kernel then factors, and this relation puts both factors in a single transcendental parameter. This is the factorisation and Hecke–Mahler reduction credited to Fan in the introduction.
 
 <div class="proof">
 
@@ -396,11 +394,9 @@ Numerically, $`\mathcal D_{\{2,3,5\}}=1.77961698329474905045919064931698327\ldot
 
 </div>
 
-The proof uses discreteness twice. If the sum is rational with denominator $`K`$, its normalised tails lie in $`K^{-1}\mathbb Z`$. A sufficiently long common initial word makes two such tails differ by less than $`1/K`$, so they must be equal.
+Here we compare two tails rather than recover a word from one tail. Discreteness is used twice. Under rationality with denominator $`K`$, the tails lie in $`K^{-1}\mathbb Z`$; a long common prefix makes two of them closer than $`1/K`$ and hence equal. Next, corresponding blocks contain the same prime labels in possibly different orders. Their denominator products agree. Clearing that product leaves an integer difference of block numerators equal to a difference of tails in $`(-1,1)`$. Both must vanish, and this conclusion propagates through the blocks.
 
-We then compare the words block by block. Corresponding blocks contain the same letters in possibly different orders, hence have the same denominator product. After clearing it, a difference of block numerators is an integer, whereas the difference of the remaining tails lies in $`(-1,1)`$. Equality therefore forces both differences to vanish, and this conclusion propagates through every block.
-
-It remains to construct one block with a changed numerator. For two or three distinct primes, changing the order always changes that numerator. For four or more it need not. We use a torus construction to isolate two neighbouring jumps and reverse their order. Other blocks may also be rearranged, but the equality just proved constrains every one of them; one changed two-letter block is enough for a contradiction. We first give the word calculation, then construct the two arithmetic tails.
+We therefore need one rearranged block with a changed numerator. For two or three distinct primes, every change of order does this; for four or more, some do not. The torus construction isolates a pair of neighbouring jumps and reverses it. Other blocks may change too, but equality constrains every block separately, so one changed two-letter numerator suffices. We first establish the word identity, then construct the two arithmetic tails.
 
 <a id="long269:sec:words"></a>
 
@@ -618,7 +614,7 @@ Each jump multiplies the running LCM by at least $`p`$, so $`0<Y_a\le\sum_{k\ge1
 
 ## A decoding criterion for every finite set of primes
 
-For other prime sets, a useful tail interval may depend on the recent occurrence of each prime. Put $`Q=P\smallsetminus\{p\}`$ and choose the integer $`g_q`$ by $`p^{g_q}<q<p^{g_q+1}`$. Successive blocks containing a $`q`$-power have indices $`\lfloor f\log_p q\rfloor`$ and $`\lfloor(f+1)\log_p q\rfloor`$, by Remark <a href="#long269:res:distinct-height-blocks" data-reference-type="ref" data-reference="long269:res:distinct-height-blocks">14</a>(i). Their difference is $`g_q`$ or $`g_q+1`$. These gap constraints provide finite memory for a state-dependent interval construction. The intervals will enclose all paths allowed by these constraints. Every sufficiently late arithmetic block sequence is such a path, but we do not assume that every allowed path is realised by prime powers. Separation on this larger domain is sufficient for recovery; failure of separation there need not give two equal arithmetic tails.
+For other prime sets, a useful tail interval may depend on the recent occurrence of each prime. Put $`Q=P\smallsetminus\{p\}`$ and choose the integer $`g_q`$ by $`p^{g_q}<q<p^{g_q+1}`$. Successive blocks containing a $`q`$-power have indices $`\lfloor f\log_p q\rfloor`$ and $`\lfloor(f+1)\log_p q\rfloor`$, by Remark <a href="#long269:res:distinct-height-blocks" data-reference-type="ref" data-reference="long269:res:distinct-height-blocks">14</a>(i). Their difference is $`g_q`$ or $`g_q+1`$. The gaps give a finite memory of the last occurrences. We use it to enclose tails of every allowed path, a class containing all sufficiently late arithmetic paths but possibly others. Separation on this larger class suffices for recovery; overlap need not give equal arithmetic tails. The memory sharpens the enclosures, but the decoder must ultimately work without being told the state.
 
 These constraints define a finite automaton. Its states are the tuples $`s=(s_q)_{q\in Q}`$ with $`1\le s_q\le g_q+1`$; the entry $`s_q`$ counts the blocks since the last block containing a power of $`q`$. A *transition* from $`s`$ is a pair $`(\tau,s')`$ in which $`\tau`$ is an ordering of a set $`T\subseteq Q`$ with
 ``` math
@@ -634,6 +630,8 @@ Every prime $`q\in Q`$ lies in block $`g_q`$. For $`a>\max_qg_q`$ let $`s_a`$ re
 
 </div>
 
+The union defining $`U_\tau`$ runs over *all* starting states. Thus membership can identify the first block from $`Y_a`$ alone; separating types only within each known state would not give this conclusion.
+
 <div class="proof">
 
 *Proof.* Let $`a>\max_qg_q`$. The first $`k`$ transitions of the actual path from $`s_a`$ form a path of length $`k`$ with first type $`\tau_a`$, and $`Y_a=G_{\tau_a}\circ\cdots\circ G_{\tau_{a+k-1}}(Y_{a+k})`$, where $`Y_{a+k}\in J(s_{a+k})`$ because it is the value of an infinite path from $`s_{a+k}`$. Thus $`Y_a\in U_{\tau_a}`$, and by disjointness $`\tau_a`$ is the only type with this property. So $`Y_a`$ determines $`\tau_a`$, then $`Y_{a+1}=b_{\tau_a}Y_a-\mu_{\tau_a}`$, and by induction the word $`\tau_a\tau_{a+1}\cdots`$.
@@ -646,7 +644,7 @@ Intervals $`J(s)`$ with the required property are easy to produce. The constant 
 ``` math
 J'(s)\supseteq G_\tau\bigl(J(s')\bigr)\quad\text{for every transition }(\tau,s')\text{ from }s,
 ```
-because an infinite path from $`s`$ is a transition $`(\tau,s')`$ followed by an infinite path from $`s'`$. Starting from the constant family and repeatedly taking the smallest interval containing these images, with endpoints rounded outwards, therefore gives valid intervals after any number of rounds. The tightest choice is $`J(s)=[L(s),U(s)]`$, where $`L(s)`$ and $`U(s)`$ are the least and greatest values of the infinite paths from $`s`$. They satisfy $`L(s)=\min G_\tau(L(s'))`$ and $`U(s)=\max G_\tau(U(s'))`$ over the transitions from $`s`$, and these equations have unique solutions because each $`G_\tau`$ contracts by at least the factor $`1/p`$.
+because an infinite path from $`s`$ is a transition $`(\tau,s')`$ followed by an infinite path from $`s'`$. Starting from the constant family, take the interval hull of the images and round its endpoints outwards. Every round preserves containment, though a hull may fill genuine gaps. Keep the separate image intervals when forming the final unions $`U_\tau`$. The smallest enclosing interval at state $`s`$ is $`J(s)=[L(s),U(s)]`$, where $`L(s)`$ and $`U(s)`$ are the least and greatest infinite-path values. They satisfy $`L(s)=\min G_\tau(L(s'))`$ and $`U(s)=\max G_\tau(U(s'))`$ over the transitions from $`s`$, and these equations have unique solutions because each $`G_\tau`$ contracts by at least the factor $`1/p`$.
 
 For $`\{2,3,5\}`$ the constant interval $`I=[3/10,13/15]`$ has the required property: every path takes a transition with $`5\in T`$ within any three steps, which is the only fact the bounds used. With $`k=1`$ the criterion is then the proof given above.
 
@@ -694,7 +692,7 @@ For $`\{2,3,5,7\}`$ the automaton has $`18`$ states and $`16`$ types, and the te
 
 At depth $`7`$ two further pairs of types still overlap, $`(5,7,3)`$ with $`(7)`$ by about $`1.5\cdot10^{-9}`$ and $`(3,5,7)`$ with $`(3,7)`$ by about $`5.8\cdot10^{-10}`$.
 
-The second pair explains why no depth succeeds. The two-block words $`(5,7,3),\varnothing`$ and $`(7),(3,5)`$ have the same map,
+The persistent overlap is not a rounding error or merely slow convergence. An exact collision explains why no depth succeeds. The two-block words $`(5,7,3),\varnothing`$ and $`(7),(3,5)`$ have the same map,
 ``` math
 G_{(5,7,3)}\circ G_\varnothing(y)=G_{(7)}\circ G_{(3,5)}(y)=\frac{103+y}{420},
 ```
@@ -769,7 +767,7 @@ Then $`V_p(\sigma u)=(f_p(\sigma)+V_p(u))/\Pi(\sigma)`$. Writing $`y_k=V_p(q_{k+
 E_p=1+\sum_{k:q_k=p}\frac1{Q_k},\qquad
  Q_kE_p=Q_k+\sum_{j\le k,\ q_j=p}\frac{Q_k}{Q_j}+y_k.
 ```
-In an actual suffix, the prefix product at the $`j`$th occurrence of $`p`$ is at least $`p^j`$, with strict inequality after another prime has occurred. Hence $`0<V_p(u)<1/(p-1)\le1`$, and rationality $`E_p=N/K`$ would imply $`Ky_k\in\mathbb Z`$. The proof of Remark <a href="#long269:res:dp-blocks" data-reference-type="ref" data-reference="long269:res:dp-blocks">11</a> therefore applies to $`V_p,f_p`$ as well. On a chain of distinct primes containing $`p`$, the integer $`f_p`$ is the product of the primes following $`p`$. By unique factorisation, it detects a change in that set of followers.
+In an actual suffix, the prefix product at the $`j`$th occurrence of $`p`$ is at least $`p^j`$, with strict inequality after another prime has occurred. Hence $`0<V_p(u)<1/(p-1)\le1`$, and rationality $`E_p=N/K`$ would imply $`Ky_k\in\mathbb Z`$. The proof of Remark <a href="#long269:res:dp-blocks" data-reference-type="ref" data-reference="long269:res:dp-blocks">11</a> therefore applies to $`V_p,f_p`$ as well. On a chain of distinct primes containing $`p`$, only one term remains in $`f_p`$: the product of the primes following $`p`$. Unique factorisation detects a change in that set, without recovering its order. This weaker requirement avoids the collisions of the full block numerator $`f`$.
 
 For each $`q\ne p`$, the form $`\theta_p-\theta_q`$ is nonzero on the rational subspace $`L`$ used in Section <a href="#long269:sec:distinct-all" data-reference-type="ref" data-reference="long269:sec:distinct-all">5.1</a>. We may therefore choose $`v\in L`$ with $`|v_q|\le1`$ for every $`q`$ and $`v_q\ne v_p`$ for $`q\ne p`$, where $`v_q=\theta_q(v)`$, and put $`\mu=\min_{q\ne p}|v_p-v_q|>0`$. Suppose $`E_p=N/K`$. Choose a jump $`t_k`$ labelled $`p`$, and choose $`T,\nu,g,\beta`$ as in the general irrationality proof, with $`2^\nu\ge K`$. Set $`\eta=1/10`$ and first fix
 ``` math
@@ -815,7 +813,7 @@ Q_0=1,\qquad Q_n=\prod_{j=1}^n b_{w_j},\qquad
  V_c(w)=\sum_{n\ge1}\frac{c_{w_n}}{Q_n},\qquad
  T_a(x)=\frac{c_a+x}{b_a}.
 ```
-Write $`\sigma w=w_2w_3\cdots`$ and $`X_w=\overline{\{\sigma^nw:n\ge0\}}`$ in the one-sided product topology. The first letter acts by the outermost map: if $`u=u_1\cdots u_m`$, then $`V_c(uz)=T_{u_1}\circ\cdots\circ T_{u_m}(V_c(z))`$. Put $`B(u)=\prod_{j\le m}b_{u_j}`$, with $`B(\varnothing)=1`$.
+Write $`\sigma w=w_2w_3\cdots`$ and $`X_w=\overline{\{\sigma^nw:n\ge0\}}`$ in the one-sided product topology. A word belongs to $`X_w`$ precisely when each of its finite prefixes begins some shifted word. It need not itself be a shift. The first letter acts by the outermost map: if $`u=u_1\cdots u_m`$, then $`V_c(uz)=T_{u_1}\circ\cdots\circ T_{u_m}(V_c(z))`$. Put $`B(u)=\prod_{j\le m}b_{u_j}`$, with $`B(\varnothing)=1`$.
 
 <div id="long269:lem:late-swap" class="recordremark">
 
@@ -833,7 +831,7 @@ If such interchanges join every pair of letters along a connected graph, $`V_c(w
 ``` math
 \frac{b_{w_n}-1}{Q_n}=\frac1{Q_{n-1}}-\frac1{Q_n}
 ```
-sum to one. Hence $`V_c(v)`$ lies between $`\min_a\lambda_a`$ and $`\max_a\lambda_a`$ for every word $`v`$. Sharing $`m`$ initial letters changes a value by at most the width of this interval divided by $`B(u)`$. Thus $`V_c`$ is continuous, and $`V_c(X_w)\subseteq K^{-1}\mathbb{Z}`$.
+sum to one. Hence $`V_c(v)`$ lies between $`\min_a\lambda_a`$ and $`\max_a\lambda_a`$ for every word $`v`$. Sharing $`m`$ initial letters changes a value by at most the width of this interval divided by $`B(u)`$. Thus $`V_c`$ is continuous. Since $`K^{-1}\mathbb{Z}`$ is closed, the lattice condition passes from the actual shifts to all of $`X_w`$.
 
 The order of the maps matters. A direct calculation gives, for every $`x`$,
 ``` math
@@ -865,7 +863,7 @@ where $`k`$ runs through all sufficiently large integers. These points are dense
 
 Fix $`b\ne a`$ and an arbitrarily large integer $`L`$, and work on the section just after an $`a`$-crossing. Set $`T=L/r_a`$ and choose the phase of $`b`$ so that the $`b`$-coordinate crosses at $`T`$. This phase is nonzero, since $`Lr_b/r_a\notin\mathbb{Z}`$. Choose the remaining phases outside the countable sets that cause a crossing at zero, a third crossing at $`T`$, or any other positive simultaneous crossing. The resulting singular configuration has exactly the one double crossing of $`a,b`$ at $`T`$: a second meeting of these two coordinates would make $`r_b/r_a`$ rational.
 
-Perturb the $`b`$ phase on opposite sides. On any bounded time interval containing finitely many crossings, a sufficiently small perturbation preserves every order except that of this pair. Taking one-sided limits of the whole event words gives $`uabz`$ and $`ubaz`$ with the *same* infinite suffix $`z`$. Their common prefix has at least $`L-1`$ letters, from the earlier $`a`$-crossings. For each finite prefix of either limit, a small open set of nonsingular section phases realises that prefix. The dense actual $`a`$-section orbit meets that set, so the prefix occurs at the beginning of an actual shifted word. Consequently both limiting words belong to $`X_w`$. Letting $`L`$ grow proves the assertion. ◻
+Perturb the $`b`$ phase on opposite sides. On each bounded time interval, a sufficiently small perturbation changes only this pair’s order. Taking one-sided limits gives $`uabz`$ and $`ubaz`$ with the *same* infinite suffix $`z`$. No fixed nonzero perturbation is required to preserve all later crossings: agreement on each finite interval suffices for these limiting words. Their common prefix has at least $`L-1`$ letters, from the earlier $`a`$-crossings. For each finite prefix of either limit, a small open set of nonsingular section phases realises that prefix. The dense actual $`a`$-section orbit meets that set, so the prefix occurs at the beginning of an actual shifted word. Consequently both limiting words belong to $`X_w`$. Letting $`L`$ grow proves the assertion. ◻
 
 </div>
 
@@ -917,7 +915,7 @@ The only rational relation among $`1,S_1,S_2,S_3,S_4`$ is generated by $`S_1+2S_
 
 </div>
 
-We ask whether the factorisation of the two-prime kernel extends to a finite sum of products for three primes. A diagonal rescaling turns this question into one about threshold columns. We select their jumps using two independent one-dimensional density arguments, then evaluate a staircase determinant. The initial two-generator identity is valid for real generators; distinct primes enter the later density argument.
+We test an exact kernel identity: can finitely many products separate one exponent from the other two? A single binary carry rules this out for three primes. Diagonal rescaling leaves threshold columns; independent row and column choices produce staircase minors of every order. This says nothing yet about identities after summation or approximation, which we treat separately. The initial two-generator identity is valid for real generators; distinct primes enter the later density argument.
 
 <div id="long269:res:two-prime-rank" class="proposition">
 <p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos269/PaperCompleteR20/RealTwoPrimeKernel.lean#L63">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/b4d9b60327e3c4d4cc50acb37e62268788cd77e0/evidence/erdos269-running-lcm-reasoning-surface.md#long269-res-two-prime-rank-comparator">Comparator</a></p>
@@ -938,7 +936,7 @@ so every two-by-two minor of $`\operatorname{K}_2`$ vanishes.*
 
 </div>
 
-At three generators the smallest rectangle already fails to factor. A factorisation $`f(i)g(j)h(k)`$ would force $`\operatorname{K}(0,0,0)\operatorname{K}(1,1,0)=\operatorname{K}(1,0,0)\operatorname{K}(0,1,0)`$.
+At three primes the smallest rectangle already disproves a single product. A factorisation $`f(i)g(j)h(k)`$ would force $`\operatorname{K}(0,0,0)\operatorname{K}(1,1,0)=\operatorname{K}(1,0,0)\operatorname{K}(0,1,0)`$.
 
 <div id="long269:res:rank" class="proposition">
 <p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos269/PaperR7BasicAssembly.lean#L102">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/b4d9b60327e3c4d4cc50acb37e62268788cd77e0/evidence/erdos269-running-lcm-reasoning-surface.md#long269-res-rank-comparator">Comparator</a></p>
@@ -1031,7 +1029,7 @@ Index selection is essential. In the $`k=0`$ layer of the $`\{2,3,5\}`$ kernel, 
 ```
 A singular leading minor therefore does not settle the rank.
 
-In each fixed layer $`k`$, the same threshold description determines every finite sampled rank, rather than only producing one nonsingular minor.
+The selected minors put thresholds at distinct cuts among the row phases. A general sample need not do so: several columns can have the same cut, and two can be constant. Counting the distinct cuts gives its rank.
 
 <div id="long269:res:finite-cut-rank" class="proposition">
 <p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos269/PaperR7FiniteCutRank.lean#L182">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/b4d9b60327e3c4d4cc50acb37e62268788cd77e0/evidence/erdos269-running-lcm-reasoning-surface.md#long269-res-finite-cut-rank-comparator">Comparator</a></p>
@@ -1121,7 +1119,7 @@ Write $`v^TK^{-1}u=s/t`$ in lowest terms, with $`t>0`$. If a nonzero rational sc
 
 </div>
 
-For the rescaled kernel, distinct columns stay a fixed positive distance apart. This gives an obstruction to uniform finite-rank approximation. Write
+Exact rank does not decide approximation. For the rescaled kernel, infinitely many columns remain a fixed distance apart, giving a uniform lower bound against every finite rank. For the original kernel, decay instead permits summable truncation. We prove these statements for the two different matrices. Write
 ``` math
 \begin{equation}
 \label{long269:eq:carry-matrix}
@@ -1180,7 +1178,7 @@ The same bound controls the supremum of the entrywise errors, so these finite se
 
 # The recurrence for tails between powers of two
 
-We now return to the repeated sum $`S=\mathcal R_{\{2,3,5\}}`$ and set $`P=\{2,3,5\}`$. The block $`(16,32]`$ used in the proof for the sum over distinct values contained three jumps. The half-open interval $`[16,32)`$ contains seven smooth integers: $`16,18,20,24,25,27,30`$. Their running LCMs are respectively $`720,720,720,720,3600,10800,10800`$. The recurrence for $`S`$ must retain these multiplicities as well as the running LCM changes.
+Return to $`S=\mathcal R_{\{2,3,5\}}`$ and $`P=\{2,3,5\}`$. In place of the three jumps in $`(16,32]`$, we now count all seven smooth integers in $`[16,32)`$: $`16,18,20,24,25,27,30`$. Their running LCMs are $`720,720,720,720,3600,10800,10800`$. Two changes need keeping separate: we retain multiplicities, and we include the left rather than the right endpoint. The first changes the coefficients; the second changes the normalisation.
 
 We group the terms of $`S`$ into $`[2^a,2^{a+1})`$, including the left endpoint. The prefix to be cleared is therefore strictly before $`2^a`$: it excludes the jump by $`2`$ at that boundary. Put $`P_a=\operatorname{H}(2^a)`$ and $`h_a=P_a/2`$. Every running LCM in that prefix divides $`h_a`$. Here $`h_0=1/2`$, and $`h_a`$ is an integer for $`a\ge1`$. The powers of $`3`$ and $`5`$ selected at $`2^a`$ exceed $`2^a/3`$ and $`2^a/5`$, respectively, while the power of $`2`$ is $`2^a`$ itself. Thus
 ``` math
@@ -1195,7 +1193,7 @@ With this normalisation, define the block masses and tails by
  T_a=\sum_{j\ge a}s_j,\qquad X_a=h_aT_a.
 \end{equation}
 ```
-The strict cutoff explains the factor $`1/2`$. For $`a\ge1`$, every running LCM $`\operatorname{H}(x)`$ with $`x<2^a`$ divides $`P_a/2`$: the exponent of $`2`$ is at most $`a-1`$, and the other exponents are at most their boundary values. We will use this to clear the finite prefix in Lemma <a href="#long269:res:all-scale-lattice" data-reference-type="ref" data-reference="long269:res:all-scale-lattice">33</a>.
+For $`a\ge1`$, the prefix has exponent of $`2`$ at most $`a-1`$ and other exponents at most their boundary values. This proves the divisibility by $`P_a/2`$ needed in Lemma <a href="#long269:res:all-scale-lattice" data-reference-type="ref" data-reference="long269:res:all-scale-lattice">33</a>.
 
 The jumps after $`2^a`$ and up to $`2^{a+1}`$ consist of any powers of $`3`$ or $`5`$ strictly inside that interval, followed by the factor $`2`$ at its right endpoint. There is at most one power of each odd prime: successive powers have ratio greater than two. Let $`I_a`$ list the pairs $`(p,e)`$ with $`p\in\{3,5\}`$ and $`2^a<p^e<2^{a+1}`$, ordered by the value $`p^e`$.
 
@@ -1312,7 +1310,7 @@ Thus $`m_a=\Theta((a+1)^2)`$ and the numerator sequence is unbounded. These are 
 
 </div>
 
-The formula shows two sources of variation in $`m_a`$: points enter the triangle as $`a`$ increases, and their weights depend on two floors. Quadratic growth does not make this count a quadratic polynomial.
+The quadratic order comes from the size of the triangle, not from a polynomial formula for $`m_a`$. As $`a`$ changes, new points enter and the weights of old points can change at floor crossings. A finite-difference argument must control both effects; polynomial growth alone cancels neither. Quadratic growth does not make this count a quadratic polynomial.
 
 The recurrence also restricts how persistently a nonintegral tail can approach the integers. The following alternative uses only the integer coefficients and the bounds $`2\le b_a\le30`$.
 
@@ -1390,7 +1388,7 @@ the evaluation using the geometric moments $`\sum2^{-k}=2`$, $`\sum k2^{-k}=2`$ 
 
 </div>
 
-Increasing the exponent sum by one costs a factor of at least two in the denominator, whereas the number of points in a cell grows at most quadratically. Summing those geometric contributions gives the bound. The argument uses unique factorisation and the projection count, not an asymptotic estimate for smooth numbers or a Hecke–Mahler theorem.
+Each extra prime factor costs at least two in the denominator; each cell contains at most quadratically many points. This is a geometric sum of elementary projection counts, not an asymptotic smooth-number estimate or a Hecke–Mahler argument.
 
 The quadratic order is also necessary. The positive next tail and the recurrence give
 ``` math
@@ -1414,7 +1412,7 @@ the equality holding for $`a\ge1`$ because the powers of $`2`$ below $`2^{a}`$ n
  K(B,a)=\left\lfloor\frac{B(j_a^{2}+10j_a+27)}9\right\rfloor\quad(a\ge1).
 \end{equation}
 ```
-The cutoff in <a href="#long269:eq:endpoint-index" data-reference-type="eqref" data-reference="long269:eq:endpoint-index">[long269:eq:endpoint-index]</a> is $`2^{a}`$ and it is strict. The symbol $`K(B,a)`$ bounds an *integral* quantity $`BX_a`$: from $`BX_a\le BQ(n_a)`$ one may take the floor only after integrality has been established. We do not assert $`BX_a\le K(B,a)`$ for arbitrary real tails. The short paper uses the coarser bound $`K_{\rm short}(B,a)=90B(a+1)^2`$. In this record $`K`$ always denotes the sharper bound in <a href="#long269:eq:actual-bound" data-reference-type="eqref" data-reference="long269:eq:actual-bound">[long269:eq:actual-bound]</a>; the residue theorem below allows either choice.
+The strict cutoff in <a href="#long269:eq:endpoint-index" data-reference-type="eqref" data-reference="long269:eq:endpoint-index">[long269:eq:endpoint-index]</a> is $`2^a`$. There are two distinct uses of the bound: $`BX_a\le BQ(n_a)`$ holds for the actual real tails, whereas $`BX_a\le K(B,a)`$ follows only when $`BX_a`$ is integral. For example, $`Q(n_3)=83/9`$ gives the integer bound $`K(1,3)=9`$, not an upper bound of $`9`$ for an arbitrary real quantity below $`83/9`$. The short paper instead uses $`K_{\rm short}(B,a)=90B(a+1)^2`$, valid without integrality. Here $`K`$ always means <a href="#long269:eq:actual-bound" data-reference-type="eqref" data-reference="long269:eq:actual-bound">[long269:eq:actual-bound]</a>; either bound may be used in the residue contradiction.
 
 <div id="long269:res:all-scale-lattice" class="lemma">
 <p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos269/PaperCompleteR20/BoundedLatticeCollision.lean#L56">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/b4d9b60327e3c4d4cc50acb37e62268788cd77e0/evidence/erdos269-running-lcm-reasoning-surface.md#long269-res-all-scale-lattice-comparator">Comparator</a></p>
@@ -1456,7 +1454,7 @@ d_{a+1}=b_ad_a-Bm_a,\qquad 1\le d_a\le K(B,a)\le90B(a+1)^{2} .
 
 </div>
 
-Every positive denominator admits the stated factorisation: remove all powers of $`2`$, $`3`$ and $`5`$, leaving $`B`$ coprime to $`30`$. Thus the theorem does not impose an extra restriction on a hypothetical rational $`S`$. The removed factor $`2^u3^v5^w`$ controls how far out the integer tails begin; their bound depends on $`B`$. The displayed $`a_D`$ is sufficient, but need not be the first such index. The next proposition gives the first index when the fraction is reduced. Write $`\operatorname{den}(x)`$ for the positive denominator of a rational number $`x`$ in lowest terms.
+The factorisation restricts no possible denominator: remove its powers of $`2`$, $`3`$ and $`5`$, leaving $`B`$ coprime to $`30`$. These parts have different roles. The removed part controls the onset of integrality; $`B`$ scales the integer tails and their bound. The sufficient $`a_D`$ need not be the first clearing index. For the exact answer, write $`\operatorname{den}(x)`$ for the positive reduced denominator of a rational $`x`$.
 
 <div id="r3-denominator">
 
@@ -1580,7 +1578,7 @@ For polynomial Cantor data, Hančl–Tijdeman \[hancltijdeman2008, Theorems 2.2
 \sum_{a=0}^{N-1}\frac{m_a}{P_{a+1}}
  =c_0-\frac{c_N}{P_N}.
 ```
-Every integer $`c_0`$ generates an integer solution recursively. Hence $`c_N/P_N\to c_0-S/2`$; the existence of an integer solution gives no rationality information.
+Every integer $`c_0`$ generates an integer solution; integrality alone places no restriction on the initial value. The terminal condition is the restriction: $`c_N/P_N\to c_0-S/2`$, so decay to zero selects the actual initial tail $`c_0=S/2`$. This is the same uniqueness mechanism as for the small solutions above, not a consequence of solving the recurrence.
 
 For these actual numerators the terminal term cannot vanish for *any* integer $`c_0`$. Indeed, $`P_3=120`$, $`n_3=5`$ and $`(m_0,m_1,m_2)=(1,4,7)`$, so the tail bound gives
 ``` math
@@ -1605,7 +1603,7 @@ Two iterations already show how the recurrence determines an endpoint residue:
 ``` math
 X_2=6X_1-4,\qquad X_3=10X_2-7=60X_1-47.
 ```
-Whenever $`BX_1`$ is integral, $`BX_3\equiv-47B\pmod{60}`$. Thus an integral starting tail puts the terminal tail in an arithmetic progression. Its positivity and quadratic upper bound restrict it to a finite interval. If the least positive term of that progression exceeds the bound, no terminal tail is possible. In the zero residue class we must use the modulus itself, since zero is excluded by positivity. To test every possible rational denominator, we need such segments after an arbitrary prescribed starting index.
+Whenever $`BX_1`$ is integral, $`BX_3\equiv-47B\pmod{60}`$. An integral starting tail therefore puts the terminal tail in an arithmetic progression. Positivity and the quadratic bound restrict its possible integer values. If the least positive representative exceeds the bound, the starting tail cannot have been integral. For the zero class, that representative is the modulus, not zero. To exclude every rational denominator, the test must succeed for every eligible $`B`$ beyond every prescribed clearing onset.
 
 A segment starts at $`\ell\ge0`$ and consists of $`h\ge0`$ steps. Its product of bases and accumulated numerator are integers, even when the tails are not. Set
 ``` math
@@ -1823,7 +1821,7 @@ This is only a necessary lower bound, not an asymptotic formula or an upper boun
 
 # Finite computations and their limits
 
-The following segments illustrate the residue calculation with the actual block coefficients. An enclosure from twelve blocks then gives a lower bound on a possible rational denominator. We distinguish these finite arguments from the saved larger computations that follow. The [large-computation directory](https://github.com/wcook04/plectis-erdos/tree/f757115e03bebe5c04431a147da559015c680a37/research/experiments/erdos269/large-computations) contains the programs and saved outputs for the larger scan and the two larger denominator exclusions. These computations establish the stated finite cases. The criterion still requires every denominator and every starting threshold, which no finite scan supplies.
+We first calculate individual residue certificates, then enclose the sum using twelve blocks to exclude small rational denominators. The larger scan and two larger exclusions are separate saved computations; their programs and outputs are in the [large-computation directory](https://github.com/wcook04/plectis-erdos/tree/f757115e03bebe5c04431a147da559015c680a37/research/experiments/erdos269/large-computations). Each certificate excludes its stated finite family. None establishes the criterion for every denominator beyond every starting threshold.
 
 <a id="checking-individual-segments"></a>
 
@@ -1904,7 +1902,7 @@ The two exclusions concern different finite families: one uses a lattice at a fi
 
 </div>
 
-The residue criterion leaves an existence question for the actual coefficients. We examine the weighted shifts and integer recurrences that might address it, retaining the boundary terms that prevent the proposed finite-difference cancellation. We also state the missing input for a function-theoretic approach. The irrationality of $`S`$ remains open here.
+The finite recursions are explicit; the missing step is to prove that successful segments exist with the required unbounded quantifiers. Weighted shifts preserve the value of the series, but preservation does not supply cancellation. We calculate the surviving boundary terms, then identify the extra hypotheses needed by integer-recurrence and function-theoretic approaches. The irrationality of $`S`$ remains open here.
 
 <a id="long269:sec:weighted-shifts"></a>
 
@@ -2094,9 +2092,9 @@ More generally, no fixed integer base gives this termwise recoding both eventual
  \ge\frac{p^{\lfloor(a+1)\log_p2\rfloor}}{m_a}
  >\frac{2^{a+1}}{15p(a+1)^2}.
 ```
-This denominator tends to infinity. The argument concerns only the displayed termwise rescaling, not regrouping or carrying.
+This denominator tends to infinity. Thus matching the denominator growth by base $`8`$ keeps the coefficients small but introduces large rational denominators; making the coefficients integral by base $`30`$ makes them exponentially large. This obstruction concerns termwise rescaling only, not regrouping or carrying.
 
-Carrying can in fact make the coefficients into digits, while leaving the radices variable. To see exactly what changes, set
+Carrying resolves a different problem: it bounds the digits but leaves the radices variable. It also requires the integer parts of the actual tails, not just the known block numerators. Set
 ``` math
 \delta_a=m_a+\lfloor X_{a+1}\rfloor-b_a\lfloor X_a\rfloor
           =\lfloor b_a\{X_a\}\rfloor.
@@ -2116,7 +2114,7 @@ P_a\sum_{j=a}^{11}\frac{m_j}{P_{j+1}}<X_a
  \le P_a\sum_{j=a}^{11}\frac{m_j}{P_{j+1}}
        +\frac{P_a}{P_{12}}Q(n_{12})\qquad(0\le a<12).
 ```
-Both descriptions give the same rational endpoints. At indices $`0`$ through $`8`$ the whole interval lies strictly between consecutive integers, which certifies the floor; a small interval width alone would not suffice if the interval crossed an integer. For example, $`\lfloor X_4\rfloor=2`$ and $`\lfloor X_5\rfloor=5`$, giving $`\delta_4=65+5-30\cdot2=10`$, not the uncarried numerator $`m_4=65`$. This finite calculation makes no claim about the later digit complexity.
+Both descriptions give the same rational endpoints. At indices $`0`$ through $`8`$, each interval lies strictly between consecutive integers, certifying all nine floors needed for the eight digits. Width alone would not suffice: an interval crossing an integer leaves its floor undetermined. For example, $`\lfloor X_4\rfloor=2`$ and $`\lfloor X_5\rfloor=5`$, giving $`\delta_4=65+5-30\cdot2=10`$, not the uncarried numerator $`m_4=65`$. This finite calculation makes no claim about the later digit complexity.
 
 A rational number need not have eventually periodic digits when the radices vary. For example, take radix $`5`$ at the indices $`1,2,4,8,\ldots`$ and radix $`3`$ elsewhere. The constant tail fraction $`1/2`$ gives digit $`2`$ at those indices and $`1`$ elsewhere. These digits are not eventually periodic, but their mixed-radix expansion sums to $`1/2`$. This example uses different radices from our four possible bases; it shows why fixed-base eventual periodicity cannot be transferred to a variable-radix expansion. Our digits also depend on the actual tail fractions, not just on the four-letter radix sequence. The construction supplies neither a fixed-base expansion with verified echoing properties nor a bound on its digit complexity.
 
@@ -2173,7 +2171,7 @@ Each running LCM is counted once at its first jump, unlike the repeated sum. The
 
 For $`(p,q,r)=(2,3,5)`$, the two slopes in the rank proof are $`\log_5 2=\theta_5`$ and $`\log_5 3=\theta_5/\theta_3`$, not $`\theta_3`$ and $`\theta_5`$. Each is irrational: a rational value would equate a positive power of $`5`$ with a positive power of $`2`$ or $`3`$. The proof chooses the row and column indices independently. It therefore needs no rational independence of $`1,\theta_3,\theta_5`$ and no density assertion for the singly indexed orbit $`(\{n\theta_3\},\{n\theta_5\})`$. Any functional approach that needs such a stronger hypothesis must establish it separately.
 
-A finite-dimensional encoding must preserve equality of the functions it is meant to represent. If two encodings agree but their functions do not, the encoding cannot justify a conclusion about those functions. The Lean sources express this condition as a factorisation through a finite-dimensional space and prove that the resulting space of functions is then finite-dimensional ([identity for the carry](https://github.com/wcook04/plectis-erdos/blob/ee650b32b8b2cb98b94e5500df5370d85f7403b8/ErdosProblems/Erdos269/WeightedPhaseCarry.lean#L109), [map to functions](https://github.com/wcook04/plectis-erdos/blob/ee650b32b8b2cb98b94e5500df5370d85f7403b8/ErdosProblems/Erdos269/WeightedPhaseCarry.lean#L293), [finite-dimensional conclusion](https://github.com/wcook04/plectis-erdos/blob/ee650b32b8b2cb98b94e5500df5370d85f7403b8/ErdosProblems/Erdos269/WeightedPhaseCarry.lean#L334)). They also bound the carry residue and its digit in their stated intervals ([residue bound](https://github.com/wcook04/plectis-erdos/blob/ee650b32b8b2cb98b94e5500df5370d85f7403b8/ErdosProblems/Erdos269/WeightedPhaseCarry.lean#L150), [digit bound](https://github.com/wcook04/plectis-erdos/blob/ee650b32b8b2cb98b94e5500df5370d85f7403b8/ErdosProblems/Erdos269/WeightedPhaseCarry.lean#L157)). These conditional linear-algebra statements neither construct a function representing $`\mathcal D_{\{2,3,5\}}`$ nor show that a corresponding function space must be infinite-dimensional.
+A finite-dimensional encoding is useful here only if its data determine the represented function: equal encodings must give equal functions. The Lean sources impose this through a factorisation of the linear map to functions through a finite-dimensional space. The resulting space of functions is then finite-dimensional ([identity for the carry](https://github.com/wcook04/plectis-erdos/blob/ee650b32b8b2cb98b94e5500df5370d85f7403b8/ErdosProblems/Erdos269/WeightedPhaseCarry.lean#L109), [map to functions](https://github.com/wcook04/plectis-erdos/blob/ee650b32b8b2cb98b94e5500df5370d85f7403b8/ErdosProblems/Erdos269/WeightedPhaseCarry.lean#L293), [finite-dimensional conclusion](https://github.com/wcook04/plectis-erdos/blob/ee650b32b8b2cb98b94e5500df5370d85f7403b8/ErdosProblems/Erdos269/WeightedPhaseCarry.lean#L334)). They also bound the carry residue and its digit in their stated intervals ([residue bound](https://github.com/wcook04/plectis-erdos/blob/ee650b32b8b2cb98b94e5500df5370d85f7403b8/ErdosProblems/Erdos269/WeightedPhaseCarry.lean#L150), [digit bound](https://github.com/wcook04/plectis-erdos/blob/ee650b32b8b2cb98b94e5500df5370d85f7403b8/ErdosProblems/Erdos269/WeightedPhaseCarry.lean#L157)). These conditional linear-algebra statements neither construct a function representing $`\mathcal D_{\{2,3,5\}}`$ nor show that a corresponding function space must be infinite-dimensional.
 
 <a id="the-cited-value-theorems-and-their-hypotheses."></a>
 
@@ -2228,7 +2226,9 @@ To use these observations for a series, the conditional result requires exact id
 
 ## The unresolved repeated-sum question
 
-Theorem <a href="#long269:res:distinct-height-235" data-reference-type="ref" data-reference="long269:res:distinct-height-235">1</a> settles the sum over distinct running LCMs for $`\{2,3,5\}`$. The ordinary arguments in Remarks <a href="#long269:res:distinct-height-all" data-reference-type="ref" data-reference="long269:res:distinct-height-all">9</a> and <a href="#long269:res:single-prime-subsums" data-reference-type="ref" data-reference="long269:res:single-prime-subsums">18</a> treat all finite prime supports and the prime-power subseries, respectively, pending formalisation. Remark <a href="#long269:res:distinct-height-sets" data-reference-type="ref" data-reference="long269:res:distinct-height-sets">16</a> records the finite-state calculations; the collision in the admissible automaton language for $`\{2,3,5,7\}`$ limits that interval criterion only. For $`\mathcal R_{\{2,3,5\}}`$ we have the exact coefficients and recurrence, quadratic tail bounds and denominator-clearing formula. The remaining question is whether all eventual integral reduced tails can be excluded. Equivalently, the required residue segments must exist for every admissible $`B`$ beyond every prescribed starting index. The fixed-start formula explains the necessity of these quantifiers, and the strip identity shows why a no-crossing argument alone does not prove the required cancellation.
+The distinct sum at $`\{2,3,5\}`$ is settled by Theorem <a href="#long269:res:distinct-height-235" data-reference-type="ref" data-reference="long269:res:distinct-height-235">1</a>. The general and subseries arguments remain ordinary proofs pending formalisation (Remarks <a href="#long269:res:distinct-height-all" data-reference-type="ref" data-reference="long269:res:distinct-height-all">9</a> and <a href="#long269:res:single-prime-subsums" data-reference-type="ref" data-reference="long269:res:single-prime-subsums">18</a>). The finite-state calculations of Remark <a href="#long269:res:distinct-height-sets" data-reference-type="ref" data-reference="long269:res:distinct-height-sets">16</a> have their own scope; the $`\{2,3,5,7\}`$ automaton collision limits that interval criterion only.
+
+For $`\mathcal R_{\{2,3,5\}}`$, the missing ingredient is not just another normalisation or one sharper finite enclosure. The coefficients, recurrence, quadratic bounds and denominator-clearing formula are explicit. We must exclude eventual integral reduced tails for every possible denominator, or equivalently prove the residue inequalities beyond every prescribed onset. The fixed-start formula explains why an early success does not suffice; the strip identity explains why avoiding floor crossings does not supply the proposed cancellation.
 
 The rank and uniform-norm results concern the kernel, not the arithmetic of its sum. Finite tests, countability, radix recoding and denominator support do not close the remaining argument. The settled two-prime case uses Fan’s earlier reduction to the cited Hecke–Mahler value theorem.
 
@@ -2359,7 +2359,7 @@ For the actual radices the product is $`P_n/P_A`$. Its valuations at $`2,3,5`$ a
 
 </div>
 
-The residue-inequality hypothesis is the substantial arithmetic assumption. It requires a residue above the bound, not just a rapidly growing product of bases. For example, the constant data $`b_n=2`$, $`m_n=1`$ have the positive solution $`d_n=B`$. For any bound $`G(B,n)\ge B`$, every segment has $`W=2^h`$, $`F=2^h-1`$ and least positive residue at most $`B`$, so the hypothesis fails. For the actual three-prime coefficients and $`G=K`$, Theorem <a href="#long269:res:actual-escape-endpoint" data-reference-type="ref" data-reference="long269:res:actual-escape-endpoint">39</a> makes the residue-inequality hypothesis equivalent to irrationality of $`S`$. That equivalence does not hold for an arbitrary choice of $`G`$.
+Product growth gives room for a large residue; it does not put the actual residue there. For the constant data $`b_n=2`$, $`m_n=1`$, the positive solution is $`d_n=B`$. Every segment has $`W=2^h`$, $`F=2^h-1`$ and $`-BF\equiv B\pmod W`$. Its least positive residue is therefore at most $`B`$, however large $`W`$ becomes, so no bound $`G(B,n)\ge B`$ can pass the test. For the actual three-prime coefficients and $`G=K`$, Theorem <a href="#long269:res:actual-escape-endpoint" data-reference-type="ref" data-reference="long269:res:actual-escape-endpoint">39</a> makes the residue-inequality hypothesis equivalent to irrationality of $`S`$. That equivalence does not hold for an arbitrary choice of $`G`$.
 
 Coprimality with $`30`$ selects the denominators covered by the hypothesis; once a segment is fixed, the finite contradiction does not use it. The conventions cover the edge cases: a zero product of the bases is excluded, a zero residue is represented by the full modulus, and positivity prevents the endpoint value from vanishing. The version stated with a nonzero smooth factor assumes the exact factorisation $`c_n=D_{\mathrm{sm}}d_n`$, the corresponding recurrence for $`(c_n)`$ and the positive upper bound for $`(d_n)`$, and gives the same contradiction.
 

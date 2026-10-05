@@ -25,11 +25,11 @@ A complete registered-evidence match locates the same full declaration set in th
 
 State: **registered_evidence_linked**.
 
-Short statement: [paper/269/erdos-269-three-prime-running-lcm.tex](../../../paper/269/erdos-269-three-prime-running-lcm.tex) lines 783-796.
+Short statement: [paper/269/erdos-269-three-prime-running-lcm.tex](../../../paper/269/erdos-269-three-prime-running-lcm.tex) lines 796-809.
 
 Ledger evidence: Lean `exact_or_stronger`; Comparator `compared`. These statuses are copied from the evidence ledger; this build reruns neither checker.
 
-Long-record location: [paper/reasoning-parts/erdos269/core.tex](../../../paper/reasoning-parts/erdos269/core.tex) lines 1641-1652.
+Long-record location: [paper/reasoning-parts/erdos269/core.tex](../../../paper/reasoning-parts/erdos269/core.tex) lines 1635-1646.
 
 - `ErdosProblems.Erdos269.PaperR7.paper_uniform_rank_and_nonseparation`: [lean/ErdosProblems/Erdos269/PaperR7BasicAssembly.lean](../../../lean/ErdosProblems/Erdos269/PaperR7BasicAssembly.lean) lines 22-22.
 
@@ -37,7 +37,7 @@ Long-record location: [paper/reasoning-parts/erdos269/core.tex](../../../paper/r
 
 State: **registered_evidence_linked**.
 
-Short statement: [paper/269/erdos-269-three-prime-running-lcm.tex](../../../paper/269/erdos-269-three-prime-running-lcm.tex) lines 79-81.
+Short statement: [paper/269/erdos-269-three-prime-running-lcm.tex](../../../paper/269/erdos-269-three-prime-running-lcm.tex) lines 81-83.
 
 Ledger evidence: Lean `exact`; Comparator `pending`. These statuses are copied from the evidence ledger; this build reruns neither checker.
 
@@ -49,11 +49,11 @@ Long-record location: [paper/reasoning-parts/erdos269/core.tex](../../../paper/r
 
 State: **short_proof_explained_long_link_open**.
 
-Short statement: [paper/269/erdos-269-three-prime-running-lcm.tex](../../../paper/269/erdos-269-three-prime-running-lcm.tex) lines 874-881.
+Short statement: [paper/269/erdos-269-three-prime-running-lcm.tex](../../../paper/269/erdos-269-three-prime-running-lcm.tex) lines 884-891.
 
 Ledger evidence: Lean `exact_or_stronger`; Comparator `compared`. These statuses are copied from the evidence ledger; this build reruns neither checker.
 
-Retained short-paper argument: [paper/269/erdos-269-three-prime-running-lcm.tex](../../../paper/269/erdos-269-three-prime-running-lcm.tex) lines 882-886.
+Retained short-paper argument: [paper/269/erdos-269-three-prime-running-lcm.tex](../../../paper/269/erdos-269-three-prime-running-lcm.tex) lines 892-896.
 
 The retained proof specialises the preceding infinite-rank construction to the prescribed admissible indices and denominator-cleared integer minors. Its modular conclusion and hypotheses are unchanged. This argument was already present in the r5 input and has been retained. The disposition accounts for the queue; it does not assert acceptance of a new long-record binding.
 
@@ -69,11 +69,11 @@ No candidate was found by the bounded label/declaration rules. Read the long rec
 
 State: **registered_evidence_linked**.
 
-Short statement: [paper/269/erdos-269-three-prime-running-lcm.tex](../../../paper/269/erdos-269-three-prime-running-lcm.tex) lines 906-912.
+Short statement: [paper/269/erdos-269-three-prime-running-lcm.tex](../../../paper/269/erdos-269-three-prime-running-lcm.tex) lines 918-924.
 
 Ledger evidence: Lean `exact_or_stronger`; Comparator `compared`. These statuses are copied from the evidence ledger; this build reruns neither checker.
 
-Long-record location: [paper/reasoning-parts/erdos269/core.tex](../../../paper/reasoning-parts/erdos269/core.tex) lines 1737-1745.
+Long-record location: [paper/reasoning-parts/erdos269/core.tex](../../../paper/reasoning-parts/erdos269/core.tex) lines 1732-1740.
 
 - `ErdosProblems.Erdos269.PaperR7.rank_cutMatrix`: [lean/ErdosProblems/Erdos269/PaperR7FiniteCutRank.lean](../../../lean/ErdosProblems/Erdos269/PaperR7FiniteCutRank.lean) lines 182-182.
 
@@ -81,23 +81,23 @@ Long-record location: [paper/reasoning-parts/erdos269/core.tex](../../../paper/r
 
 State: **unresolved**.
 
-Short statement: [paper/269/erdos-269-three-prime-running-lcm.tex](../../../paper/269/erdos-269-three-prime-running-lcm.tex) lines 636-649.
+Short statement: [paper/269/erdos-269-three-prime-running-lcm.tex](../../../paper/269/erdos-269-three-prime-running-lcm.tex) lines 646-659.
 
 Ledger evidence: Lean `modulo_named_input`; Comparator `not_applicable`. These statuses are copied from the evidence ledger; this build reruns neither checker.
 
 No accepted correspondence is recorded. Check the candidates below; none is silently treated as a proof of this short statement.
 
-- `partial_declaration_overlap`: [paper/reasoning-parts/erdos269/core.tex](../../../paper/reasoning-parts/erdos269/core.tex) lines 82-85.
+- `partial_declaration_overlap`: [paper/reasoning-parts/erdos269/core.tex](../../../paper/reasoning-parts/erdos269/core.tex) lines 70-73.
 
 ### res:lcm
 
 State: **registered_evidence_linked**.
 
-Short statement: [paper/269/erdos-269-three-prime-running-lcm.tex](../../../paper/269/erdos-269-three-prime-running-lcm.tex) lines 725-728.
+Short statement: [paper/269/erdos-269-three-prime-running-lcm.tex](../../../paper/269/erdos-269-three-prime-running-lcm.tex) lines 737-740.
 
 Ledger evidence: Lean `exact_or_stronger`; Comparator `compared`. These statuses are copied from the evidence ledger; this build reruns neither checker.
 
-Long-record location: [paper/reasoning-parts/erdos269/core.tex](../../../paper/reasoning-parts/erdos269/core.tex) lines 345-348.
+Long-record location: [paper/reasoning-parts/erdos269/core.tex](../../../paper/reasoning-parts/erdos269/core.tex) lines 330-333.
 
 - `ErdosProblems.Erdos269.PaperCompleteR20.running_lcm_real_cutoff_exact`: [lean/ErdosProblems/Erdos269/PaperCompleteR20/RealCutoffs.lean](../../../lean/ErdosProblems/Erdos269/PaperCompleteR20/RealCutoffs.lean) lines 49-49.
 
@@ -105,24 +105,24 @@ Long-record location: [paper/reasoning-parts/erdos269/core.tex](../../../paper/r
 
 State: **unresolved**.
 
-Short statement: [paper/269/erdos-269-three-prime-running-lcm.tex](../../../paper/269/erdos-269-three-prime-running-lcm.tex) lines 739-744.
+Short statement: [paper/269/erdos-269-three-prime-running-lcm.tex](../../../paper/269/erdos-269-three-prime-running-lcm.tex) lines 751-756.
 
 Ledger evidence: Lean `exact_or_stronger`; Comparator `compared`. These statuses are copied from the evidence ledger; this build reruns neither checker.
 
 No accepted correspondence is recorded. Check the candidates below; none is silently treated as a proof of this short statement.
 
-- `label_alias`: [paper/reasoning-parts/erdos269/core.tex](../../../paper/reasoning-parts/erdos269/core.tex) lines 379-385.
-- `partial_declaration_overlap`: [paper/reasoning-parts/erdos269/core.tex](../../../paper/reasoning-parts/erdos269/core.tex) lines 395-399.
+- `label_alias`: [paper/reasoning-parts/erdos269/core.tex](../../../paper/reasoning-parts/erdos269/core.tex) lines 364-370.
+- `partial_declaration_overlap`: [paper/reasoning-parts/erdos269/core.tex](../../../paper/reasoning-parts/erdos269/core.tex) lines 380-384.
 
 ### res:fibre-prop
 
 State: **registered_evidence_linked**.
 
-Short statement: [paper/269/erdos-269-three-prime-running-lcm.tex](../../../paper/269/erdos-269-three-prime-running-lcm.tex) lines 751-757.
+Short statement: [paper/269/erdos-269-three-prime-running-lcm.tex](../../../paper/269/erdos-269-three-prime-running-lcm.tex) lines 763-769.
 
 Ledger evidence: Lean `exact`; Comparator `compared`. These statuses are copied from the evidence ledger; this build reruns neither checker.
 
-Long-record location: [paper/reasoning-parts/erdos269/core.tex](../../../paper/reasoning-parts/erdos269/core.tex) lines 414-420.
+Long-record location: [paper/reasoning-parts/erdos269/core.tex](../../../paper/reasoning-parts/erdos269/core.tex) lines 399-405.
 
 - `ErdosProblems.Erdos269.finiteSmoothKernelSum_groupedByHeight`: [lean/ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean](../../../lean/ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean) lines 407-407.
 
@@ -130,11 +130,11 @@ Long-record location: [paper/reasoning-parts/erdos269/core.tex](../../../paper/r
 
 State: **short_proof_explained_long_link_open**.
 
-Short statement: [paper/269/erdos-269-three-prime-running-lcm.tex](../../../paper/269/erdos-269-three-prime-running-lcm.tex) lines 371-376.
+Short statement: [paper/269/erdos-269-three-prime-running-lcm.tex](../../../paper/269/erdos-269-three-prime-running-lcm.tex) lines 367-372.
 
 Ledger evidence: Lean `exact_or_stronger`; Comparator `compared`. These statuses are copied from the evidence ledger; this build reruns neither checker.
 
-Retained short-paper argument: [paper/269/erdos-269-three-prime-running-lcm.tex](../../../paper/269/erdos-269-three-prime-running-lcm.tex) lines 377-383.
+Retained short-paper argument: [paper/269/erdos-269-three-prime-running-lcm.tex](../../../paper/269/erdos-269-three-prime-running-lcm.tex) lines 373-379.
 
 The retained proof counts the possible interior prime-power jumps in one dyadic block and gives the same four possible bases. It concerns the actual repeated-series construction. This argument was already present in the r5 input and has been retained. The disposition accounts for the queue; it does not assert acceptance of a new long-record binding.
 
@@ -144,29 +144,29 @@ This hash-bound passage records proof availability; its mathematical correctness
 
 No accepted correspondence is recorded. Check the candidates below; none is silently treated as a proof of this short statement.
 
-- `label_alias`: [paper/reasoning-parts/erdos269/core.tex](../../../paper/reasoning-parts/erdos269/core.tex) lines 2001-2007.
+- `label_alias`: [paper/reasoning-parts/erdos269/core.tex](../../../paper/reasoning-parts/erdos269/core.tex) lines 1997-2003.
 
 ### res:actual-orbit
 
 State: **unresolved**.
 
-Short statement: [paper/269/erdos-269-three-prime-running-lcm.tex](../../../paper/269/erdos-269-three-prime-running-lcm.tex) lines 390-399.
+Short statement: [paper/269/erdos-269-three-prime-running-lcm.tex](../../../paper/269/erdos-269-three-prime-running-lcm.tex) lines 385-394.
 
 Ledger evidence: Lean `exact_or_stronger`; Comparator `compared`. These statuses are copied from the evidence ledger; this build reruns neither checker.
 
 No accepted correspondence is recorded. Check the candidates below; none is silently treated as a proof of this short statement.
 
-- `label_alias`: [paper/reasoning-parts/erdos269/core.tex](../../../paper/reasoning-parts/erdos269/core.tex) lines 2062-2071.
+- `label_alias`: [paper/reasoning-parts/erdos269/core.tex](../../../paper/reasoning-parts/erdos269/core.tex) lines 2058-2067.
 
 ### res:denominator-reduction
 
 State: **short_proof_explained_long_link_open**.
 
-Short statement: [paper/269/erdos-269-three-prime-running-lcm.tex](../../../paper/269/erdos-269-three-prime-running-lcm.tex) lines 433-442.
+Short statement: [paper/269/erdos-269-three-prime-running-lcm.tex](../../../paper/269/erdos-269-three-prime-running-lcm.tex) lines 436-445.
 
 Ledger evidence: Lean `exact_or_stronger`; Comparator `compared`. These statuses are copied from the evidence ledger; this build reruns neither checker.
 
-Retained short-paper argument: [paper/269/erdos-269-three-prime-running-lcm.tex](../../../paper/269/erdos-269-three-prime-running-lcm.tex) lines 443-454.
+Retained short-paper argument: [paper/269/erdos-269-three-prime-running-lcm.tex](../../../paper/269/erdos-269-three-prime-running-lcm.tex) lines 446-457.
 
 The retained proof clears the smooth part of a putative rational denominator at the stated onset and preserves the coprime reduced denominator and carry bound. This argument was already present in the r5 input and has been retained. The disposition accounts for the queue; it does not assert acceptance of a new long-record binding.
 
@@ -182,11 +182,11 @@ No candidate was found by the bounded label/declaration rules. Read the long rec
 
 State: **short_proof_explained_long_link_open**.
 
-Short statement: [paper/269/erdos-269-three-prime-running-lcm.tex](../../../paper/269/erdos-269-three-prime-running-lcm.tex) lines 456-465.
+Short statement: [paper/269/erdos-269-three-prime-running-lcm.tex](../../../paper/269/erdos-269-three-prime-running-lcm.tex) lines 459-468.
 
 Ledger evidence: Lean `exact`; Comparator `compared`. These statuses are copied from the evidence ledger; this build reruns neither checker.
 
-Retained short-paper argument: [paper/269/erdos-269-three-prime-running-lcm.tex](../../../paper/269/erdos-269-three-prime-running-lcm.tex) lines 466-471.
+Retained short-paper argument: [paper/269/erdos-269-three-prime-running-lcm.tex](../../../paper/269/erdos-269-three-prime-running-lcm.tex) lines 469-474.
 
 The retained argument proves the stated exact onset for disappearance of the smooth denominator part; no change to its minimality or endpoint convention. This argument was already present in the r5 input and has been retained. The disposition accounts for the queue; it does not assert acceptance of a new long-record binding.
 
@@ -196,17 +196,17 @@ This hash-bound passage records proof availability; its mathematical correctness
 
 No accepted correspondence is recorded. Check the candidates below; none is silently treated as a proof of this short statement.
 
-- `partial_declaration_overlap`: [paper/reasoning-parts/erdos269/core.tex](../../../paper/reasoning-parts/erdos269/core.tex) lines 2359-2373.
+- `partial_declaration_overlap`: [paper/reasoning-parts/erdos269/core.tex](../../../paper/reasoning-parts/erdos269/core.tex) lines 2354-2368.
 
 ### res:consumer
 
 State: **short_proof_explained_long_link_open**.
 
-Short statement: [paper/269/erdos-269-three-prime-running-lcm.tex](../../../paper/269/erdos-269-three-prime-running-lcm.tex) lines 529-532.
+Short statement: [paper/269/erdos-269-three-prime-running-lcm.tex](../../../paper/269/erdos-269-three-prime-running-lcm.tex) lines 538-541.
 
 Ledger evidence: Lean `exact_or_stronger`; Comparator `compared`. These statuses are copied from the evidence ledger; this build reruns neither checker.
 
-Retained short-paper argument: [paper/269/erdos-269-three-prime-running-lcm.tex](../../../paper/269/erdos-269-three-prime-running-lcm.tex) lines 533-536.
+Retained short-paper argument: [paper/269/erdos-269-three-prime-running-lcm.tex](../../../paper/269/erdos-269-three-prime-running-lcm.tex) lines 542-545.
 
 The retained proof gives the nearest-integer alternative used in the escape criterion, with its strict inequalities and quantifiers intact. This argument was already present in the r5 input and has been retained. The disposition accounts for the queue; it does not assert acceptance of a new long-record binding.
 
@@ -216,13 +216,13 @@ This hash-bound passage records proof availability; its mathematical correctness
 
 No accepted correspondence is recorded. Check the candidates below; none is silently treated as a proof of this short statement.
 
-- `label_alias`: [paper/reasoning-parts/erdos269/core.tex](../../../paper/reasoning-parts/erdos269/core.tex) lines 2632-2635.
+- `label_alias`: [paper/reasoning-parts/erdos269/core.tex](../../../paper/reasoning-parts/erdos269/core.tex) lines 2629-2632.
 
 ### res:windowconsumer
 
 State: **unresolved**.
 
-Short statement: [paper/269/erdos-269-three-prime-running-lcm.tex](../../../paper/269/erdos-269-three-prime-running-lcm.tex) lines 550-560.
+Short statement: [paper/269/erdos-269-three-prime-running-lcm.tex](../../../paper/269/erdos-269-three-prime-running-lcm.tex) lines 559-569.
 
 Ledger evidence: Lean `exact_or_stronger`; Comparator `compared`. These statuses are copied from the evidence ledger; this build reruns neither checker.
 
@@ -234,49 +234,49 @@ No candidate was found by the bounded label/declaration rules. Read the long rec
 
 These registered long assertions are not used by an accepted short-paper link. They may be supporting lemmas, broader results, route-local obstructions, or unresolved matches. They are retained and are not deletion candidates.
 
-- `long269:res:lead-two-prime`: [paper/reasoning-parts/erdos269/core.tex](../../../paper/reasoning-parts/erdos269/core.tex) lines 82-85.
-- `long269:res:cell`: [paper/reasoning-parts/erdos269/core.tex](../../../paper/reasoning-parts/erdos269/core.tex) lines 379-385.
-- `long269:res:count`: [paper/reasoning-parts/erdos269/core.tex](../../../paper/reasoning-parts/erdos269/core.tex) lines 395-399.
-- `long269:res:short`: [paper/reasoning-parts/erdos269/core.tex](../../../paper/reasoning-parts/erdos269/core.tex) lines 433-436.
-- `long269:res:drop`: [paper/reasoning-parts/erdos269/core.tex](../../../paper/reasoning-parts/erdos269/core.tex) lines 449-455.
-- `long269:res:two-prime-rank`: [paper/reasoning-parts/erdos269/core.tex](../../../paper/reasoning-parts/erdos269/core.tex) lines 1593-1603.
-- `long269:res:rank`: [paper/reasoning-parts/erdos269/core.tex](../../../paper/reasoning-parts/erdos269/core.tex) lines 1622-1632.
-- `long269:res:uniform-rank`: [paper/reasoning-parts/erdos269/core.tex](../../../paper/reasoning-parts/erdos269/core.tex) lines 1897-1905.
-- `long269:res:dyadic-alphabet`: [paper/reasoning-parts/erdos269/core.tex](../../../paper/reasoning-parts/erdos269/core.tex) lines 2001-2007.
-- `long269:res:actual-orbit`: [paper/reasoning-parts/erdos269/core.tex](../../../paper/reasoning-parts/erdos269/core.tex) lines 2062-2071.
-- `long269:res:literal-triangle`: [paper/reasoning-parts/erdos269/core.tex](../../../paper/reasoning-parts/erdos269/core.tex) lines 2108-2128.
-- `long269:res:actual-dichotomy`: [paper/reasoning-parts/erdos269/core.tex](../../../paper/reasoning-parts/erdos269/core.tex) lines 2152-2156.
-- `long269:res:actual-tail-bound`: [paper/reasoning-parts/erdos269/core.tex](../../../paper/reasoning-parts/erdos269/core.tex) lines 2218-2220.
-- `long269:res:all-scale-lattice`: [paper/reasoning-parts/erdos269/core.tex](../../../paper/reasoning-parts/erdos269/core.tex) lines 2298-2303.
-- `long269:res:actual-cancellation`: [paper/reasoning-parts/erdos269/core.tex](../../../paper/reasoning-parts/erdos269/core.tex) lines 2323-2335.
-- `long269:res:exact-denominator`: [paper/reasoning-parts/erdos269/core.tex](../../../paper/reasoning-parts/erdos269/core.tex) lines 2359-2373.
-- `long269:res:pinning`: [paper/reasoning-parts/erdos269/core.tex](../../../paper/reasoning-parts/erdos269/core.tex) lines 2390-2396.
-- `long269:res:jump-constrained-bound`: [paper/reasoning-parts/erdos269/core.tex](../../../paper/reasoning-parts/erdos269/core.tex) lines 2434-2441.
-- `long269:res:consumer`: [paper/reasoning-parts/erdos269/core.tex](../../../paper/reasoning-parts/erdos269/core.tex) lines 2632-2635.
-- `long269:res:actual-escape-endpoint`: [paper/reasoning-parts/erdos269/core.tex](../../../paper/reasoning-parts/erdos269/core.tex) lines 2682-2693.
-- `long269:res:residue-limit`: [paper/reasoning-parts/erdos269/core.tex](../../../paper/reasoning-parts/erdos269/core.tex) lines 2744-2761.
-- `long269:res:window-growth`: [paper/reasoning-parts/erdos269/core.tex](../../../paper/reasoning-parts/erdos269/core.tex) lines 2869-2879.
-- `long269:res:no-bounded-length`: [paper/reasoning-parts/erdos269/core.tex](../../../paper/reasoning-parts/erdos269/core.tex) lines 2890-2893.
-- `long269:res:weighted-shift-identity`: [paper/reasoning-parts/erdos269/core.tex](../../../paper/reasoning-parts/erdos269/core.tex) lines 3123-3147.
-- `long269:res:strip-decomposition`: [paper/reasoning-parts/erdos269/core.tex](../../../paper/reasoning-parts/erdos269/core.tex) lines 3207-3225.
-- `long269:res:fixed-base-recoding`: [paper/reasoning-parts/erdos269/core.tex](../../../paper/reasoning-parts/erdos269/core.tex) lines 3357-3371.
+- `long269:res:lead-two-prime`: [paper/reasoning-parts/erdos269/core.tex](../../../paper/reasoning-parts/erdos269/core.tex) lines 70-73.
+- `long269:res:cell`: [paper/reasoning-parts/erdos269/core.tex](../../../paper/reasoning-parts/erdos269/core.tex) lines 364-370.
+- `long269:res:count`: [paper/reasoning-parts/erdos269/core.tex](../../../paper/reasoning-parts/erdos269/core.tex) lines 380-384.
+- `long269:res:short`: [paper/reasoning-parts/erdos269/core.tex](../../../paper/reasoning-parts/erdos269/core.tex) lines 418-421.
+- `long269:res:drop`: [paper/reasoning-parts/erdos269/core.tex](../../../paper/reasoning-parts/erdos269/core.tex) lines 434-440.
+- `long269:res:two-prime-rank`: [paper/reasoning-parts/erdos269/core.tex](../../../paper/reasoning-parts/erdos269/core.tex) lines 1587-1597.
+- `long269:res:rank`: [paper/reasoning-parts/erdos269/core.tex](../../../paper/reasoning-parts/erdos269/core.tex) lines 1616-1626.
+- `long269:res:uniform-rank`: [paper/reasoning-parts/erdos269/core.tex](../../../paper/reasoning-parts/erdos269/core.tex) lines 1894-1902.
+- `long269:res:dyadic-alphabet`: [paper/reasoning-parts/erdos269/core.tex](../../../paper/reasoning-parts/erdos269/core.tex) lines 1997-2003.
+- `long269:res:actual-orbit`: [paper/reasoning-parts/erdos269/core.tex](../../../paper/reasoning-parts/erdos269/core.tex) lines 2058-2067.
+- `long269:res:literal-triangle`: [paper/reasoning-parts/erdos269/core.tex](../../../paper/reasoning-parts/erdos269/core.tex) lines 2104-2124.
+- `long269:res:actual-dichotomy`: [paper/reasoning-parts/erdos269/core.tex](../../../paper/reasoning-parts/erdos269/core.tex) lines 2150-2154.
+- `long269:res:actual-tail-bound`: [paper/reasoning-parts/erdos269/core.tex](../../../paper/reasoning-parts/erdos269/core.tex) lines 2216-2218.
+- `long269:res:all-scale-lattice`: [paper/reasoning-parts/erdos269/core.tex](../../../paper/reasoning-parts/erdos269/core.tex) lines 2295-2300.
+- `long269:res:actual-cancellation`: [paper/reasoning-parts/erdos269/core.tex](../../../paper/reasoning-parts/erdos269/core.tex) lines 2320-2332.
+- `long269:res:exact-denominator`: [paper/reasoning-parts/erdos269/core.tex](../../../paper/reasoning-parts/erdos269/core.tex) lines 2354-2368.
+- `long269:res:pinning`: [paper/reasoning-parts/erdos269/core.tex](../../../paper/reasoning-parts/erdos269/core.tex) lines 2385-2391.
+- `long269:res:jump-constrained-bound`: [paper/reasoning-parts/erdos269/core.tex](../../../paper/reasoning-parts/erdos269/core.tex) lines 2429-2436.
+- `long269:res:consumer`: [paper/reasoning-parts/erdos269/core.tex](../../../paper/reasoning-parts/erdos269/core.tex) lines 2629-2632.
+- `long269:res:actual-escape-endpoint`: [paper/reasoning-parts/erdos269/core.tex](../../../paper/reasoning-parts/erdos269/core.tex) lines 2679-2690.
+- `long269:res:residue-limit`: [paper/reasoning-parts/erdos269/core.tex](../../../paper/reasoning-parts/erdos269/core.tex) lines 2741-2758.
+- `long269:res:window-growth`: [paper/reasoning-parts/erdos269/core.tex](../../../paper/reasoning-parts/erdos269/core.tex) lines 2866-2876.
+- `long269:res:no-bounded-length`: [paper/reasoning-parts/erdos269/core.tex](../../../paper/reasoning-parts/erdos269/core.tex) lines 2887-2890.
+- `long269:res:weighted-shift-identity`: [paper/reasoning-parts/erdos269/core.tex](../../../paper/reasoning-parts/erdos269/core.tex) lines 3119-3143.
+- `long269:res:strip-decomposition`: [paper/reasoning-parts/erdos269/core.tex](../../../paper/reasoning-parts/erdos269/core.tex) lines 3203-3221.
+- `long269:res:fixed-base-recoding`: [paper/reasoning-parts/erdos269/core.tex](../../../paper/reasoning-parts/erdos269/core.tex) lines 3353-3367.
 - `long269:res:tails-equivalence`: [paper/reasoning-parts/erdos269/core.tex](../../../paper/reasoning-parts/erdos269/core.tex) lines 3486-3490.
-- `long269:long:denominator-reduction`: [paper/reasoning-parts/erdos269/core.tex](../../../paper/reasoning-parts/erdos269/core.tex) lines 3919-3927.
-- `long269:long:windowconsumer`: [paper/reasoning-parts/erdos269/core.tex](../../../paper/reasoning-parts/erdos269/core.tex) lines 3984-3993.
-- `long269:res:distinct-height-all`: [paper/reasoning-parts/erdos269/core.tex](../../../paper/reasoning-parts/erdos269/core.tex) lines 619-622.
-- `long269:res:distinct-height-blocks`: [paper/reasoning-parts/erdos269/core.tex](../../../paper/reasoning-parts/erdos269/core.tex) lines 948-965.
-- `long269:res:dp-integral-tails`: [paper/reasoning-parts/erdos269/core.tex](../../../paper/reasoning-parts/erdos269/core.tex) lines 665-668.
-- `long269:res:dp-blocks`: [paper/reasoning-parts/erdos269/core.tex](../../../paper/reasoning-parts/erdos269/core.tex) lines 681-691.
-- `long269:res:dp-short`: [paper/reasoning-parts/erdos269/core.tex](../../../paper/reasoning-parts/erdos269/core.tex) lines 709-712.
-- `long269:res:dp-two-walls`: [paper/reasoning-parts/erdos269/core.tex](../../../paper/reasoning-parts/erdos269/core.tex) lines 763-766.
-- `long269:res:distinct-height-criterion`: [paper/reasoning-parts/erdos269/core.tex](../../../paper/reasoning-parts/erdos269/core.tex) lines 1035-1042.
-- `long269:res:distinct-height-sets`: [paper/reasoning-parts/erdos269/core.tex](../../../paper/reasoning-parts/erdos269/core.tex) lines 1100-1107.
-- `long269:res:single-prime-identities`: [paper/reasoning-parts/erdos269/core.tex](../../../paper/reasoning-parts/erdos269/core.tex) lines 1254-1268.
-- `long269:res:single-prime-subsums`: [paper/reasoning-parts/erdos269/core.tex](../../../paper/reasoning-parts/erdos269/core.tex) lines 1288-1291.
-- `long269:lem:late-swap`: [paper/reasoning-parts/erdos269/core.tex](../../../paper/reasoning-parts/erdos269/core.tex) lines 1425-1435.
-- `long269:lem:clock-swaps`: [paper/reasoning-parts/erdos269/core.tex](../../../paper/reasoning-parts/erdos269/core.tex) lines 1481-1484.
-- `long269:thm:clock-relations`: [paper/reasoning-parts/erdos269/core.tex](../../../paper/reasoning-parts/erdos269/core.tex) lines 1524-1542.
-- `long269:lem:staircase-smith`: [paper/reasoning-parts/erdos269/core.tex](../../../paper/reasoning-parts/erdos269/core.tex) lines 1819-1823.
+- `long269:long:denominator-reduction`: [paper/reasoning-parts/erdos269/core.tex](../../../paper/reasoning-parts/erdos269/core.tex) lines 3920-3928.
+- `long269:long:windowconsumer`: [paper/reasoning-parts/erdos269/core.tex](../../../paper/reasoning-parts/erdos269/core.tex) lines 3985-3994.
+- `long269:res:distinct-height-all`: [paper/reasoning-parts/erdos269/core.tex](../../../paper/reasoning-parts/erdos269/core.tex) lines 605-608.
+- `long269:res:distinct-height-blocks`: [paper/reasoning-parts/erdos269/core.tex](../../../paper/reasoning-parts/erdos269/core.tex) lines 931-948.
+- `long269:res:dp-integral-tails`: [paper/reasoning-parts/erdos269/core.tex](../../../paper/reasoning-parts/erdos269/core.tex) lines 648-651.
+- `long269:res:dp-blocks`: [paper/reasoning-parts/erdos269/core.tex](../../../paper/reasoning-parts/erdos269/core.tex) lines 664-674.
+- `long269:res:dp-short`: [paper/reasoning-parts/erdos269/core.tex](../../../paper/reasoning-parts/erdos269/core.tex) lines 692-695.
+- `long269:res:dp-two-walls`: [paper/reasoning-parts/erdos269/core.tex](../../../paper/reasoning-parts/erdos269/core.tex) lines 746-749.
+- `long269:res:distinct-height-criterion`: [paper/reasoning-parts/erdos269/core.tex](../../../paper/reasoning-parts/erdos269/core.tex) lines 1017-1024.
+- `long269:res:distinct-height-sets`: [paper/reasoning-parts/erdos269/core.tex](../../../paper/reasoning-parts/erdos269/core.tex) lines 1087-1094.
+- `long269:res:single-prime-identities`: [paper/reasoning-parts/erdos269/core.tex](../../../paper/reasoning-parts/erdos269/core.tex) lines 1242-1256.
+- `long269:res:single-prime-subsums`: [paper/reasoning-parts/erdos269/core.tex](../../../paper/reasoning-parts/erdos269/core.tex) lines 1276-1279.
+- `long269:lem:late-swap`: [paper/reasoning-parts/erdos269/core.tex](../../../paper/reasoning-parts/erdos269/core.tex) lines 1416-1426.
+- `long269:lem:clock-swaps`: [paper/reasoning-parts/erdos269/core.tex](../../../paper/reasoning-parts/erdos269/core.tex) lines 1473-1476.
+- `long269:thm:clock-relations`: [paper/reasoning-parts/erdos269/core.tex](../../../paper/reasoning-parts/erdos269/core.tex) lines 1517-1535.
+- `long269:lem:staircase-smith`: [paper/reasoning-parts/erdos269/core.tex](../../../paper/reasoning-parts/erdos269/core.tex) lines 1814-1818.
 
 ## Passage-review queue
 
