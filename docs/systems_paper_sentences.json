@@ -124,19 +124,19 @@
       "id": "credit",
       "path": "docs/research-commons/CREDIT_POLICY.md",
       "start_line": 1,
-      "end_line": 79,
-      "sha256": "22116032e3afd5510e1c7de6871b5c951c7f81f3d80aae329e10d844479d725f",
-      "excerpt_sha256": "c93c7710b3a6837511f0a720fc798896060a918797654f1e002605fdea627da5",
+      "end_line": 99,
+      "sha256": "e9b2c0fef474147d4f1a3bf60f5dcc37fc0dc625be8402fd22b887fe151f4249",
+      "excerpt_sha256": "b29b334ecb14b9a36705b018919df40e9b532fdd739330626cf1e0b9726bc3f4",
       "kind": "source"
     },
     {
       "id": "credit-registry",
       "path": "docs/research-commons/source-attributions.json",
       "start_line": 1,
-      "end_line": 36351,
+      "end_line": 47815,
       "kind": "supplied_snapshot",
-      "sha256": "9f4ad23ecff6d7ccd55a05d9a574e396e9c53c29bb6372ab5f1875ffa26f2726",
-      "excerpt_sha256": "9f4ad23ecff6d7ccd55a05d9a574e396e9c53c29bb6372ab5f1875ffa26f2726"
+      "sha256": "3293101193969676699d30f0131f4f8f650e3053394b57d2541c43fac44a01f6",
+      "excerpt_sha256": "3293101193969676699d30f0131f4f8f650e3053394b57d2541c43fac44a01f6"
     },
     {
       "id": "essay-pages",
@@ -509,12 +509,14 @@
     },
     {
       "id": "software-citation",
-      "path": "CITATION.cff",
+      "path": "docs/systems-paper-evidence/citation-metadata-f9ad7e269da3.cff",
       "start_line": 1,
       "end_line": 327,
-      "kind": "source",
+      "kind": "supplied_snapshot",
       "sha256": "0d538f9b7faca90b61eefeea93937edc49afb427165ef82f0fff549a82410466",
-      "excerpt_sha256": "0d538f9b7faca90b61eefeea93937edc49afb427165ef82f0fff549a82410466"
+      "excerpt_sha256": "0d538f9b7faca90b61eefeea93937edc49afb427165ef82f0fff549a82410466",
+      "custody": "Exact CITATION.cff bytes from public commit f9ad7e269da32d27ab71ddb3ae576a2844ac7b57; historical citation metadata, retained independently of the current generated CFF consumer.",
+      "source_locator": "https://github.com/wcook04/plectis-erdos/blob/f9ad7e269da32d27ab71ddb3ae576a2844ac7b57/CITATION.cff"
     },
     {
       "id": "return-protocol",
@@ -847,10 +849,10 @@
       "id": "r11-prove2me-attribution",
       "kind": "supplied_snapshot",
       "path": "docs/research-commons/source-attributions.json",
-      "start_line": 16125,
-      "end_line": 16173,
-      "sha256": "9f4ad23ecff6d7ccd55a05d9a574e396e9c53c29bb6372ab5f1875ffa26f2726",
-      "excerpt_sha256": "a8d6f7239b51857fa0654cb764a559bca353d637f58bd7882ebec87ee5baa42b",
+      "start_line": 19653,
+      "end_line": 19735,
+      "sha256": "3293101193969676699d30f0131f4f8f650e3053394b57d2541c43fac44a01f6",
+      "excerpt_sha256": "f3c80e5a3ae12e3165316e04e51bec5c7bce9fef0c95183712d4beb4498eec31",
       "custody": "Public attribution inventory, marked bibliography_only. Used for feature attribution, not for its conflicting first-publication chronology. Direct claims are checked against the enclosed original v2 in this pass."
     },
     {
