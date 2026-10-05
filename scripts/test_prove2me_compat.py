@@ -2,6 +2,7 @@
 """Focused offline round-trip tests for the selectable #257 and #249 packets."""
 
 import copy
+import subprocess
 import unittest
 
 import prove2me_compat as compat
@@ -11,6 +12,24 @@ class Prove2MeCompatTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         cls.packet = compat.prepare()
+
+    def assert_paper_source_label(self, packet, label):
+        """Check the advertised immutable location against the selected label."""
+        relative = "paper/257/erdos-257-mersenne-support-subseries.tex"
+        commit = packet["public_source_commit"]
+        source = subprocess.check_output(
+            ["git", "show", f"{commit}:{relative}"],
+            cwd=compat.ROOT, text=True, timeout=60,
+        )
+        matches = [
+            number for number, line in enumerate(source.splitlines(), start=1)
+            if f"\\label{{{label}}}" in line
+        ]
+        self.assertEqual(len(matches), 1, f"{label} must occur exactly once")
+        self.assertEqual(
+            packet["native_draft"]["paper_source"],
+            f"https://github.com/wcook04/plectis-erdos/blob/{commit}/{relative}#L{matches[0]}",
+        )
 
     def test_prepare_defaults_to_strongest_weighted_257_theorem(self):
         packet = self.packet
@@ -26,7 +45,7 @@ class Prove2MeCompatTests(unittest.TestCase):
         else:
             self.assertIn("WeightedReturn.lean#L120", packet["native_draft"]["source"])
             self.assertIn("plectis-erdos/blob/", packet["native_draft"]["source"])
-            self.assertIn("erdos-257-mersenne-support-subseries.tex#L54", packet["native_draft"]["paper_source"])
+            self.assert_paper_source_label(packet, "res:weighted-support")
         self.assertEqual(packet["mathlib_rev"], "5e932f97dd25535344f80f9dd8da3aab83df0fe6")
 
     def test_reciprocal_257_remains_selectable_as_portability_pilot(self):
@@ -41,8 +60,7 @@ class Prove2MeCompatTests(unittest.TestCase):
         else:
             self.assertIn("AllBaseReciprocalSupportIrrationality.lean#L395",
                           packet["native_draft"]["source"])
-            self.assertIn("erdos-257-mersenne-support-subseries.tex#L90",
-                          packet["native_draft"]["paper_source"])
+            self.assert_paper_source_label(packet, "res:reciprocal-support")
         self.assertIn("environment_unverified", compat.validate(packet)["blockers"])
 
     def test_249_remains_selectable_with_its_own_source_and_boundary(self):

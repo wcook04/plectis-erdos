@@ -1230,7 +1230,7 @@ Exact registry keys and Comparator routing are listed separately.
 <a id="programme-1041"></a>
 ## #1041: Short connections inside polynomial lemniscates
 
-**Question.** Must two roots of a monic polynomial in the open unit disc be joined by a sub-two-length curve inside its unit lemniscate? Ani’s degree-seven example refutes the exact Formal Conjectures statement; correspondence with the 1958 wording awaits human review.
+**Question.** Must two roots of a monic polynomial in the open unit disc be joined by a sub-two-length curve inside its unit lemniscate? Ani’s degree-seven example refutes the exact Formal Conjectures statement; independent human review of correspondence with the 1958 wording has not been recorded.
 
 **Checked frontier.** For ani’s degree-seven polynomial, every preconnected strict-lemniscate set containing two distinct roots has one-dimensional Hausdorff measure above two. Lean refutes the exact Formal Conjectures path-image claim and checks a separate total-variation bound.
 

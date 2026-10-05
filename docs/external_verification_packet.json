@@ -1783,9 +1783,9 @@
   "source_owner": "docs/claims.json::external_verification_packet",
   "problem_index": {
     "owner": "docs/problem_index_source.json",
-    "owner_digest": "sha256:d651478e6b7908e49517009f4cf575bf0f3fd64184974c52db9ac57be1491c8a",
+    "owner_digest": "sha256:1adaf088cf717445832d01d2975b4d1a2601b45d83866da31756f648535fa333",
     "projection": "docs/problems.json",
-    "projection_digest": "sha256:e8e1d7c043cfc172833f1cf5a60896534759346bc65a1e62f5d50bbf5dc5c175",
+    "projection_digest": "sha256:a2aa59e04f4ba08e60d4e25364658c7f18fff1eaa2c2304c398c2e993562c060",
     "schema": "erdos249257-problem-index/1",
     "problem_count": 8,
     "authority_posture": "navigation_projection_not_Lean_proof_authority_and_not_a_reviewed_claim_registry",
@@ -2676,7 +2676,7 @@
         "erdos_number": 1041,
         "short_title": "Short connections inside polynomial lemniscates",
         "status": "formal statement refuted",
-        "question": "Must two roots of a monic polynomial in the open unit disc be joined by a sub-two-length curve inside its unit lemniscate? Ani’s degree-seven example refutes the exact Formal Conjectures statement; correspondence with the 1958 wording awaits human review.",
+        "question": "Must two roots of a monic polynomial in the open unit disc be joined by a sub-two-length curve inside its unit lemniscate? Ani’s degree-seven example refutes the exact Formal Conjectures statement; independent human review of correspondence with the 1958 wording has not been recorded.",
         "library_root": "ErdosProblems.lean",
         "claim_registry_status": "registered_declarations",
         "claim_registration": {

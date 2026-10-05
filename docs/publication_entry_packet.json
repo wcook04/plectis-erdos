@@ -109,7 +109,7 @@
   "content_hashes": {
     "docs/claims.json": "sha256:a9585ba52513078c062569fa95acc7291a990e08daab3b70ac315f6282106751",
     "docs/methodology.json": "sha256:cef19d9092c49ba9c9b269a4b04c2c6030164bba6b80561117577713f60c3750",
-    "docs/problems.json": "sha256:e8e1d7c043cfc172833f1cf5a60896534759346bc65a1e62f5d50bbf5dc5c175",
+    "docs/problems.json": "sha256:a2aa59e04f4ba08e60d4e25364658c7f18fff1eaa2c2304c398c2e993562c060",
     "docs/publication_contract.json": "sha256:522dbb9b4683cca10b67a64d7c3c6e465a8b52caf88ee3fc9deb384aab7d2f0b",
     "docs/publication_entry_source.json": "sha256:42d7d0097c961fb3fd06a061a5c226f3b91761dfd3e96eaab05c198a65c1470e",
     "docs/publication_evidence.json": "sha256:4e350698eed8b4ee10fc629cfb7540ed71bc6ccf4020ee2ede8635f4aae809b3",
@@ -531,7 +531,7 @@
     ],
     "reading_rule": "Read FRONTIER.md for dated refutations and open gaps, then STRONGEST_RESULTS.json for source-pinned activation. Premises and falsifiers retain local hypotheses; research rows do not settle historical correspondence or become Comparator claims.",
     "source_index": {
-      "content_digest": "sha256:e8e1d7c043cfc172833f1cf5a60896534759346bc65a1e62f5d50bbf5dc5c175",
+      "content_digest": "sha256:a2aa59e04f4ba08e60d4e25364658c7f18fff1eaa2c2304c398c2e993562c060",
       "path": "docs/problems.json"
     },
     "strongest_result_summary": {

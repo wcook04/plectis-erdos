@@ -25,7 +25,7 @@
   ],
   "status_vocabulary": {
     "open": "The historical programme target remains open in the registry; consult the claim record before inferring programme status.",
-    "formal statement refuted": "Lean refutes the exact Formal Conjectures statement; correspondence with the original wording awaits independent review.",
+    "formal statement refuted": "Lean refutes the exact Formal Conjectures statement; independent human review of correspondence with the original wording has not been recorded.",
     "checked": "The pinned Lean kernel accepts the exact proposition named, with no sorry, no added axiom, and no unchecked evaluation.",
     "finite_evidence": "An exact finite computation. It constrains, and does not decide, an unbounded question.",
     "no_go": "A proof that some specific strategy cannot work. It removes a route, not the problem.",
@@ -655,7 +655,7 @@
       "erdos_number": 1041,
       "short_title": "Short connections inside polynomial lemniscates",
       "status": "formal statement refuted",
-      "question": "Must two roots of a monic polynomial in the open unit disc be joined by a sub-two-length curve inside its unit lemniscate? Ani’s degree-seven example refutes the exact Formal Conjectures statement; correspondence with the 1958 wording awaits human review.",
+      "question": "Must two roots of a monic polynomial in the open unit disc be joined by a sub-two-length curve inside its unit lemniscate? Ani’s degree-seven example refutes the exact Formal Conjectures statement; independent human review of correspondence with the 1958 wording has not been recorded.",
       "directory": "lean/ErdosProblems/Erdos1041",
       "principal_module": "ErdosProblems.Erdos1041.Counterexample.HausdorffLength",
       "companion_modules": [

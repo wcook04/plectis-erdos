@@ -23,11 +23,10 @@ hereditary consequences at `res:weighted-support` in
 The exact Lean declaration is
 `ErdosProblems.Erdos257.PaperCompleteR8.divisibilityWeightedClaim` at
 `lean/ErdosProblems/Erdos257/PaperCompleteR8/WeightedReturn.lean:120`.
-Its conjunction type `DivisibilityWeightedClaim` and the weighted-mass
-definition `FinitePrimeWeighted` are in
-`lean/ErdosProblems/Erdos257/PaperCompleteR7/AnalyticTargets.lean:75` and
-`:32`. The public claim row is `finite_prime_weighted_support` in
-`docs/claims.json`, status `formalised here`. The packet hashes the theorem,
+Its conjunction type is [`DivisibilityWeightedClaim`](../../lean/ErdosProblems/Erdos257/PaperCompleteR7/AnalyticTargets.lean#L61);
+the weighted-mass definition is [`FinitePrimeWeighted`](../../lean/ErdosProblems/Erdos257/PaperCompleteR7/PrimeWeightedDefinitions.lean#L25).
+The public claim row is `finite_prime_weighted_support` in
+`docs/claims.json`, status `unconditional progress`. The packet hashes the theorem,
 paper, and Lean claim-interface source, and checks the registered declaration
 line, paper label and exact open-proposition mapping.
 
@@ -41,7 +40,7 @@ external novelty, priority, or peer-review verdict follows from this packet.
 
 ## Accepted proof and public reuse
 
-The [paper Theorem 1 wrapper](https://prove2.me/theorems/f6d332dc-466f-4f2a-a207-6b0455c0fbbd)
+The [historically named “paper Theorem 1” wrapper](https://prove2.me/theorems/f6d332dc-466f-4f2a-a207-6b0455c0fbbd)
 is public and **Proved** on Prove2Me in Lean 4.30.0 with Mathlib `c5ea003`.
 It combines the fixed-base hereditary criterion with the all-base conclusion
 from a base-two weighted witness. It is a new composition of two accepted
@@ -63,8 +62,9 @@ signed-out readers to sign in. Without an account, start with the wrapper's
 two linked component theorems and their pinned public Lean sources:
 [fixed-base heredity](https://github.com/wcook04/plectis-erdos-lean/blob/c93c2e4dd86a2e317e0cb650ea244fee1afd59c2/ErdosProblems/Erdos257/PaperCompleteR8/WeightedHereditaryClaim.lean#L31)
 and the [all-base weighted claim](https://github.com/wcook04/plectis-erdos-lean/blob/c93c2e4dd86a2e317e0cb650ea244fee1afd59c2/ErdosProblems/Erdos257/PaperCompleteR8/WeightedReturn.lean#L120).
-The [paper's Theorem 1](../../paper/257/erdos-257-mersenne-support-subseries.tex)
-states the mathematical result and its context.
+The [current paper's Theorem 1.2](../../paper/257/erdos-257-mersenne-support-subseries.tex)
+states the mathematical result and its context. The external wrapper retains
+its earlier name and URL; the current paper label is `res:weighted-support`.
 
 Here is the accepted wrapper Solution as stored by Prove2Me on 25 September.
 It composes those two imports; the hard weighted criterion is in the imported
@@ -162,7 +162,7 @@ rationality conclusion.
 The paper's example uses the support
 $A_\star=\{2^km:k\ge1,\ m\text{ odd},\ m\le2^{2^k}\}$.
 Its reciprocal sum diverges, yet its base-two weighted mass is finite, so
-Theorem 1 applies to every infinite subset at every integer base.
+Theorem 1.2 applies to every infinite subset at every integer base.
 What changes if the odd-factor cutoff in layer $k$ becomes $2^{r_k}$, where
 
 $$
@@ -171,7 +171,7 @@ r_k=\left\lceil\frac{c^{2^k}}{k^p}\right\rceil,
 $$
 
 For $c=2,p=1$, decide whether the $P=\{2\}$ weighted test works at bases
-$2$ and $3$. Then change only $p$ to $2$ and decide what Theorem 1 says at
+$2$ and $3$. Then change only $p$ to $2$ and decide what Theorem 1.2 says at
 *every* base. Before opening the calculation, distinguish “this test fails”
 from a claim that the corresponding series is rational.
 
