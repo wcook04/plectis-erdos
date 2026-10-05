@@ -3614,6 +3614,386 @@
       ],
       "status_boundary": "Reviewed exposition only; no new theorem, formal status, exhaustive donor reading or measured reader benefit.",
       "manuscript_disposition": "Focused source edits accepted; theorem statements, registered claims and formal source pins conserved. Donor advice remains scoped and revisable."
+    },
+    {
+      "id": "short-20261005-r14-third-systems",
+      "round": 14,
+      "problem": "systems",
+      "custody_cohort": "erdos_third_return_20261005",
+      "archive_name": "systems_r14_third_pass_return_20261005.zip",
+      "archive_sha256": "257bef55819742ad6e4def8772c9485a0c7a92158c206f8d53ee4f3ab313909f",
+      "documents": {
+        "RETURN.json": {
+          "member": "systems_r14_third_pass_return_20261005/RETURN.json",
+          "sha256": "5c44cd2cbb3a50b2ea364b5037d5b8273a5a40b60a2d1e51af4fe76d90669f44"
+        },
+        "EDITORIAL_REPORT.md": {
+          "member": "systems_r14_third_pass_return_20261005/EDITORIAL_REPORT.md",
+          "sha256": "b4424d56c83a421d9a9457336d43d50438da178985c0a1d188698561a777b0d6"
+        },
+        "GENERALIZED_LESSONS.json": {
+          "member": "systems_r14_third_pass_return_20261005/GENERALIZED_LESSONS.json",
+          "sha256": "1f15bcafd6aa629afe5f9f8fb670e37aca7869b0d4c84e45aa1cc7d9df12f7a3"
+        },
+        "LITERATURE_READING.json": {
+          "member": "systems_r14_third_pass_return_20261005/LITERATURE_READING.json",
+          "sha256": "83f9009cf0d99d62e84dfab72fb889cb0e37ae2f7fe2d12486b962a911bff204"
+        },
+        "STATEMENT_CHANGES.json": {
+          "member": "systems_r14_third_pass_return_20261005/STATEMENT_CHANGES.json",
+          "sha256": "14958a3212e865110c3df4cb8b6a9f1119986b990a90743440929e4b7653e707"
+        },
+        "FEEDBACK_UPTAKE.json": {
+          "member": "systems_r14_third_pass_return_20261005/FEEDBACK_UPTAKE.json",
+          "sha256": "78fc7c5460b1cc942f2ff635163a2acf2c87c0c0d8832d770c5009293d0cf8e4"
+        }
+      },
+      "native_status": "source_reviewed_editorial_integration",
+      "native_receipt_identities": [],
+      "manuscript_disposition": "Cumulative source revisions accepted after baseline, scope, statement, link and native source-owner checks.",
+      "status_boundary": "Editorial acceptance only. No new Lean, theorem status, external review, reader-study or blanket donor-reading claim. Original transport-form mismatches are retained in maintainer custody."
+    },
+    {
+      "id": "short-20261005-r14-third-exposition",
+      "round": 14,
+      "problem": "exposition",
+      "custody_cohort": "erdos_third_return_20261005",
+      "archive_name": "exposition_r14_third_pass_return.zip",
+      "archive_sha256": "3b4a9ea2c3f5cc493c118d796333a324567f7b4bc13474c060ea28d02dd12098",
+      "documents": {
+        "RETURN.json": {
+          "member": "exposition_r14_third_pass_return/RETURN.json",
+          "sha256": "39606fe958f55a5c5a36b674fbaf5dcffd84daebac934dabe948a09d29a7d6b1"
+        },
+        "EDITORIAL_REPORT.md": {
+          "member": "exposition_r14_third_pass_return/EDITORIAL_REPORT.md",
+          "sha256": "79cbd0b3de0cd48baaa533ed3ce88f7ca122f21da4bea9494f654517addd945f"
+        },
+        "GENERALIZED_LESSONS.json": {
+          "member": "exposition_r14_third_pass_return/GENERALIZED_LESSONS.json",
+          "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+        },
+        "LITERATURE_READING.json": {
+          "member": "exposition_r14_third_pass_return/LITERATURE_READING.json",
+          "sha256": "724dfa00d866a0911f8987a221993f4c12407f5a4cf9094c0186c5dff8b83a18"
+        },
+        "STATEMENT_CHANGES.json": {
+          "member": "exposition_r14_third_pass_return/STATEMENT_CHANGES.json",
+          "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+        },
+        "FEEDBACK_UPTAKE.json": {
+          "member": "exposition_r14_third_pass_return/FEEDBACK_UPTAKE.json",
+          "sha256": "5beaa642ad85bc4ec38d31e9b073d2bbbaa27f3b19dd7cbb5978fdbfa3b911c7"
+        }
+      },
+      "native_status": "source_reviewed_editorial_integration",
+      "native_receipt_identities": [],
+      "manuscript_disposition": "Cumulative source revisions accepted after baseline, scope, statement, link and native source-owner checks.",
+      "status_boundary": "Editorial acceptance only. No new Lean, theorem status, external review, reader-study or blanket donor-reading claim. Original transport-form mismatches are retained in maintainer custody."
+    },
+    {
+      "id": "short-20261005-r14-third-erdos1049",
+      "round": 14,
+      "problem": "1049",
+      "custody_cohort": "erdos_third_return_20261005",
+      "archive_name": "erdos1049_r16_return_20261005.zip",
+      "archive_sha256": "622e67523ca3555e4a9719129ad78f495c25235c7c4b1689fa6fe67033dd5de7",
+      "documents": {
+        "RETURN.json": {
+          "member": "erdos1049_r16_refinement_20261005/RETURN.json",
+          "sha256": "e119ef2c51f2123eacd5f30eadc03f67a2438e0d854b9a2f1fed76c7a2b9046c"
+        },
+        "EDITORIAL_REPORT.md": {
+          "member": "erdos1049_r16_refinement_20261005/EDITORIAL_REPORT.md",
+          "sha256": "ed43d072a41ebefba980ae9fd1c900a95d6641e814a0659e5aa64181e3b261be"
+        },
+        "GENERALIZED_LESSONS.json": {
+          "member": "erdos1049_r16_refinement_20261005/GENERALIZED_LESSONS.json",
+          "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+        },
+        "LITERATURE_READING.json": {
+          "member": "erdos1049_r16_refinement_20261005/LITERATURE_READING.json",
+          "sha256": "cc7c59243f221c0e19791f2a5ce78866281072279bf02b20408c36dcc8a07fb9"
+        },
+        "STATEMENT_CHANGES.json": {
+          "member": "erdos1049_r16_refinement_20261005/STATEMENT_CHANGES.json",
+          "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+        },
+        "FEEDBACK_UPTAKE.json": {
+          "member": "erdos1049_r16_refinement_20261005/FEEDBACK_UPTAKE.json",
+          "sha256": "62c2c9e4069fbed16fbfc9f266fb078c41e19199a08839df2716d18b77b0c3bd"
+        }
+      },
+      "native_status": "source_reviewed_editorial_integration",
+      "native_receipt_identities": [],
+      "manuscript_disposition": "Cumulative source revisions accepted after baseline, scope, statement, link and native source-owner checks.",
+      "status_boundary": "Editorial acceptance only. No new Lean, theorem status, external review, reader-study or blanket donor-reading claim. Original transport-form mismatches are retained in maintainer custody."
+    },
+    {
+      "id": "short-20261005-r14-third-erdos1041",
+      "round": 14,
+      "problem": "1041",
+      "custody_cohort": "erdos_third_return_20261005",
+      "archive_name": "erdos1041_r14_third_pass_return_20261005.zip",
+      "archive_sha256": "62e51136b76fb4be5e13e8b40f75091cec7a2978667b2bf7335fa5b95160caf8",
+      "documents": {
+        "RETURN.json": {
+          "member": "erdos1041_r14_third_pass_return_20261005/RETURN.json",
+          "sha256": "8f89b1cc3b5b8c21ad833a1ede426ebc7a0e25a82bc907b797861a36508a9f56"
+        },
+        "EDITORIAL_REPORT.md": {
+          "member": "erdos1041_r14_third_pass_return_20261005/EDITORIAL_REPORT.md",
+          "sha256": "8135a257fac95a786ef7353ac4b243bdb366c3db68942d29884baf7908a87988"
+        },
+        "GENERALIZED_LESSONS.json": {
+          "member": "erdos1041_r14_third_pass_return_20261005/GENERALIZED_LESSONS.json",
+          "sha256": "1494087a0a3e49f6fd4759c861f03aabca3000a3ff1daf85ab602e3aa771d97c"
+        },
+        "LITERATURE_READING.json": {
+          "member": "erdos1041_r14_third_pass_return_20261005/LITERATURE_READING.json",
+          "sha256": "b7039a6b6dccbc145d83d4fc1ea8e188abe27fa88c0488d2abce8a30f5ed2bb8"
+        },
+        "STATEMENT_CHANGES.json": {
+          "member": "erdos1041_r14_third_pass_return_20261005/STATEMENT_CHANGES.json",
+          "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+        },
+        "FEEDBACK_UPTAKE.json": {
+          "member": "erdos1041_r14_third_pass_return_20261005/FEEDBACK_UPTAKE.json",
+          "sha256": "66626cddbfc2845540f3888345f6cf149ffa7c2776e32610cca67da92c5bbc54"
+        }
+      },
+      "native_status": "source_reviewed_editorial_integration",
+      "native_receipt_identities": [],
+      "manuscript_disposition": "Cumulative source revisions accepted after baseline, scope, statement, link and native source-owner checks.",
+      "status_boundary": "Editorial acceptance only. No new Lean, theorem status, external review, reader-study or blanket donor-reading claim. Original transport-form mismatches are retained in maintainer custody."
+    },
+    {
+      "id": "short-20261005-r14-third-erdos269",
+      "round": 14,
+      "problem": "269",
+      "custody_cohort": "erdos_third_return_20261005",
+      "archive_name": "erdos269_r16_third_pass_return.zip",
+      "archive_sha256": "783eff3eb169473065256930d072836cb6161e3d6145ef7bdbfbda67b7eb5e27",
+      "documents": {
+        "RETURN.json": {
+          "member": "erdos269_r16_third_pass_return/RETURN.json",
+          "sha256": "7256b74e7a3f619c5f80119df2f96ffdb1e653931f6bf1cbdf1115bd0a7c934d"
+        },
+        "EDITORIAL_REPORT.md": {
+          "member": "erdos269_r16_third_pass_return/EDITORIAL_REPORT.md",
+          "sha256": "059f84e9e18fb2a0205d40eab9ade9aa999b97c7befabd5210033d9cd1904d61"
+        },
+        "GENERALIZED_LESSONS.json": {
+          "member": "erdos269_r16_third_pass_return/GENERALIZED_LESSONS.json",
+          "sha256": "7161b4be4348ed6be9ef67eab4a507bc36233427eb289812aee39a0c28ed6f45"
+        },
+        "LITERATURE_READING.json": {
+          "member": "erdos269_r16_third_pass_return/LITERATURE_READING.json",
+          "sha256": "4b3df4b803d8cb60fd279e08d0d48c64f8849623261987ece6a9f11338b15451"
+        },
+        "STATEMENT_CHANGES.json": {
+          "member": "erdos269_r16_third_pass_return/STATEMENT_CHANGES.json",
+          "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+        },
+        "FEEDBACK_UPTAKE.json": {
+          "member": "erdos269_r16_third_pass_return/FEEDBACK_UPTAKE.json",
+          "sha256": "d6e23af48df7d160efc441c2b419f7b3a40adc836c4c3f4525a43ad5d2b83573"
+        }
+      },
+      "native_status": "source_reviewed_editorial_integration",
+      "native_receipt_identities": [],
+      "manuscript_disposition": "Cumulative source revisions accepted after baseline, scope, statement, link and native source-owner checks.",
+      "status_boundary": "Editorial acceptance only. No new Lean, theorem status, external review, reader-study or blanket donor-reading claim. Original transport-form mismatches are retained in maintainer custody."
+    },
+    {
+      "id": "short-20261005-r14-third-erdos257",
+      "round": 14,
+      "problem": "257",
+      "custody_cohort": "erdos_third_return_20261005",
+      "archive_name": "erdos257_third_cumulative_refinement_20261005.zip",
+      "archive_sha256": "c9110b20bef4520eca65a12405b608f7ff2d96626810e9e767ccf05118891d9d",
+      "documents": {
+        "RETURN.json": {
+          "member": "erdos257_third_cumulative_refinement_20261005/RETURN.json",
+          "sha256": "b59bc74830d6fa6efebf6d653bbcae42f8b757b0a8ad4ee6af3f0c15622a05ce"
+        },
+        "EDITORIAL_REPORT.md": {
+          "member": "erdos257_third_cumulative_refinement_20261005/EDITORIAL_REPORT.md",
+          "sha256": "c17ad071d523c8731468bd2e8896b62353c719e85a4f0e9ff0ad3fcd6c1a8a44"
+        },
+        "GENERALIZED_LESSONS.json": {
+          "member": "erdos257_third_cumulative_refinement_20261005/GENERALIZED_LESSONS.json",
+          "sha256": "e8f9da3d967451e9e623b5846aa0864813fbccf59f38023e0604bb88dfdb0582"
+        },
+        "LITERATURE_READING.json": {
+          "member": "erdos257_third_cumulative_refinement_20261005/LITERATURE_READING.json",
+          "sha256": "4068fc1c72bbc64e11ccf45c549474a3d3a93a9e4d55ed9e0f0aabfdc75a2855"
+        },
+        "STATEMENT_CHANGES.json": {
+          "member": "erdos257_third_cumulative_refinement_20261005/STATEMENT_CHANGES.json",
+          "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+        },
+        "FEEDBACK_UPTAKE.json": {
+          "member": "erdos257_third_cumulative_refinement_20261005/FEEDBACK_UPTAKE.json",
+          "sha256": "368240e19154e183025fd7c07ef6f93f90c9cf396922f5c6316717e524bd1043"
+        }
+      },
+      "native_status": "source_reviewed_editorial_integration",
+      "native_receipt_identities": [],
+      "manuscript_disposition": "Cumulative source revisions accepted after baseline, scope, statement, link and native source-owner checks.",
+      "status_boundary": "Editorial acceptance only. No new Lean, theorem status, external review, reader-study or blanket donor-reading claim. Original transport-form mismatches are retained in maintainer custody."
+    },
+    {
+      "id": "short-20261005-r14-third-erdos251",
+      "round": 14,
+      "problem": "251",
+      "custody_cohort": "erdos_third_return_20261005",
+      "archive_name": "erdos251_r14_third_pass_complete_return.zip",
+      "archive_sha256": "654e6537b7b2b9d898dca6a860239da935f47013893de0c25af371d153a53826",
+      "documents": {
+        "RETURN.json": {
+          "member": "erdos251_r14_third_pass_return/RETURN.json",
+          "sha256": "76adaa1a04a690634475451f89a10f95139f29d45aec853c3d3e5393c968e6c1"
+        },
+        "EDITORIAL_REPORT.md": {
+          "member": "erdos251_r14_third_pass_return/EDITORIAL_REPORT.md",
+          "sha256": "649fbaf9ce5a768d27842d646e2060052efdcd333be21c340a267f67956b65d7"
+        },
+        "GENERALIZED_LESSONS.json": {
+          "member": "erdos251_r14_third_pass_return/GENERALIZED_LESSONS.json",
+          "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+        },
+        "LITERATURE_READING.json": {
+          "member": "erdos251_r14_third_pass_return/LITERATURE_READING.json",
+          "sha256": "2f6b571748ac226dd24a2100a4c950805db6b04b03f4e567c49517bf23e709b6"
+        },
+        "STATEMENT_CHANGES.json": {
+          "member": "erdos251_r14_third_pass_return/STATEMENT_CHANGES.json",
+          "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+        },
+        "FEEDBACK_UPTAKE.json": {
+          "member": "erdos251_r14_third_pass_return/FEEDBACK_UPTAKE.json",
+          "sha256": "76358a6b8e330075607bbcbd99629cf7315a740f3540a22b0396814f2ada46c8"
+        }
+      },
+      "native_status": "source_reviewed_editorial_integration",
+      "native_receipt_identities": [],
+      "manuscript_disposition": "Cumulative source revisions accepted after baseline, scope, statement, link and native source-owner checks.",
+      "status_boundary": "Editorial acceptance only. No new Lean, theorem status, external review, reader-study or blanket donor-reading claim. Original transport-form mismatches are retained in maintainer custody."
+    },
+    {
+      "id": "short-20261005-r14-third-erdos249",
+      "round": 14,
+      "problem": "249",
+      "custody_cohort": "erdos_third_return_20261005",
+      "archive_name": "erdos249_r14_third_return_20261005.zip",
+      "archive_sha256": "779a32a61c1d37f65868a8557d9bc3f61cd253e05dacee829cfe8b34fc54cd46",
+      "documents": {
+        "RETURN.json": {
+          "member": "erdos249_r14_third_return_20261005/RETURN.json",
+          "sha256": "1c26fb1520e0b9426ab4a080a029732095a1b0740958ebaa5922027c728a2f4d"
+        },
+        "EDITORIAL_REPORT.md": {
+          "member": "erdos249_r14_third_return_20261005/EDITORIAL_REPORT.md",
+          "sha256": "af7c7b474ffb75c0c42415b2e3ae5367c713d4e1513eb594e2601a6de7072c04"
+        },
+        "GENERALIZED_LESSONS.json": {
+          "member": "erdos249_r14_third_return_20261005/GENERALIZED_LESSONS.json",
+          "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+        },
+        "LITERATURE_READING.json": {
+          "member": "erdos249_r14_third_return_20261005/LITERATURE_READING.json",
+          "sha256": "15ff636dfbb79a939f0c1849814bc5403a59fd69cbf7c6f24c73e1f683eef1fd"
+        },
+        "STATEMENT_CHANGES.json": {
+          "member": "erdos249_r14_third_return_20261005/STATEMENT_CHANGES.json",
+          "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+        },
+        "FEEDBACK_UPTAKE.json": {
+          "member": "erdos249_r14_third_return_20261005/FEEDBACK_UPTAKE.json",
+          "sha256": "5334a9139c109a5186a2651f54b70645d4f8a358018749e1673bc7a781622958"
+        }
+      },
+      "native_status": "source_reviewed_editorial_integration",
+      "native_receipt_identities": [],
+      "manuscript_disposition": "Cumulative source revisions accepted after baseline, scope, statement, link and native source-owner checks.",
+      "status_boundary": "Editorial acceptance only. No new Lean, theorem status, external review, reader-study or blanket donor-reading claim. Original transport-form mismatches are retained in maintainer custody."
+    },
+    {
+      "id": "short-20261005-r14-third-erdos243",
+      "round": 14,
+      "problem": "243",
+      "custody_cohort": "erdos_third_return_20261005",
+      "archive_name": "erdos243_third_refinement_return_20261005.zip",
+      "archive_sha256": "89c8e7c3a7af6cb67928066cd8b314115437bcf568272ca8b099216703a5cda3",
+      "documents": {
+        "RETURN.json": {
+          "member": "erdos243_third_refinement_return_20261005/RETURN.json",
+          "sha256": "f1f83e1d10e56fd9b246cab73047ea4f67f60624a661a58b709410f67993ffb0"
+        },
+        "EDITORIAL_REPORT.md": {
+          "member": "erdos243_third_refinement_return_20261005/EDITORIAL_REPORT.md",
+          "sha256": "54b6fd973882fa95020fbfdd38ab00569c7bf6d642c6f8a9a14cd1f0da2ce728"
+        },
+        "GENERALIZED_LESSONS.json": {
+          "member": "erdos243_third_refinement_return_20261005/GENERALIZED_LESSONS.json",
+          "sha256": "6d61459ede33660507cc372015e288be9d293086399578963036b45db082d345"
+        },
+        "LITERATURE_READING.json": {
+          "member": "erdos243_third_refinement_return_20261005/LITERATURE_READING.json",
+          "sha256": "de3747b39b0c5b8c80e7e05955a2e795ea8ae5c40b2b22b7448174b25f324114"
+        },
+        "STATEMENT_CHANGES.json": {
+          "member": "erdos243_third_refinement_return_20261005/STATEMENT_CHANGES.json",
+          "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+        },
+        "FEEDBACK_UPTAKE.json": {
+          "member": "erdos243_third_refinement_return_20261005/FEEDBACK_UPTAKE.json",
+          "sha256": "7e8d07c1190c527dc6c7dd1e55c8aa190271fbacd5570b73cb62e100def4fe3d"
+        }
+      },
+      "native_status": "source_reviewed_editorial_integration",
+      "native_receipt_identities": [],
+      "manuscript_disposition": "Cumulative source revisions accepted after baseline, scope, statement, link and native source-owner checks.",
+      "status_boundary": "Editorial acceptance only. No new Lean, theorem status, external review, reader-study or blanket donor-reading claim. Original transport-form mismatches are retained in maintainer custody."
+    },
+    {
+      "id": "short-20261005-r14-third-erdos68",
+      "round": 14,
+      "problem": "68",
+      "custody_cohort": "erdos_third_return_20261005",
+      "archive_name": "erdos68_r14_cumulative_third_return_20261005.zip",
+      "archive_sha256": "8b51f33205cb630ef46fe46c9ab8e592cfc5557faab03f847f775cc8ae671e8c",
+      "documents": {
+        "RETURN.json": {
+          "member": "erdos68_r14_cumulative_third_return_20261005/RETURN.json",
+          "sha256": "1e90a9bb973d9ab7d94511618e48660ab7e44f33793675fadc200403d352c57c"
+        },
+        "EDITORIAL_REPORT.md": {
+          "member": "erdos68_r14_cumulative_third_return_20261005/EDITORIAL_REPORT.md",
+          "sha256": "1d1984169fd0bd230c831e1c11e99ae5f6e018d54579b0a0e13e922e17f976cb"
+        },
+        "GENERALIZED_LESSONS.json": {
+          "member": "erdos68_r14_cumulative_third_return_20261005/GENERALIZED_LESSONS.json",
+          "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+        },
+        "LITERATURE_READING.json": {
+          "member": "erdos68_r14_cumulative_third_return_20261005/LITERATURE_READING.json",
+          "sha256": "d80257e447822d17d36b97e3ae6bb0f3ec61f1918cef2053e42c8401c91256a7"
+        },
+        "STATEMENT_CHANGES.json": {
+          "member": "erdos68_r14_cumulative_third_return_20261005/STATEMENT_CHANGES.json",
+          "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+        },
+        "FEEDBACK_UPTAKE.json": {
+          "member": "erdos68_r14_cumulative_third_return_20261005/FEEDBACK_UPTAKE.json",
+          "sha256": "3327bbb52a1c800c59efdd68543d8ad40b353b8696ca2f5e873bb97ee664fcea"
+        }
+      },
+      "native_status": "source_reviewed_editorial_integration",
+      "native_receipt_identities": [],
+      "manuscript_disposition": "Cumulative source revisions accepted after baseline, scope, statement, link and native source-owner checks.",
+      "status_boundary": "Editorial acceptance only. No new Lean, theorem status, external review, reader-study or blanket donor-reading claim. Original transport-form mismatches are retained in maintainer custody."
     }
   ]
 }

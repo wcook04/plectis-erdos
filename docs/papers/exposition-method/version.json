@@ -1,6 +1,6 @@
 {
   "schema": "exposition-method-version/1",
-  "version": "2026-10-04.2",
+  "version": "2026-10-05.1",
   "required_roles": [
     "guidance",
     "skill",
@@ -44,7 +44,7 @@
     },
     {
       "path": "docs/papers/exposition-method/returns.json",
-      "sha256": "0fadaf1552a4e977215702393ba33ad8873fcb3a1b9c6944070a2f96b4059658",
+      "sha256": "0ef73dd0800a69d262c38aa622decad94cbdc1a717424b272fc9831363e2e7c3",
       "role": "returns"
     },
     {
@@ -54,37 +54,37 @@
     },
     {
       "path": "paper/exposition/writing-mathematics-from-reviewed-revisions.tex",
-      "sha256": "6321a07eb19adea4439282c2a9d52d3016ccf8615b9d2d267990a286729ae238",
+      "sha256": "ff172560fbca4a1417d27b28b9124e900fcec8be928921f970c0b6cc3b486e47",
       "role": "companion_source"
     },
     {
       "path": "paper/exposition/writing-mathematics-from-reviewed-revisions.pdf",
-      "sha256": "21800ba85b39d0ad194c0585d7c2fa8c80e97d8df8f0ec7f14c4fe1b8070032a",
+      "sha256": "79e1ac5b925b420e519f00154a794177c8af2c184272abaf573804eef9fa2e1b",
       "role": "companion_pdf"
     },
     {
       "path": "paper/exposition/parts/reading.tex",
-      "sha256": "8675f4cbb7003a35a81890813b278a7e4b6ebcf02eaeb3da391feabb30fbfa65",
+      "sha256": "4e80a17ad9d57281ad2acbf11fe63bf004c81fff8900885b7b152d27cfbaf352",
       "role": "companion_input"
     },
     {
       "path": "paper/exposition/parts/revisions.tex",
-      "sha256": "3da45d656c8f7f6919475b256fa08cf80de6b97e53b3a46a214b23de0bae4d13",
+      "sha256": "e1082e00ce627f2b78348cad7b257125cd41ac0a33394d3d582fe316d850f83a",
       "role": "companion_input"
     },
     {
       "path": "paper/exposition/parts/review.tex",
-      "sha256": "56c0ac6bb469bb0f4ea68437b0652aaaaeb7186465ecc82500e8bcea8dc301f7",
+      "sha256": "b48b53c9617e9a911eb3851c3a0d427ca2d27a811477ae84426720e6d94fd8ac",
       "role": "companion_input"
     },
     {
       "path": "paper/exposition/parts/practice.tex",
-      "sha256": "5d43ef03630299b3ee7ffcea77830e28caa98636de441c65383e5b414fa09c61",
+      "sha256": "e016fa1578b45ca549dd444a4f37575c9cd90c5fb8643fb733ee00a025048f47",
       "role": "companion_input"
     },
     {
       "path": "paper/exposition/parts/references.tex",
-      "sha256": "61f75d6d2cfb2110b31a28ec892387393e04ca9016bcdb390630f8c6c66427e1",
+      "sha256": "b55141df1839a03296bc77dca3db3bc2a4b8ffae4e7a17f5ddb79efa33cf0aac",
       "role": "companion_input"
     },
     {
@@ -104,12 +104,12 @@
     },
     {
       "path": "paper/exposition/writing-a-good-mathematical-paper.tex",
-      "sha256": "3ea8de2c71651873d24a72885392e4d0d8c65cc0e143bd884c6d94cbc43dc0ae",
+      "sha256": "ab1c9e2bd207bd7638ff3fb2b3b31c94344e2fed0b76a772a5184b74e4a798b6",
       "role": "compact_guide_source"
     },
     {
       "path": "paper/exposition/writing-a-good-mathematical-paper.pdf",
-      "sha256": "c111145c70abaeddcf1af4050f4d7fb823d75ec4d745fa65f50cb68eea1e286c",
+      "sha256": "caad8b968c94acb953a47922125a904ac1f17a3904347112cde9bb99eed04c1d",
       "role": "compact_guide_pdf"
     },
     {

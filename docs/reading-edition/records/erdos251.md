@@ -25,43 +25,43 @@ A complete registered-evidence match locates the same full declaration set in th
 
 State: **unresolved**.
 
-Short statement: [paper/251/erdos-251-prime-gap-dyadic-series.tex](../../../paper/251/erdos-251-prime-gap-dyadic-series.tex) lines 106-128.
+Short statement: [paper/251/erdos-251-prime-gap-dyadic-series.tex](../../../paper/251/erdos-251-prime-gap-dyadic-series.tex) lines 104-126.
 
 Ledger evidence: Lean `exact_or_stronger`; Comparator `compared`. These statuses are copied from the evidence ledger; this build reruns neither checker.
 
 No accepted correspondence is recorded. Check the candidates below; none is silently treated as a proof of this short statement.
 
-- `partial_declaration_overlap`: [paper/reasoning-parts/erdos251/core.tex](../../../paper/reasoning-parts/erdos251/core.tex) lines 132-157.
+- `partial_declaration_overlap`: [paper/reasoning-parts/erdos251/core.tex](../../../paper/reasoning-parts/erdos251/core.tex) lines 134-159.
 
 ### res:jointcountermodel
 
 State: **short_proof_explained_long_link_open**.
 
-Short statement: [paper/251/erdos-251-prime-gap-dyadic-series.tex](../../../paper/251/erdos-251-prime-gap-dyadic-series.tex) lines 410-430.
+Short statement: [paper/251/erdos-251-prime-gap-dyadic-series.tex](../../../paper/251/erdos-251-prime-gap-dyadic-series.tex) lines 416-436.
 
 Ledger evidence: Lean `modulo_named_input`; Comparator `not_applicable`. These statuses are copied from the evidence ledger; this build reruns neither checker.
 
-Retained short-paper argument: [paper/251/erdos-251-prime-gap-dyadic-series.tex](../../../paper/251/erdos-251-prime-gap-dyadic-series.tex) lines 436-471.
+Retained short-paper argument: [paper/251/erdos-251-prime-gap-dyadic-series.tex](../../../paper/251/erdos-251-prime-gap-dyadic-series.tex) lines 442-476.
 
 The application proof remains in sec:prime-application. It invokes the sparse construction, the finite-union exceptional-set argument and the cumulative-size estimate under the unchanged adjacent published-input remark. The convergence bound now points directly to the existing full Appendix A proof.
 
-Review status: R9 Type A source-reading review of accepted exposition change against unchanged statement and prior proof; no new independent mathematical review, Lean execution or long-record correspondence..
+Review status: R14 third return Type A source-reading and frozen-statement review; proof availability only, no independent mathematical review or new long-record correspondence..
 
 This hash-bound passage records proof availability; its mathematical correctness is not checked by this audit. No accepted long-record correspondence is established by this disposition.
 
 No accepted correspondence is recorded. Check the candidates below; none is silently treated as a proof of this short statement.
 
-- `label_alias`: [paper/reasoning-parts/erdos251/core.tex](../../../paper/reasoning-parts/erdos251/core.tex) lines 1555-1567.
+- `label_alias`: [paper/reasoning-parts/erdos251/core.tex](../../../paper/reasoning-parts/erdos251/core.tex) lines 1560-1572.
 
 ### res:infinite
 
 State: **short_proof_explained_long_link_open**.
 
-Short statement: [paper/251/erdos-251-prime-gap-dyadic-series.tex](../../../paper/251/erdos-251-prime-gap-dyadic-series.tex) lines 497-504.
+Short statement: [paper/251/erdos-251-prime-gap-dyadic-series.tex](../../../paper/251/erdos-251-prime-gap-dyadic-series.tex) lines 502-509.
 
 Ledger evidence: Lean `exact`; Comparator `compared`. These statuses are copied from the evidence ledger; this build reruns neither checker.
 
-Retained short-paper argument: [paper/251/erdos-251-prime-gap-dyadic-series.tex](../../../paper/251/erdos-251-prime-gap-dyadic-series.tex) lines 505-514.
+Retained short-paper argument: [paper/251/erdos-251-prime-gap-dyadic-series.tex](../../../paper/251/erdos-251-prime-gap-dyadic-series.tex) lines 510-519.
 
 The finite prime-to-gap identity is followed by the justified endpoint limit and actual-tail recurrence in sec:parts. No argument or evidence class was changed.
 
@@ -77,7 +77,7 @@ No accepted correspondence is recorded. Check the candidates below; none is sile
 
 State: **registered_evidence_linked**.
 
-Short statement: [paper/251/erdos-251-prime-gap-dyadic-series.tex](../../../paper/251/erdos-251-prime-gap-dyadic-series.tex) lines 530-534.
+Short statement: [paper/251/erdos-251-prime-gap-dyadic-series.tex](../../../paper/251/erdos-251-prime-gap-dyadic-series.tex) lines 536-540.
 
 Ledger evidence: Lean `exact`; Comparator `compared`. These statuses are copied from the evidence ledger; this build reruns neither checker.
 
@@ -89,11 +89,11 @@ Long-record location: [paper/reasoning-parts/erdos251/core.tex](../../../paper/r
 
 State: **short_proof_explained_long_link_open**.
 
-Short statement: [paper/251/erdos-251-prime-gap-dyadic-series.tex](../../../paper/251/erdos-251-prime-gap-dyadic-series.tex) lines 553-566.
+Short statement: [paper/251/erdos-251-prime-gap-dyadic-series.tex](../../../paper/251/erdos-251-prime-gap-dyadic-series.tex) lines 559-572.
 
 Ledger evidence: Lean `exact`; Comparator `compared`. These statuses are copied from the evidence ledger; this build reruns neither checker.
 
-Retained short-paper argument: [paper/251/erdos-251-prime-gap-dyadic-series.tex](../../../paper/251/erdos-251-prime-gap-dyadic-series.tex) lines 567-582.
+Retained short-paper argument: [paper/251/erdos-251-prime-gap-dyadic-series.tex](../../../paper/251/erdos-251-prime-gap-dyadic-series.tex) lines 573-588.
 
 The proof in sec:tail retains the rationality implications, powers-of-two cancellation and one shift valid beyond a fixed cutoff. All quantifiers remain unchanged.
 
@@ -109,11 +109,11 @@ No accepted correspondence is recorded. Check the candidates below; none is sile
 
 State: **short_proof_explained_long_link_open**.
 
-Short statement: [paper/251/erdos-251-prime-gap-dyadic-series.tex](../../../paper/251/erdos-251-prime-gap-dyadic-series.tex) lines 598-606.
+Short statement: [paper/251/erdos-251-prime-gap-dyadic-series.tex](../../../paper/251/erdos-251-prime-gap-dyadic-series.tex) lines 606-614.
 
 Ledger evidence: Lean `exact`; Comparator `compared`. These statuses are copied from the evidence ledger; this build reruns neither checker.
 
-Retained short-paper argument: [paper/251/erdos-251-prime-gap-dyadic-series.tex](../../../paper/251/erdos-251-prime-gap-dyadic-series.tex) lines 607-611.
+Retained short-paper argument: [paper/251/erdos-251-prime-gap-dyadic-series.tex](../../../paper/251/erdos-251-prime-gap-dyadic-series.tex) lines 615-619.
 
 The signed interval argument remains complete in sec:local-certificate, including the even mismatch and strict endpoint conditions.
 
@@ -123,17 +123,17 @@ This hash-bound passage records proof availability; its mathematical correctness
 
 No accepted correspondence is recorded. Check the candidates below; none is silently treated as a proof of this short statement.
 
-- `label_alias`: [paper/reasoning-parts/erdos251/core.tex](../../../paper/reasoning-parts/erdos251/core.tex) lines 1073-1081.
+- `label_alias`: [paper/reasoning-parts/erdos251/core.tex](../../../paper/reasoning-parts/erdos251/core.tex) lines 1071-1079.
 
 ### res:truncation
 
 State: **short_proof_explained_long_link_open**.
 
-Short statement: [paper/251/erdos-251-prime-gap-dyadic-series.tex](../../../paper/251/erdos-251-prime-gap-dyadic-series.tex) lines 662-668.
+Short statement: [paper/251/erdos-251-prime-gap-dyadic-series.tex](../../../paper/251/erdos-251-prime-gap-dyadic-series.tex) lines 673-679.
 
 Ledger evidence: Lean `exact_or_stronger`; Comparator `compared`. These statuses are copied from the evidence ledger; this build reruns neither checker.
 
-Retained short-paper argument: [paper/251/erdos-251-prime-gap-dyadic-series.tex](../../../paper/251/erdos-251-prime-gap-dyadic-series.tex) lines 669-675.
+Retained short-paper argument: [paper/251/erdos-251-prime-gap-dyadic-series.tex](../../../paper/251/erdos-251-prime-gap-dyadic-series.tex) lines 680-686.
 
 The proof in sec:local-certificate bounds distance from the integers by the finite enclosure error and invokes the exact integral-shift classification. The subsequent fixed-value versus varying-index limitation is retained.
 
@@ -149,11 +149,11 @@ No candidate was found by the bounded label/declaration rules. Read the long rec
 
 State: **short_proof_explained_long_link_open**.
 
-Short statement: [paper/251/erdos-251-prime-gap-dyadic-series.tex](../../../paper/251/erdos-251-prime-gap-dyadic-series.tex) lines 518-522.
+Short statement: [paper/251/erdos-251-prime-gap-dyadic-series.tex](../../../paper/251/erdos-251-prime-gap-dyadic-series.tex) lines 523-527.
 
 Ledger evidence: Lean `exact_or_stronger`; Comparator `compared`. These statuses are copied from the evidence ledger; this build reruns neither checker.
 
-Retained short-paper argument: [paper/251/erdos-251-prime-gap-dyadic-series.tex](../../../paper/251/erdos-251-prime-gap-dyadic-series.tex) lines 523-525.
+Retained short-paper argument: [paper/251/erdos-251-prime-gap-dyadic-series.tex](../../../paper/251/erdos-251-prime-gap-dyadic-series.tex) lines 528-530.
 
 The short deduction in sec:parts uses the prime-to-gap identity and rational addition/scaling. It is retained, without claiming that an equivalence proves irrationality.
 
@@ -170,11 +170,11 @@ No accepted correspondence is recorded. Check the candidates below; none is sile
 
 State: **registered_evidence_linked**.
 
-Short statement: [paper/251/erdos-251-prime-gap-dyadic-series.tex](../../../paper/251/erdos-251-prime-gap-dyadic-series.tex) lines 743-746.
+Short statement: [paper/251/erdos-251-prime-gap-dyadic-series.tex](../../../paper/251/erdos-251-prime-gap-dyadic-series.tex) lines 756-759.
 
 Ledger evidence: Lean `exact`; Comparator `compared`. These statuses are copied from the evidence ledger; this build reruns neither checker.
 
-Long-record location: [paper/reasoning-parts/erdos251/core.tex](../../../paper/reasoning-parts/erdos251/core.tex) lines 1050-1053.
+Long-record location: [paper/reasoning-parts/erdos251/core.tex](../../../paper/reasoning-parts/erdos251/core.tex) lines 1048-1051.
 
 - `ErdosProblems.Erdos251.PaperR7.prime_gaps_not_eventually_periodic`: [lean/ErdosProblems/Erdos251/PaperCoreR7.lean](../../../lean/ErdosProblems/Erdos251/PaperCoreR7.lean) lines 175-175.
 
@@ -182,40 +182,40 @@ Long-record location: [paper/reasoning-parts/erdos251/core.tex](../../../paper/r
 
 These registered long assertions are not used by an accepted short-paper link. They may be supporting lemmas, broader results, route-local obstructions, or unresolved matches. They are retained and are not deletion candidates.
 
-- `long251:res:sparse-rationalisation`: [paper/reasoning-parts/erdos251/core.tex](../../../paper/reasoning-parts/erdos251/core.tex) lines 132-157.
-- `long251:res:local-targets`: [paper/reasoning-parts/erdos251/core.tex](../../../paper/reasoning-parts/erdos251/core.tex) lines 414-417.
-- `long251:res:abel`: [paper/reasoning-parts/erdos251/core.tex](../../../paper/reasoning-parts/erdos251/core.tex) lines 682-689.
-- `long251:res:parts`: [paper/reasoning-parts/erdos251/core.tex](../../../paper/reasoning-parts/erdos251/core.tex) lines 705-712.
+- `long251:res:sparse-rationalisation`: [paper/reasoning-parts/erdos251/core.tex](../../../paper/reasoning-parts/erdos251/core.tex) lines 134-159.
+- `long251:res:local-targets`: [paper/reasoning-parts/erdos251/core.tex](../../../paper/reasoning-parts/erdos251/core.tex) lines 417-420.
+- `long251:res:abel`: [paper/reasoning-parts/erdos251/core.tex](../../../paper/reasoning-parts/erdos251/core.tex) lines 681-688.
+- `long251:res:parts`: [paper/reasoning-parts/erdos251/core.tex](../../../paper/reasoning-parts/erdos251/core.tex) lines 704-711.
 - `long251:res:infinite`: [paper/reasoning-parts/erdos251/core.tex](../../../paper/reasoning-parts/erdos251/core.tex) lines 730-736.
 - `long251:res:irr-equivalence`: [paper/reasoning-parts/erdos251/core.tex](../../../paper/reasoning-parts/erdos251/core.tex) lines 755-759.
 - `long251:res:block`: [paper/reasoning-parts/erdos251/core.tex](../../../paper/reasoning-parts/erdos251/core.tex) lines 817-824.
 - `long251:res:escape-irrational`: [paper/reasoning-parts/erdos251/core.tex](../../../paper/reasoning-parts/erdos251/core.tex) lines 872-884.
-- `long251:res:freepair`: [paper/reasoning-parts/erdos251/core.tex](../../../paper/reasoning-parts/erdos251/core.tex) lines 953-956.
-- `long251:res:lcmdiagonal`: [paper/reasoning-parts/erdos251/core.tex](../../../paper/reasoning-parts/erdos251/core.tex) lines 985-989.
-- `long251:res:smallpair`: [paper/reasoning-parts/erdos251/core.tex](../../../paper/reasoning-parts/erdos251/core.tex) lines 1017-1027.
-- `long251:res:smallpair-real`: [paper/reasoning-parts/erdos251/core.tex](../../../paper/reasoning-parts/erdos251/core.tex) lines 1036-1040.
-- `long251:res:signedwindow`: [paper/reasoning-parts/erdos251/core.tex](../../../paper/reasoning-parts/erdos251/core.tex) lines 1073-1081.
-- `long251:res:explicit-remainder`: [paper/reasoning-parts/erdos251/core.tex](../../../paper/reasoning-parts/erdos251/core.tex) lines 1106-1119.
-- `long251:res:finite-smallpair`: [paper/reasoning-parts/erdos251/core.tex](../../../paper/reasoning-parts/erdos251/core.tex) lines 1138-1142.
+- `long251:res:freepair`: [paper/reasoning-parts/erdos251/core.tex](../../../paper/reasoning-parts/erdos251/core.tex) lines 952-955.
+- `long251:res:lcmdiagonal`: [paper/reasoning-parts/erdos251/core.tex](../../../paper/reasoning-parts/erdos251/core.tex) lines 983-987.
+- `long251:res:smallpair`: [paper/reasoning-parts/erdos251/core.tex](../../../paper/reasoning-parts/erdos251/core.tex) lines 1015-1025.
+- `long251:res:smallpair-real`: [paper/reasoning-parts/erdos251/core.tex](../../../paper/reasoning-parts/erdos251/core.tex) lines 1034-1038.
+- `long251:res:signedwindow`: [paper/reasoning-parts/erdos251/core.tex](../../../paper/reasoning-parts/erdos251/core.tex) lines 1071-1079.
+- `long251:res:explicit-remainder`: [paper/reasoning-parts/erdos251/core.tex](../../../paper/reasoning-parts/erdos251/core.tex) lines 1105-1118.
+- `long251:res:finite-smallpair`: [paper/reasoning-parts/erdos251/core.tex](../../../paper/reasoning-parts/erdos251/core.tex) lines 1137-1141.
 - `long251:res:one-tail-certificate`: [paper/reasoning-parts/erdos251/core.tex](../../../paper/reasoning-parts/erdos251/core.tex) lines 1165-1175.
-- `long251:res:denominatorfloor`: [paper/reasoning-parts/erdos251/core.tex](../../../paper/reasoning-parts/erdos251/core.tex) lines 1207-1210.
-- `long251:res:cfexclusion`: [paper/reasoning-parts/erdos251/core.tex](../../../paper/reasoning-parts/erdos251/core.tex) lines 1255-1258.
-- `long251:res:boundedperturbation`: [paper/reasoning-parts/erdos251/core.tex](../../../paper/reasoning-parts/erdos251/core.tex) lines 1362-1367.
-- `long251:res:shiftedcount`: [paper/reasoning-parts/erdos251/core.tex](../../../paper/reasoning-parts/erdos251/core.tex) lines 1421-1431.
-- `long251:res:nonconcentration`: [paper/reasoning-parts/erdos251/core.tex](../../../paper/reasoning-parts/erdos251/core.tex) lines 1464-1468.
-- `long251:res:nonconc-primes`: [paper/reasoning-parts/erdos251/core.tex](../../../paper/reasoning-parts/erdos251/core.tex) lines 1495-1503.
-- `long251:res:sparse-nonconcentration`: [paper/reasoning-parts/erdos251/core.tex](../../../paper/reasoning-parts/erdos251/core.tex) lines 1531-1535.
-- `long251:res:jointcountermodel`: [paper/reasoning-parts/erdos251/core.tex](../../../paper/reasoning-parts/erdos251/core.tex) lines 1555-1567.
-- `long251:res:sparse`: [paper/reasoning-parts/erdos251/core.tex](../../../paper/reasoning-parts/erdos251/core.tex) lines 1632-1637.
-- `long251:res:polignacfail`: [paper/reasoning-parts/erdos251/core.tex](../../../paper/reasoning-parts/erdos251/core.tex) lines 1706-1715.
-- `long251:res:polynomialcountermodel`: [paper/reasoning-parts/erdos251/core.tex](../../../paper/reasoning-parts/erdos251/core.tex) lines 1869-1876.
-- `long251:res:telescope`: [paper/reasoning-parts/erdos251/core.tex](../../../paper/reasoning-parts/erdos251/core.tex) lines 1900-1903.
-- `long251:xr:totient`: [paper/reasoning-parts/erdos251/core.tex](../../../paper/reasoning-parts/erdos251/core.tex) lines 2377-2381.
-- `long251:xr:propagate`: [paper/reasoning-parts/erdos251/core.tex](../../../paper/reasoning-parts/erdos251/core.tex) lines 2390-2395.
-- `long251:xr:truncation`: [paper/reasoning-parts/erdos251/core.tex](../../../paper/reasoning-parts/erdos251/core.tex) lines 2425-2435.
-- `long251:res:complete-truncation`: [paper/reasoning-parts/erdos251/core.tex](../../../paper/reasoning-parts/erdos251/core.tex) lines 2472-2479.
-- `long251:xr:boundedpolignac`: [paper/reasoning-parts/erdos251/core.tex](../../../paper/reasoning-parts/erdos251/core.tex) lines 2626-2633.
-- `long251:res:affinecollapse`: [paper/reasoning-parts/erdos251/core.tex](../../../paper/reasoning-parts/erdos251/core.tex) lines 2757-2792.
+- `long251:res:denominatorfloor`: [paper/reasoning-parts/erdos251/core.tex](../../../paper/reasoning-parts/erdos251/core.tex) lines 1208-1211.
+- `long251:res:cfexclusion`: [paper/reasoning-parts/erdos251/core.tex](../../../paper/reasoning-parts/erdos251/core.tex) lines 1256-1259.
+- `long251:res:boundedperturbation`: [paper/reasoning-parts/erdos251/core.tex](../../../paper/reasoning-parts/erdos251/core.tex) lines 1371-1376.
+- `long251:res:shiftedcount`: [paper/reasoning-parts/erdos251/core.tex](../../../paper/reasoning-parts/erdos251/core.tex) lines 1430-1440.
+- `long251:res:nonconcentration`: [paper/reasoning-parts/erdos251/core.tex](../../../paper/reasoning-parts/erdos251/core.tex) lines 1474-1478.
+- `long251:res:nonconc-primes`: [paper/reasoning-parts/erdos251/core.tex](../../../paper/reasoning-parts/erdos251/core.tex) lines 1505-1513.
+- `long251:res:sparse-nonconcentration`: [paper/reasoning-parts/erdos251/core.tex](../../../paper/reasoning-parts/erdos251/core.tex) lines 1536-1540.
+- `long251:res:jointcountermodel`: [paper/reasoning-parts/erdos251/core.tex](../../../paper/reasoning-parts/erdos251/core.tex) lines 1560-1572.
+- `long251:res:sparse`: [paper/reasoning-parts/erdos251/core.tex](../../../paper/reasoning-parts/erdos251/core.tex) lines 1633-1638.
+- `long251:res:polignacfail`: [paper/reasoning-parts/erdos251/core.tex](../../../paper/reasoning-parts/erdos251/core.tex) lines 1709-1718.
+- `long251:res:polynomialcountermodel`: [paper/reasoning-parts/erdos251/core.tex](../../../paper/reasoning-parts/erdos251/core.tex) lines 1871-1878.
+- `long251:res:telescope`: [paper/reasoning-parts/erdos251/core.tex](../../../paper/reasoning-parts/erdos251/core.tex) lines 1902-1905.
+- `long251:xr:totient`: [paper/reasoning-parts/erdos251/core.tex](../../../paper/reasoning-parts/erdos251/core.tex) lines 2372-2376.
+- `long251:xr:propagate`: [paper/reasoning-parts/erdos251/core.tex](../../../paper/reasoning-parts/erdos251/core.tex) lines 2385-2390.
+- `long251:xr:truncation`: [paper/reasoning-parts/erdos251/core.tex](../../../paper/reasoning-parts/erdos251/core.tex) lines 2420-2430.
+- `long251:res:complete-truncation`: [paper/reasoning-parts/erdos251/core.tex](../../../paper/reasoning-parts/erdos251/core.tex) lines 2467-2474.
+- `long251:xr:boundedpolignac`: [paper/reasoning-parts/erdos251/core.tex](../../../paper/reasoning-parts/erdos251/core.tex) lines 2619-2626.
+- `long251:res:affinecollapse`: [paper/reasoning-parts/erdos251/core.tex](../../../paper/reasoning-parts/erdos251/core.tex) lines 2753-2788.
 
 ## Passage-review queue
 

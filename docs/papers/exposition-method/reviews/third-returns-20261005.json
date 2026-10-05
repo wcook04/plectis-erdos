@@ -1,0 +1,47 @@
+{
+  "schema": "individual_editorial_page_review_v1",
+  "date": "2026-10-05",
+  "reviewer": "Codex maintainer integration",
+  "boundary": "Source diff and selected rendered pages reviewed. This is an editorial page-limit decision, not a reader study or mathematical acceptance.",
+  "papers": [
+    {
+      "date": "2026-10-05",
+      "paper": "erdos-257-mersenne-support-subseries",
+      "from": 26,
+      "to": 27,
+      "reason": "Retain the explicit incomplete-orbit estimate, dyadic summation and common finite-distribution argument, with a layer-by-layer nonsummable example. These explain the same hereditary criteria without changing their hypotheses. The existing verification concordance continues on the final page.",
+      "review_capture": "cap_quick_review_third_return_page_growth_in_two_m_ba4c8c9394f4",
+      "source_sha256": "c0d63a763bd2f2c944d079c4e5bdbbe356268d138fd83bdb068464eeb3f2452b",
+      "pdf_sha256": "a1fe287c3c892447bea898b7ee50b3b949445fe64179f80edff93fff1304f55b",
+      "visual_review": "docs/papers/exposition-method/reviews/third-returns-20261005.json",
+      "selected_pages": [
+        1,
+        3,
+        5,
+        26,
+        27
+      ],
+      "overfull_boxes": 0,
+      "layout_observation": "Text, displays, references and concordance continuations are readable and unclipped on the selected pages; house typography is unchanged."
+    },
+    {
+      "date": "2026-10-05",
+      "paper": "erdos1049-rational-base-lambert-reasoning-surface",
+      "from": 79,
+      "to": 81,
+      "reason": "Retain the distinction between the 2004 polynomial forms and 2016 positive moments, the fixed-rank and fixed-base limits, and the quantifier/height limitations of the arithmetic argument. These prevent borrowing a denominator bound between coefficient families. The existing verification concordance remains complete across its final two pages.",
+      "review_capture": "cap_quick_review_third_return_page_growth_in_two_m_ba4c8c9394f4",
+      "source_sha256": "b3e81fd9513b713a2be7b59524dad08e5615b9abe6854f9d895164ce85483ae9",
+      "pdf_sha256": "c7d49fea2c7eaa2d55089a66af9d52953eb7cd2e1ca89f76fdf94661e78571bd",
+      "visual_review": "docs/papers/exposition-method/reviews/third-returns-20261005.json",
+      "selected_pages": [
+        1,
+        27,
+        80,
+        81
+      ],
+      "overfull_boxes": 0,
+      "layout_observation": "Text, displays, references and concordance continuations are readable and unclipped on the selected pages; house typography is unchanged."
+    }
+  ]
+}

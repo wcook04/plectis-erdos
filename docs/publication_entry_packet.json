@@ -107,14 +107,14 @@
   },
   "authority_posture": "navigation_projection_not_Lean_proof_authority_and_not_historical_evidence_authority",
   "content_hashes": {
-    "docs/claims.json": "sha256:a9585ba52513078c062569fa95acc7291a990e08daab3b70ac315f6282106751",
+    "docs/claims.json": "sha256:8ed843c5ec178853dd59259d29dad7191ab92d290f0f2a421f66987eec705577",
     "docs/methodology.json": "sha256:cef19d9092c49ba9c9b269a4b04c2c6030164bba6b80561117577713f60c3750",
     "docs/problems.json": "sha256:e8e1d7c043cfc172833f1cf5a60896534759346bc65a1e62f5d50bbf5dc5c175",
-    "docs/publication_contract.json": "sha256:522dbb9b4683cca10b67a64d7c3c6e465a8b52caf88ee3fc9deb384aab7d2f0b",
+    "docs/publication_contract.json": "sha256:2dd2c730394349b3920d86f648601dca23a59eb2396544e8452f9510f63b0394",
     "docs/publication_entry_source.json": "sha256:42d7d0097c961fb3fd06a061a5c226f3b91761dfd3e96eaab05c198a65c1470e",
     "docs/publication_evidence.json": "sha256:4e350698eed8b4ee10fc629cfb7540ed71bc6ccf4020ee2ede8635f4aae809b3",
-    "paper/systems/claim-faithful-publication-systems-paper.pdf": "sha256:38521d1b5a4c24277bcaa6a239a6b2549eb31bf9bda3fe61b497afad92b64a1a",
-    "paper/systems/claim-faithful-publication-systems-paper.tex": "sha256:9c7392d5e686da61bd5f3f761ffad93865c350201ca4c3e6628c2af7d35ff6a7",
+    "paper/systems/claim-faithful-publication-systems-paper.pdf": "sha256:910d0e8f7a69097c1bf99ec03aee47d14d4f808dda40c749bfc51f0b37b5ec16",
+    "paper/systems/claim-faithful-publication-systems-paper.tex": "sha256:86ee08187521ffb6454c7c40b226753ecafa13d2071a7d7f653f81ca0dab6a08",
     "research/experiments/publication_mutations.json": "sha256:9243e270257869e7a191c7598e917457cab61194299d1651e21bbc45a2d4c1e3",
     "research_corpus/Erdos1041/CORPUS_MANIFEST.json": "sha256:6f456a92e30ed2318d6c342f2e80dbbc77be39a14e051828ef215ffb8b001bbd",
     "research_corpus/Erdos1041/FRONTIER.md": "sha256:8aef5071a9a2a35de6b2af79bf0a486d97306aa0b6d4b997144e16ba1d112a9a",
@@ -270,7 +270,7 @@
       "open_target_claim": "erdos_68",
       "paper_anchor": {
         "environment": "problem",
-        "line": 52,
+        "line": 51,
         "source": "paper/68/erdos-68-factorial-denominator-irrationality.tex",
         "title": "Erdős Problem~#68"
       },
@@ -294,7 +294,7 @@
       "open_target_claim": "erdos_251",
       "paper_anchor": {
         "environment": "section",
-        "line": 45,
+        "line": 46,
         "source": "paper/251/erdos-251-prime-gap-dyadic-series.tex",
         "title": "Introduction"
       },
@@ -330,7 +330,7 @@
       "open_target_claim": "universal_257",
       "paper_anchor": {
         "environment": "problem",
-        "line": 1439,
+        "line": 1457,
         "source": "paper/257/erdos-257-mersenne-support-subseries.tex",
         "title": "membership of 1/21 in the Mersenne achievement set"
       },
@@ -354,7 +354,7 @@
       "open_target_claim": "erdos_269",
       "paper_anchor": {
         "environment": "section",
-        "line": 56,
+        "line": 58,
         "source": "paper/269/erdos-269-three-prime-running-lcm.tex",
         "title": "Two sums from running least common multiples"
       },
@@ -378,7 +378,7 @@
       "open_target_claim": "erdos_1049",
       "paper_anchor": {
         "environment": "section",
-        "line": 47,
+        "line": 49,
         "source": "paper/1049/erdos-1049-rational-base-lambert.tex",
         "title": "Introduction"
       },
@@ -402,7 +402,7 @@
       "open_target_claim": "erdos_269",
       "paper_anchor": {
         "environment": "problem",
-        "line": 611,
+        "line": 622,
         "source": "paper/269/erdos-269-three-prime-running-lcm.tex",
         "title": "no reduced tail is an integer"
       },
@@ -414,7 +414,7 @@
       "open_target_claim": "erdos_269",
       "paper_anchor": {
         "environment": "problem",
-        "line": 617,
+        "line": 628,
         "source": "paper/269/erdos-269-three-prime-running-lcm.tex",
         "title": "residue inequalities after every starting index"
       },
@@ -438,7 +438,7 @@
       "open_target_claim": "erdos_243",
       "paper_anchor": {
         "environment": "problem",
-        "line": 1105,
+        "line": 1109,
         "source": "paper/243/erdos-243-reciprocal-tail-rigidity.tex",
         "title": "growth of repeated denominator factors"
       },
@@ -450,7 +450,7 @@
       "open_target_claim": "erdos_249",
       "paper_anchor": {
         "environment": "problem",
-        "line": 789,
+        "line": 805,
         "source": "paper/249/erdos-249-binary-totient-series.tex",
         "title": "Four estimates for the first-harmonic sum"
       },
@@ -462,7 +462,7 @@
       "open_target_claim": "universal_257",
       "paper_anchor": {
         "environment": "problem",
-        "line": 1455,
+        "line": 1473,
         "source": "paper/257/erdos-257-mersenne-support-subseries.tex",
         "title": "bounded returns of the scaled remainder"
       },
@@ -474,7 +474,7 @@
       "open_target_claim": "universal_257",
       "paper_anchor": {
         "environment": "problem",
-        "line": 1464,
+        "line": 1482,
         "source": "paper/257/erdos-257-mersenne-support-subseries.tex",
         "title": "arithmetic tests for the greedy sequence"
       },
@@ -486,7 +486,7 @@
       "open_target_claim": "universal_257",
       "paper_anchor": {
         "environment": "problem",
-        "line": 1475,
+        "line": 1493,
         "source": "paper/257/erdos-257-mersenne-support-subseries.tex",
         "title": "final-skip Diophantine exclusion"
       },
