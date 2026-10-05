@@ -38,7 +38,7 @@ SOURCE_FIELDS = {
     "identity_disclosure", "confirmation_status",
     "received_on", "confirmed_on", "ledger", "implemented_in",
     "mapping_status", "mapping_note", "verification_scope",
-    "paper_reported_locators", "publication_years", "year",
+    "paper_reported_locators", "publication_years", "year", "citation", "citation_exclusion", "citation_alias",
 }
 CREDIT_LEDGER_JSON = "docs/research-commons/credit-ledger.json"
 CREDIT_LEDGER_MARKDOWN = "docs/research-commons/CREDIT_LEDGER.md"
@@ -306,6 +306,18 @@ def validate_registry(root: Path, registry: dict[str, Any], paper_by_id: dict[st
             raise AttributionError(f"{label}: at least one nonempty author required")
         if not isinstance(source.get("relation"), str) or not source["relation"].strip():
             raise AttributionError(f"{label}: nonempty relation required")
+        if "citation_alias" in source:
+            if not isinstance(source["citation_alias"], str) or source.get("citation") or source.get("citation_exclusion"):
+                raise AttributionError(f"{label}: citation_alias must name another source and exclude citation/exclusion")
+        if "citation" in source:
+            citation = source["citation"]
+            if not isinstance(citation, dict) or not citation.get("type") or not citation.get("title") or not citation.get("authors"):
+                raise AttributionError(f"{label}: citation requires CFF type, title and authors")
+            if citation["title"] != source["title"]:
+                raise AttributionError(f"{label}: citation title differs from source title")
+        if "citation_exclusion" in source:
+            if source.get("citation") or not isinstance(source["citation_exclusion"], str) or not source["citation_exclusion"].strip():
+                raise AttributionError(f"{label}: citation exclusion requires a reason and no citation")
         for field in ("mapping_status","mapping_note","verification_scope"):
             if field in source and (not isinstance(source[field],str) or not source[field].strip()):
                 raise AttributionError(f"{label}: {field} must be nonempty text")
@@ -343,6 +355,8 @@ def validate_registry(root: Path, registry: dict[str, Any], paper_by_id: dict[st
                 path = safe_path(root, locator["evidence_path"], label=f"{label} evidence_path")
                 validate_range(path, locator, label=f"{label} evidence range")
         for link_index, link in enumerate(source.get("artifact_links", [])):
+            if isinstance(link,dict) and link.get("path") == "CITATION.cff":
+                raise AttributionError(f"{label}: circular evidence: CITATION.cff is generated from this registry; cite authored toolchain/manuscript evidence or a commit-pinned historical source_locator")
             if not isinstance(link,dict) or set(link)-ARTIFACT_FIELDS:
                 raise AttributionError(f"{label}.artifact_links[{link_index}]: unknown public fields")
             path = safe_path(root, link.get("path"), label=f"{label}.artifact_links[{link_index}]")
@@ -352,12 +366,23 @@ def validate_registry(root: Path, registry: dict[str, Any], paper_by_id: dict[st
             if paper is None:
                 # `path` is intentionally the paper source path in this schema.
                 paper = next((p for p in paper_by_id.values() if p["local_source"] == binding.get("path")), None)
-            if paper is None or not isinstance(binding.get("key"), str) or not binding["key"]:
+            if paper is None:
+                try:
+                    safe_path(root,binding.get("path"),label=f"{label} bibliography binding")
+                except AttributionError as exc:
+                    raise AttributionError(f"{label}: dangling bibliography paper/key binding: {exc}") from exc
+            if not isinstance(binding.get("key"), str) or not binding["key"]:
                 raise AttributionError(f"{label}: dangling bibliography paper/key binding")
         if source["verification_state"] in {"source_verified","existing_source_closure"} and not source.get("source_locators"):
             raise AttributionError(f"{label}: verified source states require a source locator")
         if source["verification_state"] == "implemented_advice" and (not source.get("artifact_links") or source["kind"] != "correspondence" or source.get("identity_disclosure") not in NAMING_STATES):
             raise AttributionError(f"{label}: implemented correspondence advice requires a public artifact and a recorded naming state")
+    by_id={source["id"]:source for source in sources}
+    for source in sources:
+        if "citation_alias" in source:
+            target=by_id.get(source["citation_alias"])
+            if target is None or not target.get("citation") or target.get("citation_alias") or target["id"] == source["id"]:
+                raise AttributionError(f"{source['id']}: citation_alias requires a direct canonical citation target")
     return sources
 
 
@@ -418,11 +443,23 @@ def build(root: Path, registry_path: Path, paper_corpus_path: Path) -> dict[str,
             bibliography.extend(bib); usages.extend(cited)
     definitions = {(row["paper_id"], row["key"]) for row in bibliography}
     curated={}
+    exact_bindings={}
+    citation_identity={source["id"]:source.get("citation_alias",source["id"]) for source in sources}
     for source in sources:
         for binding in source.get("bibliography_keys",[]):
-            key=(next((pid for pid,p in paper_by_id.items() if p["local_source"]==binding["path"]),binding["path"]),binding["key"])
-            if key in curated and curated[key]!=source["id"]: raise AttributionError(f"duplicate bibliography binding: {key}")
-            curated[key]=source["id"]
+            exact_key=(binding["path"],binding["key"])
+            if exact_key in exact_bindings and exact_bindings[exact_key] != source["id"]:
+                raise AttributionError(f"duplicate exact bibliography binding: {exact_key}")
+            exact_bindings[exact_key]=source["id"]
+            owners = [pid for pid,p in paper_by_id.items() if p["local_source"] == binding["path"] or pid in scan_owners.get(binding["path"],set())]
+            for owner in owners:
+                key=(owner,binding["key"])
+                if key in curated and citation_identity[curated[key]]!=citation_identity[source["id"]]: raise AttributionError(f"duplicate bibliography binding: {key}")
+                curated[key]=source["id"]
+    actual_coordinates={(row["path"],row["key"]) for row in bibliography}
+    dangling_exact=sorted(key for key in exact_bindings if key not in actual_coordinates and key[0] not in paper_by_id)
+    if dangling_exact:
+        raise AttributionError(f"dangling bibliography keys: {dangling_exact}")
     missing_bindings=sorted(key for key in curated if key not in definitions)
     if missing_bindings:
         raise AttributionError(f"dangling bibliography keys: {missing_bindings}")
@@ -443,6 +480,8 @@ def build(root: Path, registry_path: Path, paper_corpus_path: Path) -> dict[str,
         if len(owners)==1: curated[key]=next(iter(owners))
     for row in bibliography + usages:
         row["source_id"] = curated.get((row["paper_id"], row["key"]))
+        if row["kind"] == "bibliography_entry":
+            row["explicit_source_id"] = exact_bindings.get((row["path"],row["key"]))
     lean_files = lean_source.library_source_paths(root)
     surnames=defaultdict(set); bib_keys=defaultdict(set)
     for source in sources:
@@ -521,7 +560,7 @@ def build(root: Path, registry_path: Path, paper_corpus_path: Path) -> dict[str,
     for entry in bibliography:
         entry["citation_usages"]=usage_by_key[(entry["paper_id"],entry["key"])]
         entry["equivalent_source_coordinates"]=[{"path":other["path"],"line_start":other["line_start"],"line_end":other["line_end"],"source_role":other["source_role"]} for other in bibliography_by_key[(entry["paper_id"],entry["key"])] if other is not entry]
-    return {
+    result = {
         "schema": OUTPUT_SCHEMA,
         "artifact_role": "generated_scholarly_source_attribution_and_coverage_view",
         "authority_boundary": "Navigation and source-credit evidence only. It does not establish proof, novelty, endorsement, peer review, or complete historical knowledge. Lean matches are lexical candidates, not attribution.",
@@ -540,6 +579,28 @@ def build(root: Path, registry_path: Path, paper_corpus_path: Path) -> dict[str,
         "lean_inventory": {"library_file_denominator":len(lean_files),"candidate_policy":"Comments only. Generic infrastructure tokens are excluded. Explicit URL/DOI/arXiv references are separated from bibliography-key and curated-surname clues. Authored lean_reviews bind exact path, line range, and excerpt digest; only missing or unresolved reviews remain queued.","excluded_generic_tokens":sorted(GENERIC_REFERENCE_TOKENS),"lexical_candidates":lean_candidates,"candidate_count":len(lean_candidates),"direct_reference_candidate_count":sum(1 for c in lean_candidates if any(m["match_kind"] in {"explicit_url","explicit_reference"} for m in c["matches"])),"named_or_key_candidate_count":sum(1 for c in lean_candidates if any(m["match_kind"] in {"bibliography_key","curated_author_surname"} for m in c["matches"])),"reviewed_count":sum(c["review_status"]=="reviewed" for c in lean_candidates),"unresolved_count":sum(c["review_status"]=="unresolved" for c in lean_candidates),"awaiting_review_count":sum(c["review_status"] in {"awaiting_review","unresolved"} for c in lean_candidates)},
         "coverage": {"curated_source_count":len(sources),"unmatched_citation_key_count":len(unmatched),"bibliography_without_curated_link_count":len(uncurated),"lean_candidate_awaiting_review_count":sum(c["review_status"] in {"awaiting_review","unresolved"} for c in lean_candidates)},
     }
+
+    import citation_projection
+    citation_errors=citation_projection.coverage(result)
+    result["citation_coverage"]={
+        "policy":"Every registered manuscript bibliography coordinate requires an explicit source binding and CFF citation or a documented exclusion; all citation-bearing sources and all repository paper editions are emitted. Citation is not source verification.",
+        "bibliography_coordinate_count":len(bibliography),
+        "logical_paper_key_count":len({(row["paper_id"],row["key"]) for row in bibliography}),
+        "unique_path_key_count":len({(row["path"],row["key"]) for row in bibliography}),
+        "source_reference_ids":sorted(source["id"] for source in sources if source.get("citation")),
+        "source_aliases":{source["id"]:source["citation_alias"] for source in sources if source.get("citation_alias")},
+        "explicit_exclusions":{source["id"]:source["citation_exclusion"] for source in sources if source.get("citation_exclusion")},
+        "paper_reference_ids":sorted("paper:"+paper["paper_id"] for paper in papers),
+        "errors":citation_errors,
+    }
+    if not citation_errors:
+        emitted=citation_projection.references(result,corpus,root)
+        result["citation_coverage"]["emitted_reference_count"]=len(emitted)
+        result["citation_coverage"]["paper_source_merges"]={
+            citation_projection.reference_id(ref):[item["value"].split("#source-",1)[1] for item in ref.get("identifiers",[]) if item.get("type")=="url" and item.get("value","").startswith(citation_projection.ATTRIBUTION_PREFIX)]
+            for ref in emitted if citation_projection.reference_id(ref).startswith("paper:") and any(item.get("value","").startswith(citation_projection.ATTRIBUTION_PREFIX) for item in ref.get("identifiers",[]))
+        }
+    return result
 
 
 def credit_ledger(index: dict[str, Any]) -> dict[str, Any]:
@@ -638,6 +699,9 @@ def markdown(index: dict[str, Any]) -> bytes:
         lines += ["Implemented advice from private correspondence. The [credit ledger](CREDIT_LEDGER.md) gives each entry's date, what changed and whether the person has been named:", ""]
         for source in advice: lines.append(f"- {source_ref(source['id'])} — {esc(source['relation'])}")
         lines.append("")
+    if "citation_coverage" in index:
+        cff=index["citation_coverage"]
+        lines += [f"CFF projection: `{cff.get('emitted_reference_count', 'unresolved')}` emitted references covering `{len(cff['source_reference_ids'])}` source identities, `{len(cff['source_aliases'])}` explicitly reviewed aliases, `{len(cff['paper_reference_ids'])}` repository paper editions; `{cff['bibliography_coordinate_count']}` bibliography coordinates checked; `{len(cff['errors'])}` coverage errors. Citation inclusion does not imply source verification.", ""]
     lines += [f"- Unmatched citation keys: `{index['coverage']['unmatched_citation_key_count']}`", f"- Bibliography entries awaiting curated links: `{index['coverage']['bibliography_without_curated_link_count']}`", f"- Lean candidates awaiting review: `{index['coverage']['lean_candidate_awaiting_review_count']}` (`{index['lean_inventory']['direct_reference_candidate_count']}` direct URL/DOI/arXiv rows; `{index['lean_inventory']['named_or_key_candidate_count']}` surname/key rows; categories may overlap).", "", "## Browse by problem", ""]
     lines[:0]=["<!-- SPDX-FileCopyrightText: 2026 Will Cook -->","<!-- SPDX-License-Identifier: CC-BY-4.0 -->",""]
     for entry in index["facets"]["by_problem"]:
@@ -700,8 +764,16 @@ def main(argv: list[str] | None = None) -> int:
     if args.query:
         q=args.query.casefold(); rows=[s for s in index["sources"] if q in s["id"].casefold() or q in s["title"].casefold() or any(q in a.casefold() for a in s["authors"]) or q in {str(p).casefold() for p in s.get("problems",[])}]
         print(json.dumps(rows,indent=2,ensure_ascii=False)); return 0 if rows else 1
+    import citation_projection
+    try:
+        corpus=json.loads((root/"docs/papers/corpus.json").read_text())
+        refs=citation_projection.references(index,corpus,root)
+        citation_payload=citation_projection.render((root/"CITATION.cff").read_text(),refs).encode("utf-8")
+    except (ValueError,KeyError,OSError) as exc:
+        print(f"citation coverage: {exc}",file=sys.stderr); return 1
     ledger=credit_ledger(index)
     outputs=(
+        (root/"CITATION.cff",citation_payload),
         (root/"docs/research-commons/source-attribution-index.json",canonical(index)),
         (root/"docs/research-commons/SOURCE_ATTRIBUTIONS.md",markdown(index)),
         (root/CREDIT_LEDGER_JSON,canonical(ledger)),
@@ -709,12 +781,12 @@ def main(argv: list[str] | None = None) -> int:
     )
     if args.check:
         current=all(path.is_file() and path.read_bytes()==payload for path,payload in outputs)
-        print("source attribution views current" if current else "source attribution views stale; run python3 scripts/build_source_attributions.py")
+        print("source attribution and CFF views current" if current else "source attribution or CFF views stale; run python3 scripts/build_source_attributions.py")
         return 0 if current else 1
     try:
         for path,payload in outputs: write(path,payload)
     except (OSError,AttributionError) as exc: print(f"build_source_attributions: {exc}",file=sys.stderr); return 1
-    print("wrote source attribution JSON and Markdown views and the credit ledger"); return 0
+    print("wrote CFF references, source attribution JSON and Markdown views and the credit ledger"); return 0
 
 
 if __name__ == "__main__": raise SystemExit(main())

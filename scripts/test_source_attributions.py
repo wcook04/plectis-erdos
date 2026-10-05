@@ -313,5 +313,81 @@ class SourceAttributionTests(unittest.TestCase):
         with self.assertRaisesRegex(subject.AttributionError,"context.*excerpt_sha256"):
             subject.build(root,registry,root/"docs/papers/corpus.json")
 
+    def test_current_generated_cff_cannot_be_registry_artifact_evidence(self):
+        root,registry=self.fixture(); data=json.loads(registry.read_text())
+        data["sources"][0]["artifact_links"]=[{"path":"CITATION.cff","line_start":1,"line_end":1}]
+        registry.write_text(json.dumps(data))
+        with self.assertRaisesRegex(subject.AttributionError,"circular evidence.*commit-pinned historical source_locator"):
+            subject.build(root,registry,root/"docs/papers/corpus.json")
+
+    def test_removing_binding_cannot_hide_behind_automatic_url_match(self):
+        import citation_projection as cp
+        root,registry=self.fixture(); data=json.loads(registry.read_text())
+        data["sources"][0]["citation"]={"type":"article","title":"Alpha source","authors":[{"family-names":"Author","given-names":"Alice"}],"url":"https://example.org/a"}
+        data["sources"][0]["bibliography_keys"]=[]
+        registry.write_text(json.dumps(data))
+        with patch.object(subject.lean_source,"library_source_paths",return_value=[]):
+            index=subject.build(root,registry,root/"docs/papers/corpus.json")
+        row=next(r for r in index["paper_inventory"]["bibliography_entries"] if r["key"]=="Alpha")
+        self.assertEqual(row["source_id"],"alpha")
+        self.assertIsNone(row["explicit_source_id"])
+        self.assertTrue(any("paper/test.tex:Alpha" in e for e in cp.coverage(index)))
+
+
+class CitationProjectionTests(unittest.TestCase):
+    def fixture(self):
+        import citation_projection as cp
+        self.cp = cp
+        sources = [{"id":"edition-v1", "citation":{"type":"article","title":"A work","authors":[{"name":"Alice"}],"url":"https://example.org/work/v1"}},
+                   {"id":"edition-v2", "citation":{"type":"article","title":"A work","authors":[{"name":"Alice"}],"url":"https://example.org/work/v2"}},
+                   {"id":"alias-v1", "citation_alias":"edition-v1"}]
+        index={"sources":sources,"paper_inventory":{"bibliography_entries":[{"path":"paper/included.tex","key":"A","source_id":"edition-v1","explicit_source_id":"edition-v1"}],"unmatched_citation_keys":[],"unresolved_includes":[]}}
+        return index, {"papers":[]}
+
+    def test_editions_remain_distinct_and_alias_credit_survives(self):
+        index,corpus=self.fixture(); refs=self.cp.references(index,corpus)
+        self.assertEqual(len(refs),2)
+        self.assertEqual({r["url"] for r in refs},{"https://example.org/work/v1","https://example.org/work/v2"})
+        self.assertEqual(len(refs[0]["identifiers"]),2)
+
+    def test_reference_deletion_and_wrong_identity_are_rejected(self):
+        index,corpus=self.fixture(); refs=self.cp.references(index,corpus)
+        cff=self.cp.render("cff-version: 1.2.0\n",refs)
+        self.assertEqual(self.cp.errors(cff,index,corpus),[])
+        for changed in (self.cp.render(cff,refs[1:]), self.cp.render(cff,[]), cff.replace("#source-edition-v1","#source-unknown")):
+            self.assertTrue(self.cp.errors(changed,index,corpus))
+
+    def test_exact_own_edition_merge_preserves_credit_and_distinct_paths(self):
+        index,corpus=self.fixture()
+        index["sources"][0]["citation"]={"type":"report","title":"Shared title","authors":[{"family-names":"Cook","given-names":"Will"}],"url":"https://example.org/exact"}
+        base={"title":"Shared title","author":"Will Cook","year":"2026","text":"Will Cook, exact edition", "canonical_source_url":"https://example.org/exact"}
+        corpus["papers"]=[{"paper_id":"compact","preferred_citation":base,"manuscript_status":"technical_report","local_source":"paper/compact.tex","local_full_text":"docs/papers/full-text/compact.md"},
+            {"paper_id":"detailed","preferred_citation":dict(base,canonical_source_url="https://example.org/different"),"manuscript_status":"working_research_record","local_source":"paper/detailed.tex","local_full_text":"docs/papers/full-text/detailed.md"}]
+        refs=self.cp.references(index,corpus)
+        self.assertEqual(len(refs),3)
+        compact=next(ref for ref in refs if self.cp.reference_id(ref)=="paper:compact")
+        self.assertTrue(any(item["value"].endswith("#source-edition-v1") for item in compact["identifiers"]))
+        self.assertTrue(any(item["value"].endswith("#source-alias-v1") for item in compact["identifiers"]))
+        self.assertTrue(any(self.cp.reference_id(ref)=="paper:detailed" for ref in refs))
+
+    def test_direct_dependency_metadata_deletion_fails_without_paper_use(self):
+        index,corpus=self.fixture()
+        index["sources"].append({"id":"direct-dependency"})
+        with self.assertRaisesRegex(ValueError,"direct-dependency.*explicit exclusion required"):
+            self.cp.references(index,corpus)
+        index["sources"]=[]
+        with self.assertRaisesRegex(ValueError,"source registry must not be empty"):
+            self.cp.references(index,corpus)
+
+    def test_unmapped_include_and_missing_metadata_fail(self):
+        index,corpus=self.fixture()
+        index["paper_inventory"]["bibliography_entries"][0]["explicit_source_id"]=None
+        with self.assertRaisesRegex(ValueError,"unrepresented bibliography paper/included.tex:A"):
+            self.cp.references(index,corpus)
+        index["paper_inventory"]["bibliography_entries"][0]["explicit_source_id"]="edition-v1"
+        del index["sources"][0]["citation"]
+        with self.assertRaisesRegex(ValueError,"missing citation metadata"):
+            self.cp.references(index,corpus)
+
 
 if __name__ == "__main__": unittest.main()

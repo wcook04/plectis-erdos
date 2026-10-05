@@ -86,37 +86,26 @@ def citation_identity_errors(
 
 
 def citation_attribution_errors(cff: str, registry: dict[str, object]) -> list[str]:
-    """Check explicitly linked CFF references against the authored credit owner.
+    """Require the exact registry and paper-edition reference projection.
 
-    This reads the repository's block-style CFF, not arbitrary YAML. Full CFF
-    schema validation remains the separate cffconvert CI step. Unlinked older
-    references remain selected bibliography entries, not verified comparisons.
+    All sources require a citation, reviewed alias or explicit exclusion. Full
+    CFF schema validation remains the separate cffconvert CI step; native
+    bibliography-coordinate coverage is enforced by the attribution builder.
     """
-    sources = {row["id"]: row for row in registry["sources"]}
-    errors: list[str] = []
-    prefix = "https://github.com/wcook04/plectis-erdos/blob/main/docs/research-commons/SOURCE_ATTRIBUTIONS.md#source-"
-    for block in re.split(r"(?m)^  - type: ", cff.split("\nreferences:\n", 1)[-1])[1:]:
-        links = re.findall(re.escape(prefix) + r'([^"\s]+)', block)
-        if not links:
-            continue
-        if len(links) != 1 or links[0] not in sources:
-            errors.append("CFF reference has an unknown or duplicated source attribution")
-            continue
-        source = sources[links[0]]
-        scalar = "\n".join(line[4:] for line in block.splitlines()[1:])
-        if top_level_values(scalar, "title") != [source["title"]]:
-            errors.append(f"{source['id']}: CFF title differs from source registry")
-        # Deliberately preserve initials as recorded, rather than guessing names.
-        authors = re.findall(
-            r'      - family-names: "([^"\n]+)"\n        given-names: "([^"\n]+)"', block
-        )
-        if [f"{given} {family}" for family, given in authors] != source["authors"]:
-            errors.append(f"{source['id']}: CFF authors differ from source registry")
-        urls = top_level_values(scalar, "url")
-        if len(urls) != 1 or urls[0] not in source["urls"]:
-            errors.append(f"{source['id']}: CFF source version is absent from registry")
+    import citation_projection as projection
+    errors = []
+    corpus = json.loads((ROOT / "docs/papers/corpus.json").read_text())
+    # Exact rendering checks every included source and every repository paper,
+    # including deletion, unknown additions and wrong identity anchors.
+    index = {"sources": registry["sources"], "paper_inventory": {
+        "bibliography_entries": [], "unmatched_citation_keys": [], "unresolved_includes": []}}
+    try:
+        errors.extend(projection.errors(cff, index, corpus))
+    except (ValueError, KeyError) as exc:
+        errors.append(str(exc))
+    messages = top_level_values(cff, "message")
     for route in ("docs/PRIOR_ART.md", "docs/research-commons/SOURCE_ATTRIBUTIONS.md"):
-        if route not in top_level_values(cff, "message")[0]:
+        if len(messages) != 1 or route not in messages[0]:
             errors.append(f"CFF message lost attribution route {route}")
     return errors
 
@@ -133,6 +122,11 @@ def main() -> int:
 
     registry = json.loads((ROOT / "docs/research-commons/source-attributions.json").read_text())
     require(not citation_attribution_errors(cff, registry), "CFF/source-credit agreement failed")
+    require(bool(citation_attribution_errors(cff.split("\nreferences:\n", 1)[0], registry)),
+            "deleting all references escaped validation")
+    blocks = re.split(r"(?m)^  - type: ", cff.split("\nreferences:\n", 1)[1])
+    without_one = cff.split("\nreferences:\n", 1)[0] + "\nreferences:\n" + "".join("  - type: " + block for block in blocks[2:])
+    require(bool(citation_attribution_errors(without_one, registry)), "deleting one reference escaped validation")
     # A valid YAML/CFF record can still misattribute a source or drift to another version.
     for old, replacement in (
         ('given-names: "Han"', 'given-names: "Wrong"'),
@@ -223,7 +217,7 @@ def main() -> int:
     print(
         "test_citation_identity_contract: citation metadata retains the exact "
         "repository, current-edition boundary, paper route, and open boundary; "
-        "15 identity and attribution negative fixtures rejected"
+        "17 identity, attribution and deletion negative fixtures rejected"
     )
     return 0
 

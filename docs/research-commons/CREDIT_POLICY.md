@@ -58,6 +58,26 @@ mathematical review, or endorsement. Private correspondence remains anonymous
 until the contributor confirms public naming; its private evidence stays out
 of this repository.
 
+The same builder populates the references in [CITATION.cff](../../CITATION.cff).
+Each citable source records its bibliographic metadata in `citation`; a reviewed
+`citation_alias` can identify another source record for the same work while
+preserving both attribution histories. Distinct editions keep separate records.
+The generated references link to the source attribution entries, which in turn
+identify the papers, bibliography keys and Lean passages that use them. The
+paper catalogue supplies citations for the repository's own manuscripts,
+including their publication state and source edition.
+
+Adding a bibliography entry requires linking its source and citation metadata,
+including when the entry lives in an included TeX file. The builder's `--check`
+rejects missing coverage and stale CFF output. A `citation_exclusion` must give
+an explicit reason for material that is not a bibliographic work, such as
+private correspondence. Bibliography-only sources remain bibliography-only:
+their inclusion in CFF does not claim a primary-source audit or strengthen a
+mathematical claim.
+The generated CFF is a consumer of these records. Bind local evidence to its
+authored manuscript, toolchain or dependency manifest; retain historical CFF
+credit through a commit-pinned source locator rather than a current line range.
+
 ## Directions, email, and work across tracks
 
 A useful direction, reference, correction, example or explanation can be the

@@ -132,3 +132,8 @@ machine-readable owner with
 Check projection freshness with
 `python3 scripts/build_source_attributions.py --check`. These source records
 do not create accepted contribution receipts or imply endorsement.
+The builder also populates [CITATION.cff](../../CITATION.cff) from the source
+records and [paper catalogue](../papers/README.md). Its coverage check includes
+every catalogued manuscript and its included TeX bibliography files; each
+reference links back to its attribution or paper record. See the
+[citation metadata policy](CREDIT_POLICY.md) when adding a source or edition.
