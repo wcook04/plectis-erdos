@@ -11,9 +11,9 @@ Private correspondence appears only under a neutral anonymous identity until pub
 
 ## Coverage and anonymous implementation credits
 
-The registry contains `312` curated sources across `24` registered papers and `1903` Lean library files.
+The registry contains `412` curated sources across `24` registered papers and `1903` Lean library files.
 
-Source review states: `bibliography_only`: `97`; `existing_source_closure`: `31`; `external_claim_unverified`: `1`; `implemented_advice`: `5`; `source_verified`: `178`.
+Source review states: `bibliography_only`: `194`; `existing_source_closure`: `31`; `external_claim_unverified`: `1`; `implemented_advice`: `5`; `source_verified`: `181`.
 
 Bibliography coverage records attribution already present in the corpus. A `bibliography_only` record still needs direct source-passage verification; a completed lexical review does not certify a source-to-theorem correspondence.
 
@@ -25,20 +25,22 @@ Implemented advice from private correspondence. The [credit ledger](CREDIT_LEDGE
 - [Writing for a first-time reader](#source-correspondence-004) — Implemented advice on exposition received about the #243 note: replace private names for ordinary objects with the mathematics they denote, inline notation that is used once, and say how restrictive a conditional hypothesis is. The eight short and eight long problem papers were rewritten under these rules and merged on 18 September 2026. The #243 note now names the Chinese remainder theorem where that is the tool and gives examples of what its bounded-increment hypothesis covers, and the public writing skill and short-paper contract now require plain names, notation only where it helps, and an explanation of restrictive hypotheses. No mathematical review, verification or endorsement of any paper is attributed to the correspondent.
 - [Showing where methods and ideas come from](#source-correspondence-005) — Implemented advice received in reply to a letter about one of the eight problems: the main objection to AI-assisted mathematics is how rarely it shows where its methods and ideas come from. A prior-art literature review was then run for each of the eight problems, and pull requests #180 and #181 added point-of-use attribution and corrected locators to all eight short papers and long records. No mathematical review, verification or endorsement of any paper is attributed to the correspondent.
 
+CFF projection: `408` emitted references covering `394` source identities, `7` explicitly reviewed aliases, `24` repository paper editions; `902` bibliography coordinates checked; `0` coverage errors. Citation inclusion does not imply source verification.
+
 - Unmatched citation keys: `0`
-- Bibliography entries awaiting curated links: `118`
-- Lean candidates awaiting review: `827` (`3` direct URL/DOI/arXiv rows; `1678` surname/key rows; categories may overlap).
+- Bibliography entries awaiting curated links: `0`
+- Lean candidates awaiting review: `2975` (`3` direct URL/DOI/arXiv rows; `3826` surname/key rows; categories may overlap).
 
 ## Browse by problem
 
-- **Erdős #1041**: [On the shapes of rational lemniscates](#source-bishop-eremenko-lazebnik-2025-shapes-of-rational-lemniscates), [Listing each checked result, with a cheap way to check it](#source-correspondence-001), [Writing for a first-time reader](#source-correspondence-004), [Showing where methods and ideas come from](#source-correspondence-005), [Degree-seven total-variation counterexample for polynomial lemniscates](#source-erdos1041-ani-degree-seven-candidate-counterexample), [Independent check of candidate degree-seven counterexample](#source-erdos1041-morluto-independent-check), [Quartic case of Erdős #1041](#source-erdos1041-pendyala-quartic), [Erdős Problems catalogue pages for problems 68, 243, 249, 251, 257,…](#source-erdos-problems-catalog-eight-problem-context), [A Markov-type inequality for arbitrary plane continua](#source-eremenko-2007-markov-type-inequality-plane-continua), [An extremal problem for polynomials](#source-eremenko-lempert-1994-extremal-problem-for-polynomials), [Comb functions](#source-eremenko-yuditskii-2012-comb-functions), [Formal Conjectures coverage boundary across the eight-problem corpus](#source-formal-conjectures-eight-problem-coverage-boundary), [Lean 4 theorem prover](#source-lean4-toolchain-v4-29-1), [mathlib4](#source-mathlib4-pin-5e932f97), [The maximal length of the Erdős–Herzog–Piranian lemniscate in high…](#source-source-0e12f93aeac487), [Lemniscates and inequalities for the logarithmic capacities of cont…](#source-source-2a86f52125aec0), [Beitrag zur Verallgemeinerung des Verzerrungssatzes auf mehrfach zu…](#source-source-2ec6bf87654604), [Bad Polynomials for Newton's Method](#source-source-318ee5e7cf6d74), [The area of polynomial images and preimages](#source-source-40bc4064b92788), [Three refinements for the lemniscate-path programme](#source-source-45037c29c04bed), [Length functions of lemniscates](#source-source-57fe330e419648), [Metric properties of polynomials](#source-source-61ce6ad8b2f0ff), [Critical points and values of complex polynomials](#source-source-7ac8693558c1a2), [On the length of lemniscates](#source-source-7f1f2a3fd9238c), [A bound for Smale's mean value conjecture for complex polynomials](#source-source-818467bc1cb170), [Shortest paths in polynomial lemniscate sublevel sets and a problem…](#source-source-8710374c3e8c9f), [The arc length of the lemniscate |p(z)|=1](#source-source-89b9a294db76bb), [Computing the Newtonian Graph](#source-source-92b0dfb67f5009), [A Degree-Four Lemniscate Path Theorem](#source-source-951f70d8dfc418), [Number of Components of Polynomial Lemniscates: A Problem of Erdős,…](#source-source-97b4e6a82335a7), [Two-dimensional shapes and lemniscates](#source-source-9e37cc2fe7db3e), [New estimates for the length of the Erdős–Herzog–Piranian lemniscate](#source-source-a67b8dc01791ec), [Inequalities for critical values of polynomials](#source-source-b10b965e63a00d), [Über die Verteilung der Wurzeln bei gewissen algebraischen Gleichun…](#source-source-b4b0f2811b1d2d), [Some inequalities for polynomials and rational functions associated…](#source-source-dcbe400c96be59), [Four-point distortion theorem for complex polynomials](#source-source-f0af8e6f36727f), [A Short Path Joining Two Zeros Inside a Polynomial Lemniscate](#source-source-f300911fb03a5c)
-- **Erdős #1049**: [Listing each checked result, with a cheap way to check it](#source-correspondence-001), [Earlier work on the #1049 Lambert value](#source-correspondence-003), [Writing for a first-time reader](#source-correspondence-004), [Showing where methods and ideas come from](#source-correspondence-005), [Retrieval of Chowla 1947 original scan](#source-erdos1049-bloom-chowla-scan-retrieval), [Erdős Problems catalogue pages for problems 68, 243, 249, 251, 257,…](#source-erdos-problems-catalog-eight-problem-context), [Formal Conjectures compatibility surface for Erdős #1049](#source-formal-conjectures-adapter-problem-1049), [Formal Conjectures coverage boundary across the eight-problem corpus](#source-formal-conjectures-eight-problem-coverage-boundary), [Lean 4 theorem prover](#source-lean4-toolchain-v4-29-1), [mathlib4](#source-mathlib4-pin-5e932f97), [A problem about Mahler functions](#source-source-0a6b8c93371570), [Stieltjes moment sequences of polynomials](#source-source-0f46dee5024c66), [Heine's basic transform and a permutation group for q-harmonic series](#source-source-120bebce1ffe8c), [À propos de la série ∑\_{n≥1} x^n/(q^n−1)](#source-source-169c3d67838965), [On a permutation group related to ζ(2)](#source-source-176d35cb60b651), [On the non-quadraticity of values of the q-exponential function and…](#source-source-22ef36d016ca81), [Apéry-type approximations and irrationality measures for certain q-…](#source-source-285ee90c8dcd62), [On powers of Stieltjes moment sequences, II](#source-source-2a10c7287879c3), [Refinement of the Chowla--Erdős method and linear independence of c…](#source-source-317a740451ce03), [A determinant identity for moments of orthogonal polynomials that i…](#source-source-3479bad7869d7c), [Common Factors in Fraction-Free Matrix Decompositions](#source-source-39e4fc546549fd), [Mahler series with multiplicative coefficient sequences](#source-source-3bc828513b4d63), [Lattice paths and branched continued fractions: An infinite sequenc…](#source-source-490b1875016ea4), [On several irrationality problems for Ahmes series](#source-source-4f5fd0d7405e29), [Calculation of Gauss Quadrature Rules](#source-source-53a2a9c4a9e7c2), [NIST Digital Library of Mathematical Functions, Eq. 17.2.37](#source-source-5857f9959e7529), [On an incomplete argument of Erdős on the irrationality of Lambert…](#source-source-5911448b65fdf9), [On arithmetical properties of Lambert series](#source-source-5c72388a6ca10f), [On the irrationality of ∑ 1/(q^n+r)](#source-source-62f9190aeb7d34), [Linear independence results for the values of divisor functions series](#source-source-6accca20cd5e44), [Irrationality of ζ\_q(1) and ζ\_q(2)](#source-source-6c2fbacaba626f), [Arithmetical functions and irrationality of Lambert series](#source-source-6cfe654e650970), [q-Apéry irrationality proofs by q-WZ pairs](#source-source-7935fe19eb831b), [Smith normal form in combinatorics](#source-source-91756d895a28a8), [On the irrationality of certain series](#source-source-96aef073e2ea33), [Zero Coefficients of Rational Power Series and Rational Lambert Series](#source-source-aa2d5c249362f1), [On the irrationality of generalized q-logarithm](#source-source-ae9859af28fdcd), [On the irrationality of certain series: problems and results](#source-source-b378189f39ed98), [Continued-fraction characterization of Stieltjes moment sequences w…](#source-source-c61a0cf3f328ce), [Irrationality proof of certain Lambert series using little q-Jacobi…](#source-source-ca19e504149107), [Little q-Legendre polynomials and irrationality of certain Lambert…](#source-source-cd126799fede94), [Some New Applications of the Subspace Theorem](#source-source-corvaja-zannier-2002-subspace), [FormalConjectures.ErdosProblems.1049](#source-source-d7a43109c64c0c), [Log-convex and Stieltjes moment sequences](#source-source-e535117ac620e6), [Arithmetical investigations of a certain infinite product](#source-source-e553241a97e580), [New irrationality measures for q-logarithms](#source-source-e5f2924d82c59f), [A further improvement of the quantitative Subspace Theorem](#source-source-evertse-ferretti-2013-author2012), [Remarks on irrationality of q-harmonic series](#source-source-f1c687cb5e9ae4), [A determinantal approach to irrationality](#source-source-f67bf9959aa230), [Rational approximations to a q-analogue of π and some other q-series](#source-source-f9fd9214c9ef11), [Christoffel transform and multiple orthogonal polynomials](#source-source-kozhan-vaktnas-2407-13946v1), [Multivariate Rogers-Szego polynomials and flags in finite vector sp…](#source-source-vinroot-2010-multivariate-rogers-szego), [A determinantal approach to irrationality (arXiv v2)](#source-source-zudilin-determinantal-1507-05697v2)
-- **Erdős #243**: [Listing each checked result, with a cheap way to check it](#source-correspondence-001), [Writing for a first-time reader](#source-correspondence-004), [Showing where methods and ideas come from](#source-correspondence-005), [Koizumi pseudo-greedy equivalence and computation pointer](#source-erdos243-kovac-koizumi-pointer), [Rational-tail deterministic pair recurrence and open-boundary reduc…](#source-erdos243-tao-tail-pair-recurrence), [Erdős Problems catalogue pages for problems 68, 243, 249, 251, 257,…](#source-erdos-problems-catalog-eight-problem-context), [Formal Conjectures coverage boundary across the eight-problem corpus](#source-formal-conjectures-eight-problem-coverage-boundary), [Lean 4 theorem prover](#source-lean4-toolchain-v4-29-1), [mathlib4](#source-mathlib4-pin-5e932f97), [Irrationality exponents of certain fast converging series of ration…](#source-source-0f03e2dab0b8c2), [Old and New Problems and Results in Combinatorial Number Theory](#source-source-10545f868b3e88), [FormalConjectures.ErdosProblems.243](#source-source-1713b9ad6350bd), [Optimal bounds for an Erdős problem on matching integers to distinc…](#source-source-1b9324cc5f4641), [Apéry-type approximations and irrationality measures for certain q-…](#source-source-285ee90c8dcd62), [Prime-Support Rigidity and Primitive Pseudo-Greedy Dynamics: Partia…](#source-source-2a3af2a360bb15), [A theorem on irrationality of infinite series and applications](#source-source-318b37ba5af2eb), [On the irrationality of certain super-polynomially decaying series](#source-source-41df26fdff66cb), [On several irrationality problems for Ahmes series](#source-source-4f5fd0d7405e29), [On the irrationality of polynomial Cantor series](#source-source-77ddbf43e364f7), [On the irrationality of certain series](#source-source-7dc956ce55b7a0), [Irrationality of the reciprocal sum of doubly exponential sequences](#source-source-86d1745e2d139b), [Chebotarëv and his density theorem](#source-source-abedb02f9939e5), [Irrationality of fast converging series of rational numbers](#source-source-b0b779fff5defe), [On the irrationality of certain series: problems and results](#source-source-b378189f39ed98), [{Digital Library of Mathematical Functions}, {Section} 5.11(iii): R…](#source-source-b95bf142df7fb5), [Irrationality Criteria for Series by Erdős and Straus](#source-source-c6e97d89c9fa5f), [On the rationality of Cantor and Ahmes series](#source-source-cbaba7aeeb0f71), [On the irrationality of certain Ahmes series](#source-source-e33bdf934f939f), [Erdős #243: working report](#source-source-ee991edd431d57)
-- **Erdős #249**: [Listing each checked result, with a cheap way to check it](#source-correspondence-001), [Leading the #249 paper with its exact theorem](#source-correspondence-002), [Writing for a first-time reader](#source-correspondence-004), [Showing where methods and ideas come from](#source-correspondence-005), [Möbius-transform identity for the binary totient constant](#source-erdos249-fan-mobius-transform), [Irrationality of the n=2^m sparse totient subseries](#source-erdos249-rafik-sparse-power-two-subseries), [Erdős Problems catalogue pages for problems 68, 243, 249, 251, 257,…](#source-erdos-problems-catalog-eight-problem-context), [Formal Conjectures compatibility surface for Erdős #249](#source-formal-conjectures-adapter-problem-249), [Formal Conjectures coverage boundary across the eight-problem corpus](#source-formal-conjectures-eight-problem-coverage-boundary), [Lean 4 theorem prover](#source-lean4-toolchain-v4-29-1), [mathlib4](#source-mathlib4-pin-5e932f97), [Shifted multiplicative-function correlation program named in the #2…](#source-proposed-direct-4e797194f74404), [On correlations of certain multiplicative functions](#source-proposed-direct-595203db1f6891), [Erdős–Gál lacunary-series law of the iterated logarithm (two-part s…](#source-proposed-direct-7f278004ad452a), [Adamczewski–Bugeaud subword-complexity method context](#source-proposed-direct-d4ac203509248c), [Note on normal numbers](#source-proposed-direct-f7f90747134dba), [The googol-th bit of the Erdős--Borwein constant](#source-source-0dd4239a1d50da), [On asymptotic distributions of arithmetical functions](#source-source-0e9b7210b29d99), [On the set of partial sums of an infinite series](#source-source-0ecb074e507b86), [Answer to An infinite sum based on the mod-parity of Euler's totien…](#source-source-0f61ad0796acdf), [Old and New Problems and Results in Combinatorial Number Theory](#source-source-10545f868b3e88), [Simultaneous inequalities among values of the Euler phi-function](#source-source-11b46a0435368f), [A survey of gcd-sum functions](#source-source-22ce74d28ddb49), [Regular sequences and the joint spectral radius](#source-source-296ff41148fff7), [On a curious property of vulgar fractions](#source-source-2aa4970cfda278), [Refinement of the Chowla--Erdős method and linear independence of c…](#source-source-317a740451ce03), [On the law of the iterated logarithm. I](#source-source-39690ee8e07b0c), [Mahler series with multiplicative coefficient sequences](#source-source-3bc828513b4d63), [A dynamical proof of the van der Corput inequality](#source-source-3d300ccd5e4cbb), [On the irrationality of certain super-polynomially decaying series](#source-source-41df26fdff66cb), [(Logarithmic) densities for automatic sequences along primes and sq…](#source-source-4afc43674f7082), [On several irrationality problems for Ahmes series](#source-source-4f5fd0d7405e29), [The ring of k -regular sequences](#source-source-5752bb5009e4de), [On arithmetical properties of Lambert series](#source-source-5c72388a6ca10f), [Integer sequences and periodic points](#source-source-5cac1ad51acb12), [Generating special arithmetic functions by Lambert series factoriza…](#source-source-619de19af78c4c), [Modular functions and transcendence questions](#source-source-6346eeeac5036d), [Quantitative correlations and some problems on prime factors of con…](#source-source-685765cbd1ebe2), [Linear independence results for the values of divisor functions series](#source-source-6accca20cd5e44), [How to prove that a sequence is not automatic](#source-source-6b460d123159d9), [Irrationality of ζ\_q(1) and ζ\_q(2)](#source-source-6c2fbacaba626f), [Comment and formula added to OEIS A256936 (revisions 28 and 31)](#source-source-71037224a1dd7c), [(Non)automaticity of number theoretic functions](#source-source-741da55b02c5a9), [On the complexity of algebraic numbers I. Expansions in integer bases](#source-source-7c8ba4ea6eea79), [On the irrationality of certain series](#source-source-7dc956ce55b7a0), [The Lambert series factorization theorem](#source-source-8935df46fb4693), [On the irrationality of certain series](#source-source-96aef073e2ea33), [Introduction to Analytic Number Theory](#source-source-99385343e032a3), [Comment on Erdős Problem #249](#source-source-99c2f3cb190b95), [Ueber eine zahlentheoretische Funktion](#source-source-9db8c3859cdc81), [Multiplicative functions and k-automatic sequences](#source-source-a0d109b4492fba), [On the irrationality of certain series: problems and results](#source-source-b378189f39ed98), [The Lean 4 theorem prover and programming language](#source-source-b6603e42453ff3), [Transcendence of generating functions whose coefficients are multip…](#source-source-b791f5b49e0da6), [Smooth numbers: computational number theory and beyond](#source-source-bc5d16b84e62c7), [The Fourier transform of functions of the greatest common divisor](#source-source-c786f202d47318), [(Non)Automaticity of number theoretic functions (arXiv v3)](#source-source-coons-nonautomaticity-0810-3709v3), [There are infinitely many Carmichael numbers](#source-source-d14cd7f6920a31), [The Lean mathematical library](#source-source-d8b2a7c411bc2d), [On the binary digits of the Erdős--Borwein constant](#source-source-eca9e699590922), [Uber die asymptotische Verteilung reeller Zahlen mod 1](#source-source-eeff3fa685af8a), [Sparse Polynomial-Weighted Expansions](#source-source-f4ad17717c8fd4), [Cyclotomic completions of polynomial rings](#source-source-habiro-2004-cyclotomic)
-- **Erdős #251**: [Listing each checked result, with a cheap way to check it](#source-correspondence-001), [Writing for a first-time reader](#source-correspondence-004), [Showing where methods and ideas come from](#source-correspondence-005), [Schlage-Puchta Theorem 2 literature pointer](#source-erdos251-alfaiz-schlage-puchta-pointer), [Counterexample to Erdős variable-denominator expectation](#source-erdos251-kovac-variable-denominator-counterexample), [Conditional #251 proof under Kuperberg Conjecture 1.3 and Lean form…](#source-erdos251-land-conditional-proof-lean), [Prime-gap summation-by-parts equivalence and conditional route](#source-erdos251-tao-prime-gap-equivalence), [Erdős Problems catalogue pages for problems 68, 243, 249, 251, 257,…](#source-erdos-problems-catalog-eight-problem-context), [Formal Conjectures compatibility surface for Erdős #251](#source-formal-conjectures-adapter-problem-251), [Formal Conjectures coverage boundary across the eight-problem corpus](#source-formal-conjectures-eight-problem-coverage-boundary), [Lean 4 theorem prover](#source-lean4-toolchain-v4-29-1), [mathlib4](#source-mathlib4-pin-5e932f97), [Multiplicative Number Theory I: Classical Theory](#source-source-0aca0e5e4e03c0), [On the Erdős problem #251](#source-source-0ec7ca07508557), [Old and New Problems and Results in Combinatorial Number Theory](#source-source-10545f868b3e88), [Beweis eines Satzes von Tschebyschef](#source-source-20c650f8cf3744), [Erdős Problems discussion thread #251](#source-source-21738452dcb95c), [On the largest prime factors of n and n+1](#source-source-27575f46a101c1), [Multigeometric sequences and Cantorvals](#source-source-2b0038d2c239f5), [Sur certaines séries à valeur irrationnelle](#source-source-2ee394177d0f38), [On the irrationality of certain super-polynomially decaying series](#source-source-41df26fdff66cb), [Sums of singular series along arithmetic progressions and with smoo…](#source-source-450aed97015b8f), [(Logarithmic) densities for automatic sequences along primes and sq…](#source-source-4afc43674f7082), [On several irrationality problems for Ahmes series](#source-source-4f5fd0d7405e29), [Continued Fractions](#source-source-5ee5f85bd606ee), [Subsum sets: intervals, Cantor sets, and Cantorvals](#source-source-63a234b13e4427), [Small gaps between primes](#source-source-6564b203677735), [On Kakeya Conditions for Achievement Sets](#source-source-6d8837bbc174ce), [Achievement sets -- current results and open problems](#source-source-77333436a9e579), [Achievable Cantorvals almost without reversed Kakeya conditions](#source-source-779915b8355ac1), [On the irrationality of certain series](#source-source-7dc956ce55b7a0), [Sums of singular series with large sets and the tail of the distrib…](#source-source-811205223e0788), [Lacunary sequences whose reciprocal sums represent all rational num…](#source-source-892c567092d6f3), [Variants of the Selberg sieve, and bounded intervals containing man…](#source-source-91aa380a16dba9), [Local gap statistics, telescoping, and normality](#source-source-9a38b2d8b0dada), [Ford circles, continued fractions, and best approximation of the se…](#source-source-9b23918ce33c38), [FormalConjectures.ErdosProblems.251](#source-source-b202a3f125817d), [On the irrationality of certain series: problems and results](#source-source-b378189f39ed98), [More on Kakeya Conditions for Achievement Sets](#source-source-b46f8a083b4271), [The Lean 4 theorem prover and programming language](#source-source-b6603e42453ff3), [The difference between consecutive primes, II](#source-source-baker-harman-pintz-2001), [Bounded gaps between primes](#source-source-c32d672658410d), [The Poisson Tail Conjecture for primes in short intervals](#source-source-c9b987093aaf4e), [On a new condition implying that an achievement set is a Cantorval…](#source-source-ce27d27dd5ec77), [Long gaps between primes](#source-source-d3995db1508bc9), [The irrationality of some number theoretical series](#source-source-d471eacdba0f87), [The Lean mathematical library](#source-source-d8b2a7c411bc2d), [Partitions with prescribed sum of reciprocals: asymptotic bounds](#source-source-dbbc7de069eeee), [On the irrationality of certain Ahmes series](#source-source-e33bdf934f939f), [A conditional proof of the irrationality of ∑\_{n≥1} p\_n 2^{−n} unde…](#source-source-f42f9e04743a4c), [Generalized bases for the real numbers](#source-source-fb4194cadb150b)
-- **Erdős #257**: [Listing each checked result, with a cheap way to check it](#source-correspondence-001), [Writing for a first-time reader](#source-correspondence-004), [Showing where methods and ideas come from](#source-correspondence-005), [Earlier variants, interval-filling negative variant, and fat-Cantor…](#source-erdos257-kovac-context-bundle), [Older Erdős and Borwein attribution for even/odd supports](#source-erdos257-kovac-older-special-case-attribution), [Period-two Lambert theorem applied to even and odd supports](#source-erdos257-tang-tachiya-period-two), [Erdős Problems catalogue pages for problems 68, 243, 249, 251, 257,…](#source-erdos-problems-catalog-eight-problem-context), [Formal Conjectures compatibility surface for Erdős #257](#source-formal-conjectures-adapter-problem-257), [Formal Conjectures coverage boundary across the eight-problem corpus](#source-formal-conjectures-eight-problem-coverage-boundary), [Lean 4 theorem prover](#source-lean4-toolchain-v4-29-1), [mathlib4](#source-mathlib4-pin-5e932f97), [Diophantine Problems for q-Zeta Values](#source-proposed-direct-0ef4f73f93ceed), [Refinements of Erdős's irrationality criterion for certain sparse i…](#source-proposed-direct-329775d58148a9), [Shifted multiplicative-function correlation program named in the #2…](#source-proposed-direct-4e797194f74404), [Divisor-bounded multiplicative functions in short intervals](#source-proposed-direct-6c67db53ef5f8c), [The critical-window profile for d\_k in short intervals](#source-proposed-direct-6f90767d1d01dd), [The googol-th bit of the Erdős--Borwein constant](#source-source-0dd4239a1d50da), [On the set of partial sums of an infinite series](#source-source-0ecb074e507b86), [Old and New Problems and Results in Combinatorial Number Theory](#source-source-10545f868b3e88), [Heine's basic transform and a permutation group for q-harmonic series](#source-source-120bebce1ffe8c), [On a curious property of vulgar fractions](#source-source-2aa4970cfda278), [Refinement of the Chowla--Erdős method and linear independence of c…](#source-source-317a740451ce03), [Mahler series with multiplicative coefficient sequences](#source-source-3bc828513b4d63), [Some problems and results on the irrationality of the sum of infini…](#source-source-43a734be32736f), [FormalConjectures.ErdosProblems.257](#source-source-4bb571f8383293), [On several irrationality problems for Ahmes series](#source-source-4f5fd0d7405e29), [The ring of k -regular sequences](#source-source-5752bb5009e4de), [On arithmetical properties of Lambert series](#source-source-5c72388a6ca10f), [Generating special arithmetic functions by Lambert series factoriza…](#source-source-619de19af78c4c), [Modular functions and transcendence questions](#source-source-6346eeeac5036d), [Subsum sets: intervals, Cantor sets, and Cantorvals](#source-source-63a234b13e4427), [Quantitative correlations and some problems on prime factors of con…](#source-source-685765cbd1ebe2), [Über beliebige Teilsummen absolut konvergenter Reihen](#source-source-691e9cc3c46273), [Linear independence results for the values of divisor functions series](#source-source-6accca20cd5e44), [Irrationality of ζ\_q(1) and ζ\_q(2)](#source-source-6c2fbacaba626f), [(Non)automaticity of number theoretic functions](#source-source-741da55b02c5a9), [Achievement sets -- current results and open problems](#source-source-77333436a9e579), [On the irrationality of certain series](#source-source-7dc956ce55b7a0), [Lacunary sequences whose reciprocal sums represent all rational num…](#source-source-892c567092d6f3), [The Lambert series factorization theorem](#source-source-8935df46fb4693), [On the irrationality of certain series](#source-source-96aef073e2ea33), [Introduction to Analytic Number Theory](#source-source-99385343e032a3), [Irrationality of Lambert series associated with a periodic sequence](#source-source-9ce84321e202f1), [Ueber eine zahlentheoretische Funktion](#source-source-9db8c3859cdc81), [On the irrationality of certain series: problems and results](#source-source-b378189f39ed98), [The Lean 4 theorem prover and programming language](#source-source-b6603e42453ff3), [Irrationality of rapidly converging series: a problem of Erdős and…](#source-source-c742deb980b53c), [Little q-Legendre polynomials and irrationality of certain Lambert…](#source-source-cd126799fede94), [Some New Applications of the Subspace Theorem](#source-source-corvaja-zannier-2002-subspace), [There are infinitely many Carmichael numbers](#source-source-d14cd7f6920a31), [The Lean mathematical library](#source-source-d8b2a7c411bc2d), [On the binary digits of the Erdős--Borwein constant](#source-source-eca9e699590922), [The logarithmic endpoint fails under arithmetic sampling](#source-source-endpoint2026-logarithmic-repair), [A further improvement of the quantitative Subspace Theorem](#source-source-evertse-ferretti-2013-author2012), [Sparse Polynomial-Weighted Expansions](#source-source-f4ad17717c8fd4), [Linear independence of certain Lambert series](#source-source-f6ee6890db85d9)
-- **Erdős #269**: [Listing each checked result, with a cheap way to check it](#source-correspondence-001), [Writing for a first-time reader](#source-correspondence-004), [Showing where methods and ideas come from](#source-correspondence-005), [Infinite-prime-set irrationality proof and correction chain](#source-erdos269-fan-infinite-p-proof-repair), [Two-prime Hecke–Mahler factorisation and transcendence disclosure](#source-erdos269-fan-two-prime-disclosure), [Erdős Problems catalogue pages for problems 68, 243, 249, 251, 257,…](#source-erdos-problems-catalog-eight-problem-context), [Formal Conjectures coverage boundary across the eight-problem corpus](#source-formal-conjectures-eight-problem-coverage-boundary), [Lean 4 theorem prover](#source-lean4-toolchain-v4-29-1), [mathlib4](#source-mathlib4-pin-5e932f97), [The Prime Number Theorem](#source-source-06457731c60720), [Old and New Problems and Results in Combinatorial Number Theory](#source-source-10545f868b3e88), [On the irrationality of Cantor and Ahmes series](#source-source-1a7535a5e17a8c), [Comment on Erdős Problem #269](#source-source-21cdeefea4c8ec), [Letter to the Editor](#source-source-22aba734190d65), [Transcendence of Hecke–Mahler Series](#source-source-29bdada58b414a), [On several irrationality problems for Ahmes series](#source-source-4f5fd0d7405e29), [Sur le développement en fraction continue d'un nombre choisi au hasard](#source-source-5270112e32002d), [FormalConjectures.ErdosProblems.269](#source-source-573a79feb36d47), [Continued Fractions](#source-source-5ee5f85bd606ee), [On the set of points of convergence of a lacunary trigonometric ser…](#source-source-62ee65065db497), [Strongly complete sets and a conjecture of Erdős](#source-source-71fb76f6e1363b), [On the irrationality of polynomial Cantor series](#source-source-77ddbf43e364f7), [On the number of positive integers ≤ x and free of prime factors \> y](#source-source-78565c625f0ea3), [On Transcendence of Numbers Related to Sturmian and Arnoux-Rauzy Words](#source-source-7a9657920d576b), [On the complexity of algebraic numbers I. Expansions in integer bases](#source-source-7c8ba4ea6eea79), [On the irrationality of certain series](#source-source-7dc956ce55b7a0), [Smith normal form in combinatorics](#source-source-91756d895a28a8), [Introduction to Analytic Number Theory](#source-source-99385343e032a3), [On the arithmetic properties of complex values of Hecke-Mahler seri…](#source-source-9c2776b87b1155), [On integers generated by a finite number of fixed primes](#source-source-ab6d6d6b890f57), [On the irrationality of certain series: problems and results](#source-source-b378189f39ed98), [Transcendence and continued fraction expansion of values of Hecke--…](#source-source-b9d7160919621f), [Sequences of integers generated by two fixed primes](#source-source-bbb68df5b83380), [Irrationality Criteria for Series by Erdős and Straus](#source-source-c6e97d89c9fa5f), [A new proof of Nishioka's theorem in Mahler's method](#source-source-e7f2f796dbcdb6), [Mahler's method in several variables and finite automata](#source-source-eaeb7980382323), [Arithmetic properties of certain functions in several variables III](#source-source-fcf73a15ff9c7c)
-- **Erdős #68**: [Listing each checked result, with a cheap way to check it](#source-correspondence-001), [Writing for a first-time reader](#source-correspondence-004), [Showing where methods and ideas come from](#source-correspondence-005), [Erdős Problems catalogue pages for problems 68, 243, 249, 251, 257,…](#source-erdos-problems-catalog-eight-problem-context), [Formal Conjectures compatibility surface for Erdős #68](#source-formal-conjectures-adapter-problem-68), [Formal Conjectures coverage boundary across the eight-problem corpus](#source-formal-conjectures-eight-problem-coverage-boundary), [Lean 4 theorem prover](#source-lean4-toolchain-v4-29-1), [mathlib4](#source-mathlib4-pin-5e932f97), [On the sequence $n!$ mod $p$](#source-source-02fc1f0e6f0418), [Lower bounds for some value sets over finite fields: incidence geom…](#source-source-04603f785c9e7f), [Irrationality of rapidly converging series: a problem of Erdős and…](#source-source-0f1a3708d62674), [An improved point-line incidence bound over arbitrary fields](#source-source-29cbac966b8b76), [On equal products of consecutive integers](#source-source-3068a3586a5e8b), [Character sums and congruences with n!](#source-source-34b520c561ee3c), [Factorial residues modulo a prime: beyond the square-root bound](#source-source-365c2b5cf46ebe), [On the greatest and least prime factors of n!+1](#source-source-3fb9e4907eec24), [Some problems and results on the irrationality of the sum of infini…](#source-source-43a734be32736f), [On the irrationality of certain 2-adic zeta values](#source-source-5122572a1e7312), [On the largest prime divisor of n!+1](#source-source-57adfd0cdcd8c2), [Prime divisors of shifted factorials](#source-source-5f85fb0bd75b8b), [A geometric proof that e is irrational and a new measure of its irr…](#source-source-6a5bf83735fdef), [Distribution of factorials modulo $p$](#source-source-724fef812699b7), [The product of consecutive integers is never a power](#source-source-7d923cace5602a), [Über die einfachen Zahlensysteme](#source-source-8ac37c92429a46), [Irrationality of certain infinite series II](#source-source-a87fa25f28c7b0), [Irrationality of fast converging series of rational numbers](#source-source-b0b779fff5defe), [On the irrationality of certain series: problems and results](#source-source-b378189f39ed98), [On the irrationality of certain p-adic zeta values](#source-source-b3b7518e07e159), [On the Value Set of $n!$ Modulo a Prime](#source-source-b3decc410aa4b5), [On Equal Products of Consecutive Integers](#source-source-b6d577df139d85), [On the irrationality of factorial series](#source-source-c835bc94aad831), [On the greatest and least prime factors of n!+1 , II](#source-source-d1710db60eae06), [Representations of Real Numbers by Infinite Series](#source-source-e13ecb7c94852a), [On the largest prime factor of n!+2^n−1](#source-source-e66e0693f05f0a), [Rational numbers with odd greedy expansion of fixed length](#source-source-ef6233b59b95cb), [Additive congruences with factorials modulo a prime](#source-source-f1a42898642b5f), [NIST Digital Library of Mathematical Functions, §1.12(ii) Convergents](#source-source-f213b302ada43a), [Distribution of harmonic sums and Bernoulli polynomials modulo a prime](#source-source-fb64da05c3acc7)
+- **Erdős #1041**: [On the shapes of rational lemniscates](#source-bishop-eremenko-lazebnik-2025-shapes-of-rational-lemniscates), [Listing each checked result, with a cheap way to check it](#source-correspondence-001), [Writing for a first-time reader](#source-correspondence-004), [Showing where methods and ideas come from](#source-correspondence-005), [Degree-seven total-variation counterexample for polynomial lemniscates](#source-erdos1041-ani-degree-seven-candidate-counterexample), [Independent check of candidate degree-seven counterexample](#source-erdos1041-morluto-independent-check), [Quartic case of Erdős #1041](#source-erdos1041-pendyala-quartic), [Erdős Problems catalogue pages for problems 68, 243, 249, 251, 257,…](#source-erdos-problems-catalog-eight-problem-context), [A Markov-type inequality for arbitrary plane continua](#source-eremenko-2007-markov-type-inequality-plane-continua), [An extremal problem for polynomials](#source-eremenko-lempert-1994-extremal-problem-for-polynomials), [Comb functions](#source-eremenko-yuditskii-2012-comb-functions), [Formal Conjectures coverage boundary across the eight-problem corpus](#source-formal-conjectures-eight-problem-coverage-boundary), [FormalConjectures.ErdosProblems.1041](#source-formal-conjectures-statement-problem-1041), [Lean 4 theorem prover](#source-lean4-toolchain-v4-29-1), [mathlib4](#source-mathlib4-pin-5e932f97), [Comparator](#source-software-comparator-statement-checker), [landrun](#source-software-landrun-pinned), [lean4export](#source-software-lean4export-pinned), [The maximal length of the Erdős–Herzog–Piranian lemniscate in high…](#source-source-0e12f93aeac487), [Lemniscates and inequalities for the logarithmic capacities of cont…](#source-source-2a86f52125aec0), [Beitrag zur Verallgemeinerung des Verzerrungssatzes auf mehrfach zu…](#source-source-2ec6bf87654604), [Bad Polynomials for Newton's Method](#source-source-318ee5e7cf6d74), [The area of polynomial images and preimages](#source-source-40bc4064b92788), [Three refinements for the lemniscate-path programme](#source-source-45037c29c04bed), [Length functions of lemniscates](#source-source-57fe330e419648), [Metric properties of polynomials](#source-source-61ce6ad8b2f0ff), [Critical points and values of complex polynomials](#source-source-7ac8693558c1a2), [On the length of lemniscates](#source-source-7f1f2a3fd9238c), [A bound for Smale's mean value conjecture for complex polynomials](#source-source-818467bc1cb170), [Shortest paths in polynomial lemniscate sublevel sets and a problem…](#source-source-8710374c3e8c9f), [The arc length of the lemniscate |p(z)|=1](#source-source-89b9a294db76bb), [Computing the Newtonian Graph](#source-source-92b0dfb67f5009), [A Degree-Four Lemniscate Path Theorem](#source-source-951f70d8dfc418), [Number of Components of Polynomial Lemniscates: A Problem of Erdős,…](#source-source-97b4e6a82335a7), [Two-dimensional shapes and lemniscates](#source-source-9e37cc2fe7db3e), [New estimates for the length of the Erdős–Herzog–Piranian lemniscate](#source-source-a67b8dc01791ec), [Inequalities for critical values of polynomials](#source-source-b10b965e63a00d), [Über die Verteilung der Wurzeln bei gewissen algebraischen Gleichun…](#source-source-b4b0f2811b1d2d), [Some inequalities for polynomials and rational functions associated…](#source-source-dcbe400c96be59), [Four-point distortion theorem for complex polynomials](#source-source-f0af8e6f36727f), [A Short Path Joining Two Zeros Inside a Polynomial Lemniscate](#source-source-f300911fb03a5c)
+- **Erdős #1049**: [Listing each checked result, with a cheap way to check it](#source-correspondence-001), [Earlier work on the #1049 Lambert value](#source-correspondence-003), [Writing for a first-time reader](#source-correspondence-004), [Showing where methods and ideas come from](#source-correspondence-005), [Retrieval of Chowla 1947 original scan](#source-erdos1049-bloom-chowla-scan-retrieval), [Erdős Problems catalogue pages for problems 68, 243, 249, 251, 257,…](#source-erdos-problems-catalog-eight-problem-context), [Formal Conjectures compatibility surface for Erdős #1049](#source-formal-conjectures-adapter-problem-1049), [Formal Conjectures coverage boundary across the eight-problem corpus](#source-formal-conjectures-eight-problem-coverage-boundary), [Lean 4 theorem prover](#source-lean4-toolchain-v4-29-1), [mathlib4](#source-mathlib4-pin-5e932f97), [Comparator](#source-software-comparator-statement-checker), [landrun](#source-software-landrun-pinned), [lean4export](#source-software-lean4export-pinned), [A problem about Mahler functions](#source-source-0a6b8c93371570), [Stieltjes moment sequences of polynomials](#source-source-0f46dee5024c66), [Heine's basic transform and a permutation group for q-harmonic series](#source-source-120bebce1ffe8c), [À propos de la série ∑\_n≥1 x^n/(q^n−1)](#source-source-169c3d67838965), [On a permutation group related to ζ(2)](#source-source-176d35cb60b651), [On the non-quadraticity of values of the q-exponential function and…](#source-source-22ef36d016ca81), [Apéry-type approximations and irrationality measures for certain q-…](#source-source-285ee90c8dcd62), [On powers of Stieltjes moment sequences, II](#source-source-2a10c7287879c3), [Refinement of the Chowla–Erdős method and linear independence of ce…](#source-source-317a740451ce03), [A determinant identity for moments of orthogonal polynomials that i…](#source-source-3479bad7869d7c), [Common Factors in Fraction-Free Matrix Decompositions](#source-source-39e4fc546549fd), [Mahler series with multiplicative coefficient sequences](#source-source-3bc828513b4d63), [Lattice paths and branched continued fractions: An infinite sequenc…](#source-source-490b1875016ea4), [On several irrationality problems for Ahmes series](#source-source-4f5fd0d7405e29), [Calculation of Gauss Quadrature Rules](#source-source-53a2a9c4a9e7c2), [NIST Digital Library of Mathematical Functions, Eq. 17.2.37](#source-source-5857f9959e7529), [On an incomplete argument of Erdős on the irrationality of Lambert…](#source-source-5911448b65fdf9), [On arithmetical properties of Lambert series](#source-source-5c72388a6ca10f), [On the irrationality of ∑ 1/(q^n+r)](#source-source-62f9190aeb7d34), [Linear independence results for the values of divisor functions series](#source-source-6accca20cd5e44), [Irrationality of ζ\_q(1) and ζ\_q(2)](#source-source-6c2fbacaba626f), [Arithmetical functions and irrationality of Lambert series](#source-source-6cfe654e650970), [q-Apéry irrationality proofs by q-WZ pairs](#source-source-7935fe19eb831b), [Smith normal form in combinatorics](#source-source-91756d895a28a8), [On the irrationality of certain series](#source-source-96aef073e2ea33), [Zero Coefficients of Rational Power Series and Rational Lambert Series](#source-source-aa2d5c249362f1), [On the irrationality of generalized q-logarithm](#source-source-ae9859af28fdcd), [On the irrationality of certain series: problems and results](#source-source-b378189f39ed98), [Continued-fraction characterization of Stieltjes moment sequences w…](#source-source-c61a0cf3f328ce), [Irrationality proof of certain Lambert series using little q-Jacobi…](#source-source-ca19e504149107), [Little q-Legendre polynomials and irrationality of certain Lambert…](#source-source-cd126799fede94), [Some New Applications of the Subspace Theorem](#source-source-corvaja-zannier-2002-subspace), [FormalConjectures.ErdosProblems.1049](#source-source-d7a43109c64c0c), [Log-convex and Stieltjes moment sequences](#source-source-e535117ac620e6), [Arithmetical investigations of a certain infinite product](#source-source-e553241a97e580), [New irrationality measures for q-logarithms](#source-source-e5f2924d82c59f), [A further improvement of the quantitative Subspace Theorem](#source-source-evertse-ferretti-2013-author2012), [Remarks on irrationality of q-harmonic series](#source-source-f1c687cb5e9ae4), [A determinantal approach to irrationality](#source-source-f67bf9959aa230), [Rational approximations to a q-analogue of π and some other q-series](#source-source-f9fd9214c9ef11), [Christoffel transform and multiple orthogonal polynomials](#source-source-kozhan-vaktnas-2407-13946v1), [Multivariate Rogers-Szego polynomials and flags in finite vector sp…](#source-source-vinroot-2010-multivariate-rogers-szego), [A determinantal approach to irrationality (arXiv v2)](#source-source-zudilin-determinantal-1507-05697v2)
+- **Erdős #243**: [Listing each checked result, with a cheap way to check it](#source-correspondence-001), [Writing for a first-time reader](#source-correspondence-004), [Showing where methods and ideas come from](#source-correspondence-005), [Koizumi pseudo-greedy equivalence and computation pointer](#source-erdos243-kovac-koizumi-pointer), [Rational-tail deterministic pair recurrence and open-boundary reduc…](#source-erdos243-tao-tail-pair-recurrence), [Erdős Problems catalogue pages for problems 68, 243, 249, 251, 257,…](#source-erdos-problems-catalog-eight-problem-context), [Formal Conjectures coverage boundary across the eight-problem corpus](#source-formal-conjectures-eight-problem-coverage-boundary), [Lean 4 theorem prover](#source-lean4-toolchain-v4-29-1), [mathlib4](#source-mathlib4-pin-5e932f97), [Comparator](#source-software-comparator-statement-checker), [landrun](#source-software-landrun-pinned), [lean4export](#source-software-lean4export-pinned), [Irrationality exponents of certain fast converging series of ration…](#source-source-0f03e2dab0b8c2), [Old and New Problems and Results in Combinatorial Number Theory](#source-source-10545f868b3e88), [FormalConjectures.ErdosProblems.243](#source-source-1713b9ad6350bd), [Optimal bounds for an Erdős problem on matching integers to distinc…](#source-source-1b9324cc5f4641), [Apéry-type approximations and irrationality measures for certain q-…](#source-source-285ee90c8dcd62), [Prime-Support Rigidity and Primitive Pseudo-Greedy Dynamics: Partia…](#source-source-2a3af2a360bb15), [A theorem on irrationality of infinite series and applications](#source-source-318b37ba5af2eb), [On the irrationality of certain super-polynomially decaying series](#source-source-41df26fdff66cb), [On several irrationality problems for Ahmes series](#source-source-4f5fd0d7405e29), [On the irrationality of polynomial Cantor series](#source-source-77ddbf43e364f7), [On the irrationality of certain series](#source-source-7dc956ce55b7a0), [Irrationality of the reciprocal sum of doubly exponential sequences](#source-source-86d1745e2d139b), [Chebotarëv and his density theorem](#source-source-abedb02f9939e5), [Irrationality of fast converging series of rational numbers](#source-source-b0b779fff5defe), [On the irrationality of certain series: problems and results](#source-source-b378189f39ed98), [Digital Library of Mathematical Functions, §5.11(iii): Ratios](#source-source-b95bf142df7fb5), [Irrationality Criteria for Series by Erdős and Straus](#source-source-c6e97d89c9fa5f), [On the rationality of Cantor and Ahmes series](#source-source-cbaba7aeeb0f71), [On the irrationality of certain Ahmes series](#source-source-e33bdf934f939f), [Erdős #243: working report](#source-source-ee991edd431d57)
+- **Erdős #249**: [Listing each checked result, with a cheap way to check it](#source-correspondence-001), [Leading the #249 paper with its exact theorem](#source-correspondence-002), [Writing for a first-time reader](#source-correspondence-004), [Showing where methods and ideas come from](#source-correspondence-005), [Möbius-transform identity for the binary totient constant](#source-erdos249-fan-mobius-transform), [Irrationality of the n=2^m sparse totient subseries](#source-erdos249-rafik-sparse-power-two-subseries), [Erdős Problems catalogue pages for problems 68, 243, 249, 251, 257,…](#source-erdos-problems-catalog-eight-problem-context), [Formal Conjectures compatibility surface for Erdős #249](#source-formal-conjectures-adapter-problem-249), [Formal Conjectures coverage boundary across the eight-problem corpus](#source-formal-conjectures-eight-problem-coverage-boundary), [FormalConjectures.ErdosProblems.249](#source-formal-conjectures-statement-problem-249), [Lean 4 theorem prover](#source-lean4-toolchain-v4-29-1), [mathlib4](#source-mathlib4-pin-5e932f97), [Shifted multiplicative-function correlation program named in the #2…](#source-proposed-direct-4e797194f74404), [On correlations of certain multiplicative functions](#source-proposed-direct-595203db1f6891), [Erdős–Gál lacunary-series law of the iterated logarithm (two-part s…](#source-proposed-direct-7f278004ad452a), [Adamczewski–Bugeaud subword-complexity method context](#source-proposed-direct-d4ac203509248c), [Note on normal numbers](#source-proposed-direct-f7f90747134dba), [Comparator](#source-software-comparator-statement-checker), [landrun](#source-software-landrun-pinned), [lean4export](#source-software-lean4export-pinned), [The googol-th bit of the Erdős-Borwein constant](#source-source-0dd4239a1d50da), [On asymptotic distributions of arithmetical functions](#source-source-0e9b7210b29d99), [On the Set of Partial Sums of an Infinite Series](#source-source-0ecb074e507b86), [Answer to An infinite sum based on the mod-parity of Euler's totien…](#source-source-0f61ad0796acdf), [Old and New Problems and Results in Combinatorial Number Theory](#source-source-10545f868b3e88), [Simultaneous inequalities among values of the Euler phi-function](#source-source-11b46a0435368f), [A survey of gcd-sum functions](#source-source-22ce74d28ddb49), [Regular sequences and the joint spectral radius](#source-source-296ff41148fff7), [On a Curious Property of Vulgar Fractions](#source-source-2aa4970cfda278), [Refinement of the Chowla–Erdős method and linear independence of ce…](#source-source-317a740451ce03), [On the law of the iterated logarithm. I](#source-source-39690ee8e07b0c), [Mahler series with multiplicative coefficient sequences](#source-source-3bc828513b4d63), [A dynamical proof of the van der Corput inequality](#source-source-3d300ccd5e4cbb), [On the irrationality of certain super-polynomially decaying series](#source-source-41df26fdff66cb), [(Logarithmic) densities for automatic sequences along primes and sq…](#source-source-4afc43674f7082), [On several irrationality problems for Ahmes series](#source-source-4f5fd0d7405e29), [The ring of k -regular sequences](#source-source-5752bb5009e4de), [On arithmetical properties of Lambert series](#source-source-5c72388a6ca10f), [Integer sequences and periodic points](#source-source-5cac1ad51acb12), [Generating Special Arithmetic Functions by Lambert Series Factoriza…](#source-source-619de19af78c4c), [Modular functions and transcendence questions](#source-source-6346eeeac5036d), [Quantitative correlations and some problems on prime factors of con…](#source-source-685765cbd1ebe2), [Linear independence results for the values of divisor functions series](#source-source-6accca20cd5e44), [How to prove that a sequence is not automatic](#source-source-6b460d123159d9), [Irrationality of ζ\_q(1) and ζ\_q(2)](#source-source-6c2fbacaba626f), [Comment and formula added to OEIS A256936 (revisions 28 and 31)](#source-source-71037224a1dd7c), [(Non)automaticity of number theoretic functions](#source-source-741da55b02c5a9), [On the complexity of algebraic numbers I. Expansions in integer bases](#source-source-7c8ba4ea6eea79), [On the irrationality of certain series](#source-source-7dc956ce55b7a0), [The Lambert series factorization theorem](#source-source-8935df46fb4693), [On the irrationality of certain series](#source-source-96aef073e2ea33), [Introduction to Analytic Number Theory](#source-source-99385343e032a3), [Comment on Erdős Problem #249](#source-source-99c2f3cb190b95), [Ueber eine zahlentheoretische Funktion](#source-source-9db8c3859cdc81), [Multiplicative functions and k-automatic sequences](#source-source-a0d109b4492fba), [On the irrationality of certain series: problems and results](#source-source-b378189f39ed98), [The Lean 4 theorem prover and programming language](#source-source-b6603e42453ff3), [Transcendence of generating functions whose coefficients are multip…](#source-source-b791f5b49e0da6), [Smooth numbers: computational number theory and beyond](#source-source-bc5d16b84e62c7), [The Fourier transform of functions of the greatest common divisor](#source-source-c786f202d47318), [(Non)Automaticity of number theoretic functions (arXiv v3)](#source-source-coons-nonautomaticity-0810-3709v3), [There are infinitely many Carmichael numbers](#source-source-d14cd7f6920a31), [The Lean mathematical library](#source-source-d8b2a7c411bc2d), [On the binary digits of the Erdős-Borwein constant](#source-source-eca9e699590922), [Uber die asymptotische Verteilung reeller Zahlen mod 1](#source-source-eeff3fa685af8a), [Sparse Polynomial-Weighted Expansions](#source-source-f4ad17717c8fd4), [Cyclotomic completions of polynomial rings](#source-source-habiro-2004-cyclotomic)
+- **Erdős #251**: [Listing each checked result, with a cheap way to check it](#source-correspondence-001), [Writing for a first-time reader](#source-correspondence-004), [Showing where methods and ideas come from](#source-correspondence-005), [Schlage-Puchta Theorem 2 literature pointer](#source-erdos251-alfaiz-schlage-puchta-pointer), [Counterexample to Erdős variable-denominator expectation](#source-erdos251-kovac-variable-denominator-counterexample), [Conditional #251 proof under Kuperberg Conjecture 1.3 and Lean form…](#source-erdos251-land-conditional-proof-lean), [Prime-gap summation-by-parts equivalence and conditional route](#source-erdos251-tao-prime-gap-equivalence), [Erdős Problems catalogue pages for problems 68, 243, 249, 251, 257,…](#source-erdos-problems-catalog-eight-problem-context), [Formal Conjectures compatibility surface for Erdős #251](#source-formal-conjectures-adapter-problem-251), [Formal Conjectures coverage boundary across the eight-problem corpus](#source-formal-conjectures-eight-problem-coverage-boundary), [Lean 4 theorem prover](#source-lean4-toolchain-v4-29-1), [mathlib4](#source-mathlib4-pin-5e932f97), [Comparator](#source-software-comparator-statement-checker), [landrun](#source-software-landrun-pinned), [lean4export](#source-software-lean4export-pinned), [Multiplicative Number Theory I: Classical Theory](#source-source-0aca0e5e4e03c0), [On the Erdős problem #251](#source-source-0ec7ca07508557), [Old and New Problems and Results in Combinatorial Number Theory](#source-source-10545f868b3e88), [Beweis eines Satzes von Tschebyschef](#source-source-20c650f8cf3744), [Erdős Problems discussion thread #251](#source-source-21738452dcb95c), [On the largest prime factors of n and n+1](#source-source-27575f46a101c1), [Multigeometric sequences and Cantorvals](#source-source-2b0038d2c239f5), [Sur certaines séries à valeur irrationnelle](#source-source-2ee394177d0f38), [On the irrationality of certain super-polynomially decaying series](#source-source-41df26fdff66cb), [Sums of singular series along arithmetic progressions and with smoo…](#source-source-450aed97015b8f), [(Logarithmic) densities for automatic sequences along primes and sq…](#source-source-4afc43674f7082), [On several irrationality problems for Ahmes series](#source-source-4f5fd0d7405e29), [Continued Fractions](#source-source-5ee5f85bd606ee), [Subsum sets: intervals, Cantor sets, and Cantorvals](#source-source-63a234b13e4427), [Small gaps between primes](#source-source-6564b203677735), [On Kakeya Conditions for Achievement Sets](#source-source-6d8837bbc174ce), [Achievement sets – current results and open problems](#source-source-77333436a9e579), [Achievable Cantorvals almost without reversed Kakeya conditions](#source-source-779915b8355ac1), [On the irrationality of certain series](#source-source-7dc956ce55b7a0), [Sums of singular series with large sets and the tail of the distrib…](#source-source-811205223e0788), [Lacunary sequences whose reciprocal sums represent all rational num…](#source-source-892c567092d6f3), [Variants of the Selberg sieve, and bounded intervals containing man…](#source-source-91aa380a16dba9), [Local gap statistics, telescoping, and normality](#source-source-9a38b2d8b0dada), [Ford circles, continued fractions, and best approximation of the se…](#source-source-9b23918ce33c38), [FormalConjectures.ErdosProblems.251](#source-source-b202a3f125817d), [On the irrationality of certain series: problems and results](#source-source-b378189f39ed98), [More on Kakeya Conditions for Achievement Sets](#source-source-b46f8a083b4271), [The Lean 4 theorem prover and programming language](#source-source-b6603e42453ff3), [The difference between consecutive primes, II](#source-source-baker-harman-pintz-2001), [Bounded gaps between primes](#source-source-c32d672658410d), [The Poisson Tail Conjecture for primes in short intervals](#source-source-c9b987093aaf4e), [On a new condition implying that an achievement set is a Cantorval…](#source-source-ce27d27dd5ec77), [Long gaps between primes](#source-source-d3995db1508bc9), [The irrationality of some number theoretical series](#source-source-d471eacdba0f87), [The Lean mathematical library](#source-source-d8b2a7c411bc2d), [Partitions with prescribed sum of reciprocals: asymptotic bounds](#source-source-dbbc7de069eeee), [On the irrationality of certain Ahmes series](#source-source-e33bdf934f939f), [A conditional proof of the irrationality of ∑\_n≥1 p\_n 2^−n under a…](#source-source-f42f9e04743a4c), [Generalized bases for the real numbers](#source-source-fb4194cadb150b)
+- **Erdős #257**: [Listing each checked result, with a cheap way to check it](#source-correspondence-001), [Writing for a first-time reader](#source-correspondence-004), [Showing where methods and ideas come from](#source-correspondence-005), [Earlier variants, interval-filling negative variant, and fat-Cantor…](#source-erdos257-kovac-context-bundle), [Older Erdős and Borwein attribution for even/odd supports](#source-erdos257-kovac-older-special-case-attribution), [Period-two Lambert theorem applied to even and odd supports](#source-erdos257-tang-tachiya-period-two), [Erdős Problems catalogue pages for problems 68, 243, 249, 251, 257,…](#source-erdos-problems-catalog-eight-problem-context), [Formal Conjectures compatibility surface for Erdős #257](#source-formal-conjectures-adapter-problem-257), [Formal Conjectures coverage boundary across the eight-problem corpus](#source-formal-conjectures-eight-problem-coverage-boundary), [Lean 4 theorem prover](#source-lean4-toolchain-v4-29-1), [mathlib4](#source-mathlib4-pin-5e932f97), [Diophantine Problems for q-Zeta Values](#source-proposed-direct-0ef4f73f93ceed), [Refinements of Erdős's irrationality criterion for certain sparse i…](#source-proposed-direct-329775d58148a9), [Shifted multiplicative-function correlation program named in the #2…](#source-proposed-direct-4e797194f74404), [Divisor-bounded multiplicative functions in short intervals](#source-proposed-direct-6c67db53ef5f8c), [The critical-window profile for d\_k in short intervals](#source-proposed-direct-6f90767d1d01dd), [Comparator](#source-software-comparator-statement-checker), [landrun](#source-software-landrun-pinned), [lean4export](#source-software-lean4export-pinned), [The googol-th bit of the Erdős-Borwein constant](#source-source-0dd4239a1d50da), [On the Set of Partial Sums of an Infinite Series](#source-source-0ecb074e507b86), [Old and New Problems and Results in Combinatorial Number Theory](#source-source-10545f868b3e88), [Heine's basic transform and a permutation group for q-harmonic series](#source-source-120bebce1ffe8c), [On a Curious Property of Vulgar Fractions](#source-source-2aa4970cfda278), [Refinement of the Chowla–Erdős method and linear independence of ce…](#source-source-317a740451ce03), [Mahler series with multiplicative coefficient sequences](#source-source-3bc828513b4d63), [Some problems and results on the irrationality of the sum of infini…](#source-source-43a734be32736f), [FormalConjectures.ErdosProblems.257](#source-source-4bb571f8383293), [On several irrationality problems for Ahmes series](#source-source-4f5fd0d7405e29), [The ring of k -regular sequences](#source-source-5752bb5009e4de), [On arithmetical properties of Lambert series](#source-source-5c72388a6ca10f), [Generating Special Arithmetic Functions by Lambert Series Factoriza…](#source-source-619de19af78c4c), [Modular functions and transcendence questions](#source-source-6346eeeac5036d), [Subsum sets: intervals, Cantor sets, and Cantorvals](#source-source-63a234b13e4427), [Quantitative correlations and some problems on prime factors of con…](#source-source-685765cbd1ebe2), [Über beliebige Teilsummen absolut konvergenter Reihen](#source-source-691e9cc3c46273), [Linear independence results for the values of divisor functions series](#source-source-6accca20cd5e44), [Irrationality of ζ\_q(1) and ζ\_q(2)](#source-source-6c2fbacaba626f), [(Non)automaticity of number theoretic functions](#source-source-741da55b02c5a9), [Achievement sets – current results and open problems](#source-source-77333436a9e579), [On the irrationality of certain series](#source-source-7dc956ce55b7a0), [Lacunary sequences whose reciprocal sums represent all rational num…](#source-source-892c567092d6f3), [The Lambert series factorization theorem](#source-source-8935df46fb4693), [On the irrationality of certain series](#source-source-96aef073e2ea33), [Introduction to Analytic Number Theory](#source-source-99385343e032a3), [Irrationality of Lambert series associated with a periodic sequence](#source-source-9ce84321e202f1), [Ueber eine zahlentheoretische Funktion](#source-source-9db8c3859cdc81), [On the irrationality of certain series: problems and results](#source-source-b378189f39ed98), [The Lean 4 theorem prover and programming language](#source-source-b6603e42453ff3), [Irrationality of rapidly converging series: a problem of Erdős and…](#source-source-c742deb980b53c), [Little q-Legendre polynomials and irrationality of certain Lambert…](#source-source-cd126799fede94), [Some New Applications of the Subspace Theorem](#source-source-corvaja-zannier-2002-subspace), [There are infinitely many Carmichael numbers](#source-source-d14cd7f6920a31), [The Lean mathematical library](#source-source-d8b2a7c411bc2d), [On the binary digits of the Erdős-Borwein constant](#source-source-eca9e699590922), [The logarithmic endpoint fails under arithmetic sampling](#source-source-endpoint2026-logarithmic-repair), [A further improvement of the quantitative Subspace Theorem](#source-source-evertse-ferretti-2013-author2012), [Sparse Polynomial-Weighted Expansions](#source-source-f4ad17717c8fd4), [Linear independence of certain Lambert series](#source-source-f6ee6890db85d9)
+- **Erdős #269**: [Listing each checked result, with a cheap way to check it](#source-correspondence-001), [Writing for a first-time reader](#source-correspondence-004), [Showing where methods and ideas come from](#source-correspondence-005), [Infinite-prime-set irrationality proof and correction chain](#source-erdos269-fan-infinite-p-proof-repair), [Two-prime Hecke–Mahler factorisation and transcendence disclosure](#source-erdos269-fan-two-prime-disclosure), [Erdős Problems catalogue pages for problems 68, 243, 249, 251, 257,…](#source-erdos-problems-catalog-eight-problem-context), [Formal Conjectures coverage boundary across the eight-problem corpus](#source-formal-conjectures-eight-problem-coverage-boundary), [Lean 4 theorem prover](#source-lean4-toolchain-v4-29-1), [mathlib4](#source-mathlib4-pin-5e932f97), [Comparator](#source-software-comparator-statement-checker), [landrun](#source-software-landrun-pinned), [lean4export](#source-software-lean4export-pinned), [The Prime Number Theorem](#source-source-06457731c60720), [Old and New Problems and Results in Combinatorial Number Theory](#source-source-10545f868b3e88), [On the irrationality of Cantor and Ahmes series](#source-source-1a7535a5e17a8c), [Comment on Erdős Problem #269](#source-source-21cdeefea4c8ec), [Letter to the Editor](#source-source-22aba734190d65), [Transcendence of Hecke–Mahler Series](#source-source-29bdada58b414a), [On several irrationality problems for Ahmes series](#source-source-4f5fd0d7405e29), [Sur le développement en fraction continue d'un nombre choisi au hasard](#source-source-5270112e32002d), [FormalConjectures.ErdosProblems.269](#source-source-573a79feb36d47), [Continued Fractions](#source-source-5ee5f85bd606ee), [On the set of points of convergence of a lacunary trigonometric ser…](#source-source-62ee65065db497), [Strongly complete sets and a conjecture of Erdős](#source-source-71fb76f6e1363b), [On the irrationality of polynomial Cantor series](#source-source-77ddbf43e364f7), [On the number of positive integers ≤ x and free of prime factors \> y](#source-source-78565c625f0ea3), [On Transcendence of Numbers Related to Sturmian and Arnoux-Rauzy Words](#source-source-7a9657920d576b), [On the complexity of algebraic numbers I. Expansions in integer bases](#source-source-7c8ba4ea6eea79), [On the irrationality of certain series](#source-source-7dc956ce55b7a0), [Smith normal form in combinatorics](#source-source-91756d895a28a8), [Introduction to Analytic Number Theory](#source-source-99385343e032a3), [On the arithmetic properties of complex values of Hecke-Mahler seri…](#source-source-9c2776b87b1155), [On integers generated by a finite number of fixed primes](#source-source-ab6d6d6b890f57), [On the irrationality of certain series: problems and results](#source-source-b378189f39ed98), [Transcendence and continued fraction expansion of values of Hecke–M…](#source-source-b9d7160919621f), [Sequences of integers generated by two fixed primes](#source-source-bbb68df5b83380), [Irrationality Criteria for Series by Erdős and Straus](#source-source-c6e97d89c9fa5f), [A new proof of Nishioka's theorem in Mahler's method](#source-source-e7f2f796dbcdb6), [Mahler's method in several variables and finite automata](#source-source-eaeb7980382323), [Arithmetic properties of certain functions in several variables III](#source-source-fcf73a15ff9c7c)
+- **Erdős #68**: [Listing each checked result, with a cheap way to check it](#source-correspondence-001), [Writing for a first-time reader](#source-correspondence-004), [Showing where methods and ideas come from](#source-correspondence-005), [Erdős Problems catalogue pages for problems 68, 243, 249, 251, 257,…](#source-erdos-problems-catalog-eight-problem-context), [Formal Conjectures compatibility surface for Erdős #68](#source-formal-conjectures-adapter-problem-68), [Formal Conjectures coverage boundary across the eight-problem corpus](#source-formal-conjectures-eight-problem-coverage-boundary), [FormalConjectures.ErdosProblems.68](#source-formal-conjectures-statement-problem-68), [Lean 4 theorem prover](#source-lean4-toolchain-v4-29-1), [mathlib4](#source-mathlib4-pin-5e932f97), [Comparator](#source-software-comparator-statement-checker), [landrun](#source-software-landrun-pinned), [lean4export](#source-software-lean4export-pinned), [On the sequence n! mod p](#source-source-02fc1f0e6f0418), [Lower bounds for some value sets over finite fields: incidence geom…](#source-source-04603f785c9e7f), [Irrationality of rapidly converging series: a problem of Erdős and…](#source-source-0f1a3708d62674), [An improved point-line incidence bound over arbitrary fields](#source-source-29cbac966b8b76), [On equal products of consecutive integers](#source-source-3068a3586a5e8b), [Character sums and congruences with n!](#source-source-34b520c561ee3c), [Factorial residues modulo a prime: beyond the square-root bound](#source-source-365c2b5cf46ebe), [On the greatest and least prime factors of n!+1](#source-source-3fb9e4907eec24), [Some problems and results on the irrationality of the sum of infini…](#source-source-43a734be32736f), [On the irrationality of certain 2-adic zeta values](#source-source-5122572a1e7312), [On the largest prime divisor of n!+1](#source-source-57adfd0cdcd8c2), [Prime divisors of shifted factorials](#source-source-5f85fb0bd75b8b), [A geometric proof that e is irrational and a new measure of its irr…](#source-source-6a5bf83735fdef), [Distribution of factorials modulo p](#source-source-724fef812699b7), [The product of consecutive integers is never a power](#source-source-7d923cace5602a), [Über die einfachen Zahlensysteme](#source-source-8ac37c92429a46), [Irrationality of certain infinite series II](#source-source-a87fa25f28c7b0), [Irrationality of fast converging series of rational numbers](#source-source-b0b779fff5defe), [On the irrationality of certain series: problems and results](#source-source-b378189f39ed98), [On the irrationality of certain p-adic zeta values](#source-source-b3b7518e07e159), [On the Value Set of n! Modulo a Prime](#source-source-b3decc410aa4b5), [On Equal Products of Consecutive Integers](#source-source-b6d577df139d85), [On the irrationality of factorial series](#source-source-c835bc94aad831), [On the greatest and least prime factors of n!+1 , II](#source-source-d1710db60eae06), [Representations of Real Numbers by Infinite Series](#source-source-e13ecb7c94852a), [On the largest prime factor of n!+2^n−1](#source-source-e66e0693f05f0a), [Rational numbers with odd greedy expansion of fixed length](#source-source-ef6233b59b95cb), [Additive congruences with factorials modulo a prime](#source-source-f1a42898642b5f), [NIST Digital Library of Mathematical Functions, §1.12(ii) Convergents](#source-source-f213b302ada43a), [Distribution of harmonic sums and Bernoulli polynomials modulo a prime](#source-source-fb64da05c3acc7)
 
 <details>
 <summary>Browse alphabetically by author or public identity</summary>
@@ -49,20 +51,36 @@ Implemented advice from private correspondence. The [credit ledger](CREDIT_LEDGE
 - **A. Baanen**: [Growing Mathlib: Maintenance of a Large Scale Mathematical Library](#source-source-07d2ca69e611b7)
 - **A. Eldar**: [Comment and formula added to OEIS A256936 (revisions 28 and 31)](#source-source-71037224a1dd7c)
 - **A. Eremenko**: [On the shapes of rational lemniscates](#source-bishop-eremenko-lazebnik-2025-shapes-of-rational-lemniscates), [A Markov-type inequality for arbitrary plane continua](#source-eremenko-2007-markov-type-inequality-plane-continua), [An extremal problem for polynomials](#source-eremenko-lempert-1994-extremal-problem-for-polynomials), [Comb functions](#source-eremenko-yuditskii-2012-comb-functions), [On the length of lemniscates](#source-source-7f1f2a3fd9238c)
+- **A. Gandhi**: [Automatically Generalizing Proofs and Statements](#source-source-fe8c2e1e6eb64c)
 - **A. Granville**: [Smooth numbers: computational number theory and beyond](#source-source-bc5d16b84e62c7), [There are infinitely many Carmichael numbers](#source-source-d14cd7f6920a31)
 - **A. Gu**: [LeanDojo: Theorem Proving with Retrieval-Augmented Language Models](#source-source-e2bdd690015cad)
+- **A. Gurfinkel**: [Beyond Vacuity: Towards the Strongest Passing Formula](#source-source-6812fb1b00b532)
+- **A. H. From**: [Aesop: White-Box Best-First Proof Search for Lean](#source-source-c9ce62cc55b06f)
+- **A. Hayat**: [Learning to Discover Interesting Mathematics](#source-source-4efc338160443b)
 - **A. Hildebrand**: [On the number of positive integers ≤ x and free of prime factors \> y](#source-source-78565c625f0ea3)
 - **A. J. van der Poorten**: [Integer sequences and periodic points](#source-source-5cac1ad51acb12), [Arithmetic properties of certain functions in several variables III](#source-source-fcf73a15ff9c7c)
 - **A. Koutsoukou-Argyraki**: [Irrationality Criteria for Series by Erdős and Straus](#source-source-c6e97d89c9fa5f)
 - **A. M. Swope**: [LeanDojo: Theorem Proving with Retrieval-Augmented Language Models](#source-source-e2bdd690015cad)
-- **A. Sannai**: [Lean Atlas: An Integrated Proof Environment for Scalable Human--AI…](#source-source-ae32306341559a)
+- **A. Mokhov**: [Build Systems à la Carte](#source-source-6c41fab4297c9c)
+- **A. Novikov**: [AlphaEvolve: A coding agent for scientific and algorithmic discovery](#source-source-e0221a4f97a3c1)
+- **A. Oppenheim**: [Criteria for irrationality of certain classes of numbers II](#source-source-0d54f419b9d01b)
+- **A. Q. Jiang**: [Premise Selection for a Lean Hammer](#source-source-b3b40be69340bc)
+- **A. R. Tadipatri**: [Automatically Generalizing Proofs and Statements](#source-source-fe8c2e1e6eb64c)
+- **A. Rahm**: [The distribution of rational numbers on Cantor's middle thirds set](#source-source-d80aa76c601178)
+- **A. Rammal**: [Learning to Discover Interesting Mathematics](#source-source-4efc338160443b)
+- **A. Sannai**: [Lean Atlas: An Integrated Proof Environment for Scalable Human–AI C…](#source-source-ae32306341559a)
+- **A. Schneidman**: [AXLE: A Cloud Infrastructure for Lean 4 Theorem Proving Utilities](#source-source-45decc279950cf)
 - **A. Ya. Khinchin**: [Continued Fractions](#source-source-5ee5f85bd606ee)
 - **A. Yokoi**: [Apéry-type approximations and irrationality measures for certain q-…](#source-source-285ee90c8dcd62)
+- **A. Z. Wagner**: [Mathematical exploration and discovery at scale](#source-source-cf8c98c4d1c037)
+- **ACM SIGPLAN**: [Empirical Evaluation Guidelines](#source-source-33b0314314ddbc)
 - **Aaroosh Ramadorai**: [End-to-End Testing of Open-Source Hardware Documentation Developed…](#source-arxiv-2309-05942)
 - **Abbas Mehrabian**: [AlphaEvolve: A coding agent for scientific and algorithmic discovery](#source-source-cf94fac28d0ff1)
+- **Abhishek Jha**: [The Poisson Tail Conjecture for primes in short intervals](#source-source-c9b987093aaf4e)
 - **Abigail See**: [AlphaEvolve: A coding agent for scientific and algorithmic discovery](#source-source-cf94fac28d0ff1)
 - **Adam Zsolt Wagner**: [AlphaEvolve: A coding agent for scientific and algorithmic discovery](#source-source-cf94fac28d0ff1)
 - **Advisory Group on Mathematics and Artificial Intelligence at IAS**: [Responsible Release of AI-Generated Mathematics](#source-agmai-20260929-responsible-release)
+- **Aidong Zhang**: [ProofEvolve: Neuro-Symbolic Evolution for Formal Automated Theorem…](#source-source-f20325c949d904)
 - **Alain Togbé**: [Sequences of integers generated by two fixed primes](#source-source-bbb68df5b83380)
 - **Alan D. Sokal**: [Lattice paths and branched continued fractions: An infinite sequenc…](#source-source-490b1875016ea4), [Continued-fraction characterization of Stieltjes moment sequences w…](#source-source-c61a0cf3f328ce)
 - **Alessandro Languasco**: [Sequences of integers generated by two fixed primes](#source-source-bbb68df5b83380)
@@ -72,29 +90,38 @@ Implemented advice from private correspondence. The [credit ledger](CREDIT_LEDGE
 - **Alexander Fryntov**: [New estimates for the length of the Erdős–Herzog–Piranian lemniscate](#source-source-a67b8dc01791ec)
 - **Alexander Novikov**: [AlphaEvolve: A coding agent for scientific and algorithmic discovery](#source-source-cf94fac28d0ff1)
 - **Alexander P. Mangerel**: [Divisor-bounded multiplicative functions in short intervals](#source-proposed-direct-6c67db53ef5f8c)
-- **Alfaiz**: [Schlage-Puchta Theorem 2 literature pointer](#source-erdos251-alfaiz-schlage-puchta-pointer)
+- **Alexandr Grebennikov**: [On the sequence n! mod p](#source-source-02fc1f0e6f0418)
+- **Alfaiz**: [Schlage-Puchta Theorem 2 literature pointer](#source-erdos251-alfaiz-schlage-puchta-pointer), [Missing Erdős problems](#source-source-f3d030960b94d4)
+- **Aliaksei Semchankau**: [On the sequence n! mod p](#source-source-02fc1f0e6f0418)
+- **Aliaksei Vasilevskii**: [On the sequence n! mod p](#source-source-02fc1f0e6f0418)
 - **Amal Gueroudji**: [LLM Agents for Interactive Workflow Provenance: Reference Architect…](#source-arxiv-2509-13978)
 - **Amy Xin**: [EurekAgent: Agent Environment Engineering is All You Need for Auton…](#source-source-cc823e517ced81)
 - **Andrew Scoones**: [On Transcendence of Numbers Related to Sturmian and Arnoux-Rauzy Words](#source-source-7a9657920d576b)
+- **Antoine Bosselut**: [Reliable Evaluation and Benchmarks for Statement Autoformalization](#source-source-96cb986969fc48)
 - **Antonio Lobaccaro**: [End-to-End Testing of Open-Source Hardware Documentation Developed…](#source-arxiv-2309-05942)
+- **Arsenii Sagdeev**: [On the sequence n! mod p](#source-source-02fc1f0e6f0418)
 - **Artemii Remizov**: [TheoremGraph: Bridging Formal and Informal Mathematics](#source-source-45ae653f011748)
 - **Arthur H. Copeland**: [Note on normal numbers](#source-proposed-direct-f7f90747134dba)
+- **Artur Bartoszewicz**: [Multigeometric sequences and Cantorvals](#source-source-2b0038d2c239f5)
 - **Aruna Das**: [End-to-End Testing of Open-Source Hardware Documentation Developed…](#source-arxiv-2309-05942)
 - **Asgar Jamneshan**: [A Blueprint for the Formalization of Carleson's Theorem on Converge…](#source-source-984f2b78d220ea)
-- **Association for Computing Machinery**: [Association for Computing Machinery](#source-source-ce5fddc99aff3f)
-- **B. Adamczewski**: [A problem about Mahler functions](#source-source-0a6b8c93371570), [On the complexity of algebraic numbers I. Expansions in integer bases](#source-source-7c8ba4ea6eea79)
+- **Association for Computing Machinery**: [Artifact Review and Badging—Current](#source-source-ce5fddc99aff3f)
+- **Auguste Poiroux**: [Reliable Evaluation and Benchmarks for Statement Autoformalization](#source-source-96cb986969fc48)
+- **B. Adamczewski**: [A problem about Mahler functions](#source-source-0a6b8c93371570), [A height gap theorem for coefficients of Mahler functions](#source-source-1b8aee594b555a), [Méthode de Mahler : relations linéaires, transcendance et applicati…](#source-source-68d81fb9613352), [On the complexity of algebraic numbers I. Expansions in integer bases](#source-source-7c8ba4ea6eea79)
+- **B. Georgiev**: [Mathematical exploration and discovery at scale](#source-source-cf8c98c4d1c037)
 - **B. Gin-ge Chen**: [Growing Mathlib: Maintenance of a Large Scale Mathematical Library](#source-source-07d2ca69e611b7)
 - **B. Green**: [Long gaps between primes](#source-source-d3995db1508bc9)
+- **B. Mance**: [Normality preserving operations for Cantor series expansions and as…](#source-source-fc92202f8ec891)
 - **B. Miranda**: [Pantograph: A Machine-to-Machine Interaction Interface for Advanced…](#source-source-9a04cbea11fd0b)
-- **B. Yanahama**: [Lean Atlas: An Integrated Proof Environment for Scalable Human--AI…](#source-source-ae32306341559a)
-- **Banks, William D.**: [On the Value Set of $n!$ Modulo a Prime](#source-source-b3decc410aa4b5)
+- **B. Weiss**: [The distribution of rational numbers on Cantor's middle thirds set](#source-source-d80aa76c601178)
+- **B. Yanahama**: [Lean Atlas: An Integrated Proof Environment for Scalable Human–AI C…](#source-source-ae32306341559a)
 - **Bao-Xuan Zhu**: [Lattice paths and branched continued fractions: An infinite sequenc…](#source-source-490b1875016ea4), [Log-convex and Stieltjes moment sequences](#source-source-e535117ac620e6)
-- **Barrodale, I.**: [On Equal Products of Consecutive Integers](#source-source-b6d577df139d85)
-- **Bartoszewicz, Artur**: [Multigeometric sequences and Cantorvals](#source-source-2b0038d2c239f5)
 - **Ben Antieau**: [Fast math/slow math](#source-ai-essay-antieau-20260915-fast-math-slow-math)
 - **Benjamin Burns**: [ScienceAgentBench: Toward Rigorous Assessment of Language Agents fo…](#source-source-05a4915b796443)
+- **Benjamin Coleman**: [Dream-RSI: Recursive Self-Improvement through Evolving Worlds](#source-source-e937c5aa7e1b76)
 - **Bhawesh Mishra**: [Polynomials consisting of quadratic factors with roots modulo any p…](#source-source-mishra-quadratic-2102-08379)
 - **Bin Dong**: [LeanSearch v2: Global Premise Retrieval for Lean 4 Theorem Proving](#source-source-82459d858b7d75)
+- **Bohan Liu**: [ProofEvolve: Neuro-Symbolic Evolution for Formal Automated Theorem…](#source-source-f20325c949d904)
 - **Boris Adamczewski**: [Adamczewski–Bugeaud subword-complexity method context](#source-proposed-direct-d4ac203509248c), [(Logarithmic) densities for automatic sequences along primes and sq…](#source-source-4afc43674f7082), [A new proof of Nishioka's theorem in Mahler's method](#source-source-e7f2f796dbcdb6), [Mahler's method in several variables and finite automata](#source-source-eaeb7980382323)
 - **Borislav Kozlovskii**: [AlphaEvolve: A coding agent for scientific and algorithmic discovery](#source-source-cf94fac28d0ff1)
 - **Boshi Wang**: [ScienceAgentBench: Toward Rigorous Assessment of Language Agents fo…](#source-source-05a4915b796443)
@@ -102,11 +129,14 @@ Implemented advice from private correspondence. The [credit ledger](CREDIT_LEDGE
 - **Brian Etz**: [LLM Agents for Interactive Workflow Provenance: Reference Architect…](#source-arxiv-2509-13978)
 - **Bryan Dai**: [LeanSearch v2: Global Premise Retrieval for Lean 4 Theorem Proving](#source-source-82459d858b7d75)
 - **Bryna Kra**: [Deep theorems were scarce and difficult and so became an effective…](#source-ai-essay-kra-20260913-deep-theorems)
+- **Buyun Zhang**: [ProofEvolve: Neuro-Symbolic Evolution for Formal Automated Theorem…](#source-source-f20325c949d904)
 - **C. Badea**: [A theorem on irrationality of infinite series and applications](#source-source-318b37ba5af2eb)
 - **C. Barrett**: [Pantograph: A Machine-to-Machine Interaction Interface for Advanced…](#source-source-9a04cbea11fd0b)
+- **C. Cummins**: [AXLE: A Cloud Infrastructure for Lean 4 Theorem Proving Utilities](#source-source-45decc279950cf)
 - **C. E. Brown**: [Agent Hunt: Bounty Based Collaborative Autoformalization With LLM A…](#source-source-ae5cc4ddfa6af5)
+- **C. Faverjon**: [Méthode de Mahler : relations linéaires, transcendance et applicati…](#source-source-68d81fb9613352)
 - **C. J. Bishop**: [On the shapes of rational lemniscates](#source-bishop-eremenko-lazebnik-2025-shapes-of-rational-lemniscates)
-- **C. Kaliszyk**: [Agent Hunt: Bounty Based Collaborative Autoformalization With LLM A…](#source-source-ae5cc4ddfa6af5)
+- **C. Kaliszyk**: [Agent Hunt: Bounty Based Collaborative Autoformalization With LLM A…](#source-source-ae5cc4ddfa6af5), [Lemma Mining over HOL Light](#source-source-b18c409a55723e)
 - **C. Krattenthaler**: [On the non-quadraticity of values of the q-exponential function and…](#source-source-22ef36d016ca81)
 - **C. L. Stewart**: [On the greatest and least prime factors of n!+1 , II](#source-source-d1710db60eae06)
 - **C. Lupu**: [On the irrationality of certain p-adic zeta values](#source-source-b3b7518e07e159)
@@ -118,6 +148,8 @@ Implemented advice from private correspondence. The [credit ledger](CREDIT_LEDGE
 - **Cameron L. Stewart**: [On the greatest and least prime factors of n!+1](#source-source-3fb9e4907eec24)
 - **Carl Schildkraut**: [Semi-Autonomous Mathematics Discovery with Gemini: A Case Study on…](#source-source-79afab8abaf9d5)
 - **Carlo Pagano**: [Semi-Autonomous Mathematics Discovery with Gemini: A Case Study on…](#source-source-79afab8abaf9d5), [Towards Autonomous Mathematics Research](#source-source-a028dc6bb31c0c)
+- **Chao Peng**: [Evaluating Repository-level Software Documentation via Question Ans…](#source-source-14b2e582d752c2)
+- **Chaoyi Zhang**: [Dream-RSI: Recursive Self-Improvement through Evolving Worlds](#source-source-e937c5aa7e1b76)
 - **ChatGPT 5.4 Pro (orchestrated by V. Kovač)**: [On the Erdős problem #251](#source-source-0ec7ca07508557)
 - **Chen Wei**: [ScienceAgentBench: Toward Rigorous Assessment of Language Agents fo…](#source-source-05a4915b796443)
 - **Cheng-Chiang Tsai**: [Semi-Autonomous Mathematics Discovery with Gemini: A Case Study on…](#source-source-79afab8abaf9d5)
@@ -127,15 +159,24 @@ Implemented advice from private correspondence. The [credit ledger](CREDIT_LEDGE
 - **Christian Krattenthaler**: [A determinant identity for moments of orthogonal polynomials that i…](#source-source-3479bad7869d7c)
 - **Christoph Koutschan**: [Common Factors in Fraction-Free Matrix Decompositions](#source-source-39e4fc546549fd)
 - **Christoph Thiele**: [A Blueprint for the Formalization of Carleson's Theorem on Converge…](#source-source-984f2b78d220ea)
-- **Chuqin Geng**: [DreamProver: Evolving Transferable Lemma Libraries via a Wake--Slee…](#source-source-7d871bf2920e53)
+- **Chuanyang Zheng**: [LEGO-Prover: Neural Theorem Proving with Growing Libraries](#source-source-cf807e61b6b4f4)
+- **Chuqin Geng**: [DreamProver: Evolving Transferable Lemma Libraries via a Wake–Sleep…](#source-source-7d871bf2920e53)
 - **Clemens Müllner**: [(Logarithmic) densities for automatic sequences along primes and sq…](#source-source-4afc43674f7082)
 - **Colin Faverjon**: [A new proof of Nishioka's theorem in Mahler's method](#source-source-e7f2f796dbcdb6), [Mahler's method in several variables and finite automata](#source-source-eaeb7980382323)
-- **D. Duverney**: [À propos de la série ∑\_{n≥1} x^n/(q^n−1)](#source-source-169c3d67838965), [Refinement of the Chowla--Erdős method and linear independence of c…](#source-source-317a740451ce03), [Irrationality of fast converging series of rational numbers](#source-source-b0b779fff5defe)
+- **Cuiyun Gao**: [Evaluating Repository-level Software Documentation via Question Ans…](#source-source-14b2e582d752c2)
+- **D. Airey**: [Normality preserving operations for Cantor series expansions and as…](#source-source-fc92202f8ec891)
+- **D. Boes**: [Fat, symmetric, irrational Cantor sets](#source-source-74087f5e79a69a)
+- **D. D. Redell**: [How (and How Not) to Write a Good Systems Paper](#source-source-bf5ebb307dd372)
+- **D. Duverney**: [À propos de la série ∑\_n≥1 x^n/(q^n−1)](#source-source-169c3d67838965), [Refinement of the Chowla–Erdős method and linear independence of ce…](#source-source-317a740451ce03), [Irrationality of fast converging series of rational numbers](#source-source-b0b779fff5defe)
+- **D. E. Knuth**: [Mathematical Writing](#source-source-0d542d42faf319), [Mathematical Writing](#source-source-ef55c25dbdc2d0)
+- **D. H. J. Polymath**: [Variants of the Selberg sieve, and bounded intervals containing man…](#source-source-91aa380a16dba9)
 - **D. Khavinson**: [Two-dimensional shapes and lemniscates](#source-source-9e37cc2fe7db3e)
 - **D. Kozen**: [Computing the Newtonian Graph](#source-source-92b0dfb67f5009)
+- **D. Ma**: [OProver: A Unified Framework for Agentic Formal Theorem Proving](#source-source-36440461bad033)
 - **D. P. Anderson**: [BOINC: A Platform for Volunteer Computing](#source-source-967c9acd787096)
+- **D. Rosén**: [Hipster: Integrating Theory Exploration in a Proof Assistant](#source-source-3ded5ae0536c5f)
 - **D. Schmersau**: [Irrationality of certain infinite series II](#source-source-a87fa25f28c7b0)
-- **D. Smertnig**: [Mahler series with multiplicative coefficient sequences](#source-source-3bc828513b4d63)
+- **D. Smertnig**: [A height gap theorem for coefficients of Mahler functions](#source-source-1b8aee594b555a), [Mahler series with multiplicative coefficient sequences](#source-source-3bc828513b4d63)
 - **D. Testa**: [Growing Mathlib: Maintenance of a Large Scale Mathematical Library](#source-source-07d2ca69e611b7)
 - **D. Zeilberger**: [q-Apéry irrationality proofs by q-WZ pairs](#source-source-7935fe19eb831b)
 - **Daniel Adu-Ampratwum**: [ScienceAgentBench: Toward Rigorous Assessment of Language Agents fo…](#source-source-05a4915b796443)
@@ -146,41 +187,51 @@ Implemented advice from private correspondence. The [credit ledger](CREDIT_LEDGE
 - **David J. Jeffrey**: [Common Factors in Fraction-Free Matrix Decompositions](#source-source-39e4fc546549fd)
 - **David Tischler**: [Critical points and values of complex polynomials](#source-source-7ac8693558c1a2)
 - **Dawsen Hwang**: [Semi-Autonomous Mathematics Discovery with Gemini: A Case Study on…](#source-source-79afab8abaf9d5), [Towards Autonomous Mathematics Research](#source-source-a028dc6bb31c0c)
+- **Dayu Yang**: [DocAgent: A Multi-Agent System for Automated Code Documentation Gen…](#source-source-1c48e6183cdd06)
 - **Demis Hassabis**: [Towards Autonomous Mathematics Research](#source-source-a028dc6bb31c0c)
+- **Di Bai**: [Dream-RSI: Recursive Self-Improvement through Evolving Worlds](#source-source-e937c5aa7e1b76)
 - **Dimitris Koukoulopoulos**: [A CERN for AI-assisted science?](#source-ai-essay-koukoulopoulos-20260917-cern-for-ai-science)
 - **Dongruo An**: [Advancing Mathematical Research via Human-AI Interactive Theorem Pr…](#source-source-6ade6fbcd34d79)
 - **E. Crane**: [The area of polynomial images and preimages](#source-source-40bc4064b92788)
 - **E. G. Straus**: [On the irrationality of certain Ahmes series](#source-source-e33bdf934f939f)
+- **E. H. el Abdalaoui**: [A dynamical point of view on the set of B-free integers](#source-source-3a21869f62279f)
 - **Earl T. Barr**: [The Oracle Problem in Software Testing: A Survey](#source-source-5b5c84cd208fff)
 - **Edward Crane**: [A bound for Smale's mean value conjecture for complex polynomials](#source-source-818467bc1cb170)
 - **Edward van de Meent**: [A Blueprint for the Formalization of Carleson's Theorem on Converge…](#source-source-984f2b78d220ea)
+- **Ellie Dingqiao Wen**: [ProofEvolve: Neuro-Symbolic Evolution for Formal Automated Theorem…](#source-source-f20325c949d904)
 - **Emad Shihab**: [Synergizing LLMs and Knowledge Graphs: A Novel Approach to Software…](#source-arxiv-2412-03815)
+- **Emilia Szymonik**: [Multigeometric sequences and Cantorvals](#source-source-2b0038d2c239f5)
 - **Emilien Dupont**: [AlphaEvolve: A coding agent for scientific and algorithmic discovery](#source-source-cf94fac28d0ff1)
-- **Erdős, Paul**: [The product of consecutive integers is never a power](#source-source-7d923cace5602a)
+- **Enze Xie**: [LEGO-Prover: Neural Theorem Proving with Growing Libraries](#source-source-cf807e61b6b4f4)
 - **Eric Leonen**: [TheoremGraph: Bridging Formal and Informal Mathematics](#source-source-45ae653f011748)
+- **Eric Xie**: [ProofEvolve: Neuro-Symbolic Evolution for Formal Automated Theorem…](#source-source-f20325c949d904)
 - **Erick Wong**: [Answer to An infinite sum based on the mod-parity of Euler's totien…](#source-source-0f61ad0796acdf)
 - **Evan Wang**: [TheoremGraph: Bridging Formal and Informal Mathematics](#source-source-45ae653f011748)
 - **Evan Zheran Liu**: [Towards Autonomous Mathematics Research](#source-source-a028dc6bb31c0c)
 - **Evgenia Karunus**: [A Blueprint for the Formalization of Carleson's Theorem on Converge…](#source-source-984f2b78d220ea)
 - **F. Herzog**: [Metric properties of polynomials](#source-source-61ce6ad8b2f0ff)
+- **F. Huch**: [Structure in Theorem Proving: Analyzing and Improving the Isabelle…](#source-source-da95f31b00fd1d)
+- **F. Liu**: [LeanMarathon: Toward Reliable AI Co-Mathematicians through Long-Hor…](#source-source-eecf0fe92f9dcb)
 - **F. Luca**: [Character sums and congruences with n!](#source-source-34b520c561ee3c), [Prime divisors of shifted factorials](#source-source-5f85fb0bd75b8b), [Linear independence results for the values of divisor functions series](#source-source-6accca20cd5e44)
-- **F. W. J. Olver et al. (eds.)**: [NIST Digital Library of Mathematical Functions, Eq. 17.2.37](#source-source-5857f9959e7529)
+- **F. Rudzicz**: [Is This LLM Library Learning? Evaluation Must Account For Compute a…](#source-source-39c1a6367bd1fc)
 - **Fanjin Zhang**: [EurekAgent: Agent Environment Engineering is All You Need for Auton…](#source-source-cc823e517ced81)
 - **Federico Pasqualotto**: [Towards Autonomous Mathematics Research](#source-source-a028dc6bb31c0c)
 - **Federico Pellarin**: [On the arithmetic properties of complex values of Hecke-Mahler seri…](#source-source-9c2776b87b1155)
 - **Fedor Nazarov**: [New estimates for the length of the Erdős–Herzog–Piranian lemniscate](#source-source-a67b8dc01791ec)
 - **Fellows of the Royal Society**: [Open Letter to Sir Paul Nurse, President of the Royal Society](#source-open-letter-royal-society-fellows-20260917)
 - **Fields Medallists**: [A severe misalignment of AI in mathematics](#source-ai-essay-fields-medallists-20260911-severe-misalignment)
-- **Filipczak, Ma{\\l}gorzata**: [Multigeometric sequences and Cantorvals](#source-source-2b0038d2c239f5)
-- **Florian Luca**: [Transcendence of Hecke–Mahler Series](#source-source-29bdada58b414a), [On Transcendence of Numbers Related to Sturmian and Arnoux-Rauzy Words](#source-source-7a9657920d576b), [Irrationality of Lambert series associated with a periodic sequence](#source-source-9ce84321e202f1), [Sequences of integers generated by two fixed primes](#source-source-bbb68df5b83380), [On the largest prime factor of n!+2^n−1](#source-source-e66e0693f05f0a), [Linear independence of certain Lambert series](#source-source-f6ee6890db85d9), [Distribution of harmonic sums and Bernoulli polynomials modulo a prime](#source-source-fb64da05c3acc7)
-- **Floris van Doorn**: [A Blueprint for the Formalization of Carleson's Theorem on Converge…](#source-source-984f2b78d220ea)
+- **Florian Luca**: [Transcendence of Hecke–Mahler Series](#source-source-29bdada58b414a), [On Transcendence of Numbers Related to Sturmian and Arnoux-Rauzy Words](#source-source-7a9657920d576b), [Irrationality of Lambert series associated with a periodic sequence](#source-source-9ce84321e202f1), [On the Value Set of n! Modulo a Prime](#source-source-b3decc410aa4b5), [Sequences of integers generated by two fixed primes](#source-source-bbb68df5b83380), [On the largest prime factor of n!+2^n−1](#source-source-e66e0693f05f0a), [Linear independence of certain Lambert series](#source-source-f6ee6890db85d9), [Distribution of harmonic sums and Bernoulli polynomials modulo a prime](#source-source-fb64da05c3acc7)
+- **Floris van Doorn**: [The Lean Theorem Prover](#source-source-41e918322b698f), [A Blueprint for the Formalization of Carleson's Theorem on Converge…](#source-source-984f2b78d220ea)
 - **Francisco J. R. Ruiz**: [AlphaEvolve: A coding agent for scientific and algorithmic discovery](#source-source-cf94fac28d0ff1)
+- **Franciszek Prus-Wiśniowski**: [Achievement sets – current results and open problems](#source-source-77333436a9e579), [Achievable Cantorvals almost without reversed Kakeya conditions](#source-source-779915b8355ac1), [More on Kakeya Conditions for Achievement Sets](#source-source-b46f8a083b4271)
+- **Frank de Zeeuw**: [An improved point-line incidence bound over arbitrary fields](#source-source-29cbac966b8b76)
 - **Frazier N. Baker**: [ScienceAgentBench: Toward Rigorous Assessment of Language Agents fo…](#source-source-05a4915b796443)
 - **G. Cantor**: [Über die einfachen Zahlensysteme](#source-source-8ac37c92429a46)
 - **G. Everest**: [Integer sequences and periodic points](#source-source-5cac1ad51acb12)
 - **G. Piranian**: [Metric properties of polynomials](#source-source-61ce6ad8b2f0ff)
 - **G. Pólya**: [Beitrag zur Verallgemeinerung des Verzerrungssatzes auf mehrfach zu…](#source-source-2ec6bf87654604)
 - **G. Rhin**: [On a permutation group related to ζ(2)](#source-source-176d35cb60b651)
+- **Gail Weiss**: [Reliable Evaluation and Benchmarks for Statement Autoformalization](#source-source-96cb986969fc48)
 - **Garrett Bingham**: [Semi-Autonomous Mathematics Discovery with Gemini: A Case Study on…](#source-source-79afab8abaf9d5), [Towards Autonomous Mathematics Research](#source-source-a028dc6bb31c0c)
 - **Gene H. Golub**: [Calculation of Gauss Quadrature Rules](#source-source-53a2a9c4a9e7c2)
 - **George Holland**: [AlphaEvolve: A coding agent for scientific and algorithmic discovery](#source-source-cf94fac28d0ff1)
@@ -191,28 +242,41 @@ Implemented advice from private correspondence. The [credit ledger](CREDIT_LEDGE
 - **Google DeepMind**: [formal-conjectures](#source-source-5edeb2408c36bd)
 - **Grant Sanderson**: [If math is more than proof, we need to better celebrate the rest of it](#source-ai-essay-sanderson-20260918-more-than-proof)
 - **Great Internet Mersenne Prime Search**: [GIMPS](#source-source-cc1c19967d418f)
-- **Grebennikov, Alexandr**: [On the sequence $n!$ mod $p$](#source-source-02fc1f0e6f0418)
 - **Greg Martin**: [Simultaneous inequalities among values of the Euler phi-function](#source-source-11b46a0435368f)
 - **Guoxiong Gao**: [LeanSearch v2: Global Premise Retrieval for Lean 4 Theorem Proving](#source-source-82459d858b7d75)
-- **G{\\l}\\k{a}b, Szymon**: [Achievement sets -- current results and open problems](#source-source-77333436a9e579)
+- **H. Chockler**: [Beyond Vacuity: Towards the Strongest Passing Formula](#source-source-6812fb1b00b532)
 - **H. G. Meijer**: [On integers generated by a finite number of fixed primes](#source-source-ab6d6d6b890f57)
+- **H. Kaneko**: [Multiplicative analogue of Markoff–Lagrange spectrum and Pisot numbers](#source-source-69a61174d22510)
 - **H. Kreidler**: [A dynamical proof of the van der Corput inequality](#source-source-3d300ccd5e4cbb)
 - **H. L. Montgomery**: [The Prime Number Theorem](#source-source-06457731c60720), [Multiplicative Number Theory I: Classical Theory](#source-source-0aca0e5e4e03c0)
+- **H. P. Schlickewei**: [Die p-adische Verallgemeinerung des Satzes von Thue–Siegel–Roth–Sch…](#source-source-21e26ce24eaab4)
 - **H. S. Shapiro**: [Two-dimensional shapes and lemniscates](#source-source-9e37cc2fe7db3e)
 - **H. W. Lenstra, Jr.**: [Chebotarëv and his density theorem](#source-source-abedb02f9939e5)
+- **H. Wegmann**: [Die Hausdorffsche Dimension von Mengen reeller Zahlen, die durch Zi…](#source-source-f6ebb75f69c244)
+- **H. Wijk**: [RE-Bench: Evaluating frontier AI R&D capabilities of language model…](#source-source-5947486009ab5d)
+- **H. Yu**: [Counting rationals and diophantine approximation in missing-digit C…](#source-source-6e371c431c9b64)
+- **Haiming Wang**: [LEGO-Prover: Neural Theorem Proving with Growing Libraries](#source-source-cf807e61b6b4f4)
 - **Hajime Kaneko**: [Refinements of Erdős's irrationality criterion for certain sparse i…](#source-proposed-direct-329775d58148a9)
+- **Han Shi**: [LEGO-Prover: Neural Theorem Proving with Growing Libraries](#source-source-cf807e61b6b4f4)
 - **Han Wang**: [Sparse Polynomial-Weighted Expansions](#source-source-f4ad17717c8fd4)
-- **Hangrui Bi**: [DreamProver: Evolving Transferable Lemma Libraries via a Wake--Slee…](#source-source-7d871bf2920e53)
+- **Hangrui Bi**: [DreamProver: Evolving Transferable Lemma Libraries via a Wake–Sleep…](#source-source-7d871bf2920e53)
 - **Hans Hornich**: [Über beliebige Teilsummen absolut konvergenter Reihen](#source-source-691e9cc3c46273)
 - **Hanzhao Lin**: [Towards Autonomous Mathematics Research](#source-source-a028dc6bb31c0c)
 - **Hao-An Wu**: [Semi-Autonomous Mathematics Discovery with Gemini: A Case Study on…](#source-source-79afab8abaf9d5)
+- **Haolin Liu**: [Dream-RSI: Recursive Self-Improvement through Evolving Worlds](#source-source-e937c5aa7e1b76)
+- **Heng Huang**: [Dream-RSI: Recursive Self-Improvement through Evolving Worlds](#source-source-e937c5aa7e1b76)
+- **Heng Liao**: [LEGO-Prover: Neural Theorem Proving with Growing Libraries](#source-source-cf807e61b6b4f4)
 - **Heng-Tze Cheng**: [Towards Autonomous Mathematics Research](#source-source-a028dc6bb31c0c)
+- **Henning Stichtenoth**: [On the Value Set of n! Modulo a Prime](#source-source-b3decc410aa4b5)
 - **Henry Cohn**: [The technical debt of AI-generated mathematics](#source-ai-essay-cohn-20260915-technical-debt)
+- **Henry Kautz**: [ProofEvolve: Neuro-Symbolic Evolution for Formal Automated Theorem…](#source-source-f20325c949d904)
 - **Henry Yuen**: [Prove2Me: An Open Collaborative Platform for Scaling Math Formaliza…](#source-source-36f533b76bc247)
-- **Hu, Xiyu**: [Lower bounds for some value sets over finite fields: incidence geom…](#source-source-04603f785c9e7f)
+- **Huajian Xin**: [APE-Bench: Evaluating Automated Proof Engineering for Formal Math L…](#source-source-561745b44bbbfa), [LEGO-Prover: Neural Theorem Proving with Growing Libraries](#source-source-cf807e61b6b4f4)
 - **Huan Sun**: [ScienceAgentBench: Toward Rigorous Assessment of Language Agents fo…](#source-source-05a4915b796443)
 - **Huyile Liang**: [Stieltjes moment sequences of polynomials](#source-source-0f46dee5024c66)
 - **Hyunwoo Choi**: [Semi-Autonomous Mathematics Discovery with Gemini: A Case Study on…](#source-source-79afab8abaf9d5)
+- **I. Barrodale**: [On Equal Products of Consecutive Integers](#source-source-b6d577df139d85)
+- **I. Berlot-Attwell**: [Is This LLM Library Learning? Evaluation Must Account For Compute a…](#source-source-39c1a6367bd1fc)
 - **I. E. Shparlinski**: [Character sums and congruences with n!](#source-source-34b520c561ee3c), [Prime divisors of shifted factorials](#source-source-5f85fb0bd75b8b)
 - **I. J. Schoenberg**: [On asymptotic distributions of arithmetical functions](#source-source-0e9b7210b29d99)
 - **I. O. Bado**: [Prime-Support Rigidity and Primitive Pseudo-Greedy Dynamics: Partia…](#source-source-2a3af2a360bb15)
@@ -222,37 +286,43 @@ Implemented advice from private correspondence. The [credit ledger](CREDIT_LEDGE
 - **I. Schoenberg**: [Uber die asymptotische Verteilung reeller Zahlen mod 1](#source-source-eeff3fa685af8a)
 - **I. Short**: [Ford circles, continued fractions, and best approximation of the se…](#source-source-9b23918ce33c38)
 - **Iekata Shiokawa**: [Irrationality exponents of certain fast converging series of ration…](#source-source-0f03e2dab0b8c2)
-- **Igor E. Shparlinski**: [On the largest prime factor of n!+2^n−1](#source-source-e66e0693f05f0a), [Distribution of harmonic sums and Bernoulli polynomials modulo a prime](#source-source-fb64da05c3acc7)
+- **Igor E. Shparlinski**: [On the Value Set of n! Modulo a Prime](#source-source-b3decc410aa4b5), [On the largest prime factor of n!+2^n−1](#source-source-e66e0693f05f0a), [Distribution of harmonic sums and Bernoulli polynomials modulo a prime](#source-source-fb64da05c3acc7)
 - **Imaan Sidhu**: [End-to-End Testing of Open-Source Hardware Documentation Developed…](#source-arxiv-2309-05942)
 - **Issai Schur**: [Über die Verteilung der Wurzeln bei gewissen algebraischen Gleichun…](#source-source-b4b0f2811b1d2d)
 - **István S. Gál**: [Erdős–Gál lacunary-series law of the iterated logarithm (two-part s…](#source-proposed-direct-7f278004ad452a)
 - **Ivo Petrov**: [The Open Proof Corpus: A Large-Scale Study of LLM-Generated Mathema…](#source-source-a38774d9a4f1f9)
 - **J. A. Fridy**: [Generalized bases for the real numbers](#source-source-fb4194cadb150b)
 - **J. Asher**: [LeanExplore: A Search Engine for Lean 4 Declarations](#source-source-608828559136f9)
-- **J. Avigad**: [LeanArchitect: Automating Blueprint Generation for Humans and AI](#source-source-80c9ae60b7f7be)
-- **J. Bell**: [Mahler series with multiplicative coefficient sequences](#source-source-3bc828513b4d63)
+- **J. Avigad**: [LeanArchitect: Automating Blueprint Generation for Humans and AI](#source-source-80c9ae60b7f7be), [Premise Selection for a Lean Hammer](#source-source-b3b40be69340bc)
+- **J. Bell**: [A height gap theorem for coefficients of Mahler functions](#source-source-1b8aee594b555a), [Mahler series with multiplicative coefficient sequences](#source-source-3bc828513b4d63)
+- **J. Clune**: [Premise Selection for a Lean Hammer](#source-source-b3b40be69340bc)
 - **J. Commelin**: [Growing Mathlib: Maintenance of a Large Scale Mathematical Library](#source-source-07d2ca69e611b7)
 - **J. Coussement**: [Irrationality proof of certain Lambert series using little q-Jacobi…](#source-source-ca19e504149107)
-- **J. Farey**: [On a curious property of vulgar fractions](#source-source-2aa4970cfda278)
+- **J. D. Lee**: [LeanMarathon: Toward Reliable AI Co-Mathematicians through Long-Hor…](#source-source-eecf0fe92f9dcb)
 - **J. Galambos**: [Representations of Real Numbers by Infinite Series](#source-source-e13ecb7c94852a)
+- **J. Gómez-Serrano**: [Mathematical exploration and discovery at scale](#source-source-cf8c98c4d1c037)
 - **J. H. Loxton**: [Arithmetic properties of certain functions in several variables III](#source-source-fcf73a15ff9c7c)
 - **J. Hančl**: [On the irrationality of Cantor and Ahmes series](#source-source-1a7535a5e17a8c), [On the irrationality of factorial series](#source-source-c835bc94aad831)
 - **J. Kang**: [Irrationality of rapidly converging series: a problem of Erdős and…](#source-source-0f1a3708d62674)
+- **J. Kempe**: [Learning to Discover Interesting Mathematics](#source-source-4efc338160443b)
 - **J. Koizumi**: [Apéry-type approximations and irrationality measures for certain q-…](#source-source-285ee90c8dcd62), [Irrationality of the reciprocal sum of doubly exponential sequences](#source-source-86d1745e2d139b)
-- **J. Land**: [A conditional proof of the irrationality of ∑\_{n≥1} p\_n 2^{−n} unde…](#source-source-f42f9e04743a4c)
+- **J. Limperg**: [AXLE: A Cloud Infrastructure for Lean 4 Theorem Proving Utilities](#source-source-45decc279950cf), [Aesop: White-Box Best-First Proof Search for Lean](#source-source-c9ce62cc55b06f)
 - **J. Louwsma**: [Rational numbers with odd greedy expansion of fixed length](#source-source-ef6233b59b95cb)
-- **J. M. Campbell**: [On the binary digits of the Erdős--Borwein constant](#source-source-eca9e699590922)
 - **J. Martino**: [Rational numbers with odd greedy expansion of fixed length](#source-source-ef6233b59b95cb)
 - **J. Maynard**: [Small gaps between primes](#source-source-6564b203677735), [Long gaps between primes](#source-source-d3995db1508bc9)
 - **J. P. Bell**: [A problem about Mahler functions](#source-source-0a6b8c93371570)
 - **J. Shallit**: [The ring of k -regular sequences](#source-source-5752bb5009e4de)
 - **J. Sprang**: [On the irrationality of certain p-adic zeta values](#source-source-b3b7518e07e159)
-- **J. Teräväinen**: [Quantitative correlations and some problems on prime factors of con…](#source-source-685765cbd1ebe2)
-- **J. Urban**: [Agent Hunt: Bounty Based Collaborative Autoformalization With LLM A…](#source-source-ae5cc4ddfa6af5)
-- **J. Vandehey**: [On an incomplete argument of Erdős on the irrationality of Lambert…](#source-source-5911448b65fdf9)
+- **J. Urban**: [Agent Hunt: Bounty Based Collaborative Autoformalization With LLM A…](#source-source-ae5cc4ddfa6af5), [Lemma Mining over HOL Light](#source-source-b18c409a55723e)
+- **J. Vandehey**: [On an incomplete argument of Erdős on the irrationality of Lambert…](#source-source-5911448b65fdf9), [Normality preserving operations for Cantor series expansions and as…](#source-source-fc92202f8ec891)
+- **J. Xin**: [AXLE: A Cloud Infrastructure for Lean 4 Theorem Proving Utilities](#source-source-45decc279950cf)
+- **J. de Kleer**: [An assumption-based TMS](#source-source-4a198344c30349)
 - **J.-C. Schlage-Puchta**: [The irrationality of some number theoretical series](#source-source-d471eacdba0f87)
-- **J.-P. Allouche**: [The ring of k -regular sequences](#source-source-5752bb5009e4de)
+- **J.-P. Allouche**: [The ring of k -regular sequences](#source-source-5752bb5009e4de), [Periodic unique beta-expansions: the Sharkovskiĭ ordering](#source-source-ab18b2d8e5083d)
+- **Jacek Marchwicki**: [On Kakeya Conditions for Achievement Sets](#source-source-6d8837bbc174ce)
+- **Jacques Fleuriot**: [APE-Bench: Evaluating Automated Proof Engineering for Formal Math L…](#source-source-561745b44bbbfa)
 - **Jaehyeon Seo**: [Semi-Autonomous Mathematics Discovery with Gemini: A Case Study on…](#source-source-79afab8abaf9d5)
+- **Jakob von Raumer**: [The Lean Theorem Prover](#source-source-41e918322b698f)
 - **James Sundstrom**: [A Blueprint for the Formalization of Carleson's Theorem on Converge…](#source-source-984f2b78d220ea)
 - **James Walrad**: [Continued-fraction characterization of Stieltjes moment sequences w…](#source-source-c61a0cf3f328ce)
 - **James Worrell**: [Transcendence of Hecke–Mahler Series](#source-source-29bdada58b414a), [On Transcendence of Numbers Related to Sturmian and Arnoux-Rauzy Words](#source-source-7a9657920d576b)
@@ -266,24 +336,30 @@ Implemented advice from private correspondence. The [credit ledger](CREDIT_LEDGE
 - **Jeffrey Remmel**: [Stieltjes moment sequences of polynomials](#source-source-0f46dee5024c66)
 - **Jeffrey Shallit**: [How to prove that a sequence is not automatic](#source-source-6b460d123159d9)
 - **Jeremiah Alonzo**: [End-to-End Testing of Open-Source Hardware Documentation Developed…](#source-arxiv-2309-05942)
+- **Jeremy Avigad**: [The Lean Theorem Prover](#source-source-41e918322b698f)
 - **Jeremy Tan**: [A Blueprint for the Formalization of Carleson's Theorem on Converge…](#source-source-984f2b78d220ea)
-- **Jha, Abhishek**: [The Poisson Tail Conjecture for primes in short intervals](#source-source-c9b987093aaf4e)
-- **Jialiang Sun**: [DreamProver: Evolving Transferable Lemma Libraries via a Wake--Slee…](#source-source-7d871bf2920e53)
+- **Jialiang Sun**: [DreamProver: Evolving Transferable Lemma Libraries via a Wake–Sleep…](#source-source-7d871bf2920e53)
 - **Jian Song**: [EurekAgent: Agent Environment Engineering is All You Need for Auton…](#source-source-cc823e517ced81)
+- **Jian Yin**: [LEGO-Prover: Neural Theorem Proving with Growing Libraries](#source-source-cf807e61b6b4f4)
 - **Jiang Hu**: [Advancing Mathematical Research via Human-AI Interactive Theorem Pr…](#source-source-6ade6fbcd34d79)
 - **Jiedong Jiang**: [LeanSearch v2: Global Premise Retrieval for Lean 4 Theorem Proving](#source-source-82459d858b7d75)
 - **Jiening Siow**: [EurekAgent: Agent Environment Engineering is All You Need for Auton…](#source-source-cc823e517ced81)
 - **Jim Portegies**: [A Blueprint for the Formalization of Carleson's Theorem on Converge…](#source-source-984f2b78d220ea)
+- **Jing Xiong**: [LEGO-Prover: Neural Theorem Proving with Growing Libraries](#source-source-cf807e61b6b4f4)
 - **Jingda Xu**: [LeanSearch v2: Global Premise Retrieval for Lean 4 Theorem Proving](#source-source-82459d858b7d75)
 - **Jiwon Kang**: [Semi-Autonomous Mathematics Discovery with Gemini: A Case Study on…](#source-source-79afab8abaf9d5), [Irrationality of rapidly converging series: a problem of Erdős and…](#source-source-c742deb980b53c)
 - **Joel Land**: [Erdős Problems discussion thread #251](#source-source-21738452dcb95c)
-- **Johan Land**: [Conditional #251 proof under Kuperberg Conjecture 1.3 and Lean form…](#source-erdos251-land-conditional-proof-lean)
+- **Johan Land**: [Conditional #251 proof under Kuperberg Conjecture 1.3 and Lean form…](#source-erdos251-land-conditional-proof-lean), [A conditional proof of the irrationality of ∑\_n≥1 p\_n 2^−n under a…](#source-source-f42f9e04743a4c)
 - **Johannes Middeke**: [Common Factors in Fraction-Free Matrix Decompositions](#source-source-39e4fc546549fd)
+- **John Farey**: [On a Curious Property of Vulgar Fractions](#source-source-2aa4970cfda278)
 - **John H. Welsch**: [Calculation of Gauss Quadrature Rules](#source-source-53a2a9c4a9e7c2)
+- **John L. Selfridge**: [The product of consecutive integers is never a power](#source-source-7d923cace5602a)
+- **John M. Campbell**: [On the binary digits of the Erdős-Borwein constant](#source-source-eca9e699590922)
+- **Jolanta Ptak**: [Achievable Cantorvals almost without reversed Kakeya conditions](#source-source-779915b8355ac1), [More on Kakeya Conditions for Achievement Sets](#source-source-b46f8a083b4271)
 - **Jonas Henkel**: [The Mathematician's Assistant: Integrating AI into Research Practice](#source-source-0d338bb41b8987)
 - **Jonathan N. Lee**: [Towards Autonomous Mathematics Research](#source-source-a028dc6bb31c0c)
 - **Jonathan Sondow**: [A geometric proof that e is irrational and a new measure of its irr…](#source-source-6a5bf83735fdef)
-- **Joni Teräväinen**: [Shifted multiplicative-function correlation program named in the #2…](#source-proposed-direct-4e797194f74404)
+- **Joni Teräväinen**: [Shifted multiplicative-function correlation program named in the #2…](#source-proposed-direct-4e797194f74404), [Quantitative correlations and some problems on prime factors of con…](#source-source-685765cbd1ebe2)
 - **Joonkyung Lee**: [Towards Autonomous Mathematics Research](#source-source-a028dc6bb31c0c)
 - **Joris Roos**: [A Blueprint for the Formalization of Carleson's Theorem on Converge…](#source-source-984f2b78d220ea)
 - **Joël Ouaknine**: [Transcendence of Hecke–Mahler Series](#source-source-29bdada58b414a), [On Transcendence of Numbers Related to Sturmian and Arnoux-Rauzy Words](#source-source-7a9657920d576b)
@@ -294,55 +370,66 @@ Implemented advice from private correspondence. The [credit ledger](CREDIT_LEDGE
 - **Junsu Kim**: [Towards Autonomous Mathematics Research](#source-source-a028dc6bb31c0c)
 - **János Pintz**: [The difference between consecutive primes, II](#source-source-baker-harman-pintz-2001)
 - **K. Barreto**: [Irrationality of rapidly converging series: a problem of Erdős and…](#source-source-0f1a3708d62674)
+- **K. Claessen**: [Hipster: Integrating Theory Exploration in a Proof Assistant](#source-source-3ded5ae0536c5f)
+- **K. Conrad**: [The Chinese remainder theorem](#source-source-06e897baf8de8e), [Advice on Mathematical Writing](#source-source-153294313e4052)
+- **K. Ellis**: [DreamCoder: Growing Generalizable, Interpretable Knowledge with Wak…](#source-source-ffc160c2ca868e)
+- **K. F. Roth**: [Rational approximations to algebraic numbers](#source-source-7d2a26d1d7b225)
 - **K. Ford**: [Long gaps between primes](#source-source-d3995db1508bc9)
 - **K. Lazebnik**: [On the shapes of rational lemniscates](#source-bishop-eremenko-lazebnik-2025-shapes-of-rational-lemniscates)
+- **K. Mahler**: [Arithmetische Eigenschaften der Lösungen einer Klasse von Funktiona…](#source-source-3bda376f9b026c)
 - **K. Postelmans**: [Irrationality of ζ\_q(1) and ζ\_q(2)](#source-source-6c2fbacaba626f)
+- **K. Ram**: [AXLE: A Cloud Infrastructure for Lean 4 Theorem Proving Utilities](#source-source-45decc279950cf)
 - **K. Ramachandran**: [Number of Components of Polynomial Lemniscates: A Problem of Erdős,…](#source-source-97b4e6a82335a7)
 - **K. Stefánsson**: [Computing the Newtonian Graph](#source-source-92b0dfb67f5009)
 - **K. Väänänen**: [On the non-quadraticity of values of the q-exponential function and…](#source-source-22ef36d016ca81), [Arithmetical investigations of a certain infinite product](#source-source-e553241a97e580), [New irrationality measures for q-logarithms](#source-source-e5f2924d82c59f)
 - **K. Yang**: [LeanDojo: Theorem Proving with Retrieval-Augmented Language Models](#source-source-e2bdd690015cad)
+- **K. Yuan**: [Proof-Refactor: Refactoring Generated Formal Proofs into Modular Ar…](#source-source-6c6de21a713ea9)
 - **Kaisa Matomäki**: [Shifted multiplicative-function correlation program named in the #2…](#source-proposed-direct-4e797194f74404)
 - **Kaiying Hou**: [Semi-Autonomous Mathematics Discovery with Gemini: A Case Study on…](#source-source-79afab8abaf9d5), [Towards Autonomous Mathematics Research](#source-source-a028dc6bb31c0c)
 - **Kaloyan Tsvetkov**: [The Open Proof Corpus: A Large-Scale Study of LLM-Generated Mathema…](#source-source-a38774d9a4f1f9)
 - **Kazuo Habiro**: [Cyclotomic completions of polynomial rings](#source-source-habiro-2004-cyclotomic)
 - **Kevin Barreto**: [Semi-Autonomous Mathematics Discovery with Gemini: A Case Study on…](#source-source-79afab8abaf9d5), [Irrationality of rapidly converging series: a problem of Erdős and…](#source-source-c742deb980b53c)
-- **Klurman, Oleksiy**: [Distribution of factorials modulo $p$](#source-source-724fef812699b7)
 - **Koray Kavukcuoglu**: [Towards Autonomous Mathematics Research](#source-source-a028dc6bb31c0c)
 - **Kristian Minchev**: [The Open Proof Corpus: A Large-Scale Study of LLM-Generated Mathema…](#source-source-a38774d9a4f1f9)
+- **Ku. Nishioka**: [Mahler Functions and Transcendence](#source-source-e86d4e9d54219c)
 - **Kunal Marwaha**: [Prove2Me: An Open Collaborative Platform for Scaling Math Formaliza…](#source-source-36f533b76bc247)
-- **Kuperberg, Vivian**: [Sums of singular series along arithmetic progressions and with smoo…](#source-source-450aed97015b8f)
 - **L. Aniva**: [Pantograph: A Machine-to-Machine Interaction Interface for Advanced…](#source-source-9a04cbea11fd0b)
+- **L. Chindelevitch**: [Speeding up dualization in the Fredman–Khachiyan Algorithm B](#source-source-1b4039c709d4be)
 - **L. Lai**: [On the irrationality of certain 2-adic zeta values](#source-source-5122572a1e7312), [On the largest prime divisor of n!+1](#source-source-57adfd0cdcd8c2), [On the irrationality of certain p-adic zeta values](#source-source-b3b7518e07e159)
 - **L. Lempert**: [An extremal problem for polynomials](#source-eremenko-lempert-1994-extremal-problem-for-polynomials)
 - **L. Toth**: [A survey of gcd-sum functions](#source-source-22ce74d28ddb49)
 - **Lars Becker**: [A Blueprint for the Formalization of Carleson's Theorem on Converge…](#source-source-984f2b78d220ea)
 - **Lean FRO**: [Comparator](#source-software-comparator-statement-checker)
-- **Lean Project.**: [Lean Language Reference](#source-source-bae14c21d3e920)
-- **Lean community**: [Contributing to mathlib](#source-source-c29036ef9c4da8)
+- **Lean Project**: [Lean Language Reference](#source-source-bae14c21d3e920)
+- **Lean community**: [Batteries](#source-source-0e935e21c13b27), [Plausible](#source-source-63df1d8fdb67b8), [Contributing to mathlib](#source-source-c29036ef9c4da8)
 - **Lean contributors**: [Lean 4 theorem prover](#source-lean4-toolchain-v4-29-1)
 - **Lei Hou**: [EurekAgent: Agent Environment Engineering is All You Need for Auton…](#source-source-cc823e517ced81)
 - **Leo Diedering**: [A Blueprint for the Formalization of Carleson's Theorem on Converge…](#source-source-984f2b78d220ea)
 - **Leonardo Lobaccaro**: [End-to-End Testing of Open-Source Hardware Documentation Developed…](#source-arxiv-2309-05942)
-- **Leonardo de Moura**: [Lean 4 theorem prover](#source-lean4-toolchain-v4-29-1), [The Lean 4 theorem prover and programming language](#source-source-b6603e42453ff3)
+- **Leonardo de Moura**: [The Lean Theorem Prover](#source-source-41e918322b698f), [The Lean 4 theorem prover and programming language](#source-source-b6603e42453ff3)
+- **Lin Li**: [LEGO-Prover: Neural Theorem Proving with Growing Libraries](#source-source-cf807e61b6b4f4)
 - **Luca Matone**: [End-to-End Testing of Open-Source Hardware Documentation Developed…](#source-arxiv-2309-05942)
-- **Luca, Florian**: [On the Value Set of $n!$ Modulo a Prime](#source-source-b3decc410aa4b5)
 - **Luke Alexander**: [TheoremGraph: Bridging Formal and Informal Mathematics](#source-source-45ae653f011748)
 - **Luke Zerrer**: [End-to-End Testing of Open-Source Hardware Documentation Developed…](#source-arxiv-2309-05942)
+- **Luming Li**: [APE-Bench: Evaluating Automated Proof Engineering for Formal Math L…](#source-source-561745b44bbbfa)
 - **Lyuba Konova**: [The Open Proof Corpus: A Large-Scale Study of LLM-Generated Mathema…](#source-source-a38774d9a4f1f9)
+- **M. Bolan**: [The Equational Theories Project: Advancing Collaborative Mathematic…](#source-source-3dc6132f37e27f)
+- **M. Clarke**: [Periodic unique beta-expansions: the Sharkovskiĭ ordering](#source-source-ab18b2d8e5083d)
 - **M. Coons**: [Regular sequences and the joint spectral radius](#source-source-296ff41148fff7), [(Non)automaticity of number theoretic functions](#source-source-741da55b02c5a9)
-- **M. D. Schmidt**: [Generating special arithmetic functions by Lambert series factoriza…](#source-source-619de19af78c4c)
+- **M. Fujiwara**: [Natural Language Translation of Formal Proofs through Informalizati…](#source-source-7b236be4ebaa11)
+- **M. Johansson**: [Hipster: Integrating Theory Exploration in a Proof Assistant](#source-source-3ded5ae0536c5f)
 - **M. Kripner**: [OpenProver: Agentic and Interactive Theorem Proving with Lean 4](#source-source-d31e3bc51f2784)
-- **M. Laurent**: [Transcendence and continued fraction expansion of values of Hecke--…](#source-source-b9d7160919621f)
-- **M. Merca**: [Generating special arithmetic functions by Lambert series factoriza…](#source-source-619de19af78c4c), [The Lambert series factorization theorem](#source-source-8935df46fb4693)
+- **M. Laurent**: [Transcendence and continued fraction expansion of values of Hecke–M…](#source-source-b9d7160919621f)
+- **M. Lemańczyk**: [A dynamical point of view on the set of B-free integers](#source-source-3a21869f62279f)
 - **M. Pawan Kumar**: [AlphaEvolve: A coding agent for scientific and algorithmic discovery](#source-source-cf94fac28d0ff1)
 - **M. R. Ballard**: [Growing Mathlib: Maintenance of a Large Scale Mathematical Library](#source-source-07d2ca69e611b7)
 - **M. Rothgang**: [Growing Mathlib: Maintenance of a Large Scale Mathematical Library](#source-source-07d2ca69e611b7)
 - **M. Stern**: [Ueber eine zahlentheoretische Funktion](#source-source-9db8c3859cdc81)
 - **M. Straka**: [OpenProver: Agentic and Interactive Theorem Proving with Lean 4](#source-source-d31e3bc51f2784)
+- **M. Waldschmidt**: [Integer-valued functions, Hurwitz functions, and related topics: a…](#source-source-530f31a2fe38be)
 - **M. Z. Garaev**: [Character sums and congruences with n!](#source-source-34b520c561ee3c)
-- **Macleod, R. A.**: [On Equal Products of Consecutive Integers](#source-source-b6d577df139d85)
 - **Maksym Radziwiłł**: [Shifted multiplicative-function correlation program named in the #2…](#source-proposed-direct-4e797194f74404)
-- **Marchwicki, Jacek**: [On Kakeya Conditions for Achievement Sets](#source-source-6d8837bbc174ce)
+- **Marc Munsch**: [Distribution of factorials modulo p](#source-source-724fef812699b7)
 - **Marcus Vaktnäs**: [Christoffel transform and multiple orthogonal polynomials](#source-source-kozhan-vaktnas-2407-13946v1)
 - **Maria Drencheva**: [The Open Proof Corpus: A Large-Scale Study of LLM-Generated Mathema…](#source-source-a38774d9a4f1f9)
 - **Mark Harman**: [The Oracle Problem in Software Testing: A Survey](#source-source-5b5c84cd208fff)
@@ -352,75 +439,95 @@ Implemented advice from private correspondence. The [credit ledger](CREDIT_LEDGE
 - **María Inés de Frutos-Fernández**: [A Blueprint for the Formalization of Carleson's Theorem on Converge…](#source-source-984f2b78d220ea)
 - **Matej Balog**: [AlphaEvolve: A coding agent for scientific and algorithmic discovery](#source-source-cf94fac28d0ff1)
 - **Mathias Pétréolle**: [Lattice paths and branched continued fractions: An infinite sequenc…](#source-source-490b1875016ea4)
+- **Maxie D. Schmidt**: [Generating Special Arithmetic Functions by Lambert Series Factoriza…](#source-source-619de19af78c4c)
+- **Małgorzata Filipczak**: [Multigeometric sequences and Cantorvals](#source-source-2b0038d2c239f5)
 - **Melinda Yuan**: [End-to-End Testing of Open-Source Hardware Documentation Developed…](#source-arxiv-2309-05942)
 - **Michael Coons**: [Transcendence of generating functions whose coefficients are multip…](#source-source-b791f5b49e0da6), [(Non)Automaticity of number theoretic functions (arXiv v3)](#source-source-coons-nonautomaticity-0810-3709v3)
 - **Michael Drmota**: [(Logarithmic) densities for automatic sequences along primes and sq…](#source-source-4afc43674f7082)
 - **Michael Rothgang**: [A Blueprint for the Formalization of Carleson's Theorem on Converge…](#source-source-984f2b78d220ea)
 - **Milen Shumanov**: [The Open Proof Corpus: A Large-Scale Study of LLM-Generated Mathema…](#source-source-a38774d9a4f1f9)
 - **Mingyi Xue**: [ScienceAgentBench: Toward Rigorous Assessment of Language Agents fo…](#source-source-05a4915b796443)
+- **Mircea Merca**: [Generating Special Arithmetic Functions by Lambert Series Factoriza…](#source-source-619de19af78c4c), [The Lambert series factorization theorem](#source-source-8935df46fb4693)
 - **Miroslav Marinov**: [The Open Proof Corpus: A Large-Scale Study of LLM-Generated Mathema…](#source-source-a38774d9a4f1f9)
-- **Miska, Piotr**: [On Kakeya Conditions for Achievement Sets](#source-source-6d8837bbc174ce), [More on Kakeya Conditions for Achievement Sets](#source-source-b46f8a083b4271)
 - **Mislav Balunovic**: [The Open Proof Corpus: A Large-Scale Study of LLM-Generated Mathema…](#source-source-a38774d9a4f1f9)
 - **Moubariz Z. Garaev**: [Additive congruences with factorials modulo a prime](#source-source-f1a42898642b5f), [Distribution of harmonic sums and Bernoulli polynomials modulo a prime](#source-source-fb64da05c3acc7)
-- **Munsch, Marc**: [Distribution of factorials modulo $p$](#source-source-724fef812699b7)
 - **Muzammil Shahbaz**: [The Oracle Problem in Software Testing: A Survey](#source-source-5b5c84cd208fff)
 - **N. Edeko**: [A dynamical proof of the van der Corput inequality](#source-source-3d300ccd5e4cbb)
+- **N. Mitchell**: [Build Systems à la Carte](#source-source-6c41fab4297c9c)
+- **N. Onda**: [LeanConjecturer: Automatic Generation of Mathematical Conjectures f…](#source-source-fcb420b955b614)
+- **N. Patel**: [Learning to Discover Interesting Mathematics](#source-source-4efc338160443b)
 - **N. Peng**: [The Network Structure of Mathlib](#source-source-81b67bfd835ac9)
+- **N. Sedaghat**: [Speeding up dualization in the Fredman–Khachiyan Algorithm B](#source-source-1b4039c709d4be)
+- **N. Sidorov**: [Periodic unique beta-expansions: the Sharkovskiĭ ordering](#source-source-ab18b2d8e5083d)
+- **N. Smallbone**: [Hipster: Integrating Theory Exploration in a Proof Assistant](#source-source-3ded5ae0536c5f)
+- **N. Solomon**: [The distribution of rational numbers on Cantor's middle thirds set](#source-source-d80aa76c601178)
 - **NISO**: [CRediT: Contributor Roles Taxonomy](#source-source-d517c8a2d6f84d)
+- **NIST Digital Library of Mathematical Functions**: [Vandermonde determinant](#source-source-10d5a0ffcc35c3), [NIST Digital Library of Mathematical Functions, Eq. 17.2.37](#source-source-5857f9959e7529), [NIST Digital Library of Mathematical Functions, §1.12(ii) Convergents](#source-source-f213b302ada43a)
 - **National Academies of Sciences, Engineering, and Medicine**: [Reproducibility and Replicability in Science](#source-source-011f43e5a781d7)
 - **National Aeronautics and Space Administration**: [Software Assurance and Software Safety Standard](#source-source-278e74bfddddf0)
-- **National Information Standards Organization.**: [Reproducibility Badging and Definitions](#source-source-f2a047037bae55)
-- **National Institute of Standards**: [National Institute of Standards and Technology](#source-source-e6716218a1ac07)
-- **National Institute of Standards and Technology**: [Secure Hash Standard](#source-source-f6e839bcb8a60f)
+- **National Information Standards Organization**: [Reproducibility Badging and Definitions](#source-source-f2a047037bae55)
+- **National Institute of Standards and Technology**: [Digital Library of Mathematical Functions, §5.11(iii): Ratios](#source-source-b95bf142df7fb5), [Hash Functions](#source-source-e6716218a1ac07), [Secure Hash Standard](#source-source-f6e839bcb8a60f)
 - **Nguyen Xuan Tho**: [On equal products of consecutive integers](#source-source-3068a3586a5e8b)
 - **Ngân Vũ**: [AlphaEvolve: A coding agent for scientific and algorithmic discovery](#source-source-cf94fac28d0ff1)
 - **Nigamaa Nayakanti**: [Towards Autonomous Mathematics Research](#source-source-a028dc6bb31c0c)
 - **Nils Bruin**: [Transcendence of generating functions whose coefficients are multip…](#source-source-b791f5b49e0da6)
-- **Nowakowski, Piotr**: [On a new condition implying that an achievement set is a Cantorval…](#source-source-ce27d27dd5ec77)
+- **O. Strichman**: [Beyond Vacuity: Towards the Strongest Passing Formula](#source-source-6812fb1b00b532)
 - **Object Management Group.**: [Structured Assurance Case Metamodel (SACM)](#source-source-463b7e9f7264b1)
+- **Oleksiy Klurman**: [Distribution of factorials modulo p](#source-source-724fef812699b7)
 - **Olga S. Kuznetsova**: [Length functions of lemniscates](#source-source-57fe330e419648)
-- **P. B. Borwein**: [On the irrationality of ∑ 1/(q^n+r)](#source-source-62f9190aeb7d34), [On the irrationality of certain series](#source-source-96aef073e2ea33)
+- **P. B. Borwein**: [On the irrationality of ∑ 1/(q^n+r)](#source-source-62f9190aeb7d34)
 - **P. Borwein**: [The arc length of the lemniscate |p(z)|=1](#source-source-89b9a294db76bb)
 - **P. Bundschuh**: [Arithmetical investigations of a certain infinite product](#source-source-e553241a97e580), [Rational approximations to a q-analogue of π and some other q-series](#source-source-f9fd9214c9ef11)
 - **P. Ebenfelt**: [Two-dimensional shapes and lemniscates](#source-source-9e37cc2fe7db3e)
 - **P. Erdos**: [On the law of the iterated logarithm. I](#source-source-39690ee8e07b0c)
-- **P. Erdős**: [Old and New Problems and Results in Combinatorial Number Theory](#source-source-10545f868b3e88), [Beweis eines Satzes von Tschebyschef](#source-source-20c650f8cf3744), [Letter to the Editor](#source-source-22aba734190d65), [On the largest prime factors of n and n+1](#source-source-27575f46a101c1), [Sur certaines séries à valeur irrationnelle](#source-source-2ee394177d0f38), [On arithmetical properties of Lambert series](#source-source-5c72388a6ca10f), [Metric properties of polynomials](#source-source-61ce6ad8b2f0ff), [On the set of points of convergence of a lacunary trigonometric ser…](#source-source-62ee65065db497), [On the irrationality of certain series](#source-source-7dc956ce55b7a0), [On the irrationality of certain series: problems and results](#source-source-b378189f39ed98), [On the irrationality of certain Ahmes series](#source-source-e33bdf934f939f)
+- **P. Erdős**: [Beweis eines Satzes von Tschebyschef](#source-source-20c650f8cf3744), [Letter to the Editor](#source-source-22aba734190d65), [On the largest prime factors of n and n+1](#source-source-27575f46a101c1), [Beweis eines Satzes von Tschebyschef](#source-source-28a39801198fc9), [Sur certaines séries à valeur irrationnelle](#source-source-2ee394177d0f38), [Metric properties of polynomials](#source-source-61ce6ad8b2f0ff), [On the set of points of convergence of a lacunary trigonometric ser…](#source-source-62ee65065db497), [Fat, symmetric, irrational Cantor sets](#source-source-74087f5e79a69a), [On the irrationality of certain Ahmes series](#source-source-e33bdf934f939f), [On the irrationality of certain series](#source-source-e94e9e39e55ab3)
+- **P. H. Diananda**: [Criteria for irrationality of certain classes of numbers II](#source-source-0d54f419b9d01b)
+- **P. Liu**: [Proof-Refactor: Refactoring Generated Formal Proofs into Modular Ar…](#source-source-6c6de21a713ea9)
 - **P. Lévy**: [Sur le développement en fraction continue d'un nombre choisi au hasard](#source-source-5270112e32002d)
+- **P. M. Roberts**: [Mathematical Writing](#source-source-0d542d42faf319), [Mathematical Writing](#source-source-ef55c25dbdc2d0)
 - **P. Massot**: [leanblueprint](#source-source-944a1a754b1f3a)
 - **P. Monticone**: [LeanArchitect: Automating Blueprint Generation for Humans and AI](#source-source-80c9ae60b7f7be)
+- **P. R. Halmos**: [How to Write Mathematics](#source-source-2b439b910366a2)
 - **P. Shafto**: [The Network Structure of Mathlib](#source-source-81b67bfd835ac9)
 - **P. Song**: [LeanDojo: Theorem Proving with Retrieval-Augmented Language Models](#source-source-e2bdd690015cad)
 - **P. Stevenhagen**: [Chebotarëv and his density theorem](#source-source-abedb02f9939e5)
+- **P. Varjú**: [Counting rationals and diophantine approximation in missing-digit C…](#source-source-6e371c431c9b64)
 - **P. White with Claude (Anthropic)**: [Erdős #243: working report](#source-source-ee991edd431d57)
 - **P. Yuan**: [On the rationality of Cantor and Ahmes series](#source-source-cbaba7aeeb0f71)
 - **P. Yuditskii**: [Comb functions](#source-eremenko-yuditskii-2012-comb-functions)
 - **Palomar Registry**: [About Palomar](#source-source-9733ab875d6048)
-- **Paul Erdős**: [Erdős–Gál lacunary-series law of the iterated logarithm (two-part s…](#source-proposed-direct-7f278004ad452a), [Note on normal numbers](#source-proposed-direct-f7f90747134dba), [On the greatest and least prime factors of n!+1](#source-source-3fb9e4907eec24), [Some problems and results on the irrationality of the sum of infini…](#source-source-43a734be32736f)
+- **Paul Erdős**: [Erdős–Gál lacunary-series law of the iterated logarithm (two-part s…](#source-proposed-direct-7f278004ad452a), [Note on normal numbers](#source-proposed-direct-f7f90747134dba), [Old and New Problems and Results in Combinatorial Number Theory](#source-source-10545f868b3e88), [On the greatest and least prime factors of n!+1](#source-source-3fb9e4907eec24), [Some problems and results on the irrationality of the sum of infini…](#source-source-43a734be32736f), [On arithmetical properties of Lambert series](#source-source-5c72388a6ca10f), [The product of consecutive integers is never a power](#source-source-7d923cace5602a), [On the irrationality of certain series](#source-source-7dc956ce55b7a0), [A survey of problems in combinatorial number theory](#source-source-add962c870032a), [On the irrationality of certain series: problems and results](#source-source-b378189f39ed98)
 - **Pavol Kebis**: [On Transcendence of Numbers Related to Sturmian and Arnoux-Rauzy Words](#source-source-7a9657920d576b)
 - **Peihao Wu**: [LeanSearch v2: Global Premise Retrieval for Lean 4 Theorem Proving](#source-source-82459d858b7d75)
+- **Pengfei Gao**: [Evaluating Repository-level Software Documentation via Question Ans…](#source-source-14b2e582d752c2)
 - **Per Runeson**: [Guidelines for Conducting and Reporting Case Study Research in Soft…](#source-source-25efc27ed2130d)
+- **Peter B. Borwein**: [On the irrationality of certain series](#source-source-96aef073e2ea33)
 - **Phil McMinn**: [The Oracle Problem in Software Testing: A Survey](#source-source-5b5c84cd208fff)
 - **Pieter Moree**: [Sequences of integers generated by two fixed primes](#source-source-bbb68df5b83380)
 - **Pietro Corvaja**: [Some New Applications of the Subspace Theorem](#source-source-corvaja-zannier-2002-subspace)
 - **Pietro Monticone**: [A Blueprint for the Formalization of Carleson's Theorem on Converge…](#source-source-984f2b78d220ea)
+- **Piotr Miska**: [On Kakeya Conditions for Achievement Sets](#source-source-6d8837bbc174ce), [More on Kakeya Conditions for Achievement Sets](#source-source-b46f8a083b4271)
+- **Piotr Nowakowski**: [On a new condition implying that an achievement set is a Cantorval…](#source-source-ce27d27dd5ec77)
+- **Plectis revision research draft**: [Three refinements for the lemniscate-path programme](#source-source-45037c29c04bed)
 - **Plectis working note**: [The logarithmic endpoint fails under arithmetic sampling](#source-source-endpoint2026-logarithmic-repair)
 - **Po-Sen Huang**: [AlphaEvolve: A coding agent for scientific and algorithmic discovery](#source-source-cf94fac28d0ff1)
 - **Polymath Project**: [General polymath rules](#source-source-af9e99293e9dd0)
 - **Prasanna Balaprakash**: [LLM Agents for Interactive Workflow Provenance: Reference Architect…](#source-arxiv-2509-13978)
 - **Priyamvad Srivastav**: [On correlations of certain multiplicative functions](#source-proposed-direct-595203db1f6891)
-- **Prus-Wi\\'sniowski, Franciszek**: [Achievement sets -- current results and open problems](#source-source-77333436a9e579), [Achievable Cantorvals almost without reversed Kakeya conditions](#source-source-779915b8355ac1), [More on Kakeya Conditions for Achievement Sets](#source-source-b46f8a083b4271)
-- **Ptak, Jolanta**: [Achievable Cantorvals almost without reversed Kakeya conditions](#source-source-779915b8355ac1), [More on Kakeya Conditions for Achievement Sets](#source-source-b46f8a083b4271)
 - **Pushmeet Kohli**: [AlphaEvolve: A coding agent for scientific and algorithmic discovery](#source-source-cf94fac28d0ff1)
 - **Q. Tang**: [Optimal bounds for an Erdős problem on matching integers to distinc…](#source-source-1b9324cc5f4641)
 - **Qianheng Zhang**: [ScienceAgentBench: Toward Rigorous Assessment of Language Agents fo…](#source-source-05a4915b796443)
+- **Qingxing Cao**: [LEGO-Prover: Neural Theorem Proving with Growing Libraries](#source-source-cf807e61b6b4f4)
 - **Quanyu Tang**: [Period-two Lambert theorem applied to even and odd supports](#source-erdos257-tang-tachiya-period-two)
 - **Quoc V. Le**: [Semi-Autonomous Mathematics Discovery with Gemini: A Case Study on…](#source-source-79afab8abaf9d5), [Towards Autonomous Mathematics Research](#source-source-a028dc6bb31c0c)
+- **R. A. Macleod**: [On Equal Products of Consecutive Integers](#source-source-b6d577df139d85)
 - **R. Balasubramanian**: [On correlations of certain multiplicative functions](#source-proposed-direct-595203db1f6891)
 - **R. C. Baker**: [The difference between consecutive primes, II](#source-source-baker-harman-pintz-2001)
 - **R. C. Vaughan**: [The Prime Number Theorem](#source-source-06457731c60720), [Multiplicative Number Theory I: Classical Theory](#source-source-0aca0e5e4e03c0)
 - **R. Chalamala**: [LeanDojo: Theorem Proving with Retrieval-Augmented Language Models](#source-source-e2bdd690015cad)
-- **R. Crandall**: [The googol-th bit of the Erdős--Borwein constant](#source-source-0dd4239a1d50da)
-- **R. L. Graham**: [Old and New Problems and Results in Combinatorial Number Theory](#source-source-10545f868b3e88)
+- **R. Darst**: [Fat, symmetric, irrational Cantor sets](#source-source-74087f5e79a69a)
+- **R. Levin**: [How (and How Not) to Write a Good Systems Paper](#source-source-bf5ebb307dd372)
+- **R. Munos**: [Learning to Discover Interesting Mathematics](#source-source-4efc338160443b)
 - **R. Nagel**: [A dynamical proof of the van der Corput inequality](#source-source-3d300ccd5e4cbb)
 - **R. P. Stanley**: [Smith normal form in combinatorics](#source-source-91756d895a28a8)
 - **R. Prenger**: [LeanDojo: Theorem Proving with Retrieval-Augmented Language Models](#source-source-e2bdd690015cad)
@@ -430,97 +537,122 @@ Implemented advice from private correspondence. The [credit ledger](CREDIT_LEDGE
 - **Raymond Provost**: [End-to-End Testing of Open-Source Hardware Documentation Developed…](#source-arxiv-2309-05942)
 - **Reem Yassawi**: [How to prove that a sequence is not automatic](#source-source-6b460d123159d9)
 - **Renan Souza**: [LLM Agents for Interactive Workflow Provenance: Reference Architect…](#source-arxiv-2509-13978)
+- **Renkai Xiang**: [Dream-RSI: Recursive Self-Improvement through Evolving Worlds](#source-source-e937c5aa7e1b76)
+- **Richard Crandall**: [The googol-th bit of the Erdős-Borwein constant](#source-source-0dd4239a1d50da)
 - **Robert Rosenthal**: [The File Drawer Problem and Tolerance for Null Results](#source-source-7aa96129ebb643)
 - **Robert Tijdeman**: [On the irrationality of polynomial Cantor series](#source-source-77ddbf43e364f7), [On integers generated by a finite number of fixed primes](#source-source-ab6d6d6b890f57)
 - **Roberto Ferretti**: [A further improvement of the quantitative Subspace Theorem](#source-source-evertse-ferretti-2013-author2012)
 - **RomanLeLan**: [Retrieval of Chowla 1947 original scan](#source-erdos1049-bloom-chowla-scan-retrieval)
+- **Ronald L. Graham**: [Old and New Problems and Results in Combinatorial Number Theory](#source-source-10545f868b3e88)
 - **Rostyslav Kozhan**: [Christoffel transform and multiple orthogonal polynomials](#source-source-kozhan-vaktnas-2407-13946v1)
 - **Ruey-An Shiu**: [Semi-Autonomous Mathematics Discovery with Gemini: A Case Study on…](#source-source-79afab8abaf9d5)
+- **Rui Liu**: [Dream-RSI: Recursive Self-Improvement through Evolving Worlds](#source-source-e937c5aa7e1b76)
+- **Ruida Hu**: [Evaluating Repository-level Software Documentation via Question Ans…](#source-source-14b2e582d752c2)
+- **Ruoqiao Wei**: [Dream-RSI: Recursive Self-Improvement through Evolving Worlds](#source-source-e937c5aa7e1b76)
+- **S. Akiyama**: [Multiplicative analogue of Markoff–Lagrange spectrum and Pisot numbers](#source-source-69a61174d22510)
+- **S. Böhme**: [Sledgehammer: Judgement Day](#source-source-5bd4a26e6f56fd)
+- **S. Chow**: [Counting rationals and diophantine approximation in missing-digit C…](#source-source-6e371c431c9b64)
 - **S. Fan**: [Comment on Erdős Problem #269](#source-source-21cdeefea4c8ec), [Comment on Erdős Problem #249](#source-source-99c2f3cb190b95)
+- **S. Ganesh**: [AXLE: A Cloud Infrastructure for Lean 4 Theorem Proving Utilities](#source-source-45decc279950cf)
 - **S. Ghosh**: [Number of Components of Polynomial Lemniscates: A Problem of Erdős,…](#source-source-97b4e6a82335a7)
 - **S. Godil**: [LeanDojo: Theorem Proving with Retrieval-Augmented Language Models](#source-source-e2bdd690015cad)
+- **S. Hattori**: [Natural Language Translation of Formal Proofs through Informalizati…](#source-source-7b236be4ebaa11)
 - **S. J. Taylor**: [On the set of points of convergence of a lacunary trigonometric ser…](#source-source-62ee65065db497)
-- **S. Kakeya**: [On the set of partial sums of an infinite series](#source-source-0ecb074e507b86)
 - **S. Konyagin**: [Long gaps between primes](#source-source-d3995db1508bc9)
 - **S. Koyejo**: [Pantograph: A Machine-to-Machine Interaction Interface for Advanced…](#source-source-9a04cbea11fd0b)
+- **S. Peyton Jones**: [Build Systems à la Carte](#source-source-6c41fab4297c9c)
 - **S. Ringer**: [Local gap statistics, telescoping, and normality](#source-source-9a38b2d8b0dada)
 - **S. Severini**: [The Network Structure of Mathlib](#source-source-81b67bfd835ac9)
 - **S. Sutherland**: [Bad Polynomials for Newton's Method](#source-source-318ee5e7cf6d74)
-- **S. Welleck**: [LeanArchitect: Automating Blueprint Generation for Humans and AI](#source-source-80c9ae60b7f7be)
+- **S. Welleck**: [LeanArchitect: Automating Blueprint Generation for Humans and AI](#source-source-80c9ae60b7f7be), [Premise Selection for a Lean Hammer](#source-source-b3b40be69340bc)
+- **S. Yazdani**: [Multiplicative functions and k-automatic sequences](#source-source-0112c737837bc2)
 - **S. Yu**: [LeanDojo: Theorem Proving with Retrieval-Augmented Language Models](#source-source-e2bdd690015cad)
 - **S. Zhang**: [Irrationality of rapidly converging series: a problem of Erdős and…](#source-source-0f1a3708d62674)
 - **S.-h. Kim**: [Irrationality of rapidly converging series: a problem of Erdős and…](#source-source-0f1a3708d62674)
 - **SCSC Assurance Case Working Group**: [Goal Structuring Notation Community Standard, Version 3](#source-source-6dbbb774ff928e)
-- **SCSC Assurance Case Working Group (ACWG).**: [Goal Structuring Notation Community Standard, Version 3](#source-source-bd5fabd398bdfa)
-- **Sagdeev, Arsenii**: [On the sequence $n!$ mod $p$](#source-source-02fc1f0e6f0418)
+- **SCSC Assurance Case Working Group (ACWG)**: [Goal Structuring Notation Community Standard, Version 3](#source-source-bd5fabd398bdfa)
 - **Sainan Zheng**: [Stieltjes moment sequences of polynomials](#source-source-0f46dee5024c66)
 - **Samuel Abedu**: [Synergizing LLMs and Knowledge Graphs: A Novel Approach to Software…](#source-arxiv-2412-03815)
 - **Sang-hyun Kim**: [Semi-Autonomous Mathematics Discovery with Gemini: A Case Study on…](#source-source-79afab8abaf9d5), [Towards Autonomous Mathematics Research](#source-source-a028dc6bb31c0c), [Irrationality of rapidly converging series: a problem of Erdős and…](#source-source-c742deb980b53c)
+- **Sarvadaman Chowla**: [On Series of the Lambert Type which assume Irrational Values for Ra…](#source-source-4e981d6b2151bf)
 - **SayedHassan Khatoonabadi**: [Synergizing LLMs and Knowledge Graphs: A Novel Approach to Software…](#source-arxiv-2412-03815)
 - **Sebastian Nowozin**: [AlphaEvolve: A coding agent for scientific and algorithmic discovery](#source-source-cf94fac28d0ff1)
-- **Sebastian Ullrich**: [Lean 4 theorem prover](#source-lean4-toolchain-v4-29-1), [The Lean 4 theorem prover and programming language](#source-source-b6603e42453ff3)
-- **Selfridge, John L.**: [The product of consecutive integers is never a power](#source-source-7d923cace5602a)
-- **Semchankau, Aliaksei**: [On the sequence $n!$ mod $p$](#source-source-02fc1f0e6f0418)
+- **Sebastian Ullrich**: [The Lean 4 theorem prover and programming language](#source-source-b6603e42453ff3)
 - **Sergei Gukov**: [Semi-Autonomous Mathematics Discovery with Gemini: A Case Study on…](#source-source-79afab8abaf9d5), [Towards Autonomous Mathematics Research](#source-source-a028dc6bb31c0c)
 - **Sergey Shirobokov**: [AlphaEvolve: A coding agent for scientific and algorithmic discovery](#source-source-cf94fac28d0ff1)
 - **Shengtong Zhang**: [Semi-Autonomous Mathematics Discovery with Gemini: A Case Study on…](#source-source-79afab8abaf9d5), [Irrationality of rapidly converging series: a problem of Erdős and…](#source-source-c742deb980b53c)
 - **Shijie Chen**: [ScienceAgentBench: Toward Rigorous Assessment of Language Agents fo…](#source-source-05a4915b796443)
 - **Shin Yoo**: [The Oracle Problem in Software Testing: A Survey](#source-source-5b5c84cd208fff)
-- **Shparlinski, Igor E.**: [On the Value Set of $n!$ Modulo a Prime](#source-source-b3decc410aa4b5)
+- **Shivani Modi**: [ProofEvolve: Neuro-Symbolic Evolution for Formal Automated Theorem…](#source-source-f20325c949d904)
 - **Shuze Chen**: [Prove2Me: An Open Collaborative Platform for Scaling Math Formaliza…](#source-source-36f533b76bc247)
 - **Simon Kurgan**: [TheoremGraph: Bridging Formal and Informal Mathematics](#source-source-45ae653f011748)
+- **Soichi Kakeya**: [On the Set of Partial Sums of an Infinite Series](#source-source-0ecb074e507b86)
 - **Song Gao**: [ScienceAgentBench: Toward Rigorous Assessment of Language Agents fo…](#source-source-05a4915b796443)
+- **Soonho Kong**: [The Lean Theorem Prover](#source-source-41e918322b698f)
+- **Sophie Stevens**: [An improved point-line incidence bound over arbitrary fields](#source-source-29cbac966b8b76)
 - **Sophie Szeto**: [TheoremGraph: Bridging Formal and Informal Mathematics](#source-source-45ae653f011748)
 - **Soroosh Yazdani**: [Multiplicative functions and k-automatic sequences](#source-source-a0d109b4492fba)
 - **Steve Fan**: [Möbius-transform identity for the binary totient constant](#source-erdos249-fan-mobius-transform), [Infinite-prime-set irrationality proof and correction chain](#source-erdos269-fan-infinite-p-proof-repair), [Two-prime Hecke–Mahler factorisation and transcendence disclosure](#source-erdos269-fan-two-prime-disclosure), [Strongly complete sets and a conjecture of Erdős](#source-source-71fb76f6e1363b)
-- **Stevens, Sophie**: [An improved point-line incidence bound over arbitrary fields](#source-source-29cbac966b8b76)
-- **Stichtenoth, Henning**: [On the Value Set of $n!$ Modulo a Prime](#source-source-b3decc410aa4b5)
 - **Sumit Giri**: [On correlations of certain multiplicative functions](#source-proposed-direct-595203db1f6891)
 - **Sunny Hu**: [End-to-End Testing of Open-Source Hardware Documentation Developed…](#source-arxiv-2309-05942)
 - **Swarat Chaudhuri**: [AlphaEvolve: A coding agent for scientific and algorithmic discovery](#source-source-cf94fac28d0ff1)
 - **Szabolcs Marka**: [End-to-End Testing of Open-Source Hardware Documentation Developed…](#source-arxiv-2309-05942)
-- **Szymonik, Emilia**: [Multigeometric sequences and Cantorvals](#source-source-2b0038d2c239f5)
+- **Szymon Głąb**: [Achievement sets – current results and open problems](#source-source-77333436a9e579)
 - **Sébastien Gouëzel**: [A Blueprint for the Formalization of Carleson's Theorem on Converge…](#source-source-984f2b78d220ea)
 - **T. Amdeberhan**: [q-Apéry irrationality proofs by q-WZ pairs](#source-source-7935fe19eb831b)
-- **T. M. Apostol**: [Introduction to Analytic Number Theory](#source-source-99385343e032a3)
+- **T. Gowers**: [Examples first II](#source-source-9cae660a236ad0), [My favourite pedagogical principle: examples first](#source-source-ac8beab055e28b), [Automatically Generalizing Proofs and Statements](#source-source-fe8c2e1e6eb64c)
+- **T. Larrabee**: [Mathematical Writing](#source-source-0d542d42faf319), [Mathematical Writing](#source-source-ef55c25dbdc2d0)
 - **T. Matala-aho**: [New irrationality measures for q-logarithms](#source-source-e5f2924d82c59f)
-- **T. Tao**: [The maximal length of the Erdős–Herzog–Piranian lemniscate in high…](#source-source-0e12f93aeac487), [On several irrationality problems for Ahmes series](#source-source-4f5fd0d7405e29), [Quantitative correlations and some problems on prime factors of con…](#source-source-685765cbd1ebe2), [Mathematics in the age of AI](#source-source-75e79d15dfab15), [Long gaps between primes](#source-source-d3995db1508bc9)
+- **T. Matsuzaki**: [Natural Language Translation of Formal Proofs through Informalizati…](#source-source-7b236be4ebaa11)
+- **T. Nipkow**: [Sledgehammer: Judgement Day](#source-source-5bd4a26e6f56fd)
+- **T. Ransford**: [Potential Theory in the Complex Plane](#source-source-1009cb23e9f897)
+- **T. Sesterhenn**: [Is This LLM Library Learning? Evaluation Must Account For Compute a…](#source-source-39c1a6367bd1fc)
+- **T. Stephen**: [Speeding up dualization in the Fredman–Khachiyan Algorithm B](#source-source-1b4039c709d4be)
+- **T. Suzuki**: [LeanMarathon: Toward Reliable AI Co-Mathematicians through Long-Hor…](#source-source-eecf0fe92f9dcb)
+- **T. Tao**: [The maximal length of the Erdős–Herzog–Piranian lemniscate in high…](#source-source-0e12f93aeac487), [Don't overoptimise](#source-source-31199d2395e7b6), [Give appropriate amounts of detail](#source-source-6089118fee9920), [Mathematics in the age of AI](#source-source-75e79d15dfab15), [Use good notation](#source-source-c988e3165443f0), [Mathematical exploration and discovery at scale](#source-source-cf8c98c4d1c037), [Long gaps between primes](#source-source-d3995db1508bc9)
+- **T. Trauthwein**: [The distribution of rational numbers on Cantor's middle thirds set](#source-source-d80aa76c601178)
 - **T. Ward**: [Integer sequences and periodic points](#source-source-5cac1ad51acb12)
-- **T. Zhu**: [LeanArchitect: Automating Blueprint Generation for Humans and AI](#source-source-80c9ae60b7f7be)
+- **T. Zhu**: [LeanArchitect: Automating Blueprint Generation for Humans and AI](#source-source-80c9ae60b7f7be), [Premise Selection for a Lean Hammer](#source-source-b3b40be69340bc)
+- **T. de la Rue**: [A dynamical point of view on the set of B-free integers](#source-source-3a21869f62279f)
 - **Takeshi Kurosawa**: [Irrationality exponents of certain fast converging series of ration…](#source-source-0f03e2dab0b8c2)
 - **Talia Ringer**: [Becoming a benchmark](#source-ai-essay-ringer-20260917-becoming-a-benchmark)
 - **Tasmin Chu**: [The AI dissenter viewpoint](#source-ai-essay-chu-20260809-ai-dissenter-viewpoint)
-- **Technology**: [National Institute of Standards and Technology](#source-source-e6716218a1ac07)
-- **Terence Tao**: [Mining open problems](#source-ai-essay-tao-20260908-mining-open-problems), [Rational-tail deterministic pair recurrence and open-boundary reduc…](#source-erdos243-tao-tail-pair-recurrence), [Prime-gap summation-by-parts equivalence and conditional route](#source-erdos251-tao-prime-gap-equivalence), [Shifted multiplicative-function correlation program named in the #2…](#source-proposed-direct-4e797194f74404), [Erdős Problems discussion thread #251](#source-source-21738452dcb95c), [AI contributions to Erdős problems](#source-source-e99ce64694b554)
+- **Terence Tao**: [Mining open problems](#source-ai-essay-tao-20260908-mining-open-problems), [Rational-tail deterministic pair recurrence and open-boundary reduc…](#source-erdos243-tao-tail-pair-recurrence), [Prime-gap summation-by-parts equivalence and conditional route](#source-erdos251-tao-prime-gap-equivalence), [Shifted multiplicative-function correlation program named in the #2…](#source-proposed-direct-4e797194f74404), [Erdős Problems discussion thread #251](#source-source-21738452dcb95c), [On several irrationality problems for Ahmes series](#source-source-4f5fd0d7405e29), [Quantitative correlations and some problems on prime factors of con…](#source-source-685765cbd1ebe2), [AI contributions to Erdős problems](#source-source-e99ce64694b554)
 - **Thai Hoang Lê**: [Intersective polynomials and the primes](#source-source-le-intersective-0910-1880)
 - **Thang Luong**: [Semi-Autonomous Mathematics Discovery with Gemini: A Case Study on…](#source-source-79afab8abaf9d5), [Towards Autonomous Mathematics Research](#source-source-a028dc6bb31c0c)
-- **The Formal Conjectures Authors**: [Formal Conjectures compatibility surface for Erdős #1049](#source-formal-conjectures-adapter-problem-1049), [Formal Conjectures compatibility surface for Erdős #249](#source-formal-conjectures-adapter-problem-249), [Formal Conjectures compatibility surface for Erdős #251](#source-formal-conjectures-adapter-problem-251), [Formal Conjectures compatibility surface for Erdős #257](#source-formal-conjectures-adapter-problem-257), [Formal Conjectures compatibility surface for Erdős #68](#source-formal-conjectures-adapter-problem-68), [Formal Conjectures coverage boundary across the eight-problem corpus](#source-formal-conjectures-eight-problem-coverage-boundary), [FormalConjectures.ErdosProblems.243](#source-source-1713b9ad6350bd), [FormalConjectures.ErdosProblems.257](#source-source-4bb571f8383293), [FormalConjectures.ErdosProblems.269](#source-source-573a79feb36d47), [FormalConjectures.ErdosProblems.251](#source-source-b202a3f125817d), [FormalConjectures.ErdosProblems.1049](#source-source-d7a43109c64c0c)
+- **The Formal Conjectures Authors**: [Formal Conjectures compatibility surface for Erdős #1049](#source-formal-conjectures-adapter-problem-1049), [Formal Conjectures compatibility surface for Erdős #249](#source-formal-conjectures-adapter-problem-249), [Formal Conjectures compatibility surface for Erdős #251](#source-formal-conjectures-adapter-problem-251), [Formal Conjectures compatibility surface for Erdős #257](#source-formal-conjectures-adapter-problem-257), [Formal Conjectures compatibility surface for Erdős #68](#source-formal-conjectures-adapter-problem-68), [Formal Conjectures coverage boundary across the eight-problem corpus](#source-formal-conjectures-eight-problem-coverage-boundary), [FormalConjectures.ErdosProblems.1041](#source-formal-conjectures-statement-problem-1041), [FormalConjectures.ErdosProblems.249](#source-formal-conjectures-statement-problem-249), [FormalConjectures.ErdosProblems.68](#source-formal-conjectures-statement-problem-68), [FormalConjectures.ErdosProblems.243](#source-source-1713b9ad6350bd), [Erdős 1041: mark solved with answer(False) and link a formal proof](#source-source-3762d525d0b2ec), [FormalConjectures.ErdosProblems.257](#source-source-4bb571f8383293), [FormalConjectures.ErdosProblems.269](#source-source-573a79feb36d47), [FormalConjectures.ErdosProblems.251](#source-source-b202a3f125817d), [FormalConjectures.ErdosProblems.1049](#source-source-d7a43109c64c0c)
 - **The mathlib Community**: [mathlib4](#source-mathlib4-pin-5e932f97), [The Lean mathematical library](#source-source-d8b2a7c411bc2d)
 - **Thomas Bloom**: [Retrieval of Chowla 1947 original scan](#source-erdos1049-bloom-chowla-scan-retrieval), [Infinite-prime-set irrationality proof and correction chain](#source-erdos269-fan-infinite-p-proof-repair)
-- **Thomas F. Bloom**: [Erdős Problems catalogue pages for problems 68, 243, 249, 251, 257,…](#source-erdos-problems-catalog-eight-problem-context), [Erdős Problems discussion thread #251](#source-source-21738452dcb95c)
+- **Thomas F. Bloom**: [Erdős Problems catalogue pages for problems 68, 243, 249, 251, 257,…](#source-erdos-problems-catalog-eight-problem-context), [Erdős Problems discussion thread #251](#source-source-21738452dcb95c), [Missing Erdős problems](#source-source-f3d030960b94d4)
 - **Thomas F. Bloom (site editor)**: [Erdős Problems catalogue pages for problems 68, 243, 249, 251, 257,…](#source-erdos-problems-catalog-eight-problem-context)
 - **Tianyi Peng**: [Prove2Me: An Open Collaborative Platform for Scaling Math Formaliza…](#source-source-36f533b76bc247)
 - **Timothy Poteet**: [LLM Agents for Interactive Workflow Provenance: Reference Architect…](#source-arxiv-2509-13978)
+- **Tom M. Apostol**: [Introduction to Analytic Number Theory](#source-source-99385343e032a3)
+- **Tong Zheng**: [Dream-RSI: Recursive Self-Improvement through Evolving Worlds](#source-source-e937c5aa7e1b76)
 - **Tony Feng**: [Semi-Autonomous Mathematics Discovery with Gemini: A Case Study on…](#source-source-79afab8abaf9d5), [Towards Autonomous Mathematics Research](#source-source-a028dc6bb31c0c)
 - **Tonći Crmarić**: [On the irrationality of certain super-polynomially decaying series](#source-source-41df26fdff66cb)
 - **Trieu H. Trinh**: [Towards Autonomous Mathematics Research](#source-source-a028dc6bb31c0c)
 - **Trieu Trinh**: [Semi-Autonomous Mathematics Discovery with Gemini: A Case Study on…](#source-source-79afab8abaf9d5)
+- **U. Kohlenbach**: [Applied Proof Theory: Proof Interpretations and their Use in Mathem…](#source-source-909bb1933483e8)
 - **Umberto Zannier**: [Some New Applications of the Subspace Theorem](#source-source-corvaja-zannier-2002-subspace)
-- **Unknown**: [NIST Digital Library of Mathematical Functions, §1.12(ii) Convergents](#source-source-f213b302ada43a)
-- **V. Kovač**: [Irrationality of rapidly converging series: a problem of Erdős and…](#source-source-0f1a3708d62674), [On several irrationality problems for Ahmes series](#source-source-4f5fd0d7405e29), [Lacunary sequences whose reciprocal sums represent all rational num…](#source-source-892c567092d6f3)
+- **V. Kovač**: [Irrationality of rapidly converging series: a problem of Erdős and…](#source-source-0f1a3708d62674), [Lacunary sequences whose reciprocal sums represent all rational num…](#source-source-892c567092d6f3)
 - **V. Kuperberg**: [Sums of singular series with large sets and the tail of the distrib…](#source-source-811205223e0788)
 - **V. N. Dubinin**: [Lemniscates and inequalities for the logarithmic capacities of cont…](#source-source-2a86f52125aec0), [Some inequalities for polynomials and rational functions associated…](#source-source-dcbe400c96be59)
 - **V. S. Pendyala**: [Shortest paths in polynomial lemniscate sublevel sets and a problem…](#source-source-8710374c3e8c9f), [A Degree-Four Lemniscate Path Theorem](#source-source-951f70d8dfc418)
-- **Vasilevskii, Aliaksei**: [On the sequence $n!$ mod $p$](#source-source-02fc1f0e6f0418)
+- **Various authors**: [Writings on AI and Mathematics](#source-source-aee7a58d68b8a8)
 - **Vasily Ilin**: [TheoremGraph: Bridging Formal and Informal Mathematics](#source-source-45ae653f011748)
 - **Venkata Pendyala**: [Quartic case of Erdős #1041](#source-erdos1041-pendyala-quartic)
+- **Viktor Kunčak**: [Reliable Evaluation and Benchmarks for Statement Autoformalization](#source-source-96cb986969fc48)
 - **Vishal Dey**: [ScienceAgentBench: Toward Rigorous Assessment of Language Agents fo…](#source-source-05a4915b796443)
-- **Vjekoslav Kovač**: [Koizumi pseudo-greedy equivalence and computation pointer](#source-erdos243-kovac-koizumi-pointer), [Counterexample to Erdős variable-denominator expectation](#source-erdos251-kovac-variable-denominator-counterexample), [Earlier variants, interval-filling negative variant, and fat-Cantor…](#source-erdos257-kovac-context-bundle), [Older Erdős and Borwein attribution for even/odd supports](#source-erdos257-kovac-older-special-case-attribution), [On the irrationality of certain super-polynomially decaying series](#source-source-41df26fdff66cb), [Irrationality of rapidly converging series: a problem of Erdős and…](#source-source-c742deb980b53c)
+- **Vivian Kuperberg**: [Sums of singular series along arithmetic progressions and with smoo…](#source-source-450aed97015b8f)
+- **Vjekoslav Kovač**: [Koizumi pseudo-greedy equivalence and computation pointer](#source-erdos243-kovac-koizumi-pointer), [Counterexample to Erdős variable-denominator expectation](#source-erdos251-kovac-variable-denominator-counterexample), [Earlier variants, interval-filling negative variant, and fat-Cantor…](#source-erdos257-kovac-context-bundle), [Older Erdős and Borwein attribution for even/odd supports](#source-erdos257-kovac-older-special-case-attribution), [On the irrationality of certain super-polynomially decaying series](#source-source-41df26fdff66cb), [On several irrationality problems for Ahmes series](#source-source-4f5fd0d7405e29), [Irrationality of rapidly converging series: a problem of Erdős and…](#source-source-c742deb980b53c)
 - **Vladimir G. Tkachev**: [Length functions of lemniscates](#source-source-57fe330e419648)
 - **Vladimir N. Dubinin**: [Inequalities for critical values of polynomials](#source-source-b10b965e63a00d), [Four-point distortion theorem for complex polynomials](#source-source-f0af8e6f36727f)
+- **W. Cook**: [Reading Eight Erdős Problems Together](#source-source-37d49dac10ce0f), [Distinct running least common multiples](#source-source-79e18d3a05d6dc), [Weighted and Covered Supports for Mersenne Subseries](#source-source-9f187682e93e2d), [Integral Relations among Totient Sections](#source-source-ad2eba9e1aee32), [Choices, contraction and rational membership](#source-source-ba3bf4689bc5ae)
 - **W. Hayman**: [On the length of lemniscates](#source-source-7f1f2a3fd9238c)
 - **W. Koepf**: [Irrationality of certain infinite series II](#source-source-a87fa25f28c7b0)
 - **W. Li**: [Irrationality Criteria for Series by Erdős and Straus](#source-source-c6e97d89c9fa5f)
+- **W. M. Schmidt**: [Norm form equations](#source-source-981078204c60ce)
 - **W. R. Alford**: [There are infinitely many Carmichael numbers](#source-source-d14cd7f6920a31)
 - **W. Schramm**: [The Fourier transform of functions of the greatest common divisor](#source-source-c786f202d47318)
 - **W. T. Gowers**: [Why I didn't sign the Fields medallists' letter](#source-ai-essay-gowers-20260917-why-i-didnt-sign)
@@ -528,59 +660,82 @@ Implemented advice from private correspondence. The [credit ledger](CREDIT_LEDGE
 - **W. Zudilin**: [Heine's basic transform and a permutation group for q-harmonic series](#source-source-120bebce1ffe8c), [On the non-quadraticity of values of the q-exponential function and…](#source-source-22ef36d016ca81), [On the irrationality of generalized q-logarithm](#source-source-ae9859af28fdcd), [New irrationality measures for q-logarithms](#source-source-e5f2924d82c59f), [Remarks on irrationality of q-harmonic series](#source-source-f1c687cb5e9ae4), [A determinantal approach to irrationality](#source-source-f67bf9959aa230), [Rational approximations to a q-analogue of π and some other q-series](#source-source-f9fd9214c9ef11)
 - **W. van Doorn**: [Optimal bounds for an Erdős problem on matching integers to distinc…](#source-source-1b9324cc5f4641), [Lacunary sequences whose reciprocal sums represent all rational num…](#source-source-892c567092d6f3)
 - **Wadim Zudilin**: [Diophantine Problems for q-Zeta Values](#source-proposed-direct-0ef4f73f93ceed), [A determinantal approach to irrationality (arXiv v2)](#source-source-zudilin-determinantal-1507-05697v2)
+- **Wang-Cheng Kang**: [Dream-RSI: Recursive Self-Improvement through Evolving Worlds](#source-source-e937c5aa7e1b76)
 - **Wei-Yuan Li**: [Semi-Autonomous Mathematics Discovery with Gemini: A Case Study on…](#source-source-79afab8abaf9d5)
-- **Wenjie Ma**: [DreamProver: Evolving Transferable Lemma Libraries via a Wake--Slee…](#source-source-7d871bf2920e53)
+- **Wenda Li**: [APE-Bench: Evaluating Automated Proof Engineering for Formal Math L…](#source-source-561745b44bbbfa)
+- **Wenjie Ma**: [DreamProver: Evolving Transferable Lemma Libraries via a Wake–Sleep…](#source-source-7d871bf2920e53)
+- **Wenqian Ye**: [ProofEvolve: Neuro-Symbolic Evolution for Formal Automated Theorem…](#source-source-f20325c949d904)
+- **Will Cook**: [Integer Linear Forms for a Factorial Reciprocal Series](#source-source-00cc92a42e058b), [Sparse Congruence-Preserving Perturbations of Dyadic Series](#source-source-0be6f6ffc67f0c), [Publishing Mathematical Results from a Lean Repository](#source-source-1968896b92b45d), [Integral Relations among Totient Sections](#source-source-2132b16ddbb0b4), [Paths in Polynomial Lemniscates: A Degree-Seven Counterexample and…](#source-source-25cbb77c8141eb), [Hankel Determinants of Geometric Moments and Rational Lambert Values](#source-source-2a0657fba07c86), [Public mathematical writing](#source-source-2b76e4aa7bbc22), [Reciprocal Sums and the Sylvester Recurrence](#source-source-31228030241161), [Writing a Good Mathematical Paper](#source-source-46777597b9d714), [The Binary Totient Series](#source-source-5e5093c93d60de), [Literature and reviewed-revision guide](#source-source-772049347bf8f3), [Irrationality criteria for Lambert subseries](#source-source-88828b699c9e00), [Distinct running least common multiples](#source-source-a8e0104fb3c519), [Prime-Gap Dyadic Series: Perturbations, Exact Criteria and Certific…](#source-source-f4ecbdd4480e71)
 - **Will Cook (coverage audit author)**: [Formal Conjectures coverage boundary across the eight-problem corpus](#source-formal-conjectures-eight-problem-coverage-boundary)
+- **William D. Banks**: [On the Value Set of n! Modulo a Prime](#source-source-b3decc410aa4b5)
 - **Woong Shin**: [LLM Agents for Interactive Workflow Provenance: Reference Architect…](#source-arxiv-2509-13978)
+- **Wouter van Doorn**: [Partitions with prescribed sum of reciprocals: asymptotic bounds](#source-source-dbbc7de069eeee)
 - **X. Li**: [The Network Structure of Mathlib](#source-source-81b67bfd835ac9)
+- **X. Si**: [Is This LLM Library Learning? Evaluation Must Account For Compute a…](#source-source-39c1a6367bd1fc)
 - **Xia Ning**: [ScienceAgentBench: Toward Rigorous Assessment of Language Agents fo…](#source-source-05a4915b796443)
+- **Xiaodan Liang**: [LEGO-Prover: Neural Theorem Proving with Growing Libraries](#source-source-cf807e61b6b4f4)
 - **Xiaomeng Yang**: [Towards Autonomous Mathematics Research](#source-source-a028dc6bb31c0c)
+- **Xiaoran Jin**: [APE-Bench: Evaluating Automated Proof Engineering for Formal Math L…](#source-source-561745b44bbbfa)
 - **Xiaoyang Lu**: [Prove2Me: An Open Collaborative Platform for Scaling Math Formaliza…](#source-source-36f533b76bc247)
-- **Xiyu Hu**: [Factorial residues modulo a prime: beyond the square-root bound](#source-source-365c2b5cf46ebe)
+- **Xidong Wu**: [Dream-RSI: Recursive Self-Improvement through Evolving Worlds](#source-source-e937c5aa7e1b76)
+- **Xinchen Wang**: [Evaluating Repository-level Software Documentation via Question Ans…](#source-source-14b2e582d752c2)
+- **Xinwu Cheng**: [Dream-RSI: Recursive Self-Improvement through Evolving Worlds](#source-source-e937c5aa7e1b76)
+- **Xiyu Hu**: [Lower bounds for some value sets over finite fields: incidence geom…](#source-source-04603f785c9e7f), [Factorial residues modulo a prime: beyond the square-root bound](#source-source-365c2b5cf46ebe)
+- **Xue Wang**: [Dream-RSI: Recursive Self-Improvement through Evolving Worlds](#source-source-e937c5aa7e1b76)
 - **Xuhui Huang**: [ScienceAgentBench: Toward Rigorous Assessment of Language Agents fo…](#source-source-05a4915b796443)
-- **Xujie Si**: [DreamProver: Evolving Transferable Lemma Libraries via a Wake--Slee…](#source-source-7d871bf2920e53)
-- **Y. Bugeaud**: [On the complexity of algebraic numbers I. Expansions in integer bases](#source-source-7c8ba4ea6eea79), [Transcendence and continued fraction expansion of values of Hecke--…](#source-source-b9d7160919621f)
+- **Xujie Si**: [DreamProver: Evolving Transferable Lemma Libraries via a Wake–Sleep…](#source-source-7d871bf2920e53)
+- **Y. Bugeaud**: [On the complexity of algebraic numbers I. Expansions in integer bases](#source-source-7c8ba4ea6eea79), [Transcendence and continued fraction expansion of values of Hecke–M…](#source-source-b9d7160919621f)
+- **Y. Fu**: [Proof-Refactor: Refactoring Generated Formal Proofs into Modular Ar…](#source-source-6c6de21a713ea9)
 - **Y. Li**: [Optimal bounds for an Erdős problem on matching integers to distinc…](#source-source-1b9324cc5f4641)
 - **Y. Puri**: [Integer sequences and periodic points](#source-source-5cac1ad51acb12)
-- **Y. Tachiya**: [Refinement of the Chowla--Erdős method and linear independence of c…](#source-source-317a740451ce03), [Linear independence results for the values of divisor functions series](#source-source-6accca20cd5e44)
-- **Y. Zhang**: [Bounded gaps between primes](#source-source-c32d672658410d)
+- **Y. Sun**: [LeanMarathon: Toward Reliable AI Co-Mathematicians through Long-Hor…](#source-source-eecf0fe92f9dcb)
+- **Y. Tachiya**: [Refinement of the Chowla–Erdős method and linear independence of ce…](#source-source-317a740451ce03), [Linear independence results for the values of divisor functions series](#source-source-6accca20cd5e44)
+- **Y. Zhang**: [Bounded gaps between primes](#source-source-c32d672658410d), [LeanMarathon: Toward Reliable AI Co-Mathematicians through Long-Hor…](#source-source-eecf0fe92f9dcb)
 - **YaGuang Li**: [Towards Autonomous Mathematics Research](#source-source-a028dc6bb31c0c)
 - **Yann Bugeaud**: [Adamczewski–Bugeaud subword-complexity method context](#source-proposed-direct-d4ac203509248c)
 - **Yi Tay**: [Towards Autonomous Mathematics Research](#source-source-a028dc6bb31c0c)
 - **Yi Wang**: [Log-convex and Stieltjes moment sequences](#source-source-e535117ac620e6)
 - **Yifei Li**: [ScienceAgentBench: Toward Rigorous Assessment of Language Agents fo…](#source-source-05a4915b796443)
+- **Yinya Huang**: [LEGO-Prover: Neural Theorem Proving with Growing Libraries](#source-source-cf807e61b6b4f4)
 - **Yohei Tachiya**: [Refinements of Erdős's irrationality criterion for certain sparse i…](#source-proposed-direct-329775d58148a9), [Irrationality of Lambert series associated with a periodic sequence](#source-source-9ce84321e202f1), [Linear independence of certain Lambert series](#source-source-f6ee6890db85d9)
 - **Youngbeom Jin**: [Semi-Autonomous Mathematics Discovery with Gemini: A Case Study on…](#source-source-79afab8abaf9d5)
-- **Youyuan Zhang**: [DreamProver: Evolving Transferable Lemma Libraries via a Wake--Slee…](#source-source-7d871bf2920e53)
+- **Youyuan Zhang**: [DreamProver: Evolving Transferable Lemma Libraries via a Wake–Sleep…](#source-source-7d871bf2920e53)
 - **Yu Su**: [ScienceAgentBench: Toward Rigorous Assessment of Language Agents fo…](#source-source-05a4915b796443)
 - **Yu-Chen Sun**: [The critical-window profile for d\_k in short intervals](#source-proposed-direct-6f90767d1d01dd)
 - **Yu-Sheng Shih**: [Semi-Autonomous Mathematics Discovery with Gemini: A Case Study on…](#source-source-79afab8abaf9d5)
-- **Yu. V. Nesterenko**: [Modular functions and transcendence questions](#source-source-6346eeeac5036d)
+- **Yu. F. Bilu**: [The many faces of the subspace theorem \[after Adamczewski, Bugeaud,…](#source-source-162eb5dca5a61a)
 - **Yuan Liu**: [Towards Autonomous Mathematics Research](#source-source-a028dc6bb31c0c)
+- **Yue Zhuan**: [Dream-RSI: Recursive Self-Improvement through Evolving Worlds](#source-source-e937c5aa7e1b76)
+- **Yunsong Guo**: [Dream-RSI: Recursive Self-Improvement through Evolving Worlds](#source-source-e937c5aa7e1b76)
 - **Yuri Chervonyi**: [Semi-Autonomous Mathematics Discovery with Gemini: A Case Study on…](#source-source-79afab8abaf9d5), [Towards Autonomous Mathematics Research](#source-source-a028dc6bb31c0c)
+- **Yuri V. Nesterenko**: [Modular functions and transcendence questions](#source-source-6346eeeac5036d)
 - **Yuta Suzuki**: [Refinements of Erdős's irrationality criterion for certain sparse i…](#source-proposed-direct-329775d58148a9)
 - **Yuting Ning**: [ScienceAgentBench: Toward Rigorous Assessment of Language Agents fo…](#source-source-05a4915b796443)
 - **Yutong Wang**: [LeanSearch v2: Global Premise Retrieval for Lean 4 Theorem Proving](#source-source-82459d858b7d75)
 - **Z. Nitecki**: [Subsum sets: intervals, Cantor sets, and Cantorvals](#source-source-63a234b13e4427)
+- **Z. Wang**: [Proof-Refactor: Refactoring Generated Formal Proofs into Modular Ar…](#source-source-6c6de21a713ea9)
+- **Z. Yang**: [CircuitProver: Agentic Lean 4 Theorem Proving with Reusable Circuit…](#source-source-065a0d33878ca0)
 - **Zaiwen Wen**: [Advancing Mathematical Research via Human-AI Interactive Theorem Pr…](#source-source-6ade6fbcd34d79)
 - **Zeming Sun**: [LeanSearch v2: Global Premise Retrieval for Lean 4 Theorem Proving](#source-source-82459d858b7d75)
 - **Zeraoulia Rafik**: [Irrationality of the n=2^m sparse totient subseries](#source-erdos249-rafik-sparse-power-two-subseries)
 - **Zeyi Liao**: [ScienceAgentBench: Toward Rigorous Assessment of Language Agents fo…](#source-source-05a4915b796443)
-- **Zhaoyu Li**: [DreamProver: Evolving Transferable Lemma Libraries via a Wake--Slee…](#source-source-7d871bf2920e53)
+- **Zhankui He**: [Dream-RSI: Recursive Self-Improvement through Evolving Worlds](#source-source-e937c5aa7e1b76)
+- **Zhaoyu Li**: [DreamProver: Evolving Transferable Lemma Libraries via a Wake–Sleep…](#source-source-7d871bf2920e53)
+- **Zheng Zhang**: [Dream-RSI: Recursive Self-Improvement through Evolving Worlds](#source-source-e937c5aa7e1b76)
+- **Zhenguo Li**: [LEGO-Prover: Neural Theorem Proving with Growing Libraries](#source-source-cf807e61b6b4f4)
+- **Zhengying Liu**: [LEGO-Prover: Neural Theorem Proving with Growing Libraries](#source-source-cf807e61b6b4f4)
 - **Zichen Lai**: [Advancing Mathematical Research via Human-AI Interactive Theorem Pr…](#source-source-6ade6fbcd34d79)
 - **Zijun Yao**: [EurekAgent: Agent Environment Engineering is All You Need for Auton…](#source-source-cc823e517ced81)
 - **Ziru Chen**: [ScienceAgentBench: Toward Rigorous Assessment of Language Agents fo…](#source-source-05a4915b796443)
 - **Zitong Lu**: [ScienceAgentBench: Toward Rigorous Assessment of Language Agents fo…](#source-source-05a4915b796443)
+- **Ziwei Guan**: [ProofEvolve: Neuro-Symbolic Evolution for Formal Automated Theorem…](#source-source-f20325c949d904)
+- **Zouuup (GitHub handle)**: [landrun](#source-software-landrun-pinned)
 - **Zsuzsa Marka**: [End-to-End Testing of Open-Source Hardware Documentation Developed…](#source-arxiv-2309-05942)
 - **ammkrn**: [nanoda\_lib](#source-software-nanoda-lib-independent-lean-checker)
 - **ani (forum handle)**: [Degree-seven total-variation counterexample for polynomial lemniscates](#source-erdos1041-ani-degree-seven-candidate-counterexample)
-- **de Zeeuw, Frank**: [An improved point-line incidence bound over arbitrary fields](#source-source-29cbac966b8b76)
+- **lean4export contributors**: [lean4export](#source-software-lean4export-pinned)
 - **morluto**: [Independent check of candidate degree-seven counterexample](#source-erdos1041-morluto-independent-check)
 - **shtuka**: [A Short Path Joining Two Zeros Inside a Polynomial Lemniscate](#source-source-f300911fb03a5c)
-- **van Doorn, Wouter**: [Partitions with prescribed sum of reciprocals: asymptotic bounds](#source-source-dbbc7de069eeee)
-- **{D. H. J. Polymath}**: [Variants of the Selberg sieve, and bounded intervals containing man…](#source-source-91aa380a16dba9)
-- **{Plectis revision research draft}**: [Three refinements for the lemniscate-path programme](#source-source-45037c29c04bed)
-- **{{National Institute of Standards and Technology}}**: [{Digital Library of Mathematical Functions}, {Section} 5.11(iii): R…](#source-source-b95bf142df7fb5)
 
 </details>
 
@@ -842,6 +997,10 @@ Exact source locations:
 
 - [Sections End-to-End Exercise (including Method), Student Recommendations, and Discussion and Additional Recommendations. Two student teams worked through timing-hardware documentation; task and survey evidence, not evaluation of this mathematical repository.](https://arxiv.org/abs/2309.05942v1)
 
+Public implementation or evidence coordinates:
+
+- [paper/systems/claim-faithful-publication-systems-paper.tex](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1448-L1448) — lines `1448–1448`; excerpt `sha256:2078e6cdffcfe504e1c0538fdf6afb8dff15262b1dffcad00b805bf8d0cffc6c`
+
 Paper citation usages:
 
 - `claim-faithful-publication-systems`: [cite at paper/systems/claim-faithful-publication-systems-paper.tex:991](../../paper/systems/claim-faithful-publication-systems-paper.tex#L991-L991)
@@ -873,6 +1032,10 @@ Exact source locations:
 - [Versioned source archive, docs/threats\_validity.tex, lines 5–18 (limitations\_boundary).](https://arxiv.org/src/2412.03815v2)
 - [Versioned source archive, docs/conclusion.tex, lines 3–4 (limitations\_boundary).](https://arxiv.org/src/2412.03815v2)
 
+Public implementation or evidence coordinates:
+
+- [paper/systems/claim-faithful-publication-systems-paper.tex](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1393-L1393) — lines `1393–1393`; excerpt `sha256:330e39b57632c52b4aa2ed11981633150c599ac3eee36bc67aeb06c52561f176`
+
 Paper citation usages:
 
 - `claim-faithful-publication-systems`: [cite at paper/systems/claim-faithful-publication-systems-paper.tex:986](../../paper/systems/claim-faithful-publication-systems-paper.tex#L986-L986)
@@ -903,6 +1066,10 @@ Exact source locations:
 - [Versioned source archive, sections/method.tex, lines 43–46 (limitations\_boundary).](https://arxiv.org/src/2509.13978v2)
 - [Versioned source archive, sections/llm\_evaluation.tex, lines 56–61 (limitations\_boundary).](https://arxiv.org/src/2509.13978v2)
 - [Versioned source archive, sections/conclusion.tex, lines 1–3 (limitations\_boundary).](https://arxiv.org/src/2509.13978v2)
+
+Public implementation or evidence coordinates:
+
+- [paper/systems/claim-faithful-publication-systems-paper.tex](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1386-L1386) — lines `1386–1386`; excerpt `sha256:7fa7f70414be6c5e16697afed81bbf2ed421bf50d5a5f28730471557fd2b3290`
 
 Paper citation usages:
 
@@ -1683,27 +1850,87 @@ Public implementation or evidence coordinates:
 - [docs/case-studies/formal-conjectures-1041.md](../../docs/case-studies/formal-conjectures-1041.md#L12-L12) — lines `12–12`; excerpt `sha256:92f1c74787cba286feffec250ded2fbf4944d6ac40f80c655b6b9370623f920c`
 - [docs/case-studies/formal-conjectures-1041.md](../../docs/case-studies/formal-conjectures-1041.md#L74-L74) — lines `74–74`; excerpt `sha256:630e2b08b1fc43aaea823cabc9d314e0e96ad4d7a5d571d1203febbcb140df69`
 
+<a id="source-formal-conjectures-statement-problem-1041"></a>
+
+### [FormalConjectures.ErdosProblems.1041](https://github.com/google-deepmind/formal-conjectures/blob/a01ad23474c14781e4f16f48f6e5a430895e10a0/FormalConjectures/ErdosProblems/1041.lean)
+
+- Source id: `formal\_conjectures\_statement\_problem\_1041`
+- Author or public identity: The Formal Conjectures Authors
+- Kind: `software`
+- Problems: #1041
+- Relationship and boundary: External statement corpus source for problem #1041. The linked local adapter/vocabulary records the statement comparison; this is not upstream proof authorship, proof acceptance, or independent mathematical review.
+- Source verification: `bibliography\_only` — Upstream project identity and local pinned use are recorded; this does not certify mathematical results or independent human review.
+- Local mapping: `exact\_pinned\_dependency` — Exact upstream revision and local execution source recorded.
+
+Exact source locations:
+
+- [Exact upstream revision named in local adapter or case study; direct file rereading is not claimed by this metadata population.](https://github.com/google-deepmind/formal-conjectures/blob/a01ad23474c14781e4f16f48f6e5a430895e10a0/FormalConjectures/ErdosProblems/1041.lean)
+
+Public implementation or evidence coordinates:
+
+- [lean/ErdosProblems/Erdos1041/Counterexample/HausdorffLength.lean](../../lean/ErdosProblems/Erdos1041/Counterexample/HausdorffLength.lean#L390-L390) — lines `390–390`; excerpt `sha256:cbe13cbf9d5041738aecdb7bbe0abff35d2f946ed3567c4098ec6ce11c206613`
+
+<a id="source-formal-conjectures-statement-problem-249"></a>
+
+### [FormalConjectures.ErdosProblems.249](https://github.com/google-deepmind/formal-conjectures/blob/398958d3964d738886bd24433918c365df4a2aab/FormalConjectures/ErdosProblems/249.lean)
+
+- Source id: `formal\_conjectures\_statement\_problem\_249`
+- Author or public identity: The Formal Conjectures Authors
+- Kind: `software`
+- Problems: #249
+- Relationship and boundary: External statement corpus source for problem #249. The linked local adapter/vocabulary records the statement comparison; this is not upstream proof authorship, proof acceptance, or independent mathematical review.
+- Source verification: `bibliography\_only` — Upstream project identity and local pinned use are recorded; this does not certify mathematical results or independent human review.
+- Local mapping: `exact\_pinned\_dependency` — Exact upstream revision and local execution source recorded.
+
+Exact source locations:
+
+- [Exact upstream revision named in local adapter or case study; direct file rereading is not claimed by this metadata population.](https://github.com/google-deepmind/formal-conjectures/blob/398958d3964d738886bd24433918c365df4a2aab/FormalConjectures/ErdosProblems/249.lean)
+
+Public implementation or evidence coordinates:
+
+- [research/adapters/FormalConjecturesAdapter.lean](../../research/adapters/FormalConjecturesAdapter.lean#L10-L42) — lines `10–42`; excerpt `sha256:a09ac08e4260951af6627cc74ccc029207e6497eb1840a65bda22888010525ed`
+
+<a id="source-formal-conjectures-statement-problem-68"></a>
+
+### [FormalConjectures.ErdosProblems.68](https://github.com/google-deepmind/formal-conjectures/blob/398958d3964d738886bd24433918c365df4a2aab/FormalConjectures/ErdosProblems/68.lean)
+
+- Source id: `formal\_conjectures\_statement\_problem\_68`
+- Author or public identity: The Formal Conjectures Authors
+- Kind: `software`
+- Problems: #68
+- Relationship and boundary: External statement corpus source for problem #68. The linked local adapter/vocabulary records the statement comparison; this is not upstream proof authorship, proof acceptance, or independent mathematical review.
+- Source verification: `bibliography\_only` — Upstream project identity and local pinned use are recorded; this does not certify mathematical results or independent human review.
+- Local mapping: `exact\_pinned\_dependency` — Exact upstream revision and local execution source recorded.
+
+Exact source locations:
+
+- [Exact upstream revision named in local adapter or case study; direct file rereading is not claimed by this metadata population.](https://github.com/google-deepmind/formal-conjectures/blob/398958d3964d738886bd24433918c365df4a2aab/FormalConjectures/ErdosProblems/68.lean)
+
+Public implementation or evidence coordinates:
+
+- [research/adapters/FormalConjecturesAdapter.lean](../../research/adapters/FormalConjecturesAdapter.lean#L10-L42) — lines `10–42`; excerpt `sha256:a09ac08e4260951af6627cc74ccc029207e6497eb1840a65bda22888010525ed`
+
 <a id="source-lean4-toolchain-v4-29-1"></a>
 
 ### [Lean 4 theorem prover](https://lean-lang.org/papers/system.pdf)
 
 - Source id: `lean4\_toolchain\_v4\_29\_1`
-- Author or public identity: Leonardo de Moura, Sebastian Ullrich, Lean contributors
+- Author or public identity: Lean contributors
 - Kind: `software`
 - Problems: #68, #243, #249, #251, #257, #269, #1041, #1049
 - Relationship and boundary: Proof-checking infrastructure used across the complete Lean corpus; software/tool attribution, not mathematical authorship.
 - Source verification: `source\_verified` — The cited webpage/source identity, displayed authorship, date, and quoted claim were directly checked. This does not certify the mathematics or imply local adoption.
-- Local mapping: `exact\_pinned\_dependency` — Exact toolchain pin and CFF reference located.
+- Local mapping: `exact\_pinned\_dependency` — Exact dependency pin is linked to its authored toolchain/manifest. Historical CFF credit is retained as a commit-pinned locator; generated CFF is a consumer of this record.
 
 Exact source locations:
 
 - [Toolchain version leanprover/lean4:v4.29.1](https://github.com/leanprover/lean4/releases/tag/v4.29.1)
 - [Public bibliographic identity and author record; metadata checked on 2026-09-12. This does not verify a mathematical use.](https://doi.org/10.1007/978-3-030-79876-5_37)
+- [Historical hand-maintained CFF credit before citation generation. Current dependency identity is established by the linked toolchain/manifest, not by the generated CFF projection.](https://github.com/wcook04/plectis-erdos/blob/f9ad7e269da32d27ab71ddb3ae576a2844ac7b57/CITATION.cff#L168-L182)
 
 Public implementation or evidence coordinates:
 
 - [lean-toolchain](../../lean-toolchain#L1-L1) — lines `1–1`; excerpt `sha256:7dc000621e0046d1aada809e2b7177e64454645cf4c741e9daaf79c99ec2e7a2`
-- [CITATION.cff](../../CITATION.cff#L168-L182) — lines `168–182`; excerpt `sha256:20ed248984e0372fbfcc616d3d61f895f70cb37bf9a5e14498b7618a6f5f137b`
 
 <a id="source-mathlib4-pin-5e932f97"></a>
 
@@ -1715,17 +1942,17 @@ Public implementation or evidence coordinates:
 - Problems: #68, #243, #249, #251, #257, #269, #1041, #1049
 - Relationship and boundary: Library dependency used by every problem’s Lean source; infrastructure attribution only.
 - Source verification: `source\_verified` — The cited webpage/source identity, displayed authorship, date, and quoted claim were directly checked. This does not certify the mathematics or imply local adoption.
-- Local mapping: `exact\_pinned\_dependency` — Exact manifest revision, Lake requirement, and CFF software credit located.
+- Local mapping: `exact\_pinned\_dependency` — Exact dependency pin is linked to its authored toolchain/manifest. Historical CFF credit is retained as a commit-pinned locator; generated CFF is a consumer of this record.
 
 Exact source locations:
 
 - [lake-manifest.json exact rev 5e932f97dd25535344f80f9dd8da3aab83df0fe6](https://github.com/leanprover-community/mathlib4/tree/5e932f97dd25535344f80f9dd8da3aab83df0fe6)
+- [Historical hand-maintained CFF credit before citation generation. Current dependency identity is established by the linked toolchain/manifest, not by the generated CFF projection.](https://github.com/wcook04/plectis-erdos/blob/f9ad7e269da32d27ab71ddb3ae576a2844ac7b57/CITATION.cff#L183-L187)
 
 Public implementation or evidence coordinates:
 
 - [lakefile.toml](../../lakefile.toml#L32-L35) — lines `32–35`; excerpt `sha256:e23a1b4c89226a64e814575fe11c1cf7df1ba9a52561da8d51c246412e7a4f1a`
 - [lake-manifest.json](../../lake-manifest.json#L5-L15) — lines `5–15`; excerpt `sha256:b0f750acfc6ef6e2955d978ed32fc02884e8fa180faa9f99bc1ec15ba856defc`
-- [CITATION.cff](../../CITATION.cff#L183-L187) — lines `183–187`; excerpt `sha256:b732cf902522394d45614cbb39c73530e2cde6315917ace5f34708b2e268bdb8`
 
 <a id="source-open-letter-royal-society-fellows-20260917"></a>
 
@@ -1996,18 +2223,65 @@ Exact source locations:
 - Source id: `software\_comparator\_statement\_checker`
 - Author or public identity: Lean FRO
 - Kind: `software`
-- Problems: none recorded
-- Relationship and boundary: Cited by the linked public manuscript(s). The bibliography and citation contexts record the paper's use; no tracked primary-source closure currently verifies a stronger source-level relation.
-- Source verification: `bibliography\_only` — scope not separately recorded
+- Problems: #68, #243, #249, #251, #257, #269, #1041, #1049
+- Relationship and boundary: Statement and axiom-budget comparison software directly built and executed by the pinned external verification replay. Original development is credited upstream to Lean FRO. This is tool credit, not authorship or review of the local mathematics.
+- Source verification: `source\_verified` — Pinned upstream README identity and acknowledgement checked 2026-10-05; local runner establishes configured use. This metadata check is not a new Comparator run.
 - Local mapping: `not recorded`
+
+Exact source locations:
+
+- [README Acknowledgement: originally developed by Lean FRO; prerequisites name lean4export and landrun; nanoda optional.](https://raw.githubusercontent.com/leanprover/comparator/789279735fe44c1c05dc54bb9f46ba4d9b8c7611/README.md)
 
 Public implementation or evidence coordinates:
 
 - [paper/systems/claim-faithful-publication-systems-paper.tex](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1084-L1087) — lines `1084–1087`; excerpt `sha256:a0dabd3a68ddafea15a4462241af10cb793e90e59c6324a84b883eac434e638d`
+- [scripts/replay\_external\_verification.py](../../scripts/replay_external_verification.py#L390-L425) — lines `390–425`; excerpt `sha256:9362b249b0d2228805da9feee5d802407f38cba4194a6f0d64d12ef1927e414e`
 
 Paper citation usages:
 
 - `claim-faithful-publication-systems`: [cite at paper/systems/claim-faithful-publication-systems-paper.tex:289](../../paper/systems/claim-faithful-publication-systems-paper.tex#L289-L289), [cite at paper/systems/claim-faithful-publication-systems-paper.tex:982](../../paper/systems/claim-faithful-publication-systems-paper.tex#L982-L982)
+
+<a id="source-software-landrun-pinned"></a>
+
+### [landrun](https://github.com/zouuup/landrun/tree/811cfff51ceaf3d9843708aa6d22e9b84ccac8b4)
+
+- Source id: `software\_landrun\_pinned`
+- Author or public identity: Zouuup (GitHub handle)
+- Kind: `software`
+- Problems: #68, #243, #249, #251, #257, #269, #1041, #1049
+- Relationship and boundary: Linux Landlock sandbox directly built by the external verification runner and supplied to Comparator. Upstream project is maintained under the Zouuup GitHub handle; this is isolation infrastructure credit, not proof authorship.
+- Source verification: `source\_verified` — Upstream project identity and local pinned use are recorded; this does not certify mathematical results or independent human review.
+- Local mapping: `exact\_pinned\_dependency` — Exact upstream revision and local execution source recorded.
+
+Exact source locations:
+
+- [Pinned upstream software project identity; local use is evidenced by linked source.](https://github.com/zouuup/landrun/tree/811cfff51ceaf3d9843708aa6d22e9b84ccac8b4)
+
+Public implementation or evidence coordinates:
+
+- [scripts/replay\_external\_verification.py](../../scripts/replay_external_verification.py#L407-L412) — lines `407–412`; excerpt `sha256:bc9c57fecbc538d9053f69f5ee96fcc623a76e8f17dcdebc2c0973b8b1845087`
+- [scripts/replay\_external\_verification.py](../../scripts/replay_external_verification.py#L423-L436) — lines `423–436`; excerpt `sha256:43b1728dbd66010cca8c30eb6154f90a118dd6d5203724d578085cc8b7aeecd4`
+
+<a id="source-software-lean4export-pinned"></a>
+
+### [lean4export](https://github.com/leanprover/lean4export/tree/6f4e21dd70c3c11d7fbd07d39e3192792c657448)
+
+- Source id: `software\_lean4export\_pinned`
+- Author or public identity: lean4export contributors
+- Kind: `software`
+- Problems: #68, #243, #249, #251, #257, #269, #1041, #1049
+- Relationship and boundary: Lean declaration-export software directly built and passed through COMPARATOR\_LEAN4EXPORT by the replay runner. Upstream README describes export of modules and transitive dependencies; contributor collective is used because this bounded metadata check did not verify individual creator names.
+- Source verification: `source\_verified` — Upstream project identity and local pinned use are recorded; this does not certify mathematical results or independent human review.
+- Local mapping: `exact\_pinned\_dependency` — Exact upstream revision and local execution source recorded.
+
+Exact source locations:
+
+- [Pinned upstream software project identity; local use is evidenced by linked source.](https://github.com/leanprover/lean4export/tree/6f4e21dd70c3c11d7fbd07d39e3192792c657448)
+
+Public implementation or evidence coordinates:
+
+- [scripts/replay\_external\_verification.py](../../scripts/replay_external_verification.py#L402-L405) — lines `402–405`; excerpt `sha256:bc66dd24766424c8daab75648782c3b0b6ce176cc5369a16b2be3ec8b14633b6`
+- [scripts/replay\_external\_verification.py](../../scripts/replay_external_verification.py#L423-L436) — lines `423–436`; excerpt `sha256:43b1728dbd66010cca8c30eb6154f90a118dd6d5203724d578085cc8b7aeecd4`
 
 <a id="source-software-nanoda-lib-independent-lean-checker"></a>
 
@@ -2017,7 +2291,7 @@ Paper citation usages:
 - Author or public identity: ammkrn
 - Kind: `software`
 - Problems: none recorded
-- Relationship and boundary: Cited by the linked public manuscript(s). The bibliography and citation contexts record the paper's use; no tracked primary-source closure currently verifies a stronger source-level relation.
+- Relationship and boundary: Cited in the systems paper as an optional independent Lean kernel checker. Inspected selected Comparator manifests set enable\_nanoda=false, so this citation does not claim that nanoda executed in those recorded verification checks.
 - Source verification: `bibliography\_only` — scope not separately recorded
 - Local mapping: `not recorded`
 
@@ -2028,6 +2302,47 @@ Public implementation or evidence coordinates:
 Paper citation usages:
 
 - `claim-faithful-publication-systems`: [cite at paper/systems/claim-faithful-publication-systems-paper.tex:289](../../paper/systems/claim-faithful-publication-systems-paper.tex#L289-L289), [cite at paper/systems/claim-faithful-publication-systems-paper.tex:982](../../paper/systems/claim-faithful-publication-systems-paper.tex#L982-L982)
+
+<a id="source-source-00cc92a42e058b"></a>
+
+### [Integer Linear Forms for a Factorial Reciprocal Series](https://github.com/wcook04/plectis-erdos/blob/main/paper/68/erdos-68-factorial-denominator-irrationality.tex)
+
+- Source id: `source-00cc92a42e058b`
+- Author or public identity: Will Cook
+- Kind: `literature`
+- Problems: none recorded
+- Relationship and boundary: Cited by the linked public manuscript bibliography. Citation metadata records attribution; the cited work and mathematical correspondence have not been independently verified in this registration.
+- Source verification: `bibliography\_only` — scope not separately recorded
+- Local mapping: `not recorded`
+
+Public implementation or evidence coordinates:
+
+- [paper/synthesis/optimal-sparse-perturbations.tex](../../paper/synthesis/optimal-sparse-perturbations.tex#L2235-L2235) — lines `2235–2235`; excerpt `sha256:5dd4b531a4aa35e23e5ed41023f2e172a3da9786c670669fd6a9503aa486501c`
+
+Paper citation usages:
+
+- `optimal-sparse-perturbations`: [cite at paper/synthesis/optimal-sparse-perturbations.tex:1848](../../paper/synthesis/optimal-sparse-perturbations.tex#L1848-L1848)
+- `writing-mathematics-from-reviewed-revisions`: [cite at paper/exposition/parts/revisions.tex:186](../../paper/exposition/parts/revisions.tex#L186-L186)
+
+<a id="source-source-0112c737837bc2"></a>
+
+### [Multiplicative functions and k-automatic sequences](https://www.numdam.org/item/JTNB_2001__13_2_651_0/)
+
+- Source id: `source-0112c737837bc2`
+- Author or public identity: S. Yazdani
+- Kind: `literature`
+- Problems: none recorded
+- Relationship and boundary: Cited by the linked public manuscript bibliography. Citation metadata records attribution; the cited work and mathematical correspondence have not been independently verified in this registration.
+- Source verification: `bibliography\_only` — scope not separately recorded
+- Local mapping: `not recorded`
+
+Public implementation or evidence coordinates:
+
+- [paper/systems/claim-faithful-publication-systems-paper.tex](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1072-L1072) — lines `1072–1072`; excerpt `sha256:ee6bec077264a45c5fbfd20e26275727ad92bc98fbc986cc5691cccff2734793`
+
+Paper citation usages:
+
+- `claim-faithful-publication-systems`: [cite at paper/systems/claim-faithful-publication-systems-paper.tex:954](../../paper/systems/claim-faithful-publication-systems-paper.tex#L954-L954), [cite at paper/systems/claim-faithful-publication-systems-paper.tex:997](../../paper/systems/claim-faithful-publication-systems-paper.tex#L997-L997)
 
 <a id="source-source-011f43e5a781d7"></a>
 
@@ -2051,10 +2366,10 @@ Paper citation usages:
 
 <a id="source-source-02fc1f0e6f0418"></a>
 
-### [On the sequence $n!$ mod $p$](https://ems.press/content/serial-article-files/47109)
+### [On the sequence n! mod p](https://ems.press/content/serial-article-files/47109)
 
 - Source id: `source-02fc1f0e6f0418`
-- Author or public identity: Grebennikov, Alexandr, Sagdeev, Arsenii, Semchankau, Aliaksei, Vasilevskii, Aliaksei
+- Author or public identity: Alexandr Grebennikov, Arsenii Sagdeev, Aliaksei Semchankau, Aliaksei Vasilevskii
 - Kind: `literature`
 - Problems: #68
 - Relationship and boundary: Cited by the linked public manuscript(s). The bibliography and citation contexts record the paper's use; no tracked primary-source closure currently verifies a stronger source-level relation.
@@ -2076,10 +2391,10 @@ Paper citation usages:
 
 <a id="source-source-04603f785c9e7f"></a>
 
-### [Lower bounds for some value sets over finite fields: incidence geometry and {Bourgain}'s group expansion theorem](https://arxiv.org/abs/2609.05652v1)
+### [Lower bounds for some value sets over finite fields: incidence geometry and Bourgain's group expansion theorem](https://arxiv.org/abs/2609.05652v1)
 
 - Source id: `source-04603f785c9e7f`
-- Author or public identity: Hu, Xiyu
+- Author or public identity: Xiyu Hu
 - Kind: `literature`
 - Problems: #68
 - Relationship and boundary: Cited by the linked public manuscript(s). The bibliography and citation contexts record the paper's use; no tracked primary-source closure currently verifies a stronger source-level relation.
@@ -2144,6 +2459,46 @@ Public implementation or evidence coordinates:
 Paper citation usages:
 
 - `erdos269-running-lcm-reasoning-surface`: [cite at paper/269/erdos269-running-lcm-reasoning-surface.tex:391](../../paper/269/erdos269-running-lcm-reasoning-surface.tex#L391-L391), [cite at paper/reasoning-parts/erdos269/core.tex:333](../../paper/reasoning-parts/erdos269/core.tex#L333-L333)
+
+<a id="source-source-065a0d33878ca0"></a>
+
+### [CircuitProver: Agentic Lean 4 Theorem Proving with Reusable Circuit Proof Library for Hardware Verification](https://arxiv.org/abs/2607.27259v1)
+
+- Source id: `source-065a0d33878ca0`
+- Author or public identity: Z. Yang
+- Kind: `literature`
+- Problems: none recorded
+- Relationship and boundary: Cited by the linked public manuscript bibliography. Citation metadata records attribution; the cited work and mathematical correspondence have not been independently verified in this registration.
+- Source verification: `bibliography\_only` — scope not separately recorded
+- Local mapping: `not recorded`
+
+Public implementation or evidence coordinates:
+
+- [paper/systems/claim-faithful-publication-systems-paper.tex](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1335-L1335) — lines `1335–1335`; excerpt `sha256:10f4eb3845b1fedb2c4408789e21905a003e758f2b17a44444fe6a522cd55153`
+
+Paper citation usages:
+
+- `claim-faithful-publication-systems`: [cite at paper/systems/claim-faithful-publication-systems-paper.tex:988](../../paper/systems/claim-faithful-publication-systems-paper.tex#L988-L988)
+
+<a id="source-source-06e897baf8de8e"></a>
+
+### [The Chinese remainder theorem](https://kconrad.math.uconn.edu/blurbs/ugradnumthy/crt.pdf)
+
+- Source id: `source-06e897baf8de8e`
+- Author or public identity: K. Conrad
+- Kind: `literature`
+- Problems: none recorded
+- Relationship and boundary: Cited by the linked public manuscript bibliography. Citation metadata records attribution; the cited work and mathematical correspondence have not been independently verified in this registration.
+- Source verification: `bibliography\_only` — scope not separately recorded
+- Local mapping: `not recorded`
+
+Public implementation or evidence coordinates:
+
+- [paper/257/erdos257-mersenne-reasoning-surface.tex](../../paper/257/erdos257-mersenne-reasoning-surface.tex#L9751-L9751) — lines `9751–9751`; excerpt `sha256:7d921f8c252f93af15370b38e90eb7ab8d7a79966ac4964fdd2357d628924c5c`
+
+Paper citation usages:
+
+- `erdos257-mersenne-reasoning-surface`: [cite at paper/257/erdos257-mersenne-reasoning-surface.tex:8551](../../paper/257/erdos257-mersenne-reasoning-surface.tex#L8551-L8551), [cite at paper/reasoning-parts/erdos257/a257\_front.tex:8351](../../paper/reasoning-parts/erdos257/a257_front.tex#L8351-L8351)
 
 <a id="source-source-07d2ca69e611b7"></a>
 
@@ -2223,6 +2578,27 @@ Paper citation usages:
 - `erdos-251-prime-gap-dyadic-series`: [cite at paper/251/erdos-251-prime-gap-dyadic-series.tex:464](../../paper/251/erdos-251-prime-gap-dyadic-series.tex#L464-L464)
 - `erdos251-prime-gap-reasoning-surface`: [cite at paper/251/erdos251-prime-gap-reasoning-surface.tex:795](../../paper/251/erdos251-prime-gap-reasoning-surface.tex#L795-L795), [cite at paper/251/erdos251-prime-gap-reasoning-surface.tex:1554](../../paper/251/erdos251-prime-gap-reasoning-surface.tex#L1554-L1554), [cite at paper/251/erdos251-prime-gap-reasoning-surface.tex:1627](../../paper/251/erdos251-prime-gap-reasoning-surface.tex#L1627-L1627), [cite at paper/251/erdos251-prime-gap-reasoning-surface.tex:2291](../../paper/251/erdos251-prime-gap-reasoning-surface.tex#L2291-L2291), [cite at paper/251/erdos251-prime-gap-reasoning-surface.tex:2587](../../paper/251/erdos251-prime-gap-reasoning-surface.tex#L2587-L2587), [cite at paper/reasoning-parts/erdos251/core.tex:753](../../paper/reasoning-parts/erdos251/core.tex#L753-L753), [cite at paper/reasoning-parts/erdos251/core.tex:1512](../../paper/reasoning-parts/erdos251/core.tex#L1512-L1512), [cite at paper/reasoning-parts/erdos251/core.tex:1585](../../paper/reasoning-parts/erdos251/core.tex#L1585-L1585), [cite at paper/reasoning-parts/erdos251/core.tex:2249](../../paper/reasoning-parts/erdos251/core.tex#L2249-L2249), [cite at paper/reasoning-parts/erdos251/core.tex:2545](../../paper/reasoning-parts/erdos251/core.tex#L2545-L2545)
 
+<a id="source-source-0be6f6ffc67f0c"></a>
+
+### [Sparse Congruence-Preserving Perturbations of Dyadic Series](https://github.com/wcook04/plectis-erdos/blob/main/paper/251/erdos-251-prime-gap-dyadic-series.tex)
+
+- Source id: `source-0be6f6ffc67f0c`
+- Author or public identity: Will Cook
+- Kind: `literature`
+- Problems: none recorded
+- Relationship and boundary: Cited by the linked public manuscript bibliography. Citation metadata records attribution; the cited work and mathematical correspondence have not been independently verified in this registration.
+- Source verification: `bibliography\_only` — scope not separately recorded
+- Local mapping: `not recorded`
+
+Public implementation or evidence coordinates:
+
+- [paper/synthesis/optimal-sparse-perturbations.tex](../../paper/synthesis/optimal-sparse-perturbations.tex#L2249-L2249) — lines `2249–2249`; excerpt `sha256:e0aa54b4eacd49b8115ccee72562fa9a89bea01796ca3f964fdb782fbdd9529c`
+
+Paper citation usages:
+
+- `optimal-sparse-perturbations`: [cite at paper/synthesis/optimal-sparse-perturbations.tex:1005](../../paper/synthesis/optimal-sparse-perturbations.tex#L1005-L1005), [cite at paper/synthesis/optimal-sparse-perturbations.tex:1852](../../paper/synthesis/optimal-sparse-perturbations.tex#L1852-L1852)
+- `writing-mathematics-from-reviewed-revisions`: [cite at paper/exposition/parts/review.tex:58](../../paper/exposition/parts/review.tex#L58-L58), [cite at paper/exposition/parts/revisions.tex:155](../../paper/exposition/parts/revisions.tex#L155-L155)
+
 <a id="source-source-0d338bb41b8987"></a>
 
 ### [The Mathematician's Assistant: Integrating AI into Research Practice](https://arxiv.org/abs/2508.20236)
@@ -2244,12 +2620,53 @@ Paper citation usages:
 - `claim-faithful-publication-systems`: [cite at paper/systems/claim-faithful-publication-systems-paper.tex:991](../../paper/systems/claim-faithful-publication-systems-paper.tex#L991-L991)
 - `open-source-mathematics-strategy`: [cite at paper/systems/open-source-mathematics-strategy.tex:779](../../paper/systems/open-source-mathematics-strategy.tex#L779-L779), [cite at paper/systems/open-source-mathematics-strategy.tex:1018](../../paper/systems/open-source-mathematics-strategy.tex#L1018-L1018)
 
+<a id="source-source-0d542d42faf319"></a>
+
+### [Mathematical Writing](https://cs.stanford.edu/~knuth/klr.html)
+
+- Source id: `source-0d542d42faf319`
+- Author or public identity: D. E. Knuth, T. Larrabee, P. M. Roberts
+- Kind: `literature`
+- Problems: none recorded
+- Relationship and boundary: Cited by the linked public manuscript bibliography. Citation metadata records attribution; the cited work and mathematical correspondence have not been independently verified in this registration.
+- Source verification: `bibliography\_only` — scope not separately recorded
+- Local mapping: `not recorded`
+
+Public implementation or evidence coordinates:
+
+- [paper/exposition/parts/references.tex](../../paper/exposition/parts/references.tex#L9-L9) — lines `9–9`; excerpt `sha256:1c523e19f73bc621247da695656ec379bf7ff3aca2d908427e1bda586f16aed9`
+
+Paper citation usages:
+
+- `writing-mathematics-from-reviewed-revisions`: [cite at paper/exposition/parts/reading.tex:30](../../paper/exposition/parts/reading.tex#L30-L30), [cite at paper/exposition/parts/reading.tex:88](../../paper/exposition/parts/reading.tex#L88-L88), [cite at paper/exposition/parts/reading.tex:160](../../paper/exposition/parts/reading.tex#L160-L160), [cite at paper/exposition/parts/reading.tex:183](../../paper/exposition/parts/reading.tex#L183-L183)
+
+<a id="source-source-0d54f419b9d01b"></a>
+
+### Criteria for irrationality of certain classes of numbers II
+
+- Source id: `source-0d54f419b9d01b`
+- Author or public identity: P. H. Diananda, A. Oppenheim
+- Kind: `literature`
+- Problems: none recorded
+- Relationship and boundary: Cited by the linked public manuscript bibliography. Citation metadata records attribution; the cited work and mathematical correspondence have not been independently verified in this registration.
+- Source verification: `bibliography\_only` — scope not separately recorded
+- Local mapping: `not recorded`
+
+Public implementation or evidence coordinates:
+
+- [paper/269/erdos269-running-lcm-reasoning-surface.tex](../../paper/269/erdos269-running-lcm-reasoning-surface.tex#L4435-L4435) — lines `4435–4435`; excerpt `sha256:d7e809e8416e9d68928462e42804d8c1b40e904c39f6ad5a9cd89e13258b1946`
+
+Paper citation usages:
+
+- `erdos-269-three-prime-running-lcm`: [cite at paper/269/erdos-269-three-prime-running-lcm.tex:980](../../paper/269/erdos-269-three-prime-running-lcm.tex#L980-L980)
+- `erdos269-running-lcm-reasoning-surface`: [cite at paper/269/erdos269-running-lcm-reasoning-surface.tex:3923](../../paper/269/erdos269-running-lcm-reasoning-surface.tex#L3923-L3923), [cite at paper/reasoning-parts/erdos269/core.tex:3865](../../paper/reasoning-parts/erdos269/core.tex#L3865-L3865)
+
 <a id="source-source-0dd4239a1d50da"></a>
 
-### [The googol-th bit of the Erdős--Borwein constant](https://math.colgate.edu/~integers/m23/m23.pdf)
+### [The googol-th bit of the Erdős-Borwein constant](https://math.colgate.edu/~integers/m23/m23.pdf)
 
 - Source id: `source-0dd4239a1d50da`
-- Author or public identity: R. Crandall
+- Author or public identity: Richard Crandall
 - Kind: `literature`
 - Problems: #249, #257
 - Relationship and boundary: Cited by the linked public manuscript(s). The bibliography and citation contexts record the paper's use; no tracked primary-source closure currently verifies a stronger source-level relation. Direct literature attribution. The paper is INTEGERS 12 (2012), article A23, pp. 811–840; the local prose points specifically to section 7.
@@ -2290,6 +2707,26 @@ Public implementation or evidence coordinates:
 Paper citation usages:
 
 - `erdos1041-lemniscate-reasoning-surface`: [cite at paper/1041/erdos1041-lemniscate-reasoning-surface.tex:1693](../../paper/1041/erdos1041-lemniscate-reasoning-surface.tex#L1693-L1693), [cite at paper/reasoning-parts/erdos1041/core.tex:1643](../../paper/reasoning-parts/erdos1041/core.tex#L1643-L1643)
+
+<a id="source-source-0e935e21c13b27"></a>
+
+### [Batteries](https://github.com/leanprover-community/batteries)
+
+- Source id: `source-0e935e21c13b27`
+- Author or public identity: Lean community
+- Kind: `literature`
+- Problems: none recorded
+- Relationship and boundary: Cited by the linked public manuscript bibliography. Citation metadata records attribution; the cited work and mathematical correspondence have not been independently verified in this registration.
+- Source verification: `bibliography\_only` — scope not separately recorded
+- Local mapping: `not recorded`
+
+Public implementation or evidence coordinates:
+
+- [paper/systems/claim-faithful-publication-systems-paper.tex](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1184-L1184) — lines `1184–1184`; excerpt `sha256:ace2f08cb87883c3517f9f8393303d1cace8ad6e9f36c0af50027d0a73f319fc`
+
+Paper citation usages:
+
+- `claim-faithful-publication-systems`: [cite at paper/systems/claim-faithful-publication-systems-paper.tex:982](../../paper/systems/claim-faithful-publication-systems-paper.tex#L982-L982)
 
 <a id="source-source-0e9b7210b29d99"></a>
 
@@ -2343,10 +2780,10 @@ Paper citation usages:
 
 <a id="source-source-0ecb074e507b86"></a>
 
-### [On the set of partial sums of an infinite series](https://doi.org/10.11429/ptmps1907.7.14_250)
+### [On the Set of Partial Sums of an Infinite Series](https://doi.org/10.11429/ptmps1907.7.14_250)
 
 - Source id: `source-0ecb074e507b86`
-- Author or public identity: S. Kakeya
+- Author or public identity: Soichi Kakeya
 - Kind: `literature`
 - Problems: #249, #257
 - Relationship and boundary: Cited by the linked public manuscript(s). The bibliography and citation contexts record the paper's use; no tracked primary-source closure currently verifies a stronger source-level relation.
@@ -2474,12 +2911,33 @@ Paper citation usages:
 - `erdos-249-binary-totient-series`: [cite at paper/249/erdos-249-binary-totient-series.tex:458](../../paper/249/erdos-249-binary-totient-series.tex#L458-L458)
 - `erdos249-totient-reasoning-surface`: [cite at paper/249/erdos249-totient-reasoning-surface.tex:684](../../paper/249/erdos249-totient-reasoning-surface.tex#L684-L684), [cite at paper/249/erdos249-totient-reasoning-surface.tex:10041](../../paper/249/erdos249-totient-reasoning-surface.tex#L10041-L10041), [cite at paper/reasoning-parts/erdos249/a249\_front.tex:492](../../paper/reasoning-parts/erdos249/a249_front.tex#L492-L492), [cite at paper/reasoning-parts/erdos249/a249\_front.tex:9849](../../paper/reasoning-parts/erdos249/a249_front.tex#L9849-L9849)
 
+<a id="source-source-1009cb23e9f897"></a>
+
+### [Potential Theory in the Complex Plane](https://doi.org/10.1017/CBO9780511623776)
+
+- Source id: `source-1009cb23e9f897`
+- Author or public identity: T. Ransford
+- Kind: `literature`
+- Problems: none recorded
+- Relationship and boundary: Cited by the linked public manuscript bibliography. Citation metadata records attribution; the cited work and mathematical correspondence have not been independently verified in this registration.
+- Source verification: `bibliography\_only` — scope not separately recorded
+- Local mapping: `not recorded`
+
+Public implementation or evidence coordinates:
+
+- [paper/1041/erdos-1041-lemniscate-newton-flow.tex](../../paper/1041/erdos-1041-lemniscate-newton-flow.tex#L1200-L1200) — lines `1200–1200`; excerpt `sha256:3b5bfa764c029fdc933b005d0ef5ea51d1a35afea22e2ccab9404a0f10b96d30`
+
+Paper citation usages:
+
+- `erdos-1041-lemniscate-newton-flow`: [cite at paper/1041/erdos-1041-lemniscate-newton-flow.tex:815](../../paper/1041/erdos-1041-lemniscate-newton-flow.tex#L815-L815)
+- `erdos1041-lemniscate-reasoning-surface`: [cite at paper/1041/erdos1041-lemniscate-reasoning-surface.tex:2190](../../paper/1041/erdos1041-lemniscate-reasoning-surface.tex#L2190-L2190), [cite at paper/1041/erdos1041-lemniscate-reasoning-surface.tex:2191](../../paper/1041/erdos1041-lemniscate-reasoning-surface.tex#L2191-L2191), [cite at paper/1041/erdos1041-lemniscate-reasoning-surface.tex:2202](../../paper/1041/erdos1041-lemniscate-reasoning-surface.tex#L2202-L2202), [cite at paper/1041/erdos1041-lemniscate-reasoning-surface.tex:2204](../../paper/1041/erdos1041-lemniscate-reasoning-surface.tex#L2204-L2204), [cite at paper/reasoning-parts/erdos1041/core.tex:2140](../../paper/reasoning-parts/erdos1041/core.tex#L2140-L2140), [cite at paper/reasoning-parts/erdos1041/core.tex:2141](../../paper/reasoning-parts/erdos1041/core.tex#L2141-L2141), [cite at paper/reasoning-parts/erdos1041/core.tex:2152](../../paper/reasoning-parts/erdos1041/core.tex#L2152-L2152), [cite at paper/reasoning-parts/erdos1041/core.tex:2154](../../paper/reasoning-parts/erdos1041/core.tex#L2154-L2154)
+
 <a id="source-source-10545f868b3e88"></a>
 
 ### [Old and New Problems and Results in Combinatorial Number Theory](https://mathweb.ucsd.edu/~ronspubs/80_11_number_theory.pdf)
 
 - Source id: `source-10545f868b3e88`
-- Author or public identity: P. Erdős, R. L. Graham
+- Author or public identity: Paul Erdős, Ronald L. Graham
 - Kind: `literature`
 - Problems: #243, #249, #251, #257, #269
 - Relationship and boundary: Historical statement of the problem and of the complementary largest-prime-factor indicator.
@@ -2540,6 +2998,26 @@ Paper citation usages:
 - `erdos251-prime-gap-reasoning-surface`: [cite at paper/251/erdos251-prime-gap-reasoning-surface.tex:70](../../paper/251/erdos251-prime-gap-reasoning-surface.tex#L70-L70), [cite at paper/251/erdos251-prime-gap-reasoning-surface.tex:561](../../paper/251/erdos251-prime-gap-reasoning-surface.tex#L561-L561), [cite at paper/reasoning-parts/erdos251/core.tex:28](../../paper/reasoning-parts/erdos251/core.tex#L28-L28), [cite at paper/reasoning-parts/erdos251/core.tex:519](../../paper/reasoning-parts/erdos251/core.tex#L519-L519)
 - `erdos269-running-lcm-reasoning-surface`: [cite at paper/269/erdos269-running-lcm-reasoning-surface.tex:119](../../paper/269/erdos269-running-lcm-reasoning-surface.tex#L119-L119), [cite at paper/269/erdos269-running-lcm-reasoning-surface.tex:3911](../../paper/269/erdos269-running-lcm-reasoning-surface.tex#L3911-L3911), [cite at paper/reasoning-parts/erdos269/core.tex:61](../../paper/reasoning-parts/erdos269/core.tex#L61-L61), [cite at paper/reasoning-parts/erdos269/core.tex:3853](../../paper/reasoning-parts/erdos269/core.tex#L3853-L3853)
 - `optimal-sparse-perturbations`: [cite at paper/synthesis/optimal-sparse-perturbations.tex:72](../../paper/synthesis/optimal-sparse-perturbations.tex#L72-L72), [cite at paper/synthesis/optimal-sparse-perturbations.tex:852](../../paper/synthesis/optimal-sparse-perturbations.tex#L852-L852)
+
+<a id="source-source-10d5a0ffcc35c3"></a>
+
+### [Vandermonde determinant](https://dlmf.nist.gov/1.3.E13)
+
+- Source id: `source-10d5a0ffcc35c3`
+- Author or public identity: NIST Digital Library of Mathematical Functions
+- Kind: `literature`
+- Problems: none recorded
+- Relationship and boundary: Cited by the linked public manuscript bibliography. Citation metadata records attribution; the cited work and mathematical correspondence have not been independently verified in this registration.
+- Source verification: `bibliography\_only` — scope not separately recorded
+- Local mapping: `not recorded`
+
+Public implementation or evidence coordinates:
+
+- [paper/68/erdos68-factorial-reasoning-surface.tex](../../paper/68/erdos68-factorial-reasoning-surface.tex#L3253-L3253) — lines `3253–3253`; excerpt `sha256:2a0b3c2b2c8a33447d9a0b5daa75dfc5e4de25f69962498be4ac79b6f9d590bc`
+
+Paper citation usages:
+
+- `erdos68-factorial-reasoning-surface`: [cite at paper/68/erdos68-factorial-reasoning-surface.tex:2103](../../paper/68/erdos68-factorial-reasoning-surface.tex#L2103-L2103), [cite at paper/reasoning-parts/erdos68/core.tex:2068](../../paper/reasoning-parts/erdos68/core.tex#L2068-L2068)
 
 <a id="source-source-11b46a0435368f"></a>
 
@@ -2668,9 +3146,69 @@ Paper citation usages:
 - `erdos257-mersenne-reasoning-surface`: [cite at paper/257/erdos257-mersenne-reasoning-surface.tex:1478](../../paper/257/erdos257-mersenne-reasoning-surface.tex#L1478-L1478), [cite at paper/257/erdos257-mersenne-reasoning-surface.tex:7429](../../paper/257/erdos257-mersenne-reasoning-surface.tex#L7429-L7429), [cite at paper/reasoning-parts/erdos257/a257\_front.tex:1278](../../paper/reasoning-parts/erdos257/a257_front.tex#L1278-L1278), [cite at paper/reasoning-parts/erdos257/a257\_front.tex:7229](../../paper/reasoning-parts/erdos257/a257_front.tex#L7229-L7229)
 - `optimal-sparse-perturbations`: [cite at paper/synthesis/optimal-sparse-perturbations.tex:943](../../paper/synthesis/optimal-sparse-perturbations.tex#L943-L943)
 
+<a id="source-source-14b2e582d752c2"></a>
+
+### Evaluating Repository-level Software Documentation via Question Answering and Feature-Driven Development
+
+- Source id: `source-14b2e582d752c2`
+- Author or public identity: Xinchen Wang, Ruida Hu, Cuiyun Gao, Pengfei Gao, Chao Peng
+- Kind: `literature`
+- Problems: none recorded
+- Relationship and boundary: Cited by the linked public manuscript bibliography. Citation metadata records attribution; the cited work and mathematical correspondence have not been independently verified in this registration.
+- Source verification: `bibliography\_only` — scope not separately recorded
+- Local mapping: `not recorded`
+
+Public implementation or evidence coordinates:
+
+- [paper/systems/claim-faithful-publication-systems-paper.tex](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1298-L1298) — lines `1298–1298`; excerpt `sha256:0ba91e50b94c2a61ba09b1161854f3af46243004a6c0cd54da29303991f39bf3`
+
+Paper citation usages:
+
+- `claim-faithful-publication-systems`: [cite at paper/systems/claim-faithful-publication-systems-paper.tex:991](../../paper/systems/claim-faithful-publication-systems-paper.tex#L991-L991)
+
+<a id="source-source-153294313e4052"></a>
+
+### [Advice on Mathematical Writing](https://kconrad.math.uconn.edu/blurbs/proofs/writingtips.pdf)
+
+- Source id: `source-153294313e4052`
+- Author or public identity: K. Conrad
+- Kind: `literature`
+- Problems: none recorded
+- Relationship and boundary: Cited by the linked public manuscript bibliography. Citation metadata records attribution; the cited work and mathematical correspondence have not been independently verified in this registration.
+- Source verification: `bibliography\_only` — scope not separately recorded
+- Local mapping: `not recorded`
+
+Public implementation or evidence coordinates:
+
+- [paper/exposition/parts/references.tex](../../paper/exposition/parts/references.tex#L72-L72) — lines `72–72`; excerpt `sha256:c753114e44efd0bfcd8b5a5f988f4f978cafb2136511ee1a94959f7b7042ec56`
+
+Paper citation usages:
+
+- `writing-mathematics-from-reviewed-revisions`: [cite at paper/exposition/parts/practice.tex:36](../../paper/exposition/parts/practice.tex#L36-L36)
+
+<a id="source-source-162eb5dca5a61a"></a>
+
+### [The many faces of the subspace theorem \[after Adamczewski, Bugeaud, Corvaja, Zannier…\]](https://arxiv.org/abs/0907.2098)
+
+- Source id: `source-162eb5dca5a61a`
+- Author or public identity: Yu. F. Bilu
+- Kind: `literature`
+- Problems: none recorded
+- Relationship and boundary: Cited by the linked public manuscript bibliography. Citation metadata records attribution; the cited work and mathematical correspondence have not been independently verified in this registration.
+- Source verification: `bibliography\_only` — scope not separately recorded
+- Local mapping: `not recorded`
+
+Public implementation or evidence coordinates:
+
+- [paper/synthesis/optimal-sparse-perturbations.tex](../../paper/synthesis/optimal-sparse-perturbations.tex#L2203-L2203) — lines `2203–2203`; excerpt `sha256:700e3ea322926f9879b8bf935f18559c020827b0cea2ef31f18ae4ed9c4cf41a`
+
+Paper citation usages:
+
+- `optimal-sparse-perturbations`: [cite at paper/synthesis/optimal-sparse-perturbations.tex:1229](../../paper/synthesis/optimal-sparse-perturbations.tex#L1229-L1229)
+
 <a id="source-source-169c3d67838965"></a>
 
-### [À propos de la série ∑\_{n≥1} x^n/(q^n−1)](https://numdam.org/item/JTNB_1996__8_1_173_0.pdf)
+### [À propos de la série ∑\_n≥1 x^n/(q^n−1)](https://numdam.org/item/JTNB_1996__8_1_173_0.pdf)
 
 - Source id: `source-169c3d67838965`
 - Author or public identity: D. Duverney
@@ -2751,6 +3289,26 @@ Paper citation usages:
 
 - `erdos1049-rational-base-lambert-reasoning-surface`: [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:3401](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L3401-L3401), [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:4929](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L4929-L4929), [cite at paper/reasoning-parts/erdos1049/core.tex:3370](../../paper/reasoning-parts/erdos1049/core.tex#L3370-L3370), [cite at paper/reasoning-parts/erdos1049/core.tex:4898](../../paper/reasoning-parts/erdos1049/core.tex#L4898-L4898)
 
+<a id="source-source-1968896b92b45d"></a>
+
+### [Publishing Mathematical Results from a Lean Repository](https://github.com/wcook04/plectis-erdos/blob/main/paper/systems/claim-faithful-publication-systems-paper.tex)
+
+- Source id: `source-1968896b92b45d`
+- Author or public identity: Will Cook
+- Kind: `literature`
+- Problems: none recorded
+- Relationship and boundary: Cited by the linked public manuscript bibliography. Citation metadata records attribution; the cited work and mathematical correspondence have not been independently verified in this registration.
+- Source verification: `bibliography\_only` — scope not separately recorded
+- Local mapping: `not recorded`
+
+Public implementation or evidence coordinates:
+
+- [paper/exposition/parts/references.tex](../../paper/exposition/parts/references.tex#L55-L55) — lines `55–55`; excerpt `sha256:f229079623b8310ec5388c84193e926e2eeaa5cb67c989cc4892cf34978822f1`
+
+Paper citation usages:
+
+- `writing-mathematics-from-reviewed-revisions`: [cite at paper/exposition/parts/practice.tex:114](../../paper/exposition/parts/practice.tex#L114-L114), [cite at paper/exposition/parts/practice.tex:233](../../paper/exposition/parts/practice.tex#L233-L233), [cite at paper/exposition/parts/practice.tex:243](../../paper/exposition/parts/practice.tex#L243-L243), [cite at paper/exposition/parts/practice.tex:250](../../paper/exposition/parts/practice.tex#L250-L250), [cite at paper/exposition/parts/review.tex:131](../../paper/exposition/parts/review.tex#L131-L131)
+
 <a id="source-source-1a7535a5e17a8c"></a>
 
 ### [On the irrationality of Cantor and Ahmes series](https://doi.org/10.5486/PMD.2004.3254)
@@ -2780,6 +3338,47 @@ Paper citation usages:
 - `erdos-269-three-prime-running-lcm`: [cite at paper/269/erdos-269-three-prime-running-lcm.tex:424](../../paper/269/erdos-269-three-prime-running-lcm.tex#L424-L424), [cite at paper/269/erdos-269-three-prime-running-lcm.tex:979](../../paper/269/erdos-269-three-prime-running-lcm.tex#L979-L979)
 - `erdos269-running-lcm-reasoning-surface`: [cite at paper/269/erdos269-running-lcm-reasoning-surface.tex:378](../../paper/269/erdos269-running-lcm-reasoning-surface.tex#L378-L378), [cite at paper/269/erdos269-running-lcm-reasoning-surface.tex:2552](../../paper/269/erdos269-running-lcm-reasoning-surface.tex#L2552-L2552), [cite at paper/269/erdos269-running-lcm-reasoning-surface.tex:3932](../../paper/269/erdos269-running-lcm-reasoning-surface.tex#L3932-L3932), [cite at paper/reasoning-parts/erdos269/core.tex:320](../../paper/reasoning-parts/erdos269/core.tex#L320-L320), [cite at paper/reasoning-parts/erdos269/core.tex:2494](../../paper/reasoning-parts/erdos269/core.tex#L2494-L2494), [cite at paper/reasoning-parts/erdos269/core.tex:3874](../../paper/reasoning-parts/erdos269/core.tex#L3874-L3874)
 - `writing-mathematics-from-reviewed-revisions`: [cite at paper/exposition/parts/revisions.tex:62](../../paper/exposition/parts/revisions.tex#L62-L62)
+
+<a id="source-source-1b4039c709d4be"></a>
+
+### [Speeding up dualization in the Fredman–Khachiyan Algorithm B](https://doi.org/10.4230/LIPIcs.SEA.2018.6)
+
+- Source id: `source-1b4039c709d4be`
+- Author or public identity: N. Sedaghat, T. Stephen, L. Chindelevitch
+- Kind: `literature`
+- Problems: none recorded
+- Relationship and boundary: Cited by the linked public manuscript bibliography. Citation metadata records attribution; the cited work and mathematical correspondence have not been independently verified in this registration.
+- Source verification: `bibliography\_only` — scope not separately recorded
+- Local mapping: `not recorded`
+
+Public implementation or evidence coordinates:
+
+- [paper/257/erdos257-mersenne-reasoning-surface.tex](../../paper/257/erdos257-mersenne-reasoning-surface.tex#L9630-L9630) — lines `9630–9630`; excerpt `sha256:3caa77d841993994453b2ac825f514ebc9aa32500f1569db1e8afb2474dab2a2`
+
+Paper citation usages:
+
+- `erdos257-mersenne-reasoning-surface`: [cite at paper/257/erdos257-mersenne-reasoning-surface.tex:784](../../paper/257/erdos257-mersenne-reasoning-surface.tex#L784-L784), [cite at paper/reasoning-parts/erdos257/a257\_front.tex:584](../../paper/reasoning-parts/erdos257/a257_front.tex#L584-L584)
+
+<a id="source-source-1b8aee594b555a"></a>
+
+### [A height gap theorem for coefficients of Mahler functions](https://doi.org/10.4171/JEMS/1244)
+
+- Source id: `source-1b8aee594b555a`
+- Author or public identity: B. Adamczewski, J. Bell, D. Smertnig
+- Kind: `literature`
+- Problems: none recorded
+- Relationship and boundary: Cited by the linked public manuscript bibliography. Citation metadata records attribution; the cited work and mathematical correspondence have not been independently verified in this registration.
+- Source verification: `bibliography\_only` — scope not separately recorded
+- Local mapping: `not recorded`
+
+Public implementation or evidence coordinates:
+
+- [paper/249/erdos-249-binary-totient-series.tex](../../paper/249/erdos-249-binary-totient-series.tex#L912-L912) — lines `912–912`; excerpt `sha256:0e30fd6b45bb4854e7bb4b4eef0bc630e93cbb57449d4e8647086d02788de714`
+
+Paper citation usages:
+
+- `erdos-249-binary-totient-series`: [cite at paper/249/erdos-249-binary-totient-series.tex:531](../../paper/249/erdos-249-binary-totient-series.tex#L531-L531)
+- `erdos249-totient-reasoning-surface`: [cite at paper/249/erdos249-totient-reasoning-surface.tex:10065](../../paper/249/erdos249-totient-reasoning-surface.tex#L10065-L10065), [cite at paper/reasoning-parts/erdos249/a249\_front.tex:9873](../../paper/reasoning-parts/erdos249/a249_front.tex#L9873-L9873)
 
 <a id="source-source-1b9324cc5f4641"></a>
 
@@ -2812,6 +3411,26 @@ Paper citation usages:
 
 - `erdos243-reciprocal-tail-reasoning-surface`: [cite at paper/243/erdos243-reciprocal-tail-reasoning-surface.tex:2929](../../paper/243/erdos243-reciprocal-tail-reasoning-surface.tex#L2929-L2929), [cite at paper/243/erdos243-reciprocal-tail-reasoning-surface.tex:2933](../../paper/243/erdos243-reciprocal-tail-reasoning-surface.tex#L2933-L2933), [cite at paper/reasoning-parts/erdos243/core.tex:2890](../../paper/reasoning-parts/erdos243/core.tex#L2890-L2890), [cite at paper/reasoning-parts/erdos243/core.tex:2894](../../paper/reasoning-parts/erdos243/core.tex#L2894-L2894)
 
+<a id="source-source-1c48e6183cdd06"></a>
+
+### DocAgent: A Multi-Agent System for Automated Code Documentation Generation
+
+- Source id: `source-1c48e6183cdd06`
+- Author or public identity: Dayu Yang
+- Kind: `literature`
+- Problems: none recorded
+- Relationship and boundary: Cited by the linked public manuscript bibliography. Citation metadata records attribution; the cited work and mathematical correspondence have not been independently verified in this registration.
+- Source verification: `bibliography\_only` — scope not separately recorded
+- Local mapping: `not recorded`
+
+Public implementation or evidence coordinates:
+
+- [paper/systems/claim-faithful-publication-systems-paper.tex](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1296-L1296) — lines `1296–1296`; excerpt `sha256:f80335adbff8cae692f52e22b9085096a84651a56c5a01548122c9958c8ff7e6`
+
+Paper citation usages:
+
+- `claim-faithful-publication-systems`: [cite at paper/systems/claim-faithful-publication-systems-paper.tex:983](../../paper/systems/claim-faithful-publication-systems-paper.tex#L983-L983)
+
 <a id="source-source-20c650f8cf3744"></a>
 
 ### [Beweis eines Satzes von Tschebyschef](https://users.renyi.hu/~p_erdos/1932-01.pdf)
@@ -2838,6 +3457,27 @@ Paper citation usages:
 
 - `erdos-251-prime-gap-dyadic-series`: [cite at paper/251/erdos-251-prime-gap-dyadic-series.tex:404](../../paper/251/erdos-251-prime-gap-dyadic-series.tex#L404-L404)
 - `erdos251-prime-gap-reasoning-surface`: [cite at paper/251/erdos251-prime-gap-reasoning-surface.tex:2148](../../paper/251/erdos251-prime-gap-reasoning-surface.tex#L2148-L2148), [cite at paper/reasoning-parts/erdos251/core.tex:2106](../../paper/reasoning-parts/erdos251/core.tex#L2106-L2106)
+
+<a id="source-source-2132b16ddbb0b4"></a>
+
+### [Integral Relations among Totient Sections](https://github.com/wcook04/plectis-erdos/blob/main/paper/249/erdos-249-binary-totient-series.tex)
+
+- Source id: `source-2132b16ddbb0b4`
+- Author or public identity: Will Cook
+- Kind: `literature`
+- Problems: none recorded
+- Relationship and boundary: Cited by the linked public manuscript bibliography. Citation metadata records attribution; the cited work and mathematical correspondence have not been independently verified in this registration.
+- Source verification: `bibliography\_only` — scope not separately recorded
+- Local mapping: `not recorded`
+
+Public implementation or evidence coordinates:
+
+- [paper/synthesis/optimal-sparse-perturbations.tex](../../paper/synthesis/optimal-sparse-perturbations.tex#L2244-L2244) — lines `2244–2244`; excerpt `sha256:136f150457c4a3a5adbcc2942cc629b9f93d3d6a52540724120812882199ec79`
+
+Paper citation usages:
+
+- `optimal-sparse-perturbations`: [cite at paper/synthesis/optimal-sparse-perturbations.tex:1021](../../paper/synthesis/optimal-sparse-perturbations.tex#L1021-L1021), [cite at paper/synthesis/optimal-sparse-perturbations.tex:1850](../../paper/synthesis/optimal-sparse-perturbations.tex#L1850-L1850), [cite at paper/synthesis/optimal-sparse-perturbations.tex:1851](../../paper/synthesis/optimal-sparse-perturbations.tex#L1851-L1851), [cite at paper/synthesis/optimal-sparse-perturbations.tex:1990](../../paper/synthesis/optimal-sparse-perturbations.tex#L1990-L1990)
+- `writing-mathematics-from-reviewed-revisions`: [cite at paper/exposition/parts/revisions.tex:292](../../paper/exposition/parts/revisions.tex#L292-L292)
 
 <a id="source-source-21738452dcb95c"></a>
 
@@ -2902,6 +3542,26 @@ Paper citation usages:
 - `erdos-269-three-prime-running-lcm`: [cite at paper/269/erdos-269-three-prime-running-lcm.tex:115](../../paper/269/erdos-269-three-prime-running-lcm.tex#L115-L115), [cite at paper/269/erdos-269-three-prime-running-lcm.tex:633](../../paper/269/erdos-269-three-prime-running-lcm.tex#L633-L633)
 - `erdos269-running-lcm-reasoning-surface`: [cite at paper/269/erdos269-running-lcm-reasoning-surface.tex:149](../../paper/269/erdos269-running-lcm-reasoning-surface.tex#L149-L149), [cite at paper/269/erdos269-running-lcm-reasoning-surface.tex:1855](../../paper/269/erdos269-running-lcm-reasoning-surface.tex#L1855-L1855), [cite at paper/269/erdos269-running-lcm-reasoning-surface.tex:3812](../../paper/269/erdos269-running-lcm-reasoning-surface.tex#L3812-L3812), [cite at paper/269/erdos269-running-lcm-reasoning-surface.tex:3861](../../paper/269/erdos269-running-lcm-reasoning-surface.tex#L3861-L3861), [cite at paper/269/erdos269-running-lcm-reasoning-surface.tex:3942](../../paper/269/erdos269-running-lcm-reasoning-surface.tex#L3942-L3942), [cite at paper/reasoning-parts/erdos269/core.tex:91](../../paper/reasoning-parts/erdos269/core.tex#L91-L91), [cite at paper/reasoning-parts/erdos269/core.tex:1797](../../paper/reasoning-parts/erdos269/core.tex#L1797-L1797), [cite at paper/reasoning-parts/erdos269/core.tex:3754](../../paper/reasoning-parts/erdos269/core.tex#L3754-L3754), [cite at paper/reasoning-parts/erdos269/core.tex:3803](../../paper/reasoning-parts/erdos269/core.tex#L3803-L3803), [cite at paper/reasoning-parts/erdos269/core.tex:3884](../../paper/reasoning-parts/erdos269/core.tex#L3884-L3884)
 - `optimal-sparse-perturbations`: [cite at paper/synthesis/optimal-sparse-perturbations.tex:1855](../../paper/synthesis/optimal-sparse-perturbations.tex#L1855-L1855)
+
+<a id="source-source-21e26ce24eaab4"></a>
+
+### Die p-adische Verallgemeinerung des Satzes von Thue–Siegel–Roth–Schmidt
+
+- Source id: `source-21e26ce24eaab4`
+- Author or public identity: H. P. Schlickewei
+- Kind: `literature`
+- Problems: none recorded
+- Relationship and boundary: Cited by the linked public manuscript bibliography. Citation metadata records attribution; the cited work and mathematical correspondence have not been independently verified in this registration.
+- Source verification: `bibliography\_only` — scope not separately recorded
+- Local mapping: `not recorded`
+
+Public implementation or evidence coordinates:
+
+- [paper/synthesis/optimal-sparse-perturbations.tex](../../paper/synthesis/optimal-sparse-perturbations.tex#L2199-L2199) — lines `2199–2199`; excerpt `sha256:70684ff547bc416bc200ef9a6b560331fdd3e882c4071b0b5a2b9218cdafadb7`
+
+Paper citation usages:
+
+- `optimal-sparse-perturbations`: [cite at paper/synthesis/optimal-sparse-perturbations.tex:1228](../../paper/synthesis/optimal-sparse-perturbations.tex#L1228-L1228)
 
 <a id="source-source-22aba734190d65"></a>
 
@@ -2987,6 +3647,26 @@ Paper citation usages:
 
 - `erdos-1049-rational-base-lambert`: [cite at paper/1049/erdos-1049-rational-base-lambert.tex:1062](../../paper/1049/erdos-1049-rational-base-lambert.tex#L1062-L1062)
 - `erdos1049-rational-base-lambert-reasoning-surface`: [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:1456](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L1456-L1456), [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:1458](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L1458-L1458), [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:3147](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L3147-L3147), [cite at paper/reasoning-parts/erdos1049/core.tex:1425](../../paper/reasoning-parts/erdos1049/core.tex#L1425-L1425), [cite at paper/reasoning-parts/erdos1049/core.tex:1427](../../paper/reasoning-parts/erdos1049/core.tex#L1427-L1427), [cite at paper/reasoning-parts/erdos1049/core.tex:3116](../../paper/reasoning-parts/erdos1049/core.tex#L3116-L3116)
+
+<a id="source-source-25cbb77c8141eb"></a>
+
+### [Paths in Polynomial Lemniscates: A Degree-Seven Counterexample and Radial Connections](https://github.com/wcook04/plectis-erdos/blob/main/paper/1041/erdos-1041-lemniscate-newton-flow.tex)
+
+- Source id: `source-25cbb77c8141eb`
+- Author or public identity: Will Cook
+- Kind: `literature`
+- Problems: none recorded
+- Relationship and boundary: Cited by the linked public manuscript bibliography. Citation metadata records attribution; the cited work and mathematical correspondence have not been independently verified in this registration.
+- Source verification: `bibliography\_only` — scope not separately recorded
+- Local mapping: `not recorded`
+
+Public implementation or evidence coordinates:
+
+- [paper/exposition/parts/references.tex](../../paper/exposition/parts/references.tex#L112-L112) — lines `112–112`; excerpt `sha256:d38fd741af198e6209b1d8ed5ab014f334204b5d86f8c44b17fc4b3407329d79`
+
+Paper citation usages:
+
+- `writing-mathematics-from-reviewed-revisions`: [cite at paper/exposition/parts/review.tex:155](../../paper/exposition/parts/review.tex#L155-L155)
 
 <a id="source-source-25efc27ed2130d"></a>
 
@@ -3085,6 +3765,26 @@ Paper citation usages:
 
 - `erdos1049-rational-base-lambert-reasoning-surface`: [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:4886](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L4886-L4886), [cite at paper/reasoning-parts/erdos1049/core.tex:4855](../../paper/reasoning-parts/erdos1049/core.tex#L4855-L4855)
 
+<a id="source-source-28a39801198fc9"></a>
+
+### [Beweis eines Satzes von Tschebyschef](https://www.renyi.hu/~p_erdos/1932-01.pdf)
+
+- Source id: `source-28a39801198fc9`
+- Author or public identity: P. Erdős
+- Kind: `literature`
+- Problems: none recorded
+- Relationship and boundary: Cited by the linked public manuscript bibliography. Citation metadata records attribution; the cited work and mathematical correspondence have not been independently verified in this registration.
+- Source verification: `bibliography\_only` — scope not separately recorded
+- Local mapping: `not recorded`
+
+Public implementation or evidence coordinates:
+
+- [paper/257/erdos257-mersenne-reasoning-surface.tex](../../paper/257/erdos257-mersenne-reasoning-surface.tex#L9757-L9757) — lines `9757–9757`; excerpt `sha256:05ec2d8638341385061f24978b5ad7e43221307565802914d92b3bea39ccb2d2`
+
+Paper citation usages:
+
+- `erdos257-mersenne-reasoning-surface`: [cite at paper/257/erdos257-mersenne-reasoning-surface.tex:3217](../../paper/257/erdos257-mersenne-reasoning-surface.tex#L3217-L3217), [cite at paper/reasoning-parts/erdos257/a257\_front.tex:3017](../../paper/reasoning-parts/erdos257/a257_front.tex#L3017-L3017)
+
 <a id="source-source-296ff41148fff7"></a>
 
 ### [Regular sequences and the joint spectral radius](https://doi.org/10.1142/S0129054117500095)
@@ -3164,7 +3864,7 @@ Paper citation usages:
 ### [An improved point-line incidence bound over arbitrary fields](https://arxiv.org/abs/1609.06284)
 
 - Source id: `source-29cbac966b8b76`
-- Author or public identity: Stevens, Sophie, de Zeeuw, Frank
+- Author or public identity: Sophie Stevens, Frank de Zeeuw
 - Kind: `literature`
 - Problems: #68
 - Relationship and boundary: Cited by the linked public manuscript(s). The bibliography and citation contexts record the paper's use; no tracked primary-source closure currently verifies a stronger source-level relation.
@@ -3183,6 +3883,27 @@ Public implementation or evidence coordinates:
 Paper citation usages:
 
 - `erdos68-factorial-reasoning-surface`: [cite at paper/68/erdos68-factorial-reasoning-surface.tex:1891](../../paper/68/erdos68-factorial-reasoning-surface.tex#L1891-L1891), [cite at paper/reasoning-parts/erdos68/core.tex:1856](../../paper/reasoning-parts/erdos68/core.tex#L1856-L1856)
+
+<a id="source-source-2a0657fba07c86"></a>
+
+### [Hankel Determinants of Geometric Moments and Rational Lambert Values](https://github.com/wcook04/plectis-erdos/blob/main/paper/1049/erdos-1049-rational-base-lambert.tex)
+
+- Source id: `source-2a0657fba07c86`
+- Author or public identity: Will Cook
+- Kind: `literature`
+- Problems: none recorded
+- Relationship and boundary: Cited by the linked public manuscript bibliography. Citation metadata records attribution; the cited work and mathematical correspondence have not been independently verified in this registration.
+- Source verification: `bibliography\_only` — scope not separately recorded
+- Local mapping: `not recorded`
+
+Public implementation or evidence coordinates:
+
+- [paper/synthesis/optimal-sparse-perturbations.tex](../../paper/synthesis/optimal-sparse-perturbations.tex#L2264-L2264) — lines `2264–2264`; excerpt `sha256:4ef4349bb5372c2f8dfcf9f5d78d006801fc41732c533edf04e85b194e56c139`
+
+Paper citation usages:
+
+- `optimal-sparse-perturbations`: [cite at paper/synthesis/optimal-sparse-perturbations.tex:943](../../paper/synthesis/optimal-sparse-perturbations.tex#L943-L943), [cite at paper/synthesis/optimal-sparse-perturbations.tex:946](../../paper/synthesis/optimal-sparse-perturbations.tex#L946-L946), [cite at paper/synthesis/optimal-sparse-perturbations.tex:1856](../../paper/synthesis/optimal-sparse-perturbations.tex#L1856-L1856), [cite at paper/synthesis/optimal-sparse-perturbations.tex:1857](../../paper/synthesis/optimal-sparse-perturbations.tex#L1857-L1857)
+- `writing-mathematics-from-reviewed-revisions`: [cite at paper/exposition/parts/revisions.tex:240](../../paper/exposition/parts/revisions.tex#L240-L240)
 
 <a id="source-source-2a10c7287879c3"></a>
 
@@ -3274,10 +3995,10 @@ Paper citation usages:
 
 <a id="source-source-2aa4970cfda278"></a>
 
-### [On a curious property of vulgar fractions](https://doi.org/10.1080/14786441608628487)
+### [On a Curious Property of Vulgar Fractions](https://doi.org/10.1080/14786441608628487)
 
 - Source id: `source-2aa4970cfda278`
-- Author or public identity: J. Farey
+- Author or public identity: John Farey
 - Kind: `literature`
 - Problems: #249, #257
 - Relationship and boundary: Cited by the linked public manuscript(s). The bibliography and citation contexts record the paper's use; no tracked primary-source closure currently verifies a stronger source-level relation.
@@ -3297,7 +4018,7 @@ Paper citation usages:
 ### [Multigeometric sequences and Cantorvals](https://arxiv.org/abs/1304.4218v2)
 
 - Source id: `source-2b0038d2c239f5`
-- Author or public identity: Bartoszewicz, Artur, Filipczak, Ma{\\l}gorzata, Szymonik, Emilia
+- Author or public identity: Artur Bartoszewicz, Małgorzata Filipczak, Emilia Szymonik
 - Kind: `literature`
 - Problems: #251
 - Relationship and boundary: Cited by the linked public manuscript(s). The bibliography and citation contexts record the paper's use; no tracked primary-source closure currently verifies a stronger source-level relation.
@@ -3313,6 +4034,47 @@ Public implementation or evidence coordinates:
 Paper citation usages:
 
 - `erdos251-prime-gap-reasoning-surface`: [cite at paper/251/erdos251-prime-gap-reasoning-surface.tex:623](../../paper/251/erdos251-prime-gap-reasoning-surface.tex#L623-L623), [cite at paper/reasoning-parts/erdos251/core.tex:581](../../paper/reasoning-parts/erdos251/core.tex#L581-L581)
+
+<a id="source-source-2b439b910366a2"></a>
+
+### [How to Write Mathematics](https://doi.org/10.5169/seals-43857)
+
+- Source id: `source-2b439b910366a2`
+- Author or public identity: P. R. Halmos
+- Kind: `literature`
+- Problems: none recorded
+- Relationship and boundary: Cited by the linked public manuscript bibliography. Citation metadata records attribution; the cited work and mathematical correspondence have not been independently verified in this registration.
+- Source verification: `bibliography\_only` — scope not separately recorded
+- Local mapping: `not recorded`
+
+Public implementation or evidence coordinates:
+
+- [paper/systems/claim-faithful-publication-systems-paper.tex](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1342-L1342) — lines `1342–1342`; excerpt `sha256:c8fa4f2018d1966a445033a628fd813aa3d773ec658a599da24fb7d421745481`
+
+Paper citation usages:
+
+- `claim-faithful-publication-systems`: [cite at paper/systems/claim-faithful-publication-systems-paper.tex:994](../../paper/systems/claim-faithful-publication-systems-paper.tex#L994-L994)
+- `writing-mathematics-from-reviewed-revisions`: [cite at paper/exposition/parts/reading.tex:28](../../paper/exposition/parts/reading.tex#L28-L28), [cite at paper/exposition/parts/revisions.tex:131](../../paper/exposition/parts/revisions.tex#L131-L131)
+
+<a id="source-source-2b76e4aa7bbc22"></a>
+
+### [Public mathematical writing](https://github.com/wcook04/plectis-erdos/blob/main/skills/public-mathematical-writing/SKILL.md)
+
+- Source id: `source-2b76e4aa7bbc22`
+- Author or public identity: Will Cook
+- Kind: `literature`
+- Problems: none recorded
+- Relationship and boundary: Cited by the linked public manuscript bibliography. Citation metadata records attribution; the cited work and mathematical correspondence have not been independently verified in this registration.
+- Source verification: `bibliography\_only` — scope not separately recorded
+- Local mapping: `not recorded`
+
+Public implementation or evidence coordinates:
+
+- [paper/exposition/parts/references.tex](../../paper/exposition/parts/references.tex#L48-L48) — lines `48–48`; excerpt `sha256:daab732ecb2d5a5bfdf3473fb84af6a337291493735a4b4e119306cab1806f20`
+
+Paper citation usages:
+
+- `writing-mathematics-from-reviewed-revisions`: [cite at paper/exposition/parts/practice.tex:8](../../paper/exposition/parts/practice.tex#L8-L8), [cite at paper/exposition/parts/practice.tex:280](../../paper/exposition/parts/practice.tex#L280-L280)
 
 <a id="source-source-2ec6bf87654604"></a>
 
@@ -3396,9 +4158,50 @@ Paper citation usages:
 
 - `erdos68-factorial-reasoning-surface`: [cite at paper/68/erdos68-factorial-reasoning-surface.tex:1999](../../paper/68/erdos68-factorial-reasoning-surface.tex#L1999-L1999), [cite at paper/reasoning-parts/erdos68/core.tex:1964](../../paper/reasoning-parts/erdos68/core.tex#L1964-L1964)
 
+<a id="source-source-31199d2395e7b6"></a>
+
+### [Don't overoptimise](https://terrytao.wordpress.com/advice-on-writing-papers/dont-overoptimise/)
+
+- Source id: `source-31199d2395e7b6`
+- Author or public identity: T. Tao
+- Kind: `literature`
+- Problems: none recorded
+- Relationship and boundary: Cited by the linked public manuscript bibliography. Citation metadata records attribution; the cited work and mathematical correspondence have not been independently verified in this registration.
+- Source verification: `bibliography\_only` — scope not separately recorded
+- Local mapping: `not recorded`
+
+Public implementation or evidence coordinates:
+
+- [paper/exposition/parts/references.tex](../../paper/exposition/parts/references.tex#L22-L22) — lines `22–22`; excerpt `sha256:8de1d2d704bbd0069e460e65e710d87097833f6e8f191a40b2b037fe6a29f306`
+
+Paper citation usages:
+
+- `writing-mathematics-from-reviewed-revisions`: [cite at paper/exposition/parts/reading.tex:33](../../paper/exposition/parts/reading.tex#L33-L33)
+
+<a id="source-source-31228030241161"></a>
+
+### [Reciprocal Sums and the Sylvester Recurrence](https://github.com/wcook04/plectis-erdos/blob/main/paper/243/erdos-243-reciprocal-tail-rigidity.tex)
+
+- Source id: `source-31228030241161`
+- Author or public identity: Will Cook
+- Kind: `literature`
+- Problems: none recorded
+- Relationship and boundary: Cited by the linked public manuscript bibliography. Citation metadata records attribution; the cited work and mathematical correspondence have not been independently verified in this registration.
+- Source verification: `bibliography\_only` — scope not separately recorded
+- Local mapping: `not recorded`
+
+Public implementation or evidence coordinates:
+
+- [paper/synthesis/optimal-sparse-perturbations.tex](../../paper/synthesis/optimal-sparse-perturbations.tex#L2240-L2240) — lines `2240–2240`; excerpt `sha256:e74361112664889724030a7a787ee5a0850ae68cc5788256b718f2547cb82c44`
+
+Paper citation usages:
+
+- `optimal-sparse-perturbations`: [cite at paper/synthesis/optimal-sparse-perturbations.tex:1849](../../paper/synthesis/optimal-sparse-perturbations.tex#L1849-L1849)
+- `writing-mathematics-from-reviewed-revisions`: [cite at paper/exposition/parts/reading.tex:157](../../paper/exposition/parts/reading.tex#L157-L157), [cite at paper/exposition/parts/review.tex:170](../../paper/exposition/parts/review.tex#L170-L170)
+
 <a id="source-source-317a740451ce03"></a>
 
-### [Refinement of the Chowla--Erdős method and linear independence of certain Lambert series](https://danielduverney.fr/documents/theorie-des-nombres/DuverneyTachiya190522.pdf)
+### [Refinement of the Chowla–Erdős method and linear independence of certain Lambert series](https://danielduverney.fr/documents/theorie-des-nombres/DuverneyTachiya190522.pdf)
 
 - Source id: `source-317a740451ce03`
 - Author or public identity: D. Duverney, Y. Tachiya
@@ -3539,6 +4342,26 @@ Paper citation usages:
 
 - `erdos1041-lemniscate-reasoning-surface`: [cite at paper/1041/erdos1041-lemniscate-reasoning-surface.tex:4243](../../paper/1041/erdos1041-lemniscate-reasoning-surface.tex#L4243-L4243), [cite at paper/reasoning-parts/erdos1041/core.tex:4193](../../paper/reasoning-parts/erdos1041/core.tex#L4193-L4193)
 
+<a id="source-source-33b0314314ddbc"></a>
+
+### [Empirical Evaluation Guidelines](https://sigplan-www.sigplan.hosting.acm.org/Resources/EmpiricalEvaluation/)
+
+- Source id: `source-33b0314314ddbc`
+- Author or public identity: ACM SIGPLAN
+- Kind: `literature`
+- Problems: none recorded
+- Relationship and boundary: Cited by the linked public manuscript bibliography. Citation metadata records attribution; the cited work and mathematical correspondence have not been independently verified in this registration.
+- Source verification: `bibliography\_only` — scope not separately recorded
+- Local mapping: `not recorded`
+
+Public implementation or evidence coordinates:
+
+- [paper/exposition/parts/references.tex](../../paper/exposition/parts/references.tex#L128-L128) — lines `128–128`; excerpt `sha256:1138c91a532dde1c9efa4ada9a3ba41a6da0da6c48c63134a87603bbaf6c7996`
+
+Paper citation usages:
+
+- `writing-mathematics-from-reviewed-revisions`: [cite at paper/exposition/parts/practice.tex:222](../../paper/exposition/parts/practice.tex#L222-L222)
+
 <a id="source-source-3479bad7869d7c"></a>
 
 ### [A determinant identity for moments of orthogonal polynomials that implies Uvarov's formula for the orthogonal polynomials of rationally related densities](https://arxiv.org/abs/2103.03969v1)
@@ -3595,6 +4418,26 @@ Paper citation usages:
 
 - `erdos68-factorial-reasoning-surface`: [cite at paper/68/erdos68-factorial-reasoning-surface.tex:1104](../../paper/68/erdos68-factorial-reasoning-surface.tex#L1104-L1104), [cite at paper/68/erdos68-factorial-reasoning-surface.tex:1951](../../paper/68/erdos68-factorial-reasoning-surface.tex#L1951-L1951), [cite at paper/68/erdos68-factorial-reasoning-surface.tex:2301](../../paper/68/erdos68-factorial-reasoning-surface.tex#L2301-L2301), [cite at paper/68/erdos68-factorial-reasoning-surface.tex:2673](../../paper/68/erdos68-factorial-reasoning-surface.tex#L2673-L2673), [cite at paper/reasoning-parts/erdos68/core.tex:1069](../../paper/reasoning-parts/erdos68/core.tex#L1069-L1069), [cite at paper/reasoning-parts/erdos68/core.tex:1916](../../paper/reasoning-parts/erdos68/core.tex#L1916-L1916), [cite at paper/reasoning-parts/erdos68/core.tex:2266](../../paper/reasoning-parts/erdos68/core.tex#L2266-L2266), [cite at paper/reasoning-parts/erdos68/core.tex:2638](../../paper/reasoning-parts/erdos68/core.tex#L2638-L2638)
 
+<a id="source-source-36440461bad033"></a>
+
+### [OProver: A Unified Framework for Agentic Formal Theorem Proving](https://arxiv.org/abs/2605.17283v1)
+
+- Source id: `source-36440461bad033`
+- Author or public identity: D. Ma
+- Kind: `literature`
+- Problems: none recorded
+- Relationship and boundary: Cited by the linked public manuscript bibliography. Citation metadata records attribution; the cited work and mathematical correspondence have not been independently verified in this registration.
+- Source verification: `bibliography\_only` — scope not separately recorded
+- Local mapping: `not recorded`
+
+Public implementation or evidence coordinates:
+
+- [paper/systems/claim-faithful-publication-systems-paper.tex](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1332-L1332) — lines `1332–1332`; excerpt `sha256:f6be570ea40df85213fc487b6b3e89800474d32d52a6071d987cb39dce48528a`
+
+Paper citation usages:
+
+- `claim-faithful-publication-systems`: [cite at paper/systems/claim-faithful-publication-systems-paper.tex:990](../../paper/systems/claim-faithful-publication-systems-paper.tex#L990-L990)
+
 <a id="source-source-365c2b5cf46ebe"></a>
 
 ### [Factorial residues modulo a prime: beyond the square-root bound](https://arxiv.org/html/2608.01781v1)
@@ -3641,6 +4484,47 @@ Paper citation usages:
 
 - `claim-faithful-publication-systems`: [cite at paper/systems/claim-faithful-publication-systems-paper.tex:109](../../paper/systems/claim-faithful-publication-systems-paper.tex#L109-L109), [cite at paper/systems/claim-faithful-publication-systems-paper.tex:594](../../paper/systems/claim-faithful-publication-systems-paper.tex#L594-L594), [cite at paper/systems/claim-faithful-publication-systems-paper.tex:594](../../paper/systems/claim-faithful-publication-systems-paper.tex#L594-L594), [cite at paper/systems/claim-faithful-publication-systems-paper.tex:598](../../paper/systems/claim-faithful-publication-systems-paper.tex#L598-L598), [cite at paper/systems/claim-faithful-publication-systems-paper.tex:990](../../paper/systems/claim-faithful-publication-systems-paper.tex#L990-L990)
 - `open-source-mathematics-strategy`: [cite at paper/systems/open-source-mathematics-strategy.tex:898](../../paper/systems/open-source-mathematics-strategy.tex#L898-L898), [cite at paper/systems/open-source-mathematics-strategy.tex:940](../../paper/systems/open-source-mathematics-strategy.tex#L940-L940), [cite at paper/systems/open-source-mathematics-strategy.tex:1028](../../paper/systems/open-source-mathematics-strategy.tex#L1028-L1028)
+- `writing-mathematics-from-reviewed-revisions`: [cite at paper/exposition/parts/practice.tex:230](../../paper/exposition/parts/practice.tex#L230-L230)
+
+<a id="source-source-3762d525d0b2ec"></a>
+
+### [Erdős 1041: mark solved with answer(False) and link a formal proof](https://github.com/google-deepmind/formal-conjectures/pull/6505)
+
+- Source id: `source-3762d525d0b2ec`
+- Author or public identity: The Formal Conjectures Authors
+- Kind: `literature`
+- Problems: none recorded
+- Relationship and boundary: Cited by the linked public manuscript bibliography. Citation metadata records attribution; the cited work and mathematical correspondence have not been independently verified in this registration.
+- Source verification: `bibliography\_only` — scope not separately recorded
+- Local mapping: `not recorded`
+
+Public implementation or evidence coordinates:
+
+- [paper/systems/claim-faithful-publication-systems-paper.tex](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1102-L1102) — lines `1102–1102`; excerpt `sha256:b1eec746d2278bf23fa57f0b1f62588474af9720231d9ad9d55b8fef66c85816`
+
+Paper citation usages:
+
+- `claim-faithful-publication-systems`: [cite at paper/systems/claim-faithful-publication-systems-paper.tex:962](../../paper/systems/claim-faithful-publication-systems-paper.tex#L962-L962), [cite at paper/systems/claim-faithful-publication-systems-paper.tex:998](../../paper/systems/claim-faithful-publication-systems-paper.tex#L998-L998)
+
+<a id="source-source-37d49dac10ce0f"></a>
+
+### Reading Eight Erdős Problems Together
+
+- Source id: `source-37d49dac10ce0f`
+- Author or public identity: W. Cook
+- Kind: `literature`
+- Problems: none recorded
+- Relationship and boundary: Cited by the linked public manuscript bibliography. Citation metadata records attribution; the cited work and mathematical correspondence have not been independently verified in this registration.
+- Source verification: `bibliography\_only` — scope not separately recorded
+- Local mapping: `not recorded`
+
+Public implementation or evidence coordinates:
+
+- [paper/systems/claim-faithful-publication-systems-paper.tex](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1076-L1076) — lines `1076–1076`; excerpt `sha256:f3053b2f4fd3fb39299519ccb0964cfaa4eb8a93c08c06899cebecd6d646ed97`
+
+Paper citation usages:
+
+- `claim-faithful-publication-systems`: [cite at paper/systems/claim-faithful-publication-systems-paper.tex:998](../../paper/systems/claim-faithful-publication-systems-paper.tex#L998-L998)
 
 <a id="source-source-39690ee8e07b0c"></a>
 
@@ -3668,6 +4552,26 @@ Paper citation usages:
 
 - `erdos249-totient-reasoning-surface`: [cite at paper/249/erdos249-totient-reasoning-surface.tex:8050](../../paper/249/erdos249-totient-reasoning-surface.tex#L8050-L8050), [cite at paper/reasoning-parts/erdos249/a249\_front.tex:7858](../../paper/reasoning-parts/erdos249/a249_front.tex#L7858-L7858)
 
+<a id="source-source-39c1a6367bd1fc"></a>
+
+### [Is This LLM Library Learning? Evaluation Must Account For Compute and Behaviour](https://doi.org/10.18653/v1/2026.eacl-long.163)
+
+- Source id: `source-39c1a6367bd1fc`
+- Author or public identity: I. Berlot-Attwell, T. Sesterhenn, F. Rudzicz, X. Si
+- Kind: `literature`
+- Problems: none recorded
+- Relationship and boundary: Cited by the linked public manuscript bibliography. Citation metadata records attribution; the cited work and mathematical correspondence have not been independently verified in this registration.
+- Source verification: `bibliography\_only` — scope not separately recorded
+- Local mapping: `not recorded`
+
+Public implementation or evidence coordinates:
+
+- [paper/systems/claim-faithful-publication-systems-paper.tex](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1257-L1257) — lines `1257–1257`; excerpt `sha256:f25863eb37009de62323b1e3198b6f848dd64fc4fbde25cb6431cc8008379b11`
+
+Paper citation usages:
+
+- `claim-faithful-publication-systems`: [cite at paper/systems/claim-faithful-publication-systems-paper.tex:989](../../paper/systems/claim-faithful-publication-systems-paper.tex#L989-L989)
+
 <a id="source-source-39e4fc546549fd"></a>
 
 ### [Common Factors in Fraction-Free Matrix Decompositions](https://arxiv.org/abs/2005.12380v1)
@@ -3692,6 +4596,26 @@ Public implementation or evidence coordinates:
 Paper citation usages:
 
 - `erdos1049-rational-base-lambert-reasoning-surface`: [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:3140](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L3140-L3140), [cite at paper/reasoning-parts/erdos1049/core.tex:3109](../../paper/reasoning-parts/erdos1049/core.tex#L3109-L3109)
+
+<a id="source-source-3a21869f62279f"></a>
+
+### [A dynamical point of view on the set of B-free integers](https://doi.org/10.1093/imrn/rnu164)
+
+- Source id: `source-3a21869f62279f`
+- Author or public identity: E. H. el Abdalaoui, M. Lemańczyk, T. de la Rue
+- Kind: `literature`
+- Problems: none recorded
+- Relationship and boundary: Cited by the linked public manuscript bibliography. Citation metadata records attribution; the cited work and mathematical correspondence have not been independently verified in this registration.
+- Source verification: `bibliography\_only` — scope not separately recorded
+- Local mapping: `not recorded`
+
+Public implementation or evidence coordinates:
+
+- [paper/243/erdos243-reciprocal-tail-reasoning-surface.tex](../../paper/243/erdos243-reciprocal-tail-reasoning-surface.tex#L4183-L4183) — lines `4183–4183`; excerpt `sha256:44b4ddce94d182c3fee08a9fe8b5d2f121c99655db17bab4836d1619e43e7767`
+
+Paper citation usages:
+
+- `erdos243-reciprocal-tail-reasoning-surface`: [cite at paper/243/erdos243-reciprocal-tail-reasoning-surface.tex:2578](../../paper/243/erdos243-reciprocal-tail-reasoning-surface.tex#L2578-L2578), [cite at paper/reasoning-parts/erdos243/core.tex:2539](../../paper/reasoning-parts/erdos243/core.tex#L2539-L2539)
 
 <a id="source-source-3bc828513b4d63"></a>
 
@@ -3735,6 +4659,22 @@ Paper citation usages:
 - `erdos249-257-main`: [cite at paper/archive/erdos249-257-main-paper.tex:3181](../../paper/archive/erdos249-257-main-paper.tex#L3181-L3181)
 - `erdos249-totient-reasoning-surface`: [cite at paper/249/erdos249-totient-reasoning-surface.tex:10070](../../paper/249/erdos249-totient-reasoning-surface.tex#L10070-L10070), [cite at paper/reasoning-parts/erdos249/a249\_front.tex:9878](../../paper/reasoning-parts/erdos249/a249_front.tex#L9878-L9878)
 
+<a id="source-source-3bda376f9b026c"></a>
+
+### Arithmetische Eigenschaften der Lösungen einer Klasse von Funktionalgleichungen
+
+- Source id: `source-3bda376f9b026c`
+- Author or public identity: K. Mahler
+- Kind: `literature`
+- Problems: none recorded
+- Relationship and boundary: Cited by the linked public manuscript bibliography. Citation metadata records attribution; the cited work and mathematical correspondence have not been independently verified in this registration.
+- Source verification: `bibliography\_only` — scope not separately recorded
+- Local mapping: `not recorded`
+
+Public implementation or evidence coordinates:
+
+- [paper/synthesis/optimal-sparse-perturbations.tex](../../paper/synthesis/optimal-sparse-perturbations.tex#L2184-L2184) — lines `2184–2184`; excerpt `sha256:f83a4aac99fa1468a67ba25234f803f8157ddb24e7eab8ccae8a559a3032beb0`
+
 <a id="source-source-3d300ccd5e4cbb"></a>
 
 ### [A dynamical proof of the van der Corput inequality](https://doi.org/10.1080/14689367.2022.2100244)
@@ -3760,6 +4700,46 @@ Public implementation or evidence coordinates:
 Paper citation usages:
 
 - `erdos249-totient-reasoning-surface`: [cite at paper/249/erdos249-totient-reasoning-surface.tex:7942](../../paper/249/erdos249-totient-reasoning-surface.tex#L7942-L7942), [cite at paper/reasoning-parts/erdos249/a249\_front.tex:7750](../../paper/reasoning-parts/erdos249/a249_front.tex#L7750-L7750)
+
+<a id="source-source-3dc6132f37e27f"></a>
+
+### [The Equational Theories Project: Advancing Collaborative Mathematical Research at Scale](https://arxiv.org/abs/2512.07087v2)
+
+- Source id: `source-3dc6132f37e27f`
+- Author or public identity: M. Bolan
+- Kind: `literature`
+- Problems: none recorded
+- Relationship and boundary: Cited by the linked public manuscript bibliography. Citation metadata records attribution; the cited work and mathematical correspondence have not been independently verified in this registration.
+- Source verification: `bibliography\_only` — scope not separately recorded
+- Local mapping: `not recorded`
+
+Public implementation or evidence coordinates:
+
+- [paper/systems/claim-faithful-publication-systems-paper.tex](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1308-L1308) — lines `1308–1308`; excerpt `sha256:6c372167acc6d1b6506ea59b653d320abdd901b6c6545c6ef7fbf21e657d7a19`
+
+Paper citation usages:
+
+- `claim-faithful-publication-systems`: [cite at paper/systems/claim-faithful-publication-systems-paper.tex:109](../../paper/systems/claim-faithful-publication-systems-paper.tex#L109-L109), [cite at paper/systems/claim-faithful-publication-systems-paper.tex:990](../../paper/systems/claim-faithful-publication-systems-paper.tex#L990-L990)
+
+<a id="source-source-3ded5ae0536c5f"></a>
+
+### [Hipster: Integrating Theory Exploration in a Proof Assistant](https://doi.org/10.1007/978-3-319-08434-3_9)
+
+- Source id: `source-3ded5ae0536c5f`
+- Author or public identity: M. Johansson, D. Rosén, N. Smallbone, K. Claessen
+- Kind: `literature`
+- Problems: none recorded
+- Relationship and boundary: Cited by the linked public manuscript bibliography. Citation metadata records attribution; the cited work and mathematical correspondence have not been independently verified in this registration.
+- Source verification: `bibliography\_only` — scope not separately recorded
+- Local mapping: `not recorded`
+
+Public implementation or evidence coordinates:
+
+- [paper/systems/claim-faithful-publication-systems-paper.tex](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1232-L1232) — lines `1232–1232`; excerpt `sha256:050caf57a12e29f844d159172398915f836c8523e16f3233745ec0223e1351ca`
+
+Paper citation usages:
+
+- `claim-faithful-publication-systems`: [cite at paper/systems/claim-faithful-publication-systems-paper.tex:987](../../paper/systems/claim-faithful-publication-systems-paper.tex#L987-L987)
 
 <a id="source-source-3fb9e4907eec24"></a>
 
@@ -3857,7 +4837,20 @@ Paper citation usages:
 - `erdos243-reciprocal-tail-reasoning-surface`: [cite at paper/243/erdos243-reciprocal-tail-reasoning-surface.tex:1032](../../paper/243/erdos243-reciprocal-tail-reasoning-surface.tex#L1032-L1032), [cite at paper/reasoning-parts/erdos243/core.tex:993](../../paper/reasoning-parts/erdos243/core.tex#L993-L993)
 - `erdos249-totient-reasoning-surface`: [cite at paper/249/erdos249-totient-reasoning-surface.tex:7412](../../paper/249/erdos249-totient-reasoning-surface.tex#L7412-L7412), [cite at paper/reasoning-parts/erdos249/a249\_front.tex:7220](../../paper/reasoning-parts/erdos249/a249_front.tex#L7220-L7220)
 - `erdos251-prime-gap-reasoning-surface`: [cite at paper/251/erdos251-prime-gap-reasoning-surface.tex:375](../../paper/251/erdos251-prime-gap-reasoning-surface.tex#L375-L375), [cite at paper/251/erdos251-prime-gap-reasoning-surface.tex:578](../../paper/251/erdos251-prime-gap-reasoning-surface.tex#L578-L578), [cite at paper/reasoning-parts/erdos251/core.tex:333](../../paper/reasoning-parts/erdos251/core.tex#L333-L333), [cite at paper/reasoning-parts/erdos251/core.tex:536](../../paper/reasoning-parts/erdos251/core.tex#L536-L536)
+- `optimal-sparse-perturbations`: [cite at paper/synthesis/optimal-sparse-perturbations.tex:1012](../../paper/synthesis/optimal-sparse-perturbations.tex#L1012-L1012), [cite at paper/synthesis/optimal-sparse-perturbations.tex:1852](../../paper/synthesis/optimal-sparse-perturbations.tex#L1852-L1852), [cite at paper/synthesis/optimal-sparse-perturbations.tex:1971](../../paper/synthesis/optimal-sparse-perturbations.tex#L1971-L1971)
 - `writing-mathematics-from-reviewed-revisions`: [cite at paper/exposition/parts/revisions.tex:34](../../paper/exposition/parts/revisions.tex#L34-L34)
+
+<a id="source-source-41e918322b698f"></a>
+
+### [The Lean Theorem Prover](https://lean-lang.org/papers/system.pdf)
+
+- Source id: `source-41e918322b698f`
+- Author or public identity: Leonardo de Moura, Soonho Kong, Jeremy Avigad, Floris van Doorn, Jakob von Raumer
+- Kind: `literature`
+- Problems: none recorded
+- Relationship and boundary: Preserved from the repository bibliography in CITATION.cff at the source revision; citation registration does not independently verify the cited publication.
+- Source verification: `bibliography\_only` — scope not separately recorded
+- Local mapping: `not recorded`
 
 <a id="source-source-43a734be32736f"></a>
 
@@ -3885,6 +4878,8 @@ Public implementation or evidence coordinates:
 Paper citation usages:
 
 - `erdos-257-mersenne-support-subseries`: [cite at paper/257/erdos-257-mersenne-support-subseries.tex:876](../../paper/257/erdos-257-mersenne-support-subseries.tex#L876-L876)
+- `erdos257-mersenne-reasoning-surface`: [cite at paper/257/erdos257-mersenne-reasoning-surface.tex:1296](../../paper/257/erdos257-mersenne-reasoning-surface.tex#L1296-L1296), [cite at paper/reasoning-parts/erdos257/a257\_front.tex:1096](../../paper/reasoning-parts/erdos257/a257_front.tex#L1096-L1096)
+- `erdos269-running-lcm-reasoning-surface`: [cite at paper/269/erdos269-running-lcm-reasoning-surface.tex:3913](../../paper/269/erdos269-running-lcm-reasoning-surface.tex#L3913-L3913), [cite at paper/reasoning-parts/erdos269/core.tex:3855](../../paper/reasoning-parts/erdos269/core.tex#L3855-L3855)
 - `erdos68-factorial-reasoning-surface`: [cite at paper/68/erdos68-factorial-reasoning-surface.tex:2178](../../paper/68/erdos68-factorial-reasoning-surface.tex#L2178-L2178), [cite at paper/68/erdos68-factorial-reasoning-surface.tex:2310](../../paper/68/erdos68-factorial-reasoning-surface.tex#L2310-L2310), [cite at paper/68/erdos68-factorial-reasoning-surface.tex:2583](../../paper/68/erdos68-factorial-reasoning-surface.tex#L2583-L2583), [cite at paper/reasoning-parts/erdos68/core.tex:2143](../../paper/reasoning-parts/erdos68/core.tex#L2143-L2143), [cite at paper/reasoning-parts/erdos68/core.tex:2275](../../paper/reasoning-parts/erdos68/core.tex#L2275-L2275), [cite at paper/reasoning-parts/erdos68/core.tex:2548](../../paper/reasoning-parts/erdos68/core.tex#L2548-L2548)
 
 <a id="source-source-45037c29c04bed"></a>
@@ -3892,7 +4887,7 @@ Paper citation usages:
 ### Three refinements for the lemniscate-path programme
 
 - Source id: `source-45037c29c04bed`
-- Author or public identity: {Plectis revision research draft}
+- Author or public identity: Plectis revision research draft
 - Kind: `literature`
 - Problems: #1041
 - Relationship and boundary: Cited by the linked public manuscript(s). The bibliography and citation contexts record the paper's use; no tracked primary-source closure currently verifies a stronger source-level relation.
@@ -3915,7 +4910,7 @@ Paper citation usages:
 ### [Sums of singular series along arithmetic progressions and with smooth weights](https://arxiv.org/abs/2301.06095v1)
 
 - Source id: `source-450aed97015b8f`
-- Author or public identity: Kuperberg, Vivian
+- Author or public identity: Vivian Kuperberg
 - Kind: `literature`
 - Problems: #251
 - Relationship and boundary: Cited by the linked public manuscript(s). The bibliography and citation contexts record the paper's use; no tracked primary-source closure currently verifies a stronger source-level relation.
@@ -3956,6 +4951,26 @@ Paper citation usages:
 - `claim-faithful-publication-systems`: [cite at paper/systems/claim-faithful-publication-systems-paper.tex:984](../../paper/systems/claim-faithful-publication-systems-paper.tex#L984-L984)
 - `cold-clone-to-proof-receipt`: [cite at paper/systems/cold-clone-to-proof-receipt.tex:496](../../paper/systems/cold-clone-to-proof-receipt.tex#L496-L496)
 
+<a id="source-source-45decc279950cf"></a>
+
+### [AXLE: A Cloud Infrastructure for Lean 4 Theorem Proving Utilities](https://arxiv.org/abs/2606.26442)
+
+- Source id: `source-45decc279950cf`
+- Author or public identity: J. Xin, A. Schneidman, C. Cummins, K. Ram, S. Ganesh, J. Limperg
+- Kind: `literature`
+- Problems: none recorded
+- Relationship and boundary: Cited by the linked public manuscript bibliography. Citation metadata records attribution; the cited work and mathematical correspondence have not been independently verified in this registration.
+- Source verification: `bibliography\_only` — scope not separately recorded
+- Local mapping: `not recorded`
+
+Public implementation or evidence coordinates:
+
+- [paper/systems/claim-faithful-publication-systems-paper.tex](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1189-L1189) — lines `1189–1189`; excerpt `sha256:5a9297fe812e1518e6e38f6e4b976f6960808e5fd7d15b2f5ada5deab57e79e1`
+
+Paper citation usages:
+
+- `claim-faithful-publication-systems`: [cite at paper/systems/claim-faithful-publication-systems-paper.tex:990](../../paper/systems/claim-faithful-publication-systems-paper.tex#L990-L990)
+
 <a id="source-source-463b7e9f7264b1"></a>
 
 ### [Structured Assurance Case Metamodel (SACM)](https://www.omg.org/spec/SACM/2.3/PDF)
@@ -3975,6 +4990,26 @@ Public implementation or evidence coordinates:
 Paper citation usages:
 
 - `plectis-public-system`: [cite at docs/papers/mirror/plectis-public-system.tex:418](../../docs/papers/mirror/plectis-public-system.tex#L418-L418)
+
+<a id="source-source-46777597b9d714"></a>
+
+### [Writing a Good Mathematical Paper](https://github.com/wcook04/plectis-erdos/blob/main/paper/exposition/writing-a-good-mathematical-paper.pdf)
+
+- Source id: `source-46777597b9d714`
+- Author or public identity: Will Cook
+- Kind: `literature`
+- Problems: none recorded
+- Relationship and boundary: Cited by the linked public manuscript bibliography. Citation metadata records attribution; the cited work and mathematical correspondence have not been independently verified in this registration.
+- Source verification: `bibliography\_only` — scope not separately recorded
+- Local mapping: `not recorded`
+
+Public implementation or evidence coordinates:
+
+- [paper/exposition/parts/references.tex](../../paper/exposition/parts/references.tex#L51-L51) — lines `51–51`; excerpt `sha256:adbff5485ceaa204396b806f328a4a4e63e5ed405ed9a4895e7669a396b7ff8c`
+
+Paper citation usages:
+
+- `writing-mathematics-from-reviewed-revisions`: [cite at paper/exposition/parts/practice.tex:6](../../paper/exposition/parts/practice.tex#L6-L6)
 
 <a id="source-source-490b1875016ea4"></a>
 
@@ -4000,6 +5035,26 @@ Public implementation or evidence coordinates:
 Paper citation usages:
 
 - `erdos1049-rational-base-lambert-reasoning-surface`: [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:2885](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L2885-L2885), [cite at paper/reasoning-parts/erdos1049/core.tex:2854](../../paper/reasoning-parts/erdos1049/core.tex#L2854-L2854)
+
+<a id="source-source-4a198344c30349"></a>
+
+### [An assumption-based TMS](https://doi.org/10.1016/0004-3702(86)90080-9)
+
+- Source id: `source-4a198344c30349`
+- Author or public identity: J. de Kleer
+- Kind: `literature`
+- Problems: none recorded
+- Relationship and boundary: Cited by the linked public manuscript bibliography. Citation metadata records attribution; the cited work and mathematical correspondence have not been independently verified in this registration.
+- Source verification: `bibliography\_only` — scope not separately recorded
+- Local mapping: `not recorded`
+
+Public implementation or evidence coordinates:
+
+- [paper/systems/claim-faithful-publication-systems-paper.tex](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1201-L1201) — lines `1201–1201`; excerpt `sha256:bac71223d586bac03b94c00e34874be8d644065c738caf49eb864c7dbd408350`
+
+Paper citation usages:
+
+- `claim-faithful-publication-systems`: [cite at paper/systems/claim-faithful-publication-systems-paper.tex:994](../../paper/systems/claim-faithful-publication-systems-paper.tex#L994-L994)
 
 <a id="source-source-4afc43674f7082"></a>
 
@@ -4054,12 +5109,45 @@ Paper citation usages:
 
 - `erdos-257-mersenne-support-subseries`: [cite at paper/257/erdos-257-mersenne-support-subseries.tex:1576](../../paper/257/erdos-257-mersenne-support-subseries.tex#L1576-L1576)
 
+<a id="source-source-4e981d6b2151bf"></a>
+
+### [On Series of the Lambert Type which assume Irrational Values for Rational Values of the Argument](https://insa.nic.in/UI/Archivesection.aspx?JID=MA%3D%3D&JYrs=MTk0Nw%3D%3D)
+
+- Source id: `source-4e981d6b2151bf`
+- Author or public identity: Sarvadaman Chowla
+- Kind: `literature`
+- Problems: none recorded
+- Relationship and boundary: Preserved from the repository bibliography in CITATION.cff at the source revision; citation registration does not independently verify the cited publication.
+- Source verification: `bibliography\_only` — scope not separately recorded
+- Local mapping: `not recorded`
+
+<a id="source-source-4efc338160443b"></a>
+
+### [Learning to Discover Interesting Mathematics](https://arxiv.org/abs/2609.28603v1)
+
+- Source id: `source-4efc338160443b`
+- Author or public identity: N. Patel, A. Rammal, A. Hayat, R. Munos, J. Kempe
+- Kind: `literature`
+- Problems: none recorded
+- Relationship and boundary: Cited by the linked public manuscript bibliography. Citation metadata records attribution; the cited work and mathematical correspondence have not been independently verified in this registration.
+- Source verification: `bibliography\_only` — scope not separately recorded
+- Local mapping: `not recorded`
+
+Public implementation or evidence coordinates:
+
+- [paper/systems/claim-faithful-publication-systems-paper.tex](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1126-L1126) — lines `1126–1126`; excerpt `sha256:e73337384c16be7a73ca4529a19180c7bd229d5f13d6e9b6cdc4176033c96869`
+
+Paper citation usages:
+
+- `claim-faithful-publication-systems`: [cite at paper/systems/claim-faithful-publication-systems-paper.tex:989](../../paper/systems/claim-faithful-publication-systems-paper.tex#L989-L989)
+- `open-source-mathematics-strategy`: [cite at paper/systems/open-source-mathematics-strategy.tex:216](../../paper/systems/open-source-mathematics-strategy.tex#L216-L216)
+
 <a id="source-source-4f5fd0d7405e29"></a>
 
 ### [On several irrationality problems for Ahmes series](https://arxiv.org/abs/2406.17593v4)
 
 - Source id: `source-4f5fd0d7405e29`
-- Author or public identity: V. Kovač, T. Tao
+- Author or public identity: Vjekoslav Kovač, Terence Tao
 - Kind: `literature`
 - Problems: #1049, #243, #249, #251, #257, #269
 - Relationship and boundary: General Ahmes-series background in the long record's prior-work section.
@@ -4205,6 +5293,26 @@ Paper citation usages:
 
 - `erdos269-running-lcm-reasoning-surface`: [cite at paper/269/erdos269-running-lcm-reasoning-surface.tex:3145](../../paper/269/erdos269-running-lcm-reasoning-surface.tex#L3145-L3145), [cite at paper/reasoning-parts/erdos269/core.tex:3087](../../paper/reasoning-parts/erdos269/core.tex#L3087-L3087)
 
+<a id="source-source-530f31a2fe38be"></a>
+
+### [Integer-valued functions, Hurwitz functions, and related topics: a survey](https://doi.org/10.1515/9783110761115-005)
+
+- Source id: `source-530f31a2fe38be`
+- Author or public identity: M. Waldschmidt
+- Kind: `literature`
+- Problems: none recorded
+- Relationship and boundary: Cited by the linked public manuscript bibliography. Citation metadata records attribution; the cited work and mathematical correspondence have not been independently verified in this registration.
+- Source verification: `bibliography\_only` — scope not separately recorded
+- Local mapping: `not recorded`
+
+Public implementation or evidence coordinates:
+
+- [paper/synthesis/optimal-sparse-perturbations.tex](../../paper/synthesis/optimal-sparse-perturbations.tex#L2298-L2298) — lines `2298–2298`; excerpt `sha256:9f7997363ac50d080b88a22d879a44eeab8f77738faf80891c0a7fb4df3cd849`
+
+Paper citation usages:
+
+- `optimal-sparse-perturbations`: [cite at paper/synthesis/optimal-sparse-perturbations.tex:2024](../../paper/synthesis/optimal-sparse-perturbations.tex#L2024-L2024)
+
 <a id="source-source-53a2a9c4a9e7c2"></a>
 
 ### [Calculation of Gauss Quadrature Rules](https://doi.org/10.1090/S0025-5718-69-99647-1)
@@ -4231,6 +5339,26 @@ Paper citation usages:
 
 - `erdos-1049-rational-base-lambert`: [cite at paper/1049/erdos-1049-rational-base-lambert.tex:1059](../../paper/1049/erdos-1049-rational-base-lambert.tex#L1059-L1059)
 - `erdos1049-rational-base-lambert-reasoning-surface`: [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:3008](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L3008-L3008), [cite at paper/reasoning-parts/erdos1049/core.tex:2977](../../paper/reasoning-parts/erdos1049/core.tex#L2977-L2977)
+
+<a id="source-source-561745b44bbbfa"></a>
+
+### APE-Bench: Evaluating Automated Proof Engineering for Formal Math Libraries
+
+- Source id: `source-561745b44bbbfa`
+- Author or public identity: Huajian Xin, Luming Li, Xiaoran Jin, Jacques Fleuriot, Wenda Li
+- Kind: `literature`
+- Problems: none recorded
+- Relationship and boundary: Cited by the linked public manuscript bibliography. Citation metadata records attribution; the cited work and mathematical correspondence have not been independently verified in this registration.
+- Source verification: `bibliography\_only` — scope not separately recorded
+- Local mapping: `not recorded`
+
+Public implementation or evidence coordinates:
+
+- [paper/systems/claim-faithful-publication-systems-paper.tex](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1300-L1300) — lines `1300–1300`; excerpt `sha256:8eac3bac08fb93a175e871878d14a098701dcef1bebf587c75b6fe1c9410df49`
+
+Paper citation usages:
+
+- `claim-faithful-publication-systems`: [cite at paper/systems/claim-faithful-publication-systems-paper.tex:991](../../paper/systems/claim-faithful-publication-systems-paper.tex#L991-L991)
 
 <a id="source-source-573a79feb36d47"></a>
 
@@ -4363,7 +5491,7 @@ Paper citation usages:
 ### [NIST Digital Library of Mathematical Functions, Eq. 17.2.37](https://dlmf.nist.gov/17.2.E37)
 
 - Source id: `source-5857f9959e7529`
-- Author or public identity: F. W. J. Olver et al. (eds.)
+- Author or public identity: NIST Digital Library of Mathematical Functions
 - Kind: `website\_contribution`
 - Problems: #1049
 - Relationship and boundary: Standard q-binomial theorem (Eq. 17.2.37) used in the positive-measure estimate.
@@ -4414,6 +5542,26 @@ Paper citation usages:
 - `erdos-1049-rational-base-lambert`: [cite at paper/1049/erdos-1049-rational-base-lambert.tex:1113](../../paper/1049/erdos-1049-rational-base-lambert.tex#L1113-L1113)
 - `erdos1049-rational-base-lambert-reasoning-surface`: [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:4902](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L4902-L4902), [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:4905](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L4905-L4905), [cite at paper/reasoning-parts/erdos1049/core.tex:4871](../../paper/reasoning-parts/erdos1049/core.tex#L4871-L4871), [cite at paper/reasoning-parts/erdos1049/core.tex:4874](../../paper/reasoning-parts/erdos1049/core.tex#L4874-L4874)
 
+<a id="source-source-5947486009ab5d"></a>
+
+### [RE-Bench: Evaluating frontier AI R&D capabilities of language model agents against human experts](https://arxiv.org/abs/2411.15114v1)
+
+- Source id: `source-5947486009ab5d`
+- Author or public identity: H. Wijk
+- Kind: `literature`
+- Problems: none recorded
+- Relationship and boundary: Cited by the linked public manuscript bibliography. Citation metadata records attribution; the cited work and mathematical correspondence have not been independently verified in this registration.
+- Source verification: `bibliography\_only` — scope not separately recorded
+- Local mapping: `not recorded`
+
+Public implementation or evidence coordinates:
+
+- [paper/systems/claim-faithful-publication-systems-paper.tex](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1339-L1339) — lines `1339–1339`; excerpt `sha256:a724955539e2b00e38897263fd10877140462d7ff3c610c41351e51985354d48`
+
+Paper citation usages:
+
+- `claim-faithful-publication-systems`: [cite at paper/systems/claim-faithful-publication-systems-paper.tex:991](../../paper/systems/claim-faithful-publication-systems-paper.tex#L991-L991)
+
 <a id="source-source-5b5c84cd208fff"></a>
 
 ### [The Oracle Problem in Software Testing: A Survey](https://doi.org/10.1109/TSE.2014.2372785)
@@ -4434,12 +5582,32 @@ Paper citation usages:
 
 - `plectis-public-system`: [cite at docs/papers/mirror/plectis-public-system.tex:400](../../docs/papers/mirror/plectis-public-system.tex#L400-L400), [cite at docs/papers/mirror/plectis-public-system.tex:404](../../docs/papers/mirror/plectis-public-system.tex#L404-L404)
 
+<a id="source-source-5bd4a26e6f56fd"></a>
+
+### [Sledgehammer: Judgement Day](https://doi.org/10.1007/978-3-642-14203-1_9)
+
+- Source id: `source-5bd4a26e6f56fd`
+- Author or public identity: S. Böhme, T. Nipkow
+- Kind: `literature`
+- Problems: none recorded
+- Relationship and boundary: Cited by the linked public manuscript bibliography. Citation metadata records attribution; the cited work and mathematical correspondence have not been independently verified in this registration.
+- Source verification: `bibliography\_only` — scope not separately recorded
+- Local mapping: `not recorded`
+
+Public implementation or evidence coordinates:
+
+- [paper/systems/claim-faithful-publication-systems-paper.tex](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1253-L1253) — lines `1253–1253`; excerpt `sha256:79075845f92615a1635444298f0cb75884446b085dfa7adcd7b27b2b5dfb6ac7`
+
+Paper citation usages:
+
+- `claim-faithful-publication-systems`: [cite at paper/systems/claim-faithful-publication-systems-paper.tex:985](../../paper/systems/claim-faithful-publication-systems-paper.tex#L985-L985)
+
 <a id="source-source-5c72388a6ca10f"></a>
 
 ### [On arithmetical properties of Lambert series](https://users.renyi.hu/~p_erdos/1948-04.pdf)
 
 - Source id: `source-5c72388a6ca10f`
-- Author or public identity: P. Erdős
+- Author or public identity: Paul Erdős
 - Kind: `literature`
 - Problems: #1049, #249, #257
 - Relationship and boundary: Attribution of the full-support Erdős--Borwein divisor series \`Σ\_ r≥1 d(r)/t^r\` to Erdős's 1948 theorem, printed p. 63. - The prime-congruence and long base-expansion-zero mechanism used in that theorem, printed pp. 63--65. - The exact source-level warning that the analogous Euler-totient series is not proved there and “seem\[s\] to present difficulties,” printed p. 66. - The published identity, official retrieval route, exact local digest, and conservative redistribution posture recorded above. The comment explicitly attributes the full-support Lambert-series irrationality engine or a stated proof component to Erdős (1948). This is theorem/proof lineage, bounded to the comment; it does not claim a line-by-line transcription of the paper. The complete module comment compares the open weighted rung with Erdős’s 1948 congruence mechanism and explicitly leaves extension to the primitive-conductor weight open. The complete module comment explicitly identifies the level-1 irrational rung with Erdős 1948; this is historical theorem lineage for the already checked full-support result. The comment explicitly identifies the level-1 Lambert rung as irrational by Erdős 1948, contrasted with the externally cited q-Padé level-2 rung.
@@ -4506,6 +5674,7 @@ Paper citation usages:
 - `erdos249-257-main`: [cite at paper/archive/erdos249-257-main-paper.tex:115](../../paper/archive/erdos249-257-main-paper.tex#L115-L115), [cite at paper/archive/erdos249-257-main-paper.tex:619](../../paper/archive/erdos249-257-main-paper.tex#L619-L619), [cite at paper/archive/erdos249-257-main-paper.tex:622](../../paper/archive/erdos249-257-main-paper.tex#L622-L622)
 - `erdos249-totient-reasoning-surface`: [cite at paper/249/erdos249-totient-reasoning-surface.tex:1759](../../paper/249/erdos249-totient-reasoning-surface.tex#L1759-L1759), [cite at paper/249/erdos249-totient-reasoning-surface.tex:1782](../../paper/249/erdos249-totient-reasoning-surface.tex#L1782-L1782), [cite at paper/249/erdos249-totient-reasoning-surface.tex:2709](../../paper/249/erdos249-totient-reasoning-surface.tex#L2709-L2709), [cite at paper/249/erdos249-totient-reasoning-surface.tex:5616](../../paper/249/erdos249-totient-reasoning-surface.tex#L5616-L5616), [cite at paper/249/erdos249-totient-reasoning-surface.tex:7966](../../paper/249/erdos249-totient-reasoning-surface.tex#L7966-L7966), [cite at paper/249/erdos249-totient-reasoning-surface.tex:7976](../../paper/249/erdos249-totient-reasoning-surface.tex#L7976-L7976), [cite at paper/reasoning-parts/erdos249/a249\_front.tex:1567](../../paper/reasoning-parts/erdos249/a249_front.tex#L1567-L1567), [cite at paper/reasoning-parts/erdos249/a249\_front.tex:1590](../../paper/reasoning-parts/erdos249/a249_front.tex#L1590-L1590), [cite at paper/reasoning-parts/erdos249/a249\_front.tex:2517](../../paper/reasoning-parts/erdos249/a249_front.tex#L2517-L2517), [cite at paper/reasoning-parts/erdos249/a249\_front.tex:5424](../../paper/reasoning-parts/erdos249/a249_front.tex#L5424-L5424), [cite at paper/reasoning-parts/erdos249/a249\_front.tex:7774](../../paper/reasoning-parts/erdos249/a249_front.tex#L7774-L7774), [cite at paper/reasoning-parts/erdos249/a249\_front.tex:7784](../../paper/reasoning-parts/erdos249/a249_front.tex#L7784-L7784)
 - `erdos257-mersenne-reasoning-surface`: [cite at paper/257/erdos257-mersenne-reasoning-surface.tex:1176](../../paper/257/erdos257-mersenne-reasoning-surface.tex#L1176-L1176), [cite at paper/257/erdos257-mersenne-reasoning-surface.tex:1477](../../paper/257/erdos257-mersenne-reasoning-surface.tex#L1477-L1477), [cite at paper/257/erdos257-mersenne-reasoning-surface.tex:3026](../../paper/257/erdos257-mersenne-reasoning-surface.tex#L3026-L3026), [cite at paper/257/erdos257-mersenne-reasoning-surface.tex:6917](../../paper/257/erdos257-mersenne-reasoning-surface.tex#L6917-L6917), [cite at paper/reasoning-parts/erdos257/a257\_front.tex:976](../../paper/reasoning-parts/erdos257/a257_front.tex#L976-L976), [cite at paper/reasoning-parts/erdos257/a257\_front.tex:1277](../../paper/reasoning-parts/erdos257/a257_front.tex#L1277-L1277), [cite at paper/reasoning-parts/erdos257/a257\_front.tex:2826](../../paper/reasoning-parts/erdos257/a257_front.tex#L2826-L2826), [cite at paper/reasoning-parts/erdos257/a257\_front.tex:6717](../../paper/reasoning-parts/erdos257/a257_front.tex#L6717-L6717)
+- `optimal-sparse-perturbations`: [cite at paper/synthesis/optimal-sparse-perturbations.tex:1853](../../paper/synthesis/optimal-sparse-perturbations.tex#L1853-L1853)
 
 <a id="source-source-5cac1ad51acb12"></a>
 
@@ -4531,6 +5700,26 @@ Public implementation or evidence coordinates:
 Paper citation usages:
 
 - `erdos249-totient-reasoning-surface`: [cite at paper/249/erdos249-totient-reasoning-surface.tex:4298](../../paper/249/erdos249-totient-reasoning-surface.tex#L4298-L4298), [cite at paper/reasoning-parts/erdos249/a249\_front.tex:4106](../../paper/reasoning-parts/erdos249/a249_front.tex#L4106-L4106)
+
+<a id="source-source-5e5093c93d60de"></a>
+
+### [The Binary Totient Series](https://github.com/wcook04/plectis-erdos/blob/main/paper/249/erdos249-totient-reasoning-surface.tex)
+
+- Source id: `source-5e5093c93d60de`
+- Author or public identity: Will Cook
+- Kind: `literature`
+- Problems: none recorded
+- Relationship and boundary: Cited by the linked public manuscript bibliography. Citation metadata records attribution; the cited work and mathematical correspondence have not been independently verified in this registration.
+- Source verification: `bibliography\_only` — scope not separately recorded
+- Local mapping: `not recorded`
+
+Public implementation or evidence coordinates:
+
+- [paper/exposition/parts/references.tex](../../paper/exposition/parts/references.tex#L92-L92) — lines `92–92`; excerpt `sha256:e993fcffd2fbdbf8cc637d12d107445d44ffbcbaeab1e0453ea1bd61c552ef51`
+
+Paper citation usages:
+
+- `writing-mathematics-from-reviewed-revisions`: [cite at paper/exposition/parts/revisions.tex:203](../../paper/exposition/parts/revisions.tex#L203-L203)
 
 <a id="source-source-5edeb2408c36bd"></a>
 
@@ -4639,12 +5828,32 @@ Paper citation usages:
 - `claim-faithful-publication-systems`: [cite at paper/systems/claim-faithful-publication-systems-paper.tex:984](../../paper/systems/claim-faithful-publication-systems-paper.tex#L984-L984)
 - `cold-clone-to-proof-receipt`: [cite at paper/systems/cold-clone-to-proof-receipt.tex:499](../../paper/systems/cold-clone-to-proof-receipt.tex#L499-L499)
 
+<a id="source-source-6089118fee9920"></a>
+
+### [Give appropriate amounts of detail](https://terrytao.wordpress.com/advice-on-writing-papers/give-appropriate-amounts-of-detail/)
+
+- Source id: `source-6089118fee9920`
+- Author or public identity: T. Tao
+- Kind: `literature`
+- Problems: none recorded
+- Relationship and boundary: Cited by the linked public manuscript bibliography. Citation metadata records attribution; the cited work and mathematical correspondence have not been independently verified in this registration.
+- Source verification: `bibliography\_only` — scope not separately recorded
+- Local mapping: `not recorded`
+
+Public implementation or evidence coordinates:
+
+- [paper/exposition/parts/references.tex](../../paper/exposition/parts/references.tex#L62-L62) — lines `62–62`; excerpt `sha256:54d0fd5d867dd3f9aaec0371fc932890d9d24bd7410f3c3a98120fc4177f5e46`
+
+Paper citation usages:
+
+- `writing-mathematics-from-reviewed-revisions`: [cite at paper/exposition/parts/reading.tex:59](../../paper/exposition/parts/reading.tex#L59-L59)
+
 <a id="source-source-619de19af78c4c"></a>
 
-### [Generating special arithmetic functions by Lambert series factorizations](https://doi.org/10.55016/ojs/cdm.v14i1.62425)
+### [Generating Special Arithmetic Functions by Lambert Series Factorizations](https://doi.org/10.55016/ojs/cdm.v14i1.62425)
 
 - Source id: `source-619de19af78c4c`
-- Author or public identity: M. Merca, M. D. Schmidt
+- Author or public identity: Mircea Merca, Maxie D. Schmidt
 - Kind: `literature`
 - Problems: #249, #257
 - Relationship and boundary: Classical divisor-sum Lambert identity behind the squared-Lambert transfer, which the papers prove directly.
@@ -4787,7 +5996,7 @@ Paper citation usages:
 ### [Modular functions and transcendence questions](https://doi.org/10.1070/SM1996v187n09ABEH000158)
 
 - Source id: `source-6346eeeac5036d`
-- Author or public identity: Yu. V. Nesterenko
+- Author or public identity: Yuri V. Nesterenko
 - Kind: `literature`
 - Problems: #249, #257
 - Relationship and boundary: Transcendence result (Corollary 2, p. 1320) behind the Eisenstein rung, with the identification of Ramanujan's P(1/2).
@@ -4846,6 +6055,27 @@ Paper citation usages:
 - `erdos-257-mersenne-support-subseries`: [cite at paper/257/erdos-257-mersenne-support-subseries.tex:1118](../../paper/257/erdos-257-mersenne-support-subseries.tex#L1118-L1118), [cite at paper/257/erdos-257-mersenne-support-subseries.tex:1573](../../paper/257/erdos-257-mersenne-support-subseries.tex#L1573-L1573)
 - `erdos251-prime-gap-reasoning-surface`: [cite at paper/251/erdos251-prime-gap-reasoning-surface.tex:631](../../paper/251/erdos251-prime-gap-reasoning-surface.tex#L631-L631), [cite at paper/reasoning-parts/erdos251/core.tex:589](../../paper/reasoning-parts/erdos251/core.tex#L589-L589)
 - `erdos257-mersenne-reasoning-surface`: [cite at paper/257/erdos257-mersenne-reasoning-surface.tex:1409](../../paper/257/erdos257-mersenne-reasoning-surface.tex#L1409-L1409), [cite at paper/257/erdos257-mersenne-reasoning-surface.tex:2405](../../paper/257/erdos257-mersenne-reasoning-surface.tex#L2405-L2405), [cite at paper/257/erdos257-mersenne-reasoning-surface.tex:5613](../../paper/257/erdos257-mersenne-reasoning-surface.tex#L5613-L5613), [cite at paper/257/erdos257-mersenne-reasoning-surface.tex:9543](../../paper/257/erdos257-mersenne-reasoning-surface.tex#L9543-L9543), [cite at paper/reasoning-parts/erdos257/a257\_front.tex:1209](../../paper/reasoning-parts/erdos257/a257_front.tex#L1209-L1209), [cite at paper/reasoning-parts/erdos257/a257\_front.tex:2205](../../paper/reasoning-parts/erdos257/a257_front.tex#L2205-L2205), [cite at paper/reasoning-parts/erdos257/a257\_front.tex:5413](../../paper/reasoning-parts/erdos257/a257_front.tex#L5413-L5413), [cite at paper/reasoning-parts/erdos257/a257\_front.tex:9343](../../paper/reasoning-parts/erdos257/a257_front.tex#L9343-L9343)
+- `optimal-sparse-perturbations`: [cite at paper/synthesis/optimal-sparse-perturbations.tex:877](../../paper/synthesis/optimal-sparse-perturbations.tex#L877-L877), [cite at paper/synthesis/optimal-sparse-perturbations.tex:904](../../paper/synthesis/optimal-sparse-perturbations.tex#L904-L904), [cite at paper/synthesis/optimal-sparse-perturbations.tex:1969](../../paper/synthesis/optimal-sparse-perturbations.tex#L1969-L1969)
+
+<a id="source-source-63df1d8fdb67b8"></a>
+
+### [Plausible](https://github.com/leanprover-community/plausible)
+
+- Source id: `source-63df1d8fdb67b8`
+- Author or public identity: Lean community
+- Kind: `literature`
+- Problems: none recorded
+- Relationship and boundary: Cited by the linked public manuscript bibliography. Citation metadata records attribution; the cited work and mathematical correspondence have not been independently verified in this registration.
+- Source verification: `bibliography\_only` — scope not separately recorded
+- Local mapping: `not recorded`
+
+Public implementation or evidence coordinates:
+
+- [paper/systems/claim-faithful-publication-systems-paper.tex](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1218-L1218) — lines `1218–1218`; excerpt `sha256:00c04d705bf91c7eaf23d41d33ca3bb44adef0e33a6deb3c586aa587d516358a`
+
+Paper citation usages:
+
+- `claim-faithful-publication-systems`: [cite at paper/systems/claim-faithful-publication-systems-paper.tex:982](../../paper/systems/claim-faithful-publication-systems-paper.tex#L982-L982)
 
 <a id="source-source-6564b203677735"></a>
 
@@ -4880,12 +6110,32 @@ Paper citation usages:
 - `erdos-251-prime-gap-dyadic-series`: [cite at paper/251/erdos-251-prime-gap-dyadic-series.tex:755](../../paper/251/erdos-251-prime-gap-dyadic-series.tex#L755-L755)
 - `erdos251-prime-gap-reasoning-surface`: [cite at paper/251/erdos251-prime-gap-reasoning-surface.tex:2103](../../paper/251/erdos251-prime-gap-reasoning-surface.tex#L2103-L2103), [cite at paper/251/erdos251-prime-gap-reasoning-surface.tex:2105](../../paper/251/erdos251-prime-gap-reasoning-surface.tex#L2105-L2105), [cite at paper/reasoning-parts/erdos251/core.tex:2061](../../paper/reasoning-parts/erdos251/core.tex#L2061-L2061), [cite at paper/reasoning-parts/erdos251/core.tex:2063](../../paper/reasoning-parts/erdos251/core.tex#L2063-L2063)
 
+<a id="source-source-6812fb1b00b532"></a>
+
+### [Beyond Vacuity: Towards the Strongest Passing Formula](https://doi.org/10.1007/s10703-013-0192-6)
+
+- Source id: `source-6812fb1b00b532`
+- Author or public identity: H. Chockler, A. Gurfinkel, O. Strichman
+- Kind: `literature`
+- Problems: none recorded
+- Relationship and boundary: Cited by the linked public manuscript bibliography. Citation metadata records attribution; the cited work and mathematical correspondence have not been independently verified in this registration.
+- Source verification: `bibliography\_only` — scope not separately recorded
+- Local mapping: `not recorded`
+
+Public implementation or evidence coordinates:
+
+- [paper/systems/claim-faithful-publication-systems-paper.tex](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1223-L1223) — lines `1223–1223`; excerpt `sha256:1fc5ee9d9e30747e21655aa87e17b187246970ba474fbdaaf208c7c2ac537de5`
+
+Paper citation usages:
+
+- `claim-faithful-publication-systems`: [cite at paper/systems/claim-faithful-publication-systems-paper.tex:982](../../paper/systems/claim-faithful-publication-systems-paper.tex#L982-L982)
+
 <a id="source-source-685765cbd1ebe2"></a>
 
 ### [Quantitative correlations and some problems on prime factors of consecutive integers](https://arxiv.org/abs/2512.01739v2)
 
 - Source id: `source-685765cbd1ebe2`
-- Author or public identity: T. Tao, J. Teräväinen
+- Author or public identity: Terence Tao, Joni Teräväinen
 - Kind: `literature`
 - Problems: #249, #257
 - Relationship and boundary: Prime-support irrationality at base 2 (Theorem 1.3, p. 4) and its stated extension to every integer base and to prime-power support.
@@ -4943,6 +6193,26 @@ Paper citation usages:
 - `erdos257-mersenne-reasoning-surface`: [cite at paper/257/erdos257-mersenne-reasoning-surface.tex:2249](../../paper/257/erdos257-mersenne-reasoning-surface.tex#L2249-L2249), [cite at paper/reasoning-parts/erdos257/a257\_front.tex:2049](../../paper/reasoning-parts/erdos257/a257_front.tex#L2049-L2049)
 - `optimal-sparse-perturbations`: [cite at paper/synthesis/optimal-sparse-perturbations.tex:1854](../../paper/synthesis/optimal-sparse-perturbations.tex#L1854-L1854)
 
+<a id="source-source-68d81fb9613352"></a>
+
+### [Méthode de Mahler : relations linéaires, transcendance et applications aux nombres automatiques](https://arxiv.org/abs/1508.07158v2)
+
+- Source id: `source-68d81fb9613352`
+- Author or public identity: B. Adamczewski, C. Faverjon
+- Kind: `literature`
+- Problems: none recorded
+- Relationship and boundary: Cited by the linked public manuscript bibliography. Citation metadata records attribution; the cited work and mathematical correspondence have not been independently verified in this registration.
+- Source verification: `bibliography\_only` — scope not separately recorded
+- Local mapping: `not recorded`
+
+Public implementation or evidence coordinates:
+
+- [paper/synthesis/optimal-sparse-perturbations.tex](../../paper/synthesis/optimal-sparse-perturbations.tex#L2188-L2188) — lines `2188–2188`; excerpt `sha256:5f988aa92010a84e66302d331a862816ee188e3f13210df5a944b64117561c45`
+
+Paper citation usages:
+
+- `optimal-sparse-perturbations`: [cite at paper/synthesis/optimal-sparse-perturbations.tex:1109](../../paper/synthesis/optimal-sparse-perturbations.tex#L1109-L1109), [cite at paper/synthesis/optimal-sparse-perturbations.tex:1956](../../paper/synthesis/optimal-sparse-perturbations.tex#L1956-L1956)
+
 <a id="source-source-691e9cc3c46273"></a>
 
 ### [Über beliebige Teilsummen absolut konvergenter Reihen](https://doi.org/10.1007/BF01707309)
@@ -4971,6 +6241,27 @@ Paper citation usages:
 - `erdos-257-mersenne-support-subseries`: [cite at paper/257/erdos-257-mersenne-support-subseries.tex:1117](../../paper/257/erdos-257-mersenne-support-subseries.tex#L1117-L1117)
 - `erdos257-mersenne-reasoning-surface`: [cite at paper/257/erdos257-mersenne-reasoning-surface.tex:9542](../../paper/257/erdos257-mersenne-reasoning-surface.tex#L9542-L9542), [cite at paper/reasoning-parts/erdos257/a257\_front.tex:9342](../../paper/reasoning-parts/erdos257/a257_front.tex#L9342-L9342)
 - `optimal-sparse-perturbations`: [cite at paper/synthesis/optimal-sparse-perturbations.tex:877](../../paper/synthesis/optimal-sparse-perturbations.tex#L877-L877), [cite at paper/synthesis/optimal-sparse-perturbations.tex:904](../../paper/synthesis/optimal-sparse-perturbations.tex#L904-L904), [cite at paper/synthesis/optimal-sparse-perturbations.tex:1969](../../paper/synthesis/optimal-sparse-perturbations.tex#L1969-L1969)
+
+<a id="source-source-69a61174d22510"></a>
+
+### [Multiplicative analogue of Markoff–Lagrange spectrum and Pisot numbers](https://arxiv.org/abs/1911.06170v6)
+
+- Source id: `source-69a61174d22510`
+- Author or public identity: S. Akiyama, H. Kaneko
+- Kind: `literature`
+- Problems: none recorded
+- Relationship and boundary: Cited by the linked public manuscript bibliography. Citation metadata records attribution; the cited work and mathematical correspondence have not been independently verified in this registration.
+- Source verification: `bibliography\_only` — scope not separately recorded
+- Local mapping: `not recorded`
+
+Public implementation or evidence coordinates:
+
+- [paper/synthesis/optimal-sparse-perturbations.tex](../../paper/synthesis/optimal-sparse-perturbations.tex#L2121-L2121) — lines `2121–2121`; excerpt `sha256:2545c4ebe22725dd2c0a143594ce4c43c0b05884e60e9678c19a80ac2484521a`
+
+Paper citation usages:
+
+- `claim-faithful-publication-systems`: [cite at paper/systems/claim-faithful-publication-systems-paper.tex:998](../../paper/systems/claim-faithful-publication-systems-paper.tex#L998-L998)
+- `optimal-sparse-perturbations`: [cite at paper/synthesis/optimal-sparse-perturbations.tex:1667](../../paper/synthesis/optimal-sparse-perturbations.tex#L1667-L1667), [cite at paper/synthesis/optimal-sparse-perturbations.tex:1724](../../paper/synthesis/optimal-sparse-perturbations.tex#L1724-L1724)
 
 <a id="source-source-6a5bf83735fdef"></a>
 
@@ -5124,6 +6415,46 @@ Paper citation usages:
 - `erdos249-257-main`: [cite at paper/archive/erdos249-257-main-paper.tex:3967](../../paper/archive/erdos249-257-main-paper.tex#L3967-L3968)
 - `erdos249-totient-reasoning-surface`: [cite at paper/249/erdos249-totient-reasoning-surface.tex:1826](../../paper/249/erdos249-totient-reasoning-surface.tex#L1826-L1826), [cite at paper/reasoning-parts/erdos249/a249\_front.tex:1634](../../paper/reasoning-parts/erdos249/a249_front.tex#L1634-L1634)
 
+<a id="source-source-6c41fab4297c9c"></a>
+
+### [Build Systems à la Carte](https://doi.org/10.1145/3236774)
+
+- Source id: `source-6c41fab4297c9c`
+- Author or public identity: A. Mokhov, N. Mitchell, S. Peyton Jones
+- Kind: `literature`
+- Problems: none recorded
+- Relationship and boundary: Cited by the linked public manuscript bibliography. Citation metadata records attribution; the cited work and mathematical correspondence have not been independently verified in this registration.
+- Source verification: `bibliography\_only` — scope not separately recorded
+- Local mapping: `not recorded`
+
+Public implementation or evidence coordinates:
+
+- [paper/systems/claim-faithful-publication-systems-paper.tex](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1205-L1205) — lines `1205–1205`; excerpt `sha256:e8821fb31dce30bc1d8a75c1119b86e377ef93454e3bfdcad63b565a3d1953d8`
+
+Paper citation usages:
+
+- `claim-faithful-publication-systems`: [cite at paper/systems/claim-faithful-publication-systems-paper.tex:611](../../paper/systems/claim-faithful-publication-systems-paper.tex#L611-L611), [cite at paper/systems/claim-faithful-publication-systems-paper.tex:994](../../paper/systems/claim-faithful-publication-systems-paper.tex#L994-L994)
+
+<a id="source-source-6c6de21a713ea9"></a>
+
+### [Proof-Refactor: Refactoring Generated Formal Proofs into Modular Artifacts](https://arxiv.org/abs/2606.03743)
+
+- Source id: `source-6c6de21a713ea9`
+- Author or public identity: Y. Fu, P. Liu, Z. Wang, K. Yuan
+- Kind: `literature`
+- Problems: none recorded
+- Relationship and boundary: Cited by the linked public manuscript bibliography. Citation metadata records attribution; the cited work and mathematical correspondence have not been independently verified in this registration.
+- Source verification: `bibliography\_only` — scope not separately recorded
+- Local mapping: `not recorded`
+
+Public implementation or evidence coordinates:
+
+- [paper/systems/claim-faithful-publication-systems-paper.tex](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1262-L1262) — lines `1262–1262`; excerpt `sha256:26600d8e6d6da215639c82e6e087157205cf5acca7c8b02e8da39c4eb5b4e70a`
+
+Paper citation usages:
+
+- `claim-faithful-publication-systems`: [cite at paper/systems/claim-faithful-publication-systems-paper.tex:983](../../paper/systems/claim-faithful-publication-systems-paper.tex#L983-L983)
+
 <a id="source-source-6cfe654e650970"></a>
 
 ### [Arithmetical functions and irrationality of Lambert series](https://doi.org/10.1063/1.3630035)
@@ -5154,7 +6485,7 @@ Paper citation usages:
 ### [On Kakeya Conditions for Achievement Sets](https://link.springer.com/article/10.1007/s00025-021-01479-2)
 
 - Source id: `source-6d8837bbc174ce`
-- Author or public identity: Marchwicki, Jacek, Miska, Piotr
+- Author or public identity: Jacek Marchwicki, Piotr Miska
 - Kind: `literature`
 - Problems: #251
 - Relationship and boundary: Cited by the linked public manuscript(s). The bibliography and citation contexts record the paper's use; no tracked primary-source closure currently verifies a stronger source-level relation.
@@ -5185,6 +6516,26 @@ Paper citation usages:
 Exact source locations:
 
 - [Public bibliographic identity and author record; metadata checked on 2026-09-12. This does not verify a mathematical use.](https://scsc.uk/gsn-standard)
+
+<a id="source-source-6e371c431c9b64"></a>
+
+### [Counting rationals and diophantine approximation in missing-digit Cantor sets](https://arxiv.org/abs/2402.18395)
+
+- Source id: `source-6e371c431c9b64`
+- Author or public identity: S. Chow, P. Varjú, H. Yu
+- Kind: `literature`
+- Problems: none recorded
+- Relationship and boundary: Cited by the linked public manuscript bibliography. Citation metadata records attribution; the cited work and mathematical correspondence have not been independently verified in this registration.
+- Source verification: `bibliography\_only` — scope not separately recorded
+- Local mapping: `not recorded`
+
+Public implementation or evidence coordinates:
+
+- [paper/synthesis/optimal-sparse-perturbations.tex](../../paper/synthesis/optimal-sparse-perturbations.tex#L2231-L2231) — lines `2231–2231`; excerpt `sha256:3548cf74042b5fb22f0209590ddf849e25c8df3177dc289f7d15bedc92e298a4`
+
+Paper citation usages:
+
+- `optimal-sparse-perturbations`: [cite at paper/synthesis/optimal-sparse-perturbations.tex:1635](../../paper/synthesis/optimal-sparse-perturbations.tex#L1635-L1635), [cite at paper/synthesis/optimal-sparse-perturbations.tex:1979](../../paper/synthesis/optimal-sparse-perturbations.tex#L1979-L1979)
 
 <a id="source-source-71037224a1dd7c"></a>
 
@@ -5248,10 +6599,10 @@ Paper citation usages:
 
 <a id="source-source-724fef812699b7"></a>
 
-### [Distribution of factorials modulo $p$](https://www.numdam.org/article/JTNB_2017__29_1_169_0.pdf)
+### [Distribution of factorials modulo p](https://www.numdam.org/article/JTNB_2017__29_1_169_0.pdf)
 
 - Source id: `source-724fef812699b7`
-- Author or public identity: Klurman, Oleksiy, Munsch, Marc
+- Author or public identity: Oleksiy Klurman, Marc Munsch
 - Kind: `literature`
 - Problems: #68
 - Relationship and boundary: Cited by the linked public manuscript(s). The bibliography and citation contexts record the paper's use; no tracked primary-source closure currently verifies a stronger source-level relation.
@@ -5270,6 +6621,26 @@ Public implementation or evidence coordinates:
 Paper citation usages:
 
 - `erdos68-factorial-reasoning-surface`: [cite at paper/68/erdos68-factorial-reasoning-surface.tex:1871](../../paper/68/erdos68-factorial-reasoning-surface.tex#L1871-L1871), [cite at paper/reasoning-parts/erdos68/core.tex:1836](../../paper/reasoning-parts/erdos68/core.tex#L1836-L1836)
+
+<a id="source-source-74087f5e79a69a"></a>
+
+### [Fat, symmetric, irrational Cantor sets](https://www.tandfonline.com/doi/abs/10.1080/00029890.1981.11995266)
+
+- Source id: `source-74087f5e79a69a`
+- Author or public identity: D. Boes, R. Darst, P. Erdős
+- Kind: `literature`
+- Problems: none recorded
+- Relationship and boundary: Cited by the linked public manuscript bibliography. Citation metadata records attribution; the cited work and mathematical correspondence have not been independently verified in this registration.
+- Source verification: `bibliography\_only` — scope not separately recorded
+- Local mapping: `not recorded`
+
+Public implementation or evidence coordinates:
+
+- [paper/synthesis/optimal-sparse-perturbations.tex](../../paper/synthesis/optimal-sparse-perturbations.tex#L2222-L2222) — lines `2222–2222`; excerpt `sha256:0b51282faf0541314c3122ee24992fd22367b2e0dd0b56464e691bffab7febd5`
+
+Paper citation usages:
+
+- `optimal-sparse-perturbations`: [cite at paper/synthesis/optimal-sparse-perturbations.tex:1604](../../paper/synthesis/optimal-sparse-perturbations.tex#L1604-L1604), [cite at paper/synthesis/optimal-sparse-perturbations.tex:1976](../../paper/synthesis/optimal-sparse-perturbations.tex#L1976-L1976)
 
 <a id="source-source-741da55b02c5a9"></a>
 
@@ -5351,12 +6722,32 @@ Paper citation usages:
 - `claim-faithful-publication-systems`: [cite at paper/systems/claim-faithful-publication-systems-paper.tex:995](../../paper/systems/claim-faithful-publication-systems-paper.tex#L995-L995)
 - `open-source-mathematics-strategy`: [cite at paper/systems/open-source-mathematics-strategy.tex:434](../../paper/systems/open-source-mathematics-strategy.tex#L434-L434), [cite at paper/systems/open-source-mathematics-strategy.tex:1107](../../paper/systems/open-source-mathematics-strategy.tex#L1107-L1107)
 
+<a id="source-source-772049347bf8f3"></a>
+
+### [Literature and reviewed-revision guide](https://github.com/wcook04/plectis-erdos/tree/main/docs/papers/exposition-method)
+
+- Source id: `source-772049347bf8f3`
+- Author or public identity: Will Cook
+- Kind: `literature`
+- Problems: none recorded
+- Relationship and boundary: Cited by the linked public manuscript bibliography. Citation metadata records attribution; the cited work and mathematical correspondence have not been independently verified in this registration.
+- Source verification: `bibliography\_only` — scope not separately recorded
+- Local mapping: `not recorded`
+
+Public implementation or evidence coordinates:
+
+- [paper/exposition/parts/references.tex](../../paper/exposition/parts/references.tex#L44-L44) — lines `44–44`; excerpt `sha256:debc135c6ffde9418c4d7e307aa338d7e9956388d5eac2640822616a728ff3e0`
+
+Paper citation usages:
+
+- `writing-mathematics-from-reviewed-revisions`: [cite at paper/exposition/parts/practice.tex:280](../../paper/exposition/parts/practice.tex#L280-L280), [cite at paper/exposition/parts/revisions.tex:12](../../paper/exposition/parts/revisions.tex#L12-L12)
+
 <a id="source-source-77333436a9e579"></a>
 
-### [Achievement sets -- current results and open problems](https://arxiv.org/abs/2512.17285v1)
+### [Achievement sets – current results and open problems](https://arxiv.org/abs/2512.17285v1)
 
 - Source id: `source-77333436a9e579`
-- Author or public identity: G{\\l}\\k{a}b, Szymon, Prus-Wi\\'sniowski, Franciszek
+- Author or public identity: Szymon Głąb, Franciszek Prus-Wiśniowski
 - Kind: `literature`
 - Problems: #251, #257
 - Relationship and boundary: Cited by the linked public manuscript(s). The bibliography and citation contexts record the paper's use; no tracked primary-source closure currently verifies a stronger source-level relation.
@@ -5385,7 +6776,7 @@ Paper citation usages:
 ### [Achievable Cantorvals almost without reversed Kakeya conditions](https://arxiv.org/abs/2412.08768v1)
 
 - Source id: `source-779915b8355ac1`
-- Author or public identity: Prus-Wi\\'sniowski, Franciszek, Ptak, Jolanta
+- Author or public identity: Franciszek Prus-Wiśniowski, Jolanta Ptak
 - Kind: `literature`
 - Problems: #251
 - Relationship and boundary: Cited by the linked public manuscript(s). The bibliography and citation contexts record the paper's use; no tracked primary-source closure currently verifies a stronger source-level relation.
@@ -5527,6 +6918,26 @@ Paper citation usages:
 - `claim-faithful-publication-systems`: [cite at paper/systems/claim-faithful-publication-systems-paper.tex:992](../../paper/systems/claim-faithful-publication-systems-paper.tex#L992-L992)
 - `open-source-mathematics-strategy`: [cite at paper/systems/open-source-mathematics-strategy.tex:742](../../paper/systems/open-source-mathematics-strategy.tex#L742-L742), [cite at paper/systems/open-source-mathematics-strategy.tex:822](../../paper/systems/open-source-mathematics-strategy.tex#L822-L822), [cite at paper/systems/open-source-mathematics-strategy.tex:854](../../paper/systems/open-source-mathematics-strategy.tex#L854-L854), [cite at paper/systems/open-source-mathematics-strategy.tex:1064](../../paper/systems/open-source-mathematics-strategy.tex#L1064-L1064)
 
+<a id="source-source-79e18d3a05d6dc"></a>
+
+### Distinct running least common multiples
+
+- Source id: `source-79e18d3a05d6dc`
+- Author or public identity: W. Cook
+- Kind: `literature`
+- Problems: none recorded
+- Relationship and boundary: Cited by the linked public manuscript bibliography. Citation metadata records attribution; the cited work and mathematical correspondence have not been independently verified in this registration.
+- Source verification: `bibliography\_only` — scope not separately recorded
+- Local mapping: `not recorded`
+
+Public implementation or evidence coordinates:
+
+- [paper/systems/claim-faithful-publication-systems-paper.tex](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1118-L1118) — lines `1118–1118`; excerpt `sha256:ed70deb94eb7e970d124c481167283b9e48a26504a42b93891d94345731e5961`
+
+Paper citation usages:
+
+- `claim-faithful-publication-systems`: [cite at paper/systems/claim-faithful-publication-systems-paper.tex:938](../../paper/systems/claim-faithful-publication-systems-paper.tex#L938-L938), [cite at paper/systems/claim-faithful-publication-systems-paper.tex:958](../../paper/systems/claim-faithful-publication-systems-paper.tex#L958-L958), [cite at paper/systems/claim-faithful-publication-systems-paper.tex:998](../../paper/systems/claim-faithful-publication-systems-paper.tex#L998-L998)
+
 <a id="source-source-7a9657920d576b"></a>
 
 ### [On Transcendence of Numbers Related to Sturmian and Arnoux-Rauzy Words](https://drops.dagstuhl.de/entities/document/10.4230/LIPIcs.ICALP.2024.144)
@@ -5576,7 +6987,7 @@ Paper citation usages:
 
 <a id="source-source-7ac8693558c1a2"></a>
 
-### [Critical points and values of complex polynomials](https://www.mathnet.ru/eng/sm1434)
+### Critical points and values of complex polynomials
 
 - Source id: `source-7ac8693558c1a2`
 - Author or public identity: David Tischler
@@ -5596,6 +7007,26 @@ Paper citation usages:
 
 - `erdos-1041-lemniscate-newton-flow`: [cite at paper/1041/erdos-1041-lemniscate-newton-flow.tex:920](../../paper/1041/erdos-1041-lemniscate-newton-flow.tex#L920-L920)
 - `erdos1041-lemniscate-reasoning-surface`: [cite at paper/1041/erdos1041-lemniscate-reasoning-surface.tex:3182](../../paper/1041/erdos1041-lemniscate-reasoning-surface.tex#L3182-L3182), [cite at paper/reasoning-parts/erdos1041/core.tex:3132](../../paper/reasoning-parts/erdos1041/core.tex#L3132-L3132)
+
+<a id="source-source-7b236be4ebaa11"></a>
+
+### [Natural Language Translation of Formal Proofs through Informalization of Proof Steps and Recursive Summarization along Proof Structure](https://aclanthology.org/2025.inlg-main.23/)
+
+- Source id: `source-7b236be4ebaa11`
+- Author or public identity: S. Hattori, T. Matsuzaki, M. Fujiwara
+- Kind: `literature`
+- Problems: none recorded
+- Relationship and boundary: Cited by the linked public manuscript bibliography. Citation metadata records attribution; the cited work and mathematical correspondence have not been independently verified in this registration.
+- Source verification: `bibliography\_only` — scope not separately recorded
+- Local mapping: `not recorded`
+
+Public implementation or evidence coordinates:
+
+- [paper/systems/claim-faithful-publication-systems-paper.tex](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1155-L1155) — lines `1155–1155`; excerpt `sha256:fb248debced9b4ac093c7f01f6e68430072322e0d5f1aa47298620f1976808a5`
+
+Paper citation usages:
+
+- `claim-faithful-publication-systems`: [cite at paper/systems/claim-faithful-publication-systems-paper.tex:983](../../paper/systems/claim-faithful-publication-systems-paper.tex#L983-L983)
 
 <a id="source-source-7c8ba4ea6eea79"></a>
 
@@ -5627,9 +7058,29 @@ Paper citation usages:
 - `erdos249-totient-reasoning-surface`: [cite at paper/249/erdos249-totient-reasoning-surface.tex:8498](../../paper/249/erdos249-totient-reasoning-surface.tex#L8498-L8498), [cite at paper/reasoning-parts/erdos249/a249\_front.tex:8306](../../paper/reasoning-parts/erdos249/a249_front.tex#L8306-L8306)
 - `erdos269-running-lcm-reasoning-surface`: [cite at paper/269/erdos269-running-lcm-reasoning-surface.tex:3520](../../paper/269/erdos269-running-lcm-reasoning-surface.tex#L3520-L3520), [cite at paper/reasoning-parts/erdos269/core.tex:3462](../../paper/reasoning-parts/erdos269/core.tex#L3462-L3462)
 
+<a id="source-source-7d2a26d1d7b225"></a>
+
+### Rational approximations to algebraic numbers
+
+- Source id: `source-7d2a26d1d7b225`
+- Author or public identity: K. F. Roth
+- Kind: `literature`
+- Problems: none recorded
+- Relationship and boundary: Cited by the linked public manuscript bibliography. Citation metadata records attribution; the cited work and mathematical correspondence have not been independently verified in this registration.
+- Source verification: `bibliography\_only` — scope not separately recorded
+- Local mapping: `not recorded`
+
+Public implementation or evidence coordinates:
+
+- [paper/synthesis/optimal-sparse-perturbations.tex](../../paper/synthesis/optimal-sparse-perturbations.tex#L2219-L2219) — lines `2219–2219`; excerpt `sha256:daafd08508777912ef32335236ecdda112620f9794e0800280f45c773774529e`
+
+Paper citation usages:
+
+- `optimal-sparse-perturbations`: [cite at paper/synthesis/optimal-sparse-perturbations.tex:1286](../../paper/synthesis/optimal-sparse-perturbations.tex#L1286-L1286)
+
 <a id="source-source-7d871bf2920e53"></a>
 
-### [DreamProver: Evolving Transferable Lemma Libraries via a Wake--Sleep Theorem-Proving Agent](https://doi.org/10.48550/arXiv.2604.26311)
+### [DreamProver: Evolving Transferable Lemma Libraries via a Wake–Sleep Theorem-Proving Agent](https://doi.org/10.48550/arXiv.2604.26311)
 
 - Source id: `source-7d871bf2920e53`
 - Author or public identity: Youyuan Zhang, Jialiang Sun, Hangrui Bi, Chuqin Geng, Wenjie Ma, Zhaoyu Li, Xujie Si
@@ -5643,12 +7094,20 @@ Exact source locations:
 
 - [Public bibliographic identity and author record; metadata checked on 2026-09-12. This does not verify a mathematical use.](https://arxiv.org/abs/2604.26311v1)
 
+Public implementation or evidence coordinates:
+
+- [paper/systems/claim-faithful-publication-systems-paper.tex](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1245-L1245) — lines `1245–1245`; excerpt `sha256:c7342c0466c36cbbf5cf37c39bd9e7ed8081cdf207c69626c3e627d40b4b2797`
+
+Paper citation usages:
+
+- `claim-faithful-publication-systems`: [cite at paper/systems/claim-faithful-publication-systems-paper.tex:988](../../paper/systems/claim-faithful-publication-systems-paper.tex#L988-L988)
+
 <a id="source-source-7d923cace5602a"></a>
 
 ### [The product of consecutive integers is never a power](https://www.renyi.hu/~p_erdos/1975-46.pdf)
 
 - Source id: `source-7d923cace5602a`
-- Author or public identity: Erdős, Paul, Selfridge, John L.
+- Author or public identity: Paul Erdős, John L. Selfridge
 - Kind: `literature`
 - Problems: #68
 - Relationship and boundary: Cited by the linked public manuscript(s). The bibliography and citation contexts record the paper's use; no tracked primary-source closure currently verifies a stronger source-level relation.
@@ -5673,7 +7132,7 @@ Paper citation usages:
 ### [On the irrationality of certain series](https://users.renyi.hu/~p_erdos/1969-09.pdf)
 
 - Source id: `source-7dc956ce55b7a0`
-- Author or public identity: P. Erdős
+- Author or public identity: Paul Erdős
 - Kind: `literature`
 - Problems: #249, #257, #269, #251, #243
 - Relationship and boundary: Attribution to Erdős of the irrationality theorem for pairwise-coprime supports with convergent reciprocal support sum, at every integer base \`t \>= 2\`, printed p. 222 with proof on pp. 223–225. - The divisor-count coefficient identity, congruence construction, and long-base-\`t\` zero-block mechanism in the proof, printed pp. 223–225. - The paper's explicit record of the unproved pairwise-coprimality removal, the unresolved all-primes case, and the other open examples, printed pp. 222–223 and 226. - The publication identity, official retrieval route, exact digest, and page-level locators recorded above. The docstring explicitly identifies the pairwise-coprime support theorem as Erdős (1968) and states the hypotheses retained by the Lean theorem. Corrected attribution: this section develops the pairwise-coprime support theorem whose explicit theorem at lines 10768–10779 and the primary source closure identify as Erdős (1968), not the 1948 full-support Lambert paper.
@@ -5879,6 +7338,7 @@ Public implementation or evidence coordinates:
 
 Paper citation usages:
 
+- `claim-faithful-publication-systems`: [cite at paper/systems/claim-faithful-publication-systems-paper.tex:986](../../paper/systems/claim-faithful-publication-systems-paper.tex#L986-L986)
 - `cold-clone-to-proof-receipt`: [cite at paper/systems/cold-clone-to-proof-receipt.tex:496](../../paper/systems/cold-clone-to-proof-receipt.tex#L496-L496)
 
 <a id="source-source-82459d858b7d75"></a>
@@ -6010,6 +7470,27 @@ Paper citation usages:
 
 - `erdos-1041-lemniscate-newton-flow`: [cite at paper/1041/erdos-1041-lemniscate-newton-flow.tex:1067](../../paper/1041/erdos-1041-lemniscate-newton-flow.tex#L1067-L1067)
 
+<a id="source-source-88828b699c9e00"></a>
+
+### [Irrationality criteria for Lambert subseries](https://github.com/wcook04/plectis-erdos/blob/main/paper/257/erdos-257-mersenne-support-subseries.tex)
+
+- Source id: `source-88828b699c9e00`
+- Author or public identity: Will Cook
+- Kind: `literature`
+- Problems: none recorded
+- Relationship and boundary: Cited by the linked public manuscript bibliography. Citation metadata records attribution; the cited work and mathematical correspondence have not been independently verified in this registration.
+- Source verification: `bibliography\_only` — scope not separately recorded
+- Local mapping: `not recorded`
+
+Public implementation or evidence coordinates:
+
+- [paper/synthesis/optimal-sparse-perturbations.tex](../../paper/synthesis/optimal-sparse-perturbations.tex#L2254-L2254) — lines `2254–2254`; excerpt `sha256:83d83c15e6223d0f34f271dfcc9bafc4c224d6f91d5d23412e509641ce564cc4`
+
+Paper citation usages:
+
+- `optimal-sparse-perturbations`: [cite at paper/synthesis/optimal-sparse-perturbations.tex:904](../../paper/synthesis/optimal-sparse-perturbations.tex#L904-L904), [cite at paper/synthesis/optimal-sparse-perturbations.tex:939](../../paper/synthesis/optimal-sparse-perturbations.tex#L939-L939), [cite at paper/synthesis/optimal-sparse-perturbations.tex:1528](../../paper/synthesis/optimal-sparse-perturbations.tex#L1528-L1528), [cite at paper/synthesis/optimal-sparse-perturbations.tex:1630](../../paper/synthesis/optimal-sparse-perturbations.tex#L1630-L1630), [cite at paper/synthesis/optimal-sparse-perturbations.tex:1853](../../paper/synthesis/optimal-sparse-perturbations.tex#L1853-L1853), [cite at paper/synthesis/optimal-sparse-perturbations.tex:1854](../../paper/synthesis/optimal-sparse-perturbations.tex#L1854-L1854), [cite at paper/synthesis/optimal-sparse-perturbations.tex:1987](../../paper/synthesis/optimal-sparse-perturbations.tex#L1987-L1987), [cite at paper/synthesis/optimal-sparse-perturbations.tex:2083](../../paper/synthesis/optimal-sparse-perturbations.tex#L2083-L2083)
+- `writing-mathematics-from-reviewed-revisions`: [cite at paper/exposition/parts/review.tex:183](../../paper/exposition/parts/review.tex#L183-L183), [cite at paper/exposition/parts/revisions.tex:220](../../paper/exposition/parts/revisions.tex#L220-L220)
+
 <a id="source-source-892c567092d6f3"></a>
 
 ### [Lacunary sequences whose reciprocal sums represent all rational numbers in an interval](https://arxiv.org/abs/2509.24971v3)
@@ -6053,14 +7534,14 @@ Paper citation usages:
 - `erdos-257-mersenne-support-subseries`: [cite at paper/257/erdos-257-mersenne-support-subseries.tex:880](../../paper/257/erdos-257-mersenne-support-subseries.tex#L880-L880)
 - `erdos251-prime-gap-reasoning-surface`: [cite at paper/251/erdos251-prime-gap-reasoning-surface.tex:590](../../paper/251/erdos251-prime-gap-reasoning-surface.tex#L590-L590), [cite at paper/reasoning-parts/erdos251/core.tex:548](../../paper/reasoning-parts/erdos251/core.tex#L548-L548)
 - `erdos257-mersenne-reasoning-surface`: [cite at paper/257/erdos257-mersenne-reasoning-surface.tex:9208](../../paper/257/erdos257-mersenne-reasoning-surface.tex#L9208-L9208), [cite at paper/reasoning-parts/erdos257/a257\_front.tex:9008](../../paper/reasoning-parts/erdos257/a257_front.tex#L9008-L9008)
-- `optimal-sparse-perturbations`: [cite at paper/synthesis/optimal-sparse-perturbations.tex:1852](../../paper/synthesis/optimal-sparse-perturbations.tex#L1852-L1852), [cite at paper/synthesis/optimal-sparse-perturbations.tex:1853](../../paper/synthesis/optimal-sparse-perturbations.tex#L1853-L1853), [cite at paper/synthesis/optimal-sparse-perturbations.tex:1972](../../paper/synthesis/optimal-sparse-perturbations.tex#L1972-L1972)
+- `optimal-sparse-perturbations`: [cite at paper/synthesis/optimal-sparse-perturbations.tex:1852](../../paper/synthesis/optimal-sparse-perturbations.tex#L1852-L1852), [cite at paper/synthesis/optimal-sparse-perturbations.tex:1972](../../paper/synthesis/optimal-sparse-perturbations.tex#L1972-L1972)
 
 <a id="source-source-8935df46fb4693"></a>
 
 ### [The Lambert series factorization theorem](https://doi.org/10.1007/s11139-016-9856-3)
 
 - Source id: `source-8935df46fb4693`
-- Author or public identity: M. Merca
+- Author or public identity: Mircea Merca
 - Kind: `literature`
 - Problems: #249, #257
 - Relationship and boundary: Partition-factorisation background (Theorem 1.2, p. 420) for the Möbius-Mersenne coordinate.
@@ -6130,6 +7611,26 @@ Paper citation usages:
 
 - `erdos68-factorial-reasoning-surface`: [cite at paper/68/erdos68-factorial-reasoning-surface.tex:1356](../../paper/68/erdos68-factorial-reasoning-surface.tex#L1356-L1356), [cite at paper/68/erdos68-factorial-reasoning-surface.tex:2290](../../paper/68/erdos68-factorial-reasoning-surface.tex#L2290-L2290), [cite at paper/68/erdos68-factorial-reasoning-surface.tex:2480](../../paper/68/erdos68-factorial-reasoning-surface.tex#L2480-L2480), [cite at paper/reasoning-parts/erdos68/core.tex:1321](../../paper/reasoning-parts/erdos68/core.tex#L1321-L1321), [cite at paper/reasoning-parts/erdos68/core.tex:2255](../../paper/reasoning-parts/erdos68/core.tex#L2255-L2255), [cite at paper/reasoning-parts/erdos68/core.tex:2445](../../paper/reasoning-parts/erdos68/core.tex#L2445-L2445)
 
+<a id="source-source-909bb1933483e8"></a>
+
+### Applied Proof Theory: Proof Interpretations and their Use in Mathematics
+
+- Source id: `source-909bb1933483e8`
+- Author or public identity: U. Kohlenbach
+- Kind: `literature`
+- Problems: none recorded
+- Relationship and boundary: Cited by the linked public manuscript bibliography. Citation metadata records attribution; the cited work and mathematical correspondence have not been independently verified in this registration.
+- Source verification: `bibliography\_only` — scope not separately recorded
+- Local mapping: `not recorded`
+
+Public implementation or evidence coordinates:
+
+- [paper/systems/claim-faithful-publication-systems-paper.tex](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1175-L1175) — lines `1175–1175`; excerpt `sha256:85dfa0d6f96416c7092aa027253d50efb4a4b6f1a5bc7618b0dae5e57b90ba7b`
+
+Paper citation usages:
+
+- `claim-faithful-publication-systems`: [cite at paper/systems/claim-faithful-publication-systems-paper.tex:987](../../paper/systems/claim-faithful-publication-systems-paper.tex#L987-L987)
+
 <a id="source-source-91756d895a28a8"></a>
 
 ### [Smith normal form in combinatorics](https://doi.org/10.1016/j.jcta.2016.06.013)
@@ -6169,7 +7670,7 @@ Paper citation usages:
 ### [Variants of the Selberg sieve, and bounded intervals containing many primes](https://arxiv.org/abs/1407.4897v4)
 
 - Source id: `source-91aa380a16dba9`
-- Author or public identity: {D. H. J. Polymath}
+- Author or public identity: D. H. J. Polymath
 - Kind: `literature`
 - Problems: #251
 - Relationship and boundary: Cited by the linked public manuscript(s). The bibliography and citation contexts record the paper's use; no tracked primary-source closure currently verifies a stronger source-level relation.
@@ -6300,7 +7801,7 @@ Paper citation usages:
 ### [On the irrationality of certain series](https://doi.org/10.1017/S030500410007081X)
 
 - Source id: `source-96aef073e2ea33`
-- Author or public identity: P. B. Borwein
+- Author or public identity: Peter B. Borwein
 - Kind: `literature`
 - Problems: #1049, #249, #257
 - Relationship and boundary: Source (Lemma 2, p. 143) of the neighbouring evaluation recorded by Van Assche.
@@ -6346,6 +7847,26 @@ Paper citation usages:
 
 - `erdos1049-rational-base-lambert-reasoning-surface`: [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:4861](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L4861-L4861), [cite at paper/reasoning-parts/erdos1049/core.tex:4830](../../paper/reasoning-parts/erdos1049/core.tex#L4830-L4830)
 - `erdos249-257-main`: [cite at paper/archive/erdos249-257-main-paper.tex:631](../../paper/archive/erdos249-257-main-paper.tex#L631-L631)
+
+<a id="source-source-96cb986969fc48"></a>
+
+### Reliable Evaluation and Benchmarks for Statement Autoformalization
+
+- Source id: `source-96cb986969fc48`
+- Author or public identity: Auguste Poiroux, Gail Weiss, Viktor Kunčak, Antoine Bosselut
+- Kind: `literature`
+- Problems: none recorded
+- Relationship and boundary: Cited by the linked public manuscript bibliography. Citation metadata records attribution; the cited work and mathematical correspondence have not been independently verified in this registration.
+- Source verification: `bibliography\_only` — scope not separately recorded
+- Local mapping: `not recorded`
+
+Public implementation or evidence coordinates:
+
+- [paper/systems/claim-faithful-publication-systems-paper.tex](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1302-L1302) — lines `1302–1302`; excerpt `sha256:be8c9747a14421fbd715429cda38b4d330ec3a69fbb54e4d04d7a2cb1cc32636`
+
+Paper citation usages:
+
+- `claim-faithful-publication-systems`: [cite at paper/systems/claim-faithful-publication-systems-paper.tex:991](../../paper/systems/claim-faithful-publication-systems-paper.tex#L991-L991)
 
 <a id="source-source-9733ab875d6048"></a>
 
@@ -6394,6 +7915,26 @@ Paper citation usages:
 
 - `erdos1041-lemniscate-reasoning-surface`: [cite at paper/1041/erdos1041-lemniscate-reasoning-surface.tex:4412](../../paper/1041/erdos1041-lemniscate-reasoning-surface.tex#L4412-L4412), [cite at paper/reasoning-parts/erdos1041/core.tex:4362](../../paper/reasoning-parts/erdos1041/core.tex#L4362-L4362)
 
+<a id="source-source-981078204c60ce"></a>
+
+### Norm form equations
+
+- Source id: `source-981078204c60ce`
+- Author or public identity: W. M. Schmidt
+- Kind: `literature`
+- Problems: none recorded
+- Relationship and boundary: Cited by the linked public manuscript bibliography. Citation metadata records attribution; the cited work and mathematical correspondence have not been independently verified in this registration.
+- Source verification: `bibliography\_only` — scope not separately recorded
+- Local mapping: `not recorded`
+
+Public implementation or evidence coordinates:
+
+- [paper/synthesis/optimal-sparse-perturbations.tex](../../paper/synthesis/optimal-sparse-perturbations.tex#L2196-L2196) — lines `2196–2196`; excerpt `sha256:ec4926b94175be70e5e8adb7d21df069d08425990ccdc88e3834e77a100364fa`
+
+Paper citation usages:
+
+- `optimal-sparse-perturbations`: [cite at paper/synthesis/optimal-sparse-perturbations.tex:1228](../../paper/synthesis/optimal-sparse-perturbations.tex#L1228-L1228)
+
 <a id="source-source-984f2b78d220ea"></a>
 
 ### [A Blueprint for the Formalization of Carleson's Theorem on Convergence of Fourier Series](https://doi.org/10.48550/arXiv.2405.06423)
@@ -6426,7 +7967,7 @@ Paper citation usages:
 ### [Introduction to Analytic Number Theory](https://doi.org/10.1007/978-1-4757-5579-4)
 
 - Source id: `source-99385343e032a3`
-- Author or public identity: T. M. Apostol
+- Author or public identity: Tom M. Apostol
 - Kind: `literature`
 - Problems: #269, #249, #257
 - Relationship and boundary: General textbook reference for lcm(1,…,N) and ψ(N).
@@ -6583,6 +8124,26 @@ Paper citation usages:
 
 - `erdos269-running-lcm-reasoning-surface`: [cite at paper/269/erdos269-running-lcm-reasoning-surface.tex:3622](../../paper/269/erdos269-running-lcm-reasoning-surface.tex#L3622-L3622), [cite at paper/reasoning-parts/erdos269/core.tex:3564](../../paper/reasoning-parts/erdos269/core.tex#L3564-L3564)
 
+<a id="source-source-9cae660a236ad0"></a>
+
+### [Examples first II](https://gowers.wordpress.com/2007/10/24/examples-first-ii/)
+
+- Source id: `source-9cae660a236ad0`
+- Author or public identity: T. Gowers
+- Kind: `literature`
+- Problems: none recorded
+- Relationship and boundary: Cited by the linked public manuscript bibliography. Citation metadata records attribution; the cited work and mathematical correspondence have not been independently verified in this registration.
+- Source verification: `bibliography\_only` — scope not separately recorded
+- Local mapping: `not recorded`
+
+Public implementation or evidence coordinates:
+
+- [paper/exposition/parts/references.tex](../../paper/exposition/parts/references.tex#L58-L58) — lines `58–58`; excerpt `sha256:a829092734f23b06affb25593d9ff609d9a2d491187d3751a9075cf6769b25b6`
+
+Paper citation usages:
+
+- `writing-mathematics-from-reviewed-revisions`: [cite at paper/exposition/parts/reading.tex:175](../../paper/exposition/parts/reading.tex#L175-L175)
+
 <a id="source-source-9ce84321e202f1"></a>
 
 ### [Irrationality of Lambert series associated with a periodic sequence](https://doi.org/10.1142/S1793042113501121)
@@ -6680,6 +8241,26 @@ Paper citation usages:
 
 - `claim-faithful-publication-systems`: [cite at paper/systems/claim-faithful-publication-systems-paper.tex:639](../../paper/systems/claim-faithful-publication-systems-paper.tex#L639-L639), [cite at paper/systems/claim-faithful-publication-systems-paper.tex:993](../../paper/systems/claim-faithful-publication-systems-paper.tex#L993-L993)
 - `open-source-mathematics-strategy`: [cite at paper/systems/open-source-mathematics-strategy.tex:946](../../paper/systems/open-source-mathematics-strategy.tex#L946-L946)
+
+<a id="source-source-9f187682e93e2d"></a>
+
+### Weighted and Covered Supports for Mersenne Subseries
+
+- Source id: `source-9f187682e93e2d`
+- Author or public identity: W. Cook
+- Kind: `literature`
+- Problems: none recorded
+- Relationship and boundary: Cited by the linked public manuscript bibliography. Citation metadata records attribution; the cited work and mathematical correspondence have not been independently verified in this registration.
+- Source verification: `bibliography\_only` — scope not separately recorded
+- Local mapping: `not recorded`
+
+Public implementation or evidence coordinates:
+
+- [paper/systems/claim-faithful-publication-systems-paper.tex](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1012-L1012) — lines `1012–1012`; excerpt `sha256:5a7ab5896ec64bd8a8d2ada93dac23c79990537bbaa534c59171adfae7d81cb9`
+
+Paper citation usages:
+
+- `claim-faithful-publication-systems`: [cite at paper/systems/claim-faithful-publication-systems-paper.tex:698](../../paper/systems/claim-faithful-publication-systems-paper.tex#L698-L698), [cite at paper/systems/claim-faithful-publication-systems-paper.tex:769](../../paper/systems/claim-faithful-publication-systems-paper.tex#L769-L769), [cite at paper/systems/claim-faithful-publication-systems-paper.tex:838](../../paper/systems/claim-faithful-publication-systems-paper.tex#L838-L838), [cite at paper/systems/claim-faithful-publication-systems-paper.tex:925](../../paper/systems/claim-faithful-publication-systems-paper.tex#L925-L925), [cite at paper/systems/claim-faithful-publication-systems-paper.tex:930](../../paper/systems/claim-faithful-publication-systems-paper.tex#L930-L930), [cite at paper/systems/claim-faithful-publication-systems-paper.tex:997](../../paper/systems/claim-faithful-publication-systems-paper.tex#L997-L997)
 
 <a id="source-source-a028dc6bb31c0c"></a>
 
@@ -6813,6 +8394,27 @@ Paper citation usages:
 - `erdos-68-factorial-denominator-irrationality`: [cite at paper/68/erdos-68-factorial-denominator-irrationality.tex:102](../../paper/68/erdos-68-factorial-denominator-irrationality.tex#L102-L102)
 - `erdos68-factorial-reasoning-surface`: [cite at paper/68/erdos68-factorial-reasoning-surface.tex:1360](../../paper/68/erdos68-factorial-reasoning-surface.tex#L1360-L1360), [cite at paper/68/erdos68-factorial-reasoning-surface.tex:2292](../../paper/68/erdos68-factorial-reasoning-surface.tex#L2292-L2292), [cite at paper/68/erdos68-factorial-reasoning-surface.tex:2531](../../paper/68/erdos68-factorial-reasoning-surface.tex#L2531-L2531), [cite at paper/68/erdos68-factorial-reasoning-surface.tex:2538](../../paper/68/erdos68-factorial-reasoning-surface.tex#L2538-L2538), [cite at paper/reasoning-parts/erdos68/core.tex:1325](../../paper/reasoning-parts/erdos68/core.tex#L1325-L1325), [cite at paper/reasoning-parts/erdos68/core.tex:2257](../../paper/reasoning-parts/erdos68/core.tex#L2257-L2257), [cite at paper/reasoning-parts/erdos68/core.tex:2496](../../paper/reasoning-parts/erdos68/core.tex#L2496-L2496), [cite at paper/reasoning-parts/erdos68/core.tex:2503](../../paper/reasoning-parts/erdos68/core.tex#L2503-L2503)
 
+<a id="source-source-a8e0104fb3c519"></a>
+
+### [Distinct running least common multiples](https://github.com/wcook04/plectis-erdos/blob/main/paper/269/erdos-269-three-prime-running-lcm.tex)
+
+- Source id: `source-a8e0104fb3c519`
+- Author or public identity: Will Cook
+- Kind: `literature`
+- Problems: none recorded
+- Relationship and boundary: Cited by the linked public manuscript bibliography. Citation metadata records attribution; the cited work and mathematical correspondence have not been independently verified in this registration.
+- Source verification: `bibliography\_only` — scope not separately recorded
+- Local mapping: `not recorded`
+
+Public implementation or evidence coordinates:
+
+- [paper/synthesis/optimal-sparse-perturbations.tex](../../paper/synthesis/optimal-sparse-perturbations.tex#L2259-L2259) — lines `2259–2259`; excerpt `sha256:12f7f09d436ec37212063e3a908a155ec836c628633003d4e9ebdbaca61e8a5c`
+
+Paper citation usages:
+
+- `optimal-sparse-perturbations`: [cite at paper/synthesis/optimal-sparse-perturbations.tex:1855](../../paper/synthesis/optimal-sparse-perturbations.tex#L1855-L1855)
+- `writing-mathematics-from-reviewed-revisions`: [cite at paper/exposition/parts/revisions.tex:107](../../paper/exposition/parts/revisions.tex#L107-L107)
+
 <a id="source-source-aa2d5c249362f1"></a>
 
 ### [Zero Coefficients of Rational Power Series and Rational Lambert Series](https://arxiv.org/abs/2604.25151)
@@ -6842,6 +8444,26 @@ Public implementation or evidence coordinates:
 Paper citation usages:
 
 - `erdos1049-rational-base-lambert-reasoning-surface`: [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:4649](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L4649-L4649), [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:4813](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L4813-L4813), [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:4818](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L4818-L4818), [cite at paper/reasoning-parts/erdos1049/core.tex:4618](../../paper/reasoning-parts/erdos1049/core.tex#L4618-L4618), [cite at paper/reasoning-parts/erdos1049/core.tex:4782](../../paper/reasoning-parts/erdos1049/core.tex#L4782-L4782), [cite at paper/reasoning-parts/erdos1049/core.tex:4787](../../paper/reasoning-parts/erdos1049/core.tex#L4787-L4787)
+
+<a id="source-source-ab18b2d8e5083d"></a>
+
+### [Periodic unique beta-expansions: the Sharkovskiĭ ordering](https://doi.org/10.1017/S0143385708000746)
+
+- Source id: `source-ab18b2d8e5083d`
+- Author or public identity: J.-P. Allouche, M. Clarke, N. Sidorov
+- Kind: `literature`
+- Problems: none recorded
+- Relationship and boundary: Cited by the linked public manuscript bibliography. Citation metadata records attribution; the cited work and mathematical correspondence have not been independently verified in this registration.
+- Source verification: `bibliography\_only` — scope not separately recorded
+- Local mapping: `not recorded`
+
+Public implementation or evidence coordinates:
+
+- [paper/synthesis/optimal-sparse-perturbations.tex](../../paper/synthesis/optimal-sparse-perturbations.tex#L2126-L2126) — lines `2126–2126`; excerpt `sha256:2618a8e5dcd21385745fae44fe82eb1f6eee09b3ef60807f4d88416feeff5a9a`
+
+Paper citation usages:
+
+- `optimal-sparse-perturbations`: [cite at paper/synthesis/optimal-sparse-perturbations.tex:1745](../../paper/synthesis/optimal-sparse-perturbations.tex#L1745-L1745)
 
 <a id="source-source-ab6d6d6b890f57"></a>
 
@@ -6898,9 +8520,69 @@ Paper citation usages:
 - `erdos-243-reciprocal-tail-rigidity`: [cite at paper/243/erdos-243-reciprocal-tail-rigidity.tex:353](../../paper/243/erdos-243-reciprocal-tail-rigidity.tex#L353-L353)
 - `erdos243-reciprocal-tail-reasoning-surface`: [cite at paper/243/erdos243-reciprocal-tail-reasoning-surface.tex:396](../../paper/243/erdos243-reciprocal-tail-reasoning-surface.tex#L396-L396), [cite at paper/reasoning-parts/erdos243/core.tex:357](../../paper/reasoning-parts/erdos243/core.tex#L357-L357)
 
+<a id="source-source-ac8beab055e28b"></a>
+
+### [My favourite pedagogical principle: examples first](https://gowers.wordpress.com/2007/10/19/my-favourite-pedagogical-principle-examples-first/)
+
+- Source id: `source-ac8beab055e28b`
+- Author or public identity: T. Gowers
+- Kind: `literature`
+- Problems: none recorded
+- Relationship and boundary: Cited by the linked public manuscript bibliography. Citation metadata records attribution; the cited work and mathematical correspondence have not been independently verified in this registration.
+- Source verification: `bibliography\_only` — scope not separately recorded
+- Local mapping: `not recorded`
+
+Public implementation or evidence coordinates:
+
+- [paper/exposition/parts/references.tex](../../paper/exposition/parts/references.tex#L17-L17) — lines `17–17`; excerpt `sha256:bec8fa9f7f32b663c3580fb924af8ef77cc06f7e263428ecb902291e95d0d650`
+
+Paper citation usages:
+
+- `writing-mathematics-from-reviewed-revisions`: [cite at paper/exposition/parts/reading.tex:31](../../paper/exposition/parts/reading.tex#L31-L31), [cite at paper/exposition/parts/revisions.tex:131](../../paper/exposition/parts/revisions.tex#L131-L131)
+
+<a id="source-source-ad2eba9e1aee32"></a>
+
+### Integral Relations among Totient Sections
+
+- Source id: `source-ad2eba9e1aee32`
+- Author or public identity: W. Cook
+- Kind: `literature`
+- Problems: none recorded
+- Relationship and boundary: Cited by the linked public manuscript bibliography. Citation metadata records attribution; the cited work and mathematical correspondence have not been independently verified in this registration.
+- Source verification: `bibliography\_only` — scope not separately recorded
+- Local mapping: `not recorded`
+
+Public implementation or evidence coordinates:
+
+- [paper/systems/claim-faithful-publication-systems-paper.tex](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1060-L1060) — lines `1060–1060`; excerpt `sha256:1bf4d81a6f9879dbbc83c9e9c447df6e8fee56f199ae21ab9d94eb1082e44db2`
+
+Paper citation usages:
+
+- `claim-faithful-publication-systems`: [cite at paper/systems/claim-faithful-publication-systems-paper.tex:954](../../paper/systems/claim-faithful-publication-systems-paper.tex#L954-L954), [cite at paper/systems/claim-faithful-publication-systems-paper.tex:997](../../paper/systems/claim-faithful-publication-systems-paper.tex#L997-L997)
+
+<a id="source-source-add962c870032a"></a>
+
+### A survey of problems in combinatorial number theory
+
+- Source id: `source-add962c870032a`
+- Author or public identity: Paul Erdős
+- Kind: `literature`
+- Problems: none recorded
+- Relationship and boundary: Cited by the linked public manuscript bibliography. Citation metadata records attribution; the cited work and mathematical correspondence have not been independently verified in this registration.
+- Source verification: `bibliography\_only` — scope not separately recorded
+- Local mapping: `not recorded`
+
+Public implementation or evidence coordinates:
+
+- [paper/269/erdos269-running-lcm-reasoning-surface.tex](../../paper/269/erdos269-running-lcm-reasoning-surface.tex#L4432-L4432) — lines `4432–4432`; excerpt `sha256:bc5a99e8ae50316866c7c0791d7b663a94237a3acd7db371882ae85d922c0b68`
+
+Paper citation usages:
+
+- `erdos269-running-lcm-reasoning-surface`: [cite at paper/269/erdos269-running-lcm-reasoning-surface.tex:3915](../../paper/269/erdos269-running-lcm-reasoning-surface.tex#L3915-L3915), [cite at paper/reasoning-parts/erdos269/core.tex:3857](../../paper/reasoning-parts/erdos269/core.tex#L3857-L3857)
+
 <a id="source-source-ae32306341559a"></a>
 
-### [Lean Atlas: An Integrated Proof Environment for Scalable Human--AI Collaborative Formalization](https://doi.org/10.48550/arXiv.2604.16347)
+### [Lean Atlas: An Integrated Proof Environment for Scalable Human–AI Collaborative Formalization](https://doi.org/10.48550/arXiv.2604.16347)
 
 - Source id: `source-ae32306341559a`
 - Author or public identity: B. Yanahama, A. Sannai
@@ -6939,6 +8621,7 @@ Public implementation or evidence coordinates:
 
 Paper citation usages:
 
+- `claim-faithful-publication-systems`: [cite at paper/systems/claim-faithful-publication-systems-paper.tex:990](../../paper/systems/claim-faithful-publication-systems-paper.tex#L990-L990)
 - `open-source-mathematics-strategy`: [cite at paper/systems/open-source-mathematics-strategy.tex:1007](../../paper/systems/open-source-mathematics-strategy.tex#L1007-L1007)
 
 <a id="source-source-ae9859af28fdcd"></a>
@@ -6986,6 +8669,26 @@ Paper citation usages:
 
 - `erdos-1049-rational-base-lambert`: [cite at paper/1049/erdos-1049-rational-base-lambert.tex:55](../../paper/1049/erdos-1049-rational-base-lambert.tex#L55-L55), [cite at paper/1049/erdos-1049-rational-base-lambert.tex:77](../../paper/1049/erdos-1049-rational-base-lambert.tex#L77-L77), [cite at paper/1049/erdos-1049-rational-base-lambert.tex:585](../../paper/1049/erdos-1049-rational-base-lambert.tex#L585-L585), [cite at paper/1049/erdos-1049-rational-base-lambert.tex:1013](../../paper/1049/erdos-1049-rational-base-lambert.tex#L1013-L1013)
 - `erdos1049-rational-base-lambert-reasoning-surface`: [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:66](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L66-L66), [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:856](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L856-L856), [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:1456](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L1456-L1456), [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:1459](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L1459-L1459), [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:1476](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L1476-L1476), [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:1487](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L1487-L1487), [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:1511](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L1511-L1511), [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:1802](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L1802-L1802), [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:2747](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L2747-L2747), [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:4950](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L4950-L4950), [cite at paper/reasoning-parts/erdos1049/core.tex:35](../../paper/reasoning-parts/erdos1049/core.tex#L35-L35), [cite at paper/reasoning-parts/erdos1049/core.tex:825](../../paper/reasoning-parts/erdos1049/core.tex#L825-L825), [cite at paper/reasoning-parts/erdos1049/core.tex:1425](../../paper/reasoning-parts/erdos1049/core.tex#L1425-L1425), [cite at paper/reasoning-parts/erdos1049/core.tex:1428](../../paper/reasoning-parts/erdos1049/core.tex#L1428-L1428), [cite at paper/reasoning-parts/erdos1049/core.tex:1445](../../paper/reasoning-parts/erdos1049/core.tex#L1445-L1445), [cite at paper/reasoning-parts/erdos1049/core.tex:1456](../../paper/reasoning-parts/erdos1049/core.tex#L1456-L1456), [cite at paper/reasoning-parts/erdos1049/core.tex:1480](../../paper/reasoning-parts/erdos1049/core.tex#L1480-L1480), [cite at paper/reasoning-parts/erdos1049/core.tex:1771](../../paper/reasoning-parts/erdos1049/core.tex#L1771-L1771), [cite at paper/reasoning-parts/erdos1049/core.tex:2716](../../paper/reasoning-parts/erdos1049/core.tex#L2716-L2716), [cite at paper/reasoning-parts/erdos1049/core.tex:4919](../../paper/reasoning-parts/erdos1049/core.tex#L4919-L4919)
+
+<a id="source-source-aee7a58d68b8a8"></a>
+
+### [Writings on AI and Mathematics](https://terrytao.wordpress.com/2026/09/14/why-i-do-mathematical-research/)
+
+- Source id: `source-aee7a58d68b8a8`
+- Author or public identity: Various authors
+- Kind: `literature`
+- Problems: none recorded
+- Relationship and boundary: Cited by the linked public manuscript bibliography. Citation metadata records attribution; the cited work and mathematical correspondence have not been independently verified in this registration.
+- Source verification: `bibliography\_only` — scope not separately recorded
+- Local mapping: `not recorded`
+
+Public implementation or evidence coordinates:
+
+- [paper/systems/claim-faithful-publication-systems-paper.tex](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1345-L1345) — lines `1345–1345`; excerpt `sha256:1fee7119309a0727fdd8140ebb10bbd32afeb12774196251d3cbd00ebd67f346`
+
+Paper citation usages:
+
+- `claim-faithful-publication-systems`: [cite at paper/systems/claim-faithful-publication-systems-paper.tex:995](../../paper/systems/claim-faithful-publication-systems-paper.tex#L995-L995)
 
 <a id="source-source-af9e99293e9dd0"></a>
 
@@ -7103,6 +8806,26 @@ Paper citation usages:
 - `erdos-1041-lemniscate-newton-flow`: [cite at paper/1041/erdos-1041-lemniscate-newton-flow.tex:917](../../paper/1041/erdos-1041-lemniscate-newton-flow.tex#L917-L917), [cite at paper/1041/erdos-1041-lemniscate-newton-flow.tex:1020](../../paper/1041/erdos-1041-lemniscate-newton-flow.tex#L1020-L1020)
 - `erdos1041-lemniscate-reasoning-surface`: [cite at paper/1041/erdos1041-lemniscate-reasoning-surface.tex:3165](../../paper/1041/erdos1041-lemniscate-reasoning-surface.tex#L3165-L3165), [cite at paper/1041/erdos1041-lemniscate-reasoning-surface.tex:4513](../../paper/1041/erdos1041-lemniscate-reasoning-surface.tex#L4513-L4513), [cite at paper/reasoning-parts/erdos1041/core.tex:3115](../../paper/reasoning-parts/erdos1041/core.tex#L3115-L3115), [cite at paper/reasoning-parts/erdos1041/core.tex:4463](../../paper/reasoning-parts/erdos1041/core.tex#L4463-L4463)
 
+<a id="source-source-b18c409a55723e"></a>
+
+### [Lemma Mining over HOL Light](https://doi.org/10.1007/978-3-642-45221-5_34)
+
+- Source id: `source-b18c409a55723e`
+- Author or public identity: C. Kaliszyk, J. Urban
+- Kind: `literature`
+- Problems: none recorded
+- Relationship and boundary: Cited by the linked public manuscript bibliography. Citation metadata records attribution; the cited work and mathematical correspondence have not been independently verified in this registration.
+- Source verification: `bibliography\_only` — scope not separately recorded
+- Local mapping: `not recorded`
+
+Public implementation or evidence coordinates:
+
+- [paper/systems/claim-faithful-publication-systems-paper.tex](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1228-L1228) — lines `1228–1228`; excerpt `sha256:6e0d5fd997e709ba9ab31f5848b5e10e6cb0cdcc1fecd5e010f44d918831f596`
+
+Paper citation usages:
+
+- `claim-faithful-publication-systems`: [cite at paper/systems/claim-faithful-publication-systems-paper.tex:987](../../paper/systems/claim-faithful-publication-systems-paper.tex#L987-L987)
+
 <a id="source-source-b202a3f125817d"></a>
 
 ### [FormalConjectures.ErdosProblems.251](https://github.com/google-deepmind/formal-conjectures/blob/f776d2f2039351b00737ffcafb9d7d7666e1d9af/FormalConjectures/ErdosProblems/251.lean)
@@ -7136,7 +8859,7 @@ Paper citation usages:
 ### [On the irrationality of certain series: problems and results](https://doi.org/10.1017/CBO9780511897184.009)
 
 - Source id: `source-b378189f39ed98`
-- Author or public identity: P. Erdős
+- Author or public identity: Paul Erdős
 - Kind: `literature`
 - Problems: #1049, #243, #249, #251, #257, #269, #68
 - Relationship and boundary: Erdős's statement of the question and of the Erdős-Straus criterion, including the display whose indexing the long record discusses.
@@ -7218,6 +8941,26 @@ Paper citation usages:
 - `erdos68-factorial-reasoning-surface`: [cite at paper/68/erdos68-factorial-reasoning-surface.tex:57](../../paper/68/erdos68-factorial-reasoning-surface.tex#L57-L57), [cite at paper/reasoning-parts/erdos68/core.tex:22](../../paper/reasoning-parts/erdos68/core.tex#L22-L22)
 - `optimal-sparse-perturbations`: [cite at paper/synthesis/optimal-sparse-perturbations.tex:72](../../paper/synthesis/optimal-sparse-perturbations.tex#L72-L72)
 
+<a id="source-source-b3b40be69340bc"></a>
+
+### [Premise Selection for a Lean Hammer](https://arxiv.org/abs/2506.07477)
+
+- Source id: `source-b3b40be69340bc`
+- Author or public identity: T. Zhu, J. Clune, J. Avigad, A. Q. Jiang, S. Welleck
+- Kind: `literature`
+- Problems: none recorded
+- Relationship and boundary: Cited by the linked public manuscript bibliography. Citation metadata records attribution; the cited work and mathematical correspondence have not been independently verified in this registration.
+- Source verification: `bibliography\_only` — scope not separately recorded
+- Local mapping: `not recorded`
+
+Public implementation or evidence coordinates:
+
+- [paper/systems/claim-faithful-publication-systems-paper.tex](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1209-L1209) — lines `1209–1209`; excerpt `sha256:4133113c90287831ec108fb25331eae1e65855cb3470109b6aba504ed87c9f6e`
+
+Paper citation usages:
+
+- `claim-faithful-publication-systems`: [cite at paper/systems/claim-faithful-publication-systems-paper.tex:985](../../paper/systems/claim-faithful-publication-systems-paper.tex#L985-L985)
+
 <a id="source-source-b3b7518e07e159"></a>
 
 ### [On the irrationality of certain p-adic zeta values](https://arxiv.org/abs/2505.23088v1)
@@ -7259,10 +9002,10 @@ Paper citation usages:
 
 <a id="source-source-b3decc410aa4b5"></a>
 
-### [On the Value Set of $n!$ Modulo a Prime](https://journals.tubitak.gov.tr/math/vol29/iss2/6/)
+### [On the Value Set of n! Modulo a Prime](https://journals.tubitak.gov.tr/math/vol29/iss2/6/)
 
 - Source id: `source-b3decc410aa4b5`
-- Author or public identity: Banks, William D., Luca, Florian, Shparlinski, Igor E., Stichtenoth, Henning
+- Author or public identity: William D. Banks, Florian Luca, Igor E. Shparlinski, Henning Stichtenoth
 - Kind: `literature`
 - Problems: #68
 - Relationship and boundary: Cited by the linked public manuscript(s). The bibliography and citation contexts record the paper's use; no tracked primary-source closure currently verifies a stronger source-level relation.
@@ -7287,7 +9030,7 @@ Paper citation usages:
 ### [More on Kakeya Conditions for Achievement Sets](https://ruj.uj.edu.pl/server/api/core/bitstreams/d6630f7b-e6ee-4de8-8a1b-81c7b4c59d2e/content)
 
 - Source id: `source-b46f8a083b4271`
-- Author or public identity: Miska, Piotr, Prus-Wi\\'sniowski, Franciszek, Ptak, Jolanta
+- Author or public identity: Piotr Miska, Franciszek Prus-Wiśniowski, Jolanta Ptak
 - Kind: `literature`
 - Problems: #251
 - Relationship and boundary: Cited by the linked public manuscript(s). The bibliography and citation contexts record the paper's use; no tracked primary-source closure currently verifies a stronger source-level relation.
@@ -7306,7 +9049,7 @@ Paper citation usages:
 
 <a id="source-source-b4b0f2811b1d2d"></a>
 
-### [Über die Verteilung der Wurzeln bei gewissen algebraischen Gleichungen mit ganzzahligen Koeffizienten](https://www.mathnet.ru/eng/sm1434)
+### Über die Verteilung der Wurzeln bei gewissen algebraischen Gleichungen mit ganzzahligen Koeffizienten
 
 - Source id: `source-b4b0f2811b1d2d`
 - Author or public identity: Issai Schur
@@ -7364,7 +9107,7 @@ Paper citation usages:
 ### [On Equal Products of Consecutive Integers](https://doi.org/10.4153/CMB-1970-052-8)
 
 - Source id: `source-b6d577df139d85`
-- Author or public identity: Macleod, R. A., Barrodale, I.
+- Author or public identity: R. A. Macleod, I. Barrodale
 - Kind: `literature`
 - Problems: #68
 - Relationship and boundary: Cited by the linked public manuscript(s). The bibliography and citation contexts record the paper's use; no tracked primary-source closure currently verifies a stronger source-level relation.
@@ -7413,10 +9156,10 @@ Paper citation usages:
 
 <a id="source-source-b95bf142df7fb5"></a>
 
-### [{Digital Library of Mathematical Functions}, {Section} 5.11(iii): Ratios](https://dlmf.nist.gov/5.11.E12)
+### [Digital Library of Mathematical Functions, §5.11(iii): Ratios](https://dlmf.nist.gov/5.11.E12)
 
 - Source id: `source-b95bf142df7fb5`
-- Author or public identity: {{National Institute of Standards and Technology}}
+- Author or public identity: National Institute of Standards and Technology
 - Kind: `literature`
 - Problems: #243
 - Relationship and boundary: Fixed-parameter Gamma-ratio asymptotic used in extraction.
@@ -7440,7 +9183,7 @@ Paper citation usages:
 
 <a id="source-source-b9d7160919621f"></a>
 
-### [Transcendence and continued fraction expansion of values of Hecke--Mahler series](https://irma.math.unistra.fr/~bugeaud/travaux/BuMLAA.pdf)
+### [Transcendence and continued fraction expansion of values of Hecke–Mahler series](https://irma.math.unistra.fr/~bugeaud/travaux/BuMLAA.pdf)
 
 - Source id: `source-b9d7160919621f`
 - Author or public identity: Y. Bugeaud, M. Laurent
@@ -7466,15 +9209,36 @@ Public implementation or evidence coordinates:
 
 Paper citation usages:
 
+- `claim-faithful-publication-systems`: [cite at paper/systems/claim-faithful-publication-systems-paper.tex:958](../../paper/systems/claim-faithful-publication-systems-paper.tex#L958-L958), [cite at paper/systems/claim-faithful-publication-systems-paper.tex:998](../../paper/systems/claim-faithful-publication-systems-paper.tex#L998-L998)
 - `erdos-269-three-prime-running-lcm`: [cite at paper/269/erdos-269-three-prime-running-lcm.tex:690](../../paper/269/erdos-269-three-prime-running-lcm.tex#L690-L690)
 - `erdos269-running-lcm-reasoning-surface`: [cite at paper/269/erdos269-running-lcm-reasoning-surface.tex:154](../../paper/269/erdos269-running-lcm-reasoning-surface.tex#L154-L154), [cite at paper/269/erdos269-running-lcm-reasoning-surface.tex:602](../../paper/269/erdos269-running-lcm-reasoning-surface.tex#L602-L602), [cite at paper/269/erdos269-running-lcm-reasoning-surface.tex:1357](../../paper/269/erdos269-running-lcm-reasoning-surface.tex#L1357-L1357), [cite at paper/269/erdos269-running-lcm-reasoning-surface.tex:1635](../../paper/269/erdos269-running-lcm-reasoning-surface.tex#L1635-L1635), [cite at paper/269/erdos269-running-lcm-reasoning-surface.tex:3903](../../paper/269/erdos269-running-lcm-reasoning-surface.tex#L3903-L3903), [cite at paper/269/erdos269-running-lcm-reasoning-surface.tex:4395](../../paper/269/erdos269-running-lcm-reasoning-surface.tex#L4395-L4395), [cite at paper/reasoning-parts/erdos269/core.tex:96](../../paper/reasoning-parts/erdos269/core.tex#L96-L96), [cite at paper/reasoning-parts/erdos269/core.tex:544](../../paper/reasoning-parts/erdos269/core.tex#L544-L544), [cite at paper/reasoning-parts/erdos269/core.tex:1299](../../paper/reasoning-parts/erdos269/core.tex#L1299-L1299), [cite at paper/reasoning-parts/erdos269/core.tex:1577](../../paper/reasoning-parts/erdos269/core.tex#L1577-L1577), [cite at paper/reasoning-parts/erdos269/core.tex:3845](../../paper/reasoning-parts/erdos269/core.tex#L3845-L3845), [cite at paper/reasoning-parts/erdos269/core.tex:4337](../../paper/reasoning-parts/erdos269/core.tex#L4337-L4337)
+
+<a id="source-source-ba3bf4689bc5ae"></a>
+
+### Choices, contraction and rational membership
+
+- Source id: `source-ba3bf4689bc5ae`
+- Author or public identity: W. Cook
+- Kind: `literature`
+- Problems: none recorded
+- Relationship and boundary: Cited by the linked public manuscript bibliography. Citation metadata records attribution; the cited work and mathematical correspondence have not been independently verified in this registration.
+- Source verification: `bibliography\_only` — scope not separately recorded
+- Local mapping: `not recorded`
+
+Public implementation or evidence coordinates:
+
+- [paper/synthesis/optimal-sparse-perturbations.tex](../../paper/synthesis/optimal-sparse-perturbations.tex#L2269-L2269) — lines `2269–2269`; excerpt `sha256:234fe1780010511648b5badf8635cecc44d2e54e4429bb72fd97617914108c76`
+
+Paper citation usages:
+
+- `optimal-sparse-perturbations`: [cite at paper/synthesis/optimal-sparse-perturbations.tex:967](../../paper/synthesis/optimal-sparse-perturbations.tex#L967-L967), [cite at paper/synthesis/optimal-sparse-perturbations.tex:1606](../../paper/synthesis/optimal-sparse-perturbations.tex#L1606-L1606), [cite at paper/synthesis/optimal-sparse-perturbations.tex:1874](../../paper/synthesis/optimal-sparse-perturbations.tex#L1874-L1874)
 
 <a id="source-source-bae14c21d3e920"></a>
 
 ### [Lean Language Reference](https://lean-lang.org/doc/reference/latest/ValidatingProofs/)
 
 - Source id: `source-bae14c21d3e920`
-- Author or public identity: Lean Project.
+- Author or public identity: Lean Project
 - Kind: `literature`
 - Problems: none recorded
 - Relationship and boundary: Cited by the linked public manuscript(s). The bibliography and citation contexts record the paper's use; no tracked primary-source closure currently verifies a stronger source-level relation.
@@ -7568,7 +9332,7 @@ Paper citation usages:
 ### [Goal Structuring Notation Community Standard, Version 3](https://scsc.uk/scsc-141c)
 
 - Source id: `source-bd5fabd398bdfa`
-- Author or public identity: SCSC Assurance Case Working Group (ACWG).
+- Author or public identity: SCSC Assurance Case Working Group (ACWG)
 - Kind: `literature`
 - Problems: none recorded
 - Relationship and boundary: Cited by the linked public manuscript(s). The bibliography and citation contexts record the paper's use; no tracked primary-source closure currently verifies a stronger source-level relation.
@@ -7582,6 +9346,26 @@ Public implementation or evidence coordinates:
 Paper citation usages:
 
 - `plectis-public-system`: [cite at docs/papers/mirror/plectis-public-system.tex:422](../../docs/papers/mirror/plectis-public-system.tex#L422-L422)
+
+<a id="source-source-bf5ebb307dd372"></a>
+
+### [How (and How Not) to Write a Good Systems Paper](https://www.usenix.org/guidelines-authors)
+
+- Source id: `source-bf5ebb307dd372`
+- Author or public identity: R. Levin, D. D. Redell
+- Kind: `literature`
+- Problems: none recorded
+- Relationship and boundary: Cited by the linked public manuscript bibliography. Citation metadata records attribution; the cited work and mathematical correspondence have not been independently verified in this registration.
+- Source verification: `bibliography\_only` — scope not separately recorded
+- Local mapping: `not recorded`
+
+Public implementation or evidence coordinates:
+
+- [paper/exposition/parts/references.tex](../../paper/exposition/parts/references.tex#L122-L122) — lines `122–122`; excerpt `sha256:b023de3d231712c8acd3702d86030027be265c42dac8ee8d477c595bce5f4baa`
+
+Paper citation usages:
+
+- `writing-mathematics-from-reviewed-revisions`: [cite at paper/exposition/parts/practice.tex:220](../../paper/exposition/parts/practice.tex#L220-L220)
 
 <a id="source-source-c29036ef9c4da8"></a>
 
@@ -7717,6 +9501,7 @@ Public implementation or evidence coordinates:
 Paper citation usages:
 
 - `erdos-257-mersenne-support-subseries`: [cite at paper/257/erdos-257-mersenne-support-subseries.tex:879](../../paper/257/erdos-257-mersenne-support-subseries.tex#L879-L879)
+- `erdos257-mersenne-reasoning-surface`: [cite at paper/257/erdos257-mersenne-reasoning-surface.tex:1298](../../paper/257/erdos257-mersenne-reasoning-surface.tex#L1298-L1298), [cite at paper/reasoning-parts/erdos257/a257\_front.tex:1098](../../paper/reasoning-parts/erdos257/a257_front.tex#L1098-L1098)
 
 <a id="source-source-c786f202d47318"></a>
 
@@ -7778,12 +9563,32 @@ Paper citation usages:
 - `erdos-68-factorial-denominator-irrationality`: [cite at paper/68/erdos-68-factorial-denominator-irrationality.tex:96](../../paper/68/erdos-68-factorial-denominator-irrationality.tex#L96-L97)
 - `erdos68-factorial-reasoning-surface`: [cite at paper/68/erdos68-factorial-reasoning-surface.tex:1249](../../paper/68/erdos68-factorial-reasoning-surface.tex#L1249-L1250), [cite at paper/68/erdos68-factorial-reasoning-surface.tex:2296](../../paper/68/erdos68-factorial-reasoning-surface.tex#L2296-L2297), [cite at paper/68/erdos68-factorial-reasoning-surface.tex:2629](../../paper/68/erdos68-factorial-reasoning-surface.tex#L2629-L2629), [cite at paper/68/erdos68-factorial-reasoning-surface.tex:2632](../../paper/68/erdos68-factorial-reasoning-surface.tex#L2632-L2632), [cite at paper/68/erdos68-factorial-reasoning-surface.tex:2640](../../paper/68/erdos68-factorial-reasoning-surface.tex#L2640-L2640), [cite at paper/reasoning-parts/erdos68/core.tex:1214](../../paper/reasoning-parts/erdos68/core.tex#L1214-L1215), [cite at paper/reasoning-parts/erdos68/core.tex:2261](../../paper/reasoning-parts/erdos68/core.tex#L2261-L2262), [cite at paper/reasoning-parts/erdos68/core.tex:2594](../../paper/reasoning-parts/erdos68/core.tex#L2594-L2594), [cite at paper/reasoning-parts/erdos68/core.tex:2597](../../paper/reasoning-parts/erdos68/core.tex#L2597-L2597), [cite at paper/reasoning-parts/erdos68/core.tex:2605](../../paper/reasoning-parts/erdos68/core.tex#L2605-L2605)
 
+<a id="source-source-c988e3165443f0"></a>
+
+### [Use good notation](https://terrytao.wordpress.com/advice-on-writing-papers/use-good-notation/)
+
+- Source id: `source-c988e3165443f0`
+- Author or public identity: T. Tao
+- Kind: `literature`
+- Problems: none recorded
+- Relationship and boundary: Cited by the linked public manuscript bibliography. Citation metadata records attribution; the cited work and mathematical correspondence have not been independently verified in this registration.
+- Source verification: `bibliography\_only` — scope not separately recorded
+- Local mapping: `not recorded`
+
+Public implementation or evidence coordinates:
+
+- [paper/exposition/parts/references.tex](../../paper/exposition/parts/references.tex#L67-L67) — lines `67–67`; excerpt `sha256:070e62049b30d94bc47bf4fe70a7bca53192dac9aa400ea1ee70c6ac9aaa3085`
+
+Paper citation usages:
+
+- `writing-mathematics-from-reviewed-revisions`: [cite at paper/exposition/parts/revisions.tex:228](../../paper/exposition/parts/revisions.tex#L228-L228)
+
 <a id="source-source-c9b987093aaf4e"></a>
 
 ### [The Poisson Tail Conjecture for primes in short intervals](https://arxiv.org/abs/2605.23014v2)
 
 - Source id: `source-c9b987093aaf4e`
-- Author or public identity: Jha, Abhishek
+- Author or public identity: Abhishek Jha
 - Kind: `literature`
 - Problems: #251
 - Relationship and boundary: Cited by the linked public manuscript(s). The bibliography and citation contexts record the paper's use; no tracked primary-source closure currently verifies a stronger source-level relation.
@@ -7798,6 +9603,26 @@ Public implementation or evidence coordinates:
 Paper citation usages:
 
 - `erdos251-prime-gap-reasoning-surface`: [cite at paper/251/erdos251-prime-gap-reasoning-surface.tex:663](../../paper/251/erdos251-prime-gap-reasoning-surface.tex#L663-L663), [cite at paper/reasoning-parts/erdos251/core.tex:621](../../paper/reasoning-parts/erdos251/core.tex#L621-L621)
+
+<a id="source-source-c9ce62cc55b06f"></a>
+
+### [Aesop: White-Box Best-First Proof Search for Lean](https://doi.org/10.1145/3573105.3575671)
+
+- Source id: `source-c9ce62cc55b06f`
+- Author or public identity: J. Limperg, A. H. From
+- Kind: `literature`
+- Problems: none recorded
+- Relationship and boundary: Cited by the linked public manuscript bibliography. Citation metadata records attribution; the cited work and mathematical correspondence have not been independently verified in this registration.
+- Source verification: `bibliography\_only` — scope not separately recorded
+- Local mapping: `not recorded`
+
+Public implementation or evidence coordinates:
+
+- [paper/systems/claim-faithful-publication-systems-paper.tex](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1213-L1213) — lines `1213–1213`; excerpt `sha256:d666cbf246a54aa58de6e78d766b7534db5a00c3366cc0b244881b29c17c6d75`
+
+Paper citation usages:
+
+- `claim-faithful-publication-systems`: [cite at paper/systems/claim-faithful-publication-systems-paper.tex:985](../../paper/systems/claim-faithful-publication-systems-paper.tex#L985-L985)
 
 <a id="source-source-ca19e504149107"></a>
 
@@ -7949,7 +9774,7 @@ Paper citation usages:
 ### [On a new condition implying that an achievement set is a Cantorval and its applications](https://arxiv.org/abs/2512.17761v1)
 
 - Source id: `source-ce27d27dd5ec77`
-- Author or public identity: Nowakowski, Piotr
+- Author or public identity: Piotr Nowakowski
 - Kind: `literature`
 - Problems: #251
 - Relationship and boundary: Cited by the linked public manuscript(s). The bibliography and citation contexts record the paper's use; no tracked primary-source closure currently verifies a stronger source-level relation.
@@ -7968,7 +9793,7 @@ Paper citation usages:
 
 <a id="source-source-ce5fddc99aff3f"></a>
 
-### [Association for Computing Machinery](https://www.acm.org/publications/policies/artifact-review-and-badging-current)
+### [Artifact Review and Badging—Current](https://www.acm.org/publications/policies/artifact-review-and-badging-current)
 
 - Source id: `source-ce5fddc99aff3f`
 - Author or public identity: Association for Computing Machinery
@@ -7985,6 +9810,50 @@ Public implementation or evidence coordinates:
 Paper citation usages:
 
 - `plectis-public-system`: [cite at docs/papers/mirror/plectis-public-system.tex:437](../../docs/papers/mirror/plectis-public-system.tex#L437-L437)
+
+<a id="source-source-cf807e61b6b4f4"></a>
+
+### [LEGO-Prover: Neural Theorem Proving with Growing Libraries](https://arxiv.org/abs/2310.00656)
+
+- Source id: `source-cf807e61b6b4f4`
+- Author or public identity: Haiming Wang, Huajian Xin, Chuanyang Zheng, Lin Li, Zhengying Liu, Qingxing Cao, Yinya Huang, Jing Xiong, Han Shi, Enze Xie, Jian Yin, Zhenguo Li, Heng Liao, Xiaodan Liang
+- Kind: `literature`
+- Problems: none recorded
+- Relationship and boundary: Cited by the linked public manuscript bibliography. Citation metadata records attribution; the cited work and mathematical correspondence have not been independently verified in this registration.
+- Source verification: `bibliography\_only` — scope not separately recorded
+- Local mapping: `not recorded`
+
+Exact source locations:
+
+- [Primary abstract-page title, complete ordered author list and submission history checked 2026-10-05; metadata check only, not verification of results.](https://arxiv.org/abs/2310.00656)
+
+Public implementation or evidence coordinates:
+
+- [paper/systems/claim-faithful-publication-systems-paper.tex](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1241-L1241) — lines `1241–1241`; excerpt `sha256:d6f45ae2a63def1103b00452df9c3f062e4f233d5d19531f35600792e1786488`
+
+Paper citation usages:
+
+- `claim-faithful-publication-systems`: [cite at paper/systems/claim-faithful-publication-systems-paper.tex:988](../../paper/systems/claim-faithful-publication-systems-paper.tex#L988-L988)
+
+<a id="source-source-cf8c98c4d1c037"></a>
+
+### [Mathematical exploration and discovery at scale](https://arxiv.org/abs/2511.02864v3)
+
+- Source id: `source-cf8c98c4d1c037`
+- Author or public identity: B. Georgiev, J. Gómez-Serrano, T. Tao, A. Z. Wagner
+- Kind: `literature`
+- Problems: none recorded
+- Relationship and boundary: Cited by the linked public manuscript bibliography. Citation metadata records attribution; the cited work and mathematical correspondence have not been independently verified in this registration.
+- Source verification: `bibliography\_only` — scope not separately recorded
+- Local mapping: `not recorded`
+
+Public implementation or evidence coordinates:
+
+- [paper/systems/claim-faithful-publication-systems-paper.tex](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1320-L1320) — lines `1320–1320`; excerpt `sha256:db1198ec731045695deaa539aab0a50012f5da0751cc3dffa76884b3856155ed`
+
+Paper citation usages:
+
+- `claim-faithful-publication-systems`: [cite at paper/systems/claim-faithful-publication-systems-paper.tex:989](../../paper/systems/claim-faithful-publication-systems-paper.tex#L989-L989)
 
 <a id="source-source-cf94fac28d0ff1"></a>
 
@@ -8245,6 +10114,26 @@ Paper citation usages:
 
 - `erdos1049-rational-base-lambert-reasoning-surface`: [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:5064](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L5064-L5064), [cite at paper/reasoning-parts/erdos1049/core.tex:5033](../../paper/reasoning-parts/erdos1049/core.tex#L5033-L5033)
 
+<a id="source-source-d80aa76c601178"></a>
+
+### [The distribution of rational numbers on Cantor's middle thirds set](https://arxiv.org/abs/1909.01198)
+
+- Source id: `source-d80aa76c601178`
+- Author or public identity: A. Rahm, N. Solomon, T. Trauthwein, B. Weiss
+- Kind: `literature`
+- Problems: none recorded
+- Relationship and boundary: Cited by the linked public manuscript bibliography. Citation metadata records attribution; the cited work and mathematical correspondence have not been independently verified in this registration.
+- Source verification: `bibliography\_only` — scope not separately recorded
+- Local mapping: `not recorded`
+
+Public implementation or evidence coordinates:
+
+- [paper/synthesis/optimal-sparse-perturbations.tex](../../paper/synthesis/optimal-sparse-perturbations.tex#L2227-L2227) — lines `2227–2227`; excerpt `sha256:a8cdc0edbeaf77551e9614fc81c33a45544416609a8d0488aaf7125e009519ba`
+
+Paper citation usages:
+
+- `optimal-sparse-perturbations`: [cite at paper/synthesis/optimal-sparse-perturbations.tex:1635](../../paper/synthesis/optimal-sparse-perturbations.tex#L1635-L1635), [cite at paper/synthesis/optimal-sparse-perturbations.tex:1979](../../paper/synthesis/optimal-sparse-perturbations.tex#L1979-L1979)
+
 <a id="source-source-d8b2a7c411bc2d"></a>
 
 ### [The Lean mathematical library](https://doi.org/10.1145/3372885.3373824)
@@ -8277,12 +10166,32 @@ Paper citation usages:
 - `erdos249-257-main`: [cite at paper/archive/erdos249-257-main-paper.tex:3772](../../paper/archive/erdos249-257-main-paper.tex#L3772-L3772)
 - `erdos251-prime-gap-reasoning-surface`: [cite at paper/251/erdos251-prime-gap-reasoning-surface.tex:2264](../../paper/251/erdos251-prime-gap-reasoning-surface.tex#L2264-L2264), [cite at paper/reasoning-parts/erdos251/core.tex:2222](../../paper/reasoning-parts/erdos251/core.tex#L2222-L2222)
 
+<a id="source-source-da95f31b00fd1d"></a>
+
+### [Structure in Theorem Proving: Analyzing and Improving the Isabelle Archive of Formal Proofs](https://arxiv.org/abs/2209.13305)
+
+- Source id: `source-da95f31b00fd1d`
+- Author or public identity: F. Huch
+- Kind: `literature`
+- Problems: none recorded
+- Relationship and boundary: Cited by the linked public manuscript bibliography. Citation metadata records attribution; the cited work and mathematical correspondence have not been independently verified in this registration.
+- Source verification: `bibliography\_only` — scope not separately recorded
+- Local mapping: `not recorded`
+
+Public implementation or evidence coordinates:
+
+- [paper/systems/claim-faithful-publication-systems-paper.tex](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1197-L1197) — lines `1197–1197`; excerpt `sha256:36ae93a1a7b213f6cf6efdbf24a0b454748b2c4fb003d7fb598af479a17943d5`
+
+Paper citation usages:
+
+- `claim-faithful-publication-systems`: [cite at paper/systems/claim-faithful-publication-systems-paper.tex:986](../../paper/systems/claim-faithful-publication-systems-paper.tex#L986-L986)
+
 <a id="source-source-dbbc7de069eeee"></a>
 
 ### [Partitions with prescribed sum of reciprocals: asymptotic bounds](https://arxiv.org/abs/2502.02200v2)
 
 - Source id: `source-dbbc7de069eeee`
-- Author or public identity: van Doorn, Wouter
+- Author or public identity: Wouter van Doorn
 - Kind: `literature`
 - Problems: #251
 - Relationship and boundary: Cited by the linked public manuscript(s). The bibliography and citation contexts record the paper's use; no tracked primary-source closure currently verifies a stronger source-level relation.
@@ -8322,6 +10231,26 @@ Paper citation usages:
 
 - `erdos-1041-lemniscate-newton-flow`: [cite at paper/1041/erdos-1041-lemniscate-newton-flow.tex:754](../../paper/1041/erdos-1041-lemniscate-newton-flow.tex#L754-L754)
 - `erdos1041-lemniscate-reasoning-surface`: [cite at paper/1041/erdos1041-lemniscate-reasoning-surface.tex:2125](../../paper/1041/erdos1041-lemniscate-reasoning-surface.tex#L2125-L2125), [cite at paper/reasoning-parts/erdos1041/core.tex:2075](../../paper/reasoning-parts/erdos1041/core.tex#L2075-L2075)
+
+<a id="source-source-e0221a4f97a3c1"></a>
+
+### [AlphaEvolve: A coding agent for scientific and algorithmic discovery](https://arxiv.org/abs/2506.13131v1)
+
+- Source id: `source-e0221a4f97a3c1`
+- Author or public identity: A. Novikov
+- Kind: `literature`
+- Problems: none recorded
+- Relationship and boundary: Cited by the linked public manuscript bibliography. Citation metadata records attribution; the cited work and mathematical correspondence have not been independently verified in this registration.
+- Source verification: `bibliography\_only` — scope not separately recorded
+- Local mapping: `not recorded`
+
+Public implementation or evidence coordinates:
+
+- [paper/systems/claim-faithful-publication-systems-paper.tex](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1317-L1317) — lines `1317–1317`; excerpt `sha256:b547b40f148b9a008c2c41bed33da5f6c759b4c891f926037bfe5a2dd6d6ea68`
+
+Paper citation usages:
+
+- `claim-faithful-publication-systems`: [cite at paper/systems/claim-faithful-publication-systems-paper.tex:989](../../paper/systems/claim-faithful-publication-systems-paper.tex#L989-L989)
 
 <a id="source-source-e13ecb7c94852a"></a>
 
@@ -8558,10 +10487,10 @@ Paper citation usages:
 
 <a id="source-source-e6716218a1ac07"></a>
 
-### [National Institute of Standards and Technology](https://csrc.nist.gov/projects/hash-functions)
+### [Hash Functions](https://csrc.nist.gov/projects/hash-functions)
 
 - Source id: `source-e6716218a1ac07`
-- Author or public identity: National Institute of Standards, Technology
+- Author or public identity: National Institute of Standards and Technology
 - Kind: `literature`
 - Problems: none recorded
 - Relationship and boundary: Cited by the linked public manuscript(s). The bibliography and citation contexts record the paper's use; no tracked primary-source closure currently verifies a stronger source-level relation.
@@ -8600,6 +10529,71 @@ Public implementation or evidence coordinates:
 Paper citation usages:
 
 - `erdos269-running-lcm-reasoning-surface`: [cite at paper/269/erdos269-running-lcm-reasoning-surface.tex:3649](../../paper/269/erdos269-running-lcm-reasoning-surface.tex#L3649-L3649), [cite at paper/reasoning-parts/erdos269/core.tex:3591](../../paper/reasoning-parts/erdos269/core.tex#L3591-L3591)
+
+<a id="source-source-e86d4e9d54219c"></a>
+
+### Mahler Functions and Transcendence
+
+- Source id: `source-e86d4e9d54219c`
+- Author or public identity: Ku. Nishioka
+- Kind: `literature`
+- Problems: none recorded
+- Relationship and boundary: Cited by the linked public manuscript bibliography. Citation metadata records attribution; the cited work and mathematical correspondence have not been independently verified in this registration.
+- Source verification: `bibliography\_only` — scope not separately recorded
+- Local mapping: `not recorded`
+
+Public implementation or evidence coordinates:
+
+- [paper/synthesis/optimal-sparse-perturbations.tex](../../paper/synthesis/optimal-sparse-perturbations.tex#L2193-L2193) — lines `2193–2193`; excerpt `sha256:43b205ab44891358274f6ed19f64a2ae0788fda78c62c9863d54ce3decd956f8`
+
+Paper citation usages:
+
+- `optimal-sparse-perturbations`: [cite at paper/synthesis/optimal-sparse-perturbations.tex:1108](../../paper/synthesis/optimal-sparse-perturbations.tex#L1108-L1108)
+
+<a id="source-source-e937c5aa7e1b76"></a>
+
+### [Dream-RSI: Recursive Self-Improvement through Evolving Worlds](https://arxiv.org/abs/2609.14858)
+
+- Source id: `source-e937c5aa7e1b76`
+- Author or public identity: Tong Zheng, Xidong Wu, Zheng Zhang, Zhankui He, Chaoyi Zhang, Benjamin Coleman, Ruoqiao Wei, Di Bai, Haolin Liu, Rui Liu, Xue Wang, Yue Zhuan, Wang-Cheng Kang, Renkai Xiang, Heng Huang, Xinwu Cheng, Yunsong Guo
+- Kind: `literature`
+- Problems: none recorded
+- Relationship and boundary: Cited by the linked public manuscript bibliography. Citation metadata records attribution; the cited work and mathematical correspondence have not been independently verified in this registration.
+- Source verification: `bibliography\_only` — scope not separately recorded
+- Local mapping: `not recorded`
+
+Exact source locations:
+
+- [Primary abstract-page title, complete ordered author list and submission history checked 2026-10-05; metadata check only, not verification of results.](https://arxiv.org/abs/2609.14858)
+
+Public implementation or evidence coordinates:
+
+- [paper/systems/claim-faithful-publication-systems-paper.tex](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1106-L1106) — lines `1106–1106`; excerpt `sha256:baf32720401078fbe11746e1667f1f7425026f67012ccadf9e95b149b14e8b49`
+
+Paper citation usages:
+
+- `claim-faithful-publication-systems`: [cite at paper/systems/claim-faithful-publication-systems-paper.tex:989](../../paper/systems/claim-faithful-publication-systems-paper.tex#L989-L989)
+
+<a id="source-source-e94e9e39e55ab3"></a>
+
+### [On the irrationality of certain series](https://users.renyi.hu/~p_erdos/1957-07.pdf)
+
+- Source id: `source-e94e9e39e55ab3`
+- Author or public identity: P. Erdős
+- Kind: `literature`
+- Problems: none recorded
+- Relationship and boundary: Cited by the linked public manuscript bibliography. Citation metadata records attribution; the cited work and mathematical correspondence have not been independently verified in this registration.
+- Source verification: `bibliography\_only` — scope not separately recorded
+- Local mapping: `not recorded`
+
+Public implementation or evidence coordinates:
+
+- [paper/249/erdos-249-binary-totient-series.tex](../../paper/249/erdos-249-binary-totient-series.tex#L870-L870) — lines `870–870`; excerpt `sha256:63ca7e22b1f964917ba2ecc70b0aff42889960073e1677efad51c3cb6d24f498`
+
+Paper citation usages:
+
+- `erdos-249-binary-totient-series`: [cite at paper/249/erdos-249-binary-totient-series.tex:452](../../paper/249/erdos-249-binary-totient-series.tex#L452-L452)
+- `erdos249-totient-reasoning-surface`: [cite at paper/249/erdos249-totient-reasoning-surface.tex:663](../../paper/249/erdos249-totient-reasoning-surface.tex#L663-L663), [cite at paper/reasoning-parts/erdos249/a249\_front.tex:471](../../paper/reasoning-parts/erdos249/a249_front.tex#L471-L471)
 
 <a id="source-source-e99ce64694b554"></a>
 
@@ -8653,10 +10647,10 @@ Paper citation usages:
 
 <a id="source-source-eca9e699590922"></a>
 
-### [On the binary digits of the Erdős--Borwein constant](https://arxiv.org/abs/2605.24160v1)
+### [On the binary digits of the Erdős-Borwein constant](https://arxiv.org/abs/2605.24160v1)
 
 - Source id: `source-eca9e699590922`
-- Author or public identity: J. M. Campbell
+- Author or public identity: John M. Campbell
 - Kind: `literature`
 - Problems: #249, #257
 - Relationship and boundary: Proof (Theorem 1) that the block 11 occurs infinitely often in the binary expansion of the constant, answering Crandall's question.
@@ -8711,6 +10705,26 @@ Paper citation usages:
 - `erdos-243-reciprocal-tail-rigidity`: [cite at paper/243/erdos-243-reciprocal-tail-rigidity.tex:776](../../paper/243/erdos-243-reciprocal-tail-rigidity.tex#L776-L776)
 - `erdos243-reciprocal-tail-reasoning-surface`: [cite at paper/243/erdos243-reciprocal-tail-reasoning-surface.tex:2694](../../paper/243/erdos243-reciprocal-tail-reasoning-surface.tex#L2694-L2694), [cite at paper/243/erdos243-reciprocal-tail-reasoning-surface.tex:3248](../../paper/243/erdos243-reciprocal-tail-reasoning-surface.tex#L3248-L3248), [cite at paper/reasoning-parts/erdos243/core.tex:2655](../../paper/reasoning-parts/erdos243/core.tex#L2655-L2655), [cite at paper/reasoning-parts/erdos243/core.tex:3209](../../paper/reasoning-parts/erdos243/core.tex#L3209-L3209)
 
+<a id="source-source-eecf0fe92f9dcb"></a>
+
+### [LeanMarathon: Toward Reliable AI Co-Mathematicians through Long-Horizon Lean Autoformalization](https://arxiv.org/abs/2606.05400)
+
+- Source id: `source-eecf0fe92f9dcb`
+- Author or public identity: Y. Zhang, Y. Sun, T. Suzuki, J. D. Lee, F. Liu
+- Kind: `literature`
+- Problems: none recorded
+- Relationship and boundary: Cited by the linked public manuscript bibliography. Citation metadata records attribution; the cited work and mathematical correspondence have not been independently verified in this registration.
+- Source verification: `bibliography\_only` — scope not separately recorded
+- Local mapping: `not recorded`
+
+Public implementation or evidence coordinates:
+
+- [paper/systems/claim-faithful-publication-systems-paper.tex](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1150-L1150) — lines `1150–1150`; excerpt `sha256:f78fd6cb57b810a77c3c6fffb5b0e4698cda0626fe32c812ef710a17813c7e30`
+
+Paper citation usages:
+
+- `claim-faithful-publication-systems`: [cite at paper/systems/claim-faithful-publication-systems-paper.tex:983](../../paper/systems/claim-faithful-publication-systems-paper.tex#L983-L983)
+
 <a id="source-source-eeff3fa685af8a"></a>
 
 ### [Uber die asymptotische Verteilung reeller Zahlen mod 1](https://doi.org/10.1007/BF01181156)
@@ -8736,6 +10750,26 @@ Public implementation or evidence coordinates:
 Paper citation usages:
 
 - `erdos249-totient-reasoning-surface`: [cite at paper/249/erdos249-totient-reasoning-surface.tex:8168](../../paper/249/erdos249-totient-reasoning-surface.tex#L8168-L8168), [cite at paper/reasoning-parts/erdos249/a249\_front.tex:7976](../../paper/reasoning-parts/erdos249/a249_front.tex#L7976-L7976)
+
+<a id="source-source-ef55c25dbdc2d0"></a>
+
+### Mathematical Writing
+
+- Source id: `source-ef55c25dbdc2d0`
+- Author or public identity: D. E. Knuth, T. Larrabee, P. M. Roberts
+- Kind: `literature`
+- Problems: none recorded
+- Relationship and boundary: Cited by the linked public manuscript bibliography. Citation metadata records attribution; the cited work and mathematical correspondence have not been independently verified in this registration.
+- Source verification: `bibliography\_only` — scope not separately recorded
+- Local mapping: `not recorded`
+
+Public implementation or evidence coordinates:
+
+- [paper/systems/claim-faithful-publication-systems-paper.tex](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1294-L1294) — lines `1294–1294`; excerpt `sha256:ad58c732e189c4c98554e1f3a5fdf7f070477596b03dcec13ef0d5f9d15f7ee9`
+
+Paper citation usages:
+
+- `claim-faithful-publication-systems`: [cite at paper/systems/claim-faithful-publication-systems-paper.tex:994](../../paper/systems/claim-faithful-publication-systems-paper.tex#L994-L994)
 
 <a id="source-source-ef6233b59b95cb"></a>
 
@@ -8894,12 +10928,36 @@ Paper citation usages:
 - `erdos-1049-rational-base-lambert`: [cite at paper/1049/erdos-1049-rational-base-lambert.tex:824](../../paper/1049/erdos-1049-rational-base-lambert.tex#L824-L824)
 - `erdos1049-rational-base-lambert-reasoning-surface`: [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:276](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L276-L276), [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:500](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L500-L500), [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:5014](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L5014-L5014), [cite at paper/reasoning-parts/erdos1049/core.tex:245](../../paper/reasoning-parts/erdos1049/core.tex#L245-L245), [cite at paper/reasoning-parts/erdos1049/core.tex:469](../../paper/reasoning-parts/erdos1049/core.tex#L469-L469), [cite at paper/reasoning-parts/erdos1049/core.tex:4983](../../paper/reasoning-parts/erdos1049/core.tex#L4983-L4983)
 
+<a id="source-source-f20325c949d904"></a>
+
+### [ProofEvolve: Neuro-Symbolic Evolution for Formal Automated Theorem Proving](https://arxiv.org/abs/2608.26334)
+
+- Source id: `source-f20325c949d904`
+- Author or public identity: Wenqian Ye, Ziwei Guan, Eric Xie, Bohan Liu, Shivani Modi, Buyun Zhang, Ellie Dingqiao Wen, Henry Kautz, Aidong Zhang
+- Kind: `literature`
+- Problems: none recorded
+- Relationship and boundary: Cited by the linked public manuscript bibliography. Citation metadata records attribution; the cited work and mathematical correspondence have not been independently verified in this registration.
+- Source verification: `bibliography\_only` — scope not separately recorded
+- Local mapping: `not recorded`
+
+Exact source locations:
+
+- [Primary abstract-page title, complete ordered author list and submission history checked 2026-10-05; metadata check only, not verification of results.](https://arxiv.org/abs/2608.26334)
+
+Public implementation or evidence coordinates:
+
+- [paper/systems/claim-faithful-publication-systems-paper.tex](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1249-L1249) — lines `1249–1249`; excerpt `sha256:5ae2f5feae46a48fd3ed97e8644c428eef95cd964515d62ee7512df6f7bfa5b3`
+
+Paper citation usages:
+
+- `claim-faithful-publication-systems`: [cite at paper/systems/claim-faithful-publication-systems-paper.tex:988](../../paper/systems/claim-faithful-publication-systems-paper.tex#L988-L988)
+
 <a id="source-source-f213b302ada43a"></a>
 
 ### [NIST Digital Library of Mathematical Functions, §1.12(ii) Convergents](https://dlmf.nist.gov/1.12)
 
 - Source id: `source-f213b302ada43a`
-- Author or public identity: Unknown
+- Author or public identity: NIST Digital Library of Mathematical Functions
 - Kind: `website\_contribution`
 - Problems: #68
 - Relationship and boundary: Standard continued-fraction recurrences, determinant identity and prefix transformation used to turn the common prefix into the denominator bound; the numerical outputs are the project's computation.
@@ -8927,7 +10985,7 @@ Paper citation usages:
 ### [Reproducibility Badging and Definitions](https://doi.org/10.3789/niso-rp-31-2021)
 
 - Source id: `source-f2a047037bae55`
-- Author or public identity: National Information Standards Organization.
+- Author or public identity: National Information Standards Organization
 - Kind: `literature`
 - Problems: none recorded
 - Relationship and boundary: Cited by the linked public manuscript(s). The bibliography and citation contexts record the paper's use; no tracked primary-source closure currently verifies a stronger source-level relation.
@@ -8967,12 +11025,32 @@ Paper citation usages:
 - `erdos-1041-lemniscate-newton-flow`: [cite at paper/1041/erdos-1041-lemniscate-newton-flow.tex:1009](../../paper/1041/erdos-1041-lemniscate-newton-flow.tex#L1009-L1009)
 - `erdos1041-lemniscate-reasoning-surface`: [cite at paper/1041/erdos1041-lemniscate-reasoning-surface.tex:4395](../../paper/1041/erdos1041-lemniscate-reasoning-surface.tex#L4395-L4395), [cite at paper/1041/erdos1041-lemniscate-reasoning-surface.tex:4398](../../paper/1041/erdos1041-lemniscate-reasoning-surface.tex#L4398-L4398), [cite at paper/reasoning-parts/erdos1041/core.tex:4345](../../paper/reasoning-parts/erdos1041/core.tex#L4345-L4345), [cite at paper/reasoning-parts/erdos1041/core.tex:4348](../../paper/reasoning-parts/erdos1041/core.tex#L4348-L4348)
 
+<a id="source-source-f3d030960b94d4"></a>
+
+### [Missing Erdős problems](https://www.erdosproblems.com/forum/thread/Missing%20Erd%C5%91s%20problems)
+
+- Source id: `source-f3d030960b94d4`
+- Author or public identity: Alfaiz, Thomas F. Bloom
+- Kind: `literature`
+- Problems: none recorded
+- Relationship and boundary: Cited by the linked public manuscript bibliography. Citation metadata records attribution; the cited work and mathematical correspondence have not been independently verified in this registration.
+- Source verification: `bibliography\_only` — scope not separately recorded
+- Local mapping: `not recorded`
+
+Public implementation or evidence coordinates:
+
+- [paper/269/erdos269-running-lcm-reasoning-surface.tex](../../paper/269/erdos269-running-lcm-reasoning-surface.tex#L4427-L4427) — lines `4427–4427`; excerpt `sha256:447fefa10e7201b95a5e920d29f1da296722e8b6b1bd3a1afa044b0a5c796b80`
+
+Paper citation usages:
+
+- `erdos269-running-lcm-reasoning-surface`: [cite at paper/269/erdos269-running-lcm-reasoning-surface.tex:3895](../../paper/269/erdos269-running-lcm-reasoning-surface.tex#L3895-L3895), [cite at paper/reasoning-parts/erdos269/core.tex:3837](../../paper/reasoning-parts/erdos269/core.tex#L3837-L3837)
+
 <a id="source-source-f42f9e04743a4c"></a>
 
-### [A conditional proof of the irrationality of ∑\_{n≥1} p\_n 2^{−n} under a uniform Hardy–Littlewood prime-tuples conjecture](https://github.com/beetree/math_erdos_251)
+### [A conditional proof of the irrationality of ∑\_n≥1 p\_n 2^−n under a uniform Hardy–Littlewood prime-tuples conjecture](https://github.com/beetree/math_erdos_251)
 
 - Source id: `source-f42f9e04743a4c`
-- Author or public identity: J. Land
+- Author or public identity: Johan Land
 - Kind: `literature`
 - Problems: #251
 - Relationship and boundary: Public research draft of 5 September 2026 proving irrationality under Kuperberg's conjecture.
@@ -9040,6 +11118,26 @@ Paper citation usages:
 
 - `erdos249-257-main`: [cite at paper/archive/erdos249-257-main-paper.tex:912](../../paper/archive/erdos249-257-main-paper.tex#L912-L912), [cite at paper/archive/erdos249-257-main-paper.tex:4671](../../paper/archive/erdos249-257-main-paper.tex#L4671-L4671), [cite at paper/archive/erdos249-257-main-paper.tex:4706](../../paper/archive/erdos249-257-main-paper.tex#L4706-L4706)
 
+<a id="source-source-f4ecbdd4480e71"></a>
+
+### [Prime-Gap Dyadic Series: Perturbations, Exact Criteria and Certificates](https://github.com/wcook04/plectis-erdos/blob/main/paper/251/erdos251-prime-gap-reasoning-surface.tex)
+
+- Source id: `source-f4ecbdd4480e71`
+- Author or public identity: Will Cook
+- Kind: `literature`
+- Problems: none recorded
+- Relationship and boundary: Cited by the linked public manuscript bibliography. Citation metadata records attribution; the cited work and mathematical correspondence have not been independently verified in this registration.
+- Source verification: `bibliography\_only` — scope not separately recorded
+- Local mapping: `not recorded`
+
+Public implementation or evidence coordinates:
+
+- [paper/exposition/parts/references.tex](../../paper/exposition/parts/references.tex#L133-L133) — lines `133–133`; excerpt `sha256:ed998915a6e077e3d2fbd54af8976f14bb3d27178019c1a35e927549acff44bd`
+
+Paper citation usages:
+
+- `writing-mathematics-from-reviewed-revisions`: [cite at paper/exposition/parts/review.tex:54](../../paper/exposition/parts/review.tex#L54-L54)
+
 <a id="source-source-f67bf9959aa230"></a>
 
 ### [A determinantal approach to irrationality](https://doi.org/10.1007/s00365-016-9333-7)
@@ -9088,6 +11186,26 @@ Public implementation or evidence coordinates:
 Paper citation usages:
 
 - `plectis-public-system`: [cite at docs/papers/mirror/plectis-public-system.tex:596](../../docs/papers/mirror/plectis-public-system.tex#L596-L596), [cite at docs/papers/mirror/plectis-public-system.tex:599](../../docs/papers/mirror/plectis-public-system.tex#L599-L599), [cite at docs/papers/mirror/plectis-public-system.tex:616](../../docs/papers/mirror/plectis-public-system.tex#L616-L616)
+
+<a id="source-source-f6ebb75f69c244"></a>
+
+### [Die Hausdorffsche Dimension von Mengen reeller Zahlen, die durch Zifferneigenschaften einer Cantorentwicklung charakterisiert sind](https://dml.cz/handle/10338.dmlcz/100861)
+
+- Source id: `source-f6ebb75f69c244`
+- Author or public identity: H. Wegmann
+- Kind: `literature`
+- Problems: none recorded
+- Relationship and boundary: Cited by the linked public manuscript bibliography. Citation metadata records attribution; the cited work and mathematical correspondence have not been independently verified in this registration.
+- Source verification: `bibliography\_only` — scope not separately recorded
+- Local mapping: `not recorded`
+
+Public implementation or evidence coordinates:
+
+- [paper/synthesis/optimal-sparse-perturbations.tex](../../paper/synthesis/optimal-sparse-perturbations.tex#L2303-L2303) — lines `2303–2303`; excerpt `sha256:17aee53fca894df1229e947315b763dd1000cab3fd93ce1d8704682b5a0957aa`
+
+Paper citation usages:
+
+- `optimal-sparse-perturbations`: [cite at paper/synthesis/optimal-sparse-perturbations.tex:2031](../../paper/synthesis/optimal-sparse-perturbations.tex#L2031-L2031)
 
 <a id="source-source-f6ee6890db85d9"></a>
 
@@ -9197,6 +11315,46 @@ Paper citation usages:
 
 - `erdos68-factorial-reasoning-surface`: [cite at paper/68/erdos68-factorial-reasoning-surface.tex:1865](../../paper/68/erdos68-factorial-reasoning-surface.tex#L1865-L1865), [cite at paper/reasoning-parts/erdos68/core.tex:1830](../../paper/reasoning-parts/erdos68/core.tex#L1830-L1830)
 
+<a id="source-source-fc92202f8ec891"></a>
+
+### [Normality preserving operations for Cantor series expansions and associated fractals. II](https://nyjm.albany.edu/j/2015/21-60v.pdf)
+
+- Source id: `source-fc92202f8ec891`
+- Author or public identity: D. Airey, B. Mance, J. Vandehey
+- Kind: `literature`
+- Problems: none recorded
+- Relationship and boundary: Cited by the linked public manuscript bibliography. Citation metadata records attribution; the cited work and mathematical correspondence have not been independently verified in this registration.
+- Source verification: `bibliography\_only` — scope not separately recorded
+- Local mapping: `not recorded`
+
+Public implementation or evidence coordinates:
+
+- [paper/synthesis/optimal-sparse-perturbations.tex](../../paper/synthesis/optimal-sparse-perturbations.tex#L2294-L2294) — lines `2294–2294`; excerpt `sha256:3edb090a1ea9b4959fa63504a49c122c431643b21a20a7efd5eb5fc34118a708`
+
+Paper citation usages:
+
+- `optimal-sparse-perturbations`: [cite at paper/synthesis/optimal-sparse-perturbations.tex:2040](../../paper/synthesis/optimal-sparse-perturbations.tex#L2040-L2040)
+
+<a id="source-source-fcb420b955b614"></a>
+
+### [LeanConjecturer: Automatic Generation of Mathematical Conjectures for Theorem Proving](https://arxiv.org/abs/2506.22005)
+
+- Source id: `source-fcb420b955b614`
+- Author or public identity: N. Onda
+- Kind: `literature`
+- Problems: none recorded
+- Relationship and boundary: Cited by the linked public manuscript bibliography. Citation metadata records attribution; the cited work and mathematical correspondence have not been independently verified in this registration.
+- Source verification: `bibliography\_only` — scope not separately recorded
+- Local mapping: `not recorded`
+
+Public implementation or evidence coordinates:
+
+- [paper/systems/claim-faithful-publication-systems-paper.tex](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1266-L1266) — lines `1266–1266`; excerpt `sha256:9c1d93989fe477c5b2716fc5c6f55237c113dd430010e12f55f6578ee292b279`
+
+Paper citation usages:
+
+- `claim-faithful-publication-systems`: [cite at paper/systems/claim-faithful-publication-systems-paper.tex:988](../../paper/systems/claim-faithful-publication-systems-paper.tex#L988-L988)
+
 <a id="source-source-fcf73a15ff9c7c"></a>
 
 ### [Arithmetic properties of certain functions in several variables III](https://doi.org/10.1017/S0004972700022978)
@@ -9225,9 +11383,50 @@ Public implementation or evidence coordinates:
 
 Paper citation usages:
 
+- `claim-faithful-publication-systems`: [cite at paper/systems/claim-faithful-publication-systems-paper.tex:958](../../paper/systems/claim-faithful-publication-systems-paper.tex#L958-L958), [cite at paper/systems/claim-faithful-publication-systems-paper.tex:998](../../paper/systems/claim-faithful-publication-systems-paper.tex#L998-L998)
 - `erdos-269-three-prime-running-lcm`: [cite at paper/269/erdos-269-three-prime-running-lcm.tex:695](../../paper/269/erdos-269-three-prime-running-lcm.tex#L695-L695)
 - `erdos269-running-lcm-reasoning-surface`: [cite at paper/269/erdos269-running-lcm-reasoning-surface.tex:153](../../paper/269/erdos269-running-lcm-reasoning-surface.tex#L153-L153), [cite at paper/269/erdos269-running-lcm-reasoning-surface.tex:604](../../paper/269/erdos269-running-lcm-reasoning-surface.tex#L604-L604), [cite at paper/269/erdos269-running-lcm-reasoning-surface.tex:1358](../../paper/269/erdos269-running-lcm-reasoning-surface.tex#L1358-L1358), [cite at paper/269/erdos269-running-lcm-reasoning-surface.tex:3902](../../paper/269/erdos269-running-lcm-reasoning-surface.tex#L3902-L3902), [cite at paper/269/erdos269-running-lcm-reasoning-surface.tex:4396](../../paper/269/erdos269-running-lcm-reasoning-surface.tex#L4396-L4396), [cite at paper/reasoning-parts/erdos269/core.tex:95](../../paper/reasoning-parts/erdos269/core.tex#L95-L95), [cite at paper/reasoning-parts/erdos269/core.tex:546](../../paper/reasoning-parts/erdos269/core.tex#L546-L546), [cite at paper/reasoning-parts/erdos269/core.tex:1300](../../paper/reasoning-parts/erdos269/core.tex#L1300-L1300), [cite at paper/reasoning-parts/erdos269/core.tex:3844](../../paper/reasoning-parts/erdos269/core.tex#L3844-L3844), [cite at paper/reasoning-parts/erdos269/core.tex:4338](../../paper/reasoning-parts/erdos269/core.tex#L4338-L4338)
 - `optimal-sparse-perturbations`: [cite at paper/synthesis/optimal-sparse-perturbations.tex:1291](../../paper/synthesis/optimal-sparse-perturbations.tex#L1291-L1291)
+
+<a id="source-source-fe8c2e1e6eb64c"></a>
+
+### [Automatically Generalizing Proofs and Statements](https://doi.org/10.4230/LIPIcs.ITP.2025.12)
+
+- Source id: `source-fe8c2e1e6eb64c`
+- Author or public identity: A. Gandhi, A. R. Tadipatri, T. Gowers
+- Kind: `literature`
+- Problems: none recorded
+- Relationship and boundary: Cited by the linked public manuscript bibliography. Citation metadata records attribution; the cited work and mathematical correspondence have not been independently verified in this registration.
+- Source verification: `bibliography\_only` — scope not separately recorded
+- Local mapping: `not recorded`
+
+Public implementation or evidence coordinates:
+
+- [paper/systems/claim-faithful-publication-systems-paper.tex](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1179-L1179) — lines `1179–1179`; excerpt `sha256:fe68ed279166e6f2566a7624dc7f9d7bb86f1d55ea6ee97fb141d645496f2ea1`
+
+Paper citation usages:
+
+- `claim-faithful-publication-systems`: [cite at paper/systems/claim-faithful-publication-systems-paper.tex:987](../../paper/systems/claim-faithful-publication-systems-paper.tex#L987-L987)
+
+<a id="source-source-ffc160c2ca868e"></a>
+
+### [DreamCoder: Growing Generalizable, Interpretable Knowledge with Wake-Sleep Bayesian Program Learning](https://arxiv.org/abs/2006.08381)
+
+- Source id: `source-ffc160c2ca868e`
+- Author or public identity: K. Ellis
+- Kind: `literature`
+- Problems: none recorded
+- Relationship and boundary: Cited by the linked public manuscript bibliography. Citation metadata records attribution; the cited work and mathematical correspondence have not been independently verified in this registration.
+- Source verification: `bibliography\_only` — scope not separately recorded
+- Local mapping: `not recorded`
+
+Public implementation or evidence coordinates:
+
+- [paper/systems/claim-faithful-publication-systems-paper.tex](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1237-L1237) — lines `1237–1237`; excerpt `sha256:cece3106a06aab23b0aed6be14e8509ea6d716f808f073ba7d227aa7a827d6ba`
+
+Paper citation usages:
+
+- `claim-faithful-publication-systems`: [cite at paper/systems/claim-faithful-publication-systems-paper.tex:988](../../paper/systems/claim-faithful-publication-systems-paper.tex#L988-L988)
 
 <a id="source-source-habiro-2004-cyclotomic"></a>
 
@@ -9414,8 +11613,8 @@ These gaps are shown explicitly so the catalogue cannot be mistaken for complete
 
 - Registered papers scanned: `24`; TeX source files scanned after local includes: `98`.
 - Citation keys without a local bibliography definition: `0`
-- Bibliography entries without a curated source link: `118`
-- Lean lexical candidates awaiting review: `827`
+- Bibliography entries without a curated source link: `0`
+- Lean lexical candidates awaiting review: `2975`
 - Unresolved local TeX includes: `0`
 
 Machine-readable inventories, hashes, unresolved keys, and lexical candidates: [source-attribution-index.json](source-attribution-index.json).
