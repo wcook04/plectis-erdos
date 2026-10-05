@@ -191,7 +191,12 @@ def mutation_fixture_failures() -> list[str]:
             "historical_count_inverted":source.replace(r"\newcommand{\HistoricalRejected}{nine}",r"\newcommand{\HistoricalRejected}{ten}",1),
             "original_logs_claimed_retained":source.replace("the original run logs were not retained","the original run logs were retained",1),
             "independence_inflated":source.replace("the checker's author","an independent auditor",1),
-            "missing_return_boundary":re.sub(r"[Nn]o comparative reader result is reported\.","A comparative reader gain is established.",source,count=1),
+            "missing_return_boundary":reflow_tolerant_replace(
+                source,
+                "No independent writing comparison, blind grading run or cold-reader "
+                "experiment is reported, so there is no comparative reader result.",
+                "A comparative reader gain is established.",
+            ),
             "unbound_body":source.replace(AUDIT_END,"A new unsupported assertion.\n"+AUDIT_END,1),
             "duplicate_sentence":source.replace(unit.group(),unit.group()+"\n"+unit.group(),1),
             "missing_historical_label":source.replace(r"\label{sec:checks}",r"\label{sec:failure}",1),

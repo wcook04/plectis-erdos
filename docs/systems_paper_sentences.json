@@ -52,9 +52,9 @@
       "id": "audit-code",
       "path": "scripts/systems_paper_evidence.py",
       "start_line": 1,
-      "end_line": 484,
-      "sha256": "85e4d8a04fa07f830868f9ea4e39a6787a1a3e35a6a30e897b6316574b945105",
-      "excerpt_sha256": "85e4d8a04fa07f830868f9ea4e39a6787a1a3e35a6a30e897b6316574b945105",
+      "end_line": 489,
+      "sha256": "907d9fc8e8d17ee05c2c0032d89bbee67f5f6f8534a807fff538d878f1e89985",
+      "excerpt_sha256": "907d9fc8e8d17ee05c2c0032d89bbee67f5f6f8534a807fff538d878f1e89985",
       "kind": "source"
     },
     {
@@ -667,9 +667,9 @@
       "id": "r8-sentence-check",
       "kind": "source",
       "path": "scripts/systems_paper_evidence.py",
-      "start_line": 367,
-      "end_line": 457,
-      "sha256": "85e4d8a04fa07f830868f9ea4e39a6787a1a3e35a6a30e897b6316574b945105",
+      "start_line": 372,
+      "end_line": 462,
+      "sha256": "907d9fc8e8d17ee05c2c0032d89bbee67f5f6f8534a807fff538d878f1e89985",
       "excerpt_sha256": "dab0895aa9230f0109fc6ddf9ebef8ae7bae4fd801b55796da0b96e891573526",
       "custody": "Current native public file inspected as source; no fresh execution."
     },
@@ -865,10 +865,10 @@
     {
       "id": "r12-bound-parser",
       "path": "scripts/systems_paper_evidence.py",
-      "start_line": 281,
-      "end_line": 299,
+      "start_line": 286,
+      "end_line": 304,
       "kind": "source",
-      "sha256": "85e4d8a04fa07f830868f9ea4e39a6787a1a3e35a6a30e897b6316574b945105",
+      "sha256": "907d9fc8e8d17ee05c2c0032d89bbee67f5f6f8534a807fff538d878f1e89985",
       "excerpt_sha256": "fc546e10c86e2d0438c6fc755e72e53beba0ac82990a25bf7289020a11b522bc"
     },
     {
