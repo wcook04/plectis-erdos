@@ -121,6 +121,7 @@ Lean checks the exact formal proposition in its source. The
 Comparator checks a solution against a separately declared statement with
 permitted axioms. [`formalization.yaml`](formalization.yaml) and the
 [verification dossier](docs/EXTERNAL_VERIFICATION.md) identify selected coverage.
+The packet records selected statements across all eight problems.
 
 Researchers still judge informal-to-formal correspondence, novelty and
 usefulness. Reading, reference checks, finite calculations, formal acceptance
