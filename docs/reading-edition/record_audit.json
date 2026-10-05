@@ -3,7 +3,7 @@
   "global_findings": [],
   "input_sha256": {
     "docs/paper_lean_coverage.json": "sha256:8d422a56fdd3c1527e2bf276cf0de63bbeaefba8c7b231b96eb5e2f6e1f1c49d",
-    "docs/papers/corpus.json": "sha256:1d0d1c9bd097bca573f98e46856450f5e5a0eb3deb8111c43cfaf553fc8926b3",
+    "docs/papers/corpus.json": "sha256:3e2e70160192d93a1d15bd8a3bb14553bae1dacb15279ac015b8a6800bf341be",
     "docs/papers/full-text/erdos-1041-lemniscate-newton-flow.md": "sha256:d6b117b7213e108e250181515d023ad7cd0ec8377f8b9cd52f898167e2b5ad95",
     "docs/papers/full-text/erdos-1049-rational-base-lambert.md": "sha256:48f8b5a74d9e3be350d43a251158dfa82b6c8a82452d6c3f29a9683b1196bda2",
     "docs/papers/full-text/erdos-243-reciprocal-tail-rigidity.md": "sha256:38f8d1a58586db2d46be021536b95825b579366314f02ccac99352eea79a7044",
@@ -129,7 +129,7 @@
     "paper/reasoning-parts/erdos68/extended_record.tex": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
     "paper/reasoning-parts/erdos68/family_catalogue.tex": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
     "paper/reasoning-parts/erdos68/preamble.tex": "sha256:f6377616e4fb9bb0ebb06cbe997cea40ee0dcf2e805b75ce367b5cdc41354ba8",
-    "paper/reasoning-parts/record_links.json": "sha256:7bab04194ce4c88ec6110dcae6d1db00265e5eab95ba1aecc4c88d0c2bbd7c11",
+    "paper/reasoning-parts/record_links.json": "sha256:c6430fef7ca9c108b1abf07aa23ff3c07a3c4f01432a99ae3433f1734cfb6a69",
     "scripts/assemble_reasoning_surfaces.py": "sha256:0d8f6426d736fd371921e11e7bd2e721413f2d881b10da0be88c6f19b5ffb2b2",
     "scripts/build_reading_edition.py": "sha256:c180547d7e7fd73a0675671c489b4d08232af86687c11387223922ae445704c4",
     "scripts/check_lean_paper_propagation.py": "sha256:0f70bd947b02efe91291389e0430e1140a729de1ae3d311092e20152ea1b813c",
@@ -137,13 +137,13 @@
     "scripts/reasoning_record_audit.py": "sha256:5181f76da0658a08400a1fc35c6f72dc0370e375fd4d11caf41a4eb38ce5c62b"
   },
   "navigation_sha256": {
-    "docs/reading-edition/RECORDS.md": "sha256:28dba180da11c119f881979a71d4e962d56bc8424d868a78e10ee7c815d2bc0c",
+    "docs/reading-edition/RECORDS.md": "sha256:363de36a25d5a8702d29e76906d09cfa627e0cba2e030e811bd85c2f3801caca",
     "docs/reading-edition/records/erdos1041.md": "sha256:44e9e0d0078df4ae9f9d89c49647dd0987cadfbcb141292c1aacad0aed697233",
     "docs/reading-edition/records/erdos1049.md": "sha256:4b76882981016e7e670b7b4eae3634ba60c0da98ca8c9b6741fac05740f601a7",
-    "docs/reading-edition/records/erdos243.md": "sha256:c3c259877832398b68639b3b582f8fda5ed8241d3c633000705c84bdda7c9349",
+    "docs/reading-edition/records/erdos243.md": "sha256:4005d0483cb5f484df7c900af1abc28d1212e77f290d8a52f6f448da772f8fa7",
     "docs/reading-edition/records/erdos249.md": "sha256:ca0c197b4d71a31dc60f7e11adba302ca3ee3b86d293ee58cbc3ea78167caa3f",
-    "docs/reading-edition/records/erdos251.md": "sha256:04294129d24a6195ca0e1c7c38f88f620466f4789eeb2b9ecab1d45ab66ace73",
-    "docs/reading-edition/records/erdos257.md": "sha256:5d11c38f1f3b67495dfb82cecc7a862c9cb65ded7f510bf5b739d41c39e45f2c",
+    "docs/reading-edition/records/erdos251.md": "sha256:dc9f540387d750cd29ff5a783943e1d34ea8652a349d66ddb952d09af6298b60",
+    "docs/reading-edition/records/erdos257.md": "sha256:5fbc2ee484d51dc9b0862a12cf69ba8527d657eec812fe30c4742227ca4fa39d",
     "docs/reading-edition/records/erdos269.md": "sha256:b879fffe532c228d9dce85c1b3d583b1f231383ede5edbd9fa51144af413b814",
     "docs/reading-edition/records/erdos68.md": "sha256:61e14a34367c725ac0377455fae12ecdbf8bcdabb88cac451e0d4dd54d35f004"
   },
@@ -1696,7 +1696,22 @@
             "line": 1051,
             "path": "paper/243/erdos-243-reciprocal-tail-rigidity.tex"
           },
-          "state": "unresolved",
+          "short_proof": {
+            "availability": "located",
+            "kind": "ordinary_proof_text",
+            "locator": {
+              "end_line": 1087,
+              "label": null,
+              "line": 1058,
+              "path": "paper/243/erdos-243-reciprocal-tail-rigidity.tex"
+            },
+            "long_correspondence": "open; this disposition does not establish a long-record link",
+            "rationale": "For zero lower density choose cutoffs X_k with F(X_k)<=2^(-k)X_k and sum the nested indicator weights 1_[1,X_k]/X_k. The integral diverges but the weighted mass is finite. Conversely use partial summation against a positive nonincreasing divergent-integral weight to exclude an eventual positive linear lower bound for F. This is an authored disposition, not a claim that Type A has accepted a new native correspondence binding.",
+            "review_status": "R14 third return Type A source-reading and frozen-statement review; proof availability only, no independent mathematical review or new long-record correspondence.",
+            "sha256": "sha256:c339abb8184b344b4fd64a5d8c60a03984c6315ee86c1f507ef8872a6c32c23b",
+            "validation": "text_presence_and_digest_only; proof_correctness_not_checked"
+          },
+          "state": "short_proof_explained_long_link_open",
           "statement_sha256": "sha256:4b1ce0041de992da6ea3a1af445782fd4899bceb9b85fa325161aa40c07a5226"
         },
         {
@@ -1904,23 +1919,9 @@
           }
         },
         {
-          "code": "stale_or_missing_short_proof",
-          "detail": "stale short proof span; text changed after disposition review",
-          "severity": "error",
-          "short_claim": "erdos-243-reciprocal-tail-rigidity#res:weights",
-          "short_location": {
-            "end_line": 1056,
-            "label": "res:weights",
-            "line": 1051,
-            "path": "paper/243/erdos-243-reciprocal-tail-rigidity.tex"
-          }
-        },
-        {
-          "code": "unresolved_short_long_link",
-          "detail": "No accepted complete evidence match or hash-bound authored proof link. This is a correspondence gap, not a finding that the mathematics is false or absent.",
-          "long_locations": [],
-          "long_record": "paper/243/erdos243-reciprocal-tail-reasoning-surface.tex",
-          "severity": "error",
+          "code": "short_proof_explained_long_link_open",
+          "detail": "A hash-bound complete proof is retained in the short paper. No long-record correspondence is asserted by this disposition.",
+          "severity": "warning",
           "short_claim": "erdos-243-reciprocal-tail-rigidity#res:weights",
           "short_location": {
             "end_line": 1056,
@@ -2952,13 +2953,13 @@
       "summary": {
         "duplicate_passages": 0,
         "duplicates": 0,
-        "explained_in_short": 6,
+        "explained_in_short": 7,
         "linked_short_claims": 7,
         "long_claims": 53,
         "long_correspondence_open": 11,
         "possible_stale_passages": 0,
         "short_claims": 18,
-        "unresolved_short_claims": 5
+        "unresolved_short_claims": 4
       }
     },
     {
@@ -6479,7 +6480,22 @@
             "line": 416,
             "path": "paper/251/erdos-251-prime-gap-dyadic-series.tex"
           },
-          "state": "unresolved",
+          "short_proof": {
+            "availability": "located",
+            "kind": "ordinary_proof_text",
+            "locator": {
+              "end_line": 476,
+              "label": null,
+              "line": 442,
+              "path": "paper/251/erdos-251-prime-gap-dyadic-series.tex"
+            },
+            "long_correspondence": "open; this disposition does not establish a long-record link",
+            "rationale": "The application proof remains in sec:prime-application. It invokes the sparse construction, the finite-union exceptional-set argument and the cumulative-size estimate under the unchanged adjacent published-input remark. The convergence bound now points directly to the existing full Appendix A proof.",
+            "review_status": "R14 third return Type A source-reading and frozen-statement review; proof availability only, no independent mathematical review or new long-record correspondence.",
+            "sha256": "sha256:1dd8c655cb75bc0f4ee497f29b16e4fcce7dc0c61f7140b1ea147ed252e50c61",
+            "validation": "text_presence_and_digest_only; proof_correctness_not_checked"
+          },
+          "state": "short_proof_explained_long_link_open",
           "statement_sha256": "sha256:c30e3bd411f9d423be7347233494992984bb7ba9f8dffdae999c0fd8b34085b8"
         },
         {
@@ -6891,30 +6907,9 @@
           }
         },
         {
-          "code": "stale_or_missing_short_proof",
-          "detail": "stale short proof span; text changed after disposition review",
-          "severity": "error",
-          "short_claim": "erdos-251-prime-gap-dyadic-series#res:jointcountermodel",
-          "short_location": {
-            "end_line": 436,
-            "label": "res:jointcountermodel",
-            "line": 416,
-            "path": "paper/251/erdos-251-prime-gap-dyadic-series.tex"
-          }
-        },
-        {
-          "code": "unresolved_short_long_link",
-          "detail": "No accepted complete evidence match or hash-bound authored proof link. This is a correspondence gap, not a finding that the mathematics is false or absent.",
-          "long_locations": [
-            {
-              "end_line": 1572,
-              "label": "long251:res:jointcountermodel",
-              "line": 1560,
-              "path": "paper/reasoning-parts/erdos251/core.tex"
-            }
-          ],
-          "long_record": "paper/251/erdos251-prime-gap-reasoning-surface.tex",
-          "severity": "error",
+          "code": "short_proof_explained_long_link_open",
+          "detail": "A hash-bound complete proof is retained in the short paper. No long-record correspondence is asserted by this disposition.",
+          "severity": "warning",
           "short_claim": "erdos-251-prime-gap-dyadic-series#res:jointcountermodel",
           "short_location": {
             "end_line": 436,
@@ -7739,13 +7734,13 @@
       "summary": {
         "duplicate_passages": 0,
         "duplicates": 0,
-        "explained_in_short": 5,
+        "explained_in_short": 6,
         "linked_short_claims": 2,
         "long_claims": 36,
         "long_correspondence_open": 7,
         "possible_stale_passages": 0,
         "short_claims": 9,
-        "unresolved_short_claims": 2
+        "unresolved_short_claims": 1
       }
     },
     {
@@ -8029,7 +8024,22 @@
             "line": 1018,
             "path": "paper/257/erdos-257-mersenne-support-subseries.tex"
           },
-          "state": "unresolved",
+          "short_proof": {
+            "availability": "located",
+            "kind": "ordinary_proof_text",
+            "locator": {
+              "end_line": 1041,
+              "label": null,
+              "line": 1030,
+              "path": "paper/257/erdos-257-mersenne-support-subseries.tex"
+            },
+            "long_correspondence": "open; this disposition does not establish a long-record link",
+            "rationale": "Appendix B retains the cyclotomic maximal-under-divisibility argument, denominator noncancellation and exact multiplicative order, with elementary prime-power details in Appendix E. The F={1}, b=2 convention is preserved.",
+            "review_status": "R14 third return Type A source-reading and frozen-statement review; proof availability only, no independent mathematical review or new long-record correspondence.",
+            "sha256": "sha256:9bd7a84622334da833d9dfb9c796b996a298c3c5bdf2bf0f01d905d29718c7ed",
+            "validation": "text_presence_and_digest_only; proof_correctness_not_checked"
+          },
+          "state": "short_proof_explained_long_link_open",
           "statement_sha256": "sha256:cd113fd70ca4c2abd225bd8ad990894db12f084a29b2b278d78752c1eac1461b"
         },
         {
@@ -8046,7 +8056,22 @@
             "line": 1174,
             "path": "paper/257/erdos-257-mersenne-support-subseries.tex"
           },
-          "state": "unresolved",
+          "short_proof": {
+            "availability": "located",
+            "kind": "ordinary_proof_text",
+            "locator": {
+              "end_line": 1205,
+              "label": null,
+              "line": 1186,
+              "path": "paper/257/erdos-257-mersenne-support-subseries.tex"
+            },
+            "long_correspondence": "open; this disposition does not establish a long-record link",
+            "rationale": "Appendix C retains the direct proof: represented targets give bounded coefficient tails and a nonincrease in each stated window; outside the achievement set a positive remainder makes the scaled integer grow and eventually increase at every rank. The selector and Mobius-compatibility discussion remains intact.",
+            "review_status": "R14 third return Type A source-reading and frozen-statement review; proof availability only, no independent mathematical review or new long-record correspondence.",
+            "sha256": "sha256:6598e66ad0c50436ac2a22476342b6b8b038c098741c1d67431b12291d53a9a5",
+            "validation": "text_presence_and_digest_only; proof_correctness_not_checked"
+          },
+          "state": "short_proof_explained_long_link_open",
           "statement_sha256": "sha256:17e70c7e375db04ec58fa70163814efca251acb652fb73b84d84a07a3a15760d"
         },
         {
@@ -8097,7 +8122,22 @@
             "line": 1438,
             "path": "paper/257/erdos-257-mersenne-support-subseries.tex"
           },
-          "state": "unresolved",
+          "short_proof": {
+            "availability": "located",
+            "kind": "ordinary_proof_text",
+            "locator": {
+              "end_line": 1450,
+              "label": null,
+              "line": 1446,
+              "path": "paper/257/erdos-257-mersenne-support-subseries.tex"
+            },
+            "long_correspondence": "open; this disposition does not establish a long-record link",
+            "rationale": "Appendix D retains the shared-prefix family conditions and the deduction from terminal carry 1 using the preceding terminal-approximation theorem. The stronger shared-prefix hypotheses are not claimed necessary and no such unbounded family is constructed.",
+            "review_status": "R14 third return Type A source-reading and frozen-statement review; proof availability only, no independent mathematical review or new long-record correspondence.",
+            "sha256": "sha256:b4e8fbdba8e7529607a970806212122607f4e953d784a7784022557876dbe463",
+            "validation": "text_presence_and_digest_only; proof_correctness_not_checked"
+          },
+          "state": "short_proof_explained_long_link_open",
           "statement_sha256": "sha256:5c22fc2b248124c7ac79ba7ded11c0c5f6865cb3f991e496cb9796a06a1286f5"
         }
       ],
@@ -8195,9 +8235,9 @@
           }
         },
         {
-          "code": "stale_or_missing_short_proof",
-          "detail": "stale short proof span; text changed after disposition review",
-          "severity": "error",
+          "code": "short_proof_explained_long_link_open",
+          "detail": "A hash-bound complete proof is retained in the short paper. No long-record correspondence is asserted by this disposition.",
+          "severity": "warning",
           "short_claim": "erdos-257-mersenne-support-subseries#res:period",
           "short_location": {
             "end_line": 1028,
@@ -8207,37 +8247,9 @@
           }
         },
         {
-          "code": "unresolved_short_long_link",
-          "detail": "No accepted complete evidence match or hash-bound authored proof link. This is a correspondence gap, not a finding that the mathematics is false or absent.",
-          "long_locations": [],
-          "long_record": "paper/257/erdos257-mersenne-reasoning-surface.tex",
-          "severity": "error",
-          "short_claim": "erdos-257-mersenne-support-subseries#res:period",
-          "short_location": {
-            "end_line": 1028,
-            "label": "res:period",
-            "line": 1018,
-            "path": "paper/257/erdos-257-mersenne-support-subseries.tex"
-          }
-        },
-        {
-          "code": "stale_or_missing_short_proof",
-          "detail": "stale short proof span; text changed after disposition review",
-          "severity": "error",
-          "short_claim": "erdos-257-mersenne-support-subseries#res:general-repair",
-          "short_location": {
-            "end_line": 1184,
-            "label": "res:general-repair",
-            "line": 1174,
-            "path": "paper/257/erdos-257-mersenne-support-subseries.tex"
-          }
-        },
-        {
-          "code": "unresolved_short_long_link",
-          "detail": "No accepted complete evidence match or hash-bound authored proof link. This is a correspondence gap, not a finding that the mathematics is false or absent.",
-          "long_locations": [],
-          "long_record": "paper/257/erdos257-mersenne-reasoning-surface.tex",
-          "severity": "error",
+          "code": "short_proof_explained_long_link_open",
+          "detail": "A hash-bound complete proof is retained in the short paper. No long-record correspondence is asserted by this disposition.",
+          "severity": "warning",
           "short_claim": "erdos-257-mersenne-support-subseries#res:general-repair",
           "short_location": {
             "end_line": 1184,
@@ -8299,23 +8311,9 @@
           }
         },
         {
-          "code": "stale_or_missing_short_proof",
-          "detail": "support start must occur exactly once",
-          "severity": "error",
-          "short_claim": "erdos-257-mersenne-support-subseries#res:cylinderhalf",
-          "short_location": {
-            "end_line": 1444,
-            "label": "res:cylinderhalf",
-            "line": 1438,
-            "path": "paper/257/erdos-257-mersenne-support-subseries.tex"
-          }
-        },
-        {
-          "code": "unresolved_short_long_link",
-          "detail": "No accepted complete evidence match or hash-bound authored proof link. This is a correspondence gap, not a finding that the mathematics is false or absent.",
-          "long_locations": [],
-          "long_record": "paper/257/erdos257-mersenne-reasoning-surface.tex",
-          "severity": "error",
+          "code": "short_proof_explained_long_link_open",
+          "detail": "A hash-bound complete proof is retained in the short paper. No long-record correspondence is asserted by this disposition.",
+          "severity": "warning",
           "short_claim": "erdos-257-mersenne-support-subseries#res:cylinderhalf",
           "short_location": {
             "end_line": 1444,
@@ -11129,13 +11127,13 @@
       "summary": {
         "duplicate_passages": 0,
         "duplicates": 0,
-        "explained_in_short": 0,
+        "explained_in_short": 3,
         "linked_short_claims": 3,
         "long_claims": 175,
         "long_correspondence_open": 8,
         "possible_stale_passages": 0,
         "short_claims": 11,
-        "unresolved_short_claims": 8
+        "unresolved_short_claims": 5
       }
     },
     {
@@ -15874,7 +15872,7 @@
     "duplicate_passages": 0,
     "duplicates": 0,
     "evidence_lean_pin": "436f55ebdafa67e4af0fff79f621c13f2ded12bf",
-    "explained_in_short": 19,
+    "explained_in_short": 24,
     "explicit_links": 8,
     "explicit_short_proof_dispositions": 45,
     "global_findings": 0,
@@ -15884,6 +15882,6 @@
     "pairs": 8,
     "possible_stale_passages": 0,
     "short_claims": 77,
-    "unresolved_short_claims": 31
+    "unresolved_short_claims": 26
   }
 }

@@ -26,9 +26,9 @@ The architecture separates authored records from derived views and separates a t
 
 Erdős Problems supplies the questions and their public discussion, while Lean and mathlib supply the formal language and library \[erdosproblems; lean4; mathlib\]. Formalisation blueprints link a written argument to named Lean declarations \[leanblueprint; leanarchitect\], and the Equational Theories Project maintains shared problem records \[etp\]. Prove2Me combines human-audited missions, source-linked milestones and separately submitted proofs, with intermediate results available for other agents to reuse \[prove2me, Sections 3–4\].
 
-The design question here is how to keep a publication aligned with its supporting work as both are revised. A paper assertion, its formal supports, its explanation and the decision to accept a change need separate identities and links. The implementation makes these relationships inspectable and checks specified forms of disagreement. Deciding whether the explanation preserves the mathematics remains a review task.
+The question is how to keep a publication aligned with its changing research record. Assertions, formal supports, explanations and acceptance decisions need separate identities and links. Checks detect specified disagreements; preserving the mathematics remains a review task.
 
-Section <a href="#sec:world" data-reference-type="ref" data-reference="sec:world">2</a> describes the records, tools and responsibilities. Sections <a href="#sec:example" data-reference-type="ref" data-reference="sec:example">3</a>–<a href="#sec:paper" data-reference-type="ref" data-reference="sec:paper">5</a> follow a proposed explanation change through checking, review and integration. We then describe contributions, report the available observations and compare related systems. Appendix <a href="#app:repro" data-reference-type="ref" data-reference="app:repro">10</a> explains how to inspect the work; Appendix <a href="#app:worked-proof" data-reference-type="ref" data-reference="app:worked-proof">11</a> develops the mathematical example; Appendix <a href="#app:attribution" data-reference-type="ref" data-reference="app:attribution">12</a> gives further examples of scope and attribution; Appendix <a href="#app:source-map" data-reference-type="ref" data-reference="app:source-map">13</a> groups the wider references by purpose.
+Section <a href="#sec:world" data-reference-type="ref" data-reference="sec:world">2</a> describes the architecture; Sections <a href="#sec:example" data-reference-type="ref" data-reference="sec:example">3</a>–<a href="#sec:paper" data-reference-type="ref" data-reference="sec:paper">5</a> follow an explanation change through checking and review. Contributions, observations and related systems follow. Appendices <a href="#app:repro" data-reference-type="ref" data-reference="app:repro">10</a>–<a href="#app:source-map" data-reference-type="ref" data-reference="app:source-map">13</a> cover inspection, the worked proof, scope and attribution examples, and references grouped by purpose.
 
 <figure id="fig:lifecycle" data-latex-placement="H">
 
@@ -47,15 +47,15 @@ Section <a href="#sec:world" data-reference-type="ref" data-reference="sec:worl
 
 ## Stored records and derived views
 
-The repository stores research state in files. Lean and manuscript sources contain arguments; claim records state selected assertions and open obligations; evidence records identify support; the journal retains entered returns and decisions. Indexes, source coordinates and status summaries are derived views of these inputs. Freshness checks report disagreement with the inputs, and builders regenerate the views. Neither operation adopts a claim. The [`architecture guide`](https://github.com/wcook04/plectis-erdos/blob/992cf60a27efd8c34f437e347c413bb781d75c32/docs/ARCHITECTURE.md) identifies the source of each view, so repairs belong in the owning record rather than a hand-edited summary.
+Files store the research state: Lean and manuscript arguments, selected claims and obligations, evidence, entered returns and decisions. Indexes, coordinates and status summaries derive from them. Freshness checks detect disagreement; builders regenerate views. Neither adopts a claim. The [`architecture guide`](https://github.com/wcook04/plectis-erdos/blob/992cf60a27efd8c34f437e347c413bb781d75c32/docs/ARCHITECTURE.md) identifies each view’s source, where repairs belong.
 
-Publication uses two correspondence records. The coverage ledger follows a *paper occurrence*: a labelled assertion in a particular manuscript, identified by its source location and statement digest. It lists registered Lean supports and their evidence status. A stronger formal result also needs an authored relation note, bound to both statements, explaining how it yields the printed claim. The passage ledger follows explanatory text instead: it records the passage, cited source spans, evidence class and rationale. The first record asks what supports the statement; the second makes the explanation’s sources available for review. Neither generates the prose from a proof.
+The coverage ledger follows a labelled *paper occurrence*, identified by location and statement digest, and lists its registered Lean supports and evidence status. A stronger formal result needs an authored relation note bound to both statements. The passage ledger records explanatory text, cited spans, evidence class and rationale. The first asks what supports the statement; the second exposes the explanation’s sources for review. Neither generates prose from a proof.
 
 <a id="finding-the-relevant-work"></a>
 
 ## Finding the relevant work
 
-A problem collection preserves more than its successful proofs. Counterexamples to proposed extensions, exact experiments, corrected references and the reasoning behind failed approaches remain with the question, so later work can inspect them before choosing another route. Four views provide entry points without requiring a full Lean build (Figure <a href="#fig:world" data-reference-type="ref" data-reference="fig:world">2</a>).
+A problem collection retains proofs, counterexamples, exact experiments, corrected references and failed approaches, so later work can inspect them before choosing another route. Four views provide entry points without requiring a full Lean build (Figure <a href="#fig:world" data-reference-type="ref" data-reference="fig:world">2</a>).
 
 A *declaration* is a named Lean definition, theorem or lemma. The declaration index locates it; the dependency index follows the declarations used by selected results. The interpretation graph adds authored accounts of declarations and their connections. The claim registry selects assertions for public reporting and records their status and remaining obligations.
 
@@ -93,7 +93,7 @@ A *declaration* is a named Lean definition, theorem or lemma. The declaration in
 <figcaption>Contents of a problem collection and the four ways to inspect the recorded work. The counts refer to the whole corpus. Source locations, dependency edges, interpretations and claim statuses answer different questions.</figcaption>
 </figure>
 
-A reader can start from a claim, locate its declarations, follow the recorded dependencies and request the source lines relevant to a question. The views have different coverage: declaration locations are exhaustive within the inventory, dependency edges are exact for selected starting declarations, and interpretations are selective and largely contextual. An interpretation entry is not a record of individual proof review. Lookup identifies source; it records no execution. A question requiring a Lean check instead calls for a focused build and inspection of its recorded result.
+A reader can start from a claim, locate its declarations, follow the recorded dependencies and request the source lines relevant to a question. Declaration locations cover the inventory; dependency edges are exact for selected starts. Interpretations are selective and largely contextual, not records of individual proof review. Lookup locates source without recording execution. A Lean check requires a focused build and inspection of its result.
 
 <a id="operations-on-the-records"></a>
 
@@ -370,36 +370,36 @@ The Advisory Group on Mathematics and Artificial Intelligence at IAS recommends 
 
 Several of these proposed release practices have counterparts in the records described here \[agmai2026, Section 2.B, Step I\]: the short paper and companion paper explain and attribute the argument, the paper-to-Lean ledger records formal correspondence and its limits, and the files prepared for formal comparison identify its inputs. Those records make the result inspectable; they do not certify a mathematician’s understanding. The architecture alone does not establish complete per-result model, prompt, time and cost disclosure, an account of campaign-wide selection and unsuccessful attempts, or an independent scholarly deposit. The further recommendations on funding community-led understanding and equitable model access address AI laboratories; this prototype does not demonstrate those institutional outcomes.
 
-The immediate contribution is a way to continue work from an inspectable record: recover a claim’s conditions and supporting argument, understand the recorded limits, and submit a correction or extension against identified sources. Checking preserves specified links; review decides what the linked work justifies. Keeping both within the revision process is the purpose of the system.
+The contribution is an inspectable record from which to recover a claim’s conditions, argument and limits, then submit a correction or extension against identified sources. Checks preserve specified links; review decides what the work justifies. Revision requires both.
 
 <a id="app:repro"></a>
 
 # Reading the materials and reproducing checks
 
-The materials support three different tasks: reading a mathematical result, inspecting the records behind a published assertion, and rerunning checks. The first requires no Lean installation. The other two require the recorded sources and, for proof replay, the matching Lean environment. The following routes distinguish these tasks so that a successful document check is not mistaken for a reproduced proof.
+The materials support reading a result, inspecting its records and rerunning checks. Reading requires no Lean installation; proof replay requires the recorded sources and matching Lean environment. The routes below separate document checks from reproduced proofs.
 
 <a id="read-a-result-and-follow-its-sources"></a>
 
 ## Read a result and follow its sources
 
-Start with the [reading guide](https://github.com/wcook04/plectis-erdos/blob/992cf60a27efd8c34f437e347c413bb781d75c32/docs/READING_GUIDE.md). It offers a route through one problem and a route across the papers, including the synthesis *Reading Eight Erdős Problems Together* \[synthesis\]. For one result, read the short paper first, then follow its references to the argument, prior work and formal-support record. A reader using an agent can give it the [agent instructions](https://github.com/wcook04/plectis-erdos/blob/992cf60a27efd8c34f437e347c413bb781d75c32/AGENTS.md); the [workbench guide](https://github.com/wcook04/plectis-erdos/blob/992cf60a27efd8c34f437e347c413bb781d75c32/docs/agents/AGENT_WORKBENCH.md) adds optional recorded proof sessions. Corrections and extensions follow the [contribution guide](https://github.com/wcook04/plectis-erdos/blob/992cf60a27efd8c34f437e347c413bb781d75c32/CONTRIBUTING.md) and [credit policy](https://github.com/wcook04/plectis-erdos/blob/992cf60a27efd8c34f437e347c413bb781d75c32/docs/research-commons/CREDIT_POLICY.md).
+The [reading guide](https://github.com/wcook04/plectis-erdos/blob/992cf60a27efd8c34f437e347c413bb781d75c32/docs/READING_GUIDE.md) routes readers through one problem or across the papers, including *Reading Eight Erdős Problems Together* \[synthesis\]. Read a result’s short paper, then follow its argument, attribution and formal-support references. Agents can use [agent instructions](https://github.com/wcook04/plectis-erdos/blob/992cf60a27efd8c34f437e347c413bb781d75c32/AGENTS.md) and the [workbench’s](https://github.com/wcook04/plectis-erdos/blob/992cf60a27efd8c34f437e347c413bb781d75c32/docs/agents/AGENT_WORKBENCH.md) optional proof sessions. Corrections follow the [contribution guide](https://github.com/wcook04/plectis-erdos/blob/992cf60a27efd8c34f437e347c413bb781d75c32/CONTRIBUTING.md) and [credit policy](https://github.com/wcook04/plectis-erdos/blob/992cf60a27efd8c34f437e347c413bb781d75c32/docs/research-commons/CREDIT_POLICY.md).
 
 <a id="inspect-the-records-and-rerun-document-checks"></a>
 
 ## Inspect the records and rerun document checks
 
-To inspect the historical false-edit experiment, open the [experiment record](https://github.com/wcook04/plectis-erdos/blob/992cf60a27efd8c34f437e347c413bb781d75c32/docs/publication_evidence.json): it contains the ten-edit matrix and the limited follow-up described in Section <a href="#sec:checks" data-reference-type="ref" data-reference="sec:checks">4</a>. The [publication-check specification](https://github.com/wcook04/plectis-erdos/blob/992cf60a27efd8c34f437e347c413bb781d75c32/docs/publication_contract.json) states which checks are required. These are structured data files for tracing the reported evidence, not substitutes for the explanation in the paper.
+The [experiment record](https://github.com/wcook04/plectis-erdos/blob/992cf60a27efd8c34f437e347c413bb781d75c32/docs/publication_evidence.json) contains the ten-edit matrix and limited follow-up in Section <a href="#sec:checks" data-reference-type="ref" data-reference="sec:checks">4</a>. The [publication-check specification](https://github.com/wcook04/plectis-erdos/blob/992cf60a27efd8c34f437e347c413bb781d75c32/docs/publication_contract.json) identifies required checks. These structured files trace evidence; they do not replace the paper’s explanation.
 
-To check this manuscript in a complete checkout, run the following from the public repository root:
+From a complete public checkout, run:
 
 > `python3 scripts/systems_paper_evidence.py`\
 > `python3 scripts/build_systems_paper_counts.py`
 
-The first checks the recorded links between passages and source excerpts, including their stored content hashes. The second compares the generated inventory with its source records. Success establishes agreement of these records; it does not establish that a passage correctly explains its source.
+The first checks passage-to-source links and content hashes; the second compares the generated inventory with its records. Success establishes agreement, not the correctness of an explanation.
 
-Proof replay is a separate task. The [Lean entry file](https://github.com/wcook04/plectis-erdos/blob/992cf60a27efd8c34f437e347c413bb781d75c32/lean/Erdos249257.lean) and the [continuous-integration workflow](https://github.com/wcook04/plectis-erdos/blob/992cf60a27efd8c34f437e347c413bb781d75c32/.github/workflows/lean.yml) identify formal build entry points. The [claim register](https://github.com/wcook04/plectis-erdos/blob/992cf60a27efd8c34f437e347c413bb781d75c32/docs/claims.json) records the curated assertions, and the [release-check script](https://github.com/wcook04/plectis-erdos/blob/992cf60a27efd8c34f437e347c413bb781d75c32/scripts/check_release.py) checks the wider publication requirements. Use the revisions and environment recorded for the result being reproduced.
+For proof replay, the [Lean entry file](https://github.com/wcook04/plectis-erdos/blob/992cf60a27efd8c34f437e347c413bb781d75c32/lean/Erdos249257.lean) and [CI workflow](https://github.com/wcook04/plectis-erdos/blob/992cf60a27efd8c34f437e347c413bb781d75c32/.github/workflows/lean.yml) identify build entry points. The [claim register](https://github.com/wcook04/plectis-erdos/blob/992cf60a27efd8c34f437e347c413bb781d75c32/docs/claims.json) lists curated assertions; [release checks](https://github.com/wcook04/plectis-erdos/blob/992cf60a27efd8c34f437e347c413bb781d75c32/scripts/check_release.py) cover wider publication requirements. Use the result’s recorded revisions and environment.
 
-A writing packet is not a complete checkout. The public writer’s packet specification includes manuscripts, selected records and inspection tools, but no Lean source tree. Such a packet can support document checks without being sufficient for a full Lean, Comparator or release rerun.
+A writing packet contains manuscripts, selected records and inspection tools, but no Lean tree. It supports document checks, not a full Lean, Comparator or release rerun.
 
 <a id="locate-the-formal-supports-of-the-worked-example"></a>
 
@@ -411,7 +411,7 @@ The recorded Comparator runs are the [first comparison run](https://github.com/w
 
 The reciprocal-summability criterion attributed to Erdős in Appendix <a href="#app:worked-proof" data-reference-type="ref" data-reference="app:worked-proof">11</a> has its own [formal proof](https://github.com/wcook04/plectis-erdos/blob/7308896010e6b527d283dfdd0687a717a6183fb6/lean/Erdos249257/AllBaseReciprocalSupportIrrationality.lean), also recorded in the second comparison run.[^2]
 
-Both runs are recorded as compared. Preparation for submission to Palomar is recorded separately: the entries are prepared, not submitted. A comparison record is therefore not evidence of registry acceptance.
+Both runs are recorded as compared. Palomar entries are prepared, not submitted; comparison does not establish registry acceptance.
 
 <figure id="fig:theorem" data-latex-placement="htbp">
 

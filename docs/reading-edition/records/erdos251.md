@@ -4,7 +4,7 @@
 
 Start with [Sparse Congruence-Preserving Perturbations of Dyadic Series](../../../docs/papers/full-text/erdos-251-prime-gap-dyadic-series.md). The longer account is [Prime-Gap Dyadic Series: Perturbations, Exact Criteria and Certificates](../../../docs/papers/full-text/erdos251-prime-gap-reasoning-surface.md).
 
-Registered assertions: 9 short, 36 long. Located long-record links: 2. Proofs retained in the short paper: 5. Long correspondences still open: 7.
+Registered assertions: 9 short, 36 long. Located long-record links: 2. Proofs retained in the short paper: 6. Long correspondences still open: 7.
 
 Checks registered asserting environments and registered claim spans. Unregistered prose assertions, mathematical equivalence, correctness of ordinary proofs, Lean compilation, Comparator replay and PDF freshness are not established by this audit.
 
@@ -35,11 +35,19 @@ No accepted correspondence is recorded. Check the candidates below; none is sile
 
 ### res:jointcountermodel
 
-State: **unresolved**.
+State: **short_proof_explained_long_link_open**.
 
 Short statement: [paper/251/erdos-251-prime-gap-dyadic-series.tex](../../../paper/251/erdos-251-prime-gap-dyadic-series.tex) lines 416-436.
 
 Ledger evidence: Lean `modulo_named_input`; Comparator `not_applicable`. These statuses are copied from the evidence ledger; this build reruns neither checker.
+
+Retained short-paper argument: [paper/251/erdos-251-prime-gap-dyadic-series.tex](../../../paper/251/erdos-251-prime-gap-dyadic-series.tex) lines 442-476.
+
+The application proof remains in sec:prime-application. It invokes the sparse construction, the finite-union exceptional-set argument and the cumulative-size estimate under the unchanged adjacent published-input remark. The convergence bound now points directly to the existing full Appendix A proof.
+
+Review status: R14 third return Type A source-reading and frozen-statement review; proof availability only, no independent mathematical review or new long-record correspondence..
+
+This hash-bound passage records proof availability; its mathematical correctness is not checked by this audit. No accepted long-record correspondence is established by this disposition.
 
 No accepted correspondence is recorded. Check the candidates below; none is silently treated as a proof of this short statement.
 

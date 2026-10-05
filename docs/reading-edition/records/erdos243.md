@@ -4,7 +4,7 @@
 
 Start with [Reciprocal Sums and the Sylvester Recurrence](../../../docs/papers/full-text/erdos-243-reciprocal-tail-rigidity.md). The longer account is [Reciprocal Sums and the Sylvester Recurrence: Further Results and Proofs](../../../docs/papers/full-text/erdos243-reciprocal-tail-reasoning-surface.md).
 
-Registered assertions: 18 short, 53 long. Located long-record links: 7. Proofs retained in the short paper: 6. Long correspondences still open: 11.
+Registered assertions: 18 short, 53 long. Located long-record links: 7. Proofs retained in the short paper: 7. Long correspondences still open: 11.
 
 Checks registered asserting environments and registered claim spans. Unregistered prose assertions, mathematical equivalence, correctness of ordinary proofs, Lean compilation, Comparator replay and PDF freshness are not established by this audit.
 
@@ -263,11 +263,19 @@ Long-record location: [paper/reasoning-parts/erdos243/core.tex](../../../paper/r
 
 ### res:weights
 
-State: **unresolved**.
+State: **short_proof_explained_long_link_open**.
 
 Short statement: [paper/243/erdos-243-reciprocal-tail-rigidity.tex](../../../paper/243/erdos-243-reciprocal-tail-rigidity.tex) lines 1051-1056.
 
 Ledger evidence: Lean `exact`; Comparator `compared`. These statuses are copied from the evidence ledger; this build reruns neither checker.
+
+Retained short-paper argument: [paper/243/erdos-243-reciprocal-tail-rigidity.tex](../../../paper/243/erdos-243-reciprocal-tail-rigidity.tex) lines 1058-1087.
+
+For zero lower density choose cutoffs X_k with F(X_k)<=2^(-k)X_k and sum the nested indicator weights 1_[1,X_k]/X_k. The integral diverges but the weighted mass is finite. Conversely use partial summation against a positive nonincreasing divergent-integral weight to exclude an eventual positive linear lower bound for F. This is an authored disposition, not a claim that Type A has accepted a new native correspondence binding.
+
+Review status: R14 third return Type A source-reading and frozen-statement review; proof availability only, no independent mathematical review or new long-record correspondence..
+
+This hash-bound passage records proof availability; its mathematical correctness is not checked by this audit. No accepted long-record correspondence is established by this disposition.
 
 No accepted correspondence is recorded. Check the candidates below; none is silently treated as a proof of this short statement.
 

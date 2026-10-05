@@ -112,11 +112,11 @@ Formalisation blueprints link a written argument to named Lean declarations~\cit
 % END SENTENCE r4.intro2.02
 
 % SENTENCE r4.intro2.03
-The design question here is how to keep a publication aligned with its supporting work as both are revised. A paper assertion, its formal supports, its explanation and the decision to accept a change need separate identities and links. The implementation makes these relationships inspectable and checks specified forms of disagreement. Deciding whether the explanation preserves the mathematics remains a review task.
+The question is how to keep a publication aligned with its changing research record. Assertions, formal supports, explanations and acceptance decisions need separate identities and links. Checks detect specified disagreements; preserving the mathematics remains a review task.
 % END SENTENCE r4.intro2.03
 
 % SENTENCE r4.intro2.04
-Section~\ref{sec:world} describes the records, tools and responsibilities. Sections~\ref{sec:example}--\ref{sec:paper} follow a proposed explanation change through checking, review and integration. We then describe contributions, report the available observations and compare related systems. Appendix~\ref{app:repro} explains how to inspect the work; Appendix~\ref{app:worked-proof} develops the mathematical example; Appendix~\ref{app:attribution} gives further examples of scope and attribution; Appendix~\ref{app:source-map} groups the wider references by purpose.
+Section~\ref{sec:world} describes the architecture; Sections~\ref{sec:example}--\ref{sec:paper} follow an explanation change through checking and review. Contributions, observations and related systems follow. Appendices~\ref{app:repro}--\ref{app:source-map} cover inspection, the worked proof, scope and attribution examples, and references grouped by purpose.
 % END SENTENCE r4.intro2.04
 
 % SENTENCE r4.fig.lifecycle
@@ -141,16 +141,16 @@ Section~\ref{sec:world} describes the records, tools and responsibilities. Secti
 \papersectiontarget{systems-scaling}
 % SENTENCE r8.architecture.records
 \subsection{Stored records and derived views}
-The repository stores research state in files. Lean and manuscript sources contain arguments; claim records state selected assertions and open obligations; evidence records identify support; the journal retains entered returns and decisions. Indexes, source coordinates and status summaries are derived views of these inputs. Freshness checks report disagreement with the inputs, and builders regenerate the views. Neither operation adopts a claim. The \repolink{docs/ARCHITECTURE.md}{architecture guide} identifies the source of each view, so repairs belong in the owning record rather than a hand-edited summary.
+Files store the research state: Lean and manuscript arguments, selected claims and obligations, evidence, entered returns and decisions. Indexes, coordinates and status summaries derive from them. Freshness checks detect disagreement; builders regenerate views. Neither adopts a claim. The \repolink{docs/ARCHITECTURE.md}{architecture guide} identifies each view's source, where repairs belong.
 % END SENTENCE r8.architecture.records
 
 % SENTENCE r12.architecture.correspondence
-Publication uses two correspondence records. The coverage ledger follows a \emph{paper occurrence}: a labelled assertion in a particular manuscript, identified by its source location and statement digest. It lists registered Lean supports and their evidence status. A stronger formal result also needs an authored relation note, bound to both statements, explaining how it yields the printed claim. The passage ledger follows explanatory text instead: it records the passage, cited source spans, evidence class and rationale. The first record asks what supports the statement; the second makes the explanation's sources available for review. Neither generates the prose from a proof.
+The coverage ledger follows a labelled \emph{paper occurrence}, identified by location and statement digest, and lists its registered Lean supports and evidence status. A stronger formal result needs an authored relation note bound to both statements. The passage ledger records explanatory text, cited spans, evidence class and rationale. The first asks what supports the statement; the second exposes the explanation's sources for review. Neither generates prose from a proof.
 % END SENTENCE r12.architecture.correspondence
 
 % SENTENCE r4.world1.01
 \subsection{Finding the relevant work}
-A problem collection preserves more than its successful proofs. Counterexamples to proposed extensions, exact experiments, corrected references and the reasoning behind failed approaches remain with the question, so later work can inspect them before choosing another route.
+A problem collection retains proofs, counterexamples, exact experiments, corrected references and failed approaches, so later work can inspect them before choosing another route.
 % END SENTENCE r4.world1.01
 % SENTENCE r4.world1.02
 Four views provide entry points without requiring a full Lean build (Figure~\ref{fig:world}).
@@ -195,10 +195,10 @@ claims in \ClaimStatuses{} statuses, with \ClaimObligations{} open obligations.
 A reader can start from a claim, locate its declarations, follow the recorded dependencies and request the source lines relevant to a question.
 % END SENTENCE r4.world2.01
 % SENTENCE r4.world2.02
-The views have different coverage: declaration locations are exhaustive within the inventory, dependency edges are exact for selected starting declarations, and interpretations are selective and largely contextual. An interpretation entry is not a record of individual proof review.
+Declaration locations cover the inventory; dependency edges are exact for selected starts. Interpretations are selective and largely contextual, not records of individual proof review.
 % END SENTENCE r4.world2.02
 % SENTENCE r4.world2.03
-Lookup identifies source; it records no execution. A question requiring a Lean check instead calls for a focused build and inspection of its recorded result.
+Lookup locates source without recording execution. A Lean check requires a focused build and inspection of its result.
 \FloatBarrier
 % END SENTENCE r4.world2.03
 
@@ -670,7 +670,7 @@ prototype does not demonstrate those institutional outcomes.
 % END SENTENCE r14.agmai.limits
 
 % SENTENCE r4.limits2.05
-The immediate contribution is a way to continue work from an inspectable record: recover a claim's conditions and supporting argument, understand the recorded limits, and submit a correction or extension against identified sources. Checking preserves specified links; review decides what the linked work justifies. Keeping both within the revision process is the purpose of the system.
+The contribution is an inspectable record from which to recover a claim's conditions, argument and limits, then submit a correction or extension against identified sources. Checks preserve specified links; review decides what the work justifies. Revision requires both.
 % END SENTENCE r4.limits2.05
 
 % SENTENCE r4.layout.endbody
@@ -680,36 +680,36 @@ The immediate contribution is a way to continue work from an inspectable record:
 \section{Reading the materials and reproducing checks}\label{app:repro}
 
 % SENTENCE r14p3.repro.purpose
-The materials support three different tasks: reading a mathematical result, inspecting the records behind a published assertion, and rerunning checks. The first requires no Lean installation. The other two require the recorded sources and, for proof replay, the matching Lean environment. The following routes distinguish these tasks so that a successful document check is not mistaken for a reproduced proof.
+The materials support reading a result, inspecting its records and rerunning checks. Reading requires no Lean installation; proof replay requires the recorded sources and matching Lean environment. The routes below separate document checks from reproduced proofs.
 % END SENTENCE r14p3.repro.purpose
 
 \subsection{Read a result and follow its sources}
 
 % SENTENCE r4.repro4.04
-Start with the \reporef{docs/READING_GUIDE.md}{reading guide}. It offers a route through one problem and a route across the papers, including the synthesis \emph{Reading Eight Erd\H{o}s Problems Together}~\cite{synthesis}. For one result, read the short paper first, then follow its references to the argument, prior work and formal-support record. A reader using an agent can give it the \reporef{AGENTS.md}{agent instructions}; the \reporef{docs/agents/AGENT_WORKBENCH.md}{workbench guide} adds optional recorded proof sessions. Corrections and extensions follow the \reporef{CONTRIBUTING.md}{contribution guide} and \reporef{docs/research-commons/CREDIT_POLICY.md}{credit policy}.
+The \reporef{docs/READING_GUIDE.md}{reading guide} routes readers through one problem or across the papers, including \emph{Reading Eight Erd\H{o}s Problems Together}~\cite{synthesis}. Read a result's short paper, then follow its argument, attribution and formal-support references. Agents can use \reporef{AGENTS.md}{agent instructions} and the \reporef{docs/agents/AGENT_WORKBENCH.md}{workbench's} optional proof sessions. Corrections follow the \reporef{CONTRIBUTING.md}{contribution guide} and \reporef{docs/research-commons/CREDIT_POLICY.md}{credit policy}.
 % END SENTENCE r4.repro4.04
 
 \subsection{Inspect the records and rerun document checks}
 
 % SENTENCE r4.repro3.02
-To inspect the historical false-edit experiment, open the \reporef{docs/publication_evidence.json}{experiment record}: it contains the ten-edit matrix and the limited follow-up described in Section~\ref{sec:checks}. The \reporef{docs/publication_contract.json}{publication-check specification} states which checks are required. These are structured data files for tracing the reported evidence, not substitutes for the explanation in the paper.
+The \reporef{docs/publication_evidence.json}{experiment record} contains the ten-edit matrix and limited follow-up in Section~\ref{sec:checks}. The \reporef{docs/publication_contract.json}{publication-check specification} identifies required checks. These structured files trace evidence; they do not replace the paper's explanation.
 % END SENTENCE r4.repro3.02
 
 % SENTENCE r4.repro3.01
-To check this manuscript in a complete checkout, run the following from the public repository root:
+From a complete public checkout, run:
 \begin{quote}\small
 \texttt{python3 scripts/systems\_paper\_evidence.py}\\
 \texttt{python3 scripts/build\_systems\_paper\_counts.py}
 \end{quote}
-The first checks the recorded links between passages and source excerpts, including their stored content hashes. The second compares the generated inventory with its source records. Success establishes agreement of these records; it does not establish that a passage correctly explains its source.
+The first checks passage-to-source links and content hashes; the second compares the generated inventory with its records. Success establishes agreement, not the correctness of an explanation.
 % END SENTENCE r4.repro3.01
 
 % SENTENCE r4.repro3.03
-Proof replay is a separate task. The \reporef{lean/Erdos249257.lean}{Lean entry file} and the \reporef{.github/workflows/lean.yml}{continuous-integration workflow} identify formal build entry points. The \reporef{docs/claims.json}{claim register} records the curated assertions, and the \reporef{scripts/check_release.py}{release-check script} checks the wider publication requirements. Use the revisions and environment recorded for the result being reproduced.
+For proof replay, the \reporef{lean/Erdos249257.lean}{Lean entry file} and \reporef{.github/workflows/lean.yml}{CI workflow} identify build entry points. The \reporef{docs/claims.json}{claim register} lists curated assertions; \reporef{scripts/check_release.py}{release checks} cover wider publication requirements. Use the result's recorded revisions and environment.
 % END SENTENCE r4.repro3.03
 
 % SENTENCE r4.repro3.04
-A writing packet is not a complete checkout. The public writer's packet specification includes manuscripts, selected records and inspection tools, but no Lean source tree. Such a packet can support document checks without being sufficient for a full Lean, Comparator or release rerun.
+A writing packet contains manuscripts, selected records and inspection tools, but no Lean tree. It supports document checks, not a full Lean, Comparator or release rerun.
 % END SENTENCE r4.repro3.04
 
 \subsection{Locate the formal supports of the worked example}
@@ -727,7 +727,7 @@ The reciprocal-summability criterion attributed to Erd\H{o}s in Appendix~\ref{ap
 % END SENTENCE r4.example2.02
 
 % SENTENCE r4.repro2.03
-Both runs are recorded as compared. Preparation for submission to Palomar is recorded separately: the entries are prepared, not submitted. A comparison record is therefore not evidence of registry acceptance.
+Both runs are recorded as compared. Palomar entries are prepared, not submitted; comparison does not establish registry acceptance.
 % END SENTENCE r4.repro2.03
 
 % SENTENCE r4.fig.theorem

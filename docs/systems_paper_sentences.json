@@ -62,8 +62,8 @@
       "path": "docs/papers/corpus.json",
       "start_line": 1,
       "end_line": 9326,
-      "sha256": "1d0d1c9bd097bca573f98e46856450f5e5a0eb3deb8111c43cfaf553fc8926b3",
-      "excerpt_sha256": "1d0d1c9bd097bca573f98e46856450f5e5a0eb3deb8111c43cfaf553fc8926b3",
+      "sha256": "3e2e70160192d93a1d15bd8a3bb14553bae1dacb15279ac015b8a6800bf341be",
+      "excerpt_sha256": "3e2e70160192d93a1d15bd8a3bb14553bae1dacb15279ac015b8a6800bf341be",
       "kind": "source"
     },
     {
@@ -71,8 +71,8 @@
       "path": "docs/systems_paper_counts.json",
       "start_line": 1,
       "end_line": 65,
-      "sha256": "e79ccc78ef136e164d11de62ca29bab7200e97cf19f380daacf6c10b60408232",
-      "excerpt_sha256": "e79ccc78ef136e164d11de62ca29bab7200e97cf19f380daacf6c10b60408232",
+      "sha256": "23d4e8f5fb3f00ea01fba0f4ce9ea39368b44f173e707c7a283b3599888796a1",
+      "excerpt_sha256": "23d4e8f5fb3f00ea01fba0f4ce9ea39368b44f173e707c7a283b3599888796a1",
       "kind": "source"
     },
     {
@@ -1136,7 +1136,7 @@
     },
     {
       "id": "r4.intro2.03",
-      "text": "The design question here is how to keep a publication aligned with its supporting work as both are revised. A paper assertion, its formal supports, its explanation and the decision to accept a change need separate identities and links. The implementation makes these relationships inspectable and checks specified forms of disagreement. Deciding whether the explanation preserves the mathematics remains a review task.",
+      "text": "The question is how to keep a publication aligned with its changing research record. Assertions, formal supports, explanations and acceptance decisions need separate identities and links. Checks detect specified disagreements; preserving the mathematics remains a review task.",
       "owner": "systems",
       "class": "implemented",
       "evidence_refs": [
@@ -1148,12 +1148,12 @@
         "r8-exchange"
       ],
       "warrant": "The weighted coverage row stores the paper occurrence and registered declarations. paper_evidence.py lines 750–846 checks a row-level relation note against the paper statement key and Lean declaration stamps. systems_paper_evidence.py binds marked text, source spans and a nonempty rationale; research_record.py retains entered review events. These operations make provenance inspectable but do not decide the truth of a paraphrase.",
-      "statement_sha256": "b29f9339aaf1d370ad552cf5066d99bde12338992d8cdfe5da99a93b6ab18bba",
+      "statement_sha256": "77b56b554d53d6ce1468b9e8c0ee0bacd2a36cb47ebabf4ccdaa318ff3630af8",
       "section": "sec:intro"
     },
     {
       "id": "r4.intro2.04",
-      "text": "Section~\\ref{sec:world} describes the records, tools and responsibilities. Sections~\\ref{sec:example}--\\ref{sec:paper} follow a proposed explanation change through checking, review and integration. We then describe contributions, report the available observations and compare related systems. Appendix~\\ref{app:repro} explains how to inspect the work; Appendix~\\ref{app:worked-proof} develops the mathematical example; Appendix~\\ref{app:attribution} gives further examples of scope and attribution; Appendix~\\ref{app:source-map} groups the wider references by purpose.",
+      "text": "Section~\\ref{sec:world} describes the architecture; Sections~\\ref{sec:example}--\\ref{sec:paper} follow an explanation change through checking and review. Contributions, observations and related systems follow. Appendices~\\ref{app:repro}--\\ref{app:source-map} cover inspection, the worked proof, scope and attribution examples, and references grouped by purpose.",
       "owner": "systems",
       "class": "method",
       "evidence_refs": [
@@ -1167,7 +1167,7 @@
         "writing-contract"
       ],
       "warrant": "This is a reading roadmap, not a result claim. The named sections and appendices exist in this manuscript; their subjects correspond to the cited architecture, contribution and proof records.",
-      "statement_sha256": "370fdf35e208803c81a520434d58608c36ecf88ff7192069819c165a8284d8aa",
+      "statement_sha256": "6f012414b5c7d05fbe46878ddc65355d0b7ecb958bed361fb8c5a1c3e0afcddb",
       "section": "sec:intro"
     },
     {
@@ -1192,8 +1192,8 @@
     {
       "id": "r8.architecture.records",
       "owner": "systems",
-      "text": "\\subsection{Stored records and derived views}\nThe repository stores research state in files. Lean and manuscript sources contain arguments; claim records state selected assertions and open obligations; evidence records identify support; the journal retains entered returns and decisions. Indexes, source coordinates and status summaries are derived views of these inputs. Freshness checks report disagreement with the inputs, and builders regenerate the views. Neither operation adopts a claim. The \\repolink{docs/ARCHITECTURE.md}{architecture guide} identifies the source of each view, so repairs belong in the owning record rather than a hand-edited summary.",
-      "statement_sha256": "6b85386211d672185e47789c3b98503e979462043f748e90dd64105a29933c9c",
+      "text": "\\subsection{Stored records and derived views}\nFiles store the research state: Lean and manuscript arguments, selected claims and obligations, evidence, entered returns and decisions. Indexes, coordinates and status summaries derive from them. Freshness checks detect disagreement; builders regenerate views. Neither adopts a claim. The \\repolink{docs/ARCHITECTURE.md}{architecture guide} identifies each view's source, where repairs belong.",
+      "statement_sha256": "ac1d92428443be5bc34d0d52a3b1d997fcdedf068a1aed40ffe0ea23f12ce8bf",
       "class": "implemented",
       "evidence_refs": [
         "r8-architecture",
@@ -1209,8 +1209,8 @@
       "owner": "systems",
       "section": "sec:world",
       "class": "implemented",
-      "text": "Publication uses two correspondence records. The coverage ledger follows a \\emph{paper occurrence}: a labelled assertion in a particular manuscript, identified by its source location and statement digest. It lists registered Lean supports and their evidence status. A stronger formal result also needs an authored relation note, bound to both statements, explaining how it yields the printed claim. The passage ledger follows explanatory text instead: it records the passage, cited source spans, evidence class and rationale. The first record asks what supports the statement; the second makes the explanation's sources available for review. Neither generates the prose from a proof.",
-      "statement_sha256": "c855fa27eed69ed07081096365a96f15b7850f097a7cec444d45e7c72888c179",
+      "text": "The coverage ledger follows a labelled \\emph{paper occurrence}, identified by location and statement digest, and lists its registered Lean supports and evidence status. A stronger formal result needs an authored relation note bound to both statements. The passage ledger records explanatory text, cited spans, evidence class and rationale. The first asks what supports the statement; the second exposes the explanation's sources for review. Neither generates prose from a proof.",
+      "statement_sha256": "948dee4855d8dac5dd4d2a46093909443a2dac6fdfb197a895b0cddf7bb9d567",
       "evidence_refs": [
         "coverage-weighted",
         "r12-resolver-relations",
@@ -1221,7 +1221,7 @@
     },
     {
       "id": "r4.world1.01",
-      "text": "\\subsection{Finding the relevant work}\nA problem collection preserves more than its successful proofs. Counterexamples to proposed extensions, exact experiments, corrected references and the reasoning behind failed approaches remain with the question, so later work can inspect them before choosing another route.",
+      "text": "\\subsection{Finding the relevant work}\nA problem collection retains proofs, counterexamples, exact experiments, corrected references and failed approaches, so later work can inspect them before choosing another route.",
       "owner": "systems",
       "class": "reported",
       "evidence_refs": [
@@ -1230,7 +1230,7 @@
         "r8-architecture"
       ],
       "warrant": "The source accounts of problem collections retain contextual research records and unsuccessful routes, and the contribution guide admits corrections, counterexamples and methodological findings. This states the content available for later inspection, not that all unsuccessful work is automatically or exhaustively captured.",
-      "statement_sha256": "aae65fce905a11c6ce046b99847ac98d3ad50a20f9fb64dac4f80e92b8969f8c",
+      "statement_sha256": "72b0c6ed4698148a10c1961a8495b63a9e3e927af62e7991beeef9fc1f79e95d",
       "section": "sec:world"
     },
     {
@@ -1309,7 +1309,7 @@
     },
     {
       "id": "r4.world2.02",
-      "text": "The views have different coverage: declaration locations are exhaustive within the inventory, dependency edges are exact for selected starting declarations, and interpretations are selective and largely contextual. An interpretation entry is not a record of individual proof review.",
+      "text": "Declaration locations cover the inventory; dependency edges are exact for selected starts. Interpretations are selective and largely contextual, not records of individual proof review.",
       "owner": "systems",
       "class": "reported",
       "evidence_refs": [
@@ -1319,12 +1319,12 @@
         "semantic-coverage"
       ],
       "warrant": "The view descriptions state different coverage domains: source locations within the inventory, exact edges from selected starts, and selective interpretations. Contextual interpretations cannot be counted as individual proof readings.",
-      "statement_sha256": "5c34e2ff206036d60c00e17462a0ad7ba51e1ca39485e9829200dbce915fa3b3",
+      "statement_sha256": "50515af38174c89d1f410524a684c319f570ad4b36f69f309389609dd68c3c13",
       "section": "sec:world"
     },
     {
       "id": "r4.world2.03",
-      "text": "Lookup identifies source; it records no execution. A question requiring a Lean check instead calls for a focused build and inspection of its recorded result.\n\\FloatBarrier",
+      "text": "Lookup locates source without recording execution. A Lean check requires a focused build and inspection of its result.\n\\FloatBarrier",
       "owner": "systems",
       "class": "reported",
       "evidence_refs": [
@@ -1334,7 +1334,7 @@
         "r8-probe"
       ],
       "warrant": "The lookup and compilation accounts separate retrieval of source locations from execution of Lean. The prescribed focused build is an action required when the question calls for execution evidence; no new build is reported here.",
-      "statement_sha256": "327e9e6d487fc890dfc8802156af441001d87cb58839a9ab815067742539f2e8",
+      "statement_sha256": "1eb47bd042d06aa770e46bb9f7ae2d069d10a698b1ee3db34b7d84c5917a3022",
       "section": "sec:world"
     },
     {
@@ -2660,7 +2660,7 @@
     },
     {
       "id": "r4.limits2.05",
-      "text": "The immediate contribution is a way to continue work from an inspectable record: recover a claim's conditions and supporting argument, understand the recorded limits, and submit a correction or extension against identified sources. Checking preserves specified links; review decides what the linked work justifies. Keeping both within the revision process is the purpose of the system.",
+      "text": "The contribution is an inspectable record from which to recover a claim's conditions, argument and limits, then submit a correction or extension against identified sources. Checks preserve specified links; review decides what the work justifies. Revision requires both.",
       "owner": "systems",
       "class": "method",
       "evidence_refs": [
@@ -2673,7 +2673,7 @@
         "r8-exchange"
       ],
       "warrant": "The architecture, contribution and revision sources expose claim conditions, arguments, limits and identified inputs for continued work and reviewed changes. The conclusion states the purpose of these inspected mechanisms; it claims neither measured understanding nor automatic semantic correctness.",
-      "statement_sha256": "5d5080b401f95581db6187d669282dfa5da6515f10cd7c6b64889715b8c8e199",
+      "statement_sha256": "b3d2b79090c80621ec293c4037eaf9fa7ea8c7954a7767dbe985d50301bc7fa7",
       "section": "sec:limits"
     },
     {
@@ -2691,7 +2691,7 @@
     },
     {
       "id": "r14p3.repro.purpose",
-      "text": "The materials support three different tasks: reading a mathematical result, inspecting the records behind a published assertion, and rerunning checks. The first requires no Lean installation. The other two require the recorded sources and, for proof replay, the matching Lean environment. The following routes distinguish these tasks so that a successful document check is not mistaken for a reproduced proof.",
+      "text": "The materials support reading a result, inspecting its records and rerunning checks. Reading requires no Lean installation; proof replay requires the recorded sources and matching Lean environment. The routes below separate document checks from reproduced proofs.",
       "owner": "systems",
       "class": "method",
       "evidence_refs": [
@@ -2701,12 +2701,12 @@
         "r8-exchange"
       ],
       "warrant": "The reading guide offers paper-first routes, the architecture describes records and formal entry points, and the document checker tests stored correspondence. The exchange specification omits the complete proof tree. These sources support different prerequisites for reading, inspecting records and replaying Lean.",
-      "statement_sha256": "4e4b713bfb8257872daee09964036fc3a28a235b80fdf8cba4407123c7977b96",
+      "statement_sha256": "e379aefd409525afe5dc3b96e2ab687eeb18970a6d9ddfb3390e54067a72a18f",
       "section": "app:repro"
     },
     {
       "id": "r4.repro4.04",
-      "text": "Start with the \\reporef{docs/READING_GUIDE.md}{reading guide}. It offers a route through one problem and a route across the papers, including the synthesis \\emph{Reading Eight Erd\\H{o}s Problems Together}~\\cite{synthesis}. For one result, read the short paper first, then follow its references to the argument, prior work and formal-support record. A reader using an agent can give it the \\reporef{AGENTS.md}{agent instructions}; the \\reporef{docs/agents/AGENT_WORKBENCH.md}{workbench guide} adds optional recorded proof sessions. Corrections and extensions follow the \\reporef{CONTRIBUTING.md}{contribution guide} and \\reporef{docs/research-commons/CREDIT_POLICY.md}{credit policy}.",
+      "text": "The \\reporef{docs/READING_GUIDE.md}{reading guide} routes readers through one problem or across the papers, including \\emph{Reading Eight Erd\\H{o}s Problems Together}~\\cite{synthesis}. Read a result's short paper, then follow its argument, attribution and formal-support references. Agents can use \\reporef{AGENTS.md}{agent instructions} and the \\reporef{docs/agents/AGENT_WORKBENCH.md}{workbench's} optional proof sessions. Corrections follow the \\reporef{CONTRIBUTING.md}{contribution guide} and \\reporef{docs/research-commons/CREDIT_POLICY.md}{credit policy}.",
       "owner": "systems",
       "class": "reported",
       "evidence_refs": [
@@ -2718,12 +2718,12 @@
         "software-citation"
       ],
       "warrant": "The reading guide explicitly offers one-problem and cross-paper routes, including the synthesis. The linked agent, workbench, contribution and credit guides describe optional agent operation, recorded sessions and submission roles; they do not make agent use a prerequisite for reading a result.",
-      "statement_sha256": "84f60d903f247003f1ecdf2005738e83860857219c8b73ac9184def7e81be39e",
+      "statement_sha256": "a32993613486d2f074ecb0a6a3ee85d0f32827949860a8c18a257b05c08ae01e",
       "section": "app:repro"
     },
     {
       "id": "r4.repro3.02",
-      "text": "To inspect the historical false-edit experiment, open the \\reporef{docs/publication_evidence.json}{experiment record}: it contains the ten-edit matrix and the limited follow-up described in Section~\\ref{sec:checks}. The \\reporef{docs/publication_contract.json}{publication-check specification} states which checks are required. These are structured data files for tracing the reported evidence, not substitutes for the explanation in the paper.",
+      "text": "The \\reporef{docs/publication_evidence.json}{experiment record} contains the ten-edit matrix and limited follow-up in Section~\\ref{sec:checks}. The \\reporef{docs/publication_contract.json}{publication-check specification} identifies required checks. These structured files trace evidence; they do not replace the paper's explanation.",
       "owner": "systems",
       "class": "method",
       "evidence_refs": [
@@ -2734,12 +2734,12 @@
         "strategy-protocol"
       ],
       "warrant": "The frozen publication evidence contains the ten historical false edits and the restricted follow-up, while the publication contract names the required checks. Their structured format provides traceable reported records, not additional experiments or an independent explanation.",
-      "statement_sha256": "34f1beea1bd02946fcbc8bc031b9c8b770add1189a9837c437fa86f768204048",
+      "statement_sha256": "d8f001fa3b3094cb3e5d4051e79fa86c7ce51bc77021939d5ffdb6503fc19aba",
       "section": "app:repro"
     },
     {
       "id": "r4.repro3.01",
-      "text": "To check this manuscript in a complete checkout, run the following from the public repository root:\n\\begin{quote}\\small\n\\texttt{python3 scripts/systems\\_paper\\_evidence.py}\\\\\n\\texttt{python3 scripts/build\\_systems\\_paper\\_counts.py}\n\\end{quote}\nThe first checks the recorded links between passages and source excerpts, including their stored content hashes. The second compares the generated inventory with its source records. Success establishes agreement of these records; it does not establish that a passage correctly explains its source.",
+      "text": "From a complete public checkout, run:\n\\begin{quote}\\small\n\\texttt{python3 scripts/systems\\_paper\\_evidence.py}\\\\\n\\texttt{python3 scripts/build\\_systems\\_paper\\_counts.py}\n\\end{quote}\nThe first checks passage-to-source links and content hashes; the second compares the generated inventory with its records. Success establishes agreement, not the correctness of an explanation.",
       "owner": "systems",
       "class": "method",
       "evidence_refs": [
@@ -2750,12 +2750,12 @@
         "strategy-protocol"
       ],
       "warrant": "The two cited scripts resolve their inputs relative to the public repository and check passage/source hashes and generated inventory values respectively. Their acceptance conditions concern recorded agreement; neither script judges whether an explanation faithfully states the mathematics.",
-      "statement_sha256": "ba1be16a5e3a7beef3571a6930b87d22316289fa29b036b00a6b254dee722847",
+      "statement_sha256": "e31077e49feb340a153ccc1b75ac6b0a437a45b6846f1f74af8ce9f68370f247",
       "section": "app:repro"
     },
     {
       "id": "r4.repro3.03",
-      "text": "Proof replay is a separate task. The \\reporef{lean/Erdos249257.lean}{Lean entry file} and the \\reporef{.github/workflows/lean.yml}{continuous-integration workflow} identify formal build entry points. The \\reporef{docs/claims.json}{claim register} records the curated assertions, and the \\reporef{scripts/check_release.py}{release-check script} checks the wider publication requirements. Use the revisions and environment recorded for the result being reproduced.",
+      "text": "For proof replay, the \\reporef{lean/Erdos249257.lean}{Lean entry file} and \\reporef{.github/workflows/lean.yml}{CI workflow} identify build entry points. The \\reporef{docs/claims.json}{claim register} lists curated assertions; \\reporef{scripts/check_release.py}{release checks} cover wider publication requirements. Use the result's recorded revisions and environment.",
       "owner": "systems",
       "class": "method",
       "evidence_refs": [
@@ -2768,19 +2768,19 @@
         "r8-release"
       ],
       "warrant": "The architecture identifies the Lean entry file, build workflow and claim register, while the release code coordinates wider publication requirements. These are pointers for replay using the recorded inputs, not evidence that this editorial run executed Lean or a full release check.",
-      "statement_sha256": "40e3780b9b417b32293266af08fb481c9b24a79eb0578a59dbf24c80cb3951d6",
+      "statement_sha256": "d79b018eda95f0c48d5f4d210eb19c74879eaf6c07fdfbc1cfd8aba239f72424",
       "section": "app:repro"
     },
     {
       "id": "r4.repro3.04",
-      "text": "A writing packet is not a complete checkout. The public writer's packet specification includes manuscripts, selected records and inspection tools, but no Lean source tree. Such a packet can support document checks without being sufficient for a full Lean, Comparator or release rerun.",
+      "text": "A writing packet contains manuscripts, selected records and inspection tools, but no Lean tree. It supports document checks, not a full Lean, Comparator or release rerun.",
       "owner": "systems",
       "class": "implemented",
       "evidence_refs": [
         "r8-exchange"
       ],
       "warrant": "The public writer exchange specification lists manuscripts, selected records and inspection tools and excludes the complete Lean source tree. It therefore permits a writing packet to support document checks without supplying all inputs for proof or release reproduction.",
-      "statement_sha256": "ddc350ebeeb22ac163e50dcf21abed9dadf2ccffbe832e887d1cb392d320a81c",
+      "statement_sha256": "31ab485740bd2f0a61b57bbeb9fb828d81b8632b801bde74c479a3e17b6fd1d7",
       "section": "app:repro"
     },
     {
@@ -2828,7 +2828,7 @@
     },
     {
       "id": "r4.repro2.03",
-      "text": "Both runs are recorded as compared. Preparation for submission to Palomar is recorded separately: the entries are prepared, not submitted. A comparison record is therefore not evidence of registry acceptance.",
+      "text": "Both runs are recorded as compared. Palomar entries are prepared, not submitted; comparison does not establish registry acceptance.",
       "owner": "systems",
       "class": "reported",
       "evidence_refs": [
@@ -2836,7 +2836,7 @@
         "coverage-reciprocal"
       ],
       "warrant": "The supplied weighted and reciprocal coverage rows distinguish comparison_status=compared from Palomar submission preparation. Their recorded state does not report submission or registry acceptance.",
-      "statement_sha256": "059cd0fda30e603be86120e46edfa1644b04358d56a7bc373fa4fd39aa7a504f",
+      "statement_sha256": "8460db814d7a8fc5f20b29ab80e5daa5ed13d755e5a46f2bf5753fc93992b9a4",
       "section": "app:repro"
     },
     {
