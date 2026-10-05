@@ -26,6 +26,7 @@ See the [#1041 case study](docs/case-studies/formal-conjectures-1041.md) and [an
 directed the research infrastructure and reviewed claims when he could. AI
 agents did most of their research and drafting; Cook did not independently
 verify every claim. No independent human mathematical review has been recorded.
+Do not infer results from private or unreleased work.
 
 <a id="for-a-first-look-257"></a>
 

@@ -135,7 +135,7 @@ Local question: For a finite set of at least two primes, is the sum of reciproca
 
 ### Erdős #1041
 
-Local question: Must two roots of a monic polynomial in the open unit disc be joined by a sub-two-length curve inside its unit lemniscate? Ani’s degree-seven example refutes the exact Formal Conjectures statement; correspondence with the 1958 wording awaits human review.
+Local question: Must two roots of a monic polynomial in the open unit disc be joined by a sub-two-length curve inside its unit lemniscate? Ani’s degree-seven example refutes the exact Formal Conjectures statement; independent human review of correspondence with the 1958 wording has not been recorded.
 
 - Canonical local return route: `python3 scripts/query_corpus.py --route erdos_1041` (canonical problem packet); Returns the local problem packet with the exact Formal Conjectures Hausdorff refutation, credited source, papers, declarations and historical-review boundary.
 
