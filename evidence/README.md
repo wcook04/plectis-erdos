@@ -31,6 +31,12 @@ The records, the margin links (`paper/evidence/`) and `paper_evidence.json` are 
 hand. `config.json` pins the corpus commit, the replay run and the commit of the records the
 papers link to.
 
+After deliberately changing a coverage row, run
+`python3 scripts/check_lean_paper_propagation.py --restamp` before regenerating
+its records and reader projections. This refreshes the ledger's digest and
+counts without changing statuses or declarations; an unstamped ledger is
+refused by the reading edition and publication admission.
+
 Definition and structure identity uses `plectis-complete-source-support/1`.
 It includes the full owning module and every local module in its transitive
 import closure, read from the pinned Git revision with the build planner's
