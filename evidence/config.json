@@ -14,6 +14,8 @@
     "erdos243-reciprocal-tail-reasoning-surface": "b4d9b60327e3c4d4cc50acb37e62268788cd77e0",
     "erdos249-totient-reasoning-surface": "b4d9b60327e3c4d4cc50acb37e62268788cd77e0",
     "erdos257-mersenne-reasoning-surface": "b4d9b60327e3c4d4cc50acb37e62268788cd77e0",
-    "erdos269-running-lcm-reasoning-surface": "b4d9b60327e3c4d4cc50acb37e62268788cd77e0"
+    "erdos269-running-lcm-reasoning-surface": "b4d9b60327e3c4d4cc50acb37e62268788cd77e0",
+    "erdos-1041-lemniscate-newton-flow": "0b2a42175a3b61f59c411c6c298f46a27bcf5732",
+    "erdos1041-lemniscate-reasoning-surface": "0b2a42175a3b61f59c411c6c298f46a27bcf5732"
   }
 }

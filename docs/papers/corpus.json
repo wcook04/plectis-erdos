@@ -6403,7 +6403,7 @@
       ],
       "citations_rendered": 30,
       "local_pdf": "paper/1041/erdos-1041-lemniscate-newton-flow.pdf",
-      "pdf_sha256": "sha256:a3ebf684dc1c0911c14ac35c37fbe3a7ff7b238822acc8e09291034e1850c9a2",
+      "pdf_sha256": "sha256:6c2b8251833238988cbc9ed3ef68a489f0b1f776a2256620913e692fb902f809",
       "pdf_byte_count": 150490,
       "first_pass": {
         "stated_by_the_paper": false,
@@ -6924,8 +6924,8 @@
       ],
       "citations_rendered": 74,
       "local_pdf": "paper/1041/erdos1041-lemniscate-reasoning-surface.pdf",
-      "pdf_sha256": "sha256:3be60b81f8374bbfbaa485e9ad8ccb184a137c877bcbe2e2869bcc5eeeacd5a1",
-      "pdf_byte_count": 486575,
+      "pdf_sha256": "sha256:d27224bfaff6a6f3424c18ad3967ee6a2e7b268f4012eb0f1783777650c96a53",
+      "pdf_byte_count": 486573,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection for this guide",

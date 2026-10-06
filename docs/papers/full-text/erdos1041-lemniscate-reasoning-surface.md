@@ -29,7 +29,7 @@ Boundary roots already give an elementary failure of strict containment. For $`f
 A repeated zero gives a constant path between two occurrences. Thus the question concerns distinct zeros. The catalogue of Bloom \[bloom\] records the problem and its discussion. Pendyala \[june2026, Theorem 1 and Lemma 1\] proved the degree-four case by chords or radial segments through the centre of a smallest enclosing disc. The degree-seven construction of [`ani`](https://www.erdosproblems.com/forum/thread/1041#post-8861) has a different geometry.
 
 <div id="res:ani-degree-seven-counterexample-long" class="theorem">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/846d57d3f9926696332d782eb232aaf3cf803a99/evidence/erdos1041-lemniscate-reasoning-surface.md#res-ani-degree-seven-counterexample-long">Lean</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/0b2a42175a3b61f59c411c6c298f46a27bcf5732/evidence/erdos1041-lemniscate-reasoning-surface.md#res-ani-degree-seven-counterexample-long">Lean</a></p>
 
 **Theorem 2** (`ani`’s counterexample). *The monic polynomial in <a href="#eq:ani-f-long" data-reference-type="eqref" data-reference="eq:ani-f-long">[eq:ani-f-long]</a> has seven distinct roots in the open unit disc. Every connected subset of its strict unit lemniscate containing two roots has one-dimensional Hausdorff measure greater than $`2`$.*
 
@@ -361,7 +361,7 @@ The construction above fixes $`s=10^{-6}`$. It establishes no interval of parame
 At a zero of a trinomial, the root equation eliminates the middle coefficient. Along the segment from the origin to that zero, the remaining expression is a nonnegative linear combination of two values of modulus less than one. The sum of the coefficients is at most one, which gives the required containment.
 
 <div id="res:trinomial-all-degree" class="theorem">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/846d57d3f9926696332d782eb232aaf3cf803a99/evidence/erdos1041-lemniscate-reasoning-surface.md#res-trinomial-all-degree">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/846d57d3f9926696332d782eb232aaf3cf803a99/evidence/erdos1041-lemniscate-reasoning-surface.md#res-trinomial-all-degree-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/0b2a42175a3b61f59c411c6c298f46a27bcf5732/evidence/erdos1041-lemniscate-reasoning-surface.md#res-trinomial-all-degree">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/0b2a42175a3b61f59c411c6c298f46a27bcf5732/evidence/erdos1041-lemniscate-reasoning-surface.md#res-trinomial-all-degree-comparator">Comparator</a></p>
 
 **Theorem 4** (trinomial root connections). *Let $`n,m`$ be integers with $`1\le m<n`$, and let $`f(z)=z^n+az^m+b`$ have every zero in $`\mathbb{D}`$. For every zero $`\zeta`$, the segment $`[0,\zeta]`$ lies in $`E_f`$. Consequently any two zeros $`\zeta_1,\zeta_2`$ are joined in $`E_f`$ by the broken line $`\zeta_1\to0\to\zeta_2`$, of length $`|\zeta_1|+|\zeta_2|<2`$.*
 
@@ -519,7 +519,7 @@ Equation <a href="#eq:lc-radius-and-budget" data-reference-type="eqref" data-re
 The even number of points is needed for cyclic alternation. These point configurations test only the consecutive-pair constraints; they need not satisfy separation for nonconsecutive pairs or arise from a polynomial component. To use the missing pairwise information, we impose the packing bound on every circle centred at the origin.
 
 <div id="res:circle-slice-packing" class="lemma">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/846d57d3f9926696332d782eb232aaf3cf803a99/evidence/erdos1041-lemniscate-reasoning-surface.md#res-circle-slice-packing">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/846d57d3f9926696332d782eb232aaf3cf803a99/evidence/erdos1041-lemniscate-reasoning-surface.md#res-circle-slice-packing-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/0b2a42175a3b61f59c411c6c298f46a27bcf5732/evidence/erdos1041-lemniscate-reasoning-surface.md#res-circle-slice-packing">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/0b2a42175a3b61f59c411c6c298f46a27bcf5732/evidence/erdos1041-lemniscate-reasoning-surface.md#res-circle-slice-packing-comparator">Comparator</a></p>
 
 **Lemma 6** (circle-slice packing). *Under <a href="#eq:lc-separation" data-reference-type="eqref" data-reference="eq:lc-separation">[eq:lc-separation]</a>, for every $`r>0`$,
 ``` math
@@ -546,7 +546,7 @@ U=\sup_{d\ge d_{\mathrm{low}}(a)}
 ```
 If $`U>0`$, then failure forces $`k\ge(x-\pi\Sigma)/U`$.
 
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/846d57d3f9926696332d782eb232aaf3cf803a99/evidence/erdos1041-lemniscate-reasoning-surface.md#res-dual-arity-floor">Lean†</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/0b2a42175a3b61f59c411c6c298f46a27bcf5732/evidence/erdos1041-lemniscate-reasoning-surface.md#res-dual-arity-floor">Lean†</a></p>
 
 Lean proves the geometric inequality from separation <a href="#eq:lc-separation" data-reference-type="eqref" data-reference="eq:lc-separation">[eq:lc-separation]</a> and the individual and summed bounds <a href="#eq:lc-radius-and-budget" data-reference-type="eqref" data-reference="eq:lc-radius-and-budget">[eq:lc-radius-and-budget]</a>. It does not derive those hypotheses from the absence of a short polynomial-root path. The latter application is the unformalised part of this remark.
 
@@ -722,7 +722,7 @@ K_t=\{z:|f(z)|\le t\},\qquad
 ```
 inside $`K_{2\mu}`$. If $`f`$ is squarefree, their locations are distinct. If $`\mu\le1/2`$, the construction may be chosen inside $`\{|f|<1\}`$ with length at most $`5.7`$.
 
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/846d57d3f9926696332d782eb232aaf3cf803a99/evidence/erdos1041-lemniscate-reasoning-surface.md#res-constant-factor-path">Lean†</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/0b2a42175a3b61f59c411c6c298f46a27bcf5732/evidence/erdos1041-lemniscate-reasoning-surface.md#res-constant-factor-path">Lean†</a></p>
 
 In degrees $`n\ge3`$ Lean assumes `CFAPathConstruction`, the two-parameter path bound (CF) below. Its averaging construction is proved only in the ordinary argument. The degenerate case, degree two and numerical inequalities have separate formal proofs.
 
@@ -806,7 +806,7 @@ The number of roots in the first merged component can be much smaller than the d
  \mu\le\tfrac18\ \text{and}\ k_0\ge10 .
 ```
 
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/846d57d3f9926696332d782eb232aaf3cf803a99/evidence/erdos1041-lemniscate-reasoning-surface.md#res-constant-factor-arity">Lean†</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/0b2a42175a3b61f59c411c6c298f46a27bcf5732/evidence/erdos1041-lemniscate-reasoning-surface.md#res-constant-factor-arity">Lean†</a></p>
 
 Lean assumes `CFAArityConstruction`, the construction (CF) with the stated lower bound on the component’s root count. The formal rational inequalities do not supply this analytic input.
 
@@ -825,7 +825,7 @@ The next criterion uses logarithmic capacity, a measure of the size of a compact
 ```
 then Erdős #1041 holds for $`f`$. In particular $`\kappa\le1/3`$ suffices for every root count $`k_0\ge2`$, and the rational cutoffs $`2/5,\,12/25,\,1/2,\,7/12,\,16/25,\,2/3,\,7/10`$ suffice at $`k_0=3,\ldots,9`$, rising to $`39/40`$ at $`k_0=16`$.
 
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/846d57d3f9926696332d782eb232aaf3cf803a99/evidence/erdos1041-lemniscate-reasoning-surface.md#res-constant-factor-capacity">Lean†</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/0b2a42175a3b61f59c411c6c298f46a27bcf5732/evidence/erdos1041-lemniscate-reasoning-surface.md#res-constant-factor-capacity">Lean†</a></p>
 
 Lean assumes `CFACapacityConstruction`, the averaging construction with the component area bounded through its capacity. It checks the numerical cutoffs. The construction from the polynomial hypotheses remains an additional input.
 
@@ -888,7 +888,7 @@ z(s)=\sqrt2\,d\,
 whose speed is $`\sqrt2\,d/\sqrt{1+\sin^2s}`$. Convexity puts $`(1+x)^{-1/2}`$ below its secant on $`[0,1]`$. Integrating that secant at $`x=\sin^2s`$ bounds the loop length divided by $`d`$ by $`(\pi/2)(1+\sqrt2)`$, as used below.
 
 <div id="res:one-root-gamma-false" class="proposition">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos1041/PaperCompleteR21/LobeUnconditional.lean#L41">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/846d57d3f9926696332d782eb232aaf3cf803a99/evidence/erdos1041-lemniscate-reasoning-surface.md#res-one-root-gamma-false-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos1041/PaperCompleteR21/LobeUnconditional.lean#L41">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/0b2a42175a3b61f59c411c6c298f46a27bcf5732/evidence/erdos1041-lemniscate-reasoning-surface.md#res-one-root-gamma-false-comparator">Comparator</a></p>
 
 **Proposition 8** (a counterexample to the proposed one-root perimeter bound). *Let $`p(z)=z^8-(3/2)z`$ and let $`C`$ be the component of $`\{|p|\le1\}`$ containing the origin. Then $`C`$ contains exactly one zero and a neighbourhood of the closed disc of radius $`5/8`$, so $`\mathcal H^1(\partial C)>5\pi/4`$. The constant $`\Gamma(1/4)^2/(2\sqrt{\pi})`$ is at most $`(\pi/2)(1+\sqrt2)<5\pi/4`$.*
 
@@ -909,7 +909,7 @@ The preceding examples do not establish a universal perimeter bound. The implica
 ```
 for every $`0<\sigma<\mu`$ and every component $`C`$ of $`\{|f|\le\sigma\}`$. Then two distinct roots of $`f`$ are joined inside $`K_\mu=\{|f|\le\mu\}`$ by a rectifiable path of length at most $`\beta\mu^{1/n}`$.
 
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/846d57d3f9926696332d782eb232aaf3cf803a99/evidence/erdos1041-lemniscate-reasoning-surface.md#res-conjecture-p-consumer">Lean†</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/0b2a42175a3b61f59c411c6c298f46a27bcf5732/evidence/erdos1041-lemniscate-reasoning-surface.md#res-conjecture-p-consumer">Lean†</a></p>
 
 Lean additionally assumes `SubcriticalSplitExists`: two one-root components whose closures meet at the first critical point, with the required boundary lengths and half-perimeter joins. The ordinary argument below constructs this datum; it is not formalised by the perimeter hypothesis alone.
 
@@ -955,7 +955,7 @@ The inputs of the construction in the proof of Remark <a href="#res:constant-fa
 For a cubic we can estimate the inverse roots directly after normalising at a critical point of least value modulus. The root-disc hypothesis makes that modulus less than one, and two radial segments in the normalised coordinates give a path shorter than $`2`$.
 
 <div id="res:degree-three" class="theorem">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos1041/PaperCubicCompletion.lean#L297">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/846d57d3f9926696332d782eb232aaf3cf803a99/evidence/erdos1041-lemniscate-reasoning-surface.md#res-degree-three-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos1041/PaperCubicCompletion.lean#L297">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/0b2a42175a3b61f59c411c6c298f46a27bcf5732/evidence/erdos1041-lemniscate-reasoning-surface.md#res-degree-three-comparator">Comparator</a></p>
 
 **Theorem 9** (the cubic case). *Let $`f(z)=\prod_{j=1}^{3}(z-z_j)`$ with $`|z_j|<1`$, the roots listed with multiplicity. Then two listed root occurrences are joined inside $`\{|f|<1\}`$ by a polygonal path of length strictly below $`2`$. If $`f`$ is squarefree the two are distinct.*
 
@@ -1030,7 +1030,7 @@ Consequently this curve has length less than $`2`$ whenever
 \end{equation*}
 ```
 
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/846d57d3f9926696332d782eb232aaf3cf803a99/evidence/erdos1041-lemniscate-reasoning-surface.md#res-critical-value-separation">Lean†</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/0b2a42175a3b61f59c411c6c298f46a27bcf5732/evidence/erdos1041-lemniscate-reasoning-surface.md#res-critical-value-separation">Lean†</a></p>
 
 Lean assumes `DiscSepBergmanArea`, which includes the square-root connector, its length estimate and the component-area bound. This input includes the combined analytic construction below; a published Bergman inequality alone does not supply it. Its derivation from the stated polynomial hypotheses remains unformalised.
 
@@ -1140,7 +1140,7 @@ Substitution into (7) proves (5), and (6) makes its right side strictly less tha
 ```
 for every other critical point $`d`$, then two roots of $`f`$ are joined inside $`\{|f|<1\}`$ by a curve of length strictly below $`2`$.
 
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/846d57d3f9926696332d782eb232aaf3cf803a99/evidence/erdos1041-lemniscate-reasoning-surface.md#res-critical-value-thresholds">Lean†</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/0b2a42175a3b61f59c411c6c298f46a27bcf5732/evidence/erdos1041-lemniscate-reasoning-surface.md#res-critical-value-thresholds">Lean†</a></p>
 
 Lean checks the displayed coefficient estimates and numerical steps. Their path conclusions still require `DiscSepBergmanArea`, the unformalised construction used in Remark <a href="#res:critical-value-separation" data-reference-type="ref" data-reference="res:critical-value-separation">[res:critical-value-separation]</a>.
 
@@ -1208,7 +1208,7 @@ The full covering and the explicit complementary set are hypotheses of the theor
 The two critical-value hypotheses leave different restrictions on a polynomial. We first give a cubic satisfying neither of them. A second cubic shows why the root count at the first merger cannot determine capacity at a later level.
 
 <div id="res:sep-or-false" class="proposition">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos1041/PaperSeparationCounterexample.lean#L189">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/846d57d3f9926696332d782eb232aaf3cf803a99/evidence/erdos1041-lemniscate-reasoning-surface.md#res-sep-or-false-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos1041/PaperSeparationCounterexample.lean#L189">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/0b2a42175a3b61f59c411c6c298f46a27bcf5732/evidence/erdos1041-lemniscate-reasoning-surface.md#res-sep-or-false-comparator">Comparator</a></p>
 
 **Proposition 10** (failure of two critical-value criteria to cover all polynomials). *Let $`f(z)=z^3+(3/100)z-3/4`$. Every root lies in the open unit disc, both critical points are simple, the critical values lie on distinct positive rays, $`\mu>13/25`$, and
 ``` math
@@ -1231,7 +1231,7 @@ For any $`w_0\in[0,1]`$, the other normalised value is at distance less than $`1
 A component with two roots immediately after the first merger may contain more roots at a later level. Thus its first root count alone does not give a capacity saving at level $`2\mu`$.
 
 <div id="res:arity-not-capacity" class="proposition">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/846d57d3f9926696332d782eb232aaf3cf803a99/evidence/erdos1041-lemniscate-reasoning-surface.md#res-arity-not-capacity">Lean†</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/0b2a42175a3b61f59c411c6c298f46a27bcf5732/evidence/erdos1041-lemniscate-reasoning-surface.md#res-arity-not-capacity">Lean†</a></p>
 
 **Proposition 11** (root count does not force a capacity gap). *Let $`g(z)=z^3-(3/400)z-3/32`$. All roots lie in the open unit disc and $`\mu=187/2000\le1/2`$. The first merger joins two root components, so $`k_0=2`$, but the component at level $`2\mu`$ containing that pair has normalised capacity $`1`$.*
 
@@ -1268,7 +1268,7 @@ r_n=\cos\frac{\pi}{2n},
 ```
 
 <div id="prop:sharp-collinear-chebyshev-comparator" class="theorem">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos1041/SharpCollinearChebyshev.lean#L133">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/846d57d3f9926696332d782eb232aaf3cf803a99/evidence/erdos1041-lemniscate-reasoning-surface.md#prop-sharp-collinear-chebyshev-comparator-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos1041/SharpCollinearChebyshev.lean#L133">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/0b2a42175a3b61f59c411c6c298f46a27bcf5732/evidence/erdos1041-lemniscate-reasoning-surface.md#prop-sharp-collinear-chebyshev-comparator-comparator">Comparator</a></p>
 
 **Theorem 12** (Chebyshev comparison). *Let $`m\ge0`$, let $`p\in\mathbb R[X]`$ be monic of degree $`m+2`$, and let
 ``` math
@@ -1286,7 +1286,7 @@ This theorem is the finite alternation inequality; it does not construct the seg
 All real-rooted polynomials, and their images under rotations and translations, satisfy the collinearity hypothesis. Three noncollinear roots already fall outside it. The gain is an explicit sharp bound for the modulus along one adjacent-root segment, not a bound obtained by assuming that segment is contained.
 
 <div id="thm:sharp-collinear-diameter" class="theorem">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/846d57d3f9926696332d782eb232aaf3cf803a99/evidence/erdos1041-lemniscate-reasoning-surface.md#thm-sharp-collinear-diameter">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/846d57d3f9926696332d782eb232aaf3cf803a99/evidence/erdos1041-lemniscate-reasoning-surface.md#thm-sharp-collinear-diameter-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/0b2a42175a3b61f59c411c6c298f46a27bcf5732/evidence/erdos1041-lemniscate-reasoning-surface.md#thm-sharp-collinear-diameter">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/0b2a42175a3b61f59c411c6c298f46a27bcf5732/evidence/erdos1041-lemniscate-reasoning-surface.md#thm-sharp-collinear-diameter-comparator">Comparator</a></p>
 
 **Theorem 13** (a sharp bound for collinear roots). *Let $`f`$ be a monic polynomial of degree $`n\ge2`$ whose zero occurrences are collinear, and let $`D`$ be their diameter. Some two adjacent zero occurrences are joined by a segment of length at most $`D`$ on which
 ``` math
@@ -1321,7 +1321,7 @@ These are the zeros of $`q_*`$, have extremes $`\pm1`$, and every adjacent gap c
 </div>
 
 <div id="cor:collinear-erdos-1041" class="corollary">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/846d57d3f9926696332d782eb232aaf3cf803a99/evidence/erdos1041-lemniscate-reasoning-surface.md#cor-collinear-erdos-1041">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/846d57d3f9926696332d782eb232aaf3cf803a99/evidence/erdos1041-lemniscate-reasoning-surface.md#cor-collinear-erdos-1041-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/0b2a42175a3b61f59c411c6c298f46a27bcf5732/evidence/erdos1041-lemniscate-reasoning-surface.md#cor-collinear-erdos-1041">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/0b2a42175a3b61f59c411c6c298f46a27bcf5732/evidence/erdos1041-lemniscate-reasoning-surface.md#cor-collinear-erdos-1041-comparator">Comparator</a></p>
 
 **Corollary 14** (collinear Erdős case). *If the zero occurrences of a monic polynomial of degree $`n\ge2`$ lie on one line in the open unit disc, two of them are joined by a curve of length strictly below $`2`$ inside $`\{|f|<1\}`$.*
 
@@ -1367,7 +1367,7 @@ E_i=s_i^4(s_i+r^2+2rx_i).
 ```
 
 <div id="prop:primitive-quintic-two-tail-energy-selector" class="theorem">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos1041/PrimitiveQuinticInteriorTail.lean#L272">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/846d57d3f9926696332d782eb232aaf3cf803a99/evidence/erdos1041-lemniscate-reasoning-surface.md#prop-primitive-quintic-two-tail-energy-selector-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos1041/PrimitiveQuinticInteriorTail.lean#L272">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/0b2a42175a3b61f59c411c6c298f46a27bcf5732/evidence/erdos1041-lemniscate-reasoning-surface.md#prop-primitive-quintic-two-tail-energy-selector-comparator">Comparator</a></p>
 
 **Theorem 15** (a consequence of three moment identities). *Suppose
 ``` math
@@ -1384,7 +1384,7 @@ The theorem selects two distinct indices. It does not assert that the correspond
 The polynomial must have no $`z^3`$ or $`z^2`$ term in the coordinates used here. For example, $`z^5+bz+c`$ is included, but a general quintic with all coefficients nonzero is not. The root-location assumption alone does not imply the three moment identities. Those identities are precisely what lets the finite inequality find two radial segments.
 
 <div id="thm:primitive-quintic-two-tail" class="theorem">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/846d57d3f9926696332d782eb232aaf3cf803a99/evidence/erdos1041-lemniscate-reasoning-surface.md#thm-primitive-quintic-two-tail">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/846d57d3f9926696332d782eb232aaf3cf803a99/evidence/erdos1041-lemniscate-reasoning-surface.md#thm-primitive-quintic-two-tail-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/0b2a42175a3b61f59c411c6c298f46a27bcf5732/evidence/erdos1041-lemniscate-reasoning-surface.md#thm-primitive-quintic-two-tail">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/0b2a42175a3b61f59c411c6c298f46a27bcf5732/evidence/erdos1041-lemniscate-reasoning-surface.md#thm-primitive-quintic-two-tail-comparator">Comparator</a></p>
 
 **Theorem 16** (a quintic with two missing coefficients). *Let
 ``` math
@@ -1474,7 +1474,7 @@ At $`t=1`$ the value is zero. Thus both segments lie in $`\{|p|<1\}`$, and their
 For $`f(z)=P((z-h)^q)`$, each nonzero root of $`P`$ gives a regular $`q`$-gon of roots centred at $`h`$. We exploit this symmetry by lifting one contained segment for the cubic into two segments through $`h`$. A generic polynomial of degree $`3q`$ has no such fibre structure. The first theorem supplies the segment to be lifted.
 
 <div id="lem:cubic-safe-root-spoke" class="theorem">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos1041/CubicQuotientFiberCase.lean#L161">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/846d57d3f9926696332d782eb232aaf3cf803a99/evidence/erdos1041-lemniscate-reasoning-surface.md#lem-cubic-safe-root-spoke-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos1041/CubicQuotientFiberCase.lean#L161">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/0b2a42175a3b61f59c411c6c298f46a27bcf5732/evidence/erdos1041-lemniscate-reasoning-surface.md#lem-cubic-safe-root-spoke-comparator">Comparator</a></p>
 
 **Theorem 17** (a contained radial segment for a cubic). *If $`r,s,v\in\mathbb C`$ have modulus below one, at least one $`u\in\{r,s,v\}`$ satisfies
 ``` math
@@ -1485,7 +1485,7 @@ For $`f(z)=P((z-h)^q)`$, each nonzero root of $`P`$ gives a regular $`q`$-gon of
 </div>
 
 <div id="thm:translated-cubic-quotient-fibres" class="theorem">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos1041/PaperCubicFibres.lean#L240">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/846d57d3f9926696332d782eb232aaf3cf803a99/evidence/erdos1041-lemniscate-reasoning-surface.md#thm-translated-cubic-quotient-fibres-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos1041/PaperCubicFibres.lean#L240">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/0b2a42175a3b61f59c411c6c298f46a27bcf5732/evidence/erdos1041-lemniscate-reasoning-surface.md#thm-translated-cubic-quotient-fibres-comparator">Comparator</a></p>
 
 **Theorem 18** (a cubic composed with a power map). *Let $`q\ge2`$, $`h\in\mathbb C`$, $`P`$ be monic cubic, and
 ``` math
@@ -1635,7 +1635,7 @@ Every root-to-origin segment is therefore contained in $`\{|f|\le1\}`$. If all $
 For $`n\ge2`$ and $`0<|a|<1`$, put $`r=|a|^{1/n}`$ and $`r_*=(1+\cos^n(\pi/n))^{-1/n}`$. A rotation reduces $`z^n-a`$ to $`z^n-r^n`$ without changing lengths or moduli. For $`n=2`$, $`r_*=1`$ and only the outer-diameter case occurs.
 
 <div id="res:complementary-binomial-chords" class="theorem">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/846d57d3f9926696332d782eb232aaf3cf803a99/evidence/erdos1041-lemniscate-reasoning-surface.md#res-complementary-binomial-chords">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/846d57d3f9926696332d782eb232aaf3cf803a99/evidence/erdos1041-lemniscate-reasoning-surface.md#res-complementary-binomial-chords-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/0b2a42175a3b61f59c411c6c298f46a27bcf5732/evidence/erdos1041-lemniscate-reasoning-surface.md#res-complementary-binomial-chords">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/0b2a42175a3b61f59c411c6c298f46a27bcf5732/evidence/erdos1041-lemniscate-reasoning-surface.md#res-complementary-binomial-chords-comparator">Comparator</a></p>
 
 **Theorem 19** (complementary binomial chords). *Two adjacent zeros of $`z^n-a`$ can be joined by an explicit polygonal path inside $`\{|z^n-a|<1\}`$ of length strictly below $`2`$. For $`r<r_*`$ the adjacent-root chord itself works. For $`r\ge r_*`$, two radial legs and an inner adjacent crossing chord work after an arbitrarily small radial contraction. These two constructions meet at $`r=r_*`$, where the outer chord attains $`|f|=1`$ at its midpoint and therefore lies only in the closed lemniscate. Open containment at and above the switch uses the inner chord after a radial contraction.*
 
@@ -1827,7 +1827,7 @@ Dubinin \[dubinin2006critical, Theorem 2, (9), pp. 1172–1173\] proves the sh
 Dubinin explicitly identifies Tischler’s earlier contribution \[tischler1989, p. 444, as reported in Dubinin\]. His Theorem 1 uses dissymmetrisation; that is not the proof mechanism of Theorem 2. Schur’s original paper \[schur1918\] is the historical antecedent cited there, not a separately re-proved source in this record. A sharp marked-zero positive-moment bound remains a separate question. The addendum \[revision2026, Section 3\] reports a reduction to boundary-root configurations, without solving the resulting angular optimisation. That unavailable addendum is not a proof dependency of the critical-value theorem below.
 
 <div id="res:critical-value-budget" class="theorem">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/846d57d3f9926696332d782eb232aaf3cf803a99/evidence/erdos1041-lemniscate-reasoning-surface.md#res-critical-value-budget">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/846d57d3f9926696332d782eb232aaf3cf803a99/evidence/erdos1041-lemniscate-reasoning-surface.md#res-critical-value-budget-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/0b2a42175a3b61f59c411c6c298f46a27bcf5732/evidence/erdos1041-lemniscate-reasoning-surface.md#res-critical-value-budget">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/0b2a42175a3b61f59c411c6c298f46a27bcf5732/evidence/erdos1041-lemniscate-reasoning-surface.md#res-critical-value-budget-comparator">Comparator</a></p>
 
 **Theorem 20** (a mean bound for critical values). *Let $`f`$ be monic of degree $`n\ge2`$, with roots in a closed disc of radius $`R\ge0`$. If $`c_1,\ldots,c_{n-1}`$ are its critical points counted with multiplicity, then
 ``` math
@@ -1862,7 +1862,7 @@ The finite inequality behind the theorem concerns arbitrary points of the disk, 
 The following pointwise bound explains why these finite inequalities control critical values in every degree.
 
 <div id="res:reflected-critical-value" class="lemma">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos1041/PaperReflectedCompletion.lean#L254">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/846d57d3f9926696332d782eb232aaf3cf803a99/evidence/erdos1041-lemniscate-reasoning-surface.md#res-reflected-critical-value-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos1041/PaperReflectedCompletion.lean#L254">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/0b2a42175a3b61f59c411c6c298f46a27bcf5732/evidence/erdos1041-lemniscate-reasoning-surface.md#res-reflected-critical-value-comparator">Comparator</a></p>
 
 **Lemma 21** (reflected-derivative bound). *If $`f`$ is monic of degree $`n\ge2`$ with roots in the closed unit disk, and $`c_1,\ldots,c_{n-1}`$ list its critical points with multiplicity, then
 ``` math
@@ -1921,7 +1921,7 @@ The counting bound follows by retaining just the indicated summands. The fourth-
 </div>
 
 <div id="res:fp-weighted-all-degree" class="theorem">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/846d57d3f9926696332d782eb232aaf3cf803a99/evidence/erdos1041-lemniscate-reasoning-surface.md#res-fp-weighted-all-degree">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/846d57d3f9926696332d782eb232aaf3cf803a99/evidence/erdos1041-lemniscate-reasoning-surface.md#res-fp-weighted-all-degree-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/0b2a42175a3b61f59c411c6c298f46a27bcf5732/evidence/erdos1041-lemniscate-reasoning-surface.md#res-fp-weighted-all-degree">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/0b2a42175a3b61f59c411c6c298f46a27bcf5732/evidence/erdos1041-lemniscate-reasoning-surface.md#res-fp-weighted-all-degree-comparator">Comparator</a></p>
 
 **Theorem 22** (a weighted inequality for points in a disc). *Let $`c_1,\ldots,c_m\in\overline{\mathbb D}`$ and let $`w_j>0`$ satisfy $`\sum_j w_j=1`$. Set
 ``` math
@@ -2100,7 +2100,7 @@ The mean inequality gives $`\mu\le R^n`$. In the unit-disc normalisation $`R=1`$
 The reciprocal balance at a critical point bounds the sum of the two nearest root distances. We begin with this formal geometric statement, then distinguish distance from containment in the degree-five argument.
 
 <div id="res:critical-proximity" class="theorem">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos1041/CriticalTwoRootProximity.lean#L291">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/846d57d3f9926696332d782eb232aaf3cf803a99/evidence/erdos1041-lemniscate-reasoning-surface.md#res-critical-proximity-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos1041/CriticalTwoRootProximity.lean#L291">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/0b2a42175a3b61f59c411c6c298f46a27bcf5732/evidence/erdos1041-lemniscate-reasoning-surface.md#res-critical-proximity-comparator">Comparator</a></p>
 
 **Theorem 23** (a geometric-mean bound for distances to a critical point). *Let $`n\ge2`$, let $`z_1,\ldots,z_n,c\in\mathbb C`$ with $`c\ne z_k`$ for every $`k`$, and suppose
 ``` math
@@ -2143,7 +2143,7 @@ The logarithm vanishes at $`t=1`$, so $`d_1+d_2\le2(d_1d_2^{n-1})^{1/n}\le2r`$.�
 </div>
 
 <div id="res:two-nearest-roots" class="corollary">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/846d57d3f9926696332d782eb232aaf3cf803a99/evidence/erdos1041-lemniscate-reasoning-surface.md#res-two-nearest-roots">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/846d57d3f9926696332d782eb232aaf3cf803a99/evidence/erdos1041-lemniscate-reasoning-surface.md#res-two-nearest-roots-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/0b2a42175a3b61f59c411c6c298f46a27bcf5732/evidence/erdos1041-lemniscate-reasoning-surface.md#res-two-nearest-roots">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/0b2a42175a3b61f59c411c6c298f46a27bcf5732/evidence/erdos1041-lemniscate-reasoning-surface.md#res-two-nearest-roots-comparator">Comparator</a></p>
 
 **Corollary 24** (two nearest roots). *If the roots lie in the open unit disc and $`c`$ is a non-root critical point, the two nearest roots to $`c`$ have total distance strictly below $`2`$.*
 
@@ -2179,7 +2179,7 @@ This argument selects the two nearest roots but does not put their segments insi
 </div>
 
 <div id="res:straight-no-go" class="proposition">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos1041/PaperStraightObstructions.lean#L178">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/846d57d3f9926696332d782eb232aaf3cf803a99/evidence/erdos1041-lemniscate-reasoning-surface.md#res-straight-no-go-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos1041/PaperStraightObstructions.lean#L178">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/0b2a42175a3b61f59c411c6c298f46a27bcf5732/evidence/erdos1041-lemniscate-reasoning-surface.md#res-straight-no-go-comparator">Comparator</a></p>
 
 **Proposition 25** (two counterexamples to straight-path assertions). *There is a monic quintic with all roots in the open unit disc and a non-root critical point $`c`$ whose unique nearest root has a point on the straight segment to $`c`$ outside $`\{|f|<1\}`$. There is also a monic cubic with all roots in the open unit disc such that the midpoint of every pair of distinct roots lies outside $`\{|f|<1\}`$.*
 
@@ -2440,7 +2440,7 @@ I_k(r)=\int_r^1
 For nearby merger scales, $`r`$ is close to $`1`$. The integral is then much smaller than $`k^{-1}\log(1/r)`$. The following change of variables proves that no fixed positive multiple of this logarithmic contribution is a uniform lower bound.
 
 <div id="res:orlicz-currency" class="theorem">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/846d57d3f9926696332d782eb232aaf3cf803a99/evidence/erdos1041-lemniscate-reasoning-surface.md#res-orlicz-currency">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/846d57d3f9926696332d782eb232aaf3cf803a99/evidence/erdos1041-lemniscate-reasoning-surface.md#res-orlicz-currency-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/0b2a42175a3b61f59c411c6c298f46a27bcf5732/evidence/erdos1041-lemniscate-reasoning-surface.md#res-orlicz-currency">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/0b2a42175a3b61f59c411c6c298f46a27bcf5732/evidence/erdos1041-lemniscate-reasoning-surface.md#res-orlicz-currency-comparator">Comparator</a></p>
 
 **Theorem 26** (the relation between two merger-scale integrals). *Define
 ``` math
@@ -2497,7 +2497,7 @@ z'(t)=-\frac{f(z(t))}{f'(z(t))}
 where $`f'(z(t))\ne0`$. Let $`I\subseteq\mathbb R`$ be an interval on which these assumptions hold; put $`w(t)=f(z(t))`$. Kozen and Stefánsson record the following identity as a lemma of Shub, Tischler and Williams \[kozen-stefansson1997, Lemma 2.1\].
 
 <div id="res:value" class="theorem">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos1041/PaperCompleteR20/NewtonRealTime.lean#L52">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/846d57d3f9926696332d782eb232aaf3cf803a99/evidence/erdos1041-lemniscate-reasoning-surface.md#res-value-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos1041/PaperCompleteR20/NewtonRealTime.lean#L52">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/0b2a42175a3b61f59c411c6c298f46a27bcf5732/evidence/erdos1041-lemniscate-reasoning-surface.md#res-value-comparator">Comparator</a></p>
 
 **Theorem 27** (value equation). *For a polynomial $`f`$ and a differentiable curve $`z:I\to\mathbb C`$ on an interval $`I`$, assume $`f'(z(t))\ne0`$ and $`z'(t)=-f(z(t))/f'(z(t))`$ throughout $`I`$. Then $`w=f\circ z`$ satisfies $`w'=-w`$, and
 ``` math
@@ -2517,7 +2517,7 @@ f(z(t))=e^{-(t-t_0)}f(z(t_0)),\qquad t_0\le t,\quad t_0,t\in I .
 Lean proves the theorem together with this integrated identity. The separate local complex-parameter calculations are the [value derivative](https://github.com/wcook04/plectis-erdos/blob/7380b7871687b6bcc41ca0143c61f232e8af6500/lean/ErdosProblems/Erdos1041/NewtonFlowRaySeparation.lean#L50) and the [scaled derivative](https://github.com/wcook04/plectis-erdos/blob/7380b7871687b6bcc41ca0143c61f232e8af6500/lean/ErdosProblems/Erdos1041/NewtonFlowRaySeparation.lean#L64). They require complex differentiability and do not themselves integrate a trajectory on a real interval. For an existing trajectory with nonzero initial value, its value moves inward on one positive ray; a zero value has no argument and remains zero. Thus $`|f|<1`$ is preserved for later times in that trajectory’s existing interval. No global existence or description of a whole ray preimage follows from this scalar equation.
 
 <div id="res:ray" class="corollary">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos1041/PaperCompleteR20/NewtonRealTime.lean#L69">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/846d57d3f9926696332d782eb232aaf3cf803a99/evidence/erdos1041-lemniscate-reasoning-surface.md#res-ray-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos1041/PaperCompleteR20/NewtonRealTime.lean#L69">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/0b2a42175a3b61f59c411c6c298f46a27bcf5732/evidence/erdos1041-lemniscate-reasoning-surface.md#res-ray-comparator">Comparator</a></p>
 
 **Corollary 28** (ray separation). *Let $`a<b`$ and let the value trajectory $`t\mapsto f(z(t))`$ be continuous on $`[a,b]`$. Assume the Newton equation and $`f'(z(t))\ne0`$ on $`(a,b)`$ only. Then
 ``` math
@@ -2554,7 +2554,7 @@ therefore defines a differentiable path with $`x'(t)=-f(x(t))/f'(x(t))`$. Its en
 A common translation of distinct values can separate their arguments. The next calculation describes the translations to avoid.
 
 <div id="res:locus" class="theorem">
-<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos1041/NewtonFlowRaySeparation.lean#L107">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/846d57d3f9926696332d782eb232aaf3cf803a99/evidence/erdos1041-lemniscate-reasoning-surface.md#res-locus-comparator">Comparator</a></p>
+<p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos1041/NewtonFlowRaySeparation.lean#L107">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/0b2a42175a3b61f59c411c6c298f46a27bcf5732/evidence/erdos1041-lemniscate-reasoning-surface.md#res-locus-comparator">Comparator</a></p>
 
 **Theorem 29** (ray-collision locus). *Let $`a\ne b`$ be complex. Every common translation $`\beta`$ for which $`a+\beta`$ and $`b+\beta`$ lie on the same positive ray has the form
 ``` math
@@ -2983,7 +2983,7 @@ The continuous optimisation remains unevaluated: maximise $`\sum_j\lambda(d_j)`$
 
 # Guide to the results
 
-The main constructions have different hypotheses. The table locates their conclusions and distinguishes the formal results from the additional analytic remarks. The detailed evidence associations are in the [evidence record](https://github.com/wcook04/plectis-erdos/blob/846d57d3f9926696332d782eb232aaf3cf803a99/evidence/erdos1041-lemniscate-reasoning-surface.md).
+The main constructions have different hypotheses. The table locates their conclusions and distinguishes the formal results from the additional analytic remarks. The detailed evidence associations are in the [evidence record](https://github.com/wcook04/plectis-erdos/blob/0b2a42175a3b61f59c411c6c298f46a27bcf5732/evidence/erdos1041-lemniscate-reasoning-surface.md).
 
 <div class="center">
 
@@ -3051,7 +3051,7 @@ The formal capacity conclusion takes as input the classical transfinite-diameter
 
 No supplied proof establishes the reported Runge construction of unbounded one-root perimeters or the stronger assertion that every critical joining point fails in the near-pentagon example. Neither is used in the positive theorems. The fixed value of the degree-seven parameter is not a proof of the reported parameter family.
 
-The verification concordance lists the formal proofs by statement. *Lean* links to the supporting declarations; a dagger identifies a proof that assumes a named input. *Comparator* links to a recorded kernel check against a separately written statement; *pending* means that this comparison has not been recorded. The [verification record](https://github.com/wcook04/plectis-erdos/blob/846d57d3f9926696332d782eb232aaf3cf803a99/evidence/erdos1041-lemniscate-reasoning-surface.md) gives the precise correspondence, dependencies and reproducible checks. A row with only a record link has no complete formal proof recorded.
+The verification concordance lists the formal proofs by statement. *Lean* links to the supporting declarations; a dagger identifies a proof that assumes a named input. *Comparator* links to a recorded kernel check against a separately written statement; *pending* means that this comparison has not been recorded. The [verification record](https://github.com/wcook04/plectis-erdos/blob/0b2a42175a3b61f59c411c6c298f46a27bcf5732/evidence/erdos1041-lemniscate-reasoning-surface.md) gives the precise correspondence, dependencies and reproducible checks. A row with only a record link has no complete formal proof recorded.
 
 <div class="thebibliography">
 

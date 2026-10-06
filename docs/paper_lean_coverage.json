@@ -1,7 +1,7 @@
 {
   "schema": "plectis-paper-lean-coverage/1",
   "lean_pin": "436f55ebdafa67e4af0fff79f621c13f2ded12bf",
-  "content_digest": "sha256:8117425ec50c2db165bdb3fc9b6a3c9c3405536f6184475b5de60ce79fee1877",
+  "content_digest": "sha256:41eca4b126d9722abd44da6fe9b5fd94d4be4de76fead3508338861094c27eb3",
   "authority": "Generated projection of the maintainer coverage count. Proof authority stays with the Lean source checked by the pinned kernel, and docs/claims.json owns claim status. Each row records which Lean declarations state one asserting paper environment and how far the row has travelled toward independent Comparator replay and Palomar preparation.",
   "row_rule": "One row per closed asserting theorem-like environment (and per registered labelled claim span) of the sixteen problem papers, short and long counted separately even when their statements agree. statement_sha256 is the sha256 of the environment body after TeX comments are removed; source is the authored file and line of its opening.",
   "status_rule": {
@@ -2763,7 +2763,9 @@
       },
       "comparator": {
         "status": "pending",
-        "queued_at": "2026-09-23"
+        "queued_at": "2026-09-23",
+        "pending_reason": "The pending status applies to this row's complete declaration set. [Receipt E1041_01](comparator/replay-35935225572/receipt-E1041_01.json) from [replay 35935225572](https://github.com/wcook04/plectis-erdos-lean/actions/runs/35935225572), at corpus commit `cc7e541cf2081c6fef5a5e377d52e365e33b01eb`, passed for `PalomarCorpus.E1041.PaperStatementsAE.erdos1041_hausdorff_negation`, `PalomarCorpus.E1041.PaperStatementsAE.erdos1041_hausdorff_answer_false` and the degree-seven existence statement `PalomarCorpus.E1041.PaperStatementsA.erdos1041_ani_degree_seven`. The two negation forms are proved from the corresponding declarations listed above. This row also lists the fixed-polynomial statements `erdos1041_counterexample` and `erdos1041_counterexample_hausdorff`; neither is selected in that receipt or bound in the Comparator association map. The counterexample therefore has a passing comparison, including the Hausdorff-negation statement, while the complete four-declaration paper row remains pending.",
+        "next_action": "Compare the fixed-polynomial path-length and Hausdorff-measure statements, then bind all four declarations to passing receipts before marking the complete row compared."
       },
       "palomar": {
         "status": "pending"
@@ -26634,7 +26636,9 @@
       },
       "comparator": {
         "status": "pending",
-        "queued_at": "2026-09-23"
+        "queued_at": "2026-09-23",
+        "pending_reason": "The pending status applies to this row's complete declaration set. [Receipt E1041_01](comparator/replay-35935225572/receipt-E1041_01.json) from [replay 35935225572](https://github.com/wcook04/plectis-erdos-lean/actions/runs/35935225572), at corpus commit `cc7e541cf2081c6fef5a5e377d52e365e33b01eb`, passed for `PalomarCorpus.E1041.PaperStatementsAE.erdos1041_hausdorff_negation`, `PalomarCorpus.E1041.PaperStatementsAE.erdos1041_hausdorff_answer_false` and the degree-seven existence statement `PalomarCorpus.E1041.PaperStatementsA.erdos1041_ani_degree_seven`. The two negation forms are proved from the corresponding declarations listed above. This row also lists the fixed-polynomial statements `erdos1041_counterexample` and `erdos1041_counterexample_hausdorff`; neither is selected in that receipt or bound in the Comparator association map. The counterexample therefore has a passing comparison, including the Hausdorff-negation statement, while the complete four-declaration paper row remains pending.",
+        "next_action": "Compare the fixed-polynomial path-length and Hausdorff-measure statements, then bind all four declarations to passing receipts before marking the complete row compared."
       },
       "palomar": {
         "status": "pending"

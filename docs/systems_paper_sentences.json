@@ -62,8 +62,8 @@
       "path": "docs/papers/corpus.json",
       "start_line": 1,
       "end_line": 9326,
-      "sha256": "3e2e70160192d93a1d15bd8a3bb14553bae1dacb15279ac015b8a6800bf341be",
-      "excerpt_sha256": "3e2e70160192d93a1d15bd8a3bb14553bae1dacb15279ac015b8a6800bf341be",
+      "sha256": "482eb62cbbffd2896156d3943da7bad325f965a04256060ea687b1620d44fccf",
+      "excerpt_sha256": "482eb62cbbffd2896156d3943da7bad325f965a04256060ea687b1620d44fccf",
       "kind": "source"
     },
     {
@@ -88,37 +88,37 @@
       "id": "coverage",
       "path": "docs/paper_lean_coverage.json",
       "start_line": 1,
-      "end_line": 29162,
-      "sha256": "8d422a56fdd3c1527e2bf276cf0de63bbeaefba8c7b231b96eb5e2f6e1f1c49d",
-      "excerpt_sha256": "8d422a56fdd3c1527e2bf276cf0de63bbeaefba8c7b231b96eb5e2f6e1f1c49d",
+      "end_line": 29166,
+      "sha256": "9ab26f8d76809affdd3013a79b7d1b2e6c456109fc9c6a4f41008fd297895aff",
+      "excerpt_sha256": "9ab26f8d76809affdd3013a79b7d1b2e6c456109fc9c6a4f41008fd297895aff",
       "kind": "source"
     },
     {
       "id": "coverage-1041",
       "path": "docs/paper_lean_coverage.json",
       "start_line": 1,
-      "end_line": 29162,
+      "end_line": 29166,
       "kind": "supplied_snapshot",
-      "sha256": "8d422a56fdd3c1527e2bf276cf0de63bbeaefba8c7b231b96eb5e2f6e1f1c49d",
-      "excerpt_sha256": "8d422a56fdd3c1527e2bf276cf0de63bbeaefba8c7b231b96eb5e2f6e1f1c49d"
+      "sha256": "9ab26f8d76809affdd3013a79b7d1b2e6c456109fc9c6a4f41008fd297895aff",
+      "excerpt_sha256": "9ab26f8d76809affdd3013a79b7d1b2e6c456109fc9c6a4f41008fd297895aff"
     },
     {
       "id": "coverage-reciprocal",
       "path": "docs/paper_lean_coverage.json",
       "start_line": 1,
-      "end_line": 29162,
+      "end_line": 29166,
       "kind": "supplied_snapshot",
-      "sha256": "8d422a56fdd3c1527e2bf276cf0de63bbeaefba8c7b231b96eb5e2f6e1f1c49d",
-      "excerpt_sha256": "8d422a56fdd3c1527e2bf276cf0de63bbeaefba8c7b231b96eb5e2f6e1f1c49d"
+      "sha256": "9ab26f8d76809affdd3013a79b7d1b2e6c456109fc9c6a4f41008fd297895aff",
+      "excerpt_sha256": "9ab26f8d76809affdd3013a79b7d1b2e6c456109fc9c6a4f41008fd297895aff"
     },
     {
       "id": "coverage-weighted",
       "path": "docs/paper_lean_coverage.json",
       "start_line": 1,
-      "end_line": 29162,
+      "end_line": 29166,
       "kind": "supplied_snapshot",
-      "sha256": "8d422a56fdd3c1527e2bf276cf0de63bbeaefba8c7b231b96eb5e2f6e1f1c49d",
-      "excerpt_sha256": "8d422a56fdd3c1527e2bf276cf0de63bbeaefba8c7b231b96eb5e2f6e1f1c49d"
+      "sha256": "9ab26f8d76809affdd3013a79b7d1b2e6c456109fc9c6a4f41008fd297895aff",
+      "excerpt_sha256": "9ab26f8d76809affdd3013a79b7d1b2e6c456109fc9c6a4f41008fd297895aff"
     },
     {
       "id": "credit",
@@ -3618,5 +3618,5 @@
     "formal_status": "Quoted existing theorem is class reported, linked to coverage rows; no formal class is recognised by this checker.",
     "external_reading": "External register reading is described in the return, not imported as evidence of implementation."
   },
-  "revision_source_commit": "31ce9342703cd14a5858f9263f62185a12154ca5"
+  "revision_source_commit": "5e586626f9a75dde5396f24dd29c6fe32a782b9a"
 }

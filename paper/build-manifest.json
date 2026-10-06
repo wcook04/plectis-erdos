@@ -14,26 +14,26 @@
     "erdos_1041_note": {
       "inputs": {
         "paper/1041/erdos-1041-lemniscate-newton-flow.tex": "sha256:ec43ef8adb90a4e6212002930d785830392a8be23bf2076074c9677245219037",
-        "paper/evidence/erdos-1041-lemniscate-newton-flow.tex": "sha256:c60b85cd02a4f493465fbd32c1bccecab7e8d11a0e28a5321ac62a8c2612ec6c",
+        "paper/evidence/erdos-1041-lemniscate-newton-flow.tex": "sha256:bcb46996181c48b29f36773e0bfe00de4606468565261d15c200211467f1d637",
         "paper/module-aliases.tex": "sha256:6d6d9640a9b7f04d003ebbffb78db279f5af838a2afc99ba6b5b247cc67b6954",
         "paper/paper-evidence.tex": "sha256:1ba1b3a112445f6fee7794f2083c29a60fb102d239d5e799808a36b9a5e562e3",
         "paper/paper-house-style.sty": "sha256:554ed85b5315bd936a4d09d58f8727547c5bb1b299f9684eb6ef720b329759a2",
         "paper/problem-note-preamble.tex": "sha256:088d36d7ba3d3ee0cee2df99e8915927999698f19889f8ea0b8d55b3721ec778"
       },
-      "rendered_content_digest": "sha256:a3ebf684dc1c0911c14ac35c37fbe3a7ff7b238822acc8e09291034e1850c9a2",
+      "rendered_content_digest": "sha256:6c2b8251833238988cbc9ed3ef68a489f0b1f776a2256620913e692fb902f809",
       "source_path": "paper/1041/erdos-1041-lemniscate-newton-flow.tex",
       "storage_path": "paper/1041/erdos-1041-lemniscate-newton-flow.pdf"
     },
     "erdos_1041_reasoning_record": {
       "inputs": {
         "paper/1041/erdos1041-lemniscate-reasoning-surface.tex": "sha256:72bba6bb63978a73d92b50a49cdd573f883c7c247baa3de88c70858aacefc349",
-        "paper/evidence/erdos1041-lemniscate-reasoning-surface.tex": "sha256:9da9d47d30da5719a9568419f21fa0ef6ee2ca6a4b6b5ea20c987cb1766ec2e3",
+        "paper/evidence/erdos1041-lemniscate-reasoning-surface.tex": "sha256:9e4eaa210cab67d67590d9c58e24df5960fecb621fd75c32dbb2fb28c66f888a",
         "paper/module-aliases.tex": "sha256:6d6d9640a9b7f04d003ebbffb78db279f5af838a2afc99ba6b5b247cc67b6954",
         "paper/paper-evidence.tex": "sha256:1ba1b3a112445f6fee7794f2083c29a60fb102d239d5e799808a36b9a5e562e3",
         "paper/paper-house-style.sty": "sha256:554ed85b5315bd936a4d09d58f8727547c5bb1b299f9684eb6ef720b329759a2",
         "paper/problem-note-preamble.tex": "sha256:088d36d7ba3d3ee0cee2df99e8915927999698f19889f8ea0b8d55b3721ec778"
       },
-      "rendered_content_digest": "sha256:3be60b81f8374bbfbaa485e9ad8ccb184a137c877bcbe2e2869bcc5eeeacd5a1",
+      "rendered_content_digest": "sha256:d27224bfaff6a6f3424c18ad3967ee6a2e7b268f4012eb0f1783777650c96a53",
       "source_path": "paper/1041/erdos1041-lemniscate-reasoning-surface.tex",
       "storage_path": "paper/1041/erdos1041-lemniscate-reasoning-surface.pdf"
     },
