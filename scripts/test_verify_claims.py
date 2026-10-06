@@ -615,6 +615,13 @@ def main() -> int:
         if "open_proposition_targets_unknown_claim" not in statuses(report):
             failures.append(f"orphaned open proposition not reported: {report['problems']}")
 
+        # A missing forward boundary reference fails the whole-register gate.
+        forward_claim = claim("Sample.alpha", ALPHA_KEYWORD_LINE)
+        forward_claim["remaining_open_proposition_ids"] = ["remaining_open.deleted"]
+        report = run_case(root, build_register([forward_claim]))
+        if "claim_references_unknown_open_proposition" not in statuses(report):
+            failures.append(f"dangling forward boundary not reported: {report['problems']}")
+
         # The same edge on the Comparator side: a selected interface may name a
         # claim id, and that binding must not outlive the claim either.
         report = run_case(
@@ -680,7 +687,7 @@ def main() -> int:
         return 1
     print(
         "test_verify_claims: drift, renames, undeclared statuses, orphaned open "
-        "propositions, orphaned Comparator bindings, and unresolvable paper "
+        "propositions, forward/reverse boundary links, orphaned Comparator bindings, and unresolvable paper "
         "labels are each reported; absent paper sources are not; current-record "
         "checks remain distinct from history gates in full, shallow, missing-history, "
         "and source-archive fixtures"
@@ -688,7 +695,65 @@ def main() -> int:
     return 0
 
 
+
+def check_open_boundary_relationships() -> None:
+    from claim_relationships import audit_claim_relationships, resolve_claim_boundary
+
+    progress = {"id": "progress", "status": "proved",
+                "remaining_open_proposition_ids": ["open.shared", "open.shared", "open.both"]}
+    target = {"id": "target"}
+    props = [
+        {"id": "open.reverse", "open_target_claim": "progress"},
+        {"id": "open.shared", "open_target_claim": "target"},
+        {"id": "open.both", "open_target_claim": "progress"},
+    ]
+    register = build_register([progress, target], props)
+    result = resolve_claim_boundary(progress, register)
+    assert [row["id"] for row in result["remaining_open"]] == [
+        "open.shared", "open.both", "open.reverse"
+    ]
+    assert result["remaining_open_relationships"] == [
+        {"proposition_id": "open.shared", "relation_kinds": ["remaining_open_proposition_ids"]},
+        {"proposition_id": "open.both", "relation_kinds": ["remaining_open_proposition_ids", "open_target_claim"]},
+        {"proposition_id": "open.reverse", "relation_kinds": ["open_target_claim"]},
+    ]
+    assert not result["inconsistencies"]
+    assert not audit_claim_relationships(register)
+    progress["remaining_open_proposition_ids"] += ["open.missing", "open.missing"]
+    result = resolve_claim_boundary(progress, register)
+    assert len(result["inconsistencies"]) == 1
+    assert result["inconsistencies"][0]["status"] == "claim_references_unknown_open_proposition"
+    assert len(audit_claim_relationships(register)) == 1
+    dangling_only = dict(progress, remaining_open_proposition_ids=["open.missing"])
+    dangling_register = build_register([dangling_only], [])
+    report = verify_claims.follow_claim("progress", dangling_register, {})
+    assert not report["verified"]
+    rendered = verify_claims.render_claim(report)
+    assert "registry inconsistency" in rendered
+    assert "no remaining open proposition" not in rendered
+    props[1]["open_target_claim"] = "deleted"
+    assert any(row["status"] == "open_proposition_targets_unknown_claim"
+               for row in resolve_claim_boundary(progress, register)["inconsistencies"])
+
+    # Exhaustive actual-registry regression: every forward edge is displayed
+    # or receives a specific inconsistency; it can never silently disappear.
+    actual = json.loads(verify_claims.CLAIMS_PATH.read_text())
+    assert not audit_claim_relationships(actual)
+    for row in actual["claims"]:
+        boundary = verify_claims.boundary_for(row, actual)
+        shown = {prop["id"] for prop in boundary["remaining_open"]}
+        rejected = {issue["proposition_id"] for issue in boundary["inconsistencies"]}
+        assert set(row.get("remaining_open_proposition_ids", [])) <= shown | rejected, row["id"]
+    weighted = next(row for row in actual["claims"]
+                    if row["id"] == "finite_prime_weighted_support")
+    boundary = verify_claims.boundary_for(weighted, actual)
+    assert "remaining_open.universal_257_all_infinite_supports" in {
+        row["id"] for row in boundary["remaining_open"]
+    }
+
+
 if __name__ == "__main__":
+    check_open_boundary_relationships()
     check_comparator_context_scope()
     check_safe_read_boundary()
     check_declaration_identity()

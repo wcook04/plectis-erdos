@@ -37,6 +37,7 @@ from lean_source import (
     library_storage_variants,
 )
 from validation_singleflight import command_environment, GIT_COMMAND_TIMEOUT_SECONDS
+from claim_relationships import resolve_claim_boundary
 
 
 def checkout_lean_file(relative: str) -> Path:
@@ -3266,6 +3267,10 @@ def public_paper_rows(claims: dict[str, Any]) -> list[dict[str, Any]]:
 @lru_cache(maxsize=1)
 def native_reader_evidence() -> tuple[bool, dict[str, Any]]:
     """One offline owner verdict per read-only query invocation; no proof execution."""
+    # Archives can read recorded sources, but cannot replay pinned Git evidence.
+    # Do not let Git discover an unrelated repository above the archive root.
+    if not (ROOT / ".git").exists():
+        return False, {}
     import check_problem_note_sources as owner
     if not owner.native_evidence_valid():
         return False, {}
@@ -3598,7 +3603,10 @@ def claim_packet(claim_id: str) -> dict[str, Any]:
             row["remaining_open_effect"] = edge["remaining_open_effect"]
         return row
 
-    open_ids = set(claim.get("remaining_open_proposition_ids", []))
+    boundary = resolve_claim_boundary(claim, claims)
+    if boundary["inconsistencies"]:
+        raise ValueError("claim boundary source inconsistency: " + json.dumps(boundary["inconsistencies"]))
+    open_ids = {row["id"] for row in boundary["remaining_open"]}
     programme_routes = [
         row
         for row in all_entrypoints(claims)
@@ -3660,9 +3668,8 @@ def claim_packet(claim_id: str) -> dict[str, Any]:
             "exhaustive": "docs/claims.json::machine_readable_paper.argument_graph",
             "follow": "python3 scripts/query_corpus.py --claim <neighbour_id>",
         },
-        "remaining_open_propositions": [
-            open_index[open_id] for open_id in sorted(open_ids)
-        ],
+        "remaining_open_propositions": boundary["remaining_open"],
+        "remaining_open_relationships": boundary["remaining_open_relationships"],
         "programme_contexts": programme_contexts,
         "wider_programme_open_propositions": [
             open_index[open_id]

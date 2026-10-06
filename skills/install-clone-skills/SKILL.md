@@ -33,6 +33,24 @@ python3 scripts/install_agent_skills.py --target-dir /absolute/path/to/skills
 
 The preview reports `missing`, `current`, or `different`. It does not write.
 
+Codex defaults to `~/.agents/skills`. Use `--target codex-legacy` explicitly
+for `$CODEX_HOME/skills` (or `~/.codex/skills`) with an older client. Claude
+uses `$CLAUDE_CONFIG_DIR/skills` (or `~/.claude/skills`). Restart the client
+after installation. These destinations follow client conventions; successful
+loading must still be tested with the actual client.
+
+For one portable companion instead of all clone workflows:
+
+```sh
+python3 scripts/install_agent_skills.py --target codex --companion
+python3 scripts/install_agent_skills.py --target codex --companion --apply
+python3 scripts/install_agent_skills.py --target codex --companion --check
+```
+
+The companion independently pins its research checkout. Read
+[portable companion](../../docs/agents/PORTABLE_COMPANION.md) for packaging,
+source verification and removal.
+
 ## Install and verify
 
 Add `--apply` to perform the displayed copy. Use `--mode symlink` when the

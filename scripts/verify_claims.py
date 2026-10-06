@@ -62,6 +62,8 @@ id was requested).
 from __future__ import annotations
 
 import argparse
+
+from claim_relationships import audit_claim_relationships, resolve_claim_boundary
 import json
 import os
 import re
@@ -471,16 +473,12 @@ def boundary_for(claim: dict[str, Any], claims: dict[str, Any]) -> dict[str, Any
     """Assemble the typed statement of where this claim stops."""
     taxonomy = claims.get("status_taxonomy", {})
     status = claim.get("status", "")
-    open_props = [
-        prop
-        for prop in claims.get("remaining_open_propositions", [])
-        if prop.get("open_target_claim") == claim.get("id")
-    ]
+    relationships = resolve_claim_boundary(claim, claims)
     return {
         "status": status,
         "status_means": taxonomy.get(status, "status is outside the declared taxonomy"),
         "status_in_taxonomy": status in taxonomy,
-        "remaining_open": open_props,
+        **relationships,
         "release_non_claims": claims.get("non_claims", []),
     }
 
@@ -516,7 +514,7 @@ def follow_claim(
         "exposition": exposition_for(claim, label_index),
         "release": claims.get("release", {}),
         "boundary": boundary,
-        "verified": not broken and boundary["status_in_taxonomy"],
+        "verified": not broken and boundary["status_in_taxonomy"] and not boundary["inconsistencies"],
     }
 
 
@@ -612,11 +610,23 @@ def render_claim(report: dict[str, Any]) -> str:
         out.append(f"  !! status {boundary['status']!r} is not in the declared taxonomy")
     out.append(f"  ceiling: {boundary['status_means']}")
     if boundary["remaining_open"]:
-        out.append("  open propositions still targeting this claim:")
+        out.append("  related remaining open propositions:")
         for prop in boundary["remaining_open"]:
-            out.append(f"    - [{prop.get('status')}] {prop.get('statement')}")
-    else:
+            relation = next(row for row in boundary["remaining_open_relationships"]
+                            if row["proposition_id"] == prop["id"])
+            kinds = relation["relation_kinds"]
+            meaning = []
+            if "remaining_open_proposition_ids" in kinds:
+                meaning.append("claim bears on this unresolved proposition")
+            if "open_target_claim" in kinds:
+                meaning.append("claim represents the unresolved target")
+            out.append(f"    - {prop['id']} [{prop.get('status')}] {prop.get('statement')}")
+            out.append(f"      relationship: {'; '.join(meaning)}")
+    elif not boundary["inconsistencies"]:
         out.append("  no remaining open proposition is registered against this claim id")
+    for issue in boundary["inconsistencies"]:
+        out.append(f"  !! registry inconsistency: {issue['status']} "
+                   f"({issue['proposition_id']}, {issue['relation_kind']})")
     out.append("  this release does not claim:")
     for non in boundary["release_non_claims"]:
         out.append(f"    - {non.get('meaning')}")
@@ -657,10 +667,7 @@ def verify_all_claims(claims: dict[str, Any]) -> dict[str, Any]:
             comparator_bound += 1
 
     known = {claim.get("id") for claim in claims.get("claims", [])}
-    for prop in claims.get("remaining_open_propositions", []):
-        target = prop.get("open_target_claim")
-        if target and target not in known:
-            problems.append({"claim": target, "status": "open_proposition_targets_unknown_claim"})
+    problems.extend(audit_claim_relationships(claims))
 
     # The sibling of the check above, on the other edge into the register: a
     # Comparator interface may name a claim id, and that binding must not

@@ -263,6 +263,10 @@ def late_check_commands() -> dict[str, list[str]]:
             sys.executable,
             str(ROOT / "scripts" / "test_cold_clone_comprehension.py"),
         ],
+        "claim_records": [sys.executable, str(ROOT / "scripts" / "test_verify_claims.py")],
+        "research_query": [sys.executable, str(ROOT / "scripts" / "test_research_query.py")],
+        "companion_package": [sys.executable, str(ROOT / "scripts" / "test_companion_package.py")],
+        "reading_edition_weighted": [sys.executable, str(ROOT / "scripts" / "test_reading_edition_weighted.py")],
         "github_release_contracts": [sys.executable, str(ROOT / "scripts" / "check_ci_release.py")],
         "semantic_queries": [
             sys.executable,
@@ -3194,6 +3198,7 @@ def main(argv: list[str] | None = None) -> int:
     check(query_check.returncode == 0,
           f"corpus query surface failed: {child_output(query_check)}")
     for name in (
+        "claim_records", "research_query", "companion_package", "reading_edition_weighted",
         "github_release_contracts",
         "semantic_queries", "semantic_storage", "semantic_relation_parity",
         "chain_transcendence", "totient_normal_form", "finite_dilation_normal_form",

@@ -55,6 +55,8 @@ def target_directory(args: argparse.Namespace) -> Path:
     if args.target_dir is not None:
         directory = args.target_dir.expanduser().resolve()
     elif args.target == "codex":
+        directory = (Path.home() / ".agents" / "skills").resolve()
+    elif args.target == "codex-legacy":
         codex_root = Path(os.environ.get("CODEX_HOME", Path.home() / ".codex"))
         directory = (codex_root / "skills").expanduser().resolve()
     elif args.target == "claude":
@@ -119,8 +121,9 @@ def parser() -> argparse.ArgumentParser:
     result = argparse.ArgumentParser(description=__doc__)
     result.add_argument("--list", action="store_true", help="list clone-local skills")
     destination = result.add_mutually_exclusive_group()
-    destination.add_argument("--target", choices=("codex", "claude"))
+    destination.add_argument("--target", choices=("codex", "codex-legacy", "claude"))
     destination.add_argument("--target-dir", type=Path)
+    result.add_argument("--companion", action="store_true", help="install only the portable plectis-frontier companion")
     result.add_argument("--skill", action="append", help="install only this named skill")
     result.add_argument("--mode", choices=("copy", "symlink"), default="copy")
     result.add_argument("--apply", action="store_true", help="perform the displayed changes")
@@ -134,11 +137,15 @@ def main() -> int:
     try:
         catalog = load_catalog()
         available = skill_directories(catalog)
+        if args.companion:
+            if args.skill:
+                raise SkillCatalogError("--companion cannot be combined with --skill")
+            available = {"plectis-frontier": ROOT / ".agents/skills/plectis-frontier"}
     except (OSError, SkillCatalogError) as exc:
         print(f"error: {exc}", file=sys.stderr)
         return 2
     if args.list:
-        for row in catalog["skills"]:
+        for row in ([{"id": "plectis-frontier", "description": "Portable task-routed Plectis companion", "path": ".agents/skills/plectis-frontier/SKILL.md"}] if args.companion else catalog["skills"]):
             print(f"{row['id']}\t{row['description']}\t{row['path']}")
         if args.target is None and args.target_dir is None:
             return 0

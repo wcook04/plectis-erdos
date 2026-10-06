@@ -170,6 +170,14 @@ class FrontierSkillTests(unittest.TestCase):
         self.assertEqual(len(receipt["checks"]), 2)
         self.assertIn("OFFLINE FIXTURE", receipt["checks"][1]["output"])
 
+    def test_smoke_routes_the_actual_request(self):
+        root, source = self.fixture()
+        real_run = bootstrap.run
+        with mock.patch.object(bootstrap, "run", wraps=real_run) as calls:
+            bootstrap.smoke(root, source, True, "Give me only a hint for the argument")
+        entry = next(call.args[0] for call in calls.call_args_list if "--entry" in call.args[0])
+        self.assertEqual(entry[entry.index("--entry") + 1], "Give me only a hint for the argument")
+
     def test_child_environment_does_not_forward_credentials(self):
         with mock.patch.dict(os.environ, {"GITHUB_TOKEN": "fixture-secret", "OPENAI_API_KEY": "fixture-secret",
                                           "GIT_SSH_COMMAND": "do-not-run", "PYTHONPATH": "/unrelated"}):
@@ -209,7 +217,7 @@ class FrontierSkillTests(unittest.TestCase):
         self.assertLessEqual(len(fields["description"]), 1024)
         self.assertLessEqual(len(fields["compatibility"]), 500)
         self.assertIn('  author: Will Cook', front)
-        self.assertIn('  version: "0.1.1"', front)
+        self.assertIn('  version: "0.2.0"', front)
         self.assertNotIn("    ", front)
 
     def test_bundle_is_small_standalone_and_licensed(self):
