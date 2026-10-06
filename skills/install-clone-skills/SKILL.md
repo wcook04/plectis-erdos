@@ -17,7 +17,7 @@ List the tracked skills:
 python3 scripts/install_agent_skills.py --list
 ```
 
-Preview one supported host destination:
+Preview the namespaced companion at one supported host destination:
 
 ```sh
 python3 scripts/install_agent_skills.py --target codex
@@ -32,6 +32,10 @@ python3 scripts/install_agent_skills.py --target-dir /absolute/path/to/skills
 ```
 
 The preview reports `missing`, `current`, or `different`. It does not write.
+Every destination operation without a selection flag selects only
+`plectis-frontier`, including custom destinations and legacy hosts. Listing
+without a destination still shows the clone catalog. Do not turn catalog
+availability into permission to install every generic workflow globally.
 
 Codex defaults to `~/.agents/skills`. Use `--target codex-legacy` explicitly
 for `$CODEX_HOME/skills` (or `~/.codex/skills`) with an older client. Claude
@@ -39,7 +43,7 @@ uses `$CLAUDE_CONFIG_DIR/skills` (or `~/.claude/skills`). Restart the client
 after installation. These destinations follow client conventions; successful
 loading must still be tested with the actual client.
 
-For one portable companion instead of all clone workflows:
+The explicit `--companion` selector is an alias for this default:
 
 ```sh
 python3 scripts/install_agent_skills.py --target codex --companion
@@ -55,13 +59,19 @@ source verification and removal.
 
 Add `--apply` to perform the displayed copy. Use `--mode symlink` when the
 harness may read links and the installed skill should follow this checkout.
-Use `--skill NAME` repeatedly to select only some skills.
+Use `--skill NAME` repeatedly to select particular clone workflows. These
+are an explicit expert choice; their generic names remain repo-local by default.
+Use `--all-clone-skills` only when the owner wants the entire clone catalog.
+It is mutually exclusive with `--companion` and `--skill`. Existing installed
+workflows are preserved; changing the default does not migrate or remove them.
 
 ```sh
 python3 scripts/install_agent_skills.py --target codex --apply
 python3 scripts/install_agent_skills.py --target claude --mode symlink --apply
 python3 scripts/install_agent_skills.py --target-dir /absolute/path/to/skills --apply
 python3 scripts/install_agent_skills.py --target codex --check
+python3 scripts/install_agent_skills.py --target codex --skill explain-public-system --apply
+python3 scripts/install_agent_skills.py --target-dir /absolute/path/to/skills --all-clone-skills --apply
 ```
 
 The installer refuses to replace different same-name material. Inspect the

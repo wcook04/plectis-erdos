@@ -35,7 +35,9 @@ silently follows `main`. The research checkout retains its own licence map.
 
 ## Install one skill
 
-From this checkout, preview, apply and check:
+From this checkout, destination operations default to the single companion.
+The explicit `--companion` selector below is an optional alias. Preview, apply
+and check:
 
 ```sh
 python3 scripts/install_agent_skills.py --target codex --companion
@@ -55,6 +57,12 @@ Alternatively, inspect and extract the archive into a temporary directory,
 then copy only its `plectis-frontier` directory into the chosen skills location.
 Do not overwrite an existing same-name directory. The archive is not an input
 to a client plugin installation command.
+
+Use `--skill NAME` for explicitly chosen clone workflows or
+`--all-clone-skills` for the full catalog. These selections are mutually
+exclusive with `--companion`; a plain destination command does not install
+generic clone workflows. `--list` without a destination still lists the clone
+catalog. Existing installations are preserved rather than silently migrated.
 
 Ordinary apply refuses different same-name material. Preview reports the
 collision, and `--check` fails. Preserve user edits before an explicitly chosen
