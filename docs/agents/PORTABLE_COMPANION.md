@@ -27,7 +27,7 @@ research code. Verify archive hashes before copying it into a skills directory.
 A source hash records identity; it is not a security audit.
 
 Companion version `0.2.0` pins public research revision
-`b7210894f41ce3dd7a2ea7b553424fb155fb0c65`. Releasing new instructions and
+`fee64f536671959a68799084c5baafc86155c455`. This revision contains the weighted task packet and compact reader. Releasing new instructions and
 upgrading the mathematical checkout are separate decisions. The wrapper never
 silently follows `main`. The research checkout retains its own licence map.
 
