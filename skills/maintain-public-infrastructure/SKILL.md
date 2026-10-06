@@ -81,6 +81,17 @@ point to an issue path. Use public repository file URLs and actual
 or credit boundaries; validate destinations in `scripts/test_contribution_entry.py`
 and inspect the rendered form without entering or submitting a report.
 
+## Preserve boundaries across every reader
+
+Claim readers and record checkers share `scripts/claim_relationships.py`.
+Resolve both forward remaining-open references and reverse target links, retain
+their different meanings, and reject dangling references. Add a registry-wide
+coverage regression when a local example exposes lost edges. Read-only adapters
+must bind caches and cursors to captured source identity, preserve full
+statements, and report unavailable history explicitly for source archives.
+`scripts/research_query.py` owns the compact contract; the rich corpus routes
+remain owned by `scripts/query_corpus.py`.
+
 ## Know the public owner graph
 
 - `skills/registry.json` owns skill families, task lanes, composition edges,

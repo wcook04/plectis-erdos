@@ -163,6 +163,7 @@ class ReadingCheckRepairCommandTests(unittest.TestCase):
             outputs = {normal: "new normal\n"}
             record_outputs = {record: "new record\n"}
             with patch.object(edition, "ROOT", root), \
+                    patch.object(edition, "build_weighted_task", return_value={}), \
                     patch.object(edition, "build", return_value=outputs) as build, \
                     patch.object(edition, "build_records", return_value=record_outputs) as build_records:
                 stderr = io.StringIO()

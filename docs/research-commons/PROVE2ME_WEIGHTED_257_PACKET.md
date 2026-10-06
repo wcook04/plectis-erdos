@@ -5,6 +5,8 @@
 
 ## Exact claim
 
+<!-- BEGIN weighted_task_criterion -->
+
 For a finite nonempty prime set $P$, let
 $h_P(a)=\prod_{p\in P}p^{v_p(a)}$. If $b\ge2$, $A$ is an infinite set of
 positive integers, and
@@ -20,6 +22,8 @@ at **every** integer base $b\ge2$. The paper states both clauses and their
 hereditary consequences at `res:weighted-support` in
 `paper/257/erdos-257-mersenne-support-subseries.tex`.
 
+<!-- END weighted_task_criterion -->
+
 The exact Lean declaration is
 `ErdosProblems.Erdos257.PaperCompleteR8.divisibilityWeightedClaim` at
 `lean/ErdosProblems/Erdos257/PaperCompleteR8/WeightedReturn.lean:120`.
@@ -27,7 +31,8 @@ Its conjunction type `DivisibilityWeightedClaim` and the weighted-mass
 definition `FinitePrimeWeighted` are in
 `lean/ErdosProblems/Erdos257/PaperCompleteR7/AnalyticTargets.lean:75` and
 `:32`. The public claim row is `finite_prime_weighted_support` in
-`docs/claims.json`, status `formalised here`. The packet hashes the theorem,
+`docs/claims.json`; the [generated task packet](../reading-edition/weighted-257-task.md)
+projects its current status and exact open boundary. The packet hashes the theorem,
 paper, and Lean claim-interface source, and checks the registered declaration
 line, paper label and exact open-proposition mapping.
 
@@ -159,6 +164,8 @@ rationality conclusion.
 
 ## Try changing a hypothesis
 
+<!-- BEGIN weighted_task_exercise -->
+
 The paper's example uses the support
 $A_\star=\{2^km:k\ge1,\ m\text{ odd},\ m\le2^{2^k}\}$.
 Its reciprocal sum diverges, yet its base-two weighted mass is finite, so
@@ -174,6 +181,24 @@ For $c=2,p=1$, decide whether the $P=\{2\}$ weighted test works at bases
 $2$ and $3$. Then change only $p$ to $2$ and decide what Theorem 1 says at
 *every* base. Before opening the calculation, distinguish “this test fails”
 from a claim that the corresponding series is rational.
+
+<details>
+<summary>Show one hint</summary>
+
+Write the weighted mass layer by layer using $P=\{2\}$. Compare the odd
+harmonic sum with $r_k$ before deciding convergence. Stop here if you want
+to do the comparison yourself.
+
+</details>
+
+<details>
+<summary>Show a second hint</summary>
+
+Use $r/4\le S_r\le r$ and compare $(c/b)^{2^k}/k^p$ with the weighted
+term. At $c=b$, the exponent cancels and the power $p$ decides the test.
+A divergent sufficient test does not establish rationality.
+
+</details>
 
 <details>
 <summary>Show the calculation and decisions</summary>
@@ -218,6 +243,8 @@ criterion, not a named theorem about this family. The unrestricted Erdős
 #257 question remains open.
 
 </details>
+
+<!-- END weighted_task_exercise -->
 
 ## Try a changing prime set
 

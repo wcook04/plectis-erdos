@@ -119,13 +119,13 @@ def prepare(destination: Path, source: dict[str, str], allow_network: bool) -> d
     return {"status": "source-verified-no-code-executed", **verify(root, source)}
 
 
-def smoke(destination: Path, source: dict[str, str], allow_execution: bool) -> dict[str, Any]:
+def smoke(destination: Path, source: dict[str, str], allow_execution: bool, task: str = "Inspect the public research and its exact claim boundaries") -> dict[str, Any]:
     if not allow_execution:
         raise BootstrapError("Running repository Python requires owner approval and --allow-execution")
     receipt = verify(destination, source)
     root = Path(receipt["checkout"])
     entry = run([sys.executable, "-B", "-s", "scripts/agent_entry.py", "--entry",
-                 "Attempt one bounded research continuation and prepare a checkable return", "--json"], root)
+                 task, "--json"], root)
     packet = json.loads(entry)
     if (not isinstance(packet, dict)
             or packet.get("schema") not in ("plectis-agent-entry/1", "plectis-agent-entry/2")
@@ -146,6 +146,7 @@ def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("action", nargs="?", choices=("describe", "prepare", "verify", "smoke"), default="describe")
     parser.add_argument("--destination", type=Path)
+    parser.add_argument("--task", default="Inspect the public research and its exact claim boundaries", help="actual request routed by smoke")
     parser.add_argument("--allow-network", action="store_true")
     parser.add_argument("--allow-execution", action="store_true")
     args = parser.parse_args(argv)
@@ -164,7 +165,7 @@ def main(argv: list[str] | None = None) -> int:
             if args.action == "prepare":
                 value = prepare(destination, source, args.allow_network)
             elif args.action == "smoke":
-                value = smoke(destination, source, args.allow_execution)
+                value = smoke(destination, source, args.allow_execution, args.task)
             else:
                 value = {"status": "source-verified-no-code-executed", **verify(destination, source)}
         print(json.dumps(value, ensure_ascii=False, indent=2))

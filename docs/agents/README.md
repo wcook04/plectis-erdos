@@ -13,6 +13,48 @@ to inspect. Without a clone, give your model the
 [reading edition](../reading-edition/README.md); it carries the same research
 instruction as the clone.
 
+## Apply a result to a changed example
+
+Start with the [small weighted #257 task packet](../reading-edition/weighted-257-task.md).
+It works without a clone; save the [raw text](https://raw.githubusercontent.com/wcook04/plectis-erdos/main/docs/reading-edition/weighted-257-task.md)
+for offline reading. Choose one hint, a second hint, or the full worked answer.
+
+> Help me apply the weighted #257 criterion to $A(c,p)$ in the task packet.
+> Decide the three cases $c=2,p=1,b=2$; $c=2,p=1,b=3$; and $c=2,p=2$
+> at every integer base at least two. Give me one hint first and stop.
+> When I ask for the answer, state the failed or satisfied hypothesis,
+> exact source and open boundary. Distinguish the Lean-checked criterion
+> from the ordinary deduction for this family.
+
+For an agent started elsewhere, see the [portable companion](PORTABLE_COMPANION.md)
+for the directory skill package, supported installation routes and observed client limits.
+
+With a clone, use Git and Python 3; Lean is needed only for proof compilation.
+After the setup below, route the actual task:
+
+```sh
+python3 scripts/agent_entry.py --entry "Can you explain when the weighted criterion applies and help me change a hypothesis?"
+python3 scripts/research_query.py get claim finite_prime_weighted_support
+python3 scripts/query_corpus.py --open remaining_open.universal_257_all_infinite_supports --format json
+```
+
+Read the task packet and selected sources, then do the mathematical task.
+Printing a query response alone does not answer it. `verify_claims.py` checks
+recorded source relationships; it does not compile a proof. The Lean build
+instructions in [reproducibility](../REPRODUCIBILITY.md) cover proof execution.
+
+### Observe an outside attempt
+
+For a willing reader, use the same packet and chosen learning depth. Record
+edition fingerprint, environment, selected case, requested hints, interventions,
+answer and source locations. Assess whether the answer respects all hypotheses,
+withholds an arithmetic verdict when the test fails, distinguishes the ordinary
+deduction from the formal criterion, and identifies the unresolved universal
+claim. Ask the reader for one related question of their own; record time and
+obstacles when they agree. Return observations or corrections through
+[Contributing](../../CONTRIBUTING.md), preserving attribution and any limits.
+This is an attempt protocol; it records no participants or measured outcomes.
+
 ## Start with current public work
 
 Use a coding agent that can read local files and run terminal commands. Its
@@ -26,7 +68,7 @@ For a new workspace, use Git and Python 3:
 git clone --filter=blob:none --branch main https://github.com/wcook04/plectis-erdos.git
 cd plectis-erdos
 python3 scripts/agent_entry.py --checkout --check-upstream
-python3 scripts/agent_entry.py --entry "explain how this repo works to a newcomer"
+python3 scripts/agent_entry.py --entry "Can you explain when the weighted criterion applies and help me change a hypothesis?"
 ```
 
 The version check reads public `main` without fetching or changing your files.
@@ -104,3 +146,5 @@ For the design behind these tools, read [the architecture guide](../ARCHITECTURE
 or the [project papers](../../paper/README.md#project-papers).
 For the mathematics, return to [the problem papers](../../paper/README.md#problem-papers).
 [All documentation](../README.md).
+
+The [compact query contract](RESEARCH_QUERY.md) describes source snapshots, structured errors, bounded reading and the four read-only operations.

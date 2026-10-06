@@ -22,6 +22,8 @@ A model with a small context window should take the starter file first and then 
 
 [Short-to-long claim routes](RECORDS.md) give source locations, evidence classes, and explicit unresolved correspondence for the eight problem pairs. Build these with `python3 scripts/build_reading_edition.py --records`.
 
+Start with the [weighted #257 changed-hypothesis task](weighted-257-task.md): one criterion, three cases, optional hints and an ordinary worked deduction. [Raw](https://raw.githubusercontent.com/wcook04/plectis-erdos/main/docs/reading-edition/weighted-257-task.md).
+
 ## Every paper as text
 
 | Problem | Paper | Kind | Size | Raw text |
