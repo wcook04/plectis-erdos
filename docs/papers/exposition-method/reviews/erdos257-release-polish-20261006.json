@@ -1,0 +1,54 @@
+{
+  "schema": "bounded_editorial_integration_v1",
+  "date": "2026-10-06",
+  "starting_commit": "95cc5efc727974c05dc6842c349771627752c237",
+  "paper": "erdos257-mersenne-reasoning-surface",
+  "review_scope": "Two observation summaries, compared with the detailed paper theorem and its cited Lean declarations; no full-paper mathematical review.",
+  "source": "paper/reasoning-parts/erdos257/a257_front.tex",
+  "changes": [
+    {
+      "observation": "Reported computation through row 200,000",
+      "decision": "Restrict the reported exception to the tested rows and remove the inference of an infinite-orbit threshold."
+    },
+    {
+      "observation": "A computable horizon, not the required horizon",
+      "decision": "Reconcile the summary with record:257bm-c19: the tail estimate supplies a computable sufficient horizon; success at the prescribed horizon remains unproved. The stronger margin estimate is sufficient, not necessary."
+    }
+  ],
+  "preserved": [
+    "All theorem statements, proofs, labels and order",
+    "Short paper source and PDF",
+    "Lean source and registered claim statuses",
+    "Universal irrationality, half-membership, and prescribed-horizon open boundaries"
+  ],
+  "consumer_dispositions": {
+    "authored_long_fragment": "updated",
+    "assembled_long_source": "rebuild with assemble_reasoning_surfaces.py",
+    "long_pdf_and_full_text": "rebuild with publication owners",
+    "source_coordinates_and_publication_digests": "refresh with publication owners",
+    "short_paper": "verified unchanged; no structural rewrite warranted",
+    "claim_registry_Lean_Comparator_and_Palomar": "verified unchanged; no theorem or formal evidence status changed",
+    "website": "refresh reading room after public-main publication"
+  },
+  "contribution": "Supplied editorial feedback selected and checked by Codex, with an independent Sol source review; integration is editorial, not independent mathematical acceptance.",
+  "refinement": {
+    "result": "nothing_to_refine",
+    "stewardship_checked": true,
+    "existing_owner": "skills/public-mathematical-writing/SKILL.md#propagate-each-settled-correction",
+    "reason": "Existing scope and companion-reconciliation rules cover both corrections; no new rule or duplicate workflow is needed."
+  },
+  "rendered_review": {
+    "pages": 153,
+    "selected_pages": [
+      101,
+      104
+    ],
+    "scope": "Both changed observations inspected in the rendered PDF; text and displays are unclipped and the existing typography is retained."
+  },
+  "validation": {
+    "manuscript_build": "make -C paper erdos257-mersenne-reasoning-surface.pdf passed",
+    "pair_pdf_navigation": "All 15 remote annotations within the short/long PDF pair resolve to existing named destinations.",
+    "source_preservation": "All 276 labels and 482 theorem-environment markers retain their exact order.",
+    "contrast_ledger": "scripts/contrast_ledger.py check --worktree passed"
+  }
+}
