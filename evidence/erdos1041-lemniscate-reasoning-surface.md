@@ -62,6 +62,10 @@ theorem erdos1041_hausdorff_answer_false :
 
 **Comparator:** not yet compared.
 
+The pending status applies to this row's complete declaration set. [Receipt E1041_01](comparator/replay-35935225572/receipt-E1041_01.json) from [replay 35935225572](https://github.com/wcook04/plectis-erdos-lean/actions/runs/35935225572), at corpus commit `cc7e541cf2081c6fef5a5e377d52e365e33b01eb`, passed for `PalomarCorpus.E1041.PaperStatementsAE.erdos1041_hausdorff_negation`, `PalomarCorpus.E1041.PaperStatementsAE.erdos1041_hausdorff_answer_false` and the degree-seven existence statement `PalomarCorpus.E1041.PaperStatementsA.erdos1041_ani_degree_seven`. The two negation forms are proved from the corresponding declarations listed above. This row also lists the fixed-polynomial statements `erdos1041_counterexample` and `erdos1041_counterexample_hausdorff`; neither is selected in that receipt or bound in the Comparator association map. The counterexample therefore has a passing comparison, including the Hausdorff-negation statement, while the complete four-declaration paper row remains pending.
+
+Next check: Compare the fixed-polynomial path-length and Hausdorff-measure statements, then bind all four declarations to passing receipts before marking the complete row compared.
+
 <a id="lem-two-sheet-bottleneck-long"></a>
 
 ## Lemma 2.1 (a bottleneck estimate), page 3
