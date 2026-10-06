@@ -102,6 +102,17 @@ reading; user-level discovery and complete research workflows remain untested.
 Claude behaviour remains unverified. No client credentials or installations
 were changed to bypass failures.
 
+Further internal read-only sessions used the companion and committed source
+from `ecbea832c68021b6d235a589a542ce284f76f1f2`. One returned a single hint and
+stopped. A complete-source run gave the three correct case conclusions,
+rejected the varying-prime-set quantifier shortcut, cited existing source
+paths, and explicitly stated that no Lean build ran. It also identified the
+companion's newer source pin as different from the selected fixture. An
+initial partial fixture omitted an ancillary definition; the complete-source
+rerun supplied it. Global reasoning skills were available in these internal
+sessions. These observations test source-reading behaviour, not fresh proof
+execution, isolated onboarding, independent review or outside adoption.
+
 Focused checks:
 
 ```sh

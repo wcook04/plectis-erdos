@@ -296,7 +296,8 @@ class Snapshot:
         except QueryError as error:
             envelope = {key: envelope[key] for key in ("schema", "operation", "snapshot", "execution")}
             envelope.update(ok=False, error={"code": error.code, "message": error.message})
-        return envelope
+        # Callers may annotate responses; never lend them mutable snapshot state.
+        return copy.deepcopy(envelope)
 
 
 class Parser(argparse.ArgumentParser):

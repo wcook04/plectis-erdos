@@ -113,6 +113,18 @@ class ResearchQueryTests(unittest.TestCase):
         self.assertEqual(newest.request("get", kind="claim", ident="claim0")["object"]["statement"],
                          "Edited complete statement.")
 
+    def test_caller_annotations_cannot_mutate_snapshot(self):
+        snapshot = reader.Snapshot(self.root)
+        before = snapshot.request("get", kind="claim", ident="claim0")
+        annotated = snapshot.request("get", kind="claim", ident="claim0")
+        annotated["remaining_open"][0]["statement"] = "Caller annotation, not source"
+        annotated["snapshot"]["recorded_formal_source"]["ref"] = "changed"
+        annotated["object"]["statement"] = "changed"
+        identity = snapshot.request("identity")
+        identity["capabilities"]["lean_execution"] = True
+        self.assertEqual(snapshot.request("get", kind="claim", ident="claim0"), before)
+        self.assertFalse(snapshot.request("identity")["capabilities"]["lean_execution"])
+
     def test_cursor_and_expected_revision_binding(self):
         first = reader.Snapshot(self.root)
         page = first.request("search", query="Fixture", kind="claim", limit=1)
