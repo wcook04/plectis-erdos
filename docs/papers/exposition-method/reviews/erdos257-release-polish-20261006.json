@@ -49,6 +49,7 @@
     "manuscript_build": "make -C paper erdos257-mersenne-reasoning-surface.pdf passed",
     "pair_pdf_navigation": "All 15 remote annotations within the short/long PDF pair resolve to existing named destinations.",
     "source_preservation": "All 276 labels and 482 theorem-environment markers retain their exact order.",
-    "contrast_ledger": "scripts/contrast_ledger.py check --worktree passed"
+    "contrast_ledger": "scripts/contrast_ledger.py check --worktree passed",
+    "paper_evidence_coordinates": "Restamped 21 moved source coordinates; evidence statuses, declarations and summary unchanged."
   }
 }

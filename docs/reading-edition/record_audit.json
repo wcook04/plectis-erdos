@@ -1,135 +1,8 @@
 {
   "boundary": "Checks registered asserting environments and registered claim spans. Unregistered prose assertions, mathematical equivalence, correctness of ordinary proofs, Lean compilation, Comparator replay and PDF freshness are not established by this audit.",
-  "global_findings": [
-    {
-      "code": "stale_statement_coordinate",
-      "detail": "paper/reasoning-parts/erdos257/a257_front.tex:7020 -> 7026",
-      "severity": "error",
-      "short_claim": "erdos257-mersenne-reasoning-surface#thm:lower-bound-every-reset"
-    },
-    {
-      "code": "stale_statement_coordinate",
-      "detail": "paper/reasoning-parts/erdos257/a257_front.tex:7053 -> 7059",
-      "severity": "error",
-      "short_claim": "erdos257-mersenne-reasoning-surface#thm:one-sided-finite-decision-boundary"
-    },
-    {
-      "code": "stale_statement_coordinate",
-      "detail": "paper/reasoning-parts/erdos257/a257_front.tex:7252 -> 7258",
-      "severity": "error",
-      "short_claim": "erdos257-mersenne-reasoning-surface#prop:2adic-nogo"
-    },
-    {
-      "code": "stale_statement_coordinate",
-      "detail": "paper/reasoning-parts/erdos257/a257_front.tex:7325 -> 7331",
-      "severity": "error",
-      "short_claim": "erdos257-mersenne-reasoning-surface#prop:upper-unconditional"
-    },
-    {
-      "code": "stale_statement_coordinate",
-      "detail": "paper/reasoning-parts/erdos257/a257_front.tex:7340 -> 7346",
-      "severity": "error",
-      "short_claim": "erdos257-mersenne-reasoning-surface#thm:cd-neg3-impossible"
-    },
-    {
-      "code": "stale_statement_coordinate",
-      "detail": "paper/reasoning-parts/erdos257/a257_front.tex:7390 -> 7396",
-      "severity": "error",
-      "short_claim": "erdos257-mersenne-reasoning-surface#cor:cd-remaining"
-    },
-    {
-      "code": "stale_statement_coordinate",
-      "detail": "paper/reasoning-parts/erdos257/a257_front.tex:7465 -> 7471",
-      "severity": "error",
-      "short_claim": "erdos257-mersenne-reasoning-surface#prop:finite-state-nogo"
-    },
-    {
-      "code": "stale_statement_coordinate",
-      "detail": "paper/reasoning-parts/erdos257/a257_front.tex:7485 -> 7491",
-      "severity": "error",
-      "short_claim": "erdos257-mersenne-reasoning-surface#prop:mobius-nogo"
-    },
-    {
-      "code": "stale_statement_coordinate",
-      "detail": "paper/reasoning-parts/erdos257/a257_front.tex:7501 -> 7507",
-      "severity": "error",
-      "short_claim": "erdos257-mersenne-reasoning-surface#prop:finite-boolSupport-and-onesided"
-    },
-    {
-      "code": "stale_statement_coordinate",
-      "detail": "paper/reasoning-parts/erdos257/a257_front.tex:7523 -> 7529",
-      "severity": "error",
-      "short_claim": "erdos257-mersenne-reasoning-surface#prop:carry-survivor-extinction"
-    },
-    {
-      "code": "stale_statement_coordinate",
-      "detail": "paper/reasoning-parts/erdos257/a257_front.tex:7555 -> 7561",
-      "severity": "error",
-      "short_claim": "erdos257-mersenne-reasoning-surface#lem:scalar-localization"
-    },
-    {
-      "code": "stale_statement_coordinate",
-      "detail": "paper/reasoning-parts/erdos257/a257_front.tex:7582 -> 7588",
-      "severity": "error",
-      "short_claim": "erdos257-mersenne-reasoning-surface#cor:mersenne-height"
-    },
-    {
-      "code": "stale_statement_coordinate",
-      "detail": "paper/reasoning-parts/erdos257/a257_front.tex:7619 -> 7625",
-      "severity": "error",
-      "short_claim": "erdos257-mersenne-reasoning-surface#prop:critical-band-index"
-    },
-    {
-      "code": "stale_statement_coordinate",
-      "detail": "paper/reasoning-parts/erdos257/a257_front.tex:7786 -> 7792",
-      "severity": "error",
-      "short_claim": "erdos257-mersenne-reasoning-surface#lem:odometer"
-    },
-    {
-      "code": "stale_statement_coordinate",
-      "detail": "paper/reasoning-parts/erdos257/a257_front.tex:8247 -> 8253",
-      "severity": "error",
-      "short_claim": "erdos257-mersenne-reasoning-surface#lem:sqwitness"
-    },
-    {
-      "code": "stale_statement_coordinate",
-      "detail": "paper/reasoning-parts/erdos257/a257_front.tex:8364 -> 8370",
-      "severity": "error",
-      "short_claim": "erdos257-mersenne-reasoning-surface#prop:squarefree"
-    },
-    {
-      "code": "stale_statement_coordinate",
-      "detail": "paper/reasoning-parts/erdos257/a257_front.tex:8575 -> 8581",
-      "severity": "error",
-      "short_claim": "erdos257-mersenne-reasoning-surface#prop:cpgs-equiv"
-    },
-    {
-      "code": "stale_statement_coordinate",
-      "detail": "paper/reasoning-parts/erdos257/a257_front.tex:8595 -> 8601",
-      "severity": "error",
-      "short_claim": "erdos257-mersenne-reasoning-surface#prop:strip-equiv"
-    },
-    {
-      "code": "stale_statement_coordinate",
-      "detail": "paper/reasoning-parts/erdos257/a257_front.tex:9061 -> 9067",
-      "severity": "error",
-      "short_claim": "erdos257-mersenne-reasoning-surface#thm:257-logarithmic-counterexample"
-    },
-    {
-      "code": "stale_statement_coordinate",
-      "detail": "paper/reasoning-parts/erdos257/a257_front.tex:9219 -> 9225",
-      "severity": "error",
-      "short_claim": "erdos257-mersenne-reasoning-surface#cor:257-logarithmic-separation"
-    },
-    {
-      "code": "stale_statement_coordinate",
-      "detail": "paper/reasoning-parts/erdos257/a257_front.tex:9264 -> 9270",
-      "severity": "error",
-      "short_claim": "erdos257-mersenne-reasoning-surface#prop:257-logarithmic-initial-interval"
-    }
-  ],
+  "global_findings": [],
   "input_sha256": {
-    "docs/paper_lean_coverage.json": "sha256:8d422a56fdd3c1527e2bf276cf0de63bbeaefba8c7b231b96eb5e2f6e1f1c49d",
+    "docs/paper_lean_coverage.json": "sha256:058ad95477aced1865be09cb8fc5057d2e8a5b4a882333c0e6f97ce64c79919e",
     "docs/papers/corpus.json": "sha256:0be413160d5836452116615624ac2233ad7707c89787681ad34497f3c1046a6b",
     "docs/papers/full-text/erdos-1041-lemniscate-newton-flow.md": "sha256:d6b117b7213e108e250181515d023ad7cd0ec8377f8b9cd52f898167e2b5ad95",
     "docs/papers/full-text/erdos-1049-rational-base-lambert.md": "sha256:48f8b5a74d9e3be350d43a251158dfa82b6c8a82452d6c3f29a9683b1196bda2",
@@ -16002,7 +15875,7 @@
     "explained_in_short": 24,
     "explicit_links": 8,
     "explicit_short_proof_dispositions": 45,
-    "global_findings": 21,
+    "global_findings": 0,
     "linked_short_claims": 27,
     "long_claims": 612,
     "long_correspondence_open": 50,
