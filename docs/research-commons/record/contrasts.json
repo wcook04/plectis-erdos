@@ -822,12 +822,12 @@
         {
           "kind": "source_span",
           "path": "paper/systems/claim-faithful-publication-systems-paper.tex",
-          "start_line": 290,
-          "end_line": 293,
+          "start_line": 165,
+          "end_line": 165,
           "must_contain": [
-            "it does not verify whether that statement captures the intended mathematics",
-            "Comparator adds a separately stated challenge",
-            "permitted axioms"
+            "permitted axioms",
+            "Comparator checks a formal result against a separately stated formal challenge",
+            "they do not establish that an informal problem was formalised as its author intended"
           ]
         }
       ],
