@@ -26,8 +26,10 @@ credentials, caches and unrelated instructions. It does not fetch or execute
 research code. Verify archive hashes before copying it into a skills directory.
 A source hash records identity; it is not a security audit.
 
-Companion version `0.2.0` pins public research revision
-`ecbea832c68021b6d235a589a542ce284f76f1f2`. This revision contains the weighted task packet and compact reader. Releasing new instructions and
+Companion version `0.2.0` and the exact research revision are separate fields.
+Read the current pin from [source.json](../../.agents/skills/plectis-frontier/source.json)
+or the generated package manifest. The selected research revision contains the
+weighted task packet and compact reader. Releasing new instructions and
 upgrading the mathematical checkout are separate decisions. The wrapper never
 silently follows `main`. The research checkout retains its own licence map.
 
