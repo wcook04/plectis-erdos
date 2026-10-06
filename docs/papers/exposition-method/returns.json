@@ -3994,6 +3994,75 @@
       "native_receipt_identities": [],
       "manuscript_disposition": "Cumulative source revisions accepted after baseline, scope, statement, link and native source-owner checks.",
       "status_boundary": "Editorial acceptance only. No new Lean, theorem status, external review, reader-study or blanket donor-reading claim. Original transport-form mismatches are retained in maintainer custody."
+    },
+    {
+      "id": "systems-rewrite-20261006",
+      "round": 13,
+      "problem": "systems",
+      "archive_name": "systems-paper-rewrite-return.zip",
+      "archive_sha256": "c545396437cf1a84a00032065b52924f490ce73b45f73647858a224b3d5c47f5",
+      "documents": {
+        "READER_VALUE_REPORT.json": {
+          "member": "systems-paper-rewrite-return/READER_VALUE_REPORT.json",
+          "sha256": "9a72a0d12c0a0c0af4cb212fad2341f67637c3bd91bc90307b32b94ff18a5feb"
+        },
+        "LITERATURE_READING.json": {
+          "member": "systems-paper-rewrite-return/LITERATURE_READING.json",
+          "sha256": "d61940f749a25acc65b132f60f8bbe15c3ccc53cc66feb7cd73ccb8dda1be889"
+        },
+        "FEEDBACK_UPTAKE.json": {
+          "member": "systems-paper-rewrite-return/FEEDBACK_UPTAKE.json",
+          "sha256": "09c8c0f44852c08e5c9c68cf89e8a1a72222ad415e0fe7948623890b4e55f208"
+        },
+        "RETURN.json": {
+          "member": "systems-paper-rewrite-return/RETURN.json",
+          "sha256": "f0dd8a165b065325fb9fbc20424c9af34a4026b9c69338d39ea125c1aef431bf"
+        },
+        "REWRITE_REPORT.md": {
+          "member": "systems-paper-rewrite-return/REWRITE_REPORT.md",
+          "sha256": "88a2565bd7d0900fb871cd0b426ced8a214a30c2292507e7ba26fc5ec77644f8"
+        },
+        "BLOCKERS.md": {
+          "member": "systems-paper-rewrite-return/BLOCKERS.md",
+          "sha256": "74773a63690e6adeb30bf41d792e6974f695c64a5accc683b1841ab036f2b70b"
+        },
+        "VALIDATION.md": {
+          "member": "systems-paper-rewrite-return/VALIDATION.md",
+          "sha256": "56e690dd9bee1c433fd25c3873a95646c72d0487ef8616ae5f05e0baba2c3f77"
+        },
+        "GENERALIZED_LESSONS.json": {
+          "member": "systems-paper-rewrite-return/GENERALIZED_LESSONS.json",
+          "sha256": "fd54507303445947882bd73ec2d42c37b71264ccac98d16eb46e22ec8daad86a"
+        },
+        "MOVES.md": {
+          "member": "systems-paper-rewrite-return/MOVES.md",
+          "sha256": "fd085211ab2e343335ac12680f988d579d9921d601e4fc46e00bf3249a726416"
+        },
+        "STYLE_RULES.json": {
+          "member": "systems-paper-rewrite-return/STYLE_RULES.json",
+          "sha256": "5e77479e21317db1d63fe1e6c08a6eae01e0fea2f70e6811f419a4d865901f27"
+        },
+        "REGISTER_REPORT.json": {
+          "member": "systems-paper-rewrite-return/REGISTER_REPORT.json",
+          "sha256": "d8a765eeaf8815cd9198804892c871f11de36d5bb04c33d9d46151fb1bdc7d00"
+        },
+        "TERMINOLOGY_AUDIT.md": {
+          "member": "systems-paper-rewrite-return/TERMINOLOGY_AUDIT.md",
+          "sha256": "dabad16ba2a6359735f4a2b85fb714c05b8d98c025d3d6958ec2e32eb245afb3"
+        },
+        "STATEMENT_CHANGES.json": {
+          "member": "systems-paper-rewrite-return/STATEMENT_CHANGES.json",
+          "sha256": "bf97f7c1490c2c5510619915c1ff4d33058d009a487be0a60de41bd78aa16559"
+        },
+        "EDITORIAL_REPORT.md": {
+          "member": "systems-paper-rewrite-return/EDITORIAL_REPORT.md",
+          "sha256": "add0496c7301decf2baaff91c213a5820ab19887c721e8b843b2a9541b0492f1"
+        }
+      },
+      "native_status": "editorial_revision_accepted_with_recorded_native_adaptations",
+      "source_head": "95cc5efc727974c05dc6842c349771627752c237",
+      "native_review": "docs/papers/exposition-method/reviews/systems-rewrite-20261006.json",
+      "status_boundary": "Exact-baseline manuscript integration and native adaptations; donor reading reports and general-rule proposals remain separate. No proof-status change, independent mathematical review or measured reader benefit."
     }
   ]
 }

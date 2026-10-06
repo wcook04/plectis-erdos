@@ -1,0 +1,65 @@
+{
+  "schema": "systems_rewrite_editorial_review_v1",
+  "source_head": "95cc5efc727974c05dc6842c349771627752c237",
+  "return_id": "systems-rewrite-20261006",
+  "source_acceptance": "accept editorial revision; publication pending native gates",
+  "scope_review": {
+    "condition": "Compared eq:worked-condition with Theorem res:weighted-support in the unchanged Problem 257 short paper: same infinite positive support, finite nonempty prime set, base-two summability, every infinite subset and every integer base at least two. Full proof remains in Section 2 of its owning mathematical paper.",
+    "formal_status": "No Lean, theorem-status, Comparator, Palomar or historical experiment edits."
+  },
+  "native_adaptations": [
+    "Update architecture guard to the deliberate contributor sequence while retaining every reading anchor, pinned link and source binding.",
+    "Retarget the adversarial reader-gain mutation to the explicit current absence of an independent reader study; retain anchor-missing and escaped-mutation detection.",
+    "Rebind code-source and generated-catalogue handles after reviewed native changes."
+  ],
+  "transport_boundary": "Return manifest names a new R13 packet not found in indexed R13/R14 custody. Both original edited-file hashes exactly match current public main; accepted as author-directed exact-baseline editorial input. No complete check-return pass asserted.",
+  "literature_reading_boundary": "Donor declarations distinguish complete articles, selected sections, supplied repository files and explicitly uninspected bibliography items. Native integration checks source scope; donor readings are not independent native reading receipts.",
+  "lessons": [
+    {
+      "proposal": "Use a failure of interpretation to motivate distinct evidence records before naming their schemas.",
+      "decision": "application_of_existing_public_writing_guidance",
+      "reason": "The distinction is recoverable from an ordinary task rather than from memorising field names.",
+      "limit": "A hypothetical failure is not evaluation data; it must not displace the real evidence.",
+      "destination": "skills/public-mathematical-writing/SKILL.md: Adapt the warrant to the genre; docs/papers/exposition-method/README.md: Carry a reviewed revision into the next pass",
+      "new_universal_rule_adopted": false
+    },
+    {
+      "proposal": "Distinguish a current source diagnosis from an unresolved issue in an older review.",
+      "decision": "application_of_existing_public_writing_guidance",
+      "reason": "A copied blocker can become a false claim about the current system just as a copied success can.",
+      "limit": "A fresh reproduction or current authoritative diagnostic can establish that an older issue persists.",
+      "destination": "skills/public-mathematical-writing/SKILL.md: Adapt the warrant to the genre; docs/papers/exposition-method/README.md: Carry a reviewed revision into the next pass",
+      "new_universal_rule_adopted": false
+    },
+    {
+      "proposal": "Keep a specialist example\u2019s exact boundary in a systems paper without reproducing its full derivation.",
+      "decision": "application_of_existing_public_writing_guidance",
+      "reason": "The system\u2019s design depends on the hypothesis/conclusion distinction, not on teaching the number-theoretic proof.",
+      "limit": "Do not omit a derivation when that derivation is the system contribution or when the supposed destination is incomplete or proves a different claim.",
+      "destination": "skills/public-mathematical-writing/SKILL.md: Adapt the warrant to the genre; docs/papers/exposition-method/README.md: Carry a reviewed revision into the next pass",
+      "new_universal_rule_adopted": false
+    }
+  ],
+  "reusable_native_lesson": "A complete structural rewrite must reconcile navigation-order guards and adversarial fixtures with retained evidence obligations; an old literal anchor is not the obligation itself. Preserve rejection for missing/reordered anchors and inflated reader claims.",
+  "native_pdf": {
+    "engine": "Tectonic",
+    "pages": 17,
+    "house_style_changed": false,
+    "visual_inspection": "All 17 pages in contact sheets, with enlarged page 9 for the mathematical condition and supporting identities. No clipping, overlap or broken glyphs observed. Figure and mutation table readable; appendix and references retain ordinary house spacing."
+  },
+  "native_primary_reading": [
+    {
+      "source": "M. Yuan et al., arXiv:2309.05942, supplied primary manuscript",
+      "sections": "Abstract; Introduction; Methodology and Manufacturing; participant descriptions",
+      "observation": "The study uses inexperienced high-school and undergraduate groups to exercise historical LIGO hardware documentation. The rewritten citation correctly describes a human procedure-reproduction study and does not attribute automated semantic checking to it."
+    }
+  ],
+  "validation": {
+    "focused_tests": "36 systems-paper pipeline tests passed, including reordered-section and inflated-reader-gain rejection",
+    "architecture_guide": "passed in full checkout",
+    "passage_evidence": "65 units bound; all current source digests match",
+    "generated_counts": "passed; generated macro regions unchanged",
+    "pdf": "Tectonic build, 17 pages; all pages inspected",
+    "complete_release": "pending exact committed snapshot admission"
+  }
+}

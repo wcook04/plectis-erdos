@@ -193,8 +193,8 @@ def mutation_fixture_failures() -> list[str]:
             "independence_inflated":source.replace("the checker's author","an independent auditor",1),
             "missing_return_boundary":reflow_tolerant_replace(
                 source,
-                "No independent writing comparison, blind grading run or cold-reader "
-                "experiment is reported, so there is no comparative reader result.",
+                "No independent reader study, adoption by another laboratory, "
+                "discovery-rate comparison or measured reduction in review cost is reported.",
                 "A comparative reader gain is established.",
             ),
             "unbound_body":source.replace(AUDIT_END,"A new unsupported assertion.\n"+AUDIT_END,1),

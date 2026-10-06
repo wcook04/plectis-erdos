@@ -429,9 +429,9 @@ Start here (selected for this guide): [The region b^{\mu}<a and the base 31/4](f
 
 **A Repository-Based System for Research and Publication**
 
-[full text](full-text/claim-faithful-publication-systems-paper.md) · [PDF](../../paper/systems/claim-faithful-publication-systems-paper.pdf) · [LaTeX source](../../paper/systems/claim-faithful-publication-systems-paper.tex) · 41 sections · `claim-faithful-publication-systems` · native to this repository
+[full text](full-text/claim-faithful-publication-systems-paper.md) · [PDF](../../paper/systems/claim-faithful-publication-systems-paper.pdf) · [LaTeX source](../../paper/systems/claim-faithful-publication-systems-paper.tex) · 23 sections · `claim-faithful-publication-systems` · native to this repository
 
-Start here (selected for this guide): [Introduction](full-text/claim-faithful-publication-systems-paper.md#sec:intro), [Worked case: reviewing an explanation](full-text/claim-faithful-publication-systems-paper.md#sec:example), [Publication and revision](full-text/claim-faithful-publication-systems-paper.md#sec:paper), [Proof and publication checks](full-text/claim-faithful-publication-systems-paper.md#sec:checks), [Limits](full-text/claim-faithful-publication-systems-paper.md#sec:limits).
+Start here (selected for this guide): [Introduction](full-text/claim-faithful-publication-systems-paper.md#sec:intro), [What the editor must still decide](full-text/claim-faithful-publication-systems-paper.md#sec:example), [Prepare a draft without changing its evidence](full-text/claim-faithful-publication-systems-paper.md#sec:paper), [Statements, explanations and their evidence](full-text/claim-faithful-publication-systems-paper.md#sec:checks), [Limits and the next evaluation](full-text/claim-faithful-publication-systems-paper.md#sec:limits).
 
 ### What may a stranger conclude from public evidence when the author chose both what to publish and what counts as a pass?
 
