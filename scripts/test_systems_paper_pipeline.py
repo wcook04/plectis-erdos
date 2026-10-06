@@ -96,6 +96,15 @@ class EvidenceTests(unittest.TestCase):
                     self.text+"x"*110000]:
             with self.subTest(sample=bad[-20:]):
                 with self.assertRaises(AssertionError):architecture.validate_systems_paper(bad)
+    def test_evidence_precedes_revision(self):
+        import check_architecture_guide as architecture
+        # Keep all anchor names but reverse the evidence and revision sections.
+        # Existence checks alone must not admit the reordered manuscript.
+        bad=self.text.replace(r"\label{sec:checks}",r"\label{SWAP}",1)
+        bad=bad.replace(r"\label{sec:contribute}",r"\label{sec:checks}",1)
+        bad=bad.replace(r"\label{SWAP}",r"\label{sec:contribute}",1)
+        with self.assertRaisesRegex(AssertionError,"pipeline section order"):
+            architecture.validate_systems_paper(bad)
     def test_checker_does_not_call_commands(self):
         # No subprocess import/invocation is permitted on this native evidence path.
         with patch('subprocess.run',side_effect=AssertionError('execution forbidden')):

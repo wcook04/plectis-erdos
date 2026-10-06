@@ -547,8 +547,11 @@ def validate_systems_paper(text: str) -> None:
     # The legacy route below stays available for historical manuscripts.
     if "% SYSTEMS_PAPER_VERSION 2" in text:
         import systems_paper_evidence
-        labels=(("sec:intro", "sec:world", "sec:example", "sec:checks", "sec:paper",
-                 "sec:contribute", "sec:evaluation", "sec:related", "sec:limits", "app:repro")
+        # The unified manuscript follows a contributor: recover a task, inspect
+        # the two evidence records, judge their limits, then revise and review.
+        # Preserve the reading anchors while checking that deliberate order.
+        labels=(("sec:intro", "sec:world", "sec:checks", "sec:example", "sec:contribute",
+                 "sec:paper", "sec:evaluation", "sec:related", "sec:limits", "app:repro")
                 if unified else ("sec:intro", "sec:predigestion", "sec:checks", "sec:short", "sec:long",
                                  "sec:instance", "sec:loop", "sec:evaluation", "sec:related", "sec:limits", "app:repro"))
         positions=[text.find(r"\label{"+label+"}") for label in labels]

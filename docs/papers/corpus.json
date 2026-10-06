@@ -7962,12 +7962,12 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/claim-faithful-publication-systems-paper.md",
       "local_source": "paper/systems/claim-faithful-publication-systems-paper.tex",
-      "source_sha256": "sha256:86ee08187521ffb6454c7c40b226753ecafa13d2071a7d7f653f81ca0dab6a08",
+      "source_sha256": "sha256:a74aafb649917a608e95cf0e9c6a69257d2d8dfadebec110f651a46849c725f0",
       "canonical_source_commit": null,
       "canonical_source_pin_status": "local_unpublished",
       "canonical_source_url": null,
       "canonical_source_raw_url": null,
-      "section_count": 41,
+      "section_count": 23,
       "sections": [
         {
           "level": 1,
@@ -7979,247 +7979,139 @@
           "level": 1,
           "id": "sec:intro",
           "title": "Introduction",
-          "line": 13
+          "line": 15
         },
         {
           "level": 1,
           "id": "sec:world",
-          "title": "A repository organised around problems",
-          "line": 38
+          "title": "Starting a task and keeping its working record",
+          "line": 31
         },
         {
           "level": 2,
-          "id": "stored-records-and-derived-views",
-          "title": "Stored records and derived views",
-          "line": 46
+          "id": "sec:predigestion",
+          "title": "Choose the question, then retrieve its context",
+          "line": 47
         },
         {
           "level": 2,
-          "id": "finding-the-relevant-work",
-          "title": "Finding the relevant work",
-          "line": 54
-        },
-        {
-          "level": 2,
-          "id": "operations-on-the-records",
-          "title": "Operations on the records",
-          "line": 98
-        },
-        {
-          "level": 2,
-          "id": "responsibilities-and-adoption",
-          "title": "Responsibilities and adoption",
-          "line": 122
-        },
-        {
-          "level": 1,
-          "id": "sec:example",
-          "title": "Worked case: reviewing an explanation",
-          "line": 130
+          "id": "check-an-attempt-and-save-what-happened",
+          "title": "Check an attempt and save what happened",
+          "line": 59
         },
         {
           "level": 1,
           "id": "sec:checks",
-          "title": "Proof and publication checks",
-          "line": 142
-        },
-        {
-          "level": 1,
-          "id": "sec:paper",
-          "title": "Publication and revision",
-          "line": 202
+          "title": "Statements, explanations and their evidence",
+          "line": 69
         },
         {
           "level": 2,
-          "id": "permissions-and-tasks",
-          "title": "Permissions and tasks",
-          "line": 208
+          "id": "a-statement-and-its-registered-formal-supports",
+          "title": "A statement and its registered formal supports",
+          "line": 81
         },
         {
           "level": 2,
-          "id": "from-frozen-inputs-to-an-accepted-revision",
-          "title": "From frozen inputs to an accepted revision",
-          "line": 220
+          "id": "an-explanation-and-its-cited-sources",
+          "title": "An explanation and its cited sources",
+          "line": 91
         },
         {
           "level": 2,
-          "id": "retaining-improvements",
-          "title": "Retaining improvements",
-          "line": 245
+          "id": "sec:example",
+          "title": "What the editor must still decide",
+          "line": 104
         },
         {
           "level": 1,
           "id": "sec:contribute",
-          "title": "An open route for contributions",
-          "line": 253
+          "title": "Revising, reviewing and integrating a change",
+          "line": 112
+        },
+        {
+          "level": 2,
+          "id": "sec:paper",
+          "title": "Prepare a draft without changing its evidence",
+          "line": 126
+        },
+        {
+          "level": 2,
+          "id": "record-a-decision-and-rebuild-the-affected-material",
+          "title": "Record a decision and rebuild the affected material",
+          "line": 140
         },
         {
           "level": 1,
           "id": "sec:instance",
-          "title": "Recorded observations",
-          "line": 280
+          "title": "Evidence from the prototype",
+          "line": 156
         },
         {
           "level": 2,
-          "id": "inventory-and-formal-support-status",
-          "title": "Inventory and formal-support status",
-          "line": 286
+          "id": "the-repository-inventory",
+          "title": "The repository inventory",
+          "line": 162
         },
         {
           "level": 2,
-          "id": "historical-false-edit-trial",
-          "title": "Historical false-edit trial",
-          "line": 292
+          "id": "a-false-claim-that-passed-the-checks",
+          "title": "A false claim that passed the checks",
+          "line": 172
         },
         {
           "level": 2,
-          "id": "local-integration-and-unperformed-reader-evaluation",
-          "title": "Local integration and unperformed reader evaluation",
-          "line": 333
+          "id": "a-local-contribution-handoff",
+          "title": "A local contribution handoff",
+          "line": 203
         },
         {
           "level": 1,
           "id": "sec:related",
-          "title": "Related work",
-          "line": 341
-        },
-        {
-          "level": 4,
-          "id": "prove2me.",
-          "title": "Prove2Me.",
-          "line": 347
+          "title": "Relation to existing systems",
+          "line": 209
         },
         {
           "level": 1,
           "id": "sec:limits",
-          "title": "Limits",
-          "line": 361
+          "title": "Limits and the next evaluation",
+          "line": 225
+        },
+        {
+          "level": 1,
+          "id": "sec:conclusion",
+          "title": "Conclusion",
+          "line": 241
         },
         {
           "level": 1,
           "id": "app:repro",
-          "title": "Reading the materials and reproducing checks",
-          "line": 375
-        },
-        {
-          "level": 2,
-          "id": "read-a-result-and-follow-its-sources",
-          "title": "Read a result and follow its sources",
-          "line": 381
-        },
-        {
-          "level": 2,
-          "id": "inspect-the-records-and-rerun-document-checks",
-          "title": "Inspect the records and rerun document checks",
-          "line": 387
-        },
-        {
-          "level": 2,
-          "id": "locate-the-formal-supports-of-the-worked-example",
-          "title": "Locate the formal supports of the worked example",
-          "line": 404
-        },
-        {
-          "level": 2,
-          "id": "interpret-the-recorded-inventory",
-          "title": "Interpret the recorded inventory",
-          "line": 421
-        },
-        {
-          "level": 2,
-          "id": "identify-the-version-and-the-earlier-design-accounts",
-          "title": "Identify the version and the earlier design accounts",
-          "line": 431
+          "title": "Sources and checks",
+          "line": 247
         },
         {
           "level": 1,
           "id": "app:worked-proof",
-          "title": "The mathematical example: a criterion for irrationality",
-          "line": 445
-        },
-        {
-          "level": 2,
-          "id": "the-question-and-its-antecedents",
-          "title": "The question and its antecedents",
-          "line": 451
-        },
-        {
-          "level": 2,
-          "id": "a-weighted-condition-on-the-retained-exponents",
-          "title": "A weighted condition on the retained exponents",
-          "line": 472
-        },
-        {
-          "level": 2,
-          "id": "why-the-weighted-condition-reaches-further",
-          "title": "Why the weighted condition reaches further",
-          "line": 489
-        },
-        {
-          "level": 2,
-          "id": "the-proof-by-two-averages",
-          "title": "The proof by two averages",
-          "line": 509
-        },
-        {
-          "level": 4,
-          "id": "the-lower-bound-under-rationality.",
-          "title": "The lower bound under rationality.",
-          "line": 515
-        },
-        {
-          "level": 4,
-          "id": "averaging-over-a-residue-period.",
-          "title": "Averaging over a residue period.",
-          "line": 535
-        },
-        {
-          "level": 4,
-          "id": "averaging-over-dyadic-lengths.",
-          "title": "Averaging over dyadic lengths.",
-          "line": 555
-        },
-        {
-          "level": 4,
-          "id": "choosing-the-modulus-and-the-averaging-lengths.",
-          "title": "Choosing the modulus and the averaging lengths.",
-          "line": 569
+          "title": "The condition in the Problem 257 example",
+          "line": 264
         },
         {
           "level": 1,
           "id": "app:attribution",
-          "title": "Attribution and scope in three further examples",
-          "line": 606
-        },
-        {
-          "level": 2,
-          "id": "counting-repeated-terms-changes-the-question",
-          "title": "Counting repeated terms changes the question",
-          "line": 612
-        },
-        {
-          "level": 2,
-          "id": "an-explicit-description-and-a-stronger-antecedent",
-          "title": "An explicit description and a stronger antecedent",
-          "line": 622
-        },
-        {
-          "level": 2,
-          "id": "a-construction-its-formalisation-and-the-historical-question",
-          "title": "A construction, its formalisation and the historical question",
-          "line": 630
+          "title": "Other scope and attribution records",
+          "line": 285
         },
         {
           "level": 1,
           "id": "app:source-map",
-          "title": "A reading map for the wider literature",
-          "line": 646
+          "title": "Reference map",
+          "line": 295
         }
       ],
-      "citations_rendered": 52,
+      "citations_rendered": 40,
       "local_pdf": "paper/systems/claim-faithful-publication-systems-paper.pdf",
-      "pdf_sha256": "sha256:910d0e8f7a69097c1bf99ec03aee47d14d4f808dda40c749bfc51f0b37b5ec16",
-      "pdf_byte_count": 174471,
+      "pdf_sha256": "sha256:1618a00c7e13a6fc3e670a24c54338f4d890957c751588a3c24d83a61a625319",
+      "pdf_byte_count": 125856,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection for this guide",
@@ -8227,27 +8119,27 @@
           {
             "id": "sec:intro",
             "title": "Introduction",
-            "line": 13
+            "line": 15
           },
           {
             "id": "sec:example",
-            "title": "Worked case: reviewing an explanation",
-            "line": 130
+            "title": "What the editor must still decide",
+            "line": 104
           },
           {
             "id": "sec:paper",
-            "title": "Publication and revision",
-            "line": 202
+            "title": "Prepare a draft without changing its evidence",
+            "line": 126
           },
           {
             "id": "sec:checks",
-            "title": "Proof and publication checks",
-            "line": 142
+            "title": "Statements, explanations and their evidence",
+            "line": 69
           },
           {
             "id": "sec:limits",
-            "title": "Limits",
-            "line": 361
+            "title": "Limits and the next evaluation",
+            "line": 225
           }
         ],
         "unresolved_count": 0
