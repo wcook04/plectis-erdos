@@ -474,7 +474,12 @@ def build_weighted_task() -> dict[Path, str]:
     authored = WEIGHTED_PACKET.read_text()
     criterion = marked_region(authored, "weighted_task_criterion")
     exercise = marked_region(authored, "weighted_task_exercise")
-    # Relative source links in the authored packet have the same two-level depth.
+    # Saved standalone packets need public destinations; retain the authored
+    # packet's repository-relative link in its own source document.
+    exercise = exercise.replace(
+        "(../../paper/257/erdos-257-mersenne-support-subseries.tex)",
+        f"({BLOB}paper/257/erdos-257-mersenne-support-subseries.tex)",
+    )
     source_paths = ["paper/257/erdos-257-mersenne-support-subseries.tex",
                     "lean/ErdosProblems/Erdos257/PaperCompleteR7/AnalyticTargets.lean",
                     "lean/ErdosProblems/Erdos257/PaperCompleteR8/WeightedReturn.lean"]

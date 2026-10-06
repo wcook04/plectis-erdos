@@ -204,6 +204,42 @@ class ResearchQueryTests(unittest.TestCase):
         self.assertEqual(expanded["object"]["statement"], statement)
         self.assertEqual(snapshot.objects["claim"]["claim0"]["statement"], statement)
 
+    def test_malformed_nested_registry_emits_structured_error(self):
+        mutations = [
+            ("docs/papers/corpus.json", {"papers": [None]}),
+            ("docs/papers/corpus.json", {"papers": {}}),
+            ("docs/papers/corpus.json", {"papers": [{"local_source": None}]}),
+            ("docs/papers/corpus.json", {"papers": [{"local_full_text": []}]}),
+            ("release", None),
+            ("declarations", [None]),
+            ("declarations", [{"module": []}]),
+            ("remaining_open_proposition_ids", [None]),
+            ("paper_anchor", None),
+            ("paper_anchor", {"source": []}),
+            ("open_target_claim", {}),
+        ]
+        for field, value in mutations:
+            with self.subTest(field=field, value=value):
+                registry = write_registry(self.root)
+                inventory = self.root / "docs/papers/corpus.json"
+                inventory.parent.mkdir(exist_ok=True)
+                inventory.write_text('{"papers":[]}')
+                if field.startswith("docs/"):
+                    (self.root / field).write_text(json.dumps(value))
+                elif field == "release":
+                    registry[field] = value
+                elif field in ("declarations", "remaining_open_proposition_ids"):
+                    registry["claims"][0][field] = value
+                else:
+                    registry["remaining_open_propositions"][0][field] = value
+                (self.root / "docs/claims.json").write_text(json.dumps(registry))
+                out, err = io.StringIO(), io.StringIO()
+                with contextlib.redirect_stdout(out), contextlib.redirect_stderr(err):
+                    status = reader.main(["--root", str(self.root), "identity"])
+                self.assertEqual(status, 2)
+                self.error_code(json.loads(out.getvalue()), "source_inconsistency")
+                self.assertEqual(err.getvalue(), "")
+
     def test_duplicate_registry_ids_rejected(self):
         for kind in ("claims", "remaining_open_propositions"):
             registry = write_registry(self.root)

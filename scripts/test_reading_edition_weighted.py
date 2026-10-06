@@ -25,6 +25,14 @@ class WeightedTaskTests(unittest.TestCase):
         self.assertIn('not a separately named Lean-checked instance', text)
         self.assertLess(len(text.encode()), 16000)
 
+    def test_saved_packet_has_public_example_source_link(self):
+        text = next(iter(edition.build_weighted_task().values()))
+        self.assertIn("[paper's example](" + edition.BLOB
+                      + "paper/257/erdos-257-mersenne-support-subseries.tex)", text)
+        self.assertNotIn("(../../paper/", text)
+        self.assertIn("(../../paper/257/erdos-257-mersenne-support-subseries.tex)",
+                      edition.WEIGHTED_PACKET.read_text())
+
     def test_hint_disclosures_stop_before_worked_decisions(self):
         text = next(iter(edition.build_weighted_task().values()))
         first = text.split('<summary>Show one hint</summary>', 1)[1].split('</details>', 1)[0]

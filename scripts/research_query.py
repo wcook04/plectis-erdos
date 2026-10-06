@@ -52,6 +52,14 @@ class Snapshot:
         self.claims = self._json("docs/claims.json", required=True)
         self.papers = self._json("docs/papers/corpus.json").get("papers", [])
         evidence = self._json("docs/publication_evidence.json")
+        if not isinstance(self.claims.get("release", {}), dict):
+            raise QueryError("source_inconsistency", "Invalid release registry object")
+        if not isinstance(self.papers, list) or any(not isinstance(row, dict) for row in self.papers):
+            raise QueryError("source_inconsistency", "Invalid paper registry rows")
+        for row in self.papers:
+            for key in ("local_source", "local_full_text"):
+                if key in row and not isinstance(row[key], str):
+                    raise QueryError("source_inconsistency", f"Invalid paper source handle: {key}")
         self.objects = {"claim": {}, "open": {}, "evidence": {}}
         for kind, rows in (("claim", self.claims["claims"]),
                            ("open", self.claims["remaining_open_propositions"]),
@@ -65,10 +73,26 @@ class Snapshot:
                 self.objects[kind][ident] = row
         # Only registry-selected text sources can be read, never caller paths.
         for row in self.objects["claim"].values():
-            for declaration in row.get("declarations", []):
+            declarations = row.get("declarations", [])
+            if not isinstance(declarations, list) or any(not isinstance(d, dict) for d in declarations):
+                raise QueryError("source_inconsistency", "Invalid claim declaration rows")
+            for declaration in declarations:
+                if not isinstance(declaration.get("module"), str) or not declaration["module"]:
+                    raise QueryError("source_inconsistency", "Invalid declaration module handle")
                 self._capture(library_storage_path(declaration["module"]))
+            references = row.get("remaining_open_proposition_ids", [])
+            if not isinstance(references, list) or any(not isinstance(value, str) for value in references):
+                raise QueryError("source_inconsistency", "Invalid claim open-proposition references")
         for row in self.objects["open"].values():
-            path = row.get("paper_anchor", {}).get("source")
+            anchor = row.get("paper_anchor", {})
+            if not isinstance(anchor, dict):
+                raise QueryError("source_inconsistency", "Invalid open-proposition paper anchor")
+            path = anchor.get("source")
+            if path is not None and not isinstance(path, str):
+                raise QueryError("source_inconsistency", "Invalid open-proposition source handle")
+            target = row.get("open_target_claim")
+            if target is not None and not isinstance(target, str):
+                raise QueryError("source_inconsistency", "Invalid open-proposition target claim")
             if path:
                 self._capture(path)
         for row in self.papers:
