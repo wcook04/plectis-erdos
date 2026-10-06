@@ -60,6 +60,7 @@
     "passage_evidence": "65 units bound; all current source digests match",
     "generated_counts": "passed; generated macro regions unchanged",
     "pdf": "Tectonic build, 17 pages; all pages inspected",
-    "complete_release": "pending exact committed snapshot admission"
+    "complete_release": "The push guard requires clean committed-snapshot admission; the exact commit receipt is retained in maintainer custody and reported in the pull request.",
+    "status": "focused_native_checks_passed"
   }
 }
