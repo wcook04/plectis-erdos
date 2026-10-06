@@ -156,14 +156,14 @@
     },
     "erdos_257_reasoning_record": {
       "inputs": {
-        "paper/257/erdos257-mersenne-reasoning-surface.tex": "sha256:b5bb906130585421403fb2955ee08a596207ff928ac2197a1d6afe5a0daeb853",
+        "paper/257/erdos257-mersenne-reasoning-surface.tex": "sha256:185074ce31bacd2b3ab803ae1982face22f6951d82ae97d7c951fad2083325e6",
         "paper/evidence/erdos257-mersenne-reasoning-surface.tex": "sha256:3ae0d45633dae1966b9dbcad7d3ef837698acfd238679766000f37b47d213f37",
         "paper/module-aliases.tex": "sha256:6d6d9640a9b7f04d003ebbffb78db279f5af838a2afc99ba6b5b247cc67b6954",
         "paper/paper-evidence.tex": "sha256:1ba1b3a112445f6fee7794f2083c29a60fb102d239d5e799808a36b9a5e562e3",
         "paper/paper-house-style.sty": "sha256:554ed85b5315bd936a4d09d58f8727547c5bb1b299f9684eb6ef720b329759a2",
         "paper/problem-note-preamble.tex": "sha256:088d36d7ba3d3ee0cee2df99e8915927999698f19889f8ea0b8d55b3721ec778"
       },
-      "rendered_content_digest": "sha256:f7589e7d29959c9f635d89f94a3d12c3e960e2e81d339fd7df18a7929155f77c",
+      "rendered_content_digest": "sha256:c07798741476b7d1dd46a272b2ef798fc1040c6e1f25fa7f8f187b04749e34ef",
       "source_path": "paper/257/erdos257-mersenne-reasoning-surface.tex",
       "storage_path": "paper/257/erdos257-mersenne-reasoning-surface.pdf"
     },
