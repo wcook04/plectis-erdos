@@ -36,6 +36,8 @@ After deliberately changing a coverage row, run
 its records and reader projections. This refreshes the ledger's digest and
 counts without changing statuses or declarations; an unstamped ledger is
 refused by the reading edition and publication admission.
+After regenerating the records, run `python3 scripts/refresh_projections.py`
+to refresh their dependent reading audits and corpus projections together.
 
 Definition and structure identity uses `plectis-complete-source-support/1`.
 It includes the full owning module and every local module in its transitive
