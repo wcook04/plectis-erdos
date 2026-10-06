@@ -157,7 +157,9 @@ def check_companion_installation_default() -> None:
                     mock.patch.object(installer.os, "environ", environments), \
                     mock.patch.object(sys, "argv", [str(INSTALLER), *args]), \
                     contextlib.redirect_stdout(io.StringIO()) as output:
-                assert installer.main() == 0, args
+                result = installer.main()
+                if result != 0:
+                    raise AssertionError(f"installer returned {result}: {args}")
                 return output.getvalue()
         for host, target in (("codex", base / ".agents/skills"),
                              ("claude", base / "claude/skills"),
@@ -186,9 +188,13 @@ def check_companion_installation_default() -> None:
         names = ("explain-public-system", "mine-open-problem")
         run("--target-dir", str(chosen), "--skill", names[0], "--skill", names[1], "--apply")
         assert {p.name for p in chosen.iterdir()} == set(names)
-        assert set(run("--list").stdout.splitlines()) == set(run("--list", "--all-clone-skills").stdout.splitlines())
-        assert len(run("--list", "--companion").stdout.splitlines()) == 1
-        assert run("--list", "--skill", names[0]).stdout.startswith(names[0] + "\t")
+        listed_catalog = run("--list").stdout
+        listed_explicit_catalog = run("--list", "--all-clone-skills").stdout
+        listed_companion = run("--list", "--companion").stdout
+        listed_selection = run("--list", "--skill", names[0]).stdout
+        assert set(listed_catalog.splitlines()) == set(listed_explicit_catalog.splitlines())
+        assert len(listed_companion.splitlines()) == 1
+        assert listed_selection.startswith(names[0] + "\t")
         for flags in (("--companion", "--all-clone-skills"),
                       ("--companion", "--skill", names[0]),
                       ("--all-clone-skills", "--skill", names[0])):
