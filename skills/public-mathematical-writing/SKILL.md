@@ -357,6 +357,8 @@ that source and its warrant before updating the source and excerpt digests;
 the projection refresh does not perform this semantic review. Preserve the
 sentence, evidence class and warrant only when the changed catalog still
 supports them, then run `python3 scripts/systems_paper_evidence.py`.
+After the reviewed binding and any guidance edit are final, refresh projections
+again: source-attribution and registered-corpus views consume those files too.
 
 Before freezing evidence records or recipient packets, run the title and
 source-coordinate owners, then `python3 scripts/paper_evidence.py check` across
