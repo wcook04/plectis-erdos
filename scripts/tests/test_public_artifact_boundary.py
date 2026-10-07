@@ -17,6 +17,7 @@ from pathlib import Path
 from unittest.mock import patch
 
 import validation_singleflight as singleflight
+from test_human_first_contact import markdown_link_prose
 
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -179,11 +180,9 @@ def boundary_errors(
     # at; matching raw text made a paragraph reflow look like a lost promise.
     flowed_agents = flowed(agents)
     flowed_scope = flowed(scope)
-    flowed_readme = flowed(readme)
     for phrase in (
-        "not an entrypoint into any private development system",
-        "Work only from the files in this repository",
-        "never infer unpublished results or private machinery",
+        "Use tracked public evidence.",
+        "Do not infer results from private files, unreleased work or model output.",
     ):
         if flowed(phrase) not in flowed_agents:
             errors.append(f"agent entry lost public-boundary phrase: {phrase}")
@@ -193,8 +192,12 @@ def boundary_errors(
     ):
         if flowed(phrase) not in flowed_scope:
             errors.append(f"scope lost public-boundary phrase: {phrase}")
-    if "do not infer results from private or unreleased work" not in flowed_readme.casefold():
-        errors.append("README lost private-or-unreleased inference boundary")
+    # First contact routes to the generated methodology owner instead of
+    # copying its proof-authority inventory. The supplied scope snapshot above
+    # is validated; reading a live replacement here would hide owner mutations.
+    owner_links = ("](docs/METHODOLOGY.md)", "](docs/METHODOLOGY.md#release-scope)")
+    if not any(link in markdown_link_prose(readme) for link in owner_links):
+        errors.append("README lost its methodology proof-authority boundary route")
 
     non_claims = {row["id"] for row in claims["non_claims"]}
     required_non_claims = {
@@ -384,8 +387,8 @@ def main() -> int:
         "live portfolio visibility contract is invalid",
     )
 
-    missing_agent_rule = agents.replace(
-        "never infer unpublished results or private machinery", "", 1
+    missing_agent_rule = flowed(agents).replace(
+        "Do not infer results from private files, unreleased work or model output.", "", 1
     )
     require(
         any(
@@ -396,6 +399,34 @@ def main() -> int:
         ),
         "missing agent boundary rule was accepted",
     )
+    missing_owner_route = readme.replace(
+        "](docs/METHODOLOGY.md)", "](docs/ARCHITECTURE.md)"
+    ).replace(
+        "](docs/METHODOLOGY.md#release-scope)", "](docs/ARCHITECTURE.md)"
+    )
+    require(
+        any("README lost its methodology" in error for error in boundary_errors(
+            agents, scope, missing_owner_route, claims, methodology, summary
+        )),
+        "missing README boundary-owner route was accepted",
+    )
+    code_only_route = missing_owner_route + "\n`[Methodology](docs/METHODOLOGY.md)`\n"
+    require(
+        any("README lost its methodology" in error for error in boundary_errors(
+            agents, scope, code_only_route, claims, methodology, summary
+        )),
+        "code-only boundary link was mistaken for a reader route",
+    )
+    weakened_owner = scope.replace(
+        "not public proof artefacts", "sufficient public proof artefacts", 1
+    )
+    require(
+        any("scope lost public-boundary phrase" in error for error in boundary_errors(
+            agents, weakened_owner, readme, claims, methodology, summary
+        )),
+        "weakened supplied methodology boundary was hidden by a live owner read",
+    )
+
     missing_projection = deepcopy(summary)
     missing_projection["non_claims"] = [
         row for row in summary["non_claims"] if row["id"] != "not_hidden_proof_body_authority"

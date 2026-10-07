@@ -40,7 +40,7 @@ def require_rejected(errors: list[str], expected: str, fixture: str) -> None:
     )
 
 
-def contract_errors(example: str, workbench: str, lakefile: str) -> list[str]:
+def contract_errors(example: str, workbench: str, lakefile: str, reproducibility: str) -> list[str]:
     """Return missing public-interface and claim-ceiling obligations."""
     errors: list[str] = []
     example_requirements = {
@@ -59,23 +59,27 @@ def contract_errors(example: str, workbench: str, lakefile: str) -> list[str]:
         if token not in example:
             errors.append(f"downstream example lost {label}")
 
-    workbench_requirements = {
-        "consumer route": "[`examples/Examples.lean`](../../research/examples/Examples.lean)",
-        "conditional interface description":
-            "conditional shell-pressure example",
+    route = "../REPRODUCIBILITY.md#use-the-library-in-another-lean-project"
+    if f"]({route})" not in workbench:
+        errors.append("agent workbench lost downstream consumer route")
+    heading = "### Use the library in another Lean project"
+    if heading not in reproducibility:
+        errors.append("downstream owner lost routed section")
+        owner_section = ""
+    else:
+        owner_section = reproducibility.split(heading, 1)[1].split("\n### ", 1)[0]
+    owner_requirements = {
+        "consumer route": "[consumer examples](../research/examples/Examples.lean)",
+        "conditional interface description": "conditional shell-pressure example",
         "explicit-hypothesis boundary": "leaves the analytic hypothesis explicit",
-        "universal claim ceiling":
-            "does not prove universal #257",
+        "universal claim ceiling": "does not prove universal #257",
     }
-    # Match on collapsed whitespace. These tokens are sentences, and a sentence
-    # is the same sentence whichever column it wraps at; pinning the line break
-    # made the contract fail on a reflow that changed nothing it cares about.
-    # The operator-authored README has no command block; the downstream
-    # consumer route lives on the agent workbench.
-    flowed_workbench = " ".join(workbench.split())
-    for label, token in workbench_requirements.items():
-        if " ".join(token.split()) not in flowed_workbench:
-            errors.append(f"agent workbench lost downstream {label}")
+    # Validate the supplied routed owner snapshot, including mutation fixtures;
+    # never read a fresh file behind the fixture or duplicate this prose in the workbench.
+    flowed_owner = " ".join(owner_section.split())
+    for label, token in owner_requirements.items():
+        if " ".join(token.split()) not in flowed_owner:
+            errors.append(f"reproducibility owner lost downstream {label}")
 
     try:
         lake_config = tomllib.loads(lakefile)
@@ -172,8 +176,9 @@ def main() -> int:
     example = (ROOT / "research" / "examples" / "Examples.lean").read_text(encoding="utf-8")
     workbench = (ROOT / "docs/agents" / "AGENT_WORKBENCH.md").read_text(encoding="utf-8")
     lakefile = (ROOT / "lakefile.toml").read_text(encoding="utf-8")
+    reproducibility = (ROOT / "docs/REPRODUCIBILITY.md").read_text(encoding="utf-8")
     require_clean(
-        contract_errors(example, workbench, lakefile),
+        contract_errors(example, workbench, lakefile, reproducibility),
         "examples/Examples.lean, docs/agents/AGENT_WORKBENCH.md, or lakefile.toml",
     )
     problem249 = (
@@ -196,7 +201,7 @@ def main() -> int:
         1,
     )
     require_rejected(
-        contract_errors(implicit_hypothesis, workbench, lakefile),
+        contract_errors(implicit_hypothesis, workbench, lakefile, reproducibility),
         "explicit analytic hypothesis",
         "example renames the named analytic hypothesis `hupper`",
     )
@@ -207,7 +212,7 @@ def main() -> int:
         1,
     )
     require_rejected(
-        contract_errors(weakened_conclusion, workbench, lakefile),
+        contract_errors(weakened_conclusion, workbench, lakefile, reproducibility),
         "exact shell-power conclusion",
         "example weakens the shell-power conclusion to `0 ≤ ...`",
     )
@@ -218,20 +223,33 @@ def main() -> int:
         1,
     )
     require_rejected(
-        contract_errors(lost_local_ceiling, workbench, lakefile),
+        contract_errors(lost_local_ceiling, workbench, lakefile, reproducibility),
         "universal claim ceiling",
         "example doc-comment claims it proves universal Erdős #257",
     )
 
-    overstated_workbench = workbench.replace(
-        "does not prove universal #257",
-        "proves universal #257",
-        1,
+    overstated_owner = reproducibility.replace(
+        "does not prove universal #257", "proves universal #257", 1,
     )
     require_rejected(
-        contract_errors(example, overstated_workbench, lakefile),
+        contract_errors(example, workbench, lakefile, overstated_owner),
         "universal claim ceiling",
-        "agent workbench claims the example proves universal #257",
+        "routed reproducibility owner claims the example proves universal #257",
+    )
+    implicit_owner = reproducibility.replace("leaves the analytic hypothesis explicit", "omits the analytic hypothesis", 1)
+    require_rejected(
+        contract_errors(example, workbench, lakefile, implicit_owner),
+        "explicit-hypothesis boundary", "routed owner hides the analytic assumption",
+    )
+    missing_route = workbench.replace("../REPRODUCIBILITY.md#use-the-library-in-another-lean-project", "../REPRODUCIBILITY.md#missing", 1)
+    require_rejected(
+        contract_errors(example, missing_route, lakefile, reproducibility),
+        "consumer route", "workbench loses its actual owner link",
+    )
+    missing_section = reproducibility.replace("### Use the library in another Lean project", "### Retired recipe", 1)
+    require_rejected(
+        contract_errors(example, workbench, lakefile, missing_section),
+        "routed section", "owner loses the target heading",
     )
 
     renamed_target = lakefile.replace(
@@ -240,7 +258,7 @@ def main() -> int:
         1,
     )
     require_rejected(
-        contract_errors(example, workbench, renamed_target),
+        contract_errors(example, workbench, renamed_target, reproducibility),
         "exactly one Examples lean_lib",
         "lakefile renames the Examples lean_lib to ConsumerExamples",
     )
@@ -251,7 +269,7 @@ def main() -> int:
         1,
     )
     require_rejected(
-        contract_errors(example, workbench, displaced_source),
+        contract_errors(example, workbench, displaced_source, reproducibility),
         "srcDir research/examples",
         "lakefile moves the Examples srcDir away from research/examples/",
     )
@@ -262,7 +280,7 @@ def main() -> int:
         1,
     )
     require_rejected(
-        contract_errors(example, workbench, default_example),
+        contract_errors(example, workbench, default_example, reproducibility),
         "defaultTargets",
         "lakefile promotes Examples into defaultTargets",
     )
@@ -308,7 +326,7 @@ def main() -> int:
         "test_downstream_example_contract: proved and conditional consumers "
         "retain an exact conclusion, explicit open boundary, and non-default "
         "Lake target; portfolio wrappers and open boundaries remain exact; "
-        "10 negative fixtures rejected"
+        "13 negative fixtures rejected"
     )
     return 0
 

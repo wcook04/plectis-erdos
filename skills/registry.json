@@ -1414,6 +1414,24 @@
             "citations",
             "cff"
           ]
+        },
+        {
+          "actions": [
+            "consolidate",
+            "consolidating",
+            "organize",
+            "organise",
+            "organizing",
+            "organising",
+            "reorganize",
+            "reorganise"
+          ],
+          "objects": [
+            "documentation",
+            "docs",
+            "folders",
+            "directories"
+          ]
         }
       ],
       "skills": [

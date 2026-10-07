@@ -581,12 +581,12 @@
       "id": "workbench-guide",
       "path": "docs/agents/AGENT_WORKBENCH.md",
       "start_line": 1,
-      "end_line": 315,
+      "end_line": 316,
       "kind": "source",
-      "sha256": "758321c97c1144e89e6d2d87ce51bf5d7f1d7b8d1586fdb253c0c07dbc756df2",
-      "excerpt_sha256": "758321c97c1144e89e6d2d87ce51bf5d7f1d7b8d1586fdb253c0c07dbc756df2",
+      "sha256": "371c1c3d425a4942cc404cd1b9b810c141248a4143c8b5ef2c6581ee78fc893a",
+      "excerpt_sha256": "371c1c3d425a4942cc404cd1b9b810c141248a4143c8b5ef2c6581ee78fc893a",
       "rebind_review": {
-        "reason": "Workbench retains optional recorded sessions, accepted-probe/formal-claim distinction, typed lookup, source routes and contribution protocol. Consolidation removes duplicated command listings without requiring sessions for ordinary contributions.",
+        "reason": "Workbench retains optional recorded sessions, accepted-probe/formal-claim distinction, typed lookup, source routes and contribution protocol. Consolidation removes duplicated command listings without requiring sessions for ordinary contributions. Final footer repair makes the downstream-package recipe fragment explicit; optional sessions and contribution roles remain unchanged.",
         "previous_binding": {
           "path": "docs/agents/AGENT_WORKBENCH.md",
           "start_line": 1,
@@ -1016,11 +1016,11 @@
       "path": "docs/agents/AGENT_WORKBENCH.md",
       "start_line": 198,
       "end_line": 225,
-      "sha256": "758321c97c1144e89e6d2d87ce51bf5d7f1d7b8d1586fdb253c0c07dbc756df2",
+      "sha256": "371c1c3d425a4942cc404cd1b9b810c141248a4143c8b5ef2c6581ee78fc893a",
       "excerpt_sha256": "81134a83c49fab0e628fcb25d139a389b829e01c716dac0375b8e22342574d91",
       "custody": "Type A current implementation inspection for R9 systems integration; no new probe run.",
       "rebind_review": {
-        "reason": "The original reviewed excerpt is retained byte-for-byte; only the enclosing file digest and shifted coordinates are rebound.",
+        "reason": "The original reviewed excerpt is retained byte-for-byte; only the enclosing file digest and shifted coordinates are rebound. Final footer route repair is outside this unchanged session excerpt.",
         "previous_binding": {
           "path": "docs/agents/AGENT_WORKBENCH.md",
           "start_line": 175,

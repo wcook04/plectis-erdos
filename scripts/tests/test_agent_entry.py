@@ -276,6 +276,24 @@ ROUTE_CASES = {
     "Verify a claim without installing Lean": (
         "reproduce_claim", "explain-public-system",
     ),
+    "consolidate documentation and organize repository folders": (
+        "repository_architecture", "maintain-public-infrastructure",
+    ),
+    "Consolidate the overlapping guides in the documentation": (
+        "repository_architecture", "maintain-public-infrastructure",
+    ),
+    "Reorganise the repository folders for public readers": (
+        "repository_architecture", "maintain-public-infrastructure",
+    ),
+    "Prove the Lean theorem using the repository documentation": (
+        "bounded_research", "mine-open-problem",
+    ),
+    "Submit my documentation patch as a pull request": (
+        "submit_change", "submit-pull-request",
+    ),
+    "Give me one hint for the theorem described in the documentation": (
+        "read_mathematics", "explain-public-system",
+    ),
     "Organize crowded docs for readers, verification and agent workflows": (
         "repository_architecture", "maintain-public-infrastructure",
     ),

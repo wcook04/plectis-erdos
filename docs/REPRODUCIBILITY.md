@@ -328,6 +328,11 @@ statements and their limits are in the source and [claim record](claims.json).
 
 ### Use the library in another Lean project
 
+The [consumer examples](../research/examples/Examples.lean) include a
+conditional shell-pressure example. It leaves the analytic hypothesis explicit
+and does not prove universal #257. Inspect the named hypothesis and exact
+shell-power conclusion before reusing that interface.
+
 Match this checkout's `lean-toolchain` in your project. In your project's
 `lakefile.toml`, add the dependency below alongside your own package and target
 declarations. The package name is `erdos249257`; the repository name is

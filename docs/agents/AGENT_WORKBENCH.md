@@ -311,5 +311,6 @@ source-only frontier.
 
 
 For setup, use the [agent quickstart](README.md#start-with-current-public-work).
-[Reproducibility](../REPRODUCIBILITY.md) owns build and downstream-package
-instructions; [architecture](../ARCHITECTURE.md) explains the evidence layers.
+[Reproducibility](../REPRODUCIBILITY.md) owns build instructions and the
+[downstream-package recipe](../REPRODUCIBILITY.md#use-the-library-in-another-lean-project);
+[architecture](../ARCHITECTURE.md) explains the evidence layers.
