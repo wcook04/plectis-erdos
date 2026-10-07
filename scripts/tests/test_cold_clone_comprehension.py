@@ -356,36 +356,8 @@ def main() -> int:
     }
     human_surfaces.update(routed_surfaces)
     paper_library = diagnostic.read(diagnostic.PAPER_LIBRARY_SURFACE)
-    # The generated shelf may be one exporter turn behind while this focused
-    # consumer test is being landed. Build a minimal compliant fixture from
-    # the live Palomar ranking so the positive contract remains executable,
-    # while the real shelf is still checked for stale/reordered content.
-    showcase = json.loads(diagnostic.read("docs/PALOMAR_RESULT_SHOWCASE.json"))
-    ranked_rows = list(reversed(showcase["candidate_ranking"]))
-    ranked_fixture = "\n\n".join(
-        "\n".join(
-            (
-                f"#### {row['rank']}. fixture — `{row['family_id']}`",
-                f"- **Checked interface:** `{row['declaration']}`",
-                "- **Source declaration:** fixture source",
-                "- **Hard mechanism:** fixture friction",
-                "- **Evidence:** fixture evidence",
-                "- **Boundary:** fixture boundary",
-            )
-        )
-        for row in sorted(ranked_rows, key=lambda row: row["rank"])
-    )
-    compliant_paper_library = (
-        "## Mathematical signal first\n\n"
-        "This reader order projects the canonical Palomar `candidate_ranking`; "
-        "it is not a proof, novelty, review, or closure claim.\n\n"
-        "### Ranked frontier\n\n"
-        + ranked_fixture
-        + "\n\n### Represented natural friction\n\n- fixture friction\n\n"
-        "### Explicitly subordinate, rejected, and long tail\n\n"
-        "- fixture long tail\n\n"
-        "## Problem portfolio (complete 15-paper inventory)\n"
-    )
+    paper_owners = {path: diagnostic.read(path)
+                    for path in ('paper/README.md', 'docs/RESULTS.md')}
     diagnostic.validate_human_first_contact(quick_summary, human_surfaces)
     diagnostic.validate_human_first_contact(summary, human_surfaces)
     checks = 4
@@ -424,17 +396,7 @@ def main() -> int:
     )
     checks += 1
 
-    try:
-        diagnostic.validate_paper_library_first_contact(paper_library)
-    except AssertionError:
-        checks += 1
-    else:
-        # A concurrently refreshed exporter may already have repaired the
-        # committed shelf; the positive contract below still exercises it.
-        pass
-    diagnostic.validate_paper_library_first_contact(
-        compliant_paper_library, ranking=ranked_rows
-    )
+    diagnostic.validate_paper_library_first_contact(paper_library, surfaces=paper_owners)
     census = diagnostic.semantic_census()
     census_surfaces = {
         path: diagnostic.read(path) for path in diagnostic.CENSUS_SURFACES
@@ -452,95 +414,46 @@ def main() -> int:
     diagnostic.validate_incremental_build_contract(incremental_surfaces)
     diagnostic.validate_agent_packets(packets)
 
-    mutated_paper_library = compliant_paper_library.replace(
-        "## Mathematical signal first", "## Problem portfolio", 1
-    )
-    try:
-        diagnostic.validate_paper_library_first_contact(mutated_paper_library)
-    except AssertionError:
-        checks += 1
-    else:
-        raise AssertionError("paper-library signal heading deletion escaped")
-
-    mutated_paper_library = compliant_paper_library.replace(
-        "## Mathematical signal first",
-        "## Problem portfolio (complete 15-paper inventory)\n\n## Mathematical signal first",
-        1,
-    )
-    try:
-        diagnostic.validate_paper_library_first_contact(mutated_paper_library)
-    except AssertionError:
-        checks += 1
-    else:
-        raise AssertionError("paper-library inventory reordering escaped")
-
-    first_family = showcase["candidate_ranking"][0]["family_id"]
-    mutated_paper_library = compliant_paper_library.replace(f"`{first_family}`", "`invented_family`", 1)
-    try:
-        diagnostic.validate_paper_library_first_contact(mutated_paper_library)
-    except AssertionError:
-        checks += 1
-    else:
-        raise AssertionError("paper-library invented ranked family escaped")
-
-    mutated_paper_library = compliant_paper_library.replace(
-        "**Source declaration:**", "**Unbound source:**", 1
-    )
-    try:
-        diagnostic.validate_paper_library_first_contact(
-            mutated_paper_library, ranking=ranked_rows
-        )
-    except AssertionError:
-        checks += 1
-    else:
-        raise AssertionError("paper-library exact-source deletion escaped")
-
-    mutated_paper_library = compliant_paper_library.replace(
-        "**Hard mechanism:**", "**Mechanism:**", 1
-    )
-    try:
-        diagnostic.validate_paper_library_first_contact(
-            mutated_paper_library, ranking=ranked_rows
-        )
-    except AssertionError:
-        checks += 1
-    else:
-        raise AssertionError("paper-library natural-friction deletion escaped")
-
-    mutated_paper_library = compliant_paper_library.replace(
-        "**Evidence:**", "**Evidence note:**", 1
-    )
-    try:
-        diagnostic.validate_paper_library_first_contact(
-            mutated_paper_library, ranking=ranked_rows
-        )
-    except AssertionError:
-        checks += 1
-    else:
-        raise AssertionError("paper-library evidence-ceiling deletion escaped")
-
-    mutated_paper_library = compliant_paper_library.replace(
-        "**Boundary:**", "**Conclusion:**", 1
-    )
-    try:
-        diagnostic.validate_paper_library_first_contact(
-            mutated_paper_library, ranking=ranked_rows
-        )
-    except AssertionError:
-        checks += 1
-    else:
-        raise AssertionError("paper-library boundary deletion escaped")
-
-    duplicate_rank_rows = copy.deepcopy(ranked_rows)
-    duplicate_rank_rows[1]["rank"] = duplicate_rank_rows[0]["rank"]
-    try:
-        diagnostic.validate_paper_library_first_contact(
-            compliant_paper_library, ranking=duplicate_rank_rows
-        )
-    except AssertionError:
-        checks += 1
-    else:
-        raise AssertionError("duplicate Palomar rank escaped")
+    shelf_mutations = [
+        paper_library.replace('](../../paper/README.md)', '](../../paper/missing.md)'),
+        paper_library.replace('](../RESULTS.md)', '](../missing.md)'),
+        re.sub(r'\[[^]]+\]\(\.\./RESULTS\.md\)', lambda match: '`' + match.group(0) + '`', paper_library),
+        paper_library.replace('<a id="problem-portfolio"></a>', ''),
+    ]
+    for mutant in shelf_mutations:
+        require(mutant != paper_library, 'paper shelf mutation lost its target')
+        try:
+            diagnostic.validate_paper_library_first_contact(mutant, surfaces=paper_owners)
+        except AssertionError:
+            checks += 1
+        else:
+            raise AssertionError('paper shelf broken/unlinked/code-only route escaped')
+    for path, token in (
+        ('paper/README.md', 'seven targets remain open'),
+        ('docs/RESULTS.md', 'does not assess novelty'),
+        ('docs/RESULTS.md', 'pinned Lean kernel is proof authority'),
+    ):
+        weakened = dict(paper_owners)
+        weakened[path] = weakened[path].replace(token, 'unbounded acceptance')
+        require(weakened[path] != paper_owners[path], 'owner boundary mutation lost target')
+        try:
+            diagnostic.validate_paper_library_first_contact(paper_library, surfaces=weakened)
+        except AssertionError:
+            checks += 1
+        else:
+            raise AssertionError('weakened captured scope/authority boundary escaped')
+    for path in paper_owners:
+        missing = dict(paper_owners)
+        del missing[path]
+        weakened = dict(paper_owners)
+        weakened[path] = 'A paper with no scope limits.'
+        for mutant in (missing, weakened):
+            try:
+                diagnostic.validate_paper_library_first_contact(paper_library, surfaces=mutant)
+            except AssertionError:
+                checks += 1
+            else:
+                raise AssertionError('paper shelf missing/weakened captured owner escaped')
 
     mutated = copy.deepcopy(human_surfaces)
     mutated["README.md"] = (

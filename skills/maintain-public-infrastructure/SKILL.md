@@ -215,6 +215,9 @@ Tests must check that a reader can follow the maintained route to those facts.
 After merging a guide, validate the visible link and its captured destination's
 actual boundaries; a required phrase copied into every entrypoint defeats
 consolidation. Code examples and broken links cannot satisfy that route.
+Positive navigation tests must read the shipped guide and its captured owners.
+Do not tolerate that guide failing while a synthetic replacement passes; mutate
+the passing real route to exercise missing links and weakened boundaries.
 These boundaries follow the [AGENTS.md convention](https://agents.md/) and
 [Google's documentation guidance](https://google.github.io/styleguide/docguide/best_practices.html):
 keep reader and agent instructions distinct, remove dead documentation, and

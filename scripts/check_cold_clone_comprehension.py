@@ -1252,133 +1252,31 @@ def validate_human_first_contact(
 
 
 def validate_paper_library_first_contact(
-    paper_readme: str, *, ranking: list[dict[str, Any]] | None = None
+    paper_readme: str, *, surfaces: dict[str, str] | None = None
 ) -> None:
-    """Ensure the generated paper shelf leads with canonical mathematical signal.
-
-    The exporter owns the prose; this consumer only checks the public contract:
-    Palomar's ranked families come before the complete inventory, and the
-    generated shelf keeps represented friction and subordinate/long-tail
-    boundaries visible.  Ranking authority is loaded from the committed
-    Palomar showcase rather than duplicated here.
-    """
-    require(
-        len(paper_readme.encode("utf-8")) <= PAPER_LIBRARY_FIRST_CONTACT_BUDGET_BYTES,
-        "paper-library README exceeds its bounded first-contact budget",
-    )
-    if ranking is None:
-        showcase = json.loads(read("docs/PALOMAR_RESULT_SHOWCASE.json"))
-        ranking = showcase.get("candidate_ranking")
-    require(isinstance(ranking, list) and ranking, "Palomar candidate ranking is missing")
-    signal_heading = paper_readme.find("## Mathematical signal first")
-    ranked_heading = paper_readme.find("### Ranked frontier")
-    friction_heading = paper_readme.find("### Represented natural friction")
-    long_tail_heading = paper_readme.find(
-        "### Explicitly subordinate, rejected, and long tail"
-    )
-    inventory_match = re.search(
-        r"^## (?:Problem portfolio \(complete \d+-paper inventory\)|All papers \(\d+\))$",
-        paper_readme,
-        re.MULTILINE,
-    )
-    inventory_heading = inventory_match.start() if inventory_match else -1
-    positions = (
-        signal_heading,
-        ranked_heading,
-        friction_heading,
-        long_tail_heading,
-        inventory_heading,
-    )
-    require(
-        all(position >= 0 for position in positions),
-        "paper-library README lost signal, friction, long-tail, or inventory headings",
-    )
-    require(
-        list(positions) == sorted(positions),
-        "paper-library README moved exhaustive inventory ahead of mathematical signal",
-    )
-    paper_flat = normalized(paper_readme)
-    require("candidate_ranking" in paper_flat,
-            "paper-library README lost Palomar ranking authority")
-    require(
-        (
-            "not a proof, novelty, or closure claim" in paper_flat
-            or "not a proof, novelty, review, or closure claim" in paper_flat
-        ),
-        "paper-library README lost Palomar evidence boundary",
-    )
-    ranked_candidates = sorted(ranking, key=lambda row: row.get("rank", 0))
-    ranks = [candidate.get("rank") for candidate in ranked_candidates]
-    require(
-        all(isinstance(rank, int) and rank > 0 for rank in ranks),
-        "Palomar candidate ranking has a non-positive or malformed rank",
-    )
-    require(
-        len(ranks) == len(set(ranks)),
-        "Palomar candidate ranking reuses an explicit rank",
-    )
-    previous = -1
-    marker_positions: list[int] = []
-    for candidate in ranked_candidates:
-        rank = candidate.get("rank")
-        family_id = candidate.get("family_id")
-        declaration = candidate.get("declaration")
-        require(isinstance(rank, int) and isinstance(family_id, str) and family_id,
-                "Palomar candidate ranking row is malformed")
-        require(
-            isinstance(declaration, str) and declaration,
-            f"Palomar candidate {family_id} lacks its checked declaration",
-        )
-        for field in (
-            "evidence_certainty",
-            "overclaim_risk",
-            "mechanism_depth_and_natural_friction",
-        ):
-            require(
-                isinstance(candidate.get(field), str) and candidate[field].strip(),
-                f"Palomar candidate {family_id} lacks {field}",
-            )
-        marker = f"#### {rank}."
-        marker_position = paper_readme.find(marker, ranked_heading)
-        require(
-            marker_position >= 0 and marker_position > previous,
-            f"paper-library README lost canonical ranked family {family_id}",
-        )
-        family_position = paper_readme.find(f"`{family_id}`", marker_position)
-        require(
-            family_position >= marker_position and family_position < friction_heading,
-            f"paper-library README detached ranked family {family_id} from frontier",
-        )
-        marker_positions.append(marker_position)
-        previous = marker_position
-
-    for index, candidate in enumerate(ranked_candidates):
-        entry_end = (
-            marker_positions[index + 1]
-            if index + 1 < len(marker_positions)
-            else friction_heading
-        )
-        entry = paper_readme[marker_positions[index]:entry_end]
-        # The exporter owns this prose and renamed three of its labels; the
-        # fields themselves are all still there. This consumer checks that each
-        # ranked family still carries its interface, its source declaration, the
-        # mechanism, the evidence ceiling and the boundary, under the names the
-        # shelf actually prints.
-        for label in (
-            "**Checked interface:**",
-            "**Source declaration:**",
-            "**Hard mechanism:**",
-            "**Evidence:**",
-            "**Boundary:**",
-        ):
-            require(
-                label in entry,
-                f"paper-library README ranked family {candidate['family_id']} lost {label}",
-            )
-        require(
-            candidate["declaration"] in entry,
-            f"paper-library README ranked family {candidate['family_id']} lost its exact checked interface",
-        )
+    """Validate visible routes from the compact shelf to captured reader owners."""
+    from check_release import visible_owner_routes
+    require(len(paper_readme.encode()) <= PAPER_LIBRARY_FIRST_CONTACT_BUDGET_BYTES,
+            "paper-library README exceeds its bounded first-contact budget")
+    owners = ('paper/README.md', 'docs/RESULTS.md')
+    if surfaces is None:
+        surfaces = {path: read(path) for path in owners}
+    documents = dict(surfaces, **{PAPER_LIBRARY_SURFACE: paper_readme})
+    reached = visible_owner_routes(PAPER_LIBRARY_SURFACE, documents, depth=1)
+    for path in owners:
+        require(path in surfaces, f"paper shelf missing captured owner: {path}")
+        require(path in reached, f"paper shelf lost visible owner link: {path}")
+        owner = normalized(first_contact_surface_text(surfaces, path)).casefold()
+        require(normalized(release_status_boundary()).casefold() in owner,
+                f"paper shelf owner lost exact current status boundary: {path}")
+        require('comparator checks only selected exact statements' in owner
+                and 'does not assess novelty' in owner,
+                f"paper shelf owner lost Comparator scope boundary: {path}")
+    results = normalized(first_contact_surface_text(surfaces, 'docs/RESULTS.md')).casefold()
+    require('pinned lean kernel is proof authority' in results,
+            "paper shelf result owner lost formal proof authority")
+    require('<a id="problem-portfolio"></a>' in paper_readme,
+            "paper shelf lost stable programme inventory anchor")
 
 
 def semantic_census_from_public(public: dict[str, Any]) -> dict[str, Any]:
