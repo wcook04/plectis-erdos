@@ -1,0 +1,36 @@
+version: v0.4
+project:
+  name: Exact Formal Conjectures 1041 sharp normalized whole-gap adapter
+  description: Independent mechanical verification of the original linked adapter against the complete FC sharp normalized whole-gap statement, retaining strict monotonicity and endpoints minus one and one. No claim about the parent general path question is made.
+  authors: [Will Cook]
+  license: Apache-2.0
+  responsible_maintainers: [Will Cook]
+repository:
+  role: substantive-development
+classification:
+  arxiv: [math.CV]
+  msc2020: [30C10]
+sources:
+  - title: Formal Conjectures PR 6576 exact statement
+    authors: [Will Cook]
+    id: https://github.com/google-deepmind/formal-conjectures/blob/43874b729c11b65783050871577a22f9093362a8/FormalConjectures/ErdosProblems/1041.lean
+    type: other
+    relationship: formalizes
+    license: Apache-2.0
+    author_endorsement: participated
+  - title: Original pinned sharp-gap Lean adapter
+    authors: [Will Cook]
+    id: https://github.com/wcook04/plectis-erdos/blob/c45de9aab30cf25172040c94c60987dec46645d8/research/adapters/FC1041SharpGap.lean
+    type: other
+    relationship: other
+    license: Apache-2.0
+    author_endorsement: participated
+automation:
+  methods:
+    - method: agent
+      models: [OpenAI Codex, Anthropic Claude]
+      framework: Lean 4 and Mathlib
+      tool_setup: AI-assisted proof development under Will Cook's direction; this exact verification package was prepared with OpenAI Codex.
+review:
+  status: self-assessed
+  notes: Independent caller and source-byte review is recorded separately. Kernel results are pending the complete official mechanical report; no human mathematical peer review or registry acceptance is asserted.

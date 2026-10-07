@@ -1,0 +1,13 @@
+{
+  "challenge_module": "ExternalVerification.FC1041SharpGap.Challenge",
+  "solution_module": "ExternalVerification.FC1041SharpGap.Solution",
+  "theorem_names": [
+    "ErdosProblems.Erdos1041.PaperCompleteR21.exists_gap_le_sharpClosedForm"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "enable_nanoda": true
+}

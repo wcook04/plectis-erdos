@@ -1,0 +1,93 @@
+# SPDX-FileCopyrightText: 2026 Will Cook
+# SPDX-License-Identifier: Apache-2.0
+name: FC1041 exact sharp-gap official preflight
+
+# Mechanical preflight only; no Palomar registry submission or registration.
+on:
+  push:
+    branches: [codex/fc1041-sharp-gap-preflight-20261007]
+  workflow_dispatch:
+    inputs:
+      source_commit:
+        description: Full candidate SHA equal to the selected workflow ref
+        required: true
+        type: string
+permissions:
+  contents: read
+jobs:
+  select:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    outputs:
+      source_commit: ${{ steps.validate.outputs.source_commit }}
+      request_id: ${{ steps.validate.outputs.request_id }}
+      options: ${{ steps.validate.outputs.options }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          persist-credentials: false
+      - name: Bind original proof closure and complete FC statement
+        id: validate
+        env:
+          SOURCE_INPUT: ${{ inputs.source_commit }}
+          EVENT_NAME: ${{ github.event_name }}
+          EVENT_REF: ${{ github.ref }}
+          EVENT_SHA: ${{ github.sha }}
+          REPOSITORY: ${{ github.repository }}
+          RUN_ID: ${{ github.run_id }}
+          RUN_ATTEMPT: ${{ github.run_attempt }}
+        run: |
+          python3 - <<'PYCODE'
+          import hashlib, json, os, re, subprocess
+          from pathlib import Path
+          def require(condition, message):
+              if not condition:
+                  raise SystemExit(message)
+          event = os.environ['EVENT_NAME']
+          require(event in {'push', 'workflow_dispatch'}, 'unsupported event')
+          if event == 'push':
+              require(os.environ['EVENT_REF'] == 'refs/heads/codex/fc1041-sharp-gap-preflight-20261007', 'unexpected push ref')
+          source = os.environ['EVENT_SHA'] if event == 'push' else os.environ['SOURCE_INPUT']
+          require(re.fullmatch(r'[0-9a-f]{40}', source) is not None, 'source must be full SHA')
+          require(source == os.environ['EVENT_SHA'] == subprocess.check_output(['git', 'rev-parse', 'HEAD'], text=True).strip(), 'source must equal workflow ref and checkout')
+          require(os.environ['REPOSITORY'] == 'wcook04/plectis-erdos', 'repository mismatch')
+          manifest_path = Path('verification/ExternalVerification/FC1041SharpGap/source-binding.json')
+          require(not manifest_path.is_symlink(), 'manifest symlink refused')
+          require(hashlib.sha256(manifest_path.read_bytes()).hexdigest() == '6fadf264112476b39f162b59fd06c84a687ca1b0f05e8937e2360ade686851b5', 'source binding changed')
+          binding = json.loads(manifest_path.read_text())
+          require(binding['proof_commit'] == 'c45de9aab30cf25172040c94c60987dec46645d8', 'original proof commit changed')
+          for path, expected in {**binding['source_closure'], **binding['protected_inputs']}.items():
+              held = Path(path)
+              require(held.is_file() and not held.is_symlink(), f'missing or symlinked input: {path}')
+              require(hashlib.sha256(held.read_bytes()).hexdigest() == expected, f'input changed: {path}')
+          config_path = 'verification/ExternalVerification/FC1041SharpGap/comparator.json'
+          config = json.loads(Path(config_path).read_text())
+          require(config == {
+              'challenge_module': 'ExternalVerification.FC1041SharpGap.Challenge',
+              'solution_module': 'ExternalVerification.FC1041SharpGap.Solution',
+              'theorem_names': ['ErdosProblems.Erdos1041.PaperCompleteR21.exists_gap_le_sharpClosedForm'],
+              'permitted_axioms': ['propext', 'Classical.choice', 'Quot.sound'],
+              'enable_nanoda': True,
+          }, 'exact selection or axiom budget changed')
+          options = {
+              'authorization_relationship': 'I am a responsible author or maintainer',
+              'project_path': '',
+              'comparator_config_path': config_path,
+              'formalization_metadata_path': 'verification/ExternalVerification/FC1041SharpGap/formalization.yaml',
+          }
+          request_id = hashlib.sha256(f"fc1041:{source}:{os.environ['RUN_ID']}:{os.environ['RUN_ATTEMPT']}".encode()).hexdigest()[:12]
+          with open(os.environ['GITHUB_OUTPUT'], 'a') as output:
+              output.write(f'source_commit={source}\nrequest_id={request_id}\noptions={json.dumps(options, separators=(",", ":"))}\n')
+          print(f'Exact original FC1041 adapter and full FC statement selected at {source}')
+          PYCODE
+  verify:
+    needs: select
+    uses: PalomarRegistry/PalomarSubmission/.github/workflows/submission.yml@f49b4f29aa458fc70c3a4c8cadca9312adbdc559
+    with:
+      repository: wcook04/plectis-erdos
+      commit: ${{ needs.select.outputs.source_commit }}
+      pipeline_commit: f49b4f29aa458fc70c3a4c8cadca9312adbdc559
+      request_id: ${{ needs.select.outputs.request_id }}
+      mode: full
+      execution_profile: palomar-standard-v1
+      options: ${{ needs.select.outputs.options }}
