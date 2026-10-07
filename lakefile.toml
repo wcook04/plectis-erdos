@@ -152,10 +152,3 @@ globs = ["NegativeSolutions.+"]
 [[lean_lib]]
 name = "Erdos243V5"
 srcDir = "research"
-
-# Independent trusted statement for the exact cubic-rate FC adapter.
-# The original proof module remains FC243CubicRate.
-[[lean_lib]]
-name = "FC243CubicRateChallenge"
-srcDir = "verification"
-globs = ["FC243CubicRate.Challenge"]

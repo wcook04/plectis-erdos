@@ -33,10 +33,10 @@ sources:
 status:
   scope: "Using the degree-seven polynomial constructed by the erdosproblems.com contributor ani, Lean proves that every preconnected strict-lemniscate set containing two distinct roots has one-dimensional Hausdorff measure greater than two. This refutes the exact Formal Conjectures path-image-length statement; the separate total-variation bound is also checked. The other seven targets remain open. Independent human review of correspondence with the 1958 wording has not been recorded. Comparator checks only selected exact statements, axioms and kernel acceptance; it does not assess novelty or historical correspondence."
   proof_corpus_sorry_count: 0
-  sorry_count: 8
+  sorry_count: 9
   sorry_in_definitions: 0
-  trusted_challenge_sorry_count: 8
-  sorry_boundary: "Every sorry is a trusted proposition package in one of the statement-isolated Comparator challenge fixtures (verification/ExternalVerification/Challenge.lean; verification/ExternalVerification1041SolvedFamilies/Challenge.lean; verification/ExternalVerification1049/Challenge.lean; verification/ExternalVerification249TotientKernelBasis/Challenge.lean). Each is the fixture against which Comparator checks the proof-bearing solution; the proof corpus and every solution wrapper have sorry_count 0."
+  trusted_challenge_sorry_count: 9
+  sorry_boundary: "Every sorry is a trusted proposition package in one of the statement-isolated Comparator challenge fixtures (verification/ExternalVerification/Challenge.lean; verification/ExternalVerification/FC243CubicRate/Challenge.lean; verification/ExternalVerification1041SolvedFamilies/Challenge.lean; verification/ExternalVerification1049/Challenge.lean; verification/ExternalVerification249TotientKernelBasis/Challenge.lean). Each is the fixture against which Comparator checks the proof-bearing solution; the proof corpus and every solution wrapper have sorry_count 0."
   axioms:
     - "propext"
     - "Quot.sound"
@@ -1769,6 +1769,6 @@ external_verification:
       checked_frontier: "Lean checks irrationality and the stated irrationality-exponent bound for rational bases in the exact Zudilin contour region, including every positive integral power of 31/4. The contour excludes 3/2."
       open_frontier: "The universal rational-base conjecture, including the case 3/2, remains open. The checked 31/4 power family settles one region and leaves that conjecture untouched."
       claim_registry_status: "registered_declarations"
-  trusted_challenge_holes: 8
+  trusted_challenge_holes: 9
   packet: "docs/EXTERNAL_VERIFICATION.md"
   receipt_contract: "docs/external_verification_packet.json::receipt_contract"

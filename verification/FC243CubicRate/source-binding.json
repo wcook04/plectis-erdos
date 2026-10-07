@@ -1,12 +1,16 @@
 {
-  "schema": "fc243_exact_adapter_source_binding_v1",
+  "schema": "fc243_exact_adapter_source_binding_v2",
   "repository": "wcook04/plectis-erdos",
   "source_closure_base_commit": "cf41120472efc0c264b5e331e9d7424de458509f",
   "declaration": "ErdosProblems.Erdos243.FormalConjecturesAdapter.erdos_243_variants_cubic_rate",
-  "path": "research/adapters/FC243CubicRate.lean",
+  "path": "verification/ExternalVerification/FC243CubicRate/Solution.lean",
   "adapter_origin_commit": "a1779f508dbede5da6d8c2d5fefe0d8f6dcef6d9",
+  "adapter_origin_path": "research/adapters/FC243CubicRate.lean",
   "adapter_origin_sha256": "sha256:6f2df88703132935e4747f9a82fd2bcbcd6717d3e63bec4443e543a4918b0ac4",
-  "provenance_boundary": "The adapter bytes are unchanged from the original link. The independent check verifies the complete import closure at source_closure_base_commit; it is not a replay of the older closure.",
+  "source_path_origins": {
+    "verification/ExternalVerification/FC243CubicRate/Solution.lean": "research/adapters/FC243CubicRate.lean"
+  },
+  "provenance_boundary": "Solution is a byte-exact copy of the original adapter. Its independent check verifies the full existing project import closure at source_closure_base_commit, not the older imported proofs. Root Lake configuration is unchanged.",
   "files": {
     "lean/ErdosProblems/Erdos243/CubicNeighbourIdentity.lean": "sha256:309fd2710addf2827db2b0179688997041697d30218ebba4fd1d87cf352c9bb8",
     "lean/ErdosProblems/Erdos243/DynamicCancellation.lean": "sha256:0da6cf5dd09100a815d79fce850ad458b4a492ccc1206573741f93f7752fdf76",
@@ -62,7 +66,7 @@
     "lean/ErdosProblems/Shared/IdealCountingEuler.lean": "sha256:0aabe588e0b8a76fe31b4ac5692824876268ecce65e8e19f60060ea8736d5111",
     "lean/ErdosProblems/Shared/NonsquareModuloPrimes.lean": "sha256:71c9e4eed415f9704f76b41a7759e95c2a50a4516efb2650a6f9c9dc3bd8425d",
     "lean/ErdosProblems/Shared/QuadraticSplitPrimes.lean": "sha256:282d48a483761f5292c178b0398cc7ba000d3ab102dfc44406638c673fdb184d",
-    "research/adapters/FC243CubicRate.lean": "sha256:6f2df88703132935e4747f9a82fd2bcbcd6717d3e63bec4443e543a4918b0ac4",
+    "verification/ExternalVerification/FC243CubicRate/Solution.lean": "sha256:6f2df88703132935e4747f9a82fd2bcbcd6717d3e63bec4443e543a4918b0ac4",
     "lean-toolchain": "sha256:88a1d79c54cf3777f22b61a68377f44150124ba67f889c98587b2291885358a5",
     "lake-manifest.json": "sha256:ce8af3495139dac717402363eea258de3aa128cf01384511f97107320dc0f90c"
   }

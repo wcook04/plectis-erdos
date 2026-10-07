@@ -1,6 +1,6 @@
 {
-  "challenge_module": "FC243CubicRate.Challenge",
-  "solution_module": "FC243CubicRate",
+  "challenge_module": "ExternalVerification.FC243CubicRate.Challenge",
+  "solution_module": "ExternalVerification.FC243CubicRate.Solution",
   "theorem_names": [
     "ErdosProblems.Erdos243.FormalConjecturesAdapter.erdos_243_variants_cubic_rate"
   ],

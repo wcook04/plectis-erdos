@@ -6,6 +6,7 @@ on:
     paths:
       - .github/workflows/fc243-cubic-rate-preflight.yml
       - verification/FC243CubicRate/**
+      - verification/ExternalVerification/FC243CubicRate/**
       - research/adapters/FC243CubicRate.lean
       - lean/**
       - lean-toolchain
@@ -71,7 +72,7 @@ jobs:
               if not path.is_file():
                   raise SystemExit(f'missing verification input: {relpath}')
               return path.read_bytes()
-          protected = {'lakefile.toml': '4064732c9203e2a2a9118c305ce314bfb56e10e28770104bc34b7368cc2e64e7', 'verification/FC243CubicRate/Challenge.lean': 'af96a65d497e1411920d7f7604089a6dd600a535ca2f07938bb8a7c113fd79e0', 'verification/FC243CubicRate/comparator.json': '9284621a2d7ee42b6a24c24228f8f3f08e7ec6a19a7f0b7d3bc2d71ba1110fb7', 'verification/FC243CubicRate/formalization.yaml': 'f368c0f02646a69739f0210bc8b9d093d7df4226695fdad945da3d4a058e06ff', 'verification/FC243CubicRate/source-binding.json': '8028f73400be5a53a60ade6914e8759ce0a21ad1bd87d57e143f0a6b383453f7'}
+          protected = {'lakefile.toml': 'e1a087453f8ac7bf939211194ae083a87212d33d82bd222d1f27ffc0bbdc5211', 'verification/ExternalVerification/FC243CubicRate/Solution.lean': '6f2df88703132935e4747f9a82fd2bcbcd6717d3e63bec4443e543a4918b0ac4', 'verification/ExternalVerification/FC243CubicRate/Challenge.lean': 'af96a65d497e1411920d7f7604089a6dd600a535ca2f07938bb8a7c113fd79e0', 'verification/FC243CubicRate/comparator.json': '7f095040c1d835981ff6c2460a7c965a31d5775078efa6b58c6e486a84508656', 'verification/FC243CubicRate/formalization.yaml': '10ae7a1789e4d1009c7fe87461ecf9a0e783d07834f36e46329e063bbeda0017', 'verification/FC243CubicRate/source-binding.json': '5a916a0b0c6e2e7a879d8f311ced3acbc07ee07d7dfa4fa355bb025ff6b542a3'}
           for relpath, expected in protected.items():
               if hashlib.sha256(checked_bytes(relpath)).hexdigest() != expected:
                   raise SystemExit(f'protected verification bytes changed: {relpath}')
@@ -83,8 +84,8 @@ jobs:
                   raise SystemExit(f'current adapter import closure changed: {relpath}')
           config = json.loads(checked_bytes('verification/FC243CubicRate/comparator.json'))
           expected = {
-              'challenge_module': 'FC243CubicRate.Challenge',
-              'solution_module': 'FC243CubicRate',
+              'challenge_module': 'ExternalVerification.FC243CubicRate.Challenge',
+              'solution_module': 'ExternalVerification.FC243CubicRate.Solution',
               'theorem_names': ['ErdosProblems.Erdos243.FormalConjecturesAdapter.erdos_243_variants_cubic_rate'],
               'permitted_axioms': ['propext', 'Quot.sound', 'Classical.choice'],
               'enable_nanoda': True,

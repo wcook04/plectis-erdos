@@ -48,7 +48,8 @@ status:
   proof_corpus_sorry_count: 0
   trusted_challenge_sorry_count: 1
   sorry_boundary: The independent Challenge alone contains one trusted statement hole;
-    the original solution adapter and its project closure contain no intentional holes.
+    the exact adapter proof-copy Solution and its project closure contain no intentional
+    holes.
   axiom_audit_status: The configured budget is propext, Quot.sound and Classical.choice.
     Run-specific closure and kernel results belong to independent report artifacts.
   permitted_axiom_budget:
@@ -57,9 +58,10 @@ status:
   - Classical.choice
   main_results:
   - declaration: ErdosProblems.Erdos243.FormalConjecturesAdapter.erdos_243_variants_cubic_rate
-    file: research/adapters/FC243CubicRate.lean
+    file: verification/ExternalVerification/FC243CubicRate/Solution.lean
     sorry_count: 0
     comparator_config: verification/FC243CubicRate/comparator.json
   development_status: substantive
-  local_proof_provenance: Unchanged original adapter from a1779f508dbede5da6d8c2d5fefe0d8f6dcef6d9
-    with the complete current proof/import closure at cf41120472efc0c264b5e331e9d7424de458509f.
+  local_proof_provenance: Byte-identical copy of research/adapters/FC243CubicRate.lean
+    from a1779f508dbede5da6d8c2d5fefe0d8f6dcef6d9 with the full existing project import
+    closure at cf41120472efc0c264b5e331e9d7424de458509f.
